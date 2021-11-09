@@ -10,7 +10,7 @@ public:
 		_3D = 1
 	};
 private:
-	static constexpr inline int m_current = _2D;
+	static constexpr inline int m_current = _3D;
 public:
 	static constexpr int get() noexcept
 	{

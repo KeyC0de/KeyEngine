@@ -106,6 +106,8 @@ public:
 	void setEnable( bool b );
 	void setOnTop();
 	HWND setFocus();
+	void goFullscreen() noexcept;
+	void goWindowed() noexcept;
 	void setBorderless() const noexcept;
 	void setBorderfull() const noexcept;
 	HWND getParent() const noexcept;

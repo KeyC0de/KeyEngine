@@ -68,7 +68,7 @@ const SettingsManager::Settings& SettingsManager::getSettings()
 	return m_settings;
 }
 
-SettingsManager::Settings& SettingsManager::settings()
+SettingsManager::Settings& SettingsManager::accessSettings()
 {
 	return m_settings;
 }

@@ -1,5 +1,7 @@
 #include <sstream>
 #include <mutex>
+#include "dxgi1_4.h"
+#include "dxgi1_5.h"
 #include "graphics.h"
 #include "imgui_impl_dx11.h"
 #include "imgui_impl_win32.h"
@@ -65,6 +67,37 @@ IDXGIAdapter* Graphics::Adapter::getAdapter() const noexcept
 	return m_pAdapter.Get();
 }
 
+#if defined _FLIP_PRESENT
+void Graphics::makeWindowAssociationWithFactory( HWND hWnd,
+	UINT flags )
+{
+	m_pSwapChain->GetParent( __uuidof( IDXGIFactory ),
+		&m_pFactory );
+	m_pFactory->MakeWindowAssociation( hWnd,
+		flags );
+}
+
+bool Graphics::checkTearingSupport()
+{
+	bool bAllowTearing = false;
+	// Rather than create the 1.5 factory interface directly, we create the 1.4
+	// interface and query for the 1.5 interface. This will enable the graphics
+	// debugging tools which might not support the 1.5 factory interface.
+	mwrl::ComPtr<IDXGIFactory4> factory4;
+	HRESULT hres = CreateDXGIFactory1( IID_PPV_ARGS( &factory4 ) );
+	ASSERT_HRES_IF_FAILED;
+
+	mwrl::ComPtr<IDXGIFactory5> factory5;
+	hres = factory4.As( &factory5 );
+	ASSERT_HRES_IF_FAILED;
+
+	hres = factory5->CheckFeatureSupport( DXGI_FEATURE_PRESENT_ALLOW_TEARING,
+		&bAllowTearing,
+		sizeof bAllowTearing );
+	ASSERT_HRES_IF_FAILED;
+	return SUCCEEDED( hres ) && bAllowTearing;
+}
+#endif
 
 Graphics::Graphics( HWND hWnd,
 	int width,
@@ -118,6 +151,11 @@ Graphics::Graphics( HWND hWnd,
 	createAdapters();
 	const auto& primaryAdapter = m_adapters.front();
 	hres = E_INVALIDARG;
+#if defined _FLIP_PRESENT
+
+	// make window-swap chain association
+	makeWindowAssociationWithFactory( hWnd );
+#else
 	for ( DWORD i = 0u;
 		hres == E_INVALIDARG || i < std::size( acceptableFeatureLevels ); ++i )
 	{
@@ -134,6 +172,7 @@ Graphics::Graphics( HWND hWnd,
 			&m_featureLevel,
 			&m_pContext );
 	}
+#endif
 	ASSERT_HRES_IF_FAILED;
 
 #if defined _DEBUG && !defined NDEBUG
@@ -295,13 +334,25 @@ void Graphics::endRendering()
 	HRESULT hres;
 	if ( g_settings.getSettings().bVSync )
 	{
+#if defined _FLIP_PRESENT
+		hres = m_pSwapChain->Present1( 1u,
+			0u,
+			 );
+#else
 		hres = m_pSwapChain->Present( 1u,
 			0u );
+#endif
 	}
 	else
 	{
+#if defined _FLIP_PRESENT
+		hres = m_pSwapChain->Present1( 0u,
+			0u,
+			 );
+#else
 		hres = m_pSwapChain->Present( 0u,
 			0u );
+#endif
 	}
 
 	if ( hres == DXGI_ERROR_DEVICE_REMOVED )
@@ -404,14 +455,13 @@ DxgiInfoQueue& Graphics::getInfoQueue() const noexcept
 
 void Graphics::createAdapters()
 {
-	mwrl::ComPtr<IDXGIFactory> pIdxgiFactory;
-	HRESULT hres = CreateDXGIFactory( __uuidof( IDXGIFactory ),
-		reinterpret_cast<void**>( pIdxgiFactory.GetAddressOf() ) );
+	HRESULT hres = CreateDXGIFactory1( __uuidof( IDXGIFactory1 ),
+		reinterpret_cast<void**>( m_pFactory.GetAddressOf() ) );
 	ASSERT_HRES_IF_FAILED;
 
-	IDXGIAdapter* pAdapter = nullptr;
+	IDXGIAdapter1* pAdapter = nullptr;
 	unsigned adapterIndex = 0;
-	while ( SUCCEEDED( pIdxgiFactory->EnumAdapters( adapterIndex,
+	while ( SUCCEEDED( m_pFactory->EnumAdapters1( adapterIndex,
 		&pAdapter ) ) )
 	{
 		m_adapters.emplace_back( pAdapter );

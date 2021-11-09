@@ -32,7 +32,7 @@ public:
 	static void resetInstance();
 
 	const Settings& getSettings();
-	Settings& settings();
+	Settings& accessSettings();
 private:
 	void loadFromFile( const std::string& filePath );
 };

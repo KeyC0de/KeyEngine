@@ -100,7 +100,7 @@ State* Game<T>::getState() noexcept
 template <typename T>
 float Game<T>::calculateDt()
 {
-	auto& settings = m_settingsMan.settings();
+	auto& settings = m_settingsMan.accessSettings();
 	static float minFrameTime = 1.0f / settings.iMaxFps;
 	float dt = m_gameTimer.lap() * settings.fGameSpeed;
 
@@ -298,11 +298,11 @@ void Sandbox3d::checkInput( float dt )
 		{
 			activeCamera.translateRel( {dt, 0.0f, 0.0f} );
 		}
-		if ( keyboard.isKeyPressed( 'R' ) )
+		if ( keyboard.isKeyPressed( 'E' ) )
 		{
 			activeCamera.translateRel( {0.0f, dt, 0.0f} );
 		}
-		if ( keyboard.isKeyPressed( 'F' ) )
+		if ( keyboard.isKeyPressed( 'Q' ) )
 		{
 			activeCamera.translateRel( {0.0f, -dt, 0.0f} );
 		}

@@ -67,6 +67,9 @@ public:
 
 	void reset() noexcept
 	{
+#if defined min
+#	undef min
+#endif
 		m_start = std::chrono::time_point_cast<Resolution>( TClock::time_point::min() );
 	}
 

@@ -65,7 +65,12 @@ private:
 	ATL::CComPtr<ID3D11Debug> m_pDebug;
 #endif
 	Microsoft::WRL::ComPtr<ID3D11Device> m_pDevice;
+#if defined _FLIP_PRESENT
+	Microsoft::WRL::ComPtr<IDXGISwapChain1> m_pSwapChain;
+#else
 	Microsoft::WRL::ComPtr<IDXGISwapChain> m_pSwapChain;
+#endif
+	Microsoft::WRL::ComPtr<IDXGIFactory1> m_pFactory;
 	Microsoft::WRL::ComPtr<ID3D11DeviceContext> m_pContext;	// immediate context
 	std::shared_ptr<IRenderTargetView> m_globalColorBuffer;
 	KeyTimer<std::chrono::microseconds> m_fpsTimer;
@@ -74,6 +79,10 @@ private:
 	std::vector<std::unique_ptr<ID3D11DeviceContext>> m_deferredContexts;
 	std::vector<std::unique_ptr<ID3D11CommandList>> m_commandLists;
 	ColorBGRA* m_pCpuBuffer = nullptr;
+#if defined _FLIP_PRESENT
+private:
+	static bool checkTearingSupport();
+#endif
 public:
 	Graphics( HWND hWnd, int width, int height );
 	~Graphics();
@@ -82,6 +91,9 @@ public:
 	Graphics( Graphics&& rhs ) = delete;
 	Graphics& operator=( Graphics&& rhs ) = delete;
 
+#if defined _FLIP_PRESENT
+	void makeWindowAssociationWithFactory( HWND hWnd, UINT flags = DXGI_MWA_NO_WINDOW_CHANGES );
+#endif
 	void beginRendering() noexcept;
 	void updateAndRenderFpsTimer();
 	void endRendering();

@@ -62,8 +62,8 @@ int runWindowsProgram( _In_ wchar_t* pCmdLine )
 #endif
 			/// Make sure to set the GraphicsMode in graphics_mode.h
 			const auto& [width, height] = parseCommandLineArguments();
-			//Sandbox3d game{width, height};
-			Arkanoid game{800, 600};
+			Sandbox3d game{width, height};
+			//Arkanoid game{800, 600};
 			//Snake game{800, 600};
 			return game.loop();
 		}
