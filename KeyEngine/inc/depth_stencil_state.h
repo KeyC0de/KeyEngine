@@ -9,12 +9,17 @@ class DepthStencilState
 public:
 	enum Mode
 	{
-		Default,		// DepthOnStencilOff
+		Default,				// DepthOnStencilOff
 		DepthOffStencilOff,
-		DepthOnStencilWriteFF,
-		DepthOffStencilWriteFF,	// Front Face
+		DepthOnStencilWriteFF,	// FF: Front Face
+		DepthOffStencilWriteFF,
+		DepthOnStencilReadFF,
 		DepthOffStencilReadFF,
-		DepthReversed,	// only things that are occluded should be drawn
+		DepthOnStencilWriteBF,	// BF: Back Face
+		DepthOffStencilWriteBF,
+		DepthOnStencilReadBF,
+		DepthOffStencilReadBF,
+		DepthReversed,			// only things that are occluded should be drawn
 		DepthEquals1,
 	};
 private:

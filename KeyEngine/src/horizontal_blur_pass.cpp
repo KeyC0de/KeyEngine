@@ -25,7 +25,7 @@ HorizontalBlurPass::HorizontalBlurPass( Graphics& gph,
 		false,
 		true ) );
 	
-	addContainerBindableConsumer<IRenderTargetView>( "blurOutlineRttIn" );
+	addContainerBindableConsumer<IRenderTargetView>( "blurRttIn" );
 	addContainerBindableConsumer<PixelConstantBufferEx>( "blurKernel" );
 	addConsumer( BindableConsumer<PixelConstantBufferEx>::make( "blurDirection",
 		m_pPcbBlurDirection ) );
@@ -34,7 +34,7 @@ HorizontalBlurPass::HorizontalBlurPass( Graphics& gph,
 		width,
 		height,
 		0u );
-	addProducer( BindableProducer<IRenderTargetView>::make( "blurOutlineRttOut",
+	addProducer( BindableProducer<IRenderTargetView>::make( "blurRttOut",
 		m_pRtv ) );
 
 	addPassSharedBindable( BlendState::fetch( gph,

@@ -39,7 +39,12 @@ private:
 public:
 	static Bitmap loadFromFile( const std::string& filename,
 		unsigned wicFlags = DirectX::WIC_FLAGS_IGNORE_SRGB );
-	static Bitmap::Texel vectorToTexel( const DirectX::XMVECTOR& v ) noexcept;
+	//===================================================
+	//	\function	colorToVector
+	//	\brief  convert from Color(0..255) to vector(-1..1)
+	//	\date	2022/02/18 17:49
+	static DirectX::XMVECTOR colorToVector( Bitmap::Texel col ) noexcept;
+	static Bitmap::Texel vectorToColor( const DirectX::XMVECTOR& v ) noexcept;
 public:
 	Bitmap( unsigned int width, unsigned int height );
 	~Bitmap() = default;

@@ -126,7 +126,22 @@ Bitmap Bitmap::loadFromFile( const std::string& name,
 	return Bitmap{std::move( scratchImg )};
 }
 
-Bitmap::Texel Bitmap::vectorToTexel( const dx::XMVECTOR& v ) noexcept
+dx::XMVECTOR Bitmap::colorToVector( Bitmap::Texel col ) noexcept
+{
+	auto v = dx::XMVectorSet( (float)col.getRed(),
+		(float)col.getGreen(),
+		(float)col.getBlue(),
+		0.0f );
+	const auto all255 = dx::XMVectorReplicate( 2.0f / 255.0f );
+	v = dx::XMVectorMultiply( v,
+		all255 );
+	const auto all1 = dx::XMVectorReplicate( 1.0f );
+	v = dx::XMVectorSubtract( v,
+		all1 );
+	return v;
+}
+
+Bitmap::Texel Bitmap::vectorToColor( const dx::XMVECTOR& v ) noexcept
 {
 	const auto all1 = dx::XMVectorReplicate( 1.0f );
 	dx::XMVECTOR nOut = dx::XMVectorAdd( v,

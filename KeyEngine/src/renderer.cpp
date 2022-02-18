@@ -341,7 +341,7 @@ Renderer3d::Renderer3d( Graphics& gph,
 		auto pass = std::make_unique<HorizontalBlurPass>( gph,
 			"horizontalBlur",
 			4 );
-		pass->setupConsumerTarget( "blurOutlineRttIn",
+		pass->setupConsumerTarget( "blurRttIn",
 			"blurOutlineDraw",
 			"blurOutlineRttOut" );
 		pass->setupConsumerTarget( "blurKernel",
@@ -362,9 +362,9 @@ Renderer3d::Renderer3d( Graphics& gph,
 		pass->setupConsumerTarget( "depthStencil",
 			"blurOutlineMask",
 			"depthStencil" );
-		pass->setupConsumerTarget( "blurOutlineRttIn",
+		pass->setupConsumerTarget( "blurRttIn",
 			"horizontalBlur",
-			"blurOutlineRttOut" );
+			"blurRttOut" );
 		pass->setupConsumerTarget( "blurKernel",
 			"$",
 			"blurKernel" );

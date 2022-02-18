@@ -31,16 +31,18 @@ public:
 		unsigned slot );
 	static std::string generateUID( const std::string& filepath, unsigned slot );
 	std::string getUID() const noexcept override;
-
-	static void flipAllModelNormalMapsYChannel( const std::string& objPath );
-	// flips the normal map y channel of given texture
-	static void flipNormalMapYChannel( const std::string& pathIn,
+	static void flipAllModelNormalMapsGreenChannel( const std::string& objPath );
+	// flips the normal map green channel of given texture
+	static void flipNormalMapGreenChannel( const std::string& pathIn,
 		const std::string& pathOut );
 	static void validateNormalMap( const std::string& pathIn, float thresholdMin,
 		float thresholdMax );
 	static void makeStripes( const std::string& pathOut, int size, int stripeWidth );
 private:
-	// apply function f at every Texel in the Bitmap
+	//===================================================
+	//	\function	transformBitmap
+	//	\brief  apply function f at every Texel in the Bitmap
+	//	\date	2022/02/18 19:14
 	template<typename F>
 	static void transformBitmap( Bitmap& bitmap,
 		F&& f )
@@ -51,10 +53,10 @@ private:
 		{
 			for ( unsigned x = 0; x < width; ++x )
 			{
-				const auto v = colorToVector( bitmap.getTexel( x, y ) );
+				const auto v = Bitmap::colorToVector( bitmap.getTexel( x, y ) );
 				bitmap.setTexel( x,
 					y,
-					Bitmap::vectorToTexel( f( v, x, y ) ) );
+					Bitmap::vectorToColor( f( v, x, y ) ) );
 			}
 		}
 	}
@@ -70,10 +72,5 @@ private:
 		bitmap.save( pathOut );
 	}
 
-	//===================================================
-	//	\function	colorToVector
-	//	\brief  convert from Color(0..255) to vector(-1..1)
-	//	\date	2022/02/18 17:49
-	static DirectX::XMVECTOR colorToVector( Bitmap::Texel col ) noexcept;
 	static unsigned calculateNumberOfMipMaps( unsigned width, unsigned height ) noexcept;
 };

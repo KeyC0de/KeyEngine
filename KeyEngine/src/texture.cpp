@@ -1,7 +1,6 @@
 #include <filesystem>
 #include <sstream>
 #include "texture.h"
-#include "bitmap.h"
 #include "bindable_map.h"
 #include "os_utils.h"
 #include "dxgi_info_queue.h"
@@ -184,7 +183,7 @@ std::string Texture::getUID() const noexcept
 }
 
 
-void Texture::flipAllModelNormalMapsYChannel( const std::string& objPath )
+void Texture::flipAllModelNormalMapsGreenChannel( const std::string& objPath )
 {
 	const auto rootPath = std::filesystem::path{objPath}.parent_path().string() + "/";
 
@@ -203,13 +202,13 @@ void Texture::flipAllModelNormalMapsYChannel( const std::string& objPath )
 		if ( mat.GetTexture( aiTextureType_NORMALS, 0, &texFileName ) == aiReturn_SUCCESS )
 		{
 			const auto path = rootPath + texFileName.C_Str();
-			flipNormalMapYChannel( path,
+			flipNormalMapGreenChannel( path,
 				path );
 		}
 	}
 }
 
-void Texture::flipNormalMapYChannel( const std::string& pathIn,
+void Texture::flipNormalMapGreenChannel( const std::string& pathIn,
 	const std::string& pathOut )
 {
 	const auto flipY = dx::XMVectorSet( 1.0f, -1.0f, 1.0f, 1.0f );
@@ -332,21 +331,6 @@ void Texture::makeStripes( const std::string& pathOut,
 		}
 	}
 	bitmap.save( pathOut );
-}
-
-dx::XMVECTOR Texture::colorToVector( Bitmap::Texel col ) noexcept
-{
-	auto v = dx::XMVectorSet( (float)col.getRed(),
-		(float)col.getGreen(),
-		(float)col.getBlue(),
-		0.0f );
-	const auto all255 = dx::XMVectorReplicate( 2.0f / 255.0f );
-	v = dx::XMVectorMultiply( v,
-		all255 );
-	const auto all1 = dx::XMVectorReplicate( 1.0f );
-	v = dx::XMVectorSubtract( v,
-		all1 );
-	return v;
 }
 
 unsigned Texture::calculateNumberOfMipMaps( unsigned width,

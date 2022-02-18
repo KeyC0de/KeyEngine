@@ -21,7 +21,7 @@ VerticalBlurPass::VerticalBlurPass( Graphics& gph,
 		false,
 		true ) );
 
-	addContainerBindableConsumer<IRenderTargetView>( "blurOutlineRttIn" );
+	addContainerBindableConsumer<IRenderTargetView>( "blurRttIn" );
 	addContainerBindableConsumer<PixelConstantBufferEx>( "blurKernel" );
 	addConsumer( BindableConsumer<PixelConstantBufferEx>::make( "blurDirection",
 		m_pPcbBlurDirection ) );

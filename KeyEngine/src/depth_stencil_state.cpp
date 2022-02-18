@@ -41,6 +41,12 @@ DepthStencilState::DepthStencilState( Graphics& gph,
 		dsDesc.FrontFace.StencilFunc = D3D11_COMPARISON_ALWAYS;
 		dsDesc.FrontFace.StencilPassOp = D3D11_STENCIL_OP_REPLACE;
 	}
+	else if ( mode == DepthOnStencilReadFF )
+	{
+		dsDesc.StencilEnable = TRUE;
+		dsDesc.StencilReadMask = 0xFFui8;
+		dsDesc.FrontFace.StencilFunc = D3D11_COMPARISON_NOT_EQUAL;
+	}
 	else if ( mode == DepthOffStencilReadFF )
 	{
 		dsDesc.DepthEnable = FALSE;
@@ -48,6 +54,36 @@ DepthStencilState::DepthStencilState( Graphics& gph,
 		dsDesc.StencilEnable = TRUE;
 		dsDesc.StencilReadMask = 0xFFui8;
 		dsDesc.FrontFace.StencilFunc = D3D11_COMPARISON_NOT_EQUAL;
+	}
+	else if ( mode == DepthOnStencilWriteBF )
+	{
+		dsDesc.StencilEnable = TRUE;
+		dsDesc.StencilWriteMask = 0xFFui8;
+		dsDesc.BackFace.StencilFunc = D3D11_COMPARISON_ALWAYS;
+		dsDesc.BackFace.StencilPassOp = D3D11_STENCIL_OP_REPLACE;
+	}
+	else if ( mode == DepthOffStencilWriteBF )
+	{
+		dsDesc.DepthEnable = FALSE;
+		dsDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ZERO;
+		dsDesc.StencilEnable = TRUE;
+		dsDesc.StencilWriteMask = 0xFFui8;
+		dsDesc.BackFace.StencilFunc = D3D11_COMPARISON_ALWAYS;
+		dsDesc.BackFace.StencilPassOp = D3D11_STENCIL_OP_REPLACE;
+	}
+	else if ( mode == DepthOnStencilReadBF )
+	{
+		dsDesc.StencilEnable = TRUE;
+		dsDesc.StencilReadMask = 0xFFui8;
+		dsDesc.BackFace.StencilFunc = D3D11_COMPARISON_NOT_EQUAL;
+	}
+	else if ( mode == DepthOffStencilReadBF )
+	{
+		dsDesc.DepthEnable = FALSE;
+		dsDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ZERO;
+		dsDesc.StencilEnable = TRUE;
+		dsDesc.StencilReadMask = 0xFFui8;
+		dsDesc.BackFace.StencilFunc = D3D11_COMPARISON_NOT_EQUAL;
 	}
 	else if ( mode == DepthReversed )
 	{
@@ -87,12 +123,24 @@ std::string DepthStencilState::generateUID( Mode mode )
 		{
 		case Default:
 			return "Default"s;
-		case DepthOffStencilWriteFF:
-			return "DepthOffStencilWriteFF"s;
-		case DepthOffStencilReadFF:
-			return "DepthOffStencilReadFF"s;
 		case DepthOffStencilOff:
 			return "DepthOffStencilOff"s;
+		case DepthOnStencilWriteFF:
+			return "DepthOnStencilWriteFF"s;
+		case DepthOffStencilWriteFF:
+			return "DepthOffStencilWriteFF"s;
+		case DepthOnStencilReadFF:
+			return "DepthOnStencilReadFF"s;
+		case DepthOffStencilReadFF:
+			return "DepthOffStencilReadFF"s;
+		case DepthOnStencilWriteBF:
+			return "DepthOnStencilWriteBF"s;
+		case DepthOffStencilWriteBF:
+			return "DepthOffStencilWriteBF"s;
+		case DepthOnStencilReadBF:
+			return "DepthOnStencilReadBF"s;
+		case DepthOffStencilReadBF:
+			return "DepthOffStencilReadBF"s;
 		case DepthReversed:
 			return "DepthReversed"s;
 		case DepthEquals1:

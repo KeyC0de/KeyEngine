@@ -52,7 +52,8 @@ PSOut main( PSIn input )
 	float4 maxColor = float4(0.0f, 0.0f, 0.0f, 0.0f);
 	for ( int i = -radius; i <= radius; ++i )
 	{
-		const float2 tc = input.uv + float2(dx * i, dy * i);
+		const float2 tc = input.uv + float2(dx * i,
+			dy * i);
 		const float4 col = blurOutlineRtt.Sample( sampl,
 			tc ).rgba;
 		const float coef = coefficients[i + radius];
