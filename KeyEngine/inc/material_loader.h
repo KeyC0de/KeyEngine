@@ -13,7 +13,7 @@ class VertexBuffer;
 class IndexBuffer;
 
 //=============================================================
-//	\class	
+//	\class	MaterialLoader
 //
 //	\author	KeyC0de
 //	\date	2021/10/29 21:04

@@ -381,6 +381,9 @@
     <ClCompile Include="snake\snake_play_field.cpp">
       <Filter>Snake</Filter>
     </ClCompile>
+    <ClCompile Include="src\triangle_mesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\assertions_console.h">

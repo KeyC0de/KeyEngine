@@ -50,7 +50,8 @@ Cube::Cube( Graphics& gph,
 			"assets/models/brick_wall/brick_wall_diffuse.jpg",
 			0u ) );
 		lambertian.addBindable( TextureSampler::fetch( gph,
-			0u ) );
+			0u,
+			TextureSampler::Anisotropic ) );
 
 		auto pVs = VertexShader::fetch( gph,
 			"cube_vs.cso" );

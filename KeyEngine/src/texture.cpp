@@ -7,6 +7,7 @@
 #include "dxgi_info_queue.h"
 #include "assimp/Importer.hpp"
 #include "assimp/scene.h"
+#include "console.h"
 #include "assertions_console.h"
 
 
@@ -227,10 +228,13 @@ void Texture::validateNormalMap( const std::string& pathIn,
 	float thresholdMin,
 	float thresholdMax )
 {
-	OutputDebugStringA( ( "Validating normal map [" + pathIn + "]\n" ).c_str() );
+#if defined _DEBUG && !defined NDEBUG
+	auto& console = KeyConsole::getInstance();
+	console.log( ( "Validating normal map [" + pathIn + "]\n" ).c_str() );
+#endif
 	auto sum = dx::XMVectorZero();
 	// function for processing each normal Texel
-	const auto normalOp = [thresholdMin, thresholdMax, &sum]
+	const auto normalOp = [thresholdMin, thresholdMax, &sum, &console]
 		( dx::XMVECTOR v, int x, int y ) -> dx::XMVECTOR
 	{
 		const float len = dx::XMVectorGetX( dx::XMVector3Length( v ) );
@@ -254,7 +258,9 @@ void Texture::validateNormalMap( const std::string& pathIn,
 				<< ", "
 				<< vec.z
 				<< ")\n";
-			OutputDebugStringA( oss.str().c_str() );
+#if defined _DEBUG && !defined NDEBUG
+			console.log( oss.str().c_str() );
+#endif
 		}
 		if ( z < 0.0f )
 		{
@@ -272,7 +278,9 @@ void Texture::validateNormalMap( const std::string& pathIn,
 				<< ", "
 				<< vec.z
 				<< ")\n";
-			OutputDebugStringA( oss.str().c_str() );
+#if defined _DEBUG && !defined NDEBUG
+			console.log( oss.str().c_str() );
+#endif
 		}
 		sum = dx::XMVectorAdd( sum, v );
 		return v;
@@ -292,7 +300,9 @@ void Texture::validateNormalMap( const std::string& pathIn,
 			<< ", "
 			<< sumv.y
 			<< ")\n";
-		OutputDebugStringA( oss.str().c_str() );		
+#if defined _DEBUG && !defined NDEBUG
+		console.log( oss.str().c_str() );
+#endif
 	}
 }
 

@@ -26,8 +26,7 @@ public:
 
 	void bind( Graphics& gph ) cond_noex override;
 	static std::shared_ptr<TextureSampler> fetch( Graphics& gph, unsigned slot,
-		Type filterType = Anisotropic, bool bMirrorTexAddr = false,
-		bool bClampTexAddr = false );
+		Type filterType, bool bMirrorTexAddr = false, bool bClampTexAddr = false );
 	static std::string generateUID( unsigned slot, Type filterType, bool bMirrorTexAddr,
 		bool bClampTexAddr );
 	std::string getUID() const noexcept override;

@@ -14,6 +14,7 @@ public:
 	{
 		pass_;
 	}
+
 	virtual bool visit( class Node& node ) = 0;
 	virtual void onNodeLeave( class Node& node ) = 0;
 };

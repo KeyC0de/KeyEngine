@@ -9,14 +9,14 @@
 struct GeometryCube
 {
 	static TriangleMesh make( std::optional<ver::VertexLayout> layout = {} );
-	static TriangleMesh makeIndependentFaces( ver::VertexLayout vertexLayout );;
+	static TriangleMesh makeIndependentFaces( ver::VertexLayout layout );;
 	static TriangleMesh makeIndependentFacesTextured();
 };
 
 struct GeometrySphere
 {
 	// make tesselated sphere
-	static TriangleMesh make( std::optional<ver::VertexLayout> vertexLayout = std::nullopt,
+	static TriangleMesh make( std::optional<ver::VertexLayout> layout = std::nullopt,
 		unsigned nLateralDivs = 12, unsigned nLongitudinalDivs = 24 );
 };
 

@@ -16,7 +16,7 @@ class Node
 
 	std::string m_name;
 	int m_id;	// useful for ImGUI widget rendering stuff
-	std::vector<std::unique_ptr<Node>> m_children;
+	std::vector<std::unique_ptr<Node>> m_pChildren;
 	std::vector<Drawable*> m_pDrawables;
 	DirectX::XMFLOAT4X4 m_localTransform;
 	DirectX::XMFLOAT4X4 m_worldTransform;
@@ -24,7 +24,7 @@ public:
 	Node( int id, const std::string& name, std::vector<Drawable*> pDrawables,
 		const DirectX::XMMATRIX& localTransform ) cond_noex;
 
-	void update( float dt, const DirectX::XMMATRIX& worldTransform ) const cond_noex;
+	void update( float dt, const DirectX::XMMATRIX& parentWorldTransform ) const cond_noex;
 	void render( size_t channels ) const cond_noex;
 	void setTransform( const DirectX::XMMATRIX& worldTransform ) noexcept;
 	const DirectX::XMFLOAT4X4& getWorldTransform() const noexcept;

@@ -22,23 +22,23 @@ Effect::Effect( const Effect& rhs ) noexcept
 	m_active(rhs.m_active),
 	m_targetPassName(rhs.m_targetPassName)
 {
-	m_bindables.reserve( rhs.m_bindables.size() );
-	for ( auto& bindable : rhs.m_bindables )
+	m_pBindables.reserve( rhs.m_pBindables.size() );
+	for ( auto& bindable : rhs.m_pBindables )
 	{
 		if ( auto* pClone = dynamic_cast<const IBindableCloning*>( bindable.get() ) )
 		{
-			m_bindables.push_back( pClone->clone() );
+			m_pBindables.push_back( pClone->clone() );
 		}
 		else
 		{
-			m_bindables.push_back( bindable );
+			m_pBindables.push_back( bindable );
 		}
 	}
 }
 
 void Effect::addBindable( std::shared_ptr<IBindable> bindable ) noexcept
 {
-	m_bindables.push_back( std::move( bindable ) );
+	m_pBindables.push_back( std::move( bindable ) );
 }
 
 void Effect::render( const Drawable& drawable,
@@ -52,7 +52,7 @@ void Effect::render( const Drawable& drawable,
 
 void Effect::bind( Graphics& gph ) const cond_noex
 {
-	for ( const auto& bi : m_bindables )
+	for ( const auto& bi : m_pBindables )
 	{
 		bi->bind( gph );
 	}
@@ -75,7 +75,7 @@ std::string Effect::getTargetPassName() const noexcept
 
 void Effect::setParentDrawable( const Drawable& parent ) noexcept
 {
-	for ( auto& bi : m_bindables )
+	for ( auto& bi : m_pBindables )
 	{
 		bi->setParentDrawable( parent );
 	}
@@ -84,7 +84,7 @@ void Effect::setParentDrawable( const Drawable& parent ) noexcept
 void Effect::accept( IEffectVisitor& ev )
 {
 	ev.setEffect( this );
-	for ( auto& bindable : m_bindables )
+	for ( auto& bindable : m_pBindables )
 	{
 		bindable->accept( ev );
 	}
@@ -98,5 +98,5 @@ void Effect::connectPass( ren::Renderer& r )
 
 std::vector<std::shared_ptr<IBindable>>& Effect::getBindables() noexcept
 {
-	return m_bindables;
+	return m_pBindables;
 }

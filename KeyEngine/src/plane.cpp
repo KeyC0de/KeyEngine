@@ -26,7 +26,6 @@ Plane::Plane( Graphics& gph,
 	:
 	m_colPcb{color}
 {
-
 	auto plane = GeometryPlane::make();
 	plane.transform( dx::XMMatrixScaling( size,
 		size,
@@ -53,7 +52,8 @@ Plane::Plane( Graphics& gph,
 			"assets/models/brick_wall/brick_wall_diffuse.jpg",
 			0u ) );
 		lambertian.addBindable( TextureSampler::fetch( gph,
-			0u ) );
+			0u,
+			TextureSampler::Anisotropic ) );
 
 		auto pVs = VertexShader::fetch( gph,
 			"plane_vs.cso" );

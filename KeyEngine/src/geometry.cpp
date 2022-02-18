@@ -3,7 +3,6 @@
 #include "geometry.h"
 #include <array>
 #include "dynamic_vertex_buffer.h"
-#include "triangle_mesh.h"
 #include "math_utils.h"
 #include "assertions_console.h"
 
@@ -44,13 +43,13 @@ TriangleMesh GeometryCube::make( std::optional<ver::VertexLayout> layout )
 	};
 }
 
-TriangleMesh GeometryCube::makeIndependentFaces( ver::VertexLayout vertexLayout )
+TriangleMesh GeometryCube::makeIndependentFaces( ver::VertexLayout layout )
 {
 	using Type = ver::VertexLayout::MemberType;
 
 	constexpr float side = 1.0f / 2.0f;
 
-	ver::Buffer vertices{std::move( vertexLayout ), 24u};
+	ver::Buffer vertices{std::move( layout ), 24u};
 	vertices[0].getMember<Type::Position3D>() = {-side, -side, -side};// 0 near side
 	vertices[1].getMember<Type::Position3D>() = {side, -side, -side};// 1
 	vertices[2].getMember<Type::Position3D>() = {-side, side, -side};// 2
@@ -129,16 +128,16 @@ TriangleMesh GeometryCube::makeIndependentFacesTextured()
 	return itl;
 }
 
-TriangleMesh GeometrySphere::make( std::optional<ver::VertexLayout> vertexLayout,
+TriangleMesh GeometrySphere::make( std::optional<ver::VertexLayout> layout,
 	unsigned nLateralDivs,
 	unsigned nLongitudinalDivs )
 {
 	ASSERT( nLateralDivs >= 3, "Lateral divisions < 3 - too low!" );
 	ASSERT( nLongitudinalDivs >= 3, "Longitudinal divisions < 3 - too low!" );
 
-	if ( !vertexLayout )
+	if ( !layout )
 	{
-		vertexLayout = ver::VertexLayout{}.add( ver::VertexLayout::MemberType::Position3D );
+		layout = ver::VertexLayout{}.add( ver::VertexLayout::MemberType::Position3D );
 	}
 
 	constexpr float radius = 1.0f;
@@ -151,7 +150,7 @@ TriangleMesh GeometrySphere::make( std::optional<ver::VertexLayout> vertexLayout
 	const float lattitudeAngle = math::PI / nLateralDivs;
 	const float longitudeAngle = 2.0f * math::PI / nLongitudinalDivs;
 
-	ver::Buffer vb{std::move( *vertexLayout )};
+	ver::Buffer vb{std::move( *layout )};
 	for ( unsigned lat = 1; lat < nLateralDivs; ++lat )
 	{
 		const auto latBase = dx::XMVector3Transform( base,

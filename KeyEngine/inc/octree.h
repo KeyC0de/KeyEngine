@@ -26,7 +26,7 @@ class Octree final
 {
 	Vec3 m_center;	// the physical spatial center of this octree octant
 	Vec3 m_half;	// half the width,height,depth of this octant
-	Octree* m_children[8];
+	Octree* m_pChildren[8];
 	class OctreeData* m_data;
 
 private:

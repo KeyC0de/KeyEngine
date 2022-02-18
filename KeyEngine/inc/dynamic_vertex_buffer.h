@@ -12,7 +12,7 @@
 
 
 // tapping into Assimp aiMesh members given MemberProperties
-#define ASSIMP_AIMESH_EXTRACT( member ) \
+#define EXTRACT_ASSIMP_AIMESH( member ) \
 	static CPUType extract( const aiMesh& mesh,\
 		size_t i ) noexcept\
 	{\
@@ -61,7 +61,7 @@ public:
 		static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32_FLOAT;
 		static constexpr const char* hlslSemantic = "Position";
 		static constexpr const char* tag = "P2";
-		ASSIMP_AIMESH_EXTRACT( mVertices )
+		EXTRACT_ASSIMP_AIMESH( mVertices )
 	};
 	
 	template<>
@@ -71,7 +71,7 @@ public:
 		static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32B32_FLOAT;
 		static constexpr const char* hlslSemantic = "Position";
 		static constexpr const char* tag = "P3";
-		ASSIMP_AIMESH_EXTRACT( mVertices )
+		EXTRACT_ASSIMP_AIMESH( mVertices )
 	};
 	
 	template<>
@@ -81,7 +81,7 @@ public:
 		static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32_FLOAT;
 		static constexpr const char* hlslSemantic = "Texcoord";
 		static constexpr const char* tag = "T2";
-		ASSIMP_AIMESH_EXTRACT( mTextureCoords[0] )
+		EXTRACT_ASSIMP_AIMESH( mTextureCoords[0] )
 	};
 	
 	template<>
@@ -91,7 +91,7 @@ public:
 		static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32B32_FLOAT;
 		static constexpr const char* hlslSemantic = "Normal";
 		static constexpr const char* tag = "N";
-		ASSIMP_AIMESH_EXTRACT( mNormals )
+		EXTRACT_ASSIMP_AIMESH( mNormals )
 	};
 	
 	template<>
@@ -101,7 +101,7 @@ public:
 		static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32B32_FLOAT;
 		static constexpr const char* hlslSemantic = "Tangent";
 		static constexpr const char* tag = "Nt";
-		ASSIMP_AIMESH_EXTRACT( mTangents )
+		EXTRACT_ASSIMP_AIMESH( mTangents )
 	};
 	
 	template<>
@@ -111,7 +111,7 @@ public:
 		static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32B32_FLOAT;
 		static constexpr const char* hlslSemantic = "Bitangent";
 		static constexpr const char* tag = "Nb";
-		ASSIMP_AIMESH_EXTRACT( mBitangents )
+		EXTRACT_ASSIMP_AIMESH( mBitangents )
 	};
 	
 	template<>
@@ -121,7 +121,7 @@ public:
 		static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32B32_FLOAT;
 		static constexpr const char* hlslSemantic = "Color";
 		static constexpr const char* tag = "C3";
-		ASSIMP_AIMESH_EXTRACT( mColors[0] )
+		EXTRACT_ASSIMP_AIMESH( mColors[0] )
 	};
 	
 	template<>
@@ -131,7 +131,7 @@ public:
 		static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32B32A32_FLOAT;
 		static constexpr const char* hlslSemantic = "Color";
 		static constexpr const char* tag = "C4";
-		ASSIMP_AIMESH_EXTRACT( mColors[0] )
+		EXTRACT_ASSIMP_AIMESH( mColors[0] )
 	};
 	
 	template<>
@@ -141,7 +141,7 @@ public:
 		static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_B8G8R8A8_UNORM;
 		static constexpr const char* hlslSemantic = "Color";
 		static constexpr const char* tag = "C9";
-		ASSIMP_AIMESH_EXTRACT( mColors[0] )
+		EXTRACT_ASSIMP_AIMESH( mColors[0] )
 	};
 
 	//template<>
@@ -151,7 +151,7 @@ public:
 	//	static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R8G8B8A8_UNORM;
 	//	static constexpr const char* hlslSemantic = "Color";
 	//	static constexpr const char* tag = "C8";
-	//	ASSIMP_AIMESH_EXTRACT( mColors[0] )
+	//	EXTRACT_ASSIMP_AIMESH( mColors[0] )
 	//};
 
 	template<>
@@ -161,7 +161,7 @@ public:
 		static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_UNKNOWN;
 		static constexpr const char* hlslSemantic = "Invalid";
 		static constexpr const char* tag = "INV";
-		ASSIMP_AIMESH_EXTRACT( mFaces )
+		EXTRACT_ASSIMP_AIMESH( mFaces )
 	};
 
 	// use bridge() at runtime to get information about an Element's properties member
@@ -344,7 +344,7 @@ public:
 
 }
 
-#undef ASSIMP_AIMESH_EXTRACT
+#undef EXTRACT_ASSIMP_AIMESH
 #ifndef VB_IMPL_SOURCE
 #undef VERTEX_TYPES
 #endif

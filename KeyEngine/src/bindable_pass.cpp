@@ -10,14 +10,14 @@ IBindablePass::IBindablePass( const std::string& name,
 	const std::vector<std::shared_ptr<IBindable>>& bindables )
 	:
 	IPass{name},
-	m_bindables(bindables)
+	m_pBindables(bindables)
 {
 
 }
 
 void IBindablePass::addPassSharedBindable( std::shared_ptr<IBindable> bindable ) noexcept
 {
-	m_bindables.emplace_back( bindable );
+	m_pBindables.emplace_back( bindable );
 }
 
 void IBindablePass::bindPassShared( Graphics& gph ) const cond_noex
@@ -32,7 +32,7 @@ void IBindablePass::bindPassShared( Graphics& gph ) const cond_noex
 		m_pDsv->bindRenderSurface( gph );
 	}
 
-	for ( auto& b : m_bindables )
+	for ( auto& b : m_pBindables )
 	{
 		b->bind( gph );
 	}

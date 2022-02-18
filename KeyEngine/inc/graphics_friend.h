@@ -3,7 +3,6 @@
 #include "graphics.h"
 
 
-// a "Base Friend" class
 class GraphicsFriend
 {
 protected:
