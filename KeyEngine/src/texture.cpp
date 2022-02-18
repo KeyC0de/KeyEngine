@@ -234,7 +234,7 @@ void Texture::validateNormalMap( const std::string& pathIn,
 #endif
 	auto sum = dx::XMVectorZero();
 	// function for processing each normal Texel
-	const auto normalOp = [thresholdMin, thresholdMax, &sum, &console]
+	const auto normalOp = [thresholdMin, thresholdMax, &sum]
 		( dx::XMVECTOR v, int x, int y ) -> dx::XMVECTOR
 	{
 		const float len = dx::XMVectorGetX( dx::XMVector3Length( v ) );
@@ -259,6 +259,7 @@ void Texture::validateNormalMap( const std::string& pathIn,
 				<< vec.z
 				<< ")\n";
 #if defined _DEBUG && !defined NDEBUG
+			auto& console = KeyConsole::getInstance();
 			console.log( oss.str().c_str() );
 #endif
 		}
@@ -279,6 +280,7 @@ void Texture::validateNormalMap( const std::string& pathIn,
 				<< vec.z
 				<< ")\n";
 #if defined _DEBUG && !defined NDEBUG
+			auto& console = KeyConsole::getInstance();
 			console.log( oss.str().c_str() );
 #endif
 		}
@@ -332,7 +334,7 @@ void Texture::makeStripes( const std::string& pathOut,
 	bitmap.save( pathOut );
 }
 
-dx::XMVECTOR Texture::texelToVector( Bitmap::Texel col ) noexcept
+dx::XMVECTOR Texture::colorToVector( Bitmap::Texel col ) noexcept
 {
 	auto v = dx::XMVectorSet( (float)col.getRed(),
 		(float)col.getGreen(),

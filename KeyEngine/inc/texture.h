@@ -51,7 +51,7 @@ private:
 		{
 			for ( unsigned x = 0; x < width; ++x )
 			{
-				const auto v = texelToVector( bitmap.getTexel( x, y ) );
+				const auto v = colorToVector( bitmap.getTexel( x, y ) );
 				bitmap.setTexel( x,
 					y,
 					Bitmap::vectorToTexel( f( v, x, y ) ) );
@@ -70,6 +70,10 @@ private:
 		bitmap.save( pathOut );
 	}
 
-	static DirectX::XMVECTOR texelToVector( Bitmap::Texel col ) noexcept;
+	//===================================================
+	//	\function	colorToVector
+	//	\brief  convert from Color(0..255) to vector(-1..1)
+	//	\date	2022/02/18 17:49
+	static DirectX::XMVECTOR colorToVector( Bitmap::Texel col ) noexcept;
 	static unsigned calculateNumberOfMipMaps( unsigned width, unsigned height ) noexcept;
 };
