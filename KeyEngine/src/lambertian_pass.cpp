@@ -23,16 +23,15 @@ LambertianPass::LambertianPass( Graphics& gph,
 	addConsumer( RenderSurfaceConsumer<IDepthStencilView>::make( "depthStencil",
 		m_pDsv ) );
 	addContainerBindableConsumer<IBindable>( "shadowCubemapRttIn" );
-	addPassSharedBindable( std::make_shared<TextureSampler>( gph,
+	addPassBindable( std::make_shared<TextureSampler>( gph,
 		0u,
-		TextureSampler::Type::Anisotropic,
-		false,
-		false ) );
+		TextureSampler::FilterMode::Anisotropic,
+		TextureSampler::AddressMode::Wrap ) );
 	addProducer( RenderSurfaceProducer<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );
 	addProducer( RenderSurfaceProducer<IDepthStencilView>::make( "depthStencil",
 		m_pDsv ) );
-	addPassSharedBindable( DepthStencilState::fetch( gph,
+	addPassBindable( DepthStencilState::fetch( gph,
 		DepthStencilState::Mode::Default ) );
 }
 

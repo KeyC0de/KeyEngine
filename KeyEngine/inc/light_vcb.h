@@ -6,6 +6,14 @@
 
 class Camera;
 
+//=============================================================
+//	\class	LightVCB
+//
+//	\author	KeyC0de
+//	\date	2022/02/19 22:35
+//
+//	\brief	VCB for shadow casting light source usage (shadowing_vs.hlsli)
+//=============================================================
 class LightVCB
 	: public IBindable
 {

@@ -33,12 +33,12 @@ Pass2D::Pass2D( Graphics& gph,
 	addProducer( RenderSurfaceProducer<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );
 
-	addPassSharedBindable( PrimitiveTopology::fetch( gph ) );
+	addPassBindable( PrimitiveTopology::fetch( gph ) );
 
-	addPassSharedBindable( std::make_shared<DepthStencilState>( gph,
+	addPassBindable( std::make_shared<DepthStencilState>( gph,
 		DepthStencilState::DepthOffStencilOff ) );
 
-	addPassSharedBindable( std::make_shared<BlendState>( gph,
+	addPassBindable( std::make_shared<BlendState>( gph,
 		BlendState::NoBlend,
 		0 ) );
 
@@ -60,40 +60,39 @@ Pass2D::Pass2D( Graphics& gph,
 	vb[2].getMember<Type::Texture2D>() = {1.0f, 1.0f};
 	vb[3].getMember<Type::Texture2D>() = {0.0f, 1.0f};
 
-	addPassSharedBindable( InputLayout::fetch( gph,
+	addPassBindable( InputLayout::fetch( gph,
 		vb.getLayout(),
 		*pVs ) );
 
-	addPassSharedBindable( std::make_shared<VertexBuffer>( gph,
+	addPassBindable( std::make_shared<VertexBuffer>( gph,
 		vb ) );
 
-	addPassSharedBindable( std::move( pVs ) );
+	addPassBindable( std::move( pVs ) );
 
 	std::vector<unsigned> indices = {0, 1, 2, 2, 3, 0};
-	addPassSharedBindable( std::make_shared<IndexBuffer>( gph,
+	addPassBindable( std::make_shared<IndexBuffer>( gph,
 		indices ) );
 
-	addPassSharedBindable( std::make_shared<Texture>( gph,
+	addPassBindable( std::make_shared<Texture>( gph,
 		gph.getClientWidth(),
 		gph.getClientHeight(),
 		0u ) );
 
-	addPassSharedBindable( std::make_shared<PixelShader>( gph,
+	addPassBindable( std::make_shared<PixelShader>( gph,
 		"flat2d_ps.cso" ) );
 
-	addPassSharedBindable( Rasterizer::fetch( gph,
+	addPassBindable( Rasterizer::fetch( gph,
 		false ) );
 
-	addPassSharedBindable( std::make_shared<TextureSampler>( gph,
+	addPassBindable( std::make_shared<TextureSampler>( gph,
 		0u,
-		TextureSampler::Point,
-		false,
-		true ) );
+		TextureSampler::FilterMode::Point,
+		TextureSampler::AddressMode::Clamp ) );
 }
 
 void Pass2D::run( Graphics& gph ) const cond_noex
 {
-	bindPassShared( gph );
+	bindPass( gph );
 	gph.drawIndexed( 6u );
 }
 

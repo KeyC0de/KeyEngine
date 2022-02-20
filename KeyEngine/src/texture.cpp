@@ -183,7 +183,7 @@ std::string Texture::getUID() const noexcept
 }
 
 
-void Texture::flipAllModelNormalMapsGreenChannel( const std::string& objPath )
+void Texture::flipModelNormalMapsGreenChannel( const std::string& objPath )
 {
 	const auto rootPath = std::filesystem::path{objPath}.parent_path().string() + "/";
 
@@ -211,13 +211,12 @@ void Texture::flipAllModelNormalMapsGreenChannel( const std::string& objPath )
 void Texture::flipNormalMapGreenChannel( const std::string& pathIn,
 	const std::string& pathOut )
 {
-	const auto flipY = dx::XMVectorSet( 1.0f, -1.0f, 1.0f, 1.0f );
-	const auto normalOp = [flipY]( dx::XMVECTOR v, int x, int y ) -> dx::XMVECTOR
+	const auto normalOp = []( dx::XMVECTOR v, int x, int y ) -> dx::XMVECTOR
 	{
+		const auto flipY = dx::XMVectorSet( 1.0f, -1.0f, 1.0f, 1.0f );
 		return dx::XMVectorMultiply( v,
 			flipY );
 	};
-	// execute processing over every texel in file
 	transformFile( pathIn,
 		pathOut,
 		normalOp );

@@ -79,7 +79,6 @@ unsigned int Bitmap::getHeight() const noexcept
 
 unsigned int Bitmap::getPitch() const noexcept
 {
-	// === getWidth() * sizeof Texel
 	return static_cast<unsigned>( m_scratchImg.GetImage( 0u, 0u, 0u )->rowPitch );
 }
 

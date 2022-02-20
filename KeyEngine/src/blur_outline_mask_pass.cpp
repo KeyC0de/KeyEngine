@@ -16,10 +16,10 @@ BlurOutlineMaskPass::BlurOutlineMaskPass( Graphics& gph,
 		m_pDsv ) );
 	addProducer( RenderSurfaceProducer<IDepthStencilView>::make( "depthStencil",
 		m_pDsv ) );
-	addPassSharedBindable( VertexShader::fetch( gph,
+	addPassBindable( VertexShader::fetch( gph,
 		"flat_vs.cso" ) );
-	addPassSharedBindable( PixelShaderNull::fetch( gph ) );
-	addPassSharedBindable( DepthStencilState::fetch( gph,
+	addPassBindable( PixelShaderNull::fetch( gph ) );
+	addPassBindable( DepthStencilState::fetch( gph,
 		DepthStencilState::Mode::DepthOffStencilWriteFF ) );
 }
 

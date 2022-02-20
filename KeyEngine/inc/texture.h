@@ -31,8 +31,11 @@ public:
 		unsigned slot );
 	static std::string generateUID( const std::string& filepath, unsigned slot );
 	std::string getUID() const noexcept override;
-	static void flipAllModelNormalMapsGreenChannel( const std::string& objPath );
-	// flips the normal map green channel of given texture
+	static void flipModelNormalMapsGreenChannel( const std::string& objPath );
+	//===================================================
+	//	\function	flipNormalMapGreenChannel
+	//	\brief  flips the normal map green channel of given texture
+	//	\date	2022/02/19 17:22
 	static void flipNormalMapGreenChannel( const std::string& pathIn,
 		const std::string& pathOut );
 	static void validateNormalMap( const std::string& pathIn, float thresholdMin,
@@ -53,7 +56,8 @@ private:
 		{
 			for ( unsigned x = 0; x < width; ++x )
 			{
-				const auto v = Bitmap::colorToVector( bitmap.getTexel( x, y ) );
+				const auto v = Bitmap::colorToVector( bitmap.getTexel( x,
+					y ) );
 				bitmap.setTexel( x,
 					y,
 					Bitmap::vectorToColor( f( v, x, y ) ) );

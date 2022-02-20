@@ -22,7 +22,7 @@ DepthReversedPass::DepthReversedPass( Graphics& gph,
 		m_pRtv ) );
 	//addProducer( RenderSurfaceProducer<IDepthStencilView>::make( "depthStencil",
 	//	m_pDsvGlobal ) );
-	addPassSharedBindable( DepthStencilState::fetch( gph,
+	addPassBindable( DepthStencilState::fetch( gph,
 		DepthStencilState::Mode::DepthReversed ) );
 }
 

@@ -23,11 +23,11 @@ BlurOutlineDrawPass::BlurOutlineDrawPass( Graphics& gph,
 		width,
 		height,
 		0u );
-	addPassSharedBindable( VertexShader::fetch( gph,
+	addPassBindable( VertexShader::fetch( gph,
 		"flat_vs.cso" ) );
-	addPassSharedBindable( PixelShader::fetch( gph,
+	addPassBindable( PixelShader::fetch( gph,
 		"flat_ps.cso" ) );
-	addPassSharedBindable( DepthStencilState::fetch( gph,
+	addPassBindable( DepthStencilState::fetch( gph,
 		DepthStencilState::Mode::DepthOffStencilReadFF ) );
 
 	// m_pRtv will be bound as an Output this Pass
@@ -35,7 +35,7 @@ BlurOutlineDrawPass::BlurOutlineDrawPass( Graphics& gph,
 	addProducer( BindableProducer<IRenderTargetView>::make( "blurOutlineRttOut",
 		m_pRtv ) );
 
-	addPassSharedBindable( BlendState::fetch( gph,
+	addPassBindable( BlendState::fetch( gph,
 		BlendState::NoBlend,
 		0u ) );
 }

@@ -16,14 +16,13 @@ HorizontalBlurPass::HorizontalBlurPass( Graphics& gph,
 	auto width = gph.getClientWidth() / rezReductFactor;
 	auto height = gph.getClientHeight() / rezReductFactor;
 
-	addPassSharedBindable( PixelShader::fetch( gph,
+	addPassBindable( PixelShader::fetch( gph,
 		"blur_separ_ps.cso" ) );
 
-	addPassSharedBindable( TextureSampler::fetch( gph,
+	addPassBindable( TextureSampler::fetch( gph,
 		0u,
-		TextureSampler::Type::Trilinear,
-		false,
-		true ) );
+		TextureSampler::FilterMode::Trilinear,
+		TextureSampler::AddressMode::Clamp ) );
 	
 	addContainerBindableConsumer<IRenderTargetView>( "blurRttIn" );
 	addContainerBindableConsumer<PixelConstantBufferEx>( "blurKernel" );
@@ -37,7 +36,7 @@ HorizontalBlurPass::HorizontalBlurPass( Graphics& gph,
 	addProducer( BindableProducer<IRenderTargetView>::make( "blurRttOut",
 		m_pRtv ) );
 
-	addPassSharedBindable( BlendState::fetch( gph,
+	addPassBindable( BlendState::fetch( gph,
 		BlendState::NoBlend,
 		0u ) );
 }

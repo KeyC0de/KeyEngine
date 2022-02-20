@@ -31,6 +31,8 @@ BlendState::BlendState( Graphics& gph,
 	//case NoBlend:
 	//blendStateRTDesc.BlendEnable = False;
 	//blendStateRTDesc.BlendOp = D3D11_BLEND_OP_ADD;
+	//blendStateRTDesc.SrcBlendAlpha = D3D11_BLEND_ONE;
+	//blendStateRTDesc.DestBlendAlpha = D3D11_BLEND_ZERO;
 	//blendStateRTDesc.BlendOpAlpha = D3D11_BLEND_OP_ADD;
 	//blendStateRTDesc.RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
 	switch ( mode )
@@ -60,8 +62,23 @@ BlendState::BlendState( Graphics& gph,
 		}
 		else
 		{
-			blendStateRTDesc.SrcBlend = D3D11_BLEND_SRC_ALPHA;
-			blendStateRTDesc.DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
+			blendStateRTDesc.SrcBlend = D3D11_BLEND_DEST_COLOR;
+			blendStateRTDesc.DestBlend = D3D11_BLEND_ZERO;
+		}
+		break;
+	}
+	case DoubleMultiplicative:
+	{
+		blendStateRTDesc.BlendEnable = TRUE;
+		if ( blendFactors )
+		{
+			blendStateRTDesc.SrcBlend = D3D11_BLEND_BLEND_FACTOR;
+			blendStateRTDesc.DestBlend = D3D11_BLEND_INV_BLEND_FACTOR;
+		}
+		else
+		{
+			blendStateRTDesc.SrcBlend = D3D11_BLEND_DEST_COLOR;
+			blendStateRTDesc.DestBlend = D3D11_BLEND_SRC_COLOR;
 		}
 		break;
 	}
@@ -77,6 +94,7 @@ BlendState::BlendState( Graphics& gph,
 		{
 			blendStateRTDesc.SrcBlend = D3D11_BLEND_SRC_ALPHA;
 			blendStateRTDesc.DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
+			blendStateRTDesc.RenderTargetWriteMask = 0x0f;
 		}
 		break;
 	}
@@ -119,6 +137,7 @@ void BlendState::setBlendFactors( float blendFactors ) cond_noex
 float BlendState::getBlendFactor() const cond_noex
 {
 	ASSERT( m_blendFactors, "No blend factors set!" );
+	// or OMGetBlendState
 	return m_blendFactors->front();
 }
 
@@ -136,6 +155,9 @@ std::string BlendState::generateUID( Mode mode,
 	case Multiplicative:
 		modeId = "m"s;
 		break;
+	case DoubleMultiplicative:
+		modeId = "u"s;
+		break;
 	case Alpha:
 		modeId = "a"s;
 		break;
@@ -147,8 +169,12 @@ std::string BlendState::generateUID( Mode mode,
 		modeId = "n"s;
 		break;
 	}
-	return typeid( BlendState ).name() + "#"s + std::to_string( renderTargetSlot ) + "#"s
-		+ modeId + ( blendFactors ? "#f"s + std::to_string( *blendFactors ) : ""s );
+	return typeid( BlendState ).name()
+		+ "#"s
+		+ std::to_string( renderTargetSlot )
+		+ "#"s
+		+ modeId
+		+ ( blendFactors ? "#f"s + std::to_string( *blendFactors ) : ""s );
 }
 
 std::string BlendState::getUID() const noexcept

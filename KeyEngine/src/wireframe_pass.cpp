@@ -20,7 +20,7 @@ WireframePass::WireframePass( Graphics& gph,
 		m_pDsv ) );
 	addProducer( RenderSurfaceProducer<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );
-	addPassSharedBindable( Rasterizer::fetch( gph,
+	addPassBindable( Rasterizer::fetch( gph,
 		false,
 		true ) );
 }

@@ -18,7 +18,8 @@ DirectX::XMMATRIX Camera::getShadowOrthographicMatrix( unsigned w,
 DirectX::XMMATRIX Camera::getShadowProjectionMatrix( float farZ ) noexcept
 {
 	// Shadows farZ hardcoded at 100units for now
-	return dx::XMMatrixPerspectiveFovLH( math::PI / 2.0f,
+	static constexpr auto r = math::PI / 2.0f;
+	return dx::XMMatrixPerspectiveFovLH( r,
 		1.0f,
 		1.0f,
 		100.0f );

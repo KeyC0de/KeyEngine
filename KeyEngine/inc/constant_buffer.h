@@ -8,7 +8,14 @@
 #include "dxgi_info_queue.h"
 
 
-// CB is the Constant Buffer struct we abstract away
+//=============================================================
+//	\class	IConstantBuffer
+//
+//	\author	KeyC0de
+//	\date	2022/02/19 18:52
+//
+//	\brief	CB is the Constant Buffer struct we abstract away
+//=============================================================
 template<typename CB>
 class IConstantBuffer
 	: public IBindable
@@ -55,7 +62,10 @@ public:
 		ASSERT_HRES_IF_FAILED;
 	}
 
-	// Map, paste to msr, Unmap
+	//===================================================
+	//	\function	update
+	//	\brief  Map, paste to msr, Unmap
+	//	\date	2022/02/19 19:00
 	void update( Graphics& gph,
 		const CB& cb )
 	{

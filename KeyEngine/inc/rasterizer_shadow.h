@@ -19,6 +19,6 @@ public:
 		float clamp );
 	void bind( Graphics& gph ) cond_noex override;
 	int getDepthBias() const;
-	float getSlopeBias() const;
+	float getSlopeScaleDepthBias() const;
 	float getClamp() const;
 };

@@ -49,6 +49,11 @@ public:
 	//	\date	2021/06/28 0:30
 	void setupConsumerTarget( const std::string& consumerName, const std::string& targetPassName,
 		const std::string& producerName );
+	//===================================================
+	//	\function	validate
+	//	\brief  validate consumers are linked to their producers
+	//			validation occurs only once (ctor) for every Pass
+	//	\date	2022/02/19 22:48
 	virtual void validate();
 protected:
 	void addConsumer( std::unique_ptr<IConsumer> pConsumer );

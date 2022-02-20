@@ -5,6 +5,14 @@
 #include "bindable.h"
 
 
+//=============================================================
+//	\class	BlendState
+//
+//	\author	KeyC0de
+//	\date	2022/02/19 10:23
+//
+//	\brief	blending factors are optional : apply separate values for R, G, B, A channels
+//=============================================================
 class BlendState
 	: public IBindable
 {
@@ -14,6 +22,7 @@ public:
 		NoBlend,
 		Additive,
 		Multiplicative,
+		DoubleMultiplicative,
 		Alpha,
 		AlphaToCoverage
 	};
@@ -21,7 +30,6 @@ private:
 	Microsoft::WRL::ComPtr<ID3D11BlendState> m_pBlendState;
 	Mode m_mode;
 	unsigned m_renderTargetSlot;
-	// optional blending factors - apply separate values for R, G, B, A channels
 	std::optional<std::array<float, 4>> m_blendFactors;
 public:
 	BlendState( Graphics& gph, Mode mode, unsigned renderTargetSlot,

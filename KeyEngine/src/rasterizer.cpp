@@ -12,7 +12,9 @@ Rasterizer::Rasterizer( Graphics& gph,
 	m_bWireframe{bWireframe}
 {
 	D3D11_RASTERIZER_DESC rasterDesc{CD3D11_RASTERIZER_DESC{CD3D11_DEFAULT{}}};
-	rasterDesc.FillMode = bWireframe ? D3D11_FILL_WIREFRAME : D3D11_FILL_SOLID;
+	rasterDesc.FillMode = bWireframe ?
+		D3D11_FILL_WIREFRAME :
+		D3D11_FILL_SOLID;
 	rasterDesc.CullMode = bTwoSided ?
 		D3D11_CULL_NONE :
 		D3D11_CULL_BACK;
@@ -41,7 +43,9 @@ std::string Rasterizer::generateUID( bool bTwoSided,
 	bool bWireframe )
 {
 	using namespace std::string_literals;
-	return typeid( Rasterizer ).name() + "#"s + ( bTwoSided ? "2s"s : "1s"s )
+	return typeid( Rasterizer ).name()
+		+ "#"s
+		+ ( bTwoSided ? "2s"s : "1s"s )
 		+ ( bWireframe ? "W"s : "S"s );
 }
 

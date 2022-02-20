@@ -28,8 +28,7 @@ std::wstring s2ws( const std::string& s )
 {
 	try
 	{
-		return std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>>{}
-			.from_bytes( s );
+		return std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>>{}.from_bytes( s );
 	}
 	catch( std::range_error& e )
 	{
@@ -49,8 +48,7 @@ std::string ws2s( const std::wstring& ws )
 {
 	try
 	{
-		return std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>>{}
-			.to_bytes( ws );
+		return std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>>{}.to_bytes( ws );
 	}
 	catch( std::range_error& e )
 	{

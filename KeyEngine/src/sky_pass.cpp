@@ -34,19 +34,20 @@ SkyPass::SkyPass( Graphics& gph,
 		m_pRtv ) );
 	addConsumer( RenderSurfaceConsumer<IDepthStencilView>::make( "depthStencil",
 		m_pDsv ) );
-	addPassSharedBindable( std::make_shared<CubeTexture>( gph,
+	addPassBindable( std::make_shared<CubeTexture>( gph,
 		"assets/textures/skybox/space",
 		0u ) );
-	addPassSharedBindable( TextureSampler::fetch( gph,
+	addPassBindable( TextureSampler::fetch( gph,
 		0u,
-		TextureSampler::Type::Trilinear ) );
-	addPassSharedBindable( DepthStencilState::fetch( gph,
+		TextureSampler::FilterMode::Trilinear,
+		TextureSampler::AddressMode::Wrap ) );
+	addPassBindable( DepthStencilState::fetch( gph,
 		DepthStencilState::Mode::DepthEquals1 ) );
-	addPassSharedBindable( Rasterizer::fetch( gph,
+	addPassBindable( Rasterizer::fetch( gph,
 		true ) );
-	addPassSharedBindable( PrimitiveTopology::fetch( gph ) );
-	addPassSharedBindable( std::make_shared<SkyboxVCB>( gph ) );
-	addPassSharedBindable( PixelShader::fetch( gph,
+	addPassBindable( PrimitiveTopology::fetch( gph ) );
+	addPassBindable( std::make_shared<SkyboxVCB>( gph ) );
+	addPassBindable( PixelShader::fetch( gph,
 		"skybox_ps.cso" ) );
 	{
 		auto vs = VertexShader::fetch( gph,
@@ -61,7 +62,7 @@ SkyPass::SkyPass( Graphics& gph,
 				geometryTag,
 				cube.m_indices );
 			m_nCubeIndices = (unsigned)cube.m_indices.size();
-			addPassSharedBindable( InputLayout::fetch( gph,
+			addPassBindable( InputLayout::fetch( gph,
 				cube.m_vb.getLayout(),
 				*vs ) );
 		}
@@ -76,7 +77,7 @@ SkyPass::SkyPass( Graphics& gph,
 				sphere.m_indices );
 			m_nSphereIndices = (unsigned)sphere.m_indices.size();
 		}
-		addPassSharedBindable( std::move( vs ) );
+		addPassBindable( std::move( vs ) );
 	}
 	addProducer( RenderSurfaceProducer<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );
@@ -108,7 +109,7 @@ void SkyPass::run( Graphics& gph ) const cond_noex
 		m_pCubeIb->bind( gph );
 		nIndices = m_nCubeIndices;
 	}
-	bindPassShared( gph );
+	bindPass( gph );
 	gph.drawIndexed( nIndices );
 }
 

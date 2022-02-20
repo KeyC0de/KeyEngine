@@ -14,10 +14,10 @@ SolidOutlineMaskPass::SolidOutlineMaskPass( Graphics& gph,
 	:
 	RenderQueuePass{name}
 {
-	addPassSharedBindable( VertexShader::fetch( gph,
+	addPassBindable( VertexShader::fetch( gph,
 		"flat_vs.cso" ) );
 
-	addPassSharedBindable( DepthStencilState::fetch( gph,
+	addPassBindable( DepthStencilState::fetch( gph,
 		DepthStencilState::Mode::DepthOffStencilWriteFF ) );
 
 	addConsumer( RenderSurfaceConsumer<IRenderTargetView>::make( "renderTarget",
@@ -30,9 +30,9 @@ SolidOutlineMaskPass::SolidOutlineMaskPass( Graphics& gph,
 	addProducer( RenderSurfaceProducer<IDepthStencilView>::make( "depthStencil",
 		m_pDsv ) );
 	
-	addPassSharedBindable( PixelShaderNull::fetch( gph ) );
+	addPassBindable( PixelShaderNull::fetch( gph ) );
 
-	addPassSharedBindable( BlendState::fetch( gph,
+	addPassBindable( BlendState::fetch( gph,
 		BlendState::NoBlend,
 		0u ) );
 }

@@ -58,6 +58,10 @@ public:
 	Texel getTexel( unsigned int x, unsigned int y ) const cond_noex;
 	unsigned int getWidth() const noexcept;
 	unsigned int getHeight() const noexcept;
+	//===================================================
+	//	\function	getPitch
+	//	\brief  === getWidth() * sizeof Texel
+	//	\date	2022/02/19 19:27
 	unsigned int getPitch() const noexcept;
 	Texel* data() noexcept;
 	const Texel* dataConst() const noexcept;

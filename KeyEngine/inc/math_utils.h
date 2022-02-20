@@ -80,7 +80,8 @@ constexpr T mapRange( const T val,
 }
 
 template<typename T, typename = std::enable_if_t<std::is_floating_point_v<T>>>
-bool approximatelyEqual( T x, T y )
+bool approximatelyEqual( T x,
+	T y )
 {
 	return std::fabs( x - y ) <= std::numeric_limits<T>::epsilon();
 }
@@ -249,6 +250,12 @@ constexpr T powerOf( T x,
 	return x;
 }
 
+template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+T randomInRange( T start,
+	T end )
+{
+	return ( rand() * ( end - start + 1 ) ) + start;
+}
 
 // produce random floating point numbers
 float frand() noexcept;
@@ -278,6 +285,19 @@ int signum( T val )
 		-1;
 }
 
+void convertToBase( int number, int base ) noexcept;
+
+template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+T nthMultipleOf( T number, int n )
+{
+	T multiple;
+	for ( int i = 2; i <= n; ++i )
+	{
+		multiple = i * number;
+	}
+	return multiple;
+}
+
 // bitwise ops
 // Prints given datatype to binary
 void printDec2Bin( size_t const size, void const* const ptr );
@@ -287,7 +307,7 @@ void dec2bin( int num );
 // finds MSB index in decimal number (counting from 0)
 int msbIndexOfDec( int num );
 //  count number of Ones in a given number
-int countOnes( int num );
+int countSetBits( int num );
 // checks whether a number is a power of 2
 int isPowerOf2( int num );
 // Swap the bits at position i and j of given number iff they are different

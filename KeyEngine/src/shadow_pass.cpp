@@ -1,5 +1,4 @@
 #include "shadow_pass.h"
-#include <string>
 #include "graphics.h"
 #include "producer.h"
 #include "vertex_shader.h"
@@ -27,25 +26,25 @@ ShadowPass::ShadowPass( Graphics& gph,
 {
 	m_shadowMapResolution = shadowMapRez;
 
-	addPassSharedBindable( m_pLightVcb );
-	addPassSharedBindable( std::make_shared<ShadowMapSampler>( gph ) );
+	addPassBindable( m_pLightVcb );
+	addPassBindable( std::make_shared<ShadowMapSampler>( gph ) );
 	m_pDsvCubemap = std::make_shared<CubeTextureDS>( gph,
 		m_shadowMapResolution,
 		3u );
-	addPassSharedBindable( VertexShader::fetch( gph,
+	addPassBindable( VertexShader::fetch( gph,
 		"shadow_vs.cso" ) );
-	addPassSharedBindable( PixelShaderNull::fetch( gph ) );
-	addPassSharedBindable( DepthStencilState::fetch( gph,
+	addPassBindable( PixelShaderNull::fetch( gph ) );
+	addPassBindable( DepthStencilState::fetch( gph,
 		DepthStencilState::Mode::Default ) );
 
-	addPassSharedBindable( std::make_shared<RasterizerShadow>( gph,
+	addPassBindable( std::make_shared<RasterizerShadow>( gph,
 		50,
 		2.0f,
 		0.1f ) );
 	addProducer( BindableProducer<CubeTextureDS>::make( "shadowCubemapRttOut",
 		m_pDsvCubemap ) );
 
-	addPassSharedBindable( BlendState::fetch( gph,
+	addPassBindable( BlendState::fetch( gph,
 		BlendState::NoBlend,
 		3u ) );
 
@@ -110,8 +109,8 @@ void ShadowPass::run( Graphics& gph ) const cond_noex
 
 void ShadowPass::setShadowCamera( const Camera& cam ) noexcept
 {
-	m_pShadowCamera = &cam;
 	m_pLightVcb->setCamera( &cam );
+	m_pShadowCamera = &cam;
 }
 
 void ShadowPass::dumpShadowMap( Graphics& gph,

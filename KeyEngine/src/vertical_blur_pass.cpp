@@ -12,14 +12,13 @@ VerticalBlurPass::VerticalBlurPass( Graphics& gph,
 	:
 	FullscreenPass{gph, name}
 {
-	addPassSharedBindable( PixelShader::fetch( gph,
+	addPassBindable( PixelShader::fetch( gph,
 		"blur_separ_ps.cso" ) );
 
-	addPassSharedBindable( TextureSampler::fetch( gph,
+	addPassBindable( TextureSampler::fetch( gph,
 		0u,
-		TextureSampler::Type::Trilinear,
-		false,
-		true ) );
+		TextureSampler::FilterMode::Trilinear,
+		TextureSampler::AddressMode::Clamp ) );
 
 	addContainerBindableConsumer<IRenderTargetView>( "blurRttIn" );
 	addContainerBindableConsumer<PixelConstantBufferEx>( "blurKernel" );
@@ -35,7 +34,7 @@ VerticalBlurPass::VerticalBlurPass( Graphics& gph,
 	addProducer( RenderSurfaceProducer<IDepthStencilView>::make( "depthStencil",
 		m_pDsv ) );
 
-	addPassSharedBindable( BlendState::fetch( gph,
+	addPassBindable( BlendState::fetch( gph,
 		BlendState::Alpha,
 		0u ) );
 }

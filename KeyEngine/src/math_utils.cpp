@@ -243,7 +243,7 @@ int msbIndexOfDec( int num )
 }
 #pragma warning( pop )
 
-int countOnes( int num )
+int countSetBits( int num )
 {
 	int count = 0;
 	while ( num != 0 )
@@ -265,6 +265,19 @@ int isPowerOf2( int num )
 	{
 		return 0;
 	}
+}
+
+void convertToBase( int number,
+	int base ) noexcept
+{
+	int convertedDigits[64];
+	int i = 0;
+	do
+	{
+		convertedDigits[i] = number % base;
+		++i;
+		number /= base;
+	} while ( number != 0 );
 }
 
 int swapBits( int num,

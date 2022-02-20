@@ -125,7 +125,8 @@ MaterialLoader::MaterialLoader( Graphics& gph,
 			{
 				lambertian.addBindable( TextureSampler::fetch( gph,
 					0u,
-					TextureSampler::Anisotropic ) );
+					TextureSampler::FilterMode::Anisotropic,
+					TextureSampler::AddressMode::Wrap ) );
 			}
 
 			// Assembling the Pixel Shader Constant Buffer

@@ -38,7 +38,7 @@ int RasterizerShadow::getDepthBias() const
 	return m_depthBias;
 }
 
-float RasterizerShadow::getSlopeBias() const
+float RasterizerShadow::getSlopeScaleDepthBias() const
 {
 	return m_slopeScaleDepthBias;
 }

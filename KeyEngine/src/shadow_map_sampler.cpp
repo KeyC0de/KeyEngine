@@ -5,7 +5,7 @@
 
 ShadowMapSampler::ShadowMapSampler( Graphics& gph )
 {
-	for ( unsigned i = 0; i < 4; ++i )
+	for ( unsigned i = 0; i < std::size( m_samplers ); ++i )
 	{
 		m_samplerMask = i;
 		m_samplers[i] = make( gph,
@@ -40,7 +40,7 @@ unsigned ShadowMapSampler::getCurrentSlot() const
 {
 	return isHwPcfFiltering() ?
 		1 :
-		2;	// Trilinear
+		2;
 }
 
 size_t ShadowMapSampler::getIndex( bool bTrilinear,

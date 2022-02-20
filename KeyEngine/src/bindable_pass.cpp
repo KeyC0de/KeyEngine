@@ -15,12 +15,12 @@ IBindablePass::IBindablePass( const std::string& name,
 
 }
 
-void IBindablePass::addPassSharedBindable( std::shared_ptr<IBindable> bindable ) noexcept
+void IBindablePass::addPassBindable( std::shared_ptr<IBindable> bindable ) noexcept
 {
 	m_pBindables.emplace_back( bindable );
 }
 
-void IBindablePass::bindPassShared( Graphics& gph ) const cond_noex
+void IBindablePass::bindPass( Graphics& gph ) const cond_noex
 {
 	if ( m_pRtv )
 	{

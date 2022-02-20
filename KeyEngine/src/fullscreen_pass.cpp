@@ -27,30 +27,30 @@ FullscreenPass::FullscreenPass( Graphics& gph,
 	vb.emplaceVertex( dx::XMFLOAT2{1, 1} );
 	vb.emplaceVertex( dx::XMFLOAT2{-1, -1} );
 	vb.emplaceVertex( dx::XMFLOAT2{1, -1} );
-	addPassSharedBindable( VertexBuffer::fetch( gph,
+	addPassBindable( VertexBuffer::fetch( gph,
 		"$fullscreen",
 		vb ) );
 	
 	std::vector<unsigned> indices{0, 1, 2, 1, 3, 2};
-	addPassSharedBindable( IndexBuffer::fetch( gph,
+	addPassBindable( IndexBuffer::fetch( gph,
 		"$fullscreen",
 		indices ) );
 
 	auto vs = VertexShader::fetch( gph,
 		"fullscreen_quad_vs.cso" );
-	addPassSharedBindable( InputLayout::fetch( gph,
+	addPassBindable( InputLayout::fetch( gph,
 		vertexLayout,
 		*vs ) );
-	addPassSharedBindable( std::move( vs ) );
-	addPassSharedBindable( PrimitiveTopology::fetch( gph ) );
-	addPassSharedBindable( Rasterizer::fetch( gph,
+	addPassBindable( std::move( vs ) );
+	addPassBindable( PrimitiveTopology::fetch( gph ) );
+	addPassBindable( Rasterizer::fetch( gph,
 		false ) );
-	addPassSharedBindable( PixelShaderNull::fetch( gph ) );
+	addPassBindable( PixelShaderNull::fetch( gph ) );
 }
 
 void FullscreenPass::run( Graphics& gph ) const cond_noex
 {
-	bindPassShared( gph );
+	bindPass( gph );
 	gph.drawIndexed( 6u );
 }
 

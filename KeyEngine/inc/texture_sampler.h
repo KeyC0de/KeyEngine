@@ -7,27 +7,32 @@ class TextureSampler
 	: public IBindable
 {
 public:
-	enum Type
+	enum FilterMode
 	{
 		Anisotropic,
 		Point,
 		Bilinear,
 		Trilinear
 	};
+
+	enum AddressMode
+	{
+		Wrap,
+		Mirror,
+		Clamp,
+		Border
+	};
 protected:
 	Microsoft::WRL::ComPtr<ID3D11SamplerState> m_pSamplerState;
-	Type m_filterType;
-	bool m_bMirrorAddr;
-	bool m_bClampAddr;
+	FilterMode m_filtering;
+	AddressMode m_addressing;
 	unsigned m_slot;
 public:
-	TextureSampler( Graphics& gph, unsigned slot, Type filterType, bool bMirrorTexAddr,
-		bool bClampTexAddr );
+	TextureSampler( Graphics& gph, unsigned slot, FilterMode filt, AddressMode addr );
 
 	void bind( Graphics& gph ) cond_noex override;
 	static std::shared_ptr<TextureSampler> fetch( Graphics& gph, unsigned slot,
-		Type filterType, bool bMirrorTexAddr = false, bool bClampTexAddr = false );
-	static std::string generateUID( unsigned slot, Type filterType, bool bMirrorTexAddr,
-		bool bClampTexAddr );
+		FilterMode filt, AddressMode addr );
+	static std::string generateUID( unsigned slot, FilterMode filt, AddressMode addr );
 	std::string getUID() const noexcept override;
 };

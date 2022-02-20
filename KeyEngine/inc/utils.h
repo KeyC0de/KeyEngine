@@ -22,13 +22,15 @@ void removeByBackSwap( std::vector<T>& v,
 	std::swap( v[index], pback );
 	v.pop_back();
 }
+
 template<typename T>
 void removeByBackSwap( std::vector<T>& v,
 	const T& element )
 {
 	v.erase( std::find( v.begin(),
 		v.end(),
-		&element ) );
+		&element ),
+		v.end() );
 }
 
 template<typename T, class Alloc>

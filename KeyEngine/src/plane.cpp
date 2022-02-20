@@ -53,7 +53,8 @@ Plane::Plane( Graphics& gph,
 			0u ) );
 		lambertian.addBindable( TextureSampler::fetch( gph,
 			0u,
-			TextureSampler::Anisotropic ) );
+			TextureSampler::FilterMode::Anisotropic,
+			TextureSampler::AddressMode::Wrap ) );
 
 		auto pVs = VertexShader::fetch( gph,
 			"plane_vs.cso" );
