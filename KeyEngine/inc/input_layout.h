@@ -20,7 +20,7 @@ public:
 	const ver::VertexLayout getLayout() const noexcept;
 	static std::shared_ptr<InputLayout> fetch( Graphics& gph,
 		const ver::VertexLayout& layout, const VertexShader& vs );
-	static std::string generateUID( const ver::VertexLayout& layout,
+	static std::string generateUid( const ver::VertexLayout& layout,
 		const VertexShader& vs );
-	std::string getUID() const noexcept override;
+	std::string getUid() const noexcept override;
 };

@@ -16,6 +16,6 @@ public:
 	void bind( Graphics& gph ) cond_noex override;
 	static std::shared_ptr<PixelShader> fetch( Graphics& gph, const std::string& filepath );
 	ID3DBlob* getBytecode() const noexcept;
-	static std::string generateUID( const std::string& filepath );
-	std::string getUID() const noexcept override;
+	static std::string generateUid( const std::string& filepath );
+	std::string getUid() const noexcept override;
 };

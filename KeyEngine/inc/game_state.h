@@ -13,8 +13,6 @@ public:
 	virtual ~State() noexcept;
 
 	virtual void update() = 0;
-	virtual void render( Graphics* gph ) const = 0;
-
 	int getStateId() const noexcept;
 };
 
@@ -26,7 +24,6 @@ public:
 	virtual ~MenuState() noexcept override;
 
 	void update() override;
-	void render( Graphics* gph ) const override;
 };
 
 class GameState final
@@ -37,5 +34,4 @@ public:
 	virtual ~GameState() noexcept override;
 
 	void update() override;
-	void render( Graphics* gph ) const override;
 };

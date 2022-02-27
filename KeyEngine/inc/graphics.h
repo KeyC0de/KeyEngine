@@ -42,27 +42,25 @@ class Graphics
 
 	class Adapter final
 	{
+		DXGI_ADAPTER_DESC m_desc;
+		Microsoft::WRL::ComPtr<IDXGIAdapter> m_pAdapter;
 	public:
 		Adapter( IDXGIAdapter* pAdapter );
 	
 		const DXGI_ADAPTER_DESC* getDesc() const noexcept;
 		IDXGIAdapter* getAdapter() const noexcept;
-	private:
-		DXGI_ADAPTER_DESC m_desc;
-		Microsoft::WRL::ComPtr<IDXGIAdapter> m_pAdapter;
 	};
 
 private:
 	static inline std::vector<Adapter> m_adapters;
 	static inline D3D_FEATURE_LEVEL m_featureLevel;
-
 	unsigned m_width;
 	unsigned m_height;
 	DirectX::XMMATRIX m_projection;
 	DirectX::XMMATRIX m_view;
 #if defined _DEBUG && !defined NDEBUG
 	std::unique_ptr<DxgiInfoQueue> m_infoQueue;
-	ATL::CComPtr<ID3D11Debug> m_pDebug;
+	ATL::CComPtr<ID3D11Debug> m_pDebug;	// try using PIMPL and declare it in .cpp
 #endif
 	Microsoft::WRL::ComPtr<ID3D11Device> m_pDevice;
 #if defined _FLIP_PRESENT

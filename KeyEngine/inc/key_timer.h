@@ -23,7 +23,6 @@ public:
 	using TClock = std::conditional_t<std::chrono::high_resolution_clock::is_steady,
 		std::chrono::high_resolution_clock,
 		std::chrono::steady_clock>;
-
 private:
 	TClock::time_point m_start{};	// records starting time
 	TClock::time_point m_last{};	// counts duration between successive calls of getTime

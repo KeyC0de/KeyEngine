@@ -141,7 +141,7 @@ float BlendState::getBlendFactor() const cond_noex
 	return m_blendFactors->front();
 }
 
-std::string BlendState::generateUID( Mode mode,
+std::string BlendState::generateUid( Mode mode,
 	unsigned renderTargetSlot,
 	std::optional<float> blendFactors )
 {
@@ -177,9 +177,9 @@ std::string BlendState::generateUID( Mode mode,
 		+ ( blendFactors ? "#f"s + std::to_string( *blendFactors ) : ""s );
 }
 
-std::string BlendState::getUID() const noexcept
+std::string BlendState::getUid() const noexcept
 {
-	return generateUID( m_mode,
+	return generateUid( m_mode,
 		m_renderTargetSlot,
 		m_blendFactors ?
 			m_blendFactors->front() :

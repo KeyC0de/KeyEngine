@@ -69,7 +69,7 @@ std::shared_ptr<TextureSampler> TextureSampler::fetch( Graphics& gph,
 		addr );
 }
 
-std::string TextureSampler::generateUID( unsigned slot,
+std::string TextureSampler::generateUid( unsigned slot,
 	FilterMode filt,
 	AddressMode addr )
 {
@@ -94,9 +94,9 @@ std::string TextureSampler::generateUID( unsigned slot,
 		+ checkAddr();
 }
 
-std::string TextureSampler::getUID() const noexcept
+std::string TextureSampler::getUid() const noexcept
 {
-	return generateUID( m_slot,
+	return generateUid( m_slot,
 		m_filtering,
 		m_addressing );
 }

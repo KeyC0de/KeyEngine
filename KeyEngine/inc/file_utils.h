@@ -7,7 +7,6 @@
 namespace util
 {
 
-
 bool displayFileInfo( const std::filesystem::path& targetPath );
 void displayDirTree( const std::filesystem::path& targetPath, int level );
 size_t getFileSize( const std::filesystem::path& pathToCheck );
@@ -29,8 +28,14 @@ bool isFileBinary( const char* fname );
 //	\function	printFile
 //	\brief  for text files
 //	\date	2020/10/30 2:30
+// count lines of a file
+size_t countLinesOfFile( char *fileName );
+// calculate columns of a file (assuming that the file has equal ammount of columns - maximum ammount of columns in any given line)
+size_t countColumnsOfFile( char *fileName );
 #if defined _DEBUG && !defined NDEBUG
 bool printFile( const char* fname );
+// counts digits, white space, others
+void countLetterOccurences( char* filename );
 #endif
 
 

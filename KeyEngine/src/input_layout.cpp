@@ -42,15 +42,15 @@ std::shared_ptr<InputLayout> InputLayout::fetch( Graphics& gph,
 		vs );
 }
 
-std::string InputLayout::generateUID( const ver::VertexLayout& vertexLayout,
+std::string InputLayout::generateUid( const ver::VertexLayout& vertexLayout,
 	const VertexShader& vs )
 {
 	using namespace std::string_literals;
 	return typeid( InputLayout ).name() + "#"s + vertexLayout.getSignature() + "#"s
-		+ vs.getUID();
+		+ vs.getUid();
 }
 
-std::string InputLayout::getUID() const noexcept
+std::string InputLayout::getUid() const noexcept
 {
 	using namespace std::string_literals;
 	return typeid( InputLayout ).name() + "#"s + m_vertexLayout.getSignature() + "#"s

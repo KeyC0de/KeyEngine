@@ -114,7 +114,7 @@ std::shared_ptr<DepthStencilState> DepthStencilState::fetch( Graphics& gph,
 		mode );
 }
 
-std::string DepthStencilState::generateUID( Mode mode )
+std::string DepthStencilState::generateUid( Mode mode )
 {
 	using namespace std::string_literals;
 	const auto getModeStr = [mode]()
@@ -152,7 +152,7 @@ std::string DepthStencilState::generateUID( Mode mode )
 	return typeid( DepthStencilState ).name() + "#"s + getModeStr();
 }
 
-std::string DepthStencilState::getUID() const noexcept
+std::string DepthStencilState::getUid() const noexcept
 {
-	return generateUID( m_mode );
+	return generateUid( m_mode );
 }

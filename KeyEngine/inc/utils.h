@@ -117,5 +117,6 @@ std::string getNumberString( T num )
 	return ss.str();
 }
 
+std::string generateCaptcha( int len );
 
 }//util

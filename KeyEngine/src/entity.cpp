@@ -47,14 +47,11 @@ Entity::Entity( Entity&& rhs ) noexcept
 
 Entity& Entity::operator=( Entity&& rhs ) noexcept
 {
-	if ( this != &rhs )
-	{
-		std::swap( m_version, rhs.m_version );
-		std::swap( m_index, rhs.m_index );
-		std::swap( m_name, rhs.m_name );
-		std::swap( m_category, rhs.m_category );
-		std::swap( m_pParent, rhs.m_pParent );
-	}
+	std::swap( m_version, rhs.m_version );
+	std::swap( m_index, rhs.m_index );
+	std::swap( m_name, rhs.m_name );
+	std::swap( m_category, rhs.m_category );
+	std::swap( m_pParent, rhs.m_pParent );
 	return *this;
 }
 

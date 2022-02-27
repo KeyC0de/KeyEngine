@@ -29,8 +29,8 @@ public:
 	std::string getPath() const noexcept;
 	static std::shared_ptr<Texture> fetch( Graphics& gph, const std::string& filepath,
 		unsigned slot );
-	static std::string generateUID( const std::string& filepath, unsigned slot );
-	std::string getUID() const noexcept override;
+	static std::string generateUid( const std::string& filepath, unsigned slot );
+	std::string getUid() const noexcept override;
 	static void flipModelNormalMapsGreenChannel( const std::string& objPath );
 	//===================================================
 	//	\function	flipNormalMapGreenChannel

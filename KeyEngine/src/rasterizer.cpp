@@ -39,7 +39,7 @@ std::shared_ptr<Rasterizer> Rasterizer::fetch( Graphics& gph,
 		bWireframe );
 }
 
-std::string Rasterizer::generateUID( bool bTwoSided,
+std::string Rasterizer::generateUid( bool bTwoSided,
 	bool bWireframe )
 {
 	using namespace std::string_literals;
@@ -49,8 +49,8 @@ std::string Rasterizer::generateUID( bool bTwoSided,
 		+ ( bWireframe ? "W"s : "S"s );
 }
 
-std::string Rasterizer::getUID() const noexcept
+std::string Rasterizer::getUid() const noexcept
 {
-	return generateUID( m_bTwoSided,
+	return generateUid( m_bTwoSided,
 		m_bWireframe );
 }

@@ -16,6 +16,6 @@ public:
 	ID3DBlob* getBytecode() const noexcept;
 	static std::shared_ptr<VertexShader> fetch( Graphics& gph,
 		const std::string& filepath );
-	static std::string generateUID( const std::string& filepath );
-	std::string getUID() const noexcept override;
+	static std::string generateUid( const std::string& filepath );
+	std::string getUid() const noexcept override;
 };

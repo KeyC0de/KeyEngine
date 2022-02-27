@@ -28,7 +28,7 @@ public:
 		pass_;
 	}
 
-	virtual std::string getUID() const noexcept
+	virtual std::string getUid() const noexcept
 	{
 		ASSERT( false, "Base Bindable has no UID." );
 		return "";

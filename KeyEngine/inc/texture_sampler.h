@@ -33,6 +33,6 @@ public:
 	void bind( Graphics& gph ) cond_noex override;
 	static std::shared_ptr<TextureSampler> fetch( Graphics& gph, unsigned slot,
 		FilterMode filt, AddressMode addr );
-	static std::string generateUID( unsigned slot, FilterMode filt, AddressMode addr );
-	std::string getUID() const noexcept override;
+	static std::string generateUid( unsigned slot, FilterMode filt, AddressMode addr );
+	std::string getUid() const noexcept override;
 };

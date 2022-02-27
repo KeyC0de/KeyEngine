@@ -21,11 +21,11 @@ public:
 	static std::shared_ptr<VertexBuffer> fetch( Graphics& gph, const std::string& tag,
 		const ver::Buffer& vb );
 	template<typename... TArgsIgnored>
-	static std::string generateUID( const std::string& tag,
+	static std::string generateUid( const std::string& tag,
 		TArgsIgnored&&... )
 	{
 		using namespace std::string_literals;
 		return typeid( VertexBuffer ).name() + "#"s + tag;
 	}
-	std::string getUID() const noexcept override;
+	std::string getUid() const noexcept override;
 };

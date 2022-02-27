@@ -14,6 +14,6 @@ public:
 	void bind( Graphics& gph ) cond_noex override;
 	static std::shared_ptr<PrimitiveTopology> fetch( Graphics& gph,
 		D3D11_PRIMITIVE_TOPOLOGY topo = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST );
-	static std::string generateUID( D3D11_PRIMITIVE_TOPOLOGY topo );
-	std::string getUID() const noexcept override;
+	static std::string generateUid( D3D11_PRIMITIVE_TOPOLOGY topo );
+	std::string getUid() const noexcept override;
 };

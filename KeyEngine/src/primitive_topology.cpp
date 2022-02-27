@@ -22,13 +22,13 @@ std::shared_ptr<PrimitiveTopology> PrimitiveTopology::fetch( Graphics& gph,
 		topo );
 }
 
-std::string PrimitiveTopology::generateUID( D3D11_PRIMITIVE_TOPOLOGY topo )
+std::string PrimitiveTopology::generateUid( D3D11_PRIMITIVE_TOPOLOGY topo )
 {
 	using namespace std::string_literals;
 	return typeid( PrimitiveTopology ).name() + "#"s + std::to_string( topo );
 }
 
-std::string PrimitiveTopology::getUID() const noexcept
+std::string PrimitiveTopology::getUid() const noexcept
 {
-	return generateUID( m_d3dPrimTop );
+	return generateUid( m_d3dPrimTop );
 }

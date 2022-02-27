@@ -56,7 +56,7 @@ std::shared_ptr<Viewport> Viewport::fetch( Graphics& gph,
 		height );
 }
 
-std::string Viewport::generateUID( float width,
+std::string Viewport::generateUid( float width,
 	float height )
 {
 	using namespace std::string_literals;
@@ -64,8 +64,8 @@ std::string Viewport::generateUID( float width,
 		+ std::to_string( height );
 }
 
-std::string Viewport::getUID() const noexcept
+std::string Viewport::getUid() const noexcept
 {
-	return generateUID( m_viewport.Width,
+	return generateUid( m_viewport.Width,
 		m_viewport.Height );
 }

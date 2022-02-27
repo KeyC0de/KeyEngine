@@ -144,11 +144,11 @@ std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC>
 	mwrl::ComPtr<ID3D11Resource> pRtvRsc;
 	m_pRtv->GetResource( &pRtvRsc );
 
-	mwrl::ComPtr<ID3D11Texture2D> pRTtex;
-	pRtvRsc.As( &pRTtex );
+	mwrl::ComPtr<ID3D11Texture2D> pRtvTex;
+	pRtvRsc.As( &pRtvTex );
 
 	D3D11_TEXTURE2D_DESC rtvTexDesc{};
-	pRTtex->GetDesc( &rtvTexDesc );
+	pRtvTex->GetDesc( &rtvTexDesc );
 
 	D3D11_TEXTURE2D_DESC stagingTexDesc = rtvTexDesc;
 	stagingTexDesc.CPUAccessFlags = D3D11_CPU_ACCESS_READ;
@@ -168,14 +168,14 @@ std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC>
 	// copy to staging texture
 	if ( rtvDesc.ViewDimension == D3D11_RTV_DIMENSION::D3D11_RTV_DIMENSION_TEXTURE2DARRAY )
 	{
-		// source pRTtex is actually inside a cubemap texture,
+		// source pRtvTex is actually inside a cubemap texture,
 		// use view info to find the correct slice and copy subresource
 		getContext( gph )->CopySubresourceRegion( pStagingTex.Get(),
 			0u,
 			0u,
 			0u,
 			0u,
-			pRTtex.Get(),
+			pRtvTex.Get(),
 			rtvDesc.Texture2DArray.FirstArraySlice,
 			nullptr );
 		DXGI_GET_QUEUE_INFO( gph );
@@ -183,7 +183,7 @@ std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC>
 	else
 	{
 		getContext( gph )->CopyResource( pStagingTex.Get(),
-			pRTtex.Get() );
+			pRtvTex.Get() );
 		DXGI_GET_QUEUE_INFO( gph );
 	}
 
@@ -218,7 +218,7 @@ Bitmap IRenderTargetView::convertToBitmap( Graphics& gph ) const
 	for ( unsigned int y = 0; y < height; ++y )
 	{
 		auto pRow = reinterpret_cast<const Bitmap::Texel*>( pStagingTexBytes
-			+ msr.RowPitch * size_t( y ) );
+			+ msr.RowPitch * y );
 		for ( unsigned int x = 0; x < width; ++x )
 		{
 			bitmap.setTexel( x,

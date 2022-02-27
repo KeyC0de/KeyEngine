@@ -91,11 +91,6 @@ EntityId EntityManager::spawnEntity( const std::string& name, int categoryId,
 			m_mounts.appendEntity( p.get() );
 			break;
 		}
-		case 6:
-		{
-			m_cleanup.appendEntity( p.get() );
-			break;
-		}
 		default :	// UNCATEGORIZED - 0
 		{
 			break;
@@ -164,11 +159,6 @@ EntityManager::Bucket& EntityManager::getBucket( int categoryId )
 	case 5:
 	{
 		return m_mounts;
-		break;
-	}
-	case 6:
-	{
-		return m_cleanup;
 		break;
 	}
 	default :	// UNCATEGORIZED - 0

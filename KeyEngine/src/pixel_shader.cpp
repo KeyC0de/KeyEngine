@@ -46,13 +46,13 @@ ID3DBlob* PixelShader::getBytecode() const noexcept
 	return m_pPsBlob.Get();
 }
 
-std::string PixelShader::generateUID( const std::string& filepath )
+std::string PixelShader::generateUid( const std::string& filepath )
 {
 	using namespace std::string_literals;
 	return typeid( PixelShader ).name() + "#"s + filepath;
 }
 
-std::string PixelShader::getUID() const noexcept
+std::string PixelShader::getUid() const noexcept
 {
-	return generateUID( m_path );
+	return generateUid( m_path );
 }

@@ -8,7 +8,7 @@
 class Entity;
 
 //============================================================
-//	\class	Entity
+//	\class	EntityManager
 //
 //	\author	KeyC0de
 //	\date	2019/12/09 16:06
@@ -31,7 +31,7 @@ private:
 		// potentially other details
 		std::vector<Entity*> m_pEntities;
 	public:
-		Bucket( int categoryId = 0 );
+		Bucket( int categoryId );
 
 		const int getCategoryId() const noexcept;
 		void appendEntity( Entity* pEnt );
@@ -43,7 +43,6 @@ private:
 	Bucket m_ragDolls{3};
 	Bucket m_npcs{4};
 	Bucket m_mounts{5};
-	Bucket m_cleanup{6};		// entities for clean up..
 private:
 	EntityManager();
 public:
@@ -52,31 +51,24 @@ public:
 
 	static EntityManager& getInstance();
 	static void resetInstance();
-
 	//===================================================
 	//	\function	spawnEntity
 	//	\brief  factory function for entities
 	//	\date	2020/12/09 14:14
-	EntityId spawnEntity( const std::string& name, int categoryId = 0,
+	EntityId spawnEntity( const std::string& name, int categoryId,
 		Entity* pParent = nullptr );
 	EntityIndex getAliveEntities();
-
 	//===================================================
 	//	\function	getEntityById
 	//	\brief  also checks if the entity is valid if its not valid (has died) returns nullptr
 	//	\date	2019/12/09 14:04
 	Entity* getEntityById( EntityId entId );
-
-	// TODO: Add relinquishEntity( EntityId entId );
-
 	//===================================================
 	//	\function	recycleEntityId
 	//	\brief  recycle the entity's index/id st the slot can be used again
-	//			NOT WORKING ATM
+	//			TODO: NOT WORKING ATM
 	//	\date	2019/12/09 13:43
 	void recycleEntityId( EntityId entId );
-
 	Bucket& getBucket( int categoryId );
-
 	Entity* getCurrentWorld();
 };

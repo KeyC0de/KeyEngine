@@ -47,7 +47,6 @@ public:
 			return m_keyc0de;
 		}
 	};
-
 	static constexpr inline unsigned int m_nKeys = 256u;
 	static constexpr inline unsigned int m_maxBufferSize = 16u;
 	bool m_bAutorepeat = false;
@@ -69,6 +68,7 @@ public:
 
 	// key events
 	bool isKeyPressed( unsigned char keycode ) const noexcept;
+	// read event from the queue if any
 	std::optional<Keyboard::Event> readEventQueue() noexcept;
 	bool isEventQueueEmpty() const noexcept;
 	void flushEventQueue() noexcept;

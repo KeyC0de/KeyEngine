@@ -63,7 +63,7 @@ std::shared_ptr<VertexBuffer> VertexBuffer::fetch( Graphics& gph,
 		vb );
 }
 
-std::string VertexBuffer::getUID() const noexcept
+std::string VertexBuffer::getUid() const noexcept
 {
-	return generateUID( m_tag );
+	return generateUid( m_tag );
 }

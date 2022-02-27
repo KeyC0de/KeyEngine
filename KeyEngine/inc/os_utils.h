@@ -36,7 +36,6 @@ void pinThreadToCore( HANDLE hThread, DWORD core );
 void setupDetachedThreadsVector( unsigned nThreads );
 void terminateDetachedThreads();
 void doPeriodically( const std::function<void(void)>& f, size_t intervalMs, bool now = true );
-void doAfter( const std::function<void(void)>& f, size_t intervalMs );
 
 std::optional<DWORD> registryGetDword( HKEY hKey, const std::wstring& regName );
 std::optional<std::wstring> registryGetString( HKEY hKey, const std::wstring& regName );

@@ -384,6 +384,12 @@
     <ClCompile Include="src\triangle_mesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\thread_pool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\KeyEngine_tests\test_main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\assertions_console.h">
@@ -1144,6 +1150,12 @@
     </ClInclude>
     <ClInclude Include="snake\snake_play_field.h">
       <Filter>Snake</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\thread_pool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\vtune_itt_domain.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

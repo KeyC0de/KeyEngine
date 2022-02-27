@@ -123,8 +123,12 @@ std::tuple<int,int> parseCommandLineArguments()
 	ASSERT_HRES_WIN32_IF_FAILED( hres );
 
 	wchar_t* end;
-	int width = std::wcstol( argv[1], &end, 10 );
-	int height = std::wcstol( argv[2], &end, 10 );
+	int width = std::wcstol( argv[1],
+		&end,
+		10 );
+	int height = std::wcstol( argv[2],
+		&end,
+		10 );
 #if defined _DEBUG && !defined NDEBUG
 	KeyConsole& console = KeyConsole::getInstance();
 	console.print( "(width,height)=(" + std::to_string( width ) + "," + std::to_string( height ) + ")" );
@@ -137,10 +141,10 @@ void firstly()
 	fflush( stdin );
 	fflush( stderr );
 	fflush( stdout );
-	std::ios_base::sync_with_stdio( false );
 
 	std::set_terminate( []()
 	{
+		OutputDebugStringW( L"Unhandled exception. Aborting..\n" );
 		std::cout << "KeyEngine Unhandled exception: abort()ing..\n";
 		std::abort();
 	});

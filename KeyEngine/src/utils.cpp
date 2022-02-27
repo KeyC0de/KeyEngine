@@ -118,5 +118,18 @@ std::string operator+( const std::string_view& sv1,
 	return std::string{sv1} + std::string{sv2};
 }
 
+std::string generateCaptcha( int len )
+{
+	const char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	int charsetSize = sizeof charset / sizeof charset[0];
+	//std::cout << charsetSize << '\n';
+	std::string captcha;
+	while ( len-- )
+	{
+		captcha.push_back( charset[rand() % charsetSize] );
+	}
+	return captcha;
+}
+
 
 }//util

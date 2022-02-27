@@ -30,6 +30,6 @@ public:
 
 	void bind( Graphics& gph ) cond_noex override;
 	static std::shared_ptr<DepthStencilState> fetch( Graphics& gph, Mode mode );
-	static std::string generateUID( Mode mode );
-	std::string getUID() const noexcept override;
+	static std::string generateUid( Mode mode );
+	std::string getUid() const noexcept override;
 };

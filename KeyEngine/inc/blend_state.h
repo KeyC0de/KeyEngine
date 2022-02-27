@@ -40,7 +40,7 @@ public:
 		unsigned renderTargetSlot, std::optional<float> blendFactors = {} );
 	void setBlendFactors( float blendFactors ) cond_noex;
 	float getBlendFactor() const cond_noex;
-	static std::string generateUID( Mode mode, unsigned renderTargetSlot,
+	static std::string generateUid( Mode mode, unsigned renderTargetSlot,
 		std::optional<float> blendFactors );
-	std::string getUID() const noexcept override;
+	std::string getUid() const noexcept override;
 };

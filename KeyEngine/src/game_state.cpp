@@ -40,11 +40,6 @@ void MenuState::update()
 
 }
 
-void MenuState::render( Graphics* gph ) const
-{
-
-}
-
 
 GameState::GameState( int stateId )
 	:
@@ -59,11 +54,6 @@ GameState::~GameState() noexcept
 }
 
 void GameState::update()
-{
-
-}
-
-void GameState::render( Graphics* gph ) const
 {
 
 }

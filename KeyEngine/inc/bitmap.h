@@ -73,4 +73,4 @@ public:
 #define throwBitmapException( msg ) throw BitmapException( __LINE__,\
 	__FILE__,\
 	__FUNCTION__,\
-	msg );
+	msg )

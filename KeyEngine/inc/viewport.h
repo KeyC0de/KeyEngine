@@ -17,6 +17,6 @@ public:
 	float getWidth() const noexcept;
 	float getHeight() const noexcept;
 	static std::shared_ptr<Viewport> fetch( Graphics& gph, float width, float height );
-	static std::string generateUID( float width, float height );
-	std::string getUID() const noexcept override;
+	static std::string generateUid( float width, float height );
+	std::string getUid() const noexcept override;
 };

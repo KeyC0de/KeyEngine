@@ -109,8 +109,11 @@ float Game<T>::calculateDt()
 	KeyConsole& console = KeyConsole::getInstance();
 	using namespace std::string_literals;
 	++settings.frameCount;
-	std::string frameStats = "Frame time : "s + std::to_string( dt ) + "ms. Frame "s
-		+ std::to_string( settings.frameCount ) + "\n"s;
+	std::string frameStats = "Frame time : "s
+		+ std::to_string( dt )
+		+ "ms. Frame "s
+		+ std::to_string( settings.frameCount )
+		+ "\n"s;
 	console.print( std::move( frameStats ) );
 #endif // _DEBUG
 //	if ( settings.bFpsCap && !( settings.bFullscreen == true && settings.bVSync == true ) )
@@ -335,7 +338,7 @@ void Sandbox3d::update( float dt )
 	m_physics.update(CONST_DT);
 	m_playerManager.update(dt);
 	m_skybox.update(dt);
-	m_lightManager.update(dt);	// updates scene lights
+	m_lightManager.update(dt);	// update scene lights
 	m_cameraManager.update(dt);	// update active cameras
 	m_particles.update(dt);
 	m_soundManager.update(dt);
@@ -429,8 +432,7 @@ Arkanoid::Arkanoid( int width,
 		for ( int x = 0; x < m_nBricksHorizontally; ++x )
 		{
 			auto curBrickTopLeftOffset = dx::XMFLOAT2{x * m_brickWidth, y * m_brickHeight};
-			m_bricks[i] = Brick{
-				Rect{dx::XMFLOAT2{topLeft.x + curBrickTopLeftOffset.x,
+			m_bricks[i] = Brick{Rect{dx::XMFLOAT2{topLeft.x + curBrickTopLeftOffset.x,
 									topLeft.y + curBrickTopLeftOffset.y},
 					m_brickWidth, m_brickHeight},
 				rowCol};

@@ -150,32 +150,16 @@ void doPeriodically( const std::function<void(void)>& f,
 				{
 					f();
 					auto chronoInterval = std::chrono::milliseconds( intervalMs );
-					std::this_thread::sleep_for( chronoInterval );
 				}
 			}
 			else
 			{
 				while ( true )
 				{
-					auto chronoInterval = std::chrono::milliseconds( intervalMs );
-					std::this_thread::sleep_for( chronoInterval );
+					std::this_thread::sleep_for( std::chrono::milliseconds( intervalMs ) );
 					f();
 				}
 			}
-		}
-	};
-	g_detachedThreads.push_back( t.native_handle() );
-	t.detach();
-}
-
-void doAfter( const std::function<void(void)>& f,
-	size_t intervalMs )
-{
-	std::thread t{[f, intervalMs] () -> void
-		{
-			auto chronoInterval = std::chrono::milliseconds( intervalMs );
-			std::this_thread::sleep_for( chronoInterval );
-			f();
 		}
 	};
 	g_detachedThreads.push_back( t.native_handle() );

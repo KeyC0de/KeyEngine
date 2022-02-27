@@ -169,16 +169,16 @@ std::shared_ptr<Texture> Texture::fetch( Graphics& gph,
 		slot );
 }
 
-std::string Texture::generateUID( const std::string& filepath,
+std::string Texture::generateUid( const std::string& filepath,
 	unsigned slot )
 {
 	using namespace std::string_literals;
 	return typeid( Texture ).name() + "#"s + filepath + "#"s + std::to_string( slot );
 }
 
-std::string Texture::getUID() const noexcept
+std::string Texture::getUid() const noexcept
 {
-	return generateUID( m_path,
+	return generateUid( m_path,
 		m_slot );
 }
 

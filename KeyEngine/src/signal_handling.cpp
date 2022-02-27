@@ -13,6 +13,7 @@ void installSigintHandler( int signum )
 		using namespace std::string_literals;
 		console.log( "External user-initiated interrupt!\n"s );
 #endif
+		std::abort();
 	}
 }
 

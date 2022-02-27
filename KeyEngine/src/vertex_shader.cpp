@@ -45,13 +45,13 @@ std::shared_ptr<VertexShader> VertexShader::fetch( Graphics& gph,
 		filepath );
 }
 
-std::string VertexShader::generateUID( const std::string& filepath )
+std::string VertexShader::generateUid( const std::string& filepath )
 {
 	using namespace std::string_literals;
 	return typeid( VertexShader ).name() + "#"s + filepath;
 }
 
-std::string VertexShader::getUID() const noexcept
+std::string VertexShader::getUid() const noexcept
 {
-	return generateUID( m_path );
+	return generateUid( m_path );
 }

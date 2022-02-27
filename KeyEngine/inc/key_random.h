@@ -7,11 +7,12 @@
 class KeyRandom final
 {
 	static inline std::mt19937 m_device;
-	static inline bool m_started = false;
+	static inline bool m_bStarted = false;
 	static inline std::uniform_int_distribution<std::mt19937::result_type> m_distr;
 public:
-	static void init();
-	explicit operator bool() const noexcept;
+	KeyRandom();
+
+	explicit operator bool() noexcept;
 	// 0-1 float
 	static float getRandomFloat();
 	// 0 - 1 double

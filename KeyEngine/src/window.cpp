@@ -386,7 +386,7 @@ void Window::setOnTop()
 		0,
 		0,
 		SWP_SHOWWINDOW | SWP_NOSIZE | SWP_NOMOVE );
-	// redraw to prevent the window blank.
+	// redraw to prevent the window blank
 	RedrawWindow( m_hWnd,
 		nullptr,
 		nullptr,
@@ -852,7 +852,7 @@ LRESULT Window::windowProc_impl2d( _In_ HWND hWnd,
 		const POINTS pt = MAKEPOINTS( lParam );
 		m_mouse.onLmbReleased( pt.x,
 			pt.y );
-		// release mouse if outside of window
+		// release mouse if outside of a window
 		if ( pt.x < 0 || pt.x >= m_width || pt.y < 0 || pt.y >= m_height )
 		{
 			ReleaseCapture();
@@ -895,7 +895,7 @@ LRESULT Window::windowProc_impl2d( _In_ HWND hWnd,
 			RID_INPUT,
 			nullptr,
 			&size,
-			sizeof( RAWINPUTHEADER ) ) == -1)
+			sizeof( RAWINPUTHEADER ) ) == -1 )
 		{
 			// bail msg processing if error
 			break;

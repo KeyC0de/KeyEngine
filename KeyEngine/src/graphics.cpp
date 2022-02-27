@@ -13,6 +13,8 @@
 #include "allocator_utils.h"
 #include "graphics_mode.h"
 #include "rectangle.h"
+#include <ittnotify.h>	// Intel Instrumentation & Tracing Technology
+#include "vtune_itt_domain.h"
 
 #pragma comment( lib, "dxgi.lib" )
 #pragma comment( lib, "d3d11.lib" )
@@ -42,14 +44,19 @@
 namespace mwrl = Microsoft::WRL;
 namespace dx = DirectX;
 
+// Create ITT string handles
+__itt_string_handle* pStrIttDrawIndexed = __itt_string_handle_create( L"DrawIndexed" );
+__itt_string_handle* pStrIttDrawIndexedInstanced = __itt_string_handle_create( L"DrawIndexedInstanced" );
+__itt_string_handle* pStrIttBeginRendering = __itt_string_handle_create( L"BeginRendering" );
+__itt_string_handle* pStrIttFpsTimerRendering = __itt_string_handle_create( L"FpsTimerRendering" );
+__itt_string_handle* pStrIttEndRendering = __itt_string_handle_create( L"EndRendering" );
+
 #if defined _DEBUG && !defined NDEBUG
 static std::once_flag g_startUpFlag;
 #endif
 
-namespace
-{
 auto& g_settings = SettingsManager::getInstance();
-}
+
 
 Graphics::Adapter::Adapter( IDXGIAdapter* pAdapter )
 {
@@ -152,7 +159,6 @@ Graphics::Graphics( HWND hWnd,
 	const auto& primaryAdapter = m_adapters.front();
 	hres = E_INVALIDARG;
 #if defined _FLIP_PRESENT
-
 	// make window-swap chain association
 	makeWindowAssociationWithFactory( hWnd );
 #else
@@ -273,6 +279,7 @@ void Graphics::clearShaderSlots() noexcept
 
 void Graphics::beginRendering() noexcept
 {
+	VTUNE_ITT_TASK_BEGIN( pStrIttBeginRendering );
 	if constexpr ( GraphicsMode::get() == GraphicsMode::_3D )
 	{// imgui new frame
 		ImGui_ImplDX11_NewFrame();
@@ -285,10 +292,12 @@ void Graphics::beginRendering() noexcept
 		memset( m_pCpuBuffer, 0u, cpuBuffer2dSize );
 	}
 	clearShaderSlots();
+	VTUNE_ITT_TASK_END( pStrIttBeginRendering );
 }
 
 void Graphics::updateAndRenderFpsTimer()
 {
+	VTUNE_ITT_TASK_BEGIN( pStrIttFpsTimerRendering );
 	static int fpsDisplayFrameCount = 0;
 	static std::wstring fps;
 
@@ -317,10 +326,12 @@ void Graphics::updateAndRenderFpsTimer()
 		dx::XMFLOAT2{0.0f, 0.0f},
 		dx::XMFLOAT2{1.0f, 1.0f} );
 	m_fpsSpriteBatch->End();
+	VTUNE_ITT_TASK_END( pStrIttFpsTimerRendering );
 }
 
 void Graphics::endRendering()
 {
+	VTUNE_ITT_TASK_BEGIN( pStrIttEndRendering );
 	if constexpr ( GraphicsMode::get() == GraphicsMode::_3D )
 	{
 		ImGui::Render();
@@ -362,6 +373,7 @@ void Graphics::endRendering()
 	}
 	ASSERT_HRES_IF_FAILED;
 	//m_pContext->ClearState();
+	VTUNE_ITT_TASK_END( pStrIttEndRendering );
 }
 
 void Graphics::draw( unsigned count ) cond_noex
@@ -373,6 +385,7 @@ void Graphics::draw( unsigned count ) cond_noex
 
 void Graphics::drawIndexed( unsigned count ) cond_noex
 {
+	VTUNE_ITT_TASK_BEGIN( pStrIttDrawIndexed );
 	if ( g_settings.getSettings().bMultithreadedRendering )
 	{
 		playbackDeferredCommandList();
@@ -384,11 +397,13 @@ void Graphics::drawIndexed( unsigned count ) cond_noex
 			0u );
 		DXGI_GET_QUEUE_INFO_GFX;
 	}
+	VTUNE_ITT_TASK_END( pStrIttDrawIndexed );
 }
 
 void Graphics::drawIndexedInstanced( unsigned indexCount,
 	unsigned instanceCount ) cond_noex
 {
+	VTUNE_ITT_TASK_BEGIN( pStrIttDrawIndexedInstanced );
 	if ( g_settings.getSettings().bMultithreadedRendering )
 	{
 
@@ -398,6 +413,7 @@ void Graphics::drawIndexedInstanced( unsigned indexCount,
 		//m_pContext->DrawIndexedInstanced();
 	}
 	DXGI_GET_QUEUE_INFO_GFX;
+	VTUNE_ITT_TASK_END( pStrIttDrawIndexedInstanced );
 }
 
 
@@ -519,9 +535,9 @@ void Graphics::interrogateDirectxFeatures()
 		"Resources can be created concurrently on multiple threads.\n"s :
 		"No DirectX concurrency possible\n"s );
 
-	console.log( threadingInfo.DriverCommandLists
-		? "Command lists are supported by the current driver.\n"s
-		: "Commands lists will be emulated in software.\n"s );
+	console.log( threadingInfo.DriverCommandLists ?
+		"Command lists are supported by the current driver.\n"s :
+		"Commands lists will be emulated in software.\n"s );
 
 	D3D11_FEATURE_DATA_D3D11_OPTIONS hwopts11{};
 	hres = m_pDevice->CheckFeatureSupport( D3D11_FEATURE_D3D11_OPTIONS,

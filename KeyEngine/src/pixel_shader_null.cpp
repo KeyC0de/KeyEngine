@@ -21,12 +21,12 @@ std::shared_ptr<PixelShaderNull> PixelShaderNull::fetch( Graphics& gph )
 	return BindableMap::fetch<PixelShaderNull>( gph );
 }
 
-std::string PixelShaderNull::generateUID()
+std::string PixelShaderNull::generateUid()
 {
 	return typeid( PixelShaderNull ).name();
 }
 
-std::string PixelShaderNull::getUID() const noexcept
+std::string PixelShaderNull::getUid() const noexcept
 {
-	return generateUID();
+	return generateUid();
 }

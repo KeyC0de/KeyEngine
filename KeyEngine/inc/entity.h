@@ -51,7 +51,6 @@ public:
 	Entity& operator=( Entity&& rhs ) noexcept;
 
 	void printInfo() const noexcept;
-
 	//===================================================
 	//	\function	id
 	//	\brief  get entity id
@@ -67,7 +66,6 @@ public:
 	const int getChildrenCount() const noexcept;
 	void onMessageReceived( std::unique_ptr<class Message> msg );
 	void sendMessage( class Message* msg ) const noexcept;
-
 	inline bool operator==( const Entity* rhs ) const noexcept;
 	inline bool operator!=( const Entity* rhs ) const noexcept;
 	inline bool operator==( const Entity& rhs ) const noexcept;
@@ -77,7 +75,7 @@ public:
 
 /*
 
-`Entity`ies form a scene graph
+`Entity`ies form an Entity graph
 A World Entity's children will be most other entities
 	except some entities will be children of other entities. eg. a sword entity can be a child of a soldier entity which will be a child of a world entity
 

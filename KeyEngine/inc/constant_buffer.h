@@ -122,21 +122,21 @@ public:
 			slot );
 	}
 
-	static std::string generateUID( const CB& cb,
+	static std::string generateUid( const CB& cb,
 		unsigned slot )
 	{
-		return generateUID( slot );
+		return generateUid( slot );
 	}
 
-	static std::string generateUID( unsigned slot )
+	static std::string generateUid( unsigned slot )
 	{
 		using namespace std::string_literals;
 		return typeid( VertexConstantBuffer ).name() + "#"s + std::to_string( slot );
 	}
 
-	std::string getUID() const noexcept override
+	std::string getUid() const noexcept override
 	{
-		return generateUID( m_slot );
+		return generateUid( m_slot );
 	}
 };
 
@@ -174,20 +174,20 @@ public:
 			slot );
 	}
 
-	static std::string generateUID( const CB& cb,
+	static std::string generateUid( const CB& cb,
 		unsigned slot )
 	{
-		return generateUID( slot );
+		return generateUid( slot );
 	}
 
-	static std::string generateUID( unsigned slot )
+	static std::string generateUid( unsigned slot )
 	{
 		using namespace std::string_literals;
 		return typeid( PixelConstantBuffer ).name() + "#"s + std::to_string( slot );
 	}
 
-	std::string getUID() const noexcept override
+	std::string getUid() const noexcept override
 	{
-		return generateUID( m_slot );
+		return generateUid( m_slot );
 	}
 };

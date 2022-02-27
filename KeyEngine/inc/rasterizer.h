@@ -17,6 +17,6 @@ public:
 	void bind( Graphics& gph ) cond_noex override;
 	static std::shared_ptr<Rasterizer> fetch( Graphics& gph, bool bTwoSided,
 		bool bWireframe = false );
-	static std::string generateUID( bool bTwoSided, bool bWireframe );
-	std::string getUID() const noexcept override;
+	static std::string generateUid( bool bTwoSided, bool bWireframe );
+	std::string getUid() const noexcept override;
 };

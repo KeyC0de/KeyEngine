@@ -71,7 +71,6 @@ private:
 	static inline std::vector<BYTE> m_rawInputBuffer;
 	//static inline HACCEL m_hAcceleratorTable;
 	//static inline std::unique_ptr<SplashWindow> m_splash;
-private:
 	bool m_bCursorEnabled = true;
 	int m_width;
 	int m_height;
@@ -83,12 +82,7 @@ private:
 	WINDOWINFO m_info;
 	//NOTIFYICONDATA m_notifyIconData;
 	//std::unique_ptr<Dialog> m_pDialogAbout;
-public:
-	static Keyboard& getKeyboard() noexcept;
-	static Mouse& getMouse() noexcept;
-	static WindowClass& getWindowClass() noexcept;
-	static bool isDescendantOf( HWND parent, HWND hWnd ) noexcept;
-private:
+
 	static LRESULT CALLBACK windowProc( HWND pWndHandle, unsigned uMsg,
 		WPARAM wParam, LPARAM lParam );
 	static LRESULT CALLBACK windowProcDelegate( HWND pWndHandle, unsigned uMsg,
@@ -101,7 +95,11 @@ public:
 	Window& operator=( const Window& rhs ) = delete;
 	Window( Window&& rhs ) noexcept;
 	Window& operator=( Window&& rhs ) noexcept;
-
+	
+	static Keyboard& getKeyboard() noexcept;
+	static Mouse& getMouse() noexcept;
+	static WindowClass& getWindowClass() noexcept;
+	static bool isDescendantOf( HWND parent, HWND hWnd ) noexcept;
 	std::optional<int> messageLoop() noexcept;
 	void setEnable( bool b );
 	void setOnTop();
