@@ -224,7 +224,6 @@
     </ClCompile>
     <ClCompile Include="src\sysmetrics.cpp" />
     <ClCompile Include="src\job.cpp" />
-    <ClCompile Include="src\testing.cpp" />
     <ClCompile Include="src\cube.cpp" />
     <ClCompile Include="src\plane.cpp" />
     <ClCompile Include="src\texture.cpp" />
@@ -400,7 +399,6 @@
     <ClInclude Include="inc\depth_stencil_state.h" />
     <ClInclude Include="inc\sysmetrics.h" />
     <ClInclude Include="inc\job.h" />
-    <ClInclude Include="inc\testing.h" />
     <ClInclude Include="inc\cube.h" />
     <ClInclude Include="inc\plane.h" />
     <ClInclude Include="inc\texture.h" />
