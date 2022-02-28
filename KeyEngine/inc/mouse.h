@@ -10,8 +10,8 @@ class Mouse final
 
 	struct RawDelta
 	{
-		int dx;
-		int dy;
+		int m_dx;
+		int m_dy;
 	};
 	
 	class Event final

@@ -223,7 +223,7 @@ void Mouse::onRawDelta( int dx,
 	int dy ) noexcept
 {
 	m_rawDeltaBuffer.push( {dx, dy} );
-	trimEventQueue();
+	trimRawInputBuffer();
 }
 
 void Mouse::trimEventQueue() noexcept

@@ -316,8 +316,8 @@ void Sandbox3d::checkInput( float dt )
 	{
 		if ( !m_mainWindow.isCursorEnabled() )
 		{
-			activeCamera.rotateRel( (float)delta->dx,
-				(float)delta->dy );
+			activeCamera.rotateRel( (float)delta->m_dx,
+				(float)delta->m_dy );
 		}
 	}
 }
