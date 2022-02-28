@@ -14,7 +14,6 @@
 namespace util
 {
 
-
 DirectX::XMFLOAT3 extractEulerAngles( const DirectX::XMFLOAT4X4& mat );
 DirectX::XMFLOAT3 extractTranslation( const DirectX::XMFLOAT4X4& mat );
 DirectX::XMMATRIX scaleTranslation( const DirectX::XMMATRIX& mat, float scale );

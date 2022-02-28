@@ -243,9 +243,6 @@
     <ClCompile Include="src\signal_handling.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\allocator_utils.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\operation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -1011,9 +1008,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="inc\signal_handling.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\allocator_utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="inc\object_pool.h">

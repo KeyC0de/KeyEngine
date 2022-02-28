@@ -113,7 +113,6 @@
     <ClCompile Include="src\model_visitor.cpp" />
     <ClCompile Include="src\mouse_picker.cpp" />
     <ClCompile Include="src\rectangle.cpp" />
-    <ClCompile Include="src\allocator_utils.cpp" />
     <ClCompile Include="arkanoid\ball.cpp" />
     <ClCompile Include="snake\snake_play_field.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
@@ -278,7 +277,6 @@
     <ClInclude Include="inc\grid_location.h" />
     <ClInclude Include="inc\mouse_picker.h" />
     <ClInclude Include="inc\rectangle.h" />
-    <ClInclude Include="inc\allocator_utils.h" />
     <ClInclude Include="inc\assertions_console.h" />
     <ClInclude Include="arkanoid\ball.h" />
     <ClInclude Include="inc\bindable_exception.h" />

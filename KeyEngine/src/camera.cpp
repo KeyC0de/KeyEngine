@@ -18,7 +18,7 @@ DirectX::XMMATRIX Camera::getShadowOrthographicMatrix( unsigned w,
 DirectX::XMMATRIX Camera::getShadowProjectionMatrix( float farZ ) noexcept
 {
 	// Shadows farZ hardcoded at 100units for now
-	static constexpr auto r = math::PI / 2.0f;
+	static constexpr auto r = util::PI / 2.0f;
 	return dx::XMMatrixPerspectiveFovLH( r,
 		1.0f,
 		1.0f,
@@ -44,15 +44,15 @@ Camera::Camera( Graphics& gph,
 	m_homePitch(homePitch),
 	m_homeYaw(homeYaw),
 	m_width(1.0f),
-	m_height((static_cast<float>(height) / math::gcd(width, height)) / 
-		(static_cast<float>(width) / math::gcd(width, height))),
+	m_height((static_cast<float>(height) / util::gcd(width, height)) / 
+		(static_cast<float>(width) / util::gcd(width, height))),
 	m_homeWidth(m_width),
 	m_homeHeight(m_height),
 	m_homeNearZ(m_nearZ),
 	m_homeFarZ(m_farZ),
 	m_widget(gph),
-	m_cameraFrustum(gph, 1.0f, (static_cast<float>(height) / math::gcd(width, height)) /
-			(static_cast<float>(width) / math::gcd(width, height)),
+	m_cameraFrustum(gph, 1.0f, (static_cast<float>(height) / util::gcd(width, height)) /
+			(static_cast<float>(width) / util::gcd(width, height)),
 		m_nearZ, m_farZ),
 	m_bTethered(bTethered),
 	m_nearZ(nearZ),
@@ -227,10 +227,10 @@ void Camera::resetToDefault( Graphics& gph ) noexcept
 void Camera::rotateRel( float dx,
 	float dy ) noexcept
 {
-	m_yaw = math::wrapAngle( m_yaw + dx * m_rotationSpeed );
+	m_yaw = util::wrapAngle( m_yaw + dx * m_rotationSpeed );
 	m_pitch = std::clamp( m_pitch + dy * m_rotationSpeed,
-		0.995f * -math::PI / 2.0f,
-		0.995f * math::PI / 2.0f );
+		0.995f * -util::PI / 2.0f,
+		0.995f * util::PI / 2.0f );
 	const dx::XMFLOAT3 angles{m_pitch, m_yaw, 0.0f};
 	m_cameraFrustum.setRotation( angles );
 	m_widget.setRotation( angles );

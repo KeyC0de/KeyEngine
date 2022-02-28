@@ -51,7 +51,7 @@ PointLight::PointLight( Graphics& gph,
 			90.0f,
 			m_pcbData.pos,
 			0.0f,
-			math::PI / 2.0f,
+			util::PI / 2.0f,
 			true );
 	}
 }

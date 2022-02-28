@@ -8,7 +8,7 @@
 #include "assertions_console.h"
 
 
-namespace math
+namespace util
 {
 
 constexpr float PI = 3.14159265f;
@@ -120,11 +120,13 @@ constexpr void quadratic( const T a,
 			<< "\n";
 	}
 	else
+	{
 		std::cout << "1st root: " 
 					<< ( -b + squareRoot( diakr ) ) / ( 2 * a )
 					<< "\t 2nd root: " 
 					<< ( -b - squareRoot( diakr ) ) / ( 2 * a )
 					<< "\n";
+	}
 }
 
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
@@ -320,7 +322,6 @@ int returnNthBit( int num, unsigned n );
 // change nth bit to bitVal
 int changeNthBit( int num, unsigned n, bool bitVal );
 
-
 template<int b>
 class ByteSet
 {
@@ -343,4 +344,4 @@ public:
 };
 
 
-}// namespace math
+}// namespace util

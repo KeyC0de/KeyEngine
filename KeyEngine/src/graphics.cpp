@@ -10,7 +10,6 @@
 #include "os_utils.h"
 #include "settings_manager.h"
 #include "console.h"
-#include "allocator_utils.h"
 #include "graphics_mode.h"
 #include "rectangle.h"
 #include <ittnotify.h>	// Intel Instrumentation & Tracing Technology

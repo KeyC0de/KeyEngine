@@ -7,6 +7,9 @@
 #include <iterator>
 #include <iostream>
 #include <bitset>
+#include <cstddef>
+#include <cinttypes>
+#include "assertions_console.h"
 
 #define isOfTypeT( obj, T ) ( dynamic_cast<T*>( obj ) != nullptr ) ? true : false
 
@@ -87,9 +90,7 @@ void splitString_impl( const std::string& s,
 }
 
 std::vector<std::string> splitString( const std::string& s, const std::string& delim );
-
 bool stringContains( std::string_view haystack, std::string_view needle );
-
 std::string& capitalizeFirstLetter( std::string& str );
 std::string&& capitalizeFirstLetter( std::string&& str );
 
@@ -119,4 +120,58 @@ std::string getNumberString( T num )
 
 std::string generateCaptcha( int len );
 
-}//util
+//  check whether the address is aligned to `alignment` boundary
+bool isAligned( const volatile void* p, std::size_t alignment ) noexcept;
+bool isAligned( std::uintptr_t pi, std::size_t alignment ) noexcept;
+constexpr int is4ByteAligned( intptr_t *addr );
+
+//===================================================
+//	\function	alignForward
+//	\brief  align pointer forward with given alignment
+//	\date	2022/02/20 20:34
+template<typename T>
+T* alignForward( T* p,
+	std::size_t alignment ) noexcept
+{
+	if ( alignment == 0 )
+	{
+		return p;
+	}
+	const std::uintptr_t ip = reinterpret_cast<std::uintptr_t>( p );
+	if ( ip % alignment == 0 )
+	{
+		return p;
+	}
+	return reinterpret_cast<T*>( ( ip + ( alignment - 1 ) ) & ~( alignment - 1 ) );
+	// or: (ip + alignment - 1) / alignment * alignment;
+}
+
+std::uintptr_t alignForward( std::uintptr_t ip, std::size_t alignment ) noexcept;
+// calculates alignment in bits supposedly
+std::size_t calcAlignedSize( std::size_t size, std::size_t alignment );
+// calculate padding bytes needed to align address p forward given the alignment
+const std::size_t getForwardPadding( const std::size_t p, const std::size_t alignment );
+const std::size_t getForwardPaddingWithHeader( const std::size_t p,
+	const std::size_t alignment, const std::size_t headerSize );
+
+template<typename T>
+T* alignPtr( const T *ptr,
+	const std::size_t alignment )
+{
+	const std::uintptr_t uintPtr = reinterpret_cast<std::uintptr_t>( ptr );
+	const std::uintptr_t alignedUintPtr = ( uintPtr + ( alignment - 1 ) ) & ~( alignment - 1 );
+	T* alignedPtr = reinterpret_cast<T*>( alignedUintPtr );
+	ASSERT( isAligned( alignedPtr, alignment ), "Not aligned!" );
+	return alignedPtr;
+}
+
+// TODO: doesn't work properly
+void* alignedMalloc( std::size_t nBytes, std::size_t alignment );
+void alignedFree( void *p ) noexcept;
+
+// INTEL:
+//void* _mm_malloc(int size, int align)
+//void _mm_free(void *p)
+
+
+}//namespace util

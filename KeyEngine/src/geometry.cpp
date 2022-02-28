@@ -147,8 +147,8 @@ TriangleMesh GeometrySphere::make( std::optional<ver::VertexLayout> layout,
 		0.0f,
 		radius,
 		0.0f );
-	const float lattitudeAngle = math::PI / nLateralDivs;
-	const float longitudeAngle = 2.0f * math::PI / nLongitudinalDivs;
+	const float lattitudeAngle = util::PI / nLateralDivs;
+	const float longitudeAngle = 2.0f * util::PI / nLongitudinalDivs;
 
 	ver::Buffer vb{std::move( *layout )};
 	for ( unsigned lat = 1; lat < nLateralDivs; ++lat )
@@ -280,7 +280,7 @@ TriangleMesh GeometryPlane::make( int nDivisionsX,
 	}
 
 	std::vector<unsigned> indices;
-	indices.reserve( math::square( nDivisionsX * nDivisionsY ) * 6 );
+	indices.reserve( util::square( nDivisionsX * nDivisionsY ) * 6 );
 	{
 		const auto vxy2i = [nVerticesX]( size_t x, size_t y )
 		{

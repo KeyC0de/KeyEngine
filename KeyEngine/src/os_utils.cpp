@@ -8,7 +8,6 @@
 namespace util
 {
 
-
 std::string printHresultErrorDescription( HRESULT hres )
 {
 	_com_error error{hres};

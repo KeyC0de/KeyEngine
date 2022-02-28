@@ -180,6 +180,7 @@ public:
 		return dur.count();
 	}
 
+#pragma region delayFor
 	//===================================================
 	//	\function	delayFor
 	//	\brief  delays execution of this_thread for the amount of time specified
@@ -233,4 +234,5 @@ public:
 	{
 		std::this_thread::sleep_for( t );
 	}
+#pragma endregion
 };

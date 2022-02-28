@@ -5,7 +5,7 @@
 #include "winner.h"
 
 
-namespace math
+namespace util
 {
 
 float frand() noexcept
@@ -331,4 +331,4 @@ int changeNthBit( int num,
 #pragma warning( pop )
 
 
-}// namespace math
+}// namespace util

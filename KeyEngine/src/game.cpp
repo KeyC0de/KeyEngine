@@ -173,15 +173,15 @@ Sandbox3d::Sandbox3d( int width,
 		60.0f,
 		dx::XMFLOAT3{-13.5f, 6.0f, 3.5f},
 		0.0f,
-		math::PI / 2.0f) );
+		util::PI / 2.0f) );
 	m_cameraMan.add( std::make_unique<Camera>( m_mainWindow.getGraphics(),
 		"B",
 		width,
 		height,
 		45.0f,
 		dx::XMFLOAT3{-13.5f, 28.8f, -6.4f},
-		math::PI / 180.0f * 13.0f,
-		math::PI / 180.0f * 61.0f ) );
+		util::PI / 180.0f * 13.0f,
+		util::PI / 180.0f * 61.0f ) );
 	m_pPointLight1 = std::make_unique<PointLight>( m_mainWindow.getGraphics(),
 		dx::XMFLOAT3{10.0f, 5.0f, 0.0f} );
 	//m_pPointLight2 = std::make_unique<PointLight>( m_mainWindow.getGraphics(),
@@ -190,7 +190,7 @@ Sandbox3d::Sandbox3d( int width,
 
 	m_cube1.setWorldPosition( {10.0f, 5.0f, 6.0f} );
 
-	m_nanoSuit.setTransform( dx::XMMatrixRotationY( math::PI / 2.f ) *
+	m_nanoSuit.setTransform( dx::XMMatrixRotationY( util::PI / 2.f ) *
 		dx::XMMatrixTranslation( 27.f, -0.56f, 1.7f ) );
 	m_carabiner.setTransform( dx::XMMatrixTranslation( -10.0f, 6.0f, 0.0f ) );
 	

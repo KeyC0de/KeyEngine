@@ -1,7 +1,6 @@
 #pragma once
 
 
-// rendering channel (aggregation of `Pass`/`Effect` s)
 namespace rch
 {
 
