@@ -2,17 +2,20 @@
 
 #include "winner.h"
 #include <string>
-#include <sstream>
-#include <winternl.h>
+#if defined _DEBUG && !defined NDEBUG
+#	include <sstream>
+#	include <winternl.h>
+#	include <comdef.h>
+#	include "console.h"
+#endif
 #include <functional>
 #include <optional>
-#include <comdef.h>
-#include "console.h"
 
 
 namespace util
 {
 
+#if defined _DEBUG && !defined NDEBUG
 //===================================================
 //	\function	printHresultErrorDescription
 //	\brief  print HRESULT errors in understandable English
@@ -26,6 +29,7 @@ std::wstring printHresultErrorDescriptionW( HRESULT hres );
 //	\date	2020/11/10 1:44
 std::string getLastErrorAsString();
 std::string getLastNtErrorAsString( DWORD ntStatusCode );
+#endif
 
 std::wstring bstrToStr( const BSTR& bstr );
 BSTR strToBstr( const std::wstring& str );

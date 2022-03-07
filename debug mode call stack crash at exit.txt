@@ -1,0 +1,29 @@
+KeyEngine.exe!Microsoft::WRL::ComPtr<ID3D11Buffer>::InternalRelease() Line 176
+	at c:\program files (x86)\windows kits\10\include\10.0.17763.0\winrt\wrl\client.h(176)
+KeyEngine.exe!Microsoft::WRL::ComPtr<ID3D11Buffer>::~ComPtr<ID3D11Buffer>() Line 231
+	at c:\program files (x86)\windows kits\10\include\10.0.17763.0\winrt\wrl\client.h(231)
+KeyEngine.exe!IConstantBuffer<TransformVCB::Transforms>::~IConstantBuffer<TransformVCB::Transforms>()
+KeyEngine.exe!VertexConstantBuffer<TransformVCB::Transforms>::~VertexConstantBuffer<TransformVCB::Transforms>()
+KeyEngine.exe!VertexConstantBuffer<TransformVCB::Transforms>::`scalar deleting destructor'(unsigned int)
+KeyEngine.exe!std::default_delete<VertexConstantBuffer<TransformVCB::Transforms>>::operator()(VertexConstantBuffer<TransformVCB::Transforms> * _Ptr=0x00000204bc669230) Line 2084
+	at c:\program files (x86)\microsoft visual studio\2019\community\vc\tools\msvc\14.16.27023\include\memory(2084)
+KeyEngine.exe!std::unique_ptr<VertexConstantBuffer<TransformVCB::Transforms>,std::default_delete<VertexConstantBuffer<TransformVCB::Transforms>>>::~unique_ptr<VertexConstantBuffer<TransformVCB::Transforms>,std::default_delete<VertexConstantBuffer<TransformVCB::Transforms>>>() Line 2296
+	at c:\program files (x86)\microsoft visual studio\2019\community\vc\tools\msvc\14.16.27023\include\memory(2296)
+KeyEngine.exe!`dynamic atexit destructor for 'TransformVCB::m_pVcb''()
+ucrtbased.dll!00007ffdcfb42931()
+ucrtbased.dll!00007ffdcfb42105()
+ucrtbased.dll!00007ffdcfb42257()
+ucrtbased.dll!00007ffdcfb42b44()
+ucrtbased.dll!00007ffdcfb419a5()
+ucrtbased.dll!00007ffdcfb4170d()
+ucrtbased.dll!00007ffdcfb41787()
+ucrtbased.dll!00007ffdcfb41b50()
+ucrtbased.dll!00007ffdcfb41f06()
+KeyEngine.exe!__scrt_common_main_seh() Line 297
+	at d:\agent\_work\3\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl(297)
+KeyEngine.exe!__scrt_common_main() Line 331
+	at d:\agent\_work\3\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl(331)
+KeyEngine.exe!wWinMainCRTStartup() Line 17
+	at d:\agent\_work\3\s\src\vctools\crt\vcstartup\src\startup\exe_wwinmain.cpp(17)
+kernel32.dll!00007ffe26137034()
+ntdll.dll!00007ffe26c42651()

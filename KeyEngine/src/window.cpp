@@ -63,7 +63,7 @@ Window::WindowClass::WindowClass( const std::string& name )
 	auto& console = KeyConsole::getInstance();
 	using namespace std::string_literals;
 	console.log( "\n\nApplication Instance: "s
-		+ math::toHexString( hInstance )
+		+ util::toHexString( hInstance )
 		+ "\n\nWindow Class: "s
 		+ m_name
 		+ " registered: "s

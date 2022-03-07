@@ -8,6 +8,7 @@
 namespace util
 {
 
+#if defined _DEBUG && !defined NDEBUG
 std::string printHresultErrorDescription( HRESULT hres )
 {
 	_com_error error{hres};
@@ -69,6 +70,7 @@ std::string getLastNtErrorAsString( DWORD ntStatusCode )
 	FreeLibrary( hNtdll );
 	return message;
 }
+#endif
 
 std::wstring bstrToStr( const BSTR& bstr )
 {
