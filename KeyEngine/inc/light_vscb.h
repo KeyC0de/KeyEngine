@@ -7,24 +7,24 @@
 class Camera;
 
 //=============================================================
-//	\class	LightVCB
+//	\class	LightVSCB
 //
 //	\author	KeyC0de
 //	\date	2022/02/19 22:35
 //
-//	\brief	VCB for shadow casting light source usage (shadowing_vs.hlsli)
+//	\brief	VSCB for shadow casting light source usage (shadowing_vs.hlsli)
 //=============================================================
-class LightVCB
+class LightVSCB
 	: public IBindable
 {
-	struct LightTransformVCB
+	struct LightTransformVSCB
 	{
 		DirectX::XMMATRIX lightMatrix;
 	};
-	std::unique_ptr<VertexConstantBuffer<LightTransformVCB>> m_pVcb;
+	std::unique_ptr<VertexShaderConstantBuffer<LightTransformVSCB>> m_pVscb;
 	const Camera* m_pPointLightShadowCamera = nullptr;
 public:
-	LightVCB( Graphics& gph, unsigned slot );
+	LightVSCB( Graphics& gph, unsigned slot );
 
 	void update( Graphics& gph );
 	void bind( Graphics& gph ) cond_noex override;

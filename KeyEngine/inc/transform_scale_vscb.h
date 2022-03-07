@@ -1,15 +1,15 @@
 #pragma once
 
-#include "transform_vcb.h"
+#include "transform_vscb.h"
 #include "dynamic_constant_buffer.h"
 
 
-class TransformScaleVCB
-	: public TransformVCB
+class TransformScaleVSCB
+	: public TransformVSCB
 {
 	con::Buffer m_cbScale;
 public:
-	TransformScaleVCB( Graphics& gph, unsigned slot, float scale );
+	TransformScaleVSCB( Graphics& gph, unsigned slot, float scale );
 
 	void accept( IEffectVisitor& ev ) override;
 	void bind( Graphics& gph ) cond_noex override;

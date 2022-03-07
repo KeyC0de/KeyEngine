@@ -3,7 +3,6 @@
 #include "bindable.h"
 #include "bindable_map.h"
 #include "os_utils.h"
-//#include "utils.h"
 #include "assertions_console.h"
 #include "dxgi_info_queue.h"
 
@@ -88,7 +87,7 @@ public:
 };
 
 template<typename CB>
-class VertexConstantBuffer final
+class VertexShaderConstantBuffer final
 	: public IConstantBuffer<CB>
 {
 	using IConstantBuffer<CB>::m_pCb;
@@ -106,19 +105,19 @@ public:
 		DXGI_GET_QUEUE_INFO( gph );
 	}
 
-	static std::shared_ptr<VertexConstantBuffer> fetch( Graphics& gph,
+	static std::shared_ptr<VertexShaderConstantBuffer> fetch( Graphics& gph,
 		const CB& cb,
 		unsigned slot )
 	{
-		return BindableMap::fetch<VertexConstantBuffer>( gph,
+		return BindableMap::fetch<VertexShaderConstantBuffer>( gph,
 			cb,
 			slot );
 	}
 
-	static std::shared_ptr<VertexConstantBuffer> fetch( Graphics& gph,
+	static std::shared_ptr<VertexShaderConstantBuffer> fetch( Graphics& gph,
 		unsigned slot )
 	{
-		return BindableMap::fetch<VertexConstantBuffer>( gph,
+		return BindableMap::fetch<VertexShaderConstantBuffer>( gph,
 			slot );
 	}
 
@@ -131,7 +130,7 @@ public:
 	static std::string generateUid( unsigned slot )
 	{
 		using namespace std::string_literals;
-		return typeid( VertexConstantBuffer ).name() + "#"s + std::to_string( slot );
+		return typeid( VertexShaderConstantBuffer ).name() + "#"s + std::to_string( slot );
 	}
 
 	std::string getUid() const noexcept override
@@ -141,7 +140,7 @@ public:
 };
 
 template<typename CB>
-class PixelConstantBuffer final
+class PixelShaderConstantBuffer final
 	: public IConstantBuffer<CB>
 {
 	using IConstantBuffer<CB>::m_pCb;
@@ -158,19 +157,19 @@ public:
 		DXGI_GET_QUEUE_INFO( gph );
 	}
 
-	static std::shared_ptr<PixelConstantBuffer> fetch( Graphics& gph,
+	static std::shared_ptr<PixelShaderConstantBuffer> fetch( Graphics& gph,
 		const CB& cb,
 		unsigned slot )
 	{
-		return BindableMap::fetch<PixelConstantBuffer>( gph,
+		return BindableMap::fetch<PixelShaderConstantBuffer>( gph,
 			cb,
 			slot );
 	}
 
-	static std::shared_ptr<PixelConstantBuffer> fetch( Graphics& gph,
+	static std::shared_ptr<PixelShaderConstantBuffer> fetch( Graphics& gph,
 		unsigned slot )
 	{
-		return BindableMap::fetch<PixelConstantBuffer>( gph,
+		return BindableMap::fetch<PixelShaderConstantBuffer>( gph,
 			slot );
 	}
 
@@ -183,7 +182,7 @@ public:
 	static std::string generateUid( unsigned slot )
 	{
 		using namespace std::string_literals;
-		return typeid( PixelConstantBuffer ).name() + "#"s + std::to_string( slot );
+		return typeid( PixelShaderConstantBuffer ).name() + "#"s + std::to_string( slot );
 	}
 
 	std::string getUid() const noexcept override

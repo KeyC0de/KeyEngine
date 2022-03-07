@@ -152,7 +152,7 @@
     <ClCompile Include="src\camera.cpp" />
     <ClCompile Include="src\pass_2d.cpp" />
     <ClCompile Include="src\shadow_pass.cpp" />
-    <ClCompile Include="src\light_vcb.cpp" />
+    <ClCompile Include="src\light_vscb.cpp" />
     <ClCompile Include="src\camera_widget.cpp" />
     <ClCompile Include="src\camera_manager.cpp" />
     <ClCompile Include="src\console.cpp" />
@@ -208,7 +208,7 @@
     <ClCompile Include="src\settings_manager.cpp" />
     <ClCompile Include="src\shadow_map_sampler.cpp" />
     <ClCompile Include="src\signal_handling.cpp" />
-    <ClCompile Include="src\skybox_vcb.cpp" />
+    <ClCompile Include="src\skybox_vscb.cpp" />
     <ClCompile Include="snake\snake.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -228,8 +228,8 @@
     <ClCompile Include="src\plane.cpp" />
     <ClCompile Include="src\texture.cpp" />
     <ClCompile Include="src\texture_sampler.cpp" />
-    <ClCompile Include="src\transform_scale_vcb.cpp" />
-    <ClCompile Include="src\transform_vcb.cpp" />
+    <ClCompile Include="src\transform_scale_vscb.cpp" />
+    <ClCompile Include="src\transform_vscb.cpp" />
     <ClCompile Include="src\triangle_mesh.cpp" />
     <ClCompile Include="src\utils.cpp" />
     <ClCompile Include="src\vertex_buffer.cpp" />
@@ -252,14 +252,14 @@
     <None Include="cpp.hint" />
     <None Include="imgui.ini" />
     <None Include="imgui_default.ini" />
-    <None Include="shaders\hlsli\directional_light_pcb.hlsli" />
+    <None Include="shaders\hlsli\directional_light_pscb.hlsli" />
     <None Include="shaders\hlsli\hlsl_misc.hlsli" />
-    <None Include="shaders\hlsli\point_light_pcb.hlsli" />
+    <None Include="shaders\hlsli\point_light_pscb.hlsli" />
     <None Include="shaders\hlsli\shading.hlsli" />
     <None Include="shaders\hlsli\shadowing_ps.hlsli" />
     <None Include="shaders\hlsli\shadowing_vs.hlsli" />
-    <None Include="shaders\hlsli\spot_light_pcb.hlsli" />
-    <None Include="shaders\hlsli\transforms_vcb.hlsli" />
+    <None Include="shaders\hlsli\spot_light_pscb.hlsli" />
+    <None Include="shaders\hlsli\transforms_vscb.hlsli" />
     <None Include="third_party\assimp\include\assimp\color4.inl" />
     <None Include="third_party\assimp\include\assimp\material.inl" />
     <None Include="third_party\assimp\include\assimp\matrix3x3.inl" />
@@ -300,7 +300,7 @@
     <ClInclude Include="inc\render_surface_clear_pass.h" />
     <ClInclude Include="inc\render_surface.h" />
     <ClInclude Include="inc\camera.h" />
-    <ClInclude Include="inc\light_vcb.h" />
+    <ClInclude Include="inc\light_vscb.h" />
     <ClInclude Include="inc\camera_widget.h" />
     <ClInclude Include="inc\camera_manager.h" />
     <ClInclude Include="inc\rendering_channel.h" />
@@ -388,7 +388,7 @@
     <ClInclude Include="inc\shadow_pass.h" />
     <ClInclude Include="inc\shadow_map_sampler.h" />
     <ClInclude Include="inc\signal_handling.h" />
-    <ClInclude Include="inc\skybox_vcb.h" />
+    <ClInclude Include="inc\skybox_vscb.h" />
     <ClInclude Include="inc\sky_pass.h" />
     <ClInclude Include="snake\snake.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
@@ -403,8 +403,8 @@
     <ClInclude Include="inc\plane.h" />
     <ClInclude Include="inc\texture.h" />
     <ClInclude Include="inc\texture_sampler.h" />
-    <ClInclude Include="inc\transform_scale_vcb.h" />
-    <ClInclude Include="inc\transform_vcb.h" />
+    <ClInclude Include="inc\transform_scale_vscb.h" />
+    <ClInclude Include="inc\transform_vscb.h" />
     <ClInclude Include="inc\utils.h" />
     <ClInclude Include="inc\vertex_buffer.h" />
     <ClInclude Include="inc\vertex_shader.h" />

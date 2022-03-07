@@ -11,7 +11,7 @@ class Graphics;
 class Camera;
 class CubeTextureDS;
 class IDepthStencilView;
-class LightVCB;
+class LightVSCB;
 
 namespace ren
 {
@@ -21,7 +21,7 @@ class ShadowPass
 {
 	static inline unsigned m_shadowMapResolution = 1024;
 	const Camera* m_pShadowCamera = nullptr;
-	std::shared_ptr<LightVCB> m_pLightVcb;
+	std::shared_ptr<LightVSCB> m_pLightVcb;
 	std::shared_ptr<CubeTextureDS> m_pDsvCubemap;
 	DirectX::XMFLOAT4X4 m_cameraShadowProjectionMatrix;
 	std::vector<DirectX::XMFLOAT3> m_cameraDirections{6};

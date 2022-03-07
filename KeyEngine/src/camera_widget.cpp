@@ -5,7 +5,7 @@
 #include "input_layout.h"
 #include "pixel_shader.h"
 #include "primitive_topology.h"
-#include "transform_vcb.h"
+#include "transform_vscb.h"
 #include "vertex_shader.h"
 #include "rasterizer.h"
 #include "rendering_channel.h"
@@ -91,10 +91,10 @@ CameraWidget::CameraWidget( Graphics& gph )
 			float padding;
 		} colorPcb;
 
-		lambertian.addBindable( PixelConstantBuffer<ColorPCB>::fetch( gph,
+		lambertian.addBindable( PixelShaderConstantBuffer<ColorPCB>::fetch( gph,
 			colorPcb,
 			0u ) );
-		lambertian.addBindable( std::make_shared<TransformVCB>( gph,
+		lambertian.addBindable( std::make_shared<TransformVSCB>( gph,
 			0u ) );
 		lambertian.addBindable( Rasterizer::fetch( gph,
 			false ) );

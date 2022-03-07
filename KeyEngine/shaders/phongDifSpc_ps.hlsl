@@ -1,5 +1,5 @@
 #include "hlsli/shading.hlsli"
-#include "hlsli/point_light_pcb.hlsli"
+#include "hlsli/point_light_pscb.hlsli"
 #include "hlsli/shadowing_ps.hlsli"
 
 

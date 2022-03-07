@@ -317,12 +317,12 @@ Renderer3d::Renderer3d( Graphics& gph,
 			layout["coefficients"].set<con::Float>( m_maxRadius * 2 + 1 );
 
 			con::Buffer cb{std::move( layout )};
-			m_blurKernel = std::make_shared<PixelConstantBufferEx>( gph,
+			m_blurKernel = std::make_shared<PixelShaderConstantBufferEx>( gph,
 				0u,
 				cb );
 			setKernelGauss( m_radius,
 				m_sigma );
-			addGlobalProducer( BindableProducer<PixelConstantBufferEx>::make( "blurKernel",
+			addGlobalProducer( BindableProducer<PixelShaderConstantBufferEx>::make( "blurKernel",
 				m_blurKernel ) );
 		}
 		{
@@ -330,10 +330,10 @@ Renderer3d::Renderer3d( Graphics& gph,
 			layout.add<con::Bool>( "bHorizontal" );
 
 			con::Buffer cb{std::move( layout )};
-			m_blurDirection = std::make_shared<PixelConstantBufferEx>( gph,
+			m_blurDirection = std::make_shared<PixelShaderConstantBufferEx>( gph,
 				1u,
 				cb );
-			addGlobalProducer( BindableProducer<PixelConstantBufferEx>::make( "blurDirection",
+			addGlobalProducer( BindableProducer<PixelShaderConstantBufferEx>::make( "blurDirection",
 				m_blurDirection ) );
 		}
 	}

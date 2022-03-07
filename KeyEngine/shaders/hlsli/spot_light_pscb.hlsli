@@ -1,4 +1,4 @@
-cbuffer SpotLightPCB : register(b3)
+cbuffer SpotLightPSCB : register(b3)
 {
 	float3 spotLightPosViewSpace;
 	float3 ambient;

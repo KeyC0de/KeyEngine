@@ -1,6 +1,6 @@
 #include "hlsli/shading.hlsli"
 #include "hlsli/shadowing_ps.hlsli"
-#include "hlsli/point_light_pcb.hlsli"
+#include "hlsli/point_light_pscb.hlsli"
 
 
 cbuffer ModelPCB : register(b0)

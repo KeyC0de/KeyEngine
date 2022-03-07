@@ -20,7 +20,7 @@ protected:
 	void update( Graphics& gph, const con::Buffer& buf );
 };
 
-class IVertexConstantBufferEx
+class IVertexShaderConstantBufferEx
 	: public IConstantBufferEx
 {
 public:
@@ -29,7 +29,7 @@ public:
 	void bind( Graphics& gph ) cond_noex override;
 };
 
-class IPixelConstantBufferEx
+class IPixelShaderConstantBufferEx
 	: public IConstantBufferEx
 {
 public:
@@ -104,5 +104,5 @@ public:
 	}
 };
 
-using VertexConstantBufferEx = ConstantBufferEx<IVertexConstantBufferEx>;
-using PixelConstantBufferEx = ConstantBufferEx<IPixelConstantBufferEx>;
+using VertexShaderConstantBufferEx = ConstantBufferEx<IVertexShaderConstantBufferEx>;
+using PixelShaderConstantBufferEx = ConstantBufferEx<IPixelShaderConstantBufferEx>;

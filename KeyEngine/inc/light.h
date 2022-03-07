@@ -13,8 +13,8 @@ class Camera;
 
 class DirectionalLight
 {
-	static constexpr unsigned m_directionalLightPcbSlot = 1u;
-	struct PCB final	// DirectionalLightPCB
+	static constexpr unsigned m_directionalLightPscbSlot = 1u;
+	struct PSCB final	// DirectionalLightPSCB
 	{
 		alignas(16) DirectX::XMFLOAT3 dir;	// directionalLightDirViewSpace in HLSL
 		alignas(16) DirectX::XMFLOAT3 ambient;
@@ -26,8 +26,8 @@ class DirectionalLight
 class PointLight
 {
 	std::string m_name;
-	static constexpr unsigned m_pointLightPcbSlot = 2u;
-	struct PCB final	// PointLightPCB
+	static constexpr unsigned m_pointLightPscbSlot = 2u;
+	struct PSCB final	// PointLightPSCB
 	{
 		alignas(16) DirectX::XMFLOAT3 pos;	// pointLightPosViewSpace in HLSL
 		alignas(16) DirectX::XMFLOAT3 ambient;
@@ -37,10 +37,10 @@ class PointLight
 		float attLinear;
 		float attQuadratic;
 	};
-	PCB m_pcbData;
-	PCB m_pcbHomeData;
+	PSCB m_pscbData;
+	PSCB m_pscbHomeData;
 	mutable Sphere m_sphereMesh;
-	mutable PixelConstantBuffer<PCB> m_pcb;
+	mutable PixelShaderConstantBuffer<PSCB> m_pscb;
 	bool m_bShadowCasting;
 	std::shared_ptr<Camera> m_pShadowCamera;
 public:
@@ -63,8 +63,8 @@ public:
 
 class SpotLight
 {
-	static constexpr unsigned m_spotLightPcbSlot = 3u;
-	struct PCB final	// SpotLightPCB
+	static constexpr unsigned m_spotLightPscbSlot = 3u;
+	struct PSCB final	// SpotLightPSCB
 	{
 		alignas(16) DirectX::XMFLOAT3 pos;	// spotLightPosViewSpace in HLSL
 		alignas(16) DirectX::XMFLOAT3 ambient;

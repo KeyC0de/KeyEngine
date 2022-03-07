@@ -3,8 +3,8 @@
 #include "input_layout.h"
 #include "pixel_shader.h"
 #include "primitive_topology.h"
-#include "transform_vcb.h"
-#include "transform_scale_vcb.h"
+#include "transform_vscb.h"
+#include "transform_scale_vscb.h"
 #include "vertex_buffer.h"
 #include "vertex_shader.h"
 #include "texture.h"
@@ -39,12 +39,11 @@ Cube::Cube( Graphics& gph,
 		cube.m_indices );
 	m_pPrimitiveTopology = PrimitiveTopology::fetch( gph );
 	
-	auto transformVcb = std::make_shared<TransformVCB>( gph,
+	auto transformVscb = std::make_shared<TransformVSCB>( gph,
 		0u );
-	{
-	// lambertian reflectance effect
+	{// lambertian reflectance effect
 		Effect lambertian{rch::lambert, "lambertian", true};
-		lambertian.addBindable( transformVcb );
+		lambertian.addBindable( transformVscb );
 
 		lambertian.addBindable( Texture::fetch( gph,
 			"assets/models/brick_wall/brick_wall_diffuse.jpg",
@@ -70,7 +69,7 @@ Cube::Cube( Graphics& gph,
 		auto cb = con::Buffer( std::move( cbLayout ) );
 		cb["modelSpecularColor"] = dx::XMFLOAT3{1.0f, 1.0f, 1.0f};
 		cb["modelSpecularGloss"] = 20.0f;
-		lambertian.addBindable( std::make_shared<PixelConstantBufferEx>( gph,
+		lambertian.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gph,
 			0u,
 			cb ) );
 
@@ -78,10 +77,9 @@ Cube::Cube( Graphics& gph,
 
 		addEffect( std::move( lambertian ) );
 	}
-	{
-	// shadow map effect
+	{// shadow map effect
 		Effect shadowMap{rch::shadow, "shadowMap", true};
-		shadowMap.addBindable( transformVcb );
+		shadowMap.addBindable( transformVscb );
 
 		shadowMap.addBindable( InputLayout::fetch( gph,
 			cube.m_vb.getLayout(),
@@ -89,10 +87,9 @@ Cube::Cube( Graphics& gph,
 
 		addEffect( std::move( shadowMap ) );
 	}
-	{
-	// blur outline mask effect
+	{// blur outline mask effect
 		Effect blurOutlineMask{rch::blurOutline, "blurOutlineMask", false};
-		blurOutlineMask.addBindable( transformVcb );
+		blurOutlineMask.addBindable( transformVscb );
 
 		blurOutlineMask.addBindable( InputLayout::fetch( gph,
 			cube.m_vb.getLayout(),
@@ -100,16 +97,15 @@ Cube::Cube( Graphics& gph,
 
 		addEffect( std::move( blurOutlineMask ) );
 	}
-	{
-	// blur outline draw effect
+	{// blur outline draw effect
 		Effect blurOutlineDraw{rch::blurOutline, "blurOutlineDraw", false};
-		blurOutlineDraw.addBindable( transformVcb );
+		blurOutlineDraw.addBindable( transformVscb );
 
 		con::RawLayout cbLayout;
 		cbLayout.add<con::Float4>( "materialColor" );
 		auto cb = con::Buffer( std::move( cbLayout ) );
 		cb["materialColor"] = dx::XMFLOAT4{1.0f, 0.4f, 0.4f, 1.0f};
-		blurOutlineDraw.addBindable( std::make_shared<PixelConstantBufferEx>( gph,
+		blurOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gph,
 			0u,
 			cb ) );
 
@@ -119,10 +115,9 @@ Cube::Cube( Graphics& gph,
 
 		addEffect( std::move( blurOutlineDraw ) );
 	}
-	{
-	// solid outline mask effect
+	{// solid outline mask effect
 		Effect solidOutlineMask{rch::solidOutline, "solidOutlineMask", true};
-		solidOutlineMask.addBindable( transformVcb );
+		solidOutlineMask.addBindable( transformVscb );
 
 		solidOutlineMask.addBindable( InputLayout::fetch( gph,
 			cube.m_vb.getLayout(),
@@ -130,11 +125,10 @@ Cube::Cube( Graphics& gph,
 
 		addEffect( std::move( solidOutlineMask ) );
 	}
-	{
-	// solid outline draw effect
+	{// solid outline draw effect
 		Effect solidOutlineDraw{rch::solidOutline, "solidOutlineDraw", true};
 
-		auto transformScaledVcb = std::make_shared<TransformScaleVCB>( gph,
+		auto transformScaledVcb = std::make_shared<TransformScaleVSCB>( gph,
 			0u,
 			1.04f );
 		solidOutlineDraw.addBindable( transformScaledVcb );
@@ -143,7 +137,7 @@ Cube::Cube( Graphics& gph,
 		cbLayout.add<con::Float4>( "materialColor" );
 		auto cb = con::Buffer( std::move( cbLayout ) );
 		cb["materialColor"] = dx::XMFLOAT4{1.0f, 0.4f, 0.4f, 1.0f};
-		solidOutlineDraw.addBindable( std::make_shared<PixelConstantBufferEx>( gph,
+		solidOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gph,
 			0u,
 			cb ) );
 

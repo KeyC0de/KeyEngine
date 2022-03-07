@@ -1,4 +1,4 @@
-cbuffer DirectionalLightPCB : register(b1)
+cbuffer DirectionalLightPSCB : register(b1)
 {
 	float3 directionalLightDirViewSpace;
 	float3 ambient;

@@ -3,7 +3,7 @@
 #include "input_layout.h"
 #include "pixel_shader.h"
 #include "primitive_topology.h"
-#include "transform_vcb.h"
+#include "transform_vscb.h"
 #include "vertex_buffer.h"
 #include "vertex_shader.h"
 #include "rasterizer.h"
@@ -78,10 +78,10 @@ Frustum::Frustum( Graphics& gph,
 			dx::XMFLOAT3 color{0.6f, 0.2f, 0.2f};
 			float padding;
 		} colorPcb;
-		lambert.addBindable( PixelConstantBuffer<ColorPCB>::fetch( gph,
+		lambert.addBindable( PixelShaderConstantBuffer<ColorPCB>::fetch( gph,
 			colorPcb,
 			0u ) );
-		lambert.addBindable( std::make_shared<TransformVCB>( gph,
+		lambert.addBindable( std::make_shared<TransformVSCB>( gph,
 			0u ) );
 		lambert.addBindable( Rasterizer::fetch( gph,
 			false ) );
@@ -106,10 +106,10 @@ Frustum::Frustum( Graphics& gph,
 			dx::XMFLOAT3 color{0.25f, 0.08f, 0.08f};
 			float padding;
 		} colorPcb;
-		occluded.addBindable( PixelConstantBuffer<ColorPCB2>::fetch( gph,
+		occluded.addBindable( PixelShaderConstantBuffer<ColorPCB2>::fetch( gph,
 			colorPcb,
 			0u ) );
-		occluded.addBindable( std::make_shared<TransformVCB>( gph,
+		occluded.addBindable( std::make_shared<TransformVSCB>( gph,
 			0u ) );
 		occluded.addBindable( Rasterizer::fetch( gph,
 			false ) );

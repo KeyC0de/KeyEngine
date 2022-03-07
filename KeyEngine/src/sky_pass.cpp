@@ -12,7 +12,7 @@
 #include "pixel_shader.h"
 #include "geometry.h"
 #include "cube_texture.h"
-#include "skybox_vcb.h"
+#include "skybox_vscb.h"
 #include "vertex_buffer.h"
 #include "index_buffer.h"
 #include "primitive_topology.h"
@@ -46,7 +46,7 @@ SkyPass::SkyPass( Graphics& gph,
 	addPassBindable( Rasterizer::fetch( gph,
 		true ) );
 	addPassBindable( PrimitiveTopology::fetch( gph ) );
-	addPassBindable( std::make_shared<SkyboxVCB>( gph ) );
+	addPassBindable( std::make_shared<SkyboxVSCB>( gph ) );
 	addPassBindable( PixelShader::fetch( gph,
 		"skybox_ps.cso" ) );
 	{

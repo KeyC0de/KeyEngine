@@ -10,7 +10,7 @@
 #include "cube_texture.h"
 #include "camera.h"
 #include "math_utils.h"
-#include "light_vcb.h"
+#include "light_vscb.h"
 #include "shadow_map_sampler.h"
 
 
@@ -22,7 +22,7 @@ ShadowPass::ShadowPass( Graphics& gph,
 	unsigned shadowMapRez )
 	:
 	RenderQueuePass{name},
-	m_pLightVcb{std::make_shared<LightVCB>( gph, 1u )}
+	m_pLightVcb{std::make_shared<LightVSCB>( gph, 1u )}
 {
 	m_shadowMapResolution = shadowMapRez;
 

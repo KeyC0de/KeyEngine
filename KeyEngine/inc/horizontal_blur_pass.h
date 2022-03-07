@@ -14,7 +14,7 @@ namespace ren
 class HorizontalBlurPass
 	: public FullscreenPass
 {
-	std::shared_ptr<PixelConstantBufferEx> m_pPcbBlurDirection;
+	std::shared_ptr<PixelShaderConstantBufferEx> m_pPscbBlurDirection;
 public:
 	HorizontalBlurPass( Graphics& gph, const std::string& name, int rezReductFactor );
 

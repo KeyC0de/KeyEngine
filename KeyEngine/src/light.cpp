@@ -7,17 +7,17 @@
 
 
 /*
-void DirectionalLightVCB::update( Graphics& gph )
+void DirectionalLightVSCB::update( Graphics& gph )
 {
 	ASSERT( m_pDirectionalLightShadowCamera, "Camera not specified (null)!" );
 	dx::XMFLOAT3 dir;
 	dx::XMStoreFloat3( &dir,
 		m_pDirectionalLightShadowCamera->getDirection() );
-	const DirectionalLightTransformVCB vcb{dx::XMMatrixTranspose( dx::XMMatrixTranslation( -dir.x,
+	const DirectionalLightTransformVSCB vscb{dx::XMMatrixTranspose( dx::XMMatrixTranslation( -dir.x,
 		-dir.y,
 		-dir.z ) )};
-	m_pVcb->update( gph,
-		vcb );
+	m_pVscb->update( gph,
+		vscb );
 }
 */
 
@@ -28,13 +28,13 @@ PointLight::PointLight( Graphics& gph,
 	float radius )
 	:
 	m_sphereMesh(gph, radius),
-	m_pcb(gph, m_pointLightPcbSlot),
+	m_pscb(gph, m_pointLightPscbSlot),
 	m_bShadowCasting{bShadowCasting}
 {
 	static int id = 0;
 	++id;
 	m_name = {std::string{"Light"} + std::to_string( id )};
-	m_pcbHomeData = {pos,
+	m_pscbHomeData = {pos,
 		{0.08f, 0.08f, 0.08f},
 		col,
 		1.0f,
@@ -49,7 +49,7 @@ PointLight::PointLight( Graphics& gph,
 			CameraManager::getInstance().getClientWidth(),
 			CameraManager::getInstance().getClientHeight(),
 			90.0f,
-			m_pcbData.pos,
+			m_pscbData.pos,
 			0.0f,
 			util::PI / 2.0f,
 			true );
@@ -63,12 +63,12 @@ std::string PointLight::getName() const noexcept
 
 void PointLight::setIntensity( float newIntensity ) noexcept
 {
-	m_pcbData.intensity = newIntensity;
+	m_pscbData.intensity = newIntensity;
 }
 
 void PointLight::setColor( const DirectX::XMFLOAT3& diffuseColor ) noexcept
 {
-	m_pcbData.lightColor = diffuseColor;
+	m_pscbData.lightColor = diffuseColor;
 }
 
 bool PointLight::isCastingShadows() const noexcept
@@ -87,31 +87,31 @@ void PointLight::displayImguiWidgets() noexcept
 		};
 
 		ImGui::Text( "Position" );
-		dirtyCheck( ImGui::SliderFloat( "X", &m_pcbData.pos.x, -60.0f, 60.0f,
+		dirtyCheck( ImGui::SliderFloat( "X", &m_pscbData.pos.x, -60.0f, 60.0f,
 			"%.1f" ) );
-		dirtyCheck( ImGui::SliderFloat( "Y", &m_pcbData.pos.y, -60.0f, 60.0f,
+		dirtyCheck( ImGui::SliderFloat( "Y", &m_pscbData.pos.y, -60.0f, 60.0f,
 			"%.1f" ) );
-		dirtyCheck( ImGui::SliderFloat( "Z", &m_pcbData.pos.z, -60.0f, 60.0f,
+		dirtyCheck( ImGui::SliderFloat( "Z", &m_pscbData.pos.z, -60.0f, 60.0f,
 			"%.1f" ) );
 
 		if ( bDirty && m_bShadowCasting )
 		{
-			m_pShadowCamera->setPosition( m_pcbData.pos );
+			m_pShadowCamera->setPosition( m_pscbData.pos );
 		}
 		
 		ImGui::Text( "Intensity & Color" );
-		ImGui::SliderFloat( "Intensity", &m_pcbData.intensity, 0.01f, 4.0f,
+		ImGui::SliderFloat( "Intensity", &m_pscbData.intensity, 0.01f, 4.0f,
 			"%.2f",
 			2.0f );
-		ImGui::ColorEdit3( "Diffuse", &m_pcbData.lightColor.x );
-		ImGui::ColorEdit3( "Ambient", &m_pcbData.ambient.x );
+		ImGui::ColorEdit3( "Diffuse", &m_pscbData.lightColor.x );
+		ImGui::ColorEdit3( "Ambient", &m_pscbData.ambient.x );
 		
 		ImGui::Text( "Attenuation" );
-		ImGui::SliderFloat( "Constant", &m_pcbData.attConstant, 0.05f, 10.0f, "%.2f",
+		ImGui::SliderFloat( "Constant", &m_pscbData.attConstant, 0.05f, 10.0f, "%.2f",
 			4.0f );
-		ImGui::SliderFloat( "Linear", &m_pcbData.attLinear, 0.0001f, 4.0f, "%.4f",
+		ImGui::SliderFloat( "Linear", &m_pscbData.attLinear, 0.0001f, 4.0f, "%.4f",
 			8.0f );
-		ImGui::SliderFloat( "Quadratic", &m_pcbData.attQuadratic, 0.0000001f, 10.0f,
+		ImGui::SliderFloat( "Quadratic", &m_pscbData.attQuadratic, 0.0000001f, 10.0f,
 			"%.7f",
 			10.0f);
 
@@ -125,21 +125,21 @@ void PointLight::displayImguiWidgets() noexcept
 
 void PointLight::resetToDefault() noexcept
 {
-	m_pcbData = m_pcbHomeData;
+	m_pscbData = m_pscbHomeData;
 }
 
 void PointLight::update( Graphics& gph,
 	float dt,
 	const DirectX::XMMATRIX& activeCameraViewMat ) const noexcept
 {
-	auto copy = m_pcbData;
-	const auto lightViewSpacePos = DirectX::XMLoadFloat3( &m_pcbData.pos );
+	auto copy = m_pscbData;
+	const auto lightViewSpacePos = DirectX::XMLoadFloat3( &m_pscbData.pos );
 	DirectX::XMStoreFloat3( &copy.pos,
 		DirectX::XMVector3Transform( lightViewSpacePos, activeCameraViewMat ) );
-	m_pcb.update( gph,
+	m_pscb.update( gph,
 		copy );
-	m_sphereMesh.setPosition( m_pcbData.pos );
-	m_pcb.bind( gph );
+	m_sphereMesh.setPosition( m_pscbData.pos );
+	m_pscb.bind( gph );
 }
 
 void PointLight::render( size_t channels ) const cond_noex

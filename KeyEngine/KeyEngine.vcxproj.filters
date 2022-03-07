@@ -141,10 +141,10 @@
     <ClCompile Include="src\texture_sampler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\transform_scale_vcb.cpp">
+    <ClCompile Include="src\transform_scale_vscb.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\transform_vcb.cpp">
+    <ClCompile Include="src\transform_vscb.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\utils.cpp">
@@ -231,7 +231,7 @@
     <ClCompile Include="src\job.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\skybox_vcb.cpp">
+    <ClCompile Include="src\skybox_vscb.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\key_thread.cpp">
@@ -303,7 +303,7 @@
     <ClCompile Include="src\camera_widget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\light_vcb.cpp">
+    <ClCompile Include="src\light_vscb.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\shadow_pass.cpp">
@@ -536,10 +536,10 @@
     <ClInclude Include="inc\texture_sampler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\transform_scale_vcb.h">
+    <ClInclude Include="inc\transform_scale_vscb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\transform_vcb.h">
+    <ClInclude Include="inc\transform_vscb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="inc\utils.h">
@@ -995,7 +995,7 @@
     <ClInclude Include="inc\job.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\skybox_vcb.h">
+    <ClInclude Include="inc\skybox_vscb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="inc\key_thread.h">
@@ -1061,7 +1061,7 @@
     <ClInclude Include="inc\camera_widget.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\light_vcb.h">
+    <ClInclude Include="inc\light_vscb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="inc\triangle_mesh.h">
@@ -1197,19 +1197,19 @@
     <None Include="arrow.cur">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="shaders\hlsli\directional_light_pcb.hlsli">
+    <None Include="shaders\hlsli\directional_light_pscb.hlsli">
       <Filter>Shader Files</Filter>
     </None>
     <None Include="shaders\hlsli\hlsl_misc.hlsli">
       <Filter>Shader Files</Filter>
     </None>
-    <None Include="shaders\hlsli\point_light_pcb.hlsli">
+    <None Include="shaders\hlsli\point_light_pscb.hlsli">
       <Filter>Shader Files</Filter>
     </None>
-    <None Include="shaders\hlsli\spot_light_pcb.hlsli">
+    <None Include="shaders\hlsli\spot_light_pscb.hlsli">
       <Filter>Shader Files</Filter>
     </None>
-    <None Include="shaders\hlsli\transforms_vcb.hlsli">
+    <None Include="shaders\hlsli\transforms_vscb.hlsli">
       <Filter>Shader Files</Filter>
     </None>
     <None Include="shaders\hlsli\shading.hlsli">

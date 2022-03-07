@@ -57,7 +57,7 @@ void IConstantBufferEx::update( Graphics& gph,
 }
 
 
-void IVertexConstantBufferEx::bind( Graphics& gph ) cond_noex
+void IVertexShaderConstantBufferEx::bind( Graphics& gph ) cond_noex
 {
 	getContext( gph )->VSSetConstantBuffers( m_slot,
 		1u,
@@ -66,7 +66,7 @@ void IVertexConstantBufferEx::bind( Graphics& gph ) cond_noex
 }
 
 
-void IPixelConstantBufferEx::bind( Graphics& gph ) cond_noex
+void IPixelShaderConstantBufferEx::bind( Graphics& gph ) cond_noex
 {
 	getContext( gph )->PSSetConstantBuffers( m_slot,
 		1u,

@@ -4,8 +4,8 @@
 #include "index_buffer.h"
 #include "input_layout.h"
 #include "pixel_shader.h"
-#include "transform_vcb.h"
-#include "transform_scale_vcb.h"
+#include "transform_vscb.h"
+#include "transform_scale_vscb.h"
 #include "vertex_buffer.h"
 #include "vertex_shader.h"
 #include "texture.h"
@@ -111,7 +111,7 @@ MaterialLoader::MaterialLoader( Graphics& gph,
 		}
 		{
 		// the rest of the Bindables:
-			lambertian.addBindable( std::make_shared<TransformVCB>( gph,
+			lambertian.addBindable( std::make_shared<TransformVSCB>( gph,
 				0u ) );
 			auto pVs = VertexShader::fetch( gph,
 				shaderFileName + "_vs.cso" );
@@ -130,35 +130,35 @@ MaterialLoader::MaterialLoader( Graphics& gph,
 			}
 
 			// Assembling the Pixel Shader Constant Buffer
-			con::Buffer pcb{std::move( cbLayout )};
-			if ( auto cbElem = pcb["materialColor"]; cbElem.isValid() )
+			con::Buffer pscb{std::move( cbLayout )};
+			if ( auto cbElem = pscb["materialColor"]; cbElem.isValid() )
 			{
 				aiColor3D difCol = {0.45f, 0.45f, 0.85f};
 				aimaterial.Get( AI_MATKEY_COLOR_DIFFUSE,
 					difCol );
 				cbElem = reinterpret_cast<dx::XMFLOAT3&>( difCol );
 			}
-			pcb["bSpecularMap"].setIfValid( true );
-			pcb["bSpecularMapAlpha"].setIfValid( bSpecularTextureAlpha );
-			if ( auto cbElem = pcb["modelSpecularColor"]; cbElem.isValid() )
+			pscb["bSpecularMap"].setIfValid( true );
+			pscb["bSpecularMapAlpha"].setIfValid( bSpecularTextureAlpha );
+			if ( auto cbElem = pscb["modelSpecularColor"]; cbElem.isValid() )
 			{
 				aiColor3D specCol = {0.18f, 0.18f, 0.18f};
 				aimaterial.Get( AI_MATKEY_COLOR_SPECULAR,
 					specCol );
 				cbElem = reinterpret_cast<dx::XMFLOAT3&>( specCol );
 			}
-			if ( auto cbElem = pcb["modelSpecularGloss"]; cbElem.isValid() )
+			if ( auto cbElem = pscb["modelSpecularGloss"]; cbElem.isValid() )
 			{
 				float specGloss = 8.0f;
 				aimaterial.Get( AI_MATKEY_SHININESS,
 					specGloss );
 				cbElem = specGloss;
 			}
-			pcb["bNormalMap"].setIfValid( true );
-			pcb["normalMapStrength"].setIfValid( 1.0f );
-			lambertian.addBindable( std::make_unique<PixelConstantBufferEx>( gph,
+			pscb["bNormalMap"].setIfValid( true );
+			pscb["normalMapStrength"].setIfValid( 1.0f );
+			lambertian.addBindable( std::make_unique<PixelShaderConstantBufferEx>( gph,
 				0u,
-				std::move( pcb ) ) );
+				std::move( pscb ) ) );
 		}
 		m_effects.emplace_back( std::move( lambertian ) );
 	}
@@ -169,7 +169,7 @@ MaterialLoader::MaterialLoader( Graphics& gph,
 		shadowMap.addBindable( InputLayout::fetch( gph,
 			m_vertexLayout,
 			*VertexShader::fetch( gph, "flat_vs.cso" ) ) );
-		shadowMap.addBindable( std::make_shared<TransformVCB>( gph,
+		shadowMap.addBindable( std::make_shared<TransformVSCB>( gph,
 			0u ) );
 
 		m_effects.emplace_back( std::move( shadowMap ) );
@@ -181,7 +181,7 @@ MaterialLoader::MaterialLoader( Graphics& gph,
 		blurOutlineMask.addBindable( InputLayout::fetch( gph,
 			m_vertexLayout,
 			*VertexShader::fetch( gph, "flat_vs.cso" ) ) );
-		blurOutlineMask.addBindable( std::make_shared<TransformVCB>( gph,
+		blurOutlineMask.addBindable( std::make_shared<TransformVSCB>( gph,
 			0u ) );
 
 		m_effects.emplace_back( std::move( blurOutlineMask ) );
@@ -194,14 +194,14 @@ MaterialLoader::MaterialLoader( Graphics& gph,
 			cbLayout.add<con::Float3>( "materialColor" );
 			auto cb = con::Buffer{std::move( cbLayout )};
 			cb["materialColor"] = dx::XMFLOAT3{1.0f, 0.4f, 0.4f};
-			blurOutlineDraw.addBindable( std::make_shared<PixelConstantBufferEx>( gph,
+			blurOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gph,
 				0u,
 				cb ) );
 		}
 		blurOutlineDraw.addBindable( InputLayout::fetch( gph,
 			m_vertexLayout,
 			*VertexShader::fetch( gph, "flat_vs.cso" ) ) );
-		blurOutlineDraw.addBindable( std::make_shared<TransformVCB>( gph,
+		blurOutlineDraw.addBindable( std::make_shared<TransformVSCB>( gph,
 			0u ) );
 
 		m_effects.emplace_back( std::move( blurOutlineDraw ) );
@@ -209,7 +209,7 @@ MaterialLoader::MaterialLoader( Graphics& gph,
 	{
 	// solid outline mask effect
 		Effect solidOutlineMask{rch::solidOutline, "solidOutlineMask", false};
-		solidOutlineMask.addBindable( std::make_shared<TransformVCB>( gph,
+		solidOutlineMask.addBindable( std::make_shared<TransformVSCB>( gph,
 			0u ) );
 
 		solidOutlineMask.addBindable( InputLayout::fetch( gph,
@@ -222,7 +222,7 @@ MaterialLoader::MaterialLoader( Graphics& gph,
 	// solid outline draw effect
 		Effect solidOutlineDraw{rch::solidOutline, "solidOutlineDraw", false};
 
-		auto transformScaledVcb = std::make_shared<TransformScaleVCB>( gph,
+		auto transformScaledVcb = std::make_shared<TransformScaleVSCB>( gph,
 			0u,
 			1.04f );
 		solidOutlineDraw.addBindable( transformScaledVcb );
@@ -231,7 +231,7 @@ MaterialLoader::MaterialLoader( Graphics& gph,
 		cbLayout.add<con::Float4>( "materialColor" );
 		auto cb = con::Buffer( std::move( cbLayout ) );
 		cb["materialColor"] = dx::XMFLOAT4{1.0f, 0.4f, 0.4f, 1.0f};
-		solidOutlineDraw.addBindable( std::make_shared<PixelConstantBufferEx>( gph,
+		solidOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gph,
 			0u,
 			cb ) );
 

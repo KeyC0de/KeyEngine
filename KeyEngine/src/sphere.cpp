@@ -3,7 +3,7 @@
 #include "input_layout.h"
 #include "pixel_shader.h"
 #include "primitive_topology.h"
-#include "transform_vcb.h"
+#include "transform_vscb.h"
 #include "vertex_buffer.h"
 #include "vertex_shader.h"
 #include "rasterizer.h"
@@ -47,11 +47,11 @@ Sphere::Sphere( Graphics& gph,
 			dx::XMFLOAT3 color{1.0f, 1.0f, 1.0f};
 			float padding;
 		} colorCb;
-		lambertian.addBindable( PixelConstantBuffer<ColorPCB>::fetch( gph,
+		lambertian.addBindable( PixelShaderConstantBuffer<ColorPCB>::fetch( gph,
 			colorCb,
 			0u ) );
 		
-		lambertian.addBindable( std::make_shared<TransformVCB>( gph,
+		lambertian.addBindable( std::make_shared<TransformVSCB>( gph,
 			0u ) );
 
 		lambertian.addBindable( Rasterizer::fetch( gph,

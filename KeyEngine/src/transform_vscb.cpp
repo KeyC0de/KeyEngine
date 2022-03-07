@@ -1,44 +1,44 @@
-#include "transform_vcb.h"
+#include "transform_vscb.h"
 #include "dxgi_info_queue.h"
 #include "assertions_console.h"
 
 
-TransformVCB::TransformVCB( Graphics& gph,
+TransformVSCB::TransformVSCB( Graphics& gph,
 	unsigned slot )
 {
-	if ( !m_pVcb )
+	if ( !m_pVscb )
 	{
-		m_pVcb = std::make_unique<VertexConstantBuffer<Transforms>>( gph,
+		m_pVscb = std::make_unique<VertexShaderConstantBuffer<Transforms>>( gph,
 			slot );
 	}
 }
 
-void TransformVCB::bind( Graphics& gph ) cond_noex
+void TransformVSCB::bind( Graphics& gph ) cond_noex
 {
-	updateVcb( gph,
+	update( gph,
 		getTransforms( gph ) );
-	m_pVcb->bind( gph );
+	m_pVscb->bind( gph );
 }
 
-void TransformVCB::setParentDrawable( const Drawable& parent ) noexcept
+void TransformVSCB::setParentDrawable( const Drawable& parent ) noexcept
 {
 	m_pDrawable = &parent;
 }
 
-std::unique_ptr<IBindableCloning> TransformVCB::clone() const noexcept
+std::unique_ptr<IBindableCloning> TransformVSCB::clone() const noexcept
 {
-	return std::make_unique<TransformVCB>( *this );
+	return std::make_unique<TransformVSCB>( *this );
 }
 
-void TransformVCB::updateVcb( Graphics& gph,
+void TransformVSCB::update( Graphics& gph,
 	const Transforms& tfs ) cond_noex
 {
 	ASSERT( m_pDrawable != nullptr, "No Drawable set!" );
-	m_pVcb->update( gph,
+	m_pVscb->update( gph,
 		tfs );
 }
 
-TransformVCB::Transforms TransformVCB::getTransforms( Graphics& gph ) cond_noex
+TransformVSCB::Transforms TransformVSCB::getTransforms( Graphics& gph ) cond_noex
 {
 	ASSERT( m_pDrawable != nullptr, "No Drawable set!" );
 	const auto world = m_pDrawable->getTransform();

@@ -1,4 +1,4 @@
-cbuffer PointLightPCB : register(b2)
+cbuffer PointLightPSCB : register(b2)
 {
 	float3 pointLightPosViewSpace;
 	float3 ambient;

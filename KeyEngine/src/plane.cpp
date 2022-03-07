@@ -3,8 +3,8 @@
 #include "input_layout.h"
 #include "pixel_shader.h"
 #include "primitive_topology.h"
-#include "transform_vcb.h"
-#include "transform_scale_vcb.h"
+#include "transform_vscb.h"
+#include "transform_scale_vscb.h"
 #include "vertex_buffer.h"
 #include "index_buffer.h"
 #include "vertex_shader.h"
@@ -41,7 +41,7 @@ Plane::Plane( Graphics& gph,
 		plane.m_indices );
 	m_pPrimitiveTopology = PrimitiveTopology::fetch( gph );
 	
-	auto transformVcb = std::make_shared<TransformVCB>( gph,
+	auto transformVcb = std::make_shared<TransformVSCB>( gph,
 		0u );
 	{
 	// lambertian reflectance effect
@@ -72,7 +72,7 @@ Plane::Plane( Graphics& gph,
 		auto cb = con::Buffer( std::move( cbLayout ) );
 		cb["modelSpecularColor"] = dx::XMFLOAT3{1.0f, 1.0f, 1.0f};
 		cb["modelSpecularGloss"] = 20.0f;
-		lambertian.addBindable( std::make_shared<PixelConstantBufferEx>( gph,
+		lambertian.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gph,
 			0u,
 			cb ) );
 
@@ -111,7 +111,7 @@ Plane::Plane( Graphics& gph,
 		cbLayout.add<con::Float4>( "materialColor" );
 		auto cb = con::Buffer( std::move( cbLayout ) );
 		cb["materialColor"] = dx::XMFLOAT4{1.0f, 0.4f, 0.4f, 1.0f};
-		blurOutlineDraw.addBindable( std::make_shared<PixelConstantBufferEx>( gph,
+		blurOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gph,
 			0u,
 			cb ) );
 
@@ -136,7 +136,7 @@ Plane::Plane( Graphics& gph,
 	// solid outline draw effect
 		Effect solidOutlineDraw{rch::solidOutline, "solidOutlineDraw", true};
 
-		auto transformScaledVcb = std::make_shared<TransformScaleVCB>( gph,
+		auto transformScaledVcb = std::make_shared<TransformScaleVSCB>( gph,
 			0u,
 			1.04f );
 		solidOutlineDraw.addBindable( transformScaledVcb );
@@ -145,7 +145,7 @@ Plane::Plane( Graphics& gph,
 		cbLayout.add<con::Float4>( "materialColor" );
 		auto cb = con::Buffer( std::move( cbLayout ) );
 		cb["materialColor"] = dx::XMFLOAT4{1.0f, 0.4f, 0.4f, 1.0f};
-		solidOutlineDraw.addBindable( std::make_shared<PixelConstantBufferEx>( gph,
+		solidOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gph,
 			0u,
 			cb ) );
 

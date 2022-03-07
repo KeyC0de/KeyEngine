@@ -1,4 +1,4 @@
-cbuffer TransformsVCB : register(b0)
+cbuffer TransformsVSCB : register(b0)
 {
 	matrix model;
 	matrix worldView;

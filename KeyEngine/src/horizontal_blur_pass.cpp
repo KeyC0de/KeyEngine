@@ -25,9 +25,9 @@ HorizontalBlurPass::HorizontalBlurPass( Graphics& gph,
 		TextureSampler::AddressMode::Clamp ) );
 	
 	addContainerBindableConsumer<IRenderTargetView>( "blurRttIn" );
-	addContainerBindableConsumer<PixelConstantBufferEx>( "blurKernel" );
-	addConsumer( BindableConsumer<PixelConstantBufferEx>::make( "blurDirection",
-		m_pPcbBlurDirection ) );
+	addContainerBindableConsumer<PixelShaderConstantBufferEx>( "blurKernel" );
+	addConsumer( BindableConsumer<PixelShaderConstantBufferEx>::make( "blurDirection",
+		m_pPscbBlurDirection ) );
 
 	m_pRtv = std::make_shared<RenderTargetShaderInput>( gph,
 		width,
@@ -43,10 +43,10 @@ HorizontalBlurPass::HorizontalBlurPass( Graphics& gph,
 
 void HorizontalBlurPass::run( Graphics& gph ) const cond_noex
 {
-	auto pcb = m_pPcbBlurDirection->getBuffer();
-	pcb["bHorizontal"] = true;
-	m_pPcbBlurDirection->setBuffer( pcb );
-	m_pPcbBlurDirection->bind( gph );
+	auto pscb = m_pPscbBlurDirection->getBuffer();
+	pscb["bHorizontal"] = true;
+	m_pPscbBlurDirection->setBuffer( pscb );
+	m_pPscbBlurDirection->bind( gph );
 	FullscreenPass::run( gph );
 }
 
@@ -56,4 +56,4 @@ void HorizontalBlurPass::reset() cond_noex
 }
 
 
-}//ren
+}// namespace ren

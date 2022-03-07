@@ -58,8 +58,8 @@ class Renderer3d
 	static constexpr inline float m_maxSigma = 7.0f;
 	int m_radius;
 	float m_sigma;
-	std::shared_ptr<PixelConstantBufferEx> m_blurKernel;
-	std::shared_ptr<PixelConstantBufferEx> m_blurDirection;
+	std::shared_ptr<PixelShaderConstantBufferEx> m_blurKernel;
+	std::shared_ptr<PixelShaderConstantBufferEx> m_blurDirection;
 public:
 	enum KernelType
 	{

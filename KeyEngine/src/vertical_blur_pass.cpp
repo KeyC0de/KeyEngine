@@ -21,9 +21,9 @@ VerticalBlurPass::VerticalBlurPass( Graphics& gph,
 		TextureSampler::AddressMode::Clamp ) );
 
 	addContainerBindableConsumer<IRenderTargetView>( "blurRttIn" );
-	addContainerBindableConsumer<PixelConstantBufferEx>( "blurKernel" );
-	addConsumer( BindableConsumer<PixelConstantBufferEx>::make( "blurDirection",
-		m_pPcbBlurDirection ) );
+	addContainerBindableConsumer<PixelShaderConstantBufferEx>( "blurKernel" );
+	addConsumer( BindableConsumer<PixelShaderConstantBufferEx>::make( "blurDirection",
+		m_pPscbBlurDirection ) );
 	addConsumer( RenderSurfaceConsumer<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );
 	addConsumer( RenderSurfaceConsumer<IDepthStencilView>::make( "depthStencil",
@@ -41,10 +41,10 @@ VerticalBlurPass::VerticalBlurPass( Graphics& gph,
 
 void VerticalBlurPass::run( Graphics& gph ) const cond_noex
 {
-	auto pcBuf = m_pPcbBlurDirection->getBuffer();
+	auto pcBuf = m_pPscbBlurDirection->getBuffer();
 	pcBuf["bHorizontal"] = false;
-	m_pPcbBlurDirection->setBuffer( pcBuf );
-	m_pPcbBlurDirection->bind( gph );
+	m_pPscbBlurDirection->setBuffer( pcBuf );
+	m_pPscbBlurDirection->bind( gph );
 	FullscreenPass::run( gph );
 }
 
