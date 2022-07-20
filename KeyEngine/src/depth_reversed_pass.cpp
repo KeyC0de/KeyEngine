@@ -9,8 +9,8 @@
 namespace ren
 {
 
-DepthReversedPass::DepthReversedPass( Graphics& gph,
-	const std::string& name )
+DepthReversedPass::DepthReversedPass( Graphics &gph,
+	const std::string &name )
 	:
 	RenderQueuePass{name}
 {

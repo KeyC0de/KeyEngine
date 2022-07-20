@@ -25,7 +25,7 @@
 namespace ren
 {
 
-Renderer::Renderer( Graphics& gph )
+Renderer::Renderer( Graphics &gph )
 	:
 	m_globalColorBuffer{gph.shareRenderTarget()},
 	m_globalDepthBuffer{std::make_shared<DepthStencilOutput>( gph )}
@@ -69,7 +69,7 @@ void Renderer::addGlobalConsumer( std::unique_ptr<IConsumer> pConsumer )
 	m_globalConsumers.push_back( std::move( pConsumer ) );
 }
 
-void Renderer::run( Graphics& gph ) cond_noex
+void Renderer::run( Graphics &gph ) cond_noex
 {
 	ASSERT( m_bValidatedPasses, "Renderer is not validated!" );
 	for ( auto& pass : m_passes )
@@ -95,15 +95,15 @@ void Renderer::addPass( std::unique_ptr<IPass> pPass )
 	{
 		if ( pa->getName() == pPass->getName() )
 		{
-			throwRendererException( "Pass name already exists: " + pPass->getName() );
+			THROW_RENDERER_EXCEPTION( "Pass name already exists: " + pPass->getName() );
 		}
 	}
 	m_passes.push_back( std::move( pPass ) );
 }
 
-void Renderer::setupGlobalConsumerTarget( const std::string& globalConsumerName,
-	const std::string& passName,
-	const std::string& producerName )
+void Renderer::setupGlobalConsumerTarget( const std::string &globalConsumerName,
+	const std::string &passName,
+	const std::string &producerName )
 {
 	const auto passFinder = [&globalConsumerName]( const std::unique_ptr<IConsumer>& cons )
 	{
@@ -114,7 +114,7 @@ void Renderer::setupGlobalConsumerTarget( const std::string& globalConsumerName,
 		passFinder );
 	if ( cons == m_globalConsumers.end() )
 	{
-		throwRendererException( "Global consumer " + globalConsumerName + " does not exist!" );
+		THROW_RENDERER_EXCEPTION( "Global consumer " + globalConsumerName + " does not exist!" );
 	}
 	(*cons)->setPassAndProducerNames( passName,
 		producerName );
@@ -143,7 +143,7 @@ void Renderer::linkPassConsumers( IPass& pass )
 				<< "] consumer named ["
 				<< cons->getName()
 				<< "] has no target producer set.";
-			throwRendererException( oss.str() );
+			THROW_RENDERER_EXCEPTION( oss.str() );
 		}
 
 		// check whether consumer is global
@@ -165,7 +165,7 @@ void Renderer::linkPassConsumers( IPass& pass )
 				oss << "Producer named ["
 					<< cons->getProducerName()
 					<< "] not a global";
-				throwRendererException( oss.str() );
+				THROW_RENDERER_EXCEPTION( oss.str() );
 			}
 		}
 		else
@@ -187,7 +187,7 @@ void Renderer::linkPassConsumers( IPass& pass )
 				oss << "Pass named ["
 					<< consumerPassName
 					<< "] not found";
-				throwRendererException( oss.str() );
+				THROW_RENDERER_EXCEPTION( oss.str() );
 			}
 		}
 	}
@@ -210,7 +210,7 @@ void Renderer::linkGlobalConsumers()
 	}
 }
 
-IPass& ren::Renderer::getPass( const std::string& name )
+IPass& ren::Renderer::getPass( const std::string &name )
 {
 	const auto finder = std::find_if( m_passes.begin(),
 		m_passes.end(),
@@ -220,12 +220,12 @@ IPass& ren::Renderer::getPass( const std::string& name )
 		} );
 	if ( finder == m_passes.end() )
 	{
-		throwRendererException( "Pass '" + name + "' not found in Renderer!" );
+		THROW_RENDERER_EXCEPTION( "Pass '" + name + "' not found in Renderer!" );
 	}
 	return **finder;
 }
 
-RenderQueuePass& Renderer::getRenderQueuePass( const std::string& name )
+RenderQueuePass& Renderer::getRenderQueuePass( const std::string &name )
 {
 	try
 	{
@@ -240,15 +240,15 @@ RenderQueuePass& Renderer::getRenderQueuePass( const std::string& name )
 	catch( std::bad_cast& ex )
 	{
 		(void)ex;
-		throwRendererException( "Renderer::getRenderQueuePass pass '" + name
+		THROW_RENDERER_EXCEPTION( "Renderer::getRenderQueuePass pass '" + name
 			+ "' was not a RenderQueuePass" );
 	}
-	throwRendererException( "Renderer::getRenderQueuePass pass '" + name
+	THROW_RENDERER_EXCEPTION( "Renderer::getRenderQueuePass pass '" + name
 		+ "' was not found" );
 }
 
 
-Renderer3d::Renderer3d( Graphics& gph,
+Renderer3d::Renderer3d( Graphics &gph,
 	int radius,
 	float sigma,
 	KernelType kernelType )
@@ -419,14 +419,14 @@ Renderer3d::Renderer3d( Graphics& gph,
 	Renderer::linkGlobalConsumers();
 }
 
-void Renderer3d::showImGuiWindows( Graphics& gph )
+void Renderer3d::showImGuiWindows( Graphics &gph )
 {
 	showShadowDumpImguiWindow( gph );
 	showGaussianBlurImguiWindow( gph );
 	dynamic_cast<SkyPass&>( getPass( "skybox" ) ).displayImguiWidgets();
 }
 
-void Renderer3d::showGaussianBlurImguiWindow( Graphics& gph )
+void Renderer3d::showGaussianBlurImguiWindow( Graphics &gph )
 {
 	if ( ImGui::Begin( "Blur Kernel" ) )
 	{
@@ -502,7 +502,7 @@ void ren::Renderer3d::setShadowCamera( Camera& cam )
 	dynamic_cast<ShadowPass&>( getPass( "shadowMap" ) ).setShadowCamera( cam );
 }
 
-void ren::Renderer3d::showShadowDumpImguiWindow( Graphics& gph )
+void ren::Renderer3d::showShadowDumpImguiWindow( Graphics &gph )
 {
 	if ( ImGui::Begin( "Shadow" ) )
 	{
@@ -515,8 +515,8 @@ void ren::Renderer3d::showShadowDumpImguiWindow( Graphics& gph )
 	ImGui::End();
 }
 
-void Renderer3d::dumpShadowMap( Graphics& gph,
-	const std::string& path )
+void Renderer3d::dumpShadowMap( Graphics &gph,
+	const std::string &path )
 {
 	dynamic_cast<ShadowPass&>( getPass( "shadowMap" ) ).dumpShadowMap( gph,
 		path );
@@ -565,7 +565,7 @@ void Renderer3d::setKernelBox( int radius ) cond_noex
 }
 
 
-Renderer2d::Renderer2d( Graphics& gph )
+Renderer2d::Renderer2d( Graphics &gph )
 	:
 	Renderer{gph}
 {

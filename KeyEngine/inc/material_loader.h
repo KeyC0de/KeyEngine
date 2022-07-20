@@ -29,16 +29,16 @@ class MaterialLoader final
 	std::string m_modelPath;
 	std::string m_name;
 public:
-	MaterialLoader( Graphics& gph, const aiMaterial& aimaterial,
-		const std::filesystem::path& modelPath ) cond_noex;
+	MaterialLoader( Graphics &gph, const aiMaterial &aimaterial,
+		const std::filesystem::path &modelPath ) cond_noex;
 
 	ver::Buffer extractVertexBuffer( const aiMesh& aimesh ) const noexcept;
-	std::shared_ptr<VertexBuffer> makeVertexBuffer( Graphics& gph, const aiMesh& aimesh,
+	std::shared_ptr<VertexBuffer> makeVertexBuffer( Graphics &gph, const aiMesh &aimesh,
 		float scale = 1.0f ) const cond_noex;
-	std::shared_ptr<IndexBuffer> makeIndexBuffer( Graphics& gph,
-		const aiMesh& aimesh ) const cond_noex;
+	std::shared_ptr<IndexBuffer> makeIndexBuffer( Graphics &gph,
+		const aiMesh &aimesh ) const cond_noex;
 	std::vector<Effect> getEffects() const noexcept;
 private:
 	std::string makeMeshTag( const aiMesh& mesh ) const noexcept;
-	std::vector<unsigned> extractIndexBuffer( const aiMesh& aimesh ) const noexcept;
+	std::vector<unsigned> extractIndexBuffer( const aiMesh &aimesh ) const noexcept;
 };

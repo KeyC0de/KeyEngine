@@ -165,8 +165,8 @@ public:
 	std::pair<size_t, const CBElement*> calculateArrayIndexingOffset( size_t offset,
 		size_t index ) const cond_noex;
 	// [] only works for Structs; access member (child node in tree) by name
-	CBElement& operator[]( const std::string& key ) cond_noex;
-	const CBElement& operator[]( const std::string& key ) const cond_noex;
+	CBElement& operator[]( const std::string &key ) cond_noex;
+	const CBElement& operator[]( const std::string &key ) const cond_noex;
 	// T() only works for Arrays; gets the array class layout object
 	// needed to further configure an array's class
 	CBElement& T() cond_noex;
@@ -233,7 +233,7 @@ private:
 	// advance an offset to next boundary if block crosses a boundary
 	static size_t advanceIfCrossesBoundary( size_t offset, size_t size ) noexcept;
 	// check string for validity as a struct key
-	static bool validateMemberName( const std::string& name ) noexcept;
+	static bool validateMemberName( const std::string &name ) noexcept;
 };
 
 
@@ -268,10 +268,10 @@ class RawLayout final
 public:
 	RawLayout() noexcept;
 	// key into the root Struct
-	CBElement& operator[]( const std::string& key ) cond_noex;
+	CBElement& operator[]( const std::string &key ) cond_noex;
 	// add an element to the root Struct
 	template<ElementType type>
-	CBElement& add( const std::string& key ) cond_noex
+	CBElement& add( const std::string &key ) cond_noex
 	{
 		return m_pLayoutRoot->add<type>( key );
 	}
@@ -292,7 +292,7 @@ class CookedLayout final
 	friend class Buffer;
 public:
 	// key into the root Struct (const to disable mutation of the layout)
-	const CBElement& operator[]( const std::string& key ) const cond_noex;
+	const CBElement& operator[]( const std::string &key ) const cond_noex;
 	// get a share on layout tree root
 	std::shared_ptr<CBElement> shareRootElement() const noexcept;
 private:
@@ -347,7 +347,7 @@ public:
 	// but will not enable any other kind of access
 	bool isValid() const noexcept;
 	// key into the current element as a struct
-	ConstElementView operator[]( const std::string& key ) const cond_noex;
+	ConstElementView operator[]( const std::string &key ) const cond_noex;
 	// index into the current element as an array
 	ConstElementView operator[]( size_t index ) const cond_noex;
 	// emit a pointer proxy object
@@ -398,7 +398,7 @@ public:
 public:
 	operator ConstElementView() const noexcept;
 	bool isValid() const noexcept;
-	ElementView operator[]( const std::string& key ) const cond_noex;
+	ElementView operator[]( const std::string &key ) const cond_noex;
 	ElementView operator[]( size_t index ) const cond_noex;
 	// optionally set value if not an empty Ref
 	template<typename S>
@@ -468,9 +468,9 @@ public:
 	Buffer& operator=( Buffer&& rhs ) noexcept;
 
 	// how you begin indexing into buffer (root is always Struct)
-	ElementView operator[]( const std::string& key ) cond_noex;
+	ElementView operator[]( const std::string &key ) cond_noex;
 	// if Buffer is const, you only get to index into the buffer with a read-only proxy
-	ConstElementView operator[]( const std::string& key ) const cond_noex;
+	ConstElementView operator[]( const std::string &key ) const cond_noex;
 	const char* getRawBytes() const noexcept;
 	// size of the raw byte buffer
 	size_t getSizeInBytes() const noexcept;

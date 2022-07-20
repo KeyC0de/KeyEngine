@@ -21,7 +21,7 @@ class SnakeRepr
 		Segment( const GridLocation& gridLoc );
 		Segment( ColorBGRA col );
 
-		void render( Graphics& gph, SnakePlayField& field ) const;
+		void render( Graphics &gph, SnakePlayField& field ) const;
 		void follow( const Segment& next );
 		void advance( const GridLocation& delta );
 		const GridLocation& getGridLocation() const;
@@ -31,7 +31,7 @@ class SnakeRepr
 public:
 	SnakeRepr( const GridLocation& gridLoc );
 
-	void render( Graphics& gph, SnakePlayField& field ) const;
+	void render( Graphics &gph, SnakePlayField& field ) const;
 	void moveRel( const GridLocation& delta );
 	void grow( const GridLocation& delta );
 	GridLocation getNextHeadLocation( const GridLocation& delta ) const;

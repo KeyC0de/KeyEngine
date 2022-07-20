@@ -11,8 +11,8 @@
 
 namespace dx = DirectX;
 
-Model::Model( Graphics& gph,
-	const std::string& path,
+Model::Model( Graphics &gph,
+	const std::string &path,
 	const float scale )
 {
 	Assimp::Importer importer;
@@ -65,7 +65,7 @@ void Model::render( size_t channels ) const cond_noex
 	m_pRoot->render( channels );
 }
 
-void Model::setTransform( const DirectX::XMMATRIX& tr ) noexcept
+void Model::setTransform( const DirectX::XMMATRIX &tr ) noexcept
 {
 	m_pRoot->setTransform( tr );
 }
@@ -84,7 +84,7 @@ void Model::connectEffectsToRenderer( ren::Renderer& r )
 	}
 }
 
-std::unique_ptr<Node> Model::createNodeHierarchy( int& nodeId,
+std::unique_ptr<Node> Model::createNodeHierarchy( int nodeId,
 	const aiNode& ainode,
 	float scale ) noexcept
 {

@@ -13,8 +13,8 @@
 namespace ren
 {
 
-LambertianPass::LambertianPass( Graphics& gph,
-	const std::string& name )
+LambertianPass::LambertianPass( Graphics &gph,
+	const std::string &name )
 	:
 	RenderQueuePass{name}
 {
@@ -40,7 +40,7 @@ void LambertianPass::setMainCamera( const Camera& cam ) noexcept
 	m_pMainCamera = &cam;
 }
 
-void LambertianPass::run( Graphics& gph ) const cond_noex
+void LambertianPass::run( Graphics &gph ) const cond_noex
 {
 	ASSERT( m_pMainCamera, "Main camera is absent!!!" );
 	m_pMainCamera->makeActive( gph,

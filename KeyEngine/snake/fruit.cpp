@@ -13,7 +13,7 @@ Fruit::Fruit( std::mt19937& rng,
 		snake );
 }
 
-void Fruit::render( Graphics& gph,
+void Fruit::render( Graphics &gph,
 	SnakePlayField& field ) const
 {
 	field.renderCell( gph,

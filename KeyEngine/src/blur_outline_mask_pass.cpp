@@ -7,8 +7,8 @@
 namespace ren
 {
 
-BlurOutlineMaskPass::BlurOutlineMaskPass( Graphics& gph,
-	const std::string& name )
+BlurOutlineMaskPass::BlurOutlineMaskPass( Graphics &gph,
+	const std::string &name )
 	:
 	RenderQueuePass{name}
 {

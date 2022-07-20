@@ -80,7 +80,7 @@ std::wstring bstrToStr( const BSTR& bstr )
 }
 
 #pragma warning( disable : 4267 )
-BSTR strToBstr( const std::wstring& str )
+BSTR strToBstr( const std::wstring &str )
 {
 	ASSERT( !str.empty(), "String was null!" );
 	BSTR bstr = SysAllocStringLen( str.data(),
@@ -168,7 +168,7 @@ void doPeriodically( const std::function<void(void)>& f,
 }
 
 std::optional<DWORD> registryGetDword( HKEY hKey,
-	const std::wstring& regName )
+	const std::wstring &regName )
 {
 	DWORD bufferSize = sizeof( DWORD );
 	DWORD val = 0ul;
@@ -186,7 +186,7 @@ std::optional<DWORD> registryGetDword( HKEY hKey,
 }
 
 std::optional<std::wstring> registryGetString( HKEY hKey,
-	const std::wstring& regName )
+	const std::wstring &regName )
 {
 	wchar_t buffer[512];
 	DWORD bufferSize = sizeof( buffer );

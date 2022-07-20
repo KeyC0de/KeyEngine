@@ -20,7 +20,7 @@
 
 namespace dx = DirectX;
 
-Plane::Plane( Graphics& gph,
+Plane::Plane( Graphics &gph,
 	float size,
 	const DirectX::XMFLOAT4& color )
 	:
@@ -157,7 +157,7 @@ Plane::Plane( Graphics& gph,
 	}
 }
 
-void Plane::setPosition( const DirectX::XMFLOAT3& pos ) noexcept
+void Plane::setPosition( const DirectX::XMFLOAT3 &pos ) noexcept
 {
 	this->m_pos = pos;
 }
@@ -177,8 +177,8 @@ DirectX::XMMATRIX Plane::getTransform() const noexcept
 		DirectX::XMMatrixTranslation( m_pos.x, m_pos.y, m_pos.z );
 }
 
-void Plane::displayImguiWidgets( Graphics& gph,
-	const std::string& name ) noexcept
+void Plane::displayImguiWidgets( Graphics &gph,
+	const std::string &name ) noexcept
 {
 	if ( ImGui::Begin( name.c_str() ) )
 	{

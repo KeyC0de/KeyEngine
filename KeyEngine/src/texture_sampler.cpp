@@ -4,7 +4,7 @@
 #include "dxgi_info_queue.h"
 
 
-TextureSampler::TextureSampler( Graphics& gph,
+TextureSampler::TextureSampler( Graphics &gph,
 	unsigned slot,
 	FilterMode filt,
 	AddressMode addr )
@@ -50,7 +50,7 @@ TextureSampler::TextureSampler( Graphics& gph,
 	ASSERT_HRES_IF_FAILED;
 }
 
-void TextureSampler::bind( Graphics& gph ) cond_noex
+void TextureSampler::bind( Graphics &gph ) cond_noex
 {
 	getContext( gph )->PSSetSamplers( m_slot,
 		1u,
@@ -58,7 +58,7 @@ void TextureSampler::bind( Graphics& gph ) cond_noex
 	DXGI_GET_QUEUE_INFO( gph );
 }
 
-std::shared_ptr<TextureSampler> TextureSampler::fetch( Graphics& gph,
+std::shared_ptr<TextureSampler> TextureSampler::fetch( Graphics &gph,
 	unsigned slot,
 	FilterMode filt,
 	AddressMode addr )

@@ -10,9 +10,9 @@ struct TriangleMesh
 	std::vector<unsigned> m_indices;
 
 	TriangleMesh() = default;
-	TriangleMesh( const ver::Buffer& vertices, const std::vector<unsigned>& indices );
+	TriangleMesh( const ver::Buffer &vertices, const std::vector<unsigned> &indices );
 	
-	void transform( const DirectX::XMMATRIX& matrix );
+	void transform( const DirectX::XMMATRIX &matrix );
 	// independent flat shaded normals
 	void setNormalsIndependent() cond_noex;
 };

@@ -10,10 +10,10 @@ class FullscreenPass
 	: public IBindablePass
 {
 public:
-	FullscreenPass( Graphics& gph, const std::string& name ) cond_noex;
+	FullscreenPass( Graphics &gph, const std::string &name ) cond_noex;
 
 	// Child::run must call FullscreenPass:run as a last step
-	void run( Graphics& gph ) const cond_noex override;
+	void run( Graphics &gph ) const cond_noex override;
 };
 
 

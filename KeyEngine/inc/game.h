@@ -16,9 +16,9 @@
 #include "../arkanoid/ball.h"
 #include "../arkanoid/brick.h"
 #include "../arkanoid/paddle.h"
-#include "../snake/snake_play_field.h"
-#include "../snake/snake.h"
-#include "../snake/fruit.h"
+//#include "../snake/snake_play_field.h"
+//#include "../snake/snake.h"
+//#include "../snake/fruit.h"
 
 
 struct ImguiManager;
@@ -31,44 +31,41 @@ class Game
 	{
 	public:
 		GameException( int line, const char* file, const char* function,
-			const std::string& msg ) noexcept;
+			const std::string &msg ) noexcept;
 
-		const std::string getType() const noexcept override;
-		virtual const char* what() const noexcept override;
+		const std::string getType() const noexcept override final;
+		virtual const char* what() const noexcept override final;
 	};
-public:
-	~Game() noexcept = default;
-	
-	std::optional<Window*> getForegroundWindow() noexcept;
-	void setState( std::unique_ptr<State> pNewState, Mouse& mouse );
-	State* getState() noexcept;
 protected:
 	static inline Game* m_pInstance;
-	ImguiManager* m_pImguiMan;
 	static inline unsigned m_nWindows;
 	static inline SettingsManager& m_settingsMan = SettingsManager::getInstance();
-
+	ImguiManager* m_pImguiMan;
 	Window m_mainWindow;
 	std::unique_ptr<State> m_pCurrentState;
 	KeyTimer<std::chrono::milliseconds> m_gameTimer;
+public:
+	~Game() noexcept = default;
+	
 protected:
-	Game( int width, int height, const std::string& title, unsigned nWindows = 1 );
+	Game( int width, int height, const std::string &title, unsigned nWindows = 1 );
 	Game( const Game& rhs ) = delete;
 	Game& operator=( const Game& rhs ) = delete;
 	Game& operator=( Game&& rhs ) = delete;
 	Game( Game&& rhs ) = delete;
 
 	float calculateDt();
+	std::optional<Window*> getForegroundWindow() noexcept;
+	void setState( std::unique_ptr<State> pNewState, Mouse& mouse );
+	State* getState() noexcept;
 private:
 	ImguiManager* createImgui() noexcept;
 };
-
 
 class Sandbox3d
 	: public Game<Sandbox3d>
 {
 	static inline CameraManager& m_cameraMan = CameraManager::getInstance();
-
 	ren::Renderer3d m_renderer;
 	std::unique_ptr<PointLight> m_pPointLight1;
 	//std::unique_ptr<PointLight> m_pPointLight2;
@@ -85,11 +82,11 @@ public:
 	Sandbox3d( int width, int height, int nWindows = 1 );
 
 	int loop();
+private:
 	void checkInput( float dt );
 	void update( float dt );
 	void render( float dt );
 	void present();
-private:
 	void renderImgui();
 };
 
@@ -102,7 +99,6 @@ class Arkanoid final
 	static constexpr inline int m_nBricksVertically = 4;
 	static constexpr inline int m_nBricks = m_nBricksHorizontally * m_nBricksVertically;
 	static constexpr inline float m_speed = 300.0f;
-
 	ren::Renderer2d m_renderer;
 	Ball m_ball;
 	Rect m_walls;
@@ -114,16 +110,15 @@ public:
 	Arkanoid( int width, int height );
 
 	int loop();
+private:
 	void checkInput( float dt );
 	void update( float dt );
 	void render( float dt );
 	void present();
-private:
-
 };
 /*
 class Snake final
-	: public Game<SnakeRepr>
+	: public Game<Snake>
 {
 	std::mt19937 rng;
 	Board board;
@@ -140,21 +135,18 @@ class Snake final
 	static constexpr float snekMovePeriodMin = 0.040f;
 	static constexpr float howManyFruitsForSpeedUp = 0.15f;
 	int gameIsOver = false;
-
 	int nHowManyFruits = 2;
-
 	Sound sfxEat = Sound{L"Sounds\\Eat.wav"};
 	ren::Renderer2d m_renderer;
 public:
 	Snake( int width, int height );
 
 	int loop();
+private:
 	void checkInput( float dt );
 	void update( float dt );
 	void render( float dt );
 	void present();
-private:
-
 };*/
 
 

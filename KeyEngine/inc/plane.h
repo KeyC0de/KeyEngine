@@ -16,11 +16,11 @@ class Plane
 	float m_pitch = 0.0f;
 	float m_yaw = 0.0f;
 public:
-	Plane( Graphics& gph, float size,
+	Plane( Graphics &gph, float size,
 		const DirectX::XMFLOAT4& color = {1.0f, 1.0f, 1.0f, 1.0f} );
 
-	void setPosition( const DirectX::XMFLOAT3& pos ) noexcept;
+	void setPosition( const DirectX::XMFLOAT3 &pos ) noexcept;
 	void setRotation( float roll, float pitch, float yaw ) noexcept;
 	DirectX::XMMATRIX getTransform() const noexcept override;
-	void displayImguiWidgets( Graphics& gph, const std::string& name ) noexcept;
+	void displayImguiWidgets( Graphics &gph, const std::string &name ) noexcept;
 };

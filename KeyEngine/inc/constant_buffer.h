@@ -24,7 +24,7 @@ protected:
 	unsigned m_slot;
 public:
 	// empty cb
-	IConstantBuffer( Graphics& gph,
+	IConstantBuffer( Graphics &gph,
 		unsigned slot )
 		:
 		m_slot(slot)
@@ -40,7 +40,7 @@ public:
 		ASSERT_HRES_IF_FAILED;
 	}
 
-	IConstantBuffer( Graphics& gph,
+	IConstantBuffer( Graphics &gph,
 		const CB& cb,
 		unsigned slot )
 		:
@@ -65,7 +65,7 @@ public:
 	//	\function	update
 	//	\brief  Map, paste to msr, Unmap
 	//	\date	2022/02/19 19:00
-	void update( Graphics& gph,
+	void update( Graphics &gph,
 		const CB& cb )
 	{
 		D3D11_MAPPED_SUBRESOURCE msr;
@@ -97,7 +97,7 @@ public:
 	// inheriting constructors
 	using IConstantBuffer<CB>::IConstantBuffer;
 
-	void bind( Graphics& gph ) cond_noex override
+	void bind( Graphics &gph ) cond_noex override
 	{
 		getContext( gph )->VSSetConstantBuffers( m_slot,
 			1u,
@@ -105,7 +105,7 @@ public:
 		DXGI_GET_QUEUE_INFO( gph );
 	}
 
-	static std::shared_ptr<VertexShaderConstantBuffer> fetch( Graphics& gph,
+	static std::shared_ptr<VertexShaderConstantBuffer> fetch( Graphics &gph,
 		const CB& cb,
 		unsigned slot )
 	{
@@ -114,7 +114,7 @@ public:
 			slot );
 	}
 
-	static std::shared_ptr<VertexShaderConstantBuffer> fetch( Graphics& gph,
+	static std::shared_ptr<VertexShaderConstantBuffer> fetch( Graphics &gph,
 		unsigned slot )
 	{
 		return BindableMap::fetch<VertexShaderConstantBuffer>( gph,
@@ -149,7 +149,7 @@ class PixelShaderConstantBuffer final
 public:
 	using IConstantBuffer<CB>::IConstantBuffer;
 
-	void bind( Graphics& gph ) cond_noex override
+	void bind( Graphics &gph ) cond_noex override
 	{
 		getContext( gph )->PSSetConstantBuffers( m_slot,
 			1u,
@@ -157,7 +157,7 @@ public:
 		DXGI_GET_QUEUE_INFO( gph );
 	}
 
-	static std::shared_ptr<PixelShaderConstantBuffer> fetch( Graphics& gph,
+	static std::shared_ptr<PixelShaderConstantBuffer> fetch( Graphics &gph,
 		const CB& cb,
 		unsigned slot )
 	{
@@ -166,7 +166,7 @@ public:
 			slot );
 	}
 
-	static std::shared_ptr<PixelShaderConstantBuffer> fetch( Graphics& gph,
+	static std::shared_ptr<PixelShaderConstantBuffer> fetch( Graphics &gph,
 		unsigned slot )
 	{
 		return BindableMap::fetch<PixelShaderConstantBuffer>( gph,

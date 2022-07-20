@@ -10,12 +10,12 @@ class VertexShader
 	Microsoft::WRL::ComPtr<ID3DBlob> m_pVsBlob;
 	Microsoft::WRL::ComPtr<ID3D11VertexShader> m_pVertexShader;
 public:
-	VertexShader( Graphics& gph, const std::string& filepath );
+	VertexShader( Graphics &gph, const std::string &filepath );
 
-	void bind( Graphics& gph ) cond_noex override;
+	void bind( Graphics &gph ) cond_noex override;
 	ID3DBlob* getBytecode() const noexcept;
-	static std::shared_ptr<VertexShader> fetch( Graphics& gph,
-		const std::string& filepath );
-	static std::string generateUid( const std::string& filepath );
+	static std::shared_ptr<VertexShader> fetch( Graphics &gph,
+		const std::string &filepath );
+	static std::string generateUid( const std::string &filepath );
 	std::string getUid() const noexcept override;
 };

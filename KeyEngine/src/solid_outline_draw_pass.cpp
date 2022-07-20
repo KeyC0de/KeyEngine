@@ -8,8 +8,8 @@
 namespace ren
 {
 
-SolidOutlineDrawPass::SolidOutlineDrawPass( Graphics& gph,
-	const std::string& name )
+SolidOutlineDrawPass::SolidOutlineDrawPass( Graphics &gph,
+	const std::string &name )
 	:
 	RenderQueuePass{name}
 {

@@ -8,7 +8,7 @@
 namespace ren
 {
 
-IConsumer::IConsumer( const std::string& name )
+IConsumer::IConsumer( const std::string &name )
 	:
 	m_name{name}
 {
@@ -24,8 +24,8 @@ IConsumer::IConsumer( const std::string& name )
 	ASSERT( bValidName && !std::isdigit( name.front() ), "Invalid Input name!" );
 }
 
-void IConsumer::setPassAndProducerNames( const std::string& passName,
-	const std::string& producerName )
+void IConsumer::setPassAndProducerNames( const std::string &passName,
+	const std::string &producerName )
 {
 	ASSERT( !passName.empty(), "Pass name is empty!" );
 	ASSERT( !producerName.empty(), "Output name is empty!" );
@@ -39,7 +39,7 @@ void IConsumer::setPassAndProducerNames( const std::string& passName,
 
 	if ( passName != "$" && ( !bPassNameValid || std::isdigit( passName.front() ) ) )
 	{
-		throwRendererException( "IConsumer - " + m_name + " : Invalid pass name: " + passName );
+		THROW_RENDERER_EXCEPTION( "IConsumer - " + m_name + " : Invalid pass name: " + passName );
 	}
 	m_passName = passName;
 
@@ -52,22 +52,22 @@ void IConsumer::setPassAndProducerNames( const std::string& passName,
 
 	if ( !checkproducerName || std::isdigit( producerName.front() ) )
 	{
-		throwRendererException( "IConsumer - " + m_name + " : Invalid output name: " + producerName );
+		THROW_RENDERER_EXCEPTION( "IConsumer - " + m_name + " : Invalid output name: " + producerName );
 	}
 	m_producerName = producerName;
 }
 
-const std::string& IConsumer::getName() const noexcept
+const std::string &IConsumer::getName() const noexcept
 {
 	return m_name;
 }
 
-const std::string& IConsumer::getPassName() const noexcept
+const std::string &IConsumer::getPassName() const noexcept
 {
 	return m_passName;
 }
 
-const std::string& IConsumer::getProducerName() const noexcept
+const std::string &IConsumer::getProducerName() const noexcept
 {
 	return m_producerName;
 }

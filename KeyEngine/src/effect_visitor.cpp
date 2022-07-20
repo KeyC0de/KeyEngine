@@ -105,7 +105,7 @@ bool EVShowcase::onVisit( con::Buffer& cb )
 void EVShowcase::onSetEffect()
 {
 	ImGui::TextColored( {0.4f, 1.0f, 0.6f, 1.0f},
-			util::capitalizeFirstLetter( m_pEffect->getTargetPassName() ).c_str() );
+		util::capitalizeFirstLetter( m_pEffect->getTargetPassName() ).c_str() );
 
 	bool bActive = m_pEffect->isEnabled();
 	using namespace std::string_literals;

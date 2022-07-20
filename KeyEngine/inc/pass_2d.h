@@ -11,9 +11,9 @@ class Pass2D
 {
 	
 public:
-	Pass2D( Graphics& gph, const std::string& name );
+	Pass2D( Graphics &gph, const std::string &name );
 
-	void run( Graphics& gph ) const cond_noex override;
+	void run( Graphics &gph ) const cond_noex override;
 	void reset() cond_noex override;
 };
 

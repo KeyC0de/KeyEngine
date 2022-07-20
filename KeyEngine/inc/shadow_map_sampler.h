@@ -20,9 +20,9 @@ class ShadowMapSampler
 	unsigned m_samplerMask;
 	Microsoft::WRL::ComPtr<ID3D11SamplerState> m_samplers[4];
 public:
-	ShadowMapSampler( Graphics& gph );
+	ShadowMapSampler( Graphics &gph );
 
-	void bind( Graphics& gph ) cond_noex override;
+	void bind( Graphics &gph ) cond_noex override;
 	void setTrilinearFiltering( bool bEnable );
 	bool isTrilinearFiltering() const;
 	void setHwPcfFiltering( bool bEnable );
@@ -34,6 +34,6 @@ private:
 	//	\brief  gets the bitmap index of each filtering method
 	//	\date	2022/02/19 22:05
 	static size_t getIndex( bool bTrilin, bool bHwPcf );
-	static Microsoft::WRL::ComPtr<ID3D11SamplerState> make( Graphics& gph, bool bTrilinear,
+	static Microsoft::WRL::ComPtr<ID3D11SamplerState> make( Graphics &gph, bool bTrilinear,
 		bool bHwPcf );
 };

@@ -18,24 +18,30 @@ namespace util
 {
 
 template<typename T>
-void removeByBackSwap( std::vector<T>& v,
-		std::size_t index )
+T sum( std::initializer_list<T> lst )
 {
-	typename std::vector<T>::iterator pback = v.back();
-	std::swap( v[index], pback );
-	v.pop_back();
+	T total = (T)0;
+	for ( auto i : lst )
+	{
+		total += i;
+	}
+	return total;
 }
 
 template<typename T>
 void removeByBackSwap( std::vector<T>& v,
-	const T& element )
+	std::size_t index )
 {
-	v.erase( std::find( v.begin(),
-		v.end(),
-		&element ),
-		v.end() );
+	typename std::vector<T>::iterator itBback = v.back();
+	std::swap( v[index],
+		itBback );
+	v.pop_back();
 }
 
+//===================================================
+//	\function	shrinkCapacity
+//	\brief  shrink vector's capacity to its size
+//	\date	2022/04/01 20:51
 template<typename T, class Alloc>
 void shrinkCapacity( std::vector<T,Alloc>& v )
 {
@@ -48,24 +54,24 @@ void shrinkCapacity( std::vector<T,Alloc>& v )
 //	\brief  converts a string input into a vector of strings
 //			separation into vector element "tokens" is based on spaces or quotes '
 //	\date	2021/01/12 12:54
-std::vector<std::string> tokenizeQuotedString( const std::string& input );
+std::vector<std::string> tokenizeQuotedString( const std::string &input );
 //===================================================
 //	\function	s2ws
 //	\brief	convert from strings/chars to wide strings/wchar_ts
 //				or std::wstring( s.begin(), s.end() );
 //	\date	2020/12/30 20:38
-std::wstring s2ws( const std::string& narrow );
+std::wstring s2ws( const std::string &narrow );
 //===================================================
 //	\function	ws2s
 //	\brief	convert wide strings/wchar_ts to strings/chars
 //	\date	2020/12/30 20:38
-std::string ws2s( const std::wstring& wide );
+std::string ws2s( const std::wstring &wide );
 
 namespace
 {
 template<class Iter>
-void splitString_impl( const std::string& s,
-	const std::string& delim,
+void splitString_impl( const std::string &s,
+	const std::string &delim,
 	Iter out )
 {
 	if ( delim.empty() )
@@ -89,10 +95,10 @@ void splitString_impl( const std::string& s,
 }
 }
 
-std::vector<std::string> splitString( const std::string& s, const std::string& delim );
+std::vector<std::string> splitString( const std::string &s, const std::string &delim );
 bool stringContains( std::string_view haystack, std::string_view needle );
-std::string& capitalizeFirstLetter( std::string& str );
-std::string&& capitalizeFirstLetter( std::string&& str );
+std::string &capitalizeFirstLetter( std::string &str );
+std::string capitalizeFirstLetter( const std::string &str );
 
 template<typename T, typename = std::enable_if_t<std::is_integral_v<T>>>
 void printBinary( T val )
@@ -100,6 +106,10 @@ void printBinary( T val )
 	std::bitset<32> bin{val};
 	std::cout << bin;
 }
+
+std::tuple<int, int, int> timeToHms( float time );
+std::tuple<int, int, int> secondsToHms( int totalSecs );
+
 
 std::uintptr_t pointerToInt( void* p );
 void* intToPointer( uintptr_t i );

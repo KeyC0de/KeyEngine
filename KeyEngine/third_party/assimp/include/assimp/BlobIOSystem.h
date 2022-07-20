@@ -65,7 +65,7 @@ class BlobIOStream : public IOStream
 {
 public:
 
-    BlobIOStream(BlobIOSystem* creator, const std::string& file, size_t initial = 4096)
+    BlobIOStream(BlobIOSystem* creator, const std::string &file, size_t initial = 4096)
         : buffer()
         , cur_size()
         , file_size()
@@ -311,7 +311,7 @@ public:
 private:
 
     // -------------------------------------------------------------------
-    void OnDestruct(const std::string& filename, BlobIOStream* child)
+    void OnDestruct(const std::string &filename, BlobIOStream* child)
     {
         // we don't know in which the files are closed, so we
         // can't reliably say that the first must be the master

@@ -12,9 +12,7 @@
 #include "assertions_console.h"
 #include "drawable.h"
 #include "graphics_mode.h"
-#ifdef TESTING
-#	include "testing.h"
-#endif // TESTING
+//#include "../../KeyEngine_tests/testing.h"
 
 
 namespace dx = DirectX;
@@ -22,7 +20,7 @@ namespace dx = DirectX;
 template <typename T>
 Game<T>::Game( int width,
 	int height,
-	const std::string& title,
+	const std::string &title,
 	unsigned nWindows )
 	:
 	m_pImguiMan{createImgui()},
@@ -137,7 +135,7 @@ template<typename T>
 Game<T>::GameException::GameException( int line,
 	const char* file,
 	const char* function,
-	const std::string& msg ) noexcept
+	const std::string &msg ) noexcept
 	:
 	KeyException{line, file, function, msg}
 {
@@ -329,19 +327,19 @@ void Sandbox3d::update( float dt )
 	m_renderer.setMainCamera( activeCamera );
 	auto& gph = m_mainWindow.getGraphics();
 	/*
-	m_world.update(dt);		// updates current level-map stuff, terrain, weather, world globals etc.
+	m_world.update( dt );		// updates current level-map stuff, terrain, weather, world globals etc.
 	// actor manager updates actors which also updates AI
-	m_actorManager.update(dt);	// updates actors - should be much more efficient after spatial partitioning and frustum culling - for rendering too
+	m_actorManager.update( dt );	// updates actors - should be much more efficient after spatial partitioning and frustum culling - for rendering too
 	spatialPartitionGameObjects();		// actors + statics
 	frustumCullGameObjects();			// actors + statics - 1 frustum for each renderable viewpoint (typically just the player's camera)
 	
-	m_physics.update(CONST_DT);
-	m_playerManager.update(dt);
-	m_skybox.update(dt);
-	m_lightManager.update(dt);	// update scene lights
-	m_cameraManager.update(dt);	// update active cameras
-	m_particles.update(dt);
-	m_soundManager.update(dt);
+	m_physics.update( CONST_DT );
+	m_playerManager.update( dt );
+	m_skybox.update( dt );
+	m_lightManager.update( dt );	// update scene lights
+	m_cameraManager.update( dt );	// update active cameras
+	m_particles.update( dt );
+	m_soundManager.update( dt );
 	*/
 	m_pPointLight1->update( gph,
 		dt,

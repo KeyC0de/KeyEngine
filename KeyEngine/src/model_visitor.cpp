@@ -10,7 +10,7 @@
 namespace dx = DirectX;
 
 
-MV::MV( const std::string& name )
+MV::MV( const std::string &name )
 	:
 	m_name{name}
 {

@@ -55,7 +55,7 @@ std::pair<size_t, const CBElement*> CBElement::calculateArrayIndexingOffset( siz
 		&*data.layoutElement};
 }
 
-CBElement& CBElement::operator[]( const std::string& key ) cond_noex
+CBElement& CBElement::operator[]( const std::string &key ) cond_noex
 {
 	ASSERT( m_type == Struct, "Attempted to key into a non-struct type" );
 	for ( auto& layEl : static_cast<ExtraData::Struct&>( *m_pExtraData ).layoutElements )
@@ -68,7 +68,7 @@ CBElement& CBElement::operator[]( const std::string& key ) cond_noex
 	return getEmptyElement();
 }
 
-const CBElement& CBElement::operator[]( const std::string& key ) const cond_noex
+const CBElement& CBElement::operator[]( const std::string &key ) const cond_noex
 {
 	return const_cast<CBElement&>( *this )[key];
 }
@@ -252,7 +252,7 @@ size_t CBElement::advanceToBoundary( size_t offset ) noexcept
 	return offset + ( 16u - offset % 16u ) % 16u;
 }
 
-bool CBElement::validateMemberName( const std::string& name ) noexcept
+bool CBElement::validateMemberName( const std::string &name ) noexcept
 {
 	// symbols can contain alphanumeric and underscore, must not start with digit
 	return !name.empty() && !std::isdigit( name.front() ) && std::all_of( name.begin(),
@@ -289,7 +289,7 @@ RawLayout::RawLayout() noexcept
 
 }
 
-CBElement& RawLayout::operator[]( const std::string& key ) cond_noex
+CBElement& RawLayout::operator[]( const std::string &key ) cond_noex
 {
 	return ( *m_pLayoutRoot )[key];
 }
@@ -326,7 +326,7 @@ std::shared_ptr<CBElement> CookedLayout::shareRootElement() const noexcept
 	return m_pLayoutRoot;
 }
 
-const CBElement& CookedLayout::operator[]( const std::string& key ) const cond_noex
+const CBElement& CookedLayout::operator[]( const std::string &key ) const cond_noex
 {
 	return (*m_pLayoutRoot)[key];
 }
@@ -337,7 +337,7 @@ bool ConstElementView::isValid() const noexcept
 	return pLayout->isValid();
 }
 
-ConstElementView ConstElementView::operator[]( const std::string& key ) const cond_noex
+ConstElementView ConstElementView::operator[]( const std::string &key ) const cond_noex
 {
 	return {&(*pLayout)[key], m_p, m_arrayOffset};
 }
@@ -383,7 +383,7 @@ bool ElementView::isValid() const noexcept
 	return m_pLayout->isValid();
 }
 
-ElementView ElementView::operator[]( const std::string& key ) const cond_noex
+ElementView ElementView::operator[]( const std::string &key ) const cond_noex
 {
 	return {&(*m_pLayout)[key], m_p, m_arrayOffset};
 }
@@ -481,12 +481,12 @@ Buffer::~Buffer() noexcept
 }
 
 
-ElementView Buffer::operator[]( const std::string& key ) cond_noex
+ElementView Buffer::operator[]( const std::string &key ) cond_noex
 {
 	return {&(*m_pLayoutRoot)[key], m_buffer.data(), 0u};
 }
 
-ConstElementView Buffer::operator[]( const std::string& key ) const cond_noex
+ConstElementView Buffer::operator[]( const std::string &key ) const cond_noex
 {
 	return const_cast<Buffer&>( *this )[key];
 }

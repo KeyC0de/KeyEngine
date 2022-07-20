@@ -11,7 +11,7 @@ class BindableMap final
 	std::unordered_map<std::string, std::shared_ptr<IBindable>> m_bindableMap;
 public:
 	template<class T, typename... TArgs>
-	static std::shared_ptr<T> fetch( Graphics& gph,
+	static std::shared_ptr<T> fetch( Graphics &gph,
 		TArgs&&... args ) cond_noex
 	{
 		static_assert( std::is_base_of<IBindable, T>::value, "T must be a IBindable!" );
@@ -20,7 +20,7 @@ public:
 	}
 private:
 	template<class T, typename... TArgs>
-	std::shared_ptr<T> fetch_impl( Graphics& gph,
+	std::shared_ptr<T> fetch_impl( Graphics &gph,
 		TArgs&&... args ) cond_noex
 	{
 		const auto bindableId = T::generateUid( std::forward<TArgs>( args )... );

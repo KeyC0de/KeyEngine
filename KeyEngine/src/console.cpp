@@ -66,7 +66,7 @@ void KeyConsole::getConsoleInfo( HANDLE h )
 }
 
 
-KeyConsole::KeyConsole( const std::string& fontName )
+KeyConsole::KeyConsole( const std::string &fontName )
 	:
 	m_fp{nullptr},
 	m_title{std::string{defaultConsoleTitle} + std::string{" "} + std::string{currentVersion}},
@@ -121,7 +121,7 @@ KeyConsole::~KeyConsole()
 	closeConsole();
 }
 
-DWORD KeyConsole::print( const std::string& msg )
+DWORD KeyConsole::print( const std::string &msg )
 {
 	m_hMode = stdout;
 	m_fp = freopen( "CONOUT$",
@@ -143,7 +143,7 @@ DWORD KeyConsole::print( const std::string& msg )
 	return nWritten;
 }
 
-DWORD KeyConsole::log( const std::string& msg )
+DWORD KeyConsole::log( const std::string &msg )
 {
 	m_hMode = stderr;
 	m_fp = freopen( "CONERR$",
@@ -243,7 +243,7 @@ int32_t KeyConsole::setConsoleCodePage( uint32_t cp )
 	return SetConsoleCP( cp );
 }
 
-void KeyConsole::setFont( const std::string& fontName )
+void KeyConsole::setFont( const std::string &fontName )
 {
 	CONSOLE_FONT_INFOEX cfie;
 	const auto sz = sizeof( CONSOLE_FONT_INFOEX );

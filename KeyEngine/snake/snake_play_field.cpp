@@ -8,13 +8,13 @@
 
 namespace dx = DirectX;
 
-SnakePlayField::SnakePlayField( Graphics& gph )
+SnakePlayField::SnakePlayField( Graphics &gph )
 {
 	m_xStart = m_cellSize;
 	m_yStart = m_cellSize;
 }
 
-SnakePlayField::SnakePlayField( Graphics& gph,
+SnakePlayField::SnakePlayField( Graphics &gph,
 	int x,
 	int y,
 	int w,
@@ -28,7 +28,7 @@ SnakePlayField::SnakePlayField( Graphics& gph,
 
 }
 
-void SnakePlayField::renderCell( Graphics& gph,
+void SnakePlayField::renderCell( Graphics &gph,
 	const GridLocation& gridLoc,
 	ColorBGRA col ) const
 {
@@ -43,7 +43,7 @@ void SnakePlayField::renderCell( Graphics& gph,
 		col );
 }
 
-void SnakePlayField::renderBorders( Graphics& gph,
+void SnakePlayField::renderBorders( Graphics &gph,
 	ColorBGRA col ) const
 {
 	gph.drawRect( m_xStart, m_yStart, m_width - m_xStart, m_cellSize, col );	// top border

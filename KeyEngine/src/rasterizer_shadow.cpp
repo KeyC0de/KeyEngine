@@ -3,7 +3,7 @@
 #include "dxgi_info_queue.h"
 
 
-RasterizerShadow::RasterizerShadow( Graphics& gph,
+RasterizerShadow::RasterizerShadow( Graphics &gph,
 	int depthBias,
 	float slopeBias,
 	float clamp )
@@ -14,7 +14,7 @@ RasterizerShadow::RasterizerShadow( Graphics& gph,
 		clamp );
 }
 
-void RasterizerShadow::setParameters( Graphics& gph,
+void RasterizerShadow::setParameters( Graphics &gph,
 	int depthBias,
 	float slopeBias,
 	float clamp )
@@ -48,7 +48,7 @@ float RasterizerShadow::getClamp() const
 	return m_clamp;
 }
 
-void RasterizerShadow::bind( Graphics& gph ) cond_noex
+void RasterizerShadow::bind( Graphics &gph ) cond_noex
 {
 	getContext( gph )->RSSetState( m_pRasterizerState.Get() );
 	DXGI_GET_QUEUE_INFO( gph );

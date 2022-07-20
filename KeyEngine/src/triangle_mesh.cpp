@@ -11,7 +11,7 @@ TriangleMesh::TriangleMesh( const ver::Buffer& vertices,
 	ASSERT( m_indices.size() % 3 == 0, "indices not a multiple of 3!" );
 }
 
-void TriangleMesh::transform( const DirectX::XMMATRIX& matrix )
+void TriangleMesh::transform( const DirectX::XMMATRIX &matrix )
 {
 	using Elements = ver::VertexLayout::MemberType;
 	for ( int i = 0; i < m_vb.getVertexCount(); ++i )

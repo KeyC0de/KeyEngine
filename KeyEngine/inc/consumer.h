@@ -25,20 +25,20 @@ class IConsumer
 	std::string m_passName;
 	std::string m_producerName;
 protected:
-	IConsumer( const std::string& name );
+	IConsumer( const std::string &name );
 public:
 	virtual ~IConsumer() = default;
 	
-	void setPassAndProducerNames( const std::string& passName, const std::string& producerName );
+	void setPassAndProducerNames( const std::string &passName, const std::string &producerName );
 	virtual void link( IProducer& producer ) = 0;
 	//===================================================
 	//	\function	validateLinkage
 	//	\brief  assert validate after link()ing
 	//	\date	2021/06/26 23:57
 	virtual void validateLinkage() const = 0;
-	const std::string& getName() const noexcept;
-	const std::string& getPassName() const noexcept;
-	const std::string& getProducerName() const noexcept;
+	const std::string &getName() const noexcept;
+	const std::string &getPassName() const noexcept;
+	const std::string &getProducerName() const noexcept;
 };
 
 
@@ -48,10 +48,10 @@ class BindableConsumer final
 {
 	static_assert( std::is_base_of_v<IBindable, T>, "BindableConsumer target T must be IBindable." );
 
-	std::shared_ptr<T>& m_target;
+	std::shared_ptr<T> &m_target;
 	bool m_bLinked = false;
 public:
-	BindableConsumer( const std::string& name,
+	BindableConsumer( const std::string &name,
 		std::shared_ptr<T>& target )
 		:
 		IConsumer{name},
@@ -60,7 +60,7 @@ public:
 
 	}
 
-	static std::unique_ptr<IConsumer> make( const std::string& name,
+	static std::unique_ptr<IConsumer> make( const std::string &name,
 		std::shared_ptr<T>& target )
 	{
 		return std::make_unique<BindableConsumer>( name,
@@ -71,7 +71,7 @@ public:
 	{
 		if ( !m_bLinked )
 		{
-			throwRendererException( "consumer " + getName() + " unliked! Target hasn't been set!" );
+			THROW_RENDERER_EXCEPTION( "consumer " + getName() + " unliked! Target hasn't been set!" );
 		}
 	}
 
@@ -93,7 +93,7 @@ public:
 				<< " } does not match { "
 				<< typeid( *producer.getBindable().get() ).name()
 				<< " }";
-			throwRendererException( oss.str() );
+			THROW_RENDERER_EXCEPTION( oss.str() );
 		}
 		m_target = std::move( bindable );
 		m_bLinked = true;
@@ -108,11 +108,11 @@ class ContainerBindableConsumer final
 	static_assert( std::is_base_of_v<IBindable, T>,
 		"ContainerBindableConsumer target T must be IBindable." );
 
-	std::vector<std::shared_ptr<IBindable>>& m_container;
+	std::vector<std::shared_ptr<IBindable>> &m_container;
 	size_t m_index;
 	bool m_bLinked = false;
 public:
-	ContainerBindableConsumer( const std::string& name,
+	ContainerBindableConsumer( const std::string &name,
 		std::vector<std::shared_ptr<IBindable>>& container,
 		size_t index )
 		:
@@ -127,7 +127,7 @@ public:
 	{
 		if ( !m_bLinked )
 		{
-			throwRendererException( "Consumer " + getName() + " unliked! Target hasn't been set!" );
+			THROW_RENDERER_EXCEPTION( "Consumer " + getName() + " unliked! Target hasn't been set!" );
 		}
 	}
 
@@ -149,7 +149,7 @@ public:
 				<< " } does not match { "
 				<< typeid( *producer.getBindable().get() ).name()
 				<< " }";
-			throwRendererException( oss.str() );
+			THROW_RENDERER_EXCEPTION( oss.str() );
 		}
 		m_container[m_index] = std::move( bindable );
 		m_bLinked = true;
@@ -163,10 +163,10 @@ class RenderSurfaceConsumer final
 {
 	static_assert( std::is_base_of_v<IRenderSurface, T>, "RenderSurfaceConsumer target T is not IRenderSurface!" );
 
-	std::shared_ptr<T>& m_target;
+	std::shared_ptr<T> &m_target;
 	bool m_bLinked = false;
 public:
-	RenderSurfaceConsumer( const std::string& name,
+	RenderSurfaceConsumer( const std::string &name,
 		std::shared_ptr<T>& target )
 		:
 		IConsumer{name},
@@ -175,7 +175,7 @@ public:
 
 	}
 
-	static std::unique_ptr<IConsumer> make( const std::string& name,
+	static std::unique_ptr<IConsumer> make( const std::string &name,
 		std::shared_ptr<T>& target )
 	{
 		return std::make_unique<RenderSurfaceConsumer>( name,
@@ -186,7 +186,7 @@ public:
 	{
 		if ( !m_bLinked )
 		{
-			throwRendererException( "Consumer " + getName() + " unliked! Target hasn't been set!" );
+			THROW_RENDERER_EXCEPTION( "Consumer " + getName() + " unliked! Target hasn't been set!" );
 		}
 	}
 
@@ -208,7 +208,7 @@ public:
 				<< " } not compatible with { "
 				<< typeid( *producer.getBuffer().get() ).name()
 				<< " }";
-			throwRendererException( oss.str() );
+			THROW_RENDERER_EXCEPTION( oss.str() );
 		}
 		m_target = std::move( buff );
 		m_bLinked = true;

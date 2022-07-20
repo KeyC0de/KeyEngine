@@ -21,7 +21,7 @@ Paddle::Paddle( const dx::XMFLOAT2& pos,
 
 }
 
-void Paddle::render( Graphics& gph ) const
+void Paddle::render( Graphics &gph ) const
 {
 	Rect rect = getRect();
 	gph.drawRect( rect,

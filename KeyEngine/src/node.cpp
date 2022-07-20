@@ -6,7 +6,7 @@
 namespace dx = DirectX;
 
 Node::Node( int id,
-	const std::string& name,
+	const std::string &name,
 	std::vector<Drawable*> pDrawables,
 	const dx::XMMATRIX& localTransform ) cond_noex
 	:
@@ -97,7 +97,7 @@ bool Node::hasChildren() const noexcept
 	return !m_pChildren.empty();
 }
 
-const std::string& Node::getName() const noexcept
+const std::string &Node::getName() const noexcept
 {
 	return m_name;
 }

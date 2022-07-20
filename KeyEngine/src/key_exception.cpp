@@ -5,7 +5,7 @@
 KeyException::KeyException( int line,
 	const char* file,
 	const char* function,
-	const std::string& msg ) noexcept
+	const std::string &msg ) noexcept
 	:
 	m_line(line),
 	m_function( function ),

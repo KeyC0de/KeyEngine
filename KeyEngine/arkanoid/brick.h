@@ -18,7 +18,7 @@ public:
 	Brick() = default;
 	Brick( const Rect& rect, const ColorBGRA col );
 
-	void render( Graphics& gph ) const;
+	void render( Graphics &gph ) const;
 	bool checkForBallCollision( const Ball& ball ) const;
 	// performs the collision
 	void doBallCollision( Ball& ball );

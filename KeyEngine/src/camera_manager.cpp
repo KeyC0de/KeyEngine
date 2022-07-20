@@ -38,7 +38,7 @@ int CameraManager::getClientHeight() const noexcept
 	return m_clientWidthHeight.second;
 }
 
-void CameraManager::spawnImguiWindow( Graphics& gph )
+void CameraManager::spawnImguiWindow( Graphics &gph )
 {
 	if ( ImGui::Begin( "Cameras" ) )
 	{
@@ -75,7 +75,7 @@ void CameraManager::spawnImguiWindow( Graphics& gph )
 	ImGui::End();
 }
 
-void CameraManager::bind( Graphics& gph )
+void CameraManager::bind( Graphics &gph )
 {
 	gph.setViewMatrix( getActiveCamera().getViewMatrix() );
 }

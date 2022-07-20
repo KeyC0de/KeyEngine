@@ -92,7 +92,7 @@ const Bitmap::Texel* Bitmap::dataConst() const noexcept
 	return const_cast<Bitmap*>( this )->data();
 }
 
-Bitmap Bitmap::loadFromFile( const std::string& name,
+Bitmap Bitmap::loadFromFile( const std::string &name,
 	unsigned wicFlags )
 {
 	dx::ScratchImage scratchImg;
@@ -156,10 +156,10 @@ Bitmap::Texel Bitmap::vectorToColor( const dx::XMVECTOR& v ) noexcept
 			(unsigned char)round( floats.z )};
 }
 
-void Bitmap::save( const std::string& filename,
+void Bitmap::save( const std::string &filename,
 	unsigned wicFlags ) const
 {
-	const auto getCodec = []( const std::string& filename )
+	const auto getCodec = []( const std::string &filename )
 	{
 		const auto ext = util::getFileExtension( filename );
 		if ( ext == ".png" )
@@ -195,7 +195,7 @@ bool Bitmap::hasAlpha() const noexcept
 Bitmap::BitmapException::BitmapException( int line,
 	const char* file,
 	const char* function,
-	const std::string& msg ) noexcept
+	const std::string &msg ) noexcept
 	:
 	KeyException(line, file, function, msg)
 {

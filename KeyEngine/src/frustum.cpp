@@ -12,7 +12,7 @@
 
 namespace dx = DirectX;
 
-Frustum::Frustum( Graphics& gph,
+Frustum::Frustum( Graphics &gph,
 	float width,
 	float height,
 	float nearZ,
@@ -118,7 +118,7 @@ Frustum::Frustum( Graphics& gph,
 	}
 }
 
-void Frustum::setupVertexBuffer( Graphics& gph,
+void Frustum::setupVertexBuffer( Graphics &gph,
 	float width,
 	float height,
 	float nearZ,
@@ -148,12 +148,12 @@ void Frustum::setupVertexBuffer( Graphics& gph,
 		vb );
 }
 
-void Frustum::setPosition( const DirectX::XMFLOAT3& pos ) noexcept
+void Frustum::setPosition( const DirectX::XMFLOAT3 &pos ) noexcept
 {
 	this->m_pos = pos;
 }
 
-void Frustum::setRotation( const DirectX::XMFLOAT3& rot ) noexcept
+void Frustum::setRotation( const DirectX::XMFLOAT3 &rot ) noexcept
 {
 	this->m_rot = rot;
 }

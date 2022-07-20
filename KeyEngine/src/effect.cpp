@@ -6,7 +6,7 @@
 
 
 Effect::Effect( size_t channels,
-	const std::string& targetPassName,
+	const std::string &targetPassName,
 	bool bStartActive ) noexcept
 	:
 	m_renderingChannels(channels),
@@ -50,7 +50,7 @@ void Effect::render( const Drawable& drawable,
 	}
 }
 
-void Effect::bind( Graphics& gph ) const cond_noex
+void Effect::bind( Graphics &gph ) const cond_noex
 {
 	for ( const auto& bi : m_pBindables )
 	{
@@ -68,7 +68,7 @@ void Effect::setEnabled( bool b ) noexcept
 	m_active = b;
 }
 
-std::string Effect::getTargetPassName() const noexcept
+const std::string &Effect::getTargetPassName() const noexcept
 {
 	return m_targetPassName;
 }

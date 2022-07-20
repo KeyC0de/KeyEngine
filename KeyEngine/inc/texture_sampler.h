@@ -28,10 +28,10 @@ protected:
 	AddressMode m_addressing;
 	unsigned m_slot;
 public:
-	TextureSampler( Graphics& gph, unsigned slot, FilterMode filt, AddressMode addr );
+	TextureSampler( Graphics &gph, unsigned slot, FilterMode filt, AddressMode addr );
 
-	void bind( Graphics& gph ) cond_noex override;
-	static std::shared_ptr<TextureSampler> fetch( Graphics& gph, unsigned slot,
+	void bind( Graphics &gph ) cond_noex override;
+	static std::shared_ptr<TextureSampler> fetch( Graphics &gph, unsigned slot,
 		FilterMode filt, AddressMode addr );
 	static std::string generateUid( unsigned slot, FilterMode filt, AddressMode addr );
 	std::string getUid() const noexcept override;

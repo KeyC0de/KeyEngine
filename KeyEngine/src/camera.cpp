@@ -25,12 +25,12 @@ DirectX::XMMATRIX Camera::getShadowProjectionMatrix( float farZ ) noexcept
 		100.0f );
 }
 
-Camera::Camera( Graphics& gph,
-	const std::string& name,
+Camera::Camera( Graphics &gph,
+	const std::string &name,
 	int width,
 	int height,
 	float fovDegrees,
-	const DirectX::XMFLOAT3& homePos,
+	const DirectX::XMFLOAT3 &homePos,
 	float homePitch,
 	float homeYaw,
 	bool bTethered,
@@ -79,7 +79,7 @@ void Camera::render( size_t channels ) const
 	}
 }
 
-void Camera::makeActive( Graphics& gph,
+void Camera::makeActive( Graphics &gph,
 	bool bOrthographic ) const
 {
 	gph.setViewMatrix( getViewMatrix() );
@@ -127,7 +127,7 @@ DirectX::XMMATRIX Camera::getOrthographicProjectionMatrix( unsigned viewWidth,
 		m_farZ );
 }
 
-void Camera::displayImguiWidgets( Graphics& gph ) noexcept
+void Camera::displayImguiWidgets( Graphics &gph ) noexcept
 {
 	bool projDirty = false;
 	bool rotDirty = false;
@@ -199,7 +199,7 @@ float Camera::getFovRadians() const noexcept
 	return m_fovRadians;
 }
 
-void Camera::resetToDefault( Graphics& gph ) noexcept
+void Camera::resetToDefault( Graphics &gph ) noexcept
 {
 	if ( !m_bTethered )
 	{
@@ -282,14 +282,14 @@ DirectX::XMVECTOR Camera::getUp() const noexcept
 		getRight() );
 }
 
-void Camera::setPosition( const DirectX::XMFLOAT3& pos ) noexcept
+void Camera::setPosition( const DirectX::XMFLOAT3 &pos ) noexcept
 {
 	this->m_position = pos;
 	m_cameraFrustum.setPosition( pos );
 	m_widget.setPosition( pos );
 }
 
-const std::string& Camera::getName() const noexcept
+const std::string &Camera::getName() const noexcept
 {
 	return m_name;
 }

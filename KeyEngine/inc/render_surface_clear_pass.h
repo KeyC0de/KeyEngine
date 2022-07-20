@@ -13,9 +13,9 @@ class RenderSurfaceClearPass
 {
 	std::shared_ptr<IRenderSurface> m_pBuffer;
 public:
-	RenderSurfaceClearPass( const std::string& name );
+	RenderSurfaceClearPass( const std::string &name );
 
-	void run( Graphics& gph ) const cond_noex override;
+	void run( Graphics &gph ) const cond_noex override;
 	void reset() cond_noex override;
 };
 

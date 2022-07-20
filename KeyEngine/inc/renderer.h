@@ -28,18 +28,18 @@ protected:
 	std::shared_ptr<IRenderTargetView> m_globalColorBuffer;
 	std::shared_ptr<IDepthStencilView> m_globalDepthBuffer;
 public:
-	Renderer( Graphics& gph );
+	Renderer( Graphics &gph );
 	virtual ~Renderer() noexcept;
 
-	void run( Graphics& gph ) cond_noex;
+	void run( Graphics &gph ) cond_noex;
 	virtual void reset() noexcept;
-	RenderQueuePass& getRenderQueuePass( const std::string& name );
+	RenderQueuePass& getRenderQueuePass( const std::string &name );
 protected:
 	void addGlobalProducer( std::unique_ptr<IProducer> pProducer );
 	void addGlobalConsumer( std::unique_ptr<IConsumer> pConsumer );
 	void addPass( std::unique_ptr<IPass> pPass );
-	void setupGlobalConsumerTarget( const std::string& globalConsumerName,
-		const std::string& passName, const std::string& producerName );
+	void setupGlobalConsumerTarget( const std::string &globalConsumerName,
+		const std::string &passName, const std::string &producerName );
 	void validateConsumersLinkage();
 	//===================================================
 	//	\function	linkPassConsumers
@@ -48,7 +48,7 @@ protected:
 	//	\date	2021/10/27 18:00
 	void linkPassConsumers( IPass& pass );
 	void linkGlobalConsumers();
-	IPass& getPass( const std::string& name );
+	IPass& getPass( const std::string &name );
 };
 
 class Renderer3d
@@ -67,15 +67,15 @@ public:
 		Box,
 	} m_kernelType;
 public:
-	Renderer3d( Graphics& gph, int radius, float sigma, KernelType kernelType = Gauss );
+	Renderer3d( Graphics &gph, int radius, float sigma, KernelType kernelType = Gauss );
 
-	void showImGuiWindows( Graphics& gph );
-	void dumpShadowMap( Graphics& gph, const std::string& path );
+	void showImGuiWindows( Graphics &gph );
+	void dumpShadowMap( Graphics &gph, const std::string &path );
 	void setMainCamera( Camera& cam );
 	void setShadowCamera( Camera& cam );
 private:
-	void showGaussianBlurImguiWindow( Graphics& gph );
-	void showShadowDumpImguiWindow( Graphics& gph );
+	void showGaussianBlurImguiWindow( Graphics &gph );
+	void showShadowDumpImguiWindow( Graphics &gph );
 	void setKernelGauss( int radius, float sigma ) cond_noex;
 	void setKernelBox( int radius ) cond_noex;
 };
@@ -84,7 +84,7 @@ class Renderer2d
 	: public Renderer
 {
 public:
-	Renderer2d( Graphics& gph );
+	Renderer2d( Graphics &gph );
 };
 
 

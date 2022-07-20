@@ -4,7 +4,7 @@
 
 namespace dx = DirectX;
 
-TransformScaleVSCB::TransformScaleVSCB( Graphics& gph,
+TransformScaleVSCB::TransformScaleVSCB( Graphics &gph,
 	unsigned slot,
 	float scale )
 	:
@@ -19,7 +19,7 @@ void TransformScaleVSCB::accept( IEffectVisitor& ev )
 	ev.visit( m_cbScale );
 }
 
-void TransformScaleVSCB::bind( Graphics& gph ) cond_noex
+void TransformScaleVSCB::bind( Graphics &gph ) cond_noex
 {
 	const float scale = m_cbScale["scale"];
 	const auto scaleMatrix = dx::XMMatrixScaling( scale,

@@ -17,8 +17,8 @@
 namespace ren
 {
 
-ShadowPass::ShadowPass( Graphics& gph,
-	const std::string& name,
+ShadowPass::ShadowPass( Graphics &gph,
+	const std::string &name,
 	unsigned shadowMapRez )
 	:
 	RenderQueuePass{name},
@@ -86,7 +86,7 @@ ShadowPass::ShadowPass( Graphics& gph,
 	setDepthStencilView( m_pDsvCubemap->shareDepthBuffer( 0 ) );
 }
 
-void ShadowPass::run( Graphics& gph ) const cond_noex
+void ShadowPass::run( Graphics &gph ) const cond_noex
 {
 	m_pLightVcb->update( gph );
 	const auto pos = DirectX::XMLoadFloat3( &m_pShadowCamera->getPosition() );
@@ -113,8 +113,8 @@ void ShadowPass::setShadowCamera( const Camera& cam ) noexcept
 	m_pShadowCamera = &cam;
 }
 
-void ShadowPass::dumpShadowMap( Graphics& gph,
-	const std::string& path ) const
+void ShadowPass::dumpShadowMap( Graphics &gph,
+	const std::string &path ) const
 {
 	for ( size_t i = 0; i < 6; ++i )
 	{

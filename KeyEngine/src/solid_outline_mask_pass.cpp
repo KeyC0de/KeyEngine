@@ -9,8 +9,8 @@
 namespace ren
 {
 
-SolidOutlineMaskPass::SolidOutlineMaskPass( Graphics& gph,
-	const std::string& name )
+SolidOutlineMaskPass::SolidOutlineMaskPass( Graphics &gph,
+	const std::string &name )
 	:
 	RenderQueuePass{name}
 {

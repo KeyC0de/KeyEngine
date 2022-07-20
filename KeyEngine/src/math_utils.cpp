@@ -8,29 +8,52 @@
 namespace util
 {
 
+int nextPowerOf2( int n )
+{
+	if ( n < 0 )
+	{
+		return - 1;
+	}
+	unsigned count = 0;
+	 
+	// first n in the below condition is for the case where n is 0
+	if ( n && !( n & ( n - 1 ) ) )
+	{
+		return n;
+	}
+	 
+	while ( n != 0 )
+	{
+		n >>= 1;
+		count += 1;
+	}
+	 
+	return 1 << count;
+}
+
 float frand() noexcept
 {
 	return static_cast<float>( rand() / ( RAND_MAX + 1.0f ) );
 }
 
-int gcd( int m,
-	int n ) noexcept
+int gcd( int divident,
+	int divisor ) noexcept
 {
 	int r = 0;
 	int temp = 0;
-	if ( n > m )
+	if ( divisor > divident )
 	{
-		temp = n;
-		n = m;
-		m = temp;
+		temp = divisor;
+		divisor = divident;
+		divident = temp;
 	}
 
-	while ( ( r = m % n ) != 0 )
+	while ( ( r = divident % divisor ) != 0 )
 	{
-		m = n;
-		n = r;
+		divident = divisor;
+		divisor = r;
 	}
-	return n;
+	return divisor;
 }
 
 

@@ -16,7 +16,7 @@ class Fruit
 public:
 	Fruit( std::mt19937& rng, const SnakePlayField& field, const SnakeRepr& snake );
 
-	void render( Graphics& gph, SnakePlayField& field ) const;
+	void render( Graphics &gph, SnakePlayField& field ) const;
 	void respawn( std::mt19937& rng, const SnakePlayField& field, const SnakeRepr& snake );
 	const GridLocation& getGridLocation() const noexcept;
 };

@@ -28,10 +28,10 @@ protected:
 	std::shared_ptr<PrimitiveTopology> m_pPrimitiveTopology;
 	std::vector<Effect> m_effects;
 	mutable DirectX::XMFLOAT4X4 m_worldTransform;
-	int m_distanceFromCamera = 0;
+	int m_distanceFromActiveCamera = 0;
 public:
 	Drawable() = default;
-	Drawable( Graphics& gph, const MaterialLoader& mat, const aiMesh& aimesh,
+	Drawable( Graphics &gph, const MaterialLoader& mat, const aiMesh& aimesh,
 		float scale = 1.0f ) noexcept;
 	Drawable( const Drawable& rhs ) = delete;
 	virtual ~Drawable() noexcept;
@@ -51,6 +51,9 @@ public:
 		}
 		return std::nullopt;
 	}
+	//===================================================
+	//	\function	addEffect
+	//	\brief  Effects are moved here
 	void addEffect( Effect ef ) noexcept;
 	//===================================================
 	//	\function	update
@@ -58,11 +61,11 @@ public:
 	//	\date	2021/10/26 23:58
 	virtual void update( float dt ) cond_noex;
 	void render( size_t channels ) const noexcept;
-	void bind( Graphics& gph ) const cond_noex;
+	void bind( Graphics &gph ) const cond_noex;
 	void accept( IEffectVisitor& ev );
 	unsigned getIndicesCount() const cond_noex;
 	void connectEffectsToRenderer( ren::Renderer& r );
-	void setTransform( const DirectX::XMMATRIX& worldTransform ) noexcept;
+	void setTransform( const DirectX::XMMATRIX &worldTransform ) noexcept;
 	virtual DirectX::XMMATRIX getTransform() const noexcept;
 	void setDistanceFromActiveCamera( int dist ) noexcept;
 	int getDistanceFromActiveCamera() const noexcept;

@@ -6,7 +6,7 @@
 namespace util
 {
 
-void openWebpage( const std::string& address )
+void openWebpage( const std::string &address )
 {
 #if defined _MSC_VER || defined _WIN32 || defined _WIN64
 	std::string str{"start " + address};

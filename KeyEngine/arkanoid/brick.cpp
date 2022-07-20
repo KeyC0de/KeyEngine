@@ -15,7 +15,7 @@ Brick::Brick( const Rect& rect,
 
 }
 
-void Brick::render( Graphics& gph ) const
+void Brick::render( Graphics &gph ) const
 {
 	if ( !m_bDestroyed )
 	{

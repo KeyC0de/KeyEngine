@@ -3,7 +3,7 @@
 #include "assertions_console.h"
 
 
-TransformVSCB::TransformVSCB( Graphics& gph,
+TransformVSCB::TransformVSCB( Graphics &gph,
 	unsigned slot )
 {
 	if ( !m_pVscb )
@@ -13,7 +13,7 @@ TransformVSCB::TransformVSCB( Graphics& gph,
 	}
 }
 
-void TransformVSCB::bind( Graphics& gph ) cond_noex
+void TransformVSCB::bind( Graphics &gph ) cond_noex
 {
 	update( gph,
 		getTransforms( gph ) );
@@ -30,7 +30,7 @@ std::unique_ptr<IBindableCloning> TransformVSCB::clone() const noexcept
 	return std::make_unique<TransformVSCB>( *this );
 }
 
-void TransformVSCB::update( Graphics& gph,
+void TransformVSCB::update( Graphics &gph,
 	const Transforms& tfs ) cond_noex
 {
 	ASSERT( m_pDrawable != nullptr, "No Drawable set!" );
@@ -38,7 +38,7 @@ void TransformVSCB::update( Graphics& gph,
 		tfs );
 }
 
-TransformVSCB::Transforms TransformVSCB::getTransforms( Graphics& gph ) cond_noex
+TransformVSCB::Transforms TransformVSCB::getTransforms( Graphics &gph ) cond_noex
 {
 	ASSERT( m_pDrawable != nullptr, "No Drawable set!" );
 	const auto world = m_pDrawable->getTransform();

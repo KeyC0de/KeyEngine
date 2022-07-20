@@ -21,7 +21,7 @@ public:
 	Paddle( const DirectX::XMFLOAT2& position, float width, float height, ColorBGRA col,
 		ColorBGRA wingCol );
 
-	void render( Graphics& gph ) const;
+	void render( Graphics &gph ) const;
 	bool doBallCollision( Ball& ball );
 	void doWallCollision( const Rect& walls );
 	Rect getRect() const;

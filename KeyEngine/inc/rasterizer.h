@@ -12,10 +12,10 @@ protected:
 	bool m_bTwoSided;
 	bool m_bWireframe;
 public:
-	Rasterizer( Graphics& gph, bool bTwoSided, bool bWireframe = false );
+	Rasterizer( Graphics &gph, bool bTwoSided, bool bWireframe = false );
 
-	void bind( Graphics& gph ) cond_noex override;
-	static std::shared_ptr<Rasterizer> fetch( Graphics& gph, bool bTwoSided,
+	void bind( Graphics &gph ) cond_noex override;
+	static std::shared_ptr<Rasterizer> fetch( Graphics &gph, bool bTwoSided,
 		bool bWireframe = false );
 	static std::string generateUid( bool bTwoSided, bool bWireframe );
 	std::string getUid() const noexcept override;

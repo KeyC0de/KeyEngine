@@ -4,7 +4,7 @@
 namespace util
 {
 
-void openWebpage( const std::string& address );
+void openWebpage( const std::string &address );
 
 
 }//namespace util

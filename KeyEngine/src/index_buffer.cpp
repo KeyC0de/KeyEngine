@@ -4,7 +4,7 @@
 #include "dxgi_info_queue.h"
 
 
-IndexBuffer::IndexBuffer( Graphics& gph,
+IndexBuffer::IndexBuffer( Graphics &gph,
 	const std::vector<unsigned>& indices )
 	:
 	IndexBuffer(gph, "?", indices)
@@ -12,8 +12,8 @@ IndexBuffer::IndexBuffer( Graphics& gph,
 
 }
 
-IndexBuffer::IndexBuffer( Graphics& gph,
-	const std::string& tag,
+IndexBuffer::IndexBuffer( Graphics &gph,
+	const std::string &tag,
 	const std::vector<unsigned>& indices )
 	:
 	m_tag(tag),
@@ -35,7 +35,7 @@ IndexBuffer::IndexBuffer( Graphics& gph,
 	ASSERT_HRES_IF_FAILED;
 }
 
-void IndexBuffer::bind( Graphics& gph ) cond_noex
+void IndexBuffer::bind( Graphics &gph ) cond_noex
 {
 	getContext( gph )->IASetIndexBuffer( m_pIndexBuffer.Get(),
 		DXGI_FORMAT_R32_UINT,
@@ -48,8 +48,8 @@ unsigned IndexBuffer::getIndexCount() const noexcept
 	return m_count;
 }
 
-std::shared_ptr<IndexBuffer> IndexBuffer::fetch( Graphics& gph,
-	const std::string& tag,
+std::shared_ptr<IndexBuffer> IndexBuffer::fetch( Graphics &gph,
+	const std::string &tag,
 	const std::vector<unsigned>& indices )
 {
 	ASSERT( tag != "?", "Invalid tag!" );

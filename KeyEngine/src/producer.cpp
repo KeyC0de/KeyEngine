@@ -7,7 +7,7 @@
 namespace ren
 {
 
-IProducer::IProducer( const std::string& name )
+IProducer::IProducer( const std::string &name )
 	:
 	m_name{name}
 {
@@ -26,15 +26,15 @@ IProducer::IProducer( const std::string& name )
 
 std::shared_ptr<IBindable> IProducer::getBindable()
 {
-	throwRendererException( "IProducer class cannot be a target of a Consumer!" );
+	THROW_RENDERER_EXCEPTION( "IProducer class cannot be a target of a Consumer!" );
 }
 
 std::shared_ptr<IRenderSurface> IProducer::getBuffer()
 {
-	throwRendererException( "IProducer class cannot be a target of a Consumer!" );
+	THROW_RENDERER_EXCEPTION( "IProducer class cannot be a target of a Consumer!" );
 }
 
-const std::string& IProducer::getName() const noexcept
+const std::string &IProducer::getName() const noexcept
 {
 	return m_name;
 }

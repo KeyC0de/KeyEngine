@@ -49,7 +49,7 @@ DXGI_FORMAT getColoredFormat( IDepthStencilView::Mode mode )	// no uses yet
 }
 
 
-IDepthStencilView::IDepthStencilView( Graphics& gph,
+IDepthStencilView::IDepthStencilView( Graphics &gph,
 	unsigned width,
 	unsigned height,
 	bool bBindAsShaderInput,
@@ -88,7 +88,7 @@ IDepthStencilView::IDepthStencilView( Graphics& gph,
 	ASSERT_HRES_IF_FAILED;
 }
 
-IDepthStencilView::IDepthStencilView( Graphics& gph,
+IDepthStencilView::IDepthStencilView( Graphics &gph,
 	mwrl::ComPtr<ID3D11Texture2D> pTexture,
 	unsigned face )
 {
@@ -111,7 +111,7 @@ IDepthStencilView::IDepthStencilView( Graphics& gph,
 	ASSERT_HRES_IF_FAILED;
 }
 
-void IDepthStencilView::bindRenderSurface( Graphics& gph ) cond_noex
+void IDepthStencilView::bindRenderSurface( Graphics &gph ) cond_noex
 {
 	auto viewport = Viewport::fetch( gph,
 		m_width,
@@ -124,7 +124,7 @@ void IDepthStencilView::bindRenderSurface( Graphics& gph ) cond_noex
 	DXGI_GET_QUEUE_INFO( gph );
 }
 
-void IDepthStencilView::bindRenderSurface( Graphics& gph,
+void IDepthStencilView::bindRenderSurface( Graphics &gph,
 	IRenderSurface* rt ) cond_noex
 {
 	ASSERT( dynamic_cast<IRenderTargetView*>( rt ) != nullptr,
@@ -133,14 +133,14 @@ void IDepthStencilView::bindRenderSurface( Graphics& gph,
 		static_cast<IRenderTargetView*>( rt ) );
 }
 
-void IDepthStencilView::bindRenderSurface( Graphics& gph,
+void IDepthStencilView::bindRenderSurface( Graphics &gph,
 	IRenderTargetView* rt ) cond_noex
 {
 	rt->bindRenderSurface( gph,
 		this );
 }
 
-void IDepthStencilView::clear( Graphics& gph,
+void IDepthStencilView::clear( Graphics &gph,
 	const std::array<float, 4>& unused ) cond_noex
 {
 	getContext( gph )->ClearDepthStencilView( m_pDsv.Get(),
@@ -151,7 +151,7 @@ void IDepthStencilView::clear( Graphics& gph,
 }
 
 std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC>
-	IDepthStencilView::createStagingTexture( Graphics& gph ) const
+	IDepthStencilView::createStagingTexture( Graphics &gph ) const
 {
 	mwrl::ComPtr<ID3D11Resource> pDsvRsc;
 	m_pDsv->GetResource( &pDsvRsc );
@@ -201,7 +201,7 @@ std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC>
 	return {std::move( pStagingTex ), stagingTexDesc};
 }
 
-Bitmap IDepthStencilView::convertToBitmap( Graphics& gph,
+Bitmap IDepthStencilView::convertToBitmap( Graphics &gph,
 	bool bLinearize ) const
 {
 	auto [pStagingTex, stagingTexDesc] = createStagingTexture( gph );
@@ -297,7 +297,7 @@ unsigned int IDepthStencilView::getHeight() const noexcept
 	return m_height;
 }
 
-DepthStencilShaderInput::DepthStencilShaderInput( Graphics& gph,
+DepthStencilShaderInput::DepthStencilShaderInput( Graphics &gph,
 	unsigned slot,
 	Mode mode )
 	:
@@ -306,7 +306,7 @@ DepthStencilShaderInput::DepthStencilShaderInput( Graphics& gph,
 
 }
 
-DepthStencilShaderInput::DepthStencilShaderInput( Graphics& gph,
+DepthStencilShaderInput::DepthStencilShaderInput( Graphics &gph,
 	unsigned width,
 	unsigned height,
 	unsigned slot,
@@ -329,7 +329,7 @@ DepthStencilShaderInput::DepthStencilShaderInput( Graphics& gph,
 	ASSERT_HRES_IF_FAILED;
 }
 
-void DepthStencilShaderInput::bind( Graphics& gph ) cond_noex
+void DepthStencilShaderInput::bind( Graphics &gph ) cond_noex
 {
 	getContext( gph )->PSSetShaderResources( m_slot,
 		1u,
@@ -338,7 +338,7 @@ void DepthStencilShaderInput::bind( Graphics& gph ) cond_noex
 }
 
 
-DepthStencilOutput::DepthStencilOutput( Graphics& gph,
+DepthStencilOutput::DepthStencilOutput( Graphics &gph,
 	mwrl::ComPtr<ID3D11Texture2D> pTexture,
 	unsigned face )
 	:
@@ -347,14 +347,14 @@ DepthStencilOutput::DepthStencilOutput( Graphics& gph,
 
 }
 
-DepthStencilOutput::DepthStencilOutput( Graphics& gph )
+DepthStencilOutput::DepthStencilOutput( Graphics &gph )
 	:
 	DepthStencilOutput(gph, gph.getClientWidth(), gph.getClientHeight())
 {
 
 }
 
-DepthStencilOutput::DepthStencilOutput( Graphics& gph,
+DepthStencilOutput::DepthStencilOutput( Graphics &gph,
 	unsigned width,
 	unsigned height )
 	:
@@ -363,7 +363,7 @@ DepthStencilOutput::DepthStencilOutput( Graphics& gph,
 
 }
 
-void DepthStencilOutput::bind( Graphics& gph ) cond_noex
+void DepthStencilOutput::bind( Graphics &gph ) cond_noex
 {
 	ASSERT( false, "DepthStencilOutput cannot be bound as a Shader Input." );
 }

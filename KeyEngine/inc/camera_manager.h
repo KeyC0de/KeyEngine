@@ -32,8 +32,8 @@ public:
 	void setWidthHeight( int width, int height ) noexcept;
 	int getClientWidth() const noexcept;
 	int getClientHeight() const noexcept;
-	void spawnImguiWindow( Graphics& gph );
-	void bind( Graphics& gph );
+	void spawnImguiWindow( Graphics &gph );
+	void bind( Graphics &gph );
 	void add( std::shared_ptr<Camera> pCam );
 	void connectEffectsToRenderer( ren::Renderer& r );
 	void render( size_t channels ) const;

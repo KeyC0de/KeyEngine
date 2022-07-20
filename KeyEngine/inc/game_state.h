@@ -7,7 +7,7 @@ class State
 {
 protected:
 	int m_stateId = -1;
-protected:
+
 	State( int stateId = -1 );
 public:
 	virtual ~State() noexcept;

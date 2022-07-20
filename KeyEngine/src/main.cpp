@@ -22,13 +22,13 @@ static bool g_windowsExceptionOccurred = false;
 
 
 std::tuple<int,int> parseCommandLineArguments();
-int runWindowsProgram( _In_ wchar_t* pCmdLine );
+int runWindowsProgram( _In_ wchar_t *pCmdLine );
 void firstly();
 void finally();
 
 int WINAPI wWinMain( _In_ HINSTANCE hinstance,
 	_In_opt_ HINSTANCE hprevInstance,
-	_In_ wchar_t* pCmdLine,
+	_In_ wchar_t *pCmdLine,
 	_In_ int nShowCmd )
 {
 	(void)hprevInstance;
@@ -49,7 +49,7 @@ int WINAPI wWinMain( _In_ HINSTANCE hinstance,
 	return exitCode;
 }
 
-int runWindowsProgram( _In_ wchar_t* pCmdLine )
+int runWindowsProgram( _In_ wchar_t *pCmdLine )
 {
 	auto runProgram = [&pCmdLine] () -> int
 	{
@@ -118,7 +118,7 @@ std::tuple<int,int> parseCommandLineArguments()
 	HRESULT hres;
 	LPWSTR commandLine = GetCommandLineW();
 	int argc;
-	LPWSTR* argv = CommandLineToArgvW( commandLine,
+	LPWSTR *argv = CommandLineToArgvW( commandLine,
 		&argc );
 	ASSERT_HRES_WIN32_IF_FAILED( hres );
 
@@ -163,7 +163,7 @@ void finally()
 #	ifndef NO_DUMPS
 	if ( g_windowsExceptionOccurred )
 	{
-		const std::string& dumpLog = "\nMiniDump Location = "s
+		const std::string &dumpLog = "\nMiniDump Location = "s
 			+ util::ws2s( g_dumpFile )
 			+ "\n"s;
 		console.log( dumpLog );

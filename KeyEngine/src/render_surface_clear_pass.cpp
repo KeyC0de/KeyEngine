@@ -5,7 +5,7 @@
 namespace ren
 {
 
-RenderSurfaceClearPass::RenderSurfaceClearPass( const std::string& name )
+RenderSurfaceClearPass::RenderSurfaceClearPass( const std::string &name )
 	:
 	IPass{name}
 {
@@ -15,7 +15,7 @@ RenderSurfaceClearPass::RenderSurfaceClearPass( const std::string& name )
 		m_pBuffer ) );
 }
 
-void RenderSurfaceClearPass::run( Graphics& gph ) const cond_noex
+void RenderSurfaceClearPass::run( Graphics &gph ) const cond_noex
 {
 	m_pBuffer->clear( gph );
 }

@@ -2,7 +2,7 @@
 #include "bindable_map.h"
 
 
-PrimitiveTopology::PrimitiveTopology( Graphics& gph,
+PrimitiveTopology::PrimitiveTopology( Graphics &gph,
 	D3D11_PRIMITIVE_TOPOLOGY topo )
 	:
 	m_d3dPrimTop{topo}
@@ -10,12 +10,12 @@ PrimitiveTopology::PrimitiveTopology( Graphics& gph,
 
 }
 
-void PrimitiveTopology::bind( Graphics& gph ) cond_noex
+void PrimitiveTopology::bind( Graphics &gph ) cond_noex
 {
 	getContext( gph )->IASetPrimitiveTopology( m_d3dPrimTop );
 }
 
-std::shared_ptr<PrimitiveTopology> PrimitiveTopology::fetch( Graphics& gph,
+std::shared_ptr<PrimitiveTopology> PrimitiveTopology::fetch( Graphics &gph,
 	D3D11_PRIMITIVE_TOPOLOGY topo )
 {
 	return BindableMap::fetch<PrimitiveTopology>( gph,

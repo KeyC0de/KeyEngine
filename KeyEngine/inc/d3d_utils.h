@@ -16,7 +16,7 @@ namespace util
 
 DirectX::XMFLOAT3 extractEulerAngles( const DirectX::XMFLOAT4X4& mat );
 DirectX::XMFLOAT3 extractTranslation( const DirectX::XMFLOAT4X4& mat );
-DirectX::XMMATRIX scaleTranslation( const DirectX::XMMATRIX& mat, float scale );
+DirectX::XMMATRIX scaleTranslation( const DirectX::XMMATRIX &mat, float scale );
 
 //===================================================
 //	\function	comSafeRelease
@@ -81,9 +81,9 @@ static ID3D11PixelShader* createShaderObject<ID3D11PixelShader>( ID3D11Device* p
 
 template<class TShader>
 TShader* loadShaderDynamically( ID3D11Device* pD3dDevice,
-	const std::wstring& fileName,
-	const std::string& entryPoint,
-	const std::string& profile,
+	const std::wstring &fileName,
+	const std::string &entryPoint,
+	const std::string &profile,
 	ID3DBlob*& pShaderBlob,
 	const std::vector<D3D_SHADER_MACRO>& defines = {} )
 {

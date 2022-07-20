@@ -24,10 +24,10 @@ class SkyPass
 	std::shared_ptr<IndexBuffer> m_pSphereIb;
 	unsigned m_nSphereIndices;
 public:
-	SkyPass( Graphics& gph, const std::string& name );
+	SkyPass( Graphics &gph, const std::string &name );
 
 	void setMainCamera( const Camera& cam ) noexcept;
-	void run( Graphics& gph ) const cond_noex override;
+	void run( Graphics &gph ) const cond_noex override;
 	void reset() cond_noex override;
 	void displayImguiWidgets();
 };

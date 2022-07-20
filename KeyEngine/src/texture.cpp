@@ -13,8 +13,8 @@
 namespace mwrl = Microsoft::WRL;
 namespace dx = DirectX;
 
-Texture::Texture( Graphics& gph,
-	const std::string& filepath,
+Texture::Texture( Graphics &gph,
+	const std::string &filepath,
 	unsigned slot )
 	:
 	m_path{filepath},
@@ -69,7 +69,7 @@ Texture::Texture( Graphics& gph,
 	DXGI_GET_QUEUE_INFO( gph );
 }
 
-Texture::Texture( Graphics& gph,
+Texture::Texture( Graphics &gph,
 	unsigned width,
 	unsigned height,
 	unsigned slot )
@@ -111,7 +111,7 @@ Texture::Texture( Graphics& gph,
 	m_bDynamic = true;
 }
 
-void Texture::update( Graphics& gph ) cond_noex
+void Texture::update( Graphics &gph ) cond_noex
 {
 	HRESULT hres;
 	D3D11_MAPPED_SUBRESOURCE mappedCpuBufferTexture;
@@ -138,7 +138,7 @@ void Texture::update( Graphics& gph ) cond_noex
 		0u );
 }
 
-void Texture::bind( Graphics& gph ) cond_noex
+void Texture::bind( Graphics &gph ) cond_noex
 {
 	if ( m_bDynamic )
 	{
@@ -160,8 +160,8 @@ std::string Texture::getPath() const noexcept
 	return m_path;
 }
 
-std::shared_ptr<Texture> Texture::fetch( Graphics& gph,
-	const std::string& filepath,
+std::shared_ptr<Texture> Texture::fetch( Graphics &gph,
+	const std::string &filepath,
 	unsigned slot )
 {
 	return BindableMap::fetch<Texture>( gph,
@@ -169,7 +169,7 @@ std::shared_ptr<Texture> Texture::fetch( Graphics& gph,
 		slot );
 }
 
-std::string Texture::generateUid( const std::string& filepath,
+std::string Texture::generateUid( const std::string &filepath,
 	unsigned slot )
 {
 	using namespace std::string_literals;
@@ -183,7 +183,7 @@ std::string Texture::getUid() const noexcept
 }
 
 
-void Texture::flipModelNormalMapsGreenChannel( const std::string& objPath )
+void Texture::flipModelNormalMapsGreenChannel( const std::string &objPath )
 {
 	const auto rootPath = std::filesystem::path{objPath}.parent_path().string() + "/";
 
@@ -208,8 +208,8 @@ void Texture::flipModelNormalMapsGreenChannel( const std::string& objPath )
 	}
 }
 
-void Texture::flipNormalMapGreenChannel( const std::string& pathIn,
-	const std::string& pathOut )
+void Texture::flipNormalMapGreenChannel( const std::string &pathIn,
+	const std::string &pathOut )
 {
 	const auto normalOp = []( dx::XMVECTOR v, int x, int y ) -> dx::XMVECTOR
 	{
@@ -222,7 +222,7 @@ void Texture::flipNormalMapGreenChannel( const std::string& pathIn,
 		normalOp );
 }
 
-void Texture::validateNormalMap( const std::string& pathIn,
+void Texture::validateNormalMap( const std::string &pathIn,
 	float thresholdMin,
 	float thresholdMax )
 {
@@ -306,7 +306,7 @@ void Texture::validateNormalMap( const std::string& pathIn,
 	}
 }
 
-void Texture::makeStripes( const std::string& pathOut,
+void Texture::makeStripes( const std::string &pathOut,
 	int size,
 	int stripeWidth )
 {

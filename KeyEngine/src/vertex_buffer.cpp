@@ -5,7 +5,7 @@
 #include "assertions_console.h"
 
 
-VertexBuffer::VertexBuffer( Graphics& gph,
+VertexBuffer::VertexBuffer( Graphics &gph,
 	const ver::Buffer& vb )
 	:
 	VertexBuffer(gph, "?", vb)
@@ -13,8 +13,8 @@ VertexBuffer::VertexBuffer( Graphics& gph,
 
 }
 
-VertexBuffer::VertexBuffer( Graphics& gph,
-	const std::string& tag,
+VertexBuffer::VertexBuffer( Graphics &gph,
+	const std::string &tag,
 	const ver::Buffer& vb )
 	:
 	m_stride{static_cast<unsigned>( vb.getLayout().getSizeInBytes() )},
@@ -42,7 +42,7 @@ const ver::VertexLayout& VertexBuffer::getLayout() const noexcept
 	return m_vertexLayout;
 }
 
-void VertexBuffer::bind( Graphics& gph ) cond_noex
+void VertexBuffer::bind( Graphics &gph ) cond_noex
 {
 	const unsigned offset = 0u;
 	getContext( gph )->IASetVertexBuffers( 0u,
@@ -53,8 +53,8 @@ void VertexBuffer::bind( Graphics& gph ) cond_noex
 	DXGI_GET_QUEUE_INFO( gph );
 }
 
-std::shared_ptr<VertexBuffer> VertexBuffer::fetch( Graphics& gph,
-	const std::string& tag,
+std::shared_ptr<VertexBuffer> VertexBuffer::fetch( Graphics &gph,
+	const std::string &tag,
 	const ver::Buffer& vb )
 {
 	ASSERT( tag != "?", "No VertexBuffer tag available!" );

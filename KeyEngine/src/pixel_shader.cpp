@@ -5,8 +5,8 @@
 #include "dxgi_info_queue.h"
 
 
-PixelShader::PixelShader( Graphics& gph,
-	const std::string& filepath )
+PixelShader::PixelShader( Graphics &gph,
+	const std::string &filepath )
 	:
 	m_path(filepath)
 {
@@ -26,7 +26,7 @@ PixelShader::PixelShader( Graphics& gph,
 	ASSERT_HRES_IF_FAILED;
 }
 
-void PixelShader::bind( Graphics& gph ) cond_noex
+void PixelShader::bind( Graphics &gph ) cond_noex
 {
 	getContext( gph )->PSSetShader( m_pPixelShader.Get(),
 		nullptr,
@@ -34,8 +34,8 @@ void PixelShader::bind( Graphics& gph ) cond_noex
 	DXGI_GET_QUEUE_INFO( gph );
 }
 
-std::shared_ptr<PixelShader> PixelShader::fetch( Graphics& gph,
-	const std::string& filepath )
+std::shared_ptr<PixelShader> PixelShader::fetch( Graphics &gph,
+	const std::string &filepath )
 {
 	return BindableMap::fetch<PixelShader>( gph,
 		filepath );
@@ -46,7 +46,7 @@ ID3DBlob* PixelShader::getBytecode() const noexcept
 	return m_pPsBlob.Get();
 }
 
-std::string PixelShader::generateUid( const std::string& filepath )
+std::string PixelShader::generateUid( const std::string &filepath )
 {
 	using namespace std::string_literals;
 	return typeid( PixelShader ).name() + "#"s + filepath;

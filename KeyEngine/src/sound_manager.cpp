@@ -417,8 +417,8 @@ HRESULT Sound::readChunkData( HANDLE file,
 #pragma endregion
 
 Sound::Sound( const char* zsFilename,
-	const std::string& defaultName,
-	const std::string& defaultSubmixName )
+	const std::string &defaultName,
+	const std::string &defaultSubmixName )
 	:
 	m_name{defaultName},
 	m_submixName{defaultSubmixName},
@@ -614,7 +614,7 @@ void Sound::stop()
 	//}
 }
 
-SoundManager::Submix::Submix( const std::string& name )
+SoundManager::Submix::Submix( const std::string &name )
 	:
 	m_name{name},
 	m_outputVoiceSendDesc{0},
@@ -636,7 +636,7 @@ std::string SoundManager::Submix::getName() const cond_noex
 	return m_name;
 }
 
-void SoundManager::Submix::setName( const std::string& name ) cond_noex
+void SoundManager::Submix::setName( const std::string &name ) cond_noex
 {
 	m_name = name;
 }

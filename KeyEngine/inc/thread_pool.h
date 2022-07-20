@@ -29,12 +29,12 @@ class ThreadPool final
 	std::mutex m_mu;
 private:
 	explicit ThreadPool( std::size_t nthreads, bool bStart = true );
-public:	
+public:
 	~ThreadPool() noexcept;
 	ThreadPool( ThreadPool const& ) = delete;
-	ThreadPool& operator=( const ThreadPool& rhs ) = delete;
-	ThreadPool( ThreadPool&& rhs ) noexcept;
-	ThreadPool& operator=( ThreadPool&& rhs ) noexcept;
+	ThreadPool& operator=( const ThreadPool &rhs ) = delete;
+	ThreadPool( ThreadPool &&rhs ) noexcept;
+	ThreadPool& operator=( ThreadPool &&rhs ) noexcept;
 
 	static ThreadPool& getInstance( std::size_t nThreads
 		= std::thread::hardware_concurrency(), bool bEnabled = true );
@@ -49,8 +49,8 @@ public:
 	bool isEnabled() const noexcept;
 
 	template<typename Callback, typename... TArgs>
-	decltype( auto ) enqueue( Callback&& f,
-		TArgs&&... args )
+	decltype( auto ) enqueue( Callback &&f,
+		TArgs &&...args )
 	{
 		using ReturnType = std::invoke_result_t<Callback, TArgs...>;
 		using FuncType = ReturnType(TArgs...);

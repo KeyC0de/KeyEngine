@@ -8,7 +8,7 @@ namespace ren
 RendererException::RendererException( int line,
 	const char* file,
 	const char* function,
-	const std::string& msg ) noexcept
+	const std::string &msg ) noexcept
 	:
 	KeyException(line, file, function, msg)
 {

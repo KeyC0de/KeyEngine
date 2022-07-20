@@ -109,7 +109,7 @@ bool displayBinaryFile( const fs::path& targetPath )
 }
 
 void writeFile( const fs::path& path,
-	const std::string& data )
+	const std::string &data )
 {
 	std::ofstream out{path, std::ios::out};
 	if ( out )
@@ -119,7 +119,7 @@ void writeFile( const fs::path& path,
 	}
 }
 
-void deleteFile( const std::string& filename )
+void deleteFile( const std::string &filename )
 {
 	try
 	{
@@ -158,12 +158,12 @@ void searchFile( const fs::path& directory,
 	}
 }
 
-bool createDirectory( const std::string& str )
+bool createDirectory( const std::string &str )
 {
 	return fs::create_directories( str );
 }
 
-void setFilePermissions( const std::string& path,
+void setFilePermissions( const std::string &path,
 	fs::perms permsToSet,
 	fs::perm_options permsAction ) 
 {
@@ -172,7 +172,7 @@ void setFilePermissions( const std::string& path,
 		permsAction );
 }
 
-const std::string getFileExtension( const std::string& filename )
+const std::string getFileExtension( const std::string &filename )
 {
 	const std::filesystem::path path{filename};
 	return path.extension().string();

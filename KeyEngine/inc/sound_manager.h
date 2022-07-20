@@ -72,7 +72,7 @@ public:
 		XAUDIO2_VOICE_SENDS m_outputVoiceSends;
 		struct IXAudio2SubmixVoice* m_pSubmixVoice = nullptr;
 	public:
-		Submix( const std::string& name = "" );
+		Submix( const std::string &name = "" );
 		~Submix() noexcept;
 		Submix( const Submix& rhs ) = delete;
 		Submix& operator=( const Submix& rhs ) = delete;
@@ -80,7 +80,7 @@ public:
 		Submix& operator=( Submix&& rhs ) cond_noex;
 	
 		std::string getName() const cond_noex;
-		void setName( const std::string& name ) cond_noex;
+		void setName( const std::string &name ) cond_noex;
 		void setVolume( float volume = 1.0f ) cond_noex;
 	};
 private:
@@ -164,8 +164,8 @@ public:
 	//	\function	Sound
 	//	\brief  constructor loads sound file and configures all its properties
 	//	\date	2020/10/25 15:04
-	Sound( const char* zsFilename, const std::string& name = "",
-		const std::string& submixName = "" );
+	Sound( const char* zsFilename, const std::string &name = "",
+		const std::string &submixName = "" );
 	Sound( const Sound& rhs ) = delete;
 	Sound& operator=( const Sound& rhs ) = delete;
 

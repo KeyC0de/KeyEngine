@@ -8,8 +8,8 @@ class Sphere
 {
 	DirectX::XMFLOAT3 m_pos{1.0f, 1.0f, 1.0f};
 public:
-	Sphere( Graphics& gph, float radius );
+	Sphere( Graphics &gph, float radius );
 
-	void setPosition( const DirectX::XMFLOAT3& pos ) noexcept;
+	void setPosition( const DirectX::XMFLOAT3 &pos ) noexcept;
 	DirectX::XMMATRIX getTransform() const noexcept override;
 };

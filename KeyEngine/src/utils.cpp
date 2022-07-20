@@ -9,7 +9,7 @@
 namespace util
 {
 
-std::vector<std::string> tokenizeQuotedString( const std::string& input )
+std::vector<std::string> tokenizeQuotedString( const std::string &input )
 {
 	std::istringstream stream;
 	stream.str( input );
@@ -23,7 +23,7 @@ std::vector<std::string> tokenizeQuotedString( const std::string& input )
 	return tokens;
 }
 
-std::wstring s2ws( const std::string& s )
+std::wstring s2ws( const std::string &s )
 {
 	try
 	{
@@ -43,7 +43,7 @@ std::wstring s2ws( const std::string& s )
 	}
 }
 
-std::string ws2s( const std::wstring& ws )
+std::string ws2s( const std::wstring &ws )
 {
 	try
 	{
@@ -63,8 +63,8 @@ std::string ws2s( const std::wstring& ws )
 	}
 }
 
-std::vector<std::string> splitString( const std::string& s,
-	const std::string& delim )
+std::vector<std::string> splitString( const std::string &s,
+	const std::string &delim )
 {
 	std::vector<std::string> strings;
 	splitString_impl( s,
@@ -82,16 +82,36 @@ bool stringContains( std::string_view haystack,
 		needle.end() ) != haystack.end();
 }
 
-std::string& capitalizeFirstLetter( std::string& str )
+std::string &capitalizeFirstLetter( std::string &str )
 {
 	str[0] = toupper( str[0] );
 	return str;
 }
 
-std::string&& capitalizeFirstLetter( std::string&& str )
+std::string capitalizeFirstLetter( const std::string &str )
 {
-	str[0] = toupper( str[0] );
-	return std::move( str );
+	std::string strCopy{str};
+	strCopy[0] = toupper( strCopy[0] );
+	return strCopy;
+}
+
+std::tuple<int, int, int> timeToHms( float time )
+{
+	int hours = time;
+	float fminutes = ( time - hours ) * 60;
+	int minutes = fminutes;
+	float fseconds = ( fminutes - minutes ) * 60;
+	int seconds = fseconds;
+	return {hours, minutes, seconds};
+}
+
+std::tuple<int, int, int> secondsToHms( int totalSecs )
+{
+	int hours = totalSecs / 3600;
+	int rest = totalSecs % 3600;
+	int minutes = rest / 60;
+	int seconds = rest % 60;
+	return {hours, minutes, seconds};
 }
 
 

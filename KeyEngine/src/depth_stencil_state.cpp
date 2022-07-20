@@ -4,7 +4,7 @@
 #include "dxgi_info_queue.h"
 
 
-DepthStencilState::DepthStencilState( Graphics& gph,
+DepthStencilState::DepthStencilState( Graphics &gph,
 	Mode mode )
 	:
 	m_mode(mode)
@@ -100,14 +100,14 @@ DepthStencilState::DepthStencilState( Graphics& gph,
 	ASSERT_HRES_IF_FAILED;
 }
 
-void DepthStencilState::bind( Graphics& gph ) cond_noex
+void DepthStencilState::bind( Graphics &gph ) cond_noex
 {
 	getContext( gph )->OMSetDepthStencilState( m_pDepthStencilState.Get(),
 		0xFF );
 	DXGI_GET_QUEUE_INFO( gph );
 }
 
-std::shared_ptr<DepthStencilState> DepthStencilState::fetch( Graphics& gph,
+std::shared_ptr<DepthStencilState> DepthStencilState::fetch( Graphics &gph,
 	Mode mode )
 {
 	return BindableMap::fetch<DepthStencilState>( gph,

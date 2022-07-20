@@ -34,10 +34,10 @@ class Graphics
 	{
 	public:
 		GraphicsException( int line, const char* file, const char* function,
-			const std::string& msg ) noexcept;
+			const std::string &msg ) noexcept;
 
-		const std::string getType() const noexcept override;
-		virtual const char* what() const noexcept override;
+		const std::string getType() const noexcept override final;
+		virtual const char* what() const noexcept override final;
 	};
 
 	class Adapter final
@@ -99,8 +99,8 @@ public:
 	void drawIndexed( unsigned count ) cond_noex;
 	void drawIndexedInstanced( unsigned indexCount, unsigned instanceCount ) cond_noex;
 	ColorBGRA*& getCpuBuffer();
-	void setViewMatrix( const DirectX::XMMATRIX& cam ) noexcept;
-	void setProjectionMatrix( const DirectX::XMMATRIX& proj ) noexcept;
+	void setViewMatrix( const DirectX::XMMATRIX &cam ) noexcept;
+	void setProjectionMatrix( const DirectX::XMMATRIX &proj ) noexcept;
 	DirectX::XMMATRIX getViewMatrix() const noexcept;
 	DirectX::XMMATRIX getProjectionMatrix() const noexcept;
 	unsigned getClientWidth() const noexcept;
@@ -170,7 +170,7 @@ private:
 #endif
 };
 
-#define throwGraphicsException( msg ) throw GraphicsException( __LINE__,\
+#define THROW_GRAPHICS_EXCEPTION( msg ) throw GraphicsException( __LINE__,\
 	__FILE__,\
 	__FUNCTION__,\
 	msg );

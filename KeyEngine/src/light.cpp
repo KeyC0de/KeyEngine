@@ -7,7 +7,7 @@
 
 
 /*
-void DirectionalLightVSCB::update( Graphics& gph )
+void DirectionalLightVSCB::update( Graphics &gph )
 {
 	ASSERT( m_pDirectionalLightShadowCamera, "Camera not specified (null)!" );
 	dx::XMFLOAT3 dir;
@@ -21,9 +21,9 @@ void DirectionalLightVSCB::update( Graphics& gph )
 }
 */
 
-PointLight::PointLight( Graphics& gph,
-	const DirectX::XMFLOAT3& pos,
-	const DirectX::XMFLOAT3& col,
+PointLight::PointLight( Graphics &gph,
+	const DirectX::XMFLOAT3 &pos,
+	const DirectX::XMFLOAT3 &col,
 	bool bShadowCasting,
 	float radius )
 	:
@@ -66,7 +66,7 @@ void PointLight::setIntensity( float newIntensity ) noexcept
 	m_pscbData.intensity = newIntensity;
 }
 
-void PointLight::setColor( const DirectX::XMFLOAT3& diffuseColor ) noexcept
+void PointLight::setColor( const DirectX::XMFLOAT3 &diffuseColor ) noexcept
 {
 	m_pscbData.lightColor = diffuseColor;
 }
@@ -128,9 +128,9 @@ void PointLight::resetToDefault() noexcept
 	m_pscbData = m_pscbHomeData;
 }
 
-void PointLight::update( Graphics& gph,
+void PointLight::update( Graphics &gph,
 	float dt,
-	const DirectX::XMMATRIX& activeCameraViewMat ) const noexcept
+	const DirectX::XMMATRIX &activeCameraViewMat ) const noexcept
 {
 	auto copy = m_pscbData;
 	const auto lightViewSpacePos = DirectX::XMLoadFloat3( &m_pscbData.pos );

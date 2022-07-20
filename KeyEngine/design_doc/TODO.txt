@@ -1,0 +1,494 @@
+﻿FIXME:
+-- INFO_QUEUE doesn't work. It crashes at the Graphics Destructor. It might be ImGui related.
+
+
+TODO:
+-- Model 1 material for now - add the ability for multiple
+-- MaterialLoader will need to addBindable "Rasterizer" when 2 sided aiMaterials start getting introduced
+-- Fix alignedMalloc
+-- In SettingsManager load settings from .ini file (inih)
+-- Rework Effect copy & move ctors
+-- Dynamically adjust slopeBias in RasterizerShadow depending on the angle
+		between surface & light's shadow camera
+	the more obtuse the angle the more slopeBias we generate
+		you'll need to set a PCB for that
+-- check with the mean too in setGaussian in Renderer.cpp
+-- Call shadowMapPass::run every 10 frames or so; it's expensive as it is
+-- Sorting by material within passes
+-- Do frustum culling for entities
+https://www.rastertek.com/dx11tut16.html
+
+void Sandbox3d::frustumCullEntities()
+{
+	- If a model is fully inside the frustum, all meshes in the model are immediately added to the render-queue without checking their bounding boxes against the frustum.
+	- If a model is not inside the frustum at all, it is skipped.
+	- If a model is partially inside the frustum, meshes are each checked against the frustum before being added to the render-queue.
+		* Important. Remember that I said sub-meshes get added to the render-queue. When a mesh “adds itself” to a render-queue, it actually adds all of its sub-meshes to the render-queue. Sub-meshes do not have bounding boxes. When a mesh is determined to be inside the frustum, all sub-meshes are automatically added.
+		* The keys for sorting are created by the information on the sub-meshes. Shader ID, texture ID, etc. Only the depth comes from the mesh, which means all sub-meshes on a mesh have the same depth as far as the sort will know.
+		* Sub-meshes go to either the opaque or translucent render-queue. Both are being populated as you traverse the spatial partition.
+	- You have now populated a render-queue. For opaque render-queues, sort based on:
+		1. shader ID's
+		2. texture ID's
+		3. vertex buffers ID's
+		4. depth (front-to-back).
+		For translucent renders, sort based on depth only (back-to-front).
+		When sorting you don't need to sort the Jobs/items in the render queue you just need to sort the indices. Like these:
+		// std::vector<Job> m_opaques;
+		// std::vector<Job> m_transparents;
+		// std::vector<std::size_t> m_opaquesIndices;
+		// std::vector<std::size_t> m_transparentsIndices;
+	// - render m_opaques and m_transparents based on the sorted indices from m_opaquesIndices and m_transparentIndices respectively
+	
+	Additionally to all of the above we could consider temporal coherence:
+	Don't clear the index render queues (the Job renderQueues are refilled each frame no matter what).
+	By keeping the array of indices for the next frame, you are likely to have the indices in already-sorted order.
+	Supporting frame-to-frame temporal coherence is a very simple extension of a standard render-queue, and benchmarking shows it makes a significant difference compared to sorting every frame, even if you use a quick sort (a radix sort is not possible, nor would it be faster anyway). An insertion sort is fastest because it simply makes a linear pass over the array of indices and is done. It is also stable, so things don't jitter inside the sorted array. Otherwise use quicksort. Both are stable so that's good.
+	There are only 3 cases to handle when preparing for a sort:
+		1. If the new total render-queue items is larger than it was before, add the extra indices to your index array in order.
+		example: If last frame we had 6 objects in the queue and now we have 8, add indices 6 and 7 to the end of the index array and leave the rest of the indices alone. So your sorted index array might look like 5, 1, 4, 3, 2, 0, 6, 7.
+		2. If the new total is the same as the last total, do nothing. Leave indices as they are.
+		3. If the new total is less than before, reset all the indices to 0, 1, 2, 3, 4, 5…
+	The code below illustrates these 3 cases:
+	
+	//Prepares to sort the given number of elements, but does not sort them.
+	//\param _ui32Total The number of elements to prepare to sort.
+	LSVOID LSE_CALL		PrepareFor( LSUINT32 _ui32Total )
+	{
+		// Do we need to grow the array of incides?
+		if ( _ui32Total > m_ui32AllocIndices ) {
+			// Up-size the allocated amount.
+			delete [] m_pui32Indices;
+			m_pui32Indices = new LSUINT32[_ui32Total];
+			m_ui32AllocIndices = _ui32Total;
+			m_ui32TotalIndices = 0UL;	// Causes list to be fully reset to 0, 1, 2… below.
+		}
+		// Check for cases where we need to add or adjust indices.
+		if ( m_ui32TotalIndices > _ui32Total ) {
+			for ( LSUINT32 I = 0UL; I < _ui32Total; ++I ) {
+				// Add indices that were not added before.
+				m_pui32Indices[I] = I;
+			}
+		}
+		else {
+			for ( LSUINT32 I = m_ui32TotalIndices; I < _ui32Total; ++I ) {
+				// Add indices that were not added before.
+				m_pui32Indices[I] = I;
+			}
+		}
+		m_ui32TotalIndices = _ui32Total;
+	}
+	
+}
+-- shadowing_ps.hlsli : set zf, zn in a CB and update it from ShadowMapPass - XMMatrixPerspectiveFovLH values
+-- In RenderQueuePass separate the vectors of Jobs to 2 vectors
+	1. for opaque drawables
+	2. for transparent drawables
+	Even better use a map structure which does auto sorting
+	Map transparents by distance map<float, IDrawable, std::less> (back to front) and use reverse iterators to render
+		the Blender operation should be: src = GL_SRC_ALPHA, dst = GL_ONE_MINUS_SRC_ALPHA
+	Map opaques by distance map<float, IDrawable, std::less>
+-- About thick transparent - translucent - Drawables we'll need extra work for them..
+-- Support for RGBAColor in color.h
+	struct RGBAColor
+	{
+		unsigned char r;
+		unsigned char g;
+		unsigned char b;
+		unsigned char a;
+	};
+-- Support for a scripting system in game.h
+	std::string m_commandLine;
+-- in Pass::run
+	consider having Pass::begin & Pass::end to make sure all resource lifetimes are kept
+		(on Pass::end) st they are usable by subsequent passes
+-- In RenderQueuePass
+	use 2 vectors of Jobs, 1 for opaques, 1 for transparent ones
+-- Implement SplashWindow
+-- Implement Plane geometry
+-- Proper material loading for fbx
+-- Multithreaded Rendering & Jobs
+-- Implement (Trigger) Volume system
+	Trigger System:
+	
+	class Volume
+		: public Entity
+	{
+		bool m_enabled;
+		RenderableEntity* m_currentActor;
+		RenderableEntity* m_parent;
+	public:
+		
+	};
+	
+	// child volumes: DeferredDecal, AtmosphericFog, PostProcess, BoxReflectionCapture, PlanarReflection, Trigger Volume
+	
+	class TriggerVolume
+		: public Volume
+	{
+	public:
+		TriggerVolume( enabled = true )
+			: m_enabled{enabled}
+		{}
+		
+		onEnter( Actor* a );
+		onExit( Actor* a );
+		onHit( Projectile* a );
+	};
+	
+	// child volumes: AudioVolume, BlockingVolume, CameraBlockingVolume, CullDistanceVolume, KillZVolume, NavMeshBounds, PainCausingVolume
+
+
+-- Unreal Direct3d 11 Hardware Accelerated Rendering:
+
+foreach( material )
+{
+	foreach( camera )
+	{
+		set_shader();
+		upload_material_parameters()
+		foreach( instanced_objects with that material )
+		{
+			set_mesh();
+			// already uploaded----upload_object_parameters()
+			// no need to upload data, just tell gpu to render at some index
+			render_instanced( instanced_objects.idx, instanced_objects.count ) 
+		}
+	}
+}
+
+The way the new unreal renderer works, is by having 2 parallel arrays, one on GPU and other of CPU, holding the object parameters(position, scale, etc) for literally the entire scene. At the beggining of the frame, it uploads only what has changed since last frame, and then when rendering it doesnt need to upload parameters because it does it in bulk. Because all the data is done in dumb arrays, its all parallelized and highly performant.
+
+-- Complete the RenderToTexture RenderToTexturePass classes
+
+-- Where to keep all Entities/Game Objects?
+Should I even keep them somewhere?
+
+Keep them in some sort of EntityManager class. I can even categorize them into various buckets, according to what type of GameObjects they are (this can be used for various purposes later on, eg. say a Bucket of Bullets).
+
+Finally render every bucket in the order I set them up. But prior I sort the elements in a bucket in the order I want, say for Transparent objects I sort them back →to→ front in decreasing Z order.
+
+A `bucket` is a simple class.
+```
+// a GamePlay-ready entity
+// That is it can be interacted with the gameplay.
+class Entity	// abstract
+{
+	size_t m_id = ;		// generate a unique Entity id
+	size_t m_bucketType;// what type of Entity
+	// ...
+	Entity* m_parent;
+	std::vector<Entity*> m_children; // for EntityGraph management
+public:
+	Entity( ... )
+		: ...
+	{}
+	virtual ~Entity() = default;
+};
+
+class RenderableEntity
+	: public Entity
+{
+	Model m_model;
+	// ...
+public:
+	RenderableEntity( ... )
+		: ...
+	{}
+	Model getModel() const noexcept;
+};
+
+// for example static objects are RenderableEntities
+// RenderableEntity rock1{L"path/to/rock/model"};
+
+// an Actor is a gameplay-enabled Entity
+// Actor need ways to communicate with each other for gameplay purposes
+class Actor
+	: public RenderableEntity
+{
+	// ...
+};
+
+class Character
+	: public Actor
+{
+	// ...
+};
+
+// Players are characters
+// Character player;
+
+// EntityManager owns all the Entities
+class EntityManager final
+{
+	// category in reference to Gameplay
+	enum Category
+	{
+		BULLET,
+		RAGDOLL,
+		// ...
+	};
+	
+	class Bucket
+	{
+		Category m_category;
+		// potentially other details
+		std::vector<Entity*> m_pEntities;
+	public:
+		Bucket( ... )
+			: ...
+		{}
+		void sort();
+		bool removeDuplicates();
+		void setCategory( Entity* entity );
+		void setCategory( std::size_t index );
+		Category getCategory( Entity* entity ) const noexcept
+		Category getCategory( std::size_t index ) const noexcept
+		// ...
+	};
+	std::vector<Entity>& getEntitiesOfType() const noexcept;
+	
+	// ...
+public:
+	Bucket getBucket( Category category ) const noexcept;
+	
+	// ...
+private:
+	Bucket m_statics;
+	Bucket m_bullets;
+	Bucket m_ragDolls;
+	Bucket m_npcs;
+	Bucket m_npcs;
+	Bucket m_mounts;
+	Bucket m_cleanup;		// entities for clean up..
+	// ...
+	std::unique_ptr<WorldEntity> m_pWorld;
+};
+
+-- Implement particle system
+
+-- World Entity
+World Entity:
+A special type of Entity.
+Use an EntityGraph for each level the top of the entity graph will be that world/terrain/level Entity and every Other Entity will be a child of the world entity (of course some entites can have children too, say a car has 4 wheel child entities).
+
+-- Animation
+https://ogldev.org/www/tutorial38/tutorial38.html
+
+The artist riggs together the bone structure and defines a set of key frames for each animation type ("walk", "run", "die", etc). The key frames contain the transformations of all bones in critical points along the animation path. The graphics engine interpolates between the transformations of the keyframes and creates a smooth motion between them.
+
+Since bones form a hierarchy of parents & children when we process the transformations of a bone we need to combine it with the transformations of all the parent bones up to and including the root.
+
+A skeletal mesh contains the static mesh data as well as a pointer to its root bone:
+Bone* pSkeleton;
+which yes represents the skeleton, ie. the hierarchy of bones.
+A bone is:
+class Bone
+{
+	vector<Bone*> m_pChildren;
+	int m_id;
+	string name;
+	Mat4 m_animatedTransform; // This is used by the Animator. The trasform used to animate the bone from its original pos+rot to the pos+rot in the current pose of the animation. This is the transform that gets sent to the VS to animate vertices. It is in model space.
+	Mat4 m_localBindTransform; // the trasform to the bone's bind (aka original) pose in relation to its parent (bone aka local space). It is used only to calculate the next one:
+	Mat4 m_inverseBindTrasform; // the model space transform used to trasform the mesh ('s vertices) to its original pos+rot but in model space this time and inverted. This is used by the Animator class 
+};
+An Animation contains an array of Keyframes.
+A Keyframe contains a floating point time value and a Pose.
+A Pose can be represented by a vector of Bone transforms (pos & rot) for all the bones (the skeleton) of a skeletal mesh. It is important to note that these transforms are in relation to the parent bone not to the origin of the model. This makes it easy to interpolate between poses.
+All skinning work is done in the VS.
+Now to connect the animation with the skeletal mesh we have the Animator class, which keeps track of the current animation and the timestamp.
+The Animator reads the Animation's bone transforms and applies them to the skeletal mesh's skeleton transforms.
+Each skeletal mesh has its own Animator object.
+The Skin is the Mesh typical vertex buffer positions, normals, uvs etc. but also bone ids and weights. An array of 4 each one.
+In the VS we pass the jointMatrices array, which contains the bone index and the bone's animated transform. Then for all the weights affecting this vertex we accumulate the vertex transform & normal.
+applyPoseToJoints
+.mul
+[picture explanation]
+
+Now how to load the animation and the skeletal mesh properly?
+We'll use Assimp for that.
+
+An imported scene may contain zero to x aiAnimation entries. An animation in this context is a set of keyframe sequences where each sequence describes the orientation of a single node in the hierarchy over a limited time span. Animations of this kind are usually used to animate the skeleton of a skinned mesh, but there are other uses as well.
+
+An aiAnimation has a duration. The duration as well as all time stamps are given in ticks. To get the correct timing, all time stamp thus have to be divided by aiAnimation::mTicksPerSecond. Beware, though, that certain combinations of file format and exporter don't always store this information in the exported file. In this case, mTicksPerSecond is set to 0 to indicate the lack of knowledge.
+
+Skeletal Animation enabled vertex structure:
+Position
+Texture Coordinates
+Normal
+Bone ID0|Weight 0
+Bone ID1|Weight 1
+Bone ID2|Weight 2
+Bone ID3|Weight 3
+
+The bone IDs are indices into an array of bone transformations. These tranformations will be applied on the position and normal before the WVP matrix (i.e. they transform the vertex from a "bone space" into local space).
+
+Assimp supports loading bone information (animations & transformations for each animation keyframe) from several formats. But we need to do a bit of work on the assimp data structures to get them into our desired format and then into the shaders.
+
+Assimp aiMesh contains stuff at the vertex level.
+Assimp vertices are stored in the usual local space.
+However, bones in the skeleton hierarchy work in bone space.
+aiBone, which represents one bone in the skeleton of the mesh, has an offsetMatrix. The offset matrix is needed to transform the vertex position from the local space of the mesh it is in to the bone space in order to apply the animation for the current frame.
+The aiBone contains an aiVertexWeight array.
+An entry of aiVertexWeight contains an index into the array of vertices in the aiMesh as well as a weight. The sum of all vertex weights must be 1 but to find them you need to walk through all the bones and accumulate the weights into a kind of list for each particular vertex.
+
+After we reconstruct the bone information at the vertex level we need to process the bone transformation hierarchy and generate the final transformations that we will load into the shader.
+So we start iterating nodes at the aiNode's root (in aiScene). If a node represents a bone in the heirarchy then the node name must match the bone name.
+An aiAnimation has a duration in ticks and the number of ticks per second.
+eg 100 ticks and 25 ticks per second represent a 4 second animation
+This helps us time the progression independent on hardware.
+An aiAnimation also has a name which corresponds to an aiNode's name.
+Why is this needed you ask? Well a skeletal mesh when imported (aiScene) has an array of aiAnimation and each aiAnimation is for a single bone. To find which bone use the aiAnimation's name attribute. So aiScene's aiAnimation array represents a Pose over all keyframes of the animation.
+
+An aiBone is represented by an aiNode in the Model (aiScene) hierarchy.
+
+If aiNode's does not correspond to a bone then that is its final transformation.
+
+To apply such an animation you need to identify the animation tracks that refer to actual bones in your mesh. Then for every track:
+a) Find the keys that lay right before the current anim time.
+b) Optional: interpolate between these and the following keys.
+c) Combine the calculated position, rotation and scaling to a tranformation matrix
+d) Set the affected node's transformation to the calculated matrix.
+
+Think of the animation as a twofold task: First you animate the nodes in the scene graph, then you calculate the bone matrices from the current state of the scene graph. Both parts are indeed separable - the movement of the nodes could also come from a ragdoll physics simulation, for example.
+
+The bone matrix describes how a vertex moves/changes if the bone is in the current position instead of the bind position. So in bind pose all bone matrices are identity.
+
+// animation workflow for each frame:
+for every mesh you want to see animated:
+	1. calculate the current point in time - it has to be a value between zero and aiAnimation::mDuration
+	2. or each animation channel (/bone) of the node (which will typically be a mesh):
+		2.1 : Find the affected node by aiNodeAnim::mNodeName, by searching recursively through all scene nodes and comparing node names to aiNodeAnim::mNodeName. For each of the 3 keys, find the key which is closest in time to the current time point. Use the values from the 3 keys to construct a transformation matrix. Scale first, Rotate second, Translate third. This transformation *replaces* the node's transformation. In other words use the animated transform for that bone to replace the node's transform. That means that the transformation is local in relation to its parent node - tldr just copy this formed transformation matrix to the aiNode's mTransformation field.
+		- More in depth: if the node has multiple bones affecting it then you store it in an array of bones to be applied later multiplied with the correct weight
+		- Result so far: You'd now see a moving scene graph. Nodes move around, and meshes, cameras or lights attached to those nodes also move.
+		- Optimization 1 so far: You don't have to search for the affected node for each channel in each frame! Do it once and store the pointer somewhere.
+		- Optimization 2 so far: You also might want to add interpolation between current and next key - anims look much smoother with interpolations, and quaternions are especially well suited for interpolation.
+		2.2 : calculate the bone matrices from the current state of the nodes. For each bone, find the corresponding node by aiBone::mName. Calculate the bone matrix by concatenating/multiplying aiBone::mOffsetMatrix with then the corresponding node's aiNode::mTransformation and its parent node's mTransformation recursively till the root node (or until we're back to the same level of the hierarchy as the animated node/mesh itself). The node transformation chain from node to parent to parent... describes the bone-to-mesh matrix - that's the exact counterpart to the offset matrix. So if your skeleton nodes are in bind pose, both matrices cancel out and you get an identity matrix for the bone matrix. That's exactly what we described above! But as soon as the node or its parents move away from the bind position, the bone matrix contains the "difference" between the bind pose and the current skeleton pose. And that's what we need to calculate our vertices. So use this bone matrix to transform vertices in the vertex shader.
+		2.3 In HLSL use the bone matrix array (an array of bone transformations in matrix form - type) and the weights to transform the vertices. These tranformations will be applied on the position and normal before the WVP matrix (ie they transform the vertex from a "bone space" into local space). The weight will be used to combine the transformations of several bones into a single transformation and in any case the total weight must be exactly 1 (responsibility of the modeling software). Usually, we would interpolate between animation key frames and update the array of bone transformations in every frame.
+			const int MAX_BONES = 126;
+			cbuffer Anim
+			{
+				matrix boneMatrices[MAX_BONES];		// the index is the bone id
+			}
+			// add the following to your Vertex structure
+			struct Vertex
+			{
+				uint boneIds[4];			// the bone ids affecting a vertex
+				float4 vertexWeights;		// the weights of a vertex - up to 4
+			}
+
+Optimizations:
+- You can store the aiNodeAnim's in a map and use that to look them up instead of FindNodeAnim function for every node every frame.
+
+// Code time:
+
+for each frame:
+	for each aiMesh* mesh you want animated:
+
+// calculate bone matrices
+std::vector<aiMatrix4x4> boneMatrices( mesh->mNumBones);
+for( size_t a = 0; a < mesh->mNumBones; ++a)
+{
+	const aiBone* bone = mesh->mBones[a];
+
+	// find the corresponding node by again looking recursively through the node hierarchy for the same name
+	aiNode* node = FindNodeRecursivelyByName( scene->mRootNode, bone->mName);
+
+	// start with the mesh-to-bone matrix 
+	boneMatrices[a] = bone->mOffsetMatrix;
+	// and now append all node transformations down the parent chain until we're back at mesh coordinates again
+	const aiNode* tempNode = node;
+	while ( tempNode )
+	{
+		boneMatrices[a] *= tempNode->mTransformation;   // check your matrix multiplication order here!!!
+		tempNode = tempNode->mParent;
+	}
+}
+You now have an array of bone matrices. The following steps differ between hardware and software skinning, whether you're doing it on CPU or GPU. I suggest using the GPU for this whenever you can, but GPU skinning has limits on the maximum number of bones in a mesh, or on the number of bones affecting any single vertex, so you'll probably have to implement software skinning at some time anyways. To keep this explanation manageable I'll restrict myself to software skinning.
+
+// The following should be done on HLSL gpu
+
+What we need to do now is to iterate over all vertex influences in all bones and accumulate the vertex' deformed data. A vertex can be affected by more than a single bone - you simply sum up all transformed vertices weighted by the weight of the bone vertex weight. That looks like:
+
+// all using the results from the previous code snippet
+std::vector<aiVector3D> resultPos( mesh->mNumVertices); 
+std::vector<aiVector3D> resultNorm( mesh->mNumVertices);
+// loop through all vertex weights of all bones
+for( size_t a = 0; a < mesh->mNumBones; ++a)
+{
+	const aiBone* bone = mesh->mBones[a];
+	const aiMatrix4x4& posTrafo = boneMatrices[a];
+	aiMatrix3x3 normTrafo = aiMatrix3x3( posTrafo); // 3x3 matrix, contains the bone matrix without the translation, only with rotation and possibly scaling
+	
+	for( size_t b = 0; b < bone->mNumWeights; ++b)
+	{
+		const aiVertexWeight& weight = bone->mWeights[b];
+		size_t vertexId = weight.mVertexId; 
+		const aiVector3D& srcPos = mesh->mVertices[vertexId];
+		const aiVector3D& srcNorm = mesh->mNormals[vertexId];
+		resultPos[vertexId] += weight.mWeight * (posTrafo * srcPos);
+		resultNorm[vertexId] += weight.mWeight * (normTrafo * srcNorm);
+	}
+}
+// now upload the result position and normal along with the other vertex attributes into a dynamic vertex buffer
+
+ref: https://sourceforge.net/p/assimp/discussion/817654/thread/5462cbf5/
+ref: anim class hierarchy files linked in bottom comment: https://stackoverflow.com/questions/36531344/assimp-calculating-bones
+
+
+ozz Animation:
+
+ozz-animation is an open source c++ 3d skeletal animation engine. It provides runtime character animation playback fonctionnalities (loading, sampling, blending…), with full support for glTF, Fbx, Collada and other major 3D formats. It proposes a low-level renderer agnostic and game-engine agnostic implementation, focusing on performance and memory constraints with a data-oriented design.
+
+Toolset:
+DCC animation software (Blender, Max, Maya, ...) -> DCC exchange file format (glTF, fbx, collage etc) -> ozz animation offline tools (gltf2ozz, fbx2ozz ...) -> ozz animation runtime format -> ozz animation runtime integration to whatever game engine
+
+In a way or an other, the aim of the pipeline and importer tools is to end up with runtime data structures (ozz::animation::Skeleton, ozz::animation::Animation, …) that can be used with the runtime libraries, on any platform. Run-time libraries provide jobs and data structures to process runtime operations like sampling, blending…
+
+-- Instanced Rendering
+-- Model LOD automatic switching
+-- Reflections
+
+-- Landscape
+Landscape Components: Landscapes are divided into multiple Components, which are Unreal's base unit of rendering, visibility calculation, and collision. Components in a Landscape are all the same size and are always square. Each component's height data is stored in a single texture. Because of this, its size has to be a power-of-two number of vertices.
+We should not scale the landscape as that can degrade its quality. Instead we should set its size via the following variables:
+
+- Section size:
+'Section': the big square that contains n^2 'quads', n \in N
+If you have a larger world use larger sections (↑ quads)
+63x63 is a commonly used value.
+
+- Sections per Component:
+One or multiple sections can make up a component. In other words a Component contains m^2 'sections'.
+A section is the base unit of Landscape LOD calculation in UE4.
+1x1 is often used, for more detail you can use 2x2 or 4x4 or even more (but wouldn't recommend it).
+
+section size & sections/component: affects LOD
+↑ section_size => ↑ higher cpu impact
+
+- Number of Components:
+l*m Components constitute the ultimate size of the landscape.
+
+- Overall Resolution:
+The higher the more detailed but the more performance hungry. It is the number of vertices for the landscape
+In general for a larger open world you may want to lower the resolution.
+Although the default settings should be fine.
+
+- The average amount of vertices/polys & triangles for a rich, dense AAA quality landscape of 1 square kilometer is ~ 300k/600k respectively.
+- UE4 landscape sizing is 1 vertex per 1 meter, or 1 pixel per m^2. The size can be directly calculated from the 'resolution'
+- ue4 uses lods on the landscape by default
+- handle indoor areas without landscape, use only static meshes instead. Landscape is not mandatory
+- Heightmap dimensions: the dimensions for a Landscape are based on the number of quads in each section, the number of sections in each component, and the number of components present in the Landscape. Once you determine the number of components and the resolution of each, then you can trivially calculate the dimensions of the Landscape as a whole.
+Heightmap black points: low values, ie low heights (sea floor level for lowest height ie completely black).
+example: components of a single section of 64x64 verts, then the component size is 64x64
+Landscape > Components > Sections > Quads
+There is always one more row of vertices than there are quads (think of a quad as a 1x1 vertex grid; thus it needs 4 vertices), since the shared row of vertices along the edge of two neighboring components are duplicated and stored in each component.
+
+-- 3d Terrain
+https://www.rastertek.com/tutdx11s2ter.html
+-- Integrate Navigation (Recast navigation)
+
+-- DXInput
+
+-- Decals
+http://blog.wolfire.com/2009/06/how-to-project-decals/
+deferred screenspace decals: https://martindevans.me/game-development/2015/02/27/Drawing-Stuff-On-Other-Stuff-With-Deferred-Screenspace-Decals/

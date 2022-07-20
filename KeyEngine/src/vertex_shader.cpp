@@ -5,8 +5,8 @@
 #include "dxgi_info_queue.h"
 
 
-VertexShader::VertexShader( Graphics& gph,
-	const std::string& filepath )
+VertexShader::VertexShader( Graphics &gph,
+	const std::string &filepath )
 	:
 	m_path{filepath}
 {
@@ -25,7 +25,7 @@ VertexShader::VertexShader( Graphics& gph,
 	ASSERT_HRES_IF_FAILED;
 }
 
-void VertexShader::bind( Graphics& gph ) cond_noex
+void VertexShader::bind( Graphics &gph ) cond_noex
 {
 	getContext( gph )->VSSetShader( m_pVertexShader.Get(),
 		nullptr,
@@ -38,14 +38,14 @@ ID3DBlob* VertexShader::getBytecode() const noexcept
 	return m_pVsBlob.Get();
 }
 
-std::shared_ptr<VertexShader> VertexShader::fetch( Graphics& gph,
-	const std::string& filepath )
+std::shared_ptr<VertexShader> VertexShader::fetch( Graphics &gph,
+	const std::string &filepath )
 {
 	return BindableMap::fetch<VertexShader>( gph,
 		filepath );
 }
 
-std::string VertexShader::generateUid( const std::string& filepath )
+std::string VertexShader::generateUid( const std::string &filepath )
 {
 	using namespace std::string_literals;
 	return typeid( VertexShader ).name() + "#"s + filepath;

@@ -15,25 +15,25 @@ class Graphics;
 class Window
 {
 private:
-	class WindowException
+	class WindowException final
 		: public KeyException
 	{
 	public:
 		WindowException( int line, const char* file, const char* function,
-			const std::string& msg ) noexcept;
+			const std::string &msg ) noexcept;
 
-		virtual const std::string getType() const noexcept override;
-		virtual const char* what() const noexcept override;
+		virtual const std::string getType() const noexcept override final;
+		virtual const char* what() const noexcept override final;
 	};
 
 	class WindowClass final
 	{
-		static inline WindowClass* m_pInstance;
+		static inline WindowClass *m_pInstance;
 	private:
 		std::string m_name;
 		ATOM m_classAtom;
 	private:
-		WindowClass( const std::string& name );
+		WindowClass( const std::string &name );
 	public:
 		~WindowClass() noexcept;
 		WindowClass( const WindowClass& rhs ) = delete;
@@ -41,7 +41,7 @@ private:
 		WindowClass( WindowClass&& rhs ) noexcept;
 		WindowClass& operator=( WindowClass&& rhs ) noexcept;
 
-		static WindowClass& getInstance( const std::string& name );
+		static WindowClass& getInstance( const std::string &name );
 		static void resetInstance();
 		std::string getName() noexcept;
 	};
@@ -51,7 +51,7 @@ private:
 	//	std::wstring m_name;
 	//	HWND m_hWnd;
 	//public:
-	//	Dialog( const std::wstring& name );
+	//	Dialog( const std::wstring &name );
 	//	~Dialog() noexcept;
 	//	Dialog( const Dialog& rhs ) = delete;
 	//	Dialog& operator=( const Dialog& rhs ) = delete;
@@ -65,7 +65,7 @@ private:
 	//	HWND getHwnd() const noexcept;
 	//};
 private:
-	static inline WindowClass* m_pWindowClass;
+	static inline WindowClass *m_pWindowClass;
 	static inline Keyboard m_keyboard;
 	static inline Mouse m_mouse;
 	static inline std::vector<BYTE> m_rawInputBuffer;
@@ -92,9 +92,9 @@ public:
 	Window( int width, int height, const char* name );
 	~Window();
 	Window( const Window& rhs ) = delete;
-	Window& operator=( const Window& rhs ) = delete;
-	Window( Window&& rhs ) noexcept;
-	Window& operator=( Window&& rhs ) noexcept;
+	Window& operator=( const Window &rhs ) = delete;
+	Window( Window &&rhs ) noexcept;
+	Window& operator=( Window &&rhs ) noexcept;
 	
 	static Keyboard& getKeyboard() noexcept;
 	static Mouse& getMouse() noexcept;
@@ -109,12 +109,12 @@ public:
 	void setBorderless() const noexcept;
 	void setBorderfull() const noexcept;
 	HWND getParent() const noexcept;
-	void setTitle( const std::wstring& title );
+	void setTitle( const std::wstring &title );
 	std::string getTitle() const noexcept;
 	void enableCursor() noexcept;
 	void disableCursor() noexcept;
 	bool isCursorEnabled() const noexcept;
-	void displayMessageBox( const std::wstring& title, const std::wstring& message ) const;
+	void displayMessageBox( const std::wstring &title, const std::wstring &message ) const;
 	bool isActive() const noexcept;
 	std::string getName() const noexcept;
 	void minimize();
@@ -127,7 +127,7 @@ public:
 	HWND getHandle() const noexcept;
 	HDC getDc() const noexcept;
 	WINDOWINFO getInfo() const noexcept;
-	int messageBoxPrintf( const TCHAR* caption, const TCHAR* format, ... );
+	int messageBoxPrintf( const TCHAR *caption, const TCHAR *format, ... );
 private:
 	void configureDc();
 	void confineCursor() noexcept;
@@ -140,7 +140,7 @@ private:
 		_In_ WPARAM wparam, _In_ LPARAM lparam );
 	LRESULT windowProc_impl2d( _In_ HWND pWndHandle, _In_ unsigned msg,
 		_In_ WPARAM wparam, _In_ LPARAM lparam );
-	void setFont( const std::wstring& fontName );
+	void setFont( const std::wstring &fontName );
 };
 
 

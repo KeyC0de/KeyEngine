@@ -109,7 +109,7 @@ public:
      * @return true if the class can read this file, false if not.
      */
     virtual bool CanRead(
-        const std::string& pFile,
+        const std::string &pFile,
         IOSystem* pIOHandler,
         bool checkSig
         ) const = 0;
@@ -135,7 +135,7 @@ public:
      */
     aiScene* ReadFile(
         const Importer* pImp,
-        const std::string& pFile,
+        const std::string &pFile,
         IOSystem* pIOHandler
         );
 
@@ -144,7 +144,7 @@ public:
      * @return A description of the last error that occurred. An empty
      * string if there was no error.
      */
-    const std::string& GetErrorText() const {
+    const std::string &GetErrorText() const {
         return m_ErrorText;
     }
 
@@ -217,7 +217,7 @@ protected:
      * @param pIOHandler The IO handler to use for any file access.
      * NULL is not a valid parameter. */
     virtual void InternReadFile(
-        const std::string& pFile,
+        const std::string &pFile,
         aiScene* pScene,
         IOSystem* pIOHandler
         ) = 0;
@@ -240,7 +240,7 @@ public: // static utilities
      */
     static bool SearchFileHeaderForToken(
         IOSystem* pIOSystem,
-        const std::string&  file,
+        const std::string & file,
         const char** tokens,
         unsigned int numTokens,
         unsigned int searchBytes = 200,
@@ -255,7 +255,7 @@ public: // static utilities
      *  @note Case-insensitive
      */
     static bool SimpleExtensionCheck (
-        const std::string& pFile,
+        const std::string &pFile,
         const char* ext0,
         const char* ext1 = NULL,
         const char* ext2 = NULL);
@@ -266,7 +266,7 @@ public: // static utilities
      *  @return Extension without trailing dot, all lowercase
      */
     static std::string GetExtension (
-        const std::string& pFile);
+        const std::string &pFile);
 
     // -------------------------------------------------------------------
     /** @brief Check whether a file starts with one or more magic tokens
@@ -284,7 +284,7 @@ public: // static utilities
      */
     static bool CheckMagicToken(
         IOSystem* pIOHandler,
-        const std::string& pFile,
+        const std::string &pFile,
         const void* magic,
         unsigned int num,
         unsigned int offset = 0,
@@ -306,7 +306,7 @@ public: // static utilities
      *  @param data File buffer to be converted from UTF8 to ISO-8859-1. The buffer
      *  is resized as appropriate. */
     static void ConvertUTF8toISO8859_1(
-        std::string& data);
+        std::string &data);
 
     // -------------------------------------------------------------------
     /// @brief  Enum to define, if empty files are ok or not.

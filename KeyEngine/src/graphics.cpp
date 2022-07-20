@@ -347,7 +347,7 @@ void Graphics::endRendering()
 #if defined _FLIP_PRESENT
 		hres = m_pSwapChain->Present1( 1u,
 			0u,
-			 );
+			 nullptr );
 #else
 		hres = m_pSwapChain->Present( 1u,
 			0u );
@@ -358,7 +358,7 @@ void Graphics::endRendering()
 #if defined _FLIP_PRESENT
 		hres = m_pSwapChain->Present1( 0u,
 			0u,
-			 );
+			nullptr );
 #else
 		hres = m_pSwapChain->Present( 0u,
 			0u );
@@ -367,7 +367,7 @@ void Graphics::endRendering()
 
 	if ( hres == DXGI_ERROR_DEVICE_REMOVED )
 	{
-		throwGraphicsException( "Device Removed exception triggered!\nReason: "
+		THROW_GRAPHICS_EXCEPTION( "Device Removed exception triggered!\nReason: "
 			+ m_pDevice->GetDeviceRemovedReason() );
 	}
 	ASSERT_HRES_IF_FAILED;
@@ -488,7 +488,7 @@ std::vector<Graphics::Adapter>& Graphics::getAdapters() const
 {
 	if ( m_adapters.empty() )
 	{
-		throwGraphicsException( "No adapter set!" );
+		THROW_GRAPHICS_EXCEPTION( "No adapter set!" );
 	}
 	return m_adapters;
 }
@@ -832,7 +832,7 @@ private boolean isUnderGround(Vector3f testPoint) {
 Graphics::GraphicsException::GraphicsException( int line,
 	const char* file,
 	const char* function,
-	const std::string& msg ) noexcept
+	const std::string &msg ) noexcept
 	:
 	KeyException{line, file, function, msg}
 {

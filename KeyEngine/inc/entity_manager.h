@@ -55,7 +55,7 @@ public:
 	//	\function	spawnEntity
 	//	\brief  factory function for entities
 	//	\date	2020/12/09 14:14
-	EntityId spawnEntity( const std::string& name, int categoryId,
+	EntityId spawnEntity( const std::string &name, int categoryId,
 		Entity* pParent = nullptr );
 	EntityIndex getAliveEntities();
 	//===================================================

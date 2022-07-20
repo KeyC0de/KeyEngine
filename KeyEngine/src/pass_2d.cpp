@@ -21,8 +21,8 @@
 namespace ren
 {
 
-Pass2D::Pass2D( Graphics& gph,
-	const std::string& name )
+Pass2D::Pass2D( Graphics &gph,
+	const std::string &name )
 	:
 	IBindablePass{name}
 {
@@ -90,7 +90,7 @@ Pass2D::Pass2D( Graphics& gph,
 		TextureSampler::AddressMode::Clamp ) );
 }
 
-void Pass2D::run( Graphics& gph ) const cond_noex
+void Pass2D::run( Graphics &gph ) const cond_noex
 {
 	bindPass( gph );
 	gph.drawIndexed( 6u );

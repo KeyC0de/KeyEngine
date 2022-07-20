@@ -70,14 +70,14 @@ public:
 public:
 
     /** Start a named timer */
-    void BeginRegion(const std::string& region) {
+    void BeginRegion(const std::string &region) {
         regions[region] = std::chrono::system_clock::now();
         ASSIMP_LOG_DEBUG((format("START `"),region,"`"));
     }
 
 
     /** End a specific named timer and write its end time to the log */
-    void EndRegion(const std::string& region) {
+    void EndRegion(const std::string &region) {
         RegionMap::const_iterator it = regions.find(region);
         if (it == regions.end()) {
             return;

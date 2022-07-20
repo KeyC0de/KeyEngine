@@ -15,7 +15,7 @@ public:
 	Ball( const DirectX::XMFLOAT2& position, const DirectX::XMFLOAT2& velocity );
 
 	void update( float dt );
-	void render( Graphics& gph );
+	void render( Graphics &gph );
 	bool doWallCollision( const Rect& wall );
 	//===================================================
 	//	\function	reboundX, reboundY

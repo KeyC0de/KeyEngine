@@ -17,11 +17,11 @@ class IProducer
 public:
 	virtual ~IProducer() = default;
 
-	const std::string& getName() const noexcept;
+	const std::string &getName() const noexcept;
 	virtual std::shared_ptr<IBindable> getBindable();
 	virtual std::shared_ptr<IRenderSurface> getBuffer();
 protected:
-	IProducer( const std::string& name );
+	IProducer( const std::string &name );
 };
 
 template<class T>
@@ -33,7 +33,7 @@ class BindableProducer final
 	
 	std::shared_ptr<T>& m_target;
 public:
-	BindableProducer( const std::string& name,
+	BindableProducer( const std::string &name,
 		std::shared_ptr<T>& target )
 		:
 		IProducer{name},
@@ -42,7 +42,7 @@ public:
 
 	}
 
-	static std::unique_ptr<BindableProducer> make( const std::string& name,
+	static std::unique_ptr<BindableProducer> make( const std::string &name,
 		std::shared_ptr<T>& target )
 	{
 		return std::make_unique<BindableProducer>( name,
@@ -65,7 +65,7 @@ class RenderSurfaceProducer final
 	std::shared_ptr<T>& m_target;
 	bool m_bLinked = false;
 public:
-	RenderSurfaceProducer( const std::string& name,
+	RenderSurfaceProducer( const std::string &name,
 		std::shared_ptr<T>& target )
 		:
 		IProducer{name},
@@ -74,7 +74,7 @@ public:
 
 	}
 
-	static std::unique_ptr<RenderSurfaceProducer> make( const std::string& name,
+	static std::unique_ptr<RenderSurfaceProducer> make( const std::string &name,
 		std::shared_ptr<T>& target )
 	{
 		return std::make_unique<RenderSurfaceProducer>( name,
@@ -85,7 +85,7 @@ public:
 	{
 		if ( m_bLinked )
 		{
-			throwRendererException( "Repeated attempt made to bind " + getName() + "!" )
+			THROW_RENDERER_EXCEPTION( "Repeated attempt made to bind " + getName() + "!" )
 		}
 		m_bLinked = true;
 		return m_target;

@@ -48,7 +48,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 namespace Assimp {
     // XML escape the 5 XML special characters (",',<,> and &) in |data|
     // Based on http://stackoverflow.com/questions/5665231
-    std::string XMLEscape(const std::string& data) {
+    std::string XMLEscape(const std::string &data) {
         std::string buffer;
 
         const size_t size = data.size();

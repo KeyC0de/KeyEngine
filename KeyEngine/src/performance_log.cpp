@@ -2,7 +2,7 @@
 #include "performance_log.h"
 
 
-PerfLog::PerfLog( const std::string& outFileName ) noexcept
+PerfLog::PerfLog( const std::string &outFileName ) noexcept
 	:
 	m_outFileName{outFileName}
 {
@@ -15,7 +15,7 @@ PerfLog::~PerfLog()
 }
 
 PerfLog::Entry::Entry( float timeStamp,
-	const std::string& lbl )
+	const std::string &lbl )
 	:
 	timeStamp( timeStamp ),
 	label( lbl )
@@ -54,7 +54,7 @@ void PerfLog::flushToFile()
 	}
 }
 
-void PerfLog::start( const std::string& lbl ) noexcept
+void PerfLog::start( const std::string &lbl ) noexcept
 {
 	m_timer.start();
 	m_entries.emplace_back( 0.0f,
@@ -62,7 +62,7 @@ void PerfLog::start( const std::string& lbl ) noexcept
 	m_timer.getTimeElapsed();
 }
 
-void PerfLog::lap( const std::string& lbl ) noexcept
+void PerfLog::lap( const std::string &lbl ) noexcept
 {
 	float timeStamp = m_timer.lap();
 	m_entries.emplace_back( timeStamp,

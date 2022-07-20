@@ -9,7 +9,7 @@
 
 namespace mwrl = Microsoft::WRL;
 
-IRenderTargetView::IRenderTargetView( Graphics& gph,
+IRenderTargetView::IRenderTargetView( Graphics &gph,
 	unsigned width,
 	unsigned height )
 	:
@@ -46,7 +46,7 @@ IRenderTargetView::IRenderTargetView( Graphics& gph,
 	ASSERT_HRES_IF_FAILED;
 }
 
-IRenderTargetView::IRenderTargetView( Graphics& gph,
+IRenderTargetView::IRenderTargetView( Graphics &gph,
 	ID3D11Texture2D* pTex,
 	std::optional<unsigned> face )
 {
@@ -77,13 +77,13 @@ IRenderTargetView::IRenderTargetView( Graphics& gph,
 	ASSERT_HRES_IF_FAILED;
 }
 
-void IRenderTargetView::bindRenderSurface( Graphics& gph ) cond_noex
+void IRenderTargetView::bindRenderSurface( Graphics &gph ) cond_noex
 {
 	bindRenderSurface( gph,
 		static_cast<ID3D11DepthStencilView*>( nullptr ) );
 }
 
-void IRenderTargetView::bindRenderSurface( Graphics& gph,
+void IRenderTargetView::bindRenderSurface( Graphics &gph,
 	IRenderSurface* pRs ) cond_noex
 {
 	ASSERT( dynamic_cast<IDepthStencilView*>( pRs ) != nullptr,
@@ -92,7 +92,7 @@ void IRenderTargetView::bindRenderSurface( Graphics& gph,
 		static_cast<IDepthStencilView*>( pRs ) );
 }
 
-void IRenderTargetView::bindRenderSurface( Graphics& gph,
+void IRenderTargetView::bindRenderSurface( Graphics &gph,
 	IDepthStencilView* pD3dDsv ) cond_noex
 {
 	bindRenderSurface( gph,
@@ -101,7 +101,7 @@ void IRenderTargetView::bindRenderSurface( Graphics& gph,
 			nullptr );
 }
 
-void IRenderTargetView::bindRenderSurface( Graphics& gph,
+void IRenderTargetView::bindRenderSurface( Graphics &gph,
 	ID3D11DepthStencilView* pD3dDsv ) cond_noex
 {
 	auto viewport = Viewport::fetch( gph,
@@ -115,7 +115,7 @@ void IRenderTargetView::bindRenderSurface( Graphics& gph,
 	DXGI_GET_QUEUE_INFO( gph );
 }
 
-void IRenderTargetView::clear( Graphics& gph,
+void IRenderTargetView::clear( Graphics &gph,
 	const std::array<float, 4>& color ) cond_noex
 {
 	getContext( gph )->ClearRenderTargetView( m_pRtv.Get(),
@@ -139,7 +139,7 @@ ID3D11RenderTargetView* IRenderTargetView::getRenderTargetView() const noexcept
 }
 
 std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC>
-	IRenderTargetView::createStagingTexture( Graphics& gph ) const
+	IRenderTargetView::createStagingTexture( Graphics &gph ) const
 {
 	mwrl::ComPtr<ID3D11Resource> pRtvRsc;
 	m_pRtv->GetResource( &pRtvRsc );
@@ -190,13 +190,13 @@ std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC>
 	return {std::move( pStagingTex ), stagingTexDesc};
 }
 
-Bitmap IRenderTargetView::convertToBitmap( Graphics& gph ) const
+Bitmap IRenderTargetView::convertToBitmap( Graphics &gph ) const
 {
 	auto [pStagingTex, stagingTexDesc] = createStagingTexture( gph );
 
 	if ( stagingTexDesc.Format != DXGI_FORMAT::DXGI_FORMAT_B8G8R8A8_UNORM )
 	{
-		throwBindableException( "DXGI_FORMAT must be DXGI_FORMAT_B8G8R8A8_UNORM !" );
+		THROW_BINDABLE_EXCEPTION( "DXGI_FORMAT must be DXGI_FORMAT_B8G8R8A8_UNORM !" );
 	}
 
 	// mapping texture and preparing vector
@@ -233,7 +233,7 @@ Bitmap IRenderTargetView::convertToBitmap( Graphics& gph ) const
 }
 
 
-RenderTargetShaderInput::RenderTargetShaderInput( Graphics& gph,
+RenderTargetShaderInput::RenderTargetShaderInput( Graphics &gph,
 	unsigned width,
 	unsigned height,
 	unsigned slot )
@@ -256,7 +256,7 @@ RenderTargetShaderInput::RenderTargetShaderInput( Graphics& gph,
 	ASSERT_HRES_IF_FAILED;
 }
 
-void RenderTargetShaderInput::bind( Graphics& gph ) cond_noex
+void RenderTargetShaderInput::bind( Graphics &gph ) cond_noex
 {
 	getContext( gph )->PSSetShaderResources( m_slot,
 		1u,
@@ -265,7 +265,7 @@ void RenderTargetShaderInput::bind( Graphics& gph ) cond_noex
 }
 
 
-RenderTargetOutput::RenderTargetOutput( Graphics& gph,
+RenderTargetOutput::RenderTargetOutput( Graphics &gph,
 	ID3D11Texture2D* pTex,
 	std::optional<unsigned> face )
 	:
@@ -274,7 +274,7 @@ RenderTargetOutput::RenderTargetOutput( Graphics& gph,
 
 }
 
-void RenderTargetOutput::bind( Graphics& gph ) cond_noex
+void RenderTargetOutput::bind( Graphics &gph ) cond_noex
 {
 	ASSERT( false, "Cannot bind RenderTargetOutput to the pipeline!" );
 }

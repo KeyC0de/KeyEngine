@@ -80,7 +80,7 @@ dx::XMFLOAT2 Ball::getPosition() const noexcept
 	return m_pos;
 }
 
-void Ball::render( Graphics& gph )
+void Ball::render( Graphics &gph )
 {
 	const int x = (int) m_pos.x - (int) m_radius;
 	const int y = (int) m_pos.y - (int) m_radius;

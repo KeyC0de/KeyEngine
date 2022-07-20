@@ -13,7 +13,7 @@
 
 namespace dx = DirectX;
 
-CameraWidget::CameraWidget( Graphics& gph )
+CameraWidget::CameraWidget( Graphics &gph )
 {
 	ver::VertexLayout vertexLayout;
 	vertexLayout.add( ver::VertexLayout::Position3D );
@@ -103,12 +103,12 @@ CameraWidget::CameraWidget( Graphics& gph )
 	}
 }
 
-void CameraWidget::setPosition( const DirectX::XMFLOAT3& pos )
+void CameraWidget::setPosition( const DirectX::XMFLOAT3 &pos )
 {
 	m_pos = pos;
 }
 
-void CameraWidget::setRotation( const DirectX::XMFLOAT3& rot )
+void CameraWidget::setRotation( const DirectX::XMFLOAT3 &rot )
 {
 	m_rot = rot;
 }

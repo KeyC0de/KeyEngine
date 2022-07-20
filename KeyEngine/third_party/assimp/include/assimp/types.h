@@ -275,7 +275,7 @@ struct aiString
     }
 
     /** Constructor from std::string */
-    explicit aiString(const std::string& pString) :
+    explicit aiString(const std::string &pString) :
         length(pString.length())
     {
         length = length>=MAXLEN?MAXLEN-1:length;
@@ -284,7 +284,7 @@ struct aiString
     }
 
     /** Copy a std::string to the aiString */
-    void Set( const std::string& pString) {
+    void Set( const std::string &pString) {
         if( pString.length() > MAXLEN - 1) {
             return;
         }
@@ -325,7 +325,7 @@ struct aiString
     }
 
     /** Assign a cstd::string to the string */
-    aiString& operator = ( const std::string& pString) {
+    aiString& operator = ( const std::string &pString) {
         Set(pString);
         return *this;
     }

@@ -38,7 +38,7 @@ class Entity
 	std::string m_name;
 	std::vector<Entity*> m_pChildren;
 private:
-	Entity( EntityIndex version, EntityIndex index, const std::string& name,
+	Entity( EntityIndex version, EntityIndex index, const std::string &name,
 		Category categoryId = UNCATEGORIZED, Entity* pParent = nullptr );
 	
 	EntityIndex getVersion() const noexcept;

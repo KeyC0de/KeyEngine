@@ -35,7 +35,7 @@ class MV
 	std::string m_name;
 	std::unordered_map<int, TransformData> m_nodeMapTransforms;
 public:
-	MV( const std::string& name );
+	MV( const std::string &name );
 
 	void spawnModelImgui( Model& model );
 private:

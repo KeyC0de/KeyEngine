@@ -8,7 +8,7 @@
 
 Entity::Entity( EntityIndex version,
 	EntityIndex index,
-	const std::string& name,
+	const std::string &name,
 	Category categoryId,
 	Entity* pParent )
 	:

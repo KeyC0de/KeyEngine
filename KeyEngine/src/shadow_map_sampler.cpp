@@ -3,7 +3,7 @@
 #include "dxgi_info_queue.h"
 
 
-ShadowMapSampler::ShadowMapSampler( Graphics& gph )
+ShadowMapSampler::ShadowMapSampler( Graphics &gph )
 {
 	for ( unsigned i = 0; i < std::size( m_samplers ); ++i )
 	{
@@ -49,7 +49,7 @@ size_t ShadowMapSampler::getIndex( bool bTrilinear,
 	return ( bTrilinear ? 0b01 : 0 ) + ( bHwPcf ? 0b10 : 0 );
 }
 
-Microsoft::WRL::ComPtr<ID3D11SamplerState> ShadowMapSampler::make( Graphics& gph,
+Microsoft::WRL::ComPtr<ID3D11SamplerState> ShadowMapSampler::make( Graphics &gph,
 	bool bTrilinear,
 	bool bHwPcf )
 {
@@ -79,7 +79,7 @@ Microsoft::WRL::ComPtr<ID3D11SamplerState> ShadowMapSampler::make( Graphics& gph
 	return std::move( pSampler );
 }
 
-void ShadowMapSampler::bind( Graphics& gph ) cond_noex
+void ShadowMapSampler::bind( Graphics &gph ) cond_noex
 {
 	getContext( gph )->PSSetSamplers( getCurrentSlot(),
 		1,

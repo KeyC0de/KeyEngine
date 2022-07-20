@@ -13,11 +13,11 @@ protected:
 	float m_slopeScaleDepthBias;
 	float m_clamp;
 public:
-	RasterizerShadow( Graphics& gph, int depthBias, float slopeBias, float clamp );
+	RasterizerShadow( Graphics &gph, int depthBias, float slopeBias, float clamp );
 
-	void setParameters( Graphics& gph, int depthBias, float slopeBias,
+	void setParameters( Graphics &gph, int depthBias, float slopeBias,
 		float clamp );
-	void bind( Graphics& gph ) cond_noex override;
+	void bind( Graphics &gph ) cond_noex override;
 	int getDepthBias() const;
 	float getSlopeScaleDepthBias() const;
 	float getClamp() const;

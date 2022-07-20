@@ -9,8 +9,8 @@
 namespace ren
 {
 
-WireframePass::WireframePass( Graphics& gph,
-	const std::string& name )
+WireframePass::WireframePass( Graphics &gph,
+	const std::string &name )
 	:
 	RenderQueuePass{name}
 {

@@ -49,7 +49,7 @@ void EntityManager::resetInstance()
 	}
 }
 
-EntityId EntityManager::spawnEntity( const std::string& name, int categoryId,
+EntityId EntityManager::spawnEntity( const std::string &name, int categoryId,
 	Entity* pParent )
 {
 	EntityIndex index;
@@ -163,7 +163,7 @@ EntityManager::Bucket& EntityManager::getBucket( int categoryId )
 	}
 	default :	// UNCATEGORIZED - 0
 	{
-		// throwGameplayException
+		// THROW_GAMEPLAY_EXCEPTION
 	}
 	}//switch
 }

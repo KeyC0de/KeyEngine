@@ -7,7 +7,7 @@
 
 #define blendStateRTDesc blendStateDesc.RenderTarget[renderTargetSlot]
 
-BlendState::BlendState( Graphics& gph,
+BlendState::BlendState( Graphics &gph,
 	Mode mode,
 	unsigned renderTargetSlot,
 	std::optional<float> blendFactors )
@@ -109,7 +109,7 @@ BlendState::BlendState( Graphics& gph,
 	ASSERT_HRES_IF_FAILED;
 }
 
-void BlendState::bind( Graphics& gph ) cond_noex
+void BlendState::bind( Graphics &gph ) cond_noex
 {
 	getContext( gph )->OMSetBlendState( m_pBlendState.Get(),
 		m_blendFactors->data(),
@@ -117,7 +117,7 @@ void BlendState::bind( Graphics& gph ) cond_noex
 	DXGI_GET_QUEUE_INFO( gph );
 }
 
-std::shared_ptr<BlendState> BlendState::fetch( Graphics& gph,
+std::shared_ptr<BlendState> BlendState::fetch( Graphics &gph,
 	Mode mode,
 	unsigned renderTargetSlot,
 	std::optional<float> blendFactors )

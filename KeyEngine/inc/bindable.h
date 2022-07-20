@@ -16,7 +16,7 @@ public:
 	virtual ~IBindable() noexcept = default;
 
 	// bind resource to a certain stage of the graphics pipeline 
-	virtual void bind( Graphics& gph ) cond_noex = 0;
+	virtual void bind( Graphics &gph ) cond_noex = 0;
 
 	virtual void setParentDrawable( const Drawable& drawable ) noexcept
 	{

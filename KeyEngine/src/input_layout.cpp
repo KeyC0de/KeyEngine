@@ -5,7 +5,7 @@
 #include "dxgi_info_queue.h"
 
 
-InputLayout::InputLayout( Graphics& gph,
+InputLayout::InputLayout( Graphics &gph,
 	const ver::VertexLayout& vertexLayout,
 	const VertexShader& vs )
 	:
@@ -27,13 +27,13 @@ const ver::VertexLayout InputLayout::getLayout() const noexcept
 	return m_vertexLayout;
 }
 
-void InputLayout::bind( Graphics& gph ) cond_noex
+void InputLayout::bind( Graphics &gph ) cond_noex
 {
 	getContext( gph )->IASetInputLayout( m_pInputLayout.Get() );
 	DXGI_GET_QUEUE_INFO( gph );
 }
 
-std::shared_ptr<InputLayout> InputLayout::fetch( Graphics& gph,
+std::shared_ptr<InputLayout> InputLayout::fetch( Graphics &gph,
 		const ver::VertexLayout& vertexLayout,
 	const VertexShader& vs )
 {

@@ -5,7 +5,7 @@
 
 namespace dx = DirectX;
 
-LightVSCB::LightVSCB( Graphics& gph,
+LightVSCB::LightVSCB( Graphics &gph,
 	unsigned slot )
 	:
 	m_pVscb{std::make_unique<VertexShaderConstantBuffer<LightTransformVSCB>>( gph, slot )}
@@ -13,7 +13,7 @@ LightVSCB::LightVSCB( Graphics& gph,
 
 }
 
-void LightVSCB::update( Graphics& gph )
+void LightVSCB::update( Graphics &gph )
 {
 	ASSERT( m_pPointLightShadowCamera, "Camera not specified (null)!" );
 	const auto pos = m_pPointLightShadowCamera->getPosition();
@@ -24,7 +24,7 @@ void LightVSCB::update( Graphics& gph )
 		vscb );
 }
 
-void LightVSCB::bind( Graphics& gph ) cond_noex
+void LightVSCB::bind( Graphics &gph ) cond_noex
 {
 	m_pVscb->bind( gph );
 }

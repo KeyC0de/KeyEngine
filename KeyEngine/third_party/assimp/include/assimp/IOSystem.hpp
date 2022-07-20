@@ -112,7 +112,7 @@ public:
     /** @brief For backward compatibility
      *  @see Exists(const char*)
      */
-    AI_FORCE_INLINE bool Exists( const std::string& pFile) const;
+    AI_FORCE_INLINE bool Exists( const std::string &pFile) const;
 
     // -------------------------------------------------------------------
     /** @brief Tests for the existence of a file at the given path.
@@ -150,8 +150,8 @@ public:
     /** @brief For backward compatibility
      *  @see Open(const char*, const char*)
      */
-    inline IOStream* Open(const std::string& pFile,
-        const std::string& pMode = std::string("rb"));
+    inline IOStream* Open(const std::string &pFile,
+        const std::string &pMode = std::string("rb"));
 
     // -------------------------------------------------------------------
     /** @brief Closes the given file and releases all resources
@@ -180,8 +180,8 @@ public:
     /** @brief For backward compatibility
      *  @see ComparePaths(const char*, const char*)
      */
-    inline bool ComparePaths (const std::string& one,
-        const std::string& second) const;
+    inline bool ComparePaths (const std::string &one,
+        const std::string &second) const;
 
     // -------------------------------------------------------------------
     /** @brief Pushes a new directory onto the directory stack.
@@ -252,7 +252,7 @@ IOSystem::~IOSystem() {
 
 // ----------------------------------------------------------------------------
 AI_FORCE_INLINE
-IOStream* IOSystem::Open(const std::string& pFile, const std::string& pMode) {
+IOStream* IOSystem::Open(const std::string &pFile, const std::string &pMode) {
     // NOTE:
     // For compatibility, interface was changed to const char* to
     // avoid crashes between binary incompatible STL versions
@@ -261,7 +261,7 @@ IOStream* IOSystem::Open(const std::string& pFile, const std::string& pMode) {
 
 // ----------------------------------------------------------------------------
 AI_FORCE_INLINE
-bool IOSystem::Exists( const std::string& pFile) const {
+bool IOSystem::Exists( const std::string &pFile) const {
     // NOTE:
     // For compatibility, interface was changed to const char* to
     // avoid crashes between binary incompatible STL versions
@@ -270,7 +270,7 @@ bool IOSystem::Exists( const std::string& pFile) const {
 
 // ----------------------------------------------------------------------------
 AI_FORCE_INLINE
-bool IOSystem::ComparePaths (const std::string& one, const std::string& second) const {
+bool IOSystem::ComparePaths (const std::string &one, const std::string &second) const {
     // NOTE:
     // For compatibility, interface was changed to const char* to
     // avoid crashes between binary incompatible STL versions

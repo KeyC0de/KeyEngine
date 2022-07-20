@@ -17,7 +17,7 @@
 //#define ID_TRAY_ICON_EXIT		20002
 
 
-Window::WindowClass::WindowClass( const std::string& name )
+Window::WindowClass::WindowClass( const std::string &name )
 	:
 	m_name{name}
 {
@@ -94,7 +94,7 @@ Window::WindowClass& Window::WindowClass::operator=( WindowClass&& rhs ) noexcep
 	return *this;
 }
 
-Window::WindowClass& Window::WindowClass::getInstance( const std::string& name )
+Window::WindowClass& Window::WindowClass::getInstance( const std::string &name )
 {
 	if ( m_pInstance == nullptr )
 	{
@@ -118,7 +118,7 @@ std::string Window::WindowClass::getName() noexcept
 }
 
 /*
-Window::Dialog::Dialog( const std::wstring& name )
+Window::Dialog::Dialog( const std::wstring &name )
 	:
 	m_name{name}
 {
@@ -432,7 +432,7 @@ HWND Window::getParent() const noexcept
 	return GetParent( m_hWnd );
 }
 
-void Window::setTitle( const std::wstring& title )
+void Window::setTitle( const std::wstring &title )
 {
 	SetWindowTextW( m_hWnd,
 		title.data() );
@@ -482,8 +482,8 @@ void Window::configureDc()
 	m_dc = GetWindowDC( m_hWnd );
 }
 
-void Window::displayMessageBox( const std::wstring& title,
-	const std::wstring& message ) const
+void Window::displayMessageBox( const std::wstring &title,
+	const std::wstring &message ) const
 {
 	MessageBoxW( m_hWnd,
 		message.c_str(),
@@ -1505,7 +1505,7 @@ Prevent window resizing: Instead resize by ingame option - choosing resolution:
 		lParam );
 }
 
-void Window::setFont( const std::wstring& fontName )
+void Window::setFont( const std::wstring &fontName )
 {
 	NONCLIENTMETRICS ncm;
 	ncm.cbSize = sizeof( NONCLIENTMETRICS );
@@ -1539,7 +1539,7 @@ void Window::setFont( const std::wstring& fontName )
 Window::WindowException::WindowException( int line,
 	const char* file,
 	const char* function,
-	const std::string& msg ) noexcept
+	const std::string &msg ) noexcept
 	:
 	KeyException{line, file, function, msg}
 {

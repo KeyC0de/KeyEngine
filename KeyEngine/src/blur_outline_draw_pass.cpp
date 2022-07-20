@@ -10,8 +10,8 @@
 namespace ren
 {
 
-BlurOutlineDrawPass::BlurOutlineDrawPass( Graphics& gph,
-	const std::string& name,
+BlurOutlineDrawPass::BlurOutlineDrawPass( Graphics &gph,
+	const std::string &name,
 	int rezReductFactor )
 	:
 	RenderQueuePass{name}
@@ -40,7 +40,7 @@ BlurOutlineDrawPass::BlurOutlineDrawPass( Graphics& gph,
 		0u ) );
 }
 
-void BlurOutlineDrawPass::run( Graphics& gph ) const cond_noex
+void BlurOutlineDrawPass::run( Graphics &gph ) const cond_noex
 {
 	m_pRtv->clear( gph );
 	RenderQueuePass::run( gph );

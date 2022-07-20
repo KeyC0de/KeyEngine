@@ -14,10 +14,10 @@ protected:
 public:
 	virtual const con::CBElement& getCBExRootLayoutElement() const noexcept = 0;
 protected:
-	IConstantBufferEx( Graphics& gph, unsigned slot, const con::CBElement& layoutRoot,
+	IConstantBufferEx( Graphics &gph, unsigned slot, const con::CBElement& layoutRoot,
 		const con::Buffer* pBuf );
 
-	void update( Graphics& gph, const con::Buffer& buf );
+	void update( Graphics &gph, const con::Buffer& buf );
 };
 
 class IVertexShaderConstantBufferEx
@@ -26,7 +26,7 @@ class IVertexShaderConstantBufferEx
 public:
 	using IConstantBufferEx::IConstantBufferEx;
 
-	void bind( Graphics& gph ) cond_noex override;
+	void bind( Graphics &gph ) cond_noex override;
 };
 
 class IPixelShaderConstantBufferEx
@@ -35,7 +35,7 @@ class IPixelShaderConstantBufferEx
 public:
 	using IConstantBufferEx::IConstantBufferEx;
 
-	void bind( Graphics& gph ) cond_noex override;
+	void bind( Graphics &gph ) cond_noex override;
 };
 
 template<class T>
@@ -48,7 +48,7 @@ class ConstantBufferEx final
 	con::Buffer m_cb;
 public:
 	// empty cb
-	ConstantBufferEx( Graphics& gph,
+	ConstantBufferEx( Graphics &gph,
 		unsigned slot,
 		const con::CookedLayout& layout )
 		:
@@ -58,7 +58,7 @@ public:
 
 	}
 	
-	ConstantBufferEx( Graphics& gph,
+	ConstantBufferEx( Graphics &gph,
 		unsigned slot,
 		const con::Buffer& cb )
 		:
@@ -84,7 +84,7 @@ public:
 		m_bDirty = true;
 	}
 
-	void bind( Graphics& gph ) cond_noex override
+	void bind( Graphics &gph ) cond_noex override
 	{
 		if ( m_bDirty )
 		{

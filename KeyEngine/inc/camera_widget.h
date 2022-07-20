@@ -17,10 +17,10 @@ class CameraWidget
 	DirectX::XMFLOAT3 m_pos{0.0f, 0.0f, 0.0f};
 	DirectX::XMFLOAT3 m_rot{0.0f, 0.0f, 0.0f};
 public:
-	CameraWidget( Graphics& gph );
+	CameraWidget( Graphics &gph );
 
-	void setPosition( const DirectX::XMFLOAT3& pos );
-	void setRotation( const DirectX::XMFLOAT3& rot );
+	void setPosition( const DirectX::XMFLOAT3 &pos );
+	void setRotation( const DirectX::XMFLOAT3 &rot );
 	DirectX::XMMATRIX getTransform() const noexcept override;
 	DirectX::XMMATRIX getPosition() const noexcept;
 	DirectX::XMMATRIX getRotation() const noexcept;

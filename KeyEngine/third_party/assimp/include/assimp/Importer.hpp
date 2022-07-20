@@ -53,7 +53,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #endif // __cplusplus
 
 // Public ASSIMP data structures
-#include <assimp/types.h>
+#include "types.h"
 
 namespace Assimp    {
     // =======================================================================
@@ -233,7 +233,7 @@ public:
     /** Set a string configuration property.
      * @see SetPropertyInteger()
      */
-    bool SetPropertyString(const char* szName, const std::string& sValue);
+    bool SetPropertyString(const char* szName, const std::string &sValue);
 
     // -------------------------------------------------------------------
     /** Set a matrix configuration property.
@@ -282,7 +282,7 @@ public:
      * @see GetPropertyInteger()
      */
     const std::string GetPropertyString(const char* szName,
-        const std::string& sErrorReturn = "") const;
+        const std::string &sErrorReturn = "") const;
 
     // -------------------------------------------------------------------
     /** Get a matrix configuration property
@@ -471,7 +471,7 @@ public:
      * See the const char* version for detailed docs.
      * @see ReadFile(const char*, pFlags)  */
     const aiScene* ReadFile(
-        const std::string& pFile,
+        const std::string &pFile,
         unsigned int pFlags);
 
     // -------------------------------------------------------------------
@@ -535,7 +535,7 @@ public:
      * This function is provided for backward compatibility.
      * See the const char* version for detailed and up-to-date docs.
      * @see IsExtensionSupported(const char*) */
-    inline bool IsExtensionSupported(const std::string& szExtension) const;
+    inline bool IsExtensionSupported(const std::string &szExtension) const;
 
     // -------------------------------------------------------------------
     /** Get a full list of all file extensions supported by ASSIMP.
@@ -555,7 +555,7 @@ public:
      * This function is provided for backward compatibility.
      * See the aiString version for detailed and up-to-date docs.
      * @see GetExtensionList(aiString&)*/
-    inline void GetExtensionList(std::string& szOut) const;
+    inline void GetExtensionList(std::string &szOut) const;
 
     // -------------------------------------------------------------------
     /** Get the number of importers currently registered with Assimp. */
@@ -640,17 +640,17 @@ protected:
 // ----------------------------------------------------------------------------
 
 // ----------------------------------------------------------------------------
-AI_FORCE_INLINE const aiScene* Importer::ReadFile( const std::string& pFile,unsigned int pFlags){
+AI_FORCE_INLINE const aiScene* Importer::ReadFile( const std::string &pFile,unsigned int pFlags){
     return ReadFile(pFile.c_str(),pFlags);
 }
 // ----------------------------------------------------------------------------
-AI_FORCE_INLINE void Importer::GetExtensionList(std::string& szOut) const   {
+AI_FORCE_INLINE void Importer::GetExtensionList(std::string &szOut) const   {
     aiString s;
     GetExtensionList(s);
     szOut = s.data;
 }
 // ----------------------------------------------------------------------------
-AI_FORCE_INLINE bool Importer::IsExtensionSupported(const std::string& szExtension) const   {
+AI_FORCE_INLINE bool Importer::IsExtensionSupported(const std::string &szExtension) const   {
     return IsExtensionSupported(szExtension.c_str());
 }
 

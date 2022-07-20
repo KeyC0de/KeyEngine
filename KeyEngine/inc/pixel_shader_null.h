@@ -15,10 +15,10 @@ class PixelShaderNull
 	: public IBindable
 {
 public:
-	PixelShaderNull( Graphics& gph );
+	PixelShaderNull( Graphics &gph );
 
-	void bind( Graphics& gph ) cond_noex override;
-	static std::shared_ptr<PixelShaderNull> fetch( Graphics& gph );
+	void bind( Graphics &gph ) cond_noex override;
+	static std::shared_ptr<PixelShaderNull> fetch( Graphics &gph );
 	static std::string generateUid();
 	std::string getUid() const noexcept override;
 };

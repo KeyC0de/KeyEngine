@@ -178,7 +178,7 @@ public:
     *   imported scene. */
     const aiExportDataBlob* ExportToBlob(const aiScene* pScene, const char* pFormatId,
         unsigned int pPreprocessing = 0u, const ExportProperties* = nullptr);
-    const aiExportDataBlob* ExportToBlob(  const aiScene* pScene, const std::string& pFormatId,
+    const aiExportDataBlob* ExportToBlob(  const aiScene* pScene, const std::string &pFormatId,
         unsigned int pPreprocessing = 0u, const ExportProperties* pProperties = nullptr);
 
     // -------------------------------------------------------------------
@@ -216,7 +216,7 @@ public:
      *   imported scene.*/
     aiReturn Export( const aiScene* pScene, const char* pFormatId, const char* pPath,
         unsigned int pPreprocessing = 0u, const ExportProperties* pProperties = nullptr);
-    aiReturn Export( const aiScene* pScene, const std::string& pFormatId, const std::string& pPath,
+    aiReturn Export( const aiScene* pScene, const std::string &pFormatId, const std::string &pPath,
         unsigned int pPreprocessing = 0u, const ExportProperties* pProperties = nullptr);
 
     // -------------------------------------------------------------------
@@ -368,7 +368,7 @@ public:
     /** Set a string configuration property.
      * @see SetPropertyInteger()
      */
-    bool SetPropertyString(const char* szName, const std::string& sValue);
+    bool SetPropertyString(const char* szName, const std::string &sValue);
 
     // -------------------------------------------------------------------
     /** Set a matrix configuration property.
@@ -417,7 +417,7 @@ public:
      * @see GetPropertyInteger()
      */
     const std::string GetPropertyString(const char* szName,
-        const std::string& sErrorReturn = "") const;
+        const std::string &sErrorReturn = "") const;
 
     // -------------------------------------------------------------------
     /** Get a matrix configuration property
@@ -471,7 +471,7 @@ protected:
 
 // ----------------------------------------------------------------------------------
 inline 
-const aiExportDataBlob* Exporter::ExportToBlob(  const aiScene* pScene, const std::string& pFormatId,
+const aiExportDataBlob* Exporter::ExportToBlob(  const aiScene* pScene, const std::string &pFormatId,
                                                  unsigned int pPreprocessing, const ExportProperties* pProperties)
 {
     return ExportToBlob(pScene,pFormatId.c_str(),pPreprocessing, pProperties);
@@ -479,8 +479,8 @@ const aiExportDataBlob* Exporter::ExportToBlob(  const aiScene* pScene, const st
 
 // ----------------------------------------------------------------------------------
 inline
-aiReturn Exporter :: Export( const aiScene* pScene, const std::string& pFormatId, 
-                                    const std::string& pPath, unsigned int pPreprocessing, 
+aiReturn Exporter :: Export( const aiScene* pScene, const std::string &pFormatId, 
+                                    const std::string &pPath, unsigned int pPreprocessing, 
                                     const ExportProperties* pProperties)
 {
     return Export(pScene,pFormatId.c_str(),pPath.c_str(),pPreprocessing, pProperties);

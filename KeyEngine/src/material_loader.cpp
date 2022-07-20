@@ -18,7 +18,7 @@
 
 namespace dx = DirectX;
 
-MaterialLoader::MaterialLoader( Graphics& gph,
+MaterialLoader::MaterialLoader( Graphics &gph,
 	const aiMaterial& aimaterial,
 	const std::filesystem::path& modelPath ) cond_noex
 	:
@@ -263,7 +263,7 @@ std::vector<unsigned> MaterialLoader::extractIndexBuffer( const aiMesh& aimesh )
 	return indices;
 }
 
-std::shared_ptr<VertexBuffer> MaterialLoader::makeVertexBuffer( Graphics& gph,
+std::shared_ptr<VertexBuffer> MaterialLoader::makeVertexBuffer( Graphics &gph,
 	const aiMesh& aimesh,
 	float scale ) const cond_noex
 {
@@ -283,7 +283,7 @@ std::shared_ptr<VertexBuffer> MaterialLoader::makeVertexBuffer( Graphics& gph,
 		vb );
 }
 
-std::shared_ptr<IndexBuffer> MaterialLoader::makeIndexBuffer( Graphics& gph,
+std::shared_ptr<IndexBuffer> MaterialLoader::makeIndexBuffer( Graphics &gph,
 	const aiMesh& aimesh ) const cond_noex
 {
 	return IndexBuffer::fetch( gph,

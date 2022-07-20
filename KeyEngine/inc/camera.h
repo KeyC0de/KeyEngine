@@ -45,23 +45,23 @@ public:
 	static DirectX::XMMATRIX getShadowOrthographicMatrix( unsigned w, unsigned h ) noexcept;
 	static DirectX::XMMATRIX getShadowProjectionMatrix( float farZ = 9999 ) noexcept;
 public:
-	Camera( Graphics& gph, const std::string& name, int width = 1280, int height = 720,
+	Camera( Graphics &gph, const std::string &name, int width = 1280, int height = 720,
 		float fovDegrees = 90.0f,
-		const DirectX::XMFLOAT3& homePos = {0.0f, 0.0f, 0.0f},
+		const DirectX::XMFLOAT3 &homePos = {0.0f, 0.0f, 0.0f},
 		float homePitch = 0.0f, float homeYaw = 0.0f, bool bTethered = false,
 		float nearZ = 0.5f, float farZ = 400.0f ) noexcept;
 
 	void render( size_t channel ) const;
-	void makeActive( Graphics& gph, bool bOrthographic ) const;
+	void makeActive( Graphics &gph, bool bOrthographic ) const;
 	DirectX::XMMATRIX getViewMatrix() const noexcept;
 	DirectX::XMMATRIX getReflectionViewMatrix( const DirectX::XMVECTOR& mirrorPlane ) const
 		noexcept;
 	DirectX::XMMATRIX getPerspectiveProjectionMatrix() const noexcept;
 	DirectX::XMMATRIX getOrthographicProjectionMatrix( unsigned viewWidth,
 		unsigned viewHeight ) const noexcept;
-	void displayImguiWidgets( Graphics& gph ) noexcept;
+	void displayImguiWidgets( Graphics &gph ) noexcept;
 	float getFovRadians() const noexcept;
-	void resetToDefault( Graphics& gph ) noexcept;
+	void resetToDefault( Graphics &gph ) noexcept;
 	// rotate arguments is mouse dx, dy delta values
 	void rotateRel( float dx, float dy ) noexcept;
 	void translateRel( DirectX::XMFLOAT3 translation ) noexcept;
@@ -69,8 +69,8 @@ public:
 	DirectX::XMVECTOR getDirection() const noexcept;
 	DirectX::XMVECTOR getRight() const noexcept;
 	DirectX::XMVECTOR getUp() const noexcept;
-	void setPosition( const DirectX::XMFLOAT3& pos ) noexcept;
-	const std::string& getName() const noexcept;
+	void setPosition( const DirectX::XMFLOAT3 &pos ) noexcept;
+	const std::string &getName() const noexcept;
 	void connectEffectsToRenderer( ren::Renderer& ren );
 };
 

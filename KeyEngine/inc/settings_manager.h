@@ -5,9 +5,7 @@
 
 class SettingsManager final
 {
-	SettingsManager( const std::string& filePath );
-	static inline SettingsManager* m_pInstance;
-private:
+	static inline SettingsManager *m_pInstance;
 	struct Settings
 	{
 		// defaults:
@@ -23,16 +21,17 @@ private:
 		bool bGamePaused = false;
 		bool bFullscreen = false;
 	} m_settings;
+
+	SettingsManager( const std::string &filePath );
+
+	void loadFromFile( const std::string &filePath );
 public:
 	~SettingsManager() noexcept;
-	SettingsManager( const SettingsManager& rhs ) = delete;
-	SettingsManager& operator=( const SettingsManager& rhs ) = delete;
+	SettingsManager( const SettingsManager &rhs ) = delete;
+	SettingsManager& operator=( const SettingsManager &rhs ) = delete;
 
-	static SettingsManager& getInstance( const std::string& filePath = "config.ini" );
+	static SettingsManager& getInstance( const std::string &filePath = "config.ini" );
 	static void resetInstance();
-
 	const Settings& getSettings();
 	Settings& accessSettings();
-private:
-	void loadFromFile( const std::string& filePath );
 };

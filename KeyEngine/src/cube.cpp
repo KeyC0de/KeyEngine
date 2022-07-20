@@ -18,7 +18,7 @@
 
 namespace dx = DirectX;
 
-Cube::Cube( Graphics& gph,
+Cube::Cube( Graphics &gph,
 	const dx::XMFLOAT3& startingPos,
 	float scale )
 	:
@@ -169,7 +169,7 @@ dx::XMMATRIX Cube::getTransform() const noexcept
 		dx::XMMatrixTranslation( m_pos.x, m_pos.y, m_pos.z );
 }
 
-void Cube::displayImguiWidgets( Graphics& gph,
+void Cube::displayImguiWidgets( Graphics &gph,
 	const char* name ) noexcept
 {
 	if ( ImGui::Begin( name ) )

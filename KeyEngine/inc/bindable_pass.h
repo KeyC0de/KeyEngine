@@ -20,7 +20,7 @@ protected:
 	std::shared_ptr<IRenderTargetView> m_pRtv;
 	std::shared_ptr<IDepthStencilView> m_pDsv;
 protected:
-	IBindablePass( const std::string& name,
+	IBindablePass( const std::string &name,
 		const std::vector<std::shared_ptr<IBindable>>& bindables = {} );
 
 	//===================================================
@@ -32,11 +32,11 @@ protected:
 	//	\function	bindPass
 	//	\brief  bind rtv, dsv & other bindables shared by all Pass objects
 	//	\date	2021/06/27 0:04
-	void bindPass( Graphics& gph ) const cond_noex;
+	void bindPass( Graphics &gph ) const cond_noex;
 	void validate() override;
 
 	template<class T>
-	void addContainerBindableConsumer( const std::string& name )
+	void addContainerBindableConsumer( const std::string &name )
 	{
 		const auto index = m_pBindables.size();
 		m_pBindables.emplace_back();

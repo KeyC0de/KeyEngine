@@ -13,8 +13,8 @@ namespace ren
 
 namespace dx = DirectX;
 
-FullscreenPass::FullscreenPass( Graphics& gph,
-	const std::string& name ) cond_noex
+FullscreenPass::FullscreenPass( Graphics &gph,
+	const std::string &name ) cond_noex
 	:
 	IBindablePass{name}
 {
@@ -48,7 +48,7 @@ FullscreenPass::FullscreenPass( Graphics& gph,
 	addPassBindable( PixelShaderNull::fetch( gph ) );
 }
 
-void FullscreenPass::run( Graphics& gph ) const cond_noex
+void FullscreenPass::run( Graphics &gph ) const cond_noex
 {
 	bindPass( gph );
 	gph.drawIndexed( 6u );

@@ -25,8 +25,8 @@
 namespace ren
 {
 
-SkyPass::SkyPass( Graphics& gph,
-	const std::string& name )
+SkyPass::SkyPass( Graphics &gph,
+	const std::string &name )
 	:
 	IBindablePass{name}
 {
@@ -90,7 +90,7 @@ void SkyPass::setMainCamera( const Camera& cam ) noexcept
 	m_pMainCamera = &cam;
 }
 
-void SkyPass::run( Graphics& gph ) const cond_noex
+void SkyPass::run( Graphics &gph ) const cond_noex
 {
 	// no need to inherit from RenderQueuePass to add a Job for a single "special" object
 	ASSERT( m_pMainCamera, "SkyPass - Main camera not specified (null)!" );

@@ -1,5 +1,5 @@
 #define CATCH_CONFIG_MAIN	// catch writes its own main using this define
-#include "third_party/catch.hpp"
+#include "catch.hpp"
 #include <vector>
 
 

@@ -6,7 +6,7 @@
 namespace ren
 {
 
-IBindablePass::IBindablePass( const std::string& name,
+IBindablePass::IBindablePass( const std::string &name,
 	const std::vector<std::shared_ptr<IBindable>>& bindables )
 	:
 	IPass{name},
@@ -20,7 +20,7 @@ void IBindablePass::addPassBindable( std::shared_ptr<IBindable> bindable ) noexc
 	m_pBindables.emplace_back( bindable );
 }
 
-void IBindablePass::bindPass( Graphics& gph ) const cond_noex
+void IBindablePass::bindPass( Graphics &gph ) const cond_noex
 {
 	if ( m_pRtv )
 	{
@@ -43,7 +43,7 @@ void IBindablePass::validate()
 	IPass::validate();
 	if ( !m_pRtv && !m_pDsv )
 	{
-		throwRendererException( "IBindablePass: Both IRenderTargetView & IDepthStencilView are null!"
+		THROW_RENDERER_EXCEPTION( "IBindablePass: Both IRenderTargetView & IDepthStencilView are null!"
 			+ getName() );
 	}
 }

@@ -7,8 +7,8 @@
 namespace ren
 {
 
-HorizontalBlurPass::HorizontalBlurPass( Graphics& gph,
-	const std::string& name,
+HorizontalBlurPass::HorizontalBlurPass( Graphics &gph,
+	const std::string &name,
 	int rezReductFactor )
 	:
 	FullscreenPass{gph, name}
@@ -41,7 +41,7 @@ HorizontalBlurPass::HorizontalBlurPass( Graphics& gph,
 		0u ) );
 }
 
-void HorizontalBlurPass::run( Graphics& gph ) const cond_noex
+void HorizontalBlurPass::run( Graphics &gph ) const cond_noex
 {
 	auto pscb = m_pPscbBlurDirection->getBuffer();
 	pscb["bHorizontal"] = true;

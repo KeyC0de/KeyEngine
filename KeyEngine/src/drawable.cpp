@@ -7,7 +7,7 @@
 
 namespace dx = DirectX;
 
-Drawable::Drawable( Graphics& gph,
+Drawable::Drawable( Graphics &gph,
 	const MaterialLoader& mat,
 	const aiMesh& aimesh,
 	float scale ) noexcept
@@ -51,7 +51,7 @@ void Drawable::addEffect( Effect ef ) noexcept
 	m_effects.push_back( std::move( ef ) );
 }
 
-void Drawable::bind( Graphics& gph ) const cond_noex
+void Drawable::bind( Graphics &gph ) const cond_noex
 {
 	m_pPrimitiveTopology->bind( gph );
 	m_pIndexBuffer->bind( gph );
@@ -93,10 +93,10 @@ DirectX::XMMATRIX Drawable::getTransform() const noexcept
 
 void Drawable::setDistanceFromActiveCamera( int dist ) noexcept
 {
-	m_distanceFromCamera = dist;
+	m_distanceFromActiveCamera = dist;
 }
 
 int Drawable::getDistanceFromActiveCamera() const noexcept
 {
-	return m_distanceFromCamera;
+	return m_distanceFromActiveCamera;
 }

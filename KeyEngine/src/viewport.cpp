@@ -4,7 +4,7 @@
 #include "assertions_console.h"
 
 
-Viewport::Viewport( Graphics& gph )
+Viewport::Viewport( Graphics &gph )
 	:
 	Viewport{gph, static_cast<float>(gph.getClientWidth()),
 		static_cast<float>(gph.getClientHeight())}
@@ -12,7 +12,7 @@ Viewport::Viewport( Graphics& gph )
 
 }
 
-Viewport::Viewport( Graphics& gph,
+Viewport::Viewport( Graphics &gph,
 	float width,
 	float height )
 {
@@ -24,7 +24,7 @@ Viewport::Viewport( Graphics& gph,
 	m_viewport.TopLeftY = 0.0f;
 }
 
-void Viewport::bind( Graphics& gph ) cond_noex
+void Viewport::bind( Graphics &gph ) cond_noex
 {
 	getContext( gph )->RSSetViewports( 1u,
 		&m_viewport );
@@ -46,7 +46,7 @@ float Viewport::getHeight() const noexcept
 	return m_viewport.Height;
 }
 
-std::shared_ptr<Viewport> Viewport::fetch( Graphics& gph,
+std::shared_ptr<Viewport> Viewport::fetch( Graphics &gph,
 	float width,
 	float height )
 {

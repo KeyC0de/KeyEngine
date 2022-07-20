@@ -3,7 +3,7 @@
 #include "dxgi_info_queue.h"
 
 
-IConstantBufferEx::IConstantBufferEx( Graphics& gph,
+IConstantBufferEx::IConstantBufferEx( Graphics &gph,
 	unsigned slot,
 	const con::CBElement& layoutRoot,
 	const con::Buffer* pBuf )
@@ -33,7 +33,7 @@ IConstantBufferEx::IConstantBufferEx( Graphics& gph,
 	}
 }
 
-void IConstantBufferEx::update( Graphics& gph,
+void IConstantBufferEx::update( Graphics &gph,
 	const con::Buffer& buf )
 {
 	ASSERT( &buf.getRootLayoutElement() == &getCBExRootLayoutElement(),
@@ -57,7 +57,7 @@ void IConstantBufferEx::update( Graphics& gph,
 }
 
 
-void IVertexShaderConstantBufferEx::bind( Graphics& gph ) cond_noex
+void IVertexShaderConstantBufferEx::bind( Graphics &gph ) cond_noex
 {
 	getContext( gph )->VSSetConstantBuffers( m_slot,
 		1u,
@@ -66,7 +66,7 @@ void IVertexShaderConstantBufferEx::bind( Graphics& gph ) cond_noex
 }
 
 
-void IPixelShaderConstantBufferEx::bind( Graphics& gph ) cond_noex
+void IPixelShaderConstantBufferEx::bind( Graphics &gph ) cond_noex
 {
 	getContext( gph )->PSSetConstantBuffers( m_slot,
 		1u,

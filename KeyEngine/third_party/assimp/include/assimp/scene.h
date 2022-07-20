@@ -134,7 +134,7 @@ struct ASSIMP_API aiNode
     aiNode();
 
     /** Construction from a specific name */
-    explicit aiNode(const std::string& name);
+    explicit aiNode(const std::string &name);
 
     /** Destructor */
     ~aiNode();

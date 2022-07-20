@@ -9,7 +9,7 @@ class TransformVSCB
 	: public IBindableCloning
 {
 private:
-	const Drawable* m_pDrawable = nullptr;
+	const Drawable *m_pDrawable = nullptr;
 protected:
 	struct Transforms
 	{
@@ -20,12 +20,12 @@ protected:
 
 	static inline std::unique_ptr<VertexShaderConstantBuffer<Transforms>> m_pVscb;
 public:
-	TransformVSCB( Graphics& gph, unsigned slot );
+	TransformVSCB( Graphics &gph, unsigned slot );
 
-	void bind( Graphics& gph ) cond_noex override;
+	void bind( Graphics &gph ) cond_noex override;
 	void setParentDrawable( const Drawable& parent ) noexcept override;
 	std::unique_ptr<IBindableCloning> clone() const noexcept override;
 protected:
-	void update( Graphics& gph, const Transforms& tfs ) cond_noex;
-	Transforms getTransforms( Graphics& gph ) cond_noex;
+	void update( Graphics &gph, const Transforms& tfs ) cond_noex;
+	Transforms getTransforms( Graphics &gph ) cond_noex;
 };

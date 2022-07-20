@@ -9,7 +9,7 @@ SnakeRepr::SnakeRepr( const GridLocation& gridLoc )
 	m_segments.emplace_back( gridLoc );
 }
 
-void SnakeRepr::render( Graphics& gph,
+void SnakeRepr::render( Graphics &gph,
 	SnakePlayField& field ) const
 {
 	for ( const auto& s : m_segments )
@@ -69,7 +69,7 @@ SnakeRepr::Segment::Segment( ColorBGRA col )
 	this->m_color = col;
 }
 
-void SnakeRepr::Segment::render( Graphics& gph,
+void SnakeRepr::Segment::render( Graphics &gph,
 	SnakePlayField& field ) const
 {
 	field.renderCell( gph,

@@ -30,7 +30,7 @@ class KeyConsole final
 	WORD m_consoleAttributesDefault;
 	WORD m_consoleAttributes;
 
-	KeyConsole( const std::string& fontName = "Lucida Console" );
+	KeyConsole( const std::string &fontName = "Lucida Console" );
 	bool setDefaultColor();
 public:
 	KeyConsole( const KeyConsole& rhs ) = delete;
@@ -54,7 +54,7 @@ public:
 	uint32_t getConsoleCodePage() const noexcept;
 	HANDLE getHandle() const noexcept;
 	int32_t setConsoleCodePage( uint32_t cp );
-	void setFont( const std::string& fontName );
+	void setFont( const std::string &fontName );
 	int32_t setCurcorPos( _COORD xy = {0,0} );
 	bool setColor( WORD attributes = FOREGROUND_RED | BACKGROUND_RED | BACKGROUND_GREEN );
 	WORD getConsoleTextAttributes() const noexcept;
@@ -65,12 +65,12 @@ public:
 	//	\function	print
 	//	\brief  print to stdout
 	//	\date	2020/12/01 21:36
-	DWORD print( const std::string& msg );
+	DWORD print( const std::string &msg );
 	//===================================================
 	//	\function	log
 	//	\brief  print to stderr
 	//	\date	2020/12/01 21:36
-	DWORD log( const std::string& msg );
+	DWORD log( const std::string &msg );
 	//===================================================
 	//	\function	read
 	//	\brief  read from stdin, returns the string

@@ -14,6 +14,12 @@ namespace util
 constexpr float PI = 3.14159265f;
 constexpr double PI_D = 3.1415926535897932;
 
+//===================================================
+//	\function	nextPowerOf2
+//	\brief  find smallest power of 2 greater than or equal to n
+//	\date	2022/04/06 12:52
+int nextPowerOf2( int n );
+
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
 constexpr T abs( const T val )
 {
@@ -35,7 +41,7 @@ constexpr T modulusFloat( const T divident,
 	return divident - truncate( divident / divisor ) * divisor;
 }
 
-template<typename T>
+template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
 constexpr T modulus( const T divident,
 	const T divisor ) noexcept
 {
@@ -50,19 +56,21 @@ constexpr T modulus( const T divident,
 	}
 }
 
-template<typename T>
+template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
 constexpr T ceil( const T val ) noexcept
 {
-	return val + (T)1 - modulus( val, (T)1 );
+	return val + (T)1 - modulus( val,
+		(T)1 );
 }
 
-template<typename T>
+template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
 constexpr T floor( const T val ) noexcept
 {
-	return val - modulus( val, (T)1 );
+	return val - modulus( val,
+		(T)1 );
 }
 
-template<typename T>
+template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
 constexpr T round( const T val ) noexcept
 {
 	return floor( val + (T)0.5 );
@@ -214,7 +222,7 @@ constexpr T interpolate( const T& src,
 	return src + alpha * ( dst - src );
 }
 
-/// <image url="C:/Users/Nikos/pictures/gaussian function distribution.png" scale=".4" />
+/// <image url="C:/Users/nikla/pictures/gaussian function distribution.png" scale=".4" />
 // x is distance from center of Kernel/curve
 template<typename T>
 constexpr T gaussianDistr( const T x,
@@ -222,8 +230,7 @@ constexpr T gaussianDistr( const T x,
 	const T mean ) noexcept
 {
 	const T ss = square( sigma );
-	return ((T)1 / sqrt( (T)2 * (T)PI_D * ss ))
-		* exp( -square( x - mean ) / ((T)2 * ss) );
+	return ( (T)1 / sqrt( (T)2 * (T)PI_D * ss ) ) * exp( -square( x - mean ) / ((T)2 * ss) );
 }
 
 //===================================================
@@ -261,9 +268,8 @@ T randomInRange( T start,
 
 // produce random floating point numbers
 float frand() noexcept;
-// m = divident, n = divisor, r = remainder
 // O(log_n(m))
-int gcd( int m, int n ) noexcept;
+int gcd( int divident, int divisor ) noexcept;
 constexpr int factorialOf( int n ) noexcept;
 // trial division method, returns 1 for prime, 0 for not prime
 int isPrime( int number ) noexcept;

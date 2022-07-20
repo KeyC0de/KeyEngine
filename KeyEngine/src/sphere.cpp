@@ -13,7 +13,7 @@
 
 namespace dx = DirectX;
 
-Sphere::Sphere( Graphics& gph,
+Sphere::Sphere( Graphics &gph,
 	float radius )
 {
 	auto model = GeometrySphere::make();

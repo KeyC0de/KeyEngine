@@ -5,7 +5,7 @@
 #include "utils.h"
 
 
-SettingsManager::SettingsManager( const std::string& filePath )
+SettingsManager::SettingsManager( const std::string &filePath )
 {
 	//loadFromFile( filePath );
 }
@@ -16,7 +16,7 @@ SettingsManager::~SettingsManager() noexcept
 		
 }
 
-SettingsManager& SettingsManager::getInstance( const std::string& filePath )
+SettingsManager& SettingsManager::getInstance( const std::string &filePath )
 {
 	if ( m_pInstance == nullptr )
 	{
@@ -33,7 +33,7 @@ void SettingsManager::resetInstance()
 	}
 }
 
-void SettingsManager::loadFromFile( const std::string& filePath )
+void SettingsManager::loadFromFile( const std::string &filePath )
 {
 	INIReader ini( filePath );
 

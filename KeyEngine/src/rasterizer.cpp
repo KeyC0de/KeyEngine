@@ -4,7 +4,7 @@
 #include "dxgi_info_queue.h"
 
 
-Rasterizer::Rasterizer( Graphics& gph,
+Rasterizer::Rasterizer( Graphics &gph,
 	bool bTwoSided,
 	bool bWireframe )
 	:
@@ -24,13 +24,13 @@ Rasterizer::Rasterizer( Graphics& gph,
 	ASSERT_HRES_IF_FAILED;
 }
 
-void Rasterizer::bind( Graphics& gph ) cond_noex
+void Rasterizer::bind( Graphics &gph ) cond_noex
 {
 	getContext( gph )->RSSetState( m_pRasterizerState.Get() );
 	DXGI_GET_QUEUE_INFO( gph );
 }
 
-std::shared_ptr<Rasterizer> Rasterizer::fetch( Graphics& gph,
+std::shared_ptr<Rasterizer> Rasterizer::fetch( Graphics &gph,
 	bool bTwoSided,
 	bool bWireframe )
 {

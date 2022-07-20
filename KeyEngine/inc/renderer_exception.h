@@ -11,17 +11,17 @@ class RendererException final
 {
 public:
 	RendererException( int line, const char* file, const char* function,
-		const std::string& msg ) noexcept;
+		const std::string &msg ) noexcept;
 
-	const std::string getType() const noexcept override;
-	virtual const char* what() const noexcept override;
+	const std::string getType() const noexcept override final;
+	virtual const char* what() const noexcept override final;
 };
 
 
 }
 
 
-#define throwRendererException( msg ) throw ren::RendererException( __LINE__,\
+#define THROW_RENDERER_EXCEPTION( msg ) throw ren::RendererException( __LINE__,\
 	__FILE__,\
 	__FUNCTION__,\
 	msg );

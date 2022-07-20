@@ -8,14 +8,14 @@ class GameplayException final
 {
 public:
 	GameplayException( int line, const char* file, const char* function,
-		const std::string& msg ) noexcept;
+		const std::string &msg ) noexcept;
 
-	const std::string getType() const noexcept override;
-	virtual const char* what() const noexcept override;
+	const std::string getType() const noexcept override final;
+	virtual const char* what() const noexcept override final;
 };
 
 
-#define throwGameplayException( msg ) throw gp::GameplayException( __LINE__,\
+#define THROW_GAMEPLAY_EXCEPTION( msg ) throw gp::GameplayException( __LINE__,\
 	__FILE__,\
 	__FUNCTION__,\
 	msg );

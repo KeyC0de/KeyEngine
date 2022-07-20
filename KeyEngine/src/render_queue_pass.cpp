@@ -9,7 +9,7 @@ void RenderQueuePass::addJob( Job job ) noexcept
 	m_jobs.push_back( job );
 }
 
-void RenderQueuePass::run( Graphics& gph ) const cond_noex
+void RenderQueuePass::run( Graphics &gph ) const cond_noex
 {
 	bindPass( gph );
 	for ( const auto& job : m_jobs )

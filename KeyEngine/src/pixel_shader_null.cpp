@@ -3,12 +3,12 @@
 #include "dxgi_info_queue.h"
 
 
-PixelShaderNull::PixelShaderNull( Graphics& gph )
+PixelShaderNull::PixelShaderNull( Graphics &gph )
 {
 
 }
 
-void PixelShaderNull::bind( Graphics& gph ) cond_noex
+void PixelShaderNull::bind( Graphics &gph ) cond_noex
 {
 	getContext( gph )->PSSetShader( nullptr,
 		nullptr,
@@ -16,7 +16,7 @@ void PixelShaderNull::bind( Graphics& gph ) cond_noex
 	DXGI_GET_QUEUE_INFO( gph );
 }
 
-std::shared_ptr<PixelShaderNull> PixelShaderNull::fetch( Graphics& gph )
+std::shared_ptr<PixelShaderNull> PixelShaderNull::fetch( Graphics &gph )
 {
 	return BindableMap::fetch<PixelShaderNull>( gph );
 }

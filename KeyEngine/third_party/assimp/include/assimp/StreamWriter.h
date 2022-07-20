@@ -224,7 +224,7 @@ public:
 
     // ---------------------------------------------------------------------
     /** Write a std::string to the stream */
-    void PutString(const std::string& s)
+    void PutString(const std::string &s)
     {
         // as Put(T f) below
         if (cursor + s.size() >= buffer.size()) {

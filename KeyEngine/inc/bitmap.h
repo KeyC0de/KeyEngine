@@ -29,15 +29,15 @@ private:
 	{
 	public:
 		BitmapException( int line, const char* file, const char* function,
-			const std::string& msg ) noexcept;
+			const std::string &msg ) noexcept;
 
-		const std::string getType() const noexcept override;
-		virtual const char* what() const noexcept override;
+		const std::string getType() const noexcept override final;
+		virtual const char* what() const noexcept override final;
 	};
 private:
 	Bitmap( DirectX::ScratchImage rhs ) noexcept;
 public:
-	static Bitmap loadFromFile( const std::string& filename,
+	static Bitmap loadFromFile( const std::string &filename,
 		unsigned wicFlags = DirectX::WIC_FLAGS_IGNORE_SRGB );
 	//===================================================
 	//	\function	colorToVector
@@ -65,7 +65,7 @@ public:
 	unsigned int getPitch() const noexcept;
 	Texel* data() noexcept;
 	const Texel* dataConst() const noexcept;
-	void save( const std::string& filename, unsigned wicFlags = DirectX::WIC_FLAGS_NONE ) const;
+	void save( const std::string &filename, unsigned wicFlags = DirectX::WIC_FLAGS_NONE ) const;
 	bool hasAlpha() const noexcept;
 };
 

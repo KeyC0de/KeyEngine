@@ -7,8 +7,8 @@
 namespace ren
 {
 
-Job::Job( const Effect* pEffect,
-	const Drawable* pDrawable )
+Job::Job( const Effect *pEffect,
+	const Drawable *pDrawable )
 	:
 	m_pDrawable{pDrawable},
 	m_pEffect{pEffect}
@@ -16,7 +16,7 @@ Job::Job( const Effect* pEffect,
 
 }
 
-void Job::run( Graphics& gph ) const cond_noex
+void Job::run( Graphics &gph ) const cond_noex
 {
 	m_pDrawable->bind( gph );	// bind P.T., I.B., V.B.
 	m_pEffect->bind( gph );		// bind other bindables
