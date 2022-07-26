@@ -1,10 +1,10 @@
 #pragma once
 
 
-namespace util
+namespace net
 {
 
 void openWebpage( const std::string &address );
 
 
-}//namespace util
+}//namespace net

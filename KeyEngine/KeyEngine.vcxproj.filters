@@ -254,37 +254,37 @@
       <Filter>engine\network</Filter>
     </ClCompile>
     <ClCompile Include="src\os_utils.cpp">
-      <Filter>engine\util\win</Filter>
+      <Filter>engine\os\win</Filter>
     </ClCompile>
     <ClCompile Include="src\mouse.cpp">
-      <Filter>engine\util\win</Filter>
+      <Filter>engine\os\win</Filter>
     </ClCompile>
     <ClCompile Include="src\keyboard.cpp">
-      <Filter>engine\util\win</Filter>
+      <Filter>engine\os\win</Filter>
     </ClCompile>
     <ClCompile Include="src\windows_message_map.cpp">
-      <Filter>engine\util\win</Filter>
+      <Filter>engine\os\win</Filter>
     </ClCompile>
     <ClCompile Include="src\window.cpp">
-      <Filter>engine\util\win</Filter>
+      <Filter>engine\os\win</Filter>
     </ClCompile>
     <ClCompile Include="src\message.cpp">
       <Filter>engine\gameplay</Filter>
     </ClCompile>
     <ClCompile Include="src\leak_checker_console.cpp">
-      <Filter>engine\util\win</Filter>
+      <Filter>engine\os\win</Filter>
     </ClCompile>
     <ClCompile Include="src\assertions_console.cpp">
-      <Filter>engine\util\win</Filter>
+      <Filter>engine\os\win</Filter>
     </ClCompile>
     <ClCompile Include="src\console.cpp">
-      <Filter>engine\util\win</Filter>
+      <Filter>engine\os\win</Filter>
     </ClCompile>
     <ClCompile Include="src\sysmetrics.cpp">
-      <Filter>engine\util\win</Filter>
+      <Filter>engine\os\win</Filter>
     </ClCompile>
     <ClCompile Include="src\splash_window.cpp">
-      <Filter>engine\util\win</Filter>
+      <Filter>engine\os\win</Filter>
     </ClCompile>
     <ClCompile Include="src\skybox_vscb.cpp">
       <Filter>engine\vfx</Filter>
@@ -314,7 +314,7 @@
       <Filter>engine\vfx\drawable</Filter>
     </ClCompile>
     <ClCompile Include="src\signal_handling.cpp">
-      <Filter>engine\util\win</Filter>
+      <Filter>engine\os\win</Filter>
     </ClCompile>
     <ClCompile Include="src\renderer_exception.cpp">
       <Filter>engine\vfx</Filter>
@@ -1007,40 +1007,40 @@
       <Filter>engine\network</Filter>
     </ClInclude>
     <ClInclude Include="inc\os_utils.h">
-      <Filter>engine\util\win</Filter>
+      <Filter>engine\os\win</Filter>
     </ClInclude>
     <ClInclude Include="inc\mouse.h">
-      <Filter>engine\util\win</Filter>
+      <Filter>engine\os\win</Filter>
     </ClInclude>
     <ClInclude Include="inc\keyboard.h">
-      <Filter>engine\util\win</Filter>
+      <Filter>engine\os\win</Filter>
     </ClInclude>
     <ClInclude Include="inc\windows_message_map.h">
-      <Filter>engine\util\win</Filter>
+      <Filter>engine\os\win</Filter>
     </ClInclude>
     <ClInclude Include="inc\window.h">
-      <Filter>engine\util\win</Filter>
+      <Filter>engine\os\win</Filter>
     </ClInclude>
     <ClInclude Include="inc\leak_checker_console.h">
-      <Filter>engine\util\win</Filter>
+      <Filter>engine\os\win</Filter>
     </ClInclude>
     <ClInclude Include="inc\assertions_console.h">
-      <Filter>engine\util\win</Filter>
+      <Filter>engine\os\win</Filter>
     </ClInclude>
     <ClInclude Include="inc\console.h">
-      <Filter>engine\util\win</Filter>
+      <Filter>engine\os\win</Filter>
     </ClInclude>
     <ClInclude Include="inc\winner.h">
-      <Filter>engine\util\win</Filter>
+      <Filter>engine\os\win</Filter>
     </ClInclude>
     <ClInclude Include="inc\vtune_itt_domain.h">
       <Filter>third_party\glue</Filter>
     </ClInclude>
     <ClInclude Include="inc\sysmetrics.h">
-      <Filter>engine\util\win</Filter>
+      <Filter>engine\os\win</Filter>
     </ClInclude>
     <ClInclude Include="inc\splash_window.h">
-      <Filter>engine\util\win</Filter>
+      <Filter>engine\os\win</Filter>
     </ClInclude>
     <ClInclude Include="inc\skybox_vscb.h">
       <Filter>engine\vfx</Filter>
@@ -1070,10 +1070,10 @@
       <Filter>engine\vfx\drawable</Filter>
     </ClInclude>
     <ClInclude Include="inc\key_wrl.h">
-      <Filter>engine\util\win</Filter>
+      <Filter>engine\os\win</Filter>
     </ClInclude>
     <ClInclude Include="inc\signal_handling.h">
-      <Filter>engine\util\win</Filter>
+      <Filter>engine\os\win</Filter>
     </ClInclude>
     <ClInclude Include="inc\renderer_exception.h">
       <Filter>engine\vfx</Filter>
@@ -1310,7 +1310,6 @@
     </FxCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="TODO.txt" />
     <Text Include="design_doc\TODO.txt">
       <Filter>design_doc</Filter>
     </Text>
@@ -1403,9 +1402,6 @@
     <Filter Include="engine\vfx\render_graph">
       <UniqueIdentifier>{953b5d05-3506-4bc1-9f50-0f25b9cd0cc6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="engine\util\win">
-      <UniqueIdentifier>{c9c83815-2783-44c7-8c79-7c37300799a3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="engine\vfx\drawable">
       <UniqueIdentifier>{a20e5f58-d59f-4323-8c6f-dadc52f1b15c}</UniqueIdentifier>
     </Filter>
@@ -1423,6 +1419,12 @@
     </Filter>
     <Filter Include="third_party\glue">
       <UniqueIdentifier>{b9ef6ca7-7d36-456d-ace2-c579f2a1a0cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\os">
+      <UniqueIdentifier>{8a8f1ee2-2153-42ff-9217-aee1d11460b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\os\win">
+      <UniqueIdentifier>{c9c83815-2783-44c7-8c79-7c37300799a3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

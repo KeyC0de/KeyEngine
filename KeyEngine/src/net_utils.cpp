@@ -3,7 +3,7 @@
 #include "net_utils.h"
 
 
-namespace util
+namespace net
 {
 
 void openWebpage( const std::string &address )

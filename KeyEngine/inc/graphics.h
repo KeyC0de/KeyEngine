@@ -115,14 +115,14 @@ public:
 
 	// 2d
 	ColorBGRA getPixel( int x, int y ) const noexcept;
-	void setPixel( int x, int y, ColorBGRA col );
-	inline void setPixel( int x,
+	void putPixel( int x, int y, ColorBGRA col );
+	inline void putPixel( int x,
 		int y,
 		int r,
 		int g,
 		int b )
 	{
-		setPixel( x,
+		putPixel( x,
 			y,
 			{static_cast<BYTE>( r ), static_cast<BYTE>( g ), static_cast<BYTE>( b )} );
 	}
@@ -153,8 +153,7 @@ public:
 
 	void drawTriangle();
 	void drawCircle( int centerX, int centerY, int radius, ColorBGRA col );
-	std::vector<DirectX::XMFLOAT2> drawStar( float outerRadius, float innerRadius,
-		int nFlares = 5 );
+	std::vector<DirectX::XMFLOAT2> drawStar( float outerRadius, float innerRadius, int nFlares = 5 );
 private:
 	void recordDeferredCommandList();
 	//===================================================

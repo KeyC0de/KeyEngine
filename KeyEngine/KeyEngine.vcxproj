@@ -822,7 +822,6 @@
     <Text Include="design_doc\fantasia.txt" />
     <Text Include="design_doc\TODO.txt" />
     <Text Include="design_doc\winapi functions.txt" />
-    <Text Include="TODO.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

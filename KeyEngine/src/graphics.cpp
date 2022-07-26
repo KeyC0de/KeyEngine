@@ -591,7 +591,7 @@ ColorBGRA Graphics::getPixel( int x,
 	return m_pCpuBuffer[m_width * y + x];
 }
 
-void Graphics::setPixel( int x,
+void Graphics::putPixel( int x,
 	int y,
 	ColorBGRA col )
 {
@@ -623,7 +623,7 @@ void Graphics::drawRect( int x0,
 	{
 		for ( int y = y0; y < y1; ++y )
 		{
-			setPixel( x,
+			putPixel( x,
 				y,
 				col );
 		}
@@ -667,7 +667,7 @@ void Graphics::drawLine( int x0,
 			const int yi = y;
 			if ( x >= 0 && x < m_width && yi >= 0 && yi < m_height )
 			{
-				setPixel( x,
+				putPixel( x,
 					yi,
 					col );
 			}
@@ -689,7 +689,7 @@ void Graphics::drawLine( int x0,
 			const int xi = x;
 			if ( xi >= 0 && xi < m_width && y >= 0 && y < m_height )
 			{
-				setPixel( xi,
+				putPixel( xi,
 					y,
 					col );
 			}
@@ -714,7 +714,7 @@ void Graphics::drawCircle( int centerX,
 			yDiff = centerY - yLoop;
 			if ( xDiff * xDiff + yDiff * yDiff <= radiusSquared )
 			{
-				setPixel( xLoop,
+				putPixel( xLoop,
 					yLoop,
 					col );
 			}
