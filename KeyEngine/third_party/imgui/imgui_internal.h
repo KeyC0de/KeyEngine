@@ -604,7 +604,7 @@ struct IMGUI_API ImGuiInputTextState
     void                OnKeyPressed(int key);      // Cannot be inline because we call in code in stb_textedit.h implementation
 };
 
-// Windows data saved in imgui.ini file
+// Windows data saved in config/imgui.ini file
 struct ImGuiWindowSettings
 {
     char*       Name;

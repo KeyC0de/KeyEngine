@@ -1201,6 +1201,9 @@
     <None Include="imgui.ini">
       <Filter>config</Filter>
     </None>
+    <None Include="test.ini">
+      <Filter>config</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="shaders\blur_separ_ps.hlsl">

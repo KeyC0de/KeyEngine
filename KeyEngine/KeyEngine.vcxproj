@@ -261,6 +261,7 @@
     <None Include="shaders\hlsli\shadowing_vs.hlsli" />
     <None Include="shaders\hlsli\spot_light_pscb.hlsli" />
     <None Include="shaders\hlsli\transforms_vscb.hlsli" />
+    <None Include="test.ini" />
     <None Include="third_party\assimp\include\assimp\color4.inl" />
     <None Include="third_party\assimp\include\assimp\material.inl" />
     <None Include="third_party\assimp\include\assimp\matrix3x3.inl" />
