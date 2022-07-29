@@ -6,12 +6,12 @@
 namespace ver
 {
 
-const VertexLayout::VertexMember& VertexLayout::fetchByIndex( size_t i ) const cond_noex
+const VertexLayout::VertexMember &VertexLayout::fetchByIndex( size_t i ) const cond_noex
 {
 	return m_vertexMembers[i];
 }
 
-VertexLayout& VertexLayout::add( MemberType type ) cond_noex
+VertexLayout &VertexLayout::add( MemberType type ) cond_noex
 {
 	if ( !hasType( type ) )
 	{
@@ -23,7 +23,7 @@ VertexLayout& VertexLayout::add( MemberType type ) cond_noex
 
 bool VertexLayout::hasType( MemberType type ) const noexcept
 {
-	for ( auto& e : m_vertexMembers )
+	for ( auto &e : m_vertexMembers )
 	{
 		if ( e.getType() == type )
 		{
@@ -50,7 +50,7 @@ std::vector<D3D11_INPUT_ELEMENT_DESC>
 {
 	std::vector<D3D11_INPUT_ELEMENT_DESC> desc;
 	desc.reserve( getMemberCount() );
-	for ( const auto& e : m_vertexMembers )
+	for ( const auto &e : m_vertexMembers )
 	{
 		desc.push_back( e.getDESC() );
 	}
@@ -60,7 +60,7 @@ std::vector<D3D11_INPUT_ELEMENT_DESC>
 std::string VertexLayout::getSignature() const cond_noex
 {
 	std::string tag;
-	for ( const auto& e : m_vertexMembers )
+	for ( const auto &e : m_vertexMembers )
 	{
 		tag += e.getTag();
 	}
@@ -115,7 +115,7 @@ struct TagLookup final
 	}
 };
 
-const char* ver::VertexLayout::VertexMember::getTag() const noexcept
+const char *ver::VertexLayout::VertexMember::getTag() const noexcept
 {
 	return bridge<TagLookup>( m_type );
 }
@@ -142,8 +142,8 @@ D3D11_INPUT_ELEMENT_DESC VertexLayout::VertexMember::getDESC() const cond_noex
 }
 
 
-VertexView::VertexView( char* pData,
-	const VertexLayout& layout ) cond_noex
+VertexView::VertexView( char *pData,
+	const VertexLayout &layout ) cond_noex
 	:
 	m_p(pData),
 	m_layout(layout)
@@ -151,7 +151,7 @@ VertexView::VertexView( char* pData,
 	ASSERT( pData != nullptr, "Input data bytes pointer is null!" );
 }
 
-ConstVertexView::ConstVertexView( const VertexView& v ) cond_noex
+ConstVertexView::ConstVertexView( const VertexView &v ) cond_noex
 	:
 	m_vertex(v)
 {
@@ -175,7 +175,7 @@ void Buffer::resize( size_t newSize ) cond_noex
 	}
 }
 
-const char* Buffer::getRawBytes() const cond_noex
+const char *Buffer::getRawBytes() const cond_noex
 {
 	return m_v.data();
 }
@@ -184,8 +184,8 @@ const char* Buffer::getRawBytes() const cond_noex
 template<VertexLayout::MemberType type>
 struct AiMeshMemberLookup final
 {
-	static constexpr void exec( Buffer* pBuf,
-		const aiMesh& aimesh ) cond_noex
+	static constexpr void exec( Buffer *pBuf,
+		const aiMesh &aimesh ) cond_noex
 	{
 		for ( auto end = aimesh.mNumVertices, i = 0u; i < end; ++i )
 		{
@@ -197,7 +197,7 @@ struct AiMeshMemberLookup final
 };
 
 Buffer::Buffer( VertexLayout vertLayout,
-	const aiMesh& aimesh )
+	const aiMesh &aimesh )
 	:
 	m_vertexLayout(std::move( vertLayout ))
 {
@@ -213,7 +213,7 @@ Buffer::Buffer( VertexLayout vertLayout,
 	}
 }
 
-const VertexLayout& Buffer::getLayout() const noexcept
+const VertexLayout &Buffer::getLayout() const noexcept
 {
 	return m_vertexLayout;
 }

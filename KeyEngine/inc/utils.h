@@ -3,8 +3,6 @@
 #include <vector>
 #include <string>
 #include <sstream>
-#include <algorithm>
-#include <iterator>
 #include <iostream>
 #include <bitset>
 #include <cstddef>
@@ -28,27 +26,6 @@ T sum( std::initializer_list<T> lst )
 	return total;
 }
 
-template<typename T>
-void removeByBackSwap( std::vector<T>& v,
-	std::size_t index )
-{
-	typename std::vector<T>::iterator itBback = v.back();
-	std::swap( v[index],
-		itBback );
-	v.pop_back();
-}
-
-//===================================================
-//	\function	shrinkCapacity
-//	\brief  shrink vector's capacity to its size
-//	\date	2022/04/01 20:51
-template<typename T, class Alloc>
-void shrinkCapacity( std::vector<T,Alloc>& v )
-{
-   std::vector<T,Alloc>( v.begin(),
-	   v.end() ).swap( v );
-}
-
 //===================================================
 //	\function	tokenizeQuotedString
 //	\brief  converts a string input into a vector of strings
@@ -67,38 +44,55 @@ std::wstring s2ws( const std::string &narrow );
 //	\date	2020/12/30 20:38
 std::string ws2s( const std::wstring &wide );
 
-namespace
-{
-template<class Iter>
-void splitString_impl( const std::string &s,
-	const std::string &delim,
-	Iter out )
-{
-	if ( delim.empty() )
-	{
-		*out++ = s;
-	}
-	else
-	{
-		size_t a = 0;
-		size_t b = s.find( delim );
-		for ( ; b != std::string::npos;
-				a = b + delim.length(),
-				b = s.find( delim, a ) )
-		{
-			*out++ = std::move( s.substr( a,
-				b - a ) );
-		}
-		*out++ = std::move( s.substr( a,
-			s.length() - a ) );
-	}
-}
-}
-
 std::vector<std::string> splitString( const std::string &s, const std::string &delim );
 bool stringContains( std::string_view haystack, std::string_view needle );
 std::string &capitalizeFirstLetter( std::string &str );
 std::string capitalizeFirstLetter( const std::string &str );
+
+//===================================================
+//	\function	trimL
+//	\brief  trim from start (in place)
+//	\date	2022/07/29 21:12
+static inline void trimL( std::string &s );
+
+//===================================================
+//	\function	trimR
+//	\brief  trim from end (in place)
+//	\date	2022/07/29 21:13
+void trimR( std::string &s );
+
+//===================================================
+//	\function	trim
+//	\brief  trim from both ends (in place)
+//	\date	2022/07/29 21:13
+void trim( std::string &s );
+
+//===================================================
+//	\function	trimCopy
+//	\brief  trim from both ends (copying)
+//	\date	2022/07/29 21:13
+std::string trimCopy( std::string s );
+
+//===================================================
+//	\function	trimLCopy
+//	\brief  trim from start (copying)
+//	\date	2022/07/29 21:13
+inline std::string trimLCopy( std::string s );
+
+//===================================================
+//	\function	trimRCopy
+//	\brief  trim from end (copying)
+//	\date	2022/07/29 21:14
+std::string trimRCopy( std::string s );
+
+template<typename T>
+std::string toString( const T &t )
+{
+	std::stringstream ss;
+	ss << t;
+	return ss.str();
+}
+
 
 template<typename T, typename = std::enable_if_t<std::is_integral_v<T>>>
 void printBinary( T val )
@@ -109,13 +103,27 @@ void printBinary( T val )
 
 std::tuple<int, int, int> timeToHms( float time );
 std::tuple<int, int, int> secondsToHms( int totalSecs );
+//===================================================
+//	\function	secondsToTimeT
+//	\brief	convert seconds to time_t
+//			Although not defined, time_t is implementation defined
+//			It is almost always an integral value holding the number of seconds (not counting leap seconds) since 00:00, Jan 1 1970 UTC, corresponding to POSIX time.
+//	\date	2022/07/28 22:35
+inline time_t secondsToTimeT( int s );
+
+//===================================================
+//	\function	timeTtoSeconds
+//	\brief  convert time_t to seconds
+//			time_t can be acquired as if by means of time(nullptr)
+//	\date	2022/07/28 22:32
+long int timeTtoSeconds( time_t t );
 
 
-std::uintptr_t pointerToInt( void* p );
-void* intToPointer( uintptr_t i );
-void* addPointers( void* p1, void* p2 );
+std::uintptr_t pointerToInt( void *p );
+void *intToPointer( uintptr_t i );
+void *addPointers( void *p1, void *p2 );
 
-std::string operator+( const std::string_view& sv1, const std::string_view& sv2 );
+std::string operator+( const std::string_view &sv1, const std::string_view &sv2 );
 
 // print a comma every 3 decimal places
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
@@ -131,7 +139,7 @@ std::string getNumberString( T num )
 std::string generateCaptcha( int len );
 
 //  check whether the address is aligned to `alignment` boundary
-bool isAligned( const volatile void* p, std::size_t alignment ) noexcept;
+bool isAligned( const volatile void *p, std::size_t alignment ) noexcept;
 bool isAligned( std::uintptr_t pi, std::size_t alignment ) noexcept;
 constexpr int is4ByteAligned( intptr_t *addr );
 
@@ -140,7 +148,7 @@ constexpr int is4ByteAligned( intptr_t *addr );
 //	\brief  align pointer forward with given alignment
 //	\date	2022/02/20 20:34
 template<typename T>
-T* alignForward( T* p,
+T *alignForward( T *p,
 	std::size_t alignment ) noexcept
 {
 	if ( alignment == 0 )
@@ -165,23 +173,36 @@ const std::size_t getForwardPaddingWithHeader( const std::size_t p,
 	const std::size_t alignment, const std::size_t headerSize );
 
 template<typename T>
-T* alignPtr( const T *ptr,
+T *alignPtr( const T *ptr,
 	const std::size_t alignment )
 {
 	const std::uintptr_t uintPtr = reinterpret_cast<std::uintptr_t>( ptr );
 	const std::uintptr_t alignedUintPtr = ( uintPtr + ( alignment - 1 ) ) & ~( alignment - 1 );
-	T* alignedPtr = reinterpret_cast<T*>( alignedUintPtr );
+	T *alignedPtr = reinterpret_cast<T*>( alignedUintPtr );
 	ASSERT( isAligned( alignedPtr, alignment ), "Not aligned!" );
 	return alignedPtr;
 }
 
 // TODO: doesn't work properly
-void* alignedMalloc( std::size_t nBytes, std::size_t alignment );
+void *alignedMalloc( std::size_t nBytes, std::size_t alignment );
 void alignedFree( void *p ) noexcept;
 
 // INTEL:
-//void* _mm_malloc(int size, int align)
+//void *_mm_malloc(int size, int align)
 //void _mm_free(void *p)
 
+#pragma warning( disable : 4312 )
+inline unsigned int volatile& readMEM( unsigned int memoryAddress )
+{
+	return *reinterpret_cast<unsigned int volatile*>( memoryAddress );
+}
+#pragma warning( default : 4312 )
+
+#pragma warning( disable : 4312 )
+inline unsigned long long int volatile& readMEM( unsigned long long int memoryAddress )
+{
+	return *reinterpret_cast<unsigned long long int volatile*>( memoryAddress );
+}
+#pragma warning( default : 4312 )
 
 }//namespace util

@@ -6,8 +6,8 @@
 
 
 InputLayout::InputLayout( Graphics &gph,
-	const ver::VertexLayout& vertexLayout,
-	const VertexShader& vs )
+	const ver::VertexLayout &vertexLayout,
+	const VertexShader &vs )
 	:
 	m_vertexLayout{vertexLayout}
 {
@@ -34,16 +34,16 @@ void InputLayout::bind( Graphics &gph ) cond_noex
 }
 
 std::shared_ptr<InputLayout> InputLayout::fetch( Graphics &gph,
-		const ver::VertexLayout& vertexLayout,
-	const VertexShader& vs )
+		const ver::VertexLayout &vertexLayout,
+	const VertexShader &vs )
 {
 	return BindableMap::fetch<InputLayout>( gph,
 		vertexLayout,
 		vs );
 }
 
-std::string InputLayout::generateUid( const ver::VertexLayout& vertexLayout,
-	const VertexShader& vs )
+std::string InputLayout::generateUid( const ver::VertexLayout &vertexLayout,
+	const VertexShader &vs )
 {
 	using namespace std::string_literals;
 	return typeid( InputLayout ).name() + "#"s + vertexLayout.getSignature() + "#"s

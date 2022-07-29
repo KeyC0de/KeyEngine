@@ -7,7 +7,7 @@ class GameplayException final
 	: public KeyException
 {
 public:
-	GameplayException( int line, const char* file, const char* function,
+	GameplayException( int line, const char *file, const char *function,
 		const std::string &msg ) noexcept;
 
 	const std::string getType() const noexcept override final;
@@ -15,7 +15,7 @@ public:
 };
 
 
-#define THROW_GAMEPLAY_EXCEPTION( msg ) throw gp::GameplayException( __LINE__,\
+#define THROW_GAMEPLAY_EXCEPTION( msg ) throw GameplayException( __LINE__,\
 	__FILE__,\
 	__FUNCTION__,\
 	msg );

@@ -5,8 +5,8 @@
 
 IConstantBufferEx::IConstantBufferEx( Graphics &gph,
 	unsigned slot,
-	const con::CBElement& layoutRoot,
-	const con::Buffer* pBuf )
+	const con::CBElement &layoutRoot,
+	const con::Buffer *pBuf )
 	:
 	m_slot(slot)
 {
@@ -34,7 +34,7 @@ IConstantBufferEx::IConstantBufferEx( Graphics &gph,
 }
 
 void IConstantBufferEx::update( Graphics &gph,
-	const con::Buffer& buf )
+	const con::Buffer &buf )
 {
 	ASSERT( &buf.getRootLayoutElement() == &getCBExRootLayoutElement(),
 		"Input CB root element is not compatible!" );

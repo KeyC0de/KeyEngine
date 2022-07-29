@@ -4,9 +4,9 @@
 #include "snake_play_field.h"
 
 
-Fruit::Fruit( std::mt19937& rng,
-	const SnakePlayField& field,
-	const SnakeRepr& snake )
+Fruit::Fruit( std::mt19937 &rng,
+	const SnakePlayField &field,
+	const SnakeRepr &snake )
 {
 	respawn( rng,
 		field,
@@ -14,16 +14,16 @@ Fruit::Fruit( std::mt19937& rng,
 }
 
 void Fruit::render( Graphics &gph,
-	SnakePlayField& field ) const
+	SnakePlayField &field ) const
 {
 	field.renderCell( gph,
 		m_gridLoc,
 		m_color );
 }
 
-void Fruit::respawn( std::mt19937& rng,
-	const SnakePlayField& field,
-	const SnakeRepr& snake )
+void Fruit::respawn( std::mt19937 &rng,
+	const SnakePlayField &field,
+	const SnakeRepr &snake )
 {
 	int min = 2 * field.m_cellSize;
 	int xMax = field.getWidth() - field.m_cellSize;
@@ -42,7 +42,7 @@ void Fruit::respawn( std::mt19937& rng,
 	m_gridLoc = newGridLoc;
 }
 
-const GridLocation& Fruit::getGridLocation() const noexcept
+const GridLocation &Fruit::getGridLocation() const noexcept
 {
 	return m_gridLoc;
 }

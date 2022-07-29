@@ -5,5 +5,5 @@ void testDynamicConstant();
 void testDynamicMeshLoading();
 void testMaterialSystemLoading( class Graphics &gph );
 void testScaleMatrixTranslation();
-void testDynamicVertex( class Window& wnd );
+void testDynamicVertex( class Window &wnd );
 void testNumpy();

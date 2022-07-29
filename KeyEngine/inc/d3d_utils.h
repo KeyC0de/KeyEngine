@@ -14,8 +14,8 @@
 namespace util
 {
 
-DirectX::XMFLOAT3 extractEulerAngles( const DirectX::XMFLOAT4X4& mat );
-DirectX::XMFLOAT3 extractTranslation( const DirectX::XMFLOAT4X4& mat );
+DirectX::XMFLOAT3 extractEulerAngles( const DirectX::XMFLOAT4X4 &mat );
+DirectX::XMFLOAT3 extractTranslation( const DirectX::XMFLOAT4X4 &mat );
 DirectX::XMMATRIX scaleTranslation( const DirectX::XMMATRIX &mat, float scale );
 
 //===================================================
@@ -23,7 +23,7 @@ DirectX::XMMATRIX scaleTranslation( const DirectX::XMMATRIX &mat, float scale );
 //	\brief  safely release a COM object
 //	\date	2018/12/30 17:35
 template<typename T>
-inline void comSafeRelease( T& p )
+inline void comSafeRelease( T &p )
 {
 	if ( p != nullptr )
 	{
@@ -39,19 +39,19 @@ DXGI_RATIONAL queryRefreshRate( unsigned screenWidth, unsigned screenHeight, boo
 //	\brief  will be used to load and compile a shader at runtime
 //	\date	2019/12/30 17:28
 template<class TShader>
-static TShader* createShaderObject( ID3D11Device* pD3dDevice,
-	ID3DBlob*& pShaderBlob,
-	ID3D11ClassLinkage* pClassLinkage );
+static TShader *createShaderObject( ID3D11Device *pD3dDevice,
+	ID3DBlob *&pShaderBlob,
+	ID3D11ClassLinkage *pClassLinkage );
 
 template<>
-static ID3D11VertexShader* createShaderObject<ID3D11VertexShader>( ID3D11Device* pD3dDevice,
-	ID3DBlob*& pShaderBlob,
-	ID3D11ClassLinkage* pClassLinkage )
+static ID3D11VertexShader *createShaderObject<ID3D11VertexShader>( ID3D11Device *pD3dDevice,
+	ID3DBlob *&pShaderBlob,
+	ID3D11ClassLinkage *pClassLinkage )
 {
 	ASSERT( pD3dDevice, "d3d11 Device is null!" );
 	ASSERT( pShaderBlob, "d3d11 shader object is null!" );
 
-	ID3D11VertexShader* pVertexShader;
+	ID3D11VertexShader *pVertexShader;
 	HRESULT hres = pD3dDevice->CreateVertexShader( pShaderBlob->GetBufferPointer(),
 		pShaderBlob->GetBufferSize(),
 		pClassLinkage,
@@ -62,14 +62,14 @@ static ID3D11VertexShader* createShaderObject<ID3D11VertexShader>( ID3D11Device*
 }
 
 template<>
-static ID3D11PixelShader* createShaderObject<ID3D11PixelShader>( ID3D11Device* pD3dDevice,
-	ID3DBlob*& pShaderBlob,
-	ID3D11ClassLinkage* pClassLinkage )
+static ID3D11PixelShader *createShaderObject<ID3D11PixelShader>( ID3D11Device *pD3dDevice,
+	ID3DBlob *&pShaderBlob,
+	ID3D11ClassLinkage *pClassLinkage )
 {
 	ASSERT( pD3dDevice, "d3d11 Device is null!" );
 	ASSERT( pShaderBlob, "d3d11 shader object is null!" );
 
-	ID3D11PixelShader* pPixelShader;
+	ID3D11PixelShader *pPixelShader;
 	HRESULT hres = pD3dDevice->CreatePixelShader( pShaderBlob->GetBufferPointer(),
 		pShaderBlob->GetBufferSize(),
 		pClassLinkage,
@@ -80,11 +80,11 @@ static ID3D11PixelShader* createShaderObject<ID3D11PixelShader>( ID3D11Device* p
 }
 
 template<class TShader>
-TShader* loadShaderDynamically( ID3D11Device* pD3dDevice,
+TShader *loadShaderDynamically( ID3D11Device *pD3dDevice,
 	const std::wstring &fileName,
 	const std::string &entryPoint,
 	const std::string &profile,
-	ID3DBlob*& pShaderBlob,
+	ID3DBlob *&pShaderBlob,
 	const std::vector<D3D_SHADER_MACRO>& defines = {} )
 {
 	Microsoft::WRL::ComPtr<ID3DBlob> pErrorBlob;
@@ -186,7 +186,7 @@ TShader* loadShaderDynamically( ID3D11Device* pD3dDevice,
 	}
 	ASSERT_HRES_IF_FAILED;
 
-	TShader* shader = createShaderObject<TShader>( pD3dDevice,
+	TShader *shader = createShaderObject<TShader>( pD3dDevice,
 		pShaderBlob,
 		nullptr );
 	return shader;

@@ -6,7 +6,7 @@
 
 namespace dx = DirectX;
 
-Brick::Brick( const Rect& rect,
+Brick::Brick( const Rect &rect,
 	const ColorBGRA col )
 	:
 	m_rect{rect},
@@ -24,12 +24,12 @@ void Brick::render( Graphics &gph ) const
 	}
 }
 
-bool Brick::checkForBallCollision( const Ball& ball ) const
+bool Brick::checkForBallCollision( const Ball &ball ) const
 {
 	return !m_bDestroyed && m_rect.isOverlappingWith( ball.getRect() );
 }
 
-void Brick::doBallCollision( Ball& ball )
+void Brick::doBallCollision( Ball &ball )
 {
 	ASSERT( checkForBallCollision( ball ), "There's no collision happening!" );
 

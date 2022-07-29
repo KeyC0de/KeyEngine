@@ -98,7 +98,7 @@ TriangleMesh GeometryCube::makeIndependentFacesTextured()
 		.add( Type::Normal )
 		.add( Type::Texture2D ) ) );
 
-	auto& verts = itl.m_vb;
+	auto &verts = itl.m_vb;
 
 	verts[0].getMember<Type::Texture2D>() = {0.0f, 0.0f};
 	verts[1].getMember<Type::Texture2D>() = {1.0f, 0.0f};

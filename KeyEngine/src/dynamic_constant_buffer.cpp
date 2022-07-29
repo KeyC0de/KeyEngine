@@ -49,16 +49,16 @@ std::pair<size_t, const CBElement*> CBElement::calculateArrayIndexingOffset( siz
 	size_t index ) const cond_noex
 {
 	ASSERT( m_type == Array, "Attempted to index into a non-array type" );
-	const auto& data = static_cast<ExtraData::Array&>( *m_pExtraData );
+	const auto &data = static_cast<ExtraData::Array&>( *m_pExtraData );
 	ASSERT( index < data.size, "Indexing arithmetic!" );
 	return {offset + data.element_size * index,
 		&*data.layoutElement};
 }
 
-CBElement& CBElement::operator[]( const std::string &key ) cond_noex
+CBElement &CBElement::operator[]( const std::string &key ) cond_noex
 {
 	ASSERT( m_type == Struct, "Attempted to key into a non-struct type" );
-	for ( auto& layEl : static_cast<ExtraData::Struct&>( *m_pExtraData ).layoutElements )
+	for ( auto &layEl : static_cast<ExtraData::Struct&>( *m_pExtraData ).layoutElements )
 	{
 		if ( layEl.first == key )
 		{
@@ -68,19 +68,19 @@ CBElement& CBElement::operator[]( const std::string &key ) cond_noex
 	return getEmptyElement();
 }
 
-const CBElement& CBElement::operator[]( const std::string &key ) const cond_noex
+const CBElement &CBElement::operator[]( const std::string &key ) const cond_noex
 {
 	return const_cast<CBElement&>( *this )[key];
 }
 
-CBElement& CBElement::T() cond_noex
+CBElement &CBElement::T() cond_noex
 {
 	ASSERT( m_type == Array,
 		"Attempted to access inner CBElement type T of non-array type." );
 	return *static_cast<ExtraData::Array&>( *m_pExtraData ).layoutElement;
 }
 
-const CBElement& CBElement::T() const cond_noex
+const CBElement &CBElement::T() const cond_noex
 {
 	return const_cast<CBElement&>( *this ).T();
 }
@@ -100,12 +100,12 @@ size_t CBElement::getOffsetEnd() const cond_noex
 	#undef X
 	case Struct:
 	{
-		const auto& data = static_cast<ExtraData::Struct&>( *m_pExtraData );
+		const auto &data = static_cast<ExtraData::Struct&>( *m_pExtraData );
 		return advanceToBoundary( data.layoutElements.back().second.getOffsetEnd() );
 	}
 	case Array:
 	{
-		const auto& data = static_cast<ExtraData::Array&>( *m_pExtraData );
+		const auto &data = static_cast<ExtraData::Array&>( *m_pExtraData );
 		return *m_offset + advanceToBoundary( data.layoutElement->getSizeInBytes() )
 			* data.size;
 	}
@@ -120,13 +120,13 @@ size_t CBElement::getSizeInBytes() const cond_noex
 	return getOffsetEnd() - getOffsetBegin();
 }
 
-CBElement& CBElement::add( ElementType addedType,
+CBElement &CBElement::add( ElementType addedType,
 	std::string name ) cond_noex
 {
 	ASSERT( m_type == Struct, "Attempted to add sub Element to non-Struct type" );
 	ASSERT( validateMemberName( name ), "Invalid name for Struct inner Element type." );
-	auto& structData = static_cast<ExtraData::Struct&>( *m_pExtraData );
-	for ( auto& layEl : structData.layoutElements )
+	auto &structData = static_cast<ExtraData::Struct&>( *m_pExtraData );
+	for ( auto &layEl : structData.layoutElements )
 	{
 		if ( layEl.first == name )
 		{
@@ -138,12 +138,12 @@ CBElement& CBElement::add( ElementType addedType,
 	return *this;
 }
 
-CBElement& CBElement::set( ElementType addedType,
+CBElement &CBElement::set( ElementType addedType,
 	size_t size ) cond_noex
 {
 	ASSERT( m_type == Array, "Set on non-array in layout" );
 	ASSERT( size != 0u, "Element size is empty! Maybe it has not been committed yet." );
-	auto& arrayData = static_cast<ExtraData::Array&>( *m_pExtraData );
+	auto &arrayData = static_cast<ExtraData::Array&>( *m_pExtraData );
 	arrayData.layoutElement = {addedType};
 	arrayData.size = size;
 	return *this;
@@ -188,7 +188,7 @@ std::string CBElement::getSignatureForStruct() const cond_noex
 {
 	using namespace std::string_literals;
 	auto sig = "St{"s;
-	for ( const auto& el : static_cast<ExtraData::Struct&>( *m_pExtraData )
+	for ( const auto &el : static_cast<ExtraData::Struct&>( *m_pExtraData )
 		.layoutElements )
 	{
 		sig += el.first + ":"s + el.second.getSignature() + ";"s;
@@ -200,19 +200,19 @@ std::string CBElement::getSignatureForStruct() const cond_noex
 std::string CBElement::getSignatureForArray() const cond_noex
 {
 	using namespace std::string_literals;
-	const auto& data = static_cast<ExtraData::Array&>( *m_pExtraData );
+	const auto &data = static_cast<ExtraData::Array&>( *m_pExtraData );
 	return "Ar:"s + std::to_string( data.size ) + "{"s
 		+ data.layoutElement->getSignature() + "}"s;
 }
 
 size_t CBElement::commitStruct( size_t offsetIn )
 {
-	auto& data = static_cast<ExtraData::Struct&>( *m_pExtraData );
+	auto &data = static_cast<ExtraData::Struct&>( *m_pExtraData );
 	ASSERT( data.layoutElements.size() != 0u,
 		"Struct inner elements have not been committed yet!" );
 	m_offset = advanceToBoundary( offsetIn );
 	auto offsetNext = *m_offset;
-	for ( auto& el : data.layoutElements )
+	for ( auto &el : data.layoutElements )
 	{
 		offsetNext = el.second.commit( offsetNext );
 	}
@@ -221,7 +221,7 @@ size_t CBElement::commitStruct( size_t offsetIn )
 
 size_t CBElement::commitArray( size_t offsetIn )
 {
-	auto& data = static_cast<ExtraData::Array&>( *m_pExtraData );
+	auto &data = static_cast<ExtraData::Array&>( *m_pExtraData );
 	ASSERT( data.size != 0u, "Array size is 0? WTF error!" );
 	m_offset = advanceToBoundary( offsetIn );
 	data.layoutElement->commit( *m_offset );
@@ -289,7 +289,7 @@ RawLayout::RawLayout() noexcept
 
 }
 
-CBElement& RawLayout::operator[]( const std::string &key ) cond_noex
+CBElement &RawLayout::operator[]( const std::string &key ) cond_noex
 {
 	return ( *m_pLayoutRoot )[key];
 }
@@ -326,7 +326,7 @@ std::shared_ptr<CBElement> CookedLayout::shareRootElement() const noexcept
 	return m_pLayoutRoot;
 }
 
-const CBElement& CookedLayout::operator[]( const std::string &key ) const cond_noex
+const CBElement &CookedLayout::operator[]( const std::string &key ) const cond_noex
 {
 	return (*m_pLayoutRoot)[key];
 }
@@ -354,8 +354,8 @@ ConstElementView::Ptr ConstElementView::operator&() const cond_noex
 	return Ptr{this};
 }
 
-ConstElementView::ConstElementView( const CBElement* pLayout,
-	const char* pBytes,
+ConstElementView::ConstElementView( const CBElement *pLayout,
+	const char *pBytes,
 	size_t offset ) noexcept
 	:
 	m_arrayOffset(offset),
@@ -365,7 +365,7 @@ ConstElementView::ConstElementView( const CBElement* pLayout,
 
 }
 
-ConstElementView::Ptr::Ptr( const ConstElementView* ref ) noexcept
+ConstElementView::Ptr::Ptr( const ConstElementView *ref ) noexcept
 	:
 	p(ref)
 {
@@ -400,8 +400,8 @@ ElementView::Ptr ElementView::operator&() const cond_noex
 	return Ptr{const_cast<ElementView*>( this )};
 }
 
-ElementView::ElementView( const CBElement* pLayout,
-	char* pBytes,
+ElementView::ElementView( const CBElement *pLayout,
+	char *pBytes,
 	size_t offset ) noexcept
 	:
 	m_arrayOffset(offset),
@@ -411,7 +411,7 @@ ElementView::ElementView( const CBElement* pLayout,
 
 }
 
-ElementView::Ptr::Ptr( ElementView* ref ) noexcept
+ElementView::Ptr::Ptr( ElementView *ref ) noexcept
 	:
 	p(ref)
 {
@@ -426,7 +426,7 @@ Buffer{LayoutMap::fetch( std::move( lay ) )}
 
 }
 
-Buffer::Buffer( const CookedLayout& lay ) cond_noex
+Buffer::Buffer( const CookedLayout &lay ) cond_noex
 	:
 	m_pLayoutRoot(lay.shareRootElement()),
 	m_buffer(m_pLayoutRoot->getOffsetEnd())
@@ -442,7 +442,7 @@ Buffer::Buffer( CookedLayout&& lay ) cond_noex
 
 }
 
-Buffer::Buffer( const Buffer& rhs ) noexcept
+Buffer::Buffer( const Buffer &rhs ) noexcept
 	:
 	m_pLayoutRoot(rhs.m_pLayoutRoot),
 	m_buffer(rhs.m_buffer)
@@ -450,11 +450,13 @@ Buffer::Buffer( const Buffer& rhs ) noexcept
 
 }
 
-Buffer& Buffer::operator==( const Buffer& rhs ) noexcept
+#pragma warning( disable : 4172 )
+Buffer &Buffer::operator==( const Buffer &rhs ) noexcept
 {
 	Buffer tmp{rhs};
 	return tmp;
 }
+#pragma warning( default : 4172 )
 
 Buffer::Buffer( Buffer&& rhs ) noexcept
 	:
@@ -465,7 +467,7 @@ Buffer::Buffer( Buffer&& rhs ) noexcept
 	rhs.m_buffer.clear();
 }
 
-Buffer& Buffer::operator=( Buffer&& rhs ) noexcept
+Buffer &Buffer::operator=( Buffer&& rhs ) noexcept
 {
 	std::swap( m_pLayoutRoot, rhs.m_pLayoutRoot );
 	std::swap( m_buffer, rhs.m_buffer );
@@ -491,7 +493,7 @@ ConstElementView Buffer::operator[]( const std::string &key ) const cond_noex
 	return const_cast<Buffer&>( *this )[key];
 }
 
-const char* Buffer::getRawBytes() const noexcept
+const char *Buffer::getRawBytes() const noexcept
 {
 	return m_buffer.data();
 }
@@ -501,12 +503,12 @@ size_t Buffer::getSizeInBytes() const noexcept
 	return m_buffer.size();
 }
 
-const CBElement& Buffer::getRootLayoutElement() const noexcept
+const CBElement &Buffer::getRootLayoutElement() const noexcept
 {
 	return *m_pLayoutRoot;
 }
 
-void Buffer::copyFrom( const Buffer& other ) cond_noex
+void Buffer::copyFrom( const Buffer &other ) cond_noex
 {
 	ASSERT( &getRootLayoutElement() == &other.getRootLayoutElement(),
 		"Incompatible element layouts!" );
@@ -525,7 +527,7 @@ std::shared_ptr<CBElement> Buffer::shareLayoutRoot() const noexcept
 con::CookedLayout LayoutMap::fetch( con::RawLayout&& cbLayout ) cond_noex
 {
 	auto sig = cbLayout.getSignature();
-	auto& map = getInstance().m_map;
+	auto &map = getInstance().m_map;
 	const auto i = map.find( sig );
 	// identical layout already exists
 	if ( i != map.end() )
@@ -542,7 +544,7 @@ con::CookedLayout LayoutMap::fetch( con::RawLayout&& cbLayout ) cond_noex
 	return {result.first->second};
 }
 
-LayoutMap& LayoutMap::getInstance() noexcept
+LayoutMap &LayoutMap::getInstance() noexcept
 {
 	if ( m_pInstance == nullptr )
 	{

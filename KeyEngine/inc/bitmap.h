@@ -28,11 +28,11 @@ private:
 		: public KeyException
 	{
 	public:
-		BitmapException( int line, const char* file, const char* function,
+		BitmapException( int line, const char *file, const char *function,
 			const std::string &msg ) noexcept;
 
 		const std::string getType() const noexcept override final;
-		virtual const char* what() const noexcept override final;
+		virtual const char *what() const noexcept override final;
 	};
 private:
 	Bitmap( DirectX::ScratchImage rhs ) noexcept;
@@ -44,14 +44,14 @@ public:
 	//	\brief  convert from Color(0..255) to vector(-1..1)
 	//	\date	2022/02/18 17:49
 	static DirectX::XMVECTOR colorToVector( Bitmap::Texel col ) noexcept;
-	static Bitmap::Texel vectorToColor( const DirectX::XMVECTOR& v ) noexcept;
+	static Bitmap::Texel vectorToColor( const DirectX::XMVECTOR &v ) noexcept;
 public:
 	Bitmap( unsigned int width, unsigned int height );
 	~Bitmap() = default;
-	Bitmap( Bitmap& rhs ) = delete;
-	Bitmap& operator=( const Bitmap& rhs ) = delete;
+	Bitmap( Bitmap &rhs ) = delete;
+	Bitmap &operator=( const Bitmap &rhs ) = delete;
 	Bitmap( Bitmap&& rhs ) noexcept = default;
-	Bitmap& operator=( Bitmap&& rhs ) noexcept = default;
+	Bitmap &operator=( Bitmap&& rhs ) noexcept = default;
 
 	void clear( Texel fillValue ) noexcept;
 	void setTexel( unsigned int x, unsigned int y, Texel col ) cond_noex;
@@ -63,8 +63,8 @@ public:
 	//	\brief  === getWidth() * sizeof Texel
 	//	\date	2022/02/19 19:27
 	unsigned int getPitch() const noexcept;
-	Texel* data() noexcept;
-	const Texel* dataConst() const noexcept;
+	Texel *data() noexcept;
+	const Texel *dataConst() const noexcept;
 	void save( const std::string &filename, unsigned wicFlags = DirectX::WIC_FLAGS_NONE ) const;
 	bool hasAlpha() const noexcept;
 };

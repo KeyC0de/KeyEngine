@@ -31,7 +31,7 @@ Game<T>::Game( int width,
 }
 
 template <typename T>
-ImguiManager* Game<T>::createImgui() noexcept
+ImguiManager *Game<T>::createImgui() noexcept
 {
 	if constexpr ( GraphicsMode::get() == GraphicsMode::_3D )
 	{
@@ -61,7 +61,7 @@ std::optional<Window*> Game<T>::getForegroundWindow() noexcept
 
 template <typename T>
 void Game<T>::setState( std::unique_ptr<State> pNewState,
-	Mouse& mouse )
+	Mouse &mouse )
 {
 	ASSERT( pNewState, "New state is null!" );
 	if ( dynamic_cast<GameState*>( pNewState.get() ) )
@@ -69,7 +69,7 @@ void Game<T>::setState( std::unique_ptr<State> pNewState,
 		m_mainWindow.disableCursor();
 		mouse.enableRawInput();
 #if defined _DEBUG && !defined NDEBUG
-		KeyConsole& console = KeyConsole::getInstance();
+		KeyConsole &console = KeyConsole::getInstance();
 		console.print( "Game state is on!" );
 #endif
 	}
@@ -78,7 +78,7 @@ void Game<T>::setState( std::unique_ptr<State> pNewState,
 		m_mainWindow.enableCursor();
 		mouse.disableRawInput();
 #if defined _DEBUG && !defined NDEBUG
-		KeyConsole& console = KeyConsole::getInstance();
+		KeyConsole &console = KeyConsole::getInstance();
 		console.print( "Menu state is on!" );
 #endif
 	}
@@ -90,7 +90,7 @@ void Game<T>::setState( std::unique_ptr<State> pNewState,
 }
 
 template <typename T>
-State* Game<T>::getState() noexcept
+State *Game<T>::getState() noexcept
 {
 	return m_pCurrentState.get();
 }
@@ -98,13 +98,13 @@ State* Game<T>::getState() noexcept
 template <typename T>
 float Game<T>::calculateDt()
 {
-	auto& settings = m_settingsMan.accessSettings();
+	auto &settings = m_settingsMan.accessSettings();
 	static float minFrameTime = 1.0f / settings.iMaxFps;
 	float dt = m_gameTimer.lap() * settings.fGameSpeed;
 
 #if defined _DEBUG && !defined NDEBUG
 	// print frame time
-	KeyConsole& console = KeyConsole::getInstance();
+	KeyConsole &console = KeyConsole::getInstance();
 	using namespace std::string_literals;
 	++settings.frameCount;
 	std::string frameStats = "Frame time : "s
@@ -133,8 +133,8 @@ float Game<T>::calculateDt()
 
 template<typename T>
 Game<T>::GameException::GameException( int line,
-	const char* file,
-	const char* function,
+	const char *file,
+	const char *function,
 	const std::string &msg ) noexcept
 	:
 	KeyException{line, file, function, msg}
@@ -149,7 +149,7 @@ const std::string Game<T>::GameException::getType() const noexcept
 }
 
 template<typename T>
-const char* Game<T>::GameException::what() const noexcept
+const char *Game<T>::GameException::what() const noexcept
 {
 	return KeyException::what();
 }
@@ -239,8 +239,8 @@ int Sandbox3d::loop()
 
 void Sandbox3d::checkInput( float dt )
 {
-	auto& keyboard = m_mainWindow.getKeyboard();
-	auto& mouse = m_mainWindow.getMouse();
+	auto &keyboard = m_mainWindow.getKeyboard();
+	auto &mouse = m_mainWindow.getMouse();
 
 	// process any keyboard events
 	while ( const auto ev = keyboard.readEventQueue() )
@@ -280,7 +280,7 @@ void Sandbox3d::checkInput( float dt )
 		}//switch
 	}
 
-	auto& activeCamera = m_cameraMan.getActiveCamera();
+	auto &activeCamera = m_cameraMan.getActiveCamera();
 	if ( !m_mainWindow.isCursorEnabled() )
 	{
 		if ( keyboard.isKeyPressed( 'W' ) )
@@ -310,7 +310,7 @@ void Sandbox3d::checkInput( float dt )
 	}
 
 	// Rotate Camera if in game mode
-	while ( const auto& delta = mouse.readRawDeltaBuffer() )
+	while ( const auto &delta = mouse.readRawDeltaBuffer() )
 	{
 		if ( !m_mainWindow.isCursorEnabled() )
 		{
@@ -322,10 +322,10 @@ void Sandbox3d::checkInput( float dt )
 
 void Sandbox3d::update( float dt )
 {
-	auto& activeCamera = m_cameraMan.getActiveCamera();
+	auto &activeCamera = m_cameraMan.getActiveCamera();
 	// binds camera to all Passes that need it
 	m_renderer.setMainCamera( activeCamera );
-	auto& gph = m_mainWindow.getGraphics();
+	auto &gph = m_mainWindow.getGraphics();
 	/*
 	m_world.update( dt );		// updates current level-map stuff, terrain, weather, world globals etc.
 	// actor manager updates actors which also updates AI
@@ -357,7 +357,7 @@ void Sandbox3d::update( float dt )
 
 void Sandbox3d::render( float dt )
 {
-	auto& gph = m_mainWindow.getGraphics();
+	auto &gph = m_mainWindow.getGraphics();
 	gph.beginRendering();
 
 	m_pPointLight1->render( rch::lambert );
@@ -379,7 +379,7 @@ void Sandbox3d::render( float dt )
 
 void Sandbox3d::renderImgui()
 {
-	auto& gph = m_mainWindow.getGraphics();
+	auto &gph = m_mainWindow.getGraphics();
 
 	// Showcase Effect controls by passing visitors to the object hierarchies
 	static MV sponzaVisitor{"Sponza"};
@@ -403,7 +403,7 @@ void Sandbox3d::renderImgui()
 
 void Sandbox3d::present()
 {
-	auto& gph = m_mainWindow.getGraphics();
+	auto &gph = m_mainWindow.getGraphics();
 	gph.endRendering();
 	m_renderer.reset();
 }
@@ -460,8 +460,8 @@ int Arkanoid::loop()
 
 void Arkanoid::checkInput( float dt )
 {
-	auto& keyboard = m_mainWindow.getKeyboard();
-	auto& mouse = m_mainWindow.getMouse();
+	auto &keyboard = m_mainWindow.getKeyboard();
+	auto &mouse = m_mainWindow.getMouse();
 
 	// process any keyboard events
 	while ( const auto ev = keyboard.readEventQueue() )
@@ -553,11 +553,11 @@ void Arkanoid::update( float dt )
 
 void Arkanoid::render( float dt )
 {
-	auto& gph = m_mainWindow.getGraphics();
+	auto &gph = m_mainWindow.getGraphics();
 	gph.beginRendering();
 	
 	m_ball.render( gph );
-	for ( const Brick& b : m_bricks )
+	for ( const Brick &b : m_bricks )
 	{
 		b.render( gph );
 	}
@@ -568,7 +568,7 @@ void Arkanoid::render( float dt )
 
 void Arkanoid::present()
 {
-	auto& gph = m_mainWindow.getGraphics();
+	auto &gph = m_mainWindow.getGraphics();
 	gph.endRendering();
 	m_renderer.reset();
 }
@@ -608,8 +608,8 @@ int Snake::loop()
 
 void Snake::checkInput( float dt )
 {
-	auto& keyboard = m_mainWindow.getKeyboard();
-	auto& mouse = m_mainWindow.getMouse();
+	auto &keyboard = m_mainWindow.getKeyboard();
+	auto &mouse = m_mainWindow.getMouse();
 
 	// process any keyboard events
 	while ( const auto ev = keyboard.readEventQueue() )
@@ -735,7 +735,7 @@ void Snake::update( float dt )
 
 void Snake::render( float dt )
 {
-	auto& gph = m_mainWindow.getGraphics();
+	auto &gph = m_mainWindow.getGraphics();
 	gph.beginRendering();
 	
 
@@ -744,7 +744,7 @@ void Snake::render( float dt )
 
 void Snake::present()
 {
-	auto& gph = m_mainWindow.getGraphics();
+	auto &gph = m_mainWindow.getGraphics();
 	gph.endRendering();
 	m_renderer.reset();
 }*/

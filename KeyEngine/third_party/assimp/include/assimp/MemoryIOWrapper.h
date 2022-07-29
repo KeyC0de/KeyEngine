@@ -61,7 +61,7 @@ class MemoryIOStream : public IOStream
 {
     //friend class MemoryIOSystem;
 public:
-    MemoryIOStream (const uint8_t* buff, size_t len, bool own = false)
+    MemoryIOStream (const uint8_t *buff, size_t len, bool own = false)
         : buffer (buff)
         , length(len)
         , pos((size_t)0)
@@ -79,7 +79,7 @@ public:
 
     // -------------------------------------------------------------------
     // Read from stream
-    size_t Read(void* pvBuffer, size_t pSize, size_t pCount)    {
+    size_t Read(void *pvBuffer, size_t pSize, size_t pCount)    {
         const size_t cnt = std::min(pCount,(length-pos)/pSize),ofs = pSize*cnt;
 
         memcpy(pvBuffer,buffer+pos,ofs);
@@ -138,7 +138,7 @@ public:
     }
 
 private:
-    const uint8_t* buffer;
+    const uint8_t *buffer;
     size_t length,pos;
     bool own;
 };
@@ -149,7 +149,7 @@ class MemoryIOSystem : public IOSystem
 {
 public:
     /** Constructor. */
-    MemoryIOSystem (const uint8_t* buff, size_t len)
+    MemoryIOSystem (const uint8_t *buff, size_t len)
         : buffer (buff), length(len) {
     }
 
@@ -159,7 +159,7 @@ public:
 
     // -------------------------------------------------------------------
     /** Tests for the existence of a file at the given path. */
-    bool Exists( const char* pFile) const {
+    bool Exists( const char *pFile) const {
         return !strncmp(pFile,AI_MEMORYIO_MAGIC_FILENAME,AI_MEMORYIO_MAGIC_FILENAME_LENGTH);
     }
 
@@ -171,7 +171,7 @@ public:
 
     // -------------------------------------------------------------------
     /** Open a new file with a given path. */
-    IOStream* Open( const char* pFile, const char* /*pMode*/ = "rb") {
+    IOStream *Open( const char *pFile, const char* /*pMode*/ = "rb") {
         if (strncmp(pFile,AI_MEMORYIO_MAGIC_FILENAME,AI_MEMORYIO_MAGIC_FILENAME_LENGTH)) {
             return NULL;
         }
@@ -180,7 +180,7 @@ public:
 
     // -------------------------------------------------------------------
     /** Closes the given file and releases all resources associated with it. */
-    void Close( IOStream* pFile) {
+    void Close( IOStream *pFile) {
     	delete pFile;
     }
 
@@ -191,7 +191,7 @@ public:
     }
 
 private:
-    const uint8_t* buffer;
+    const uint8_t *buffer;
     size_t length;
 };
 } // end namespace Assimp

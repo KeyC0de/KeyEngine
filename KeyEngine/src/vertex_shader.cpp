@@ -33,7 +33,7 @@ void VertexShader::bind( Graphics &gph ) cond_noex
 	DXGI_GET_QUEUE_INFO( gph );
 }
 
-ID3DBlob* VertexShader::getBytecode() const noexcept
+ID3DBlob *VertexShader::getBytecode() const noexcept
 {
 	return m_pVsBlob.Get();
 }

@@ -55,21 +55,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 // ---------------------------------------------------------------------------
 template<typename TReal>
-bool aiQuaterniont<TReal>::operator== (const aiQuaterniont& o) const
+bool aiQuaterniont<TReal>::operator== (const aiQuaterniont &o) const
 {
     return x == o.x && y == o.y && z == o.z && w == o.w;
 }
 
 // ---------------------------------------------------------------------------
 template<typename TReal>
-bool aiQuaterniont<TReal>::operator!= (const aiQuaterniont& o) const
+bool aiQuaterniont<TReal>::operator!= (const aiQuaterniont &o) const
 {
     return !(*this == o);
 }
 
 // ---------------------------------------------------------------------------
 template<typename TReal>
-inline bool aiQuaterniont<TReal>::Equal(const aiQuaterniont& o, TReal epsilon) const {
+inline bool aiQuaterniont<TReal>::Equal(const aiQuaterniont &o, TReal epsilon) const {
     return
         std::abs(x - o.x) <= epsilon &&
         std::abs(y - o.y) <= epsilon &&
@@ -195,7 +195,7 @@ inline aiQuaterniont<TReal>::aiQuaterniont( aiVector3t<TReal> normalized)
 // Implementation adopted from the gmtl project. All others I found on the net fail in some cases.
 // Congrats, gmtl!
 template<typename TReal>
-inline void aiQuaterniont<TReal>::Interpolate( aiQuaterniont& pOut, const aiQuaterniont& pStart, const aiQuaterniont& pEnd, TReal pFactor)
+inline void aiQuaterniont<TReal>::Interpolate( aiQuaterniont &pOut, const aiQuaterniont &pStart, const aiQuaterniont &pEnd, TReal pFactor)
 {
     // calc cosine theta
     TReal cosom = pStart.x * pEnd.x + pStart.y * pEnd.y + pStart.z * pEnd.z + pStart.w * pEnd.w;
@@ -253,7 +253,7 @@ inline aiQuaterniont<TReal>& aiQuaterniont<TReal>::Normalize()
 
 // ---------------------------------------------------------------------------
 template<typename TReal>
-inline aiQuaterniont<TReal> aiQuaterniont<TReal>::operator* (const aiQuaterniont& t) const
+inline aiQuaterniont<TReal> aiQuaterniont<TReal>::operator* (const aiQuaterniont &t) const
 {
     return aiQuaterniont(w*t.w - x*t.x - y*t.y - z*t.z,
         w*t.x + x*t.w + y*t.z - z*t.y,

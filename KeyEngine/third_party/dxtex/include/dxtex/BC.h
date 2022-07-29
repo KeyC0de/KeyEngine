@@ -51,15 +51,15 @@ public:
 public:
     HDRColorA() = default;
     HDRColorA(float _r, float _g, float _b, float _a) noexcept : r(_r), g(_g), b(_b), a(_a) {}
-    HDRColorA(const HDRColorA& c) noexcept : r(c.r), g(c.g), b(c.b), a(c.a) {}
+    HDRColorA(const HDRColorA &c) noexcept : r(c.r), g(c.g), b(c.b), a(c.a) {}
 
     // binary operators
-    HDRColorA operator + (const HDRColorA& c) const noexcept
+    HDRColorA operator + (const HDRColorA &c) const noexcept
     {
         return HDRColorA(r + c.r, g + c.g, b + c.b, a + c.a);
     }
 
-    HDRColorA operator - (const HDRColorA& c) const noexcept
+    HDRColorA operator - (const HDRColorA &c) const noexcept
     {
         return HDRColorA(r - c.r, g - c.g, b - c.b, a - c.a);
     }
@@ -75,13 +75,13 @@ public:
         return HDRColorA(r * fInv, g * fInv, b * fInv, a * fInv);
     }
 
-    float operator * (const HDRColorA& c) const noexcept
+    float operator * (const HDRColorA &c) const noexcept
     {
         return r * c.r + g * c.g + b * c.b + a * c.a;
     }
 
     // assignment operators
-    HDRColorA& operator += (const HDRColorA& c) noexcept
+    HDRColorA &operator += (const HDRColorA &c) noexcept
     {
         r += c.r;
         g += c.g;
@@ -90,7 +90,7 @@ public:
         return *this;
     }
 
-    HDRColorA& operator -= (const HDRColorA& c) noexcept
+    HDRColorA &operator -= (const HDRColorA &c) noexcept
     {
         r -= c.r;
         g -= c.g;
@@ -99,7 +99,7 @@ public:
         return *this;
     }
 
-    HDRColorA& operator *= (float f) noexcept
+    HDRColorA &operator *= (float f) noexcept
     {
         r *= f;
         g *= f;
@@ -108,7 +108,7 @@ public:
         return *this;
     }
 
-    HDRColorA& operator /= (float f) noexcept
+    HDRColorA &operator /= (float f) noexcept
     {
         float fInv = 1.0f / f;
         r *= fInv;
@@ -118,7 +118,7 @@ public:
         return *this;
     }
 
-    HDRColorA& Clamp(_In_ float fMin, _In_ float fMax) noexcept
+    HDRColorA &Clamp(_In_ float fMin, _In_ float fMax) noexcept
     {
         r = std::min<float>(fMax, std::max<float>(fMin, r));
         g = std::min<float>(fMax, std::max<float>(fMin, g));
@@ -127,12 +127,12 @@ public:
         return *this;
     }
 
-    HDRColorA(const LDRColorA& c) noexcept;
-    HDRColorA& operator = (const LDRColorA& c) noexcept;
+    HDRColorA(const LDRColorA &c) noexcept;
+    HDRColorA &operator = (const LDRColorA &c) noexcept;
     LDRColorA ToLDRColorA() const noexcept;
 };
 
-inline HDRColorA* HDRColorALerp(_Out_ HDRColorA *pOut, _In_ const HDRColorA *pC1, _In_ const HDRColorA *pC2, _In_ float s) noexcept
+inline HDRColorA *HDRColorALerp(_Out_ HDRColorA *pOut, _In_ const HDRColorA *pC1, _In_ const HDRColorA *pC2, _In_ float s) noexcept
 {
     pOut->r = pC1->r + s * (pC2->r - pC1->r);
     pOut->g = pC1->g + s * (pC2->g - pC1->g);

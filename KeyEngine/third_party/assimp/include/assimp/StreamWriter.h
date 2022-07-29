@@ -93,7 +93,7 @@ public:
     }
 
     // ---------------------------------------------------------------------
-    StreamWriter(IOStream* stream, bool le = false)
+    StreamWriter(IOStream *stream, bool le = false)
         : stream(std::shared_ptr<IOStream>(stream))
         , le(le)
         , cursor()
@@ -211,13 +211,13 @@ public:
 
     // ---------------------------------------------------------------------
     /** Write an aiString to the stream */
-    void PutString(const aiString& s)
+    void PutString(const aiString &s)
     {
         // as Put(T f) below
         if (cursor + s.length >= buffer.size()) {
             buffer.resize(cursor + s.length);
         }
-        void* dest = &buffer[cursor];
+        void *dest = &buffer[cursor];
         ::memcpy(dest, s.C_Str(), s.length);
         cursor += s.length;
     }
@@ -230,7 +230,7 @@ public:
         if (cursor + s.size() >= buffer.size()) {
             buffer.resize(cursor + s.size());
         }
-        void* dest = &buffer[cursor];
+        void *dest = &buffer[cursor];
         ::memcpy(dest, s.c_str(), s.size());
         cursor += s.size();
     }
@@ -240,7 +240,7 @@ public:
     // ---------------------------------------------------------------------
     /** overload operator<< and allow chaining of MM ops. */
     template <typename T>
-    StreamWriter& operator << (T f) {
+    StreamWriter &operator << (T f) {
         Put(f);
         return *this;
     }
@@ -256,7 +256,7 @@ public:
     }
 
     // ---------------------------------------------------------------------
-    /** Generic write method. ByteSwap::Swap(T*) *must* be defined */
+    /** Generic write method. ByteSwap::Swap(T*) *must *be defined */
     template <typename T>
     void Put(T f)   {
         Intern :: Getter<SwapEndianess,T,RuntimeSwitch>() (&f, le);
@@ -265,7 +265,7 @@ public:
             buffer.resize(cursor + sizeof(T));
         }
 
-        void* dest = &buffer[cursor];
+        void *dest = &buffer[cursor];
 
         // reinterpret_cast + assignment breaks strict aliasing rules
         // and generally causes trouble on platforms such as ARM that

@@ -68,32 +68,32 @@ public:
 
     // ----------------------------------------------------------------------
     /** Swap two bytes of data
-     *  @param[inout] _szOut A void* to save the reintcasts for the caller. */
-    static inline void Swap2(void* _szOut)
+     *  @param[inout] _szOut A void *to save the reintcasts for the caller. */
+    static inline void Swap2(void *_szOut)
     {
         ai_assert(_szOut);
 
 #if _MSC_VER >= 1400
-        uint16_t* const szOut = reinterpret_cast<uint16_t*>(_szOut);
+        uint16_t *const szOut = reinterpret_cast<uint16_t*>(_szOut);
         *szOut = _byteswap_ushort(*szOut);
 #else
-        uint8_t* const szOut = reinterpret_cast<uint8_t*>(_szOut);
+        uint8_t *const szOut = reinterpret_cast<uint8_t*>(_szOut);
         std::swap(szOut[0],szOut[1]);
 #endif
     }
 
     // ----------------------------------------------------------------------
     /** Swap four bytes of data
-     *  @param[inout] _szOut A void* to save the reintcasts for the caller. */
-    static inline void Swap4(void* _szOut)
+     *  @param[inout] _szOut A void *to save the reintcasts for the caller. */
+    static inline void Swap4(void *_szOut)
     {
         ai_assert(_szOut);
 
 #if _MSC_VER >= 1400
-        uint32_t* const szOut = reinterpret_cast<uint32_t*>(_szOut);
+        uint32_t *const szOut = reinterpret_cast<uint32_t*>(_szOut);
         *szOut = _byteswap_ulong(*szOut);
 #else
-        uint8_t* const szOut = reinterpret_cast<uint8_t*>(_szOut);
+        uint8_t *const szOut = reinterpret_cast<uint8_t*>(_szOut);
         std::swap(szOut[0],szOut[3]);
         std::swap(szOut[1],szOut[2]);
 #endif
@@ -101,16 +101,16 @@ public:
 
     // ----------------------------------------------------------------------
     /** Swap eight bytes of data
-     *  @param[inout] _szOut A void* to save the reintcasts for the caller. */
-    static inline void Swap8(void* _szOut)
+     *  @param[inout] _szOut A void *to save the reintcasts for the caller. */
+    static inline void Swap8(void *_szOut)
     {
     ai_assert(_szOut);
 
 #if _MSC_VER >= 1400
-        uint64_t* const szOut = reinterpret_cast<uint64_t*>(_szOut);
+        uint64_t *const szOut = reinterpret_cast<uint64_t*>(_szOut);
         *szOut = _byteswap_uint64(*szOut);
 #else
-        uint8_t* const szOut = reinterpret_cast<uint8_t*>(_szOut);
+        uint8_t *const szOut = reinterpret_cast<uint8_t*>(_szOut);
         std::swap(szOut[0],szOut[7]);
         std::swap(szOut[1],szOut[6]);
         std::swap(szOut[2],szOut[5]);
@@ -121,14 +121,14 @@ public:
     // ----------------------------------------------------------------------
     /** ByteSwap a float. Not a joke.
      *  @param[inout] fOut ehm. .. */
-    static inline void Swap(float* fOut) {
+    static inline void Swap(float *fOut) {
         Swap4(fOut);
     }
 
     // ----------------------------------------------------------------------
     /** ByteSwap a double. Not a joke.
      *  @param[inout] fOut ehm. .. */
-    static inline void Swap(double* fOut) {
+    static inline void Swap(double *fOut) {
         Swap8(fOut);
     }
 
@@ -136,33 +136,33 @@ public:
     // ----------------------------------------------------------------------
     /** ByteSwap an int16t. Not a joke.
      *  @param[inout] fOut ehm. .. */
-    static inline void Swap(int16_t* fOut) {
+    static inline void Swap(int16_t *fOut) {
         Swap2(fOut);
     }
 
-    static inline void Swap(uint16_t* fOut) {
+    static inline void Swap(uint16_t *fOut) {
         Swap2(fOut);
     }
 
     // ----------------------------------------------------------------------
     /** ByteSwap an int32t. Not a joke.
      *  @param[inout] fOut ehm. .. */
-    static inline void Swap(int32_t* fOut){
+    static inline void Swap(int32_t *fOut){
         Swap4(fOut);
     }
 
-    static inline void Swap(uint32_t* fOut){
+    static inline void Swap(uint32_t *fOut){
         Swap4(fOut);
     }
 
     // ----------------------------------------------------------------------
     /** ByteSwap an int64t. Not a joke.
      *  @param[inout] fOut ehm. .. */
-    static inline void Swap(int64_t* fOut) {
+    static inline void Swap(int64_t *fOut) {
         Swap8(fOut);
     }
 
-    static inline void Swap(uint64_t* fOut) {
+    static inline void Swap(uint64_t *fOut) {
         Swap8(fOut);
     }
 
@@ -247,7 +247,7 @@ namespace Intern {
 // --------------------------------------------------------------------------------------------
 template <typename T, bool doit>
 struct ByteSwapper  {
-    void operator() (T* inout) {
+    void operator() (T *inout) {
         ByteSwap::Swap(inout);
     }
 };
@@ -261,7 +261,7 @@ struct ByteSwapper<T,false> {
 // --------------------------------------------------------------------------------------------
 template <bool SwapEndianess, typename T, bool RuntimeSwitch>
 struct Getter {
-    void operator() (T* inout, bool le) {
+    void operator() (T *inout, bool le) {
 #ifdef AI_BUILD_BIG_ENDIAN
         le =  le;
 #else
@@ -277,7 +277,7 @@ struct Getter {
 template <bool SwapEndianess, typename T>
 struct Getter<SwapEndianess,T,false> {
 
-    void operator() (T* inout, bool /*le*/) {
+    void operator() (T *inout, bool /*le*/) {
         // static branch
         ByteSwapper<T,(SwapEndianess && sizeof(T)>1)> () (inout);
     }

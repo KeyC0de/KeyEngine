@@ -33,7 +33,7 @@ public:
 
 	void run( Graphics &gph ) cond_noex;
 	virtual void reset() noexcept;
-	RenderQueuePass& getRenderQueuePass( const std::string &name );
+	RenderQueuePass &getRenderQueuePass( const std::string &name );
 protected:
 	void addGlobalProducer( std::unique_ptr<IProducer> pProducer );
 	void addGlobalConsumer( std::unique_ptr<IConsumer> pConsumer );
@@ -46,9 +46,9 @@ protected:
 	//	\brief  links pass's consumers to their producers
 	//			call this function last from derived Renderer's ctor
 	//	\date	2021/10/27 18:00
-	void linkPassConsumers( IPass& pass );
+	void linkPassConsumers( IPass &pass );
 	void linkGlobalConsumers();
-	IPass& getPass( const std::string &name );
+	IPass &getPass( const std::string &name );
 };
 
 class Renderer3d
@@ -71,8 +71,8 @@ public:
 
 	void showImGuiWindows( Graphics &gph );
 	void dumpShadowMap( Graphics &gph, const std::string &path );
-	void setMainCamera( Camera& cam );
-	void setShadowCamera( Camera& cam );
+	void setMainCamera( Camera &cam );
+	void setShadowCamera( Camera &cam );
 private:
 	void showGaussianBlurImguiWindow( Graphics &gph );
 	void showShadowDumpImguiWindow( Graphics &gph );

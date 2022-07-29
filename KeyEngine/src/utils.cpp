@@ -1,4 +1,6 @@
 #include "utils.h"
+#include <algorithm>
+#include <chrono>
 #include <locale>
 #include <codecvt>
 #include <sstream>
@@ -29,7 +31,7 @@ std::wstring s2ws( const std::string &s )
 	{
 		return std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>>{}.from_bytes( s );
 	}
-	catch( std::range_error& e )
+	catch( std::range_error &e )
 	{
 		(void)e;
 		size_t length = s.length();
@@ -49,7 +51,7 @@ std::string ws2s( const std::wstring &ws )
 	{
 		return std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>>{}.to_bytes( ws );
 	}
-	catch( std::range_error& e )
+	catch( std::range_error &e )
 	{
 		(void)e;
 		size_t length = ws.length();
@@ -60,6 +62,31 @@ std::string ws2s( const std::wstring &ws )
 			result.push_back( ws[i] & 0xFF );
 		}
 		return result;
+	}
+}
+
+template<class Iter>
+void splitString_impl( const std::string &s,
+	const std::string &delim,
+	Iter out )
+{
+	if ( delim.empty() )
+	{
+		*out++ = s;
+	}
+	else
+	{
+		size_t a = 0;
+		size_t b = s.find( delim );
+		for ( ; b != std::string::npos;
+			a = b + delim.length(),
+			b = s.find( delim, a ) )
+		{
+			*out++ = std::move( s.substr( a,
+				b - a ) );
+		}
+		*out++ = std::move( s.substr( a,
+			s.length() - a ) );
 	}
 }
 
@@ -95,13 +122,61 @@ std::string capitalizeFirstLetter( const std::string &str )
 	return strCopy;
 }
 
+void trimL( std::string &s )
+{
+	s.erase( s.begin(),
+		std::find_if( s.begin(),
+			s.end(),
+			[] ( unsigned char ch )
+			{
+				return !std::isspace( ch );
+			} )
+	);
+}
+
+void trimR( std::string &s )
+{
+	s.erase( std::find_if( s.rbegin(),
+		s.rend(),
+		[] ( unsigned char ch )
+		{
+			return !std::isspace( ch );
+		} ).base(),
+			s.end() );
+}
+
+void trim( std::string &s )
+{
+	trimL( s );
+	trimR( s );
+}
+
+inline std::string trimCopy( std::string s )
+{
+	trim( s );
+	return s;
+}
+
+inline std::string trimLCopy( std::string s )
+{
+	trimL( s );
+	return s;
+}
+
+inline std::string trimRCopy( std::string s )
+{
+	trimR( s );
+	return s;
+}
+
+
 std::tuple<int, int, int> timeToHms( float time )
 {
-	int hours = time;
+	int hours = (int) time;
 	float fminutes = ( time - hours ) * 60;
-	int minutes = fminutes;
+	int minutes = (int) fminutes;
 	float fseconds = ( fminutes - minutes ) * 60;
-	int seconds = fseconds;
+	int seconds = (int) fseconds;
 	return {hours, minutes, seconds};
 }
 
@@ -114,25 +189,46 @@ std::tuple<int, int, int> secondsToHms( int totalSecs )
 	return {hours, minutes, seconds};
 }
 
+//===================================================
+//	\function	secondsToTimeT
+//	\brief	convert seconds to time_t
+//			Although not defined, time_t is implementation defined
+//			It is almost always an integral value holding the number of seconds (not counting leap seconds) since 00:00, Jan 1 1970 UTC, corresponding to POSIX time.
+//	\date	2022/07/28 22:35
+inline time_t secondsToTimeT( int s )
+{
+	return std::chrono::system_clock::to_time_t( std::chrono::system_clock::time_point( std::chrono::duration_cast<std::chrono::seconds>( std::chrono::duration<int>( s ) ) ) );
+}
 
-std::uintptr_t pointerToInt( void* p )
+//===================================================
+//	\function	timeTtoSeconds
+//	\brief  convert time_t to seconds
+//			time_t can be acquired as if by means of time(nullptr)
+//	\date	2022/07/28 22:32
+long int timeTtoSeconds( time_t t )
+{
+	return static_cast<long int>( t );
+}
+
+
+std::uintptr_t pointerToInt( void *p )
 {
 	return reinterpret_cast<std::uintptr_t>( p );
 }
 
-void* intToPointer( uintptr_t i )
+void *intToPointer( uintptr_t i )
 {
 	return reinterpret_cast<void*>( i );
 }
 
-void* addPointers( void* p1,
-	void* p2 )
+void *addPointers( void *p1,
+	void *p2 )
 {
 	return intToPointer( pointerToInt( p1 ) + pointerToInt( p2 ) );
 }
 
-std::string operator+( const std::string_view& sv1,
-	const std::string_view& sv2 )
+std::string operator+( const std::string_view &sv1,
+	const std::string_view &sv2 )
 {
 	return std::string{sv1} + std::string{sv2};
 }
@@ -150,7 +246,7 @@ std::string generateCaptcha( int len )
 	return captcha;
 }
 
-bool isAligned( const volatile void* p,
+bool isAligned( const volatile void *p,
 	std::size_t alignment ) noexcept
 {
 	return ( reinterpret_cast<std::uintptr_t>( p ) % alignment ) == 0;
@@ -166,7 +262,7 @@ bool isAligned( std::uintptr_t pi,
 constexpr int is4ByteAligned( intptr_t *addr )
 {
 	if ( ( (intptr_t)addr & 0x3 ) == 0 )
-	{ // changing int* to int
+	{ // changing int *to int
 		return 1;
 	}
 	return 0;
@@ -231,14 +327,14 @@ const std::size_t getForwardPaddingWithHeader( const std::size_t p,
 	return padding;
 }
 
-void* alignedMalloc( std::size_t nBytes,
+void *alignedMalloc( std::size_t nBytes,
 	std::size_t alignment )
 {
 	// allocate `nBytes` + `nBytesForAlignment` required given requested `alignment` value
 	// store malloced address in `pMem`
 	// compute aligned address `pAlignedMem` by adding the `bytesForAdjustment` to malloced `pMem` address
 	ASSERT( false, "Never should have come here!" );
-	void* pMem = nullptr;
+	void *pMem = nullptr;
 	std::size_t nBytesForAlignment = alignment - 1 + sizeof(void*);
 	if ( ( pMem = static_cast<void*>( ::operator new( nBytes + nBytesForAlignment ) ) ) == nullptr )
 	{

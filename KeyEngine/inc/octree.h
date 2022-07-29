@@ -26,20 +26,20 @@ class Octree final
 {
 	Vec3 m_center;	// the physical spatial center of this octree octant
 	Vec3 m_half;	// half the width,height,depth of this octant
-	Octree* m_pChildren[8];
-	class OctreeData* m_data;
+	Octree *m_pChildren[8];
+	class OctreeData *m_data;
 
 private:
 	// determine which octant of the tree contains point
-	int getOctantContainingPoint( const Vec3& point ) const;
+	int getOctantContainingPoint( const Vec3 &point ) const;
 	bool isLeafNode() const;
 public:
-	Octree( const Vec3& center, const Vec3& halfDim );
-	Octree( const Octree& rhs );
+	Octree( const Vec3 &center, const Vec3 &halfDim );
+	Octree( const Octree &rhs );
 	~Octree();
 
-	void insert( class OctreeData* node );
+	void insert( class OctreeData *node );
 	// recursively query the tree for Entities within a bounding box {bmin,bmax}
-	void getEntitiesWithinBBox( const Vec3& bmin, const Vec3& bmax,
+	void getEntitiesWithinBBox( const Vec3 &bmin, const Vec3 &bmax,
 		std::vector<class OctreeData*>& resultsOut );
 };

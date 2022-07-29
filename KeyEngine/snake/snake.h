@@ -18,27 +18,27 @@ class SnakeRepr
 		GridLocation m_gridLoc;
 		ColorBGRA m_color;
 	public:
-		Segment( const GridLocation& gridLoc );
+		Segment( const GridLocation &gridLoc );
 		Segment( ColorBGRA col );
 
-		void render( Graphics &gph, SnakePlayField& field ) const;
-		void follow( const Segment& next );
-		void advance( const GridLocation& delta );
-		const GridLocation& getGridLocation() const;
+		void render( Graphics &gph, SnakePlayField &field ) const;
+		void follow( const Segment &next );
+		void advance( const GridLocation &delta );
+		const GridLocation &getGridLocation() const;
 	};
 
 	std::vector<Segment> m_segments;
 public:
-	SnakeRepr( const GridLocation& gridLoc );
+	SnakeRepr( const GridLocation &gridLoc );
 
-	void render( Graphics &gph, SnakePlayField& field ) const;
-	void moveRel( const GridLocation& delta );
-	void grow( const GridLocation& delta );
-	GridLocation getNextHeadLocation( const GridLocation& delta ) const;
+	void render( Graphics &gph, SnakePlayField &field ) const;
+	void moveRel( const GridLocation &delta );
+	void grow( const GridLocation &delta );
+	GridLocation getNextHeadLocation( const GridLocation &delta ) const;
 	//===================================================
 	//	\function	checkForCollisions
 	//	\brief  if a segment's location is equal to the next head location then collision!
 	//	\date	2021/10/24 20:09
-	bool checkForCollisions( const GridLocation& targetGridLoc ) const;
+	bool checkForCollisions( const GridLocation &targetGridLoc ) const;
 	int getLength() const;
 };

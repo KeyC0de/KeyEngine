@@ -114,8 +114,8 @@ IDepthStencilView::IDepthStencilView( Graphics &gph,
 void IDepthStencilView::bindRenderSurface( Graphics &gph ) cond_noex
 {
 	auto viewport = Viewport::fetch( gph,
-		m_width,
-		m_height );
+		(float) m_width,
+		(float) m_height );
 	viewport->bind( gph );
 
 	getContext( gph )->OMSetRenderTargets( 0u,
@@ -125,7 +125,7 @@ void IDepthStencilView::bindRenderSurface( Graphics &gph ) cond_noex
 }
 
 void IDepthStencilView::bindRenderSurface( Graphics &gph,
-	IRenderSurface* rt ) cond_noex
+	IRenderSurface *rt ) cond_noex
 {
 	ASSERT( dynamic_cast<IRenderTargetView*>( rt ) != nullptr,
 		"Bad cast. BufferResource is not a IRenderTargetView!" );
@@ -134,7 +134,7 @@ void IDepthStencilView::bindRenderSurface( Graphics &gph,
 }
 
 void IDepthStencilView::bindRenderSurface( Graphics &gph,
-	IRenderTargetView* rt ) cond_noex
+	IRenderTargetView *rt ) cond_noex
 {
 	rt->bindRenderSurface( gph,
 		this );

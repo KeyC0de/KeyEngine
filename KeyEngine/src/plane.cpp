@@ -22,7 +22,7 @@ namespace dx = DirectX;
 
 Plane::Plane( Graphics &gph,
 	float size,
-	const DirectX::XMFLOAT4& color )
+	const DirectX::XMFLOAT4 &color )
 	:
 	m_colPcb{color}
 {

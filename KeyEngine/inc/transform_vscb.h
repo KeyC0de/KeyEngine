@@ -23,9 +23,9 @@ public:
 	TransformVSCB( Graphics &gph, unsigned slot );
 
 	void bind( Graphics &gph ) cond_noex override;
-	void setParentDrawable( const Drawable& parent ) noexcept override;
+	void setParentDrawable( const Drawable &parent ) noexcept override;
 	std::unique_ptr<IBindableCloning> clone() const noexcept override;
 protected:
-	void update( Graphics &gph, const Transforms& tfs ) cond_noex;
+	void update( Graphics &gph, const Transforms &tfs ) cond_noex;
 	Transforms getTransforms( Graphics &gph ) cond_noex;
 };

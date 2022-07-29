@@ -85,7 +85,7 @@ SkyPass::SkyPass( Graphics &gph,
 		m_pDsv ) );
 }
 
-void SkyPass::setMainCamera( const Camera& cam ) noexcept
+void SkyPass::setMainCamera( const Camera &cam ) noexcept
 {
 	m_pMainCamera = &cam;
 }

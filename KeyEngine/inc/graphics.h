@@ -33,11 +33,11 @@ class Graphics
 		: public KeyException
 	{
 	public:
-		GraphicsException( int line, const char* file, const char* function,
+		GraphicsException( int line, const char *file, const char *function,
 			const std::string &msg ) noexcept;
 
 		const std::string getType() const noexcept override final;
-		virtual const char* what() const noexcept override final;
+		virtual const char *what() const noexcept override final;
 	};
 
 	class Adapter final
@@ -45,10 +45,10 @@ class Graphics
 		DXGI_ADAPTER_DESC m_desc;
 		Microsoft::WRL::ComPtr<IDXGIAdapter> m_pAdapter;
 	public:
-		Adapter( IDXGIAdapter* pAdapter );
+		Adapter( IDXGIAdapter *pAdapter );
 	
-		const DXGI_ADAPTER_DESC* getDesc() const noexcept;
-		IDXGIAdapter* getAdapter() const noexcept;
+		const DXGI_ADAPTER_DESC *getDesc() const noexcept;
+		IDXGIAdapter *getAdapter() const noexcept;
 	};
 
 private:
@@ -76,7 +76,7 @@ private:
 	std::unique_ptr<DirectX::SpriteBatch> m_fpsSpriteBatch;
 	std::vector<std::unique_ptr<ID3D11DeviceContext>> m_deferredContexts;
 	std::vector<std::unique_ptr<ID3D11CommandList>> m_commandLists;
-	ColorBGRA* m_pCpuBuffer = nullptr;
+	ColorBGRA *m_pCpuBuffer = nullptr;
 #if defined _FLIP_PRESENT
 private:
 	static bool checkTearingSupport();
@@ -84,10 +84,10 @@ private:
 public:
 	Graphics( HWND hWnd, int width, int height );
 	~Graphics();
-	Graphics( const Graphics& rhs ) = delete;
-	Graphics& operator=( const Graphics& rhs ) = delete;
+	Graphics( const Graphics &rhs ) = delete;
+	Graphics &operator=( const Graphics &rhs ) = delete;
 	Graphics( Graphics&& rhs ) = delete;
-	Graphics& operator=( Graphics&& rhs ) = delete;
+	Graphics &operator=( Graphics&& rhs ) = delete;
 
 #if defined _FLIP_PRESENT
 	void makeWindowAssociationWithFactory( HWND hWnd, UINT flags = DXGI_MWA_NO_WINDOW_CHANGES );
@@ -98,17 +98,17 @@ public:
 	void draw( unsigned count ) cond_noex;
 	void drawIndexed( unsigned count ) cond_noex;
 	void drawIndexedInstanced( unsigned indexCount, unsigned instanceCount ) cond_noex;
-	ColorBGRA*& getCpuBuffer();
+	ColorBGRA *&getCpuBuffer();
 	void setViewMatrix( const DirectX::XMMATRIX &cam ) noexcept;
 	void setProjectionMatrix( const DirectX::XMMATRIX &proj ) noexcept;
 	DirectX::XMMATRIX getViewMatrix() const noexcept;
 	DirectX::XMMATRIX getProjectionMatrix() const noexcept;
 	unsigned getClientWidth() const noexcept;
 	unsigned getClientHeight() const noexcept;
-	IRenderTargetView* getRenderTarget() const noexcept;
+	IRenderTargetView *getRenderTarget() const noexcept;
 	std::shared_ptr<IRenderTargetView> shareRenderTarget();
 #if defined _DEBUG && !defined NDEBUG
-	DxgiInfoQueue& getInfoQueue() const noexcept;
+	DxgiInfoQueue &getInfoQueue() const noexcept;
 #endif
 	void createAdapters();
 	std::vector<Adapter>& getAdapters() const;
@@ -128,7 +128,7 @@ public:
 	}
 	void drawLine( int x0, int x1, int y0, int y1, ColorBGRA col );
 	void drawRect( int x0, int y0, int x1, int y1, ColorBGRA col );
-	inline void drawRect( const Rect& rect,
+	inline void drawRect( const Rect &rect,
 		ColorBGRA col )
 	{
 		drawRect( static_cast<int>( rect.m_left ),

@@ -15,9 +15,9 @@ class PerfLog final
 
 		Entry( float timeStamp, const std::string &lbl = "" );
 
-		bool operator>( const Entry& rhs ) noexcept;
+		bool operator>( const Entry &rhs ) noexcept;
 	};
-	static inline PerfLog* m_pInstance;
+	static inline PerfLog *m_pInstance;
 private:
 	std::string m_outFileName;
 	KeyTimer<std::chrono::milliseconds> m_timer;
@@ -25,8 +25,8 @@ private:
 public:
 	PerfLog( const std::string &outFileName = "perfTest.txt" ) noexcept;
 	~PerfLog();
-	PerfLog( const PerfLog& rhs ) = delete;
-	PerfLog& operator=( const PerfLog& rhs ) = delete;
+	PerfLog( const PerfLog &rhs ) = delete;
+	PerfLog &operator=( const PerfLog &rhs ) = delete;
 
 	void start( const std::string &lbl = "" ) noexcept;
 	void lap( const std::string &lbl = "" ) noexcept;

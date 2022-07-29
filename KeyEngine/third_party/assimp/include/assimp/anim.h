@@ -78,7 +78,7 @@ struct aiVectorKey
 
 	/// @brief  Construction from a given time and key value.
 
-	aiVectorKey(double time, const aiVector3D& value)
+	aiVectorKey(double time, const aiVector3D &value)
 		:   mTime   (time)
 		,   mValue  (value)
 	{}
@@ -86,18 +86,18 @@ struct aiVectorKey
 	typedef aiVector3D elem_type;
 
 	// Comparison operators. For use with std::find();
-	bool operator == (const aiVectorKey& o) const {
+	bool operator == (const aiVectorKey &o) const {
 		return o.mValue == this->mValue;
 	}
-	bool operator != (const aiVectorKey& o) const {
+	bool operator != (const aiVectorKey &o) const {
 		return o.mValue != this->mValue;
 	}
 
 	// Relational operators. For use with std::sort();
-	bool operator < (const aiVectorKey& o) const {
+	bool operator < (const aiVectorKey &o) const {
 		return mTime < o.mTime;
 	}
-	bool operator > (const aiVectorKey& o) const {
+	bool operator > (const aiVectorKey &o) const {
 		return mTime > o.mTime;
 	}
 #endif // __cplusplus
@@ -122,7 +122,7 @@ struct aiQuatKey
 	}
 
 	/** Construction from a given time and key value */
-	aiQuatKey(double time, const aiQuaternion& value)
+	aiQuatKey(double time, const aiQuaternion &value)
 		:   mTime   (time)
 		,   mValue  (value)
 	{}
@@ -130,18 +130,18 @@ struct aiQuatKey
 	typedef aiQuaternion elem_type;
 
 	// Comparison operators. For use with std::find();
-	bool operator == (const aiQuatKey& o) const {
+	bool operator == (const aiQuatKey &o) const {
 		return o.mValue == this->mValue;
 	}
-	bool operator != (const aiQuatKey& o) const {
+	bool operator != (const aiQuatKey &o) const {
 		return o.mValue != this->mValue;
 	}
 
 	// Relational operators. For use with std::sort();
-	bool operator < (const aiQuatKey& o) const {
+	bool operator < (const aiQuatKey &o) const {
 		return mTime < o.mTime;
 	}
-	bool operator > (const aiQuatKey& o) const {
+	bool operator > (const aiQuatKey &o) const {
 		return mTime > o.mTime;
 	}
 #endif
@@ -177,18 +177,18 @@ struct aiMeshKey
 	typedef unsigned int elem_type;
 
 	// Comparison operators. For use with std::find();
-	bool operator == (const aiMeshKey& o) const {
+	bool operator == (const aiMeshKey &o) const {
 		return o.mValue == this->mValue;
 	}
-	bool operator != (const aiMeshKey& o) const {
+	bool operator != (const aiMeshKey &o) const {
 		return o.mValue != this->mValue;
 	}
 
 	// Relational operators. For use with std::sort();
-	bool operator < (const aiMeshKey& o) const {
+	bool operator < (const aiMeshKey &o) const {
 		return mTime < o.mTime;
 	}
-	bool operator > (const aiMeshKey& o) const {
+	bool operator > (const aiMeshKey &o) const {
 		return mTime > o.mTime;
 	}
 
@@ -285,7 +285,7 @@ struct aiNodeAnim {
 	 *
 	 * If there are position keys, there will also be at least one
 	 * scaling and one rotation key.*/
-	C_STRUCT aiVectorKey* mPositionKeys;
+	C_STRUCT aiVectorKey *mPositionKeys;
 
 	/** The number of rotation keys */
 	unsigned int mNumRotationKeys;
@@ -296,7 +296,7 @@ struct aiNodeAnim {
 	 *
 	 * If there are rotation keys, there will also be at least one
 	 * scaling and one position key. */
-	C_STRUCT aiQuatKey* mRotationKeys;
+	C_STRUCT aiQuatKey *mRotationKeys;
 
 	/** The number of scaling keys */
 	unsigned int mNumScalingKeys;
@@ -306,7 +306,7 @@ struct aiNodeAnim {
 	 *
 	 * If there are scaling keys, there will also be at least one
 	 * position and one rotation key.*/
-	C_STRUCT aiVectorKey* mScalingKeys;
+	C_STRUCT aiVectorKey *mScalingKeys;
 
 	/** Defines how the animation behaves before the first
 	 *  key is encountered.
@@ -361,7 +361,7 @@ struct aiMeshAnim
 	unsigned int mNumKeys;
 
 	/** Key frames of the animation. May not be NULL. */
-	C_STRUCT aiMeshKey* mKeys;
+	C_STRUCT aiMeshKey *mKeys;
 
 #ifdef __cplusplus
 
@@ -392,7 +392,7 @@ struct aiMeshMorphAnim
 	unsigned int mNumKeys;
 
 	/** Key frames of the animation. May not be NULL. */
-	C_STRUCT aiMeshMorphKey* mKeys;
+	C_STRUCT aiMeshMorphKey *mKeys;
 
 #ifdef __cplusplus
 
@@ -512,7 +512,7 @@ struct Interpolator
 	 *  The interpolation algorithm depends on the m_topo of the operands.
 	 *  aiQuaternion's and aiQuatKey's SLERP, the rest does a simple
 	 *  linear interpolation. */
-	void operator () (T& out,const T& a, const T& b, ai_real d) const {
+	void operator () (T &out,const T &a, const T &b, ai_real d) const {
 		out = a + (b-a)*d;
 	}
 }; // ! Interpolator <T>
@@ -521,8 +521,8 @@ struct Interpolator
 
 template <>
 struct Interpolator <aiQuaternion>  {
-	void operator () (aiQuaternion& out,const aiQuaternion& a,
-		const aiQuaternion& b, ai_real d) const
+	void operator () (aiQuaternion &out,const aiQuaternion &a,
+		const aiQuaternion &b, ai_real d) const
 	{
 		aiQuaternion::Interpolate(out,a,b,d);
 	}
@@ -530,7 +530,7 @@ struct Interpolator <aiQuaternion>  {
 
 template <>
 struct Interpolator <unsigned int>  {
-	void operator () (unsigned int& out,unsigned int a,
+	void operator () (unsigned int &out,unsigned int a,
 		unsigned int b, ai_real d) const
 	{
 		out = d>0.5f ? b : a;
@@ -539,8 +539,8 @@ struct Interpolator <unsigned int>  {
 
 template <>
 struct Interpolator<aiVectorKey>  {
-	void operator () (aiVector3D& out,const aiVectorKey& a,
-		const aiVectorKey& b, ai_real d) const
+	void operator () (aiVector3D &out,const aiVectorKey &a,
+		const aiVectorKey &b, ai_real d) const
 	{
 		Interpolator<aiVector3D> ipl;
 		ipl(out,a.mValue,b.mValue,d);
@@ -549,8 +549,8 @@ struct Interpolator<aiVectorKey>  {
 
 template <>
 struct Interpolator<aiQuatKey>  {
-	void operator () (aiQuaternion& out, const aiQuatKey& a,
-		const aiQuatKey& b, ai_real d) const
+	void operator () (aiQuaternion &out, const aiQuatKey &a,
+		const aiQuatKey &b, ai_real d) const
 	{
 		Interpolator<aiQuaternion> ipl;
 		ipl(out,a.mValue,b.mValue,d);
@@ -559,8 +559,8 @@ struct Interpolator<aiQuatKey>  {
 
 template <>
 struct Interpolator<aiMeshKey>     {
-	void operator () (unsigned int& out, const aiMeshKey& a,
-		const aiMeshKey& b, ai_real d) const
+	void operator () (unsigned int &out, const aiMeshKey &a,
+		const aiMeshKey &b, ai_real d) const
 	{
 		Interpolator<unsigned int> ipl;
 		ipl(out,a.mValue,b.mValue,d);

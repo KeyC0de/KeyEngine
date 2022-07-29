@@ -72,7 +72,7 @@ void Renderer::addGlobalConsumer( std::unique_ptr<IConsumer> pConsumer )
 void Renderer::run( Graphics &gph ) cond_noex
 {
 	ASSERT( m_bValidatedPasses, "Renderer is not validated!" );
-	for ( auto& pass : m_passes )
+	for ( auto &pass : m_passes )
 	{
 		pass->run( gph );
 	}
@@ -81,7 +81,7 @@ void Renderer::run( Graphics &gph ) cond_noex
 void Renderer::reset() noexcept
 {
 	ASSERT( m_bValidatedPasses, "Renderer is not validated!" );
-	for ( auto& pass : m_passes )
+	for ( auto &pass : m_passes )
 	{
 		pass->reset();
 	}
@@ -91,7 +91,7 @@ void Renderer::addPass( std::unique_ptr<IPass> pPass )
 {
 	ASSERT( !m_bValidatedPasses, "Renderer is already validated!" );
 	// validate name uniqueness
-	for ( const auto& pa : m_passes )
+	for ( const auto &pa : m_passes )
 	{
 		if ( pa->getName() == pPass->getName() )
 		{
@@ -123,18 +123,18 @@ void Renderer::setupGlobalConsumerTarget( const std::string &globalConsumerName,
 void Renderer::validateConsumersLinkage()
 {
 	ASSERT( !m_bValidatedPasses, "Renderer is already validated!" );
-	for ( const auto& pass : m_passes )
+	for ( const auto &pass : m_passes )
 	{
 		pass->validate();
 	}
 	m_bValidatedPasses = true;
 }
 
-void Renderer::linkPassConsumers( IPass& pass )
+void Renderer::linkPassConsumers( IPass &pass )
 {
-	for ( auto& cons : pass.getConsumers() )
+	for ( auto &cons : pass.getConsumers() )
 	{
-		const auto& consumerPassName = cons->getPassName();
+		const auto &consumerPassName = cons->getPassName();
 		if ( consumerPassName.empty() )
 		{
 			std::ostringstream oss;
@@ -150,7 +150,7 @@ void Renderer::linkPassConsumers( IPass& pass )
 		if ( consumerPassName == "$" )
 		{
 			bool bLinked = false;
-			for ( auto& globalProd : m_globalProducers )
+			for ( auto &globalProd : m_globalProducers )
 			{
 				if ( globalProd->getName() == cons->getProducerName() )
 				{
@@ -171,11 +171,11 @@ void Renderer::linkPassConsumers( IPass& pass )
 		else
 		{// find producer from within existing passes
 			bool bLinked = false;
-			for ( auto& pass : m_passes )
+			for ( auto &pass : m_passes )
 			{
 				if ( pass->getName() == consumerPassName )
 				{
-					auto& producer = pass->getProducer( cons->getProducerName() );
+					auto &producer = pass->getProducer( cons->getProducerName() );
 					cons->link( producer );
 					bLinked = true;
 					break;
@@ -195,14 +195,14 @@ void Renderer::linkPassConsumers( IPass& pass )
 
 void Renderer::linkGlobalConsumers()
 {
-	for ( auto& cons : m_globalConsumers )
+	for ( auto &cons : m_globalConsumers )
 	{
-		const auto& consumerPassname = cons->getPassName();
-		for ( auto& pass : m_passes )
+		const auto &consumerPassname = cons->getPassName();
+		for ( auto &pass : m_passes )
 		{
 			if ( pass->getName() == consumerPassname )
 			{
-				auto& producer = pass->getProducer( cons->getProducerName() );
+				auto &producer = pass->getProducer( cons->getProducerName() );
 				cons->link( producer );
 				break;
 			}
@@ -210,11 +210,11 @@ void Renderer::linkGlobalConsumers()
 	}
 }
 
-IPass& ren::Renderer::getPass( const std::string &name )
+IPass &ren::Renderer::getPass( const std::string &name )
 {
 	const auto finder = std::find_if( m_passes.begin(),
 		m_passes.end(),
-		[&name]( auto& pass )
+		[&name]( auto &pass )
 		{
 			return pass->getName() == name;
 		} );
@@ -225,11 +225,11 @@ IPass& ren::Renderer::getPass( const std::string &name )
 	return **finder;
 }
 
-RenderQueuePass& Renderer::getRenderQueuePass( const std::string &name )
+RenderQueuePass &Renderer::getRenderQueuePass( const std::string &name )
 {
 	try
 	{
-		for ( const auto& pass : m_passes )
+		for ( const auto &pass : m_passes )
 		{
 			if ( pass->getName() == name )
 			{
@@ -237,7 +237,7 @@ RenderQueuePass& Renderer::getRenderQueuePass( const std::string &name )
 			}
 		}
 	}
-	catch( std::bad_cast& ex )
+	catch( std::bad_cast &ex )
 	{
 		(void)ex;
 		THROW_RENDERER_EXCEPTION( "Renderer::getRenderQueuePass pass '" + name
@@ -432,8 +432,8 @@ void Renderer3d::showGaussianBlurImguiWindow( Graphics &gph )
 	{
 		bool bFilterChanged = false;
 		{
-			const char* blurKernelMethodNames[] = {"Gauss", "Box"};
-			static const char* selectedMethod = blurKernelMethodNames[0];
+			const char *blurKernelMethodNames[] = {"Gauss", "Box"};
+			static const char *selectedMethod = blurKernelMethodNames[0];
 			if ( ImGui::BeginCombo( "Method", selectedMethod ) )
 			{
 				for ( int i = 0; i < std::size( blurKernelMethodNames ); ++i )
@@ -491,13 +491,13 @@ void Renderer3d::showGaussianBlurImguiWindow( Graphics &gph )
 	ImGui::End();
 }
 
-void ren::Renderer3d::setMainCamera( Camera& cam )
+void ren::Renderer3d::setMainCamera( Camera &cam )
 {
 	dynamic_cast<LambertianPass&>( getPass( "lambertian" ) ).setMainCamera( cam );
 	dynamic_cast<SkyPass&>( getPass( "skybox" ) ).setMainCamera( cam );
 }
 
-void ren::Renderer3d::setShadowCamera( Camera& cam )
+void ren::Renderer3d::setShadowCamera( Camera &cam )
 {
 	dynamic_cast<ShadowPass&>( getPass( "shadowMap" ) ).setShadowCamera( cam );
 }

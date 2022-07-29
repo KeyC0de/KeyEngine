@@ -4,7 +4,7 @@
 // Implemented features:
 //  [X] Renderer: User texture binding. Use 'ID3D11ShaderResourceView*' as ImTextureID. popMouseEvent the FAQ about ImTextureID in imgui.cpp.
 
-// You can copy and use unmodified imgui_impl_* files in your project. See main.cpp for an example of using this.
+// You can copy and use unmodified imgui_impl_ *files in your project. See main.cpp for an example of using this.
 // If you are new to dear imgui, read examples/README.txt and read the documentation at the top of imgui.cpp
 // https://github.com/ocornut/imgui
 
@@ -44,7 +44,7 @@ static ID3D11SamplerState*      g_pFontSampler = NULL;
 static ID3D11ShaderResourceView*g_pFontTextureView = NULL;
 static ID3D11RasterizerState*   g_pRasterizerState = NULL;
 static ID3D11BlendState*        g_pBlendState = NULL;
-static ID3D11DepthStencilState* g_pDepthStencilState = NULL;
+static ID3D11DepthStencilState *g_pDepthStencilState = NULL;
 static int                      g_VertexBufferSize = 5000, g_IndexBufferSize = 10000;
 
 struct VERTEX_CONSTANT_BUFFER
@@ -54,9 +54,9 @@ struct VERTEX_CONSTANT_BUFFER
 
 // Render function
 // (this used to be set in io.RenderDrawListsFn and called by ImGui::Render(), but you can now call this directly from your main loop)
-void ImGui_ImplDX11_RenderDrawData(ImDrawData* draw_data)
+void ImGui_ImplDX11_RenderDrawData(ImDrawData *draw_data)
 {
-    ID3D11DeviceContext* ctx = g_pd3dDeviceContext;
+    ID3D11DeviceContext *ctx = g_pd3dDeviceContext;
 
     // Create and grow vertex/index buffers if needed
     if (!g_pVB || g_VertexBufferSize < draw_data->TotalVtxCount)
@@ -93,11 +93,11 @@ void ImGui_ImplDX11_RenderDrawData(ImDrawData* draw_data)
         return;
     if (ctx->Map(g_pIB, 0, D3D11_MAP_WRITE_DISCARD, 0, &idx_resource) != S_OK)
         return;
-    ImDrawVert* vtx_dst = (ImDrawVert*)vtx_resource.pData;
-    ImDrawIdx* idx_dst = (ImDrawIdx*)idx_resource.pData;
+    ImDrawVert *vtx_dst = (ImDrawVert*)vtx_resource.pData;
+    ImDrawIdx *idx_dst = (ImDrawIdx*)idx_resource.pData;
     for (int n = 0; n < draw_data->CmdListsCount; n++)
     {
-        const ImDrawList* cmd_list = draw_data->CmdLists[n];
+        const ImDrawList *cmd_list = draw_data->CmdLists[n];
         memcpy(vtx_dst, cmd_list->VtxBuffer.Data, cmd_list->VtxBuffer.Size * sizeof(ImDrawVert));
         memcpy(idx_dst, cmd_list->IdxBuffer.Data, cmd_list->IdxBuffer.Size * sizeof(ImDrawIdx));
         vtx_dst += cmd_list->VtxBuffer.Size;
@@ -112,7 +112,7 @@ void ImGui_ImplDX11_RenderDrawData(ImDrawData* draw_data)
         D3D11_MAPPED_SUBRESOURCE mapped_resource;
         if (ctx->Map(g_pVertexConstantBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mapped_resource) != S_OK)
             return;
-        VERTEX_CONSTANT_BUFFER* constant_buffer = (VERTEX_CONSTANT_BUFFER*)mapped_resource.pData;
+        VERTEX_CONSTANT_BUFFER *constant_buffer = (VERTEX_CONSTANT_BUFFER*)mapped_resource.pData;
         float L = draw_data->DisplayPos.x;
         float R = draw_data->DisplayPos.x + draw_data->DisplaySize.x;
         float T = draw_data->DisplayPos.y;
@@ -204,10 +204,10 @@ void ImGui_ImplDX11_RenderDrawData(ImDrawData* draw_data)
     ImVec2 clip_off = draw_data->DisplayPos;
     for (int n = 0; n < draw_data->CmdListsCount; n++)
     {
-        const ImDrawList* cmd_list = draw_data->CmdLists[n];
+        const ImDrawList *cmd_list = draw_data->CmdLists[n];
         for (int cmd_i = 0; cmd_i < cmd_list->CmdBuffer.Size; cmd_i++)
         {
-            const ImDrawCmd* pcmd = &cmd_list->CmdBuffer[cmd_i];
+            const ImDrawCmd *pcmd = &cmd_list->CmdBuffer[cmd_i];
             if (pcmd->UserCallback)
             {
                 // User callback (registered via ImDrawList::AddCallback)
@@ -220,7 +220,7 @@ void ImGui_ImplDX11_RenderDrawData(ImDrawData* draw_data)
                 ctx->RSSetScissorRects(1, &r);
 
                 // bind texture, Draw
-                ID3D11ShaderResourceView* texture_srv = (ID3D11ShaderResourceView*)pcmd->TextureId;
+                ID3D11ShaderResourceView *texture_srv = (ID3D11ShaderResourceView*)pcmd->TextureId;
                 ctx->PSSetShaderResources(0, 1, &texture_srv);
                 ctx->DrawIndexed(pcmd->ElemCount, idx_offset, vtx_offset);
             }
@@ -251,8 +251,8 @@ void ImGui_ImplDX11_RenderDrawData(ImDrawData* draw_data)
 static void ImGui_ImplDX11_CreateFontsTexture()
 {
     // Build texture atlas
-    ImGuiIO& io = ImGui::GetIO();
-    unsigned char* pixels;
+    ImGuiIO &io = ImGui::GetIO();
+    unsigned char *pixels;
     int width, height;
     io.Fonts->GetTexDataAsRGBA32(&pixels, &width, &height);
 
@@ -322,7 +322,7 @@ bool    ImGui_ImplDX11_CreateDeviceObjects()
 
     // Create the vertex shader
     {
-        static const char* vertexShader =
+        static const char *vertexShader =
             "cbuffer vertexBuffer : register(b0) \
             {\
             float4x4 ProjectionMatrix; \
@@ -351,7 +351,7 @@ bool    ImGui_ImplDX11_CreateDeviceObjects()
             }";
 
         D3DCompile(vertexShader, strlen(vertexShader), NULL, NULL, NULL, "main", "vs_4_0", 0, 0, &g_pVertexShaderBlob, NULL);
-        if (g_pVertexShaderBlob == NULL) // NB: Pass ID3D10Blob* pErrorBlob to D3DCompile() to get error showing in (const char*)pErrorBlob->GetBufferPointer(). make sure to Release() the blob!
+        if (g_pVertexShaderBlob == NULL) // NB: Pass ID3D10Blob *pErrorBlob to D3DCompile() to get error showing in (const char*)pErrorBlob->GetBufferPointer(). make sure to Release() the blob!
             return false;
         if (g_pd3dDevice->CreateVertexShader((DWORD*)g_pVertexShaderBlob->GetBufferPointer(), g_pVertexShaderBlob->GetBufferSize(), NULL, &g_pVertexShader) != S_OK)
             return false;
@@ -380,7 +380,7 @@ bool    ImGui_ImplDX11_CreateDeviceObjects()
 
     // Create the pixel shader
     {
-        static const char* pixelShader =
+        static const char *pixelShader =
             "struct PS_INPUT\
             {\
             float4 pos : SV_POSITION;\
@@ -397,7 +397,7 @@ bool    ImGui_ImplDX11_CreateDeviceObjects()
             }";
 
         D3DCompile(pixelShader, strlen(pixelShader), NULL, NULL, NULL, "main", "ps_4_0", 0, 0, &g_pPixelShaderBlob, NULL);
-        if (g_pPixelShaderBlob == NULL)  // NB: Pass ID3D10Blob* pErrorBlob to D3DCompile() to get error showing in (const char*)pErrorBlob->GetBufferPointer(). make sure to Release() the blob!
+        if (g_pPixelShaderBlob == NULL)  // NB: Pass ID3D10Blob *pErrorBlob to D3DCompile() to get error showing in (const char*)pErrorBlob->GetBufferPointer(). make sure to Release() the blob!
             return false;
         if (g_pd3dDevice->CreatePixelShader((DWORD*)g_pPixelShaderBlob->GetBufferPointer(), g_pPixelShaderBlob->GetBufferSize(), NULL, &g_pPixelShader) != S_OK)
             return false;
@@ -470,15 +470,15 @@ void    ImGui_ImplDX11_InvalidateDeviceObjects()
     if (g_pVertexShaderBlob) { g_pVertexShaderBlob->Release(); g_pVertexShaderBlob = NULL; }
 }
 
-bool    ImGui_ImplDX11_Init(ID3D11Device* device, ID3D11DeviceContext* device_context)
+bool    ImGui_ImplDX11_Init(ID3D11Device *device, ID3D11DeviceContext *device_context)
 {
-    ImGuiIO& io = ImGui::GetIO();
+    ImGuiIO &io = ImGui::GetIO();
     io.BackendRendererName = "imgui_impl_dx11";
 
     // Get factory from device
-    IDXGIDevice* pDXGIDevice = NULL;
-    IDXGIAdapter* pDXGIAdapter = NULL;
-    IDXGIFactory* pFactory = NULL;
+    IDXGIDevice *pDXGIDevice = NULL;
+    IDXGIAdapter *pDXGIAdapter = NULL;
+    IDXGIFactory *pFactory = NULL;
 
     if (device->QueryInterface(IID_PPV_ARGS(&pDXGIDevice)) == S_OK)
         if (pDXGIDevice->GetParent(IID_PPV_ARGS(&pDXGIAdapter)) == S_OK)

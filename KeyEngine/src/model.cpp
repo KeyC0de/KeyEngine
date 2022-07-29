@@ -36,7 +36,7 @@ Model::Model( Graphics &gph,
 	// create drawables
 	for ( size_t i = 0; i < paiScene->mNumMeshes; ++i )
 	{
-		const auto& aiMesh = *paiScene->mMeshes[i];
+		const auto &aiMesh = *paiScene->mMeshes[i];
 		m_pDrawables.push_back( std::make_unique<Drawable>( gph,
 			materials[aiMesh.mMaterialIndex],
 			aiMesh,
@@ -70,22 +70,22 @@ void Model::setTransform( const DirectX::XMMATRIX &tr ) noexcept
 	m_pRoot->setTransform( tr );
 }
 
-void Model::accept( IModelVisitor& v )
+void Model::accept( IModelVisitor &v )
 {
 	m_pRoot->accept( v );
 }
 
-void Model::connectEffectsToRenderer( ren::Renderer& r )
+void Model::connectEffectsToRenderer( ren::Renderer &r )
 {
 	ASSERT( !m_pDrawables.empty(), "Model has no drawables to render!" );
-	for ( auto& pDrawable : m_pDrawables )
+	for ( auto &pDrawable : m_pDrawables )
 	{
 		pDrawable->connectEffectsToRenderer( r );
 	}
 }
 
 std::unique_ptr<Node> Model::createNodeHierarchy( int nodeId,
-	const aiNode& ainode,
+	const aiNode &ainode,
 	float scale ) noexcept
 {
 	namespace dx = DirectX;

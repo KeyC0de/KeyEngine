@@ -149,7 +149,7 @@ float sine( float x ) noexcept
 	return result;
 }
 
-constexpr int linearSearch( int* A,
+constexpr int linearSearch( int *A,
 	int n,
 	int x )
 {
@@ -163,7 +163,7 @@ constexpr int linearSearch( int* A,
 	return -1;
 }
 
-constexpr int binarySearch( int* A,
+constexpr int binarySearch( int *A,
 	int low,
 	int high,
 	int x )
@@ -213,7 +213,7 @@ int toHex( int dec )
 void printDec2Bin( size_t const size,
 	void const * const ptr )
 {
-	unsigned char* p = (unsigned char*)ptr;
+	unsigned char *p = (unsigned char*)ptr;
 	unsigned char byte;
 
 	for ( int i = size - 1; i >= 0; i-- )

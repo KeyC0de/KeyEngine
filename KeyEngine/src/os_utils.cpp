@@ -72,7 +72,7 @@ std::string getLastNtErrorAsString( DWORD ntStatusCode )
 }
 #endif
 
-std::wstring bstrToStr( const BSTR& bstr )
+std::wstring bstrToStr( const BSTR &bstr )
 {
 	ASSERT( bstr != nullptr, "BSTR was null!" );
 	std::wstring str{bstr, SysStringLen( bstr )};	// takes ownership so no need to SysFreeString
@@ -89,7 +89,7 @@ BSTR strToBstr( const std::wstring &str )
 }
 #pragma warning( default : 4267 )
 
-__int64 filetimeToInt64( const FILETIME& fileTime )
+__int64 filetimeToInt64( const FILETIME &fileTime )
 {
 	ULARGE_INTEGER ui64;
 	ui64.LowPart = fileTime.dwLowDateTime;
@@ -116,7 +116,7 @@ void setupDetachedThreadsVector( unsigned nThreads )
 void terminateDetachedThreads()
 {
 #if defined _DEBUG && !defined NDEBUG
-	KeyConsole& console = KeyConsole::getInstance();
+	KeyConsole &console = KeyConsole::getInstance();
 	console.print( "Clearing up detached threads\n" );
 #endif
 	for ( const auto th : g_detachedThreads )

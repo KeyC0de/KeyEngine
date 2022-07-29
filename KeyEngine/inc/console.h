@@ -19,13 +19,13 @@
 //=============================================================
 class KeyConsole final
 {
-	static inline constexpr const char* currentVersion = "v0.4";
-	static inline constexpr const char* defaultConsoleTitle = "Debug Console - ";
-	static inline KeyConsole* m_pInstance;
-	FILE* m_fp;
+	static inline constexpr const char *currentVersion = "v0.4";
+	static inline constexpr const char *defaultConsoleTitle = "Debug Console - ";
+	static inline KeyConsole *m_pInstance;
+	FILE *m_fp;
 	std::string m_title;
 	DWORD m_stdDevice;
-	FILE* m_hMode;			// set this when you print/log/read to stdout/stderr/stdin
+	FILE *m_hMode;			// set this when you print/log/read to stdout/stderr/stdin
 	HANDLE m_hConsole;
 	WORD m_consoleAttributesDefault;
 	WORD m_consoleAttributes;
@@ -33,15 +33,15 @@ class KeyConsole final
 	KeyConsole( const std::string &fontName = "Lucida Console" );
 	bool setDefaultColor();
 public:
-	KeyConsole( const KeyConsole& rhs ) = delete;
-	KeyConsole& operator=( const KeyConsole& rhs ) = delete;
+	KeyConsole( const KeyConsole &rhs ) = delete;
+	KeyConsole &operator=( const KeyConsole &rhs ) = delete;
 	~KeyConsole();
 
 	static DWORD getFontFamily( HANDLE h );
 	static void getConsoleInfo( HANDLE h );
 public:
 	bool closeConsole();
-	static KeyConsole& getInstance() noexcept;
+	static KeyConsole &getInstance() noexcept;
 	//===================================================
 	//	\function	resetInstance
 	//	\brief  you must call this manually prior to program exit to avoid memory leaks
@@ -76,19 +76,19 @@ public:
 	//	\brief  read from stdin, returns the string
 	//	\date	2020/12/01 21:36
 	std::string read( const uint32_t maxChars = 1024u );
-	inline bool operator==( const KeyConsole& rhs ) const noexcept
+	inline bool operator==( const KeyConsole &rhs ) const noexcept
 	{
 		return this->m_fp == rhs.m_fp;
 	}
-	inline bool operator!=( const KeyConsole& rhs ) const noexcept
+	inline bool operator!=( const KeyConsole &rhs ) const noexcept
 	{
 		return this->m_fp != rhs.m_fp;
 	}
-	inline bool operator==( const KeyConsole* rhs ) const noexcept
+	inline bool operator==( const KeyConsole *rhs ) const noexcept
 	{
 		return this->m_fp == rhs->m_fp;
 	}
-	inline bool operator!=( const KeyConsole* rhs ) const noexcept
+	inline bool operator!=( const KeyConsole *rhs ) const noexcept
 	{
 		return this->m_fp != rhs->m_fp;
 	}

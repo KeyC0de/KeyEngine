@@ -55,7 +55,7 @@ class ASSIMP_API DefaultIOSystem : public IOSystem
 public:
     // -------------------------------------------------------------------
     /** Tests for the existence of a file at the given path. */
-    bool Exists( const char* pFile) const;
+    bool Exists( const char *pFile) const;
 
     // -------------------------------------------------------------------
     /** Returns the directory separator. */
@@ -63,15 +63,15 @@ public:
 
     // -------------------------------------------------------------------
     /** Open a new file with a given path. */
-    IOStream* Open( const char* pFile, const char* pMode = "rb");
+    IOStream *Open( const char *pFile, const char *pMode = "rb");
 
     // -------------------------------------------------------------------
     /** Closes the given file and releases all resources associated with it. */
-    void Close( IOStream* pFile);
+    void Close( IOStream *pFile);
 
     // -------------------------------------------------------------------
     /** Compare two paths */
-    bool ComparePaths (const char* one, const char* second) const;
+    bool ComparePaths (const char *one, const char *second) const;
 
     /** @brief get the file name of a full filepath
      * example: /tmp/archive.tar.gz -> archive.tar.gz

@@ -61,7 +61,7 @@ Sphere::Sphere( Graphics &gph,
 	}
 }
 
-void Sphere::setPosition( const dx::XMFLOAT3& pos ) noexcept
+void Sphere::setPosition( const dx::XMFLOAT3 &pos ) noexcept
 {
 	this->m_pos = pos;
 }

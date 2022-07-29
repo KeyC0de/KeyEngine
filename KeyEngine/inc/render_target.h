@@ -27,17 +27,17 @@ protected:
 	//	\function	IrenderTargetView
 	//	\brief  Render to a CubeTexture's face constructor
 	//	\date	2021/10/25 17:00
-	IRenderTargetView( Graphics &gph, ID3D11Texture2D* pTex,
+	IRenderTargetView( Graphics &gph, ID3D11Texture2D *pTex,
 		std::optional<unsigned> face );
 public:
 	void bindRenderSurface( Graphics &gph ) cond_noex override;
-	void bindRenderSurface( Graphics &gph, IRenderSurface* pRs ) cond_noex override;
-	void bindRenderSurface( Graphics &gph, IDepthStencilView* pDepthStencilView ) cond_noex;
+	void bindRenderSurface( Graphics &gph, IRenderSurface *pRs ) cond_noex override;
+	void bindRenderSurface( Graphics &gph, IDepthStencilView *pDepthStencilView ) cond_noex;
 	void clear( Graphics &gph, const std::array<float, 4>& color = {0.0f, 0.0f, 0.0f, 0.0f} )
 		cond_noex override;
 	unsigned getWidth() const noexcept;
 	unsigned getHeight() const noexcept;
-	ID3D11RenderTargetView* getRenderTargetView() const noexcept;
+	ID3D11RenderTargetView *getRenderTargetView() const noexcept;
 	Bitmap convertToBitmap( Graphics &gph ) const;
 private:
 	//===================================================
@@ -47,7 +47,7 @@ private:
 	std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC>
 		createStagingTexture( Graphics &gph ) const;
 	void bindRenderSurface( Graphics &gph,
-		ID3D11DepthStencilView* pD3dDsv ) cond_noex;
+		ID3D11DepthStencilView *pD3dDsv ) cond_noex;
 };
 
 class RenderTargetShaderInput
@@ -74,7 +74,7 @@ class RenderTargetOutput
 	: public IRenderTargetView
 {
 public:
-	RenderTargetOutput( Graphics &gph, ID3D11Texture2D* pTex,
+	RenderTargetOutput( Graphics &gph, ID3D11Texture2D *pTex,
 		std::optional<unsigned> face = {} );
 
 	void bind( Graphics &gph ) cond_noex override;

@@ -23,7 +23,7 @@ PerfLog::Entry::Entry( float timeStamp,
 
 }
 
-bool PerfLog::Entry::operator>( const Entry& rhs ) noexcept
+bool PerfLog::Entry::operator>( const Entry &rhs ) noexcept
 {
 	return timeStamp > rhs.timeStamp;
 }
@@ -33,7 +33,7 @@ void PerfLog::flushToFile()
 	std::ofstream file( "perf.txt" );
 	file << std::fixed
 		<< std::setprecision( 3 );
-	for ( const auto& entry : m_entries )
+	for ( const auto &entry : m_entries )
 	{
 		using namespace std::string_literals;
 		if ( entry.label.empty() )

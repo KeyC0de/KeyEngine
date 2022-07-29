@@ -192,7 +192,7 @@ TReal aiVector3t<TReal>::operator[](unsigned int i) const {
 // ------------------------------------------------------------------------------------------------
 template <typename TReal>
 AI_FORCE_INLINE
-TReal& aiVector3t<TReal>::operator[](unsigned int i) {
+TReal &aiVector3t<TReal>::operator[](unsigned int i) {
 //    return *(&x + i);
     switch (i) {
         case 0:

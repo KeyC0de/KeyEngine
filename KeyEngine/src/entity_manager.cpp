@@ -1,5 +1,6 @@
 #include "entity_manager.h"
 #include "entity.h"
+#include "gameplay_exception.h"
 
 
 EntityManager::Bucket::Bucket( int categoryId )
@@ -14,12 +15,12 @@ const int EntityManager::Bucket::getCategoryId() const noexcept
 	return m_categoryId;
 }
 
-void EntityManager::Bucket::appendEntity( Entity* pEnt )
+void EntityManager::Bucket::appendEntity( Entity *pEnt )
 {
 	m_pEntities.emplace_back( pEnt );
 }
 
-void EntityManager::Bucket::removeEntity( Entity* pEnt ) cond_noex
+void EntityManager::Bucket::removeEntity( Entity *pEnt ) cond_noex
 {
 	auto it = std::find( m_pEntities.begin(),
 		m_pEntities.end(),
@@ -32,7 +33,7 @@ EntityManager::EntityManager()
 	m_entities.reserve( 1000 );
 }
 
-EntityManager& EntityManager::getInstance()
+EntityManager &EntityManager::getInstance()
 {
 	if ( m_pInstance == nullptr )
 	{
@@ -50,7 +51,7 @@ void EntityManager::resetInstance()
 }
 
 EntityId EntityManager::spawnEntity( const std::string &name, int categoryId,
-	Entity* pParent )
+	Entity *pParent )
 {
 	EntityIndex index;
 	if ( m_freelist.empty() )
@@ -113,7 +114,7 @@ EntityIndex EntityManager::getAliveEntities()
 	return static_cast<EntityIndex>( m_entities.size() - m_freelist.size() );
 }
 
-Entity* EntityManager::getEntityById( EntityId entId )
+Entity *EntityManager::getEntityById( EntityId entId )
 {
 	EntityIndex index = entId & 0xFFFF;
 	EntityIndex version = entId >> 16;
@@ -132,7 +133,7 @@ void EntityManager::recycleEntityId( EntityId entId )
 	m_freelist.emplace_back( index );
 }
 
-EntityManager::Bucket& EntityManager::getBucket( int categoryId )
+EntityManager::Bucket &EntityManager::getBucket( int categoryId )
 {
 	switch( categoryId )
 	{
@@ -164,11 +165,12 @@ EntityManager::Bucket& EntityManager::getBucket( int categoryId )
 	default :	// UNCATEGORIZED - 0
 	{
 		// THROW_GAMEPLAY_EXCEPTION
+		THROW_GAMEPLAY_EXCEPTION( "Entity doesn't belong in a bucket." );
 	}
 	}//switch
 }
 
-Entity* EntityManager::getCurrentWorld()
+Entity *EntityManager::getCurrentWorld()
 {
 	// current world Entity index is always @ index 0 of m_worldEntitiesIndices
 	return m_entities[m_worldEntitiesIndices[0]].get();
@@ -181,7 +183,7 @@ Entity* EntityManager::getCurrentWorld()
 
 int main()
 {
-	EntityManager& em = EntityManager::getInstance();
+	EntityManager &em = EntityManager::getInstance();
 
 
 	std::cout << "Creating entities\n";
@@ -194,9 +196,9 @@ int main()
 	std::cout << "entityId3=" << eid3 << '\n';
 	
 	std::cout << "\nGetting entities\n";
-	Entity* e1 = em.getEntityById( eid1 );
-	Entity* e2 = em.getEntityById( eid2 );
-	Entity* e3 = em.getEntityById( eid3 );
+	Entity *e1 = em.getEntityById( eid1 );
+	Entity *e2 = em.getEntityById( eid2 );
+	Entity *e3 = em.getEntityById( eid3 );
 	
 	if ( e1 )
 	{

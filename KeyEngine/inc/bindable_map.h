@@ -38,7 +38,7 @@ private:
 		}
 	}
 
-	static BindableMap& getInstance()
+	static BindableMap &getInstance()
 	{
 		static BindableMap instance;
 		return instance;

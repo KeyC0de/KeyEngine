@@ -65,7 +65,7 @@
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PreprocessorDefinitions>_DEBUG;UNICODE;_UNICODE;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;%(PreprocessorDefinitions);BDEBUG=true;cond_noex=noexcept( !BDEBUG );pass_=(void)0;_CRT_SECURE_NO_WARNINGS;_32_BIT_ENTITY</PreprocessorDefinitions>
-      <AdditionalOptions>/w34265 /Zc:__cplusplus /utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/we4239 /we4265 /we4715 /Zc:__cplusplus /utf-8 %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -90,7 +90,7 @@
       <PreprocessorDefinitions>_DEV;NDEBUG;UNICODE;_UNICODE;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;%(PreprocessorDefinitions);BDEBUG=false;cond_noex=noexcept( !BDEBUG );pass_=(void)0;_CRT_SECURE_NO_WARNINGS;_32_BIT_ENTITY</PreprocessorDefinitions>
       <FloatingPointModel>Fast</FloatingPointModel>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalOptions>/w34265 /Zc:__cplusplus /utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/we4239 /we4265 /we4715 /Zc:__cplusplus /utf-8 %(AdditionalOptions)</AdditionalOptions>
       <SDLCheck />
       <AdditionalIncludeDirectories>C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -107,6 +107,7 @@
     </FxCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\algorithms.cpp" />
     <ClCompile Include="src\effect_visitor.cpp" />
     <ClCompile Include="src\grid_location.cpp" />
     <ClCompile Include="src\model_visitor.cpp" />
@@ -251,8 +252,8 @@
     <None Include="arrow.cur" />
     <None Include="assimp-vc140-mt.dll" />
     <None Include="cpp.hint" />
-    <None Include="imgui.ini" />
-    <None Include="imgui_default.ini" />
+    <None Include="config\imgui.ini" />
+    <None Include="config\imgui_default.ini" />
     <None Include="shaders\hlsli\directional_light_pscb.hlsli" />
     <None Include="shaders\hlsli\hlsl_misc.hlsli" />
     <None Include="shaders\hlsli\point_light_pscb.hlsli" />
@@ -261,7 +262,7 @@
     <None Include="shaders\hlsli\shadowing_vs.hlsli" />
     <None Include="shaders\hlsli\spot_light_pscb.hlsli" />
     <None Include="shaders\hlsli\transforms_vscb.hlsli" />
-    <None Include="test.ini" />
+    <None Include="config\test.ini" />
     <None Include="third_party\assimp\include\assimp\color4.inl" />
     <None Include="third_party\assimp\include\assimp\material.inl" />
     <None Include="third_party\assimp\include\assimp\matrix3x3.inl" />
@@ -274,6 +275,7 @@
     <None Include="zlib1.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="inc\algorithms.h" />
     <ClInclude Include="inc\graphics_mode.h" />
     <ClInclude Include="inc\grid_location.h" />
     <ClInclude Include="inc\mouse_picker.h" />
@@ -549,7 +551,9 @@
     <ClInclude Include="inc\thread_pool.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="KeyEngine.rc" />
+    <ResourceCompile Include="KeyEngine.rc">
+      <FileType>CppCode</FileType>
+    </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="keyc0de.ico" />

@@ -83,7 +83,7 @@ struct ExceptionSwallower   {
 // ---------------------------------------------------------------------------
 template <typename T>
 struct ExceptionSwallower<T*>   {
-    T* operator ()() const {
+    T *operator ()() const {
         return NULL;
     }
 };

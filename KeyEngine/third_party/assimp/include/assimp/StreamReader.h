@@ -98,7 +98,7 @@ public:
     }
 
     // ---------------------------------------------------------------------
-    StreamReader(IOStream* stream, bool le = false)
+    StreamReader(IOStream *stream, bool le = false)
         : stream(std::shared_ptr<IOStream>(stream))
         , le(le)
     {
@@ -202,7 +202,7 @@ public:
 
     // ---------------------------------------------------------------------
     /** Get the current file pointer */
-    int8_t* GetPtr() const  {
+    int8_t *GetPtr() const  {
         return current;
     }
 
@@ -212,7 +212,7 @@ public:
      *  large chunks of data at once.
      *  @param p The new pointer, which is validated against the size
      *    limit and buffer boundaries. */
-    void SetPtr(int8_t* p)  {
+    void SetPtr(int8_t *p)  {
         current = p;
         if (current > limit || current < buffer) {
             throw DeadlyImportError("End of file or read limit was reached");
@@ -223,8 +223,8 @@ public:
     /** Copy n bytes to an external buffer
      *  @param out Destination for copying
      *  @param bytes Number of bytes to copy */
-    void CopyAndAdvance(void* out, size_t bytes)    {
-        int8_t* ur = GetPtr();
+    void CopyAndAdvance(void *out, size_t bytes)    {
+        int8_t *ur = GetPtr();
         SetPtr(ur+bytes); // fire exception if eof
 
         ::memcpy(out,ur,bytes);
@@ -278,13 +278,13 @@ public:
     // ---------------------------------------------------------------------
     /** overload operator>> and allow chaining of >> ops. */
     template <typename T>
-    StreamReader& operator >> (T& f) {
+    StreamReader &operator >> (T &f) {
         f = Get<T>();
         return *this;
     }
 
     // ---------------------------------------------------------------------
-    /** Generic read method. ByteSwap::Swap(T*) *must* be defined */
+    /** Generic read method. ByteSwap::Swap(T*) *must *be defined */
     template <typename T>
     T Get() {
         if ( current + sizeof(T) > limit) {

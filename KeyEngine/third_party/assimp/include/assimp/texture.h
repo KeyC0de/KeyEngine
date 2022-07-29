@@ -93,14 +93,14 @@ struct aiTexel
 
 #ifdef __cplusplus
     //! Comparison operator
-    bool operator== (const aiTexel& other) const
+    bool operator== (const aiTexel &other) const
     {
         return b == other.b && r == other.r &&
                g == other.g && a == other.a;
     }
 
     //! Inverse comparison operator
-    bool operator!= (const aiTexel& other) const
+    bool operator!= (const aiTexel &other) const
     {
         return b != other.b || r != other.r ||
                g != other.g || a != other.a;
@@ -178,7 +178,7 @@ struct aiTexture
      * buffer of size mWidth containing the compressed texture
      * data. Good luck, have fun!
      */
-    C_STRUCT aiTexel* pcData;
+    C_STRUCT aiTexel *pcData;
 
     /** Texture original filename
     *
@@ -193,7 +193,7 @@ struct aiTexture
     //! @param s Input string. 3 characters are maximally processed.
     //!        Example values: "jpg", "png"
     //! @return true if the given string matches the format hint
-    bool CheckFormat(const char* s) const
+    bool CheckFormat(const char *s) const
     {
 		return (0 == ::strncmp(achFormatHint, s, sizeof(achFormatHint)));
     }

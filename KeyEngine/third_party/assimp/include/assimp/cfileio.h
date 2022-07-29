@@ -67,7 +67,7 @@ typedef C_STRUCT aiFile* (*aiFileOpenProc)  (C_STRUCT aiFileIO*, const char*, co
 typedef void             (*aiFileCloseProc) (C_STRUCT aiFileIO*, C_STRUCT aiFile*);
 
 // Represents user-defined data
-typedef char* aiUserData;
+typedef char *aiUserData;
 
 // ----------------------------------------------------------------------------------
 /** @brief C-API: File system callbacks

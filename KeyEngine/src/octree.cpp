@@ -2,8 +2,8 @@
 #include "octree_data.h"
 
 
-Octree::Octree( const Vec3& m_center,
-	const Vec3& halfDim )
+Octree::Octree( const Vec3 &m_center,
+	const Vec3 &halfDim )
 	:
 	m_center( m_center ),
 	m_half( halfDim ),
@@ -16,7 +16,7 @@ Octree::Octree( const Vec3& m_center,
 	}
 }
 
-Octree::Octree( const Octree& rhs )
+Octree::Octree( const Octree &rhs )
 	:
 	m_center( rhs.m_center ),
 	m_half( rhs.m_half ),
@@ -33,7 +33,7 @@ Octree::~Octree()
 	}
 }
 
-int Octree::getOctantContainingPoint( const Vec3& point ) const
+int Octree::getOctantContainingPoint( const Vec3 &point ) const
 {
 	int oct = 0;
 	if ( point.x >= m_center.x )
@@ -67,7 +67,7 @@ bool Octree::isLeafNode() const
 	return m_pChildren[0] == nullptr;
 }
 
-void Octree::insert( OctreeData* data )
+void Octree::insert( OctreeData *data )
 {
 	// If this node doesn't have a m_data node yet assigned 
 	// and it is a leaf, then we're done!
@@ -85,7 +85,7 @@ void Octree::insert( OctreeData* data )
 			// and then insert `m_data` and `data` to children nodes
 
 			// save the data for a later re-insert
-			OctreeData* oldData = m_data;
+			OctreeData *oldData = m_data;
 			m_data = nullptr;
 
 			// split the current node and create new empty trees for each child octant
@@ -118,8 +118,8 @@ void Octree::insert( OctreeData* data )
 	}
 }
 
-void Octree::getEntitiesWithinBBox( const Vec3& requestedMin,
-	const Vec3& requestedMax,
+void Octree::getEntitiesWithinBBox( const Vec3 &requestedMin,
+	const Vec3 &requestedMax,
 	std::vector<OctreeData*>& resultsOut )
 {
 	// if we're at a leaf node, check to see whether the point is inside the BBox

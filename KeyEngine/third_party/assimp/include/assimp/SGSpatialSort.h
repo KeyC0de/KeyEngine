@@ -76,7 +76,7 @@ public:
      * @param index Index of the vrtex
      * @param smoothingGroup SmoothingGroup for this vertex
      */
-    void Add(const aiVector3D& vPosition, unsigned int index,
+    void Add(const aiVector3D &vPosition, unsigned int index,
         unsigned int smoothingGroup);
 
     // -------------------------------------------------------------------
@@ -101,7 +101,7 @@ public:
      * @return An iterator to iterate over all vertices in the given area.
      */
     // -------------------------------------------------------------------
-    void FindPositions( const aiVector3D& pPosition, uint32_t pSG,
+    void FindPositions( const aiVector3D &pPosition, uint32_t pSG,
         float pRadius, std::vector<unsigned int>& poResults,
         bool exactMatch = false) const;
 
@@ -122,7 +122,7 @@ protected:
         float mDistance;        ///< Distance of this vertex to the sorting plane
 
         Entry() { /** intentionally not initialized.*/ }
-        Entry( unsigned int pIndex, const aiVector3D& pPosition, float pDistance,uint32_t pSG)
+        Entry( unsigned int pIndex, const aiVector3D &pPosition, float pDistance,uint32_t pSG)
         :
             mIndex( pIndex),
             mPosition( pPosition),
@@ -130,7 +130,7 @@ protected:
             mDistance( pDistance)
             {   }
 
-        bool operator < (const Entry& e) const { return mDistance < e.mDistance; }
+        bool operator < (const Entry &e) const { return mDistance < e.mDistance; }
     };
 
     // all positions, sorted by distance to the sorting plane

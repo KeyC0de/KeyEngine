@@ -7,7 +7,7 @@ namespace util
 namespace dx = DirectX;
 
 
-dx::XMFLOAT3 extractEulerAngles( const dx::XMFLOAT4X4& mat )
+dx::XMFLOAT3 extractEulerAngles( const dx::XMFLOAT4X4 &mat )
 {
 	dx::XMFLOAT3 eulerRot;
 	
@@ -26,12 +26,12 @@ dx::XMFLOAT3 extractEulerAngles( const dx::XMFLOAT4X4& mat )
 	return eulerRot;
 }
 
-dx::XMFLOAT3 extractTranslation( const dx::XMFLOAT4X4& mat )
+dx::XMFLOAT3 extractTranslation( const dx::XMFLOAT4X4 &mat )
 {
 	return {mat._41, mat._42, mat._43};
 }
 
-dx::XMMATRIX scaleTranslation( const dx::XMMATRIX& mat,
+dx::XMMATRIX scaleTranslation( const dx::XMMATRIX &mat,
 	float scale )
 {
 	dx::XMMATRIX tmp{mat};
@@ -48,10 +48,10 @@ DXGI_RATIONAL queryRefreshRate( unsigned screenWidth,
 	DXGI_RATIONAL refreshRate = {0, 1};
 	if ( bVsync )
 	{
-		IDXGIFactory* factory;
-		IDXGIAdapter* adapter;
-		IDXGIOutput* adapterOutput;
-		DXGI_MODE_DESC* displayModeList;
+		IDXGIFactory *factory;
+		IDXGIAdapter *adapter;
+		IDXGIOutput *adapterOutput;
+		DXGI_MODE_DESC *displayModeList;
 
 		// Create a DirectX graphics interface factory.
 		HRESULT hres = CreateDXGIFactory1( __uuidof( IDXGIFactory1 ),

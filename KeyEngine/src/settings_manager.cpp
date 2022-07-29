@@ -16,7 +16,7 @@ SettingsManager::~SettingsManager() noexcept
 		
 }
 
-SettingsManager& SettingsManager::getInstance( const std::string &filePath )
+SettingsManager &SettingsManager::getInstance( const std::string &filePath )
 {
 	if ( m_pInstance == nullptr )
 	{
@@ -63,12 +63,12 @@ void SettingsManager::loadFromFile( const std::string &filePath )
 	//	<< ini.GetBoolean("user", "active", true) << "\n";
 }
 
-const SettingsManager::Settings& SettingsManager::getSettings()
+const SettingsManager::Settings &SettingsManager::getSettings()
 {
 	return m_settings;
 }
 
-SettingsManager::Settings& SettingsManager::accessSettings()
+SettingsManager::Settings &SettingsManager::accessSettings()
 {
 	return m_settings;
 }

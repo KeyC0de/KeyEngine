@@ -159,7 +159,7 @@ inline aiMatrix4x4t<TReal>& aiMatrix4x4t<TReal>::operator *= (const aiMatrix4x4t
 
 // ----------------------------------------------------------------------------------------
 template <typename TReal>
-inline aiMatrix4x4t<TReal> aiMatrix4x4t<TReal>::operator* (const TReal& aFloat) const
+inline aiMatrix4x4t<TReal> aiMatrix4x4t<TReal>::operator* (const TReal &aFloat) const
 {
     aiMatrix4x4t<TReal> temp(
         a1 * aFloat,
@@ -289,7 +289,7 @@ inline aiMatrix4x4t<TReal>& aiMatrix4x4t<TReal>::Inverse()
 
 // ----------------------------------------------------------------------------------------
 template <typename TReal>
-inline TReal* aiMatrix4x4t<TReal>::operator[](unsigned int p_iIndex) {
+inline TReal *aiMatrix4x4t<TReal>::operator[](unsigned int p_iIndex) {
     if (p_iIndex > 3) {
         return NULL;
     }
@@ -310,7 +310,7 @@ inline TReal* aiMatrix4x4t<TReal>::operator[](unsigned int p_iIndex) {
 
 // ----------------------------------------------------------------------------------------
 template <typename TReal>
-inline const TReal* aiMatrix4x4t<TReal>::operator[](unsigned int p_iIndex) const {
+inline const TReal *aiMatrix4x4t<TReal>::operator[](unsigned int p_iIndex) const {
     if (p_iIndex > 3) {
         return NULL;
     }
@@ -475,7 +475,7 @@ inline void aiMatrix4x4t<TReal>::Decompose(aiVector3t<TReal>& pScaling, aiVector
 #undef ASSIMP_MATRIX4_4_DECOMPOSE_PART
 
 template <typename TReal>
-inline void aiMatrix4x4t<TReal>::Decompose(aiVector3t<TReal>& pScaling, aiVector3t<TReal>& pRotationAxis, TReal& pRotationAngle,
+inline void aiMatrix4x4t<TReal>::Decompose(aiVector3t<TReal>& pScaling, aiVector3t<TReal>& pRotationAxis, TReal &pRotationAngle,
 											aiVector3t<TReal>& pPosition) const
 {
 aiQuaterniont<TReal> pRotation;
@@ -667,7 +667,7 @@ inline aiMatrix4x4t<TReal>& aiMatrix4x4t<TReal>::Scaling( const aiVector3t<TReal
 // ----------------------------------------------------------------------------------------
 /** A function for creating a rotation matrix that rotates a vector called
  * "from" into another vector called "to".
- * Input : from[3], to[3] which both must be *normalized* non-zero vectors
+ * Input : from[3], to[3] which both must be *normalized *non-zero vectors
  * Output: mtx[3][3] -- a 3x3 matrix in colum-major form
  * Authors: Tomas Möller, John Hughes
  *          "Efficiently Building a Matrix to Rotate One Vector to Another"

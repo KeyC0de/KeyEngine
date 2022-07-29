@@ -215,8 +215,8 @@ constexpr T toRadians( const T deg )
 //			interpolates any two Types that support the operations +, -, *
 //	\date 2020/08/02 17:56
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
-constexpr T interpolate( const T& src,
-	const T& dst,
+constexpr T interpolate( const T &src,
+	const T &dst,
 	const float alpha )
 {
 	return src + alpha * ( dst - src );
@@ -279,8 +279,8 @@ constexpr bool isPowerOfTwo( const std::size_t value ) noexcept;
 float cosine( float x ) noexcept;
 float sine( float x ) noexcept;
 
-constexpr int linearSearch( int* A, int n, int x );
-constexpr int binarySearch( int* A, int low, int high, int x );
+constexpr int linearSearch( int *A, int n, int x );
+constexpr int binarySearch( int *A, int low, int high, int x );
 
 int toDecimal( int hex );
 int toHex( int dec );
@@ -308,7 +308,7 @@ T nthMultipleOf( T number, int n )
 
 // bitwise ops
 // Prints given datatype to binary
-void printDec2Bin( size_t const size, void const* const ptr );
+void printDec2Bin( size_t const size, void const *const ptr );
 bool oppositeSigns( int x, int y );
 // print binary conversion of supplied decimal number
 void dec2bin( int num );

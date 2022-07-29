@@ -20,7 +20,7 @@ void TransformVSCB::bind( Graphics &gph ) cond_noex
 	m_pVscb->bind( gph );
 }
 
-void TransformVSCB::setParentDrawable( const Drawable& parent ) noexcept
+void TransformVSCB::setParentDrawable( const Drawable &parent ) noexcept
 {
 	m_pDrawable = &parent;
 }
@@ -31,7 +31,7 @@ std::unique_ptr<IBindableCloning> TransformVSCB::clone() const noexcept
 }
 
 void TransformVSCB::update( Graphics &gph,
-	const Transforms& tfs ) cond_noex
+	const Transforms &tfs ) cond_noex
 {
 	ASSERT( m_pDrawable != nullptr, "No Drawable set!" );
 	m_pVscb->update( gph,

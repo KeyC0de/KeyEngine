@@ -62,22 +62,22 @@ class ASSIMP_API NullLogger
 public:
 
     /** @brief  Logs a debug message */
-    void OnDebug(const char* message) {
+    void OnDebug(const char *message) {
         (void)message; //this avoids compiler warnings
     }
 
     /** @brief  Logs an info message */
-    void OnInfo(const char* message) {
+    void OnInfo(const char *message) {
         (void)message; //this avoids compiler warnings
     }
 
     /** @brief  Logs a warning message */
-    void OnWarn(const char* message) {
+    void OnWarn(const char *message) {
         (void)message; //this avoids compiler warnings
     }
 
     /** @brief  Logs an error message */
-    void OnError(const char* message) {
+    void OnError(const char *message) {
         (void)message; //this avoids compiler warnings
     }
 

@@ -100,25 +100,25 @@ public:
     // ----------------------------------------------------------------------
     /** @brief  Writes a debug message
      *   @param message Debug message*/
-    void debug(const char* message);
+    void debug(const char *message);
     void debug(const std::string &message);
 
     // ----------------------------------------------------------------------
     /** @brief  Writes a info message
      *  @param  message Info message*/
-    void info(const char* message);
+    void info(const char *message);
     void info(const std::string &message);
 
     // ----------------------------------------------------------------------
     /** @brief  Writes a warning message
      *  @param  message Warn message*/
-    void warn(const char* message);
+    void warn(const char *message);
     void warn(const std::string &message);
 
     // ----------------------------------------------------------------------
     /** @brief  Writes an error message
      *  @param  message Error message*/
-    void error(const char* message);
+    void error(const char *message);
     void error(const std::string &message);
 
     // ----------------------------------------------------------------------
@@ -176,7 +176,7 @@ protected:
      *  @note  The message string is only valid until the scope of
      *    the function is left.
      */
-    virtual void OnDebug(const char* message)= 0;
+    virtual void OnDebug(const char *message)= 0;
 
     // ----------------------------------------------------------------------
     /**
@@ -186,7 +186,7 @@ protected:
      *  @note  The message string is only valid until the scope of
      *    the function is left.
      */
-    virtual void OnInfo(const char* message) = 0;
+    virtual void OnInfo(const char *message) = 0;
 
     // ----------------------------------------------------------------------
     /**
@@ -196,7 +196,7 @@ protected:
      *  @note  The message string is only valid until the scope of
      *    the function is left.
      */
-    virtual void OnWarn(const char* essage) = 0;
+    virtual void OnWarn(const char *essage) = 0;
 
     // ----------------------------------------------------------------------
     /**
@@ -206,7 +206,7 @@ protected:
      *  @note  The message string is only valid until the scope of
      *    the function is left.
      */
-    virtual void OnError(const char* message) = 0;
+    virtual void OnError(const char *message) = 0;
 
 protected:
     LogSeverity m_Severity;

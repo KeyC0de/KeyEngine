@@ -16,11 +16,11 @@ class Brick
 	bool m_bDestroyed = false;
 public:
 	Brick() = default;
-	Brick( const Rect& rect, const ColorBGRA col );
+	Brick( const Rect &rect, const ColorBGRA col );
 
 	void render( Graphics &gph ) const;
-	bool checkForBallCollision( const Ball& ball ) const;
+	bool checkForBallCollision( const Ball &ball ) const;
 	// performs the collision
-	void doBallCollision( Ball& ball );
+	void doBallCollision( Ball &ball );
 	DirectX::XMFLOAT2 getCenter() const noexcept;
 };

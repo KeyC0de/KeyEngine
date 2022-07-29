@@ -19,7 +19,7 @@ Mouse::Mouse( Mouse&& rhs ) noexcept
 	rhs.m_rawDeltaBuffer = {};
 }
 
-Mouse& Mouse::operator=( Mouse&& rhs ) noexcept
+Mouse &Mouse::operator=( Mouse&& rhs ) noexcept
 {
 	m_x = rhs.m_x;
 	m_y = rhs.m_y;

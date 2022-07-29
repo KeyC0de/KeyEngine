@@ -161,7 +161,7 @@ LRESULT CALLBACK SplashWindow::windowProc( HWND hWnd,
 	LPARAM lParam )
 {
 #if defined _DEBUG && !defined NDEBUG
-	auto& console = KeyConsole::getInstance();
+	auto &console = KeyConsole::getInstance();
 	console.log( "windowProc() entered\n" );
 #endif
 	/*
@@ -170,8 +170,8 @@ LRESULT CALLBACK SplashWindow::windowProc( HWND hWnd,
 #if defined _DEBUG && !defined NDEBUG
 		console.log( "windowProc() WM_NCCREATE message\n" );
 #endif
-		const CREATESTRUCTW* const cs = (CREATESTRUCTW*) lParam;
-		SplashWindow* this_wnd = reinterpret_cast<SplashWindow*>( cs->lpCreateParams );
+		const CREATESTRUCTW *const cs = (CREATESTRUCTW*) lParam;
+		SplashWindow *this_wnd = reinterpret_cast<SplashWindow*>( cs->lpCreateParams );
 
 		this_wnd->m_hWnd = hWnd;
 
@@ -204,7 +204,7 @@ LRESULT CALLBACK SplashWindow::windowProc( HWND hWnd,
 	case WM_ENABLE:
 	{
 #if defined _DEBUG && !defined NDEBUG
-		auto& console = KeyConsole::getInstance();
+		auto &console = KeyConsole::getInstance();
 		if ( wParam == TRUE )
 		{
 			console.log( "Window "
@@ -231,7 +231,7 @@ LRESULT CALLBACK SplashWindow::windowProc( HWND hWnd,
 	case WM_PAINT:
 	{
 #	if defined _DEBUG && !defined NDEBUG
-		auto& console = KeyConsole::getInstance();
+		auto &console = KeyConsole::getInstance();
 		using namespace std::string_literals;
 		console.log( "Painting without DirectX\n"s );
 #	endif
@@ -252,7 +252,7 @@ LRESULT CALLBACK SplashWindow::windowProcDelegate( HWND hWnd,
 	WPARAM wParam,
 	LPARAM lParam )
 {
-	SplashWindow* this_wnd = reinterpret_cast<SplashWindow*>( GetWindowLongPtrW( hWnd,
+	SplashWindow *this_wnd = reinterpret_cast<SplashWindow*>( GetWindowLongPtrW( hWnd,
 		GWLP_USERDATA ) );
 	return this_wnd->windowProc_impl( hWnd,
 		uMsg,
@@ -276,7 +276,7 @@ LRESULT SplashWindow::windowProc_impl( _In_ HWND hWnd,
 	case WM_ENABLE:
 	{
 #if defined _DEBUG && !defined NDEBUG
-		auto& console = KeyConsole::getInstance();
+		auto &console = KeyConsole::getInstance();
 		if ( wParam == TRUE )
 		{
 			console.log( "Window "
@@ -303,7 +303,7 @@ LRESULT SplashWindow::windowProc_impl( _In_ HWND hWnd,
 	case WM_PAINT:
 	{
 #	if defined _DEBUG && !defined NDEBUG
-		auto& console = KeyConsole::getInstance();
+		auto &console = KeyConsole::getInstance();
 		using namespace std::string_literals;
 		console.log( "Painting without DirectX\n"s );
 #	endif

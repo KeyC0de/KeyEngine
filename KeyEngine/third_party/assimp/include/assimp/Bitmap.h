@@ -112,12 +112,12 @@ protected:
     static const std::size_t mBytesPerPixel = 4;
 
 public:
-    static void Save(aiTexture* texture, IOStream* file);
+    static void Save(aiTexture *texture, IOStream *file);
 
 protected:
-    static void WriteHeader(Header& header, IOStream* file);
-    static void WriteDIB(DIB& dib, IOStream* file);
-    static void WriteData(aiTexture* texture, IOStream* file);
+    static void WriteHeader(Header &header, IOStream *file);
+    static void WriteDIB(DIB &dib, IOStream *file);
+    static void WriteData(aiTexture *texture, IOStream *file);
 };
 
 }

@@ -60,7 +60,7 @@ template<typename TReal> class aiQuaterniont;
  *   coordinates.
  *
  *  There's much confusion about matrix layouts (column vs. row order).
- *  This is *always* a row-major matrix. Not even with the
+ *  This is *always *a row-major matrix. Not even with the
  *  #aiProcess_ConvertToLeftHanded flag, which absolutely does not affect
  *  matrix order - it just affects the handedness of the coordinate system
  *  defined thereby.
@@ -94,28 +94,28 @@ public:
 public:
 
     // array access operators
-	/** @fn TReal* operator[] (unsigned int p_iIndex)
+	/** @fn TReal *operator[] (unsigned int p_iIndex)
 	 *  @param [in] p_iIndex - index of the row.
 	 *  @return pointer to pointed row.
 	 */
-    TReal* operator[]       (unsigned int p_iIndex);
+    TReal *operator[]       (unsigned int p_iIndex);
 
-	/** @fn const TReal* operator[] (unsigned int p_iIndex) const
-	 *  @overload TReal* operator[] (unsigned int p_iIndex)
+	/** @fn const TReal *operator[] (unsigned int p_iIndex) const
+	 *  @overload TReal *operator[] (unsigned int p_iIndex)
 	 */
-    const TReal* operator[] (unsigned int p_iIndex) const;
+    const TReal *operator[] (unsigned int p_iIndex) const;
 
     // comparison operators
-    bool operator== (const aiMatrix4x4t& m) const;
-    bool operator!= (const aiMatrix4x4t& m) const;
+    bool operator== (const aiMatrix4x4t &m) const;
+    bool operator!= (const aiMatrix4x4t &m) const;
 
-    bool Equal(const aiMatrix4x4t& m, TReal epsilon = 1e-6) const;
+    bool Equal(const aiMatrix4x4t &m, TReal epsilon = 1e-6) const;
 
     // matrix multiplication.
-    aiMatrix4x4t& operator *= (const aiMatrix4x4t& m);
-    aiMatrix4x4t  operator *  (const aiMatrix4x4t& m) const;
-    aiMatrix4x4t operator * (const TReal& aFloat) const;
-    aiMatrix4x4t operator + (const aiMatrix4x4t& aMatrix) const;
+    aiMatrix4x4t &operator *= (const aiMatrix4x4t &m);
+    aiMatrix4x4t  operator *  (const aiMatrix4x4t &m) const;
+    aiMatrix4x4t operator * (const TReal &aFloat) const;
+    aiMatrix4x4t operator + (const aiMatrix4x4t &aMatrix) const;
 
     template <typename TOther>
     operator aiMatrix4x4t<TOther> () const;
@@ -124,14 +124,14 @@ public:
 
     // -------------------------------------------------------------------
     /** @brief Transpose the matrix */
-    aiMatrix4x4t& Transpose();
+    aiMatrix4x4t &Transpose();
 
     // -------------------------------------------------------------------
     /** @brief Invert the matrix.
      *  If the matrix is not invertible all elements are set to qnan.
      *  Beware, use (f != f) to check whether a TReal f is qnan.
      */
-    aiMatrix4x4t& Inverse();
+    aiMatrix4x4t &Inverse();
     TReal Determinant() const;
 
 
@@ -162,7 +162,7 @@ public:
     void Decompose(aiVector3t<TReal>& pScaling, aiVector3t<TReal>& pRotation, aiVector3t<TReal>& pPosition) const;
 
 	// -------------------------------------------------------------------
-	/** @fn void Decompose(aiVector3t<TReal>& pScaling, aiVector3t<TReal>& pRotationAxis, TReal& pRotationAngle, aiVector3t<TReal>& pPosition) const
+	/** @fn void Decompose(aiVector3t<TReal>& pScaling, aiVector3t<TReal>& pRotationAxis, TReal &pRotationAngle, aiVector3t<TReal>& pPosition) const
      *  @brief Decompose a trafo matrix into its original components
 	 * Thx to good FAQ at http://www.gamedev.ru/code/articles/faq_matrix_quat
      *  @param [out] pScaling - Receives the output scaling for the x,y,z axes.
@@ -170,7 +170,7 @@ public:
 	 *  @param [out] pRotationAngle - Receives the output rotation angle for @ref pRotationAxis.
      *  @param [out] pPosition - Receives the output position for the x,y,z axes.
      */
-    void Decompose(aiVector3t<TReal>& pScaling, aiVector3t<TReal>& pRotationAxis, TReal& pRotationAngle, aiVector3t<TReal>& pPosition) const;
+    void Decompose(aiVector3t<TReal>& pScaling, aiVector3t<TReal>& pRotationAxis, TReal &pRotationAngle, aiVector3t<TReal>& pPosition) const;
 
     // -------------------------------------------------------------------
     /** @brief Decompose a trafo matrix with no scaling into its
@@ -189,8 +189,8 @@ public:
      *  @param y Rotation angle for the y-axis, in radians
      *  @param z Rotation angle for the z-axis, in radians
      */
-    aiMatrix4x4t& FromEulerAnglesXYZ(TReal x, TReal y, TReal z);
-    aiMatrix4x4t& FromEulerAnglesXYZ(const aiVector3t<TReal>& blubb);
+    aiMatrix4x4t &FromEulerAnglesXYZ(TReal x, TReal y, TReal z);
+    aiMatrix4x4t &FromEulerAnglesXYZ(const aiVector3t<TReal>& blubb);
 
 public:
     // -------------------------------------------------------------------
@@ -199,7 +199,7 @@ public:
      *  @param out Receives the output matrix
      *  @return Reference to the output matrix
      */
-    static aiMatrix4x4t& RotationX(TReal a, aiMatrix4x4t& out);
+    static aiMatrix4x4t &RotationX(TReal a, aiMatrix4x4t &out);
 
     // -------------------------------------------------------------------
     /** @brief Returns a rotation matrix for a rotation around the y axis
@@ -207,7 +207,7 @@ public:
      *  @param out Receives the output matrix
      *  @return Reference to the output matrix
      */
-    static aiMatrix4x4t& RotationY(TReal a, aiMatrix4x4t& out);
+    static aiMatrix4x4t &RotationY(TReal a, aiMatrix4x4t &out);
 
     // -------------------------------------------------------------------
     /** @brief Returns a rotation matrix for a rotation around the z axis
@@ -215,7 +215,7 @@ public:
      *  @param out Receives the output matrix
      *  @return Reference to the output matrix
      */
-    static aiMatrix4x4t& RotationZ(TReal a, aiMatrix4x4t& out);
+    static aiMatrix4x4t &RotationZ(TReal a, aiMatrix4x4t &out);
 
     // -------------------------------------------------------------------
     /** Returns a rotation matrix for a rotation around an arbitrary axis.
@@ -224,8 +224,8 @@ public:
      *  @param out Receives the output matrix
      *  @return Reference to the output matrix
      */
-    static aiMatrix4x4t& Rotation(TReal a, const aiVector3t<TReal>& axis,
-            aiMatrix4x4t& out);
+    static aiMatrix4x4t &Rotation(TReal a, const aiVector3t<TReal>& axis,
+            aiMatrix4x4t &out);
 
     // -------------------------------------------------------------------
     /** @brief Returns a translation matrix
@@ -233,8 +233,8 @@ public:
      *  @param out Receives the output matrix
      *  @return Reference to the output matrix
      */
-    static aiMatrix4x4t& Translation( const aiVector3t<TReal>& v, 
-            aiMatrix4x4t& out);
+    static aiMatrix4x4t &Translation( const aiVector3t<TReal>& v, 
+            aiMatrix4x4t &out);
 
     // -------------------------------------------------------------------
     /** @brief Returns a scaling matrix
@@ -242,19 +242,19 @@ public:
      *  @param out Receives the output matrix
      *  @return Reference to the output matrix
      */
-    static aiMatrix4x4t& Scaling( const aiVector3t<TReal>& v, aiMatrix4x4t& out);
+    static aiMatrix4x4t &Scaling( const aiVector3t<TReal>& v, aiMatrix4x4t &out);
 
     // -------------------------------------------------------------------
     /** @brief A function for creating a rotation matrix that rotates a
      *  vector called "from" into another vector called "to".
-     * Input : from[3], to[3] which both must be *normalized* non-zero vectors
+     * Input : from[3], to[3] which both must be *normalized *non-zero vectors
      * Output: mtx[3][3] -- a 3x3 matrix in column-major form
      * Authors: Tomas Mueller, John Hughes
      *          "Efficiently Building a Matrix to Rotate One Vector to Another"
      *          Journal of Graphics Tools, 4(4):1-4, 1999
      */
-    static aiMatrix4x4t& FromToMatrix(const aiVector3t<TReal>& from,
-            const aiVector3t<TReal>& to, aiMatrix4x4t& out);
+    static aiMatrix4x4t &FromToMatrix(const aiVector3t<TReal>& from,
+            const aiVector3t<TReal>& to, aiMatrix4x4t &out);
 
 public:
     TReal a1, a2, a3, a4;

@@ -147,7 +147,7 @@ void PointLight::render( size_t channels ) const cond_noex
 	m_sphereMesh.render( channels );
 }
 
-void PointLight::connectEffectsToRenderer( ren::Renderer& r )
+void PointLight::connectEffectsToRenderer( ren::Renderer &r )
 {
 	m_sphereMesh.connectEffectsToRenderer( r );
 }

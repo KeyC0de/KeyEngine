@@ -103,7 +103,7 @@ inline aiMatrix3x3t<TReal> aiMatrix3x3t<TReal>::operator* (const aiMatrix3x3t<TR
 
 // ------------------------------------------------------------------------------------------------
 template <typename TReal>
-inline TReal* aiMatrix3x3t<TReal>::operator[] (unsigned int p_iIndex) {
+inline TReal *aiMatrix3x3t<TReal>::operator[] (unsigned int p_iIndex) {
     switch ( p_iIndex ) {
         case 0:
             return &a1;
@@ -119,7 +119,7 @@ inline TReal* aiMatrix3x3t<TReal>::operator[] (unsigned int p_iIndex) {
 
 // ------------------------------------------------------------------------------------------------
 template <typename TReal>
-inline const TReal* aiMatrix3x3t<TReal>::operator[] (unsigned int p_iIndex) const {
+inline const TReal *aiMatrix3x3t<TReal>::operator[] (unsigned int p_iIndex) const {
     switch ( p_iIndex ) {
         case 0:
             return &a1;
@@ -260,7 +260,7 @@ inline aiMatrix3x3t<TReal>& aiMatrix3x3t<TReal>::Translation( const aiVector2t<T
 // ----------------------------------------------------------------------------------------
 /** A function for creating a rotation matrix that rotates a vector called
  * "from" into another vector called "to".
- * Input : from[3], to[3] which both must be *normalized* non-zero vectors
+ * Input : from[3], to[3] which both must be *normalized *non-zero vectors
  * Output: mtx[3][3] -- a 3x3 matrix in colum-major form
  * Authors: Tomas Möller, John Hughes
  *          "Efficiently Building a Matrix to Rotate One Vector to Another"

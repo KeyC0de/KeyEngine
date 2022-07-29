@@ -74,7 +74,7 @@ namespace Assimp    {
  * @return Length of the output string, excluding the '\0'
  */
 AI_FORCE_INLINE
-unsigned int ASSIMP_itoa10( char* out, unsigned int max, int32_t number) {
+unsigned int ASSIMP_itoa10( char *out, unsigned int max, int32_t number) {
     ai_assert(NULL != out);
 
     // write the unary minus to indicate we have a negative number
@@ -216,7 +216,6 @@ int ASSIMP_strincmp(const char *s1, const char *s2, unsigned int n) {
 // -------------------------------------------------------------------------------
 /** @brief Evaluates an integer power
  *
- * todo: move somewhere where it fits better in than here
  */
 AI_FORCE_INLINE
 unsigned int integer_pow( unsigned int base, unsigned int power ) {

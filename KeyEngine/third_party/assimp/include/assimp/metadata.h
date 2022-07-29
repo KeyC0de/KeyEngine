@@ -83,7 +83,7 @@ typedef enum aiMetadataType {
  // -------------------------------------------------------------------------------
 struct aiMetadataEntry {
 	aiMetadataType mType;
-	void* mData;
+	void *mData;
 };
 
 #ifdef __cplusplus
@@ -118,11 +118,11 @@ struct aiMetadata {
 	unsigned int mNumProperties;
 
 	/** Arrays of keys, may not be NULL. Entries in this array may not be NULL as well. */
-	C_STRUCT aiString* mKeys;
+	C_STRUCT aiString *mKeys;
 
 	/** Arrays of values, may not be NULL. Entries in this array may be NULL if the
 	  * corresponding property key has no assigned value. */
-	C_STRUCT aiMetadataEntry* mValues;
+	C_STRUCT aiMetadataEntry *mValues;
 
 #ifdef __cplusplus
 
@@ -206,7 +206,7 @@ struct aiMetadata {
 		if (mValues) {
 			// Delete each metadata entry
 			for (unsigned i=0; i<mNumProperties; ++i) {
-				void* data = mValues[i].mData;
+				void *data = mValues[i].mData;
 				switch (mValues[i].mType) {
 				case AI_BOOL:
 					delete static_cast< bool* >( data );
@@ -271,9 +271,9 @@ struct aiMetadata {
 
 	template<typename T>
 	inline
-	void Add(const std::string &key, const T& value) {
-		aiString* new_keys = new aiString[mNumProperties + 1];
-		aiMetadataEntry* new_values = new aiMetadataEntry[mNumProperties + 1];
+	void Add(const std::string &key, const T &value) {
+		aiString *new_keys = new aiString[mNumProperties + 1];
+		aiMetadataEntry *new_values = new aiMetadataEntry[mNumProperties + 1];
 
 		for(unsigned int i = 0; i < mNumProperties; ++i)
 		{
@@ -294,7 +294,7 @@ struct aiMetadata {
 
 	template<typename T>
 	inline 
-	bool Set( unsigned index, const std::string &key, const T& value ) {
+	bool Set( unsigned index, const std::string &key, const T &value ) {
 		// In range assertion
 		if ( index >= mNumProperties ) {
 			return false;
@@ -318,7 +318,7 @@ struct aiMetadata {
 
 	template<typename T>
 	inline 
-	bool Get( unsigned index, T& value ) const {
+	bool Get( unsigned index, T &value ) const {
 		// In range assertion
 		if ( index >= mNumProperties ) {
 			return false;
@@ -339,7 +339,7 @@ struct aiMetadata {
 
 	template<typename T>
 	inline 
-	bool Get( const aiString& key, T& value ) const {
+	bool Get( const aiString &key, T &value ) const {
 		// Search for the given key
 		for ( unsigned int i = 0; i < mNumProperties; ++i ) {
 			if ( mKeys[ i ] == key ) {
@@ -351,7 +351,7 @@ struct aiMetadata {
 
 	template<typename T>
 	inline
-	bool Get( const std::string &key, T& value ) const {
+	bool Get( const std::string &key, T &value ) const {
 		return Get(aiString(key), value);
 	}
 
@@ -361,7 +361,7 @@ struct aiMetadata {
 	/// \param [out] pEntry - pointer to the entry: m_topo and value.
 	/// \return false - if pIndex is out of range, else - true.
 	inline
-	bool Get(size_t index, const aiString*& key, const aiMetadataEntry*& entry) const {
+	bool Get(size_t index, const aiString *&key, const aiMetadataEntry *&entry) const {
 		if ( index >= mNumProperties ) {
 			return false;
 		}

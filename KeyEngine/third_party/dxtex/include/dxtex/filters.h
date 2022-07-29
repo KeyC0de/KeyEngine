@@ -59,7 +59,7 @@ struct LinearFilter
     float   weight1;
 };
 
-inline void _CreateLinearFilter(_In_ size_t source, _In_ size_t dest, _In_ bool wrap, _Out_writes_(dest) LinearFilter* lf) noexcept
+inline void _CreateLinearFilter(_In_ size_t source, _In_ size_t dest, _In_ bool wrap, _Out_writes_(dest) LinearFilter *lf) noexcept
 {
     assert(source > 0);
     assert(dest > 0);
@@ -88,7 +88,7 @@ inline void _CreateLinearFilter(_In_ size_t source, _In_ size_t dest, _In_ bool 
 
         float weight = 1.0f + float(isrcB) - srcB;
 
-        auto& entry = lf[u];
+        auto &entry = lf[u];
         entry.u0 = size_t(isrcA);
         entry.weight0 = weight;
 
@@ -159,7 +159,7 @@ struct CubicFilter
     float   x;
 };
 
-inline void _CreateCubicFilter(_In_ size_t source, _In_ size_t dest, _In_ bool wrap, _In_ bool mirror, _Out_writes_(dest) CubicFilter* cf) noexcept
+inline void _CreateCubicFilter(_In_ size_t source, _In_ size_t dest, _In_ bool wrap, _In_ bool mirror, _Out_writes_(dest) CubicFilter *cf) noexcept
 {
     assert(source > 0);
     assert(dest > 0);
@@ -176,7 +176,7 @@ inline void _CreateCubicFilter(_In_ size_t source, _In_ size_t dest, _In_ bool w
         ptrdiff_t isrcC = bounduvw(isrcB + 1, ptrdiff_t(source) - 1, wrap, mirror);
         ptrdiff_t isrcD = bounduvw(isrcB + 2, ptrdiff_t(source) - 1, wrap, mirror);
 
-        auto& entry = cf[u];
+        auto &entry = cf[u];
         entry.u0 = size_t(isrcA);
         entry.u1 = size_t(isrcB);
         entry.u2 = size_t(isrcC);
@@ -267,7 +267,7 @@ namespace TriangleFilter
             totalSize += TF_FROM_SIZE + TF_TO_SIZE + size_t(t) * TF_TO_SIZE * 2;
         }
 
-        uint8_t* pFilter = nullptr;
+        uint8_t *pFilter = nullptr;
 
         if (tf)
         {

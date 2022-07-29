@@ -12,11 +12,11 @@ class Ball
 	DirectX::XMFLOAT2 m_pos;
 	DirectX::XMFLOAT2 m_vel;
 public:
-	Ball( const DirectX::XMFLOAT2& position, const DirectX::XMFLOAT2& velocity );
+	Ball( const DirectX::XMFLOAT2 &position, const DirectX::XMFLOAT2 &velocity );
 
 	void update( float dt );
 	void render( Graphics &gph );
-	bool doWallCollision( const Rect& wall );
+	bool doWallCollision( const Rect &wall );
 	//===================================================
 	//	\function	reboundX, reboundY
 	//	\brief  direction up = [0, 1] , down = [0, -1] , left = [0, -1] , right = [0, 1]

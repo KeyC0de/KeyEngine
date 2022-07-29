@@ -14,9 +14,9 @@ class Fruit
 	static inline ColorBGRA m_color = col::Red;
 	GridLocation m_gridLoc;
 public:
-	Fruit( std::mt19937& rng, const SnakePlayField& field, const SnakeRepr& snake );
+	Fruit( std::mt19937 &rng, const SnakePlayField &field, const SnakeRepr &snake );
 
-	void render( Graphics &gph, SnakePlayField& field ) const;
-	void respawn( std::mt19937& rng, const SnakePlayField& field, const SnakeRepr& snake );
-	const GridLocation& getGridLocation() const noexcept;
+	void render( Graphics &gph, SnakePlayField &field ) const;
+	void respawn( std::mt19937 &rng, const SnakePlayField &field, const SnakeRepr &snake );
+	const GridLocation &getGridLocation() const noexcept;
 };

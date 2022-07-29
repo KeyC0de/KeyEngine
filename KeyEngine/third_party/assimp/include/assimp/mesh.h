@@ -111,7 +111,7 @@ extern "C" {
  * aiMesh::mPrimitiveTypes can be queried to quickly examine which types of
  * primitive are actually present in a mesh. The #aiProcess_SortByPType flag
  * executes a special post-processing algorithm which splits meshes with
- * *different* primitive types mixed up (e.g. lines and triangles) in several
+ * *different *primitive types mixed up (e.g. lines and triangles) in several
  * 'clean' submeshes. Furthermore there is a configuration option (
  * #AI_CONFIG_PP_SBP_REMOVE) to force #aiProcess_SortByPType to remove
  * specific kinds of primitives from the imported scene, completely and forever.
@@ -131,7 +131,7 @@ struct aiFace
     unsigned int mNumIndices;
 
     //! Pointer to the indices array. Size of the array is given in numIndices.
-    unsigned int* mIndices;
+    unsigned int *mIndices;
 
 #ifdef __cplusplus
 
@@ -149,14 +149,14 @@ struct aiFace
     }
 
     //! Copy constructor. Copy the index array
-    aiFace( const aiFace& o)
+    aiFace( const aiFace &o)
       : mIndices( NULL )
     {
         *this = o;
     }
 
     //! Assignment operator. Copy the index array
-    aiFace& operator = ( const aiFace& o)
+    aiFace &operator = ( const aiFace &o)
     {
         if (&o == this)
             return *this;
@@ -175,7 +175,7 @@ struct aiFace
 
     //! Comparison operator. Checks whether the index array
     //! of two faces is identical
-    bool operator== (const aiFace& o) const
+    bool operator== (const aiFace &o) const
     {
         if (mIndices == o.mIndices)return true;
         else if (mIndices && mNumIndices == o.mNumIndices)
@@ -189,7 +189,7 @@ struct aiFace
 
     //! Inverse comparison operator. Checks whether the index
     //! array of two faces is NOT identical
-    bool operator != (const aiFace& o) const
+    bool operator != (const aiFace &o) const
     {
         return !(*this == o);
     }
@@ -255,7 +255,7 @@ struct aiBone {
     unsigned int mNumWeights;
 
     //! The influence weights of this bone, by vertex index.
-    C_STRUCT aiVertexWeight* mWeights;
+    C_STRUCT aiVertexWeight *mWeights;
 
     /** Matrix that transforms from bone space to mesh space in bind pose.
      *
@@ -281,7 +281,7 @@ struct aiBone {
     }
 
     //! Copy constructor
-    aiBone(const aiBone& other)
+    aiBone(const aiBone &other)
       : mName( other.mName )
       , mNumWeights( other.mNumWeights )
       , mOffsetMatrix( other.mOffsetMatrix )
@@ -295,7 +295,7 @@ struct aiBone {
 
 
     //! Assignment operator
-    aiBone &operator=(const aiBone& other)
+    aiBone &operator=(const aiBone &other)
     {
         if (this == &other) {
             return *this;
@@ -408,27 +408,27 @@ enum aiPrimitiveType
 struct aiAnimMesh
 {
     /** Replacement for aiMesh::mVertices. If this array is non-NULL,
-     *  it *must* contain mNumVertices entries. The corresponding
+     *  it *must *contain mNumVertices entries. The corresponding
      *  array in the host mesh must be non-NULL as well - animation
      *  meshes may neither add or nor remove vertex components (if
      *  a replacement array is NULL and the corresponding source
      *  array is not, the source data is taken instead)*/
-    C_STRUCT aiVector3D* mVertices;
+    C_STRUCT aiVector3D *mVertices;
 
     /** Replacement for aiMesh::mNormals.  */
-    C_STRUCT aiVector3D* mNormals;
+    C_STRUCT aiVector3D *mNormals;
 
     /** Replacement for aiMesh::mTangents. */
-    C_STRUCT aiVector3D* mTangents;
+    C_STRUCT aiVector3D *mTangents;
 
     /** Replacement for aiMesh::mBitangents. */
-    C_STRUCT aiVector3D* mBitangents;
+    C_STRUCT aiVector3D *mBitangents;
 
     /** Replacement for aiMesh::mColors */
-    C_STRUCT aiColor4D* mColors[AI_MAX_NUMBER_OF_COLOR_SETS];
+    C_STRUCT aiColor4D *mColors[AI_MAX_NUMBER_OF_COLOR_SETS];
 
     /** Replacement for aiMesh::mTextureCoords */
-    C_STRUCT aiVector3D* mTextureCoords[AI_MAX_NUMBER_OF_TEXTURECOORDS];
+    C_STRUCT aiVector3D *mTextureCoords[AI_MAX_NUMBER_OF_TEXTURECOORDS];
 
     /** The number of vertices in the aiAnimMesh, and thus the length of all
      * the member arrays.
@@ -550,7 +550,7 @@ enum aiMorphingMethod
 *
 * A Mesh uses only a single material which is referenced by a material ID.
 * @note The mPositions member is usually not optional. However, vertex positions
-* *could* be missing if the #AI_SCENE_FLAGS_INCOMPLETE flag is set in
+* *could *be missing if the #AI_SCENE_FLAGS_INCOMPLETE flag is set in
 * @code
 * aiScene::mFlags
 * @endcode
@@ -580,7 +580,7 @@ struct aiMesh
     * This array is always present in a mesh. The array is
     * mNumVertices in size.
     */
-    C_STRUCT aiVector3D* mVertices;
+    C_STRUCT aiVector3D *mVertices;
 
     /** Vertex normals.
     * The array contains normalized vectors, NULL if not present.
@@ -602,7 +602,7 @@ struct aiMesh
     * However, this needn't apply for normals that have been taken
     *   directly from the model file.
     */
-    C_STRUCT aiVector3D* mNormals;
+    C_STRUCT aiVector3D *mNormals;
 
     /** Vertex tangents.
     * The tangent of a vertex points in the direction of the positive
@@ -616,7 +616,7 @@ struct aiMesh
     * @note If the mesh contains tangents, it automatically also
     * contains bitangents.
     */
-    C_STRUCT aiVector3D* mTangents;
+    C_STRUCT aiVector3D *mTangents;
 
     /** Vertex bitangents.
     * The bitangent of a vertex points in the direction of the positive
@@ -625,20 +625,20 @@ struct aiMesh
     * @note If the mesh contains tangents, it automatically also contains
     * bitangents.
     */
-    C_STRUCT aiVector3D* mBitangents;
+    C_STRUCT aiVector3D *mBitangents;
 
     /** Vertex color sets.
     * A mesh may contain 0 to #AI_MAX_NUMBER_OF_COLOR_SETS vertex
     * colors per vertex. NULL if not present. Each array is
     * mNumVertices in size if present.
     */
-    C_STRUCT aiColor4D* mColors[AI_MAX_NUMBER_OF_COLOR_SETS];
+    C_STRUCT aiColor4D *mColors[AI_MAX_NUMBER_OF_COLOR_SETS];
 
     /** Vertex texture coords, also known as UV channels.
     * A mesh may contain 0 to AI_MAX_NUMBER_OF_TEXTURECOORDS per
     * vertex. NULL if not present. The array is mNumVertices in size.
     */
-    C_STRUCT aiVector3D* mTextureCoords[AI_MAX_NUMBER_OF_TEXTURECOORDS];
+    C_STRUCT aiVector3D *mTextureCoords[AI_MAX_NUMBER_OF_TEXTURECOORDS];
 
     /** Specifies the number of components for a given UV channel.
     * Up to three channels are supported (UVW, for accessing volume
@@ -655,7 +655,7 @@ struct aiMesh
     * in mNumFaces. If the #AI_SCENE_FLAGS_NON_VERBOSE_FORMAT
     * is NOT set each face references an unique set of vertices.
     */
-    C_STRUCT aiFace* mFaces;
+    C_STRUCT aiFace *mFaces;
 
     /** The number of bones this mesh contains.
     * Can be 0, in which case the mBones array is NULL.

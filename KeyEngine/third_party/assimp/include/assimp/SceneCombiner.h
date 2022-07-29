@@ -82,12 +82,12 @@ struct AttachmentInfo
         ,   attachToNode    (NULL)
     {}
 
-    AttachmentInfo(aiScene* _scene, aiNode* _attachToNode)
+    AttachmentInfo(aiScene *_scene, aiNode *_attachToNode)
         :   scene           (_scene)
         ,   attachToNode    (_attachToNode)
     {}
 
-    aiScene* scene;
+    aiScene *scene;
     aiNode*  attachToNode;
 };
 
@@ -101,7 +101,7 @@ struct NodeAttachmentInfo
         ,   src_idx         (SIZE_MAX)
     {}
 
-    NodeAttachmentInfo(aiNode* _scene, aiNode* _attachToNode,size_t idx)
+    NodeAttachmentInfo(aiNode *_scene, aiNode *_attachToNode,size_t idx)
         :   node            (_scene)
         ,   attachToNode    (_attachToNode)
         ,   resolved        (false)
@@ -165,20 +165,20 @@ struct SceneHelper
         id[0] = 0;
     }
 
-    explicit SceneHelper (aiScene* _scene)
+    explicit SceneHelper (aiScene *_scene)
         : scene     (_scene)
         , idlen     (0)
     {
         id[0] = 0;
     }
 
-    AI_FORCE_INLINE aiScene* operator-> () const
+    AI_FORCE_INLINE aiScene *operator-> () const
     {
         return scene;
     }
 
     // scene we're working on
-    aiScene* scene;
+    aiScene *scene;
 
     // prefix to be added to all identifiers in the scene ...
     char id [32];
@@ -236,7 +236,7 @@ public:
      *    deletes the input scenes afterwards. There may be duplicate scenes.
      *  @param flags Combination of the AI_INT_MERGE_SCENE flags defined above
      */
-    static void MergeScenes(aiScene** dest, aiScene* master,
+    static void MergeScenes(aiScene** dest, aiScene *master,
         std::vector<AttachmentInfo>& src,
         unsigned int flags = 0);
 
@@ -266,7 +266,7 @@ public:
      *  @param begin First mesh to be processed
      *  @param end Points to the mesh after the last mesh to be processed
      */
-    static void MergeBones(aiMesh* out,std::vector<aiMesh*>::const_iterator it,
+    static void MergeBones(aiMesh *out,std::vector<aiMesh*>::const_iterator it,
         std::vector<aiMesh*>::const_iterator end);
 
     // -------------------------------------------------------------------
@@ -302,7 +302,7 @@ public:
      *  @param prefix Prefix to be added to all nodes
      *  @param len STring length
      */
-    static void AddNodePrefixes(aiNode* node, const char* prefix,
+    static void AddNodePrefixes(aiNode *node, const char *prefix,
         unsigned int len);
 
     // -------------------------------------------------------------------
@@ -311,7 +311,7 @@ public:
      *  @param Current node. This function is called recursively.
      *  @param offset Offset to be added to all mesh indices
      */
-    static void OffsetNodeMeshIndices (aiNode* node, unsigned int offset);
+    static void OffsetNodeMeshIndices (aiNode *node, unsigned int offset);
 
     // -------------------------------------------------------------------
     /** Attach a list of node graphs to well-defined nodes in a master
@@ -325,10 +325,10 @@ public:
      *  @duplicates List of duplicates. If elem[n] == n the scene is not
      *    a duplicate. Otherwise elem[n] links scene n to its first occurrence.
      */
-    static void AttachToGraph ( aiScene* master,
+    static void AttachToGraph ( aiScene *master,
         std::vector<NodeAttachmentInfo>& srcList);
 
-    static void AttachToGraph (aiNode* attach,
+    static void AttachToGraph (aiNode *attach,
         std::vector<NodeAttachmentInfo>& srcList);
 
 
@@ -338,7 +338,7 @@ public:
      *  @param dest Receives a pointer to the destination scene
      *  @param src Source scene - remains unmodified.
      */
-    static void CopyScene(aiScene** dest,const aiScene* source,bool allocate = true);
+    static void CopyScene(aiScene** dest,const aiScene *source,bool allocate = true);
 
 
     // -------------------------------------------------------------------
@@ -351,7 +351,7 @@ public:
      *  @param dest Receives a pointer to the destination scene
      *  @param src Source scene - remains unmodified.
      */
-    static void CopySceneFlat(aiScene** dest,const aiScene* source);
+    static void CopySceneFlat(aiScene** dest,const aiScene *source);
 
 
     // -------------------------------------------------------------------
@@ -360,39 +360,39 @@ public:
      *  @param dest Receives a pointer to the destination mesh
      *  @param src Source mesh - remains unmodified.
      */
-    static void Copy     (aiMesh** dest, const aiMesh* src);
+    static void Copy     (aiMesh** dest, const aiMesh *src);
 
     // similar to Copy():
-    static void Copy  (aiMaterial** dest, const aiMaterial* src);
-    static void Copy  (aiTexture** dest, const aiTexture* src);
-    static void Copy  (aiAnimation** dest, const aiAnimation* src);
-    static void Copy  (aiCamera** dest, const aiCamera* src);
-    static void Copy  (aiBone** dest, const aiBone* src);
-    static void Copy  (aiLight** dest, const aiLight* src);
-    static void Copy  (aiNodeAnim** dest, const aiNodeAnim* src);
-    static void Copy  (aiMetadata** dest, const aiMetadata* src);
+    static void Copy  (aiMaterial** dest, const aiMaterial *src);
+    static void Copy  (aiTexture** dest, const aiTexture *src);
+    static void Copy  (aiAnimation** dest, const aiAnimation *src);
+    static void Copy  (aiCamera** dest, const aiCamera *src);
+    static void Copy  (aiBone** dest, const aiBone *src);
+    static void Copy  (aiLight** dest, const aiLight *src);
+    static void Copy  (aiNodeAnim** dest, const aiNodeAnim *src);
+    static void Copy  (aiMetadata** dest, const aiMetadata *src);
 
     // recursive, of course
-    static void Copy     (aiNode** dest, const aiNode* src);
+    static void Copy     (aiNode** dest, const aiNode *src);
 
 
 private:
 
     // -------------------------------------------------------------------
     // Same as AddNodePrefixes, but with an additional check
-    static void AddNodePrefixesChecked(aiNode* node, const char* prefix,
+    static void AddNodePrefixesChecked(aiNode *node, const char *prefix,
         unsigned int len,
         std::vector<SceneHelper>& input,
         unsigned int cur);
 
     // -------------------------------------------------------------------
     // Add node identifiers to a hashing set
-    static void AddNodeHashes(aiNode* node, std::set<unsigned int>& hashes);
+    static void AddNodeHashes(aiNode *node, std::set<unsigned int>& hashes);
 
 
     // -------------------------------------------------------------------
     // Search for duplicate names
-    static bool FindNameMatch(const aiString& name,
+    static bool FindNameMatch(const aiString &name,
         std::vector<SceneHelper>& input, unsigned int cur);
 };
 

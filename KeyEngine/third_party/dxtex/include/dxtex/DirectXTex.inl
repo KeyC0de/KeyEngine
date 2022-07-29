@@ -121,7 +121,7 @@ inline bool __cdecl IsSRGB(DXGI_FORMAT fmt) noexcept
 // Image I/O
 //=====================================================================================
 _Use_decl_annotations_
-inline HRESULT __cdecl SaveToDDSMemory(const Image& image, DDS_FLAGS flags, Blob& blob) noexcept
+inline HRESULT __cdecl SaveToDDSMemory(const Image &image, DDS_FLAGS flags, Blob &blob) noexcept
 {
     TexMetadata mdata = {};
     mdata.width = image.width;
@@ -136,7 +136,7 @@ inline HRESULT __cdecl SaveToDDSMemory(const Image& image, DDS_FLAGS flags, Blob
 }
 
 _Use_decl_annotations_
-inline HRESULT __cdecl SaveToDDSFile(const Image& image, DDS_FLAGS flags, const wchar_t* szFile) noexcept
+inline HRESULT __cdecl SaveToDDSFile(const Image &image, DDS_FLAGS flags, const wchar_t *szFile) noexcept
 {
     TexMetadata mdata = {};
     mdata.width = image.width;
@@ -155,37 +155,37 @@ inline HRESULT __cdecl SaveToDDSFile(const Image& image, DDS_FLAGS flags, const 
 // Compatability helpers
 //=====================================================================================
 _Use_decl_annotations_
-inline HRESULT __cdecl GetMetadataFromTGAMemory(const void* pSource, size_t size, TexMetadata& metadata) noexcept
+inline HRESULT __cdecl GetMetadataFromTGAMemory(const void *pSource, size_t size, TexMetadata &metadata) noexcept
 {
     return GetMetadataFromTGAMemory(pSource, size, TGA_FLAGS_NONE, metadata);
 }
 
 _Use_decl_annotations_
-inline HRESULT __cdecl GetMetadataFromTGAFile(const wchar_t* szFile, TexMetadata& metadata) noexcept
+inline HRESULT __cdecl GetMetadataFromTGAFile(const wchar_t *szFile, TexMetadata &metadata) noexcept
 {
     return GetMetadataFromTGAFile(szFile, TGA_FLAGS_NONE, metadata);
 }
 
 _Use_decl_annotations_
-inline HRESULT __cdecl LoadFromTGAMemory(const void* pSource, size_t size, TexMetadata* metadata, ScratchImage& image) noexcept
+inline HRESULT __cdecl LoadFromTGAMemory(const void *pSource, size_t size, TexMetadata *metadata, ScratchImage &image) noexcept
 {
     return LoadFromTGAMemory(pSource, size, TGA_FLAGS_NONE, metadata, image);
 }
 
 _Use_decl_annotations_
-inline HRESULT __cdecl LoadFromTGAFile(const wchar_t* szFile, TexMetadata* metadata, ScratchImage& image) noexcept
+inline HRESULT __cdecl LoadFromTGAFile(const wchar_t *szFile, TexMetadata *metadata, ScratchImage &image) noexcept
 {
     return LoadFromTGAFile(szFile, TGA_FLAGS_NONE, metadata, image);
 }
 
 _Use_decl_annotations_
-inline HRESULT __cdecl SaveToTGAMemory(const Image& image, Blob& blob, const TexMetadata* metadata) noexcept
+inline HRESULT __cdecl SaveToTGAMemory(const Image &image, Blob &blob, const TexMetadata *metadata) noexcept
 {
     return SaveToTGAMemory(image, TGA_FLAGS_NONE, blob, metadata);
 }
 
 _Use_decl_annotations_
-inline HRESULT __cdecl SaveToTGAFile(const Image& image, const wchar_t* szFile, const TexMetadata* metadata) noexcept
+inline HRESULT __cdecl SaveToTGAFile(const Image &image, const wchar_t *szFile, const TexMetadata *metadata) noexcept
 {
     return SaveToTGAFile(image, TGA_FLAGS_NONE, szFile, metadata);
 }

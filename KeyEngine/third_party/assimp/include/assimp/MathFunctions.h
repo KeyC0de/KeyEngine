@@ -48,7 +48,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 namespace Assimp {
 namespace Math {
 
-// TODO: use binary GCD for unsigned integers ....
 template < typename IntegerType >
 IntegerType  gcd( IntegerType a, IntegerType b )
 {

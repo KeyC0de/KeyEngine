@@ -122,11 +122,11 @@ void Texture::update( Graphics &gph ) cond_noex
 		&mappedCpuBufferTexture );
 	ASSERT_HRES_IF_FAILED;
 
-	ColorBGRA* pDst = static_cast<ColorBGRA*>( mappedCpuBufferTexture.pData );
+	ColorBGRA *pDst = static_cast<ColorBGRA*>( mappedCpuBufferTexture.pData );
 	const unsigned dstWidth = mappedCpuBufferTexture.RowPitch / sizeof ColorBGRA;
 	const unsigned srcWidth = m_width;
 	const unsigned nRowBytes = srcWidth * sizeof ColorBGRA;
-	ColorBGRA* pSrc = gph.getCpuBuffer();
+	ColorBGRA *pSrc = gph.getCpuBuffer();
 	// copy 1 line at a time from cpuBuffer to dynamic GPU texture
 	for ( unsigned y = 0u; y < m_height; ++y )
 	{
@@ -197,7 +197,7 @@ void Texture::flipModelNormalMapsGreenChannel( const std::string &objPath )
 	// loop through materials and process any normal maps
 	for ( auto i = 0u; i < pScene->mNumMaterials; ++i )
 	{
-		const auto& mat = *pScene->mMaterials[i];
+		const auto &mat = *pScene->mMaterials[i];
 		aiString texFileName;
 		if ( mat.GetTexture( aiTextureType_NORMALS, 0, &texFileName ) == aiReturn_SUCCESS )
 		{
@@ -227,7 +227,7 @@ void Texture::validateNormalMap( const std::string &pathIn,
 	float thresholdMax )
 {
 #if defined _DEBUG && !defined NDEBUG
-	auto& console = KeyConsole::getInstance();
+	auto &console = KeyConsole::getInstance();
 	console.log( ( "Validating normal map [" + pathIn + "]\n" ).c_str() );
 #endif
 	auto sum = dx::XMVectorZero();
@@ -257,7 +257,7 @@ void Texture::validateNormalMap( const std::string &pathIn,
 				<< vec.z
 				<< ")\n";
 #if defined _DEBUG && !defined NDEBUG
-			auto& console = KeyConsole::getInstance();
+			auto &console = KeyConsole::getInstance();
 			console.log( oss.str().c_str() );
 #endif
 		}
@@ -278,7 +278,7 @@ void Texture::validateNormalMap( const std::string &pathIn,
 				<< vec.z
 				<< ")\n";
 #if defined _DEBUG && !defined NDEBUG
-			auto& console = KeyConsole::getInstance();
+			auto &console = KeyConsole::getInstance();
 			console.log( oss.str().c_str() );
 #endif
 		}

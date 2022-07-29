@@ -41,7 +41,7 @@ static_assert( _MSVC_LANG >= 201703L,
 #	define NOMEMMGR					// GMEM_*, LMEM_*, GHND, LHND, associated routines
 #	define NOMETAFILE				// typedef METAFILEPICT
 #	define NOOPENFILE				// OpenFile(), OemToAnsi, AnsiToOem, and OF_*
-#	define NOSCROLL					// SB_* and scrolling routines
+#	define NOSCROLL					// SB_ *and scrolling routines
 #	define NOSERVICE				// All SERVICE_ Controller routines
 #	define NOIMAGE					// 
 #	define NOWH						// SetWindowsHook and WH_*
@@ -70,7 +70,7 @@ static_assert( _MSVC_LANG >= 201703L,
 //#	define NOKEYSTATES				// MK_*
 //#	define NOSHOWWINDOW				// SW_*
 //#	define NONLS					// NLS (Native Language Support) macros and routines
-//#	define NOMB						// MB_* and MessageBox()
+//#	define NOMB						// MB_ *and MessageBox()
 //#	define NOSOUND					// Sound driver routines
 //#	define NOTEXTMETRIC				// typedef TEXTMETRIC and associated routines
 									//	required by atlbase.h

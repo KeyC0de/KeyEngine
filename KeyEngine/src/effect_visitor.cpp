@@ -14,14 +14,14 @@ IEffectVisitor::~IEffectVisitor()
 	pass_;
 }
 
-void IEffectVisitor::setEffect( Effect* ef )
+void IEffectVisitor::setEffect( Effect *ef )
 {
 	m_pEffect = ef;
 	++m_effectId;
 	onSetEffect();
 }
 
-bool IEffectVisitor::visit( con::Buffer& cb )
+bool IEffectVisitor::visit( con::Buffer &cb )
 {
 	++m_cbId;
 	return onVisit( cb );
@@ -33,7 +33,7 @@ void IEffectVisitor::onSetEffect()
 }
 
 
-bool EVShowcase::onVisit( con::Buffer& cb )
+bool EVShowcase::onVisit( con::Buffer &cb )
 {
 	float bDirty = false;
 	const auto dirtyCheck = [&bDirty]( bool bChanged )
@@ -43,7 +43,7 @@ bool EVShowcase::onVisit( con::Buffer& cb )
 
 	auto tagImGuiWidget = [imguiNodeName = std::string{},
 		str = '#' + std::to_string( m_cbId )]
-		( const char* label ) mutable
+		( const char *label ) mutable
 	{
 		imguiNodeName = label + str;
 		return imguiNodeName.c_str();
@@ -51,49 +51,49 @@ bool EVShowcase::onVisit( con::Buffer& cb )
 
 	// query the Drawable's Constant Buffer for available CB Elements
 	// and display ImGui controls for those available
-	if ( const auto& el = cb["scale"]; el.isValid() )
+	if ( const auto &el = cb["scale"]; el.isValid() )
 	{
 		dirtyCheck( ImGui::SliderFloat( tagImGuiWidget( "Scale" ),
 			&el, 1.0f, 2.0f, "%.3f", 3.5f ) );
 	}
 	
-	if ( const auto& el = cb["offset"]; el.isValid() )
+	if ( const auto &el = cb["offset"]; el.isValid() )
 	{
 		dirtyCheck( ImGui::SliderFloat( tagImGuiWidget( "offset" ),
 			&el, 0.0f, 1.0f, "%.3f", 2.5f ) );
 	}
 	
-	if ( const auto& el = cb["materialColor"]; el.isValid() )
+	if ( const auto &el = cb["materialColor"]; el.isValid() )
 	{
 		dirtyCheck( ImGui::ColorPicker3( tagImGuiWidget( "Diff. Color" ),
 			reinterpret_cast<float*>( &static_cast<dx::XMFLOAT3&>( el ) ) ) );
 	}
 	
-	if ( const auto& el = cb["modelSpecularColor"]; el.isValid() )
+	if ( const auto &el = cb["modelSpecularColor"]; el.isValid() )
 	{
 		dirtyCheck( ImGui::ColorPicker3( tagImGuiWidget( "Spec. Color" ),
 			reinterpret_cast<float*>(&static_cast<dx::XMFLOAT3&>( el ) ) ) );
 	}
 	
-	if ( const auto& el = cb["modelSpecularGloss"]; el.isValid() )
+	if ( const auto &el = cb["modelSpecularGloss"]; el.isValid() )
 	{
 		dirtyCheck( ImGui::SliderFloat( tagImGuiWidget( "Gloss" ),
 			&el, 1.0f, 100.0f, "%.1f", 1.5f ) );
 	}
 	
-	if ( const auto& el = cb["useSpecularMap"]; el.isValid() )
+	if ( const auto &el = cb["useSpecularMap"]; el.isValid() )
 	{
 		dirtyCheck( ImGui::Checkbox( tagImGuiWidget( "Enable Specular Map" ),
 			&el ) );
 	}
 	
-	if ( const auto& el = cb["useNormalMap"]; el.isValid() )
+	if ( const auto &el = cb["useNormalMap"]; el.isValid() )
 	{
 		dirtyCheck( ImGui::Checkbox( tagImGuiWidget( "Enable Normal Map" ),
 			&el ) );
 	}
 	
-	if ( const auto& el = cb["normalMapWeight"]; el.isValid() )
+	if ( const auto &el = cb["normalMapWeight"]; el.isValid() )
 	{
 		dirtyCheck( ImGui::SliderFloat( tagImGuiWidget( "Normal Map Weight" ),
 			&el, 0.0f, 2.0f ) );

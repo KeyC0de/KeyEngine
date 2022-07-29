@@ -28,10 +28,10 @@ class SettingsManager final
 public:
 	~SettingsManager() noexcept;
 	SettingsManager( const SettingsManager &rhs ) = delete;
-	SettingsManager& operator=( const SettingsManager &rhs ) = delete;
+	SettingsManager &operator=( const SettingsManager &rhs ) = delete;
 
-	static SettingsManager& getInstance( const std::string &filePath = "config.ini" );
+	static SettingsManager &getInstance( const std::string &filePath = "config.ini" );
 	static void resetInstance();
-	const Settings& getSettings();
-	Settings& accessSettings();
+	const Settings &getSettings();
+	Settings &accessSettings();
 };

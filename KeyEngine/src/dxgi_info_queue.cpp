@@ -15,7 +15,7 @@ DxgiInfoQueue::DxgiInfoQueue()
 		nullptr,
 		LOAD_LIBRARY_SEARCH_SYSTEM32 );
 
-	KeyConsole& console = KeyConsole::getInstance();
+	KeyConsole &console = KeyConsole::getInstance();
 	LPDXGIGETDEBUGINTERFACE dxgiGetDebugInterface;
 	if ( !dxgidebugLib )
 	{
@@ -72,7 +72,7 @@ std::vector<std::string> DxgiInfoQueue::getInfoMessages()
 	for( size_t i = m_index; i < lastIndex; ++i )
 	{
 		HRESULT hres;
-		//DXGI_INFO_QUEUE_MESSAGE* pMsg = nullptr;
+		//DXGI_INFO_QUEUE_MESSAGE *pMsg = nullptr;
 		size_t messageLengthInBytes = 0;
 		// first get the message length
 		hres = m_pDxgiInfoQueue->GetMessageW( m_msgProducer,

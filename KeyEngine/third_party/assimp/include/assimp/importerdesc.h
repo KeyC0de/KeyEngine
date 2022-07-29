@@ -90,16 +90,16 @@ enum aiImporterFlags
 struct aiImporterDesc
 {
     /** Full name of the importer (i.e. Blender3D importer)*/
-    const char* mName;
+    const char *mName;
 
     /** Original author (left blank if unknown or whole assimp team) */
-    const char* mAuthor;
+    const char *mAuthor;
 
     /** Current maintainer, left blank if the author maintains */
-    const char* mMaintainer;
+    const char *mMaintainer;
 
     /** Implementation comments, i.e. unimplemented features*/
-    const char* mComments;
+    const char *mComments;
 
     /** These flags indicate some characteristics common to many
         importers. */
@@ -132,7 +132,7 @@ struct aiImporterDesc
         other methods to quickly reject files (i.e. magic
         words) so this does not mean that common or generic
         file extensions such as XML would be tediously slow. */
-    const char* mFileExtensions;
+    const char *mFileExtensions;
 };
 
 /** \brief  Returns the Importer description for a given extension.
@@ -141,6 +141,6 @@ Will return a NULL-pointer if no assigned importer desc. was found for the given
     \param  extension   [in] The extension to look for
     \return A pointer showing to the ImporterDesc, \see aiImporterDesc.
 */
-ASSIMP_API const C_STRUCT aiImporterDesc* aiGetImporterDesc( const char *extension );
+ASSIMP_API const C_STRUCT aiImporterDesc *aiGetImporterDesc( const char *extension );
 
 #endif // AI_IMPORTER_DESC_H_INC

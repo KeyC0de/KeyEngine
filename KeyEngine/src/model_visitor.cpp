@@ -17,7 +17,7 @@ MV::MV( const std::string &name )
 
 }
 
-void MV::spawnModelImgui( Model& model )
+void MV::spawnModelImgui( Model &model )
 {
 	ImGui::Begin( m_name.c_str() );
 	ImGui::Columns( 2,
@@ -35,7 +35,7 @@ void MV::spawnModelImgui( Model& model )
 		};
 
 		// for transforming the .obj model whole
-		auto& tf = fetchTransform();
+		auto &tf = fetchTransform();
 
 		ImGui::TextColored( { 0.4f, 1.0f, 0.6f, 1.0f }, "Translation" );
 		dirtyCheck( ImGui::SliderFloat( "X", &tf.x, -60.f, 60.f ) );
@@ -61,7 +61,7 @@ void MV::spawnModelImgui( Model& model )
 	ImGui::End();
 }
 
-bool MV::visit( Node& node )
+bool MV::visit( Node &node )
 {
 	// if there is no selected node, set selectedNodeId to an impossible value
 	const int selectedNodeId = ( m_pSelectedNode == nullptr ) ?
@@ -84,12 +84,12 @@ bool MV::visit( Node& node )
 	return bExpand;
 }
 
-void MV::onNodeLeave( Node& node )
+void MV::onNodeLeave( Node &node )
 {
 	ImGui::TreePop();
 }
 
-MV::TransformData& MV::fetchTransform() noexcept
+MV::TransformData &MV::fetchTransform() noexcept
 {
 	const auto nodeId = m_pSelectedNode->getId();
 	auto i = m_nodeMapTransforms.find( nodeId );
@@ -100,9 +100,9 @@ MV::TransformData& MV::fetchTransform() noexcept
 	return i->second;
 }
 
-MV::TransformData& MV::assembleTransform( int id ) noexcept
+MV::TransformData &MV::assembleTransform( int id ) noexcept
 {
-	const auto& worldTf = m_pSelectedNode->getWorldTransform();
+	const auto &worldTf = m_pSelectedNode->getWorldTransform();
 	const auto angles = util::extractEulerAngles( worldTf );
 	const auto translation = util::extractTranslation( worldTf );
 

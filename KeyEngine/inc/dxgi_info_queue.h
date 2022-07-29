@@ -25,8 +25,8 @@ class DxgiInfoQueue final
 public:
 	DxgiInfoQueue();
 	~DxgiInfoQueue();
-	DxgiInfoQueue( const DxgiInfoQueue& rhs ) = delete;
-	DxgiInfoQueue& operator=( const DxgiInfoQueue& rhs ) = delete;
+	DxgiInfoQueue( const DxgiInfoQueue &rhs ) = delete;
+	DxgiInfoQueue &operator=( const DxgiInfoQueue &rhs ) = delete;
 		
 	//===================================================
 	//	\function	markQueueIndex
@@ -44,11 +44,11 @@ public:
 #if defined _DEBUG && !defined NDEBUG
 #	define DXGI_GET_QUEUE_INFO( gph ) \
 	{\
-		KeyConsole& console = KeyConsole::getInstance();\
-		const auto& messages = gph.getInfoQueue().getInfoMessages();\
+		KeyConsole &console = KeyConsole::getInstance();\
+		const auto &messages = gph.getInfoQueue().getInfoMessages();\
 		if ( !messages.empty() )\
 		{\
-			for ( const auto& msg : messages )\
+			for ( const auto &msg : messages )\
 			{\
 				console.log( msg + "\n" );\
 			}\

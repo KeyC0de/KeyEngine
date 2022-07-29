@@ -20,7 +20,7 @@ Operation::Operation( Operation&& rhs ) noexcept
 
 }
 
-Operation& Operation::operator=( Operation&& rhs ) noexcept
+Operation &Operation::operator=( Operation&& rhs ) noexcept
 {
 	this->swap( rhs );
 	return *this;
@@ -31,7 +31,7 @@ void Operation::operator()() const
 	m_f();
 }
 
-void Operation::swap( Operation& rhs ) noexcept
+void Operation::swap( Operation &rhs ) noexcept
 {
 	std::swap( m_f,
 		rhs.m_f );
@@ -47,22 +47,22 @@ inline Operation::operator bool() const noexcept
 	return m_f != nullptr;
 }
 
-inline constexpr bool Operation::operator==( const Operation& rhs ) const noexcept
+inline constexpr bool Operation::operator==( const Operation &rhs ) const noexcept
 {
 	return &this->m_f == &rhs.m_f;
 }
 
-inline constexpr bool Operation::operator!=( const Operation& rhs ) const noexcept
+inline constexpr bool Operation::operator!=( const Operation &rhs ) const noexcept
 {
 	return &this->m_f != &rhs.m_f;
 }
 
-inline constexpr bool Operation::operator==( const Operation* rhs ) const noexcept
+inline constexpr bool Operation::operator==( const Operation *rhs ) const noexcept
 {
 	return &this->m_f == &rhs->m_f;
 }
 
-inline constexpr bool Operation::operator!=( const Operation* rhs ) const noexcept
+inline constexpr bool Operation::operator!=( const Operation *rhs ) const noexcept
 {
 	return &this->m_f != &rhs->m_f;
 }

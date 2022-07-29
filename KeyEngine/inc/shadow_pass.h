@@ -20,7 +20,7 @@ class ShadowPass
 	: public RenderQueuePass
 {
 	static inline unsigned m_shadowMapResolution = 1024;
-	const Camera* m_pShadowCamera = nullptr;
+	const Camera *m_pShadowCamera = nullptr;
 	std::shared_ptr<LightVSCB> m_pLightVcb;
 	std::shared_ptr<CubeTextureDS> m_pDsvCubemap;
 	DirectX::XMFLOAT4X4 m_cameraShadowProjectionMatrix;
@@ -36,7 +36,7 @@ public:
 	//				then render the depth buffer to texture 6 times
 	//	\date	2021/10/18 23:55
 	void run( Graphics &gph ) const cond_noex override;
-	void setShadowCamera( const Camera& cam ) noexcept;
+	void setShadowCamera( const Camera &cam ) noexcept;
 	void dumpShadowMap( Graphics &gph, const std::string &path ) const;
 	static unsigned getResolution() noexcept;
 private:

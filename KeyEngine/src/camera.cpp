@@ -9,8 +9,8 @@ namespace dx = DirectX;
 DirectX::XMMATRIX Camera::getShadowOrthographicMatrix( unsigned w,
 	unsigned h ) noexcept
 {
-	return dx::XMMatrixOrthographicLH( w,
-		h,
+	return dx::XMMatrixOrthographicLH( (float) w,
+		(float) h,
 		1.0f,
 		100.0f );
 }
@@ -102,7 +102,7 @@ DirectX::XMMATRIX Camera::getViewMatrix() const noexcept
 		upVector );
 }
 
-DirectX::XMMATRIX Camera::getReflectionViewMatrix( const dx::XMVECTOR& mirrorPlane ) const
+DirectX::XMMATRIX Camera::getReflectionViewMatrix( const dx::XMVECTOR &mirrorPlane ) const
 	noexcept
 {
 	dx::XMMATRIX R = dx::XMMatrixReflect( mirrorPlane );
@@ -121,8 +121,8 @@ DirectX::XMMATRIX Camera::getPerspectiveProjectionMatrix() const noexcept
 DirectX::XMMATRIX Camera::getOrthographicProjectionMatrix( unsigned viewWidth,
 		unsigned viewHeight ) const noexcept
 {
-	return dx::XMMatrixOrthographicLH( viewWidth,
-		viewHeight,
+	return dx::XMMatrixOrthographicLH( (float) viewWidth,
+		(float) viewHeight,
 		m_nearZ,
 		m_farZ );
 }
@@ -132,7 +132,7 @@ void Camera::displayImguiWidgets( Graphics &gph ) noexcept
 	bool projDirty = false;
 	bool rotDirty = false;
 	bool posDirty = false;
-	const auto dirtyCheck = []( bool d, bool& flag )
+	const auto dirtyCheck = []( bool d, bool &flag )
 	{
 		flag = flag || d;
 	};
@@ -294,7 +294,7 @@ const std::string &Camera::getName() const noexcept
 	return m_name;
 }
 
-void Camera::connectEffectsToRenderer( ren::Renderer& ren )
+void Camera::connectEffectsToRenderer( ren::Renderer &ren )
 {
 	m_cameraFrustum.connectEffectsToRenderer( ren );
 	m_widget.connectEffectsToRenderer( ren );

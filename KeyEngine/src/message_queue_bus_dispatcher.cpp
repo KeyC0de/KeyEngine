@@ -25,14 +25,14 @@ MessageBus::MessageBus( MessageBus&& rhs ) noexcept
 
 }
 
-MessageBus& MessageBus::operator=( MessageBus&& rhs ) noexcept
+MessageBus &MessageBus::operator=( MessageBus&& rhs ) noexcept
 {
 	std::swap( m_vec, rhs.m_vec );
 	m_size = rhs.m_size;
 	return *this;
 }
 
-void MessageBus::enqueue( class Message* msg )
+void MessageBus::enqueue( class Message *msg )
 {
 	std::unique_lock<std::mutex> lg{m_mu};
 	m_vec.emplace_back( msg );
@@ -58,13 +58,13 @@ std::unique_ptr<class Message> MessageBus::dequeue()
 	return pOut;
 }
 
-class Message* MessageBus::peekFront() const noexcept
+class Message *MessageBus::peekFront() const noexcept
 {
 	std::lock_guard<std::mutex> lg{m_mu};
 	return m_vec.front().get();
 }
 
-class Message* MessageBus::peekBack() const noexcept
+class Message *MessageBus::peekBack() const noexcept
 {
 	std::lock_guard<std::mutex> lg{m_mu};
 	return m_vec.back().get();
@@ -76,7 +76,7 @@ MessageBus::operator bool()
 	return !m_vec.empty();
 }
 
-class Message* MessageBus::operator[]( std::size_t index )
+class Message *MessageBus::operator[]( std::size_t index )
 {
 	std::lock_guard<std::mutex> lg{m_mu};
 	if ( m_vec.empty() || index < 0 || index >= m_vec.size() )
@@ -86,7 +86,7 @@ class Message* MessageBus::operator[]( std::size_t index )
 	return m_vec[index].get();
 }
 
-const class Message* MessageBus::operator[]( std::size_t index ) const
+const class Message *MessageBus::operator[]( std::size_t index ) const
 {
 	std::lock_guard<std::mutex> lg{m_mu};
 	if ( m_vec.empty() || index < 0 || index >= m_vec.size() )
@@ -131,19 +131,19 @@ MessageDispatcher::MessageDispatcher( MessageDispatcher&& rhs ) noexcept
 
 }
 
-MessageDispatcher& MessageDispatcher::operator=( MessageDispatcher&& rhs ) noexcept
+MessageDispatcher &MessageDispatcher::operator=( MessageDispatcher&& rhs ) noexcept
 {
 	std::swap( m_mb, rhs.m_mb );
 	return *this;
 }
 
-MessageDispatcher& MessageDispatcher::getInstance( int initialCapacity )
+MessageDispatcher &MessageDispatcher::getInstance( int initialCapacity )
 {
 	static MessageDispatcher instance{initialCapacity};
 	return instance;
 }
 
-void MessageDispatcher::addMessage( class Message* msg )
+void MessageDispatcher::addMessage( class Message *msg )
 {
 	m_mb.enqueue( msg );
 }
@@ -156,7 +156,7 @@ void MessageDispatcher::dispatchAll()
 		auto recipients = msg->getReceivers();
 		ASSERT( recipients.size() != 0,
 			"No recipients!" );
-		for ( Entity* r : recipients )
+		for ( Entity *r : recipients )
 		{
 			r->onMessageReceived( std::move( msg ) );
 		}

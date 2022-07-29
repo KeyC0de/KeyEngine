@@ -34,14 +34,14 @@ MousePicker::MousePicker( Graphics &gph,
 		vec );
 
 #if defined _DEBUG && !defined NDEBUG
-	KeyConsole& console = KeyConsole::getInstance();
+	KeyConsole &console = KeyConsole::getInstance();
 	console.print( "Ray WS direction = (" + std::to_string( m_rayDirectionWorldSpace.x )
 		+ ",y=" + std::to_string( m_rayDirectionWorldSpace.y )
 		+ ",z=" + std::to_string( m_rayDirectionWorldSpace.z ) + ")" );
 #endif
 
 	// the origin of the picking ray is the position of the camera
-	auto& camMan = CameraManager::getInstance();
+	auto &camMan = CameraManager::getInstance();
 	auto camPos{camMan.getActiveCamera().getPosition()};
 
 	// now perform ray intersection test...
@@ -49,14 +49,14 @@ MousePicker::MousePicker( Graphics &gph,
 #pragma warning( default : 4244 )
 
 DirectX::XMFLOAT2 MousePicker::convertToNdc( Graphics &gph,
-	const dx::XMFLOAT2& coordsScreenSpace )
+	const dx::XMFLOAT2 &coordsScreenSpace )
 {
 	return {(coordsScreenSpace.x * 2.0f) / gph.getClientWidth() - 1.0f,
 		1.0f - (coordsScreenSpace.y * 2.0f) / gph.getClientHeight()};
 }
 
 DirectX::XMFLOAT2 MousePicker::convertToClip( Graphics &gph,
-	const dx::XMFLOAT2& coordsNdc )
+	const dx::XMFLOAT2 &coordsNdc )
 {
 	dx::XMMATRIX projectionMatrix{gph.getProjectionMatrix()};
 	dx::XMVECTOR row1 = projectionMatrix.r[0];
@@ -74,7 +74,7 @@ DirectX::XMFLOAT2 MousePicker::convertToClip( Graphics &gph,
 }
 
 DirectX::XMVECTOR MousePicker::convertToViewSpace( Graphics &gph,
-	const DirectX::XMFLOAT2& coordsClip )
+	const DirectX::XMFLOAT2 &coordsClip )
 {
 	dx::XMMATRIX invProjMatrix{dx::XMMatrixInverse( nullptr, gph.getProjectionMatrix() )};
 	return dx::XMVector3Transform( dx::XMLoadFloat2( &coordsClip ),
@@ -82,7 +82,7 @@ DirectX::XMVECTOR MousePicker::convertToViewSpace( Graphics &gph,
 }
 
 DirectX::XMVECTOR MousePicker::convertToWorldSpace( Graphics &gph,
-	const DirectX::XMFLOAT4& coordsView )
+	const DirectX::XMFLOAT4 &coordsView )
 {
 	dx::XMMATRIX invViewMatrix{dx::XMMatrixInverse( nullptr, gph.getViewMatrix() )};
 	return dx::XMVector4Transform( dx::XMLoadFloat4( &coordsView ),

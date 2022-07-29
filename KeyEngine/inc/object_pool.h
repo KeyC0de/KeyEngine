@@ -18,11 +18,11 @@ class ObjectPool final
 	union Object
 	{
 		std::aligned_storage_t<sizeof( T ), alignof( T )> m_storage;
-		Object* m_pNext;
+		Object *m_pNext;
 	};
 
 	std::unique_ptr<Object[]> m_pool;
-	Object* m_pNextFree;
+	Object *m_pNextFree;
 	std::size_t m_nObjs;
 public:
 	using value_type = T;
@@ -45,8 +45,8 @@ public:
 
 	~ObjectPool() noexcept = default;
 
-	ObjectPool( const ObjectPool& rhs ) = delete;
-	ObjectPool& operator=( const ObjectPool& rhs ) = delete;
+	ObjectPool( const ObjectPool &rhs ) = delete;
+	ObjectPool &operator=( const ObjectPool &rhs ) = delete;
 
 	ObjectPool( ObjectPool&& rhs ) noexcept
 		:
@@ -57,7 +57,7 @@ public:
 		rhs.m_pNextFree = nullptr;
 	}
 	
-	ObjectPool& operator=( ObjectPool&& rhs ) noexcept
+	ObjectPool &operator=( ObjectPool&& rhs ) noexcept
 	{
 		m_nObjs = rhs.getSize();
 		std::swap( m_pool,
@@ -74,19 +74,19 @@ public:
 		using otherAllocator = ObjectPool<U>;
 	};
 
-	T* address( T& r ) const noexcept
+	T *address( T &r ) const noexcept
 	{
 		return &r;
 	}
 
-	const T* address( const T& r ) const noexcept
+	const T *address( const T &r ) const noexcept
 	{
 		return &r;
 	}
 
 	// add object to the list
 	[[nodiscard]]
-	T* allocate()
+	T *allocate()
 	{
 		if ( m_pNextFree == nullptr )
 		{
@@ -100,7 +100,7 @@ public:
 	}
 
 	// remove object from the list
-	void deallocate( T* p,
+	void deallocate( T *p,
 		[[maybe_unused]] std::size_t count = 0 ) noexcept
 	{
 		const auto o = reinterpret_cast<Object*>( p );
@@ -111,12 +111,12 @@ public:
 	// pass ctor args
 	template<typename... TArgs>
 	[[nodiscard]]
-	T* construct( TArgs... args )
+	T *construct( TArgs... args )
 	{
 		return new ( allocate() ) T{std::forward<TArgs>( args )...};
 	}
 
-	void destroy( T* p ) noexcept
+	void destroy( T *p ) noexcept
 	{
 		if ( p == nullptr )
 		{

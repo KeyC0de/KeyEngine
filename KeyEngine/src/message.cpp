@@ -3,14 +3,14 @@
 #include "entity.h"
 
 
-Message::Message( Entity* pSrc,
+Message::Message( Entity *pSrc,
 	const std::vector<Entity*>& pDests,
 	Message::Type type )
 	:
 	m_pSender(pSrc),
 	m_type(type)
 {
-	for( Entity* dest : pDests )
+	for( Entity *dest : pDests )
 	{
 		m_pReceivers.emplace_back( dest );
 	}
@@ -27,20 +27,20 @@ Message::Message( Message&& rhs ) noexcept
 	m_pSender{rhs.m_pSender},
 	m_type{rhs.m_type}
 {
-	for( Entity* dest : rhs.m_pReceivers )
+	for( Entity *dest : rhs.m_pReceivers )
 	{
 		m_pReceivers.emplace_back( dest );
 	}
 	rhs.m_pReceivers.clear();
 }
 
-Message& Message::operator=( Message&& rhs ) noexcept
+Message &Message::operator=( Message&& rhs ) noexcept
 {
 	m_bHandled = rhs.m_bHandled;
 	m_pSender = rhs.m_pSender;
 	m_type = rhs.m_type;
 
-	for( Entity* dest : rhs.m_pReceivers )
+	for( Entity *dest : rhs.m_pReceivers )
 	{
 		m_pReceivers.emplace_back( dest );
 	}
@@ -53,7 +53,7 @@ Message::Type Message::getType() const noexcept
 	return m_type;
 }
 
-Entity* Message::getSender() noexcept
+Entity *Message::getSender() noexcept
 {
 	return m_pSender;
 }
@@ -74,7 +74,7 @@ void Message::setHandled( bool b ) noexcept
 }
 
 
-MessageCall::MessageCall( Entity* psrc,
+MessageCall::MessageCall( Entity *psrc,
 	const std::vector<Entity*>& pDests,
 	Message::Type type,
 	std::unique_ptr<Operation> df )
@@ -93,14 +93,14 @@ MessageCall::MessageCall( MessageCall&& rhs ) noexcept
 
 }
 
-MessageCall& MessageCall::operator=( MessageCall&& rhs ) noexcept
+MessageCall &MessageCall::operator=( MessageCall&& rhs ) noexcept
 {
 	Message::operator=( std::move( rhs ) );
 	std::swap( m_pFunc, rhs.m_pFunc );
 	return *this;
 }
 
-Operation* MessageCall::getCallable() const noexcept
+Operation *MessageCall::getCallable() const noexcept
 {
 	return m_pFunc.get();
 }

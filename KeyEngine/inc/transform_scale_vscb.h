@@ -11,7 +11,7 @@ class TransformScaleVSCB
 public:
 	TransformScaleVSCB( Graphics &gph, unsigned slot, float scale );
 
-	void accept( IEffectVisitor& ev ) override;
+	void accept( IEffectVisitor &ev ) override;
 	void bind( Graphics &gph ) cond_noex override;
 	std::unique_ptr<IBindableCloning> clone() const noexcept override;
 private:

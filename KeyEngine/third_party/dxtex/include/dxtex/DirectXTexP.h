@@ -150,17 +150,17 @@ namespace DirectX
 {
     //---------------------------------------------------------------------------------
     // WIC helper functions
-    DXGI_FORMAT __cdecl _WICToDXGI(_In_ const GUID& guid) noexcept;
-    bool __cdecl _DXGIToWIC(_In_ DXGI_FORMAT format, _Out_ GUID& guid, _In_ bool ignoreRGBvsBGR = false) noexcept;
+    DXGI_FORMAT __cdecl _WICToDXGI(_In_ const GUID &guid) noexcept;
+    bool __cdecl _DXGIToWIC(_In_ DXGI_FORMAT format, _Out_ GUID &guid, _In_ bool ignoreRGBvsBGR = false) noexcept;
 
-    TEX_FILTER_FLAGS __cdecl _CheckWICColorSpace(_In_ const GUID& sourceGUID, _In_ const GUID& targetGUID) noexcept;
+    TEX_FILTER_FLAGS __cdecl _CheckWICColorSpace(_In_ const GUID &sourceGUID, _In_ const GUID &targetGUID) noexcept;
 
     inline WICBitmapDitherType __cdecl _GetWICDither(_In_ TEX_FILTER_FLAGS flags) noexcept
     {
-        static_assert(TEX_FILTER_DITHER == 0x10000, "TEX_FILTER_DITHER* flag values don't match mask");
+        static_assert(TEX_FILTER_DITHER == 0x10000, "TEX_FILTER_DITHER *flag values don't match mask");
 
-        static_assert(static_cast<int>(TEX_FILTER_DITHER) == static_cast<int>(WIC_FLAGS_DITHER), "TEX_FILTER_DITHER* should match WIC_FLAGS_DITHER*");
-        static_assert(static_cast<int>(TEX_FILTER_DITHER_DIFFUSION) == static_cast<int>(WIC_FLAGS_DITHER_DIFFUSION), "TEX_FILTER_DITHER* should match WIC_FLAGS_DITHER*");
+        static_assert(static_cast<int>(TEX_FILTER_DITHER) == static_cast<int>(WIC_FLAGS_DITHER), "TEX_FILTER_DITHER *should match WIC_FLAGS_DITHER*");
+        static_assert(static_cast<int>(TEX_FILTER_DITHER_DIFFUSION) == static_cast<int>(WIC_FLAGS_DITHER_DIFFUSION), "TEX_FILTER_DITHER *should match WIC_FLAGS_DITHER*");
 
         switch (flags & TEX_FILTER_DITHER_MASK)
         {
@@ -194,10 +194,10 @@ namespace DirectX
     {
         static_assert(TEX_FILTER_POINT == 0x100000, "TEX_FILTER_ flag values don't match TEX_FILTER_MASK");
 
-        static_assert(static_cast<int>(TEX_FILTER_POINT) == static_cast<int>(WIC_FLAGS_FILTER_POINT), "TEX_FILTER_* flags should match WIC_FLAGS_FILTER_*");
-        static_assert(static_cast<int>(TEX_FILTER_LINEAR) == static_cast<int>(WIC_FLAGS_FILTER_LINEAR), "TEX_FILTER_* flags should match WIC_FLAGS_FILTER_*");
-        static_assert(static_cast<int>(TEX_FILTER_CUBIC) == static_cast<int>(WIC_FLAGS_FILTER_CUBIC), "TEX_FILTER_* flags should match WIC_FLAGS_FILTER_*");
-        static_assert(static_cast<int>(TEX_FILTER_FANT) == static_cast<int>(WIC_FLAGS_FILTER_FANT), "TEX_FILTER_* flags should match WIC_FLAGS_FILTER_*");
+        static_assert(static_cast<int>(TEX_FILTER_POINT) == static_cast<int>(WIC_FLAGS_FILTER_POINT), "TEX_FILTER_ *flags should match WIC_FLAGS_FILTER_*");
+        static_assert(static_cast<int>(TEX_FILTER_LINEAR) == static_cast<int>(WIC_FLAGS_FILTER_LINEAR), "TEX_FILTER_ *flags should match WIC_FLAGS_FILTER_*");
+        static_assert(static_cast<int>(TEX_FILTER_CUBIC) == static_cast<int>(WIC_FLAGS_FILTER_CUBIC), "TEX_FILTER_ *flags should match WIC_FLAGS_FILTER_*");
+        static_assert(static_cast<int>(TEX_FILTER_FANT) == static_cast<int>(WIC_FLAGS_FILTER_FANT), "TEX_FILTER_ *flags should match WIC_FLAGS_FILTER_*");
 
         switch (flags & TEX_FILTER_MODE_MASK)
         {
@@ -239,13 +239,13 @@ namespace DirectX
     //---------------------------------------------------------------------------------
     // Image helper functions
     _Success_(return != false) bool __cdecl _DetermineImageArray(
-        _In_ const TexMetadata& metadata, _In_ CP_FLAGS cpFlags,
-        _Out_ size_t& nImages, _Out_ size_t& pixelSize) noexcept;
+        _In_ const TexMetadata &metadata, _In_ CP_FLAGS cpFlags,
+        _Out_ size_t &nImages, _Out_ size_t &pixelSize) noexcept;
 
     _Success_(return != false) bool __cdecl _SetupImageArray(
         _In_reads_bytes_(pixelSize) uint8_t *pMemory, _In_ size_t pixelSize,
-        _In_ const TexMetadata& metadata, _In_ CP_FLAGS cpFlags,
-        _Out_writes_(nImages) Image* images, _In_ size_t nImages) noexcept;
+        _In_ const TexMetadata &metadata, _In_ CP_FLAGS cpFlags,
+        _Out_writes_(nImages) Image *images, _In_ size_t nImages) noexcept;
 
     //---------------------------------------------------------------------------------
     // Conversion helper functions
@@ -286,64 +286,64 @@ namespace DirectX
     void __cdecl _CopyScanline(
         _When_(pDestination == pSource, _Inout_updates_bytes_(outSize))
         _When_(pDestination != pSource, _Out_writes_bytes_(outSize))
-        void* pDestination, _In_ size_t outSize,
-        _In_reads_bytes_(inSize) const void* pSource, _In_ size_t inSize,
+        void *pDestination, _In_ size_t outSize,
+        _In_reads_bytes_(inSize) const void *pSource, _In_ size_t inSize,
         _In_ DXGI_FORMAT format, _In_ uint32_t tflags) noexcept;
 
     void __cdecl _SwizzleScanline(
         _When_(pDestination == pSource, _In_)
         _When_(pDestination != pSource, _Out_writes_bytes_(outSize))
-        void* pDestination, _In_ size_t outSize,
-        _In_reads_bytes_(inSize) const void* pSource, _In_ size_t inSize,
+        void *pDestination, _In_ size_t outSize,
+        _In_reads_bytes_(inSize) const void *pSource, _In_ size_t inSize,
         _In_ DXGI_FORMAT format, _In_ uint32_t tflags) noexcept;
  
     _Success_(return != false) bool __cdecl _ExpandScanline(
-        _Out_writes_bytes_(outSize) void* pDestination, _In_ size_t outSize,
+        _Out_writes_bytes_(outSize) void *pDestination, _In_ size_t outSize,
         _In_ DXGI_FORMAT outFormat,
-        _In_reads_bytes_(inSize) const void* pSource, _In_ size_t inSize,
+        _In_reads_bytes_(inSize) const void *pSource, _In_ size_t inSize,
         _In_ DXGI_FORMAT inFormat, _In_ uint32_t tflags) noexcept;
 
     _Success_(return != false) bool __cdecl _LoadScanline(
-        _Out_writes_(count) XMVECTOR* pDestination, _In_ size_t count,
-        _In_reads_bytes_(size) const void* pSource, _In_ size_t size, _In_ DXGI_FORMAT format) noexcept;
+        _Out_writes_(count) XMVECTOR *pDestination, _In_ size_t count,
+        _In_reads_bytes_(size) const void *pSource, _In_ size_t size, _In_ DXGI_FORMAT format) noexcept;
 
     _Success_(return != false) bool __cdecl _LoadScanlineLinear(
-        _Out_writes_(count) XMVECTOR* pDestination, _In_ size_t count,
-        _In_reads_bytes_(size) const void* pSource, _In_ size_t size, _In_ DXGI_FORMAT format, _In_ TEX_FILTER_FLAGS flags) noexcept;
+        _Out_writes_(count) XMVECTOR *pDestination, _In_ size_t count,
+        _In_reads_bytes_(size) const void *pSource, _In_ size_t size, _In_ DXGI_FORMAT format, _In_ TEX_FILTER_FLAGS flags) noexcept;
 
     _Success_(return != false) bool __cdecl _StoreScanline(
-        _Out_writes_bytes_(size) void* pDestination, _In_ size_t size, _In_ DXGI_FORMAT format,
-        _In_reads_(count) const XMVECTOR* pSource, _In_ size_t count, _In_ float threshold = 0) noexcept;
+        _Out_writes_bytes_(size) void *pDestination, _In_ size_t size, _In_ DXGI_FORMAT format,
+        _In_reads_(count) const XMVECTOR *pSource, _In_ size_t count, _In_ float threshold = 0) noexcept;
 
     _Success_(return != false) bool __cdecl _StoreScanlineLinear(
-        _Out_writes_bytes_(size) void* pDestination, _In_ size_t size, _In_ DXGI_FORMAT format,
-        _Inout_updates_all_(count) XMVECTOR* pSource, _In_ size_t count, _In_ TEX_FILTER_FLAGS flags, _In_ float threshold = 0) noexcept;
+        _Out_writes_bytes_(size) void *pDestination, _In_ size_t size, _In_ DXGI_FORMAT format,
+        _Inout_updates_all_(count) XMVECTOR *pSource, _In_ size_t count, _In_ TEX_FILTER_FLAGS flags, _In_ float threshold = 0) noexcept;
 
     _Success_(return != false) bool __cdecl _StoreScanlineDither(
-        _Out_writes_bytes_(size) void* pDestination, _In_ size_t size, _In_ DXGI_FORMAT format,
-        _Inout_updates_all_(count) XMVECTOR* pSource, _In_ size_t count, _In_ float threshold, size_t y, size_t z,
-        _Inout_updates_all_opt_(count + 2) XMVECTOR* pDiffusionErrors) noexcept;
+        _Out_writes_bytes_(size) void *pDestination, _In_ size_t size, _In_ DXGI_FORMAT format,
+        _Inout_updates_all_(count) XMVECTOR *pSource, _In_ size_t count, _In_ float threshold, size_t y, size_t z,
+        _Inout_updates_all_opt_(count + 2) XMVECTOR *pDiffusionErrors) noexcept;
 
-    HRESULT __cdecl _ConvertToR32G32B32A32(_In_ const Image& srcImage, _Inout_ ScratchImage& image) noexcept;
+    HRESULT __cdecl _ConvertToR32G32B32A32(_In_ const Image &srcImage, _Inout_ ScratchImage &image) noexcept;
 
-    HRESULT __cdecl _ConvertFromR32G32B32A32(_In_ const Image& srcImage, _In_ const Image& destImage) noexcept;
-    HRESULT __cdecl _ConvertFromR32G32B32A32(_In_ const Image& srcImage, _In_ DXGI_FORMAT format, _Inout_ ScratchImage& image) noexcept;
+    HRESULT __cdecl _ConvertFromR32G32B32A32(_In_ const Image &srcImage, _In_ const Image &destImage) noexcept;
+    HRESULT __cdecl _ConvertFromR32G32B32A32(_In_ const Image &srcImage, _In_ DXGI_FORMAT format, _Inout_ ScratchImage &image) noexcept;
     HRESULT __cdecl _ConvertFromR32G32B32A32(
-        _In_reads_(nimages) const Image* srcImages, _In_ size_t nimages, _In_ const TexMetadata& metadata,
-        _In_ DXGI_FORMAT format, _Out_ ScratchImage& result) noexcept;
+        _In_reads_(nimages) const Image *srcImages, _In_ size_t nimages, _In_ const TexMetadata &metadata,
+        _In_ DXGI_FORMAT format, _Out_ ScratchImage &result) noexcept;
 
-    HRESULT __cdecl _ConvertToR16G16B16A16(_In_ const Image& srcImage, _Inout_ ScratchImage& image) noexcept;
+    HRESULT __cdecl _ConvertToR16G16B16A16(_In_ const Image &srcImage, _Inout_ ScratchImage &image) noexcept;
 
-    HRESULT __cdecl _ConvertFromR16G16B16A16(_In_ const Image& srcImage, _In_ const Image& destImage) noexcept;
+    HRESULT __cdecl _ConvertFromR16G16B16A16(_In_ const Image &srcImage, _In_ const Image &destImage) noexcept;
 
     void __cdecl _ConvertScanline(
-        _Inout_updates_all_(count) XMVECTOR* pBuffer, _In_ size_t count,
+        _Inout_updates_all_(count) XMVECTOR *pBuffer, _In_ size_t count,
         _In_ DXGI_FORMAT outFormat, _In_ DXGI_FORMAT inFormat, _In_ TEX_FILTER_FLAGS flags) noexcept;
 
     //---------------------------------------------------------------------------------
     // DDS helper functions
     HRESULT __cdecl _EncodeDDSHeader(
-        _In_ const TexMetadata& metadata, DDS_FLAGS flags,
-        _Out_writes_bytes_to_opt_(maxsize, required) void* pDestination, _In_ size_t maxsize, _Out_ size_t& required) noexcept;
+        _In_ const TexMetadata &metadata, DDS_FLAGS flags,
+        _Out_writes_bytes_to_opt_(maxsize, required) void *pDestination, _In_ size_t maxsize, _Out_ size_t &required) noexcept;
 
 } // namespace

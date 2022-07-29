@@ -79,9 +79,9 @@ public:
 
     // -----------------------------------------
     /** construct from existing stream reader
-    note: trim is *always* assumed true if skyp_empty_lines==true
+    note: trim is *always *assumed true if skyp_empty_lines==true
     */
-    LineSplitter(StreamReaderLE& stream, bool skip_empty_lines = true, bool trim = true)
+    LineSplitter(StreamReaderLE &stream, bool skip_empty_lines = true, bool trim = true)
     : idx( 0 )
     , stream(stream)
     , swallow()
@@ -101,7 +101,7 @@ public:
 
     // -----------------------------------------
     /** pseudo-iterator increment */
-    LineSplitter& operator++() {
+    LineSplitter &operator++() {
         if(swallow) {
             swallow = false;
             return *this;
@@ -140,14 +140,14 @@ public:
     }
 
     // -----------------------------------------
-    LineSplitter& operator++(int) {
+    LineSplitter &operator++(int) {
         return ++(*this);
     }
 
     // -----------------------------------------
     /** get a pointer to the beginning of a particular token */
-    const char* operator[] (size_t idx) const {
-        const char* s = operator->()->c_str();
+    const char *operator[] (size_t idx) const {
+        const char *s = operator->()->c_str();
 
         SkipSpaces(&s);
         for(size_t i = 0; i < idx; ++i) {
@@ -166,7 +166,7 @@ public:
     /** extract the start positions of N tokens from the current line*/
     template <size_t N>
     void get_tokens(const char* (&tokens)[N]) const {
-        const char* s = operator->()->c_str();
+        const char *s = operator->()->c_str();
 
         SkipSpaces(&s);
         for(size_t i = 0; i < N; ++i) {
@@ -184,7 +184,7 @@ public:
 
     // -----------------------------------------
     /** member access */
-    const std::string* operator -> () const {
+    const std::string *operator -> () const {
         return &cur;
     }
 
@@ -210,13 +210,13 @@ public:
 
     // -----------------------------------------
     /** access the underlying stream object */
-    StreamReaderLE& get_stream() {
+    StreamReaderLE &get_stream() {
         return stream;
     }
 
     // -----------------------------------------
     /** !strcmp((*this)->substr(0,strlen(check)),check) */
-    bool match_start(const char* check) {
+    bool match_start(const char *check) {
         const size_t len = strlen(check);
 
         return len <= cur.length() && std::equal(check,check+len,cur.begin());
@@ -236,7 +236,7 @@ private:
 private:
     line_idx idx;
     std::string cur;
-    StreamReaderLE& stream;
+    StreamReaderLE &stream;
     bool swallow, skip_empty_lines, trim;
 };
 

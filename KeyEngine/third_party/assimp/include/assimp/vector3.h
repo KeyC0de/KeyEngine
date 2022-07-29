@@ -69,30 +69,30 @@ public:
     aiVector3t() : x(), y(), z() {}
     aiVector3t(TReal _x, TReal _y, TReal _z) : x(_x), y(_y), z(_z) {}
     explicit aiVector3t (TReal _xyz ) : x(_xyz), y(_xyz), z(_xyz) {}
-    aiVector3t( const aiVector3t& o ) : x(o.x), y(o.y), z(o.z) {}
+    aiVector3t( const aiVector3t &o ) : x(o.x), y(o.y), z(o.z) {}
 
 public:
 
     // combined operators
-    const aiVector3t& operator += (const aiVector3t& o);
-    const aiVector3t& operator -= (const aiVector3t& o);
-    const aiVector3t& operator *= (TReal f);
-    const aiVector3t& operator /= (TReal f);
+    const aiVector3t &operator += (const aiVector3t &o);
+    const aiVector3t &operator -= (const aiVector3t &o);
+    const aiVector3t &operator *= (TReal f);
+    const aiVector3t &operator /= (TReal f);
 
     // transform vector by matrix
-    aiVector3t& operator *= (const aiMatrix3x3t<TReal>& mat);
-    aiVector3t& operator *= (const aiMatrix4x4t<TReal>& mat);
+    aiVector3t &operator *= (const aiMatrix3x3t<TReal>& mat);
+    aiVector3t &operator *= (const aiMatrix4x4t<TReal>& mat);
 
     // access a single element
     TReal operator[](unsigned int i) const;
-    TReal& operator[](unsigned int i);
+    TReal &operator[](unsigned int i);
 
     // comparison
-    bool operator== (const aiVector3t& other) const;
-    bool operator!= (const aiVector3t& other) const;
-    bool operator < (const aiVector3t& other) const;
+    bool operator== (const aiVector3t &other) const;
+    bool operator!= (const aiVector3t &other) const;
+    bool operator < (const aiVector3t &other) const;
 
-    bool Equal(const aiVector3t& other, TReal epsilon = 1e-6) const;
+    bool Equal(const aiVector3t &other, TReal epsilon = 1e-6) const;
 
     template <typename TOther>
     operator aiVector3t<TOther> () const;
@@ -114,16 +114,16 @@ public:
 
 
     /** @brief Normalize the vector */
-    aiVector3t& Normalize();
+    aiVector3t &Normalize();
 
     /** @brief Normalize the vector with extra check for zero vectors */
-    aiVector3t& NormalizeSafe();
+    aiVector3t &NormalizeSafe();
 
     /** @brief Componentwise multiplication of two vectors
      *
      *  Note that vec*vec yields the dot product.
      *  @param o Second factor */
-    const aiVector3t SymMul(const aiVector3t& o);
+    const aiVector3t SymMul(const aiVector3t &o);
 
     TReal x, y, z;
 };

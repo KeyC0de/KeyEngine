@@ -6,7 +6,7 @@
 
 namespace dx = DirectX;
 
-Paddle::Paddle( const dx::XMFLOAT2& pos,
+Paddle::Paddle( const dx::XMFLOAT2 &pos,
 	float w,
 	float h,
 	ColorBGRA col,
@@ -32,7 +32,7 @@ void Paddle::render( Graphics &gph ) const
 		m_color );
 }
 
-bool Paddle::doBallCollision( Ball& ball )
+bool Paddle::doBallCollision( Ball &ball )
 {
 	if ( !m_bCooldown )
 	{
@@ -59,7 +59,7 @@ bool Paddle::doBallCollision( Ball& ball )
 	return false;
 }
 
-void Paddle::doWallCollision( const Rect& walls )
+void Paddle::doWallCollision( const Rect &walls )
 {
 	const Rect hitBox = getRect();
 	if ( hitBox.m_left < walls.m_left )

@@ -72,17 +72,17 @@ public:
      *  @param numIndices Number of indices per primitive
      *  @return Output mesh
      */
-    static aiMesh* MakeMesh(const std::vector<aiVector3D>& positions,
+    static aiMesh *MakeMesh(const std::vector<aiVector3D>& positions,
         unsigned int numIndices);
 
 
-    static aiMesh* MakeMesh ( unsigned int (*GenerateFunc)
+    static aiMesh *MakeMesh ( unsigned int (*GenerateFunc)
         (std::vector<aiVector3D>&));
 
-    static aiMesh* MakeMesh ( unsigned int (*GenerateFunc)
+    static aiMesh *MakeMesh ( unsigned int (*GenerateFunc)
         (std::vector<aiVector3D>&, bool));
 
-    static aiMesh* MakeMesh ( unsigned int n,  void (*GenerateFunc)
+    static aiMesh *MakeMesh ( unsigned int n,  void (*GenerateFunc)
         (unsigned int,std::vector<aiVector3D>&));
 
     // ----------------------------------------------------------------

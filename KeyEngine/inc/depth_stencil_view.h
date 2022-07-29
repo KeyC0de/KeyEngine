@@ -33,8 +33,8 @@ protected:
 		bool bBindAsShaderInput, Mode mode );
 public:
 	void bindRenderSurface( Graphics &gph ) cond_noex override;
-	void bindRenderSurface( Graphics &gph, IRenderSurface* rt ) cond_noex override;
-	void bindRenderSurface( Graphics &gph, IRenderTargetView* rt ) cond_noex;
+	void bindRenderSurface( Graphics &gph, IRenderSurface *rt ) cond_noex override;
+	void bindRenderSurface( Graphics &gph, IRenderTargetView *rt ) cond_noex;
 	void clear( Graphics &gph, const std::array<float, 4>& unused = {} ) cond_noex override;
 	//===================================================
 	//	\function	convertToBitmap

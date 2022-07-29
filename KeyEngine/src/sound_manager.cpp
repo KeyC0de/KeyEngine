@@ -3,6 +3,7 @@
 #include "assertions_console.h"
 #include "utils.h"
 #include "os_utils.h"
+#include <algorithm>
 #if defined _DEBUG && !defined NDEBUG
 #	include <iostream>
 #endif // _DEBUG
@@ -21,7 +22,7 @@ namespace wav
 }// wav
 
 
-SoundManager::SoundManager( WAVEFORMATEXTENSIBLE* format )
+SoundManager::SoundManager( WAVEFORMATEXTENSIBLE *format )
 {
 	// keep a pointer to the format
 	m_pFormat = format;
@@ -86,8 +87,8 @@ auto SoundManager::Channel::operator=( Channel&& rhs ) cond_noex -> Channel&
 	return *this;
 }
 
-bool SoundManager::Channel::setupChannel( SoundManager& soundManager,
-	Sound& sound )
+bool SoundManager::Channel::setupChannel( SoundManager &soundManager,
+	Sound &sound )
 {
 	m_pSound = &sound;
 
@@ -96,15 +97,15 @@ bool SoundManager::Channel::setupChannel( SoundManager& soundManager,
 	{
 	public:
 		// Called when the voice is about to start processing a new audio buffer.
-		void STDMETHODCALLTYPE OnBufferStart( void* pBufferContext ) override
+		void STDMETHODCALLTYPE OnBufferStart( void *pBufferContext ) override
 		{
 			pass_;
 		}
 
 		// Called when the voice finishes processing a buffer.
-		void STDMETHODCALLTYPE OnBufferEnd( void* pBufferContext ) override
+		void STDMETHODCALLTYPE OnBufferEnd( void *pBufferContext ) override
 		{
-			Channel& channel = *reinterpret_cast<Channel*>( pBufferContext );
+			Channel &channel = *reinterpret_cast<Channel*>( pBufferContext );
 			channel.stopSound();
 			{
 				//std::unique_lock<std::mutex> lg{channel.m_pSound->m_mu};
@@ -121,7 +122,7 @@ bool SoundManager::Channel::setupChannel( SoundManager& soundManager,
 		}
 
 		// Called when the voice reaches the end position of a loop.
-		void STDMETHODCALLTYPE OnLoopEnd( void* pBufferContext ) override
+		void STDMETHODCALLTYPE OnLoopEnd( void *pBufferContext ) override
 		{
 			pass_;
 		}
@@ -133,7 +134,7 @@ bool SoundManager::Channel::setupChannel( SoundManager& soundManager,
 		}
 
 		// Called when a critical error occurs during voice processing.
-		void STDMETHODCALLTYPE OnVoiceError( void* pBufferContext,
+		void STDMETHODCALLTYPE OnVoiceError( void *pBufferContext,
 			HRESULT Error ) override
 		{
 			pass_;
@@ -158,15 +159,15 @@ bool SoundManager::Channel::setupChannel( SoundManager& soundManager,
 	HRESULT hres;
 	UINT32 sourceVoiceCreationFlags = 0u;
 
-	auto& waveFormat = m_pSound->m_pWaveFormat;
+	auto &waveFormat = m_pSound->m_pWaveFormat;
 
 	// 5. optional - specify an output (submix) voice for this source voice
-	const auto& soundSubmixName = sound.getSubmixName();
+	const auto &soundSubmixName = sound.getSubmixName();
 	if ( soundSubmixName != "" )
 	{
 		//std::unique_lock<std::mutex> lg{soundManager.m_mu, std::try_to_lock}; // already locked!
 		// grab a submix from the bag and fill it up
-		auto& newSubmix = soundManager.m_submixes.back();
+		auto &newSubmix = soundManager.m_submixes.back();
 		newSubmix->setName( soundSubmixName );
 
 		soundManager.m_pXAudio2->CreateSubmixVoice( &newSubmix->m_pSubmixVoice,
@@ -218,7 +219,7 @@ bool SoundManager::Channel::setupChannel( SoundManager& soundManager,
 	return true;
 }
 
-void SoundManager::Channel::playSound( Sound* sound,
+void SoundManager::Channel::playSound( Sound *sound,
 	float volume )
 {
 	ASSERT( m_pSound, "Null Sound!" );
@@ -240,20 +241,20 @@ void SoundManager::Channel::stopSound() cond_noex
 	m_pSourceVoice->FlushSourceBuffers();
 }
 
-void SoundManager::Channel::rechannel( const Sound* pOldSound,
-	Sound* pNewSound )
+void SoundManager::Channel::rechannel( const Sound *pOldSound,
+	Sound *pNewSound )
 {
 	ASSERT( pOldSound == pNewSound, "Channel mismatch!" );
 	m_pSound = pNewSound;
 }
 
-Sound* SoundManager::Channel::getSound() const cond_noex
+Sound *SoundManager::Channel::getSound() const cond_noex
 {
 	ASSERT( m_pSound, "Sound is null!" );
 	return m_pSound;
 }
 
-SoundManager& SoundManager::getInstance( WAVEFORMATEXTENSIBLE* format )
+SoundManager &SoundManager::getInstance( WAVEFORMATEXTENSIBLE *format )
 {
 	static SoundManager soundManager{format};
 	return soundManager;
@@ -264,13 +265,13 @@ void SoundManager::setMasterVolume( float volume )
 	m_pMasterVoice->SetVolume( volume );
 }
 
-void SoundManager::playChannelSound( class Sound* sound,
+void SoundManager::playChannelSound( class Sound *sound,
 	float volume )
 {
 	std::unique_lock<std::mutex> ul{m_mu};
 	if ( !m_idleChannels.empty() && m_occupiedChannels.size() < m_nMaxAudioChannels )
 	{
-		auto& channel = m_idleChannels.back();
+		auto &channel = m_idleChannels.back();
 		channel->setupChannel( *this,
 			*sound );
 		m_occupiedChannels.emplace_back( std::move( channel ) );
@@ -280,7 +281,7 @@ void SoundManager::playChannelSound( class Sound* sound,
 	}
 }
 
-void SoundManager::deactivateChannel( Channel& channel )
+void SoundManager::deactivateChannel( Channel &channel )
 {
 	std::lock_guard<std::mutex> lg{m_mu};
 	// convert ptr/ref to container iterator
@@ -316,8 +317,8 @@ void SoundManager::deactivateChannel( Channel& channel )
 
 HRESULT Sound::findChunk( HANDLE file,
 	DWORD fourcc,
-	DWORD& chunkSize,
-	DWORD& chunkDataPosition )
+	DWORD &chunkSize,
+	DWORD &chunkDataPosition )
 {
 	HRESULT hr = S_OK;
 	if ( SetFilePointer( file,
@@ -390,7 +391,7 @@ HRESULT Sound::findChunk( HANDLE file,
 }
 
 HRESULT Sound::readChunkData( HANDLE file,
-	void* buffer,
+	void *buffer,
 	DWORD buffersize,
 	DWORD bufferoffset )
 {
@@ -416,7 +417,7 @@ HRESULT Sound::readChunkData( HANDLE file,
 
 #pragma endregion
 
-Sound::Sound( const char* zsFilename,
+Sound::Sound( const char *zsFilename,
 	const std::string &defaultName,
 	const std::string &defaultSubmixName )
 	:
@@ -538,7 +539,7 @@ Sound::Sound( Sound&& rhs ) cond_noex
 	std::lock( ull, ulr );
 	m_pAudioData = std::move( rhs.m_pAudioData );
 	m_busyChannels = std::move( rhs.m_busyChannels );
-	for ( auto& channel : m_busyChannels )
+	for ( auto &channel : m_busyChannels )
 	{
 		channel->rechannel( &rhs,
 			this );
@@ -546,7 +547,7 @@ Sound::Sound( Sound&& rhs ) cond_noex
 	rhs.m_condVar.notify_all();
 }
 
-Sound& Sound::operator=( Sound&& rhs ) cond_noex
+Sound &Sound::operator=( Sound&& rhs ) cond_noex
 {
 	m_name = std::move( rhs.m_name );
 	m_submixName = std::move( rhs.m_submixName );
@@ -557,7 +558,7 @@ Sound& Sound::operator=( Sound&& rhs ) cond_noex
 		ulr );
 	m_pAudioData = std::move( rhs.m_pAudioData );
 	m_busyChannels = std::move( rhs.m_busyChannels );
-	for ( auto& channel : m_busyChannels )
+	for ( auto &channel : m_busyChannels )
 	{
 		channel->rechannel( &rhs,
 			this );
@@ -571,7 +572,7 @@ Sound::~Sound() noexcept
 	if ( !m_busyChannels.empty() )
 	{
 		std::unique_lock<std::mutex> ul{m_mu};
-		for ( const auto& i : m_busyChannels )
+		for ( const auto &i : m_busyChannels )
 		{
 			i->stopSound();
 		}
@@ -603,7 +604,7 @@ void Sound::stop()
 	std::lock_guard<std::mutex> lg{m_mu};
 	if ( !m_busyChannels.empty() )
 	{
-		for ( const auto& channel : m_busyChannels )
+		for ( const auto &channel : m_busyChannels )
 		{
 			channel->stopSound();
 		}
@@ -641,11 +642,11 @@ void SoundManager::Submix::setName( const std::string &name ) cond_noex
 	m_name = name;
 }
 
-void SoundManager::setSubmixVolume( const Submix& submix,
+void SoundManager::setSubmixVolume( const Submix &submix,
 	float volume ) cond_noex
 {
 	std::lock_guard<std::mutex> lg{m_mu};
-	for ( const auto& s : m_submixes )
+	for ( const auto &s : m_submixes )
 	{
 		if ( s->getName() == submix.getName() )
 		{
@@ -670,7 +671,7 @@ SoundManager::Submix::Submix( Submix&& rhs ) cond_noex
 	rhs.m_pSubmixVoice = nullptr;
 }
 
-SoundManager::Submix& SoundManager::Submix::operator=( Submix&& rhs ) cond_noex
+SoundManager::Submix &SoundManager::Submix::operator=( Submix&& rhs ) cond_noex
 {
 	if ( this != &rhs )
 	{

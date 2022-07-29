@@ -11,11 +11,11 @@ extern "C" {
 //#		define LSTR( expr ) L ## expr
 //#		define STRINGIFY( expr ) LSTR( #expr )
 #	define STRINGIFY( expr ) #expr
-extern bool assertPrint( const char* expr,
-	const char* file,
+extern bool assertPrint( const char *expr,
+	const char *file,
 	int line,
-	const char* function,
-	const char* msg = "" );
+	const char *function,
+	const char *msg = "" );
 
 // assert that arg is true, if not print error
 #	define ASSERT( arg, msg ) if ( !(arg) && assertPrint( STRINGIFY( arg ),\

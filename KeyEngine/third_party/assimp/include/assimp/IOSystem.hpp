@@ -120,7 +120,7 @@ public:
      * @param pFile Path to the file
      * @return true if there is a file with this path, else false.
      */
-    virtual bool Exists( const char* pFile) const = 0;
+    virtual bool Exists( const char *pFile) const = 0;
 
     // -------------------------------------------------------------------
     /** @brief Returns the system specific directory separator
@@ -143,14 +143,14 @@ public:
      *  @note When implementing this class to provide custom IO handling,
      *  you probably have to supply an own implementation of IOStream as well.
      */
-    virtual IOStream* Open(const char* pFile,
-        const char* pMode = "rb") = 0;
+    virtual IOStream *Open(const char *pFile,
+        const char *pMode = "rb") = 0;
 
     // -------------------------------------------------------------------
     /** @brief For backward compatibility
      *  @see Open(const char*, const char*)
      */
-    inline IOStream* Open(const std::string &pFile,
+    inline IOStream *Open(const std::string &pFile,
         const std::string &pMode = std::string("rb"));
 
     // -------------------------------------------------------------------
@@ -158,7 +158,7 @@ public:
      *    associated with it.
      *  @param pFile The file instance previously created by Open().
      */
-    virtual void Close( IOStream* pFile) = 0;
+    virtual void Close( IOStream *pFile) = 0;
 
     // -------------------------------------------------------------------
     /** @brief Compares two paths and check whether the point to
@@ -173,8 +173,8 @@ public:
      * @return true if the paths point to the same file. The file needn't
      *   be existing, however.
      */
-    virtual bool ComparePaths (const char* one,
-        const char* second) const;
+    virtual bool ComparePaths (const char *one,
+        const char *second) const;
 
     // -------------------------------------------------------------------
     /** @brief For backward compatibility
@@ -246,15 +246,15 @@ IOSystem::~IOSystem() {
 
 // ----------------------------------------------------------------------------
 // For compatibility, the interface of some functions taking a std::string was
-// changed to const char* to avoid crashes between binary incompatible STL
+// changed to const char *to avoid crashes between binary incompatible STL
 // versions. This code her is inlined,  so it shouldn't cause any problems.
 // ----------------------------------------------------------------------------
 
 // ----------------------------------------------------------------------------
 AI_FORCE_INLINE
-IOStream* IOSystem::Open(const std::string &pFile, const std::string &pMode) {
+IOStream *IOSystem::Open(const std::string &pFile, const std::string &pMode) {
     // NOTE:
-    // For compatibility, interface was changed to const char* to
+    // For compatibility, interface was changed to const char *to
     // avoid crashes between binary incompatible STL versions
     return Open(pFile.c_str(),pMode.c_str());
 }
@@ -263,7 +263,7 @@ IOStream* IOSystem::Open(const std::string &pFile, const std::string &pMode) {
 AI_FORCE_INLINE
 bool IOSystem::Exists( const std::string &pFile) const {
     // NOTE:
-    // For compatibility, interface was changed to const char* to
+    // For compatibility, interface was changed to const char *to
     // avoid crashes between binary incompatible STL versions
     return Exists(pFile.c_str());
 }
@@ -272,7 +272,7 @@ bool IOSystem::Exists( const std::string &pFile) const {
 AI_FORCE_INLINE
 bool IOSystem::ComparePaths (const std::string &one, const std::string &second) const {
     // NOTE:
-    // For compatibility, interface was changed to const char* to
+    // For compatibility, interface was changed to const char *to
     // avoid crashes between binary incompatible STL versions
     return ComparePaths(one.c_str(),second.c_str());
 }

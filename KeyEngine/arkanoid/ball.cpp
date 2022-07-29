@@ -5,8 +5,8 @@
 
 namespace dx = DirectX;
 
-Ball::Ball( const dx::XMFLOAT2& position,
-	const dx::XMFLOAT2& velocity )
+Ball::Ball( const dx::XMFLOAT2 &position,
+	const dx::XMFLOAT2 &velocity )
 	:
 	m_pos{position},
 	m_vel{velocity}
@@ -21,7 +21,7 @@ void Ball::update( float dt )
 		{m_pos.x + change.x, m_pos.y + change.y} );
 }
 
-bool Ball::doWallCollision( const Rect& wall )
+bool Ball::doWallCollision( const Rect &wall )
 {
 	bool collided = false;
 	const Rect rect = getRect();

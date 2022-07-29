@@ -71,8 +71,8 @@ public:
     //! \param szBuffer Buffer to work with
     //! \param chReplacement Character to be used as replacement
     //! for commented lines. By default this is ' '
-    static void RemoveLineComments(const char* szComment,
-        char* szBuffer, char chReplacement = ' ');
+    static void RemoveLineComments(const char *szComment,
+        char *szBuffer, char chReplacement = ' ');
 
     //! Remove multi-line comments. The end of a line is
     //! expected to be either NL or CR or NLCR. Multi-line comments
@@ -82,8 +82,8 @@ public:
     //! \param szBuffer Buffer to work with
     //! \param chReplacement Character to be used as replacement
     //! for commented lines. By default this is ' '
-    static void RemoveMultiLineComments(const char* szCommentStart,
-        const char* szCommentEnd,char* szBuffer,
+    static void RemoveMultiLineComments(const char *szCommentStart,
+        const char *szCommentEnd,char *szBuffer,
         char chReplacement = ' ');
 };
 } // ! Assimp

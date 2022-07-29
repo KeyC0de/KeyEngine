@@ -60,11 +60,11 @@ void ComputeNormalsWithSmoothingsGroups(MeshWithSmoothingGroups<T>& sMesh)
     sMesh.mNormals.resize(sMesh.mPositions.size(),aiVector3D());
     for( unsigned int a = 0; a < sMesh.mFaces.size(); a++)
     {
-        T& face = sMesh.mFaces[a];
+        T &face = sMesh.mFaces[a];
 
-        aiVector3D* pV1 = &sMesh.mPositions[face.mIndices[0]];
-        aiVector3D* pV2 = &sMesh.mPositions[face.mIndices[1]];
-        aiVector3D* pV3 = &sMesh.mPositions[face.mIndices[2]];
+        aiVector3D *pV1 = &sMesh.mPositions[face.mIndices[0]];
+        aiVector3D *pV2 = &sMesh.mPositions[face.mIndices[1]];
+        aiVector3D *pV3 = &sMesh.mPositions[face.mIndices[2]];
 
         aiVector3D pDelta1 = *pV2 - *pV1;
         aiVector3D pDelta2 = *pV3 - *pV1;

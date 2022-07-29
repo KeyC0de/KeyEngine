@@ -41,7 +41,7 @@ public:
 	}
 
 	IConstantBuffer( Graphics &gph,
-		const CB& cb,
+		const CB &cb,
 		unsigned slot )
 		:
 		m_slot(slot)
@@ -66,7 +66,7 @@ public:
 	//	\brief  Map, paste to msr, Unmap
 	//	\date	2022/02/19 19:00
 	void update( Graphics &gph,
-		const CB& cb )
+		const CB &cb )
 	{
 		D3D11_MAPPED_SUBRESOURCE msr;
 		HRESULT hres = getContext( gph )->Map( m_pCb.Get(),
@@ -106,7 +106,7 @@ public:
 	}
 
 	static std::shared_ptr<VertexShaderConstantBuffer> fetch( Graphics &gph,
-		const CB& cb,
+		const CB &cb,
 		unsigned slot )
 	{
 		return BindableMap::fetch<VertexShaderConstantBuffer>( gph,
@@ -121,7 +121,7 @@ public:
 			slot );
 	}
 
-	static std::string generateUid( const CB& cb,
+	static std::string generateUid( const CB &cb,
 		unsigned slot )
 	{
 		return generateUid( slot );
@@ -158,7 +158,7 @@ public:
 	}
 
 	static std::shared_ptr<PixelShaderConstantBuffer> fetch( Graphics &gph,
-		const CB& cb,
+		const CB &cb,
 		unsigned slot )
 	{
 		return BindableMap::fetch<PixelShaderConstantBuffer>( gph,
@@ -173,7 +173,7 @@ public:
 			slot );
 	}
 
-	static std::string generateUid( const CB& cb,
+	static std::string generateUid( const CB &cb,
 		unsigned slot )
 	{
 		return generateUid( slot );

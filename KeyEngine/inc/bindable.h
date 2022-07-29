@@ -18,12 +18,12 @@ public:
 	// bind resource to a certain stage of the graphics pipeline 
 	virtual void bind( Graphics &gph ) cond_noex = 0;
 
-	virtual void setParentDrawable( const Drawable& drawable ) noexcept
+	virtual void setParentDrawable( const Drawable &drawable ) noexcept
 	{
 		pass_;
 	}
 
-	virtual void accept( IEffectVisitor& ev )
+	virtual void accept( IEffectVisitor &ev )
 	{
 		pass_;
 	}

@@ -90,7 +90,7 @@ void windowsMetricsCheckTest()
 {
 	int ret;
 
-	KeyConsole& console = KeyConsole::getInstance();
+	KeyConsole &console = KeyConsole::getInstance();
 	using namespace std::string_literals;
 	ret = GetSystemMetrics( SM_MOUSEPRESENT );
 	if ( ret == 0 )
@@ -128,8 +128,8 @@ void windowsMetricsCheckTest()
 
 void windowsMetricsCheck( int sm )
 {
-	KeyConsole& console = KeyConsole::getInstance();
-	const auto& elem = metrics[sm];
+	KeyConsole &console = KeyConsole::getInstance();
+	const auto &elem = metrics[sm];
 	console.print( elem.label );
 	console.print( " " );
 	console.print( elem.description );
@@ -139,11 +139,11 @@ void windowsMetricsCheck( int sm )
 void windowsMetricsCheckAll()
 {
 	const unsigned int size = sizeof( metrics ) / sizeof( metrics[0] );
-	KeyConsole& console = KeyConsole::getInstance();
+	KeyConsole &console = KeyConsole::getInstance();
 
 	for ( unsigned int i = 0; i < size; ++i )
 	{
-		const auto& elem = metrics[i];
+		const auto &elem = metrics[i];
 		console.print( elem.label );
 		console.print( " " );
 		console.print( elem.description );

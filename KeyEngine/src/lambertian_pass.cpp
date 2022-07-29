@@ -35,7 +35,7 @@ LambertianPass::LambertianPass( Graphics &gph,
 		DepthStencilState::Mode::Default ) );
 }
 
-void LambertianPass::setMainCamera( const Camera& cam ) noexcept
+void LambertianPass::setMainCamera( const Camera &cam ) noexcept
 {
 	m_pMainCamera = &cam;
 }

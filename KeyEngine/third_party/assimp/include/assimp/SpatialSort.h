@@ -71,7 +71,7 @@ public:
      * @param pNumPositions Number of vectors to expect in that array.
      * @param pElementOffset Offset in bytes from the beginning of one vector in memory
      *   to the beginning of the next vector. */
-    SpatialSort( const aiVector3D* pPositions, unsigned int pNumPositions,
+    SpatialSort( const aiVector3D *pPositions, unsigned int pNumPositions,
         unsigned int pElementOffset);
 
     /** Destructor */
@@ -92,14 +92,14 @@ public:
      *   required in order to use #FindPosition() or #GenerateMappingTable().
      *   If you don't finalize yet, you can use #Append() to add data from
      *   other sources.*/
-    void Fill( const aiVector3D* pPositions, unsigned int pNumPositions,
+    void Fill( const aiVector3D *pPositions, unsigned int pNumPositions,
         unsigned int pElementOffset,
         bool pFinalize = true);
 
 
     // ------------------------------------------------------------------------------------
     /** Same as #Fill(), except the method appends to existing data in the #SpatialSort. */
-    void Append( const aiVector3D* pPositions, unsigned int pNumPositions,
+    void Append( const aiVector3D *pPositions, unsigned int pNumPositions,
         unsigned int pElementOffset,
         bool pFinalize = true);
 
@@ -118,7 +118,7 @@ public:
      * @param poResults The container to store the indices of the found positions.
      *   Will be emptied by the call so it may contain anything.
      * @return An iterator to iterate over all vertices in the given area.*/
-    void FindPositions( const aiVector3D& pPosition, ai_real pRadius,
+    void FindPositions( const aiVector3D &pPosition, ai_real pRadius,
         std::vector<unsigned int>& poResults) const;
 
     // ------------------------------------------------------------------------------------
@@ -128,7 +128,7 @@ public:
      * @param pPosition The position to look for vertices.
      * @param poResults The container to store the indices of the found positions.
      *   Will be emptied by the call so it may contain anything.*/
-    void FindIdenticalPositions( const aiVector3D& pPosition,
+    void FindIdenticalPositions( const aiVector3D &pPosition,
         std::vector<unsigned int>& poResults) const;
 
     // ------------------------------------------------------------------------------------
@@ -157,12 +157,12 @@ protected:
         : mIndex( 999999999 ), mPosition(), mDistance( 99999. ) {
             // empty        
         }
-        Entry( unsigned int pIndex, const aiVector3D& pPosition, ai_real pDistance)
+        Entry( unsigned int pIndex, const aiVector3D &pPosition, ai_real pDistance)
         : mIndex( pIndex), mPosition( pPosition), mDistance( pDistance) {
             // empty
         }
 
-        bool operator < (const Entry& e) const { return mDistance < e.mDistance; }
+        bool operator < (const Entry &e) const { return mDistance < e.mDistance; }
     };
 
     // all positions, sorted by distance to the sorting plane

@@ -88,10 +88,10 @@ public:
      *  @param  io IOSystem to be used to open external files (such as the
      *   log file). Pass NULL to rely on the default implementation.
      *  This replaces the default #NullLogger with a #DefaultLogger instance. */
-    static Logger *create(const char* name = ASSIMP_DEFAULT_LOG_NAME,
+    static Logger *create(const char *name = ASSIMP_DEFAULT_LOG_NAME,
         LogSeverity severity    = NORMAL,
         unsigned int defStreams = aiDefaultLogStream_DEBUGGER | aiDefaultLogStream_FILE,
-        IOSystem* io            = NULL);
+        IOSystem *io            = NULL);
 
     // ----------------------------------------------------------------------
     /** @brief Setup a custom #Logger implementation.
@@ -142,7 +142,7 @@ private:
     ~DefaultLogger();
 
     /** @brief  Logs debug infos, only been written when severity level VERBOSE is set */
-    void OnDebug(const char* message);
+    void OnDebug(const char *message);
 
     /** @brief  Logs an info message */
     void OnInfo(const char*  message);
@@ -151,11 +151,11 @@ private:
     void OnWarn(const char*  message);
 
     /** @brief  Logs an error message */
-    void OnError(const char* message);
+    void OnError(const char *message);
 
     // ----------------------------------------------------------------------
     /** @brief Writes a message to all streams */
-    void WriteToStreams(const char* message, ErrorSeverity ErrorSev );
+    void WriteToStreams(const char *message, ErrorSeverity ErrorSev );
 
     // ----------------------------------------------------------------------
     /** @brief Returns the thread id.

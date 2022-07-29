@@ -60,7 +60,7 @@ Window::WindowClass::WindowClass( const std::string &name )
 	ASSERT_HRES_WIN32_IF_FAILED( hres );
 
 #if defined _DEBUG && !defined NDEBUG
-	auto& console = KeyConsole::getInstance();
+	auto &console = KeyConsole::getInstance();
 	using namespace std::string_literals;
 	console.log( "\n\nApplication Instance: "s
 		+ util::toHexString( hInstance )
@@ -86,7 +86,7 @@ Window::WindowClass::WindowClass( WindowClass&& rhs ) noexcept
 	m_pInstance = rhs.m_pInstance;
 }
 
-Window::WindowClass& Window::WindowClass::operator=( WindowClass&& rhs ) noexcept
+Window::WindowClass &Window::WindowClass::operator=( WindowClass&& rhs ) noexcept
 {
 	m_pInstance = rhs.m_pInstance;
 	m_name = std::move( rhs.m_name );
@@ -94,7 +94,7 @@ Window::WindowClass& Window::WindowClass::operator=( WindowClass&& rhs ) noexcep
 	return *this;
 }
 
-Window::WindowClass& Window::WindowClass::getInstance( const std::string &name )
+Window::WindowClass &Window::WindowClass::getInstance( const std::string &name )
 {
 	if ( m_pInstance == nullptr )
 	{
@@ -137,7 +137,7 @@ Window::Dialog::Dialog( const std::wstring &name )
 	ASSERT_HRES_WIN32_IF_FAILED( hres );
 
 #if defined _DEBUG && !defined NDEBUG
-	auto& console = KeyConsole::getInstance();
+	auto &console = KeyConsole::getInstance();
 	using namespace std::string_literals;
 	console.log( "Dialog Window : "s
 		+ util::ws2s( m_name )
@@ -159,7 +159,7 @@ Window::Dialog::Dialog( Dialog&& rhs ) noexcept
 
 }
 
-Window::Dialog& Window::Dialog::operator=( Dialog&& rhs ) noexcept
+Window::Dialog &Window::Dialog::operator=( Dialog&& rhs ) noexcept
 {
 	std::swap( m_name, rhs.m_name );
 	m_hWnd = rhs.m_hWnd;
@@ -230,7 +230,7 @@ Window::Window()
 
 Window::Window( int width,
 	int height,
-	const char* name )
+	const char *name )
 	:
 	m_width(width),
 	m_height(height),
@@ -349,7 +349,7 @@ Window::Window( Window&& rhs ) noexcept
 	rhs.m_rawInputBuffer = {};
 }
 
-Window& Window::operator=( Window&& rhs ) noexcept
+Window &Window::operator=( Window&& rhs ) noexcept
 {
 	std::swap( m_bCursorEnabled, rhs.m_bCursorEnabled );
 	m_width = rhs.m_width;
@@ -564,7 +564,7 @@ std::optional<int> Window::messageLoop() noexcept
 	return std::nullopt;
 }
 
-Graphics& Window::getGraphics()
+Graphics &Window::getGraphics()
 {
 	return *m_pGraphics;
 }
@@ -584,17 +584,17 @@ WINDOWINFO Window::getInfo() const noexcept
 	return m_info;
 }
 
-Keyboard& Window::getKeyboard() noexcept
+Keyboard &Window::getKeyboard() noexcept
 {
 	return m_keyboard;
 }
 
-Mouse& Window::getMouse() noexcept
+Mouse &Window::getMouse() noexcept
 {
 	return m_mouse;
 }
 
-Window::WindowClass& Window::getWindowClass() noexcept
+Window::WindowClass &Window::getWindowClass() noexcept
 {
 	return *m_pWindowClass;
 }
@@ -652,7 +652,7 @@ LRESULT CALLBACK Window::windowProc( HWND hWnd,
 	LPARAM lParam )
 {
 #if defined _DEBUG && !defined NDEBUG
-	auto& console = KeyConsole::getInstance();
+	auto &console = KeyConsole::getInstance();
 	console.log( "windowProc() entered\n" );
 #endif
 
@@ -661,8 +661,8 @@ LRESULT CALLBACK Window::windowProc( HWND hWnd,
 #if defined _DEBUG && !defined NDEBUG
 		console.log( "windowProc() WM_NCCREATE message\n" );
 #endif
-		const CREATESTRUCTW* const cs = (CREATESTRUCTW*) lParam;
-		Window* this_wnd = reinterpret_cast<Window*>( cs->lpCreateParams );
+		const CREATESTRUCTW *const cs = (CREATESTRUCTW*) lParam;
+		Window *this_wnd = reinterpret_cast<Window*>( cs->lpCreateParams );
 
 		this_wnd->m_hWnd = hWnd;
 
@@ -689,7 +689,7 @@ LRESULT CALLBACK Window::windowProcDelegate( HWND hWnd,
 	WPARAM wParam,
 	LPARAM lParam )
 {
-	Window* this_wnd = reinterpret_cast<Window*>( GetWindowLongPtrW( hWnd,
+	Window *this_wnd = reinterpret_cast<Window*>( GetWindowLongPtrW( hWnd,
 		GWLP_USERDATA ) );
 	if constexpr ( GraphicsMode::get() == GraphicsMode::_3D )
 	{
@@ -736,7 +736,7 @@ LRESULT Window::windowProc_impl2d( _In_ HWND hWnd,
 	case WM_ACTIVATE:
 	{// message sent to the window being activated and to the window being deactivated
 #if defined _DEBUG && !defined NDEBUG
-		auto& console = KeyConsole::getInstance();
+		auto &console = KeyConsole::getInstance();
 		using namespace std::string_literals;
 		console.log( "'WM_ACTIVATEAPP' : message ID received\n"s );
 #endif
@@ -912,7 +912,7 @@ LRESULT Window::windowProc_impl2d( _In_ HWND hWnd,
 			break;
 		}
 		// process the raw input data
-		auto& ri = reinterpret_cast<const RAWINPUT&>( *m_rawInputBuffer.data() );
+		auto &ri = reinterpret_cast<const RAWINPUT&>( *m_rawInputBuffer.data() );
 		if ( ri.header.dwType == RIM_TYPEMOUSE &&
 			( ri.data.mouse.lLastX != 0 || ri.data.mouse.lLastY != 0 ) )
 		{
@@ -939,7 +939,7 @@ LRESULT Window::windowProc_impl( _In_ HWND hWnd,
 	{
 		return true;
 	}
-	const auto& imGuiIoContext = ImGui::GetIO();
+	const auto &imGuiIoContext = ImGui::GetIO();
 
 	// custom messages (create with RegisterWindowMessage)
 
@@ -951,7 +951,7 @@ LRESULT Window::windowProc_impl( _In_ HWND hWnd,
 //		HRESULT hres;
 //		// Initialization. Controls - child windows, set default values for controls
 //#if defined _DEBUG && !defined NDEBUG
-//		auto& console = KeyConsole::getInstance();
+//		auto &console = KeyConsole::getInstance();
 //		using namespace std::string_literals;
 //		console.log( "'WM_CREATE' : window created\n"s );
 //#endif
@@ -987,7 +987,7 @@ LRESULT Window::windowProc_impl( _In_ HWND hWnd,
 	case WM_ACTIVATE:
 	{// message sent to the window being activated and to the window being deactivated
 #if defined _DEBUG && !defined NDEBUG
-		auto& console = KeyConsole::getInstance();
+		auto &console = KeyConsole::getInstance();
 		using namespace std::string_literals;
 		console.log( "'WM_ACTIVATEAPP' : message ID received\n"s );
 #endif
@@ -1011,7 +1011,7 @@ LRESULT Window::windowProc_impl( _In_ HWND hWnd,
 	case WM_ENABLE:
 	{
 #if defined _DEBUG && !defined NDEBUG
-		auto& console = KeyConsole::getInstance();
+		auto &console = KeyConsole::getInstance();
 		if ( wParam == TRUE )
 		{
 			console.log( "Window "
@@ -1030,7 +1030,7 @@ LRESULT Window::windowProc_impl( _In_ HWND hWnd,
 #if defined _DEBUG && !defined NDEBUG
 	case WM_SHOWWINDOW:
 	{
-		auto& console = KeyConsole::getInstance();
+		auto &console = KeyConsole::getInstance();
 		if ( wParam == TRUE )
 		{
 			console.log( "Window "
@@ -1056,7 +1056,7 @@ LRESULT Window::windowProc_impl( _In_ HWND hWnd,
 	case WM_PAINT:
 	{
 #	if defined _DEBUG && !defined NDEBUG
-		auto& console = KeyConsole::getInstance();
+		auto &console = KeyConsole::getInstance();
 		using namespace std::string_literals;
 		console.log( "Painting without DirectX\n"s );
 #	endif
@@ -1095,7 +1095,7 @@ LRESULT Window::windowProc_impl( _In_ HWND hWnd,
 			// Perform error handling here!
 
 			// Get buffer and create a render-target-view.
-			ID3D11Texture2D* pBuffer;
+			ID3D11Texture2D *pBuffer;
 			hr = g_pSwapChain->GetBuffer(0, __uuidof( ID3D11Texture2D),
 										 (void**) &pBuffer );
 			// Perform error handling here!
@@ -1232,7 +1232,7 @@ Prevent window resizing: Instead resize by ingame option - choosing resolution:
 	case WM_INITMENUPOPUP:
 	{
 #if defined _DEBUG && !defined NDEBUG
-		auto& console = KeyConsole::getInstance();
+		auto &console = KeyConsole::getInstance();
 		using namespace std::string_literals;
 		console.log( "Clipboard processing\n"s );
 #endif
@@ -1488,7 +1488,7 @@ Prevent window resizing: Instead resize by ingame option - choosing resolution:
 			break;
 		}
 		// process the raw input data
-		auto& ri = reinterpret_cast<const RAWINPUT&>( *m_rawInputBuffer.data() );
+		auto &ri = reinterpret_cast<const RAWINPUT&>( *m_rawInputBuffer.data() );
 		if ( ri.header.dwType == RIM_TYPEMOUSE &&
 			( ri.data.mouse.lLastX != 0 || ri.data.mouse.lLastY != 0 ) )
 		{
@@ -1537,8 +1537,8 @@ void Window::setFont( const std::wstring &fontName )
 
 // WindowException
 Window::WindowException::WindowException( int line,
-	const char* file,
-	const char* function,
+	const char *file,
+	const char *function,
 	const std::string &msg ) noexcept
 	:
 	KeyException{line, file, function, msg}
@@ -1551,13 +1551,13 @@ const std::string Window::WindowException::getType() const noexcept
 	return typeid( *this ).name();
 }
 
-const char* Window::WindowException::what() const noexcept
+const char *Window::WindowException::what() const noexcept
 {
 	return KeyException::what();
 }
 
-int Window::messageBoxPrintf( const TCHAR* caption,
-	const TCHAR* format,
+int Window::messageBoxPrintf( const TCHAR *caption,
+	const TCHAR *format,
 	... )
 {
 	TCHAR szBuffer[1024];

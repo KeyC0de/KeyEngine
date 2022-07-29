@@ -57,7 +57,7 @@ public:
 	void update( Graphics &gph, float dt,
 		const DirectX::XMMATRIX &activeCameraViewMat ) const noexcept;
 	void render( size_t channels ) const cond_noex;
-	void connectEffectsToRenderer( ren::Renderer& r );
+	void connectEffectsToRenderer( ren::Renderer &r );
 	std::shared_ptr<Camera> shareCamera() const noexcept;
 };
 

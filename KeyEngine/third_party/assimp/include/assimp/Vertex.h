@@ -64,22 +64,22 @@ namespace Assimp    {
     ///////////////////////////////////////////////////////////////////////////
     namespace Intern {
         template <typename T0, typename T1, typename TRES = T0> struct plus {
-            TRES operator() (const T0& t0, const T1& t1) const {
+            TRES operator() (const T0 &t0, const T1 &t1) const {
                 return t0+t1;
             }
         };
         template <typename T0, typename T1, typename TRES = T0> struct minus {
-            TRES operator() (const T0& t0, const T1& t1) const {
+            TRES operator() (const T0 &t0, const T1 &t1) const {
                 return t0-t1;
             }
         };
         template <typename T0, typename T1, typename TRES = T0> struct multiplies {
-            TRES operator() (const T0& t0, const T1& t1) const {
+            TRES operator() (const T0 &t0, const T1 &t1) const {
                 return t0*t1;
             }
         };
         template <typename T0, typename T1, typename TRES = T0> struct divides {
-            TRES operator() (const T0& t0, const T1& t1) const {
+            TRES operator() (const T0 &t0, const T1 &t1) const {
                 return t0/t1;
             }
         };
@@ -88,7 +88,7 @@ namespace Assimp    {
 // ------------------------------------------------------------------------------------------------
 /** Intermediate description a vertex with all possible components. Defines a full set of
  *  operators, so you may use such a 'Vertex' in basic arithmetics. All operators are applied
- *  to *all* vertex components equally. This is useful for stuff like interpolation
+ *  to *all *vertex components equally. This is useful for stuff like interpolation
  *  or subdivision, but won't work if special handling is required for some vertex components. */
 // ------------------------------------------------------------------------------------------------
 class Vertex
@@ -112,7 +112,7 @@ public:
 
     // ----------------------------------------------------------------------------
     /** Extract a particular vertex from a mesh and interleave all components */
-    explicit Vertex(const aiMesh* msh, unsigned int idx) {
+    explicit Vertex(const aiMesh *msh, unsigned int idx) {
         ai_assert(idx < msh->mNumVertices);
         position = msh->mVertices[idx];
 
@@ -136,34 +136,34 @@ public:
 
 public:
 
-    Vertex& operator += (const Vertex& v) {
+    Vertex &operator += (const Vertex &v) {
         *this = *this+v;
         return *this;
     }
 
-    Vertex& operator -= (const Vertex& v) {
+    Vertex &operator -= (const Vertex &v) {
         *this = *this-v;
         return *this;
     }
 
 
 /*
-    Vertex& operator += (ai_real v) {
+    Vertex &operator += (ai_real v) {
         *this = *this+v;
         return *this;
     }
 
-    Vertex& operator -= (ai_real v) {
+    Vertex &operator -= (ai_real v) {
         *this = *this-v;
         return *this;
     }
 */
-    Vertex& operator *= (ai_real v) {
+    Vertex &operator *= (ai_real v) {
         *this = *this*v;
         return *this;
     }
 
-    Vertex& operator /= (ai_real v) {
+    Vertex &operator /= (ai_real v) {
         *this = *this/v;
         return *this;
     }
@@ -172,7 +172,7 @@ public:
 
     // ----------------------------------------------------------------------------
     /** Convert back to non-interleaved storage */
-    void SortBack(aiMesh* out, unsigned int idx) const {
+    void SortBack(aiMesh *out, unsigned int idx) const {
 
         ai_assert(idx<out->mNumVertices);
         out->mVertices[idx] = position;
@@ -199,7 +199,7 @@ private:
 
     // ----------------------------------------------------------------------------
     /** Construct from two operands and a binary operation to combine them */
-    template <template <typename t> class op> static Vertex BinaryOp(const Vertex& v0, const Vertex& v1) {
+    template <template <typename t> class op> static Vertex BinaryOp(const Vertex &v0, const Vertex &v1) {
         // this is a heavy task for the compiler to optimize ... *pray*
 
         Vertex res;
@@ -219,7 +219,7 @@ private:
 
     // ----------------------------------------------------------------------------
     /** This time binary arithmetics of v0 with a floating-point number */
-    template <template <typename, typename, typename> class op> static Vertex BinaryOp(const Vertex& v0, ai_real f) {
+    template <template <typename, typename, typename> class op> static Vertex BinaryOp(const Vertex &v0, ai_real f) {
         // this is a heavy task for the compiler to optimize ... *pray*
 
         Vertex res;
@@ -239,7 +239,7 @@ private:
 
     // ----------------------------------------------------------------------------
     /** This time binary arithmetics of v0 with a floating-point number */
-    template <template <typename, typename, typename> class op> static Vertex BinaryOp(ai_real f, const Vertex& v0) {
+    template <template <typename, typename, typename> class op> static Vertex BinaryOp(ai_real f, const Vertex &v0) {
         // this is a heavy task for the compiler to optimize ... *pray*
 
         Vertex res;
@@ -270,52 +270,52 @@ public:
 
 
 // ------------------------------------------------------------------------------------------------
-AI_FORCE_INLINE Vertex operator + (const Vertex& v0,const Vertex& v1) {
+AI_FORCE_INLINE Vertex operator + (const Vertex &v0,const Vertex &v1) {
     return Vertex::BinaryOp<std::plus>(v0,v1);
 }
 
-AI_FORCE_INLINE Vertex operator - (const Vertex& v0,const Vertex& v1) {
+AI_FORCE_INLINE Vertex operator - (const Vertex &v0,const Vertex &v1) {
     return Vertex::BinaryOp<std::minus>(v0,v1);
 }
 
 
 // ------------------------------------------------------------------------------------------------
 /*
-AI_FORCE_INLINE Vertex operator + (const Vertex& v0,ai_real f) {
+AI_FORCE_INLINE Vertex operator + (const Vertex &v0,ai_real f) {
     return Vertex::BinaryOp<Intern::plus>(v0,f);
 }
 
-AI_FORCE_INLINE Vertex operator - (const Vertex& v0,ai_real f) {
+AI_FORCE_INLINE Vertex operator - (const Vertex &v0,ai_real f) {
     return Vertex::BinaryOp<Intern::minus>(v0,f);
 }
 
 */
 
-AI_FORCE_INLINE Vertex operator * (const Vertex& v0,ai_real f) {
+AI_FORCE_INLINE Vertex operator * (const Vertex &v0,ai_real f) {
     return Vertex::BinaryOp<Intern::multiplies>(v0,f);
 }
 
-AI_FORCE_INLINE Vertex operator / (const Vertex& v0,ai_real f) {
+AI_FORCE_INLINE Vertex operator / (const Vertex &v0,ai_real f) {
     return Vertex::BinaryOp<Intern::multiplies>(v0,1.f/f);
 }
 
 // ------------------------------------------------------------------------------------------------
 /*
-AI_FORCE_INLINE Vertex operator + (ai_real f,const Vertex& v0) {
+AI_FORCE_INLINE Vertex operator + (ai_real f,const Vertex &v0) {
     return Vertex::BinaryOp<Intern::plus>(f,v0);
 }
 
-AI_FORCE_INLINE Vertex operator - (ai_real f,const Vertex& v0) {
+AI_FORCE_INLINE Vertex operator - (ai_real f,const Vertex &v0) {
     return Vertex::BinaryOp<Intern::minus>(f,v0);
 }
 */
 
-AI_FORCE_INLINE Vertex operator * (ai_real f,const Vertex& v0) {
+AI_FORCE_INLINE Vertex operator * (ai_real f,const Vertex &v0) {
     return Vertex::BinaryOp<Intern::multiplies>(f,v0);
 }
 
 /*
-AI_FORCE_INLINE Vertex operator / (ai_real f,const Vertex& v0) {
+AI_FORCE_INLINE Vertex operator / (ai_real f,const Vertex &v0) {
     return Vertex::BinaryOp<Intern::divides>(f,v0);
 }
 */

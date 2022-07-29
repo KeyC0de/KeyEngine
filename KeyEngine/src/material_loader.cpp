@@ -19,8 +19,8 @@
 namespace dx = DirectX;
 
 MaterialLoader::MaterialLoader( Graphics &gph,
-	const aiMaterial& aimaterial,
-	const std::filesystem::path& modelPath ) cond_noex
+	const aiMaterial &aimaterial,
+	const std::filesystem::path &modelPath ) cond_noex
 	:
 	m_modelPath{modelPath.string()}
 {
@@ -243,18 +243,18 @@ MaterialLoader::MaterialLoader( Graphics &gph,
 	}
 }
 
-ver::Buffer MaterialLoader::extractVertexBuffer( const aiMesh& aimesh ) const noexcept
+ver::Buffer MaterialLoader::extractVertexBuffer( const aiMesh &aimesh ) const noexcept
 {
 	return {m_vertexLayout, aimesh};
 }
 
-std::vector<unsigned> MaterialLoader::extractIndexBuffer( const aiMesh& aimesh ) const noexcept
+std::vector<unsigned> MaterialLoader::extractIndexBuffer( const aiMesh &aimesh ) const noexcept
 {
 	std::vector<unsigned> indices;
 	indices.reserve( aimesh.mNumFaces * 3 );
 	for ( unsigned int i = 0; i < aimesh.mNumFaces; ++i )
 	{
-		const auto& face = aimesh.mFaces[i];
+		const auto &face = aimesh.mFaces[i];
 		ASSERT( face.mNumIndices == 3, "Non-triangle face detected!" );
 		indices.push_back( face.mIndices[0] );
 		indices.push_back( face.mIndices[1] );
@@ -264,7 +264,7 @@ std::vector<unsigned> MaterialLoader::extractIndexBuffer( const aiMesh& aimesh )
 }
 
 std::shared_ptr<VertexBuffer> MaterialLoader::makeVertexBuffer( Graphics &gph,
-	const aiMesh& aimesh,
+	const aiMesh &aimesh,
 	float scale ) const cond_noex
 {
 	auto vb = extractVertexBuffer( aimesh );
@@ -272,7 +272,7 @@ std::shared_ptr<VertexBuffer> MaterialLoader::makeVertexBuffer( Graphics &gph,
 	{
 		for ( size_t i = 0u; i < vb.getVertexCount(); ++i )
 		{
-			dx::XMFLOAT3& pos = vb[i].getMember<ver::VertexLayout::MemberType::Position3D>();
+			dx::XMFLOAT3 &pos = vb[i].getMember<ver::VertexLayout::MemberType::Position3D>();
 			pos.x *= scale;
 			pos.y *= scale;
 			pos.z *= scale;
@@ -284,14 +284,14 @@ std::shared_ptr<VertexBuffer> MaterialLoader::makeVertexBuffer( Graphics &gph,
 }
 
 std::shared_ptr<IndexBuffer> MaterialLoader::makeIndexBuffer( Graphics &gph,
-	const aiMesh& aimesh ) const cond_noex
+	const aiMesh &aimesh ) const cond_noex
 {
 	return IndexBuffer::fetch( gph,
 		makeMeshTag( aimesh ),
 		extractIndexBuffer( aimesh ) );
 }
 
-std::string MaterialLoader::makeMeshTag( const aiMesh& aimesh ) const noexcept
+std::string MaterialLoader::makeMeshTag( const aiMesh &aimesh ) const noexcept
 {
 	return m_modelPath + "%" + aimesh.mName.C_Str();
 }

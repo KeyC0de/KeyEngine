@@ -47,7 +47,7 @@ IRenderTargetView::IRenderTargetView( Graphics &gph,
 }
 
 IRenderTargetView::IRenderTargetView( Graphics &gph,
-	ID3D11Texture2D* pTex,
+	ID3D11Texture2D *pTex,
 	std::optional<unsigned> face )
 {
 	D3D11_TEXTURE2D_DESC texDesc{};
@@ -84,7 +84,7 @@ void IRenderTargetView::bindRenderSurface( Graphics &gph ) cond_noex
 }
 
 void IRenderTargetView::bindRenderSurface( Graphics &gph,
-	IRenderSurface* pRs ) cond_noex
+	IRenderSurface *pRs ) cond_noex
 {
 	ASSERT( dynamic_cast<IDepthStencilView*>( pRs ) != nullptr,
 		"Input Resource is not a IDepthStencilView!" );
@@ -93,7 +93,7 @@ void IRenderTargetView::bindRenderSurface( Graphics &gph,
 }
 
 void IRenderTargetView::bindRenderSurface( Graphics &gph,
-	IDepthStencilView* pD3dDsv ) cond_noex
+	IDepthStencilView *pD3dDsv ) cond_noex
 {
 	bindRenderSurface( gph,
 		pD3dDsv ?
@@ -102,11 +102,11 @@ void IRenderTargetView::bindRenderSurface( Graphics &gph,
 }
 
 void IRenderTargetView::bindRenderSurface( Graphics &gph,
-	ID3D11DepthStencilView* pD3dDsv ) cond_noex
+	ID3D11DepthStencilView *pD3dDsv ) cond_noex
 {
 	auto viewport = Viewport::fetch( gph,
-		m_width,
-		m_height );
+		(float) m_width,
+		(float) m_height );
 	viewport->bind( gph );
 
 	getContext( gph )->OMSetRenderTargets( 1u,
@@ -133,7 +133,7 @@ unsigned IRenderTargetView::getHeight() const noexcept
 	return m_height;
 }
 
-ID3D11RenderTargetView* IRenderTargetView::getRenderTargetView() const noexcept
+ID3D11RenderTargetView *IRenderTargetView::getRenderTargetView() const noexcept
 {
 	return m_pRtv.Get();
 }
@@ -266,7 +266,7 @@ void RenderTargetShaderInput::bind( Graphics &gph ) cond_noex
 
 
 RenderTargetOutput::RenderTargetOutput( Graphics &gph,
-	ID3D11Texture2D* pTex,
+	ID3D11Texture2D *pTex,
 	std::optional<unsigned> face )
 	:
 	IRenderTargetView{gph, pTex, face}

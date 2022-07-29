@@ -35,6 +35,6 @@ private:
 	//	\function	createNodeHierarchy
 	//	\brief  parse the Scene Graph
 	//	\date	9 May 2022 8:30
-	std::unique_ptr<Node> createNodeHierarchy( int nodeId, const aiNode& node,
+	std::unique_ptr<Node> createNodeHierarchy( int nodeId, const aiNode &node,
 		float scale ) noexcept;
 };

@@ -78,7 +78,7 @@ public:
      * @param bKnobsOnly Set this to true if you don't want the connectors
      *   between the knobs representing the nodes.
      */
-    SkeletonMeshBuilder( aiScene* pScene, aiNode* root = NULL,
+    SkeletonMeshBuilder( aiScene *pScene, aiNode *root = NULL,
         bool bKnobsOnly = false);
 
 protected:
@@ -89,16 +89,16 @@ protected:
      * the mesh.
      * @param pNode The node to build geometry for.
      */
-    void CreateGeometry( const aiNode* pNode);
+    void CreateGeometry( const aiNode *pNode);
 
     // -------------------------------------------------------------------
     /** Creates the mesh from the internally accumulated stuff and returns it.
      */
-    aiMesh* CreateMesh();
+    aiMesh *CreateMesh();
 
     // -------------------------------------------------------------------
     /** Creates a dummy material and returns it. */
-    aiMaterial* CreateMaterial();
+    aiMaterial *CreateMaterial();
 
 protected:
     /** space to assemble the mesh data: points */

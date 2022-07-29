@@ -30,7 +30,7 @@ public:
 	virtual ~IConsumer() = default;
 	
 	void setPassAndProducerNames( const std::string &passName, const std::string &producerName );
-	virtual void link( IProducer& producer ) = 0;
+	virtual void link( IProducer &producer ) = 0;
 	//===================================================
 	//	\function	validateLinkage
 	//	\brief  assert validate after link()ing
@@ -75,7 +75,7 @@ public:
 		}
 	}
 
-	void link( IProducer& producer ) override
+	void link( IProducer &producer ) override
 	{
 		auto bindable = std::dynamic_pointer_cast<T>( producer.getBindable() );
 		if ( !bindable )
@@ -131,7 +131,7 @@ public:
 		}
 	}
 
-	void link( IProducer& producer ) override
+	void link( IProducer &producer ) override
 	{
 		auto bindable = std::dynamic_pointer_cast<T>( producer.getBindable() );
 		if ( !bindable )
@@ -190,7 +190,7 @@ public:
 		}
 	}
 
-	void link( IProducer& producer ) override
+	void link( IProducer &producer ) override
 	{
 		auto buff = std::dynamic_pointer_cast<T>( producer.getBuffer() );
 		if ( !buff )

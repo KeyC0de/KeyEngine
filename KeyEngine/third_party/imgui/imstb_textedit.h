@@ -170,7 +170,6 @@
 //    STB_TEXTEDIT_K_TEXTSTART2          secondary keyboard input to move cursor to start of text
 //    STB_TEXTEDIT_K_TEXTEND2            secondary keyboard input to move cursor to end of text
 //
-// Todo:
 //    STB_TEXTEDIT_K_PGUP        keyboard input to move cursor up a page
 //    STB_TEXTEDIT_K_PGDOWN      keyboard input to move cursor down a page
 //
@@ -261,7 +260,7 @@
 // forward in one pass. Similar logic applies to e.g. up-arrow and
 // down-arrow movement.)
 //
-// If it's run in a widget that *has* cached the layout, then this is less
+// If it's run in a widget that *has *cached the layout, then this is less
 // efficient, but it's not horrible on modern computers. But you wouldn't
 // want to edit million-line files with it.
 
@@ -1136,8 +1135,8 @@ static void stb_textedit_discard_redo(StbUndoState *state)
       // now move all the redo records towards the end of the buffer; the first one is at 'redo_point'
       // {DEAR IMGUI]
       size_t move_size = (size_t)((STB_TEXTEDIT_UNDOSTATECOUNT - state->redo_point - 1) * sizeof(state->undo_rec[0]));
-      const char* buf_begin = (char*)state->undo_rec; (void)buf_begin;
-      const char* buf_end   = (char*)state->undo_rec + sizeof(state->undo_rec); (void)buf_end;
+      const char *buf_begin = (char*)state->undo_rec; (void)buf_begin;
+      const char *buf_end   = (char*)state->undo_rec + sizeof(state->undo_rec); (void)buf_end;
       IM_ASSERT(((char*)(state->undo_rec + state->redo_point)) >= buf_begin);
       IM_ASSERT(((char*)(state->undo_rec + state->redo_point + 1) + move_size) <= buf_end);
       STB_TEXTEDIT_memmove(state->undo_rec + state->redo_point+1, state->undo_rec + state->redo_point, move_size);
@@ -1214,8 +1213,8 @@ static void stb_text_undo(STB_TEXTEDIT_STRING *str, STB_TexteditState *state)
 
       // there are three cases:
       //    there's enough room to store the characters
-      //    characters stored for *redoing* don't leave room for redo
-      //    characters stored for *undoing* don't leave room for redo
+      //    characters stored for *redoing *don't leave room for redo
+      //    characters stored for *undoing *don't leave room for redo
       // if the last is true, we have to bail
 
       if (s->undo_char_point + u.delete_length >= STB_TEXTEDIT_UNDOCHARCOUNT) {

@@ -25,16 +25,16 @@ public:
 	Effect( size_t channels, const std::string &targetPassName,
 		bool bStartActive ) noexcept;
 	Effect( const Effect &rhs ) noexcept;
-	Effect& operator=( const Effect &rhs ) = delete;
+	Effect &operator=( const Effect &rhs ) = delete;
 	Effect( Effect &&rhs ) = default;
-	Effect& operator=( Effect &&rhs ) = delete;
+	Effect &operator=( Effect &&rhs ) = delete;
 
 	void addBindable( std::shared_ptr<IBindable> bindable ) noexcept;
 	void render( const Drawable &drawable, size_t channels ) const noexcept;
 	void bind( Graphics &gph ) const cond_noex;
 	bool isEnabled() const noexcept;
 	void setEnabled( bool b ) noexcept;
-	const std::string& getTargetPassName() const noexcept;
+	const std::string &getTargetPassName() const noexcept;
 	void setParentDrawable( const Drawable &parent ) noexcept;
 	void accept( IEffectVisitor &ev );
 	void connectPass( ren::Renderer &r );

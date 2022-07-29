@@ -54,7 +54,7 @@ public:
 	void render( size_t channel ) const;
 	void makeActive( Graphics &gph, bool bOrthographic ) const;
 	DirectX::XMMATRIX getViewMatrix() const noexcept;
-	DirectX::XMMATRIX getReflectionViewMatrix( const DirectX::XMVECTOR& mirrorPlane ) const
+	DirectX::XMMATRIX getReflectionViewMatrix( const DirectX::XMVECTOR &mirrorPlane ) const
 		noexcept;
 	DirectX::XMMATRIX getPerspectiveProjectionMatrix() const noexcept;
 	DirectX::XMMATRIX getOrthographicProjectionMatrix( unsigned viewWidth,
@@ -71,7 +71,7 @@ public:
 	DirectX::XMVECTOR getUp() const noexcept;
 	void setPosition( const DirectX::XMFLOAT3 &pos ) noexcept;
 	const std::string &getName() const noexcept;
-	void connectEffectsToRenderer( ren::Renderer& ren );
+	void connectEffectsToRenderer( ren::Renderer &ren );
 };
 
 using Projector = Camera;

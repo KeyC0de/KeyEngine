@@ -34,21 +34,21 @@ class Entity
 		CLEANUP,
 	} m_category;
 
-	Entity* m_pParent = nullptr;
+	Entity *m_pParent = nullptr;
 	std::string m_name;
 	std::vector<Entity*> m_pChildren;
 private:
 	Entity( EntityIndex version, EntityIndex index, const std::string &name,
-		Category categoryId = UNCATEGORIZED, Entity* pParent = nullptr );
+		Category categoryId = UNCATEGORIZED, Entity *pParent = nullptr );
 	
 	EntityIndex getVersion() const noexcept;
 	EntityIndex getIndex() const noexcept;
 public:
 	virtual ~Entity() noexcept;
-	Entity( const Entity& rhs ) = delete;
-	Entity& operator=( const Entity& rhs ) = delete;
+	Entity( const Entity &rhs ) = delete;
+	Entity &operator=( const Entity &rhs ) = delete;
 	Entity( Entity&& rhs ) noexcept;
-	Entity& operator=( Entity&& rhs ) noexcept;
+	Entity &operator=( Entity&& rhs ) noexcept;
 
 	void printInfo() const noexcept;
 	//===================================================
@@ -58,18 +58,18 @@ public:
 	inline EntityId getId() const noexcept;
 	std::string getName() const noexcept;
 	Category getCategory() const noexcept;
-	Entity* getParent() const noexcept;
-	void addChild( Entity* child ) noexcept;
+	Entity *getParent() const noexcept;
+	void addChild( Entity *child ) noexcept;
 	std::vector<Entity*>& getChildren() noexcept;
 	const std::vector<Entity*>& getChildren() const noexcept;
 	bool hasChildren() const noexcept;
 	const int getChildrenCount() const noexcept;
 	void onMessageReceived( std::unique_ptr<class Message> msg );
-	void sendMessage( class Message* msg ) const noexcept;
-	inline bool operator==( const Entity* rhs ) const noexcept;
-	inline bool operator!=( const Entity* rhs ) const noexcept;
-	inline bool operator==( const Entity& rhs ) const noexcept;
-	inline bool operator!=( const Entity& rhs ) const noexcept;
+	void sendMessage( class Message *msg ) const noexcept;
+	inline bool operator==( const Entity *rhs ) const noexcept;
+	inline bool operator!=( const Entity *rhs ) const noexcept;
+	inline bool operator==( const Entity &rhs ) const noexcept;
+	inline bool operator!=( const Entity &rhs ) const noexcept;
 };
 
 

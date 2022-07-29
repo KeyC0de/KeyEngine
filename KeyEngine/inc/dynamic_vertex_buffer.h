@@ -13,7 +13,7 @@
 
 // tapping into Assimp aiMesh members given MemberProperties
 #define EXTRACT_ASSIMP_AIMESH( member ) \
-	static CPUType extract( const aiMesh& mesh,\
+	static CPUType extract( const aiMesh &mesh,\
 		size_t i ) noexcept\
 	{\
 		return *reinterpret_cast<const CPUType*>( &mesh.member[i] );\
@@ -59,8 +59,8 @@ public:
 	{
 		using CPUType = DirectX::XMFLOAT2;
 		static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32_FLOAT;
-		static constexpr const char* hlslSemantic = "Position";
-		static constexpr const char* tag = "P2";
+		static constexpr const char *hlslSemantic = "Position";
+		static constexpr const char *tag = "P2";
 		EXTRACT_ASSIMP_AIMESH( mVertices )
 	};
 	
@@ -69,8 +69,8 @@ public:
 	{
 		using CPUType = DirectX::XMFLOAT3;
 		static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32B32_FLOAT;
-		static constexpr const char* hlslSemantic = "Position";
-		static constexpr const char* tag = "P3";
+		static constexpr const char *hlslSemantic = "Position";
+		static constexpr const char *tag = "P3";
 		EXTRACT_ASSIMP_AIMESH( mVertices )
 	};
 	
@@ -79,8 +79,8 @@ public:
 	{
 		using CPUType = DirectX::XMFLOAT2;
 		static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32_FLOAT;
-		static constexpr const char* hlslSemantic = "Texcoord";
-		static constexpr const char* tag = "T2";
+		static constexpr const char *hlslSemantic = "Texcoord";
+		static constexpr const char *tag = "T2";
 		EXTRACT_ASSIMP_AIMESH( mTextureCoords[0] )
 	};
 	
@@ -89,8 +89,8 @@ public:
 	{
 		using CPUType = DirectX::XMFLOAT3;
 		static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32B32_FLOAT;
-		static constexpr const char* hlslSemantic = "Normal";
-		static constexpr const char* tag = "N";
+		static constexpr const char *hlslSemantic = "Normal";
+		static constexpr const char *tag = "N";
 		EXTRACT_ASSIMP_AIMESH( mNormals )
 	};
 	
@@ -99,8 +99,8 @@ public:
 	{
 		using CPUType = DirectX::XMFLOAT3;
 		static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32B32_FLOAT;
-		static constexpr const char* hlslSemantic = "Tangent";
-		static constexpr const char* tag = "Nt";
+		static constexpr const char *hlslSemantic = "Tangent";
+		static constexpr const char *tag = "Nt";
 		EXTRACT_ASSIMP_AIMESH( mTangents )
 	};
 	
@@ -109,8 +109,8 @@ public:
 	{
 		using CPUType = DirectX::XMFLOAT3;
 		static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32B32_FLOAT;
-		static constexpr const char* hlslSemantic = "Bitangent";
-		static constexpr const char* tag = "Nb";
+		static constexpr const char *hlslSemantic = "Bitangent";
+		static constexpr const char *tag = "Nb";
 		EXTRACT_ASSIMP_AIMESH( mBitangents )
 	};
 	
@@ -119,8 +119,8 @@ public:
 	{
 		using CPUType = DirectX::XMFLOAT3;
 		static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32B32_FLOAT;
-		static constexpr const char* hlslSemantic = "Color";
-		static constexpr const char* tag = "C3";
+		static constexpr const char *hlslSemantic = "Color";
+		static constexpr const char *tag = "C3";
 		EXTRACT_ASSIMP_AIMESH( mColors[0] )
 	};
 	
@@ -129,8 +129,8 @@ public:
 	{
 		using CPUType = DirectX::XMFLOAT4;
 		static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32B32A32_FLOAT;
-		static constexpr const char* hlslSemantic = "Color";
-		static constexpr const char* tag = "C4";
+		static constexpr const char *hlslSemantic = "Color";
+		static constexpr const char *tag = "C4";
 		EXTRACT_ASSIMP_AIMESH( mColors[0] )
 	};
 	
@@ -139,8 +139,8 @@ public:
 	{
 		using CPUType = ColorBGRA;
 		static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_B8G8R8A8_UNORM;
-		static constexpr const char* hlslSemantic = "Color";
-		static constexpr const char* tag = "C9";
+		static constexpr const char *hlslSemantic = "Color";
+		static constexpr const char *tag = "C9";
 		EXTRACT_ASSIMP_AIMESH( mColors[0] )
 	};
 
@@ -149,8 +149,8 @@ public:
 	//{
 	//	using CPUType = col::RGBAColor;
 	//	static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R8G8B8A8_UNORM;
-	//	static constexpr const char* hlslSemantic = "Color";
-	//	static constexpr const char* tag = "C8";
+	//	static constexpr const char *hlslSemantic = "Color";
+	//	static constexpr const char *tag = "C8";
 	//	EXTRACT_ASSIMP_AIMESH( mColors[0] )
 	//};
 
@@ -159,8 +159,8 @@ public:
 	{
 		using CPUType = long double;
 		static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_UNKNOWN;
-		static constexpr const char* hlslSemantic = "Invalid";
-		static constexpr const char* tag = "INV";
+		static constexpr const char *hlslSemantic = "Invalid";
+		static constexpr const char *tag = "INV";
 		EXTRACT_ASSIMP_AIMESH( mFaces )
 	};
 
@@ -199,14 +199,14 @@ public:
 		MemberType getType() const noexcept;
 		D3D11_INPUT_ELEMENT_DESC getDESC() const cond_noex;
 		// a tag identifying this VertexMember - taken
-		const char* getTag() const noexcept;
+		const char *getTag() const noexcept;
 	};
 public:
 	// returns VertexMember
 	template<MemberType Type>
-	const VertexMember& fetch() const cond_noex
+	const VertexMember &fetch() const cond_noex
 	{
-		for ( auto& e : m_vertexMembers )
+		for ( auto &e : m_vertexMembers )
 		{
 			if ( e.getType() == Type )
 			{
@@ -216,8 +216,8 @@ public:
 		ASSERT( false, "Could not find requeted Element's type" );
 		return m_vertexMembers.front();
 	}
-	const VertexMember& fetchByIndex( size_t i ) const cond_noex;
-	VertexLayout& add( MemberType type ) cond_noex;
+	const VertexMember &fetchByIndex( size_t i ) const cond_noex;
+	VertexLayout &add( MemberType type ) cond_noex;
 	size_t getSizeInBytes() const cond_noex;
 	size_t getMemberCount() const noexcept;
 	std::vector<D3D11_INPUT_ELEMENT_DESC> getD3DInputElementDescs() const cond_noex;
@@ -230,16 +230,16 @@ class VertexView final
 {
 	friend class Buffer;
 
-	char* m_p = nullptr;
-	const VertexLayout& m_layout;
+	char *m_p = nullptr;
+	const VertexLayout &m_layout;
 private:
 	template<VertexLayout::MemberType type>
 	struct ElementExec final
 	{
 		// this generate and returns the D3D11 DESC of INPUT_ELEMENT_LAYOUT
 		template<typename T>
-		static constexpr auto exec( VertexView* pVertex,
-			char* pElement,
+		static constexpr auto exec( VertexView *pVertex,
+			char *pElement,
 			T&& val ) cond_noex
 		{
 			return pVertex->setMember<type>( pElement,
@@ -249,7 +249,7 @@ private:
 public:
 	// get reference to VertexMember
 	template<VertexLayout::MemberType Type>
-	auto& getMember() cond_noex
+	auto &getMember() cond_noex
 	{
 		auto pElement = m_p + m_layout.fetch<Type>().getOffsetInLayout();
 		return *reinterpret_cast<typename VertexLayout::MemberProperties<Type>
@@ -260,7 +260,7 @@ public:
 	void setMemberByIndex( size_t i,
 		T&& val ) cond_noex
 	{
-		const auto& element = m_layout.fetchByIndex( i );
+		const auto &element = m_layout.fetchByIndex( i );
 		auto pElement = m_p + element.getOffsetInLayout();
 		VertexLayout::bridge<ElementExec>( element.getType(),
 			this,
@@ -268,7 +268,7 @@ public:
 			std::forward<T>( val ) );
 	}
 protected:
-	VertexView( char* pData, const VertexLayout& layout ) cond_noex;
+	VertexView( char *pData, const VertexLayout &layout ) cond_noex;
 private:
 	// set Vertex data by its Byte index in the buffer
 	template<typename First, typename ...Rest>
@@ -283,7 +283,7 @@ private:
 	}
 	// helper to reduce tag duplication in setMemberByIndex
 	template<VertexLayout::MemberType DestLayoutType, typename SrcType>
-	void setMember( char* pElement,
+	void setMember( char *pElement,
 		SrcType&& val ) cond_noex
 	{
 		using Dest = typename VertexLayout::MemberProperties<DestLayoutType>::CPUType;
@@ -302,9 +302,9 @@ class ConstVertexView final
 {
 	VertexView m_vertex;
 public:
-	ConstVertexView( const VertexView& v ) cond_noex;
+	ConstVertexView( const VertexView &v ) cond_noex;
 	template<VertexLayout::MemberType Type>
-	const auto& element() const cond_noex
+	const auto &element() const cond_noex
 	{
 		return const_cast<VertexView&>( m_vertex ).getMember<Type>();
 	}
@@ -317,9 +317,9 @@ class Buffer final
 	VertexLayout m_vertexLayout;
 public:
 	Buffer( VertexLayout layout, size_t size = 0u ) cond_noex;
-	Buffer( VertexLayout layout, const aiMesh& mesh );
-	const char* getRawBytes() const cond_noex;
-	const VertexLayout& getLayout() const noexcept;
+	Buffer( VertexLayout layout, const aiMesh &mesh );
+	const char *getRawBytes() const cond_noex;
+	const VertexLayout &getLayout() const noexcept;
 	void resize( size_t newSize ) cond_noex;
 	size_t getVertexCount() const cond_noex;
 	size_t getSizeInBytes() const cond_noex;

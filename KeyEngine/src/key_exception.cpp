@@ -3,8 +3,8 @@
 
 
 KeyException::KeyException( int line,
-	const char* file,
-	const char* function,
+	const char *file,
+	const char *function,
 	const std::string &msg ) noexcept
 	:
 	m_line(line),
@@ -15,6 +15,7 @@ KeyException::KeyException( int line,
 	
 }
 
+#pragma warning( disable : 4129 )
 const char* KeyException::what() const noexcept
 {
 	using namespace std::string_literals;
@@ -34,6 +35,7 @@ const char* KeyException::what() const noexcept
 	m_description.assign( oss.str() );
 	return m_description.data();
 }
+#pragma warning( default : 4129 )
 
 const unsigned KeyException::getLine() const noexcept
 {

@@ -70,7 +70,7 @@ PSOut main( PSIn input )
 		const PointLightVectors lv = calculatePointLightVectors( pointLightPosViewSpace,
 			input.fragPosViewSpace );
 		// Specular map contribution
-		float modelSpecularGloss = modelSpecularGloss;
+		float modelSpecularGloss_var = modelSpecularGloss;
 		float3 specularFactor = float3(0, 0, 0);
 		if ( bSpecularMap )
 		{
@@ -79,7 +79,7 @@ PSOut main( PSIn input )
 			specularFactor = specMapSample.rgb;
 			if ( bSpecularMapAlpha )
 			{
-				modelSpecularGloss = pow( 2.0f,
+				modelSpecularGloss_var = pow(2.0f,
 					specMapSample.a * 7.0f );
 			}
 		}
@@ -99,7 +99,7 @@ PSOut main( PSIn input )
 		specular = calculateLightSpecularContribution( lightColor,
 			specularFactor,
 			intensity,
-			modelSpecularGloss,
+			modelSpecularGloss_var,
 			input.fragNormalViewSpace,
 			lv.vToL,
 			input.fragPosViewSpace,

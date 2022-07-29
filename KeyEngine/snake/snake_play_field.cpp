@@ -29,7 +29,7 @@ SnakePlayField::SnakePlayField( Graphics &gph,
 }
 
 void SnakePlayField::renderCell( Graphics &gph,
-	const GridLocation& gridLoc,
+	const GridLocation &gridLoc,
 	ColorBGRA col ) const
 {
 	ASSERT( gridLoc.x >= m_xStart, "!( gridLoc.x >= xStart )" );
@@ -68,12 +68,12 @@ void SnakePlayField::spawnContents( std::mt19937 & rng,const SnakeRepr & snake,C
 	contents[newLoc.y * width + newLoc.x] = contentsType;
 }
 
-SnakePlayField::CellContents SnakePlayField::getContents( const GridLocation& loc ) const
+SnakePlayField::CellContents SnakePlayField::getContents( const GridLocation &loc ) const
 {
 	return contents[loc.y * width + loc.x];
 }
 
-bool SnakePlayField::isInside( const GridLocation& gridLoc ) const noexcept
+bool SnakePlayField::isInside( const GridLocation &gridLoc ) const noexcept
 {
 	int nx = gridLoc.x * m_cellSize;
 	int ny = gridLoc.y * m_cellSize;

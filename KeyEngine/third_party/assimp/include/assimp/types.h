@@ -93,12 +93,12 @@ namespace Intern        {
         // new/delete overload
         void *operator new    ( size_t num_bytes) /* throw( std::bad_alloc ) */;
         void *operator new    ( size_t num_bytes, const std::nothrow_t& ) throw();
-        void  operator delete ( void* data);
+        void  operator delete ( void *data);
 
         // array new/delete overload
         void *operator new[]    ( size_t num_bytes) /* throw( std::bad_alloc ) */;
         void *operator new[]    ( size_t num_bytes, const std::nothrow_t& )  throw();
-        void  operator delete[] ( void* data);
+        void  operator delete[] ( void *data);
 
     }; // struct AllocateFromAssimpHeap
 #endif
@@ -126,7 +126,7 @@ struct aiPlane
     aiPlane (ai_real _a, ai_real _b, ai_real _c, ai_real _d)
         : a(_a), b(_b), c(_c), d(_d) {}
 
-    aiPlane (const aiPlane& o) : a(o.a), b(o.b), c(o.c), d(o.d) {}
+    aiPlane (const aiPlane &o) : a(o.a), b(o.b), c(o.c), d(o.d) {}
 
 #endif // !__cplusplus
 
@@ -141,10 +141,10 @@ struct aiRay
 {
 #ifdef __cplusplus
     aiRay () {}
-    aiRay (const aiVector3D& _pos, const aiVector3D& _dir)
+    aiRay (const aiVector3D &_pos, const aiVector3D &_dir)
         : pos(_pos), dir(_dir) {}
 
-    aiRay (const aiRay& o) : pos (o.pos), dir (o.dir) {}
+    aiRay (const aiRay &o) : pos (o.pos), dir (o.dir) {}
 
 #endif // !__cplusplus
 
@@ -161,36 +161,33 @@ struct aiColor3D
     aiColor3D () : r(0.0f), g(0.0f), b(0.0f) {}
     aiColor3D (ai_real _r, ai_real _g, ai_real _b) : r(_r), g(_g), b(_b) {}
     explicit aiColor3D (ai_real _r) : r(_r), g(_r), b(_r) {}
-    aiColor3D (const aiColor3D& o) : r(o.r), g(o.g), b(o.b) {}
+    aiColor3D (const aiColor3D &o) : r(o.r), g(o.g), b(o.b) {}
 
     /** Component-wise comparison */
-    // TODO: add epsilon?
-    bool operator == (const aiColor3D& other) const
+    bool operator == (const aiColor3D &other) const
         {return r == other.r && g == other.g && b == other.b;}
 
     /** Component-wise inverse comparison */
-    // TODO: add epsilon?
-    bool operator != (const aiColor3D& other) const
+    bool operator != (const aiColor3D &other) const
         {return r != other.r || g != other.g || b != other.b;}
 
     /** Component-wise comparison */
-    // TODO: add epsilon?
-    bool operator < (const aiColor3D& other) const {
+    bool operator < (const aiColor3D &other) const {
         return r < other.r || ( r == other.r && (g < other.g || (g == other.g && b < other.b ) ) );
     }
 
     /** Component-wise addition */
-    aiColor3D operator+(const aiColor3D& c) const {
+    aiColor3D operator+(const aiColor3D &c) const {
         return aiColor3D(r+c.r,g+c.g,b+c.b);
     }
 
     /** Component-wise subtraction */
-    aiColor3D operator-(const aiColor3D& c) const {
+    aiColor3D operator-(const aiColor3D &c) const {
         return aiColor3D(r-c.r,g-c.g,b-c.b);
     }
 
     /** Component-wise multiplication */
-    aiColor3D operator*(const aiColor3D& c) const {
+    aiColor3D operator*(const aiColor3D &c) const {
         return aiColor3D(r*c.r,g*c.g,b*c.b);
     }
 
@@ -205,7 +202,7 @@ struct aiColor3D
     }
 
     /** Access a specific color component */
-    ai_real& operator[](unsigned int i) {
+    ai_real &operator[](unsigned int i) {
         if ( 0 == i ) {
             return r;
         } else if ( 1 == i ) {
@@ -265,7 +262,7 @@ struct aiString
     }
 
     /** Copy constructor */
-    aiString(const aiString& rOther) :
+    aiString(const aiString &rOther) :
         length(rOther.length)
     {
         // Crop the string to the maximum length
@@ -293,8 +290,8 @@ struct aiString
         data[length] = 0;
     }
 
-    /** Copy a const char* to the aiString */
-    void Set( const char* sz) {
+    /** Copy a const char *to the aiString */
+    void Set( const char *sz) {
         const size_t len = ::strlen(sz);
         if( len > MAXLEN - 1) {
             return;
@@ -306,7 +303,7 @@ struct aiString
 
 
     /** Assigment operator */
-    aiString& operator = (const aiString &rOther) {
+    aiString &operator = (const aiString &rOther) {
         if (this == &rOther) {
             return *this;
         }
@@ -318,30 +315,30 @@ struct aiString
     }
 
 
-    /** Assign a const char* to the string */
-    aiString& operator = (const char* sz) {
+    /** Assign a const char *to the string */
+    aiString &operator = (const char *sz) {
         Set(sz);
         return *this;
     }
 
     /** Assign a cstd::string to the string */
-    aiString& operator = ( const std::string &pString) {
+    aiString &operator = ( const std::string &pString) {
         Set(pString);
         return *this;
     }
 
     /** Comparison operator */
-    bool operator==(const aiString& other) const {
+    bool operator==(const aiString &other) const {
         return  (length == other.length && 0 == memcmp(data,other.data,length));
     }
 
     /** Inverse comparison operator */
-    bool operator!=(const aiString& other) const {
+    bool operator!=(const aiString &other) const {
         return  (length != other.length || 0 != memcmp(data,other.data,length));
     }
 
     /** Append a string to the string */
-    void Append (const char* app)   {
+    void Append (const char *app)   {
         const size_t len = ::strlen(app);
         if (!len) {
             return;
@@ -366,7 +363,7 @@ struct aiString
     }
 
     /** Returns a pointer to the underlying zero-terminated array of characters */
-    const char* C_Str() const {
+    const char *C_Str() const {
         return data;
     }
 

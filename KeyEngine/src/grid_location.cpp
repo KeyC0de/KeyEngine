@@ -15,20 +15,20 @@ GridLocation GridLocation::operator++() const
 	return old;
 }
 
-GridLocation& GridLocation::operator+=( const GridLocation& rhs )
+GridLocation& GridLocation::operator+=( const GridLocation &rhs )
 {
 	x = x + rhs.x;
 	y = y + rhs.y;
 	return *this;
 }
 
-GridLocation GridLocation::operator+( const GridLocation& rhs )
+GridLocation GridLocation::operator+( const GridLocation &rhs )
 {
 	( *this ) += rhs;
 	return *this;
 }
 
-GridLocation& GridLocation::operator--()
+GridLocation &GridLocation::operator--()
 {
 	--x;
 	--y;
@@ -42,25 +42,25 @@ GridLocation GridLocation::operator--() const
 	return old;
 }
 
-GridLocation& GridLocation::operator-=( const GridLocation& rhs )
+GridLocation& GridLocation::operator-=( const GridLocation &rhs )
 {
 	x -= rhs.x;
 	y -= rhs.y;
 	return *this;
 }
 
-GridLocation GridLocation::operator-( const GridLocation& rhs )
+GridLocation GridLocation::operator-( const GridLocation &rhs )
 {
 	( *this ) -= rhs;
 	return *this;
 }
 
-bool GridLocation::operator==( const GridLocation& rhs ) const
+bool GridLocation::operator==( const GridLocation &rhs ) const
 {
 	return x == rhs.x && y == rhs.y;
 }
 
-bool GridLocation::operator!=( const GridLocation& rhs ) const
+bool GridLocation::operator!=( const GridLocation &rhs ) const
 {
 	return !( *this == rhs );
 }

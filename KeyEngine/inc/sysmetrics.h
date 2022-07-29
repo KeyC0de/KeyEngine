@@ -6,8 +6,8 @@
 struct Metrics
 {
 	int index;
-	const char* label;
-	const char* description;
+	const char *label;
+	const char *description;
 };
 
 

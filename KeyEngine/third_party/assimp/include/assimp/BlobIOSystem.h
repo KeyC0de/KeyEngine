@@ -65,7 +65,7 @@ class BlobIOStream : public IOStream
 {
 public:
 
-    BlobIOStream(BlobIOSystem* creator, const std::string &file, size_t initial = 4096)
+    BlobIOStream(BlobIOSystem *creator, const std::string &file, size_t initial = 4096)
         : buffer()
         , cur_size()
         , file_size()
@@ -82,9 +82,9 @@ public:
 public:
 
     // -------------------------------------------------------------------
-    aiExportDataBlob* GetBlob()
+    aiExportDataBlob *GetBlob()
     {
-        aiExportDataBlob* blob = new aiExportDataBlob();
+        aiExportDataBlob *blob = new aiExportDataBlob();
         blob->size = file_size;
         blob->data = buffer;
 
@@ -106,7 +106,7 @@ public:
     }
 
     // -------------------------------------------------------------------
-    virtual size_t Write(const void* pvBuffer,
+    virtual size_t Write(const void *pvBuffer,
         size_t pSize,
         size_t pCount)
     {
@@ -185,7 +185,7 @@ private:
         // it is quicker to compute).
         size_t new_size = std::max(initial, std::max( need, cur_size+(cur_size>>1) ));
 
-        const uint8_t* const old = buffer;
+        const uint8_t *const old = buffer;
         buffer = new uint8_t[new_size];
 
         if (old) {
@@ -198,11 +198,11 @@ private:
 
 private:
 
-    uint8_t* buffer;
+    uint8_t *buffer;
     size_t cur_size,file_size, cursor, initial;
 
     const std::string file;
-    BlobIOSystem* const creator;
+    BlobIOSystem *const creator;
 };
 
 
@@ -225,7 +225,7 @@ public:
 
     virtual ~BlobIOSystem()
     {
-        for(BlobEntry& blobby : blobs) {
+        for(BlobEntry &blobby : blobs) {
             delete blobby.second;
         }
     }
@@ -233,18 +233,18 @@ public:
 public:
 
     // -------------------------------------------------------------------
-    const char* GetMagicFileName() const
+    const char *GetMagicFileName() const
     {
         return AI_BLOBIO_MAGIC;
     }
 
 
     // -------------------------------------------------------------------
-    aiExportDataBlob* GetBlobChain()
+    aiExportDataBlob *GetBlobChain()
     {
         // one must be the master
-        aiExportDataBlob* master = NULL, *cur;
-        for(const BlobEntry& blobby : blobs) {
+        aiExportDataBlob *master = NULL, *cur;
+        for(const BlobEntry &blobby : blobs) {
             if (blobby.first == AI_BLOBIO_MAGIC) {
                 master = blobby.second;
                 break;
@@ -258,7 +258,7 @@ public:
         master->name.Set("");
 
         cur = master;
-        for(const BlobEntry& blobby : blobs) {
+        for(const BlobEntry &blobby : blobs) {
             if (blobby.second == master) {
                 continue;
             }
@@ -279,7 +279,7 @@ public:
 public:
 
     // -------------------------------------------------------------------
-    virtual bool Exists( const char* pFile) const {
+    virtual bool Exists( const char *pFile) const {
         return created.find(std::string(pFile)) != created.end();
     }
 
@@ -291,8 +291,8 @@ public:
 
 
     // -------------------------------------------------------------------
-    virtual IOStream* Open(const char* pFile,
-        const char* pMode)
+    virtual IOStream *Open(const char *pFile,
+        const char *pMode)
     {
         if (pMode[0] != 'w') {
             return NULL;
@@ -303,7 +303,7 @@ public:
     }
 
     // -------------------------------------------------------------------
-    virtual void Close( IOStream* pFile)
+    virtual void Close( IOStream *pFile)
     {
         delete pFile;
     }
@@ -311,7 +311,7 @@ public:
 private:
 
     // -------------------------------------------------------------------
-    void OnDestruct(const std::string &filename, BlobIOStream* child)
+    void OnDestruct(const std::string &filename, BlobIOStream *child)
     {
         // we don't know in which the files are closed, so we
         // can't reliably say that the first must be the master

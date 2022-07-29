@@ -15,8 +15,8 @@ public:
 		pass_;
 	}
 
-	virtual bool visit( class Node& node ) = 0;
-	virtual void onNodeLeave( class Node& node ) = 0;
+	virtual bool visit( class Node &node ) = 0;
+	virtual void onNodeLeave( class Node &node ) = 0;
 };
 
 class MV
@@ -31,16 +31,16 @@ class MV
 		float y = 0.0f;
 		float z = 0.0f;
 	};
-	Node* m_pSelectedNode = nullptr;
+	Node *m_pSelectedNode = nullptr;
 	std::string m_name;
 	std::unordered_map<int, TransformData> m_nodeMapTransforms;
 public:
 	MV( const std::string &name );
 
-	void spawnModelImgui( Model& model );
+	void spawnModelImgui( Model &model );
 private:
-	bool visit( Node& node ) override;
-	void onNodeLeave( Node& node ) override;
-	TransformData& fetchTransform() noexcept;
-	TransformData& assembleTransform( int id ) noexcept;
+	bool visit( Node &node ) override;
+	void onNodeLeave( Node &node ) override;
+	TransformData &fetchTransform() noexcept;
+	TransformData &assembleTransform( int id ) noexcept;
 };

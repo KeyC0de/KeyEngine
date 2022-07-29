@@ -16,7 +16,7 @@ class Effect;
 //	\author	KeyC0de
 //	\date	2020/01/09 15:53
 //
-//	\brief	implement and override on* methods
+//	\brief	implement and override on *methods
 //			targets a model with a specific effect
 //			the IDs are for tagging ImGui widgets/controls
 //=============================================================
@@ -41,6 +41,6 @@ class EVShowcase
 	: public IEffectVisitor
 {
 public:
-	bool onVisit( con::Buffer& cb ) override;
+	bool onVisit( con::Buffer &cb ) override;
 	void onSetEffect() override;
 };

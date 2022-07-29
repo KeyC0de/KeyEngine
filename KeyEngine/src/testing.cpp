@@ -173,13 +173,13 @@ void testDynamicConstant()
 		{
 			ASSERT( cb["butts"s]["pubes"s].setIfValid( dx::XMFLOAT3{1.0f, 2.0f, 3.0f} ),
 				"Assertion failed!" );
-			auto& f3 = static_cast<const dx::XMFLOAT3&>(cb["butts"s]["pubes"s]);
+			auto &f3 = static_cast<const dx::XMFLOAT3&>(cb["butts"s]["pubes"s]);
 			ASSERT( f3.x == 1.0f && f3.y == 2.0f && f3.z == 3.0f, "Assertion failed!" );
 			ASSERT( !cb["butts"s]["phubar"s].setIfValid( dx::XMFLOAT3{2.0f, 2.0f, 7.0f} ),
 				"Assertion failed!" );
 		}
 
-		const auto& cb2 = cb;
+		const auto &cb2 = cb;
 		{
 			dx::XMFLOAT4X4 act = cb2["arr"s][2]["meta"s][5][3];
 			ASSERT( act._11 == 1.0f, "Assertion failed!" );
@@ -321,7 +321,7 @@ void testDynamicConstant()
 		ASSERT( cb.getSizeInBytes() == ( nCoef + 1 ) * 4 * 4, "Assertion failed!" );
 		// ASSERT array empty
 		{
-			const char* begin = reinterpret_cast<char*>( (int*)&cb["nTaps"] );
+			const char *begin = reinterpret_cast<char*>( (int*)&cb["nTaps"] );
 			ASSERT( std::all_of( begin,
 						begin + cb.getSizeInBytes(),
 						[]( char c )
@@ -340,7 +340,7 @@ void testDynamicConstant()
 			const auto end = begin + nCoef;
 			ASSERT( std::all_of( begin,
 						end,
-						[]( const auto& arr )
+						[]( const auto &arr )
 						{
 							return arr[0] == 6.9f
 								&& arr[1] == 0.0f
@@ -352,7 +352,7 @@ void testDynamicConstant()
 	}
 }
 
-void testDynamicVertex( Window& wnd )
+void testDynamicVertex( Window &wnd )
 {
 	namespace dx = DirectX;
 	using namespace ver;

@@ -70,7 +70,7 @@ class ASSIMP_API DefaultIOStream : public IOStream
 
 protected:
     DefaultIOStream();
-    DefaultIOStream(FILE* pFile, const std::string &strFilename);
+    DefaultIOStream(FILE *pFile, const std::string &strFilename);
 
 public:
     /** Destructor public to allow simple deletion to close the file. */
@@ -78,14 +78,14 @@ public:
 
     // -------------------------------------------------------------------
     /// Read from stream
-    size_t Read(void* pvBuffer,
+    size_t Read(void *pvBuffer,
         size_t pSize,
         size_t pCount);
 
 
     // -------------------------------------------------------------------
     /// Write to stream
-    size_t Write(const void* pvBuffer,
+    size_t Write(const void *pvBuffer,
         size_t pSize,
         size_t pCount);
 
@@ -108,7 +108,7 @@ public:
 
 private:
     //  File data-structure, using clib
-    FILE* mFile;
+    FILE *mFile;
     //  Filename
     std::string mFilename;
 
@@ -126,7 +126,7 @@ inline DefaultIOStream::DefaultIOStream () :
 }
 
 // ----------------------------------------------------------------------------------
-inline DefaultIOStream::DefaultIOStream (FILE* pFile,
+inline DefaultIOStream::DefaultIOStream (FILE *pFile,
         const std::string &strFilename) :
     mFile(pFile),
     mFilename(strFilename),

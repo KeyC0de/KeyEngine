@@ -19,7 +19,7 @@
 namespace dx = DirectX;
 
 Cube::Cube( Graphics &gph,
-	const dx::XMFLOAT3& startingPos,
+	const dx::XMFLOAT3 &startingPos,
 	float scale )
 	:
 	m_pos{startingPos}
@@ -149,7 +149,7 @@ Cube::Cube( Graphics &gph,
 	}
 }
 
-void Cube::setWorldPosition( const dx::XMFLOAT3& pos ) noexcept
+void Cube::setWorldPosition( const dx::XMFLOAT3 &pos ) noexcept
 {
 	this->m_pos = pos;
 }
@@ -170,7 +170,7 @@ dx::XMMATRIX Cube::getTransform() const noexcept
 }
 
 void Cube::displayImguiWidgets( Graphics &gph,
-	const char* name ) noexcept
+	const char *name ) noexcept
 {
 	if ( ImGui::Begin( name ) )
 	{
@@ -220,7 +220,7 @@ void Cube::displayImguiWidgets( Graphics &gph,
 				m_pEffect->setEnabled( active );
 			}
 
-			bool onVisit( con::Buffer& cb ) override
+			bool onVisit( con::Buffer &cb ) override
 			{
 				float bDirty = false;
 				const auto dirtyCheck = [&bDirty]( bool bChanged )
@@ -229,7 +229,7 @@ void Cube::displayImguiWidgets( Graphics &gph,
 				};
 				auto tag = [tagScratch = std::string{},
 					tagString = "##" + std::to_string( m_cbId )]
-					( const char* label ) mutable
+					( const char *label ) mutable
 					{
 						tagScratch = label + tagString;
 						return tagScratch.c_str();

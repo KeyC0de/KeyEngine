@@ -24,15 +24,15 @@ Rect::Rect( float left,
 
 }
 
-Rect::Rect( const dx::XMFLOAT2& topLeft,
-	const dx::XMFLOAT2& bottomRight )
+Rect::Rect( const dx::XMFLOAT2 &topLeft,
+	const dx::XMFLOAT2 &bottomRight )
 	:
 	Rect{topLeft.x, bottomRight.x, topLeft.y, bottomRight.y}
 {
 
 }
 
-Rect::Rect( const dx::XMFLOAT2& topLeft,
+Rect::Rect( const dx::XMFLOAT2 &topLeft,
 	float width,
 	float height )
 	:
@@ -41,7 +41,7 @@ Rect::Rect( const dx::XMFLOAT2& topLeft,
 
 }
 
-Rect Rect::makeGivenCenter( const dx::XMFLOAT2& center,
+Rect Rect::makeGivenCenter( const dx::XMFLOAT2 &center,
 	float halfWidth,
 	float halfHeight)
 {
@@ -50,7 +50,7 @@ Rect Rect::makeGivenCenter( const dx::XMFLOAT2& center,
 	return {topLeft, bottomRight};
 }
 
-bool Rect::isOverlappingWith( const Rect& other ) const noexcept
+bool Rect::isOverlappingWith( const Rect &other ) const noexcept
 {
 	/*return right > other.left
 		&& left < other.right

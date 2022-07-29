@@ -60,25 +60,25 @@ public:
 
 	/** Initialize android activity data */
 	std::string mApkWorkspacePath;
-	AAssetManager* mApkAssetManager;
+	AAssetManager *mApkAssetManager;
 
 	/** Constructor. */
-	AndroidJNIIOSystem(ANativeActivity* activity);
+	AndroidJNIIOSystem(ANativeActivity *activity);
 
 	/** Destructor. */
 	~AndroidJNIIOSystem();
 
 	// -------------------------------------------------------------------
 	/** Tests for the existence of a file at the given path. */
-	bool Exists( const char* pFile) const;
+	bool Exists( const char *pFile) const;
 
 	// -------------------------------------------------------------------
 	/** Opens a file at the given path, with given mode */
-	IOStream* Open( const char* strFile, const char* strMode);
+	IOStream *Open( const char *strFile, const char *strMode);
 
 	// ------------------------------------------------------------------------------------------------
 	// Inits Android extractor
-	void AndroidActivityInit(ANativeActivity* activity);
+	void AndroidActivityInit(ANativeActivity *activity);
 
 	// ------------------------------------------------------------------------------------------------
 	// Extracts android asset

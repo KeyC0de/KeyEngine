@@ -34,7 +34,7 @@ void Bitmap::clear( Texel fillValue ) noexcept
 {
 	const auto width = getWidth();
 	const auto height = getHeight();
-	auto& imgData = *m_scratchImg.GetImage( 0, 0, 0 );
+	auto &imgData = *m_scratchImg.GetImage( 0, 0, 0 );
 	for ( size_t y = 0u; y < height; ++y )
 	{
 		auto rowStart = reinterpret_cast<Texel*>( imgData.pixels + imgData.rowPitch * y );
@@ -52,7 +52,7 @@ void Bitmap::setTexel( unsigned int x,
 	ASSERT( y >= 0, "y less than 0!" );
 	ASSERT( x < getWidth(), "x greater than width!" );
 	ASSERT( y < getHeight(), "y greater than height!" );
-	auto& imgData = *m_scratchImg.GetImage( 0, 0, 0 );
+	auto &imgData = *m_scratchImg.GetImage( 0, 0, 0 );
 	reinterpret_cast<Texel*>( &imgData.pixels[y * imgData.rowPitch] )[x] = col;
 }
 
@@ -63,7 +63,7 @@ Bitmap::Texel Bitmap::getTexel( unsigned int x,
 	ASSERT( y >= 0, "y less than 0!" );
 	ASSERT( x < getWidth(), "x greater than width!" );
 	ASSERT( y < getHeight(), "y greater than height!" );
-	auto& imgData = *m_scratchImg.GetImage( 0, 0, 0 );
+	auto &imgData = *m_scratchImg.GetImage( 0, 0, 0 );
 	return reinterpret_cast<Texel*>( &imgData.pixels[y * imgData.rowPitch] )[x];
 }
 
@@ -82,12 +82,12 @@ unsigned int Bitmap::getPitch() const noexcept
 	return static_cast<unsigned>( m_scratchImg.GetImage( 0u, 0u, 0u )->rowPitch );
 }
 
-Bitmap::Texel* Bitmap::data() noexcept
+Bitmap::Texel *Bitmap::data() noexcept
 {
 	return reinterpret_cast<Texel*>( m_scratchImg.GetPixels() );
 }
 
-const Bitmap::Texel* Bitmap::dataConst() const noexcept
+const Bitmap::Texel *Bitmap::dataConst() const noexcept
 {
 	return const_cast<Bitmap*>( this )->data();
 }
@@ -140,7 +140,7 @@ dx::XMVECTOR Bitmap::colorToVector( Bitmap::Texel col ) noexcept
 	return v;
 }
 
-Bitmap::Texel Bitmap::vectorToColor( const dx::XMVECTOR& v ) noexcept
+Bitmap::Texel Bitmap::vectorToColor( const dx::XMVECTOR &v ) noexcept
 {
 	const auto all1 = dx::XMVectorReplicate( 1.0f );
 	dx::XMVECTOR nOut = dx::XMVectorAdd( v,
@@ -193,8 +193,8 @@ bool Bitmap::hasAlpha() const noexcept
 }
 
 Bitmap::BitmapException::BitmapException( int line,
-	const char* file,
-	const char* function,
+	const char *file,
+	const char *function,
 	const std::string &msg ) noexcept
 	:
 	KeyException(line, file, function, msg)
@@ -207,7 +207,7 @@ const std::string Bitmap::BitmapException::getType() const noexcept
 	return typeid( this ).name();
 }
 
-const char* Bitmap::BitmapException::what() const noexcept
+const char *Bitmap::BitmapException::what() const noexcept
 {
 	return KeyException::what();
 }

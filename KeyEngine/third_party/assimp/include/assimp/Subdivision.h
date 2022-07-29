@@ -71,7 +71,7 @@ public:
      *
      *  @param algo Algorithm to be used for subdivision
      *  @return Subdivider instance. */
-    static Subdivider* Create (Algorithm algo);
+    static Subdivider *Create (Algorithm algo);
 
     // ---------------------------------------------------------------
     /** Subdivide a mesh using the selected algorithm
@@ -85,8 +85,8 @@ public:
      *    improve performance because it allows the optimization
      *    to reuse the existing mesh for intermediate results.
      *  @pre out!=mesh*/
-    virtual void Subdivide ( aiMesh* mesh,
-        aiMesh*& out, unsigned int num,
+    virtual void Subdivide ( aiMesh *mesh,
+        aiMesh *&out, unsigned int num,
         bool discard_input = false) = 0;
 
     // ---------------------------------------------------------------

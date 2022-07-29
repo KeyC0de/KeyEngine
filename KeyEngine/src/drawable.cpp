@@ -8,8 +8,8 @@
 namespace dx = DirectX;
 
 Drawable::Drawable( Graphics &gph,
-	const MaterialLoader& mat,
-	const aiMesh& aimesh,
+	const MaterialLoader &mat,
+	const aiMesh &aimesh,
 	float scale ) noexcept
 {
 	m_pVertexBuffer = mat.makeVertexBuffer( gph,
@@ -19,7 +19,7 @@ Drawable::Drawable( Graphics &gph,
 		aimesh );
 	m_pPrimitiveTopology = PrimitiveTopology::fetch( gph );
 
-	for ( const auto& ef : mat.getEffects() )
+	for ( const auto &ef : mat.getEffects() )
 	{
 		addEffect( std::move( ef ) );
 	}
@@ -38,7 +38,7 @@ void Drawable::update( float dt ) cond_noex
 void Drawable::render( size_t channels ) const noexcept
 {
 	ASSERT( !m_effects.empty(), "No Effects to submit to the Renderer!" );
-	for ( const auto& ef : m_effects )
+	for ( const auto &ef : m_effects )
 	{
 		ef.render( *this,
 			channels );
@@ -58,9 +58,9 @@ void Drawable::bind( Graphics &gph ) const cond_noex
 	m_pVertexBuffer->bind( gph );
 }
 
-void Drawable::accept( IEffectVisitor& ev )
+void Drawable::accept( IEffectVisitor &ev )
 {
-	for ( auto& ef : m_effects )
+	for ( auto &ef : m_effects )
 	{
 		ef.accept( ev );
 	}
@@ -71,16 +71,16 @@ unsigned Drawable::getIndicesCount() const cond_noex
 	return m_pIndexBuffer->getIndexCount();
 }
 
-void Drawable::connectEffectsToRenderer( ren::Renderer& r )
+void Drawable::connectEffectsToRenderer( ren::Renderer &r )
 {
 	ASSERT( !m_effects.empty(), "No Effects to submit to the Renderer!" );
-	for ( auto& ef : m_effects )
+	for ( auto &ef : m_effects )
 	{
 		ef.connectPass( r );
 	}
 }
 
-void Drawable::setTransform( const dx::XMMATRIX& worldTransform ) noexcept
+void Drawable::setTransform( const dx::XMMATRIX &worldTransform ) noexcept
 {
 	dx::XMStoreFloat4x4( &m_worldTransform,
 		worldTransform );

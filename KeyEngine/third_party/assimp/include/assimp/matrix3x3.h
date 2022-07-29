@@ -59,7 +59,7 @@ template <typename T> class aiVector2t;
 /** @brief Represents a row-major 3x3 matrix
  *
  *  There's much confusion about matrix layouts (column vs. row order).
- *  This is *always* a row-major matrix. Not even with the
+ *  This is *always *a row-major matrix. Not even with the
  *  #aiProcess_ConvertToLeftHanded flag, which absolutely does not affect
  *  matrix order - it just affects the handedness of the coordinate system
  *  defined thereby.
@@ -85,12 +85,12 @@ public:
 public:
 
     // matrix multiplication.
-    aiMatrix3x3t& operator *= (const aiMatrix3x3t& m);
-    aiMatrix3x3t  operator  * (const aiMatrix3x3t& m) const;
+    aiMatrix3x3t &operator *= (const aiMatrix3x3t &m);
+    aiMatrix3x3t  operator  * (const aiMatrix3x3t &m) const;
 
     // array access operators
-    TReal* operator[]       (unsigned int p_iIndex);
-    const TReal* operator[] (unsigned int p_iIndex) const;
+    TReal *operator[]       (unsigned int p_iIndex);
+    const TReal *operator[] (unsigned int p_iIndex) const;
 
     // comparison operators
     bool operator== (const aiMatrix4x4t<TReal>& m) const;
@@ -112,14 +112,14 @@ public:
     // -------------------------------------------------------------------
     /** @brief Transpose the matrix
      */
-    aiMatrix3x3t& Transpose();
+    aiMatrix3x3t &Transpose();
 
     // -------------------------------------------------------------------
     /** @brief Invert the matrix.
      *  If the matrix is not invertible all elements are set to qnan.
      *  Beware, use (f != f) to check whether a TReal f is qnan.
      */
-    aiMatrix3x3t& Inverse();
+    aiMatrix3x3t &Inverse();
     TReal Determinant() const;
 
 public:
@@ -129,7 +129,7 @@ public:
      *  @param out Receives the output matrix
      *  @return Reference to the output matrix
      */
-    static aiMatrix3x3t& RotationZ(TReal a, aiMatrix3x3t& out);
+    static aiMatrix3x3t &RotationZ(TReal a, aiMatrix3x3t &out);
 
     // -------------------------------------------------------------------
     /** @brief Returns a rotation matrix for a rotation around
@@ -139,8 +139,8 @@ public:
      *  @param axis Axis to rotate around
      *  @param out To be filled
      */
-    static aiMatrix3x3t& Rotation( TReal a,
-        const aiVector3t<TReal>& axis, aiMatrix3x3t& out);
+    static aiMatrix3x3t &Rotation( TReal a,
+        const aiVector3t<TReal>& axis, aiMatrix3x3t &out);
 
     // -------------------------------------------------------------------
     /** @brief Returns a translation matrix
@@ -148,19 +148,19 @@ public:
      *  @param out Receives the output matrix
      *  @return Reference to the output matrix
      */
-    static aiMatrix3x3t& Translation( const aiVector2t<TReal>& v, aiMatrix3x3t& out);
+    static aiMatrix3x3t &Translation( const aiVector2t<TReal>& v, aiMatrix3x3t &out);
 
     // -------------------------------------------------------------------
     /** @brief A function for creating a rotation matrix that rotates a
      *  vector called "from" into another vector called "to".
-     * Input : from[3], to[3] which both must be *normalized* non-zero vectors
+     * Input : from[3], to[3] which both must be *normalized *non-zero vectors
      * Output: mtx[3][3] -- a 3x3 matrix in column-major form
      * Authors: Tomas Möller, John Hughes
      *          "Efficiently Building a Matrix to Rotate One Vector to Another"
      *          Journal of Graphics Tools, 4(4):1-4, 1999
      */
-    static aiMatrix3x3t& FromToMatrix(const aiVector3t<TReal>& from,
-        const aiVector3t<TReal>& to, aiMatrix3x3t& out);
+    static aiMatrix3x3t &FromToMatrix(const aiVector3t<TReal>& from,
+        const aiVector3t<TReal>& to, aiMatrix3x3t &out);
 
 public:
     TReal a1, a2, a3;

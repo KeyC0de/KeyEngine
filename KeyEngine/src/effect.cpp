@@ -16,16 +16,16 @@ Effect::Effect( size_t channels,
 
 }
 
-Effect::Effect( const Effect& rhs ) noexcept
+Effect::Effect( const Effect &rhs ) noexcept
 	:
 	m_renderingChannels(rhs.m_renderingChannels),
 	m_active(rhs.m_active),
 	m_targetPassName(rhs.m_targetPassName)
 {
 	m_pBindables.reserve( rhs.m_pBindables.size() );
-	for ( auto& bindable : rhs.m_pBindables )
+	for ( auto &bindable : rhs.m_pBindables )
 	{
-		if ( auto* pClone = dynamic_cast<const IBindableCloning*>( bindable.get() ) )
+		if ( auto *pClone = dynamic_cast<const IBindableCloning*>( bindable.get() ) )
 		{
 			m_pBindables.push_back( pClone->clone() );
 		}
@@ -41,7 +41,7 @@ void Effect::addBindable( std::shared_ptr<IBindable> bindable ) noexcept
 	m_pBindables.push_back( std::move( bindable ) );
 }
 
-void Effect::render( const Drawable& drawable,
+void Effect::render( const Drawable &drawable,
 	size_t channels ) const noexcept
 {
 	if ( m_active && (m_renderingChannels & channels) != 0 )
@@ -52,7 +52,7 @@ void Effect::render( const Drawable& drawable,
 
 void Effect::bind( Graphics &gph ) const cond_noex
 {
-	for ( const auto& bi : m_pBindables )
+	for ( const auto &bi : m_pBindables )
 	{
 		bi->bind( gph );
 	}
@@ -73,24 +73,24 @@ const std::string &Effect::getTargetPassName() const noexcept
 	return m_targetPassName;
 }
 
-void Effect::setParentDrawable( const Drawable& parent ) noexcept
+void Effect::setParentDrawable( const Drawable &parent ) noexcept
 {
-	for ( auto& bi : m_pBindables )
+	for ( auto &bi : m_pBindables )
 	{
 		bi->setParentDrawable( parent );
 	}
 }
 
-void Effect::accept( IEffectVisitor& ev )
+void Effect::accept( IEffectVisitor &ev )
 {
 	ev.setEffect( this );
-	for ( auto& bindable : m_pBindables )
+	for ( auto &bindable : m_pBindables )
 	{
 		bindable->accept( ev );
 	}
 }
 
-void Effect::connectPass( ren::Renderer& r )
+void Effect::connectPass( ren::Renderer &r )
 {
 	ASSERT( m_pTargetPass == nullptr, "Pass already set!" );
 	m_pTargetPass = &r.getRenderQueuePass( m_targetPassName );

@@ -107,7 +107,7 @@ void ShadowPass::run( Graphics &gph ) const cond_noex
 	}
 }
 
-void ShadowPass::setShadowCamera( const Camera& cam ) noexcept
+void ShadowPass::setShadowCamera( const Camera &cam ) noexcept
 {
 	m_pLightVcb->setCamera( &cam );
 	m_pShadowCamera = &cam;

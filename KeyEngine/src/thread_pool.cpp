@@ -14,7 +14,7 @@ ThreadPool::ThreadPool( std::size_t nthreads,
 	}
 }
 
-ThreadPool& ThreadPool::getInstance( std::size_t nThreads,
+ThreadPool &ThreadPool::getInstance( std::size_t nThreads,
 	bool bEnabled )
 {
 	static ThreadPool instance{nThreads, bEnabled};
@@ -35,7 +35,7 @@ ThreadPool::ThreadPool( ThreadPool&& rhs ) noexcept
 
 }
 
-ThreadPool& ThreadPool::operator=( ThreadPool&& rhs ) noexcept
+ThreadPool &ThreadPool::operator=( ThreadPool&& rhs ) noexcept
 {
 	m_bEnabled.store( rhs.m_bEnabled.load( std::memory_order_relaxed ) );
 	std::swap( m_pool, rhs.m_pool );
@@ -60,7 +60,7 @@ void ThreadPool::stop() noexcept
 		m_bEnabled.store( false,
 			std::memory_order_relaxed );
 		m_cond.notify_all();
-		for ( auto& t : m_pool )
+		for ( auto &t : m_pool )
 		{
 			if ( t.joinable() )
 			{
@@ -95,7 +95,6 @@ bool ThreadPool::resize( int n )
 	}
 	if ( n > 0 )
 	{
-		// TODO: add threads
 		return true;
 	}
 	else

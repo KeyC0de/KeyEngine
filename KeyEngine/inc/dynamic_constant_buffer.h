@@ -50,7 +50,7 @@ struct ElementProperties<Float>
 {
 	using CPUType = float; // type used in the CPU side
 	static constexpr size_t hlslSize = sizeof( CPUType ); // size of type on GPU/hlsl
-	static constexpr const char* tag = "F1";	// used for generating the tag of the CB
+	static constexpr const char *tag = "F1";	// used for generating the tag of the CB
 	static constexpr bool valid = true; // metaprogramming flag to check validity of ElementProperties <param>
 };
 
@@ -59,7 +59,7 @@ struct ElementProperties<Float2>
 {
 	using CPUType = dx::XMFLOAT2;
 	static constexpr size_t hlslSize = sizeof( CPUType );
-	static constexpr const char* tag = "F2";
+	static constexpr const char *tag = "F2";
 	static constexpr bool valid = true;
 };
 
@@ -68,7 +68,7 @@ struct ElementProperties<Float3>
 {
 	using CPUType = dx::XMFLOAT3;
 	static constexpr size_t hlslSize = sizeof( CPUType );
-	static constexpr const char* tag = "F3";
+	static constexpr const char *tag = "F3";
 	static constexpr bool valid = true;
 };
 
@@ -77,7 +77,7 @@ struct ElementProperties<Float4>
 {
 	using CPUType = dx::XMFLOAT4;
 	static constexpr size_t hlslSize = sizeof( CPUType );
-	static constexpr const char* tag = "F4";
+	static constexpr const char *tag = "F4";
 	static constexpr bool valid = true;
 };
 
@@ -86,7 +86,7 @@ struct ElementProperties<Matrix>
 {
 	using CPUType = dx::XMFLOAT4X4;
 	static constexpr size_t hlslSize = sizeof( CPUType );
-	static constexpr const char* tag = "M4";
+	static constexpr const char *tag = "M4";
 	static constexpr bool valid = true;
 };
 
@@ -95,7 +95,7 @@ struct ElementProperties<Bool>
 {
 	using CPUType = bool;
 	static constexpr size_t hlslSize = 4u;
-	static constexpr const char* tag = "BL";
+	static constexpr const char *tag = "BL";
 	static constexpr bool valid = true;
 };
 
@@ -104,7 +104,7 @@ struct ElementProperties<Integer>
 {
 	using CPUType = int;
 	static constexpr size_t hlslSize = sizeof( CPUType );
-	static constexpr const char* tag = "IN";
+	static constexpr const char *tag = "IN";
 	static constexpr bool valid = true;
 };
 
@@ -165,28 +165,28 @@ public:
 	std::pair<size_t, const CBElement*> calculateArrayIndexingOffset( size_t offset,
 		size_t index ) const cond_noex;
 	// [] only works for Structs; access member (child node in tree) by name
-	CBElement& operator[]( const std::string &key ) cond_noex;
-	const CBElement& operator[]( const std::string &key ) const cond_noex;
+	CBElement &operator[]( const std::string &key ) cond_noex;
+	const CBElement &operator[]( const std::string &key ) const cond_noex;
 	// T() only works for Arrays; gets the array class layout object
 	// needed to further configure an array's class
-	CBElement& T() cond_noex;
-	const CBElement& T() const cond_noex;
+	CBElement &T() cond_noex;
+	const CBElement &T() const cond_noex;
 	// offset based- functions only work after finalization!
 	size_t getOffsetBegin() const cond_noex;
 	size_t getOffsetEnd() const cond_noex;
 	// get size in bytes derived from offsets
 	size_t getSizeInBytes() const cond_noex;
 	// only works for Structs; add CBElement to struct
-	CBElement& add( ElementType addedType, std::string name ) cond_noex;
+	CBElement &add( ElementType addedType, std::string name ) cond_noex;
 	template<ElementType typeAdded>
-	CBElement& add( std::string key ) cond_noex
+	CBElement &add( std::string key ) cond_noex
 	{
 		return add( typeAdded, std::move( key ) );
 	}
 	// only works for Arrays; set the class and the # of elements
-	CBElement& set( ElementType addedType, size_t size ) cond_noex;
+	CBElement &set( ElementType addedType, size_t size ) cond_noex;
 	template<ElementType typeAdded>
-	CBElement& set( size_t size ) cond_noex
+	CBElement &set( size_t size ) cond_noex
 	{
 		return set( typeAdded, size );
 	}
@@ -221,7 +221,7 @@ private:
 	size_t commitStruct( size_t offsetIn );
 	size_t commitArray( size_t offsetIn );
 	// returns singleton instance of empty layout element
-	static CBElement& getEmptyElement() noexcept
+	static CBElement &getEmptyElement() noexcept
 	{
 		static CBElement empty{};
 		return empty;
@@ -268,10 +268,10 @@ class RawLayout final
 public:
 	RawLayout() noexcept;
 	// key into the root Struct
-	CBElement& operator[]( const std::string &key ) cond_noex;
+	CBElement &operator[]( const std::string &key ) cond_noex;
 	// add an element to the root Struct
 	template<ElementType type>
-	CBElement& add( const std::string &key ) cond_noex
+	CBElement &add( const std::string &key ) cond_noex
 	{
 		return m_pLayoutRoot->add<type>( key );
 	}
@@ -292,7 +292,7 @@ class CookedLayout final
 	friend class Buffer;
 public:
 	// key into the root Struct (const to disable mutation of the layout)
-	const CBElement& operator[]( const std::string &key ) const cond_noex;
+	const CBElement &operator[]( const std::string &key ) const cond_noex;
 	// get a share on layout tree root
 	std::shared_ptr<CBElement> shareRootElement() const noexcept;
 private:
@@ -314,20 +314,20 @@ class ConstElementView final
 	// this offset is the offset that is built up by indexing into arrays
 	// accumulated for every array index in the m_path of access into the structure
 	size_t m_arrayOffset;	// has to do with array indexing, it's an extra offset that accumulates as you nest inside arrays deeper into the structure - give it another name
-	const CBElement* pLayout;
-	const char* m_p;
+	const CBElement *pLayout;
+	const char *m_p;
 private:
 	// refs should only be constructable by other refs or by the buffer
-	ConstElementView( const CBElement* pLayout, const char* pBytes, size_t offset ) noexcept;
+	ConstElementView( const CBElement *pLayout, const char *pBytes, size_t offset ) noexcept;
 public:
-	// emitted when you use addressof& on the Ref
+	// emitted when you use addressof &on the Ref
 	// it allows conversion to pointer, useful for using Buffer
 	// elements with ImGui widget functions etc.
 	class Ptr
 	{
 		friend ConstElementView;
 
-		const ConstElementView* p;
+		const ConstElementView *p;
 	public:
 		// conversion for getting read-only pointer to supported CPUType
 		template<typename T>
@@ -338,7 +338,7 @@ public:
 			return &static_cast<const T&>( *p );
 		}
 	private:
-		Ptr( const ConstElementView* ref ) noexcept;
+		Ptr( const ConstElementView *ref ) noexcept;
 	};
 public:
 	// check if the indexed element actually exists
@@ -372,17 +372,17 @@ class ElementView final
 	// m_arrayOffset has to do with array indexing, it's an extra offset that accumulates
 	// as you nest inside arrays deeper into the structure
 	size_t m_arrayOffset;	
-	const CBElement* m_pLayout;
-	char* m_p;
+	const CBElement *m_pLayout;
+	char *m_p;
 private:
 	// refs should only be constructable by other refs or by the buffer
-	ElementView( const CBElement* pLayout, char* pBytes, size_t offset ) noexcept;
+	ElementView( const CBElement *pLayout, char *pBytes, size_t offset ) noexcept;
 public:
 	class Ptr
 	{
 		friend ElementView;
 
-		ElementView* p;
+		ElementView *p;
 	public:
 		// conversion to read/write pointer to supported CPUType
 		template<typename T>
@@ -393,7 +393,7 @@ public:
 			return &static_cast<T&>( *p );
 		}
 	private:
-		Ptr( ElementView* ref ) noexcept;
+		Ptr( ElementView *ref ) noexcept;
 	};
 public:
 	operator ConstElementView() const noexcept;
@@ -402,7 +402,7 @@ public:
 	ElementView operator[]( size_t index ) const cond_noex;
 	// optionally set value if not an empty Ref
 	template<typename S>
-	bool setIfValid( const S& val ) cond_noex
+	bool setIfValid( const S &val ) cond_noex
 	{
 		if ( isValid() )
 		{
@@ -423,7 +423,7 @@ public:
 	}
 	// assignment for writing to as a supported CPUType
 	template<typename T>
-	T& operator=( const T& rhs ) const cond_noex
+	T &operator=( const T &rhs ) const cond_noex
 	{
 		static_assert(ReverseMap<std::remove_const_t<T>>::valid,
 			"Unsupported CPUType used in assignment");
@@ -435,13 +435,13 @@ public:
 // maps CBElement strings with their CBElement objects
 class LayoutMap
 {
-	static inline LayoutMap* m_pInstance;
+	static inline LayoutMap *m_pInstance;
 	std::unordered_map<std::string, std::shared_ptr<con::CBElement>> m_map;
 public:
 	static con::CookedLayout fetch( con::RawLayout&& cbLayout ) cond_noex;
 	static void resetInstance();
 private:
-	static LayoutMap& getInstance() noexcept;
+	static LayoutMap &getInstance() noexcept;
 };
 
 
@@ -457,24 +457,24 @@ class Buffer final
 public:
 	// various resources can be used to construct a Buffer
 	Buffer( RawLayout&& lay ) cond_noex;
-	Buffer( const CookedLayout& lay ) cond_noex;
+	Buffer( const CookedLayout &lay ) cond_noex;
 	Buffer( CookedLayout&& lay ) cond_noex;
 	~Buffer() noexcept;
-	Buffer( const Buffer& rhs ) noexcept;
-	Buffer& operator==( const Buffer& rhs ) noexcept;
+	Buffer( const Buffer &rhs ) noexcept;
+	Buffer &operator==( const Buffer &rhs ) noexcept;
 	// have to be careful with this one...
 	// the buffer that has once been pilfered must not be used :x
 	Buffer( Buffer&& rhs ) noexcept;
-	Buffer& operator=( Buffer&& rhs ) noexcept;
+	Buffer &operator=( Buffer&& rhs ) noexcept;
 
 	// how you begin indexing into buffer (root is always Struct)
 	ElementView operator[]( const std::string &key ) cond_noex;
 	// if Buffer is const, you only get to index into the buffer with a read-only proxy
 	ConstElementView operator[]( const std::string &key ) const cond_noex;
-	const char* getRawBytes() const noexcept;
+	const char *getRawBytes() const noexcept;
 	// size of the raw byte buffer
 	size_t getSizeInBytes() const noexcept;
-	const CBElement& getRootLayoutElement() const noexcept;
+	const CBElement &getRootLayoutElement() const noexcept;
 	// copy bytes from another buffer (layouts must match)
 	void copyFrom( const Buffer& ) cond_noex;
 	// return another sptr to the layout root

@@ -57,17 +57,17 @@ int runWindowsProgram( _In_ wchar_t *pCmdLine )
 		{
 			std::string commandLine = util::ws2s( pCmdLine );
 #if defined _DEBUG && !defined NDEBUG
-			KeyConsole& console = KeyConsole::getInstance();
+			KeyConsole &console = KeyConsole::getInstance();
 			windowsMetricsCheckTest();
 #endif
-			/// Make sure to set the GraphicsMode in graphics_mode.h
+			/// WARNING: Make sure to set the GraphicsMode in graphics_mode.h
 			const auto& [width, height] = parseCommandLineArguments();
 			Sandbox3d game{width, height};
 			//Arkanoid game{800, 600};
 			//Snake game{800, 600};
 			return game.loop();
 		}
-		catch ( const KeyException& ex )
+		catch ( const KeyException &ex )
 		{
 			MessageBoxW( nullptr,
 				util::s2ws( ex.what() ).data(),
@@ -75,7 +75,7 @@ int runWindowsProgram( _In_ wchar_t *pCmdLine )
 				MB_OK | MB_ICONEXCLAMATION );
 			return KEY_EXCEPTION_EXIT;
 		}
-		catch ( const std::exception& ex )
+		catch ( const std::exception &ex )
 		{
 			MessageBoxW( nullptr,
 				util::s2ws( ex.what() ).data(),
@@ -122,7 +122,7 @@ std::tuple<int,int> parseCommandLineArguments()
 		&argc );
 	ASSERT_HRES_WIN32_IF_FAILED( hres );
 
-	wchar_t* end;
+	wchar_t *end;
 	int width = std::wcstol( argv[1],
 		&end,
 		10 );
@@ -130,7 +130,7 @@ std::tuple<int,int> parseCommandLineArguments()
 		&end,
 		10 );
 #if defined _DEBUG && !defined NDEBUG
-	KeyConsole& console = KeyConsole::getInstance();
+	KeyConsole &console = KeyConsole::getInstance();
 	console.print( "(width,height)=(" + std::to_string( width ) + "," + std::to_string( height ) + ")" );
 #endif
 	return {width, height};
@@ -158,7 +158,7 @@ void firstly()
 void finally()
 {
 #if defined _DEBUG && !defined NDEBUG
-	KeyConsole& console = KeyConsole::getInstance();
+	KeyConsole &console = KeyConsole::getInstance();
 	using namespace std::string_literals;
 #	ifndef NO_DUMPS
 	if ( g_windowsExceptionOccurred )

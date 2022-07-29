@@ -31,10 +31,10 @@ std::string getLastErrorAsString();
 std::string getLastNtErrorAsString( DWORD ntStatusCode );
 #endif
 
-std::wstring bstrToStr( const BSTR& bstr );
+std::wstring bstrToStr( const BSTR &bstr );
 BSTR strToBstr( const std::wstring &str );
 
-__int64 filetimeToInt64( const FILETIME& fileTime );
+__int64 filetimeToInt64( const FILETIME &fileTime );
 void pinThreadToCore( HANDLE hThread, DWORD core );
 
 void setupDetachedThreadsVector( unsigned nThreads );
@@ -60,7 +60,7 @@ std::optional<std::wstring> registryGetString( HKEY hKey, const std::wstring &re
 			<< "\n"s\
 			<< util::printHresultErrorDescription( hres )\
 			<< "\n\n"s;\
-		KeyConsole& console = KeyConsole::getInstance();\
+		KeyConsole &console = KeyConsole::getInstance();\
 		console.log( oss.str() );\
 		__debugbreak();\
 		return hres;\
@@ -81,7 +81,7 @@ std::optional<std::wstring> registryGetString( HKEY hKey, const std::wstring &re
 			<< "\n"s\
 			<< util::printHresultErrorDescription( hres )\
 			<< "\n\n"s;\
-		KeyConsole& console = KeyConsole::getInstance();\
+		KeyConsole &console = KeyConsole::getInstance();\
 		console.log( oss.str() );\
 		__debugbreak();\
 		std::exit( hres );\
@@ -102,7 +102,7 @@ std::optional<std::wstring> registryGetString( HKEY hKey, const std::wstring &re
 			<< "\n"s\
 			<< util::printHresultErrorDescription( hres )\
 			<< "\n\n"s;\
-		KeyConsole& console = KeyConsole::getInstance();\
+		KeyConsole &console = KeyConsole::getInstance();\
 		console.log( oss.str() );\
 		__debugbreak();\
 		std::exit( hres );\
@@ -126,7 +126,7 @@ std::optional<std::wstring> registryGetString( HKEY hKey, const std::wstring &re
 			<< "msg: "\
 			<< msg\
 			<< "\n\n"s;\
-		KeyConsole& console = KeyConsole::getInstance();\
+		KeyConsole &console = KeyConsole::getInstance();\
 		console.log( oss.str() );\
 		__debugbreak();\
 		std::exit( hres );\
@@ -157,7 +157,7 @@ std::optional<std::wstring> registryGetString( HKEY hKey, const std::wstring &re
 			<< "\n"s\
 			<< util::getLastNtErrorAsString( ntErrorCode )\
 			<< "\n\n"s;\
-		KeyConsole& console = KeyConsole::getInstance();\
+		KeyConsole &console = KeyConsole::getInstance();\
 		console.log( oss.str() );\
 		__debugbreak();\
 		std::exit( hres );\
@@ -180,7 +180,7 @@ std::optional<std::wstring> registryGetString( HKEY hKey, const std::wstring &re
 			buffer,\
 			MAX_PATH,\
 			nullptr );\
-		KeyConsole& console = KeyConsole::getInstance();\
+		KeyConsole &console = KeyConsole::getInstance();\
 		console.print( util::ws2s( buffer ) );\
 		__debugbreak();\
 		std::exit( ret );\

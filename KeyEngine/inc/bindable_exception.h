@@ -7,7 +7,7 @@ class BindableException final
 	: public KeyException
 {
 public:
-	BindableException( int line, const char* file, const char* function,
+	BindableException( int line, const char *file, const char *function,
 		const std::string &msg ) noexcept;
 
 	const std::string getType() const noexcept override final;

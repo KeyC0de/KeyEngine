@@ -117,7 +117,7 @@
  *       especially those whose vendors make both the compiler and the
  *       system.  Default definitions have been given, but its strongly
  *       recommended that users never use these definitions for any
- *       reason (they do *NOT* deliver any serious guarantee of
+ *       reason (they do *NOT *deliver any serious guarantee of
  *       improved performance -- not in this file, nor any vendor's
  *       stdint.h).
  *
@@ -369,7 +369,7 @@
 #endif
 #if !defined(uint8_t) && !defined(_UINT8_T) && !defined(vxWorks)
 # if (UCHAR_MAX == UINT8_MAX) || defined (S_SPLINT_S)
-    typedef unsigned char uint8_t;
+	typedef unsigned char uint8_t;
 #   define UINT8_C(v) ((uint8_t) v)
 # else
 #   error "Platform not supported"
@@ -384,7 +384,7 @@
 #endif
 #if !defined(int8_t) && !defined(_INT8_T) && !defined(vxWorks)
 # if (SCHAR_MAX == INT8_MAX) || defined (S_SPLINT_S)
-    typedef signed char int8_t;
+	typedef signed char int8_t;
 #   define INT8_C(v) ((int8_t) v)
 # else
 #   error "Platform not supported"
@@ -670,8 +670,8 @@
 # define  INT_LEAST16_MIN  INT16_MIN
 # define  INT_LEAST32_MIN  INT32_MIN
 # ifdef stdint_int64_defined
-    typedef  int64_t  int_least64_t;
-    typedef uint64_t uint_least64_t;
+	typedef  int64_t  int_least64_t;
+	typedef uint64_t uint_least64_t;
 #   define PRINTF_LEAST64_MODIFIER PRINTF_INT64_MODIFIER
 #   define UINT_LEAST64_MAX UINT64_MAX
 #   define  INT_LEAST64_MAX  INT64_MAX
@@ -683,7 +683,7 @@
 /*
  *  The ANSI C committee pretending to know or specify anything about
  *  performance is the epitome of misguided arrogance.  The mandate of
- *  this file is to *ONLY* ever support that absolute minimum
+ *  this file is to *ONLY *ever support that absolute minimum
  *  definition of the fast integer types, for compatibility purposes.
  *  No extensions, and no attempt to suggest what may or may not be a
  *  faster integer m_topo will ever be made in this file.  Developers are
@@ -752,7 +752,6 @@ typedef uint_least32_t uint_fast32_t;
 # elif defined (__i386__) || defined (_WIN32) || defined (WIN32) || defined (__ppc64__)
 #  define stdint_intptr_bits 32
 # elif defined (__INTEL_COMPILER)
-/* TODO -- what did Intel do about x86-64? */
 # else
 /* #error "This platform might not be supported yet" */
 # endif
@@ -787,7 +786,7 @@ typedef uint_least32_t uint_fast32_t;
   typedef stdint_intptr_glue3(uint,stdint_intptr_bits,_t) uintptr_t;
   typedef stdint_intptr_glue3( int,stdint_intptr_bits,_t)  intptr_t;
 # else
-/* TODO -- This following is likely wrong for some platforms, and does
+/* WARNING: This following is likely wrong for some platforms, and does
    nothing for the definition of uintptr_t. */
   typedef ptrdiff_t intptr_t;
 # endif

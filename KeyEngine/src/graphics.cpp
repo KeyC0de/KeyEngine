@@ -23,11 +23,11 @@
 #if defined _DEBUG && !defined NDEBUG
 #	define DXGI_GET_QUEUE_INFO_GFX \
 	{\
-		KeyConsole& console = KeyConsole::getInstance();\
-		const auto& messages = getInfoQueue().getInfoMessages();\
+		KeyConsole &console = KeyConsole::getInstance();\
+		const auto &messages = getInfoQueue().getInfoMessages();\
 		if ( !messages.empty() )\
 		{\
-			for ( const auto& msg : messages )\
+			for ( const auto &msg : messages )\
 			{\
 				console.log( msg + "\n" );\
 			}\
@@ -44,31 +44,31 @@ namespace mwrl = Microsoft::WRL;
 namespace dx = DirectX;
 
 // Create ITT string handles
-__itt_string_handle* pStrIttDrawIndexed = __itt_string_handle_create( L"DrawIndexed" );
-__itt_string_handle* pStrIttDrawIndexedInstanced = __itt_string_handle_create( L"DrawIndexedInstanced" );
-__itt_string_handle* pStrIttBeginRendering = __itt_string_handle_create( L"BeginRendering" );
-__itt_string_handle* pStrIttFpsTimerRendering = __itt_string_handle_create( L"FpsTimerRendering" );
-__itt_string_handle* pStrIttEndRendering = __itt_string_handle_create( L"EndRendering" );
+__itt_string_handle *pStrIttDrawIndexed = __itt_string_handle_create( L"DrawIndexed" );
+__itt_string_handle *pStrIttDrawIndexedInstanced = __itt_string_handle_create( L"DrawIndexedInstanced" );
+__itt_string_handle *pStrIttBeginRendering = __itt_string_handle_create( L"BeginRendering" );
+__itt_string_handle *pStrIttFpsTimerRendering = __itt_string_handle_create( L"FpsTimerRendering" );
+__itt_string_handle *pStrIttEndRendering = __itt_string_handle_create( L"EndRendering" );
 
 #if defined _DEBUG && !defined NDEBUG
 static std::once_flag g_startUpFlag;
 #endif
 
-auto& g_settings = SettingsManager::getInstance();
+auto &g_settings = SettingsManager::getInstance();
 
 
-Graphics::Adapter::Adapter( IDXGIAdapter* pAdapter )
+Graphics::Adapter::Adapter( IDXGIAdapter *pAdapter )
 {
 	m_pAdapter = pAdapter;
 	pAdapter->GetDesc( &m_desc );
 }
 
-const DXGI_ADAPTER_DESC* Graphics::Adapter::getDesc() const noexcept
+const DXGI_ADAPTER_DESC *Graphics::Adapter::getDesc() const noexcept
 {
 	return &m_desc;
 }
 
-IDXGIAdapter* Graphics::Adapter::getAdapter() const noexcept
+IDXGIAdapter *Graphics::Adapter::getAdapter() const noexcept
 {
 	return m_pAdapter.Get();
 }
@@ -113,7 +113,7 @@ Graphics::Graphics( HWND hWnd,
 	m_height(height)
 {
 	HRESULT hres;
-	auto& settings = g_settings.getSettings();
+	auto &settings = g_settings.getSettings();
 	if ( settings.bMultithreadedRendering )
 	{
 		m_deferredContexts.reserve( settings.nRenderingThreads );
@@ -155,7 +155,7 @@ Graphics::Graphics( HWND hWnd,
 
 	// create adapter, device, front|back buffers, swap chain and device rendering context
 	createAdapters();
-	const auto& primaryAdapter = m_adapters.front();
+	const auto &primaryAdapter = m_adapters.front();
 	hres = E_INVALIDARG;
 #if defined _FLIP_PRESENT
 	// make window-swap chain association
@@ -253,7 +253,7 @@ void Graphics::clearShaderSlots() noexcept
 	// Clearing shader inputs to prevent simultaneous in/out binds carried over
 	// from previous frame. Now we can start each frame with a clean slate
 	// prevent OMSetRenderTargets State Hazard
-	ID3D11ShaderResourceView* const pNullSrv = nullptr;
+	ID3D11ShaderResourceView *const pNullSrv = nullptr;
 	// diffuse texture
 	m_pContext->PSSetShaderResources( 0u,
 		1u,
@@ -291,7 +291,7 @@ void Graphics::beginRendering() noexcept
 		memset( m_pCpuBuffer, 0u, cpuBuffer2dSize );
 	}
 	clearShaderSlots();
-	VTUNE_ITT_TASK_END( pStrIttBeginRendering );
+	VTUNE_ITT_TASK_END;
 }
 
 void Graphics::updateAndRenderFpsTimer()
@@ -301,7 +301,7 @@ void Graphics::updateAndRenderFpsTimer()
 	static std::wstring fps;
 
 	m_fpsSpriteBatch->Begin();
-	auto& setMan = SettingsManager::getInstance();
+	auto &setMan = SettingsManager::getInstance();
 	if ( setMan.getSettings().bFpsCounting )
 	{
 		++fpsDisplayFrameCount;
@@ -325,7 +325,7 @@ void Graphics::updateAndRenderFpsTimer()
 		dx::XMFLOAT2{0.0f, 0.0f},
 		dx::XMFLOAT2{1.0f, 1.0f} );
 	m_fpsSpriteBatch->End();
-	VTUNE_ITT_TASK_END( pStrIttFpsTimerRendering );
+	VTUNE_ITT_TASK_END;
 }
 
 void Graphics::endRendering()
@@ -372,7 +372,7 @@ void Graphics::endRendering()
 	}
 	ASSERT_HRES_IF_FAILED;
 	//m_pContext->ClearState();
-	VTUNE_ITT_TASK_END( pStrIttEndRendering );
+	VTUNE_ITT_TASK_END;
 }
 
 void Graphics::draw( unsigned count ) cond_noex
@@ -396,7 +396,7 @@ void Graphics::drawIndexed( unsigned count ) cond_noex
 			0u );
 		DXGI_GET_QUEUE_INFO_GFX;
 	}
-	VTUNE_ITT_TASK_END( pStrIttDrawIndexed );
+	VTUNE_ITT_TASK_END;
 }
 
 void Graphics::drawIndexedInstanced( unsigned indexCount,
@@ -412,21 +412,21 @@ void Graphics::drawIndexedInstanced( unsigned indexCount,
 		//m_pContext->DrawIndexedInstanced();
 	}
 	DXGI_GET_QUEUE_INFO_GFX;
-	VTUNE_ITT_TASK_END( pStrIttDrawIndexedInstanced );
+	VTUNE_ITT_TASK_END;
 }
 
 
-ColorBGRA*& Graphics::getCpuBuffer()
+ColorBGRA *&Graphics::getCpuBuffer()
 {
 	return m_pCpuBuffer;
 }
 
-void Graphics::setViewMatrix( const dx::XMMATRIX& cam ) noexcept
+void Graphics::setViewMatrix( const dx::XMMATRIX &cam ) noexcept
 {
 	m_view = cam;
 }
 
-void Graphics::setProjectionMatrix( const dx::XMMATRIX& proj ) noexcept
+void Graphics::setProjectionMatrix( const dx::XMMATRIX &proj ) noexcept
 {
 	m_projection = proj;
 }
@@ -451,7 +451,7 @@ unsigned Graphics::getClientHeight() const noexcept
 	return m_height;
 }
 
-IRenderTargetView* Graphics::getRenderTarget() const noexcept
+IRenderTargetView *Graphics::getRenderTarget() const noexcept
 {
 	return m_globalColorBuffer.get();
 }
@@ -462,7 +462,7 @@ std::shared_ptr<IRenderTargetView> Graphics::shareRenderTarget()
 }
 
 #if defined _DEBUG && !defined NDEBUG
-DxgiInfoQueue& Graphics::getInfoQueue() const noexcept
+DxgiInfoQueue &Graphics::getInfoQueue() const noexcept
 {
 	return *( m_infoQueue.get() );
 }
@@ -474,7 +474,7 @@ void Graphics::createAdapters()
 		reinterpret_cast<void**>( m_pFactory.GetAddressOf() ) );
 	ASSERT_HRES_IF_FAILED;
 
-	IDXGIAdapter1* pAdapter = nullptr;
+	IDXGIAdapter1 *pAdapter = nullptr;
 	unsigned adapterIndex = 0;
 	while ( SUCCEEDED( m_pFactory->EnumAdapters1( adapterIndex,
 		&pAdapter ) ) )
@@ -529,7 +529,7 @@ void Graphics::interrogateDirectxFeatures()
 	ASSERT_HRES_IF_FAILED;
 
 	using namespace std::string_literals;
-	auto& console = KeyConsole::getInstance();
+	auto &console = KeyConsole::getInstance();
 	console.log( threadingInfo.DriverConcurrentCreates ? 
 		"Resources can be created concurrently on multiple threads.\n"s :
 		"No DirectX concurrency possible\n"s );
@@ -585,9 +585,9 @@ ColorBGRA Graphics::getPixel( int x,
 	int y ) const noexcept
 {
 	ASSERT( x >= 0, "!( x >= 0 )" );
-	ASSERT( x < m_width, "!( x < width )" );
+	ASSERT( x < (int) m_width, "!( x < width )" );
 	ASSERT( y >= 0, "!( y >= 0)" );
-	ASSERT( y < m_height, "!( y < height )" );
+	ASSERT( y < (int) m_height, "!( y < height )" );
 	return m_pCpuBuffer[m_width * y + x];
 }
 
@@ -596,9 +596,9 @@ void Graphics::putPixel( int x,
 	ColorBGRA col )
 {
 	ASSERT( x >= 0, "!( x >= 0 )" );
-	ASSERT( x < m_width, "!( x < width )" );
+	ASSERT( x < (int) m_width, "!( x < width )" );
 	ASSERT( y >= 0, "!( y >= 0)" );
-	ASSERT( y < m_height, "!( y < height )" );	
+	ASSERT( y < (int) m_height, "!( y < height )" );
 	m_pCpuBuffer[m_width * y + x] = col;
 }
 
@@ -649,7 +649,7 @@ void Graphics::drawLine( int x0,
 	float m = 0.0f;
 	if ( x1 != x0 )
 	{
-		m = ( y1 - y0 ) / ( x1 - x0 );
+		m = (float) ( y1 - y0 ) / ( x1 - x0 );
 	}
 
 	if ( x1 != x0 && std::abs( m ) <= 1.0f )
@@ -664,8 +664,8 @@ void Graphics::drawLine( int x0,
 		for ( int x = x0; x <= x1; ++x )
 		{
 			const float y = m * (float)x + b;
-			const int yi = y;
-			if ( x >= 0 && x < m_width && yi >= 0 && yi < m_height )
+			const int yi = (const int) y;
+			if ( x >= 0 && x < (int) m_width && yi >= 0 && yi < (int) m_height )
 			{
 				putPixel( x,
 					yi,
@@ -681,13 +681,13 @@ void Graphics::drawLine( int x0,
 			std::swap( y0, y1);
 		}
 
-		const float w = ( x1 - x0 ) / ( y1 - y0 );
+		const float w = (const float) ( x1 - x0 ) / ( y1 - y0 );
 		const float p = x0 - w * y0;
 		for ( int y = y0; y <= y1; ++y )
 		{
 			const float x = w * (float)y + p;
-			const int xi = x;
-			if ( xi >= 0 && xi < m_width && y >= 0 && y < m_height )
+			const int xi = (const int) x;
+			if ( xi >= 0 && xi < (int) m_width && y >= 0 && y < (int) m_height )
 			{
 				putPixel( xi,
 					y,
@@ -743,8 +743,8 @@ std::vector<DirectX::XMFLOAT2> Graphics::drawStar( float outerRadius,
 // general implementation for a curve with any number of points.
 /*
 putPixel( getBezierPoint() )
-vec2 getBezierPoint( vec2* points, int numPoints, float t ) {
-	vec2* tmp = new vec2[numPoints];
+vec2 getBezierPoint( vec2 *points, int numPoints, float t ) {
+	vec2 *tmp = new vec2[numPoints];
 	memcpy(tmp, points, numPoints * sizeof(vec2));
 	int i = numPoints - 1;
 	while (i > 0) {
@@ -830,8 +830,8 @@ private boolean isUnderGround(Vector3f testPoint) {
 }*/
 
 Graphics::GraphicsException::GraphicsException( int line,
-	const char* file,
-	const char* function,
+	const char *file,
+	const char *function,
 	const std::string &msg ) noexcept
 	:
 	KeyException{line, file, function, msg}
@@ -844,7 +844,7 @@ const std::string Graphics::GraphicsException::getType() const noexcept
 	return typeid( *this ).name();
 }
 
-const char* Graphics::GraphicsException::what() const noexcept
+const char *Graphics::GraphicsException::what() const noexcept
 {
 	return KeyException::what();
 }

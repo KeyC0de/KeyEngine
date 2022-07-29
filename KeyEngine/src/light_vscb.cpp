@@ -29,7 +29,7 @@ void LightVSCB::bind( Graphics &gph ) cond_noex
 	m_pVscb->bind( gph );
 }
 
-void LightVSCB::setCamera( const Camera* pCam ) noexcept
+void LightVSCB::setCamera( const Camera *pCam ) noexcept
 {
 	m_pPointLightShadowCamera = pCam;
 }

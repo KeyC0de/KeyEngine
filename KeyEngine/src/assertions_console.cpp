@@ -8,13 +8,13 @@ extern "C" {
 #endif
 
 // builds the error string
-bool assertPrint( const char* expr,
-	const char* file,
+bool assertPrint( const char *expr,
+	const char *file,
 	int line,
-	const char* function,
-	const char* msg )
+	const char *function,
+	const char *msg )
 {
-	KeyConsole& console = KeyConsole::getInstance();
+	KeyConsole &console = KeyConsole::getInstance();
 	console.log( ">> Assertion failed @ file: ");
 	console.log( file );
 	console.log( "\n>> function: " );

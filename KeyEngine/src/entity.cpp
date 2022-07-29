@@ -10,7 +10,7 @@ Entity::Entity( EntityIndex version,
 	EntityIndex index,
 	const std::string &name,
 	Category categoryId,
-	Entity* pParent )
+	Entity *pParent )
 	:
 	m_version(version),
 	m_index(index),
@@ -45,7 +45,7 @@ Entity::Entity( Entity&& rhs ) noexcept
 	}
 }
 
-Entity& Entity::operator=( Entity&& rhs ) noexcept
+Entity &Entity::operator=( Entity&& rhs ) noexcept
 {
 	std::swap( m_version, rhs.m_version );
 	std::swap( m_index, rhs.m_index );
@@ -101,12 +101,12 @@ Entity::Category Entity::getCategory() const noexcept
 	return m_category;
 }
 
-Entity* Entity::getParent() const noexcept
+Entity *Entity::getParent() const noexcept
 {
 	return m_pParent;
 }
 
-void Entity::addChild( Entity* child ) noexcept
+void Entity::addChild( Entity *child ) noexcept
 {
 	m_pChildren.emplace_back( child );
 }
@@ -169,30 +169,30 @@ void Entity::onMessageReceived( std::unique_ptr<class Message> msg )
 	pDataMsg->setHandled( true );
 }
 
-void Entity::sendMessage( class Message* msg ) const noexcept
+void Entity::sendMessage( class Message *msg ) const noexcept
 {
-	auto& md = MessageDispatcher::getInstance();
+	auto &md = MessageDispatcher::getInstance();
 	md.addMessage( msg );
 }
 
 
 
-inline bool Entity::operator==( const Entity* rhs ) const noexcept
+inline bool Entity::operator==( const Entity *rhs ) const noexcept
 {
 	return this->getId() == rhs->getId();
 }
 
-inline bool Entity::operator!=( const Entity* rhs ) const noexcept
+inline bool Entity::operator!=( const Entity *rhs ) const noexcept
 {
 	return this->getId() != rhs->getId();
 }
 
-inline bool Entity::operator==( const Entity& rhs ) const noexcept
+inline bool Entity::operator==( const Entity &rhs ) const noexcept
 {
 	return this->getId() == rhs.getId();
 }
 
-inline bool Entity::operator!=( const Entity& rhs ) const noexcept
+inline bool Entity::operator!=( const Entity &rhs ) const noexcept
 {
 	return this->getId() != rhs.getId();
 }

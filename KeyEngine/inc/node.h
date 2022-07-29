@@ -27,11 +27,11 @@ public:
 	void update( float dt, const DirectX::XMMATRIX &parentWorldTransform ) const cond_noex;
 	void render( size_t channels ) const cond_noex;
 	void setTransform( const DirectX::XMMATRIX &worldTransform ) noexcept;
-	const DirectX::XMFLOAT4X4& getWorldTransform() const noexcept;
+	const DirectX::XMFLOAT4X4 &getWorldTransform() const noexcept;
 	int getId() const noexcept;
 	bool hasChildren() const noexcept;
-	void accept( IModelVisitor& mv );
-	void accept( IEffectVisitor& ev );
+	void accept( IModelVisitor &mv );
+	void accept( IEffectVisitor &ev );
 	const std::string &getName() const noexcept;
 private:
 	void addChild( std::unique_ptr<Node> pChild ) cond_noex;

@@ -6,7 +6,7 @@
 
 
 VertexBuffer::VertexBuffer( Graphics &gph,
-	const ver::Buffer& vb )
+	const ver::Buffer &vb )
 	:
 	VertexBuffer(gph, "?", vb)
 {
@@ -15,7 +15,7 @@ VertexBuffer::VertexBuffer( Graphics &gph,
 
 VertexBuffer::VertexBuffer( Graphics &gph,
 	const std::string &tag,
-	const ver::Buffer& vb )
+	const ver::Buffer &vb )
 	:
 	m_stride{static_cast<unsigned>( vb.getLayout().getSizeInBytes() )},
 	m_tag{tag},
@@ -37,7 +37,7 @@ VertexBuffer::VertexBuffer( Graphics &gph,
 	ASSERT_HRES_IF_FAILED;
 }
 
-const ver::VertexLayout& VertexBuffer::getLayout() const noexcept
+const ver::VertexLayout &VertexBuffer::getLayout() const noexcept
 {
 	return m_vertexLayout;
 }
@@ -55,7 +55,7 @@ void VertexBuffer::bind( Graphics &gph ) cond_noex
 
 std::shared_ptr<VertexBuffer> VertexBuffer::fetch( Graphics &gph,
 	const std::string &tag,
-	const ver::Buffer& vb )
+	const ver::Buffer &vb )
 {
 	ASSERT( tag != "?", "No VertexBuffer tag available!" );
 	return BindableMap::fetch<VertexBuffer>( gph,

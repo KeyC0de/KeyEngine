@@ -32,7 +32,7 @@ void IBindablePass::bindPass( Graphics &gph ) const cond_noex
 		m_pDsv->bindRenderSurface( gph );
 	}
 
-	for ( auto& b : m_pBindables )
+	for ( auto &b : m_pBindables )
 	{
 		b->bind( gph );
 	}

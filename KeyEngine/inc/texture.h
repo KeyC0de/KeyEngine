@@ -47,7 +47,7 @@ private:
 	//	\brief  apply function f at every Texel in the Bitmap
 	//	\date	2022/02/18 19:14
 	template<typename F>
-	static void transformBitmap( Bitmap& bitmap,
+	static void transformBitmap( Bitmap &bitmap,
 		F&& f )
 	{
 		const unsigned width = bitmap.getWidth();

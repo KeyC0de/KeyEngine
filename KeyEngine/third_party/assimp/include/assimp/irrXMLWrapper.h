@@ -76,7 +76,7 @@ public:
 
     // ----------------------------------------------------------------------------------
     //! Construction from an existing IOStream
-    explicit CIrrXML_IOStreamReader(IOStream* _stream)
+    explicit CIrrXML_IOStreamReader(IOStream *_stream)
         : stream (_stream)
         , t (0)
     {
@@ -112,7 +112,7 @@ public:
     /**  @param buffer:       Pointer to output buffer.
      *   @param sizeToRead:   Amount of bytes to read
      *   @return              Returns how much bytes were read.  */
-    virtual int read(void* buffer, int sizeToRead)  {
+    virtual int read(void *buffer, int sizeToRead)  {
         if(sizeToRead<0) {
             return 0;
         }
@@ -133,7 +133,7 @@ public:
     }
 
 private:
-    IOStream* stream;
+    IOStream *stream;
     std::vector<char> data;
     size_t t;
 

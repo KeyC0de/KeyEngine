@@ -34,7 +34,7 @@ struct ColorBGRA final
 	
 	}
 	
-	constexpr ColorBGRA( const ColorBGRA& col )
+	constexpr ColorBGRA( const ColorBGRA &col )
 		:
 		m_dword{col.m_dword}
 	{
@@ -84,7 +84,7 @@ struct ColorBGRA final
 	
 	}
 
-	ColorBGRA& operator*=( const int scale )
+	ColorBGRA &operator*=( const int scale )
 	{
 		this->m_dword *= scale;
 		return *this;
@@ -95,18 +95,18 @@ struct ColorBGRA final
 		return *this *= scale;
 	}
 
-	ColorBGRA& operator=( ColorBGRA rhs )
+	ColorBGRA &operator=( ColorBGRA rhs )
 	{
 		m_dword = rhs.m_dword;
 		return *this;
 	}
 	
-	bool operator==( const ColorBGRA& rhs ) const noexcept
+	bool operator==( const ColorBGRA &rhs ) const noexcept
 	{
 		return m_dword == rhs.m_dword;
 	}
 	
-	bool operator!=( const ColorBGRA& rhs ) const noexcept
+	bool operator!=( const ColorBGRA &rhs ) const noexcept
 	{
 		return !( *this == rhs );
 	}

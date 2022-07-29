@@ -32,11 +32,11 @@ private:
 public:
 	~ThreadPool() noexcept;
 	ThreadPool( ThreadPool const& ) = delete;
-	ThreadPool& operator=( const ThreadPool &rhs ) = delete;
+	ThreadPool &operator=( const ThreadPool &rhs ) = delete;
 	ThreadPool( ThreadPool &&rhs ) noexcept;
-	ThreadPool& operator=( ThreadPool &&rhs ) noexcept;
+	ThreadPool &operator=( ThreadPool &&rhs ) noexcept;
 
-	static ThreadPool& getInstance( std::size_t nThreads
+	static ThreadPool &getInstance( std::size_t nThreads
 		= std::thread::hardware_concurrency(), bool bEnabled = true );
 	//===================================================
 	//	\function	start

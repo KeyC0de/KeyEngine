@@ -183,14 +183,11 @@ struct aiCamera
         , mAspect           (0.f)
     {}
 
-    /** @brief Get a *right-handed* camera matrix from me
+    /** @brief Get a *right-handed *camera matrix from me
      *  @param out Camera matrix to be filled
      */
-    void GetCameraMatrix (aiMatrix4x4& out) const
+    void GetCameraMatrix (aiMatrix4x4 &out) const
     {
-        /** todo: test ... should work, but i'm not absolutely sure */
-
-        /** We don't know whether these vectors are already normalized ...*/
         aiVector3D zaxis = mLookAt;     zaxis.Normalize();
         aiVector3D yaxis = mUp;         yaxis.Normalize();
         aiVector3D xaxis = mUp^mLookAt; xaxis.Normalize();

@@ -42,7 +42,7 @@ class Mouse final
 		int y;
 	public:
 		Event( Type type,
-			const Mouse& mouse ) noexcept
+			const Mouse &mouse ) noexcept
 			:
 			m_type(type),
 			m_bLmbPressed(mouse.m_bLmbPressed),
@@ -109,10 +109,10 @@ private:
 	Mouse() = default;
 public:
 	~Mouse() noexcept = default;
-	Mouse( const Mouse& rhs ) = delete;
-	Mouse& operator=( const Mouse& rhs ) = delete;
+	Mouse( const Mouse &rhs ) = delete;
+	Mouse &operator=( const Mouse &rhs ) = delete;
 	Mouse( Mouse&& rhs ) noexcept;
-	Mouse& operator=( Mouse&& rhs ) noexcept;
+	Mouse &operator=( Mouse&& rhs ) noexcept;
 
 	std::pair<int, int> getPosition() const noexcept;
 	int getX() const noexcept;

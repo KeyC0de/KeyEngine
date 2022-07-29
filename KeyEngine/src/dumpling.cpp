@@ -6,13 +6,13 @@
 #pragma comment( lib, "dbghelp.lib" )
 
 
-bool generateDump( EXCEPTION_POINTERS* pExceptionPointers,
-	WCHAR* szFileName )
+bool generateDump( EXCEPTION_POINTERS *pExceptionPointers,
+	WCHAR *szFileName )
 {
 	BOOL bMiniDumpSuccessful;
 	WCHAR szPath[MAX_PATH]; 
-	const wchar_t* szAppName = L"AppName";
-	const wchar_t* szVersion = L"v1.0";
+	const wchar_t *szAppName = L"AppName";
+	const wchar_t *szVersion = L"v1.0";
 	DWORD dwBufferSize = MAX_PATH;
 	HANDLE hDumpFile;
 	SYSTEMTIME stLocalTime;

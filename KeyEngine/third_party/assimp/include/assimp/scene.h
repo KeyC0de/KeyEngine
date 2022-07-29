@@ -83,7 +83,7 @@ struct ASSIMP_API aiNode
      * The name might be empty (length of zero) but all nodes which
      * need to be referenced by either bones or animations are named.
      * Multiple nodes may have the same name, except for nodes which are referenced
-     * by bones (see #aiBone and #aiMesh::mBones). Their names *must* be unique.
+     * by bones (see #aiBone and #aiMesh::mBones). Their names *must *be unique.
      *
      * Cameras and lights reference a specific node by name - if there
      * are multiple nodes with this name, they are assigned to each of them.
@@ -106,7 +106,7 @@ struct ASSIMP_API aiNode
     C_STRUCT aiMatrix4x4 mTransformation;
 
     /** Parent node. NULL if this node is the root node. */
-    C_STRUCT aiNode* mParent;
+    C_STRUCT aiNode *mParent;
 
     /** The number of child nodes of this node. */
     unsigned int mNumChildren;
@@ -120,14 +120,14 @@ struct ASSIMP_API aiNode
     /** The meshes of this node. Each entry is an index into the
       * mesh list of the #aiScene.
       */
-    unsigned int* mMeshes;
+    unsigned int *mMeshes;
 
     /** Metadata associated with this node or NULL if there is no metadata.
       *  Whether any metadata is generated depends on the source file format. See the
       * @link importer_notes @endlink page for more information on every source file
       * format. Importers that don't document any metadata don't write any.
       */
-    C_STRUCT aiMetadata* mMetaData;
+    C_STRUCT aiMetadata *mMetaData;
 
 #ifdef __cplusplus
     /** Constructor */
@@ -147,18 +147,18 @@ struct ASSIMP_API aiNode
      *  @return NULL or a valid Node if the search was successful.
      */
     inline 
-    const aiNode* FindNode(const aiString& name) const {
+    const aiNode *FindNode(const aiString &name) const {
         return FindNode(name.data);
     }
 
     inline 
-    aiNode* FindNode(const aiString& name) {
+    aiNode *FindNode(const aiString &name) {
         return FindNode(name.data);
     }
 
-    const aiNode* FindNode(const char* name) const;
+    const aiNode *FindNode(const char *name) const;
 
-    aiNode* FindNode(const char* name);
+    aiNode *FindNode(const char *name);
 
     /**
      * @brief   Will add new children.
@@ -214,7 +214,7 @@ struct ASSIMP_API aiNode
  * stores the elevation at a specific point.
  *
  * TER (Terragen) and HMP (3D Game Studio) are height map formats.
- * @note Assimp is probably not the best choice for loading *huge* terrains -
+ * @note Assimp is probably not the best choice for loading *huge *terrains -
  * fully triangulated data takes extremely much free store and should be avoided
  * as long as possible (typically you'll do the triangulation when you actually
  * need to render it).
@@ -254,7 +254,7 @@ struct aiScene
     * Presence of further nodes depends on the format and content
     * of the imported file.
     */
-    C_STRUCT aiNode* mRootNode;
+    C_STRUCT aiNode *mRootNode;
 
     /** The number of meshes in the scene. */
     unsigned int mNumMeshes;
@@ -334,7 +334,7 @@ struct aiScene
      *  unit-conversions, versions, vendors or other model-specific data. This 
      *  can be used to store format-specific metadata as well.
      */
-    C_STRUCT aiMetadata* mMetaData;
+    C_STRUCT aiMetadata *mMetaData;
 
 
 #ifdef __cplusplus
@@ -378,20 +378,20 @@ struct aiScene
     }
 
     //! Returns a short filename from a full m_path
-    static const char* GetShortFilename(const char* filename) {
-        const char* lastSlash = strrchr(filename, '/');
+    static const char *GetShortFilename(const char *filename) {
+        const char *lastSlash = strrchr(filename, '/');
         if (lastSlash == nullptr) {
             lastSlash = strrchr(filename, '\\');
         }
-        const char* shortFilename = lastSlash != nullptr ? lastSlash + 1 : filename;
+        const char *shortFilename = lastSlash != nullptr ? lastSlash + 1 : filename;
         return shortFilename;
     }
 
     //! Returns an embedded texture
-    const aiTexture* GetEmbeddedTexture(const char* filename) const {
-        const char* shortFilename = GetShortFilename(filename);
+    const aiTexture *GetEmbeddedTexture(const char *filename) const {
+        const char *shortFilename = GetShortFilename(filename);
         for (unsigned int i = 0; i < mNumTextures; i++) {
-            const char* shortTextureFilename = GetShortFilename(mTextures[i]->mFilename.C_Str());
+            const char *shortTextureFilename = GetShortFilename(mTextures[i]->mFilename.C_Str());
             if (strcmp(shortTextureFilename, shortFilename) == 0) {
                 return mTextures[i];
             }
@@ -402,9 +402,9 @@ struct aiScene
 
     /**  Internal data, do not touch */
 #ifdef __cplusplus
-    void* mPrivate;
+    void *mPrivate;
 #else
-    char* mPrivate;
+    char *mPrivate;
 #endif
 
 };

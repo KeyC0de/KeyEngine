@@ -1,7 +1,7 @@
 #include "triangle_mesh.h"
 
 
-TriangleMesh::TriangleMesh( const ver::Buffer& vertices,
+TriangleMesh::TriangleMesh( const ver::Buffer &vertices,
 	const std::vector<unsigned>& indices )
 	:
 	m_vb{vertices},
@@ -16,7 +16,7 @@ void TriangleMesh::transform( const DirectX::XMMATRIX &matrix )
 	using Elements = ver::VertexLayout::MemberType;
 	for ( int i = 0; i < m_vb.getVertexCount(); ++i )
 	{
-		auto& pos = m_vb[i].getMember<Elements::Position3D>();
+		auto &pos = m_vb[i].getMember<Elements::Position3D>();
 		DirectX::XMStoreFloat3( &pos,
 			DirectX::XMVector3Transform( DirectX::XMLoadFloat3( &pos ), matrix ) );
 	}

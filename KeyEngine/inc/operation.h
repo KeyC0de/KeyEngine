@@ -44,18 +44,18 @@ public:
 	//( std::forward<T>( obj ).*mf )( std::forward<TArgs>( args )... ); -> TRet
 
 	~Operation() noexcept;
-	Operation( const Operation& rhs ) = delete;
-	Operation& operator=( const Operation& rhs ) = delete;
+	Operation( const Operation &rhs ) = delete;
+	Operation &operator=( const Operation &rhs ) = delete;
 	Operation( Operation&& rhs ) noexcept;
-	Operation& operator=( Operation&& rhs ) noexcept;
+	Operation &operator=( Operation&& rhs ) noexcept;
 
 	void operator()() const;
-	void swap( Operation& rhs ) noexcept;
+	void swap( Operation &rhs ) noexcept;
 	void reset() noexcept;
 
 	inline operator bool() const noexcept;
-	inline constexpr bool operator==( const Operation& rhs ) const noexcept;
-	inline constexpr bool operator!=( const Operation& rhs ) const noexcept;
-	inline constexpr bool operator==( const Operation* rhs ) const noexcept;
-	inline constexpr bool operator!=( const Operation* rhs ) const noexcept;
+	inline constexpr bool operator==( const Operation &rhs ) const noexcept;
+	inline constexpr bool operator!=( const Operation &rhs ) const noexcept;
+	inline constexpr bool operator==( const Operation *rhs ) const noexcept;
+	inline constexpr bool operator!=( const Operation *rhs ) const noexcept;
 };

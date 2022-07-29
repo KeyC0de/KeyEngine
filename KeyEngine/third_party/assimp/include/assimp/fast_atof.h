@@ -58,7 +58,7 @@ const double fast_atof_table[16] =  {  // we write [16] here instead of [] to wo
 // Convert a string in decimal format to a number
 // ------------------------------------------------------------------------------------
 inline
-unsigned int strtoul10( const char* in, const char** out=0) {
+unsigned int strtoul10( const char *in, const char** out=0) {
     unsigned int value = 0;
 
     for ( ;; ) {
@@ -79,7 +79,7 @@ unsigned int strtoul10( const char* in, const char** out=0) {
 // Convert a string in octal format to a number
 // ------------------------------------------------------------------------------------
 inline
-unsigned int strtoul8( const char* in, const char** out=0) {
+unsigned int strtoul8( const char *in, const char** out=0) {
     unsigned int value( 0 );
     for ( ;; ) {
         if ( *in < '0' || *in > '7' ) {
@@ -99,7 +99,7 @@ unsigned int strtoul8( const char* in, const char** out=0) {
 // Convert a string in hex format to a number
 // ------------------------------------------------------------------------------------
 inline
-unsigned int strtoul16( const char* in, const char** out=0) {
+unsigned int strtoul16( const char *in, const char** out=0) {
     unsigned int value( 0 );
     for ( ;; ) {
         if ( *in >= '0' && *in <= '9' ) {
@@ -142,7 +142,7 @@ unsigned int HexDigitToDecimal(char in) {
 // Convert a hex-encoded octet (2 characters, i.e. df or 1a).
 // ------------------------------------------------------------------------------------
 inline
-uint8_t HexOctetToDecimal(const char* in) {
+uint8_t HexOctetToDecimal(const char *in) {
     return ((uint8_t)HexDigitToDecimal(in[0])<<4)+(uint8_t)HexDigitToDecimal(in[1]);
 }
 
@@ -150,7 +150,7 @@ uint8_t HexOctetToDecimal(const char* in) {
 // signed variant of strtoul10
 // ------------------------------------------------------------------------------------
 inline
-int strtol10( const char* in, const char** out=0) {
+int strtol10( const char *in, const char** out=0) {
     bool inv = (*in=='-');
     if ( inv || *in == '+' ) {
         ++in;
@@ -170,7 +170,7 @@ int strtol10( const char* in, const char** out=0) {
 // NNN    - dec
 // ------------------------------------------------------------------------------------
 inline
-unsigned int strtoul_cppstyle( const char* in, const char** out=0) {
+unsigned int strtoul_cppstyle( const char *in, const char** out=0) {
     if ('0' == in[0]) {
         return 'x' == in[1] ? strtoul16(in+2,out) : strtoul8(in+1,out);
     }
@@ -182,7 +182,7 @@ unsigned int strtoul_cppstyle( const char* in, const char** out=0) {
 // It is mainly used by fast_atof to prevent ugly and unwanted integer overflows.
 // ------------------------------------------------------------------------------------
 inline
-uint64_t strtoul10_64( const char* in, const char** out=0, unsigned int* max_inout=0) {
+uint64_t strtoul10_64( const char *in, const char** out=0, unsigned int *max_inout=0) {
     unsigned int cur = 0;
     uint64_t value = 0;
 
@@ -234,7 +234,7 @@ uint64_t strtoul10_64( const char* in, const char** out=0, unsigned int* max_ino
 // signed variant of strtoul10_64
 // ------------------------------------------------------------------------------------
 inline
-int64_t strtol10_64(const char* in, const char** out = 0, unsigned int* max_inout = 0) {
+int64_t strtol10_64(const char *in, const char** out = 0, unsigned int *max_inout = 0) {
     bool inv = (*in == '-');
     if ( inv || *in == '+' ) {
         ++in;
@@ -257,7 +257,7 @@ int64_t strtol10_64(const char* in, const char** out = 0, unsigned int* max_inou
 // ------------------------------------------------------------------------------------
 template<typename Real>
 inline
-const char* fast_atoreal_move(const char* c, Real& out, bool check_comma = true) {
+const char *fast_atoreal_move(const char *c, Real &out, bool check_comma = true) {
     Real f = 0;
 
     bool inv = (*c == '-');
@@ -345,7 +345,7 @@ const char* fast_atoreal_move(const char* c, Real& out, bool check_comma = true)
 // ------------------------------------------------------------------------------------
 // The same but more human.
 inline
-ai_real fast_atof(const char* c) {
+ai_real fast_atof(const char *c) {
     ai_real ret(0.0);
     fast_atoreal_move<ai_real>(c, ret);
 
@@ -353,7 +353,7 @@ ai_real fast_atof(const char* c) {
 }
 
 inline
-ai_real fast_atof( const char* c, const char** cout) {
+ai_real fast_atof( const char *c, const char** cout) {
     ai_real ret(0.0);
     *cout = fast_atoreal_move<ai_real>(c, ret);
 

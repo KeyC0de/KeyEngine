@@ -110,7 +110,7 @@ public:
      */
     virtual bool CanRead(
         const std::string &pFile,
-        IOSystem* pIOHandler,
+        IOSystem *pIOHandler,
         bool checkSig
         ) const = 0;
 
@@ -133,10 +133,10 @@ public:
      * in InternReadFile(), this function will catch it and transform it into
      *  a suitable response to the caller.
      */
-    aiScene* ReadFile(
-        const Importer* pImp,
+    aiScene *ReadFile(
+        const Importer *pImp,
         const std::string &pFile,
-        IOSystem* pIOHandler
+        IOSystem *pIOHandler
         );
 
     // -------------------------------------------------------------------
@@ -155,13 +155,13 @@ public:
      * @param pImp Importer instance
      */
     virtual void SetupProperties(
-        const Importer* pImp
+        const Importer *pImp
         );
 
     // -------------------------------------------------------------------
     /** Called by #Importer::GetImporterInfo to get a description of
      *  some loader features. Importers must provide this information. */
-    virtual const aiImporterDesc* GetInfo() const = 0;
+    virtual const aiImporterDesc *GetInfo() const = 0;
 
     // -------------------------------------------------------------------
     /** Called by #Importer::GetExtensionList for each loaded importer.
@@ -218,8 +218,8 @@ protected:
      * NULL is not a valid parameter. */
     virtual void InternReadFile(
         const std::string &pFile,
-        aiScene* pScene,
-        IOSystem* pIOHandler
+        aiScene *pScene,
+        IOSystem *pIOHandler
         ) = 0;
 
 public: // static utilities
@@ -239,7 +239,7 @@ public: // static utilities
      *  @param searchBytes Number of bytes to be searched for the tokens.
      */
     static bool SearchFileHeaderForToken(
-        IOSystem* pIOSystem,
+        IOSystem *pIOSystem,
         const std::string & file,
         const char** tokens,
         unsigned int numTokens,
@@ -256,9 +256,9 @@ public: // static utilities
      */
     static bool SimpleExtensionCheck (
         const std::string &pFile,
-        const char* ext0,
-        const char* ext1 = NULL,
-        const char* ext2 = NULL);
+        const char *ext0,
+        const char *ext1 = NULL,
+        const char *ext2 = NULL);
 
     // -------------------------------------------------------------------
     /** @brief Extract file extension from a string
@@ -283,9 +283,9 @@ public: // static utilities
      *  tokens of size 2,4.
      */
     static bool CheckMagicToken(
-        IOSystem* pIOHandler,
+        IOSystem *pIOHandler,
         const std::string &pFile,
-        const void* magic,
+        const void *magic,
         unsigned int num,
         unsigned int offset = 0,
         unsigned int size   = 4);
@@ -325,7 +325,7 @@ public: // static utilities
      *   a binary 0.
      *  @param mode Whether it is OK to load empty text files. */
     static void TextFileToBuffer(
-        IOStream* stream,
+        IOStream *stream,
         std::vector<char>& data,
         TextFileMode mode = FORBID_EMPTY);
 
@@ -338,8 +338,8 @@ public: // static utilities
     AI_FORCE_INLINE
     static void CopyVector(
         std::vector<T>& vec,
-        T*& out,
-        unsigned int& outLength)
+        T *&out,
+        unsigned int &outLength)
     {
         outLength = unsigned(vec.size());
         if (outLength) {
@@ -352,7 +352,7 @@ protected:
     /// Error description in case there was one.
     std::string m_ErrorText;
     /// Currently set progress handler.
-    ProgressHandler* m_progress;
+    ProgressHandler *m_progress;
 };
 
 

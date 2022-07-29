@@ -9,7 +9,7 @@ namespace util
 namespace fs = std::filesystem;
 
 
-bool displayFileInfo( const fs::path& targetPath )
+bool displayFileInfo( const fs::path &targetPath )
 {
 	if ( fs::exists( targetPath ) )
 	{
@@ -25,13 +25,13 @@ bool displayFileInfo( const fs::path& targetPath )
 	return false;
 }
 
-void displayDirTree( const fs::path& targetPath,
+void displayDirTree( const fs::path &targetPath,
 	int level )
 {
 	if ( fs::exists( targetPath ) && fs::is_directory( targetPath ) )
 	{
 		auto lead = std::string( level * 3, ' ' );
-		for ( const auto& entry : fs::directory_iterator( targetPath ) )
+		for ( const auto &entry : fs::directory_iterator( targetPath ) )
 		{
 			auto filename = entry.path().filename();
 			if ( fs::is_directory( entry.status() ) )
@@ -61,7 +61,7 @@ void displayDirTree( const fs::path& targetPath,
 	}
 }
 
-size_t getFileSize( const fs::path& pathToCheck )
+size_t getFileSize( const fs::path &pathToCheck )
 {
 	if ( fs::exists( pathToCheck ) &&
 		fs::is_regular_file( pathToCheck ) )
@@ -78,7 +78,7 @@ size_t getFileSize( const fs::path& pathToCheck )
 	return static_cast<size_t>( -1 );
 }
 
-bool displayTextFile( const fs::path& targetPath )
+bool displayTextFile( const fs::path &targetPath )
 {
 	std::ifstream f{targetPath.string(), std::ios::beg};
 	std::string s;
@@ -93,7 +93,7 @@ bool displayTextFile( const fs::path& targetPath )
 	return false;
 }
 
-bool displayBinaryFile( const fs::path& targetPath )
+bool displayBinaryFile( const fs::path &targetPath )
 {
 	std::ifstream f{targetPath.string(), std::ios::binary};
 	std::string s;
@@ -108,7 +108,7 @@ bool displayBinaryFile( const fs::path& targetPath )
 	return false;
 }
 
-void writeFile( const fs::path& path,
+void writeFile( const fs::path &path,
 	const std::string &data )
 {
 	std::ofstream out{path, std::ios::out};
@@ -132,7 +132,7 @@ void deleteFile( const std::string &filename )
 #endif
 		}
 	}
-	catch ( const std::filesystem::filesystem_error& ex )
+	catch ( const std::filesystem::filesystem_error &ex )
 	{
 		std::cout << "filesystem error: "
 			<< ex.what()
@@ -140,14 +140,14 @@ void deleteFile( const std::string &filename )
 	}
 }
 
-void searchFile( const fs::path& directory,
-	const fs::path& filename )
+void searchFile( const fs::path &directory,
+	const fs::path &filename )
 {
 	auto d = fs::directory_iterator( directory );
 
 	auto found = std::find_if( d,
 		end( d ),
-		[&filename]( const auto& dir )
+		[&filename]( const auto &dir )
 		{
 			return dir.path().filename() == filename;
 		} );
@@ -178,7 +178,7 @@ const std::string getFileExtension( const std::string &filename )
 	return path.extension().string();
 }
 
-bool isFileBinary( const char* fname )
+bool isFileBinary( const char *fname )
 {
 	char c;
 	std::ifstream ifs{fname, std::ios::binary};
@@ -194,7 +194,7 @@ bool isFileBinary( const char* fname )
 	return false;
 }
 
-size_t countLinesOfFile( char* fileName )
+size_t countLinesOfFile( char *fileName )
 {
 	FILE *fp = fopen( fileName, "r" );
 	char ch;
@@ -214,7 +214,7 @@ size_t countLinesOfFile( char* fileName )
 	return lines;
 }
 
-size_t countColumnsOfFile( char* fileName )
+size_t countColumnsOfFile( char *fileName )
 {
 	FILE *fp = fopen( fileName, "r" );
 	char ch = ' ';
@@ -232,10 +232,10 @@ size_t countColumnsOfFile( char* fileName )
 }
 
 #if defined _DEBUG && !defined NDEBUG
-bool printFile( const char* fname )
+bool printFile( const char *fname )
 {
 	std::ifstream ifs{fname};
-	KeyConsole& console = KeyConsole::getInstance();
+	KeyConsole &console = KeyConsole::getInstance();
 	if ( !ifs.is_open() )
 	{
 		console.log( "can't open " + std::string{*fname} + "!\n" );
@@ -250,14 +250,14 @@ bool printFile( const char* fname )
 	return true;
 }
 
-void countLetterOccurences( char* filename )
+void countLetterOccurences( char *filename )
 {
 	int c, i, nwhite, nother;
 	int ndigit[10];
 	int nchar[26] = {0};
 	nwhite = nother = 0;
 
-	FILE* fd = fopen( filename, "r" );
+	FILE *fd = fopen( filename, "r" );
 
 	for ( i = 0; i < 10; ++i )
 	{

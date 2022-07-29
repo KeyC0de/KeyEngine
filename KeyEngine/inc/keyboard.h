@@ -61,10 +61,10 @@ private:
 	static void trimBuffer( std::queue<T>& buf ) noexcept;
 public:
 	~Keyboard() noexcept = default;
-	Keyboard( const Keyboard& rhs ) = delete;
-	Keyboard& operator=( const Keyboard& rhs ) = delete;
+	Keyboard( const Keyboard &rhs ) = delete;
+	Keyboard &operator=( const Keyboard &rhs ) = delete;
 	Keyboard( Keyboard&& rhs ) noexcept;
-	Keyboard& operator=( Keyboard&& rhs ) noexcept;
+	Keyboard &operator=( Keyboard&& rhs ) noexcept;
 
 	// key events
 	bool isKeyPressed( unsigned char keycode ) const noexcept;

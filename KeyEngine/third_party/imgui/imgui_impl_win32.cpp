@@ -4,7 +4,7 @@
 // Implemented features:
 //  [X] Platform: Clipboard support (for Win32 this is actually part of core imgui)
 //  [X] Platform: Mouse cursor shape and visibility. Disable with 'io.ConfigFlags |= ImGuiConfigFlags_NoMouseCursorChange'.
-//  [X] Platform: Keyboard arrays indexed using VK_* Virtual Key Codes, e.g. ImGui::IsKeyPressed(VK_SPACE).
+//  [X] Platform: Keyboard arrays indexed using VK_ *Virtual Key Codes, e.g. ImGui::IsKeyPressed(VK_SPACE).
 //  [X] Platform: Gamepad support. Enabled with 'io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad'.
 
 #include "imgui.h"
@@ -13,7 +13,7 @@
 // CHANGELOG
 // (minor and older changes stripped away, please see git history for details)
 //  2019-01-17: Misc: Using GetForegroundWindow()+IsChild() instead of GetActiveWindow() to be compatible with windows created in a different thread or parent.
-//  2019-01-17: Inputs: Added support for mouse buttons 4 and 5 via WM_XBUTTON* messages.
+//  2019-01-17: Inputs: Added support for mouse buttons 4 and 5 via WM_XBUTTON *messages.
 //  2019-01-15: Inputs: Added support for XInput gamepads (if ImGuiConfigFlags_NavEnableGamepad is set by user application).
 //  2018-11-30: Misc: Setting up io.BackendPlatformName so it can be displayed in the About Window.
 //  2018-06-29: Inputs: Added support for the ImGuiMouseCursor_Hand cursor.
@@ -49,7 +49,7 @@ bool    ImGui_ImplWin32_Init( HWND hwnd)
 
     // Setup back-end capabilities flags
     g_hWnd = hwnd;
-    ImGuiIO& io = ImGui::GetIO();
+    ImGuiIO &io = ImGui::GetIO();
     io.BackendFlags |= ImGuiBackendFlags_HasMouseCursors;         // We can honor GetMouseCursor() values (optional)
     io.BackendFlags |= ImGuiBackendFlags_HasSetMousePos;          // We can honor io.WantSetMousePos requests (optional, rarely used)
     io.BackendPlatformName = "imgui_impl_win32";
@@ -88,7 +88,7 @@ void    ImGui_ImplWin32_Shutdown()
 
 static bool ImGui_ImplWin32_UpdateMouseCursor()
 {
-    ImGuiIO& io = ImGui::GetIO();
+    ImGuiIO &io = ImGui::GetIO();
     if (io.ConfigFlags & ImGuiConfigFlags_NoMouseCursorChange)
         return false;
 
@@ -120,7 +120,7 @@ static bool ImGui_ImplWin32_UpdateMouseCursor()
 
 static void ImGui_ImplWin32_UpdateMousePos()
 {
-    ImGuiIO& io = ImGui::GetIO();
+    ImGuiIO &io = ImGui::GetIO();
 
     // Set OS mouse position if requested (rarely used, only when ImGuiConfigFlags_NavEnableSetMousePos is enabled by user)
     if (io.WantSetMousePos)
@@ -141,7 +141,7 @@ static void ImGui_ImplWin32_UpdateMousePos()
 
 void    ImGui_ImplWin32_NewFrame()
 {
-    ImGuiIO& io = ImGui::GetIO();
+    ImGuiIO &io = ImGui::GetIO();
     IM_ASSERT(io.Fonts->IsBuilt() && "Font atlas not built! It is generally built by the renderer back-end. Missing call to renderer _NewFrame() function? e.g. ImGui_ImplOpenGL3_NewFrame().");
 
     // Setup display size (every frame to accommodate for window resizing)
@@ -194,7 +194,7 @@ IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hwnd, unsigned msg, W
     if (ImGui::GetCurrentContext() == NULL)
         return 0;
 
-    ImGuiIO& io = ImGui::GetIO();
+    ImGuiIO &io = ImGui::GetIO();
     switch (msg)
     {
     case WM_LBUTTONDOWN: case WM_LBUTTONDBLCLK:

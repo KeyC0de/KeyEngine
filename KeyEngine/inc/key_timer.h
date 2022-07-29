@@ -40,16 +40,16 @@ public:
 	{
 		size_t dur = getDurationFromStart();
 #if defined _DEBUG && !defined NDEBUG
-		KeyConsole& console = KeyConsole::getInstance();
+		KeyConsole &console = KeyConsole::getInstance();
 		using namespace std::string_literals;
 		console.log( std::to_string( dur ) + "\n"s );
 #endif
 	}
 
-	KeyTimer( const KeyTimer& KeyTimer ) = delete;
-	KeyTimer& operator=( const KeyTimer& KeyTimer ) = delete;
+	KeyTimer( const KeyTimer &KeyTimer ) = delete;
+	KeyTimer &operator=( const KeyTimer &KeyTimer ) = delete;
 	KeyTimer( KeyTimer&& rhs ) = delete;
-	KeyTimer& operator=( KeyTimer&& rhs ) = delete;
+	KeyTimer &operator=( KeyTimer&& rhs ) = delete;
 
 	void start() noexcept
 	{
@@ -79,7 +79,7 @@ public:
 	constexpr size_t getDurationFromStart() noexcept
 	{
 #if defined _DEBUG && !defined NDEBUG
-		KeyConsole& console = KeyConsole::getInstance();
+		KeyConsole &console = KeyConsole::getInstance();
 		using namespace std::string_literals;
 		console.log( "Duration from start (ms): "s );
 #endif
@@ -215,22 +215,22 @@ public:
 		std::this_thread::sleep_for( std::chrono::duration<unsigned short>( t ) );
 	}
 
-	void delayFor( const std::chrono::nanoseconds& t ) const noexcept
+	void delayFor( const std::chrono::nanoseconds &t ) const noexcept
 	{
 		std::this_thread::sleep_for( t );
 	}
 
-	void delayFor( const std::chrono::microseconds& t ) const noexcept
+	void delayFor( const std::chrono::microseconds &t ) const noexcept
 	{
 		std::this_thread::sleep_for( t );
 	}
 
-	void delayFor( const std::chrono::milliseconds& t ) const noexcept
+	void delayFor( const std::chrono::milliseconds &t ) const noexcept
 	{
 		std::this_thread::sleep_for( t );
 	}
 
-	void delayFor( const std::chrono::seconds& t ) const noexcept
+	void delayFor( const std::chrono::seconds &t ) const noexcept
 	{
 		std::this_thread::sleep_for( t );
 	}

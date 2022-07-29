@@ -74,13 +74,13 @@ public:
     // -------------------------------------------------------------------
     /** @brief  Overwrite this for your own output methods
      *
-     *  Log messages *may* consist of multiple lines and you shouldn't
+     *  Log messages *may *consist of multiple lines and you shouldn't
      *  expect a consistent formatting. If you want custom formatting
      *  (e.g. generate HTML), supply a custom instance of Logger to
-     *  #DefaultLogger:set(). Usually you can *expect* that a log message
+     *  #DefaultLogger:set(). Usually you can *expect *that a log message
      *  is exactly one line and terminated with a single \n character.
      *  @param message Message to be written */
-    virtual void write(const char* message) = 0;
+    virtual void write(const char *message) = 0;
 
     // -------------------------------------------------------------------
     /** @brief Creates a default log stream
@@ -89,9 +89,9 @@ public:
      *  @param io For aiDefaultLogStream_FILE: IOSystem to be used to open the output
      *   file. Pass NULL for the default implementation.
      *  @return New LogStream instance.  */
-    static LogStream* createDefaultStream(aiDefaultLogStream stream,
-        const char* name = "AssimpLog.txt",
-        IOSystem* io = NULL);
+    static LogStream *createDefaultStream(aiDefaultLogStream stream,
+        const char *name = "AssimpLog.txt",
+        IOSystem *io = NULL);
 
 }; // !class LogStream
 

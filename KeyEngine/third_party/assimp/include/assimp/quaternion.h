@@ -81,24 +81,24 @@ public:
 
 public:
 
-    bool operator== (const aiQuaterniont& o) const;
-    bool operator!= (const aiQuaterniont& o) const;
+    bool operator== (const aiQuaterniont &o) const;
+    bool operator!= (const aiQuaterniont &o) const;
 
-    bool Equal(const aiQuaterniont& o, TReal epsilon = 1e-6) const;
+    bool Equal(const aiQuaterniont &o, TReal epsilon = 1e-6) const;
 
 public:
 
     /** Normalize the quaternion */
-    aiQuaterniont& Normalize();
+    aiQuaterniont &Normalize();
 
     /** Compute quaternion conjugate */
-    aiQuaterniont& Conjugate ();
+    aiQuaterniont &Conjugate ();
 
     /** Rotate a point by this quaternion */
     aiVector3t<TReal> rotate (const aiVector3t<TReal>& in);
 
     /** Multiply two quaternions */
-    aiQuaterniont operator* (const aiQuaterniont& two) const;
+    aiQuaterniont operator* (const aiQuaterniont &two) const;
 
 public:
 
@@ -108,8 +108,8 @@ public:
      * @param pEnd End rotation, factor == 1.
      * @param pFactor Interpolation factor between 0 and 1. Values outside of this range yield undefined results.
      */
-    static void Interpolate( aiQuaterniont& pOut, const aiQuaterniont& pStart,
-        const aiQuaterniont& pEnd, TReal pFactor);
+    static void Interpolate( aiQuaterniont &pOut, const aiQuaterniont &pStart,
+        const aiQuaterniont &pEnd, TReal pFactor);
 
 public:
 

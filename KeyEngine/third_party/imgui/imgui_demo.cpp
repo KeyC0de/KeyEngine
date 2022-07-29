@@ -110,22 +110,22 @@ Index of this file:
 #if !defined(IMGUI_DISABLE_DEMO_WINDOWS)
 
 // Forward Declarations
-static void ShowExampleAppDocuments(bool* p_open);
+static void ShowExampleAppDocuments(bool *p_open);
 static void ShowExampleAppMainMenuBar();
-static void ShowExampleAppConsole(bool* p_open);
-static void ShowExampleAppLog(bool* p_open);
-static void ShowExampleAppLayout(bool* p_open);
-static void ShowExampleAppPropertyEditor(bool* p_open);
-static void ShowExampleAppLongText(bool* p_open);
-static void ShowExampleAppAutoResize(bool* p_open);
-static void ShowExampleAppConstrainedResize(bool* p_open);
-static void ShowExampleAppSimpleOverlay(bool* p_open);
-static void ShowExampleAppWindowTitles(bool* p_open);
-static void ShowExampleAppCustomRendering(bool* p_open);
+static void ShowExampleAppConsole(bool *p_open);
+static void ShowExampleAppLog(bool *p_open);
+static void ShowExampleAppLayout(bool *p_open);
+static void ShowExampleAppPropertyEditor(bool *p_open);
+static void ShowExampleAppLongText(bool *p_open);
+static void ShowExampleAppAutoResize(bool *p_open);
+static void ShowExampleAppConstrainedResize(bool *p_open);
+static void ShowExampleAppSimpleOverlay(bool *p_open);
+static void ShowExampleAppWindowTitles(bool *p_open);
+static void ShowExampleAppCustomRendering(bool *p_open);
 static void ShowExampleMenuFile();
 
 // Helper to display a little (?) mark which shows a tooltip when hovered.
-static void ShowHelpMarker(const char* desc)
+static void ShowHelpMarker(const char *desc)
 {
     ImGui::TextDisabled("(?)");
     if (ImGui::IsItemHovered())
@@ -174,7 +174,7 @@ static void ShowDemoWindowMisc();
 
 // Demonstrate most Dear ImGui features (this is big function!)
 // You may execute this function to experiment with the UI and understand what it does. You may then search for keywords in the code when you are interested by a specific feature.
-void ImGui::ShowDemoWindow(bool* p_open)
+void ImGui::ShowDemoWindow(bool *p_open)
 {
     // Examples Apps (accessible from the "Examples" menu)
     static bool show_app_documents = false;
@@ -234,7 +234,7 @@ void ImGui::ShowDemoWindow(bool* p_open)
     if (no_nav)             window_flags |= ImGuiWindowFlags_NoNav;
     if (no_background)      window_flags |= ImGuiWindowFlags_NoBackground;
     if (no_bring_to_front)  window_flags |= ImGuiWindowFlags_NoBringToFrontOnFocus;
-    if (no_close)           p_open = NULL; // Don't pass our bool* to Begin
+    if (no_close)           p_open = NULL; // Don't pass our bool *to Begin
 
     // We specify a default position/size in case there's no data in the .ini file. Typically this isn't required! We only do it to make the Demo applications a little more welcoming.
     ImGui::SetNextWindowPos(ImVec2(650, 20), ImGuiCond_FirstUseEver);
@@ -304,7 +304,7 @@ void ImGui::ShowDemoWindow(bool* p_open)
 
     if (ImGui::CollapsingHeader("Configuration"))
     {
-        ImGuiIO& io = ImGui::GetIO();
+        ImGuiIO &io = ImGui::GetIO();
 
         if (ImGui::TreeNode("Configuration##2"))
         {
@@ -472,7 +472,7 @@ static void ShowDemoWindowWidgets()
         {
             // Using the _simplified_ one-liner Combo() api here
             // See "Combo" section for examples of how to use the more complete BeginCombo()/EndCombo() api.
-            const char* items[] = { "AAAA", "BBBB", "CCCC", "DDDD", "EEEE", "FFFF", "GGGG", "HHHH", "IIII", "JJJJ", "KKKK", "LLLLLLL", "MMMM", "OOOOOOO" };
+            const char *items[] = { "AAAA", "BBBB", "CCCC", "DDDD", "EEEE", "FFFF", "GGGG", "HHHH", "IIII", "JJJJ", "KKKK", "LLLLLLL", "MMMM", "OOOOOOO" };
             static int item_current = 0;
             ImGui::Combo("combo", &item_current, items, IM_ARRAYSIZE(items));
             ImGui::SameLine(); ShowHelpMarker("Refer to the \"Combo\" section below for an explanation of the full BeginCombo/EndCombo API, and demonstration of various flags.\n");
@@ -536,7 +536,7 @@ static void ShowDemoWindowWidgets()
 
         {
             // List box
-            const char* listbox_items[] = { "Apple", "Banana", "Cherry", "Kiwi", "Mango", "Orange", "Pineapple", "Strawberry", "Watermelon" };
+            const char *listbox_items[] = { "Apple", "Banana", "Cherry", "Kiwi", "Mango", "Orange", "Pineapple", "Strawberry", "Watermelon" };
             static int listbox_item_current = 1;
             ImGui::ListBox("listbox\n(single select)", &listbox_item_current, listbox_items, IM_ARRAYSIZE(listbox_items), 4);
 
@@ -697,7 +697,7 @@ static void ShowDemoWindowWidgets()
             // (Needs a suitable font, try Noto, or Arial Unicode, or M+ fonts. popMouseEvent misc/fonts/README.txt for details.)
             // - From C++11 you can use the u8"my text" syntax to encode literal strings as UTF-8
             // - For earlier compiler, you may be able to encode your sources as UTF-8 (e.g. Visual Studio save your file as 'UTF-8 without signature')
-            // - FOR THIS DEMO FILE ONLY, BECAUSE WE WANT TO SUPPORT OLD COMPILERS, WE ARE *NOT* INCLUDING RAW UTF-8 CHARACTERS IN THIS SOURCE FILE.
+            // - FOR THIS DEMO FILE ONLY, BECAUSE WE WANT TO SUPPORT OLD COMPILERS, WE ARE *NOT *INCLUDING RAW UTF-8 CHARACTERS IN THIS SOURCE FILE.
             //   Instead we are encoding a few strings with hexadecimal constants. Don't do this in your application!
             //   Please use u8"text in any language" in your application!
             // Note that characters values are preserved even by InputText() if the font cannot be displayed, so you can safely copy & paste garbled characters into another application.
@@ -714,14 +714,14 @@ static void ShowDemoWindowWidgets()
 
     if (ImGui::TreeNode("Images"))
     {
-        ImGuiIO& io = ImGui::GetIO();
+        ImGuiIO &io = ImGui::GetIO();
         ImGui::TextWrapped("Below we are displaying the font texture (which is the only texture we have access to in this demo). Use the 'ImTextureID' type as storage to pass pointers or identifier to your own texture data. Hover the texture for a zoomed view!");
 
         // Here we are grabbing the font texture because that's the only one we have access to inside the demo code.
         // Remember that ImTextureID is just storage for whatever you want it to be, it is essentially a value that will be passed to the render function inside the ImDrawCmd structure.
         // If you use one of the default imgui_impl_XXXX.cpp renderer, they all have comments at the top of their file to specify what they expect to be stored in ImTextureID.
         // (for example, the imgui_impl_dx11.cpp renderer expect a 'ID3D11ShaderResourceView*' pointer. The imgui_impl_glfw_gl3.cpp renderer expect a GLuint OpenGL texture identifier etc.)
-        // If you decided that ImTextureID = MyEngineTexture*, then you can pass your MyEngineTexture* pointers to ImGui::Image(), and gather width/height through your own functions, etc.
+        // If you decided that ImTextureID = MyEngineTexture*, then you can pass your MyEngineTexture *pointers to ImGui::Image(), and gather width/height through your own functions, etc.
         // Using ShowMetricsWindow() as a "debugger" to inspect the draw data that are being passed to your render will help you debug issues if you are confused about this.
         // Consider using the lower-level ImDrawList::AddImage() API, via ImGui::GetWindowDrawList()->AddImage().
         ImTextureID my_tex_id = io.Fonts->TexID;
@@ -773,8 +773,8 @@ static void ShowDemoWindowWidgets()
 
         // General BeginCombo() API, you have full control over your selection data and display m_topo.
         // (your selection data could be an index, a pointer to the object, an id for the object, a flag stored in the object itself, etc.)
-        const char* items[] = { "AAAA", "BBBB", "CCCC", "DDDD", "EEEE", "FFFF", "GGGG", "HHHH", "IIII", "JJJJ", "KKKK", "LLLLLLL", "MMMM", "OOOOOOO" };
-        static const char* item_current = items[0];            // Here our selection is a single pointer stored outside the object.
+        const char *items[] = { "AAAA", "BBBB", "CCCC", "DDDD", "EEEE", "FFFF", "GGGG", "HHHH", "IIII", "JJJJ", "KKKK", "LLLLLLL", "MMMM", "OOOOOOO" };
+        static const char *item_current = items[0];            // Here our selection is a single pointer stored outside the object.
         if (ImGui::BeginCombo("combo 1", item_current, flags)) // The second parameter is the label previewed before opening the combo.
         {
             for (int n = 0; n < IM_ARRAYSIZE(items); n++)
@@ -797,7 +797,7 @@ static void ShowDemoWindowWidgets()
         ImGui::Combo("combo 3 (array)", &item_current_3, items, IM_ARRAYSIZE(items));
 
         // Simplified one-liner Combo() using an accessor function
-        struct FuncHolder { static bool ItemGetter(void* data, int idx, const char** out_str) { *out_str = ((const char**)data)[idx]; return true; } };
+        struct FuncHolder { static bool ItemGetter(void *data, int idx, const char** out_str) { *out_str = ((const char**)data)[idx]; return true; } };
         static int item_current_4 = 0;
         ImGui::Combo("combo 4 (function)", &item_current_4, &FuncHolder::ItemGetter, items, IM_ARRAYSIZE(items));
 
@@ -808,7 +808,7 @@ static void ShowDemoWindowWidgets()
     {
         // Selectable() has 2 overloads:
         // - The one taking "bool selected" as a read-only selection information. When Selectable() has been clicked is returns true and you can alter selection state accordingly.
-        // - The one taking "bool* p_selected" as a read-write selection information (convenient in some cases)
+        // - The one taking "bool *p_selected" as a read-write selection information (convenient in some cases)
         // The earlier is more flexible, as in real application your selection may be stored in a different manner (in flags within objects, as an external list, etc).
         if (ImGui::TreeNode("Basic"))
         {
@@ -853,7 +853,7 @@ static void ShowDemoWindowWidgets()
         }
         if (ImGui::TreeNode("Rendering more text into the same line"))
         {
-            // Using the Selectable() override that takes "bool* p_selected" parameter and toggle your booleans automatically.
+            // Using the Selectable() override that takes "bool *p_selected" parameter and toggle your booleans automatically.
             static bool selected[3] = { false, false, false };
             ImGui::Selectable("main.c",    &selected[0]); ImGui::SameLine(300); ImGui::Text(" 2, 345 bytes");
             ImGui::Selectable("Hello.cpp", &selected[1]); ImGui::SameLine(300); ImGui::Text("12, 345 bytes");
@@ -923,7 +923,7 @@ static void ShowDemoWindowWidgets()
         static char buf3[64] = ""; ImGui::InputText("hexadecimal", buf3, 64, ImGuiInputTextFlags_CharsHexadecimal | ImGuiInputTextFlags_CharsUppercase);
         static char buf4[64] = ""; ImGui::InputText("uppercase", buf4, 64, ImGuiInputTextFlags_CharsUppercase);
         static char buf5[64] = ""; ImGui::InputText("no blank", buf5, 64, ImGuiInputTextFlags_CharsNoBlank);
-        struct TextFilters { static int FilterImGuiLetters(ImGuiInputTextCallbackData* data) { if (data->EventChar < 256 && strchr("imgui", (char)data->EventChar)) return 0; return 1; } };
+        struct TextFilters { static int FilterImGuiLetters(ImGuiInputTextCallbackData *data) { if (data->EventChar < 256 && strchr("imgui", (char)data->EventChar)) return 0; return 1; } };
         static char buf6[64] = ""; ImGui::InputText("\"imgui\" letters", buf6, 64, ImGuiInputTextFlags_CallbackCharFilter, TextFilters::FilterImGuiLetters);
 
         ImGui::Text("Password input");
@@ -1104,9 +1104,9 @@ static void ShowDemoWindowWidgets()
                 // (Note that ColorButton is already a drag source by default, unless using ImGuiColorEditFlags_NoDragDrop)
                 if (ImGui::BeginDragDropTarget())
                 {
-                    if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload(IMGUI_PAYLOAD_TYPE_COLOR_3F))
+                    if (const ImGuiPayload *payload = ImGui::AcceptDragDropPayload(IMGUI_PAYLOAD_TYPE_COLOR_3F))
                         memcpy((float*)&saved_palette[n], payload->Data, sizeof(float) * 3);
-                    if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload(IMGUI_PAYLOAD_TYPE_COLOR_4F))
+                    if (const ImGuiPayload *payload = ImGui::AcceptDragDropPayload(IMGUI_PAYLOAD_TYPE_COLOR_4F))
                         memcpy((float*)&saved_palette[n], payload->Data, sizeof(float) * 4);
                     ImGui::EndDragDropTarget();
                 }
@@ -1185,7 +1185,7 @@ static void ShowDemoWindowWidgets()
         // In practice, if you frequently use a given m_topo that is not covered by the normal API entry points, you can wrap it
         // yourself inside a 1 line function which can take typed argument as value instead of void*, and then pass their address
         // to the generic function. For example:
-        //   bool MySliderU64(const char *label, u64* value, u64 min = 0, u64 max = 0, const char* format = "%lld")
+        //   bool MySliderU64(const char *label, u64 *value, u64 min = 0, u64 max = 0, const char *format = "%lld")
         //   {
         //      return SliderScalar(label, ImGuiDataType_U64, value, &min, &max, format);
         //   }
@@ -1403,7 +1403,7 @@ static void ShowDemoWindowWidgets()
             if (ImGui::RadioButton("Copy", mode == Mode_Copy)) { mode = Mode_Copy; } ImGui::SameLine();
             if (ImGui::RadioButton("Move", mode == Mode_Move)) { mode = Mode_Move; } ImGui::SameLine();
             if (ImGui::RadioButton("Swap", mode == Mode_Swap)) { mode = Mode_Swap; }
-            static const char* names[9] = { "Bobby", "Beatrice", "Betty", "Brianna", "Barry", "Bernard", "Bibi", "Blaine", "Bryn" };
+            static const char *names[9] = { "Bobby", "Beatrice", "Betty", "Brianna", "Barry", "Bernard", "Bibi", "Blaine", "Bryn" };
             for (int n = 0; n < IM_ARRAYSIZE(names); n++)
             {
                 ImGui::PushID(n);
@@ -1422,7 +1422,7 @@ static void ShowDemoWindowWidgets()
                 }
                 if (ImGui::BeginDragDropTarget())
                 {
-                    if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("DND_DEMO_CELL"))
+                    if (const ImGuiPayload *payload = ImGui::AcceptDragDropPayload("DND_DEMO_CELL"))
                     {
                         IM_ASSERT(payload->DataSize == sizeof(int));
                         int payload_n = *(const int*)payload->Data;
@@ -1437,7 +1437,7 @@ static void ShowDemoWindowWidgets()
                         }
                         if (mode == Mode_Swap)
                         {
-                            const char* tmp = names[n];
+                            const char *tmp = names[n];
                             names[n] = names[payload_n];
                             names[payload_n] = tmp;
                         }
@@ -1475,7 +1475,7 @@ static void ShowDemoWindowWidgets()
         if (item_type == 3) { ret = ImGui::SliderFloat("ITEM: SliderFloat", &col4f[0], 0.0f, 1.0f); }   // Testing basic item
         if (item_type == 4) { ret = ImGui::InputText("ITEM: InputText", &str[0], IM_ARRAYSIZE(str)); }  // Testing input text (which handles tabbing)
         if (item_type == 5) { ret = ImGui::ColorEdit4("ITEM: ColorEdit4", col4f); }                     // Testing multi-component items (IsItemXXX flags are reported merged)
-        if (item_type == 6) { const char* items[] = { "Apple", "Banana", "Cherry", "Kiwi" }; static int current = 1; ret = ImGui::ListBox("ITEM: ListBox", &current, items, IM_ARRAYSIZE(items), IM_ARRAYSIZE(items)); }
+        if (item_type == 6) { const char *items[] = { "Apple", "Banana", "Cherry", "Kiwi" }; static int current = 1; ret = ImGui::ListBox("ITEM: ListBox", &current, items, IM_ARRAYSIZE(items), IM_ARRAYSIZE(items)); }
         ImGui::BulletText(
             "Return value = %d\n"
             "IsItemFocused() = %d\n"
@@ -1740,7 +1740,7 @@ static void ShowDemoWindowLayout()
         // Various
         static float f0 = 1.0f, f1 = 2.0f, f2 = 3.0f;
         ImGui::PushItemWidth(80);
-        const char* items[] = { "AAAA", "BBBB", "CCCC", "DDDD" };
+        const char *items[] = { "AAAA", "BBBB", "CCCC", "DDDD" };
         static int item = -1;
         ImGui::Combo("Combo", &item, items, IM_ARRAYSIZE(items)); ImGui::SameLine();
         ImGui::SliderFloat("X", &f0, 0.0f, 5.0f); ImGui::SameLine();
@@ -1769,7 +1769,7 @@ static void ShowDemoWindowLayout()
 
         // Manually wrapping (we should eventually provide this as an automatic layout feature, but for now you can do it manually)
         ImGui::Text("Manually wrapping:");
-        ImGuiStyle& style = ImGui::GetStyle();
+        ImGuiStyle &style = ImGui::GetStyle();
         int buttons_count = 20;
         float window_visible_x2 = ImGui::GetWindowPos().x + ImGui::GetWindowContentRegionMax().x;
         for (int n = 0; n < buttons_count; n++)
@@ -1830,7 +1830,7 @@ static void ShowDemoWindowLayout()
                 tab_bar_flags &= ~(ImGuiTabBarFlags_FittingPolicyMask_ ^ ImGuiTabBarFlags_FittingPolicyScroll);
 
             // Tab Bar
-            const char* names[4] = { "Artichoke", "Beetroot", "Celery", "Daikon" };
+            const char *names[4] = { "Artichoke", "Beetroot", "Celery", "Daikon" };
             static bool opened[4] = { true, true, true, true }; // Persistent user state
             for (int n = 0; n < IM_ARRAYSIZE(opened); n++)
             {
@@ -1838,7 +1838,7 @@ static void ShowDemoWindowLayout()
                 ImGui::Checkbox(names[n], &opened[n]);
             }
 
-            // Passing a bool* to BeginTabItem() is similar to passing one to Begin(): the underlying bool will be set to false when the tab is closed.
+            // Passing a bool *to BeginTabItem() is similar to passing one to Begin(): the underlying bool will be set to false when the tab is closed.
             if (ImGui::BeginTabBar("MyTabBar", tab_bar_flags))
             {
                 for (int n = 0; n < IM_ARRAYSIZE(opened); n++)
@@ -2017,7 +2017,7 @@ static void ShowDemoWindowLayout()
                 ImGui::PushID(n + line * 1000);
                 char num_buf[16];
                 sprintf(num_buf, "%d", n);
-                const char* label = (!(n%15)) ? "FizzBuzz" : (!(n%3)) ? "Fizz" : (!(n%5)) ? "Buzz" : num_buf;
+                const char *label = (!(n%15)) ? "FizzBuzz" : (!(n%3)) ? "Fizz" : (!(n%5)) ? "Buzz" : num_buf;
                 float hue = n*0.05f;
                 ImGui::PushStyleColor(ImGuiCol_Button, (ImVec4)ImColor::HSV(hue, 0.6f, 0.6f));
                 ImGui::PushStyleColor(ImGuiCol_ButtonHovered, (ImVec4)ImColor::HSV(hue, 0.7f, 0.7f));
@@ -2086,7 +2086,7 @@ static void ShowDemoWindowPopups()
         ImGui::TextWrapped("When a popup is active, it inhibits interacting with windows that are behind the popup. Clicking outside the popup closes it.");
 
         static int selected_fish = -1;
-        const char* names[] = { "Bream", "Haddock", "Mackerel", "Pollock", "Tilefish" };
+        const char *names[] = { "Bream", "Haddock", "Mackerel", "Pollock", "Tilefish" };
         static bool toggles[] = { true, false, false, false, false };
 
         // Simple selection popup
@@ -2245,7 +2245,7 @@ static void ShowDemoWindowPopups()
             if (ImGui::Button("Add another modal.."))
                 ImGui::OpenPopup("Stacked 2");
 
-            // Also demonstrate passing a bool* to BeginPopupModal(), this will create a regular close button which will close the popup.
+            // Also demonstrate passing a bool *to BeginPopupModal(), this will create a regular close button which will close the popup.
             // Note that the visibility state of popups is owned by imgui, so the input value of the bool actually doesn't matter here.
             bool dummy_open = true;
             if (ImGui::BeginPopupModal("Stacked 2", &dummy_open))
@@ -2316,8 +2316,8 @@ static void ShowDemoWindowColumns()
         ImGui::Text("Path"); ImGui::NextColumn();
         ImGui::Text("Hovered"); ImGui::NextColumn();
         ImGui::Separator();
-        const char* names[3] = { "One", "Two", "Three" };
-        const char* paths[3] = { "/path/one", "/path/two", "/path/three" };
+        const char *names[3] = { "One", "Two", "Three" };
+        const char *paths[3] = { "/path/one", "/path/two", "/path/three" };
         static int selected = -1;
         for (int i = 0; i < 3; i++)
         {
@@ -2478,7 +2478,7 @@ static void ShowDemoWindowMisc()
                     "  \"xxx, yyy\"  display lines containing \"xxx\" or \"yyy\"\n"
                     "  \"-xxx\"     hide lines containing \"xxx\"");
         filter.Draw();
-        const char* lines[] = { "aaa1.c", "bbb1.c", "ccc1.c", "aaa2.cpp", "bbb2.cpp", "ccc2.cpp", "abc.h", "hello, world" };
+        const char *lines[] = { "aaa1.c", "bbb1.c", "ccc1.c", "aaa2.cpp", "bbb2.cpp", "ccc2.cpp", "abc.h", "hello, world" };
         for (int i = 0; i < IM_ARRAYSIZE(lines); i++)
             if (filter.PassFilter(lines[i]))
                 ImGui::BulletText("%s", lines[i]);
@@ -2486,7 +2486,7 @@ static void ShowDemoWindowMisc()
 
     if (ImGui::CollapsingHeader("Inputs, Navigation & Focus"))
     {
-        ImGuiIO& io = ImGui::GetIO();
+        ImGuiIO &io = ImGui::GetIO();
 
         ImGui::Text("WantCaptureMouse: %d", io.WantCaptureMouse);
         ImGui::Text("WantCaptureKeyboard: %d", io.WantCaptureKeyboard);
@@ -2592,7 +2592,7 @@ static void ShowDemoWindowMisc()
             if (ImGui::IsItemActive())
             {
                 // Draw a line between the button and the mouse cursor
-                ImDrawList* draw_list = ImGui::GetWindowDrawList();
+                ImDrawList *draw_list = ImGui::GetWindowDrawList();
                 draw_list->PushClipRectFullScreen();
                 draw_list->AddLine(io.MouseClickedPos[0], io.MousePos, ImGui::GetColorU32(ImGuiCol_Button), 4.0f);
                 draw_list->PopClipRect();
@@ -2609,7 +2609,7 @@ static void ShowDemoWindowMisc()
 
         if (ImGui::TreeNode("Mouse cursors"))
         {
-            const char* mouse_cursors_names[] = { "Arrow", "TextInput", "Move", "ResizeNS", "ResizeEW", "ResizeNESW", "ResizeNWSE", "Hand" };
+            const char *mouse_cursors_names[] = { "Arrow", "TextInput", "Move", "ResizeNS", "ResizeEW", "ResizeNESW", "ResizeNWSE", "Hand" };
             IM_ASSERT(IM_ARRAYSIZE(mouse_cursors_names) == ImGuiMouseCursor_COUNT);
 
             ImGui::Text("Current mouse cursor = %d: %s", ImGui::GetMouseCursor(), mouse_cursors_names[ImGui::GetMouseCursor()]);
@@ -2633,7 +2633,7 @@ static void ShowDemoWindowMisc()
 // Access from ImGui Demo -> Help -> About
 //-----------------------------------------------------------------------------
 
-void ImGui::ShowAboutWindow(bool* p_open)
+void ImGui::ShowAboutWindow(bool *p_open)
 {
     if (!ImGui::Begin("About Dear ImGui", p_open, ImGuiWindowFlags_AlwaysAutoResize))
     {
@@ -2649,8 +2649,8 @@ void ImGui::ShowAboutWindow(bool* p_open)
     ImGui::Checkbox("Config/Build Information", &show_config_info);
     if (show_config_info)
     {
-        ImGuiIO& io = ImGui::GetIO();
-        ImGuiStyle& style = ImGui::GetStyle();
+        ImGuiIO &io = ImGui::GetIO();
+        ImGuiStyle &style = ImGui::GetStyle();
 
         bool copy_to_clipboard = ImGui::Button("Copy to clipboard");
         ImGui::BeginChildFrame(ImGui::GetID("cfginfos"), ImVec2(0, ImGui::GetTextLineHeightWithSpacing() * 18), ImGuiWindowFlags_NoMove);
@@ -2757,7 +2757,7 @@ void ImGui::ShowAboutWindow(bool* p_open)
 
 // Demo helper function to select among default colors. See ShowStyleEditor() for more advanced options.
 // Here we use the simplified Combo() api that packs items into a single literal string. Useful for quick combo boxes where the choices are known locally.
-bool ImGui::ShowStyleSelector(const char* label)
+bool ImGui::ShowStyleSelector(const char *label)
 {
     static int style_idx = -1;
     if (ImGui::Combo(label, &style_idx, "Classic\0Dark\0Light\0"))
@@ -2775,15 +2775,15 @@ bool ImGui::ShowStyleSelector(const char* label)
 
 // Demo helper function to select among loaded fonts.
 // Here we use the regular BeginCombo()/EndCombo() api which is more the more flexible one.
-void ImGui::ShowFontSelector(const char* label)
+void ImGui::ShowFontSelector(const char *label)
 {
-    ImGuiIO& io = ImGui::GetIO();
-    ImFont* font_current = ImGui::GetFont();
+    ImGuiIO &io = ImGui::GetIO();
+    ImFont *font_current = ImGui::GetFont();
     if (ImGui::BeginCombo(label, font_current->GetDebugName()))
     {
         for (int n = 0; n < io.Fonts->Fonts.Size; n++)
         {
-            ImFont* font = io.Fonts->Fonts[n];
+            ImFont *font = io.Fonts->Fonts[n];
             ImGui::PushID((void*)font);
             if (ImGui::Selectable(font->GetDebugName(), font == font_current))
                 io.FontDefault = font;
@@ -2799,10 +2799,10 @@ void ImGui::ShowFontSelector(const char* label)
         "- If you need to add/remove fonts at runtime (e.g. for DPI change), do it before calling NewFrame().");
 }
 
-void ImGui::ShowStyleEditor(ImGuiStyle* ref)
+void ImGui::ShowStyleEditor(ImGuiStyle *ref)
 {
     // You can pass in a reference ImGuiStyle structure to compare to, revert to and save to (else it compares to an internally stored reference)
-    ImGuiStyle& style = ImGui::GetStyle();
+    ImGuiStyle &style = ImGui::GetStyle();
     static ImGuiStyle ref_saved_style;
 
     // Default to using internal storage as reference
@@ -2885,11 +2885,11 @@ void ImGui::ShowStyleEditor(ImGuiStyle* ref)
                     ImGui::LogToClipboard();
                 else
                     ImGui::LogToTTY();
-                ImGui::LogText("ImVec4* colors = ImGui::GetStyle().Colors;" IM_NEWLINE);
+                ImGui::LogText("ImVec4 *colors = ImGui::GetStyle().Colors;" IM_NEWLINE);
                 for (int i = 0; i < ImGuiCol_COUNT; i++)
                 {
-                    const ImVec4& col = style.Colors[i];
-                    const char* name = ImGui::GetStyleColorName(i);
+                    const ImVec4 &col = style.Colors[i];
+                    const char *name = ImGui::GetStyleColorName(i);
                     if (!output_only_modified || memcmp(&col, &ref->Colors[i], sizeof(ImVec4)) != 0)
                         ImGui::LogText("colors[ImGuiCol_%s]%*s= ImVec4(%.2ff, %.2ff, %.2ff, %.2ff);" IM_NEWLINE, name, 23 - (int)strlen(name), "", col.x, col.y, col.z, col.w);
                 }
@@ -2911,7 +2911,7 @@ void ImGui::ShowStyleEditor(ImGuiStyle* ref)
             ImGui::PushItemWidth(-160);
             for (int i = 0; i < ImGuiCol_COUNT; i++)
             {
-                const char* name = ImGui::GetStyleColorName(i);
+                const char *name = ImGui::GetStyleColorName(i);
                 if (!filter.PassFilter(name))
                     continue;
                 ImGui::PushID(i);
@@ -2935,13 +2935,13 @@ void ImGui::ShowStyleEditor(ImGuiStyle* ref)
 
         if (ImGui::BeginTabItem("Fonts"))
         {
-            ImGuiIO& io = ImGui::GetIO();
-            ImFontAtlas* atlas = io.Fonts;
+            ImGuiIO &io = ImGui::GetIO();
+            ImFontAtlas *atlas = io.Fonts;
             ShowHelpMarker("Read FAQ and misc/fonts/README.txt for details on font loading.");
             ImGui::PushItemWidth(120);
             for (int i = 0; i < atlas->Fonts.Size; i++)
             {
-                ImFont* font = atlas->Fonts[i];
+                ImFont *font = atlas->Fonts[i];
                 ImGui::PushID(font);
                 bool font_details_opened = ImGui::TreeNode(font, "Font %d: \"%s\"\n%.2f px, %d glyphs, %d file(s)", i, font->ConfigData ? font->ConfigData[0].Name : "", font->FontSize, font->Glyphs.Size, font->ConfigDataCount);
                 ImGui::SameLine(); if (ImGui::SmallButton("set as default")) { io.FontDefault = font; }
@@ -2958,7 +2958,7 @@ void ImGui::ShowStyleEditor(ImGuiStyle* ref)
                     const float surface_sqrt = sqrtf((float)font->MetricsTotalSurface);
                     ImGui::Text("Texture surface: %d pixels (approx) ~ %dx%d", font->MetricsTotalSurface, (int)surface_sqrt, (int)surface_sqrt);
                     for (int config_i = 0; config_i < font->ConfigDataCount; config_i++)
-                        if (const ImFontConfig* cfg = &font->ConfigData[config_i])
+                        if (const ImFontConfig *cfg = &font->ConfigData[config_i])
                             ImGui::BulletText("Input %d: \'%s\', Oversample: (%d,%d), PixelSnapH: %d", config_i, cfg->Name, cfg->OversampleH, cfg->OversampleV, cfg->PixelSnapH);
                     if (ImGui::TreeNode("Glyphs", "Glyphs (%d)", font->Glyphs.Size))
                     {
@@ -2973,12 +2973,12 @@ void ImGui::ShowStyleEditor(ImGuiStyle* ref)
                                 float cell_size = font->FontSize * 1;
                                 float cell_spacing = style.ItemSpacing.y;
                                 ImVec2 base_pos = ImGui::GetCursorScreenPos();
-                                ImDrawList* draw_list = ImGui::GetWindowDrawList();
+                                ImDrawList *draw_list = ImGui::GetWindowDrawList();
                                 for (int n = 0; n < 256; n++)
                                 {
                                     ImVec2 cell_p1(base_pos.x + (n % 16) * (cell_size + cell_spacing), base_pos.y + (n / 16) * (cell_size + cell_spacing));
                                     ImVec2 cell_p2(cell_p1.x + cell_size, cell_p1.y + cell_size);
-                                    const ImFontGlyph* glyph = font->FindGlyphNoFallback((ImWchar)(base + n));
+                                    const ImFontGlyph *glyph = font->FindGlyphNoFallback((ImWchar)(base + n));
                                     draw_list->AddRect(cell_p1, cell_p2, glyph ? IM_COL32(255, 255, 255, 100) : IM_COL32(255, 255, 255, 50));
                                     if (glyph)
                                         font->RenderChar(draw_list, cell_size, cell_p1, ImGui::GetColorU32(ImGuiCol_Text), (ImWchar)(base + n)); // We use ImFont::RenderChar as a shortcut because we don't have UTF-8 conversion functions available to generate a string.
@@ -3113,7 +3113,7 @@ static void ShowExampleMenuFile()
         float sz = ImGui::GetTextLineHeight();
         for (int i = 0; i < ImGuiCol_COUNT; i++)
         {
-            const char* name = ImGui::GetStyleColorName((ImGuiCol)i);
+            const char *name = ImGui::GetStyleColorName((ImGuiCol)i);
             ImVec2 p = ImGui::GetCursorScreenPos();
             ImGui::GetWindowDrawList()->AddRectFilled(p, ImVec2(p.x+sz, p.y+sz), ImGui::GetColorU32((ImGuiCol)i));
             ImGui::Dummy(ImVec2(sz, sz));
@@ -3168,10 +3168,10 @@ struct ExampleAppConsole
     }
 
     // Portable helpers
-    static int   Stricmp(const char* str1, const char* str2)         { int d; while ((d = toupper(*str2) - toupper(*str1)) == 0 && *str1) { str1++; str2++; } return d; }
-    static int   Strnicmp(const char* str1, const char* str2, int n) { int d = 0; while (n > 0 && (d = toupper(*str2) - toupper(*str1)) == 0 && *str1) { str1++; str2++; n--; } return d; }
-    static char* Strdup(const char *str)                             { size_t len = strlen(str) + 1; void* buf = malloc(len); IM_ASSERT(buf); return (char*)memcpy(buf, (const void*)str, len); }
-    static void  Strtrim(char* str)                                  { char* str_end = str + strlen(str); while (str_end > str && str_end[-1] == ' ') str_end--; *str_end = 0; }
+    static int   Stricmp(const char *str1, const char *str2)         { int d; while ((d = toupper(*str2) - toupper(*str1)) == 0 && *str1) { str1++; str2++; } return d; }
+    static int   Strnicmp(const char *str1, const char *str2, int n) { int d = 0; while (n > 0 && (d = toupper(*str2) - toupper(*str1)) == 0 && *str1) { str1++; str2++; n--; } return d; }
+    static char *Strdup(const char *str)                             { size_t len = strlen(str) + 1; void *buf = malloc(len); IM_ASSERT(buf); return (char*)memcpy(buf, (const void*)str, len); }
+    static void  Strtrim(char *str)                                  { char *str_end = str + strlen(str); while (str_end > str && str_end[-1] == ' ') str_end--; *str_end = 0; }
 
     void    ClearLog()
     {
@@ -3181,7 +3181,7 @@ struct ExampleAppConsole
         ScrollToBottom = true;
     }
 
-    void    AddLog(const char* fmt, ...) IM_FMTARGS(2)
+    void    AddLog(const char *fmt, ...) IM_FMTARGS(2)
     {
         // FIXME-OPT
         char buf[1024];
@@ -3195,7 +3195,7 @@ struct ExampleAppConsole
             ScrollToBottom = true;
     }
 
-    void    Draw(const char* title, bool* p_open)
+    void    Draw(const char *title, bool *p_open)
     {
         ImGui::SetNextWindowSize(ImVec2(520, 600), ImGuiCond_FirstUseEver);
         if (!ImGui::Begin(title, p_open))
@@ -3215,8 +3215,6 @@ struct ExampleAppConsole
 
         ImGui::TextWrapped("This example implements a console with basic coloring, completion and history. A more elaborate implementation may want to store entries along with extra data such as timestamp, emitter, etc.");
         ImGui::TextWrapped("Enter 'HELP' for help, press TAB to use text completion.");
-
-        // TODO: display items starting from the bottom
 
         if (ImGui::SmallButton("Add Dummy Text"))  { AddLog("%d some text", Items.Size); AddLog("some more text"); AddLog("display very important message here!"); } ImGui::SameLine();
         if (ImGui::SmallButton("Add Dummy Error")) { AddLog("[error] something went wrong"); } ImGui::SameLine();
@@ -3267,7 +3265,7 @@ struct ExampleAppConsole
             ImGui::LogToClipboard();
         for (int i = 0; i < Items.Size; i++)
         {
-            const char* item = Items[i];
+            const char *item = Items[i];
             if (!Filter.PassFilter(item))
                 continue;
 
@@ -3292,7 +3290,7 @@ struct ExampleAppConsole
         bool reclaim_focus = false;
         if (ImGui::InputText("Input", InputBuf, IM_ARRAYSIZE(InputBuf), ImGuiInputTextFlags_EnterReturnsTrue|ImGuiInputTextFlags_CallbackCompletion|ImGuiInputTextFlags_CallbackHistory, &TextEditCallbackStub, (void*)this))
         {
-            char* s = InputBuf;
+            char *s = InputBuf;
             Strtrim(s);
             if (s[0])
                 ExecCommand(s);
@@ -3308,7 +3306,7 @@ struct ExampleAppConsole
         ImGui::End();
     }
 
-    void    ExecCommand(const char* command_line)
+    void    ExecCommand(const char *command_line)
     {
         AddLog("# %s\n", command_line);
 
@@ -3349,13 +3347,13 @@ struct ExampleAppConsole
         ScrollToBottom = true;
     }
 
-    static int TextEditCallbackStub(ImGuiInputTextCallbackData* data) // In C++11 you are better off using lambdas for this sort of forwarding callbacks
+    static int TextEditCallbackStub(ImGuiInputTextCallbackData *data) // In C++11 you are better off using lambdas for this sort of forwarding callbacks
     {
-        ExampleAppConsole* console = (ExampleAppConsole*)data->UserData;
+        ExampleAppConsole *console = (ExampleAppConsole*)data->UserData;
         return console->TextEditCallback(data);
     }
 
-    int     TextEditCallback(ImGuiInputTextCallbackData* data)
+    int     TextEditCallback(ImGuiInputTextCallbackData *data)
     {
         //AddLog("cursor: %d, selection: %d-%d", data->CursorPos, data->SelectionStart, data->SelectionEnd);
         switch (data->EventFlag)
@@ -3365,8 +3363,8 @@ struct ExampleAppConsole
                 // Example of TEXT COMPLETION
 
                 // Locate beginning of current word
-                const char* word_end = data->Buf + data->CursorPos;
-                const char* word_start = word_end;
+                const char *word_end = data->Buf + data->CursorPos;
+                const char *word_start = word_end;
                 while (word_start > data->Buf)
                 {
                     const char c = word_start[-1];
@@ -3446,7 +3444,7 @@ struct ExampleAppConsole
                 // A better implementation would preserve the data on the current input line along with cursor position.
                 if (prev_history_pos != HistoryPos)
                 {
-                    const char* history_str = (HistoryPos >= 0) ? History[HistoryPos] : "";
+                    const char *history_str = (HistoryPos >= 0) ? History[HistoryPos] : "";
                     data->DeleteChars(0, data->BufTextLen);
                     data->InsertChars(0, history_str);
                 }
@@ -3456,7 +3454,7 @@ struct ExampleAppConsole
     }
 };
 
-static void ShowExampleAppConsole(bool* p_open)
+static void ShowExampleAppConsole(bool *p_open)
 {
     static ExampleAppConsole console;
     console.Draw("Example: Console", p_open);
@@ -3492,7 +3490,7 @@ struct ExampleAppLog
         LineOffsets.push_back(0);
     }
 
-    void    AddLog(const char* fmt, ...) IM_FMTARGS(2)
+    void    AddLog(const char *fmt, ...) IM_FMTARGS(2)
     {
         int old_size = Buf.size();
         va_list args;
@@ -3506,7 +3504,7 @@ struct ExampleAppLog
             ScrollToBottom = true;
     }
 
-    void    Draw(const char* title, bool* p_open = NULL)
+    void    Draw(const char *title, bool *p_open = NULL)
     {
         if (!ImGui::Begin(title, p_open))
         {
@@ -3542,8 +3540,8 @@ struct ExampleAppLog
             ImGui::LogToClipboard();
 
         ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0, 0));
-        const char* buf = Buf.begin();
-        const char* buf_end = Buf.end();
+        const char *buf = Buf.begin();
+        const char *buf_end = Buf.end();
         if (Filter.isEnabled())
         {
             // In this example we don't use the clipper when Filter is enabled.
@@ -3552,8 +3550,8 @@ struct ExampleAppLog
             // especially if the filtering function is not trivial (e.g. reg-exp).
             for (int line_no = 0; line_no < LineOffsets.Size; line_no++)
             {
-                const char* line_start = buf + LineOffsets[line_no];
-                const char* line_end = (line_no + 1 < LineOffsets.Size) ? (buf + LineOffsets[line_no + 1] - 1) : buf_end;
+                const char *line_start = buf + LineOffsets[line_no];
+                const char *line_end = (line_no + 1 < LineOffsets.Size) ? (buf + LineOffsets[line_no + 1] - 1) : buf_end;
                 if (Filter.PassFilter(line_start, line_end))
                     ImGui::TextUnformatted(line_start, line_end);
             }
@@ -3575,8 +3573,8 @@ struct ExampleAppLog
             {
                 for (int line_no = clipper.DisplayStart; line_no < clipper.DisplayEnd; line_no++)
                 {
-                    const char* line_start = buf + LineOffsets[line_no];
-                    const char* line_end = (line_no + 1 < LineOffsets.Size) ? (buf + LineOffsets[line_no + 1] - 1) : buf_end;
+                    const char *line_start = buf + LineOffsets[line_no];
+                    const char *line_end = (line_no + 1 < LineOffsets.Size) ? (buf + LineOffsets[line_no + 1] - 1) : buf_end;
                     ImGui::TextUnformatted(line_start, line_end);
                 }
             }
@@ -3593,7 +3591,7 @@ struct ExampleAppLog
 };
 
 // Demonstrate creating a simple log window with basic filtering.
-static void ShowExampleAppLog(bool* p_open)
+static void ShowExampleAppLog(bool *p_open)
 {
     static ExampleAppLog log;
 
@@ -3607,8 +3605,8 @@ static void ShowExampleAppLog(bool* p_open)
         static int counter = 0;
         for (int n = 0; n < 5; n++)
         {
-            const char* categories[3] = { "info", "warn", "error" };
-            const char* words[] = { "Bumfuzzled", "Cattywampus", "Snickersnee", "Abibliophobia", "Absquatulate", "Nincompoop", "Pauciloquent" };
+            const char *categories[3] = { "info", "warn", "error" };
+            const char *words[] = { "Bumfuzzled", "Cattywampus", "Snickersnee", "Abibliophobia", "Absquatulate", "Nincompoop", "Pauciloquent" };
             log.AddLog("[%05d] [%s] Hello, current time is %.1f, here's a word: '%s'\n",
                 ImGui::GetFrameCount(), categories[counter % IM_ARRAYSIZE(categories)], ImGui::GetTime(), words[counter % IM_ARRAYSIZE(words)]);
             counter++;
@@ -3624,7 +3622,7 @@ static void ShowExampleAppLog(bool* p_open)
 //-----------------------------------------------------------------------------
 
 // Demonstrate create a window with multiple child windows.
-static void ShowExampleAppLayout(bool* p_open)
+static void ShowExampleAppLayout(bool *p_open)
 {
     ImGui::SetNextWindowSize(ImVec2(500, 440), ImGuiCond_FirstUseEver);
     if (ImGui::Begin("Example: Simple layout", p_open, ImGuiWindowFlags_MenuBar))
@@ -3685,7 +3683,7 @@ static void ShowExampleAppLayout(bool* p_open)
 //-----------------------------------------------------------------------------
 
 // Demonstrate create a simple property editor.
-static void ShowExampleAppPropertyEditor(bool* p_open)
+static void ShowExampleAppPropertyEditor(bool *p_open)
 {
     ImGui::SetNextWindowSize(ImVec2(430, 450), ImGuiCond_FirstUseEver);
     if (!ImGui::Begin("Example: Property editor", p_open))
@@ -3702,7 +3700,7 @@ static void ShowExampleAppPropertyEditor(bool* p_open)
 
     struct funcs
     {
-        static void ShowDummyObject(const char* prefix, int uid)
+        static void ShowDummyObject(const char *prefix, int uid)
         {
             ImGui::PushID(uid);                      // Use object uid as identifier. Most commonly you could also use the object pointer as a base ID.
             ImGui::AlignTextToFramePadding();  // Text and Tree nodes are less high than regular widgets, here we add vertical spacing to make the tree lines equal high.
@@ -3758,7 +3756,7 @@ static void ShowExampleAppPropertyEditor(bool* p_open)
 //-----------------------------------------------------------------------------
 
 // Demonstrate/test rendering huge amount of text, and the incidence of clipping.
-static void ShowExampleAppLongText(bool* p_open)
+static void ShowExampleAppLongText(bool *p_open)
 {
     ImGui::SetNextWindowSize(ImVec2(520, 600), ImGuiCond_FirstUseEver);
     if (!ImGui::Begin("Example: Long text display", p_open))
@@ -3816,7 +3814,7 @@ static void ShowExampleAppLongText(bool* p_open)
 //-----------------------------------------------------------------------------
 
 // Demonstrate creating a window which gets auto-resized according to its content.
-static void ShowExampleAppAutoResize(bool* p_open)
+static void ShowExampleAppAutoResize(bool *p_open)
 {
     if (!ImGui::Begin("Example: Auto-resizing window", p_open, ImGuiWindowFlags_AlwaysAutoResize))
     {
@@ -3837,12 +3835,12 @@ static void ShowExampleAppAutoResize(bool* p_open)
 //-----------------------------------------------------------------------------
 
 // Demonstrate creating a window with custom resize constraints.
-static void ShowExampleAppConstrainedResize(bool* p_open)
+static void ShowExampleAppConstrainedResize(bool *p_open)
 {
     struct CustomConstraints // Helper functions to demonstrate programmatic constraints
     {
-        static void Square(ImGuiSizeCallbackData* data) { data->DesiredSize = ImVec2(IM_MAX(data->DesiredSize.x, data->DesiredSize.y), IM_MAX(data->DesiredSize.x, data->DesiredSize.y)); }
-        static void Step(ImGuiSizeCallbackData* data)   { float step = (float)(int)(intptr_t)data->UserData; data->DesiredSize = ImVec2((int)(data->DesiredSize.x / step + 0.5f) * step, (int)(data->DesiredSize.y / step + 0.5f) * step); }
+        static void Square(ImGuiSizeCallbackData *data) { data->DesiredSize = ImVec2(IM_MAX(data->DesiredSize.x, data->DesiredSize.y), IM_MAX(data->DesiredSize.x, data->DesiredSize.y)); }
+        static void Step(ImGuiSizeCallbackData *data)   { float step = (float)(int)(intptr_t)data->UserData; data->DesiredSize = ImVec2((int)(data->DesiredSize.x / step + 0.5f) * step, (int)(data->DesiredSize.y / step + 0.5f) * step); }
     };
 
     static bool auto_resize = false;
@@ -3859,7 +3857,7 @@ static void ShowExampleAppConstrainedResize(bool* p_open)
     ImGuiWindowFlags flags = auto_resize ? ImGuiWindowFlags_AlwaysAutoResize : 0;
     if (ImGui::Begin("Example: Constrained Resize", p_open, flags))
     {
-        const char* desc[] =
+        const char *desc[] =
         {
             "Resize vertical only",
             "Resize horizontal only",
@@ -3888,11 +3886,11 @@ static void ShowExampleAppConstrainedResize(bool* p_open)
 //-----------------------------------------------------------------------------
 
 // Demonstrate creating a simple static window with no decoration + a context-menu to choose which corner of the screen to use.
-static void ShowExampleAppSimpleOverlay(bool* p_open)
+static void ShowExampleAppSimpleOverlay(bool *p_open)
 {
     const float DISTANCE = 10.0f;
     static int corner = 0;
-    ImGuiIO& io = ImGui::GetIO();
+    ImGuiIO &io = ImGui::GetIO();
     if (corner != -1)
     {
         ImVec2 window_pos = ImVec2((corner & 1) ? io.DisplaySize.x - DISTANCE : DISTANCE, (corner & 2) ? io.DisplaySize.y - DISTANCE : DISTANCE);
@@ -3958,7 +3956,7 @@ static void ShowExampleAppWindowTitles(bool*)
 //-----------------------------------------------------------------------------
 
 // Demonstrate using the low-level ImDrawList to draw custom shapes.
-static void ShowExampleAppCustomRendering(bool* p_open)
+static void ShowExampleAppCustomRendering(bool *p_open)
 {
     ImGui::SetNextWindowSize(ImVec2(350, 560), ImGuiCond_FirstUseEver);
     if (!ImGui::Begin("Example: Custom rendering", p_open))
@@ -3971,7 +3969,7 @@ static void ShowExampleAppCustomRendering(bool* p_open)
     // Define IM_VEC2_CLASS_EXTRA in imconfig.h to create implicit conversions between your types and ImVec2/ImVec4.
     // ImGui defines overloaded operators but they are internal to imgui.cpp and not exposed outside (to avoid messing with your types)
     // In this example we are not using the maths operators!
-    ImDrawList* draw_list = ImGui::GetWindowDrawList();
+    ImDrawList *draw_list = ImGui::GetWindowDrawList();
 
     // Primitives
     ImGui::Text("Primitives");
@@ -4074,14 +4072,14 @@ static void ShowExampleAppCustomRendering(bool* p_open)
 // Simplified structure to mimic a Document model
 struct MyDocument
 {
-    const char* Name;           // Document title
+    const char *Name;           // Document title
     bool        Open;           // Set when the document is open (in this demo, we keep an array of all available documents to simplify the demo)
     bool        OpenPrev;       // Copy of Open from last update.
     bool        Dirty;          // Set when the document has been modified
     bool        WantClose;      // Set when the document
     ImVec4      Color;          // An arbitrary variable associated to the document
 
-    MyDocument(const char* name, bool open = true, const ImVec4& color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f))
+    MyDocument(const char *name, bool open = true, const ImVec4 &color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f))
     {
         Name = name;
         Open = OpenPrev = open;
@@ -4095,7 +4093,7 @@ struct MyDocument
     void DoSave()       { Dirty = false; }
 
     // Display dummy contents for the Document
-    static void DisplayContents(MyDocument* doc)
+    static void DisplayContents(MyDocument *doc)
     {
         ImGui::PushID(doc);
         ImGui::Text("Document \"%s\"", doc->Name);
@@ -4112,7 +4110,7 @@ struct MyDocument
     }
 
     // Display context menu for the Document
-    static void DisplayContextMenu(MyDocument* doc)
+    static void DisplayContextMenu(MyDocument *doc)
     {
         if (!ImGui::BeginPopupContextItem())
             return;
@@ -4149,18 +4147,18 @@ struct ExampleAppDocuments
 // will report no selected tab during the frame. This will effectively give the impression of a flicker for one frame.
 // We call SetTabItemClosed() to manually notify the Tab Bar or Docking system of removed tabs to avoid this glitch.
 // Note that this completely optional, and only affect tab bars with the ImGuiTabBarFlags_Reorderable flag.
-static void NotifyOfDocumentsClosedElsewhere(ExampleAppDocuments& app)
+static void NotifyOfDocumentsClosedElsewhere(ExampleAppDocuments &app)
 {
     for (int doc_n = 0; doc_n < app.Documents.Size; doc_n++)
     {
-        MyDocument* doc = &app.Documents[doc_n];
+        MyDocument *doc = &app.Documents[doc_n];
         if (!doc->Open && doc->OpenPrev)
             ImGui::SetTabItemClosed(doc->Name);
         doc->OpenPrev = doc->Open;
     }
 }
 
-void ShowExampleAppDocuments(bool* p_open)
+void ShowExampleAppDocuments(bool *p_open)
 {
     static ExampleAppDocuments app;
 
@@ -4187,7 +4185,7 @@ void ShowExampleAppDocuments(bool* p_open)
             {
                 for (int doc_n = 0; doc_n < app.Documents.Size; doc_n++)
                 {
-                    MyDocument* doc = &app.Documents[doc_n];
+                    MyDocument *doc = &app.Documents[doc_n];
                     if (!doc->Open)
                         if (ImGui::MenuItem(doc->Name))
                             doc->DoOpen();
@@ -4206,7 +4204,7 @@ void ShowExampleAppDocuments(bool* p_open)
     // [Debug] List documents with one checkbox for each
     for (int doc_n = 0; doc_n < app.Documents.Size; doc_n++)
     {
-        MyDocument* doc = &app.Documents[doc_n];
+        MyDocument *doc = &app.Documents[doc_n];
         if (doc_n > 0)
             ImGui::SameLine();
         ImGui::PushID(doc);
@@ -4233,7 +4231,7 @@ void ShowExampleAppDocuments(bool* p_open)
             // submit Tabs
             for (int doc_n = 0; doc_n < app.Documents.Size; doc_n++)
             {
-                MyDocument* doc = &app.Documents[doc_n];
+                MyDocument *doc = &app.Documents[doc_n];
                 if (!doc->Open)
                     continue;
 
@@ -4266,7 +4264,7 @@ void ShowExampleAppDocuments(bool* p_open)
         // Close queue is locked once we started a popup
         for (int doc_n = 0; doc_n < app.Documents.Size; doc_n++)
         {
-            MyDocument* doc = &app.Documents[doc_n];
+            MyDocument *doc = &app.Documents[doc_n];
             if (doc->WantClose)
             {
                 doc->WantClose = false;

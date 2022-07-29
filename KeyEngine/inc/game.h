@@ -30,17 +30,17 @@ class Game
 		: public KeyException
 	{
 	public:
-		GameException( int line, const char* file, const char* function,
+		GameException( int line, const char *file, const char *function,
 			const std::string &msg ) noexcept;
 
 		const std::string getType() const noexcept override final;
-		virtual const char* what() const noexcept override final;
+		virtual const char *what() const noexcept override final;
 	};
 protected:
-	static inline Game* m_pInstance;
+	static inline Game *m_pInstance;
 	static inline unsigned m_nWindows;
-	static inline SettingsManager& m_settingsMan = SettingsManager::getInstance();
-	ImguiManager* m_pImguiMan;
+	static inline SettingsManager &m_settingsMan = SettingsManager::getInstance();
+	ImguiManager *m_pImguiMan;
 	Window m_mainWindow;
 	std::unique_ptr<State> m_pCurrentState;
 	KeyTimer<std::chrono::milliseconds> m_gameTimer;
@@ -49,23 +49,23 @@ public:
 	
 protected:
 	Game( int width, int height, const std::string &title, unsigned nWindows = 1 );
-	Game( const Game& rhs ) = delete;
-	Game& operator=( const Game& rhs ) = delete;
-	Game& operator=( Game&& rhs ) = delete;
+	Game( const Game &rhs ) = delete;
+	Game &operator=( const Game &rhs ) = delete;
+	Game &operator=( Game&& rhs ) = delete;
 	Game( Game&& rhs ) = delete;
 
 	float calculateDt();
 	std::optional<Window*> getForegroundWindow() noexcept;
-	void setState( std::unique_ptr<State> pNewState, Mouse& mouse );
-	State* getState() noexcept;
+	void setState( std::unique_ptr<State> pNewState, Mouse &mouse );
+	State *getState() noexcept;
 private:
-	ImguiManager* createImgui() noexcept;
+	ImguiManager *createImgui() noexcept;
 };
 
 class Sandbox3d
 	: public Game<Sandbox3d>
 {
-	static inline CameraManager& m_cameraMan = CameraManager::getInstance();
+	static inline CameraManager &m_cameraMan = CameraManager::getInstance();
 	ren::Renderer3d m_renderer;
 	std::unique_ptr<PointLight> m_pPointLight1;
 	//std::unique_ptr<PointLight> m_pPointLight2;

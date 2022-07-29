@@ -53,7 +53,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 template <class T>
 inline
 bool SetGenericProperty(std::map< unsigned int, T >& list,
-        const char* szName, const T& value) {
+        const char *szName, const T &value) {
     ai_assert(nullptr != szName);
     const uint32_t hash = SuperFastHash(szName);
 
@@ -70,8 +70,8 @@ bool SetGenericProperty(std::map< unsigned int, T >& list,
 // ------------------------------------------------------------------------------------------------
 template <class T>
 inline
-const T& GetGenericProperty(const std::map< unsigned int, T >& list,
-        const char* szName, const T& errorReturn) {
+const T &GetGenericProperty(const std::map< unsigned int, T >& list,
+        const char *szName, const T &errorReturn) {
     ai_assert(nullptr != szName);
     const uint32_t hash = SuperFastHash(szName);
 
@@ -89,7 +89,7 @@ const T& GetGenericProperty(const std::map< unsigned int, T >& list,
 template <class T>
 inline
 void SetGenericPropertyPtr(std::map< unsigned int, T* >& list,
-        const char* szName, T* value, bool* bWasExisting = nullptr ) {
+        const char *szName, T *value, bool *bWasExisting = nullptr ) {
     ai_assert(nullptr != szName);
     const uint32_t hash = SuperFastHash(szName);
 
@@ -118,7 +118,7 @@ void SetGenericPropertyPtr(std::map< unsigned int, T* >& list,
 template <class T>
 inline
 bool HasGenericProperty(const std::map< unsigned int, T >& list,
-        const char* szName) {
+        const char *szName) {
     ai_assert(nullptr != szName);
     const uint32_t hash = SuperFastHash(szName);
 

@@ -115,7 +115,7 @@ enum aiPostProcessSteps
      * By default the imported mesh data might contain faces with more than 3
      * indices. For rendering you'll usually want all faces to be triangles.
      * This post processing step splits up faces with more than 3 indices into
-     * triangles. Line and point primitives are *not* modified! If you want
+     * triangles. Line and point primitives are *not *modified! If you want
      * 'triangles only' with no other kinds of primitives, try the following
      * solution:
      * <ul>
@@ -159,7 +159,7 @@ enum aiPostProcessSteps
      * they're usually already there. Face normals are shared between all points
      * of a single face, so a single point can have multiple normals, which
      * forces the library to duplicate vertices in some cases.
-     * #aiProcess_JoinIdenticalVertices is *senseless* then.
+     * #aiProcess_JoinIdenticalVertices is *senseless *then.
      *
      * This flag may not be specified together with #aiProcess_GenSmoothNormals.
      */
@@ -296,7 +296,7 @@ enum aiPostProcessSteps
      * Several material settings not contributing to the final appearance of
      * a surface are ignored in all comparisons (e.g. the material name).
      * So, if you're passing additional information through the
-     * content pipeline (probably using *magic* material names), don't
+     * content pipeline (probably using *magic *material names), don't
      * specify this flag. Alternatively take a look at the
      * <tt>#AI_CONFIG_PP_RRM_EXCLUDE_LIST</tt> importer property.
      */
@@ -432,7 +432,7 @@ enum aiPostProcessSteps
      *  duplicate meshes. This step removes the duplicates again. Please
      *  note that Assimp does not currently support per-node material
      *  assignment to meshes, which means that identical meshes with
-     *  different materials are currently *not* joined, although this is
+     *  different materials are currently *not *joined, although this is
      *  planned for future versions.
      */
     aiProcess_FindInstances = 0x100000,

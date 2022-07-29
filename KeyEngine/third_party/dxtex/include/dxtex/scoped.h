@@ -14,7 +14,7 @@
 #include <malloc.h>
 
 //---------------------------------------------------------------------------------
-struct aligned_deleter { void operator()(void* p) noexcept { _aligned_free(p); } };
+struct aligned_deleter { void operator()(void *p) noexcept { _aligned_free(p); } };
 
 using ScopedAlignedArrayFloat = std::unique_ptr<float[], aligned_deleter>;
 
@@ -39,7 +39,7 @@ public:
     auto_delete_file(HANDLE hFile) noexcept : m_handle(hFile) {}
 
     auto_delete_file(const auto_delete_file&) = delete;
-    auto_delete_file& operator=(const auto_delete_file&) = delete;
+    auto_delete_file &operator=(const auto_delete_file&) = delete;
 
     ~auto_delete_file()
     {

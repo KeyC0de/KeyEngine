@@ -14,7 +14,7 @@ TransformScaleVSCB::TransformScaleVSCB( Graphics &gph,
 	m_cbScale["scale"] = scale;
 }
 
-void TransformScaleVSCB::accept( IEffectVisitor& ev )
+void TransformScaleVSCB::accept( IEffectVisitor &ev )
 {
 	ev.visit( m_cbScale );
 }
