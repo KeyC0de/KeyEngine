@@ -204,7 +204,7 @@ public:
 public:
 	// returns VertexMember
 	template<MemberType Type>
-	const VertexMember &fetch() const cond_noex
+	const VertexMember& fetch() const cond_noex
 	{
 		for ( auto &e : m_vertexMembers )
 		{
@@ -216,8 +216,8 @@ public:
 		ASSERT( false, "Could not find requeted Element's type" );
 		return m_vertexMembers.front();
 	}
-	const VertexMember &fetchByIndex( size_t i ) const cond_noex;
-	VertexLayout &add( MemberType type ) cond_noex;
+	const VertexMember& fetchByIndex( size_t i ) const cond_noex;
+	VertexLayout& add( MemberType type ) cond_noex;
 	size_t getSizeInBytes() const cond_noex;
 	size_t getMemberCount() const noexcept;
 	std::vector<D3D11_INPUT_ELEMENT_DESC> getD3DInputElementDescs() const cond_noex;
@@ -240,7 +240,7 @@ private:
 		template<typename T>
 		static constexpr auto exec( VertexView *pVertex,
 			char *pElement,
-			T&& val ) cond_noex
+			T &&val ) cond_noex
 		{
 			return pVertex->setMember<type>( pElement,
 				std::forward<T>( val ) );
@@ -249,7 +249,7 @@ private:
 public:
 	// get reference to VertexMember
 	template<VertexLayout::MemberType Type>
-	auto &getMember() cond_noex
+	auto& getMember() cond_noex
 	{
 		auto pElement = m_p + m_layout.fetch<Type>().getOffsetInLayout();
 		return *reinterpret_cast<typename VertexLayout::MemberProperties<Type>
@@ -258,7 +258,7 @@ public:
 	// terminal case for setMemberByIndex
 	template<typename T>
 	void setMemberByIndex( size_t i,
-		T&& val ) cond_noex
+		T &&val ) cond_noex
 	{
 		const auto &element = m_layout.fetchByIndex( i );
 		auto pElement = m_p + element.getOffsetInLayout();
@@ -273,7 +273,7 @@ private:
 	// set Vertex data by its Byte index in the buffer
 	template<typename First, typename ...Rest>
 	void setMemberByIndex( size_t i,
-		First&& first,
+		First &&first,
 		Rest&&... rest ) cond_noex
 	{
 		setMemberByIndex( i,
@@ -284,7 +284,7 @@ private:
 	// helper to reduce tag duplication in setMemberByIndex
 	template<VertexLayout::MemberType DestLayoutType, typename SrcType>
 	void setMember( char *pElement,
-		SrcType&& val ) cond_noex
+		SrcType &&val ) cond_noex
 	{
 		using Dest = typename VertexLayout::MemberProperties<DestLayoutType>::CPUType;
 		if constexpr( std::is_assignable<Dest, SrcType>::value )
@@ -304,7 +304,7 @@ class ConstVertexView final
 public:
 	ConstVertexView( const VertexView &v ) cond_noex;
 	template<VertexLayout::MemberType Type>
-	const auto &element() const cond_noex
+	const auto& element() const cond_noex
 	{
 		return const_cast<VertexView&>( m_vertex ).getMember<Type>();
 	}
@@ -318,8 +318,8 @@ class Buffer final
 public:
 	Buffer( VertexLayout layout, size_t size = 0u ) cond_noex;
 	Buffer( VertexLayout layout, const aiMesh &mesh );
-	const char *getRawBytes() const cond_noex;
-	const VertexLayout &getLayout() const noexcept;
+	const char* getRawBytes() const cond_noex;
+	const VertexLayout& getLayout() const noexcept;
 	void resize( size_t newSize ) cond_noex;
 	size_t getVertexCount() const cond_noex;
 	size_t getSizeInBytes() const cond_noex;

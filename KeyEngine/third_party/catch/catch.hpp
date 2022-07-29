@@ -2322,7 +2322,7 @@ namespace Catch {
 	auto compareEqual( long lhs, T *const &rhs ) -> bool { return reinterpret_cast<void const*>( lhs ) == rhs; }
 
 	template<typename LhsT, typename RhsT>
-	auto compareNotEqual( LhsT const &lhs, RhsT&& rhs ) -> bool { return static_cast<bool>(lhs != rhs); }
+	auto compareNotEqual( LhsT const &lhs, RhsT &&rhs ) -> bool { return static_cast<bool>(lhs != rhs); }
 	template<typename T>
 	auto compareNotEqual( T *const &lhs, int rhs ) -> bool { return lhs != reinterpret_cast<void const*>( rhs ); }
 	template<typename T>
@@ -2386,7 +2386,7 @@ namespace Catch {
 		template<typename RhsT>
 		auto operator && ( RhsT const& ) -> BinaryExpr<LhsT, RhsT const&> const {
 			static_assert(always_false<RhsT>::value,
-			"operator&& is not supported inside assertions, "
+			"operator &&is not supported inside assertions, "
 			"wrap the expression inside parentheses, or decompose it");
 		}
 
@@ -2640,7 +2640,7 @@ namespace Catch {
 	public:
 		explicit ScopedMessage( MessageBuilder const &builder );
 		ScopedMessage( ScopedMessage &duplicate ) = delete;
-		ScopedMessage( ScopedMessage&& old );
+		ScopedMessage( ScopedMessage &&old );
 		~ScopedMessage();
 
 		MessageInfo m_info;
@@ -3858,7 +3858,7 @@ namespace Catch {
 		virtual ~IGeneratorTracker();
 		virtual auto hasGenerator() const -> bool = 0;
 		virtual auto getGenerator() const -> Generators::GeneratorBasePtr const& = 0;
-		virtual void setGenerator( Generators::GeneratorBasePtr&& generator ) = 0;
+		virtual void setGenerator( Generators::GeneratorBasePtr &&generator ) = 0;
 	};
 
 } // namespace Catch
@@ -3951,7 +3951,7 @@ namespace Generators {
 	class SingleValueGenerator final : public IGenerator<T> {
 		T m_value;
 	public:
-		SingleValueGenerator(T&& value) : m_value(std::move(value)) {}
+		SingleValueGenerator(T &&value) : m_value(std::move(value)) {}
 
 		T const &get() const override {
 			return m_value;
@@ -3996,7 +3996,7 @@ namespace Generators {
 	};
 
 	template <typename T>
-	GeneratorWrapper<T> value(T&& value) {
+	GeneratorWrapper<T> value(T &&value) {
 		return GeneratorWrapper<T>(pf::make_unique<SingleValueGenerator<T>>(std::forward<T>(value)));
 	}
 	template <typename T>
@@ -4012,15 +4012,15 @@ namespace Generators {
 		void populate(GeneratorWrapper<T>&& generator) {
 			m_generators.emplace_back(std::move(generator));
 		}
-		void populate(T&& val) {
+		void populate(T &&val) {
 			m_generators.emplace_back(value(std::forward<T>(val)));
 		}
 		template<typename U>
-		void populate(U&& val) {
+		void populate(U &&val) {
 			populate(T(std::forward<U>(val)));
 		}
 		template<typename U, typename... Gs>
-		void populate(U&& valueOrGenerator, Gs &&... moreGenerators) {
+		void populate(U &&valueOrGenerator, Gs &&... moreGenerators) {
 			populate(std::forward<U>(valueOrGenerator));
 			populate(std::forward<Gs>(moreGenerators)...);
 		}
@@ -4066,11 +4066,11 @@ namespace Generators {
 		return Generators<T>(std::move(generator));
 	}
 	template<typename T, typename... Gs>
-	auto makeGenerators( T&& val, Gs &&... moreGenerators ) -> Generators<T> {
+	auto makeGenerators( T &&val, Gs &&... moreGenerators ) -> Generators<T> {
 		return makeGenerators( value( std::forward<T>( val ) ), std::forward<Gs>( moreGenerators )... );
 	}
 	template<typename T, typename U, typename... Gs>
-	auto makeGenerators( as<T>, U&& val, Gs &&... moreGenerators ) -> Generators<T> {
+	auto makeGenerators( as<T>, U &&val, Gs &&... moreGenerators ) -> Generators<T> {
 		return makeGenerators( value( T( std::forward<U>( val ) ) ), std::forward<Gs>( moreGenerators )... );
 	}
 
@@ -4156,7 +4156,7 @@ namespace Generators {
 		Predicate m_predicate;
 	public:
 		template <typename P = Predicate>
-		FilterGenerator(P&& pred, GeneratorWrapper<T>&& generator):
+		FilterGenerator(P &&pred, GeneratorWrapper<T>&& generator):
 			m_generator(std::move(generator)),
 			m_predicate(std::forward<P>(pred))
 		{
@@ -4185,7 +4185,7 @@ namespace Generators {
 	};
 
 	template <typename T, typename Predicate>
-	GeneratorWrapper<T> filter(Predicate&& pred, GeneratorWrapper<T>&& generator) {
+	GeneratorWrapper<T> filter(Predicate &&pred, GeneratorWrapper<T>&& generator) {
 		return GeneratorWrapper<T>(std::unique_ptr<IGenerator<T>>(pf::make_unique<FilterGenerator<T, Predicate>>(std::forward<Predicate>(pred), std::move(generator))));
 	}
 
@@ -4254,7 +4254,7 @@ namespace Generators {
 		T m_cache;
 	public:
 		template <typename F2 = Func>
-		MapGenerator(F2&& function, GeneratorWrapper<U>&& generator) :
+		MapGenerator(F2 &&function, GeneratorWrapper<U>&& generator) :
 			m_generator(std::move(generator)),
 			m_function(std::forward<F2>(function)),
 			m_cache(m_function(m_generator.get()))
@@ -4273,14 +4273,14 @@ namespace Generators {
 	};
 
 	template <typename Func, typename U, typename T = FunctionReturnType<Func, U>>
-	GeneratorWrapper<T> map(Func&& function, GeneratorWrapper<U>&& generator) {
+	GeneratorWrapper<T> map(Func &&function, GeneratorWrapper<U>&& generator) {
 		return GeneratorWrapper<T>(
 			pf::make_unique<MapGenerator<T, U, Func>>(std::forward<Func>(function), std::move(generator))
 		);
 	}
 
 	template <typename T, typename U, typename Func>
-	GeneratorWrapper<T> map(Func&& function, GeneratorWrapper<U>&& generator) {
+	GeneratorWrapper<T> map(Func &&function, GeneratorWrapper<U>&& generator) {
 		return GeneratorWrapper<T>(
 			pf::make_unique<MapGenerator<T, U, Func>>(std::forward<Func>(function), std::move(generator))
 		);
@@ -4800,7 +4800,7 @@ namespace Catch {
 	class TestCase : public TestCaseInfo {
 	public:
 
-		TestCase( ITestInvoker *testCase, TestCaseInfo&& info );
+		TestCase( ITestInvoker *testCase, TestCaseInfo &&info );
 
 		TestCase withName( std::string const &_newName ) const;
 
@@ -6019,8 +6019,8 @@ namespace Catch {
 
 		// Use constructed object for RAII guard
 		Colour( Code _colourCode );
-		Colour( Colour&& other ) noexcept;
-		Colour &operator=( Colour&& other ) noexcept;
+		Colour( Colour &&other ) noexcept;
+		Colour &operator=( Colour &&other ) noexcept;
 		~Colour();
 
 		// Use static method for one-shot changes
@@ -6246,8 +6246,8 @@ namespace Catch {
 		public:
 			ScopedElement( XmlWriter *writer, XmlFormatting fmt );
 
-			ScopedElement( ScopedElement&& other ) noexcept;
-			ScopedElement &operator=( ScopedElement&& other ) noexcept;
+			ScopedElement( ScopedElement &&other ) noexcept;
+			ScopedElement &operator=( ScopedElement &&other ) noexcept;
 
 			~ScopedElement();
 
@@ -6512,17 +6512,17 @@ namespace Catch {
 #endif
 
 		template <typename T>
-		inline void deoptimize_value(T&& x) {
+		inline void deoptimize_value(T &&x) {
 			keep_memory(&x);
 		}
 
 		template <typename Fn, typename... Args>
-		inline auto invoke_deoptimized(Fn&& fn, Args&&... args) -> typename std::enable_if<!std::is_same<void, decltype(fn(args...))>::value>::type {
+		inline auto invoke_deoptimized(Fn &&fn, Args&&... args) -> typename std::enable_if<!std::is_same<void, decltype(fn(args...))>::value>::type {
 			deoptimize_value(std::forward<Fn>(fn) (std::forward<Args...>(args...)));
 		}
 
 		template <typename Fn, typename... Args>
-		inline auto invoke_deoptimized(Fn&& fn, Args&&... args) -> typename std::enable_if<std::is_same<void, decltype(fn(args...))>::value>::type {
+		inline auto invoke_deoptimized(Fn &&fn, Args&&... args) -> typename std::enable_if<std::is_same<void, decltype(fn(args...))>::value>::type {
 			std::forward<Fn>(fn) (std::forward<Args...>(args...));
 		}
 	} // namespace Benchmark
@@ -6551,14 +6551,14 @@ namespace Catch {
 			template <typename Result>
 			struct CompleteInvoker {
 				template <typename Fun, typename... Args>
-				static Result invoke(Fun&& fun, Args&&... args) {
+				static Result invoke(Fun &&fun, Args&&... args) {
 					return std::forward<Fun>(fun)(std::forward<Args>(args)...);
 				}
 			};
 			template <>
 			struct CompleteInvoker<void> {
 				template <typename Fun, typename... Args>
-				static CompleteType_t<void> invoke(Fun&& fun, Args&&... args) {
+				static CompleteType_t<void> invoke(Fun &&fun, Args&&... args) {
 					std::forward<Fun>(fun)(std::forward<Args>(args)...);
 					return {};
 				}
@@ -6566,7 +6566,7 @@ namespace Catch {
 
 			// invoke and not return void :(
 			template <typename Fun, typename... Args>
-			CompleteType_t<FunctionReturnType<Fun, Args...>> complete_invoke(Fun&& fun, Args&&... args) {
+			CompleteType_t<FunctionReturnType<Fun, Args...>> complete_invoke(Fun &&fun, Args&&... args) {
 				return CompleteInvoker<FunctionReturnType<Fun, Args...>>::invoke(std::forward<Fun>(fun), std::forward<Args>(args)...);
 			}
 
@@ -6574,7 +6574,7 @@ namespace Catch {
 		} // namespace Detail
 
 		template <typename Fun>
-		Detail::CompleteType_t<FunctionReturnType<Fun>> user_code(Fun&& fun) {
+		Detail::CompleteType_t<FunctionReturnType<Fun>> user_code(Fun &&fun) {
 			CATCH_TRY{
 				return Detail::complete_invoke(std::forward<Fun>(fun));
 			} CATCH_CATCH_ALL{
@@ -6609,7 +6609,7 @@ namespace Catch {
 		struct Chronometer {
 		public:
 			template <typename Fun>
-			void measure(Fun&& fun) { measure(std::forward<Fun>(fun), is_callable<Fun(int)>()); }
+			void measure(Fun &&fun) { measure(std::forward<Fun>(fun), is_callable<Fun(int)>()); }
 
 			int runs() const { return k; }
 
@@ -6619,12 +6619,12 @@ namespace Catch {
 
 		private:
 			template <typename Fun>
-			void measure(Fun&& fun, std::false_type) {
+			void measure(Fun &&fun, std::false_type) {
 				measure([&fun](int) { return fun(); }, std::true_type());
 			}
 
 			template <typename Fun>
-			void measure(Fun&& fun, std::true_type) {
+			void measure(Fun &&fun, std::true_type) {
 				Detail::optimizer_barrier();
 				impl->start();
 				for (int i = 0; i < k; ++i) invoke_deoptimized(fun, i);
@@ -6706,7 +6706,7 @@ namespace Catch {
 				};
 				template <typename Fun>
 				struct model : public callable {
-					model(Fun&& fun) : fun(std::move(fun)) {}
+					model(Fun &&fun) : fun(std::move(fun)) {}
 					model(Fun const &fun) : fun(fun) {}
 
 					model<Fun>* clone() const override { return new model<Fun>(*this); }
@@ -6735,16 +6735,16 @@ namespace Catch {
 
 				template <typename Fun,
 					typename std::enable_if<!is_related<Fun, BenchmarkFunction>::value, int>::type = 0>
-					BenchmarkFunction(Fun&& fun)
+					BenchmarkFunction(Fun &&fun)
 					: f(new model<typename std::decay<Fun>::type>(std::forward<Fun>(fun))) {}
 
-				BenchmarkFunction(BenchmarkFunction&& that)
+				BenchmarkFunction(BenchmarkFunction &&that)
 					: f(std::move(that.f)) {}
 
 				BenchmarkFunction(BenchmarkFunction const &that)
 					: f(that.f->clone()) {}
 
-				BenchmarkFunction &operator=(BenchmarkFunction&& that) {
+				BenchmarkFunction &operator=(BenchmarkFunction &&that) {
 					f = std::move(that.f);
 					return *this;
 				}
@@ -6785,7 +6785,7 @@ namespace Catch {
 				Fun fun;
 			};
 			template <typename Fun>
-			repeater<typename std::decay<Fun>::type> repeat(Fun&& fun) {
+			repeater<typename std::decay<Fun>::type> repeat(Fun &&fun) {
 				return { std::forward<Fun>(fun) };
 			}
 		} // namespace Detail
@@ -6831,9 +6831,9 @@ namespace Catch {
 	namespace Benchmark {
 		namespace Detail {
 			template <typename Clock, typename Fun, typename... Args>
-			TimingOf<Clock, Fun, Args...> measure(Fun&& fun, Args&&... args) {
+			TimingOf<Clock, Fun, Args...> measure(Fun &&fun, Args&&... args) {
 				auto start = Clock::now();
-				auto&& r = Detail::complete_invoke(fun, std::forward<Args>(args)...);
+				auto &&r = Detail::complete_invoke(fun, std::forward<Args>(args)...);
 				auto end = Clock::now();
 				auto delta = end - start;
 				return { delta, std::forward<decltype(r)>(r), 1 };
@@ -6850,13 +6850,13 @@ namespace Catch {
 	namespace Benchmark {
 		namespace Detail {
 			template <typename Clock, typename Fun>
-			TimingOf<Clock, Fun, int> measure_one(Fun&& fun, int iters, std::false_type) {
+			TimingOf<Clock, Fun, int> measure_one(Fun &&fun, int iters, std::false_type) {
 				return Detail::measure<Clock>(fun, iters);
 			}
 			template <typename Clock, typename Fun>
-			TimingOf<Clock, Fun, Chronometer> measure_one(Fun&& fun, int iters, std::true_type) {
+			TimingOf<Clock, Fun, Chronometer> measure_one(Fun &&fun, int iters, std::true_type) {
 				Detail::ChronometerModel<Clock> meter;
-				auto&& result = Detail::complete_invoke(fun, Chronometer(meter, iters));
+				auto &&result = Detail::complete_invoke(fun, Chronometer(meter, iters));
 
 				return { meter.elapsed(), std::move(result), iters };
 			}
@@ -6871,10 +6871,10 @@ namespace Catch {
 			};
 
 			template <typename Clock, typename Fun>
-			TimingOf<Clock, Fun, run_for_at_least_argument_t<Clock, Fun>> run_for_at_least(ClockDuration<Clock> how_long, int seed, Fun&& fun) {
+			TimingOf<Clock, Fun, run_for_at_least_argument_t<Clock, Fun>> run_for_at_least(ClockDuration<Clock> how_long, int seed, Fun &&fun) {
 				auto iters = seed;
 				while (iters < (1 << 30)) {
-					auto&& Timing = measure_one<Clock>(fun, iters, is_callable<Fun(Chronometer)>());
+					auto &&Timing = measure_one<Clock>(fun, iters, is_callable<Fun(Chronometer)>());
 
 					if (Timing.elapsed >= how_long) {
 						return { Timing.elapsed, std::move(Timing.result), iters };
@@ -6969,7 +6969,7 @@ namespace Catch {
 
 				OutlierClassification o;
 				for (; first != last; ++first) {
-					auto&& t = *first;
+					auto &&t = *first;
 					if (t < los) ++o.low_severe;
 					else if (t < lom) ++o.low_mild;
 					else if (t > his) ++o.high_severe;
@@ -7004,7 +7004,7 @@ namespace Catch {
 			}
 
 			template <typename Estimator, typename Iterator>
-			sample jackknife(Estimator&& estimator, Iterator first, Iterator last) {
+			sample jackknife(Estimator &&estimator, Iterator first, Iterator last) {
 				auto n = last - first;
 				auto second = std::next(first);
 				sample results;
@@ -7027,7 +7027,7 @@ namespace Catch {
 			double normal_quantile(double p);
 
 			template <typename Iterator, typename Estimator>
-			Estimate<double> bootstrap(double confidence_level, Iterator first, Iterator last, sample const &resample, Estimator&& estimator) {
+			Estimate<double> bootstrap(double confidence_level, Iterator first, Iterator last, sample const &resample, Estimator &&estimator) {
 				auto n_samples = last - first;
 
 				double point = estimator(first, last);
@@ -7143,7 +7143,7 @@ namespace Catch {
 				};
 				time_clock(1);
 				int iters = clock_cost_estimation_iterations;
-				auto&& r = run_for_at_least<Clock>(std::chrono::duration_cast<ClockDuration<Clock>>(clock_cost_estimation_time), iters, time_clock);
+				auto &&r = run_for_at_least<Clock>(std::chrono::duration_cast<ClockDuration<Clock>>(clock_cost_estimation_time), iters, time_clock);
 				std::vector<double> times;
 				int nsamples = static_cast<int>(std::ceil(time_limit / r.elapsed));
 				times.reserve(nsamples);
@@ -7299,7 +7299,7 @@ namespace Catch {
 			ExecutionPlan<FloatDuration<Clock>> prepare(const IConfig &cfg, Environment<FloatDuration<Clock>> env) const {
 				auto min_time = env.clock_resolution.mean * Detail::minimum_ticks;
 				auto run_time = std::max(min_time, std::chrono::duration_cast<decltype(min_time)>(cfg.benchmarkWarmupTime()));
-				auto&& test = Detail::run_for_at_least<Clock>(std::chrono::duration_cast<ClockDuration<Clock>>(run_time), 1, fun);
+				auto &&test = Detail::run_for_at_least<Clock>(std::chrono::duration_cast<ClockDuration<Clock>>(run_time), 1, fun);
 				int new_iters = static_cast<int>(std::ceil(min_time * test.iterations / test.elapsed));
 				return { new_iters, test.elapsed / test.iterations * new_iters * cfg.benchmarkSamples(), fun, std::chrono::duration_cast<FloatDuration<Clock>>(cfg.benchmarkWarmupTime()), Detail::warmup_iterations };
 			}
@@ -7396,7 +7396,7 @@ namespace Catch {
 					new(&data) T(other.stored_object());
 				}
 
-				ObjectStorage(ObjectStorage&& other)
+				ObjectStorage(ObjectStorage &&other)
 				{
 					new(&data) T(std::move(other.stored_object()));
 				}
@@ -8056,7 +8056,7 @@ namespace Catch {
 		RunContext( RunContext const& ) = delete;
 		RunContext &operator =( RunContext const& ) = delete;
 
-		explicit RunContext( IConfigPtr const &_config, IStreamingReporterPtr&& reporter );
+		explicit RunContext( IConfigPtr const &_config, IStreamingReporterPtr &&reporter );
 
 		~RunContext() override;
 
@@ -10252,11 +10252,11 @@ namespace Catch {
 namespace Catch {
 
 	Colour::Colour( Code _colourCode ) { use( _colourCode ); }
-	Colour::Colour( Colour&& other ) noexcept {
+	Colour::Colour( Colour &&other ) noexcept {
 		m_moved = other.m_moved;
 		other.m_moved = true;
 	}
-	Colour &Colour::operator=( Colour&& other ) noexcept {
+	Colour &Colour::operator=( Colour &&other ) noexcept {
 		m_moved = other.m_moved;
 		other.m_moved  = true;
 		return *this;
@@ -11019,8 +11019,8 @@ namespace Catch {
 	public:
 		ListeningReporter();
 
-		void addListener( IStreamingReporterPtr&& listener );
-		void addReporter( IStreamingReporterPtr&& reporter );
+		void addListener( IStreamingReporterPtr &&listener );
+		void addReporter( IStreamingReporterPtr &&reporter );
 
 	public: // IStreamingReporter
 
@@ -11845,7 +11845,7 @@ namespace Catch {
 		getResultCapture().pushScopedMessage( m_info );
 	}
 
-	ScopedMessage::ScopedMessage( ScopedMessage&& old )
+	ScopedMessage::ScopedMessage( ScopedMessage &&old )
 	: m_info( old.m_info ), m_moved()
 	{
 		old.m_moved = true;
@@ -12699,14 +12699,14 @@ namespace Catch {
 			auto getGenerator() const -> GeneratorBasePtr const &override {
 				return m_generator;
 			}
-			void setGenerator( GeneratorBasePtr&& generator ) override {
+			void setGenerator( GeneratorBasePtr &&generator ) override {
 				m_generator = std::move( generator );
 			}
 		};
 		GeneratorTracker::~GeneratorTracker() {}
 	}
 
-	RunContext::RunContext(IConfigPtr const &_config, IStreamingReporterPtr&& reporter)
+	RunContext::RunContext(IConfigPtr const &_config, IStreamingReporterPtr &&reporter)
 	:   m_runInfo(_config->name()),
 		m_context(getCurrentMutableContext()),
 		m_config(_config),
@@ -14147,7 +14147,7 @@ namespace Catch {
 		return ret;
 	}
 
-	TestCase::TestCase( ITestInvoker *testCase, TestCaseInfo&& info ) : TestCaseInfo( std::move(info) ), test( testCase ) {}
+	TestCase::TestCase( ITestInvoker *testCase, TestCaseInfo &&info ) : TestCaseInfo( std::move(info) ), test( testCase ) {}
 
 	TestCase TestCase::withName( std::string const &_newName ) const {
 		TestCase other( *this );
@@ -15600,14 +15600,14 @@ namespace {
 		m_fmt(fmt)
 	{}
 
-	XmlWriter::ScopedElement::ScopedElement( ScopedElement&& other ) noexcept
+	XmlWriter::ScopedElement::ScopedElement( ScopedElement &&other ) noexcept
 	:   m_writer( other.m_writer ),
 		m_fmt(other.m_fmt)
 	{
 		other.m_writer = nullptr;
 		other.m_fmt = XmlFormatting::None;
 	}
-	XmlWriter::ScopedElement &XmlWriter::ScopedElement::operator=( ScopedElement&& other ) noexcept {
+	XmlWriter::ScopedElement &XmlWriter::ScopedElement::operator=( ScopedElement &&other ) noexcept {
 		if ( m_writer ) {
 			m_writer->endElement();
 		}
@@ -15795,7 +15795,7 @@ namespace Catch {
 	std::string serializeFilters( std::vector<std::string> const &container ) {
 		ReusableStringStream oss;
 		bool first = true;
-		for (auto&& filter : container)
+		for (auto &&filter : container)
 		{
 			if (!first)
 				oss << ' ';
@@ -17083,11 +17083,11 @@ namespace Catch {
 		m_preferences.shouldReportAllAssertions = true;
 	}
 
-	void ListeningReporter::addListener( IStreamingReporterPtr&& listener ) {
+	void ListeningReporter::addListener( IStreamingReporterPtr &&listener ) {
 		m_listeners.push_back( std::move( listener ) );
 	}
 
-	void ListeningReporter::addReporter(IStreamingReporterPtr&& reporter) {
+	void ListeningReporter::addReporter(IStreamingReporterPtr &&reporter) {
 		assert(!m_reporter && "Listening reporter can wrap only 1 real reporter");
 		m_reporter = std::move( reporter );
 		m_preferences.shouldRedirectStdOut = m_reporter->getPreferences().shouldRedirectStdOut;

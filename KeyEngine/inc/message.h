@@ -37,12 +37,12 @@ public:
 		Message::Type type );
 	virtual ~Message() noexcept;
 	Message( const Message &rhs ) = delete;
-	Message &operator=( const Message &rhs ) = delete;
-	Message( Message&& rhs ) noexcept;
-	Message &operator=( Message&& rhs ) noexcept;
+	Message& operator=( const Message &rhs ) = delete;
+	Message( Message &&rhs ) noexcept;
+	Message& operator=( Message &&rhs ) noexcept;
 
 	Message::Type getType() const noexcept;
-	class Entity *getSender() noexcept;
+	class Entity* getSender() noexcept;
 	std::vector<class Entity*>& getReceivers() noexcept;
 	bool isHandled() const noexcept;
 	void setHandled( bool b) noexcept;
@@ -66,10 +66,10 @@ public:
 	MessageCall( class Entity *psrc, const std::vector<class Entity*>& pDests,
 		Message::Type type, std::unique_ptr<Operation> df );
 	virtual ~MessageCall() noexcept = default;
-	MessageCall( MessageCall&& rhs ) noexcept;
-	MessageCall &operator=( MessageCall&& rhs ) noexcept;
+	MessageCall( MessageCall &&rhs ) noexcept;
+	MessageCall& operator=( MessageCall &&rhs ) noexcept;
 
-	class Operation *getCallable() const noexcept;
+	class Operation* getCallable() const noexcept;
 };
 
 
@@ -102,7 +102,7 @@ public:
 
 	virtual ~MessageData() noexcept = default;
 	
-	MessageData( MessageData&& rhs ) noexcept
+	MessageData( MessageData &&rhs ) noexcept
 		:
 		Message{std::move( rhs )},
 		m_pPayload{std::move( rhs.m_pPayload )}
@@ -110,14 +110,14 @@ public:
 
 	}
 	
-	MessageData &operator=( MessageData&& rhs ) noexcept
+	MessageData& operator=( MessageData &&rhs ) noexcept
 	{
 		Message::operator=( std::move( rhs ) );
 		std::swap( m_pPayload, rhs.m_pPayload );
 		return *this;
 	}
 	
-	T *getPayload() const noexcept
+	T* getPayload() const noexcept
 	{
 		return m_pPayload.get();
 	}

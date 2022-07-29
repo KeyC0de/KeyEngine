@@ -70,7 +70,7 @@ public:
 	DirectX::XMVECTOR getRight() const noexcept;
 	DirectX::XMVECTOR getUp() const noexcept;
 	void setPosition( const DirectX::XMFLOAT3 &pos ) noexcept;
-	const std::string &getName() const noexcept;
+	const std::string& getName() const noexcept;
 	void connectEffectsToRenderer( ren::Renderer &ren );
 };
 

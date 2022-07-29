@@ -1,7 +1,7 @@
 #include "operation.h"
 
 
-Operation::Operation( TF&& f )
+Operation::Operation( TF &&f )
 	:
 	m_f{std::forward<TF>( f )}
 {
@@ -13,14 +13,14 @@ Operation::~Operation() noexcept
 	reset();
 }
 
-Operation::Operation( Operation&& rhs ) noexcept
+Operation::Operation( Operation &&rhs ) noexcept
 	:
 	m_f{std::move( rhs.m_f )}
 {
 
 }
 
-Operation &Operation::operator=( Operation&& rhs ) noexcept
+Operation& Operation::operator=( Operation &&rhs ) noexcept
 {
 	this->swap( rhs );
 	return *this;

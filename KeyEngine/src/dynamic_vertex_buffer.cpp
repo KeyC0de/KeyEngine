@@ -6,12 +6,12 @@
 namespace ver
 {
 
-const VertexLayout::VertexMember &VertexLayout::fetchByIndex( size_t i ) const cond_noex
+const VertexLayout::VertexMember& VertexLayout::fetchByIndex( size_t i ) const cond_noex
 {
 	return m_vertexMembers[i];
 }
 
-VertexLayout &VertexLayout::add( MemberType type ) cond_noex
+VertexLayout& VertexLayout::add( MemberType type ) cond_noex
 {
 	if ( !hasType( type ) )
 	{
@@ -175,7 +175,7 @@ void Buffer::resize( size_t newSize ) cond_noex
 	}
 }
 
-const char *Buffer::getRawBytes() const cond_noex
+const char* Buffer::getRawBytes() const cond_noex
 {
 	return m_v.data();
 }
@@ -213,7 +213,7 @@ Buffer::Buffer( VertexLayout vertLayout,
 	}
 }
 
-const VertexLayout &Buffer::getLayout() const noexcept
+const VertexLayout& Buffer::getLayout() const noexcept
 {
 	return m_vertexLayout;
 }

@@ -37,7 +37,7 @@ class Graphics
 			const std::string &msg ) noexcept;
 
 		const std::string getType() const noexcept override final;
-		virtual const char *what() const noexcept override final;
+		virtual const char* what() const noexcept override final;
 	};
 
 	class Adapter final
@@ -47,8 +47,8 @@ class Graphics
 	public:
 		Adapter( IDXGIAdapter *pAdapter );
 	
-		const DXGI_ADAPTER_DESC *getDesc() const noexcept;
-		IDXGIAdapter *getAdapter() const noexcept;
+		const DXGI_ADAPTER_DESC* getDesc() const noexcept;
+		IDXGIAdapter* getAdapter() const noexcept;
 	};
 
 private:
@@ -85,9 +85,9 @@ public:
 	Graphics( HWND hWnd, int width, int height );
 	~Graphics();
 	Graphics( const Graphics &rhs ) = delete;
-	Graphics &operator=( const Graphics &rhs ) = delete;
-	Graphics( Graphics&& rhs ) = delete;
-	Graphics &operator=( Graphics&& rhs ) = delete;
+	Graphics& operator=( const Graphics &rhs ) = delete;
+	Graphics( Graphics &&rhs ) = delete;
+	Graphics& operator=( Graphics &&rhs ) = delete;
 
 #if defined _FLIP_PRESENT
 	void makeWindowAssociationWithFactory( HWND hWnd, UINT flags = DXGI_MWA_NO_WINDOW_CHANGES );
@@ -98,14 +98,14 @@ public:
 	void draw( unsigned count ) cond_noex;
 	void drawIndexed( unsigned count ) cond_noex;
 	void drawIndexedInstanced( unsigned indexCount, unsigned instanceCount ) cond_noex;
-	ColorBGRA *&getCpuBuffer();
+	ColorBGRA*& getCpuBuffer();
 	void setViewMatrix( const DirectX::XMMATRIX &cam ) noexcept;
 	void setProjectionMatrix( const DirectX::XMMATRIX &proj ) noexcept;
 	DirectX::XMMATRIX getViewMatrix() const noexcept;
 	DirectX::XMMATRIX getProjectionMatrix() const noexcept;
 	unsigned getClientWidth() const noexcept;
 	unsigned getClientHeight() const noexcept;
-	IRenderTargetView *getRenderTarget() const noexcept;
+	IRenderTargetView* getRenderTarget() const noexcept;
 	std::shared_ptr<IRenderTargetView> shareRenderTarget();
 #if defined _DEBUG && !defined NDEBUG
 	DxgiInfoQueue &getInfoQueue() const noexcept;

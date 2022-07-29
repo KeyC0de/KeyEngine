@@ -321,11 +321,11 @@ namespace DirectX
     public:
         ScratchImage() noexcept
             : m_nimages(0), m_size(0), m_metadata{}, m_image(nullptr), m_memory(nullptr) {}
-        ScratchImage(ScratchImage&& moveFrom) noexcept
+        ScratchImage(ScratchImage &&moveFrom) noexcept
             : m_nimages(0), m_size(0), m_metadata{}, m_image(nullptr), m_memory(nullptr) { *this = std::move(moveFrom); }
         ~ScratchImage() { Release(); }
 
-        ScratchImage &__cdecl operator= (ScratchImage&& moveFrom) noexcept;
+        ScratchImage &__cdecl operator= (ScratchImage &&moveFrom) noexcept;
 
         ScratchImage(const ScratchImage&) = delete;
         ScratchImage &operator=(const ScratchImage&) = delete;
@@ -371,10 +371,10 @@ namespace DirectX
     {
     public:
         Blob() noexcept : m_buffer(nullptr), m_size(0) {}
-        Blob(Blob&& moveFrom) noexcept : m_buffer(nullptr), m_size(0) { *this = std::move(moveFrom); }
+        Blob(Blob &&moveFrom) noexcept : m_buffer(nullptr), m_size(0) { *this = std::move(moveFrom); }
         ~Blob() { Release(); }
 
-        Blob &__cdecl operator= (Blob&& moveFrom) noexcept;
+        Blob &__cdecl operator= (Blob &&moveFrom) noexcept;
 
         Blob(const Blob&) = delete;
         Blob &operator=(const Blob&) = delete;

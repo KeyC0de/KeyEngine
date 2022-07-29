@@ -34,7 +34,7 @@ class Game
 			const std::string &msg ) noexcept;
 
 		const std::string getType() const noexcept override final;
-		virtual const char *what() const noexcept override final;
+		virtual const char* what() const noexcept override final;
 	};
 protected:
 	static inline Game *m_pInstance;
@@ -50,22 +50,22 @@ public:
 protected:
 	Game( int width, int height, const std::string &title, unsigned nWindows = 1 );
 	Game( const Game &rhs ) = delete;
-	Game &operator=( const Game &rhs ) = delete;
-	Game &operator=( Game&& rhs ) = delete;
-	Game( Game&& rhs ) = delete;
+	Game& operator=( const Game &rhs ) = delete;
+	Game& operator=( Game &&rhs ) = delete;
+	Game( Game &&rhs ) = delete;
 
 	float calculateDt();
 	std::optional<Window*> getForegroundWindow() noexcept;
 	void setState( std::unique_ptr<State> pNewState, Mouse &mouse );
-	State *getState() noexcept;
+	State* getState() noexcept;
 private:
-	ImguiManager *createImgui() noexcept;
+	ImguiManager* createImgui() noexcept;
 };
 
 class Sandbox3d
 	: public Game<Sandbox3d>
 {
-	static inline CameraManager &m_cameraMan = CameraManager::getInstance();
+	static inline CameraManager& m_cameraMan = CameraManager::getInstance();
 	ren::Renderer3d m_renderer;
 	std::unique_ptr<PointLight> m_pPointLight1;
 	//std::unique_ptr<PointLight> m_pPointLight2;

@@ -110,9 +110,9 @@ private:
 public:
 	~Mouse() noexcept = default;
 	Mouse( const Mouse &rhs ) = delete;
-	Mouse &operator=( const Mouse &rhs ) = delete;
-	Mouse( Mouse&& rhs ) noexcept;
-	Mouse &operator=( Mouse&& rhs ) noexcept;
+	Mouse& operator=( const Mouse &rhs ) = delete;
+	Mouse( Mouse &&rhs ) noexcept;
+	Mouse& operator=( Mouse &&rhs ) noexcept;
 
 	std::pair<int, int> getPosition() const noexcept;
 	int getX() const noexcept;

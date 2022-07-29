@@ -37,11 +37,11 @@ private:
 	public:
 		~WindowClass() noexcept;
 		WindowClass( const WindowClass &rhs ) = delete;
-		WindowClass &operator=( const WindowClass &rhs ) = delete;
-		WindowClass( WindowClass&& rhs ) noexcept;
-		WindowClass &operator=( WindowClass&& rhs ) noexcept;
+		WindowClass& operator=( const WindowClass &rhs ) = delete;
+		WindowClass( WindowClass &&rhs ) noexcept;
+		WindowClass& operator=( WindowClass &&rhs ) noexcept;
 
-		static WindowClass &getInstance( const std::string &name );
+		static WindowClass& getInstance( const std::string &name );
 		static void resetInstance();
 		std::string getName() noexcept;
 	};
@@ -54,9 +54,9 @@ private:
 	//	Dialog( const std::wstring &name );
 	//	~Dialog() noexcept;
 	//	Dialog( const Dialog &rhs ) = delete;
-	//	Dialog &operator=( const Dialog &rhs ) = delete;
-	//	Dialog( Dialog&& rhs ) noexcept;
-	//	Dialog &operator=( Dialog&& rhs ) noexcept;
+	//	Dialog& operator=( const Dialog &rhs ) = delete;
+	//	Dialog( Dialog &&rhs ) noexcept;
+	//	Dialog& operator=( Dialog &&rhs ) noexcept;
 	//
 	//	static LRESULT CALLBACK dialogProc( HWND hWnd, UINT uMsg, WPARAM wParam,
 	//		LPARAM lParam );
@@ -92,13 +92,13 @@ public:
 	Window( int width, int height, const char *name );
 	~Window();
 	Window( const Window &rhs ) = delete;
-	Window &operator=( const Window &rhs ) = delete;
+	Window& operator=( const Window &rhs ) = delete;
 	Window( Window &&rhs ) noexcept;
-	Window &operator=( Window &&rhs ) noexcept;
+	Window& operator=( Window &&rhs ) noexcept;
 	
-	static Keyboard &getKeyboard() noexcept;
-	static Mouse &getMouse() noexcept;
-	static WindowClass &getWindowClass() noexcept;
+	static Keyboard& getKeyboard() noexcept;
+	static Mouse& getMouse() noexcept;
+	static WindowClass& getWindowClass() noexcept;
 	static bool isDescendantOf( HWND parent, HWND hWnd ) noexcept;
 	std::optional<int> messageLoop() noexcept;
 	void setEnable( bool b );
@@ -123,7 +123,7 @@ public:
 	bool isMinimized() const noexcept;
 	bool isMaximized() const noexcept;
 	operator bool() const noexcept;
-	Graphics &getGraphics();
+	Graphics& getGraphics();
 	HWND getHandle() const noexcept;
 	HDC getDc() const noexcept;
 	WINDOWINFO getInfo() const noexcept;

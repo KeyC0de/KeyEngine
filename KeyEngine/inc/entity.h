@@ -46,9 +46,9 @@ private:
 public:
 	virtual ~Entity() noexcept;
 	Entity( const Entity &rhs ) = delete;
-	Entity &operator=( const Entity &rhs ) = delete;
-	Entity( Entity&& rhs ) noexcept;
-	Entity &operator=( Entity&& rhs ) noexcept;
+	Entity& operator=( const Entity &rhs ) = delete;
+	Entity( Entity &&rhs ) noexcept;
+	Entity& operator=( Entity &&rhs ) noexcept;
 
 	void printInfo() const noexcept;
 	//===================================================
@@ -58,7 +58,7 @@ public:
 	inline EntityId getId() const noexcept;
 	std::string getName() const noexcept;
 	Category getCategory() const noexcept;
-	Entity *getParent() const noexcept;
+	Entity* getParent() const noexcept;
 	void addChild( Entity *child ) noexcept;
 	std::vector<Entity*>& getChildren() noexcept;
 	const std::vector<Entity*>& getChildren() const noexcept;

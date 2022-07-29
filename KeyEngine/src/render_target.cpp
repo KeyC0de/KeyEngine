@@ -116,7 +116,7 @@ void IRenderTargetView::bindRenderSurface( Graphics &gph,
 }
 
 void IRenderTargetView::clear( Graphics &gph,
-	const std::array<float, 4>& color ) cond_noex
+	const std::array<float, 4> &color ) cond_noex
 {
 	getContext( gph )->ClearRenderTargetView( m_pRtv.Get(),
 		color.data() );
@@ -133,7 +133,7 @@ unsigned IRenderTargetView::getHeight() const noexcept
 	return m_height;
 }
 
-ID3D11RenderTargetView *IRenderTargetView::getRenderTargetView() const noexcept
+ID3D11RenderTargetView* IRenderTargetView::getRenderTargetView() const noexcept
 {
 	return m_pRtv.Get();
 }
@@ -238,7 +238,7 @@ RenderTargetShaderInput::RenderTargetShaderInput( Graphics &gph,
 	unsigned height,
 	unsigned slot )
 	:
-	IRenderTargetView(gph, width, height),
+	IRenderTargetView{gph, width, height},
 	m_slot(slot)
 {
 	mwrl::ComPtr<ID3D11Resource> pRsc;

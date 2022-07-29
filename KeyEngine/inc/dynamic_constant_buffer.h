@@ -165,28 +165,28 @@ public:
 	std::pair<size_t, const CBElement*> calculateArrayIndexingOffset( size_t offset,
 		size_t index ) const cond_noex;
 	// [] only works for Structs; access member (child node in tree) by name
-	CBElement &operator[]( const std::string &key ) cond_noex;
-	const CBElement &operator[]( const std::string &key ) const cond_noex;
+	CBElement& operator[]( const std::string &key ) cond_noex;
+	const CBElement& operator[]( const std::string &key ) const cond_noex;
 	// T() only works for Arrays; gets the array class layout object
 	// needed to further configure an array's class
-	CBElement &T() cond_noex;
-	const CBElement &T() const cond_noex;
+	CBElement& T() cond_noex;
+	const CBElement& T() const cond_noex;
 	// offset based- functions only work after finalization!
 	size_t getOffsetBegin() const cond_noex;
 	size_t getOffsetEnd() const cond_noex;
 	// get size in bytes derived from offsets
 	size_t getSizeInBytes() const cond_noex;
 	// only works for Structs; add CBElement to struct
-	CBElement &add( ElementType addedType, std::string name ) cond_noex;
+	CBElement& add( ElementType addedType, std::string name ) cond_noex;
 	template<ElementType typeAdded>
-	CBElement &add( std::string key ) cond_noex
+	CBElement& add( std::string key ) cond_noex
 	{
 		return add( typeAdded, std::move( key ) );
 	}
 	// only works for Arrays; set the class and the # of elements
-	CBElement &set( ElementType addedType, size_t size ) cond_noex;
+	CBElement& set( ElementType addedType, size_t size ) cond_noex;
 	template<ElementType typeAdded>
-	CBElement &set( size_t size ) cond_noex
+	CBElement& set( size_t size ) cond_noex
 	{
 		return set( typeAdded, size );
 	}
@@ -268,10 +268,10 @@ class RawLayout final
 public:
 	RawLayout() noexcept;
 	// key into the root Struct
-	CBElement &operator[]( const std::string &key ) cond_noex;
+	CBElement& operator[]( const std::string &key ) cond_noex;
 	// add an element to the root Struct
 	template<ElementType type>
-	CBElement &add( const std::string &key ) cond_noex
+	CBElement& add( const std::string &key ) cond_noex
 	{
 		return m_pLayoutRoot->add<type>( key );
 	}
@@ -292,7 +292,7 @@ class CookedLayout final
 	friend class Buffer;
 public:
 	// key into the root Struct (const to disable mutation of the layout)
-	const CBElement &operator[]( const std::string &key ) const cond_noex;
+	const CBElement& operator[]( const std::string &key ) const cond_noex;
 	// get a share on layout tree root
 	std::shared_ptr<CBElement> shareRootElement() const noexcept;
 private:
@@ -423,7 +423,7 @@ public:
 	}
 	// assignment for writing to as a supported CPUType
 	template<typename T>
-	T &operator=( const T &rhs ) const cond_noex
+	T& operator=( const T &rhs ) const cond_noex
 	{
 		static_assert(ReverseMap<std::remove_const_t<T>>::valid,
 			"Unsupported CPUType used in assignment");
@@ -438,10 +438,10 @@ class LayoutMap
 	static inline LayoutMap *m_pInstance;
 	std::unordered_map<std::string, std::shared_ptr<con::CBElement>> m_map;
 public:
-	static con::CookedLayout fetch( con::RawLayout&& cbLayout ) cond_noex;
+	static con::CookedLayout fetch( con::RawLayout &&cbLayout ) cond_noex;
 	static void resetInstance();
 private:
-	static LayoutMap &getInstance() noexcept;
+	static LayoutMap& getInstance() noexcept;
 };
 
 
@@ -456,25 +456,25 @@ class Buffer final
 	std::vector<char> m_buffer;
 public:
 	// various resources can be used to construct a Buffer
-	Buffer( RawLayout&& lay ) cond_noex;
+	Buffer( RawLayout &&lay ) cond_noex;
 	Buffer( const CookedLayout &lay ) cond_noex;
-	Buffer( CookedLayout&& lay ) cond_noex;
+	Buffer( CookedLayout &&lay ) cond_noex;
 	~Buffer() noexcept;
 	Buffer( const Buffer &rhs ) noexcept;
-	Buffer &operator==( const Buffer &rhs ) noexcept;
+	Buffer& operator==( const Buffer &rhs ) noexcept;
 	// have to be careful with this one...
 	// the buffer that has once been pilfered must not be used :x
-	Buffer( Buffer&& rhs ) noexcept;
-	Buffer &operator=( Buffer&& rhs ) noexcept;
+	Buffer( Buffer &&rhs ) noexcept;
+	Buffer& operator=( Buffer &&rhs ) noexcept;
 
 	// how you begin indexing into buffer (root is always Struct)
 	ElementView operator[]( const std::string &key ) cond_noex;
 	// if Buffer is const, you only get to index into the buffer with a read-only proxy
 	ConstElementView operator[]( const std::string &key ) const cond_noex;
-	const char *getRawBytes() const noexcept;
+	const char* getRawBytes() const noexcept;
 	// size of the raw byte buffer
 	size_t getSizeInBytes() const noexcept;
-	const CBElement &getRootLayoutElement() const noexcept;
+	const CBElement& getRootLayoutElement() const noexcept;
 	// copy bytes from another buffer (layouts must match)
 	void copyFrom( const Buffer& ) cond_noex;
 	// return another sptr to the layout root

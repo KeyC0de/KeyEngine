@@ -16,11 +16,11 @@ class Operation
 	using TF = std::function<void()>;
 	TF m_f;
 private:
-	Operation( TF&& f );
+	Operation( TF &&f );
 public:
 	template <typename TFunction,
 		typename... TArgs>
-	static std::unique_ptr<Operation> setup( TFunction&& f,
+	static std::unique_ptr<Operation> setup( TFunction &&f,
 		TArgs&&... args )
 	{// function pointers
 		return std::unique_ptr<Operation>( new Operation(
@@ -32,8 +32,8 @@ public:
 	template <typename TMethod,
 		typename T,
 		typename ...TArgs>
-	static std::unique_ptr<Operation> setup( TMethod&& mf,
-		T&& obj,
+	static std::unique_ptr<Operation> setup( TMethod &&mf,
+		T &&obj,
 		TArgs&& ...args )
 	{// member function pointers
 		return std::unique_ptr<Operation>( new Operation(
@@ -45,9 +45,9 @@ public:
 
 	~Operation() noexcept;
 	Operation( const Operation &rhs ) = delete;
-	Operation &operator=( const Operation &rhs ) = delete;
-	Operation( Operation&& rhs ) noexcept;
-	Operation &operator=( Operation&& rhs ) noexcept;
+	Operation& operator=( const Operation &rhs ) = delete;
+	Operation( Operation &&rhs ) noexcept;
+	Operation& operator=( Operation &&rhs ) noexcept;
 
 	void operator()() const;
 	void swap( Operation &rhs ) noexcept;

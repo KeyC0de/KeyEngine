@@ -69,7 +69,7 @@ SoundManager::Channel::~Channel() noexcept
 	}
 }
 
-SoundManager::Channel::Channel( Channel&& rhs ) cond_noex
+SoundManager::Channel::Channel( Channel &&rhs ) cond_noex
 	:
 	m_pSourceVoice{rhs.m_pSourceVoice},
 	m_pSound{rhs.m_pSound}
@@ -78,7 +78,7 @@ SoundManager::Channel::Channel( Channel&& rhs ) cond_noex
 	rhs.m_pSound = nullptr;
 }
 
-auto SoundManager::Channel::operator=( Channel&& rhs ) cond_noex -> Channel&
+auto SoundManager::Channel::operator=( Channel &&rhs ) cond_noex -> Channel&
 {
 	m_pSourceVoice = rhs.m_pSourceVoice;
 	m_pSound = rhs.m_pSound;
@@ -248,13 +248,13 @@ void SoundManager::Channel::rechannel( const Sound *pOldSound,
 	m_pSound = pNewSound;
 }
 
-Sound *SoundManager::Channel::getSound() const cond_noex
+Sound* SoundManager::Channel::getSound() const cond_noex
 {
 	ASSERT( m_pSound, "Sound is null!" );
 	return m_pSound;
 }
 
-SoundManager &SoundManager::getInstance( WAVEFORMATEXTENSIBLE *format )
+SoundManager& SoundManager::getInstance( WAVEFORMATEXTENSIBLE *format )
 {
 	static SoundManager soundManager{format};
 	return soundManager;
@@ -528,7 +528,7 @@ Sound::Sound( const char *zsFilename,
 	m_pXaudioBuffer->Flags = XAUDIO2_END_OF_STREAM;
 }
 
-Sound::Sound( Sound&& rhs ) cond_noex
+Sound::Sound( Sound &&rhs ) cond_noex
 	:
 	m_name{std::move( rhs.m_name )},
 	m_submixName{std::move( rhs.m_submixName )}
@@ -547,7 +547,7 @@ Sound::Sound( Sound&& rhs ) cond_noex
 	rhs.m_condVar.notify_all();
 }
 
-Sound &Sound::operator=( Sound&& rhs ) cond_noex
+Sound& Sound::operator=( Sound &&rhs ) cond_noex
 {
 	m_name = std::move( rhs.m_name );
 	m_submixName = std::move( rhs.m_submixName );
@@ -660,7 +660,7 @@ void SoundManager::Submix::setVolume( float volume ) cond_noex
 	m_pSubmixVoice->SetVolume( volume );
 }
 
-SoundManager::Submix::Submix( Submix&& rhs ) cond_noex
+SoundManager::Submix::Submix( Submix &&rhs ) cond_noex
 	:
 	m_name{std::move( rhs.m_name )},
 	m_outputVoiceSendDesc{std::move( rhs.m_outputVoiceSendDesc )},
@@ -671,7 +671,7 @@ SoundManager::Submix::Submix( Submix&& rhs ) cond_noex
 	rhs.m_pSubmixVoice = nullptr;
 }
 
-SoundManager::Submix &SoundManager::Submix::operator=( Submix&& rhs ) cond_noex
+SoundManager::Submix &SoundManager::Submix::operator=( Submix &&rhs ) cond_noex
 {
 	if ( this != &rhs )
 	{

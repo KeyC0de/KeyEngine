@@ -14,7 +14,7 @@ ThreadPool::ThreadPool( std::size_t nthreads,
 	}
 }
 
-ThreadPool &ThreadPool::getInstance( std::size_t nThreads,
+ThreadPool& ThreadPool::getInstance( std::size_t nThreads,
 	bool bEnabled )
 {
 	static ThreadPool instance{nThreads, bEnabled};
@@ -26,7 +26,7 @@ ThreadPool::~ThreadPool() noexcept
 	stop();
 }
 
-ThreadPool::ThreadPool( ThreadPool&& rhs ) noexcept
+ThreadPool::ThreadPool( ThreadPool &&rhs ) noexcept
 	:
 	m_bEnabled{std::move( rhs.m_bEnabled.load( std::memory_order_relaxed ) )},
 	m_pool{std::move( rhs.m_pool )},
@@ -35,7 +35,7 @@ ThreadPool::ThreadPool( ThreadPool&& rhs ) noexcept
 
 }
 
-ThreadPool &ThreadPool::operator=( ThreadPool&& rhs ) noexcept
+ThreadPool& ThreadPool::operator=( ThreadPool &&rhs ) noexcept
 {
 	m_bEnabled.store( rhs.m_bEnabled.load( std::memory_order_relaxed ) );
 	std::swap( m_pool, rhs.m_pool );

@@ -2,7 +2,7 @@
 #include "mouse.h"
 
 
-Mouse::Mouse( Mouse&& rhs ) noexcept
+Mouse::Mouse( Mouse &&rhs ) noexcept
 	:
 	m_x{std::move( rhs.m_x )},
 	m_y{std::move( rhs.m_y )},
@@ -19,7 +19,7 @@ Mouse::Mouse( Mouse&& rhs ) noexcept
 	rhs.m_rawDeltaBuffer = {};
 }
 
-Mouse &Mouse::operator=( Mouse&& rhs ) noexcept
+Mouse& Mouse::operator=( Mouse &&rhs ) noexcept
 {
 	m_x = rhs.m_x;
 	m_y = rhs.m_y;

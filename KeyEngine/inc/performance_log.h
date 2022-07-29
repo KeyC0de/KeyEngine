@@ -26,7 +26,7 @@ public:
 	PerfLog( const std::string &outFileName = "perfTest.txt" ) noexcept;
 	~PerfLog();
 	PerfLog( const PerfLog &rhs ) = delete;
-	PerfLog &operator=( const PerfLog &rhs ) = delete;
+	PerfLog& operator=( const PerfLog &rhs ) = delete;
 
 	void start( const std::string &lbl = "" ) noexcept;
 	void lap( const std::string &lbl = "" ) noexcept;

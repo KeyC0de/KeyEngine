@@ -31,7 +31,7 @@ Game<T>::Game( int width,
 }
 
 template <typename T>
-ImguiManager *Game<T>::createImgui() noexcept
+ImguiManager* Game<T>::createImgui() noexcept
 {
 	if constexpr ( GraphicsMode::get() == GraphicsMode::_3D )
 	{
@@ -90,7 +90,7 @@ void Game<T>::setState( std::unique_ptr<State> pNewState,
 }
 
 template <typename T>
-State *Game<T>::getState() noexcept
+State* Game<T>::getState() noexcept
 {
 	return m_pCurrentState.get();
 }
@@ -149,7 +149,7 @@ const std::string Game<T>::GameException::getType() const noexcept
 }
 
 template<typename T>
-const char *Game<T>::GameException::what() const noexcept
+const char* Game<T>::GameException::what() const noexcept
 {
 	return KeyException::what();
 }

@@ -419,7 +419,7 @@ ElementView::Ptr::Ptr( ElementView *ref ) noexcept
 }
 
 
-Buffer::Buffer( RawLayout&& lay ) cond_noex
+Buffer::Buffer( RawLayout &&lay ) cond_noex
 	:
 Buffer{LayoutMap::fetch( std::move( lay ) )}
 {
@@ -434,7 +434,7 @@ Buffer::Buffer( const CookedLayout &lay ) cond_noex
 
 }
 
-Buffer::Buffer( CookedLayout&& lay ) cond_noex
+Buffer::Buffer( CookedLayout &&lay ) cond_noex
 	:
 	m_pLayoutRoot(lay.relinquishRoot()),
 	m_buffer(m_pLayoutRoot->getOffsetEnd())
@@ -458,7 +458,7 @@ Buffer &Buffer::operator==( const Buffer &rhs ) noexcept
 }
 #pragma warning( default : 4172 )
 
-Buffer::Buffer( Buffer&& rhs ) noexcept
+Buffer::Buffer( Buffer &&rhs ) noexcept
 	:
 	m_pLayoutRoot(std::move( rhs.m_pLayoutRoot )),
 	m_buffer(std::move( rhs.m_buffer ))
@@ -467,7 +467,7 @@ Buffer::Buffer( Buffer&& rhs ) noexcept
 	rhs.m_buffer.clear();
 }
 
-Buffer &Buffer::operator=( Buffer&& rhs ) noexcept
+Buffer &Buffer::operator=( Buffer &&rhs ) noexcept
 {
 	std::swap( m_pLayoutRoot, rhs.m_pLayoutRoot );
 	std::swap( m_buffer, rhs.m_buffer );
@@ -524,7 +524,7 @@ std::shared_ptr<CBElement> Buffer::shareLayoutRoot() const noexcept
 
 
 // LayoutMap
-con::CookedLayout LayoutMap::fetch( con::RawLayout&& cbLayout ) cond_noex
+con::CookedLayout LayoutMap::fetch( con::RawLayout &&cbLayout ) cond_noex
 {
 	auto sig = cbLayout.getSignature();
 	auto &map = getInstance().m_map;

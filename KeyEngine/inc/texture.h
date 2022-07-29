@@ -48,7 +48,7 @@ private:
 	//	\date	2022/02/18 19:14
 	template<typename F>
 	static void transformBitmap( Bitmap &bitmap,
-		F&& f )
+		F &&f )
 	{
 		const unsigned width = bitmap.getWidth();
 		const unsigned height = bitmap.getHeight();
@@ -68,7 +68,7 @@ private:
 	template<typename F>
 	static void transformFile( const std::string &pathIn,
 		const std::string &pathOut,
-		F&& f )
+		F &&f )
 	{
 		auto bitmap = Bitmap::loadFromFile( pathIn );
 		transformBitmap( bitmap,

@@ -21,7 +21,7 @@ Message::~Message() noexcept
 	//m_pReceivers.clear();
 }
 
-Message::Message( Message&& rhs ) noexcept
+Message::Message( Message &&rhs ) noexcept
 	:
 	m_bHandled{rhs.m_bHandled},
 	m_pSender{rhs.m_pSender},
@@ -34,7 +34,7 @@ Message::Message( Message&& rhs ) noexcept
 	rhs.m_pReceivers.clear();
 }
 
-Message &Message::operator=( Message&& rhs ) noexcept
+Message& Message::operator=( Message &&rhs ) noexcept
 {
 	m_bHandled = rhs.m_bHandled;
 	m_pSender = rhs.m_pSender;
@@ -53,7 +53,7 @@ Message::Type Message::getType() const noexcept
 	return m_type;
 }
 
-Entity *Message::getSender() noexcept
+Entity* Message::getSender() noexcept
 {
 	return m_pSender;
 }
@@ -85,7 +85,7 @@ MessageCall::MessageCall( Entity *psrc,
 
 }
 
-MessageCall::MessageCall( MessageCall&& rhs ) noexcept
+MessageCall::MessageCall( MessageCall &&rhs ) noexcept
 	:
 	Message{std::move( rhs )},
 	m_pFunc{std::move( rhs.m_pFunc )}
@@ -93,14 +93,14 @@ MessageCall::MessageCall( MessageCall&& rhs ) noexcept
 
 }
 
-MessageCall &MessageCall::operator=( MessageCall&& rhs ) noexcept
+MessageCall& MessageCall::operator=( MessageCall &&rhs ) noexcept
 {
 	Message::operator=( std::move( rhs ) );
 	std::swap( m_pFunc, rhs.m_pFunc );
 	return *this;
 }
 
-Operation *MessageCall::getCallable() const noexcept
+Operation* MessageCall::getCallable() const noexcept
 {
 	return m_pFunc.get();
 }

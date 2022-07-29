@@ -26,7 +26,7 @@ Entity::~Entity() noexcept
 	//EntityManager::getInstance().recycleEntityId( getId() );
 }
 
-Entity::Entity( Entity&& rhs ) noexcept
+Entity::Entity( Entity &&rhs ) noexcept
 	:
 	m_version{rhs.m_version},
 	m_index{rhs.m_index},
@@ -45,7 +45,7 @@ Entity::Entity( Entity&& rhs ) noexcept
 	}
 }
 
-Entity &Entity::operator=( Entity&& rhs ) noexcept
+Entity& Entity::operator=( Entity &&rhs ) noexcept
 {
 	std::swap( m_version, rhs.m_version );
 	std::swap( m_index, rhs.m_index );
@@ -101,7 +101,7 @@ Entity::Category Entity::getCategory() const noexcept
 	return m_category;
 }
 
-Entity *Entity::getParent() const noexcept
+Entity* Entity::getParent() const noexcept
 {
 	return m_pParent;
 }

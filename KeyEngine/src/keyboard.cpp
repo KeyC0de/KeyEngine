@@ -1,7 +1,7 @@
 #include "keyboard.h"
 
 
-Keyboard::Keyboard( Keyboard&& rhs ) noexcept
+Keyboard::Keyboard( Keyboard &&rhs ) noexcept
 	:
 	m_bAutorepeat{rhs.m_bAutorepeat},
 	m_keyStates{std::move( rhs.m_keyStates )},
@@ -13,7 +13,7 @@ Keyboard::Keyboard( Keyboard&& rhs ) noexcept
 	rhs.m_charBuffer = {};
 }
 
-Keyboard &Keyboard::operator=( Keyboard&& rhs ) noexcept
+Keyboard& Keyboard::operator=( Keyboard &&rhs ) noexcept
 {
 	m_bAutorepeat = rhs.m_bAutorepeat;
 	std::swap( m_keyStates, rhs.m_keyStates );

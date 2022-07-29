@@ -78,7 +78,7 @@ Window::WindowClass::~WindowClass() noexcept
 		GetModuleHandleW( nullptr ) );
 }
 
-Window::WindowClass::WindowClass( WindowClass&& rhs ) noexcept
+Window::WindowClass::WindowClass( WindowClass &&rhs ) noexcept
 	:
 	m_name{std::move( rhs.m_name )},
 	m_classAtom{rhs.m_classAtom}
@@ -86,7 +86,7 @@ Window::WindowClass::WindowClass( WindowClass&& rhs ) noexcept
 	m_pInstance = rhs.m_pInstance;
 }
 
-Window::WindowClass &Window::WindowClass::operator=( WindowClass&& rhs ) noexcept
+Window::WindowClass &Window::WindowClass::operator=( WindowClass &&rhs ) noexcept
 {
 	m_pInstance = rhs.m_pInstance;
 	m_name = std::move( rhs.m_name );
@@ -151,7 +151,7 @@ Window::Dialog::~Dialog() noexcept
 		GetModuleHandleW( nullptr ) );
 }
 
-Window::Dialog::Dialog( Dialog&& rhs ) noexcept
+Window::Dialog::Dialog( Dialog &&rhs ) noexcept
 	:
 	m_name{std::move( rhs.m_name )},
 	m_hWnd{rhs.m_hWnd}
@@ -159,7 +159,7 @@ Window::Dialog::Dialog( Dialog&& rhs ) noexcept
 
 }
 
-Window::Dialog &Window::Dialog::operator=( Dialog&& rhs ) noexcept
+Window::Dialog &Window::Dialog::operator=( Dialog &&rhs ) noexcept
 {
 	std::swap( m_name, rhs.m_name );
 	m_hWnd = rhs.m_hWnd;
@@ -329,7 +329,7 @@ Window::~Window()
 	DestroyWindow( m_hWnd );
 }
 
-Window::Window( Window&& rhs ) noexcept
+Window::Window( Window &&rhs ) noexcept
 	:
 	m_bCursorEnabled{std::move( rhs.m_bCursorEnabled )},
 	m_width{rhs.m_width},
@@ -349,7 +349,7 @@ Window::Window( Window&& rhs ) noexcept
 	rhs.m_rawInputBuffer = {};
 }
 
-Window &Window::operator=( Window&& rhs ) noexcept
+Window &Window::operator=( Window &&rhs ) noexcept
 {
 	std::swap( m_bCursorEnabled, rhs.m_bCursorEnabled );
 	m_width = rhs.m_width;

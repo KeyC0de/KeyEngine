@@ -47,10 +47,10 @@ public:
 	public:
 		Channel() = default;
 		Channel( const Channel &rhs ) = delete;
-		Channel &operator=( const Channel &rhs ) = delete;
+		Channel& operator=( const Channel &rhs ) = delete;
 		~Channel() noexcept;
-		Channel( Channel&& rhs ) cond_noex;
-		Channel &operator=( Channel&& rhs ) cond_noex;
+		Channel( Channel &&rhs ) cond_noex;
+		Channel& operator=( Channel &&rhs ) cond_noex;
 
 		bool setupChannel( SoundManager &soundManager, class Sound &sound );
 		void playSound( class Sound *sound, float volume );
@@ -75,9 +75,9 @@ public:
 		Submix( const std::string &name = "" );
 		~Submix() noexcept;
 		Submix( const Submix &rhs ) = delete;
-		Submix &operator=( const Submix &rhs ) = delete;
-		Submix( Submix&& rhs ) cond_noex;
-		Submix &operator=( Submix&& rhs ) cond_noex;
+		Submix& operator=( const Submix &rhs ) = delete;
+		Submix( Submix &&rhs ) cond_noex;
+		Submix& operator=( Submix &&rhs ) cond_noex;
 	
 		std::string getName() const cond_noex;
 		void setName( const std::string &name ) cond_noex;
@@ -100,12 +100,12 @@ public:
 	//	\function	getInstance
 	//	\brief  return the single instance of the class
 	//	\date	2020/10/24 1:48
-	static SoundManager &getInstance( WAVEFORMATEXTENSIBLE *format = nullptr );
+	static SoundManager& getInstance( WAVEFORMATEXTENSIBLE *format = nullptr );
 public:
 	SoundManager( const SoundManager &rhs ) = delete;
-	SoundManager &operator=( const SoundManager &rhs ) = delete;
-	SoundManager( SoundManager&& rhs ) = delete;
-	SoundManager &operator=( SoundManager&& rhs ) = delete;
+	SoundManager& operator=( const SoundManager &rhs ) = delete;
+	SoundManager( SoundManager &&rhs ) = delete;
+	SoundManager& operator=( SoundManager &&rhs ) = delete;
 	~SoundManager() noexcept;
 
 	void setMasterVolume( float volume = 1.0f );
@@ -167,10 +167,10 @@ public:
 	Sound( const char *zsFilename, const std::string &name = "",
 		const std::string &submixName = "" );
 	Sound( const Sound &rhs ) = delete;
-	Sound &operator=( const Sound &rhs ) = delete;
+	Sound& operator=( const Sound &rhs ) = delete;
 
-	Sound( Sound&& rhs ) cond_noex;
-	Sound &operator=( Sound&& rhs ) cond_noex;
+	Sound( Sound &&rhs ) cond_noex;
+	Sound& operator=( Sound &&rhs ) cond_noex;
 	~Sound() noexcept;
 
 	std::string getName() const cond_noex;

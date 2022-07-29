@@ -48,8 +48,8 @@ public:
 
 	KeyTimer( const KeyTimer &KeyTimer ) = delete;
 	KeyTimer &operator=( const KeyTimer &KeyTimer ) = delete;
-	KeyTimer( KeyTimer&& rhs ) = delete;
-	KeyTimer &operator=( KeyTimer&& rhs ) = delete;
+	KeyTimer( KeyTimer &&rhs ) = delete;
+	KeyTimer &operator=( KeyTimer &&rhs ) = delete;
 
 	void start() noexcept
 	{
