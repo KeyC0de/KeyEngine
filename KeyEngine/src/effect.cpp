@@ -68,7 +68,7 @@ void Effect::setEnabled( bool b ) noexcept
 	m_active = b;
 }
 
-const std::string &Effect::getTargetPassName() const noexcept
+const std::string& Effect::getTargetPassName() const noexcept
 {
 	return m_targetPassName;
 }

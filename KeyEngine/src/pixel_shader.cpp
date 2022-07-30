@@ -41,7 +41,7 @@ std::shared_ptr<PixelShader> PixelShader::fetch( Graphics &gph,
 		filepath );
 }
 
-ID3DBlob *PixelShader::getBytecode() const noexcept
+ID3DBlob* PixelShader::getBytecode() const noexcept
 {
 	return m_pPsBlob.Get();
 }

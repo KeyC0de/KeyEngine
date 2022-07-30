@@ -39,12 +39,12 @@ DXGI_RATIONAL queryRefreshRate( unsigned screenWidth, unsigned screenHeight, boo
 //	\brief  will be used to load and compile a shader at runtime
 //	\date	2019/12/30 17:28
 template<class TShader>
-static TShader *createShaderObject( ID3D11Device *pD3dDevice,
+static TShader* createShaderObject( ID3D11Device *pD3dDevice,
 	ID3DBlob *&pShaderBlob,
 	ID3D11ClassLinkage *pClassLinkage );
 
 template<>
-static ID3D11VertexShader *createShaderObject<ID3D11VertexShader>( ID3D11Device *pD3dDevice,
+static ID3D11VertexShader* createShaderObject<ID3D11VertexShader>( ID3D11Device *pD3dDevice,
 	ID3DBlob *&pShaderBlob,
 	ID3D11ClassLinkage *pClassLinkage )
 {
@@ -62,7 +62,7 @@ static ID3D11VertexShader *createShaderObject<ID3D11VertexShader>( ID3D11Device 
 }
 
 template<>
-static ID3D11PixelShader *createShaderObject<ID3D11PixelShader>( ID3D11Device *pD3dDevice,
+static ID3D11PixelShader* createShaderObject<ID3D11PixelShader>( ID3D11Device *pD3dDevice,
 	ID3DBlob *&pShaderBlob,
 	ID3D11ClassLinkage *pClassLinkage )
 {
@@ -80,7 +80,7 @@ static ID3D11PixelShader *createShaderObject<ID3D11PixelShader>( ID3D11Device *p
 }
 
 template<class TShader>
-TShader *loadShaderDynamically( ID3D11Device *pD3dDevice,
+TShader* loadShaderDynamically( ID3D11Device *pD3dDevice,
 	const std::wstring &fileName,
 	const std::string &entryPoint,
 	const std::string &profile,

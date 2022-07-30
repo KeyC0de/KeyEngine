@@ -36,7 +36,7 @@ PixelInputType main( VertexInputType input )
 	output.position = mul(output.position, viewMatrix);
 	output.position = mul(output.position, projectionMatrix);
 
-	//TODO: orient them to face the camera    
+	// #TODO: orient them to face the camera    
 
 	// Store the texture coordinates for the pixel shader.
 	output.tex = input.tex;

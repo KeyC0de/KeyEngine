@@ -61,7 +61,7 @@ namespace Assimp {
  *  little and big endian format. Don't attempt to instance the template directly. Use
  *  StreamReaderLE to read from a little-endian stream and StreamReaderBE to read from a
  *  BE stream. The class expects that the endianness of any input data is known at
- *  compile-time, which should usually be true (#BaseImporter::ConvertToUTF8 implements
+ *  compile-time, which should usually be true (`BaseImporter::ConvertToUTF8` implements
  *  runtime endianness conversions for text files).
  *
  *  XXX switch from unsigned int for size types to size_t? or ptrdiff_t?*/
@@ -207,7 +207,7 @@ public:
     }
 
     // ---------------------------------------------------------------------
-    /** Set current file pointer (Get it from #GetPtr). This is if you
+    /** Set current file pointer (Get it from `GetPtr`). This is if you
      *  prefer to do pointer arithmetics on your own or want to copy
      *  large chunks of data at once.
      *  @param p The new pointer, which is validated against the size
@@ -278,7 +278,7 @@ public:
     // ---------------------------------------------------------------------
     /** overload operator>> and allow chaining of >> ops. */
     template <typename T>
-    StreamReader &operator >> (T &f) {
+    StreamReader& operator >> (T &f) {
         f = Get<T>();
         return *this;
     }

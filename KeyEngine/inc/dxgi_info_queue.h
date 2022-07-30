@@ -26,7 +26,7 @@ public:
 	DxgiInfoQueue();
 	~DxgiInfoQueue();
 	DxgiInfoQueue( const DxgiInfoQueue &rhs ) = delete;
-	DxgiInfoQueue &operator=( const DxgiInfoQueue &rhs ) = delete;
+	DxgiInfoQueue& operator=( const DxgiInfoQueue &rhs ) = delete;
 		
 	//===================================================
 	//	\function	markQueueIndex

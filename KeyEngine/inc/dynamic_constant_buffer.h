@@ -196,12 +196,11 @@ public:
 	{
 		switch( m_type )
 		{
-		#define X(el) case el:\
-			ASSERT( typeid( ElementProperties<el>::CPUType ) == typeid( T ),\
-				"Wrong CPUType" );\
-			return *m_offset;
-		CB_LEAF_TYPES
-		#undef X
+#define X(el) case el:\
+	ASSERT( typeid( ElementProperties<el>::CPUType ) == typeid( T ), "Wrong CPUType" );\
+	return *m_offset;
+CB_LEAF_TYPES
+#undef X
 		default:
 			ASSERT( false, "Tried to fetch non-leaf element" );
 			return 0u;
@@ -221,7 +220,7 @@ private:
 	size_t commitStruct( size_t offsetIn );
 	size_t commitArray( size_t offsetIn );
 	// returns singleton instance of empty layout element
-	static CBElement &getEmptyElement() noexcept
+	static CBElement& getEmptyElement() noexcept
 	{
 		static CBElement empty{};
 		return empty;

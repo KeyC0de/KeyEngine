@@ -88,7 +88,7 @@ PSOut main( PSIn input )
 		diffuse = specular = 0.0f;
 	}
 	
-	// TODO: check HAS_ALPHA and work the alpha output component
+	// #TODO: check HAS_ALPHA and work the alpha output component
 	// calculate texture contribution
 	PSOut output;
 	float4 diffTexColor = diffTex.Sample( sampl,

@@ -101,7 +101,7 @@ public:
 
     // -----------------------------------------
     /** pseudo-iterator increment */
-    LineSplitter &operator++() {
+    LineSplitter& operator++() {
         if(swallow) {
             swallow = false;
             return *this;
@@ -140,7 +140,7 @@ public:
     }
 
     // -----------------------------------------
-    LineSplitter &operator++(int) {
+    LineSplitter& operator++(int) {
         return ++(*this);
     }
 
@@ -231,7 +231,7 @@ public:
 
 private:
     LineSplitter( const LineSplitter & );
-    LineSplitter &operator = ( const LineSplitter & );
+    LineSplitter& operator = ( const LineSplitter & );
 
 private:
     line_idx idx;

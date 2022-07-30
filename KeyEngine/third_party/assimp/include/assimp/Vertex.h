@@ -136,34 +136,34 @@ public:
 
 public:
 
-    Vertex &operator += (const Vertex &v) {
+    Vertex& operator += (const Vertex &v) {
         *this = *this+v;
         return *this;
     }
 
-    Vertex &operator -= (const Vertex &v) {
+    Vertex& operator -= (const Vertex &v) {
         *this = *this-v;
         return *this;
     }
 
 
 /*
-    Vertex &operator += (ai_real v) {
+    Vertex& operator += (ai_real v) {
         *this = *this+v;
         return *this;
     }
 
-    Vertex &operator -= (ai_real v) {
+    Vertex& operator -= (ai_real v) {
         *this = *this-v;
         return *this;
     }
 */
-    Vertex &operator *= (ai_real v) {
+    Vertex& operator *= (ai_real v) {
         *this = *this*v;
         return *this;
     }
 
-    Vertex &operator /= (ai_real v) {
+    Vertex& operator /= (ai_real v) {
         *this = *this/v;
         return *this;
     }

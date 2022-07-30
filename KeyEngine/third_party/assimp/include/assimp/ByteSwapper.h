@@ -58,7 +58,7 @@ namespace Assimp    {
 /** Defines some useful byte order swap routines.
  *
  * This is required to read big-endian model formats on little-endian machines,
- * and vice versa. Direct use of this class is DEPRECATED. Use #StreamReader instead. */
+ * and vice versa. Direct use of this class is DEPRECATED. Use `StreamReader` instead. */
 // --------------------------------------------------------------------------------------
 class ByteSwap
 {

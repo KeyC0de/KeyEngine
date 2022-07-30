@@ -47,9 +47,9 @@ private:
 	EntityManager();
 public:
 	EntityManager( const EntityManager &rhs ) = delete;
-	EntityManager &operator=( const EntityManager &rhs ) = delete;
+	EntityManager& operator=( const EntityManager &rhs ) = delete;
 
-	static EntityManager &getInstance();
+	static EntityManager& getInstance();
 	static void resetInstance();
 	//===================================================
 	//	\function	spawnEntity
@@ -62,13 +62,13 @@ public:
 	//	\function	getEntityById
 	//	\brief  also checks if the entity is valid if its not valid (has died) returns nullptr
 	//	\date	2019/12/09 14:04
-	Entity *getEntityById( EntityId entId );
+	Entity* getEntityById( EntityId entId );
 	//===================================================
 	//	\function	recycleEntityId
 	//	\brief  recycle the entity's index/id st the slot can be used again
-	//			TODO: NOT WORKING ATM
+	//			#TODO: NOT WORKING ATM
 	//	\date	2019/12/09 13:43
 	void recycleEntityId( EntityId entId );
-	Bucket &getBucket( int categoryId );
-	Entity *getCurrentWorld();
+	Bucket& getBucket( int categoryId );
+	Entity* getCurrentWorld();
 };

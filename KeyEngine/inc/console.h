@@ -34,7 +34,7 @@ class KeyConsole final
 	bool setDefaultColor();
 public:
 	KeyConsole( const KeyConsole &rhs ) = delete;
-	KeyConsole &operator=( const KeyConsole &rhs ) = delete;
+	KeyConsole& operator=( const KeyConsole &rhs ) = delete;
 	~KeyConsole();
 
 	static DWORD getFontFamily( HANDLE h );

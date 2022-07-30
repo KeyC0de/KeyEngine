@@ -229,7 +229,7 @@ struct aiExportDataBlob
 private:
     // no copying
     aiExportDataBlob(const aiExportDataBlob& );
-    aiExportDataBlob &operator= (const aiExportDataBlob& );
+    aiExportDataBlob& operator= (const aiExportDataBlob& );
 #endif // __cplusplus
 };
 

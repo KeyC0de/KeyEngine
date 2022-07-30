@@ -33,7 +33,7 @@ EntityManager::EntityManager()
 	m_entities.reserve( 1000 );
 }
 
-EntityManager &EntityManager::getInstance()
+EntityManager& EntityManager::getInstance()
 {
 	if ( m_pInstance == nullptr )
 	{
@@ -133,7 +133,7 @@ void EntityManager::recycleEntityId( EntityId entId )
 	m_freelist.emplace_back( index );
 }
 
-EntityManager::Bucket &EntityManager::getBucket( int categoryId )
+EntityManager::Bucket& EntityManager::getBucket( int categoryId )
 {
 	switch( categoryId )
 	{
@@ -170,7 +170,7 @@ EntityManager::Bucket &EntityManager::getBucket( int categoryId )
 	}//switch
 }
 
-Entity *EntityManager::getCurrentWorld()
+Entity* EntityManager::getCurrentWorld()
 {
 	// current world Entity index is always @ index 0 of m_worldEntitiesIndices
 	return m_entities[m_worldEntitiesIndices[0]].get();

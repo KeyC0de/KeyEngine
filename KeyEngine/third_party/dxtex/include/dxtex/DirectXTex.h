@@ -328,7 +328,7 @@ namespace DirectX
         ScratchImage &__cdecl operator= (ScratchImage &&moveFrom) noexcept;
 
         ScratchImage(const ScratchImage&) = delete;
-        ScratchImage &operator=(const ScratchImage&) = delete;
+        ScratchImage& operator=(const ScratchImage&) = delete;
 
         HRESULT __cdecl Initialize(_In_ const TexMetadata &mdata, _In_ CP_FLAGS flags = CP_FLAGS_NONE) noexcept;
 
@@ -377,7 +377,7 @@ namespace DirectX
         Blob &__cdecl operator= (Blob &&moveFrom) noexcept;
 
         Blob(const Blob&) = delete;
-        Blob &operator=(const Blob&) = delete;
+        Blob& operator=(const Blob&) = delete;
 
         HRESULT __cdecl Initialize(_In_ size_t size) noexcept;
 

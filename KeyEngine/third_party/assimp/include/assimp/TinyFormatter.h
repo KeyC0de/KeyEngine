@@ -117,13 +117,13 @@ public:
      * include const basic_formatter<T>& s but might still want to
      * modify the formatted string without the need for a full copy.*/
     template <typename TToken>
-    const basic_formatter &operator << (const TToken &s) const {
+    const basic_formatter& operator << (const TToken &s) const {
         underlying << s;
         return *this;
     }
 
     template <typename TToken>
-    basic_formatter &operator << (const TToken &s) {
+    basic_formatter& operator << (const TToken &s) {
         underlying << s;
         return *this;
     }
@@ -131,13 +131,13 @@ public:
 
     // comma operator overloaded as well, choose your preferred way.
     template <typename TToken>
-    const basic_formatter &operator, (const TToken &s) const {
+    const basic_formatter& operator, (const TToken &s) const {
         underlying << s;
         return *this;
     }
 
     template <typename TToken>
-    basic_formatter &operator, (const TToken &s) {
+    basic_formatter& operator, (const TToken &s) {
         underlying << s;
         return *this;
     }
@@ -145,7 +145,7 @@ public:
     // Fix for MSVC8
     // See https://sourceforge.net/projects/assimp/forums/forum/817654/topic/4372824
     template <typename TToken>
-    basic_formatter &operator, (TToken &s) {
+    basic_formatter& operator, (TToken &s) {
         underlying << s;
         return *this;
     }

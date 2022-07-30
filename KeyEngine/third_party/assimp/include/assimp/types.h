@@ -202,7 +202,7 @@ struct aiColor3D
     }
 
     /** Access a specific color component */
-    ai_real &operator[](unsigned int i) {
+    ai_real& operator[](unsigned int i) {
         if ( 0 == i ) {
             return r;
         } else if ( 1 == i ) {
@@ -303,7 +303,7 @@ struct aiString
 
 
     /** Assigment operator */
-    aiString &operator = (const aiString &rOther) {
+    aiString& operator = (const aiString &rOther) {
         if (this == &rOther) {
             return *this;
         }
@@ -316,13 +316,13 @@ struct aiString
 
 
     /** Assign a const char *to the string */
-    aiString &operator = (const char *sz) {
+    aiString& operator = (const char *sz) {
         Set(sz);
         return *this;
     }
 
     /** Assign a cstd::string to the string */
-    aiString &operator = ( const std::string &pString) {
+    aiString& operator = ( const std::string &pString) {
         Set(pString);
         return *this;
     }

@@ -74,18 +74,18 @@ public:
 public:
 
     // combined operators
-    const aiVector3t &operator += (const aiVector3t &o);
-    const aiVector3t &operator -= (const aiVector3t &o);
-    const aiVector3t &operator *= (TReal f);
-    const aiVector3t &operator /= (TReal f);
+    const aiVector3t& operator += (const aiVector3t &o);
+    const aiVector3t& operator -= (const aiVector3t &o);
+    const aiVector3t& operator *= (TReal f);
+    const aiVector3t& operator /= (TReal f);
 
     // transform vector by matrix
-    aiVector3t &operator *= (const aiMatrix3x3t<TReal>& mat);
-    aiVector3t &operator *= (const aiMatrix4x4t<TReal>& mat);
+    aiVector3t& operator *= (const aiMatrix3x3t<TReal>& mat);
+    aiVector3t& operator *= (const aiMatrix4x4t<TReal>& mat);
 
     // access a single element
     TReal operator[](unsigned int i) const;
-    TReal &operator[](unsigned int i);
+    TReal& operator[](unsigned int i);
 
     // comparison
     bool operator== (const aiVector3t &other) const;

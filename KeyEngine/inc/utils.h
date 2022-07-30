@@ -46,7 +46,7 @@ std::string ws2s( const std::wstring &wide );
 
 std::vector<std::string> splitString( const std::string &s, const std::string &delim );
 bool stringContains( std::string_view haystack, std::string_view needle );
-std::string &capitalizeFirstLetter( std::string &str );
+std::string& capitalizeFirstLetter( std::string &str );
 std::string capitalizeFirstLetter( const std::string &str );
 
 //===================================================
@@ -120,8 +120,8 @@ long int timeTtoSeconds( time_t t );
 
 
 std::uintptr_t pointerToInt( void *p );
-void *intToPointer( uintptr_t i );
-void *addPointers( void *p1, void *p2 );
+void* intToPointer( uintptr_t i );
+void* addPointers( void *p1, void *p2 );
 
 std::string operator+( const std::string_view &sv1, const std::string_view &sv2 );
 
@@ -148,7 +148,7 @@ constexpr int is4ByteAligned( intptr_t *addr );
 //	\brief  align pointer forward with given alignment
 //	\date	2022/02/20 20:34
 template<typename T>
-T *alignForward( T *p,
+T* alignForward( T *p,
 	std::size_t alignment ) noexcept
 {
 	if ( alignment == 0 )
@@ -173,7 +173,7 @@ const std::size_t getForwardPaddingWithHeader( const std::size_t p,
 	const std::size_t alignment, const std::size_t headerSize );
 
 template<typename T>
-T *alignPtr( const T *ptr,
+T* alignPtr( const T *ptr,
 	const std::size_t alignment )
 {
 	const std::uintptr_t uintPtr = reinterpret_cast<std::uintptr_t>( ptr );
@@ -183,8 +183,8 @@ T *alignPtr( const T *ptr,
 	return alignedPtr;
 }
 
-// TODO: doesn't work properly
-void *alignedMalloc( std::size_t nBytes, std::size_t alignment );
+// #TODO: doesn't work properly
+void* alignedMalloc( std::size_t nBytes, std::size_t alignment );
 void alignedFree( void *p ) noexcept;
 
 // INTEL:

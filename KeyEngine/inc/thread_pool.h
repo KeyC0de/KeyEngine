@@ -79,7 +79,7 @@ public:
 		}
 		else
 		{
-			// TODO: rework exception handling
+			// #TODO: rework exception handling
 			throw std::exception{"Cannot enqueue tasks in an inactive Thread Pool!"};
 		}
 	}

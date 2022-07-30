@@ -4,7 +4,7 @@
 #include "graphics.h"
 
 
-CameraManager &CameraManager::getInstance()
+CameraManager& CameraManager::getInstance()
 {
 	if ( m_pInstance == nullptr )
 	{
@@ -104,7 +104,7 @@ void CameraManager::render( size_t channels ) const
 	}
 }
 
-Camera &CameraManager::getActiveCamera() const noexcept
+Camera& CameraManager::getActiveCamera() const noexcept
 {
 	return *m_cameras[m_activeCameraIndex];
 }
@@ -114,7 +114,7 @@ std::shared_ptr<Camera> CameraManager::shareActiveCamera() const noexcept
 	return m_cameras[m_activeCameraIndex];
 }
 
-Camera &CameraManager::getControlledCamera()
+Camera& CameraManager::getControlledCamera()
 {
 	return *m_cameras[m_controlledCamera];
 }

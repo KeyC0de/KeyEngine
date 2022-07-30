@@ -60,7 +60,7 @@ public:
 		//	\brief  finds new channel for the existing Sound
 		//	\date	2020/10/25 19:18
 		void rechannel( const class Sound *pOldSound, class Sound *pNewSound );
-		class Sound *getSound() const cond_noex;
+		class Sound* getSound() const cond_noex;
 	};
 
 	class Submix final
@@ -159,7 +159,7 @@ public:
 	HRESULT readChunkData( HANDLE file, void *buffer, DWORD buffersize,
 		DWORD bufferoffset );
 public:
-	// TODO: Sound Looping
+	// #TODO: Sound Looping
 	//===================================================
 	//	\function	Sound
 	//	\brief  constructor loads sound file and configures all its properties

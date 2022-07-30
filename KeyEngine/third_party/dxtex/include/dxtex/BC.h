@@ -81,7 +81,7 @@ public:
     }
 
     // assignment operators
-    HDRColorA &operator += (const HDRColorA &c) noexcept
+    HDRColorA& operator += (const HDRColorA &c) noexcept
     {
         r += c.r;
         g += c.g;
@@ -90,7 +90,7 @@ public:
         return *this;
     }
 
-    HDRColorA &operator -= (const HDRColorA &c) noexcept
+    HDRColorA& operator -= (const HDRColorA &c) noexcept
     {
         r -= c.r;
         g -= c.g;
@@ -99,7 +99,7 @@ public:
         return *this;
     }
 
-    HDRColorA &operator *= (float f) noexcept
+    HDRColorA& operator *= (float f) noexcept
     {
         r *= f;
         g *= f;
@@ -108,7 +108,7 @@ public:
         return *this;
     }
 
-    HDRColorA &operator /= (float f) noexcept
+    HDRColorA& operator /= (float f) noexcept
     {
         float fInv = 1.0f / f;
         r *= fInv;
@@ -128,7 +128,7 @@ public:
     }
 
     HDRColorA(const LDRColorA &c) noexcept;
-    HDRColorA &operator = (const LDRColorA &c) noexcept;
+    HDRColorA& operator = (const LDRColorA &c) noexcept;
     LDRColorA ToLDRColorA() const noexcept;
 };
 

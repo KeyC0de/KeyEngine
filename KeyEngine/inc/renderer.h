@@ -33,7 +33,7 @@ public:
 
 	void run( Graphics &gph ) cond_noex;
 	virtual void reset() noexcept;
-	RenderQueuePass &getRenderQueuePass( const std::string &name );
+	RenderQueuePass& getRenderQueuePass( const std::string &name );
 protected:
 	void addGlobalProducer( std::unique_ptr<IProducer> pProducer );
 	void addGlobalConsumer( std::unique_ptr<IConsumer> pConsumer );
@@ -48,7 +48,7 @@ protected:
 	//	\date	2021/10/27 18:00
 	void linkPassConsumers( IPass &pass );
 	void linkGlobalConsumers();
-	IPass &getPass( const std::string &name );
+	IPass& getPass( const std::string &name );
 };
 
 class Renderer3d

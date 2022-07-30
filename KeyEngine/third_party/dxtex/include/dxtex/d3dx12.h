@@ -1599,7 +1599,7 @@ struct CD3DX12_CPU_DESCRIPTOR_HANDLE : public D3D12_CPU_DESCRIPTOR_HANDLE
     {
         return (ptr != other.ptr);
     }
-    CD3DX12_CPU_DESCRIPTOR_HANDLE &operator=(const D3D12_CPU_DESCRIPTOR_HANDLE &other) noexcept
+    CD3DX12_CPU_DESCRIPTOR_HANDLE& operator=(const D3D12_CPU_DESCRIPTOR_HANDLE &other) noexcept
     {
         ptr = other.ptr;
         return *this;
@@ -1660,7 +1660,7 @@ struct CD3DX12_GPU_DESCRIPTOR_HANDLE : public D3D12_GPU_DESCRIPTOR_HANDLE
     {
         return (ptr != other.ptr);
     }
-    CD3DX12_GPU_DESCRIPTOR_HANDLE &operator=(const D3D12_GPU_DESCRIPTOR_HANDLE &other) noexcept
+    CD3DX12_GPU_DESCRIPTOR_HANDLE& operator=(const D3D12_GPU_DESCRIPTOR_HANDLE &other) noexcept
     {
         ptr = other.ptr;
         return *this;
@@ -2322,7 +2322,7 @@ private:
 public:
     CD3DX12_PIPELINE_STATE_STREAM_SUBOBJECT() noexcept : _Type(Type), _Inner(DefaultArg()) {}
     CD3DX12_PIPELINE_STATE_STREAM_SUBOBJECT(InnerStructType const &i) noexcept : _Type(Type), _Inner(i) {}
-    CD3DX12_PIPELINE_STATE_STREAM_SUBOBJECT &operator=(InnerStructType const &i) noexcept { _Type = Type; _Inner = i; return *this; }
+    CD3DX12_PIPELINE_STATE_STREAM_SUBOBJECT& operator=(InnerStructType const &i) noexcept { _Type = Type; _Inner = i; return *this; }
     operator InnerStructType const&() const noexcept { return _Inner; }
     operator InnerStructType&() noexcept { return _Inner; }
     InnerStructType *operator&() noexcept { return &_Inner; }

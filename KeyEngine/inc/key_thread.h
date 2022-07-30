@@ -48,7 +48,7 @@ public:
 	
 	~KeyThread() noexcept;
 	KeyThread( const KeyThread &rhs ) = delete;
-	KeyThread &operator=( const KeyThread &rhs ) = delete;
+	KeyThread& operator=( const KeyThread &rhs ) = delete;
 
 	//===================================================
 	//	\function	interrupt

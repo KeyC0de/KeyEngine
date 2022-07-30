@@ -142,7 +142,7 @@ public:
     // -------------------------------------------------------------------
     /** Assignment operator has been deleted
      */
-    Importer &operator=(const Importer &) = delete;
+    Importer& operator=(const Importer &) = delete;
 
     // -------------------------------------------------------------------
     /** Destructor. The object kept ownership of the imported data,

@@ -240,7 +240,7 @@ public:
     // ---------------------------------------------------------------------
     /** overload operator<< and allow chaining of MM ops. */
     template <typename T>
-    StreamWriter &operator << (T f) {
+    StreamWriter& operator << (T f) {
         Put(f);
         return *this;
     }

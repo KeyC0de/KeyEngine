@@ -54,7 +54,7 @@ namespace Assimp    {
 // ------------------------------------------------------------------------------------
 /** @brief CPP-API: Abstract interface for custom progress report receivers.
  *
- *  Each #Importer instance maintains its own #ProgressHandler. The default
+ *  Each `Importer` instance maintains its own `ProgressHandler`. The default
  *  implementation provided by Assimp doesn't do anything at all. */
 class ASSIMP_API ProgressHandler
 #ifndef SWIG
@@ -77,14 +77,14 @@ public:
      *
      *  There are restriction on what you may do from within your
      *  implementation of this method: no exceptions may be thrown and no
-     *  non-const #Importer methods may be called. It is
+     *  non-const `Importer` methods may be called. It is
      *  not generally possible to predict the number of callbacks
      *  fired during a single import.
      *
      *  @return Return false to abort loading at the next possible
      *   occasion (loaders and Assimp are generally allowed to perform
      *   all needed cleanup tasks prior to returning control to the
-     *   caller). If the loading is aborted, #Importer::ReadFile()
+     *   caller). If the loading is aborted, `Importer::ReadFile()`
      *   returns always NULL.
      *   */
     virtual bool Update(float percentage = -1.f) = 0;

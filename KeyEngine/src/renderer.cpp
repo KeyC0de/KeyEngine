@@ -210,7 +210,7 @@ void Renderer::linkGlobalConsumers()
 	}
 }
 
-IPass &ren::Renderer::getPass( const std::string &name )
+IPass& ren::Renderer::getPass( const std::string &name )
 {
 	const auto finder = std::find_if( m_passes.begin(),
 		m_passes.end(),
@@ -225,7 +225,7 @@ IPass &ren::Renderer::getPass( const std::string &name )
 	return **finder;
 }
 
-RenderQueuePass &Renderer::getRenderQueuePass( const std::string &name )
+RenderQueuePass& Renderer::getRenderQueuePass( const std::string &name )
 {
 	try
 	{

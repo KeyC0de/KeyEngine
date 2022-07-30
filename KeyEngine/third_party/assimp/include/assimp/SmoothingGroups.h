@@ -80,7 +80,7 @@ struct FaceWithSmoothingGroup
 /** Helper structure representing a mesh whose faces have smoothing
     groups assigned. This allows us to reuse the code for normal computations
     from smoothings groups for several loaders (3DS, ASE). All of them
-    use face structures which inherit from #FaceWithSmoothingGroup,
+    use face structures which inherit from `FaceWithSmoothingGroup`,
     but as they add extra members and need to be copied by value we
     need to use a template here.
     */

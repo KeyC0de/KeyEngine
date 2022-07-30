@@ -68,10 +68,10 @@ public:
 
 public:
     // combined operators
-    const aiColor4t &operator += (const aiColor4t &o);
-    const aiColor4t &operator -= (const aiColor4t &o);
-    const aiColor4t &operator *= (TReal f);
-    const aiColor4t &operator /= (TReal f);
+    const aiColor4t& operator += (const aiColor4t &o);
+    const aiColor4t& operator -= (const aiColor4t &o);
+    const aiColor4t& operator *= (TReal f);
+    const aiColor4t& operator /= (TReal f);
 
 public:
     // comparison
@@ -81,7 +81,7 @@ public:
 
     // color tuple access, rgba order
     inline TReal operator[](unsigned int i) const;
-    inline TReal &operator[](unsigned int i);
+    inline TReal& operator[](unsigned int i);
 
     /** check whether a color is (close to) black */
     inline bool IsBlack() const;

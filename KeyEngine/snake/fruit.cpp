@@ -42,7 +42,7 @@ void Fruit::respawn( std::mt19937 &rng,
 	m_gridLoc = newGridLoc;
 }
 
-const GridLocation &Fruit::getGridLocation() const noexcept
+const GridLocation& Fruit::getGridLocation() const noexcept
 {
 	return m_gridLoc;
 }

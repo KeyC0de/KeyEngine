@@ -34,7 +34,7 @@ std::shared_ptr<IRenderSurface> IProducer::getBuffer()
 	THROW_RENDERER_EXCEPTION( "IProducer class cannot be a target of a Consumer!" );
 }
 
-const std::string &IProducer::getName() const noexcept
+const std::string& IProducer::getName() const noexcept
 {
 	return m_name;
 }

@@ -17,7 +17,7 @@ class IProducer
 public:
 	virtual ~IProducer() = default;
 
-	const std::string &getName() const noexcept;
+	const std::string& getName() const noexcept;
 	virtual std::shared_ptr<IBindable> getBindable();
 	virtual std::shared_ptr<IRenderSurface> getBuffer();
 protected:

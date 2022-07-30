@@ -21,13 +21,13 @@ class CameraManager final
 	std::pair<int,int> m_clientWidthHeight;
 
 	CameraManager() = default;
-	Camera &getControlledCamera();
+	Camera& getControlledCamera();
 public:
 	static CameraManager &getInstance();
 	static void resetInstance();
 public:
 	CameraManager( const CameraManager &rhs ) = delete;
-	CameraManager &operator=( const CameraManager &rhs ) = delete;
+	CameraManager& operator=( const CameraManager &rhs ) = delete;
 
 	void setWidthHeight( int width, int height ) noexcept;
 	int getClientWidth() const noexcept;
@@ -37,6 +37,6 @@ public:
 	void add( std::shared_ptr<Camera> pCam );
 	void connectEffectsToRenderer( ren::Renderer &r );
 	void render( size_t channels ) const;
-	Camera &getActiveCamera() const noexcept;
+	Camera& getActiveCamera() const noexcept;
 	std::shared_ptr<Camera> shareActiveCamera() const noexcept;
 };

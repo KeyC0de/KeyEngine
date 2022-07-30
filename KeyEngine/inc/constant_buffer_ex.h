@@ -12,7 +12,7 @@ protected:
 	Microsoft::WRL::ComPtr<ID3D11Buffer> m_pD3dCb;
 	unsigned m_slot;
 public:
-	virtual const con::CBElement &getCBExRootLayoutElement() const noexcept = 0;
+	virtual const con::CBElement& getCBExRootLayoutElement() const noexcept = 0;
 protected:
 	IConstantBufferEx( Graphics &gph, unsigned slot, const con::CBElement &layoutRoot,
 		const con::Buffer *pBuf );
@@ -68,12 +68,12 @@ public:
 
 	}
 	
-	const con::CBElement &getCBExRootLayoutElement() const noexcept override
+	const con::CBElement& getCBExRootLayoutElement() const noexcept override
 	{
 		return m_cb.getRootLayoutElement();
 	}
 	
-	const con::Buffer &getBuffer() const noexcept
+	const con::Buffer& getBuffer() const noexcept
 	{
 		return m_cb;
 	}

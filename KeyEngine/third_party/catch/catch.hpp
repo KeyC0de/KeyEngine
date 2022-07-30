@@ -477,7 +477,7 @@ namespace Catch {
 
 // We need a dummy global operator<< so we can bring it into Catch namespace later
 struct Catch_global_namespace_dummy {};
-std::ostream &operator<<(std::ostream&, Catch_global_namespace_dummy);
+std::ostream& operator<<(std::ostream&, Catch_global_namespace_dummy);
 
 namespace Catch {
 
@@ -489,8 +489,8 @@ namespace Catch {
 	class NonCopyable {
 		NonCopyable( NonCopyable const& )              = delete;
 		NonCopyable( NonCopyable && )                  = delete;
-		NonCopyable &operator = ( NonCopyable const& ) = delete;
-		NonCopyable &operator = ( NonCopyable && )     = delete;
+		NonCopyable& operator = ( NonCopyable const& ) = delete;
+		NonCopyable& operator = ( NonCopyable && )     = delete;
 
 	protected:
 		NonCopyable();
@@ -506,9 +506,9 @@ namespace Catch {
 		{}
 
 		SourceLineInfo( SourceLineInfo const &other )            = default;
-		SourceLineInfo &operator = ( SourceLineInfo const& )     = default;
+		SourceLineInfo& operator = ( SourceLineInfo const& )     = default;
 		SourceLineInfo( SourceLineInfo&& )              noexcept = default;
-		SourceLineInfo &operator = ( SourceLineInfo&& ) noexcept = default;
+		SourceLineInfo& operator = ( SourceLineInfo&& ) noexcept = default;
 
 		bool empty() const noexcept { return file[0] == '\0'; }
 		bool operator == ( SourceLineInfo const &other ) const noexcept;
@@ -518,7 +518,7 @@ namespace Catch {
 		std::size_t line;
 	};
 
-	std::ostream &operator << ( std::ostream &os, SourceLineInfo const &info );
+	std::ostream& operator << ( std::ostream &os, SourceLineInfo const &info );
 
 	// Bring in operator<< from global namespace into Catch namespace
 	// This is necessary because the overload of operator<< above makes
@@ -533,7 +533,7 @@ namespace Catch {
 		std::string operator+() const;
 	};
 	template<typename T>
-	T const &operator + ( T const &value, StreamEndStop ) {
+	T const& operator + ( T const &value, StreamEndStop ) {
 		return value;
 	}
 }
@@ -2531,7 +2531,7 @@ namespace Catch {
 	public:
 		LazyExpression( bool isNegated );
 		LazyExpression( LazyExpression const &other );
-		LazyExpression &operator = ( LazyExpression const& ) = delete;
+		LazyExpression& operator = ( LazyExpression const& ) = delete;
 
 		explicit operator bool() const;
 
@@ -2614,7 +2614,7 @@ namespace Catch {
 	struct MessageStream {
 
 		template<typename T>
-		MessageStream &operator << ( T const &value ) {
+		MessageStream& operator << ( T const &value ) {
 			m_stream << value;
 			return *this;
 		}
@@ -2628,7 +2628,7 @@ namespace Catch {
 						ResultWas::OfType type );
 
 		template<typename T>
-		MessageBuilder &operator << ( T const &value ) {
+		MessageBuilder& operator << ( T const &value ) {
 			m_stream << value;
 			return *this;
 		}
@@ -2826,7 +2826,7 @@ namespace Catch {
 
 	struct Counts {
 		Counts operator - ( Counts const &other ) const;
-		Counts &operator += ( Counts const &other );
+		Counts& operator += ( Counts const &other );
 
 		std::size_t total() const;
 		bool allPassed() const;
@@ -2840,7 +2840,7 @@ namespace Catch {
 	struct Totals {
 
 		Totals operator - ( Totals const &other ) const;
-		Totals &operator += ( Totals const &other );
+		Totals& operator += ( Totals const &other );
 
 		Totals delta( Totals const &prevTotals ) const;
 
@@ -3214,7 +3214,7 @@ namespace Catch {
 	struct pluralise {
 		pluralise( std::size_t count, std::string const &label );
 
-		friend std::ostream &operator << ( std::ostream &os, pluralise const &pluraliser );
+		friend std::ostream& operator << ( std::ostream &os, pluralise const &pluraliser );
 
 		std::size_t m_count;
 		std::string m_label;
@@ -3242,7 +3242,7 @@ namespace Matchers {
 		public:
 			MatcherUntypedBase() = default;
 			MatcherUntypedBase ( MatcherUntypedBase const& ) = default;
-			MatcherUntypedBase &operator = ( MatcherUntypedBase const& ) = delete;
+			MatcherUntypedBase& operator = ( MatcherUntypedBase const& ) = delete;
 			std::string toString() const;
 
 		protected:
@@ -4413,7 +4413,7 @@ namespace Catch {
 			reset();
 		}
 
-		Option &operator= ( Option const &_other ) {
+		Option& operator= ( Option const &_other ) {
 			if( &_other != this ) {
 				reset();
 				if( _other )
@@ -4421,7 +4421,7 @@ namespace Catch {
 			}
 			return *this;
 		}
-		Option &operator = ( T const &_value ) {
+		Option& operator = ( T const &_value ) {
 			reset();
 			nullableValue = new( storage ) T( _value );
 			return *this;
@@ -4433,8 +4433,8 @@ namespace Catch {
 			nullableValue = nullptr;
 		}
 
-		T &operator*() { return *nullableValue; }
-		T const &operator*() const { return *nullableValue; }
+		T& operator*() { return *nullableValue; }
+		T const& operator*() const { return *nullableValue; }
 		T *operator->() { return nullableValue; }
 		const T *operator->() const { return nullableValue; }
 
@@ -5491,7 +5491,7 @@ namespace Catch {
 
 	template<typename T>
 	struct LazyStat : Option<T> {
-		LazyStat &operator=( T const &_value ) {
+		LazyStat& operator=( T const &_value ) {
 			Option<T>::operator=( _value );
 			used = false;
 			return *this;
@@ -5524,8 +5524,8 @@ namespace Catch {
 
 		AssertionStats( AssertionStats const& )              = default;
 		AssertionStats( AssertionStats && )                  = default;
-		AssertionStats &operator = ( AssertionStats const& ) = delete;
-		AssertionStats &operator = ( AssertionStats && )     = delete;
+		AssertionStats& operator = ( AssertionStats const& ) = delete;
+		AssertionStats& operator = ( AssertionStats && )     = delete;
 		virtual ~AssertionStats();
 
 		AssertionResult assertionResult;
@@ -5540,8 +5540,8 @@ namespace Catch {
 						bool _missingAssertions );
 		SectionStats( SectionStats const& )              = default;
 		SectionStats( SectionStats && )                  = default;
-		SectionStats &operator = ( SectionStats const& ) = default;
-		SectionStats &operator = ( SectionStats && )     = default;
+		SectionStats& operator = ( SectionStats const& ) = default;
+		SectionStats& operator = ( SectionStats && )     = default;
 		virtual ~SectionStats();
 
 		SectionInfo sectionInfo;
@@ -5559,8 +5559,8 @@ namespace Catch {
 
 		TestCaseStats( TestCaseStats const& )              = default;
 		TestCaseStats( TestCaseStats && )                  = default;
-		TestCaseStats &operator = ( TestCaseStats const& ) = default;
-		TestCaseStats &operator = ( TestCaseStats && )     = default;
+		TestCaseStats& operator = ( TestCaseStats const& ) = default;
+		TestCaseStats& operator = ( TestCaseStats && )     = default;
 		virtual ~TestCaseStats();
 
 		TestCaseInfo testInfo;
@@ -5578,8 +5578,8 @@ namespace Catch {
 
 		TestGroupStats( TestGroupStats const& )              = default;
 		TestGroupStats( TestGroupStats && )                  = default;
-		TestGroupStats &operator = ( TestGroupStats const& ) = default;
-		TestGroupStats &operator = ( TestGroupStats && )     = default;
+		TestGroupStats& operator = ( TestGroupStats const& ) = default;
+		TestGroupStats& operator = ( TestGroupStats && )     = default;
 		virtual ~TestGroupStats();
 
 		GroupInfo groupInfo;
@@ -5594,8 +5594,8 @@ namespace Catch {
 
 		TestRunStats( TestRunStats const& )              = default;
 		TestRunStats( TestRunStats && )                  = default;
-		TestRunStats &operator = ( TestRunStats const& ) = default;
-		TestRunStats &operator = ( TestRunStats && )     = default;
+		TestRunStats& operator = ( TestRunStats const& ) = default;
+		TestRunStats& operator = ( TestRunStats && )     = default;
 		virtual ~TestRunStats();
 
 		TestRunInfo runInfo;
@@ -6020,7 +6020,7 @@ namespace Catch {
 		// Use constructed object for RAII guard
 		Colour( Code _colourCode );
 		Colour( Colour &&other ) noexcept;
-		Colour &operator=( Colour &&other ) noexcept;
+		Colour& operator=( Colour &&other ) noexcept;
 		~Colour();
 
 		// Use static method for one-shot changes
@@ -6030,7 +6030,7 @@ namespace Catch {
 		bool m_moved = false;
 	};
 
-	std::ostream &operator << ( std::ostream &os, Colour const& );
+	std::ostream& operator << ( std::ostream &os, Colour const& );
 
 } // end namespace Catch
 
@@ -6232,7 +6232,7 @@ namespace Catch {
 
 		void encodeTo( std::ostream &os ) const;
 
-		friend std::ostream &operator << ( std::ostream &os, XmlEncode const &xmlEncode );
+		friend std::ostream& operator << ( std::ostream &os, XmlEncode const &xmlEncode );
 
 	private:
 		std::string m_str;
@@ -6247,7 +6247,7 @@ namespace Catch {
 			ScopedElement( XmlWriter *writer, XmlFormatting fmt );
 
 			ScopedElement( ScopedElement &&other ) noexcept;
-			ScopedElement &operator=( ScopedElement &&other ) noexcept;
+			ScopedElement& operator=( ScopedElement &&other ) noexcept;
 
 			~ScopedElement();
 
@@ -6268,7 +6268,7 @@ namespace Catch {
 		~XmlWriter();
 
 		XmlWriter( XmlWriter const& ) = delete;
-		XmlWriter &operator=( XmlWriter const& ) = delete;
+		XmlWriter& operator=( XmlWriter const& ) = delete;
 
 		XmlWriter &startElement( std::string const &name, XmlFormatting fmt = XmlFormatting::Newline | XmlFormatting::Indent);
 
@@ -6744,12 +6744,12 @@ namespace Catch {
 				BenchmarkFunction(BenchmarkFunction const &that)
 					: f(that.f->clone()) {}
 
-				BenchmarkFunction &operator=(BenchmarkFunction &&that) {
+				BenchmarkFunction& operator=(BenchmarkFunction &&that) {
 					f = std::move(that.f);
 					return *this;
 				}
 
-				BenchmarkFunction &operator=(BenchmarkFunction const &that) {
+				BenchmarkFunction& operator=(BenchmarkFunction const &that) {
 					f.reset(that.f->clone());
 					return *this;
 				}
@@ -8054,7 +8054,7 @@ namespace Catch {
 
 	public:
 		RunContext( RunContext const& ) = delete;
-		RunContext &operator =( RunContext const& ) = delete;
+		RunContext& operator =( RunContext const& ) = delete;
 
 		explicit RunContext( IConfigPtr const &_config, IStreamingReporterPtr &&reporter );
 
@@ -8630,7 +8630,7 @@ public:
 	auto begin() const -> iterator { return iterator(*this); }
 	auto end() const -> iterator { return { *this, m_strings.size() }; }
 
-	inline friend std::ostream &operator << (std::ostream &os, Column const &col) {
+	inline friend std::ostream& operator << (std::ostream &os, Column const &col) {
 		bool first = true;
 		for (auto line : col) {
 			if (first)
@@ -8749,7 +8749,7 @@ public:
 		return combined;
 	}
 
-	inline friend std::ostream &operator << (std::ostream &os, Columns const &cols) {
+	inline friend std::ostream& operator << (std::ostream &os, Columns const &cols) {
 
 		bool first = true;
 		for (auto line : cols) {
@@ -9100,8 +9100,8 @@ namespace detail {
 		NonCopyable() = default;
 		NonCopyable( NonCopyable const & ) = delete;
 		NonCopyable( NonCopyable && ) = delete;
-		NonCopyable &operator=( NonCopyable const & ) = delete;
-		NonCopyable &operator=( NonCopyable && ) = delete;
+		NonCopyable& operator=( NonCopyable const & ) = delete;
+		NonCopyable& operator=( NonCopyable && ) = delete;
 	};
 
 	struct BoundRef : NonCopyable {
@@ -9920,7 +9920,7 @@ namespace Catch {
 		return line < other.line || ( line == other.line && file != other.file && (std::strcmp(file, other.file) < 0));
 	}
 
-	std::ostream &operator << ( std::ostream &os, SourceLineInfo const &info ) {
+	std::ostream& operator << ( std::ostream &os, SourceLineInfo const &info ) {
 #ifndef __GNUG__
 		os << info.file << '(' << info.line << ')';
 #else
@@ -10275,7 +10275,7 @@ namespace Catch {
 		}
 	}
 
-	std::ostream &operator << ( std::ostream &os, Colour const& ) {
+	std::ostream& operator << ( std::ostream &os, Colour const& ) {
 		return os;
 	}
 
@@ -11976,9 +11976,9 @@ namespace Catch {
 	class RedirectedStreams {
 	public:
 		RedirectedStreams(RedirectedStreams const&) = delete;
-		RedirectedStreams &operator=(RedirectedStreams const&) = delete;
+		RedirectedStreams& operator=(RedirectedStreams const&) = delete;
 		RedirectedStreams(RedirectedStreams&&) = delete;
-		RedirectedStreams &operator=(RedirectedStreams&&) = delete;
+		RedirectedStreams& operator=(RedirectedStreams&&) = delete;
 
 		RedirectedStreams(std::string &redirectedCout, std::string &redirectedCerr);
 		~RedirectedStreams();
@@ -11998,9 +11998,9 @@ namespace Catch {
 	class TempFile {
 	public:
 		TempFile(TempFile const&) = delete;
-		TempFile &operator=(TempFile const&) = delete;
+		TempFile& operator=(TempFile const&) = delete;
 		TempFile(TempFile&&) = delete;
-		TempFile &operator=(TempFile&&) = delete;
+		TempFile& operator=(TempFile&&) = delete;
 
 		TempFile();
 		~TempFile();
@@ -12018,9 +12018,9 @@ namespace Catch {
 	class OutputRedirect {
 	public:
 		OutputRedirect(OutputRedirect const&) = delete;
-		OutputRedirect &operator=(OutputRedirect const&) = delete;
+		OutputRedirect& operator=(OutputRedirect const&) = delete;
 		OutputRedirect(OutputRedirect&&) = delete;
-		OutputRedirect &operator=(OutputRedirect&&) = delete;
+		OutputRedirect& operator=(OutputRedirect&&) = delete;
 
 		OutputRedirect(std::string &stdout_dest, std::string &stderr_dest);
 		~OutputRedirect();
@@ -13258,7 +13258,7 @@ namespace Catch {
 	// Versioning information
 	struct Version {
 		Version( Version const& ) = delete;
-		Version &operator=( Version const& ) = delete;
+		Version& operator=( Version const& ) = delete;
 		Version(    unsigned int _majorVersion,
 					unsigned int _minorVersion,
 					unsigned int _patchNumber,
@@ -13273,7 +13273,7 @@ namespace Catch {
 		char const * const branchName;
 		unsigned int const buildNumber;
 
-		friend std::ostream &operator << ( std::ostream &os, Version const &version );
+		friend std::ostream& operator << ( std::ostream &os, Version const &version );
 	};
 
 	Version const &libraryVersion();
@@ -13883,7 +13883,7 @@ namespace Catch {
 		m_label( label )
 	{}
 
-	std::ostream &operator << ( std::ostream &os, pluralise const &pluraliser ) {
+	std::ostream& operator << ( std::ostream &os, pluralise const &pluraliser ) {
 		os << pluraliser.m_count << ' ' << pluraliser.m_label;
 		if( pluraliser.m_count != 1 )
 			os << 's';
@@ -15366,7 +15366,7 @@ namespace Catch {
 		buildNumber( _buildNumber )
 	{}
 
-	std::ostream &operator << ( std::ostream &os, Version const &version ) {
+	std::ostream& operator << ( std::ostream &os, Version const &version ) {
 		os  << version.majorVersion << '.'
 			<< version.minorVersion << '.'
 			<< version.patchNumber;
@@ -15590,7 +15590,7 @@ namespace {
 		}
 	}
 
-	std::ostream &operator << ( std::ostream &os, XmlEncode const &xmlEncode ) {
+	std::ostream& operator << ( std::ostream &os, XmlEncode const &xmlEncode ) {
 		xmlEncode.encodeTo( os );
 		return os;
 	}
@@ -15887,7 +15887,7 @@ void printTotals(std::ostream &out, const Totals &totals) {
 // Implementation of CompactReporter formatting
 class AssertionPrinter {
 public:
-	AssertionPrinter &operator= (AssertionPrinter const&) = delete;
+	AssertionPrinter& operator= (AssertionPrinter const&) = delete;
 	AssertionPrinter(AssertionPrinter const&) = delete;
 	AssertionPrinter(std::ostream &_stream, AssertionStats const &_stats, bool _printInfoMessages)
 		: stream(_stream)
@@ -16126,7 +16126,7 @@ namespace {
 // Formatter impl for ConsoleReporter
 class ConsoleAssertionPrinter {
 public:
-	ConsoleAssertionPrinter &operator= (ConsoleAssertionPrinter const&) = delete;
+	ConsoleAssertionPrinter& operator= (ConsoleAssertionPrinter const&) = delete;
 	ConsoleAssertionPrinter(ConsoleAssertionPrinter const&) = delete;
 	ConsoleAssertionPrinter(std::ostream &_stream, AssertionStats const &_stats, bool _printInfoMessages)
 		: stream(_stream),
@@ -16398,12 +16398,12 @@ public:
 	}
 
 	template<typename T>
-	friend TablePrinter &operator << (TablePrinter &tp, T const &value) {
+	friend TablePrinter& operator << (TablePrinter &tp, T const &value) {
 		tp.m_oss << value;
 		return tp;
 	}
 
-	friend TablePrinter &operator << (TablePrinter &tp, ColumnBreak) {
+	friend TablePrinter& operator << (TablePrinter &tp, ColumnBreak) {
 		auto colStr = tp.m_oss.str();
 		const auto strSize = colStr.size();
 		tp.m_oss.str("");
@@ -16425,7 +16425,7 @@ public:
 		return tp;
 	}
 
-	friend TablePrinter &operator << (TablePrinter &tp, RowBreak) {
+	friend TablePrinter& operator << (TablePrinter &tp, RowBreak) {
 		if (tp.m_currentColumn > 0) {
 			tp.m_os << '\n';
 			tp.m_currentColumn = -1;

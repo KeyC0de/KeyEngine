@@ -41,8 +41,8 @@ public:
 	const std::string &getName() const noexcept;
 	const std::vector<std::unique_ptr<IConsumer>>& getConsumers() const;
 	const std::vector<std::unique_ptr<IProducer>>& getProducers() const;
-	IConsumer &getConsumer( const std::string &name ) const;
-	IProducer &getProducer( const std::string &name ) const;
+	IConsumer& getConsumer( const std::string &name ) const;
+	IProducer& getProducer( const std::string &name ) const;
 	//===================================================
 	//	\function	setupConsumerTarget
 	//	\brief  link a consumer from this Pass to a producer of another targetPass

@@ -78,11 +78,11 @@ class MessageDispatcher final
 public:
 	~MessageDispatcher() noexcept = default;
 	MessageDispatcher( const MessageDispatcher &fs ) = delete;
-	MessageDispatcher &operator=( const MessageDispatcher &fs ) = delete;
+	MessageDispatcher& operator=( const MessageDispatcher &fs ) = delete;
 	MessageDispatcher( MessageDispatcher &&rhs ) noexcept;
-	MessageDispatcher &operator=( MessageDispatcher &&rhs ) noexcept;
+	MessageDispatcher& operator=( MessageDispatcher &&rhs ) noexcept;
 
-	static MessageDispatcher &getInstance( int initialCapacity = 100 );
+	static MessageDispatcher& getInstance( int initialCapacity = 100 );
 	//===================================================
 	//	\function	addMessage
 	//	\brief  add new message to the MessageBus
@@ -93,8 +93,8 @@ public:
 	//	\brief  dispatch all pending messages
 	//	\date	2019/12/10 4:47
 	void dispatchAll();
-	//TODO: dispatchByEventType
-	//TODO: dispatchEventsTargetedTo( specific actor )
+	//#TODO: dispatchByEventType
+	//#TODO: dispatchEventsTargetedTo( specific actor )
 	void clear();
 
 	std::size_t getSize() const noexcept;

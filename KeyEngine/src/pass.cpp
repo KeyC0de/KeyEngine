@@ -40,7 +40,7 @@ const std::vector<std::unique_ptr<IProducer>>& IPass::getProducers() const
 	return m_producers;
 }
 
-IConsumer &IPass::getConsumer( const std::string &name ) const
+IConsumer& IPass::getConsumer( const std::string &name ) const
 {
 	for ( auto &cons : m_consumers )
 	{
@@ -58,7 +58,7 @@ IConsumer &IPass::getConsumer( const std::string &name ) const
 	THROW_RENDERER_EXCEPTION( oss.str() );
 }
 
-IProducer &IPass::getProducer( const std::string &name ) const
+IProducer& IPass::getProducer( const std::string &name ) const
 {
 	for ( auto &prod : m_producers )
 	{

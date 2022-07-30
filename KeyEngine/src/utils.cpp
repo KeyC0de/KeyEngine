@@ -216,12 +216,12 @@ std::uintptr_t pointerToInt( void *p )
 	return reinterpret_cast<std::uintptr_t>( p );
 }
 
-void *intToPointer( uintptr_t i )
+void* intToPointer( uintptr_t i )
 {
 	return reinterpret_cast<void*>( i );
 }
 
-void *addPointers( void *p1,
+void* addPointers( void *p1,
 	void *p2 )
 {
 	return intToPointer( pointerToInt( p1 ) + pointerToInt( p2 ) );
@@ -327,7 +327,7 @@ const std::size_t getForwardPaddingWithHeader( const std::size_t p,
 	return padding;
 }
 
-void *alignedMalloc( std::size_t nBytes,
+void* alignedMalloc( std::size_t nBytes,
 	std::size_t alignment )
 {
 	// allocate `nBytes` + `nBytesForAlignment` required given requested `alignment` value
