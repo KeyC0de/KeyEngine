@@ -46,7 +46,7 @@ class Graphics
 		Microsoft::WRL::ComPtr<IDXGIAdapter> m_pAdapter;
 	public:
 		Adapter( IDXGIAdapter *pAdapter );
-	
+
 		const DXGI_ADAPTER_DESC* getDesc() const noexcept;
 		IDXGIAdapter* getAdapter() const noexcept;
 	};
@@ -137,7 +137,7 @@ public:
 			static_cast<int>( rect.m_bottom ),
 			col );
 	}
-	
+
 	inline void drawRectWH( int x0,
 		int y0,
 		int width,

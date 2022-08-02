@@ -278,6 +278,7 @@
     <ClInclude Include="inc\algorithms.h" />
     <ClInclude Include="inc\graphics_mode.h" />
     <ClInclude Include="inc\grid_location.h" />
+    <ClInclude Include="inc\lru_cache.h" />
     <ClInclude Include="inc\mouse_picker.h" />
     <ClInclude Include="inc\non_copyable_non_moveable.h" />
     <ClInclude Include="inc\rectangle.h" />

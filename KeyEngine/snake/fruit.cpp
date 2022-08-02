@@ -36,7 +36,7 @@ void Fruit::respawn( std::mt19937 &rng,
 	{
 		newGridLoc.x = distrX( rng ) / field.m_cellSize;
 		newGridLoc.y = distrY( rng ) / field.m_cellSize;
-	} 
+	}
 	while ( snake.checkForCollisions( newGridLoc ) );
 
 	m_gridLoc = newGridLoc;

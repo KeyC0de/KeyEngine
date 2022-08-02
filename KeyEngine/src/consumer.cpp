@@ -57,17 +57,17 @@ void IConsumer::setPassAndProducerNames( const std::string &passName,
 	m_producerName = producerName;
 }
 
-const std::string &IConsumer::getName() const noexcept
+const std::string& IConsumer::getName() const noexcept
 {
 	return m_name;
 }
 
-const std::string &IConsumer::getPassName() const noexcept
+const std::string& IConsumer::getPassName() const noexcept
 {
 	return m_passName;
 }
 
-const std::string &IConsumer::getProducerName() const noexcept
+const std::string& IConsumer::getProducerName() const noexcept
 {
 	return m_producerName;
 }

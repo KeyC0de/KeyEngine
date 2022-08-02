@@ -95,7 +95,7 @@ public:
 	Window& operator=( const Window &rhs ) = delete;
 	Window( Window &&rhs ) noexcept;
 	Window& operator=( Window &&rhs ) noexcept;
-	
+
 	static Keyboard& getKeyboard() noexcept;
 	static Mouse& getMouse() noexcept;
 	static WindowClass& getWindowClass() noexcept;

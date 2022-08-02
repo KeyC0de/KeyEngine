@@ -40,7 +40,7 @@ class Entity
 private:
 	Entity( EntityIndex version, EntityIndex index, const std::string &name,
 		Category categoryId = UNCATEGORIZED, Entity *pParent = nullptr );
-	
+
 	EntityIndex getVersion() const noexcept;
 	EntityIndex getIndex() const noexcept;
 public:
@@ -74,12 +74,12 @@ public:
 
 
 /*
-
 `Entity`ies form an Entity graph
 A World Entity's children will be most other entities
 	except some entities will be children of other entities. eg. a sword entity can be a child of a soldier entity which will be a child of a world entity
 
-Yes, a World/Level/Map/Terrain is just a special type of Entity (WorldEntity).
+Yes, a Terrain is just a special type of Entity (TerrainEntity).
+A Terrain is part of a World.
 
 class RenderableEntity
 	:

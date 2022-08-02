@@ -18,7 +18,7 @@ public:
 		float farZ );
 	void setPosition( const DirectX::XMFLOAT3 &pos ) noexcept;
 	void setRotation( const DirectX::XMFLOAT3 &rot ) noexcept;
-	DirectX::XMMATRIX getTransform() const noexcept override;
-	DirectX::XMMATRIX getPosition() const noexcept;
-	DirectX::XMMATRIX getRotation() const noexcept;
+	const DirectX::XMMATRIX getTransform() const noexcept override;
+	const DirectX::XMMATRIX getPosition() const noexcept;
+	const DirectX::XMMATRIX getRotation() const noexcept;
 };

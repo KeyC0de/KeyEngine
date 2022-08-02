@@ -650,7 +650,7 @@ enum aiComponent
 */
 #define AI_CONFIG_IMPORT_FBX_EMBEDDED_TEXTURES_LEGACY_NAMING \
 	"AI_CONFIG_IMPORT_FBX_EMBEDDED_TEXTURES_LEGACY_NAMING"
-	
+
 // ---------------------------------------------------------------------------
 /** @brief  Set the vertex animation keyframe to be imported
  *

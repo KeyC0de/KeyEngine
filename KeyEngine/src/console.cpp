@@ -84,7 +84,7 @@ KeyConsole::KeyConsole( const std::string &fontName )
 			util::s2ws( "Notice" ).data(),
 			MB_ICONEXCLAMATION );
 	}
-	
+
 	// 2. set console title
 	SetConsoleTitleW( util::s2ws( m_title ).data() );
 
@@ -101,7 +101,7 @@ KeyConsole::KeyConsole( const std::string &fontName )
 	{
 		OutputDebugStringW( util::printHresultErrorDescriptionW( HRESULT_FROM_WIN32( GetLastError() ) ).data() );
 	}
-	
+
 	// 4. use a suitable (console) font that supports our desired glyphs
 	// - post Windows Vista only
 	setFont( fontName );
@@ -338,7 +338,7 @@ bool KeyConsole::closeConsole()
 	return true;
 }
 
-KeyConsole &KeyConsole::getInstance() noexcept 
+KeyConsole &KeyConsole::getInstance() noexcept
 {
 	if ( m_pInstance == nullptr )
 	{

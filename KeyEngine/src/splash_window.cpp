@@ -48,7 +48,7 @@ SplashWindow::SplashWindow( HWND hWndParent,
 		hInst,
 		nullptr );
 	ASSERT_HRES_WIN32_IF_FAILED( hres );
-	
+
 	/// load png image here as a transparent bitmap
 	auto hBitmap = Bitmap::loadFromFile( "splash.png" );
 
@@ -116,7 +116,7 @@ void SplashWindow::display()
 	int	startX, startY;
 	HDWP windefer;
 	RECT rect;
-	
+
 	GetClientRect( m_hWnd,
 		&rect );
 	width = rect.right - rect.left;

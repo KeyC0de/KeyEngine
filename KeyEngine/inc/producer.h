@@ -30,7 +30,7 @@ class BindableProducer final
 {
 	static_assert( std::is_base_of_v<IBindable, T>,
 		"BindableProducer target T is not IBindable!" );
-	
+
 	std::shared_ptr<T>& m_target;
 public:
 	BindableProducer( const std::string &name,

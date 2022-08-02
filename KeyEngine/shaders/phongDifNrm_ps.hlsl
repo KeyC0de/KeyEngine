@@ -35,7 +35,7 @@ PSOut main( PSIn input )
 {
 	float3 diffuse;
 	float3 specular;
-	
+
 	// shadow occlusion test
 	const float shadowLevel = calculateShadowLevel( input.posLightSpace );
 	if ( shadowLevel != 0.0f )
@@ -87,7 +87,7 @@ PSOut main( PSIn input )
 		// so don't apply lighting and only add an ambient light term
 		diffuse = specular = 0.0f;
 	}
-	
+
 	// #TODO: check HAS_ALPHA and work the alpha output component
 	// calculate texture contribution
 	PSOut output;

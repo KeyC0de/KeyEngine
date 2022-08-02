@@ -165,7 +165,7 @@ bool createDirectory( const std::string &str )
 
 void setFilePermissions( const std::string &path,
 	fs::perms permsToSet,
-	fs::perm_options permsAction ) 
+	fs::perm_options permsAction )
 {
 	fs::permissions( path,
 		permsToSet,

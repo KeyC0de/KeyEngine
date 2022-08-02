@@ -13,7 +13,7 @@ SettingsManager::SettingsManager( const std::string &filePath )
 SettingsManager::~SettingsManager() noexcept
 {
 	// free allocated resources if any
-		
+
 }
 
 SettingsManager& SettingsManager::getInstance( const std::string &filePath )
@@ -59,7 +59,7 @@ void SettingsManager::loadFromFile( const std::string &filePath )
 	//	<< s2ws( ini.Get( "user", "email", "UNKNOWN" ) )
 	//	<< L", pi="
 	//	<< ini.GetReal( "user", "pi", -1 )
-	//	<< L", active=" 
+	//	<< L", active="
 	//	<< ini.GetBoolean("user", "active", true) << "\n";
 }
 

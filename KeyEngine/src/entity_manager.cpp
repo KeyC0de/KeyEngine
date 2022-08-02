@@ -190,16 +190,16 @@ int main()
 	EntityId eid1 = em.spawnEntity();
 	EntityId eid2 = em.spawnEntity();
 	EntityId eid3 = em.spawnEntity();
-	
+
 	std::cout << "entityId1=" << eid1 << '\n';
 	std::cout << "entityId2=" << eid2 << '\n';
 	std::cout << "entityId3=" << eid3 << '\n';
-	
+
 	std::cout << "\nGetting entities\n";
 	Entity *e1 = em.getEntityById( eid1 );
 	Entity *e2 = em.getEntityById( eid2 );
 	Entity *e3 = em.getEntityById( eid3 );
-	
+
 	if ( e1 )
 	{
 		e1->printInfo();

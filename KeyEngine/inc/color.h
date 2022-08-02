@@ -31,23 +31,23 @@ struct ColorBGRA final
 		:
 		m_dword(0)
 	{
-	
+
 	}
-	
+
 	constexpr ColorBGRA( const ColorBGRA &col )
 		:
 		m_dword{col.m_dword}
 	{
-	
+
 	}
-	
+
 	constexpr ColorBGRA( unsigned int dw )
 		:
 		m_dword(dw)
 	{
-	
+
 	}
-	
+
 	constexpr ColorBGRA( Byte r,
 		Byte g,
 		Byte b,
@@ -55,18 +55,18 @@ struct ColorBGRA final
 		:
 		m_dword(( a << 24u ) | ( r << 16u ) | ( g << 8u ) | b)
 	{
-	
+
 	}
-	
+
 	constexpr ColorBGRA( Byte r,
 		Byte g,
 		Byte b )
 		:
 		m_dword((255 << 24u) | ( r << 16u ) | ( g << 8u ) | b)
 	{
-	
+
 	}
-	
+
 	//ColorBGRA( Byte r,
 	//	Byte g,
 	//	Byte b )
@@ -75,13 +75,13 @@ struct ColorBGRA final
 	//{
 	//
 	//}
-	
+
 	constexpr ColorBGRA( ColorBGRA col,
 		Byte a )
 		:
 		ColorBGRA(( a << 24u ) | col.m_dword )
 	{
-	
+
 	}
 
 	ColorBGRA& operator*=( const int scale )
@@ -89,7 +89,7 @@ struct ColorBGRA final
 		this->m_dword *= scale;
 		return *this;
 	}
-	
+
 	ColorBGRA operator*( const int scale )
 	{
 		return *this *= scale;
@@ -100,57 +100,57 @@ struct ColorBGRA final
 		m_dword = rhs.m_dword;
 		return *this;
 	}
-	
+
 	bool operator==( const ColorBGRA &rhs ) const noexcept
 	{
 		return m_dword == rhs.m_dword;
 	}
-	
+
 	bool operator!=( const ColorBGRA &rhs ) const noexcept
 	{
 		return !( *this == rhs );
 	}
-	
+
 	operator unsigned int() const noexcept
 	{
 		return m_dword;
 	}
-	
+
 	constexpr Byte getRed() const noexcept
 	{
 		return ( m_dword >> 16u ) & 0xFFu;
 	}
-	
+
 	constexpr Byte getGreen() const noexcept
 	{
 		return ( m_dword >> 8u ) & 0xFFu;
 	}
-	
+
 	constexpr Byte getBlue() const noexcept
 	{
 		return m_dword & 0xFFu;
 	}
-	
+
 	constexpr Byte getAlpha() const noexcept
 	{
 		return m_dword >> 24u;
 	}
-	
+
 	void setRed( Byte r )
 	{
 		m_dword = ( m_dword & 0xFF00FFFFu ) | ( r << 16u );
 	}
-	
+
 	void setGreen( Byte g )
 	{
 		m_dword = ( m_dword & 0xFFFF00FFu ) | ( g << 8u );
 	}
-	
+
 	void setBlue( Byte b )
 	{
 		m_dword = ( m_dword & 0xFFFFFF00u ) | b;
 	}
-	
+
 	void setAlpha( Byte a )
 	{
 		m_dword = ( m_dword & 0xFFFFFFu ) | ( a << 24u );

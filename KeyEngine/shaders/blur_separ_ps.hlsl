@@ -33,7 +33,7 @@ PSOut main( PSIn input )
 	uint height;
 	float dx;
 	float dy;
-	
+
 	blurOutlineRtt.GetDimensions( width,
 		height );
 	if ( bHorizontal )

@@ -19,7 +19,7 @@ class Operation;
 class Message
 {
 public:
-	enum class Type
+	enum Type
 	{
 		Idle = 0,
 		Damage,
@@ -29,11 +29,11 @@ public:
 	};
 private:
 	bool m_bHandled = false;
-	class Entity *m_pSender;
-	std::vector<class Entity*> m_pReceivers;
+	Entity *m_pSender;
+	std::vector<Entity*> m_pReceivers;
 	Message::Type m_type;
 public:
-	Message( class Entity *srcId, const std::vector<class Entity*>& destId,
+	Message( Entity *srcId, const std::vector<Entity*>& destId,
 		Message::Type type );
 	virtual ~Message() noexcept;
 	Message( const Message &rhs ) = delete;
@@ -42,8 +42,8 @@ public:
 	Message& operator=( Message &&rhs ) noexcept;
 
 	Message::Type getType() const noexcept;
-	class Entity* getSender() noexcept;
-	std::vector<class Entity*>& getReceivers() noexcept;
+	Entity* getSender() noexcept;
+	std::vector<Entity*>& getReceivers() noexcept;
 	bool isHandled() const noexcept;
 	void setHandled( bool b) noexcept;
 };
@@ -63,13 +63,13 @@ class MessageCall
 {
 	std::unique_ptr<class Operation> m_pFunc;
 public:
-	MessageCall( class Entity *psrc, const std::vector<class Entity*>& pDests,
+	MessageCall( Entity *psrc, const std::vector<Entity*>& pDests,
 		Message::Type type, std::unique_ptr<Operation> df );
 	virtual ~MessageCall() noexcept = default;
 	MessageCall( MessageCall &&rhs ) noexcept;
 	MessageCall& operator=( MessageCall &&rhs ) noexcept;
 
-	class Operation* getCallable() const noexcept;
+	Operation* getCallable() const noexcept;
 };
 
 
@@ -89,8 +89,8 @@ class MessageData
 	std::unique_ptr<T> m_pPayload;
 public:
 	template<typename ... TParams>
-	MessageData( class Entity *src,
-		const std::vector<class Entity*>& pDests,
+	MessageData( Entity *src,
+		const std::vector<Entity*>& pDests,
 		Message::Type type,
 		TParams&&... args )
 		:
@@ -101,7 +101,7 @@ public:
 	}
 
 	virtual ~MessageData() noexcept = default;
-	
+
 	MessageData( MessageData &&rhs ) noexcept
 		:
 		Message{std::move( rhs )},
@@ -109,14 +109,14 @@ public:
 	{
 
 	}
-	
+
 	MessageData& operator=( MessageData &&rhs ) noexcept
 	{
 		Message::operator=( std::move( rhs ) );
 		std::swap( m_pPayload, rhs.m_pPayload );
 		return *this;
 	}
-	
+
 	T* getPayload() const noexcept
 	{
 		return m_pPayload.get();

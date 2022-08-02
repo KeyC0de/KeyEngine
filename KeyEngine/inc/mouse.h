@@ -13,7 +13,7 @@ class Mouse final
 		int m_dx;
 		int m_dy;
 	};
-	
+
 	class Event final
 	{
 	public:

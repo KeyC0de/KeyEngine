@@ -15,10 +15,10 @@ MousePicker::MousePicker( Graphics &gph,
 	// convert to NDC space
 	dx::XMFLOAT2 coordsNdc = convertToNdc( gph,
 		dx::XMFLOAT2(screenX, screenY) );
-	
+
 	// convert to clip space, account for the aspect ratio of the viewport
 	dx::XMFLOAT2 coordsClip{convertToClip( gph, coordsNdc )};
-	
+
 	// convert to view space
 	dx::XMFLOAT4 coordsView;
 	dx::XMStoreFloat4( &coordsView,

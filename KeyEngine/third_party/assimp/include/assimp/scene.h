@@ -67,7 +67,7 @@ extern "C" {
 #endif
 
 // -------------------------------------------------------------------------------
-/** 
+/**
  * A node in the imported hierarchy.
  *
  * Each node has name, a parent node (except for the root node),
@@ -146,12 +146,12 @@ struct ASSIMP_API aiNode
      *  @param name Name to search for
      *  @return NULL or a valid Node if the search was successful.
      */
-    inline 
+    inline
     const aiNode *FindNode(const aiString &name) const {
         return FindNode(name.data);
     }
 
-    inline 
+    inline
     aiNode *FindNode(const aiString &name) {
         return FindNode(name.data);
     }
@@ -330,8 +330,8 @@ struct aiScene
     /**
      *  @brief  The global metadata assigned to the scene itself.
      *
-     *  This data contains global metadata which belongs to the scene like 
-     *  unit-conversions, versions, vendors or other model-specific data. This 
+     *  This data contains global metadata which belongs to the scene like
+     *  unit-conversions, versions, vendors or other model-specific data. This
      *  can be used to store format-specific metadata as well.
      */
     C_STRUCT aiMetadata *mMetaData;
@@ -347,34 +347,34 @@ struct aiScene
 
     //! Check whether the scene contains meshes
     //! Unless no special scene flags are set this will always be true.
-    inline bool HasMeshes() const { 
-        return mMeshes != NULL && mNumMeshes > 0; 
+    inline bool HasMeshes() const {
+        return mMeshes != NULL && mNumMeshes > 0;
     }
 
     //! Check whether the scene contains materials
     //! Unless no special scene flags are set this will always be true.
-    inline bool HasMaterials() const { 
-        return mMaterials != NULL && mNumMaterials > 0; 
+    inline bool HasMaterials() const {
+        return mMaterials != NULL && mNumMaterials > 0;
     }
 
     //! Check whether the scene contains lights
-    inline bool HasLights() const { 
-        return mLights != NULL && mNumLights > 0; 
+    inline bool HasLights() const {
+        return mLights != NULL && mNumLights > 0;
     }
 
     //! Check whether the scene contains textures
     inline bool HasTextures() const {
-        return mTextures != NULL && mNumTextures > 0; 
+        return mTextures != NULL && mNumTextures > 0;
     }
 
     //! Check whether the scene contains cameras
     inline bool HasCameras() const {
-        return mCameras != NULL && mNumCameras > 0; 
+        return mCameras != NULL && mNumCameras > 0;
     }
 
     //! Check whether the scene contains animations
-    inline bool HasAnimations() const { 
-        return mAnimations != NULL && mNumAnimations > 0; 
+    inline bool HasAnimations() const {
+        return mAnimations != NULL && mNumAnimations > 0;
     }
 
     //! Returns a short filename from a full m_path

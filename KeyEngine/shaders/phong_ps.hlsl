@@ -28,7 +28,7 @@ PSOut main( PSIn input )
 	PSOut output;
 	float3 diffuse;
 	float3 specular;
-	
+
 	const float shadowLevel = calculateShadowLevel( input.posLightSpace );
 	if ( shadowLevel != 0.0f )
 	{
@@ -59,7 +59,7 @@ PSOut main( PSIn input )
 	{
 		diffuse = specular = 0.0f;
 	}
-	
+
 	output.finalColor = float4(saturate( (diffuse + ambient) * materialColor + specular ),
 		1.0f );
 	return output;

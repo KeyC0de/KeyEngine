@@ -191,7 +191,7 @@ Sandbox3d::Sandbox3d( int width,
 	m_nanoSuit.setTransform( dx::XMMatrixRotationY( util::PI / 2.f ) *
 		dx::XMMatrixTranslation( 27.f, -0.56f, 1.7f ) );
 	m_carabiner.setTransform( dx::XMMatrixTranslation( -10.0f, 6.0f, 0.0f ) );
-	
+
 	m_pPointLight1->connectEffectsToRenderer( m_renderer );
 	//m_pPointLight2->connectEffectsToRenderer( m_renderer );
 
@@ -332,7 +332,7 @@ void Sandbox3d::update( float dt )
 	m_actorManager.update( dt );	// updates actors - should be much more efficient after spatial partitioning and frustum culling - for rendering too
 	spatialPartitionGameObjects();		// actors + statics
 	frustumCullGameObjects();			// actors + statics - 1 frustum for each renderable viewpoint (typically just the player's camera)
-	
+
 	m_physics.update( CONST_DT );
 	m_playerManager.update( dt );
 	m_skybox.update( dt );
@@ -416,14 +416,14 @@ Arkanoid::Arkanoid( int width,
 	m_renderer{m_mainWindow.getGraphics()},
 	m_ball(dx::XMFLOAT2{450.0f, 450.0f}, dx::XMFLOAT2{-300.0f, -300.0f}),
 	m_walls(Rect(0.0f, (float)width, 0.0f, (float)height)),
-	m_paddle(dx::XMFLOAT2(400.0f, 550.0f), 40.0f, 8.0f, col::Cyan, col::Orange), 
+	m_paddle(dx::XMFLOAT2(400.0f, 550.0f), 40.0f, 8.0f, col::Cyan, col::Orange),
 	m_brickSound("assets/sfx/arkanoid_brick.wav", "Arkanoid Brick"),
 	m_padSound("assets/sfx/arkanoid_pad.wav", "Arkanoid Pad")
 {
 	// set bricks starting positions and assign different color for each brick row
 	const ColorBGRA colors[4] = {col::Red, col::Green, col::Blue, col::Gold};
 	const dx::XMFLOAT2 topLeft{40.0f, 40.0f};
-	
+
 	for ( int i = 0, y = 0; y < m_nBricksVertically; ++y )
 	{
 		ColorBGRA rowCol = colors[y];
@@ -555,7 +555,7 @@ void Arkanoid::render( float dt )
 {
 	auto &gph = m_mainWindow.getGraphics();
 	gph.beginRendering();
-	
+
 	m_ball.render( gph );
 	for ( const Brick &b : m_bricks )
 	{
@@ -584,7 +584,7 @@ void Arkanoid::present()
 	snek({ 220 / board.dimension, 220 / board.dimension }),
 	fruit(rng, board, snek)
 {
-	
+
 }
 
 int Snake::loop()
@@ -737,7 +737,7 @@ void Snake::render( float dt )
 {
 	auto &gph = m_mainWindow.getGraphics();
 	gph.beginRendering();
-	
+
 
 	m_renderer.run( gph );
 }

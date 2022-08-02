@@ -57,7 +57,7 @@ DxgiInfoQueue::DxgiInfoQueue()
 
 DxgiInfoQueue::~DxgiInfoQueue()
 {
-	
+
 }
 
 void DxgiInfoQueue::markQueueIndex() noexcept

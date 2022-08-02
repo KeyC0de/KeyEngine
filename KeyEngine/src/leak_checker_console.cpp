@@ -28,7 +28,7 @@ public:
 			OutputDebugStringW( L"No leaks. : )\n" );
 		}
 	}
-	
+
 	static inline void setupLeakChecker()
 	{
 		_CrtSetDbgFlag( _CRTDBG_ALLOC_MEM_DF

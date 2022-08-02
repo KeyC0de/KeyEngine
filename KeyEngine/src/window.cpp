@@ -124,7 +124,7 @@ Window::Dialog::Dialog( const std::wstring &name )
 {
 	HINSTANCE hInstance = GetModuleHandleW( nullptr );
 	ASSERT( hInstance != nullptr, "HINSTANCE is null!" );
-	
+
 	HRESULT hres;
 
 	WNDCLASSEXW wc{};
@@ -1072,7 +1072,7 @@ LRESULT Window::windowProc_impl( _In_ HWND hWnd,
 		FillRect( m_dcClientArea,
 			rect,
 			hBrush );
-		
+
 		EndPaint( hWnd,
 			&ps );
 		break;
@@ -1091,7 +1091,7 @@ LRESULT Window::windowProc_impl( _In_ HWND hWnd,
 			// Preserve the existing buffer count and format.
 			// Automatically choose the width and height to match the client rect for HWNDs.
 			hr = g_pSwapChain->ResizeBuffers(0, 0, 0, DXGI_FORMAT_UNKNOWN, 0);
-			
+
 			// Perform error handling here!
 
 			// Get buffer and create a render-target-view.
@@ -1215,7 +1215,7 @@ Prevent window resizing: Instead resize by ingame option - choosing resolution:
 	//		wParam,
 	//		lParam );
 	//	// or:
-	//	//short int xPos = GET_X_LPARAM( lParam ); 
+	//	//short int xPos = GET_X_LPARAM( lParam );
 	//	//short int yPos = GET_Y_LPARAM( lParam );
 	//	if ( uHitTest == HTCLIENT )
 	//	{

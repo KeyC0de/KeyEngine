@@ -113,18 +113,18 @@ void CameraWidget::setRotation( const DirectX::XMFLOAT3 &rot )
 	m_rot = rot;
 }
 
-DirectX::XMMATRIX CameraWidget::getTransform() const noexcept
+const DirectX::XMMATRIX CameraWidget::getTransform() const noexcept
 {
 	return dx::XMMatrixRotationRollPitchYawFromVector( dx::XMLoadFloat3( &m_rot ) ) *
 		dx::XMMatrixTranslationFromVector( dx::XMLoadFloat3( &m_pos ) );
 }
 
-DirectX::XMMATRIX CameraWidget::getPosition() const noexcept
+const DirectX::XMMATRIX CameraWidget::getPosition() const noexcept
 {
 	return dx::XMMatrixTranslationFromVector( dx::XMLoadFloat3( &m_pos ) );
 }
 
-DirectX::XMMATRIX CameraWidget::getRotation() const noexcept
+const DirectX::XMMATRIX CameraWidget::getRotation() const noexcept
 {
 	return dx::XMMatrixRotationRollPitchYawFromVector( dx::XMLoadFloat3( &m_rot ) );
 }

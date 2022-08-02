@@ -129,9 +129,9 @@ constexpr void quadratic( const T a,
 	}
 	else
 	{
-		std::cout << "1st root: " 
+		std::cout << "1st root: "
 					<< ( -b + squareRoot( diakr ) ) / ( 2 * a )
-					<< "\t 2nd root: " 
+					<< "\t 2nd root: "
 					<< ( -b - squareRoot( diakr ) ) / ( 2 * a )
 					<< "\n";
 	}

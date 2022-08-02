@@ -21,7 +21,7 @@
 class ThreadPool final
 {
 	using Task = std::function<void()>;
-	
+
 	std::atomic<bool> m_bEnabled;
 	std::vector<std::thread> m_pool;
 	std::queue<Task> m_tasks;

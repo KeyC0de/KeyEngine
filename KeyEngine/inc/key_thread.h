@@ -45,7 +45,7 @@ public:
 		};
 		m_pInterruptFlag = prom.get_future().get();
 	}
-	
+
 	~KeyThread() noexcept;
 	KeyThread( const KeyThread &rhs ) = delete;
 	KeyThread& operator=( const KeyThread &rhs ) = delete;
@@ -59,7 +59,7 @@ public:
 public:
 	// creates a different flag for each thread
 	inline static thread_local Flag threadFlag;
-	
+
 	static bool isThreadInterrupted() noexcept
 	{
 		if ( threadFlag.isSet() )

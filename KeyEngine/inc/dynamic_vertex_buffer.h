@@ -63,7 +63,7 @@ public:
 		static constexpr const char *tag = "P2";
 		EXTRACT_ASSIMP_AIMESH( mVertices )
 	};
-	
+
 	template<>
 	struct MemberProperties<Position3D>
 	{
@@ -73,7 +73,7 @@ public:
 		static constexpr const char *tag = "P3";
 		EXTRACT_ASSIMP_AIMESH( mVertices )
 	};
-	
+
 	template<>
 	struct MemberProperties<Texture2D>
 	{
@@ -83,7 +83,7 @@ public:
 		static constexpr const char *tag = "T2";
 		EXTRACT_ASSIMP_AIMESH( mTextureCoords[0] )
 	};
-	
+
 	template<>
 	struct MemberProperties<Normal>
 	{
@@ -93,7 +93,7 @@ public:
 		static constexpr const char *tag = "N";
 		EXTRACT_ASSIMP_AIMESH( mNormals )
 	};
-	
+
 	template<>
 	struct MemberProperties<Tangent>
 	{
@@ -103,7 +103,7 @@ public:
 		static constexpr const char *tag = "Nt";
 		EXTRACT_ASSIMP_AIMESH( mTangents )
 	};
-	
+
 	template<>
 	struct MemberProperties<Bitangent>
 	{
@@ -113,7 +113,7 @@ public:
 		static constexpr const char *tag = "Nb";
 		EXTRACT_ASSIMP_AIMESH( mBitangents )
 	};
-	
+
 	template<>
 	struct MemberProperties<Float3Color>
 	{
@@ -123,7 +123,7 @@ public:
 		static constexpr const char *tag = "C3";
 		EXTRACT_ASSIMP_AIMESH( mColors[0] )
 	};
-	
+
 	template<>
 	struct MemberProperties<Float4Color>
 	{
@@ -133,7 +133,7 @@ public:
 		static constexpr const char *tag = "C4";
 		EXTRACT_ASSIMP_AIMESH( mColors[0] )
 	};
-	
+
 	template<>
 	struct MemberProperties<BGRAColor>
 	{

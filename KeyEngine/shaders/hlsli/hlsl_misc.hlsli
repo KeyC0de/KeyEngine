@@ -167,7 +167,7 @@ float4 matrixToQuaternion( matrix m )
 
 	if ( tr > 0 )
 	{
-		float s = sqrt( tr + 1.0 ) * 2; // S=4*qw 
+		float s = sqrt( tr + 1.0 ) * 2; // S=4*qw
 		q.w = 0.25 * s;
 		q.x = (m[2][1] - m[1][2]) / s;
 		q.y = (m[0][2] - m[2][0]) / s;
@@ -175,7 +175,7 @@ float4 matrixToQuaternion( matrix m )
 	}
 	else if ( (m[0][0] > m[1][1]) && (m[0][0] > m[2][2]) )
 	{
-		float s = sqrt( 1.0 + m[0][0] - m[1][1] - m[2][2] ) * 2; // S=4*qx 
+		float s = sqrt( 1.0 + m[0][0] - m[1][1] - m[2][2] ) * 2; // S=4*qx
 		q.w = (m[2][1] - m[1][2]) / s;
 		q.x = 0.25 * s;
 		q.y = (m[0][1] + m[1][0]) / s;
@@ -427,18 +427,18 @@ float2x2 rotate2d( float angle )
 float3 hsvToRgb( float3 hsv )
 {
 	float3 RGB = hsv.z;
-	
+
 	float h = (hsv.x + 180) / 60.0; //get a hue in the 0..5 interval from the -180 180 intv
 	float s = hsv.y;
 	float v = hsv.z;
-	
+
 	float i = floor( h );
 	float f = h - i;
-	
+
 	float p = (1.0 - s);
 	float q = (1.0 - s * f);
 	float t = (1.0 - s * (1 - f));
-	
+
 	if ( i == 0 )
 	{
 		RGB = float3(1, t, p);
@@ -463,8 +463,8 @@ float3 hsvToRgb( float3 hsv )
 	{
 		RGB = float3(1, p, q);
 	}
-	
+
 	RGB *= v;
-	
+
 	return RGB;
 }

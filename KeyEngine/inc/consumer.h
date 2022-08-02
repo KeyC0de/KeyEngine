@@ -28,7 +28,7 @@ protected:
 	IConsumer( const std::string &name );
 public:
 	virtual ~IConsumer() = default;
-	
+
 	void setPassAndProducerNames( const std::string &passName, const std::string &producerName );
 	virtual void link( IProducer &producer ) = 0;
 	//===================================================
@@ -36,9 +36,9 @@ public:
 	//	\brief  assert validate after link()ing
 	//	\date	2021/06/26 23:57
 	virtual void validateLinkage() const = 0;
-	const std::string &getName() const noexcept;
-	const std::string &getPassName() const noexcept;
-	const std::string &getProducerName() const noexcept;
+	const std::string& getName() const noexcept;
+	const std::string& getPassName() const noexcept;
+	const std::string& getProducerName() const noexcept;
 };
 
 

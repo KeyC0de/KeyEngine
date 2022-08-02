@@ -98,14 +98,14 @@ void PointLight::displayImguiWidgets() noexcept
 		{
 			m_pShadowCamera->setPosition( m_pscbData.pos );
 		}
-		
+
 		ImGui::Text( "Intensity & Color" );
 		ImGui::SliderFloat( "Intensity", &m_pscbData.intensity, 0.01f, 4.0f,
 			"%.2f",
 			2.0f );
 		ImGui::ColorEdit3( "Diffuse", &m_pscbData.lightColor.x );
 		ImGui::ColorEdit3( "Ambient", &m_pscbData.ambient.x );
-		
+
 		ImGui::Text( "Attenuation" );
 		ImGui::SliderFloat( "Constant", &m_pscbData.attConstant, 0.05f, 10.0f, "%.2f",
 			4.0f );

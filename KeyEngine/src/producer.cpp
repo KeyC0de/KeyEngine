@@ -19,7 +19,7 @@ IProducer::IProducer( const std::string &name )
 		{
 			return std::isalnum( c ) || c == '_';
 		} );
-	
+
 	ASSERT( bNameValid && !std::isdigit( name.front() ),
 		std::string{"Invalid producer name: " + name}.c_str() );
 }

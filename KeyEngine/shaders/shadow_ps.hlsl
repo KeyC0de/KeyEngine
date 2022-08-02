@@ -24,7 +24,7 @@
 //	output.viewSpacePos.xyz = mul(float4(pos, 1.0f), worldView).xyz;
 //	// output.viewSpacePos.w = output.pos.z / output.pos.w;	// don't divide in the VS, but in the PS
 //	output.viewSpacePos.w = output.pos.z;
-//	
+//
 //	// store z as cartesian distance to make cubemap depth comparison convenient & fast
 //	// st we don't have to know which direction the point is in (which one of the 6 faces it corresponds to)
 //	//		but only the scalar distance
@@ -35,13 +35,13 @@
 //	// 1. We made the grave mistake of interpolating a non linear function (length, which is not linear = sqrt(x^2 + y^2 + z^2)
 //	//	and outputting it into the pixel shader - when in our other Pixel Shaders (eg. Phong_PS) we make use of x, y, z values
 //	// 2. Also for Slope Scale depth biasing to work, we need the Z as is in the vertex shader
-//	// 
+//	//
 //	// Instead we can calculate the length between the current pixel and the target's depth it in the PS
 //	//		and we will Shadow_PS.hlsl
 //	//
-//	// Also note we don't want to manipulate depth (SV_Depth) in the PS because it disables a lot of 
+//	// Also note we don't want to manipulate depth (SV_Depth) in the PS because it disables a lot of
 //	//	z optimizations including early z culling
-//	
+//
 //	return output;
 //}
 //
@@ -61,7 +61,7 @@ struct PSOut
 
 
 PSOut main( PSIn input )
-{	
+{
 	PSOut output;
 	float shadowBias = 0.0004	// add an extra bias to combat shadow acne
 		+ ( input.pos.z - input.viewSpacePos.w / input.pos.w );

@@ -44,7 +44,7 @@ Camera::Camera( Graphics &gph,
 	m_homePitch(homePitch),
 	m_homeYaw(homeYaw),
 	m_width(1.0f),
-	m_height((static_cast<float>(height) / util::gcd(width, height)) / 
+	m_height((static_cast<float>(height) / util::gcd(width, height)) /
 		(static_cast<float>(width) / util::gcd(width, height))),
 	m_homeWidth(m_width),
 	m_homeHeight(m_height),
@@ -153,7 +153,7 @@ void Camera::displayImguiWidgets( Graphics &gph ) noexcept
 		rotDirty );
 	dirtyCheck( ImGui::SliderAngle( "Yaw", &m_yaw, -180.0f, 180.0f ),
 		rotDirty );
-	
+
 	ImGui::Text( "Projection" );
 	dirtyCheck( ImGui::SliderFloat( "Width", &m_width, 0.01f, 4.0f, "%.2f",
 		1.5f ), projDirty );

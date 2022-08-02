@@ -89,7 +89,7 @@ void MV::onNodeLeave( Node &node )
 	ImGui::TreePop();
 }
 
-MV::TransformData &MV::fetchTransform() noexcept
+MV::TransformData& MV::fetchTransform() noexcept
 {
 	const auto nodeId = m_pSelectedNode->getId();
 	auto i = m_nodeMapTransforms.find( nodeId );
@@ -100,7 +100,7 @@ MV::TransformData &MV::fetchTransform() noexcept
 	return i->second;
 }
 
-MV::TransformData &MV::assembleTransform( int id ) noexcept
+MV::TransformData& MV::assembleTransform( int id ) noexcept
 {
 	const auto &worldTf = m_pSelectedNode->getWorldTransform();
 	const auto angles = util::extractEulerAngles( worldTf );

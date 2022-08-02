@@ -66,7 +66,7 @@ void Drawable::accept( IEffectVisitor &ev )
 	}
 }
 
-unsigned Drawable::getIndicesCount() const cond_noex
+const unsigned Drawable::getIndicesCount() const cond_noex
 {
 	return m_pIndexBuffer->getIndexCount();
 }
@@ -86,7 +86,7 @@ void Drawable::setTransform( const dx::XMMATRIX &worldTransform ) noexcept
 		worldTransform );
 }
 
-DirectX::XMMATRIX Drawable::getTransform() const noexcept
+const DirectX::XMMATRIX Drawable::getTransform() const noexcept
 {
 	return DirectX::XMLoadFloat4x4( &m_worldTransform );
 }
@@ -96,7 +96,7 @@ void Drawable::setDistanceFromActiveCamera( int dist ) noexcept
 	m_distanceFromActiveCamera = dist;
 }
 
-int Drawable::getDistanceFromActiveCamera() const noexcept
+const int Drawable::getDistanceFromActiveCamera() const noexcept
 {
 	return m_distanceFromActiveCamera;
 }

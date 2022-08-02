@@ -126,7 +126,7 @@ struct aiMetadata {
 
 #ifdef __cplusplus
 
-	/** 
+	/**
 	 *  @brief  The default constructor, set all members to zero by default.
 	 */
 	aiMetadata()
@@ -197,7 +197,7 @@ struct aiMetadata {
 		}
 	}
 
-	/** 
+	/**
 	 *  @brief The destructor.
 	 */
 	~aiMetadata() {
@@ -293,7 +293,7 @@ struct aiMetadata {
 	}
 
 	template<typename T>
-	inline 
+	inline
 	bool Set( unsigned index, const std::string &key, const T &value ) {
 		// In range assertion
 		if ( index >= mNumProperties ) {
@@ -317,7 +317,7 @@ struct aiMetadata {
 	}
 
 	template<typename T>
-	inline 
+	inline
 	bool Get( unsigned index, T &value ) const {
 		// In range assertion
 		if ( index >= mNumProperties ) {
@@ -338,7 +338,7 @@ struct aiMetadata {
 	}
 
 	template<typename T>
-	inline 
+	inline
 	bool Get( const aiString &key, T &value ) const {
 		// Search for the given key
 		for ( unsigned int i = 0; i < mNumProperties; ++i ) {

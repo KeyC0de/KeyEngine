@@ -12,7 +12,7 @@ KeyException::KeyException( int line,
 	m_file(file),
 	m_description(msg)
 {
-	
+
 }
 
 #pragma warning( disable : 4129 )

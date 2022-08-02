@@ -146,7 +146,7 @@ bool SoundManager::Channel::setupChannel( SoundManager &soundManager,
 			pass_;
 		}
 
-		// Called during each processing pass for each voice, just 
+		// Called during each processing pass for each voice, just
 		void STDMETHODCALLTYPE OnVoiceProcessingPassStart( UINT32 bytesRequired ) override
 		{
 			pass_;
@@ -181,7 +181,7 @@ bool SoundManager::Channel::setupChannel( SoundManager &soundManager,
 		//  create the voice sends structure
 		newSubmix->m_outputVoiceSendDesc = {0, newSubmix->m_pSubmixVoice};
 		newSubmix->m_outputVoiceSends = {1,	&newSubmix->m_outputVoiceSendDesc};
-		
+
 		// 6. Create the source voice
 		hres = soundManager.m_pXAudio2->CreateSourceVoice( &m_pSourceVoice,
 			(WAVEFORMATEX*)waveFormat.get(),
@@ -369,7 +369,7 @@ HRESULT Sound::findChunk( HANDLE file,
 				chunkDataSize,
 				nullptr,
 				FILE_CURRENT ) == INVALID_SET_FILE_POINTER )
-			return HRESULT_FROM_WIN32( GetLastError() );            
+			return HRESULT_FROM_WIN32( GetLastError() );
 		}
 
 		fileOffset += sizeof( DWORD ) * 2;
@@ -533,7 +533,7 @@ Sound::Sound( Sound &&rhs ) cond_noex
 	m_name{std::move( rhs.m_name )},
 	m_submixName{std::move( rhs.m_submixName )}
 {
-	// lock the rhs mutex before we copy/move to guard from 
+	// lock the rhs mutex before we copy/move to guard from
 	std::unique_lock<std::mutex> ulr{rhs.m_mu, std::defer_lock};
 	std::unique_lock<std::mutex> ull{m_mu, std::defer_lock};
 	std::lock( ull, ulr );
@@ -551,7 +551,7 @@ Sound& Sound::operator=( Sound &&rhs ) cond_noex
 {
 	m_name = std::move( rhs.m_name );
 	m_submixName = std::move( rhs.m_submixName );
-	// lock the rhs mutex before we copy/move to guard from 
+	// lock the rhs mutex before we copy/move to guard from
 	std::unique_lock<std::mutex> ulr{rhs.m_mu, std::defer_lock};
 	std::unique_lock<std::mutex> ull{m_mu, std::defer_lock};
 	std::lock( ull,

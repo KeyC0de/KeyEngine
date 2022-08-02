@@ -7,7 +7,7 @@
 #ifdef _32_BIT_ENTITY
 using EntityId = std::uint32_t;
 using EntityIndex = std::uint16_t;
-#else
+#elif _64_BIT_ENTITY
 using EntityId = std::uint64_t;
 using EntityIndex = std::uint32_t;
 #endif

@@ -69,7 +69,7 @@ bool Octree::isLeafNode() const
 
 void Octree::insert( OctreeData *data )
 {
-	// If this node doesn't have a m_data node yet assigned 
+	// If this node doesn't have a m_data node yet assigned
 	// and it is a leaf, then we're done!
 	if ( isLeafNode() )
 	{

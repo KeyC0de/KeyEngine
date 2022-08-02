@@ -67,17 +67,17 @@ Rect Rect::getScaled( float offset ) const noexcept
 	return Rect{m_left - offset, m_right + offset, m_top - offset, m_bottom + offset};
 }
 
-float Rect::getRectWidth() const noexcept
+const float Rect::getRectWidth() const noexcept
 {
 	return m_right - m_left;
 }
 
-float Rect::getRectHeight() const noexcept
+const float Rect::getRectHeight() const noexcept
 {
 	return m_bottom - m_top;
 }
 
-dx::XMFLOAT2 Rect::getCenter() const noexcept
+const dx::XMFLOAT2 Rect::getCenter() const noexcept
 {
 	return dx::XMFLOAT2{(m_left + m_right) / 2.0f, (m_top + m_bottom) / 2.0f};
 }

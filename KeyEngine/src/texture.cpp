@@ -97,7 +97,7 @@ Texture::Texture( Graphics &gph,
 
 	D3D11_TEXTURE2D_DESC texDesc;
 	m_pTex->GetDesc( &texDesc );
-	
+
 	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc{};
 	srvDesc.Format = texDesc.Format;
 	srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;

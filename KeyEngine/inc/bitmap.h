@@ -10,12 +10,12 @@
 
 
 //=============================================================
-//	\class	
+//	\class
 //
 //	\author	KeyC0de
 //	\date	2021/10/04 12:56
 //
-//	\brief	uses DirectX Tex to load images into 
+//	\brief	uses DirectX Tex to load images into
 //=============================================================
 class Bitmap final
 {

@@ -54,7 +54,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <map>
 
 namespace Assimp {
-    
+
 class ExporterPimpl;
 class IOSystem;
 
@@ -470,7 +470,7 @@ protected:
 };
 
 // ----------------------------------------------------------------------------------
-inline 
+inline
 const aiExportDataBlob *Exporter::ExportToBlob(  const aiScene *pScene, const std::string &pFormatId,
                                                  unsigned int pPreprocessing, const ExportProperties *pProperties)
 {
@@ -479,8 +479,8 @@ const aiExportDataBlob *Exporter::ExportToBlob(  const aiScene *pScene, const st
 
 // ----------------------------------------------------------------------------------
 inline
-aiReturn Exporter :: Export( const aiScene *pScene, const std::string &pFormatId, 
-                                    const std::string &pPath, unsigned int pPreprocessing, 
+aiReturn Exporter :: Export( const aiScene *pScene, const std::string &pFormatId,
+                                    const std::string &pPath, unsigned int pPreprocessing,
                                     const ExportProperties *pProperties)
 {
     return Export(pScene,pFormatId.c_str(),pPath.c_str(),pPreprocessing, pProperties);

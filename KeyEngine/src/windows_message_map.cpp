@@ -189,7 +189,7 @@ WindowsMessageMap::WindowsMessageMap() noexcept
 		MAP_MESSAGE( WM_ENTERSIZEMOVE ),
 	} )
 {
-	
+
 }
 
 std::string WindowsMessageMap::toString( DWORD msg,

@@ -56,7 +56,7 @@ Renderer::Renderer( Graphics &gph )
 
 Renderer::~Renderer() noexcept
 {
-	
+
 }
 
 void Renderer::addGlobalProducer( std::unique_ptr<IProducer> pProducer )
@@ -465,7 +465,7 @@ void Renderer3d::showGaussianBlurImguiWindow( Graphics &gph )
 			&m_radius,
 			0,
 			m_maxRadius );
-		
+
 		bool bSigmaChanged = false;
 		if ( m_kernelType == Gauss )
 		{

@@ -38,7 +38,7 @@ public:
 	void run( Graphics &gph ) const cond_noex override;
 	void setShadowCamera( const Camera &cam ) noexcept;
 	void dumpShadowMap( Graphics &gph, const std::string &path ) const;
-	static unsigned getResolution() noexcept;
+	static const unsigned getResolution() noexcept;
 private:
 	void setDepthStencilView( std::shared_ptr<IDepthStencilView> ds ) const;
 };

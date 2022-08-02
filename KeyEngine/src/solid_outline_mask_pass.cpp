@@ -29,7 +29,7 @@ SolidOutlineMaskPass::SolidOutlineMaskPass( Graphics &gph,
 		m_pRtv ) );
 	addProducer( RenderSurfaceProducer<IDepthStencilView>::make( "depthStencil",
 		m_pDsv ) );
-	
+
 	addPassBindable( PixelShaderNull::fetch( gph ) );
 
 	addPassBindable( BlendState::fetch( gph,

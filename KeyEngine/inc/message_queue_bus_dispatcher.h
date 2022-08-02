@@ -24,7 +24,7 @@ class MessageBus final
 {
 	friend class MessageDispatcher;
 
-	std::vector<std::unique_ptr<class Message>> m_vec;
+	std::vector<std::unique_ptr<Message>> m_vec;
 	std::size_t m_size = 0;
 	mutable std::mutex m_mu;
 	std::condition_variable m_cond;
@@ -43,17 +43,17 @@ public:
 	//	\function	enqueue
 	//	\brief  push_back() : enqueue at the back
 	//	\date	2019/12/09 4:50
-	void enqueue( class Message *msg );
+	void enqueue( Message *msg );
 	//===================================================
 	//	\function	dequeue
 	//	\brief  pop_front() : dequeue messages from the front
 	//	\date	2019/12/09 4:51
-	std::unique_ptr<class Message> dequeue();
-	class Message* peekFront() const noexcept;
-	class Message* peekBack() const noexcept;
+	std::unique_ptr<Message> dequeue();
+	Message* peekFront() const noexcept;
+	Message* peekBack() const noexcept;
 	explicit operator bool();
-	class Message* operator[]( std::size_t index );
-	const class Message* operator[]( std::size_t index ) const;
+	Message* operator[]( std::size_t index );
+	const Message* operator[]( std::size_t index ) const;
 	std::size_t getSize() const noexcept;
 	std::size_t getCapacity() const noexcept;
 	inline bool isEmpty() const noexcept;
@@ -87,7 +87,7 @@ public:
 	//	\function	addMessage
 	//	\brief  add new message to the MessageBus
 	//	\date	2020/12/10 4:47
-	void addMessage( class Message *msg );
+	void addMessage( Message *msg );
 	//===================================================
 	//	\function	dispatchAll
 	//	\brief  dispatch all pending messages

@@ -59,7 +59,7 @@ PSOut main( PSIn input )
 	{
 		diffuse = specular = 0.0f;
 	}
-	
+
 	PSOut output;
 	float4 diffTexColor = diffTex.Sample( sampl,
 		input.tc );

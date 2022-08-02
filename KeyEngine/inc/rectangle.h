@@ -9,7 +9,7 @@ struct Rect
 	float m_right;
 	float m_top;
 	float m_bottom;
-	
+
 	static Rect makeGivenCenter( const DirectX::XMFLOAT2 &center, float halfWidth,
 		float halfHeight );
 
@@ -17,7 +17,7 @@ struct Rect
 	Rect( float left, float right, float top, float bottom );
 	Rect( const DirectX::XMFLOAT2 &topLeft, const DirectX::XMFLOAT2 &bottomRight );
 	Rect( const DirectX::XMFLOAT2 &topLeft, float width, float height );
-	
+
 	//===================================================
 	//	\function	isOverlappingWith
 	//	\brief  2d rectangle collision detection formula
@@ -28,7 +28,7 @@ struct Rect
 	//	\brief  gets an expanded (offset>0) or minimized (offset<0) form of the rectangle
 	//	\date	2021/10/17 2:21
 	Rect getScaled( float offset ) const noexcept;
-	float getRectWidth() const noexcept;
-	float getRectHeight() const noexcept;
-	DirectX::XMFLOAT2 getCenter() const noexcept;
+	const float getRectWidth() const noexcept;
+	const float getRectHeight() const noexcept;
+	const DirectX::XMFLOAT2 getCenter() const noexcept;
 };

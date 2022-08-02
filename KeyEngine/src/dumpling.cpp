@@ -10,7 +10,7 @@ bool generateDump( EXCEPTION_POINTERS *pExceptionPointers,
 	WCHAR *szFileName )
 {
 	BOOL bMiniDumpSuccessful;
-	WCHAR szPath[MAX_PATH]; 
+	WCHAR szPath[MAX_PATH];
 	const wchar_t *szAppName = L"AppName";
 	const wchar_t *szVersion = L"v1.0";
 	DWORD dwBufferSize = MAX_PATH;
@@ -43,7 +43,7 @@ bool generateDump( EXCEPTION_POINTERS *pExceptionPointers,
 		GetCurrentProcessId(),
 		GetCurrentThreadId() );
 	hDumpFile = CreateFileW( szFileName,
-		GENERIC_READ | GENERIC_WRITE, 
+		GENERIC_READ | GENERIC_WRITE,
 		FILE_SHARE_WRITE | FILE_SHARE_READ,
 		nullptr,
 		CREATE_ALWAYS,

@@ -38,7 +38,7 @@ void TriangleMesh::setNormalsIndependent() cond_noex
 
 		const auto n = XMVector3Normalize( XMVector3Cross( ( p1 - p0 ),
 			( p2 - p0 ) ) );
-		
+
 		XMStoreFloat3( &v0.getMember<MemberType::Normal>(),
 			n );
 		XMStoreFloat3( &v1.getMember<MemberType::Normal>(),

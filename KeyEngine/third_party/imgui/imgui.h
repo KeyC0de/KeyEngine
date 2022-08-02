@@ -363,7 +363,7 @@ namespace ImGui
     //   whereas "str_id" denote a string that is only used as an ID and not normally displayed.
     IMGUI_API void          PushID(const char *str_id);                                     // push string into the ID stack (will hash string).
     IMGUI_API void          PushID(const char *str_id_begin, const char *str_id_end);       // push string into the ID stack (will hash string).
-    IMGUI_API void          PushID(const void *ptr_id);                                     // push pointer into the ID stack (will hash pointer). 
+    IMGUI_API void          PushID(const void *ptr_id);                                     // push pointer into the ID stack (will hash pointer).
     IMGUI_API void          PushID(int int_id);                                             // push integer into the ID stack (will hash integer).
     IMGUI_API void          PopID();                                                        // pop from the ID stack.
     IMGUI_API ImGuiID       GetID(const char *str_id);                                      // calculate unique ID (hash of whole ID stack + given parameter). e.g. if you want to query into ImGuiStorage yourself
@@ -675,7 +675,7 @@ namespace ImGui
     // - Set io.IniFilename to NULL to load/save manually. popMouseEvent io.WantSaveIniSettings description about handling .ini saving manually.
     IMGUI_API void          LoadIniSettingsFromDisk(const char *ini_filename);                  // call after CreateContext() and before the first call to NewFrame(). NewFrame() automatically calls LoadIniSettingsFromDisk(io.IniFilename).
     IMGUI_API void          LoadIniSettingsFromMemory(const char *ini_data, size_t ini_size=0); // call after CreateContext() and before the first call to NewFrame() to provide .ini data from your own data source.
-    IMGUI_API void          SaveIniSettingsToDisk(const char *ini_filename);                    // this is automatically called (if io.IniFilename is not empty) a few seconds after any modification that should be reflected in the .ini file (and also by DestroyContext). 
+    IMGUI_API void          SaveIniSettingsToDisk(const char *ini_filename);                    // this is automatically called (if io.IniFilename is not empty) a few seconds after any modification that should be reflected in the .ini file (and also by DestroyContext).
     IMGUI_API const char*   SaveIniSettingsToMemory(size_t *out_ini_size = NULL);               // return a zero-terminated string with the .ini data which you can save by your own mean. call when io.WantSaveIniSettings is set, then save data by your own mean and clear io.WantSaveIniSettings.
 
     // Memory Allocators
@@ -1113,7 +1113,7 @@ enum ImGuiColorEditFlags_
     ImGuiColorEditFlags_NoSidePreview   = 1 << 8,   //              // ColorPicker: disable bigger color preview on right side of the picker, use small colored square preview instead.
     ImGuiColorEditFlags_NoDragDrop      = 1 << 9,   //              // ColorEdit: disable drag and drop target. ColorButton: disable drag and drop source.
 
-    // User Options (right-click on widget to change some of them). You can set application defaults using SetColorEditOptions(). 
+    // User Options (right-click on widget to change some of them). You can set application defaults using SetColorEditOptions().
     // The intent is that you probably don't want to override them in most of your calls, let the user choose via the option menu and/or call SetColorEditOptions() during startup.
     ImGuiColorEditFlags_AlphaBar        = 1 << 16,  //              // ColorEdit, ColorPicker: show vertical alpha bar/gradient in picker.
     ImGuiColorEditFlags_AlphaPreview    = 1 << 17,  //              // ColorEdit, ColorPicker, ColorButton: display preview as a transparent color over a checkerboard, instead of opaque.
@@ -1931,7 +1931,7 @@ struct ImFontConfig
     int             FontNo;                 // 0        // Index of font within TTF/OTF file
     float           SizePixels;             //          // Size in pixels for rasterizer (more or less maps to the resulting font height).
     int             OversampleH;            // 3        // Rasterize at higher quality for sub-pixel positioning. popMouseEvent https://github.com/nothings/stb/blob/master/tests/oversample/README.md for details.
-    int             OversampleV;            // 1        // Rasterize at higher quality for sub-pixel positioning. We don't use sub-pixel positions on the Y axis. 
+    int             OversampleV;            // 1        // Rasterize at higher quality for sub-pixel positioning. We don't use sub-pixel positions on the Y axis.
     bool            PixelSnapH;             // false    // Align every glyph to pixel boundary. Useful e.g. if you are merging a non-pixel aligned font with the default font. If enabled, you can set OversampleH/V to 1.
     ImVec2          GlyphExtraSpacing;      // 0, 0     // Extra spacing (in pixels) between glyphs. Only X axis is supported for now.
     ImVec2          GlyphOffset;            // 0, 0     // Offset all glyphs from this font input.

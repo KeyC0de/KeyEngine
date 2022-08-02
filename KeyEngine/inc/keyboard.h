@@ -31,17 +31,17 @@ public:
 		{
 
 		}
-		
+
 		constexpr bool isPressEvent() const noexcept
 		{
 			return m_type == Type::Press;
 		}
-		
+
 		constexpr bool isReleaseEvent() const noexcept
 		{
 			return m_type == Type::Release;
 		}
-		
+
 		constexpr unsigned char getKeycode() const noexcept
 		{
 			return m_keyc0de;

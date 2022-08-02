@@ -11,5 +11,5 @@ public:
 	Sphere( Graphics &gph, float radius );
 
 	void setPosition( const DirectX::XMFLOAT3 &pos ) noexcept;
-	DirectX::XMMATRIX getTransform() const noexcept override;
+	const DirectX::XMMATRIX getTransform() const noexcept override;
 };

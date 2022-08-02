@@ -314,7 +314,7 @@ const std::size_t getForwardPaddingWithHeader( const std::size_t p,
 		// Header does not fit - Calculate next aligned address that header fits
 		neededSpace -= padding;
 
-		// How many alignments I need to fit the header        
+		// How many alignments I need to fit the header
 		if ( neededSpace % alignment > 0 )
 		{
 			padding += alignment * ( 1 + ( neededSpace / alignment ) );

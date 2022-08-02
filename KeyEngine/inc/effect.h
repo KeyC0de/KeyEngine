@@ -38,5 +38,6 @@ public:
 	void setParentDrawable( const Drawable &parent ) noexcept;
 	void accept( IEffectVisitor &ev );
 	void connectPass( ren::Renderer &r );
-	std::vector<std::shared_ptr<IBindable>>& getBindables() noexcept;
+	std::vector<std::shared_ptr<IBindable>>& accessBindables() noexcept;
+	const std::vector<std::shared_ptr<IBindable>>& getBindables() const noexcept;
 };

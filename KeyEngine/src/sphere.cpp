@@ -50,7 +50,7 @@ Sphere::Sphere( Graphics &gph,
 		lambertian.addBindable( PixelShaderConstantBuffer<ColorPCB>::fetch( gph,
 			colorCb,
 			0u ) );
-		
+
 		lambertian.addBindable( std::make_shared<TransformVSCB>( gph,
 			0u ) );
 
@@ -66,7 +66,7 @@ void Sphere::setPosition( const dx::XMFLOAT3 &pos ) noexcept
 	this->m_pos = pos;
 }
 
-dx::XMMATRIX Sphere::getTransform() const noexcept
+const dx::XMMATRIX Sphere::getTransform() const noexcept
 {
 	return dx::XMMatrixTranslation( m_pos.x,
 		m_pos.y,

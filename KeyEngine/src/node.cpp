@@ -10,7 +10,7 @@ Node::Node( int id,
 	std::vector<Drawable*> pDrawables,
 	const dx::XMMATRIX &localTransform ) cond_noex
 	:
-	m_id(id),
+	m_imguiId(id),
 	m_pDrawables{std::move( pDrawables )},
 	m_name{name}
 {
@@ -68,7 +68,7 @@ const dx::XMFLOAT4X4 &Node::getWorldTransform() const noexcept
 
 int Node::getId() const noexcept
 {
-	return m_id;
+	return m_imguiId;
 }
 
 void Node::accept( IModelVisitor &mv )

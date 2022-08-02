@@ -26,12 +26,12 @@ struct NumberGenerator
 	}
 
 	// Generates the next number in the sequence.
-	void Cycle() {  
+	void Cycle() {
 		seed ^= RANDOM_MASK;
 		int k = seed / RANDOM_IQ;
 		seed = RANDOM_IA * (seed - k * RANDOM_IQ ) - RANDOM_IR * k;
 
-		if (seed < 0 ) 
+		if (seed < 0 )
 			seed += RANDOM_IM;
 
 		seed ^= RANDOM_MASK;

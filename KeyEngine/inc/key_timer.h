@@ -114,7 +114,7 @@ public:
 	//===================================================
 	//	\function	getTimeElapsed
 	//	\brief	marks a lap
-	//			returns duration between successive calls of the function and 
+	//			returns duration between successive calls of the function and
 	//			marks the current time
 	//	\date	2020/09/13 19:20
 	float getTimeElapsed() noexcept

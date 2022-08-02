@@ -55,7 +55,7 @@ void CameraManager::spawnImguiWindow( Graphics &gph )
 			}
 			ImGui::EndCombo();
 		}
-		
+
 		if ( ImGui::BeginCombo( "Controlled",
 			getControlledCamera().getName().c_str() ) )
 		{

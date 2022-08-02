@@ -52,10 +52,10 @@ IRenderTargetView::IRenderTargetView( Graphics &gph,
 {
 	D3D11_TEXTURE2D_DESC texDesc{};
 	pTex->GetDesc( &texDesc );
-	
+
 	m_width = texDesc.Width;
 	m_height = texDesc.Height;
-	
+
 	D3D11_RENDER_TARGET_VIEW_DESC rtvDesc{};
 	rtvDesc.Format = texDesc.Format;
 	if ( face.has_value() )

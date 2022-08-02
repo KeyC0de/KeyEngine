@@ -51,7 +51,7 @@ std::string getLastNtErrorAsString( DWORD ntStatusCode )
 {
 	LPSTR ntStatusMessage = nullptr;
 	HMODULE hNtdll = LoadLibraryA( "ntdll.dll" );
-	
+
 	size_t messageLength = FormatMessageA( FORMAT_MESSAGE_ALLOCATE_BUFFER |
 		FORMAT_MESSAGE_FROM_SYSTEM |
 		FORMAT_MESSAGE_FROM_HMODULE,

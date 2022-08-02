@@ -40,7 +40,7 @@ Plane::Plane( Graphics &gph,
 		geometryTag,
 		plane.m_indices );
 	m_pPrimitiveTopology = PrimitiveTopology::fetch( gph );
-	
+
 	auto transformVcb = std::make_shared<TransformVSCB>( gph,
 		0u );
 	{
@@ -65,7 +65,7 @@ Plane::Plane( Graphics &gph,
 
 		lambertian.addBindable( PixelShader::fetch( gph,
 			"plane_ps.cso" ) );
-		
+
 		con::RawLayout cbLayout;
 		cbLayout.add<con::Float3>( "modelSpecularColor" );
 		cbLayout.add<con::Float>( "modelSpecularGloss" );
@@ -171,7 +171,7 @@ void Plane::setRotation( float roll,
 	m_yaw = yaw;
 }
 
-DirectX::XMMATRIX Plane::getTransform() const noexcept
+const DirectX::XMMATRIX Plane::getTransform() const noexcept
 {
 	return DirectX::XMMatrixRotationRollPitchYaw( m_roll, m_pitch, m_yaw ) *
 		DirectX::XMMatrixTranslation( m_pos.x, m_pos.y, m_pos.z );

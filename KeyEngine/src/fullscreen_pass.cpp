@@ -30,7 +30,7 @@ FullscreenPass::FullscreenPass( Graphics &gph,
 	addPassBindable( VertexBuffer::fetch( gph,
 		"$fullscreen",
 		vb ) );
-	
+
 	std::vector<unsigned> indices{0, 1, 2, 1, 3, 2};
 	addPassBindable( IndexBuffer::fetch( gph,
 		"$fullscreen",

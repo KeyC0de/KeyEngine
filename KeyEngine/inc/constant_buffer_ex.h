@@ -57,7 +57,7 @@ public:
 	{
 
 	}
-	
+
 	ConstantBufferEx( Graphics &gph,
 		unsigned slot,
 		const con::Buffer &cb )
@@ -67,17 +67,17 @@ public:
 	{
 
 	}
-	
+
 	const con::CBElement& getCBExRootLayoutElement() const noexcept override
 	{
 		return m_cb.getRootLayoutElement();
 	}
-	
+
 	const con::Buffer& getBuffer() const noexcept
 	{
 		return m_cb;
 	}
-	
+
 	void setBuffer( const con::Buffer &cb )
 	{
 		m_cb.copyFrom( cb );

@@ -41,6 +41,6 @@ public:
 private:
 	bool visit( Node &node ) override;
 	void onNodeLeave( Node &node ) override;
-	TransformData &fetchTransform() noexcept;
-	TransformData &assembleTransform( int id ) noexcept;
+	TransformData& fetchTransform() noexcept;
+	TransformData& assembleTransform( int id ) noexcept;
 };

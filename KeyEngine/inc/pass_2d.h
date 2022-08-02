@@ -9,7 +9,7 @@ namespace ren
 class Pass2D
 	: public IBindablePass
 {
-	
+
 public:
 	Pass2D( Graphics &gph, const std::string &name );
 

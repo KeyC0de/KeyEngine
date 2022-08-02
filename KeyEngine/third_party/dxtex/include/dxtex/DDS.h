@@ -1,11 +1,11 @@
 //--------------------------------------------------------------------------------------
 // dds.h
 //
-// This header defines constants and structures that are useful when parsing 
+// This header defines constants and structures that are useful when parsing
 // DDS files.  DDS files were originally designed to use several structures
 // and constants that are native to DirectDraw and are defined in ddraw.h,
-// such as DDSURFACEDESC2 and DDSCAPS2.  This file defines similar 
-// (compatible) constants and structures so that one can use DDS files 
+// such as DDSURFACEDESC2 and DDSCAPS2.  This file defines similar
+// (compatible) constants and structures so that one can use DDS files
 // without needing to include ddraw.h.
 //
 // Copyright (c) Microsoft Corporation. All rights reserved.
@@ -155,13 +155,13 @@ extern __declspec(selectany) const DDS_PIXELFORMAT DDSPF_A8L8_ALT =
 extern __declspec(selectany) const DDS_PIXELFORMAT DDSPF_A8 =
     { sizeof(DDS_PIXELFORMAT), DDS_ALPHA, 0, 8, 0, 0, 0, 0xff };
 
-extern __declspec(selectany) const DDS_PIXELFORMAT DDSPF_V8U8 = 
+extern __declspec(selectany) const DDS_PIXELFORMAT DDSPF_V8U8 =
     { sizeof(DDS_PIXELFORMAT), DDS_BUMPDUDV, 0, 16, 0x00ff, 0xff00, 0, 0 };
 
-extern __declspec(selectany) const DDS_PIXELFORMAT DDSPF_Q8W8V8U8 = 
+extern __declspec(selectany) const DDS_PIXELFORMAT DDSPF_Q8W8V8U8 =
     { sizeof(DDS_PIXELFORMAT), DDS_BUMPDUDV, 0, 32, 0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000 };
 
-extern __declspec(selectany) const DDS_PIXELFORMAT DDSPF_V16U16 = 
+extern __declspec(selectany) const DDS_PIXELFORMAT DDSPF_V16U16 =
     { sizeof(DDS_PIXELFORMAT), DDS_BUMPDUDV, 0, 32, 0x0000ffff, 0xffff0000, 0, 0 };
 
 // D3DFMT_A2R10G10B10/D3DFMT_A2B10G10R10 should be written using DX10 extension to avoid D3DX 10:10:10:2 reversal issue
@@ -179,7 +179,7 @@ extern __declspec(selectany) const DDS_PIXELFORMAT DDSPF_A2B10G10R10 =
 extern __declspec(selectany) const DDS_PIXELFORMAT DDSPF_DX10 =
     { sizeof(DDS_PIXELFORMAT), DDS_FOURCC, MAKEFOURCC('D','X','1','0'), 0, 0, 0, 0, 0 };
 
-#define DDS_HEADER_FLAGS_TEXTURE        0x00001007  // DDSD_CAPS | DDSD_HEIGHT | DDSD_WIDTH | DDSD_PIXELFORMAT 
+#define DDS_HEADER_FLAGS_TEXTURE        0x00001007  // DDSD_CAPS | DDSD_HEIGHT | DDSD_WIDTH | DDSD_PIXELFORMAT
 #define DDS_HEADER_FLAGS_MIPMAP         0x00020000  // DDSD_MIPMAPCOUNT
 #define DDS_HEADER_FLAGS_VOLUME         0x00800000  // DDSD_DEPTH
 #define DDS_HEADER_FLAGS_PITCH          0x00000008  // DDSD_PITCH

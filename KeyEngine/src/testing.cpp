@@ -285,7 +285,7 @@ void testDynamicConstant()
 		lay.add<con::Struct>( "butts"s );
 		lay["butts"s].add<con::Float3>( "pubes"s );
 		lay["butts"s].add<con::Float>( "dank"s );
-		
+
 		auto cb = con::Buffer( std::move( lay ) );
 		const auto exp = 696969.6969f;
 		cb["butts"s]["dank"s] = 696969.6969f;

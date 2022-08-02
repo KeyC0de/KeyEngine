@@ -155,7 +155,7 @@ protected:
 
         Entry()
         : mIndex( 999999999 ), mPosition(), mDistance( 99999. ) {
-            // empty        
+            // empty
         }
         Entry( unsigned int pIndex, const aiVector3D &pPosition, ai_real pDistance)
         : mIndex( pIndex), mPosition( pPosition), mDistance( pDistance) {

@@ -310,9 +310,9 @@ public: // static utilities
 
     // -------------------------------------------------------------------
     /// @brief  Enum to define, if empty files are ok or not.
-    enum TextFileMode { 
+    enum TextFileMode {
         ALLOW_EMPTY,
-        FORBID_EMPTY 
+        FORBID_EMPTY
     };
 
     // -------------------------------------------------------------------

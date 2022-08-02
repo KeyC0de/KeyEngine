@@ -43,7 +43,7 @@ static_assert( _MSVC_LANG >= 201703L,
 #	define NOOPENFILE				// OpenFile(), OemToAnsi, AnsiToOem, and OF_*
 #	define NOSCROLL					// SB_ *and scrolling routines
 #	define NOSERVICE				// All SERVICE_ Controller routines
-#	define NOIMAGE					// 
+#	define NOIMAGE					//
 #	define NOWH						// SetWindowsHook and WH_*
 #	define NOCOMM					// No serial communication API & driver routines
 #	define NOKANJI					// Kanji support
@@ -55,7 +55,7 @@ static_assert( _MSVC_LANG >= 201703L,
 #	define NOIMM					// no Input Method Manager
 #	define NOMCX					// no Media Center Extender (for xBox)
 #	define NOTAPE					// no Tape
-#	if defined NDEBUG || !defined _DEBUG 
+#	if defined NDEBUG || !defined _DEBUG
 #		define NOPROFILER			// Profiler interface
 #	endif // NDEBUG
 #endif
@@ -89,8 +89,8 @@ static_assert( _MSVC_LANG >= 201703L,
 #	define STRICT		// enables Strict pointer checking for windows types
 #endif // !STRICT
 
-#if defined NDEBUG || !defined _DEBUG 
-//#	define _ITERATOR_DEBUG_LEVEL		0	// disables checked iterators - no checking on container bounds for overwrites 
+#if defined NDEBUG || !defined _DEBUG
+//#	define _ITERATOR_DEBUG_LEVEL		0	// disables checked iterators - no checking on container bounds for overwrites
 											// equivalent to #define _SECURE_SCL 0
 #endif // NDEBUG
 

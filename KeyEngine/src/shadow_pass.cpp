@@ -123,7 +123,7 @@ void ShadowPass::dumpShadowMap( Graphics &gph,
 	}
 }
 
-unsigned ren::ShadowPass::getResolution() noexcept
+const unsigned ren::ShadowPass::getResolution() noexcept
 {
 	return m_shadowMapResolution;
 }

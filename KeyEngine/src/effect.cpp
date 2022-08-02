@@ -96,7 +96,12 @@ void Effect::connectPass( ren::Renderer &r )
 	m_pTargetPass = &r.getRenderQueuePass( m_targetPassName );
 }
 
-std::vector<std::shared_ptr<IBindable>>& Effect::getBindables() noexcept
+std::vector<std::shared_ptr<IBindable>>& Effect::accessBindables() noexcept
+{
+	return m_pBindables;
+}
+
+const std::vector<std::shared_ptr<IBindable>>& Effect::getBindables() const noexcept
 {
 	return m_pBindables;
 }

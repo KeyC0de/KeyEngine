@@ -46,7 +46,7 @@ protected:
 	KeyTimer<std::chrono::milliseconds> m_gameTimer;
 public:
 	~Game() noexcept = default;
-	
+
 protected:
 	Game( int width, int height, const std::string &title, unsigned nWindows = 1 );
 	Game( const Game &rhs ) = delete;

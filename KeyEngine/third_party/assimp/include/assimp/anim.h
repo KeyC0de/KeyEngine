@@ -41,7 +41,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ---------------------------------------------------------------------------
 */
 
-/** 
+/**
   * @file   anim.h
   * @brief  Defines the data structures in which the imported animations
   *         are returned.
@@ -70,7 +70,7 @@ struct aiVectorKey
 #ifdef __cplusplus
 
 	/// @brief  The default constructor.
-	aiVectorKey() 
+	aiVectorKey()
 	: mTime( 0.0 )
 	, mValue() {
 		// empty
@@ -323,7 +323,7 @@ struct aiNodeAnim {
 	C_ENUM aiAnimBehaviour mPostState;
 
 #ifdef __cplusplus
-	aiNodeAnim() 
+	aiNodeAnim()
 	: mNumPositionKeys( 0 )
 	, mPositionKeys( NULL )
 	, mNumRotationKeys( 0 )
@@ -482,7 +482,7 @@ struct aiAnimation {
 				for( unsigned int a = 0; a < mNumMorphMeshChannels; a++) {
 						delete mMorphMeshChannels[a];
 				}
-			
+
 			delete [] mMorphMeshChannels;
 		}
 	}
@@ -497,11 +497,11 @@ struct aiAnimation {
 namespace Assimp {
 
 // ---------------------------------------------------------------------------
-/** 
+/**
   * @brief CPP-API: Utility class to simplify interpolations of various data types.
   *
   *  The m_topo of interpolation is chosen automatically depending on the
-  *  types of the arguments. 
+  *  types of the arguments.
   */
 template <typename T>
 struct Interpolator

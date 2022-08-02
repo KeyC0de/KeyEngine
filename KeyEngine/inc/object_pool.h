@@ -56,7 +56,7 @@ public:
 	{
 		rhs.m_pNextFree = nullptr;
 	}
-	
+
 	ObjectPool& operator=( ObjectPool &&rhs ) noexcept
 	{
 		m_nObjs = rhs.getSize();

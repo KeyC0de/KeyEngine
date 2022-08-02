@@ -15,19 +15,19 @@ int nextPowerOf2( int n )
 		return - 1;
 	}
 	unsigned count = 0;
-	 
+
 	// first n in the below condition is for the case where n is 0
 	if ( n && !( n & ( n - 1 ) ) )
 	{
 		return n;
 	}
-	 
+
 	while ( n != 0 )
 	{
 		n >>= 1;
 		count += 1;
 	}
-	 
+
 	return 1 << count;
 }
 
@@ -224,7 +224,7 @@ void printDec2Bin( size_t const size,
 			std::cout << byte;
 		}
 	}
-	
+
 	std::cout << '\n';
 }
 #pragma warning( pop )

@@ -38,7 +38,7 @@ PSOut main( PSIn input )
 {
 	float3 diffuse;
 	float3 specular;
-	
+
 	PSOut output;
 	float4 diffTexColor = diffTex.Sample( sampl,
 		input.tc );
@@ -50,7 +50,7 @@ PSOut main( PSIn input )
 		input.fragNormalViewSpace = -input.fragNormalViewSpace;
 	}
 #endif
-	
+
 	const float shadowLevel = calculateShadowLevel( input.posLightSpace );
 	if ( shadowLevel != 0.0f )
 	{
@@ -111,7 +111,7 @@ PSOut main( PSIn input )
 	{
 		diffuse = specular = 0.0f;
 	}
-	
+
 	output.finalColor = float4(saturate( (diffuse + ambient) * diffTexColor.rgb + specular ),
 		1.0f);
 	return output;

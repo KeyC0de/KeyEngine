@@ -209,7 +209,7 @@ Graphics::Graphics( HWND hWnd,
 
 	m_globalColorBuffer = std::make_shared<RenderTargetOutput>( *this,
 		pD3dBackBuffer.Get() );
-	
+
 	if constexpr ( GraphicsMode::get() == GraphicsMode::_2D )
 	{// for d2d
 		m_pCpuBuffer = static_cast<ColorBGRA*>( _aligned_malloc( sizeof( ColorBGRA )
@@ -220,7 +220,7 @@ Graphics::Graphics( HWND hWnd,
 	m_fpsSpriteBatch = std::make_unique<dx::SpriteBatch>( m_pContext.Get() );
 	m_spriteFont = std::make_unique<dx::SpriteFont>( m_pDevice.Get(),
 		L"assets/fonts/myComicSansMSSpriteFont.spritefont" );
-	
+
 	// initialize Dear ImGui d3d11 Implementation
 	if constexpr ( GraphicsMode::get() == GraphicsMode::_3D )
 	{
@@ -530,7 +530,7 @@ void Graphics::interrogateDirectxFeatures()
 
 	using namespace std::string_literals;
 	auto &console = KeyConsole::getInstance();
-	console.log( threadingInfo.DriverConcurrentCreates ? 
+	console.log( threadingInfo.DriverConcurrentCreates ?
 		"Resources can be created concurrently on multiple threads.\n"s :
 		"No DirectX concurrency possible\n"s );
 

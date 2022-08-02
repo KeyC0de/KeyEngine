@@ -74,7 +74,7 @@ TriangleMesh GeometryCube::makeIndependentFaces( ver::VertexLayout layout )
 	vertices[21].getMember<Type::Position3D>() = {side, side, -side};// 21
 	vertices[22].getMember<Type::Position3D>() = {-side, side, side};// 22
 	vertices[23].getMember<Type::Position3D>() = {side, side, side};// 23
-	
+
 	return
 	{
 		std::move( vertices ),
@@ -182,7 +182,7 @@ TriangleMesh GeometrySphere::make( std::optional<ver::VertexLayout> layout,
 			dx::XMVectorNegate( base ) );
 		vb.emplaceVertex( southPos );
 	}
-	
+
 	const auto calcIdx = [nLateralDivs, nLongitudinalDivs]
 		( unsigned lat, unsigned lon )
 	{
@@ -207,7 +207,7 @@ TriangleMesh GeometrySphere::make( std::optional<ver::VertexLayout> layout,
 		indices.push_back( calcIdx( lat, 0 ) );
 		indices.push_back( calcIdx( lat, 0 ) );
 		indices.push_back( calcIdx( lat + 1, nLongitudinalDivs - 1 ) );
-		indices.push_back( calcIdx( lat + 1, 0 ) );			
+		indices.push_back( calcIdx( lat + 1, 0 ) );
 	}
 
 	// cap fans

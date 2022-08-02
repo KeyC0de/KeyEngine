@@ -27,7 +27,7 @@ public:
 	~DxgiInfoQueue();
 	DxgiInfoQueue( const DxgiInfoQueue &rhs ) = delete;
 	DxgiInfoQueue& operator=( const DxgiInfoQueue &rhs ) = delete;
-		
+
 	//===================================================
 	//	\function	markQueueIndex
 	//	\brief  call this on frame end right before Present()ation

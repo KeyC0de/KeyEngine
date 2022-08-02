@@ -86,7 +86,7 @@ inline EntityId Entity::getId() const noexcept
 {
 #ifdef _32_BIT_ENTITY
 	return ( m_version << 16 ) | m_index;
-#else
+#elif _64_BIT_ENTITY
 	return ( (EntityId) m_version << 32 ) | m_index;
 #endif
 }
@@ -137,7 +137,7 @@ void Entity::onMessageReceived( std::unique_ptr<class Message> msg )
 
 	auto callback = pDataMsg->getCallable();
 	(*callback)();
-	
+
 	switch ( pDataMsg->getType() )
 	{
 	case Message::Type::Damage:

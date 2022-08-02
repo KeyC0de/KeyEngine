@@ -9,7 +9,7 @@ void MessageBus::removeFrontByBackSwap()
 	std::swap( m_vec.front(), m_vec.back() );
 	m_vec.pop_back();
 }
-	
+
 MessageBus::MessageBus( int initialCapacity )
 	:
 	m_vec(initialCapacity)
@@ -25,7 +25,7 @@ MessageBus::MessageBus( MessageBus &&rhs ) noexcept
 
 }
 
-MessageBus &MessageBus::operator=( MessageBus &&rhs ) noexcept
+MessageBus& MessageBus::operator=( MessageBus &&rhs ) noexcept
 {
 	std::swap( m_vec, rhs.m_vec );
 	m_size = rhs.m_size;
@@ -131,13 +131,13 @@ MessageDispatcher::MessageDispatcher( MessageDispatcher &&rhs ) noexcept
 
 }
 
-MessageDispatcher &MessageDispatcher::operator=( MessageDispatcher &&rhs ) noexcept
+MessageDispatcher& MessageDispatcher::operator=( MessageDispatcher &&rhs ) noexcept
 {
 	std::swap( m_mb, rhs.m_mb );
 	return *this;
 }
 
-MessageDispatcher &MessageDispatcher::getInstance( int initialCapacity )
+MessageDispatcher& MessageDispatcher::getInstance( int initialCapacity )
 {
 	static MessageDispatcher instance{initialCapacity};
 	return instance;

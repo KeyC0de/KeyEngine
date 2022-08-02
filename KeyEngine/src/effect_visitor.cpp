@@ -56,43 +56,43 @@ bool EVShowcase::onVisit( con::Buffer &cb )
 		dirtyCheck( ImGui::SliderFloat( tagImGuiWidget( "Scale" ),
 			&el, 1.0f, 2.0f, "%.3f", 3.5f ) );
 	}
-	
+
 	if ( const auto &el = cb["offset"]; el.isValid() )
 	{
 		dirtyCheck( ImGui::SliderFloat( tagImGuiWidget( "offset" ),
 			&el, 0.0f, 1.0f, "%.3f", 2.5f ) );
 	}
-	
+
 	if ( const auto &el = cb["materialColor"]; el.isValid() )
 	{
 		dirtyCheck( ImGui::ColorPicker3( tagImGuiWidget( "Diff. Color" ),
 			reinterpret_cast<float*>( &static_cast<dx::XMFLOAT3&>( el ) ) ) );
 	}
-	
+
 	if ( const auto &el = cb["modelSpecularColor"]; el.isValid() )
 	{
 		dirtyCheck( ImGui::ColorPicker3( tagImGuiWidget( "Spec. Color" ),
 			reinterpret_cast<float*>(&static_cast<dx::XMFLOAT3&>( el ) ) ) );
 	}
-	
+
 	if ( const auto &el = cb["modelSpecularGloss"]; el.isValid() )
 	{
 		dirtyCheck( ImGui::SliderFloat( tagImGuiWidget( "Gloss" ),
 			&el, 1.0f, 100.0f, "%.1f", 1.5f ) );
 	}
-	
+
 	if ( const auto &el = cb["useSpecularMap"]; el.isValid() )
 	{
 		dirtyCheck( ImGui::Checkbox( tagImGuiWidget( "Enable Specular Map" ),
 			&el ) );
 	}
-	
+
 	if ( const auto &el = cb["useNormalMap"]; el.isValid() )
 	{
 		dirtyCheck( ImGui::Checkbox( tagImGuiWidget( "Enable Normal Map" ),
 			&el ) );
 	}
-	
+
 	if ( const auto &el = cb["normalMapWeight"]; el.isValid() )
 	{
 		dirtyCheck( ImGui::SliderFloat( tagImGuiWidget( "Normal Map Weight" ),

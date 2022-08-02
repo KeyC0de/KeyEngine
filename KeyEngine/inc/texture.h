@@ -64,7 +64,7 @@ private:
 			}
 		}
 	}
-	
+
 	template<typename F>
 	static void transformFile( const std::string &pathIn,
 		const std::string &pathOut,

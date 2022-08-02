@@ -29,7 +29,7 @@ PSOut main( PSIn input )
 {
 	float3 diffuse;
 	float3 specular;
-	
+
 	const float shadowLevel = calculateShadowLevel( input.posLightSpace );
 	if ( shadowLevel != 0.0f )
 	{
@@ -60,7 +60,7 @@ PSOut main( PSIn input )
 	{
 		diffuse = specular = 0.0f;
 	}
-	
+
 	PSOut output;
 	float4 diffTexColor = diffTex.Sample( sampl,
 		input.tc );

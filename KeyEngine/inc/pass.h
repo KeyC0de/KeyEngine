@@ -38,7 +38,7 @@ public:
 	//	\date	2021/06/27 0:51
 	virtual void run( Graphics &gph ) const cond_noex = 0;
 	virtual void reset() cond_noex = 0;
-	const std::string &getName() const noexcept;
+	const std::string& getName() const noexcept;
 	const std::vector<std::unique_ptr<IConsumer>>& getConsumers() const;
 	const std::vector<std::unique_ptr<IProducer>>& getProducers() const;
 	IConsumer& getConsumer( const std::string &name ) const;

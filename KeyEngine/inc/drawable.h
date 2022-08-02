@@ -31,8 +31,7 @@ protected:
 	int m_distanceFromActiveCamera = 0;
 public:
 	Drawable() = default;
-	Drawable( Graphics &gph, const MaterialLoader &mat, const aiMesh &aimesh,
-		float scale = 1.0f ) noexcept;
+	Drawable( Graphics &gph, const MaterialLoader &mat, const aiMesh &aimesh, float scale = 1.0f ) noexcept;
 	Drawable( const Drawable &rhs ) = delete;
 	virtual ~Drawable() noexcept;
 
@@ -41,7 +40,7 @@ public:
 	{
 		for ( auto &effect : m_effects )
 		{
-			for ( auto &bindable : effect.getBindables() )
+			for ( auto &bindable : effect.accessBindables() )
 			{
 				if ( auto *pB = dynamic_cast<T*>( bindable.get() ) )
 				{
@@ -63,10 +62,10 @@ public:
 	void render( size_t channels ) const noexcept;
 	void bind( Graphics &gph ) const cond_noex;
 	void accept( IEffectVisitor &ev );
-	unsigned getIndicesCount() const cond_noex;
+	const unsigned getIndicesCount() const cond_noex;
 	void connectEffectsToRenderer( ren::Renderer &r );
 	void setTransform( const DirectX::XMMATRIX &worldTransform ) noexcept;
-	virtual DirectX::XMMATRIX getTransform() const noexcept;
+	virtual const DirectX::XMMATRIX getTransform() const noexcept;
 	void setDistanceFromActiveCamera( int dist ) noexcept;
-	int getDistanceFromActiveCamera() const noexcept;
+	const int getDistanceFromActiveCamera() const noexcept;
 };

@@ -23,7 +23,7 @@ HorizontalBlurPass::HorizontalBlurPass( Graphics &gph,
 		0u,
 		TextureSampler::FilterMode::Trilinear,
 		TextureSampler::AddressMode::Clamp ) );
-	
+
 	addContainerBindableConsumer<IRenderTargetView>( "blurRttIn" );
 	addContainerBindableConsumer<PixelShaderConstantBufferEx>( "blurKernel" );
 	addConsumer( BindableConsumer<PixelShaderConstantBufferEx>::make( "blurDirection",

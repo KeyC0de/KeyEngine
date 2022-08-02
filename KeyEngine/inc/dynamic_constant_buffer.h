@@ -370,7 +370,7 @@ class ElementView final
 
 	// m_arrayOffset has to do with array indexing, it's an extra offset that accumulates
 	// as you nest inside arrays deeper into the structure
-	size_t m_arrayOffset;	
+	size_t m_arrayOffset;
 	const CBElement *m_pLayout;
 	char *m_p;
 private:

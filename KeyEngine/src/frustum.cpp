@@ -62,10 +62,10 @@ Frustum::Frustum( Graphics &gph,
 	// 2. DepthReversed mode and another color (dimmer) - only the occluded part of the frustum gets drawn
 	{
 		Effect lambert{rch::lambert, "lambertian", true};
-		
+
 		auto pVs = VertexShader::fetch( gph,
 			"flat_vs.cso" );
-		
+
 		lambert.addBindable( InputLayout::fetch( gph,
 			m_pVertexBuffer->getLayout(),
 			*pVs ) );
@@ -158,18 +158,18 @@ void Frustum::setRotation( const DirectX::XMFLOAT3 &rot ) noexcept
 	this->m_rot = rot;
 }
 
-DirectX::XMMATRIX Frustum::getTransform() const noexcept
+const DirectX::XMMATRIX Frustum::getTransform() const noexcept
 {
 	return dx::XMMatrixRotationRollPitchYawFromVector( dx::XMLoadFloat3( &m_rot ) ) *
 		dx::XMMatrixTranslationFromVector( dx::XMLoadFloat3( &m_pos ) );
 }
 
-DirectX::XMMATRIX Frustum::getPosition() const noexcept
+const DirectX::XMMATRIX Frustum::getPosition() const noexcept
 {
 	return dx::XMMatrixTranslationFromVector( dx::XMLoadFloat3( &m_pos ) );
 }
 
-DirectX::XMMATRIX Frustum::getRotation() const noexcept
+const DirectX::XMMATRIX Frustum::getRotation() const noexcept
 {
 	return dx::XMMatrixRotationRollPitchYawFromVector( dx::XMLoadFloat3( &m_rot ) );
 }

@@ -38,7 +38,7 @@ Cube::Cube( Graphics &gph,
 		geometryTag,
 		cube.m_indices );
 	m_pPrimitiveTopology = PrimitiveTopology::fetch( gph );
-	
+
 	auto transformVscb = std::make_shared<TransformVSCB>( gph,
 		0u );
 	{// lambertian reflectance effect
@@ -62,7 +62,7 @@ Cube::Cube( Graphics &gph,
 
 		lambertian.addBindable( PixelShader::fetch( gph,
 			"cube_ps.cso" ) );
-		
+
 		con::RawLayout cbLayout;
 		cbLayout.add<con::Float3>( "modelSpecularColor" );
 		cbLayout.add<con::Float>( "modelSpecularGloss" );
@@ -163,7 +163,7 @@ void Cube::setWorldRotation( float roll,
 	this->m_yaw = yaw;
 }
 
-dx::XMMATRIX Cube::getTransform() const noexcept
+const dx::XMMATRIX Cube::getTransform() const noexcept
 {
 	return dx::XMMatrixRotationRollPitchYaw( m_roll, m_pitch, m_yaw ) *
 		dx::XMMatrixTranslation( m_pos.x, m_pos.y, m_pos.z );
@@ -244,7 +244,7 @@ void Cube::displayImguiWidgets( Graphics &gph,
 						"%.3f",
 						3.5f ) );
 				}
-				
+
 				if ( auto el = cb["materialColor"]; el.isValid() )
 				{
 					dirtyCheck( ImGui::ColorPicker4( tag( "materialColor" ),
@@ -258,7 +258,7 @@ void Cube::displayImguiWidgets( Graphics &gph,
 						0.0f,
 						1.0f ) );
 				}
-				
+
 				if ( auto el = cb["modelSpecularGloss"]; el.isValid() )
 				{
 					dirtyCheck( ImGui::SliderFloat( tag( "Glossiness" ),
@@ -268,7 +268,7 @@ void Cube::displayImguiWidgets( Graphics &gph,
 						"%.1f",
 						1.5f ) );
 				}
-				
+
 				return bDirty;
 			}
 		} evCube;

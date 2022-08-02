@@ -10,7 +10,7 @@ namespace dx = DirectX;
 dx::XMFLOAT3 extractEulerAngles( const dx::XMFLOAT4X4 &mat )
 {
 	dx::XMFLOAT3 eulerRot;
-	
+
 	eulerRot.x = asinf( -mat._32 );					// Pitch
 	if ( cosf( eulerRot.x ) > 0.0001 )				// Not at poles
 	{
@@ -86,7 +86,7 @@ DXGI_RATIONAL queryRefreshRate( unsigned screenWidth,
 		//	of the requested screen.
 		for ( std::size_t i = 0; i < numDisplayModes; ++i )
 		{
-			if ( displayModeList[i].Width == screenWidth && 
+			if ( displayModeList[i].Width == screenWidth &&
 				displayModeList[i].Height == screenHeight )
 			{
 				refreshRate = displayModeList[i].RefreshRate;

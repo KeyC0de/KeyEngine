@@ -42,7 +42,7 @@ CubeTexture::CubeTexture( Graphics &gph,
 		subRscData[i].SysMemPitch = bitmaps[i].getPitch();
 		subRscData[i].SysMemSlicePitch = 0u;
 	}
-	
+
 	mwrl::ComPtr<ID3D11Texture2D> pTex;
 	HRESULT hres = getDevice( gph )->CreateTexture2D( &texDesc,
 		subRscData,
@@ -69,7 +69,7 @@ void CubeTexture::bind( Graphics &gph ) cond_noex
 	DXGI_GET_QUEUE_INFO( gph );
 }
 
-
+////////////////////////////////////////////////////////////////////////////////////////////////////
 CubeTextureRT::CubeTextureRT( Graphics &gph,
 	unsigned width,
 	unsigned height,
@@ -130,7 +130,7 @@ std::shared_ptr<RenderTargetOutput> CubeTextureRT::shareRenderTarget( size_t ind
 	return m_renderTargetViews[index];
 }
 
-
+////////////////////////////////////////////////////////////////////////////////////////////////////
 CubeTextureDS::CubeTextureDS( Graphics &gph,
 	unsigned size,
 	unsigned slot,
@@ -166,7 +166,7 @@ CubeTextureDS::CubeTextureDS( Graphics &gph,
 		&srvDesc,
 		&m_pSrv );
 	ASSERT_HRES_IF_FAILED;
-	
+
 	// create DSVs on the texture cube's faces for capturing depth (for shadow mapping)
 	for ( unsigned face = 0u; face < 6u; ++face )
 	{

@@ -15,7 +15,7 @@ Message::Message( Entity *pSrc,
 		m_pReceivers.emplace_back( dest );
 	}
 }
-	
+
 Message::~Message() noexcept
 {
 	//m_pReceivers.clear();

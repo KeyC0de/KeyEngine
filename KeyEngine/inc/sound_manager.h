@@ -11,7 +11,7 @@
 //#include <xapofx.h>
 #include <x3daudio.h>
 
-																						  
+
 //============================================================
 //	\class	SoundManager
 //
@@ -78,7 +78,7 @@ public:
 		Submix& operator=( const Submix &rhs ) = delete;
 		Submix( Submix &&rhs ) cond_noex;
 		Submix& operator=( Submix &&rhs ) cond_noex;
-	
+
 		std::string getName() const cond_noex;
 		void setName( const std::string &name ) cond_noex;
 		void setVolume( float volume = 1.0f ) cond_noex;

@@ -16,7 +16,7 @@ class LambertianPass
 	const Camera *m_pMainCamera = nullptr;
 public:
 	LambertianPass( Graphics &gph, const std::string &name );
-	
+
 	void setMainCamera( const Camera &cam ) noexcept;
 	void run( Graphics &gph ) const cond_noex override;
 };

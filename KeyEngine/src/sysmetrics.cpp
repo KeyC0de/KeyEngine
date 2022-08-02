@@ -98,7 +98,7 @@ void windowsMetricsCheckTest()
 		console.print( "No mouse installed.\n"s );
 	}
 	ret = GetSystemMetrics( SM_SWAPBUTTON );
-	
+
 	if ( ret != 0 )
 	{
 		console.print( "Buttons not swapped.\n"s );
@@ -108,7 +108,7 @@ void windowsMetricsCheckTest()
 		console.print( "Buttons swapped.\n"s );
 	}
 
-	// Get the mouse speed and the threshold values. 
+	// Get the mouse speed and the threshold values.
 	int mouseInfo[3];
 	ret = SystemParametersInfoW( SPI_GETMOUSE,
 			0u,			// not used

@@ -21,6 +21,6 @@ public:
 
 	void setPosition( const DirectX::XMFLOAT3 &pos ) noexcept;
 	void setRotation( float roll, float pitch, float yaw ) noexcept;
-	DirectX::XMMATRIX getTransform() const noexcept override;
+	const DirectX::XMMATRIX getTransform() const noexcept override;
 	void displayImguiWidgets( Graphics &gph, const std::string &name ) noexcept;
 };
