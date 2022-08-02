@@ -1325,9 +1325,6 @@
     <Text Include="design_doc\TODO.txt">
       <Filter>design_doc</Filter>
     </Text>
-    <Text Include="design_doc\winapi functions.txt">
-      <Filter>design_doc</Filter>
-    </Text>
     <Text Include="design_doc\fantasia.txt">
       <Filter>design_doc</Filter>
     </Text>
