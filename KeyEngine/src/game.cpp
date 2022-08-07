@@ -506,7 +506,7 @@ void Arkanoid::update( float dt )
 	m_paddle.doWallCollision( m_walls );
 
 	bool bCollided = false;
-	float currentColDist;
+	float currentColDist = 999999.999f;
 	int curColBrickIndex;
 	for ( int i = 0; i < m_nBricks; ++i )
 	{

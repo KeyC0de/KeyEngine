@@ -8,7 +8,6 @@
 namespace util
 {
 
-#if defined _DEBUG && !defined NDEBUG
 std::string printHresultErrorDescription( HRESULT hres )
 {
 	_com_error error{hres};
@@ -70,7 +69,6 @@ std::string getLastNtErrorAsString( DWORD ntStatusCode )
 	FreeLibrary( hNtdll );
 	return message;
 }
-#endif
 
 std::wstring bstrToStr( const BSTR &bstr )
 {
@@ -91,7 +89,7 @@ BSTR strToBstr( const std::wstring &str )
 
 __int64 filetimeToInt64( const FILETIME &fileTime )
 {
-	ULARGE_INTEGER ui64;
+	ULARGE_INTEGER ui64{0ul,0ul};
 	ui64.LowPart = fileTime.dwLowDateTime;
 	ui64.HighPart = fileTime.dwHighDateTime;
 	return static_cast<__int64>( ui64.QuadPart );
@@ -115,15 +113,13 @@ void setupDetachedThreadsVector( unsigned nThreads )
 
 void terminateDetachedThreads()
 {
-#if defined _DEBUG && !defined NDEBUG
 	KeyConsole &console = KeyConsole::getInstance();
 	console.print( "Clearing up detached threads\n" );
-#endif
 	for ( const auto th : g_detachedThreads )
 	{
 		DWORD exitCode;
 		int ret;
-		HRESULT hres;
+		HRESULT hres = 0;
 		ret = GetExitCodeThread( th,
 				&exitCode );
 		ASSERT_HRES_WIN32_IF_FAILED( hres );
@@ -188,7 +184,7 @@ std::optional<DWORD> registryGetDword( HKEY hKey,
 std::optional<std::wstring> registryGetString( HKEY hKey,
 	const std::wstring &regName )
 {
-	wchar_t buffer[512];
+	wchar_t buffer[512]{0};
 	DWORD bufferSize = sizeof( buffer );
 	long ret = RegQueryValueExW( hKey,
 		regName.c_str(),

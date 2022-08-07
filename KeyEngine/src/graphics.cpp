@@ -287,7 +287,7 @@ void Graphics::beginRendering() noexcept
 	}
 	else
 	{
-		static size_t cpuBuffer2dSize = m_width * m_height * sizeof ColorBGRA;
+		static size_t cpuBuffer2dSize = (size_t)m_width * m_height * sizeof ColorBGRA;
 		memset( m_pCpuBuffer, 0u, cpuBuffer2dSize );
 	}
 	clearShaderSlots();
@@ -727,7 +727,7 @@ std::vector<DirectX::XMFLOAT2> Graphics::drawStar( float outerRadius,
 	int nFlares )
 {
 	std::vector<dx::XMFLOAT2> star;
-	star.reserve( nFlares * 2 );
+	star.reserve( (size_t)nFlares * 2 );
 	const float dTheta = 2.0f * 3.14159f / float( nFlares * 2 );
 	for ( int i = 0; i < nFlares * 2; ++i )
 	{

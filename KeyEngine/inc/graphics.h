@@ -108,7 +108,7 @@ public:
 	IRenderTargetView* getRenderTarget() const noexcept;
 	std::shared_ptr<IRenderTargetView> shareRenderTarget();
 #if defined _DEBUG && !defined NDEBUG
-	DxgiInfoQueue &getInfoQueue() const noexcept;
+	DxgiInfoQueue& getInfoQueue() const noexcept;
 #endif
 	void createAdapters();
 	std::vector<Adapter>& getAdapters() const;

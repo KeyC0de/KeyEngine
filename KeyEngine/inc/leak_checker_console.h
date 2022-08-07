@@ -7,6 +7,7 @@
 #	include "assertions_console.h"
 #	include "winner.h"
 
+
 namespace debugLeak
 {
 
@@ -26,5 +27,6 @@ bool anyMemoryLeaks()
 }
 
 };// namespace debugLeak
+
 
 #endif

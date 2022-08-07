@@ -263,23 +263,23 @@ public:
 
     // -------------------------------------------------------------------
     /** Returns a description of the nth export file format. Use #
-     *  #Exporter::GetExportFormatCount to learn how many export
+     *  `Exporter::GetExportFormatCount` to learn how many export
      *  formats are supported.
      *
      * The returned pointer is of static storage duration if the
      * pIndex pertains to a built-in exporter (i.e. one not registered
-     * via #RegistrerExporter). It is restricted to the life-time of the
-     * #Exporter instance otherwise.
+     * via `RegistrerExporter`). It is restricted to the life-time of the
+     * `Exporter` instance otherwise.
      *
      * @param pIndex Index of the export format to retrieve information
-     *  for. Valid range is 0 to #Exporter::GetExportFormatCount
+     *  for. Valid range is 0 to `Exporter::GetExportFormatCount`
      * @return A description of that specific export format.
      *  NULL if pIndex is out of range. */
     const aiExportFormatDesc *GetExportFormatDescription( size_t pIndex ) const;
 
     // -------------------------------------------------------------------
     /** Register a custom exporter. Custom export formats are limited to
-     *    to the current #Exporter instance and do not affect the
+     *    to the current `Exporter` instance and do not affect the
      *    library globally. The indexes under which the format's
      *    export format description can be queried are assigned
      *    monotonously.
@@ -291,12 +291,12 @@ public:
     aiReturn RegisterExporter(const ExportFormatEntry &desc);
 
     // -------------------------------------------------------------------
-    /** Remove an export format previously registered with #RegisterExporter
-     *  from the #Exporter instance (this can also be used to drop
+    /** Remove an export format previously registered with `RegisterExporter`
+     *  from the `Exporter` instance (this can also be used to drop
      *  built-in exporters because those are implicitly registered
-     *  using #RegisterExporter).
+     *  using `RegisterExporter`).
      *  @param id Format id to be unregistered, this refers to the
-     *    'id' field of #aiExportFormatDesc.
+     *    'id' field of `aiExportFormatDesc`.
      *  @note Calling this method on a format description not yet registered
      *    has no effect.*/
     void UnregisterExporter(const char *id);

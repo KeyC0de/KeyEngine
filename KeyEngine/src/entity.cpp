@@ -67,7 +67,6 @@ EntityIndex Entity::getIndex() const noexcept
 
 void Entity::printInfo() const noexcept
 {
-#if defined _DEBUG && !defined NDEBUG
 	std::cout << "entity[index="
 		<< m_index
 		<< "] stored @"
@@ -79,7 +78,6 @@ void Entity::printInfo() const noexcept
 		<< ", category="
 		<< m_category
 		<< '\n';
-#endif
 }
 
 inline EntityId Entity::getId() const noexcept

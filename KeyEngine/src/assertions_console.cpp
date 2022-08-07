@@ -1,8 +1,6 @@
 #include "assertions_console.h"
 #include "console.h"
 
-#if defined _DEBUG && !defined NDEBUG
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -37,5 +35,3 @@ bool assertPrint( const char *expr,
 #ifdef __cplusplus
 }
 #endif
-
-#endif // _DEBUG

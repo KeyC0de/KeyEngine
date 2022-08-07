@@ -17,7 +17,7 @@ SplashWindow::SplashWindow( HWND hWndParent,
 	ASSERT( hInstance != nullptr,
 		"HINSTANCE is null!" );
 
-	HRESULT hres;
+	HRESULT hres = 0;
 
 	WNDCLASSEX wc{};
 	wc.cbSize = sizeof WNDCLASSEX;
@@ -68,7 +68,7 @@ SplashWindow::SplashWindow( HWND hWndParent,
 
 	POINT startPoint{0, 0};
 	SIZE size = {dims.first, dims.second};
-	BLENDFUNCTION bf;
+	BLENDFUNCTION bf{0};
 	bf.BlendOp = AC_SRC_OVER;
 	bf.BlendFlags = 0;
 	bf.SourceConstantAlpha = 256;
@@ -114,7 +114,7 @@ void SplashWindow::display()
 {
 	int	width, height;
 	int	startX, startY;
-	HDWP windefer;
+	HDWP windefer{0};
 	RECT rect;
 
 	GetClientRect( m_hWnd,
@@ -160,16 +160,14 @@ LRESULT CALLBACK SplashWindow::windowProc( HWND hWnd,
 	WPARAM wParam,
 	LPARAM lParam )
 {
-#if defined _DEBUG && !defined NDEBUG
 	auto &console = KeyConsole::getInstance();
 	console.log( "windowProc() entered\n" );
-#endif
+
 	/*
 	if ( uMsg == WM_NCCREATE )
 	{
-#if defined _DEBUG && !defined NDEBUG
 		console.log( "windowProc() WM_NCCREATE message\n" );
-#endif
+
 		const CREATESTRUCTW *const cs = (CREATESTRUCTW*) lParam;
 		SplashWindow *this_wnd = reinterpret_cast<SplashWindow*>( cs->lpCreateParams );
 

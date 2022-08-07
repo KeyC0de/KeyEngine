@@ -1,5 +1,3 @@
-#if defined _DEBUG && !defined NDEBUG
-
 #include <iostream>
 #include "console.h"
 #include "os_utils.h"
@@ -338,7 +336,7 @@ bool KeyConsole::closeConsole()
 	return true;
 }
 
-KeyConsole &KeyConsole::getInstance() noexcept
+KeyConsole& KeyConsole::getInstance() noexcept
 {
 	if ( m_pInstance == nullptr )
 	{
@@ -354,6 +352,3 @@ void KeyConsole::resetInstance()
 		delete m_pInstance;
 	}
 }
-
-
-#endif

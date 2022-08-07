@@ -67,6 +67,7 @@
       <PreprocessorDefinitions>_DEBUG;UNICODE;_UNICODE;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;%(PreprocessorDefinitions);BDEBUG=true;cond_noex=noexcept( !BDEBUG );pass_=(void)0;_CRT_SECURE_NO_WARNINGS;_32_BIT_ENTITY</PreprocessorDefinitions>
       <AdditionalOptions>/we4239 /we4265 /we4715 /Zc:__cplusplus /utf-8 %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -93,6 +94,7 @@
       <AdditionalOptions>/we4239 /we4265 /we4715 /Zc:__cplusplus /utf-8 %(AdditionalOptions)</AdditionalOptions>
       <SDLCheck />
       <AdditionalIncludeDirectories>C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -216,6 +218,10 @@
     <ClCompile Include="src\sky_pass.cpp" />
     <ClCompile Include="src\solid_outline_draw_pass.cpp" />
     <ClCompile Include="src\solid_outline_mask_pass.cpp" />
+    <ClCompile Include="src\sound_object.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="src\sphere.cpp" />
     <ClCompile Include="src\sound_manager.cpp" />
     <ClCompile Include="src\splash_window.cpp">
@@ -251,7 +257,10 @@
     <ClCompile Include="src\thread_pool.cpp" />
     <None Include="arrow.cur" />
     <None Include="assimp-vc140-mt.dll" />
-    <None Include="cpp.hint" />
+    <None Include="cpp.hint">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </None>
     <None Include="config\imgui.ini" />
     <None Include="config\imgui_default.ini" />
     <None Include="shaders\hlsli\directional_light_pscb.hlsli" />
@@ -280,7 +289,7 @@
     <ClInclude Include="inc\grid_location.h" />
     <ClInclude Include="inc\lru_cache.h" />
     <ClInclude Include="inc\mouse_picker.h" />
-    <ClInclude Include="inc\non_copyable_non_moveable.h" />
+    <ClInclude Include="inc\non_copyable.h" />
     <ClInclude Include="inc\rectangle.h" />
     <ClInclude Include="inc\assertions_console.h" />
     <ClInclude Include="arkanoid\ball.h" />
@@ -288,6 +297,7 @@
     <ClInclude Include="inc\net_utils.h" />
     <ClInclude Include="inc\pass_2d.h" />
     <ClInclude Include="inc\solid_outline_mask_pass.h" />
+    <ClInclude Include="inc\sound_object.h" />
     <ClInclude Include="inc\testing.h" />
     <ClInclude Include="inc\vtune_itt_domain.h" />
     <ClInclude Include="inc\wireframe_pass.h" />
@@ -825,6 +835,7 @@
     </FxCompile>
   </ItemGroup>
   <ItemGroup>
+    <Text Include="design_doc\cpp_nuggets.txt" />
     <Text Include="design_doc\fantasia.txt" />
     <Text Include="design_doc\TODO.txt" />
   </ItemGroup>

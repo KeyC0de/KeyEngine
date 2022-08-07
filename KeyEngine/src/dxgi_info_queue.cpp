@@ -1,5 +1,3 @@
-#if defined _DEBUG && !defined NDEBUG
-
 #include "dxgi_info_queue.h"
 #include "winner.h"
 #include "os_utils.h"
@@ -95,5 +93,3 @@ std::vector<std::string> DxgiInfoQueue::getInfoMessages()
 	//m_index = 0u;
 	return messageDescriptions;
 }
-
-#endif

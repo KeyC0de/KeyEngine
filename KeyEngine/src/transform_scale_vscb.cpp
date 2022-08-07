@@ -28,7 +28,7 @@ void TransformScaleVSCB::bind( Graphics &gph ) cond_noex
 	auto tfs = getTransforms( gph );
 	tfs.worldView = tfs.worldView * scaleMatrix;
 	tfs.worldViewProjection = tfs.worldViewProjection * scaleMatrix;
-	update( gph,
+	TransformVSCB::update( gph,
 		tfs );
 	m_pVscb->bind( gph );
 }

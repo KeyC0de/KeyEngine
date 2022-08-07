@@ -13,7 +13,10 @@ class IBindable
 	: public GraphicsFriend
 {
 public:
-	virtual ~IBindable() noexcept = default;
+	virtual ~IBindable() noexcept
+	{
+
+	}
 
 	// bind resource to a certain stage of the graphics pipeline
 	virtual void bind( Graphics &gph ) cond_noex = 0;

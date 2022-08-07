@@ -1,7 +1,5 @@
 #pragma once
 
-#if defined _DEBUG && !defined NDEBUG
-
 #include <string>
 #include "winner.h"
 
@@ -93,5 +91,3 @@ public:
 		return this->m_fp != rhs->m_fp;
 	}
 };
-
-#endif

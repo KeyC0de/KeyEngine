@@ -115,7 +115,7 @@ int runWindowsProgram( _In_ wchar_t *pCmdLine )
 
 std::tuple<int,int> parseCommandLineArguments()
 {
-	HRESULT hres;
+	HRESULT hres = 0;
 	LPWSTR commandLine = GetCommandLineW();
 	int argc;
 	LPWSTR *argv = CommandLineToArgvW( commandLine,

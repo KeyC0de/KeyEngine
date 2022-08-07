@@ -1,7 +1,5 @@
 #pragma once
 
-#if defined _DEBUG && !defined NDEBUG
-
 #include <vector>
 #include <string>
 #include <dxgidebug.h>
@@ -11,6 +9,7 @@
 #pragma warning( default: 4265 )
 
 
+//#FIXME: INFO_QUEUE doesn't work. It crashes at the Graphics Destructor. It might be ImGui related.
 // ref: https://walbourn.github.io/dxgi-debug-device/
 // In DirectX 11.1 + you can get helpful information from DX Device Context functions
 // using the DXGIGetDebugInterface given we have the debug layer of our device enabled
@@ -37,8 +36,6 @@ public:
 	void markQueueIndex() noexcept;
 	std::vector<std::string> getInfoMessages();
 };
-
-#endif
 
 
 #if defined _DEBUG && !defined NDEBUG

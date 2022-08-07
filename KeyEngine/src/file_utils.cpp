@@ -125,11 +125,9 @@ void deleteFile( const std::string &filename )
 	{
 		if ( !std::filesystem::remove( filename ) )
 		{
-#if defined _DEBUG && !defined NDEBUG
 			std::cout << "file "
 				<< filename
 				<< " not found.\n";
-#endif
 		}
 	}
 	catch ( const std::filesystem::filesystem_error &ex )
@@ -197,7 +195,7 @@ bool isFileBinary( const char *fname )
 size_t countLinesOfFile( char *fileName )
 {
 	FILE *fp = fopen( fileName, "r" );
-	char ch;
+	char ch = (char)'/0';
 	size_t lines = 1; // every file starts from line #1
 
 	do
@@ -268,36 +266,58 @@ void countLetterOccurences( char *filename )
 	while ( ( c = fgetc( fd ) ) != EOF )
 	{
 		if ( c >= '0' && c <= '9' )
-			++ndigit[c-'0'];
+		{
+			++ndigit[c - '0'];
+		}
 		else if ( c >= 'a' && c <= 'z' )
-			++nchar[c-'a'];
+		{
+			++nchar[c - 'a'];
+		}
 		else if ( c >= 'A' && c <= 'Z' )
-			++nchar[c-'A'];
+		{
+			++nchar[c - 'A'];
+		}
 		else if ( c == ' ' || c == '\n' || c == '\r' || c == '\t' )
+		{
 			++nwhite;
+		}
 		else
+		{
 			++nother;
+		}
 	}
 
 	// print results
 	printf( "digits:\n" );
 	for ( i = 0; i < 10; ++i )
+	{
 		printf( "%5d", i );
+	}
 	printf( "\n" );
 	for ( i = 0; i < 10; ++i )
+	{
 		printf( "%5d", ndigit[i] );
+	}
 	printf( "\nCharacter (case insensitive):\n" );
 	for ( i = 0; i < 13; ++i )
+	{
 		printf( "%5c", 'a' + i );
+	}
 	printf( "\n" );
-	for ( i = 0; i < 13; ++i)
+	for ( i = 0; i < 13; ++i )
+	{
 		printf( "%5d", nchar[i] );
+	}
 	printf( "\n" );
-	for ( i = 13; i < 26; ++i)
+	for ( i = 13; i < 26; ++i )
+	{
 		printf( "%5c", 'a' + i );
+	}
 	printf( "\n" );
-	for ( i = 13; i < 26; ++i)
+	for ( i = 13; i < 26; ++i )
+	{
 		printf( "%5d", nchar[i] );
+	}
 	printf( "\n" );
 	printf( "\nwhite space = %d, other = %d\n", nwhite, nother );
 }

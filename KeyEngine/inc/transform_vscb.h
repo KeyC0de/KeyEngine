@@ -8,7 +8,6 @@
 class TransformVSCB
 	: public IBindableCloning
 {
-private:
 	const Drawable *m_pDrawable = nullptr;
 protected:
 	struct Transforms
@@ -17,7 +16,6 @@ protected:
 		DirectX::XMMATRIX worldView;
 		DirectX::XMMATRIX worldViewProjection;
 	};
-
 	static inline std::unique_ptr<VertexShaderConstantBuffer<Transforms>> m_pVscb;
 public:
 	TransformVSCB( Graphics &gph, unsigned slot );

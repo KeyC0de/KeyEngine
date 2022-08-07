@@ -14,8 +14,7 @@ protected:
 public:
 	virtual const con::CBElement& getCBExRootLayoutElement() const noexcept = 0;
 protected:
-	IConstantBufferEx( Graphics &gph, unsigned slot, const con::CBElement &layoutRoot,
-		const con::Buffer *pBuf );
+	IConstantBufferEx( Graphics &gph, unsigned slot, const con::CBElement &layoutRoot, const con::Buffer *pBuf );
 
 	void update( Graphics &gph, const con::Buffer &buf );
 };

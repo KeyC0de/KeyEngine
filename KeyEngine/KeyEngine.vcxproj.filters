@@ -367,6 +367,9 @@
     <ClCompile Include="src\rectangle.cpp">
       <Filter>engine\vfx\drawable\primitives</Filter>
     </ClCompile>
+    <ClCompile Include="src\sound_object.cpp">
+      <Filter>engine\sfx</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -1105,9 +1108,6 @@
     <ClInclude Include="inc\key_timer.h">
       <Filter>engine\common</Filter>
     </ClInclude>
-    <ClInclude Include="inc\non_copyable_non_moveable.h">
-      <Filter>engine\common</Filter>
-    </ClInclude>
     <ClInclude Include="inc\performance_log.h">
       <Filter>engine\common</Filter>
     </ClInclude>
@@ -1140,6 +1140,12 @@
     </ClInclude>
     <ClInclude Include="inc\rectangle.h">
       <Filter>engine\vfx\drawable\primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\sound_object.h">
+      <Filter>engine\sfx</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\non_copyable.h">
+      <Filter>engine\common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1328,6 +1334,9 @@
     <Text Include="design_doc\fantasia.txt">
       <Filter>design_doc</Filter>
     </Text>
+    <Text Include="design_doc\cpp_nuggets.txt">
+      <Filter>design_doc</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="third_party">
@@ -1374,9 +1383,6 @@
     </Filter>
     <Filter Include="engine\gameplay">
       <UniqueIdentifier>{1039e577-9966-4205-951b-f77e90e733f8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\gameplay\actors">
-      <UniqueIdentifier>{77e0952f-ec5a-4416-aadb-1627ff97ff9a}</UniqueIdentifier>
     </Filter>
     <Filter Include="engine\util">
       <UniqueIdentifier>{b78d3ca6-1ab9-4355-bdca-c583de8c9d68}</UniqueIdentifier>

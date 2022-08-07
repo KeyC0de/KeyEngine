@@ -3,6 +3,7 @@
 #	include "leak_checker_console.h"
 #	include "console.h"
 
+
 namespace debugLeak
 {
 
@@ -41,5 +42,6 @@ public:
 LeakChecker leakChecker{};
 
 };// namespace debugLeak
+
 
 #endif	// _DEBUG

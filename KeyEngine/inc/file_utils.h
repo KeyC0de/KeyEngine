@@ -16,8 +16,7 @@ void writeFile( const std::filesystem::path &path, const std::string &data );
 void deleteFile( const std::string &filename );
 void searchFile( const std::filesystem::path &directory, const std::filesystem::path &filename );
 bool createDirectory( const std::string &str );
-void setFilePermissions( const std::string &path, std::filesystem::perms permsToSet,
-	std::filesystem::perm_options permsAction );
+void setFilePermissions( const std::string &path, std::filesystem::perms permsToSet, std::filesystem::perm_options permsAction );
 const std::string getFileExtension( const std::string &filename );
 //===================================================
 //	\function	isFileBinary

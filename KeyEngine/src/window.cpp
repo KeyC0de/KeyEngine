@@ -24,7 +24,7 @@ Window::WindowClass::WindowClass( const std::string &name )
 	HINSTANCE hInstance = THIS_INSTANCE;
 	ASSERT( hInstance != nullptr, "HINSTANCE is null!" );
 
-	HRESULT hres;
+	HRESULT hres = 0;
 
 	WNDCLASSEX wc{};
 	wc.cbSize = sizeof WNDCLASSEX;
@@ -236,7 +236,7 @@ Window::Window( int width,
 	m_height(height),
 	m_name{name}
 {
-	HRESULT hres;
+	HRESULT hres = 0;
 
 	m_pWindowClass = &WindowClass::getInstance( "KeyEngine_Window_Class" );
 
@@ -274,7 +274,7 @@ Window::Window( int width,
 	}
 
 	// mouse raw input
-	RAWINPUTDEVICE rid;
+	RAWINPUTDEVICE rid{};
 	rid.usUsagePage = 0x01u;	// mouse page
 	rid.usUsage = 0x02u;		// mouse usage
 	rid.dwFlags = 0u;
@@ -436,7 +436,7 @@ void Window::setTitle( const std::wstring &title )
 {
 	SetWindowTextW( m_hWnd,
 		title.data() );
-	HRESULT hres;
+	HRESULT hres = 0;
 	ASSERT_HRES_WIN32_IF_FAILED( hres );
 }
 
@@ -1507,7 +1507,7 @@ Prevent window resizing: Instead resize by ingame option - choosing resolution:
 
 void Window::setFont( const std::wstring &fontName )
 {
-	NONCLIENTMETRICS ncm;
+	NONCLIENTMETRICS ncm{};
 	ncm.cbSize = sizeof( NONCLIENTMETRICS );
 	SystemParametersInfoW( SPI_GETNONCLIENTMETRICS,
 		sizeof( NONCLIENTMETRICS ),
