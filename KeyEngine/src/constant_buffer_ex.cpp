@@ -40,7 +40,7 @@ void IConstantBufferEx::update( Graphics &gph,
 		"Input CB root element is not compatible!" );
 
 	D3D11_MAPPED_SUBRESOURCE msr;
-	HRESULT hres = getContext( gph )->Map( m_pD3dCb.Get(),
+	HRESULT hres = getDeviceContext( gph )->Map( m_pD3dCb.Get(),
 		0u,
 		D3D11_MAP_WRITE_DISCARD,
 		0u,
@@ -52,14 +52,14 @@ void IConstantBufferEx::update( Graphics &gph,
 		buf.getRawBytes(),
 		buf.getSizeInBytes() );
 
-	getContext( gph )->Unmap( m_pD3dCb.Get(),
+	getDeviceContext( gph )->Unmap( m_pD3dCb.Get(),
 		0u );
 }
 
 
 void IVertexShaderConstantBufferEx::bind( Graphics &gph ) cond_noex
 {
-	getContext( gph )->VSSetConstantBuffers( m_slot,
+	getDeviceContext( gph )->VSSetConstantBuffers( m_slot,
 		1u,
 		m_pD3dCb.GetAddressOf() );
 	DXGI_GET_QUEUE_INFO( gph );
@@ -68,7 +68,7 @@ void IVertexShaderConstantBufferEx::bind( Graphics &gph ) cond_noex
 
 void IPixelShaderConstantBufferEx::bind( Graphics &gph ) cond_noex
 {
-	getContext( gph )->PSSetConstantBuffers( m_slot,
+	getDeviceContext( gph )->PSSetConstantBuffers( m_slot,
 		1u,
 		m_pD3dCb.GetAddressOf() );
 	DXGI_GET_QUEUE_INFO( gph );

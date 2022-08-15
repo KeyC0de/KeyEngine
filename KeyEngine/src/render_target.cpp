@@ -109,7 +109,7 @@ void IRenderTargetView::bindRenderSurface( Graphics &gph,
 		(float) m_height );
 	viewport->bind( gph );
 
-	getContext( gph )->OMSetRenderTargets( 1u,
+	getDeviceContext( gph )->OMSetRenderTargets( 1u,
 		m_pRtv.GetAddressOf(),
 		pD3dDsv );
 	DXGI_GET_QUEUE_INFO( gph );
@@ -118,7 +118,7 @@ void IRenderTargetView::bindRenderSurface( Graphics &gph,
 void IRenderTargetView::clear( Graphics &gph,
 	const std::array<float, 4> &color ) cond_noex
 {
-	getContext( gph )->ClearRenderTargetView( m_pRtv.Get(),
+	getDeviceContext( gph )->ClearRenderTargetView( m_pRtv.Get(),
 		color.data() );
 	DXGI_GET_QUEUE_INFO( gph );
 }
@@ -170,7 +170,7 @@ std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC>
 	{
 		// source pRtvTex is actually inside a cubemap texture,
 		// use view info to find the correct slice and copy subresource
-		getContext( gph )->CopySubresourceRegion( pStagingTex.Get(),
+		getDeviceContext( gph )->CopySubresourceRegion( pStagingTex.Get(),
 			0u,
 			0u,
 			0u,
@@ -182,7 +182,7 @@ std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC>
 	}
 	else
 	{
-		getContext( gph )->CopyResource( pStagingTex.Get(),
+		getDeviceContext( gph )->CopyResource( pStagingTex.Get(),
 			pRtvTex.Get() );
 		DXGI_GET_QUEUE_INFO( gph );
 	}
@@ -205,7 +205,7 @@ Bitmap IRenderTargetView::convertToBitmap( Graphics &gph ) const
 	Bitmap bitmap{width, height};
 
 	D3D11_MAPPED_SUBRESOURCE msr{};
-	HRESULT hres = getContext( gph )->Map( pStagingTex.Get(),
+	HRESULT hres = getDeviceContext( gph )->Map( pStagingTex.Get(),
 		0u,
 		D3D11_MAP::D3D11_MAP_READ,
 		0u,
@@ -226,7 +226,7 @@ Bitmap IRenderTargetView::convertToBitmap( Graphics &gph ) const
 				*( pRow + x ) );
 		}
 	}
-	getContext( gph )->Unmap( pStagingTex.Get(),
+	getDeviceContext( gph )->Unmap( pStagingTex.Get(),
 		0 );
 
 	return bitmap;
@@ -258,7 +258,7 @@ RenderTargetShaderInput::RenderTargetShaderInput( Graphics &gph,
 
 void RenderTargetShaderInput::bind( Graphics &gph ) cond_noex
 {
-	getContext( gph )->PSSetShaderResources( m_slot,
+	getDeviceContext( gph )->PSSetShaderResources( m_slot,
 		1u,
 		m_pSrv.GetAddressOf() );
 	DXGI_GET_QUEUE_INFO( gph );

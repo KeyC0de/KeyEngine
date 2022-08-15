@@ -6,19 +6,8 @@
 
 CameraManager& CameraManager::getInstance()
 {
-	if ( m_pInstance == nullptr )
-	{
-		m_pInstance = new CameraManager{};
-	}
-	return *m_pInstance;
-}
-
-void CameraManager::resetInstance()
-{
-	if ( m_pInstance != nullptr )
-	{
-		delete m_pInstance;
-	}
+	static CameraManager m_instance{};
+	return m_instance;
 }
 
 void CameraManager::setWidthHeight( int width,

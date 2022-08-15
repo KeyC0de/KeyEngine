@@ -18,4 +18,5 @@ public:
 #define THROW_GAMEPLAY_EXCEPTION( msg ) throw GameplayException( __LINE__,\
 	__FILE__,\
 	__FUNCTION__,\
-	msg );
+	msg );\
+	__debugbreak();

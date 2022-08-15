@@ -50,25 +50,18 @@ __itt_string_handle *pStrIttBeginRendering = __itt_string_handle_create( L"Begin
 __itt_string_handle *pStrIttFpsTimerRendering = __itt_string_handle_create( L"FpsTimerRendering" );
 __itt_string_handle *pStrIttEndRendering = __itt_string_handle_create( L"EndRendering" );
 
-#if defined _DEBUG && !defined NDEBUG
-static std::once_flag g_startUpFlag;
-#endif
-
-auto &g_settings = SettingsManager::getInstance();
-
-
 Graphics::Adapter::Adapter( IDXGIAdapter *pAdapter )
 {
 	m_pAdapter = pAdapter;
 	pAdapter->GetDesc( &m_desc );
 }
 
-const DXGI_ADAPTER_DESC *Graphics::Adapter::getDesc() const noexcept
+const DXGI_ADAPTER_DESC* Graphics::Adapter::getDesc() const noexcept
 {
 	return &m_desc;
 }
 
-IDXGIAdapter *Graphics::Adapter::getAdapter() const noexcept
+IDXGIAdapter* Graphics::Adapter::getAdapter() const noexcept
 {
 	return m_pAdapter.Get();
 }
@@ -113,7 +106,7 @@ Graphics::Graphics( HWND hWnd,
 	m_height(height)
 {
 	HRESULT hres;
-	auto &settings = g_settings.getSettings();
+	auto &settings = SettingsManager::getInstance().getSettings();
 	if ( settings.bMultithreadedRendering )
 	{
 		m_deferredContexts.reserve( settings.nRenderingThreads );
@@ -161,8 +154,7 @@ Graphics::Graphics( HWND hWnd,
 	// make window-swap chain association
 	makeWindowAssociationWithFactory( hWnd );
 #else
-	for ( DWORD i = 0u;
-		hres == E_INVALIDARG || i < std::size( acceptableFeatureLevels ); ++i )
+	for ( DWORD i = 0u; hres == E_INVALIDARG || i < std::size( acceptableFeatureLevels ); ++i )
 	{
 		hres = D3D11CreateDeviceAndSwapChain( primaryAdapter.getAdapter(),
 			D3D_DRIVER_TYPE_UNKNOWN,
@@ -190,12 +182,7 @@ Graphics::Graphics( HWND hWnd,
 			MB_OK );
 	}
 
-	auto callMe = [this]()
-	{
-		interrogateDirectxFeatures();
-	};
-	std::call_once( ::g_startUpFlag,
-		callMe );
+	interrogateDirectxFeatures();
 
 	// create the info queue
 	m_infoQueue = std::make_unique<DxgiInfoQueue>();
@@ -342,7 +329,8 @@ void Graphics::endRendering()
 #endif
 
 	HRESULT hres;
-	if ( g_settings.getSettings().bVSync )
+	SettingsManager &setMan = SettingsManager::getInstance();
+	if ( setMan.getSettings().bVSync )
 	{
 #if defined _FLIP_PRESENT
 		hres = m_pSwapChain->Present1( 1u,
@@ -385,7 +373,8 @@ void Graphics::draw( unsigned count ) cond_noex
 void Graphics::drawIndexed( unsigned count ) cond_noex
 {
 	VTUNE_ITT_TASK_BEGIN( pStrIttDrawIndexed );
-	if ( g_settings.getSettings().bMultithreadedRendering )
+	SettingsManager &setMan = SettingsManager::getInstance();
+	if ( setMan.getSettings().bMultithreadedRendering )
 	{
 		playbackDeferredCommandList();
 	}
@@ -403,7 +392,8 @@ void Graphics::drawIndexedInstanced( unsigned indexCount,
 	unsigned instanceCount ) cond_noex
 {
 	VTUNE_ITT_TASK_BEGIN( pStrIttDrawIndexedInstanced );
-	if ( g_settings.getSettings().bMultithreadedRendering )
+	SettingsManager &setMan = SettingsManager::getInstance();
+	if ( setMan.getSettings().bMultithreadedRendering )
 	{
 
 	}
@@ -416,7 +406,7 @@ void Graphics::drawIndexedInstanced( unsigned indexCount,
 }
 
 
-ColorBGRA *&Graphics::getCpuBuffer()
+ColorBGRA*& Graphics::getCpuBuffer()
 {
 	return m_pCpuBuffer;
 }
@@ -451,7 +441,7 @@ unsigned Graphics::getClientHeight() const noexcept
 	return m_height;
 }
 
-IRenderTargetView *Graphics::getRenderTarget() const noexcept
+IRenderTargetView* Graphics::getRenderTarget() const noexcept
 {
 	return m_globalColorBuffer.get();
 }
@@ -462,7 +452,7 @@ std::shared_ptr<IRenderTargetView> Graphics::shareRenderTarget()
 }
 
 #if defined _DEBUG && !defined NDEBUG
-DxgiInfoQueue &Graphics::getInfoQueue() const noexcept
+DxgiInfoQueue& Graphics::getInfoQueue() const noexcept
 {
 	return *( m_infoQueue.get() );
 }
@@ -569,9 +559,10 @@ void Graphics::d3d11DebugReport()
 	// report any live objects
 	if ( m_pDebug != nullptr )
 	{
-		OutputDebugStringW( L"\nReporting Debug Objects\n" );
+		OutputDebugStringW( L"\n\nReporting Debug Objects:\n" );
 		hres = m_pDebug->ReportLiveDeviceObjects( D3D11_RLDO_DETAIL );
 		ASSERT_HRES_IF_FAILED;
+		OutputDebugStringW( L"\n\n" );
 		m_pDebug = nullptr;
 	}
 
@@ -844,7 +835,7 @@ const std::string Graphics::GraphicsException::getType() const noexcept
 	return typeid( *this ).name();
 }
 
-const char *Graphics::GraphicsException::what() const noexcept
+const char* Graphics::GraphicsException::what() const noexcept
 {
 	return KeyException::what();
 }

@@ -10,7 +10,7 @@ PixelShaderNull::PixelShaderNull( Graphics &gph )
 
 void PixelShaderNull::bind( Graphics &gph ) cond_noex
 {
-	getContext( gph )->PSSetShader( nullptr,
+	getDeviceContext( gph )->PSSetShader( nullptr,
 		nullptr,
 		0u );
 	DXGI_GET_QUEUE_INFO( gph );

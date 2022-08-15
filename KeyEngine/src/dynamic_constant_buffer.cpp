@@ -544,21 +544,10 @@ con::CookedLayout LayoutMap::fetch( con::RawLayout &&cbLayout ) cond_noex
 	return {result.first->second};
 }
 
-LayoutMap &LayoutMap::getInstance() noexcept
+LayoutMap& LayoutMap::getInstance() noexcept
 {
-	if ( m_pInstance == nullptr )
-	{
-		m_pInstance = new LayoutMap{};
-	}
-	return *m_pInstance;
-}
-
-void LayoutMap::resetInstance()
-{
-	if ( m_pInstance != nullptr )
-	{
-		delete m_pInstance;
-	}
+	static LayoutMap instance{};
+	return instance;
 }
 
 

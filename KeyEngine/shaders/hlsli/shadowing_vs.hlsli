@@ -1,4 +1,4 @@
-cbuffer LightTransformVCB : register(b1)
+cbuffer LightTransformVSCB : register(b1)
 {
 	matrix lightMatrix;
 };

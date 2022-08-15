@@ -37,7 +37,7 @@ IndexBuffer::IndexBuffer( Graphics &gph,
 
 void IndexBuffer::bind( Graphics &gph ) cond_noex
 {
-	getContext( gph )->IASetIndexBuffer( m_pIndexBuffer.Get(),
+	getDeviceContext( gph )->IASetIndexBuffer( m_pIndexBuffer.Get(),
 		DXGI_FORMAT_R32_UINT,
 		0u );
 	DXGI_GET_QUEUE_INFO( gph );

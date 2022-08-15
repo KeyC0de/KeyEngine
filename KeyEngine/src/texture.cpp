@@ -44,7 +44,7 @@ Texture::Texture( Graphics &gph,
 	ASSERT_HRES_IF_FAILED;
 
 	// write the image (bitmap) to the texture
-	getContext( gph )->UpdateSubresource( m_pTex.Get(),
+	getDeviceContext( gph )->UpdateSubresource( m_pTex.Get(),
 		0u,
 		nullptr,
 		bitmap.dataConst(),
@@ -65,7 +65,7 @@ Texture::Texture( Graphics &gph,
 		&m_pSrv );
 	ASSERT_HRES_IF_FAILED;
 
-	getContext( gph )->GenerateMips( m_pSrv.Get() );
+	getDeviceContext( gph )->GenerateMips( m_pSrv.Get() );
 	DXGI_GET_QUEUE_INFO( gph );
 }
 
@@ -115,7 +115,7 @@ void Texture::update( Graphics &gph ) cond_noex
 {
 	HRESULT hres;
 	D3D11_MAPPED_SUBRESOURCE mappedCpuBufferTexture;
-	hres = getContext( gph )->Map( m_pTex.Get(),
+	hres = getDeviceContext( gph )->Map( m_pTex.Get(),
 		0u,
 		D3D11_MAP_WRITE_DISCARD,
 		0u,
@@ -134,7 +134,7 @@ void Texture::update( Graphics &gph ) cond_noex
 			&pSrc[y * srcWidth],
 			nRowBytes );
 	}
-	getContext( gph )->Unmap( m_pTex.Get(),
+	getDeviceContext( gph )->Unmap( m_pTex.Get(),
 		0u );
 }
 
@@ -144,7 +144,7 @@ void Texture::bind( Graphics &gph ) cond_noex
 	{
 		update( gph );
 	}
-	getContext( gph )->PSSetShaderResources( m_slot,
+	getDeviceContext( gph )->PSSetShaderResources( m_slot,
 		1u,
 		m_pSrv.GetAddressOf() );
 	DXGI_GET_QUEUE_INFO( gph );

@@ -12,7 +12,7 @@ PrimitiveTopology::PrimitiveTopology( Graphics &gph,
 
 void PrimitiveTopology::bind( Graphics &gph ) cond_noex
 {
-	getContext( gph )->IASetPrimitiveTopology( m_d3dPrimTop );
+	getDeviceContext( gph )->IASetPrimitiveTopology( m_d3dPrimTop );
 }
 
 std::shared_ptr<PrimitiveTopology> PrimitiveTopology::fetch( Graphics &gph,

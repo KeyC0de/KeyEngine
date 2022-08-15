@@ -3,39 +3,23 @@
 #include "INIReader.h"
 #include "console.h"
 #include "utils.h"
+#include "console.h"
 
 
 SettingsManager::SettingsManager( const std::string &filePath )
 {
-	//loadFromFile( filePath );
-}
-
-SettingsManager::~SettingsManager() noexcept
-{
-	// free allocated resources if any
-
+	loadFromFile( filePath );
 }
 
 SettingsManager& SettingsManager::getInstance( const std::string &filePath )
 {
-	if ( m_pInstance == nullptr )
-	{
-		m_pInstance = new SettingsManager{filePath};
-	}
-	return *m_pInstance;
-}
-
-void SettingsManager::resetInstance()
-{
-	if ( m_pInstance != nullptr )
-	{
-		delete m_pInstance;
-	}
+	static SettingsManager	m_instance{std::string{"config/"} + filePath};
+	return m_instance;
 }
 
 void SettingsManager::loadFromFile( const std::string &filePath )
 {
-	INIReader ini( filePath );
+	INIReader ini{filePath};
 
 	if ( ini.ParseError() < 0 )
 	{
@@ -47,20 +31,43 @@ void SettingsManager::loadFromFile( const std::string &filePath )
 			MB_OK | MB_ICONEXCLAMATION );
 		std::terminate();
 	}
-	// convert inih string inputs/outputs to wstring
-	//console.log( "Config loaded from " + filePath + ":\n"
-	//	"version="
-	//	+ ini.GetInteger( "protocol", "version", -1 )
-	//	<< L", name="
-	//	<< s2ws( ini.Get( "user", "name", "UNKNOWN" ) )
-	//	<< L", greekName="
-	//	<< s2ws( ini.Get( "user", "greekName", "UNKNOWN" ) )
-	//	<< L", email="
-	//	<< s2ws( ini.Get( "user", "email", "UNKNOWN" ) )
-	//	<< L", pi="
-	//	<< ini.GetReal( "user", "pi", -1 )
-	//	<< L", active="
-	//	<< ini.GetBoolean("user", "active", true) << "\n";
+
+	m_settings.version = ini.GetInteger( "Protocol", "Version", -1 );
+
+	if ( ini.GetInteger( "GameSelection", "Sandbox3d", 0 ) )
+	{
+		m_settings.m_game = "Sandbox3d";
+	}
+	else if ( ini.GetInteger( "GameSelection", "Arkanoid2d", 0 ) )
+	{
+		m_settings.m_game = "Arkanoid2d";
+	}
+	else if( ini.GetInteger( "GameSelection", "Snake2d", 0 ) )
+	{
+		m_settings.m_game = "Snake2d";
+	}
+	else
+	{
+		MessageBoxW( nullptr,
+			L"No game selected in the config.ini file. Please specify a game.",
+			L"No Selected Game!",
+			MB_OK | MB_ICONEXCLAMATION );
+		std::terminate();
+	}
+
+#if defined _DEBUG && !defined NDEBUG
+	KeyConsole& console = KeyConsole::getInstance();
+	console.log( "\n\nConfig loaded from \"" + filePath + "\": {"
+		"\n\tversion="
+		+ std::to_string( m_settings.version )
+		+ "\n\tgame="
+		+ std::string{m_settings.m_game}
+		//+ "\n\tpi="
+		//+ ini.GetReal( "user", "pi", -1 )
+		//+ "\n\tactive="
+		//+ ini.GetBoolean( "user", "active", true )
+		+ "\n}\n\n" );
+#endif
 }
 
 const SettingsManager::Settings& SettingsManager::getSettings()

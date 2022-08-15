@@ -29,7 +29,7 @@ const ver::VertexLayout InputLayout::getLayout() const noexcept
 
 void InputLayout::bind( Graphics &gph ) cond_noex
 {
-	getContext( gph )->IASetInputLayout( m_pInputLayout.Get() );
+	getDeviceContext( gph )->IASetInputLayout( m_pInputLayout.Get() );
 	DXGI_GET_QUEUE_INFO( gph );
 }
 

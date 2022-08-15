@@ -26,7 +26,7 @@ Viewport::Viewport( Graphics &gph,
 
 void Viewport::bind( Graphics &gph ) cond_noex
 {
-	getContext( gph )->RSSetViewports( 1u,
+	getDeviceContext( gph )->RSSetViewports( 1u,
 		&m_viewport );
 	DXGI_GET_QUEUE_INFO( gph );
 }

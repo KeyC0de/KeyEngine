@@ -52,7 +52,7 @@ TextureSampler::TextureSampler( Graphics &gph,
 
 void TextureSampler::bind( Graphics &gph ) cond_noex
 {
-	getContext( gph )->PSSetSamplers( m_slot,
+	getDeviceContext( gph )->PSSetSamplers( m_slot,
 		1u,
 		m_pSamplerState.GetAddressOf() );
 	DXGI_GET_QUEUE_INFO( gph );

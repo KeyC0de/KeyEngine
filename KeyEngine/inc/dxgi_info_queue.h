@@ -56,3 +56,22 @@ public:
 #else
 #	define DXGI_GET_QUEUE_INFO (void)0;
 #endif
+
+#if defined _DEBUG && !defined NDEBUG
+#	define DXGI_GET_QUEUE_INFO_P( gph ) \
+	{\
+		KeyConsole &console = KeyConsole::getInstance();\
+		const auto &messages = gph->getInfoQueue().getInfoMessages();\
+		if ( !messages.empty() )\
+		{\
+			for ( const auto &msg : messages )\
+			{\
+				console.log( msg + "\n" );\
+			}\
+			__debugbreak();\
+		}\
+		gph->getInfoQueue().markQueueIndex();\
+	}
+#else
+#	define DXGI_GET_QUEUE_INFO_P (void)0;
+#endif

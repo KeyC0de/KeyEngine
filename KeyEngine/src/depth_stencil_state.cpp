@@ -102,7 +102,7 @@ DepthStencilState::DepthStencilState( Graphics &gph,
 
 void DepthStencilState::bind( Graphics &gph ) cond_noex
 {
-	getContext( gph )->OMSetDepthStencilState( m_pDepthStencilState.Get(),
+	getDeviceContext( gph )->OMSetDepthStencilState( m_pDepthStencilState.Get(),
 		0xFF );
 	DXGI_GET_QUEUE_INFO( gph );
 }

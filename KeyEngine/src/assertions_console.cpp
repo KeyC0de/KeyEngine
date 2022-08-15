@@ -19,7 +19,7 @@ bool assertPrint( const char *expr,
 	console.log( function );
 	console.log( "\n>> line: " );
 	console.log( std::to_string( line ) );
-	console.log( "\n>> !( " );
+	console.log( "\n>> ( " );
 	console.log( expr );
 	console.log( " )\n" );
 	if ( msg != nullptr )

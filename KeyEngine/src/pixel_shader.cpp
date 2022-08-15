@@ -28,7 +28,7 @@ PixelShader::PixelShader( Graphics &gph,
 
 void PixelShader::bind( Graphics &gph ) cond_noex
 {
-	getContext( gph )->PSSetShader( m_pPixelShader.Get(),
+	getDeviceContext( gph )->PSSetShader( m_pPixelShader.Get(),
 		nullptr,
 		0u );
 	DXGI_GET_QUEUE_INFO( gph );

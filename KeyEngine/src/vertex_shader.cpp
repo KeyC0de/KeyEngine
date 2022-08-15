@@ -27,7 +27,7 @@ VertexShader::VertexShader( Graphics &gph,
 
 void VertexShader::bind( Graphics &gph ) cond_noex
 {
-	getContext( gph )->VSSetShader( m_pVertexShader.Get(),
+	getDeviceContext( gph )->VSSetShader( m_pVertexShader.Get(),
 		nullptr,
 		0u );
 	DXGI_GET_QUEUE_INFO( gph );

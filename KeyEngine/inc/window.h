@@ -42,7 +42,6 @@ private:
 		WindowClass& operator=( WindowClass &&rhs ) noexcept;
 
 		static WindowClass& getInstance( const std::string &name );
-		static void resetInstance();
 		std::string getName() noexcept;
 	};
 	//class Dialog final

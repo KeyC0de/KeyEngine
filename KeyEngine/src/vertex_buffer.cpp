@@ -45,7 +45,7 @@ const ver::VertexLayout &VertexBuffer::getLayout() const noexcept
 void VertexBuffer::bind( Graphics &gph ) cond_noex
 {
 	const unsigned offset = 0u;
-	getContext( gph )->IASetVertexBuffers( 0u,
+	getDeviceContext( gph )->IASetVertexBuffers( 0u,
 		1u,
 		m_pVertexBuffer.GetAddressOf(),
 		&m_stride,

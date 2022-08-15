@@ -11,6 +11,8 @@ struct Metrics
 };
 
 
+#if defined _DEBUG && !defined NDEBUG
 void windowsMetricsCheckTest();
 void windowsMetricsCheck( int sm );
 void windowsMetricsCheckAll();
+#endif

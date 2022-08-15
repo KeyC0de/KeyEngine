@@ -26,7 +26,7 @@ Rasterizer::Rasterizer( Graphics &gph,
 
 void Rasterizer::bind( Graphics &gph ) cond_noex
 {
-	getContext( gph )->RSSetState( m_pRasterizerState.Get() );
+	getDeviceContext( gph )->RSSetState( m_pRasterizerState.Get() );
 	DXGI_GET_QUEUE_INFO( gph );
 }
 

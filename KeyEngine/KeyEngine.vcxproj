@@ -47,12 +47,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)third_party\dxtex\include;$(ProjectDir)third_party\assimp\include;$(ProjectDir)third_party\inih;$(ProjectDir)third_party\imgui;$(ProjectDir)third_party\DirectXTK\include;$(ProjectDir)inc;$(ProjectDir)third_party\catch</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)third_party\dxtex\include;$(ProjectDir)third_party\assimp\include;$(ProjectDir)third_party\inih;$(ProjectDir)third_party\imgui;$(ProjectDir)third_party\DirectXTK\include;$(ProjectDir)inc;$(ProjectDir)third_party\catch;C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include</IncludePath>
     <LibraryPath>$(ProjectDir)third_party\dxtex\bin\$(Configuration);$(ProjectDir)third_party\DirectXTK\bin\$(Configuration);$(ProjectDir)third_party\assimp\bin\x64;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)\int\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)third_party\dxtex\include;$(ProjectDir)third_party\assimp\include;$(ProjectDir)third_party\inih;$(ProjectDir)third_party\imgui;$(ProjectDir)third_party\DirectXTK\include;$(ProjectDir)inc;$(ProjectDir)third_party\catch</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)third_party\dxtex\include;$(ProjectDir)third_party\assimp\include;$(ProjectDir)third_party\inih;$(ProjectDir)third_party\imgui;$(ProjectDir)third_party\DirectXTK\include;$(ProjectDir)inc;$(ProjectDir)third_party\catch;C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include</IncludePath>
     <LibraryPath>$(ProjectDir)third_party\dxtex\bin\$(Configuration);$(ProjectDir)third_party\DirectXTK\bin\$(Configuration);$(ProjectDir)third_party\assimp\bin\x64;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)\int\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
@@ -64,9 +64,8 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <PreprocessorDefinitions>_DEBUG;UNICODE;_UNICODE;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;%(PreprocessorDefinitions);BDEBUG=true;cond_noex=noexcept( !BDEBUG );pass_=(void)0;_CRT_SECURE_NO_WARNINGS;_32_BIT_ENTITY</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;NO_DUMPS;UNICODE;_UNICODE;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;%(PreprocessorDefinitions);BDEBUG=true;cond_noex=noexcept( !BDEBUG );pass_=(void)0;_CRT_SECURE_NO_WARNINGS;_32_BIT_ENTITY</PreprocessorDefinitions>
       <AdditionalOptions>/we4239 /we4265 /we4715 /Zc:__cplusplus /utf-8 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
     </ClCompile>
     <Link>
@@ -88,12 +87,11 @@
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <PreprocessorDefinitions>_DEV;NDEBUG;UNICODE;_UNICODE;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;%(PreprocessorDefinitions);BDEBUG=false;cond_noex=noexcept( !BDEBUG );pass_=(void)0;_CRT_SECURE_NO_WARNINGS;_32_BIT_ENTITY</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEV;NDEBUG;NO_DUMPS;UNICODE;_UNICODE;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;%(PreprocessorDefinitions);BDEBUG=false;cond_noex=noexcept( !BDEBUG );pass_=(void)0;_CRT_SECURE_NO_WARNINGS;_32_BIT_ENTITY</PreprocessorDefinitions>
       <FloatingPointModel>Fast</FloatingPointModel>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalOptions>/we4239 /we4265 /we4715 /Zc:__cplusplus /utf-8 %(AdditionalOptions)</AdditionalOptions>
       <SDLCheck />
-      <AdditionalIncludeDirectories>C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
     </ClCompile>
     <Link>
@@ -109,18 +107,27 @@
     </FxCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="games\arkanoid\ball.cpp" />
+    <ClCompile Include="games\arkanoid\brick.cpp" />
+    <ClCompile Include="games\arkanoid\paddle.cpp" />
+    <ClCompile Include="games\snake\fruit.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="games\snake\snake.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="games\snake\snake_play_field.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="src\algorithms.cpp" />
     <ClCompile Include="src\effect_visitor.cpp" />
     <ClCompile Include="src\grid_location.cpp" />
     <ClCompile Include="src\model_visitor.cpp" />
     <ClCompile Include="src\mouse_picker.cpp" />
     <ClCompile Include="src\rectangle.cpp" />
-    <ClCompile Include="arkanoid\ball.cpp" />
-    <ClCompile Include="snake\snake_play_field.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="arkanoid\brick.cpp" />
     <ClCompile Include="src\bindable_exception.cpp" />
     <ClCompile Include="src\constant_buffer_ex.cpp" />
     <ClCompile Include="src\geometry.cpp" />
@@ -128,10 +135,6 @@
     <ClCompile Include="src\blur_outline_draw_pass.cpp" />
     <ClCompile Include="src\depth_stencil_state.cpp" />
     <ClCompile Include="src\file_utils.cpp" />
-    <ClCompile Include="snake\fruit.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="src\gameplay_exception.cpp" />
     <ClCompile Include="src\game_state.cpp" />
     <ClCompile Include="src\net_utils.cpp" />
@@ -195,7 +198,6 @@
     <ClCompile Include="src\pixel_shader_null.cpp" />
     <ClCompile Include="src\os_utils.cpp" />
     <ClCompile Include="src\producer.cpp" />
-    <ClCompile Include="arkanoid\paddle.cpp" />
     <ClCompile Include="src\blur_outline_mask_pass.cpp" />
     <ClCompile Include="src\pass.cpp" />
     <ClCompile Include="src\performance_log.cpp" />
@@ -211,10 +213,6 @@
     <ClCompile Include="src\shadow_map_sampler.cpp" />
     <ClCompile Include="src\signal_handling.cpp" />
     <ClCompile Include="src\skybox_vscb.cpp" />
-    <ClCompile Include="snake\snake.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="src\sky_pass.cpp" />
     <ClCompile Include="src\solid_outline_draw_pass.cpp" />
     <ClCompile Include="src\solid_outline_mask_pass.cpp" />
@@ -257,12 +255,15 @@
     <ClCompile Include="src\thread_pool.cpp" />
     <None Include="arrow.cur" />
     <None Include="assimp-vc140-mt.dll" />
+    <None Include="ClassDiagram.cd" />
+    <None Include="config\config.ini" />
     <None Include="cpp.hint">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </None>
     <None Include="config\imgui.ini" />
     <None Include="config\imgui_default.ini" />
+    <None Include="scripts\scripting.lua" />
     <None Include="shaders\hlsli\directional_light_pscb.hlsli" />
     <None Include="shaders\hlsli\hlsl_misc.hlsli" />
     <None Include="shaders\hlsli\point_light_pscb.hlsli" />
@@ -284,6 +285,12 @@
     <None Include="zlib1.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="games\arkanoid\ball.h" />
+    <ClInclude Include="games\arkanoid\brick.h" />
+    <ClInclude Include="games\arkanoid\paddle.h" />
+    <ClInclude Include="games\snake\fruit.h" />
+    <ClInclude Include="games\snake\snake.h" />
+    <ClInclude Include="games\snake\snake_play_field.h" />
     <ClInclude Include="inc\algorithms.h" />
     <ClInclude Include="inc\graphics_mode.h" />
     <ClInclude Include="inc\grid_location.h" />
@@ -292,7 +299,6 @@
     <ClInclude Include="inc\non_copyable.h" />
     <ClInclude Include="inc\rectangle.h" />
     <ClInclude Include="inc\assertions_console.h" />
-    <ClInclude Include="arkanoid\ball.h" />
     <ClInclude Include="inc\bindable_exception.h" />
     <ClInclude Include="inc\net_utils.h" />
     <ClInclude Include="inc\pass_2d.h" />
@@ -302,11 +308,6 @@
     <ClInclude Include="inc\vtune_itt_domain.h" />
     <ClInclude Include="inc\wireframe_pass.h" />
     <ClInclude Include="inc\solid_outline_draw_pass.h" />
-    <ClInclude Include="snake\snake_play_field.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClInclude>
-    <ClInclude Include="arkanoid\brick.h" />
     <ClInclude Include="inc\color.h" />
     <ClInclude Include="inc\bindable.h" />
     <ClInclude Include="inc\bindable_map.h" />
@@ -340,10 +341,6 @@
     <ClInclude Include="inc\entity.h" />
     <ClInclude Include="inc\entity_defines.h" />
     <ClInclude Include="inc\entity_manager.h" />
-    <ClInclude Include="snake\fruit.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClInclude>
     <ClInclude Include="inc\frustum.h" />
     <ClInclude Include="inc\fullscreen_pass.h" />
     <ClInclude Include="inc\game.h" />
@@ -385,7 +382,6 @@
     <ClInclude Include="inc\os_utils.h" />
     <ClInclude Include="inc\producer.h" />
     <ClInclude Include="inc\blur_outline_mask_pass.h" />
-    <ClInclude Include="arkanoid\paddle.h" />
     <ClInclude Include="inc\pass.h" />
     <ClInclude Include="inc\performance_log.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -407,10 +403,6 @@
     <ClInclude Include="inc\signal_handling.h" />
     <ClInclude Include="inc\skybox_vscb.h" />
     <ClInclude Include="inc\sky_pass.h" />
-    <ClInclude Include="snake\snake.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClInclude>
     <ClInclude Include="inc\sphere.h" />
     <ClInclude Include="inc\sound_manager.h" />
     <ClInclude Include="inc\depth_stencil_state.h" />

@@ -1,5 +1,4 @@
 #include "sysmetrics.h"
-
 #include "console.h"
 
 #pragma comment( lib, "user32.lib" )
@@ -85,6 +84,7 @@ Metrics metrics[] =
 };
 
 
+#if defined _DEBUG && !defined NDEBUG
 void windowsMetricsCheckTest()
 {
 	int ret;
@@ -149,3 +149,4 @@ void windowsMetricsCheckAll()
 		console.print( "\n" );
 	}
 }
+#endif

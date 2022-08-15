@@ -41,12 +41,12 @@ Plane::Plane( Graphics &gph,
 		plane.m_indices );
 	m_pPrimitiveTopology = PrimitiveTopology::fetch( gph );
 
-	auto transformVcb = std::make_shared<TransformVSCB>( gph,
+	auto transformVscb = std::make_shared<TransformVSCB>( gph,
 		0u );
 	{
 	// lambertian reflectance effect
 		Effect lambertian{rch::lambert, "lambertian", true};
-		lambertian.addBindable( transformVcb );
+		lambertian.addBindable( transformVscb );
 
 		lambertian.addBindable( Texture::fetch( gph,
 			"assets/models/brick_wall/brick_wall_diffuse.jpg",
@@ -83,7 +83,7 @@ Plane::Plane( Graphics &gph,
 	{
 	// shadow map effect
 		Effect shadowMap{rch::shadow, "shadowMap", true};
-		shadowMap.addBindable( transformVcb );
+		shadowMap.addBindable( transformVscb );
 
 		shadowMap.addBindable( InputLayout::fetch( gph,
 			plane.m_vb.getLayout(),
@@ -94,7 +94,7 @@ Plane::Plane( Graphics &gph,
 	{
 	// blur outline mask effect
 		Effect blurOutlineMask{rch::blurOutline, "blurOutlineMask", false};
-		blurOutlineMask.addBindable( transformVcb );
+		blurOutlineMask.addBindable( transformVscb );
 
 		blurOutlineMask.addBindable( InputLayout::fetch( gph,
 			plane.m_vb.getLayout(),
@@ -105,7 +105,7 @@ Plane::Plane( Graphics &gph,
 	{
 	// blur outline draw effect
 		Effect blurOutlineDraw{rch::blurOutline, "blurOutlineDraw", false};
-		blurOutlineDraw.addBindable( transformVcb );
+		blurOutlineDraw.addBindable( transformVscb );
 
 		con::RawLayout cbLayout;
 		cbLayout.add<con::Float4>( "materialColor" );
@@ -124,7 +124,7 @@ Plane::Plane( Graphics &gph,
 	{
 	// solid outline mask effect
 		Effect solidOutlineMask{rch::solidOutline, "solidOutlineMask", true};
-		solidOutlineMask.addBindable( transformVcb );
+		solidOutlineMask.addBindable( transformVscb );
 
 		solidOutlineMask.addBindable( InputLayout::fetch( gph,
 			plane.m_vb.getLayout(),

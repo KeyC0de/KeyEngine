@@ -81,7 +81,7 @@ Microsoft::WRL::ComPtr<ID3D11SamplerState> ShadowMapSampler::make( Graphics &gph
 
 void ShadowMapSampler::bind( Graphics &gph ) cond_noex
 {
-	getContext( gph )->PSSetSamplers( getCurrentSlot(),
+	getDeviceContext( gph )->PSSetSamplers( getCurrentSlot(),
 		1,
 		m_samplers[m_samplerMask].GetAddressOf() );
 	DXGI_GET_QUEUE_INFO( gph );

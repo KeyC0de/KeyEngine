@@ -160,8 +160,10 @@ LRESULT CALLBACK SplashWindow::windowProc( HWND hWnd,
 	WPARAM wParam,
 	LPARAM lParam )
 {
+#if defined _DEBUG && !defined NDEBUG
 	auto &console = KeyConsole::getInstance();
 	console.log( "windowProc() entered\n" );
+#endif
 
 	/*
 	if ( uMsg == WM_NCCREATE )

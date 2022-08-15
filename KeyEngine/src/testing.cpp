@@ -392,7 +392,8 @@ void testDynamicVertex( Window &wnd )
 			layout,
 			*bivs );
 
-		auto rt = RenderTargetShaderInput{gph, 1280, 720, 0};
+		//auto rt = RenderTargetShaderInput{gph, 1280, 720, 0};
+		auto rt = RenderTargetShaderInput{gph, 1600, 900, 0};
 
 		biidx->bind( gph );
 		bivb->bind( gph );

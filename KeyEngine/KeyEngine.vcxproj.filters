@@ -16,24 +16,6 @@
     <ClCompile Include="third_party\imgui\imgui_widgets.cpp">
       <Filter>third_party\imgui</Filter>
     </ClCompile>
-    <ClCompile Include="arkanoid\ball.cpp">
-      <Filter>games\arkanoid</Filter>
-    </ClCompile>
-    <ClCompile Include="arkanoid\brick.cpp">
-      <Filter>games\arkanoid</Filter>
-    </ClCompile>
-    <ClCompile Include="arkanoid\paddle.cpp">
-      <Filter>games\arkanoid</Filter>
-    </ClCompile>
-    <ClCompile Include="snake\snake_play_field.cpp">
-      <Filter>games\snake</Filter>
-    </ClCompile>
-    <ClCompile Include="snake\fruit.cpp">
-      <Filter>games\snake</Filter>
-    </ClCompile>
-    <ClCompile Include="snake\snake.cpp">
-      <Filter>games\snake</Filter>
-    </ClCompile>
     <ClCompile Include="src\test_main.cpp">
       <Filter>tests</Filter>
     </ClCompile>
@@ -313,9 +295,6 @@
     <ClCompile Include="src\renderer_exception.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
-    <ClCompile Include="src\octree.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
     <ClCompile Include="src\shadow_map_sampler.cpp">
       <Filter>engine\vfx\d3d11</Filter>
     </ClCompile>
@@ -369,6 +348,27 @@
     </ClCompile>
     <ClCompile Include="src\sound_object.cpp">
       <Filter>engine\sfx</Filter>
+    </ClCompile>
+    <ClCompile Include="src\octree.cpp">
+      <Filter>engine\gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="games\arkanoid\ball.cpp">
+      <Filter>games\arkanoid</Filter>
+    </ClCompile>
+    <ClCompile Include="games\arkanoid\brick.cpp">
+      <Filter>games\arkanoid</Filter>
+    </ClCompile>
+    <ClCompile Include="games\arkanoid\paddle.cpp">
+      <Filter>games\arkanoid</Filter>
+    </ClCompile>
+    <ClCompile Include="games\snake\fruit.cpp">
+      <Filter>games\snake</Filter>
+    </ClCompile>
+    <ClCompile Include="games\snake\snake.cpp">
+      <Filter>games\snake</Filter>
+    </ClCompile>
+    <ClCompile Include="games\snake\snake_play_field.cpp">
+      <Filter>games\snake</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -456,24 +456,6 @@
     </ClInclude>
     <ClInclude Include="third_party\rapidjson\writer.h">
       <Filter>third_party\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="arkanoid\ball.h">
-      <Filter>games\arkanoid</Filter>
-    </ClInclude>
-    <ClInclude Include="arkanoid\brick.h">
-      <Filter>games\arkanoid</Filter>
-    </ClInclude>
-    <ClInclude Include="arkanoid\paddle.h">
-      <Filter>games\arkanoid</Filter>
-    </ClInclude>
-    <ClInclude Include="snake\snake_play_field.h">
-      <Filter>games\snake</Filter>
-    </ClInclude>
-    <ClInclude Include="snake\fruit.h">
-      <Filter>games\snake</Filter>
-    </ClInclude>
-    <ClInclude Include="snake\snake.h">
-      <Filter>games\snake</Filter>
     </ClInclude>
     <ClInclude Include="third_party\rapidjson\internal\biginteger.h">
       <Filter>third_party\rapidjson</Filter>
@@ -1084,9 +1066,6 @@
     <ClInclude Include="inc\render_surface.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
-    <ClInclude Include="inc\octree.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
     <ClInclude Include="inc\shadow_map_sampler.h">
       <Filter>engine\vfx\d3d11</Filter>
     </ClInclude>
@@ -1146,6 +1125,27 @@
     </ClInclude>
     <ClInclude Include="inc\non_copyable.h">
       <Filter>engine\common</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\octree.h">
+      <Filter>engine\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="games\arkanoid\ball.h">
+      <Filter>games\arkanoid</Filter>
+    </ClInclude>
+    <ClInclude Include="games\arkanoid\brick.h">
+      <Filter>games\arkanoid</Filter>
+    </ClInclude>
+    <ClInclude Include="games\arkanoid\paddle.h">
+      <Filter>games\arkanoid</Filter>
+    </ClInclude>
+    <ClInclude Include="games\snake\fruit.h">
+      <Filter>games\snake</Filter>
+    </ClInclude>
+    <ClInclude Include="games\snake\snake.h">
+      <Filter>games\snake</Filter>
+    </ClInclude>
+    <ClInclude Include="games\snake\snake_play_field.h">
+      <Filter>games\snake</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1219,6 +1219,13 @@
     <None Include="config\test.ini">
       <Filter>config</Filter>
     </None>
+    <None Include="scripts\scripting.lua">
+      <Filter>engine\scripts</Filter>
+    </None>
+    <None Include="config\config.ini">
+      <Filter>config</Filter>
+    </None>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="shaders\blur_separ_ps.hlsl">

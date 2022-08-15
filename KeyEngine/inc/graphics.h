@@ -60,7 +60,7 @@ private:
 	DirectX::XMMATRIX m_view;
 #if defined _DEBUG && !defined NDEBUG
 	std::unique_ptr<DxgiInfoQueue> m_infoQueue;
-	ATL::CComPtr<ID3D11Debug> m_pDebug;	// try using PIMPL and declare it in .cpp
+	ATL::CComPtr<ID3D11Debug> m_pDebug;
 #endif
 	Microsoft::WRL::ComPtr<ID3D11Device> m_pDevice;
 #if defined _FLIP_PRESENT
@@ -107,11 +107,12 @@ public:
 	unsigned getClientHeight() const noexcept;
 	IRenderTargetView* getRenderTarget() const noexcept;
 	std::shared_ptr<IRenderTargetView> shareRenderTarget();
+	void createAdapters();
+	std::vector<Adapter>& getAdapters() const;
+
 #if defined _DEBUG && !defined NDEBUG
 	DxgiInfoQueue& getInfoQueue() const noexcept;
 #endif
-	void createAdapters();
-	std::vector<Adapter>& getAdapters() const;
 
 	// 2d
 	ColorBGRA getPixel( int x, int y ) const noexcept;
@@ -163,6 +164,7 @@ private:
 	//	\date	2020/11/05 14:51
 	void playbackDeferredCommandList();
 	void clearShaderSlots() noexcept;
+
 #if defined _DEBUG && !defined NDEBUG
 	void interrogateDirectxFeatures();
 	void d3d11DebugReport();
@@ -172,4 +174,5 @@ private:
 #define THROW_GRAPHICS_EXCEPTION( msg ) throw GraphicsException( __LINE__,\
 	__FILE__,\
 	__FUNCTION__,\
-	msg );
+	msg );\
+	__debugbreak();

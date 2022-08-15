@@ -1,4 +1,4 @@
-cbuffer SkyboxTransformVCB : register(b0)
+cbuffer SkyboxTransformVSCB : register(b0)
 {
 	matrix viewProjection;
 };

@@ -16,13 +16,23 @@ protected:
 		DirectX::XMMATRIX worldView;
 		DirectX::XMMATRIX worldViewProjection;
 	};
-	static inline std::unique_ptr<VertexShaderConstantBuffer<Transforms>> m_pVscb;
+private:
+	std::unique_ptr<VertexShaderConstantBuffer<Transforms>> m_pVscb;
 public:
 	TransformVSCB( Graphics &gph, unsigned slot );
+	//===================================================
+	//	\function	TransformVSCB
+	//	\brief  cctor that behaves as mctor
+	//	\date	2022/08/07 22:47
+	TransformVSCB( const TransformVSCB &rhs );
+	TransformVSCB& operator=( const TransformVSCB &rhs );
+	//TransformVSCB( TransformVSCB &&rhs );
+	//TransformVSCB& operator=( TransformVSCB &&rhs ) = delete;
 
 	void bind( Graphics &gph ) cond_noex override;
 	void setParentDrawable( const Drawable &parent ) noexcept override;
 	std::unique_ptr<IBindableCloning> clone() const noexcept override;
+	std::unique_ptr<IBindableCloning> clone() noexcept override;
 protected:
 	void update( Graphics &gph, const Transforms &tfs ) cond_noex;
 	Transforms getTransforms( Graphics &gph ) cond_noex;

@@ -2,6 +2,7 @@
 #include "game.h"
 #include "utils.h"
 #include "console.h"
+#include "graphics_mode.h"
 #include "sysmetrics.h"
 #include <eh.h>
 #include <exception>
@@ -22,7 +23,6 @@ static bool g_windowsExceptionOccurred = false;
 
 
 std::tuple<int,int> parseCommandLineArguments();
-int runWindowsProgram( _In_ wchar_t *pCmdLine );
 void firstly();
 void finally();
 
@@ -33,24 +33,7 @@ int WINAPI wWinMain( _In_ HINSTANCE hinstance,
 {
 	(void)hprevInstance;
 	int exitCode;
-	__try
-	{
-		firstly();
-		exitCode = runWindowsProgram( pCmdLine );
-	}
-	__finally
-	{
-		finally();
-	}
 
-#if defined _DEBUG && !defined NDEBUG
-	while ( !getchar() );
-#endif
-	return exitCode;
-}
-
-int runWindowsProgram( _In_ wchar_t *pCmdLine )
-{
 	auto runProgram = [&pCmdLine] () -> int
 	{
 		try
@@ -60,12 +43,26 @@ int runWindowsProgram( _In_ wchar_t *pCmdLine )
 			KeyConsole &console = KeyConsole::getInstance();
 			windowsMetricsCheckTest();
 #endif
-			/// WARNING: Make sure to set the GraphicsMode in graphics_mode.h
 			const auto& [width, height] = parseCommandLineArguments();
-			Sandbox3d game{width, height};
-			//Arkanoid game{800, 600};
-			//Snake game{800, 600};
-			return game.loop();
+			if constexpr ( GraphicsMode::get() == GraphicsMode::_3D )
+			{
+				Sandbox3d game{width, height};
+				return game.loop();
+			}
+			else if constexpr ( GraphicsMode::get() == GraphicsMode::_2D )
+			{
+				SettingsManager &m_settingsMan = SettingsManager::getInstance();
+				if ( m_settingsMan.getSettings().m_game == "Arkanoid2d" )
+				{
+					Arkanoid game{800, 600};
+					return game.loop();
+				}
+				//else if ( m_settingsMan.getSettings().m_game == "Snake2d" )
+				//{
+					//Snake game{800, 600};
+					//return game.loop();
+				//}
+			}
 		}
 		catch ( const KeyException &ex )
 		{
@@ -93,25 +90,54 @@ int runWindowsProgram( _In_ wchar_t *pCmdLine )
 		}
 	};
 
-#ifndef NO_DUMPS
 	__try
 	{
-#endif // !NO_DUMPS
-		return runProgram();
-#ifndef NO_DUMPS
+		firstly();
+		exitCode = runProgram();
 	}
-	__except( generateDump( GetExceptionInformation(), g_dumpFile ) )
+#ifndef NO_DUMPS
+	__except ( generateDump( GetExceptionInformation(), g_dumpFile ) )
 	{
 		g_windowsExceptionOccurred = true;
 		MessageBoxW( nullptr,
-			L"Dump generated",
 			L"Windows SEH Exception!",
+			L"Dump generated",
 			MB_ICONERROR | MB_OK );
+
 		return SEH_EXCEPTION_EXIT;
 	}
+#else
+	__finally
+	{
+		finally();
+	}
 #endif // !NO_DUMPS
+
+#if defined _DEBUG && !defined NDEBUG
+	while ( !getchar() );
+#endif
+	return exitCode;
 }
 //////////////////////////////////////////////////////////////////////
+
+void firstly()
+{
+	fflush( stdin );
+	fflush( stderr );
+	fflush( stdout );
+
+	std::set_terminate( [] ()
+		{
+			OutputDebugStringW( L"Unhandled exception. Aborting..\n" );
+			std::cout << "KeyEngine Unhandled exception: abort()ing..\n";
+			std::abort();
+		} );
+
+	//std::atexit( util::terminateDetachedThreads );
+	std::signal( SIGINT,
+		installSigintHandler );
+	//util::setupDetachedThreadsVector( std::thread::hardware_concurrency() );
+}
 
 std::tuple<int,int> parseCommandLineArguments()
 {
@@ -134,25 +160,6 @@ std::tuple<int,int> parseCommandLineArguments()
 	console.print( "(width,height)=(" + std::to_string( width ) + "," + std::to_string( height ) + ")" );
 #endif
 	return {width, height};
-}
-
-void firstly()
-{
-	fflush( stdin );
-	fflush( stderr );
-	fflush( stdout );
-
-	std::set_terminate( []()
-	{
-		OutputDebugStringW( L"Unhandled exception. Aborting..\n" );
-		std::cout << "KeyEngine Unhandled exception: abort()ing..\n";
-		std::abort();
-	});
-
-	//std::atexit( util::terminateDetachedThreads );
-	std::signal( SIGINT,
-		installSigintHandler );
-	//util::setupDetachedThreadsVector( std::thread::hardware_concurrency() );
 }
 
 void finally()

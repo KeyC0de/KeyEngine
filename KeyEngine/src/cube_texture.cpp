@@ -63,7 +63,7 @@ CubeTexture::CubeTexture( Graphics &gph,
 
 void CubeTexture::bind( Graphics &gph ) cond_noex
 {
-	getContext( gph )->PSSetShaderResources( m_slot,
+	getDeviceContext( gph )->PSSetShaderResources( m_slot,
 		1u,
 		m_pSrv.GetAddressOf() );
 	DXGI_GET_QUEUE_INFO( gph );
@@ -118,7 +118,7 @@ CubeTextureRT::CubeTextureRT( Graphics &gph,
 
 void CubeTextureRT::bind( Graphics &gph ) cond_noex
 {
-	getContext( gph )->PSSetShaderResources( m_slot,
+	getDeviceContext( gph )->PSSetShaderResources( m_slot,
 		1u,
 		m_pSrv.GetAddressOf() );
 	DXGI_GET_QUEUE_INFO( gph );
@@ -183,7 +183,7 @@ std::shared_ptr<DepthStencilOutput> CubeTextureDS::shareDepthBuffer( size_t inde
 
 void CubeTextureDS::bind( Graphics &gph ) cond_noex
 {
-	getContext( gph )->PSSetShaderResources( m_slot,
+	getDeviceContext( gph )->PSSetShaderResources( m_slot,
 		1u,
 		m_pSrv.GetAddressOf() );
 	DXGI_GET_QUEUE_INFO( gph );

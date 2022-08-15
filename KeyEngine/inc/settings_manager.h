@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <string_view>
 
 
 class SettingsManager final
@@ -9,6 +10,8 @@ class SettingsManager final
 	struct Settings
 	{
 		// defaults:
+		int version = 0;
+		std::string_view m_game = "Sandbox3d";
 		float fGameSpeed = 1.0f;
 		bool bVSync = true;
 		bool bFpsCap = false;
@@ -26,12 +29,10 @@ class SettingsManager final
 
 	void loadFromFile( const std::string &filePath );
 public:
-	~SettingsManager() noexcept;
 	SettingsManager( const SettingsManager &rhs ) = delete;
 	SettingsManager& operator=( const SettingsManager &rhs ) = delete;
 
-	static SettingsManager &getInstance( const std::string &filePath = "config.ini" );
-	static void resetInstance();
+	static SettingsManager& getInstance( const std::string &filePath = "config.ini" );
 	const Settings& getSettings();
 	Settings& accessSettings();
 };

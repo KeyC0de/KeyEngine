@@ -20,45 +20,75 @@ class IConstantBuffer
 	: public IBindable
 {
 protected:
-	Microsoft::WRL::ComPtr<ID3D11Buffer> m_pCb;
+	Microsoft::WRL::ComPtr<ID3D11Buffer> m_pD3dCb;
 	unsigned m_slot;
+	static inline Graphics *m_gph;
 public:
-	// empty cb
+	//===================================================
+	//	\function	ctor
+	//	\brief  initially empty d3dcb - supply the data on update
+	//	\date	2022/08/14 23:44
 	IConstantBuffer( Graphics &gph,
 		unsigned slot )
 		:
 		m_slot(slot)
 	{
+		m_gph = &gph;
+
 		D3D11_BUFFER_DESC cbDesc{};
-		cbDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-		cbDesc.Usage = D3D11_USAGE_DYNAMIC;
-		cbDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
-		cbDesc.ByteWidth = sizeof CB;
+		setBufferDesc( &cbDesc );
+
 		HRESULT hres = getDevice( gph )->CreateBuffer( &cbDesc,
 			nullptr,
-			&m_pCb );
+			&m_pD3dCb );
 		ASSERT_HRES_IF_FAILED;
 	}
 
+	//===================================================
+	//	\function	ctor
+	//	\brief  ctor with the data supplied
+	//	\date	2022/08/14 23:44
 	IConstantBuffer( Graphics &gph,
 		const CB &cb,
 		unsigned slot )
 		:
 		m_slot(slot)
 	{
+		m_gph = &gph;
+
 		//ASSERT( util::isAligned( &cb, 16 ), "Constant Buffer not 16B aligned!" );
 		D3D11_BUFFER_DESC cbDesc{};
-		cbDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-		cbDesc.Usage = D3D11_USAGE_DYNAMIC;
-		cbDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
-		cbDesc.ByteWidth = sizeof cb;
+		setBufferDesc( &cbDesc );
 
 		D3D11_SUBRESOURCE_DATA cbSubData{};
 		cbSubData.pSysMem = &cb;
 		HRESULT hres = getDevice( gph )->CreateBuffer( &cbDesc,
 			&cbSubData,
-			&m_pCb );
+			&m_pD3dCb );
 		ASSERT_HRES_IF_FAILED;
+	}
+
+	/// new
+	//===================================================
+	//	\function	ctor
+	//	\brief  cheating constructor - the D3d resource has already been created (eg copied from another)
+	//	\date	2022/08/14 19:45
+	IConstantBuffer( Microsoft::WRL::ComPtr<ID3D11Buffer>& d3dBuf,
+		unsigned slot )
+		:
+		m_pD3dCb{d3dBuf},
+		m_slot( slot )
+	{
+
+	}
+
+	/// new
+	~IConstantBuffer() noexcept
+	{
+		if ( m_pD3dCb )
+		{
+			m_pD3dCb.Reset();	// or m_pD3dCb = nullptr;
+		}
 	}
 
 	//===================================================
@@ -69,7 +99,7 @@ public:
 		const CB &cb )
 	{
 		D3D11_MAPPED_SUBRESOURCE msr;
-		HRESULT hres = getContext( gph )->Map( m_pCb.Get(),
+		HRESULT hres = getDeviceContext( gph )->Map( m_pD3dCb.Get(),
 			0u,
 			D3D11_MAP_WRITE_DISCARD,
 			0u,
@@ -81,8 +111,27 @@ public:
 			&cb,
 			sizeof cb );
 
-		getContext( gph )->Unmap( m_pCb.Get(),
+		getDeviceContext( gph )->Unmap( m_pD3dCb.Get(),
 			0u );
+	}
+
+	ID3D11Buffer* getCb() const noexcept
+	{
+		return m_pD3dCb.Get();
+	}
+
+	unsigned getSlot() const noexcept
+	{
+		return m_slot;
+	}
+
+protected:
+	static void setBufferDesc( D3D11_BUFFER_DESC *cbDesc )
+	{
+		cbDesc->BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+		cbDesc->Usage = D3D11_USAGE_DYNAMIC;
+		cbDesc->CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+		cbDesc->ByteWidth = sizeof CB;
 	}
 };
 
@@ -90,18 +139,23 @@ template<typename CB>
 class VertexShaderConstantBuffer final
 	: public IConstantBuffer<CB>
 {
-	using IConstantBuffer<CB>::m_pCb;
+	using IConstantBuffer<CB>::m_gph;
+	using IConstantBuffer<CB>::m_pD3dCb;
 	using IConstantBuffer<CB>::m_slot;
-	using IBindable::getContext;
+
+	using IBindable::getDevice;
+	using IBindable::getDeviceContext;
+	using IConstantBuffer<CB>::setBufferDesc;
 public:
-	// inheriting constructors
-	using IConstantBuffer<CB>::IConstantBuffer;
+	using IConstantBuffer<CB>::IConstantBuffer;	// inheriting constructors
+	using IConstantBuffer<CB>::getCb;
+	using IConstantBuffer<CB>::getSlot;
 
 	void bind( Graphics &gph ) cond_noex override
 	{
-		getContext( gph )->VSSetConstantBuffers( m_slot,
+		getDeviceContext( gph )->VSSetConstantBuffers( m_slot,
 			1u,
-			m_pCb.GetAddressOf() );
+			m_pD3dCb.GetAddressOf() );
 		DXGI_GET_QUEUE_INFO( gph );
 	}
 
@@ -137,23 +191,50 @@ public:
 	{
 		return generateUid( m_slot );
 	}
+
+	static VertexShaderConstantBuffer<CB> makeACopy( ID3D11Buffer *srcBuf,
+		unsigned slot )
+	{
+		Microsoft::WRL::ComPtr<ID3D11Buffer> destBuf;
+
+		D3D11_BUFFER_DESC cbDesc{};
+		setBufferDesc( &cbDesc );
+
+		HRESULT hres = getDevice( *m_gph )->CreateBuffer( &cbDesc,
+			nullptr,
+			&destBuf );
+		ASSERT_HRES_IF_FAILED;
+
+		getDeviceContext( *m_gph )->CopyResource( destBuf.Get(),
+			srcBuf );
+		DXGI_GET_QUEUE_INFO_P( m_gph );
+
+		return VertexShaderConstantBuffer<CB>( destBuf,
+			slot );
+	}
 };
 
 template<typename CB>
 class PixelShaderConstantBuffer final
 	: public IConstantBuffer<CB>
 {
-	using IConstantBuffer<CB>::m_pCb;
+	using IConstantBuffer<CB>::m_gph;
+	using IConstantBuffer<CB>::m_pD3dCb;
 	using IConstantBuffer<CB>::m_slot;
-	using IBindable::getContext;
+
+	using IBindable::getDevice;
+	using IBindable::getDeviceContext;
+	using IConstantBuffer<CB>::setBufferDesc;
 public:
-	using IConstantBuffer<CB>::IConstantBuffer;
+	using IConstantBuffer<CB>::IConstantBuffer;	// inheriting constructors
+	using IConstantBuffer<CB>::getCb;
+	using IConstantBuffer<CB>::getSlot;
 
 	void bind( Graphics &gph ) cond_noex override
 	{
-		getContext( gph )->PSSetConstantBuffers( m_slot,
+		getDeviceContext( gph )->PSSetConstantBuffers( m_slot,
 			1u,
-			m_pCb.GetAddressOf() );
+			m_pD3dCb.GetAddressOf() );
 		DXGI_GET_QUEUE_INFO( gph );
 	}
 
@@ -188,5 +269,26 @@ public:
 	std::string getUid() const noexcept override
 	{
 		return generateUid( m_slot );
+	}
+
+	static PixelShaderConstantBuffer<CB> makeACopy( ID3D11Buffer *srcBuf,
+		unsigned slot )
+	{
+		Microsoft::WRL::ComPtr<ID3D11Buffer> destBuf;
+
+		D3D11_BUFFER_DESC cbDesc{};
+		setBufferDesc( &cbDesc );
+
+		HRESULT hres = getDevice( *m_gph )->CreateBuffer( &cbDesc,
+			nullptr,
+			&destBuf );
+		ASSERT_HRES_IF_FAILED;
+
+		getDeviceContext( *m_gph )->CopyResource( destBuf.Get(),
+			srcBuf );
+		DXGI_GET_QUEUE_INFO_P( m_gph );
+
+		return PixelShaderConstantBuffer<CB>( destBuf,
+			slot );
 	}
 };

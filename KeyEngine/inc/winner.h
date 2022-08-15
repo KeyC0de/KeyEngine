@@ -33,7 +33,7 @@ static_assert( _MSVC_LANG >= 201703L,
 #	define NOATOM					// Atom manager routines
 #	define NOCLIPBOARD				// Clipboard routines
 #	define NOCOLOR					// Screen colors
-#ifdef NO_DUMPS
+#ifndef NO_DUMPS
 #	define NOCTLMGR					// Control and Dialog routines, generating dumps
 #endif // !TAKING_DUMPS
 #	define NODRAWTEXT				// DrawText() and DT_*

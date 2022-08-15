@@ -70,7 +70,7 @@ void Game<T>::setState( std::unique_ptr<State> pNewState,
 		mouse.enableRawInput();
 #if defined _DEBUG && !defined NDEBUG
 		KeyConsole &console = KeyConsole::getInstance();
-		console.print( "Game state is on!" );
+		console.print( "\nGame state is on!\n" );
 #endif
 	}
 	else if ( dynamic_cast<MenuState*>( pNewState.get() ) != nullptr )
@@ -79,7 +79,7 @@ void Game<T>::setState( std::unique_ptr<State> pNewState,
 		mouse.disableRawInput();
 #if defined _DEBUG && !defined NDEBUG
 		KeyConsole &console = KeyConsole::getInstance();
-		console.print( "Menu state is on!" );
+		console.print( "\nMenu state is on!\n" );
 #endif
 	}
 	else
@@ -215,7 +215,6 @@ Sandbox3d::Sandbox3d( int width,
 	setState( std::move( menuState ),
 		m_mainWindow.getMouse() );
 }
-
 
 int Sandbox3d::loop()
 {

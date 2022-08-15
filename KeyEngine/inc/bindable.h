@@ -43,4 +43,5 @@ class IBindableCloning
 {
 public:
 	virtual std::unique_ptr<IBindableCloning> clone() const noexcept = 0;
+	virtual std::unique_ptr<IBindableCloning> clone() noexcept = 0;
 };

@@ -13,12 +13,12 @@
 #include "game_state.h"
 #include "sound_manager.h"
 #include "rectangle.h"
-#include "../arkanoid/ball.h"
-#include "../arkanoid/brick.h"
-#include "../arkanoid/paddle.h"
-//#include "../snake/snake_play_field.h"
-//#include "../snake/snake.h"
-//#include "../snake/fruit.h"
+#include "../games/arkanoid/ball.h"
+#include "../games/arkanoid/brick.h"
+#include "../games/arkanoid/paddle.h"
+//#include "../games/snake/snake_play_field.h"
+//#include "../games/snake/snake.h"
+//#include "../games/snake/fruit.h"
 
 
 struct ImguiManager;
@@ -116,6 +116,7 @@ private:
 	void render( float dt );
 	void present();
 };
+
 /*
 class Snake final
 	: public Game<Snake>

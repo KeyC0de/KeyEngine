@@ -111,7 +111,7 @@ BlendState::BlendState( Graphics &gph,
 
 void BlendState::bind( Graphics &gph ) cond_noex
 {
-	getContext( gph )->OMSetBlendState( m_pBlendState.Get(),
+	getDeviceContext( gph )->OMSetBlendState( m_pBlendState.Get(),
 		m_blendFactors->data(),
 		0xFFFFFFFFu );
 	DXGI_GET_QUEUE_INFO( gph );

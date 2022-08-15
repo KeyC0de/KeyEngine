@@ -83,33 +83,20 @@ Window::WindowClass::WindowClass( WindowClass &&rhs ) noexcept
 	m_name{std::move( rhs.m_name )},
 	m_classAtom{rhs.m_classAtom}
 {
-	m_pInstance = rhs.m_pInstance;
+
 }
 
-Window::WindowClass &Window::WindowClass::operator=( WindowClass &&rhs ) noexcept
+Window::WindowClass& Window::WindowClass::operator=( WindowClass &&rhs ) noexcept
 {
-	m_pInstance = rhs.m_pInstance;
 	m_name = std::move( rhs.m_name );
 	m_classAtom = rhs.m_classAtom;
 	return *this;
 }
 
-Window::WindowClass &Window::WindowClass::getInstance( const std::string &name )
+Window::WindowClass& Window::WindowClass::getInstance( const std::string &name )
 {
-	if ( m_pInstance == nullptr )
-	{
-		m_pInstance = new WindowClass{name};
-	}
-	return *m_pInstance;
-}
-
-void Window::WindowClass::resetInstance()
-{
-	if ( m_pInstance != nullptr )
-	{
-		delete m_pInstance;
-		m_pInstance = nullptr;
-	}
+	static Window::WindowClass m_instance{name};
+	return m_instance;
 }
 
 std::string Window::WindowClass::getName() noexcept

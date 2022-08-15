@@ -118,7 +118,7 @@ void IDepthStencilView::bindRenderSurface( Graphics &gph ) cond_noex
 		(float) m_height );
 	viewport->bind( gph );
 
-	getContext( gph )->OMSetRenderTargets( 0u,
+	getDeviceContext( gph )->OMSetRenderTargets( 0u,
 		nullptr,
 		m_pDsv.Get() );
 	DXGI_GET_QUEUE_INFO( gph );
@@ -143,15 +143,14 @@ void IDepthStencilView::bindRenderSurface( Graphics &gph,
 void IDepthStencilView::clear( Graphics &gph,
 	const std::array<float, 4>& unused ) cond_noex
 {
-	getContext( gph )->ClearDepthStencilView( m_pDsv.Get(),
+	getDeviceContext( gph )->ClearDepthStencilView( m_pDsv.Get(),
 		D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL,
 		1.0f,
 		0u );
 	DXGI_GET_QUEUE_INFO( gph );
 }
 
-std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC>
-	IDepthStencilView::createStagingTexture( Graphics &gph ) const
+std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC> IDepthStencilView::createStagingTexture( Graphics &gph ) const
 {
 	mwrl::ComPtr<ID3D11Resource> pDsvRsc;
 	m_pDsv->GetResource( &pDsvRsc );
@@ -178,10 +177,9 @@ std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC>
 	D3D11_DEPTH_STENCIL_VIEW_DESC dsvDesc{};
 	m_pDsv->GetDesc( &dsvDesc );
 	// copy to staging texture
-	if ( dsvDesc.ViewDimension
-		== D3D11_DSV_DIMENSION::D3D11_DSV_DIMENSION_TEXTURE2DARRAY )
+	if ( dsvDesc.ViewDimension == D3D11_DSV_DIMENSION::D3D11_DSV_DIMENSION_TEXTURE2DARRAY )
 	{
-		getContext( gph )->CopySubresourceRegion( pStagingTex.Get(),
+		getDeviceContext( gph )->CopySubresourceRegion( pStagingTex.Get(),
 			0u,
 			0u,
 			0u,
@@ -193,7 +191,7 @@ std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC>
 	}
 	else
 	{
-		getContext( gph )->CopyResource( pStagingTex.Get(),
+		getDeviceContext( gph )->CopyResource( pStagingTex.Get(),
 			pDsTex.Get() );
 		DXGI_GET_QUEUE_INFO( gph );
 	}
@@ -211,7 +209,7 @@ Bitmap IDepthStencilView::convertToBitmap( Graphics &gph,
 	const auto height = getHeight();
 	Bitmap bitmap{width, height};
 	D3D11_MAPPED_SUBRESOURCE msr{};
-	HRESULT hres = getContext( gph )->Map( pStagingTex.Get(),
+	HRESULT hres = getDeviceContext( gph )->Map( pStagingTex.Get(),
 		0u,
 		D3D11_MAP::D3D11_MAP_READ,
 		0u,
@@ -226,8 +224,7 @@ Bitmap IDepthStencilView::convertToBitmap( Graphics &gph,
 		{
 			unsigned char data[4];
 		};
-		auto pRow = reinterpret_cast<const Pixel*>( pStagingTexBytes
-			+ msr.RowPitch * size_t( y ) );
+		auto pRow = reinterpret_cast<const Pixel*>( pStagingTexBytes + msr.RowPitch * size_t( y ) );
 		for ( unsigned int x = 0; x < width; ++x )
 		{
 			if ( stagingTexDesc.Format == DXGI_FORMAT::DXGI_FORMAT_R24G8_TYPELESS )
@@ -275,13 +272,13 @@ Bitmap IDepthStencilView::convertToBitmap( Graphics &gph,
 			}
 			else
 			{
-				getContext( gph )->Unmap( pStagingTex.Get(),
+				getDeviceContext( gph )->Unmap( pStagingTex.Get(),
 					0u );
 				throw std::runtime_error{"Bad IDepthStencilView dxgi format when converting to Bitmap"};
 			}
 		}
 	}
-	getContext( gph )->Unmap( pStagingTex.Get(),
+	getDeviceContext( gph )->Unmap( pStagingTex.Get(),
 		0u );
 
 	return bitmap;
@@ -331,7 +328,7 @@ DepthStencilShaderInput::DepthStencilShaderInput( Graphics &gph,
 
 void DepthStencilShaderInput::bind( Graphics &gph ) cond_noex
 {
-	getContext( gph )->PSSetShaderResources( m_slot,
+	getDeviceContext( gph )->PSSetShaderResources( m_slot,
 		1u,
 		m_pSrv.GetAddressOf() );
 	DXGI_GET_QUEUE_INFO( gph );
