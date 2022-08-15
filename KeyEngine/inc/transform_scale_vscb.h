@@ -10,8 +10,8 @@ class TransformScaleVSCB
 	con::Buffer m_cbScale;
 public:
 	TransformScaleVSCB( Graphics &gph, unsigned slot, float scale );
-	TransformScaleVSCB( const TransformScaleVSCB &rhs );
-	TransformScaleVSCB& operator=( const TransformScaleVSCB &rhs );
+	//TransformScaleVSCB( const TransformScaleVSCB &rhs );
+	//TransformScaleVSCB& operator=( const TransformScaleVSCB &rhs );
 	//TransformScaleVSCB( TransformScaleVSCB &&rhs );
 	//TransformScaleVSCB& operator=( TransformScaleVSCB &&rhs ) = delete;
 

@@ -30,6 +30,11 @@ std::unique_ptr<IBindableCloning> TransformVSCB::clone() const noexcept
 	return std::make_unique<TransformVSCB>( *this );
 }
 
+std::unique_ptr<IBindableCloning> TransformVSCB::clone() noexcept
+{
+	return std::make_unique<TransformVSCB>( std::move( *this ) );
+}
+
 void TransformVSCB::update( Graphics &gph,
 	const Transforms &tfs ) cond_noex
 {

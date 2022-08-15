@@ -16,16 +16,15 @@ protected:
 		DirectX::XMMATRIX worldView;
 		DirectX::XMMATRIX worldViewProjection;
 	};
-private:
-	std::unique_ptr<VertexShaderConstantBuffer<Transforms>> m_pVscb;
+	static inline std::unique_ptr<VertexShaderConstantBuffer<Transforms>> m_pVscb;
 public:
 	TransformVSCB( Graphics &gph, unsigned slot );
 	//===================================================
 	//	\function	TransformVSCB
 	//	\brief  cctor that behaves as mctor
 	//	\date	2022/08/07 22:47
-	TransformVSCB( const TransformVSCB &rhs );
-	TransformVSCB& operator=( const TransformVSCB &rhs );
+	//TransformVSCB( const TransformVSCB &rhs );
+	//TransformVSCB& operator=( const TransformVSCB &rhs );
 	//TransformVSCB( TransformVSCB &&rhs );
 	//TransformVSCB& operator=( TransformVSCB &&rhs ) = delete;
 

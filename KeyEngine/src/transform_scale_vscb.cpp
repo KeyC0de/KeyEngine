@@ -38,6 +38,11 @@ std::unique_ptr<IBindableCloning> TransformScaleVSCB::clone() const noexcept
 	return std::make_unique<TransformScaleVSCB>( *this );
 }
 
+std::unique_ptr<IBindableCloning> TransformScaleVSCB::clone() noexcept
+{
+	return std::make_unique<TransformScaleVSCB>( std::move( *this ) );
+}
+
 con::RawLayout TransformScaleVSCB::createCbLayout()
 {
 	con::RawLayout layout;
