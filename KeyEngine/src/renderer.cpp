@@ -105,18 +105,18 @@ void Renderer::setupGlobalConsumerTarget( const std::string &globalConsumerName,
 	const std::string &passName,
 	const std::string &producerName )
 {
-	const auto passFinder = [&globalConsumerName]( const std::unique_ptr<IConsumer>& cons )
+	const auto passFinder = [&globalConsumerName]( const std::unique_ptr<IConsumer>& consumer )
 	{
-		return cons->getName() == globalConsumerName;
+		return consumer->getName() == globalConsumerName;
 	};
-	const auto cons = std::find_if( m_globalConsumers.begin(),
+	const auto consumer = std::find_if( m_globalConsumers.begin(),
 		m_globalConsumers.end(),
 		passFinder );
-	if ( cons == m_globalConsumers.end() )
+	if ( consumer == m_globalConsumers.end() )
 	{
 		THROW_RENDERER_EXCEPTION( "Global consumer " + globalConsumerName + " does not exist!" );
 	}
-	(*cons)->setPassAndProducerNames( passName,
+	(*consumer)->setPassAndProducerNames( passName,
 		producerName );
 }
 
@@ -132,16 +132,16 @@ void Renderer::validateConsumersLinkage()
 
 void Renderer::linkPassConsumers( IPass &pass )
 {
-	for ( auto &cons : pass.getConsumers() )
+	for ( auto &consumer : pass.getConsumers() )
 	{
-		const auto &consumerPassName = cons->getPassName();
+		const auto &consumerPassName = consumer->getPassName();
 		if ( consumerPassName.empty() )
 		{
 			std::ostringstream oss;
 			oss << "In pass named ["
 				<< pass.getName()
 				<< "] consumer named ["
-				<< cons->getName()
+				<< consumer->getName()
 				<< "] has no target producer set.";
 			THROW_RENDERER_EXCEPTION( oss.str() );
 		}
@@ -152,9 +152,9 @@ void Renderer::linkPassConsumers( IPass &pass )
 			bool bLinked = false;
 			for ( auto &globalProd : m_globalProducers )
 			{
-				if ( globalProd->getName() == cons->getProducerName() )
+				if ( globalProd->getName() == consumer->getProducerName() )
 				{
-					cons->link( *globalProd );
+					consumer->link( *globalProd );
 					bLinked = true;
 					break;
 				}
@@ -163,7 +163,7 @@ void Renderer::linkPassConsumers( IPass &pass )
 			{
 				std::ostringstream oss;
 				oss << "Producer named ["
-					<< cons->getProducerName()
+					<< consumer->getProducerName()
 					<< "] not a global";
 				THROW_RENDERER_EXCEPTION( oss.str() );
 			}
@@ -175,8 +175,8 @@ void Renderer::linkPassConsumers( IPass &pass )
 			{
 				if ( pass->getName() == consumerPassName )
 				{
-					auto &producer = pass->getProducer( cons->getProducerName() );
-					cons->link( producer );
+					auto &producer = pass->getProducer( consumer->getProducerName() );
+					consumer->link( producer );
 					bLinked = true;
 					break;
 				}
@@ -195,15 +195,15 @@ void Renderer::linkPassConsumers( IPass &pass )
 
 void Renderer::linkGlobalConsumers()
 {
-	for ( auto &cons : m_globalConsumers )
+	for ( auto &consumer : m_globalConsumers )
 	{
-		const auto &consumerPassname = cons->getPassName();
+		const auto &consumerPassname = consumer->getPassName();
 		for ( auto &pass : m_passes )
 		{
 			if ( pass->getName() == consumerPassname )
 			{
-				auto &producer = pass->getProducer( cons->getProducerName() );
-				cons->link( producer );
+				auto &producer = pass->getProducer( consumer->getProducerName() );
+				consumer->link( producer );
 				break;
 			}
 		}

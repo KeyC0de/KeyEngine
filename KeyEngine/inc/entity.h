@@ -36,7 +36,7 @@ class Entity
 
 	Entity *m_pParent = nullptr;
 	std::string m_name;
-	std::vector<Entity*> m_pChildren;
+	std::vector<Entity*> m_children;
 private:
 	Entity( EntityIndex version, EntityIndex index, const std::string &name,
 		Category categoryId = UNCATEGORIZED, Entity *pParent = nullptr );

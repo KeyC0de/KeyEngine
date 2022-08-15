@@ -12,13 +12,13 @@ Message::Message( Entity *pSrc,
 {
 	for( Entity *dest : pDests )
 	{
-		m_pReceivers.emplace_back( dest );
+		m_receivers.emplace_back( dest );
 	}
 }
 
 Message::~Message() noexcept
 {
-	//m_pReceivers.clear();
+	//m_receivers.clear();
 }
 
 Message::Message( Message &&rhs ) noexcept
@@ -27,11 +27,11 @@ Message::Message( Message &&rhs ) noexcept
 	m_pSender{rhs.m_pSender},
 	m_type{rhs.m_type}
 {
-	for( Entity *dest : rhs.m_pReceivers )
+	for( Entity *dest : rhs.m_receivers )
 	{
-		m_pReceivers.emplace_back( dest );
+		m_receivers.emplace_back( dest );
 	}
-	rhs.m_pReceivers.clear();
+	rhs.m_receivers.clear();
 }
 
 Message& Message::operator=( Message &&rhs ) noexcept
@@ -40,11 +40,11 @@ Message& Message::operator=( Message &&rhs ) noexcept
 	m_pSender = rhs.m_pSender;
 	m_type = rhs.m_type;
 
-	for( Entity *dest : rhs.m_pReceivers )
+	for( Entity *dest : rhs.m_receivers )
 	{
-		m_pReceivers.emplace_back( dest );
+		m_receivers.emplace_back( dest );
 	}
-	rhs.m_pReceivers.clear();
+	rhs.m_receivers.clear();
 	return *this;
 }
 
@@ -60,7 +60,7 @@ Entity* Message::getSender() noexcept
 
 std::vector<Entity*>& Message::getReceivers() noexcept
 {
-	return m_pReceivers;
+	return m_receivers;
 }
 
 bool Message::isHandled() const noexcept

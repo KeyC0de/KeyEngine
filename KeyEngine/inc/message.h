@@ -30,7 +30,7 @@ public:
 private:
 	bool m_bHandled = false;
 	Entity *m_pSender;
-	std::vector<Entity*> m_pReceivers;
+	std::vector<Entity*> m_receivers;
 	Message::Type m_type;
 public:
 	Message( Entity *srcId, const std::vector<Entity*>& destId,

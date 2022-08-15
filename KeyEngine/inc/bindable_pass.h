@@ -15,8 +15,9 @@ namespace ren
 class IBindablePass
 	: public IPass
 {
-	std::vector<std::shared_ptr<IBindable>> m_pBindables;
+	std::vector<std::shared_ptr<IBindable>> m_bindables;
 protected:
+	// targets of the current pass (either back-buffer or offscreen target):
 	std::shared_ptr<IRenderTargetView> m_pRtv;
 	std::shared_ptr<IDepthStencilView> m_pDsv;
 protected:
@@ -38,10 +39,10 @@ protected:
 	template<class T>
 	void addContainerBindableConsumer( const std::string &name )
 	{
-		const auto index = m_pBindables.size();
-		m_pBindables.emplace_back();
+		const auto index = m_bindables.size();
+		m_bindables.emplace_back();
 		addConsumer( std::make_unique<ContainerBindableConsumer<T>>( name,
-			m_pBindables,
+			m_bindables,
 			index ) );
 	}
 };

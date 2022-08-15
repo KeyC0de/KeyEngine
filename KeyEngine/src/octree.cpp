@@ -12,7 +12,7 @@ Octree::Octree( const Vec3 &m_center,
 	// initially there are no m_children
 	for ( int i = 0; i < 8; ++i )
 	{
-		m_pChildren[i] = nullptr;
+		m_children[i] = nullptr;
 	}
 }
 
@@ -29,7 +29,7 @@ Octree::~Octree()
 {
 	for ( int i = 0; i < 8; ++i )
 	{
-		delete m_pChildren[i];
+		delete m_children[i];
 	}
 }
 
@@ -64,7 +64,7 @@ bool Octree::isLeafNode() const
 	}
 	return true;
 	 */
-	return m_pChildren[0] == nullptr;
+	return m_children[0] == nullptr;
 }
 
 void Octree::insert( OctreeData *data )
@@ -96,16 +96,16 @@ void Octree::insert( OctreeData *data )
 				newCenter.x += m_half.x * ( i & 4 ? 0.5f : -0.5f );
 				newCenter.y += m_half.y * ( i & 2 ? 0.5f : -0.5f );
 				newCenter.z += m_half.z * ( i & 1 ? 0.5f : -0.5f );
-				m_pChildren[i] = new Octree{ newCenter,
+				m_children[i] = new Octree{ newCenter,
 					m_half * 0.5f };
 			}
 
 			// re-insert
 			// (we wouldn't need to insert from the root, because we already
 			// know it's guaranteed to be in this section of the tree)
-			m_pChildren[getOctantContainingPoint( oldData->getPosition() )]
+			m_children[getOctantContainingPoint( oldData->getPosition() )]
 				->insert( oldData );
-			m_pChildren[getOctantContainingPoint( data->getPosition() )]
+			m_children[getOctantContainingPoint( data->getPosition() )]
 				->insert( data );
 		}
 	}
@@ -114,7 +114,7 @@ void Octree::insert( OctreeData *data )
 		// We are at an interior node.
 		// Insert recursively into the appropriate child octant until we reach a leaf
 		int octant = getOctantContainingPoint( data->getPosition() );
-		m_pChildren[octant]->insert( data );
+		m_children[octant]->insert( data );
 	}
 }
 
@@ -147,8 +147,8 @@ void Octree::getEntitiesWithinBBox( const Vec3 &requestedMin,
 		for ( int i = 0; i < 8; ++i )
 		{
 			// Compute the min/max corners of this child octant
-			Vec3 childMax = m_pChildren[i]->m_center + m_pChildren[i]->m_half;
-			Vec3 childMin = m_pChildren[i]->m_center - m_pChildren[i]->m_half;
+			Vec3 childMax = m_children[i]->m_center + m_children[i]->m_half;
+			Vec3 childMin = m_children[i]->m_center - m_children[i]->m_half;
 
 			// check if child's {min,max} lie out of requested bounds
 			if ( childMax.x < requestedMin.x
@@ -162,7 +162,7 @@ void Octree::getEntitiesWithinBBox( const Vec3 &requestedMin,
 			}
 
 			// we've determined that this child contains the requested bounding box
-			m_pChildren[i]->getEntitiesWithinBBox( requestedMin,
+			m_children[i]->getEntitiesWithinBBox( requestedMin,
 				requestedMax,
 				resultsOut );
 		}

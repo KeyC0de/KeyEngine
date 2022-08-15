@@ -11,7 +11,7 @@ Node::Node( int id,
 	const dx::XMMATRIX &localTransform ) cond_noex
 	:
 	m_imguiId(id),
-	m_pDrawables{std::move( pDrawables )},
+	m_drawables{std::move( pDrawables )},
 	m_name{name}
 {
 	dx::XMStoreFloat4x4( &m_localTransform,
@@ -25,12 +25,12 @@ void Node::update( float dt,
 {
 	const auto built = dx::XMLoadFloat4x4( &m_localTransform )
 		* dx::XMLoadFloat4x4( &m_worldTransform ) * parentWorldTransform;
-	for ( const auto pm : m_pDrawables )
+	for ( const auto pm : m_drawables )
 	{
 		pm->setTransform( built );
 		pm->update( dt );
 	}
-	for ( const auto &pn : m_pChildren )
+	for ( const auto &pn : m_children )
 	{
 		pn->update( dt,
 			built );
@@ -39,11 +39,11 @@ void Node::update( float dt,
 
 void Node::render( size_t channels ) const cond_noex
 {
-	for ( const auto pm : m_pDrawables )
+	for ( const auto pm : m_drawables )
 	{
 		pm->render( channels );
 	}
-	for ( const auto &pn : m_pChildren )
+	for ( const auto &pn : m_children )
 	{
 		pn->render( channels );
 	}
@@ -52,7 +52,7 @@ void Node::render( size_t channels ) const cond_noex
 void Node::addChild( std::unique_ptr<Node> pChild ) cond_noex
 {
 	ASSERT( pChild, "Node is null!" );
-	m_pChildren.push_back( std::move( pChild ) );
+	m_children.push_back( std::move( pChild ) );
 }
 
 void Node::setTransform( const dx::XMMATRIX &worldTransform ) noexcept
@@ -76,7 +76,7 @@ void Node::accept( IModelVisitor &mv )
 	bool b = mv.visit( *this );
 	if ( b )
 	{
-		for ( auto &node : m_pChildren )
+		for ( auto &node : m_children )
 		{
 			node->accept( mv );
 		}
@@ -86,7 +86,7 @@ void Node::accept( IModelVisitor &mv )
 
 void Node::accept( IEffectVisitor &ev )
 {
-	for ( auto &mesh : m_pDrawables )
+	for ( auto &mesh : m_drawables )
 	{
 		mesh->accept( ev );
 	}
@@ -94,7 +94,7 @@ void Node::accept( IEffectVisitor &ev )
 
 bool Node::hasChildren() const noexcept
 {
-	return !m_pChildren.empty();
+	return !m_children.empty();
 }
 
 const std::string &Node::getName() const noexcept

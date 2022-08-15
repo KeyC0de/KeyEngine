@@ -37,7 +37,7 @@ Model::Model( Graphics &gph,
 	for ( size_t i = 0; i < paiScene->mNumMeshes; ++i )
 	{
 		const auto &aiMesh = *paiScene->mMeshes[i];
-		m_pDrawables.push_back( std::make_unique<Drawable>( gph,
+		m_drawables.push_back( std::make_unique<Drawable>( gph,
 			materials[aiMesh.mMaterialIndex],
 			aiMesh,
 			scale ) );
@@ -77,8 +77,8 @@ void Model::accept( IModelVisitor &v )
 
 void Model::connectEffectsToRenderer( ren::Renderer &r )
 {
-	ASSERT( !m_pDrawables.empty(), "Model has no drawables to render!" );
-	for ( auto &pDrawable : m_pDrawables )
+	ASSERT( !m_drawables.empty(), "Model has no drawables to render!" );
+	for ( auto &pDrawable : m_drawables )
 	{
 		pDrawable->connectEffectsToRenderer( r );
 	}
@@ -99,7 +99,7 @@ std::unique_ptr<Node> Model::createNodeHierarchy( int nodeId,
 	for ( size_t i = 0; i < ainode.mNumMeshes; ++i )
 	{
 		const auto meshIdx = ainode.mMeshes[i];
-		pDrawables.push_back( m_pDrawables.at( meshIdx ).get() );
+		pDrawables.push_back( m_drawables.at( meshIdx ).get() );
 	}
 
 	auto pNode = std::make_unique<Node>( nodeId,

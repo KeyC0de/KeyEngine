@@ -24,6 +24,10 @@ HorizontalBlurPass::HorizontalBlurPass( Graphics &gph,
 		TextureSampler::FilterMode::Trilinear,
 		TextureSampler::AddressMode::Clamp ) );
 
+	addPassBindable( BlendState::fetch( gph,
+		BlendState::NoBlend,
+		0u ) );
+
 	addContainerBindableConsumer<IRenderTargetView>( "blurRttIn" );
 	addContainerBindableConsumer<PixelShaderConstantBufferEx>( "blurKernel" );
 	addConsumer( BindableConsumer<PixelShaderConstantBufferEx>::make( "blurDirection",
@@ -35,10 +39,6 @@ HorizontalBlurPass::HorizontalBlurPass( Graphics &gph,
 		0u );
 	addProducer( BindableProducer<IRenderTargetView>::make( "blurRttOut",
 		m_pRtv ) );
-
-	addPassBindable( BlendState::fetch( gph,
-		BlendState::NoBlend,
-		0u ) );
 }
 
 void HorizontalBlurPass::run( Graphics &gph ) const cond_noex

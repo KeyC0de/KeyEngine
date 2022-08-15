@@ -104,11 +104,11 @@ void IPass::addProducer( std::unique_ptr<IProducer> pProducer )
 	m_producers.push_back( std::move( pProducer ) );
 }
 
-void IPass::setupConsumerTarget( const std::string &consumerName,
+void IPass::setupConsumerTarget( const std::string &currentPassConsumerName,
 	const std::string &targetPassName,
 	const std::string &targetPassProducerName )
 {
-	auto &cons = getConsumer( consumerName );
+	auto &cons = getConsumer( currentPassConsumerName );
 	cons.setPassAndProducerNames( targetPassName,
 		targetPassProducerName );
 }

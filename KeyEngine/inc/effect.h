@@ -20,7 +20,7 @@ class Effect final
 	bool m_active = true;
 	std::string m_targetPassName;
 	ren::RenderQueuePass *m_pTargetPass = nullptr;
-	std::vector<std::shared_ptr<IBindable>> m_pBindables;
+	std::vector<std::shared_ptr<IBindable>> m_bindables;
 public:
 	Effect( size_t channels, const std::string &targetPassName,
 		bool bStartActive ) noexcept;

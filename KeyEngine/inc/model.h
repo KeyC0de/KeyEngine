@@ -20,7 +20,7 @@ namespace ren
 class Model
 {
 	std::unique_ptr<Node> m_pRoot;
-	std::vector<std::unique_ptr<Drawable>> m_pDrawables;
+	std::vector<std::unique_ptr<Drawable>> m_drawables;
 public:
 	Model( Graphics &gph, const std::string &path, float scale = 1.0f );
 	~Model() noexcept;

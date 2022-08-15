@@ -8,6 +8,7 @@
 namespace ren
 {
 
+// targets back buffer targets
 SolidOutlineDrawPass::SolidOutlineDrawPass( Graphics &gph,
 	const std::string &name )
 	:
@@ -15,6 +16,10 @@ SolidOutlineDrawPass::SolidOutlineDrawPass( Graphics &gph,
 {
 	addPassBindable( VertexShader::fetch( gph,
 		"flat_vs.cso" ) );
+	addPassBindable( PixelShader::fetch( gph,
+		"flat_ps.cso" ) );
+	addPassBindable( DepthStencilState::fetch( gph,
+		DepthStencilState::Mode::DepthOffStencilReadFF ) );
 
 	addConsumer( RenderSurfaceConsumer<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );
@@ -25,12 +30,6 @@ SolidOutlineDrawPass::SolidOutlineDrawPass( Graphics &gph,
 		m_pRtv ) );
 	addProducer( RenderSurfaceProducer<IDepthStencilView>::make( "depthStencil",
 		m_pDsv ) );
-
-	addPassBindable( PixelShader::fetch( gph,
-		"flat_ps.cso" ) );
-
-	addPassBindable( DepthStencilState::fetch( gph,
-		DepthStencilState::Mode::DepthOffStencilReadFF ) );
 }
 
 

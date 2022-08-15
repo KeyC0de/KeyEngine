@@ -20,6 +20,10 @@ VerticalBlurPass::VerticalBlurPass( Graphics &gph,
 		TextureSampler::FilterMode::Trilinear,
 		TextureSampler::AddressMode::Clamp ) );
 
+	addPassBindable( BlendState::fetch( gph,
+		BlendState::Alpha,
+		0u ) );
+
 	addContainerBindableConsumer<IRenderTargetView>( "blurRttIn" );
 	addContainerBindableConsumer<PixelShaderConstantBufferEx>( "blurKernel" );
 	addConsumer( BindableConsumer<PixelShaderConstantBufferEx>::make( "blurDirection",
@@ -33,10 +37,6 @@ VerticalBlurPass::VerticalBlurPass( Graphics &gph,
 		m_pRtv ) );
 	addProducer( RenderSurfaceProducer<IDepthStencilView>::make( "depthStencil",
 		m_pDsv ) );
-
-	addPassBindable( BlendState::fetch( gph,
-		BlendState::Alpha,
-		0u ) );
 }
 
 void VerticalBlurPass::run( Graphics &gph ) const cond_noex

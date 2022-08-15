@@ -16,8 +16,8 @@ class Node
 
 	std::string m_name;
 	int m_imguiId;
-	std::vector<std::unique_ptr<Node>> m_pChildren;
-	std::vector<Drawable*> m_pDrawables;
+	std::vector<std::unique_ptr<Node>> m_children;
+	std::vector<Drawable*> m_drawables;
 	DirectX::XMFLOAT4X4 m_localTransform;
 	DirectX::XMFLOAT4X4 m_worldTransform;
 public:

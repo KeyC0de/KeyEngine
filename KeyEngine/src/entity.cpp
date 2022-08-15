@@ -37,10 +37,10 @@ Entity::Entity( Entity &&rhs ) noexcept
 	if ( rhs.hasChildren() )
 	{
 		int nChildren = rhs.getChildrenCount();
-		m_pChildren.reserve( nChildren );
+		m_children.reserve( nChildren );
 		for ( int i = 0; i < nChildren; ++i )
 		{
-			m_pChildren[i] = rhs.m_pChildren[i];
+			m_children[i] = rhs.m_children[i];
 		}
 	}
 }
@@ -106,27 +106,27 @@ Entity* Entity::getParent() const noexcept
 
 void Entity::addChild( Entity *child ) noexcept
 {
-	m_pChildren.emplace_back( child );
+	m_children.emplace_back( child );
 }
 
 std::vector<Entity*>& Entity::getChildren() noexcept
 {
-	return m_pChildren;
+	return m_children;
 }
 
 const std::vector<Entity*>& Entity::getChildren() const noexcept
 {
-	return m_pChildren;
+	return m_children;
 }
 
 bool Entity::hasChildren() const noexcept
 {
-	return !m_pChildren.empty();
+	return !m_children.empty();
 }
 
 const int Entity::getChildrenCount() const noexcept
 {
-	return (int) m_pChildren.size();
+	return (int) m_children.size();
 }
 
 void Entity::onMessageReceived( std::unique_ptr<class Message> msg )

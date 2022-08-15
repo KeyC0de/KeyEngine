@@ -10,14 +10,14 @@ IBindablePass::IBindablePass( const std::string &name,
 	const std::vector<std::shared_ptr<IBindable>>& bindables )
 	:
 	IPass{name},
-	m_pBindables(bindables)
+	m_bindables(bindables)
 {
 
 }
 
 void IBindablePass::addPassBindable( std::shared_ptr<IBindable> bindable ) noexcept
 {
-	m_pBindables.emplace_back( bindable );
+	m_bindables.emplace_back( bindable );
 }
 
 void IBindablePass::bindPass( Graphics &gph ) const cond_noex
@@ -32,7 +32,7 @@ void IBindablePass::bindPass( Graphics &gph ) const cond_noex
 		m_pDsv->bindRenderSurface( gph );
 	}
 
-	for ( auto &b : m_pBindables )
+	for ( auto &b : m_bindables )
 	{
 		b->bind( gph );
 	}
@@ -43,8 +43,7 @@ void IBindablePass::validate()
 	IPass::validate();
 	if ( !m_pRtv && !m_pDsv )
 	{
-		THROW_RENDERER_EXCEPTION( "IBindablePass: Both IRenderTargetView & IDepthStencilView are null!"
-			+ getName() );
+		THROW_RENDERER_EXCEPTION( "IBindablePass: Both IRenderTargetView & IDepthStencilView are null!" + getName() );
 	}
 }
 
