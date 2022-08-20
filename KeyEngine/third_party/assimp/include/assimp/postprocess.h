@@ -119,7 +119,7 @@ enum aiPostProcessSteps
      * 'triangles only' with no other kinds of primitives, try the following
      * solution:
      * <ul>
-     * <li>Specify both #aiProcess_Triangulate and #aiProcess_SortByPType </li>
+     * <li>Specify both aiProcess_Triangulate and #aiProcess_SortByPType </li>
      * <li>Ignore all point and line meshes when you process assimp's output</li>
      * </ul>
      */
@@ -566,8 +566,8 @@ enum aiPostProcessSteps
 /** @def aiProcess_ConvertToLeftHanded
  *  @brief Shortcut flag for Direct3D-based applications.
  *
- *  Supersedes the #aiProcess_MakeLeftHanded and #aiProcess_FlipUVs and
- *  #aiProcess_FlipWindingOrder flags.
+ *  Supersedes the aiProcess_MakeLeftHanded and aiProcess_FlipUVs and
+ *  aiProcess_FlipWindingOrder flags.
  *  The output data matches Direct3D's conventions: left-handed geometry, upper-left
  *  origin for UV coordinates and finally clockwise face order, suitable for CCW culling.
  *

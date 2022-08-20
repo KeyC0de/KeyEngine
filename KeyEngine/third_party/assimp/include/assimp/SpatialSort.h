@@ -89,8 +89,8 @@ public:
      *   to the beginning of the next vector.
      * @param pFinalize Specifies whether the SpatialSort's internal representation
      *   is finalized after the new data has been added. Finalization is
-     *   required in order to use #FindPosition() or #GenerateMappingTable().
-     *   If you don't finalize yet, you can use #Append() to add data from
+     *   required in order to use FindPosition() or GenerateMappingTable().
+     *   If you don't finalize yet, you can use Append() to add data from
      *   other sources.*/
     void Fill( const aiVector3D *pPositions, unsigned int pNumPositions,
         unsigned int pElementOffset,
@@ -98,7 +98,7 @@ public:
 
 
     // ------------------------------------------------------------------------------------
-    /** Same as #Fill(), except the method appends to existing data in the #SpatialSort. */
+    /** Same as Fill(), except the method appends to existing data in the SpatialSort. */
     void Append( const aiVector3D *pPositions, unsigned int pNumPositions,
         unsigned int pElementOffset,
         bool pFinalize = true);
@@ -106,8 +106,8 @@ public:
 
     // ------------------------------------------------------------------------------------
     /** Finalize the spatial hash data structure. This can be useful after
-     *  multiple calls to #Append() with the pFinalize parameter set to false.
-     *  This is finally required before one of #FindPositions() and #GenerateMappingTable()
+     *  multiple calls to Append() with the pFinalize parameter set to false.
+     *  This is finally required before one of FindPositions() and GenerateMappingTable()
      *  can be called to query the spatial sort.*/
     void Finalize();
 

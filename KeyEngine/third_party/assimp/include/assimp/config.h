@@ -883,10 +883,10 @@ enum aiComponent
  *   algorithm to triangulate wall and floor meshes.
  *
  * If this property is set to false, walls will be either triangulated by
- * #aiProcess_Triangulate or will be passed through as huge polygons with
+ * aiProcess_Triangulate or will be passed through as huge polygons with
  * faked holes (i.e. holes that are connected with the outer boundary using
  * a dummy edge). It is highly recommended to set this property to true
- * if you want triangulated data because #aiProcess_Triangulate is known to
+ * if you want triangulated data because aiProcess_Triangulate is known to
  * have problems with the kind of polygons that the IFC loader spits out for
  * complicated meshes.
  * Property m_topo: Bool. Default value: true.

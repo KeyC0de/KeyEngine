@@ -70,7 +70,8 @@ class Sandbox3d
 	std::unique_ptr<PointLight> m_pPointLight1;
 	//std::unique_ptr<PointLight> m_pPointLight2;
 	bool b_bShowDemoWindow = false;
-	Cube m_cube1{m_mainWindow.getGraphics(), {10.0f, 5.0f, 6.0f}, 4.0f};
+	Cube m_cube1{m_mainWindow.getGraphics(), {10.0f, 5.0f, 6.0f}};// , 4.0f
+//};
 	Cube m_cube2{m_mainWindow.getGraphics(), {16.0f, 6.0f, 8.0f}};
 	Model m_sponzaScene{m_mainWindow.getGraphics(),
 		"assets/models/sponza/sponza.obj", 1.0f/8.0f};

@@ -100,7 +100,14 @@ public:
 	}
 };
 
-// Container Bindable is either a RenderSurface or an array type Constant Buffer or similar
+//=============================================================
+//	\class	ContainerBindableConsumer
+//
+//	\author	KeyC0de
+//	\date	2022/08/21 0:17
+//
+//	\brief	Container Bindable is either a RenderSurface or an array type Constant Buffer or similar
+//=============================================================
 template<class T>
 class ContainerBindableConsumer final
 	: public IConsumer

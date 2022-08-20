@@ -108,7 +108,7 @@ typedef int aiBool;
  *   expected to be a null-terminated c-string. NULL is not a valid value.
  * @param pFlags Optional post processing steps to be executed after
  *   a successful import. Provide a bitwise combination of the
- *   #aiPostProcessSteps flags.
+ *   aiPostProcessSteps flags.
  * @return Pointer to the imported data or NULL if the import failed.
  */
 ASSIMP_API const C_STRUCT aiScene *aiImportFile(
@@ -129,7 +129,7 @@ ASSIMP_API const C_STRUCT aiScene *aiImportFile(
  *   expected to be a null-terminated c-string. NULL is not a valid value.
  * @param pFlags Optional post processing steps to be executed after
  *   a successful import. Provide a bitwise combination of the
- *   #aiPostProcessSteps flags.
+ *   aiPostProcessSteps flags.
  * @param pFS aiFileIO structure. Will be used to open the model file itself
  *   and any other files the loader needs to open.  Pass NULL to use the default
  *   implementation.
@@ -148,7 +148,7 @@ ASSIMP_API const C_STRUCT aiScene *aiImportFileEx(
  *   expected to be a null-terminated c-string. NULL is not a valid value.
  * @param pFlags Optional post processing steps to be executed after
  *   a successful import. Provide a bitwise combination of the
- *   #aiPostProcessSteps flags.
+ *   aiPostProcessSteps flags.
  * @param pFS aiFileIO structure. Will be used to open the model file itself
  *   and any other files the loader needs to open.  Pass NULL to use the default
  *   implementation.
@@ -175,7 +175,7 @@ ASSIMP_API const C_STRUCT aiScene *aiImportFileExWithProperties(
  * @param pLength Length of pBuffer, in bytes
  * @param pFlags Optional post processing steps to be executed after
  *   a successful import. Provide a bitwise combination of the
- *   #aiPostProcessSteps flags. If you wish to inspect the imported
+ *   aiPostProcessSteps flags. If you wish to inspect the imported
  *   scene first in order to fine-tune your post-processing setup,
  *   consider to use #aiApplyPostProcessing().
  * @param pHint An additional hint to the library. If this is a non empty string,
@@ -207,7 +207,7 @@ ASSIMP_API const C_STRUCT aiScene *aiImportFileFromMemory(
  * @param pLength Length of pBuffer, in bytes
  * @param pFlags Optional post processing steps to be executed after
  *   a successful import. Provide a bitwise combination of the
- *   #aiPostProcessSteps flags. If you wish to inspect the imported
+ *   aiPostProcessSteps flags. If you wish to inspect the imported
  *   scene first in order to fine-tune your post-processing setup,
  *   consider to use #aiApplyPostProcessing().
  * @param pHint An additional hint to the library. If this is a non empty string,
@@ -242,7 +242,7 @@ ASSIMP_API const C_STRUCT aiScene *aiImportFileFromMemoryWithProperties(
  * same flags. However, you can use this separate function to inspect the imported
  * scene first to fine-tune your post-processing setup.
  * @param pScene Scene to work on.
- * @param pFlags Provide a bitwise combination of the #aiPostProcessSteps flags.
+ * @param pFlags Provide a bitwise combination of the aiPostProcessSteps flags.
  * @return A pointer to the post-processed data. Post processing is done in-place,
  *   meaning this is still the same #aiScene which you passed for pScene. However,
  *   _if_ post-processing failed, the scene could now be NULL. That's quite a rare

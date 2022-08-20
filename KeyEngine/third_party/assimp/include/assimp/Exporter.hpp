@@ -66,14 +66,14 @@ class IOSystem;
  * The interface is modeled after the importer interface and mostly
  * symmetric. The same rules for threading etc. apply.
  *
- * In a nutshell, there are two export interfaces: #Export, which writes the
+ * In a nutshell, there are two export interfaces: Export, which writes the
  * output file(s) either to the regular file system or to a user-supplied
- * #IOSystem, and #ExportToBlob which returns a linked list of memory
+ * #IOSystem, and ExportToBlob which returns a linked list of memory
  * buffers (blob), each referring to one output file (in most cases
  * there will be only one output file of course, but this extra complexity is
  * needed since Assimp aims at supporting a wide range of file formats).
  *
- * #ExportToBlob is especially useful if you intend to work
+ * ExportToBlob is especially useful if you intend to work
  * with the data in-memory.
 */
 class ASSIMP_API ExportProperties;
@@ -129,11 +129,11 @@ public:
     /** Supplies a custom IO handler to the exporter to use to open and
      * access files.
      *
-     * If you need #Export to use custom IO logic to access the files,
+     * If you need Export to use custom IO logic to access the files,
      * you need to supply a custom implementation of IOSystem and
      * IOFile to the exporter.
      *
-     * #Exporter takes ownership of the object and will destroy it
+     * Exporter takes ownership of the object and will destroy it
      * afterwards. The previously assigned handler will be deleted.
      * Pass NULL to take again ownership of your IOSystem and reset Assimp
      * to use its default implementation, which uses plain file IO.
@@ -144,36 +144,36 @@ public:
 
     // -------------------------------------------------------------------
     /** Retrieves the IO handler that is currently set.
-     * You can use #IsDefaultIOHandler() to check whether the returned
+     * You can use IsDefaultIOHandler() to check whether the returned
      * interface is the default IO handler provided by ASSIMP. The default
      * handler is active as long the application doesn't supply its own
-     * custom IO handler via #SetIOHandler().
+     * custom IO handler via SetIOHandler().
      * @return A valid IOSystem interface, never NULL. */
     IOSystem *GetIOHandler() const;
 
     // -------------------------------------------------------------------
     /** Checks whether a default IO handler is active
      * A default handler is active as long the application doesn't
-     * supply its own custom IO handler via #SetIOHandler().
+     * supply its own custom IO handler via SetIOHandler().
      * @return true by default */
     bool IsDefaultIOHandler() const;
 
     // -------------------------------------------------------------------
     /** Exports the given scene to a chosen file format. Returns the exported
     * data as a binary blob which you can write into a file or something.
-    * When you're done with the data, simply let the #Exporter instance go
+    * When you're done with the data, simply let the Exporter instance go
     * out of scope to have it released automatically.
     * @param pScene The scene to export. Stays in possession of the caller,
     *   is not changed by the function.
     * @param pFormatId ID string to specify to which format you want to
     *   export to. Use
-    * #GetExportFormatCount / #GetExportFormatDescription to learn which
+    * GetExportFormatCount / GetExportFormatDescription to learn which
     *   export formats are available.
-    * @param pPreprocessing See the documentation for #Export
+    * @param pPreprocessing See the documentation for Export
     * @return the exported data or NULL in case of error.
     * @note If the Exporter instance did already hold a blob from
-    *   a previous call to #ExportToBlob, it will be disposed.
-    *   Any IO handlers set via #SetIOHandler are ignored here.
+    *   a previous call to ExportToBlob, it will be disposed.
+    *   Any IO handlers set via SetIOHandler are ignored here.
     * @note Use aiCopyScene() to get a modifiable copy of a previously
     *   imported scene. */
     const aiExportDataBlob *ExportToBlob(const aiScene *pScene, const char *pFormatId,
@@ -183,34 +183,34 @@ public:
 
     // -------------------------------------------------------------------
     /** Convenience function to export directly to a file. Use
-     *  #SetIOSystem to supply a custom IOSystem to gain fine-grained control
+     *  SetIOSystem to supply a custom IOSystem to gain fine-grained control
      *  about the output data flow of the export process.
-     * @param pBlob A data blob obtained from a previous call to #aiExportScene. Must not be NULL.
+     * @param pBlob A data blob obtained from a previous call to aiExportScene. Must not be NULL.
      * @param pPath Full target file name. Target must be accessible.
-     * @param pPreprocessing Accepts any choice of the #aiPostProcessSteps enumerated
+     * @param pPreprocessing Accepts any choice of the aiPostProcessSteps enumerated
      *   flags, but in reality only a subset of them makes sense here. Specifying
      *   'preprocessing' flags is useful if the input scene does not conform to
      *   Assimp's default conventions as specified in the @link data Data Structures Page @endlink.
      *   In short, this means the geometry data should use a right-handed coordinate systems, face
      *   winding should be counter-clockwise and the UV coordinate origin is assumed to be in
-     *   the upper left. The #aiProcess_MakeLeftHanded, #aiProcess_FlipUVs and
-     *   #aiProcess_FlipWindingOrder flags are used in the import side to allow users
+     *   the upper left. The aiProcess_MakeLeftHanded, aiProcess_FlipUVs and
+     *   aiProcess_FlipWindingOrder flags are used in the import side to allow users
      *   to have those defaults automatically adapted to their conventions. Specifying those flags
      *   for exporting has the opposite effect, respectively. Some other of the
-     *   #aiPostProcessSteps enumerated values may be useful as well, but you'll need
+     *   aiPostProcessSteps enumerated values may be useful as well, but you'll need
      *   to try out what their effect on the exported file is. Many formats impose
      *   their own restrictions on the structure of the geometry stored therein,
      *   so some preprocessing may have little or no effect at all, or may be
      *   redundant as exporters would apply them anyhow. A good example
      *   is triangulation - whilst you can enforce it by specifying
-     *   the #aiProcess_Triangulate flag, most export formats support only
+     *   the aiProcess_Triangulate flag, most export formats support only
      *   triangulate data so they would run the step even if it wasn't requested.
      *
      *   If assimp detects that the input scene was directly taken from the importer side of
      *   the library (i.e. not copied using aiCopyScene and potentially modified afterwards),
      *   any post-processing steps already applied to the scene will not be applied again, unless
-     *   they show non-idempotent behavior (#aiProcess_MakeLeftHanded, #aiProcess_FlipUVs and
-     *   #aiProcess_FlipWindingOrder).
+     *   they show non-idempotent behavior (aiProcess_MakeLeftHanded, aiProcess_FlipUVs and
+     *   aiProcess_FlipWindingOrder).
      * @return AI_SUCCESS if everything was fine.
      * @note Use aiCopyScene() to get a modifiable copy of a previously
      *   imported scene.*/
@@ -220,23 +220,23 @@ public:
         unsigned int pPreprocessing = 0u, const ExportProperties *pProperties = nullptr);
 
     // -------------------------------------------------------------------
-    /** Returns an error description of an error that occurred in #Export
-     *    or #ExportToBlob
+    /** Returns an error description of an error that occurred in Export
+     *    or ExportToBlob
      *
      * Returns an empty string if no error occurred.
      * @return A description of the last error, an empty string if no
      *   error occurred. The string is never NULL.
      *
      * @note The returned function remains valid until one of the
-     * following methods is called: #Export, #ExportToBlob, #FreeBlob */
+     * following methods is called: Export, ExportToBlob, #FreeBlob */
     const char *GetErrorString() const;
 
     // -------------------------------------------------------------------
-    /** Return the blob obtained from the last call to #ExportToBlob */
+    /** Return the blob obtained from the last call to ExportToBlob */
     const aiExportDataBlob *GetBlob() const;
 
     // -------------------------------------------------------------------
-    /** Orphan the blob from the last call to #ExportToBlob. This means
+    /** Orphan the blob from the last call to ExportToBlob. This means
      *  the caller takes ownership and is thus responsible for calling
      *  the C API function #aiReleaseExportBlob to release it. */
     const aiExportDataBlob *GetOrphanedBlob() const;
@@ -245,15 +245,15 @@ public:
     /** Frees the current blob.
      *
      *  The function does nothing if no blob has previously been
-     *  previously produced via #ExportToBlob. #FreeBlob is called
+     *  previously produced via ExportToBlob. #FreeBlob is called
      *  automatically by the destructor. The only reason to call
      *  it manually would be to reclaim as much storage as possible
-     *  without giving up the #Exporter instance yet. */
+     *  without giving up the Exporter instance yet. */
     void FreeBlob( );
 
     // -------------------------------------------------------------------
     /** Returns the number of export file formats available in the current
-     *  Assimp build. Use #Exporter::GetExportFormatDescription to
+     *  Assimp build. Use Exporter::GetExportFormatDescription to
      *  retrieve infos of a specific export format.
      *
      *  This includes built-in exporters as well as exporters registered

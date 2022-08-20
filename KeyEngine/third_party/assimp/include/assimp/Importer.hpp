@@ -312,10 +312,10 @@ public:
 
     // -------------------------------------------------------------------
     /** Retrieves the IO handler that is currently set.
-     * You can use #IsDefaultIOHandler() to check whether the returned
+     * You can use IsDefaultIOHandler() to check whether the returned
      * interface is the default IO handler provided by ASSIMP. The default
      * handler is active as long the application doesn't supply its own
-     * custom IO handler via #SetIOHandler().
+     * custom IO handler via SetIOHandler().
      * @return A valid IOSystem interface, never NULL.
      */
     IOSystem *GetIOHandler() const;
@@ -323,7 +323,7 @@ public:
     // -------------------------------------------------------------------
     /** Checks whether a default IO handler is active
      * A default handler is active as long the application doesn't
-     * supply its own custom IO handler via #SetIOHandler().
+     * supply its own custom IO handler via SetIOHandler().
      * @return true by default
      */
     bool IsDefaultIOHandler() const;
@@ -385,7 +385,7 @@ public:
      * @param pFile Path and filename to the file to be imported.
      * @param pFlags Optional post processing steps to be executed after
      *   a successful import. Provide a bitwise combination of the
-     *   #aiPostProcessSteps flags. If you wish to inspect the imported
+     *   aiPostProcessSteps flags. If you wish to inspect the imported
      *   scene first in order to fine-tune your post-processing setup,
      *   consider to use #ApplyPostProcessing().
      * @return A pointer to the imported data, NULL if the import failed.
@@ -414,7 +414,7 @@ public:
      * @param pLength Length of pBuffer, in bytes
      * @param pFlags Optional post processing steps to be executed after
      *   a successful import. Provide a bitwise combination of the
-     *   #aiPostProcessSteps flags. If you wish to inspect the imported
+     *   aiPostProcessSteps flags. If you wish to inspect the imported
      *   scene first in order to fine-tune your post-processing setup,
      *   consider to use #ApplyPostProcessing().
      * @param pHint An additional hint to the library. If this is a non
@@ -449,7 +449,7 @@ public:
      *  flags. However, you can use this separate function to inspect
      *  the imported scene first to fine-tune your post-processing setup.
      *  @param pFlags Provide a bitwise combination of the
-     *   #aiPostProcessSteps flags.
+     *   aiPostProcessSteps flags.
      *  @return A pointer to the post-processed data. This is still the
      *   same as the pointer returned by #ReadFile(). However, if
      *   post-processing fails, the scene could now be NULL.
