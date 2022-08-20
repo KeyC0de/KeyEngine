@@ -68,7 +68,6 @@ public:
 		ASSERT_HRES_IF_FAILED;
 	}
 
-	/// new
 	//===================================================
 	//	\function	ctor
 	//	\brief  cheating constructor - the D3d resource has already been created (eg copied from another)
@@ -80,15 +79,6 @@ public:
 		m_slot( slot )
 	{
 
-	}
-
-	/// new
-	~IConstantBuffer() noexcept
-	{
-		if ( m_pD3dCb )
-		{
-			m_pD3dCb.Reset();	// or m_pD3dCb = nullptr;
-		}
 	}
 
 	//===================================================

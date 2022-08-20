@@ -25,12 +25,12 @@ void TransformScaleVSCB::bind( Graphics &gph ) cond_noex
 	const auto scaleMatrix = dx::XMMatrixScaling( scale,
 		scale,
 		scale );
-	auto tfs = getTransforms( gph );
-	tfs.worldView = tfs.worldView * scaleMatrix;
-	tfs.worldViewProjection = tfs.worldViewProjection * scaleMatrix;
+	auto transforms = getTransforms( gph );
+	transforms.worldView = transforms.worldView * scaleMatrix;
+	transforms.worldViewProjection = transforms.worldViewProjection * scaleMatrix;
 	TransformVSCB::update( gph,
-		tfs );
-	TransformVSCB::bind( gph );
+		transforms );
+	m_pVscb->bind( gph );
 }
 
 std::unique_ptr<IBindableCloning> TransformScaleVSCB::clone() const noexcept
