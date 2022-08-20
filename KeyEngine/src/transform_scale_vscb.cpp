@@ -30,7 +30,7 @@ void TransformScaleVSCB::bind( Graphics &gph ) cond_noex
 	tfs.worldViewProjection = tfs.worldViewProjection * scaleMatrix;
 	TransformVSCB::update( gph,
 		tfs );
-	m_pVscb->bind( gph );
+	TransformVSCB::bind( gph );
 }
 
 std::unique_ptr<IBindableCloning> TransformScaleVSCB::clone() const noexcept

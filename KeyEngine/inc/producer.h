@@ -14,24 +14,23 @@ namespace ren
 class IProducer
 {
 	std::string m_name;
+protected:
+	IProducer( const std::string &name );
 public:
 	virtual ~IProducer() = default;
 
 	const std::string& getName() const noexcept;
 	virtual std::shared_ptr<IBindable> getBindable();
 	virtual std::shared_ptr<IRenderSurface> getBuffer();
-protected:
-	IProducer( const std::string &name );
 };
 
 template<class T>
 class BindableProducer final
 	: public IProducer
 {
-	static_assert( std::is_base_of_v<IBindable, T>,
-		"BindableProducer target T is not IBindable!" );
+	static_assert( std::is_base_of_v<IBindable, T>, "BindableProducer target T is not IBindable!" );
 
-	std::shared_ptr<T>& m_target;
+	std::shared_ptr<T> &m_target;
 public:
 	BindableProducer( const std::string &name,
 		std::shared_ptr<T>& target )
@@ -43,7 +42,7 @@ public:
 	}
 
 	static std::unique_ptr<BindableProducer> make( const std::string &name,
-		std::shared_ptr<T>& target )
+		std::shared_ptr<T> &target )
 	{
 		return std::make_unique<BindableProducer>( name,
 			target );
@@ -59,14 +58,13 @@ template<class T>
 class RenderSurfaceProducer final
 	: public IProducer
 {
-	static_assert( std::is_base_of_v<IRenderSurface, T>,
-		"RenderSurfaceProducer target T is not BufferResource!" );
+	static_assert( std::is_base_of_v<IRenderSurface, T>, "RenderSurfaceProducer target T is not IRenderSurface!" );
 
-	std::shared_ptr<T>& m_target;
+	std::shared_ptr<T> &m_target;
 	bool m_bLinked = false;
 public:
 	RenderSurfaceProducer( const std::string &name,
-		std::shared_ptr<T>& target )
+		std::shared_ptr<T> &target )
 		:
 		IProducer{name},
 		m_target{target}
@@ -75,7 +73,7 @@ public:
 	}
 
 	static std::unique_ptr<RenderSurfaceProducer> make( const std::string &name,
-		std::shared_ptr<T>& target )
+		std::shared_ptr<T> &target )
 	{
 		return std::make_unique<RenderSurfaceProducer>( name,
 			target );

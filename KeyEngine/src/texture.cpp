@@ -191,8 +191,7 @@ void Texture::flipModelNormalMapsGreenChannel( const std::string &objPath )
 	Assimp::Importer importer;
 	const auto pScene = importer.ReadFile( objPath.c_str(),
 		0u );
-	ASSERT( pScene,
-		std::string{"aiScene is null!" + std::string{importer.GetErrorString()}}.c_str() );
+	ASSERT( pScene, std::string{"aiScene is null!" + std::string{importer.GetErrorString()}}.c_str() );
 
 	// loop through materials and process any normal maps
 	for ( auto i = 0u; i < pScene->mNumMaterials; ++i )

@@ -48,7 +48,7 @@ void Drawable::render( size_t channels ) const noexcept
 void Drawable::addEffect( Effect ef ) noexcept
 {
 	ef.setParentDrawable( *this );
-	m_effects.push_back( std::move( ef ) );
+	m_effects.emplace_back( std::move( ef ) );
 }
 
 void Drawable::bind( Graphics &gph ) const cond_noex

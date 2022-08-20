@@ -31,7 +31,7 @@ protected:
 	void addPassBindable( std::shared_ptr<IBindable> bindable ) noexcept;
 	//===================================================
 	//	\function	bindPass
-	//	\brief  bind rtv, dsv & other bindables shared by all Pass objects
+	//	\brief  bind (RTV XOR DSV) && other bindables shared by all Pass objects
 	//	\date	2021/06/27 0:04
 	void bindPass( Graphics &gph ) const cond_noex;
 	void validate() override;

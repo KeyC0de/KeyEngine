@@ -75,8 +75,7 @@ const CBElement &CBElement::operator[]( const std::string &key ) const cond_noex
 
 CBElement &CBElement::T() cond_noex
 {
-	ASSERT( m_type == Array,
-		"Attempted to access inner CBElement type T of non-array type." );
+	ASSERT( m_type == Array, "Attempted to access inner CBElement type T of non-array type." );
 	return *static_cast<ExtraData::Array&>( *m_pExtraData ).layoutElement;
 }
 
@@ -208,8 +207,7 @@ std::string CBElement::getSignatureForArray() const cond_noex
 size_t CBElement::commitStruct( size_t offsetIn )
 {
 	auto &data = static_cast<ExtraData::Struct&>( *m_pExtraData );
-	ASSERT( data.layoutElements.size() != 0u,
-		"Struct inner elements have not been committed yet!" );
+	ASSERT( data.layoutElements.size() != 0u, "Struct inner elements have not been committed yet!" );
 	m_offset = advanceToBoundary( offsetIn );
 	auto offsetNext = *m_offset;
 	for ( auto &el : data.layoutElements )
@@ -510,8 +508,7 @@ const CBElement &Buffer::getRootLayoutElement() const noexcept
 
 void Buffer::copyFrom( const Buffer &other ) cond_noex
 {
-	ASSERT( &getRootLayoutElement() == &other.getRootLayoutElement(),
-		"Incompatible element layouts!" );
+	ASSERT( &getRootLayoutElement() == &other.getRootLayoutElement(), "Incompatible element layouts!" );
 	std::copy( other.m_buffer.begin(),
 		other.m_buffer.end(),
 		m_buffer.begin() );

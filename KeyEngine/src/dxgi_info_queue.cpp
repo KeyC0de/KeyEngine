@@ -8,17 +8,19 @@
 DxgiInfoQueue::DxgiInfoQueue()
 {
 	using LPDXGIGETDEBUGINTERFACE = HRESULT (WINAPI *)(REFIID, void ** );
+	LPDXGIGETDEBUGINTERFACE dxgiGetDebugInterface;
 
 	const HMODULE dxgidebugLib = LoadLibraryExW( L"dxgidebug.dll",
 		nullptr,
 		LOAD_LIBRARY_SEARCH_SYSTEM32 );
 
-	KeyConsole &console = KeyConsole::getInstance();
-	LPDXGIGETDEBUGINTERFACE dxgiGetDebugInterface;
 	if ( !dxgidebugLib )
 	{
+#if defined _DEBUG && !defined NDEBUG
+		KeyConsole &console = KeyConsole::getInstance();
 		using namespace std::string_literals;
 		console.log( "Could not acquire dxgidebug library."s );
+#endif
 		std::terminate();
 	}
 
@@ -27,8 +29,11 @@ DxgiInfoQueue::DxgiInfoQueue()
 			"DXGIGetDebugInterface" ) ) );
 	if ( !dxgiGetDebugInterface )
 	{
+#if defined _DEBUG && !defined NDEBUG
+		KeyConsole &console = KeyConsole::getInstance();
 		using namespace std::string_literals;
 		console.log( "DXGIGetDebugInterface function was not located in the library."s );
+#endif
 		std::terminate();
 	}
 
@@ -51,11 +56,6 @@ DxgiInfoQueue::DxgiInfoQueue()
 	m_pDxgiInfoQueue->SetBreakOnSeverity( m_msgProducer,
 		DXGI_INFO_QUEUE_MESSAGE_SEVERITY_INFO,
 		true );
-}
-
-DxgiInfoQueue::~DxgiInfoQueue()
-{
-
 }
 
 void DxgiInfoQueue::markQueueIndex() noexcept

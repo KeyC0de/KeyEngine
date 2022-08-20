@@ -22,14 +22,13 @@ class Effect final
 	ren::RenderQueuePass *m_pTargetPass = nullptr;
 	std::vector<std::shared_ptr<IBindable>> m_bindables;
 public:
-	Effect( size_t channels, const std::string &targetPassName,
-		bool bStartActive ) noexcept;
+	Effect( size_t channels, const std::string &targetPassName, bool bStartActive ) noexcept;
 	Effect( const Effect &rhs ) noexcept;
 	Effect& operator=( const Effect &rhs ) = delete;
 	Effect( Effect &&rhs ) = default;
 	Effect& operator=( Effect &&rhs ) = delete;
 
-	void addBindable( std::shared_ptr<IBindable> bindable ) noexcept;
+	void addBindable( std::shared_ptr<IBindable> pBindable ) noexcept;
 	void render( const Drawable &drawable, size_t channels ) const noexcept;
 	void bind( Graphics &gph ) const cond_noex;
 	bool isEnabled() const noexcept;

@@ -20,7 +20,7 @@ std::vector<std::string> tokenizeQuotedString( const std::string &input )
 
 	while ( stream >> std::quoted( token ) )
 	{
-		tokens.push_back( std::move( token ) );
+		tokens.emplace_back( std::move( token ) );
 	}
 	return tokens;
 }

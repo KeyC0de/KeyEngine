@@ -3,7 +3,7 @@
 #include "winner.h"
 
 
-struct Metrics
+struct Metric
 {
 	int index;
 	const char *label;

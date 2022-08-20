@@ -109,8 +109,7 @@ struct ElementProperties<Integer>
 };
 
 // ensures that every leaf class in master list has an entry in the static attribute map
-#define X( el ) static_assert( ElementProperties<el>::valid,\
-	"Missing map implementation for " #el );
+#define X( el ) static_assert( ElementProperties<el>::valid, "Missing map implementation for " #el );
 CB_LEAF_TYPES
 #undef X
 
@@ -332,8 +331,7 @@ public:
 		template<typename T>
 		operator const T*() const cond_noex
 		{
-			static_assert( ReverseMap<std::remove_const_t<T>>::valid,
-				"Unsupported CPUType used in pointer conversion" );
+			static_assert( ReverseMap<std::remove_const_t<T>>::valid, "Unsupported CPUType used in pointer conversion" );
 			return &static_cast<const T&>( *p );
 		}
 	private:
@@ -355,8 +353,7 @@ public:
 	template<typename T>
 	operator const T&() const cond_noex
 	{
-		static_assert( ReverseMap<std::remove_const_t<T>>::valid,
-			"Unsupported CPUType used in conversion" );
+		static_assert( ReverseMap<std::remove_const_t<T>>::valid, "Unsupported CPUType used in conversion" );
 		return *reinterpret_cast<const T*>( m_p + m_arrayOffset + pLayout->fetch<T>() );
 	}
 };
@@ -387,8 +384,7 @@ public:
 		template<typename T>
 		operator T*() const cond_noex
 		{
-			static_assert( ReverseMap<std::remove_const_t<T>>::valid,
-				"Unsupported CPUType used in pointer conversion" );
+			static_assert( ReverseMap<std::remove_const_t<T>>::valid, "Unsupported CPUType used in pointer conversion" );
 			return &static_cast<T&>( *p );
 		}
 	private:
@@ -416,16 +412,14 @@ public:
 	template<typename T>
 	operator T&() const cond_noex
 	{
-		static_assert(ReverseMap<std::remove_const_t<T>>::valid,
-			"Unsupported CPUType used in conversion");
+		static_assert(ReverseMap<std::remove_const_t<T>>::valid, "Unsupported CPUType used in conversion");
 		return *reinterpret_cast<T*>( m_p + m_arrayOffset + m_pLayout->fetch<T>() );
 	}
 	// assignment for writing to as a supported CPUType
 	template<typename T>
 	T& operator=( const T &rhs ) const cond_noex
 	{
-		static_assert(ReverseMap<std::remove_const_t<T>>::valid,
-			"Unsupported CPUType used in assignment");
+		static_assert(ReverseMap<std::remove_const_t<T>>::valid, "Unsupported CPUType used in assignment");
 		return static_cast<T&>(*this) = rhs;
 	}
 };

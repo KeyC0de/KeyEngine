@@ -258,8 +258,10 @@
     <None Include="ClassDiagram.cd" />
     <None Include="config\config.ini" />
     <None Include="cpp.hint">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </ExcludedFromBuild>
     </None>
     <None Include="config\imgui.ini" />
     <None Include="config\imgui_default.ini" />

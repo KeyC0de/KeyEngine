@@ -17,16 +17,16 @@ IPass::~IPass()
 	pass_;
 }
 
-const std::string &IPass::getName() const noexcept
+const std::string& IPass::getName() const noexcept
 {
 	return m_name;
 }
 
 void IPass::validate()
 {
-	for ( auto &cons : m_consumers )
+	for ( auto &consumer : m_consumers )
 	{
-		cons->validateLinkage();
+		consumer->validateLinkage();
 	}
 }
 
@@ -42,11 +42,11 @@ const std::vector<std::unique_ptr<IProducer>>& IPass::getProducers() const
 
 IConsumer& IPass::getConsumer( const std::string &name ) const
 {
-	for ( auto &cons : m_consumers )
+	for ( auto &consumer : m_consumers )
 	{
-		if ( cons->getName() == name )
+		if ( consumer->getName() == name )
 		{
-			return *cons;
+			return *consumer;
 		}
 	}
 
@@ -60,11 +60,11 @@ IConsumer& IPass::getConsumer( const std::string &name ) const
 
 IProducer& IPass::getProducer( const std::string &name ) const
 {
-	for ( auto &prod : m_producers )
-	{
-		if ( prod->getName() == name )
+	for ( auto &producer : m_producers )
+	{ 
+		if ( producer->getName() == name )
 		{
-			return *prod;
+			return *producer;
 		}
 	}
 
@@ -79,37 +79,35 @@ IProducer& IPass::getProducer( const std::string &name ) const
 void IPass::addConsumer( std::unique_ptr<IConsumer> pConsumer )
 {
 	// verify there are no consumer name collisions
-	for ( auto &cons : m_consumers )
+	for ( auto &consumer : m_consumers )
 	{
-		if ( cons->getName() == pConsumer->getName() )
+		if ( consumer->getName() == pConsumer->getName() )
 		{
-			THROW_RENDERER_EXCEPTION( "Consumer name " + pConsumer->getName()
-				+ " collides with existing." );
+			THROW_RENDERER_EXCEPTION( "Consumer name " + pConsumer->getName() + " collides with existing." );
 		}
 	}
-	m_consumers.push_back( std::move( pConsumer ) );
+	m_consumers.emplace_back( std::move( pConsumer ) );
 }
 
 void IPass::addProducer( std::unique_ptr<IProducer> pProducer )
 {
 	// verify there are no producer name collisions
-	for ( auto &prod : m_producers )
+	for ( auto &producer : m_producers )
 	{
-		if ( prod->getName() == pProducer->getName() )
+		if ( producer->getName() == pProducer->getName() )
 		{
-			THROW_RENDERER_EXCEPTION( "Producer name " + pProducer->getName()
-				+ " collides with existing." );
+			THROW_RENDERER_EXCEPTION( "Producer name " + pProducer->getName() + " collides with existing." );
 		}
 	}
-	m_producers.push_back( std::move( pProducer ) );
+	m_producers.emplace_back( std::move( pProducer ) );
 }
 
 void IPass::setupConsumerTarget( const std::string &currentPassConsumerName,
 	const std::string &targetPassName,
 	const std::string &targetPassProducerName )
 {
-	auto &cons = getConsumer( currentPassConsumerName );
-	cons.setPassAndProducerNames( targetPassName,
+	auto &consumer = getConsumer( currentPassConsumerName );
+	consumer.setPassAndProducerNames( targetPassName,
 		targetPassProducerName );
 }
 

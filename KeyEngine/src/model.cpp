@@ -37,7 +37,7 @@ Model::Model( Graphics &gph,
 	for ( size_t i = 0; i < paiScene->mNumMeshes; ++i )
 	{
 		const auto &aiMesh = *paiScene->mMeshes[i];
-		m_drawables.push_back( std::make_unique<Drawable>( gph,
+		m_drawables.emplace_back( std::make_unique<Drawable>( gph,
 			materials[aiMesh.mMaterialIndex],
 			aiMesh,
 			scale ) );

@@ -8,12 +8,9 @@ static_assert( sizeof( size_t ) == 8 );
 static_assert( false, "Non Windows Platform - Nah huh\n" );
 #endif // !_MSC_VER
 
-static_assert( _MSC_VER >= 1900,
-	"Microsoft Visual Studio 2015 or later compiler required." );
-static_assert( __cplusplus >= 201703L,
-	"C++17 language conformance or later required. Use /Zc:__cplusplus compile option." );
-static_assert( _MSVC_LANG >= 201703L,
-	"C++17 language conformance or later required." );
+static_assert( _MSC_VER >= 1900, "Microsoft Visual Studio 2015 or later compiler required." );
+static_assert( __cplusplus >= 201703L, "C++17 language conformance or later required. Use /Zc:__cplusplus compile option." );
+static_assert( _MSVC_LANG >= 201703L, "C++17 language conformance or later required." );
 
 #undef _WIN32_WINNT
 #undef NTDDI_VERSION

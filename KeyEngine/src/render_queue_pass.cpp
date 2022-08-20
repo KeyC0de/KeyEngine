@@ -6,7 +6,7 @@ namespace ren
 
 void RenderQueuePass::addJob( Job job ) noexcept
 {
-	m_jobs.push_back( job );
+	m_jobs.emplace_back( job );
 }
 
 void RenderQueuePass::run( Graphics &gph ) const cond_noex

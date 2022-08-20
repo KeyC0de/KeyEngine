@@ -52,30 +52,31 @@ class Graphics
 	};
 
 private:
-	static inline std::vector<Adapter> m_adapters;
 	static inline D3D_FEATURE_LEVEL m_featureLevel;
 	unsigned m_width;
 	unsigned m_height;
-	DirectX::XMMATRIX m_projection;
-	DirectX::XMMATRIX m_view;
-#if defined _DEBUG && !defined NDEBUG
-	std::unique_ptr<DxgiInfoQueue> m_infoQueue;
-	ATL::CComPtr<ID3D11Debug> m_pDebug;
-#endif
+	static inline std::vector<Adapter> m_adapters;
+	Microsoft::WRL::ComPtr<IDXGIFactory1> m_pFactory;
 	Microsoft::WRL::ComPtr<ID3D11Device> m_pDevice;
+	// immediate d3d device context:
+	Microsoft::WRL::ComPtr<ID3D11DeviceContext> m_pContext;
 #if defined _FLIP_PRESENT
 	Microsoft::WRL::ComPtr<IDXGISwapChain1> m_pSwapChain;
 #else
 	Microsoft::WRL::ComPtr<IDXGISwapChain> m_pSwapChain;
 #endif
-	Microsoft::WRL::ComPtr<IDXGIFactory1> m_pFactory;
-	Microsoft::WRL::ComPtr<ID3D11DeviceContext> m_pContext;	// immediate context
 	std::shared_ptr<IRenderTargetView> m_globalColorBuffer;
+#if defined _DEBUG && !defined NDEBUG
+	std::unique_ptr<DxgiInfoQueue> m_infoQueue;
+	ATL::CComPtr<ID3D11Debug> m_pDebug;
+#endif
 	KeyTimer<std::chrono::microseconds> m_fpsTimer;
 	std::unique_ptr<DirectX::SpriteFont> m_spriteFont;
 	std::unique_ptr<DirectX::SpriteBatch> m_fpsSpriteBatch;
-	std::vector<std::unique_ptr<ID3D11DeviceContext>> m_deferredContexts;
-	std::vector<std::unique_ptr<ID3D11CommandList>> m_commandLists;
+	DirectX::XMMATRIX m_projection;
+	DirectX::XMMATRIX m_view;
+	//std::vector<ID3D11DeviceContext*> m_deferredContexts;
+	//std::vector<ID3D11CommandList*> m_commandLists;
 	ColorBGRA *m_pCpuBuffer = nullptr;
 #if defined _FLIP_PRESENT
 private:

@@ -143,7 +143,7 @@ MessageDispatcher& MessageDispatcher::getInstance( int initialCapacity )
 	return instance;
 }
 
-void MessageDispatcher::addMessage( class Message *msg )
+void MessageDispatcher::addMessage( Message *msg )
 {
 	m_mb.enqueue( msg );
 }
@@ -153,9 +153,8 @@ void MessageDispatcher::dispatchAll()
 	while ( m_mb.getSize() > 0 )
 	{
 		auto msg = m_mb.dequeue();
-		auto recipients = msg->getReceivers();
-		ASSERT( recipients.size() != 0,
-			"No recipients!" );
+		auto& recipients = msg->getReceivers();
+		ASSERT( recipients.size() != 0, "No recipients!" );
 		for ( Entity *r : recipients )
 		{
 			r->onMessageReceived( std::move( msg ) );

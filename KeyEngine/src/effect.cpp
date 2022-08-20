@@ -1,4 +1,5 @@
 #include "effect.h"
+#include <memory>
 #include "renderer.h"
 #include "effect_visitor.h"
 #include "render_queue_pass.h"
@@ -23,22 +24,22 @@ Effect::Effect( const Effect &rhs ) noexcept
 	m_targetPassName(rhs.m_targetPassName)
 {
 	m_bindables.reserve( rhs.m_bindables.size() );
-	for ( auto &bindable : rhs.m_bindables )
+	for ( auto &pBindable : rhs.m_bindables )
 	{
-		if ( auto *pClone = dynamic_cast<const IBindableCloning*>( bindable.get() ) )
+		if ( const auto *pClone = dynamic_cast<const IBindableCloning*>( pBindable.get() ) )
 		{
-			m_bindables.push_back( pClone->clone() );
+			m_bindables.emplace_back( std::move( pClone->clone() ) );
 		}
 		else
 		{
-			m_bindables.push_back( bindable );
+			m_bindables.emplace_back( std::move( pBindable ) );
 		}
 	}
 }
 
-void Effect::addBindable( std::shared_ptr<IBindable> bindable ) noexcept
+void Effect::addBindable( std::shared_ptr<IBindable> pBindable ) noexcept
 {
-	m_bindables.push_back( std::move( bindable ) );
+	m_bindables.emplace_back( std::move( pBindable ) );
 }
 
 void Effect::render( const Drawable &drawable,

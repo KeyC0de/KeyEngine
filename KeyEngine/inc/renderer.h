@@ -38,8 +38,7 @@ protected:
 	void addGlobalProducer( std::unique_ptr<IProducer> pProducer );
 	void addGlobalConsumer( std::unique_ptr<IConsumer> pConsumer );
 	void addPass( std::unique_ptr<IPass> pPass );
-	void setupGlobalConsumerTarget( const std::string &globalConsumerName,
-		const std::string &passName, const std::string &producerName );
+	void setupGlobalConsumerTarget( const std::string &globalConsumerName, const std::string &passName, const std::string &producerName );
 	void validateConsumersLinkage();
 	//===================================================
 	//	\function	linkPassConsumers
@@ -65,7 +64,8 @@ public:
 	{
 		Gauss,
 		Box,
-	} m_kernelType;
+	};
+	KernelType m_kernelType;
 public:
 	Renderer3d( Graphics &gph, int radius, float sigma, KernelType kernelType = Gauss );
 

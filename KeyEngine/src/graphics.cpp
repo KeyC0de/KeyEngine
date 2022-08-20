@@ -109,8 +109,8 @@ Graphics::Graphics( HWND hWnd,
 	auto &settings = SettingsManager::getInstance().getSettings();
 	if ( settings.bMultithreadedRendering )
 	{
-		m_deferredContexts.reserve( settings.nRenderingThreads );
-		m_commandLists.reserve( settings.nRenderingThreads );
+		//m_deferredContexts.reserve( settings.nRenderingThreads );
+		//m_commandLists.reserve( settings.nRenderingThreads );
 	}
 
 	DXGI_SWAP_CHAIN_DESC swapChainDesc{};

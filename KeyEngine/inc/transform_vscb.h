@@ -16,6 +16,7 @@ protected:
 		DirectX::XMMATRIX worldView;
 		DirectX::XMMATRIX worldViewProjection;
 	};
+private:
 	static inline std::unique_ptr<VertexShaderConstantBuffer<Transforms>> m_pVscb;
 public:
 	TransformVSCB( Graphics &gph, unsigned slot );

@@ -118,7 +118,6 @@ inline time_t secondsToTimeT( int s );
 //	\date	2022/07/28 22:32
 long int timeTtoSeconds( time_t t );
 
-
 std::uintptr_t pointerToInt( void *p );
 void* intToPointer( uintptr_t i );
 void* addPointers( void *p1, void *p2 );
@@ -204,5 +203,6 @@ inline unsigned long long int volatile& readMEM( unsigned long long int memoryAd
 	return *reinterpret_cast<unsigned long long int volatile*>( memoryAddress );
 }
 #pragma warning( default : 4312 )
+
 
 }//namespace util

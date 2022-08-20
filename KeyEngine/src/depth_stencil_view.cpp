@@ -127,8 +127,7 @@ void IDepthStencilView::bindRenderSurface( Graphics &gph ) cond_noex
 void IDepthStencilView::bindRenderSurface( Graphics &gph,
 	IRenderSurface *rt ) cond_noex
 {
-	ASSERT( dynamic_cast<IRenderTargetView*>( rt ) != nullptr,
-		"Bad cast. BufferResource is not a IRenderTargetView!" );
+	ASSERT( dynamic_cast<IRenderTargetView*>( rt ) != nullptr, "Bad cast. IRenderSurface is not a IRenderTargetView!" );
 	bindRenderSurface( gph,
 		static_cast<IRenderTargetView*>( rt ) );
 }

@@ -18,7 +18,10 @@ public:
 
 	}
 
-	// bind resource to a certain stage of the graphics pipeline
+	//===================================================
+	//	\function	bind
+	//	\brief  bind graphics resource to a certain stage of the graphics pipeline
+	//	\date	2022/08/21 0:00
 	virtual void bind( Graphics &gph ) cond_noex = 0;
 
 	virtual void setParentDrawable( const Drawable &drawable ) noexcept

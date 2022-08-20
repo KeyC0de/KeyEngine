@@ -24,6 +24,7 @@ class MessageBus final
 {
 	friend class MessageDispatcher;
 
+	// #TODO: Change vector of unique_ptr to Message to vector of objects of type Message
 	std::vector<std::unique_ptr<Message>> m_vec;
 	std::size_t m_size = 0;
 	mutable std::mutex m_mu;

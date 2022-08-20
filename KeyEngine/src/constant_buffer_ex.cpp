@@ -36,8 +36,7 @@ IConstantBufferEx::IConstantBufferEx( Graphics &gph,
 void IConstantBufferEx::update( Graphics &gph,
 	const con::Buffer &buf )
 {
-	ASSERT( &buf.getRootLayoutElement() == &getCBExRootLayoutElement(),
-		"Input CB root element is not compatible!" );
+	ASSERT( &buf.getRootLayoutElement() == &getCBExRootLayoutElement(), "Input CB root element is not compatible!" );
 
 	D3D11_MAPPED_SUBRESOURCE msr;
 	HRESULT hres = getDeviceContext( gph )->Map( m_pD3dCb.Get(),

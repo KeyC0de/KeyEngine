@@ -14,8 +14,7 @@ SplashWindow::SplashWindow( HWND hWndParent,
 	m_bVisible{false}
 {
 	HINSTANCE hInstance = THIS_INSTANCE;
-	ASSERT( hInstance != nullptr,
-		"HINSTANCE is null!" );
+	ASSERT( hInstance != nullptr, "HINSTANCE is null!" );
 
 	HRESULT hres = 0;
 

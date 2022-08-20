@@ -8,14 +8,18 @@ class Effect;
 namespace ren
 {
 
-class Job final
+class Job
 {
-	const class Drawable *m_pDrawable;
-	const class Effect *m_pEffect;
+	const Drawable *m_pDrawable;
+	const Effect *m_pEffect;
 public:
 	Job( const Effect *pEffect, const Drawable *pDrawable );
 
-	// 1. binds drawable, 2. draw call
+	//===================================================
+	//	\function	run
+	//	\brief  1. binds drawable
+	//			2. executes draw call
+	//	\date	2022/08/15 17:22
 	void run( Graphics &gph ) const cond_noex;
 };
 

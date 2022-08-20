@@ -52,7 +52,7 @@ class BindableConsumer final
 	bool m_bLinked = false;
 public:
 	BindableConsumer( const std::string &name,
-		std::shared_ptr<T>& target )
+		std::shared_ptr<T> &target )
 		:
 		IConsumer{name},
 		m_target{target}
@@ -61,7 +61,7 @@ public:
 	}
 
 	static std::unique_ptr<IConsumer> make( const std::string &name,
-		std::shared_ptr<T>& target )
+		std::shared_ptr<T> &target )
 	{
 		return std::make_unique<BindableConsumer>( name,
 			target );
@@ -105,15 +105,14 @@ template<class T>
 class ContainerBindableConsumer final
 	: public IConsumer
 {
-	static_assert( std::is_base_of_v<IBindable, T>,
-		"ContainerBindableConsumer target T must be IBindable." );
+	static_assert( std::is_base_of_v<IBindable, T>, "ContainerBindableConsumer target T must be IBindable." );
 
 	std::vector<std::shared_ptr<IBindable>> &m_container;
 	size_t m_index;
 	bool m_bLinked = false;
 public:
 	ContainerBindableConsumer( const std::string &name,
-		std::vector<std::shared_ptr<IBindable>>& container,
+		std::vector<std::shared_ptr<IBindable>> &container,
 		size_t index )
 		:
 		IConsumer{name},
@@ -167,7 +166,7 @@ class RenderSurfaceConsumer final
 	bool m_bLinked = false;
 public:
 	RenderSurfaceConsumer( const std::string &name,
-		std::shared_ptr<T>& target )
+		std::shared_ptr<T> &target )
 		:
 		IConsumer{name},
 		m_target{target}
@@ -176,7 +175,7 @@ public:
 	}
 
 	static std::unique_ptr<IConsumer> make( const std::string &name,
-		std::shared_ptr<T>& target )
+		std::shared_ptr<T> &target )
 	{
 		return std::make_unique<RenderSurfaceConsumer>( name,
 			target );

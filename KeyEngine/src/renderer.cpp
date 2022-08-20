@@ -61,12 +61,12 @@ Renderer::~Renderer() noexcept
 
 void Renderer::addGlobalProducer( std::unique_ptr<IProducer> pProducer )
 {
-	m_globalProducers.push_back( std::move( pProducer ) );
+	m_globalProducers.emplace_back( std::move( pProducer ) );
 }
 
 void Renderer::addGlobalConsumer( std::unique_ptr<IConsumer> pConsumer )
 {
-	m_globalConsumers.push_back( std::move( pConsumer ) );
+	m_globalConsumers.emplace_back( std::move( pConsumer ) );
 }
 
 void Renderer::run( Graphics &gph ) cond_noex
@@ -98,7 +98,7 @@ void Renderer::addPass( std::unique_ptr<IPass> pPass )
 			THROW_RENDERER_EXCEPTION( "Pass name already exists: " + pPass->getName() );
 		}
 	}
-	m_passes.push_back( std::move( pPass ) );
+	m_passes.emplace_back( std::move( pPass ) );
 }
 
 void Renderer::setupGlobalConsumerTarget( const std::string &globalConsumerName,

@@ -86,8 +86,7 @@ void IRenderTargetView::bindRenderSurface( Graphics &gph ) cond_noex
 void IRenderTargetView::bindRenderSurface( Graphics &gph,
 	IRenderSurface *pRs ) cond_noex
 {
-	ASSERT( dynamic_cast<IDepthStencilView*>( pRs ) != nullptr,
-		"Input Resource is not a IDepthStencilView!" );
+	ASSERT( dynamic_cast<IDepthStencilView*>( pRs ) != nullptr, "Input Resource is not a IDepthStencilView!" );
 	bindRenderSurface( gph,
 		static_cast<IDepthStencilView*>( pRs ) );
 }
