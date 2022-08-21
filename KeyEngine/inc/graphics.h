@@ -157,6 +157,10 @@ public:
 	void drawCircle( int centerX, int centerY, int radius, ColorBGRA col );
 	std::vector<DirectX::XMFLOAT2> drawStar( float outerRadius, float innerRadius, int nFlares = 5 );
 private:
+	//===================================================
+	//	\function	recordDeferredCommandList
+	//	\brief  probably should call this when the Model is being loaded not when pass->run() -> Job->run()
+	//	\date	2022/08/21 14:05
 	void recordDeferredCommandList();
 	//===================================================
 	//	\function	playbackDeferredCommandList
@@ -165,6 +169,7 @@ private:
 	//	\date	2020/11/05 14:51
 	void playbackDeferredCommandList();
 	void clearShaderSlots() noexcept;
+	void resetToDefaultState();
 
 #if defined _DEBUG && !defined NDEBUG
 	void interrogateDirectxFeatures();

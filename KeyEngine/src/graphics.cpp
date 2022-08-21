@@ -229,7 +229,6 @@ Graphics::~Graphics()
 		_aligned_free( m_pCpuBuffer );
 		m_pCpuBuffer = nullptr;
 	}
-	m_pContext->ClearState();
 #if defined _DEBUG && !defined NDEBUG
 	d3d11DebugReport();
 #endif
@@ -359,7 +358,6 @@ void Graphics::endRendering()
 			+ m_pDevice->GetDeviceRemovedReason() );
 	}
 	ASSERT_HRES_IF_FAILED;
-	//m_pContext->ClearState();
 	VTUNE_ITT_TASK_END;
 }
 
@@ -483,7 +481,6 @@ std::vector<Graphics::Adapter>& Graphics::getAdapters() const
 	return m_adapters;
 }
 
-// probably should call this when the Model is being loaded not when pass->run() -> Job->run()
 void Graphics::recordDeferredCommandList()
 {
 	//HRESULT hres;
@@ -504,6 +501,11 @@ void Graphics::playbackDeferredCommandList()
 	//	m_pContext->ExecuteCommandList( pCommandList,
 	//		TRUE );
 	//}
+}
+
+void Graphics::resetToDefaultState()
+{
+	m_pContext->ClearState();
 }
 
 #if defined _DEBUG && !defined NDEBUG

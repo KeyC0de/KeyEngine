@@ -12,7 +12,7 @@ void DirectionalLightVSCB::update( Graphics &gph )
 	ASSERT( m_pDirectionalLightShadowCamera, "Camera not specified (null)!" );
 	dx::XMFLOAT3 dir;
 	dx::XMStoreFloat3( &dir,
-		m_pDirectionalLightShadowCamera->getDirection() );
+		m_pDirectionalLightShadowCamera->calcDirection() );
 	const DirectionalLightTransformVSCB vscb{dx::XMMatrixTranspose( dx::XMMatrixTranslation( -dir.x,
 		-dir.y,
 		-dir.z ) )};

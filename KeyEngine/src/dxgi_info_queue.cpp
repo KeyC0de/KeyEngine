@@ -79,7 +79,7 @@ std::vector<std::string> DxgiInfoQueue::getInfoMessages()
 			&messageLengthInBytes );
 		ASSERT_HRES_IF_FAILED;
 		// allocate storage for the message
-		auto pMsgStorage = std::make_unique<byte[]>( messageLengthInBytes );
+		auto pMsgStorage = std::make_unique<wchar_t[]>( messageLengthInBytes );
 		auto pMsg = reinterpret_cast<DXGI_INFO_QUEUE_MESSAGE*>( pMsgStorage.get() );
 		// create the message
 		hres = m_pDxgiInfoQueue->GetMessageW( m_msgProducer,

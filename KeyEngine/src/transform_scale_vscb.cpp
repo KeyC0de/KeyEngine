@@ -28,9 +28,9 @@ void TransformScaleVSCB::bind( Graphics &gph ) cond_noex
 	auto transforms = getTransforms( gph );
 	transforms.worldView = transforms.worldView * scaleMatrix;
 	transforms.worldViewProjection = transforms.worldViewProjection * scaleMatrix;
-	TransformVSCB::update( gph,
+	update(gph,
 		transforms );
-	m_pVscb->bind( gph );
+	bindCb( gph );
 }
 
 std::unique_ptr<IBindableCloning> TransformScaleVSCB::clone() const noexcept

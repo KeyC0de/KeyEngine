@@ -65,10 +65,10 @@ public:
 	// rotate arguments is mouse dx, dy delta values
 	void rotateRel( float dx, float dy ) noexcept;
 	void translateRel( DirectX::XMFLOAT3 translation ) noexcept;
-	DirectX::XMFLOAT3 getPosition() const noexcept;
-	DirectX::XMVECTOR getDirection() const noexcept;
-	DirectX::XMVECTOR getRight() const noexcept;
-	DirectX::XMVECTOR getUp() const noexcept;
+	const DirectX::XMFLOAT3& getPosition() const noexcept;
+	DirectX::XMVECTOR calcDirection() const noexcept;
+	DirectX::XMVECTOR calcRight() const noexcept;
+	DirectX::XMVECTOR calcUp() const noexcept;
 	void setPosition( const DirectX::XMFLOAT3 &pos ) noexcept;
 	const std::string& getName() const noexcept;
 	void connectEffectsToRenderer( ren::Renderer &ren );

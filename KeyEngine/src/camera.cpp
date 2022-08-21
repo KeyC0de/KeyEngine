@@ -251,12 +251,12 @@ void Camera::translateRel( DirectX::XMFLOAT3 translation ) noexcept
 	}
 }
 
-DirectX::XMFLOAT3 Camera::getPosition() const noexcept
+const DirectX::XMFLOAT3& Camera::getPosition() const noexcept
 {
 	return m_position;
 }
 
-DirectX::XMVECTOR Camera::getDirection() const noexcept
+DirectX::XMVECTOR Camera::calcDirection() const noexcept
 {
 	// camDirection = camPosition - camTarget
 	const dx::XMVECTOR forwardVector{0.0f, 0.0f, 1.0f, 0.0f};
@@ -269,17 +269,17 @@ DirectX::XMVECTOR Camera::getDirection() const noexcept
 		camTarget ) );
 }
 
-DirectX::XMVECTOR Camera::getRight() const noexcept
+DirectX::XMVECTOR Camera::calcRight() const noexcept
 {
 	const dx::XMVECTOR upVector{0.0f, 1.0f, 0.0f, 0.0f};
 	return dx::XMVector3Cross( upVector,
-		getDirection() );
+		calcDirection() );
 }
 
-DirectX::XMVECTOR Camera::getUp() const noexcept
+DirectX::XMVECTOR Camera::calcUp() const noexcept
 {
-	return dx::XMVector3Cross( getDirection(),
-		getRight() );
+	return dx::XMVector3Cross( calcDirection(),
+		calcRight() );
 }
 
 void Camera::setPosition( const DirectX::XMFLOAT3 &pos ) noexcept

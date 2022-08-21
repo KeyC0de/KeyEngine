@@ -16,7 +16,7 @@ protected:
 		DirectX::XMMATRIX worldView;
 		DirectX::XMMATRIX worldViewProjection;
 	};
-
+private:
 	static inline std::unique_ptr<VertexShaderConstantBuffer<Transforms>> m_pVscb;
 public:
 	TransformVSCB( Graphics &gph, unsigned slot );
@@ -35,5 +35,6 @@ public:
 	std::unique_ptr<IBindableCloning> clone() noexcept override;
 protected:
 	void update( Graphics &gph, const Transforms &tfs ) cond_noex;
+	void bindCb( Graphics &gph ) cond_noex;
 	Transforms getTransforms( Graphics &gph ) cond_noex;
 };
