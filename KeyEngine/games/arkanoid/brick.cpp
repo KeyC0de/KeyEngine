@@ -19,7 +19,7 @@ void Brick::render( Graphics &gph ) const
 {
 	if ( !m_bDestroyed )
 	{
-		gph.drawRect( m_rect.getScaled( -m_margin ),
+		gph.drawRect( m_rect.calcScaled( -m_margin ),
 			m_color );
 	}
 }
@@ -34,7 +34,7 @@ void Brick::doBallCollision( Ball &ball )
 	ASSERT( checkForBallCollision( ball ), "There's no collision happening!" );
 
 	const dx::XMFLOAT2 ballPos = ball.getPosition();
-	if ( std::signbit( ball.getVelocity().x ) == std::signbit( ball.getPosition().x - getCenter().x ) )
+	if ( std::signbit( ball.getVelocity().x ) == std::signbit( ball.getPosition().x - calcCenter().x ) )
 	{
 		ball.reboundY();
 	}
@@ -49,7 +49,7 @@ void Brick::doBallCollision( Ball &ball )
 	m_bDestroyed = true;
 }
 
-DirectX::XMFLOAT2 Brick::getCenter() const noexcept
+const DirectX::XMFLOAT2 Brick::calcCenter() const noexcept
 {
-	return m_rect.getCenter();
+	return m_rect.calcCenter();
 }

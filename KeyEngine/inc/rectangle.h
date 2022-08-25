@@ -24,11 +24,11 @@ struct Rect
 	//	\date	2021/10/17 2:27
 	bool isOverlappingWith( const Rect &other ) const noexcept;
 	//===================================================
-	//	\function	getScaled
+	//	\function	calcScaled
 	//	\brief  gets an expanded (offset>0) or minimized (offset<0) form of the rectangle
 	//	\date	2021/10/17 2:21
-	Rect getScaled( float offset ) const noexcept;
-	const float getRectWidth() const noexcept;
-	const float getRectHeight() const noexcept;
-	const DirectX::XMFLOAT2 getCenter() const noexcept;
+	Rect calcScaled( float offset ) const noexcept;
+	const float getWidth() const noexcept;
+	const float getHeight() const noexcept;
+	const DirectX::XMFLOAT2 calcCenter() const noexcept;
 };

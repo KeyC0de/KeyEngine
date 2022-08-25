@@ -551,7 +551,7 @@ std::optional<int> Window::messageLoop() noexcept
 	return std::nullopt;
 }
 
-Graphics &Window::getGraphics()
+Graphics& Window::getGraphics()
 {
 	return *m_pGraphics;
 }
@@ -581,7 +581,7 @@ Mouse &Window::getMouse() noexcept
 	return m_mouse;
 }
 
-Window::WindowClass &Window::getWindowClass() noexcept
+Window::WindowClass& Window::getWindowClass() noexcept
 {
 	return *m_pWindowClass;
 }
@@ -1538,7 +1538,7 @@ const std::string Window::WindowException::getType() const noexcept
 	return typeid( *this ).name();
 }
 
-const char *Window::WindowException::what() const noexcept
+const char* Window::WindowException::what() const noexcept
 {
 	return KeyException::what();
 }

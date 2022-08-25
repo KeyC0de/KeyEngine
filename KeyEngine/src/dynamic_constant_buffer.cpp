@@ -292,7 +292,6 @@ CBElement &RawLayout::operator[]( const std::string &key ) cond_noex
 	return ( *m_pLayoutRoot )[key];
 }
 
-// cooks the RawLayout
 std::shared_ptr<CBElement> RawLayout::commitLayout() noexcept
 {
 	auto temp = std::move( m_pLayoutRoot );

@@ -24,6 +24,6 @@ public:
 	void reboundX();
 	void reboundY();
 	Rect getRect() const noexcept;
-	DirectX::XMFLOAT2 getVelocity() const noexcept;
-	DirectX::XMFLOAT2 getPosition() const noexcept;
+	const DirectX::XMFLOAT2& getVelocity() const noexcept;
+	const DirectX::XMFLOAT2& getPosition() const noexcept;
 };

@@ -130,8 +130,15 @@ CB_LEAF_TYPES
 #undef X
 
 
-// CBElement instances form a tree that describes the layout of the data buffer
-// supporting nested aggregates of structs and arrays
+//=============================================================
+//	\class	CBElement
+//
+//	\author	KeyC0de
+//	\date	2022/08/21 19:55
+//
+//	\brief	CBElement instances form a tree that describes the layout of the data buffer
+//			supporting nested aggregates of structs and arrays
+//=============================================================
 class CBElement final
 {
 	// this forms the polymorpic base for extra data that Struct and Array `CBElement`s have
@@ -235,14 +242,21 @@ private:
 };
 
 
-// the layout class serves as a shell to hold the root of the CBElement tree
-// client does not create CBElements directly, create a raw layout and then
-// use it to access the elements and add on from there. When building is done,
-// raw layout is moved to BindableMap (usually via Buffer::make), and the internal layout
-// element tree is "delivered" (finalized and moved out). BindableMap returns a baked
-// layout, which the buffer can then use to initialize itself. Baked layout can
-// also be used to directly init multiple Buffers. Baked layouts are conceptually
-// immutable. Base CBLayout class cannot be constructed.
+//=============================================================
+//	\class	CBLayout
+//
+//	\author	KeyC0de
+//	\date	2022/08/21 19:56
+//
+//	\brief	the layout class serves as a shell to hold the root of the CBElement tree
+//			client does not create CBElements directly, create a raw layout and then
+//			use it to access the elements and add on from there. When building is done,
+//			raw layout is moved to BindableMap (usually via Buffer::make), and the internal layout
+//			element tree is "delivered" (finalized and moved out). BindableMap returns a baked
+//			layout, which the buffer can then use to initialize itself. Baked layout can
+//			also be used to directly init multiple Buffers. Baked layouts are conceptually immutable.
+//			Base CBLayout class cannot be constructed.
+//=============================================================
 class CBLayout
 {
 	friend class LayoutMap;
@@ -257,8 +271,15 @@ protected:
 };
 
 
-// Raw layout represents a layout that has not yet been finalized and registered
-// structure can be edited by adding layout nodes
+//=============================================================
+//	\class	RawLayout
+//
+//	\author	KeyC0de
+//	\date	2022/08/21 19:55
+//
+//	\brief	Raw layout represents a layout that has not yet been finalized and registered
+//			structure can be edited by adding layout nodes
+//=============================================================
 class RawLayout final
 	: public CBLayout
 {
@@ -276,13 +297,24 @@ public:
 private:
 	// reset this object with an empty struct at its root
 	void clear() noexcept;
-	// commit the layout and then relinquish (by yielding the root layout element)
+	//===================================================
+	//	\function	commitLayout
+	//	\brief	"cooks the RawLayout"
+	//			commit the layout and then relinquish (by yielding the root layout element)
+	//	\date	2022/08/21 19:50
 	std::shared_ptr<CBElement> commitLayout() noexcept;
 };
 
 
-// CookedLayout represend a completed and registered CBLayout shell object
-// layout tree is fixed
+//=============================================================
+//	\class	CookedLayout
+//
+//	\author	KeyC0de
+//	\date	2022/08/21 19:51
+//
+//	\brief	CookedLayout represents a completed and registered CBLayout shell object
+//			layout tree is fixed
+//=============================================================
 class CookedLayout final
 	: public CBLayout
 {
@@ -300,10 +332,18 @@ private:
 	std::shared_ptr<CBElement> relinquishRoot() const noexcept;
 };
 
-// proxy class that is emitted when keying/indexing into a Buffer
-// implement conversions/assignment that allows manipulation of the
-// raw bytes of the Buffer. This version is const, only supports reading
-// Refs can be further keyed/indexed to traverse the layout structure
+
+//=============================================================
+//	\class	ConstElementView
+//
+//	\author	KeyC0de
+//	\date	2022/08/21 19:51
+//
+//	\brief	proxy class that is emitted when keying/indexing into a Buffer
+//			implement conversions/assignment that allows manipulation of the raw bytes of the Buffer.
+//			This version is const, only supports reading
+//			Refs can be further keyed/indexed to traverse the layout structure
+//=============================================================
 class ConstElementView final
 {
 	friend class Buffer;
@@ -358,9 +398,17 @@ public:
 	}
 };
 
-// version of ConstElementView that also allows writing to the bytes of Buffer
-// see above in ConstElementView for detailed description
-// maintains a pointer to the byte vector of the Buffer
+
+//=============================================================
+//	\class	ElementView
+//
+//	\author	KeyC0de
+//	\date	2022/08/21 19:52
+//
+//	\brief	version of ConstElementView that also allows writing to the bytes of Buffer
+//			see above in ConstElementView for detailed description
+//			maintains a pointer to the byte vector of the Buffer
+//=============================================================
 class ElementView final
 {
 	friend class Buffer;
@@ -425,7 +473,14 @@ public:
 };
 
 
-// maps CBElement strings with their CBElement objects
+//=============================================================
+//	\class	LayoutMap
+//
+//	\author	KeyC0de
+//	\date	2022/08/21 19:53
+//
+//	\brief	maps CBElement strings with their CBElement objects
+//=============================================================
 class LayoutMap
 {
 	static inline LayoutMap *m_pInstance;
@@ -438,11 +493,18 @@ private:
 };
 
 
-// The buffer object is a combination of a raw byte buffer with a CBElement
-// tree structure which acts as an view/interpretation/overlay for those bytes
-// operator [] indexes into the root Struct, returning a Ref shell that can be
-// used to further index if struct/array, returning further Ref shells, or used
-// to access the data stored in the buffer if a Leaf element class
+//=============================================================
+//	\class	
+//
+//	\author	KeyC0de
+//	\date	2022/08/21 19:53
+//
+//	\brief	The buffer object is a combination of a raw byte buffer with a CBElement
+//			tree structure which acts as a view for those bytes
+//			operator[] indexes into the root Struct, returning a Ref shell that can be
+//			used to further index if struct/array, returning further Ref shells, or used
+//			to access the data stored in the buffer if a Leaf element class
+//=============================================================
 class Buffer final
 {
 	std::shared_ptr<CBElement> m_pLayoutRoot;
@@ -455,8 +517,11 @@ public:
 	~Buffer() noexcept;
 	Buffer( const Buffer &rhs ) noexcept;
 	Buffer& operator==( const Buffer &rhs ) noexcept;
-	// have to be careful with this one...
-	// the buffer that has once been pilfered must not be used :x
+	//===================================================
+	//	\function	mctor
+	//	\brief  	have to be careful with this one...
+	//				the buffer that has once been pilfered must not be used
+	//	\date	2022/08/21 19:58
 	Buffer( Buffer &&rhs ) noexcept;
 	Buffer& operator=( Buffer &&rhs ) noexcept;
 

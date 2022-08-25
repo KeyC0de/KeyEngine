@@ -66,7 +66,7 @@ void Sphere::setPosition( const dx::XMFLOAT3 &pos ) noexcept
 	this->m_pos = pos;
 }
 
-const dx::XMMATRIX Sphere::getTransform() const noexcept
+dx::XMMATRIX Sphere::getTransform() const noexcept
 {
 	return dx::XMMatrixTranslation( m_pos.x,
 		m_pos.y,

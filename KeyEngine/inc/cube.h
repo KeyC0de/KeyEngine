@@ -17,6 +17,6 @@ public:
 
 	void setWorldPosition( const DirectX::XMFLOAT3 &pos ) noexcept;
 	void setWorldRotation( float roll, float pitch, float yaw ) noexcept;
-	const DirectX::XMMATRIX getTransform() const noexcept override;
+	DirectX::XMMATRIX getTransform() const noexcept override;
 	void displayImguiWidgets( Graphics &gph, const char *name ) noexcept;
 };

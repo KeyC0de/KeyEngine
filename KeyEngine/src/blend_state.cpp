@@ -23,7 +23,9 @@ BlendState::BlendState( Graphics &gph,
 	}
 	else
 	{
-		m_blendFactors->fill( 0 );
+		std::array<float, 4> emptyArray;
+		emptyArray.fill( 0 );
+		m_blendFactors = std::make_optional<std::array<float, 4>>( emptyArray );
 	}
 
 	D3D11_BLEND_DESC blendStateDesc{CD3D11_BLEND_DESC{CD3D11_DEFAULT{}}};

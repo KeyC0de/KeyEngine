@@ -1,5 +1,6 @@
 #include "renderer_exception.h"
 #include "winner.h"
+#include <typeinfo>
 
 
 namespace ren

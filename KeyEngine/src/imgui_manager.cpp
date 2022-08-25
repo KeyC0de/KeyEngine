@@ -21,9 +21,3 @@ ImguiManager::~ImguiManager()
 {
 	ImGui::DestroyContext();
 }
-
-ImguiManager* ImguiManager::getInstance()
-{
-	static ImguiManager instance{};
-	return &instance;
-}

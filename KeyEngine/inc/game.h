@@ -14,6 +14,7 @@
 #include "game_state.h"
 #include "sound_manager.h"
 #include "rectangle.h"
+#include "imgui_manager.h"
 #include "../games/arkanoid/ball.h"
 #include "../games/arkanoid/brick.h"
 #include "../games/arkanoid/paddle.h"
@@ -22,8 +23,6 @@
 //#include "../games/snake/fruit.h"
 
 
-struct ImguiManager;
-
 template<typename T>
 class Game
 {
@@ -31,18 +30,16 @@ class Game
 		: public KeyException
 	{
 	public:
-		GameException( int line, const char *file, const char *function,
-			const std::string &msg ) noexcept;
+		GameException( int line, const char *file, const char *function, const std::string &msg ) noexcept;
 
 		const std::string getType() const noexcept override final;
 		virtual const char* what() const noexcept override final;
 	};
 protected:
-	static inline Game *m_pInstance;
 	static inline unsigned m_nWindows;
 	static inline SettingsManager &m_settingsMan = SettingsManager::getInstance();
-	ImguiManager *m_pImguiMan;
-	Window m_mainWindow;
+	std::unique_ptr<ImguiManager> m_pImguiMan;		// deleted 2nd
+	Window m_mainWindow;							// deleted 1st
 	std::unique_ptr<State> m_pCurrentState;
 	KeyTimer<std::chrono::milliseconds> m_gameTimer;
 public:
@@ -73,12 +70,9 @@ class Sandbox3d
 	bool b_bShowDemoWindow = false;
 	Cube m_cube1{m_mainWindow.getGraphics(), {10.0f, 5.0f, 6.0f}, 4.0f};
 	Cube m_cube2{m_mainWindow.getGraphics(), {16.0f, 6.0f, 8.0f}};
-	Model m_sponzaScene{m_mainWindow.getGraphics(),
-		"assets/models/sponza/sponza.obj", 1.0f/8.0f};
-	Model m_nanoSuit{m_mainWindow.getGraphics(),
-		"assets/models/nano_textured/nanosuit.obj", 2.0f};
-	Model m_carabiner{m_mainWindow.getGraphics(),
-		"assets/models/carabiner/carabiner_hook.fbx", 1.0f};
+	Model m_sponzaScene{m_mainWindow.getGraphics(), "assets/models/sponza/sponza.obj", 1.0f/8.0f};
+	Model m_nanoSuit{m_mainWindow.getGraphics(), "assets/models/nano_textured/nanosuit.obj", 2.0f};
+	Model m_carabiner{m_mainWindow.getGraphics(), "assets/models/carabiner/carabiner_hook.fbx", 1.0f};
 public:
 	Sandbox3d( int width, int height, int nWindows = 1 );
 

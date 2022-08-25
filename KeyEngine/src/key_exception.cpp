@@ -42,12 +42,12 @@ const unsigned KeyException::getLine() const noexcept
 	return m_line;
 }
 
-const std::string KeyException::getFile() const noexcept
+const std::string& KeyException::getFile() const noexcept
 {
 	return m_file;
 }
 
-const std::string KeyException::getFunction() const noexcept
+const std::string& KeyException::getFunction() const noexcept
 {
 	return m_function;
 }

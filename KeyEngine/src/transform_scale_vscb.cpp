@@ -9,7 +9,7 @@ TransformScaleVSCB::TransformScaleVSCB( Graphics &gph,
 	float scale )
 	:
 	TransformVSCB{gph, slot},
-	m_cbScale{createCbLayout()}
+	m_cbScale{calcCbLayout()}
 {
 	m_cbScale["scale"] = scale;
 }
@@ -43,7 +43,7 @@ std::unique_ptr<IBindableCloning> TransformScaleVSCB::clone() noexcept
 	return std::make_unique<TransformScaleVSCB>( std::move( *this ) );
 }
 
-con::RawLayout TransformScaleVSCB::createCbLayout()
+con::RawLayout TransformScaleVSCB::calcCbLayout()
 {
 	con::RawLayout layout;
 	layout.add<con::Float>( "scale" );

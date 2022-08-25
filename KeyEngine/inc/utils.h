@@ -8,12 +8,34 @@
 #include <cstddef>
 #include <cinttypes>
 #include "assertions_console.h"
+#include "key_traits.h"
 
 #define isOfTypeT( obj, T ) ( dynamic_cast<T*>( obj ) != nullptr ) ? true : false
+#define SAFE_CALL( obj, function )			{ if ( obj ) { obj.function; } }
+#define SAFE_CALL_POINTER( obj, function )	{ if ( obj ) { obj->function; } }
 
 
 namespace util
 {
+
+template<typename T>
+void safeDelete( T*& p )
+{
+	if ( p )
+	{
+		delete p;
+	}
+	p = nullptr;
+}
+
+template<typename T, typename = std::enable_if_t<is_pointer_wrapper_v<T>>>
+void safeDelete( T& pSm )
+{
+	if ( pSm )
+	{
+		pSm = nullptr;
+	}
+}
 
 template<typename T>
 T sum( std::initializer_list<T> lst )
@@ -182,7 +204,7 @@ T* alignPtr( const T *ptr,
 	return alignedPtr;
 }
 
-// #TODO: doesn't work properly
+// #FIXME: doesn't work properly
 void* alignedMalloc( std::size_t nBytes, std::size_t alignment );
 void alignedFree( void *p ) noexcept;
 

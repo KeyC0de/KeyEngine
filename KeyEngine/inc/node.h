@@ -3,6 +3,7 @@
 #include <DirectXMath.h>
 #include <vector>
 #include <memory>
+#include <string>
 
 
 class Model;
@@ -27,7 +28,7 @@ public:
 	void update( float dt, const DirectX::XMMATRIX &parentWorldTransform ) const cond_noex;
 	void render( size_t channels ) const cond_noex;
 	void setTransform( const DirectX::XMMATRIX &worldTransform ) noexcept;
-	const DirectX::XMFLOAT4X4 &getWorldTransform() const noexcept;
+	const DirectX::XMFLOAT4X4& getWorldTransform() const noexcept;
 	//===================================================
 	//	\function	getId
 	//	\brief  gets IMGUI id

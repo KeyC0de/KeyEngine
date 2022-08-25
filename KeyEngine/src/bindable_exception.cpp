@@ -1,4 +1,5 @@
 #include "bindable_exception.h"
+#include <typeinfo>
 
 
 BindableException::BindableException( int line,

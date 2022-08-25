@@ -20,5 +20,5 @@ public:
 	std::unique_ptr<IBindableCloning> clone() const noexcept override;
 	std::unique_ptr<IBindableCloning> clone() noexcept override;
 private:
-	static con::RawLayout createCbLayout();
+	static con::RawLayout calcCbLayout();
 };

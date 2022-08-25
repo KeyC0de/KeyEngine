@@ -228,7 +228,7 @@ public:
      *   error occurred. The string is never NULL.
      *
      * @note The returned function remains valid until one of the
-     * following methods is called: Export, ExportToBlob, #FreeBlob */
+     * following methods is called: Export, ExportToBlob, FreeBlob */
     const char *GetErrorString() const;
 
     // -------------------------------------------------------------------
@@ -238,14 +238,14 @@ public:
     // -------------------------------------------------------------------
     /** Orphan the blob from the last call to ExportToBlob. This means
      *  the caller takes ownership and is thus responsible for calling
-     *  the C API function #aiReleaseExportBlob to release it. */
+     *  the C API function aiReleaseExportBlob to release it. */
     const aiExportDataBlob *GetOrphanedBlob() const;
 
     // -------------------------------------------------------------------
     /** Frees the current blob.
      *
      *  The function does nothing if no blob has previously been
-     *  previously produced via ExportToBlob. #FreeBlob is called
+     *  previously produced via ExportToBlob. FreeBlob is called
      *  automatically by the destructor. The only reason to call
      *  it manually would be to reclaim as much storage as possible
      *  without giving up the Exporter instance yet. */
@@ -257,7 +257,7 @@ public:
      *  retrieve infos of a specific export format.
      *
      *  This includes built-in exporters as well as exporters registered
-     *  using #RegisterExporter.
+     *  using RegisterExporter.
      **/
     size_t GetExportFormatCount() const;
 

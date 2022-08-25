@@ -22,5 +22,5 @@ public:
 	bool checkForBallCollision( const Ball &ball ) const;
 	// performs the collision
 	void doBallCollision( Ball &ball );
-	DirectX::XMFLOAT2 getCenter() const noexcept;
+	const DirectX::XMFLOAT2 calcCenter() const noexcept;
 };

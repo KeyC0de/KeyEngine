@@ -14,7 +14,7 @@ namespace ren
 	class Renderer;
 }
 
-class Effect final
+class Effect
 {
 	size_t m_renderingChannels;
 	bool m_active = true;
@@ -23,9 +23,9 @@ class Effect final
 	std::vector<std::shared_ptr<IBindable>> m_bindables;
 public:
 	Effect( size_t channels, const std::string &targetPassName, bool bStartActive ) noexcept;
-	Effect( const Effect &rhs ) noexcept;
+	Effect( const Effect &rhs );
 	Effect& operator=( const Effect &rhs ) = delete;
-	Effect( Effect &&rhs ) = default;
+	Effect( Effect &&rhs ) noexcept;
 	Effect& operator=( Effect &&rhs ) = delete;
 
 	void addBindable( std::shared_ptr<IBindable> pBindable ) noexcept;
@@ -37,6 +37,6 @@ public:
 	void setParentDrawable( const Drawable &parent ) noexcept;
 	void accept( IEffectVisitor &ev );
 	void connectPass( ren::Renderer &r );
-	std::vector<std::shared_ptr<IBindable>>& accessBindables() noexcept;
+	std::vector<std::shared_ptr<IBindable>>& bindables() noexcept;
 	const std::vector<std::shared_ptr<IBindable>>& getBindables() const noexcept;
 };

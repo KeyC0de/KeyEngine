@@ -55,9 +55,6 @@
     <ClCompile Include="src\entity_manager.cpp">
       <Filter>engine\gameplay</Filter>
     </ClCompile>
-    <ClCompile Include="src\dumpling.cpp">
-      <Filter>engine\util</Filter>
-    </ClCompile>
     <ClCompile Include="src\cube.cpp">
       <Filter>engine\vfx\drawable</Filter>
     </ClCompile>
@@ -232,9 +229,6 @@
     <ClCompile Include="src\net_utils.cpp">
       <Filter>engine\network</Filter>
     </ClCompile>
-    <ClCompile Include="src\os_utils.cpp">
-      <Filter>engine\os\win</Filter>
-    </ClCompile>
     <ClCompile Include="src\mouse.cpp">
       <Filter>engine\os\win</Filter>
     </ClCompile>
@@ -369,6 +363,15 @@
     </ClCompile>
     <ClCompile Include="games\snake\snake_play_field.cpp">
       <Filter>games\snake</Filter>
+    </ClCompile>
+    <ClCompile Include="src\string_buffer.cpp">
+      <Filter>engine\common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\dumpling.cpp">
+      <Filter>engine\os\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\os_utils.cpp">
+      <Filter>engine\util</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -799,9 +802,6 @@
     <ClInclude Include="inc\entity_manager.h">
       <Filter>engine\gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="inc\dumpling.h">
-      <Filter>engine\util</Filter>
-    </ClInclude>
     <ClInclude Include="inc\cube.h">
       <Filter>engine\vfx\drawable</Filter>
     </ClInclude>
@@ -994,9 +994,6 @@
     <ClInclude Include="inc\net_utils.h">
       <Filter>engine\network</Filter>
     </ClInclude>
-    <ClInclude Include="inc\os_utils.h">
-      <Filter>engine\os\win</Filter>
-    </ClInclude>
     <ClInclude Include="inc\mouse.h">
       <Filter>engine\os\win</Filter>
     </ClInclude>
@@ -1146,6 +1143,21 @@
     </ClInclude>
     <ClInclude Include="games\snake\snake_play_field.h">
       <Filter>games\snake</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\string_buffer.h">
+      <Filter>engine\common</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\consteval_forced.h">
+      <Filter>engine\common</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\dumpling.h">
+      <Filter>engine\os\win</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\os_utils.h">
+      <Filter>engine\util</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\key_traits.h">
+      <Filter>engine\util</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

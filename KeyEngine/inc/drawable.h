@@ -40,7 +40,7 @@ public:
 	{
 		for ( auto &effect : m_effects )
 		{
-			for ( auto &bindable : effect.accessBindables() )
+			for ( auto &bindable : effect.bindables() )
 			{
 				if ( auto *pB = dynamic_cast<T*>( bindable.get() ) )
 				{
@@ -69,7 +69,7 @@ public:
 	//	\function	getTransform
 	//	\brief  returns the world transform matrix
 	//	\date	2022/08/20 23:56
-	virtual const DirectX::XMMATRIX getTransform() const noexcept;
+	virtual DirectX::XMMATRIX getTransform() const noexcept;
 	void setDistanceFromActiveCamera( int dist ) noexcept;
 	const int getDistanceFromActiveCamera() const noexcept;
 };

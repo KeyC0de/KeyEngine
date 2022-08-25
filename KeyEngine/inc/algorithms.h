@@ -1,9 +1,12 @@
 #pragma once
 
 #include <algorithm>
+#include <numeric>
 #include <iterator>
 #include <vector>
 #include <regex>
+#include <iostream>
+#include <key_traits.h>
 
 
 namespace util
@@ -196,7 +199,7 @@ decltype( auto ) try_find( const TContainer& collection, const T& elem )
 	{
 		return search_itr != cend_itr ? *search_itr : nullptr;
 	}
-	else if constexpr ( type_traits::template is_pointer_wrapper_v<T> )
+	else if constexpr ( is_pointer_wrapper_v<T> )
 	{
 		return search_itr != cend_itr ? search_itr->get() : nullptr;
 	}
@@ -250,7 +253,7 @@ decltype( auto ) try_find_if( const TContainer& collection, TPredicate&& predica
 	{
 		return search_itr != cend_itr ? *search_itr : nullptr;
 	}
-	else if constexpr ( type_traits::template is_pointer_wrapper_v<T> )
+	else if constexpr ( is_pointer_wrapper_v<T> )
 	{
 		return search_itr != cend_itr ? search_itr->get() : nullptr;
 	}

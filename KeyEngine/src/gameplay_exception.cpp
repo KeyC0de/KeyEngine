@@ -1,4 +1,5 @@
 #include "gameplay_exception.h"
+#include <typeinfo>
 
 
 GameplayException::GameplayException( int line,

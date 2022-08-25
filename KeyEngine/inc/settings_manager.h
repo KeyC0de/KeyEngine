@@ -34,5 +34,5 @@ public:
 
 	static SettingsManager& getInstance( const std::string &filePath = "config.ini" );
 	const Settings& getSettings();
-	Settings& accessSettings();
+	Settings& settings();
 };

@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <memory>
+#include <string>
 #include "entity_defines.h"
 
 
@@ -56,8 +57,7 @@ public:
 	//	\function	spawnEntity
 	//	\brief  factory function for entities
 	//	\date	2020/12/09 14:14
-	EntityId spawnEntity( const std::string &name, int categoryId,
-		Entity *pParent = nullptr );
+	EntityId spawnEntity( const std::string &name, int categoryId, Entity *pParent = nullptr );
 	EntityIndex getAliveEntities();
 	//===================================================
 	//	\function	getEntityById

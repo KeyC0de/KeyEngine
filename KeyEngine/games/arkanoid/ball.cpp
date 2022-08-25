@@ -70,12 +70,12 @@ Rect Ball::getRect() const noexcept
 		m_radius );
 }
 
-dx::XMFLOAT2 Ball::getVelocity() const noexcept
+const dx::XMFLOAT2& Ball::getVelocity() const noexcept
 {
 	return m_vel;
 }
 
-dx::XMFLOAT2 Ball::getPosition() const noexcept
+const dx::XMFLOAT2& Ball::getPosition() const noexcept
 {
 	return m_pos;
 }

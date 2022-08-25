@@ -63,7 +63,6 @@ void KeyConsole::getConsoleInfo( HANDLE h )
 		<< '\n';
 }
 
-
 KeyConsole::KeyConsole( const std::string &fontName )
 	:
 	m_fp{nullptr},

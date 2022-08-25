@@ -19,11 +19,10 @@ private:
 		: public KeyException
 	{
 	public:
-		WindowException( int line, const char *file, const char *function,
-			const std::string &msg ) noexcept;
+		WindowException( int line, const char *file, const char *function, const std::string &msg ) noexcept;
 
 		virtual const std::string getType() const noexcept override final;
-		virtual const char *what() const noexcept override final;
+		virtual const char* what() const noexcept override final;
 	};
 
 	class WindowClass final
@@ -57,8 +56,7 @@ private:
 	//	Dialog( Dialog &&rhs ) noexcept;
 	//	Dialog& operator=( Dialog &&rhs ) noexcept;
 	//
-	//	static LRESULT CALLBACK dialogProc( HWND hWnd, UINT uMsg, WPARAM wParam,
-	//		LPARAM lParam );
+	//	static LRESULT CALLBACK dialogProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam );
 	//	std::wstring getName() const noexcept;
 	//	void setHwnd( HWND hWnd );
 	//	HWND getHwnd() const noexcept;
@@ -82,10 +80,8 @@ private:
 	//NOTIFYICONDATA m_notifyIconData;
 	//std::unique_ptr<Dialog> m_pDialogAbout;
 
-	static LRESULT CALLBACK windowProc( HWND pWndHandle, unsigned uMsg,
-		WPARAM wParam, LPARAM lParam );
-	static LRESULT CALLBACK windowProcDelegate( HWND pWndHandle, unsigned uMsg,
-		WPARAM wParam, LPARAM lParam );
+	static LRESULT CALLBACK windowProc( HWND pWndHandle, unsigned uMsg, WPARAM wParam, LPARAM lParam );
+	static LRESULT CALLBACK windowProcDelegate( HWND pWndHandle, unsigned uMsg, WPARAM wParam, LPARAM lParam );
 public:
 	Window();
 	Window( int width, int height, const char *name );
@@ -135,10 +131,8 @@ private:
 	void hideCursor() noexcept;
 	void enableImGuiMouse() noexcept;
 	void disableImGuiMouse() noexcept;
-	LRESULT windowProc_impl( _In_ HWND pWndHandle, _In_ unsigned msg,
-		_In_ WPARAM wparam, _In_ LPARAM lparam );
-	LRESULT windowProc_impl2d( _In_ HWND pWndHandle, _In_ unsigned msg,
-		_In_ WPARAM wparam, _In_ LPARAM lparam );
+	LRESULT windowProc_impl( _In_ HWND pWndHandle, _In_ unsigned msg, _In_ WPARAM wparam, _In_ LPARAM lparam );
+	LRESULT windowProc_impl2d( _In_ HWND pWndHandle, _In_ unsigned msg, _In_ WPARAM wparam, _In_ LPARAM lparam );
 	void setFont( const std::wstring &fontName );
 };
 

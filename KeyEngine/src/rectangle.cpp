@@ -62,22 +62,22 @@ bool Rect::isOverlappingWith( const Rect &other ) const noexcept
 		&& minNum( m_top, m_bottom ) < maxNum( other.m_top, other.m_bottom );
 }
 
-Rect Rect::getScaled( float offset ) const noexcept
+Rect Rect::calcScaled( float offset ) const noexcept
 {
 	return Rect{m_left - offset, m_right + offset, m_top - offset, m_bottom + offset};
 }
 
-const float Rect::getRectWidth() const noexcept
+const float Rect::getWidth() const noexcept
 {
 	return m_right - m_left;
 }
 
-const float Rect::getRectHeight() const noexcept
+const float Rect::getHeight() const noexcept
 {
 	return m_bottom - m_top;
 }
 
-const dx::XMFLOAT2 Rect::getCenter() const noexcept
+const dx::XMFLOAT2 Rect::calcCenter() const noexcept
 {
 	return dx::XMFLOAT2{(m_left + m_right) / 2.0f, (m_top + m_bottom) / 2.0f};
 }

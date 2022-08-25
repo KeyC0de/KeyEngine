@@ -17,6 +17,8 @@ protected:
 		DirectX::XMMATRIX worldViewProjection;
 	};
 private:
+	// #FIXME: try removing static
+	// #FIXME: try putting cctors dtor etc. in VertexShaderConstantBuffer
 	static inline std::unique_ptr<VertexShaderConstantBuffer<Transforms>> m_pVscb;
 public:
 	TransformVSCB( Graphics &gph, unsigned slot );

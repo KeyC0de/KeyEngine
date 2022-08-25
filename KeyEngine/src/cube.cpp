@@ -163,7 +163,7 @@ void Cube::setWorldRotation( float roll,
 	this->m_yaw = yaw;
 }
 
-const dx::XMMATRIX Cube::getTransform() const noexcept
+dx::XMMATRIX Cube::getTransform() const noexcept
 {
 	return dx::XMMatrixRotationRollPitchYaw( m_roll, m_pitch, m_yaw ) *
 		dx::XMMatrixTranslation( m_pos.x, m_pos.y, m_pos.z );

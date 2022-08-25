@@ -13,7 +13,7 @@ SettingsManager::SettingsManager( const std::string &filePath )
 
 SettingsManager& SettingsManager::getInstance( const std::string &filePath )
 {
-	static SettingsManager	m_instance{std::string{"config/"} + filePath};
+	static SettingsManager m_instance{std::string{"config/"} + filePath};
 	return m_instance;
 }
 
@@ -75,7 +75,7 @@ const SettingsManager::Settings& SettingsManager::getSettings()
 	return m_settings;
 }
 
-SettingsManager::Settings& SettingsManager::accessSettings()
+SettingsManager::Settings& SettingsManager::settings()
 {
 	return m_settings;
 }

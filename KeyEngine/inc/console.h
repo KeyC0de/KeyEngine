@@ -39,7 +39,7 @@ public:
 	static void getConsoleInfo( HANDLE h );
 public:
 	bool closeConsole();
-	static KeyConsole &getInstance() noexcept;
+	static KeyConsole& getInstance() noexcept;
 	//===================================================
 	//	\function	resetInstance
 	//	\brief  you must call this manually prior to program exit to avoid memory leaks
@@ -74,6 +74,7 @@ public:
 	//	\brief  read from stdin, returns the string
 	//	\date	2020/12/01 21:36
 	std::string read( const uint32_t maxChars = 1024u );
+
 	inline bool operator==( const KeyConsole &rhs ) const noexcept
 	{
 		return this->m_fp == rhs.m_fp;

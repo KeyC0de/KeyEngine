@@ -171,7 +171,7 @@ void Plane::setRotation( float roll,
 	m_yaw = yaw;
 }
 
-const DirectX::XMMATRIX Plane::getTransform() const noexcept
+DirectX::XMMATRIX Plane::getTransform() const noexcept
 {
 	return DirectX::XMMatrixRotationRollPitchYaw( m_roll, m_pitch, m_yaw ) *
 		DirectX::XMMatrixTranslation( m_pos.x, m_pos.y, m_pos.z );

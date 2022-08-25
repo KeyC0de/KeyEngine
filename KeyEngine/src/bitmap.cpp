@@ -207,7 +207,7 @@ const std::string Bitmap::BitmapException::getType() const noexcept
 	return typeid( this ).name();
 }
 
-const char *Bitmap::BitmapException::what() const noexcept
+const char* Bitmap::BitmapException::what() const noexcept
 {
 	return KeyException::what();
 }

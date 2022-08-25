@@ -19,9 +19,9 @@ Drawable::Drawable( Graphics &gph,
 		aimesh );
 	m_pPrimitiveTopology = PrimitiveTopology::fetch( gph );
 
-	for ( const auto &ef : mat.getEffects() )
+	for ( auto &effect : mat.getEffects() )
 	{
-		addEffect( std::move( ef ) );
+		addEffect( std::move( effect ) );
 	}
 }
 
@@ -38,17 +38,17 @@ void Drawable::update( float dt ) cond_noex
 void Drawable::render( size_t channels ) const noexcept
 {
 	ASSERT( !m_effects.empty(), "No Effects to submit to the Renderer!" );
-	for ( const auto &ef : m_effects )
+	for ( const auto &effect : m_effects )
 	{
-		ef.render( *this,
+		effect.render( *this,
 			channels );
 	}
 }
 
-void Drawable::addEffect( Effect ef ) noexcept
+void Drawable::addEffect( Effect effect ) noexcept
 {
-	ef.setParentDrawable( *this );
-	m_effects.emplace_back( std::move( ef ) );
+	effect.setParentDrawable( *this );
+	m_effects.emplace_back( std::move( effect ) );
 }
 
 void Drawable::bind( Graphics &gph ) const cond_noex
@@ -60,9 +60,9 @@ void Drawable::bind( Graphics &gph ) const cond_noex
 
 void Drawable::accept( IEffectVisitor &ev )
 {
-	for ( auto &ef : m_effects )
+	for ( auto &effect : m_effects )
 	{
-		ef.accept( ev );
+		effect.accept( ev );
 	}
 }
 
@@ -74,9 +74,9 @@ const unsigned Drawable::getIndicesCount() const cond_noex
 void Drawable::connectEffectsToRenderer( ren::Renderer &r )
 {
 	ASSERT( !m_effects.empty(), "No Effects to submit to the Renderer!" );
-	for ( auto &ef : m_effects )
+	for ( auto &effect : m_effects )
 	{
-		ef.connectPass( r );
+		effect.connectPass( r );
 	}
 }
 
@@ -86,7 +86,7 @@ void Drawable::setTransform( const dx::XMMATRIX &worldTransform ) noexcept
 		worldTransform );
 }
 
-const DirectX::XMMATRIX Drawable::getTransform() const noexcept
+DirectX::XMMATRIX Drawable::getTransform() const noexcept
 {
 	return DirectX::XMLoadFloat4x4( &m_worldTransform );
 }

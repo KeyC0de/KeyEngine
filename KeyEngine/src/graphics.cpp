@@ -198,14 +198,13 @@ Graphics::Graphics( HWND hWnd,
 		pD3dBackBuffer.Get() );
 
 	if constexpr ( GraphicsMode::get() == GraphicsMode::_2D )
-	{// for d2d
-		m_pCpuBuffer = static_cast<ColorBGRA*>( _aligned_malloc( sizeof( ColorBGRA )
-			* width * height,
+	{
+		m_pCpuBuffer = static_cast<ColorBGRA*>( _aligned_malloc( sizeof( ColorBGRA ) * width * height,
 			16u ) );
 	}
 
-	m_fpsSpriteBatch = std::make_unique<dx::SpriteBatch>( m_pContext.Get() );
-	m_spriteFont = std::make_unique<dx::SpriteFont>( m_pDevice.Get(),
+	m_fpsSpriteBatch = std::make_unique<dx::SpriteBatch>(m_pContext.Get());
+	m_spriteFont = std::make_unique<dx::SpriteFont>(m_pDevice.Get(),
 		L"assets/fonts/myComicSansMSSpriteFont.spritefont" );
 
 	// initialize Dear ImGui d3d11 Implementation
@@ -230,7 +229,7 @@ Graphics::~Graphics()
 		m_pCpuBuffer = nullptr;
 	}
 #if defined _DEBUG && !defined NDEBUG
-	d3d11DebugReport();
+	//d3d11DebugReport();
 #endif
 }
 
@@ -274,7 +273,9 @@ void Graphics::beginRendering() noexcept
 	else
 	{
 		static size_t cpuBuffer2dSize = (size_t)m_width * m_height * sizeof ColorBGRA;
-		memset( m_pCpuBuffer, 0u, cpuBuffer2dSize );
+		memset( m_pCpuBuffer,
+			0u,
+			cpuBuffer2dSize );
 	}
 	clearShaderSlots();
 	VTUNE_ITT_TASK_END;
@@ -303,7 +304,7 @@ void Graphics::updateAndRenderFpsTimer()
 	}
 
 	// draw FPS text
-	m_spriteFont->DrawString( m_fpsSpriteBatch.get(),
+	m_spriteFont->DrawString(m_fpsSpriteBatch.get(),
 		fps.c_str(),
 		dx::XMFLOAT2{0.0f, 0.0f},
 		dx::Colors::Green,

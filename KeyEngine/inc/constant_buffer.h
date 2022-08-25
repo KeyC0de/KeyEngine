@@ -72,11 +72,11 @@ public:
 	//	\function	ctor
 	//	\brief  cheating constructor - the D3d resource has already been created (eg copied from another)
 	//	\date	2022/08/14 19:45
-	IConstantBuffer( Microsoft::WRL::ComPtr<ID3D11Buffer>& d3dBuf,
+	IConstantBuffer( Microsoft::WRL::ComPtr<ID3D11Buffer> &d3dBuf,
 		unsigned slot )
 		:
 		m_pD3dCb{d3dBuf},
-		m_slot( slot )
+		m_slot(slot)
 	{
 
 	}
@@ -99,7 +99,7 @@ public:
 
 		memcpy( msr.pData,
 			&cb,
-			sizeof cb );
+			sizeof CB );
 
 		getDeviceContext( gph )->Unmap( m_pD3dCb.Get(),
 			0u );
@@ -122,6 +122,8 @@ protected:
 		cbDesc->Usage = D3D11_USAGE_DYNAMIC;
 		cbDesc->CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
 		cbDesc->ByteWidth = sizeof CB;
+		cbDesc->MiscFlags = 0;
+		cbDesc->StructureByteStride = 0;
 	}
 };
 

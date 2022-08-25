@@ -1,6 +1,5 @@
 #include <algorithm>
 #include "game.h"
-#include "imgui_manager.h"
 #include "math_utils.h"
 #include "imgui.h"
 #include "utils.h"
@@ -35,7 +34,7 @@ ImguiManager* Game<T>::createImgui() noexcept
 {
 	if constexpr ( GraphicsMode::get() == GraphicsMode::_3D )
 	{
-		return ImguiManager::getInstance();
+		return new ImguiManager{};
 	}
 	else
 	{
@@ -98,7 +97,7 @@ State* Game<T>::getState() noexcept
 template <typename T>
 float Game<T>::calculateDt()
 {
-	auto &settings = m_settingsMan.accessSettings();
+	auto &settings = m_settingsMan.settings();
 	static float minFrameTime = 1.0f / settings.iMaxFps;
 	float dt = m_gameTimer.lap() * settings.fGameSpeed;
 
@@ -512,9 +511,10 @@ void Arkanoid::update( float dt )
 		if ( m_bricks[i].checkForBallCollision( m_ball ) )
 		{
 			float newCollisionDistance;
+			const auto brickCenter = m_bricks[i].calcCenter();
 			dx::XMStoreFloat( &newCollisionDistance,
 				dx::XMVector2LengthSq( dx::XMVectorSubtract( dx::XMLoadFloat2( &m_ball.getPosition() ),
-						dx::XMLoadFloat2( &m_bricks[i].getCenter() ) ) ) );
+						dx::XMLoadFloat2( &brickCenter ) ) ) );
 			if ( bCollided )
 			{// limit to one collision per frame
 				if ( newCollisionDistance < currentColDist )
