@@ -93,7 +93,7 @@ public:
     /** @brief Default constructor.
      *
      *  Create an instance of your derived class and assign it to an
-     *  #Assimp::Importer instance by calling Importer::SetIOHandler().
+     *  Assimp::Importer instance by calling Importer::SetIOHandler().
      */
     IOSystem();
 

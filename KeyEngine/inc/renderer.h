@@ -71,7 +71,7 @@ public:
 
 	void showImGuiWindows( Graphics &gph );
 	void dumpShadowMap( Graphics &gph, const std::string &path );
-	void setMainCamera( Camera &cam );
+	void setActiveCamera( Camera &cam );
 	void setShadowCamera( Camera &cam );
 private:
 	void showGaussianBlurImguiWindow( Graphics &gph );

@@ -1,5 +1,5 @@
 #include "job.h"
-#include "drawable.h"
+#include "mesh.h"
 #include "effect.h"
 #include "dxgi_info_queue.h"
 
@@ -8,9 +8,9 @@ namespace ren
 {
 
 Job::Job( const Effect *pEffect,
-	const Drawable *pDrawable )
+	const Mesh *pMesh )
 	:
-	m_pDrawable{pDrawable},
+	m_pMesh{pMesh},
 	m_pEffect{pEffect}
 {
 
@@ -18,9 +18,9 @@ Job::Job( const Effect *pEffect,
 
 void Job::run( Graphics &gph ) const cond_noex
 {
-	m_pDrawable->bind( gph );	// bind P.T., I.B., V.B.
-	m_pEffect->bind( gph );		// bind other bindables
-	gph.drawIndexed( m_pDrawable->getIndicesCount() );
+	m_pMesh->bind( gph );		// bind P.T., I.B., V.B.
+	m_pEffect->bind( gph );	// bind other bindables
+	gph.drawIndexed( m_pMesh->getIndicesCount() );
 	DXGI_GET_QUEUE_INFO( gph );
 }
 

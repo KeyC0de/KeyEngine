@@ -1,9 +1,10 @@
 #include "octree.h"
-#include "octree_data.h"
 
 
-Octree::Octree( const Vec3 &m_center,
-	const Vec3 &halfDim )
+namespace dx = DirectX;
+
+Octree::Octree( const dx::XMFLOAT3 &m_center,
+	const dx::XMFLOAT3 &halfDim )
 	:
 	m_center( m_center ),
 	m_half( halfDim ),
@@ -33,7 +34,7 @@ Octree::~Octree()
 	}
 }
 
-int Octree::getOctantContainingPoint( const Vec3 &point ) const
+int Octree::getOctantContainingPoint( const dx::XMFLOAT3 &point ) const
 {
 	int oct = 0;
 	if ( point.x >= m_center.x )
@@ -92,7 +93,7 @@ void Octree::insert( OctreeData *data )
 			// compute bounding boxes for each child
 			for ( int i = 0; i < 8; ++i )
 			{
-				Vec3 newCenter = m_center;
+				dx::XMFLOAT3 newCenter = m_center;
 				newCenter.x += m_half.x * ( i & 4 ? 0.5f : -0.5f );
 				newCenter.y += m_half.y * ( i & 2 ? 0.5f : -0.5f );
 				newCenter.z += m_half.z * ( i & 1 ? 0.5f : -0.5f );
@@ -118,8 +119,8 @@ void Octree::insert( OctreeData *data )
 	}
 }
 
-void Octree::getEntitiesWithinBBox( const Vec3 &requestedMin,
-	const Vec3 &requestedMax,
+void Octree::getEntitiesWithinBBox( const dx::XMFLOAT3 &requestedMin,
+	const dx::XMFLOAT3 &requestedMax,
 	std::vector<OctreeData*>& resultsOut )
 {
 	// if we're at a leaf node, check to see whether the point is inside the BBox
@@ -127,7 +128,7 @@ void Octree::getEntitiesWithinBBox( const Vec3 &requestedMin,
 	{
 		if ( m_data != nullptr )
 		{
-			const Vec3 p = m_data->getPosition();
+			const dx::XMFLOAT3 p = m_data->getPosition();
 			if ( p.x > requestedMax.x
 				|| p.y > requestedMax.y
 				|| p.z > requestedMax.z
@@ -147,8 +148,8 @@ void Octree::getEntitiesWithinBBox( const Vec3 &requestedMin,
 		for ( int i = 0; i < 8; ++i )
 		{
 			// Compute the min/max corners of this child octant
-			Vec3 childMax = m_children[i]->m_center + m_children[i]->m_half;
-			Vec3 childMin = m_children[i]->m_center - m_children[i]->m_half;
+			dx::XMFLOAT3 childMax = m_children[i]->m_center + m_children[i]->m_half;
+			dx::XMFLOAT3 childMin = m_children[i]->m_center - m_children[i]->m_half;
 
 			// check if child's {min,max} lie out of requested bounds
 			if ( childMax.x < requestedMin.x

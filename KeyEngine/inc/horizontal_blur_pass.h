@@ -16,7 +16,7 @@ class HorizontalBlurPass
 {
 	std::shared_ptr<PixelShaderConstantBufferEx> m_pPscbBlurDirection;
 public:
-	HorizontalBlurPass( Graphics &gph, const std::string &name, int rezReductFactor );
+	HorizontalBlurPass( Graphics &gph, const std::string &name, const int rezReductFactor );
 
 	void run( Graphics &gph ) const cond_noex override;
 	void reset() cond_noex override;

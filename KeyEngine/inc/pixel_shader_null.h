@@ -19,6 +19,6 @@ public:
 
 	void bind( Graphics &gph ) cond_noex override;
 	static std::shared_ptr<PixelShaderNull> fetch( Graphics &gph );
-	static std::string generateUid();
-	std::string getUid() const noexcept override;
+	static std::string calcUid();
+	const std::string getUid() const noexcept override;
 };

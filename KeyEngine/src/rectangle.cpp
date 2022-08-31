@@ -1,20 +1,13 @@
 #include "rectangle.h"
-
-#ifndef maxNum
-#define maxNum( a, b ) ( ( (a) > (b) ) ? (a) : (b) )
-#endif
-
-#ifndef minNum
-#define minNum( a, b ) ( ( (a) < (b) ) ? (a) : (b) )
-#endif
+#include <algorithm>
 
 
 namespace dx = DirectX;
 
-Rect::Rect( float left,
-	float right,
-	float top,
-	float bottom )
+Rect::Rect( const float left,
+	const float right,
+	const float top,
+	const float bottom )
 	:
 	m_left(left),
 	m_right(right),
@@ -33,8 +26,8 @@ Rect::Rect( const dx::XMFLOAT2 &topLeft,
 }
 
 Rect::Rect( const dx::XMFLOAT2 &topLeft,
-	float width,
-	float height )
+	const float width,
+	const float height )
 	:
 	Rect{topLeft.x, topLeft.x + width, topLeft.y, topLeft.y + height}
 {
@@ -42,8 +35,8 @@ Rect::Rect( const dx::XMFLOAT2 &topLeft,
 }
 
 Rect Rect::makeGivenCenter( const dx::XMFLOAT2 &center,
-	float halfWidth,
-	float halfHeight)
+	const float halfWidth,
+	const float halfHeight)
 {
 	const dx::XMFLOAT2 topLeft{center.x - halfWidth, center.y - halfHeight};
 	const dx::XMFLOAT2 bottomRight{center.x + halfWidth, center.y + halfHeight};
@@ -56,13 +49,13 @@ bool Rect::isOverlappingWith( const Rect &other ) const noexcept
 		&& left < other.right
 		&& bottom > other.top
 		&& top < other.bottom;*/
-	return maxNum( m_left, m_right ) > minNum( other.m_left, other.m_right )
-		&& minNum( m_left, m_right ) < maxNum( other.m_left, other.m_right )
-		&& maxNum( m_top, m_bottom ) > minNum( other.m_top, other.m_bottom )
-		&& minNum( m_top, m_bottom ) < maxNum( other.m_top, other.m_bottom );
+	return std::max( m_left, m_right ) > std::min( other.m_left, other.m_right )
+		&& std::min( m_left, m_right ) < std::max( other.m_left, other.m_right )
+		&& std::max( m_top, m_bottom ) > std::min( other.m_top, other.m_bottom )
+		&& std::min( m_top, m_bottom ) < std::max( other.m_top, other.m_bottom );
 }
 
-Rect Rect::calcScaled( float offset ) const noexcept
+Rect Rect::calcScaled( const float offset ) const noexcept
 {
 	return Rect{m_left - offset, m_right + offset, m_top - offset, m_bottom + offset};
 }

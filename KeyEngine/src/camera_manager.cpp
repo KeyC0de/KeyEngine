@@ -10,29 +10,31 @@ CameraManager& CameraManager::getInstance()
 	return m_instance;
 }
 
-void CameraManager::setWidthHeight( int width,
-	int height ) noexcept
+void CameraManager::setWidth( const int width ) noexcept
 {
-	m_clientWidthHeight.first = width;
-	m_clientWidthHeight.second = height;
+	m_clientWidth = width;
 }
 
-int CameraManager::getClientWidth() const noexcept
+void CameraManager::setHeight( const int height ) noexcept
 {
-	return m_clientWidthHeight.first;
+	m_clientHeight = height;
 }
 
-int CameraManager::getClientHeight() const noexcept
+const int CameraManager::getClientWidth() const noexcept
 {
-	return m_clientWidthHeight.second;
+	return m_clientWidth;
+}
+
+const int CameraManager::getClientHeight() const noexcept
+{
+	return m_clientWidth;
 }
 
 void CameraManager::spawnImguiWindow( Graphics &gph )
 {
 	if ( ImGui::Begin( "Cameras" ) )
 	{
-		if ( ImGui::BeginCombo( "Active",
-			getActiveCamera().getName().c_str() ) )
+		if ( ImGui::BeginCombo( "Active", activeCamera().getName().c_str() ) )
 		{
 			for ( int i = 0; i < std::size( m_cameras ); ++i )
 			{
@@ -45,28 +47,27 @@ void CameraManager::spawnImguiWindow( Graphics &gph )
 			ImGui::EndCombo();
 		}
 
-		if ( ImGui::BeginCombo( "Controlled",
-			getControlledCamera().getName().c_str() ) )
+		if ( ImGui::BeginCombo( "Controlled", controlledCamera().getName().c_str() ) )
 		{
 			for ( int i = 0; i < std::size( m_cameras ); ++i )
 			{
-				const bool bSelected = i == m_controlledCamera;
+				const bool bSelected = i == m_controlledCameraIndex;
 				if ( ImGui::Selectable( m_cameras[i]->getName().c_str(), bSelected ) )
 				{
-					m_controlledCamera = i;
+					m_controlledCameraIndex = i;
 				}
 			}
 			ImGui::EndCombo();
 		}
 
-		getControlledCamera().displayImguiWidgets( gph );
+		controlledCamera().displayImguiWidgets( gph );
 	}
 	ImGui::End();
 }
 
 void CameraManager::bind( Graphics &gph )
 {
-	gph.setViewMatrix( getActiveCamera().getViewMatrix() );
+	gph.setViewMatrix( activeCamera().getViewMatrix() );
 }
 
 void CameraManager::add( std::shared_ptr<Camera> pCam )
@@ -82,7 +83,7 @@ void CameraManager::connectEffectsToRenderer( ren::Renderer &r )
 	}
 }
 
-void CameraManager::render( size_t channels ) const
+void CameraManager::render( const size_t channels ) const
 {
 	for ( size_t i = 0; i < m_cameras.size(); ++i )
 	{
@@ -93,7 +94,7 @@ void CameraManager::render( size_t channels ) const
 	}
 }
 
-Camera& CameraManager::getActiveCamera() const noexcept
+Camera& CameraManager::activeCamera() const noexcept
 {
 	return *m_cameras[m_activeCameraIndex];
 }
@@ -103,7 +104,7 @@ std::shared_ptr<Camera> CameraManager::shareActiveCamera() const noexcept
 	return m_cameras[m_activeCameraIndex];
 }
 
-Camera& CameraManager::getControlledCamera()
+Camera& CameraManager::controlledCamera()
 {
-	return *m_cameras[m_controlledCamera];
+	return *m_cameras[m_controlledCameraIndex];
 }

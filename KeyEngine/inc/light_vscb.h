@@ -24,7 +24,7 @@ class LightVSCB
 	std::unique_ptr<VertexShaderConstantBuffer<LightTransformVSCB>> m_pVscb;
 	const Camera *m_pPointLightShadowCamera = nullptr;
 public:
-	LightVSCB( Graphics &gph, unsigned slot );
+	LightVSCB( Graphics &gph, const unsigned slot );
 
 	void update( Graphics &gph );
 	void bind( Graphics &gph ) cond_noex override;

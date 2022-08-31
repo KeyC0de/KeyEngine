@@ -28,13 +28,13 @@ bool isFileBinary( const char *fname );
 //	\brief  for text files
 //	\date	2020/10/30 2:30
 // count lines of a file
-size_t countLinesOfFile( char *fileName );
+size_t countLinesOfFile( const char *fileName );
 // calculate columns of a file (assuming that the file has equal ammount of columns - maximum ammount of columns in any given line)
-size_t countColumnsOfFile( char *fileName );
+size_t countColumnsOfFile( const char *fileName );
 #if defined _DEBUG && !defined NDEBUG
 bool printFile( const char *fname );
 // counts digits, white space, others
-void countLetterOccurences( char *filename );
+void countLetterOccurences( const char *filename );
 #endif
 
 

@@ -6,17 +6,17 @@
 #include "transform_vscb.h"
 #include "vertex_buffer.h"
 #include "vertex_shader.h"
-#include "rasterizer.h"
+#include "rasterizer_state.h"
 #include "rendering_channel.h"
 
 
 namespace dx = DirectX;
 
 Frustum::Frustum( Graphics &gph,
-	float width,
-	float height,
-	float nearZ,
-	float farZ )
+	const float width,
+	const float height,
+	const float nearZ,
+	const float farZ )
 {
 	setupVertexBuffer( gph,
 		width,
@@ -83,8 +83,9 @@ Frustum::Frustum( Graphics &gph,
 			0u ) );
 		lambert.addBindable( std::make_shared<TransformVSCB>( gph,
 			0u ) );
-		lambert.addBindable( Rasterizer::fetch( gph,
-			false ) );
+		lambert.addBindable( RasterizerState::fetch( gph,
+			RasterizerState::FrontSided,
+			RasterizerState::Solid ) );
 
 		addEffect( std::move( lambert ) );
 	}
@@ -111,21 +112,22 @@ Frustum::Frustum( Graphics &gph,
 			0u ) );
 		occluded.addBindable( std::make_shared<TransformVSCB>( gph,
 			0u ) );
-		occluded.addBindable( Rasterizer::fetch( gph,
-			false ) );
+		occluded.addBindable( RasterizerState::fetch( gph,
+			RasterizerState::FrontSided,
+			RasterizerState::Solid ) );
 
 		addEffect( std::move( occluded ) );
 	}
 }
 
 void Frustum::setupVertexBuffer( Graphics &gph,
-	float width,
-	float height,
-	float nearZ,
-	float farZ )
+	const float width,
+	const float height,
+	const float nearZ,
+	const float farZ )
 {
-	ver::VertexLayout vertexLayout;
-	vertexLayout.add( ver::VertexLayout::Position3D );
+	ver::VertexInputLayout vertexLayout;
+	vertexLayout.add( ver::VertexInputLayout::Position3D );
 	ver::Buffer vb{std::move( vertexLayout )};
 	{
 		// A frustum requires 8 vertices.
@@ -158,18 +160,17 @@ void Frustum::setRotation( const DirectX::XMFLOAT3 &rot ) noexcept
 	this->m_rot = rot;
 }
 
-DirectX::XMMATRIX Frustum::getTransform() const noexcept
+const DirectX::XMMATRIX Frustum::getTransform() const noexcept
 {
-	return dx::XMMatrixRotationRollPitchYawFromVector( dx::XMLoadFloat3( &m_rot ) ) *
-		dx::XMMatrixTranslationFromVector( dx::XMLoadFloat3( &m_pos ) );
-}
-
-const DirectX::XMMATRIX Frustum::getPosition() const noexcept
-{
-	return dx::XMMatrixTranslationFromVector( dx::XMLoadFloat3( &m_pos ) );
+	return getRotation() * getPosition();
 }
 
 const DirectX::XMMATRIX Frustum::getRotation() const noexcept
 {
 	return dx::XMMatrixRotationRollPitchYawFromVector( dx::XMLoadFloat3( &m_rot ) );
+}
+
+const DirectX::XMMATRIX Frustum::getPosition() const noexcept
+{
+	return dx::XMMatrixTranslationFromVector( dx::XMLoadFloat3( &m_pos ) );
 }

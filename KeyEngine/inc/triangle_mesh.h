@@ -13,6 +13,5 @@ struct TriangleMesh
 	TriangleMesh( const ver::Buffer &vertices, const std::vector<unsigned> &indices );
 
 	void transform( const DirectX::XMMATRIX &matrix );
-	// independent flat shaded normals
-	void setNormalsIndependent() cond_noex;
+	void setFlatShadedIndependentNormals() cond_noex;
 };

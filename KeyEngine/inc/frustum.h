@@ -1,24 +1,23 @@
 #pragma once
 
 #include <DirectXMath.h>
-#include "drawable.h"
+#include "mesh.h"
 
 
-class Drawable;
+class Mesh;
 
 class Frustum
-	: public Drawable
+	: public Mesh
 {
 	DirectX::XMFLOAT3 m_pos{0.0f, 0.0f, 0.0f};
 	DirectX::XMFLOAT3 m_rot{0.0f, 0.0f, 0.0f};
 public:
-	Frustum( Graphics &gph, float width, float height, float nearZ, float farZ );
+	Frustum( Graphics &gph, const float width, const float height, const float nearZ, const float farZ );
 
-	void setupVertexBuffer( Graphics &gph, float width, float height, float nearZ,
-		float farZ );
+	void setupVertexBuffer( Graphics &gph, const float width, const float height, const float nearZ, const float farZ );
 	void setPosition( const DirectX::XMFLOAT3 &pos ) noexcept;
 	void setRotation( const DirectX::XMFLOAT3 &rot ) noexcept;
-	DirectX::XMMATRIX getTransform() const noexcept override;
-	const DirectX::XMMATRIX getPosition() const noexcept;
+	const DirectX::XMMATRIX getTransform() const noexcept override;
 	const DirectX::XMMATRIX getRotation() const noexcept;
+	const DirectX::XMMATRIX getPosition() const noexcept;
 };

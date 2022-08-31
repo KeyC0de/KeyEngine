@@ -10,6 +10,7 @@
 //#include <xaudio2fx.h>
 //#include <xapofx.h>
 #include <x3daudio.h>
+#include "non_copyable.h"
 
 
 //============================================================
@@ -26,6 +27,7 @@
 //			thus all Sounds contained in a SoundManager object must have the same format
 //=============================================================
 class SoundManager final
+	: public NonCopyableAndNonMovable
 {
 public:
 	//============================================================
@@ -39,31 +41,31 @@ public:
 	//			at most m_nMaxAudioChannels can play at a certain time
 	//=============================================================
 	class Channel final
+		: public NonCopyable
 	{
 		friend class Sound;
 
 		struct IXAudio2SourceVoice *m_pSourceVoice = nullptr;
-		class Sound *m_pSound;
+		Sound *m_pSound;
 	public:
 		Channel() = default;
-		Channel( const Channel &rhs ) = delete;
-		Channel& operator=( const Channel &rhs ) = delete;
-		~Channel() noexcept;
 		Channel( Channel &&rhs ) cond_noex;
 		Channel& operator=( Channel &&rhs ) cond_noex;
+		~Channel() noexcept;
 
-		bool setupChannel( SoundManager &soundManager, class Sound &sound );
-		void playSound( class Sound *sound, float volume );
+		bool setupChannel( SoundManager &soundManager, Sound &sound );
+		void playSound( Sound *sound, const float volume );
 		void stopSound() cond_noex;
 		//===================================================
 		//	\function	rechannel
 		//	\brief  finds new channel for the existing Sound
 		//	\date	2020/10/25 19:18
-		void rechannel( const class Sound *pOldSound, class Sound *pNewSound );
-		class Sound* getSound() const cond_noex;
+		void rechannel( const Sound *pOldSound, Sound *pNewSound );
+		Sound* getSound() const cond_noex;
 	};
 
 	class Submix final
+		: public NonCopyable
 	{
 		friend class Channel;
 
@@ -74,18 +76,15 @@ public:
 	public:
 		Submix( const std::string &name = "" );
 		~Submix() noexcept;
-		Submix( const Submix &rhs ) = delete;
-		Submix& operator=( const Submix &rhs ) = delete;
 		Submix( Submix &&rhs ) cond_noex;
 		Submix& operator=( Submix &&rhs ) cond_noex;
 
-		std::string getName() const cond_noex;
+		const std::string& getName() const cond_noex;
 		void setName( const std::string &name ) cond_noex;
 		void setVolume( float volume = 1.0f ) cond_noex;
 	};
 private:
 	WAVEFORMATEXTENSIBLE *m_pFormat;
-
 	Microsoft::WRL::ComPtr<struct IXAudio2> m_pXAudio2;
 	struct IXAudio2MasteringVoice *m_pMasterVoice = nullptr;
 	std::mutex m_mu;
@@ -102,10 +101,6 @@ public:
 	//	\date	2020/10/24 1:48
 	static SoundManager& getInstance( WAVEFORMATEXTENSIBLE *format = nullptr );
 public:
-	SoundManager( const SoundManager &rhs ) = delete;
-	SoundManager& operator=( const SoundManager &rhs ) = delete;
-	SoundManager( SoundManager &&rhs ) = delete;
-	SoundManager& operator=( SoundManager &&rhs ) = delete;
 	~SoundManager() noexcept;
 
 	void setMasterVolume( float volume = 1.0f );
@@ -134,6 +129,7 @@ private:
 //			ctor creates the sound properties
 //=============================================================
 class Sound final
+	: public NonCopyable
 {
 	friend class SoundManager::Channel;
 
@@ -150,36 +146,30 @@ public:
 	//	\function	findChunk
 	//	\brief  locates chunks in RIFF files
 	//	\date	2020/10/25 15:09
-	HRESULT findChunk( HANDLE file, DWORD fourcc, DWORD &chunkSize,
-		DWORD &chunkDataPosition );
+	HRESULT findChunk( HANDLE file, DWORD fourcc, DWORD &chunkSize, DWORD &chunkDataPosition );
 	//===================================================
 	//	\function	readChunkData
 	//	\brief  read chunk's data (after the chunk has been located)
 	//	\date	2020/10/21 17:37
-	HRESULT readChunkData( HANDLE file, void *buffer, DWORD buffersize,
-		DWORD bufferoffset );
+	HRESULT readChunkData( HANDLE file, void *buffer, DWORD buffersize, DWORD bufferoffset );
 public:
 	// #TODO: Sound Looping
 	//===================================================
 	//	\function	Sound
 	//	\brief  constructor loads sound file and configures all its properties
 	//	\date	2020/10/25 15:04
-	Sound( const char *zsFilename, const std::string &name = "",
-		const std::string &submixName = "" );
-	Sound( const Sound &rhs ) = delete;
-	Sound& operator=( const Sound &rhs ) = delete;
-
+	Sound( const char *zsFilename, const std::string &name = "", const std::string &submixName = "" );
 	Sound( Sound &&rhs ) cond_noex;
 	Sound& operator=( Sound &&rhs ) cond_noex;
 	~Sound() noexcept;
 
-	std::string getName() const cond_noex;
+	const std::string& getName() const cond_noex;
 	//===================================================
 	//	\function	getTypeName
 	//	\brief  get sound type eg effects, music, dialogue etc
 	//			each sound type corresponds to a Submix voice
 	//	\date	2020/10/25 14:05
-	std::string getSubmixName() const cond_noex;
+	const std::string& getSubmixName() const cond_noex;
 	//===================================================
 	//	\function	play
 	//	\brief  instructs the sound manager to play the sound on free channel(s)

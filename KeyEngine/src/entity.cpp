@@ -47,20 +47,18 @@ Entity::Entity( Entity &&rhs ) noexcept
 
 Entity& Entity::operator=( Entity &&rhs ) noexcept
 {
-	std::swap( m_version, rhs.m_version );
-	std::swap( m_index, rhs.m_index );
-	std::swap( m_name, rhs.m_name );
-	std::swap( m_category, rhs.m_category );
-	std::swap( m_pParent, rhs.m_pParent );
+	Entity tmp{std::move( rhs )};
+	std::swap( *this,
+		tmp );
 	return *this;
 }
 
-EntityIndex Entity::getVersion() const noexcept
+const EntityIndex Entity::getVersion() const noexcept
 {
 	return m_version;
 }
 
-EntityIndex Entity::getIndex() const noexcept
+const EntityIndex Entity::getIndex() const noexcept
 {
 	return m_index;
 }
@@ -80,7 +78,7 @@ void Entity::printInfo() const noexcept
 		<< '\n';
 }
 
-inline EntityId Entity::getId() const noexcept
+const inline EntityId Entity::getId() const noexcept
 {
 #ifdef _32_BIT_ENTITY
 	return ( m_version << 16 ) | m_index;
@@ -89,17 +87,22 @@ inline EntityId Entity::getId() const noexcept
 #endif
 }
 
-std::string Entity::getName() const noexcept
+const std::string& Entity::getName() const noexcept
 {
 	return m_name;
 }
 
-Entity::Category Entity::getCategory() const noexcept
+const Entity::Category Entity::getCategory() const noexcept
 {
 	return m_category;
 }
 
-Entity* Entity::getParent() const noexcept
+Entity* Entity::parent() const noexcept
+{
+	return m_pParent;
+}
+
+const Entity* Entity::getParent() const noexcept
 {
 	return m_pParent;
 }
@@ -109,7 +112,7 @@ void Entity::addChild( Entity *child ) noexcept
 	m_children.emplace_back( child );
 }
 
-std::vector<Entity*>& Entity::getChildren() noexcept
+std::vector<Entity*>& Entity::children() noexcept
 {
 	return m_children;
 }
@@ -129,7 +132,7 @@ const int Entity::getChildrenCount() const noexcept
 	return (int) m_children.size();
 }
 
-void Entity::onMessageReceived( std::unique_ptr<class Message> msg )
+void Entity::onMessageReceived( std::unique_ptr<Message> msg )
 {
 	auto pDataMsg = dynamic_cast<MessageCall*>( msg.get() );
 
@@ -167,12 +170,11 @@ void Entity::onMessageReceived( std::unique_ptr<class Message> msg )
 	pDataMsg->setHandled( true );
 }
 
-void Entity::sendMessage( class Message *msg ) const noexcept
+void Entity::sendMessage( Message *msg ) const noexcept
 {
 	auto &md = MessageDispatcher::getInstance();
 	md.addMessage( msg );
 }
-
 
 
 inline bool Entity::operator==( const Entity *rhs ) const noexcept
@@ -194,18 +196,3 @@ inline bool Entity::operator!=( const Entity &rhs ) const noexcept
 {
 	return this->getId() != rhs.getId();
 }
-
-
-/*
-int Entity::damage( int amount )
-{
-	m_hp -= std::abs( amount );
-	return m_hp;
-}
-
-int Entity::heal( int amount )
-{
-	m_hp += std::abs( amount );
-	return m_hp;
-}
-*/

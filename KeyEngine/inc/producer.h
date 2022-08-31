@@ -17,11 +17,11 @@ class IProducer
 protected:
 	IProducer( const std::string &name );
 public:
-	virtual ~IProducer() = default;
+	virtual ~IProducer() noexcept = default;
 
 	const std::string& getName() const noexcept;
 	virtual std::shared_ptr<IBindable> getBindable();
-	virtual std::shared_ptr<IRenderSurface> getBuffer();
+	virtual std::shared_ptr<IRenderSurface> getRenderSurface();
 };
 
 template<class T>
@@ -79,7 +79,7 @@ public:
 			target );
 	}
 
-	std::shared_ptr<IRenderSurface> getBuffer() override
+	std::shared_ptr<IRenderSurface> getRenderSurface() override
 	{
 		if ( m_bLinked )
 		{

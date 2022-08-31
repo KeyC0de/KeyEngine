@@ -60,7 +60,7 @@ class LogStream;
 /** @brief CPP-API: Abstract interface for logger implementations.
  *  Assimp provides a default implementation and uses it for almost all
  *  logging stuff ('DefaultLogger'). This class defines just basic logging
- *  behavior and is not of interest for you. Instead, take a look at #DefaultLogger. */
+ *  behavior and is not of interest for you. Instead, take a look at DefaultLogger. */
 class ASSIMP_API Logger
 #ifndef SWIG
     : public Intern::AllocateFromAssimpHeap

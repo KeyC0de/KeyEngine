@@ -6,12 +6,12 @@
 #include "depth_stencil_view.h"
 #include "depth_stencil_state.h"
 #include "blend_state.h"
-#include "rasterizer_shadow.h"
+#include "rasterizer_state_shadow.h"
 #include "cube_texture.h"
 #include "camera.h"
 #include "math_utils.h"
 #include "light_vscb.h"
-#include "shadow_map_sampler.h"
+#include "shadow_map_sampler_state.h"
 
 
 namespace ren
@@ -19,7 +19,7 @@ namespace ren
 
 ShadowPass::ShadowPass( Graphics &gph,
 	const std::string &name,
-	unsigned shadowMapRez )
+	const unsigned shadowMapRez )
 	:
 	RenderQueuePass{name},
 	m_pLightVcb{std::make_shared<LightVSCB>( gph, 1u )}
@@ -27,7 +27,7 @@ ShadowPass::ShadowPass( Graphics &gph,
 	m_shadowMapResolution = shadowMapRez;
 
 	addPassBindable( m_pLightVcb );
-	addPassBindable( std::make_shared<ShadowMapSampler>( gph ) );
+	addPassBindable( std::make_shared<ShadowMapSamplerState>( gph ) );
 	m_pDsvCubemap = std::make_shared<CubeTextureDS>( gph,
 		m_shadowMapResolution,
 		3u );
@@ -37,7 +37,7 @@ ShadowPass::ShadowPass( Graphics &gph,
 	addPassBindable( DepthStencilState::fetch( gph,
 		DepthStencilState::Mode::Default ) );
 
-	addPassBindable( std::make_shared<RasterizerShadow>( gph,
+	addPassBindable( std::make_shared<RasterizerStateShadow>( gph,
 		50,
 		2.0f,
 		0.1f ) );
@@ -119,7 +119,9 @@ void ShadowPass::dumpShadowMap( Graphics &gph,
 	for ( size_t i = 0; i < 6; ++i )
 	{
 		auto pDsvCubeTex = m_pDsvCubemap->shareDepthBuffer( i );
-		pDsvCubeTex->convertToBitmap( gph ).save( path + std::to_string( i ) + ".png" );
+		pDsvCubeTex->convertToBitmap( gph,
+			gph.getClientWidth(),
+			gph.getClientHeight() ).save( path + std::to_string( i ) + ".png" );
 	}
 }
 

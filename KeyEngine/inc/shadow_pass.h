@@ -27,8 +27,7 @@ class ShadowPass
 	std::vector<DirectX::XMFLOAT3> m_cameraDirections{6};
 	std::vector<DirectX::XMFLOAT3> m_cameraUps{6};
 public:
-	ShadowPass( Graphics &gph, const std::string &name,
-		unsigned shadowMapRez = m_shadowMapResolution );
+	ShadowPass( Graphics &gph, const std::string &name, const unsigned shadowMapRez = m_shadowMapResolution );
 
 	//===================================================
 	//	\function	update

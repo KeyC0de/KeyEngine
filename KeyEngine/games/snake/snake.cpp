@@ -10,7 +10,7 @@ SnakeRepr::SnakeRepr( const GridLocation &gridLoc )
 }
 
 void SnakeRepr::render( Graphics &gph,
-	SnakePlayField &field ) const
+	const SnakePlayField &field ) const cond_noex
 {
 	for ( const auto &s : m_segments )
 	{
@@ -53,7 +53,7 @@ bool SnakeRepr::checkForCollisions( const GridLocation &targetGridLoc ) const
 	return false;
 }
 
-int SnakeRepr::getLength() const
+const int SnakeRepr::getLength() const
 {
 	return m_segments.size();
 }
@@ -64,13 +64,13 @@ SnakeRepr::Segment::Segment( const GridLocation &gridLoc )
 	m_color = SnakeRepr::headColor;
 }
 
-SnakeRepr::Segment::Segment( ColorBGRA col )
+SnakeRepr::Segment::Segment( const ColorBGRA col )
 {
 	this->m_color = col;
 }
 
 void SnakeRepr::Segment::render( Graphics &gph,
-	SnakePlayField &field ) const
+	const SnakePlayField &field ) const cond_noex
 {
 	field.renderCell( gph,
 		m_gridLoc,

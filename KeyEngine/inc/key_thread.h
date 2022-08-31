@@ -1,5 +1,6 @@
 #include <thread>
 #include <future>
+#include "non_copyable.h"
 
 
 class Flag final
@@ -25,6 +26,7 @@ public:
 //				and to do this we use future-promise in the ctor
 //=============================================================
 class KeyThread
+	: public NonCopyable
 {
 private:
 	std::thread m_thread;
@@ -47,8 +49,6 @@ public:
 	}
 
 	~KeyThread() noexcept;
-	KeyThread( const KeyThread &rhs ) = delete;
-	KeyThread& operator=( const KeyThread &rhs ) = delete;
 
 	//===================================================
 	//	\function	interrupt

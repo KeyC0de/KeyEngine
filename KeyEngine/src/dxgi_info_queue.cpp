@@ -24,9 +24,8 @@ DxgiInfoQueue::DxgiInfoQueue()
 		std::terminate();
 	}
 
-	dxgiGetDebugInterface = reinterpret_cast<LPDXGIGETDEBUGINTERFACE>(
-		reinterpret_cast<void*>( GetProcAddress( dxgidebugLib,
-			"DXGIGetDebugInterface" ) ) );
+	dxgiGetDebugInterface = reinterpret_cast<LPDXGIGETDEBUGINTERFACE>( reinterpret_cast<void*>( GetProcAddress( dxgidebugLib,
+		"DXGIGetDebugInterface" ) ) );
 	if ( !dxgiGetDebugInterface )
 	{
 #if defined _DEBUG && !defined NDEBUG
@@ -37,7 +36,7 @@ DxgiInfoQueue::DxgiInfoQueue()
 		std::terminate();
 	}
 
-	HRESULT hres = dxgiGetDebugInterface( IID_PPV_ARGS( m_pDxgiInfoQueue.GetAddressOf() ) );
+	HRESULT hres = dxgiGetDebugInterface( IID_PPV_ARGS( &m_pDxgiInfoQueue ) );
 	ASSERT_HRES_IF_FAILED;
 
 	// determine when to break execution
@@ -90,6 +89,6 @@ std::vector<std::string> DxgiInfoQueue::getInfoMessages()
 		messageDescriptions.emplace_back( pMsg->pDescription );
 	}
 	//m_pDxgiInfoQueue->ClearStoredMessages( m_msgProducer );
-	//m_index = 0u;
+	//m_i = 0u;
 	return messageDescriptions;
 }

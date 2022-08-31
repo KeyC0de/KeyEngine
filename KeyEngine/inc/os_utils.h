@@ -1,13 +1,31 @@
 #pragma once
 
 #include "winner.h"
-#include <string>
-#include <sstream>
 #include <winternl.h>
 #include <comdef.h>
+#include <tlhelp32.h>
+#include <string>
+#include <sstream>
 #include "console.h"
 #include <functional>
 #include <optional>
+
+/*
+__declspec(restrict) declares that the return value of a function points to memory that is not aliased. That is, the memory returned by the function is guaranteed to not be accessible through any other pointer in the program.
+
+__declspec(noalias) declares that the function does not modify memory outside the first level of indirection from the function's parameters. That is, the parameters are the only reference to the outside world the function has.
+
+Both of them are just performance hints to the compiler.
+*/
+#if defined _MSC_VER || defined _WIN32 || defined _WIN64
+#	define restricted __declspec( restrict )
+#	define noaliasing __declspec( noalias )
+#	define hint __declspec( restrict ) __declspec( noalias )
+#elif defined __unix__ || defined __unix || defined __APPLE__ && defined __MACH__
+#	define restricted __restrict__
+#	define noaliasing __restrict__
+#	define hint __restrict__
+#endif
 
 
 namespace util
@@ -39,6 +57,10 @@ void doPeriodically( const std::function<void(void)>& f, size_t intervalMs, bool
 
 std::optional<DWORD> registryGetDword( HKEY hKey, const std::wstring &regName );
 std::optional<std::wstring> registryGetString( HKEY hKey, const std::wstring &regName );
+
+static void suspendAllThreads();
+
+hint std::size_t* getUniqueMemory();
 
 
 }// namespace util

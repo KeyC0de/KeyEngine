@@ -1,7 +1,7 @@
 #include "vertical_blur_pass.h"
 #include "pixel_shader.h"
 #include "blend_state.h"
-#include "texture_sampler.h"
+#include "texture_sampler_state.h"
 
 
 namespace ren
@@ -15,10 +15,10 @@ VerticalBlurPass::VerticalBlurPass( Graphics &gph,
 	addPassBindable( PixelShader::fetch( gph,
 		"blur_separ_ps.cso" ) );
 
-	addPassBindable( TextureSampler::fetch( gph,
+	addPassBindable( TextureSamplerState::fetch( gph,
 		0u,
-		TextureSampler::FilterMode::Trilinear,
-		TextureSampler::AddressMode::Clamp ) );
+		TextureSamplerState::FilterMode::Trilinear,
+		TextureSamplerState::AddressMode::Clamp ) );
 
 	addPassBindable( BlendState::fetch( gph,
 		BlendState::Alpha,

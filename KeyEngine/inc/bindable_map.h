@@ -23,7 +23,7 @@ private:
 	std::shared_ptr<T> fetch_impl( Graphics &gph,
 		TArgs&&... args ) cond_noex
 	{
-		const auto bindableId = T::generateUid( std::forward<TArgs>( args )... );
+		const auto bindableId = T::calcUid( std::forward<TArgs>( args )... );
 		const auto elem = m_bindableMap.find( bindableId );
 		if ( elem == m_bindableMap.end() )
 		{
@@ -38,7 +38,7 @@ private:
 		}
 	}
 
-	static BindableMap &getInstance()
+	static BindableMap& getInstance()
 	{
 		static BindableMap instance;
 		return instance;

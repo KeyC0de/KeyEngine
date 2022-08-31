@@ -1,9 +1,9 @@
-#include "shadow_map_sampler.h"
+#include "shadow_map_sampler_state.h"
 #include "os_utils.h"
 #include "dxgi_info_queue.h"
 
 
-ShadowMapSampler::ShadowMapSampler( Graphics &gph )
+ShadowMapSamplerState::ShadowMapSamplerState( Graphics &gph )
 {
 	for ( unsigned i = 0; i < std::size( m_samplers ); ++i )
 	{
@@ -16,40 +16,40 @@ ShadowMapSampler::ShadowMapSampler( Graphics &gph )
 	setHwPcfFiltering( true );
 }
 
-void ShadowMapSampler::setTrilinearFiltering( bool bEnable )
+void ShadowMapSamplerState::setTrilinearFiltering( bool bEnable )
 {
 	m_samplerMask = ( m_samplerMask & ~0b01 ) | ( bEnable ? 0b01 : 0b0 );
 }
 
-void ShadowMapSampler::setHwPcfFiltering( bool bEnable )
+void ShadowMapSamplerState::setHwPcfFiltering( bool bEnable )
 {
 	m_samplerMask = ( m_samplerMask & ~0b10 ) | ( bEnable ? 0b10 : 0b0 );
 }
 
-bool ShadowMapSampler::isTrilinearFiltering() const
+bool ShadowMapSamplerState::isTrilinearFiltering() const noexcept
 {
 	return m_samplerMask & 0b01;
 }
 
-bool ShadowMapSampler::isHwPcfFiltering() const
+bool ShadowMapSamplerState::isHwPcfFiltering() const noexcept
 {
 	return m_samplerMask & 0b10;
 }
 
-unsigned ShadowMapSampler::getCurrentSlot() const
+unsigned ShadowMapSamplerState::getCurrentSlot() const noexcept
 {
 	return isHwPcfFiltering() ?
 		1 :
 		2;
 }
 
-size_t ShadowMapSampler::getIndex( bool bTrilinear,
-	bool bHwPcf )
+size_t ShadowMapSamplerState::getIndex( bool bTrilinear,
+	bool bHwPcf ) noexcept
 {
 	return ( bTrilinear ? 0b01 : 0 ) + ( bHwPcf ? 0b10 : 0 );
 }
 
-Microsoft::WRL::ComPtr<ID3D11SamplerState> ShadowMapSampler::make( Graphics &gph,
+Microsoft::WRL::ComPtr<ID3D11SamplerState> ShadowMapSamplerState::make( Graphics &gph,
 	bool bTrilinear,
 	bool bHwPcf )
 {
@@ -79,7 +79,7 @@ Microsoft::WRL::ComPtr<ID3D11SamplerState> ShadowMapSampler::make( Graphics &gph
 	return std::move( pSampler );
 }
 
-void ShadowMapSampler::bind( Graphics &gph ) cond_noex
+void ShadowMapSamplerState::bind( Graphics &gph ) cond_noex
 {
 	getDeviceContext( gph )->PSSetSamplers( getCurrentSlot(),
 		1,

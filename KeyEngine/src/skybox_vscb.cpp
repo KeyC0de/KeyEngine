@@ -2,7 +2,7 @@
 
 
 SkyboxVSCB::SkyboxVSCB( Graphics &gph,
-	unsigned slot )
+	const unsigned slot )
 	:
 	m_pVscb{std::make_unique<VertexShaderConstantBuffer<Transform>>( gph, slot )}
 {

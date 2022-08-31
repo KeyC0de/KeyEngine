@@ -3,8 +3,8 @@
 #include "consumer.h"
 #include "producer.h"
 #include "camera.h"
-#include "texture_sampler.h"
-#include "rasterizer.h"
+#include "texture_sampler_state.h"
+#include "rasterizer_state.h"
 #include "render_target.h"
 #include "depth_stencil_view.h"
 #include "depth_stencil_state.h"
@@ -37,14 +37,15 @@ SkyPass::SkyPass( Graphics &gph,
 	addPassBindable( std::make_shared<CubeTexture>( gph,
 		"assets/textures/skybox/space",
 		0u ) );
-	addPassBindable( TextureSampler::fetch( gph,
+	addPassBindable( TextureSamplerState::fetch( gph,
 		0u,
-		TextureSampler::FilterMode::Trilinear,
-		TextureSampler::AddressMode::Wrap ) );
+		TextureSamplerState::FilterMode::Trilinear,
+		TextureSamplerState::AddressMode::Wrap ) );
 	addPassBindable( DepthStencilState::fetch( gph,
 		DepthStencilState::Mode::DepthEquals1 ) );
-	addPassBindable( Rasterizer::fetch( gph,
-		true ) );
+	addPassBindable( RasterizerState::fetch( gph,
+		RasterizerState::TwoSided,
+		RasterizerState::Solid ) );
 	addPassBindable( PrimitiveTopology::fetch( gph ) );
 	addPassBindable( std::make_shared<SkyboxVSCB>( gph ) );
 	addPassBindable( PixelShader::fetch( gph,
@@ -53,7 +54,7 @@ SkyPass::SkyPass( Graphics &gph,
 		auto vs = VertexShader::fetch( gph,
 			"skybox_vs.cso" );
 		{// cube
-			TriangleMesh cube = GeometryCube::make();
+			TriangleMesh cube = Geometry::makeCube();
 			const auto geometryTag = "$cube_skybox";
 			m_pCubeVb = VertexBuffer::fetch( gph,
 				geometryTag,
@@ -67,7 +68,7 @@ SkyPass::SkyPass( Graphics &gph,
 				*vs ) );
 		}
 		{// sphere
-			TriangleMesh sphere = GeometrySphere::make();
+			TriangleMesh sphere = Geometry::makeTesselatedSphere();
 			const auto geometryTag = "$sphere_skybox";
 			m_pSphereVb = VertexBuffer::fetch( gph,
 				geometryTag,
@@ -85,17 +86,17 @@ SkyPass::SkyPass( Graphics &gph,
 		m_pDsv ) );
 }
 
-void SkyPass::setMainCamera( const Camera &cam ) noexcept
+void SkyPass::setActiveCamera( const Camera &cam ) noexcept
 {
-	m_pMainCamera = &cam;
+	m_pActiveCamera = &cam;
 }
 
 void SkyPass::run( Graphics &gph ) const cond_noex
 {
 	// no need to inherit from RenderQueuePass to add a Job for a single "special" object
-	ASSERT( m_pMainCamera, "SkyPass - Main camera not specified (null)!" );
+	ASSERT( m_pActiveCamera, "SkyPass - Main camera not specified (null)!" );
 	unsigned nIndices;
-	m_pMainCamera->makeActive( gph,
+	m_pActiveCamera->makeActive( gph,
 		false );
 	if ( m_bUseSphere )
 	{

@@ -15,27 +15,25 @@ KeyRandom::operator bool() noexcept
 float KeyRandom::getRandomFloatInRange( int start,
 	int end )
 {
-	return start + ( static_cast<float>( m_distr( m_device ) )
-		/ static_cast<float>( std::numeric_limits<unsigned int>::max() ) )
+	return start
+		+ ( static_cast<float>( m_distr( m_device ) ) / static_cast<float>( std::numeric_limits<unsigned int>::max() ) )
 		* ( end - start );
 }
 
 float KeyRandom::getRandomFloat()
 {
-	return static_cast<float>( m_distr( m_device ) )
-		/ std::numeric_limits<float>::max();
+	return static_cast<float>( m_distr( m_device ) ) / std::numeric_limits<float>::max();
 }
 
 double KeyRandom::getRandomDouble()
 {
-	return static_cast<double>(  m_distr( m_device ) )
-		/ std::numeric_limits<double>::max();
+	return static_cast<double>(  m_distr( m_device ) ) / std::numeric_limits<double>::max();
 }
 
 double KeyRandom::getRandomDoubleInRange( int start,
 	int end )
 {
-	return start + ( static_cast<double>( m_distr( m_device ) )
-		/ static_cast<double>( std::numeric_limits<unsigned int>::max() ) )
+	return start
+		+ ( static_cast<double>( m_distr( m_device ) ) / static_cast<double>( std::numeric_limits<unsigned int>::max() ) )
 		* ( end - start );
 }

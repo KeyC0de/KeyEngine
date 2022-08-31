@@ -902,7 +902,7 @@ STBTT_DEF void stbtt_GetGlyphBitmapBox(const stbtt_fontinfo *font, int glyph, fl
 STBTT_DEF void stbtt_GetGlyphBitmapBoxSubpixel(const stbtt_fontinfo *font, int glyph, float scale_x, float scale_y, float shift_x, float shift_y, int *ix0, int *iy0, int *ix1, int *iy1);
 
 
-// @TODO: don't expose this structure
+// @DO: don't expose this structure
 typedef struct
 {
    int w, h, stride;
@@ -1426,7 +1426,7 @@ static int stbtt_InitFont_internal(stbtt_fontinfo *info, unsigned char *data, in
 	  info->numGlyphs = 0xffff;
 
    // find a cmap encoding table we understand *now *to avoid searching
-   // later. (todo: could make this installable)
+   // later. (DO: could make this installable)
    // the same regardless of glyph.
    numTables = ttUSHORT(data + cmap + 2);
    info->index_map = 0;
@@ -1475,7 +1475,7 @@ STBTT_DEF int stbtt_FindGlyphIndex(const stbtt_fontinfo *info, int unicode_codep
 		 return ttUSHORT(data + index_map + 10 + (unicode_codepoint - first)*2);
 	  return 0;
    } else if (format == 2) {
-	  STBTT_assert(0); // @TODO: high-byte mapping for japanese/chinese/korean
+	  STBTT_assert(0); // @DO: high-byte mapping for japanese/chinese/korean
 	  return 0;
    } else if (format == 4) { // standard mapping for windows fonts: binary search collection of ranges
 	  stbtt_uint16 segcount = ttUSHORT(data+index_map+6) >> 1;
@@ -4477,7 +4477,7 @@ STBTT_DEF unsigned char * stbtt_GetGlyphSDF(const stbtt_fontinfo *info, float sc
 			for (i=0; i < num_verts; ++i) {
 			   float x0 = verts[i].x*scale_x, y0 = verts[i].y*scale_y;
 
-			   // check against every point here rather than inside line/curve primitives -- @TODO: wrong if multiple 'moves' in a row produce a garbage point, and given culling, probably more efficient to do within line/curve
+			   // check against every point here rather than inside line/curve primitives -- @DO: wrong if multiple 'moves' in a row produce a garbage point, and given culling, probably more efficient to do within line/curve
 			   float dist2 = (x0-sx)*(x0-sx) + (y0-sy)*(y0-sy);
 			   if (dist2 < min_dist*min_dist)
 				  min_dist = (float) STBTT_sqrt(dist2);

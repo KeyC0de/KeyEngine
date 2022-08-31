@@ -12,7 +12,7 @@ IPass::IPass( const std::string &name ) noexcept
 
 }
 
-IPass::~IPass()
+IPass::~IPass() noexcept
 {
 	pass_;
 }
@@ -40,7 +40,7 @@ const std::vector<std::unique_ptr<IProducer>>& IPass::getProducers() const
 	return m_producers;
 }
 
-IConsumer& IPass::getConsumer( const std::string &name ) const
+IConsumer& IPass::consumer( const std::string &name ) const
 {
 	for ( auto &consumer : m_consumers )
 	{
@@ -58,7 +58,7 @@ IConsumer& IPass::getConsumer( const std::string &name ) const
 	THROW_RENDERER_EXCEPTION( oss.str() );
 }
 
-IProducer& IPass::getProducer( const std::string &name ) const
+IProducer& IPass::producer( const std::string &name ) const
 {
 	for ( auto &producer : m_producers )
 	{ 
@@ -78,7 +78,7 @@ IProducer& IPass::getProducer( const std::string &name ) const
 
 void IPass::addConsumer( std::unique_ptr<IConsumer> pConsumer )
 {
-	// verify there are no consumer name collisions
+	// verify there are no name collisions with other consumers
 	for ( auto &consumer : m_consumers )
 	{
 		if ( consumer->getName() == pConsumer->getName() )
@@ -91,7 +91,7 @@ void IPass::addConsumer( std::unique_ptr<IConsumer> pConsumer )
 
 void IPass::addProducer( std::unique_ptr<IProducer> pProducer )
 {
-	// verify there are no producer name collisions
+	// verify there are no name collisions with other producers
 	for ( auto &producer : m_producers )
 	{
 		if ( producer->getName() == pProducer->getName() )
@@ -106,8 +106,8 @@ void IPass::setupConsumerTarget( const std::string &currentPassConsumerName,
 	const std::string &targetPassName,
 	const std::string &targetPassProducerName )
 {
-	auto &consumer = getConsumer( currentPassConsumerName );
-	consumer.setPassAndProducerNames( targetPassName,
+	auto &cons = consumer( currentPassConsumerName );
+	cons.setPassAndProducerNames( targetPassName,
 		targetPassProducerName );
 }
 

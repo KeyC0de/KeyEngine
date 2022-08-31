@@ -49,7 +49,7 @@ bool EVShowcase::onVisit( con::Buffer &cb )
 		return imguiNodeName.c_str();
 	};
 
-	// query the Drawable's Constant Buffer for available CB Elements
+	// query the Mesh's Constant Buffer for available CB Elements
 	// and display ImGui controls for those available
 	if ( const auto &el = cb["scale"]; el.isValid() )
 	{

@@ -9,18 +9,16 @@
 #include "assertions_console.h"
 #include "os_utils.h"
 #include "key_wrl.h"
+#include "utils.h"
 
 
 namespace util
 {
 
-DirectX::XMFLOAT3 extractEulerAngles( const DirectX::XMFLOAT4X4 &mat );
-DirectX::XMFLOAT3 extractTranslation( const DirectX::XMFLOAT4X4 &mat );
-DirectX::XMMATRIX scaleTranslation( const DirectX::XMMATRIX &mat, float scale );
-
 //===================================================
 //	\function	comSafeRelease
 //	\brief  safely release a COM object
+//			deprecated
 //	\date	2018/12/30 17:35
 template<typename T>
 inline void comSafeRelease( T &p )
@@ -32,6 +30,15 @@ inline void comSafeRelease( T &p )
 	}
 }
 
+DirectX::XMFLOAT3 XM_CALLCONV extractEulerAngles( const DirectX::XMFLOAT4X4 &mat );
+DirectX::XMFLOAT3 XM_CALLCONV extractTranslation( const DirectX::XMFLOAT4X4 &mat );
+DirectX::XMMATRIX XM_CALLCONV scaleTranslation( const DirectX::XMMATRIX &mat, float scale );
+DirectX::XMVECTOR XM_CALLCONV pitchYawRollToQuaternion( const DirectX::XMVECTOR& pitchYawRollAngles );
+ALIAS_FUNCTION( pitchYawRollToQuaternion, eulerAnglesToQuaternion );
+ALIAS_FUNCTION( quaternionToPitchYawRoll, quaternionToEulerAngles );
+void quaternionToPitchYawRoll( DirectX::XMFLOAT4 &quat, float &pitch, float &yaw, float &roll );
+DirectX::XMVECTOR XM_CALLCONV pitchYawRollToVector( float pitch, float yaw, float roll );
+
 DXGI_RATIONAL queryRefreshRate( unsigned screenWidth, unsigned screenHeight, bool bVsync );
 
 //===================================================
@@ -39,9 +46,7 @@ DXGI_RATIONAL queryRefreshRate( unsigned screenWidth, unsigned screenHeight, boo
 //	\brief  will be used to load and compile a shader at runtime
 //	\date	2019/12/30 17:28
 template<class TShader>
-static TShader* createShaderObject( ID3D11Device *pD3dDevice,
-	ID3DBlob *&pShaderBlob,
-	ID3D11ClassLinkage *pClassLinkage );
+static TShader* createShaderObject( ID3D11Device *pD3dDevice, ID3DBlob *&pShaderBlob, ID3D11ClassLinkage *pClassLinkage );
 
 template<>
 static ID3D11VertexShader* createShaderObject<ID3D11VertexShader>( ID3D11Device *pD3dDevice,

@@ -4,33 +4,42 @@
 
 
 IConstantBufferEx::IConstantBufferEx( Graphics &gph,
-	unsigned slot,
+	const unsigned slot,
 	const con::CBElement &layoutRoot,
 	const con::Buffer *pBuf )
 	:
 	m_slot(slot)
 {
-	D3D11_BUFFER_DESC cbDesc{};
-	cbDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-	cbDesc.Usage = D3D11_USAGE_DYNAMIC;
-	cbDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
-	cbDesc.ByteWidth = (unsigned)layoutRoot.getSizeInBytes();
+	D3D11_BUFFER_DESC d3dBufDesc{};
+	setBufferDesc( d3dBufDesc,
+		(unsigned) layoutRoot.getSizeInBytes() );
 	if ( pBuf != nullptr )
 	{
 		D3D11_SUBRESOURCE_DATA subData{};
 		subData.pSysMem = pBuf->getRawBytes();
-		HRESULT hres = getDevice( gph )->CreateBuffer( &cbDesc,
+		HRESULT hres = getDevice( gph )->CreateBuffer( &d3dBufDesc,
 			&subData,
 			&m_pD3dCb );
 		ASSERT_HRES_IF_FAILED;
 	}
 	else
 	{
-		HRESULT hres = getDevice( gph )->CreateBuffer( &cbDesc,
+		HRESULT hres = getDevice( gph )->CreateBuffer( &d3dBufDesc,
 			nullptr,
 			&m_pD3dCb );
 		ASSERT_HRES_IF_FAILED;
 	}
+}
+
+void IConstantBufferEx::setBufferDesc( D3D11_BUFFER_DESC &d3dBufDesc,
+	unsigned byteWidth )
+{
+	d3dBufDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+	d3dBufDesc.Usage = D3D11_USAGE_DYNAMIC;
+	d3dBufDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+	d3dBufDesc.ByteWidth = byteWidth;
+	d3dBufDesc.MiscFlags = 0;
+	d3dBufDesc.StructureByteStride = 0;
 }
 
 void IConstantBufferEx::update( Graphics &gph,

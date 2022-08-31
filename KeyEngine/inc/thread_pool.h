@@ -3,6 +3,7 @@
 #include <future>
 #include <queue>
 #include <memory>
+#include "non_copyable.h"
 
 #define M_ENABLED m_bEnabled.load( std::memory_order_relaxed )
 
@@ -19,6 +20,7 @@
 //			Singleton, move only class
 //=============================================================
 class ThreadPool final
+	: public NonCopyable
 {
 	using Task = std::function<void()>;
 
@@ -31,8 +33,6 @@ private:
 	explicit ThreadPool( std::size_t nthreads, bool bStart = true );
 public:
 	~ThreadPool() noexcept;
-	ThreadPool( ThreadPool const& ) = delete;
-	ThreadPool& operator=( const ThreadPool &rhs ) = delete;
 	ThreadPool( ThreadPool &&rhs ) noexcept;
 	ThreadPool& operator=( ThreadPool &&rhs ) noexcept;
 

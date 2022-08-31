@@ -83,7 +83,7 @@ class ASSIMP_API BaseImporter
 
 public:
 
-    /** Constructor to be privately used by #Importer */
+    /** Constructor to be privately used by Importer */
     BaseImporter();
 
     /** Destructor, private as well */
@@ -121,7 +121,7 @@ public:
      * takes care that any partially constructed data is destroyed
      * beforehand.
      *
-     * @param pImp #Importer object hosting this loader.
+     * @param pImp Importer object hosting this loader.
      * @param pFile Path of the file to be imported.
      * @param pIOHandler IO-Handler used to open this and possible other files.
      * @return The imported data or NULL if failed. If it failed a
@@ -159,14 +159,14 @@ public:
         );
 
     // -------------------------------------------------------------------
-    /** Called by #Importer::GetImporterInfo to get a description of
+    /** Called by Importer::GetImporterInfo to get a description of
      *  some loader features. Importers must provide this information. */
     virtual const aiImporterDesc *GetInfo() const = 0;
 
     // -------------------------------------------------------------------
-    /** Called by #Importer::GetExtensionList for each loaded importer.
+    /** Called by Importer::GetExtensionList for each loaded importer.
      *  Take the extension list contained in the structure returned by
-     *  #GetInfo and insert all file extensions into the given set.
+     *  GetInfo and insert all file extensions into the given set.
      *  @param extension set to collect file extensions in*/
     void GetExtensionList(std::set<std::string>& extensions);
 

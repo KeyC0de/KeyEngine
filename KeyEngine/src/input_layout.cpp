@@ -6,7 +6,7 @@
 
 
 InputLayout::InputLayout( Graphics &gph,
-	const ver::VertexLayout &vertexLayout,
+	const ver::VertexInputLayout &vertexLayout,
 	const VertexShader &vs )
 	:
 	m_vertexLayout{vertexLayout}
@@ -22,7 +22,7 @@ InputLayout::InputLayout( Graphics &gph,
 	ASSERT_HRES_IF_FAILED;
 }
 
-const ver::VertexLayout InputLayout::getLayout() const noexcept
+const ver::VertexInputLayout InputLayout::getLayout() const noexcept
 {
 	return m_vertexLayout;
 }
@@ -34,7 +34,7 @@ void InputLayout::bind( Graphics &gph ) cond_noex
 }
 
 std::shared_ptr<InputLayout> InputLayout::fetch( Graphics &gph,
-		const ver::VertexLayout &vertexLayout,
+	const ver::VertexInputLayout &vertexLayout,
 	const VertexShader &vs )
 {
 	return BindableMap::fetch<InputLayout>( gph,
@@ -42,17 +42,15 @@ std::shared_ptr<InputLayout> InputLayout::fetch( Graphics &gph,
 		vs );
 }
 
-std::string InputLayout::generateUid( const ver::VertexLayout &vertexLayout,
+std::string InputLayout::calcUid( const ver::VertexInputLayout &vertexLayout,
 	const VertexShader &vs )
 {
 	using namespace std::string_literals;
-	return typeid( InputLayout ).name() + "#"s + vertexLayout.getSignature() + "#"s
-		+ vs.getUid();
+	return typeid( InputLayout ).name() + "#"s + vertexLayout.calcSignature() + "#"s + vs.getUid();
 }
 
-std::string InputLayout::getUid() const noexcept
+const std::string InputLayout::getUid() const noexcept
 {
 	using namespace std::string_literals;
-	return typeid( InputLayout ).name() + "#"s + m_vertexLayout.getSignature() + "#"s
-		+ m_vertexShaderUID;
+	return typeid( InputLayout ).name() + "#"s + m_vertexLayout.calcSignature() + "#"s + m_vertexShaderUID;
 }

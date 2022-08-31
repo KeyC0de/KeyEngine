@@ -1,5 +1,6 @@
 #include "winner.h"
 #include "mouse.h"
+#include <utility>
 
 
 Mouse::Mouse( Mouse &&rhs ) noexcept
@@ -21,30 +22,23 @@ Mouse::Mouse( Mouse &&rhs ) noexcept
 
 Mouse& Mouse::operator=( Mouse &&rhs ) noexcept
 {
-	m_x = rhs.m_x;
-	m_y = rhs.m_y;
-	m_bLmbPressed = rhs.m_bLmbPressed;
-	m_bRmbPressed = rhs.m_bRmbPressed;
-	m_bMmbPressed = rhs.m_bMmbPressed;
-	m_bInWindow = rhs.m_bInWindow;
-	m_wheelDelta = rhs.m_wheelDelta;
-	m_bRawEnabled = rhs.m_bRawEnabled;
-	std::swap( m_eventQueue, rhs.m_eventQueue );
-	std::swap( m_rawDeltaBuffer, rhs.m_rawDeltaBuffer );
+	Mouse tmp{std::move( rhs )};
+	std::swap( *this,
+		tmp );
 	return *this;
 }
 
-std::pair<int, int> Mouse::getPosition() const noexcept
+const std::pair<int, int> Mouse::getPosition() const noexcept
 {
 	return {m_x, m_y};
 }
 
-int Mouse::getX() const noexcept
+const int Mouse::getX() const noexcept
 {
 	return m_x;
 }
 
-int Mouse::getY() const noexcept
+const int Mouse::getY() const noexcept
 {
 	return m_y;
 }
@@ -139,57 +133,57 @@ void Mouse::onMouseLeaveWindow() noexcept
 	trimEventQueue();
 }
 
-void Mouse::onLmbPressed( int x,
-	int y ) noexcept
+void Mouse::onLmbPressed( const int x,
+	const int y ) noexcept
 {
 	m_bLmbPressed = true;
 	m_eventQueue.push( Event{Event::Type::LMBPress, *this} );
 	trimEventQueue();
 }
 
-void Mouse::onLmbReleased( int x,
-	int y ) noexcept
+void Mouse::onLmbReleased( const int x,
+	const int y ) noexcept
 {
 	m_bLmbPressed = false;
 	m_eventQueue.push( Event{Event::Type::LMBRelease, *this} );
 	trimEventQueue();
 }
 
-void Mouse::onRmbPressed( int x,
-	int y ) noexcept
+void Mouse::onRmbPressed( const int x,
+	const int y ) noexcept
 {
 	m_bRmbPressed = true;
 	m_eventQueue.push( Event{Event::Type::RMBPress, *this} );
 	trimEventQueue();
 }
 
-void Mouse::onRmbReleased( int x,
-	int y ) noexcept
+void Mouse::onRmbReleased( const int x,
+	const int y ) noexcept
 {
 	m_bRmbPressed = false;
 	m_eventQueue.push( Event{Event::Type::RMBRelease, *this} );
 	trimEventQueue();
 }
 
-void Mouse::onMmbPressed( int x,
-	int y ) noexcept
+void Mouse::onMmbPressed( const int x,
+	const int y ) noexcept
 {
 	m_bMmbPressed = true;
 	m_eventQueue.push( Event{Event::Type::MMBPress, *this} );
 	trimEventQueue();
 }
 
-void Mouse::onMmbReleased( int x,
-	int y ) noexcept
+void Mouse::onMmbReleased( const int x,
+	const int y ) noexcept
 {
 	m_bMmbPressed = false;
 	m_eventQueue.push( Event{Event::Type::MMBRelease, *this} );
 	trimEventQueue();
 }
 
-void Mouse::onWheelDelta( int x,
-	int y,
-	int delta ) noexcept
+void Mouse::onWheelDelta( const int x,
+	const int y,
+	const int delta ) noexcept
 {
 	m_wheelDelta += delta;
 	// generate events per mouse wheel notch - 120 units
@@ -205,22 +199,22 @@ void Mouse::onWheelDelta( int x,
 	}
 }
 
-void Mouse::onWheelUp( int x,
-	int y ) noexcept
+void Mouse::onWheelUp( const int x,
+	const int y ) noexcept
 {
 	m_eventQueue.push( Event{Event::Type::WheelUp, *this} );
 	trimEventQueue();
 }
 
-void Mouse::onWheelDown( int x,
-	int y ) noexcept
+void Mouse::onWheelDown( const int x,
+	const int y ) noexcept
 {
 	m_eventQueue.push( Event{Event::Type::WheelDown, *this} );
 	trimEventQueue();
 }
 
-void Mouse::onRawDelta( int dx,
-	int dy ) noexcept
+void Mouse::onRawDelta( const int dx,
+	const int dy ) noexcept
 {
 	m_rawDeltaBuffer.push( {dx, dy} );
 	trimRawInputBuffer();

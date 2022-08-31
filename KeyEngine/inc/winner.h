@@ -18,6 +18,12 @@ static_assert( _MSVC_LANG >= 201703L, "C++17 language conformance or later requi
 #define NTDDI_VERSION NTDDI_WINBLUE
 #include <sdkddkver.h>
 
+#if defined __cpp_exceptions || defined __EXCEPTIONS
+#	pragma message( "Exceptions are enabled." )
+#else
+#	pragma message( "Exceptions are disabled." )
+#endif
+
 #ifndef USE_GDIPLUS
 // defines to get rid of superfluous Windows functionality
 // However GDI+ requires all the functionality that is disabled by these switches
@@ -49,7 +55,6 @@ static_assert( _MSVC_LANG >= 201703L, "C++17 language conformance or later requi
 #	define NOMCX					// Modem Configuration Extensions
 #	define NORPC					// no Remote Procedure Call Routines
 #	define NOPROXYSTUB				// not use Proxies, nor Stubs (for DLLs)
-#	define NOIMM					// no Input Method Manager
 #	define NOMCX					// no Media Center Extender (for xBox)
 #	define NOTAPE					// no Tape
 #	if defined NDEBUG || !defined _DEBUG
@@ -73,6 +78,7 @@ static_assert( _MSVC_LANG >= 201703L, "C++17 language conformance or later requi
 									//	required by atlbase.h
 //#	define NOWINOFFSETS				// GWL_*, GCL_*, associated routines
 //#	define ANSI_ONLY				// no unicode support
+//#	define NOIMM					// no Input Method Manager
 
 #if defined( _MFC_VER ) || defined( _AFX )
 #	define _AFX_ALL_WARNINGS	// turns off MFC's hiding of some common and often safely ignored warning message

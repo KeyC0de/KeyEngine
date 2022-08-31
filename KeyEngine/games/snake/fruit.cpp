@@ -14,7 +14,7 @@ Fruit::Fruit( std::mt19937 &rng,
 }
 
 void Fruit::render( Graphics &gph,
-	SnakePlayField &field ) const
+	const SnakePlayField &field ) const cond_noex
 {
 	field.renderCell( gph,
 		m_gridLoc,

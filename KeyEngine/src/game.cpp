@@ -9,7 +9,7 @@
 #include "rendering_channel.h"
 #include "console.h"
 #include "assertions_console.h"
-#include "drawable.h"
+#include "mesh.h"
 #include "graphics_mode.h"
 //#include "../../KeyEngine_tests/testing.h"
 
@@ -32,7 +32,7 @@ Game<T>::Game( int width,
 template <typename T>
 ImguiManager* Game<T>::createImgui() noexcept
 {
-	if constexpr ( GraphicsMode::get() == GraphicsMode::_3D )
+	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{
 		return new ImguiManager{};
 	}
@@ -43,7 +43,7 @@ ImguiManager* Game<T>::createImgui() noexcept
 }
 
 template <typename T>
-std::optional<Window*> Game<T>::getForegroundWindow() noexcept
+std::optional<Window*> Game<T>::getForegroundWindow() const noexcept
 {
 	static const INT_PTR mainWindowHandle = (INT_PTR) m_mainWindow.getHandle();
 	//static const INT_PTR consoleWindowHandle = (INT_PTR) m_consoleWindow.getHandle();
@@ -89,13 +89,19 @@ void Game<T>::setState( std::unique_ptr<State> pNewState,
 }
 
 template <typename T>
-State* Game<T>::getState() noexcept
+const State* Game<T>::getState() const noexcept
 {
 	return m_pCurrentState.get();
 }
 
 template <typename T>
-float Game<T>::calculateDt()
+State& Game<T>::state() noexcept
+{
+	return m_pCurrentState.get();
+}
+
+template <typename T>
+const float Game<T>::calcDt()
 {
 	auto &settings = m_settingsMan.settings();
 	static float minFrameTime = 1.0f / settings.iMaxFps;
@@ -161,8 +167,8 @@ Sandbox3d::Sandbox3d( int width,
 	Game(width, height, "KeyEngine 3d Sandbox", nWindows),
 	m_renderer{m_mainWindow.getGraphics(), 4, 3.0f}
 {
-	m_cameraMan.setWidthHeight( width,
-		height );
+	m_cameraMan.setWidth( width );
+	m_cameraMan.setHeight( height );
 	m_cameraMan.add( std::make_unique<Camera>( m_mainWindow.getGraphics(),
 		"A",
 		width,
@@ -212,7 +218,7 @@ Sandbox3d::Sandbox3d( int width,
 
 	auto menuState = std::make_unique<MenuState>();
 	setState( std::move( menuState ),
-		m_mainWindow.getMouse() );
+		m_mainWindow.mouse() );
 }
 
 int Sandbox3d::loop()
@@ -225,7 +231,7 @@ int Sandbox3d::loop()
 			return *exitCode;
 		}
 
-		const float dt = calculateDt();
+		const float dt = calcDt();
 		checkInput( dt );
 		// checkScripts()
 		update( dt );
@@ -237,8 +243,8 @@ int Sandbox3d::loop()
 
 void Sandbox3d::checkInput( float dt )
 {
-	auto &keyboard = m_mainWindow.getKeyboard();
-	auto &mouse = m_mainWindow.getMouse();
+	auto &keyboard = m_mainWindow.keyboard();
+	auto &mouse = m_mainWindow.mouse();
 
 	// process any keyboard events
 	while ( const auto ev = keyboard.readEventQueue() )
@@ -278,7 +284,7 @@ void Sandbox3d::checkInput( float dt )
 		}//switch
 	}
 
-	auto &activeCamera = m_cameraMan.getActiveCamera();
+	auto &activeCamera = m_cameraMan.activeCamera();
 	if ( !m_mainWindow.isCursorEnabled() )
 	{
 		if ( keyboard.isKeyPressed( 'W' ) )
@@ -320,9 +326,9 @@ void Sandbox3d::checkInput( float dt )
 
 void Sandbox3d::update( float dt )
 {
-	auto &activeCamera = m_cameraMan.getActiveCamera();
+	auto &activeCamera = m_cameraMan.activeCamera();
 	// binds camera to all Passes that need it
-	m_renderer.setMainCamera( activeCamera );
+	m_renderer.setActiveCamera( activeCamera );
 	auto &gph = m_mainWindow.getGraphics();
 	/*
 	m_world.update( dt );		// updates current level-map stuff, terrain, weather, world globals etc.
@@ -447,7 +453,7 @@ int Arkanoid::loop()
 			return *exitCode;
 		}
 
-		const float dt = calculateDt();
+		const float dt = calcDt();
 		checkInput( dt );
 		update( dt );
 		render( dt );
@@ -458,8 +464,8 @@ int Arkanoid::loop()
 
 void Arkanoid::checkInput( float dt )
 {
-	auto &keyboard = m_mainWindow.getKeyboard();
-	auto &mouse = m_mainWindow.getMouse();
+	auto &keyboard = m_mainWindow.keyboard();
+	auto &mouse = m_mainWindow.mouse();
 
 	// process any keyboard events
 	while ( const auto ev = keyboard.readEventQueue() )
@@ -596,7 +602,7 @@ int Snake::loop()
 			return *exitCode;
 		}
 
-		const float dt = calculateDt();
+		const float dt = calcDt();
 		checkInput( dt );
 		update( dt );
 		render( dt );
@@ -607,8 +613,8 @@ int Snake::loop()
 
 void Snake::checkInput( float dt )
 {
-	auto &keyboard = m_mainWindow.getKeyboard();
-	auto &mouse = m_mainWindow.getMouse();
+	auto &keyboard = m_mainWindow.keyboard();
+	auto &mouse = m_mainWindow.mouse();
 
 	// process any keyboard events
 	while ( const auto ev = keyboard.readEventQueue() )

@@ -32,15 +32,13 @@ private:
 	unsigned m_renderTargetSlot;
 	std::optional<std::array<float, 4>> m_blendFactors;
 public:
-	BlendState( Graphics &gph, Mode mode, unsigned renderTargetSlot,
-		std::optional<float> blendFactors = {} );
+	BlendState( Graphics &gph, const Mode mode, const unsigned renderTargetSlot, std::optional<float> blendFactors = {} );
 
 	void bind( Graphics &gph ) cond_noex override;
-	static std::shared_ptr<BlendState> fetch( Graphics &gph, Mode mode,
-		unsigned renderTargetSlot, std::optional<float> blendFactors = {} );
-	void setBlendFactors( float blendFactors ) cond_noex;
-	float getBlendFactor() const cond_noex;
-	static std::string generateUid( Mode mode, unsigned renderTargetSlot,
-		std::optional<float> blendFactors );
-	std::string getUid() const noexcept override;
+	static std::shared_ptr<BlendState> fetch( Graphics &gph, const Mode mode, const unsigned renderTargetSlot, std::optional<float> blendFactors = {} );
+	void setBlendFactors( const float blendFactors ) cond_noex;
+	// #TODO: rework getBlendFactor
+	const float getBlendFactor() const cond_noex;
+	static std::string calcUid( const Mode mode, const unsigned renderTargetSlot, std::optional<float> blendFactors );
+	const std::string getUid() const noexcept override;
 };

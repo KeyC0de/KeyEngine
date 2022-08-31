@@ -5,10 +5,19 @@
 #include "assertions_console.h"
 
 
-class Drawable;
+class Mesh;
 class IEffectVisitor;
 class Graphics;
 
+
+//=============================================================
+//	\class	IBindable
+//
+//	\author	KeyC0de
+//	\date	2022/08/30 19:27
+//
+//	\brief	a class encapsulating a GPU - Graphics Pipeline - resource
+//=============================================================
 class IBindable
 	: public GraphicsFriend
 {
@@ -24,7 +33,7 @@ public:
 	//	\date	2022/08/21 0:00
 	virtual void bind( Graphics &gph ) cond_noex = 0;
 
-	virtual void setParentDrawable( const Drawable &drawable ) noexcept
+	virtual void setMesh( const Mesh &mesh ) noexcept
 	{
 		pass_;
 	}
@@ -34,7 +43,7 @@ public:
 		pass_;
 	}
 
-	virtual std::string getUid() const noexcept
+	virtual const std::string getUid() const noexcept
 	{
 		ASSERT( false, "Base Bindable has no UID." );
 		return "";

@@ -9,8 +9,8 @@
 #include "vertex_buffer.h"
 #include "vertex_shader.h"
 #include "texture.h"
-#include "texture_sampler.h"
-#include "rasterizer.h"
+#include "texture_sampler_state.h"
+#include "rasterizer_state.h"
 #include "constant_buffer_ex.h"
 #include "rendering_channel.h"
 #include "assertions_console.h"
@@ -38,8 +38,8 @@ MaterialLoader::MaterialLoader( Graphics &gph,
 		std::string shaderFileName = "phong";
 		aiString textureFileName;
 
-		m_vertexLayout.add( ver::VertexLayout::Position3D );
-		m_vertexLayout.add( ver::VertexLayout::Normal );
+		m_vertexLayout.add( ver::VertexInputLayout::Position3D );
+		m_vertexLayout.add( ver::VertexInputLayout::Normal );
 		con::RawLayout cbLayout;
 		bool bTexture = false;
 		bool bSpecularTextureAlpha = false;
@@ -52,7 +52,7 @@ MaterialLoader::MaterialLoader( Graphics &gph,
 			{
 				bTexture = true;
 				shaderFileName += "Dif";
-				m_vertexLayout.add( ver::VertexLayout::Texture2D );
+				m_vertexLayout.add( ver::VertexInputLayout::Texture2D );
 				auto tex = Texture::fetch( gph,
 					rootPath + textureFileName.C_Str(),
 					0u );
@@ -67,8 +67,12 @@ MaterialLoader::MaterialLoader( Graphics &gph,
 			{
 				cbLayout.add<con::Float3>( "materialColor" );
 			}
-			lambertian.addBindable( Rasterizer::fetch( gph,
-				bTextureAlphaChannel ) );
+			RasterizerState::CullMode cullMode = bTextureAlphaChannel ?
+				RasterizerState::TwoSided :
+				RasterizerState::FrontSided;
+			lambertian.addBindable( RasterizerState::fetch( gph,
+				cullMode,
+				RasterizerState::Solid ) );
 		}
 		{
 		// how about specular?
@@ -78,7 +82,7 @@ MaterialLoader::MaterialLoader( Graphics &gph,
 			{
 				bTexture = true;
 				shaderFileName += "Spc";
-				m_vertexLayout.add( ver::VertexLayout::Texture2D );
+				m_vertexLayout.add( ver::VertexInputLayout::Texture2D );
 				auto tex = Texture::fetch( gph,
 					rootPath + textureFileName.C_Str(),
 					1u );
@@ -99,9 +103,9 @@ MaterialLoader::MaterialLoader( Graphics &gph,
 			{
 				bTexture = true;
 				shaderFileName += "Nrm";
-				m_vertexLayout.add( ver::VertexLayout::Texture2D );
-				m_vertexLayout.add( ver::VertexLayout::Tangent );
-				m_vertexLayout.add( ver::VertexLayout::Bitangent );
+				m_vertexLayout.add( ver::VertexInputLayout::Texture2D );
+				m_vertexLayout.add( ver::VertexInputLayout::Tangent );
+				m_vertexLayout.add( ver::VertexInputLayout::Bitangent );
 				lambertian.addBindable( Texture::fetch( gph,
 					rootPath + textureFileName.C_Str(),
 					2u ) );
@@ -123,10 +127,10 @@ MaterialLoader::MaterialLoader( Graphics &gph,
 				shaderFileName + "_ps.cso" ) );
 			if ( bTexture )
 			{
-				lambertian.addBindable( TextureSampler::fetch( gph,
+				lambertian.addBindable( TextureSamplerState::fetch( gph,
 					0u,
-					TextureSampler::FilterMode::Anisotropic,
-					TextureSampler::AddressMode::Wrap ) );
+					TextureSamplerState::FilterMode::Anisotropic,
+					TextureSamplerState::AddressMode::Wrap ) );
 			}
 
 			// Assembling the Pixel Shader Constant Buffer
@@ -272,7 +276,7 @@ std::shared_ptr<VertexBuffer> MaterialLoader::makeVertexBuffer( Graphics &gph,
 	{
 		for ( size_t i = 0u; i < vb.getVertexCount(); ++i )
 		{
-			dx::XMFLOAT3 &pos = vb[i].getMember<ver::VertexLayout::MemberType::Position3D>();
+			dx::XMFLOAT3 &pos = vb[i].element<ver::VertexInputLayout::VertexInputLayoutElementType::Position3D>();
 			pos.x *= scale;
 			pos.y *= scale;
 			pos.z *= scale;
@@ -296,7 +300,7 @@ std::string MaterialLoader::makeMeshTag( const aiMesh &aimesh ) const noexcept
 	return m_modelPath + "%" + aimesh.mName.C_Str();
 }
 
-std::vector<Effect> MaterialLoader::getEffects() const noexcept
+std::vector<Effect> MaterialLoader::effects() const noexcept
 {
 	return m_effects;
 }

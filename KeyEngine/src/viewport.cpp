@@ -6,15 +6,15 @@
 
 Viewport::Viewport( Graphics &gph )
 	:
-	Viewport{gph, static_cast<float>(gph.getClientWidth()),
-		static_cast<float>(gph.getClientHeight())}
+	Viewport{gph, static_cast<const float>(gph.getClientWidth()),
+		static_cast<const float>(gph.getClientHeight())}
 {
 
 }
 
 Viewport::Viewport( Graphics &gph,
-	float width,
-	float height )
+	const float width,
+	const float height )
 {
 	m_viewport.Width = width;
 	m_viewport.Height = height;
@@ -36,19 +36,19 @@ D3D11_VIEWPORT Viewport::getViewport() const noexcept
 	return m_viewport;
 }
 
-float Viewport::getWidth() const noexcept
+const float Viewport::getWidth() const noexcept
 {
 	return m_viewport.Width;
 }
 
-float Viewport::getHeight() const noexcept
+const float Viewport::getHeight() const noexcept
 {
 	return m_viewport.Height;
 }
 
 std::shared_ptr<Viewport> Viewport::fetch( Graphics &gph,
-	float width,
-	float height )
+	const float width,
+	const float height )
 {
 	using namespace std::string_literals;
 	return BindableMap::fetch<Viewport>( gph,
@@ -56,16 +56,19 @@ std::shared_ptr<Viewport> Viewport::fetch( Graphics &gph,
 		height );
 }
 
-std::string Viewport::generateUid( float width,
-	float height )
+std::string Viewport::calcUid( const float width,
+	const float height )
 {
 	using namespace std::string_literals;
-	return typeid( Viewport ).name() + "#"s + std::to_string( width ) + "x"
+	return typeid( Viewport ).name()
+		+ "#"s
+		+ std::to_string( width )
+		+ "x"
 		+ std::to_string( height );
 }
 
-std::string Viewport::getUid() const noexcept
+const std::string Viewport::getUid() const noexcept
 {
-	return generateUid( m_viewport.Width,
+	return calcUid( m_viewport.Width,
 		m_viewport.Height );
 }

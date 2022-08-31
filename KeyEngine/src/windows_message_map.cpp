@@ -15,8 +15,7 @@
 
 WindowsMessageMap::WindowsMessageMap() noexcept
 	:
-	m_map( {
-		MAP_MESSAGE( WM_CREATE ),
+	m_map( {MAP_MESSAGE( WM_CREATE ),
 		MAP_MESSAGE( WM_DESTROY ),
 		MAP_MESSAGE( WM_MOVE ),
 		MAP_MESSAGE( WM_SIZE ),
@@ -186,8 +185,8 @@ WindowsMessageMap::WindowsMessageMap() noexcept
 		MAP_MESSAGE( WM_EXITSIZEMOVE ),
 		MAP_MESSAGE( WM_UAHDESTROYWINDOW ),
 		MAP_MESSAGE( WM_DWMNCRENDERINGCHANGED ),
-		MAP_MESSAGE( WM_ENTERSIZEMOVE ),
-	} )
+		MAP_MESSAGE( WM_ENTERSIZEMOVE ),}
+	)
 {
 
 }

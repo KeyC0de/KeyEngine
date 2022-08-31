@@ -29,14 +29,14 @@ public:
 	//	\brief  initially empty d3dcb - supply the data on update
 	//	\date	2022/08/14 23:44
 	IConstantBuffer( Graphics &gph,
-		unsigned slot )
+		const unsigned slot )
 		:
 		m_slot(slot)
 	{
 		m_gph = &gph;
 
 		D3D11_BUFFER_DESC cbDesc{};
-		setBufferDesc( &cbDesc );
+		setBufferDesc( cbDesc );
 
 		HRESULT hres = getDevice( gph )->CreateBuffer( &cbDesc,
 			nullptr,
@@ -50,7 +50,7 @@ public:
 	//	\date	2022/08/14 23:44
 	IConstantBuffer( Graphics &gph,
 		const CB &cb,
-		unsigned slot )
+		const unsigned slot )
 		:
 		m_slot(slot)
 	{
@@ -58,7 +58,7 @@ public:
 
 		//ASSERT( util::isAligned( &cb, 16 ), "Constant Buffer not 16B aligned!" );
 		D3D11_BUFFER_DESC cbDesc{};
-		setBufferDesc( &cbDesc );
+		setBufferDesc( cbDesc );
 
 		D3D11_SUBRESOURCE_DATA cbSubData{};
 		cbSubData.pSysMem = &cb;
@@ -73,7 +73,7 @@ public:
 	//	\brief  cheating constructor - the D3d resource has already been created (eg copied from another)
 	//	\date	2022/08/14 19:45
 	IConstantBuffer( Microsoft::WRL::ComPtr<ID3D11Buffer> &d3dBuf,
-		unsigned slot )
+		const unsigned slot )
 		:
 		m_pD3dCb{d3dBuf},
 		m_slot(slot)
@@ -116,14 +116,14 @@ public:
 	}
 
 protected:
-	static void setBufferDesc( D3D11_BUFFER_DESC *cbDesc )
+	static void setBufferDesc( D3D11_BUFFER_DESC &d3dBufDesc )
 	{
-		cbDesc->BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-		cbDesc->Usage = D3D11_USAGE_DYNAMIC;
-		cbDesc->CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
-		cbDesc->ByteWidth = sizeof CB;
-		cbDesc->MiscFlags = 0;
-		cbDesc->StructureByteStride = 0;
+		d3dBufDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+		d3dBufDesc.Usage = D3D11_USAGE_DYNAMIC;
+		d3dBufDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+		d3dBufDesc.ByteWidth = sizeof CB;
+		d3dBufDesc.MiscFlags = 0;
+		d3dBufDesc.StructureByteStride = 0;
 	}
 };
 
@@ -153,7 +153,7 @@ public:
 
 	static std::shared_ptr<VertexShaderConstantBuffer> fetch( Graphics &gph,
 		const CB &cb,
-		unsigned slot )
+		const unsigned slot )
 	{
 		return BindableMap::fetch<VertexShaderConstantBuffer>( gph,
 			cb,
@@ -161,31 +161,31 @@ public:
 	}
 
 	static std::shared_ptr<VertexShaderConstantBuffer> fetch( Graphics &gph,
-		unsigned slot )
+		const unsigned slot )
 	{
 		return BindableMap::fetch<VertexShaderConstantBuffer>( gph,
 			slot );
 	}
 
-	static std::string generateUid( const CB &cb,
-		unsigned slot )
+	static std::string calcUid( const CB &cb,
+		const unsigned slot )
 	{
-		return generateUid( slot );
+		return calcUid( slot );
 	}
 
-	static std::string generateUid( unsigned slot )
+	static std::string calcUid( const unsigned slot )
 	{
 		using namespace std::string_literals;
 		return typeid( VertexShaderConstantBuffer ).name() + "#"s + std::to_string( slot );
 	}
 
-	std::string getUid() const noexcept override
+	const std::string getUid() const noexcept override
 	{
-		return generateUid( m_slot );
+		return calcUid( m_slot );
 	}
 
 	static VertexShaderConstantBuffer<CB> makeACopy( ID3D11Buffer *srcBuf,
-		unsigned slot )
+		const unsigned slot )
 	{
 		Microsoft::WRL::ComPtr<ID3D11Buffer> destBuf;
 
@@ -232,7 +232,7 @@ public:
 
 	static std::shared_ptr<PixelShaderConstantBuffer> fetch( Graphics &gph,
 		const CB &cb,
-		unsigned slot )
+		const unsigned slot )
 	{
 		return BindableMap::fetch<PixelShaderConstantBuffer>( gph,
 			cb,
@@ -240,31 +240,31 @@ public:
 	}
 
 	static std::shared_ptr<PixelShaderConstantBuffer> fetch( Graphics &gph,
-		unsigned slot )
+		const unsigned slot )
 	{
 		return BindableMap::fetch<PixelShaderConstantBuffer>( gph,
 			slot );
 	}
 
-	static std::string generateUid( const CB &cb,
-		unsigned slot )
+	static std::string calcUid( const CB &cb,
+		const unsigned slot )
 	{
-		return generateUid( slot );
+		return calcUid( slot );
 	}
 
-	static std::string generateUid( unsigned slot )
+	static std::string calcUid( const unsigned slot )
 	{
 		using namespace std::string_literals;
 		return typeid( PixelShaderConstantBuffer ).name() + "#"s + std::to_string( slot );
 	}
 
-	std::string getUid() const noexcept override
+	const std::string getUid() const noexcept override
 	{
-		return generateUid( m_slot );
+		return calcUid( m_slot );
 	}
 
 	static PixelShaderConstantBuffer<CB> makeACopy( ID3D11Buffer *srcBuf,
-		unsigned slot )
+		const unsigned slot )
 	{
 		Microsoft::WRL::ComPtr<ID3D11Buffer> destBuf;
 

@@ -70,12 +70,12 @@ void SettingsManager::loadFromFile( const std::string &filePath )
 #endif
 }
 
-const SettingsManager::Settings& SettingsManager::getSettings()
+SettingsManager::Settings& SettingsManager::settings()
 {
 	return m_settings;
 }
 
-SettingsManager::Settings& SettingsManager::settings()
+const SettingsManager::Settings& SettingsManager::getSettings()
 {
 	return m_settings;
 }

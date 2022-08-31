@@ -38,15 +38,12 @@ class Entity
 	std::string m_name;
 	std::vector<Entity*> m_children;
 private:
-	Entity( EntityIndex version, EntityIndex index, const std::string &name,
-		Category categoryId = UNCATEGORIZED, Entity *pParent = nullptr );
+	Entity( EntityIndex version, EntityIndex index, const std::string &name, Category categoryId = UNCATEGORIZED, Entity *pParent = nullptr );
 
-	EntityIndex getVersion() const noexcept;
-	EntityIndex getIndex() const noexcept;
+	const EntityIndex getVersion() const noexcept;
+	const EntityIndex getIndex() const noexcept;
 public:
 	virtual ~Entity() noexcept;
-	Entity( const Entity &rhs ) = delete;
-	Entity& operator=( const Entity &rhs ) = delete;
 	Entity( Entity &&rhs ) noexcept;
 	Entity& operator=( Entity &&rhs ) noexcept;
 
@@ -55,12 +52,13 @@ public:
 	//	\function	id
 	//	\brief  get entity id
 	//	\date	2019/12/09 14:05
-	inline EntityId getId() const noexcept;
-	std::string getName() const noexcept;
-	Category getCategory() const noexcept;
-	Entity* getParent() const noexcept;
+	const inline EntityId getId() const noexcept;
+	const std::string& getName() const noexcept;
+	const Category getCategory() const noexcept;
+	Entity* parent() const noexcept;
+	const Entity* getParent() const noexcept;
 	void addChild( Entity *child ) noexcept;
-	std::vector<Entity*>& getChildren() noexcept;
+	std::vector<Entity*>& children() noexcept;
 	const std::vector<Entity*>& getChildren() const noexcept;
 	bool hasChildren() const noexcept;
 	const int getChildrenCount() const noexcept;

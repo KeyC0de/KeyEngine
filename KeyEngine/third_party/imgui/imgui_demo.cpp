@@ -986,7 +986,7 @@ static void ShowDemoWindowWidgets()
         ImGui::PlotHistogram("Histogram", arr, IM_ARRAYSIZE(arr), 0, NULL, 0.0f, 1.0f, ImVec2(0, 80));
 
         // Use functions to generate output
-        // FIXME: This is rather awkward because current plot API only pass in indices. We probably want an API passing floats and user provide sample rate/count.
+        // FIX: This is rather awkward because current plot API only pass in indices. We probably want an API passing floats and user provide sample rate/count.
         struct Funcs
         {
             static float Sin(void*, int i) { return sinf(i * 0.1f); }
@@ -3183,7 +3183,7 @@ struct ExampleAppConsole
 
     void    AddLog(const char *fmt, ...) IM_FMTARGS(2)
     {
-        // FIXME-OPT
+        // FIX-OPT
         char buf[1024];
         va_list args;
         va_start(args, fmt);

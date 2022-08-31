@@ -21,14 +21,14 @@ Paddle::Paddle( const dx::XMFLOAT2 &pos,
 
 }
 
-void Paddle::render( Graphics &gph ) const
+void Paddle::render( Graphics &gph ) const cond_noex
 {
-	Rect rect = getRect();
-	gph.drawRect( rect,
+	Rect rect = this->rect();
+	gph.drawRectangle( rect,
 		m_wingColor );
 	rect.m_left += m_wingWidth;
 	rect.m_right -= m_wingWidth;
-	gph.drawRect( rect,
+	gph.drawRectangle( rect,
 		m_color );
 }
 
@@ -36,8 +36,8 @@ bool Paddle::doBallCollision( Ball &ball )
 {
 	if ( !m_bCooldown )
 	{
-		const Rect rect = getRect();
-		if ( rect.isOverlappingWith( ball.getRect() ) )
+		const Rect rect = this->rect();
+		if ( rect.isOverlappingWith( ball.rect() ) )
 		{
 			const dx::XMFLOAT2 ballPos = ball.getPosition();
 			if ( std::signbit( ball.getVelocity().x ) == std::signbit( ball.getPosition().x - m_posCenter.x ) )
@@ -61,7 +61,7 @@ bool Paddle::doBallCollision( Ball &ball )
 
 void Paddle::doWallCollision( const Rect &walls )
 {
-	const Rect hitBox = getRect();
+	const Rect hitBox = rect();
 	if ( hitBox.m_left < walls.m_left )
 	{
 		m_posCenter.x += walls.m_left - hitBox.m_left;
@@ -72,7 +72,7 @@ void Paddle::doWallCollision( const Rect &walls )
 	}
 }
 
-Rect Paddle::getRect() const
+Rect Paddle::rect() const
 {
 	return Rect::makeGivenCenter( m_posCenter,
 		m_halfWidth,
@@ -84,7 +84,7 @@ void Paddle::resetCooldown()
 	m_bCooldown = false;
 }
 
-void Paddle::setPositionRel( float val )
+void Paddle::setPositionRel( const float val )
 {
 	m_posCenter.x += val;
 }

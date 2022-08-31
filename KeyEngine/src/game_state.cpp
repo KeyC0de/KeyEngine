@@ -1,59 +1,42 @@
 #include "game_state.h"
-#include "graphics.h"
 #include "assertions_console.h"
 
 
-State::State( int stateId )
+State::State( const int stateId )
 	:
-	m_stateId( stateId )
+	m_stateId(stateId)
 {
 
 }
 
-State::~State() noexcept
+const int State::getStateId() const noexcept
 {
-
-}
-
-int State::getStateId() const noexcept
-{
-	ASSERT( m_stateId != -1,
-		"Invalid State. Must subclass 'State'" );
+	ASSERT( m_stateId != -1, "Invalid State. Must subclass 'State'" );
 	return m_stateId;
 }
 
 
-MenuState::MenuState( int stateId )
+MenuState::MenuState( const int stateId )
 	:
 	State(stateId)
-{
-
-}
-
-MenuState::~MenuState() noexcept
 {
 
 }
 
 void MenuState::update()
 {
-
+	pass_;
 }
 
 
-GameState::GameState( int stateId )
+GameState::GameState( const int stateId )
 	:
 	State(stateId)
 {
 
 }
 
-GameState::~GameState() noexcept
-{
-
-}
-
 void GameState::update()
 {
-
+	pass_;
 }

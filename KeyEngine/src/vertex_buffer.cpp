@@ -37,7 +37,7 @@ VertexBuffer::VertexBuffer( Graphics &gph,
 	ASSERT_HRES_IF_FAILED;
 }
 
-const ver::VertexLayout &VertexBuffer::getLayout() const noexcept
+const ver::VertexInputLayout& VertexBuffer::getLayout() const noexcept
 {
 	return m_vertexLayout;
 }
@@ -63,7 +63,7 @@ std::shared_ptr<VertexBuffer> VertexBuffer::fetch( Graphics &gph,
 		vb );
 }
 
-std::string VertexBuffer::getUid() const noexcept
+const std::string VertexBuffer::getUid() const noexcept
 {
-	return generateUid( m_tag );
+	return calcUid( m_tag );
 }

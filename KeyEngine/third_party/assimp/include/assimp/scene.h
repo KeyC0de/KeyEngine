@@ -50,7 +50,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "types.h"
 #include "texture.h"
-#include "mesh.h"
+#include "aimesh.h"
 #include "light.h"
 #include "camera.h"
 #include "material.h"
@@ -118,7 +118,7 @@ struct ASSIMP_API aiNode
     unsigned int mNumMeshes;
 
     /** The meshes of this node. Each entry is an index into the
-      * mesh list of the #aiScene.
+      * mesh list of the aiScene.
       */
     unsigned int *mMeshes;
 

@@ -4,7 +4,7 @@
 
 
 TransformVSCB::TransformVSCB( Graphics &gph,
-	unsigned slot )
+	const unsigned slot )
 {
 	if ( !m_pVscb )
 	{
@@ -20,9 +20,9 @@ void TransformVSCB::bind( Graphics &gph ) cond_noex
 	bindCb( gph );
 }
 
-void TransformVSCB::setParentDrawable( const Drawable &parent ) noexcept
+void TransformVSCB::setMesh( const Mesh &mesh ) noexcept
 {
-	m_pDrawable = &parent;
+	m_pMesh = &mesh;
 }
 
 std::unique_ptr<IBindableCloning> TransformVSCB::clone() const noexcept
@@ -44,14 +44,14 @@ void TransformVSCB::update( Graphics &gph,
 
 void TransformVSCB::bindCb( Graphics &gph ) cond_noex
 {
-	ASSERT( m_pDrawable != nullptr, "No Drawable set!" );
+	ASSERT( m_pMesh != nullptr, "No Mesh set!" );
 	m_pVscb->bind( gph );
 }
 
 TransformVSCB::Transforms TransformVSCB::getTransforms( Graphics &gph ) cond_noex
 {
-	ASSERT( m_pDrawable != nullptr, "No Drawable set!" );
-	const auto world = m_pDrawable->getTransform();
+	ASSERT( m_pMesh != nullptr, "No Mesh set!" );
+	const auto world = m_pMesh->getTransform();
 	const auto worldView = world * gph.getViewMatrix();
 	const auto worldViewProjection = worldView * gph.getProjectionMatrix();
 	return {DirectX::XMMatrixTranspose( world ),

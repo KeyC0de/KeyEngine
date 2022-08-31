@@ -9,8 +9,8 @@
 #include "index_buffer.h"
 #include "vertex_shader.h"
 #include "texture.h"
-#include "texture_sampler.h"
-#include "rasterizer.h"
+#include "texture_sampler_state.h"
+#include "rasterizer_state.h"
 #include "constant_buffer_ex.h"
 #include "imgui.h"
 #include "rendering_channel.h"
@@ -21,12 +21,12 @@
 namespace dx = DirectX;
 
 Plane::Plane( Graphics &gph,
-	float size,
-	const DirectX::XMFLOAT4 &color )
+	const float size,
+	const dx::XMFLOAT4 &color )
 	:
 	m_colPcb{color}
 {
-	auto plane = GeometryPlane::make();
+	auto plane = Geometry::makePlane();
 	plane.transform( dx::XMMatrixScaling( size,
 		size,
 		1.0f ) );
@@ -51,10 +51,10 @@ Plane::Plane( Graphics &gph,
 		lambertian.addBindable( Texture::fetch( gph,
 			"assets/models/brick_wall/brick_wall_diffuse.jpg",
 			0u ) );
-		lambertian.addBindable( TextureSampler::fetch( gph,
+		lambertian.addBindable( TextureSamplerState::fetch( gph,
 			0u,
-			TextureSampler::FilterMode::Anisotropic,
-			TextureSampler::AddressMode::Wrap ) );
+			TextureSamplerState::FilterMode::Anisotropic,
+			TextureSamplerState::AddressMode::Wrap ) );
 
 		auto pVs = VertexShader::fetch( gph,
 			"plane_vs.cso" );
@@ -76,7 +76,9 @@ Plane::Plane( Graphics &gph,
 			0u,
 			cb ) );
 
-		lambertian.addBindable( Rasterizer::fetch( gph, false ) );
+		lambertian.addBindable( RasterizerState::fetch( gph,
+			RasterizerState::FrontSided,
+			RasterizerState::Solid ) );
 
 		addEffect( std::move( lambertian ) );
 	}
@@ -157,24 +159,33 @@ Plane::Plane( Graphics &gph,
 	}
 }
 
-void Plane::setPosition( const DirectX::XMFLOAT3 &pos ) noexcept
+void Plane::setPosition( const dx::XMFLOAT3 &pos ) noexcept
 {
 	this->m_pos = pos;
 }
 
-void Plane::setRotation( float roll,
-	float pitch,
-	float yaw ) noexcept
+void Plane::setRotation( const float roll,
+	const float pitch,
+	const float yaw ) noexcept
 {
 	m_roll = roll;
 	m_pitch = pitch;
 	m_yaw = yaw;
 }
 
-DirectX::XMMATRIX Plane::getTransform() const noexcept
+const dx::XMMATRIX Plane::getTransform() const noexcept
 {
-	return DirectX::XMMatrixRotationRollPitchYaw( m_roll, m_pitch, m_yaw ) *
-		DirectX::XMMatrixTranslation( m_pos.x, m_pos.y, m_pos.z );
+	return getRotation() * getPosition(); 
+}
+
+const dx::XMMATRIX Plane::getRotation() const noexcept
+{
+	return dx::XMMatrixRotationRollPitchYaw( m_roll, m_pitch, m_yaw );
+}
+
+const dx::XMMATRIX Plane::getPosition() const noexcept
+{
+	return dx::XMMatrixTranslation( m_pos.x, m_pos.y, m_pos.z );
 }
 
 void Plane::displayImguiWidgets( Graphics &gph,
@@ -192,7 +203,7 @@ void Plane::displayImguiWidgets( Graphics &gph,
 		ImGui::SliderAngle( "Yaw", &m_yaw, -180.0f, 180.0f );
 		ImGui::Text( "Shading" );
 
-		auto pBlendState = getBindable<BlendState>();
+		auto pBlendState = findBindable<BlendState>();
 		if ( pBlendState )
 		{
 			float factor = (*pBlendState)->getBlendFactor();

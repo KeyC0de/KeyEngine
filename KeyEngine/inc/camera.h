@@ -42,30 +42,28 @@ class Camera
 	CameraWidget m_widget;
 	Frustum m_cameraFrustum;
 public:
-	static DirectX::XMMATRIX getShadowOrthographicMatrix( unsigned w, unsigned h ) noexcept;
-	static DirectX::XMMATRIX getShadowProjectionMatrix( float farZ = 9999 ) noexcept;
+	static DirectX::XMMATRIX getShadowOrthographicMatrix( const unsigned w, const unsigned h ) noexcept;
+	static DirectX::XMMATRIX getShadowProjectionMatrix( const float farZ = 9999 ) noexcept;
 public:
-	Camera( Graphics &gph, const std::string &name, int width, int height,
-		float fovDegrees = 90.0f,
-		const DirectX::XMFLOAT3 &homePos = {0.0f, 0.0f, 0.0f},
-		float homePitch = 0.0f, float homeYaw = 0.0f, bool bTethered = false,
-		float nearZ = 0.5f, float farZ = 400.0f ) noexcept;
+	Camera( Graphics &gph, const std::string &name, const int width, const int height, const float fovDegrees = 90.0f, const DirectX::XMFLOAT3 &homePos = {0.0f, 0.0f, 0.0f}, const float homePitch = 0.0f, const float homeYaw = 0.0f, const bool bTethered = false, const float nearZ = 0.5f, const float farZ = 400.0f ) noexcept;
 
-	void render( size_t channel ) const;
+	void render( const size_t channel ) const;
 	void makeActive( Graphics &gph, bool bOrthographic ) const;
 	DirectX::XMMATRIX getViewMatrix() const noexcept;
-	DirectX::XMMATRIX getReflectionViewMatrix( const DirectX::XMVECTOR &mirrorPlane ) const
-		noexcept;
+	DirectX::XMMATRIX getReflectionViewMatrix( const DirectX::XMVECTOR &mirrorPlane ) const noexcept;
 	DirectX::XMMATRIX getPerspectiveProjectionMatrix() const noexcept;
-	DirectX::XMMATRIX getOrthographicProjectionMatrix( unsigned viewWidth,
-		unsigned viewHeight ) const noexcept;
+	DirectX::XMMATRIX getOrthographicProjectionMatrix( const unsigned viewWidth, const unsigned viewHeight ) const noexcept;
 	void displayImguiWidgets( Graphics &gph ) noexcept;
-	float getFovRadians() const noexcept;
+	const float getFovRadians() const noexcept;
 	void resetToDefault( Graphics &gph ) noexcept;
 	// rotate arguments is mouse dx, dy delta values
-	void rotateRel( float dx, float dy ) noexcept;
+	void rotateRel( const float dx, const float dy ) noexcept;
 	void translateRel( DirectX::XMFLOAT3 translation ) noexcept;
 	const DirectX::XMFLOAT3& getPosition() const noexcept;
+	//===================================================
+	//	\function	calcDirection
+	//	\brief  camDirection = camPosition - camTarget
+	//	\date	2022/08/30 23:11
 	DirectX::XMVECTOR calcDirection() const noexcept;
 	DirectX::XMVECTOR calcRight() const noexcept;
 	DirectX::XMVECTOR calcUp() const noexcept;

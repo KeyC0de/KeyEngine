@@ -13,20 +13,41 @@ namespace util
 {
 
 template<typename T>
-void removeByBackSwap( std::vector<T>& v,
+void removeByBackSwap( std::vector<T> &v,
 	std::size_t index )
 {
-	typename std::vector<T>::iterator itBback = v.back();
+	typename std::vector<T>::iterator itEnd = v.back();
 	std::swap( v[index],
-		itBback );
+		itEnd );
 	v.pop_back();
+}
+
+template<typename T>
+void removeByBackSwap( std::vector<T> &v,
+	typename std::vector<T>::iterator it )
+{
+	typename std::vector<T>::iterator itEnd = v.back();
+	std::swap( it,
+		itEnd );
+	v.pop_back();
+}
+
+template<typename Container, typename Predicate>
+void removeByBackSwap( Container &c,
+	Predicate pred )
+{
+	const auto newEnd = std::remove_if( c.begin(),
+		c.end(),
+		pred );
+	c.erase( newEnd,
+		c.end() );
 }
 
 //===================================================
 //	\function	shrinkCapacity
 //	\brief  shrink vector's capacity to its size
 //	\date	2022/04/01 20:51
-template<typename T, class Alloc>
+template<typename T, class Alloc = std::allocator<T>>
 void shrinkCapacity( std::vector<T, Alloc>& v )
 {
 	std::vector<T, Alloc>( v.begin(),
@@ -176,22 +197,31 @@ decltype( auto ) unordered_extract( TContainer& collection, TIt erase_itr )
 }
 
 template<typename TContainer, typename T>
-typename TContainer::const_iterator find( const TContainer& collection, const T& elem )
+typename TContainer::const_iterator find( const TContainer& collection,
+	const T& elem )
 {
-	return std::find( std::cbegin( collection ), std::cend( collection ), elem );
+	return std::find( std::cbegin( collection ),
+		std::cend( collection ),
+		elem );
 }
 
 template<typename TContainer, typename T>
-typename TContainer::iterator find( TContainer& collection, const T& elem )
+typename TContainer::iterator find( TContainer& collection,
+	const T& elem )
 {
-	return std::find( std::begin( collection ), std::end( collection ), elem );
+	return std::find( std::begin( collection ),
+		std::end( collection ),
+		elem );
 }
 
 template<typename TContainer, typename T>
-decltype( auto ) try_find( const TContainer& collection, const T& elem )
+decltype( auto ) try_find( const TContainer& collection,
+	const T& elem )
 {
 	const TContainer::const_iterator cend_itr = std::cend( collection );
-	const TContainer::const_iterator search_itr = std::find( std::cbegin( collection ), cend_itr, elem );
+	const TContainer::const_iterator search_itr = std::find( std::cbegin( collection ),
+		cend_itr,
+		elem );
 
 	using T = typename TContainer::value_type;
 
@@ -210,92 +240,128 @@ decltype( auto ) try_find( const TContainer& collection, const T& elem )
 }
 
 template<typename TContainer, typename T>
-decltype( auto ) try_find( TContainer& collection, const T& elem )
+decltype( auto ) try_find( TContainer& collection,
+	const T& elem )
 {
 	auto result = try_find( const_cast<const TContainer&>( collection ), elem );
 	return const_cast<std::remove_const_t<std::remove_pointer_t<decltype( result )>>*>( result );
 }
 
 template<typename TContainer>
-typename TContainer::iterator remove( TContainer& collection, typename TContainer::const_reference element_to_remove )
+typename TContainer::iterator remove( TContainer& collection,
+	typename TContainer::const_reference element_to_remove )
 {
-	return std::remove( std::begin( collection ), std::end( collection ), element_to_remove );
+	return std::remove( std::begin( collection ),
+		std::end( collection ),
+		element_to_remove );
 }
 
 template<typename TContainer>
-typename TContainer::iterator erase( TContainer& collection, typename TContainer::const_reference element_to_erase )
+typename TContainer::iterator erase( TContainer& collection,
+	typename TContainer::const_reference element_to_erase )
 {
 	const TContainer::iterator end_itr = std::end( collection );
-	return collection.erase( std::remove( std::begin( collection ), end_itr, element_to_erase ), end_itr );
+	return collection.erase( std::remove( std::begin( collection ), end_itr, element_to_erase ),
+		end_itr );
 }
 
 template<typename TContainer, typename TPredicate>
-typename TContainer::const_iterator find_if( const TContainer& collection, TPredicate&& predicate )
+typename TContainer::const_iterator find_if( const TContainer& collection,
+	TPredicate&& predicate )
 {
-	return std::find_if( std::cbegin( collection ), std::cend( collection ), std::forward<TPredicate>( predicate ) );
+	return std::find_if( std::cbegin( collection ),
+		std::cend( collection ),
+		std::forward<TPredicate>( predicate ) );
 }
 
 template<typename TContainer, typename TPredicate>
-typename TContainer::iterator find_if( TContainer& collection, TPredicate&& predicate )
+typename TContainer::iterator find_if( TContainer& collection,
+	TPredicate&& predicate )
 {
-	return std::find_if( std::begin( collection ), std::end( collection ), std::forward<TPredicate>( predicate ) );
+	return std::find_if( std::begin( collection ),
+		std::end( collection ),
+		std::forward<TPredicate>( predicate ) );
 }
 
 template<typename TContainer, typename TPredicate>
 decltype( auto ) try_find_if( const TContainer& collection, TPredicate&& predicate )
 {
 	const auto cend_itr = std::cend( collection );
-	const auto search_itr = std::find_if( std::cbegin( collection ), cend_itr, std::forward<TPredicate>( predicate ) );
+	const auto search_itr = std::find_if( std::cbegin( collection ),
+		cend_itr,
+		std::forward<TPredicate>( predicate ) );
 
 	using T = std::remove_reference_t<decltype( *search_itr )>;
 
 	if constexpr ( std::is_pointer_v<T> )
 	{
-		return search_itr != cend_itr ? *search_itr : nullptr;
+		return search_itr != cend_itr ?
+			*search_itr :
+			nullptr;
 	}
 	else if constexpr ( is_pointer_wrapper_v<T> )
 	{
-		return search_itr != cend_itr ? search_itr->get() : nullptr;
+		return search_itr != cend_itr ?
+			search_itr->get() :
+			nullptr;
 	}
 	else
 	{
-		return search_itr != cend_itr ? static_cast<const T*>( &*search_itr ) : nullptr;
+		return search_itr != cend_itr ?
+			static_cast<const T*>( &*search_itr )
+			: nullptr;
 	}
 }
 
 template<typename TContainer, typename TPredicate>
-decltype( auto ) try_find_if( TContainer& collection, TPredicate&& predicate )
+decltype( auto ) try_find_if( TContainer& collection,
+	TPredicate&& predicate )
 {
-	auto result = try_find_if( const_cast<const TContainer&>( collection ), std::forward<TPredicate>( predicate ) );
+	auto result = try_find_if( const_cast<const TContainer&>( collection ),
+		std::forward<TPredicate>( predicate ) );
 	return const_cast<std::remove_const_t<std::remove_pointer_t<decltype( result )>>*>( result );
 }
 
 template<typename TContainer, typename TPredicate>
-typename TContainer::iterator erase_if( TContainer& collection, TPredicate&& predicate )
+typename TContainer::iterator erase_if( TContainer& collection,
+	TPredicate&& predicate )
 {
 	const TContainer::iterator old_end_itr = std::end( collection );
-	const TContainer::iterator new_end_itr = std::remove_if( std::begin( collection ), old_end_itr, std::forward<TPredicate>( predicate ) );
+	const TContainer::iterator new_end_itr = std::remove_if( std::begin( collection ),
+		old_end_itr,
+		std::forward<TPredicate>( predicate ) );
 
-	return collection.erase( new_end_itr, old_end_itr );
+	return collection.erase( new_end_itr,
+		old_end_itr );
 }
 
-//Test if a collection contains a specific value
 template<typename TContainer, typename T>
-bool collection_contains( const TContainer& collection, const T& val )
+bool collection_contains( const TContainer& collection,
+	const T& val )
 {
 	const auto cend = std::cend( collection );
 	return std::find( std::cbegin( collection ), cend, val ) != cend;
 }
 
 template<typename TContainer, typename TPredicate>
-bool any_of( const TContainer& collection, TPredicate&& predicate )
+bool any_of( const TContainer& collection,
+	TPredicate&& predicate )
 {
-	return std::any_of( std::cbegin( collection ), std::cend( collection ), std::forward<TPredicate>( predicate ) );
+	return std::any_of( std::cbegin( collection ),
+		std::cend( collection ),
+		std::forward<TPredicate>( predicate ) );
 }
 
-//Test if at least N elements of an iterator range match a predicate. Earlies out and returns once the required amount of elements have been matched
+//===================================================
+//	\function	at_least_n_of_range
+//	\brief  test if at least N elements of an iterator range match a predicate
+//			earlies out and returns once the required amount of elements have been matched
+//	\date	2022/08/28 23:30
 template<typename TIt, typename TPredicate>
-bool at_least_n_of_range( TIt begin, TIt end, size_t n, TPredicate&& predicate )
+bool at_least_n_of_range( TIt begin,
+	TIt end,
+	size_t n,
+	TPredicate &&predicate )
 {
 	using T = decltype( *begin );
 
@@ -311,40 +377,31 @@ bool at_least_n_of_range( TIt begin, TIt end, size_t n, TPredicate&& predicate )
 }
 
 template<typename TContainer, typename TPredicate>
-bool at_least_n_of_range( const TContainer& collection, size_t n, TPredicate&& predicate )
+bool at_least_n_of_range( const TContainer &collection,
+	size_t n,
+	TPredicate &&predicate )
 {
-	return at_least_n_of_range( std::cbegin( collection ), std::cend( collection ), n, std::forward<TPredicate>( predicate ) );
-}
-
-template<typename TContainer, typename TPredicate>
-bool none_of( const TContainer& collection, TPredicate&& predicate )
-{
-	return std::none_of( std::cbegin( collection ), std::cend( collection ), std::forward<TPredicate>( predicate ) );
-}
-
-template<typename TContainer, typename TPredicate>
-bool all_of( const TContainer& collection, TPredicate&& predicate )
-{
-	return std::all_of( std::cbegin( collection ), std::cend( collection ), std::forward<TPredicate>( predicate ) );
-}
-
-template<typename TContainer, typename TPredicate>
-typename std::iterator_traits<typename TContainer::const_iterator>::difference_type count( const TContainer& collection, TPredicate&& predicate )
-{
-	return std::count( std::cbegin( collection ), std::cend( collection ), std::forward<TPredicate>( predicate ) );
+	return at_least_n_of_range( std::cbegin( collection ),
+		std::cend( collection ),
+		n,
+		std::forward<TPredicate>( predicate ) );
 }
 
 template<typename TContainer, typename T>
-unsigned index_of( const TContainer& collection, const T& val )
+unsigned index_of( const TContainer &collection,
+	const T &val )
 {
 	const auto begin = std::begin( collection );
 	const auto end = std::end( collection );
 
-	return std::distance( begin, std::find( begin, end, val ) );
+	return std::distance( begin,
+		std::find( begin, end, val ) );
 }
 
-template<typename TContainer, typename T, typename INSERTER>
-bool insert_unique( const TContainer& collection, T&& val, INSERTER&& inserter )
+template<typename TContainer, typename T, typename TInserter>
+bool insert_unique( const TContainer &collection,
+	T &&val,
+	TInserter &&inserter )
 {
 	if ( !collection_contains( collection, val ) )
 	{
@@ -356,7 +413,8 @@ bool insert_unique( const TContainer& collection, T&& val, INSERTER&& inserter )
 
 //This could be implemented in terms of insert_unique, but given how simple it is, it doesn't seem worth the lambda overhead
 template<typename TContainer, typename T>
-bool emplace_back_unique( TContainer& collection, T&& val )
+bool emplace_back_unique( TContainer &collection,
+	T &&val )
 {
 	if ( !collection_contains( collection, val ) )
 	{
@@ -366,37 +424,47 @@ bool emplace_back_unique( TContainer& collection, T&& val )
 	return false;
 }
 
-template<typename TContainer, typename TPredicate, typename... ARGS>
-bool emplace_back_if_none_of( TContainer& collection, TPredicate&& predicate, ARGS&&... args )
+template<typename TContainer, typename TPredicate, typename... TArgs>
+bool emplace_back_if_none_of( TContainer &collection,
+	TPredicate &&predicate,
+	TArgs&&... args )
 {
 	if ( none_of( collection, std::forward<TPredicate>( predicate ) ) )
 	{
-		collection.emplace_back( std::forward<ARGS>( args )... );
+		collection.emplace_back( std::forward<TArgs>( args )... );
 		return true;
 	}
 	return false;
 }
 
-template<typename TContainer, typename TPredicate, typename... ARGS>
-typename TContainer::iterator emplace_back_unique_and_return( TContainer& collection, TPredicate&& predicate, ARGS&&... args )
+template<typename TContainer, typename TPredicate, typename... TArgs>
+typename TContainer::iterator emplace_back_unique_and_return( TContainer &collection,
+	TPredicate &&predicate,
+	TArgs&&... args )
 {
-	typename TContainer::value_type* result = try_find_if( collection, std::forward<TPredicate>( predicate ) );
+	typename TContainer::value_type* result = try_find_if( collection,
+		std::forward<TPredicate>( predicate ) );
 	if ( result == nullptr )
 	{
-		return &collection.emplace_back( std::forward<ARGS>( args )... );
+		return &collection.emplace_back( std::forward<TArgs>( args )... );
 
 	}
 	return result;
 }
 
 template<typename TContainer, typename TPredicate>
-typename TContainer::iterator partition( TContainer& collection, TPredicate&& predicate )
+typename TContainer::iterator partition( TContainer &collection,
+	TPredicate &&predicate )
 {
-	return std::partition( std::begin( collection ), std::end( collection ), std::forward<TPredicate>( predicate ) );
+	return std::partition( std::begin( collection ),
+		std::end( collection ),
+		std::forward<TPredicate>( predicate ) );
 }
 
 template<typename TContainer, typename TPredicate>
-void move_erase_if( TContainer& src, TContainer& dest, TPredicate&& predicate )
+void move_erase_if( TContainer &src,
+	TContainer &dest,
+	TPredicate &&predicate )
 {
 	erase_if( src,
 		[&dest, &predicate] ( typename TContainer::reference element )
@@ -406,13 +474,14 @@ void move_erase_if( TContainer& src, TContainer& dest, TPredicate&& predicate )
 				dest.emplace_back( std::move( element ) );
 				return true;
 			}
-
 			return false;
 		} );
 }
 
 template<typename TSrcCollection, typename TDestCollection, typename TF>
-void transform_emplace_back( TSrcCollection& src, TDestCollection& dest, TF&& func )
+void transform_emplace_back( TSrcCollection &src,
+	TDestCollection &dest,
+	TF &&func )
 {
 	for ( typename TSrcCollection::reference element : src )
 	{
@@ -421,7 +490,9 @@ void transform_emplace_back( TSrcCollection& src, TDestCollection& dest, TF&& fu
 }
 
 template<typename TSrcCollection, typename TDestCollection, typename TF>
-void transform_emplace_back( const TSrcCollection& src, TDestCollection& dest, TF&& func )
+void transform_emplace_back( const TSrcCollection &src,
+	TDestCollection &dest,
+	TF &&func )
 {
 	for ( typename TSrcCollection::const_reference element : src )
 	{
@@ -430,7 +501,10 @@ void transform_emplace_back( const TSrcCollection& src, TDestCollection& dest, T
 }
 
 template<typename TSrcCollection, typename TDestCollection, typename TPredicate, typename TF>
-void transform_emplace_back_if( const TSrcCollection& src, TDestCollection& dest, TPredicate&& predicate, TF&& func )
+void transform_emplace_back_if( const TSrcCollection &src,
+	TDestCollection &dest,
+	TPredicate &&predicate,
+	TF &&func )
 {
 	for ( typename TSrcCollection::const_reference element : src )
 	{
@@ -442,7 +516,10 @@ void transform_emplace_back_if( const TSrcCollection& src, TDestCollection& dest
 }
 
 template<typename TSrcCollection, typename TDestCollection, typename TPredicate, typename TF>
-void transform_emplace_back_if( TSrcCollection& src, TDestCollection& dest, TPredicate&& predicate, TF&& func )
+void transform_emplace_back_if( TSrcCollection &src,
+	TDestCollection &dest,
+	TPredicate &&predicate,
+	TF &&func )
 {
 	for ( typename TSrcCollection::reference element : src )
 	{
@@ -456,115 +533,14 @@ void transform_emplace_back_if( TSrcCollection& src, TDestCollection& dest, TPre
 template<typename TContainer, typename TF>
 void transform_emplace_back_clear( TContainer& src, TContainer& dest, TF&& func )
 {
-	transform_emplace_back( src, dest, std::forward<TF>( func ) );
-
+	transform_emplace_back( src,
+		dest,
+		std::forward<TF>( func ) );
 	src.clear();
 }
 
-template<typename TContainer, typename T, typename TF>
-constexpr T accumulate( const TContainer& collection, T initial_value, TF&& func )
-{
-	return std::accumulate( std::cbegin( collection ), std::cend( collection ), initial_value, std::forward<TF>( func ) );
-}
-
-template<typename TContainer, typename TPredicate>
-constexpr size_t count_if( const TContainer& collection, TPredicate&& predicate )
-{
-	return std::count_if( std::cbegin( collection ), std::cend( collection ), std::forward<TPredicate>( predicate ) );
-}
-
 template<typename TContainer, typename TComparator>
-void sort( TContainer& collection, TComparator&& comparator )
-{
-	return std::sort( std::begin( collection ), std::end( collection ), std::forward<TComparator>( comparator ) );
-}
-
-template<typename TContainer, typename T_VAL, typename TComparator>
-typename TContainer::iterator lower_bound( TContainer& collection, const T_VAL& val, TComparator&& comparator )
-{
-	return std::lower_bound( std::begin( collection ), std::end( collection ), val, std::forward<TComparator>( comparator ) );
-}
-
-template<typename TContainer, typename T_VAL, typename TComparator>
-typename TContainer::const_iterator lower_bound( const TContainer& collection, const T_VAL& val, TComparator&& comparator )
-{
-	return lower_bound( const_cast<TContainer&>( collection ), val, std::forward<TComparator>( comparator ) );
-}
-
-template<typename TContainer>
-typename TContainer::iterator lower_bound( TContainer& collection, typename TContainer::const_reference val )
-{
-	return lower_bound( collection, val, std::less() );
-}
-
-template<typename TContainer>
-typename TContainer::const_iterator lower_bound( const TContainer& collection, typename TContainer::const_reference val )
-{
-	return lower_bound( const_cast<TContainer&>( collection ), val );
-}
-
-template<typename TContainer, typename T_VAL, typename TComparator>
-typename TContainer::iterator upper_bound( TContainer& collection, const T_VAL& val, TComparator&& comparator )
-{
-	return std::upper_bound( std::begin( collection ), std::end( collection ), val, std::forward<TComparator>( comparator ) );
-}
-
-template<typename TContainer, typename T_VAL, typename TComparator>
-typename TContainer::const_iterator upper_bound( const TContainer& collection, const T_VAL& val, TComparator&& comparator )
-{
-	return upper_bound( const_cast<TContainer&>( collection ), val, std::forward<TComparator>( comparator ) );
-}
-
-template<typename TContainer>
-typename TContainer::iterator upper_bound( TContainer& collection, typename TContainer::const_reference val )
-{
-	return upper_bound( collection, val, std::less() );
-}
-
-template<typename TContainer>
-typename TContainer::const_iterator upper_bound( const TContainer& collection, typename TContainer::const_reference val )
-{
-	return upper_bound( const_cast<TContainer&>( collection ), val );
-}
-
-template<typename TContainer, typename TComparator>
-typename TContainer::const_iterator max_element( const TContainer& collection, TComparator&& comparator )
-{
-	return std::max_element( std::cbegin( collection ), std::cend( collection ), std::forward<TComparator>( comparator ) );
-}
-
-template<typename TContainer, typename TComparator>
-typename TContainer::iterator max_element( TContainer& collection, TComparator&& comparator )
-{
-	return max_element( const_cast<TContainer&>( collection ), std::forward<TComparator> );
-}
-
-template<typename TCollection1, typename TCollection2, typename TOutIt, typename TPredicate>
-TOutIt set_difference( const TCollection1& collection_1, const TCollection2& collection_2, TOutIt&& output_iterator, TPredicate&& predicate )
-{
-	return std::set_difference(
-		std::cbegin( collection_1 ),
-		std::cend( collection_1 ),
-		std::cbegin( collection_2 ),
-		std::cend( collection_2 ),
-		std::forward<TOutIt>( output_iterator ),
-		std::forward<TPredicate>( predicate ) );
-}
-
-template<typename TContainer>
-typename TContainer::iterator unique( TContainer& collection )
-{
-	return std::unique( std::begin( collection ), std::end( collection ) );
-}
-
-template<typename TContainer, typename T_BINARY_PREDICATE>
-typename TContainer::iterator unique( TContainer& collection, T_BINARY_PREDICATE&& predicate )
-{
-	return std::unique( std::begin( collection ), std::end( collection ), std::forward<T_BINARY_PREDICATE>( predicate ) );
-}
-
-template<typename TContainer, typename TComparator>
-bool has_duplicates( const TContainer& collection, const TComparator& comparator )
+bool hasDuplicates( const TContainer &collection, const TComparator &comparator )
 {
 	using TIt = typename TContainer::const_iterator;
 	using T = typename TContainer::value_type;
@@ -600,10 +576,11 @@ bool has_duplicates( const TContainer& collection, const TComparator& comparator
 }
 
 template<typename TContainer>
-bool has_duplicates( const TContainer& collection )
+bool hasDuplicates( const TContainer &collection )
 {
-	return has_duplicates( collection, std::equal_to() );
+	return hasDuplicates( collection,
+		std::equal_to() );
 }
 
 
-}//util
+}//namespace util

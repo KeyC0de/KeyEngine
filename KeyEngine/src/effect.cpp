@@ -8,7 +8,7 @@
 
 Effect::Effect( size_t channels,
 	const std::string &targetPassName,
-	bool bStartActive ) noexcept
+	const bool bStartActive ) noexcept
 	:
 	m_renderingChannels(channels),
 	m_active{bStartActive},
@@ -69,12 +69,12 @@ void Effect::addBindable( std::shared_ptr<IBindable> pBindable ) noexcept
 	m_bindables.emplace_back( std::move( pBindable ) );
 }
 
-void Effect::render( const Drawable &drawable,
-	size_t channels ) const noexcept
+void Effect::render( const Mesh &mesh,
+	const size_t channels ) const noexcept
 {
 	if ( m_active && (m_renderingChannels & channels) != 0 )
 	{
-		m_pTargetPass->addJob( ren::Job{this, &drawable} );
+		m_pTargetPass->addJob( ren::Job{this, &mesh} );
 	}
 }
 
@@ -91,7 +91,7 @@ bool Effect::isEnabled() const noexcept
 	return m_active;
 }
 
-void Effect::setEnabled( bool b ) noexcept
+void Effect::setEnabled( const bool b ) noexcept
 {
 	m_active = b;
 }
@@ -101,11 +101,11 @@ const std::string& Effect::getTargetPassName() const noexcept
 	return m_targetPassName;
 }
 
-void Effect::setParentDrawable( const Drawable &parent ) noexcept
+void Effect::setMesh( const Mesh &parent ) noexcept
 {
 	for ( auto &bindable : m_bindables )
 	{
-		bindable->setParentDrawable( parent );
+		bindable->setMesh( parent );
 	}
 }
 

@@ -6,34 +6,28 @@
 #include <string>
 
 
-class Model;
-class Drawable;
+class Mesh;
 class IEffectVisitor;
 class IModelVisitor;
 
 class Node
 {
-	friend Model;
+	friend class Model;
 
 	std::string m_name;
 	int m_imguiId;
-	std::vector<std::unique_ptr<Node>> m_children;
-	std::vector<Drawable*> m_drawables;
 	DirectX::XMFLOAT4X4 m_localTransform;
 	DirectX::XMFLOAT4X4 m_worldTransform;
+	std::vector<std::unique_ptr<Node>> m_children;
+	std::vector<Mesh*> m_meshes;
 public:
-	Node( int id, const std::string &name, std::vector<Drawable*> pDrawables,
-		const DirectX::XMMATRIX &localTransform ) cond_noex;
+	Node( const int imguiId, const std::string &name, const DirectX::XMMATRIX &localTransform, std::vector<Mesh*> pmeshes ) cond_noex;
 
-	void update( float dt, const DirectX::XMMATRIX &parentWorldTransform ) const cond_noex;
-	void render( size_t channels ) const cond_noex;
+	void update( const float dt, const DirectX::XMMATRIX &parentWorldTransform ) const cond_noex;
+	void render( const size_t channels ) const cond_noex;
 	void setTransform( const DirectX::XMMATRIX &worldTransform ) noexcept;
 	const DirectX::XMFLOAT4X4& getWorldTransform() const noexcept;
-	//===================================================
-	//	\function	getId
-	//	\brief  gets IMGUI id
-	//	\date	2022/07/31 18:49
-	int getId() const noexcept;
+	const int getImguiId() const noexcept;
 	bool hasChildren() const noexcept;
 	void accept( IModelVisitor &mv );
 	void accept( IEffectVisitor &ev );

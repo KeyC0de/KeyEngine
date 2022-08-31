@@ -68,7 +68,7 @@ class IOSystem;
  *
  * In a nutshell, there are two export interfaces: Export, which writes the
  * output file(s) either to the regular file system or to a user-supplied
- * #IOSystem, and ExportToBlob which returns a linked list of memory
+ * IOSystem, and ExportToBlob which returns a linked list of memory
  * buffers (blob), each referring to one output file (in most cases
  * there will be only one output file of course, but this extra complexity is
  * needed since Assimp aims at supporting a wide range of file formats).
@@ -350,8 +350,8 @@ public:
     // -------------------------------------------------------------------
     /** Set a boolean configuration property. Boolean properties
      *  are stored on the integer stack internally so it's possible
-     *  to set them via #SetPropertyBool and query them with
-     *  #GetPropertyBool and vice versa.
+     *  to set them via SetPropertyBool and query them with
+     *  GetPropertyBool and vice versa.
      * @see SetPropertyInteger()
      */
     bool SetPropertyBool(const char *szName, bool value)    {
@@ -395,8 +395,8 @@ public:
     // -------------------------------------------------------------------
     /** Get a boolean configuration property. Boolean properties
      *  are stored on the integer stack internally so it's possible
-     *  to set them via #SetPropertyBool and query them with
-     *  #GetPropertyBool and vice versa.
+     *  to set them via SetPropertyBool and query them with
+     *  GetPropertyBool and vice versa.
      * @see GetPropertyInteger()
      */
     bool GetPropertyBool(const char *szName, bool bErrorReturn = false) const {

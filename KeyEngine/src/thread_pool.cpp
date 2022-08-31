@@ -37,9 +37,9 @@ ThreadPool::ThreadPool( ThreadPool &&rhs ) noexcept
 
 ThreadPool& ThreadPool::operator=( ThreadPool &&rhs ) noexcept
 {
-	m_bEnabled.store( rhs.m_bEnabled.load( std::memory_order_relaxed ) );
-	std::swap( m_pool, rhs.m_pool );
-	std::swap( m_tasks, rhs.m_tasks );
+	ThreadPool tmp{std::move( rhs )};
+	std::swap( *this,
+		tmp );
 	return *this;
 }
 

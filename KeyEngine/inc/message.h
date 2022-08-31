@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <vector>
+#include "non_copyable.h"
 
 
 class Entity;
@@ -17,6 +18,7 @@ class Operation;
 //				move only type
 //=============================================================
 class Message
+	: public NonCopyable
 {
 public:
 	enum Type
@@ -30,22 +32,19 @@ public:
 private:
 	bool m_bHandled = false;
 	Entity *m_pSender;
-	std::vector<Entity*> m_receivers;
+	std::vector<Entity*> m_recipients;
 	Message::Type m_type;
 public:
-	Message( Entity *srcId, const std::vector<Entity*>& destId,
-		Message::Type type );
-	virtual ~Message() noexcept;
-	Message( const Message &rhs ) = delete;
-	Message& operator=( const Message &rhs ) = delete;
+	Message( Entity *srcId, const std::vector<Entity*>& destId, const Message::Type type );
 	Message( Message &&rhs ) noexcept;
 	Message& operator=( Message &&rhs ) noexcept;
+	virtual ~Message() noexcept;
 
-	Message::Type getType() const noexcept;
-	Entity* getSender() noexcept;
-	std::vector<Entity*>& getReceivers() noexcept;
+	const Message::Type getType() const noexcept;
+	const Entity* getSender() noexcept;
+	const std::vector<Entity*>& getRecipients() noexcept;
 	bool isHandled() const noexcept;
-	void setHandled( bool b) noexcept;
+	void setHandled( bool b ) noexcept;
 };
 
 
@@ -63,11 +62,10 @@ class MessageCall
 {
 	std::unique_ptr<class Operation> m_pFunc;
 public:
-	MessageCall( Entity *psrc, const std::vector<Entity*>& pDests,
-		Message::Type type, std::unique_ptr<Operation> df );
-	virtual ~MessageCall() noexcept = default;
+	MessageCall( Entity *psrc, const std::vector<Entity*>& pDests, Message::Type type, std::unique_ptr<Operation> df );
 	MessageCall( MessageCall &&rhs ) noexcept;
 	MessageCall& operator=( MessageCall &&rhs ) noexcept;
+	virtual ~MessageCall() noexcept = default;
 
 	Operation* getCallable() const noexcept;
 };
@@ -113,7 +111,8 @@ public:
 	MessageData& operator=( MessageData &&rhs ) noexcept
 	{
 		Message::operator=( std::move( rhs ) );
-		std::swap( m_pPayload, rhs.m_pPayload );
+		std::swap( m_pPayload,
+			rhs.m_pPayload );
 		return *this;
 	}
 

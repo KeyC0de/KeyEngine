@@ -1,9 +1,9 @@
 #include <csignal>
 
 
-void installSigintHandler( int signum );
-void installSigsegvHandler( int signum );
-void installSigtermHandler( int signum );
-void installSigillHandler( int signum );
-void installSigabrtHandler( int signum );
-void installSigfpeHandler( int signum );
+void installSigintHandler( const int signum );
+void installSigsegvHandler( const int signum );
+void installSigtermHandler( const int signum );
+void installSigillHandler( const int signum );
+void installSigabrtHandler( const int signum );
+void installSigfpeHandler( const int signum );

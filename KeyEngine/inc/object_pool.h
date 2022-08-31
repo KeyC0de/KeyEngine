@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include "non_copyable.h"
 
 
 //=============================================================
@@ -14,6 +15,7 @@
 //=============================================================
 template<typename T>
 class ObjectPool final
+	: public NonCopyable
 {
 	union Object
 	{
@@ -28,14 +30,17 @@ public:
 	using value_type = T;
 	using pointer = T*;
 
-	// constructor creates the pool given its size
-	explicit ObjectPool( const std::size_t size )
+	//===================================================
+	//	\function	ctor
+	//	\brief  ctor creates the pool given the amount of objects it will hold
+	//	\date	2022/08/28 19:12
+	explicit ObjectPool( const std::size_t nObjs )
 		:
-		m_pool{std::make_unique<Object[]>( size )},
+		m_pool{std::make_unique<Object[]>( nObjs )},
 		m_pNextFree{nullptr},
-		m_nObjs(size)
+		m_nObjs(nObjs)
 	{
-		for ( int i = 1; i < size; ++i )
+		for ( int i = 1; i < nObjs; ++i )
 		{
 			m_pool[i - 1].m_pNext = &m_pool[i];
 		}
@@ -44,9 +49,6 @@ public:
 	}
 
 	~ObjectPool() noexcept = default;
-
-	ObjectPool( const ObjectPool &rhs ) = delete;
-	ObjectPool& operator=( const ObjectPool &rhs ) = delete;
 
 	ObjectPool( ObjectPool &&rhs ) noexcept
 		:
@@ -59,12 +61,9 @@ public:
 
 	ObjectPool& operator=( ObjectPool &&rhs ) noexcept
 	{
-		m_nObjs = rhs.getSize();
-		std::swap( m_pool,
-			rhs.m_pool );
-		m_pNextFree = rhs.m_pNextFree;
-		rhs.m_pNextFree = nullptr;
-
+		ObjectPool tmp{std::move( rhs )};
+		std::swap( *this,
+			tmp );
 		return *this;
 	}
 
@@ -127,7 +126,7 @@ public:
 		deallocate( p );
 	}
 
-	std::size_t getSize() noexcept
+	const std::size_t getSize() noexcept
 	{
 		return m_nObjs;
 	}

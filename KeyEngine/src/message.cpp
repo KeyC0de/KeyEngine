@@ -5,20 +5,20 @@
 
 Message::Message( Entity *pSrc,
 	const std::vector<Entity*>& pDests,
-	Message::Type type )
+	const Message::Type type )
 	:
 	m_pSender(pSrc),
 	m_type(type)
 {
 	for( Entity *dest : pDests )
 	{
-		m_receivers.emplace_back( dest );
+		m_recipients.emplace_back( dest );
 	}
 }
 
 Message::~Message() noexcept
 {
-	//m_receivers.clear();
+	//m_recipients.clear();
 }
 
 Message::Message( Message &&rhs ) noexcept
@@ -27,40 +27,34 @@ Message::Message( Message &&rhs ) noexcept
 	m_pSender{rhs.m_pSender},
 	m_type{rhs.m_type}
 {
-	for( Entity *dest : rhs.m_receivers )
+	for( Entity *dest : rhs.m_recipients )
 	{
-		m_receivers.emplace_back( dest );
+		m_recipients.emplace_back( dest );
 	}
-	rhs.m_receivers.clear();
+	rhs.m_recipients.clear();
 }
 
 Message& Message::operator=( Message &&rhs ) noexcept
 {
-	m_bHandled = rhs.m_bHandled;
-	m_pSender = rhs.m_pSender;
-	m_type = rhs.m_type;
-
-	for( Entity *dest : rhs.m_receivers )
-	{
-		m_receivers.emplace_back( dest );
-	}
-	rhs.m_receivers.clear();
+	Message tmp{std::move( rhs )};
+	std::swap( *this,
+		tmp );
 	return *this;
 }
 
-Message::Type Message::getType() const noexcept
+const Message::Type Message::getType() const noexcept
 {
 	return m_type;
 }
 
-Entity* Message::getSender() noexcept
+const Entity* Message::getSender() noexcept
 {
 	return m_pSender;
 }
 
-std::vector<Entity*>& Message::getReceivers() noexcept
+const std::vector<Entity*>& Message::getRecipients() noexcept
 {
-	return m_receivers;
+	return m_recipients;
 }
 
 bool Message::isHandled() const noexcept
@@ -96,7 +90,8 @@ MessageCall::MessageCall( MessageCall &&rhs ) noexcept
 MessageCall& MessageCall::operator=( MessageCall &&rhs ) noexcept
 {
 	Message::operator=( std::move( rhs ) );
-	std::swap( m_pFunc, rhs.m_pFunc );
+	std::swap( m_pFunc,
+		rhs.m_pFunc );
 	return *this;
 }
 

@@ -2,10 +2,10 @@
 
 #include <cstddef>
 #include <vector>
-#include "vec3.h"
+#include <DirectXMath.h>
 
 
-class OctreeData;
+using OctreeData = DirectX::XMFLOAT3;
 
 //============================================================
 //	\class	Octree
@@ -24,22 +24,20 @@ class OctreeData;
 //=============================================================
 class Octree final
 {
-	Vec3 m_center;	// the physical spatial center of this octree octant
-	Vec3 m_half;	// half the width,height,depth of this octant
+	DirectX::XMFLOAT3 m_center;	// the physical spatial center of this octree octant
+	DirectX::XMFLOAT3 m_half;	// half the width,height,depth of this octant
 	Octree *m_children[8];
-	class OctreeData *m_data;
-
+	OctreeData *m_data;
 private:
 	// determine which octant of the tree contains point
-	int getOctantContainingPoint( const Vec3 &point ) const;
+	int getOctantContainingPoint( const DirectX::XMFLOAT3 &point ) const;
 	bool isLeafNode() const;
 public:
-	Octree( const Vec3 &center, const Vec3 &halfDim );
+	Octree( const DirectX::XMFLOAT3 &center, const DirectX::XMFLOAT3 &halfDim );
 	Octree( const Octree &rhs );
 	~Octree();
 
-	void insert( class OctreeData *node );
+	void insert( OctreeData *node );
 	// recursively query the tree for Entities within a bounding box {bmin,bmax}
-	void getEntitiesWithinBBox( const Vec3 &bmin, const Vec3 &bmax,
-		std::vector<class OctreeData*>& resultsOut );
+	void getEntitiesWithinBBox( const DirectX::XMFLOAT3 &bmin, const DirectX::XMFLOAT3 &bmax, std::vector<OctreeData*>& resultsOut );
 };

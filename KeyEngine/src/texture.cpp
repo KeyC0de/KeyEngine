@@ -15,7 +15,7 @@ namespace dx = DirectX;
 
 Texture::Texture( Graphics &gph,
 	const std::string &filepath,
-	unsigned slot )
+	const unsigned slot )
 	:
 	m_path{filepath},
 	m_slot(slot)
@@ -43,14 +43,9 @@ Texture::Texture( Graphics &gph,
 		&m_pTex );
 	ASSERT_HRES_IF_FAILED;
 
-	// write the image (bitmap) to the texture
-	getDeviceContext( gph )->UpdateSubresource( m_pTex.Get(),
-		0u,
-		nullptr,
-		bitmap.dataConst(),
-		bitmap.getPitch(),
-		0u );
-	DXGI_GET_QUEUE_INFO( gph );
+	writeBitmapToTexture( gph,
+		m_pTex.Get(),
+		bitmap );
 
 	// create the resource view on the texture
 	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc{};
@@ -70,10 +65,11 @@ Texture::Texture( Graphics &gph,
 }
 
 Texture::Texture( Graphics &gph,
-	unsigned width,
-	unsigned height,
-	unsigned slot )
+	const unsigned width,
+	const unsigned height,
+	const unsigned slot )
 	:
+	m_bDynamic{true},
 	m_width(width),
 	m_height(height),
 	m_slot(slot)
@@ -90,6 +86,7 @@ Texture::Texture( Graphics &gph,
 	rtvTexDesc.MiscFlags = 0u;
 	rtvTexDesc.SampleDesc.Count = 1u;
 	rtvTexDesc.SampleDesc.Quality = 0u;
+
 	HRESULT hres = getDevice( gph )->CreateTexture2D( &rtvTexDesc,
 		nullptr,
 		&m_pTex );
@@ -107,8 +104,20 @@ Texture::Texture( Graphics &gph,
 		&srvDesc,
 		&m_pSrv );
 	ASSERT_HRES_IF_FAILED;
+}
 
-	m_bDynamic = true;
+void Texture::writeBitmapToTexture( Graphics &gph,
+	ID3D11Texture2D *tex,
+	const Bitmap &bitmap,
+	const D3D11_BOX *destPortion /* = nullptr */)
+{
+	getDeviceContext( gph )->UpdateSubresource( tex,
+		0u,
+		destPortion,
+		bitmap.getData(),
+		bitmap.getPitch(),
+		0u );
+	DXGI_GET_QUEUE_INFO( gph );
 }
 
 void Texture::update( Graphics &gph ) cond_noex
@@ -126,7 +135,7 @@ void Texture::update( Graphics &gph ) cond_noex
 	const unsigned dstWidth = mappedCpuBufferTexture.RowPitch / sizeof ColorBGRA;
 	const unsigned srcWidth = m_width;
 	const unsigned nRowBytes = srcWidth * sizeof ColorBGRA;
-	ColorBGRA *pSrc = gph.getCpuBuffer();
+	ColorBGRA *pSrc = gph.cpuBuffer();
 	// copy 1 line at a time from cpuBuffer to dynamic GPU texture
 	for ( unsigned y = 0u; y < m_height; ++y )
 	{
@@ -155,30 +164,30 @@ bool Texture::hasAlpha() const noexcept
 	return m_bAlpha;
 }
 
-std::string Texture::getPath() const noexcept
+const std::string& Texture::getPath() const noexcept
 {
 	return m_path;
 }
 
 std::shared_ptr<Texture> Texture::fetch( Graphics &gph,
 	const std::string &filepath,
-	unsigned slot )
+	const unsigned slot )
 {
 	return BindableMap::fetch<Texture>( gph,
 		filepath,
 		slot );
 }
 
-std::string Texture::generateUid( const std::string &filepath,
-	unsigned slot )
+std::string Texture::calcUid( const std::string &filepath,
+	const unsigned slot )
 {
 	using namespace std::string_literals;
 	return typeid( Texture ).name() + "#"s + filepath + "#"s + std::to_string( slot );
 }
 
-std::string Texture::getUid() const noexcept
+const std::string Texture::getUid() const noexcept
 {
-	return generateUid( m_path,
+	return calcUid( m_path,
 		m_slot );
 }
 
@@ -222,8 +231,8 @@ void Texture::flipNormalMapGreenChannel( const std::string &pathIn,
 }
 
 void Texture::validateNormalMap( const std::string &pathIn,
-	float thresholdMin,
-	float thresholdMax )
+	const float thresholdMin,
+	const float thresholdMax )
 {
 #if defined _DEBUG && !defined NDEBUG
 	auto &console = KeyConsole::getInstance();
@@ -306,8 +315,8 @@ void Texture::validateNormalMap( const std::string &pathIn,
 }
 
 void Texture::makeStripes( const std::string &pathOut,
-	int size,
-	int stripeWidth )
+	const int size,
+	const int stripeWidth )
 {
 	auto power = log2( size );
 	ASSERT( modf( power, &power ) == 0.0, "Texture dimension is not a power of 2!" );
@@ -331,8 +340,8 @@ void Texture::makeStripes( const std::string &pathOut,
 	bitmap.save( pathOut );
 }
 
-unsigned Texture::calculateNumberOfMipMaps( unsigned width,
-	unsigned height ) noexcept
+const unsigned Texture::calculateNumberOfMipMaps( const unsigned width,
+	const unsigned height ) noexcept
 {
 	const float xSteps = std::ceil( log2( (float)width ) );
 	const float ySteps = std::ceil( log2( (float)height ) );

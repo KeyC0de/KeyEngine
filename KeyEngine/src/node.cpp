@@ -1,17 +1,18 @@
 #include "node.h"
-#include "drawable.h"
+#include "mesh.h"
 #include "model_visitor.h"
+#include "effect_visitor.h"
 
 
 namespace dx = DirectX;
 
-Node::Node( int id,
+Node::Node( const int imguiId,
 	const std::string &name,
-	std::vector<Drawable*> pDrawables,
-	const dx::XMMATRIX &localTransform ) cond_noex
+	const dx::XMMATRIX &localTransform,
+	std::vector<Mesh*> pmeshes ) cond_noex
 	:
-	m_imguiId(id),
-	m_drawables{std::move( pDrawables )},
+	m_imguiId(imguiId),
+	m_meshes{std::move( pmeshes )},
 	m_name{name}
 {
 	dx::XMStoreFloat4x4( &m_localTransform,
@@ -20,12 +21,11 @@ Node::Node( int id,
 		dx::XMMatrixIdentity() );
 }
 
-void Node::update( float dt,
+void Node::update( const float dt,
 	const dx::XMMATRIX &parentWorldTransform ) const cond_noex
 {
-	const auto built = dx::XMLoadFloat4x4( &m_localTransform )
-		* dx::XMLoadFloat4x4( &m_worldTransform ) * parentWorldTransform;
-	for ( const auto pm : m_drawables )
+	const auto built = dx::XMLoadFloat4x4( &m_localTransform ) * dx::XMLoadFloat4x4( &m_worldTransform ) * parentWorldTransform;
+	for ( const auto pm : m_meshes )
 	{
 		pm->setTransform( built );
 		pm->update( dt );
@@ -37,9 +37,9 @@ void Node::update( float dt,
 	}
 }
 
-void Node::render( size_t channels ) const cond_noex
+void Node::render( const size_t channels ) const cond_noex
 {
-	for ( const auto pm : m_drawables )
+	for ( const auto pm : m_meshes )
 	{
 		pm->render( channels );
 	}
@@ -52,7 +52,7 @@ void Node::render( size_t channels ) const cond_noex
 void Node::addChild( std::unique_ptr<Node> pChild ) cond_noex
 {
 	ASSERT( pChild, "Node is null!" );
-	m_children.push_back( std::move( pChild ) );
+	m_children.emplace_back( std::move( pChild ) );
 }
 
 void Node::setTransform( const dx::XMMATRIX &worldTransform ) noexcept
@@ -61,12 +61,12 @@ void Node::setTransform( const dx::XMMATRIX &worldTransform ) noexcept
 		worldTransform );
 }
 
-const dx::XMFLOAT4X4 &Node::getWorldTransform() const noexcept
+const dx::XMFLOAT4X4& Node::getWorldTransform() const noexcept
 {
 	return m_worldTransform;
 }
 
-int Node::getId() const noexcept
+const int Node::getImguiId() const noexcept
 {
 	return m_imguiId;
 }
@@ -80,13 +80,13 @@ void Node::accept( IModelVisitor &mv )
 		{
 			node->accept( mv );
 		}
-		mv.onNodeLeave( *this );
+		mv.onVisited( *this );
 	}
 }
 
 void Node::accept( IEffectVisitor &ev )
 {
-	for ( auto &mesh : m_drawables )
+	for ( auto &mesh : m_meshes )
 	{
 		mesh->accept( ev );
 	}
@@ -97,7 +97,7 @@ bool Node::hasChildren() const noexcept
 	return !m_children.empty();
 }
 
-const std::string &Node::getName() const noexcept
+const std::string& Node::getName() const noexcept
 {
 	return m_name;
 }

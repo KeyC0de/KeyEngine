@@ -12,8 +12,8 @@
 #include "console.h"
 #include "graphics_mode.h"
 #include "rectangle.h"
-#include <ittnotify.h>	// Intel Instrumentation & Tracing Technology
-#include "vtune_itt_domain.h"
+//#include <ittnotify.h>	// Intel Instrumentation & Tracing Technology
+//#include "vtune_itt_domain.h"
 
 #pragma comment( lib, "dxgi.lib" )
 #pragma comment( lib, "d3d11.lib" )
@@ -24,7 +24,7 @@
 #	define DXGI_GET_QUEUE_INFO_GFX \
 	{\
 		KeyConsole &console = KeyConsole::getInstance();\
-		const auto &messages = getInfoQueue().getInfoMessages();\
+		const auto &messages = infoQueue().getInfoMessages();\
 		if ( !messages.empty() )\
 		{\
 			for ( const auto &msg : messages )\
@@ -33,7 +33,7 @@
 			}\
 			__debugbreak();\
 		}\
-		getInfoQueue().markQueueIndex();\
+		infoQueue().markQueueIndex();\
 	}
 #else
 #	define DXGI_GET_QUEUE_INFO_GFX (void)0;
@@ -44,11 +44,11 @@ namespace mwrl = Microsoft::WRL;
 namespace dx = DirectX;
 
 // Create ITT string handles
-__itt_string_handle *pStrIttDrawIndexed = __itt_string_handle_create( L"DrawIndexed" );
-__itt_string_handle *pStrIttDrawIndexedInstanced = __itt_string_handle_create( L"DrawIndexedInstanced" );
-__itt_string_handle *pStrIttBeginRendering = __itt_string_handle_create( L"BeginRendering" );
-__itt_string_handle *pStrIttFpsTimerRendering = __itt_string_handle_create( L"FpsTimerRendering" );
-__itt_string_handle *pStrIttEndRendering = __itt_string_handle_create( L"EndRendering" );
+//__itt_string_handle *pStrIttDrawIndexed = __itt_string_handle_create( L"DrawIndexed" );
+//__itt_string_handle *pStrIttDrawIndexedInstanced = __itt_string_handle_create( L"DrawIndexedInstanced" );
+//__itt_string_handle *pStrIttBeginRendering = __itt_string_handle_create( L"BeginRendering" );
+//__itt_string_handle *pStrIttFpsTimerRendering = __itt_string_handle_create( L"FpsTimerRendering" );
+//__itt_string_handle *pStrIttEndRendering = __itt_string_handle_create( L"EndRendering" );
 
 Graphics::Adapter::Adapter( IDXGIAdapter *pAdapter )
 {
@@ -61,7 +61,7 @@ const DXGI_ADAPTER_DESC* Graphics::Adapter::getDesc() const noexcept
 	return &m_desc;
 }
 
-IDXGIAdapter* Graphics::Adapter::getAdapter() const noexcept
+IDXGIAdapter* Graphics::Adapter::adapter() const noexcept
 {
 	return m_pAdapter.Get();
 }
@@ -98,9 +98,9 @@ bool Graphics::checkTearingSupport()
 }
 #endif
 
-Graphics::Graphics( HWND hWnd,
-	int width,
-	int height )
+Graphics::Graphics( const HWND hWnd,
+	const int width,
+	const int height )
 	:
 	m_width(width),
 	m_height(height)
@@ -109,8 +109,8 @@ Graphics::Graphics( HWND hWnd,
 	auto &settings = SettingsManager::getInstance().getSettings();
 	if ( settings.bMultithreadedRendering )
 	{
-		//m_deferredContexts.reserve( settings.nRenderingThreads );
-		//m_commandLists.reserve( settings.nRenderingThreads );
+		m_deferredContexts.reserve( settings.nRenderingThreads );
+		m_commandLists.reserve( settings.nRenderingThreads );
 	}
 
 	DXGI_SWAP_CHAIN_DESC swapChainDesc{};
@@ -156,7 +156,7 @@ Graphics::Graphics( HWND hWnd,
 #else
 	for ( DWORD i = 0u; hres == E_INVALIDARG || i < std::size( acceptableFeatureLevels ); ++i )
 	{
-		hres = D3D11CreateDeviceAndSwapChain( primaryAdapter.getAdapter(),
+		hres = D3D11CreateDeviceAndSwapChain( primaryAdapter.adapter(),
 			D3D_DRIVER_TYPE_UNKNOWN,
 			nullptr,
 			swapChainFlags,
@@ -197,7 +197,7 @@ Graphics::Graphics( HWND hWnd,
 	m_globalColorBuffer = std::make_shared<RenderTargetOutput>( *this,
 		pD3dBackBuffer.Get() );
 
-	if constexpr ( GraphicsMode::get() == GraphicsMode::_2D )
+	if constexpr ( gph_mode::get() == gph_mode::_2D )
 	{
 		m_pCpuBuffer = static_cast<ColorBGRA*>( _aligned_malloc( sizeof( ColorBGRA ) * width * height,
 			16u ) );
@@ -208,7 +208,7 @@ Graphics::Graphics( HWND hWnd,
 		L"assets/fonts/myComicSansMSSpriteFont.spritefont" );
 
 	// initialize Dear ImGui d3d11 Implementation
-	if constexpr ( GraphicsMode::get() == GraphicsMode::_3D )
+	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{
 		ImGui_ImplDX11_Init( m_pDevice.Get(),
 			m_pContext.Get() );
@@ -219,7 +219,7 @@ Graphics::Graphics( HWND hWnd,
 
 Graphics::~Graphics()
 {
-	if constexpr ( GraphicsMode::get() == GraphicsMode::_3D )
+	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{
 		ImGui_ImplDX11_Shutdown();
 	}
@@ -228,6 +228,7 @@ Graphics::~Graphics()
 		_aligned_free( m_pCpuBuffer );
 		m_pCpuBuffer = nullptr;
 	}
+	//cleanState();
 #if defined _DEBUG && !defined NDEBUG
 	//d3d11DebugReport();
 #endif
@@ -261,10 +262,27 @@ void Graphics::clearShaderSlots() noexcept
 	DXGI_GET_QUEUE_INFO_GFX;
 }
 
+void Graphics::cleanState() noexcept
+{
+	clearShaderSlots();
+	m_pContext->ClearState();	// release all references
+	m_globalColorBuffer->release();
+	for ( auto dc : m_commandLists )
+	{
+		if ( dc )
+		{
+			m_pContext->FinishCommandList( FALSE,
+				&dc );
+			dc->Release();
+		}
+	}
+	m_pContext->Flush();		// flush any remaining commands
+}
+
 void Graphics::beginRendering() noexcept
 {
-	VTUNE_ITT_TASK_BEGIN( pStrIttBeginRendering );
-	if constexpr ( GraphicsMode::get() == GraphicsMode::_3D )
+	//VTUNE_ITT_TASK_BEGIN( pStrIttBeginRendering );
+	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{// imgui new frame
 		ImGui_ImplDX11_NewFrame();
 		ImGui_ImplWin32_NewFrame();
@@ -278,12 +296,12 @@ void Graphics::beginRendering() noexcept
 			cpuBuffer2dSize );
 	}
 	clearShaderSlots();
-	VTUNE_ITT_TASK_END;
+	//VTUNE_ITT_TASK_END;
 }
 
 void Graphics::updateAndRenderFpsTimer()
 {
-	VTUNE_ITT_TASK_BEGIN( pStrIttFpsTimerRendering );
+	//VTUNE_ITT_TASK_BEGIN( pStrIttFpsTimerRendering );
 	static int fpsDisplayFrameCount = 0;
 	static std::wstring fps;
 
@@ -312,21 +330,19 @@ void Graphics::updateAndRenderFpsTimer()
 		dx::XMFLOAT2{0.0f, 0.0f},
 		dx::XMFLOAT2{1.0f, 1.0f} );
 	m_fpsSpriteBatch->End();
-	VTUNE_ITT_TASK_END;
+	//VTUNE_ITT_TASK_END;
 }
 
 void Graphics::endRendering()
 {
-	VTUNE_ITT_TASK_BEGIN( pStrIttEndRendering );
-	if constexpr ( GraphicsMode::get() == GraphicsMode::_3D )
+	//VTUNE_ITT_TASK_BEGIN( pStrIttEndRendering );
+	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{
 		ImGui::Render();
 		ImGui_ImplDX11_RenderDrawData( ImGui::GetDrawData() );
 	}
 
-#if defined _DEBUG && !defined NDEBUG
-	m_infoQueue->markQueueIndex();
-#endif
+	DXGI_GET_QUEUE_INFO_GFX;
 
 	HRESULT hres;
 	SettingsManager &setMan = SettingsManager::getInstance();
@@ -359,19 +375,19 @@ void Graphics::endRendering()
 			+ m_pDevice->GetDeviceRemovedReason() );
 	}
 	ASSERT_HRES_IF_FAILED;
-	VTUNE_ITT_TASK_END;
+	//VTUNE_ITT_TASK_END;
 }
 
-void Graphics::draw( unsigned count ) cond_noex
+void Graphics::draw( const unsigned count ) cond_noex
 {
 	m_pContext->Draw( count,
 		0u );
 	DXGI_GET_QUEUE_INFO_GFX;
 }
 
-void Graphics::drawIndexed( unsigned count ) cond_noex
+void Graphics::drawIndexed( const unsigned count ) cond_noex
 {
-	VTUNE_ITT_TASK_BEGIN( pStrIttDrawIndexed );
+	//VTUNE_ITT_TASK_BEGIN( pStrIttDrawIndexed );
 	SettingsManager &setMan = SettingsManager::getInstance();
 	if ( setMan.getSettings().bMultithreadedRendering )
 	{
@@ -384,13 +400,13 @@ void Graphics::drawIndexed( unsigned count ) cond_noex
 			0u );
 		DXGI_GET_QUEUE_INFO_GFX;
 	}
-	VTUNE_ITT_TASK_END;
+	//VTUNE_ITT_TASK_END;
 }
 
-void Graphics::drawIndexedInstanced( unsigned indexCount,
-	unsigned instanceCount ) cond_noex
+void Graphics::drawIndexedInstanced( const unsigned indexCount,
+	const unsigned instanceCount ) cond_noex
 {
-	VTUNE_ITT_TASK_BEGIN( pStrIttDrawIndexedInstanced );
+	//VTUNE_ITT_TASK_BEGIN( pStrIttDrawIndexedInstanced );
 	SettingsManager &setMan = SettingsManager::getInstance();
 	if ( setMan.getSettings().bMultithreadedRendering )
 	{
@@ -401,11 +417,11 @@ void Graphics::drawIndexedInstanced( unsigned indexCount,
 		//m_pContext->DrawIndexedInstanced();
 	}
 	DXGI_GET_QUEUE_INFO_GFX;
-	VTUNE_ITT_TASK_END;
+	//VTUNE_ITT_TASK_END;
 }
 
 
-ColorBGRA*& Graphics::getCpuBuffer()
+ColorBGRA*& Graphics::cpuBuffer()
 {
 	return m_pCpuBuffer;
 }
@@ -420,27 +436,27 @@ void Graphics::setProjectionMatrix( const dx::XMMATRIX &proj ) noexcept
 	m_projection = proj;
 }
 
-dx::XMMATRIX Graphics::getViewMatrix() const noexcept
+const dx::XMMATRIX& Graphics::getViewMatrix() const noexcept
 {
 	return m_view;
 }
 
-dx::XMMATRIX Graphics::getProjectionMatrix() const noexcept
+const dx::XMMATRIX& Graphics::getProjectionMatrix() const noexcept
 {
 	return m_projection;
 }
 
-unsigned Graphics::getClientWidth() const noexcept
+const unsigned Graphics::getClientWidth() const noexcept
 {
 	return m_width;
 }
 
-unsigned Graphics::getClientHeight() const noexcept
+const unsigned Graphics::getClientHeight() const noexcept
 {
 	return m_height;
 }
 
-IRenderTargetView* Graphics::getRenderTarget() const noexcept
+IRenderTargetView* Graphics::renderTarget() const noexcept
 {
 	return m_globalColorBuffer.get();
 }
@@ -451,7 +467,7 @@ std::shared_ptr<IRenderTargetView> Graphics::shareRenderTarget()
 }
 
 #if defined _DEBUG && !defined NDEBUG
-DxgiInfoQueue& Graphics::getInfoQueue() const noexcept
+DxgiInfoQueue& Graphics::infoQueue() const noexcept
 {
 	return *( m_infoQueue.get() );
 }
@@ -471,15 +487,6 @@ void Graphics::createAdapters()
 		m_adapters.emplace_back( pAdapter );
 		adapterIndex += 1;
 	}
-}
-
-std::vector<Graphics::Adapter>& Graphics::getAdapters() const
-{
-	if ( m_adapters.empty() )
-	{
-		THROW_GRAPHICS_EXCEPTION( "No adapter set!" );
-	}
-	return m_adapters;
 }
 
 void Graphics::recordDeferredCommandList()
@@ -502,11 +509,6 @@ void Graphics::playbackDeferredCommandList()
 	//	m_pContext->ExecuteCommandList( pCommandList,
 	//		TRUE );
 	//}
-}
-
-void Graphics::resetToDefaultState()
-{
-	m_pContext->ClearState();
 }
 
 #if defined _DEBUG && !defined NDEBUG
@@ -575,8 +577,8 @@ void Graphics::d3d11DebugReport()
 }
 #endif
 
-ColorBGRA Graphics::getPixel( int x,
-	int y ) const noexcept
+const ColorBGRA Graphics::getPixel( const int x,
+	const int y ) const noexcept
 {
 	ASSERT( x >= 0, "!( x >= 0 )" );
 	ASSERT( x < (int) m_width, "!( x < width )" );
@@ -585,9 +587,9 @@ ColorBGRA Graphics::getPixel( int x,
 	return m_pCpuBuffer[m_width * y + x];
 }
 
-void Graphics::putPixel( int x,
-	int y,
-	ColorBGRA col )
+void Graphics::putPixel( const int x,
+	const int y,
+	const ColorBGRA col )
 {
 	ASSERT( x >= 0, "!( x >= 0 )" );
 	ASSERT( x < (int) m_width, "!( x < width )" );
@@ -596,49 +598,11 @@ void Graphics::putPixel( int x,
 	m_pCpuBuffer[m_width * y + x] = col;
 }
 
-void Graphics::drawRect( int x0,
-	int y0,
-	int x1,
-	int y1,
-	ColorBGRA col )
-{
-	if ( x0 > x1 )
-	{
-		std::swap( x0,
-			x1 );
-	}
-	if ( y0 > y1 )
-	{
-		std::swap( y0,
-			y1 );
-	}
-
-	for ( int x = x0; x < x1; ++x )
-	{
-		for ( int y = y0; y < y1; ++y )
-		{
-			putPixel( x,
-				y,
-				col );
-		}
-	}
-}
-
-void Graphics::drawTriangle()
-{
-	//// line for x1, y1, x2, y2
-	//line(150, 150, 450, 150);
-	//// line for x1, y1, x2, y2
-	//line(150, 150, 300, 300);
-	//// line for x1, y1, x2, y2
-	//line(450, 150, 300, 300);
-}
-
 void Graphics::drawLine( int x0,
 	int x1,
 	int y0,
 	int y1,
-	ColorBGRA col )
+	const ColorBGRA col )
 {
 	float m = 0.0f;
 	if ( x1 != x0 )
@@ -691,12 +655,56 @@ void Graphics::drawLine( int x0,
 	}
 }
 
-void Graphics::drawCircle( int centerX,
-	int centerY,
-	int radius,
-	ColorBGRA col )
+void Graphics::drawRectangle( int x0,
+	int y0,
+	int x1,
+	int y1,
+	const ColorBGRA col )
 {
-	int radiusSquared = radius * radius;
+	if ( x0 > x1 )
+	{
+		std::swap( x0,
+			x1 );
+	}
+	if ( y0 > y1 )
+	{
+		std::swap( y0,
+			y1 );
+	}
+
+	for ( int x = x0; x < x1; ++x )
+	{
+		for ( int y = y0; y < y1; ++y )
+		{
+			putPixel( x,
+				y,
+				col );
+		}
+	}
+}
+
+void Graphics::drawTriangle( int x0,
+	int y0,
+	int x1,
+	int y1,
+	int x2,
+	int y2,
+	const ColorBGRA col )
+{
+	// line for {x0, y0}, {x1, y1}
+	drawLine(x0, x1, y0, y1, col);
+	// line for {x0, y0}, {x2, y2}
+	drawLine(x0, x2, y0, y2, col);
+	// line for {x1, y1}, {x2, y2}
+	drawLine(x1, x2, y1, y2, col);
+}
+
+void Graphics::drawCircle( const int centerX,
+	const int centerY,
+	const int radius,
+	const ColorBGRA col )
+{
+	const int radiusSquared = radius * radius;
 	int yDiff;
 	int xDiff;
 	// [-radius, radius]
@@ -716,9 +724,9 @@ void Graphics::drawCircle( int centerX,
 	}
 }
 
-std::vector<DirectX::XMFLOAT2> Graphics::drawStar( float outerRadius,
-	float innerRadius,
-	int nFlares )
+const std::vector<DirectX::XMFLOAT2> Graphics::drawStar( const float outerRadius,
+	const float innerRadius,
+	const int nFlares /*= 5 */ )
 {
 	std::vector<dx::XMFLOAT2> star;
 	star.reserve( (size_t)nFlares * 2 );

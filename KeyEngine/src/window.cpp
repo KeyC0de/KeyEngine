@@ -88,8 +88,9 @@ Window::WindowClass::WindowClass( WindowClass &&rhs ) noexcept
 
 Window::WindowClass& Window::WindowClass::operator=( WindowClass &&rhs ) noexcept
 {
-	m_name = std::move( rhs.m_name );
-	m_classAtom = rhs.m_classAtom;
+	WindowClass tmp{std::move( rhs )};
+	std::swap( *this,
+		tmp );
 	return *this;
 }
 
@@ -99,124 +100,13 @@ Window::WindowClass& Window::WindowClass::getInstance( const std::string &name )
 	return m_instance;
 }
 
-std::string Window::WindowClass::getName() noexcept
+const std::string& Window::WindowClass::getName() noexcept
 {
 	return m_name;
 }
 
-/*
-Window::Dialog::Dialog( const std::wstring &name )
-	:
-	m_name{name}
-{
-	HINSTANCE hInstance = GetModuleHandleW( nullptr );
-	ASSERT( hInstance != nullptr, "HINSTANCE is null!" );
-
-	HRESULT hres;
-
-	WNDCLASSEXW wc{};
-	wc.cbSize = sizeof WNDCLASSEXW;
-	wc.lpfnWndProc = (WNDPROC) dialogProc;
-	wc.hInstance = hInstance;
-	wc.hbrBackground = (HBRUSH)( CreateSolidBrush( RGB( 128, 128, 128 ) ) );
-	wc.lpszClassName = m_name.data();
-	RegisterClassExW( &wc );
-	ASSERT_HRES_WIN32_IF_FAILED( hres );
-
-#if defined _DEBUG && !defined NDEBUG
-	auto &console = KeyConsole::getInstance();
-	using namespace std::string_literals;
-	console.log( "Dialog Window : "s
-		+ util::ws2s( m_name )
-		+ " created.\n"s );
-#endif
-}
-
-Window::Dialog::~Dialog() noexcept
-{
-	UnregisterClassW( m_name.data(),
-		GetModuleHandleW( nullptr ) );
-}
-
-Window::Dialog::Dialog( Dialog &&rhs ) noexcept
-	:
-	m_name{std::move( rhs.m_name )},
-	m_hWnd{rhs.m_hWnd}
-{
-
-}
-
-Window::Dialog &Window::Dialog::operator=( Dialog &&rhs ) noexcept
-{
-	std::swap( m_name, rhs.m_name );
-	m_hWnd = rhs.m_hWnd;
-	return *this;
-}
-
-LRESULT CALLBACK Window::Dialog::dialogProc( HWND hWnd,
-	UINT uMsg,
-	WPARAM wParam,
-	LPARAM lParam )
-{
-	switch ( uMsg )
-	{
-		HRESULT hres;
-		case WM_CREATE:
-		{
-			CreateWindowW( L"BUTTON",
-				L"Ok",
-				WS_VISIBLE | WS_CHILD,
-				50,
-				50,
-				80,
-				25,
-				hWnd,
-				reinterpret_cast<HMENU>( 1 ),
-				nullptr,
-				nullptr );
-			ASSERT_HRES_WIN32_IF_FAILED( hres );
-			return 0;
-		}
-		case WM_COMMAND:
-		{
-			DestroyWindow( hWnd );
-			return 0;
-		}
-		case WM_CLOSE:
-			DestroyWindow( hWnd );
-			return 0;
-	}
-	return DefWindowProcW( hWnd,
-		uMsg,
-		wParam,
-		lParam );
-}
-
-std::wstring Window::Dialog::getName() const noexcept
-{
-	return m_name;
-}
-
-void Window::Dialog::setHwnd( HWND hWnd )
-{
-	m_hWnd = hWnd;
-}
-
-HWND Window::Dialog::getHwnd() const noexcept
-{
-	return m_hWnd;
-}
-*/
-
-Window::Window()
-	:
-	Window(640, 480, "Default Window Title")
-{
-
-}
-
-Window::Window( int width,
-	int height,
+Window::Window( const int width,
+	const int height,
 	const char *name )
 	:
 	m_width(width),
@@ -276,6 +166,14 @@ Window::Window( int width,
 		&m_info );
 	ASSERT_HRES_WIN32_IF_FAILED( hres );
 
+	// set title
+	static const short maxTitleCharSize = 128;
+	wchar_t title[maxTitleCharSize];
+	GetWindowTextW( m_hWnd,
+		title,
+		maxTitleCharSize );
+	m_title = util::ws2s( title );
+
 	// Accelerators
 	//m_hAcceleratorTable = LoadAcceleratorsW( hInstance,
 	//	MAKEINTRESOURCEW( ID_ACCEL_TABLE_APP ) );
@@ -285,7 +183,7 @@ Window::Window( int width,
 	//setupNotifyIconData();
 
 	// Initialize ImGui
-	if constexpr( GraphicsMode::get() == GraphicsMode::_3D )
+	if constexpr( gph_mode::get() == gph_mode::_3D )
 	{
 		ImGui_ImplWin32_Init( m_hWnd );
 	}
@@ -309,7 +207,7 @@ Window::~Window()
 {
 	ReleaseDC( m_hWnd,
 		m_dc );
-	if constexpr ( GraphicsMode::get() == GraphicsMode::_3D )
+	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{
 		ImGui_ImplWin32_Shutdown();
 	}
@@ -321,8 +219,8 @@ Window::Window( Window &&rhs ) noexcept
 	m_bCursorEnabled{std::move( rhs.m_bCursorEnabled )},
 	m_width{rhs.m_width},
 	m_height{rhs.m_height},
-	m_name{rhs.m_name},
-	m_hWnd{rhs.m_hWnd},
+	m_name{std::move( rhs.m_name )},
+	m_hWnd{std::move( rhs.m_hWnd )},
 	m_pGraphics{std::move( rhs.m_pGraphics )},
 	m_dc{rhs.m_dc},
 	m_info{std::move( rhs.m_info )}
@@ -336,27 +234,14 @@ Window::Window( Window &&rhs ) noexcept
 	rhs.m_rawInputBuffer = {};
 }
 
-Window &Window::operator=( Window &&rhs ) noexcept
+Window& Window::operator=( Window &&rhs ) noexcept
 {
-	std::swap( m_bCursorEnabled, rhs.m_bCursorEnabled );
-	m_width = rhs.m_width;
-	m_height = rhs.m_height;
-	std::swap( m_name, rhs.m_name );
-	m_hWnd = rhs.m_hWnd;
-	std::swap( m_pGraphics, rhs.m_pGraphics );
-	m_dc = rhs.m_dc;
-	std::swap( m_info, rhs.m_info );
-	m_pWindowClass = std::move( rhs.m_pWindowClass );
-	m_keyboard = std::move( rhs.m_keyboard );
-	rhs.m_keyboard = {};
-	m_mouse = std::move( rhs.m_mouse );
-	rhs.m_mouse = {};
-	m_rawInputBuffer = std::move( rhs.m_rawInputBuffer );
-	rhs.m_rawInputBuffer = {};
+	std::swap( *this,
+		rhs );
 	return *this;
 }
 
-void Window::setEnable( bool b )
+void Window::setEnable( const bool b )
 {
 	EnableWindow( m_hWnd,
 		b ?
@@ -380,7 +265,7 @@ void Window::setOnTop()
 		RDW_FRAME | RDW_INVALIDATE | RDW_ALLCHILDREN );
 }
 
-HWND Window::setFocus()
+const HWND Window::setFocus()
 {
 	HWND previouslyFocusedWindow = SetFocus( m_hWnd );
 	return previouslyFocusedWindow;
@@ -414,34 +299,29 @@ void Window::setBorderfull() const noexcept
 
 }
 
-HWND Window::getParent() const noexcept
+const HWND Window::getParent() const noexcept
 {
 	return GetParent( m_hWnd );
 }
 
-void Window::setTitle( const std::wstring &title )
+void Window::setTitle( const std::string &title )
 {
 	SetWindowTextW( m_hWnd,
-		title.data() );
+		util::s2ws( title ).data() );
 	HRESULT hres = 0;
 	ASSERT_HRES_WIN32_IF_FAILED( hres );
 }
 
-std::string Window::getTitle() const noexcept
+const std::string& Window::getTitle() const noexcept
 {
-	static const short maxTitleCharSize = 128;
-	wchar_t title[maxTitleCharSize];
-	GetWindowTextW( m_hWnd,
-		title,
-		maxTitleCharSize );
-	return util::ws2s( std::wstring{title} );
+	return m_title;
 }
 
 void Window::enableCursor() noexcept
 {
 	m_bCursorEnabled = true;
 	displayCursor();
-	if constexpr ( GraphicsMode::get() == GraphicsMode::_3D )
+	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{
 		enableImGuiMouse();
 	}
@@ -452,7 +332,7 @@ void Window::disableCursor() noexcept
 {
 	m_bCursorEnabled = false;
 	hideCursor();
-	if constexpr ( GraphicsMode::get() == GraphicsMode::_3D )
+	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{
 		disableImGuiMouse();
 	}
@@ -469,12 +349,12 @@ void Window::configureDc()
 	m_dc = GetWindowDC( m_hWnd );
 }
 
-void Window::displayMessageBox( const std::wstring &title,
-	const std::wstring &message ) const
+void Window::displayMessageBox( const std::string &title,
+	const std::string &message ) const
 {
 	MessageBoxW( m_hWnd,
-		message.c_str(),
-		title.c_str(),
+		util::s2ws( message ).c_str(),
+		util::s2ws( title ).c_str(),
 		MB_OKCANCEL );
 }
 
@@ -483,7 +363,7 @@ bool Window::isActive() const noexcept
 	return GetActiveWindow() == m_hWnd;
 }
 
-std::string Window::getName() const noexcept
+const std::string& Window::getName() const noexcept
 {
 	return m_name;
 }
@@ -556,7 +436,7 @@ Graphics& Window::getGraphics()
 	return *m_pGraphics;
 }
 
-HWND Window::getHandle() const noexcept
+const HWND Window::getHandle() const noexcept
 {
 	return m_hWnd;
 }
@@ -571,23 +451,23 @@ WINDOWINFO Window::getInfo() const noexcept
 	return m_info;
 }
 
-Keyboard &Window::getKeyboard() noexcept
+Keyboard& Window::keyboard() noexcept
 {
 	return m_keyboard;
 }
 
-Mouse &Window::getMouse() noexcept
+Mouse& Window::mouse() noexcept
 {
 	return m_mouse;
 }
 
-Window::WindowClass& Window::getWindowClass() noexcept
+const Window::WindowClass& Window::getWindowClass() noexcept
 {
 	return *m_pWindowClass;
 }
 
-bool Window::isDescendantOf( HWND parent,
-	HWND hWnd ) noexcept
+bool Window::isDescendantOf( const HWND parent,
+	const HWND hWnd ) noexcept
 {
 	return IsChild( parent, hWnd ) == 0 ?
 		false :
@@ -633,10 +513,10 @@ void Window::disableImGuiMouse() noexcept
 	ImGui::GetIO().ConfigFlags |= ImGuiConfigFlags_NoMouse;
 }
 
-LRESULT CALLBACK Window::windowProc( HWND hWnd,
-	unsigned uMsg,
-	WPARAM wParam,
-	LPARAM lParam )
+LRESULT CALLBACK Window::windowProc( const HWND hWnd,
+	const unsigned uMsg,
+	const WPARAM wParam,
+	const LPARAM lParam )
 {
 #if defined _DEBUG && !defined NDEBUG
 	auto &console = KeyConsole::getInstance();
@@ -671,14 +551,14 @@ LRESULT CALLBACK Window::windowProc( HWND hWnd,
 		lParam );
 }
 
-LRESULT CALLBACK Window::windowProcDelegate( HWND hWnd,
-	unsigned uMsg,
-	WPARAM wParam,
-	LPARAM lParam )
+LRESULT CALLBACK Window::windowProcDelegate( const HWND hWnd,
+	const unsigned uMsg,
+	const WPARAM wParam,
+	const LPARAM lParam )
 {
 	Window *this_wnd = reinterpret_cast<Window*>( GetWindowLongPtrW( hWnd,
 		GWLP_USERDATA ) );
-	if constexpr ( GraphicsMode::get() == GraphicsMode::_3D )
+	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{
 		return this_wnd->windowProc_impl( hWnd,
 			uMsg,
@@ -694,10 +574,10 @@ LRESULT CALLBACK Window::windowProcDelegate( HWND hWnd,
 	}
 }
 
-LRESULT Window::windowProc_impl2d( _In_ HWND hWnd,
-	_In_ unsigned uMsg,
-	_In_ WPARAM wParam,
-	_In_ LPARAM lParam )
+LRESULT Window::windowProc_impl2d( _In_ const HWND hWnd,
+	_In_ const unsigned uMsg,
+	_In_ const WPARAM wParam,
+	_In_ const LPARAM lParam )
 {
 	// Predefined Windows messages
 	switch( uMsg )
@@ -876,7 +756,7 @@ LRESULT Window::windowProc_impl2d( _In_ HWND hWnd,
 		{
 			break;
 		}
-		unsigned size;
+		unsigned size = -1;
 		// first get the size of the input data
 		if ( GetRawInputData( reinterpret_cast<HRAWINPUT>( lParam ),
 			RID_INPUT,
@@ -916,10 +796,10 @@ LRESULT Window::windowProc_impl2d( _In_ HWND hWnd,
 		lParam );
 }
 
-LRESULT Window::windowProc_impl( _In_ HWND hWnd,
-	_In_ unsigned uMsg,
-	_In_ WPARAM wParam,
-	_In_ LPARAM lParam )
+LRESULT Window::windowProc_impl( _In_ const HWND hWnd,
+	_In_ const unsigned uMsg,
+	_In_ const WPARAM wParam,
+	_In_ const LPARAM lParam )
 {
 	// ImGui windowProc messages
 	if ( ImGui_ImplWin32_WndProcHandler( hWnd, uMsg, wParam, lParam ) )
@@ -1452,7 +1332,7 @@ Prevent window resizing: Instead resize by ingame option - choosing resolution:
 		{
 			break;
 		}
-		unsigned size;
+		unsigned size = -1;
 		// first get the size of the input data
 		if ( GetRawInputData( reinterpret_cast<HRAWINPUT>( lParam ),
 			RID_INPUT,
@@ -1492,7 +1372,7 @@ Prevent window resizing: Instead resize by ingame option - choosing resolution:
 		lParam );
 }
 
-void Window::setFont( const std::wstring &fontName )
+void Window::setFont( const std::string &fontName )
 {
 	NONCLIENTMETRICS ncm{};
 	ncm.cbSize = sizeof( NONCLIENTMETRICS );
@@ -1514,7 +1394,7 @@ void Window::setFont( const std::wstring &fontName )
 		CLIP_DEFAULT_PRECIS,
 		DEFAULT_QUALITY,
 		DEFAULT_PITCH | FF_DONTCARE,
-		fontName.data() );
+		util::s2ws( fontName ).data() );
 	SendMessageW( m_hWnd,
 		WM_SETFONT,
 		(WPARAM)hFont,
@@ -1543,7 +1423,7 @@ const char* Window::WindowException::what() const noexcept
 	return KeyException::what();
 }
 
-int Window::messageBoxPrintf( const TCHAR *caption,
+const int Window::messageBoxPrintf( const TCHAR *caption,
 	const TCHAR *format,
 	... )
 {
@@ -1561,3 +1441,108 @@ int Window::messageBoxPrintf( const TCHAR *caption,
 		caption,
 		0u );
 }
+
+/*
+Dialog::Dialog( const std::string &name )
+	:
+	m_name{name}
+{
+	HINSTANCE hInstance = GetModuleHandleW( nullptr );
+	ASSERT( hInstance != nullptr, "HINSTANCE is null!" );
+
+	HRESULT hres;
+
+	WNDCLASSEXW wc{};
+	wc.cbSize = sizeof WNDCLASSEXW;
+	wc.lpfnWndProc = (WNDPROC) dialogProc;
+	wc.hInstance = hInstance;
+	wc.hbrBackground = (HBRUSH)( CreateSolidBrush( RGB( 128, 128, 128 ) ) );
+	wc.lpszClassName = m_name.data();
+	RegisterClassExW( &wc );
+	ASSERT_HRES_WIN32_IF_FAILED( hres );
+
+#if defined _DEBUG && !defined NDEBUG
+	auto &console = KeyConsole::getInstance();
+	using namespace std::string_literals;
+	console.log( "Dialog Window : "s
+		+ util::ws2s( m_name )
+		+ " created.\n"s );
+#endif
+}
+
+Dialog::~Dialog() noexcept
+{
+	UnregisterClassW( m_name.data(),
+		GetModuleHandleW( nullptr ) );
+}
+
+Dialog::Dialog( Dialog &&rhs ) noexcept
+	:
+	m_name{std::move( rhs.m_name )},
+	m_hWnd{rhs.m_hWnd}
+{
+
+}
+
+Dialog& Dialog::operator=( Dialog &&rhs ) noexcept
+{
+	Dialog tmp{std::move( rhs )};
+	std::swap( *this,
+		tmp );
+	return *this;
+}
+
+LRESULT CALLBACK Dialog::dialogProc( HWND hWnd,
+	UINT uMsg,
+	WPARAM wParam,
+	LPARAM lParam )
+{
+	switch ( uMsg )
+	{
+		HRESULT hres;
+		case WM_CREATE:
+		{
+			CreateWindowW( L"BUTTON",
+				L"Ok",
+				WS_VISIBLE | WS_CHILD,
+				50,
+				50,
+				80,
+				25,
+				hWnd,
+				reinterpret_cast<HMENU>( 1 ),
+				nullptr,
+				nullptr );
+			ASSERT_HRES_WIN32_IF_FAILED( hres );
+			return 0;
+		}
+		case WM_COMMAND:
+		{
+			DestroyWindow( hWnd );
+			return 0;
+		}
+		case WM_CLOSE:
+			DestroyWindow( hWnd );
+			return 0;
+	}
+	return DefWindowProcW( hWnd,
+		uMsg,
+		wParam,
+		lParam );
+}
+
+std::string Dialog::getName() const noexcept
+{
+	return m_name;
+}
+
+void Dialog::setHwnd( HWND hWnd )
+{
+	m_hWnd = hWnd;
+}
+
+HWND Dialog::getHwnd() const noexcept
+{
+	return m_hWnd;
+}
+*/

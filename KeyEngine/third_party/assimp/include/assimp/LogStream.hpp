@@ -55,7 +55,7 @@ class IOSystem;
 // ------------------------------------------------------------------------------------
 /** @brief CPP-API: Abstract interface for log stream implementations.
  *
- *  Several default implementations are provided, see #aiDefaultLogStream for more
+ *  Several default implementations are provided, see aiDefaultLogStream for more
  *  details. Writing your own implementation of LogStream is just necessary if these
  *  are not enough for your purpose. */
 class ASSIMP_API LogStream

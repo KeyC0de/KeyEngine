@@ -7,7 +7,7 @@ namespace util
 namespace dx = DirectX;
 
 
-dx::XMFLOAT3 extractEulerAngles( const dx::XMFLOAT4X4 &mat )
+dx::XMFLOAT3 XM_CALLCONV extractEulerAngles( const dx::XMFLOAT4X4 &mat )
 {
 	dx::XMFLOAT3 eulerRot;
 
@@ -19,19 +19,21 @@ dx::XMFLOAT3 extractEulerAngles( const dx::XMFLOAT4X4 &mat )
 	}
 	else
 	{
-		eulerRot.y = 0.0f;							// Yaw
+		eulerRot.y = 0.0f;								// Yaw
 		eulerRot.z = atan2f( -mat._21, mat._11 );	// Roll
 	}
 
 	return eulerRot;
 }
 
-dx::XMFLOAT3 extractTranslation( const dx::XMFLOAT4X4 &mat )
+dx::XMFLOAT3 XM_CALLCONV extractTranslation( const dx::XMFLOAT4X4 &mat )
 {
-	return {mat._41, mat._42, mat._43};
+	return {mat._41,	// x = pitch
+		mat._42,		// y = yaw
+		mat._43};		// z = roll
 }
 
-dx::XMMATRIX scaleTranslation( const dx::XMMATRIX &mat,
+dx::XMMATRIX XM_CALLCONV scaleTranslation( const dx::XMMATRIX &mat,
 	float scale )
 {
 	dx::XMMATRIX tmp{mat};
@@ -39,6 +41,31 @@ dx::XMMATRIX scaleTranslation( const dx::XMMATRIX &mat,
 	tmp.r[3].m128_f32[1] *= scale;
 	tmp.r[3].m128_f32[2] *= scale;
 	return tmp;
+}
+
+dx::XMVECTOR XM_CALLCONV pitchYawRollToQuaternion( const dx::XMVECTOR& pitchYawRollAngles )
+{
+	return dx::XMQuaternionRotationRollPitchYawFromVector( pitchYawRollAngles );
+}
+
+void quaternionToPitchYawRoll( dx::XMFLOAT4 &quat,
+	float &pitch,
+	float &yaw,
+	float &roll )
+{
+	pitch = asin( 2 * ( quat.w * quat.x - quat.z * quat.y ) );
+	yaw = atan2( 2 * ( quat.w * quat.y + quat.x * quat.z ),
+		1 - 2 * ( quat.y * quat.y + quat.x * quat.x ) );
+	roll = atan2( 2 * ( quat.w * quat.z + quat.y * quat.x ),
+		1 - 2 * ( quat.x * quat.x + quat.z * quat.z ) );
+}
+
+dx::XMVECTOR XM_CALLCONV pitchYawRollToVector( float pitch,
+	float yaw,
+	float roll )
+{
+	dx::XMFLOAT4 angles{pitch, yaw, roll, 0.0f};
+	return dx::XMLoadFloat4( &angles );
 }
 
 DXGI_RATIONAL queryRefreshRate( unsigned screenWidth,

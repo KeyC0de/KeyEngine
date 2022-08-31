@@ -30,15 +30,15 @@ private:
 	std::vector<CellContents> contents;
 public:
 	SnakePlayField( Graphics &gph );
-	SnakePlayField( Graphics &gph, int x, int y, int w, int h );
+	SnakePlayField( Graphics &gph, const int x, const int y, const int w, const int h );
 
-	void renderCell( Graphics &gph, const GridLocation &gridLoc, ColorBGRA col ) const;
-	void renderBorders( Graphics &gph, ColorBGRA col ) const;
-	void spawnContents( std::mt19937 & rng, const SnakeRepr &snake, CellContents contentsType );
+	void renderCell( Graphics &gph, const GridLocation &gridLoc, const ColorBGRA col ) const cond_noex;
+	void renderBorders( Graphics &gph, const ColorBGRA col ) const cond_noex;
+	void spawnContents( std::mt19937 &rng, const SnakeRepr &snake, CellContents contentsType );
 	CellContents getContents( const GridLocation &loc ) const;
 	bool isInside( const GridLocation &gridLoc ) const noexcept;
-	int getStartX() const noexcept;
-	int getStartY() const noexcept;
-	int getWidth() const noexcept;
-	int getHeight() const noexcept;
+	const int getStartX() const noexcept;
+	const int getStartY() const noexcept;
+	const int getWidth() const noexcept;
+	const int getHeight() const noexcept;
 };

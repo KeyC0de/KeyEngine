@@ -106,13 +106,13 @@ public:
 //	\author	KeyC0de
 //	\date	2022/08/21 0:17
 //
-//	\brief	Container Bindable is either a RenderSurface or an array type Constant Buffer or similar
+//	\brief	Container Bindable is either a IBindable or an array type Constant Buffer or similar
 //=============================================================
 template<class T>
 class ContainerBindableConsumer final
 	: public IConsumer
 {
-	static_assert( std::is_base_of_v<IBindable, T>, "ContainerBindableConsumer target T must be IBindable." );
+	//static_assert( std::is_array_v<T> || std::is_base_of_v<IBindable, T>, "ContainerBindableConsumer target T must be IBindable." );
 
 	std::vector<std::shared_ptr<IBindable>> &m_container;
 	size_t m_index;
@@ -120,7 +120,7 @@ class ContainerBindableConsumer final
 public:
 	ContainerBindableConsumer( const std::string &name,
 		std::vector<std::shared_ptr<IBindable>> &container,
-		size_t index )
+		const size_t index )
 		:
 		IConsumer{name},
 		m_container{container},
@@ -198,7 +198,7 @@ public:
 
 	void link( IProducer &producer ) override
 	{
-		auto buff = std::dynamic_pointer_cast<T>( producer.getBuffer() );
+		auto buff = std::dynamic_pointer_cast<T>( producer.getRenderSurface() );
 		if ( !buff )
 		{
 			std::ostringstream oss;
@@ -212,7 +212,7 @@ public:
 				<< " { "
 				<< typeid( T ).name()
 				<< " } not compatible with { "
-				<< typeid( *producer.getBuffer().get() ).name()
+				<< typeid( *producer.getRenderSurface().get() ).name()
 				<< " }";
 			THROW_RENDERER_EXCEPTION( oss.str() );
 		}

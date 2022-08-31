@@ -6,8 +6,8 @@
 
 namespace dx = DirectX;
 
-DirectX::XMMATRIX Camera::getShadowOrthographicMatrix( unsigned w,
-	unsigned h ) noexcept
+DirectX::XMMATRIX Camera::getShadowOrthographicMatrix( const unsigned w,
+	const unsigned h ) noexcept
 {
 	return dx::XMMatrixOrthographicLH( (float) w,
 		(float) h,
@@ -15,7 +15,7 @@ DirectX::XMMATRIX Camera::getShadowOrthographicMatrix( unsigned w,
 		100.0f );
 }
 
-DirectX::XMMATRIX Camera::getShadowProjectionMatrix( float farZ ) noexcept
+DirectX::XMMATRIX Camera::getShadowProjectionMatrix( const float farZ ) noexcept
 {
 	// Shadows farZ hardcoded at 100units for now
 	static constexpr auto r = util::PI / 2.0f;
@@ -27,15 +27,15 @@ DirectX::XMMATRIX Camera::getShadowProjectionMatrix( float farZ ) noexcept
 
 Camera::Camera( Graphics &gph,
 	const std::string &name,
-	int width,
-	int height,
-	float fovDegrees,
+	const int width,
+	const int height,
+	const float fovDegrees,
 	const DirectX::XMFLOAT3 &homePos,
-	float homePitch,
-	float homeYaw,
-	bool bTethered,
-	float nearZ,
-	float farZ ) noexcept
+	const float homePitch,
+	const float homeYaw,
+	const bool bTethered,
+	const float nearZ,
+	const float farZ ) noexcept
 	:
 	m_name(name),
 	m_aspectRatio(static_cast<float>(width) / height),
@@ -67,7 +67,7 @@ Camera::Camera( Graphics &gph,
 	resetToDefault( gph );
 }
 
-void Camera::render( size_t channels ) const
+void Camera::render( const size_t channels ) const
 {
 	if ( m_bShowWidget )
 	{
@@ -102,8 +102,7 @@ DirectX::XMMATRIX Camera::getViewMatrix() const noexcept
 		upVector );
 }
 
-DirectX::XMMATRIX Camera::getReflectionViewMatrix( const dx::XMVECTOR &mirrorPlane ) const
-	noexcept
+DirectX::XMMATRIX Camera::getReflectionViewMatrix( const dx::XMVECTOR &mirrorPlane ) const noexcept
 {
 	dx::XMMATRIX R = dx::XMMatrixReflect( mirrorPlane );
 	return dx::XMMatrixMultiply( getViewMatrix(),
@@ -118,8 +117,8 @@ DirectX::XMMATRIX Camera::getPerspectiveProjectionMatrix() const noexcept
 		m_farZ );
 }
 
-DirectX::XMMATRIX Camera::getOrthographicProjectionMatrix( unsigned viewWidth,
-		unsigned viewHeight ) const noexcept
+DirectX::XMMATRIX Camera::getOrthographicProjectionMatrix( const unsigned viewWidth,
+	const unsigned viewHeight ) const noexcept
 {
 	return dx::XMMatrixOrthographicLH( (float) viewWidth,
 		(float) viewHeight,
@@ -155,14 +154,14 @@ void Camera::displayImguiWidgets( Graphics &gph ) noexcept
 		rotDirty );
 
 	ImGui::Text( "Projection" );
-	dirtyCheck( ImGui::SliderFloat( "Width", &m_width, 0.01f, 4.0f, "%.2f",
-		1.5f ), projDirty );
-	dirtyCheck( ImGui::SliderFloat( "Height", &m_height, 0.01f, 4.0f, "%.2f",
-		1.5f ), projDirty );
-	dirtyCheck( ImGui::SliderFloat( "Near Z", &m_nearZ, 0.01f, m_farZ - 0.01f, "%.2f",
-		4.0f ), projDirty );
-	dirtyCheck( ImGui::SliderFloat( "Far Z", &m_farZ, m_nearZ + 0.01f, 1000.0f, "%.2f",
-		4.0f ), projDirty );
+	dirtyCheck( ImGui::SliderFloat( "Width", &m_width, 0.01f, 4.0f, "%.2f", 1.5f ),
+		projDirty );
+	dirtyCheck( ImGui::SliderFloat( "Height", &m_height, 0.01f, 4.0f, "%.2f", 1.5f ),
+		projDirty );
+	dirtyCheck( ImGui::SliderFloat( "Near Z", &m_nearZ, 0.01f, m_farZ - 0.01f, "%.2f", 4.0f ),
+		projDirty );
+	dirtyCheck( ImGui::SliderFloat( "Far Z", &m_farZ, m_nearZ + 0.01f, 1000.0f, "%.2f", 4.0f ),
+		projDirty );
 
 	ImGui::Checkbox( "Camera Widget",
 		&m_bShowWidget );
@@ -194,7 +193,7 @@ void Camera::displayImguiWidgets( Graphics &gph ) noexcept
 	}
 }
 
-float Camera::getFovRadians() const noexcept
+const float Camera::getFovRadians() const noexcept
 {
 	return m_fovRadians;
 }
@@ -224,8 +223,8 @@ void Camera::resetToDefault( Graphics &gph ) noexcept
 		m_farZ );
 }
 
-void Camera::rotateRel( float dx,
-	float dy ) noexcept
+void Camera::rotateRel( const float dx,
+	const float dy ) noexcept
 {
 	m_yaw = util::wrapAngle( m_yaw + dx * m_rotationSpeed );
 	m_pitch = std::clamp( m_pitch + dy * m_rotationSpeed,
@@ -244,7 +243,8 @@ void Camera::translateRel( DirectX::XMFLOAT3 translation ) noexcept
 			dx::XMVector3Transform( dx::XMLoadFloat3( &translation ),
 				dx::XMMatrixRotationRollPitchYaw( m_pitch, m_yaw, 0.0f ) *
 					dx::XMMatrixScaling( m_travelSpeed, m_travelSpeed, m_travelSpeed ) ) );
-		m_position = {m_position.x + translation.x, m_position.y + translation.y,
+		m_position = {m_position.x + translation.x,
+			m_position.y + translation.y,
 			m_position.z + translation.z};
 		m_cameraFrustum.setPosition( m_position );
 		m_widget.setPosition( m_position );
@@ -258,7 +258,6 @@ const DirectX::XMFLOAT3& Camera::getPosition() const noexcept
 
 DirectX::XMVECTOR Camera::calcDirection() const noexcept
 {
-	// camDirection = camPosition - camTarget
 	const dx::XMVECTOR forwardVector{0.0f, 0.0f, 1.0f, 0.0f};
 	const auto lookVector = dx::XMVector3Transform( forwardVector,
 		dx::XMMatrixRotationRollPitchYaw( m_pitch, m_yaw, 0.0f ) );
@@ -289,7 +288,7 @@ void Camera::setPosition( const DirectX::XMFLOAT3 &pos ) noexcept
 	m_widget.setPosition( pos );
 }
 
-const std::string &Camera::getName() const noexcept
+const std::string& Camera::getName() const noexcept
 {
 	return m_name;
 }

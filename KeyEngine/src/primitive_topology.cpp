@@ -3,7 +3,7 @@
 
 
 PrimitiveTopology::PrimitiveTopology( Graphics &gph,
-	D3D11_PRIMITIVE_TOPOLOGY topo )
+	const D3D11_PRIMITIVE_TOPOLOGY topo )
 	:
 	m_d3dPrimTop{topo}
 {
@@ -16,19 +16,19 @@ void PrimitiveTopology::bind( Graphics &gph ) cond_noex
 }
 
 std::shared_ptr<PrimitiveTopology> PrimitiveTopology::fetch( Graphics &gph,
-	D3D11_PRIMITIVE_TOPOLOGY topo )
+	const D3D11_PRIMITIVE_TOPOLOGY topo )
 {
 	return BindableMap::fetch<PrimitiveTopology>( gph,
 		topo );
 }
 
-std::string PrimitiveTopology::generateUid( D3D11_PRIMITIVE_TOPOLOGY topo )
+std::string PrimitiveTopology::calcUid( const D3D11_PRIMITIVE_TOPOLOGY topo )
 {
 	using namespace std::string_literals;
 	return typeid( PrimitiveTopology ).name() + "#"s + std::to_string( topo );
 }
 
-std::string PrimitiveTopology::getUid() const noexcept
+const std::string PrimitiveTopology::getUid() const noexcept
 {
-	return generateUid( m_d3dPrimTop );
+	return calcUid( m_d3dPrimTop );
 }

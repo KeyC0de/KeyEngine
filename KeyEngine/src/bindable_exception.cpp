@@ -2,7 +2,7 @@
 #include <typeinfo>
 
 
-BindableException::BindableException( int line,
+BindableException::BindableException( const int line,
 	const char *file,
 	const char *function,
 	const std::string &msg ) noexcept

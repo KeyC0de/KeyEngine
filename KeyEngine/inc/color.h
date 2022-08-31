@@ -48,36 +48,36 @@ struct ColorBGRA final
 
 	}
 
-	constexpr ColorBGRA( Byte r,
-		Byte g,
-		Byte b,
-		Byte a )
+	constexpr ColorBGRA( const Byte r,
+		const Byte g,
+		const Byte b,
+		const Byte a )
 		:
 		m_dword(( a << 24u ) | ( r << 16u ) | ( g << 8u ) | b)
 	{
 
 	}
 
-	constexpr ColorBGRA( Byte r,
-		Byte g,
-		Byte b )
+	constexpr ColorBGRA( const Byte r,
+		const Byte g,
+		const Byte b )
 		:
 		m_dword((255 << 24u) | ( r << 16u ) | ( g << 8u ) | b)
 	{
 
 	}
 
-	//ColorBGRA( Byte r,
-	//	Byte g,
-	//	Byte b )
+	//ColorBGRA( const Byte r,
+	//	const Byte g,
+	//	const Byte b )
 	//	:
 	//	_{b,g,r,255u}
 	//{
 	//
 	//}
 
-	constexpr ColorBGRA( ColorBGRA col,
-		Byte a )
+	constexpr ColorBGRA( const ColorBGRA col,
+		const Byte a )
 		:
 		ColorBGRA(( a << 24u ) | col.m_dword )
 	{
@@ -136,22 +136,22 @@ struct ColorBGRA final
 		return m_dword >> 24u;
 	}
 
-	void setRed( Byte r )
+	void setRed( const Byte r )
 	{
 		m_dword = ( m_dword & 0xFF00FFFFu ) | ( r << 16u );
 	}
 
-	void setGreen( Byte g )
+	void setGreen( const Byte g )
 	{
 		m_dword = ( m_dword & 0xFFFF00FFu ) | ( g << 8u );
 	}
 
-	void setBlue( Byte b )
+	void setBlue( const Byte b )
 	{
 		m_dword = ( m_dword & 0xFFFFFF00u ) | b;
 	}
 
-	void setAlpha( Byte a )
+	void setAlpha( const Byte a )
 	{
 		m_dword = ( m_dword & 0xFFFFFFu ) | ( a << 24u );
 	}
@@ -160,7 +160,7 @@ struct ColorBGRA final
 namespace col
 {
 // order reversions
-static unsigned rgbaToAbgr( unsigned col )
+static unsigned rgbaToAbgr( const unsigned col )
 {
 	// Memory (low address >towards> high address)
 	// RGBA
@@ -172,7 +172,7 @@ static unsigned rgbaToAbgr( unsigned col )
 	return ( r << 24u ) | ( g << 16u ) | ( b << 8u ) | a ;
 }
 
-static unsigned bgraToArgb( ColorBGRA col )
+static unsigned bgraToArgb( const ColorBGRA col )
 {
 	// Memory (low address >towards> high address)
 	// BGRA
@@ -181,7 +181,7 @@ static unsigned bgraToArgb( ColorBGRA col )
 }
 
 // Conversions
-static unsigned bgraToRgba( ColorBGRA col )
+static unsigned bgraToRgba( const ColorBGRA col )
 {
 	// best do the conversion of the color components in the shader directly
 	// Memory (low address >towards> high address)
@@ -194,7 +194,7 @@ static unsigned bgraToRgba( ColorBGRA col )
 	return ( a << 24u ) | ( r << 16u ) | ( g << 8u ) | b;
 }
 
-static ColorBGRA rgbaToBgra( unsigned col )
+static ColorBGRA rgbaToBgra( const unsigned col )
 {
 	// best do the conversion of the color components in the shader directly
 	// Memory (low address >towards> high address)
@@ -209,17 +209,17 @@ static ColorBGRA rgbaToBgra( unsigned col )
 
 // convenience functions
 /*
-static ColorBGRA toRgba( Byte r,
-	Byte g,
-	Byte b,
-	Byte a = 255u ) noexcept
+static ColorBGRA toRgba( const Byte r,
+	const Byte g,
+	const Byte b,
+	const Byte a = 255u ) noexcept
 {
 	return ( a << 24 ) | ( b << 16 ) | ( g << 8 ) | r;
 }
 
-static ColorBGRA toRgb( Byte r,
-	Byte g,
-	Byte b ) noexcept
+static ColorBGRA toRgb( const Byte r,
+	const Byte g,
+	const Byte b ) noexcept
 {
 	return toRgba( r,
 		g,
@@ -228,17 +228,17 @@ static ColorBGRA toRgb( Byte r,
 }
 */
 
-static ColorBGRA toBgra( Byte r,
-	Byte g,
-	Byte b,
-	Byte a ) noexcept
+static ColorBGRA toBgra( const Byte r,
+	const Byte g,
+	const Byte b,
+	const Byte a ) noexcept
 {
 	return ( a << 24 ) | ( r << 16 ) | ( g << 8 ) | b;
 }
 
-static ColorBGRA toBgr( Byte r,
-	Byte g,
-	Byte b ) noexcept
+static ColorBGRA toBgr( const Byte r,
+	const Byte g,
+	const Byte b ) noexcept
 {
 	return toBgra( r,
 		g,

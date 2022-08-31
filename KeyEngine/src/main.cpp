@@ -44,19 +44,19 @@ int WINAPI wWinMain( _In_ HINSTANCE hinstance,
 			windowsMetricsCheckTest();
 #endif
 			const auto& [width, height] = parseCommandLineArguments();
-			if constexpr ( GraphicsMode::get() == GraphicsMode::_3D )
+			if constexpr ( gph_mode::get() == gph_mode::_3D )
 			{
 				Sandbox3d game{width, height};
 				return game.loop();
 			}
-			else if constexpr ( GraphicsMode::get() == GraphicsMode::_2D )
+			else if constexpr ( gph_mode::get() == gph_mode::_2D )
 			{
 				SettingsManager &m_settingsMan = SettingsManager::getInstance();
-				if ( m_settingsMan.getSettings().m_game == "Arkanoid2d" )
-				{
+				//if ( m_settingsMan.getSettings().m_game == "Arkanoid2d" )
+				//{
 					Arkanoid game{800, 600};
 					return game.loop();
-				}
+				//}
 				//else if ( m_settingsMan.getSettings().m_game == "Snake2d" )
 				//{
 					//Snake game{800, 600};

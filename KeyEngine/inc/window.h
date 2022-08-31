@@ -8,11 +8,13 @@
 #include "keyboard.h"
 #include "mouse.h"
 #include "splash_window.h"
+#include "non_copyable.h"
 
-
+ 
 class Graphics;
 
 class Window
+	: public NonCopyable
 {
 private:
 	class WindowException final
@@ -26,6 +28,7 @@ private:
 	};
 
 	class WindowClass final
+		: public NonCopyable
 	{
 		static inline WindowClass *m_pInstance;
 	private:
@@ -35,32 +38,12 @@ private:
 		WindowClass( const std::string &name );
 	public:
 		~WindowClass() noexcept;
-		WindowClass( const WindowClass &rhs ) = delete;
-		WindowClass& operator=( const WindowClass &rhs ) = delete;
 		WindowClass( WindowClass &&rhs ) noexcept;
 		WindowClass& operator=( WindowClass &&rhs ) noexcept;
 
 		static WindowClass& getInstance( const std::string &name );
-		std::string getName() noexcept;
+		const std::string& getName() noexcept;
 	};
-	//class Dialog final
-	//{
-	//private:
-	//	std::wstring m_name;
-	//	HWND m_hWnd;
-	//public:
-	//	Dialog( const std::wstring &name );
-	//	~Dialog() noexcept;
-	//	Dialog( const Dialog &rhs ) = delete;
-	//	Dialog& operator=( const Dialog &rhs ) = delete;
-	//	Dialog( Dialog &&rhs ) noexcept;
-	//	Dialog& operator=( Dialog &&rhs ) noexcept;
-	//
-	//	static LRESULT CALLBACK dialogProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam );
-	//	std::wstring getName() const noexcept;
-	//	void setHwnd( HWND hWnd );
-	//	HWND getHwnd() const noexcept;
-	//};
 private:
 	static inline WindowClass *m_pWindowClass;
 	static inline Keyboard m_keyboard;
@@ -72,6 +55,7 @@ private:
 	int m_width;
 	int m_height;
 	std::string m_name;
+	std::string m_title;
 	HWND m_hWnd;
 	//HMENU m_hTrayIconPopupMenu;
 	std::unique_ptr<Graphics> m_pGraphics;
@@ -80,38 +64,36 @@ private:
 	//NOTIFYICONDATA m_notifyIconData;
 	//std::unique_ptr<Dialog> m_pDialogAbout;
 
-	static LRESULT CALLBACK windowProc( HWND pWndHandle, unsigned uMsg, WPARAM wParam, LPARAM lParam );
-	static LRESULT CALLBACK windowProcDelegate( HWND pWndHandle, unsigned uMsg, WPARAM wParam, LPARAM lParam );
+	static LRESULT CALLBACK windowProc( const HWND pWndHandle, const unsigned uMsg, const WPARAM wParam, const LPARAM lParam );
+	static LRESULT CALLBACK windowProcDelegate( const HWND pWndHandle, const unsigned uMsg, const WPARAM wParam, const LPARAM lParam );
 public:
-	Window();
-	Window( int width, int height, const char *name );
+	static Keyboard& keyboard() noexcept;
+	static Mouse& mouse() noexcept;
+	static const WindowClass& getWindowClass() noexcept;
+	static bool isDescendantOf( const HWND parent, HWND hWnd ) noexcept;
+public:
+	Window( const int width, const int height, const char *name );
 	~Window();
-	Window( const Window &rhs ) = delete;
-	Window& operator=( const Window &rhs ) = delete;
 	Window( Window &&rhs ) noexcept;
 	Window& operator=( Window &&rhs ) noexcept;
 
-	static Keyboard& getKeyboard() noexcept;
-	static Mouse& getMouse() noexcept;
-	static WindowClass& getWindowClass() noexcept;
-	static bool isDescendantOf( HWND parent, HWND hWnd ) noexcept;
 	std::optional<int> messageLoop() noexcept;
-	void setEnable( bool b );
+	void setEnable( const bool b );
 	void setOnTop();
-	HWND setFocus();
+	const HWND setFocus();
 	void goFullscreen() noexcept;
 	void goWindowed() noexcept;
 	void setBorderless() const noexcept;
 	void setBorderfull() const noexcept;
-	HWND getParent() const noexcept;
-	void setTitle( const std::wstring &title );
-	std::string getTitle() const noexcept;
+	const HWND getParent() const noexcept;
+	void setTitle( const std::string &title );
+	const std::string& getTitle() const noexcept;
 	void enableCursor() noexcept;
 	void disableCursor() noexcept;
 	bool isCursorEnabled() const noexcept;
-	void displayMessageBox( const std::wstring &title, const std::wstring &message ) const;
+	void displayMessageBox( const std::string &title, const std::string &message ) const;
 	bool isActive() const noexcept;
-	std::string getName() const noexcept;
+	const std::string& getName() const noexcept;
 	void minimize();
 	void restore();
 	//void setupNotifyIconData();
@@ -119,10 +101,10 @@ public:
 	bool isMaximized() const noexcept;
 	operator bool() const noexcept;
 	Graphics& getGraphics();
-	HWND getHandle() const noexcept;
+	const HWND getHandle() const noexcept;
 	HDC getDc() const noexcept;
 	WINDOWINFO getInfo() const noexcept;
-	int messageBoxPrintf( const TCHAR *caption, const TCHAR *format, ... );
+	const int messageBoxPrintf( const TCHAR *caption, const TCHAR *format, ... );
 private:
 	void configureDc();
 	void confineCursor() noexcept;
@@ -131,9 +113,9 @@ private:
 	void hideCursor() noexcept;
 	void enableImGuiMouse() noexcept;
 	void disableImGuiMouse() noexcept;
-	LRESULT windowProc_impl( _In_ HWND pWndHandle, _In_ unsigned msg, _In_ WPARAM wparam, _In_ LPARAM lparam );
-	LRESULT windowProc_impl2d( _In_ HWND pWndHandle, _In_ unsigned msg, _In_ WPARAM wparam, _In_ LPARAM lparam );
-	void setFont( const std::wstring &fontName );
+	LRESULT windowProc_impl( _In_ const HWND pWndHandle, _In_ const unsigned msg, _In_ const WPARAM wparam, _In_ const LPARAM lparam );
+	LRESULT windowProc_impl2d( _In_ const HWND pWndHandle, _In_ const unsigned msg, _In_ const WPARAM wparam, _In_ const LPARAM lparam );
+	void setFont( const std::string &fontName );
 };
 
 
@@ -141,3 +123,22 @@ private:
 	__FILE__,\
 	__FUNCTION__,\
 	msg );
+
+
+//class Dialog final
+//	: public NonCopyable
+//{
+//private:
+//	std::string m_name;
+//	HWND m_hWnd;
+//public:
+//	Dialog( const std::string &name );
+//	~Dialog() noexcept;
+//	Dialog( Dialog &&rhs ) noexcept;
+//	Dialog& operator=( Dialog &&rhs ) noexcept;
+//
+//	static LRESULT CALLBACK dialogProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam );
+//	const std::string& getName() const noexcept;
+//	void setHwnd( HWND hWnd );
+//	HWND getHwnd() const noexcept;
+//};

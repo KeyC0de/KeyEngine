@@ -14,7 +14,9 @@ protected:
 public:
 	virtual const con::CBElement& getCBExRootLayoutElement() const noexcept = 0;
 protected:
-	IConstantBufferEx( Graphics &gph, unsigned slot, const con::CBElement &layoutRoot, const con::Buffer *pBuf );
+	static void setBufferDesc( D3D11_BUFFER_DESC &d3dBufDesc, unsigned byteWidth );
+protected:
+	IConstantBufferEx( Graphics &gph, const unsigned slot, const con::CBElement &layoutRoot, const con::Buffer *pBuf );
 
 	void update( Graphics &gph, const con::Buffer &buf );
 };
@@ -48,7 +50,7 @@ class ConstantBufferEx final
 public:
 	// empty cb
 	ConstantBufferEx( Graphics &gph,
-		unsigned slot,
+		const unsigned slot,
 		const con::CookedLayout &layout )
 		:
 		T{gph, slot, *layout.shareRootElement(), nullptr},
@@ -58,7 +60,7 @@ public:
 	}
 
 	ConstantBufferEx( Graphics &gph,
-		unsigned slot,
+		const unsigned slot,
 		const con::Buffer &cb )
 		:
 		T{gph, slot, cb.getRootLayoutElement(), &cb},

@@ -6,7 +6,7 @@
 #include "transform_vscb.h"
 #include "vertex_buffer.h"
 #include "vertex_shader.h"
-#include "rasterizer.h"
+#include "rasterizer_state.h"
 #include "geometry.h"
 #include "rendering_channel.h"
 
@@ -14,9 +14,9 @@
 namespace dx = DirectX;
 
 Sphere::Sphere( Graphics &gph,
-	float radius )
+	const float radius )
 {
-	auto model = GeometrySphere::make();
+	auto model = Geometry::makeTesselatedSphere();
 	model.transform( dx::XMMatrixScaling( radius,
 		radius,
 		radius ) );
@@ -54,8 +54,9 @@ Sphere::Sphere( Graphics &gph,
 		lambertian.addBindable( std::make_shared<TransformVSCB>( gph,
 			0u ) );
 
-		lambertian.addBindable( Rasterizer::fetch( gph,
-			false ) );
+		lambertian.addBindable( RasterizerState::fetch( gph,
+			RasterizerState::FrontSided,
+			RasterizerState::Solid ) );
 
 		addEffect( std::move( lambertian ) );
 	}
@@ -66,7 +67,12 @@ void Sphere::setPosition( const dx::XMFLOAT3 &pos ) noexcept
 	this->m_pos = pos;
 }
 
-dx::XMMATRIX Sphere::getTransform() const noexcept
+const dx::XMMATRIX Sphere::getTransform() const noexcept
+{
+	return getPosition();
+}
+
+const DirectX::XMMATRIX Sphere::getPosition() const noexcept
 {
 	return dx::XMMatrixTranslation( m_pos.x,
 		m_pos.y,

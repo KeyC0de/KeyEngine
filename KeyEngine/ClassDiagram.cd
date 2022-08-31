@@ -77,13 +77,6 @@
       <FileName>inc\graphics_friend.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GraphicsMode" Collapsed="true">
-    <Position X="13.25" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
-      <FileName>inc\graphics_mode.h</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="DirectionalLight" Collapsed="true">
     <Position X="8" Y="4.75" Width="1.5" />
     <TypeIdentifier>

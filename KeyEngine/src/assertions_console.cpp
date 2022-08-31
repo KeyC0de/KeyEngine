@@ -8,7 +8,7 @@ extern "C" {
 // builds the error string
 bool assertPrint( const char *expr,
 	const char *file,
-	int line,
+	const int line,
 	const char *function,
 	const char *msg )
 {

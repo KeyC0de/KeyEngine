@@ -18,9 +18,8 @@ public:
 	Brick() = default;
 	Brick( const Rect &rect, const ColorBGRA col );
 
-	void render( Graphics &gph ) const;
-	bool checkForBallCollision( const Ball &ball ) const;
-	// performs the collision
+	void render( Graphics &gph ) const cond_noex;
+	bool checkForBallCollision( const Ball &ball ) const cond_noex;
 	void doBallCollision( Ball &ball );
 	const DirectX::XMFLOAT2 calcCenter() const noexcept;
 };

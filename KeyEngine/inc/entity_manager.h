@@ -4,6 +4,7 @@
 #include <memory>
 #include <string>
 #include "entity_defines.h"
+#include "non_copyable.h"
 
 
 class Entity;
@@ -17,6 +18,7 @@ class Entity;
 //	\brief	EntityManager owns all the Entities
 //=============================================================
 class EntityManager final
+	: public NonCopyable
 {
 	static inline EntityManager *m_pInstance;
 private:
@@ -48,9 +50,6 @@ private:
 private:
 	EntityManager();
 public:
-	EntityManager( const EntityManager &rhs ) = delete;
-	EntityManager& operator=( const EntityManager &rhs ) = delete;
-
 	static EntityManager& getInstance();
 	static void resetInstance();
 	//===================================================
@@ -58,7 +57,7 @@ public:
 	//	\brief  factory function for entities
 	//	\date	2020/12/09 14:14
 	EntityId spawnEntity( const std::string &name, int categoryId, Entity *pParent = nullptr );
-	EntityIndex getAliveEntities();
+	EntityIndex getAliveEntityCount();
 	//===================================================
 	//	\function	getEntityById
 	//	\brief  also checks if the entity is valid if its not valid (has died) returns nullptr
@@ -71,5 +70,9 @@ public:
 	//	\date	2019/12/09 13:43
 	void recycleEntityId( EntityId entId );
 	Bucket& getBucket( int categoryId );
-	Entity* getCurrentWorld();
+	//===================================================
+	//	\function	world
+	//	\brief  gets the current world
+	//	\date	2022/08/28 13:06
+	Entity* world();
 };

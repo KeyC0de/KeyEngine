@@ -11,6 +11,7 @@
 #if defined _DEBUG && !defined NDEBUG
 #	include <atlbase.h>
 #endif
+#include "non_copyable.h"
 #include "key_exception.h"
 #include "dxgi_info_queue.h"
 #include "key_timer.h"
@@ -26,6 +27,7 @@ class Window;
 class Camera;
 
 class Graphics
+	: NonCopyableAndNonMovable
 {
 	friend class GraphicsFriend;
 
@@ -33,8 +35,7 @@ class Graphics
 		: public KeyException
 	{
 	public:
-		GraphicsException( int line, const char *file, const char *function,
-			const std::string &msg ) noexcept;
+		GraphicsException( int line, const char *file, const char *function, const std::string &msg ) noexcept;
 
 		const std::string getType() const noexcept override final;
 		virtual const char* what() const noexcept override final;
@@ -48,7 +49,7 @@ class Graphics
 		Adapter( IDXGIAdapter *pAdapter );
 
 		const DXGI_ADAPTER_DESC* getDesc() const noexcept;
-		IDXGIAdapter* getAdapter() const noexcept;
+		IDXGIAdapter* adapter() const noexcept;
 	};
 
 private:
@@ -75,87 +76,85 @@ private:
 	std::unique_ptr<DirectX::SpriteBatch> m_fpsSpriteBatch;
 	DirectX::XMMATRIX m_projection;
 	DirectX::XMMATRIX m_view;
-	//std::vector<ID3D11DeviceContext*> m_deferredContexts;
-	//std::vector<ID3D11CommandList*> m_commandLists;
+	std::vector<ID3D11DeviceContext*> m_deferredContexts;
+	std::vector<ID3D11CommandList*> m_commandLists;
 	ColorBGRA *m_pCpuBuffer = nullptr;
 #if defined _FLIP_PRESENT
 private:
 	static bool checkTearingSupport();
 #endif
 public:
-	Graphics( HWND hWnd, int width, int height );
+	Graphics( const HWND hWnd, const int width, const int height );
 	~Graphics();
-	Graphics( const Graphics &rhs ) = delete;
-	Graphics& operator=( const Graphics &rhs ) = delete;
-	Graphics( Graphics &&rhs ) = delete;
-	Graphics& operator=( Graphics &&rhs ) = delete;
 
 #if defined _FLIP_PRESENT
-	void makeWindowAssociationWithFactory( HWND hWnd, UINT flags = DXGI_MWA_NO_WINDOW_CHANGES );
+	void makeWindowAssociationWithFactory( HWND hWnd, const UINT flags = DXGI_MWA_NO_WINDOW_CHANGES );
 #endif
 	void beginRendering() noexcept;
 	void updateAndRenderFpsTimer();
 	void endRendering();
-	void draw( unsigned count ) cond_noex;
-	void drawIndexed( unsigned count ) cond_noex;
-	void drawIndexedInstanced( unsigned indexCount, unsigned instanceCount ) cond_noex;
-	ColorBGRA*& getCpuBuffer();
+	void draw( const unsigned count ) cond_noex;
+	void drawIndexed( const unsigned count ) cond_noex;
+	void drawIndexedInstanced( const unsigned indexCount, const unsigned instanceCount ) cond_noex;
+	ColorBGRA*& cpuBuffer();
 	void setViewMatrix( const DirectX::XMMATRIX &cam ) noexcept;
 	void setProjectionMatrix( const DirectX::XMMATRIX &proj ) noexcept;
-	DirectX::XMMATRIX getViewMatrix() const noexcept;
-	DirectX::XMMATRIX getProjectionMatrix() const noexcept;
-	unsigned getClientWidth() const noexcept;
-	unsigned getClientHeight() const noexcept;
-	IRenderTargetView* getRenderTarget() const noexcept;
+	const DirectX::XMMATRIX& getViewMatrix() const noexcept;
+	const DirectX::XMMATRIX& getProjectionMatrix() const noexcept;
+	const unsigned getClientWidth() const noexcept;
+	const unsigned getClientHeight() const noexcept;
+	//===================================================
+	//	\function	renderTarget
+	//	\brief  access global color buffer
+	//	\date	2022/08/28 20:04
+	IRenderTargetView* renderTarget() const noexcept;
 	std::shared_ptr<IRenderTargetView> shareRenderTarget();
 	void createAdapters();
-	std::vector<Adapter>& getAdapters() const;
 
 #if defined _DEBUG && !defined NDEBUG
-	DxgiInfoQueue& getInfoQueue() const noexcept;
+	DxgiInfoQueue& infoQueue() const noexcept;
 #endif
 
 	// 2d
-	ColorBGRA getPixel( int x, int y ) const noexcept;
-	void putPixel( int x, int y, ColorBGRA col );
-	inline void putPixel( int x,
-		int y,
-		int r,
-		int g,
-		int b )
+	const ColorBGRA getPixel( const int x, const int y ) const noexcept;
+	void putPixel( const int x, const int y, const ColorBGRA col );
+	inline void putPixel( const int x,
+		const int y,
+		const int r,
+		const int g,
+		const int b )
 	{
 		putPixel( x,
 			y,
 			{static_cast<BYTE>( r ), static_cast<BYTE>( g ), static_cast<BYTE>( b )} );
 	}
-	void drawLine( int x0, int x1, int y0, int y1, ColorBGRA col );
-	void drawRect( int x0, int y0, int x1, int y1, ColorBGRA col );
-	inline void drawRect( const Rect &rect,
-		ColorBGRA col )
+	void drawLine( int x0, int x1, int y0, int y1, const ColorBGRA col );
+	void drawRectangle( int x0, int y0, int x1, int y1, const ColorBGRA col );
+	inline void drawRectangle( const Rect &rect, const ColorBGRA col )
 	{
-		drawRect( static_cast<int>( rect.m_left ),
+		drawRectangle( static_cast<int>( rect.m_left ),
 			static_cast<int>( rect.m_top ),
 			static_cast<int>( rect.m_right ),
 			static_cast<int>( rect.m_bottom ),
 			col );
 	}
 
-	inline void drawRectWH( int x0,
-		int y0,
-		int width,
-		int height,
-		ColorBGRA col )
+	inline void drawRectWH( const int x0,
+		const int y0,
+		const int width,
+		const int height,
+		const ColorBGRA col )
 	{
-		drawRect( x0,
+		drawRectangle( x0,
 			y0,
 			x0 + width,
 			y0 + height,
 			col );
 	}
 
-	void drawTriangle();
-	void drawCircle( int centerX, int centerY, int radius, ColorBGRA col );
-	std::vector<DirectX::XMFLOAT2> drawStar( float outerRadius, float innerRadius, int nFlares = 5 );
+	void drawTriangle( int x0, int y0, int x1, int y1, int x2, int y2, const ColorBGRA col );
+	void drawCircle( const int centerX, const int centerY, const int radius, const ColorBGRA col );
+	const std::vector<DirectX::XMFLOAT2> drawStar( const float outerRadius, const float innerRadius, const int nFlares = 5 );
 private:
 	//===================================================
 	//	\function	recordDeferredCommandList
@@ -169,8 +168,7 @@ private:
 	//	\date	2020/11/05 14:51
 	void playbackDeferredCommandList();
 	void clearShaderSlots() noexcept;
-	void resetToDefaultState();
-
+	void cleanState() noexcept;
 #if defined _DEBUG && !defined NDEBUG
 	void interrogateDirectxFeatures();
 	void d3d11DebugReport();

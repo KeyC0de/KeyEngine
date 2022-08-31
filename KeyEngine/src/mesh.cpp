@@ -1,4 +1,4 @@
-#include "drawable.h"
+#include "mesh.h"
 #include "index_buffer.h"
 #include "primitive_topology.h"
 #include "vertex_buffer.h"
@@ -7,10 +7,10 @@
 
 namespace dx = DirectX;
 
-Drawable::Drawable( Graphics &gph,
+Mesh::Mesh( Graphics &gph,
 	const MaterialLoader &mat,
 	const aiMesh &aimesh,
-	float scale ) noexcept
+	const float scale ) noexcept
 {
 	m_pVertexBuffer = mat.makeVertexBuffer( gph,
 		aimesh,
@@ -19,23 +19,23 @@ Drawable::Drawable( Graphics &gph,
 		aimesh );
 	m_pPrimitiveTopology = PrimitiveTopology::fetch( gph );
 
-	for ( auto &effect : mat.getEffects() )
+	for ( auto &effect : mat.effects() )
 	{
 		addEffect( std::move( effect ) );
 	}
 }
 
-Drawable::~Drawable()
+//Mesh::~Mesh() noexcept
+//{
+//	pass_;
+//}
+
+void Mesh::update( const float dt ) cond_noex
 {
 	pass_;
 }
 
-void Drawable::update( float dt ) cond_noex
-{
-	pass_;
-}
-
-void Drawable::render( size_t channels ) const noexcept
+void Mesh::render( const size_t channels ) const noexcept
 {
 	ASSERT( !m_effects.empty(), "No Effects to submit to the Renderer!" );
 	for ( const auto &effect : m_effects )
@@ -45,20 +45,20 @@ void Drawable::render( size_t channels ) const noexcept
 	}
 }
 
-void Drawable::addEffect( Effect effect ) noexcept
+void Mesh::addEffect( Effect effect ) noexcept
 {
-	effect.setParentDrawable( *this );
+	effect.setMesh( *this );
 	m_effects.emplace_back( std::move( effect ) );
 }
 
-void Drawable::bind( Graphics &gph ) const cond_noex
+void Mesh::bind( Graphics &gph ) const cond_noex
 {
 	m_pPrimitiveTopology->bind( gph );
 	m_pIndexBuffer->bind( gph );
 	m_pVertexBuffer->bind( gph );
 }
 
-void Drawable::accept( IEffectVisitor &ev )
+void Mesh::accept( IEffectVisitor &ev )
 {
 	for ( auto &effect : m_effects )
 	{
@@ -66,12 +66,12 @@ void Drawable::accept( IEffectVisitor &ev )
 	}
 }
 
-const unsigned Drawable::getIndicesCount() const cond_noex
+const unsigned Mesh::getIndicesCount() const cond_noex
 {
 	return m_pIndexBuffer->getIndexCount();
 }
 
-void Drawable::connectEffectsToRenderer( ren::Renderer &r )
+void Mesh::connectEffectsToRenderer( ren::Renderer &r )
 {
 	ASSERT( !m_effects.empty(), "No Effects to submit to the Renderer!" );
 	for ( auto &effect : m_effects )
@@ -80,23 +80,23 @@ void Drawable::connectEffectsToRenderer( ren::Renderer &r )
 	}
 }
 
-void Drawable::setTransform( const dx::XMMATRIX &worldTransform ) noexcept
+void Mesh::setTransform( const dx::XMMATRIX &worldTransform ) noexcept
 {
 	dx::XMStoreFloat4x4( &m_worldTransform,
 		worldTransform );
 }
 
-DirectX::XMMATRIX Drawable::getTransform() const noexcept
+const DirectX::XMMATRIX Mesh::getTransform() const noexcept
 {
 	return DirectX::XMLoadFloat4x4( &m_worldTransform );
 }
 
-void Drawable::setDistanceFromActiveCamera( int dist ) noexcept
+void Mesh::setDistanceFromActiveCamera( const int dist ) noexcept
 {
 	m_distanceFromActiveCamera = dist;
 }
 
-const int Drawable::getDistanceFromActiveCamera() const noexcept
+const int Mesh::getDistanceFromActiveCamera() const noexcept
 {
 	return m_distanceFromActiveCamera;
 }

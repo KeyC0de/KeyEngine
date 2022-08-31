@@ -140,13 +140,13 @@ enum aiTextureMapMode
  *  the aiProcess_GenUVCoords step is highly recommended. It generates proper
  *  UV channels for non-UV mapped objects, as long as an accurate description
  *  how the mapping should look like (e.g spherical) is given.
- *  See the #AI_MATKEY_MAPPING property for more details.
+ *  See the AI_MATKEY_MAPPING property for more details.
  */
 enum aiTextureMapping
 {
     /** The mapping coordinates are taken from an UV channel.
      *
-     *  The #AI_MATKEY_UVWSRC key specifies from which UV channel
+     *  The AI_MATKEY_UVWSRC key specifies from which UV channel
      *  the texture coordinates are to be taken from (remember,
      *  meshes can have more than one UV channel).
     */
@@ -193,7 +193,7 @@ enum aiTextureType
     /** Dummy value.
      *
      *  No texture, but the value to be used as 'texture semantic'
-     *  (#aiMaterialProperty::mSemantic) for all material properties
+     *  (aiMaterialProperty::mSemantic) for all material properties
      *  *not *related to textures.
      */
     aiTextureType_NONE = 0x0,
@@ -371,7 +371,7 @@ enum aiShadingMode
  *  process these flags in order to display as many 'unknown' 3D models as
  *  possible correctly.
  *
- *  This corresponds to the #AI_MATKEY_TEXFLAGS property.
+ *  This corresponds to the AI_MATKEY_TEXFLAGS property.
 */
 enum aiTextureFlags
 {
@@ -382,7 +382,7 @@ enum aiTextureFlags
     /** Explicit request to the application to process the alpha channel
      *  of the texture.
      *
-     *  Mutually exclusive with #aiTextureFlags_IgnoreAlpha. These
+     *  Mutually exclusive with aiTextureFlags_IgnoreAlpha. These
      *  flags are set if the library can say for sure that the alpha
      *  channel is used/is not used. If the model format does not
      *  define this, it is left to the application to decide whether
@@ -393,7 +393,7 @@ enum aiTextureFlags
     /** Explicit request to the application to ignore the alpha channel
      *  of the texture.
      *
-     *  Mutually exclusive with #aiTextureFlags_UseAlpha.
+     *  Mutually exclusive with aiTextureFlags_UseAlpha.
      */
     aiTextureFlags_IgnoreAlpha = 0x4,
 
@@ -417,7 +417,7 @@ enum aiTextureFlags
  *  where DestColor is the previous color in the framebuffer at this
  *  position and SourceColor is the material color before the transparency
  *  calculation.<br>
- *  This corresponds to the #AI_MATKEY_BLEND_FUNC property.
+ *  This corresponds to the AI_MATKEY_BLEND_FUNC property.
 */
 enum aiBlendMode
 {
@@ -452,7 +452,7 @@ enum aiBlendMode
 // ---------------------------------------------------------------------------
 /** @brief Defines how an UV channel is transformed.
  *
- *  This is just a helper structure for the #AI_MATKEY_UVTRANSFORM key.
+ *  This is just a helper structure for the AI_MATKEY_UVTRANSFORM key.
  *  See its documentation for more details.
  *
  *  Typically you'll want to build a matrix of this information. However,
@@ -561,7 +561,7 @@ enum aiPropertyTypeInfo
  *    $<name>
  *    ?<name>
  *       A public property, there must be corresponding AI_MATKEY_XXX define
- *       2nd: Public, but ignored by the #aiProcess_RemoveRedundantMaterials
+ *       2nd: Public, but ignored by the aiProcess_RemoveRedundantMaterials
  *       post-processing step.
  *    ~<name>
  *       A temporary property for internal use.
@@ -577,7 +577,7 @@ struct aiMaterialProperty
 
     /** Textures: Specifies their exact usage semantic.
      * For non-texture properties, this member is always 0
-     * (or, better-said, #aiTextureType_NONE).
+     * (or, better-said, aiTextureType_NONE).
      */
     unsigned int mSemantic;
 
@@ -710,7 +710,7 @@ public:
     /** Get the number of textures for a particular texture m_topo.
      *  @param m_topo Texture m_topo to check for
      *  @return Number of textures for this m_topo.
-     *  @note A texture can be easily queried using #GetTexture() */
+     *  @note A texture can be easily queried using GetTexture() */
     unsigned int GetTextureCount(aiTextureType type) const;
 
     // -------------------------------------------------------------------
@@ -723,7 +723,7 @@ public:
      *    e.g. diffuse, specular, height map ...)
      *  @param index Index of the texture to be retrieved. The function fails
      *    if there is no texture of that m_topo with this index.
-     *    #GetTextureCount() can be used to determine the number of textures
+     *    GetTextureCount() can be used to determine the number of textures
      *    per texture m_topo.
      *  @param m_path Receives the m_path to the texture.
      *    If the texture is embedded, receives a '*' followed by the id of
@@ -1342,7 +1342,7 @@ ASSIMP_API C_ENUM aiReturn aiGetMaterialProperty(
  *  from the material
  *
  * Pass one of the AI_MATKEY_XXX constants for the last three parameters (the
- * example reads the #AI_MATKEY_UVTRANSFORM property of the first diffuse texture)
+ * example reads the AI_MATKEY_UVTRANSFORM property of the first diffuse texture)
  * @code
  * aiUVTransform trafo;
  * unsigned int max = sizeof(aiUVTransform);
@@ -1378,7 +1378,7 @@ ASSIMP_API C_ENUM aiReturn aiGetMaterialFloatArray(
 /** @brief Retrieve a single float property with a specific key from the material.
 *
 * Pass one of the AI_MATKEY_XXX constants for the last three parameters (the
-* example reads the #AI_MATKEY_SHININESS_STRENGTH property of the first diffuse texture)
+* example reads the AI_MATKEY_SHININESS_STRENGTH property of the first diffuse texture)
 * @code
 * float specStrength = 1.f; // default value, remains unmodified if we fail.
 * aiGetMaterialFloat(mat, AI_MATKEY_SHININESS_STRENGTH,
@@ -1490,7 +1490,7 @@ ASSIMP_API C_ENUM aiReturn aiGetMaterialString(const C_STRUCT aiMaterial *pMat,
  *  @param[in] pMat Pointer to the input material. May not be NULL
  *  @param m_topo Texture m_topo to check for
  *  @return Number of textures for this m_topo.
- *  @note A texture can be easily queried using #aiGetMaterialTexture() */
+ *  @note A texture can be easily queried using aiGetMaterialTexture() */
 // ---------------------------------------------------------------------------
 ASSIMP_API unsigned int aiGetMaterialTextureCount(const C_STRUCT aiMaterial *pMat,
     C_ENUM aiTextureType type);
@@ -1508,7 +1508,7 @@ ASSIMP_API unsigned int aiGetMaterialTextureCount(const C_STRUCT aiMaterial *pMa
  *     specular, height map ...).
  *  @param[in] index Index of the texture. The function fails if the
  *     requested index is not available for this texture m_topo.
- *     #aiGetMaterialTextureCount() can be used to determine the number of
+ *     aiGetMaterialTextureCount() can be used to determine the number of
  *     textures in a particular texture stack.
  *  @param[out] m_path Receives the output m_path
  *     If the texture is embedded, receives a '*' followed by the id of

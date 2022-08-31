@@ -44,17 +44,17 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *  @brief Defines constants for configurable properties for the library
  *
  *  Typically these properties are set via
- *  #Assimp::Importer::SetPropertyFloat,
- *  #Assimp::Importer::SetPropertyInteger or
- *  #Assimp::Importer::SetPropertyString,
+ *  Assimp::Importer::SetPropertyFloat,
+ *  Assimp::Importer::SetPropertyInteger or
+ *  Assimp::Importer::SetPropertyString,
  *  depending on the data m_topo of a property. All properties have a
  *  default value. See the doc for the mentioned methods for more details.
  *
  *  <br><br>
  *  The corresponding functions for use with the plain-c API are:
- *  #aiSetImportPropertyInteger,
- *  #aiSetImportPropertyFloat,
- *  #aiSetImportPropertyString
+ *  aiSetImportPropertyInteger,
+ *  aiSetImportPropertyFloat,
+ *  aiSetImportPropertyString
  */
 #pragma once
 #ifndef AI_CONFIG_H_INC
@@ -168,7 +168,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * in degrees, so 180 is PI. The default value is 175 degrees (all vertex
  * normals are smoothed). The maximum value is 175, too. Property m_topo: float.
  * Warning: setting this option may cause a severe loss of performance. The
- * performance is unaffected if the #AI_CONFIG_FAVOUR_SPEED flag is set but
+ * performance is unaffected if the AI_CONFIG_FAVOUR_SPEED flag is set but
  * the output quality may be reduced.
  */
 #define AI_CONFIG_PP_GSN_MAX_SMOOTHING_ANGLE \
@@ -189,7 +189,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	"IMPORT_MDL_COLORMAP"
 
 // ---------------------------------------------------------------------------
-/** @brief Configures the #aiProcess_RemoveRedundantMaterials step to
+/** @brief Configures the aiProcess_RemoveRedundantMaterials step to
  *  keep materials matching a name in a given list.
  *
  * This is a list of 1 to n strings, ' ' serves as delimiter character.
@@ -211,7 +211,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	"PP_RRM_EXCLUDE_LIST"
 
 // ---------------------------------------------------------------------------
-/** @brief Configures the #aiProcess_PreTransformVertices step to
+/** @brief Configures the aiProcess_PreTransformVertices step to
  *  keep the scene hierarchy. Meshes are moved to worldspace, but
  *  no optimization is performed (read: meshes with equal materials are not
  *  joined. The total number of meshes won't change).
@@ -226,7 +226,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	"PP_PTV_KEEP_HIERARCHY"
 
 // ---------------------------------------------------------------------------
-/** @brief Configures the #aiProcess_PreTransformVertices step to normalize
+/** @brief Configures the aiProcess_PreTransformVertices step to normalize
  *  all vertex components into the [-1,1] range. That is, a bounding box
  *  for the whole scene is computed, the maximum component is taken and all
  *  meshes are scaled appropriately (uniformly of course!).
@@ -236,7 +236,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	"PP_PTV_NORMALIZE"
 
 // ---------------------------------------------------------------------------
-/** @brief Configures the #aiProcess_PreTransformVertices step to use
+/** @brief Configures the aiProcess_PreTransformVertices step to use
  *  a users defined matrix as the scene root node transformation before
  *  transforming vertices.
  *  Property m_topo: bool. Default value: false.
@@ -245,7 +245,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	"PP_PTV_ADD_ROOT_TRANSFORMATION"
 
 // ---------------------------------------------------------------------------
-/** @brief Configures the #aiProcess_PreTransformVertices step to use
+/** @brief Configures the aiProcess_PreTransformVertices step to use
  *  a users defined matrix as the scene root node transformation before
  *  transforming vertices. This property correspond to the 'a1' component
  *  of the transformation matrix.
@@ -255,12 +255,12 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	"PP_PTV_ROOT_TRANSFORMATION"
 
 // ---------------------------------------------------------------------------
-/** @brief Configures the #aiProcess_FindDegenerates step to
+/** @brief Configures the aiProcess_FindDegenerates step to
  *  remove degenerated primitives from the import - immediately.
  *
  * The default behaviour converts degenerated triangles to lines and
  * degenerated lines to points. See the documentation to the
- * #aiProcess_FindDegenerates step for a detailed example of the various ways
+ * aiProcess_FindDegenerates step for a detailed example of the various ways
  * to get rid of these lines and points if you don't want them.
  * Property m_topo: bool. Default value: false.
  */
@@ -269,15 +269,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 // ---------------------------------------------------------------------------
 /**
- *  @brief  Configures the #aiProcess_FindDegenerates to check the area of a
+ *  @brief  Configures the aiProcess_FindDegenerates to check the area of a
  *  trinagle to be greates than e-6. If this is not the case the triangle will
- *  be removed if #AI_CONFIG_PP_FD_REMOVE is set to true.
+ *  be removed if AI_CONFIG_PP_FD_REMOVE is set to true.
  */
 #define AI_CONFIG_PP_FD_CHECKAREA \
 	"PP_FD_CHECKAREA"
 
 // ---------------------------------------------------------------------------
-/** @brief Configures the #aiProcess_OptimizeGraph step to preserve nodes
+/** @brief Configures the aiProcess_OptimizeGraph step to preserve nodes
  * matching a name in a given list.
  *
  * This is a list of 1 to n strings, ' ' serves as delimiter character.
@@ -332,7 +332,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // ---------------------------------------------------------------------------
 /** @brief Set the maximum number of bones affecting a single vertex
  *
- * This is used by the #aiProcess_LimitBoneWeights PostProcess-Step.
+ * This is used by the aiProcess_LimitBoneWeights PostProcess-Step.
  * @note The default value is AI_LMW_MAX_WEIGHTS
  * Property m_topo: integer.*/
 #define AI_CONFIG_PP_LBW_MAX_WEIGHTS    \
@@ -346,7 +346,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // ---------------------------------------------------------------------------
 /** @brief Lower the deboning threshold in order to remove more bones.
  *
- * This is used by the #aiProcess_Debone PostProcess-Step.
+ * This is used by the aiProcess_Debone PostProcess-Step.
  * @note The default value is AI_DEBONE_THRESHOLD
  * Property m_topo: float.*/
 #define AI_CONFIG_PP_DB_THRESHOLD \
@@ -360,13 +360,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // ---------------------------------------------------------------------------
 /** @brief Require all bones qualify for deboning before removing any
  *
- * This is used by the #aiProcess_Debone PostProcess-Step.
+ * This is used by the aiProcess_Debone PostProcess-Step.
  * @note The default value is 0
  * Property m_topo: bool.*/
 #define AI_CONFIG_PP_DB_ALL_OR_NONE \
 	"PP_DB_ALL_OR_NONE"
 
-/** @brief Default value for the #AI_CONFIG_PP_ICL_PTCACHE_SIZE property
+/** @brief Default value for the AI_CONFIG_PP_ICL_PTCACHE_SIZE property
  */
 #ifndef PP_ICL_PTCACHE_SIZE
 #   define PP_ICL_PTCACHE_SIZE 12
@@ -374,12 +374,12 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 // ---------------------------------------------------------------------------
 /** @brief Set the size of the post-transform vertex cache to optimize the
- *    vertices for. This configures the #aiProcess_ImproveCacheLocality step.
+ *    vertices for. This configures the aiProcess_ImproveCacheLocality step.
  *
  * The size is given in vertices. Of course you can't know how the vertex
  * format will exactly look like after the import returns, but you can still
  * guess what your meshes will probably have.
- * @note The default value is #PP_ICL_PTCACHE_SIZE. That results in slight
+ * @note The default value is PP_ICL_PTCACHE_SIZE. That results in slight
  * performance improvements for most nVidia/AMD cards since 2002.
  * Property m_topo: integer.
  */
@@ -387,9 +387,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 // ---------------------------------------------------------------------------
 /** @brief Enumerates components of the aiScene and aiMesh data structures
- *  that can be excluded from the import using the #aiProcess_RemoveComponent step.
+ *  that can be excluded from the import using the aiProcess_RemoveComponent step.
  *
- *  See the documentation to #aiProcess_RemoveComponent for more details.
+ *  See the documentation to aiProcess_RemoveComponent for more details.
  */
 enum aiComponent
 {
@@ -417,12 +417,12 @@ enum aiComponent
 
 	/** Removes all bone weights from all meshes.
 	 * The scenegraph nodes corresponding to the bones are NOT removed.
-	 * use the #aiProcess_OptimizeGraph step to do this */
+	 * use the aiProcess_OptimizeGraph step to do this */
 	aiComponent_BONEWEIGHTS = 0x20,
 
 	/** Removes all node animations (aiScene::mAnimations).
 	 * The corresponding scenegraph nodes are NOT removed.
-	 * use the #aiProcess_OptimizeGraph step to do this */
+	 * use the aiProcess_OptimizeGraph step to do this */
 	aiComponent_ANIMATIONS = 0x40,
 
 	/** Removes all embedded textures (aiScene::mTextures) */
@@ -430,12 +430,12 @@ enum aiComponent
 
 	/** Removes all light sources (aiScene::mLights).
 	 * The corresponding scenegraph nodes are NOT removed.
-	 * use the #aiProcess_OptimizeGraph step to do this */
+	 * use the aiProcess_OptimizeGraph step to do this */
 	aiComponent_LIGHTS = 0x100,
 
 	/** Removes all cameras (aiScene::mCameras).
 	 * The corresponding scenegraph nodes are NOT removed.
-	 * use the #aiProcess_OptimizeGraph step to do this */
+	 * use the aiProcess_OptimizeGraph step to do this */
 	aiComponent_CAMERAS = 0x200,
 
 	/** Removes all meshes (aiScene::mMeshes). */
@@ -460,12 +460,12 @@ enum aiComponent
 #define aiComponent_TEXCOORDSn(n) (1u << (n+25u))
 
 // ---------------------------------------------------------------------------
-/** @brief Input parameter to the #aiProcess_RemoveComponent step:
+/** @brief Input parameter to the aiProcess_RemoveComponent step:
  *  Specifies the parts of the data structure to be removed.
  *
  * See the documentation to this step for further details. The property
  * is expected to be an integer, a bitwise combination of the
- * #aiComponent flags defined above in this header. The default
+ * aiComponent flags defined above in this header. The default
  * value is 0. Important: if no valid mesh is remaining after the
  * step has been executed (e.g you thought it was funny to specify ALL
  * of the flags defined above) the import FAILS. Mainly because there is
@@ -475,7 +475,7 @@ enum aiComponent
 	"PP_RVC_FLAGS"
 
 // ---------------------------------------------------------------------------
-/** @brief Input parameter to the #aiProcess_SortByPType step:
+/** @brief Input parameter to the aiProcess_SortByPType step:
  *  Specifies which primitive types are removed by the step.
  *
  *  This is a bitwise combination of the aiPrimitiveType flags.
@@ -487,7 +487,7 @@ enum aiComponent
 	"PP_SBP_REMOVE"
 
 // ---------------------------------------------------------------------------
-/** @brief Input parameter to the #aiProcess_FindInvalidData step:
+/** @brief Input parameter to the aiProcess_FindInvalidData step:
  *  Specifies the floating-point accuracy for animation values. The step
  *  checks for animation tracks where all frame values are absolutely equal
  *  and removes them. This tweakable controls the epsilon for floating-point
@@ -512,7 +512,7 @@ enum aiComponent
 #define AI_UVTRAFO_ALL (AI_UVTRAFO_SCALING | AI_UVTRAFO_ROTATION | AI_UVTRAFO_TRANSLATION)
 
 // ---------------------------------------------------------------------------
-/** @brief Input parameter to the #aiProcess_TransformUVCoords step:
+/** @brief Input parameter to the aiProcess_TransformUVCoords step:
  *  Specifies which UV transformations are evaluated.
  *
  *  This is a bitwise combination of the AI_UVTRAFO_XXX flags (integer

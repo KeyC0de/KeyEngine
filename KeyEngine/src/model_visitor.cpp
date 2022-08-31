@@ -17,6 +17,11 @@ MV::MV( const std::string &name )
 
 }
 
+//MV::~MV() noexcept
+//{
+//	m_pSelectedNode = nullptr;
+//}
+
 void MV::spawnModelImgui( Model &model )
 {
 	ImGui::Begin( m_name.c_str() );
@@ -35,7 +40,7 @@ void MV::spawnModelImgui( Model &model )
 		};
 
 		// for transforming the .obj model whole
-		auto &tf = fetchTransform();
+		auto &tf = calcTransform();
 
 		ImGui::TextColored( { 0.4f, 1.0f, 0.6f, 1.0f }, "Translation" );
 		dirtyCheck( ImGui::SliderFloat( "X", &tf.x, -60.f, 60.f ) );
@@ -61,18 +66,23 @@ void MV::spawnModelImgui( Model &model )
 	ImGui::End();
 }
 
+const std::string& MV::getName() const noexcept
+{
+	return m_name;
+}
+
 bool MV::visit( Node &node )
 {
 	// if there is no selected node, set selectedNodeId to an impossible value
 	const int selectedNodeId = ( m_pSelectedNode == nullptr ) ?
 		-1 :
-		m_pSelectedNode->getId();
+		m_pSelectedNode->getImguiId();
 	// build up flags for current node
 	const auto node_flags = ImGuiTreeNodeFlags_OpenOnArrow
-		| ( ( node.getId() == selectedNodeId ) ? ImGuiTreeNodeFlags_Selected : 0 )
+		| ( ( node.getImguiId() == selectedNodeId ) ? ImGuiTreeNodeFlags_Selected : 0 )
 		| ( node.hasChildren() ? 0 : ImGuiTreeNodeFlags_Leaf );
 	// render this node
-	const bool bExpand = ImGui::TreeNodeEx( (void*)(intptr_t)node.getId(),
+	const bool bExpand = ImGui::TreeNodeEx( (void*)(intptr_t)node.getImguiId(),
 		node_flags,
 		node.getName().c_str() );
 	// processing for selecting node
@@ -84,32 +94,32 @@ bool MV::visit( Node &node )
 	return bExpand;
 }
 
-void MV::onNodeLeave( Node &node )
+void MV::onVisited( Node &node )
 {
 	ImGui::TreePop();
 }
 
-MV::TransformData& MV::fetchTransform() noexcept
+MV::TransformData& MV::calcTransform() noexcept
 {
-	const auto nodeId = m_pSelectedNode->getId();
+	const auto nodeId = m_pSelectedNode->getImguiId();
 	auto i = m_nodeMapTransforms.find( nodeId );
 	if ( i == m_nodeMapTransforms.end() )
 	{
-		return assembleTransform( nodeId );
+		return calcTransform_impl( nodeId );
 	}
 	return i->second;
 }
 
-MV::TransformData& MV::assembleTransform( int id ) noexcept
+MV::TransformData& MV::calcTransform_impl( int id ) noexcept
 {
 	const auto &worldTf = m_pSelectedNode->getWorldTransform();
 	const auto angles = util::extractEulerAngles( worldTf );
 	const auto translation = util::extractTranslation( worldTf );
 
 	TransformData td;
-	td.roll = angles.z;
 	td.pitch = angles.x;
 	td.yaw = angles.y;
+	td.roll = angles.z;
 	td.x = translation.x;
 	td.y = translation.y;
 	td.z = translation.z;

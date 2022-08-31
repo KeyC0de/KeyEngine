@@ -42,7 +42,7 @@ MousePicker::MousePicker( Graphics &gph,
 
 	// the origin of the picking ray is the position of the camera
 	auto &camMan = CameraManager::getInstance();
-	auto camPos{camMan.getActiveCamera().getPosition()};
+	auto camPos{camMan.activeCamera().getPosition()};
 
 	// now perform ray intersection test...
 }

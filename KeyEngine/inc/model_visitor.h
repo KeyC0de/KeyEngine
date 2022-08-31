@@ -16,7 +16,7 @@ public:
 	}
 
 	virtual bool visit( class Node &node ) = 0;
-	virtual void onNodeLeave( class Node &node ) = 0;
+	virtual void onVisited( class Node &node ) = 0;
 };
 
 class MV
@@ -38,9 +38,10 @@ public:
 	MV( const std::string &name );
 
 	void spawnModelImgui( Model &model );
+	const std::string& getName() const noexcept;
 private:
 	bool visit( Node &node ) override;
-	void onNodeLeave( Node &node ) override;
-	TransformData& fetchTransform() noexcept;
-	TransformData& assembleTransform( int id ) noexcept;
+	void onVisited( Node &node ) override;
+	TransformData& calcTransform() noexcept;
+	TransformData& calcTransform_impl( int id ) noexcept;
 };

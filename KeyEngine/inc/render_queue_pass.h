@@ -13,7 +13,7 @@ class RenderQueuePass
 {
 	std::vector<Job> m_jobs;
 public:
-	using IBindablePass::IBindablePass;
+	using IBindablePass::IBindablePass;	// pass name & bindables vector
 
 	void addJob( Job job ) noexcept;
 	//===================================================

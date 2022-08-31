@@ -1,23 +1,23 @@
-#include "texture_sampler.h"
+#include "texture_sampler_state.h"
 #include "bindable_map.h"
 #include "os_utils.h"
 #include "dxgi_info_queue.h"
 
 
-TextureSampler::TextureSampler( Graphics &gph,
-	unsigned slot,
-	FilterMode filt,
-	AddressMode addr )
+TextureSamplerState::TextureSamplerState( Graphics &gph,
+	const unsigned slot,
+	const FilterMode filterMode,
+	const AddressMode addressMode )
 	:
-	m_filtering(filt),
-	m_addressing(addr),
+	m_filteringMode(filterMode),
+	m_addressingMode(addressMode),
 	m_slot(slot)
 {
 	D3D11_SAMPLER_DESC samplerDesc{CD3D11_SAMPLER_DESC{CD3D11_DEFAULT{}}};
 	//samplerDesc.ComparisonFunc = D3D11_COMPARISON_NEVER;
-	samplerDesc.Filter = [filt]()
+	samplerDesc.Filter = [filterMode]()
 	{
-		switch( filt )
+		switch( filterMode )
 		{
 		case Anisotropic:
 			return D3D11_FILTER_ANISOTROPIC;
@@ -33,12 +33,12 @@ TextureSampler::TextureSampler( Graphics &gph,
 	samplerDesc.MipLODBias = 0.0f;
 	samplerDesc.MinLOD = 0.0f;
 	samplerDesc.MaxLOD = D3D11_FLOAT32_MAX;
-	auto checkAddr = [&addr] ( )
+	auto checkAddr = [&addressMode] ( )
 	{
-		return addr == AddressMode::Mirror ?
+		return addressMode == AddressMode::Mirror ?
 			D3D11_TEXTURE_ADDRESS_MIRROR :
-			( addr == AddressMode::Clamp ? D3D11_TEXTURE_ADDRESS_CLAMP :
-			( addr == AddressMode::Border ? D3D11_TEXTURE_ADDRESS_BORDER : D3D11_TEXTURE_ADDRESS_WRAP ) );
+			( addressMode == AddressMode::Clamp ? D3D11_TEXTURE_ADDRESS_CLAMP :
+			( addressMode == AddressMode::Border ? D3D11_TEXTURE_ADDRESS_BORDER : D3D11_TEXTURE_ADDRESS_WRAP ) );
 	};
 	samplerDesc.AddressU = checkAddr();
 	samplerDesc.AddressV = checkAddr();
@@ -50,7 +50,7 @@ TextureSampler::TextureSampler( Graphics &gph,
 	ASSERT_HRES_IF_FAILED;
 }
 
-void TextureSampler::bind( Graphics &gph ) cond_noex
+void TextureSamplerState::bind( Graphics &gph ) cond_noex
 {
 	getDeviceContext( gph )->PSSetSamplers( m_slot,
 		1u,
@@ -58,20 +58,20 @@ void TextureSampler::bind( Graphics &gph ) cond_noex
 	DXGI_GET_QUEUE_INFO( gph );
 }
 
-std::shared_ptr<TextureSampler> TextureSampler::fetch( Graphics &gph,
-	unsigned slot,
-	FilterMode filt,
-	AddressMode addr )
+std::shared_ptr<TextureSamplerState> TextureSamplerState::fetch( Graphics &gph,
+	const unsigned slot,
+	const FilterMode filt,
+	const AddressMode addr )
 {
-	return BindableMap::fetch<TextureSampler>( gph,
+	return BindableMap::fetch<TextureSamplerState>( gph,
 		slot,
 		filt,
 		addr );
 }
 
-std::string TextureSampler::generateUid( unsigned slot,
-	FilterMode filt,
-	AddressMode addr )
+std::string TextureSamplerState::calcUid( const unsigned slot,
+	const FilterMode filt,
+	const AddressMode addr )
 {
 	auto checkAddr = [&addr] ()
 	{
@@ -89,14 +89,17 @@ std::string TextureSampler::generateUid( unsigned slot,
 	};
 
 	using namespace std::string_literals;
-	return typeid( TextureSampler ).name() + "@"s + std::to_string( slot )
-		+ "#"s + std::to_string( (int)filt )
+	return typeid( TextureSamplerState ).name()
+		+ "@"s
+		+ std::to_string( slot )
+		+ "#"s
+		+ std::to_string( (int)filt )
 		+ checkAddr();
 }
 
-std::string TextureSampler::getUid() const noexcept
+const std::string TextureSamplerState::getUid() const noexcept
 {
-	return generateUid( m_slot,
-		m_filtering,
-		m_addressing );
+	return calcUid( m_slot,
+		m_filteringMode,
+		m_addressingMode );
 }

@@ -16,7 +16,7 @@ class SkyPass
 	: public IBindablePass
 {
 	bool m_bUseSphere = true;
-	const Camera *m_pMainCamera = nullptr;
+	const Camera *m_pActiveCamera = nullptr;
 	std::shared_ptr<VertexBuffer> m_pCubeVb;
 	std::shared_ptr<IndexBuffer> m_pCubeIb;
 	unsigned m_nCubeIndices;
@@ -26,11 +26,11 @@ class SkyPass
 public:
 	SkyPass( Graphics &gph, const std::string &name );
 
-	void setMainCamera( const Camera &cam ) noexcept;
+	void setActiveCamera( const Camera &cam ) noexcept;
 	void run( Graphics &gph ) const cond_noex override;
 	void reset() cond_noex override;
 	void displayImguiWidgets();
 };
 
 
-}
+}//namespace ren

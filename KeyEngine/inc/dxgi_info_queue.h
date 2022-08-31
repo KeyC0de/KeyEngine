@@ -7,9 +7,10 @@
 #pragma warning( disable: 4265 )
 #	include <wrl.h>
 #pragma warning( default: 4265 )
+#include "non_copyable.h"
 
 
-//#FIXME: INFO_QUEUE doesn't work. It crashes at the Graphics Destructor. It might be ImGui related.
+// #FIXME: INFO_QUEUE doesn't work. It crashes at the Graphics Destructor. It might be ImGui related.
 // ref: https://walbourn.github.io/dxgi-debug-device/
 // In DirectX 11.1 + you can get helpful information from DX Device Context functions
 // using the DXGIGetDebugInterface given we have the debug layer of our device enabled
@@ -17,14 +18,13 @@
 //		in any header and is not present in anyimport library.
 // So we have to load it dynamically
 class DxgiInfoQueue final
+	: public NonCopyable
 {
 	static inline const DXGI_DEBUG_ID m_msgProducer = DXGI_DEBUG_ALL;
 	size_t m_index = 0u;
 	Microsoft::WRL::ComPtr<IDXGIInfoQueue> m_pDxgiInfoQueue;
 public:
 	DxgiInfoQueue();
-	DxgiInfoQueue( const DxgiInfoQueue &rhs ) = delete;
-	DxgiInfoQueue& operator=( const DxgiInfoQueue &rhs ) = delete;
 
 	//===================================================
 	//	\function	markQueueIndex
@@ -41,7 +41,7 @@ public:
 #	define DXGI_GET_QUEUE_INFO( gph ) \
 	{\
 		KeyConsole &console = KeyConsole::getInstance();\
-		const auto &messages = gph.getInfoQueue().getInfoMessages();\
+		const auto &messages = gph.infoQueue().getInfoMessages();\
 		if ( !messages.empty() )\
 		{\
 			for ( const auto &msg : messages )\
@@ -50,7 +50,7 @@ public:
 			}\
 			__debugbreak();\
 		}\
-		gph.getInfoQueue().markQueueIndex();\
+		gph.infoQueue().markQueueIndex();\
 	}
 #else
 #	define DXGI_GET_QUEUE_INFO (void)0;
@@ -60,7 +60,7 @@ public:
 #	define DXGI_GET_QUEUE_INFO_P( gph ) \
 	{\
 		KeyConsole &console = KeyConsole::getInstance();\
-		const auto &messages = gph->getInfoQueue().getInfoMessages();\
+		const auto &messages = gph->infoQueue().getInfoMessages();\
 		if ( !messages.empty() )\
 		{\
 			for ( const auto &msg : messages )\
@@ -69,7 +69,7 @@ public:
 			}\
 			__debugbreak();\
 		}\
-		gph->getInfoQueue().markQueueIndex();\
+		gph->infoQueue().markQueueIndex();\
 	}
 #else
 #	define DXGI_GET_QUEUE_INFO_P (void)0;

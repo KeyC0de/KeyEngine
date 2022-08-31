@@ -110,7 +110,7 @@ EntityId EntityManager::spawnEntity( const std::string &name,
 	return ( m_entities[index]->m_version << 16 ) | index;
 }
 
-EntityIndex EntityManager::getAliveEntities()
+EntityIndex EntityManager::getAliveEntityCount()
 {
 	return static_cast<EntityIndex>( m_entities.size() - m_freelist.size() );
 }
@@ -171,7 +171,7 @@ EntityManager::Bucket& EntityManager::getBucket( int categoryId )
 	}//switch
 }
 
-Entity* EntityManager::getCurrentWorld()
+Entity* EntityManager::world()
 {
 	// current world Entity index is always @ index 0 of m_worldEntitiesIndices
 	return m_entities[m_worldEntitiesIndices[0]].get();
@@ -215,7 +215,7 @@ int main()
 	}
 
 	std::cout << "\nAlive entities="
-		<< em.getAliveEntities()
+		<< em.getAliveEntityCount()
 		<< '\n';
 
 	std::system( "pause" );

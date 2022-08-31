@@ -3,12 +3,13 @@
 #include <sstream>
 #include "math_utils.h"
 #include "winner.h"
+#include "assertions_console.h"
 
 
 namespace util
 {
 
-int nextPowerOf2( int n )
+constexpr int nextPowerOf2( int n )
 {
 	if ( n < 0 )
 	{
@@ -31,13 +32,8 @@ int nextPowerOf2( int n )
 	return 1 << count;
 }
 
-float frand() noexcept
-{
-	return static_cast<float>( rand() / ( RAND_MAX + 1.0f ) );
-}
-
 int gcd( int divident,
-	int divisor ) noexcept
+	int divisor )
 {
 	int r = 0;
 	int temp = 0;
@@ -57,7 +53,7 @@ int gcd( int divident,
 }
 
 
-constexpr float squareRoot( float x ) noexcept
+constexpr float squareRoot( const float x ) noexcept
 {
 	const float epsilon = .00001;
 	float guess = 1.0;
@@ -93,19 +89,20 @@ constexpr int factorialOf( int n ) noexcept
 	return fact;
 }
 
-int isPrime( int number ) noexcept
+constexpr bool isPrime( const int number ) noexcept
 {
-	int n = (int)pow( number, (double)1 / 2.0 );
+	int n = (int)util::powerOf( number,
+		(double)1 / 2.0 );
 
 	for ( int i = 2; i <= n; ++i )
 	{
 		if ( number % i == 0 )
 		{
-			return 0;
+			return false;
 		}
 	}
 
-	return 1;
+	return true;
 }
 
 constexpr bool isPowerOfTwo( const std::size_t value ) noexcept
@@ -113,9 +110,9 @@ constexpr bool isPowerOfTwo( const std::size_t value ) noexcept
 	return value > 0 && ( value & ( value - 1 ) ) == 0;
 }
 
-float cosine( float x ) noexcept
+constexpr float cosine( float x ) noexcept
 {
-	if ( fmod( x, 90 ) == 0 && fmod( x, 180 ) != 0 )
+	if ( util::modulusFloat( x, 90.0f ) == 0.0f && util::modulusFloat( x, 180.0f ) != 0.0f )
 	{
 		return 0;
 	}
@@ -131,9 +128,9 @@ float cosine( float x ) noexcept
 	return result;
 }
 
-float sine( float x ) noexcept
+constexpr float sine( float x ) noexcept
 {
-	if ( fmod( x, 90 ) == 0 && fmod( x, 180 ) != 0 )
+	if ( util::modulusFloat( x, 90.0f ) == 0.0f && util::modulusFloat( x, 180.0f ) != 0.0f )
 	{
 		return 1;
 	}
@@ -149,13 +146,14 @@ float sine( float x ) noexcept
 	return result;
 }
 
-constexpr int linearSearch( int *A,
-	int n,
-	int x )
+constexpr int linearSearch( const int *A,
+	const int n,
+	const int val )
 {
+	ASSERT( n > 0 && A != nullptr, "Input raw array is invalid!" );
 	for ( int i = 0; i < n; ++i )
 	{
-		if ( A[i] == x )
+		if ( A[i] == val )
 		{
 			return i;
 		}
@@ -163,20 +161,21 @@ constexpr int linearSearch( int *A,
 	return -1;
 }
 
-constexpr int binarySearch( int *A,
+constexpr int binarySearch( const int *A,
 	int low,
 	int high,
-	int x )
+	const int val )
 {
+	ASSERT( A != nullptr, "Input raw array is invalid!" );
 	int med = -1;
 	while ( low <= high )
 	{
 		med = ( low + high ) >> 1;
-		if ( A[med] == x )
+		if ( A[med] == val )
 		{
 			return med;
 		}
-		else if ( A[med] < x )
+		else if ( A[med] < val )
 		{
 			low = med + 1;
 		}
@@ -188,7 +187,7 @@ constexpr int binarySearch( int *A,
 	return -1; // not present
 }
 
-int toDecimal( int hex )
+int toDecimal( const int hex )
 {
 	int dec;
 	std::stringstream ss;
@@ -198,7 +197,7 @@ int toDecimal( int hex )
 	return dec;
 }
 
-int toHex( int dec )
+int toHex( const int dec )
 {
 	int hex;
 	std::stringstream ss;
@@ -210,11 +209,11 @@ int toHex( int dec )
 
 // bitting
 #pragma warning( push, 0 )
-void printDec2Bin( size_t const size,
-	void const * const ptr )
+void printDec2Bin( const size_t size,
+	void const * const ptr ) noexcept
 {
 	unsigned char *p = (unsigned char*)ptr;
-	unsigned char byte;
+	unsigned char byte = 0;
 
 	for ( int i = size - 1; i >= 0; i-- )
 	{
@@ -229,14 +228,7 @@ void printDec2Bin( size_t const size,
 }
 #pragma warning( pop )
 
-
-bool oppositeSigns( int x,
-	int y )
-{
-	return ( ( x ^ y ) < 0 );
-}
-
-void dec2bin( int num )
+void printDecToBin( const int num ) noexcept
 {
 	int i = 0;
 	for ( i = 31; i >= 0; i-- )
@@ -252,8 +244,14 @@ void dec2bin( int num )
 	}
 }
 
+constexpr bool haveOppositeSigns( const int x,
+	const int y ) noexcept
+{
+	return ( ( x ^ y ) < 0 );
+}
+
 #pragma warning( push, 0 )
-int msbIndexOfDec( int num )
+constexpr int msbIndexOfDec( int num ) noexcept
 {
 	int i = 0;
 
@@ -266,7 +264,7 @@ int msbIndexOfDec( int num )
 }
 #pragma warning( pop )
 
-int countSetBits( int num )
+constexpr int countSetBits( int num ) noexcept
 {
 	int count = 0;
 	while ( num != 0 )
@@ -277,7 +275,7 @@ int countSetBits( int num )
 	return count;
 }
 
-int isPowerOf2( int num )
+constexpr int isPowerOf2( const int num ) noexcept
 {
 	// if a number is a power of 2 then it has only one 1 in its binary representation
 	if ( ( num & ( num - 1 ) ) == 0 )
@@ -290,10 +288,10 @@ int isPowerOf2( int num )
 	}
 }
 
-void convertToBase( int number,
-	int base ) noexcept
+constexpr void convertToBase( int number,
+	const int base ) noexcept
 {
-	int convertedDigits[64];
+	int convertedDigits[64]{0};
 	int i = 0;
 	do
 	{
@@ -303,9 +301,9 @@ void convertToBase( int number,
 	} while ( number != 0 );
 }
 
-int swapBits( int num,
-	int i,
-	int j )
+constexpr int swapBits( int num,
+	const int i,
+	const int j ) noexcept
 {
 	int lo = ( ( num >> i ) & 1 );
 	int hi = ( ( num >> j ) & 1 );
@@ -316,37 +314,37 @@ int swapBits( int num,
 	return num;
 }
 
-int setNthBit( int num,
-	unsigned n )
+constexpr int setNthBit( int num,
+	const unsigned n ) noexcept
 {
 	num |= 1 << n;
 	return num;
 }
 
-int clearNthBit( int num,
-	unsigned n )
+constexpr int clearNthBit( int num,
+	const unsigned n ) noexcept
 {
 	num &= ~( 1 << n );
 	return num;
 }
 
-int toggleNthBit( int num,
-	unsigned n )
+constexpr int toggleNthBit( int num,
+	const unsigned n ) noexcept
 {
 	num ^= 1 << n;
 	return num;
 }
 
-int returnNthBit( int num,
-	unsigned n )
+constexpr int returnNthBit( int num,
+	const unsigned n ) noexcept
 {
 	return ( num >> n ) & 1;
 }
 
 #pragma warning( push, 0 )
-int changeNthBit( int num,
-	unsigned n,
-	bool bitVal )
+constexpr int changeNthBit( int num,
+	const unsigned n,
+	const bool bitVal ) noexcept
 {
 	num ^= ( -bitVal ^ num ) & ( 1 << n );
 	return num;

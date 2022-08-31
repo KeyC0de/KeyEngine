@@ -40,13 +40,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ----------------------------------------------------------------------
 */
 
-/** @file CreateAnimMesh.h
+/** @file CreateAnimaimesh.h
  *  Create AnimMesh from Mesh
  */
 #ifndef INCLUDED_AI_CREATE_ANIM_MESH_H
 #define INCLUDED_AI_CREATE_ANIM_MESH_H
 
-#include "assimp/mesh.h"
+#include "assimp/aimesh.h"
 
 namespace Assimp    {
 

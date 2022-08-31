@@ -4,7 +4,7 @@
 #include "console.h"
 
 
-void installSigintHandler( int signum )
+void installSigintHandler( const int signum )
 {
 	if ( signum == SIGINT )
 	{
@@ -17,7 +17,7 @@ void installSigintHandler( int signum )
 	}
 }
 
-void installSigsegvHandler( int signum )
+void installSigsegvHandler( const int signum )
 {
 	if ( signum == SIGSEGV )
 	{
@@ -30,7 +30,7 @@ void installSigsegvHandler( int signum )
 	}
 }
 
-void installSigtermHandler( int signum )
+void installSigtermHandler( const int signum )
 {
 	if ( signum == SIGTERM )
 	{
@@ -43,7 +43,7 @@ void installSigtermHandler( int signum )
 	}
 }
 
-void installSigillHandler( int signum )
+void installSigillHandler( const int signum )
 {
 	if ( signum == SIGILL )
 	{
@@ -56,7 +56,7 @@ void installSigillHandler( int signum )
 	}
 }
 
-void installSigabrtHandler( int signum )
+void installSigabrtHandler( const int signum )
 {
 	if ( signum == SIGABRT )
 	{
@@ -69,7 +69,7 @@ void installSigabrtHandler( int signum )
 	}
 }
 
-void installSigfpeHandler( int signum )
+void installSigfpeHandler( const int signum )
 {
 	if ( signum == SIGFPE )
 	{

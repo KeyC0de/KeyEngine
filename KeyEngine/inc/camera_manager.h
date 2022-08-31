@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <memory>
+#include "non_copyable.h"
 
 
 class Camera;
@@ -13,30 +14,29 @@ namespace ren
 }
 
 class CameraManager final
+	: public NonCopyable
 {
 	static inline CameraManager *m_pInstance;
-	std::vector<std::shared_ptr<Camera>> m_cameras;
 	int m_activeCameraIndex = 0;
-	int m_controlledCamera = 0;
-	std::pair<int,int> m_clientWidthHeight;
+	int m_controlledCameraIndex = 0;
+	unsigned int m_clientWidth;
+	unsigned int m_clientHeight;
+	std::vector<std::shared_ptr<Camera>> m_cameras;
 
 	CameraManager() = default;
-	Camera& getControlledCamera();
+	Camera& controlledCamera();
 public:
-	static CameraManager &getInstance();
-	static void resetInstance();
+	static CameraManager& getInstance();
 public:
-	CameraManager( const CameraManager &rhs ) = delete;
-	CameraManager& operator=( const CameraManager &rhs ) = delete;
-
-	void setWidthHeight( int width, int height ) noexcept;
-	int getClientWidth() const noexcept;
-	int getClientHeight() const noexcept;
+	void setWidth( const int width ) noexcept;
+	void setHeight( const int height ) noexcept;
+	const int getClientWidth() const noexcept;
+	const int getClientHeight() const noexcept;
 	void spawnImguiWindow( Graphics &gph );
 	void bind( Graphics &gph );
 	void add( std::shared_ptr<Camera> pCam );
 	void connectEffectsToRenderer( ren::Renderer &r );
-	void render( size_t channels ) const;
-	Camera& getActiveCamera() const noexcept;
+	void render( const size_t channels ) const;
+	Camera& activeCamera() const noexcept;
 	std::shared_ptr<Camera> shareActiveCamera() const noexcept;
 };

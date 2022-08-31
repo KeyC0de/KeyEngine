@@ -9,8 +9,8 @@
 
 namespace dx = DirectX;
 
-Bitmap::Bitmap( unsigned int width,
-	unsigned int height )
+Bitmap::Bitmap( const unsigned int width,
+	const unsigned int height )
 {
 	HRESULT hres = m_scratchImg.Initialize2D( m_format,
 		width,
@@ -30,7 +30,7 @@ Bitmap::Bitmap( dx::ScratchImage rhs ) noexcept
 
 }
 
-void Bitmap::clear( Texel fillValue ) noexcept
+void Bitmap::clear( const Texel fillValue ) noexcept
 {
 	const auto width = getWidth();
 	const auto height = getHeight();
@@ -44,9 +44,9 @@ void Bitmap::clear( Texel fillValue ) noexcept
 	}
 }
 
-void Bitmap::setTexel( unsigned int x,
-	unsigned int y,
-	Texel col ) cond_noex
+void Bitmap::setTexel( const unsigned int x,
+	const unsigned int y,
+	const Texel col ) cond_noex
 {
 	ASSERT( x >= 0, "x less than 0!" );
 	ASSERT( y >= 0, "y less than 0!" );
@@ -56,8 +56,8 @@ void Bitmap::setTexel( unsigned int x,
 	reinterpret_cast<Texel*>( &imgData.pixels[y * imgData.rowPitch] )[x] = col;
 }
 
-Bitmap::Texel Bitmap::getTexel( unsigned int x,
-	unsigned int y ) const cond_noex
+const Bitmap::Texel Bitmap::getTexel( const unsigned int x,
+	const unsigned int y ) const cond_noex
 {
 	ASSERT( x >= 0, "x less than 0!" );
 	ASSERT( y >= 0, "y less than 0!" );
@@ -67,27 +67,27 @@ Bitmap::Texel Bitmap::getTexel( unsigned int x,
 	return reinterpret_cast<Texel*>( &imgData.pixels[y * imgData.rowPitch] )[x];
 }
 
-unsigned int Bitmap::getWidth() const noexcept
+const unsigned int Bitmap::getWidth() const noexcept
 {
 	return static_cast<unsigned>( m_scratchImg.GetMetadata().width );
 }
 
-unsigned int Bitmap::getHeight() const noexcept
+const unsigned int Bitmap::getHeight() const noexcept
 {
 	return static_cast<unsigned>( m_scratchImg.GetMetadata().height );
 }
 
-unsigned int Bitmap::getPitch() const noexcept
+const unsigned int Bitmap::getPitch() const noexcept
 {
 	return static_cast<unsigned>( m_scratchImg.GetImage( 0u, 0u, 0u )->rowPitch );
 }
 
-Bitmap::Texel *Bitmap::data() noexcept
+Bitmap::Texel* Bitmap::data() noexcept
 {
 	return reinterpret_cast<Texel*>( m_scratchImg.GetPixels() );
 }
 
-const Bitmap::Texel *Bitmap::dataConst() const noexcept
+const Bitmap::Texel* Bitmap::getData() const noexcept
 {
 	return const_cast<Bitmap*>( this )->data();
 }
@@ -125,7 +125,7 @@ Bitmap Bitmap::loadFromFile( const std::string &name,
 	return Bitmap{std::move( scratchImg )};
 }
 
-dx::XMVECTOR Bitmap::colorToVector( Bitmap::Texel col ) noexcept
+const dx::XMVECTOR Bitmap::colorToVector( const Bitmap::Texel col ) noexcept
 {
 	auto v = dx::XMVectorSet( (float)col.getRed(),
 		(float)col.getGreen(),
@@ -140,7 +140,7 @@ dx::XMVECTOR Bitmap::colorToVector( Bitmap::Texel col ) noexcept
 	return v;
 }
 
-Bitmap::Texel Bitmap::vectorToColor( const dx::XMVECTOR &v ) noexcept
+const Bitmap::Texel Bitmap::vectorToColor( const dx::XMVECTOR &v ) noexcept
 {
 	const auto all1 = dx::XMVectorReplicate( 1.0f );
 	dx::XMVECTOR nOut = dx::XMVectorAdd( v,
@@ -157,7 +157,7 @@ Bitmap::Texel Bitmap::vectorToColor( const dx::XMVECTOR &v ) noexcept
 }
 
 void Bitmap::save( const std::string &filename,
-	unsigned wicFlags ) const
+	const unsigned wicFlags ) const
 {
 	const auto getCodec = []( const std::string &filename )
 	{
@@ -192,7 +192,7 @@ bool Bitmap::hasAlpha() const noexcept
 	return !m_scratchImg.IsAlphaAllOpaque();
 }
 
-Bitmap::BitmapException::BitmapException( int line,
+Bitmap::BitmapException::BitmapException( const int line,
 	const char *file,
 	const char *function,
 	const std::string &msg ) noexcept

@@ -5,8 +5,8 @@
 #include "bindable.h"
 
 
+class Mesh;
 class IEffectVisitor;
-class Drawable;
 
 namespace ren
 {
@@ -22,19 +22,19 @@ class Effect
 	ren::RenderQueuePass *m_pTargetPass = nullptr;
 	std::vector<std::shared_ptr<IBindable>> m_bindables;
 public:
-	Effect( size_t channels, const std::string &targetPassName, bool bStartActive ) noexcept;
+	Effect( size_t channels, const std::string &targetPassName, const bool bStartActive ) noexcept;
 	Effect( const Effect &rhs );
 	Effect& operator=( const Effect &rhs ) = delete;
 	Effect( Effect &&rhs ) noexcept;
 	Effect& operator=( Effect &&rhs ) = delete;
 
 	void addBindable( std::shared_ptr<IBindable> pBindable ) noexcept;
-	void render( const Drawable &drawable, size_t channels ) const noexcept;
+	void render( const Mesh &mesh, const size_t channels ) const noexcept;
 	void bind( Graphics &gph ) const cond_noex;
 	bool isEnabled() const noexcept;
-	void setEnabled( bool b ) noexcept;
+	void setEnabled( const bool b ) noexcept;
 	const std::string& getTargetPassName() const noexcept;
-	void setParentDrawable( const Drawable &parent ) noexcept;
+	void setMesh( const Mesh &parent ) noexcept;
 	void accept( IEffectVisitor &ev );
 	void connectPass( ren::Renderer &r );
 	std::vector<std::shared_ptr<IBindable>>& bindables() noexcept;

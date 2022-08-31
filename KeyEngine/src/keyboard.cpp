@@ -15,10 +15,9 @@ Keyboard::Keyboard( Keyboard &&rhs ) noexcept
 
 Keyboard& Keyboard::operator=( Keyboard &&rhs ) noexcept
 {
-	m_bAutorepeat = rhs.m_bAutorepeat;
-	std::swap( m_keyStates, rhs.m_keyStates );
-	std::swap( m_eventQueue, rhs.m_eventQueue );
-	std::swap( m_charBuffer, rhs.m_charBuffer );
+	Keyboard tmp{std::move( rhs )};
+	std::swap( *this,
+		tmp );
 	return *this;
 }
 

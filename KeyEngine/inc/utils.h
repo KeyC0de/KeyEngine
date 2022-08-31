@@ -14,6 +14,17 @@
 #define SAFE_CALL( obj, function )			{ if ( obj ) { obj.function; } }
 #define SAFE_CALL_POINTER( obj, function )	{ if ( obj ) { obj->function; } }
 
+//===================================================
+//	\macro	ALIAS_FUNCTION
+//	\brief  optimal way of renaming/aliasing a function to another - can be inline & no unnecessary copies
+//	\date	2022/08/29 13:33
+#define ALIAS_FUNCTION( originalFunctionName, aliasedFunctionName) \
+	template <typename... TArgs>\
+	inline auto aliasedFunctionName( TArgs&&... args ) -> decltype( originalFunctionName( std::forward<TArgs>( args )... ) )\
+	{\
+		return  originalFunctionName( std::forward<TArgs>( args )... );\
+	}
+
 
 namespace util
 {
@@ -75,32 +86,27 @@ std::string capitalizeFirstLetter( const std::string &str );
 //	\function	trimL
 //	\brief  trim from start (in place)
 //	\date	2022/07/29 21:12
-static inline void trimL( std::string &s );
-
+void trimL( std::string &s );
 //===================================================
 //	\function	trimR
 //	\brief  trim from end (in place)
 //	\date	2022/07/29 21:13
 void trimR( std::string &s );
-
 //===================================================
 //	\function	trim
 //	\brief  trim from both ends (in place)
 //	\date	2022/07/29 21:13
 void trim( std::string &s );
-
 //===================================================
 //	\function	trimCopy
 //	\brief  trim from both ends (copying)
 //	\date	2022/07/29 21:13
 std::string trimCopy( std::string s );
-
 //===================================================
 //	\function	trimLCopy
 //	\brief  trim from start (copying)
 //	\date	2022/07/29 21:13
-inline std::string trimLCopy( std::string s );
-
+std::string trimLCopy( std::string s );
 //===================================================
 //	\function	trimRCopy
 //	\brief  trim from end (copying)
@@ -117,38 +123,37 @@ std::string toString( const T &t )
 
 
 template<typename T, typename = std::enable_if_t<std::is_integral_v<T>>>
-void printBinary( T val )
+void printBinary( const T val )
 {
 	std::bitset<32> bin{val};
 	std::cout << bin;
 }
 
-std::tuple<int, int, int> timeToHms( float time );
-std::tuple<int, int, int> secondsToHms( int totalSecs );
+std::tuple<int, int, int> timeToHms( const float time );
+std::tuple<int, int, int> secondsToHms( const int totalSecs );
 //===================================================
 //	\function	secondsToTimeT
 //	\brief	convert seconds to time_t
 //			Although not defined, time_t is implementation defined
 //			It is almost always an integral value holding the number of seconds (not counting leap seconds) since 00:00, Jan 1 1970 UTC, corresponding to POSIX time.
 //	\date	2022/07/28 22:35
-inline time_t secondsToTimeT( int s );
-
+inline time_t secondsToTimeT( const int s );
 //===================================================
 //	\function	timeTtoSeconds
 //	\brief  convert time_t to seconds
 //			time_t can be acquired as if by means of time(nullptr)
 //	\date	2022/07/28 22:32
-long int timeTtoSeconds( time_t t );
+long int timeTtoSeconds( const time_t t );
 
-std::uintptr_t pointerToInt( void *p );
-void* intToPointer( uintptr_t i );
-void* addPointers( void *p1, void *p2 );
+std::uintptr_t pointerToInt( const void *p );
+void* intToPointer( const uintptr_t i );
+void* addPointers( const void *p1, const void *p2 );
 
 std::string operator+( const std::string_view &sv1, const std::string_view &sv2 );
 
 // print a comma every 3 decimal places
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
-std::string getNumberString( T num )
+std::string getNumberString( const T num )
 {
 	std::stringstream ss;
 	ss.imbue( std::locale{""} );
@@ -159,18 +164,21 @@ std::string getNumberString( T num )
 
 std::string generateCaptcha( int len );
 
-//  check whether the address is aligned to `alignment` boundary
-bool isAligned( const volatile void *p, std::size_t alignment ) noexcept;
-bool isAligned( std::uintptr_t pi, std::size_t alignment ) noexcept;
-constexpr int is4ByteAligned( intptr_t *addr );
+//===================================================
+//	\function	isAligned
+//	\brief  check whether the address is aligned to `alignment` boundary
+//	\date	2022/08/30 9:40
+bool isAligned( const volatile void *p, const std::size_t alignment ) noexcept;
+bool isAligned( const std::uintptr_t pi, const std::size_t alignment ) noexcept;
+constexpr const int is4ByteAligned( const intptr_t *addr );
 
 //===================================================
 //	\function	alignForward
 //	\brief  align pointer forward with given alignment
 //	\date	2022/02/20 20:34
 template<typename T>
-T* alignForward( T *p,
-	std::size_t alignment ) noexcept
+const T* alignForward( const T *p,
+	const std::size_t alignment ) noexcept
 {
 	if ( alignment == 0 )
 	{
@@ -185,13 +193,18 @@ T* alignForward( T *p,
 	// or: (ip + alignment - 1) / alignment * alignment;
 }
 
-std::uintptr_t alignForward( std::uintptr_t ip, std::size_t alignment ) noexcept;
-// calculates alignment in bits supposedly
-std::size_t calcAlignedSize( std::size_t size, std::size_t alignment );
-// calculate padding bytes needed to align address p forward given the alignment
+const std::uintptr_t alignForward( const std::uintptr_t ip, const std::size_t alignment ) noexcept;
+//===================================================
+//	\function	calcAlignedSize
+//	\brief  calculates alignment in bits supposedly
+//	\date	2022/08/30 9:39
+const std::size_t calcAlignedSize( const std::size_t size, const std::size_t alignment );
+//===================================================
+//	\function	getForwardPadding
+//	\brief  calculate padding bytes needed to align address p forward given the alignment
+//	\date	2022/08/30 9:40
 const std::size_t getForwardPadding( const std::size_t p, const std::size_t alignment );
-const std::size_t getForwardPaddingWithHeader( const std::size_t p,
-	const std::size_t alignment, const std::size_t headerSize );
+const std::size_t getForwardPaddingWithHeader( const std::size_t p, const std::size_t alignment, const std::size_t headerSize );
 
 template<typename T>
 T* alignPtr( const T *ptr,
@@ -205,7 +218,7 @@ T* alignPtr( const T *ptr,
 }
 
 // #FIXME: doesn't work properly
-void* alignedMalloc( std::size_t nBytes, std::size_t alignment );
+void* alignedMalloc( const std::size_t nBytes, const std::size_t alignment );
 void alignedFree( void *p ) noexcept;
 
 // INTEL:

@@ -30,7 +30,10 @@ public:
 	virtual ~IEffectVisitor();
 
 	void setEffect( Effect *ef );
-	// if concrete bindable (with a con::Buffer) requires an update onVisit returns true
+	//===================================================
+	//	\function	visit
+	//	\brief  returns true if concrete bindable (with a con::Buffer) requires an update
+	//	\date	2022/08/31 11:33
 	bool visit( con::Buffer &cb );
 protected:
 	virtual void onSetEffect();

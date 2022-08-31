@@ -21,17 +21,17 @@ protected:
 	std::shared_ptr<IRenderTargetView> m_pRtv;
 	std::shared_ptr<IDepthStencilView> m_pDsv;
 protected:
-	IBindablePass( const std::string &name,
-		const std::vector<std::shared_ptr<IBindable>>& bindables = {} );
+	IBindablePass( const std::string &name, const std::vector<std::shared_ptr<IBindable>>& bindables = {} );
 
 	//===================================================
 	//	\function	addPassBindable
-	//	\brief  add Bindables that will be shared by all Drawables in this Pass
+	//	\brief  add Bindables that will be shared by all meshes in this Pass
 	//	\date	2022/02/19 19:17
 	void addPassBindable( std::shared_ptr<IBindable> bindable ) noexcept;
 	//===================================================
 	//	\function	bindPass
-	//	\brief  bind (RTV XOR DSV) && other bindables shared by all Pass objects
+	//	\brief  bind RTV OR DSV and other bindables shared by all Pass objects
+	//			call this function as the first thing you do on a child class's run function
 	//	\date	2021/06/27 0:04
 	void bindPass( Graphics &gph ) const cond_noex;
 	void validate() override;

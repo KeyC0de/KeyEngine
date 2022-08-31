@@ -34,5 +34,5 @@ struct Grid3dLocation final
 {
 	int z;
 
-	//#TODO:
+	// #TODO
 };

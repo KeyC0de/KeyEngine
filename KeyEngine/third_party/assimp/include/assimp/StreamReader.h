@@ -70,7 +70,7 @@ template <bool SwapEndianess = false, bool RuntimeSwitch = false>
 class StreamReader
 {
 public:
-    // FIXME: use these data types throughout the whole library,
+    // FIX: use these data types throughout the whole library,
     // then change them to 64 bit values :-)
 
     typedef int diff;

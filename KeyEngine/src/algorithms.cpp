@@ -22,4 +22,5 @@ void regexSearch( const std::regex &pattern )
 	}
 }
 
-}
+
+}//namespace util

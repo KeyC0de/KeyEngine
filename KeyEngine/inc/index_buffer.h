@@ -12,19 +12,17 @@ class IndexBuffer
 	Microsoft::WRL::ComPtr<ID3D11Buffer> m_pIndexBuffer;
 public:
 	IndexBuffer( Graphics &gph, const std::vector<unsigned>& indices );
-	IndexBuffer( Graphics &gph, const std::string &tag,
-		const std::vector<unsigned>& indices );
+	IndexBuffer( Graphics &gph, const std::string &tag, const std::vector<unsigned>& indices );
 
 	void bind( Graphics &gph ) cond_noex override;
 	unsigned getIndexCount() const noexcept;
-	static std::shared_ptr<IndexBuffer> fetch( Graphics &gph, const std::string &tag,
-		const std::vector<unsigned>& indices );
+	static std::shared_ptr<IndexBuffer> fetch( Graphics &gph, const std::string &tag, const std::vector<unsigned>& indices );
 	template<typename... TArgs>
-	static std::string generateUid( const std::string &tag,
+	static std::string calcUid( const std::string &tag,
 		TArgs&&... argsIgnoredHere )
 	{
 		using namespace std::string_literals;
 		return typeid( IndexBuffer ).name() + "#"s + tag;
 	}
-	std::string getUid() const noexcept override;
+	const std::string getUid() const noexcept override;
 };

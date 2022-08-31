@@ -1,12 +1,13 @@
 #include <array>
+#include "graphics.h"
+#include "window.h"
 #include "testing.h"
 #include "assimp/Importer.hpp"
 #include "assimp/scene.h"
 #include "assimp/postprocess.h"
 #include "dynamic_constant_buffer.h"
-#include "window.h"
 #include "material_loader.h"
-#include "drawable.h"
+#include "mesh.h"
 #include "d3d_utils.h"
 #include "index_buffer.h"
 #include "input_layout.h"
@@ -32,23 +33,23 @@ void testDynamicMeshLoading()
 		| aiProcess_ConvertToLeftHanded
 		| aiProcess_GenNormals
 		| aiProcess_CalcTangentSpace );
-	auto layout = VertexLayout{}
-		.add( VertexLayout::Position3D )
-		.add( VertexLayout::Normal )
-		.add( VertexLayout::Tangent )
-		.add( VertexLayout::Bitangent )
-		.add( VertexLayout::Texture2D );
+	auto layout = VertexInputLayout{}
+		.add( VertexInputLayout::Position3D )
+		.add( VertexInputLayout::Normal )
+		.add( VertexInputLayout::Tangent )
+		.add( VertexInputLayout::Bitangent )
+		.add( VertexInputLayout::Texture2D );
 	ver::Buffer cb{std::move( layout ), *pScene->mMeshes[0]};
 
 	for ( auto i = 0ull,
 		end = cb.getVertexCount();
 		i < end; ++i )
 	{
-		const auto a = cb[i].getMember<VertexLayout::Position3D>();
-		const auto b = cb[i].getMember<VertexLayout::Normal>();
-		const auto c = cb[i].getMember<VertexLayout::Tangent>();
-		const auto d = cb[i].getMember<VertexLayout::Bitangent>();
-		const auto e = cb[i].getMember<VertexLayout::Texture2D>();
+		const auto a = cb[i].element<VertexInputLayout::Position3D>();
+		const auto b = cb[i].element<VertexInputLayout::Normal>();
+		const auto c = cb[i].element<VertexInputLayout::Tangent>();
+		const auto d = cb[i].element<VertexInputLayout::Bitangent>();
+		const auto e = cb[i].element<VertexInputLayout::Texture2D>();
 	}
 }
 
@@ -64,7 +65,7 @@ void testMaterialSystemLoading( Graphics &gph )
 		| aiProcess_GenNormals
 		| aiProcess_CalcTangentSpace );
 	MaterialLoader mat{gph, *pScene->mMaterials[1], path};
-	Drawable drawable{gph, mat, *pScene->mMeshes[0]};
+	Mesh mesh{gph, mat, *pScene->mMeshes[0]};
 }
 
 
@@ -111,7 +112,7 @@ void testDynamicConstant()
 		// fails to compile: conversion not in topo map
 		//cb["woot"s] = "#"s;
 
-		const auto sig = cb.getRootLayoutElement().getSignature();
+		const auto sig = cb.getRootLayoutElement().calcSignature();
 
 		{
 			auto exp = 42.0f;
@@ -362,17 +363,17 @@ void testDynamicVertex( Window &wnd )
 		const auto bitop = PrimitiveTopology::fetch( gph );
 
 		// (dynamic) vertex buffer bindable assembly
-		const auto layout = VertexLayout{}
-			.add( VertexLayout::Position2D )
-			.add( VertexLayout::Float3Color );
+		const auto layout = VertexInputLayout{}
+			.add( VertexInputLayout::Position2D )
+			.add( VertexInputLayout::Float3Color );
 
 		ver::Buffer vb{layout, 3};
-		vb[0].getMember<VertexLayout::Position2D>() = dx::XMFLOAT2{0.0f, 0.5f};
-		vb[0].getMember<VertexLayout::Float3Color>() = dx::XMFLOAT3{1.0f, 0.0f, 0.0f};
-		vb[1].getMember<VertexLayout::Position2D>() = dx::XMFLOAT2{0.5f, -0.5f};
-		vb[1].getMember<VertexLayout::Float3Color>() = dx::XMFLOAT3{0.0f, 1.0f, 0.0f};
-		vb[2].getMember<VertexLayout::Position2D>() = dx::XMFLOAT2{-0.5f, -0.5f};
-		vb[2].getMember<VertexLayout::Float3Color>() = dx::XMFLOAT3{0.0f, 0.0f, 1.0f};
+		vb[0].element<VertexInputLayout::Position2D>() = dx::XMFLOAT2{0.0f, 0.5f};
+		vb[0].element<VertexInputLayout::Float3Color>() = dx::XMFLOAT3{1.0f, 0.0f, 0.0f};
+		vb[1].element<VertexInputLayout::Position2D>() = dx::XMFLOAT2{0.5f, -0.5f};
+		vb[1].element<VertexInputLayout::Float3Color>() = dx::XMFLOAT3{0.0f, 1.0f, 0.0f};
+		vb[2].element<VertexInputLayout::Position2D>() = dx::XMFLOAT2{-0.5f, -0.5f};
+		vb[2].element<VertexInputLayout::Float3Color>() = dx::XMFLOAT3{0.0f, 0.0f, 1.0f};
 		const auto bivb = VertexBuffer::fetch( gph,
 			"##?",
 			vb );
@@ -392,8 +393,9 @@ void testDynamicVertex( Window &wnd )
 			layout,
 			*bivs );
 
-		//auto rt = RenderTargetShaderInput{gph, 1280, 720, 0};
-		auto rt = RenderTargetShaderInput{gph, 1600, 900, 0};
+		const unsigned int width = gph.getClientWidth();
+		const unsigned int height = gph.getClientHeight();
+		auto rt = RenderTargetShaderInput{gph, width, height, 0};
 
 		biidx->bind( gph );
 		bivb->bind( gph );
@@ -405,7 +407,9 @@ void testDynamicVertex( Window &wnd )
 		rt.bindRenderSurface( gph );
 		gph.drawIndexed( biidx->getIndexCount() );
 		gph.shareRenderTarget()->bindRenderSurface( gph );
-		rt.convertToBitmap( gph ).save( vsName + ".png" );
+		rt.convertToBitmap( gph,
+			width,
+			height ).save( vsName + ".png" );
 	};
 
 	renderWithVS( "cube_vs.cso" );

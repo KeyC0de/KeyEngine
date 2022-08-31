@@ -18,13 +18,12 @@ class Paddle
 	float m_halfHeight;
 	bool m_bCooldown = false;
 public:
-	Paddle( const DirectX::XMFLOAT2 &position, float width, float height, ColorBGRA col,
-		ColorBGRA wingCol );
+	Paddle( const DirectX::XMFLOAT2 &position, const float width, const float height, const ColorBGRA col, const ColorBGRA wingCol );
 
-	void render( Graphics &gph ) const;
+	void render( Graphics &gph ) const cond_noex;
 	bool doBallCollision( Ball &ball );
 	void doWallCollision( const Rect &walls );
-	Rect getRect() const;
+	Rect rect() const;
 	void resetCooldown();
-	void setPositionRel( float val );
+	void setPositionRel( const float val );
 };

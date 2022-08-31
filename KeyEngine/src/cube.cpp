@@ -8,8 +8,8 @@
 #include "vertex_buffer.h"
 #include "vertex_shader.h"
 #include "texture.h"
-#include "texture_sampler.h"
-#include "rasterizer.h"
+#include "texture_sampler_state.h"
+#include "rasterizer_state.h"
 #include "constant_buffer_ex.h"
 #include "imgui.h"
 #include "rendering_channel.h"
@@ -20,15 +20,15 @@ namespace dx = DirectX;
 
 Cube::Cube( Graphics &gph,
 	const dx::XMFLOAT3 &startingPos,
-	float scale )
+	const float scale )
 	:
 	m_pos{startingPos}
 {
-	auto cube = GeometryCube::makeIndependentFacesTextured();
+	auto cube = Geometry::makeCubeIndependentFacesTextured();
 	cube.transform( dx::XMMatrixScaling( scale,
 		scale,
 		scale ) );
-	cube.setNormalsIndependent();
+	cube.setFlatShadedIndependentNormals();
 	const auto geometryTag = "$cube." + std::to_string( scale );
 
 	m_pVertexBuffer = VertexBuffer::fetch( gph,
@@ -48,10 +48,10 @@ Cube::Cube( Graphics &gph,
 		lambertian.addBindable( Texture::fetch( gph,
 			"assets/models/brick_wall/brick_wall_diffuse.jpg",
 			0u ) );
-		lambertian.addBindable( TextureSampler::fetch( gph,
+		lambertian.addBindable( TextureSamplerState::fetch( gph,
 			0u,
-			TextureSampler::FilterMode::Anisotropic,
-			TextureSampler::AddressMode::Wrap ) );
+			TextureSamplerState::FilterMode::Anisotropic,
+			TextureSamplerState::AddressMode::Wrap ) );
 
 		auto pVs = VertexShader::fetch( gph,
 			"cube_vs.cso" );
@@ -73,7 +73,9 @@ Cube::Cube( Graphics &gph,
 			0u,
 			cb ) );
 
-		lambertian.addBindable( Rasterizer::fetch( gph, false ) );
+		lambertian.addBindable( RasterizerState::fetch( gph,
+			RasterizerState::FrontSided,
+			RasterizerState::Solid ) );
 
 		addEffect( std::move( lambertian ) );
 	}
@@ -154,16 +156,16 @@ void Cube::setWorldPosition( const dx::XMFLOAT3 &pos ) noexcept
 	this->m_pos = pos;
 }
 
-void Cube::setWorldRotation( float roll,
-	float pitch,
-	float yaw ) noexcept
+void Cube::setWorldRotation( const float roll,
+	const float pitch,
+	const float yaw ) noexcept
 {
 	this->m_roll = roll;
 	this->m_pitch = pitch;
 	this->m_yaw = yaw;
 }
 
-dx::XMMATRIX Cube::getTransform() const noexcept
+const dx::XMMATRIX Cube::getTransform() const noexcept
 {
 	return dx::XMMatrixRotationRollPitchYaw( m_roll, m_pitch, m_yaw ) *
 		dx::XMMatrixTranslation( m_pos.x, m_pos.y, m_pos.z );

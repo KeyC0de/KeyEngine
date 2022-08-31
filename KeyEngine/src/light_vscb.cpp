@@ -6,7 +6,7 @@
 namespace dx = DirectX;
 
 LightVSCB::LightVSCB( Graphics &gph,
-	unsigned slot )
+	const unsigned slot )
 	:
 	m_pVscb{std::make_unique<VertexShaderConstantBuffer<LightTransformVSCB>>( gph, slot )}
 {

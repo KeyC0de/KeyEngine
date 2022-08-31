@@ -29,7 +29,7 @@ std::shared_ptr<IBindable> IProducer::getBindable()
 	THROW_RENDERER_EXCEPTION( "IProducer class cannot be a target of a Consumer!" );
 }
 
-std::shared_ptr<IRenderSurface> IProducer::getBuffer()
+std::shared_ptr<IRenderSurface> IProducer::getRenderSurface()
 {
 	THROW_RENDERER_EXCEPTION( "IProducer class cannot be a target of a Consumer!" );
 }

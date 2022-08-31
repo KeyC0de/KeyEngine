@@ -1,19 +1,21 @@
 #pragma once
 
 
-class GraphicsMode final
+namespace gph_mode
 {
-public:
-	enum Mode
-	{
-		_2D = 0,
-		_3D = 1
-	};
-private:
-	static constexpr inline int m_current = _3D;
-public:
-	static constexpr int get() noexcept
-	{
-		return m_current;
-	}
+
+enum Mode
+{
+	_2D,
+	_3D,
+};
+
+static inline constexpr const int current_mode = _3D;
+
+static inline constexpr const int get() noexcept
+{
+	return current_mode;
+}
+
+
 };

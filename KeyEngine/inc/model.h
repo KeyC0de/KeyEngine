@@ -2,15 +2,16 @@
 
 #include <memory>
 #include <filesystem>
+#include "node.h"
 #include "graphics.h"
 
 
-class Node;
-class Drawable;
+class Mesh;
 class ModelWindow;
 struct aiMesh;
 struct aiMaterial;
 struct aiNode;
+class IModelVisitor;
 
 namespace ren
 {
@@ -20,21 +21,21 @@ namespace ren
 class Model
 {
 	std::unique_ptr<Node> m_pRoot;
-	std::vector<std::unique_ptr<Drawable>> m_drawables;
+	std::vector<std::unique_ptr<Mesh>> m_meshes;
 public:
-	Model( Graphics &gph, const std::string &path, float scale = 1.0f );
-	~Model() noexcept;
+	Model( Graphics &gph, const std::string &path, const float scale = 1.0f );
 
-	void update( float dt ) const cond_noex;
-	void render( size_t channels ) const cond_noex;
+	void update( const float dt ) const cond_noex;
+	void render( const size_t channels ) const cond_noex;
+	// #TODO: add setPosition, setRotation, getPosition, getRotation functions, setPositionRelative, setRotationRelative
+	// use XMMatrixDecompose
 	void setTransform( const DirectX::XMMATRIX &tr ) noexcept;
-	void accept( class IModelVisitor &v );
+	void accept( IModelVisitor &v );
 	void connectEffectsToRenderer( ren::Renderer &r );
 private:
 	//===================================================
 	//	\function	createNodeHierarchy
 	//	\brief  parse the Scene Graph
 	//	\date	9 May 2022 8:30
-	std::unique_ptr<Node> createNodeHierarchy( int nodeId, const aiNode &node,
-		float scale ) noexcept;
+	std::unique_ptr<Node> createNodeHierarchy( int nodeId, const aiNode &node, float scale ) noexcept;
 };

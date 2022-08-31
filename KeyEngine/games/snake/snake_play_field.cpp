@@ -15,10 +15,10 @@ SnakePlayField::SnakePlayField( Graphics &gph )
 }
 
 SnakePlayField::SnakePlayField( Graphics &gph,
-	int x,
-	int y,
-	int w,
-	int h )
+	const int x,
+	const int y,
+	const int w,
+	const int h )
 	:
 	m_xStart(x),
 	m_yStart(y),
@@ -30,7 +30,7 @@ SnakePlayField::SnakePlayField( Graphics &gph,
 
 void SnakePlayField::renderCell( Graphics &gph,
 	const GridLocation &gridLoc,
-	ColorBGRA col ) const
+	const ColorBGRA col ) const
 {
 	ASSERT( gridLoc.x >= m_xStart, "!( gridLoc.x >= xStart )" );
 	ASSERT( gridLoc.x < m_width, "!( gridLoc.x < m_width )" );
@@ -44,15 +44,17 @@ void SnakePlayField::renderCell( Graphics &gph,
 }
 
 void SnakePlayField::renderBorders( Graphics &gph,
-	ColorBGRA col ) const
+	const ColorBGRA col ) const
 {
-	gph.drawRect( m_xStart, m_yStart, m_width - m_xStart, m_cellSize, col );	// top border
-	gph.drawRect( m_xStart, m_height, m_width - m_xStart, m_cellSize, col );	// bottom border
-	gph.drawRect( m_yStart, m_yStart, m_cellSize, m_height - m_yStart, col );	// left border
-	gph.drawRect( m_width, m_yStart, m_cellSize, m_height - m_yStart, col );	// right border
+	gph.drawRectangle( m_xStart, m_yStart, m_width - m_xStart, m_cellSize, col );	// top border
+	gph.drawRectangle( m_xStart, m_height, m_width - m_xStart, m_cellSize, col );	// bottom border
+	gph.drawRectangle( m_yStart, m_yStart, m_cellSize, m_height - m_yStart, col );	// left border
+	gph.drawRectangle( m_width, m_yStart, m_cellSize, m_height - m_yStart, col );	// right border
 }
 
-void SnakePlayField::spawnContents( std::mt19937 & rng,const SnakeRepr & snake,CellContents contentsType )
+void SnakePlayField::spawnContents( std::mt19937 & rng,
+	const SnakeRepr &snake,
+	const CellContents contentsType )
 {
 	std::uniform_int_distribution<int> xDist( 0, m_width - 1 );
 	std::uniform_int_distribution<int> yDist( 0, m_height - 1 );
@@ -63,14 +65,14 @@ void SnakePlayField::spawnContents( std::mt19937 & rng,const SnakeRepr & snake,C
 		newLoc.x = xDist( rng );
 		newLoc.y = yDist( rng );
 	}
-	while( snake.IsInTile( newLoc ) || getContents( newLoc ) != CellContents::Empty );
+	while( snake.isInside( newLoc ) || getContents( newLoc ) != CellContents::Empty );
 
-	contents[newLoc.y * width + newLoc.x] = contentsType;
+	contents[newLoc.y * m_width + newLoc.x] = contentsType;
 }
 
 SnakePlayField::CellContents SnakePlayField::getContents( const GridLocation &loc ) const
 {
-	return contents[loc.y * width + loc.x];
+	return contents[loc.y * m_width + loc.x];
 }
 
 bool SnakePlayField::isInside( const GridLocation &gridLoc ) const noexcept
@@ -81,22 +83,22 @@ bool SnakePlayField::isInside( const GridLocation &gridLoc ) const noexcept
 		&& ny >= m_yStart + m_cellSize && ny <= m_height - m_cellSize;
 }
 
-int SnakePlayField::getStartX() const noexcept
+const int SnakePlayField::getStartX() const noexcept
 {
 	return m_xStart;
 }
 
-int SnakePlayField::getStartY() const noexcept
+const int SnakePlayField::getStartY() const noexcept
 {
 	return m_yStart;
 }
 
-int SnakePlayField::getWidth() const noexcept
+const int SnakePlayField::getWidth() const noexcept
 {
 	return m_width;
 }
 
-int SnakePlayField::getHeight() const noexcept
+const int SnakePlayField::getHeight() const noexcept
 {
 	return m_height;
 }

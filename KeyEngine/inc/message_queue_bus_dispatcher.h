@@ -4,6 +4,7 @@
 #include <mutex>
 #include <condition_variable>
 #include <memory>
+#include "non_copyable.h"
 
 
 class Message;
@@ -21,6 +22,7 @@ class Message;
 //			accessible only from the MessageDispatcher friend class
 //=============================================================
 class MessageBus final
+	: public NonCopyable
 {
 	friend class MessageDispatcher;
 
@@ -35,8 +37,6 @@ private:
 private:
 	void removeFrontByBackSwap();
 public:
-	MessageBus( const MessageBus &rhs ) = delete;
-	MessageBus& operator=( const MessageBus &rhs ) = delete;
 	MessageBus( MessageBus &&rhs ) noexcept;
 	MessageBus& operator=( MessageBus &&rhs ) noexcept;
 
@@ -50,13 +50,13 @@ public:
 	//	\brief  pop_front() : dequeue messages from the front
 	//	\date	2019/12/09 4:51
 	std::unique_ptr<Message> dequeue();
-	Message* peekFront() const noexcept;
-	Message* peekBack() const noexcept;
+	const Message* peekFront() const noexcept;
+	const Message* peekBack() const noexcept;
 	explicit operator bool();
 	Message* operator[]( std::size_t index );
 	const Message* operator[]( std::size_t index ) const;
-	std::size_t getSize() const noexcept;
-	std::size_t getCapacity() const noexcept;
+	const std::size_t getSize() const noexcept;
+	const std::size_t getCapacity() const noexcept;
 	inline bool isEmpty() const noexcept;
 	void clear();
 };
@@ -72,14 +72,13 @@ public:
 //			owns & manages the message queue
 //=============================================================
 class MessageDispatcher final
+	: public NonCopyable
 {
 	MessageBus m_mb;
 
 	MessageDispatcher( int initialCapacity );
 public:
 	~MessageDispatcher() noexcept = default;
-	MessageDispatcher( const MessageDispatcher &fs ) = delete;
-	MessageDispatcher& operator=( const MessageDispatcher &fs ) = delete;
 	MessageDispatcher( MessageDispatcher &&rhs ) noexcept;
 	MessageDispatcher& operator=( MessageDispatcher &&rhs ) noexcept;
 
@@ -94,10 +93,10 @@ public:
 	//	\brief  dispatch all pending messages
 	//	\date	2019/12/10 4:47
 	void dispatchAll();
-	//#TODO: dispatchByEventType
-	//#TODO: dispatchEventsTargetedTo( specific actor )
+	// #TODO: dispatchByEventType
+	// #TODO: dispatchEventsTargetedTo( specific actor )
 	void clear();
 
-	std::size_t getSize() const noexcept;
-	std::size_t getCapacity() const noexcept;
+	const std::size_t getSize() const noexcept;
+	const std::size_t getCapacity() const noexcept;
 };

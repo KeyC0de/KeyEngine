@@ -8,8 +8,8 @@
 #define blendStateRTDesc blendStateDesc.RenderTarget[renderTargetSlot]
 
 BlendState::BlendState( Graphics &gph,
-	Mode mode,
-	unsigned renderTargetSlot,
+	const Mode mode,
+	const unsigned renderTargetSlot,
 	std::optional<float> blendFactors )
 	:
 	m_mode{mode},
@@ -120,8 +120,8 @@ void BlendState::bind( Graphics &gph ) cond_noex
 }
 
 std::shared_ptr<BlendState> BlendState::fetch( Graphics &gph,
-	Mode mode,
-	unsigned renderTargetSlot,
+	const Mode mode,
+	const unsigned renderTargetSlot,
 	std::optional<float> blendFactors )
 {
 	return BindableMap::fetch<BlendState>( gph,
@@ -130,21 +130,21 @@ std::shared_ptr<BlendState> BlendState::fetch( Graphics &gph,
 		blendFactors );
 }
 
-void BlendState::setBlendFactors( float blendFactors ) cond_noex
+void BlendState::setBlendFactors( const float blendFactors ) cond_noex
 {
 	ASSERT( m_blendFactors, "No blend factors set!" );
 	return m_blendFactors->fill( blendFactors );
 }
 
-float BlendState::getBlendFactor() const cond_noex
+const float BlendState::getBlendFactor() const cond_noex
 {
 	ASSERT( m_blendFactors, "No blend factors set!" );
 	// or OMGetBlendState
 	return m_blendFactors->front();
 }
 
-std::string BlendState::generateUid( Mode mode,
-	unsigned renderTargetSlot,
+std::string BlendState::calcUid( const Mode mode,
+	const unsigned renderTargetSlot,
 	std::optional<float> blendFactors )
 {
 	using namespace std::string_literals;
@@ -179,9 +179,9 @@ std::string BlendState::generateUid( Mode mode,
 		+ ( blendFactors ? "#f"s + std::to_string( *blendFactors ) : ""s );
 }
 
-std::string BlendState::getUid() const noexcept
+const std::string BlendState::getUid() const noexcept
 {
-	return generateUid( m_mode,
+	return calcUid( m_mode,
 		m_renderTargetSlot,
 		m_blendFactors ?
 			m_blendFactors->front() :

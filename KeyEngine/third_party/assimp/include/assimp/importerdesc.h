@@ -42,14 +42,14 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 /** @file importerdesc.h
- *  @brief #aiImporterFlags, aiImporterDesc implementation.
+ *  @brief aiImporterFlags, aiImporterDesc implementation.
  */
 #pragma once
 #ifndef AI_IMPORTER_DESC_H_INC
 #define AI_IMPORTER_DESC_H_INC
 
 
-/** Mixed set of flags for #aiImporterDesc, indicating some features
+/** Mixed set of flags for aiImporterDesc, indicating some features
   *  common to many importers*/
 enum aiImporterFlags
 {
@@ -68,7 +68,7 @@ enum aiImporterFlags
     /** Indicates that the importer reads only a very particular
       * subset of the file format. This happens commonly for
       * declarative or procedural formats which cannot easily
-      * be mapped to #aiScene */
+      * be mapped to aiScene */
     aiImporterFlags_LimitedSupport = 0x8,
 
     /** Indicates that the importer is highly experimental and

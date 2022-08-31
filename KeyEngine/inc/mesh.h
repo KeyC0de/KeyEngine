@@ -6,13 +6,11 @@
 #include "effect.h"
 
 
-class Graphics;
-class IEffectVisitor;
-class MaterialLoader;
 class IndexBuffer;
 class VertexBuffer;
 class PrimitiveTopology;
-class InputLayout;
+class Graphics;
+class MaterialLoader;
 struct aiMesh;
 
 namespace ren
@@ -20,7 +18,7 @@ namespace ren
 	class Renderer;
 }
 
-class Drawable
+class Mesh
 {
 protected:
 	std::shared_ptr<IndexBuffer> m_pIndexBuffer;
@@ -30,13 +28,12 @@ protected:
 	mutable DirectX::XMFLOAT4X4 m_worldTransform;
 	int m_distanceFromActiveCamera = 0;
 public:
-	Drawable() = default;
-	Drawable( Graphics &gph, const MaterialLoader &mat, const aiMesh &aimesh, float scale = 1.0f ) noexcept;
-	Drawable( const Drawable &rhs ) = delete;
-	virtual ~Drawable() noexcept;
+	Mesh() = default;
+	Mesh( Graphics &gph, const MaterialLoader &mat, const aiMesh &aimesh, const float scale = 1.0f ) noexcept;
+	virtual ~Mesh() noexcept = default;
 
 	template<class T>
-	std::optional<T*> getBindable() noexcept
+	std::optional<T*> findBindable() noexcept
 	{
 		for ( auto &effect : m_effects )
 		{
@@ -56,20 +53,24 @@ public:
 	void addEffect( Effect ef ) noexcept;
 	//===================================================
 	//	\function	update
-	//	\brief  physics/transform stuff
+	//	\brief  does gameplay, transformation, physics
 	//	\date	2021/10/26 23:58
-	virtual void update( float dt ) cond_noex;
-	void render( size_t channels ) const noexcept;
+	virtual void update( const float dt ) cond_noex;
+	void render( const size_t channels ) const noexcept;
 	void bind( Graphics &gph ) const cond_noex;
 	void accept( IEffectVisitor &ev );
 	const unsigned getIndicesCount() const cond_noex;
 	void connectEffectsToRenderer( ren::Renderer &r );
+	//===================================================
+	//	\function	setTransform
+	//	\brief  sets the world transform matrix for the mesh
+	//	\date	2022/08/28 21:24
 	void setTransform( const DirectX::XMMATRIX &worldTransform ) noexcept;
 	//===================================================
 	//	\function	getTransform
-	//	\brief  returns the world transform matrix
+	//	\brief  returns the world transform matrix of the mesh
 	//	\date	2022/08/20 23:56
-	virtual DirectX::XMMATRIX getTransform() const noexcept;
-	void setDistanceFromActiveCamera( int dist ) noexcept;
+	virtual const DirectX::XMMATRIX getTransform() const noexcept;
+	void setDistanceFromActiveCamera( const int dist ) noexcept;
 	const int getDistanceFromActiveCamera() const noexcept;
 };

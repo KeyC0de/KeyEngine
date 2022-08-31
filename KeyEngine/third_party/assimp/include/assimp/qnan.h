@@ -97,7 +97,7 @@ AI_FORCE_INLINE bool is_qnan(float in)
     //   load <in> to <register-with-different-width>
     //   compare <register-with-different-width> against <in>
 
-    // FIXME: Use <float> stuff instead? I think fpclassify needs C99
+    // FIX: Use <float> stuff instead? I think fpclassify needs C99
     return (reinterpret_cast<_IEEESingle*>(&in)->IEEE.Exp == (1u << 8)-1 &&
         reinterpret_cast<_IEEESingle*>(&in)->IEEE.Frac);
 }
@@ -113,7 +113,7 @@ AI_FORCE_INLINE bool is_qnan(double in)
     //   load <in> to <register-with-different-width>
     //   compare <register-with-different-width> against <in>
 
-    // FIXME: Use <float> stuff instead? I think fpclassify needs C99
+    // FIX: Use <float> stuff instead? I think fpclassify needs C99
     return (reinterpret_cast<_IEEEDouble*>(&in)->IEEE.Exp == (1u << 11)-1 &&
         reinterpret_cast<_IEEEDouble*>(&in)->IEEE.Frac);
 }

@@ -3,7 +3,7 @@
 #include "producer.h"
 #include "render_target.h"
 #include "depth_stencil_view.h"
-#include "rasterizer.h"
+#include "rasterizer_state.h"
 
 
 namespace ren
@@ -20,9 +20,9 @@ WireframePass::WireframePass( Graphics &gph,
 		m_pDsv ) );
 	addProducer( RenderSurfaceProducer<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );
-	addPassBindable( Rasterizer::fetch( gph,
-		false,
-		true ) );
+	addPassBindable( RasterizerState::fetch( gph,
+		RasterizerState::FrontSided,
+		RasterizerState::Wireframe ) );
 }
 
 

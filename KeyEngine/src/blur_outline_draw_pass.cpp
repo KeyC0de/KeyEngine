@@ -13,12 +13,12 @@ namespace ren
 // targets offscreen buffer targets
 BlurOutlineDrawPass::BlurOutlineDrawPass( Graphics &gph,
 	const std::string &name,
-	int rezReductFactor )
+	const int rezReductFactor )
 	:
 	RenderQueuePass{name}
 {
-	auto width = gph.getClientWidth() / rezReductFactor;
-	auto height = gph.getClientHeight() / rezReductFactor;
+	const auto width = gph.getClientWidth() / rezReductFactor;
+	const auto height = gph.getClientHeight() / rezReductFactor;
 
 	m_pRtv = std::make_unique<RenderTargetShaderInput>( gph,
 		width,

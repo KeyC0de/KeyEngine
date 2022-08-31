@@ -3,6 +3,7 @@
 #include <thread>
 #include <chrono>
 #include "console.h"
+#include "non_copyable.h"
 
 
 //=============================================================
@@ -18,6 +19,7 @@
 //=============================================================
 template<typename Resolution = std::chrono::milliseconds>
 class KeyTimer final
+	: NonCopyableAndNonMovable
 {
 public:
 	using TClock = std::conditional_t<std::chrono::high_resolution_clock::is_steady,
@@ -45,11 +47,6 @@ public:
 		console.log( std::to_string( dur ) + "\n"s );
 #endif
 	}
-
-	KeyTimer( const KeyTimer &KeyTimer ) = delete;
-	KeyTimer& operator=( const KeyTimer &KeyTimer ) = delete;
-	KeyTimer( KeyTimer &&rhs ) = delete;
-	KeyTimer& operator=( KeyTimer &&rhs ) = delete;
 
 	void start() noexcept
 	{
@@ -85,27 +82,19 @@ public:
 #endif
 		if constexpr( std::is_same_v<Resolution, std::chrono::nanoseconds> )
 		{
-			m_duration = static_cast<size_t>(
-				std::chrono::duration_cast<Resolution>( TClock::now() - m_start ).
-				count() / 1000000 );
+			m_duration = static_cast<size_t>( std::chrono::duration_cast<Resolution>( TClock::now() - m_start ).count() / 1000000 );
 		}
 		else if constexpr( std::is_same_v<Resolution, std::chrono::microseconds> )
 		{
-			m_duration = static_cast<size_t>(
-				std::chrono::duration_cast<Resolution>( TClock::now() - m_start ).
-				count() / 1000 );
+			m_duration = static_cast<size_t>( std::chrono::duration_cast<Resolution>( TClock::now() - m_start ).count() / 1000 );
 		}
 		else if constexpr( std::is_same_v<Resolution, std::chrono::milliseconds> )
 		{
-			m_duration = static_cast<size_t>(
-				std::chrono::duration_cast<Resolution>( TClock::now() - m_start ).
-				count() );
+			m_duration = static_cast<size_t>( std::chrono::duration_cast<Resolution>( TClock::now() - m_start ).count() );
 		}
 		else if constexpr( std::is_same_v<Resolution, std::chrono::seconds> )
 		{
-			m_duration = static_cast<size_t>(
-				std::chrono::duration_cast<Resolution>( TClock::now() - m_start ).
-				count() * 1000 );
+			m_duration = static_cast<size_t>( std::chrono::duration_cast<Resolution>( TClock::now() - m_start ).count() * 1000 );
 		}
 
 		return this->m_duration;
@@ -121,8 +110,7 @@ public:
 	{
 		const auto old = m_last;
 		m_last = TClock::now();
-		return static_cast<float>( std::chrono::duration_cast<Resolution>(
-			m_last - old ).count() );
+		return static_cast<float>( std::chrono::duration_cast<Resolution>( m_last - old ).count() );
 	}
 
 	//===================================================
@@ -137,23 +125,19 @@ public:
 		float ret;
 		if constexpr( std::is_same_v<Resolution, std::chrono::nanoseconds> )
 		{
-			ret = static_cast<float>( std::chrono::duration_cast<Resolution>(
-				m_last - old ).count() / 1000000000.0f );
+			ret = static_cast<float>( std::chrono::duration_cast<Resolution>( m_last - old ).count() / 1000000000.0f );
 		}
 		else if constexpr( std::is_same_v<Resolution, std::chrono::microseconds> )
 		{
-			ret = static_cast<float>( std::chrono::duration_cast<Resolution>(
-				m_last - old ).count() / 1000000.0f);
+			ret = static_cast<float>( std::chrono::duration_cast<Resolution>( m_last - old ).count() / 1000000.0f);
 		}
 		else if constexpr( std::is_same_v<Resolution, std::chrono::milliseconds> )
 		{
-			ret = static_cast<float>( std::chrono::duration_cast<Resolution>(
-				m_last - old ).count() / 1000.0f);
+			ret = static_cast<float>( std::chrono::duration_cast<Resolution>( m_last - old ).count() / 1000.0f);
 		}
 		else if constexpr( std::is_same_v<Resolution, std::chrono::seconds> )
 		{
-			ret = static_cast<float>( std::chrono::duration_cast<Resolution>(
-				m_last - old ).count() );
+			ret = static_cast<float>( std::chrono::duration_cast<Resolution>( m_last - old ).count() );
 		}
 		return ret;
 	}
@@ -164,8 +148,7 @@ public:
 	//	\date	2020/09/13 19:26
 	float peekTimeElapsed() const noexcept
 	{
-		return static_cast<float>( std::chrono::duration_cast<Resolution>(
-			TClock::now() - m_last ).count() );
+		return static_cast<float>( std::chrono::duration_cast<Resolution>( TClock::now() - m_last ).count() );
 	}
 
 	//===================================================

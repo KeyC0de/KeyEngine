@@ -13,11 +13,11 @@ namespace ren
 class LambertianPass
 	: public RenderQueuePass
 {
-	const Camera *m_pMainCamera = nullptr;
+	const Camera *m_pActiveCamera = nullptr;
 public:
 	LambertianPass( Graphics &gph, const std::string &name );
 
-	void setMainCamera( const Camera &cam ) noexcept;
+	void setActiveCamera( const Camera &cam ) noexcept;
 	void run( Graphics &gph ) const cond_noex override;
 };
 

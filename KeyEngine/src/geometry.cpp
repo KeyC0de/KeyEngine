@@ -1,33 +1,33 @@
 #pragma once
 
 #include "geometry.h"
+#include <DirectXMath.h>
 #include <array>
-#include "dynamic_vertex_buffer.h"
 #include "math_utils.h"
 #include "assertions_console.h"
 
 
-TriangleMesh GeometryCube::make( std::optional<ver::VertexLayout> layout )
+TriangleMesh Geometry::makeCube( std::optional<ver::VertexInputLayout> layout )
 {
-	using Type = ver::VertexLayout::MemberType;
+	using Type = ver::VertexInputLayout::VertexInputLayoutElementType;
 
 	if ( !layout )
 	{
-		layout = ver::VertexLayout{};
+		layout = ver::VertexInputLayout{};
 		layout->add( Type::Position3D );
 	}
 
 	constexpr float side = 1.0f / 2.0f;
 
 	ver::Buffer vertices{std::move( *layout ), 8u};
-	vertices[0].getMember<Type::Position3D>() = {-side, -side, -side};
-	vertices[1].getMember<Type::Position3D>() = {side, -side, -side};
-	vertices[2].getMember<Type::Position3D>() = {-side, side, -side};
-	vertices[3].getMember<Type::Position3D>() = {side, side, -side};
-	vertices[4].getMember<Type::Position3D>() = {-side, -side, side};
-	vertices[5].getMember<Type::Position3D>() = {side, -side, side};
-	vertices[6].getMember<Type::Position3D>() = {-side, side, side};
-	vertices[7].getMember<Type::Position3D>() = {side, side, side};
+	vertices[0].element<Type::Position3D>() = {-side, -side, -side};
+	vertices[1].element<Type::Position3D>() = {side, -side, -side};
+	vertices[2].element<Type::Position3D>() = {-side, side, -side};
+	vertices[3].element<Type::Position3D>() = {side, side, -side};
+	vertices[4].element<Type::Position3D>() = {-side, -side, side};
+	vertices[5].element<Type::Position3D>() = {side, -side, side};
+	vertices[6].element<Type::Position3D>() = {-side, side, side};
+	vertices[7].element<Type::Position3D>() = {side, side, side};
 
 	return
 	{
@@ -43,37 +43,37 @@ TriangleMesh GeometryCube::make( std::optional<ver::VertexLayout> layout )
 	};
 }
 
-TriangleMesh GeometryCube::makeIndependentFaces( ver::VertexLayout layout )
+TriangleMesh Geometry::makeCubeIndependentFaces( ver::VertexInputLayout layout )
 {
-	using Type = ver::VertexLayout::MemberType;
+	using Type = ver::VertexInputLayout::VertexInputLayoutElementType;
 
 	constexpr float side = 1.0f / 2.0f;
 
 	ver::Buffer vertices{std::move( layout ), 24u};
-	vertices[0].getMember<Type::Position3D>() = {-side, -side, -side};// 0 near side
-	vertices[1].getMember<Type::Position3D>() = {side, -side, -side};// 1
-	vertices[2].getMember<Type::Position3D>() = {-side, side, -side};// 2
-	vertices[3].getMember<Type::Position3D>() = {side, side, -side};// 3
-	vertices[4].getMember<Type::Position3D>() = {-side, -side, side};// 4 far side
-	vertices[5].getMember<Type::Position3D>() = {side, -side, side};// 5
-	vertices[6].getMember<Type::Position3D>() = {-side, side, side};// 6
-	vertices[7].getMember<Type::Position3D>() = {side, side, side};// 7
-	vertices[8].getMember<Type::Position3D>() = {-side, -side, -side};// 8 left side
-	vertices[9].getMember<Type::Position3D>() = {-side, side, -side};// 9
-	vertices[10].getMember<Type::Position3D>() = {-side, -side, side};// 10
-	vertices[11].getMember<Type::Position3D>() = {-side, side, side};// 11
-	vertices[12].getMember<Type::Position3D>() = {side, -side, -side};// 12 right side
-	vertices[13].getMember<Type::Position3D>() = {side, side, -side};// 13
-	vertices[14].getMember<Type::Position3D>() = {side, -side, side};// 14
-	vertices[15].getMember<Type::Position3D>() = {side, side, side};// 15
-	vertices[16].getMember<Type::Position3D>() = {-side, -side, -side};// 16 bottom side
-	vertices[17].getMember<Type::Position3D>() = {side, -side, -side};// 17
-	vertices[18].getMember<Type::Position3D>() = {-side, -side, side};// 18
-	vertices[19].getMember<Type::Position3D>() = {side, -side, side};// 19
-	vertices[20].getMember<Type::Position3D>() = {-side, side, -side};// 20 top side
-	vertices[21].getMember<Type::Position3D>() = {side, side, -side};// 21
-	vertices[22].getMember<Type::Position3D>() = {-side, side, side};// 22
-	vertices[23].getMember<Type::Position3D>() = {side, side, side};// 23
+	vertices[0].element<Type::Position3D>() = {-side, -side, -side};// 0 near side
+	vertices[1].element<Type::Position3D>() = {side, -side, -side};// 1
+	vertices[2].element<Type::Position3D>() = {-side, side, -side};// 2
+	vertices[3].element<Type::Position3D>() = {side, side, -side};// 3
+	vertices[4].element<Type::Position3D>() = {-side, -side, side};// 4 far side
+	vertices[5].element<Type::Position3D>() = {side, -side, side};// 5
+	vertices[6].element<Type::Position3D>() = {-side, side, side};// 6
+	vertices[7].element<Type::Position3D>() = {side, side, side};// 7
+	vertices[8].element<Type::Position3D>() = {-side, -side, -side};// 8 left side
+	vertices[9].element<Type::Position3D>() = {-side, side, -side};// 9
+	vertices[10].element<Type::Position3D>() = {-side, -side, side};// 10
+	vertices[11].element<Type::Position3D>() = {-side, side, side};// 11
+	vertices[12].element<Type::Position3D>() = {side, -side, -side};// 12 right side
+	vertices[13].element<Type::Position3D>() = {side, side, -side};// 13
+	vertices[14].element<Type::Position3D>() = {side, -side, side};// 14
+	vertices[15].element<Type::Position3D>() = {side, side, side};// 15
+	vertices[16].element<Type::Position3D>() = {-side, -side, -side};// 16 bottom side
+	vertices[17].element<Type::Position3D>() = {side, -side, -side};// 17
+	vertices[18].element<Type::Position3D>() = {-side, -side, side};// 18
+	vertices[19].element<Type::Position3D>() = {side, -side, side};// 19
+	vertices[20].element<Type::Position3D>() = {-side, side, -side};// 20 top side
+	vertices[21].element<Type::Position3D>() = {side, side, -side};// 21
+	vertices[22].element<Type::Position3D>() = {-side, side, side};// 22
+	vertices[23].element<Type::Position3D>() = {side, side, side};// 23
 
 	return
 	{
@@ -89,55 +89,55 @@ TriangleMesh GeometryCube::makeIndependentFaces( ver::VertexLayout layout )
 	};
 }
 
-TriangleMesh GeometryCube::makeIndependentFacesTextured()
+TriangleMesh Geometry::makeCubeIndependentFacesTextured()
 {
-	using Type = ver::VertexLayout::MemberType;
+	using Type = ver::VertexInputLayout::VertexInputLayoutElementType;
 
-	auto itl = makeIndependentFaces( std::move( ver::VertexLayout{}
+	auto itl = makeCubeIndependentFaces( std::move( ver::VertexInputLayout{}
 		.add( Type::Position3D )
 		.add( Type::Normal )
 		.add( Type::Texture2D ) ) );
 
 	auto &verts = itl.m_vb;
 
-	verts[0].getMember<Type::Texture2D>() = {0.0f, 0.0f};
-	verts[1].getMember<Type::Texture2D>() = {1.0f, 0.0f};
-	verts[2].getMember<Type::Texture2D>() = {0.0f, 1.0f};
-	verts[3].getMember<Type::Texture2D>() = {1.0f, 1.0f};
-	verts[4].getMember<Type::Texture2D>() = {0.0f, 0.0f};
-	verts[5].getMember<Type::Texture2D>() = {1.0f, 0.0f};
-	verts[6].getMember<Type::Texture2D>() = {0.0f, 1.0f};
-	verts[7].getMember<Type::Texture2D>() = {1.0f, 1.0f};
-	verts[8].getMember<Type::Texture2D>() = {0.0f, 0.0f};
-	verts[9].getMember<Type::Texture2D>() = {1.0f, 0.0f};
-	verts[10].getMember<Type::Texture2D>() = {0.0f, 1.0f};
-	verts[11].getMember<Type::Texture2D>() = {1.0f, 1.0f};
-	verts[12].getMember<Type::Texture2D>() = {0.0f, 0.0f};
-	verts[13].getMember<Type::Texture2D>() = {1.0f, 0.0f};
-	verts[14].getMember<Type::Texture2D>() = {0.0f, 1.0f};
-	verts[15].getMember<Type::Texture2D>() = {1.0f, 1.0f};
-	verts[16].getMember<Type::Texture2D>() = {0.0f, 0.0f};
-	verts[17].getMember<Type::Texture2D>() = {1.0f, 0.0f};
-	verts[18].getMember<Type::Texture2D>() = {0.0f, 1.0f};
-	verts[19].getMember<Type::Texture2D>() = {1.0f, 1.0f};
-	verts[20].getMember<Type::Texture2D>() = {0.0f, 0.0f};
-	verts[21].getMember<Type::Texture2D>() = {1.0f, 0.0f};
-	verts[22].getMember<Type::Texture2D>() = {0.0f, 1.0f};
-	verts[23].getMember<Type::Texture2D>() = {1.0f, 1.0f};
+	verts[0].element<Type::Texture2D>() = {0.0f, 0.0f};
+	verts[1].element<Type::Texture2D>() = {1.0f, 0.0f};
+	verts[2].element<Type::Texture2D>() = {0.0f, 1.0f};
+	verts[3].element<Type::Texture2D>() = {1.0f, 1.0f};
+	verts[4].element<Type::Texture2D>() = {0.0f, 0.0f};
+	verts[5].element<Type::Texture2D>() = {1.0f, 0.0f};
+	verts[6].element<Type::Texture2D>() = {0.0f, 1.0f};
+	verts[7].element<Type::Texture2D>() = {1.0f, 1.0f};
+	verts[8].element<Type::Texture2D>() = {0.0f, 0.0f};
+	verts[9].element<Type::Texture2D>() = {1.0f, 0.0f};
+	verts[10].element<Type::Texture2D>() = {0.0f, 1.0f};
+	verts[11].element<Type::Texture2D>() = {1.0f, 1.0f};
+	verts[12].element<Type::Texture2D>() = {0.0f, 0.0f};
+	verts[13].element<Type::Texture2D>() = {1.0f, 0.0f};
+	verts[14].element<Type::Texture2D>() = {0.0f, 1.0f};
+	verts[15].element<Type::Texture2D>() = {1.0f, 1.0f};
+	verts[16].element<Type::Texture2D>() = {0.0f, 0.0f};
+	verts[17].element<Type::Texture2D>() = {1.0f, 0.0f};
+	verts[18].element<Type::Texture2D>() = {0.0f, 1.0f};
+	verts[19].element<Type::Texture2D>() = {1.0f, 1.0f};
+	verts[20].element<Type::Texture2D>() = {0.0f, 0.0f};
+	verts[21].element<Type::Texture2D>() = {1.0f, 0.0f};
+	verts[22].element<Type::Texture2D>() = {0.0f, 1.0f};
+	verts[23].element<Type::Texture2D>() = {1.0f, 1.0f};
 
 	return itl;
 }
 
-TriangleMesh GeometrySphere::make( std::optional<ver::VertexLayout> layout,
-	unsigned nLateralDivs,
-	unsigned nLongitudinalDivs )
+TriangleMesh Geometry::makeTesselatedSphere( std::optional<ver::VertexInputLayout> layout,
+	const unsigned nLateralDivs /* = 12 */,
+	const unsigned nLongitudinalDivs /* = 24 */ )
 {
 	ASSERT( nLateralDivs >= 3, "Lateral divisions < 3 - too low!" );
 	ASSERT( nLongitudinalDivs >= 3, "Longitudinal divisions < 3 - too low!" );
 
 	if ( !layout )
 	{
-		layout = ver::VertexLayout{}.add( ver::VertexLayout::MemberType::Position3D );
+		layout = ver::VertexInputLayout{}.add( ver::VertexInputLayout::VertexInputLayoutElementType::Position3D );
 	}
 
 	constexpr float radius = 1.0f;
@@ -240,16 +240,16 @@ TriangleMesh GeometrySphere::make( std::optional<ver::VertexLayout> layout,
 	return {std::move( vb ), std::move( indices )};
 }
 
-TriangleMesh GeometryPlane::make( int nDivisionsX,
-	int nDivisionsY )
+TriangleMesh Geometry::makePlane( const int nDivisionsX /* = 1 */,
+	const int nDivisionsY /* = 1 */ )
 {
 	ASSERT( nDivisionsX >= 1, "X Divisions can't be less than 1!" );
 	ASSERT( nDivisionsY >= 1, "Y Divisions can't be less than 1!" );
 
-	ver::VertexLayout layout;
-	layout.add( ver::VertexLayout::Position3D );
-	layout.add( ver::VertexLayout::Normal );
-	layout.add( ver::VertexLayout::Texture2D );
+	ver::VertexInputLayout layout;
+	layout.add( ver::VertexInputLayout::Position3D );
+	layout.add( ver::VertexInputLayout::Normal );
+	layout.add( ver::VertexInputLayout::Texture2D );
 
 	constexpr float width = 2.0f;
 	constexpr float height = 2.0f;

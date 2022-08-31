@@ -192,7 +192,7 @@ bool isFileBinary( const char *fname )
 	return false;
 }
 
-size_t countLinesOfFile( char *fileName )
+size_t countLinesOfFile( const char *fileName )
 {
 	FILE *fp = fopen( fileName, "r" );
 	char ch = (char)'/0';
@@ -212,7 +212,7 @@ size_t countLinesOfFile( char *fileName )
 	return lines;
 }
 
-size_t countColumnsOfFile( char *fileName )
+size_t countColumnsOfFile( const char *fileName )
 {
 	FILE *fp = fopen( fileName, "r" );
 	char ch = ' ';
@@ -248,7 +248,7 @@ bool printFile( const char *fname )
 	return true;
 }
 
-void countLetterOccurences( char *filename )
+void countLetterOccurences( const char *filename )
 {
 	int c, i, nwhite, nother;
 	int ndigit[10];

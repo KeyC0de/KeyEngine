@@ -168,7 +168,7 @@ public:
      * @param pImp Importer to be unregistered.
      * @return AI_SUCCESS if the loader has been removed. The function
      *   fails if the loader is currently in use (this could happen
-     *   if the #Importer instance is used by more than one thread) or
+     *   if the Importer instance is used by more than one thread) or
      *   if it has not yet been registered.
      */
     aiReturn UnregisterLoader(BaseImporter *pImp);
@@ -192,7 +192,7 @@ public:
      * @param pImp Step to be unregistered.
      * @return AI_SUCCESS if the step has been removed. The function
      *   fails if the step is currently in use (this could happen
-     *   if the #Importer instance is used by more than one thread) or
+     *   if the Importer instance is used by more than one thread) or
      *   if it has not yet been registered.
      */
     aiReturn UnregisterPPStep(BaseProcess *pImp);
@@ -215,8 +215,8 @@ public:
     // -------------------------------------------------------------------
     /** Set a boolean configuration property. Boolean properties
      *  are stored on the integer stack internally so it's possible
-     *  to set them via #SetPropertyBool and query them with
-     *  #GetPropertyBool and vice versa.
+     *  to set them via SetPropertyBool and query them with
+     *  GetPropertyBool and vice versa.
      * @see SetPropertyInteger()
      */
     bool SetPropertyBool(const char *szName, bool value)    {
@@ -260,8 +260,8 @@ public:
     // -------------------------------------------------------------------
     /** Get a boolean configuration property. Boolean properties
      *  are stored on the integer stack internally so it's possible
-     *  to set them via #SetPropertyBool and query them with
-     *  #GetPropertyBool and vice versa.
+     *  to set them via SetPropertyBool and query them with
+     *  GetPropertyBool and vice versa.
      * @see GetPropertyInteger()
      */
     bool GetPropertyBool(const char *szName, bool bErrorReturn = false) const {
@@ -330,7 +330,7 @@ public:
 
     // -------------------------------------------------------------------
     /** Supplies a custom progress handler to the importer. This
-     *  interface exposes a #Update() callback, which is called
+     *  interface exposes a Update() callback, which is called
      *  more or less periodically (please don't sue us if it
      *  isn't as periodically as you'd like it to have ...).
      *  This can be used to implement progress bars and loading
@@ -343,10 +343,10 @@ public:
 
     // -------------------------------------------------------------------
     /** Retrieves the progress handler that is currently set.
-     * You can use #IsDefaultProgressHandler() to check whether the returned
+     * You can use IsDefaultProgressHandler() to check whether the returned
      * interface is the default handler provided by ASSIMP. The default
      * handler is active as long the application doesn't supply its own
-     * custom handler via #SetProgressHandler().
+     * custom handler via SetProgressHandler().
      * @return A valid ProgressHandler interface, never NULL.
      */
     ProgressHandler *GetProgressHandler() const;
@@ -354,7 +354,7 @@ public:
     // -------------------------------------------------------------------
     /** Checks whether a default progress handler is active
      * A default handler is active as long the application doesn't
-     * supply its own custom progress handler via #SetProgressHandler().
+     * supply its own custom progress handler via SetProgressHandler().
      * @return true by default
      */
     bool IsDefaultProgressHandler() const;
@@ -387,7 +387,7 @@ public:
      *   a successful import. Provide a bitwise combination of the
      *   aiPostProcessSteps flags. If you wish to inspect the imported
      *   scene first in order to fine-tune your post-processing setup,
-     *   consider to use #ApplyPostProcessing().
+     *   consider to use ApplyPostProcessing().
      * @return A pointer to the imported data, NULL if the import failed.
      *   The pointer to the scene remains in possession of the Importer
      *   instance. Use GetOrphanedScene() to take ownership of it.
@@ -416,7 +416,7 @@ public:
      *   a successful import. Provide a bitwise combination of the
      *   aiPostProcessSteps flags. If you wish to inspect the imported
      *   scene first in order to fine-tune your post-processing setup,
-     *   consider to use #ApplyPostProcessing().
+     *   consider to use ApplyPostProcessing().
      * @param pHint An additional hint to the library. If this is a non
      *   empty string, the library looks for a loader to support
      *   the file extension specified by pHint and passes the file to
@@ -445,21 +445,21 @@ public:
     // -------------------------------------------------------------------
     /** Apply post-processing to an already-imported scene.
      *
-     *  This is strictly equivalent to calling #ReadFile() with the same
+     *  This is strictly equivalent to calling ReadFile() with the same
      *  flags. However, you can use this separate function to inspect
      *  the imported scene first to fine-tune your post-processing setup.
      *  @param pFlags Provide a bitwise combination of the
      *   aiPostProcessSteps flags.
      *  @return A pointer to the post-processed data. This is still the
-     *   same as the pointer returned by #ReadFile(). However, if
+     *   same as the pointer returned by ReadFile(). However, if
      *   post-processing fails, the scene could now be NULL.
      *   That's quite a rare case, post processing steps are not really
-     *   designed to 'fail'. To be exact, the #aiProcess_ValidateDS
+     *   designed to 'fail'. To be exact, the aiProcess_ValidateDS
      *   flag is currently the only post processing step which can actually
      *   cause the scene to be reset to NULL.
      *
      *  @note The method does nothing if no scene is currently bound
-     *    to the #Importer instance.  */
+     *    to the Importer instance.  */
     const aiScene *ApplyPostProcessing(unsigned int pFlags);
 
     const aiScene *ApplyCustomizedPostProcessing( BaseProcess *rootProcess, bool requestValidation );
@@ -490,7 +490,7 @@ public:
      *   error occurred. The string is never NULL.
      *
      * @note The returned function remains valid until one of the
-     * following methods is called: #ReadFile(), #FreeScene(). */
+     * following methods is called: ReadFile(), FreeScene(). */
     const char *GetErrorString() const;
 
     // -------------------------------------------------------------------
@@ -564,7 +564,7 @@ public:
     // -------------------------------------------------------------------
     /** Get meta data for the importer corresponding to a specific index..
     *
-    *  For the declaration of #aiImporterDesc, include <assimp/importerdesc.h>.
+    *  For the declaration of aiImporterDesc, include <assimp/importerdesc.h>.
     *  @param index Index to query, must be within [0,GetImporterCount())
     *  @return Importer meta data structure, NULL if the index does not
     *     exist or if the importer doesn't offer meta information (
@@ -582,7 +582,7 @@ public:
     // -------------------------------------------------------------------
     /** Find the importer corresponding to a specific file extension.
     *
-    *  This is quite similar to #IsExtensionSupported except a
+    *  This is quite similar to IsExtensionSupported except a
     *  BaseImporter instance is returned.
     *  @param szExtension Extension to check for. The following formats
     *    are recognized (BAH being the file extension): "BAH" (comparison
@@ -605,7 +605,7 @@ public:
     /** Returns the storage allocated by ASSIMP to hold the scene data
      * in memory.
      *
-     * This refers to the currently loaded file, see #ReadFile().
+     * This refers to the currently loaded file, see ReadFile().
      * @param in Data structure to be filled.
      * @note The returned memory statistics refer to the actual
      *   size of the use data of the aiScene. Heap-related overhead

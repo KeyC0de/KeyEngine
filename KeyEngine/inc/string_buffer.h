@@ -4,6 +4,7 @@
 #include <sstream>
 #include <string>
 #include <mutex>
+#include "non_copyable.h"
 
 
 //=============================================================
@@ -18,6 +19,7 @@
 //				but you must provide your own guards around string and stream objects that are shared among threads.
 //=============================================================
 class StringBuffer final
+	: public NonCopyable
 {
 	static inline std::mutex m_mu;
 	std::ostringstream m_ss;
@@ -26,8 +28,6 @@ class StringBuffer final
 	void reset() noexcept;
 public:
 	StringBuffer( const std::string& str, std::ostream& stream = std::cout );
-	StringBuffer( const std::ostream& ) = delete;
-	StringBuffer& operator=( const std::ostream& ) = delete;
 	StringBuffer( StringBuffer&& rhs ) noexcept;
 	StringBuffer& operator=( StringBuffer&& rhs ) noexcept;
 	~StringBuffer() noexcept;

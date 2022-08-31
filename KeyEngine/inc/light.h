@@ -44,19 +44,16 @@ class PointLight
 	bool m_bShadowCasting;
 	std::shared_ptr<Camera> m_pShadowCamera;
 public:
-	PointLight( Graphics &gph, const DirectX::XMFLOAT3 &pos = {8.0f, 8.0f, 2.f},
-		const DirectX::XMFLOAT3 &col = {1.0f, 1.0f, 1.0f},
-		bool bShadowCasting = true, float radius = 0.5f );
+	PointLight( Graphics &gph, const DirectX::XMFLOAT3 &pos = {8.0f, 8.0f, 2.f}, const DirectX::XMFLOAT3 &col = {1.0f, 1.0f, 1.0f}, const bool bShadowCasting = true, const float radius = 0.5f );
 
-	std::string getName() const noexcept;
-	void setIntensity( float newIntensity ) noexcept;
+	const std::string& getName() const noexcept;
+	void setIntensity( const float newIntensity ) noexcept;
 	void setColor( const DirectX::XMFLOAT3 &diffuseColor ) noexcept;
 	bool isCastingShadows() const noexcept;
 	void displayImguiWidgets() noexcept;
 	void resetToDefault() noexcept;
-	void update( Graphics &gph, float dt,
-		const DirectX::XMMATRIX &activeCameraViewMat ) const noexcept;
-	void render( size_t channels ) const cond_noex;
+	void update( Graphics &gph, const float dt, const DirectX::XMMATRIX &activeCameraViewMat ) const noexcept;
+	void render( const size_t channels ) const cond_noex;
 	void connectEffectsToRenderer( ren::Renderer &r );
 	std::shared_ptr<Camera> shareCamera() const noexcept;
 };

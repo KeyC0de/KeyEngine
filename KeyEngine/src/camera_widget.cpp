@@ -7,7 +7,7 @@
 #include "primitive_topology.h"
 #include "transform_vscb.h"
 #include "vertex_shader.h"
-#include "rasterizer.h"
+#include "rasterizer_state.h"
 #include "rendering_channel.h"
 
 
@@ -15,8 +15,8 @@ namespace dx = DirectX;
 
 CameraWidget::CameraWidget( Graphics &gph )
 {
-	ver::VertexLayout vertexLayout;
-	vertexLayout.add( ver::VertexLayout::Position3D );
+	ver::VertexInputLayout vertexLayout;
+	vertexLayout.add( ver::VertexInputLayout::Position3D );
 
 	ver::Buffer vb{std::move( vertexLayout )};
 	{
@@ -96,8 +96,9 @@ CameraWidget::CameraWidget( Graphics &gph )
 			0u ) );
 		lambertian.addBindable( std::make_shared<TransformVSCB>( gph,
 			0u ) );
-		lambertian.addBindable( Rasterizer::fetch( gph,
-			false ) );
+		lambertian.addBindable( RasterizerState::fetch( gph,
+			RasterizerState::FrontSided,
+			RasterizerState::Solid ) );
 
 		addEffect( std::move( lambertian ) );
 	}
@@ -113,7 +114,7 @@ void CameraWidget::setRotation( const DirectX::XMFLOAT3 &rot )
 	m_rot = rot;
 }
 
-DirectX::XMMATRIX CameraWidget::getTransform() const noexcept
+const DirectX::XMMATRIX CameraWidget::getTransform() const noexcept
 {
 	return dx::XMMatrixRotationRollPitchYawFromVector( dx::XMLoadFloat3( &m_rot ) ) *
 		dx::XMMatrixTranslationFromVector( dx::XMLoadFloat3( &m_pos ) );

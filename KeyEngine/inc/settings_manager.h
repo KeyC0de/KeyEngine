@@ -29,10 +29,7 @@ class SettingsManager final
 
 	void loadFromFile( const std::string &filePath );
 public:
-	SettingsManager( const SettingsManager &rhs ) = delete;
-	SettingsManager& operator=( const SettingsManager &rhs ) = delete;
-
 	static SettingsManager& getInstance( const std::string &filePath = "config.ini" );
-	const Settings& getSettings();
 	Settings& settings();
+	const Settings& getSettings();
 };

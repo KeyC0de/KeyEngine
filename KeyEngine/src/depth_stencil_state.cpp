@@ -5,7 +5,7 @@
 
 
 DepthStencilState::DepthStencilState( Graphics &gph,
-	Mode mode )
+	const Mode mode )
 	:
 	m_mode(mode)
 {
@@ -108,13 +108,13 @@ void DepthStencilState::bind( Graphics &gph ) cond_noex
 }
 
 std::shared_ptr<DepthStencilState> DepthStencilState::fetch( Graphics &gph,
-	Mode mode )
+	const Mode mode )
 {
 	return BindableMap::fetch<DepthStencilState>( gph,
 		mode );
 }
 
-std::string DepthStencilState::generateUid( Mode mode )
+std::string DepthStencilState::calcUid( const Mode mode )
 {
 	using namespace std::string_literals;
 	const auto getModeStr = [mode]()
@@ -152,7 +152,7 @@ std::string DepthStencilState::generateUid( Mode mode )
 	return typeid( DepthStencilState ).name() + "#"s + getModeStr();
 }
 
-std::string DepthStencilState::getUid() const noexcept
+const std::string DepthStencilState::getUid() const noexcept
 {
-	return generateUid( m_mode );
+	return calcUid( m_mode );
 }

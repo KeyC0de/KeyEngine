@@ -5,13 +5,14 @@
 #include "assertions_console.h"
 #include "bindable_exception.h"
 #include "viewport.h"
+#include "utils.h"
 
 
 namespace mwrl = Microsoft::WRL;
 
 IRenderTargetView::IRenderTargetView( Graphics &gph,
-	unsigned width,
-	unsigned height )
+	const unsigned width,
+	const unsigned height )
 	:
 	m_width(width),
 	m_height(height)
@@ -122,23 +123,27 @@ void IRenderTargetView::clear( Graphics &gph,
 	DXGI_GET_QUEUE_INFO( gph );
 }
 
-unsigned IRenderTargetView::getWidth() const noexcept
+void IRenderTargetView::release()
+{
+	m_pRtv->Release();
+}
+
+const unsigned IRenderTargetView::getWidth() const noexcept
 {
 	return m_width;
 }
 
-unsigned IRenderTargetView::getHeight() const noexcept
+const unsigned IRenderTargetView::getHeight() const noexcept
 {
 	return m_height;
 }
 
-ID3D11RenderTargetView* IRenderTargetView::getRenderTargetView() const noexcept
+ID3D11RenderTargetView* IRenderTargetView::renderTargetView() const noexcept
 {
 	return m_pRtv.Get();
 }
 
-std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC>
-	IRenderTargetView::createStagingTexture( Graphics &gph ) const
+std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC> IRenderTargetView::createStagingTexture( Graphics &gph ) const
 {
 	mwrl::ComPtr<ID3D11Resource> pRtvRsc;
 	m_pRtv->GetResource( &pRtvRsc );
@@ -189,7 +194,9 @@ std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC>
 	return {std::move( pStagingTex ), stagingTexDesc};
 }
 
-Bitmap IRenderTargetView::convertToBitmap( Graphics &gph ) const
+const Bitmap IRenderTargetView::convertToBitmap( Graphics &gph,
+	const unsigned width,
+	const unsigned height ) const
 {
 	auto [pStagingTex, stagingTexDesc] = createStagingTexture( gph );
 
@@ -199,8 +206,6 @@ Bitmap IRenderTargetView::convertToBitmap( Graphics &gph ) const
 	}
 
 	// mapping texture and preparing vector
-	const unsigned width = getWidth();
-	const unsigned height = getHeight();
 	Bitmap bitmap{width, height};
 
 	D3D11_MAPPED_SUBRESOURCE msr{};
@@ -216,8 +221,7 @@ Bitmap IRenderTargetView::convertToBitmap( Graphics &gph ) const
 	// iterate by Height then Width over the staging texture
 	for ( unsigned int y = 0; y < height; ++y )
 	{
-		auto pRow = reinterpret_cast<const Bitmap::Texel*>( pStagingTexBytes
-			+ msr.RowPitch * y );
+		auto pRow = reinterpret_cast<const Bitmap::Texel*>( pStagingTexBytes + msr.RowPitch * y );
 		for ( unsigned int x = 0; x < width; ++x )
 		{
 			bitmap.setTexel( x,
@@ -233,9 +237,9 @@ Bitmap IRenderTargetView::convertToBitmap( Graphics &gph ) const
 
 
 RenderTargetShaderInput::RenderTargetShaderInput( Graphics &gph,
-	unsigned width,
-	unsigned height,
-	unsigned slot )
+	const unsigned width,
+	const unsigned height,
+	const unsigned slot )
 	:
 	IRenderTargetView{gph, width, height},
 	m_slot(slot)

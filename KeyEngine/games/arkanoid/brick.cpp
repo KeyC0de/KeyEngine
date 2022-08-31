@@ -15,18 +15,18 @@ Brick::Brick( const Rect &rect,
 
 }
 
-void Brick::render( Graphics &gph ) const
+void Brick::render( Graphics &gph ) const cond_noex
 {
 	if ( !m_bDestroyed )
 	{
-		gph.drawRect( m_rect.calcScaled( -m_margin ),
+		gph.drawRectangle( m_rect.calcScaled( -m_margin ),
 			m_color );
 	}
 }
 
-bool Brick::checkForBallCollision( const Ball &ball ) const
+bool Brick::checkForBallCollision( const Ball &ball ) const cond_noex
 {
-	return !m_bDestroyed && m_rect.isOverlappingWith( ball.getRect() );
+	return !m_bDestroyed && m_rect.isOverlappingWith( ball.rect() );
 }
 
 void Brick::doBallCollision( Ball &ball )

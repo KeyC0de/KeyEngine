@@ -5,7 +5,7 @@
 namespace dx = DirectX;
 
 TransformScaleVSCB::TransformScaleVSCB( Graphics &gph,
-	unsigned slot,
+	const unsigned slot,
 	float scale )
 	:
 	TransformVSCB{gph, slot},

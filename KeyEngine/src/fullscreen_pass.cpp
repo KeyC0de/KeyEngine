@@ -4,7 +4,7 @@
 #include "primitive_topology.h"
 #include "vertex_buffer.h"
 #include "vertex_shader.h"
-#include "rasterizer.h"
+#include "rasterizer_state.h"
 #include "pixel_shader_null.h"
 
 
@@ -19,10 +19,10 @@ FullscreenPass::FullscreenPass( Graphics &gph,
 	IBindablePass{name}
 {
 	// setup fullscreen geometry
-	ver::VertexLayout vertexLayout;
-	vertexLayout.add( ver::VertexLayout::Position2D );
-	//ver::VertexLayout::Texture2D is setup in the vertex shader
-	ver::Buffer vb{vertexLayout};
+	ver::VertexInputLayout vil;
+	vil.add( ver::VertexInputLayout::Position2D );
+	//ver::VertexInputLayout::Texture2D is setup in the vertex shader
+	ver::Buffer vb{vil};
 	vb.emplaceVertex( dx::XMFLOAT2{-1, 1} );
 	vb.emplaceVertex( dx::XMFLOAT2{1, 1} );
 	vb.emplaceVertex( dx::XMFLOAT2{-1, -1} );
@@ -39,12 +39,13 @@ FullscreenPass::FullscreenPass( Graphics &gph,
 	auto vs = VertexShader::fetch( gph,
 		"fullscreen_quad_vs.cso" );
 	addPassBindable( InputLayout::fetch( gph,
-		vertexLayout,
+		vil,
 		*vs ) );
 	addPassBindable( std::move( vs ) );
 	addPassBindable( PrimitiveTopology::fetch( gph ) );
-	addPassBindable( Rasterizer::fetch( gph,
-		false ) );
+	addPassBindable( RasterizerState::fetch( gph,
+		RasterizerState::FrontSided,
+		RasterizerState::Solid ) );
 	addPassBindable( PixelShaderNull::fetch( gph ) );
 }
 

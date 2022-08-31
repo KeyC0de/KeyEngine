@@ -713,7 +713,7 @@ void ImDrawList::AddPolyline(const ImVec2 *points, const int points_count, ImU32
                 temp_points[(points_count-1)*2+1] = points[points_count-1] - temp_normals[points_count-1] * AA_SIZE;
             }
 
-            // FIXME-OPT: Merge the different loops, possibly remove the temporary buffer.
+            // FIX-OPT: Merge the different loops, possibly remove the temporary buffer.
             unsigned int idx1 = _VtxCurrentIdx;
             for (int i1 = 0; i1 < count; i1++)
             {
@@ -768,7 +768,7 @@ void ImDrawList::AddPolyline(const ImVec2 *points, const int points_count, ImU32
                 temp_points[(points_count-1)*4+3] = points[points_count-1] - temp_normals[points_count-1] * (half_inner_thickness + AA_SIZE);
             }
 
-            // FIXME-OPT: Merge the different loops, possibly remove the temporary buffer.
+            // FIX-OPT: Merge the different loops, possibly remove the temporary buffer.
             unsigned int idx1 = _VtxCurrentIdx;
             for (int i1 = 0; i1 < count; i1++)
             {
@@ -823,7 +823,7 @@ void ImDrawList::AddPolyline(const ImVec2 *points, const int points_count, ImU32
     {
         // Non Anti-aliased Stroke
         const int idx_count = count*6;
-        const int vtx_count = count*4;      // FIXME-OPT: Not sharing edges
+        const int vtx_count = count*4;      // FIX-OPT: Not sharing edges
         PrimReserve(idx_count, vtx_count);
 
         for (int i1 = 0; i1 < count; i1++)
@@ -1360,7 +1360,7 @@ ImFontConfig::ImFontConfig()
     FontDataOwnedByAtlas = true;
     FontNo = 0;
     SizePixels = 0.0f;
-    OversampleH = 3; // FIXME: 2 may be a better default?
+    OversampleH = 3; // FIX: 2 may be a better default?
     OversampleV = 1;
     PixelSnapH = false;
     GlyphExtraSpacing = ImVec2(0.0f, 0.0f);
@@ -1949,7 +1949,7 @@ bool    ImFontAtlasBuildWithStbTruetype(ImFontAtlas *atlas)
         stbrp_pack_rects((stbrp_context*)spc.pack_info, src_tmp.Rects, src_tmp.GlyphsCount);
 
         // Extend texture height and mark missing glyphs as non-packed so we won't render them.
-        // FIXME: We are not handling packing failure here (would happen if we got off TEX_HEIGHT_MAX or if a single if larger than TexWidth?)
+        // FIX: We are not handling packing failure here (would happen if we got off TEX_HEIGHT_MAX or if a single if larger than TexWidth?)
         for (int glyph_i = 0; glyph_i < src_tmp.GlyphsCount; glyph_i++)
             if (src_tmp.Rects[glyph_i].was_packed)
                 atlas->TexHeight = ImMax(atlas->TexHeight, src_tmp.Rects[glyph_i].y + src_tmp.Rects[glyph_i].h);
@@ -2266,7 +2266,7 @@ const ImWchar*  ImFontAtlas::GetGlyphRangesJapanese()
 {
     // 1946 common ideograms code points for Japanese
     // Sourced from http://theinstructionlimit.com/common-kanji-character-ranges-for-xna-spritefont-rendering
-    // FIXME: Source a list of the revised 2136 Joyo Kanji list from 2010 and rebuild this.
+    // FIX: Source a list of the revised 2136 Joyo Kanji list from 2010 and rebuild this.
     // You can use ImFontGlyphRangesBuilder to create your own ranges derived from this, by merging existing ranges or adding new characters.
     // (Stored as accumulative offsets from the initial unicode codepoint 0x4E00. This encoding is designed to helps us compact the source code size.)
     static const short accumulative_offsets_from_0x4E00[] =
@@ -2441,7 +2441,7 @@ void ImFont::BuildLookupTable()
     }
 
     // Create a glyph to handle TAB
-    // FIXME: Needs proper TAB handling but it needs to be contextualized (or we could arbitrary say that each string starts at "column 0" ?)
+    // FIX: Needs proper TAB handling but it needs to be contextualized (or we could arbitrary say that each string starts at "column 0" ?)
     if (FindGlyph((ImWchar)' '))
     {
         if (Glyphs.back().Codepoint != '\t')   // So we can call this function multiple times
@@ -2539,7 +2539,7 @@ const ImFontGlyph *ImFont::FindGlyphNoFallback(ImWchar c) const
 const char *ImFont::CalcWordWrapPositionA(float scale, const char *text, const char *text_end, float wrap_width) const
 {
     // Simple word-wrapping for English, not full-featured. Please submit failing cases!
-    // FIXME: Much possible improvements (don't cut things like "word !", "word!!!" but cut within "word,,,, ", more sensible support for punctuations, support for Unicode punctuations, etc.)
+    // FIX: Much possible improvements (don't cut things like "word !", "word!!!" but cut within "word,,,, ", more sensible support for punctuations, support for Unicode punctuations, etc.)
 
     // For references, possible wrap point marked with ^
     //  "aaa bbb, ccc,ddd. eee   fff. ggg!"
@@ -2638,7 +2638,7 @@ const char *ImFont::CalcWordWrapPositionA(float scale, const char *text, const c
 ImVec2 ImFont::CalcTextSizeA(float size, float max_width, float wrap_width, const char *text_begin, const char *text_end, const char** remaining) const
 {
     if (!text_end)
-        text_end = text_begin + strlen(text_begin); // FIXME-OPT: Need to avoid this.
+        text_end = text_begin + strlen(text_begin); // FIX-OPT: Need to avoid this.
 
     const float line_height = size;
     const float scale = size / FontSize;
@@ -2988,7 +2988,7 @@ static inline float ImAcos01(float x)
     //return (-0.69813170079773212f * x * x - 0.87266462599716477f) * x + 1.5707963267948966f; // Cheap approximation, may be enough for what we do.
 }
 
-// FIXME: Cleanup and move code to ImDrawList.
+// FIX: Cleanup and move code to ImDrawList.
 void ImGui::RenderRectFilledRangeH(ImDrawList *draw_list, const ImRect &rect, ImU32 col, float x_start_norm, float x_end_norm, float rounding)
 {
     if (x_end_norm == x_start_norm)
@@ -3049,7 +3049,7 @@ void ImGui::RenderRectFilledRangeH(ImDrawList *draw_list, const ImRect &rect, Im
     draw_list->PathFillConvex(col);
 }
 
-// FIXME: Rendering an ellipsis "..." is a surprisingly tricky problem for us... we cannot rely on font glyph having it,
+// FIX: Rendering an ellipsis "..." is a surprisingly tricky problem for us... we cannot rely on font glyph having it,
 // and regular dot are typically too wide. If we render a dot/shape ourselves it comes with the risk that it wouldn't match
 // the boldness or positioning of what the font uses...
 void ImGui::RenderPixelEllipsis(ImDrawList *draw_list, ImVec2 pos, int count, ImU32 col)

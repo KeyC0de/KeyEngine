@@ -175,7 +175,7 @@ void Renderer::linkPassConsumers( IPass &pass )
 			{
 				if ( pass->getName() == consumerPassName )
 				{
-					auto &producer = pass->getProducer( consumer->getProducerName() );
+					auto &producer = pass->producer( consumer->getProducerName() );
 					consumer->link( producer );
 					bLinked = true;
 					break;
@@ -202,7 +202,7 @@ void Renderer::linkGlobalConsumers()
 		{
 			if ( pass->getName() == consumerPassname )
 			{
-				auto &producer = pass->getProducer( consumer->getProducerName() );
+				auto &producer = pass->producer( consumer->getProducerName() );
 				consumer->link( producer );
 				break;
 			}
@@ -491,10 +491,10 @@ void Renderer3d::showGaussianBlurImguiWindow( Graphics &gph )
 	ImGui::End();
 }
 
-void ren::Renderer3d::setMainCamera( Camera &cam )
+void ren::Renderer3d::setActiveCamera( Camera &cam )
 {
-	dynamic_cast<LambertianPass&>( getPass( "lambertian" ) ).setMainCamera( cam );
-	dynamic_cast<SkyPass&>( getPass( "skybox" ) ).setMainCamera( cam );
+	dynamic_cast<LambertianPass&>( getPass( "lambertian" ) ).setActiveCamera( cam );
+	dynamic_cast<SkyPass&>( getPass( "skybox" ) ).setActiveCamera( cam );
 }
 
 void ren::Renderer3d::setShadowCamera( Camera &cam )

@@ -6,7 +6,8 @@
 
 void MessageBus::removeFrontByBackSwap()
 {
-	std::swap( m_vec.front(), m_vec.back() );
+	std::swap( m_vec.front(),
+		m_vec.back() );
 	m_vec.pop_back();
 }
 
@@ -27,12 +28,13 @@ MessageBus::MessageBus( MessageBus &&rhs ) noexcept
 
 MessageBus& MessageBus::operator=( MessageBus &&rhs ) noexcept
 {
-	std::swap( m_vec, rhs.m_vec );
-	m_size = rhs.m_size;
+	MessageBus tmp{std::move( rhs )};
+	std::swap( *this,
+		tmp );
 	return *this;
 }
 
-void MessageBus::enqueue( class Message *msg )
+void MessageBus::enqueue( Message *msg )
 {
 	std::unique_lock<std::mutex> lg{m_mu};
 	m_vec.emplace_back( msg );
@@ -40,7 +42,7 @@ void MessageBus::enqueue( class Message *msg )
 	m_cond.notify_one();
 }
 
-std::unique_ptr<class Message> MessageBus::dequeue()
+std::unique_ptr<Message> MessageBus::dequeue()
 {
 	std::unique_lock<std::mutex> ul{m_mu};
 
@@ -52,19 +54,19 @@ std::unique_ptr<class Message> MessageBus::dequeue()
 	{
 		m_cond.wait( ul );
 	}
-	std::unique_ptr<class Message> pOut = std::move( m_vec.back() );
+	std::unique_ptr<Message> pOut = std::move( m_vec.back() );
 	m_vec.pop_back();
 	--m_size;
 	return pOut;
 }
 
-class Message* MessageBus::peekFront() const noexcept
+const Message* MessageBus::peekFront() const noexcept
 {
 	std::lock_guard<std::mutex> lg{m_mu};
 	return m_vec.front().get();
 }
 
-class Message* MessageBus::peekBack() const noexcept
+const Message* MessageBus::peekBack() const noexcept
 {
 	std::lock_guard<std::mutex> lg{m_mu};
 	return m_vec.back().get();
@@ -76,7 +78,7 @@ MessageBus::operator bool()
 	return !m_vec.empty();
 }
 
-class Message* MessageBus::operator[]( std::size_t index )
+Message* MessageBus::operator[]( std::size_t index )
 {
 	std::lock_guard<std::mutex> lg{m_mu};
 	if ( m_vec.empty() || index < 0 || index >= m_vec.size() )
@@ -86,7 +88,7 @@ class Message* MessageBus::operator[]( std::size_t index )
 	return m_vec[index].get();
 }
 
-const class Message* MessageBus::operator[]( std::size_t index ) const
+const Message* MessageBus::operator[]( std::size_t index ) const
 {
 	std::lock_guard<std::mutex> lg{m_mu};
 	if ( m_vec.empty() || index < 0 || index >= m_vec.size() )
@@ -106,12 +108,12 @@ void MessageBus::clear()
 	m_vec.clear();
 }
 
-std::size_t MessageBus::getSize() const noexcept
+const std::size_t MessageBus::getSize() const noexcept
 {
 	return m_size;
 }
 
-std::size_t MessageBus::getCapacity() const noexcept
+const std::size_t MessageBus::getCapacity() const noexcept
 {
 	return m_vec.capacity();
 }
@@ -133,7 +135,9 @@ MessageDispatcher::MessageDispatcher( MessageDispatcher &&rhs ) noexcept
 
 MessageDispatcher& MessageDispatcher::operator=( MessageDispatcher &&rhs ) noexcept
 {
-	std::swap( m_mb, rhs.m_mb );
+	MessageDispatcher tmp{std::move( rhs )};
+	std::swap( *this,
+		tmp );
 	return *this;
 }
 
@@ -153,21 +157,21 @@ void MessageDispatcher::dispatchAll()
 	while ( m_mb.getSize() > 0 )
 	{
 		auto msg = m_mb.dequeue();
-		auto& recipients = msg->getReceivers();
+		auto& recipients = msg->getRecipients();
 		ASSERT( recipients.size() != 0, "No recipients!" );
-		for ( Entity *r : recipients )
+		for ( Entity *entity : recipients )
 		{
-			r->onMessageReceived( std::move( msg ) );
+			entity->onMessageReceived( std::move( msg ) );
 		}
 	}
 }
 
-std::size_t MessageDispatcher::getSize() const noexcept
+const std::size_t MessageDispatcher::getSize() const noexcept
 {
 	return m_mb.getSize();
 }
 
-std::size_t MessageDispatcher::getCapacity() const noexcept
+const std::size_t MessageDispatcher::getCapacity() const noexcept
 {
 	return m_mb.getCapacity();
 }

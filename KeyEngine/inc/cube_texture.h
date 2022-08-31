@@ -5,7 +5,6 @@
 #include "bindable.h"
 
 
-class Bitmap;
 class RenderTargetOutput;
 class DepthStencilOutput;
 
@@ -17,7 +16,7 @@ protected:
 	std::string m_path;
 	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_pSrv;
 public:
-	CubeTexture( Graphics &gph, const std::string &path, unsigned slot );
+	CubeTexture( Graphics &gph, const std::string &path, const unsigned slot );
 
 	void bind( Graphics &gph ) cond_noex override;
 };
@@ -30,11 +29,10 @@ protected:
 	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_pSrv;
 	std::vector<std::shared_ptr<RenderTargetOutput>> m_renderTargetViews;
 public:
-	CubeTextureRT( Graphics &gph, unsigned width, unsigned height,
-		unsigned slot, DXGI_FORMAT format = DXGI_FORMAT::DXGI_FORMAT_B8G8R8A8_UNORM );
+	CubeTextureRT( Graphics &gph, const unsigned width, const unsigned height, const unsigned slot, const DXGI_FORMAT format = DXGI_FORMAT::DXGI_FORMAT_B8G8R8A8_UNORM );
 
 	void bind( Graphics &gph ) cond_noex override;
-	std::shared_ptr<RenderTargetOutput> shareRenderTarget( size_t index ) const;
+	std::shared_ptr<RenderTargetOutput> shareRenderTarget( const size_t index ) const;
 };
 
 class CubeTextureDS
@@ -45,9 +43,8 @@ protected:
 	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_pSrv;
 	std::vector<std::shared_ptr<DepthStencilOutput>> m_depthStencilViews;
 public:
-	CubeTextureDS( Graphics &gph, unsigned size, unsigned slot,
-		DXGI_FORMAT format = DXGI_FORMAT::DXGI_FORMAT_R32_TYPELESS );
+	CubeTextureDS( Graphics &gph, const unsigned size, const unsigned slot, const DXGI_FORMAT format = DXGI_FORMAT::DXGI_FORMAT_R32_TYPELESS );
 
 	void bind( Graphics &gph ) cond_noex override;
-	std::shared_ptr<DepthStencilOutput> shareDepthBuffer( size_t index ) const;
+	std::shared_ptr<DepthStencilOutput> shareDepthBuffer( const size_t index ) const;
 };

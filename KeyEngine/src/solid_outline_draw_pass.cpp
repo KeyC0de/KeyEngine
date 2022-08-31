@@ -8,7 +8,6 @@
 namespace ren
 {
 
-// targets back buffer targets
 SolidOutlineDrawPass::SolidOutlineDrawPass( Graphics &gph,
 	const std::string &name )
 	:

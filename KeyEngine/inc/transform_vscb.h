@@ -2,13 +2,13 @@
 
 #include <DirectXMath.h>
 #include "constant_buffer.h"
-#include "drawable.h"
+#include "mesh.h"
 
 
 class TransformVSCB
 	: public IBindableCloning
 {
-	const Drawable *m_pDrawable = nullptr;
+	const Mesh *m_pMesh = nullptr;
 protected:
 	struct Transforms
 	{
@@ -21,7 +21,7 @@ private:
 	// #FIXME: try putting cctors dtor etc. in VertexShaderConstantBuffer
 	static inline std::unique_ptr<VertexShaderConstantBuffer<Transforms>> m_pVscb;
 public:
-	TransformVSCB( Graphics &gph, unsigned slot );
+	TransformVSCB( Graphics &gph, const unsigned slot );
 	//===================================================
 	//	\function	TransformVSCB
 	//	\brief  cctor that behaves as mctor
@@ -32,7 +32,7 @@ public:
 	//TransformVSCB& operator=( TransformVSCB &&rhs ) = delete;
 
 	void bind( Graphics &gph ) cond_noex override;
-	void setParentDrawable( const Drawable &parent ) noexcept override;
+	void setMesh( const Mesh &mesh ) noexcept override;
 	std::unique_ptr<IBindableCloning> clone() const noexcept override;
 	std::unique_ptr<IBindableCloning> clone() noexcept override;
 protected:

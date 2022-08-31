@@ -27,7 +27,7 @@ BOOL WINAPI SetCurrentConsoleFontEx( HANDLE hConsoleOutput, BOOL bMaximumWindow,
 #endif // NOGDI
 
 
-DWORD KeyConsole::getFontFamily( HANDLE h )
+const DWORD KeyConsole::getFontFamily( const HANDLE h )
 {
 	CONSOLE_FONT_INFO cfi;
 	BOOL conFont = GetCurrentConsoleFont( h,
@@ -46,12 +46,11 @@ DWORD KeyConsole::getFontFamily( HANDLE h )
 		-1;
 }
 
-void KeyConsole::getConsoleInfo( HANDLE h )
+void KeyConsole::getConsoleInfo( const HANDLE h )
 {
 	using GETNUMBEROFCONSOLEFONTS = DWORD (WINAPI* )();
 	using SETCONSOLEFONT = BOOL (WINAPI*)( HANDLE hConOut, DWORD nFont );
-	auto GetNumberOfConsoleFonts =
-		(GETNUMBEROFCONSOLEFONTS) GetProcAddress( LoadLibraryW( L"KERNEL32" ),
+	auto GetNumberOfConsoleFonts = (GETNUMBEROFCONSOLEFONTS) GetProcAddress( LoadLibraryW( L"KERNEL32" ),
 		"GetNumberOfConsoleFonts" );
 	auto SetConsoleFont = (SETCONSOLEFONT) GetProcAddress( LoadLibraryW( L"KERNEL32" ),
 		"SetConsoleFont" );
@@ -107,7 +106,7 @@ KeyConsole::KeyConsole( const std::string &fontName )
 	std::ios_base::sync_with_stdio( false );
 
 	print( "Console attributes set.\n" );
-	print( "Console mode set to " + getConsoleModeStr() + '\n' );
+	print( "Console mode set to " + std::string{getConsoleModeStr()} + '\n' );
 	print( "Console ready.\n\n" );
 	setDefaultColor();
 	std::cout.clear();	// after this one we are ready to print
@@ -188,7 +187,7 @@ std::string KeyConsole::read( const uint32_t maxChars )
 	return buff;
 }
 
-int KeyConsole::getConsoleMode() const noexcept
+const int KeyConsole::getConsoleMode() const noexcept
 {
 	if ( m_hMode == stdout )
 	{
@@ -205,7 +204,7 @@ int KeyConsole::getConsoleMode() const noexcept
 	return -1;
 }
 
-std::string KeyConsole::getConsoleModeStr() const noexcept
+const std::string KeyConsole::getConsoleModeStr() const noexcept
 {
 	std::string strMode;
 	switch ( m_stdDevice )
@@ -225,17 +224,17 @@ std::string KeyConsole::getConsoleModeStr() const noexcept
 	return strMode;
 }
 
-uint32_t KeyConsole::getConsoleCodePage() const noexcept
-{
-	return GetConsoleCP();
-}
-
-HANDLE KeyConsole::getHandle() const noexcept
+const HANDLE KeyConsole::getHandle() const noexcept
 {
 	return m_hConsole;
 }
 
-int32_t KeyConsole::setConsoleCodePage( uint32_t cp )
+const uint32_t KeyConsole::getConsoleCodePage() const noexcept
+{
+	return GetConsoleCP();
+}
+
+const int32_t KeyConsole::setConsoleCodePage( const uint32_t cp )
 {
 	return SetConsoleCP( cp );
 }
@@ -258,7 +257,7 @@ void KeyConsole::setFont( const std::string &fontName )
 	getConsoleInfo( m_hConsole );
 }
 
-int32_t KeyConsole::setCurcorPos( _COORD xy /* = { 0,0 } */ )
+const int32_t KeyConsole::setCurcorPos( const _COORD xy /* = { 0,0 } */ )
 {
 	return SetConsoleCursorPosition( m_hConsole,
 		xy );
@@ -278,7 +277,7 @@ bool KeyConsole::setDefaultColor()
 	return true;
 }
 
-bool KeyConsole::setColor( WORD attributes )
+bool KeyConsole::setColor( const WORD attributes )
 {
 	BOOL ret = SetConsoleTextAttribute( m_hConsole,
 		attributes );
@@ -298,12 +297,12 @@ bool KeyConsole::setColor( WORD attributes )
 	return true;
 }
 
-WORD KeyConsole::getConsoleTextAttributes() const noexcept
+const WORD KeyConsole::getConsoleTextAttributes() const noexcept
 {
 	return m_consoleAttributesDefault;
 }
 
-WORD KeyConsole::getConsoleDefaultTextAttributes() const noexcept
+const WORD KeyConsole::getConsoleDefaultTextAttributes() const noexcept
 {
 	return m_consoleAttributesDefault;
 }

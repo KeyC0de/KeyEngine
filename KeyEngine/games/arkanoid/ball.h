@@ -14,8 +14,8 @@ class Ball
 public:
 	Ball( const DirectX::XMFLOAT2 &position, const DirectX::XMFLOAT2 &velocity );
 
-	void update( float dt );
-	void render( Graphics &gph );
+	void update( const float dt );
+	void render( Graphics &gph ) cond_noex;
 	bool doWallCollision( const Rect &wall );
 	//===================================================
 	//	\function	reboundX, reboundY
@@ -23,7 +23,7 @@ public:
 	//	\date	2021/10/17 3:43
 	void reboundX();
 	void reboundY();
-	Rect getRect() const noexcept;
+	Rect rect() const noexcept;
 	const DirectX::XMFLOAT2& getVelocity() const noexcept;
 	const DirectX::XMFLOAT2& getPosition() const noexcept;
 };

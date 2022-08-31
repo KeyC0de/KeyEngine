@@ -202,5 +202,29 @@ std::optional<std::wstring> registryGetString( HKEY hKey,
 	return str;
 }
 
+static void suspendAllThreads()
+{
+	HANDLE thread_enumerator = CreateToolhelp32Snapshot( TH32CS_SNAPTHREAD, 0 );
+	THREADENTRY32 te;
+	te.dwSize = sizeof( te );
+	DWORD current_pid = GetCurrentProcessId();
+	DWORD current_tid = GetCurrentThreadId();
+
+	Thread32First( thread_enumerator, &te );
+	do
+	{
+		if ( te.th32OwnerProcessID != current_pid ) continue;
+		if ( te.th32ThreadID == current_tid ) continue;
+
+		HANDLE th = OpenThread( THREAD_SUSPEND_RESUME | THREAD_GET_CONTEXT | THREAD_SET_CONTEXT, false, te.th32ThreadID );
+		SuspendThread( th );
+	} while ( Thread32Next( thread_enumerator, &te ) );
+	CloseHandle( thread_enumerator );
+}
+
+hint std::size_t* getUniqueMemory()
+{
+	return reinterpret_cast<std::size_t*>( new std::size_t{0} );
+}
 
 }// namespace util

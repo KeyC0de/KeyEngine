@@ -6,10 +6,10 @@
 #include "bitmap.h"
 
 
-SplashWindow::SplashWindow( HWND hWndParent,
+SplashWindow::SplashWindow( const HWND hWndParent,
 	HINSTANCE hInst,
-	int resourceId,
-	std::pair<int,int> dims )
+	const int resourceId,
+	const std::pair<int,int> dims )
 	:
 	m_bVisible{false}
 {
@@ -49,9 +49,9 @@ SplashWindow::SplashWindow( HWND hWndParent,
 	ASSERT_HRES_WIN32_IF_FAILED( hres );
 
 	/// load png image here as a transparent bitmap
-	auto hBitmap = Bitmap::loadFromFile( "splash.png" );
+	Bitmap bitmap = Bitmap::loadFromFile( "splash.png" );
 
-	//HBITMAP hBitmap = LoadBitmapW( hInst, MAKEINTRESOURCE( resourceId ) );
+	//HBITMAP bitmap = LoadBitmapW( hInst, MAKEINTRESOURCE( resourceId ) );
 	// create "memory dc" or "compatible dc" - a dc special for bitmaps
 	HDC hdcWindow = GetDC( nullptr );
 	HDC hdc = CreateCompatibleDC( hdcWindow );
@@ -59,7 +59,7 @@ SplashWindow::SplashWindow( HWND hWndParent,
 		hdcWindow );
 	//DeleteDC( hdcWindow );
 	HBITMAP hBitmapObj = (HBITMAP)SelectObject( hdc,
-		hBitmap );
+		bitmap );
 	if ( !hBitmapObj )
 	{
 		return;
@@ -111,8 +111,10 @@ void SplashWindow::messageLoop()
 
 void SplashWindow::display()
 {
-	int	width, height;
-	int	startX, startY;
+	int	width;
+	int height;
+	int	startX;
+	int startY;
 	HDWP windefer{0};
 	RECT rect;
 
@@ -122,8 +124,8 @@ void SplashWindow::display()
 	height = rect.bottom - rect.top;
 
 	// center splash window on screen
-	int screenWidth = GetSystemMetrics( SM_CXSCREEN );
-	int screenHeight = GetSystemMetrics( SM_CYSCREEN );
+	const int screenWidth = GetSystemMetrics( SM_CXSCREEN );
+	const int screenHeight = GetSystemMetrics( SM_CYSCREEN );
 
 	startX = ( screenWidth / 2 ) - ( width / 2 );
 	startY = ( screenHeight / 2 ) - ( height / 2 );
@@ -154,10 +156,10 @@ bool SplashWindow::isVisible() const noexcept
 }
 
 
-LRESULT CALLBACK SplashWindow::windowProc( HWND hWnd,
-	unsigned uMsg,
-	WPARAM wParam,
-	LPARAM lParam )
+LRESULT CALLBACK SplashWindow::windowProc( const HWND hWnd,
+	const unsigned uMsg,
+	const WPARAM wParam,
+	const LPARAM lParam )
 {
 #if defined _DEBUG && !defined NDEBUG
 	auto &console = KeyConsole::getInstance();

@@ -56,13 +56,13 @@
       <Filter>engine\gameplay</Filter>
     </ClCompile>
     <ClCompile Include="src\cube.cpp">
-      <Filter>engine\vfx\drawable</Filter>
+      <Filter>engine\vfx\mesh</Filter>
     </ClCompile>
-    <ClCompile Include="src\drawable.cpp">
-      <Filter>engine\vfx\drawable</Filter>
+    <ClCompile Include="src\mesh.cpp">
+      <Filter>engine\vfx\mesh</Filter>
     </ClCompile>
     <ClCompile Include="src\camera_widget.cpp">
-      <Filter>engine\vfx\drawable</Filter>
+      <Filter>engine\vfx\mesh</Filter>
     </ClCompile>
     <ClCompile Include="src\graphics_friend.cpp">
       <Filter>engine\vfx</Filter>
@@ -74,7 +74,7 @@
       <Filter>engine\util</Filter>
     </ClCompile>
     <ClCompile Include="src\frustum.cpp">
-      <Filter>engine\vfx\drawable</Filter>
+      <Filter>engine\vfx\mesh</Filter>
     </ClCompile>
     <ClCompile Include="src\depth_reversed_pass.cpp">
       <Filter>engine\vfx\render_graph</Filter>
@@ -148,10 +148,10 @@
     <ClCompile Include="src\input_layout.cpp">
       <Filter>engine\vfx\d3d11</Filter>
     </ClCompile>
-    <ClCompile Include="src\rasterizer.cpp">
+    <ClCompile Include="src\rasterizer_state.cpp">
       <Filter>engine\vfx\d3d11</Filter>
     </ClCompile>
-    <ClCompile Include="src\rasterizer_shadow.cpp">
+    <ClCompile Include="src\rasterizer_state_shadow.cpp">
       <Filter>engine\vfx\d3d11</Filter>
     </ClCompile>
     <ClCompile Include="src\producer.cpp">
@@ -187,7 +187,7 @@
     <ClCompile Include="src\vertex_buffer.cpp">
       <Filter>engine\vfx\d3d11</Filter>
     </ClCompile>
-    <ClCompile Include="src\texture_sampler.cpp">
+    <ClCompile Include="src\texture_sampler_state.cpp">
       <Filter>engine\vfx\d3d11</Filter>
     </ClCompile>
     <ClCompile Include="src\texture.cpp">
@@ -278,10 +278,10 @@
       <Filter>engine\sfx</Filter>
     </ClCompile>
     <ClCompile Include="src\plane.cpp">
-      <Filter>engine\vfx\drawable</Filter>
+      <Filter>engine\vfx\mesh</Filter>
     </ClCompile>
     <ClCompile Include="src\sphere.cpp">
-      <Filter>engine\vfx\drawable</Filter>
+      <Filter>engine\vfx\mesh</Filter>
     </ClCompile>
     <ClCompile Include="src\signal_handling.cpp">
       <Filter>engine\os\win</Filter>
@@ -289,7 +289,7 @@
     <ClCompile Include="src\renderer_exception.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
-    <ClCompile Include="src\shadow_map_sampler.cpp">
+    <ClCompile Include="src\shadow_map_sampler_state.cpp">
       <Filter>engine\vfx\d3d11</Filter>
     </ClCompile>
     <ClCompile Include="src\mouse_picker.cpp">
@@ -317,10 +317,10 @@
       <Filter>engine\common</Filter>
     </ClCompile>
     <ClCompile Include="src\geometry.cpp">
-      <Filter>engine\vfx\drawable\primitives</Filter>
+      <Filter>engine\vfx\mesh\primitives</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle_mesh.cpp">
-      <Filter>engine\vfx\drawable\primitives</Filter>
+      <Filter>engine\vfx\mesh\primitives</Filter>
     </ClCompile>
     <ClCompile Include="src\model_visitor.cpp">
       <Filter>engine\gameplay</Filter>
@@ -338,10 +338,7 @@
       <Filter>third_party\imgui</Filter>
     </ClCompile>
     <ClCompile Include="src\rectangle.cpp">
-      <Filter>engine\vfx\drawable\primitives</Filter>
-    </ClCompile>
-    <ClCompile Include="src\sound_object.cpp">
-      <Filter>engine\sfx</Filter>
+      <Filter>engine\vfx\mesh\primitives</Filter>
     </ClCompile>
     <ClCompile Include="src\octree.cpp">
       <Filter>engine\gameplay</Filter>
@@ -372,6 +369,9 @@
     </ClCompile>
     <ClCompile Include="src\os_utils.cpp">
       <Filter>engine\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua_interface.cpp">
+      <Filter>engine\gameplay</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -667,9 +667,6 @@
     <ClInclude Include="third_party\assimp\include\assimp\MemoryIOWrapper.h">
       <Filter>third_party\assimp</Filter>
     </ClInclude>
-    <ClInclude Include="third_party\assimp\include\assimp\mesh.h">
-      <Filter>third_party\assimp</Filter>
-    </ClInclude>
     <ClInclude Include="third_party\assimp\include\assimp\metadata.h">
       <Filter>third_party\assimp</Filter>
     </ClInclude>
@@ -803,13 +800,13 @@
       <Filter>engine\gameplay</Filter>
     </ClInclude>
     <ClInclude Include="inc\cube.h">
-      <Filter>engine\vfx\drawable</Filter>
+      <Filter>engine\vfx\mesh</Filter>
     </ClInclude>
-    <ClInclude Include="inc\drawable.h">
-      <Filter>engine\vfx\drawable</Filter>
+    <ClInclude Include="inc\mesh.h">
+      <Filter>engine\vfx\mesh</Filter>
     </ClInclude>
     <ClInclude Include="inc\camera_widget.h">
-      <Filter>engine\vfx\drawable</Filter>
+      <Filter>engine\vfx\mesh</Filter>
     </ClInclude>
     <ClInclude Include="inc\graphics.h">
       <Filter>engine\vfx</Filter>
@@ -827,7 +824,7 @@
       <Filter>engine\util</Filter>
     </ClInclude>
     <ClInclude Include="inc\frustum.h">
-      <Filter>engine\vfx\drawable</Filter>
+      <Filter>engine\vfx\mesh</Filter>
     </ClInclude>
     <ClInclude Include="inc\depth_reversed_pass.h">
       <Filter>engine\vfx\render_graph</Filter>
@@ -907,10 +904,10 @@
     <ClInclude Include="inc\input_layout.h">
       <Filter>engine\vfx\d3d11</Filter>
     </ClInclude>
-    <ClInclude Include="inc\rasterizer.h">
+    <ClInclude Include="inc\rasterizer_state.h">
       <Filter>engine\vfx\d3d11</Filter>
     </ClInclude>
-    <ClInclude Include="inc\rasterizer_shadow.h">
+    <ClInclude Include="inc\rasterizer_state_shadow.h">
       <Filter>engine\vfx\d3d11</Filter>
     </ClInclude>
     <ClInclude Include="inc\producer.h">
@@ -943,7 +940,7 @@
     <ClInclude Include="inc\vertex_buffer.h">
       <Filter>engine\vfx\d3d11</Filter>
     </ClInclude>
-    <ClInclude Include="inc\texture_sampler.h">
+    <ClInclude Include="inc\texture_sampler_state.h">
       <Filter>engine\vfx\d3d11</Filter>
     </ClInclude>
     <ClInclude Include="inc\texture.h">
@@ -1046,10 +1043,10 @@
       <Filter>engine\sfx</Filter>
     </ClInclude>
     <ClInclude Include="inc\plane.h">
-      <Filter>engine\vfx\drawable</Filter>
+      <Filter>engine\vfx\mesh</Filter>
     </ClInclude>
     <ClInclude Include="inc\sphere.h">
-      <Filter>engine\vfx\drawable</Filter>
+      <Filter>engine\vfx\mesh</Filter>
     </ClInclude>
     <ClInclude Include="inc\key_wrl.h">
       <Filter>engine\os\win</Filter>
@@ -1063,7 +1060,7 @@
     <ClInclude Include="inc\render_surface.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
-    <ClInclude Include="inc\shadow_map_sampler.h">
+    <ClInclude Include="inc\shadow_map_sampler_state.h">
       <Filter>engine\vfx\d3d11</Filter>
     </ClInclude>
     <ClInclude Include="inc\mouse_picker.h">
@@ -1094,10 +1091,10 @@
       <Filter>engine\common</Filter>
     </ClInclude>
     <ClInclude Include="inc\geometry.h">
-      <Filter>engine\vfx\drawable\primitives</Filter>
+      <Filter>engine\vfx\mesh\primitives</Filter>
     </ClInclude>
     <ClInclude Include="inc\triangle_mesh.h">
-      <Filter>engine\vfx\drawable\primitives</Filter>
+      <Filter>engine\vfx\mesh\primitives</Filter>
     </ClInclude>
     <ClInclude Include="inc\model_visitor.h">
       <Filter>engine\gameplay</Filter>
@@ -1115,10 +1112,7 @@
       <Filter>engine\common</Filter>
     </ClInclude>
     <ClInclude Include="inc\rectangle.h">
-      <Filter>engine\vfx\drawable\primitives</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\sound_object.h">
-      <Filter>engine\sfx</Filter>
+      <Filter>engine\vfx\mesh\primitives</Filter>
     </ClInclude>
     <ClInclude Include="inc\non_copyable.h">
       <Filter>engine\common</Filter>
@@ -1158,6 +1152,21 @@
     </ClInclude>
     <ClInclude Include="inc\key_traits.h">
       <Filter>engine\util</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\serializable_index.h">
+      <Filter>engine\common</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\safer_ptr_ref.h">
+      <Filter>engine\common</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\subject_observer.h">
+      <Filter>engine\common</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\lua_interface.h">
+      <Filter>engine\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\aimesh.h">
+      <Filter>third_party\assimp</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1353,9 +1362,6 @@
     <Text Include="design_doc\fantasia.txt">
       <Filter>design_doc</Filter>
     </Text>
-    <Text Include="design_doc\cpp_nuggets.txt">
-      <Filter>design_doc</Filter>
-    </Text>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="third_party">
@@ -1436,9 +1442,6 @@
     <Filter Include="engine\vfx\render_graph">
       <UniqueIdentifier>{953b5d05-3506-4bc1-9f50-0f25b9cd0cc6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="engine\vfx\drawable">
-      <UniqueIdentifier>{a20e5f58-d59f-4323-8c6f-dadc52f1b15c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="engine\common">
       <UniqueIdentifier>{a52cfa5d-45f8-498a-81b4-a77e941af45e}</UniqueIdentifier>
     </Filter>
@@ -1448,9 +1451,6 @@
     <Filter Include="engine\vfx\shaders\hlsli">
       <UniqueIdentifier>{429036d2-9ada-42c3-be1a-0c683244253e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="engine\vfx\drawable\primitives">
-      <UniqueIdentifier>{2c6133c3-bbe8-4a73-b2fc-dc0165c75471}</UniqueIdentifier>
-    </Filter>
     <Filter Include="third_party\glue">
       <UniqueIdentifier>{b9ef6ca7-7d36-456d-ace2-c579f2a1a0cf}</UniqueIdentifier>
     </Filter>
@@ -1459,6 +1459,12 @@
     </Filter>
     <Filter Include="engine\os\win">
       <UniqueIdentifier>{c9c83815-2783-44c7-8c79-7c37300799a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\vfx\mesh">
+      <UniqueIdentifier>{a20e5f58-d59f-4323-8c6f-dadc52f1b15c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\vfx\mesh\primitives">
+      <UniqueIdentifier>{2c6133c3-bbe8-4a73-b2fc-dc0165c75471}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -164,13 +164,12 @@ public:
 	// get a string signature for this element (recursive); when called on the root
 	// element of a layout tree, generates a uniquely-identifying string for the layout
 	// we can use that signature to store a codex of layouts and to share layouts
-	std::string getSignature() const cond_noex;
+	std::string calcSignature() const cond_noex;
 	// Check if element is "real"
 	bool isValid() const noexcept;
 	// calculate array indexing offset - tricky
-	std::pair<size_t, const CBElement*> calculateArrayIndexingOffset( size_t offset,
-		size_t index ) const cond_noex;
-	// [] only works for Structs; access member (child node in tree) by name
+	std::pair<size_t, const CBElement*> calculateArrayIndexingOffset( const size_t offset, const size_t index ) const cond_noex;
+	// [] only works for Structs; access element (child node in tree) by name
 	CBElement& operator[]( const std::string &key ) cond_noex;
 	const CBElement& operator[]( const std::string &key ) const cond_noex;
 	// T() only works for Arrays; gets the array class layout object
@@ -178,27 +177,31 @@ public:
 	CBElement& T() cond_noex;
 	const CBElement& T() const cond_noex;
 	// offset based- functions only work after finalization!
-	size_t getOffsetBegin() const cond_noex;
-	size_t getOffsetEnd() const cond_noex;
+	const size_t getOffsetBegin() const cond_noex;
+	const size_t getOffsetEnd() const cond_noex;
 	// get size in bytes derived from offsets
-	size_t getSizeInBytes() const cond_noex;
+	const size_t getSizeInBytes() const cond_noex;
 	// only works for Structs; add CBElement to struct
-	CBElement& add( ElementType addedType, std::string name ) cond_noex;
-	template<ElementType typeAdded>
-	CBElement& add( std::string key ) cond_noex
+	CBElement& add( const ElementType addedType, const std::string& name ) cond_noex;
+	template<ElementType type>
+	CBElement& add( const std::string& key ) cond_noex
 	{
-		return add( typeAdded, std::move( key ) );
+		return add( type, std::move( key ) );
 	}
 	// only works for Arrays; set the class and the # of elements
-	CBElement& set( ElementType addedType, size_t size ) cond_noex;
-	template<ElementType typeAdded>
-	CBElement& set( size_t size ) cond_noex
+	CBElement& set( const ElementType addedType, const size_t size ) cond_noex;
+	template<ElementType type>
+	CBElement& set( const size_t size ) cond_noex
 	{
-		return set( typeAdded, size );
+		return set( type, size );
 	}
-	// returns offset of leaf types for read/write purposes w/ typecheck in Debug
+	
+	//===================================================
+	//	\function	fetch
+	//	\brief  returns offset of leaf types for read/write purposes w/ typecheck in Debug
+	//	\date	2022/08/30 0:46
 	template<typename T>
-	size_t fetch() const cond_noex
+	const size_t fetch() const cond_noex
 	{
 		switch( m_type )
 		{
@@ -213,18 +216,22 @@ CB_LEAF_TYPES
 		}
 	}
 private:
-	// construct an empty layout element
+	//===================================================
+	//	\function	ctor
+	//	\brief  construct an empty layout element
+	//	\date	2022/08/30 0:47
 	CBElement() noexcept = default;
-	CBElement( ElementType typeIn ) cond_noex;
+	CBElement( const ElementType typeIn ) cond_noex;
 	// sets all offsets for element and subelements, prepending padding when necessary
 	// returns offset directly after this element
-	size_t commit( size_t offsetIn ) cond_noex;
+	const size_t commit( const size_t offsetIn ) cond_noex;
 	// implementations for GetSignature for aggregate types
 	std::string getSignatureForStruct() const cond_noex;
-	std::string getSignatureForArray() const cond_noex;
+	std::string calcSignatureForArray() const cond_noex;
 	// implementations for commit for aggregate types
-	size_t commitStruct( size_t offsetIn );
-	size_t commitArray( size_t offsetIn );
+	const size_t commitStruct( const size_t offsetIn );
+	const size_t commitArray( const size_t offsetIn );
+
 	// returns singleton instance of empty layout element
 	static CBElement& getEmptyElement() noexcept
 	{
@@ -232,11 +239,11 @@ private:
 		return empty;
 	}
 	// returns the value of offset bumped up to the next 16-byte boundary (if not already on one)
-	static size_t advanceToBoundary( size_t offset ) noexcept;
+	static const size_t advanceToBoundary( const size_t offset ) noexcept;
 	// return true if a memory block crosses a boundary
-	static bool doesCrossBoundary( size_t offset, size_t size ) noexcept;
+	static bool doesCrossBoundary( const size_t offset, const size_t size ) noexcept;
 	// advance an offset to next boundary if block crosses a boundary
-	static size_t advanceIfCrossesBoundary( size_t offset, size_t size ) noexcept;
+	static const size_t advanceIfCrossesBoundary( const size_t offset, const size_t size ) noexcept;
 	// check string for validity as a struct key
 	static bool validateMemberName( const std::string &name ) noexcept;
 };
@@ -264,8 +271,8 @@ class CBLayout
 protected:
 	std::shared_ptr<CBElement> m_pLayoutRoot;
 public:
-	size_t getSizeInBytes() const noexcept;
-	std::string getSignature() const cond_noex;
+	const size_t getSizeInBytes() const noexcept;
+	std::string calcSignature() const cond_noex;
 protected:
 	CBLayout( std::shared_ptr<CBElement> pRoot ) noexcept;
 };
@@ -286,6 +293,7 @@ class RawLayout final
 	friend class LayoutMap;
 public:
 	RawLayout() noexcept;
+
 	// key into the root Struct
 	CBElement& operator[]( const std::string &key ) cond_noex;
 	// add an element to the root Struct
@@ -298,11 +306,10 @@ private:
 	// reset this object with an empty struct at its root
 	void clear() noexcept;
 	//===================================================
-	//	\function	commitLayout
-	//	\brief	"cooks the RawLayout"
-	//			commit the layout and then relinquish (by yielding the root layout element)
+	//	\function	cookLayout
+	//	\brief	commits the layout and then relinquish (by yielding the root layout element)
 	//	\date	2022/08/21 19:50
-	std::shared_ptr<CBElement> commitLayout() noexcept;
+	std::shared_ptr<CBElement> cookLayout() noexcept;
 };
 
 
@@ -358,9 +365,8 @@ private:
 	// refs should only be constructable by other refs or by the buffer
 	ConstElementView( const CBElement *pLayout, const char *pBytes, size_t offset ) noexcept;
 public:
-	// emitted when you use addressof &on the Ref
-	// it allows conversion to pointer, useful for using Buffer
-	// elements with ImGui widget functions etc.
+	// emitted when you use addressof on the Ref
+	// it allows conversion to pointer, useful for using Buffer elements with ImGui widget functions etc.
 	class Ptr
 	{
 		friend ConstElementView;
@@ -420,7 +426,7 @@ class ElementView final
 	char *m_p;
 private:
 	// refs should only be constructable by other refs or by the buffer
-	ElementView( const CBElement *pLayout, char *pBytes, size_t offset ) noexcept;
+	ElementView( const CBElement *pLayout, char *pBytes, const size_t offset ) noexcept;
 public:
 	class Ptr
 	{
@@ -442,7 +448,7 @@ public:
 	operator ConstElementView() const noexcept;
 	bool isValid() const noexcept;
 	ElementView operator[]( const std::string &key ) const cond_noex;
-	ElementView operator[]( size_t index ) const cond_noex;
+	ElementView operator[]( const size_t index ) const cond_noex;
 	// optionally set value if not an empty Ref
 	template<typename S>
 	bool setIfValid( const S &val ) cond_noex
@@ -487,7 +493,6 @@ class LayoutMap
 	std::unordered_map<std::string, std::shared_ptr<con::CBElement>> m_map;
 public:
 	static con::CookedLayout fetch( con::RawLayout &&cbLayout ) cond_noex;
-	static void resetInstance();
 private:
 	static LayoutMap& getInstance() noexcept;
 };
@@ -514,7 +519,6 @@ public:
 	Buffer( RawLayout &&lay ) cond_noex;
 	Buffer( const CookedLayout &lay ) cond_noex;
 	Buffer( CookedLayout &&lay ) cond_noex;
-	~Buffer() noexcept;
 	Buffer( const Buffer &rhs ) noexcept;
 	Buffer& operator==( const Buffer &rhs ) noexcept;
 	//===================================================
@@ -524,6 +528,7 @@ public:
 	//	\date	2022/08/21 19:58
 	Buffer( Buffer &&rhs ) noexcept;
 	Buffer& operator=( Buffer &&rhs ) noexcept;
+	~Buffer() noexcept;
 
 	// how you begin indexing into buffer (root is always Struct)
 	ElementView operator[]( const std::string &key ) cond_noex;
@@ -531,7 +536,7 @@ public:
 	ConstElementView operator[]( const std::string &key ) const cond_noex;
 	const char* getRawBytes() const noexcept;
 	// size of the raw byte buffer
-	size_t getSizeInBytes() const noexcept;
+	const size_t getSizeInBytes() const noexcept;
 	const CBElement& getRootLayoutElement() const noexcept;
 	// copy bytes from another buffer (layouts must match)
 	void copyFrom( const Buffer& ) cond_noex;

@@ -2,11 +2,15 @@
 
 #include <queue>
 #include <optional>
+#include "non_copyable.h"
 
 
 class Mouse final
+	: public NonCopyable
 {
 	friend class Window;
+
+	static constexpr inline unsigned int m_maxBufferSize = 16u;
 
 	struct RawDelta
 	{
@@ -41,12 +45,13 @@ class Mouse final
 		int x;
 		int y;
 	public:
-		Event( Type type,
+		Event( const Type type,
 			const Mouse &mouse ) noexcept
 			:
 			m_type(type),
 			m_bLmbPressed(mouse.m_bLmbPressed),
 			m_bRmbPressed(mouse.m_bRmbPressed),
+			m_bMmbPressed(mouse.m_bMmbPressed),
 			x(mouse.m_x),
 			y(mouse.m_y)
 		{
@@ -68,12 +73,12 @@ class Mouse final
 			return {x, y};
 		}
 
-		constexpr int getX() const noexcept
+		constexpr const int getX() const noexcept
 		{
 			return x;
 		}
 
-		constexpr int getY() const noexcept
+		constexpr const int getY() const noexcept
 		{
 			return y;
 		}
@@ -94,9 +99,8 @@ class Mouse final
 		}
 	};
 
-	static constexpr inline unsigned int m_maxBufferSize = 16u;
-	int m_x;
-	int m_y;
+	int m_x = 0;
+	int m_y = 0;
 	bool m_bLmbPressed = false;
 	bool m_bRmbPressed = false;
 	bool m_bMmbPressed = false;
@@ -109,14 +113,12 @@ private:
 	Mouse() = default;
 public:
 	~Mouse() noexcept = default;
-	Mouse( const Mouse &rhs ) = delete;
-	Mouse& operator=( const Mouse &rhs ) = delete;
 	Mouse( Mouse &&rhs ) noexcept;
 	Mouse& operator=( Mouse &&rhs ) noexcept;
 
-	std::pair<int, int> getPosition() const noexcept;
-	int getX() const noexcept;
-	int getY() const noexcept;
+	const std::pair<int, int> getPosition() const noexcept;
+	const int getX() const noexcept;
+	const int getY() const noexcept;
 	bool isInWindow() const noexcept;
 	bool isLmbPressed() const noexcept;
 	bool isRmbPressed() const noexcept;
@@ -129,19 +131,19 @@ public:
 	void disableRawInput() noexcept;
 	bool isRawInputEnabled() const noexcept;
 private:
-	void onMouseMove( int newx, int newy ) noexcept;
+	void onMouseMove( const int newx, const int newy ) noexcept;
 	void onMouseEnterWindow() noexcept;
 	void onMouseLeaveWindow() noexcept;
-	void onLmbPressed( int x, int y ) noexcept;
-	void onLmbReleased( int x, int y ) noexcept;
-	void onRmbPressed( int x, int y ) noexcept;
-	void onRmbReleased( int x, int y ) noexcept;
-	void onMmbPressed( int x, int y ) noexcept;
-	void onMmbReleased( int x, int y ) noexcept;
-	void onWheelDelta( int x, int y, int delta ) noexcept;
-	void onWheelUp( int x, int y ) noexcept;
-	void onWheelDown( int x, int y ) noexcept;
-	void onRawDelta( int dx, int dy ) noexcept;
+	void onLmbPressed( const int x, const int y ) noexcept;
+	void onLmbReleased( const int x, const int y ) noexcept;
+	void onRmbPressed( const int x, const int y ) noexcept;
+	void onRmbReleased( const int x, const int y ) noexcept;
+	void onMmbPressed( const int x, const int y ) noexcept;
+	void onMmbReleased( const int x, const int y ) noexcept;
+	void onWheelDelta( const int x, const int y, const int delta ) noexcept;
+	void onWheelUp( const int x, const int y ) noexcept;
+	void onWheelDown( const int x, const int y ) noexcept;
+	void onRawDelta( const int dx, const int dy ) noexcept;
 	void trimEventQueue() noexcept;
 	void trimRawInputBuffer() noexcept;
 };

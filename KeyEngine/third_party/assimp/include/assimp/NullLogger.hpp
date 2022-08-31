@@ -55,7 +55,7 @@ namespace Assimp {
 /** @brief CPP-API: Empty logging implementation.
  *
  * Does nothing! Used by default if the application hasn't requested a
- * custom logger via #DefaultLogger::set() or #DefaultLogger::create(); */
+ * custom logger via DefaultLogger::set() or DefaultLogger::create(); */
 class ASSIMP_API NullLogger
     : public Logger {
 

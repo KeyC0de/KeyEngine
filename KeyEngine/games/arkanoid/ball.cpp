@@ -14,7 +14,7 @@ Ball::Ball( const dx::XMFLOAT2 &position,
 
 }
 
-void Ball::update( float dt )
+void Ball::update( const float dt )
 {
 	dx::XMFLOAT2 change{m_vel.x * dt, m_vel.y * dt};
 	dx::XMStoreFloat2( &m_pos,
@@ -24,7 +24,7 @@ void Ball::update( float dt )
 bool Ball::doWallCollision( const Rect &wall )
 {
 	bool collided = false;
-	const Rect rect = getRect();
+	const Rect rect = this->rect();
 	if ( rect.m_left < wall.m_left )
 	{
 		m_pos.x += wall.m_left - rect.m_left;
@@ -63,7 +63,7 @@ void Ball::reboundY()
 	m_vel.y = -m_vel.y;
 }
 
-Rect Ball::getRect() const noexcept
+Rect Ball::rect() const noexcept
 {
 	return Rect::makeGivenCenter( m_pos,
 		m_radius,
@@ -80,7 +80,7 @@ const dx::XMFLOAT2& Ball::getPosition() const noexcept
 	return m_pos;
 }
 
-void Ball::render( Graphics &gph )
+void Ball::render( Graphics &gph ) cond_noex
 {
 	const int x = (int) m_pos.x - (int) m_radius;
 	const int y = (int) m_pos.y - (int) m_radius;

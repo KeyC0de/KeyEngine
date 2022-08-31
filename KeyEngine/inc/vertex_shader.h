@@ -14,8 +14,7 @@ public:
 
 	void bind( Graphics &gph ) cond_noex override;
 	ID3DBlob* getBytecode() const noexcept;
-	static std::shared_ptr<VertexShader> fetch( Graphics &gph,
-		const std::string &filepath );
-	static std::string generateUid( const std::string &filepath );
-	std::string getUid() const noexcept override;
+	static std::shared_ptr<VertexShader> fetch( Graphics &gph, const std::string &filepath );
+	static std::string calcUid( const std::string &filepath );
+	const std::string getUid() const noexcept override;
 };

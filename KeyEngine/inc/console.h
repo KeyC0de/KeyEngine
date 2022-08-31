@@ -2,6 +2,7 @@
 
 #include <string>
 #include "winner.h"
+#include "non_copyable.h"
 
 
 //============================================================
@@ -16,6 +17,7 @@
 //			the mode is changed dynamically depending on print/log/read operation request
 //=============================================================
 class KeyConsole final
+	: public NonCopyable
 {
 	static inline constexpr const char *currentVersion = "v0.4";
 	static inline constexpr const char *defaultConsoleTitle = "Debug Console - ";
@@ -31,12 +33,10 @@ class KeyConsole final
 	KeyConsole( const std::string &fontName = "Lucida Console" );
 	bool setDefaultColor();
 public:
-	KeyConsole( const KeyConsole &rhs ) = delete;
-	KeyConsole& operator=( const KeyConsole &rhs ) = delete;
 	~KeyConsole();
 
-	static DWORD getFontFamily( HANDLE h );
-	static void getConsoleInfo( HANDLE h );
+	static const DWORD getFontFamily( const HANDLE h );
+	static void getConsoleInfo( const HANDLE h );
 public:
 	bool closeConsole();
 	static KeyConsole& getInstance() noexcept;
@@ -45,18 +45,18 @@ public:
 	//	\brief  you must call this manually prior to program exit to avoid memory leaks
 	//	\date	2020/12/30 22:19
 	static void resetInstance();
-	int getConsoleMode() const noexcept;
-	std::string getConsoleModeStr() const noexcept;
+	const int getConsoleMode() const noexcept;
+	const std::string getConsoleModeStr() const noexcept;
 	// get current console's Code Page. for a list of code pages check link:
 	// https://docs.microsoft.com/el-gr/windows/desktop/Intl/code-page-identifiers
-	uint32_t getConsoleCodePage() const noexcept;
-	HANDLE getHandle() const noexcept;
-	int32_t setConsoleCodePage( uint32_t cp );
+	const HANDLE getHandle() const noexcept;
+	const uint32_t getConsoleCodePage() const noexcept;
+	const int32_t setConsoleCodePage( const uint32_t cp );
 	void setFont( const std::string &fontName );
-	int32_t setCurcorPos( _COORD xy = {0,0} );
-	bool setColor( WORD attributes = FOREGROUND_RED | BACKGROUND_RED | BACKGROUND_GREEN );
-	WORD getConsoleTextAttributes() const noexcept;
-	WORD getConsoleDefaultTextAttributes() const noexcept;
+	const int32_t setCurcorPos( const _COORD xy = {0,0} );
+	bool setColor( const WORD attributes = FOREGROUND_RED | BACKGROUND_RED | BACKGROUND_GREEN );
+	const WORD getConsoleTextAttributes() const noexcept;
+	const WORD getConsoleDefaultTextAttributes() const noexcept;
 	void show() const;
 	void hide() const;
 	//===================================================

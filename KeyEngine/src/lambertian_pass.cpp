@@ -6,7 +6,7 @@
 #include "render_target.h"
 #include "depth_stencil_view.h"
 #include "depth_stencil_state.h"
-#include "texture_sampler.h"
+#include "texture_sampler_state.h"
 #include "assertions_console.h"
 
 
@@ -23,10 +23,10 @@ LambertianPass::LambertianPass( Graphics &gph,
 	addConsumer( RenderSurfaceConsumer<IDepthStencilView>::make( "depthStencil",
 		m_pDsv ) );
 	addContainerBindableConsumer<IBindable>( "shadowCubemapRttIn" );
-	addPassBindable( std::make_shared<TextureSampler>( gph,
+	addPassBindable( std::make_shared<TextureSamplerState>( gph,
 		0u,
-		TextureSampler::FilterMode::Anisotropic,
-		TextureSampler::AddressMode::Wrap ) );
+		TextureSamplerState::FilterMode::Anisotropic,
+		TextureSamplerState::AddressMode::Wrap ) );
 	addProducer( RenderSurfaceProducer<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );
 	addProducer( RenderSurfaceProducer<IDepthStencilView>::make( "depthStencil",
@@ -35,15 +35,15 @@ LambertianPass::LambertianPass( Graphics &gph,
 		DepthStencilState::Mode::Default ) );
 }
 
-void LambertianPass::setMainCamera( const Camera &cam ) noexcept
+void LambertianPass::setActiveCamera( const Camera &cam ) noexcept
 {
-	m_pMainCamera = &cam;
+	m_pActiveCamera = &cam;
 }
 
 void LambertianPass::run( Graphics &gph ) const cond_noex
 {
-	ASSERT( m_pMainCamera, "Main camera is absent!!!" );
-	m_pMainCamera->makeActive( gph,
+	ASSERT( m_pActiveCamera, "Main camera is absent!!!" );
+	m_pActiveCamera->makeActive( gph,
 		false );
 	RenderQueuePass::run( gph );
 }

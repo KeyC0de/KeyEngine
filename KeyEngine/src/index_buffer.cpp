@@ -58,7 +58,7 @@ std::shared_ptr<IndexBuffer> IndexBuffer::fetch( Graphics &gph,
 		indices );
 }
 
-std::string IndexBuffer::getUid() const noexcept
+const std::string IndexBuffer::getUid() const noexcept
 {
-	return generateUid( m_tag );
+	return calcUid( m_tag );
 }

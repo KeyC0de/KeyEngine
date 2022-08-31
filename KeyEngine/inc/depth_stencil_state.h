@@ -26,10 +26,10 @@ private:
 	Mode m_mode;
 	Microsoft::WRL::ComPtr<ID3D11DepthStencilState> m_pDepthStencilState;
 public:
-	DepthStencilState( Graphics &gph, Mode mode );
+	DepthStencilState( Graphics &gph, const Mode mode );
 
 	void bind( Graphics &gph ) cond_noex override;
-	static std::shared_ptr<DepthStencilState> fetch( Graphics &gph, Mode mode );
-	static std::string generateUid( Mode mode );
-	std::string getUid() const noexcept override;
+	static std::shared_ptr<DepthStencilState> fetch( Graphics &gph, const Mode mode );
+	static std::string calcUid( const Mode mode );
+	const std::string getUid() const noexcept override;
 };

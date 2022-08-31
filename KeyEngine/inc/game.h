@@ -9,6 +9,7 @@
 #include "light.h"
 #include "cube.h"
 #include "model.h"
+#include "non_copyable.h"
 #include "renderer.h"
 #include "settings_manager.h"
 #include "game_state.h"
@@ -25,12 +26,13 @@
 
 template<typename T>
 class Game
+	: public NonCopyableAndNonMovable
 {
 	class GameException final
 		: public KeyException
 	{
 	public:
-		GameException( int line, const char *file, const char *function, const std::string &msg ) noexcept;
+		GameException( const int line, const char *file, const char *function, const std::string &msg ) noexcept;
 
 		const std::string getType() const noexcept override final;
 		virtual const char* what() const noexcept override final;
@@ -46,16 +48,13 @@ public:
 	~Game() noexcept = default;
 
 protected:
-	Game( int width, int height, const std::string &title, unsigned nWindows = 1 );
-	Game( const Game &rhs ) = delete;
-	Game& operator=( const Game &rhs ) = delete;
-	Game& operator=( Game &&rhs ) = delete;
-	Game( Game &&rhs ) = delete;
+	Game( const int width, const int height, const std::string &title, const unsigned nWindows = 1 );
 
-	float calculateDt();
-	std::optional<Window*> getForegroundWindow() noexcept;
+	const float calcDt();
+	std::optional<Window*> getForegroundWindow() const noexcept;
 	void setState( std::unique_ptr<State> pNewState, Mouse &mouse );
-	State* getState() noexcept;
+	const State* getState() const noexcept;
+	State& state() noexcept;
 private:
 	ImguiManager* createImgui() noexcept;
 };
@@ -74,13 +73,13 @@ class Sandbox3d
 	Model m_nanoSuit{m_mainWindow.getGraphics(), "assets/models/nano_textured/nanosuit.obj", 2.0f};
 	Model m_carabiner{m_mainWindow.getGraphics(), "assets/models/carabiner/carabiner_hook.fbx", 1.0f};
 public:
-	Sandbox3d( int width, int height, int nWindows = 1 );
+	Sandbox3d( int const width, const int height, const int nWindows = 1 );
 
 	int loop();
 private:
-	void checkInput( float dt );
-	void update( float dt );
-	void render( float dt );
+	void checkInput( const float dt );
+	void update( const float dt );
+	void render( const float dt );
 	void present();
 	void renderImgui();
 };
@@ -102,13 +101,13 @@ class Arkanoid final
 	Sound m_brickSound;
 	Sound m_padSound;
 public:
-	Arkanoid( int width, int height );
+	Arkanoid( const int width, const int height );
 
 	int loop();
 private:
-	void checkInput( float dt );
-	void update( float dt );
-	void render( float dt );
+	void checkInput( const float dt );
+	void update( const float dt );
+	void render( const float dt );
 	void present();
 };
 
@@ -135,13 +134,13 @@ class Snake final
 	Sound sfxEat = Sound{L"Sounds\\Eat.wav"};
 	ren::Renderer2d m_renderer;
 public:
-	Snake( int width, int height );
+	Snake( const int width, const int height );
 
 	int loop();
 private:
-	void checkInput( float dt );
-	void update( float dt );
-	void render( float dt );
+	void checkInput( const float dt );
+	void update( const float dt );
+	void render( const float dt );
 	void present();
 };*/
 

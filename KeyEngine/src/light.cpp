@@ -24,8 +24,8 @@ void DirectionalLightVSCB::update( Graphics &gph )
 PointLight::PointLight( Graphics &gph,
 	const DirectX::XMFLOAT3 &pos,
 	const DirectX::XMFLOAT3 &col,
-	bool bShadowCasting,
-	float radius )
+	const bool bShadowCasting,
+	const float radius )
 	:
 	m_sphereMesh(gph, radius),
 	m_pscb(gph, m_pointLightPscbSlot),
@@ -56,12 +56,12 @@ PointLight::PointLight( Graphics &gph,
 	}
 }
 
-std::string PointLight::getName() const noexcept
+const std::string& PointLight::getName() const noexcept
 {
 	return m_name;
 }
 
-void PointLight::setIntensity( float newIntensity ) noexcept
+void PointLight::setIntensity( const float newIntensity ) noexcept
 {
 	m_pscbData.intensity = newIntensity;
 }
@@ -87,12 +87,9 @@ void PointLight::displayImguiWidgets() noexcept
 		};
 
 		ImGui::Text( "Position" );
-		dirtyCheck( ImGui::SliderFloat( "X", &m_pscbData.pos.x, -60.0f, 60.0f,
-			"%.1f" ) );
-		dirtyCheck( ImGui::SliderFloat( "Y", &m_pscbData.pos.y, -60.0f, 60.0f,
-			"%.1f" ) );
-		dirtyCheck( ImGui::SliderFloat( "Z", &m_pscbData.pos.z, -60.0f, 60.0f,
-			"%.1f" ) );
+		dirtyCheck( ImGui::SliderFloat( "X", &m_pscbData.pos.x, -60.0f, 60.0f, "%.1f" ) );
+		dirtyCheck( ImGui::SliderFloat( "Y", &m_pscbData.pos.y, -60.0f, 60.0f, "%.1f" ) );
+		dirtyCheck( ImGui::SliderFloat( "Z", &m_pscbData.pos.z, -60.0f, 60.0f, "%.1f" ) );
 
 		if ( bDirty && m_bShadowCasting )
 		{
@@ -100,20 +97,14 @@ void PointLight::displayImguiWidgets() noexcept
 		}
 
 		ImGui::Text( "Intensity & Color" );
-		ImGui::SliderFloat( "Intensity", &m_pscbData.intensity, 0.01f, 4.0f,
-			"%.2f",
-			2.0f );
+		ImGui::SliderFloat( "Intensity", &m_pscbData.intensity, 0.01f, 4.0f, "%.2f", 2.0f );
 		ImGui::ColorEdit3( "Diffuse", &m_pscbData.lightColor.x );
 		ImGui::ColorEdit3( "Ambient", &m_pscbData.ambient.x );
 
 		ImGui::Text( "Attenuation" );
-		ImGui::SliderFloat( "Constant", &m_pscbData.attConstant, 0.05f, 10.0f, "%.2f",
-			4.0f );
-		ImGui::SliderFloat( "Linear", &m_pscbData.attLinear, 0.0001f, 4.0f, "%.4f",
-			8.0f );
-		ImGui::SliderFloat( "Quadratic", &m_pscbData.attQuadratic, 0.0000001f, 10.0f,
-			"%.7f",
-			10.0f);
+		ImGui::SliderFloat( "Constant", &m_pscbData.attConstant, 0.05f, 10.0f, "%.2f", 4.0f );
+		ImGui::SliderFloat( "Linear", &m_pscbData.attLinear, 0.0001f, 4.0f, "%.4f", 8.0f );
+		ImGui::SliderFloat( "Quadratic", &m_pscbData.attQuadratic, 0.0000001f, 10.0f, "%.7f", 10.0f);
 
 		if ( ImGui::Button( "Reset" ) )
 		{
@@ -129,7 +120,7 @@ void PointLight::resetToDefault() noexcept
 }
 
 void PointLight::update( Graphics &gph,
-	float dt,
+	const float dt,
 	const DirectX::XMMATRIX &activeCameraViewMat ) const noexcept
 {
 	auto copy = m_pscbData;
@@ -142,7 +133,7 @@ void PointLight::update( Graphics &gph,
 	m_pscb.bind( gph );
 }
 
-void PointLight::render( size_t channels ) const cond_noex
+void PointLight::render( const size_t channels ) const cond_noex
 {
 	m_sphereMesh.render( channels );
 }

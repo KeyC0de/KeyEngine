@@ -10,8 +10,7 @@ class RendererException final
 	: public KeyException
 {
 public:
-	RendererException( int line, const char *file, const char *function,
-		const std::string &msg ) noexcept;
+	RendererException( int line, const char *file, const char *function, const std::string &msg ) noexcept;
 
 	const std::string getType() const noexcept override final;
 	virtual const char* what() const noexcept override final;

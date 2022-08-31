@@ -2,8 +2,8 @@
 
 #include <iostream>
 
-//#define LSTR( expr ) L ## expr
-//#define STRINGIFY( expr ) LSTR( #expr )
+#define LSTR( expr ) L ## expr
+#define STRINGIFYW( expr ) LSTR( #expr )
 #define STRINGIFY( expr ) #expr
 
 #ifdef __cplusplus
@@ -11,7 +11,7 @@ extern "C" {
 #endif
 extern bool assertPrint( const char *expr,
 	const char *file,
-	int line,
+	const int line,
 	const char *function,
 	const char *msg = "" );
 #ifdef __cplusplus

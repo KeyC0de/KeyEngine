@@ -6,6 +6,7 @@
 #include <sstream>
 #include <iomanip>
 #include "assertions_console.h"
+#include "consteval_forced.h"
 
 
 namespace util
@@ -13,12 +14,6 @@ namespace util
 
 constexpr float PI = 3.14159265f;
 constexpr double PI_D = 3.1415926535897932;
-
-//===================================================
-//	\function	nextPowerOf2
-//	\brief  find smallest power of 2 greater than or equal to n
-//	\date	2022/04/06 12:52
-int nextPowerOf2( int n );
 
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
 constexpr T abs( const T val )
@@ -88,8 +83,8 @@ constexpr T mapRange( const T val,
 }
 
 template<typename T, typename = std::enable_if_t<std::is_floating_point_v<T>>>
-bool approximatelyEqual( T x,
-	T y )
+constexpr bool approximatelyEqual( const T x,
+	const T y )
 {
 	return std::fabs( x - y ) <= std::numeric_limits<T>::epsilon();
 }
@@ -144,11 +139,11 @@ constexpr T square( const T x )
 }
 
 template<typename T>
-std::string toHexString( T i )
+std::string toHexString( const T i )
 {
 	std::ostringstream oss;
 	oss << "0x"
-		<< std::setfill ('0')
+		<< std::setfill('0')
 		<< std::setw( sizeof( T ) * 2 )
 		<< std::hex
 		<< i;
@@ -166,11 +161,11 @@ constexpr T normalizeTo01( const T val,
 // convert a range of numbers to any other range of numbers maintaining ratio
 // protecting against the the case where the old range is 0 ( oldMin = oldMax )
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
-T convertRange( T valueInRange,
-	T oldMin,
-	T oldMax,
-	T newMin,
-	T newMax )
+constexpr T convertRange( const T valueInRange,
+	const T oldMin,
+	const T oldMax,
+	const T newMin,
+	const T newMax )
 {
 	T oldRange = oldMax - oldMin;
 	T newValueInRange;
@@ -193,7 +188,7 @@ T convertRange( T valueInRange,
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
 constexpr T wrapAngle( const T angle )
 {
-	const T val = fmod( angle, (T)2.0 * (T)PI_D );
+	const T val = util::modulusFloat( angle, (T)2.0 * (T)PI_D );
 	return ( val > (T)PI_D ) ?
 		( val - (T)2.0 * (T)PI_D ) :		// if > 2pi subtract 2pi from it
 		val;
@@ -236,10 +231,9 @@ constexpr T gaussianDistr( const T x,
 //===================================================
 //	\function	powerOf
 //	\brief  calculate x^n, n > 1
-//				doesn't take into account negative powers for now
+//			#TODO: doesn't take into account negative powers for now
 //	\date	2021/10/25 19:40
-template<typename T, typename J, typename = std::enable_if_t<std::is_arithmetic_v<T>>,
-	typename = std::enable_if_t<std::is_arithmetic_v<J>>>
+template<typename T, typename J, typename = std::enable_if_t<std::is_arithmetic_v<T>>, typename = std::enable_if_t<std::is_arithmetic_v<J>>>
 constexpr T powerOf( T x,
 	J n )
 {
@@ -260,43 +254,23 @@ constexpr T powerOf( T x,
 }
 
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
-T randomInRange( T start,
-	T end )
+constexpr T randomInRange( const T start,
+	const T end )
 {
 	return ( rand() * ( end - start + 1 ) ) + start;
 }
 
-// produce random floating point numbers
-float frand() noexcept;
-// O(log_n(m))
-int gcd( int divident, int divisor ) noexcept;
-constexpr int factorialOf( int n ) noexcept;
-// trial division method, returns 1 for prime, 0 for not prime
-int isPrime( int number ) noexcept;
-// Function that calculates the square root of a number
-constexpr float squareRoot( float x ) noexcept;
-constexpr bool isPowerOfTwo( const std::size_t value ) noexcept;
-float cosine( float x ) noexcept;
-float sine( float x ) noexcept;
-
-constexpr int linearSearch( int *A, int n, int x );
-constexpr int binarySearch( int *A, int low, int high, int x );
-
-int toDecimal( int hex );
-int toHex( int dec );
-
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
-int signum( T val )
+constexpr int signum( const T val )
 {
-	return val > (T)0 ?
+	return val > (T) 0 ?
 		1 :
 		-1;
 }
 
-void convertToBase( int number, int base ) noexcept;
-
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
-T nthMultipleOf( T number, int n )
+constexpr T nthMultipleOf( const T number,
+	const int n )
 {
 	T multiple;
 	for ( int i = 2; i <= n; ++i )
@@ -306,27 +280,84 @@ T nthMultipleOf( T number, int n )
 	return multiple;
 }
 
-// bitwise ops
-// Prints given datatype to binary
-void printDec2Bin( size_t const size, void const *const ptr );
-bool oppositeSigns( int x, int y );
-// print binary conversion of supplied decimal number
-void dec2bin( int num );
-// finds MSB index in decimal number (counting from 0)
-int msbIndexOfDec( int num );
-//  count number of Ones in a given number
-int countSetBits( int num );
-// checks whether a number is a power of 2
-int isPowerOf2( int num );
-// Swap the bits at position i and j of given number iff they are different
-int swapBits( int num, int i, int j );
-int setNthBit( int num, unsigned n );
-int clearNthBit( int num, unsigned n );
-int toggleNthBit( int num, unsigned n );
-// check nth bit's state 0 or 1
-int returnNthBit( int num, unsigned n );
-// change nth bit to bitVal
-int changeNthBit( int num, unsigned n, bool bitVal );
+//===================================================
+//	\function	nextPowerOf2
+//	\brief  find smallest power of 2 greater than or equal to n
+//	\date	2022/04/06 12:52
+constexpr int nextPowerOf2( int n );
+//===================================================
+//	\function	gcd
+//	\brief  prints Greatest Common Divisor of numbers
+//			Complexity: O(log_n(m))
+//	\date	2022/08/29 0:04
+int gcd( int divident, int divisor );
+constexpr int factorialOf( int n ) noexcept;
+//===================================================
+//	\function	isPrime
+//	\brief  trial division method
+//	\date	2022/08/28 23:45
+constexpr bool isPrime( const int number ) noexcept;
+//===================================================
+//	\function	squareRoot
+//	\brief  calculates the square root of a number
+//	\date	2022/08/28 23:46
+constexpr float squareRoot( const float x ) noexcept;
+constexpr bool isPowerOfTwo( const std::size_t value ) noexcept;
+constexpr float cosine( float x ) noexcept;
+constexpr float sine( float x ) noexcept;
+
+constexpr int linearSearch( const int *A, const int n, const int x );
+constexpr int binarySearch( const int *A, int low, int high, const int x );
+
+int toDecimal( const int hex );
+int toHex( const int dec );
+
+/// bitwise ops
+//===================================================
+//	\function	printDec2Bin
+//	\brief  prints given datatype to binary
+//	\date	2022/08/29 0:03
+void printDec2Bin( const size_t size, void const *const ptr ) noexcept;
+//===================================================
+//	\function	printDecToBin
+//	\brief  print binary conversion of supplied decimal number
+//	\date	2022/08/29 0:04
+void printDecToBin( const int num ) noexcept;
+constexpr bool haveOppositeSigns( int x, int y ) noexcept;
+//===================================================
+//	\function	msbIndexOfDec
+//	\brief  finds MSB index in decimal number (counting from 0)
+//	\date	2022/08/29 0:04
+constexpr int msbIndexOfDec( int num ) noexcept;
+//===================================================
+//	\function	countSetBits
+//	\brief  count number of Ones in a given number
+//	\date	2022/08/29 0:02
+constexpr int countSetBits( int num ) noexcept;
+//===================================================
+//	\function	isPowerOf2
+//	\brief  checks whether a number is a power of 2
+//	\date	2022/08/29 0:02
+constexpr int isPowerOf2( const int num ) noexcept;
+constexpr void convertToBase( int number, const int base ) noexcept;
+//===================================================
+//	\function	swapBits
+//	\brief  swap the bits at position i and j of given number iff they are different
+//	\date	2022/08/29 0:02
+constexpr int swapBits( int num, const int i, const int j ) noexcept;
+constexpr int setNthBit( int num, const unsigned n ) noexcept;
+constexpr int clearNthBit( int num, const unsigned n ) noexcept;
+constexpr int toggleNthBit( int num, const unsigned n ) noexcept;
+//===================================================
+//	\function	returnNthBit
+//	\brief  check nth bit's state 0 or 1
+//	\date	2022/08/29 0:02
+constexpr int returnNthBit( int num, const unsigned n ) noexcept;
+//===================================================
+//	\function	changeNthBit
+//	\brief  change nth bit to bitVal
+//	\date	2022/08/29 0:02
+constexpr int changeNthBit( int num, const unsigned n, const bool bitVal ) noexcept;
 
 template<int b>
 class ByteSet

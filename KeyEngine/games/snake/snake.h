@@ -19,19 +19,19 @@ class SnakeRepr
 		ColorBGRA m_color;
 	public:
 		Segment( const GridLocation &gridLoc );
-		Segment( ColorBGRA col );
+		Segment( const ColorBGRA col );
 
-		void render( Graphics &gph, SnakePlayField &field ) const;
+		void render( Graphics &gph, const SnakePlayField &field ) const cond_noex;
 		void follow( const Segment &next );
 		void advance( const GridLocation &delta );
-		const GridLocation &getGridLocation() const;
+		const GridLocation& getGridLocation() const;
 	};
 
 	std::vector<Segment> m_segments;
 public:
 	SnakeRepr( const GridLocation &gridLoc );
 
-	void render( Graphics &gph, SnakePlayField &field ) const;
+	void render( Graphics &gph, const SnakePlayField &field ) const cond_noex;
 	void moveRel( const GridLocation &delta );
 	void grow( const GridLocation &delta );
 	GridLocation getNextHeadLocation( const GridLocation &delta ) const;
@@ -40,5 +40,5 @@ public:
 	//	\brief  if a segment's location is equal to the next head location then collision!
 	//	\date	2021/10/24 20:09
 	bool checkForCollisions( const GridLocation &targetGridLoc ) const;
-	int getLength() const;
+	const int getLength() const noexcept;
 };

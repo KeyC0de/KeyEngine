@@ -9,7 +9,7 @@ namespace mwrl = Microsoft::WRL;
 
 CubeTexture::CubeTexture( Graphics &gph,
 	const std::string &path,
-	unsigned slot )
+	const unsigned slot )
 	:
 	m_path{path},
 	m_slot(slot)
@@ -38,7 +38,7 @@ CubeTexture::CubeTexture( Graphics &gph,
 	D3D11_SUBRESOURCE_DATA subRscData[6]{};
 	for ( int i = 0; i < 6; i++ )
 	{
-		subRscData[i].pSysMem = bitmaps[i].dataConst();
+		subRscData[i].pSysMem = bitmaps[i].getData();
 		subRscData[i].SysMemPitch = bitmaps[i].getPitch();
 		subRscData[i].SysMemSlicePitch = 0u;
 	}
@@ -71,10 +71,10 @@ void CubeTexture::bind( Graphics &gph ) cond_noex
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 CubeTextureRT::CubeTextureRT( Graphics &gph,
-	unsigned width,
-	unsigned height,
-	unsigned slot,
-	DXGI_FORMAT format )
+	const unsigned width,
+	const unsigned height,
+	const unsigned slot,
+	const DXGI_FORMAT format )
 	:
 	m_slot(slot)
 {
@@ -124,7 +124,7 @@ void CubeTextureRT::bind( Graphics &gph ) cond_noex
 	DXGI_GET_QUEUE_INFO( gph );
 }
 
-std::shared_ptr<RenderTargetOutput> CubeTextureRT::shareRenderTarget( size_t index )
+std::shared_ptr<RenderTargetOutput> CubeTextureRT::shareRenderTarget( const size_t index )
 	const
 {
 	return m_renderTargetViews[index];
@@ -132,9 +132,9 @@ std::shared_ptr<RenderTargetOutput> CubeTextureRT::shareRenderTarget( size_t ind
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 CubeTextureDS::CubeTextureDS( Graphics &gph,
-	unsigned size,
-	unsigned slot,
-	DXGI_FORMAT format )
+	const unsigned size,
+	const unsigned slot,
+	const DXGI_FORMAT format )
 	:
 	m_slot(slot)
 {
@@ -176,7 +176,7 @@ CubeTextureDS::CubeTextureDS( Graphics &gph,
 	}
 }
 
-std::shared_ptr<DepthStencilOutput> CubeTextureDS::shareDepthBuffer( size_t index ) const
+std::shared_ptr<DepthStencilOutput> CubeTextureDS::shareDepthBuffer( const size_t index ) const
 {
 	return m_depthStencilViews[index];
 }

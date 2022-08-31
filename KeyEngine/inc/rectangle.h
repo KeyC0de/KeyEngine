@@ -3,6 +3,15 @@
 #include <DirectXMath.h>
 
 
+//=============================================================
+//	\class	Rect
+//
+//	\author	KeyC0de
+//	\date	2022/08/30 12:56
+//
+//	\brief	a Rectangle class
+//			don't rename it to Rectangle, as it conflicts with Windows headers
+//=============================================================
 struct Rect
 {
 	float m_left;
@@ -10,13 +19,12 @@ struct Rect
 	float m_top;
 	float m_bottom;
 
-	static Rect makeGivenCenter( const DirectX::XMFLOAT2 &center, float halfWidth,
-		float halfHeight );
+	static Rect makeGivenCenter( const DirectX::XMFLOAT2 &center, const float halfWidth, const float halfHeight );
 
 	Rect() = default;
-	Rect( float left, float right, float top, float bottom );
+	Rect( const float left, const float right, const float top, const float bottom );
 	Rect( const DirectX::XMFLOAT2 &topLeft, const DirectX::XMFLOAT2 &bottomRight );
-	Rect( const DirectX::XMFLOAT2 &topLeft, float width, float height );
+	Rect( const DirectX::XMFLOAT2 &topLeft, const float width, const float height );
 
 	//===================================================
 	//	\function	isOverlappingWith
@@ -27,7 +35,7 @@ struct Rect
 	//	\function	calcScaled
 	//	\brief  gets an expanded (offset>0) or minimized (offset<0) form of the rectangle
 	//	\date	2021/10/17 2:21
-	Rect calcScaled( float offset ) const noexcept;
+	Rect calcScaled( const float offset ) const noexcept;
 	const float getWidth() const noexcept;
 	const float getHeight() const noexcept;
 	const DirectX::XMFLOAT2 calcCenter() const noexcept;

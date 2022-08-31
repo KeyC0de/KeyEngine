@@ -88,6 +88,7 @@
       <PreprocessorDefinitions>_DEBUG;NO_DUMPS;UNICODE;_UNICODE;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;%(PreprocessorDefinitions);BDEBUG=true;cond_noex=noexcept( !BDEBUG );pass_=(void)0;_CRT_SECURE_NO_WARNINGS;_32_BIT_ENTITY</PreprocessorDefinitions>
       <AdditionalOptions>/we4239 /we4265 /we4715 /Zc:__cplusplus /utf-8 %(AdditionalOptions)</AdditionalOptions>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <SuppressStartupBanner>false</SuppressStartupBanner>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -114,6 +115,7 @@
       <AdditionalOptions>/we4239 /we4265 /we4715 /Zc:__cplusplus /utf-8 %(AdditionalOptions)</AdditionalOptions>
       <SDLCheck />
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <SuppressStartupBanner>false</SuppressStartupBanner>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -143,6 +145,7 @@
       <SDLCheck>
       </SDLCheck>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <SuppressStartupBanner>false</SuppressStartupBanner>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -178,6 +181,7 @@
     <ClCompile Include="src\algorithms.cpp" />
     <ClCompile Include="src\effect_visitor.cpp" />
     <ClCompile Include="src\grid_location.cpp" />
+    <ClCompile Include="src\lua_interface.cpp" />
     <ClCompile Include="src\model_visitor.cpp" />
     <ClCompile Include="src\mouse_picker.cpp" />
     <ClCompile Include="src\rectangle.cpp" />
@@ -218,7 +222,7 @@
     <ClCompile Include="src\cube_texture.cpp" />
     <ClCompile Include="src\d3d_utils.cpp" />
     <ClCompile Include="src\depth_stencil_view.cpp" />
-    <ClCompile Include="src\drawable.cpp" />
+    <ClCompile Include="src\mesh.cpp" />
     <ClCompile Include="src\dumpling.cpp" />
     <ClCompile Include="src\dxgi_info_queue.cpp" />
     <ClCompile Include="src\dynamic_constant_buffer.cpp" />
@@ -259,24 +263,19 @@
     <ClCompile Include="src\performance_log.cpp" />
     <ClCompile Include="src\pixel_shader.cpp" />
     <ClCompile Include="src\primitive_topology.cpp" />
-    <ClCompile Include="src\rasterizer.cpp" />
-    <ClCompile Include="src\rasterizer_shadow.cpp" />
+    <ClCompile Include="src\rasterizer_state.cpp" />
+    <ClCompile Include="src\rasterizer_state_shadow.cpp" />
     <ClCompile Include="src\renderer.cpp" />
     <ClCompile Include="src\renderer_exception.cpp" />
     <ClCompile Include="src\render_queue_pass.cpp" />
     <ClCompile Include="src\render_target.cpp" />
     <ClCompile Include="src\settings_manager.cpp" />
-    <ClCompile Include="src\shadow_map_sampler.cpp" />
+    <ClCompile Include="src\shadow_map_sampler_state.cpp" />
     <ClCompile Include="src\signal_handling.cpp" />
     <ClCompile Include="src\skybox_vscb.cpp" />
     <ClCompile Include="src\sky_pass.cpp" />
     <ClCompile Include="src\solid_outline_draw_pass.cpp" />
     <ClCompile Include="src\solid_outline_mask_pass.cpp" />
-    <ClCompile Include="src\sound_object.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="src\sphere.cpp" />
     <ClCompile Include="src\sound_manager.cpp" />
     <ClCompile Include="src\splash_window.cpp">
@@ -292,7 +291,7 @@
     <ClCompile Include="src\testing.cpp" />
     <ClCompile Include="src\test_main.cpp" />
     <ClCompile Include="src\texture.cpp" />
-    <ClCompile Include="src\texture_sampler.cpp" />
+    <ClCompile Include="src\texture_sampler_state.cpp" />
     <ClCompile Include="src\transform_scale_vscb.cpp" />
     <ClCompile Include="src\transform_vscb.cpp" />
     <ClCompile Include="src\triangle_mesh.cpp" />
@@ -360,6 +359,7 @@
     <ClInclude Include="inc\grid_location.h" />
     <ClInclude Include="inc\key_traits.h" />
     <ClInclude Include="inc\lru_cache.h" />
+    <ClInclude Include="inc\lua_interface.h" />
     <ClInclude Include="inc\mouse_picker.h" />
     <ClInclude Include="inc\non_copyable.h" />
     <ClInclude Include="inc\rectangle.h" />
@@ -367,9 +367,11 @@
     <ClInclude Include="inc\bindable_exception.h" />
     <ClInclude Include="inc\net_utils.h" />
     <ClInclude Include="inc\pass_2d.h" />
+    <ClInclude Include="inc\safer_ptr_ref.h" />
+    <ClInclude Include="inc\serializable_index.h" />
     <ClInclude Include="inc\solid_outline_mask_pass.h" />
-    <ClInclude Include="inc\sound_object.h" />
     <ClInclude Include="inc\string_buffer.h" />
+    <ClInclude Include="inc\subject_observer.h" />
     <ClInclude Include="inc\testing.h" />
     <ClInclude Include="inc\vtune_itt_domain.h" />
     <ClInclude Include="inc\wireframe_pass.h" />
@@ -397,7 +399,7 @@
     <ClInclude Include="inc\file_utils.h" />
     <ClInclude Include="inc\operation.h" />
     <ClInclude Include="inc\depth_stencil_view.h" />
-    <ClInclude Include="inc\drawable.h" />
+    <ClInclude Include="inc\mesh.h" />
     <ClInclude Include="inc\dumpling.h" />
     <ClInclude Include="inc\dxgi_info_queue.h" />
     <ClInclude Include="inc\dynamic_constant_buffer.h" />
@@ -459,8 +461,8 @@
     </ClInclude>
     <ClInclude Include="inc\pixel_shader.h" />
     <ClInclude Include="inc\primitive_topology.h" />
-    <ClInclude Include="inc\rasterizer.h" />
-    <ClInclude Include="inc\rasterizer_shadow.h" />
+    <ClInclude Include="inc\rasterizer_state.h" />
+    <ClInclude Include="inc\rasterizer_state_shadow.h" />
     <ClInclude Include="inc\renderer.h" />
     <ClInclude Include="inc\renderer_exception.h" />
     <ClInclude Include="inc\render_queue_pass.h" />
@@ -469,7 +471,7 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="inc\settings_manager.h" />
     <ClInclude Include="inc\shadow_pass.h" />
-    <ClInclude Include="inc\shadow_map_sampler.h" />
+    <ClInclude Include="inc\shadow_map_sampler_state.h" />
     <ClInclude Include="inc\signal_handling.h" />
     <ClInclude Include="inc\skybox_vscb.h" />
     <ClInclude Include="inc\sky_pass.h" />
@@ -481,7 +483,7 @@
     <ClInclude Include="inc\cube.h" />
     <ClInclude Include="inc\plane.h" />
     <ClInclude Include="inc\texture.h" />
-    <ClInclude Include="inc\texture_sampler.h" />
+    <ClInclude Include="inc\texture_sampler_state.h" />
     <ClInclude Include="inc\transform_scale_vscb.h" />
     <ClInclude Include="inc\transform_vscb.h" />
     <ClInclude Include="inc\utils.h" />
@@ -493,6 +495,7 @@
     <ClInclude Include="inc\windows_message_map.h" />
     <ClInclude Include="inc\winner.h" />
     <ClInclude Include="inc\depth_reversed_pass.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\aimesh.h" />
     <ClInclude Include="third_party\assimp\include\assimp\ai_assert.h" />
     <ClInclude Include="third_party\assimp\include\assimp\anim.h" />
     <ClInclude Include="third_party\assimp\include\assimp\BaseImporter.h" />
@@ -536,7 +539,6 @@
     <ClInclude Include="third_party\assimp\include\assimp\matrix3x3.h" />
     <ClInclude Include="third_party\assimp\include\assimp\matrix4x4.h" />
     <ClInclude Include="third_party\assimp\include\assimp\MemoryIOWrapper.h" />
-    <ClInclude Include="third_party\assimp\include\assimp\mesh.h" />
     <ClInclude Include="third_party\assimp\include\assimp\metadata.h" />
     <ClInclude Include="third_party\assimp\include\assimp\NullLogger.hpp" />
     <ClInclude Include="third_party\assimp\include\assimp\ParsingUtils.h" />
@@ -992,7 +994,6 @@
     </FxCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="design_doc\cpp_nuggets.txt" />
     <Text Include="design_doc\fantasia.txt" />
     <Text Include="design_doc\TODO.txt" />
   </ItemGroup>

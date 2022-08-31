@@ -10,7 +10,7 @@ namespace mwrl = Microsoft::WRL;
 // select the right format to represent the depth stencil
 // DXGI_FORMAT_R32_TYPELESS is compatible with both DXGI_FORMAT_D32_FLOAT and DXGI_FORMAT_R32_FLOAT
 // _TYPELESS is actually a float type
-DXGI_FORMAT getTypelessFormat( IDepthStencilView::Mode mode )
+const DXGI_FORMAT getTypelessFormat( const IDepthStencilView::Mode mode )
 {
 	switch ( mode )
 	{
@@ -23,7 +23,7 @@ DXGI_FORMAT getTypelessFormat( IDepthStencilView::Mode mode )
 }
 
 // when we want to map a view on Depth Stencil
-DXGI_FORMAT getTypedFormat( IDepthStencilView::Mode mode )
+const DXGI_FORMAT getTypedFormat( const IDepthStencilView::Mode mode )
 {
 	switch ( mode )
 	{
@@ -36,7 +36,7 @@ DXGI_FORMAT getTypedFormat( IDepthStencilView::Mode mode )
 }
 
 // when we want to sample from the backbuffer
-DXGI_FORMAT getColoredFormat( IDepthStencilView::Mode mode )	// no uses yet
+const DXGI_FORMAT getColoredFormat( const IDepthStencilView::Mode mode )	// no uses yet
 {
 	switch ( mode )
 	{
@@ -50,10 +50,10 @@ DXGI_FORMAT getColoredFormat( IDepthStencilView::Mode mode )	// no uses yet
 
 
 IDepthStencilView::IDepthStencilView( Graphics &gph,
-	unsigned width,
-	unsigned height,
-	bool bBindAsShaderInput,
-	Mode mode )
+	const unsigned width,
+	const unsigned height,
+	const bool bBindAsShaderInput,
+	const Mode mode )
 	:
 	m_width(width),
 	m_height(height)
@@ -90,7 +90,7 @@ IDepthStencilView::IDepthStencilView( Graphics &gph,
 
 IDepthStencilView::IDepthStencilView( Graphics &gph,
 	mwrl::ComPtr<ID3D11Texture2D> pTexture,
-	unsigned face )
+	const unsigned face )
 {
 	D3D11_TEXTURE2D_DESC descTex{};
 	pTexture->GetDesc( &descTex );
@@ -198,14 +198,14 @@ std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC> IDepthS
 	return {std::move( pStagingTex ), stagingTexDesc};
 }
 
-Bitmap IDepthStencilView::convertToBitmap( Graphics &gph,
+const Bitmap IDepthStencilView::convertToBitmap( Graphics &gph,
+	const unsigned width,
+	const unsigned height,
 	bool bLinearize ) const
 {
 	auto [pStagingTex, stagingTexDesc] = createStagingTexture( gph );
 
 	// create Bitmap and copy from staging texture to it
-	const auto width = getWidth();
-	const auto height = getHeight();
 	Bitmap bitmap{width, height};
 	D3D11_MAPPED_SUBRESOURCE msr{};
 	HRESULT hres = getDeviceContext( gph )->Map( pStagingTex.Get(),
@@ -283,19 +283,19 @@ Bitmap IDepthStencilView::convertToBitmap( Graphics &gph,
 	return bitmap;
 }
 
-unsigned int IDepthStencilView::getWidth() const noexcept
+const unsigned int IDepthStencilView::getWidth() const noexcept
 {
 	return m_width;
 }
 
-unsigned int IDepthStencilView::getHeight() const noexcept
+const unsigned int IDepthStencilView::getHeight() const noexcept
 {
 	return m_height;
 }
 
 DepthStencilShaderInput::DepthStencilShaderInput( Graphics &gph,
-	unsigned slot,
-	Mode mode )
+	const unsigned slot,
+	const Mode mode )
 	:
 	DepthStencilShaderInput(gph, gph.getClientWidth(), gph.getClientHeight(), slot, mode)
 {
@@ -303,10 +303,10 @@ DepthStencilShaderInput::DepthStencilShaderInput( Graphics &gph,
 }
 
 DepthStencilShaderInput::DepthStencilShaderInput( Graphics &gph,
-	unsigned width,
-	unsigned height,
-	unsigned slot,
-	Mode mode )
+	const unsigned width,
+	const unsigned height,
+	const unsigned slot,
+	const Mode mode )
 	:
 	IDepthStencilView(gph, width, height, true, mode),
 	m_slot(slot)
@@ -336,7 +336,7 @@ void DepthStencilShaderInput::bind( Graphics &gph ) cond_noex
 
 DepthStencilOutput::DepthStencilOutput( Graphics &gph,
 	mwrl::ComPtr<ID3D11Texture2D> pTexture,
-	unsigned face )
+	const unsigned face )
 	:
 	IDepthStencilView(gph, std::move( pTexture ), face)
 {
@@ -351,8 +351,8 @@ DepthStencilOutput::DepthStencilOutput( Graphics &gph )
 }
 
 DepthStencilOutput::DepthStencilOutput( Graphics &gph,
-	unsigned width,
-	unsigned height )
+	const unsigned width,
+	const unsigned height )
 	:
 	IDepthStencilView(gph, width, height, false, Mode::Normal)
 {

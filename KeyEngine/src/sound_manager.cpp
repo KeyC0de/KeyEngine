@@ -80,10 +80,9 @@ SoundManager::Channel::Channel( Channel &&rhs ) cond_noex
 
 auto SoundManager::Channel::operator=( Channel &&rhs ) cond_noex -> Channel&
 {
-	m_pSourceVoice = rhs.m_pSourceVoice;
-	m_pSound = rhs.m_pSound;
-	rhs.m_pSourceVoice = nullptr;
-	rhs.m_pSound = nullptr;
+	Channel tmp{std::move( rhs )};
+	std::swap( *this,
+		tmp );
 	return *this;
 }
 
@@ -220,7 +219,7 @@ bool SoundManager::Channel::setupChannel( SoundManager &soundManager,
 }
 
 void SoundManager::Channel::playSound( Sound *sound,
-	float volume )
+	const float volume )
 {
 	ASSERT( m_pSound, "Null Sound!" );
 	ASSERT( m_pSourceVoice, "Null Voice!" );
@@ -549,21 +548,9 @@ Sound::Sound( Sound &&rhs ) cond_noex
 
 Sound& Sound::operator=( Sound &&rhs ) cond_noex
 {
-	m_name = std::move( rhs.m_name );
-	m_submixName = std::move( rhs.m_submixName );
-	// lock the rhs mutex before we copy/move to guard from
-	std::unique_lock<std::mutex> ulr{rhs.m_mu, std::defer_lock};
-	std::unique_lock<std::mutex> ull{m_mu, std::defer_lock};
-	std::lock( ull,
-		ulr );
-	m_pAudioData = std::move( rhs.m_pAudioData );
-	m_busyChannels = std::move( rhs.m_busyChannels );
-	for ( auto &channel : m_busyChannels )
-	{
-		channel->rechannel( &rhs,
-			this );
-	}
-	rhs.m_condVar.notify_all();
+	Sound tmp{std::move( rhs )};
+	std::swap( *this,
+		tmp );
 	return *this;
 }
 
@@ -582,12 +569,12 @@ Sound::~Sound() noexcept
 	}
 }
 
-std::string Sound::getName() const cond_noex
+const std::string& Sound::getName() const cond_noex
 {
 	return m_name;
 }
 
-std::string Sound::getSubmixName() const cond_noex
+const std::string& Sound::getSubmixName() const cond_noex
 {
 	return m_submixName;
 }
@@ -621,6 +608,7 @@ SoundManager::Submix::Submix( const std::string &name )
 	m_outputVoiceSendDesc{0},
 	m_outputVoiceSends{0}
 {
+
 }
 
 SoundManager::Submix::~Submix() noexcept
@@ -632,7 +620,7 @@ SoundManager::Submix::~Submix() noexcept
 	}
 }
 
-std::string SoundManager::Submix::getName() const cond_noex
+const std::string& SoundManager::Submix::getName() const cond_noex
 {
 	return m_name;
 }
@@ -671,11 +659,10 @@ SoundManager::Submix::Submix( Submix &&rhs ) cond_noex
 	rhs.m_pSubmixVoice = nullptr;
 }
 
-SoundManager::Submix &SoundManager::Submix::operator=( Submix &&rhs ) cond_noex
+SoundManager::Submix& SoundManager::Submix::operator=( Submix &&rhs ) cond_noex
 {
-	if ( this != &rhs )
-	{
-		std::swap( *this, rhs );
-	}
+	Submix tmp{std::move( rhs )};
+	std::swap( *this,
+		tmp );
 	return *this;
 }

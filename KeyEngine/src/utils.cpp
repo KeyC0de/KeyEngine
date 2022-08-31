@@ -109,7 +109,7 @@ bool stringContains( std::string_view haystack,
 		needle.end() ) != haystack.end();
 }
 
-std::string &capitalizeFirstLetter( std::string &str )
+std::string& capitalizeFirstLetter( std::string &str )
 {
 	str[0] = toupper( str[0] );
 	return str;
@@ -151,26 +151,26 @@ void trim( std::string &s )
 	trimR( s );
 }
 
-inline std::string trimCopy( std::string s )
+std::string trimCopy( std::string s )
 {
 	trim( s );
 	return s;
 }
 
-inline std::string trimLCopy( std::string s )
+std::string trimLCopy( std::string s )
 {
 	trimL( s );
 	return s;
 }
 
-inline std::string trimRCopy( std::string s )
+std::string trimRCopy( std::string s )
 {
 	trimR( s );
 	return s;
 }
 
 
-std::tuple<int, int, int> timeToHms( float time )
+std::tuple<int, int, int> timeToHms( const float time )
 {
 	int hours = (int) time;
 	float fminutes = ( time - hours ) * 60;
@@ -180,7 +180,7 @@ std::tuple<int, int, int> timeToHms( float time )
 	return {hours, minutes, seconds};
 }
 
-std::tuple<int, int, int> secondsToHms( int totalSecs )
+std::tuple<int, int, int> secondsToHms( const int totalSecs )
 {
 	int hours = totalSecs / 3600;
 	int rest = totalSecs % 3600;
@@ -195,7 +195,7 @@ std::tuple<int, int, int> secondsToHms( int totalSecs )
 //			Although not defined, time_t is implementation defined
 //			It is almost always an integral value holding the number of seconds (not counting leap seconds) since 00:00, Jan 1 1970 UTC, corresponding to POSIX time.
 //	\date	2022/07/28 22:35
-inline time_t secondsToTimeT( int s )
+inline time_t secondsToTimeT( const int s )
 {
 	return std::chrono::system_clock::to_time_t( std::chrono::system_clock::time_point( std::chrono::duration_cast<std::chrono::seconds>( std::chrono::duration<int>( s ) ) ) );
 }
@@ -205,24 +205,24 @@ inline time_t secondsToTimeT( int s )
 //	\brief  convert time_t to seconds
 //			time_t can be acquired as if by means of time(nullptr)
 //	\date	2022/07/28 22:32
-long int timeTtoSeconds( time_t t )
+long int timeTtoSeconds( const time_t t )
 {
 	return static_cast<long int>( t );
 }
 
 
-std::uintptr_t pointerToInt( void *p )
+std::uintptr_t pointerToInt( const void *p )
 {
 	return reinterpret_cast<std::uintptr_t>( p );
 }
 
-void* intToPointer( uintptr_t i )
+void* intToPointer( const uintptr_t i )
 {
 	return reinterpret_cast<void*>( i );
 }
 
-void* addPointers( void *p1,
-	void *p2 )
+void* addPointers( const void *p1,
+	const void *p2 )
 {
 	return intToPointer( pointerToInt( p1 ) + pointerToInt( p2 ) );
 }
@@ -247,19 +247,19 @@ std::string generateCaptcha( int len )
 }
 
 bool isAligned( const volatile void *p,
-	std::size_t alignment ) noexcept
+	const std::size_t alignment ) noexcept
 {
 	return ( reinterpret_cast<std::uintptr_t>( p ) % alignment ) == 0;
 }
 
-bool isAligned( std::uintptr_t pi,
-	std::size_t alignment ) noexcept
+bool isAligned( const std::uintptr_t pi,
+	const std::size_t alignment ) noexcept
 {
 	return ( pi % alignment ) == 0;
 }
 
 #pragma warning( push, 0 )
-constexpr int is4ByteAligned( intptr_t *addr )
+constexpr const int is4ByteAligned( const intptr_t *addr )
 {
 	if ( ( (intptr_t)addr & 0x3 ) == 0 )
 	{ // changing int *to int
@@ -269,8 +269,8 @@ constexpr int is4ByteAligned( intptr_t *addr )
 }
 #pragma warning( pop )
 
-std::uintptr_t alignForward( std::uintptr_t ip,
-	std::size_t alignment ) noexcept
+const std::uintptr_t alignForward( const std::uintptr_t ip,
+	const std::size_t alignment ) noexcept
 {
 	if ( alignment == 0 )
 	{
@@ -284,14 +284,12 @@ std::uintptr_t alignForward( std::uintptr_t ip,
 	// or: (ip + alignment - 1) / alignment * alignment;
 }
 
-// calculates alignment in bits supposedly
-std::size_t calcAlignedSize( std::size_t size,
-	std::size_t alignment )
+const std::size_t calcAlignedSize( const std::size_t size,
+	const std::size_t alignment )
 {
 	return size + ( size % ( alignment / 8 ) );
 }
 
-// calculate padding bytes needed to align address p forward given the alignment
 const std::size_t getForwardPadding( const std::size_t p,
 	const std::size_t alignment )
 {
@@ -327,8 +325,8 @@ const std::size_t getForwardPaddingWithHeader( const std::size_t p,
 	return padding;
 }
 
-void* alignedMalloc( std::size_t nBytes,
-	std::size_t alignment )
+void* alignedMalloc( const std::size_t nBytes,
+	const std::size_t alignment )
 {
 	// allocate `nBytes` + `nBytesForAlignment` required given requested `alignment` value
 	// store malloced address in `pMem`

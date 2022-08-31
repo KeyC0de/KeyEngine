@@ -1,15 +1,16 @@
 #pragma once
 
-#include "drawable.h"
+#include "mesh.h"
 
 
 class Sphere
-	: public Drawable
+	: public Mesh
 {
 	DirectX::XMFLOAT3 m_pos{1.0f, 1.0f, 1.0f};
 public:
-	Sphere( Graphics &gph, float radius );
+	Sphere( Graphics &gph, const float radius );
 
 	void setPosition( const DirectX::XMFLOAT3 &pos ) noexcept;
-	DirectX::XMMATRIX getTransform() const noexcept override;
+	const DirectX::XMMATRIX getTransform() const noexcept override;
+	const DirectX::XMMATRIX getPosition() const noexcept;
 };
