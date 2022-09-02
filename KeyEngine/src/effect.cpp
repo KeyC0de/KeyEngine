@@ -45,23 +45,12 @@ Effect::Effect( Effect &&rhs ) noexcept
 	m_targetPassName{std::move( rhs.m_targetPassName )},
 	m_pTargetPass{rhs.m_pTargetPass}
 {
-	m_bindables.reserve( rhs.m_bindables.size() );
-	for ( auto &pBindable : rhs.m_bindables )
-	{
-		if ( auto*pClone = dynamic_cast<IBindableCloning*>( pBindable.get() ) )
-		{
-			m_bindables.emplace_back( std::move( pClone->clone() ) );
-		}
-		else
-		{
-			m_bindables.emplace_back( std::move( pBindable ) );
-		}
-	}
+	std::swap( m_bindables,
+		rhs.m_bindables );
 	
 	rhs.m_renderingChannels = 0u;
 	rhs.m_active = false;
 	rhs.m_pTargetPass = nullptr;
-	rhs.m_bindables.clear();
 }
 
 void Effect::addBindable( std::shared_ptr<IBindable> pBindable ) noexcept

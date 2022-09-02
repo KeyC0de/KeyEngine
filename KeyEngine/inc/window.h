@@ -21,7 +21,7 @@ private:
 		: public KeyException
 	{
 	public:
-		WindowException( int line, const char *file, const char *function, const std::string &msg ) noexcept;
+		WindowException( const int line, const char *file, const char *function, const std::string &msg ) noexcept;
 
 		virtual const std::string getType() const noexcept override final;
 		virtual const char* what() const noexcept override final;

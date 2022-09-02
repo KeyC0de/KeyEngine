@@ -17,10 +17,10 @@
 namespace dx = DirectX;
 
 template <typename T>
-Game<T>::Game( int width,
-	int height,
+Game<T>::Game( const int width,
+	const int height,
 	const std::string &title,
-	unsigned nWindows )
+	const unsigned nWindows )
 	:
 	m_pImguiMan{createImgui()},
 	m_mainWindow{width, height, title.c_str()},
@@ -137,7 +137,7 @@ const float Game<T>::calcDt()
 
 
 template<typename T>
-Game<T>::GameException::GameException( int line,
+Game<T>::GameException::GameException( const int line,
 	const char *file,
 	const char *function,
 	const std::string &msg ) noexcept
@@ -160,9 +160,9 @@ const char* Game<T>::GameException::what() const noexcept
 }
 
 
-Sandbox3d::Sandbox3d( int width,
-	int height,
-	int nWindows )
+Sandbox3d::Sandbox3d( const int width,
+	const int height,
+	const int nWindows )
 	:
 	Game(width, height, "KeyEngine 3d Sandbox", nWindows),
 	m_renderer{m_mainWindow.getGraphics(), 4, 3.0f}
@@ -413,8 +413,8 @@ void Sandbox3d::present()
 }
 
 
-Arkanoid::Arkanoid( int width,
-	int height )
+Arkanoid::Arkanoid( const int width,
+	const int height )
 	:
 	Game(width, height, "Arkanoid"),
 	m_renderer{m_mainWindow.getGraphics()},
@@ -579,8 +579,9 @@ void Arkanoid::present()
 }
 
 
-/*Snake::Snake( int width,
-	int height )
+/*
+Snake::Snake( const int width,
+	const int height )
 	:
 	Game(width, height, "SnakeRepr"),
 	m_renderer{m_mainWindow.getGraphics()},

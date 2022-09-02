@@ -553,6 +553,14 @@ void Buffer::copyFrom( const Buffer &other ) cond_noex
 		m_buffer.begin() );
 }
 
+void Buffer::moveFrom( Buffer &other ) noexcept
+{
+	ASSERT( &getRootLayoutElement() == &other.getRootLayoutElement(), "Incompatible element layouts!" );
+	std::move( other.m_buffer.begin(),
+		other.m_buffer.end(),
+		m_buffer.begin() );
+}
+
 std::shared_ptr<CBElement> Buffer::shareLayoutRoot() const noexcept
 {
 	return m_pLayoutRoot;

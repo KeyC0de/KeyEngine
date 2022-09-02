@@ -6,7 +6,7 @@
 namespace ren
 {
 
-RendererException::RendererException( int line,
+RendererException::RendererException( const int line,
 	const char *file,
 	const char *function,
 	const std::string &msg ) noexcept

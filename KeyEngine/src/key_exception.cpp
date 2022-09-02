@@ -2,7 +2,7 @@
 #include "key_exception.h"
 
 
-KeyException::KeyException( int line,
+KeyException::KeyException( const int line,
 	const char *file,
 	const char *function,
 	const std::string &msg ) noexcept

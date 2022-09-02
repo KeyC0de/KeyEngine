@@ -6,12 +6,42 @@ namespace dx = DirectX;
 
 TransformScaleVSCB::TransformScaleVSCB( Graphics &gph,
 	const unsigned slot,
-	float scale )
+	const float scale )
 	:
 	TransformVSCB{gph, slot},
 	m_cbScale{calcCbLayout()}
 {
 	m_cbScale["scale"] = scale;
+}
+
+TransformScaleVSCB::TransformScaleVSCB( const TransformScaleVSCB &rhs )
+	:
+	TransformVSCB{rhs},
+	m_cbScale{rhs.m_cbScale}
+{
+
+}
+
+TransformScaleVSCB& TransformScaleVSCB::operator=( const TransformScaleVSCB &rhs )
+{
+	TransformVSCB::operator=( rhs );
+	m_cbScale.copyFrom( rhs.m_cbScale );
+	return *this;
+}
+
+TransformScaleVSCB::TransformScaleVSCB( TransformScaleVSCB &&rhs ) noexcept
+	:
+	TransformVSCB{std::move( rhs )},
+	m_cbScale{std::move( rhs.m_cbScale )}
+{
+
+}
+
+TransformScaleVSCB& TransformScaleVSCB::operator=( TransformScaleVSCB &&rhs ) noexcept
+{
+	TransformVSCB::operator=( std::move( rhs ) );
+	m_cbScale.moveFrom( rhs.m_cbScale );
+	return *this;
 }
 
 void TransformScaleVSCB::accept( IEffectVisitor &ev )

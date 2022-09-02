@@ -20,25 +20,6 @@
 #pragma comment( lib, "d3dcompiler.lib" )
 #pragma comment( lib, "DirectXTK.lib" )
 
-#if defined _DEBUG && !defined NDEBUG
-#	define DXGI_GET_QUEUE_INFO_GFX \
-	{\
-		KeyConsole &console = KeyConsole::getInstance();\
-		const auto &messages = infoQueue().getInfoMessages();\
-		if ( !messages.empty() )\
-		{\
-			for ( const auto &msg : messages )\
-			{\
-				console.log( msg + "\n" );\
-			}\
-			__debugbreak();\
-		}\
-		infoQueue().markQueueIndex();\
-	}
-#else
-#	define DXGI_GET_QUEUE_INFO_GFX (void)0;
-#endif
-
 
 namespace mwrl = Microsoft::WRL;
 namespace dx = DirectX;
@@ -183,9 +164,6 @@ Graphics::Graphics( const HWND hWnd,
 	}
 
 	interrogateDirectxFeatures();
-
-	// create the info queue
-	m_infoQueue = std::make_unique<DxgiInfoQueue>();
 #endif
 
 	Microsoft::WRL::ComPtr<ID3D11Texture2D> pD3dBackBuffer;
@@ -228,9 +206,9 @@ Graphics::~Graphics()
 		_aligned_free( m_pCpuBuffer );
 		m_pCpuBuffer = nullptr;
 	}
-	//cleanState();
+	cleanState();
 #if defined _DEBUG && !defined NDEBUG
-	//d3d11DebugReport();
+	d3d11DebugReport();
 #endif
 }
 
@@ -266,7 +244,6 @@ void Graphics::cleanState() noexcept
 {
 	clearShaderSlots();
 	m_pContext->ClearState();	// release all references
-	m_globalColorBuffer->release();
 	for ( auto dc : m_commandLists )
 	{
 		if ( dc )
@@ -342,8 +319,6 @@ void Graphics::endRendering()
 		ImGui_ImplDX11_RenderDrawData( ImGui::GetDrawData() );
 	}
 
-	DXGI_GET_QUEUE_INFO_GFX;
-
 	HRESULT hres;
 	SettingsManager &setMan = SettingsManager::getInstance();
 	if ( setMan.getSettings().bVSync )
@@ -368,6 +343,7 @@ void Graphics::endRendering()
 			0u );
 #endif
 	}
+	DXGI_GET_QUEUE_INFO_GFX;
 
 	if ( hres == DXGI_ERROR_DEVICE_REMOVED )
 	{
@@ -467,9 +443,9 @@ std::shared_ptr<IRenderTargetView> Graphics::shareRenderTarget()
 }
 
 #if defined _DEBUG && !defined NDEBUG
-DxgiInfoQueue& Graphics::infoQueue() const noexcept
+DxgiInfoQueue& Graphics::infoQueue()
 {
-	return *( m_infoQueue.get() );
+	return m_infoQueue;
 }
 #endif
 
@@ -831,7 +807,7 @@ private boolean isUnderGround(Vector3f testPoint) {
 	}
 }*/
 
-Graphics::GraphicsException::GraphicsException( int line,
+Graphics::GraphicsException::GraphicsException( const int line,
 	const char *file,
 	const char *function,
 	const std::string &msg ) noexcept

@@ -1403,7 +1403,7 @@ void Window::setFont( const std::string &fontName )
 
 
 // WindowException
-Window::WindowException::WindowException( int line,
+Window::WindowException::WindowException( const int line,
 	const char *file,
 	const char *function,
 	const std::string &msg ) noexcept

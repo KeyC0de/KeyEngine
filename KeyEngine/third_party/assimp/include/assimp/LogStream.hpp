@@ -77,7 +77,7 @@ public:
      *  Log messages *may *consist of multiple lines and you shouldn't
      *  expect a consistent formatting. If you want custom formatting
      *  (e.g. generate HTML), supply a custom instance of Logger to
-     *  #DefaultLogger:set(). Usually you can *expect *that a log message
+     *  DefaultLogger:set(). Usually you can *expect *that a log message
      *  is exactly one line and terminated with a single \n character.
      *  @param message Message to be written */
     virtual void write(const char *message) = 0;

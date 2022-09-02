@@ -34,8 +34,8 @@ public:
 	void connectEffectsToRenderer( ren::Renderer &r );
 private:
 	//===================================================
-	//	\function	createNodeHierarchy
-	//	\brief  parse the Scene Graph
+	//	\function	createNodeGraph
+	//	\brief  parse the Model's scene graph
 	//	\date	9 May 2022 8:30
-	std::unique_ptr<Node> createNodeHierarchy( int nodeId, const aiNode &node, float scale ) noexcept;
+	std::unique_ptr<Node> createNodeGraph( const aiNode &node, int imguiNodeId, const float scale ) noexcept;
 };

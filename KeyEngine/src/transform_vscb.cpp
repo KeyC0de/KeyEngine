@@ -5,12 +5,42 @@
 
 TransformVSCB::TransformVSCB( Graphics &gph,
 	const unsigned slot )
+	:
+	m_pVscb{std::make_unique<VertexShaderConstantBuffer<Transforms>>( gph, slot )}
 {
-	if ( !m_pVscb )
-	{
-		m_pVscb = std::make_unique<VertexShaderConstantBuffer<Transforms>>( gph,
-			slot );
-	}
+
+}
+
+TransformVSCB::TransformVSCB( const TransformVSCB &rhs )
+	:
+	m_pMesh{rhs.m_pMesh}
+{
+	m_pVscb = std::make_unique<VertexShaderConstantBuffer<Transforms>>( VertexShaderConstantBuffer<Transforms>::makeACopy( rhs.m_pVscb->getCb(),
+		rhs.m_pVscb->getSlot() ) );
+}
+
+TransformVSCB& TransformVSCB::operator=( const TransformVSCB &rhs )
+{
+	TransformVSCB temp{rhs};
+	std::swap( *this,
+		temp );
+	return *this;
+}
+
+TransformVSCB::TransformVSCB( TransformVSCB &&rhs ) noexcept
+	:
+	m_pMesh{rhs.m_pMesh},
+	m_pVscb{std::move( rhs.m_pVscb )}
+{
+
+}
+
+TransformVSCB& TransformVSCB::operator=( TransformVSCB &&rhs ) noexcept
+{
+	TransformVSCB temp{std::move( rhs )};
+	std::swap( *this,
+		temp );
+	return *this;
 }
 
 void TransformVSCB::bind( Graphics &gph ) cond_noex

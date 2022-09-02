@@ -217,7 +217,7 @@ T* alignPtr( const T *ptr,
 	return alignedPtr;
 }
 
-// #FIXME: doesn't work properly
+// #FIXME: alignedMalloc doesn't work properly
 void* alignedMalloc( const std::size_t nBytes, const std::size_t alignment );
 void alignedFree( void *p ) noexcept;
 

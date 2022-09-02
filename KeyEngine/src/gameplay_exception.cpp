@@ -2,7 +2,7 @@
 #include <typeinfo>
 
 
-GameplayException::GameplayException( int line,
+GameplayException::GameplayException( const int line,
 	const char *file,
 	const char *function,
 	const std::string &msg ) noexcept

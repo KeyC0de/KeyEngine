@@ -35,7 +35,7 @@ class Graphics
 		: public KeyException
 	{
 	public:
-		GraphicsException( int line, const char *file, const char *function, const std::string &msg ) noexcept;
+		GraphicsException( const int line, const char *file, const char *function, const std::string &msg ) noexcept;
 
 		const std::string getType() const noexcept override final;
 		virtual const char* what() const noexcept override final;
@@ -68,7 +68,7 @@ private:
 #endif
 	std::shared_ptr<IRenderTargetView> m_globalColorBuffer;
 #if defined _DEBUG && !defined NDEBUG
-	std::unique_ptr<DxgiInfoQueue> m_infoQueue;
+	DxgiInfoQueue m_infoQueue;
 	ATL::CComPtr<ID3D11Debug> m_pDebug;
 #endif
 	KeyTimer<std::chrono::microseconds> m_fpsTimer;
@@ -112,7 +112,7 @@ public:
 	void createAdapters();
 
 #if defined _DEBUG && !defined NDEBUG
-	DxgiInfoQueue& infoQueue() const noexcept;
+	DxgiInfoQueue& infoQueue();
 #endif
 
 	// 2d

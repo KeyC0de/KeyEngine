@@ -9,11 +9,11 @@ class TransformScaleVSCB
 {
 	con::Buffer m_cbScale;
 public:
-	TransformScaleVSCB( Graphics &gph, const unsigned slot, float scale );
-	//TransformScaleVSCB( const TransformScaleVSCB &rhs );
-	//TransformScaleVSCB& operator=( const TransformScaleVSCB &rhs );
-	//TransformScaleVSCB( TransformScaleVSCB &&rhs );
-	//TransformScaleVSCB& operator=( TransformScaleVSCB &&rhs ) = delete;
+	TransformScaleVSCB( Graphics &gph, const unsigned slot, const float scale );
+	TransformScaleVSCB( const TransformScaleVSCB &rhs );
+	TransformScaleVSCB& operator=( const TransformScaleVSCB &rhs );
+	TransformScaleVSCB( TransformScaleVSCB &&rhs ) noexcept;
+	TransformScaleVSCB& operator=( TransformScaleVSCB &&rhs ) noexcept;
 
 	void accept( IEffectVisitor &ev ) override;
 	void bind( Graphics &gph ) cond_noex override;

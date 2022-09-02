@@ -7,9 +7,6 @@
 
 DxgiInfoQueue::DxgiInfoQueue()
 {
-	using LPDXGIGETDEBUGINTERFACE = HRESULT (WINAPI *)(REFIID, void ** );
-	LPDXGIGETDEBUGINTERFACE dxgiGetDebugInterface;
-
 	const HMODULE dxgidebugLib = LoadLibraryExW( L"dxgidebug.dll",
 		nullptr,
 		LOAD_LIBRARY_SEARCH_SYSTEM32 );
@@ -24,7 +21,8 @@ DxgiInfoQueue::DxgiInfoQueue()
 		std::terminate();
 	}
 
-	dxgiGetDebugInterface = reinterpret_cast<LPDXGIGETDEBUGINTERFACE>( reinterpret_cast<void*>( GetProcAddress( dxgidebugLib,
+	using DXGIGetDebugInterface = HRESULT( WINAPI * )( REFIID, void ** );
+	const DXGIGetDebugInterface dxgiGetDebugInterface = reinterpret_cast<DXGIGetDebugInterface>( reinterpret_cast<void*>( GetProcAddress( dxgidebugLib,
 		"DXGIGetDebugInterface" ) ) );
 	if ( !dxgiGetDebugInterface )
 	{
@@ -36,7 +34,9 @@ DxgiInfoQueue::DxgiInfoQueue()
 		std::terminate();
 	}
 
-	HRESULT hres = dxgiGetDebugInterface( IID_PPV_ARGS( &m_pDxgiInfoQueue ) );
+	//HRESULT hres = dxgiGetDebugInterface( IID_PPV_ARGS( &m_pDxgiInfoQueue ) );
+	HRESULT hres = dxgiGetDebugInterface( __uuidof( IDXGIInfoQueue ),
+		&m_pDxgiInfoQueue );
 	ASSERT_HRES_IF_FAILED;
 
 	// determine when to break execution
@@ -69,23 +69,27 @@ std::vector<std::string> DxgiInfoQueue::getInfoMessages()
 	for( size_t i = m_index; i < lastIndex; ++i )
 	{
 		HRESULT hres;
-		//DXGI_INFO_QUEUE_MESSAGE *pMsg = nullptr;
 		size_t messageLengthInBytes = 0;
+		
 		// first get the message length
 		hres = m_pDxgiInfoQueue->GetMessageW( m_msgProducer,
 			i,
 			nullptr,
 			&messageLengthInBytes );
 		ASSERT_HRES_IF_FAILED;
+
 		// allocate storage for the message
 		auto pMsgStorage = std::make_unique<wchar_t[]>( messageLengthInBytes );
-		auto pMsg = reinterpret_cast<DXGI_INFO_QUEUE_MESSAGE*>( pMsgStorage.get() );
+		DXGI_INFO_QUEUE_MESSAGE* pMsg = reinterpret_cast<DXGI_INFO_QUEUE_MESSAGE*>( pMsgStorage.get() );
+
 		// create the message
 		hres = m_pDxgiInfoQueue->GetMessageW( m_msgProducer,
 			i,
 			pMsg,
 			&messageLengthInBytes );
+		ASSERT_HRES_IF_FAILED;
 
+		// add it to the list of messages
 		messageDescriptions.emplace_back( pMsg->pDescription );
 	}
 	//m_pDxgiInfoQueue->ClearStoredMessages( m_msgProducer );

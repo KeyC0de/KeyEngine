@@ -1,5 +1,6 @@
 #include "primitive_topology.h"
 #include "bindable_map.h"
+#include "dxgi_info_queue.h"
 
 
 PrimitiveTopology::PrimitiveTopology( Graphics &gph,
@@ -13,6 +14,7 @@ PrimitiveTopology::PrimitiveTopology( Graphics &gph,
 void PrimitiveTopology::bind( Graphics &gph ) cond_noex
 {
 	getDeviceContext( gph )->IASetPrimitiveTopology( m_d3dPrimTop );
+	DXGI_GET_QUEUE_INFO( gph );
 }
 
 std::shared_ptr<PrimitiveTopology> PrimitiveTopology::fetch( Graphics &gph,

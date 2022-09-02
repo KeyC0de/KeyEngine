@@ -24,8 +24,7 @@ class KeyException
 protected:
 	mutable std::string m_description;
 protected:
-	KeyException( int line, const char *file, const char *function,
-		const std::string &msg ) noexcept;
+	KeyException( const int line, const char *file, const char *function, const std::string &msg ) noexcept;
 public:
 	virtual ~KeyException() noexcept = default;
 

@@ -540,6 +540,8 @@ public:
 	const CBElement& getRootLayoutElement() const noexcept;
 	// copy bytes from another buffer (layouts must match)
 	void copyFrom( const Buffer& ) cond_noex;
+	// move bytes from another buffer (layouts must match)
+	void moveFrom( Buffer& ) noexcept;
 	// return another sptr to the layout root
 	std::shared_ptr<CBElement> shareLayoutRoot() const noexcept;
 };

@@ -165,7 +165,6 @@ EntityManager::Bucket& EntityManager::getBucket( int categoryId )
 	}
 	default :	// UNCATEGORIZED - 0
 	{
-		// THROW_GAMEPLAY_EXCEPTION
 		THROW_GAMEPLAY_EXCEPTION( "Entity doesn't belong in a bucket." );
 	}
 	}//switch

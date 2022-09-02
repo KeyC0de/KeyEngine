@@ -15,14 +15,14 @@ namespace ren
 class SkyPass
 	: public IBindablePass
 {
-	bool m_bUseSphere = true;
 	const Camera *m_pActiveCamera = nullptr;
+	unsigned m_nCubeIndices;
+	unsigned m_nSphereIndices;
 	std::shared_ptr<VertexBuffer> m_pCubeVb;
 	std::shared_ptr<IndexBuffer> m_pCubeIb;
-	unsigned m_nCubeIndices;
 	std::shared_ptr<VertexBuffer> m_pSphereVb;
 	std::shared_ptr<IndexBuffer> m_pSphereIb;
-	unsigned m_nSphereIndices;
+	bool m_bUseSphere = true;
 public:
 	SkyPass( Graphics &gph, const std::string &name );
 

@@ -7,10 +7,8 @@
 #pragma warning( disable: 4265 )
 #	include <wrl.h>
 #pragma warning( default: 4265 )
-#include "non_copyable.h"
 
 
-// #FIXME: INFO_QUEUE doesn't work. It crashes at the Graphics Destructor. It might be ImGui related.
 // ref: https://walbourn.github.io/dxgi-debug-device/
 // In DirectX 11.1 + you can get helpful information from DX Device Context functions
 // using the DXGIGetDebugInterface given we have the debug layer of our device enabled
@@ -73,4 +71,24 @@ public:
 	}
 #else
 #	define DXGI_GET_QUEUE_INFO_P (void)0;
+#endif
+
+// this define is only to be used by the graphics class
+#if defined _DEBUG && !defined NDEBUG
+#	define DXGI_GET_QUEUE_INFO_GFX \
+	{\
+		KeyConsole &console = KeyConsole::getInstance();\
+		const auto &messages = m_infoQueue.getInfoMessages();\
+		if ( !messages.empty() )\
+		{\
+			for ( const auto &msg : messages )\
+			{\
+				console.log( msg + "\n" );\
+			}\
+			__debugbreak();\
+		}\
+		m_infoQueue.markQueueIndex();\
+	}
+#else
+#	define DXGI_GET_QUEUE_INFO_GFX (void)0;
 #endif

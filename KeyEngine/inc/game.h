@@ -73,7 +73,7 @@ class Sandbox3d
 	Model m_nanoSuit{m_mainWindow.getGraphics(), "assets/models/nano_textured/nanosuit.obj", 2.0f};
 	Model m_carabiner{m_mainWindow.getGraphics(), "assets/models/carabiner/carabiner_hook.fbx", 1.0f};
 public:
-	Sandbox3d( int const width, const int height, const int nWindows = 1 );
+	Sandbox3d( const int width, const int height, const int nWindows = 1 );
 
 	int loop();
 private:

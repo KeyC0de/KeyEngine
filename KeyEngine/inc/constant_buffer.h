@@ -190,7 +190,7 @@ public:
 		Microsoft::WRL::ComPtr<ID3D11Buffer> destBuf;
 
 		D3D11_BUFFER_DESC cbDesc{};
-		setBufferDesc( &cbDesc );
+		setBufferDesc( cbDesc );
 
 		HRESULT hres = getDevice( *m_gph )->CreateBuffer( &cbDesc,
 			nullptr,
@@ -269,7 +269,7 @@ public:
 		Microsoft::WRL::ComPtr<ID3D11Buffer> destBuf;
 
 		D3D11_BUFFER_DESC cbDesc{};
-		setBufferDesc( &cbDesc );
+		setBufferDesc( cbDesc );
 
 		HRESULT hres = getDevice( *m_gph )->CreateBuffer( &cbDesc,
 			nullptr,

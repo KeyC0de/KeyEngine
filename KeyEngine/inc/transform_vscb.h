@@ -17,19 +17,13 @@ protected:
 		DirectX::XMMATRIX worldViewProjection;
 	};
 private:
-	// #FIXME: try removing static
-	// #FIXME: try putting cctors dtor etc. in VertexShaderConstantBuffer
-	static inline std::unique_ptr<VertexShaderConstantBuffer<Transforms>> m_pVscb;
+	std::unique_ptr<VertexShaderConstantBuffer<Transforms>> m_pVscb;
 public:
 	TransformVSCB( Graphics &gph, const unsigned slot );
-	//===================================================
-	//	\function	TransformVSCB
-	//	\brief  cctor that behaves as mctor
-	//	\date	2022/08/07 22:47
-	//TransformVSCB( const TransformVSCB &rhs );
-	//TransformVSCB& operator=( const TransformVSCB &rhs );
-	//TransformVSCB( TransformVSCB &&rhs );
-	//TransformVSCB& operator=( TransformVSCB &&rhs ) = delete;
+	TransformVSCB( const TransformVSCB &rhs );
+	TransformVSCB& operator=( const TransformVSCB &rhs );
+	TransformVSCB( TransformVSCB &&rhs ) noexcept;
+	TransformVSCB& operator=( TransformVSCB &&rhs ) noexcept;
 
 	void bind( Graphics &gph ) cond_noex override;
 	void setMesh( const Mesh &mesh ) noexcept override;

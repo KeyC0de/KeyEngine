@@ -51,13 +51,13 @@ int WINAPI wWinMain( _In_ HINSTANCE hinstance,
 			}
 			else if constexpr ( gph_mode::get() == gph_mode::_2D )
 			{
-				SettingsManager &m_settingsMan = SettingsManager::getInstance();
-				//if ( m_settingsMan.getSettings().m_game == "Arkanoid2d" )
+				SettingsManager &settingsMan = SettingsManager::getInstance();
+				//if ( settingsMan.getSettings().m_game == "Arkanoid2d" )
 				//{
 					Arkanoid game{800, 600};
 					return game.loop();
 				//}
-				//else if ( m_settingsMan.getSettings().m_game == "Snake2d" )
+				//else if ( settingsMan.getSettings().m_game == "Snake2d" )
 				//{
 					//Snake game{800, 600};
 					//return game.loop();

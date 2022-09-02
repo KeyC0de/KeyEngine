@@ -42,9 +42,9 @@ Model::Model( Graphics &gph,
 			scale ) );
 	}
 
-	int nodeId = 0;
-	m_pRoot = createNodeHierarchy( nodeId,
-		*paiScene->mRootNode,
+	int imguiNodeId = 0;
+	m_pRoot = createNodeGraph( *paiScene->mRootNode,
+		imguiNodeId,
 		scale );
 }
 
@@ -78,9 +78,9 @@ void Model::connectEffectsToRenderer( ren::Renderer &r )
 	}
 }
 
-std::unique_ptr<Node> Model::createNodeHierarchy( int nodeId,
-	const aiNode &ainode,
-	float scale ) noexcept
+std::unique_ptr<Node> Model::createNodeGraph( const aiNode &ainode,
+	int imguiNodeId,
+	const float scale ) noexcept
 {
 	namespace dx = DirectX;
 	const auto transform = util::scaleTranslation( dx::XMMatrixTranspose( dx::XMLoadFloat4x4( reinterpret_cast<const dx::XMFLOAT4X4*>( &ainode.mTransformation ) ) ),
@@ -94,15 +94,15 @@ std::unique_ptr<Node> Model::createNodeHierarchy( int nodeId,
 		pmeshes.push_back( m_meshes.at( meshIdx ).get() );
 	}
 
-	auto pNode = std::make_unique<Node>( nodeId,
+	auto pNode = std::make_unique<Node>( imguiNodeId,
 		ainode.mName.C_Str(),
 		transform,
 		std::move( pmeshes ) );
-	++nodeId;
+	++imguiNodeId;
 	for ( size_t i = 0; i < ainode.mNumChildren; ++i )
 	{
-		pNode->addChild( createNodeHierarchy( nodeId,
-			*ainode.mChildren[i],
+		pNode->addChild( createNodeGraph( *ainode.mChildren[i],
+			imguiNodeId,
 			scale ) );
 	}
 	
