@@ -14,7 +14,7 @@ ThreadPool::ThreadPool( const std::size_t nthreads,
 	}
 }
 
-ThreadPool& ThreadPool::getInstance( const std::size_t nThreads,
+ThreadPool& ThreadPool::instance( const std::size_t nThreads,
 	const bool bEnabled )
 {
 	static ThreadPool instance{nThreads, bEnabled};

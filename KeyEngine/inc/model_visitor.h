@@ -10,10 +10,7 @@ class Node;
 class IModelVisitor
 {
 public:
-	virtual ~IModelVisitor()
-	{
-		pass_;
-	}
+	virtual ~IModelVisitor() noexcept = default;
 
 	virtual bool visit( class Node &node ) = 0;
 	virtual void onVisited( class Node &node ) = 0;

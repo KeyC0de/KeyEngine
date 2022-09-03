@@ -117,7 +117,7 @@ bool SoundManager::Channel::setupChannel( SoundManager &soundManager,
 				// to become zero (i.e. thread calling destructor)
 				channel.m_pSound->m_condVar.notify_all();
 			}
-			SoundManager::getInstance().deactivateChannel( channel );
+			SoundManager::instance().deactivateChannel( channel );
 		}
 
 		// Called when the voice reaches the end position of a loop.
@@ -253,7 +253,7 @@ Sound* SoundManager::Channel::getSound() const cond_noex
 	return m_pSound;
 }
 
-SoundManager& SoundManager::getInstance( WAVEFORMATEXTENSIBLE *format )
+SoundManager& SoundManager::instance( WAVEFORMATEXTENSIBLE *format )
 {
 	static SoundManager soundManager{format};
 	return soundManager;
@@ -581,7 +581,7 @@ const std::string& Sound::getSubmixName() const cond_noex
 
 void Sound::play( float volume )
 {
-	SoundManager::getInstance( m_pWaveFormat.get() )
+	SoundManager::instance( m_pWaveFormat.get() )
 		.playChannelSound( this,
 			volume );
 }

@@ -334,7 +334,7 @@ bool KeyConsole::closeConsole()
 	return true;
 }
 
-KeyConsole& KeyConsole::getInstance() noexcept
+KeyConsole& KeyConsole::instance() noexcept
 {
 	if ( m_pInstance == nullptr )
 	{

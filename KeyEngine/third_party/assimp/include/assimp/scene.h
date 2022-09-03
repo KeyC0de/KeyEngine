@@ -52,7 +52,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "texture.h"
 #include "aimesh.h"
 #include "light.h"
-#include "camera.h"
+#include "aicamera.h"
 #include "material.h"
 #include "anim.h"
 #include "metadata.h"

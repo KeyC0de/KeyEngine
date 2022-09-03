@@ -40,7 +40,7 @@ int WINAPI wWinMain( _In_ HINSTANCE hinstance,
 		{
 			std::string commandLine = util::ws2s( pCmdLine );
 #if defined _DEBUG && !defined NDEBUG
-			KeyConsole &console = KeyConsole::getInstance();
+			KeyConsole &console = KeyConsole::instance();
 			windowsMetricsCheckTest();
 #endif
 			const auto& [width, height] = parseCommandLineArguments();
@@ -51,7 +51,7 @@ int WINAPI wWinMain( _In_ HINSTANCE hinstance,
 			}
 			else if constexpr ( gph_mode::get() == gph_mode::_2D )
 			{
-				SettingsManager &settingsMan = SettingsManager::getInstance();
+				SettingsManager &settingsMan = SettingsManager::instance();
 				//if ( settingsMan.getSettings().m_game == "Arkanoid2d" )
 				//{
 					Arkanoid game{800, 600};
@@ -156,7 +156,7 @@ std::tuple<int,int> parseCommandLineArguments()
 		&end,
 		10 );
 #if defined _DEBUG && !defined NDEBUG
-	KeyConsole &console = KeyConsole::getInstance();
+	KeyConsole &console = KeyConsole::instance();
 	console.print( "(width,height)=(" + std::to_string( width ) + "," + std::to_string( height ) + ")" );
 #endif
 	return {width, height};
@@ -165,7 +165,7 @@ std::tuple<int,int> parseCommandLineArguments()
 void finally()
 {
 #if defined _DEBUG && !defined NDEBUG
-	KeyConsole &console = KeyConsole::getInstance();
+	KeyConsole &console = KeyConsole::instance();
 	using namespace std::string_literals;
 #	ifndef NO_DUMPS
 	if ( g_windowsExceptionOccurred )

@@ -34,14 +34,14 @@ MousePicker::MousePicker( Graphics &gph,
 		vec );
 
 #if defined _DEBUG && !defined NDEBUG
-	KeyConsole &console = KeyConsole::getInstance();
+	KeyConsole &console = KeyConsole::instance();
 	console.print( "Ray WS direction = (" + std::to_string( m_rayDirectionWorldSpace.x )
 		+ ",y=" + std::to_string( m_rayDirectionWorldSpace.y )
 		+ ",z=" + std::to_string( m_rayDirectionWorldSpace.z ) + ")" );
 #endif
 
 	// the origin of the picking ray is the position of the camera
-	auto &camMan = CameraManager::getInstance();
+	auto &camMan = CameraManager::instance();
 	auto camPos{camMan.activeCamera().getPosition()};
 
 	// now perform ray intersection test...

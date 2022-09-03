@@ -30,16 +30,33 @@ inline void comSafeRelease( T &p )
 	}
 }
 
-DirectX::XMFLOAT3 XM_CALLCONV extractEulerAngles( const DirectX::XMFLOAT4X4 &mat );
-DirectX::XMFLOAT3 XM_CALLCONV extractTranslation( const DirectX::XMFLOAT4X4 &mat );
-DirectX::XMMATRIX XM_CALLCONV scaleTranslation( const DirectX::XMMATRIX &mat, float scale );
+static auto g_XMZero = DirectX::XMVectorZero();
+
+//===================================================
+//	\function	extractEulerAngles
+//	\brief  builds a FLOAT3 of {x=pitch,y=yaw,z=roll}
+//	\date	2022/09/03 14:37
+DirectX::XMFLOAT3 extractEulerAngles( const DirectX::XMFLOAT4X4 &mat );
+float getPitch( const DirectX::XMFLOAT4X4 &mat );
+float getYaw( const DirectX::XMFLOAT4X4 &mat );
+float getRoll( const DirectX::XMFLOAT4X4 &mat );
+DirectX::XMFLOAT3 extractTranslation( const DirectX::XMFLOAT4X4 &mat );
+DirectX::XMMATRIX XM_CALLCONV scaleTranslation( const DirectX::XMMATRIX &mat, const float scale );
 DirectX::XMVECTOR XM_CALLCONV pitchYawRollToQuaternion( const DirectX::XMVECTOR& pitchYawRollAngles );
 ALIAS_FUNCTION( pitchYawRollToQuaternion, eulerAnglesToQuaternion );
-ALIAS_FUNCTION( quaternionToPitchYawRoll, quaternionToEulerAngles );
-void quaternionToPitchYawRoll( DirectX::XMFLOAT4 &quat, float &pitch, float &yaw, float &roll );
-DirectX::XMVECTOR XM_CALLCONV pitchYawRollToVector( float pitch, float yaw, float roll );
+void quaternionToEulerAngles( DirectX::XMFLOAT4 &quat, float &pitch, float &yaw, float &roll );
+//===================================================
+//	\function	quaternionToPitchYawRoll
+//	\brief  same as quaternionToEulerAngles except this version returns the euler angles in a float3 vector
+//	\date	2022/09/03 14:48
+DirectX::XMFLOAT3 quaternionToPitchYawRoll( DirectX::XMFLOAT4 &quat );
+DirectX::XMVECTOR XM_CALLCONV pitchYawRollToVector( const float pitch, const float yaw, const float roll );
+float distance( const DirectX::XMFLOAT3& v1, const DirectX::XMFLOAT3& v2 );
+ALIAS_FUNCTION( distance, length );
+float distanceSquared( const DirectX::XMFLOAT3& v1, const DirectX::XMFLOAT3& v2 );
+ALIAS_FUNCTION( distanceSquared, lengthSquared );
 
-DXGI_RATIONAL queryRefreshRate( unsigned screenWidth, unsigned screenHeight, bool bVsync );
+DXGI_RATIONAL queryRefreshRate( const unsigned screenWidth, const unsigned screenHeight, const bool bVsync );
 
 //===================================================
 //	\function	loadShaderDynamically

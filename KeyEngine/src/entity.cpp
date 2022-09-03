@@ -23,7 +23,7 @@ Entity::Entity( EntityIndex version,
 
 Entity::~Entity() noexcept
 {
-	//EntityManager::getInstance().recycleEntityId( getId() );
+	//EntityManager::instance().recycleEntityId( getId() );
 }
 
 Entity::Entity( Entity &&rhs ) noexcept
@@ -172,7 +172,7 @@ void Entity::onMessageReceived( std::unique_ptr<Message> msg )
 
 void Entity::sendMessage( Message *msg ) const noexcept
 {
-	auto &md = MessageDispatcher::getInstance();
+	auto &md = MessageDispatcher::instance();
 	md.addMessage( msg );
 }
 

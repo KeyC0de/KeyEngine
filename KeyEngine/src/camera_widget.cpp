@@ -88,7 +88,7 @@ CameraWidget::CameraWidget( Graphics &gph )
 		struct ColorPCB
 		{
 			dx::XMFLOAT3 color{0.2f, 0.2f, 0.6f};
-			float padding;
+			float paddingPlaceholder = 0.0f;
 		} colorPcb;
 
 		lambertian.addBindable( PixelShaderConstantBuffer<ColorPCB>::fetch( gph,
@@ -120,12 +120,12 @@ const DirectX::XMMATRIX CameraWidget::getTransform() const noexcept
 		dx::XMMatrixTranslationFromVector( dx::XMLoadFloat3( &m_pos ) );
 }
 
-const DirectX::XMMATRIX CameraWidget::getPosition() const noexcept
+const DirectX::XMMATRIX CameraWidget::calcPosition() const noexcept
 {
 	return dx::XMMatrixTranslationFromVector( dx::XMLoadFloat3( &m_pos ) );
 }
 
-const DirectX::XMMATRIX CameraWidget::getRotation() const noexcept
+const DirectX::XMMATRIX CameraWidget::calcRotation() const noexcept
 {
 	return dx::XMMatrixRotationRollPitchYawFromVector( dx::XMLoadFloat3( &m_rot ) );
 }

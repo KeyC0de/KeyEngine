@@ -87,7 +87,7 @@ Graphics::Graphics( const HWND hWnd,
 	m_height(height)
 {
 	HRESULT hres;
-	auto &settings = SettingsManager::getInstance().getSettings();
+	auto &settings = SettingsManager::instance().getSettings();
 	if ( settings.bMultithreadedRendering )
 	{
 		m_deferredContexts.reserve( settings.nRenderingThreads );
@@ -283,7 +283,7 @@ void Graphics::updateAndRenderFpsTimer()
 	static std::wstring fps;
 
 	m_fpsSpriteBatch->Begin();
-	auto &setMan = SettingsManager::getInstance();
+	auto &setMan = SettingsManager::instance();
 	if ( setMan.getSettings().bFpsCounting )
 	{
 		++fpsDisplayFrameCount;
@@ -320,7 +320,7 @@ void Graphics::endRendering()
 	}
 
 	HRESULT hres;
-	SettingsManager &setMan = SettingsManager::getInstance();
+	SettingsManager &setMan = SettingsManager::instance();
 	if ( setMan.getSettings().bVSync )
 	{
 #if defined _FLIP_PRESENT
@@ -364,7 +364,7 @@ void Graphics::draw( const unsigned count ) cond_noex
 void Graphics::drawIndexed( const unsigned count ) cond_noex
 {
 	//VTUNE_ITT_TASK_BEGIN( pStrIttDrawIndexed );
-	SettingsManager &setMan = SettingsManager::getInstance();
+	SettingsManager &setMan = SettingsManager::instance();
 	if ( setMan.getSettings().bMultithreadedRendering )
 	{
 		playbackDeferredCommandList();
@@ -383,7 +383,7 @@ void Graphics::drawIndexedInstanced( const unsigned indexCount,
 	const unsigned instanceCount ) cond_noex
 {
 	//VTUNE_ITT_TASK_BEGIN( pStrIttDrawIndexedInstanced );
-	SettingsManager &setMan = SettingsManager::getInstance();
+	SettingsManager &setMan = SettingsManager::instance();
 	if ( setMan.getSettings().bMultithreadedRendering )
 	{
 
@@ -500,7 +500,7 @@ void Graphics::interrogateDirectxFeatures()
 	ASSERT_HRES_IF_FAILED;
 
 	using namespace std::string_literals;
-	auto &console = KeyConsole::getInstance();
+	auto &console = KeyConsole::instance();
 	console.log( threadingInfo.DriverConcurrentCreates ?
 		"Resources can be created concurrently on multiple threads.\n"s :
 		"No DirectX concurrency possible\n"s );

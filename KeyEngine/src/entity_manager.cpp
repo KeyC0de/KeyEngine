@@ -33,7 +33,7 @@ EntityManager::EntityManager()
 	m_entities.reserve( 1000 );
 }
 
-EntityManager& EntityManager::getInstance()
+EntityManager& EntityManager::instance()
 {
 	if ( m_pInstance == nullptr )
 	{
@@ -183,7 +183,7 @@ Entity* EntityManager::world()
 
 int main()
 {
-	EntityManager &em = EntityManager::getInstance();
+	EntityManager &em = EntityManager::instance();
 
 
 	std::cout << "Creating entities\n";

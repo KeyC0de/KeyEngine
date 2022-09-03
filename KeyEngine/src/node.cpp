@@ -25,45 +25,29 @@ void Node::update( const float dt,
 	const dx::XMMATRIX &parentWorldTransform ) const cond_noex
 {
 	const auto built = dx::XMLoadFloat4x4( &m_localTransform ) * dx::XMLoadFloat4x4( &m_worldTransform ) * parentWorldTransform;
-	for ( const auto pm : m_meshes )
+	for ( const auto pMesh : m_meshes )
 	{
-		pm->setTransform( built );
-		pm->update( dt );
+		pMesh->setTransform( built );
+		pMesh->update( dt );
+		pMesh->setDistanceFromActiveCamera();
 	}
-	for ( const auto &pn : m_children )
+	for ( const auto &pNode : m_children )
 	{
-		pn->update( dt,
+		pNode->update( dt,
 			built );
 	}
 }
 
 void Node::render( const size_t channels ) const cond_noex
 {
-	for ( const auto pm : m_meshes )
+	for ( const auto pMesh : m_meshes )
 	{
-		pm->render( channels );
+		pMesh->render( channels );
 	}
-	for ( const auto &pn : m_children )
+	for ( const auto &pNode : m_children )
 	{
-		pn->render( channels );
+		pNode->render( channels );
 	}
-}
-
-void Node::addChild( std::unique_ptr<Node> pChild ) cond_noex
-{
-	ASSERT( pChild, "Node is null!" );
-	m_children.emplace_back( std::move( pChild ) );
-}
-
-void Node::setTransform( const dx::XMMATRIX &worldTransform ) noexcept
-{
-	dx::XMStoreFloat4x4( &m_worldTransform,
-		worldTransform );
-}
-
-const dx::XMFLOAT4X4& Node::getWorldTransform() const noexcept
-{
-	return m_worldTransform;
 }
 
 const int Node::getImguiId() const noexcept
@@ -100,4 +84,26 @@ bool Node::hasChildren() const noexcept
 const std::string& Node::getName() const noexcept
 {
 	return m_name;
+}
+
+void Node::setWorldTransform( const dx::XMMATRIX &worldTransform ) noexcept
+{
+	dx::XMStoreFloat4x4( &m_worldTransform,
+		worldTransform );
+}
+
+const DirectX::XMFLOAT4X4& Node::getWorldTransform() const noexcept
+{
+	return m_worldTransform;
+}
+
+DirectX::XMFLOAT4X4& Node::worldTransform()
+{
+	return m_worldTransform;
+}
+
+void Node::addChild( std::unique_ptr<Node> pChild ) cond_noex
+{
+	ASSERT( pChild, "Node is null!" );
+	m_children.emplace_back( std::move( pChild ) );
 }

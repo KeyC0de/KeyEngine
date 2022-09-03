@@ -141,7 +141,7 @@ MessageDispatcher& MessageDispatcher::operator=( MessageDispatcher &&rhs ) noexc
 	return *this;
 }
 
-MessageDispatcher& MessageDispatcher::getInstance( int initialCapacity )
+MessageDispatcher& MessageDispatcher::instance( int initialCapacity )
 {
 	static MessageDispatcher instance{initialCapacity};
 	return instance;

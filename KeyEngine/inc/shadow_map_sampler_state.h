@@ -9,7 +9,7 @@
 //	\author	KeyC0de
 //	\date	2022/02/19 22:12
 //
-//	\brief	Creating 3 samplers just in case
+//	\brief	Create a "Comparison sampler" mainly used for Shadow Maps
 //			the bound slot is equal to 1 if bHwPcf, otherwise equal to 2
 //=============================================================
 class ShadowMapSamplerState
@@ -28,7 +28,7 @@ private:
 	FilterMode m_filterMode;
 	Microsoft::WRL::ComPtr<ID3D11SamplerState> m_sampler;
 public:
-	ShadowMapSamplerState( Graphics &gph, const bool bHwPcf, const FilterMode filterMode, const bool slot_autoCalcedDontSet = -1 );
+	ShadowMapSamplerState( Graphics &gph, const bool bHwPcf, const FilterMode filterMode, const unsigned slot_autoCalcedDontSet = -1 );
 
 	void bind( Graphics &gph ) cond_noex override;
 	const FilterMode getFilterMode() const noexcept;

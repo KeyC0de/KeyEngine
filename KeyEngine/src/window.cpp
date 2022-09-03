@@ -60,7 +60,7 @@ Window::WindowClass::WindowClass( const std::string &name )
 	ASSERT_HRES_WIN32_IF_FAILED( hres );
 
 #if defined _DEBUG && !defined NDEBUG
-	auto &console = KeyConsole::getInstance();
+	auto &console = KeyConsole::instance();
 	using namespace std::string_literals;
 	console.log( "\n\nApplication Instance: "s
 		+ util::toHexString( hInstance )
@@ -94,7 +94,7 @@ Window::WindowClass& Window::WindowClass::operator=( WindowClass &&rhs ) noexcep
 	return *this;
 }
 
-Window::WindowClass& Window::WindowClass::getInstance( const std::string &name )
+Window::WindowClass& Window::WindowClass::instance( const std::string &name )
 {
 	static Window::WindowClass m_instance{name};
 	return m_instance;
@@ -115,7 +115,7 @@ Window::Window( const int width,
 {
 	HRESULT hres = 0;
 
-	m_pWindowClass = &WindowClass::getInstance( "KeyEngine_Window_Class" );
+	m_pWindowClass = &WindowClass::instance( "KeyEngine_Window_Class" );
 
 	RECT rect{0, 0, width, height};
 	BOOL ret = AdjustWindowRect( &rect,
@@ -519,7 +519,7 @@ LRESULT CALLBACK Window::windowProc( const HWND hWnd,
 	const LPARAM lParam )
 {
 #if defined _DEBUG && !defined NDEBUG
-	auto &console = KeyConsole::getInstance();
+	auto &console = KeyConsole::instance();
 	console.log( "windowProc() entered\n" );
 #endif
 
@@ -603,7 +603,7 @@ LRESULT Window::windowProc_impl2d( _In_ const HWND hWnd,
 	case WM_ACTIVATE:
 	{// message sent to the window being activated and to the window being deactivated
 #if defined _DEBUG && !defined NDEBUG
-		auto &console = KeyConsole::getInstance();
+		auto &console = KeyConsole::instance();
 		using namespace std::string_literals;
 		console.log( "'WM_ACTIVATEAPP' : message ID received\n"s );
 #endif
@@ -818,7 +818,7 @@ LRESULT Window::windowProc_impl( _In_ const HWND hWnd,
 //		HRESULT hres;
 //		// Initialization. Controls - child windows, set default values for controls
 //#if defined _DEBUG && !defined NDEBUG
-//		auto &console = KeyConsole::getInstance();
+//		auto &console = KeyConsole::instance();
 //		using namespace std::string_literals;
 //		console.log( "'WM_CREATE' : window created\n"s );
 //#endif
@@ -854,7 +854,7 @@ LRESULT Window::windowProc_impl( _In_ const HWND hWnd,
 	case WM_ACTIVATE:
 	{// message sent to the window being activated and to the window being deactivated
 #if defined _DEBUG && !defined NDEBUG
-		auto &console = KeyConsole::getInstance();
+		auto &console = KeyConsole::instance();
 		using namespace std::string_literals;
 		console.log( "'WM_ACTIVATEAPP' : message ID received\n"s );
 #endif
@@ -878,7 +878,7 @@ LRESULT Window::windowProc_impl( _In_ const HWND hWnd,
 	case WM_ENABLE:
 	{
 #if defined _DEBUG && !defined NDEBUG
-		auto &console = KeyConsole::getInstance();
+		auto &console = KeyConsole::instance();
 		if ( wParam == TRUE )
 		{
 			console.log( "Window "
@@ -897,7 +897,7 @@ LRESULT Window::windowProc_impl( _In_ const HWND hWnd,
 #if defined _DEBUG && !defined NDEBUG
 	case WM_SHOWWINDOW:
 	{
-		auto &console = KeyConsole::getInstance();
+		auto &console = KeyConsole::instance();
 		if ( wParam == TRUE )
 		{
 			console.log( "Window "
@@ -923,7 +923,7 @@ LRESULT Window::windowProc_impl( _In_ const HWND hWnd,
 	case WM_PAINT:
 	{
 #	if defined _DEBUG && !defined NDEBUG
-		auto &console = KeyConsole::getInstance();
+		auto &console = KeyConsole::instance();
 		using namespace std::string_literals;
 		console.log( "Painting without DirectX\n"s );
 #	endif
@@ -1099,7 +1099,7 @@ Prevent window resizing: Instead resize by ingame option - choosing resolution:
 	case WM_INITMENUPOPUP:
 	{
 #if defined _DEBUG && !defined NDEBUG
-		auto &console = KeyConsole::getInstance();
+		auto &console = KeyConsole::instance();
 		using namespace std::string_literals;
 		console.log( "Clipboard processing\n"s );
 #endif
@@ -1462,7 +1462,7 @@ Dialog::Dialog( const std::string &name )
 	ASSERT_HRES_WIN32_IF_FAILED( hres );
 
 #if defined _DEBUG && !defined NDEBUG
-	auto &console = KeyConsole::getInstance();
+	auto &console = KeyConsole::instance();
 	using namespace std::string_literals;
 	console.log( "Dialog Window : "s
 		+ util::ws2s( m_name )

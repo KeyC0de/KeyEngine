@@ -12,7 +12,7 @@ bool assertPrint( const char *expr,
 	const char *function,
 	const char *msg )
 {
-	KeyConsole &console = KeyConsole::getInstance();
+	KeyConsole &console = KeyConsole::instance();
 	console.log( ">> Assertion failed @ file: ");
 	console.log( file );
 	console.log( "\n>> function: " );

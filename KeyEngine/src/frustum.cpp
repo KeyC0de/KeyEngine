@@ -162,15 +162,15 @@ void Frustum::setRotation( const DirectX::XMFLOAT3 &rot ) noexcept
 
 const DirectX::XMMATRIX Frustum::getTransform() const noexcept
 {
-	return getRotation() * getPosition();
+	return calcRotation() * calcPosition();
 }
 
-const DirectX::XMMATRIX Frustum::getRotation() const noexcept
+const DirectX::XMMATRIX Frustum::calcRotation() const noexcept
 {
 	return dx::XMMatrixRotationRollPitchYawFromVector( dx::XMLoadFloat3( &m_rot ) );
 }
 
-const DirectX::XMMATRIX Frustum::getPosition() const noexcept
+const DirectX::XMMATRIX Frustum::calcPosition() const noexcept
 {
 	return dx::XMMatrixTranslationFromVector( dx::XMLoadFloat3( &m_pos ) );
 }

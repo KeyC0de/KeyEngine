@@ -49,7 +49,7 @@ private:
 private:
 	EntityManager();
 public:
-	static EntityManager& getInstance();
+	static EntityManager& instance();
 	static void resetInstance();
 	//===================================================
 	//	\function	spawnEntity

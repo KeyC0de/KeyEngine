@@ -114,7 +114,7 @@ void setupDetachedThreadsVector( unsigned nThreads )
 void terminateDetachedThreads()
 {
 #if defined _DEBUG && !defined NDEBUG
-	KeyConsole &console = KeyConsole::getInstance();
+	KeyConsole &console = KeyConsole::instance();
 	console.print( "Clearing up detached threads\n" );
 #endif
 	for ( const auto th : g_detachedThreads )

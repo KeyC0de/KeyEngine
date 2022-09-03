@@ -14,7 +14,7 @@ DxgiInfoQueue::DxgiInfoQueue()
 	if ( !dxgidebugLib )
 	{
 #if defined _DEBUG && !defined NDEBUG
-		KeyConsole &console = KeyConsole::getInstance();
+		KeyConsole &console = KeyConsole::instance();
 		using namespace std::string_literals;
 		console.log( "Could not acquire dxgidebug library."s );
 #endif
@@ -27,7 +27,7 @@ DxgiInfoQueue::DxgiInfoQueue()
 	if ( !dxgiGetDebugInterface )
 	{
 #if defined _DEBUG && !defined NDEBUG
-		KeyConsole &console = KeyConsole::getInstance();
+		KeyConsole &console = KeyConsole::instance();
 		using namespace std::string_literals;
 		console.log( "DXGIGetDebugInterface function was not located in the library."s );
 #endif

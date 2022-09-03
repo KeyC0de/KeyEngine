@@ -7,7 +7,7 @@
 ShadowMapSamplerState::ShadowMapSamplerState( Graphics &gph,
 	bool bHwPcf,
 	const FilterMode filterMode,
-	bool slot_autoCalcedDontSet /*= -1*/ )
+	const unsigned slot_autoCalcedDontSet /*= -1*/ )
 	:
 	m_bHwPcf{bHwPcf},
 	m_filterMode{filterMode},

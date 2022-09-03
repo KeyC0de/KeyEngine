@@ -26,7 +26,7 @@ class CameraManager final
 	CameraManager() = default;
 	Camera& controlledCamera();
 public:
-	static CameraManager& getInstance();
+	static CameraManager& instance();
 public:
 	void setWidth( const int width ) noexcept;
 	void setHeight( const int height ) noexcept;

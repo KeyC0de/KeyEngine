@@ -4,7 +4,7 @@
 #include "graphics.h"
 
 
-CameraManager& CameraManager::getInstance()
+CameraManager& CameraManager::instance()
 {
 	static CameraManager m_instance{};
 	return m_instance;

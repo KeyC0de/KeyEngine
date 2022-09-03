@@ -431,7 +431,7 @@ ElementView::Ptr::Ptr( ElementView *ref ) noexcept
 con::CookedLayout LayoutMap::fetch( con::RawLayout &&cbLayout ) cond_noex
 {
 	auto sig = cbLayout.calcSignature();
-	auto &map = getInstance().m_map;
+	auto &map = instance().m_map;
 	const auto i = map.find( sig );
 	// identical layout already exists
 	if ( i != map.end() )
@@ -448,7 +448,7 @@ con::CookedLayout LayoutMap::fetch( con::RawLayout &&cbLayout ) cond_noex
 	return {result.first->second};
 }
 
-LayoutMap& LayoutMap::getInstance() noexcept
+LayoutMap& LayoutMap::instance() noexcept
 {
 	static LayoutMap instance{};
 	return instance;

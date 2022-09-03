@@ -207,7 +207,7 @@ public:
 		{
 #define X(el) case el:\
 	ASSERT( typeid( ElementProperties<el>::CPUType ) == typeid( T ), "Wrong CPUType" );\
-	return *m_offset;
+	return *m_offset;	// #FIXME: this becomes equal to 0 & crashes when selecting a child node in IMGUI
 CB_LEAF_TYPES
 #undef X
 		default:
@@ -494,7 +494,7 @@ class LayoutMap
 public:
 	static con::CookedLayout fetch( con::RawLayout &&cbLayout ) cond_noex;
 private:
-	static LayoutMap& getInstance() noexcept;
+	static LayoutMap& instance() noexcept;
 };
 
 

@@ -12,5 +12,5 @@ public:
 
 	void setPosition( const DirectX::XMFLOAT3 &pos ) noexcept;
 	const DirectX::XMMATRIX getTransform() const noexcept override;
-	const DirectX::XMMATRIX getPosition() const noexcept;
+	const DirectX::XMMATRIX calcPosition() const noexcept;
 };

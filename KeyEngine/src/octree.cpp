@@ -104,9 +104,9 @@ void Octree::insert( OctreeData *data )
 			// re-insert
 			// (we wouldn't need to insert from the root, because we already
 			// know it's guaranteed to be in this section of the tree)
-			m_children[getOctantContainingPoint( oldData->getPosition() )]
+			m_children[getOctantContainingPoint( oldData->calcPosition() )]
 				->insert( oldData );
-			m_children[getOctantContainingPoint( data->getPosition() )]
+			m_children[getOctantContainingPoint( data->calcPosition() )]
 				->insert( data );
 		}
 	}
@@ -114,7 +114,7 @@ void Octree::insert( OctreeData *data )
 	{
 		// We are at an interior node.
 		// Insert recursively into the appropriate child octant until we reach a leaf
-		int octant = getOctantContainingPoint( data->getPosition() );
+		int octant = getOctantContainingPoint( data->calcPosition() );
 		m_children[octant]->insert( data );
 	}
 }
@@ -128,7 +128,7 @@ void Octree::getEntitiesWithinBBox( const dx::XMFLOAT3 &requestedMin,
 	{
 		if ( m_data != nullptr )
 		{
-			const dx::XMFLOAT3 p = m_data->getPosition();
+			const dx::XMFLOAT3 p = m_data->calcPosition();
 			if ( p.x > requestedMax.x
 				|| p.y > requestedMax.y
 				|| p.z > requestedMax.z

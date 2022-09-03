@@ -21,14 +21,16 @@ namespace ren
 class Mesh
 {
 protected:
+	float m_distanceFromActiveCamera = 0.0f;
+	mutable DirectX::XMFLOAT4X4 m_worldTransform;	// stored in row major, transposed in TransformVSCB b4 lead to HLSL
 	std::shared_ptr<IndexBuffer> m_pIndexBuffer;
 	std::shared_ptr<VertexBuffer> m_pVertexBuffer;
 	std::shared_ptr<PrimitiveTopology> m_pPrimitiveTopology;
 	std::vector<Effect> m_effects;
-	mutable DirectX::XMFLOAT4X4 m_worldTransform;
-	int m_distanceFromActiveCamera = 0;
 public:
+#pragma warning( disable : 26495 )
 	Mesh() = default;
+#pragma warning( default : 26495 )
 	Mesh( Graphics &gph, const MaterialLoader &mat, const aiMesh &aimesh, const float scale = 1.0f ) noexcept;
 	virtual ~Mesh() noexcept = default;
 
@@ -66,11 +68,14 @@ public:
 	//	\brief  sets the world transform matrix for the mesh
 	//	\date	2022/08/28 21:24
 	void setTransform( const DirectX::XMMATRIX &worldTransform ) noexcept;
-	//===================================================
-	//	\function	getTransform
-	//	\brief  returns the world transform matrix of the mesh
-	//	\date	2022/08/20 23:56
 	virtual const DirectX::XMMATRIX getTransform() const noexcept;
-	void setDistanceFromActiveCamera( const int dist ) noexcept;
-	const int getDistanceFromActiveCamera() const noexcept;
+	DirectX::XMFLOAT3 calcPosition() const noexcept;
+	DirectX::XMMATRIX calcPositionTr() const noexcept;
+	DirectX::XMFLOAT4 calcRotationQuat() const noexcept;
+	DirectX::XMMATRIX calcRotationTr() const noexcept;
+	float calcScale() const noexcept;
+	DirectX::XMMATRIX calcScaleTr() const noexcept;
+	////////////////////////////////////////////////////////////////////////////////////////////////////
+	void setDistanceFromActiveCamera() noexcept;
+	const float getDistanceFromActiveCamera() const noexcept;
 };

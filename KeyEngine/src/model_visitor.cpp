@@ -54,7 +54,7 @@ void MV::spawnModelImgui( Model &model )
 
 		if ( bDirty )
 		{
-			m_pSelectedNode->setTransform( dx::XMMatrixRotationX( tf.pitch ) *
+			m_pSelectedNode->setWorldTransform( dx::XMMatrixRotationX( tf.pitch ) *
 				dx::XMMatrixRotationY( tf.yaw ) *
 				dx::XMMatrixRotationZ( tf.roll ) *
 				dx::XMMatrixTranslation( tf.x, tf.y, tf.z ) );
@@ -77,20 +77,23 @@ bool MV::visit( Node &node )
 	const int selectedNodeId = ( m_pSelectedNode == nullptr ) ?
 		-1 :
 		m_pSelectedNode->getImguiId();
+	
 	// build up flags for current node
-	const auto node_flags = ImGuiTreeNodeFlags_OpenOnArrow
+	const auto nodeFlags = ImGuiTreeNodeFlags_OpenOnArrow
 		| ( ( node.getImguiId() == selectedNodeId ) ? ImGuiTreeNodeFlags_Selected : 0 )
 		| ( node.hasChildren() ? 0 : ImGuiTreeNodeFlags_Leaf );
+
 	// render this node
 	const bool bExpand = ImGui::TreeNodeEx( (void*)(intptr_t)node.getImguiId(),
-		node_flags,
+		nodeFlags,
 		node.getName().c_str() );
-	// processing for selecting node
+	
 	if ( ImGui::IsItemClicked() )
 	{
 		m_pSelectedNode = &node;
 	}
-	// signal if children should also be recursed
+	
+	// if bExpand is true then that's the go-signal for children Nodes to also be recursed
 	return bExpand;
 }
 

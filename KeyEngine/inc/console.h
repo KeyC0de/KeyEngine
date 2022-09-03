@@ -39,7 +39,7 @@ public:
 	static void getConsoleInfo( const HANDLE h );
 public:
 	bool closeConsole();
-	static KeyConsole& getInstance() noexcept;
+	static KeyConsole& instance() noexcept;
 	//===================================================
 	//	\function	resetInstance
 	//	\brief  you must call this manually prior to program exit to avoid memory leaks

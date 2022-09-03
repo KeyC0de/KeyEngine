@@ -18,6 +18,6 @@ public:
 	void setPosition( const DirectX::XMFLOAT3 &pos ) noexcept;
 	void setRotation( const DirectX::XMFLOAT3 &rot ) noexcept;
 	const DirectX::XMMATRIX getTransform() const noexcept override;
-	const DirectX::XMMATRIX getRotation() const noexcept;
-	const DirectX::XMMATRIX getPosition() const noexcept;
+	const DirectX::XMMATRIX calcRotation() const noexcept;
+	const DirectX::XMMATRIX calcPosition() const noexcept;
 };

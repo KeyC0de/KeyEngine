@@ -78,7 +78,7 @@ hint std::size_t* getUniqueMemory();
 			<< "\n"s\
 			<< util::printHresultErrorDescription( hres )\
 			<< "\n\n"s;\
-		KeyConsole &console = KeyConsole::getInstance();\
+		KeyConsole &console = KeyConsole::instance();\
 		console.log( oss.str() );\
 		__debugbreak();\
 		return hres;\
@@ -99,7 +99,7 @@ hint std::size_t* getUniqueMemory();
 			<< "\n"s\
 			<< util::printHresultErrorDescription( hres )\
 			<< "\n\n"s;\
-		KeyConsole &console = KeyConsole::getInstance();\
+		KeyConsole &console = KeyConsole::instance();\
 		console.log( oss.str() );\
 		__debugbreak();\
 		std::exit( hres );\
@@ -120,7 +120,7 @@ hint std::size_t* getUniqueMemory();
 			<< "\n"s\
 			<< util::printHresultErrorDescription( hres )\
 			<< "\n\n"s;\
-		KeyConsole &console = KeyConsole::getInstance();\
+		KeyConsole &console = KeyConsole::instance();\
 		console.log( oss.str() );\
 		__debugbreak();\
 		std::exit( hres );\
@@ -144,7 +144,7 @@ hint std::size_t* getUniqueMemory();
 			<< "msg: "\
 			<< msg\
 			<< "\n\n"s;\
-		KeyConsole &console = KeyConsole::getInstance();\
+		KeyConsole &console = KeyConsole::instance();\
 		console.log( oss.str() );\
 		__debugbreak();\
 		std::exit( hres );\
@@ -175,7 +175,7 @@ hint std::size_t* getUniqueMemory();
 			<< "\n"s\
 			<< util::getLastNtErrorAsString( ntErrorCode )\
 			<< "\n\n"s;\
-		KeyConsole &console = KeyConsole::getInstance();\
+		KeyConsole &console = KeyConsole::instance();\
 		console.log( oss.str() );\
 		__debugbreak();\
 		std::exit( hres );\
@@ -198,7 +198,7 @@ hint std::size_t* getUniqueMemory();
 			buffer,\
 			MAX_PATH,\
 			nullptr );\
-		KeyConsole &console = KeyConsole::getInstance();\
+		KeyConsole &console = KeyConsole::instance();\
 		console.print( util::ws2s( buffer ) );\
 		__debugbreak();\
 		std::exit( ret );\

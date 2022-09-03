@@ -68,7 +68,7 @@ void Game<T>::setState( std::unique_ptr<State> pNewState,
 		m_mainWindow.disableCursor();
 		mouse.enableRawInput();
 #if defined _DEBUG && !defined NDEBUG
-		KeyConsole &console = KeyConsole::getInstance();
+		KeyConsole &console = KeyConsole::instance();
 		console.print( "\nGame state is on!\n" );
 #endif
 	}
@@ -77,7 +77,7 @@ void Game<T>::setState( std::unique_ptr<State> pNewState,
 		m_mainWindow.enableCursor();
 		mouse.disableRawInput();
 #if defined _DEBUG && !defined NDEBUG
-		KeyConsole &console = KeyConsole::getInstance();
+		KeyConsole &console = KeyConsole::instance();
 		console.print( "\nMenu state is on!\n" );
 #endif
 	}
@@ -109,7 +109,7 @@ const float Game<T>::calcDt()
 
 #if defined _DEBUG && !defined NDEBUG
 	// print frame time
-	KeyConsole &console = KeyConsole::getInstance();
+	KeyConsole &console = KeyConsole::instance();
 	using namespace std::string_literals;
 	++settings.frameCount;
 	std::string frameStats = "Frame time : "s
@@ -193,9 +193,9 @@ Sandbox3d::Sandbox3d( const int width,
 
 	m_cube1.setWorldPosition( {10.0f, 5.0f, 6.0f} );
 
-	m_nanoSuit.setTransform( dx::XMMatrixRotationY( util::PI / 2.f ) *
+	m_nanoSuit.setRootTransform( dx::XMMatrixRotationY( util::PI / 2.f ) *
 		dx::XMMatrixTranslation( 27.f, -0.56f, 1.7f ) );
-	m_carabiner.setTransform( dx::XMMatrixTranslation( -10.0f, 6.0f, 0.0f ) );
+	m_carabiner.setRootTransform( dx::XMMatrixTranslation( -10.0f, 6.0f, 0.0f ) );
 
 	m_pPointLight1->connectEffectsToRenderer( m_renderer );
 	//m_pPointLight2->connectEffectsToRenderer( m_renderer );
@@ -233,8 +233,10 @@ int Sandbox3d::loop()
 
 		const float dt = calcDt();
 		checkInput( dt );
-		// checkScripts()
 		update( dt );
+#if defined _DEBUG && !defined NDEBUG
+		test();
+#endif
 		render( dt );
 		present();
 	}
@@ -359,6 +361,15 @@ void Sandbox3d::update( float dt )
 	m_sponzaScene.update( dt );
 }
 
+#if defined _DEBUG && !defined NDEBUG
+void Sandbox3d::test()
+{
+	using namespace std::string_literals;
+	KeyConsole &console = KeyConsole::instance();
+	console.print( "Distance from carabiner "s + std::to_string( m_carabiner.getDistanceFromActiveCamera() ) + "\n"s );
+}
+#endif
+
 void Sandbox3d::render( float dt )
 {
 	auto &gph = m_mainWindow.getGraphics();
@@ -456,6 +467,9 @@ int Arkanoid::loop()
 		const float dt = calcDt();
 		checkInput( dt );
 		update( dt );
+#if defined _DEBUG && !defined NDEBUG
+		test();
+#endif
 		render( dt );
 		present();
 	}
@@ -520,7 +534,7 @@ void Arkanoid::update( float dt )
 			const auto brickCenter = m_bricks[i].calcCenter();
 			dx::XMStoreFloat( &newCollisionDistance,
 				dx::XMVector2LengthSq( dx::XMVectorSubtract( dx::XMLoadFloat2( &m_ball.getPosition() ),
-						dx::XMLoadFloat2( &brickCenter ) ) ) );
+					dx::XMLoadFloat2( &brickCenter ) ) ) );
 			if ( bCollided )
 			{// limit to one collision per frame
 				if ( newCollisionDistance < currentColDist )
@@ -555,6 +569,13 @@ void Arkanoid::update( float dt )
 		m_padSound.play();
 	}
 }
+
+#if defined _DEBUG && !defined NDEBUG
+void Arkanoid::test()
+{
+
+}
+#endif
 
 void Arkanoid::render( float dt )
 {
@@ -606,6 +627,9 @@ int Snake::loop()
 		const float dt = calcDt();
 		checkInput( dt );
 		update( dt );
+#if defined _DEBUG && !defined NDEBUG
+		test();
+#endif
 		render( dt );
 		present();
 	}
@@ -738,6 +762,13 @@ void Snake::update( float dt )
 		}
 	}
 }
+
+#if defined _DEBUG && !defined NDEBUG
+void Snake::test()
+{
+
+}
+#endif
 
 void Snake::render( float dt )
 {

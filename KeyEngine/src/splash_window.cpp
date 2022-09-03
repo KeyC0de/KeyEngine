@@ -162,7 +162,7 @@ LRESULT CALLBACK SplashWindow::windowProc( const HWND hWnd,
 	const LPARAM lParam )
 {
 #if defined _DEBUG && !defined NDEBUG
-	auto &console = KeyConsole::getInstance();
+	auto &console = KeyConsole::instance();
 	console.log( "windowProc() entered\n" );
 #endif
 
@@ -205,7 +205,7 @@ LRESULT CALLBACK SplashWindow::windowProc( const HWND hWnd,
 	case WM_ENABLE:
 	{
 #if defined _DEBUG && !defined NDEBUG
-		auto &console = KeyConsole::getInstance();
+		auto &console = KeyConsole::instance();
 		if ( wParam == TRUE )
 		{
 			console.log( "Window "
@@ -232,7 +232,7 @@ LRESULT CALLBACK SplashWindow::windowProc( const HWND hWnd,
 	case WM_PAINT:
 	{
 #	if defined _DEBUG && !defined NDEBUG
-		auto &console = KeyConsole::getInstance();
+		auto &console = KeyConsole::instance();
 		using namespace std::string_literals;
 		console.log( "Painting without DirectX\n"s );
 #	endif
@@ -277,7 +277,7 @@ LRESULT SplashWindow::windowProc_impl( _In_ HWND hWnd,
 	case WM_ENABLE:
 	{
 #if defined _DEBUG && !defined NDEBUG
-		auto &console = KeyConsole::getInstance();
+		auto &console = KeyConsole::instance();
 		if ( wParam == TRUE )
 		{
 			console.log( "Window "
@@ -304,7 +304,7 @@ LRESULT SplashWindow::windowProc_impl( _In_ HWND hWnd,
 	case WM_PAINT:
 	{
 #	if defined _DEBUG && !defined NDEBUG
-		auto &console = KeyConsole::getInstance();
+		auto &console = KeyConsole::instance();
 		using namespace std::string_literals;
 		console.log( "Painting without DirectX\n"s );
 #	endif

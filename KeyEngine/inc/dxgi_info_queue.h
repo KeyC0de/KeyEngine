@@ -38,7 +38,7 @@ public:
 #if defined _DEBUG && !defined NDEBUG
 #	define DXGI_GET_QUEUE_INFO( gph ) \
 	{\
-		KeyConsole &console = KeyConsole::getInstance();\
+		KeyConsole &console = KeyConsole::instance();\
 		const auto &messages = gph.infoQueue().getInfoMessages();\
 		if ( !messages.empty() )\
 		{\
@@ -57,7 +57,7 @@ public:
 #if defined _DEBUG && !defined NDEBUG
 #	define DXGI_GET_QUEUE_INFO_P( gph ) \
 	{\
-		KeyConsole &console = KeyConsole::getInstance();\
+		KeyConsole &console = KeyConsole::instance();\
 		const auto &messages = gph->infoQueue().getInfoMessages();\
 		if ( !messages.empty() )\
 		{\
@@ -77,7 +77,7 @@ public:
 #if defined _DEBUG && !defined NDEBUG
 #	define DXGI_GET_QUEUE_INFO_GFX \
 	{\
-		KeyConsole &console = KeyConsole::getInstance();\
+		KeyConsole &console = KeyConsole::instance();\
 		const auto &messages = m_infoQueue.getInfoMessages();\
 		if ( !messages.empty() )\
 		{\

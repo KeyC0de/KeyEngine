@@ -11,7 +11,7 @@ SettingsManager::SettingsManager( const std::string &filePath )
 	loadFromFile( filePath );
 }
 
-SettingsManager& SettingsManager::getInstance( const std::string &filePath )
+SettingsManager& SettingsManager::instance( const std::string &filePath )
 {
 	static SettingsManager m_instance{std::string{"config/"} + filePath};
 	return m_instance;
@@ -56,7 +56,7 @@ void SettingsManager::loadFromFile( const std::string &filePath )
 	}
 
 #if defined _DEBUG && !defined NDEBUG
-	KeyConsole& console = KeyConsole::getInstance();
+	KeyConsole& console = KeyConsole::instance();
 	console.log( "\n\nConfig loaded from \"" + filePath + "\": {"
 		"\n\tversion="
 		+ std::to_string( m_settings.version )

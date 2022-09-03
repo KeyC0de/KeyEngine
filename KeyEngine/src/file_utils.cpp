@@ -233,7 +233,7 @@ size_t countColumnsOfFile( const char *fileName )
 bool printFile( const char *fname )
 {
 	std::ifstream ifs{fname};
-	KeyConsole &console = KeyConsole::getInstance();
+	KeyConsole &console = KeyConsole::instance();
 	if ( !ifs.is_open() )
 	{
 		console.log( "can't open " + std::string{*fname} + "!\n" );

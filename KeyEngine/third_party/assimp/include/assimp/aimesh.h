@@ -281,6 +281,7 @@ struct aiBone {
 	}
 
 	//! Copy constructor
+#pragma warning( disable : 26495 )
 	aiBone(const aiBone &other)
 	  : mName( other.mName )
 	  , mNumWeights( other.mNumWeights )
@@ -292,6 +293,7 @@ struct aiBone {
 			::memcpy(mWeights,other.mWeights,mNumWeights * sizeof(aiVertexWeight));
 		}
 	}
+#pragma warning( default : 26495 )
 
 
 	//! Assignment operator

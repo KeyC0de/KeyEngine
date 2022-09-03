@@ -99,7 +99,7 @@ public:
 	//	\function	getInstance
 	//	\brief  return the single instance of the class
 	//	\date	2020/10/24 1:48
-	static SoundManager& getInstance( WAVEFORMATEXTENSIBLE *format = nullptr );
+	static SoundManager& instance( WAVEFORMATEXTENSIBLE *format = nullptr );
 public:
 	~SoundManager() noexcept;
 

@@ -12,6 +12,7 @@
 //	\date	2019/12/09 13:50
 //
 //	\brief	a Game Object base class
+//			Transformation: ConcreteEntity <- Entity <- Model <- Node <- ConcreteMesh <- Mesh
 //=============================================================
 class Entity
 {

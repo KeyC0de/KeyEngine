@@ -41,7 +41,7 @@ private:
 		WindowClass( WindowClass &&rhs ) noexcept;
 		WindowClass& operator=( WindowClass &&rhs ) noexcept;
 
-		static WindowClass& getInstance( const std::string &name );
+		static WindowClass& instance( const std::string &name );
 		const std::string& getName() noexcept;
 	};
 private:

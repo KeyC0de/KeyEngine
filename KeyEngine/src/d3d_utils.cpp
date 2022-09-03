@@ -7,7 +7,7 @@ namespace util
 namespace dx = DirectX;
 
 
-dx::XMFLOAT3 XM_CALLCONV extractEulerAngles( const dx::XMFLOAT4X4 &mat )
+dx::XMFLOAT3 extractEulerAngles( const dx::XMFLOAT4X4 &mat )
 {
 	dx::XMFLOAT3 eulerRot;
 
@@ -26,15 +26,54 @@ dx::XMFLOAT3 XM_CALLCONV extractEulerAngles( const dx::XMFLOAT4X4 &mat )
 	return eulerRot;
 }
 
-dx::XMFLOAT3 XM_CALLCONV extractTranslation( const dx::XMFLOAT4X4 &mat )
+float getPitch( const dx::XMFLOAT4X4 &mat )
 {
-	return {mat._41,	// x = pitch
-		mat._42,		// y = yaw
-		mat._43};		// z = roll
+	return asinf( -mat._32 );
+}
+
+float getYaw( const dx::XMFLOAT4X4 &mat )
+{
+	dx::XMFLOAT3 eulerRot;
+
+	eulerRot.x = asinf( -mat._32 );					// Pitch
+	if ( cosf( eulerRot.x ) > 0.0001 )				// Not at poles
+	{
+		eulerRot.y = atan2f( mat._31, mat._33 );	// Yaw
+	}
+	else
+	{
+		eulerRot.y = 0.0f;								// Yaw
+	}
+
+	return eulerRot.y;
+}
+
+float getRoll( const dx::XMFLOAT4X4 &mat )
+{
+	dx::XMFLOAT3 eulerRot;
+
+	eulerRot.x = asinf( -mat._32 );					// Pitch
+	if ( cosf( eulerRot.x ) > 0.0001 )				// Not at poles
+	{
+		eulerRot.z = atan2f( mat._12, mat._22 );	// Roll
+	}
+	else
+	{
+		eulerRot.z = atan2f( -mat._21, mat._11 );	// Roll
+	}
+
+	return eulerRot.z;
+}
+
+dx::XMFLOAT3 extractTranslation( const dx::XMFLOAT4X4 &mat )
+{
+	return {mat._41,	// x
+		mat._42,		// y
+		mat._43};		// z
 }
 
 dx::XMMATRIX XM_CALLCONV scaleTranslation( const dx::XMMATRIX &mat,
-	float scale )
+	const float scale )
 {
 	dx::XMMATRIX tmp{mat};
 	tmp.r[3].m128_f32[0] *= scale;
@@ -48,7 +87,7 @@ dx::XMVECTOR XM_CALLCONV pitchYawRollToQuaternion( const dx::XMVECTOR& pitchYawR
 	return dx::XMQuaternionRotationRollPitchYawFromVector( pitchYawRollAngles );
 }
 
-void quaternionToPitchYawRoll( dx::XMFLOAT4 &quat,
+void quaternionToEulerAngles( dx::XMFLOAT4 &quat,
 	float &pitch,
 	float &yaw,
 	float &roll )
@@ -60,17 +99,55 @@ void quaternionToPitchYawRoll( dx::XMFLOAT4 &quat,
 		1 - 2 * ( quat.x * quat.x + quat.z * quat.z ) );
 }
 
-dx::XMVECTOR XM_CALLCONV pitchYawRollToVector( float pitch,
-	float yaw,
-	float roll )
+DirectX::XMFLOAT3 quaternionToPitchYawRoll( dx::XMFLOAT4 &quat )
+{
+	DirectX::XMFLOAT3 pitchYawRoll{asin( 2 * ( quat.w * quat.x - quat.z * quat.y ) ),
+		atan2( 2 * ( quat.w * quat.y + quat.x * quat.z ),
+			1 - 2 * ( quat.y * quat.y + quat.x * quat.x ) ),
+		atan2( 2 * ( quat.w * quat.z + quat.y * quat.x ),
+		1 - 2 * ( quat.x * quat.x + quat.z * quat.z ) )};
+	return pitchYawRoll;
+}
+
+dx::XMVECTOR XM_CALLCONV pitchYawRollToVector( const float pitch,
+	const float yaw,
+	const float roll )
 {
 	dx::XMFLOAT4 angles{pitch, yaw, roll, 0.0f};
 	return dx::XMLoadFloat4( &angles );
 }
 
-DXGI_RATIONAL queryRefreshRate( unsigned screenWidth,
-	unsigned screenHeight,
-	bool bVsync )
+float distance( const DirectX::XMFLOAT3& v1,
+	const DirectX::XMFLOAT3& v2 )
+{
+	dx::XMVECTOR pos1 = dx::XMLoadFloat3( &v1 );
+	dx::XMVECTOR pos2 = dx::XMLoadFloat3( &v2 );
+	dx::XMVECTOR vectorSub = dx::XMVectorSubtract( pos1, pos2 );
+	dx::XMVECTOR length = dx::XMVector3Length( vectorSub );
+
+	float distance = 0.0f;
+	dx::XMStoreFloat( &distance,
+		length );
+	return distance;
+}
+
+float distanceSquared( const DirectX::XMFLOAT3& v1,
+	const DirectX::XMFLOAT3& v2 )
+{
+	dx::XMVECTOR pos1 = dx::XMLoadFloat3( &v1 );
+	dx::XMVECTOR pos2 = dx::XMLoadFloat3( &v2 );
+	dx::XMVECTOR vectorSub = dx::XMVectorSubtract( pos1, pos2 );
+	dx::XMVECTOR lengthSquared = dx::XMVector3LengthSq( vectorSub );
+
+	float distanceSquared = 0.0f;
+	dx::XMStoreFloat( &distanceSquared,
+		lengthSquared );
+	return distanceSquared;
+}
+
+DXGI_RATIONAL queryRefreshRate( const unsigned screenWidth,
+	unsigned const screenHeight,
+	const bool bVsync )
 {
 	DXGI_RATIONAL refreshRate = {0, 1};
 	if ( bVsync )

@@ -34,7 +34,7 @@ public:
 	ThreadPool( ThreadPool &&rhs ) noexcept;
 	ThreadPool& operator=( ThreadPool &&rhs ) noexcept;
 
-	static ThreadPool& getInstance( const std::size_t nThreads = std::thread::hardware_concurrency(), const bool bEnabled = true );
+	static ThreadPool& instance( const std::size_t nThreads = std::thread::hardware_concurrency(), const bool bEnabled = true );
 	//===================================================
 	//	\function	start
 	//	\brief  calls run

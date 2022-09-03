@@ -15,7 +15,9 @@ class Brick
 	ColorBGRA m_color;
 	bool m_bDestroyed = false;
 public:
+#pragma warning( disable : 26495 )
 	Brick() = default;
+#pragma warning( default : 26495 )
 	Brick( const Rect &rect, const ColorBGRA col );
 
 	void render( Graphics &gph ) const cond_noex;

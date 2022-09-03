@@ -82,7 +82,7 @@ public:
 	MessageDispatcher( MessageDispatcher &&rhs ) noexcept;
 	MessageDispatcher& operator=( MessageDispatcher &&rhs ) noexcept;
 
-	static MessageDispatcher& getInstance( int initialCapacity = 100 );
+	static MessageDispatcher& instance( int initialCapacity = 100 );
 	//===================================================
 	//	\function	addMessage
 	//	\brief  add new message to the MessageBus

@@ -3,6 +3,10 @@
 #include "primitive_topology.h"
 #include "vertex_buffer.h"
 #include "material_loader.h"
+#include "d3d_utils.h"
+#include "camera_manager.h"
+#include "camera.h"
+#include "d3d_utils.h"
 
 
 namespace dx = DirectX;
@@ -91,12 +95,69 @@ const DirectX::XMMATRIX Mesh::getTransform() const noexcept
 	return DirectX::XMLoadFloat4x4( &m_worldTransform );
 }
 
-void Mesh::setDistanceFromActiveCamera( const int dist ) noexcept
+DirectX::XMFLOAT3 Mesh::calcPosition() const noexcept
 {
-	m_distanceFromActiveCamera = dist;
+	return util::extractTranslation( m_worldTransform );
 }
 
-const int Mesh::getDistanceFromActiveCamera() const noexcept
+DirectX::XMMATRIX Mesh::calcPositionTr() const noexcept
+{
+	auto pos = calcPosition();
+	return dx::XMMatrixTranslationFromVector( dx::XMLoadFloat3( &pos ) );
+}
+
+DirectX::XMFLOAT4 Mesh::calcRotationQuat() const noexcept
+{
+	//return dx::XMQuaternionRotationMatrix( dx::XMLoadFloat4x4( &m_worldTransform ) );
+	dx::XMVECTOR rotQuatVec;
+	bool res = dx::XMMatrixDecompose( nullptr,
+		&rotQuatVec,
+		nullptr,
+		dx::XMLoadFloat4x4( &m_worldTransform ) );
+	ASSERT( res, "XMMatrixDecompose did not succeed!" );
+
+	dx::XMFLOAT4 rotQuat;
+	dx::XMStoreFloat4( &rotQuat,
+		rotQuatVec );
+	return rotQuat;
+}
+
+DirectX::XMMATRIX Mesh::calcRotationTr() const noexcept
+{
+	const auto quat = calcRotationQuat();
+	return dx::XMMatrixRotationRollPitchYawFromVector( dx::XMLoadFloat4( &quat ) );
+}
+
+float Mesh::calcScale() const noexcept
+{
+	dx::XMVECTOR scaleVec;
+	bool res = dx::XMMatrixDecompose( &scaleVec,
+		nullptr,
+		nullptr,
+		dx::XMLoadFloat4x4( &m_worldTransform ) );
+	ASSERT( res, "XMMatrixDecompose did not succeed!" );
+
+	float scale;
+	dx::XMStoreFloat( &scale,
+		scaleVec );
+	return scale;
+}
+
+DirectX::XMMATRIX Mesh::calcScaleTr() const noexcept
+{
+	const float scale = calcScale();
+	return dx::XMMatrixScalingFromVector( dx::XMVectorReplicate( scale ) );
+}
+
+void Mesh::setDistanceFromActiveCamera() noexcept
+{
+	auto pos = calcPosition();
+	auto &cameraPos = CameraManager::instance().activeCamera().getPosition();
+	m_distanceFromActiveCamera = util::distance( pos,
+		cameraPos );
+}
+
+const float Mesh::getDistanceFromActiveCamera() const noexcept
 {
 	return m_distanceFromActiveCamera;
 }

@@ -235,7 +235,7 @@ void Texture::validateNormalMap( const std::string &pathIn,
 	const float thresholdMax )
 {
 #if defined _DEBUG && !defined NDEBUG
-	auto &console = KeyConsole::getInstance();
+	auto &console = KeyConsole::instance();
 	console.log( ( "Validating normal map [" + pathIn + "]\n" ).c_str() );
 #endif
 	auto sum = dx::XMVectorZero();
@@ -265,7 +265,7 @@ void Texture::validateNormalMap( const std::string &pathIn,
 				<< vec.z
 				<< ")\n";
 #if defined _DEBUG && !defined NDEBUG
-			auto &console = KeyConsole::getInstance();
+			auto &console = KeyConsole::instance();
 			console.log( oss.str().c_str() );
 #endif
 		}
@@ -286,7 +286,7 @@ void Texture::validateNormalMap( const std::string &pathIn,
 				<< vec.z
 				<< ")\n";
 #if defined _DEBUG && !defined NDEBUG
-			auto &console = KeyConsole::getInstance();
+			auto &console = KeyConsole::instance();
 			console.log( oss.str().c_str() );
 #endif
 		}

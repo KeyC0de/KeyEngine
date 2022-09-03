@@ -15,7 +15,7 @@ public:
 		TArgs&&... args ) cond_noex
 	{
 		static_assert( std::is_base_of<IBindable, T>::value, "T must be a IBindable!" );
-		return getInstance().fetch_impl<T>( gph,
+		return instance().fetch_impl<T>( gph,
 				std::forward<TArgs>( args )... );
 	}
 private:
@@ -38,7 +38,7 @@ private:
 		}
 	}
 
-	static BindableMap& getInstance()
+	static BindableMap& instance()
 	{
 		static BindableMap instance;
 		return instance;

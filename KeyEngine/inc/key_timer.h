@@ -42,7 +42,7 @@ public:
 	{
 		size_t dur = getDurationFromStart();
 #if defined _DEBUG && !defined NDEBUG
-		KeyConsole &console = KeyConsole::getInstance();
+		KeyConsole &console = KeyConsole::instance();
 		using namespace std::string_literals;
 		console.log( std::to_string( dur ) + "\n"s );
 #endif
@@ -76,7 +76,7 @@ public:
 	constexpr size_t getDurationFromStart() noexcept
 	{
 #if defined _DEBUG && !defined NDEBUG
-		KeyConsole &console = KeyConsole::getInstance();
+		KeyConsole &console = KeyConsole::instance();
 		using namespace std::string_literals;
 		console.log( "Duration from start (ms): "s );
 #endif

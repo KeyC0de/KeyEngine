@@ -69,10 +69,10 @@ void Sphere::setPosition( const dx::XMFLOAT3 &pos ) noexcept
 
 const dx::XMMATRIX Sphere::getTransform() const noexcept
 {
-	return getPosition();
+	return calcPosition();
 }
 
-const DirectX::XMMATRIX Sphere::getPosition() const noexcept
+const DirectX::XMMATRIX Sphere::calcPosition() const noexcept
 {
 	return dx::XMMatrixTranslation( m_pos.x,
 		m_pos.y,

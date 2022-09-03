@@ -16,7 +16,7 @@ LightVSCB::LightVSCB( Graphics &gph,
 void LightVSCB::update( Graphics &gph )
 {
 	ASSERT( m_pPointLightShadowCamera, "Camera not specified (null)!" );
-	const auto pos = m_pPointLightShadowCamera->getPosition();
+	const auto &pos = m_pPointLightShadowCamera->getPosition();
 	const LightTransformVSCB vscb{dx::XMMatrixTranspose( dx::XMMatrixTranslation( -pos.x,
 		-pos.y,
 		-pos.z ) )};

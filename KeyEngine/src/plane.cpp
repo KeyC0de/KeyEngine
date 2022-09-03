@@ -175,15 +175,15 @@ void Plane::setRotation( const float roll,
 
 const dx::XMMATRIX Plane::getTransform() const noexcept
 {
-	return getRotation() * getPosition(); 
+	return calcRotation() * calcPosition(); 
 }
 
-const dx::XMMATRIX Plane::getRotation() const noexcept
+const dx::XMMATRIX Plane::calcRotation() const noexcept
 {
 	return dx::XMMatrixRotationRollPitchYaw( m_roll, m_pitch, m_yaw );
 }
 
-const dx::XMMATRIX Plane::getPosition() const noexcept
+const dx::XMMATRIX Plane::calcPosition() const noexcept
 {
 	return dx::XMMatrixTranslation( m_pos.x, m_pos.y, m_pos.z );
 }
