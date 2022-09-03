@@ -22,7 +22,6 @@ class EntityManager final
 {
 	static inline EntityManager *m_pInstance;
 private:
-	// #FIXME: Changes vector or pointers to vector of objects
 	std::vector<std::unique_ptr<Entity>> m_entities;
 	std::vector<EntityIndex> m_freelist;
 	std::vector<size_t> m_worldEntitiesIndices;

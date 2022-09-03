@@ -10,7 +10,7 @@
 BlendState::BlendState( Graphics &gph,
 	const Mode mode,
 	const unsigned renderTargetSlot,
-	std::optional<float> blendFactors )
+	const std::optional<float> blendFactors )
 	:
 	m_mode{mode},
 	m_renderTargetSlot{renderTargetSlot}
@@ -23,7 +23,7 @@ BlendState::BlendState( Graphics &gph,
 	}
 	else
 	{
-		std::array<float, 4> emptyArray;
+		std::array<float, 4> emptyArray{0};
 		emptyArray.fill( 0 );
 		m_blendFactors = std::make_optional<std::array<float, 4>>( emptyArray );
 	}
@@ -130,19 +130,6 @@ std::shared_ptr<BlendState> BlendState::fetch( Graphics &gph,
 		blendFactors );
 }
 
-void BlendState::setBlendFactors( const float blendFactors ) cond_noex
-{
-	ASSERT( m_blendFactors, "No blend factors set!" );
-	return m_blendFactors->fill( blendFactors );
-}
-
-const float BlendState::getBlendFactor() const cond_noex
-{
-	ASSERT( m_blendFactors, "No blend factors set!" );
-	// or OMGetBlendState
-	return m_blendFactors->front();
-}
-
 std::string BlendState::calcUid( const Mode mode,
 	const unsigned renderTargetSlot,
 	std::optional<float> blendFactors )
@@ -184,6 +171,78 @@ const std::string BlendState::getUid() const noexcept
 	return calcUid( m_mode,
 		m_renderTargetSlot,
 		m_blendFactors ?
-			m_blendFactors->front() :
-			std::optional<float>{} );
+		m_blendFactors->front() :
+		std::optional<float>{} );
+}
+
+void BlendState::fillBlendFactors( const float sameBlendFactor ) cond_noex
+{
+	ASSERT( m_blendFactors, "No blend factors set!" );
+	m_blendFactors->fill( sameBlendFactor );
+}
+
+void BlendState::setBlendFactors( std::array<float, 4> blendFactors ) cond_noex
+{
+	ASSERT( m_blendFactors, "No blend factors set!" );
+	m_blendFactors->swap( blendFactors );
+}
+
+void BlendState::setBlendFactorRed( const float blendFactorRed ) cond_noex
+{
+	ASSERT( m_blendFactors, "No blend factors set!" );
+	( *m_blendFactors )[0] = blendFactorRed;
+}
+
+void BlendState::setBlendFactorGreen( const float blendFactorGreen ) cond_noex
+{
+	ASSERT( m_blendFactors, "No blend factors set!" );
+	( *m_blendFactors )[1] = blendFactorGreen;
+}
+
+void BlendState::setBlendFactorBlue( const float blendFactorBlue ) cond_noex
+{
+	ASSERT( m_blendFactors, "No blend factors set!" );
+	( *m_blendFactors )[2] = blendFactorBlue;
+}
+
+void BlendState::setBlendFactorAlpha( const float blendFactorAlpha ) cond_noex
+{
+	ASSERT( m_blendFactors, "No blend factors set!" );
+	( *m_blendFactors )[3] = blendFactorAlpha;
+}
+
+const float BlendState::getBlendFactorRed() const noexcept
+{
+	ASSERT( m_blendFactors, "No blend factors set!" );
+	return m_blendFactors.value()[0];
+}
+
+const float BlendState::getBlendFactorGreen() const noexcept
+{
+	ASSERT( m_blendFactors, "No blend factors set!" );
+	return m_blendFactors.value()[1];
+}
+
+const float BlendState::getBlendFactorBlue() const noexcept
+{
+	ASSERT( m_blendFactors, "No blend factors set!" );
+	return m_blendFactors.value()[2];
+}
+
+const float BlendState::getBlendFactorAlpha() const noexcept
+{
+	ASSERT( m_blendFactors, "No blend factors set!" );
+	return m_blendFactors.value()[3];
+}
+
+const std::array<float, 4>& BlendState::getBlendFactors() const noexcept
+{
+	ASSERT( m_blendFactors, "No blend factors set!" );
+	return *m_blendFactors;
+}
+
+std::array<float, 4>& BlendState::blendFactors()
+{
+	ASSERT( m_blendFactors, "No blend factors set!" );
+	return *m_blendFactors;
 }

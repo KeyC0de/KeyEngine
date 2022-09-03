@@ -206,9 +206,9 @@ void Plane::displayImguiWidgets( Graphics &gph,
 		auto pBlendState = findBindable<BlendState>();
 		if ( pBlendState )
 		{
-			float factor = (*pBlendState)->getBlendFactor();
+			float factor = (*pBlendState)->getBlendFactorRed();
 			ImGui::SliderFloat( "Translucency", &factor, 0.0f, 1.0f );
-			(*pBlendState)->setBlendFactors( factor );
+			(*pBlendState)->fillBlendFactors( factor );
 		}
 	}
 	ImGui::End();

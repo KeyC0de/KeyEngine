@@ -231,19 +231,15 @@ constexpr T gaussianDistr( const T x,
 //===================================================
 //	\function	powerOf
 //	\brief  calculate x^n, n > 1
-//			#TODO: doesn't take into account negative powers for now
 //	\date	2021/10/25 19:40
 template<typename T, typename J, typename = std::enable_if_t<std::is_arithmetic_v<T>>, typename = std::enable_if_t<std::is_arithmetic_v<J>>>
 constexpr T powerOf( T x,
 	J n )
 {
+	ASSERT( n >= 0, "powerOf doesn't handle negatives powers!" );
 	if ( n == 0 )
 	{
 		return 1;
-	}
-	if ( n < 0 )
-	{
-		return -1;
 	}
 	T xo = x;
 	while ( --n > 0 )

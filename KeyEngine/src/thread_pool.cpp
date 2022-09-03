@@ -2,8 +2,8 @@
 #include "thread_pool.h"
 
 
-ThreadPool::ThreadPool( std::size_t nthreads,
-	bool bStart )
+ThreadPool::ThreadPool( const std::size_t nthreads,
+	const bool bStart )
 	:
 	m_bEnabled{bStart}
 {
@@ -14,8 +14,8 @@ ThreadPool::ThreadPool( std::size_t nthreads,
 	}
 }
 
-ThreadPool& ThreadPool::getInstance( std::size_t nThreads,
-	bool bEnabled )
+ThreadPool& ThreadPool::getInstance( const std::size_t nThreads,
+	const bool bEnabled )
 {
 	static ThreadPool instance{nThreads, bEnabled};
 	return instance;

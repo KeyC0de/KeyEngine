@@ -1,58 +1,20 @@
 #include "shadow_map_sampler_state.h"
 #include "os_utils.h"
 #include "dxgi_info_queue.h"
+#include "bindable_map.h"
 
 
-ShadowMapSamplerState::ShadowMapSamplerState( Graphics &gph )
+ShadowMapSamplerState::ShadowMapSamplerState( Graphics &gph,
+	bool bHwPcf,
+	const FilterMode filterMode,
+	bool slot_autoCalcedDontSet /*= -1*/ )
+	:
+	m_bHwPcf{bHwPcf},
+	m_filterMode{filterMode},
+	m_slot( bHwPcf ? 1 : 2 )
 {
-	for ( unsigned i = 0; i < std::size( m_samplers ); ++i )
-	{
-		m_samplerMask = i;
-		m_samplers[i] = make( gph,
-			isTrilinearFiltering(),
-			isHwPcfFiltering() );
-	}
-	setTrilinearFiltering( true );
-	setHwPcfFiltering( true );
-}
+	ASSERT( m_slot && m_slot != -1, "Bound slot# is invalid!" );
 
-void ShadowMapSamplerState::setTrilinearFiltering( bool bEnable )
-{
-	m_samplerMask = ( m_samplerMask & ~0b01 ) | ( bEnable ? 0b01 : 0b0 );
-}
-
-void ShadowMapSamplerState::setHwPcfFiltering( bool bEnable )
-{
-	m_samplerMask = ( m_samplerMask & ~0b10 ) | ( bEnable ? 0b10 : 0b0 );
-}
-
-bool ShadowMapSamplerState::isTrilinearFiltering() const noexcept
-{
-	return m_samplerMask & 0b01;
-}
-
-bool ShadowMapSamplerState::isHwPcfFiltering() const noexcept
-{
-	return m_samplerMask & 0b10;
-}
-
-unsigned ShadowMapSamplerState::getCurrentSlot() const noexcept
-{
-	return isHwPcfFiltering() ?
-		1 :
-		2;
-}
-
-size_t ShadowMapSamplerState::getIndex( bool bTrilinear,
-	bool bHwPcf ) noexcept
-{
-	return ( bTrilinear ? 0b01 : 0 ) + ( bHwPcf ? 0b10 : 0 );
-}
-
-Microsoft::WRL::ComPtr<ID3D11SamplerState> ShadowMapSamplerState::make( Graphics &gph,
-	bool bTrilinear,
-	bool bHwPcf )
-{
 	D3D11_SAMPLER_DESC samplerDesc = CD3D11_SAMPLER_DESC{CD3D11_DEFAULT{}};
 
 	samplerDesc.BorderColor[0] = 1.0f;
@@ -60,29 +22,109 @@ Microsoft::WRL::ComPtr<ID3D11SamplerState> ShadowMapSamplerState::make( Graphics
 	samplerDesc.AddressV = D3D11_TEXTURE_ADDRESS_BORDER;
 	if ( bHwPcf )
 	{
-		samplerDesc.Filter = bTrilinear ?
-			D3D11_FILTER_COMPARISON_MIN_MAG_MIP_LINEAR :
-			D3D11_FILTER_COMPARISON_MIN_MAG_MIP_POINT;
+		auto selectFilterMode = [&filterMode] ()
+		{
+			switch ( filterMode )
+			{
+			case Linear:
+			case Bilinear:
+				return D3D11_FILTER_COMPARISON_MIN_MAG_MIP_POINT;
+			case Trilinear:
+			default:
+				return D3D11_FILTER_COMPARISON_MIN_MAG_MIP_LINEAR;
+			}
+		};
+
+		samplerDesc.Filter = selectFilterMode();
 		samplerDesc.ComparisonFunc = D3D11_COMPARISON_LESS_EQUAL;
 	}
 	else
 	{
-		samplerDesc.Filter = bTrilinear ?
-			D3D11_FILTER_MIN_MAG_MIP_LINEAR :
-			D3D11_FILTER_MIN_MAG_MIP_POINT;
+		auto selectFilterMode = [&filterMode] ()
+		{
+			switch ( filterMode )
+			{
+			case Linear:
+				return D3D11_FILTER_MIN_MAG_MIP_POINT;
+			case Bilinear:
+			case Trilinear:
+			default:
+				return D3D11_FILTER_MIN_MAG_MIP_LINEAR;
+			}
+		};
+
+		samplerDesc.Filter = selectFilterMode();
 	}
 
-	Microsoft::WRL::ComPtr<ID3D11SamplerState> pSampler;
 	HRESULT hres = getDevice( gph )->CreateSamplerState( &samplerDesc,
-		&pSampler );
+		&m_sampler );
 	ASSERT_HRES_IF_FAILED;
-	return std::move( pSampler );
 }
 
 void ShadowMapSamplerState::bind( Graphics &gph ) cond_noex
 {
-	getDeviceContext( gph )->PSSetSamplers( getCurrentSlot(),
+	getDeviceContext( gph )->PSSetSamplers( m_slot,
 		1,
-		m_samplers[m_samplerMask].GetAddressOf() );
+		m_sampler.GetAddressOf() );
 	DXGI_GET_QUEUE_INFO( gph );
+}
+
+const ShadowMapSamplerState::FilterMode ShadowMapSamplerState::getFilterMode() const noexcept
+{
+	return m_filterMode;
+}
+
+bool ShadowMapSamplerState::isHwPcfFiltering() const noexcept
+{
+	return m_bHwPcf;
+}
+
+const unsigned ShadowMapSamplerState::getSlot() const noexcept
+{
+	return m_slot;
+}
+
+std::shared_ptr<ShadowMapSamplerState> ShadowMapSamplerState::fetch( Graphics &gph,
+	const bool bHwPcf,
+	const FilterMode filt,
+	const unsigned slot )
+{
+	return BindableMap::fetch<ShadowMapSamplerState>( gph,
+		bHwPcf,
+		filt,
+		slot );
+}
+
+std::string ShadowMapSamplerState::calcUid( const bool bHwPcf,
+	const FilterMode filterMode,
+	const unsigned slot )
+{
+	using namespace std::string_literals;
+	auto checkFilterMode = [&filterMode] ()
+	{
+		switch ( filterMode )
+		{
+		case FilterMode::Linear:
+			return "LIN"s;
+		case FilterMode::Bilinear:
+			return "BIL"s;
+		case FilterMode::Trilinear:
+		default:
+			return "TRI"s;
+		}
+	};
+
+	return typeid( ShadowMapSamplerState ).name()
+		+ "@"s
+		+ std::to_string( slot )
+		+ "#"s
+		+ checkFilterMode()
+		+ ( bHwPcf ? "PCF"s : ""s );
+}
+
+const std::string ShadowMapSamplerState::getUid() const noexcept
+{
+	return calcUid( m_bHwPcf,
+		m_filterMode,
+		m_slot );
 }

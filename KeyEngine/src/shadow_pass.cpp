@@ -27,7 +27,9 @@ ShadowPass::ShadowPass( Graphics &gph,
 	m_shadowMapResolution = shadowMapRez;
 
 	addPassBindable( m_pLightVcb );
-	addPassBindable( std::make_shared<ShadowMapSamplerState>( gph ) );
+	addPassBindable( std::make_shared<ShadowMapSamplerState>( gph,
+		true,
+		ShadowMapSamplerState::FilterMode::Trilinear ) );
 	m_pDsvCubemap = std::make_shared<CubeTextureDS>( gph,
 		m_shadowMapResolution,
 		3u );

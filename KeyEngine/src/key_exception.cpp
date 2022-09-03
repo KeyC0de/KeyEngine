@@ -37,6 +37,11 @@ const char* KeyException::what() const noexcept
 }
 #pragma warning( default : 4129 )
 
+const std::string KeyException::getType() const noexcept
+{
+	return typeid( this ).name();
+}
+
 const unsigned KeyException::getLine() const noexcept
 {
 	return m_line;

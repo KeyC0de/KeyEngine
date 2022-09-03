@@ -3,7 +3,7 @@
 #include <future>
 #include <queue>
 #include <memory>
-#include "non_copyable.h"
+#include "key_exception.h"
 
 #define M_ENABLED m_bEnabled.load( std::memory_order_relaxed )
 
@@ -14,13 +14,11 @@
 //	\author	KeyC0de
 //	\date	25/9/2019 3:55
 //
-//	\brief	A class which encapsulates a Queue of Tasks & a Pool of threads
-//				and dispatches work on demand - ie. upon an incoming Task - callable object -
-//				a thread is dispatched to execute it
+//	\brief	A class which encapsulates a Queue of Tasks & a Pool of threads and dispatches work on demand
+//				ie. upon an incoming Task - callable object - a thread is dispatched to execute it
 //			Singleton, move only class
 //=============================================================
 class ThreadPool final
-	: public NonCopyable
 {
 	using Task = std::function<void()>;
 
@@ -30,14 +28,13 @@ class ThreadPool final
 	std::condition_variable m_cond;
 	std::mutex m_mu;
 private:
-	explicit ThreadPool( std::size_t nthreads, bool bStart = true );
+	explicit ThreadPool( const std::size_t nthreads, const bool bStart = true );
 public:
 	~ThreadPool() noexcept;
 	ThreadPool( ThreadPool &&rhs ) noexcept;
 	ThreadPool& operator=( ThreadPool &&rhs ) noexcept;
 
-	static ThreadPool& getInstance( std::size_t nThreads
-		= std::thread::hardware_concurrency(), bool bEnabled = true );
+	static ThreadPool& getInstance( const std::size_t nThreads = std::thread::hardware_concurrency(), const bool bEnabled = true );
 	//===================================================
 	//	\function	start
 	//	\brief  calls run
@@ -53,22 +50,22 @@ public:
 		TArgs &&...args )
 	{
 		using ReturnType = std::invoke_result_t<Callback, TArgs...>;
-		using FuncType = ReturnType(TArgs...);
-		using Wrapped = std::packaged_task<FuncType>;
+		using TFunc = ReturnType(TArgs...);
+		using TFWrapped = std::packaged_task<TFunc>;
 
 		if ( M_ENABLED )
 		{
-			std::shared_ptr<Wrapped> smartFunctionPointer =
-				std::make_shared<Wrapped>( std::move( f ) );
+			std::shared_ptr<TFWrapped> smartFunctionPointer = std::make_shared<TFWrapped>( std::move( f ) );
 			std::future<ReturnType> fu = smartFunctionPointer->get_future();
 
 			auto task = [smartFunctionPointer = std::move( smartFunctionPointer ),
-					args = std::make_tuple( std::forward<TArgs>( args )... )] () -> void
-			{
-				std::apply( *smartFunctionPointer,
-					std::move( args ) );
-				return;
-			};
+					args = std::make_tuple( std::forward<TArgs>( args )... )]
+				() -> void
+				{
+					std::apply( *smartFunctionPointer,
+						std::move( args ) );
+					return;
+				};
 
 			{
 				std::lock_guard<std::mutex> lg{m_mu};
@@ -79,8 +76,7 @@ public:
 		}
 		else
 		{
-			// #TODO: rework exception handling
-			throw std::exception{"Cannot enqueue tasks in an inactive Thread Pool!"};
+			THROW_KEY_EXCEPTION( "Cannot enqueue tasks in an inactive Thread Pool!" );
 		}
 	}
 	//===================================================
