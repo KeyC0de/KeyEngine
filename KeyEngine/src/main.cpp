@@ -7,8 +7,9 @@
 #include <eh.h>
 #include <exception>
 #include <iostream>
-#include "signal_handling.h"
 #include <tuple>
+#include "signal_handling.h"
+#include "thread_pool.h"
 
 #ifndef NO_DUMPS
 #	include "dumpling.h"
@@ -133,10 +134,8 @@ void firstly()
 			std::abort();
 		} );
 
-	//std::atexit( util::terminateDetachedThreads );
 	std::signal( SIGINT,
 		installSigintHandler );
-	//util::setupDetachedThreadsVector( std::thread::hardware_concurrency() );
 }
 
 std::tuple<int,int> parseCommandLineArguments()
@@ -146,7 +145,7 @@ std::tuple<int,int> parseCommandLineArguments()
 	int argc;
 	LPWSTR *argv = CommandLineToArgvW( commandLine,
 		&argc );
-	ASSERT_HRES_WIN32_IF_FAILED( hres );
+	ASSERT_HRES_WIN32_IF_FAILED;
 
 	wchar_t *end;
 	int width = std::wcstol( argv[1],
@@ -164,6 +163,7 @@ std::tuple<int,int> parseCommandLineArguments()
 
 void finally()
 {
+	ThreadPool::resetInstance();
 #if defined _DEBUG && !defined NDEBUG
 	KeyConsole &console = KeyConsole::instance();
 	using namespace std::string_literals;

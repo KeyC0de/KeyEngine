@@ -17,8 +17,21 @@ ThreadPool::ThreadPool( const std::size_t nthreads,
 ThreadPool& ThreadPool::instance( const std::size_t nThreads,
 	const bool bEnabled )
 {
-	static ThreadPool instance{nThreads, bEnabled};
-	return instance;
+	std::lock_guard<std::mutex> lg{ms_mu};
+	if ( m_pInstance == nullptr )
+	{
+		m_pInstance = new ThreadPool{nThreads, bEnabled};
+	}
+	return *m_pInstance;
+}
+
+void ThreadPool::resetInstance()
+{
+	std::lock_guard<std::mutex> lg{ms_mu};
+	if ( m_pInstance == nullptr )
+	{
+		delete m_pInstance;
+	}
 }
 
 ThreadPool::~ThreadPool() noexcept

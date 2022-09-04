@@ -29,7 +29,7 @@ SplashWindow::SplashWindow( const HWND hWndParent,
 	wc.lpszMenuName = nullptr;
 	wc.lpszClassName = L"KeyEngine_Splash_Class";
 	RegisterClassExW( &wc );
-	ASSERT_HRES_WIN32_IF_FAILED( hres );
+	ASSERT_HRES_WIN32_IF_FAILED;
 
 	m_hWnd = CreateWindowExW( WS_EX_LAYERED	// layered window
 		| WS_EX_TOPMOST
@@ -46,7 +46,7 @@ SplashWindow::SplashWindow( const HWND hWndParent,
 		nullptr,
 		hInst,
 		nullptr );
-	ASSERT_HRES_WIN32_IF_FAILED( hres );
+	ASSERT_HRES_WIN32_IF_FAILED;
 
 	/// load png image here as a transparent bitmap
 	Bitmap bitmap = Bitmap::loadFromFile( "splash.png" );
@@ -82,7 +82,7 @@ SplashWindow::SplashWindow( const HWND hWndParent,
 		0,
 		&bf,
 		ULW_ALPHA );
-	ASSERT_HRES_WIN32_IF_FAILED( hres );
+	ASSERT_HRES_WIN32_IF_FAILED;
 	SelectObject( hdc,
 		hBitmapObj );
 	if ( !hBitmapObj )

@@ -22,9 +22,8 @@ class KeyException
 	std::string m_function;
 protected:
 	mutable std::string m_description;
-protected:
-	KeyException( const int line, const char *file, const char *function, const std::string &msg ) noexcept;
 public:
+	KeyException( const int line, const char *file, const char *function, const std::string &msg ) noexcept;
 	virtual ~KeyException() noexcept = default;
 
 	virtual const char* what() const noexcept override;

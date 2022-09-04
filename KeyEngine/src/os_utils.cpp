@@ -66,7 +66,10 @@ std::string getLastNtErrorAsString( const DWORD ntStatusCode )
 		messageLength );
 	// free the buffer allocated by the system
 	LocalFree( ntStatusMessage );
-	FreeLibrary( hNtdll );
+	if ( hNtdll != nullptr )
+	{
+		FreeLibrary( hNtdll );
+	}
 	return message;
 }
 
@@ -104,10 +107,18 @@ void pinThreadToCore( const HANDLE hThread,
 		mask );
 }
 
+// A global event all threads can reach
+static HANDLE g_hThreadQuitcEvent;
 static std::vector<HANDLE> g_detachedThreads;
 
 void setupDetachedThreadsVector( unsigned nThreads )
 {
+	HRESULT hres = 0;
+	g_hThreadQuitcEvent = CreateEventW( nullptr,
+		TRUE,
+		FALSE,
+		nullptr );
+	ASSERT_HRES_WIN32_IF_FAILED;
 	g_detachedThreads.reserve( nThreads );
 }
 
@@ -117,52 +128,56 @@ void terminateDetachedThreads()
 	KeyConsole &console = KeyConsole::instance();
 	console.print( "Clearing up detached threads\n" );
 #endif
-	for ( const auto th : g_detachedThreads )
+	for ( HANDLE hThread : g_detachedThreads )
 	{
-		DWORD exitCode;
-		int ret;
+		DWORD exitCode = 0;
 		HRESULT hres = 0;
-		ret = GetExitCodeThread( th,
-				&exitCode );
-		ASSERT_HRES_WIN32_IF_FAILED( hres );
+		/// WARNING: There's no way to cleanly terminate a detached thread. Join them instead in main, or use a thread pool.
+		// Terminate WinAPI thread (without using TerminateThread which is extremely error-prone, brute force approach and doesn't allow proper thread cleanup)
+		// tell thread to stop
+		SetEvent( g_hThreadQuitcEvent );
+		ASSERT_HRES_WIN32_IF_FAILED;
 
-		ret = TerminateThread( th,
-			exitCode );
-		ASSERT_HRES_WIN32_IF_FAILED( hres );
+		// now wait for thread to signal termination
+		WaitForSingleObject( hThread,
+			INFINITE );
+
+		//TerminateThread( hThread,
+		//	exitCode );
+		ASSERT_HRES_WIN32_IF_FAILED;
+
+		GetExitCodeThread( hThread,
+				&exitCode );
+		ASSERT_HRES_WIN32_IF_FAILED;
+
+		CloseHandle( hThread );
+		ASSERT_HRES_WIN32_IF_FAILED;
 	}
+	HRESULT hres = 0;
+	CloseHandle( g_hThreadQuitcEvent );
+	ASSERT_HRES_WIN32_IF_FAILED;
 }
 
-//===================================================
-//	\function	doPeriodically
-//	\brief  like a timer event
-//			executes void(*f)() function at periodic (ms) intervals
-//	\date	2021/09/06 1:05
 void doPeriodically( const std::function<void(void)>& f,
 	const size_t intervalMs,
 	const bool now )
 {
-	std::thread t{[f, intervalMs, now] () -> void
+	if ( now )
+	{
+		while ( true )
 		{
-			if ( now )
-			{
-				while ( true )
-				{
-					f();
-					auto chronoInterval = std::chrono::milliseconds( intervalMs );
-				}
-			}
-			else
-			{
-				while ( true )
-				{
-					std::this_thread::sleep_for( std::chrono::milliseconds( intervalMs ) );
-					f();
-				}
-			}
+			f();
+			auto chronoInterval = std::chrono::milliseconds( intervalMs );
 		}
-	};
-	g_detachedThreads.push_back( t.native_handle() );
-	t.detach();
+	}
+	else
+	{
+		while ( true )
+		{
+			std::this_thread::sleep_for( std::chrono::milliseconds( intervalMs ) );
+			f();
+		}
+	}
 }
 
 std::optional<DWORD> registryGetDword( const HKEY hKey,
@@ -205,7 +220,7 @@ std::optional<std::wstring> registryGetString( const HKEY hKey,
 static void suspendAllThreads()
 {
 	HANDLE thread_enumerator = CreateToolhelp32Snapshot( TH32CS_SNAPTHREAD, 0 );
-	THREADENTRY32 te;
+	THREADENTRY32 te{};
 	te.dwSize = sizeof( te );
 	DWORD current_pid = GetCurrentProcessId();
 	DWORD current_tid = GetCurrentThreadId();
@@ -217,7 +232,10 @@ static void suspendAllThreads()
 		if ( te.th32ThreadID == current_tid ) continue;
 
 		HANDLE th = OpenThread( THREAD_SUSPEND_RESUME | THREAD_GET_CONTEXT | THREAD_SET_CONTEXT, false, te.th32ThreadID );
-		SuspendThread( th );
+		if ( th != nullptr )
+		{
+			SuspendThread( th );
+		}
 	} while ( Thread32Next( thread_enumerator, &te ) );
 	CloseHandle( thread_enumerator );
 }

@@ -495,12 +495,12 @@
     <ClInclude Include="inc\windows_message_map.h" />
     <ClInclude Include="inc\winner.h" />
     <ClInclude Include="inc\depth_reversed_pass.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\aiBitmap.h" />
     <ClInclude Include="third_party\assimp\include\assimp\aicamera.h" />
     <ClInclude Include="third_party\assimp\include\assimp\aimesh.h" />
     <ClInclude Include="third_party\assimp\include\assimp\ai_assert.h" />
     <ClInclude Include="third_party\assimp\include\assimp\anim.h" />
     <ClInclude Include="third_party\assimp\include\assimp\BaseImporter.h" />
-    <ClInclude Include="third_party\assimp\include\assimp\Bitmap.h" />
     <ClInclude Include="third_party\assimp\include\assimp\BlobIOSystem.h" />
     <ClInclude Include="third_party\assimp\include\assimp\ByteSwapper.h" />
     <ClInclude Include="third_party\assimp\include\assimp\cexport.h" />

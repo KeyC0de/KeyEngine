@@ -77,7 +77,7 @@ public:
 
 	int loop();
 private:
-	void checkInput( const float dt );
+	int checkInput( const float dt );
 	void update( const float dt );
 #if defined _DEBUG && !defined NDEBUG
 	void test();
@@ -108,7 +108,7 @@ public:
 
 	int loop();
 private:
-	void checkInput( const float dt );
+	int checkInput( const float dt );
 	void update( const float dt );
 #if defined _DEBUG && !defined NDEBUG
 	void test();
@@ -144,7 +144,7 @@ public:
 
 	int loop();
 private:
-	void checkInput( const float dt );
+	int checkInput( const float dt );
 	void update( const float dt );
 #if defined _DEBUG && !defined NDEBUG
 	void test();

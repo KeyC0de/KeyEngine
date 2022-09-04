@@ -37,27 +37,27 @@ Window::WindowClass::WindowClass( const std::string &name )
 	wc.hInstance = hInstance;
 	wc.hCursor = LoadCursorW( hInstance,
 		MAKEINTRESOURCEW( IDC_POINTER_APP ) );
-	ASSERT_HRES_WIN32_IF_FAILED( hres );
+	ASSERT_HRES_WIN32_IF_FAILED;
 	wc.hIcon = static_cast<HICON>( LoadImageW( hInstance,
 		MAKEINTRESOURCEW( IDI_ICON_APP ),
 		IMAGE_ICON,
 		64,
 		43,
 		0u ) );
-	ASSERT_HRES_WIN32_IF_FAILED( hres );
+	ASSERT_HRES_WIN32_IF_FAILED;
 	wc.hIconSm = static_cast<HICON>( LoadImageW( hInstance,
 		MAKEINTRESOURCEW( IDI_ICON_APP_SMALL ),
 		IMAGE_ICON,
 		32,
 		22,
 		0u ) );
-	ASSERT_HRES_WIN32_IF_FAILED( hres );
+	ASSERT_HRES_WIN32_IF_FAILED;
 	wc.hbrBackground = CreateSolidBrush( RGB( 255, 255, 255 ) );
 	wc.lpszMenuName = nullptr;
 	const std::wstring className = util::s2ws( name );
 	wc.lpszClassName = className.data();
 	m_classAtom = RegisterClassExW( &wc );
-	ASSERT_HRES_WIN32_IF_FAILED( hres );
+	ASSERT_HRES_WIN32_IF_FAILED;
 
 #if defined _DEBUG && !defined NDEBUG
 	auto &console = KeyConsole::instance();
@@ -144,7 +144,7 @@ Window::Window( const int width,
 		nullptr,//LoadMenu( hInstance, MAKEINTRESOURCEW( IDR_MENU_APP ) ), // menu
 		THIS_INSTANCE,
 		this );
-	ASSERT_HRES_WIN32_IF_FAILED( hres );
+	ASSERT_HRES_WIN32_IF_FAILED;
 	if ( !m_hWnd )
 	{
 		throwWindowException( "Failed to create Window" );
@@ -159,12 +159,12 @@ Window::Window( const int width,
 	ret = RegisterRawInputDevices( &rid,
 		1u,
 		sizeof RAWINPUTDEVICE );
-	ASSERT_HRES_WIN32_IF_FAILED( hres );
+	ASSERT_HRES_WIN32_IF_FAILED;
 
 	m_info.cbSize = sizeof WINDOWINFO;
 	GetWindowInfo( m_hWnd,
 		&m_info );
-	ASSERT_HRES_WIN32_IF_FAILED( hres );
+	ASSERT_HRES_WIN32_IF_FAILED;
 
 	// set title
 	static const short maxTitleCharSize = 128i16;
@@ -177,7 +177,7 @@ Window::Window( const int width,
 	// Accelerators
 	//m_hAcceleratorTable = LoadAcceleratorsW( hInstance,
 	//	MAKEINTRESOURCEW( ID_ACCEL_TABLE_APP ) );
-	//ASSERT_HRES_WIN32_IF_FAILED( hres );
+	//ASSERT_HRES_WIN32_IF_FAILED;
 
 	// Tray icon setup
 	//setupNotifyIconData();
@@ -309,7 +309,7 @@ void Window::setTitle( const std::string &title )
 	SetWindowTextW( m_hWnd,
 		util::s2ws( title ).data() );
 	HRESULT hres = 0;
-	ASSERT_HRES_WIN32_IF_FAILED( hres );
+	ASSERT_HRES_WIN32_IF_FAILED;
 }
 
 const std::string& Window::getTitle() const noexcept
@@ -833,7 +833,7 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 //			MF_STRING,
 //			ID_TRAY_ICON_EXIT,
 //			L"Exit the Application." );
-//		ASSERT_HRES_WIN32_IF_FAILED( hres );
+//		ASSERT_HRES_WIN32_IF_FAILED;
 //		return 0;
 		break;
 	}
@@ -1013,7 +1013,7 @@ Prevent window resizing: Instead resize by ingame option - choosing resolution:
 //				nullptr,
 //				THIS_INSTANCE,
 //				nullptr );
-//			ASSERT_HRES_WIN32_IF_FAILED( hres );
+//			ASSERT_HRES_WIN32_IF_FAILED;
 //			m_pDialogAbout->setHwnd( hWndDialogAbout );
 //			return 0;
 //		}
@@ -1459,7 +1459,7 @@ Dialog::Dialog( const std::string &name )
 	wc.hbrBackground = (HBRUSH)( CreateSolidBrush( RGB( 128, 128, 128 ) ) );
 	wc.lpszClassName = m_name.data();
 	RegisterClassExW( &wc );
-	ASSERT_HRES_WIN32_IF_FAILED( hres );
+	ASSERT_HRES_WIN32_IF_FAILED;
 
 #if defined _DEBUG && !defined NDEBUG
 	auto &console = KeyConsole::instance();
@@ -1513,7 +1513,7 @@ LRESULT CALLBACK Dialog::dialogProc( HWND hWnd,
 				reinterpret_cast<HMENU>( 1 ),
 				nullptr,
 				nullptr );
-			ASSERT_HRES_WIN32_IF_FAILED( hres );
+			ASSERT_HRES_WIN32_IF_FAILED;
 			return 0;
 		}
 		case WM_COMMAND:

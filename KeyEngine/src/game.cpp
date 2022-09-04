@@ -1,8 +1,7 @@
-#include <algorithm>
 #include "game.h"
+#include <algorithm>
 #include "math_utils.h"
 #include "imgui.h"
-#include "utils.h"
 #include "effect_visitor.h"
 #include "model_visitor.h"
 #include "camera.h"
@@ -11,7 +10,13 @@
 #include "assertions_console.h"
 #include "mesh.h"
 #include "graphics_mode.h"
-//#include "../../KeyEngine_tests/testing.h"
+#include "thread_pool.h"
+#include "utils.h"
+#include "os_utils.h"
+#if defined _DEBUG && !defined NDEBUG
+#	include "bindable_map.h"
+//#	include "../../KeyEngine_tests/testing.h"
+#endif
 
 
 namespace dx = DirectX;
@@ -216,6 +221,15 @@ Sandbox3d::Sandbox3d( const int width,
 	//	m_renderer.setShadowCamera( *m_pPointLight2->shareCamera() );
 	//}
 
+	ThreadPool& threadPool = ThreadPool::instance( std::thread::hardware_concurrency() / 4 );
+	auto periodicBindableGarbageCollection = [] ()
+	{
+		util::doPeriodically( BindableMap::garbageCollect,
+			30 * 1000,
+			false );
+	};
+	threadPool.enqueue( periodicBindableGarbageCollection );
+
 	auto menuState = std::make_unique<MenuState>();
 	setState( std::move( menuState ),
 		m_mainWindow.mouse() );
@@ -224,6 +238,7 @@ Sandbox3d::Sandbox3d( const int width,
 int Sandbox3d::loop()
 {
 	m_gameTimer.start();
+	int returnC0de = -1;
 	while ( true )
 	{
 		if ( const auto exitCode = m_mainWindow.messageLoop() )
@@ -232,7 +247,11 @@ int Sandbox3d::loop()
 		}
 
 		const float dt = calcDt();
-		checkInput( dt );
+		returnC0de = checkInput( dt );
+		if ( returnC0de == 0 )
+		{
+			break;
+		}
 		update( dt );
 #if defined _DEBUG && !defined NDEBUG
 		test();
@@ -240,10 +259,10 @@ int Sandbox3d::loop()
 		render( dt );
 		present();
 	}
-	return -1;
+	return returnC0de;
 }
 
-void Sandbox3d::checkInput( float dt )
+int Sandbox3d::checkInput( float dt )
 {
 	auto &keyboard = m_mainWindow.keyboard();
 	auto &mouse = m_mainWindow.mouse();
@@ -313,6 +332,10 @@ void Sandbox3d::checkInput( float dt )
 		{
 			activeCamera.translateRel( {0.0f, -dt, 0.0f} );
 		}
+		if ( keyboard.isKeyPressed( VK_BACK ) )
+		{
+			return 0;
+		}
 	}
 
 	// Rotate Camera if in game mode
@@ -324,6 +347,8 @@ void Sandbox3d::checkInput( float dt )
 				(float)delta->m_dy );
 		}
 	}
+
+	return 1;
 }
 
 void Sandbox3d::update( float dt )
@@ -366,7 +391,12 @@ void Sandbox3d::test()
 {
 	using namespace std::string_literals;
 	KeyConsole &console = KeyConsole::instance();
-	console.print( "Distance from carabiner "s + std::to_string( m_carabiner.getDistanceFromActiveCamera() ) + "\n"s );
+
+	const BindableMap &instanceToBeInspected = BindableMap::getInstance();
+
+	console.print( "BindableMap instance count: "s + std::to_string( BindableMap::getInstanceCount() ) + "\n"s );
+	console.print( "BindableMap garbage count: "s + std::to_string( BindableMap::getGarbageCount() ) + "\n"s );
+	console.print( "Current distance from carabiner: "s + std::to_string( m_carabiner.getDistanceFromActiveCamera() ) + "\n"s );
 }
 #endif
 
@@ -456,6 +486,7 @@ Arkanoid::Arkanoid( const int width,
 
 int Arkanoid::loop()
 {
+	int returnC0de = -1;
 	m_gameTimer.start();
 	while ( true )
 	{
@@ -465,7 +496,11 @@ int Arkanoid::loop()
 		}
 
 		const float dt = calcDt();
-		checkInput( dt );
+		returnC0de = checkInput( dt );
+		if ( returnC0de == 0 )
+		{
+			break;
+		}
 		update( dt );
 #if defined _DEBUG && !defined NDEBUG
 		test();
@@ -473,10 +508,10 @@ int Arkanoid::loop()
 		render( dt );
 		present();
 	}
-	return -1;
+	return returnC0de;
 }
 
-void Arkanoid::checkInput( float dt )
+int Arkanoid::checkInput( float dt )
 {
 	auto &keyboard = m_mainWindow.keyboard();
 	auto &mouse = m_mainWindow.mouse();
@@ -516,6 +551,11 @@ void Arkanoid::checkInput( float dt )
 	{
 		m_paddle.setPositionRel( m_speed * dt );
 	}
+	if ( keyboard.isKeyPressed( VK_BACK ) )
+	{
+		return 0;
+	}
+	return 1;
 }
 
 void Arkanoid::update( float dt )
@@ -616,6 +656,7 @@ Snake::Snake( const int width,
 
 int Snake::loop()
 {
+	bool returnC0de = false;
 	m_gameTimer.start();
 	while ( true )
 	{
@@ -625,7 +666,11 @@ int Snake::loop()
 		}
 
 		const float dt = calcDt();
-		checkInput( dt );
+		bShouldQuit = checkInput( dt );
+		if ( bShouldQuit )
+		{
+			break;
+		}
 		update( dt );
 #if defined _DEBUG && !defined NDEBUG
 		test();
@@ -636,7 +681,7 @@ int Snake::loop()
 	return -1;
 }
 
-void Snake::checkInput( float dt )
+bool Snake::checkInput( float dt )
 {
 	auto &keyboard = m_mainWindow.keyboard();
 	auto &mouse = m_mainWindow.mouse();
@@ -668,64 +713,70 @@ void Snake::checkInput( float dt )
 		}
 	}
 
-	if( window.keyboard.isKeyPressed( VK_UP ) )
+	if ( window.keyboard.isKeyPressed( VK_UP ) )
 	{
 		const Location2d new_delta_loc = { 0,-1 };
-		if( delta_loc != -new_delta_loc || snek.getLength() <= 2 )
+		if ( delta_loc != -new_delta_loc || snek.getLength() <= 2 )
 		{
 			delta_loc = new_delta_loc;
 		}
 	}
-	else if( window.keyboard.isKeyPressed( VK_DOWN ) )
+	else if ( window.keyboard.isKeyPressed( VK_DOWN ) )
 	{
 		const Location2d new_delta_loc = { 0,1 };
-		if( delta_loc != -new_delta_loc || snek.getLength() <= 2 )
+		if ( delta_loc != -new_delta_loc || snek.getLength() <= 2 )
 		{
 			delta_loc = new_delta_loc;
 		}
 	}
-	else if( window.keyboard.isKeyPressed( VK_LEFT ) )
+	else if ( window.keyboard.isKeyPressed( VK_LEFT ) )
 	{
 		const Location2d new_delta_loc = { -1,0 };
-		if( delta_loc != -new_delta_loc || snek.getLength() <= 2 )
+		if ( delta_loc != -new_delta_loc || snek.getLength() <= 2 )
 		{
 			delta_loc = new_delta_loc;
 		}
 	}
-	else if( window.keyboard.isKeyPressed( VK_RIGHT ) )
+	else if ( window.keyboard.isKeyPressed( VK_RIGHT ) )
 	{
 		const Location2d new_delta_loc = { 1,0 };
-		if( delta_loc != -new_delta_loc || snek.getLength() <= 2 )
+		if ( delta_loc != -new_delta_loc || snek.getLength() <= 2 )
 		{
 			delta_loc = new_delta_loc;
 		}
 	}
 
 	m_snekModifiedMovePeriod = snakeMovePeriod;
-	if( window.keyboard.isKeyPressed( VK_CONTROL ) )
+	if ( window.keyboard.isKeyPressed( VK_CONTROL ) )
 	{
 		m_snekModifiedMovePeriod = std::min( snakeMovePeriod,howManyFruitsForSpeedUp );
 	}
 
+	if ( window.keyboard.isKeyPressed( VK_ESCAPE ) )
+	{
+		return true;
+	}
+
+	return false;
 }
 
 void Snake::update( float dt )
 {
 	if (!gameIsOver)
 	{
-		if (window.keyboard.isKeyPressed(VK_UP))
+		if ( window.keyboard.isKeyPressed( VK_UP ) )
 		{
 			delta_loc = { 0, -1 };
 		}
-		if (window.keyboard.isKeyPressed(VK_DOWN))
+		if ( window.keyboard.isKeyPressed( VK_DOWN ) )
 		{
 			delta_loc = { 0, 1 };
 		}
-		if (window.keyboard.isKeyPressed(VK_LEFT))
+		if ( window.keyboard.isKeyPressed( VK_LEFT ) )
 		{
 			delta_loc = { -1, 0 };
 		}
-		if (window.keyboard.isKeyPressed(VK_RIGHT))
+		if ( window.keyboard.isKeyPressed( VK_RIGHT ) )
 		{
 			delta_loc = { 1, 0 };
 		}
@@ -784,4 +835,5 @@ void Snake::present()
 	auto &gph = m_mainWindow.getGraphics();
 	gph.endRendering();
 	m_renderer.reset();
-}*/
+}
+*/

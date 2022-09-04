@@ -19,6 +19,47 @@ public:
 		return instance().fetch_impl<T>( gph,
 				std::forward<TArgs>( args )... );
 	}
+
+#if defined _DEBUG && !defined NDEBUG
+	static const BindableMap& getInstance()
+	{
+		return instance();
+	}
+
+	static const std::size_t getInstanceCount()
+	{
+		const auto &instance = getInstance();
+		return instance.m_bindableMap.size();
+	}
+
+	static const std::size_t getGarbageCount()
+	{
+		const auto &instance = getInstance();
+		size_t nGarbagePtrs = 0;
+		for ( const auto &elem : instance.m_bindableMap )
+		{
+			if ( elem.second.use_count() <= 1 )
+			{
+				++nGarbagePtrs;
+			}
+		}
+		return nGarbagePtrs;
+	}
+#endif
+
+	static void garbageCollect()
+	{
+		auto &instance = BindableMap::instance();
+		size_t nGarbagePtrs = 0;
+		for ( std::unordered_map<std::string, std::shared_ptr<IBindable>>::iterator it = instance.m_bindableMap.begin(); it != instance.m_bindableMap.end(); ++it )
+		{
+			if ( it->second.use_count() <= 1 )
+			{
+				instance.m_bindableMap.erase( it );
+				it = instance.m_bindableMap.begin();
+			}
+		}
+	}
 private:
 	template<class T, typename... TArgs>
 	std::shared_ptr<T> fetch_impl( Graphics &gph,

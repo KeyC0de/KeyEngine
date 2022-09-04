@@ -53,7 +53,13 @@ void pinThreadToCore( const HANDLE hThread, const DWORD core );
 
 void setupDetachedThreadsVector( const unsigned nThreads );
 void terminateDetachedThreads();
-void doPeriodically( const std::function<void(void)>& f, const size_t intervalMs, const bool now = true );
+//===================================================
+//	\function	doPeriodically
+//	\brief  like a timer event
+//			executes void(*f)() function at periodic (ms) intervals
+//	\arg	now : if you want to execute first up now
+//	\date	2021/09/06 1:05
+void doPeriodically( const std::function<void(void)>& f, const size_t intervalMs, const bool now );
 
 std::optional<DWORD> registryGetDword( const HKEY hKey, const std::wstring &regName );
 std::optional<std::wstring> registryGetString( const HKEY hKey, const std::wstring &regName );
@@ -156,7 +162,7 @@ hint std::size_t* getUniqueMemory();
 
 #if defined _DEBUG && !defined NDEBUG
 // or call getLastErrorAsString()
-#	define ASSERT_HRES_WIN32_IF_FAILED( hres ) \
+#	define ASSERT_HRES_WIN32_IF_FAILED \
 	hres = HRESULT_FROM_WIN32( GetLastError() );\
 	ASSERT_HRES_IF_FAILED
 #else

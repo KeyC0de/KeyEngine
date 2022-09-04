@@ -17,10 +17,14 @@
 //	\brief	A class which encapsulates a Queue of Tasks & a Pool of threads and dispatches work on demand
 //				ie. upon an incoming Task - callable object - a thread is dispatched to execute it
 //			Singleton, move only class
+//			WARNING: Remember to call resetInstance before you terminate your program
 //=============================================================
 class ThreadPool final
 {
 	using Task = std::function<void()>;
+
+	static inline ThreadPool *m_pInstance;
+	static inline std::mutex ms_mu;
 
 	std::atomic<bool> m_bEnabled;
 	std::vector<std::thread> m_pool;
@@ -35,6 +39,8 @@ public:
 	ThreadPool& operator=( ThreadPool &&rhs ) noexcept;
 
 	static ThreadPool& instance( const std::size_t nThreads = std::thread::hardware_concurrency(), const bool bEnabled = true );
+	static void resetInstance();
+
 	//===================================================
 	//	\function	start
 	//	\brief  calls run

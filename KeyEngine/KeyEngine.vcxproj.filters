@@ -556,9 +556,6 @@
     <ClInclude Include="third_party\assimp\include\assimp\BaseImporter.h">
       <Filter>third_party\assimp</Filter>
     </ClInclude>
-    <ClInclude Include="third_party\assimp\include\assimp\Bitmap.h">
-      <Filter>third_party\assimp</Filter>
-    </ClInclude>
     <ClInclude Include="third_party\assimp\include\assimp\BlobIOSystem.h">
       <Filter>third_party\assimp</Filter>
     </ClInclude>
@@ -1166,6 +1163,9 @@
       <Filter>third_party\assimp</Filter>
     </ClInclude>
     <ClInclude Include="third_party\assimp\include\assimp\aicamera.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\aiBitmap.h">
       <Filter>third_party\assimp</Filter>
     </ClInclude>
   </ItemGroup>
