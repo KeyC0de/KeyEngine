@@ -35,28 +35,28 @@ namespace util
 //	\function	printHresultErrorDescription
 //	\brief  print HRESULT errors in understandable English
 //	\date	2021/09/03 21:45
-std::string printHresultErrorDescription( HRESULT hres );
-std::wstring printHresultErrorDescriptionW( HRESULT hres );
+std::string printHresultErrorDescription( const HRESULT hres );
+std::wstring printHresultErrorDescriptionW( const HRESULT hres );
 //===================================================
 //	\function	getLastErrorAsString
 //	\brief  Returns the last Win32 error, in string format.
 //			Returns an empty string if there is no error.
 //	\date	2020/11/10 1:44
 std::string getLastErrorAsString();
-std::string getLastNtErrorAsString( DWORD ntStatusCode );
+std::string getLastNtErrorAsString( const DWORD ntStatusCode );
 
 std::wstring bstrToStr( const BSTR &bstr );
 BSTR strToBstr( const std::wstring &str );
 
 __int64 filetimeToInt64( const FILETIME &fileTime );
-void pinThreadToCore( HANDLE hThread, DWORD core );
+void pinThreadToCore( const HANDLE hThread, const DWORD core );
 
-void setupDetachedThreadsVector( unsigned nThreads );
+void setupDetachedThreadsVector( const unsigned nThreads );
 void terminateDetachedThreads();
-void doPeriodically( const std::function<void(void)>& f, size_t intervalMs, bool now = true );
+void doPeriodically( const std::function<void(void)>& f, const size_t intervalMs, const bool now = true );
 
-std::optional<DWORD> registryGetDword( HKEY hKey, const std::wstring &regName );
-std::optional<std::wstring> registryGetString( HKEY hKey, const std::wstring &regName );
+std::optional<DWORD> registryGetDword( const HKEY hKey, const std::wstring &regName );
+std::optional<std::wstring> registryGetString( const HKEY hKey, const std::wstring &regName );
 
 static void suspendAllThreads();
 

@@ -17,7 +17,7 @@ void deleteFile( const std::string &filename );
 void searchFile( const std::filesystem::path &directory, const std::filesystem::path &filename );
 bool createDirectory( const std::string &str );
 void setFilePermissions( const std::string &path, std::filesystem::perms permsToSet, std::filesystem::perm_options permsAction );
-const std::string getFileExtension( const std::string &filename );
+std::string getFileExtension( const std::string &filename );
 //===================================================
 //	\function	isFileBinary
 //	\brief  read 255 chars just to be sure

@@ -170,7 +170,7 @@ void setFilePermissions( const std::string &path,
 		permsAction );
 }
 
-const std::string getFileExtension( const std::string &filename )
+std::string getFileExtension( const std::string &filename )
 {
 	const std::filesystem::path path{filename};
 	return path.extension().string();

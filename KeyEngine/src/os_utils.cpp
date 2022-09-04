@@ -8,13 +8,13 @@
 namespace util
 {
 
-std::string printHresultErrorDescription( HRESULT hres )
+std::string printHresultErrorDescription( const HRESULT hres )
 {
 	_com_error error{hres};
 	return util::ws2s( error.ErrorMessage() );
 }
 
-std::wstring printHresultErrorDescriptionW( HRESULT hres )
+std::wstring printHresultErrorDescriptionW( const HRESULT hres )
 {
 	_com_error error{hres};
 	return error.ErrorMessage();
@@ -46,7 +46,7 @@ std::string getLastErrorAsString()
 	return message;
 }
 
-std::string getLastNtErrorAsString( DWORD ntStatusCode )
+std::string getLastNtErrorAsString( const DWORD ntStatusCode )
 {
 	LPSTR ntStatusMessage = nullptr;
 	HMODULE hNtdll = LoadLibraryA( "ntdll.dll" );
@@ -95,8 +95,8 @@ __int64 filetimeToInt64( const FILETIME &fileTime )
 	return static_cast<__int64>( ui64.QuadPart );
 }
 
-void pinThreadToCore( HANDLE hThread,
-	DWORD core )
+void pinThreadToCore( const HANDLE hThread,
+	const DWORD core )
 {
 	// a set bit represents a CPU core
 	DWORD_PTR mask = ( static_cast<DWORD_PTR>( 1 ) << core );
@@ -138,8 +138,8 @@ void terminateDetachedThreads()
 //			executes void(*f)() function at periodic (ms) intervals
 //	\date	2021/09/06 1:05
 void doPeriodically( const std::function<void(void)>& f,
-	size_t intervalMs,
-	bool now )
+	const size_t intervalMs,
+	const bool now )
 {
 	std::thread t{[f, intervalMs, now] () -> void
 		{
@@ -165,7 +165,7 @@ void doPeriodically( const std::function<void(void)>& f,
 	t.detach();
 }
 
-std::optional<DWORD> registryGetDword( HKEY hKey,
+std::optional<DWORD> registryGetDword( const HKEY hKey,
 	const std::wstring &regName )
 {
 	DWORD bufferSize = sizeof( DWORD );
@@ -183,7 +183,7 @@ std::optional<DWORD> registryGetDword( HKEY hKey,
 	return val;
 }
 
-std::optional<std::wstring> registryGetString( HKEY hKey,
+std::optional<std::wstring> registryGetString( const HKEY hKey,
 	const std::wstring &regName )
 {
 	wchar_t buffer[512]{0};
