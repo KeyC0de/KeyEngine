@@ -113,7 +113,7 @@ private:
 	void hideCursor() noexcept;
 	void enableImGuiMouse() noexcept;
 	void disableImGuiMouse() noexcept;
-	LRESULT windowProc_impl( _In_ const HWND pWndHandle, _In_ const unsigned msg, _In_ const WPARAM wparam, _In_ const LPARAM lparam );
+	LRESULT windowProc_impl3d( _In_ const HWND pWndHandle, _In_ const unsigned msg, _In_ const WPARAM wparam, _In_ const LPARAM lparam );
 	LRESULT windowProc_impl2d( _In_ const HWND pWndHandle, _In_ const unsigned msg, _In_ const WPARAM wparam, _In_ const LPARAM lparam );
 	void setFont( const std::string &fontName );
 };

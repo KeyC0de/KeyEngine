@@ -6,6 +6,7 @@
 #include "bindable.h"
 
 
+// #TODO: create a garbage collector to run periodically and clean any shared_ptr<IBindable> elements that have a use of 1 (meaning their only use is in the BindableMap)
 class BindableMap final
 {
 	std::unordered_map<std::string, std::shared_ptr<IBindable>> m_bindableMap;
@@ -23,11 +24,11 @@ private:
 	std::shared_ptr<T> fetch_impl( Graphics &gph,
 		TArgs&&... args ) cond_noex
 	{
-		const auto bindableId = T::calcUid( std::forward<TArgs>( args )... );
-		const auto elem = m_bindableMap.find( bindableId );
-		if ( elem == m_bindableMap.end() )
+		const std::string bindableId = T::calcUid( std::forward<TArgs>( args )... );
+		const auto /*std::unordered_map<std::string, std::shared_ptr<IBindable>>::const_iterator*/ elem = m_bindableMap.find( bindableId );
+		if ( elem == m_bindableMap.cend() )
 		{
-			auto bindable = std::make_shared<T>( gph,
+			std::shared_ptr<T> bindable = std::make_shared<T>( gph,
 				std::forward<TArgs>( args )... );
 			m_bindableMap[bindableId] = bindable;
 			return bindable;

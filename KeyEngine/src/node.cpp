@@ -24,17 +24,17 @@ Node::Node( const int imguiId,
 void Node::update( const float dt,
 	const dx::XMMATRIX &parentWorldTransform ) const cond_noex
 {
-	const auto built = dx::XMLoadFloat4x4( &m_localTransform ) * dx::XMLoadFloat4x4( &m_worldTransform ) * parentWorldTransform;
+	const auto builtTr = dx::XMLoadFloat4x4( &m_localTransform ) * dx::XMLoadFloat4x4( &m_worldTransform ) * parentWorldTransform;
 	for ( const auto pMesh : m_meshes )
 	{
-		pMesh->setTransform( built );
+		pMesh->setTransform( builtTr );
 		pMesh->update( dt );
 		pMesh->setDistanceFromActiveCamera();
 	}
 	for ( const auto &pNode : m_children )
 	{
 		pNode->update( dt,
-			built );
+			builtTr );
 	}
 }
 

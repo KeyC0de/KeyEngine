@@ -30,7 +30,7 @@ std::string CBElement::calcSignature() const cond_noex
 {
 	switch( m_type )
 	{
-	#define X(el) case el: return ElementProperties<el>::tag;
+	#define X(el) case el: return MapElementProperties<el>::tag;
 	CB_LEAF_TYPES
 	#undef X
 	case Struct:
@@ -97,7 +97,7 @@ const size_t CBElement::getOffsetEnd() const cond_noex
 	switch( m_type )
 	{
 	#define X( el ) case el:\
-		return *m_offset + ElementProperties<el>::hlslSize;
+		return *m_offset + MapElementProperties<el>::hlslSize;
 	CB_LEAF_TYPES
 	#undef X
 	case Struct:
@@ -172,8 +172,8 @@ const size_t CBElement::commit( const size_t offsetIn ) cond_noex
 	{
 	#define X( el ) case el:\
 		m_offset = advanceIfCrossesBoundary( offsetIn,\
-			ElementProperties<el>::hlslSize );\
-			return *m_offset + ElementProperties<el>::hlslSize;
+			MapElementProperties<el>::hlslSize );\
+			return *m_offset + MapElementProperties<el>::hlslSize;
 	CB_LEAF_TYPES
 	#undef X
 	case Struct:

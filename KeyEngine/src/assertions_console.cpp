@@ -27,7 +27,6 @@ bool assertPrint( const char *expr,
 		console.log( ">> Diagnostic message: " );
 		console.log( msg );
 		console.log( "\n" );
-		return true;
 	}
 	return true;
 }

@@ -8,6 +8,7 @@
 #include <string>
 #include <unordered_map>
 #include "assertions_console.h"
+#include "utils.h"
 
 
 // master list of leaf types that generates enum elements and various switches etc.
@@ -40,22 +41,22 @@ enum ElementType
 
 // static map of attributes of each leaf class
 template<ElementType type>
-struct ElementProperties
+struct MapElementProperties
 {
 	static constexpr bool valid = false;
 };
 
 template<>
-struct ElementProperties<Float>
+struct MapElementProperties<Float>
 {
 	using CPUType = float; // type used in the CPU side
 	static constexpr size_t hlslSize = sizeof( CPUType ); // size of type on GPU/hlsl
 	static constexpr const char *tag = "F1";	// used for generating the tag of the CB
-	static constexpr bool valid = true; // metaprogramming flag to check validity of ElementProperties <param>
+	static constexpr bool valid = true; // metaprogramming flag to check validity of MapElementProperties <param>
 };
 
 template<>
-struct ElementProperties<Float2>
+struct MapElementProperties<Float2>
 {
 	using CPUType = dx::XMFLOAT2;
 	static constexpr size_t hlslSize = sizeof( CPUType );
@@ -64,7 +65,7 @@ struct ElementProperties<Float2>
 };
 
 template<>
-struct ElementProperties<Float3>
+struct MapElementProperties<Float3>
 {
 	using CPUType = dx::XMFLOAT3;
 	static constexpr size_t hlslSize = sizeof( CPUType );
@@ -73,7 +74,7 @@ struct ElementProperties<Float3>
 };
 
 template<>
-struct ElementProperties<Float4>
+struct MapElementProperties<Float4>
 {
 	using CPUType = dx::XMFLOAT4;
 	static constexpr size_t hlslSize = sizeof( CPUType );
@@ -82,7 +83,7 @@ struct ElementProperties<Float4>
 };
 
 template<>
-struct ElementProperties<Matrix>
+struct MapElementProperties<Matrix>
 {
 	using CPUType = dx::XMFLOAT4X4;
 	static constexpr size_t hlslSize = sizeof( CPUType );
@@ -91,7 +92,7 @@ struct ElementProperties<Matrix>
 };
 
 template<>
-struct ElementProperties<Bool>
+struct MapElementProperties<Bool>
 {
 	using CPUType = bool;
 	static constexpr size_t hlslSize = 4u;
@@ -100,7 +101,7 @@ struct ElementProperties<Bool>
 };
 
 template<>
-struct ElementProperties<Integer>
+struct MapElementProperties<Integer>
 {
 	using CPUType = int;
 	static constexpr size_t hlslSize = sizeof( CPUType );
@@ -109,7 +110,7 @@ struct ElementProperties<Integer>
 };
 
 // ensures that every leaf class in master list has an entry in the static attribute map
-#define X( el ) static_assert( ElementProperties<el>::valid, "Missing map implementation for " #el );
+#define X( el ) static_assert( MapElementProperties<el>::valid, "Missing map implementation for " #el );
 CB_LEAF_TYPES
 #undef X
 
@@ -121,7 +122,7 @@ struct ReverseMap final
 };
 
 #define X( el ) template<>\
-struct ReverseMap<typename ElementProperties<el>::CPUType> \
+struct ReverseMap<typename MapElementProperties<el>::CPUType> \
 { \
 	static constexpr ElementType type = el; \
 	static constexpr bool valid = true; \
@@ -151,7 +152,7 @@ class CBElement final
 	// units, they must be viewed as aspect of one large monolithic system
 	// the reason for the friend relationships is generally so that intermediate
 	// classes that the client should not create can have their constructors made
-	// private, so that commit() cannot be called on arbitrary CBElements, etc.
+	// private, so that cookLayout() cannot be called on arbitrary CBElements, etc.
 	friend class RawLayout;
 	friend struct ExtraData;
 private:
@@ -203,11 +204,12 @@ public:
 	template<typename T>
 	const size_t fetch() const cond_noex
 	{
+		using namespace std::string_literals;
 		switch( m_type )
 		{
-#define X(el) case el:\
-	ASSERT( typeid( ElementProperties<el>::CPUType ) == typeid( T ), "Wrong CPUType" );\
-	return *m_offset;	// #FIXME: this becomes equal to 0 & crashes when selecting a child node in IMGUI
+#define X(el) case el: \
+	ASSERT( typeid( MapElementProperties<el>::CPUType ) == typeid( T ), std::string{"Error: GPU Type "s + std::string{typeid( T ).name()} + " used with mapped Type "s + std::string{ENUM_STR( el )}}.c_str() ); \
+	return *m_offset;
 CB_LEAF_TYPES
 #undef X
 		default:
@@ -307,7 +309,7 @@ private:
 	void clear() noexcept;
 	//===================================================
 	//	\function	cookLayout
-	//	\brief	commits the layout and then relinquish (by yielding the root layout element)
+	//	\brief	cook/commit the layout and then relinquish (by yielding the root layout element)
 	//	\date	2022/08/21 19:50
 	std::shared_ptr<CBElement> cookLayout() noexcept;
 };

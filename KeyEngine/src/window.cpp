@@ -167,7 +167,7 @@ Window::Window( const int width,
 	ASSERT_HRES_WIN32_IF_FAILED( hres );
 
 	// set title
-	static const short maxTitleCharSize = 128;
+	static const short maxTitleCharSize = 128i16;
 	wchar_t title[maxTitleCharSize];
 	GetWindowTextW( m_hWnd,
 		title,
@@ -560,7 +560,7 @@ LRESULT CALLBACK Window::windowProcDelegate( const HWND hWnd,
 		GWLP_USERDATA ) );
 	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{
-		return this_wnd->windowProc_impl( hWnd,
+		return this_wnd->windowProc_impl3d( hWnd,
 			uMsg,
 			wParam,
 			lParam );
@@ -796,7 +796,7 @@ LRESULT Window::windowProc_impl2d( _In_ const HWND hWnd,
 		lParam );
 }
 
-LRESULT Window::windowProc_impl( _In_ const HWND hWnd,
+LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 	_In_ const unsigned uMsg,
 	_In_ const WPARAM wParam,
 	_In_ const LPARAM lParam )
@@ -1338,7 +1338,7 @@ Prevent window resizing: Instead resize by ingame option - choosing resolution:
 			RID_INPUT,
 			nullptr,
 			&size,
-			sizeof( RAWINPUTHEADER ) ) == -1)
+			sizeof( RAWINPUTHEADER ) ) == -1 )
 		{
 			// bail msg processing if error
 			break;

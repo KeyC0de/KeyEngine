@@ -104,9 +104,9 @@ Cube::Cube( Graphics &gph,
 		blurOutlineDraw.addBindable( transformVscb );
 
 		con::RawLayout cbLayout;
-		cbLayout.add<con::Float4>( "materialColor" );
+		cbLayout.add<con::Float3>( "materialColor" );
 		auto cb = con::Buffer( std::move( cbLayout ) );
-		cb["materialColor"] = dx::XMFLOAT4{1.0f, 0.4f, 0.4f, 1.0f};
+		cb["materialColor"] = dx::XMFLOAT3{1.0f, 0.4f, 0.4f};
 		blurOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gph,
 			0u,
 			cb ) );
@@ -136,9 +136,9 @@ Cube::Cube( Graphics &gph,
 		solidOutlineDraw.addBindable( transformScaledVcb );
 
 		con::RawLayout cbLayout;
-		cbLayout.add<con::Float4>( "materialColor" );
+		cbLayout.add<con::Float3>( "materialColor" );
 		auto cb = con::Buffer( std::move( cbLayout ) );
-		cb["materialColor"] = dx::XMFLOAT4{1.0f, 0.4f, 0.4f, 1.0f};
+		cb["materialColor"] = dx::XMFLOAT3{1.0f, 0.4f, 0.4f};
 		solidOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gph,
 			0u,
 			cb ) );
@@ -224,7 +224,7 @@ void Cube::displayImguiWidgets( Graphics &gph,
 
 			bool onVisit( con::Buffer &cb ) override
 			{
-				float bDirty = false;
+				bool bDirty = false;
 				const auto dirtyCheck = [&bDirty]( bool bChanged )
 				{
 					bDirty = bDirty || bChanged;
@@ -249,8 +249,8 @@ void Cube::displayImguiWidgets( Graphics &gph,
 
 				if ( auto el = cb["materialColor"]; el.isValid() )
 				{
-					dirtyCheck( ImGui::ColorPicker4( tag( "materialColor" ),
-						reinterpret_cast<float*>( &static_cast<dx::XMFLOAT4&>( el ) ) ) );
+					dirtyCheck( ImGui::ColorPicker3( tag( "materialColor" ),
+						reinterpret_cast<float*>( &static_cast<dx::XMFLOAT3&>( el ) ) ) );
 				}
 
 				if ( auto el = cb["specularIntensity"]; el.isValid() )

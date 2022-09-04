@@ -325,32 +325,5 @@ const std::size_t getForwardPaddingWithHeader( const std::size_t p,
 	return padding;
 }
 
-void* alignedMalloc( const std::size_t nBytes,
-	const std::size_t alignment )
-{
-	// allocate `nBytes` + `nBytesForAlignment` required given requested `alignment` value
-	// store malloced address in `pMem`
-	// compute aligned address `pAlignedMem` by adding the `bytesForAdjustment` to malloced `pMem` address
-	ASSERT( false, "Never should have come here!" );
-	void *pMem = nullptr;
-	std::size_t nBytesForAlignment = alignment - 1 + sizeof(void*);
-	if ( ( pMem = static_cast<void*>( ::operator new( nBytes + nBytesForAlignment ) ) ) == nullptr )
-	{
-		return nullptr;
-	}
-	// round-up / align address forward
-	std::size_t bytesForAdjustment = ( nBytesForAlignment ) & ~( alignment - 1 );
-	void** pAlignedMem = reinterpret_cast<void**>( reinterpret_cast<std::size_t>( pMem )
-		+ bytesForAdjustment );
-	pAlignedMem[-1] = pMem;
-	return pAlignedMem;
-}
-
-void alignedFree( void *p ) noexcept
-{
-	ASSERT( false, "Never should have come here!" );
-	::operator delete( static_cast<void**>( p )[-1] );
-}
-
 
 }//namespace util

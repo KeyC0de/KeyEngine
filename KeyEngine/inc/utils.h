@@ -25,6 +25,11 @@
 		return  originalFunctionName( std::forward<TArgs>( args )... );\
 	}
 
+#define ENUM_STR( e )				(#e)
+#define ENUM_WSTR( e )				( L ## (#e) )
+#define PRINT_ENUM( e )				std::printf( "'%s'", (#e) );
+#define PRINTW_ENUM( e )			std::wprintf( L"'%s'", (#e) );
+
 
 namespace util
 {
@@ -216,10 +221,6 @@ T* alignPtr( const T *ptr,
 	ASSERT( isAligned( alignedPtr, alignment ), "Not aligned!" );
 	return alignedPtr;
 }
-
-// #FIXME: alignedMalloc doesn't work properly
-void* alignedMalloc( const std::size_t nBytes, const std::size_t alignment );
-void alignedFree( void *p ) noexcept;
 
 // INTEL:
 //void *_mm_malloc(int size, int align)

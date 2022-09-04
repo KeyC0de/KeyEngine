@@ -110,9 +110,9 @@ Plane::Plane( Graphics &gph,
 		blurOutlineDraw.addBindable( transformVscb );
 
 		con::RawLayout cbLayout;
-		cbLayout.add<con::Float4>( "materialColor" );
+		cbLayout.add<con::Float3>( "materialColor" );
 		auto cb = con::Buffer( std::move( cbLayout ) );
-		cb["materialColor"] = dx::XMFLOAT4{1.0f, 0.4f, 0.4f, 1.0f};
+		cb["materialColor"] = dx::XMFLOAT3{1.0f, 0.4f, 0.4f};
 		blurOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gph,
 			0u,
 			cb ) );
@@ -144,9 +144,9 @@ Plane::Plane( Graphics &gph,
 		solidOutlineDraw.addBindable( transformScaledVcb );
 
 		con::RawLayout cbLayout;
-		cbLayout.add<con::Float4>( "materialColor" );
+		cbLayout.add<con::Float3>( "materialColor" );
 		auto cb = con::Buffer( std::move( cbLayout ) );
-		cb["materialColor"] = dx::XMFLOAT4{1.0f, 0.4f, 0.4f, 1.0f};
+		cb["materialColor"] = dx::XMFLOAT3{1.0f, 0.4f, 0.4f};
 		solidOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gph,
 			0u,
 			cb ) );

@@ -14,9 +14,9 @@ IEffectVisitor::~IEffectVisitor()
 	pass_;
 }
 
-void IEffectVisitor::setEffect( Effect *ef )
+void IEffectVisitor::setEffect( Effect *pEffect )
 {
-	m_pEffect = ef;
+	m_pEffect = pEffect;
 	++m_effectId;
 	onSetEffect();
 }
@@ -35,22 +35,20 @@ void IEffectVisitor::onSetEffect()
 
 bool EVShowcase::onVisit( con::Buffer &cb )
 {
-	float bDirty = false;
+	bool bDirty = false;
 	const auto dirtyCheck = [&bDirty]( bool bChanged )
 	{
 		bDirty = bDirty || bChanged;
 	};
 
-	auto tagImGuiWidget = [imguiNodeName = std::string{},
-		str = '#' + std::to_string( m_cbId )]
+	auto tagImGuiWidget = [imguiNodeName = std::string{}, str = '#' + std::to_string( m_cbId )]
 		( const char *label ) mutable
 	{
 		imguiNodeName = label + str;
 		return imguiNodeName.c_str();
 	};
 
-	// query the Mesh's Constant Buffer for available CB Elements
-	// and display ImGui controls for those available
+	// query the Mesh's Constant Buffer for available CB Elements and display ImGui controls for those available
 	if ( const auto &el = cb["scale"]; el.isValid() )
 	{
 		dirtyCheck( ImGui::SliderFloat( tagImGuiWidget( "Scale" ),
