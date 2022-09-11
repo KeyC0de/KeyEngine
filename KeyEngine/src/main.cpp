@@ -191,10 +191,11 @@ void finally( const std::exception_ptr &exceptionPtr )
 		}
 		catch ( const std::exception &ex )
 		{
-#if defined _DEBUG && !defined NDEBUG
-			console.log( "Thread exited with exception: "s + std::string{ex.what()} + "\n"s );
+			MessageBoxW( nullptr,
+				util::s2ws( ex.what() ).data(),
+				L"Thread exited with exception:",
+				MB_OK | MB_ICONEXCLAMATION );
 		}
-#endif	// _DEBUG
 	}
 
 #if defined _DEBUG && !defined NDEBUG

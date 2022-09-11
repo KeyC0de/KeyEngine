@@ -73,13 +73,13 @@ Pass2D::Pass2D( Graphics &gph,
 	addPassBindable( std::make_shared<IndexBuffer>( gph,
 		indices ) );
 
+	addPassBindable( std::make_shared<PixelShader>( gph,
+		"flat2d_ps.cso" ) );
+
 	addPassBindable( std::make_shared<Texture>( gph,
 		gph.getClientWidth(),
 		gph.getClientHeight(),
 		0u ) );
-
-	addPassBindable( std::make_shared<PixelShader>( gph,
-		"flat2d_ps.cso" ) );
 
 	addPassBindable( RasterizerState::fetch( gph,
 		RasterizerState::FrontSided,
@@ -93,7 +93,7 @@ Pass2D::Pass2D( Graphics &gph,
 
 void Pass2D::run( Graphics &gph ) const cond_noex
 {
-	bindPass( gph );
+	bind( gph );
 	gph.drawIndexed( 6u );
 }
 

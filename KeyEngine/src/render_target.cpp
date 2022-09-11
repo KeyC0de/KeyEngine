@@ -123,11 +123,6 @@ void IRenderTargetView::clear( Graphics &gph,
 	DXGI_GET_QUEUE_INFO( gph );
 }
 
-void IRenderTargetView::release()
-{
-	m_pRtv->Release();
-}
-
 const unsigned IRenderTargetView::getWidth() const noexcept
 {
 	return m_width;

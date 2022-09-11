@@ -110,7 +110,7 @@ void SkyPass::run( Graphics &gph ) const cond_noex
 		m_pCubeIb->bind( gph );
 		nIndices = m_nCubeIndices;
 	}
-	bindPass( gph );
+	bind( gph );
 	gph.drawIndexed( nIndices );
 }
 

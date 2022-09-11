@@ -34,7 +34,7 @@ void Paddle::render( Graphics &gph ) const cond_noex
 
 bool Paddle::doBallCollision( Ball &ball )
 {
-	if ( !m_bCooldown )
+	if ( !m_bInCollisionCooldown )
 	{
 		const Rect rect = this->rect();
 		if ( rect.isOverlappingWith( ball.rect() ) )
@@ -52,7 +52,7 @@ bool Paddle::doBallCollision( Ball &ball )
 			{// side collision
 				ball.reboundX();
 			}
-			m_bCooldown = true;
+			m_bInCollisionCooldown = true;
 			return true;
 		}
 	}
@@ -79,9 +79,9 @@ Rect Paddle::rect() const
 		m_halfHeight );
 }
 
-void Paddle::resetCooldown()
+void Paddle::resetCollisionCooldown()
 {
-	m_bCooldown = false;
+	m_bInCollisionCooldown = false;
 }
 
 void Paddle::setPositionRel( const float val )

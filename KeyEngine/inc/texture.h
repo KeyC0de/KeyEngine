@@ -19,7 +19,7 @@ public:
 	Texture( Graphics &gph, const std::string &filepath, const unsigned slot );
 	//===================================================
 	//	\function	Texture
-	//	\brief  dynamic Texture constructor with CPU per frame update
+	//	\brief  Texture constructor with dynamic CPU per frame update
 	//	\date	2021/10/30 3:42
 	Texture( Graphics &gph, const unsigned width, const unsigned height, const unsigned slot );
 

@@ -186,9 +186,9 @@ constexpr T convertRange( const T valueInRange,
 //	\brief wrap angle (in radians) in the range -pi to pi
 //	\date 2020/07/15 5:10
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
-constexpr T wrapAngle( const T angle )
+constexpr T wrapAngle( const T angleRad )
 {
-	const T val = util::modulusFloat( angle, (T)2.0 * (T)PI_D );
+	const T val = util::modulusFloat( angleRad, (T)2.0 * (T)PI_D );
 	return ( val > (T)PI_D ) ?
 		( val - (T)2.0 * (T)PI_D ) :		// if > 2pi subtract 2pi from it
 		val;

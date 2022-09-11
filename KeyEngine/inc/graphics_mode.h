@@ -10,7 +10,7 @@ enum Mode
 	_3D,
 };
 
-static inline constexpr const int current_mode = _3D;
+static inline constexpr const int current_mode = _2D;	/// you have to manually change this to switch modes (and potentially games)
 
 static inline constexpr const int get() noexcept
 {

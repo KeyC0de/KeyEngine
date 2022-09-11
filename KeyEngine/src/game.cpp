@@ -221,9 +221,10 @@ Sandbox3d::Sandbox3d( const int width,
 	//	m_renderer.setShadowCamera( *m_pPointLight2->shareCamera() );
 	//}
 
-	ThreadPoolJ& threadPool = ThreadPoolJ::instance( 4,
+	ThreadPoolJ &threadPool = ThreadPoolJ::instance( 4,
 		true );
-	threadPool.enqueue( &func_async::doPeriodically, &BindableMap::garbageCollect,
+	threadPool.enqueue( &func_async::doPeriodically,
+		&BindableMap::garbageCollect,
 		5000u,
 		false );
 
@@ -259,7 +260,7 @@ int Sandbox3d::loop()
 	return returnC0de;
 }
 
-int Sandbox3d::checkInput( float dt )
+int Sandbox3d::checkInput( const float dt )
 {
 	auto &keyboard = m_mainWindow.keyboard();
 	auto &mouse = m_mainWindow.mouse();
@@ -348,7 +349,7 @@ int Sandbox3d::checkInput( float dt )
 	return 1;
 }
 
-void Sandbox3d::update( float dt )
+void Sandbox3d::update( const float dt )
 {
 	auto &activeCamera = m_cameraMan.activeCamera();
 	// binds camera to all Passes that need it
@@ -397,10 +398,10 @@ void Sandbox3d::test()
 }
 #endif
 
-void Sandbox3d::render( float dt )
+void Sandbox3d::render( const float dt )
 {
 	auto &gph = m_mainWindow.getGraphics();
-	gph.beginRendering();
+	gph.beginFrame();
 
 	m_pPointLight1->render( rch::lambert );
 	//m_pPointLight2->render( rch::lambert );
@@ -446,7 +447,7 @@ void Sandbox3d::renderImgui()
 void Sandbox3d::present()
 {
 	auto &gph = m_mainWindow.getGraphics();
-	gph.endRendering();
+	gph.endFrame();
 	m_renderer.reset();
 }
 
@@ -508,7 +509,7 @@ int Arkanoid::loop()
 	return returnC0de;
 }
 
-int Arkanoid::checkInput( float dt )
+int Arkanoid::checkInput( const float dt )
 {
 	auto &keyboard = m_mainWindow.keyboard();
 	auto &mouse = m_mainWindow.mouse();
@@ -555,7 +556,7 @@ int Arkanoid::checkInput( float dt )
 	return 1;
 }
 
-void Arkanoid::update( float dt )
+void Arkanoid::update( const float dt )
 {
 	m_ball.update( dt );
 	m_paddle.doWallCollision( m_walls );
@@ -590,7 +591,7 @@ void Arkanoid::update( float dt )
 	}
 	if ( bCollided )
 	{
-		m_paddle.resetCooldown();
+		m_paddle.resetCollisionCooldown();
 		m_bricks[curColBrickIndex].doBallCollision( m_ball );
 		m_brickSound.play();
 	}
@@ -602,7 +603,7 @@ void Arkanoid::update( float dt )
 	}
 	if ( m_ball.doWallCollision( m_walls ) )
 	{
-		m_paddle.resetCooldown();
+		m_paddle.resetCollisionCooldown();
 		m_padSound.play();
 	}
 }
@@ -614,10 +615,10 @@ void Arkanoid::test()
 }
 #endif
 
-void Arkanoid::render( float dt )
+void Arkanoid::render( const float dt )
 {
 	auto &gph = m_mainWindow.getGraphics();
-	gph.beginRendering();
+	gph.beginFrame();
 
 	m_ball.render( gph );
 	for ( const Brick &b : m_bricks )
@@ -632,7 +633,7 @@ void Arkanoid::render( float dt )
 void Arkanoid::present()
 {
 	auto &gph = m_mainWindow.getGraphics();
-	gph.endRendering();
+	gph.endFrame();
 	m_renderer.reset();
 }
 
@@ -678,7 +679,7 @@ int Snake::loop()
 	return -1;
 }
 
-bool Snake::checkInput( float dt )
+bool Snake::checkInput( const float dt )
 {
 	auto &keyboard = m_mainWindow.keyboard();
 	auto &mouse = m_mainWindow.mouse();
@@ -757,7 +758,7 @@ bool Snake::checkInput( float dt )
 	return false;
 }
 
-void Snake::update( float dt )
+void Snake::update( const float dt )
 {
 	if (!gameIsOver)
 	{
@@ -818,10 +819,10 @@ void Snake::test()
 }
 #endif
 
-void Snake::render( float dt )
+void Snake::render( const float dt )
 {
 	auto &gph = m_mainWindow.getGraphics();
-	gph.beginRendering();
+	gph.beginFrame();
 
 
 	m_renderer.run( gph );

@@ -29,11 +29,11 @@ protected:
 	//	\date	2022/02/19 19:17
 	void addPassBindable( std::shared_ptr<IBindable> bindable ) noexcept;
 	//===================================================
-	//	\function	bindPass
+	//	\function	bind
 	//	\brief  bind RTV OR DSV and other bindables shared by all Pass objects
 	//			call this function as the first thing you do on a child class's run function
 	//	\date	2021/06/27 0:04
-	void bindPass( Graphics &gph ) const cond_noex;
+	void bind( Graphics &gph ) const cond_noex;
 	void validate() override;
 
 	template<class T>

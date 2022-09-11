@@ -55,9 +55,6 @@
     <ClCompile Include="src\entity_manager.cpp">
       <Filter>engine\gameplay</Filter>
     </ClCompile>
-    <ClCompile Include="src\cube.cpp">
-      <Filter>engine\vfx\mesh</Filter>
-    </ClCompile>
     <ClCompile Include="src\mesh.cpp">
       <Filter>engine\vfx\mesh</Filter>
     </ClCompile>
@@ -72,9 +69,6 @@
     </ClCompile>
     <ClCompile Include="src\utils.cpp">
       <Filter>engine\util</Filter>
-    </ClCompile>
-    <ClCompile Include="src\frustum.cpp">
-      <Filter>engine\vfx\mesh</Filter>
     </ClCompile>
     <ClCompile Include="src\depth_reversed_pass.cpp">
       <Filter>engine\vfx\render_graph</Filter>
@@ -277,12 +271,6 @@
     <ClCompile Include="src\sound_manager.cpp">
       <Filter>engine\sfx</Filter>
     </ClCompile>
-    <ClCompile Include="src\plane.cpp">
-      <Filter>engine\vfx\mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="src\sphere.cpp">
-      <Filter>engine\vfx\mesh</Filter>
-    </ClCompile>
     <ClCompile Include="src\signal_handling.cpp">
       <Filter>engine\os\win</Filter>
     </ClCompile>
@@ -313,12 +301,6 @@
     <ClCompile Include="src\thread_pool.cpp">
       <Filter>engine\common</Filter>
     </ClCompile>
-    <ClCompile Include="src\geometry.cpp">
-      <Filter>engine\vfx\mesh\primitives</Filter>
-    </ClCompile>
-    <ClCompile Include="src\triangle_mesh.cpp">
-      <Filter>engine\vfx\mesh\primitives</Filter>
-    </ClCompile>
     <ClCompile Include="src\model_visitor.cpp">
       <Filter>engine\gameplay</Filter>
     </ClCompile>
@@ -333,9 +315,6 @@
     </ClCompile>
     <ClCompile Include="third_party\imgui\imgui.cpp">
       <Filter>third_party\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="src\rectangle.cpp">
-      <Filter>engine\vfx\mesh\primitives</Filter>
     </ClCompile>
     <ClCompile Include="src\octree.cpp">
       <Filter>engine\gameplay</Filter>
@@ -371,6 +350,27 @@
       <Filter>engine\gameplay</Filter>
     </ClCompile>
     <ClCompile Include="src\thread_pool_j.cpp" />
+    <ClCompile Include="src\cube.cpp">
+      <Filter>engine\vfx\mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\frustum.cpp">
+      <Filter>engine\vfx\mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\geometry.cpp">
+      <Filter>engine\vfx\mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\plane.cpp">
+      <Filter>engine\vfx\mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rectangle.cpp">
+      <Filter>engine\vfx\mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sphere.cpp">
+      <Filter>engine\vfx\mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\triangle_mesh.cpp">
+      <Filter>engine\vfx\mesh</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -791,9 +791,6 @@
     <ClInclude Include="inc\entity_manager.h">
       <Filter>engine\gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="inc\cube.h">
-      <Filter>engine\vfx\mesh</Filter>
-    </ClInclude>
     <ClInclude Include="inc\mesh.h">
       <Filter>engine\vfx\mesh</Filter>
     </ClInclude>
@@ -814,9 +811,6 @@
     </ClInclude>
     <ClInclude Include="inc\utils.h">
       <Filter>engine\util</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\frustum.h">
-      <Filter>engine\vfx\mesh</Filter>
     </ClInclude>
     <ClInclude Include="inc\depth_reversed_pass.h">
       <Filter>engine\vfx\render_graph</Filter>
@@ -1034,12 +1028,6 @@
     <ClInclude Include="inc\sound_manager.h">
       <Filter>engine\sfx</Filter>
     </ClInclude>
-    <ClInclude Include="inc\plane.h">
-      <Filter>engine\vfx\mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\sphere.h">
-      <Filter>engine\vfx\mesh</Filter>
-    </ClInclude>
     <ClInclude Include="inc\key_wrl.h">
       <Filter>engine\os\win</Filter>
     </ClInclude>
@@ -1079,12 +1067,6 @@
     <ClInclude Include="inc\thread_pool.h">
       <Filter>engine\common</Filter>
     </ClInclude>
-    <ClInclude Include="inc\geometry.h">
-      <Filter>engine\vfx\mesh\primitives</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\triangle_mesh.h">
-      <Filter>engine\vfx\mesh\primitives</Filter>
-    </ClInclude>
     <ClInclude Include="inc\model_visitor.h">
       <Filter>engine\gameplay</Filter>
     </ClInclude>
@@ -1099,9 +1081,6 @@
     </ClInclude>
     <ClInclude Include="inc\lru_cache.h">
       <Filter>engine\common</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\rectangle.h">
-      <Filter>engine\vfx\mesh\primitives</Filter>
     </ClInclude>
     <ClInclude Include="inc\non_copyable.h">
       <Filter>engine\common</Filter>
@@ -1170,6 +1149,27 @@
       <Filter>third_party\jthread</Filter>
     </ClInclude>
     <ClInclude Include="inc\thread_pool_j.h" />
+    <ClInclude Include="inc\triangle_mesh.h">
+      <Filter>engine\vfx\mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\cube.h">
+      <Filter>engine\vfx\mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\frustum.h">
+      <Filter>engine\vfx\mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\geometry.h">
+      <Filter>engine\vfx\mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\plane.h">
+      <Filter>engine\vfx\mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\rectangle.h">
+      <Filter>engine\vfx\mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\sphere.h">
+      <Filter>engine\vfx\mesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="keyc0de.ico" />
@@ -1464,9 +1464,6 @@
     </Filter>
     <Filter Include="engine\vfx\mesh">
       <UniqueIdentifier>{a20e5f58-d59f-4323-8c6f-dadc52f1b15c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\vfx\mesh\primitives">
-      <UniqueIdentifier>{2c6133c3-bbe8-4a73-b2fc-dc0165c75471}</UniqueIdentifier>
     </Filter>
     <Filter Include="third_party\jthread">
       <UniqueIdentifier>{291f9785-0019-4d87-9e2d-bedbb6af73fd}</UniqueIdentifier>

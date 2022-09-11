@@ -11,7 +11,6 @@ namespace ren
 	class Renderer;
 }
 
-// #TODO: get rid of m_pos and m_rot, set everything with 1 transform matrix of the base Mesh
 class CameraWidget
 	: public Mesh
 {

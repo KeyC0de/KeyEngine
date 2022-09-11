@@ -148,7 +148,7 @@ Graphics::Graphics( const HWND hWnd,
 			&m_pSwapChain,
 			&m_pDevice,
 			&m_featureLevel,
-			&m_pContext );
+			&m_pImmediateContext );
 	}
 #endif
 	ASSERT_HRES_IF_FAILED;
@@ -181,15 +181,15 @@ Graphics::Graphics( const HWND hWnd,
 			16u ) );
 	}
 
-	m_fpsSpriteBatch = std::make_unique<dx::SpriteBatch>(m_pContext.Get());
-	m_spriteFont = std::make_unique<dx::SpriteFont>(m_pDevice.Get(),
+	m_pFpsSpriteBatch = std::make_unique<dx::SpriteBatch>(m_pImmediateContext.Get());
+	m_pSpriteFont = std::make_unique<dx::SpriteFont>(m_pDevice.Get(),
 		L"assets/fonts/myComicSansMSSpriteFont.spritefont" );
 
 	// initialize Dear ImGui d3d11 Implementation
 	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{
 		ImGui_ImplDX11_Init( m_pDevice.Get(),
-			m_pContext.Get() );
+			m_pImmediateContext.Get() );
 	}
 
 	m_fpsTimer.start();
@@ -219,22 +219,22 @@ void Graphics::clearShaderSlots() noexcept
 	// prevent OMSetRenderTargets State Hazard
 	ID3D11ShaderResourceView *const pNullSrv = nullptr;
 	// diffuse texture
-	m_pContext->PSSetShaderResources( 0u,
+	m_pImmediateContext->PSSetShaderResources( 0u,
 		1u,
 		&pNullSrv );
 	DXGI_GET_QUEUE_INFO_GFX;
 	// specular texture
-	m_pContext->PSSetShaderResources( 1u,
+	m_pImmediateContext->PSSetShaderResources( 1u,
 		1u,
 		&pNullSrv );
 	DXGI_GET_QUEUE_INFO_GFX;
 	// normal texture
-	m_pContext->PSSetShaderResources( 2u,
+	m_pImmediateContext->PSSetShaderResources( 2u,
 		1u,
 		&pNullSrv );
 	DXGI_GET_QUEUE_INFO_GFX;
 	// shadow map texture
-	m_pContext->PSSetShaderResources( 3u,
+	m_pImmediateContext->PSSetShaderResources( 3u,
 		1u,
 		&pNullSrv );
 	DXGI_GET_QUEUE_INFO_GFX;
@@ -243,20 +243,20 @@ void Graphics::clearShaderSlots() noexcept
 void Graphics::cleanState() noexcept
 {
 	clearShaderSlots();
-	m_pContext->ClearState();	// release all references
+	m_pImmediateContext->ClearState();	// release all references
 	for ( auto dc : m_commandLists )
 	{
 		if ( dc )
 		{
-			m_pContext->FinishCommandList( FALSE,
+			m_pImmediateContext->FinishCommandList( FALSE,
 				&dc );
 			dc->Release();
 		}
 	}
-	m_pContext->Flush();		// flush any remaining commands
+	m_pImmediateContext->Flush();		// flush any remaining commands
 }
 
-void Graphics::beginRendering() noexcept
+void Graphics::beginFrame() noexcept
 {
 	//VTUNE_ITT_TASK_BEGIN( pStrIttBeginRendering );
 	if constexpr ( gph_mode::get() == gph_mode::_3D )
@@ -282,7 +282,7 @@ void Graphics::updateAndRenderFpsTimer()
 	static int fpsDisplayFrameCount = 0;
 	static std::wstring fps;
 
-	m_fpsSpriteBatch->Begin();
+	m_pFpsSpriteBatch->Begin();
 	auto &setMan = SettingsManager::instance();
 	if ( setMan.getSettings().bFpsCounting )
 	{
@@ -299,18 +299,18 @@ void Graphics::updateAndRenderFpsTimer()
 	}
 
 	// draw FPS text
-	m_spriteFont->DrawString(m_fpsSpriteBatch.get(),
+	m_pSpriteFont->DrawString(m_pFpsSpriteBatch.get(),
 		fps.c_str(),
 		dx::XMFLOAT2{0.0f, 0.0f},
 		dx::Colors::Green,
 		0.0f,
 		dx::XMFLOAT2{0.0f, 0.0f},
 		dx::XMFLOAT2{1.0f, 1.0f} );
-	m_fpsSpriteBatch->End();
+	m_pFpsSpriteBatch->End();
 	//VTUNE_ITT_TASK_END;
 }
 
-void Graphics::endRendering()
+void Graphics::endFrame()
 {
 	//VTUNE_ITT_TASK_BEGIN( pStrIttEndRendering );
 	if constexpr ( gph_mode::get() == gph_mode::_3D )
@@ -356,7 +356,7 @@ void Graphics::endRendering()
 
 void Graphics::draw( const unsigned count ) cond_noex
 {
-	m_pContext->Draw( count,
+	m_pImmediateContext->Draw( count,
 		0u );
 	DXGI_GET_QUEUE_INFO_GFX;
 }
@@ -371,7 +371,7 @@ void Graphics::drawIndexed( const unsigned count ) cond_noex
 	}
 	else
 	{
-		m_pContext->DrawIndexed( count,
+		m_pImmediateContext->DrawIndexed( count,
 			0u,
 			0u );
 		DXGI_GET_QUEUE_INFO_GFX;
@@ -390,7 +390,7 @@ void Graphics::drawIndexedInstanced( const unsigned indexCount,
 	}
 	else
 	{
-		//m_pContext->DrawIndexedInstanced();
+		//m_pImmediateContext->DrawIndexedInstanced();
 	}
 	DXGI_GET_QUEUE_INFO_GFX;
 	//VTUNE_ITT_TASK_END;
@@ -452,12 +452,12 @@ DxgiInfoQueue& Graphics::infoQueue()
 void Graphics::createAdapters()
 {
 	HRESULT hres = CreateDXGIFactory1( __uuidof( IDXGIFactory1 ),
-		reinterpret_cast<void**>( m_pFactory.GetAddressOf() ) );
+		reinterpret_cast<void**>( m_pDxgiFactory.GetAddressOf() ) );
 	ASSERT_HRES_IF_FAILED;
 
 	IDXGIAdapter1 *pAdapter = nullptr;
 	unsigned adapterIndex = 0;
-	while ( SUCCEEDED( m_pFactory->EnumAdapters1( adapterIndex,
+	while ( SUCCEEDED( m_pDxgiFactory->EnumAdapters1( adapterIndex,
 		&pAdapter ) ) )
 	{
 		m_adapters.emplace_back( pAdapter );
@@ -482,7 +482,7 @@ void Graphics::playbackDeferredCommandList()
 {
 	//if( pCommandList )
 	//{
-	//	m_pContext->ExecuteCommandList( pCommandList,
+	//	m_pImmediateContext->ExecuteCommandList( pCommandList,
 	//		TRUE );
 	//}
 }
@@ -548,7 +548,7 @@ void Graphics::d3d11DebugReport()
 	}
 
 	ATL::CComPtr<ID3DUserDefinedAnnotation> pUserDefinedAnnotation;
-	hres = m_pContext->QueryInterface( IID_PPV_ARGS( &pUserDefinedAnnotation ) );
+	hres = m_pImmediateContext->QueryInterface( IID_PPV_ARGS( &pUserDefinedAnnotation ) );
 	ASSERT_HRES_IF_FAILED;
 }
 #endif

@@ -51,7 +51,7 @@ FullscreenPass::FullscreenPass( Graphics &gph,
 
 void FullscreenPass::run( Graphics &gph ) const cond_noex
 {
-	bindPass( gph );
+	bind( gph );
 	gph.drawIndexed( 6u );
 }
 

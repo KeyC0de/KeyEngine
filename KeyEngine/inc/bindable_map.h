@@ -6,7 +6,7 @@
 #include "bindable.h"
 
 
-// #TODO: create a garbage collector to run periodically and clean any shared_ptr<IBindable> elements that have a use of 1 (meaning their only use is in the BindableMap)
+// #TODO: replace shared_ptr to IBindable with weak_ptr to get rid of the usefulness of garbage collection
 class BindableMap final
 {
 	std::unordered_map<std::string, std::shared_ptr<IBindable>> m_bindableMap;

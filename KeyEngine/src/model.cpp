@@ -135,32 +135,32 @@ void Model::setRotation( const DirectX::XMFLOAT3 &rot ) cond_noex
 	m_pRoot->setWorldTransform( worldTransform );
 }
 
-void Model::rotateRel( const DirectX::XMFLOAT3 &rot ) cond_noex
+void Model::rotateRel( const DirectX::XMFLOAT3 &rotIn ) cond_noex
 {
 	auto &worldTransform = m_pRoot->getWorldTransform();
 	const dx::XMFLOAT3 pitchYawRoll = util::extractEulerAngles( worldTransform );
-	const float pitch = std::clamp( pitchYawRoll.x + rot.x,
+	const float pitch = std::clamp( pitchYawRoll.x + rotIn.x,
 		0.995f * -util::PI / 2.0f,
 		0.995f * util::PI / 2.0f );
-	const float yaw = util::wrapAngle( pitchYawRoll.y + rot.y );
-	const float roll = std::clamp( pitchYawRoll.z + rot.z,
+	const float yaw = util::wrapAngle( pitchYawRoll.y + rotIn.y );
+	const float roll = std::clamp( pitchYawRoll.z + rotIn.z,
 		0.995f * -util::PI / 2.0f,
 		0.995f * util::PI / 2.0f );
 	const dx::XMFLOAT3 angles{pitch, yaw, roll};
 	setRotation( angles );
 }
 
-void Model::rotateRel( const float pitch,
-	const float yaw,
-	const float roll ) cond_noex
+void Model::rotateRel( const float pitchIn,
+	const float yawIn,
+	const float rollIn ) cond_noex
 {
 	auto &worldTransform = m_pRoot->getWorldTransform();
 	const dx::XMFLOAT3 pitchYawRoll = util::extractEulerAngles( worldTransform );
-	const float pitchOut = std::clamp( pitchYawRoll.x + pitch,
+	const float pitchOut = std::clamp( pitchYawRoll.x + pitchIn,
 		0.995f * -util::PI / 2.0f,
 		0.995f * util::PI / 2.0f );
-	const float yawOut = util::wrapAngle( pitchYawRoll.y + yaw );
-	const float rollOut = std::clamp( pitchYawRoll.z + roll,
+	const float yawOut = util::wrapAngle( pitchYawRoll.y + yawIn );
+	const float rollOut = std::clamp( pitchYawRoll.z + rollIn,
 		0.995f * -util::PI / 2.0f,
 		0.995f * util::PI / 2.0f );
 	const dx::XMFLOAT3 angles{pitchOut, yawOut, rollOut};

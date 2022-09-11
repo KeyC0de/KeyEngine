@@ -16,7 +16,7 @@ class Paddle
 	ColorBGRA m_wingColor;
 	float m_halfWidth;
 	float m_halfHeight;
-	bool m_bCooldown = false;
+	bool m_bInCollisionCooldown = false;
 public:
 	Paddle( const DirectX::XMFLOAT2 &position, const float width, const float height, const ColorBGRA col, const ColorBGRA wingCol );
 
@@ -24,6 +24,6 @@ public:
 	bool doBallCollision( Ball &ball );
 	void doWallCollision( const Rect &walls );
 	Rect rect() const;
-	void resetCooldown();
+	void resetCollisionCooldown();
 	void setPositionRel( const float val );
 };

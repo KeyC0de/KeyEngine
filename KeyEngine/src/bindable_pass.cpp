@@ -20,7 +20,7 @@ void IBindablePass::addPassBindable( std::shared_ptr<IBindable> bindable ) noexc
 	m_bindables.emplace_back( bindable );
 }
 
-void IBindablePass::bindPass( Graphics &gph ) const cond_noex
+void IBindablePass::bind( Graphics &gph ) const cond_noex
 {
 	if ( m_pRtv )
 	{

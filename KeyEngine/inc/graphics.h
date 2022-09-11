@@ -57,28 +57,24 @@ private:
 	unsigned m_width;
 	unsigned m_height;
 	static inline std::vector<Adapter> m_adapters;
-	Microsoft::WRL::ComPtr<IDXGIFactory1> m_pFactory;
+	Microsoft::WRL::ComPtr<IDXGIFactory1> m_pDxgiFactory;
 	Microsoft::WRL::ComPtr<ID3D11Device> m_pDevice;
-	// immediate d3d device context:
-	Microsoft::WRL::ComPtr<ID3D11DeviceContext> m_pContext;
 #if defined _FLIP_PRESENT
 	Microsoft::WRL::ComPtr<IDXGISwapChain1> m_pSwapChain;
 #else
 	Microsoft::WRL::ComPtr<IDXGISwapChain> m_pSwapChain;
 #endif
+	Microsoft::WRL::ComPtr<ID3D11DeviceContext> m_pImmediateContext;
 	std::shared_ptr<IRenderTargetView> m_globalColorBuffer;
 #if defined _DEBUG && !defined NDEBUG
 	DxgiInfoQueue m_infoQueue;
 	ATL::CComPtr<ID3D11Debug> m_pDebug;
 #endif
 	KeyTimer<std::chrono::microseconds> m_fpsTimer;
-	std::unique_ptr<DirectX::SpriteFont> m_spriteFont;
-	std::unique_ptr<DirectX::SpriteBatch> m_fpsSpriteBatch;
 	DirectX::XMMATRIX m_projection;
 	DirectX::XMMATRIX m_view;
 	std::vector<ID3D11DeviceContext*> m_deferredContexts;
 	std::vector<ID3D11CommandList*> m_commandLists;
-	ColorBGRA *m_pCpuBuffer = nullptr;
 #if defined _FLIP_PRESENT
 private:
 	static bool checkTearingSupport();
@@ -90,9 +86,9 @@ public:
 #if defined _FLIP_PRESENT
 	void makeWindowAssociationWithFactory( HWND hWnd, const UINT flags = DXGI_MWA_NO_WINDOW_CHANGES );
 #endif
-	void beginRendering() noexcept;
+	void beginFrame() noexcept;
 	void updateAndRenderFpsTimer();
-	void endRendering();
+	void endFrame();
 	void draw( const unsigned count ) cond_noex;
 	void drawIndexed( const unsigned count ) cond_noex;
 	void drawIndexedInstanced( const unsigned indexCount, const unsigned instanceCount ) cond_noex;
@@ -114,8 +110,31 @@ public:
 #if defined _DEBUG && !defined NDEBUG
 	DxgiInfoQueue& infoQueue();
 #endif
-
-	// 2d
+private:
+	//===================================================
+	//	\function	recordDeferredCommandList
+	//	\brief  probably should call this when the Model is being loaded not when pass->run() -> Job->run()
+	//	\date	2022/08/21 14:05
+	void recordDeferredCommandList();
+	//===================================================
+	//	\function	playbackDeferredCommandList
+	//	\brief  ExecuteCommandList must be executed on the immediate context for recorded
+	//			commands to be run on the GPU
+	//	\date	2020/11/05 14:51
+	void playbackDeferredCommandList();
+	void clearShaderSlots() noexcept;
+	void cleanState() noexcept;
+#if defined _DEBUG && !defined NDEBUG
+	void interrogateDirectxFeatures();
+	void d3d11DebugReport();
+#endif
+private:
+	/// 2d
+	Microsoft::WRL::ComPtr<IDXGISurface> m_pSurface2d;
+	std::unique_ptr<DirectX::SpriteFont> m_pSpriteFont;
+	std::unique_ptr<DirectX::SpriteBatch> m_pFpsSpriteBatch;
+	ColorBGRA *m_pCpuBuffer = nullptr;
+public:
 	const ColorBGRA getPixel( const int x, const int y ) const noexcept;
 	void putPixel( const int x, const int y, const ColorBGRA col );
 	inline void putPixel( const int x,
@@ -155,24 +174,6 @@ public:
 	void drawTriangle( int x0, int y0, int x1, int y1, int x2, int y2, const ColorBGRA col );
 	void drawCircle( const int centerX, const int centerY, const int radius, const ColorBGRA col );
 	const std::vector<DirectX::XMFLOAT2> drawStar( const float outerRadius, const float innerRadius, const int nFlares = 5 );
-private:
-	//===================================================
-	//	\function	recordDeferredCommandList
-	//	\brief  probably should call this when the Model is being loaded not when pass->run() -> Job->run()
-	//	\date	2022/08/21 14:05
-	void recordDeferredCommandList();
-	//===================================================
-	//	\function	playbackDeferredCommandList
-	//	\brief  ExecuteCommandList must be executed on the immediate context for recorded
-	//			commands to be run on the GPU
-	//	\date	2020/11/05 14:51
-	void playbackDeferredCommandList();
-	void clearShaderSlots() noexcept;
-	void cleanState() noexcept;
-#if defined _DEBUG && !defined NDEBUG
-	void interrogateDirectxFeatures();
-	void d3d11DebugReport();
-#endif
 };
 
 #define THROW_GRAPHICS_EXCEPTION( msg ) throw GraphicsException( __LINE__,\
