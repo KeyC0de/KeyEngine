@@ -3,6 +3,8 @@
 #include "winner.h"
 #include "key_wrl.h"
 #include <d3d11.h>
+#include <d2d1_1.h>
+#include <dwrite.h>
 #include <d3dcompiler.h>
 #include <DirectXMath.h>
 #include <memory>
@@ -56,6 +58,7 @@ private:
 	static inline D3D_FEATURE_LEVEL m_featureLevel;
 	unsigned m_width;
 	unsigned m_height;
+	HWND m_hParentWnd;
 	static inline std::vector<Adapter> m_adapters;
 	Microsoft::WRL::ComPtr<IDXGIFactory1> m_pDxgiFactory;
 	Microsoft::WRL::ComPtr<ID3D11Device> m_pDevice;
@@ -89,6 +92,7 @@ public:
 	void beginFrame() noexcept;
 	void updateAndRenderFpsTimer();
 	void endFrame();
+	void present();
 	void draw( const unsigned count ) cond_noex;
 	void drawIndexed( const unsigned count ) cond_noex;
 	void drawIndexedInstanced( const unsigned indexCount, const unsigned instanceCount ) cond_noex;
@@ -99,11 +103,6 @@ public:
 	const DirectX::XMMATRIX& getProjectionMatrix() const noexcept;
 	const unsigned getClientWidth() const noexcept;
 	const unsigned getClientHeight() const noexcept;
-	//===================================================
-	//	\function	renderTarget
-	//	\brief  access global color buffer
-	//	\date	2022/08/28 20:04
-	IRenderTargetView* renderTarget() const noexcept;
 	std::shared_ptr<IRenderTargetView> shareRenderTarget();
 	void createAdapters();
 
@@ -129,10 +128,44 @@ private:
 	void d3d11DebugReport();
 #endif
 private:
-	/// 2d
-	Microsoft::WRL::ComPtr<IDXGISurface> m_pSurface2d;
+	/// 2d & 3d Interoperability
+	Microsoft::WRL::ComPtr<ID2D1Factory> m_p2DFactory;
+	Microsoft::WRL::ComPtr<IDXGISurface> m_p2DSurface;
+	Microsoft::WRL::ComPtr<ID2D1HwndRenderTarget> m_p2DRenderTarget;
+	Microsoft::WRL::ComPtr<ID2D1DeviceContext> m_p2DContext;
+	Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> m_p2dSolidColorBrush;
+	Microsoft::WRL::ComPtr<IDWriteFactory> m_pWriteFactory;
+	Microsoft::WRL::ComPtr<IDWriteTextFormat> m_pTextFormat;
 	std::unique_ptr<DirectX::SpriteFont> m_pSpriteFont;
 	std::unique_ptr<DirectX::SpriteBatch> m_pFpsSpriteBatch;
+private:
+	inline void begin2dDraw()
+	{
+		m_p2DRenderTarget->BeginDraw();
+	}
+	inline void end2dDraw()
+	{
+		m_p2DRenderTarget->EndDraw();
+	}
+	inline void clear( const D2D1::ColorF &rgb = D2D1::ColorF{0.0f, 0.0f, 0.0f} )
+	{
+		m_p2DRenderTarget->Clear( rgb );
+	}
+public:
+	void create2dInteroperability();
+	Microsoft::WRL::ComPtr<IDXGISurface>& surface2d();
+	ID2D1HwndRenderTarget* renderTarget2d();
+
+	void createTextFormat( const std::wstring& fontName = L"Arial", const float fontSize = 24.0f, const std::wstring &fontLocale = L"en-us" );
+	void drawLine( const D2D1_POINT_2F &v0, const D2D1_POINT_2F &v1, const D2D1::ColorF &rgba, const float strokeWidth = 1.0f );
+	void drawRect( const D2D1_RECT_F &rect, const D2D1::ColorF &rgba, const float strokeWidth = 1.0f );
+	void drawRoundedRect( const D2D1_RECT_F &rect, const float radiusX, const float radiusY, const D2D1::ColorF &rgba, const float strokeWidth = 1.0f );
+	void drawEllipse( const float x, const float y, const float hRadius, const float vRadius, const D2D1::ColorF &rgba, const float strokeWidth = 1.0f );
+	void drawCircle( const float x, const float y, const float radius, const D2D1::ColorF &rgba, const float strokeWidth = 1.0f );
+	void drawText( const std::wstring &txt, const D2D1_RECT_F &rect, const D2D1::ColorF &rgba );
+
+private:
+	/// 2d only
 	ColorBGRA *m_pCpuBuffer = nullptr;
 public:
 	const ColorBGRA getPixel( const int x, const int y ) const noexcept;

@@ -92,6 +92,11 @@ Texture::Texture( Graphics &gph,
 		&m_pTex );
 	ASSERT_HRES_IF_FAILED;
 
+	// create the DXGI Surface for d2d interoperability
+	hres = m_pTex->QueryInterface( __uuidof( IDXGISurface ),
+		reinterpret_cast<void**>( gph.surface2d().GetAddressOf() ) );
+	ASSERT_HRES_IF_FAILED;
+
 	D3D11_TEXTURE2D_DESC texDesc;
 	m_pTex->GetDesc( &texDesc );
 
@@ -191,7 +196,7 @@ const std::string Texture::getUid() const noexcept
 		m_slot );
 }
 
-
+#pragma warning( disable : 6011 )
 void Texture::flipModelNormalMapsGreenChannel( const std::string &objPath )
 {
 	const auto rootPath = std::filesystem::path{objPath}.parent_path().string() + "/";
@@ -215,6 +220,7 @@ void Texture::flipModelNormalMapsGreenChannel( const std::string &objPath )
 		}
 	}
 }
+#pragma warning( default : 6011 )
 
 void Texture::flipNormalMapGreenChannel( const std::string &pathIn,
 	const std::string &pathOut )

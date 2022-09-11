@@ -19,6 +19,8 @@
 #pragma comment( lib, "d3d11.lib" )
 #pragma comment( lib, "d3dcompiler.lib" )
 #pragma comment( lib, "DirectXTK.lib" )
+#pragma comment( lib, "d2d1.lib" )			// 2d
+#pragma comment( lib, "dwrite.lib" )		// 2d
 
 
 namespace mwrl = Microsoft::WRL;
@@ -84,7 +86,8 @@ Graphics::Graphics( const HWND hWnd,
 	const int height )
 	:
 	m_width(width),
-	m_height(height)
+	m_height(height),
+	m_hParentWnd{hWnd}
 {
 	HRESULT hres;
 	auto &settings = SettingsManager::instance().getSettings();
@@ -175,7 +178,7 @@ Graphics::Graphics( const HWND hWnd,
 	m_globalColorBuffer = std::make_shared<RenderTargetOutput>( *this,
 		pD3dBackBuffer.Get() );
 
-	if constexpr ( gph_mode::get() == gph_mode::_2D )
+	if constexpr ( gph_mode::get() != gph_mode::_3D )
 	{
 		m_pCpuBuffer = static_cast<ColorBGRA*>( _aligned_malloc( sizeof( ColorBGRA ) * width * height,
 			16u ) );
@@ -214,7 +217,7 @@ Graphics::~Graphics()
 
 void Graphics::clearShaderSlots() noexcept
 {
-	// Clearing shader inputs to prevent simultaneous in/out binds carried over
+	// Clearing shader input slots to prevent simultaneous in/out binds carried over
 	// from previous frame. Now we can start each frame with a clean slate
 	// prevent OMSetRenderTargets State Hazard
 	ID3D11ShaderResourceView *const pNullSrv = nullptr;
@@ -242,18 +245,25 @@ void Graphics::clearShaderSlots() noexcept
 
 void Graphics::cleanState() noexcept
 {
-	clearShaderSlots();
-	m_pImmediateContext->ClearState();	// release all references
-	for ( auto dc : m_commandLists )
+	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{
-		if ( dc )
+		clearShaderSlots();
+		m_pImmediateContext->ClearState();	// release all references
+		for ( auto dc : m_commandLists )
 		{
-			m_pImmediateContext->FinishCommandList( FALSE,
-				&dc );
-			dc->Release();
+			if ( dc )
+			{
+				m_pImmediateContext->FinishCommandList( FALSE,
+					&dc );
+				dc->Release();
+			}
 		}
+		m_pImmediateContext->Flush();		// flush any remaining commands
 	}
-	m_pImmediateContext->Flush();		// flush any remaining commands
+	else
+	{
+		m_p2DContext->Flush();
+	}
 }
 
 void Graphics::beginFrame() noexcept
@@ -264,6 +274,9 @@ void Graphics::beginFrame() noexcept
 		ImGui_ImplDX11_NewFrame();
 		ImGui_ImplWin32_NewFrame();
 		ImGui::NewFrame();
+
+		clearShaderSlots();
+		//begin2dDraw();
 	}
 	else
 	{
@@ -272,7 +285,6 @@ void Graphics::beginFrame() noexcept
 			0u,
 			cpuBuffer2dSize );
 	}
-	clearShaderSlots();
 	//VTUNE_ITT_TASK_END;
 }
 
@@ -317,8 +329,14 @@ void Graphics::endFrame()
 	{
 		ImGui::Render();
 		ImGui_ImplDX11_RenderDrawData( ImGui::GetDrawData() );
+		//end2dDraw();
 	}
+	present();
+	//VTUNE_ITT_TASK_END;
+}
 
+void Graphics::present()
+{
 	HRESULT hres;
 	SettingsManager &setMan = SettingsManager::instance();
 	if ( setMan.getSettings().bVSync )
@@ -347,11 +365,9 @@ void Graphics::endFrame()
 
 	if ( hres == DXGI_ERROR_DEVICE_REMOVED )
 	{
-		THROW_GRAPHICS_EXCEPTION( "Device Removed exception triggered!\nReason: "
-			+ m_pDevice->GetDeviceRemovedReason() );
+		THROW_GRAPHICS_EXCEPTION( "Device Removed exception triggered!\nReason: " + m_pDevice->GetDeviceRemovedReason() );
 	}
 	ASSERT_HRES_IF_FAILED;
-	//VTUNE_ITT_TASK_END;
 }
 
 void Graphics::draw( const unsigned count ) cond_noex
@@ -432,11 +448,6 @@ const unsigned Graphics::getClientHeight() const noexcept
 	return m_height;
 }
 
-IRenderTargetView* Graphics::renderTarget() const noexcept
-{
-	return m_globalColorBuffer.get();
-}
-
 std::shared_ptr<IRenderTargetView> Graphics::shareRenderTarget()
 {
 	return m_globalColorBuffer;
@@ -464,6 +475,15 @@ void Graphics::createAdapters()
 		adapterIndex += 1;
 	}
 }
+
+//void Graphics::render3dSceneToBitmap()
+//{
+//	ASSERT( m_p2DSurface, "DXGISurface has not been created!" );
+//	HRESULT hres = m_p2DRenderTarget->CreateSharedBitmap( );
+//	ASSERT_HRES_IF_FAILED;
+//
+//	// you can render this bitmap with Direct2d
+//}
 
 void Graphics::recordDeferredCommandList()
 {
@@ -552,6 +572,159 @@ void Graphics::d3d11DebugReport()
 	ASSERT_HRES_IF_FAILED;
 }
 #endif
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+/// 2D
+void Graphics::create2dInteroperability()
+{
+	ASSERT( m_p2DSurface, "DXGISurface has not been created!" );
+
+	D2D1_FACTORY_OPTIONS d2dOptions{};
+
+#if defined _DEBUG && !defined NDEBUG
+	d2dOptions.debugLevel = D2D1_DEBUG_LEVEL_INFORMATION;
+#endif
+	HRESULT hres = D2D1CreateFactory( D2D1_FACTORY_TYPE_SINGLE_THREADED,
+		__uuidof( ID2D1Factory1 ),
+		&d2dOptions,
+		&m_p2DFactory );
+	ASSERT_HRES_IF_FAILED;
+
+	RECT rect;
+	GetClientRect( m_hParentWnd,
+		&rect );
+	auto size = D2D1::SizeU( rect.right - rect.left, rect.bottom - rect.top );
+	hres = m_p2DFactory->CreateHwndRenderTarget( D2D1::RenderTargetProperties( D2D1_RENDER_TARGET_TYPE_HARDWARE,
+			D2D1::PixelFormat( DXGI_FORMAT_B8G8R8A8_UNORM, D2D1_ALPHA_MODE_PREMULTIPLIED ) ),
+		D2D1::HwndRenderTargetProperties( m_hParentWnd,
+			size ),
+		&m_p2DRenderTarget );
+	// or use CreateDxgiSurfaceRenderTarget to create a ID2D1RenderTarget (a subclass of ID2D1HwndRenderTarget) to draw your 2d content
+
+	hres = m_p2DRenderTarget->QueryInterface( __uuidof( ID2D1DeviceContext ),
+		reinterpret_cast<void**>( m_p2DContext.GetAddressOf() ) );
+	ASSERT_HRES_IF_FAILED;
+
+	ASSERT( m_p2DContext->IsDxgiFormatSupported( DXGI_FORMAT_B8G8R8A8_UNORM ) == TRUE, "DXGI_FORMAT_B8G8R8A8_UNORM is not supported on this Device Context!" );
+
+	hres = DWriteCreateFactory( DWRITE_FACTORY_TYPE_SHARED,
+		__uuidof( IDWriteFactory ),
+		reinterpret_cast<IUnknown**>( m_pWriteFactory.GetAddressOf() ) );
+	ASSERT_HRES_IF_FAILED;
+}
+
+Microsoft::WRL::ComPtr<IDXGISurface>& Graphics::surface2d()
+{
+	return m_p2DSurface;
+}
+
+ID2D1HwndRenderTarget* Graphics::renderTarget2d()
+{
+	ASSERT( m_p2DSurface, "DXGISurface has not been created!" );
+	return m_p2DRenderTarget.Get();
+}
+
+void Graphics::createTextFormat( const std::wstring &fontName,
+	const float fontSize,
+	const std::wstring &fontLocale )
+{
+	HRESULT hres = m_pWriteFactory->CreateTextFormat( fontName.c_str(),
+		nullptr,
+		DWRITE_FONT_WEIGHT_REGULAR,
+		DWRITE_FONT_STYLE_NORMAL,
+		DWRITE_FONT_STRETCH_NORMAL,
+		fontSize,
+		fontLocale.c_str(),
+		&m_pTextFormat );
+	ASSERT_HRES_IF_FAILED;
+}
+
+void Graphics::drawLine( const D2D1_POINT_2F &v0,
+	const D2D1_POINT_2F &v1,
+	const D2D1::ColorF &rgba,
+	const float strokeWidth )
+{
+	HRESULT hres = m_p2DRenderTarget->CreateSolidColorBrush( rgba,
+		&m_p2dSolidColorBrush );
+	ASSERT_HRES_IF_FAILED;
+	m_p2DRenderTarget->DrawLine( v0,
+		v1,
+		m_p2dSolidColorBrush.Get(),
+		strokeWidth );
+}
+
+void Graphics::drawRect( const D2D1_RECT_F &rect,
+	const D2D1::ColorF &rgba,
+	const float strokeWidth )
+{
+	HRESULT hres = m_p2DRenderTarget->CreateSolidColorBrush( rgba,
+		&m_p2dSolidColorBrush );
+	ASSERT_HRES_IF_FAILED;
+	m_p2DRenderTarget->DrawRectangle( rect,
+		m_p2dSolidColorBrush.Get(),
+		strokeWidth );
+}
+
+void Graphics::drawRoundedRect( const D2D1_RECT_F &rect,
+	const float radiusX,
+	const float radiusY,
+	const D2D1::ColorF &rgba,
+	const float strokeWidth )
+{
+	HRESULT hres = m_p2DRenderTarget->CreateSolidColorBrush( rgba,
+		&m_p2dSolidColorBrush );
+	ASSERT_HRES_IF_FAILED;
+	D2D1_ROUNDED_RECT roundRect{rect, radiusX, radiusY};
+	m_p2DRenderTarget->DrawRoundedRectangle( &roundRect,
+		m_p2dSolidColorBrush.Get(),
+		strokeWidth );
+}
+
+void Graphics::drawEllipse( const float x,
+	const float y,
+	const float hRadius,
+	const float vRadius,
+	const D2D1::ColorF &rgba,
+	const float strokeWidth )
+{
+	HRESULT hres = m_p2DRenderTarget->CreateSolidColorBrush( rgba,
+		&m_p2dSolidColorBrush );
+	ASSERT_HRES_IF_FAILED;
+	m_p2DRenderTarget->DrawEllipse( D2D1::Ellipse( D2D1::Point2F(x, y),
+			hRadius,
+			vRadius ),
+		m_p2dSolidColorBrush.Get(),
+		strokeWidth );
+}
+
+void Graphics::drawCircle( const float x,
+	const float y,
+	const float radius,
+	const D2D1::ColorF &rgba,
+	const float strokeWidth )
+{
+	drawEllipse( x,
+		y,
+		radius,
+		radius,
+		rgba,
+		strokeWidth );
+}
+
+void Graphics::drawText( const std::wstring &txt,
+	const D2D1_RECT_F &rect,
+	const D2D1::ColorF &rgba )
+{
+	HRESULT hres = m_p2DRenderTarget->CreateSolidColorBrush( rgba,
+		&m_p2dSolidColorBrush );
+	ASSERT_HRES_IF_FAILED;
+	m_p2DRenderTarget->DrawTextW( txt.data(),
+		txt.length(),
+		m_pTextFormat.Get(),
+		rect,
+		m_p2dSolidColorBrush.Get() );
+}
 
 const ColorBGRA Graphics::getPixel( const int x,
 	const int y ) const noexcept
@@ -807,6 +980,8 @@ private boolean isUnderGround(Vector3f testPoint) {
 	}
 }*/
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
 Graphics::GraphicsException::GraphicsException( const int line,
 	const char *file,
 	const char *function,

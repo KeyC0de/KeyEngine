@@ -282,6 +282,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="src\sprite.cpp" />
     <ClCompile Include="src\string_buffer.cpp" />
     <ClCompile Include="src\sysmetrics.cpp" />
     <ClCompile Include="src\job.cpp" />
@@ -370,6 +371,7 @@
     <ClInclude Include="inc\safer_ptr_ref.h" />
     <ClInclude Include="inc\serializable_index.h" />
     <ClInclude Include="inc\solid_outline_mask_pass.h" />
+    <ClInclude Include="inc\sprite.h" />
     <ClInclude Include="inc\string_buffer.h" />
     <ClInclude Include="inc\subject_observer.h" />
     <ClInclude Include="inc\testing.h" />
