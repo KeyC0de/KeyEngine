@@ -316,7 +316,7 @@ Renderer3d::Renderer3d( Graphics &gph,
 			layout.add<con::Array>( "coefficients" );
 			layout["coefficients"].set<con::Float>( m_maxRadius * 2 + 1 );
 
-			con::Buffer cb{std::move( layout )};
+			con::CBuffer cb{std::move( layout )};
 			m_blurKernel = std::make_shared<PixelShaderConstantBufferEx>( gph,
 				0u,
 				cb );
@@ -329,7 +329,7 @@ Renderer3d::Renderer3d( Graphics &gph,
 			con::RawLayout layout;
 			layout.add<con::Bool>( "bHorizontal" );
 
-			con::Buffer cb{std::move( layout )};
+			con::CBuffer cb{std::move( layout )};
 			m_blurDirection = std::make_shared<PixelShaderConstantBufferEx>( gph,
 				1u,
 				cb );

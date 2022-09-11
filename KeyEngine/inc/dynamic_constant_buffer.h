@@ -269,7 +269,7 @@ private:
 class CBLayout
 {
 	friend class LayoutMap;
-	friend class Buffer;
+	friend class CBuffer;
 protected:
 	std::shared_ptr<CBElement> m_pLayoutRoot;
 public:
@@ -328,7 +328,7 @@ class CookedLayout final
 	: public CBLayout
 {
 	friend class LayoutMap;
-	friend class Buffer;
+	friend class CBuffer;
 public:
 	// key into the root Struct (const to disable mutation of the layout)
 	const CBElement& operator[]( const std::string &key ) const cond_noex;
@@ -343,7 +343,7 @@ private:
 
 
 //=============================================================
-//	\class	ConstElementView
+//	\class	CBElementConstView
 //
 //	\author	KeyC0de
 //	\date	2022/08/21 19:51
@@ -353,10 +353,10 @@ private:
 //			This version is const, only supports reading
 //			Refs can be further keyed/indexed to traverse the layout structure
 //=============================================================
-class ConstElementView final
+class CBElementConstView final
 {
-	friend class Buffer;
-	friend class ElementView;
+	friend class CBuffer;
+	friend class CBElementView;
 
 	// this offset is the offset that is built up by indexing into arrays
 	// accumulated for every array index in the m_path of access into the structure
@@ -365,15 +365,15 @@ class ConstElementView final
 	const char *m_p;
 private:
 	// refs should only be constructable by other refs or by the buffer
-	ConstElementView( const CBElement *pLayout, const char *pBytes, size_t offset ) noexcept;
+	CBElementConstView( const CBElement *pLayout, const char *pBytes, size_t offset ) noexcept;
 public:
 	// emitted when you use addressof on the Ref
 	// it allows conversion to pointer, useful for using Buffer elements with ImGui widget functions etc.
 	class Ptr
 	{
-		friend ConstElementView;
+		friend CBElementConstView;
 
-		const ConstElementView *p;
+		const CBElementConstView *p;
 	public:
 		// conversion for getting read-only pointer to supported CPUType
 		template<typename T>
@@ -383,7 +383,7 @@ public:
 			return &static_cast<const T&>( *p );
 		}
 	private:
-		Ptr( const ConstElementView *ref ) noexcept;
+		Ptr( const CBElementConstView *ref ) noexcept;
 	};
 public:
 	// check if the indexed element actually exists
@@ -392,9 +392,9 @@ public:
 	// but will not enable any other kind of access
 	bool isValid() const noexcept;
 	// key into the current element as a struct
-	ConstElementView operator[]( const std::string &key ) const cond_noex;
+	CBElementConstView operator[]( const std::string &key ) const cond_noex;
 	// index into the current element as an array
-	ConstElementView operator[]( size_t index ) const cond_noex;
+	CBElementConstView operator[]( size_t index ) const cond_noex;
 	// emit a pointer proxy object
 	Ptr operator&() const cond_noex;
 	// conversion for reading as a supported CPUType
@@ -408,18 +408,18 @@ public:
 
 
 //=============================================================
-//	\class	ElementView
+//	\class	CBElementView
 //
 //	\author	KeyC0de
 //	\date	2022/08/21 19:52
 //
-//	\brief	version of ConstElementView that also allows writing to the bytes of Buffer
-//			see above in ConstElementView for detailed description
+//	\brief	version of CBElementConstView that also allows writing to the bytes of Buffer
+//			see above in CBElementConstView for detailed description
 //			maintains a pointer to the byte vector of the Buffer
 //=============================================================
-class ElementView final
+class CBElementView final
 {
-	friend class Buffer;
+	friend class CBuffer;
 
 	// m_arrayOffset has to do with array indexing, it's an extra offset that accumulates
 	// as you nest inside arrays deeper into the structure
@@ -428,13 +428,13 @@ class ElementView final
 	char *m_p;
 private:
 	// refs should only be constructable by other refs or by the buffer
-	ElementView( const CBElement *pLayout, char *pBytes, const size_t offset ) noexcept;
+	CBElementView( const CBElement *pLayout, char *pBytes, const size_t offset ) noexcept;
 public:
 	class Ptr
 	{
-		friend ElementView;
+		friend CBElementView;
 
-		ElementView *p;
+		CBElementView *p;
 	public:
 		// conversion to read/write pointer to supported CPUType
 		template<typename T>
@@ -444,13 +444,13 @@ public:
 			return &static_cast<T&>( *p );
 		}
 	private:
-		Ptr( ElementView *ref ) noexcept;
+		Ptr( CBElementView *ref ) noexcept;
 	};
 public:
-	operator ConstElementView() const noexcept;
+	operator CBElementConstView() const noexcept;
 	bool isValid() const noexcept;
-	ElementView operator[]( const std::string &key ) const cond_noex;
-	ElementView operator[]( const size_t index ) const cond_noex;
+	CBElementView operator[]( const std::string &key ) const cond_noex;
+	CBElementView operator[]( const size_t index ) const cond_noex;
 	// optionally set value if not an empty Ref
 	template<typename S>
 	bool setIfValid( const S &val ) cond_noex
@@ -512,45 +512,41 @@ private:
 //			used to further index if struct/array, returning further Ref shells, or used
 //			to access the data stored in the buffer if a Leaf element class
 //=============================================================
-class Buffer final
+class CBuffer final
 {
 	std::shared_ptr<CBElement> m_pLayoutRoot;
 	std::vector<char> m_buffer;
 public:
 	// various resources can be used to construct a Buffer
-	Buffer( RawLayout &&lay ) cond_noex;
-	Buffer( const CookedLayout &lay ) cond_noex;
-	Buffer( CookedLayout &&lay ) cond_noex;
-	Buffer( const Buffer &rhs ) noexcept;
-	Buffer& operator==( const Buffer &rhs ) noexcept;
+	CBuffer( RawLayout &&lay ) cond_noex;
+	CBuffer( const CookedLayout &lay ) cond_noex;
+	CBuffer( CookedLayout &&lay ) cond_noex;
+	CBuffer( const CBuffer &rhs ) noexcept;
+	CBuffer& operator==( const CBuffer &rhs ) noexcept;
 	//===================================================
 	//	\function	mctor
 	//	\brief  	have to be careful with this one...
 	//				the buffer that has once been pilfered must not be used
 	//	\date	2022/08/21 19:58
-	Buffer( Buffer &&rhs ) noexcept;
-	Buffer& operator=( Buffer &&rhs ) noexcept;
-	~Buffer() noexcept;
+	CBuffer( CBuffer &&rhs ) noexcept;
+	CBuffer& operator=( CBuffer &&rhs ) noexcept;
+	~CBuffer() noexcept;
 
 	// how you begin indexing into buffer (root is always Struct)
-	ElementView operator[]( const std::string &key ) cond_noex;
+	CBElementView operator[]( const std::string &key ) cond_noex;
 	// if Buffer is const, you only get to index into the buffer with a read-only proxy
-	ConstElementView operator[]( const std::string &key ) const cond_noex;
+	CBElementConstView operator[]( const std::string &key ) const cond_noex;
 	const char* getRawBytes() const noexcept;
 	// size of the raw byte buffer
 	const size_t getSizeInBytes() const noexcept;
-	const CBElement& getRootLayoutElement() const noexcept;
+	const CBElement& getRootElement() const noexcept;
 	// copy bytes from another buffer (layouts must match)
-	void copyFrom( const Buffer& ) cond_noex;
+	void copyFrom( const CBuffer& ) cond_noex;
 	// move bytes from another buffer (layouts must match)
-	void moveFrom( Buffer& ) noexcept;
+	void moveFrom( CBuffer& ) noexcept;
 	// return another sptr to the layout root
 	std::shared_ptr<CBElement> shareLayoutRoot() const noexcept;
 };
 
 
-}//::con
-
-#ifndef CB_IMPL_SOURCE
-#undef CB_LEAF_TYPES
-#endif
+}// namespace con

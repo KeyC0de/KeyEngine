@@ -46,11 +46,11 @@ Pass2D::Pass2D( Graphics &gph,
 		"flat2d_vs.cso" );
 
 	ver::VertexInputLayout vl;
-	using Type = ver::VertexInputLayout::VertexInputLayoutElementType;
+	using Type = ver::VertexInputLayout::ILEementType;
 	vl.add( Type::Position2D );
 	vl.add( Type::Texture2D );
 
-	ver::Buffer vb{std::move( vl ), 4u};
+	ver::VBuffer vb{std::move( vl ), 4u};
 	vb[0].element<Type::Position2D>() = {-1.0f, 1.0f};
 	vb[1].element<Type::Position2D>() = {1.0f, 1.0f};
 	vb[2].element<Type::Position2D>() = {1.0f, -1.0f};

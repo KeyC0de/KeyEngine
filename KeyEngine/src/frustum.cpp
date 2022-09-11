@@ -128,7 +128,7 @@ void Frustum::setupVertexBuffer( Graphics &gph,
 {
 	ver::VertexInputLayout vertexLayout;
 	vertexLayout.add( ver::VertexInputLayout::Position3D );
-	ver::Buffer vb{std::move( vertexLayout )};
+	ver::VBuffer vb{std::move( vertexLayout )};
 	{
 		// A frustum requires 8 vertices.
 		const float zRatio = farZ / nearZ;

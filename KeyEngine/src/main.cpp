@@ -9,7 +9,7 @@
 #include <iostream>
 #include <tuple>
 #include "signal_handling.h"
-#include "thread_pool.h"
+#include "thread_pool_j.h"
 
 #ifndef NO_DUMPS
 #	include "dumpling.h"
@@ -25,7 +25,8 @@ static bool g_windowsExceptionOccurred = false;
 
 std::tuple<int,int> parseCommandLineArguments();
 void firstly();
-void finally();
+void finally( const std::exception_ptr &exceptionPtr );
+
 
 int WINAPI wWinMain( _In_ HINSTANCE hinstance,
 	_In_opt_ HINSTANCE hprevInstance,
@@ -34,8 +35,9 @@ int WINAPI wWinMain( _In_ HINSTANCE hinstance,
 {
 	(void)hprevInstance;
 	int exitCode;
+	std::exception_ptr exceptionPtr = nullptr;
 
-	auto runProgram = [&pCmdLine] () -> int
+	auto runProgram = [&pCmdLine, &exceptionPtr] () -> int
 	{
 		try
 		{
@@ -83,6 +85,7 @@ int WINAPI wWinMain( _In_ HINSTANCE hinstance,
 		}
 		catch ( ... )
 		{
+			exceptionPtr = std::current_exception();
 			MessageBoxW( nullptr,
 				L"No details available.\nTERMINATING with extreme prejudice.",
 				L"Unknown Exception",
@@ -91,11 +94,11 @@ int WINAPI wWinMain( _In_ HINSTANCE hinstance,
 		}
 	};
 
-	__try
-	{
-		firstly();
-		exitCode = runProgram();
-	}
+	//__try
+	//{
+	firstly();
+	exitCode = runProgram();
+	//}
 #ifndef NO_DUMPS
 	__except ( generateDump( GetExceptionInformation(), g_dumpFile ) )
 	{
@@ -108,10 +111,10 @@ int WINAPI wWinMain( _In_ HINSTANCE hinstance,
 		return SEH_EXCEPTION_EXIT;
 	}
 #else
-	__finally
-	{
-		finally();
-	}
+	//__finally
+	//{
+	finally( exceptionPtr );
+	//}
 #endif // !NO_DUMPS
 
 #if defined _DEBUG && !defined NDEBUG
@@ -161,9 +164,9 @@ std::tuple<int,int> parseCommandLineArguments()
 	return {width, height};
 }
 
-void finally()
+void finally( const std::exception_ptr &exceptionPtr )
 {
-	ThreadPool::resetInstance();
+	ThreadPoolJ::resetInstance();
 #if defined _DEBUG && !defined NDEBUG
 	KeyConsole &console = KeyConsole::instance();
 	using namespace std::string_literals;
@@ -177,8 +180,26 @@ void finally()
 		OutputDebugStringA( dumpLog.c_str() );
 	}
 #	endif // NO_DUMPS
+#endif	// _DEBUG
+	// main() does not catch exceptions thrown from other threads
+	// you will need to instrument the threads to catch exceptions and re-throw them
+	if ( exceptionPtr )
+	{
+		try
+		{
+			std::rethrow_exception( exceptionPtr );
+		}
+		catch ( const std::exception &ex )
+		{
+#if defined _DEBUG && !defined NDEBUG
+			console.log( "Thread exited with exception: "s + std::string{ex.what()} + "\n"s );
+		}
+#endif	// _DEBUG
+	}
+
+#if defined _DEBUG && !defined NDEBUG
 	console.log( "KeyEngine shutting down..\n"s );
 	console.log( "Shutting down console\n"s );
 	console.resetInstance();
-#endif
+#endif	// _DEBUG
 }

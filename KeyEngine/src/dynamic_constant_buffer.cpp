@@ -1,4 +1,3 @@
-#define CB_IMPL_SOURCE
 #include "dynamic_constant_buffer.h"
 #include <algorithm>
 #include <cctype>
@@ -338,30 +337,30 @@ const CBElement &CookedLayout::operator[]( const std::string &key ) const cond_n
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-// ConstElementView
-bool ConstElementView::isValid() const noexcept
+// CBElementConstView
+bool CBElementConstView::isValid() const noexcept
 {
 	return pLayout->isValid();
 }
 
-ConstElementView ConstElementView::operator[]( const std::string &key ) const cond_noex
+CBElementConstView CBElementConstView::operator[]( const std::string &key ) const cond_noex
 {
 	return {&(*pLayout)[key], m_p, m_arrayOffset};
 }
 
-ConstElementView ConstElementView::operator[]( size_t index ) const cond_noex
+CBElementConstView CBElementConstView::operator[]( size_t index ) const cond_noex
 {
 	const auto indexingData = pLayout->calculateArrayIndexingOffset( m_arrayOffset,
 		index );
 	return {indexingData.second, m_p, indexingData.first};
 }
 
-ConstElementView::Ptr ConstElementView::operator&() const cond_noex
+CBElementConstView::Ptr CBElementConstView::operator&() const cond_noex
 {
 	return Ptr{this};
 }
 
-ConstElementView::ConstElementView( const CBElement *pLayout,
+CBElementConstView::CBElementConstView( const CBElement *pLayout,
 	const char *pBytes,
 	const size_t offset ) noexcept
 	:
@@ -372,7 +371,7 @@ ConstElementView::ConstElementView( const CBElement *pLayout,
 
 }
 
-ConstElementView::Ptr::Ptr( const ConstElementView *ref ) noexcept
+CBElementConstView::Ptr::Ptr( const CBElementConstView *ref ) noexcept
 	:
 	p(ref)
 {
@@ -380,35 +379,35 @@ ConstElementView::Ptr::Ptr( const ConstElementView *ref ) noexcept
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-// ElementView
-ElementView::operator ConstElementView() const noexcept
+// CBElementView
+CBElementView::operator CBElementConstView() const noexcept
 {
 	return {m_pLayout, m_p, m_arrayOffset};
 }
 
-bool ElementView::isValid() const noexcept
+bool CBElementView::isValid() const noexcept
 {
 	return m_pLayout->isValid();
 }
 
-ElementView ElementView::operator[]( const std::string &key ) const cond_noex
+CBElementView CBElementView::operator[]( const std::string &key ) const cond_noex
 {
 	return {&(*m_pLayout)[key], m_p, m_arrayOffset};
 }
 
-ElementView ElementView::operator[]( const size_t index ) const cond_noex
+CBElementView CBElementView::operator[]( const size_t index ) const cond_noex
 {
 	const auto indexingData = m_pLayout->calculateArrayIndexingOffset( m_arrayOffset,
 		index );
 	return {indexingData.second, m_p, indexingData.first};
 }
 
-ElementView::Ptr ElementView::operator&() const cond_noex
+CBElementView::Ptr CBElementView::operator&() const cond_noex
 {
-	return Ptr{const_cast<ElementView*>( this )};
+	return Ptr{const_cast<CBElementView*>( this )};
 }
 
-ElementView::ElementView( const CBElement *pLayout,
+CBElementView::CBElementView( const CBElement *pLayout,
 	char *pBytes,
 	size_t offset ) noexcept
 	:
@@ -419,7 +418,7 @@ ElementView::ElementView( const CBElement *pLayout,
 
 }
 
-ElementView::Ptr::Ptr( ElementView *ref ) noexcept
+CBElementView::Ptr::Ptr( CBElementView *ref ) noexcept
 	:
 	p(ref)
 {
@@ -455,15 +454,15 @@ LayoutMap& LayoutMap::instance() noexcept
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-// Buffer
-Buffer::Buffer( RawLayout &&lay ) cond_noex
+// CBuffer
+CBuffer::CBuffer( RawLayout &&lay ) cond_noex
 	:
-Buffer{LayoutMap::fetch( std::move( lay ) )}
+CBuffer{LayoutMap::fetch( std::move( lay ) )}
 {
 
 }
 
-Buffer::Buffer( const CookedLayout &lay ) cond_noex
+CBuffer::CBuffer( const CookedLayout &lay ) cond_noex
 	:
 	m_pLayoutRoot(lay.shareRootElement()),
 	m_buffer(m_pLayoutRoot->getOffsetEnd())
@@ -471,7 +470,7 @@ Buffer::Buffer( const CookedLayout &lay ) cond_noex
 
 }
 
-Buffer::Buffer( CookedLayout &&lay ) cond_noex
+CBuffer::CBuffer( CookedLayout &&lay ) cond_noex
 	:
 	m_pLayoutRoot(lay.relinquishRoot()),
 	m_buffer(m_pLayoutRoot->getOffsetEnd())
@@ -479,7 +478,7 @@ Buffer::Buffer( CookedLayout &&lay ) cond_noex
 
 }
 
-Buffer::Buffer( const Buffer &rhs ) noexcept
+CBuffer::CBuffer( const CBuffer &rhs ) noexcept
 	:
 	m_pLayoutRoot(rhs.m_pLayoutRoot),
 	m_buffer(rhs.m_buffer)
@@ -488,14 +487,14 @@ Buffer::Buffer( const Buffer &rhs ) noexcept
 }
 
 #pragma warning( disable : 4172 )
-Buffer& Buffer::operator==( const Buffer &rhs ) noexcept
+CBuffer& CBuffer::operator==( const CBuffer &rhs ) noexcept
 {
-	Buffer tmp{rhs};
+	CBuffer tmp{rhs};
 	return tmp;
 }
 #pragma warning( default : 4172 )
 
-Buffer::Buffer( Buffer &&rhs ) noexcept
+CBuffer::CBuffer( CBuffer &&rhs ) noexcept
 	:
 	m_pLayoutRoot(std::move( rhs.m_pLayoutRoot )),
 	m_buffer(std::move( rhs.m_buffer ))
@@ -504,7 +503,7 @@ Buffer::Buffer( Buffer &&rhs ) noexcept
 	rhs.m_buffer.clear();
 }
 
-Buffer& Buffer::operator=( Buffer &&rhs ) noexcept
+CBuffer& CBuffer::operator=( CBuffer &&rhs ) noexcept
 {
 	std::swap( m_pLayoutRoot, rhs.m_pLayoutRoot );
 	std::swap( m_buffer, rhs.m_buffer );
@@ -513,58 +512,58 @@ Buffer& Buffer::operator=( Buffer &&rhs ) noexcept
 	return *this;
 }
 
-Buffer::~Buffer() noexcept
+CBuffer::~CBuffer() noexcept
 {
 	m_pLayoutRoot.reset();
 	m_buffer.clear();
 }
 
 
-ElementView Buffer::operator[]( const std::string &key ) cond_noex
+CBElementView CBuffer::operator[]( const std::string &key ) cond_noex
 {
 	return {&(*m_pLayoutRoot)[key], m_buffer.data(), 0u};
 }
 
-ConstElementView Buffer::operator[]( const std::string &key ) const cond_noex
+CBElementConstView CBuffer::operator[]( const std::string &key ) const cond_noex
 {
-	return const_cast<Buffer&>( *this )[key];
+	return const_cast<CBuffer&>( *this )[key];
 }
 
-const char* Buffer::getRawBytes() const noexcept
+const char* CBuffer::getRawBytes() const noexcept
 {
 	return m_buffer.data();
 }
 
-const size_t Buffer::getSizeInBytes() const noexcept
+const size_t CBuffer::getSizeInBytes() const noexcept
 {
 	return m_buffer.size();
 }
 
-const CBElement& Buffer::getRootLayoutElement() const noexcept
+const CBElement& CBuffer::getRootElement() const noexcept
 {
 	return *m_pLayoutRoot;
 }
 
-void Buffer::copyFrom( const Buffer &other ) cond_noex
+void CBuffer::copyFrom( const CBuffer &other ) cond_noex
 {
-	ASSERT( &getRootLayoutElement() == &other.getRootLayoutElement(), "Incompatible element layouts!" );
+	ASSERT( &getRootElement() == &other.getRootElement(), "Incompatible element layouts!" );
 	std::copy( other.m_buffer.begin(),
 		other.m_buffer.end(),
 		m_buffer.begin() );
 }
 
-void Buffer::moveFrom( Buffer &other ) noexcept
+void CBuffer::moveFrom( CBuffer &other ) noexcept
 {
-	ASSERT( &getRootLayoutElement() == &other.getRootLayoutElement(), "Incompatible element layouts!" );
+	ASSERT( &getRootElement() == &other.getRootElement(), "Incompatible element layouts!" );
 	std::move( other.m_buffer.begin(),
 		other.m_buffer.end(),
 		m_buffer.begin() );
 }
 
-std::shared_ptr<CBElement> Buffer::shareLayoutRoot() const noexcept
+std::shared_ptr<CBElement> CBuffer::shareLayoutRoot() const noexcept
 {
 	return m_pLayoutRoot;
 }
 
 
-}//con
+}//namespace con

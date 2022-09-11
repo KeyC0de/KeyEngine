@@ -2,8 +2,8 @@
 #include "thread_pool.h"
 
 
-ThreadPool::ThreadPool( const std::size_t nthreads,
-	const bool bStart )
+ThreadPool::ThreadPool( std::size_t nthreads,
+	bool bStart )
 	:
 	m_bEnabled{bStart}
 {
@@ -14,24 +14,11 @@ ThreadPool::ThreadPool( const std::size_t nthreads,
 	}
 }
 
-ThreadPool& ThreadPool::instance( const std::size_t nThreads,
-	const bool bEnabled )
+ThreadPool& ThreadPool::getInstance( std::size_t nThreads,
+	bool bEnabled )
 {
-	std::lock_guard<std::mutex> lg{ms_mu};
-	if ( m_pInstance == nullptr )
-	{
-		m_pInstance = new ThreadPool{nThreads, bEnabled};
-	}
-	return *m_pInstance;
-}
-
-void ThreadPool::resetInstance()
-{
-	std::lock_guard<std::mutex> lg{ms_mu};
-	if ( m_pInstance == nullptr )
-	{
-		delete m_pInstance;
-	}
+	static ThreadPool instance{nThreads, bEnabled};
+	return instance;
 }
 
 ThreadPool::~ThreadPool() noexcept
@@ -39,7 +26,7 @@ ThreadPool::~ThreadPool() noexcept
 	stop();
 }
 
-ThreadPool::ThreadPool( ThreadPool &&rhs ) noexcept
+ThreadPool::ThreadPool( ThreadPool&& rhs ) noexcept
 	:
 	m_bEnabled{std::move( rhs.m_bEnabled.load( std::memory_order_relaxed ) )},
 	m_pool{std::move( rhs.m_pool )},
@@ -48,11 +35,11 @@ ThreadPool::ThreadPool( ThreadPool &&rhs ) noexcept
 
 }
 
-ThreadPool& ThreadPool::operator=( ThreadPool &&rhs ) noexcept
+ThreadPool& ThreadPool::operator=( ThreadPool&& rhs ) noexcept
 {
-	ThreadPool tmp{std::move( rhs )};
-	std::swap( *this,
-		tmp );
+	m_bEnabled.store( rhs.m_bEnabled.load( std::memory_order_relaxed ) );
+	std::swap( m_pool, rhs.m_pool );
+	std::swap( m_tasks, rhs.m_tasks );
 	return *this;
 }
 
@@ -73,7 +60,7 @@ void ThreadPool::stop() noexcept
 		m_bEnabled.store( false,
 			std::memory_order_relaxed );
 		m_cond.notify_all();
-		for ( auto &t : m_pool )
+		for ( auto& t : m_pool )
 		{
 			if ( t.joinable() )
 			{

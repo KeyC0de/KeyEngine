@@ -12,13 +12,13 @@ protected:
 	Microsoft::WRL::ComPtr<ID3D11Buffer> m_pD3dCb;
 	unsigned m_slot;
 public:
-	virtual const con::CBElement& getCBExRootLayoutElement() const noexcept = 0;
+	virtual const con::CBElement& getCbRootElement() const noexcept = 0;
 protected:
 	static void setBufferDesc( D3D11_BUFFER_DESC &d3dBufDesc, unsigned byteWidth );
 protected:
-	IConstantBufferEx( Graphics &gph, const unsigned slot, const con::CBElement &layoutRoot, const con::Buffer *pBuf );
+	IConstantBufferEx( Graphics &gph, const unsigned slot, const con::CBElement &layoutRoot, const con::CBuffer *pBuf );
 
-	void update( Graphics &gph, const con::Buffer &buf );
+	void update( Graphics &gph, const con::CBuffer &buf );
 };
 
 class IVertexShaderConstantBufferEx
@@ -46,7 +46,7 @@ class ConstantBufferEx final
 	static_assert( std::is_base_of_v<IConstantBufferEx, T>, "T is not IConstantBufferEx!" );
 
 	bool m_bDirty = false;
-	con::Buffer m_cb;
+	con::CBuffer m_cb;
 public:
 	// empty cb
 	ConstantBufferEx( Graphics &gph,
@@ -54,32 +54,32 @@ public:
 		const con::CookedLayout &layout )
 		:
 		T{gph, slot, *layout.shareRootElement(), nullptr},
-		m_cb{con::Buffer{layout}}
+		m_cb{con::CBuffer{layout}}
 	{
 
 	}
 
 	ConstantBufferEx( Graphics &gph,
 		const unsigned slot,
-		const con::Buffer &cb )
+		const con::CBuffer &cb )
 		:
-		T{gph, slot, cb.getRootLayoutElement(), &cb},
+		T{gph, slot, cb.getRootElement(), &cb},
 		m_cb{cb}
 	{
 
 	}
 
-	const con::CBElement& getCBExRootLayoutElement() const noexcept override
+	const con::CBElement& getCbRootElement() const noexcept override
 	{
-		return m_cb.getRootLayoutElement();
+		return m_cb.getRootElement();
 	}
 
-	const con::Buffer& getBuffer() const noexcept
+	const con::CBuffer& getBuffer() const noexcept
 	{
 		return m_cb;
 	}
 
-	void setBuffer( const con::Buffer &cb )
+	void setBuffer( const con::CBuffer &cb )
 	{
 		m_cb.copyFrom( cb );
 		m_bDirty = true;

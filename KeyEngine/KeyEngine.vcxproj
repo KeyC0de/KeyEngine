@@ -63,17 +63,17 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)third_party\dxtex\include;$(ProjectDir)third_party\assimp\include;$(ProjectDir)third_party\inih;$(ProjectDir)third_party\imgui;$(ProjectDir)third_party\DirectXTK\include;$(ProjectDir)inc;$(ProjectDir)third_party\catch;C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)third_party\dxtex\include;$(ProjectDir)third_party\assimp\include;$(ProjectDir)third_party\inih;$(ProjectDir)third_party\imgui;$(ProjectDir)third_party\DirectXTK\include;$(ProjectDir)inc;$(ProjectDir)third_party\catch;$(ProjectDir)third_party\jthread;C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include</IncludePath>
     <LibraryPath>$(ProjectDir)third_party\dxtex\bin\$(Configuration);$(ProjectDir)third_party\DirectXTK\bin\$(Configuration);$(ProjectDir)third_party\assimp\bin\x64;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)\int\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)third_party\dxtex\include;$(ProjectDir)third_party\assimp\include;$(ProjectDir)third_party\inih;$(ProjectDir)third_party\imgui;$(ProjectDir)third_party\DirectXTK\include;$(ProjectDir)inc;$(ProjectDir)third_party\catch;C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)third_party\dxtex\include;$(ProjectDir)third_party\assimp\include;$(ProjectDir)third_party\inih;$(ProjectDir)third_party\imgui;$(ProjectDir)third_party\DirectXTK\include;$(ProjectDir)inc;$(ProjectDir)third_party\catch;$(ProjectDir)third_party\jthread;C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include</IncludePath>
     <LibraryPath>$(ProjectDir)third_party\dxtex\bin\$(Configuration);$(ProjectDir)third_party\DirectXTK\bin\$(Configuration);$(ProjectDir)third_party\assimp\bin\x64;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)\int\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)third_party\dxtex\include;$(ProjectDir)third_party\assimp\include;$(ProjectDir)third_party\inih;$(ProjectDir)third_party\imgui;$(ProjectDir)third_party\DirectXTK\include;$(ProjectDir)inc;$(ProjectDir)third_party\catch;C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)third_party\dxtex\include;$(ProjectDir)third_party\assimp\include;$(ProjectDir)third_party\inih;$(ProjectDir)third_party\imgui;$(ProjectDir)third_party\DirectXTK\include;$(ProjectDir)inc;$(ProjectDir)third_party\catch;$(ProjectDir)third_party\jthread;C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include</IncludePath>
     <LibraryPath>$(ProjectDir)third_party\dxtex\bin\Release;$(ProjectDir)third_party\DirectXTK\bin\Release;$(ProjectDir)third_party\assimp\bin\x64;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)\int\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
@@ -199,7 +199,6 @@
     <ClCompile Include="src\entity.cpp" />
     <ClCompile Include="src\entity_manager.cpp" />
     <ClCompile Include="src\key_random.cpp" />
-    <ClCompile Include="src\key_thread.cpp" />
     <ClCompile Include="src\message.cpp" />
     <ClCompile Include="src\message_queue_bus_dispatcher.cpp" />
     <ClCompile Include="src\octree.cpp">
@@ -292,6 +291,7 @@
     <ClCompile Include="src\test_main.cpp" />
     <ClCompile Include="src\texture.cpp" />
     <ClCompile Include="src\texture_sampler_state.cpp" />
+    <ClCompile Include="src\thread_pool_j.cpp" />
     <ClCompile Include="src\transform_scale_vscb.cpp" />
     <ClCompile Include="src\transform_vscb.cpp" />
     <ClCompile Include="src\triangle_mesh.cpp" />
@@ -373,6 +373,7 @@
     <ClInclude Include="inc\string_buffer.h" />
     <ClInclude Include="inc\subject_observer.h" />
     <ClInclude Include="inc\testing.h" />
+    <ClInclude Include="inc\thread_pool_j.h" />
     <ClInclude Include="inc\vtune_itt_domain.h" />
     <ClInclude Include="inc\wireframe_pass.h" />
     <ClInclude Include="inc\solid_outline_draw_pass.h" />
@@ -433,7 +434,6 @@
     <ClInclude Include="inc\key_exception.h" />
     <ClInclude Include="inc\math_utils.h" />
     <ClInclude Include="inc\key_random.h" />
-    <ClInclude Include="inc\key_thread.h" />
     <ClInclude Include="inc\key_timer.h" />
     <ClInclude Include="inc\key_wrl.h" />
     <ClInclude Include="inc\lambertian_pass.h" />
@@ -588,6 +588,8 @@
     <ClInclude Include="third_party\imgui\imstb_textedit.h" />
     <ClInclude Include="third_party\imgui\imstb_truetype.h" />
     <ClInclude Include="third_party\inih\INIReader.h" />
+    <ClInclude Include="third_party\jthread\jthread.h" />
+    <ClInclude Include="third_party\jthread\stop_token.h" />
     <ClInclude Include="third_party\rapidjson\cursorstreamwrapper.h" />
     <ClInclude Include="third_party\rapidjson\document.h" />
     <ClInclude Include="third_party\rapidjson\encodedstream.h" />

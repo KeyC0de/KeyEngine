@@ -69,7 +69,7 @@ Plane::Plane( Graphics &gph,
 		con::RawLayout cbLayout;
 		cbLayout.add<con::Float3>( "modelSpecularColor" );
 		cbLayout.add<con::Float>( "modelSpecularGloss" );
-		auto cb = con::Buffer( std::move( cbLayout ) );
+		auto cb = con::CBuffer( std::move( cbLayout ) );
 		cb["modelSpecularColor"] = dx::XMFLOAT3{1.0f, 1.0f, 1.0f};
 		cb["modelSpecularGloss"] = 20.0f;
 		lambertian.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gph,
@@ -111,7 +111,7 @@ Plane::Plane( Graphics &gph,
 
 		con::RawLayout cbLayout;
 		cbLayout.add<con::Float3>( "materialColor" );
-		auto cb = con::Buffer( std::move( cbLayout ) );
+		auto cb = con::CBuffer( std::move( cbLayout ) );
 		cb["materialColor"] = dx::XMFLOAT3{1.0f, 0.4f, 0.4f};
 		blurOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gph,
 			0u,
@@ -145,7 +145,7 @@ Plane::Plane( Graphics &gph,
 
 		con::RawLayout cbLayout;
 		cbLayout.add<con::Float3>( "materialColor" );
-		auto cb = con::Buffer( std::move( cbLayout ) );
+		auto cb = con::CBuffer( std::move( cbLayout ) );
 		cb["materialColor"] = dx::XMFLOAT3{1.0f, 0.4f, 0.4f};
 		solidOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gph,
 			0u,

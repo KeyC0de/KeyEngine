@@ -31,7 +31,7 @@ class MaterialLoader final
 public:
 	MaterialLoader( Graphics &gph, const aiMaterial &aimaterial, const std::filesystem::path &modelPath ) cond_noex;
 
-	ver::Buffer extractVertexBuffer( const aiMesh &aimesh ) const noexcept;
+	ver::VBuffer extractVertexBuffer( const aiMesh &aimesh ) const noexcept;
 	std::shared_ptr<VertexBuffer> makeVertexBuffer( Graphics &gph, const aiMesh &aimesh, float scale = 1.0f ) const cond_noex;
 	std::shared_ptr<IndexBuffer> makeIndexBuffer( Graphics &gph, const aiMesh &aimesh ) const cond_noex;
 	std::vector<Effect> effects() const noexcept;

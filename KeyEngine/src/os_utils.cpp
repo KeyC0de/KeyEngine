@@ -107,6 +107,7 @@ void pinThreadToCore( const HANDLE hThread,
 		mask );
 }
 
+#pragma region DetachedThreads
 // A global event all threads can reach
 static HANDLE g_hThreadQuitcEvent;
 static std::vector<HANDLE> g_detachedThreads;
@@ -157,28 +158,8 @@ void terminateDetachedThreads()
 	CloseHandle( g_hThreadQuitcEvent );
 	ASSERT_HRES_WIN32_IF_FAILED;
 }
+#pragma endregion DetachedThreads
 
-void doPeriodically( const std::function<void(void)>& f,
-	const size_t intervalMs,
-	const bool now )
-{
-	if ( now )
-	{
-		while ( true )
-		{
-			f();
-			auto chronoInterval = std::chrono::milliseconds( intervalMs );
-		}
-	}
-	else
-	{
-		while ( true )
-		{
-			std::this_thread::sleep_for( std::chrono::milliseconds( intervalMs ) );
-			f();
-		}
-	}
-}
 
 std::optional<DWORD> registryGetDword( const HKEY hKey,
 	const std::wstring &regName )
@@ -240,9 +221,5 @@ static void suspendAllThreads()
 	CloseHandle( thread_enumerator );
 }
 
-hint std::size_t* getUniqueMemory()
-{
-	return reinterpret_cast<std::size_t*>( new std::size_t{0} );
-}
 
 }// namespace util

@@ -34,7 +34,7 @@ void StringBuffer::reset() noexcept
 	m_ss.clear();
 }
 
-std::string StringBuffer::getStr() const
+const std::string& StringBuffer::get() const noexcept
 {
 	return m_ss.str();
 }

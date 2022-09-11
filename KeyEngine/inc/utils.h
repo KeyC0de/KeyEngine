@@ -7,8 +7,26 @@
 #include <bitset>
 #include <cstddef>
 #include <cinttypes>
+#include <future>
 #include "assertions_console.h"
 #include "key_traits.h"
+
+/*
+__declspec(restrict) declares that the return value of a function points to memory that is not aliased. That is, the memory returned by the function is guaranteed to not be accessible through any other pointer in the program.
+
+__declspec(noalias) declares that the function does not modify memory outside the first level of indirection from the function's parameters. That is, the parameters are the only reference to the outside world the function has.
+
+Both of them are just performance hints to the compiler.
+*/
+#if defined _MSC_VER || defined _WIN32 || defined _WIN64
+#	define restricted __declspec( restrict )
+#	define noaliasing __declspec( noalias )
+#	define compiler_hint __declspec( restrict ) __declspec( noalias )
+#elif defined __unix__ || defined __unix || defined __APPLE__ && defined __MACH__
+#	define restricted __restrict__
+#	define noaliasing __restrict__
+#	define hint __restrict__
+#endif
 
 #define isOfTypeT( obj, T ) ( dynamic_cast<T*>( obj ) != nullptr ) ? true : false
 #define SAFE_CALL( obj, function )			{ if ( obj ) { obj.function; } }
@@ -62,6 +80,12 @@ T sum( std::initializer_list<T> lst )
 		total += i;
 	}
 	return total;
+}
+
+template<typename T>
+bool isFutureReady( const std::future<T> &fu )
+{
+	return fu.wait_for( std::chrono::seconds( 0 ) ) == std::future_status::ready;
 }
 
 //===================================================
@@ -239,6 +263,11 @@ inline unsigned long long int volatile& readMEM( unsigned long long int memoryAd
 	return *reinterpret_cast<unsigned long long int volatile*>( memoryAddress );
 }
 #pragma warning( default : 4312 )
+
+inline compiler_hint std::size_t* getUniqueMemory()
+{
+	return reinterpret_cast<std::size_t*>( new std::size_t{0} );
+}
 
 
 }//namespace util

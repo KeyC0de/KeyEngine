@@ -21,9 +21,9 @@ void IEffectVisitor::setEffect( Effect *pEffect )
 	onSetEffect();
 }
 
-bool IEffectVisitor::visit( con::Buffer &cb )
+bool IEffectVisitor::visit( con::CBuffer &cb )
 {
-	++m_cbId;
+	++m_imguiId;
 	return onVisit( cb );
 }
 
@@ -33,7 +33,7 @@ void IEffectVisitor::onSetEffect()
 }
 
 
-bool EVShowcase::onVisit( con::Buffer &cb )
+bool EVShowcase::onVisit( con::CBuffer &cb )
 {
 	bool bDirty = false;
 	const auto dirtyCheck = [&bDirty]( bool bChanged )
@@ -41,11 +41,12 @@ bool EVShowcase::onVisit( con::Buffer &cb )
 		bDirty = bDirty || bChanged;
 	};
 
-	auto tagImGuiWidget = [imguiNodeName = std::string{}, str = '#' + std::to_string( m_cbId )]
+	auto tagImGuiWidget = [imguiNodeLabel = std::string{},
+		strImguiId = '#' + std::to_string( m_imguiId )]
 		( const char *label ) mutable
 	{
-		imguiNodeName = label + str;
-		return imguiNodeName.c_str();
+		imguiNodeLabel = label + strImguiId;
+		return imguiNodeLabel.c_str();
 	};
 
 	// query the Mesh's Constant Buffer for available CB Elements and display ImGui controls for those available

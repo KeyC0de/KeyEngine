@@ -66,7 +66,7 @@ Cube::Cube( Graphics &gph,
 		con::RawLayout cbLayout;
 		cbLayout.add<con::Float3>( "modelSpecularColor" );
 		cbLayout.add<con::Float>( "modelSpecularGloss" );
-		auto cb = con::Buffer( std::move( cbLayout ) );
+		auto cb = con::CBuffer( std::move( cbLayout ) );
 		cb["modelSpecularColor"] = dx::XMFLOAT3{1.0f, 1.0f, 1.0f};
 		cb["modelSpecularGloss"] = 20.0f;
 		lambertian.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gph,
@@ -105,7 +105,7 @@ Cube::Cube( Graphics &gph,
 
 		con::RawLayout cbLayout;
 		cbLayout.add<con::Float3>( "materialColor" );
-		auto cb = con::Buffer( std::move( cbLayout ) );
+		auto cb = con::CBuffer( std::move( cbLayout ) );
 		cb["materialColor"] = dx::XMFLOAT3{1.0f, 0.4f, 0.4f};
 		blurOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gph,
 			0u,
@@ -137,7 +137,7 @@ Cube::Cube( Graphics &gph,
 
 		con::RawLayout cbLayout;
 		cbLayout.add<con::Float3>( "materialColor" );
-		auto cb = con::Buffer( std::move( cbLayout ) );
+		auto cb = con::CBuffer( std::move( cbLayout ) );
 		cb["materialColor"] = dx::XMFLOAT3{1.0f, 0.4f, 0.4f};
 		solidOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gph,
 			0u,
@@ -217,29 +217,29 @@ void Cube::displayImguiWidgets( Graphics &gph,
 
 				bool active = m_pEffect->isEnabled();
 				using namespace std::string_literals;
-				ImGui::Checkbox( ( "Effect Active##"s + std::to_string( m_effectId ) ).c_str(),
+				ImGui::Checkbox( ( "Effect Active#"s + std::to_string( m_effectId ) ).c_str(),
 					&active );
 				m_pEffect->setEnabled( active );
 			}
 
-			bool onVisit( con::Buffer &cb ) override
+			bool onVisit( con::CBuffer &cb ) override
 			{
 				bool bDirty = false;
 				const auto dirtyCheck = [&bDirty]( bool bChanged )
 				{
 					bDirty = bDirty || bChanged;
 				};
-				auto tag = [tagScratch = std::string{},
-					tagString = "##" + std::to_string( m_cbId )]
+				auto tagImGuiWidget = [imguiNodeLabel = std::string{},
+					strImguiId = "#" + std::to_string( m_imguiId )]
 					( const char *label ) mutable
 					{
-						tagScratch = label + tagString;
-						return tagScratch.c_str();
+						imguiNodeLabel = label + strImguiId;
+						return imguiNodeLabel.c_str();
 					};
 
 				if ( auto el = cb["scale"]; el.isValid() )
 				{
-					dirtyCheck( ImGui::SliderFloat( tag( "Scale" ),
+					dirtyCheck( ImGui::SliderFloat( tagImGuiWidget( "Scale" ),
 						&el,
 						1.0f,
 						2.0f,
@@ -249,13 +249,13 @@ void Cube::displayImguiWidgets( Graphics &gph,
 
 				if ( auto el = cb["materialColor"]; el.isValid() )
 				{
-					dirtyCheck( ImGui::ColorPicker3( tag( "materialColor" ),
+					dirtyCheck( ImGui::ColorPicker3( tagImGuiWidget( "materialColor" ),
 						reinterpret_cast<float*>( &static_cast<dx::XMFLOAT3&>( el ) ) ) );
 				}
 
 				if ( auto el = cb["specularIntensity"]; el.isValid() )
 				{
-					dirtyCheck( ImGui::SliderFloat( tag( "Specular Intensity" ),
+					dirtyCheck( ImGui::SliderFloat( tagImGuiWidget( "Specular Intensity" ),
 						&el,
 						0.0f,
 						1.0f ) );
@@ -263,7 +263,7 @@ void Cube::displayImguiWidgets( Graphics &gph,
 
 				if ( auto el = cb["modelSpecularGloss"]; el.isValid() )
 				{
-					dirtyCheck( ImGui::SliderFloat( tag( "Glossiness" ),
+					dirtyCheck( ImGui::SliderFloat( tagImGuiWidget( "Glossiness" ),
 						&el,
 						1.0f,
 						100.0f,

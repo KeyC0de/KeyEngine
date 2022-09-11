@@ -1,17 +1,15 @@
-#define VB_IMPL_SOURCE
-
 #include "dynamic_vertex_buffer.h"
 
 
 namespace ver
 {
 
-const VertexInputLayout::VertexInputLayoutElement& VertexInputLayout::getElementByIndex( const size_t i ) const cond_noex
+const VertexInputLayout::ILElement& VertexInputLayout::getElementByIndex( const size_t i ) const cond_noex
 {
 	return m_vertexLayoutElements[i];
 }
 
-VertexInputLayout& VertexInputLayout::add( const VertexInputLayoutElementType type ) cond_noex
+VertexInputLayout& VertexInputLayout::add( const ILEementType type ) cond_noex
 {
 	if ( !hasType( type ) )
 	{
@@ -21,7 +19,7 @@ VertexInputLayout& VertexInputLayout::add( const VertexInputLayoutElementType ty
 	return *this;
 }
 
-bool VertexInputLayout::hasType( const VertexInputLayoutElementType& type ) const noexcept
+bool VertexInputLayout::hasType( const ILEementType& type ) const noexcept
 {
 	for ( auto &e : m_vertexLayoutElements )
 	{
@@ -66,8 +64,8 @@ std::string VertexInputLayout::calcSignature() const cond_noex
 	return tag;
 }
 
-// VertexInputLayout::VertexInputLayoutElement
-VertexInputLayout::VertexInputLayoutElement::VertexInputLayoutElement( const VertexInputLayoutElementType type,
+// VertexInputLayout::ILElement
+VertexInputLayout::ILElement::ILElement( const ILEementType type,
 	const size_t offset )
 	:
 	m_type(type),
@@ -76,57 +74,57 @@ VertexInputLayout::VertexInputLayoutElement::VertexInputLayoutElement( const Ver
 
 }
 
-const size_t VertexInputLayout::VertexInputLayoutElement::getByteOffsetAfterThisInLayout() const cond_noex
+const size_t VertexInputLayout::ILElement::getByteOffsetAfterThisInLayout() const cond_noex
 {
 	return m_offset + getTypeSize( m_type );
 }
 
-const size_t VertexInputLayout::VertexInputLayoutElement::getByteOffsetInLayout() const
+const size_t VertexInputLayout::ILElement::getByteOffsetInLayout() const
 {
 	return m_offset;
 }
 
-const VertexInputLayout::VertexInputLayoutElementType VertexInputLayout::VertexInputLayoutElement::getType() const noexcept
+const VertexInputLayout::ILEementType VertexInputLayout::ILElement::getType() const noexcept
 {
 	return m_type;
 }
 
-template<VertexInputLayout::VertexInputLayoutElementType type>
+template<VertexInputLayout::ILEementType type>
 struct CPUSizeLookup final
 {
 	static constexpr auto exec() noexcept
 	{
-		return sizeof( VertexInputLayout::VertexInputLayoutElementProperties<type>::CPUType );
+		return sizeof( VertexInputLayout::MapElementProperties<type>::CPUType );
 	}
 };
 
-constexpr size_t VertexInputLayout::VertexInputLayoutElement::getTypeSize( const VertexInputLayoutElementType type ) cond_noex
+constexpr size_t VertexInputLayout::ILElement::getTypeSize( const ILEementType type ) cond_noex
 {
 	return bridge<CPUSizeLookup>( type );
 }
 
-template<VertexInputLayout::VertexInputLayoutElementType type>
+template<VertexInputLayout::ILEementType type>
 struct TagLookup final
 {
 	static constexpr auto exec() noexcept
 	{
-		return VertexInputLayout::VertexInputLayoutElementProperties<type>::tag;
+		return VertexInputLayout::MapElementProperties<type>::tag;
 	}
 };
 
-const char* ver::VertexInputLayout::VertexInputLayoutElement::calcTag() const noexcept
+const char* ver::VertexInputLayout::ILElement::calcTag() const noexcept
 {
 	return bridge<TagLookup>( m_type );
 }
 
-template<VertexInputLayout::VertexInputLayoutElementType type>
+template<VertexInputLayout::ILEementType type>
 struct DescLookup final
 {
 	static constexpr D3D11_INPUT_ELEMENT_DESC exec( const size_t offset ) noexcept
 	{
-		return {VertexInputLayout::VertexInputLayoutElementProperties<type>::hlslSemantic,
+		return {VertexInputLayout::MapElementProperties<type>::hlslSemantic,
 			0u,
-			VertexInputLayout::VertexInputLayoutElementProperties<type>::dxgiFormat,
+			VertexInputLayout::MapElementProperties<type>::dxgiFormat,
 			0u,
 			(unsigned)offset,
 			D3D11_INPUT_PER_VERTEX_DATA,
@@ -134,14 +132,14 @@ struct DescLookup final
 	}
 };
 
-const D3D11_INPUT_ELEMENT_DESC VertexInputLayout::VertexInputLayoutElement::getD3dDesc() const cond_noex
+const D3D11_INPUT_ELEMENT_DESC VertexInputLayout::ILElement::getD3dDesc() const cond_noex
 {
 	return bridge<DescLookup>( m_type,
 		getByteOffsetInLayout() );
 }
 
 
-VertexView::VertexView( char *pData,
+VBElementView::VBElementView( char *pData,
 	const VertexInputLayout &layout ) cond_noex
 	:
 	m_p(pData),
@@ -150,14 +148,14 @@ VertexView::VertexView( char *pData,
 	ASSERT( pData != nullptr, "Input data bytes pointer is null!" );
 }
 
-ConstVertexView::ConstVertexView( const VertexView &v ) cond_noex
+VBElementConstView::VBElementConstView( const VBElementView &v ) cond_noex
 	:
 	m_vertexView(v)
 {
 
 }
 
-Buffer::Buffer( VertexInputLayout layout,
+VBuffer::VBuffer( VertexInputLayout layout,
 	const size_t size ) cond_noex
 	:
 	m_vertexLayout(std::move( layout ))
@@ -165,7 +163,7 @@ Buffer::Buffer( VertexInputLayout layout,
 	resize( size );
 }
 
-void Buffer::resize( const size_t newSize ) cond_noex
+void VBuffer::resize( const size_t newSize ) cond_noex
 {
 	const auto size = getVertexCount();
 	if ( size < newSize )
@@ -174,27 +172,27 @@ void Buffer::resize( const size_t newSize ) cond_noex
 	}
 }
 
-const char* Buffer::getRawBytes() const cond_noex
+const char* VBuffer::getRawBytes() const cond_noex
 {
 	return m_data.data();
 }
 
 
-template<VertexInputLayout::VertexInputLayoutElementType type>
+template<VertexInputLayout::ILEementType type>
 struct AiMeshElementLookup final
 {
-	static constexpr void exec( Buffer *pBuf,
+	static constexpr void exec( VBuffer *pBuf,
 		const aiMesh &aimesh ) cond_noex
 	{
 		for ( auto end = aimesh.mNumVertices, i = 0u; i < end; ++i )
 		{
-			(*pBuf)[i].element<type>() = VertexInputLayout::VertexInputLayoutElementProperties<type>::extract( aimesh,
+			(*pBuf)[i].element<type>() = VertexInputLayout::MapElementProperties<type>::extract( aimesh,
 				i );
 		}
 	}
 };
 
-Buffer::Buffer( VertexInputLayout vertLayout,
+VBuffer::VBuffer( VertexInputLayout vertLayout,
 	const aiMesh &aimesh )
 	:
 	m_vertexLayout(std::move( vertLayout ))
@@ -208,53 +206,53 @@ Buffer::Buffer( VertexInputLayout vertLayout,
 	}
 }
 
-const VertexInputLayout& Buffer::getLayout() const noexcept
+const VertexInputLayout& VBuffer::getLayout() const noexcept
 {
 	return m_vertexLayout;
 }
 
-const size_t Buffer::getVertexCount() const cond_noex
+const size_t VBuffer::getVertexCount() const cond_noex
 {
 	return getSizeInBytes() / m_vertexLayout.getSizeInBytes();
 }
 
-const size_t Buffer::getSizeInBytes() const cond_noex
+const size_t VBuffer::getSizeInBytes() const cond_noex
 {
 	return m_data.size();
 }
 
-VertexView Buffer::back() cond_noex
+VBElementView VBuffer::back() cond_noex
 {
 	ASSERT( !m_data.empty(), "VertexBuffer is empty!" );
-	return VertexView{m_data.data() + getSizeInBytes() - m_vertexLayout.getSizeInBytes(), m_vertexLayout};
+	return VBElementView{m_data.data() + getSizeInBytes() - m_vertexLayout.getSizeInBytes(), m_vertexLayout};
 }
 
-ConstVertexView Buffer::back() const cond_noex
+VBElementConstView VBuffer::back() const cond_noex
 {
-	return const_cast<Buffer*>( this )->back();
+	return const_cast<VBuffer*>( this )->back();
 }
 
-VertexView Buffer::front() cond_noex
+VBElementView VBuffer::front() cond_noex
 {
 	ASSERT( !m_data.empty(), "VertexBuffer is empty!" );
-	return VertexView{m_data.data(), m_vertexLayout};
+	return VBElementView{m_data.data(), m_vertexLayout};
 }
 
-ConstVertexView Buffer::front() const cond_noex
+VBElementConstView VBuffer::front() const cond_noex
 {
-	return const_cast<Buffer*>( this )->front();
+	return const_cast<VBuffer*>( this )->front();
 }
 
-VertexView Buffer::operator[]( const size_t i ) cond_noex
+VBElementView VBuffer::operator[]( const size_t i ) cond_noex
 {
 	ASSERT( i < getVertexCount(), "Requested index falls out of bounds!" );
-	return VertexView{m_data.data() + m_vertexLayout.getSizeInBytes() * i,	m_vertexLayout};
+	return VBElementView{m_data.data() + m_vertexLayout.getSizeInBytes() * i,	m_vertexLayout};
 }
 
-ConstVertexView Buffer::operator[]( const size_t i ) const cond_noex
+VBElementConstView VBuffer::operator[]( const size_t i ) const cond_noex
 {
-	return const_cast<Buffer&>( *this )[i];
+	return const_cast<VBuffer&>( *this )[i];
 }
 
 
-}//ver
+}//namespace ver

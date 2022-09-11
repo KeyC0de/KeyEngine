@@ -5,7 +5,7 @@
 
 namespace con
 {
-	class Buffer;
+	class CBuffer;
 }
 
 class Effect;
@@ -16,8 +16,8 @@ class Effect;
 //	\author	KeyC0de
 //	\date	2020/01/09 15:53
 //
-//	\brief	implement and override on *methods
-//			targets a model with a specific effect
+//	\brief	implement and override on* methods
+//			targets a Model with a specific effect
 //			the IDs are for tagging ImGui widgets/controls
 //=============================================================
 class IEffectVisitor
@@ -25,25 +25,25 @@ class IEffectVisitor
 protected:
 	Effect *m_pEffect = nullptr;
 	size_t m_effectId = std::numeric_limits<size_t>::max();
-	size_t m_cbId = std::numeric_limits<size_t>::max();
+	size_t m_imguiId = std::numeric_limits<size_t>::max();
 public:
 	virtual ~IEffectVisitor();
 
 	void setEffect( Effect *ef );
 	//===================================================
 	//	\function	visit
-	//	\brief  returns true if concrete bindable (with a con::Buffer) requires an update
+	//	\brief  returns true if concrete bindable (with a con::CBuffer) requires an update
 	//	\date	2022/08/31 11:33
-	bool visit( con::Buffer &cb );
+	bool visit( con::CBuffer &cb );
 protected:
 	virtual void onSetEffect();
-	virtual bool onVisit( con::Buffer &cb ) = 0;
+	virtual bool onVisit( con::CBuffer &cb ) = 0;
 };
 
 class EVShowcase
 	: public IEffectVisitor
 {
 public:
-	bool onVisit( con::Buffer &cb ) override;
+	bool onVisit( con::CBuffer &cb ) override;
 	void onSetEffect() override;
 };

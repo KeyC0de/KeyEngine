@@ -134,7 +134,7 @@ MaterialLoader::MaterialLoader( Graphics &gph,
 			}
 
 			// Assembling the Pixel Shader Constant Buffer
-			con::Buffer pscb{std::move( cbLayout )};
+			con::CBuffer pscb{std::move( cbLayout )};
 			if ( auto cbElem = pscb["materialColor"]; cbElem.isValid() )
 			{
 				aiColor3D difCol = {0.45f, 0.45f, 0.85f};
@@ -196,7 +196,7 @@ MaterialLoader::MaterialLoader( Graphics &gph,
 		{
 			con::RawLayout cbLayout;
 			cbLayout.add<con::Float3>( "materialColor" );
-			auto cb = con::Buffer{std::move( cbLayout )};
+			auto cb = con::CBuffer{std::move( cbLayout )};
 			cb["materialColor"] = dx::XMFLOAT3{1.0f, 0.4f, 0.4f};
 			blurOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gph,
 				0u,
@@ -233,7 +233,7 @@ MaterialLoader::MaterialLoader( Graphics &gph,
 
 		con::RawLayout cbLayout;
 		cbLayout.add<con::Float3>( "materialColor" );
-		auto cb = con::Buffer( std::move( cbLayout ) );
+		auto cb = con::CBuffer( std::move( cbLayout ) );
 		cb["materialColor"] = dx::XMFLOAT3{1.0f, 0.4f, 0.4f};
 		solidOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gph,
 			0u,
@@ -247,7 +247,7 @@ MaterialLoader::MaterialLoader( Graphics &gph,
 	}
 }
 
-ver::Buffer MaterialLoader::extractVertexBuffer( const aiMesh &aimesh ) const noexcept
+ver::VBuffer MaterialLoader::extractVertexBuffer( const aiMesh &aimesh ) const noexcept
 {
 	return {m_vertexLayout, aimesh};
 }
@@ -276,7 +276,7 @@ std::shared_ptr<VertexBuffer> MaterialLoader::makeVertexBuffer( Graphics &gph,
 	{
 		for ( size_t i = 0u; i < vb.getVertexCount(); ++i )
 		{
-			dx::XMFLOAT3 &pos = vb[i].element<ver::VertexInputLayout::VertexInputLayoutElementType::Position3D>();
+			dx::XMFLOAT3 &pos = vb[i].element<ver::VertexInputLayout::ILEementType::Position3D>();
 			pos.x *= scale;
 			pos.y *= scale;
 			pos.z *= scale;

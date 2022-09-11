@@ -18,7 +18,7 @@ CameraWidget::CameraWidget( Graphics &gph )
 	ver::VertexInputLayout vertexLayout;
 	vertexLayout.add( ver::VertexInputLayout::Position3D );
 
-	ver::Buffer vb{std::move( vertexLayout )};
+	ver::VBuffer vb{std::move( vertexLayout )};
 	{
 		const float x = 4.0f / 3.0f * 0.75f;
 		const float y = 1.0f * 0.75f;

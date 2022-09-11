@@ -301,9 +301,6 @@
     <ClCompile Include="src\key_random.cpp">
       <Filter>engine\common</Filter>
     </ClCompile>
-    <ClCompile Include="src\key_thread.cpp">
-      <Filter>engine\common</Filter>
-    </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>engine\common</Filter>
     </ClCompile>
@@ -373,6 +370,7 @@
     <ClCompile Include="src\lua_interface.cpp">
       <Filter>engine\gameplay</Filter>
     </ClCompile>
+    <ClCompile Include="src\thread_pool_j.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -1069,9 +1067,6 @@
     <ClInclude Include="inc\key_random.h">
       <Filter>engine\common</Filter>
     </ClInclude>
-    <ClInclude Include="inc\key_thread.h">
-      <Filter>engine\common</Filter>
-    </ClInclude>
     <ClInclude Include="inc\key_timer.h">
       <Filter>engine\common</Filter>
     </ClInclude>
@@ -1168,6 +1163,13 @@
     <ClInclude Include="third_party\assimp\include\assimp\aiBitmap.h">
       <Filter>third_party\assimp</Filter>
     </ClInclude>
+    <ClInclude Include="third_party\jthread\stop_token.h">
+      <Filter>third_party\jthread</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\jthread\jthread.h">
+      <Filter>third_party\jthread</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\thread_pool_j.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="keyc0de.ico" />
@@ -1465,6 +1467,9 @@
     </Filter>
     <Filter Include="engine\vfx\mesh\primitives">
       <UniqueIdentifier>{2c6133c3-bbe8-4a73-b2fc-dc0165c75471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="third_party\jthread">
+      <UniqueIdentifier>{291f9785-0019-4d87-9e2d-bedbb6af73fd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

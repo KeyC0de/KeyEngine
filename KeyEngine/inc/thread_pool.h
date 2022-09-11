@@ -14,33 +14,30 @@
 //	\author	KeyC0de
 //	\date	25/9/2019 3:55
 //
-//	\brief	A class which encapsulates a Queue of Tasks & a Pool of threads and dispatches work on demand
-//				ie. upon an incoming Task - callable object - a thread is dispatched to execute it
+//	\brief	A class which encapsulates a Queue of Tasks & a Pool of threads
+//				and dispatches work on demand - ie. upon an incoming Task - callable object -
+//				a thread is dispatched to execute it
 //			Singleton, move only class
-//			WARNING: Remember to call resetInstance before you terminate your program
 //=============================================================
 class ThreadPool final
 {
 	using Task = std::function<void()>;
-
-	static inline ThreadPool *m_pInstance;
-	static inline std::mutex ms_mu;
-
+	
 	std::atomic<bool> m_bEnabled;
 	std::vector<std::thread> m_pool;
 	std::queue<Task> m_tasks;
 	std::condition_variable m_cond;
 	std::mutex m_mu;
 private:
-	explicit ThreadPool( const std::size_t nthreads, const bool bStart = true );
-public:
+	explicit ThreadPool( std::size_t nthreads, bool bStart = true );
+public:	
 	~ThreadPool() noexcept;
+	ThreadPool( ThreadPool const &rhs ) = delete;
+	ThreadPool& operator=( const ThreadPool &rhs ) = delete;
 	ThreadPool( ThreadPool &&rhs ) noexcept;
 	ThreadPool& operator=( ThreadPool &&rhs ) noexcept;
 
-	static ThreadPool& instance( const std::size_t nThreads = std::thread::hardware_concurrency(), const bool bEnabled = true );
-	static void resetInstance();
-
+	static ThreadPool& getInstance( std::size_t nThreads = std::thread::hardware_concurrency(), bool bEnabled = true );
 	//===================================================
 	//	\function	start
 	//	\brief  calls run
@@ -53,25 +50,27 @@ public:
 
 	template<typename Callback, typename... TArgs>
 	decltype( auto ) enqueue( Callback &&f,
-		TArgs &&...args )
+		TArgs &&... args )
 	{
 		using ReturnType = std::invoke_result_t<Callback, TArgs...>;
-		using TFunc = ReturnType(TArgs...);
-		using TFWrapped = std::packaged_task<TFunc>;
+		using FuncType = ReturnType(TArgs...);
+		using Wrapped = std::packaged_task<FuncType>;
 
 		if ( M_ENABLED )
 		{
-			std::shared_ptr<TFWrapped> smartFunctionPointer = std::make_shared<TFWrapped>( std::move( f ) );
+			std::shared_ptr<Wrapped> smartFunctionPointer = std::make_shared<Wrapped>( std::move( f ) );
 			std::future<ReturnType> fu = smartFunctionPointer->get_future();
 
+			// *trick* for pre-C++20 to call a variadic function with vararg params, bind the params in a tuple and call it by std::apply
+			// packaged_task converts into std::function automatically
+			// and we need shared_ptr to pass it properly to the lambda capture for it to work
 			auto task = [smartFunctionPointer = std::move( smartFunctionPointer ),
-					args = std::make_tuple( std::forward<TArgs>( args )... )]
-				() -> void
-				{
-					std::apply( *smartFunctionPointer,
-						std::move( args ) );
-					return;
-				};
+					args = std::make_tuple( std::forward<TArgs>( args )... )] () -> void
+			{
+				std::apply( *smartFunctionPointer,
+					std::move( args ) );
+				return;
+			};
 
 			{
 				std::lock_guard<std::mutex> lg{m_mu};

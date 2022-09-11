@@ -39,7 +39,7 @@ void testDynamicMeshLoading()
 		.add( VertexInputLayout::Tangent )
 		.add( VertexInputLayout::Bitangent )
 		.add( VertexInputLayout::Texture2D );
-	ver::Buffer cb{std::move( layout ), *pScene->mMeshes[0]};
+	ver::VBuffer cb{std::move( layout ), *pScene->mMeshes[0]};
 
 	for ( auto i = 0ull,
 		end = cb.getVertexCount();
@@ -107,12 +107,12 @@ void testDynamicConstant()
 		// fails: bad symbol name
 		//s.add<con::Bool>( "69man" );
 
-		auto cb = con::Buffer( std::move( lay ) );
+		auto cb = con::CBuffer( std::move( lay ) );
 
 		// fails to compile: conversion not in topo map
 		//cb["woot"s] = "#"s;
 
-		const auto sig = cb.getRootLayoutElement().calcSignature();
+		const auto sig = cb.getRootElement().calcSignature();
 
 		{
 			auto exp = 42.0f;
@@ -199,7 +199,7 @@ void testDynamicConstant()
 		lay.add<con::Array>( "arr" );
 		lay["arr"].set<con::Array>( 6 );
 		lay["arr"].T().set<con::Matrix>( 4 );
-		auto cb = con::Buffer( std::move( lay ) );
+		auto cb = con::CBuffer( std::move( lay ) );
 
 		auto act = cb.getSizeInBytes();
 		ASSERT( act == 16u * 4u * 4u * 6u, "Assertion failed!" );
@@ -209,7 +209,7 @@ void testDynamicConstant()
 		con::RawLayout lay;
 		lay.add<con::Array>( "arr" );
 		lay["arr"].set<con::Float>( 16 );
-		auto cb = con::Buffer( std::move( lay ) );
+		auto cb = con::CBuffer( std::move( lay ) );
 
 		auto act = cb.getSizeInBytes();
 		ASSERT( act == 256u, "Assertion failed!" );
@@ -221,7 +221,7 @@ void testDynamicConstant()
 		lay["arr"].set<con::Struct>( 6 );
 		lay["arr"s].T().add<con::Float2>( "a" );
 		lay["arr"].T().add<con::Float3>( "b"s );
-		auto cb = con::Buffer( std::move( lay ) );
+		auto cb = con::CBuffer( std::move( lay ) );
 
 		auto act = cb.getSizeInBytes();
 		ASSERT( act == 16u * 2u * 6u, "Assertion failed!" );
@@ -231,7 +231,7 @@ void testDynamicConstant()
 		con::RawLayout lay;
 		lay.add<con::Array>( "arr" );
 		lay["arr"].set<con::Float3>( 6 );
-		auto cb = con::Buffer( std::move( lay ) );
+		auto cb = con::CBuffer( std::move( lay ) );
 
 		auto act = cb.getSizeInBytes();
 		ASSERT( act == 16u * 6u, "Assertion failed!" );
@@ -246,9 +246,9 @@ void testDynamicConstant()
 		lay.add<con::Float>( "arr" );
 		// fails to compile, cooked returns const&
 		// cooked["arr"].add<con::Float>("buttman");
-		auto b1 = con::Buffer( cooked );
+		auto b1 = con::CBuffer( cooked );
 		b1["arr"][0] = dx::XMFLOAT3{ 69.0f, 0.0f, 0.0f };
-		auto b2 = con::Buffer( cooked );
+		auto b2 = con::CBuffer( cooked );
 		b2["arr"][0] = dx::XMFLOAT3{ 420.0f, 0.0f, 0.0f };
 		ASSERT( static_cast<dx::XMFLOAT3>(b1["arr"][0]).x == 69.0f, "Assertion failed!" );
 		ASSERT( static_cast<dx::XMFLOAT3>(b2["arr"][0]).x == 420.0f, "Assertion failed!" );
@@ -287,7 +287,7 @@ void testDynamicConstant()
 		lay["butts"s].add<con::Float3>( "pubes"s );
 		lay["butts"s].add<con::Float>( "dank"s );
 
-		auto cb = con::Buffer( std::move( lay ) );
+		auto cb = con::CBuffer( std::move( lay ) );
 		const auto exp = 696969.6969f;
 		cb["butts"s]["dank"s] = 696969.6969f;
 		ASSERT( (float&)cb["butts"s]["dank"s] == exp, "Assertion failed!" );
@@ -306,7 +306,7 @@ void testDynamicConstant()
 		lay.add<con::Float3>( "modelSpecularColor" );
 		lay.add<con::Float>( "specularMapWeight" );
 
-		auto cb = con::Buffer( std::move( lay ) );
+		auto cb = con::CBuffer( std::move( lay ) );
 		ASSERT( cb.getSizeInBytes() == 32u, "Assertion failed!" );
 	}
 	// specific testing scenario (array packing issues gimme a tissue)
@@ -317,7 +317,7 @@ void testDynamicConstant()
 		lay.add<con::Integer>( "nTaps" );
 		lay.add<con::Array>( "coefficients" );
 		lay["coefficients"].set<con::Float>( nCoef );
-		con::Buffer cb{std::move( lay )};
+		con::CBuffer cb{std::move( lay )};
 		// ASSERT proper amount of memory allocated
 		ASSERT( cb.getSizeInBytes() == ( nCoef + 1 ) * 4 * 4, "Assertion failed!" );
 		// ASSERT array empty
@@ -367,7 +367,7 @@ void testDynamicVertex( Window &wnd )
 			.add( VertexInputLayout::Position2D )
 			.add( VertexInputLayout::Float3Color );
 
-		ver::Buffer vb{layout, 3};
+		ver::VBuffer vb{layout, 3};
 		vb[0].element<VertexInputLayout::Position2D>() = dx::XMFLOAT2{0.0f, 0.5f};
 		vb[0].element<VertexInputLayout::Float3Color>() = dx::XMFLOAT3{1.0f, 0.0f, 0.0f};
 		vb[1].element<VertexInputLayout::Position2D>() = dx::XMFLOAT2{0.5f, -0.5f};

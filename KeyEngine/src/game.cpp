@@ -10,7 +10,7 @@
 #include "assertions_console.h"
 #include "mesh.h"
 #include "graphics_mode.h"
-#include "thread_pool.h"
+#include "thread_pool_j.h"
 #include "utils.h"
 #include "os_utils.h"
 #if defined _DEBUG && !defined NDEBUG
@@ -221,14 +221,11 @@ Sandbox3d::Sandbox3d( const int width,
 	//	m_renderer.setShadowCamera( *m_pPointLight2->shareCamera() );
 	//}
 
-	ThreadPool& threadPool = ThreadPool::instance( std::thread::hardware_concurrency() / 4 );
-	auto periodicBindableGarbageCollection = [] ()
-	{
-		util::doPeriodically( BindableMap::garbageCollect,
-			30 * 1000,
-			false );
-	};
-	threadPool.enqueue( periodicBindableGarbageCollection );
+	ThreadPoolJ& threadPool = ThreadPoolJ::instance( 4,
+		true );
+	threadPool.enqueue( &func_async::doPeriodically, &BindableMap::garbageCollect,
+		5000u,
+		false );
 
 	auto menuState = std::make_unique<MenuState>();
 	setState( std::move( menuState ),

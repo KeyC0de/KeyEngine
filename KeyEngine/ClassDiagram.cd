@@ -546,7 +546,7 @@
       <FileName>inc\dynamic_constant_buffer.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ElementView" Collapsed="true">
+  <Class Name="CBElementView" Collapsed="true">
     <Position X="68.25" Y="75.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAQCAAACAAAAAAAAAAAAA=</HashCode>

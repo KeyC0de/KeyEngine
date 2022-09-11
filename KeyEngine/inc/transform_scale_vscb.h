@@ -7,7 +7,7 @@
 class TransformScaleVSCB
 	: public TransformVSCB
 {
-	con::Buffer m_cbScale;
+	con::CBuffer m_cbScale;
 public:
 	TransformScaleVSCB( Graphics &gph, const unsigned slot, const float scale );
 	TransformScaleVSCB( const TransformScaleVSCB &rhs );

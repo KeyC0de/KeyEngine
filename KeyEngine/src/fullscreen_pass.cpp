@@ -22,7 +22,7 @@ FullscreenPass::FullscreenPass( Graphics &gph,
 	ver::VertexInputLayout vil;
 	vil.add( ver::VertexInputLayout::Position2D );
 	//ver::VertexInputLayout::Texture2D is setup in the vertex shader
-	ver::Buffer vb{vil};
+	ver::VBuffer vb{vil};
 	vb.emplaceVertex( dx::XMFLOAT2{-1, 1} );
 	vb.emplaceVertex( dx::XMFLOAT2{1, 1} );
 	vb.emplaceVertex( dx::XMFLOAT2{-1, -1} );

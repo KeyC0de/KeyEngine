@@ -11,7 +11,7 @@
 #include "assertions_console.h"
 
 
-// tapping into Assimp aiMesh elements given VertexInputLayoutElementProperties
+// tapping into Assimp aiMesh elements given MapElementProperties
 #define ASSIMP_EXTRACT_AIMESH( element ) \
 	static CPUType extract( const aiMesh &mesh,\
 		const size_t i ) noexcept\
@@ -36,27 +36,28 @@ namespace ver
 {
 
 // example VertexInputLayout: P3NT2 signifying: Position3, Normal, UV Tex Coords
-// assembled by appending VertexInputLayoutElement `tag`s next to each other
+// assembled by appending ILElement `tag`s next to each other
 // careful the Direct3d runtime will check at runtime that there are not multiple hlslSemantics on a single Vertex Buffer Input Layout!
 class VertexInputLayout final
 {
 public:
-	class VertexInputLayoutElement;
+	// Input Layout Element
+	class ILElement;
 private:
-	std::vector<VertexInputLayoutElement> m_vertexLayoutElements;
+	std::vector<ILElement> m_vertexLayoutElements;
 public:
-	enum VertexInputLayoutElementType
+	enum ILEementType
 	{
 		#define X(el) el,
 		VERTEX_INPUT_LAYOUT_ELEMENT_TYPES
 		#undef X
 	};
 
-	template<VertexInputLayoutElementType>
-	struct VertexInputLayoutElementProperties;
+	template<ILEementType>
+	struct MapElementProperties;
 
 	template<>
-	struct VertexInputLayoutElementProperties<Position2D>
+	struct MapElementProperties<Position2D>
 	{
 		using CPUType = DirectX::XMFLOAT2;
 		static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32_FLOAT;
@@ -66,7 +67,7 @@ public:
 	};
 
 	template<>
-	struct VertexInputLayoutElementProperties<Position3D>
+	struct MapElementProperties<Position3D>
 	{
 		using CPUType = DirectX::XMFLOAT3;
 		static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32B32_FLOAT;
@@ -76,7 +77,7 @@ public:
 	};
 
 	template<>
-	struct VertexInputLayoutElementProperties<Texture2D>
+	struct MapElementProperties<Texture2D>
 	{
 		using CPUType = DirectX::XMFLOAT2;
 		static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32_FLOAT;
@@ -86,7 +87,7 @@ public:
 	};
 
 	template<>
-	struct VertexInputLayoutElementProperties<Normal>
+	struct MapElementProperties<Normal>
 	{
 		using CPUType = DirectX::XMFLOAT3;
 		static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32B32_FLOAT;
@@ -96,7 +97,7 @@ public:
 	};
 
 	template<>
-	struct VertexInputLayoutElementProperties<Tangent>
+	struct MapElementProperties<Tangent>
 	{
 		using CPUType = DirectX::XMFLOAT3;
 		static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32B32_FLOAT;
@@ -106,7 +107,7 @@ public:
 	};
 
 	template<>
-	struct VertexInputLayoutElementProperties<Bitangent>
+	struct MapElementProperties<Bitangent>
 	{
 		using CPUType = DirectX::XMFLOAT3;
 		static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32B32_FLOAT;
@@ -116,7 +117,7 @@ public:
 	};
 
 	template<>
-	struct VertexInputLayoutElementProperties<Float3Color>
+	struct MapElementProperties<Float3Color>
 	{
 		using CPUType = DirectX::XMFLOAT3;
 		static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32B32_FLOAT;
@@ -126,7 +127,7 @@ public:
 	};
 
 	template<>
-	struct VertexInputLayoutElementProperties<Float4Color>
+	struct MapElementProperties<Float4Color>
 	{
 		using CPUType = DirectX::XMFLOAT4;
 		static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32B32A32_FLOAT;
@@ -136,7 +137,7 @@ public:
 	};
 
 	template<>
-	struct VertexInputLayoutElementProperties<BGRAColor>
+	struct MapElementProperties<BGRAColor>
 	{
 		using CPUType = ColorBGRA;
 		static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_B8G8R8A8_UNORM;
@@ -146,7 +147,7 @@ public:
 	};
 
 	//template<>
-	//struct VertexInputLayoutElementProperties<RGBAColor>
+	//struct MapElementProperties<RGBAColor>
 	//{
 	//	using CPUType = col::RGBAColor;
 	//	static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R8G8B8A8_UNORM;
@@ -156,7 +157,7 @@ public:
 	//};
 
 	template<>
-	struct VertexInputLayoutElementProperties<Count>
+	struct MapElementProperties<Count>
 	{
 		using CPUType = long double;
 		static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_UNKNOWN;
@@ -167,11 +168,11 @@ public:
 
 	//===================================================
 	//	\function	bridge
-	//	\brief  	use bridge() at runtime to get information about a element's properties
-	//				`template<VertexInputLayout::VertexInputLayoutElementType > class T; ` is a pimpl with an exec() method quering one of those elements
+	//	\brief  	use bridge() at runtime to get information about an element's properties
+	//				`template<VertexInputLayout::ILEementType > class T; ` is a pimpl with an exec() method quering one of those elements
 	//	\date	2022/08/30 12:50
-	template<template<VertexInputLayout::VertexInputLayoutElementType> class T, typename... Args>
-	static constexpr auto bridge( const VertexInputLayout::VertexInputLayoutElementType type,
+	template<template<VertexInputLayout::ILEementType> class T, typename... Args>
+	static constexpr auto bridge( const VertexInputLayout::ILEementType type,
 		Args&&... args ) cond_noex
 	{
 		switch( type )
@@ -188,28 +189,36 @@ public:
 		return T<VertexInputLayout::Count>::exec( std::forward<Args>( args )... );
 	}
 
-	class VertexInputLayoutElement final
+	//=============================================================
+	//	\class	ILElement
+	//
+	//	\author	KeyC0de
+	//	\date	2022/09/11 16:16
+	//
+	//	\brief	Vertex Buffer Input Layout Element
+	//=============================================================
+	class ILElement final
 	{
-		VertexInputLayoutElementType m_type;
+		ILEementType m_type;
 		size_t m_offset;
 	public:
-		static constexpr size_t getTypeSize( const VertexInputLayoutElementType type ) cond_noex;
+		static constexpr size_t getTypeSize( const ILEementType type ) cond_noex;
 	public:
-		VertexInputLayoutElement( const VertexInputLayoutElementType type, const size_t offset );
+		ILElement( const ILEementType type, const size_t offset );
 
 		const size_t getByteOffsetAfterThisInLayout() const cond_noex;
 		const size_t getByteOffsetInLayout() const;
-		const VertexInputLayoutElementType getType() const noexcept;
+		const ILEementType getType() const noexcept;
 		const D3D11_INPUT_ELEMENT_DESC getD3dDesc() const cond_noex;
 		//===================================================
 		//	\function	calcTag
-		//	\brief  return a tag identifying this VertexInputLayoutElement
+		//	\brief  return a tag identifying this ILElement
 		//	\date	2022/08/30 12:49
 		const char* calcTag() const noexcept;
 	};
 public:
-	template<VertexInputLayoutElementType layoutType>
-	const VertexInputLayoutElement& fetch() const cond_noex
+	template<ILEementType layoutType>
+	const ILElement& fetch() const cond_noex
 	{
 		for ( auto &e : m_vertexLayoutElements )
 		{
@@ -221,24 +230,24 @@ public:
 		ASSERT( false, "Could not find requeted Element's type" );
 		return m_vertexLayoutElements.front();
 	}
-	const VertexInputLayoutElement& getElementByIndex( const size_t i ) const cond_noex;
-	VertexInputLayout& add( const VertexInputLayoutElementType type ) cond_noex;
+	const ILElement& getElementByIndex( const size_t i ) const cond_noex;
+	VertexInputLayout& add( const ILEementType type ) cond_noex;
 	const size_t getSizeInBytes() const cond_noex;
 	const size_t getElementCount() const noexcept;
 	std::vector<D3D11_INPUT_ELEMENT_DESC> getD3DInputElementDescs() const cond_noex;
 	std::string calcSignature() const cond_noex;
-	bool hasType( const VertexInputLayoutElementType& type ) const noexcept;
+	bool hasType( const ILEementType& type ) const noexcept;
 };//VertexInputLayout
 
 
-class VertexView final
+class VBElementView final
 {
-	friend class Buffer;
+	friend class VBuffer;
 
 	char *m_p = nullptr;
 	const VertexInputLayout &m_layout;
 private:
-	template<VertexInputLayout::VertexInputLayoutElementType layoutType>
+	template<VertexInputLayout::ILEementType layoutType>
 	struct ElementExec final
 	{
 		//===================================================
@@ -246,7 +255,7 @@ private:
 		//	\brief  returns the D3D11 DESC of INPUT_ELEMENT_LAYOUT
 		//	\date	2022/08/30 12:49
 		template<typename T>
-		static constexpr auto exec( VertexView *pVertex,
+		static constexpr auto exec( VBElementView *pVertex,
 			char *pElement,
 			T &&val ) cond_noex
 		{
@@ -257,16 +266,16 @@ private:
 public:
 	//===================================================
 	//	\function	element
-	//	\brief  get reference to VertexInputLayoutElement
+	//	\brief  get reference to ILElement
 	//	\date	2022/08/30 12:45
-	template<VertexInputLayout::VertexInputLayoutElementType layoutType>
+	template<VertexInputLayout::ILEementType layoutType>
 	auto& element() cond_noex
 	{
 		auto pElement = m_p + m_layout.fetch<layoutType>().getByteOffsetInLayout();
-		return *reinterpret_cast<typename VertexInputLayout::VertexInputLayoutElementProperties<layoutType>::CPUType*>( pElement );
+		return *reinterpret_cast<typename VertexInputLayout::MapElementProperties<layoutType>::CPUType*>( pElement );
 	}
 protected:
-	VertexView( char *pData, const VertexInputLayout &layout ) cond_noex;
+	VBElementView( char *pData, const VertexInputLayout &layout ) cond_noex;
 private:
 	//===================================================
 	//	\function	setElementByIndex
@@ -301,11 +310,11 @@ private:
 	//	\function	setElement
 	//	\brief  helper to reduce tag duplication in setElementByIndex
 	//	\date	2022/08/30 12:46
-	template<VertexInputLayout::VertexInputLayoutElementType layoutType, typename SrcType>
+	template<VertexInputLayout::ILEementType layoutType, typename SrcType>
 	void setElement( char *pElement,
 		SrcType &&val ) cond_noex
 	{
-		using Dest = typename VertexInputLayout::VertexInputLayoutElementProperties<layoutType>::CPUType;
+		using Dest = typename VertexInputLayout::MapElementProperties<layoutType>::CPUType;
 		if constexpr( std::is_assignable<Dest, SrcType>::value )
 		{
 			*reinterpret_cast<Dest*>( pElement ) = val;
@@ -317,26 +326,26 @@ private:
 	}
 };
 
-class ConstVertexView final
+class VBElementConstView final
 {
-	VertexView m_vertexView;
+	VBElementView m_vertexView;
 public:
-	ConstVertexView( const VertexView &v ) cond_noex;
-	template<VertexInputLayout::VertexInputLayoutElementType layoutType>
+	VBElementConstView( const VBElementView &v ) cond_noex;
+	template<VertexInputLayout::ILEementType layoutType>
 	const auto& getElement() const cond_noex
 	{
-		return const_cast<VertexView&>( m_vertexView ).element<layoutType>();
+		return const_cast<VBElementView&>( m_vertexView ).element<layoutType>();
 	}
 };
 
 
-class Buffer final
+class VBuffer final
 {
 	std::vector<char> m_data;
 	VertexInputLayout m_vertexLayout;
 public:
-	Buffer( VertexInputLayout layout, const size_t size = 0u ) cond_noex;
-	Buffer( VertexInputLayout layout, const aiMesh &mesh );
+	VBuffer( VertexInputLayout layout, const size_t size = 0u ) cond_noex;
+	VBuffer( VertexInputLayout layout, const aiMesh &mesh );
 	const char* getRawBytes() const cond_noex;
 	const VertexInputLayout& getLayout() const noexcept;
 	void resize( const size_t newSize ) cond_noex;
@@ -351,18 +360,16 @@ public:
 		back().setElementByIndex( 0u,
 			std::forward<TArgs>( args )... );
 	}
-	VertexView back() cond_noex;
-	ConstVertexView back() const cond_noex;
-	VertexView front() cond_noex;
-	ConstVertexView front() const cond_noex;
-	VertexView operator[]( const size_t i ) cond_noex;
-	ConstVertexView operator[]( const size_t i ) const cond_noex;
+	VBElementView back() cond_noex;
+	VBElementConstView back() const cond_noex;
+	VBElementView front() cond_noex;
+	VBElementConstView front() const cond_noex;
+	VBElementView operator[]( const size_t i ) cond_noex;
+	VBElementConstView operator[]( const size_t i ) const cond_noex;
 };
 
 
 }// namespace ver
 
 #undef ASSIMP_EXTRACT_AIMESH
-#ifndef VB_IMPL_SOURCE
 #undef VERTEX_INPUT_LAYOUT_ELEMENT_TYPES
-#endif

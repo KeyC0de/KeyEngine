@@ -6,7 +6,7 @@
 IConstantBufferEx::IConstantBufferEx( Graphics &gph,
 	const unsigned slot,
 	const con::CBElement &layoutRoot,
-	const con::Buffer *pBuf )
+	const con::CBuffer *pBuf )
 	:
 	m_slot(slot)
 {
@@ -43,9 +43,9 @@ void IConstantBufferEx::setBufferDesc( D3D11_BUFFER_DESC &d3dBufDesc,
 }
 
 void IConstantBufferEx::update( Graphics &gph,
-	const con::Buffer &buf )
+	const con::CBuffer &cb )
 {
-	ASSERT( &buf.getRootLayoutElement() == &getCBExRootLayoutElement(), "Input CB root element is not compatible!" );
+	ASSERT( &cb.getRootElement() == &getCbRootElement(), "Input CB root element is not compatible!" );
 
 	D3D11_MAPPED_SUBRESOURCE msr;
 	HRESULT hres = getDeviceContext( gph )->Map( m_pD3dCb.Get(),
@@ -57,8 +57,8 @@ void IConstantBufferEx::update( Graphics &gph,
 	DXGI_GET_QUEUE_INFO( gph );
 
 	memcpy( msr.pData,
-		buf.getRawBytes(),
-		buf.getSizeInBytes() );
+		cb.getRawBytes(),
+		cb.getSizeInBytes() );
 
 	getDeviceContext( gph )->Unmap( m_pD3dCb.Get(),
 		0u );

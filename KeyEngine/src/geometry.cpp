@@ -9,7 +9,7 @@
 
 TriangleMesh Geometry::makeCube( std::optional<ver::VertexInputLayout> layout )
 {
-	using Type = ver::VertexInputLayout::VertexInputLayoutElementType;
+	using Type = ver::VertexInputLayout::ILEementType;
 
 	if ( !layout )
 	{
@@ -19,7 +19,7 @@ TriangleMesh Geometry::makeCube( std::optional<ver::VertexInputLayout> layout )
 
 	constexpr float side = 1.0f / 2.0f;
 
-	ver::Buffer vertices{std::move( *layout ), 8u};
+	ver::VBuffer vertices{std::move( *layout ), 8u};
 	vertices[0].element<Type::Position3D>() = {-side, -side, -side};
 	vertices[1].element<Type::Position3D>() = {side, -side, -side};
 	vertices[2].element<Type::Position3D>() = {-side, side, -side};
@@ -45,11 +45,11 @@ TriangleMesh Geometry::makeCube( std::optional<ver::VertexInputLayout> layout )
 
 TriangleMesh Geometry::makeCubeIndependentFaces( ver::VertexInputLayout layout )
 {
-	using Type = ver::VertexInputLayout::VertexInputLayoutElementType;
+	using Type = ver::VertexInputLayout::ILEementType;
 
 	constexpr float side = 1.0f / 2.0f;
 
-	ver::Buffer vertices{std::move( layout ), 24u};
+	ver::VBuffer vertices{std::move( layout ), 24u};
 	vertices[0].element<Type::Position3D>() = {-side, -side, -side};// 0 near side
 	vertices[1].element<Type::Position3D>() = {side, -side, -side};// 1
 	vertices[2].element<Type::Position3D>() = {-side, side, -side};// 2
@@ -91,7 +91,7 @@ TriangleMesh Geometry::makeCubeIndependentFaces( ver::VertexInputLayout layout )
 
 TriangleMesh Geometry::makeCubeIndependentFacesTextured()
 {
-	using Type = ver::VertexInputLayout::VertexInputLayoutElementType;
+	using Type = ver::VertexInputLayout::ILEementType;
 
 	auto itl = makeCubeIndependentFaces( std::move( ver::VertexInputLayout{}
 		.add( Type::Position3D )
@@ -137,7 +137,7 @@ TriangleMesh Geometry::makeTesselatedSphere( std::optional<ver::VertexInputLayou
 
 	if ( !layout )
 	{
-		layout = ver::VertexInputLayout{}.add( ver::VertexInputLayout::VertexInputLayoutElementType::Position3D );
+		layout = ver::VertexInputLayout{}.add( ver::VertexInputLayout::ILEementType::Position3D );
 	}
 
 	constexpr float radius = 1.0f;
@@ -150,7 +150,7 @@ TriangleMesh Geometry::makeTesselatedSphere( std::optional<ver::VertexInputLayou
 	const float lattitudeAngle = util::PI / nLateralDivs;
 	const float longitudeAngle = 2.0f * util::PI / nLongitudinalDivs;
 
-	ver::Buffer vb{std::move( *layout )};
+	ver::VBuffer vb{std::move( *layout )};
 	for ( unsigned lat = 1; lat < nLateralDivs; ++lat )
 	{
 		const auto latBase = dx::XMVector3Transform( base,
@@ -255,7 +255,7 @@ TriangleMesh Geometry::makePlane( const int nDivisionsX /* = 1 */,
 	constexpr float height = 2.0f;
 	const int nVerticesX = nDivisionsX + 1;
 	const int nVerticesY = nDivisionsY + 1;
-	ver::Buffer vb{std::move( layout )};
+	ver::VBuffer vb{std::move( layout )};
 	{
 		const float sideX = width / 2.0f;
 		const float sideY = height / 2.0f;
