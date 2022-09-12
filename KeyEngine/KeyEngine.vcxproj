@@ -213,6 +213,9 @@
     <ClCompile Include="src\render_surface_clear_pass.cpp" />
     <ClCompile Include="src\camera.cpp" />
     <ClCompile Include="src\pass_2d.cpp" />
+    <ClCompile Include="src\save_game.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="src\shadow_pass.cpp" />
     <ClCompile Include="src\light_vscb.cpp" />
     <ClCompile Include="src\camera_widget.cpp" />
@@ -305,6 +308,9 @@
     <ClCompile Include="src\windows_message_map.cpp" />
     <ClCompile Include="src\depth_reversed_pass.cpp" />
     <ClCompile Include="src\wireframe_pass.cpp" />
+    <ClCompile Include="src\world.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="third_party\imgui\imgui.cpp" />
     <ClCompile Include="third_party\imgui\imgui_demo.cpp" />
     <ClCompile Include="third_party\imgui\imgui_draw.cpp" />
@@ -358,6 +364,7 @@
     <ClInclude Include="inc\consteval_forced.h" />
     <ClInclude Include="inc\graphics_mode.h" />
     <ClInclude Include="inc\grid_location.h" />
+    <ClInclude Include="inc\save_game.h" />
     <ClInclude Include="inc\key_traits.h" />
     <ClInclude Include="inc\lru_cache.h" />
     <ClInclude Include="inc\lua_interface.h" />
@@ -376,6 +383,7 @@
     <ClInclude Include="inc\subject_observer.h" />
     <ClInclude Include="inc\testing.h" />
     <ClInclude Include="inc\thread_pool_j.h" />
+    <ClInclude Include="inc\types.h" />
     <ClInclude Include="inc\vtune_itt_domain.h" />
     <ClInclude Include="inc\wireframe_pass.h" />
     <ClInclude Include="inc\solid_outline_draw_pass.h" />
@@ -470,6 +478,7 @@
     <ClInclude Include="inc\render_queue_pass.h" />
     <ClInclude Include="inc\render_target.h" />
     <ClInclude Include="inc\splash_window.h" />
+    <ClInclude Include="inc\world.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="inc\settings_manager.h" />
     <ClInclude Include="inc\shadow_pass.h" />
@@ -999,7 +1008,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="design_doc\fantasia.txt" />
-    <Text Include="design_doc\TODO.txt" />
+    <Text Include="design_doc\plan.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

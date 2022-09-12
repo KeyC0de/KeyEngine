@@ -196,7 +196,7 @@ Sandbox3d::Sandbox3d( const int width,
 	//	dx::XMFLOAT3{5.0f, 15.0f, 10.0f}, dx::XMFLOAT3{0.0f, 1.0f, 0.f}, false );
 	//m_cameraMan.add( m_pPointLight1->shareCamera() );
 
-	m_cube1.setWorldPosition( {10.0f, 5.0f, 6.0f} );
+	m_cube1.setPosition( {10.0f, 5.0f, 6.0f} );
 
 	m_nanoSuit.setRootTransform( dx::XMMatrixRotationY( util::PI / 2.f ) *
 		dx::XMMatrixTranslation( 27.f, -0.56f, 1.7f ) );

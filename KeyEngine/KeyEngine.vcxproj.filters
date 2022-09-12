@@ -56,10 +56,10 @@
       <Filter>engine\gameplay</Filter>
     </ClCompile>
     <ClCompile Include="src\mesh.cpp">
-      <Filter>engine\vfx\drawable</Filter>
+      <Filter>engine\vfx\drawings</Filter>
     </ClCompile>
     <ClCompile Include="src\camera_widget.cpp">
-      <Filter>engine\vfx\drawable</Filter>
+      <Filter>engine\vfx\drawings</Filter>
     </ClCompile>
     <ClCompile Include="src\graphics_friend.cpp">
       <Filter>engine\vfx</Filter>
@@ -350,31 +350,37 @@
       <Filter>engine\gameplay</Filter>
     </ClCompile>
     <ClCompile Include="src\cube.cpp">
-      <Filter>engine\vfx\drawable</Filter>
+      <Filter>engine\vfx\drawings</Filter>
     </ClCompile>
     <ClCompile Include="src\frustum.cpp">
-      <Filter>engine\vfx\drawable</Filter>
+      <Filter>engine\vfx\drawings</Filter>
     </ClCompile>
     <ClCompile Include="src\geometry.cpp">
-      <Filter>engine\vfx\drawable</Filter>
+      <Filter>engine\vfx\drawings</Filter>
     </ClCompile>
     <ClCompile Include="src\plane.cpp">
-      <Filter>engine\vfx\drawable</Filter>
+      <Filter>engine\vfx\drawings</Filter>
     </ClCompile>
     <ClCompile Include="src\rectangle.cpp">
-      <Filter>engine\vfx\drawable</Filter>
+      <Filter>engine\vfx\drawings</Filter>
     </ClCompile>
     <ClCompile Include="src\sphere.cpp">
-      <Filter>engine\vfx\drawable</Filter>
+      <Filter>engine\vfx\drawings</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle_mesh.cpp">
-      <Filter>engine\vfx\drawable</Filter>
+      <Filter>engine\vfx\drawings</Filter>
     </ClCompile>
     <ClCompile Include="src\thread_pool_j.cpp">
       <Filter>engine\common</Filter>
     </ClCompile>
     <ClCompile Include="src\sprite.cpp">
-      <Filter>engine\vfx\drawable</Filter>
+      <Filter>engine\vfx\drawings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\world.cpp">
+      <Filter>engine\gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="src\save_game.cpp">
+      <Filter>engine\gameplay</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -797,10 +803,10 @@
       <Filter>engine\gameplay</Filter>
     </ClInclude>
     <ClInclude Include="inc\mesh.h">
-      <Filter>engine\vfx\drawable</Filter>
+      <Filter>engine\vfx\drawings</Filter>
     </ClInclude>
     <ClInclude Include="inc\camera_widget.h">
-      <Filter>engine\vfx\drawable</Filter>
+      <Filter>engine\vfx\drawings</Filter>
     </ClInclude>
     <ClInclude Include="inc\graphics.h">
       <Filter>engine\vfx</Filter>
@@ -1154,31 +1160,40 @@
       <Filter>third_party\jthread</Filter>
     </ClInclude>
     <ClInclude Include="inc\triangle_mesh.h">
-      <Filter>engine\vfx\drawable</Filter>
+      <Filter>engine\vfx\drawings</Filter>
     </ClInclude>
     <ClInclude Include="inc\cube.h">
-      <Filter>engine\vfx\drawable</Filter>
+      <Filter>engine\vfx\drawings</Filter>
     </ClInclude>
     <ClInclude Include="inc\frustum.h">
-      <Filter>engine\vfx\drawable</Filter>
+      <Filter>engine\vfx\drawings</Filter>
     </ClInclude>
     <ClInclude Include="inc\geometry.h">
-      <Filter>engine\vfx\drawable</Filter>
+      <Filter>engine\vfx\drawings</Filter>
     </ClInclude>
     <ClInclude Include="inc\plane.h">
-      <Filter>engine\vfx\drawable</Filter>
+      <Filter>engine\vfx\drawings</Filter>
     </ClInclude>
     <ClInclude Include="inc\rectangle.h">
-      <Filter>engine\vfx\drawable</Filter>
+      <Filter>engine\vfx\drawings</Filter>
     </ClInclude>
     <ClInclude Include="inc\sphere.h">
-      <Filter>engine\vfx\drawable</Filter>
+      <Filter>engine\vfx\drawings</Filter>
     </ClInclude>
     <ClInclude Include="inc\thread_pool_j.h">
       <Filter>engine\common</Filter>
     </ClInclude>
     <ClInclude Include="inc\sprite.h">
-      <Filter>engine\vfx\drawable</Filter>
+      <Filter>engine\vfx\drawings</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\world.h">
+      <Filter>engine\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\save_game.h">
+      <Filter>engine\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\types.h">
+      <Filter>engine\common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1368,10 +1383,10 @@
     </FxCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="design_doc\TODO.txt">
+    <Text Include="design_doc\fantasia.txt">
       <Filter>design_doc</Filter>
     </Text>
-    <Text Include="design_doc\fantasia.txt">
+    <Text Include="design_doc\plan.txt">
       <Filter>design_doc</Filter>
     </Text>
   </ItemGroup>
@@ -1475,7 +1490,7 @@
     <Filter Include="third_party\jthread">
       <UniqueIdentifier>{291f9785-0019-4d87-9e2d-bedbb6af73fd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="engine\vfx\drawable">
+    <Filter Include="engine\vfx\drawings">
       <UniqueIdentifier>{a20e5f58-d59f-4323-8c6f-dadc52f1b15c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

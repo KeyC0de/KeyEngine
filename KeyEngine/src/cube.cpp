@@ -151,24 +151,30 @@ Cube::Cube( Graphics &gph,
 	}
 }
 
-void Cube::setWorldPosition( const dx::XMFLOAT3 &pos ) noexcept
+void Cube::setPosition( const dx::XMFLOAT3 &pos ) noexcept
 {
 	this->m_pos = pos;
 }
 
-void Cube::setWorldRotation( const float roll,
-	const float pitch,
-	const float yaw ) noexcept
+void Cube::setRotation( const dx::XMFLOAT3 &rot ) noexcept
 {
-	this->m_roll = roll;
-	this->m_pitch = pitch;
-	this->m_yaw = yaw;
+	this->m_rot = rot;
 }
 
-const dx::XMMATRIX Cube::getTransform() const noexcept
+const DirectX::XMMATRIX Cube::getTransform() const noexcept
 {
-	return dx::XMMatrixRotationRollPitchYaw( m_roll, m_pitch, m_yaw ) *
-		dx::XMMatrixTranslation( m_pos.x, m_pos.y, m_pos.z );
+	return dx::XMMatrixRotationRollPitchYawFromVector( dx::XMLoadFloat3( &m_rot ) ) *
+		dx::XMMatrixTranslationFromVector( dx::XMLoadFloat3( &m_pos ) );
+}
+
+const DirectX::XMMATRIX Cube::calcPosition() const noexcept
+{
+	return dx::XMMatrixTranslationFromVector( dx::XMLoadFloat3( &m_pos ) );
+}
+
+const DirectX::XMMATRIX Cube::calcRotation() const noexcept
+{
+	return dx::XMMatrixRotationRollPitchYawFromVector( dx::XMLoadFloat3( &m_rot ) );
 }
 
 void Cube::displayImguiWidgets( Graphics &gph,
@@ -194,15 +200,15 @@ void Cube::displayImguiWidgets( Graphics &gph,
 			"%.1f" );
 		ImGui::Text( "Orientation" );
 		ImGui::SliderAngle( "Pitch",
-			&m_pitch,
+			&m_rot.x,
 			-90.0f,
 			90.0f );
 		ImGui::SliderAngle( "Yaw",
-			&m_yaw,
+			&m_rot.y,
 			-180.0f,
 			180.0f );
 		ImGui::SliderAngle( "Roll",
-			&m_roll,
+			&m_rot.z,
 			-180.0f,
 			180.0f );
 

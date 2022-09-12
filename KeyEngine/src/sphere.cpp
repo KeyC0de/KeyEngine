@@ -15,11 +15,14 @@ namespace dx = DirectX;
 
 Sphere::Sphere( Graphics &gph,
 	const float radius )
+	:
+	m_radius{radius}
 {
 	auto model = Geometry::makeTesselatedSphere();
 	model.transform( dx::XMMatrixScaling( radius,
 		radius,
 		radius ) );
+
 	const auto geometryTag = "$sphere." + std::to_string( radius );
 	m_pVertexBuffer = VertexBuffer::fetch( gph,
 		geometryTag,
@@ -45,7 +48,7 @@ Sphere::Sphere( Graphics &gph,
 		struct ColorPCB
 		{
 			dx::XMFLOAT3 color{1.0f, 1.0f, 1.0f};
-			float padding;
+			float padding = 0.0f;
 		} colorCb;
 		lambertian.addBindable( PixelShaderConstantBuffer<ColorPCB>::fetch( gph,
 			colorCb,
@@ -74,7 +77,10 @@ const dx::XMMATRIX Sphere::getTransform() const noexcept
 
 const DirectX::XMMATRIX Sphere::calcPosition() const noexcept
 {
-	return dx::XMMatrixTranslation( m_pos.x,
-		m_pos.y,
-		m_pos.z );
+	return dx::XMMatrixTranslationFromVector( dx::XMLoadFloat3( &m_pos ) );
+}
+
+float Sphere::getRadius() const noexcept
+{
+	return m_radius;
 }

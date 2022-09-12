@@ -1,3 +1,4 @@
+#ifdef D2D_INTEROP
 #include "sprite.h"
 #include "os_utils.h"
 
@@ -106,3 +107,4 @@ void SpriteSheet::render( Graphics &gph,
 		destRect,
 		alpha );
 }
+#endif

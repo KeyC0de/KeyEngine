@@ -90,6 +90,11 @@ void Mesh::setTransform( const dx::XMMATRIX &worldTransform ) noexcept
 		worldTransform );
 }
 
+DirectX::XMFLOAT4X4& Mesh::transform()
+{
+	return m_worldTransform;
+}
+
 const DirectX::XMMATRIX Mesh::getTransform() const noexcept
 {
 	return DirectX::XMLoadFloat4x4( &m_worldTransform );
@@ -160,4 +165,11 @@ void Mesh::setDistanceFromActiveCamera() noexcept
 const float Mesh::getDistanceFromActiveCamera() const noexcept
 {
 	return m_distanceFromActiveCamera;
+}
+
+float Mesh::calcDistanceFromActiveCamera( const DirectX::XMFLOAT3 &pos ) const noexcept
+{
+	auto &cameraPos = CameraManager::instance().activeCamera().getPosition();
+	return util::distance( pos,
+		cameraPos );
 }

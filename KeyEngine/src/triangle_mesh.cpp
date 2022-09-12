@@ -1,6 +1,8 @@
 #include "triangle_mesh.h"
 
 
+namespace dx = DirectX;
+
 TriangleMesh::TriangleMesh( const ver::VBuffer &vertices,
 	const std::vector<unsigned> &indices )
 	:
@@ -11,14 +13,14 @@ TriangleMesh::TriangleMesh( const ver::VBuffer &vertices,
 	ASSERT( m_indices.size() % 3 == 0, "indices not a multiple of 3!" );
 }
 
-void TriangleMesh::transform( const DirectX::XMMATRIX &matrix )
+void TriangleMesh::transform( const dx::XMMATRIX &matrix )
 {
 	using ElementType = ver::VertexInputLayout::ILEementType;
 	for ( int i = 0; i < m_vb.getVertexCount(); ++i )
 	{
 		auto &pos = m_vb[i].element<ElementType::Position3D>();
-		DirectX::XMStoreFloat3( &pos,
-			DirectX::XMVector3Transform( DirectX::XMLoadFloat3( &pos ), matrix ) );
+		dx::XMStoreFloat3( &pos,
+			dx::XMVector3Transform( dx::XMLoadFloat3( &pos ), matrix ) );
 	}
 }
 

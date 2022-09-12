@@ -18,11 +18,21 @@ namespace ren
 	class Renderer;
 }
 
+//=============================================================
+//	\class	
+//
+//	\author	KeyC0de
+//	\date	2022/09/12 23:26
+//
+//	\brief	imported Models will be handled via Mesh
+//			stand-alone Meshes should not touch `m_worldTransform`
+//			instead they should define their own transform vars (eg m_pos, m_rot, or m_scale) and override getTransform (for Cloning Bindables like TransformVSCB) that require the Mesh's transform to be bound to the pipeline
+//=============================================================
 class Mesh
 {
-protected:
 	float m_distanceFromActiveCamera = 0.0f;
-	mutable DirectX::XMFLOAT4X4 m_worldTransform;	// stored in row major, transposed in TransformVSCB b4 lead to HLSL
+	mutable DirectX::XMFLOAT4X4 m_worldTransform;
+protected:
 	std::shared_ptr<IndexBuffer> m_pIndexBuffer;
 	std::shared_ptr<VertexBuffer> m_pVertexBuffer;
 	std::shared_ptr<PrimitiveTopology> m_pPrimitiveTopology;
@@ -57,7 +67,7 @@ public:
 	//	\function	update
 	//	\brief  does gameplay, transformation, physics
 	//	\date	2021/10/26 23:58
-	virtual void update( const float dt ) cond_noex;
+	void update( const float dt ) cond_noex;
 	void render( const size_t channels ) const noexcept;
 	void bind( Graphics &gph ) const cond_noex;
 	void accept( IEffectVisitor &ev );
@@ -68,6 +78,7 @@ public:
 	//	\brief  sets the world transform matrix for the mesh
 	//	\date	2022/08/28 21:24
 	void setTransform( const DirectX::XMMATRIX &worldTransform ) noexcept;
+	DirectX::XMFLOAT4X4& transform();
 	virtual const DirectX::XMMATRIX getTransform() const noexcept;
 	DirectX::XMFLOAT3 calcPosition() const noexcept;
 	DirectX::XMMATRIX calcPositionTr() const noexcept;
@@ -78,4 +89,6 @@ public:
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	void setDistanceFromActiveCamera() noexcept;
 	const float getDistanceFromActiveCamera() const noexcept;
+protected:
+	float calcDistanceFromActiveCamera( const DirectX::XMFLOAT3 &pos ) const noexcept;
 };

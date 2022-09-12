@@ -76,7 +76,7 @@ Frustum::Frustum( Graphics &gph,
 		struct ColorPCB
 		{
 			dx::XMFLOAT3 color{0.6f, 0.2f, 0.2f};
-			float padding;
+			float padding = 0.0f;
 		} colorPcb;
 		lambert.addBindable( PixelShaderConstantBuffer<ColorPCB>::fetch( gph,
 			colorPcb,
@@ -105,7 +105,7 @@ Frustum::Frustum( Graphics &gph,
 		struct ColorPCB2
 		{
 			dx::XMFLOAT3 color{0.25f, 0.08f, 0.08f};
-			float padding;
+			float padding = 0.0f;
 		} colorPcb;
 		occluded.addBindable( PixelShaderConstantBuffer<ColorPCB2>::fetch( gph,
 			colorPcb,

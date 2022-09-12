@@ -7,6 +7,13 @@ namespace util
 namespace dx = DirectX;
 
 
+DirectX::XMMATRIX XM_CALLCONV computeTransform( const const DirectX::XMFLOAT3 &scale,
+	const DirectX::XMFLOAT3 &pos,
+	const DirectX::XMFLOAT3 &rot )
+{
+	return dx::XMMatrixScaling( scale.x, scale.y, scale.z ) * dx::XMMatrixRotationX( rot.x ) * dx::XMMatrixRotationY( rot.y ) * dx::XMMatrixRotationZ( rot.z ) * dx::XMMatrixTranslation( pos.x, pos.y, pos.z );
+}
+
 dx::XMFLOAT3 extractEulerAngles( const dx::XMFLOAT4X4 &mat )
 {
 	dx::XMFLOAT3 eulerRot;

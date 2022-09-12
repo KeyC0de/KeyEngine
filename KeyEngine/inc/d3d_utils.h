@@ -32,6 +32,7 @@ inline void comSafeRelease( T &p )
 
 static auto g_XMZero = DirectX::XMVectorZero();
 
+DirectX::XMMATRIX XM_CALLCONV computeTransform( const DirectX::XMFLOAT3 &scale, const DirectX::XMFLOAT3 &pos, const DirectX::XMFLOAT3 &rot );
 //===================================================
 //	\function	extractEulerAngles
 //	\brief  builds a FLOAT3 of {x=pitch,y=yaw,z=roll}

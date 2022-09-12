@@ -21,17 +21,17 @@
 namespace dx = DirectX;
 
 Plane::Plane( Graphics &gph,
-	const float size,
-	const dx::XMFLOAT4 &color )
+	const dx::XMFLOAT4 &color,
+	const float scale )
 	:
 	m_colPcb{color}
 {
 	auto plane = Geometry::makePlane();
-	plane.transform( dx::XMMatrixScaling( size,
-		size,
+	plane.transform( dx::XMMatrixScaling( scale,
+		scale,
 		1.0f ) );
 
-	const auto geometryTag = "$plane." + std::to_string( size );
+	const auto geometryTag = "$plane." + std::to_string( scale );
 
 	m_pVertexBuffer = VertexBuffer::fetch( gph,
 		geometryTag,
@@ -164,13 +164,9 @@ void Plane::setPosition( const dx::XMFLOAT3 &pos ) noexcept
 	this->m_pos = pos;
 }
 
-void Plane::setRotation( const float roll,
-	const float pitch,
-	const float yaw ) noexcept
+void Plane::setRotation( const DirectX::XMFLOAT3 &rot ) noexcept
 {
-	m_roll = roll;
-	m_pitch = pitch;
-	m_yaw = yaw;
+	this->m_rot = rot;
 }
 
 const dx::XMMATRIX Plane::getTransform() const noexcept
@@ -178,14 +174,14 @@ const dx::XMMATRIX Plane::getTransform() const noexcept
 	return calcRotation() * calcPosition(); 
 }
 
-const dx::XMMATRIX Plane::calcRotation() const noexcept
-{
-	return dx::XMMatrixRotationRollPitchYaw( m_roll, m_pitch, m_yaw );
-}
-
 const dx::XMMATRIX Plane::calcPosition() const noexcept
 {
-	return dx::XMMatrixTranslation( m_pos.x, m_pos.y, m_pos.z );
+	return dx::XMMatrixTranslationFromVector( dx::XMLoadFloat3( &m_pos ) );
+}
+
+const dx::XMMATRIX Plane::calcRotation() const noexcept
+{
+	return dx::XMMatrixRotationRollPitchYawFromVector( dx::XMLoadFloat3( &m_rot ) );
 }
 
 void Plane::displayImguiWidgets( Graphics &gph,
@@ -198,9 +194,9 @@ void Plane::displayImguiWidgets( Graphics &gph,
 		ImGui::SliderFloat( "Y", &m_pos.y, -80.0f, 80.0f, "%.1f" );
 		ImGui::SliderFloat( "Z", &m_pos.z, -80.0f, 80.0f, "%.1f" );
 		ImGui::Text( "Orientation" );
-		ImGui::SliderAngle( "Roll", &m_roll, -180.0f, 180.0f );
-		ImGui::SliderAngle( "Pitch", &m_pitch, -180.0f, 180.0f );
-		ImGui::SliderAngle( "Yaw", &m_yaw, -180.0f, 180.0f );
+		ImGui::SliderAngle( "Pitch", &m_rot.x, -180.0f, 180.0f );
+		ImGui::SliderAngle( "Yaw", &m_rot.y, -180.0f, 180.0f );
+		ImGui::SliderAngle( "Roll", &m_rot.z, -180.0f, 180.0f );
 		ImGui::Text( "Shading" );
 
 		auto pBlendState = findBindable<BlendState>();

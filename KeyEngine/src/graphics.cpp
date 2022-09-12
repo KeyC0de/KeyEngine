@@ -19,9 +19,10 @@
 #pragma comment( lib, "d3d11.lib" )
 #pragma comment( lib, "d3dcompiler.lib" )
 #pragma comment( lib, "DirectXTK.lib" )
-#pragma comment( lib, "d2d1.lib" )			// 2d
-#pragma comment( lib, "dwrite.lib" )		// 2d
-
+#ifdef D2D_INTEROP
+#	pragma comment( lib, "d2d1.lib" )
+#	pragma comment( lib, "dwrite.lib" )
+#endif
 
 namespace mwrl = Microsoft::WRL;
 namespace dx = DirectX;
@@ -49,7 +50,7 @@ IDXGIAdapter* Graphics::Adapter::adapter() const noexcept
 	return m_pAdapter.Get();
 }
 
-#if defined _FLIP_PRESENT
+#if defined FLIP_PRESENT
 void Graphics::makeWindowAssociationWithFactory( HWND hWnd,
 	UINT flags )
 {
@@ -134,7 +135,7 @@ Graphics::Graphics( const HWND hWnd,
 	createAdapters();
 	const auto &primaryAdapter = m_adapters.front();
 	hres = E_INVALIDARG;
-#if defined _FLIP_PRESENT
+#if defined FLIP_PRESENT
 	// make window-swap chain association
 	makeWindowAssociationWithFactory( hWnd );
 #else
@@ -262,7 +263,9 @@ void Graphics::cleanState() noexcept
 	}
 	else
 	{
+#ifdef D2D_INTEROP
 		m_p2DContext->Flush();
+#endif
 	}
 }
 
@@ -276,7 +279,9 @@ void Graphics::beginFrame() noexcept
 		ImGui::NewFrame();
 
 		clearShaderSlots();
-		//begin2dDraw();
+#ifdef D2D_INTEROP
+		begin2dDraw();
+#endif
 	}
 	else
 	{
@@ -329,7 +334,9 @@ void Graphics::endFrame()
 	{
 		ImGui::Render();
 		ImGui_ImplDX11_RenderDrawData( ImGui::GetDrawData() );
-		//end2dDraw();
+#ifdef D2D_INTEROP
+		end2dDraw();
+#endif
 	}
 	present();
 	//VTUNE_ITT_TASK_END;
@@ -341,7 +348,7 @@ void Graphics::present()
 	SettingsManager &setMan = SettingsManager::instance();
 	if ( setMan.getSettings().bVSync )
 	{
-#if defined _FLIP_PRESENT
+#if defined FLIP_PRESENT
 		hres = m_pSwapChain->Present1( 1u,
 			0u,
 			 nullptr );
@@ -352,7 +359,7 @@ void Graphics::present()
 	}
 	else
 	{
-#if defined _FLIP_PRESENT
+#if defined FLIP_PRESENT
 		hres = m_pSwapChain->Present1( 0u,
 			0u,
 			nullptr );
@@ -575,7 +582,8 @@ void Graphics::d3d11DebugReport()
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-/// 2D
+#ifdef D2D_INTEROP
+/// 2d & 3d Interoperability
 void Graphics::create2dInteroperability()
 {
 	ASSERT( m_p2DSurface, "DXGISurface has not been created!" );
@@ -725,7 +733,10 @@ void Graphics::drawText( const std::wstring &txt,
 		rect,
 		m_p2dSolidColorBrush.Get() );
 }
-
+#endif	// D2D_INTEROP
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+/// 2d only
 const ColorBGRA Graphics::getPixel( const int x,
 	const int y ) const noexcept
 {

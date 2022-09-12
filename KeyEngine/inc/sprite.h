@@ -1,9 +1,9 @@
 #pragma once
 
+#ifdef D2D_INTEROP
 #include "graphics.h"
 #include <wincodec.h>
 #include "non_copyable.h"
-
 
 // https://docs.microsoft.com/en-us/windows/win32/wic/jpeg-ycbcr-support
 class Sprite
@@ -38,3 +38,4 @@ public:
 
 	void render( Graphics &gph, const int index, const int x, const int y, const float alpha = 1.0f );
 };
+#endif

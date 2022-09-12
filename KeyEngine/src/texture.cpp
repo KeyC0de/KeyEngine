@@ -92,10 +92,12 @@ Texture::Texture( Graphics &gph,
 		&m_pTex );
 	ASSERT_HRES_IF_FAILED;
 
+#ifdef D2D_INTEROP
 	// create the DXGI Surface for d2d interoperability
 	hres = m_pTex->QueryInterface( __uuidof( IDXGISurface ),
 		reinterpret_cast<void**>( gph.surface2d().GetAddressOf() ) );
 	ASSERT_HRES_IF_FAILED;
+#endif
 
 	D3D11_TEXTURE2D_DESC texDesc;
 	m_pTex->GetDesc( &texDesc );

@@ -88,7 +88,9 @@ Pass2D::Pass2D( Graphics &gph,
 		gph.getClientHeight(),
 		0u ) );
 
+#ifdef D2D_INTEROP
 	gph.create2dInteroperability();
+#endif
 
 	addPassBindable( RasterizerState::fetch( gph,
 		RasterizerState::FrontSided,

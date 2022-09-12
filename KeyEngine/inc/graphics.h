@@ -3,8 +3,10 @@
 #include "winner.h"
 #include "key_wrl.h"
 #include <d3d11.h>
-#include <d2d1_1.h>
-#include <dwrite.h>
+#ifdef D2D_INTEROP
+#	include <d2d1_1.h>
+#	include <dwrite.h>
+#endif
 #include <d3dcompiler.h>
 #include <DirectXMath.h>
 #include <memory>
@@ -62,7 +64,7 @@ private:
 	static inline std::vector<Adapter> m_adapters;
 	Microsoft::WRL::ComPtr<IDXGIFactory1> m_pDxgiFactory;
 	Microsoft::WRL::ComPtr<ID3D11Device> m_pDevice;
-#if defined _FLIP_PRESENT
+#if defined FLIP_PRESENT
 	Microsoft::WRL::ComPtr<IDXGISwapChain1> m_pSwapChain;
 #else
 	Microsoft::WRL::ComPtr<IDXGISwapChain> m_pSwapChain;
@@ -76,9 +78,11 @@ private:
 	KeyTimer<std::chrono::microseconds> m_fpsTimer;
 	DirectX::XMMATRIX m_projection;
 	DirectX::XMMATRIX m_view;
+	std::unique_ptr<DirectX::SpriteFont> m_pSpriteFont;
+	std::unique_ptr<DirectX::SpriteBatch> m_pFpsSpriteBatch;
 	std::vector<ID3D11DeviceContext*> m_deferredContexts;
 	std::vector<ID3D11CommandList*> m_commandLists;
-#if defined _FLIP_PRESENT
+#if defined FLIP_PRESENT
 private:
 	static bool checkTearingSupport();
 #endif
@@ -86,13 +90,12 @@ public:
 	Graphics( const HWND hWnd, const int width, const int height );
 	~Graphics();
 
-#if defined _FLIP_PRESENT
+#if defined FLIP_PRESENT
 	void makeWindowAssociationWithFactory( HWND hWnd, const UINT flags = DXGI_MWA_NO_WINDOW_CHANGES );
 #endif
 	void beginFrame() noexcept;
 	void updateAndRenderFpsTimer();
 	void endFrame();
-	void present();
 	void draw( const unsigned count ) cond_noex;
 	void drawIndexed( const unsigned count ) cond_noex;
 	void drawIndexedInstanced( const unsigned indexCount, const unsigned instanceCount ) cond_noex;
@@ -110,6 +113,7 @@ public:
 	DxgiInfoQueue& infoQueue();
 #endif
 private:
+	void present();
 	//===================================================
 	//	\function	recordDeferredCommandList
 	//	\brief  probably should call this when the Model is being loaded not when pass->run() -> Job->run()
@@ -127,6 +131,7 @@ private:
 	void interrogateDirectxFeatures();
 	void d3d11DebugReport();
 #endif
+#ifdef D2D_INTEROP
 private:
 	/// 2d & 3d Interoperability
 	Microsoft::WRL::ComPtr<ID2D1Factory> m_p2DFactory;
@@ -136,8 +141,6 @@ private:
 	Microsoft::WRL::ComPtr<ID2D1SolidColorBrush> m_p2dSolidColorBrush;
 	Microsoft::WRL::ComPtr<IDWriteFactory> m_pWriteFactory;
 	Microsoft::WRL::ComPtr<IDWriteTextFormat> m_pTextFormat;
-	std::unique_ptr<DirectX::SpriteFont> m_pSpriteFont;
-	std::unique_ptr<DirectX::SpriteBatch> m_pFpsSpriteBatch;
 private:
 	inline void begin2dDraw()
 	{
@@ -163,7 +166,7 @@ public:
 	void drawEllipse( const float x, const float y, const float hRadius, const float vRadius, const D2D1::ColorF &rgba, const float strokeWidth = 1.0f );
 	void drawCircle( const float x, const float y, const float radius, const D2D1::ColorF &rgba, const float strokeWidth = 1.0f );
 	void drawText( const std::wstring &txt, const D2D1_RECT_F &rect, const D2D1::ColorF &rgba );
-
+#endif
 private:
 	/// 2d only
 	ColorBGRA *m_pCpuBuffer = nullptr;

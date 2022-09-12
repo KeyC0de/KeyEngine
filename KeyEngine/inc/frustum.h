@@ -17,7 +17,7 @@ public:
 	void setupVertexBuffer( Graphics &gph, const float width, const float height, const float nearZ, const float farZ );
 	void setPosition( const DirectX::XMFLOAT3 &pos ) noexcept;
 	void setRotation( const DirectX::XMFLOAT3 &rot ) noexcept;
-	const DirectX::XMMATRIX getTransform() const noexcept override;
+	virtual const DirectX::XMMATRIX getTransform() const noexcept override;
 	const DirectX::XMMATRIX calcRotation() const noexcept;
 	const DirectX::XMMATRIX calcPosition() const noexcept;
 };

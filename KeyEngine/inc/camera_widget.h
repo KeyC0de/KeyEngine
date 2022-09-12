@@ -21,7 +21,7 @@ public:
 
 	void setPosition( const DirectX::XMFLOAT3 &pos );
 	void setRotation( const DirectX::XMFLOAT3 &rot );
-	const DirectX::XMMATRIX getTransform() const noexcept override;
+	virtual const DirectX::XMMATRIX getTransform() const noexcept override;
 	const DirectX::XMMATRIX calcPosition() const noexcept;
 	const DirectX::XMMATRIX calcRotation() const noexcept;
 };
