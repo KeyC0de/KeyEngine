@@ -163,21 +163,6 @@
     <ClCompile Include="games\arkanoid\ball.cpp" />
     <ClCompile Include="games\arkanoid\brick.cpp" />
     <ClCompile Include="games\arkanoid\paddle.cpp" />
-    <ClCompile Include="games\snake\fruit.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="games\snake\snake.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="games\snake\snake_play_field.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="src\algorithms.cpp" />
     <ClCompile Include="src\effect_visitor.cpp" />
     <ClCompile Include="src\grid_location.cpp" />
@@ -357,9 +342,6 @@
     <ClInclude Include="games\arkanoid\ball.h" />
     <ClInclude Include="games\arkanoid\brick.h" />
     <ClInclude Include="games\arkanoid\paddle.h" />
-    <ClInclude Include="games\snake\fruit.h" />
-    <ClInclude Include="games\snake\snake.h" />
-    <ClInclude Include="games\snake\snake_play_field.h" />
     <ClInclude Include="inc\algorithms.h" />
     <ClInclude Include="inc\consteval_forced.h" />
     <ClInclude Include="inc\graphics_mode.h" />

@@ -43,7 +43,7 @@ Texture::Texture( Graphics &gph,
 		&m_pTex );
 	ASSERT_HRES_IF_FAILED;
 
-	writeBitmapToTexture( gph,
+	paintTextureToBitmap( gph,
 		m_pTex.Get(),
 		bitmap );
 
@@ -113,7 +113,7 @@ Texture::Texture( Graphics &gph,
 	ASSERT_HRES_IF_FAILED;
 }
 
-void Texture::writeBitmapToTexture( Graphics &gph,
+void Texture::paintTextureToBitmap( Graphics &gph,
 	ID3D11Texture2D *tex,
 	const Bitmap &bitmap,
 	const D3D11_BOX *destPortion /* = nullptr */)

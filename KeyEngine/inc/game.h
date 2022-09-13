@@ -19,9 +19,6 @@
 #include "../games/arkanoid/ball.h"
 #include "../games/arkanoid/brick.h"
 #include "../games/arkanoid/paddle.h"
-//#include "../games/snake/snake_play_field.h"
-//#include "../games/snake/snake.h"
-//#include "../games/snake/fruit.h"
 
 
 template<typename T>
@@ -116,42 +113,6 @@ private:
 	void render( const float dt );
 	void present();
 };
-
-/*
-class Snake final
-	: public Game<Snake>
-{
-	std::mt19937 rng;
-	Board board;
-	Snake snek;
-	Location2d delta_loc = { 1, 0 };	// 2d orientation and displacement
-	Fruit fruit;
-	float snakeMovePeriod = 0.4f;
-	float snakeMoveCounter = 0.0f;
-	float m_snekModifiedMovePeriod;
-	float snekSpeedupFactor = 0.97;
-	int fruitsEaten = 0;
-	std::normal_distribution<float> freqDist;
-	int nPoison;
-	static constexpr float snekMovePeriodMin = 0.040f;
-	static constexpr float howManyFruitsForSpeedUp = 0.15f;
-	int gameIsOver = false;
-	int nHowManyFruits = 2;
-	Sound sfxEat = Sound{L"Sounds\\Eat.wav"};
-	ren::Renderer2d m_renderer;
-public:
-	Snake( const int width, const int height );
-
-	int loop();
-private:
-	int checkInput( const float dt );
-	void update( const float dt );
-#if defined _DEBUG && !defined NDEBUG
-	void test();
-#endif
-	void render( const float dt );
-	void present();
-};*/
 
 
 #define throwGameException( msg ) throw GameException( __LINE__,\

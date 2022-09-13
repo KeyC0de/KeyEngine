@@ -328,15 +328,6 @@
     <ClCompile Include="games\arkanoid\paddle.cpp">
       <Filter>games\arkanoid</Filter>
     </ClCompile>
-    <ClCompile Include="games\snake\fruit.cpp">
-      <Filter>games\snake</Filter>
-    </ClCompile>
-    <ClCompile Include="games\snake\snake.cpp">
-      <Filter>games\snake</Filter>
-    </ClCompile>
-    <ClCompile Include="games\snake\snake_play_field.cpp">
-      <Filter>games\snake</Filter>
-    </ClCompile>
     <ClCompile Include="src\string_buffer.cpp">
       <Filter>engine\common</Filter>
     </ClCompile>
@@ -1105,15 +1096,6 @@
     <ClInclude Include="games\arkanoid\paddle.h">
       <Filter>games\arkanoid</Filter>
     </ClInclude>
-    <ClInclude Include="games\snake\fruit.h">
-      <Filter>games\snake</Filter>
-    </ClInclude>
-    <ClInclude Include="games\snake\snake.h">
-      <Filter>games\snake</Filter>
-    </ClInclude>
-    <ClInclude Include="games\snake\snake_play_field.h">
-      <Filter>games\snake</Filter>
-    </ClInclude>
     <ClInclude Include="inc\string_buffer.h">
       <Filter>engine\common</Filter>
     </ClInclude>
@@ -1417,9 +1399,6 @@
     </Filter>
     <Filter Include="games\arkanoid">
       <UniqueIdentifier>{1f9c752e-4545-4057-8d5c-b74116ffd063}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="games\snake">
-      <UniqueIdentifier>{16d1abf4-5749-46bf-bd38-dd4a80e27610}</UniqueIdentifier>
     </Filter>
     <Filter Include="config">
       <UniqueIdentifier>{a81cadd4-b8cf-442b-9bd5-db30f2991786}</UniqueIdentifier>

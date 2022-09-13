@@ -60,9 +60,9 @@ int WINAPI wWinMain( _In_ HINSTANCE hinstance,
 					Arkanoid game{800, 600};
 					return game.loop();
 				//}
-				//else if ( settingsMan.getSettings().m_game == "Snake2d" )
+				//else if ( settingsMan.getSettings().m_game == "Minesweeper2d" )
 				//{
-					//Snake game{800, 600};
+					//Minesweeper game{800, 600};
 					//return game.loop();
 				//}
 			}

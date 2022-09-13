@@ -42,9 +42,9 @@ void SettingsManager::loadFromFile( const std::string &filePath )
 	{
 		m_settings.m_game = "Arkanoid2d";
 	}
-	else if( ini.GetInteger( "GameSelection", "Snake2d", 0 ) )
+	else if( ini.GetInteger( "GameSelection", "Minesweeper2d", 0 ) )
 	{
-		m_settings.m_game = "Snake2d";
+		m_settings.m_game = "Minesweeper2d";
 	}
 	else
 	{
