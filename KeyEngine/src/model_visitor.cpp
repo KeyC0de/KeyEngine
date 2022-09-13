@@ -5,6 +5,7 @@
 #include "node.h"
 #include "effect_visitor.h"
 #include "d3d_utils.h"
+#include "assertions_console.h"
 
 
 namespace dx = DirectX;
@@ -39,7 +40,7 @@ void MV::spawnModelImgui( Model &model )
 			bDirty = bDirty || bChanged;
 		};
 
-		// for transforming the .obj model whole
+		// for transforming the .obj model
 		auto &tf = calcTransform();
 
 		ImGui::TextColored( { 0.4f, 1.0f, 0.6f, 1.0f }, "Translation" );
@@ -104,27 +105,25 @@ void MV::onVisited( Node &node )
 
 MV::TransformData& MV::calcTransform() noexcept
 {
-	const auto nodeId = m_pSelectedNode->getImguiId();
-	auto i = m_nodeMapTransforms.find( nodeId );
-	if ( i == m_nodeMapTransforms.end() )
+	const auto imguiNodeId = m_pSelectedNode->getImguiId();
+	auto it = m_nodeMapTransforms.find( imguiNodeId );
+	if ( it == m_nodeMapTransforms.end() )
 	{
-		return calcTransform_impl( nodeId );
+		const auto &worldTf = m_pSelectedNode->getWorldTransform();
+		const auto angles = util::extractEulerAngles( worldTf );
+		const auto translation = util::extractTranslation( worldTf );
+
+		TransformData td;
+		td.pitch = angles.x;
+		td.yaw = angles.y;
+		td.roll = angles.z;
+		td.x = translation.x;
+		td.y = translation.y;
+		td.z = translation.z;
+	
+		bool bInserted = false;
+		std::tie( it, bInserted ) = m_nodeMapTransforms.insert( {imguiNodeId, {td}} );
+		ASSERT( bInserted, "Transform not inserted or value already in the unordered_map!" );
 	}
-	return i->second;
-}
-
-MV::TransformData& MV::calcTransform_impl( int id ) noexcept
-{
-	const auto &worldTf = m_pSelectedNode->getWorldTransform();
-	const auto angles = util::extractEulerAngles( worldTf );
-	const auto translation = util::extractTranslation( worldTf );
-
-	TransformData td;
-	td.pitch = angles.x;
-	td.yaw = angles.y;
-	td.roll = angles.z;
-	td.x = translation.x;
-	td.y = translation.y;
-	td.z = translation.z;
-	return m_nodeMapTransforms.insert( {id, {td}} ).first->second;
+	return it->second;
 }

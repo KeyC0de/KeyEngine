@@ -736,9 +736,6 @@
     <ClInclude Include="third_party\assimp\include\assimp\Subdivision.h">
       <Filter>third_party\assimp</Filter>
     </ClInclude>
-    <ClInclude Include="third_party\assimp\include\assimp\texture.h">
-      <Filter>third_party\assimp</Filter>
-    </ClInclude>
     <ClInclude Include="third_party\assimp\include\assimp\TinyFormatter.h">
       <Filter>third_party\assimp</Filter>
     </ClInclude>
@@ -1194,6 +1191,9 @@
     </ClInclude>
     <ClInclude Include="inc\types.h">
       <Filter>engine\common</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\aitexture.h">
+      <Filter>third_party\assimp</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

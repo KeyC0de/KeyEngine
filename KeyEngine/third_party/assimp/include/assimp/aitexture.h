@@ -41,7 +41,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ---------------------------------------------------------------------------
 */
 
-/** @file texture.h
+/** @file aitexture.h
  *  @brief Defines texture helper structures for the library
  *
  * Used for file formats which embed their textures into the model file.
@@ -89,28 +89,28 @@ extern "C" {
 */
 struct aiTexel
 {
-    unsigned char b,g,r,a;
+	unsigned char b,g,r,a;
 
 #ifdef __cplusplus
-    //! Comparison operator
-    bool operator== (const aiTexel &other) const
-    {
-        return b == other.b && r == other.r &&
-               g == other.g && a == other.a;
-    }
+	//! Comparison operator
+	bool operator== (const aiTexel &other) const
+	{
+		return b == other.b && r == other.r &&
+			   g == other.g && a == other.a;
+	}
 
-    //! Inverse comparison operator
-    bool operator!= (const aiTexel &other) const
-    {
-        return b != other.b || r != other.r ||
-               g != other.g || a != other.a;
-    }
+	//! Inverse comparison operator
+	bool operator!= (const aiTexel &other) const
+	{
+		return b != other.b || r != other.r ||
+			   g != other.g || a != other.a;
+	}
 
-    //! Conversion to a floating-point 4d color
-    operator aiColor4D() const
-    {
-        return aiColor4D(r/255.f,g/255.f,b/255.f,a/255.f);
-    }
+	//! Conversion to a floating-point 4d color
+	operator aiColor4D() const
+	{
+		return aiColor4D(r/255.f,g/255.f,b/255.f,a/255.f);
+	}
 #endif // __cplusplus
 
 } PACK_STRUCT;
@@ -133,86 +133,86 @@ struct aiTexel
  */
 struct aiTexture
 {
-    /** Width of the texture, in pixels
-     *
-     * If mHeight is zero the texture is compressed in a format
-     * like JPEG. In this case mWidth specifies the size of the
-     * memory area pcData is pointing to, in bytes.
-     */
-    unsigned int mWidth;
+	/** Width of the texture, in pixels
+	 *
+	 * If mHeight is zero the texture is compressed in a format
+	 * like JPEG. In this case mWidth specifies the size of the
+	 * memory area pcData is pointing to, in bytes.
+	 */
+	unsigned int mWidth;
 
-    /** Height of the texture, in pixels
-     *
-     * If this value is zero, pcData points to an compressed texture
-     * in any format (e.g. JPEG).
-     */
-    unsigned int mHeight;
+	/** Height of the texture, in pixels
+	 *
+	 * If this value is zero, pcData points to an compressed texture
+	 * in any format (e.g. JPEG).
+	 */
+	unsigned int mHeight;
 
-    /** A hint from the loader to make it easier for applications
-     *  to determine the m_topo of embedded textures.
-     *
-     * If mHeight != 0 this member is show how data is packed. Hint will consist of
-     * two parts: channel order and channel bitness (count of the bits for every
-     * color channel). For simple parsing by the viewer it's better to not omit
-     * absent color channel and just use 0 for bitness. For example:
-     * 1. Image contain RGBA and 8 bit per channel, achFormatHint == "rgba8888";
-     * 2. Image contain ARGB and 8 bit per channel, achFormatHint == "argb8888";
-     * 3. Image contain RGB and 5 bit for R and B channels and 6 bit for G channel, achFormatHint == "rgba5650";
-     * 4. One color image with B channel and 1 bit for it, achFormatHint == "rgba0010";
-     * If mHeight == 0 then achFormatHint is set set to '\\0\\0\\0\\0' if the loader has no additional
-     * information about the texture file format used OR the
-     * file extension of the format without a trailing dot. If there
-     * are multiple file extensions for a format, the shortest
-     * extension is chosen (JPEG maps to 'jpg', not to 'jpeg').
-     * E.g. 'dds\\0', 'pcx\\0', 'jpg\\0'.  All characters are lower-case.
-     * The fourth character will always be '\\0'.
-     */
-    char achFormatHint[9];// 8 for string + 1 for terminator.
+	/** A hint from the loader to make it easier for applications
+	 *  to determine the m_topo of embedded textures.
+	 *
+	 * If mHeight != 0 this member is show how data is packed. Hint will consist of
+	 * two parts: channel order and channel bitness (count of the bits for every
+	 * color channel). For simple parsing by the viewer it's better to not omit
+	 * absent color channel and just use 0 for bitness. For example:
+	 * 1. Image contain RGBA and 8 bit per channel, achFormatHint == "rgba8888";
+	 * 2. Image contain ARGB and 8 bit per channel, achFormatHint == "argb8888";
+	 * 3. Image contain RGB and 5 bit for R and B channels and 6 bit for G channel, achFormatHint == "rgba5650";
+	 * 4. One color image with B channel and 1 bit for it, achFormatHint == "rgba0010";
+	 * If mHeight == 0 then achFormatHint is set set to '\\0\\0\\0\\0' if the loader has no additional
+	 * information about the texture file format used OR the
+	 * file extension of the format without a trailing dot. If there
+	 * are multiple file extensions for a format, the shortest
+	 * extension is chosen (JPEG maps to 'jpg', not to 'jpeg').
+	 * E.g. 'dds\\0', 'pcx\\0', 'jpg\\0'.  All characters are lower-case.
+	 * The fourth character will always be '\\0'.
+	 */
+	char achFormatHint[9];// 8 for string + 1 for terminator.
 
-    /** Data of the texture.
-     *
-     * Points to an array of mWidth * mHeight aiTexel's.
-     * The format of the texture data is always ARGB8888 to
-     * make the implementation for user of the library as easy
-     * as possible. If mHeight = 0 this is a pointer to a memory
-     * buffer of size mWidth containing the compressed texture
-     * data. Good luck, have fun!
-     */
-    C_STRUCT aiTexel *pcData;
+	/** Data of the texture.
+	 *
+	 * Points to an array of mWidth * mHeight aiTexel's.
+	 * The format of the texture data is always ARGB8888 to
+	 * make the implementation for user of the library as easy
+	 * as possible. If mHeight = 0 this is a pointer to a memory
+	 * buffer of size mWidth containing the compressed texture
+	 * data. Good luck, have fun!
+	 */
+	C_STRUCT aiTexel *pcData;
 
-    /** Texture original filename
-    *
-    * Used to get the texture reference
-    */
-    C_STRUCT aiString mFilename;
+	/** Texture original filename
+	*
+	* Used to get the texture reference
+	*/
+	C_STRUCT aiString mFilename;
 
 #ifdef __cplusplus
 
-    //! For compressed textures (mHeight == 0): compare the
-    //! format hint against a given string.
-    //! @param s Input string. 3 characters are maximally processed.
-    //!        Example values: "jpg", "png"
-    //! @return true if the given string matches the format hint
-    bool CheckFormat(const char *s) const
-    {
+	//! For compressed textures (mHeight == 0): compare the
+	//! format hint against a given string.
+	//! @param s Input string. 3 characters are maximally processed.
+	//!        Example values: "jpg", "png"
+	//! @return true if the given string matches the format hint
+	bool CheckFormat(const char *s) const
+	{
 		return (0 == ::strncmp(achFormatHint, s, sizeof(achFormatHint)));
-    }
+	}
 
-    // Construction
-    aiTexture ()
-        : mWidth  (0)
-        , mHeight (0)
-        , pcData  (NULL)
-    {
-        achFormatHint[0] = achFormatHint[1] = 0;
-        achFormatHint[2] = achFormatHint[3] = 0;
-    }
+	// Construction
+	aiTexture ()
+		: mWidth  (0)
+		, mHeight (0)
+		, pcData  (NULL)
+	{
+		achFormatHint[0] = achFormatHint[1] = 0;
+		achFormatHint[2] = achFormatHint[3] = 0;
+	}
 
-    // Destruction
-    ~aiTexture ()
-    {
-        delete[] pcData;
-    }
+	// Destruction
+	~aiTexture ()
+	{
+		delete[] pcData;
+	}
 #endif
 };
 

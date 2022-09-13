@@ -40,5 +40,4 @@ private:
 	bool visit( Node &node ) override;
 	void onVisited( Node &node ) override;
 	TransformData& calcTransform() noexcept;
-	TransformData& calcTransform_impl( int id ) noexcept;
 };

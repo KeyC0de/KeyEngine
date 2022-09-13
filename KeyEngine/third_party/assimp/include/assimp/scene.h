@@ -49,7 +49,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define AI_SCENE_H_INC
 
 #include "types.h"
-#include "texture.h"
+#include "aitexture.h"
 #include "aimesh.h"
 #include "light.h"
 #include "aicamera.h"

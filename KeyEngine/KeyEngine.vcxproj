@@ -509,6 +509,7 @@
     <ClInclude Include="third_party\assimp\include\assimp\aiBitmap.h" />
     <ClInclude Include="third_party\assimp\include\assimp\aicamera.h" />
     <ClInclude Include="third_party\assimp\include\assimp\aimesh.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\aitexture.h" />
     <ClInclude Include="third_party\assimp\include\assimp\ai_assert.h" />
     <ClInclude Include="third_party\assimp\include\assimp\anim.h" />
     <ClInclude Include="third_party\assimp\include\assimp\BaseImporter.h" />
@@ -573,7 +574,6 @@
     <ClInclude Include="third_party\assimp\include\assimp\StringComparison.h" />
     <ClInclude Include="third_party\assimp\include\assimp\StringUtils.h" />
     <ClInclude Include="third_party\assimp\include\assimp\Subdivision.h" />
-    <ClInclude Include="third_party\assimp\include\assimp\texture.h" />
     <ClInclude Include="third_party\assimp\include\assimp\TinyFormatter.h" />
     <ClInclude Include="third_party\assimp\include\assimp\types.h" />
     <ClInclude Include="third_party\assimp\include\assimp\vector2.h" />

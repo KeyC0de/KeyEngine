@@ -1,6 +1,6 @@
 // Omnidirectional (PointLight) Cube Texture for Shadow mapping
-TextureCube shadowMap : register(t3);
-SamplerComparisonState shadowSamplComp : register(s1);
+TextureCube shadowCubeMap : register(t3);
+SamplerComparisonState shadowCubeSamplComp : register(s1);
 
 static const float zf = 100.0f;
 static const float zn = 1.0f;
@@ -24,7 +24,7 @@ float calculateShadowCubeMapSampleVectorProjectionLength( const in float4 fragPo
  //		input.fragPosLightSpace.z < 0.0f  || input.fragPosLightSpace.z > 1.0f )
 float calculateShadowLevel( const in float4 fragPosLightSpace )
 {
-	return shadowMap.SampleCmpLevelZero( shadowSamplComp,
+	return shadowCubeMap.SampleCmpLevelZero( shadowCubeSamplComp,
 		fragPosLightSpace.xyz,
 		calculateShadowCubeMapSampleVectorProjectionLength( fragPosLightSpace ) );
 }

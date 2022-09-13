@@ -23,7 +23,7 @@ public:
 	//	\date	2021/10/30 3:42
 	Texture( Graphics &gph, const unsigned width, const unsigned height, const unsigned slot );
 
-	void writeBitmapToTexture( Graphics &gph, ID3D11Texture2D* tex, const Bitmap &bitmap, const D3D11_BOX *destPortion = nullptr );
+	void writeBitmapToTexture( Graphics &gph, ID3D11Texture2D *tex, const Bitmap &bitmap, const D3D11_BOX *destPortion = nullptr );
 	void bind( Graphics &gph ) cond_noex override;
 	void update( Graphics &gph ) cond_noex;
 	bool hasAlpha() const noexcept;
@@ -32,6 +32,7 @@ public:
 	static std::string calcUid( const std::string &filepath, const unsigned slot );
 	const std::string getUid() const noexcept override;
 	
+public:
 	static void flipModelNormalMapsGreenChannel( const std::string &objPath );
 	//===================================================
 	//	\function	flipNormalMapGreenChannel
@@ -70,7 +71,7 @@ private:
 		F &&f )
 	{
 		auto bitmap = Bitmap::loadFromFile( pathIn );
-		transformBitmap( bitmap,
+		Texture::transformBitmap( bitmap,
 			f );
 		bitmap.save( pathOut );
 	}
