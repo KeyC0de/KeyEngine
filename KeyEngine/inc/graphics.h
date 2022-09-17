@@ -2,6 +2,7 @@
 
 #include "winner.h"
 #include "key_wrl.h"
+#include "dxgi1_4.h"
 #include <d3d11.h>
 #ifdef D2D_INTEROP
 #	include <d2d1_1.h>
@@ -27,9 +28,20 @@
 
 class IBindable;
 class IRenderTargetView;
+class IDepthStencilView;
 class Window;
 class Camera;
 
+//=============================================================
+//	\class	Graphics
+//
+//	\author	KeyC0de
+//	\date	2022/09/13 22:51
+//
+//	\brief	d3d11 Graphics encapsulator
+//			provides classic blt presentation functionality
+//			as well as upgraded DXGI 1.2 API with Flip enhanced presentation model (aiming for Independent Flip)
+//=============================================================
 class Graphics
 	: NonCopyableAndNonMovable
 {
@@ -47,30 +59,35 @@ class Graphics
 
 	class Adapter final
 	{
-		DXGI_ADAPTER_DESC m_desc;
 		Microsoft::WRL::ComPtr<IDXGIAdapter> m_pAdapter;
+		DXGI_ADAPTER_DESC m_desc;
 	public:
 		Adapter( IDXGIAdapter *pAdapter );
-
 		const DXGI_ADAPTER_DESC* getDesc() const noexcept;
 		IDXGIAdapter* adapter() const noexcept;
+		void getVRamDetails() const noexcept;
 	};
 
 private:
 	static inline D3D_FEATURE_LEVEL m_featureLevel;
+	static inline std::vector<Adapter> m_adapters;
+private:
 	unsigned m_width;
 	unsigned m_height;
 	HWND m_hParentWnd;
-	static inline std::vector<Adapter> m_adapters;
-	Microsoft::WRL::ComPtr<IDXGIFactory1> m_pDxgiFactory;
-	Microsoft::WRL::ComPtr<ID3D11Device> m_pDevice;
+	UINT m_swapChainFlags = 0u;
 #if defined FLIP_PRESENT
+	unsigned m_presentFlags = 0u;	// only valid in windowed mode
+	Microsoft::WRL::ComPtr<IDXGIFactory4> m_pDxgiFactory;
 	Microsoft::WRL::ComPtr<IDXGISwapChain1> m_pSwapChain;
 #else
+	Microsoft::WRL::ComPtr<IDXGIFactory1> m_pDxgiFactory;
 	Microsoft::WRL::ComPtr<IDXGISwapChain> m_pSwapChain;
 #endif
+	Microsoft::WRL::ComPtr<ID3D11Device> m_pDevice;
 	Microsoft::WRL::ComPtr<ID3D11DeviceContext> m_pImmediateContext;
-	std::shared_ptr<IRenderTargetView> m_globalColorBuffer;
+	std::shared_ptr<IRenderTargetView> m_rtv;
+	std::shared_ptr<IDepthStencilView> m_dsv;
 #if defined _DEBUG && !defined NDEBUG
 	DxgiInfoQueue m_infoQueue;
 	ATL::CComPtr<ID3D11Debug> m_pDebug;
@@ -82,10 +99,6 @@ private:
 	std::unique_ptr<DirectX::SpriteBatch> m_pFpsSpriteBatch;
 	std::vector<ID3D11DeviceContext*> m_deferredContexts;
 	std::vector<ID3D11CommandList*> m_commandLists;
-#if defined FLIP_PRESENT
-private:
-	static bool checkTearingSupport();
-#endif
 public:
 	Graphics( const HWND hWnd, const int width, const int height );
 	~Graphics();
@@ -106,13 +119,26 @@ public:
 	const DirectX::XMMATRIX& getProjectionMatrix() const noexcept;
 	const unsigned getClientWidth() const noexcept;
 	const unsigned getClientHeight() const noexcept;
-	std::shared_ptr<IRenderTargetView> shareRenderTarget();
+	std::shared_ptr<IRenderTargetView> setupRenderTarget();
+	std::shared_ptr<IDepthStencilView> setupDepthStencil();
+	void createFactory();
 	void createAdapters();
+	//===================================================
+	//	\function	resize
+	//	\brief  sets windowed mode or Fullscreen, supply width & height of 0 to resize the buffers for fullscreen mode usage
+	//	\date	2022/09/17 19:44
+	void resize( const unsigned width, const unsigned height );
+	void setBorderless();
+	void releaseBackBufferForResizing();
 
 #if defined _DEBUG && !defined NDEBUG
 	DxgiInfoQueue& infoQueue();
 #endif
 private:
+	//===================================================
+	//	\function	present
+	//	\brief  present the frame to DWM
+	//	\date	2022/09/13 22:12
 	void present();
 	//===================================================
 	//	\function	recordDeferredCommandList
@@ -129,6 +155,7 @@ private:
 	void cleanState() noexcept;
 #if defined _DEBUG && !defined NDEBUG
 	void interrogateDirectxFeatures();
+	bool checkTearingSupport();
 	void d3d11DebugReport();
 #endif
 #ifdef D2D_INTEROP
@@ -211,6 +238,7 @@ public:
 	void drawCircle( const int centerX, const int centerY, const int radius, const ColorBGRA col );
 	const std::vector<DirectX::XMFLOAT2> drawStar( const float outerRadius, const float innerRadius, const int nFlares = 5 );
 };
+
 
 #define THROW_GRAPHICS_EXCEPTION( msg ) throw GraphicsException( __LINE__,\
 	__FILE__,\

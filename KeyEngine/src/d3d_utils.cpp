@@ -7,7 +7,7 @@ namespace util
 namespace dx = DirectX;
 
 
-DirectX::XMMATRIX XM_CALLCONV computeTransform( const const DirectX::XMFLOAT3 &scale,
+DirectX::XMMATRIX XM_CALLCONV computeTransform( const DirectX::XMFLOAT3 &scale,
 	const DirectX::XMFLOAT3 &pos,
 	const DirectX::XMFLOAT3 &rot )
 {
@@ -161,7 +161,7 @@ DXGI_RATIONAL queryRefreshRate( const unsigned screenWidth,
 	{
 		IDXGIFactory *factory;
 		IDXGIAdapter *adapter;
-		IDXGIOutput *adapterOutput;
+		IDXGIOutput *monitor;
 		DXGI_MODE_DESC *displayModeList;
 
 		// Create a DirectX graphics interface factory.
@@ -174,11 +174,11 @@ DXGI_RATIONAL queryRefreshRate( const unsigned screenWidth,
 		ASSERT_HRES_IF_FAILED;
 
 		hres = adapter->EnumOutputs( 0,
-			&adapterOutput );
+			&monitor );
 		ASSERT_HRES_IF_FAILED;
 
 		UINT numDisplayModes;
-		hres = adapterOutput->GetDisplayModeList( DXGI_FORMAT_B8G8R8A8_UNORM,
+		hres = monitor->GetDisplayModeList( DXGI_FORMAT_B8G8R8A8_UNORM,
 			DXGI_ENUM_MODES_INTERLACED,
 			&numDisplayModes,
 			nullptr );
@@ -187,7 +187,7 @@ DXGI_RATIONAL queryRefreshRate( const unsigned screenWidth,
 		displayModeList = new DXGI_MODE_DESC[numDisplayModes];
 		ASSERT( displayModeList, "display mode array is null!" );
 
-		hres = adapterOutput->GetDisplayModeList( DXGI_FORMAT_B8G8R8A8_UNORM,
+		hres = monitor->GetDisplayModeList( DXGI_FORMAT_B8G8R8A8_UNORM,
 			DXGI_ENUM_MODES_INTERLACED,
 			&numDisplayModes,
 			displayModeList );
@@ -205,7 +205,7 @@ DXGI_RATIONAL queryRefreshRate( const unsigned screenWidth,
 		}
 
 		delete[] displayModeList;
-		comSafeRelease( adapterOutput );
+		comSafeRelease( monitor );
 		comSafeRelease( adapter );
 		comSafeRelease( factory );
 	}

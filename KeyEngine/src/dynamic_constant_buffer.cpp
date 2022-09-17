@@ -29,9 +29,9 @@ std::string CBElement::calcSignature() const cond_noex
 {
 	switch( m_type )
 	{
-	#define X(el) case el: return MapElementProperties<el>::tag;
+#define X( el ) case el: return MapElementProperties<el>::tag;
 	CB_LEAF_TYPES
-	#undef X
+#undef X
 	case Struct:
 		return getSignatureForStruct();
 	case Array:
@@ -95,10 +95,10 @@ const size_t CBElement::getOffsetEnd() const cond_noex
 {
 	switch( m_type )
 	{
-	#define X( el ) case el:\
+#define X( el ) case el: \
 		return *m_offset + MapElementProperties<el>::hlslSize;
 	CB_LEAF_TYPES
-	#undef X
+#undef X
 	case Struct:
 	{
 		const auto &data = static_cast<ExtraData::Struct&>( *m_pExtraData );
@@ -169,12 +169,12 @@ const size_t CBElement::commit( const size_t offsetIn ) cond_noex
 {
 	switch( m_type )
 	{
-	#define X( el ) case el:\
-		m_offset = advanceIfCrossesBoundary( offsetIn,\
-			MapElementProperties<el>::hlslSize );\
+#define X( el ) case el: \
+		m_offset = advanceIfCrossesBoundary( offsetIn, \
+			MapElementProperties<el>::hlslSize ); \
 			return *m_offset + MapElementProperties<el>::hlslSize;
 	CB_LEAF_TYPES
-	#undef X
+#undef X
 	case Struct:
 		return commitStruct( offsetIn );
 	case Array:
@@ -505,10 +505,9 @@ CBuffer::CBuffer( CBuffer &&rhs ) noexcept
 
 CBuffer& CBuffer::operator=( CBuffer &&rhs ) noexcept
 {
-	std::swap( m_pLayoutRoot, rhs.m_pLayoutRoot );
-	std::swap( m_buffer, rhs.m_buffer );
-	rhs.m_pLayoutRoot.reset();
-	rhs.m_buffer.clear();
+	CBuffer tmp{std::move( rhs )};
+	std::swap( *this,
+		tmp );
 	return *this;
 }
 

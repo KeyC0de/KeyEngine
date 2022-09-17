@@ -65,6 +65,15 @@ Sphere::Sphere( Graphics &gph,
 	}
 }
 
+Sphere::Sphere( Graphics &gph,
+	const float radius,
+	const DirectX::XMFLOAT3 &startingPos )
+	:
+	Sphere{gph, radius}
+{
+	m_pos = startingPos;
+}
+
 void Sphere::setPosition( const dx::XMFLOAT3 &pos ) noexcept
 {
 	this->m_pos = pos;
@@ -72,12 +81,22 @@ void Sphere::setPosition( const dx::XMFLOAT3 &pos ) noexcept
 
 const dx::XMMATRIX Sphere::getTransform() const noexcept
 {
-	return calcPosition();
+	return calcScale() * calcPosition();
 }
 
 const DirectX::XMMATRIX Sphere::calcPosition() const noexcept
 {
 	return dx::XMMatrixTranslationFromVector( dx::XMLoadFloat3( &m_pos ) );
+}
+
+const DirectX::XMMATRIX Sphere::calcScale() const noexcept
+{
+	return dx::XMMatrixScaling( m_radius, m_radius, m_radius );
+}
+
+void Sphere::setRadius( const float radius ) noexcept
+{
+	m_radius = radius;
 }
 
 float Sphere::getRadius() const noexcept

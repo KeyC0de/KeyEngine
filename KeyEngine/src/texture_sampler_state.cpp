@@ -30,20 +30,22 @@ TextureSamplerState::TextureSamplerState( Graphics &gph,
 			return D3D11_FILTER_MIN_MAG_MIP_LINEAR;
 		}
 	}();
-	samplerDesc.MipLODBias = 0.0f;
-	samplerDesc.MinLOD = 0.0f;
-	samplerDesc.MaxLOD = D3D11_FLOAT32_MAX;
+
 	auto checkAddr = [&addressMode] ( )
 	{
-		return addressMode == AddressMode::Mirror ?
-			D3D11_TEXTURE_ADDRESS_MIRROR :
+		return addressMode == AddressMode::Mirror ? D3D11_TEXTURE_ADDRESS_MIRROR :
 			( addressMode == AddressMode::Clamp ? D3D11_TEXTURE_ADDRESS_CLAMP :
-			( addressMode == AddressMode::Border ? D3D11_TEXTURE_ADDRESS_BORDER : D3D11_TEXTURE_ADDRESS_WRAP ) );
+			( addressMode == AddressMode::Border ? D3D11_TEXTURE_ADDRESS_BORDER :
+				D3D11_TEXTURE_ADDRESS_WRAP ) );
 	};
 	samplerDesc.AddressU = checkAddr();
 	samplerDesc.AddressV = checkAddr();
 	samplerDesc.AddressW = checkAddr();
 	samplerDesc.MaxAnisotropy = D3D11_REQ_MAXANISOTROPY;
+	// lods:
+	samplerDesc.MipLODBias = 0.0f;
+	samplerDesc.MinLOD = 0.0f;
+	samplerDesc.MaxLOD = D3D11_FLOAT32_MAX;
 
 	HRESULT hres = getDevice( gph )->CreateSamplerState( &samplerDesc,
 		&m_pSamplerState );

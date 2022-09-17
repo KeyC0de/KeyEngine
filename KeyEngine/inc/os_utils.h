@@ -10,6 +10,8 @@
 #include <functional>
 #include <optional>
 
+#define POD_ZERO( arg )		ZeroMemory( &arg, sizeof( arg ) );
+
 
 namespace util
 {

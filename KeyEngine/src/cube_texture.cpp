@@ -124,12 +124,6 @@ void CubeTextureRT::bind( Graphics &gph ) cond_noex
 	DXGI_GET_QUEUE_INFO( gph );
 }
 
-std::shared_ptr<RenderTargetOutput> CubeTextureRT::shareRenderTarget( const size_t index )
-	const
-{
-	return m_renderTargetViews[index];
-}
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 CubeTextureDS::CubeTextureDS( Graphics &gph,
 	const unsigned size,

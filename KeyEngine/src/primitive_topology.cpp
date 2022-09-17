@@ -6,14 +6,14 @@
 PrimitiveTopology::PrimitiveTopology( Graphics &gph,
 	const D3D11_PRIMITIVE_TOPOLOGY topo )
 	:
-	m_d3dPrimTop{topo}
+	m_d3dTopo{topo}
 {
 
 }
 
 void PrimitiveTopology::bind( Graphics &gph ) cond_noex
 {
-	getDeviceContext( gph )->IASetPrimitiveTopology( m_d3dPrimTop );
+	getDeviceContext( gph )->IASetPrimitiveTopology( m_d3dTopo );
 	DXGI_GET_QUEUE_INFO( gph );
 }
 
@@ -32,5 +32,5 @@ std::string PrimitiveTopology::calcUid( const D3D11_PRIMITIVE_TOPOLOGY topo )
 
 const std::string PrimitiveTopology::getUid() const noexcept
 {
-	return calcUid( m_d3dPrimTop );
+	return calcUid( m_d3dTopo );
 }

@@ -95,7 +95,8 @@ namespace func_async
 //			executes void(*f)() function at periodic (ms) intervals
 //	\arg	now : if you want to execute first up now
 //	\date	2021/09/06 1:05
-void doPeriodically( nonstd::stop_token st, const std::function<void(void)>& f, const size_t intervalMs, const bool now );
+void doPeriodically( nonstd::stop_token st, const std::function<void(void)> &f, const size_t intervalMs, const bool now );
+void doLater( nonstd::stop_token st, const std::function<void(void)> &f, const size_t intervalMs );
 
 
 }// namespace func_async

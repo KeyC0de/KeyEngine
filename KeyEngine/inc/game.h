@@ -8,6 +8,7 @@
 #include "camera_manager.h"
 #include "light.h"
 #include "cube.h"
+#include "sphere.h"
 #include "model.h"
 #include "non_copyable.h"
 #include "renderer.h"
@@ -66,6 +67,7 @@ class Sandbox3d
 	bool b_bShowDemoWindow = false;
 	Cube m_cube1{m_mainWindow.getGraphics(), {10.0f, 5.0f, 6.0f}, 4.0f};
 	Cube m_cube2{m_mainWindow.getGraphics(), {16.0f, 6.0f, 8.0f}};
+	Sphere m_testSphere{m_mainWindow.getGraphics(), 1.0f, {40.0f, 20.0f, 8.0f}};
 	Model m_sponzaScene{m_mainWindow.getGraphics(), "assets/models/sponza/sponza.obj", 1.0f / 8.0f};
 	Model m_nanoSuit{m_mainWindow.getGraphics(), "assets/models/nano_textured/nanosuit.obj", 2.0f};
 	Model m_carabiner{m_mainWindow.getGraphics(), "assets/models/carabiner/carabiner_hook.fbx", 1.0f};

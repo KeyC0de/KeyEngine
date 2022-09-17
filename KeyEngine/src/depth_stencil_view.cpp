@@ -149,6 +149,26 @@ void IDepthStencilView::clear( Graphics &gph,
 	DXGI_GET_QUEUE_INFO( gph );
 }
 
+void IDepthStencilView::clean( Graphics &gph ) cond_noex
+{
+	// unbind the render target and any depth/stencil buffer
+	getDeviceContext( gph )->OMSetRenderTargets( 0u,
+		nullptr,
+		nullptr );
+
+	// clean the texture resource of the dsv
+	mwrl::ComPtr<ID3D11Resource> pDsvRsc;
+	m_pDsv->GetResource( &pDsvRsc );
+
+	mwrl::ComPtr<ID3D11Texture2D> pDsTex;
+	pDsvRsc.As( &pDsTex);
+
+	pDsTex.Reset();
+
+	// clean the dsv resource itself
+	m_pDsv.Reset();
+}
+
 std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC> IDepthStencilView::createStagingTexture( Graphics &gph ) const
 {
 	mwrl::ComPtr<ID3D11Resource> pDsvRsc;
@@ -334,15 +354,6 @@ void DepthStencilShaderInput::bind( Graphics &gph ) cond_noex
 }
 
 
-DepthStencilOutput::DepthStencilOutput( Graphics &gph,
-	mwrl::ComPtr<ID3D11Texture2D> pTexture,
-	const unsigned face )
-	:
-	IDepthStencilView(gph, std::move( pTexture ), face)
-{
-
-}
-
 DepthStencilOutput::DepthStencilOutput( Graphics &gph )
 	:
 	DepthStencilOutput(gph, gph.getClientWidth(), gph.getClientHeight())
@@ -355,6 +366,15 @@ DepthStencilOutput::DepthStencilOutput( Graphics &gph,
 	const unsigned height )
 	:
 	IDepthStencilView(gph, width, height, false, Mode::Normal)
+{
+
+}
+
+DepthStencilOutput::DepthStencilOutput( Graphics &gph,
+	mwrl::ComPtr<ID3D11Texture2D> pTexture,
+	const unsigned face )
+	:
+	IDepthStencilView(gph, std::move( pTexture ), face)
 {
 
 }

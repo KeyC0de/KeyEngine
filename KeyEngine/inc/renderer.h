@@ -26,7 +26,7 @@ class Renderer
 	bool m_bValidatedPasses = false;
 protected:
 	std::shared_ptr<IRenderTargetView> m_globalColorBuffer;
-	std::shared_ptr<IDepthStencilView> m_globalDepthBuffer;
+	std::shared_ptr<IDepthStencilView> m_globalDepthStencil;
 public:
 	Renderer( Graphics &gph );
 	virtual ~Renderer() noexcept;

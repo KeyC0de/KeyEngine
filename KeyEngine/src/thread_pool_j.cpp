@@ -138,7 +138,7 @@ namespace func_async
 {
 
 void doPeriodically( nonstd::stop_token st,
-	const std::function<void(void)>& f,
+	const std::function<void(void)> &f,
 	const size_t intervalMs,
 	const bool now )
 {
@@ -160,5 +160,12 @@ void doPeriodically( nonstd::stop_token st,
 	}
 }
 
+void doLater( nonstd::stop_token st,
+	const std::function<void(void)> &f,
+	const size_t intervalMs )
+{
+	std::this_thread::sleep_for( std::chrono::milliseconds( intervalMs ) );
+	f();
+}
 
 }// namespace func_async

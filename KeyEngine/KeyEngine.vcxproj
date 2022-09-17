@@ -85,7 +85,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <PreprocessorDefinitions>_DEBUG;NO_DUMPS;UNICODE;_UNICODE;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;%(PreprocessorDefinitions);BDEBUG=true;cond_noex=noexcept( !BDEBUG );pass_=(void)0;_CRT_SECURE_NO_WARNINGS;_32_BIT_ENTITY</PreprocessorDefinitions>
+      <PreprocessorDefinitions>FLIP_PRESENT;_DEBUG;NO_DUMPS;UNICODE;_UNICODE;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;%(PreprocessorDefinitions);BDEBUG=true;cond_noex=noexcept( !BDEBUG );pass_=(void)0;_CRT_SECURE_NO_WARNINGS;_32_BIT_ENTITY</PreprocessorDefinitions>
       <AdditionalOptions>/we4239 /we4265 /we4715 /Zc:__cplusplus /utf-8 %(AdditionalOptions)</AdditionalOptions>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
       <SuppressStartupBanner>false</SuppressStartupBanner>
@@ -109,7 +109,7 @@
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <PreprocessorDefinitions>_DEV;NDEBUG;NO_DUMPS;UNICODE;_UNICODE;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;%(PreprocessorDefinitions);BDEBUG=false;cond_noex=noexcept( !BDEBUG );pass_=(void)0;_CRT_SECURE_NO_WARNINGS;_32_BIT_ENTITY</PreprocessorDefinitions>
+      <PreprocessorDefinitions>FLIP_PRESENT;NDEBUG;NO_DUMPS;UNICODE;_UNICODE;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;%(PreprocessorDefinitions);BDEBUG=false;cond_noex=noexcept( !BDEBUG );pass_=(void)0;_CRT_SECURE_NO_WARNINGS;_32_BIT_ENTITY</PreprocessorDefinitions>
       <FloatingPointModel>Fast</FloatingPointModel>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalOptions>/we4239 /we4265 /we4715 /Zc:__cplusplus /utf-8 %(AdditionalOptions)</AdditionalOptions>
@@ -123,6 +123,7 @@
       <SubSystem>Windows</SubSystem>
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;assimp-vc140-mt.lib;DirectXTex.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\lib64</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
     </Link>
     <FxCompile>
       <ShaderModel>5.0</ShaderModel>
@@ -138,7 +139,7 @@
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <PreprocessorDefinitions>FINAL_RELEASE;_DEV;NDEBUG;NO_DUMPS;UNICODE;_UNICODE;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;%(PreprocessorDefinitions);BDEBUG=false;cond_noex=noexcept( !BDEBUG );pass_=(void)0;_CRT_SECURE_NO_WARNINGS;_32_BIT_ENTITY</PreprocessorDefinitions>
+      <PreprocessorDefinitions>FLIP_PRESENT;FINAL_RELEASE;NDEBUG;NO_DUMPS;UNICODE;_UNICODE;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;%(PreprocessorDefinitions);BDEBUG=false;cond_noex=noexcept( !BDEBUG );pass_=(void)0;_CRT_SECURE_NO_WARNINGS;_32_BIT_ENTITY</PreprocessorDefinitions>
       <FloatingPointModel>Fast</FloatingPointModel>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalOptions>/we4239 /we4265 /we4715 /Zc:__cplusplus /utf-8 %(AdditionalOptions)</AdditionalOptions>
@@ -153,6 +154,7 @@
       <SubSystem>Windows</SubSystem>
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;assimp-vc140-mt.lib;DirectXTex.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\lib64</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
     </Link>
     <FxCompile>
       <ShaderModel>5.0</ShaderModel>
@@ -277,7 +279,7 @@
     <ClCompile Include="src\cube.cpp" />
     <ClCompile Include="src\plane.cpp" />
     <ClCompile Include="src\testing.cpp" />
-    <ClCompile Include="src\test_main.cpp" />
+    <ClCompile Include="src\main_test.cpp" />
     <ClCompile Include="src\texture.cpp" />
     <ClCompile Include="src\texture_sampler_state.cpp" />
     <ClCompile Include="src\thread_pool_j.cpp" />

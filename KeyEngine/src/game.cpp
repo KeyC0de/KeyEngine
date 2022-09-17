@@ -207,6 +207,7 @@ Sandbox3d::Sandbox3d( const int width,
 
 	m_cube1.connectEffectsToRenderer( m_renderer );
 	m_cube2.connectEffectsToRenderer( m_renderer );
+	m_testSphere.connectEffectsToRenderer( m_renderer );
 	m_sponzaScene.connectEffectsToRenderer( m_renderer );
 	m_nanoSuit.connectEffectsToRenderer( m_renderer );
 	m_carabiner.connectEffectsToRenderer( m_renderer );
@@ -221,12 +222,26 @@ Sandbox3d::Sandbox3d( const int width,
 	//	m_renderer.setShadowCamera( *m_pPointLight2->shareCamera() );
 	//}
 
-	ThreadPoolJ &threadPool = ThreadPoolJ::instance( 4,
+	ThreadPoolJ &threadPool = ThreadPoolJ::instance( 4u,
 		true );
 	threadPool.enqueue( &func_async::doPeriodically,
 		&BindableMap::garbageCollect,
 		5000u,
 		false );
+
+	threadPool.enqueue( &func_async::doLater,
+		[this]() -> void
+		{
+			this->m_testSphere.setRadius( 4.0f );
+		},
+		5000u );
+
+	threadPool.enqueue( &func_async::doLater,
+		[this]() -> void
+		{
+			this->m_testSphere.setRadius( 0.25f );
+		},
+		15000u );
 
 	auto menuState = std::make_unique<MenuState>();
 	setState( std::move( menuState ),
@@ -408,6 +423,7 @@ void Sandbox3d::render( const float dt )
 
 	m_cube1.render( rch::lambert | rch::shadow | rch::solidOutline | rch::blurOutline );
 	m_cube2.render( rch::lambert | rch::shadow | rch::solidOutline | rch::blurOutline );
+	m_testSphere.render( rch::lambert | rch::shadow | rch::solidOutline | rch::blurOutline );
 	m_nanoSuit.render( rch::lambert | rch::shadow | rch::blurOutline );
 	m_carabiner.render( rch::lambert | rch::shadow | rch::solidOutline | rch::blurOutline );
 	m_sponzaScene.render( rch::lambert | rch::shadow );

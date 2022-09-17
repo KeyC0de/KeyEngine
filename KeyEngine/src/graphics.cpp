@@ -1,11 +1,11 @@
 #include <sstream>
 #include <mutex>
-#include "dxgi1_4.h"
 #include "dxgi1_5.h"
 #include "graphics.h"
 #include "imgui_impl_dx11.h"
 #include "imgui_impl_win32.h"
 #include "render_target.h"
+#include "depth_stencil_view.h"
 #include "utils.h"
 #include "os_utils.h"
 #include "settings_manager.h"
@@ -50,35 +50,34 @@ IDXGIAdapter* Graphics::Adapter::adapter() const noexcept
 	return m_pAdapter.Get();
 }
 
+void Graphics::Adapter::getVRamDetails() const noexcept
+{
+	auto desc = getDesc();
+	
+	std::string description = util::ws2s( desc->Description );
+	INT64 vRam = desc->DedicatedVideoMemory;
+	INT64 ram = desc->DedicatedSystemMemory;
+	INT64 sharedRam = desc->SharedSystemMemory;
+	std::string featureLevel{ENUM_STR( Graphics::m_featureLevel )};
+	
+#if defined _DEBUG && !defined NDEBUG
+	KeyConsole& console = KeyConsole::instance();
+	console.print( "***************** GRAPHICS ADAPTER DETAILS ***********************" );
+	console.print( "Adapter Description: " + description );
+	console.print( "Dedicated Video RAM: " + std::to_string( vRam ) );
+	console.print( "Dedicated System RAM: " + std::to_string( ram ) );
+	console.print( "Shared System RAM: " + std::to_string( sharedRam ) );
+	console.print( "Feature Level: " + featureLevel );
+#endif
+}
+
 #if defined FLIP_PRESENT
 void Graphics::makeWindowAssociationWithFactory( HWND hWnd,
 	UINT flags )
 {
-	m_pSwapChain->GetParent( __uuidof( IDXGIFactory ),
-		&m_pFactory );
-	m_pFactory->MakeWindowAssociation( hWnd,
+	HRESULT hres = m_pDxgiFactory->MakeWindowAssociation( hWnd,
 		flags );
-}
-
-bool Graphics::checkTearingSupport()
-{
-	bool bAllowTearing = false;
-	// Rather than create the 1.5 factory interface directly, we create the 1.4
-	// interface and query for the 1.5 interface. This will enable the graphics
-	// debugging tools which might not support the 1.5 factory interface.
-	mwrl::ComPtr<IDXGIFactory4> factory4;
-	HRESULT hres = CreateDXGIFactory1( IID_PPV_ARGS( &factory4 ) );
 	ASSERT_HRES_IF_FAILED;
-
-	mwrl::ComPtr<IDXGIFactory5> factory5;
-	hres = factory4.As( &factory5 );
-	ASSERT_HRES_IF_FAILED;
-
-	hres = factory5->CheckFeatureSupport( DXGI_FEATURE_PRESENT_ALLOW_TEARING,
-		&bAllowTearing,
-		sizeof bAllowTearing );
-	ASSERT_HRES_IF_FAILED;
-	return SUCCEEDED( hres ) && bAllowTearing;
 }
 #endif
 
@@ -88,7 +87,8 @@ Graphics::Graphics( const HWND hWnd,
 	:
 	m_width(width),
 	m_height(height),
-	m_hParentWnd{hWnd}
+	m_hParentWnd{hWnd},
+	m_swapChainFlags{DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH}	// allow window resizing fullscreen/windowed etc.
 {
 	HRESULT hres;
 	auto &settings = SettingsManager::instance().getSettings();
@@ -98,26 +98,14 @@ Graphics::Graphics( const HWND hWnd,
 		m_commandLists.reserve( settings.nRenderingThreads );
 	}
 
-	DXGI_SWAP_CHAIN_DESC swapChainDesc{};
-	swapChainDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
-	swapChainDesc.BufferCount = 1u;
-	swapChainDesc.OutputWindow = hWnd;
-	swapChainDesc.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
-	swapChainDesc.Windowed = true;
-	swapChainDesc.Flags = DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH; // allow window resizing fullscreen/windowed etc.
-	swapChainDesc.BufferDesc.Width = width;
-	swapChainDesc.BufferDesc.Height = height;
-	swapChainDesc.BufferDesc.Format = DXGI_FORMAT_B8G8R8A8_UNORM;
-	swapChainDesc.BufferDesc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED;
-	swapChainDesc.BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;
-	swapChainDesc.BufferDesc.RefreshRate.Numerator = 60u;
-	swapChainDesc.BufferDesc.RefreshRate.Denominator = 1u;
-	swapChainDesc.SampleDesc.Count = 1u;
-	swapChainDesc.SampleDesc.Quality = 0u;
+	// create factory, adapter, device, front|back buffers swap chain, rendering contexts
+	createFactory();
+	createAdapters();
+	const auto &primaryAdapter = m_adapters.front();
+	hres = E_INVALIDARG;
 
-	unsigned swapChainFlags = 0u;
 #if defined _DEBUG && !defined NDEBUG
-	swapChainFlags |= D3D11_CREATE_DEVICE_DEBUG;
+	m_swapChainFlags |= D3D11_CREATE_DEVICE_DEBUG;
 #endif
 
 	static const D3D_FEATURE_LEVEL acceptableFeatureLevels[] =
@@ -131,20 +119,76 @@ Graphics::Graphics( const HWND hWnd,
 		D3D_FEATURE_LEVEL_9_1,
 	};
 
-	// create adapter, device, front|back buffers, swap chain and device rendering context
-	createAdapters();
-	const auto &primaryAdapter = m_adapters.front();
-	hres = E_INVALIDARG;
-#if defined FLIP_PRESENT
+#ifdef FLIP_PRESENT
+	if ( checkTearingSupport() )
+	{
+		m_swapChainFlags |= DXGI_SWAP_CHAIN_FLAG_ALLOW_TEARING;
+		m_presentFlags = DXGI_PRESENT_ALLOW_TEARING;
+	}
+
+	for ( DWORD i = 0u; hres == E_INVALIDARG || i < std::size( acceptableFeatureLevels ); ++i )
+	{
+		hres = D3D11CreateDevice( primaryAdapter.adapter(),
+			D3D_DRIVER_TYPE_UNKNOWN,
+			nullptr,
+			m_swapChainFlags,
+			acceptableFeatureLevels,
+			(unsigned) std::size( acceptableFeatureLevels ),
+			D3D11_SDK_VERSION,
+			&m_pDevice,
+			&m_featureLevel,
+			&m_pImmediateContext );
+	}
+	ASSERT_HRES_IF_FAILED;
+
+	DXGI_SWAP_CHAIN_DESC1 swapChainDesc{};
+	swapChainDesc.Width = width;
+	swapChainDesc.Height = height;
+	swapChainDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
+	swapChainDesc.BufferCount = 2u;
+	swapChainDesc.Stereo = false;
+	swapChainDesc.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD;
+	swapChainDesc.Format = DXGI_FORMAT_B8G8R8A8_UNORM;
+	swapChainDesc.Scaling = DXGI_SCALING_NONE;
+	swapChainDesc.AlphaMode = DXGI_ALPHA_MODE_UNSPECIFIED;
+	swapChainDesc.SampleDesc.Count = 1u;	// MSAA not supported in FLIP mode
+	swapChainDesc.SampleDesc.Quality = 0u;
+	swapChainDesc.Flags = m_swapChainFlags;
+
+	hres = m_pDxgiFactory->CreateSwapChainForHwnd( m_pDevice.Get(),
+			hWnd,	// use 1 flip model swap chain per hWnd
+			&swapChainDesc,
+			nullptr,
+			nullptr,
+			&m_pSwapChain);
+	ASSERT_HRES_IF_FAILED;
+
 	// make window-swap chain association
 	makeWindowAssociationWithFactory( hWnd );
 #else
+	DXGI_SWAP_CHAIN_DESC swapChainDesc{};
+	swapChainDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
+	swapChainDesc.BufferCount = 1u;
+	swapChainDesc.OutputWindow = hWnd;
+	swapChainDesc.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
+	swapChainDesc.Windowed = true;
+	swapChainDesc.Flags = m_swapChainFlags;
+	swapChainDesc.BufferDesc.Width = width;
+	swapChainDesc.BufferDesc.Height = height;
+	swapChainDesc.BufferDesc.Format = DXGI_FORMAT_B8G8R8A8_UNORM;
+	swapChainDesc.BufferDesc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED;
+	swapChainDesc.BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;
+	swapChainDesc.BufferDesc.RefreshRate.Numerator = 60u;
+	swapChainDesc.BufferDesc.RefreshRate.Denominator = 1u;
+	swapChainDesc.SampleDesc.Count = 1u;
+	swapChainDesc.SampleDesc.Quality = 0u;
+
 	for ( DWORD i = 0u; hres == E_INVALIDARG || i < std::size( acceptableFeatureLevels ); ++i )
 	{
 		hres = D3D11CreateDeviceAndSwapChain( primaryAdapter.adapter(),
 			D3D_DRIVER_TYPE_UNKNOWN,
 			nullptr,
-			swapChainFlags,
+			m_swapChainFlags,
 			acceptableFeatureLevels,
 			(unsigned) std::size( acceptableFeatureLevels ),
 			D3D11_SDK_VERSION,
@@ -154,8 +198,10 @@ Graphics::Graphics( const HWND hWnd,
 			&m_featureLevel,
 			&m_pImmediateContext );
 	}
-#endif
 	ASSERT_HRES_IF_FAILED;
+#endif
+
+	ASSERT( m_featureLevel == D3D_FEATURE_LEVEL_11_1, "Old feature level!" );
 
 #if defined _DEBUG && !defined NDEBUG
 	// Check for DirectX Math library support
@@ -170,14 +216,7 @@ Graphics::Graphics( const HWND hWnd,
 	interrogateDirectxFeatures();
 #endif
 
-	Microsoft::WRL::ComPtr<ID3D11Texture2D> pD3dBackBuffer;
-	hres = m_pSwapChain->GetBuffer( 0u,
-		__uuidof( ID3D11Texture2D ),
-		&pD3dBackBuffer );
-	ASSERT_HRES_IF_FAILED;
-
-	m_globalColorBuffer = std::make_shared<RenderTargetOutput>( *this,
-		pD3dBackBuffer.Get() );
+	setupRenderTarget();
 
 	if constexpr ( gph_mode::get() != gph_mode::_3D )
 	{
@@ -244,6 +283,74 @@ void Graphics::clearShaderSlots() noexcept
 	DXGI_GET_QUEUE_INFO_GFX;
 }
 
+void Graphics::resize( const unsigned newWidth,
+	const unsigned newHeight )
+{
+	HRESULT hres;
+
+	hres = m_pSwapChain->SetFullscreenState( TRUE,
+		nullptr );
+
+	releaseBackBufferForResizing();
+
+	hres = m_pSwapChain->ResizeBuffers( 0u,	// No of Buffers, set to 0 to preserve existing setting
+		newWidth, newHeight,						// if width & height are set to 0 set the swap chain to match the screen resolution
+		DXGI_FORMAT_UNKNOWN,					// retain the current back buffer format
+		m_swapChainFlags );
+	ASSERT_HRES_IF_FAILED;
+	// may need to handle DXGI_ERROR_DEVICE_REMOVED & DXGI_ERROR_DEVICE_RESET
+
+	// recreate render target
+	setupRenderTarget();
+
+	// recreate depth stencil
+	setupDepthStencil();
+
+	// #TODO: consider setting the rtv and dsv back in the renderer
+
+	// Assert that window width/height is equal to swap-chain width/height
+	DXGI_SWAP_CHAIN_DESC desc;
+	POD_ZERO( desc );
+	m_pSwapChain->GetDesc( &desc );
+	ASSERT( desc.BufferDesc.Width == newWidth && desc.BufferDesc.Height == newHeight, "Resizing malfunction!" );
+}
+
+void Graphics::setBorderless()
+{
+	::SetWindowLongPtrW( m_hParentWnd,
+		GWL_STYLE,
+		::GetWindowLongPtrW( m_hParentWnd, GWL_STYLE )
+			& ~( WS_BORDER | WS_DLGFRAME | WS_THICKFRAME ) );
+	::SetWindowLongPtrW( m_hParentWnd,
+		GWL_EXSTYLE,
+		::GetWindowLongPtrW( m_hParentWnd, GWL_EXSTYLE ) & ~WS_EX_DLGMODALFRAME );
+}
+
+void Graphics::releaseBackBufferForResizing()
+{
+	clearShaderSlots();
+	// release the render target view based on the back buffer:
+	m_rtv->clean( *this );
+
+	// the depth stencil will need to be resized, so release it too:
+	m_dsv->clean( *this );
+
+	UINT rtvRefs = m_rtv.use_count();
+	UINT dsvRefs = m_dsv.use_count();
+
+	// release any other references:
+	m_pImmediateContext->ClearState();
+
+	// after releasing references to these resources, we need to call Flush() to ensure that Direct3D
+	// also releases any references it might still have to the same resources - such as pipeline bindings
+	// and wait until these changes are done/flushed
+	m_pImmediateContext->Flush();
+
+	rtvRefs = m_rtv.use_count();
+	dsvRefs = m_dsv.use_count();
+	ASSERT( rtvRefs == 1 && dsvRefs == 1, "More references to such resources still exist" );
+}
+
 void Graphics::cleanState() noexcept
 {
 	if constexpr ( gph_mode::get() == gph_mode::_3D )
@@ -299,7 +406,6 @@ void Graphics::updateAndRenderFpsTimer()
 	static int fpsDisplayFrameCount = 0;
 	static std::wstring fps;
 
-	m_pFpsSpriteBatch->Begin();
 	auto &setMan = SettingsManager::instance();
 	if ( setMan.getSettings().bFpsCounting )
 	{
@@ -309,13 +415,16 @@ void Graphics::updateAndRenderFpsTimer()
 		if ( m_fpsTimer.getDurationFromStart() > 1000 )
 		{
 			fps = std::to_wstring( fpsDisplayFrameCount );
+#if defined _DEBUG && !defined NDEBUG
 			OutputDebugStringW( fps.data() );
+#endif
 			m_fpsTimer.restart();
 			fpsDisplayFrameCount = 0;
 		}
 	}
 
 	// draw FPS text
+	m_pFpsSpriteBatch->Begin();
 	m_pSpriteFont->DrawString(m_pFpsSpriteBatch.get(),
 		fps.c_str(),
 		dx::XMFLOAT2{0.0f, 0.0f},
@@ -345,13 +454,17 @@ void Graphics::endFrame()
 void Graphics::present()
 {
 	HRESULT hres;
-	SettingsManager &setMan = SettingsManager::instance();
-	if ( setMan.getSettings().bVSync )
+	SettingsManager &settings = SettingsManager::instance();
+#if defined FLIP_PRESENT
+	DXGI_PRESENT_PARAMETERS presentParams;
+	POD_ZERO( presentParams );
+#endif
+	if ( settings.getSettings().bVSync )
 	{
 #if defined FLIP_PRESENT
-		hres = m_pSwapChain->Present1( 1u,
-			0u,
-			 nullptr );
+		hres = m_pSwapChain->Present1( settings.getSettings().iPresentInterval,
+			m_presentFlags,
+			&presentParams );
 #else
 		hres = m_pSwapChain->Present( 1u,
 			0u );
@@ -361,8 +474,8 @@ void Graphics::present()
 	{
 #if defined FLIP_PRESENT
 		hres = m_pSwapChain->Present1( 0u,
-			0u,
-			nullptr );
+			m_presentFlags,
+			&presentParams );
 #else
 		hres = m_pSwapChain->Present( 0u,
 			0u );
@@ -370,10 +483,17 @@ void Graphics::present()
 	}
 	DXGI_GET_QUEUE_INFO_GFX;
 
+#if defined _DEBUG && !defined NDEBUG
 	if ( hres == DXGI_ERROR_DEVICE_REMOVED )
 	{
 		THROW_GRAPHICS_EXCEPTION( "Device Removed exception triggered!\nReason: " + m_pDevice->GetDeviceRemovedReason() );
 	}
+	else if ( hres == DXGI_ERROR_INVALID_CALL )
+	{
+		THROW_GRAPHICS_EXCEPTION( "Invalid Presentation parameters!" );
+	}
+#endif
+
 	ASSERT_HRES_IF_FAILED;
 }
 
@@ -455,9 +575,29 @@ const unsigned Graphics::getClientHeight() const noexcept
 	return m_height;
 }
 
-std::shared_ptr<IRenderTargetView> Graphics::shareRenderTarget()
+std::shared_ptr<IRenderTargetView> Graphics::setupRenderTarget()
 {
-	return m_globalColorBuffer;
+	if ( !m_rtv )
+	{
+		Microsoft::WRL::ComPtr<ID3D11Texture2D> pD3dBackBuffer;
+		HRESULT hres = m_pSwapChain->GetBuffer( 0u,
+			__uuidof( ID3D11Texture2D ),
+			&pD3dBackBuffer );
+		ASSERT_HRES_IF_FAILED;
+
+		m_rtv = std::make_shared<RenderTargetOutput>( *this,
+			pD3dBackBuffer.Get() );
+	}
+	return m_rtv;
+}
+
+std::shared_ptr<IDepthStencilView> Graphics::setupDepthStencil()
+{
+	if ( !m_dsv )
+	{
+		m_dsv = std::make_shared<DepthStencilOutput>( *this );
+	}
+	return m_dsv;
 }
 
 #if defined _DEBUG && !defined NDEBUG
@@ -467,15 +607,28 @@ DxgiInfoQueue& Graphics::infoQueue()
 }
 #endif
 
+void Graphics::createFactory()
+{
+	HRESULT hres;
+#ifdef FLIP_PRESENT
+	unsigned factoryFlags = 0u;
+#if defined _DEBUG && !defined NDEBUG
+	factoryFlags = DXGI_CREATE_FACTORY_DEBUG;
+#endif
+	hres = CreateDXGIFactory1( IID_PPV_ARGS( &m_pDxgiFactory ) );
+#else
+	hres = CreateDXGIFactory1( __uuidof( IDXGIFactory1 ),
+		reinterpret_cast<void**>( m_pDxgiFactory.GetAddressOf() ) );
+#endif
+	ASSERT_HRES_IF_FAILED;
+}
+
 void Graphics::createAdapters()
 {
-	HRESULT hres = CreateDXGIFactory1( __uuidof( IDXGIFactory1 ),
-		reinterpret_cast<void**>( m_pDxgiFactory.GetAddressOf() ) );
-	ASSERT_HRES_IF_FAILED;
+	unsigned adapterIndex = 0u;
+	IDXGIAdapter *pAdapter = nullptr;	// IDXGIAdapter1 for blt, or IDXGIAdapter2 for flip model, or # for DXGI later versions
 
-	IDXGIAdapter1 *pAdapter = nullptr;
-	unsigned adapterIndex = 0;
-	while ( SUCCEEDED( m_pDxgiFactory->EnumAdapters1( adapterIndex,
+	while ( SUCCEEDED( m_pDxgiFactory->EnumAdapters( adapterIndex,
 		&pAdapter ) ) )
 	{
 		m_adapters.emplace_back( pAdapter );
@@ -536,17 +689,17 @@ void Graphics::interrogateDirectxFeatures()
 		"Command lists are supported by the current driver.\n"s :
 		"Commands lists will be emulated in software.\n"s );
 
-	D3D11_FEATURE_DATA_D3D11_OPTIONS hwopts11{};
+	D3D11_FEATURE_DATA_D3D11_OPTIONS d3d11HwOptions{};
 	hres = m_pDevice->CheckFeatureSupport( D3D11_FEATURE_D3D11_OPTIONS,
-		&hwopts11,
-		sizeof( hwopts11 ) );
+		&d3d11HwOptions,
+		sizeof( d3d11HwOptions ) );
 	ASSERT_HRES_IF_FAILED;
 
-	if ( !hwopts11.MapNoOverwriteOnDynamicConstantBuffer )
+	if ( !d3d11HwOptions.MapNoOverwriteOnDynamicConstantBuffer )
 	{
 		console.log( "Constant Buffer D3D11_MAP_WRITE_NO_OVERWRITE unsupported!\n"s );
 	}
-	if ( !hwopts11.MapNoOverwriteOnDynamicBufferSRV )
+	if ( !d3d11HwOptions.MapNoOverwriteOnDynamicBufferSRV )
 	{
 		console.log( "Shader Resource View D3D11_MAP_WRITE_NO_OVERWRITE unsupported!\n"s );
 	}
@@ -555,6 +708,25 @@ void Graphics::interrogateDirectxFeatures()
 	hres = m_pDevice->CheckFormatSupport( DXGI_FORMAT_B8G8R8A8_UNORM,
 		&formatSupport );
 	ASSERT_HRES_IF_FAILED;
+}
+
+bool Graphics::checkTearingSupport()
+{
+	bool bAllowTearing = false;
+	// for Variable Refresh Rate displays (VRR) (VSync OFF)
+	// Rather than create the 1.5 factory interface directly, we query for the 1.5 interface using a previous version factory.
+	// This will enable the graphics debugging tools which might not support the 1.5 factory interface.
+	mwrl::ComPtr<IDXGIFactory5> factory5;
+	HRESULT hres = m_pDxgiFactory.As( &factory5 );
+	ASSERT_HRES_IF_FAILED;
+
+	hres = factory5->CheckFeatureSupport( DXGI_FEATURE_PRESENT_ALLOW_TEARING,
+		&bAllowTearing,
+		sizeof bAllowTearing );
+	
+	bAllowTearing = SUCCEEDED( hres ) && bAllowTearing;
+
+	return bAllowTearing;
 }
 
 void Graphics::d3d11DebugReport()

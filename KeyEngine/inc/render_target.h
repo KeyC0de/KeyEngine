@@ -33,6 +33,7 @@ public:
 	void bindRenderSurface( Graphics &gph, IRenderSurface *pRs ) cond_noex override;
 	void bindRenderSurface( Graphics &gph, IDepthStencilView *pDepthStencilView ) cond_noex;
 	void clear( Graphics &gph, const std::array<float, 4> &color = {0.0f, 0.0f, 0.0f, 0.0f} ) cond_noex override;
+	void clean( Graphics &gph ) cond_noex;
 	const unsigned getWidth() const noexcept;
 	const unsigned getHeight() const noexcept;
 	ID3D11RenderTargetView* renderTargetView() const noexcept;

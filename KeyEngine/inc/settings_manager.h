@@ -18,6 +18,7 @@ class SettingsManager final
 		bool bFpsCounting = true;
 		int frameCount = 0;
 		int iMaxFps = 60;
+		unsigned iPresentInterval = 1u;
 		bool bStaticShaderCompilation = true;
 		bool bMultithreadedRendering = false;
 		unsigned nRenderingThreads = 4u;

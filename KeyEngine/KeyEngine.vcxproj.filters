@@ -16,7 +16,7 @@
     <ClCompile Include="third_party\imgui\imgui_widgets.cpp">
       <Filter>third_party\imgui</Filter>
     </ClCompile>
-    <ClCompile Include="src\test_main.cpp">
+    <ClCompile Include="src\main_test.cpp">
       <Filter>tests</Filter>
     </ClCompile>
     <ClCompile Include="src\testing.cpp">

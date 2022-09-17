@@ -127,8 +127,7 @@ Window::Window( const int width,
 	}
 
 	uint32_t windowExStyles = WS_EX_OVERLAPPEDWINDOW;
-	uint32_t windowStyles = WS_VISIBLE | WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU
-		| WS_OVERLAPPEDWINDOW;
+	uint32_t windowStyles = WS_VISIBLE | WS_CAPTION | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_SYSMENU | WS_OVERLAPPEDWINDOW;	// disable both maximizing and resizing
 	const std::wstring className = util::s2ws( m_pWindowClass->getName() );
 	const std::wstring windowName = util::s2ws( name );
 	m_hWnd = CreateWindowExW( windowExStyles,
@@ -269,34 +268,6 @@ const HWND Window::setFocus()
 {
 	HWND previouslyFocusedWindow = SetFocus( m_hWnd );
 	return previouslyFocusedWindow;
-}
-
-void Window::goFullscreen() noexcept
-{
-	/*
-	If the application chooses to go to full-screen mode by itself, then it can call IDXGISwapChain::SetFullscreenState and pass an explicit IDXGIOutput1 (or NULL, if the application is happy to let DXGI decide).
-	*/
-}
-
-void Window::goWindowed() noexcept
-{
-
-}
-
-void Window::setBorderless() const noexcept
-{
-	::SetWindowLongPtrW( m_hWnd,
-		GWL_STYLE,
-		::GetWindowLongPtrW( m_hWnd, GWL_STYLE )
-			& ~( WS_BORDER | WS_DLGFRAME | WS_THICKFRAME ) );
-	::SetWindowLongPtrW( m_hWnd,
-		GWL_EXSTYLE,
-		::GetWindowLongPtrW( m_hWnd, GWL_EXSTYLE ) & ~WS_EX_DLGMODALFRAME );
-}
-
-void Window::setBorderfull() const noexcept
-{
-
 }
 
 const HWND Window::getParent() const noexcept
@@ -808,6 +779,9 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 	}
 	const auto &imGuiIoContext = ImGui::GetIO();
 
+	static bool bMinimized = false;
+	static bool bCurrentlyResizing = false;
+
 	// custom messages (create with RegisterWindowMessage)
 
 	// Predefined Windows messages
@@ -945,50 +919,56 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		break;
 	}
 #endif // USE_GDIPLUS
-/*	case WM_SIZE:
+	case WM_SIZE:
 	{
-		if (g_pSwapChain)
+		if ( wParam == SIZE_MINIMIZED )
 		{
-			g_pd3dDeviceContext->OMSetRenderTargets(0, 0, 0);
-
-			// Release all outstanding references to the swap chain's buffers.
-			g_pRenderTargetView->Release();
-
-			HRESULT hr;
-			// Preserve the existing buffer count and format.
-			// Automatically choose the width and height to match the client rect for HWNDs.
-			hr = g_pSwapChain->ResizeBuffers(0, 0, 0, DXGI_FORMAT_UNKNOWN, 0);
-
-			// Perform error handling here!
-
-			// Get buffer and create a render-target-view.
-			ID3D11Texture2D *pBuffer;
-			hr = g_pSwapChain->GetBuffer(0, __uuidof( ID3D11Texture2D),
-										 (void**) &pBuffer );
-			// Perform error handling here!
-
-			hr = g_pd3dDevice->CreateRenderTargetView(pBuffer, NULL,
-													 &g_pRenderTargetView);
-			// Perform error handling here!
-			pBuffer->Release();
-
-			g_pd3dDeviceContext->OMSetRenderTargets(1, &g_pRenderTargetView, NULL );
-
-			// Set up the viewport.
-			D3D11_VIEWPORT vp;
-			vp.Width = width;
-			vp.Height = height;
-			vp.MinDepth = 0.0f;
-			vp.MaxDepth = 1.0f;
-			vp.TopLeftX = 0;
-			vp.TopLeftY = 0;
-			g_pd3dDeviceContext->RSSetViewports( 1, &vp );
+			// the window was minimized
+			if ( !bMinimized )
+			{
+				bMinimized = true;
+				// #TODO: suspend the application at this point so that we don't waste resources
+			}
 		}
-		return 1;
-
-Prevent window resizing: Instead resize by ingame option - choosing resolution:
-	To resize the output while either full screen or windowed, we recommend to call IDXGISwapChain::ResizeTarget, since this method resizes the target window also. Since the target window is resized, the operating system sends WM_SIZE, and your code will naturally call IDXGISwapChain::ResizeBuffers in response. It's thus a waste of effort to resize your buffers, and then subsequently resize the target.
-	}*/
+		else if ( bMinimized )
+		{
+			// the window was minimized and is now restored (resume from suspend)
+			bMinimized = false;
+		}
+		else if ( !bCurrentlyResizing )
+		{
+			// handle the swapchain resize for maximize or unmaximize
+			// another option would be to prevent window resizing and iInstead resize by ingame option - choosing resolution
+			m_width = LOWORD( lParam );
+			m_height = HIWORD( lParam );
+			if ( m_pGraphics )
+			{
+				m_pGraphics->resize( m_width,
+					m_height );
+			}
+		}
+		break;
+	}
+	case WM_ENTERSIZEMOVE:
+	{
+		// we want to avoid trying to resize the swapchain as the user does the 'rubber band' resize:
+		bCurrentlyResizing = true;
+		break;
+	}
+	case WM_EXITSIZEMOVE:
+	{
+		// here is the other place where you handle the swapchain resize after the user stops using the 'rubber-band' 
+		bCurrentlyResizing = false;
+		break;
+	}
+	case WM_GETMINMAXINFO:
+	{
+		// we want to prevent the window from being set too tiny:
+		auto info = reinterpret_cast<MINMAXINFO*>( lParam );
+		info->ptMinTrackSize.x = 320;
+		info->ptMinTrackSize.y = 200;
+		break;
+	}
 	/// Menu messages
 	case WM_COMMAND:
 	{// sent when the user selects a command item from a menu, when a control sends a notification message to its parent window, or when an accelerator keystroke is translated

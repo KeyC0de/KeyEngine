@@ -123,6 +123,19 @@ void IRenderTargetView::clear( Graphics &gph,
 	DXGI_GET_QUEUE_INFO( gph );
 }
 
+void IRenderTargetView::clean( Graphics &gph ) cond_noex
+{
+	// release the back buffer texture resource of the rtv
+	mwrl::ComPtr<ID3D11Resource> pRtvRsc;
+	m_pRtv->GetResource( &pRtvRsc );
+
+	mwrl::ComPtr<ID3D11Texture2D> pRtvTex;
+	pRtvRsc.As( &pRtvTex );
+
+	// release the rtv resource itself
+	m_pRtv.Reset();
+}
+
 const unsigned IRenderTargetView::getWidth() const noexcept
 {
 	return m_width;

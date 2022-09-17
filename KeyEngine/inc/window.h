@@ -81,10 +81,6 @@ public:
 	void setEnable( const bool b );
 	void setOnTop();
 	const HWND setFocus();
-	void goFullscreen() noexcept;
-	void goWindowed() noexcept;
-	void setBorderless() const noexcept;
-	void setBorderfull() const noexcept;
 	const HWND getParent() const noexcept;
 	void setTitle( const std::string &title );
 	const std::string& getTitle() const noexcept;

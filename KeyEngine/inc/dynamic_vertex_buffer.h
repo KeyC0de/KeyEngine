@@ -48,9 +48,9 @@ private:
 public:
 	enum ILEementType
 	{
-		#define X(el) el,
+#define X( el ) el,
 		VERTEX_INPUT_LAYOUT_ELEMENT_TYPES
-		#undef X
+#undef X
 	};
 
 	template<ILEementType>
@@ -177,12 +177,12 @@ public:
 	{
 		switch( type )
 		{
-			#define X(el) case VertexInputLayout::el:\
-			{\
-				return T<VertexInputLayout::el>::exec( std::forward<Args>( args )... );\
+#define X( el ) case VertexInputLayout::el: \
+			{ \
+				return T<VertexInputLayout::el>::exec( std::forward<Args>( args )... ); \
 			}
 			VERTEX_INPUT_LAYOUT_ELEMENT_TYPES
-			#undef X
+#undef X
 		}
 		// default:
 		ASSERT( false, "Invalid element type query." );

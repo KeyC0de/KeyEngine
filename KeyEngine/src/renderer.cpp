@@ -27,13 +27,13 @@ namespace ren
 
 Renderer::Renderer( Graphics &gph )
 	:
-	m_globalColorBuffer{gph.shareRenderTarget()},
-	m_globalDepthBuffer{std::make_shared<DepthStencilOutput>( gph )}
+	m_globalColorBuffer{gph.setupRenderTarget()},
+	m_globalDepthStencil{gph.setupDepthStencil()}
 {
 	addGlobalProducer( RenderSurfaceProducer<IRenderTargetView>::make( "backColorbuffer",
 		m_globalColorBuffer ) );
 	addGlobalProducer( RenderSurfaceProducer<IDepthStencilView>::make( "backDepthBuffer",
-		m_globalDepthBuffer ) );
+		m_globalDepthStencil ) );
 	addGlobalConsumer( RenderSurfaceConsumer<IRenderTargetView>::make( "backColorbuffer",
 		m_globalColorBuffer ) );
 	{
@@ -240,11 +240,9 @@ RenderQueuePass& Renderer::getRenderQueuePass( const std::string &name )
 	catch( std::bad_cast &ex )
 	{
 		(void)ex;
-		THROW_RENDERER_EXCEPTION( "Renderer::getRenderQueuePass pass '" + name
-			+ "' was not a RenderQueuePass" );
+		THROW_RENDERER_EXCEPTION( "Renderer::getRenderQueuePass pass '" + name + "' was not a RenderQueuePass" );
 	}
-	THROW_RENDERER_EXCEPTION( "Renderer::getRenderQueuePass pass '" + name
-		+ "' was not found" );
+	THROW_RENDERER_EXCEPTION( "Renderer::getRenderQueuePass pass '" + name + "' was not found" );
 }
 
 

@@ -31,9 +31,9 @@ namespace dx = DirectX;
 
 enum ElementType
 {
-	#define X(el) el,
+#define X( el ) el,
 	CB_LEAF_TYPES
-	#undef X
+#undef X
 	Struct,
 	Array,
 	Empty,
@@ -121,12 +121,12 @@ struct ReverseMap final
 	static constexpr bool valid = false;
 };
 
-#define X( el ) template<>\
-struct ReverseMap<typename MapElementProperties<el>::CPUType> \
-{ \
-	static constexpr ElementType type = el; \
-	static constexpr bool valid = true; \
-};
+#define X( el ) template<> \
+	struct ReverseMap<typename MapElementProperties<el>::CPUType> \
+	{ \
+		static constexpr ElementType type = el; \
+		static constexpr bool valid = true; \
+	};
 CB_LEAF_TYPES
 #undef X
 
@@ -207,7 +207,7 @@ public:
 		using namespace std::string_literals;
 		switch( m_type )
 		{
-#define X(el) case el: \
+#define X( el ) case el: \
 	ASSERT( typeid( MapElementProperties<el>::CPUType ) == typeid( T ), std::string{"Error: GPU Type "s + std::string{typeid( T ).name()} + " used with mapped Type "s + std::string{ENUM_STR( el )}}.c_str() ); \
 	return *m_offset;
 CB_LEAF_TYPES
@@ -517,7 +517,7 @@ class CBuffer final
 	std::shared_ptr<CBElement> m_pLayoutRoot;
 	std::vector<char> m_buffer;
 public:
-	// various resources can be used to construct a Buffer
+	// various resources can be used to construct a CBuffer
 	CBuffer( RawLayout &&lay ) cond_noex;
 	CBuffer( const CookedLayout &lay ) cond_noex;
 	CBuffer( CookedLayout &&lay ) cond_noex;

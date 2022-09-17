@@ -33,6 +33,7 @@ public:
 	void bindRenderSurface( Graphics &gph, IRenderSurface *rt ) cond_noex override;
 	void bindRenderSurface( Graphics &gph, IRenderTargetView *rt ) cond_noex;
 	void clear( Graphics &gph, const std::array<float, 4>& unused = {} ) cond_noex override;
+	void clean( Graphics &gph ) cond_noex;
 	//===================================================
 	//	\function	convertToBitmap
 	//	\brief  copy from resource to staging
@@ -68,9 +69,9 @@ class DepthStencilOutput
 	: public IDepthStencilView
 {
 public:
-	DepthStencilOutput( Graphics &gph, Microsoft::WRL::ComPtr<ID3D11Texture2D> pTexture, const unsigned face );
 	DepthStencilOutput( Graphics &gph );
 	DepthStencilOutput( Graphics &gph, const unsigned width, const unsigned height );
+	DepthStencilOutput( Graphics &gph, Microsoft::WRL::ComPtr<ID3D11Texture2D> pTexture, const unsigned face );
 
 	void bind( Graphics &gph ) cond_noex override;
 };

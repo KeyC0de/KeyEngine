@@ -7,7 +7,7 @@ class PrimitiveTopology
 	: public IBindable
 {
 protected:
-	D3D11_PRIMITIVE_TOPOLOGY m_d3dPrimTop;
+	D3D11_PRIMITIVE_TOPOLOGY m_d3dTopo;
 public:
 	PrimitiveTopology( Graphics &gph, const D3D11_PRIMITIVE_TOPOLOGY topo );
 
