@@ -173,10 +173,10 @@ Window::Window( const int width,
 		maxTitleCharSize );
 	m_title = util::ws2s( title );
 
-	// Accelerators
-	//m_hAcceleratorTable = LoadAcceleratorsW( hInstance,
-	//	MAKEINTRESOURCEW( ID_ACCEL_TABLE_APP ) );
-	//ASSERT_HRES_WIN32_IF_FAILED;
+	// (keyboard) accelerators are keystrokes or a combination of keystrokes that generate a WM_COMMAND or WM_SYSCOMMAND message for an application
+	m_hAcceleratorTable = LoadAcceleratorsW( THIS_INSTANCE,
+		MAKEINTRESOURCEW( ID_ACCEL_TABLE_APP ) );
+	ASSERT_HRES_WIN32_IF_FAILED;
 
 	// Tray icon setup
 	//setupNotifyIconData();
@@ -393,11 +393,11 @@ std::optional<int> Window::messageLoop() noexcept
 		{
 			return (int)msg.wParam;
 		}
-		//if ( !TranslateAcceleratorW( m_hWnd, m_hAcceleratorTable, &msg ) )
-		//{
+		if ( !TranslateAcceleratorW( m_hWnd, m_hAcceleratorTable, &msg ) )
+		{
 			TranslateMessage( &msg );
 			DispatchMessageW( &msg );
-		//}
+		}
 	}
 	return std::nullopt;
 }
@@ -1075,7 +1075,7 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 	//		return uHitTest;
 	//	}
 	//}
-	/// Clipboard messages
+	// Clipboard messages
 	case WM_INITMENUPOPUP:
 	{
 #if defined _DEBUG && !defined NDEBUG

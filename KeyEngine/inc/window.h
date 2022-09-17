@@ -49,7 +49,7 @@ private:
 	static inline Keyboard m_keyboard;
 	static inline Mouse m_mouse;
 	static inline std::vector<BYTE> m_rawInputBuffer;
-	//static inline HACCEL m_hAcceleratorTable;
+	static inline HACCEL m_hAcceleratorTable;
 	//static inline std::unique_ptr<SplashWindow> m_splash;
 	bool m_bCursorEnabled = true;
 	int m_width;
@@ -92,7 +92,6 @@ public:
 	const std::string& getName() const noexcept;
 	void minimize();
 	void restore();
-	//void setupNotifyIconData();
 	bool isMinimized() const noexcept;
 	bool isMaximized() const noexcept;
 	operator bool() const noexcept;
@@ -101,6 +100,7 @@ public:
 	HDC getDc() const noexcept;
 	WINDOWINFO getInfo() const noexcept;
 	const int messageBoxPrintf( const TCHAR *caption, const TCHAR *format, ... );
+	//void setupNotifyIconData();
 private:
 	void configureDc();
 	void confineCursor() noexcept;
