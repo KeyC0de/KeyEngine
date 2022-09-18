@@ -287,6 +287,7 @@
     <ClCompile Include="src\transform_vscb.cpp" />
     <ClCompile Include="src\triangle_mesh.cpp" />
     <ClCompile Include="src\utils.cpp" />
+    <ClCompile Include="src\util_exception.cpp" />
     <ClCompile Include="src\vertex_buffer.cpp" />
     <ClCompile Include="src\vertex_shader.cpp" />
     <ClCompile Include="src\vertical_blur_pass.cpp" />
@@ -319,6 +320,7 @@
     </None>
     <None Include="config\imgui.ini" />
     <None Include="config\imgui_default.ini" />
+    <None Include="cursor1.cur" />
     <None Include="scripts\scripting.lua" />
     <None Include="shaders\hlsli\directional_light_pscb.hlsli" />
     <None Include="shaders\hlsli\hlsl_misc.hlsli" />
@@ -368,7 +370,9 @@
     <ClInclude Include="inc\testing.h" />
     <ClInclude Include="inc\thread_pool_j.h" />
     <ClInclude Include="inc\types.h" />
+    <ClInclude Include="inc\util_exception.h" />
     <ClInclude Include="inc\vtune_itt_domain.h" />
+    <ClInclude Include="inc\windows_hidden_defs.h" />
     <ClInclude Include="inc\wireframe_pass.h" />
     <ClInclude Include="inc\solid_outline_draw_pass.h" />
     <ClInclude Include="inc\color.h" />

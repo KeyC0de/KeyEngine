@@ -24,8 +24,6 @@ Window::WindowClass::WindowClass( const std::string &name )
 	HINSTANCE hInstance = THIS_INSTANCE;
 	ASSERT( hInstance != nullptr, "HINSTANCE is null!" );
 
-	HRESULT hres = 0;
-
 	WNDCLASSEX wc{};
 	wc.cbSize = sizeof WNDCLASSEX;
 	wc.style = CS_OWNDC
@@ -36,7 +34,7 @@ Window::WindowClass::WindowClass( const std::string &name )
 	wc.cbWndExtra = 0;	// extra bytes
 	wc.hInstance = hInstance;
 	wc.hCursor = LoadCursorW( hInstance,
-		MAKEINTRESOURCEW( IDC_POINTER_APP ) );
+		MAKEINTRESOURCEW( IDC_HOMM_INSPIRED ) );
 	ASSERT_HRES_WIN32_IF_FAILED;
 	wc.hIcon = static_cast<HICON>( LoadImageW( hInstance,
 		MAKEINTRESOURCEW( IDI_ICON_APP ),
@@ -113,8 +111,6 @@ Window::Window( const int width,
 	m_height(height),
 	m_name{name}
 {
-	HRESULT hres = 0;
-
 	m_pWindowClass = &WindowClass::instance( "KeyEngine_Window_Class" );
 
 	RECT rect{0, 0, width, height};
@@ -178,6 +174,16 @@ Window::Window( const int width,
 		MAKEINTRESOURCEW( ID_ACCEL_TABLE_APP ) );
 	ASSERT_HRES_WIN32_IF_FAILED;
 
+	// register other clipboard formats to handle:
+	// we assume that atchTemp can contain the format name and a null-terminator, otherwise it is truncated
+	wchar_t unicodeClipboardFormat[32];
+	LoadStringW( THIS_INSTANCE,
+		IDS_CLIPBOARD_UNICODE_FORMAT,
+		unicodeClipboardFormat,
+		sizeof( unicodeClipboardFormat) / sizeof( WCHAR ) );
+	m_clipboardFormats[0] = RegisterClipboardFormatW( unicodeClipboardFormat );
+	ASSERT_HRES_WIN32_IF_FAILED;
+
 	// Tray icon setup
 	//setupNotifyIconData();
 
@@ -222,7 +228,8 @@ Window::Window( Window &&rhs ) noexcept
 	m_hWnd{std::move( rhs.m_hWnd )},
 	m_pGraphics{std::move( rhs.m_pGraphics )},
 	m_dc{rhs.m_dc},
-	m_info{std::move( rhs.m_info )}
+	m_info{std::move( rhs.m_info )},
+	m_clipboardFormats{std::move( rhs.m_clipboardFormats )}
 {
 	m_pWindowClass = std::move( rhs.m_pWindowClass );
 	m_keyboard = std::move( rhs.m_keyboard );
@@ -243,8 +250,7 @@ Window& Window::operator=( Window &&rhs ) noexcept
 void Window::setEnable( const bool b )
 {
 	EnableWindow( m_hWnd,
-		b ?
-			TRUE :
+		b ? TRUE :
 			FALSE );
 }
 
@@ -279,7 +285,6 @@ void Window::setTitle( const std::string &title )
 {
 	SetWindowTextW( m_hWnd,
 		util::s2ws( title ).data() );
-	HRESULT hres = 0;
 	ASSERT_HRES_WIN32_IF_FAILED;
 }
 
@@ -291,7 +296,7 @@ const std::string& Window::getTitle() const noexcept
 void Window::enableCursor() noexcept
 {
 	m_bCursorEnabled = true;
-	displayCursor();
+	showCursor();
 	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{
 		enableImGuiMouse();
@@ -437,12 +442,28 @@ const Window::WindowClass& Window::getWindowClass() noexcept
 	return *m_pWindowClass;
 }
 
-bool Window::isDescendantOf( const HWND parent,
-	const HWND hWnd ) noexcept
+bool Window::isDescendantOf( const HWND targethWnd,
+	const HWND parent ) noexcept
 {
-	return IsChild( parent, hWnd ) == 0 ?
-		false :
+	return IsChild( parent, targethWnd ) == 0 ? false :
 		true;
+}
+
+void saveClipboardTextAsVar()
+{
+	HANDLE hClipboard;
+	char *clipboardText;
+	
+	if ( OpenClipboard( nullptr ) )
+	{
+		hClipboard = GetClipboardData(CF_TEXT );
+		clipboardText = (char*)hClipboard;
+#if defined _DEBUG && !defined NDEBUG
+		KeyConsole& console = KeyConsole::instance();
+		console.print( "Clipboard copied text: " + std::string{clipboardText} + "\n" );
+#endif
+		CloseClipboard();
+	}
 }
 
 void Window::confineCursor() noexcept
@@ -468,7 +489,7 @@ void Window::hideCursor() noexcept
 	while ( ShowCursor( FALSE ) >= 0 );
 }
 
-void Window::displayCursor() noexcept
+void Window::showCursor() noexcept
 {
 	//ShowCursor( TRUE );
 	while ( ShowCursor( TRUE ) < 0 );
@@ -588,7 +609,7 @@ LRESULT Window::windowProc_impl2d( _In_ const HWND hWnd,
 			else // WA_INACTIVE
 			{
 				freeCursor();
-				displayCursor();
+				showCursor();
 			}
 		}
 //		Shell_NotifyIconW( NIM_ADD,
@@ -789,7 +810,6 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 	{
 	case WM_CREATE:
 	{
-//		HRESULT hres;
 //		// Initialization. Controls - child windows, set default values for controls
 //#if defined _DEBUG && !defined NDEBUG
 //		auto &console = KeyConsole::instance();
@@ -808,7 +828,6 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 //			ID_TRAY_ICON_EXIT,
 //			L"Exit the Application." );
 //		ASSERT_HRES_WIN32_IF_FAILED;
-//		return 0;
 		break;
 	}
 	case WM_CLOSE:
@@ -842,83 +861,31 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 			else // WA_INACTIVE
 			{
 				freeCursor();
-				displayCursor();
+				showCursor();
 			}
 		}
 //		Shell_NotifyIconW( NIM_ADD,
 //			&m_notifyIconData );
 		break;
 	}
-	case WM_ENABLE:
-	{
-#if defined _DEBUG && !defined NDEBUG
-		auto &console = KeyConsole::instance();
-		if ( wParam == TRUE )
-		{
-			console.log( "Window "
-				+ getTitle()
-				+ " has been enabled.\n" );
-		}
-		else
-		{
-			console.log( "Window "
-				+ getTitle()
-				+ " has been disabled.\n" );
-		}
-#endif
-		break;
-	}
 #if defined _DEBUG && !defined NDEBUG
 	case WM_SHOWWINDOW:
 	{
+		// sent to a window when the window is about to be hidden or shown
 		auto &console = KeyConsole::instance();
 		if ( wParam == TRUE )
 		{
-			console.log( "Window "
-				+ getTitle()
-				+ " is visible.\n" );
+			console.log( "Window " + getTitle() + " is visible.\n" );
 		}
 		else
 		{
-			console.log( "Window "
-				+ getTitle()
-				+ " is hidden.\n" );
+			console.log( "Window " + getTitle() + " is hidden.\n" );
 		}
-		return 0;
+		//return 0;
+		break;
 	}
 #endif
-#ifdef USE_GDIPLUS
-	case WM_ERASEBKGND:
-	{
-		// called before WM_PAINT to update the background of the window client region
-		// pass it on to DefWindowProc(), which uses the WNDCLASSEX::hbrBackground you selected
-		break;
-	}
-	case WM_PAINT:
-	{
-#	if defined _DEBUG && !defined NDEBUG
-		auto &console = KeyConsole::instance();
-		using namespace std::string_literals;
-		console.log( "Painting without DirectX\n"s );
-#	endif
-		PAINTSTRUCT ps;
-		HDC dc = BeginPaint( m_hWnd,
-			&ps );
-
-		LPRECT rect;
-		GetClientRect( hWnd,
-			&rect );
-		bool bFlipFlop = true;
-		HBRUSH hBrush = CreateSolidBrush( bFlipFlop ? col::Red : col::Green );
-		FillRect( m_dcClientArea,
-			rect,
-			hBrush );
-
-		EndPaint( hWnd,
-			&ps );
-		break;
-	}
-#endif // USE_GDIPLUS
+	/// resizing
 	case WM_SIZE:
 	{
 		if ( wParam == SIZE_MINIMIZED )
@@ -971,171 +938,128 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 	}
 	/// Menu messages
 	case WM_COMMAND:
-	{// sent when the user selects a command item from a menu, when a control sends a notification message to its parent window, or when an accelerator keystroke is translated
-//		UINT id = LOWORD( wParam );
-//		UINT bAccelerator = HIWORD( wParam ); // lParam is not used
-//		switch ( id )
-//		{
-//		case ID_HELP_ABOUT:
-//		{
-//			HRESULT hres;
-//			m_pDialogAbout.reset();
-//			m_pDialogAbout = std::make_unique<Dialog>( L"KeyEngine_Dialog_Class" );
-//			HWND hWndDialogAbout = CreateWindowExW( WS_EX_DLGMODALFRAME | WS_EX_TOPMOST,
-//				L"KeyEngine_Dialog_Class",
-//				L"Dialog Box",
-//				WS_VISIBLE | WS_SYSMENU | WS_CAPTION ,
-//				100,
-//				100,
-//				200,
-//				150,
-//				nullptr,
-//				nullptr,
-//				THIS_INSTANCE,
-//				nullptr );
-//			ASSERT_HRES_WIN32_IF_FAILED;
-//			m_pDialogAbout->setHwnd( hWndDialogAbout );
-//			return 0;
-//		}
-//		case ID_FILE_QUIT:
-//			PostQuitMessage( 0 );
-//			return 0;
-//		default:
-//			break;
-//		}
+	{
+	 // sent when the user selects a command item from a menu, when a control sends a notification message to its parent window, or when an accelerator keystroke is translated
+		UINT id = LOWORD( wParam );
+		UINT bAccelerator = HIWORD( wParam ); // lParam is not used
+		switch ( id )
+		{
+		case IDM_EDIT_CUT:
+		{
+			if ( editCopy() )
+			{
+				editDelete();
+			}
+			break;
+		}
+		case IDM_EDIT_COPY:
+		{
+			editCopy();
+			break;
+		}
+		case IDM_EDIT_DELETE:
+		{
+			editDelete();
+			break;
+		}
+		case IDM_EDIT_PASTE:
+		{
+			editPaste();
+			break;
+		}
+
+		//case IDM_HELP_ABOUT:
+		//{
+		//	m_pDialogAbout.reset();
+		//	m_pDialogAbout = std::make_unique<Dialog>( L"KeyEngine_Dialog_Class" );
+		//	HWND hWndDialogAbout = CreateWindowExW( WS_EX_DLGMODALFRAME | WS_EX_TOPMOST,
+		//		L"KeyEngine_Dialog_Class",
+		//		L"Dialog Box",
+		//		WS_VISIBLE | WS_SYSMENU | WS_CAPTION,
+		//		100,
+		//		100,
+		//		200,
+		//		150,
+		//		nullptr,
+		//		nullptr,
+		//		THIS_INSTANCE,
+		//		nullptr );
+		//	ASSERT_HRES_WIN32_IF_FAILED;
+		//	m_pDialogAbout->setHwnd( hWndDialogAbout );
+		//	break;
+		//}
+		case IDM_FILE_QUIT:
+			PostQuitMessage( 0 );
+			break;
+		default:
+			break;
+		}
 		break;
 	}
 	case WM_SYSCOMMAND:
-	{// received when the user chooses a command from the Window menu (formerly known as
-		// the system or control menu) or when the user chooses the maximize/minimize/close buttons
+	{
+		// sent when the user chooses a command from the Window menu (formerly known as the system or control menu) or when the user chooses the maximize/minimize/close buttons
 		// in WM_SYSCOMMAND messages, the four low-order bits of the wParam parameter are used internally by the system
-//		switch( wParam & 0xFFF0 )
-//		{
-//		case SC_MINIMIZE:
-//			minimize();
-//			return 0;
-//		case SC_MAXIMIZE:
-//			restore();
-//			return 0;
-//		}
+		switch( wParam & 0xFFF0 )
+		{
+		case SC_MINIMIZE:
+			minimize();
+			break;
+		case SC_MAXIMIZE:
+			restore();
+			break;
+		}
 		break;
 	}
-//	case WM_TRAY_ICON:
-//	{
-//		if ( lParam == WM_LBUTTONUP )
-//		{
-//			restore();
-//		}
-//		else if ( lParam == WM_RBUTTONDOWN )
-//		{
-//			POINT curPoint;
-//			GetCursorPos( &curPoint );
-//			SetForegroundWindow( hWnd );
-//			// spawn a popup menu on mouse hotspot coordinates - TrackPopupMenu blocks
-//			UINT clicked = TrackPopupMenu( m_hTrayIconPopupMenu,
-//				TPM_RETURNCMD | TPM_NONOTIFY,
-//				curPoint.x,
-//				curPoint.y,
-//				0,
-//				m_hWnd,
-//				nullptr );
-//			// send benign message to window to make sure the menu goes away.
-//			SendMessageW( m_hWnd,
-//				WM_NULL,
-//				0,
-//				0 );
-//			if ( clicked == ID_TRAY_ICON_EXIT )
-//			{
-//				Shell_NotifyIconW( NIM_DELETE,
-//					&m_notifyIconData );
-//				PostQuitMessage( 0 );
-//				return 0;
-//			}
-//		}
-//		break;
-//	}
-	//case WM_NCHITTEST:	// drags a window using its client area
-	//{
-	//	// determine what part of the window the mouse cursor is on
-	//	LRESULT uHitTest = DefWindowProcW( hWnd,
-	//		WM_NCHITTEST,
-	//		wParam,
-	//		lParam );
-	//	// or:
-	//	//short int xPos = GET_X_LPARAM( lParam );
-	//	//short int yPos = GET_Y_LPARAM( lParam );
-	//	if ( uHitTest == HTCLIENT )
-	//	{
-	//		// client area
-	//		return HTCAPTION;
-	//	}
-	//	else
-	//	{
-	//		// title bar or someplace else
-	//		return uHitTest;
-	//	}
-	//}
-	// Clipboard messages
 	case WM_INITMENUPOPUP:
 	{
+		// Sent when a drop-down menu or submenu is about to become active. This allows an application to modify the menu before it is displayed, without changing the entire menu.
 #if defined _DEBUG && !defined NDEBUG
 		auto &console = KeyConsole::instance();
 		using namespace std::string_literals;
 		console.log( "Clipboard processing\n"s );
 #endif
-		/*
-		// clipboard processing
-		// https://docs.microsoft.com/en-us/windows/win32/dataxchg/using-the-clipboard
-		SetTimer(hwnd, TIMER_ID, 1000, NULL);
-		static HWND hwndNextViewer;
-	HGLOBAL hGlobal;
-	HDC hdc;
-	PTSTR pGlobal;
-	PAINTSTRUCT ps;
-	RECT rect;
-	switch (message)
-		{
-	case WM_CREATE:
-		hwndNextViewer = SetClipboardViewer(hwnd);
-		return 0;
-	case WM_CHANGECBCHAIN:
-		if ((HWND)wParam == hwndNextViewer)
-			hwndNextViewer = (HWND)lParam;
-		else if (hwndNextViewer)
-			SendMessage(hwndNextViewer, message, wParam, lParam);
-		return 0;
-	case WM_DRAWCLIPBOARD:
-		if (hwndNextViewer)
-			SendMessage(hwndNextViewer, message, wParam, lParam);
-		InvalidateRect(hwnd, NULL, TRUE);
-		return 0;
-	case WM_PAINT:
-		hdc = BeginPaint(hwnd, &ps);
-		GetClientRect(hwnd, &rect);
-		OpenClipboard(hwnd);
-#ifdef UNICODE
-		hGlobal = GetClipboardData(CF_UNICODETEXT);
-#else
-		hGlobal = GetClipboardData(CF_TEXT);
-#endif
-		if (hGlobal != NULL)
-		{
-			pGlobal = (PTSTR)GlobalLock(hGlobal);
-			DrawText(hdc, pGlobal, -1, &rect, DT_EXPANDTABS);
-			GlobalUnlock(hGlobal);
-		}
-		CloseClipboard();
-		EndPaint(hwnd, &ps);
-		return 0;
-	case WM_DESTROY:
-		ChangeClipboardChain(hwnd, hwndNextViewer);
-		PostQuitMessage(0);
-		return 0;
-	}
-	*/
+		menuProc( (HMENU) wParam );
+
 		break;
 	}
-	/// Keyboard Messages
+	// clipboard messages
+	case WM_RENDERFORMAT:
+	{
+		// support delayed clipboard rendering
+		renderClipboardFormat( (unsigned) wParam );
+		break;
+	}
+	case WM_RENDERALLFORMATS:
+	{
+		// support delayed clipboard rendering
+		if ( !OpenClipboard( m_hWnd ) )
+		{
+			break;
+		}
+		if ( GetClipboardOwner() != m_hWnd )
+		{
+			break;
+		}
+
+		renderClipboardFormat();
+		break;
+	}
+	case WM_DESTROYCLIPBOARD:
+	{
+		// destroy any resources that were set aside to support delayed clipboard rendering
+		if ( m_pBoxLocalClip != nullptr )
+		{
+			LocalFree( m_pBoxLocalClip );
+			m_pBoxLocalClip = nullptr;
+		}
+		break;
+	}
+	case WM_SIZECLIPBOARD:
+	{
+		break;
+	}
+	/// Keyboard messages
 	case WM_KEYDOWN:
 		// syskey commands need to be handled to track ALT key (VK_MENU) and F10
 		[[fallthrough]];
@@ -1344,6 +1268,94 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		}
 		break;
 	}
+	/// Tray icons
+	//case WM_TRAY_ICON:
+//	{
+//		if ( lParam == WM_LBUTTONUP )
+//		{
+//			restore();
+//		}
+//		else if ( lParam == WM_RBUTTONDOWN )
+//		{
+//			POINT curPoint;
+//			GetCursorPos( &curPoint );
+//			SetForegroundWindow( hWnd );
+//			// spawn a popup menu on mouse hotspot coordinates - TrackPopupMenu blocks
+//			UINT clicked = TrackPopupMenu( m_hTrayIconPopupMenu,
+//				TPM_RETURNCMD | TPM_NONOTIFY,
+//				curPoint.x,
+//				curPoint.y,
+//				0,
+//				m_hWnd,
+//				nullptr );
+//			// send benign message to window to make sure the menu goes away.
+//			SendMessageW( m_hWnd,
+//				WM_NULL,
+//				0,
+//				0 );
+//			if ( clicked == ID_TRAY_ICON_EXIT )
+//			{
+//				Shell_NotifyIconW( NIM_DELETE,
+//					&m_notifyIconData );
+//				PostQuitMessage( 0 );
+//				return 0;
+//			}
+//		}
+//		break;
+//	}
+	//case WM_NCHITTEST:	// drags a window using its client area
+	//{
+	//	// determine what part of the window the mouse cursor is on
+	//	LRESULT uHitTest = DefWindowProcW( hWnd,
+	//		WM_NCHITTEST,
+	//		wParam,
+	//		lParam );
+	//	// or:
+	//	//short int xPos = GET_X_LPARAM( lParam );
+	//	//short int yPos = GET_Y_LPARAM( lParam );
+	//	if ( uHitTest == HTCLIENT )
+	//	{
+	//		// client area
+	//		return HTCAPTION;
+	//	}
+	//	else
+	//	{
+	//		// title bar or someplace else
+	//		return uHitTest;
+	//	}
+	//}
+#ifdef USE_GDIPLUS
+	case WM_ERASEBKGND:
+	{
+		// called before WM_PAINT to update the background of the window client region
+		// pass it on to DefWindowProc(), which uses the WNDCLASSEX::hbrBackground you selected
+		break;
+	}
+	case WM_PAINT:
+	{
+#	if defined _DEBUG && !defined NDEBUG
+		auto &console = KeyConsole::instance();
+		using namespace std::string_literals;
+		console.log( "Painting without DirectX\n"s );
+#	endif
+		PAINTSTRUCT ps;
+		HDC dc = BeginPaint( m_hWnd,
+			&ps );
+
+		LPRECT rect;
+		GetClientRect( hWnd,
+			&rect );
+		bool bFlipFlop = true;
+		HBRUSH hBrush = CreateSolidBrush( bFlipFlop ? col::Red : col::Green );
+		FillRect( m_dcClientArea,
+			rect,
+			hBrush );
+
+		EndPaint( hWnd,
+			&ps );
+		break;
+	}
+#endif // USE_GDIPLUS
 	}//switch
 
 	return DefWindowProcW( hWnd,
@@ -1420,6 +1432,325 @@ const int Window::messageBoxPrintf( const TCHAR *caption,
 		szBuffer,
 		caption,
 		0u );
+}
+
+#pragma warning( disable : 4312 )
+void WINAPI Window::menuProc( HMENU hMenu )
+{
+	int nMenuItems = GetMenuItemCount( hMenu );
+	unsigned flags;
+	PLABELBOX pBox = ( m_hWnd == nullptr ) ? nullptr :
+		(PLABELBOX) GetWindowLongW( m_hWnd, 0 );
+
+	for ( int i = 0; i < nMenuItems; ++i )
+	{
+		unsigned id = GetMenuItemID( hMenu,
+			i );
+
+		switch ( id )
+		{
+		case IDM_EDIT_CUT:
+		case IDM_EDIT_COPY:
+		case IDM_EDIT_DELETE:
+		{
+			if ( pBox == nullptr || ~pBox->fSelected )
+			{
+				flags = MF_BYCOMMAND | MF_GRAYED;
+			}
+			else if ( pBox->fEdit )
+			{
+				flags = ( id != IDM_EDIT_DELETE && pBox->ichSel == pBox->ichCaret ) ? MF_BYCOMMAND | MF_GRAYED :
+					MF_BYCOMMAND | MF_ENABLED;
+			}
+			else
+			{
+				flags = MF_BYCOMMAND | MF_ENABLED;
+			}
+
+			EnableMenuItem( hMenu,
+				id,
+				flags );
+			break;
+		}
+		case IDM_EDIT_PASTE:
+		{
+			if ( pBox != nullptr && pBox->fEdit )
+			{
+				// clipboard CF_ formats: https://learn.microsoft.com/en-us/windows/win32/dataxchg/standard-clipboard-formats
+				const UINT ansiText = CF_TEXT;
+				const bool bClipboardAvailable = IsClipboardFormatAvailable( ansiText ) ? MF_BYCOMMAND | MF_ENABLED :
+					MF_BYCOMMAND | MF_GRAYED;
+
+				EnableMenuItem( hMenu,
+					id,
+					bClipboardAvailable );
+			}
+			else
+			{
+				const bool bClipboardAvailable = IsClipboardFormatAvailable( m_clipboardFormats[0] );
+
+				EnableMenuItem( hMenu,
+					id,
+					bClipboardAvailable );
+			}
+
+			break;
+		}
+		default:
+			break;
+		}
+	}
+}
+#pragma warning( default : 4312 )
+
+#pragma warning( disable : 4312 )
+bool Window::editCopy( UINT format /* = CF_TEXT */ )
+{
+	HGLOBAL hClipboard;
+
+	if ( !IsClipboardFormatAvailable( format ) )
+	{
+		return false;
+	}
+
+	// open the clipboard
+	if ( !OpenClipboard( m_hWnd ) )
+	{
+		return false;
+	}
+	ASSERT_HRES_WIN32_IF_FAILED;
+
+	EmptyClipboard();
+	ASSERT_HRES_WIN32_IF_FAILED;
+
+	// get a pointer to the structure for the selected label
+	PLABELBOX pBox = ( m_hWnd == nullptr ) ? nullptr :
+		(PLABELBOX) GetWindowLongW( m_hWnd, 0 );
+
+	if ( format == CF_TEXT || format == CF_UNICODETEXT )
+	{
+		int charStartPos;
+		int charEndPos;
+		int nChars;
+
+		// if text is selected copy it
+		if ( pBox->fEdit )
+		{
+			if ( pBox->ichSel == pBox->ichCaret )
+			{
+				CloseClipboard();
+				ASSERT_HRES_WIN32_IF_FAILED;
+				return false;
+			}
+
+			if ( pBox->ichSel < pBox->ichCaret )
+			{
+				charStartPos = pBox->ichSel;
+				charEndPos = pBox->ichCaret;
+			}
+			else
+			{
+				charStartPos = pBox->ichCaret;
+				charEndPos = pBox->ichSel;
+			}
+			nChars = charEndPos - charStartPos;
+
+			// allocate a global memory object for the text
+			/*
+			* Global|LocalALloc are remnants from 16bit era and on 32 bit systems are doing essentially the same thing and they call HeapAlloc.
+			* use HeapCreate & Alloc & Lock & Unlock & Free instead.
+			constexpr unsigned heapCanGrowInSize = 0u;
+			HANDLE h = HeapCreate( HEAP_NO_SERIALIZE,
+				( nChars + 1 ) * sizeof( TCHAR ),
+				heapCanGrowInSize );
+			*/
+			hClipboard = GlobalAlloc( GMEM_MOVEABLE,
+				( nChars + 1 ) * sizeof( TCHAR ) );
+			ASSERT_HRES_WIN32_IF_FAILED;
+
+			if ( hClipboard == nullptr )
+			{
+				CloseClipboard();
+				ASSERT_HRES_WIN32_IF_FAILED;
+				return false;
+			}
+
+			// lock the handle and copy the text to the buffer
+			wchar_t *pCopiedStr = static_cast<wchar_t*>( GlobalLock( hClipboard ) );
+			ASSERT_HRES_WIN32_IF_FAILED;
+
+			memcpy( pCopiedStr,
+				&pBox->atchLabel[charStartPos],
+				nChars * sizeof( TCHAR ) );
+			pCopiedStr[nChars] = (TCHAR) 0;	// for the null terminator
+
+			GlobalUnlock( hClipboard );
+			ASSERT_HRES_WIN32_IF_FAILED;
+
+			// place the handle on the clipboard
+			SetClipboardData( format,
+				hClipboard );
+			ASSERT_HRES_WIN32_IF_FAILED;
+		}
+		else
+		{
+			// if no text is selected, the label as a whole is copied
+			m_pBoxLocalClip = (PLABELBOX) LocalAlloc( LMEM_FIXED,
+				sizeof( LABELBOX ) );
+			ASSERT_HRES_WIN32_IF_FAILED;
+
+			if ( m_pBoxLocalClip == nullptr )
+			{
+				CloseClipboard();
+				ASSERT_HRES_WIN32_IF_FAILED;
+				return false;
+			}
+
+			memcpy( m_pBoxLocalClip,
+				pBox,
+				sizeof( LABELBOX ) );
+			m_pBoxLocalClip->fSelected = FALSE;
+			m_pBoxLocalClip->fEdit = FALSE;
+
+			// place a registered clipboard format, the owner-display format and the CF_TEXT format on the clipboard using delayed rendering (only when and if they are needed)
+			// to handle the "when they are needed" we must process the WM_RENDERFORMAT and WM_RENDERALLFORMATS messages
+			SetClipboardData( CF_OWNERDISPLAY,
+				nullptr );
+			ASSERT_HRES_WIN32_IF_FAILED;
+			SetClipboardData( format,
+				nullptr );
+			ASSERT_HRES_WIN32_IF_FAILED;
+		}
+	}
+
+	CloseClipboard();
+	ASSERT_HRES_WIN32_IF_FAILED;
+	return true;
+}
+#pragma warning( default : 4312 )
+
+#pragma warning( disable : 4312 )
+bool Window::editPaste( UINT format /* = CF_TEXT */ )
+{
+	if ( !IsClipboardFormatAvailable( format ) )
+	{
+		return false;
+	}
+
+	// get a pointer to the structure for the selected label
+	PLABELBOX pBox = ( m_hWnd == nullptr ) ? nullptr :
+		(PLABELBOX) GetWindowLongW( m_hWnd, 0 );
+	ASSERT_HRES_WIN32_IF_FAILED;
+
+	// if the application is in edit mode get the clipboard text
+	if ( format == CF_TEXT || format == CF_UNICODETEXT )
+	{
+		if ( pBox != nullptr && pBox->fEdit )
+		{
+			if ( !OpenClipboard( m_hWnd ) )
+			{
+				ASSERT_HRES_WIN32_IF_FAILED;
+				return false;
+			}
+	 
+			HGLOBAL hClipboard = GetClipboardData( format );
+			ASSERT_HRES_WIN32_IF_FAILED;
+			if ( hClipboard == nullptr )
+			{
+				CloseClipboard();
+				ASSERT_HRES_WIN32_IF_FAILED;
+				return false;
+			}
+			
+			wchar_t *pCopiedStr = static_cast<wchar_t*>( GlobalLock( hClipboard ) );
+			ASSERT_HRES_WIN32_IF_FAILED;
+			if ( pCopiedStr == nullptr )
+			{
+				CloseClipboard();
+				ASSERT_HRES_WIN32_IF_FAILED;
+				return false;
+			}
+
+			// #TODO: call the application-defined ReplaceSelection function to insert the text and repaint the window
+			//ReplaceSelection( hwndSelected,
+			//	pBox,
+			//	pCopiedStr );
+
+			GlobalUnlock( hClipboard );
+			ASSERT_HRES_WIN32_IF_FAILED;
+		}
+	}
+
+	CloseClipboard();
+	ASSERT_HRES_WIN32_IF_FAILED;
+	return true;
+}
+#pragma warning( default : 4312 )
+
+#pragma warning( disable : 4312 )
+void Window::renderClipboardFormat( unsigned format )
+{
+	HGLOBAL hClipboard;
+
+	// get a pointer to the structure for the selected label
+	PLABELBOX pBox = ( m_hWnd == nullptr ) ? nullptr :
+		(PLABELBOX) GetWindowLongW( m_hWnd, 0 );
+	ASSERT_HRES_WIN32_IF_FAILED;
+
+	if ( format == CF_TEXT || format == CF_UNICODETEXT )
+	{
+		// allocate a buffer for the text
+		int nChars = m_pBoxLocalClip->cchLabel;
+
+		hClipboard = GlobalAlloc( GMEM_MOVEABLE,
+			(nChars + 1) * sizeof( TCHAR ) );
+		ASSERT_HRES_WIN32_IF_FAILED;
+
+		// copy the text from the m_pBoxLocalClip
+		wchar_t *pCopiedStr = static_cast<wchar_t*>( GlobalLock( hClipboard ) );
+		ASSERT_HRES_WIN32_IF_FAILED;
+
+		memcpy( pCopiedStr,
+			m_pBoxLocalClip->atchLabel,
+			nChars * sizeof( TCHAR ) );
+		pCopiedStr[nChars] = (TCHAR)0;
+
+		GlobalUnlock( hClipboard );
+		ASSERT_HRES_WIN32_IF_FAILED;
+
+		// place the handle on the clipboard
+		SetClipboardData( format,
+			hClipboard );
+	}
+	else
+	{
+		hClipboard = GlobalAlloc( GMEM_MOVEABLE,
+			sizeof( LABELBOX ) );
+		ASSERT_HRES_WIN32_IF_FAILED;
+
+		pBox = static_cast<PLABELBOX>( GlobalLock( hClipboard ) );
+		ASSERT_HRES_WIN32_IF_FAILED;
+
+		memcpy( pBox,
+			m_pBoxLocalClip,
+			sizeof( LABELBOX ) );
+
+		GlobalUnlock( hClipboard );
+		ASSERT_HRES_WIN32_IF_FAILED;
+
+		SetClipboardData( format,
+			hClipboard );
+		ASSERT_HRES_WIN32_IF_FAILED;
+	}
+
+	CloseClipboard();
+	ASSERT_HRES_WIN32_IF_FAILED;
+}
+#pragma warning( default : 4312 )
+
+void Window::editDelete()
+{
+	// #TODO:
 }
 
 /*

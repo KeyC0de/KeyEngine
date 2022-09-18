@@ -12,8 +12,7 @@
 #include "console.h"
 #include "graphics_mode.h"
 #include "rectangle.h"
-//#include <ittnotify.h>	// Intel Instrumentation & Tracing Technology
-//#include "vtune_itt_domain.h"
+#include "vtune_itt_domain.h"
 
 #pragma comment( lib, "dxgi.lib" )
 #pragma comment( lib, "d3d11.lib" )
@@ -24,15 +23,18 @@
 #	pragma comment( lib, "dwrite.lib" )
 #endif
 
+
 namespace mwrl = Microsoft::WRL;
 namespace dx = DirectX;
 
-// Create ITT string handles
-//__itt_string_handle *pStrIttDrawIndexed = __itt_string_handle_create( L"DrawIndexed" );
-//__itt_string_handle *pStrIttDrawIndexedInstanced = __itt_string_handle_create( L"DrawIndexedInstanced" );
-//__itt_string_handle *pStrIttBeginRendering = __itt_string_handle_create( L"BeginRendering" );
-//__itt_string_handle *pStrIttFpsTimerRendering = __itt_string_handle_create( L"FpsTimerRendering" );
-//__itt_string_handle *pStrIttEndRendering = __itt_string_handle_create( L"EndRendering" );
+// create ITT string handles
+#ifdef KEYENGINE_PROFILE
+static __itt_string_handle *pStrIttDrawIndexed = __itt_string_handle_create( L"DrawIndexed" );
+static __itt_string_handle *pStrIttDrawIndexedInstanced = __itt_string_handle_create( L"DrawIndexedInstanced" );
+static __itt_string_handle *pStrIttBeginRendering = __itt_string_handle_create( L"BeginRendering" );
+static __itt_string_handle *pStrIttFpsTimerRendering = __itt_string_handle_create( L"FpsTimerRendering" );
+static __itt_string_handle *pStrIttEndRendering = __itt_string_handle_create( L"EndRendering" );
+#endif
 
 Graphics::Adapter::Adapter( IDXGIAdapter *pAdapter )
 {
@@ -98,7 +100,7 @@ Graphics::Graphics( const HWND hWnd,
 		m_commandLists.reserve( settings.nRenderingThreads );
 	}
 
-	// create factory, adapter, device, front|back buffers swap chain, rendering contexts
+	// create factory, adapter, device, front|back buffers swap chain, rendering contexts, output device
 	createFactory();
 	createAdapters();
 	const auto &primaryAdapter = m_adapters.front();
@@ -204,19 +206,12 @@ Graphics::Graphics( const HWND hWnd,
 	ASSERT( m_featureLevel == D3D_FEATURE_LEVEL_11_1, "Old feature level!" );
 
 #if defined _DEBUG && !defined NDEBUG
-	// Check for DirectX Math library support
-	if ( !dx::XMVerifyCPUSupport() )
-	{
-		MessageBoxW( hWnd,
-			L"DirectX Math library support validation failure.",
-			L"Error",
-			MB_OK );
-	}
-
 	interrogateDirectxFeatures();
 #endif
 
 	setupRenderTarget();
+
+	setupOutputDevice();
 
 	if constexpr ( gph_mode::get() != gph_mode::_3D )
 	{
@@ -351,6 +346,30 @@ void Graphics::releaseBackBufferForResizing()
 	ASSERT( rtvRefs == 1 && dsvRefs == 1, "More references to such resources still exist" );
 }
 
+void Graphics::setupOutputDevice() noexcept
+{
+	HRESULT hres;
+	mwrl::ComPtr<IDXGIOutput> dxgiOutput;
+	hres = m_pSwapChain->GetContainingOutput( &dxgiOutput );
+	ASSERT_HRES_IF_FAILED;
+
+	hres = dxgiOutput.As( &m_pDxgiOutput );
+	ASSERT_HRES_IF_FAILED;
+}
+
+double Graphics::calcRefreshRate() const noexcept
+{
+	HRESULT hres;
+	DXGI_MODE_DESC1 emptyMode{};
+	DXGI_MODE_DESC1 modeDesc;
+	hres = m_pDxgiOutput->FindClosestMatchingMode1( &emptyMode,
+		&modeDesc,
+		m_pDevice.Get() );
+	ASSERT_HRES_IF_FAILED;
+
+	return static_cast<double>( modeDesc.RefreshRate.Numerator ) / static_cast<double>( modeDesc.RefreshRate.Denominator );
+}
+
 void Graphics::cleanState() noexcept
 {
 	if constexpr ( gph_mode::get() == gph_mode::_3D )
@@ -376,9 +395,29 @@ void Graphics::cleanState() noexcept
 	}
 }
 
+#ifdef KEYENGINE_PROFILE
+void Graphics::profile() const noexcept
+{
+	HRESULT hres;
+	unsigned nPresents = -1;
+	hres = m_pSwapChain->GetLastPresentCount( &nPresents );
+	ASSERT_HRES_IF_FAILED;
+
+	KeyConsole& console = KeyConsole::instance();
+	console.print( "Present counts = " + std::to_string( nPresents ) );
+
+	// can only be used on flip mode swap chains or when fullscreen exclusive mode is enabled
+	DXGI_FRAME_STATISTICS frameStats;
+	hres = m_pSwapChain->GetFrameStatistics( &frameStats );
+	ASSERT_HRES_IF_FAILED;
+
+	// query frameStats for stuff
+}
+#endif
+
 void Graphics::beginFrame() noexcept
 {
-	//VTUNE_ITT_TASK_BEGIN( pStrIttBeginRendering );
+	VTUNE_ITT_TASK_BEGIN( pStrIttBeginRendering );
 	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{// imgui new frame
 		ImGui_ImplDX11_NewFrame();
@@ -397,12 +436,12 @@ void Graphics::beginFrame() noexcept
 			0u,
 			cpuBuffer2dSize );
 	}
-	//VTUNE_ITT_TASK_END;
+	VTUNE_ITT_TASK_END;
 }
 
 void Graphics::updateAndRenderFpsTimer()
 {
-	//VTUNE_ITT_TASK_BEGIN( pStrIttFpsTimerRendering );
+	VTUNE_ITT_TASK_BEGIN( pStrIttFpsTimerRendering );
 	static int fpsDisplayFrameCount = 0;
 	static std::wstring fps;
 
@@ -433,12 +472,12 @@ void Graphics::updateAndRenderFpsTimer()
 		dx::XMFLOAT2{0.0f, 0.0f},
 		dx::XMFLOAT2{1.0f, 1.0f} );
 	m_pFpsSpriteBatch->End();
-	//VTUNE_ITT_TASK_END;
+	VTUNE_ITT_TASK_END;
 }
 
 void Graphics::endFrame()
 {
-	//VTUNE_ITT_TASK_BEGIN( pStrIttEndRendering );
+	VTUNE_ITT_TASK_BEGIN( pStrIttEndRendering );
 	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{
 		ImGui::Render();
@@ -448,7 +487,7 @@ void Graphics::endFrame()
 #endif
 	}
 	present();
-	//VTUNE_ITT_TASK_END;
+	VTUNE_ITT_TASK_END;
 }
 
 void Graphics::present()
@@ -506,7 +545,7 @@ void Graphics::draw( const unsigned count ) cond_noex
 
 void Graphics::drawIndexed( const unsigned count ) cond_noex
 {
-	//VTUNE_ITT_TASK_BEGIN( pStrIttDrawIndexed );
+	VTUNE_ITT_TASK_BEGIN( pStrIttDrawIndexed );
 	SettingsManager &setMan = SettingsManager::instance();
 	if ( setMan.getSettings().bMultithreadedRendering )
 	{
@@ -519,13 +558,13 @@ void Graphics::drawIndexed( const unsigned count ) cond_noex
 			0u );
 		DXGI_GET_QUEUE_INFO_GFX;
 	}
-	//VTUNE_ITT_TASK_END;
+	VTUNE_ITT_TASK_END;
 }
 
 void Graphics::drawIndexedInstanced( const unsigned indexCount,
 	const unsigned instanceCount ) cond_noex
 {
-	//VTUNE_ITT_TASK_BEGIN( pStrIttDrawIndexedInstanced );
+	VTUNE_ITT_TASK_BEGIN( pStrIttDrawIndexedInstanced );
 	SettingsManager &setMan = SettingsManager::instance();
 	if ( setMan.getSettings().bMultithreadedRendering )
 	{
@@ -536,7 +575,7 @@ void Graphics::drawIndexedInstanced( const unsigned indexCount,
 		//m_pImmediateContext->DrawIndexedInstanced();
 	}
 	DXGI_GET_QUEUE_INFO_GFX;
-	//VTUNE_ITT_TASK_END;
+	VTUNE_ITT_TASK_END;
 }
 
 
@@ -670,6 +709,15 @@ void Graphics::playbackDeferredCommandList()
 #if defined _DEBUG && !defined NDEBUG
 void Graphics::interrogateDirectxFeatures()
 {
+	// check for DirectX Math library support
+	if ( !dx::XMVerifyCPUSupport() )
+	{
+		MessageBoxW( m_hParentWnd,
+			L"DirectX Math library support validation failure.",
+			L"Error",
+			MB_OK );
+	}
+
 	// threading
 	D3D11_FEATURE_DATA_THREADING threadingInfo;
 	ZeroMemory( &threadingInfo,

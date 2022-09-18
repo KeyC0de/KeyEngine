@@ -86,6 +86,7 @@ private:
 #endif
 	Microsoft::WRL::ComPtr<ID3D11Device> m_pDevice;
 	Microsoft::WRL::ComPtr<ID3D11DeviceContext> m_pImmediateContext;
+	Microsoft::WRL::ComPtr<IDXGIOutput1> m_pDxgiOutput;
 	std::shared_ptr<IRenderTargetView> m_rtv;
 	std::shared_ptr<IDepthStencilView> m_dsv;
 #if defined _DEBUG && !defined NDEBUG
@@ -105,6 +106,9 @@ public:
 
 #if defined FLIP_PRESENT
 	void makeWindowAssociationWithFactory( HWND hWnd, const UINT flags = DXGI_MWA_NO_WINDOW_CHANGES );
+#endif
+#ifdef KEYENGINE_PROFILE
+	void profile() const noexcept;
 #endif
 	void beginFrame() noexcept;
 	void updateAndRenderFpsTimer();
@@ -130,7 +134,13 @@ public:
 	void resize( const unsigned width, const unsigned height );
 	void setBorderless();
 	void releaseBackBufferForResizing();
-
+	//===================================================
+	//	\function	setupOutputDevice
+	//	\brief  sets up the output device (such as a monitor)
+	//			#TODO: currently assuming only one output monitor is used, otherwise use EnumOutputs
+	//	\date	2022/09/18 19:08
+	void setupOutputDevice() noexcept;
+	double calcRefreshRate() const noexcept;
 #if defined _DEBUG && !defined NDEBUG
 	DxgiInfoQueue& infoQueue();
 #endif

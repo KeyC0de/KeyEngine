@@ -373,6 +373,9 @@
     <ClCompile Include="src\save_game.cpp">
       <Filter>engine\gameplay</Filter>
     </ClCompile>
+    <ClCompile Include="src\util_exception.cpp">
+      <Filter>engine\util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -1177,6 +1180,10 @@
     <ClInclude Include="third_party\assimp\include\assimp\aitexture.h">
       <Filter>third_party\assimp</Filter>
     </ClInclude>
+    <ClInclude Include="inc\windows_hidden_defs.h" />
+    <ClInclude Include="inc\util_exception.h">
+      <Filter>engine\util</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="keyc0de.ico" />
@@ -1256,6 +1263,7 @@
       <Filter>config</Filter>
     </None>
     <None Include="ClassDiagram.cd" />
+    <None Include="cursor1.cur" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="shaders\blur_separ_ps.hlsl">

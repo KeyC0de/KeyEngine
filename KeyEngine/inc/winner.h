@@ -34,7 +34,7 @@ static_assert( _MSVC_LANG >= 201703L, "C++17 language conformance or later requi
 #	define NORASTEROPS				// Binary and Tertiary raster ops
 #	define OEMRESOURCE				// OEM Resource values
 #	define NOATOM					// Atom manager routines
-#	define NOCLIPBOARD				// Clipboard routines
+//#	define NOCLIPBOARD				// Clipboard routines
 #	define NOCOLOR					// Screen colors
 #ifndef NO_DUMPS
 #	define NOCTLMGR					// Control and Dialog routines, generating dumps

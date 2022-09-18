@@ -143,7 +143,6 @@ void firstly()
 
 std::tuple<int,int> parseCommandLineArguments()
 {
-	HRESULT hres = 0;
 	LPWSTR commandLine = GetCommandLineW();
 	int argc;
 	LPWSTR *argv = CommandLineToArgvW( commandLine,

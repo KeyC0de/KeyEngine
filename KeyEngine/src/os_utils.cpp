@@ -3,6 +3,7 @@
 #include "assertions_console.h"
 #include <fstream>
 #include <thread>
+#include "util_exception.h"
 
 
 namespace util
@@ -107,6 +108,24 @@ void pinThreadToCore( const HANDLE hThread,
 		mask );
 }
 
+std::string getKnownFolderPath( const int id /*= CSIDL_PERSONAL*/ )
+{
+	std::wstring myDocuments;
+	myDocuments.reserve( 100 );
+	HRESULT result = SHGetFolderPathW( nullptr,
+		CSIDL_PERSONAL,							// FOLDERID_AppDataDocuments
+		nullptr,
+		SHGFP_TYPE_CURRENT,
+		myDocuments.data() );
+
+	if ( result != S_OK )
+	{
+		THROW_UTIL_EXCEPTION( "Could not find the known document folder!" );
+	}
+
+	return util::ws2s( myDocuments );
+}
+
 #pragma region DetachedThreads
 // A global event all threads can reach
 static HANDLE g_hThreadQuitcEvent;
@@ -114,7 +133,6 @@ static std::vector<HANDLE> g_detachedThreads;
 
 void setupDetachedThreadsVector( unsigned nThreads )
 {
-	HRESULT hres = 0;
 	g_hThreadQuitcEvent = CreateEventW( nullptr,
 		TRUE,
 		FALSE,
@@ -132,7 +150,6 @@ void terminateDetachedThreads()
 	for ( HANDLE hThread : g_detachedThreads )
 	{
 		DWORD exitCode = 0;
-		HRESULT hres = 0;
 		/// WARNING: There's no way to cleanly terminate a detached thread. Join them instead in main, or use a thread pool.
 		// Terminate WinAPI thread (without using TerminateThread which is extremely error-prone, brute force approach and doesn't allow proper thread cleanup)
 		// tell thread to stop
@@ -154,7 +171,6 @@ void terminateDetachedThreads()
 		CloseHandle( hThread );
 		ASSERT_HRES_WIN32_IF_FAILED;
 	}
-	HRESULT hres = 0;
 	CloseHandle( g_hThreadQuitcEvent );
 	ASSERT_HRES_WIN32_IF_FAILED;
 }
@@ -219,6 +235,43 @@ static void suspendAllThreads()
 		}
 	} while ( Thread32Next( thread_enumerator, &te ) );
 	CloseHandle( thread_enumerator );
+}
+
+void launchProcess( const std::string &path )
+{
+	STARTUPINFOW si;
+	PROCESS_INFORMATION pi;
+	ZeroMemory( &si, sizeof( STARTUPINFOW ) );
+	ZeroMemory( &pi, sizeof( PROCESS_INFORMATION ) );
+	si.cb = sizeof( STARTUPINFOW );
+
+	CreateProcessW( util::s2ws( path ).c_str(),
+		nullptr,
+		nullptr,
+		nullptr,
+		FALSE,
+		0,
+		nullptr,
+		nullptr,
+		&si,
+		&pi );
+	ASSERT_HRES_WIN32_IF_FAILED;
+
+	/*
+	std::cout << "Process creation successful.\n";
+	std::cout << "Process ID: "
+		<< pi.dwProcessId
+		<< '\n';
+	std::cout << "GetProcessId: "
+		<< GetProcessId( pi.hProcess )
+		<< '\n';
+	std::cout << "Thread ID: "
+		<< pi.dwThreadId
+		<< '\n';
+	std::cout << "GetThreadId: "
+		<< GetThreadId( pi.hThread )
+		<< '\n';
+	*/
 }
 
 
