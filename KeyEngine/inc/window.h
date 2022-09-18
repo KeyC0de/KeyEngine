@@ -32,28 +32,24 @@ private:
 	class WindowClass final
 		: public NonCopyable
 	{
-		static inline WindowClass *m_pInstance;
-	private:
 		std::string m_name;
 		ATOM m_classAtom;
-	private:
-		WindowClass( const std::string &name );
 	public:
-		~WindowClass() noexcept;
+		WindowClass( const std::string &name );
 		WindowClass( WindowClass &&rhs ) noexcept;
 		WindowClass& operator=( WindowClass &&rhs ) noexcept;
+		~WindowClass() noexcept;
 
-		static WindowClass& instance( const std::string &name );
 		const std::string& getName() noexcept;
 	};
 private:
-	static inline WindowClass *m_pWindowClass;
 	static inline Keyboard m_keyboard;
 	static inline Mouse m_mouse;
 	static inline std::vector<BYTE> m_rawInputBuffer;
 	static inline HACCEL m_hAcceleratorTable;
 	static inline PLABELBOX m_pBoxLocalClip;
 private:
+	WindowClass m_windowClass;
 	bool m_bCursorEnabled = true;
 	int m_width;
 	int m_height;
@@ -74,8 +70,8 @@ private:
 public:
 	static Keyboard& keyboard() noexcept;
 	static Mouse& mouse() noexcept;
-	static const WindowClass& getWindowClass() noexcept;
-	static bool isDescendantOf( HWND targethWnd, const HWND parent ) noexcept;
+	const WindowClass& getWindowClass() noexcept;
+	static bool isDescendantOf( const HWND targethWnd, const HWND parent ) noexcept;
 	static void saveClipboardTextAsVar();
 public:
 	Window( const int width, const int height, const char *name );
@@ -143,21 +139,21 @@ private:
 	__FUNCTION__,\
 	msg );
 
+/*
+class Dialog final
+	: public NonCopyable
+{
+private:
+	std::string m_name;
+	HWND m_hWnd;
+public:
+	Dialog( const std::string &name );
+	~Dialog() noexcept;
+	Dialog( Dialog &&rhs ) noexcept;
+	Dialog& operator=( Dialog &&rhs ) noexcept;
 
-//class Dialog final
-//	: public NonCopyable
-//{
-//private:
-//	std::string m_name;
-//	HWND m_hWnd;
-//public:
-//	Dialog( const std::string &name );
-//	~Dialog() noexcept;
-//	Dialog( Dialog &&rhs ) noexcept;
-//	Dialog& operator=( Dialog &&rhs ) noexcept;
-//
-//	static LRESULT CALLBACK dialogProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam );
-//	const std::string& getName() const noexcept;
-//	void setHwnd( HWND hWnd );
-//	HWND getHwnd() const noexcept;
-//};
+	static LRESULT CALLBACK dialogProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam );
+	const std::string& getName() const noexcept;
+	void setHwnd( HWND hWnd );
+	HWND getHwnd() const noexcept;
+};*/

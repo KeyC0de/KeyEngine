@@ -3,7 +3,6 @@
 #include <windowsx.h>
 #include "window.h"
 #include "graphics.h"
-#include "../resource.h"
 #include "imgui_impl_win32.h"
 #include "utils.h"
 #include "os_utils.h"
@@ -11,6 +10,7 @@
 #include "console.h"
 #include "assertions_console.h"
 #include "graphics_mode.h"
+#include "../resource.h"
 
 //#define WM_TRAY_ICON			10001
 //#define ID_TRAY_APP_ICON		20001
@@ -92,12 +92,6 @@ Window::WindowClass& Window::WindowClass::operator=( WindowClass &&rhs ) noexcep
 	return *this;
 }
 
-Window::WindowClass& Window::WindowClass::instance( const std::string &name )
-{
-	static Window::WindowClass m_instance{name};
-	return m_instance;
-}
-
 const std::string& Window::WindowClass::getName() noexcept
 {
 	return m_name;
@@ -107,12 +101,11 @@ Window::Window( const int width,
 	const int height,
 	const char *name )
 	:
+	m_windowClass{"KeyEngine_Window_Class"},
 	m_width(width),
 	m_height(height),
 	m_name{name}
 {
-	m_pWindowClass = &WindowClass::instance( "KeyEngine_Window_Class" );
-
 	RECT rect{0, 0, width, height};
 	BOOL ret = AdjustWindowRect( &rect,
 		WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU,
@@ -124,7 +117,7 @@ Window::Window( const int width,
 
 	uint32_t windowExStyles = WS_EX_OVERLAPPEDWINDOW;
 	uint32_t windowStyles = WS_VISIBLE | WS_CAPTION | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_SYSMENU | WS_OVERLAPPEDWINDOW;	// disable both maximizing and resizing
-	const std::wstring className = util::s2ws( m_pWindowClass->getName() );
+	const std::wstring className = util::s2ws( m_windowClass.getName() );
 	const std::wstring windowName = util::s2ws( name );
 	m_hWnd = CreateWindowExW( windowExStyles,
 		className.data(),
@@ -221,6 +214,7 @@ Window::~Window()
 
 Window::Window( Window &&rhs ) noexcept
 	:
+	m_windowClass{std::move( rhs.m_windowClass )},
 	m_bCursorEnabled{std::move( rhs.m_bCursorEnabled )},
 	m_width{rhs.m_width},
 	m_height{rhs.m_height},
@@ -231,7 +225,6 @@ Window::Window( Window &&rhs ) noexcept
 	m_info{std::move( rhs.m_info )},
 	m_clipboardFormats{std::move( rhs.m_clipboardFormats )}
 {
-	m_pWindowClass = std::move( rhs.m_pWindowClass );
 	m_keyboard = std::move( rhs.m_keyboard );
 	rhs.m_keyboard = {};
 	m_mouse = std::move( rhs.m_mouse );
@@ -439,7 +432,7 @@ Mouse& Window::mouse() noexcept
 
 const Window::WindowClass& Window::getWindowClass() noexcept
 {
-	return *m_pWindowClass;
+	return m_windowClass;
 }
 
 bool Window::isDescendantOf( const HWND targethWnd,
@@ -1775,9 +1768,7 @@ Dialog::Dialog( const std::string &name )
 #if defined _DEBUG && !defined NDEBUG
 	auto &console = KeyConsole::instance();
 	using namespace std::string_literals;
-	console.log( "Dialog Window : "s
-		+ util::ws2s( m_name )
-		+ " created.\n"s );
+	console.log( "Dialog Window : "s + util::ws2s( m_name ) + " created.\n"s );
 #endif
 }
 
@@ -1855,5 +1846,4 @@ void Dialog::setHwnd( HWND hWnd )
 HWND Dialog::getHwnd() const noexcept
 {
 	return m_hWnd;
-}
-*/
+}*/
