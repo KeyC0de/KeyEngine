@@ -252,25 +252,29 @@ Graphics::~Graphics()
 
 void Graphics::clearShaderSlots() noexcept
 {
-	// Clearing shader input slots to prevent simultaneous in/out binds carried over
-	// from previous frame. Now we can start each frame with a clean slate
-	// prevent OMSetRenderTargets State Hazard
+	// Clearing shader input slots to prevent simultaneous in/out binds carried over from previous frame.
+	// Now we can start each frame with a clean slate
+	// This is to prevent OMSetRenderTargets state hazard.
 	ID3D11ShaderResourceView *const pNullSrv = nullptr;
+	
 	// diffuse texture
 	m_pImmediateContext->PSSetShaderResources( 0u,
 		1u,
 		&pNullSrv );
 	DXGI_GET_QUEUE_INFO_GFX;
+	
 	// specular texture
 	m_pImmediateContext->PSSetShaderResources( 1u,
 		1u,
 		&pNullSrv );
 	DXGI_GET_QUEUE_INFO_GFX;
+	
 	// normal texture
 	m_pImmediateContext->PSSetShaderResources( 2u,
 		1u,
 		&pNullSrv );
 	DXGI_GET_QUEUE_INFO_GFX;
+
 	// shadow map texture
 	m_pImmediateContext->PSSetShaderResources( 3u,
 		1u,
@@ -281,15 +285,20 @@ void Graphics::clearShaderSlots() noexcept
 void Graphics::resize( const unsigned newWidth,
 	const unsigned newHeight )
 {
+	// #FIXME: there are bugs
 	HRESULT hres;
 
-	hres = m_pSwapChain->SetFullscreenState( TRUE,
-		nullptr );
+	if ( newWidth == 0 && newHeight == 0 )
+	{
+		hres = m_pSwapChain->SetFullscreenState( TRUE,
+			m_pDxgiOutput.Get() );
+		ASSERT_HRES_IF_FAILED;
+	}
 
 	releaseBackBufferForResizing();
 
 	hres = m_pSwapChain->ResizeBuffers( 0u,	// No of Buffers, set to 0 to preserve existing setting
-		newWidth, newHeight,						// if width & height are set to 0 set the swap chain to match the screen resolution
+		newWidth, newHeight,				// if width & height are set to 0 set the swap chain to match the screen resolution
 		DXGI_FORMAT_UNKNOWN,					// retain the current back buffer format
 		m_swapChainFlags );
 	ASSERT_HRES_IF_FAILED;
@@ -310,17 +319,6 @@ void Graphics::resize( const unsigned newWidth,
 	ASSERT( desc.BufferDesc.Width == newWidth && desc.BufferDesc.Height == newHeight, "Resizing malfunction!" );
 }
 
-void Graphics::setBorderless()
-{
-	::SetWindowLongPtrW( m_hParentWnd,
-		GWL_STYLE,
-		::GetWindowLongPtrW( m_hParentWnd, GWL_STYLE )
-			& ~( WS_BORDER | WS_DLGFRAME | WS_THICKFRAME ) );
-	::SetWindowLongPtrW( m_hParentWnd,
-		GWL_EXSTYLE,
-		::GetWindowLongPtrW( m_hParentWnd, GWL_EXSTYLE ) & ~WS_EX_DLGMODALFRAME );
-}
-
 void Graphics::releaseBackBufferForResizing()
 {
 	clearShaderSlots();
@@ -333,7 +331,7 @@ void Graphics::releaseBackBufferForResizing()
 	UINT rtvRefs = m_rtv.use_count();
 	UINT dsvRefs = m_dsv.use_count();
 
-	// release any other references:
+	// release any other outstanding references
 	m_pImmediateContext->ClearState();
 
 	// after releasing references to these resources, we need to call Flush() to ensure that Direct3D
@@ -341,9 +339,12 @@ void Graphics::releaseBackBufferForResizing()
 	// and wait until these changes are done/flushed
 	m_pImmediateContext->Flush();
 
+	m_rtv.reset();
+	m_dsv.reset();
+
 	rtvRefs = m_rtv.use_count();
 	dsvRefs = m_dsv.use_count();
-	ASSERT( rtvRefs == 1 && dsvRefs == 1, "More references to such resources still exist" );
+	//ASSERT( rtvRefs == 1 && dsvRefs == 1, "More references to such resources still exist" );
 }
 
 void Graphics::setupOutputDevice() noexcept

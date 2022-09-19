@@ -132,6 +132,8 @@ void IRenderTargetView::clean( Graphics &gph ) cond_noex
 	mwrl::ComPtr<ID3D11Texture2D> pRtvTex;
 	pRtvRsc.As( &pRtvTex );
 
+	pRtvTex.Reset();
+
 	// release the rtv resource itself
 	m_pRtv.Reset();
 }

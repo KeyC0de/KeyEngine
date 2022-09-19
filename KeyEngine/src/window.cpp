@@ -99,37 +99,42 @@ const std::string& Window::WindowClass::getName() noexcept
 
 Window::Window( const int width,
 	const int height,
-	const char *name )
+	const char *name,
+	const HMENU hMenu,
+	const int x /* = 200 */,
+	const int y /* = 200 */ )
 	:
 	m_windowClass{"KeyEngine_Window_Class"},
-	m_width(width),
-	m_height(height),
 	m_name{name}
 {
+	uint32_t windowExStyles = WS_EX_OVERLAPPEDWINDOW;
+	uint32_t windowStyles = WS_VISIBLE | WS_CAPTION | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_SYSMENU | WS_OVERLAPPEDWINDOW;	// disable both maximizing and resizing
+
 	RECT rect{0, 0, width, height};
-	BOOL ret = AdjustWindowRect( &rect,
-		WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU,
-		FALSE );
+	BOOL ret = AdjustWindowRectEx( &rect,
+		windowStyles,
+		( hMenu == nullptr ) ? FALSE : TRUE,
+		windowExStyles );
 	if ( !ret )
 	{
 		throwWindowException( "Failed to adjust window rectangle" );
 	}
 
-	uint32_t windowExStyles = WS_EX_OVERLAPPEDWINDOW;
-	uint32_t windowStyles = WS_VISIBLE | WS_CAPTION | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_SYSMENU | WS_OVERLAPPEDWINDOW;	// disable both maximizing and resizing
+	const unsigned adjustedWindowWidth = rect.right - rect.left;
+	const unsigned adjustedWindowHeight = rect.bottom - rect.top;
+
 	const std::wstring className = util::s2ws( m_windowClass.getName() );
 	const std::wstring windowName = util::s2ws( name );
 	m_hWnd = CreateWindowExW( windowExStyles,
 		className.data(),
 		windowName.data(),
 		windowStyles,
-		200,
-		200,
-		rect.right - rect.left,
-		rect.bottom - rect.top,
-		nullptr,
-		//HWND_DESKTOP,	// parent
-		nullptr,//LoadMenu( hInstance, MAKEINTRESOURCEW( IDR_MENU_APP ) ), // menu
+		x,
+		y,
+		adjustedWindowWidth,
+		adjustedWindowHeight,
+		HWND_DESKTOP,	// parent
+		nullptr,			// menu
 		THIS_INSTANCE,
 		this );
 	ASSERT_HRES_WIN32_IF_FAILED;
@@ -177,6 +182,9 @@ Window::Window( const int width,
 	m_clipboardFormats[0] = RegisterClipboardFormatW( unicodeClipboardFormat );
 	ASSERT_HRES_WIN32_IF_FAILED;
 
+	// Set the Menu
+	showMenu( hMenu );
+
 	// Tray icon setup
 	//setupNotifyIconData();
 
@@ -186,10 +194,10 @@ Window::Window( const int width,
 		ImGui_ImplWin32_Init( m_hWnd );
 	}
 
-	// Graphics for this Window
+	// Setup Graphics for the Window
 	m_pGraphics = std::make_unique<Graphics>( m_hWnd,
-		width,
-		height );
+		adjustedWindowWidth,
+		adjustedWindowHeight );
 
 	// Display window
 	ret = UpdateWindow( m_hWnd );
@@ -216,8 +224,6 @@ Window::Window( Window &&rhs ) noexcept
 	:
 	m_windowClass{std::move( rhs.m_windowClass )},
 	m_bCursorEnabled{std::move( rhs.m_bCursorEnabled )},
-	m_width{rhs.m_width},
-	m_height{rhs.m_height},
 	m_name{std::move( rhs.m_name )},
 	m_hWnd{std::move( rhs.m_hWnd )},
 	m_pGraphics{std::move( rhs.m_pGraphics )},
@@ -649,7 +655,7 @@ LRESULT Window::windowProc_impl2d( _In_ const HWND hWnd,
 			break;
 		}
 		// in client region -> log move, and log enter + capture mouse (if not previously in window)
-		if ( pt.x >= 0 && pt.x < m_width && pt.y >= 0 && pt.y < m_height )
+		if ( pt.x >= 0 && pt.x < calcWidth() && pt.y >= 0 && pt.y < calcHeight() )
 		{
 			m_mouse.onMouseMove( pt.x,
 				pt.y );
@@ -705,7 +711,7 @@ LRESULT Window::windowProc_impl2d( _In_ const HWND hWnd,
 		m_mouse.onLmbReleased( pt.x,
 			pt.y );
 		// release mouse if outside of a window
-		if ( pt.x < 0 || pt.x >= m_width || pt.y < 0 || pt.y >= m_height )
+		if ( pt.x < 0 || pt.x >= calcWidth() || pt.y < 0 || pt.y >= calcHeight() )
 		{
 			ReleaseCapture();
 			m_mouse.onMouseLeaveWindow();
@@ -718,7 +724,7 @@ LRESULT Window::windowProc_impl2d( _In_ const HWND hWnd,
 		m_mouse.onRmbReleased( pt.x,
 			pt.y );
 		// release mouse if outside of window
-		if ( pt.x < 0 || pt.x >= m_width || pt.y < 0 || pt.y >= m_height )
+		if ( pt.x < 0 || pt.x >= calcWidth() || pt.y < 0 || pt.y >= calcHeight() )
 		{
 			ReleaseCapture();
 			m_mouse.onMouseLeaveWindow();
@@ -899,12 +905,15 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		{
 			// handle the swapchain resize for maximize or unmaximize
 			// another option would be to prevent window resizing and iInstead resize by ingame option - choosing resolution
-			m_width = LOWORD( lParam );
-			m_height = HIWORD( lParam );
+			unsigned width = LOWORD( lParam );
+			unsigned height = HIWORD( lParam );
 			if ( m_pGraphics )
 			{
-				m_pGraphics->resize( m_width,
-					m_height );
+				if ( width != calcWidth() && height != calcHeight() )
+				{
+					m_pGraphics->resize( width,
+						height );
+				}
 			}
 		}
 		break;
@@ -958,6 +967,11 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		case IDM_EDIT_PASTE:
 		{
 			editPaste();
+			break;
+		}
+		case IDM_HELP_HIDETHISMENU:
+		{
+			hideMenu();
 			break;
 		}
 
@@ -1112,7 +1126,7 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 			break;
 		}
 		// in client region -> log move, and log enter + capture mouse (if not previously in window)
-		if ( pt.x >= 0 && pt.x < m_width && pt.y >= 0 && pt.y < m_height )
+		if ( pt.x >= 0 && pt.x < calcWidth() && pt.y >= 0 && pt.y < calcHeight() )
 		{
 			m_mouse.onMouseMove( pt.x,
 				pt.y );
@@ -1183,7 +1197,7 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		m_mouse.onLmbReleased( pt.x,
 			pt.y );
 		// release mouse if outside of window
-		if ( pt.x < 0 || pt.x >= m_width || pt.y < 0 || pt.y >= m_height )
+		if ( pt.x < 0 || pt.x >= calcWidth() || pt.y < 0 || pt.y >= calcHeight() )
 		{
 			ReleaseCapture();
 			m_mouse.onMouseLeaveWindow();
@@ -1201,7 +1215,7 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		m_mouse.onRmbReleased( pt.x,
 			pt.y );
 		// release mouse if outside of window
-		if ( pt.x < 0 || pt.x >= m_width || pt.y < 0 || pt.y >= m_height )
+		if ( pt.x < 0 || pt.x >= calcWidth() || pt.y < 0 || pt.y >= calcHeight() )
 		{
 			ReleaseCapture();
 			m_mouse.onMouseLeaveWindow();
@@ -1386,6 +1400,19 @@ void Window::setFont( const std::string &fontName )
 		MAKELPARAM( TRUE, 0 ) );
 }
 
+void Window::resize( const int width,
+	const int height,
+	const unsigned flags /* = SWP_NOZORDER | SWP_NOMOVE | SWP_NOACTIVATE */ ) const noexcept
+{
+	SetWindowPos( m_hWnd,
+		HWND_NOTOPMOST,
+		calcX(),
+		calcY(),
+		width,
+		height,
+		flags );
+	ASSERT_HRES_WIN32_IF_FAILED;
+}
 
 // WindowException
 Window::WindowException::WindowException( const int line,
@@ -1425,6 +1452,119 @@ const int Window::messageBoxPrintf( const TCHAR *caption,
 		szBuffer,
 		caption,
 		0u );
+}
+
+unsigned Window::getWindowStyles() const noexcept
+{
+	return ::GetWindowLongW( m_hWnd,
+		GWL_STYLE );
+}
+
+unsigned Window::getWindowStylesEx() const noexcept
+{
+	return ::GetWindowLongW( m_hWnd,
+		GWL_EXSTYLE );
+}
+
+void Window::setWindowStyles( const unsigned windowStyles ) const noexcept
+{
+	::SetWindowLongW( m_hWnd,
+		GWL_STYLE,
+		windowStyles );
+}
+
+void Window::setWindowStylesEx( const unsigned windowStylesEx ) const noexcept
+{
+	::SetWindowLongW( m_hWnd,
+		GWL_EXSTYLE,
+		windowStylesEx );
+}
+
+void Window::setBorderless() const noexcept
+{
+	::SetWindowLongPtrW( m_hWnd,
+		GWL_STYLE,
+		 getWindowStyles() & ~( WS_BORDER | WS_DLGFRAME | WS_THICKFRAME ) );
+	ASSERT_HRES_WIN32_IF_FAILED;
+
+	::SetWindowLongPtrW( m_hWnd,
+		GWL_EXSTYLE,
+		getWindowStylesEx() & ~WS_EX_DLGMODALFRAME );
+	ASSERT_HRES_WIN32_IF_FAILED;
+}
+
+void Window::setRedrawing( const bool bRedraw )
+{
+	// hide the menu bar, change styles and position and redraw
+	// prevent intermediate redrawing
+	int ret = ::LockWindowUpdate( bRedraw ? nullptr : m_hWnd );
+	ASSERT( ret, "Could not lock window!" );
+}
+
+void Window::showMenu( const HMENU hMenu )
+{
+	setRedrawing( false );
+
+	::SetMenu( m_hWnd,
+		hMenu );
+	ASSERT_HRES_WIN32_IF_FAILED;
+
+	setRedrawing( true );
+}
+
+void Window::hideMenu()
+{
+	setRedrawing( false );
+
+	::SetMenu( m_hWnd,
+		nullptr );
+	ASSERT_HRES_WIN32_IF_FAILED;
+
+	setRedrawing( true );
+}
+
+const HMENU Window::getMenu() const noexcept
+{
+	return GetMenu( m_hWnd );
+}
+
+HWND Window::getDesktop() const noexcept
+{
+	// parentless windows end up under GetDesktopWindow() by default
+	return GetDesktopWindow();
+}
+
+int Window::calcX() const noexcept
+{
+	RECT rect;
+	GetWindowRect( m_hWnd,
+		&rect );
+	// Don't use ASSERT_HRES_WIN32_IF_FAILED; on GetWindowRect
+	return rect.left;
+}
+
+int Window::calcY() const noexcept
+{
+	RECT rect;
+	GetWindowRect( m_hWnd,
+		&rect );
+	return rect.top;
+}
+
+int Window::calcWidth() const noexcept
+{
+	RECT rect;
+	GetWindowRect( m_hWnd,
+		&rect );
+	return rect.right - rect.left;
+}
+
+int Window::calcHeight() const noexcept
+{
+	RECT rect;
+	GetWindowRect( m_hWnd,
+		&rect );
+	return rect.bottom - rect.top;
 }
 
 #pragma warning( disable : 4312 )

@@ -132,7 +132,6 @@ public:
 	//	\brief  sets windowed mode or Fullscreen, supply width & height of 0 to resize the buffers for fullscreen mode usage
 	//	\date	2022/09/17 19:44
 	void resize( const unsigned width, const unsigned height );
-	void setBorderless();
 	void releaseBackBufferForResizing();
 	//===================================================
 	//	\function	setupOutputDevice

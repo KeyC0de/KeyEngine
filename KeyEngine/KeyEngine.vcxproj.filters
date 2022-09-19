@@ -1264,6 +1264,7 @@
     </None>
     <None Include="ClassDiagram.cd" />
     <None Include="cursor1.cur" />
+    <None Include="homm_inspired_new.cur" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="shaders\blur_separ_ps.hlsl">

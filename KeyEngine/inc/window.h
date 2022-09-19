@@ -51,8 +51,6 @@ private:
 private:
 	WindowClass m_windowClass;
 	bool m_bCursorEnabled = true;
-	int m_width;
-	int m_height;
 	std::string m_name;
 	std::string m_title;
 	HWND m_hWnd;
@@ -74,7 +72,7 @@ public:
 	static bool isDescendantOf( const HWND targethWnd, const HWND parent ) noexcept;
 	static void saveClipboardTextAsVar();
 public:
-	Window( const int width, const int height, const char *name );
+	Window( const int width, const int height, const char *name, const HMENU hMenu, const int x = 200, const int y = 200 );
 	~Window();
 	Window( Window &&rhs ) noexcept;
 	Window& operator=( Window &&rhs ) noexcept;
@@ -102,7 +100,32 @@ public:
 	HDC getDc() const noexcept;
 	WINDOWINFO getInfo() const noexcept;
 	const int messageBoxPrintf( const TCHAR *caption, const TCHAR *format, ... );
+	unsigned getWindowStyles() const noexcept;
+	unsigned getWindowStylesEx() const noexcept;
+	void setWindowStyles( const unsigned windowStyles ) const noexcept;
+	void setWindowStylesEx( const unsigned windowStylesEx ) const noexcept;
+	void setBorderless() const noexcept;
+	void setRedrawing( const bool bRedraw );
+	void showMenu( const HMENU hMenu );
+	void hideMenu();
+	const HMENU getMenu() const noexcept;
+	HWND getDesktop() const noexcept;
+	int calcX() const noexcept;
+	int calcY() const noexcept;
+	int calcWidth() const noexcept;
+	int calcHeight() const noexcept;
 private:
+	void configureDc();
+	void confineCursor() noexcept;
+	void freeCursor() noexcept;
+	void showCursor() noexcept;
+	void hideCursor() noexcept;
+	void enableImGuiMouse() noexcept;
+	void disableImGuiMouse() noexcept;
+	LRESULT windowProc_impl3d( _In_ const HWND pWndHandle, _In_ const unsigned msg, _In_ const WPARAM wparam, _In_ const LPARAM lparam );
+	LRESULT windowProc_impl2d( _In_ const HWND pWndHandle, _In_ const unsigned msg, _In_ const WPARAM wparam, _In_ const LPARAM lparam );
+	void setFont( const std::string &fontName );
+	void resize( const int width, const int height, const unsigned flags = SWP_NOZORDER | SWP_NOMOVE | SWP_NOACTIVATE ) const noexcept;
 	// Menu related functions
 	void WINAPI menuProc( HMENU hMenu );
 #ifdef UNICODE
@@ -120,17 +143,6 @@ private:
 	//	\date	2022/09/18 18:01
 	void editDelete();
 	//void setupNotifyIconData();
-private:
-	void configureDc();
-	void confineCursor() noexcept;
-	void freeCursor() noexcept;
-	void showCursor() noexcept;
-	void hideCursor() noexcept;
-	void enableImGuiMouse() noexcept;
-	void disableImGuiMouse() noexcept;
-	LRESULT windowProc_impl3d( _In_ const HWND pWndHandle, _In_ const unsigned msg, _In_ const WPARAM wparam, _In_ const LPARAM lparam );
-	LRESULT windowProc_impl2d( _In_ const HWND pWndHandle, _In_ const unsigned msg, _In_ const WPARAM wparam, _In_ const LPARAM lparam );
-	void setFont( const std::string &fontName );
 };
 
 

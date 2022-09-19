@@ -321,6 +321,7 @@
     <None Include="config\imgui.ini" />
     <None Include="config\imgui_default.ini" />
     <None Include="cursor1.cur" />
+    <None Include="homm_inspired_new.cur" />
     <None Include="scripts\scripting.lua" />
     <None Include="shaders\hlsli\directional_light_pscb.hlsli" />
     <None Include="shaders\hlsli\hlsl_misc.hlsli" />

@@ -13,9 +13,9 @@
 #include "thread_pool_j.h"
 #include "utils.h"
 #include "os_utils.h"
+#include "..\resource.h"
 #if defined _DEBUG && !defined NDEBUG
 #	include "bindable_map.h"
-//#	include "../../KeyEngine_tests/testing.h"
 #endif
 
 
@@ -28,7 +28,7 @@ Game<T>::Game( const int width,
 	const unsigned nWindows )
 	:
 	m_pImguiMan{createImgui()},
-	m_mainWindow{width, height, title.c_str()},
+	m_mainWindow{width, height, title.c_str(), LoadMenuW( THIS_INSTANCE, MAKEINTRESOURCEW( IDR_MENU_APP ) )},
 	m_pCurrentState{std::make_unique<GameState>()}
 {
 	m_nWindows = nWindows;
