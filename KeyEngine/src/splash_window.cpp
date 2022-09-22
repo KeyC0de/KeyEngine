@@ -49,7 +49,7 @@ SplashWindow::SplashWindow( const HWND hWndParent,
 	ASSERT_HRES_WIN32_IF_FAILED;
 
 	/// load png image here as a transparent bitmap
-	Bitmap bitmap = Bitmap::loadFromFile( "splash.png" );
+	Bitmap bitmap = Bitmap::loadFromFile( "assets/resources/splash.png" );
 
 	//HBITMAP bitmap = LoadBitmapW( hInst, MAKEINTRESOURCE( resourceId ) );
 	// create "memory dc" or "compatible dc" - a dc special for bitmaps

@@ -266,10 +266,10 @@ int Sandbox3d::loop()
 			break;
 		}
 		update( dt );
+		render( dt );
 #if defined _DEBUG && !defined NDEBUG
 		test();
 #endif
-		render( dt );
 		present();
 	}
 	return returnC0de;
@@ -399,20 +399,6 @@ void Sandbox3d::update( const float dt )
 	m_sponzaScene.update( dt );
 }
 
-#if defined _DEBUG && !defined NDEBUG
-void Sandbox3d::test()
-{
-	using namespace std::string_literals;
-	KeyConsole &console = KeyConsole::instance();
-
-	const BindableMap &instanceToBeInspected = BindableMap::getInstance();
-
-	console.print( "BindableMap instance count: "s + std::to_string( BindableMap::getInstanceCount() ) + "\n"s );
-	console.print( "BindableMap garbage count: "s + std::to_string( BindableMap::getGarbageCount() ) + "\n"s );
-	console.print( "Current distance from carabiner: "s + std::to_string( m_carabiner.getDistanceFromActiveCamera() ) + "\n"s );
-}
-#endif
-
 void Sandbox3d::render( const float dt )
 {
 	auto &gph = m_mainWindow.getGraphics();
@@ -432,18 +418,30 @@ void Sandbox3d::render( const float dt )
 
 	m_renderer.run( gph );
 
-	renderImgui();
+
 	gph.updateAndRenderFpsTimer();
 }
 
-void Sandbox3d::renderImgui()
+#if defined _DEBUG && !defined NDEBUG
+void Sandbox3d::test()
 {
+	using namespace std::string_literals;
+	KeyConsole &console = KeyConsole::instance();
+
+	const BindableMap &instanceToBeInspected = BindableMap::getInstance();
+
+	console.print( "BindableMap instance count: "s + std::to_string( BindableMap::getInstanceCount() ) + "\n"s );
+	console.print( "BindableMap garbage count: "s + std::to_string( BindableMap::getGarbageCount() ) + "\n"s );
+	console.print( "Current distance from carabiner: "s + std::to_string( m_carabiner.getDistanceFromActiveCamera() ) + "\n"s );
+
+
+	/// Render Imgui stuff
 	auto &gph = m_mainWindow.getGraphics();
 
 	// Showcase Effect controls by passing visitors to the object hierarchies
-	static MV sponzaVisitor{"Sponza"};
-	static MV nanoSuitVisitor{"Nano"};
-	static MV carabinerVisitor{"Carabiner"};
+	static ImguiVisitor sponzaVisitor{"Sponza"};
+	static ImguiVisitor nanoSuitVisitor{"Nano"};
+	static ImguiVisitor carabinerVisitor{"Carabiner"};
 	sponzaVisitor.spawnModelImgui( m_sponzaScene );
 	nanoSuitVisitor.spawnModelImgui( m_nanoSuit );
 	carabinerVisitor.spawnModelImgui( m_carabiner );
@@ -459,6 +457,7 @@ void Sandbox3d::renderImgui()
 		ImGui::ShowDemoWindow( &b_bShowDemoWindow );
 	}
 }
+#endif
 
 void Sandbox3d::present()
 {
@@ -624,13 +623,6 @@ void Arkanoid::update( const float dt )
 	}
 }
 
-#if defined _DEBUG && !defined NDEBUG
-void Arkanoid::test()
-{
-
-}
-#endif
-
 void Arkanoid::render( const float dt )
 {
 	auto &gph = m_mainWindow.getGraphics();
@@ -645,6 +637,13 @@ void Arkanoid::render( const float dt )
 
 	m_renderer.run( gph );
 }
+
+#if defined _DEBUG && !defined NDEBUG
+void Arkanoid::test()
+{
+
+}
+#endif
 
 void Arkanoid::present()
 {

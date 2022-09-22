@@ -40,7 +40,7 @@ enum ElementType
 };
 
 // static map of attributes of each leaf class
-template<ElementType type>
+template<ElementType elem>
 struct MapElementProperties
 {
 	static constexpr bool valid = false;
@@ -184,17 +184,17 @@ public:
 	const size_t getSizeInBytes() const cond_noex;
 	// only works for Structs; add CBElement to struct
 	CBElement& add( const ElementType addedType, const std::string& name ) cond_noex;
-	template<ElementType type>
+	template<ElementType elem>
 	CBElement& add( const std::string& key ) cond_noex
 	{
-		return add( type, std::move( key ) );
+		return add( elem, std::move( key ) );
 	}
 	// only works for Arrays; set the class and the # of elements
 	CBElement& set( const ElementType addedType, const size_t size ) cond_noex;
-	template<ElementType type>
+	template<ElementType elem>
 	CBElement& set( const size_t size ) cond_noex
 	{
-		return set( type, size );
+		return set( elem, size );
 	}
 	
 	//===================================================
@@ -272,11 +272,11 @@ class CBLayout
 	friend class CBuffer;
 protected:
 	std::shared_ptr<CBElement> m_pLayoutRoot;
+protected:
+	CBLayout( std::shared_ptr<CBElement> pRoot ) noexcept;
 public:
 	const size_t getSizeInBytes() const noexcept;
 	std::string calcSignature() const cond_noex;
-protected:
-	CBLayout( std::shared_ptr<CBElement> pRoot ) noexcept;
 };
 
 
@@ -299,10 +299,10 @@ public:
 	// key into the root Struct
 	CBElement& operator[]( const std::string &key ) cond_noex;
 	// add an element to the root Struct
-	template<ElementType type>
+	template<ElementType elem>
 	CBElement& add( const std::string &key ) cond_noex
 	{
-		return m_pLayoutRoot->add<type>( key );
+		return m_pLayoutRoot->add<elem>( key );
 	}
 private:
 	// reset this object with an empty struct at its root

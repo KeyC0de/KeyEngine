@@ -77,7 +77,10 @@ void ThreadPoolJ::stop() noexcept
 		{
 			ASSERT( t.get_stop_token().stop_possible(), "Stop is not possible!" )
 			t.request_stop();
-			t.join();
+			if ( t.joinable() )
+			{
+				t.join();
+			}
 		}
 	}
 }

@@ -429,16 +429,15 @@ CBElementView::Ptr::Ptr( CBElementView *ref ) noexcept
 // LayoutMap
 con::CookedLayout LayoutMap::fetch( con::RawLayout &&cbLayout ) cond_noex
 {
-	auto sig = cbLayout.calcSignature();
+	std::string sig = cbLayout.calcSignature();
 	auto &map = instance().m_map;
-	const auto i = map.find( sig );
+	const auto it = map.find( sig );
 	// identical layout already exists
-	if ( i != map.end() )
+	if ( it != map.end() )
 	{
 		// input layout is expected to be cleared after fetch
-		// so just throw away the layout tree
 		cbLayout.clear();
-		return {i->second};
+		return {it->second};
 	}
 	// otherwise add layout root element to map
 	auto result = map.insert( {std::move( sig ), cbLayout.cookLayout()} );

@@ -12,10 +12,6 @@
 #include "graphics_mode.h"
 #include "../resource.h"
 
-//#define WM_TRAY_ICON			10001
-//#define ID_TRAY_APP_ICON		20001
-//#define ID_TRAY_ICON_EXIT		20002
-
 
 Window::WindowClass::WindowClass( const std::string &name )
 	:
@@ -102,13 +98,14 @@ Window::Window( const int width,
 	const char *name,
 	const HMENU hMenu,
 	const int x /* = 200 */,
-	const int y /* = 200 */ )
+	const int y /* = 200 */,
+	const Window *parent /*= nullptr*/ )
 	:
 	m_windowClass{"KeyEngine_Window_Class"},
 	m_name{name}
 {
-	uint32_t windowExStyles = WS_EX_OVERLAPPEDWINDOW;
 	uint32_t windowStyles = WS_VISIBLE | WS_CAPTION | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_SYSMENU | WS_OVERLAPPEDWINDOW;	// disable both maximizing and resizing
+	uint32_t windowExStyles = WS_EX_OVERLAPPEDWINDOW;
 
 	RECT rect{0, 0, width, height};
 	BOOL ret = AdjustWindowRectEx( &rect,
@@ -117,7 +114,7 @@ Window::Window( const int width,
 		windowExStyles );
 	if ( !ret )
 	{
-		throwWindowException( "Failed to adjust window rectangle" );
+		THROW_WINDOW_EXCEPTION( "Failed to adjust window rectangle" );
 	}
 
 	const unsigned adjustedWindowWidth = rect.right - rect.left;
@@ -133,14 +130,14 @@ Window::Window( const int width,
 		y,
 		adjustedWindowWidth,
 		adjustedWindowHeight,
-		HWND_DESKTOP,	// parent
-		nullptr,			// menu
+		parent == nullptr ? HWND_DESKTOP : parent->getHandle(),	// parent
+		nullptr,														// menu
 		THIS_INSTANCE,
 		this );
 	ASSERT_HRES_WIN32_IF_FAILED;
 	if ( !m_hWnd )
 	{
-		throwWindowException( "Failed to create Window" );
+		THROW_WINDOW_EXCEPTION( "Failed to create Window" );
 	}
 
 	// mouse raw input
@@ -183,10 +180,10 @@ Window::Window( const int width,
 	ASSERT_HRES_WIN32_IF_FAILED;
 
 	// Set the Menu
-	showMenu( hMenu );
+	//showMenu( hMenu );
 
 	// Tray icon setup
-	//setupNotifyIconData();
+	setupTrayIcon();
 
 	// Initialize ImGui
 	if constexpr( gph_mode::get() == gph_mode::_3D )
@@ -199,11 +196,11 @@ Window::Window( const int width,
 		adjustedWindowWidth,
 		adjustedWindowHeight );
 
-	// Display window
+	// show window
 	ret = UpdateWindow( m_hWnd );
 	if ( ret == FALSE )
 	{
-		throwWindowException( "Failed to update the client area of the window." );
+		THROW_WINDOW_EXCEPTION( "Failed to update the client area of the window." );
 	}
 	ret = ShowWindow( m_hWnd,
 		SW_SHOWDEFAULT );
@@ -211,8 +208,14 @@ Window::Window( const int width,
 
 Window::~Window()
 {
-	ReleaseDC( m_hWnd,
-		m_dc );
+	deleteTrayIcon();
+	destroyMenu( m_hTrayIconPopupMenu );
+	
+	const HDC dc = getDc();
+	const BOOL bReleased = ReleaseDC( m_hWnd,
+		dc );
+	//ASSERT( bReleased == TRUE, "The window's device context was not properly released for use by other applications!" );
+
 	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{
 		ImGui_ImplWin32_Shutdown();
@@ -227,9 +230,10 @@ Window::Window( Window &&rhs ) noexcept
 	m_name{std::move( rhs.m_name )},
 	m_hWnd{std::move( rhs.m_hWnd )},
 	m_pGraphics{std::move( rhs.m_pGraphics )},
-	m_dc{rhs.m_dc},
 	m_info{std::move( rhs.m_info )},
-	m_clipboardFormats{std::move( rhs.m_clipboardFormats )}
+	m_clipboardFormats{std::move( rhs.m_clipboardFormats )},
+	m_hTrayIconPopupMenu{rhs.m_hTrayIconPopupMenu},
+	m_trayIconData{std::move( m_trayIconData )}
 {
 	m_keyboard = std::move( rhs.m_keyboard );
 	rhs.m_keyboard = {};
@@ -273,6 +277,15 @@ const HWND Window::setFocus()
 {
 	HWND previouslyFocusedWindow = SetFocus( m_hWnd );
 	return previouslyFocusedWindow;
+}
+
+const bool Window::hasParent() const noexcept
+{
+	if ( !getParent() )
+	{
+		return false;
+	}
+	return ( getParent() == GetDesktopWindow() ) ? false : true;
 }
 
 const HWND Window::getParent() const noexcept
@@ -319,9 +332,9 @@ bool Window::isCursorEnabled() const noexcept
 	return m_bCursorEnabled;
 }
 
-void Window::configureDc()
+HDC Window::getDc() const noexcept
 {
-	m_dc = GetWindowDC( m_hWnd );
+	return GetWindowDC( m_hWnd );
 }
 
 void Window::displayMessageBox( const std::string &title,
@@ -356,21 +369,57 @@ void Window::restore()
 	SetForegroundWindow( m_hWnd );
 }
 
-//void Window::setupNotifyIconData()
-//{
-//	ZeroMemory( &m_notifyIconData, sizeof NOTIFYICONDATA );
-//	m_notifyIconData.cbSize = sizeof NOTIFYICONDATA;
-//	m_notifyIconData.hWnd = m_hWnd;
-//	m_notifyIconData.uID = ID_TRAY_APP_ICON;	// stored in the wParam data of the uMsg
-//	m_notifyIconData.uFlags = NIF_ICON | NIF_MESSAGE | NIF_TIP;	// popup menu style
-//	m_notifyIconData.uCallbackMessage = WM_TRAY_ICON;
-//	m_notifyIconData.hIcon = LoadIconW( GetModuleHandleW( nullptr ),
-//		MAKEINTRESOURCEW( IDI_ICON_TRAY ) );
-//	std::wstring szTrayIconTooltipText{L"KeyEngine is relaxing in the System Tray."};
-//	wcsncpy( m_notifyIconData.szTip,
-//		szTrayIconTooltipText.c_str(),
-//		szTrayIconTooltipText.size() );
-//}
+void Window::destroyMenu( const HMENU hMenu )
+{
+	DestroyMenu( hMenu );
+	//ASSERT_HRES_WIN32_IF_FAILED;
+}
+
+void Window::setupTrayIcon()
+{
+	ZeroMemory( &m_trayIconData, sizeof NOTIFYICONDATA );
+	m_trayIconData.cbSize = sizeof NOTIFYICONDATA;
+	m_trayIconData.hWnd = m_hWnd;
+	m_trayIconData.uID = IDI_ICON_TRAY;	// stored in the wParam data of the uMsg
+	m_trayIconData.uFlags = NIF_ICON |	// load icon
+		NIF_TIP	|						// support icon tooltip
+		NIF_INFO |						// display a Windows balloon notification
+		NIF_MESSAGE;					// support callback message
+	m_trayIconData.hIcon = LoadIconW( GetModuleHandleW( nullptr ),
+		MAKEINTRESOURCEW( IDI_ICON_TRAY ) );
+	m_trayIconData.uCallbackMessage = WM_TRAY_ICON;
+	const std::wstring trayIconTooltipText{L"KeyEngine is relaxing in the System Tray."};
+	wcsncpy( m_trayIconData.szTip,
+		trayIconTooltipText.c_str(),
+		trayIconTooltipText.size() );
+
+	const std::wstring trayIconWindowsBalloonNotificationTitle{L"KeyEngine Windows balloon notification"};
+	wcsncpy( m_trayIconData.szInfoTitle,
+		trayIconWindowsBalloonNotificationTitle.c_str(),
+		trayIconWindowsBalloonNotificationTitle.size() );
+
+	const std::wstring trayIconWindowsBalloonNotificationDesc{L"The powerful KeyEngine is energized!"};
+	wcsncpy( m_trayIconData.szInfo,
+		trayIconWindowsBalloonNotificationDesc.c_str(),
+		trayIconWindowsBalloonNotificationDesc.size() );
+
+	//m_trayIconData.dwInfoFlags = //misc extra flags
+}
+
+void Window::showTrayIcon() noexcept
+{
+	BOOL ret = Shell_NotifyIconW( NIM_ADD,
+			&m_trayIconData );
+	//ASSERT( ret == TRUE, "Tray icon setup unsuccessful!" );
+}
+
+void Window::deleteTrayIcon() noexcept
+{
+	BOOL ret = Shell_NotifyIconW( NIM_DELETE,
+			&m_trayIconData );
+	//ASSERT( ret == TRUE, "Tray icon setup unsuccessful!" );
+	Sleep( 10 );
+}
 
 bool Window::isMinimized() const noexcept
 {
@@ -416,11 +465,6 @@ const HWND Window::getHandle() const noexcept
 	return m_hWnd;
 }
 
-HDC Window::getDc() const noexcept
-{
-	return m_dc;
-}
-
 WINDOWINFO Window::getInfo() const noexcept
 {
 	return m_info;
@@ -455,7 +499,7 @@ void saveClipboardTextAsVar()
 	
 	if ( OpenClipboard( nullptr ) )
 	{
-		hClipboard = GetClipboardData(CF_TEXT );
+		hClipboard = GetClipboardData( CLIPBOARD_TEXT_FORMAT );
 		clipboardText = (char*)hClipboard;
 #if defined _DEBUG && !defined NDEBUG
 		KeyConsole& console = KeyConsole::instance();
@@ -611,8 +655,8 @@ LRESULT Window::windowProc_impl2d( _In_ const HWND hWnd,
 				showCursor();
 			}
 		}
-//		Shell_NotifyIconW( NIM_ADD,
-//			&m_notifyIconData );
+
+		showTrayIcon();
 		break;
 	}
 	/// Keyboard Messages
@@ -809,24 +853,27 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 	{
 	case WM_CREATE:
 	{
-//		// Initialization. Controls - child windows, set default values for controls
-//#if defined _DEBUG && !defined NDEBUG
-//		auto &console = KeyConsole::instance();
-//		using namespace std::string_literals;
-//		console.log( "'WM_CREATE' : window created\n"s );
-//#endif
-//		//m_splash = std::make_unique<SplashWindow>( hWnd,
-//		//	THIS_INSTANCE,
-//		//	IDB_SPLASH,
-//		//	std::make_pair( 256, 256 ) );
-//		//m_splash->messageLoop();
-//
-//		m_hTrayIconPopupMenu = CreatePopupMenu();
-//		int ret = AppendMenuW( m_hTrayIconPopupMenu,
-//			MF_STRING,
-//			ID_TRAY_ICON_EXIT,
-//			L"Exit the Application." );
-//		ASSERT_HRES_WIN32_IF_FAILED;
+		// Initialization. Controls - child windows, set default values for controls
+#if defined _DEBUG && !defined NDEBUG
+		auto &console = KeyConsole::instance();
+		using namespace std::string_literals;
+		console.log( "'WM_CREATE' : window created\n"s );
+#endif
+
+		m_hTrayIconPopupMenu = CreatePopupMenu();
+		//ASSERT_HRES_WIN32_IF_FAILED;	// GetLastError crashes here - unknown Windows Bug
+		int ret = AppendMenuW( m_hTrayIconPopupMenu,
+			MF_STRING,
+			IDM_TRAY_ICON_EXIT,
+			L"Exit the Application." );
+		//ASSERT_HRES_WIN32_IF_FAILED;	// GetLastError crashes here - unknown Windows Bug
+
+		//m_splash = std::make_unique<SplashWindow>( hWnd,
+		//	THIS_INSTANCE,
+		//	IDI_SPLASH,
+		//	std::make_pair( 256, 256 ) );
+		//m_splash->messageLoop();
+
 		break;
 	}
 	case WM_CLOSE:
@@ -863,8 +910,8 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 				showCursor();
 			}
 		}
-//		Shell_NotifyIconW( NIM_ADD,
-//			&m_notifyIconData );
+
+		showTrayIcon();
 		break;
 	}
 #if defined _DEBUG && !defined NDEBUG
@@ -911,8 +958,8 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 			{
 				if ( width != calcWidth() && height != calcHeight() )
 				{
-					m_pGraphics->resize( width,
-						height );
+					// #TODO: m_pGraphics->resize( width,
+					//	height );
 				}
 			}
 		}
@@ -1276,61 +1323,60 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		break;
 	}
 	/// Tray icons
-	//case WM_TRAY_ICON:
-//	{
-//		if ( lParam == WM_LBUTTONUP )
-//		{
-//			restore();
-//		}
-//		else if ( lParam == WM_RBUTTONDOWN )
-//		{
-//			POINT curPoint;
-//			GetCursorPos( &curPoint );
-//			SetForegroundWindow( hWnd );
-//			// spawn a popup menu on mouse hotspot coordinates - TrackPopupMenu blocks
-//			UINT clicked = TrackPopupMenu( m_hTrayIconPopupMenu,
-//				TPM_RETURNCMD | TPM_NONOTIFY,
-//				curPoint.x,
-//				curPoint.y,
-//				0,
-//				m_hWnd,
-//				nullptr );
-//			// send benign message to window to make sure the menu goes away.
-//			SendMessageW( m_hWnd,
-//				WM_NULL,
-//				0,
-//				0 );
-//			if ( clicked == ID_TRAY_ICON_EXIT )
-//			{
-//				Shell_NotifyIconW( NIM_DELETE,
-//					&m_notifyIconData );
-//				PostQuitMessage( 0 );
-//				return 0;
-//			}
-//		}
-//		break;
-//	}
-	//case WM_NCHITTEST:	// drags a window using its client area
-	//{
-	//	// determine what part of the window the mouse cursor is on
-	//	LRESULT uHitTest = DefWindowProcW( hWnd,
-	//		WM_NCHITTEST,
-	//		wParam,
-	//		lParam );
-	//	// or:
-	//	//short int xPos = GET_X_LPARAM( lParam );
-	//	//short int yPos = GET_Y_LPARAM( lParam );
-	//	if ( uHitTest == HTCLIENT )
-	//	{
-	//		// client area
-	//		return HTCAPTION;
-	//	}
-	//	else
-	//	{
-	//		// title bar or someplace else
-	//		return uHitTest;
-	//	}
-	//}
+	case WM_TRAY_ICON:
+	{
+		if ( lParam == WM_LBUTTONUP )
+		{
+			restore();
+		}
+		else if ( lParam == WM_RBUTTONDOWN )
+		{
+			POINT cursorPosScreenCoords;
+			GetCursorPos( &cursorPosScreenCoords);
+			SetForegroundWindow( hWnd );
+			// spawn a popup menu on mouse hotspot coordinates - TrackPopupMenu blocks
+			UINT bClicked = TrackPopupMenu( m_hTrayIconPopupMenu,
+				TPM_RETURNCMD | TPM_NONOTIFY,
+				cursorPosScreenCoords.x,
+				cursorPosScreenCoords.y,
+				0,
+				m_hWnd,
+				nullptr );
+			// send benign message to window to make sure the menu goes away.
+			SendMessageW( m_hWnd,
+				WM_NULL,
+				0,
+				0 );
+			if ( bClicked == IDM_TRAY_ICON_EXIT )
+			{
+				deleteTrayIcon();
+				PostQuitMessage( 0 );
+				return 0;
+			}
+		}
+		break;
+	}
+	case WM_NCHITTEST:
+	{// drags a window using its client area
+		// determine what part of the window the mouse cursor is on
+		LRESULT uHitTest = DefWindowProcW( hWnd,
+			WM_NCHITTEST,
+			wParam,
+			lParam );
+		// or:
+		//short int xPos = GET_X_LPARAM( lParam );
+		//short int yPos = GET_Y_LPARAM( lParam );
+		if ( uHitTest == HTCLIENT )
+		{
+			// client area
+			return HTCAPTION;
+		}
+		else
+		{
+			// title bar or someplace else
+			return uHitTest;
+		}
+	}
 #ifdef USE_GDIPLUS
 	case WM_ERASEBKGND:
 	{
@@ -1523,7 +1569,7 @@ void Window::hideMenu()
 	setRedrawing( true );
 }
 
-const HMENU Window::getMenu() const noexcept
+const HMENU Window::getTopMenu() const noexcept
 {
 	return GetMenu( m_hWnd );
 }
@@ -1567,6 +1613,17 @@ int Window::calcHeight() const noexcept
 	return rect.bottom - rect.top;
 }
 
+HWND Window::getConsoleHandle() const
+{
+	HWND ret = FindWindowA("ConsoleWindowClass",
+		nullptr );
+	if ( ret == 0 )
+	{
+		THROW_WINDOW_EXCEPTION( "No console has been allocated for this window." );
+	}
+	return ret;
+}
+
 #pragma warning( disable : 4312 )
 void WINAPI Window::menuProc( HMENU hMenu )
 {
@@ -1574,6 +1631,7 @@ void WINAPI Window::menuProc( HMENU hMenu )
 	unsigned flags;
 	PLABELBOX pBox = ( m_hWnd == nullptr ) ? nullptr :
 		(PLABELBOX) GetWindowLongW( m_hWnd, 0 );
+	ASSERT_HRES_WIN32_IF_FAILED;
 
 	for ( int i = 0; i < nMenuItems; ++i )
 	{
@@ -1610,7 +1668,7 @@ void WINAPI Window::menuProc( HMENU hMenu )
 			if ( pBox != nullptr && pBox->fEdit )
 			{
 				// clipboard CF_ formats: https://learn.microsoft.com/en-us/windows/win32/dataxchg/standard-clipboard-formats
-				const UINT ansiText = CF_TEXT;
+				const UINT ansiText = CLIPBOARD_TEXT_FORMAT;
 				const bool bClipboardAvailable = IsClipboardFormatAvailable( ansiText ) ? MF_BYCOMMAND | MF_ENABLED :
 					MF_BYCOMMAND | MF_GRAYED;
 
@@ -1637,7 +1695,7 @@ void WINAPI Window::menuProc( HMENU hMenu )
 #pragma warning( default : 4312 )
 
 #pragma warning( disable : 4312 )
-bool Window::editCopy( UINT format /* = CF_TEXT */ )
+bool Window::editCopy( UINT format )
 {
 	HGLOBAL hClipboard;
 
@@ -1659,6 +1717,7 @@ bool Window::editCopy( UINT format /* = CF_TEXT */ )
 	// get a pointer to the structure for the selected label
 	PLABELBOX pBox = ( m_hWnd == nullptr ) ? nullptr :
 		(PLABELBOX) GetWindowLongW( m_hWnd, 0 );
+	ASSERT_HRES_WIN32_IF_FAILED;
 
 	if ( format == CF_TEXT || format == CF_UNICODETEXT )
 	{
@@ -1763,7 +1822,7 @@ bool Window::editCopy( UINT format /* = CF_TEXT */ )
 #pragma warning( default : 4312 )
 
 #pragma warning( disable : 4312 )
-bool Window::editPaste( UINT format /* = CF_TEXT */ )
+bool Window::editPaste( UINT format )
 {
 	if ( !IsClipboardFormatAvailable( format ) )
 	{

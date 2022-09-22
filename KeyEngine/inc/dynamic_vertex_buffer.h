@@ -248,7 +248,7 @@ class VBElementView final
 	const VertexInputLayout &m_layout;
 private:
 	template<VertexInputLayout::ILEementType layoutType>
-	struct ElementExec final
+	struct ElementSetter final
 	{
 		//===================================================
 		//	\function	exec
@@ -287,7 +287,7 @@ private:
 	{
 		const auto &element = m_layout.getElementByIndex( i );
 		auto pElement = m_p + element.getByteOffsetInLayout();
-		VertexInputLayout::bridge<ElementExec>( element.getType(),
+		VertexInputLayout::bridge<ElementSetter>( element.getType(),
 			this,
 			pElement,
 			std::forward<T>( val ) );

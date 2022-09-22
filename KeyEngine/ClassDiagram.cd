@@ -889,7 +889,7 @@
       <FileName>inc\model_visitor.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MV" Collapsed="true">
+  <Class Name="ImguiVisitor" Collapsed="true">
     <Position X="101.5" Y="78.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAQAAAAAAAFAQAAAAAEAAAAQAAAAAAAgAAAAAgAAAA=</HashCode>

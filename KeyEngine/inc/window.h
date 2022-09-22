@@ -12,6 +12,11 @@
 #include "non_copyable.h"
 #include "windows_hidden_defs.h"
 
+#if UNICODE
+#	define CLIPBOARD_TEXT_FORMAT	CF_UNICODETEXT
+#else
+#	define CLIPBOARD_TEXT_FORMAT	CF_TEXT
+#endif
  
 class Graphics;
 
@@ -55,12 +60,11 @@ private:
 	std::string m_title;
 	HWND m_hWnd;
 	std::unique_ptr<Graphics> m_pGraphics;
-	HDC m_dc;
 	WINDOWINFO m_info;
 	std::array<unsigned, 8> m_clipboardFormats;	// {0: unicode format,...}
+	HMENU m_hTrayIconPopupMenu;
+	NOTIFYICONDATA m_trayIconData;
 	//std::unique_ptr<SplashWindow> m_splash;
-	//HMENU m_hTrayIconPopupMenu;
-	//NOTIFYICONDATA m_notifyIconData;
 	//std::unique_ptr<Dialog> m_pDialogAbout;
 private:
 	static LRESULT CALLBACK windowProc( const HWND pWndHandle, const unsigned uMsg, const WPARAM wParam, const LPARAM lParam );
@@ -72,7 +76,7 @@ public:
 	static bool isDescendantOf( const HWND targethWnd, const HWND parent ) noexcept;
 	static void saveClipboardTextAsVar();
 public:
-	Window( const int width, const int height, const char *name, const HMENU hMenu, const int x = 200, const int y = 200 );
+	Window( const int width, const int height, const char *name, const HMENU hMenu, const int x = 200, const int y = 200, const Window *parent = nullptr );
 	~Window();
 	Window( Window &&rhs ) noexcept;
 	Window& operator=( Window &&rhs ) noexcept;
@@ -81,6 +85,11 @@ public:
 	void setEnable( const bool b );
 	void setOnTop();
 	const HWND setFocus();
+	//===================================================
+	//	\function	hasParent
+	//	\brief  returns true if this Window has a parent that is not the Desktop window
+	//	\date	2022/09/22 19:52
+	const bool hasParent() const noexcept;
 	const HWND getParent() const noexcept;
 	void setTitle( const std::string &title );
 	const std::string& getTitle() const noexcept;
@@ -97,6 +106,10 @@ public:
 	operator bool() const noexcept;
 	Graphics& getGraphics();
 	const HWND getHandle() const noexcept;
+	//===================================================
+	//	\function	getDc
+	//	\brief  get Window's Device Context (DC)
+	//	\date	2022/09/22 19:35
 	HDC getDc() const noexcept;
 	WINDOWINFO getInfo() const noexcept;
 	const int messageBoxPrintf( const TCHAR *caption, const TCHAR *format, ... );
@@ -108,14 +121,14 @@ public:
 	void setRedrawing( const bool bRedraw );
 	void showMenu( const HMENU hMenu );
 	void hideMenu();
-	const HMENU getMenu() const noexcept;
+	const HMENU getTopMenu() const noexcept;
 	HWND getDesktop() const noexcept;
 	int calcX() const noexcept;
 	int calcY() const noexcept;
 	int calcWidth() const noexcept;
 	int calcHeight() const noexcept;
+	HWND getConsoleHandle() const;
 private:
-	void configureDc();
 	void confineCursor() noexcept;
 	void freeCursor() noexcept;
 	void showCursor() noexcept;
@@ -128,25 +141,26 @@ private:
 	void resize( const int width, const int height, const unsigned flags = SWP_NOZORDER | SWP_NOMOVE | SWP_NOACTIVATE ) const noexcept;
 	// Menu related functions
 	void WINAPI menuProc( HMENU hMenu );
-#ifdef UNICODE
-	bool editCopy( unsigned format = CF_UNICODETEXT );
-	bool editPaste( unsigned format = CF_UNICODETEXT );
-	void renderClipboardFormat( unsigned format = CF_UNICODETEXT );
-#else
-	bool editCopy( unsigned format = CF_TEXT );
-	bool editPaste( unsigned format = CF_TEXT );
-	void renderClipboardFormat( unsigned format = CF_TEXT );
-#endif
+	bool editCopy( unsigned format = CLIPBOARD_TEXT_FORMAT );
+	bool editPaste( unsigned format = CLIPBOARD_TEXT_FORMAT );
+	void renderClipboardFormat( unsigned format = CLIPBOARD_TEXT_FORMAT );
 	//===================================================
 	//	\function	editDelete
 	//	\brief  delete selected text, eg as if you pressed "cut" or the "delete" key
 	//	\date	2022/09/18 18:01
 	void editDelete();
-	//void setupNotifyIconData();
+	//===================================================
+	//	\function	destroyMenu
+	//	\brief  The destruction of a menu is done automatically when the menu is assigned to a window, otherwise you must call this function to free the HMENU's	resources
+	//	\date	2022/09/22 19:31
+	void destroyMenu( const HMENU hMenu );
+	void setupTrayIcon();
+	void showTrayIcon() noexcept;
+	void deleteTrayIcon() noexcept;
 };
 
 
-#define throwWindowException( msg ) throw WindowException( __LINE__,\
+#define THROW_WINDOW_EXCEPTION( msg ) throw WindowException( __LINE__,\
 	__FILE__,\
 	__FUNCTION__,\
 	msg );

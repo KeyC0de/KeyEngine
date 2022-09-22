@@ -11,19 +11,19 @@
 namespace dx = DirectX;
 
 
-MV::MV( const std::string &name )
+ImguiVisitor::ImguiVisitor( const std::string &name )
 	:
 	m_name{name}
 {
 
 }
 
-//MV::~MV() noexcept
+//ImguiVisitor::~ImguiVisitor() noexcept
 //{
 //	m_pSelectedNode = nullptr;
 //}
 
-void MV::spawnModelImgui( Model &model )
+void ImguiVisitor::spawnModelImgui( Model &model )
 {
 	ImGui::Begin( m_name.c_str() );
 	ImGui::Columns( 2,
@@ -40,7 +40,7 @@ void MV::spawnModelImgui( Model &model )
 			bDirty = bDirty || bChanged;
 		};
 
-		// for transforming the .obj model
+		// for transforming the model
 		auto &tf = calcTransform();
 
 		ImGui::TextColored( { 0.4f, 1.0f, 0.6f, 1.0f }, "Translation" );
@@ -67,16 +67,15 @@ void MV::spawnModelImgui( Model &model )
 	ImGui::End();
 }
 
-const std::string& MV::getName() const noexcept
+const std::string& ImguiVisitor::getName() const noexcept
 {
 	return m_name;
 }
 
-bool MV::visit( Node &node )
+bool ImguiVisitor::visit( Node &node )
 {
 	// if there is no selected node, set selectedNodeId to an impossible value
-	const int selectedNodeId = ( m_pSelectedNode == nullptr ) ?
-		-1 :
+	const int selectedNodeId = ( m_pSelectedNode == nullptr ) ? -1 :
 		m_pSelectedNode->getImguiId();
 	
 	// build up flags for current node
@@ -85,7 +84,7 @@ bool MV::visit( Node &node )
 		| ( node.hasChildren() ? 0 : ImGuiTreeNodeFlags_Leaf );
 
 	// render this node
-	const bool bExpand = ImGui::TreeNodeEx( (void*)(intptr_t)node.getImguiId(),
+	const bool bNodeOpen = ImGui::TreeNodeEx( (void*)(intptr_t)node.getImguiId(),
 		nodeFlags,
 		node.getName().c_str() );
 	
@@ -94,16 +93,16 @@ bool MV::visit( Node &node )
 		m_pSelectedNode = &node;
 	}
 	
-	// if bExpand is true then that's the go-signal for children Nodes to also be recursed
-	return bExpand;
+	// if bNodeOpen is true then that's the go-signal for children Nodes to also be recursed
+	return bNodeOpen;
 }
 
-void MV::onVisited( Node &node )
+void ImguiVisitor::onVisited( Node &node )
 {
 	ImGui::TreePop();
 }
 
-MV::TransformData& MV::calcTransform() noexcept
+ImguiVisitor::TransformData& ImguiVisitor::calcTransform() noexcept
 {
 	const auto imguiNodeId = m_pSelectedNode->getImguiId();
 	auto it = m_nodeMapTransforms.find( imguiNodeId );

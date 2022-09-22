@@ -78,12 +78,11 @@ public:
 private:
 	int checkInput( const float dt );
 	void update( const float dt );
+	void render( const float dt );
 #if defined _DEBUG && !defined NDEBUG
 	void test();
 #endif
-	void render( const float dt );
 	void present();
-	void renderImgui();
 };
 
 class Arkanoid final
@@ -109,10 +108,10 @@ public:
 private:
 	int checkInput( const float dt );
 	void update( const float dt );
+	void render( const float dt );
 #if defined _DEBUG && !defined NDEBUG
 	void test();
 #endif
-	void render( const float dt );
 	void present();
 };
 

@@ -16,7 +16,7 @@ public:
 	virtual void onVisited( class Node &node ) = 0;
 };
 
-class MV
+class ImguiVisitor
 	: IModelVisitor
 {
 	struct TransformData
@@ -32,12 +32,21 @@ class MV
 	std::string m_name;
 	std::unordered_map<int, TransformData> m_nodeMapTransforms;
 public:
-	MV( const std::string &name );
+	ImguiVisitor( const std::string &name );
 
 	void spawnModelImgui( Model &model );
 	const std::string& getName() const noexcept;
 private:
+	//===================================================
+	//	\function	visit
+	//	\brief  returns true if we want to render this Node in the ImGui tree hierarchy
+	//			"opens" the node for processing
+	//	\date	2022/09/20 23:06
 	bool visit( Node &node ) override;
+	//===================================================
+	//	\function	onVisited
+	//	\brief  if visit() returns true, "close" the node
+	//	\date	2022/09/20 23:07
 	void onVisited( Node &node ) override;
 	TransformData& calcTransform() noexcept;
 };

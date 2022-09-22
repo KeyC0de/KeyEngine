@@ -26,46 +26,30 @@ BOOL WINAPI SetCurrentConsoleFontEx( HANDLE hConsoleOutput, BOOL bMaximumWindow,
 #endif
 #endif // NOGDI
 
+#define MAKE_CONSOLE_DEFAULT_TITLE	std::string{defaultConsoleTitle} + std::string{" "} + std::string{currentVersion}
+#define MAX_CONSOLE_TITLE_LEN	128
 
-const DWORD KeyConsole::getFontFamily( const HANDLE h )
+
+KeyConsole& KeyConsole::instance() noexcept
 {
-	CONSOLE_FONT_INFO cfi;
-	BOOL conFont = GetCurrentConsoleFont( h,
-		false,
-		&cfi );
-	std::cout << conFont
-		<< "\nnFont="
-		<< cfi.nFont
-		<< "fontSize=("
-		<< cfi.dwFontSize.X
-		<< ','
-		<< cfi.dwFontSize.Y
-		<< ")\n";
-	return conFont ?
-		cfi.nFont :
-		-1;
+	if ( m_pInstance == nullptr )
+	{
+		m_pInstance = new KeyConsole;
+	}
+	return *m_pInstance;
 }
 
-void KeyConsole::getConsoleInfo( const HANDLE h )
+void KeyConsole::resetInstance()
 {
-	using GETNUMBEROFCONSOLEFONTS = DWORD (WINAPI* )();
-	using SETCONSOLEFONT = BOOL (WINAPI*)( HANDLE hConOut, DWORD nFont );
-	auto GetNumberOfConsoleFonts = (GETNUMBEROFCONSOLEFONTS) GetProcAddress( LoadLibraryW( L"KERNEL32" ),
-		"GetNumberOfConsoleFonts" );
-	auto SetConsoleFont = (SETCONSOLEFONT) GetProcAddress( LoadLibraryW( L"KERNEL32" ),
-		"SetConsoleFont" );
-	auto font = getFontFamily( h );
-	std::cout << "nConsoleFonts="
-		<< GetNumberOfConsoleFonts()
-		<< "fontName="
-		<< font
-		<< '\n';
+	if ( m_pInstance != nullptr )
+	{
+		delete m_pInstance;
+	}
 }
 
 KeyConsole::KeyConsole( const std::string &fontName )
 	:
 	m_fp{nullptr},
-	m_title{std::string{defaultConsoleTitle} + std::string{" "} + std::string{currentVersion}},
 	m_stdDevice{STD_OUTPUT_HANDLE},
 	m_hMode{stdout},
 	m_hConsole{GetStdHandle( m_stdDevice )}
@@ -82,7 +66,8 @@ KeyConsole::KeyConsole( const std::string &fontName )
 	}
 
 	// 2. set console title
-	SetConsoleTitleW( util::s2ws( m_title ).data() );
+	std::string title = MAKE_CONSOLE_DEFAULT_TITLE;
+	SetConsoleTitleW( util::s2ws( title ).data() );
 
 	// 3. set the console codepage to UTF-8 UNICODE
 	if ( !IsValidCodePage( CP_UTF8 ) )
@@ -187,6 +172,43 @@ std::string KeyConsole::read( const uint32_t maxChars )
 	return buff;
 }
 
+void KeyConsole::setTitle( const std::string& title ) const
+{
+	SetConsoleTitleW( util::s2ws( title ).c_str() );
+}
+
+bool KeyConsole::closeConsole()
+{
+	if ( !FreeConsole() )
+	{
+		MessageBoxW( nullptr,
+			L"Failed to close the console!",
+			L"Console Error",
+			MB_ICONERROR );
+		return false;
+	}
+	fclose( m_fp );
+	fclose( m_hMode );
+	return true;
+}
+
+const HWND KeyConsole::getWindowHandle() const noexcept
+{
+	const char* phTitle = "console placeholder title";
+	setTitle( phTitle );
+
+	Sleep( 10 );	// ensure window title has been updated
+
+	const HWND consoleHWnd = FindWindowW( nullptr,
+		util::s2ws( phTitle ).c_str() );
+	ASSERT_HRES_WIN32_IF_FAILED;
+
+	// restore original title
+	setTitle( MAKE_CONSOLE_DEFAULT_TITLE );
+
+	return consoleHWnd;
+}
+
 const int KeyConsole::getConsoleMode() const noexcept
 {
 	if ( m_hMode == stdout )
@@ -229,6 +251,15 @@ const HANDLE KeyConsole::getHandle() const noexcept
 	return m_hConsole;
 }
 
+std::string KeyConsole::getTitle() const noexcept
+{
+	wchar_t consoleTitle[MAX_CONSOLE_TITLE_LEN];
+	GetConsoleTitleW( consoleTitle,
+		MAX_CONSOLE_TITLE_LEN );
+	ASSERT_HRES_WIN32_IF_FAILED;
+	return util::ws2s( consoleTitle );
+}
+
 const uint32_t KeyConsole::getConsoleCodePage() const noexcept
 {
 	return GetConsoleCP();
@@ -261,20 +292,6 @@ const int32_t KeyConsole::setCurcorPos( const _COORD xy /* = { 0,0 } */ )
 {
 	return SetConsoleCursorPosition( m_hConsole,
 		xy );
-}
-
-
-bool KeyConsole::setDefaultColor()
-{
-	CONSOLE_SCREEN_BUFFER_INFO csbi;
-	BOOL ret = GetConsoleScreenBufferInfo( m_hConsole, &csbi );
-	if ( !ret )
-	{
-		OutputDebugStringW( util::printHresultErrorDescriptionW( HRESULT_FROM_WIN32( GetLastError() ) ).data() );
-		return false;
-	}
-	m_consoleAttributesDefault = csbi.wAttributes;
-	return true;
 }
 
 bool KeyConsole::setColor( const WORD attributes )
@@ -319,34 +336,48 @@ void KeyConsole::hide() const
 		SW_HIDE );
 }
 
-bool KeyConsole::closeConsole()
+const DWORD KeyConsole::getFontFamily( const HANDLE h )
 {
-	if ( !FreeConsole() )
+	CONSOLE_FONT_INFO cfi;
+	BOOL conFont = GetCurrentConsoleFont( h,
+		false,
+		&cfi );
+	std::cout << conFont
+		<< "\nnFont="
+		<< cfi.nFont
+		<< "fontSize=("
+		<< cfi.dwFontSize.X
+		<< ','
+		<< cfi.dwFontSize.Y
+		<< ")\n";
+	return conFont ? cfi.nFont : -1;
+}
+
+void KeyConsole::getConsoleInfo( const HANDLE h )
+{
+	using GETNUMBEROFCONSOLEFONTS = DWORD (WINAPI* )();
+	using SETCONSOLEFONT = BOOL (WINAPI*)( HANDLE hConOut, DWORD nFont );
+	auto GetNumberOfConsoleFonts = (GETNUMBEROFCONSOLEFONTS) GetProcAddress( LoadLibraryW( L"KERNEL32" ),
+		"GetNumberOfConsoleFonts" );
+	auto SetConsoleFont = (SETCONSOLEFONT) GetProcAddress( LoadLibraryW( L"KERNEL32" ),
+		"SetConsoleFont" );
+	auto font = getFontFamily( h );
+	std::cout << "nConsoleFonts="
+		<< GetNumberOfConsoleFonts()
+		<< "fontName="
+		<< font
+		<< '\n';
+}
+
+bool KeyConsole::setDefaultColor()
+{
+	CONSOLE_SCREEN_BUFFER_INFO csbi;
+	BOOL ret = GetConsoleScreenBufferInfo( m_hConsole, &csbi );
+	if ( !ret )
 	{
-		MessageBoxW( nullptr,
-			L"Failed to close the console!",
-			L"Console Error",
-			MB_ICONERROR );
+		OutputDebugStringW( util::printHresultErrorDescriptionW( HRESULT_FROM_WIN32( GetLastError() ) ).data() );
 		return false;
 	}
-	fclose( m_fp );
-	fclose( m_hMode );
+	m_consoleAttributesDefault = csbi.wAttributes;
 	return true;
-}
-
-KeyConsole& KeyConsole::instance() noexcept
-{
-	if ( m_pInstance == nullptr )
-	{
-		m_pInstance = new KeyConsole;
-	}
-	return *m_pInstance;
-}
-
-void KeyConsole::resetInstance()
-{
-	if ( m_pInstance != nullptr )
-	{
-		delete m_pInstance;
-	}
 }
