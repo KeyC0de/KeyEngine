@@ -5,6 +5,7 @@
 #include <string>
 #include <array>
 #include "winner.h"
+#include "color.h"
 #include "key_exception.h"
 #include "keyboard.h"
 #include "mouse.h"
@@ -17,13 +18,18 @@
 #else
 #	define CLIPBOARD_TEXT_FORMAT	CF_TEXT
 #endif
+
+// #WARNING! These identifiers must be unique among all window classes currently present in the OS
+#define MODAL_DIALOG_CLASS_NAME				"KeyEngine_Modal_Dialog_Class"
+#define MODELESS_DIALOG_CLASS_NAME			"KeyEngine_Modeless_Dialog_Class"
+#define MAIN_WINDOW_CLASS_NAME				"KeyEngine_Main_Window_Class"
+
  
 class Graphics;
 
 class Window
 	: public NonCopyable
 {
-private:
 	class WindowException final
 		: public KeyException
 	{
@@ -40,7 +46,7 @@ private:
 		std::string m_name;
 		ATOM m_classAtom;
 	public:
-		WindowClass( const std::string &name );
+		WindowClass( const char *name, const WNDPROC windowProcedure, const ColorBGRA bgColor );
 		WindowClass( WindowClass &&rhs ) noexcept;
 		WindowClass& operator=( WindowClass &&rhs ) noexcept;
 		~WindowClass() noexcept;
@@ -64,19 +70,19 @@ private:
 	std::array<unsigned, 8> m_clipboardFormats;	// {0: unicode format,...}
 	HMENU m_hTrayIconPopupMenu;
 	NOTIFYICONDATA m_trayIconData;
+	std::unique_ptr<Window> m_pModalDialog;
 	//std::unique_ptr<SplashWindow> m_splash;
-	//std::unique_ptr<Dialog> m_pDialogAbout;
 private:
-	static LRESULT CALLBACK windowProc( const HWND pWndHandle, const unsigned uMsg, const WPARAM wParam, const LPARAM lParam );
-	static LRESULT CALLBACK windowProcDelegate( const HWND pWndHandle, const unsigned uMsg, const WPARAM wParam, const LPARAM lParam );
+	static LRESULT CALLBACK windowProcDelegate( _In_ const HWND pWndHandle, _In_ const unsigned uMsg, _In_ const WPARAM wParam, _In_ const LPARAM lParam );
 public:
+	static LRESULT CALLBACK windowProc( _In_ const HWND pWnd, _In_ const unsigned uMsg, _In_ const WPARAM wParam, _In_ const LPARAM lParam );
+	static LRESULT CALLBACK dialogProc( _In_ const HWND hWnd, _In_ const unsigned uMsg, _In_ const WPARAM wParam, _In_ const LPARAM lParam );
 	static Keyboard& keyboard() noexcept;
 	static Mouse& mouse() noexcept;
-	const WindowClass& getWindowClass() noexcept;
 	static bool isDescendantOf( const HWND targethWnd, const HWND parent ) noexcept;
 	static void saveClipboardTextAsVar();
 public:
-	Window( const int width, const int height, const char *name, const HMENU hMenu, const int x = 200, const int y = 200, const Window *parent = nullptr );
+	Window( const int width, const int height, const char *name, const char *className, const WNDPROC windowProcedure, const int x, const int y, const ColorBGRA bgColor = {255, 255, 255}, const HMENU hMenu = nullptr, const Window *parent = nullptr );
 	~Window();
 	Window( Window &&rhs ) noexcept;
 	Window& operator=( Window &&rhs ) noexcept;
@@ -128,6 +134,7 @@ public:
 	int calcWidth() const noexcept;
 	int calcHeight() const noexcept;
 	HWND getConsoleHandle() const;
+	const WindowClass& getWindowClass() noexcept;
 private:
 	void confineCursor() noexcept;
 	void freeCursor() noexcept;
@@ -140,7 +147,7 @@ private:
 	void setFont( const std::string &fontName );
 	void resize( const int width, const int height, const unsigned flags = SWP_NOZORDER | SWP_NOMOVE | SWP_NOACTIVATE ) const noexcept;
 	// Menu related functions
-	void WINAPI menuProc( HMENU hMenu );
+	void WINAPI processMenu( HMENU hMenu );
 	bool editCopy( unsigned format = CLIPBOARD_TEXT_FORMAT );
 	bool editPaste( unsigned format = CLIPBOARD_TEXT_FORMAT );
 	void renderClipboardFormat( unsigned format = CLIPBOARD_TEXT_FORMAT );
@@ -164,22 +171,3 @@ private:
 	__FILE__,\
 	__FUNCTION__,\
 	msg );
-
-/*
-class Dialog final
-	: public NonCopyable
-{
-private:
-	std::string m_name;
-	HWND m_hWnd;
-public:
-	Dialog( const std::string &name );
-	~Dialog() noexcept;
-	Dialog( Dialog &&rhs ) noexcept;
-	Dialog& operator=( Dialog &&rhs ) noexcept;
-
-	static LRESULT CALLBACK dialogProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam );
-	const std::string& getName() const noexcept;
-	void setHwnd( HWND hWnd );
-	HWND getHwnd() const noexcept;
-};*/

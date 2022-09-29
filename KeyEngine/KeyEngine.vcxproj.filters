@@ -1190,6 +1190,9 @@
     <Image Include="splash.ico" />
     <Image Include="splash.png" />
     <Image Include="tray_graffiti.ico" />
+    <Image Include="assets\resources\keyc0de.ico" />
+    <Image Include="assets\resources\tray_graffiti.ico" />
+    <Image Include="assets\resources\splash.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="assimp-vc140-mt.dll" />
@@ -1265,6 +1268,8 @@
     <None Include="ClassDiagram.cd" />
     <None Include="cursor1.cur" />
     <None Include="homm_inspired_new.cur" />
+    <None Include="assets\resources\arrow.cur" />
+    <None Include="assets\resources\homm_inspired_new.cur" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="shaders\blur_separ_ps.hlsl">

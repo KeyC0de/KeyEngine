@@ -19,6 +19,16 @@ namespace ren
 
 class IPass;
 
+//=============================================================
+//	\class	IConsumer
+//
+//	\author	KeyC0de
+//	\date	2022/09/29 20:48
+//
+//	\brief	Consumers link to Producers, so they require their names.
+//			The opposite is not strictly required.
+//			But I store the names of Consumers in case the system is expanded in the future, or may be needed for misc purposes.s
+//=============================================================
 class IConsumer
 {
 	std::string m_name;

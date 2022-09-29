@@ -16,7 +16,7 @@ class Subscriber;
 //	\author	KeyC0de
 //	\date	2022/08/27 23:46
 //
-//	\brief	Subjects of type Subject<T> are interested in being notified of events of type T
+//	\brief	Subject<T>s are interested in being notified of events of type T
 //			Subjects are implemented via CRTP
 //=============================================================
 template<typename T, typename = std::enable_if_t<!std::is_abstract_v<T>>>
@@ -223,7 +223,7 @@ protected:
 
 // A `Subscriber` (subscriber/reporter) may even observe multiple `Subject`s (listeners) of different types:
 /*
-class EnvironmentWindow
+class EnvironmentPressureWindow
 	: public Subscriber<Temperature>,	// Yes Observers work with CRTP
 	public Subscriber<Pressure>
 {

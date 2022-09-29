@@ -34,13 +34,6 @@ struct ColorBGRA final
 
 	}
 
-	constexpr ColorBGRA( const ColorBGRA &col )
-		:
-		m_dword{col.m_dword}
-	{
-
-	}
-
 	constexpr ColorBGRA( unsigned int dw )
 		:
 		m_dword(dw)
@@ -75,6 +68,13 @@ struct ColorBGRA final
 	//{
 	//
 	//}
+
+	constexpr ColorBGRA( const ColorBGRA &col )
+		:
+		m_dword{col.m_dword}
+	{
+
+	}
 
 	constexpr ColorBGRA( const ColorBGRA col,
 		const Byte a )

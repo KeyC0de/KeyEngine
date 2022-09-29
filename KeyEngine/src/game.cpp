@@ -13,6 +13,7 @@
 #include "thread_pool_j.h"
 #include "utils.h"
 #include "os_utils.h"
+#include "color.h"
 #include "..\resource.h"
 #if defined _DEBUG && !defined NDEBUG
 #	include "bindable_map.h"
@@ -28,7 +29,7 @@ Game<T>::Game( const int width,
 	const unsigned nWindows )
 	:
 	m_pImguiMan{createImgui()},
-	m_mainWindow{width, height, title.c_str(), LoadMenuW( THIS_INSTANCE, MAKEINTRESOURCEW( IDR_MENU_APP ) )},
+	m_mainWindow{width, height, title.c_str(), MAIN_WINDOW_CLASS_NAME, Window::windowProc, 200, 200, ColorBGRA{255, 255, 255}, LoadMenuW( THIS_INSTANCE, MAKEINTRESOURCEW( IDR_MENU_APP ) )},
 	m_pCurrentState{std::make_unique<GameState>()}
 {
 	m_nWindows = nWindows;
@@ -234,14 +235,14 @@ Sandbox3d::Sandbox3d( const int width,
 		{
 			this->m_testSphere.setRadius( 4.0f );
 		},
-		5000u );
+		4000u );
 
 	threadPool.enqueue( &func_async::doLater,
 		[this]() -> void
 		{
 			this->m_testSphere.setRadius( 0.25f );
 		},
-		15000u );
+		8000u );
 
 	auto menuState = std::make_unique<MenuState>();
 	setState( std::move( menuState ),

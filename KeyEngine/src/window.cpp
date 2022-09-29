@@ -12,23 +12,38 @@
 #include "graphics_mode.h"
 #include "../resource.h"
 
+#define ITEM_LENGTH		80
 
-Window::WindowClass::WindowClass( const std::string &name )
+
+Window::WindowClass::WindowClass( const char *name,
+	const WNDPROC windowProcedure,
+	const ColorBGRA bgColor /*= {255, 255, 255}*/ )
 	:
 	m_name{name}
 {
 	HINSTANCE hInstance = THIS_INSTANCE;
 	ASSERT( hInstance != nullptr, "HINSTANCE is null!" );
 
+	UINT classStyles = CS_OWNDC | CS_HREDRAW | CS_VREDRAW;
+		//| CS_DBLCLKS
+		// CS_VREDRAW allows sending WM_SIZE message when either the height or the width of the client area are changed
+	if ( name == MODAL_DIALOG_CLASS_NAME )
+	{
+		classStyles = 0u;
+	}
+
 	WNDCLASSEX wc{};
 	wc.cbSize = sizeof WNDCLASSEX;
-	wc.style = CS_OWNDC
-			//| CS_DBLCLKS
-			| CS_HREDRAW | CS_VREDRAW;	// send WM_SIZE message when either the height or the width of the client area are changed
-	wc.lpfnWndProc = windowProc;
-	wc.cbClsExtra = 0;
-	wc.cbWndExtra = 0;	// extra bytes
+	wc.style = classStyles;
+	wc.lpfnWndProc = windowProcedure;
 	wc.hInstance = hInstance;
+	wc.hbrBackground = CreateSolidBrush( static_cast<COLORREF>( bgColor ) );
+	std::wstring wname = util::s2ws( name );
+	wc.lpszClassName = wname.data();
+	//wc.cbClsExtra = 0;
+	//wc.cbWndExtra = 0;	// extra bytes
+	//wc.lpszMenuName = nullptr;
+
 	wc.hCursor = LoadCursorW( hInstance,
 		MAKEINTRESOURCEW( IDC_HOMM_INSPIRED ) );
 	ASSERT_HRES_WIN32_IF_FAILED;
@@ -46,10 +61,7 @@ Window::WindowClass::WindowClass( const std::string &name )
 		22,
 		0u ) );
 	ASSERT_HRES_WIN32_IF_FAILED;
-	wc.hbrBackground = CreateSolidBrush( RGB( 255, 255, 255 ) );
-	wc.lpszMenuName = nullptr;
-	const std::wstring className = util::s2ws( name );
-	wc.lpszClassName = className.data();
+
 	m_classAtom = RegisterClassExW( &wc );
 	ASSERT_HRES_WIN32_IF_FAILED;
 
@@ -96,16 +108,24 @@ const std::string& Window::WindowClass::getName() noexcept
 Window::Window( const int width,
 	const int height,
 	const char *name,
-	const HMENU hMenu,
-	const int x /* = 200 */,
-	const int y /* = 200 */,
+	const char *className,
+	const WNDPROC windowProcedure,
+	const int x,
+	const int y,
+	const ColorBGRA bgColor /*= {255, 255, 255}*/,
+	const HMENU hMenu /*= nullptr*/,
 	const Window *parent /*= nullptr*/ )
 	:
-	m_windowClass{"KeyEngine_Window_Class"},
+	m_windowClass{className, windowProcedure, bgColor},
 	m_name{name}
 {
-	uint32_t windowStyles = WS_VISIBLE | WS_CAPTION | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_SYSMENU | WS_OVERLAPPEDWINDOW;	// disable both maximizing and resizing
 	uint32_t windowExStyles = WS_EX_OVERLAPPEDWINDOW;
+	uint32_t windowStyles = WS_VISIBLE | WS_CAPTION | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_SYSMENU | WS_OVERLAPPEDWINDOW;	// disable both maximizing and resizing
+	if ( className == MODAL_DIALOG_CLASS_NAME )
+	{
+		windowExStyles = WS_EX_DLGMODALFRAME | WS_EX_TOPMOST;
+		windowStyles = WS_VISIBLE | WS_SYSMENU | WS_CAPTION | WS_CHILD;
+	}
 
 	RECT rect{0, 0, width, height};
 	BOOL ret = AdjustWindowRectEx( &rect,
@@ -120,25 +140,59 @@ Window::Window( const int width,
 	const unsigned adjustedWindowWidth = rect.right - rect.left;
 	const unsigned adjustedWindowHeight = rect.bottom - rect.top;
 
-	const std::wstring className = util::s2ws( m_windowClass.getName() );
-	const std::wstring windowName = util::s2ws( name );
-	m_hWnd = CreateWindowExW( windowExStyles,
-		className.data(),
-		windowName.data(),
-		windowStyles,
-		x,
-		y,
-		adjustedWindowWidth,
-		adjustedWindowHeight,
-		parent == nullptr ? HWND_DESKTOP : parent->getHandle(),	// parent
-		nullptr,														// menu
-		THIS_INSTANCE,
-		this );
+	const std::wstring classNameWstr = util::s2ws( className );
+	const std::wstring nameWstr = util::s2ws( name );
+
+	if ( className == MODAL_DIALOG_CLASS_NAME )
+	{
+		m_hWnd = (HWND) ::DialogBoxW( THIS_INSTANCE,
+			MAKEINTRESOURCEW( IDD_HELP_DIALOG ),
+			parent->getHandle(),
+			windowProcedure );
+	}
+	else if ( className == MODELESS_DIALOG_CLASS_NAME )
+	{
+		// #TODO: https://learn.microsoft.com/en-us/windows/win32/dlgbox/using-dialog-boxes#creating-a-modeless-dialog-box
+	}
+	else
+	{
+		m_hWnd = CreateWindowExW( windowExStyles,
+			classNameWstr.c_str(),
+			nameWstr.c_str(),
+			windowStyles,
+			x,
+			y,
+			adjustedWindowWidth,
+			adjustedWindowHeight,
+			parent == nullptr ? HWND_DESKTOP : parent->getHandle(),	// parent
+			nullptr,														// menu - if modeless window you can use (HMENU)IDC_MODELESS
+			THIS_INSTANCE,
+			this );
+	}
 	ASSERT_HRES_WIN32_IF_FAILED;
 	if ( !m_hWnd )
 	{
 		THROW_WINDOW_EXCEPTION( "Failed to create Window" );
 	}
+
+	if ( className == MODAL_DIALOG_CLASS_NAME || className == MODELESS_DIALOG_CLASS_NAME )
+	{
+		// Dialog box has been terminated
+		return;
+	}
+
+	// set title
+	static const short maxTitleCharSize = 128i16;
+	wchar_t title[maxTitleCharSize];
+	GetWindowTextW( m_hWnd,
+		title,
+		maxTitleCharSize );
+	m_title = util::ws2s( title );
+
+	m_info.cbSize = sizeof WINDOWINFO;
+	GetWindowInfo( m_hWnd,
+		&m_info );
+	ASSERT_HRES_WIN32_IF_FAILED;
 
 	// mouse raw input
 	RAWINPUTDEVICE rid{};
@@ -151,23 +205,13 @@ Window::Window( const int width,
 		sizeof RAWINPUTDEVICE );
 	ASSERT_HRES_WIN32_IF_FAILED;
 
-	m_info.cbSize = sizeof WINDOWINFO;
-	GetWindowInfo( m_hWnd,
-		&m_info );
-	ASSERT_HRES_WIN32_IF_FAILED;
-
-	// set title
-	static const short maxTitleCharSize = 128i16;
-	wchar_t title[maxTitleCharSize];
-	GetWindowTextW( m_hWnd,
-		title,
-		maxTitleCharSize );
-	m_title = util::ws2s( title );
-
 	// (keyboard) accelerators are keystrokes or a combination of keystrokes that generate a WM_COMMAND or WM_SYSCOMMAND message for an application
-	m_hAcceleratorTable = LoadAcceleratorsW( THIS_INSTANCE,
-		MAKEINTRESOURCEW( ID_ACCEL_TABLE_APP ) );
-	ASSERT_HRES_WIN32_IF_FAILED;
+	if ( m_hAcceleratorTable == nullptr )
+	{
+		m_hAcceleratorTable = LoadAcceleratorsW( THIS_INSTANCE,
+			MAKEINTRESOURCEW( ID_ACCEL_TABLE_APP ) );
+		ASSERT_HRES_WIN32_IF_FAILED;
+	}
 
 	// register other clipboard formats to handle:
 	// we assume that atchTemp can contain the format name and a null-terminator, otherwise it is truncated
@@ -179,19 +223,22 @@ Window::Window( const int width,
 	m_clipboardFormats[0] = RegisterClipboardFormatW( unicodeClipboardFormat );
 	ASSERT_HRES_WIN32_IF_FAILED;
 
-	// Set the Menu
-	//showMenu( hMenu );
+	// set the Menu
+	if ( hMenu )
+	{
+		showMenu( hMenu );
+	}
 
-	// Tray icon setup
+	// tray icon setup
 	setupTrayIcon();
 
-	// Initialize ImGui
+	// initialize ImGui
 	if constexpr( gph_mode::get() == gph_mode::_3D )
 	{
 		ImGui_ImplWin32_Init( m_hWnd );
 	}
 
-	// Setup Graphics for the Window
+	// setup Graphics for the Window
 	m_pGraphics = std::make_unique<Graphics>( m_hWnd,
 		adjustedWindowWidth,
 		adjustedWindowHeight );
@@ -208,17 +255,29 @@ Window::Window( const int width,
 
 Window::~Window()
 {
-	deleteTrayIcon();
-	destroyMenu( m_hTrayIconPopupMenu );
-	
+	if ( m_hTrayIconPopupMenu )
+	{
+		deleteTrayIcon();
+	}
+	if ( m_hTrayIconPopupMenu )
+	{
+		destroyMenu( m_hTrayIconPopupMenu );
+	}
+
 	const HDC dc = getDc();
-	const BOOL bReleased = ReleaseDC( m_hWnd,
-		dc );
-	//ASSERT( bReleased == TRUE, "The window's device context was not properly released for use by other applications!" );
+	if ( dc )
+	{
+		const BOOL bReleased = ReleaseDC( m_hWnd,
+			dc );
+		//ASSERT( bReleased == TRUE, "The window's device context was not properly released for use by other applications!" );
+	}
 
 	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{
-		ImGui_ImplWin32_Shutdown();
+		if ( m_windowClass.getName() == MAIN_WINDOW_CLASS_NAME )
+		{
+			ImGui_ImplWin32_Shutdown();
+		}
 	}
 	DestroyWindow( m_hWnd );
 }
@@ -416,7 +475,7 @@ void Window::showTrayIcon() noexcept
 void Window::deleteTrayIcon() noexcept
 {
 	BOOL ret = Shell_NotifyIconW( NIM_DELETE,
-			&m_trayIconData );
+		&m_trayIconData );
 	//ASSERT( ret == TRUE, "Tray icon setup unsuccessful!" );
 	Sleep( 10 );
 }
@@ -478,11 +537,6 @@ Keyboard& Window::keyboard() noexcept
 Mouse& Window::mouse() noexcept
 {
 	return m_mouse;
-}
-
-const Window::WindowClass& Window::getWindowClass() noexcept
-{
-	return m_windowClass;
 }
 
 bool Window::isDescendantOf( const HWND targethWnd,
@@ -548,10 +602,10 @@ void Window::disableImGuiMouse() noexcept
 	ImGui::GetIO().ConfigFlags |= ImGuiConfigFlags_NoMouse;
 }
 
-LRESULT CALLBACK Window::windowProc( const HWND hWnd,
-	const unsigned uMsg,
-	const WPARAM wParam,
-	const LPARAM lParam )
+LRESULT CALLBACK Window::windowProc( _In_ const HWND hWnd,
+	_In_ const unsigned uMsg,
+	_In_ const WPARAM wParam,
+	_In_ const LPARAM lParam )
 {
 #if defined _DEBUG && !defined NDEBUG
 	auto &console = KeyConsole::instance();
@@ -586,10 +640,10 @@ LRESULT CALLBACK Window::windowProc( const HWND hWnd,
 		lParam );
 }
 
-LRESULT CALLBACK Window::windowProcDelegate( const HWND hWnd,
-	const unsigned uMsg,
-	const WPARAM wParam,
-	const LPARAM lParam )
+LRESULT CALLBACK Window::windowProcDelegate( _In_ const HWND hWnd,
+	_In_ const unsigned uMsg,
+	_In_ const WPARAM wParam,
+	_In_ const LPARAM lParam )
 {
 	Window *this_wnd = reinterpret_cast<Window*>( GetWindowLongPtrW( hWnd,
 		GWLP_USERDATA ) );
@@ -628,8 +682,7 @@ LRESULT Window::windowProc_impl2d( _In_ const HWND hWnd,
 	}
 	case WM_KILLFOCUS:
 	{
-		// clear keyboard button states when window loses focus
-		//	to prevent keyboard input getting "stuck"
+		// clear keyboard button states when window loses focus to prevent keyboard input getting "stuck"
 		m_keyboard.clearKeyStates();
 		break;
 	}
@@ -860,14 +913,15 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		console.log( "'WM_CREATE' : window created\n"s );
 #endif
 
+		// create tray icon
 		m_hTrayIconPopupMenu = CreatePopupMenu();
-		//ASSERT_HRES_WIN32_IF_FAILED;	// GetLastError crashes here - unknown Windows Bug
 		int ret = AppendMenuW( m_hTrayIconPopupMenu,
 			MF_STRING,
 			IDM_TRAY_ICON_EXIT,
 			L"Exit the Application." );
 		//ASSERT_HRES_WIN32_IF_FAILED;	// GetLastError crashes here - unknown Windows Bug
 
+		// create splash Window
 		//m_splash = std::make_unique<SplashWindow>( hWnd,
 		//	THIS_INSTANCE,
 		//	IDI_SPLASH,
@@ -883,8 +937,7 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 	}
 	case WM_KILLFOCUS:
 	{
-		// clear keyboard button states when window loses focus
-		//	to prevent keyboard input getting "stuck"
+		// clear keyboard button states when window loses focus to prevent keyboard input getting "stuck"
 		m_keyboard.clearKeyStates();
 		break;
 	}
@@ -987,10 +1040,9 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 	}
 	/// Menu messages
 	case WM_COMMAND:
-	{
-	 // sent when the user selects a command item from a menu, when a control sends a notification message to its parent window, or when an accelerator keystroke is translated
-		UINT id = LOWORD( wParam );
-		UINT bAccelerator = HIWORD( wParam ); // lParam is not used
+	{// sent when the user selects a command item from a menu, when a control sends a notification message to its parent window, or when an accelerator keystroke is translated
+		const UINT id = LOWORD( wParam );
+		const UINT bAccelerator = HIWORD( wParam ); // lParam is not used
 		switch ( id )
 		{
 		case IDM_EDIT_CUT:
@@ -1021,27 +1073,22 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 			hideMenu();
 			break;
 		}
+		case IDM_HELP_ABOUT:
+		{
+			m_pModalDialog.reset();
+			m_pModalDialog = std::make_unique<Window>( 200,
+				100,
+				"Dialog Box",
+				MODAL_DIALOG_CLASS_NAME,
+				Window::dialogProc,
+				350,
+				200,
+				ColorBGRA{128, 128, 128},
+				nullptr,
+				this );
 
-		//case IDM_HELP_ABOUT:
-		//{
-		//	m_pDialogAbout.reset();
-		//	m_pDialogAbout = std::make_unique<Dialog>( L"KeyEngine_Dialog_Class" );
-		//	HWND hWndDialogAbout = CreateWindowExW( WS_EX_DLGMODALFRAME | WS_EX_TOPMOST,
-		//		L"KeyEngine_Dialog_Class",
-		//		L"Dialog Box",
-		//		WS_VISIBLE | WS_SYSMENU | WS_CAPTION,
-		//		100,
-		//		100,
-		//		200,
-		//		150,
-		//		nullptr,
-		//		nullptr,
-		//		THIS_INSTANCE,
-		//		nullptr );
-		//	ASSERT_HRES_WIN32_IF_FAILED;
-		//	m_pDialogAbout->setHwnd( hWndDialogAbout );
-		//	break;
-		//}
+			break;
+		}
 		case IDM_FILE_QUIT:
 			PostQuitMessage( 0 );
 			break;
@@ -1073,7 +1120,7 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		using namespace std::string_literals;
 		console.log( "Clipboard processing\n"s );
 #endif
-		menuProc( (HMENU) wParam );
+		processMenu( (HMENU) wParam );
 
 		break;
 	}
@@ -1417,6 +1464,69 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		lParam );
 }
 
+LRESULT CALLBACK Window::dialogProc( _In_ const HWND hWnd,
+	_In_ const unsigned uMsg,
+	_In_ const WPARAM wParam,
+	_In_ const LPARAM lParam )
+{
+	switch ( uMsg )
+	{
+	case WM_CREATE:
+	{
+#if defined _DEBUG && !defined NDEBUG
+		KeyConsole& console = KeyConsole::instance();
+		console.print( "Modal Dialog Window created!" );
+#endif
+		break;
+	}
+	case WM_COMMAND:
+	{
+		const UINT id = LOWORD( wParam );
+		switch ( id )
+		{
+			wchar_t itemName[ITEM_LENGTH];	// receives name of item to delete.
+			// dialog box command ids
+			case IDOK:
+			{
+				if ( GetDlgItemTextW( hWnd, IDOK, itemName, ITEM_LENGTH ) ) 
+				{
+					EndDialog( hWnd,
+						wParam );
+					return TRUE;
+				}
+				break;
+			}
+			case IDCANCEL:
+			{
+				if ( GetDlgItemTextW( hWnd, IDCANCEL, itemName, ITEM_LENGTH ) ) 
+				{
+					EndDialog( hWnd,
+						wParam );
+					return TRUE;
+				}
+
+				break;
+			}
+		}//switch
+		break;
+	}
+	case WM_CLOSE:
+	{
+		PostQuitMessage( 0 );
+		break;
+	}
+	default:
+	{
+		break;
+	}
+	}//switch
+
+	return DefWindowProcW( hWnd,
+		uMsg,
+		wParam,
+		lParam );
+}
+
 void Window::setFont( const std::string &fontName )
 {
 	NONCLIENTMETRICS ncm{};
@@ -1624,14 +1734,18 @@ HWND Window::getConsoleHandle() const
 	return ret;
 }
 
+const Window::WindowClass& Window::getWindowClass() noexcept
+{
+	return m_windowClass;
+}
+
 #pragma warning( disable : 4312 )
-void WINAPI Window::menuProc( HMENU hMenu )
+void WINAPI Window::processMenu( HMENU hMenu )
 {
 	int nMenuItems = GetMenuItemCount( hMenu );
 	unsigned flags;
 	PLABELBOX pBox = ( m_hWnd == nullptr ) ? nullptr :
 		(PLABELBOX) GetWindowLongW( m_hWnd, 0 );
-	ASSERT_HRES_WIN32_IF_FAILED;
 
 	for ( int i = 0; i < nMenuItems; ++i )
 	{
@@ -1944,105 +2058,3 @@ void Window::editDelete()
 {
 	// #TODO:
 }
-
-/*
-Dialog::Dialog( const std::string &name )
-	:
-	m_name{name}
-{
-	HINSTANCE hInstance = GetModuleHandleW( nullptr );
-	ASSERT( hInstance != nullptr, "HINSTANCE is null!" );
-
-	HRESULT hres;
-
-	WNDCLASSEXW wc{};
-	wc.cbSize = sizeof WNDCLASSEXW;
-	wc.lpfnWndProc = (WNDPROC) dialogProc;
-	wc.hInstance = hInstance;
-	wc.hbrBackground = (HBRUSH)( CreateSolidBrush( RGB( 128, 128, 128 ) ) );
-	wc.lpszClassName = m_name.data();
-	RegisterClassExW( &wc );
-	ASSERT_HRES_WIN32_IF_FAILED;
-
-#if defined _DEBUG && !defined NDEBUG
-	auto &console = KeyConsole::instance();
-	using namespace std::string_literals;
-	console.log( "Dialog Window : "s + util::ws2s( m_name ) + " created.\n"s );
-#endif
-}
-
-Dialog::~Dialog() noexcept
-{
-	UnregisterClassW( m_name.data(),
-		GetModuleHandleW( nullptr ) );
-}
-
-Dialog::Dialog( Dialog &&rhs ) noexcept
-	:
-	m_name{std::move( rhs.m_name )},
-	m_hWnd{rhs.m_hWnd}
-{
-
-}
-
-Dialog& Dialog::operator=( Dialog &&rhs ) noexcept
-{
-	Dialog tmp{std::move( rhs )};
-	std::swap( *this,
-		tmp );
-	return *this;
-}
-
-LRESULT CALLBACK Dialog::dialogProc( HWND hWnd,
-	UINT uMsg,
-	WPARAM wParam,
-	LPARAM lParam )
-{
-	switch ( uMsg )
-	{
-		HRESULT hres;
-		case WM_CREATE:
-		{
-			CreateWindowW( L"BUTTON",
-				L"Ok",
-				WS_VISIBLE | WS_CHILD,
-				50,
-				50,
-				80,
-				25,
-				hWnd,
-				reinterpret_cast<HMENU>( 1 ),
-				nullptr,
-				nullptr );
-			ASSERT_HRES_WIN32_IF_FAILED;
-			return 0;
-		}
-		case WM_COMMAND:
-		{
-			DestroyWindow( hWnd );
-			return 0;
-		}
-		case WM_CLOSE:
-			DestroyWindow( hWnd );
-			return 0;
-	}
-	return DefWindowProcW( hWnd,
-		uMsg,
-		wParam,
-		lParam );
-}
-
-std::string Dialog::getName() const noexcept
-{
-	return m_name;
-}
-
-void Dialog::setHwnd( HWND hWnd )
-{
-	m_hWnd = hWnd;
-}
-
-HWND Dialog::getHwnd() const noexcept
-{
-	return m_hWnd;
-}*/

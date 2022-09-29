@@ -335,7 +335,7 @@ constexpr int toggleNthBit( int num,
 	return num;
 }
 
-constexpr int returnNthBit( int num,
+constexpr int isSet( int num,
 	const unsigned n ) noexcept
 {
 	return ( num >> n ) & 1;

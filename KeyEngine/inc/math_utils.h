@@ -345,10 +345,10 @@ constexpr int setNthBit( int num, const unsigned n ) noexcept;
 constexpr int clearNthBit( int num, const unsigned n ) noexcept;
 constexpr int toggleNthBit( int num, const unsigned n ) noexcept;
 //===================================================
-//	\function	returnNthBit
+//	\function	isSet
 //	\brief  check nth bit's state 0 or 1
 //	\date	2022/08/29 0:02
-constexpr int returnNthBit( int num, const unsigned n ) noexcept;
+constexpr int isSet( int num, const unsigned n ) noexcept;
 //===================================================
 //	\function	changeNthBit
 //	\brief  change nth bit to bitVal

@@ -307,6 +307,8 @@
     <ClCompile Include="third_party\imgui\imgui_widgets.cpp" />
     <ClCompile Include="src\thread_pool.cpp" />
     <None Include="arrow.cur" />
+    <None Include="assets\resources\arrow.cur" />
+    <None Include="assets\resources\homm_inspired_new.cur" />
     <None Include="assimp-vc140-mt.dll" />
     <None Include="ClassDiagram.cd" />
     <None Include="config\config.ini" />
@@ -633,6 +635,9 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="assets\resources\keyc0de.ico" />
+    <Image Include="assets\resources\splash.ico" />
+    <Image Include="assets\resources\tray_graffiti.ico" />
     <Image Include="keyc0de.ico" />
     <Image Include="splash.ico" />
     <Image Include="splash.png" />
