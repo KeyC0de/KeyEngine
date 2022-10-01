@@ -29,6 +29,8 @@ Window::WindowClass::WindowClass( const char *name,
 	:
 	m_name{name}
 {
+	ASSERT( name != nullptr, "Class name is null!" );
+
 	HINSTANCE hInstance = THIS_INSTANCE;
 	ASSERT( hInstance != nullptr, "HINSTANCE is null!" );
 
@@ -1418,27 +1420,27 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		}
 		break;
 	}
-	case WM_NCHITTEST:
-	{// drags a window using its client area
-		// determine what part of the window the mouse cursor is on
-		LRESULT uHitTest = DefWindowProcW( hWnd,
-			WM_NCHITTEST,
-			wParam,
-			lParam );
-		// or:
-		//short int xPos = GET_X_LPARAM( lParam );
-		//short int yPos = GET_Y_LPARAM( lParam );
-		if ( uHitTest == HTCLIENT )
-		{
-			// client area
-			return HTCAPTION;
-		}
-		else
-		{
-			// title bar or someplace else
-			return uHitTest;
-		}
-	}
+	//case WM_NCHITTEST:
+	//{
+	//	// determine what part of the window the mouse cursor is on
+	//	LRESULT uHitTest = DefWindowProcW( hWnd,
+	//		WM_NCHITTEST,
+	//		wParam,
+	//		lParam );
+	//	// or:
+	//	//short int xPos = GET_X_LPARAM( lParam );
+	//	//short int yPos = GET_Y_LPARAM( lParam );
+	//	if ( uHitTest == HTCLIENT )
+	//	{
+	//		// client area
+	//		return HTCAPTION;
+	//	}
+	//	else
+	//	{
+	//		// title bar or someplace else
+	//		return uHitTest;
+	//	}
+	//}
 #ifdef USE_GDIPLUS
 	case WM_ERASEBKGND:
 	{

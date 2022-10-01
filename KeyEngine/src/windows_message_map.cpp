@@ -90,7 +90,7 @@ WindowsMessageMap::WindowsMessageMap() noexcept
 		MAP_MESSAGE( WM_NCCREATE ),
 		MAP_MESSAGE( WM_NCDESTROY ),
 		MAP_MESSAGE( WM_NCCALCSIZE ),
-		MAP_MESSAGE( WM_NCHITTEST ),
+		MAP_MESSAGE( WM_NCHITTEST ),	// drags a window using its client area
 		MAP_MESSAGE( WM_NCPAINT ),
 		MAP_MESSAGE( WM_NCACTIVATE ),
 		MAP_MESSAGE( WM_GETDLGCODE ),
