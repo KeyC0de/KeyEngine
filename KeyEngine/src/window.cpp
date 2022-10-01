@@ -12,6 +12,9 @@
 #include "graphics_mode.h"
 #include "windows_message_map.h"
 #include "../resource.h"
+#include "winuser.h"
+
+#define IDT_TIMER_SPLASH_WINDOW_DESTRUCTION	1000
 
 #if defined _DEBUG && !defined NDEBUG
 #	define PRINT_WIN_MESSAGE	{ \
@@ -37,7 +40,7 @@ Window::WindowClass::WindowClass( const char *name,
 	UINT classStyles = CS_OWNDC | CS_HREDRAW | CS_VREDRAW;
 		//| CS_DBLCLKS
 		// CS_VREDRAW allows sending WM_SIZE message when either the height or the width of the client area are changed
-	if ( name == MODAL_DIALOG_CLASS_NAME )
+	if ( name != MAIN_WINDOW_CLASS_NAME )
 	{
 		classStyles = 0u;
 	}
@@ -71,6 +74,13 @@ Window::WindowClass::WindowClass( const char *name,
 		22,
 		0u ) );
 	ASSERT_HRES_WIN32_IF_FAILED;
+
+	if ( name == SPLASH_WINDOW_CLASS_NAME )
+	{
+		wc.hCursor = nullptr;
+		wc.hIcon = nullptr;
+		wc.hIconSm = nullptr;
+	}
 
 	m_classAtom = RegisterClassExW( &wc );
 	ASSERT_HRES_WIN32_IF_FAILED;
@@ -131,11 +141,17 @@ Window::Window( const int width,
 	m_clipboardFormats{0}
 {
 	uint32_t windowExStyles = WS_EX_OVERLAPPEDWINDOW;
-	uint32_t windowStyles = WS_VISIBLE | WS_CAPTION | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_SYSMENU | WS_OVERLAPPEDWINDOW;	// disable both maximizing and resizing
+	uint32_t windowStyles = WS_VISIBLE | WS_OVERLAPPEDWINDOW | WS_CAPTION | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_SYSMENU;	// disable both maximizing and resizing
 	if ( className == MODAL_DIALOG_CLASS_NAME )
 	{
 		windowExStyles = WS_EX_DLGMODALFRAME | WS_EX_TOPMOST;
 		windowStyles = WS_VISIBLE | WS_SYSMENU | WS_CAPTION | WS_CHILD;
+	}
+	else if ( className == SPLASH_WINDOW_CLASS_NAME )
+	{
+		windowExStyles = WS_EX_LAYERED
+			| WS_EX_TOOLWINDOW;	// don't appear in the taskbar or ALT+TAB list
+		windowStyles = WS_VISIBLE | WS_POPUP;
 	}
 
 	RECT rect{0, 0, width, height};
@@ -148,8 +164,8 @@ Window::Window( const int width,
 		THROW_WINDOW_EXCEPTION( "Failed to adjust window rectangle" );
 	}
 
-	const unsigned adjustedWindowWidth = rect.right - rect.left;
-	const unsigned adjustedWindowHeight = rect.bottom - rect.top;
+	const int adjustedWindowWidth = rect.right - rect.left;
+	const int adjustedWindowHeight = rect.bottom - rect.top;
 
 	const std::wstring classNameWstr = util::s2ws( className );
 	const std::wstring nameWstr = util::s2ws( name );
@@ -164,6 +180,22 @@ Window::Window( const int width,
 	else if ( className == MODELESS_DIALOG_CLASS_NAME )
 	{
 		// #TODO: https://learn.microsoft.com/en-us/windows/win32/dlgbox/using-dialog-boxes#creating-a-modeless-dialog-box
+	}
+	else if ( className == SPLASH_WINDOW_CLASS_NAME )
+	{
+		m_hWnd = CreateWindowExW( windowExStyles,
+			classNameWstr.c_str(),
+			nameWstr.c_str(),
+			windowStyles,
+			x,
+			y,
+			adjustedWindowWidth,
+			adjustedWindowHeight,
+			parent == nullptr ? HWND_DESKTOP : parent->getHandle(),
+			nullptr,
+			THIS_INSTANCE,
+			nullptr );
+		// The window now exists, but isn't sized or positioned correctly, and has no content. UpdateLayeredWindow() can be used to correct all these problems at once.
 	}
 	else
 	{
@@ -186,12 +218,6 @@ Window::Window( const int width,
 		THROW_WINDOW_EXCEPTION( "Failed to create Window" );
 	}
 
-	if ( className == MODAL_DIALOG_CLASS_NAME || className == MODELESS_DIALOG_CLASS_NAME )
-	{
-		// Dialog box has been terminated
-		return;
-	}
-
 	// set title
 	static const short maxTitleCharSize = 128i16;
 	wchar_t title[maxTitleCharSize];
@@ -199,6 +225,12 @@ Window::Window( const int width,
 		title,
 		maxTitleCharSize );
 	m_title = util::ws2s( title );
+
+	if ( className != MAIN_WINDOW_CLASS_NAME )
+	{
+		// special Window creation has been completed
+		return;
+	}
 
 	m_info.cbSize = sizeof WINDOWINFO;
 	GetWindowInfo( m_hWnd,
@@ -217,9 +249,9 @@ Window::Window( const int width,
 	ASSERT_HRES_WIN32_IF_FAILED;
 
 	// (keyboard) accelerators are keystrokes or a combination of keystrokes that generate a WM_COMMAND or WM_SYSCOMMAND message for an application
-	if ( m_hAcceleratorTable == nullptr )
+	if ( s_hAcceleratorTable == nullptr )
 	{
-		m_hAcceleratorTable = LoadAcceleratorsW( THIS_INSTANCE,
+		s_hAcceleratorTable = LoadAcceleratorsW( THIS_INSTANCE,
 			MAKEINTRESOURCEW( ID_ACCEL_TABLE_APP ) );
 		ASSERT_HRES_WIN32_IF_FAILED;
 	}
@@ -270,11 +302,11 @@ Window::~Window()
 		destroyMenu( m_hTrayIconPopupMenu );
 	}
 
-	const HDC dc = getDc();
-	if ( dc )
+	const HDC hDc = getDc();
+	if ( hDc )
 	{
 		const BOOL bReleased = ReleaseDC( m_hWnd,
-			dc );
+			hDc );
 		//ASSERT( bReleased == TRUE, "The window's device context was not properly released for use by other applications!" );
 	}
 
@@ -286,6 +318,7 @@ Window::~Window()
 		}
 	}
 	DestroyWindow( m_hWnd );
+	//ASSERT_HRES_WIN32_IF_FAILED;
 }
 
 Window::Window( Window &&rhs ) noexcept
@@ -300,12 +333,12 @@ Window::Window( Window &&rhs ) noexcept
 	m_hTrayIconPopupMenu{rhs.m_hTrayIconPopupMenu},
 	m_trayIconData{std::move( m_trayIconData )}
 {
-	m_keyboard = std::move( rhs.m_keyboard );
-	rhs.m_keyboard = {};
-	m_mouse = std::move( rhs.m_mouse );
-	rhs.m_mouse = {};
-	m_rawInputBuffer = std::move( rhs.m_rawInputBuffer );
-	rhs.m_rawInputBuffer = {};
+	s_keyboard = std::move( rhs.s_keyboard );
+	rhs.s_keyboard = {};
+	s_mouse = std::move( rhs.s_mouse );
+	rhs.s_mouse = {};
+	s_rawInputBuffer = std::move( rhs.s_rawInputBuffer );
+	rhs.s_rawInputBuffer = {};
 }
 
 Window& Window::operator=( Window &&rhs ) noexcept
@@ -486,6 +519,11 @@ void Window::deleteTrayIcon() noexcept
 	Sleep( 10 );
 }
 
+bool Window::isHidden() const noexcept
+{
+	return !IsIconic( m_hWnd );
+}
+
 bool Window::isMinimized() const noexcept
 {
 	return !IsIconic( m_hWnd );
@@ -512,9 +550,14 @@ std::optional<int> Window::messageLoop() noexcept
 		// check for quit because peekmessage does not signal this via return val
 		if ( uMsg == WM_QUIT || uMsg == WM_CLOSE || uMsg == WM_DESTROY )
 		{
+			if ( s_timerEvent )
+			{
+				KillTimer( m_hWnd,
+					s_timerEvent );
+			}
 			return (int)msg.wParam;
 		}
-		if ( !TranslateAcceleratorW( m_hWnd, m_hAcceleratorTable, &msg ) )
+		if ( !TranslateAcceleratorW( m_hWnd, s_hAcceleratorTable, &msg ) )
 		{
 			TranslateMessage( &msg );
 			DispatchMessageW( &msg );
@@ -540,12 +583,12 @@ WINDOWINFO Window::getInfo() const noexcept
 
 Keyboard& Window::keyboard() noexcept
 {
-	return m_keyboard;
+	return s_keyboard;
 }
 
 Mouse& Window::mouse() noexcept
 {
-	return m_mouse;
+	return s_mouse;
 }
 
 bool Window::isDescendantOf( const HWND targethWnd,
@@ -553,6 +596,38 @@ bool Window::isDescendantOf( const HWND targethWnd,
 {
 	return IsChild( parent, targethWnd ) == 0 ? false :
 		true;
+}
+
+HBITMAP Window::convertHiconToHbitmap( HICON hIcon )
+{
+	ICONINFO iconinfo;
+	GetIconInfo( hIcon,
+		&iconinfo );
+	return iconinfo.hbmColor;
+}
+
+HICON Window::convertHbitmapToHicon( HBITMAP hBitmap )
+{
+	BITMAP bitmap;
+	int ret = GetObjectW( hBitmap,
+		sizeof bitmap,
+		&bitmap );
+	ASSERT( ret != 0, "Couldn't GetObject" );
+	
+	HBITMAP hbmMask = ::CreateCompatibleBitmap( ::GetDC( nullptr ),
+		bitmap.bmWidth,
+		bitmap.bmHeight );
+	
+	ICONINFO iconInfo{0};
+	iconInfo.fIcon = TRUE;
+	iconInfo.hbmColor = hBitmap;
+	iconInfo.hbmMask = hbmMask;
+	
+	HICON hIcon = ::CreateIconIndirect( &iconInfo );
+	
+	::DeleteObject( hbmMask );
+
+	return hIcon;
 }
 
 void saveClipboardTextAsVar()
@@ -570,6 +645,110 @@ void saveClipboardTextAsVar()
 #endif
 		CloseClipboard();
 	}
+}
+
+void Window::setupSplashWindow( HBITMAP hSplashBitmap )
+{
+	int ret;
+
+	BITMAP bitmap;
+	ret = GetObjectW( hSplashBitmap,
+		sizeof bitmap,
+		&bitmap );
+	ASSERT( ret != 0, "Could not retrieve information out of the specified Splash image bitmap.");
+
+	SIZE splashSize = {bitmap.bmWidth, bitmap.bmHeight};
+
+	// center splash window on parent window
+	RECT rect;
+	GetClientRect( m_hWnd,
+		&rect );
+	const int width = rect.right - rect.left;
+	const int height = rect.bottom - rect.top;
+
+	HWND hWndParent = nullptr;
+	if ( !hasParent() )
+	{
+		return;
+	}
+	hWndParent = getParent();
+
+	RECT parentRect;
+	GetWindowRect( hWndParent,
+		&parentRect );
+	
+	const int parentWidth = parentRect.right - parentRect.left;
+	const int parentHeight = parentRect.bottom - parentRect.top;
+
+	const int x = parentRect.left + ( parentWidth / 2 ) - ( width / 2 );
+	const int y = parentRect.top + ( parentHeight / 2 ) - ( height / 2 );
+
+	POINT ptOriginSrc{0,0};
+	POINT ptOriginDest{x,y};
+
+	HDC hDcScreenDest = GetDC( nullptr );
+	// create "memory dc" or "compatible dc" - a dc special for bitmaps - to hold the splash bitmap
+	HDC hDcMemSrc = CreateCompatibleDC( hDcScreenDest );
+
+	// select the bitmap into the DC
+	HBITMAP hBmpTemp = (HBITMAP) SelectObject( hDcMemSrc,
+		hSplashBitmap );
+	if ( hBmpTemp == nullptr || hBmpTemp == HGDI_ERROR )
+	{
+		THROW_WINDOW_EXCEPTION( "Couldn't create Splash Image" );
+	}
+
+	// use the source image's Alpha for blending
+	BLENDFUNCTION blendFun{0};
+	blendFun.BlendOp = AC_SRC_OVER;
+	blendFun.SourceConstantAlpha = 255ui8;
+	blendFun.AlphaFormat = AC_SRC_ALPHA;
+	blendFun.BlendFlags = 0i8;
+
+	/*
+	#pragma comment( lib, "msimg32.lib" )	// required for AlphaBlend
+	const int destWidth = GetSystemMetrics( SM_CXSCREEN );
+	const int destHeight = GetSystemMetrics( SM_CYSCREEN );
+	ret = AlphaBlend( hDcScreenDest,
+		ptOriginDest.x,
+		ptOriginDest.y,
+		destWidth,
+		destHeight,
+		hDcMemSrc,
+		ptOriginSrc.x,
+		ptOriginSrc.y,
+		width,
+		height,
+		blendFun );
+	ASSERT( ret == TRUE, "AlphaBlend() failed!" );*/
+
+	// paint the window (in the right location) with the alpha-blended bitmap
+	UpdateLayeredWindow( m_hWnd,
+		hDcScreenDest,
+		&ptOriginDest,
+		&splashSize,
+		hDcMemSrc,
+		&ptOriginSrc,
+		RGB(0, 0, 0),
+		&blendFun,
+		ULW_ALPHA );
+	ASSERT_HRES_WIN32_IF_FAILED;
+
+	// clear temporary objects
+	SelectObject( hDcMemSrc,
+		hBmpTemp );
+	DeleteDC( hDcMemSrc );
+	ReleaseDC( nullptr,
+		hDcScreenDest );
+
+	// show window
+	ret = UpdateWindow( m_hWnd );
+	if ( ret == FALSE )
+	{
+		THROW_WINDOW_EXCEPTION( "Failed to update the client area of the window." );
+	}
+	ret = ShowWindow( m_hWnd,
+		SW_SHOWDEFAULT );
 }
 
 void Window::confineCursor() noexcept
@@ -698,7 +877,7 @@ LRESULT Window::windowProc_impl2d( _In_ const HWND hWnd,
 	case WM_KILLFOCUS:
 	{
 		// clear keyboard button states when window loses focus to prevent keyboard input getting "stuck"
-		m_keyboard.clearKeyStates();
+		s_keyboard.clearKeyStates();
 		break;
 	}
 	case WM_ACTIVATEAPP:	// Sent to the top level window belonging to a different application than the active window is about to be activated as well as the top level window of this application
@@ -732,9 +911,9 @@ LRESULT Window::windowProc_impl2d( _In_ const HWND hWnd,
 		[[fallthrough]];
 	case WM_SYSKEYDOWN:
 	{
-		if ( (lParam | 0x40000000) && !m_keyboard.isAutorepeatEnabled() ) // filter autorepeat
+		if ( (lParam | 0x40000000) && !s_keyboard.isAutorepeatEnabled() ) // filter autorepeat
 		{
-			m_keyboard.onKeyPressed( static_cast<unsigned char>( wParam ) );
+			s_keyboard.onKeyPressed( static_cast<unsigned char>( wParam ) );
 		}
 		break;
 	}
@@ -742,12 +921,12 @@ LRESULT Window::windowProc_impl2d( _In_ const HWND hWnd,
 		[[fallthrough]];
 	case WM_SYSKEYUP:
 	{
-		m_keyboard.onKeyReleased( static_cast<unsigned char>( wParam ) );
+		s_keyboard.onKeyReleased( static_cast<unsigned char>( wParam ) );
 		break;
 	}
 	case WM_CHAR:
 	{
-		m_keyboard.onChar( static_cast<unsigned char>( wParam ) );
+		s_keyboard.onChar( static_cast<unsigned char>( wParam ) );
 		break;
 	}
 	/// Mouse Messages
@@ -757,10 +936,10 @@ LRESULT Window::windowProc_impl2d( _In_ const HWND hWnd,
 		// cursorless exclusive gets first dibs
 		if ( !m_bCursorEnabled )
 		{
-			if ( !m_mouse.isInWindow() )
+			if ( !s_mouse.isInWindow() )
 			{
 				SetCapture( hWnd );
-				m_mouse.onMouseEnterWindow();
+				s_mouse.onMouseEnterWindow();
 				hideCursor();
 			}
 			break;
@@ -768,12 +947,12 @@ LRESULT Window::windowProc_impl2d( _In_ const HWND hWnd,
 		// in client region -> log move, and log enter + capture mouse (if not previously in window)
 		if ( pt.x >= 0 && pt.x < calcWidth() && pt.y >= 0 && pt.y < calcHeight() )
 		{
-			m_mouse.onMouseMove( pt.x,
+			s_mouse.onMouseMove( pt.x,
 				pt.y );
-			if ( !m_mouse.isInWindow() )
+			if ( !s_mouse.isInWindow() )
 			{
 				SetCapture( hWnd );
-				m_mouse.onMouseEnterWindow();
+				s_mouse.onMouseEnterWindow();
 			}
 		}
 		// not in client -> log move / maintain capture if button down
@@ -782,16 +961,16 @@ LRESULT Window::windowProc_impl2d( _In_ const HWND hWnd,
 			//if ( wParam & (MK_LBUTTON | MK_RBUTTON) )
 			// if we're dragging while the cursor hot pixel is outside the windows bounds
 			// keep getting mouse events even when it's outside the window
-			if ( m_mouse.isLmbPressed() || m_mouse.isRmbPressed() )
+			if ( s_mouse.isLmbPressed() || s_mouse.isRmbPressed() )
 			{
-				m_mouse.onMouseMove( pt.x,
+				s_mouse.onMouseMove( pt.x,
 					pt.y );
 			}
 			// button up -> release capture / log event for leaving
 			else
 			{
 				ReleaseCapture();
-				m_mouse.onMouseLeaveWindow();
+				s_mouse.onMouseLeaveWindow();
 			}
 		}
 		break;
@@ -805,40 +984,40 @@ LRESULT Window::windowProc_impl2d( _In_ const HWND hWnd,
 			hideCursor();
 		}
 		const POINTS pt = MAKEPOINTS( lParam );
-		m_mouse.onLmbPressed( pt.x,
+		s_mouse.onLmbPressed( pt.x,
 			pt.y );
 		break;
 	}
 	case WM_RBUTTONDOWN:
 	{
 		const POINTS pt = MAKEPOINTS( lParam );
-		m_mouse.onRmbPressed( pt.x,
+		s_mouse.onRmbPressed( pt.x,
 			pt.y );
 		break;
 	}
 	case WM_LBUTTONUP:
 	{
 		const POINTS pt = MAKEPOINTS( lParam );
-		m_mouse.onLmbReleased( pt.x,
+		s_mouse.onLmbReleased( pt.x,
 			pt.y );
 		// release mouse if outside of a window
 		if ( pt.x < 0 || pt.x >= calcWidth() || pt.y < 0 || pt.y >= calcHeight() )
 		{
 			ReleaseCapture();
-			m_mouse.onMouseLeaveWindow();
+			s_mouse.onMouseLeaveWindow();
 		}
 		break;
 	}
 	case WM_RBUTTONUP:
 	{
 		const POINTS pt = MAKEPOINTS( lParam );
-		m_mouse.onRmbReleased( pt.x,
+		s_mouse.onRmbReleased( pt.x,
 			pt.y );
 		// release mouse if outside of window
 		if ( pt.x < 0 || pt.x >= calcWidth() || pt.y < 0 || pt.y >= calcHeight() )
 		{
 			ReleaseCapture();
-			m_mouse.onMouseLeaveWindow();
+			s_mouse.onMouseLeaveWindow();
 		}
 		break;
 	}
@@ -846,7 +1025,7 @@ LRESULT Window::windowProc_impl2d( _In_ const HWND hWnd,
 	{
 		const POINTS pt = MAKEPOINTS( lParam );
 		const int delta = GET_WHEEL_DELTA_WPARAM( wParam );
-		m_mouse.onWheelDelta( pt.x,
+		s_mouse.onWheelDelta( pt.x,
 			pt.y,
 			delta );
 		break;
@@ -854,7 +1033,7 @@ LRESULT Window::windowProc_impl2d( _In_ const HWND hWnd,
 	/// Raw Input Messages
 	case WM_INPUT:
 	{
-		if ( !m_mouse.isRawInputEnabled() )
+		if ( !s_mouse.isRawInputEnabled() )
 		{
 			break;
 		}
@@ -869,11 +1048,11 @@ LRESULT Window::windowProc_impl2d( _In_ const HWND hWnd,
 			// bail msg processing if error
 			break;
 		}
-		m_rawInputBuffer.resize( size );
+		s_rawInputBuffer.resize( size );
 		// read in the input data
 		if ( GetRawInputData( reinterpret_cast<HRAWINPUT>( lParam ),
 			RID_INPUT,
-			m_rawInputBuffer.data(),
+			s_rawInputBuffer.data(),
 			&size,
 			sizeof( RAWINPUTHEADER ) ) != size )
 		{
@@ -881,11 +1060,11 @@ LRESULT Window::windowProc_impl2d( _In_ const HWND hWnd,
 			break;
 		}
 		// process the raw input data
-		auto &ri = reinterpret_cast<const RAWINPUT&>( *m_rawInputBuffer.data() );
+		auto &ri = reinterpret_cast<const RAWINPUT&>( *s_rawInputBuffer.data() );
 		if ( ri.header.dwType == RIM_TYPEMOUSE &&
 			( ri.data.mouse.lLastX != 0 || ri.data.mouse.lLastY != 0 ) )
 		{
-			m_mouse.onRawDelta( ri.data.mouse.lLastX,
+			s_mouse.onRawDelta( ri.data.mouse.lLastX,
 				ri.data.mouse.lLastY );
 		}
 		break;
@@ -937,11 +1116,34 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		//ASSERT_HRES_WIN32_IF_FAILED;	// GetLastError crashes here - unknown Windows Bug
 
 		// create splash Window
-		//m_splash = std::make_unique<SplashWindow>( hWnd,
-		//	THIS_INSTANCE,
-		//	IDI_SPLASH,
-		//	std::make_pair( 256, 256 ) );
-		//m_splash->messageLoop();
+		const int splashWindowWidth = 480;
+		const int splashWindowHeight = 643;
+		const int screenWidth = GetSystemMetrics( SM_CXSCREEN );
+		const int screenHeight = GetSystemMetrics( SM_CYSCREEN );
+		const int x = screenWidth / 2 - splashWindowWidth / 2;
+		const int y = screenHeight / 2 - splashWindowHeight / 2;
+
+		m_pSplash = std::make_unique<Window>( splashWindowWidth,
+			splashWindowHeight,
+			"KeyEngine Splash Window",
+			SPLASH_WINDOW_CLASS_NAME,
+			Window::splashWindowProc,
+			x,
+			y,
+			ColorBGRA{0, 0, 0},
+			nullptr,
+			this );
+
+		HBITMAP hSplashBitmap = LoadBitmapW( THIS_INSTANCE,
+			MAKEINTRESOURCEW( IDB_SPLASH_WINDOW ) );
+		ASSERT_HRES_WIN32_IF_FAILED;
+		m_pSplash->setupSplashWindow( hSplashBitmap );
+
+		DWORD ms = 10000u;
+		s_timerEvent = SetTimer( m_pSplash->getHandle(),
+			IDT_TIMER_SPLASH_WINDOW_DESTRUCTION,
+			ms,
+			(TIMERPROC) splashWindowTimerProc );
 
 		break;
 	}
@@ -953,7 +1155,7 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 	case WM_KILLFOCUS:
 	{
 		// clear keyboard button states when window loses focus to prevent keyboard input getting "stuck"
-		m_keyboard.clearKeyStates();
+		s_keyboard.clearKeyStates();
 		break;
 	}
 	case WM_ACTIVATEAPP:	// Sent to the top level window belonging to a different application than the active window is about to be activated as well as the top level window of this application
@@ -1160,10 +1362,10 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 	case WM_DESTROYCLIPBOARD:
 	{
 		// destroy any resources that were set aside to support delayed clipboard rendering
-		if ( m_pBoxLocalClip != nullptr )
+		if ( s_pBoxLocalClip != nullptr )
 		{
-			LocalFree( m_pBoxLocalClip );
-			m_pBoxLocalClip = nullptr;
+			LocalFree( s_pBoxLocalClip );
+			s_pBoxLocalClip = nullptr;
 		}
 		break;
 	}
@@ -1182,9 +1384,9 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		{
 			break;
 		}
-		if ( (lParam | 0x40000000) && !m_keyboard.isAutorepeatEnabled() ) // filter autorepeat
+		if ( (lParam | 0x40000000) && !s_keyboard.isAutorepeatEnabled() ) // filter autorepeat
 		{
-			m_keyboard.onKeyPressed( static_cast<unsigned char>( wParam ) );
+			s_keyboard.onKeyPressed( static_cast<unsigned char>( wParam ) );
 		}
 		break;
 	}
@@ -1197,7 +1399,7 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		{
 			break;
 		}
-		m_keyboard.onKeyReleased( static_cast<unsigned char>( wParam ) );
+		s_keyboard.onKeyReleased( static_cast<unsigned char>( wParam ) );
 		break;
 	}
 	case WM_CHAR:
@@ -1207,7 +1409,7 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		{
 			break;
 		}
-		m_keyboard.onChar( static_cast<unsigned char>( wParam ) );
+		s_keyboard.onChar( static_cast<unsigned char>( wParam ) );
 		break;
 	}
 	/// Mouse Messages
@@ -1217,10 +1419,10 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		// cursorless exclusive gets first dibs
 		if ( !m_bCursorEnabled )
 		{
-			if ( !m_mouse.isInWindow() )
+			if ( !s_mouse.isInWindow() )
 			{
 				SetCapture( hWnd );
-				m_mouse.onMouseEnterWindow();
+				s_mouse.onMouseEnterWindow();
 				hideCursor();
 			}
 			break;
@@ -1233,12 +1435,12 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		// in client region -> log move, and log enter + capture mouse (if not previously in window)
 		if ( pt.x >= 0 && pt.x < calcWidth() && pt.y >= 0 && pt.y < calcHeight() )
 		{
-			m_mouse.onMouseMove( pt.x,
+			s_mouse.onMouseMove( pt.x,
 				pt.y );
-			if ( !m_mouse.isInWindow() )
+			if ( !s_mouse.isInWindow() )
 			{
 				SetCapture( hWnd );
-				m_mouse.onMouseEnterWindow();
+				s_mouse.onMouseEnterWindow();
 			}
 		}
 		// not in client -> log move / maintain capture if button down
@@ -1247,16 +1449,16 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 			//if ( wParam & (MK_LBUTTON | MK_RBUTTON) )
 			// if we're dragging while the cursor hot pixel is outside the windows bounds
 			// keep getting mouse events even when it's outside the window
-			if ( m_mouse.isLmbPressed() || m_mouse.isRmbPressed() )
+			if ( s_mouse.isLmbPressed() || s_mouse.isRmbPressed() )
 			{
-				m_mouse.onMouseMove( pt.x,
+				s_mouse.onMouseMove( pt.x,
 					pt.y );
 			}
 			// button up -> release capture / log event for leaving
 			else
 			{
 				ReleaseCapture();
-				m_mouse.onMouseLeaveWindow();
+				s_mouse.onMouseLeaveWindow();
 			}
 		}
 		break;
@@ -1275,7 +1477,7 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 			break;
 		}
 		const POINTS pt = MAKEPOINTS( lParam );
-		m_mouse.onLmbPressed( pt.x,
+		s_mouse.onLmbPressed( pt.x,
 			pt.y );
 		break;
 	}
@@ -1287,7 +1489,7 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 			break;
 		}
 		const POINTS pt = MAKEPOINTS( lParam );
-		m_mouse.onRmbPressed( pt.x,
+		s_mouse.onRmbPressed( pt.x,
 			pt.y );
 		break;
 	}
@@ -1299,13 +1501,13 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 			break;
 		}
 		const POINTS pt = MAKEPOINTS( lParam );
-		m_mouse.onLmbReleased( pt.x,
+		s_mouse.onLmbReleased( pt.x,
 			pt.y );
 		// release mouse if outside of window
 		if ( pt.x < 0 || pt.x >= calcWidth() || pt.y < 0 || pt.y >= calcHeight() )
 		{
 			ReleaseCapture();
-			m_mouse.onMouseLeaveWindow();
+			s_mouse.onMouseLeaveWindow();
 		}
 		break;
 	}
@@ -1317,13 +1519,13 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 			break;
 		}
 		const POINTS pt = MAKEPOINTS( lParam );
-		m_mouse.onRmbReleased( pt.x,
+		s_mouse.onRmbReleased( pt.x,
 			pt.y );
 		// release mouse if outside of window
 		if ( pt.x < 0 || pt.x >= calcWidth() || pt.y < 0 || pt.y >= calcHeight() )
 		{
 			ReleaseCapture();
-			m_mouse.onMouseLeaveWindow();
+			s_mouse.onMouseLeaveWindow();
 		}
 		break;
 	}
@@ -1336,14 +1538,14 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		}
 		const POINTS pt = MAKEPOINTS( lParam );
 		const int delta = GET_WHEEL_DELTA_WPARAM( wParam );
-		m_mouse.onWheelDelta( pt.x,
+		s_mouse.onWheelDelta( pt.x,
 			pt.y,
 			delta );
 		break;
 	}
 	case WM_INPUT:	// Raw Input Messages
 	{
-		if ( !m_mouse.isRawInputEnabled() )
+		if ( !s_mouse.isRawInputEnabled() )
 		{
 			break;
 		}
@@ -1358,11 +1560,11 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 			// bail msg processing if error
 			break;
 		}
-		m_rawInputBuffer.resize( size );
+		s_rawInputBuffer.resize( size );
 		// read in the input data
 		if ( GetRawInputData( reinterpret_cast<HRAWINPUT>( lParam ),
 			RID_INPUT,
-			m_rawInputBuffer.data(),
+			s_rawInputBuffer.data(),
 			&size,
 			sizeof( RAWINPUTHEADER ) ) != size )
 		{
@@ -1370,11 +1572,11 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 			break;
 		}
 		// process the raw input data
-		auto &ri = reinterpret_cast<const RAWINPUT&>( *m_rawInputBuffer.data() );
+		auto &ri = reinterpret_cast<const RAWINPUT&>( *s_rawInputBuffer.data() );
 		if ( ri.header.dwType == RIM_TYPEMOUSE &&
 			( ri.data.mouse.lLastX != 0 || ri.data.mouse.lLastY != 0 ) )
 		{
-			m_mouse.onRawDelta( ri.data.mouse.lLastX,
+			s_mouse.onRawDelta( ri.data.mouse.lLastX,
 				ri.data.mouse.lLastY );
 		}
 		break;
@@ -1435,7 +1637,7 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 	//	}
 	//}
 #ifdef USE_GDIPLUS
-	case WM_ERASEBKGND:
+	case WM_ERASEBKGND:	// called before WM_PAINT to update the background of the window client region, pass it on to DefWindowProc(), which uses the WNDCLASSEX::hbrBackground you selected
 	{
 		// called before WM_PAINT to update the background of the window client region
 		// pass it on to DefWindowProc(), which uses the WNDCLASSEX::hbrBackground you selected
@@ -1449,7 +1651,7 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		console.log( "Painting without DirectX\n"s );
 #	endif
 		PAINTSTRUCT ps;
-		HDC dc = BeginPaint( m_hWnd,
+		HDC hDc = BeginPaint( m_hWnd,
 			&ps );
 
 		LPRECT rect;
@@ -1538,6 +1740,60 @@ LRESULT CALLBACK Window::dialogProc( _In_ const HWND hWnd,
 		uMsg,
 		wParam,
 		lParam );
+}
+
+LRESULT CALLBACK Window::splashWindowProc( _In_ const HWND hWnd,
+	_In_ const unsigned uMsg,
+	_In_ const WPARAM wParam,
+	_In_ const LPARAM lParam )
+{
+	PRINT_WIN_MESSAGE;
+
+	switch ( uMsg )
+	{
+	case WM_CREATE:
+	{
+#if defined _DEBUG && !defined NDEBUG
+		KeyConsole& console = KeyConsole::instance();
+		console.print( "Splash Window has been created!" );
+#endif
+		break;
+	}
+	case WM_CLOSE:
+	{
+		PostQuitMessage( 0 );
+		break;
+	}
+	default:
+	{
+		break;
+	}
+	}//switch
+
+	return DefWindowProcW( hWnd,
+		uMsg,
+		wParam,
+		lParam );
+}
+
+void CALLBACK Window::splashWindowTimerProc( _In_ const HWND hWnd,
+	_In_ const unsigned uMsg,
+	_In_ const unsigned idEvent,
+	_In_ const DWORD time )
+{
+	PRINT_WIN_MESSAGE;
+
+	if ( s_timerEvent == idEvent )
+	{
+#if defined _DEBUG && !defined NDEBUG
+		KeyConsole& console = KeyConsole::instance();
+		console.print( "Timer about to be killed!" );
+#endif
+		DestroyWindow( hWnd );
+
+		KillTimer( hWnd,
+			idEvent );
+	}
 }
 
 void Window::setFont( const std::string &fontName )
@@ -1914,22 +2170,22 @@ bool Window::editCopy( UINT format )
 		else
 		{
 			// if no text is selected, the label as a whole is copied
-			m_pBoxLocalClip = (PLABELBOX) LocalAlloc( LMEM_FIXED,
+			s_pBoxLocalClip = (PLABELBOX) LocalAlloc( LMEM_FIXED,
 				sizeof( LABELBOX ) );
 			ASSERT_HRES_WIN32_IF_FAILED;
 
-			if ( m_pBoxLocalClip == nullptr )
+			if ( s_pBoxLocalClip == nullptr )
 			{
 				CloseClipboard();
 				ASSERT_HRES_WIN32_IF_FAILED;
 				return false;
 			}
 
-			memcpy( m_pBoxLocalClip,
+			memcpy( s_pBoxLocalClip,
 				pBox,
 				sizeof( LABELBOX ) );
-			m_pBoxLocalClip->fSelected = FALSE;
-			m_pBoxLocalClip->fEdit = FALSE;
+			s_pBoxLocalClip->fSelected = FALSE;
+			s_pBoxLocalClip->fEdit = FALSE;
 
 			// place a registered clipboard format, the owner-display format and the CF_TEXT format on the clipboard using delayed rendering (only when and if they are needed)
 			// to handle the "when they are needed" we must process the WM_RENDERFORMAT and WM_RENDERALLFORMATS messages
@@ -2019,18 +2275,18 @@ void Window::renderClipboardFormat( unsigned format )
 	if ( format == CF_TEXT || format == CF_UNICODETEXT )
 	{
 		// allocate a buffer for the text
-		int nChars = m_pBoxLocalClip->cchLabel;
+		int nChars = s_pBoxLocalClip->cchLabel;
 
 		hClipboard = GlobalAlloc( GMEM_MOVEABLE,
 			(nChars + 1) * sizeof( TCHAR ) );
 		ASSERT_HRES_WIN32_IF_FAILED;
 
-		// copy the text from the m_pBoxLocalClip
+		// copy the text from the s_pBoxLocalClip
 		wchar_t *pCopiedStr = static_cast<wchar_t*>( GlobalLock( hClipboard ) );
 		ASSERT_HRES_WIN32_IF_FAILED;
 
 		memcpy( pCopiedStr,
-			m_pBoxLocalClip->atchLabel,
+			s_pBoxLocalClip->atchLabel,
 			nChars * sizeof( TCHAR ) );
 		pCopiedStr[nChars] = (TCHAR)0;
 
@@ -2051,7 +2307,7 @@ void Window::renderClipboardFormat( unsigned format )
 		ASSERT_HRES_WIN32_IF_FAILED;
 
 		memcpy( pBox,
-			m_pBoxLocalClip,
+			s_pBoxLocalClip,
 			sizeof( LABELBOX ) );
 
 		GlobalUnlock( hClipboard );

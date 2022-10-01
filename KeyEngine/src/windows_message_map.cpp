@@ -28,7 +28,7 @@ WindowsMessageMap::WindowsMessageMap() noexcept
 		MAP_MESSAGE( WM_ENABLE ),
 		MAP_MESSAGE( WM_SETREDRAW ),
 		MAP_MESSAGE( WM_SETTEXT ),
-		MAP_MESSAGE( WM_GETTEXT ),
+		MAP_MESSAGE( WM_GETTEXT ),	// Copies the text that corresponds to a window into a buffer provided by the caller.
 		MAP_MESSAGE( WM_GETTEXTLENGTH ),
 		MAP_MESSAGE( WM_PAINT ),
 		MAP_MESSAGE( WM_CLOSE ),
@@ -190,7 +190,7 @@ WindowsMessageMap::WindowsMessageMap() noexcept
 		MAP_MESSAGE( WM_INITDIALOG ),
 		MAP_MESSAGE( WM_COMMAND ),
 		MAP_MESSAGE( WM_SYSCOMMAND ),
-		MAP_MESSAGE( WM_TIMER ),
+		MAP_MESSAGE( WM_TIMER ),	// posted to the installing thread's message queue when a timer expires if no TimerProc has been specified, a Windows Timer doesn't work on a different thread
 		MAP_MESSAGE( WM_HSCROLL ),
 		MAP_MESSAGE( WM_VSCROLL ),
 		MAP_MESSAGE( WM_INITMENU ),

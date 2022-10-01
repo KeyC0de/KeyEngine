@@ -35,7 +35,7 @@ static_assert( _MSVC_LANG >= 201703L, "C++17 language conformance or later requi
 #	define OEMRESOURCE				// OEM Resource values
 #	define NOATOM					// Atom manager routines
 //#	define NOCLIPBOARD				// Clipboard routines
-#	define NOCOLOR					// Screen colors
+#	define NOCOLOR					// Screen colors, GetSysColor
 #ifndef NO_DUMPS
 #	define NOCTLMGR					// Control and Dialog routines, generating dumps
 #endif // !TAKING_DUMPS
@@ -51,7 +51,7 @@ static_assert( _MSVC_LANG >= 201703L, "C++17 language conformance or later requi
 #	define NOCOMM					// No serial communication API & driver routines
 #	define NOKANJI					// Kanji support
 #	define NOHELP					// Help engine interface
-#	define NODEFERWINDOWPOS			// DeferWindowPos routines
+#	define NODEFERWINDOWPOS			// DeferWindowPos routines	- used to move multiple child windows at one go
 #	define NOMCX					// Modem Configuration Extensions
 #	define NORPC					// no Remote Procedure Call Routines
 #	define NOPROXYSTUB				// not use Proxies, nor Stubs (for DLLs)

@@ -3,11 +3,19 @@
 #include "winner.h"
 
 
-struct Metric
+//=============================================================
+//	\class	SystemMetric
+//
+//	\author	KeyC0de
+//	\date	2022/10/01 16:59
+//
+//	\brief	use GetSystemMetrics( index )
+//=============================================================
+struct SystemMetric
 {
-	int index;
-	const char *label;
-	const char *description;
+	int m_index;
+	const char *m_label;
+	const char *m_description;
 };
 
 

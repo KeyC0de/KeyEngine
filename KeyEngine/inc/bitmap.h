@@ -49,6 +49,7 @@ public:
 public:
 	Bitmap( const unsigned int width, const unsigned int height );
 
+	size_t getSize() const noexcept;
 	void clear( const Texel fillValue ) noexcept;
 	void setTexel( const unsigned int x, const unsigned int y, const Texel col ) cond_noex;
 	const Texel getTexel( const unsigned int x, const unsigned int y ) const cond_noex;

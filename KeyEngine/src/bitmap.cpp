@@ -30,6 +30,11 @@ Bitmap::Bitmap( dx::ScratchImage rhs ) noexcept
 
 }
 
+size_t Bitmap::getSize() const noexcept
+{
+	return m_scratchImg.GetPixelsSize();
+}
+
 void Bitmap::clear( const Texel fillValue ) noexcept
 {
 	const auto width = getWidth();

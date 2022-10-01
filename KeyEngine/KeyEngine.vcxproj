@@ -627,9 +627,13 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\resources\keyc0de.ico" />
-    <Image Include="assets\resources\splash.ico" />
+    <Image Include="assets\resources\splash.ico">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </Image>
+    <Image Include="assets\resources\splash.png">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </Image>
     <Image Include="assets\resources\tray_graffiti.ico" />
-    <Image Include="splash.png" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="design_doc\fantasia.txt" />

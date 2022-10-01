@@ -24,6 +24,7 @@
 #define MAIN_WINDOW_CLASS_NAME				"KeyEngine_Main_Window_Class"
 #define MODAL_DIALOG_CLASS_NAME				"KeyEngine_Modal_Dialog_Class"
 #define MODELESS_DIALOG_CLASS_NAME			"KeyEngine_Modeless_Dialog_Class"
+#define SPLASH_WINDOW_CLASS_NAME			"KeyEngine_Splash_Window_Class"
 
  
 class Graphics;
@@ -55,11 +56,12 @@ class Window
 		const std::string& getName() noexcept;
 	};
 private:
-	static inline Keyboard m_keyboard;
-	static inline Mouse m_mouse;
-	static inline std::vector<BYTE> m_rawInputBuffer;
-	static inline HACCEL m_hAcceleratorTable;
-	static inline PLABELBOX m_pBoxLocalClip;
+	static inline Keyboard s_keyboard;
+	static inline Mouse s_mouse;
+	static inline std::vector<BYTE> s_rawInputBuffer;
+	static inline HACCEL s_hAcceleratorTable;
+	static inline PLABELBOX s_pBoxLocalClip;
+	static inline UINT_PTR s_timerEvent = 0ui64;
 private:
 	WindowClass m_windowClass;
 	bool m_bCursorEnabled = true;
@@ -72,16 +74,27 @@ private:
 	HMENU m_hTrayIconPopupMenu;
 	NOTIFYICONDATA m_trayIconData;
 	std::unique_ptr<Window> m_pModalDialog;
-	//std::unique_ptr<SplashWindow> m_splash;
+	std::unique_ptr<Window> m_pSplash;
 private:
 	static LRESULT CALLBACK windowProcDelegate( _In_ const HWND pWndHandle, _In_ const unsigned uMsg, _In_ const WPARAM wParam, _In_ const LPARAM lParam );
 public:
 	static LRESULT CALLBACK windowProc( _In_ const HWND pWnd, _In_ const unsigned uMsg, _In_ const WPARAM wParam, _In_ const LPARAM lParam );
 	static LRESULT CALLBACK dialogProc( _In_ const HWND hWnd, _In_ const unsigned uMsg, _In_ const WPARAM wParam, _In_ const LPARAM lParam );
+	static LRESULT CALLBACK splashWindowProc( _In_ const HWND hWnd, _In_ const unsigned uMsg, _In_ const WPARAM wParam, _In_ const LPARAM lParam );
+	static void CALLBACK splashWindowTimerProc( _In_ const HWND hWnd, _In_ const unsigned uMsg, _In_ const unsigned idEvent, _In_ const DWORD time );
 	static Keyboard& keyboard() noexcept;
 	static Mouse& mouse() noexcept;
 	static bool isDescendantOf( const HWND targethWnd, const HWND parent ) noexcept;
 	static void saveClipboardTextAsVar();
+	//===================================================
+	//	\function	convertHiconToHbitmap
+	//	\brief  hIcon vs hBitmap
+	//			hIcon is a handle to one of the system resources that Windows OS requires for providing a graphical USER interface.
+	//			SHELL applications like Windows Explorer, Desktop etc, use this system resource extensively.
+	//			hBITMAP is a graphical object which can be manipulated with GDI. hBitmaps can be altered with GDI either by selecting it to a DC or by manipulating the bits directly. GDI cannot handle an hICON.
+	//	\date	2022/10/02 1:51
+	static HBITMAP convertHiconToHbitmap( HICON hIcon );
+	static HICON convertHbitmapToHicon( HBITMAP bitmap );
 public:
 	Window( const int width, const int height, const char *name, const char *className, const WNDPROC windowProcedure, const int x, const int y, const ColorBGRA bgColor = {255, 255, 255}, const HMENU hMenu = nullptr, const Window *parent = nullptr );
 	~Window();
@@ -108,6 +121,7 @@ public:
 	const std::string& getName() const noexcept;
 	void minimize();
 	void restore();
+	bool isHidden() const noexcept;	// isVisible(), or isMinimized()
 	bool isMinimized() const noexcept;
 	bool isMaximized() const noexcept;
 	operator bool() const noexcept;
@@ -115,7 +129,7 @@ public:
 	const HWND getHandle() const noexcept;
 	//===================================================
 	//	\function	getDc
-	//	\brief  get Window's Device Context (DC)
+	//	\brief  get Window's Device Context (DC) - a "device context" contains information about the drawing attributes of a device such as a display or a printer, so if you have two different DC's, you're drawing in two different places; like a file handle for drawing
 	//	\date	2022/09/22 19:35
 	HDC getDc() const noexcept;
 	WINDOWINFO getInfo() const noexcept;
@@ -136,6 +150,14 @@ public:
 	int calcHeight() const noexcept;
 	HWND getConsoleHandle() const;
 	const WindowClass& getWindowClass() noexcept;
+	//===================================================
+	//	\function	setupSplashWindow
+	//	\brief  create an Alpha enabled Splash window for the main application window
+	//			We'll use a layered window to do it (recommended method for Windows 2000+).
+	//			The beauty of layered windows and the UpdateLayeredWindow function is that the splash window doesn't have to respond to WM_PAINT messages; Windows will paint it (and blend it correctly with the windows below it) by default.
+	//			#WARNING: load the BMP with black color for the transparent places
+	//	\date	2022/10/01 20:30
+	void setupSplashWindow( HBITMAP hSplashBitmap );
 private:
 	void confineCursor() noexcept;
 	void freeCursor() noexcept;
@@ -172,3 +194,34 @@ private:
 	__FILE__,\
 	__FUNCTION__,\
 	msg );
+
+
+
+
+
+
+
+
+class SplashWindow final
+{
+	bool m_bVisible;
+	HWND m_hWnd;
+public:
+	SplashWindow( HWND hWndParent, HINSTANCE hInst, const int resourceId, const std::pair<int, int> dims );
+	~SplashWindow();
+
+	void display();
+	void hide();
+	bool isVisible() const noexcept;
+	void messageLoop();
+private:
+	static LRESULT CALLBACK windowProc( const HWND pWndHandle, const unsigned uMsg, const WPARAM wParam, const LPARAM lParam );
+//	static LRESULT CALLBACK windowProcDelegate( const HWND pWndHandle, const unsigned uMsg, const WPARAM wParam, const LPARAM lParam );
+//private:
+//	LRESULT windowProc_impl( _In_ const HWND pWndHandle, _In_ const unsigned msg, _In_ const WPARAM wparam, _In_ const LPARAM lparam );
+};
+
+
+
+
+

@@ -4,7 +4,7 @@
 #pragma comment( lib, "user32.lib" )
 
 
-Metric metrics[] =
+SystemMetric systemMetrics[] =
 {
 	SM_CXSCREEN, "SM_CXSCREEN", "Screen width in pixels",
 	SM_CYSCREEN, "SM_CYSCREEN", "Screen height in pixels",
@@ -128,24 +128,24 @@ void windowsMetricsCheckTest()
 void windowsMetricsCheck( int metric )
 {
 	KeyConsole &console = KeyConsole::instance();
-	const auto &elem = metrics[metric];
-	console.print( elem.label );
+	const auto &elem = systemMetrics[metric];
+	console.print( elem.m_label );
 	console.print( " " );
-	console.print( elem.description );
+	console.print( elem.m_description );
 	console.print( "\n" );
 }
 
 void windowsMetricsCheckAll()
 {
-	const unsigned int size = sizeof( metrics ) / sizeof( metrics[0] );
+	const unsigned int size = sizeof( systemMetrics ) / sizeof( systemMetrics[0] );
 	KeyConsole &console = KeyConsole::instance();
 
 	for ( unsigned int i = 0; i < size; ++i )
 	{
-		const auto &elem = metrics[i];
-		console.print( elem.label );
+		const auto &metric = systemMetrics[i];
+		console.print( metric.m_label );
 		console.print( " " );
-		console.print( elem.description );
+		console.print( metric.m_description );
 		console.print( "\n" );
 	}
 }
