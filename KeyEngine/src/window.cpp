@@ -10,7 +10,17 @@
 #include "console.h"
 #include "assertions_console.h"
 #include "graphics_mode.h"
+#include "windows_message_map.h"
 #include "../resource.h"
+
+#if defined _DEBUG && !defined NDEBUG
+#	define PRINT_WIN_MESSAGE	{ \
+									KeyConsole& console = KeyConsole::instance(); \
+									console.print( "win msgId: " + WindowsMessageMap::instance().toString( uMsg ) + "\n"); \
+								}
+#else
+#	define PRINT_WIN_MESSAGE	(void)0;
+#endif
 
 
 Window::WindowClass::WindowClass( const char *name,
@@ -256,9 +266,6 @@ Window::~Window()
 	if ( m_hTrayIconPopupMenu )
 	{
 		deleteTrayIcon();
-	}
-	if ( m_hTrayIconPopupMenu )
-	{
 		destroyMenu( m_hTrayIconPopupMenu );
 	}
 
@@ -498,8 +505,11 @@ std::optional<int> Window::messageLoop() noexcept
 	MSG msg;
 	while ( PeekMessageW( &msg, nullptr, 0u, 0u, PM_REMOVE ) )
 	{
+		const unsigned uMsg = msg.message;
+		PRINT_WIN_MESSAGE( uMsg );
+
 		// check for quit because peekmessage does not signal this via return val
-		if ( msg.message == WM_QUIT || msg.message == WM_CLOSE || msg.message == WM_DESTROY )
+		if ( uMsg == WM_QUIT || uMsg == WM_CLOSE || uMsg == WM_DESTROY )
 		{
 			return (int)msg.wParam;
 		}
@@ -610,6 +620,8 @@ LRESULT CALLBACK Window::windowProc( _In_ const HWND hWnd,
 	console.log( "windowProc() entered\n" );
 #endif
 
+	PRINT_WIN_MESSAGE;
+
 	if ( uMsg == WM_NCCREATE )
 	{
 #if defined _DEBUG && !defined NDEBUG
@@ -643,6 +655,8 @@ LRESULT CALLBACK Window::windowProcDelegate( _In_ const HWND hWnd,
 	_In_ const WPARAM wParam,
 	_In_ const LPARAM lParam )
 {
+	PRINT_WIN_MESSAGE;
+
 	Window *this_wnd = reinterpret_cast<Window*>( GetWindowLongPtrW( hWnd,
 		GWLP_USERDATA ) );
 	if constexpr ( gph_mode::get() == gph_mode::_3D )
@@ -666,6 +680,8 @@ LRESULT Window::windowProc_impl2d( _In_ const HWND hWnd,
 	_In_ const WPARAM wParam,
 	_In_ const LPARAM lParam )
 {
+	PRINT_WIN_MESSAGE;
+
 	// Predefined Windows messages
 	switch( uMsg )
 	{
@@ -887,6 +903,8 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 	_In_ const WPARAM wParam,
 	_In_ const LPARAM lParam )
 {
+	PRINT_WIN_MESSAGE;
+
 	// ImGui windowProc messages
 	if ( ImGui_ImplWin32_WndProcHandler( hWnd, uMsg, wParam, lParam ) )
 	{
@@ -978,7 +996,6 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		{
 			console.log( "Window " + getTitle() + " is hidden.\n" );
 		}
-		//return 0;
 		break;
 	}
 #endif
@@ -1029,7 +1046,7 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		break;
 	}
 	case WM_GETMINMAXINFO:
-	{
+	{// send when the size or position of the window is about to change - This is the very 1st message being sent to a window b4 WM_NCCREATE
 		// we want to prevent the window from being set too tiny:
 		auto info = reinterpret_cast<MINMAXINFO*>( lParam );
 		info->ptMinTrackSize.x = 320;
@@ -1467,6 +1484,8 @@ LRESULT CALLBACK Window::dialogProc( _In_ const HWND hWnd,
 	_In_ const WPARAM wParam,
 	_In_ const LPARAM lParam )
 {
+	PRINT_WIN_MESSAGE;
+
 	switch ( uMsg )
 	{
 	case WM_CREATE:

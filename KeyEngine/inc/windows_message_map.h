@@ -11,11 +11,22 @@
 // \date	2020/09/11 16:52
 //
 // \brief	maps windows message ids to string ids
+//			list of all known windows messages, courtesy of: https://wiki.winehq.org/List_Of_Windows_Messages
 //=============================================================
 class WindowsMessageMap final
 {
 	std::unordered_map<DWORD, std::string> m_map;
-public:
+	
 	WindowsMessageMap() noexcept;
-	std::string toString( DWORD msg, LPARAM lp, WPARAM wp ) const noexcept;
+public:
+	WindowsMessageMap( const WindowsMessageMap &rhs ) = delete;
+	WindowsMessageMap& operator=( const WindowsMessageMap &rhs ) = delete;
+
+	static WindowsMessageMap& instance()
+	{
+		static WindowsMessageMap inst{};
+		return inst;
+	}
+
+	std::string toString( DWORD uMsg ) const noexcept;
 };
