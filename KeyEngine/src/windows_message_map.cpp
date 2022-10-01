@@ -13,6 +13,7 @@
 #define MAP_MESSAGE( msgId )	{msgId, #msgId}
 
 
+#if defined _DEBUG && !defined NDEBUG
 WindowsMessageMap::WindowsMessageMap() noexcept
 	:
 	m_map( {
@@ -1066,6 +1067,14 @@ WindowsMessageMap::WindowsMessageMap() noexcept
 {
 
 }
+#else
+WindowsMessageMap::WindowsMessageMap() noexcept
+	:
+	m_map()
+{
+
+}
+#endif
 
 std::string WindowsMessageMap::toString( DWORD uMsg ) const noexcept
 {

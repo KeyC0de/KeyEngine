@@ -127,7 +127,8 @@ Window::Window( const int width,
 	const Window *parent /*= nullptr*/ )
 	:
 	m_windowClass{className, windowProcedure, bgColor},
-	m_name{name}
+	m_name{name},
+	m_clipboardFormats{0}
 {
 	uint32_t windowExStyles = WS_EX_OVERLAPPEDWINDOW;
 	uint32_t windowStyles = WS_VISIBLE | WS_CAPTION | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_SYSMENU | WS_OVERLAPPEDWINDOW;	// disable both maximizing and resizing
@@ -233,13 +234,11 @@ Window::Window( const int width,
 	m_clipboardFormats[0] = RegisterClipboardFormatW( unicodeClipboardFormat );
 	ASSERT_HRES_WIN32_IF_FAILED;
 
-	// set the Menu
 	if ( hMenu )
 	{
 		showMenu( hMenu );
 	}
 
-	// tray icon setup
 	setupTrayIcon();
 
 	// initialize ImGui
@@ -645,6 +644,7 @@ LRESULT CALLBACK Window::windowProc( _In_ const HWND hWnd,
 			wParam,
 			lParam );
 	}
+	
 	// if we get a msg before the WM_NCCREATE msg handle it with the default windowProc
 	return DefWindowProcW( hWnd,
 		uMsg,
@@ -684,7 +684,6 @@ LRESULT Window::windowProc_impl2d( _In_ const HWND hWnd,
 {
 	PRINT_WIN_MESSAGE;
 
-	// Predefined Windows messages
 	switch( uMsg )
 	{
 	case WM_CREATE:
@@ -702,10 +701,9 @@ LRESULT Window::windowProc_impl2d( _In_ const HWND hWnd,
 		m_keyboard.clearKeyStates();
 		break;
 	}
-	case WM_ACTIVATEAPP:
-	// Sent to the top level window belonging to a different application than the active window is about to be activated as well as the top level window of this application
-	case WM_ACTIVATE:
-	{// message sent to the window being activated and to the window being deactivated
+	case WM_ACTIVATEAPP:	// Sent to the top level window belonging to a different application than the active window is about to be activated as well as the top level window of this application
+	case WM_ACTIVATE:	// message sent to the window being activated and to the window being deactivated
+	{
 #if defined _DEBUG && !defined NDEBUG
 		auto &console = KeyConsole::instance();
 		using namespace std::string_literals;
@@ -922,9 +920,8 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 	// Predefined Windows messages
 	switch( uMsg )
 	{
-	case WM_CREATE:
+	case WM_CREATE:	// send to a window being initialized. Controls - child windows, set default values for controls
 	{
-		// Initialization. Controls - child windows, set default values for controls
 #if defined _DEBUG && !defined NDEBUG
 		auto &console = KeyConsole::instance();
 		using namespace std::string_literals;
@@ -959,10 +956,9 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		m_keyboard.clearKeyStates();
 		break;
 	}
-	case WM_ACTIVATEAPP:
-	// Sent to the top level window belonging to a different application than the active window is about to be activated as well as the top level window of this application
-	case WM_ACTIVATE:
-	{// message sent to the window being activated and to the window being deactivated
+	case WM_ACTIVATEAPP:	// Sent to the top level window belonging to a different application than the active window is about to be activated as well as the top level window of this application
+	case WM_ACTIVATE:	// message sent to the window being activated and to the window being deactivated
+	{
 #if defined _DEBUG && !defined NDEBUG
 		auto &console = KeyConsole::instance();
 		using namespace std::string_literals;
@@ -986,9 +982,8 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		break;
 	}
 #if defined _DEBUG && !defined NDEBUG
-	case WM_SHOWWINDOW:
+	case WM_SHOWWINDOW:	// sent when the window is about to be hidden or shown
 	{
-		// sent to a window when the window is about to be hidden or shown
 		auto &console = KeyConsole::instance();
 		if ( wParam == TRUE )
 		{
@@ -1001,7 +996,7 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		break;
 	}
 #endif
-	/// resizing
+	/// Resizing messages
 	case WM_SIZE:
 	{
 		if ( wParam == SIZE_MINIMIZED )
@@ -1047,9 +1042,8 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		bCurrentlyResizing = false;
 		break;
 	}
-	case WM_GETMINMAXINFO:
-	{// send when the size or position of the window is about to change - This is the very 1st message being sent to a window b4 WM_NCCREATE
-		// we want to prevent the window from being set too tiny:
+	case WM_GETMINMAXINFO:	// send when the size or position of the window is about to change - This is the very 1st message being sent to a window b4 WM_NCCREATE we want to prevent the window from being set too tiny
+	{
 		auto info = reinterpret_cast<MINMAXINFO*>( lParam );
 		info->ptMinTrackSize.x = 320;
 		info->ptMinTrackSize.y = 200;
@@ -1141,7 +1135,7 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 
 		break;
 	}
-	// clipboard messages
+	/// clipboard messages
 	case WM_RENDERFORMAT:
 	{
 		// support delayed clipboard rendering
@@ -1347,8 +1341,7 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 			delta );
 		break;
 	}
-	/// Raw Input Messages
-	case WM_INPUT:
+	case WM_INPUT:	// Raw Input Messages
 	{
 		if ( !m_mouse.isRawInputEnabled() )
 		{
@@ -1386,8 +1379,7 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		}
 		break;
 	}
-	/// Tray icons
-	case WM_TRAY_ICON:
+	case WM_TRAY_ICON:	// Tray Icon Messages
 	{
 		if ( lParam == WM_LBUTTONUP )
 		{
@@ -1420,6 +1412,7 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		}
 		break;
 	}
+#pragma region unused_messages
 	//case WM_NCHITTEST:
 	//{
 	//	// determine what part of the window the mouse cursor is on
@@ -1473,6 +1466,7 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		break;
 	}
 #endif // USE_GDIPLUS
+#pragma endregion
 	}//switch
 
 	return DefWindowProcW( hWnd,
