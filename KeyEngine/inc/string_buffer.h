@@ -37,6 +37,6 @@ public:
 		m_ss << str;
 		return *this;
 	}
-	const std::string& get() const noexcept;
+	const std::string get() const noexcept;
 	void print();
 };

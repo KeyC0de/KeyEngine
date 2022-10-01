@@ -19,7 +19,6 @@ class PerfLog final
 
 		bool operator>( const Entry &rhs ) noexcept;
 	};
-	static inline PerfLog *m_pInstance;
 private:
 	std::string m_outFileName;
 	KeyTimer<std::chrono::milliseconds> m_timer;

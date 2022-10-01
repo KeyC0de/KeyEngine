@@ -17,9 +17,9 @@
 #include "sound_manager.h"
 #include "rectangle.h"
 #include "imgui_manager.h"
-#include "../games/arkanoid/ball.h"
-#include "../games/arkanoid/brick.h"
-#include "../games/arkanoid/paddle.h"
+#include "arkanoid/ball.h"
+#include "arkanoid/brick.h"
+#include "arkanoid/paddle.h"
 
 
 template<typename T>

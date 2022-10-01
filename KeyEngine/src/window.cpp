@@ -12,8 +12,6 @@
 #include "graphics_mode.h"
 #include "../resource.h"
 
-#define ITEM_LENGTH		80
-
 
 Window::WindowClass::WindowClass( const char *name,
 	const WNDPROC windowProcedure,
@@ -1484,11 +1482,11 @@ LRESULT CALLBACK Window::dialogProc( _In_ const HWND hWnd,
 		const UINT id = LOWORD( wParam );
 		switch ( id )
 		{
-			wchar_t itemName[ITEM_LENGTH];	// receives name of item to delete.
+			wchar_t itemName[BUTTON_TEXT_MAX_LENGTH];	// receives name of item to delete.
 			// dialog box command ids
 			case IDOK:
 			{
-				if ( GetDlgItemTextW( hWnd, IDOK, itemName, ITEM_LENGTH ) ) 
+				if ( GetDlgItemTextW( hWnd, IDOK, itemName, BUTTON_TEXT_MAX_LENGTH ) ) 
 				{
 					EndDialog( hWnd,
 						wParam );
@@ -1498,7 +1496,7 @@ LRESULT CALLBACK Window::dialogProc( _In_ const HWND hWnd,
 			}
 			case IDCANCEL:
 			{
-				if ( GetDlgItemTextW( hWnd, IDCANCEL, itemName, ITEM_LENGTH ) ) 
+				if ( GetDlgItemTextW( hWnd, IDCANCEL, itemName, BUTTON_TEXT_MAX_LENGTH ) ) 
 				{
 					EndDialog( hWnd,
 						wParam );
