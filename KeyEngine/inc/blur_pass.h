@@ -4,8 +4,6 @@
 
 
 class Graphics;
-class PixelShader;
-class IRenderTargetView;
 
 namespace ren
 {

@@ -8,7 +8,7 @@
 
 namespace ren
 {
-
+// #FIXME: Setup BlurPass - Graphics Debugging
 BlurPass::BlurPass( Graphics &gph,
 	const std::string &name )
 	:

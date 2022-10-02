@@ -24,6 +24,7 @@ PSOut main( PSIn input )
 	tex.GetDimensions( width,
 		height );
 	
+	// distance {dx,dy} between neighboring pixels
 	const float dx = 1.0f / width;
 	const float dy = 1.0f / height;
 	
