@@ -17,12 +17,12 @@ namespace ren
 class Effect
 {
 	size_t m_renderingChannels;
-	bool m_active = true;
+	bool m_bActive = true;
 	std::string m_targetPassName;
 	ren::RenderQueuePass *m_pTargetPass = nullptr;
 	std::vector<std::shared_ptr<IBindable>> m_bindables;
 public:
-	Effect( size_t channels, const std::string &targetPassName, const bool bStartActive ) noexcept;
+	Effect( const size_t channels, const std::string &targetPassName, const bool bStartActive ) noexcept;
 	Effect( const Effect &rhs );
 	Effect& operator=( const Effect &rhs ) = delete;
 	Effect( Effect &&rhs ) noexcept;

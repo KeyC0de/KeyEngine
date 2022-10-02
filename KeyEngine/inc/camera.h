@@ -4,6 +4,7 @@
 #include <DirectXMath.h>
 #include "camera_widget.h"
 #include "frustum.h"
+#include "rendering_channel.h"
 
 
 class Graphics;
@@ -47,7 +48,7 @@ public:
 public:
 	Camera( Graphics &gph, const std::string &name, const int width, const int height, const float fovDegrees = 90.0f, const DirectX::XMFLOAT3 &homePos = {0.0f, 0.0f, 0.0f}, const float homePitch = 0.0f, const float homeYaw = 0.0f, const bool bTethered = false, const float nearZ = 0.5f, const float farZ = 400.0f ) noexcept;
 
-	void render( const size_t channel ) const;
+	void render( const size_t channel = rch::all ) const;
 	void makeActive( Graphics &gph, bool bOrthographic ) const;
 	DirectX::XMMATRIX getViewMatrix() const noexcept;
 	DirectX::XMMATRIX getReflectionViewMatrix( const DirectX::XMVECTOR &mirrorPlane ) const noexcept;

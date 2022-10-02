@@ -10,14 +10,14 @@ RenderSurfaceClearPass::RenderSurfaceClearPass( const std::string &name )
 	IPass{name}
 {
 	addConsumer( RenderSurfaceConsumer<IRenderSurface>::make( "buffer",
-		m_pBuffer ) );
+		m_pRenderSurface ) );
 	addProducer( RenderSurfaceProducer<IRenderSurface>::make( "buffer",
-		m_pBuffer ) );
+		m_pRenderSurface ) );
 }
 
 void RenderSurfaceClearPass::run( Graphics &gph ) const cond_noex
 {
-	m_pBuffer->clear( gph );
+	m_pRenderSurface->clear( gph );
 }
 
 void RenderSurfaceClearPass::reset() cond_noex

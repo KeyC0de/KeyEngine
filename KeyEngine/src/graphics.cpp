@@ -209,7 +209,7 @@ Graphics::Graphics( const HWND hWnd,
 	interrogateDirectxFeatures();
 #endif
 
-	setupRenderTarget();
+	renderTarget();
 
 	setupOutputDevice();
 
@@ -253,7 +253,6 @@ Graphics::~Graphics()
 void Graphics::clearShaderSlots() noexcept
 {
 	// Clearing shader input slots to prevent simultaneous in/out binds carried over from previous frame.
-	// Now we can start each frame with a clean slate
 	// This is to prevent OMSetRenderTargets state hazard.
 	ID3D11ShaderResourceView *const pNullSrv = nullptr;
 	
@@ -305,10 +304,10 @@ void Graphics::resize( const unsigned newWidth,
 	// may need to handle DXGI_ERROR_DEVICE_REMOVED & DXGI_ERROR_DEVICE_RESET
 
 	// recreate render target
-	setupRenderTarget();
+	renderTarget();
 
 	// recreate depth stencil
-	setupDepthStencil();
+	depthStencil();
 
 	// #TODO: consider setting the rtv and dsv back in the renderer
 
@@ -615,7 +614,7 @@ const unsigned Graphics::getClientHeight() const noexcept
 	return m_height;
 }
 
-std::shared_ptr<IRenderTargetView> Graphics::setupRenderTarget()
+std::shared_ptr<IRenderTargetView> Graphics::renderTarget()
 {
 	if ( !m_rtv )
 	{
@@ -631,7 +630,7 @@ std::shared_ptr<IRenderTargetView> Graphics::setupRenderTarget()
 	return m_rtv;
 }
 
-std::shared_ptr<IDepthStencilView> Graphics::setupDepthStencil()
+std::shared_ptr<IDepthStencilView> Graphics::depthStencil()
 {
 	if ( !m_dsv )
 	{

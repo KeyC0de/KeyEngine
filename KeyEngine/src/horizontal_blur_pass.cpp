@@ -13,9 +13,6 @@ HorizontalBlurPass::HorizontalBlurPass( Graphics &gph,
 	:
 	FullscreenPass{gph, name}
 {
-	auto width = gph.getClientWidth() / rezReductFactor;
-	auto height = gph.getClientHeight() / rezReductFactor;
-
 	addPassBindable( PixelShader::fetch( gph,
 		"blur_separ_ps.cso" ) );
 
@@ -32,6 +29,9 @@ HorizontalBlurPass::HorizontalBlurPass( Graphics &gph,
 	addContainerBindableConsumer<PixelShaderConstantBufferEx>( "blurKernel" );
 	addConsumer( BindableConsumer<PixelShaderConstantBufferEx>::make( "blurDirection",
 		m_pPscbBlurDirection ) );
+
+	const unsigned width = gph.getClientWidth() / rezReductFactor;
+	const unsigned height = gph.getClientHeight() / rezReductFactor;
 
 	m_pRtv = std::make_shared<RenderTargetShaderInput>( gph,
 		width,

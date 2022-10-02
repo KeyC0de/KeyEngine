@@ -26,10 +26,11 @@ class IProducer;
 class IPass
 {
 	std::string m_name;
+	bool m_bActive;
 	std::vector<std::unique_ptr<IConsumer>> m_consumers;
 	std::vector<std::unique_ptr<IProducer>> m_producers;
 public:
-	IPass( const std::string &name ) noexcept;
+	IPass( const std::string &name, bool bActive = true ) noexcept;
 	virtual ~IPass() noexcept;
 
 	//===================================================
@@ -54,6 +55,8 @@ public:
 	//			validation occurs only once (ctor) for every Pass
 	//	\date	2022/02/19 22:48
 	virtual void validate();
+	void setActive( const bool bActive ) noexcept;
+	const bool isActive() const noexcept;
 protected:
 	void addConsumer( std::unique_ptr<IConsumer> pConsumer );
 	void addProducer( std::unique_ptr<IProducer> pProducer );

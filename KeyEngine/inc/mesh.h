@@ -4,6 +4,7 @@
 #include <memory>
 #include <optional>
 #include "effect.h"
+#include "rendering_channel.h"
 
 
 class IndexBuffer;
@@ -68,7 +69,7 @@ public:
 	//	\brief  does gameplay, transformation, physics
 	//	\date	2021/10/26 23:58
 	void update( const float dt ) cond_noex;
-	void render( const size_t channels ) const noexcept;
+	void render( const size_t channels = rch::all ) const noexcept;
 	void bind( Graphics &gph ) const cond_noex;
 	void accept( IEffectVisitor &ev );
 	const unsigned getIndicesCount() const cond_noex;

@@ -613,7 +613,7 @@
     <Position X="58.25" Y="74.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAgAAAAAAAEAAAAAAgABAAAAAAAAAAAAAAAAABA=</HashCode>
-      <FileName>inc\pixel_shader_null.h</FileName>
+      <FileName>inc\pixel_shader.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PrimitiveTopology" Collapsed="true">

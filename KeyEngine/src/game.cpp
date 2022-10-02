@@ -408,17 +408,16 @@ void Sandbox3d::render( const float dt )
 	m_pPointLight1->render( rch::lambert );
 	//m_pPointLight2->render( rch::lambert );
 
-	m_cube1.render( rch::lambert | rch::shadow | rch::solidOutline | rch::blurOutline );
+	m_cube1.render();
 	m_cube2.render( rch::lambert | rch::shadow | rch::solidOutline | rch::blurOutline );
 	m_testSphere.render( rch::lambert | rch::shadow | rch::solidOutline | rch::blurOutline );
 	m_nanoSuit.render( rch::lambert | rch::shadow | rch::blurOutline );
 	m_carabiner.render( rch::lambert | rch::shadow | rch::solidOutline | rch::blurOutline );
 	m_sponzaScene.render( rch::lambert | rch::shadow );
 
-	m_cameraMan.render( rch::lambert );
+	m_cameraMan.render( rch::lambert | rch::wireframe );
 
 	m_renderer.run( gph );
-
 
 	gph.updateAndRenderFpsTimer();
 }

@@ -3,13 +3,15 @@
 #include "os_utils.h"
 #include "dxgi_info_queue.h"
 #include "viewport.h"
+#include "bindable_exception.h"
 
 
 namespace mwrl = Microsoft::WRL;
 
-// select the right format to represent the depth stencil
+// select the right dxgi format of the depth stencil view
 // DXGI_FORMAT_R32_TYPELESS is compatible with both DXGI_FORMAT_D32_FLOAT and DXGI_FORMAT_R32_FLOAT
 // _TYPELESS is actually a float type
+// Use when creating the texture descriptor
 const DXGI_FORMAT getTypelessFormat( const IDepthStencilView::Mode mode )
 {
 	switch ( mode )
@@ -19,10 +21,10 @@ const DXGI_FORMAT getTypelessFormat( const IDepthStencilView::Mode mode )
 	case IDepthStencilView::Mode::ShadowDepth:
 		return DXGI_FORMAT::DXGI_FORMAT_R32_TYPELESS;
 	}
-	throw std::runtime_error{"Invalid mode for Typeless format map in IDepthStencilView."};
+	THROW_BINDABLE_EXCEPTION( "Invalid mode for Typeless DXGI format in IDepthStencilView." );
 }
 
-// when we want to map a view on Depth Stencil
+// when we want to map a texture view on the Depth Stencil
 const DXGI_FORMAT getTypedFormat( const IDepthStencilView::Mode mode )
 {
 	switch ( mode )
@@ -32,11 +34,11 @@ const DXGI_FORMAT getTypedFormat( const IDepthStencilView::Mode mode )
 	case IDepthStencilView::Mode::ShadowDepth:
 		return DXGI_FORMAT::DXGI_FORMAT_D32_FLOAT;
 	}
-	throw std::runtime_error{"Invalid mode for Typed format map in IDepthStencilView."};
+	THROW_BINDABLE_EXCEPTION( "Invalid mode for Typed DXGI format in IDepthStencilView." );
 }
 
-// when we want to sample from the backbuffer
-const DXGI_FORMAT getColoredFormat( const IDepthStencilView::Mode mode )	// no uses yet
+// when we want to sample from the Depth Stencil in the back buffer
+const DXGI_FORMAT getShaderInputFormat( const IDepthStencilView::Mode mode )
 {
 	switch ( mode )
 	{
@@ -45,7 +47,7 @@ const DXGI_FORMAT getColoredFormat( const IDepthStencilView::Mode mode )	// no u
 	case IDepthStencilView::Mode::ShadowDepth:
 		return DXGI_FORMAT::DXGI_FORMAT_R32_FLOAT;
 	}
-	throw std::runtime_error{"Invalid mode for Colored format map in IDepthStencilView."};
+	THROW_BINDABLE_EXCEPTION( "Invalid mode for Shader Input DXGI format in IDepthStencilView." );
 }
 
 
@@ -335,7 +337,7 @@ DepthStencilShaderInput::DepthStencilShaderInput( Graphics &gph,
 	m_pDsv->GetResource( &pRes );
 
 	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc{};
-	srvDesc.Format = getColoredFormat( mode );
+	srvDesc.Format = getShaderInputFormat( mode );
 	srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
 	srvDesc.Texture2D.MostDetailedMip = 0u;
 	srvDesc.Texture2D.MipLevels = 1u;

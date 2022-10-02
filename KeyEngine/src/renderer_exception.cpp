@@ -13,7 +13,7 @@ RendererException::RendererException( const int line,
 	:
 	KeyException(line, file, function, msg)
 {
-	OutputDebugStringA( what() );
+
 }
 
 const char* RendererException::what() const noexcept

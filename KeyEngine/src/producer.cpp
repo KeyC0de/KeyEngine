@@ -31,6 +31,7 @@ std::shared_ptr<IBindable> IProducer::getBindable()
 
 std::shared_ptr<IRenderSurface> IProducer::getRenderSurface()
 {
+	ASSERT( false, "Should never happen!" );
 	THROW_RENDERER_EXCEPTION( "IProducer class cannot be a target of a Consumer!" );
 }
 

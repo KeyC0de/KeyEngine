@@ -1139,10 +1139,10 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		ASSERT_HRES_WIN32_IF_FAILED;
 		m_pSplash->setupSplashWindow( hSplashBitmap );
 
-		DWORD ms = 10000u;
+		const DWORD msAfterWhichToCloseSplashWindow = 4000u;
 		s_timerEvent = SetTimer( m_pSplash->getHandle(),
 			IDT_TIMER_SPLASH_WINDOW_DESTRUCTION,
-			ms,
+			msAfterWhichToCloseSplashWindow,
 			(TIMERPROC) splashWindowTimerProc );
 
 		break;

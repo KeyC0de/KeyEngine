@@ -36,7 +36,7 @@ IRenderTargetView::IRenderTargetView( Graphics &gph,
 		&pTex );
 	ASSERT_HRES_IF_FAILED;
 
-	// create the rtv on the RTtexture
+	// create the view on the texture (buffer)
 	D3D11_RENDER_TARGET_VIEW_DESC rtvDesc{};
 	rtvDesc.Format = texDesc.Format;
 	rtvDesc.ViewDimension = D3D11_RTV_DIMENSION_TEXTURE2D;

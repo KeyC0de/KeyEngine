@@ -32,6 +32,7 @@ const char* KeyException::what() const noexcept
 		<< m_description
 		<< "\n\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ \n"s
 		<< std::endl;
+	m_description.clear();
 	m_description.assign( oss.str() );
 	return m_description.data();
 }

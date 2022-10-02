@@ -1,8 +1,8 @@
 #define maxRadius 13
 
-
-Texture2D blurOutlineRtt;
-SamplerState sampl;
+// for sampling the RTV (at a reduced resolution)
+Texture2D blurOutlineRtt : register(t0);
+SamplerState sampl : register(s0);
 
 cbuffer BlurKernel : register(b0)
 {

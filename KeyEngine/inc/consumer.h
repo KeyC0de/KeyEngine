@@ -58,7 +58,7 @@ class BindableConsumer final
 {
 	static_assert( std::is_base_of_v<IBindable, T>, "BindableConsumer target T must be IBindable." );
 
-	std::shared_ptr<T> &m_target;
+	std::shared_ptr<T> &m_target;	// target Producer resource Bindable
 	bool m_bLinked = false;
 public:
 	BindableConsumer( const std::string &name,
@@ -116,7 +116,7 @@ public:
 //	\author	KeyC0de
 //	\date	2022/08/21 0:17
 //
-//	\brief	Container Bindable is either a IBindable or an array type Constant Buffer or similar
+//	\brief	Container Bindable is either an RTV, DSV or an array type Constant Buffer
 //=============================================================
 template<class T>
 class ContainerBindableConsumer final

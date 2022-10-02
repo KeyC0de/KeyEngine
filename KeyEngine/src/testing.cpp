@@ -406,7 +406,7 @@ void testDynamicVertex( Window &wnd )
 		rt.clear( gph, {0.0f, 0.0f, 0.0f, 1.0f} );
 		rt.bindRenderSurface( gph );
 		gph.drawIndexed( biidx->getIndexCount() );
-		gph.setupRenderTarget()->bindRenderSurface( gph );
+		gph.renderTarget()->bindRenderSurface( gph );
 		rt.convertToBitmap( gph,
 			width,
 			height ).save( vsName + ".png" );

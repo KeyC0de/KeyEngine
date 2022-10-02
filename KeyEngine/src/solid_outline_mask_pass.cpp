@@ -2,7 +2,7 @@
 #include <string>
 #include "depth_stencil_state.h"
 #include "vertex_shader.h"
-#include "pixel_shader_null.h"
+#include "pixel_shader.h"
 #include "blend_state.h"
 
 

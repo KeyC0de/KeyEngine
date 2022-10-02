@@ -6,12 +6,12 @@
 #include "assertions_console.h"
 
 
-Effect::Effect( size_t channels,
+Effect::Effect( const size_t channels,
 	const std::string &targetPassName,
 	const bool bStartActive ) noexcept
 	:
 	m_renderingChannels(channels),
-	m_active{bStartActive},
+	m_bActive{bStartActive},
 	m_targetPassName{targetPassName}
 {
 
@@ -20,7 +20,7 @@ Effect::Effect( size_t channels,
 Effect::Effect( const Effect &rhs )
 	:
 	m_renderingChannels{rhs.m_renderingChannels},
-	m_active{rhs.m_active},
+	m_bActive{rhs.m_bActive},
 	m_targetPassName{rhs.m_targetPassName},
 	m_pTargetPass{rhs.m_pTargetPass}
 {
@@ -41,7 +41,7 @@ Effect::Effect( const Effect &rhs )
 Effect::Effect( Effect &&rhs ) noexcept
 	:
 	m_renderingChannels{rhs.m_renderingChannels},
-	m_active{rhs.m_active},
+	m_bActive{rhs.m_bActive},
 	m_targetPassName{std::move( rhs.m_targetPassName )},
 	m_pTargetPass{rhs.m_pTargetPass}
 {
@@ -49,7 +49,7 @@ Effect::Effect( Effect &&rhs ) noexcept
 		rhs.m_bindables );
 	
 	rhs.m_renderingChannels = 0u;
-	rhs.m_active = false;
+	rhs.m_bActive = false;
 	rhs.m_pTargetPass = nullptr;
 }
 
@@ -61,7 +61,7 @@ void Effect::addBindable( std::shared_ptr<IBindable> pBindable ) noexcept
 void Effect::render( const Mesh &mesh,
 	const size_t channels ) const noexcept
 {
-	if ( m_active && (m_renderingChannels & channels) != 0 )
+	if ( m_bActive && (m_renderingChannels & channels) != 0 )
 	{
 		m_pTargetPass->addJob( ren::Job{this, &mesh} );
 	}
@@ -77,12 +77,12 @@ void Effect::bind( Graphics &gph ) const cond_noex
 
 bool Effect::isEnabled() const noexcept
 {
-	return m_active;
+	return m_bActive;
 }
 
 void Effect::setEnabled( const bool b ) noexcept
 {
-	m_active = b;
+	m_bActive = b;
 }
 
 const std::string& Effect::getTargetPassName() const noexcept

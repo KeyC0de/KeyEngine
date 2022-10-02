@@ -14,6 +14,7 @@ namespace ren
 class CameraWidget
 	: public Mesh
 {
+	static inline constexpr const char *s_geometryTag = "$cam";
 	DirectX::XMFLOAT3 m_pos{0.0f, 0.0f, 0.0f};
 	DirectX::XMFLOAT3 m_rot{0.0f, 0.0f, 0.0f};
 public:

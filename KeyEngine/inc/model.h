@@ -4,6 +4,7 @@
 #include <filesystem>
 #include "node.h"
 #include "graphics.h"
+#include "rendering_channel.h"
 
 
 class Mesh;
@@ -26,7 +27,7 @@ public:
 	Model( Graphics &gph, const std::string &path, const float scale = 1.0f );
 
 	void update( const float dt ) const cond_noex;
-	void render( const size_t channels ) const cond_noex;
+	void render( const size_t channels = rch::all ) const cond_noex;
 	void accept( IModelVisitor &v );
 	void connectEffectsToRenderer( ren::Renderer &r );
 	////////////////////////////////////////////////////////////////////////////////////////////////////

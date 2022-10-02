@@ -5,9 +5,11 @@
 namespace ren
 {
 
-IPass::IPass( const std::string &name ) noexcept
+IPass::IPass( const std::string &name,
+	const bool bActive /*= true*/ ) noexcept
 	:
-	m_name{name}
+	m_name{name},
+	m_bActive{bActive}
 {
 
 }
@@ -28,6 +30,16 @@ void IPass::validate()
 	{
 		consumer->validateLinkage();
 	}
+}
+
+void IPass::setActive( const bool bActive ) noexcept
+{
+	m_bActive = bActive;
+}
+
+const bool IPass::isActive() const noexcept
+{
+	return m_bActive;
 }
 
 const std::vector<std::unique_ptr<IConsumer>>& IPass::getConsumers() const

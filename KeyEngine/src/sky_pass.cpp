@@ -55,12 +55,11 @@ SkyPass::SkyPass( Graphics &gph,
 			"skybox_vs.cso" );
 		{// cube
 			TriangleMesh cube = Geometry::makeCube();
-			const auto geometryTag = "$cube_skybox";
 			m_pCubeVb = VertexBuffer::fetch( gph,
-				geometryTag,
+				s_cubeGeometryTag,
 				cube.m_vb );
 			m_pCubeIb = IndexBuffer::fetch( gph,
-				geometryTag,
+				s_cubeGeometryTag,
 				cube.m_indices );
 			m_nCubeIndices = (unsigned)cube.m_indices.size();
 			addPassBindable( InputLayout::fetch( gph,
@@ -69,12 +68,11 @@ SkyPass::SkyPass( Graphics &gph,
 		}
 		{// sphere
 			TriangleMesh sphere = Geometry::makeTesselatedSphere();
-			const auto geometryTag = "$sphere_skybox";
 			m_pSphereVb = VertexBuffer::fetch( gph,
-				geometryTag,
+				s_sphereGeometryTag,
 				sphere.m_vb );
 			m_pSphereIb = IndexBuffer::fetch( gph,
-				geometryTag,
+				s_sphereGeometryTag,
 				sphere.m_indices );
 			m_nSphereIndices = (unsigned)sphere.m_indices.size();
 		}

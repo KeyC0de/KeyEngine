@@ -16,7 +16,7 @@ CubeTexture::CubeTexture( Graphics &gph,
 {
 	// load 6 bitmaps for the cube faces
 	std::vector<Bitmap> bitmaps;
-	bitmaps.reserve(6);
+	bitmaps.reserve( 6u );
 	for ( int i = 0; i < 6; ++i )
 	{
 		bitmaps.emplace_back( Bitmap::loadFromFile( path + std::to_string( i ) + ".png" ) );

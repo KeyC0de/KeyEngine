@@ -29,10 +29,10 @@ protected:
 	std::shared_ptr<IDepthStencilView> m_globalDepthStencil;
 public:
 	Renderer( Graphics &gph );
-	virtual ~Renderer() noexcept;
+	~Renderer() noexcept;
 
 	void run( Graphics &gph ) cond_noex;
-	virtual void reset() noexcept;
+	void reset() noexcept;
 	RenderQueuePass& getRenderQueuePass( const std::string &name );
 protected:
 	void addGlobalProducer( std::unique_ptr<IProducer> pProducer );

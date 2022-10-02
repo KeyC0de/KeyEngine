@@ -166,22 +166,7 @@
     <ClCompile Include="src\util_exception.cpp">
       <Filter>engine\util</Filter>
     </ClCompile>
-    <ClCompile Include="src\bindable_exception.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\bindable_pass.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
     <ClCompile Include="src\bitmap.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\blend_state.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\blur_outline_draw_pass.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\blur_outline_mask_pass.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
     <ClCompile Include="src\camera.cpp">
@@ -190,22 +175,10 @@
     <ClCompile Include="src\camera_manager.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
-    <ClCompile Include="src\constant_buffer_ex.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
     <ClCompile Include="src\consumer.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
     <ClCompile Include="src\cube_texture.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\depth_reversed_pass.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\depth_stencil_state.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\depth_stencil_view.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
     <ClCompile Include="src\dxgi_info_queue.cpp">
@@ -223,28 +196,13 @@
     <ClCompile Include="src\effect_visitor.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
-    <ClCompile Include="src\fullscreen_pass.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
     <ClCompile Include="src\graphics.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
     <ClCompile Include="src\graphics_friend.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
-    <ClCompile Include="src\horizontal_blur_pass.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\index_buffer.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\input_layout.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
     <ClCompile Include="src\job.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\lambertian_pass.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
     <ClCompile Include="src\light.cpp">
@@ -259,37 +217,7 @@
     <ClCompile Include="src\mouse_picker.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
-    <ClCompile Include="src\pass.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\pass_2d.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\pixel_shader.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\pixel_shader_null.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\primitive_topology.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
     <ClCompile Include="src\producer.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\rasterizer_state.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\rasterizer_state_shadow.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\render_queue_pass.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\render_surface_clear_pass.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\render_target.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
     <ClCompile Include="src\renderer.cpp">
@@ -298,52 +226,10 @@
     <ClCompile Include="src\renderer_exception.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
-    <ClCompile Include="src\shadow_map_sampler_state.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\shadow_pass.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\sky_pass.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
     <ClCompile Include="src\skybox_vscb.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
-    <ClCompile Include="src\solid_outline_draw_pass.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\solid_outline_mask_pass.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
     <ClCompile Include="src\texture.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\texture_sampler_state.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\transform_scale_vscb.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\transform_vscb.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\triangle_mesh.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\vertex_buffer.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\vertex_shader.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\vertical_blur_pass.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\viewport.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\wireframe_pass.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
     <ClCompile Include="src\camera_widget.cpp">
@@ -372,6 +258,120 @@
     </ClCompile>
     <ClCompile Include="src\sprite.cpp">
       <Filter>engine\vfx\renderables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bindable_exception.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\blend_state.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\constant_buffer_ex.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\depth_stencil_state.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\depth_stencil_view.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\index_buffer.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\input_layout.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pixel_shader.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\primitive_topology.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rasterizer_state.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rasterizer_state_shadow.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\render_target.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\shadow_map_sampler_state.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\transform_scale_vscb.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\transform_vscb.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\texture_sampler_state.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vertex_buffer.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vertex_shader.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\viewport.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\triangle_mesh.cpp">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bindable_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\blur_outline_draw_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\blur_outline_mask_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\depth_reversed_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fullscreen_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\horizontal_blur_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lambertian_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pass_2d.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\render_queue_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\render_surface_clear_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\shadow_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sky_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\solid_outline_draw_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\solid_outline_mask_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vertical_blur_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\wireframe_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\blur_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -948,76 +948,16 @@
     <ClInclude Include="inc\util_exception.h">
       <Filter>engine\util</Filter>
     </ClInclude>
-    <ClInclude Include="inc\wireframe_pass.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\triangle_mesh.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\vertex_buffer.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\vertex_shader.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\vertical_blur_pass.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\viewport.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
     <ClInclude Include="inc\windows_hidden_defs.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\transform_vscb.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
     <ClInclude Include="inc\texture.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
-    <ClInclude Include="inc\texture_sampler_state.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\transform_scale_vscb.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
     <ClInclude Include="inc\mouse_picker.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
-    <ClInclude Include="inc\pass.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\pass_2d.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\pixel_shader.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\pixel_shader_null.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\primitive_topology.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
     <ClInclude Include="inc\producer.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\rasterizer_state.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\rasterizer_state_shadow.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\render_queue_pass.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\render_surface.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\render_surface_clear_pass.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\render_target.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
     <ClInclude Include="inc\renderer.h">
@@ -1029,25 +969,7 @@
     <ClInclude Include="inc\rendering_channel.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
-    <ClInclude Include="inc\shadow_map_sampler_state.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\shadow_pass.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\sky_pass.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
     <ClInclude Include="inc\skybox_vscb.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\solid_outline_draw_pass.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\solid_outline_mask_pass.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\lambertian_pass.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
     <ClInclude Include="inc\light.h">
@@ -1062,25 +984,7 @@
     <ClInclude Include="inc\job.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
-    <ClInclude Include="inc\horizontal_blur_pass.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\index_buffer.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\input_layout.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
     <ClInclude Include="inc\graphics_mode.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\depth_reversed_pass.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\depth_stencil_state.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\depth_stencil_view.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
     <ClInclude Include="inc\dxgi_info_queue.h">
@@ -1098,9 +1002,6 @@
     <ClInclude Include="inc\effect_visitor.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
-    <ClInclude Include="inc\fullscreen_pass.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
     <ClInclude Include="inc\graphics.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
@@ -1113,37 +1014,10 @@
     <ClInclude Include="inc\consumer.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
-    <ClInclude Include="inc\constant_buffer_ex.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\constant_buffer.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
     <ClInclude Include="inc\color.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
-    <ClInclude Include="inc\bindable.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\bindable_exception.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\bindable_map.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\bindable_pass.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
     <ClInclude Include="inc\bitmap.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\blend_state.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\blur_outline_draw_pass.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\blur_outline_mask_pass.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
     <ClInclude Include="inc\camera.h">
@@ -1182,15 +1056,135 @@
     <ClInclude Include="resource.h">
       <Filter>assets\resources</Filter>
     </ClInclude>
+    <ClInclude Include="inc\bindable.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\bindable_exception.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\bindable_map.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\blend_state.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\constant_buffer.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\constant_buffer_ex.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\depth_stencil_state.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\depth_stencil_view.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\index_buffer.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\input_layout.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\pixel_shader.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\primitive_topology.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\rasterizer_state.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\rasterizer_state_shadow.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\render_surface.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\render_target.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\shadow_map_sampler_state.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\transform_scale_vscb.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\transform_vscb.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\texture_sampler_state.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\vertex_buffer.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\vertex_shader.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\viewport.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\triangle_mesh.h">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\bindable_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\blur_outline_draw_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\blur_outline_mask_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\depth_reversed_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\fullscreen_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\horizontal_blur_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\lambertian_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\pass_2d.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\render_queue_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\render_surface_clear_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\shadow_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\sky_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\solid_outline_draw_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\solid_outline_mask_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\vertical_blur_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\wireframe_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\blur_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="assets\resources\splash.png">
-      <Filter>assets\resources</Filter>
-    </Image>
     <Image Include="assets\resources\tray_graffiti.ico">
-      <Filter>assets\resources</Filter>
-    </Image>
-    <Image Include="assets\resources\splash.ico">
       <Filter>assets\resources</Filter>
     </Image>
     <Image Include="assets\resources\keyc0de.ico">
@@ -1383,6 +1377,12 @@
     <Filter Include="assets\resources">
       <UniqueIdentifier>{5f3a7b52-ef98-4a37-9054-0eb49ef1ddcc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="engine\vfx\bindables">
+      <UniqueIdentifier>{53705c83-2213-4227-9477-d7029221fd35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\vfx\pass">
+      <UniqueIdentifier>{2bb99e09-78f3-4723-bdbf-94c7cce309af}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="shaders\blur_separ_ps.hlsl">
@@ -1488,6 +1488,9 @@
       <Filter>engine\vfx\shaders</Filter>
     </FxCompile>
     <FxCompile Include="shaders\skybox_vs.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\blur_ps.hlsl">
       <Filter>engine\vfx\shaders</Filter>
     </FxCompile>
   </ItemGroup>

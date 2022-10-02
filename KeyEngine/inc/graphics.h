@@ -123,8 +123,8 @@ public:
 	const DirectX::XMMATRIX& getProjectionMatrix() const noexcept;
 	const unsigned getClientWidth() const noexcept;
 	const unsigned getClientHeight() const noexcept;
-	std::shared_ptr<IRenderTargetView> setupRenderTarget();
-	std::shared_ptr<IDepthStencilView> setupDepthStencil();
+	std::shared_ptr<IRenderTargetView> renderTarget();
+	std::shared_ptr<IDepthStencilView> depthStencil();
 	void createFactory();
 	void createAdapters();
 	//===================================================

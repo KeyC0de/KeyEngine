@@ -8,6 +8,7 @@
 #include "depth_stencil_state.h"
 #include "texture_sampler_state.h"
 #include "assertions_console.h"
+#include "cube_texture.h"
 
 
 namespace ren
@@ -22,15 +23,18 @@ LambertianPass::LambertianPass( Graphics &gph,
 		m_pRtv ) );
 	addConsumer( RenderSurfaceConsumer<IDepthStencilView>::make( "depthStencil",
 		m_pDsv ) );
-	addContainerBindableConsumer<IBindable>( "shadowCubemapRttIn" );
-	addPassBindable( std::make_shared<TextureSamplerState>( gph,
-		0u,
-		TextureSamplerState::FilterMode::Anisotropic,
-		TextureSamplerState::AddressMode::Wrap ) );
+	addContainerBindableConsumer<CubeTextureDS>( "shadowCubemapRttIn" );
+
 	addProducer( RenderSurfaceProducer<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );
 	addProducer( RenderSurfaceProducer<IDepthStencilView>::make( "depthStencil",
 		m_pDsv ) );
+
+	addPassBindable( std::make_shared<TextureSamplerState>( gph,
+		0u,
+		TextureSamplerState::FilterMode::Anisotropic,
+		TextureSamplerState::AddressMode::Wrap ) );
+
 	addPassBindable( DepthStencilState::fetch( gph,
 		DepthStencilState::Mode::Default ) );
 }

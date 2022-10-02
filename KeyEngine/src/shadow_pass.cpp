@@ -2,7 +2,7 @@
 #include "graphics.h"
 #include "producer.h"
 #include "vertex_shader.h"
-#include "pixel_shader_null.h"
+#include "pixel_shader.h"
 #include "depth_stencil_view.h"
 #include "depth_stencil_state.h"
 #include "blend_state.h"

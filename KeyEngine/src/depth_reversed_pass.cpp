@@ -14,15 +14,18 @@ DepthReversedPass::DepthReversedPass( Graphics &gph,
 	:
 	RenderQueuePass{name}
 {
+	addPassBindable( DepthStencilState::fetch( gph,
+		DepthStencilState::Mode::DepthReversed ) );
+
 	addConsumer( RenderSurfaceConsumer<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );
 	addConsumer( RenderSurfaceConsumer<IDepthStencilView>::make( "depthStencil",
 		m_pDsv ) );
+	
 	addProducer( RenderSurfaceProducer<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );
-	
-	addPassBindable( DepthStencilState::fetch( gph,
-		DepthStencilState::Mode::DepthReversed ) );
+	addProducer( RenderSurfaceProducer<IDepthStencilView>::make( "depthStencil",
+		m_pDsv ) );
 }
 
 

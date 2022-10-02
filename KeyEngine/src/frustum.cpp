@@ -50,7 +50,7 @@ Frustum::Frustum( Graphics &gph,
 	indices.push_back( 3 );
 	indices.push_back( 7 );
 	m_pIndexBuffer = IndexBuffer::fetch( gph,
-		"$frustum",
+		s_geometryTag,
 		indices );
 	m_pPrimitiveTopology = PrimitiveTopology::fetch( gph,
 		D3D11_PRIMITIVE_TOPOLOGY_LINELIST );
@@ -61,16 +61,16 @@ Frustum::Frustum( Graphics &gph,
 	// 1. normal lambertian
 	// 2. DepthReversed mode and another color (dimmer) - only the occluded part of the frustum gets drawn
 	{
-		Effect lambert{rch::lambert, "lambertian", true};
+		Effect wireframe{rch::wireframe, "wireframe", true};
 
 		auto pVs = VertexShader::fetch( gph,
 			"flat_vs.cso" );
 
-		lambert.addBindable( InputLayout::fetch( gph,
+		wireframe.addBindable( InputLayout::fetch( gph,
 			m_pVertexBuffer->getLayout(),
 			*pVs ) );
-		lambert.addBindable( std::move( pVs ) );
-		lambert.addBindable( PixelShader::fetch( gph,
+		wireframe.addBindable( std::move( pVs ) );
+		wireframe.addBindable( PixelShader::fetch( gph,
 			"flat_ps.cso" ) );
 
 		struct ColorPCB
@@ -78,16 +78,13 @@ Frustum::Frustum( Graphics &gph,
 			dx::XMFLOAT3 color{0.6f, 0.2f, 0.2f};
 			float padding = 0.0f;
 		} colorPcb;
-		lambert.addBindable( PixelShaderConstantBuffer<ColorPCB>::fetch( gph,
+		wireframe.addBindable( PixelShaderConstantBuffer<ColorPCB>::fetch( gph,
 			colorPcb,
 			0u ) );
-		lambert.addBindable( std::make_shared<TransformVSCB>( gph,
+		wireframe.addBindable( std::make_shared<TransformVSCB>( gph,
 			0u ) );
-		lambert.addBindable( RasterizerState::fetch( gph,
-			RasterizerState::FrontSided,
-			RasterizerState::Solid ) );
 
-		addEffect( std::move( lambert ) );
+		addEffect( std::move( wireframe ) );
 	}
 	{
 		Effect occluded{rch::lambert, "depthReversed", true};

@@ -17,7 +17,7 @@ ShadowMapSamplerState::ShadowMapSamplerState( Graphics &gph,
 
 	D3D11_SAMPLER_DESC samplerDesc = CD3D11_SAMPLER_DESC{CD3D11_DEFAULT{}};
 
-	samplerDesc.BorderColor[0] = 1.0f;
+	samplerDesc.BorderColor[0] = 1.0f;	// farthest distance possible -Border color to use if D3D11_TEXTURE_ADDRESS_BORDER is specified for AddressU, AddressV, or AddressW. Range must be between 0.0 and 1.0 inclusive. meaning max distance
 	samplerDesc.AddressU = D3D11_TEXTURE_ADDRESS_BORDER;
 	samplerDesc.AddressV = D3D11_TEXTURE_ADDRESS_BORDER;
 	if ( bHwPcf )

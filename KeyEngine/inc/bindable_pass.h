@@ -36,6 +36,10 @@ protected:
 	void bind( Graphics &gph ) const cond_noex;
 	void validate() override;
 
+	//===================================================
+	//	\function	addContainerBindableConsumer
+	//	\brief  this should mostly used on the Pass that wants to read an offscreen texture buffer (via ita name)
+	//	\date	2022/10/02 20:49
 	template<class T>
 	void addContainerBindableConsumer( const std::string &name )
 	{
@@ -45,6 +49,8 @@ protected:
 			m_bindables,
 			index ) );
 	}
+
+	// #TODO: add releaseTargets() to release the RT & DS when we change the resolution of the swap chain & window
 };
 
 

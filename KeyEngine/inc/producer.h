@@ -24,6 +24,14 @@ public:
 	virtual std::shared_ptr<IRenderSurface> getRenderSurface();
 };
 
+//=============================================================
+//	\class	BindableProducer
+//
+//	\author	KeyC0de
+//	\date	2022/10/02 21:08
+//
+//	\brief	This T will mostly be RTV of an offscreen surface
+//=============================================================
 template<class T>
 class BindableProducer final
 	: public IProducer

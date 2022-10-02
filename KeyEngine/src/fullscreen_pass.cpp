@@ -5,7 +5,6 @@
 #include "vertex_buffer.h"
 #include "vertex_shader.h"
 #include "rasterizer_state.h"
-#include "pixel_shader_null.h"
 
 
 namespace ren
@@ -28,12 +27,12 @@ FullscreenPass::FullscreenPass( Graphics &gph,
 	vb.emplaceVertex( dx::XMFLOAT2{-1, -1} );
 	vb.emplaceVertex( dx::XMFLOAT2{1, -1} );
 	addPassBindable( VertexBuffer::fetch( gph,
-		"$fullscreen",
+		m_fullscreenTag,
 		vb ) );
 
 	std::vector<unsigned> indices{0, 1, 2, 1, 3, 2};
 	addPassBindable( IndexBuffer::fetch( gph,
-		"$fullscreen",
+		m_fullscreenTag,
 		indices ) );
 
 	auto vs = VertexShader::fetch( gph,
@@ -46,7 +45,6 @@ FullscreenPass::FullscreenPass( Graphics &gph,
 	addPassBindable( RasterizerState::fetch( gph,
 		RasterizerState::FrontSided,
 		RasterizerState::Solid ) );
-	addPassBindable( PixelShaderNull::fetch( gph ) );
 }
 
 void FullscreenPass::run( Graphics &gph ) const cond_noex

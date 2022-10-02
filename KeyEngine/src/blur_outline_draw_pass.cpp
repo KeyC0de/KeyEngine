@@ -17,14 +17,6 @@ BlurOutlineDrawPass::BlurOutlineDrawPass( Graphics &gph,
 	:
 	RenderQueuePass{name}
 {
-	const auto width = gph.getClientWidth() / rezReductFactor;
-	const auto height = gph.getClientHeight() / rezReductFactor;
-
-	m_pRtv = std::make_unique<RenderTargetShaderInput>( gph,
-		width,
-		height,
-		0u );
-
 	addPassBindable( VertexShader::fetch( gph,
 		"flat_vs.cso" ) );
 	addPassBindable( PixelShader::fetch( gph,
@@ -35,9 +27,17 @@ BlurOutlineDrawPass::BlurOutlineDrawPass( Graphics &gph,
 		BlendState::NoBlend,
 		0u ) );
 
+	const auto width = gph.getClientWidth() / rezReductFactor;
+	const auto height = gph.getClientHeight() / rezReductFactor;
+
+	m_pRtv = std::make_unique<RenderTargetShaderInput>( gph,
+		width,
+		height,
+		0u );
+
 	// m_pRtv will be bound as an Output this Pass
 	// and as an input Bindable the next Pass (HorizontalBlurPass) to read from the texture
-	addProducer( BindableProducer<IRenderTargetView>::make( "blurOutlineRttOut",
+	addProducer( BindableProducer<IRenderTargetView>::make( "blurRttOut",
 		m_pRtv ) );
 }
 

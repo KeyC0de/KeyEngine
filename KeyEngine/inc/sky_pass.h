@@ -15,6 +15,9 @@ namespace ren
 class SkyPass
 	: public IBindablePass
 {
+	static inline constexpr const char *s_cubeGeometryTag = "$cube_skybox";
+	static inline constexpr const char *s_sphereGeometryTag = "$sphere_skybox";
+
 	const Camera *m_pActiveCamera = nullptr;
 	unsigned m_nCubeIndices;
 	unsigned m_nSphereIndices;

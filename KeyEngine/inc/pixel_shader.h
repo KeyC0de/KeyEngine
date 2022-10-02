@@ -19,3 +19,23 @@ public:
 	static std::string calcUid( const std::string &filepath );
 	const std::string getUid() const noexcept override;
 };
+
+//=============================================================
+//	\class	PixelShaderNull
+//
+//	\author	KeyC0de
+//	\date	2021/06/25 20:21
+//
+//	\brief	writes nothing to color buffer - written as a separate class to avoid a branch in bind()
+//=============================================================
+class PixelShaderNull
+	: public IBindable
+{
+public:
+	PixelShaderNull( Graphics &gph );
+
+	void bind( Graphics &gph ) cond_noex override;
+	static std::shared_ptr<PixelShaderNull> fetch( Graphics &gph );
+	static std::string calcUid();
+	const std::string getUid() const noexcept override;
+};

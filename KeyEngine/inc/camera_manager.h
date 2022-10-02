@@ -3,6 +3,7 @@
 #include <vector>
 #include <memory>
 #include "non_copyable.h"
+#include "rendering_channel.h"
 
 
 class Camera;
@@ -36,7 +37,7 @@ public:
 	void bind( Graphics &gph );
 	void add( std::shared_ptr<Camera> pCam );
 	void connectEffectsToRenderer( ren::Renderer &r );
-	void render( const size_t channels ) const;
+	void render( const size_t channels = rch::all ) const;
 	Camera& activeCamera() const noexcept;
 	std::shared_ptr<Camera> shareActiveCamera() const noexcept;
 };

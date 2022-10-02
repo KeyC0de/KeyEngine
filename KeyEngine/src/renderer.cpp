@@ -20,6 +20,8 @@
 #include "imgui.h"
 #include "math_utils.h"
 #include "assertions_console.h"
+#include "wireframe_pass.h"
+#include "blur_pass.h"
 
 
 namespace ren
@@ -27,15 +29,18 @@ namespace ren
 
 Renderer::Renderer( Graphics &gph )
 	:
-	m_globalColorBuffer{gph.setupRenderTarget()},
-	m_globalDepthStencil{gph.setupDepthStencil()}
+	m_globalColorBuffer{gph.renderTarget()},
+	m_globalDepthStencil{gph.depthStencil()}
 {
+	addGlobalConsumer( RenderSurfaceConsumer<IRenderTargetView>::make( "backColorbuffer",
+		m_globalColorBuffer ) );
+
 	addGlobalProducer( RenderSurfaceProducer<IRenderTargetView>::make( "backColorbuffer",
 		m_globalColorBuffer ) );
 	addGlobalProducer( RenderSurfaceProducer<IDepthStencilView>::make( "backDepthBuffer",
 		m_globalDepthStencil ) );
-	addGlobalConsumer( RenderSurfaceConsumer<IRenderTargetView>::make( "backColorbuffer",
-		m_globalColorBuffer ) );
+
+	// #TODO: Add active flag as argument in the ctor of all Passes
 	{
 		auto pass = std::make_unique<RenderSurfaceClearPass>( "clearRt" );
 		pass->setupConsumerTarget( "buffer",
@@ -74,7 +79,10 @@ void Renderer::run( Graphics &gph ) cond_noex
 	ASSERT( m_bValidatedPasses, "Renderer is not validated!" );
 	for ( auto &pass : m_passes )
 	{
-		pass->run( gph );
+		if ( pass->isActive() )
+		{
+			pass->run( gph );
+		}
 	}
 }
 
@@ -257,7 +265,6 @@ Renderer3d::Renderer3d( Graphics &gph,
 	m_kernelType{kernelType}
 {
 	{
-		// shadowMap is purely a producer
 		auto pass = std::make_unique<ShadowPass>( gph,
 			"shadowMap" );
 		linkPassConsumers( *pass );
@@ -341,7 +348,7 @@ Renderer3d::Renderer3d( Graphics &gph,
 			4 );
 		pass->setupConsumerTarget( "blurRttIn",
 			"blurOutlineDraw",
-			"blurOutlineRttOut" );
+			"blurRttOut" );
 		pass->setupConsumerTarget( "blurKernel",
 			"$",
 			"blurKernel" );
@@ -408,11 +415,36 @@ Renderer3d::Renderer3d( Graphics &gph,
 		linkPassConsumers( *pass );
 		addPass( std::move( pass ) );
 	}
+	{
+		auto pass = std::make_unique<WireframePass>( gph,
+			"wireframe" );
+		pass->setupConsumerTarget( "renderTarget",
+			"depthReversed",
+			"renderTarget" );
+		pass->setupConsumerTarget( "depthStencil",
+			"depthReversed",
+			"depthStencil" );
+		linkPassConsumers( *pass );
+		addPass( std::move( pass ) );
+	}
+	
+	{
+		auto pass = std::make_unique<BlurPass>( gph,
+			"blur" );
+		pass->setupConsumerTarget( "renderTarget",
+			"wireframe",
+			"renderTarget" );
+		pass->setupConsumerTarget( "depthStencil",
+			"wireframe",
+			"depthStencil" );
+		linkPassConsumers( *pass );
+		addPass( std::move( pass ) );
+	}
 
 	Renderer::validateConsumersLinkage();
 
 	setupGlobalConsumerTarget( "backColorbuffer",
-		"depthReversed",
+		"blur",
 		"renderTarget" );
 	Renderer::linkGlobalConsumers();
 }

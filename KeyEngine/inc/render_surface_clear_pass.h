@@ -11,7 +11,7 @@ namespace ren
 class RenderSurfaceClearPass
 	: public IPass
 {
-	std::shared_ptr<IRenderSurface> m_pBuffer;
+	std::shared_ptr<IRenderSurface> m_pRenderSurface;
 public:
 	RenderSurfaceClearPass( const std::string &name );
 

@@ -62,27 +62,26 @@ CameraWidget::CameraWidget( Graphics &gph )
 	}
 
 	// we don't have to duplicate the CameraWidget buffers - they're all the same
-	const auto tag = "$cam";
 	m_pVertexBuffer = VertexBuffer::fetch( gph,
-		tag,
+		s_geometryTag,
 		vb );
 	m_pIndexBuffer = IndexBuffer::fetch( gph,
-		tag,
+		s_geometryTag,
 		indices );
 	m_pPrimitiveTopology = PrimitiveTopology::fetch( gph,
 		D3D11_PRIMITIVE_TOPOLOGY_LINELIST );
 
 	{
-		Effect lambertian{rch::lambert, "lambertian", true};
+		Effect wireframe{rch::wireframe, "wireframe", true};
 
 		auto pVs = VertexShader::fetch( gph,
 			"flat_vs.cso" );
-		lambertian.addBindable( InputLayout::fetch( gph,
+		wireframe.addBindable( InputLayout::fetch( gph,
 			m_pVertexBuffer->getLayout(),
 			*pVs ) );
-		lambertian.addBindable( std::move( pVs ) );
+		wireframe.addBindable( std::move( pVs ) );
 
-		lambertian.addBindable( PixelShader::fetch( gph,
+		wireframe.addBindable( PixelShader::fetch( gph,
 			"flat_ps.cso" ) );
 
 		struct ColorPCB
@@ -91,16 +90,13 @@ CameraWidget::CameraWidget( Graphics &gph )
 			float paddingPlaceholder = 0.0f;
 		} colorPcb;
 
-		lambertian.addBindable( PixelShaderConstantBuffer<ColorPCB>::fetch( gph,
+		wireframe.addBindable( PixelShaderConstantBuffer<ColorPCB>::fetch( gph,
 			colorPcb,
 			0u ) );
-		lambertian.addBindable( std::make_shared<TransformVSCB>( gph,
+		wireframe.addBindable( std::make_shared<TransformVSCB>( gph,
 			0u ) );
-		lambertian.addBindable( RasterizerState::fetch( gph,
-			RasterizerState::FrontSided,
-			RasterizerState::Solid ) );
 
-		addEffect( std::move( lambertian ) );
+		addEffect( std::move( wireframe ) );
 	}
 }
 
