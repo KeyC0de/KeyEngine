@@ -26,10 +26,8 @@ public:
 
 //=============================================================
 //	\class	BindableProducer
-//
 //	\author	KeyC0de
 //	\date	2022/10/02 21:08
-//
 //	\brief	This T will mostly be RTV of an offscreen surface
 //=============================================================
 template<class T>
@@ -62,6 +60,12 @@ public:
 	}
 };
 
+//=============================================================
+//	\class	RenderSurfaceProducer
+//	\author	KeyC0de
+//	\date	2022/10/07 21:30
+//	\brief	T should mostly be the main Render Surface color texture/buffer or depth-stencil texture/buffer
+//=============================================================
 template<class T>
 class RenderSurfaceProducer final
 	: public IProducer

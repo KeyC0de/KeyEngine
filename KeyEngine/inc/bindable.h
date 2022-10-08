@@ -12,10 +12,8 @@ class Graphics;
 
 //=============================================================
 //	\class	IBindable
-//
 //	\author	KeyC0de
 //	\date	2022/08/30 19:27
-//
 //	\brief	a class encapsulating a GPU - Graphics Pipeline - resource
 //=============================================================
 class IBindable
@@ -27,10 +25,8 @@ public:
 
 	}
 
-	//===================================================
-	//	\function	bind
-	//	\brief  bind graphics resource to a certain stage of the graphics pipeline
-	//	\date	2022/08/21 0:00
+	//	\function	bind	||	\date	2022/08/21 0:00
+	//	\brief	bind graphics resource to a certain stage of the graphics pipeline
 	virtual void bind( Graphics &gph ) cond_noex = 0;
 
 	virtual void setMesh( const Mesh &mesh ) noexcept

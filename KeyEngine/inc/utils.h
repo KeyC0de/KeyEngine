@@ -48,6 +48,16 @@ Both of them are just performance hints to the compiler.
 #define PRINT_ENUM( e )				std::printf( "'%s'", (#e) );
 #define PRINTW_ENUM( e )			std::wprintf( L"'%s'", (#e) );
 
+#define CLASS_NAMER( className ) private: \
+		static inline constexpr const char *s_className = #className ; \
+	public: \
+		static constexpr const char* getClassName() noexcept \
+		{ \
+			return s_className; \
+		} \
+	private: \
+// use it like so: `CLASS_NAMER( MyClassName );` as the first statement of your class
+
 
 namespace util
 {
@@ -88,22 +98,15 @@ bool isFutureReady( const std::future<T> &fu )
 	return fu.wait_for( std::chrono::seconds( 0 ) ) == std::future_status::ready;
 }
 
-//===================================================
-//	\function	tokenizeQuotedString
-//	\brief  converts a string input into a vector of strings
+//	\function	tokenizeQuotedString	||	\date	2021/01/12 12:54
+//	\brief	converts a string input into a vector of strings
 //			separation into vector element "tokens" is based on spaces or quotes '
-//	\date	2021/01/12 12:54
 std::vector<std::string> tokenizeQuotedString( const std::string &input );
-//===================================================
-//	\function	s2ws
-//	\brief	convert from strings/chars to wide strings/wchar_ts
-//				or std::wstring( s.begin(), s.end() );
-//	\date	2020/12/30 20:38
+//	\function	s2ws	||	\date	2020/12/30 20:38
+//	\brief	convert from strings/chars to wide strings/wchar_ts, or std::wstring( s.begin(), s.end() );
 std::wstring s2ws( const std::string &narrow );
-//===================================================
-//	\function	ws2s
+//	\function	ws2s	||	\date	2020/12/30 20:38
 //	\brief	convert wide strings/wchar_ts to strings/chars
-//	\date	2020/12/30 20:38
 std::string ws2s( const std::wstring &wide );
 
 std::vector<std::string> splitString( const std::string &s, const std::string &delim );
@@ -111,35 +114,23 @@ bool stringContains( std::string_view haystack, std::string_view needle );
 std::string& capitalizeFirstLetter( std::string &str );
 std::string capitalizeFirstLetter( const std::string &str );
 
-//===================================================
-//	\function	trimL
-//	\brief  trim from start (in place)
-//	\date	2022/07/29 21:12
+//	\function	trimL	||	\date	2022/07/29 21:12
+//	\brief	trim from start (in place)
 void trimL( std::string &s );
-//===================================================
-//	\function	trimR
-//	\brief  trim from end (in place)
-//	\date	2022/07/29 21:13
+//	\function	trimR	||	\date	2022/07/29 21:13
+//	\brief	trim from end (in place)
 void trimR( std::string &s );
-//===================================================
-//	\function	trim
-//	\brief  trim from both ends (in place)
-//	\date	2022/07/29 21:13
+//	\function	trim	||	\date	2022/07/29 21:13
+//	\brief	trim from both ends (in place)
 void trim( std::string &s );
-//===================================================
-//	\function	trimCopy
-//	\brief  trim from both ends (copying)
-//	\date	2022/07/29 21:13
+//	\function	trimCopy	||	\date	2022/07/29 21:13
+//	\brief	trim from both ends (copying)
 std::string trimCopy( std::string s );
-//===================================================
-//	\function	trimLCopy
-//	\brief  trim from start (copying)
-//	\date	2022/07/29 21:13
+//	\function	trimLCopy	||	\date	2022/07/29 21:13
+//	\brief	trim from start (copying)
 std::string trimLCopy( std::string s );
-//===================================================
-//	\function	trimRCopy
-//	\brief  trim from end (copying)
-//	\date	2022/07/29 21:14
+//	\function	trimRCopy	||	\date	2022/07/29 21:14
+//	\brief	trim from end (copying)
 std::string trimRCopy( std::string s );
 
 template<typename T>
@@ -160,18 +151,13 @@ void printBinary( const T val )
 
 std::tuple<int, int, int> timeToHms( const float time );
 std::tuple<int, int, int> secondsToHms( const int totalSecs );
-//===================================================
-//	\function	secondsToTimeT
+
+//	\function	secondsToTimeT	||	\date	2022/07/28 22:35
 //	\brief	convert seconds to time_t
-//			Although not defined, time_t is implementation defined
-//			It is almost always an integral value holding the number of seconds (not counting leap seconds) since 00:00, Jan 1 1970 UTC, corresponding to POSIX time.
-//	\date	2022/07/28 22:35
+//			Although not defined, time_t is implementation defined, it is almost always an integral value holding the number of seconds (not counting leap seconds) since 00:00, Jan 1 1970 UTC, corresponding to POSIX time.
 inline time_t secondsToTimeT( const int s );
-//===================================================
-//	\function	timeTtoSeconds
-//	\brief  convert time_t to seconds
-//			time_t can be acquired as if by means of time(nullptr)
-//	\date	2022/07/28 22:32
+//	\function	timeTtoSeconds	||	\date	2022/07/28 22:32
+//	\brief	convert time_t to seconds --- time_t can be acquired as if by means of time(nullptr)
 long int timeTtoSeconds( const time_t t );
 
 std::uintptr_t pointerToInt( const void *p );
@@ -193,18 +179,14 @@ std::string getNumberString( const T num )
 
 std::string generateCaptcha( int len );
 
-//===================================================
-//	\function	isAligned
-//	\brief  check whether the address is aligned to `alignment` boundary
-//	\date	2022/08/30 9:40
+//	\function	isAligned	||	\date	2022/08/30 9:40
+//	\brief	check whether the address is aligned to `alignment` boundary
 bool isAligned( const volatile void *p, const std::size_t alignment ) noexcept;
 bool isAligned( const std::uintptr_t pi, const std::size_t alignment ) noexcept;
 constexpr const int is4ByteAligned( const intptr_t *addr );
 
-//===================================================
-//	\function	alignForward
-//	\brief  align pointer forward with given alignment
-//	\date	2022/02/20 20:34
+//	\function	alignForward	||	\date	2022/02/20 20:34
+//	\brief	align pointer forward with given alignment
 template<typename T>
 const T* alignForward( const T *p,
 	const std::size_t alignment ) noexcept
@@ -223,15 +205,11 @@ const T* alignForward( const T *p,
 }
 
 const std::uintptr_t alignForward( const std::uintptr_t ip, const std::size_t alignment ) noexcept;
-//===================================================
-//	\function	calcAlignedSize
-//	\brief  calculates alignment in bits supposedly
-//	\date	2022/08/30 9:39
+//	\function	calcAlignedSize	||	\date	2022/08/30 9:39
+//	\brief	calculates alignment in bits supposedly
 const std::size_t calcAlignedSize( const std::size_t size, const std::size_t alignment );
-//===================================================
-//	\function	getForwardPadding
-//	\brief  calculate padding bytes needed to align address p forward given the alignment
-//	\date	2022/08/30 9:40
+//	\function	getForwardPadding	||	\date	2022/08/30 9:40
+//	\brief	calculate padding bytes needed to align address p forward given the alignment
 const std::size_t getForwardPadding( const std::size_t p, const std::size_t alignment );
 const std::size_t getForwardPaddingWithHeader( const std::size_t p, const std::size_t alignment, const std::size_t headerSize );
 

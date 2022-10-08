@@ -31,11 +31,9 @@ public:
 	void accept( IModelVisitor &v );
 	void connectEffectsToRenderer( ren::Renderer &r );
 	////////////////////////////////////////////////////////////////////////////////////////////////////
-	//===================================================
-	//	\function	setRootTransform
-	//	\brief  Sets the root Node's Worldtransform
+	//	\function	setRootTransform	||	\date	2022/09/03 20:25
+	//	\brief	Sets the root Node's Worldtransform
 	//			That transform propagates during Node::update to all children nodes and to the Meshes themselves.
-	//	\date	2022/09/03 20:25
 	void setRootTransform( const DirectX::XMMATRIX &tr ) cond_noex;
 	void setTransform( const DirectX::XMFLOAT4 &rot, const DirectX::XMFLOAT4 &pos, const float scale ) cond_noex;
 	void setRotation( const DirectX::XMFLOAT3 &rot ) cond_noex;
@@ -53,10 +51,8 @@ public:
 	float calcScale() const noexcept;
 	DirectX::XMMATRIX calcScaleTr() const noexcept;
 	////////////////////////////////////////////////////////////////////////////////////////////////////
-	//===================================================
-	//	\function	getDistanceFromActiveCamera
-	//	\brief  return the distance from the currently active camera for the primary Mesh
-	//	\date	2022/09/03 13:27
+	//	\function	getDistanceFromActiveCamera	||	\date	2022/09/03 13:27
+	//	\brief	return the distance from the currently active camera for the primary Mesh
 	const float getDistanceFromActiveCamera() const noexcept;
 private:
 	std::unique_ptr<Node> parseModelNodeGraph( const aiNode &node, int imguiNodeId, const float scale ) noexcept;

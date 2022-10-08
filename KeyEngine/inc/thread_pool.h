@@ -10,10 +10,8 @@
 
 //============================================================
 //	\class	ThreadPool
-//
 //	\author	KeyC0de
 //	\date	25/9/2019 3:55
-//
 //	\brief	A class which encapsulates a Queue of Tasks & a Pool of threads
 //				and dispatches work on demand - ie. upon an incoming Task - callable object -
 //				a thread is dispatched to execute it
@@ -22,7 +20,7 @@
 class ThreadPool final
 {
 	using Task = std::function<void()>;
-	
+
 	std::atomic<bool> m_bEnabled;
 	std::vector<std::thread> m_pool;
 	std::queue<Task> m_tasks;
@@ -30,7 +28,7 @@ class ThreadPool final
 	std::mutex m_mu;
 private:
 	explicit ThreadPool( std::size_t nthreads, bool bStart = true );
-public:	
+public:
 	~ThreadPool() noexcept;
 	ThreadPool( ThreadPool const &rhs ) = delete;
 	ThreadPool& operator=( const ThreadPool &rhs ) = delete;
@@ -38,10 +36,8 @@ public:
 	ThreadPool& operator=( ThreadPool &&rhs ) noexcept;
 
 	static ThreadPool& getInstance( std::size_t nThreads = std::thread::hardware_concurrency(), bool bEnabled = true );
-	//===================================================
-	//	\function	start
+	//	\function	start	||	\date	25/9/2019 12:20
 	//	\brief  calls run
-	//	\date	25/9/2019 12:20
 	void start();
 	void stop() noexcept;
 	void enable() noexcept;
@@ -84,10 +80,8 @@ public:
 			THROW_KEY_EXCEPTION( "Cannot enqueue tasks in an inactive Thread Pool!" );
 		}
 	}
-	//===================================================
-	//	\function	resize
+	//	\function	resize	||	\date	25/9/2019 4:00
 	//	\brief  adds # or subtracts -# threads to the ThreadPool
-	//	\date	25/9/2019 4:00
 	bool resize( int n );
 private:
 	void run();

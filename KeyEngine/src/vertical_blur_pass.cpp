@@ -10,7 +10,7 @@ namespace ren
 VerticalBlurPass::VerticalBlurPass( Graphics &gph,
 	const std::string &name )
 	:
-	FullscreenPass{gph, name}
+	IFullscreenPass{gph, name}
 {
 	addPassBindable( PixelShader::fetch( gph,
 		"blur_separ_ps.cso" ) );
@@ -21,17 +21,17 @@ VerticalBlurPass::VerticalBlurPass( Graphics &gph,
 		TextureSamplerState::AddressMode::Clamp ) );
 
 	addPassBindable( BlendState::fetch( gph,
-		BlendState::Alpha,
+		BlendState::Mode::Alpha,
 		0u ) );
 
-	addContainerBindableConsumer<IRenderTargetView>( "blurRttIn" );
-	addContainerBindableConsumer<PixelShaderConstantBufferEx>( "blurKernel" );
-	addConsumer( BindableConsumer<PixelShaderConstantBufferEx>::make( "blurDirection",
-		m_pPscbBlurDirection ) );
 	addConsumer( RenderSurfaceConsumer<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );
 	addConsumer( RenderSurfaceConsumer<IDepthStencilView>::make( "depthStencil",
 		m_pDsv ) );
+	addConsumer( BindableConsumer<PixelShaderConstantBufferEx>::make( "blurDirection",
+		m_pPscbBlurDirection ) );
+	addContainerBindableConsumer<IRenderTargetView>( "offscreenBlurOutlineIn" );
+	addContainerBindableConsumer<PixelShaderConstantBufferEx>( "blurKernel" );
 
 	addProducer( RenderSurfaceProducer<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );
@@ -45,7 +45,7 @@ void VerticalBlurPass::run( Graphics &gph ) const cond_noex
 	pcBuf["bHorizontal"] = false;
 	m_pPscbBlurDirection->setBuffer( pcBuf );
 	m_pPscbBlurDirection->bind( gph );
-	FullscreenPass::run( gph );
+	IFullscreenPass::run( gph );
 }
 
 void VerticalBlurPass::reset() cond_noex

@@ -16,30 +16,33 @@ class LightVSCB;
 namespace ren
 {
 
+//=============================================================
+//	\class	ShadowPass
+//	\author	KeyC0de
+//	\date	2022/10/03 10:30
+//	\brief	An offscreen Pass - output only pass DSV
+//=============================================================
 class ShadowPass
 	: public RenderQueuePass
 {
-	static inline unsigned m_shadowMapResolution = 1024;
+	static inline unsigned s_shadowMapResolution = 1024u;
 	const Camera *m_pShadowCamera = nullptr;
 	std::shared_ptr<LightVSCB> m_pLightVcb;
-	std::shared_ptr<CubeTextureDS> m_pDsvCubemap;
+	std::shared_ptr<CubeTextureDS> m_pOffscreenDsvCubemap;
 	DirectX::XMFLOAT4X4 m_cameraShadowProjectionMatrix;
 	std::vector<DirectX::XMFLOAT3> m_cameraDirections{6};
 	std::vector<DirectX::XMFLOAT3> m_cameraUps{6};
 public:
-	ShadowPass( Graphics &gph, const std::string &name, const unsigned shadowMapRez = m_shadowMapResolution );
+	static const unsigned getResolution() noexcept;
+public:
+	ShadowPass( Graphics &gph, const std::string &name, const unsigned shadowMapRez = s_shadowMapResolution );
 
-	//===================================================
-	//	\function	update
+	//	\function	update	||	\date	2021/10/18 23:55
 	//	\brief  update the light's -camera- view Proj Matrix for projective texture shadow cube mapping
 	//				then render the depth buffer to texture 6 times
-	//	\date	2021/10/18 23:55
 	void run( Graphics &gph ) const cond_noex override;
 	void setShadowCamera( const Camera &cam ) noexcept;
 	void dumpShadowMap( Graphics &gph, const std::string &path ) const;
-	static const unsigned getResolution() noexcept;
-private:
-	void setDepthStencilView( std::shared_ptr<IDepthStencilView> ds ) const;
 };
 
 

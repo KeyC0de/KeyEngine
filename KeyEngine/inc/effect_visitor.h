@@ -12,10 +12,8 @@ class Effect;
 
 //============================================================
 //	\class	IEffectVisitor
-//
 //	\author	KeyC0de
 //	\date	2020/01/09 15:53
-//
 //	\brief	implement and override on* methods
 //			targets a Model with a specific effect
 //			the IDs are for tagging ImGui widgets/controls
@@ -30,10 +28,8 @@ public:
 	virtual ~IEffectVisitor();
 
 	void setEffect( Effect *ef );
-	//===================================================
-	//	\function	visit
-	//	\brief  returns true if concrete bindable (with a con::CBuffer) requires an update
-	//	\date	2022/08/31 11:33
+	//	\function	visit	||	\date	2022/08/31 11:33
+	//	\brief	returns true if concrete bindable (with a con::CBuffer) requires an update
 	bool visit( con::CBuffer &cb );
 protected:
 	virtual void onSetEffect();

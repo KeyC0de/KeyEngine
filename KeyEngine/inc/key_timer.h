@@ -8,10 +8,8 @@
 
 //=============================================================
 //	\class	KeyTimer<Resolution>
-//
 //	\author	KeyC0de
 //	\date	2020/09/23 15:26
-//
 //	\brief	the KeyTimer that records time like a badass
 //			Resolution specified the accuracy of the KeyTimer
 //			output values are always displayed in milliseconds

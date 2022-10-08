@@ -18,15 +18,11 @@ protected:
 	unsigned m_height;
 	Microsoft::WRL::ComPtr<ID3D11RenderTargetView> m_pRtv;
 protected:
-	//===================================================
-	//	\function	IrenderTargetView
+	//	\function	IrenderTargetView	||	\date	2021/10/25 17:00
 	//	\brief  Render to Texture constructor
-	//	\date	2021/10/25 17:00
 	IRenderTargetView( Graphics &gph, const unsigned width, const unsigned height );
-	//===================================================
-	//	\function	IrenderTargetView
+	//	\function	IrenderTargetView	||	\date	2021/10/25 17:00
 	//	\brief  Render to a CubeTexture's face constructor
-	//	\date	2021/10/25 17:00
 	IRenderTargetView( Graphics &gph, ID3D11Texture2D *pTex, std::optional<unsigned> face );
 public:
 	void bindRenderSurface( Graphics &gph ) cond_noex override;
@@ -39,10 +35,8 @@ public:
 	ID3D11RenderTargetView* renderTargetView() const noexcept;
 	const Bitmap convertToBitmap( Graphics &gph, const unsigned width, const unsigned height ) const;
 private:
-	//===================================================
-	//	\function	createStagingTexture
+	//	\function	createStagingTexture	||	\date	2021/10/27 21:59
 	//	\brief  create a texture resource compatible with our rtv, but with Staging usage (CPU read access, no GPU access)
-	//	\date	2021/10/27 21:59
 	std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC> createStagingTexture( Graphics &gph ) const;
 	void bindRenderSurface( Graphics &gph, ID3D11DepthStencilView *pD3dDsv ) cond_noex;
 };
@@ -60,10 +54,8 @@ public:
 
 //=============================================================
 //	\class	RenderTargetOutput
-//
 //	\author	KeyC0de
 //	\date	2021/10/19 0:47
-//
 //	\brief	render target view used for Rendering to a Texture (RTT) (offscreen buffer)
 //=============================================================
 class RenderTargetOutput

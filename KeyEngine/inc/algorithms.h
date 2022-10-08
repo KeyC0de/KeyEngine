@@ -43,10 +43,8 @@ void removeByBackSwap( Container &c,
 		c.end() );
 }
 
-//===================================================
-//	\function	shrinkCapacity
-//	\brief  shrink vector's capacity to its size
-//	\date	2022/04/01 20:51
+//	\function	shrinkCapacity	||	\date	2022/04/01 20:51
+//	\brief	shrink vector's capacity to its size
 template<typename T, class Alloc = std::allocator<T>>
 void shrinkCapacity( std::vector<T, Alloc>& v )
 {
@@ -54,11 +52,9 @@ void shrinkCapacity( std::vector<T, Alloc>& v )
 		v.end() ).swap( v );
 }
 
-//===================================================
-//	\function	sizeAsInt
-//	\brief  When using int loop indexes, use size_as_int(container) instead of container.size() in order
+//	\function	sizeAsInt	||	\date	2022/07/29 13:36
+//	\brief	When using int loop indexes, use size_as_int(container) instead of container.size() in order
 //			to document the inherent assumption that the size of the container can be represented by an int.
-//	\date	2022/07/29 13:36
 template<typename TContainer>
 constexpr int sizeAsInt( const TContainer &c )
 {
@@ -101,10 +97,8 @@ void move_if( InputIt srcFirst,
 		predicate );
 }
 
-//===================================================
-//	\function	splitMovePartition
+//	\function	splitMovePartition	||	\date	2022/07/29 21:03
 //	\brief  like partition_move - puts the second group of an std::partition to another container removing them from the source container
-//	\date	2022/07/29 21:03
 template<class Container, class TPredicate>
 void splitMovePartition( Container &src,
 	Container &dest,
@@ -352,11 +346,9 @@ bool any_of( const TContainer& collection,
 		std::forward<TPredicate>( predicate ) );
 }
 
-//===================================================
-//	\function	at_least_n_of_range
-//	\brief  test if at least N elements of an iterator range match a predicate
+//	\function	at_least_n_of_range	\date	2022/08/28 23:30
+//	\brief	test if at least N elements of an iterator range match a predicate
 //			earlies out and returns once the required amount of elements have been matched
-//	\date	2022/08/28 23:30
 template<typename TIt, typename TPredicate>
 bool at_least_n_of_range( TIt begin,
 	TIt end,

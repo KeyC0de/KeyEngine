@@ -8,12 +8,11 @@ class Camera;
 
 //=============================================================
 //	\class	LightVSCB
-//
 //	\author	KeyC0de
 //	\date	2022/02/19 22:35
-//
 //	\brief	VSCB for shadow casting light source usage (shadowing_vs.hlsli)
 //=============================================================
+// #TODO: make this abstract class and inherit from it for different light source types
 class LightVSCB
 	: public IBindable
 {

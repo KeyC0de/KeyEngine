@@ -6,6 +6,7 @@
 #include "rasterizer_state.h"
 #include "texture_sampler_state.h"
 #include "depth_stencil_state.h"
+#include "blend_state.h"
 
 
 namespace ren
@@ -16,6 +17,12 @@ WireframePass::WireframePass( Graphics &gph,
 	:
 	RenderQueuePass{name}
 {
+	addPassBindable( RasterizerState::fetch( gph,
+		RasterizerState::FrontSided,
+		RasterizerState::Solid ) );
+	addPassBindable( DepthStencilState::fetch( gph,
+		DepthStencilState::Mode::Default ) );
+
 	addConsumer( RenderSurfaceConsumer<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );
 	addConsumer( RenderSurfaceConsumer<IDepthStencilView>::make( "depthStencil",
@@ -23,20 +30,6 @@ WireframePass::WireframePass( Graphics &gph,
 
 	addProducer( RenderSurfaceProducer<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );
-	addProducer( RenderSurfaceProducer<IDepthStencilView>::make( "depthStencil",
-		m_pDsv ) );
-
-	addPassBindable( std::make_shared<TextureSamplerState>( gph,
-		0u,
-		TextureSamplerState::FilterMode::Anisotropic,
-		TextureSamplerState::AddressMode::Wrap ) );
-
-	addPassBindable( RasterizerState::fetch( gph,
-		RasterizerState::FrontSided,
-		RasterizerState::Wireframe ) );
-
-	addPassBindable( DepthStencilState::fetch( gph,
-		DepthStencilState::Mode::Default ) );
 }
 
 

@@ -126,11 +126,11 @@
       <FileName>inc\render_surface.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SkyboxVSCB" Collapsed="true">
+  <Class Name="SkyVSCB" Collapsed="true">
     <Position X="3.25" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAABAAAAAAAAAAAAAgAA=</HashCode>
-      <FileName>inc\skybox_vscb.h</FileName>
+      <FileName>inc\sky_vscb.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TransformScaleVSCB" Collapsed="true">
@@ -217,7 +217,7 @@
       <FileName>inc\render_surface_clear_pass.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ren::FullscreenPass" Collapsed="true">
+  <Class Name="ren::IFullscreenPass" Collapsed="true">
     <Position X="23.75" Y="23.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>

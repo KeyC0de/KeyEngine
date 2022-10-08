@@ -19,17 +19,6 @@ LambertianPass::LambertianPass( Graphics &gph,
 	:
 	RenderQueuePass{name}
 {
-	addConsumer( RenderSurfaceConsumer<IRenderTargetView>::make( "renderTarget",
-		m_pRtv ) );
-	addConsumer( RenderSurfaceConsumer<IDepthStencilView>::make( "depthStencil",
-		m_pDsv ) );
-	addContainerBindableConsumer<CubeTextureDS>( "shadowCubemapRttIn" );
-
-	addProducer( RenderSurfaceProducer<IRenderTargetView>::make( "renderTarget",
-		m_pRtv ) );
-	addProducer( RenderSurfaceProducer<IDepthStencilView>::make( "depthStencil",
-		m_pDsv ) );
-
 	addPassBindable( std::make_shared<TextureSamplerState>( gph,
 		0u,
 		TextureSamplerState::FilterMode::Anisotropic,
@@ -37,6 +26,17 @@ LambertianPass::LambertianPass( Graphics &gph,
 
 	addPassBindable( DepthStencilState::fetch( gph,
 		DepthStencilState::Mode::Default ) );
+
+	addConsumer( RenderSurfaceConsumer<IRenderTargetView>::make( "renderTarget",
+		m_pRtv ) );
+	addConsumer( RenderSurfaceConsumer<IDepthStencilView>::make( "depthStencil",
+		m_pDsv ) );
+	addContainerBindableConsumer<CubeTextureDS>( "offscreenShadowCubemapIn" );
+
+	addProducer( RenderSurfaceProducer<IRenderTargetView>::make( "renderTarget",
+		m_pRtv ) );
+	addProducer( RenderSurfaceProducer<IDepthStencilView>::make( "depthStencil",
+		m_pDsv ) );
 }
 
 void LambertianPass::setActiveCamera( const Camera &cam ) noexcept

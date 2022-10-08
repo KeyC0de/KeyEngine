@@ -17,9 +17,7 @@ static constexpr size_t shadow = 0b10;
 static constexpr size_t solidOutline = 0b100;
 static constexpr size_t blurOutline = 0b1000;
 static constexpr size_t wireframe = 0b10000;
-static constexpr size_t blur = 0b100000;
 
-static constexpr size_t all = lambert | shadow | solidOutline | blurOutline | wireframe | blur;
-
+static constexpr size_t all = lambert | shadow | solidOutline | blurOutline | wireframe;
 
 }

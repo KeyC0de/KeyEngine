@@ -34,11 +34,8 @@ public:
 	void bindRenderSurface( Graphics &gph, IRenderTargetView *rt ) cond_noex;
 	void clear( Graphics &gph, const std::array<float, 4>& unused = {} ) cond_noex override;
 	void clean( Graphics &gph ) cond_noex;
-	//===================================================
-	//	\function	convertToBitmap
-	//	\brief  copy from resource to staging
-	//			linearize & normalize depth values by default
-	//	\date	2021/06/25 18:55
+	//	\function	convertToBitmap	||	\date	2021/06/25 18:55
+	//	\brief  copy from resource to staging --- linearize & normalize depth values by default
 	const Bitmap convertToBitmap( Graphics &gph, const unsigned width, const unsigned height, bool bLinearize = true ) const;
 	const unsigned int getWidth() const noexcept;
 	const unsigned int getHeight() const noexcept;
@@ -58,12 +55,9 @@ public:
 
 //=============================================================
 //	\class	DepthStencilOutput
-//
 //	\author	KeyC0de
 //	\date	2021/10/19 0:47
-//
-//	\brief	depth stencil view used for regular rendering,
-//				or Rendering to a Texture (RTT) (offscreen buffer)
+//	\brief	depth stencil view used for regular rendering, or Rendering to a Texture (RTT) (offscreen buffer)
 //=============================================================
 class DepthStencilOutput
 	: public IDepthStencilView

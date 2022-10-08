@@ -20,14 +20,14 @@ PSOut main( PSIn input )
 	PSOut output;
 	uint width;
 	uint height;
-	
+
 	tex.GetDimensions( width,
 		height );
-	
+
 	// distance {dx,dy} between neighboring pixels
 	const float dx = 1.0f / width;
 	const float dy = 1.0f / height;
-	
+
 	output.finalColor = float4(0.0f, 0.0f, 0.0f, 0.0f);
 	for ( int y = -radius; y <= radius; y++ )
 	{
@@ -37,7 +37,7 @@ PSOut main( PSIn input )
 			output.finalColor += tex.Sample( sampl, tc ).rgba;
 		}
 	}
-	
+
 	output.finalColor = output.finalColor / divisor;
 	return output;
 }

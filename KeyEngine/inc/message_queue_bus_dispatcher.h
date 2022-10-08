@@ -11,10 +11,8 @@ class Message;
 
 //============================================================
 //	\class	MessageBus
-//
 //	\author	KeyC0de
 //	\date	2019/12/09 4:51
-//
 //	\brief	thread safe event queue built from a Vector
 //			enqueue or dequeue whenever, wherever, we'll be together
 //			it pa-owns its contents (Messages)
@@ -40,15 +38,11 @@ public:
 	MessageBus( MessageBus &&rhs ) noexcept;
 	MessageBus& operator=( MessageBus &&rhs ) noexcept;
 
-	//===================================================
-	//	\function	enqueue
-	//	\brief  push_back() : enqueue at the back
-	//	\date	2019/12/09 4:50
+	//	\function	enqueue	||	\date	2019/12/09 4:50
+	//	\brief	push_back() : enqueue at the back
 	void enqueue( Message *msg );
-	//===================================================
-	//	\function	dequeue
-	//	\brief  pop_front() : dequeue messages from the front
-	//	\date	2019/12/09 4:51
+	//	\function	dequeue	||	\date	2019/12/09 4:51
+	//	\brief	pop_front() : dequeue messages from the front
 	std::unique_ptr<Message> dequeue();
 	const Message* peekFront() const noexcept;
 	const Message* peekBack() const noexcept;
@@ -64,10 +58,8 @@ public:
 
 //============================================================
 //	\class	MessageDispatcher
-//
 //	\author	KeyC0de
 //	\date	2019/12/09 17:15
-//
 //	\brief	Meyer's singleton
 //			owns & manages the message queue
 //=============================================================
@@ -83,15 +75,11 @@ public:
 	MessageDispatcher& operator=( MessageDispatcher &&rhs ) noexcept;
 
 	static MessageDispatcher& instance( int initialCapacity = 100 );
-	//===================================================
-	//	\function	addMessage
-	//	\brief  add new message to the MessageBus
-	//	\date	2020/12/10 4:47
+	//	\function	addMessage	||	\date	2020/12/10 4:47
+	//	\brief	add new message to the MessageBus
 	void addMessage( Message *msg );
-	//===================================================
-	//	\function	dispatchAll
-	//	\brief  dispatch all pending messages
-	//	\date	2019/12/10 4:47
+	//	\function	dispatchAll	||	\date	2019/12/10 4:47
+	//	\brief	dispatch all pending messages
 	void dispatchAll();
 	// #TODO: dispatchByEventType
 	// #TODO: dispatchEventsTargetedTo( specific actor )

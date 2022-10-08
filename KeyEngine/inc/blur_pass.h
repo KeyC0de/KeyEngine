@@ -8,11 +8,17 @@ class Graphics;
 namespace ren
 {
 
+//=============================================================
+//	\class	BlurPass
+//	\author	KeyC0de
+//	\date	2022/10/03 10:31
+//	\brief	An offscreen Pass - Output only - RTV
+//=============================================================
 class BlurPass
-	: public FullscreenPass
+	: public IFullscreenPass
 {
 public:
-	BlurPass( Graphics &gph, const std::string &name );
+	BlurPass( Graphics &gph, const std::string &name, const unsigned rezReductFactor );
 
 	void reset() cond_noex override;
 };

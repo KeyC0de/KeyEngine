@@ -9,10 +9,8 @@
 
 //=============================================================
 //	\class	IConstantBuffer
-//
 //	\author	KeyC0de
 //	\date	2022/02/19 18:52
-//
 //	\brief	CB is the Constant Buffer struct we abstract away
 //=============================================================
 template<typename CB>
@@ -24,10 +22,8 @@ protected:
 	unsigned m_slot;
 	static inline Graphics *m_gph;
 public:
-	//===================================================
-	//	\function	ctor
-	//	\brief  initially empty d3dcb - supply the data on update
-	//	\date	2022/08/14 23:44
+	//	\function	ctor	||	\date	2022/08/14 23:44
+	//	\brief	initially empty d3dcb - supply the data on update
 	IConstantBuffer( Graphics &gph,
 		const unsigned slot )
 		:
@@ -44,10 +40,8 @@ public:
 		ASSERT_HRES_IF_FAILED;
 	}
 
-	//===================================================
-	//	\function	ctor
-	//	\brief  ctor with the data supplied
-	//	\date	2022/08/14 23:44
+	//	\function	IConstantBuffer	||	\date	2022/08/14 23:44
+	//	\brief	ctor with the data supplied
 	IConstantBuffer( Graphics &gph,
 		const CB &cb,
 		const unsigned slot )
@@ -68,10 +62,8 @@ public:
 		ASSERT_HRES_IF_FAILED;
 	}
 
-	//===================================================
-	//	\function	ctor
-	//	\brief  cheating constructor - the D3d resource has already been created (eg copied from another)
-	//	\date	2022/08/14 19:45
+	//	\function	IConstantBuffer	||	\date	2022/08/14 19:45
+	//	\brief	cheating constructor - the D3d resource has already been created (eg copied from another)
 	IConstantBuffer( Microsoft::WRL::ComPtr<ID3D11Buffer> &d3dBuf,
 		const unsigned slot )
 		:
@@ -81,10 +73,8 @@ public:
 
 	}
 
-	//===================================================
-	//	\function	update
-	//	\brief  Map, paste to msr, Unmap
-	//	\date	2022/02/19 19:00
+	//	\function	update	||	\date	2022/02/19 19:00
+	//	\brief	Map, paste to msr, Unmap
 	void update( Graphics &gph,
 		const CB &cb )
 	{

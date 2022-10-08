@@ -15,11 +15,8 @@
 namespace util
 {
 
-//===================================================
-//	\function	comSafeRelease
-//	\brief  safely release a COM object
-//			deprecated
-//	\date	2018/12/30 17:35
+//	\function	comSafeRelease	||	\date	2018/12/30 17:35
+//	\brief	safely release a COM object	---	deprecated
 template<typename T>
 inline void comSafeRelease( T &p )
 {
@@ -33,10 +30,8 @@ inline void comSafeRelease( T &p )
 static auto g_XMZero = DirectX::XMVectorZero();
 
 DirectX::XMMATRIX XM_CALLCONV computeTransform( const DirectX::XMFLOAT3 &scale, const DirectX::XMFLOAT3 &pos, const DirectX::XMFLOAT3 &rot );
-//===================================================
-//	\function	extractEulerAngles
-//	\brief  builds a FLOAT3 of {x=pitch,y=yaw,z=roll}
-//	\date	2022/09/03 14:37
+//	\function	extractEulerAngles	||	\date	2022/09/03 14:37
+//	\brief	builds a FLOAT3 of {x=pitch,y=yaw,z=roll}
 DirectX::XMFLOAT3 extractEulerAngles( const DirectX::XMFLOAT4X4 &mat );
 float getPitch( const DirectX::XMFLOAT4X4 &mat );
 float getYaw( const DirectX::XMFLOAT4X4 &mat );
@@ -46,10 +41,8 @@ DirectX::XMMATRIX XM_CALLCONV scaleTranslation( const DirectX::XMMATRIX &mat, co
 DirectX::XMVECTOR XM_CALLCONV pitchYawRollToQuaternion( const DirectX::XMVECTOR& pitchYawRollAngles );
 ALIAS_FUNCTION( pitchYawRollToQuaternion, eulerAnglesToQuaternion );
 void quaternionToEulerAngles( DirectX::XMFLOAT4 &quat, float &pitch, float &yaw, float &roll );
-//===================================================
-//	\function	quaternionToPitchYawRoll
-//	\brief  same as quaternionToEulerAngles except this version returns the euler angles in a float3 vector
-//	\date	2022/09/03 14:48
+//	\function	quaternionToPitchYawRoll	||	\date	2022/09/03 14:48
+//	\brief	same as quaternionToEulerAngles except this version returns the euler angles in a float3 vector
 DirectX::XMFLOAT3 quaternionToPitchYawRoll( DirectX::XMFLOAT4 &quat );
 DirectX::XMVECTOR XM_CALLCONV pitchYawRollToVector( const float pitch, const float yaw, const float roll );
 float distance( const DirectX::XMFLOAT3& v1, const DirectX::XMFLOAT3& v2 );
@@ -59,10 +52,8 @@ ALIAS_FUNCTION( distanceSquared, lengthSquared );
 
 DXGI_RATIONAL queryRefreshRate( const unsigned screenWidth, const unsigned screenHeight, const bool bVsync );
 
-//===================================================
-//	\function	loadShaderDynamically
-//	\brief  will be used to load and compile a shader at runtime
-//	\date	2019/12/30 17:28
+//	\function	loadShaderDynamically	||	\date	2019/12/30 17:28
+//	\brief	will be used to load and compile a shader at runtime
 template<class TShader>
 static TShader* createShaderObject( ID3D11Device *pD3dDevice, ID3DBlob *&pShaderBlob, ID3D11ClassLinkage *pClassLinkage );
 

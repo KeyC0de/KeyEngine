@@ -21,7 +21,7 @@ DepthReversedPass::DepthReversedPass( Graphics &gph,
 		m_pRtv ) );
 	addConsumer( RenderSurfaceConsumer<IDepthStencilView>::make( "depthStencil",
 		m_pDsv ) );
-	
+
 	addProducer( RenderSurfaceProducer<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );
 	addProducer( RenderSurfaceProducer<IDepthStencilView>::make( "depthStencil",

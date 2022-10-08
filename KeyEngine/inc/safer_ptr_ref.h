@@ -87,10 +87,8 @@ public:
 
 	SaferRef<T>& operator=( const SaferRef<T> &rhs ) = delete;
 
-	//===================================================
-	//	\function	cctor
+	//	\function	cctor	||	\date	2022/08/27 13:13
 	//	\brief  explicit move constructor inhibits implicit move constructor, so we define it
-	//	\date	2022/08/27 13:13
 	inline SaferRef( SaferRef<T> &&rhs )
 		:
 		m_obj{rhs.m_obj}

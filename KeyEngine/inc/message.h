@@ -10,12 +10,9 @@ class Operation;
 
 //============================================================
 //	\class	Message
-//
 //	\author	KeyC0de
 //	\date	2019/12/09 13:23
-//
-//	\brief	The Message - Enveloppe
-//				move only type
+//	\brief	The Message - Enveloppe, move-only type
 //=============================================================
 class Message
 	: public NonCopyable
@@ -50,10 +47,8 @@ public:
 
 //============================================================
 //	\class	MessageCall
-//
 //	\author	KeyC0de
 //	\date	2019/12/10 3:01
-//
 //	\brief	a Message with arbitrary callable object
 //=============================================================
 class MessageCall
@@ -73,10 +68,8 @@ public:
 
 //============================================================
 //	\class	MessageData<T>
-//
 //	\author	KeyC0de
 //	\date	2019/12/10 3:01
-//
 //	\brief	a Message with arbitrary data payload T
 //=============================================================
 template<class T>

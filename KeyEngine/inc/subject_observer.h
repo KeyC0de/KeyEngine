@@ -12,10 +12,8 @@ class Subscriber;
 
 //=============================================================
 //	\class	Subject<T>
-//
 //	\author	KeyC0de
 //	\date	2022/08/27 23:46
-//
 //	\brief	Subject<T>s are interested in being notified of events of type T
 //			Subjects are implemented via CRTP
 //=============================================================
@@ -23,7 +21,7 @@ template<typename T, typename = std::enable_if_t<!std::is_abstract_v<T>>>
 class Subject
 {
 	friend class Subscriber<T>;
-	
+
 	std::vector<Subscriber<T>*> m_subscribers;
 public:
 	Subject() = default;
@@ -65,10 +63,8 @@ public:
 		}
 	}
 
-	//===================================================
-	//	\function	notify
-	//	\brief  the Subject subclass must call this `notify()` to notify all its subscribers of an event T
-	//	\date	2022/08/27 19:33
+	//	\function	notify	||	\date	2022/08/27 19:33
+	//	\brief	the Subject subclass must call this `notify()` to notify all its subscribers of an event T
 	void notify( const T& )
 	{
 		for ( auto it = m_subscribers.begin(); it != m_subscribers.end(); ++it )
@@ -112,10 +108,8 @@ private:
 
 //=============================================================
 //	\class	Subscriber<T>
-//
 //	\author	KeyC0de
 //	\date	2022/08/27 19:22
-//
 //	\brief	inherit from Subscriber using protected inheritance
 //			as such the concrete class is implemented in-terms-of-this Subscriber
 //			Subscribers cannot unsubscribe by themselves, they have to be X'd by the Subject
@@ -194,11 +188,9 @@ public:
 		}
 	}
 
-	//===================================================
-	//	\function	onNotify
-	//	\brief  The concrete Subscribers must implement the onNotify() method.
+	//	\function	onNotify	||	\date	2022/08/27 19:32
+	//	\brief	The concrete Subscribers must implement the onNotify() method.
 	//			onNotify() must be called only by the base Subject
-	//	\date	2022/08/27 19:32
 	virtual void onNotify( const T &a ) const = 0;
 protected:
 	Subscriber( const Subscriber &rhs )
@@ -222,7 +214,7 @@ Reporter - Listener Pattern
 ===========================
 1. reporter - listener source file
 2. class that wants to listen for an event:
-				class TurnWidgetSeasons : 
+				class TurnWidgetSeasons :
 								public TWUI::ComponentCallbacks,
 								public EMPIREUTILITY::SAFER_LISTENER<EMPIRECAMPAIGN::REPORT_START_OF_TURN_END>,
 								public EMPIREUTILITY::LISTENER<sth_else>,
@@ -241,7 +233,7 @@ Reporter - Listener Pattern
 				};
 5. add a listener to the Subject/Reporter, in the constructor of the class that's listening:
 								static_cast< const SAFER_REPORTER<TAX_LEVELS_SET>&>(local_faction()).add_listener(this);
-								
+
 								void add_listener(SAFER_LISTENER<T>* o) const
 								{
 												//Check for repeat entries here instead on SAFER_REPORTER::add_reporter
@@ -263,7 +255,7 @@ Reporter - Listener Pattern
 
 								TAX_LEVELS_SET(const FACTION& f) : faction(f) {}
 				};
-				
+
 				class FACTION : public CAMPAIGN_ENV_MODEL_ACCESS,
 																				public COMMAND_QUEUE_INDEXED_OBJECT<FACTION>,
 																				public SAFER_REPORTER<TAX_LEVELS_SET>,
@@ -310,7 +302,7 @@ class EVENT
 
 												P_NUM_PARAMETERS
 								};
-								
+
 				EMPIREUTILITY_API static EVENT::PARAMETER EVENT::parameter_from_unistring(const UniString& parameter)
 				{
 								if (parameter == L"none")                                                                                            return P_NONE;
@@ -338,11 +330,11 @@ class EVENT
 								if (parameter == L"faction_sea_trade_raided")   return P_FACTION_SEA_TRADE_RAIDED;
 								if (parameter == L"faction_land_trade_raided") return P_FACTION_LAND_TRADE_RAIDED;
 								if (parameter == L"province")                                                                     return P_PROVINCE;
-												
+
 								CA_ERROR1(_U("EVENT::parameter_from_unistring: %s is not an event parameter\n"), parameter.get_temporary_uni_chars());
 								return P_NUM_PARAMETERS;
 				}
-								
+
 				void EVENT::trigger_event(const EVENT& ev)
 				{
 								if( !ev.event_valid_for_trigger() )
@@ -369,12 +361,12 @@ class EVENT
 
 								EMPIREUTILITY_API EVENT() = default;
 								EMPIREUTILITY_API virtual ~EVENT() = default;
-								
-								
+
+
 				private:
 								String                                                                                                                                                                                                    m_event;
 								static CONST_SAFE_PTR_VECTOR<EMPIRE_LUA_ENV>                                   m_lua_envs;
-								
+
 				private:
 								#if defined LOGGING_AVAILABLE
 				void EVENT::log(int32 successes) const
@@ -422,12 +414,12 @@ class EnvironmentPressureWindow
 public:
 	EnvironmentWindow()
 	{
-		
+
 	}
 
 	~EnvironmentWindow()
 	{
-		
+
 	}
 
 	// must implement both onNotify base class abstract functions

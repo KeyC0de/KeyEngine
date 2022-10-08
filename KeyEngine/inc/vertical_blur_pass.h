@@ -12,7 +12,7 @@ namespace ren
 {
 
 class VerticalBlurPass
-	: public FullscreenPass
+	: public IFullscreenPass
 {
 	std::shared_ptr<PixelShaderConstantBufferEx> m_pPscbBlurDirection;
 public:

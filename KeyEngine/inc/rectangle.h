@@ -5,10 +5,8 @@
 
 //=============================================================
 //	\class	Rect
-//
 //	\author	KeyC0de
 //	\date	2022/08/30 12:56
-//
 //	\brief	a Rectangle class
 //			don't rename it to Rectangle, as it conflicts with Windows headers
 //=============================================================
@@ -26,15 +24,11 @@ struct Rect
 	Rect( const DirectX::XMFLOAT2 &topLeft, const DirectX::XMFLOAT2 &bottomRight );
 	Rect( const DirectX::XMFLOAT2 &topLeft, const float width, const float height );
 
-	//===================================================
-	//	\function	isOverlappingWith
+	//	\function	isOverlappingWith	||	\date	2021/10/17 2:27
 	//	\brief  2d rectangle collision detection formula
-	//	\date	2021/10/17 2:27
 	bool isOverlappingWith( const Rect &other ) const noexcept;
-	//===================================================
-	//	\function	calcScaled
+	//	\function	calcScaled	||	\date	2021/10/17 2:21
 	//	\brief  gets an expanded (offset>0) or minimized (offset<0) form of the rectangle
-	//	\date	2021/10/17 2:21
 	Rect calcScaled( const float offset ) const noexcept;
 	const float getWidth() const noexcept;
 	const float getHeight() const noexcept;

@@ -61,7 +61,7 @@ class Sandbox3d
 	: public Game<Sandbox3d>
 {
 	static inline CameraManager& m_cameraMan = CameraManager::instance();
-	ren::Renderer3d m_renderer;
+	ren::Renderer3d m_renderer;	// #TODO: move renderer to Graphics
 	std::unique_ptr<PointLight> m_pPointLight1;
 	//std::unique_ptr<PointLight> m_pPointLight2;
 	bool b_bShowDemoWindow = false;

@@ -5,10 +5,8 @@
 
 //=============================================================
 //	\class	ShadowMapSamplerState
-//
 //	\author	KeyC0de
 //	\date	2022/02/19 22:12
-//
 //	\brief	Comparison sampler mainly used for Shadow Maps
 //			the bound slot is equal to 1 if bHwPcf, otherwise equal to 2
 //=============================================================

@@ -26,7 +26,7 @@
 #define MODELESS_DIALOG_CLASS_NAME			"KeyEngine_Modeless_Dialog_Class"
 #define SPLASH_WINDOW_CLASS_NAME			"KeyEngine_Splash_Window_Class"
 
- 
+
 class Graphics;
 
 class Window
@@ -86,13 +86,11 @@ public:
 	static Mouse& mouse() noexcept;
 	static bool isDescendantOf( const HWND targethWnd, const HWND parent ) noexcept;
 	static void saveClipboardTextAsVar();
-	//===================================================
-	//	\function	convertHiconToHbitmap
-	//	\brief  hIcon vs hBitmap
+	//	\function	convertHiconToHbitmap	||	\date	2022/10/02 1:51
+	//	\brief	hIcon vs hBitmap
 	//			hIcon is a handle to one of the system resources that Windows OS requires for providing a graphical USER interface.
 	//			SHELL applications like Windows Explorer, Desktop etc, use this system resource extensively.
 	//			hBITMAP is a graphical object which can be manipulated with GDI. hBitmaps can be altered with GDI either by selecting it to a DC or by manipulating the bits directly. GDI cannot handle an hICON.
-	//	\date	2022/10/02 1:51
 	static HBITMAP convertHiconToHbitmap( HICON hIcon );
 	static HICON convertHbitmapToHicon( HBITMAP bitmap );
 public:
@@ -105,10 +103,8 @@ public:
 	void setEnable( const bool b );
 	void setOnTop();
 	const HWND setFocus();
-	//===================================================
-	//	\function	hasParent
-	//	\brief  returns true if this Window has a parent that is not the Desktop window
-	//	\date	2022/09/22 19:52
+	//	\function	hasParent	||	\date	2022/09/22 19:52
+	//	\brief	returns true if this Window has a parent that is not the Desktop window
 	const bool hasParent() const noexcept;
 	const HWND getParent() const noexcept;
 	void setTitle( const std::string &title );
@@ -127,10 +123,8 @@ public:
 	operator bool() const noexcept;
 	Graphics& getGraphics();
 	const HWND getHandle() const noexcept;
-	//===================================================
-	//	\function	getDc
-	//	\brief  get Window's Device Context (DC) - a "device context" contains information about the drawing attributes of a device such as a display or a printer, so if you have two different DC's, you're drawing in two different places; like a file handle for drawing
-	//	\date	2022/09/22 19:35
+	//	\function	getDc	||	\date	2022/09/22 19:35
+	//	\brief	get Window's Device Context (DC) - a "device context" contains information about the drawing attributes of a device such as a display or a printer, so if you have two different DC's, you're drawing in two different places; like a file handle for drawing
 	HDC getDc() const noexcept;
 	WINDOWINFO getInfo() const noexcept;
 	const int messageBoxPrintf( const TCHAR *caption, const TCHAR *format, ... );
@@ -150,13 +144,11 @@ public:
 	int calcHeight() const noexcept;
 	HWND getConsoleHandle() const;
 	const WindowClass& getWindowClass() noexcept;
-	//===================================================
-	//	\function	setupSplashWindow
-	//	\brief  create an Alpha enabled Splash window for the main application window
+	//	\function	setupSplashWindow	||	\date	2022/10/01 20:30
+	//	\brief	create an Alpha enabled Splash window for the main application window
 	//			We'll use a layered window to do it (recommended method for Windows 2000+).
 	//			The beauty of layered windows and the UpdateLayeredWindow function is that the splash window doesn't have to respond to WM_PAINT messages; Windows will paint it (and blend it correctly with the windows below it) by default.
 	//			#WARNING: load the BMP with black color for the transparent places
-	//	\date	2022/10/01 20:30
 	void setupSplashWindow( HBITMAP hSplashBitmap );
 private:
 	void confineCursor() noexcept;
@@ -174,15 +166,11 @@ private:
 	bool editCopy( unsigned format = CLIPBOARD_TEXT_FORMAT );
 	bool editPaste( unsigned format = CLIPBOARD_TEXT_FORMAT );
 	void renderClipboardFormat( unsigned format = CLIPBOARD_TEXT_FORMAT );
-	//===================================================
-	//	\function	editDelete
-	//	\brief  delete selected text, eg as if you pressed "cut" or the "delete" key
-	//	\date	2022/09/18 18:01
+	//	\function	editDelete	||	\date	2022/09/18 18:01
+	//	\brief	delete selected text, eg as if you pressed "cut" or the "delete" key
 	void editDelete();
-	//===================================================
-	//	\function	destroyMenu
-	//	\brief  The destruction of a menu is done automatically when the menu is assigned to a window, otherwise you must call this function to free the HMENU's	resources
-	//	\date	2022/09/22 19:31
+	//	\function	destroyMenu	||	\date	2022/09/22 19:31
+	//	\brief	The destruction of a menu is done automatically when the menu is assigned to a window, otherwise you must call this function to free the HMENU's	resources
 	void destroyMenu( const HMENU hMenu );
 	void setupTrayIcon();
 	void showTrayIcon() noexcept;
@@ -194,34 +182,3 @@ private:
 	__FILE__,\
 	__FUNCTION__,\
 	msg );
-
-
-
-
-
-
-
-
-class SplashWindow final
-{
-	bool m_bVisible;
-	HWND m_hWnd;
-public:
-	SplashWindow( HWND hWndParent, HINSTANCE hInst, const int resourceId, const std::pair<int, int> dims );
-	~SplashWindow();
-
-	void display();
-	void hide();
-	bool isVisible() const noexcept;
-	void messageLoop();
-private:
-	static LRESULT CALLBACK windowProc( const HWND pWndHandle, const unsigned uMsg, const WPARAM wParam, const LPARAM lParam );
-//	static LRESULT CALLBACK windowProcDelegate( const HWND pWndHandle, const unsigned uMsg, const WPARAM wParam, const LPARAM lParam );
-//private:
-//	LRESULT windowProc_impl( _In_ const HWND pWndHandle, _In_ const unsigned msg, _In_ const WPARAM wparam, _In_ const LPARAM lparam );
-};
-
-
-
-
-

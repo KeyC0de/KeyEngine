@@ -5,6 +5,10 @@
 #include "constant_buffer_ex.h"
 
 
+// #TODO: rename all m_staticVar to s_staticVar
+// #TODO: rename all Texture2D HLSL variable names
+// #TODO: make Renderer more flexible with the names of Passes & Consumer-Producer names
+
 class Graphics;
 class IRenderTargetView;
 class IDepthStencilView;
@@ -39,22 +43,22 @@ protected:
 	void addGlobalConsumer( std::unique_ptr<IConsumer> pConsumer );
 	void addPass( std::unique_ptr<IPass> pPass );
 	void setupGlobalConsumerTarget( const std::string &globalConsumerName, const std::string &passName, const std::string &producerName );
-	void validateConsumersLinkage();
-	//===================================================
-	//	\function	linkPassConsumers
-	//	\brief  links pass's consumers to their producers
+	//	\function	linkPassConsumers	||	\date	2021/10/27 18:00
+	//	\brief	links pass's consumers to their producers
 	//			call this function last from derived Renderer's ctor
-	//	\date	2021/10/27 18:00
 	void linkPassConsumers( IPass &pass );
 	void linkGlobalConsumers();
 	IPass& getPass( const std::string &name );
+private:
+	void validateConsumersLinkage();
 };
 
 class Renderer3d
 	: public Renderer
 {
-	static constexpr inline int m_maxRadius = 13;
-	static constexpr inline float m_maxSigma = 7.0f;
+	static constexpr inline int s_maxRadius = 13;
+	static constexpr inline float s_maxSigma = 7.0f;
+	static constexpr inline unsigned s_fullscreenRezReductFactor = 4u;
 	int m_radius;
 	float m_sigma;
 	std::shared_ptr<PixelShaderConstantBufferEx> m_blurKernel;
@@ -67,7 +71,7 @@ public:
 	};
 	KernelType m_kernelType;
 public:
-	Renderer3d( Graphics &gph, int radius, float sigma, KernelType kernelType = Gauss );
+	Renderer3d( Graphics &gph, const int radius, const float sigma, KernelType kernelType = Gauss );
 
 	void showImGuiWindows( Graphics &gph );
 	void dumpShadowMap( Graphics &gph, const std::string &path );

@@ -11,10 +11,8 @@ class Entity;
 
 //============================================================
 //	\class	EntityManager
-//
 //	\author	KeyC0de
 //	\date	2019/12/09 16:06
-//
 //	\brief	EntityManager owns all the Entities
 //=============================================================
 class EntityManager final
@@ -51,27 +49,19 @@ private:
 public:
 	static EntityManager& instance();
 	static void resetInstance();
-	//===================================================
-	//	\function	spawnEntity
-	//	\brief  factory function for entities
-	//	\date	2020/12/09 14:14
+	//	\function	spawnEntity	||	\date	2020/12/09 14:14
+	//	\brief		factory function for entities
 	EntityId spawnEntity( const std::string &name, int categoryId, Entity *pParent = nullptr );
 	EntityIndex getAliveEntityCount();
-	//===================================================
-	//	\function	getEntityById
-	//	\brief  also checks if the entity is valid if its not valid (has died) returns nullptr
-	//	\date	2019/12/09 14:04
+	//	\function	getEntityById	||	\date	2019/12/09 14:04
+	//	\brief		also checks if the entity is valid if its not valid (has died) returns nullptr
 	Entity* getEntityById( EntityId entId );
-	//===================================================
-	//	\function	recycleEntityId
-	//	\brief  recycle the entity's index/id st the slot can be used again
+	//	\function	recycleEntityId	||	\date	2019/12/09 13:43
+	//	\brief		recycle the entity's index/id st the slot can be used DOain
 	//			#TODO: NOT WORKING ATM
-	//	\date	2019/12/09 13:43
 	void recycleEntityId( EntityId entId );
 	Bucket& getBucket( int categoryId );
-	//===================================================
-	//	\function	world
-	//	\brief  gets the current world
-	//	\date	2022/08/28 13:06
+	//	\function	world	||	\date	2022/08/28 13:06
+	//	\brief		gets the current world
 	Entity* world();
 };

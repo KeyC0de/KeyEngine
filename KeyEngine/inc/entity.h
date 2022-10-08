@@ -7,10 +7,8 @@
 
 //============================================================
 //	\class	Entity
-//
 //	\author	KeyC0de
 //	\date	2019/12/09 13:50
-//
 //	\brief	a Game Object base class
 //			Transformation: ConcreteEntity <- Entity <- Model <- Node <- ConcreteMesh <- Mesh
 //=============================================================
@@ -49,10 +47,8 @@ public:
 	Entity& operator=( Entity &&rhs ) noexcept;
 
 	void printInfo() const noexcept;
-	//===================================================
-	//	\function	id
-	//	\brief  get entity id
-	//	\date	2019/12/09 14:05
+	//	\function	id	||	\date	2019/12/09 14:05
+	//	\brief	get entity id
 	const inline EntityId getId() const noexcept;
 	const std::string& getName() const noexcept;
 	const Category getCategory() const noexcept;

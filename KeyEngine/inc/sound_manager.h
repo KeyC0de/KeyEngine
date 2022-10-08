@@ -15,10 +15,8 @@
 
 //============================================================
 //	\class	SoundManager
-//
 //	\author	KeyC0de
 //	\date	2020/10/23 21:33
-//
 //	\brief	singleton class
 //			back-end
 //			non-copyable & non-movable
@@ -32,10 +30,8 @@ class SoundManager final
 public:
 	//============================================================
 	//	\class	Channel
-	//
 	//	\author	KeyC0de
 	//	\date	2020/10/25 14:01
-	//
 	//	\brief	back-end
 	//			each Sound sticks to a single Channel
 	//			at most m_nMaxAudioChannels can play at a certain time
@@ -56,10 +52,8 @@ public:
 		bool setupChannel( SoundManager &soundManager, Sound &sound );
 		void playSound( Sound *sound, const float volume );
 		void stopSound() cond_noex;
-		//===================================================
-		//	\function	rechannel
+		//	\function	rechannel	||	\date	2020/10/25 19:18
 		//	\brief  finds new channel for the existing Sound
-		//	\date	2020/10/25 19:18
 		void rechannel( const Sound *pOldSound, Sound *pNewSound );
 		Sound* getSound() const cond_noex;
 	};
@@ -95,10 +89,8 @@ private:
 	static inline constexpr size_t m_nMaxAudioChannels = 16u;
 	static inline constexpr size_t m_nMaxSubmixes = 8u;
 public:
-	//===================================================
-	//	\function	getInstance
+	//	\function	instance	||	\date	2020/10/25 21:38
 	//	\brief  return the single instance of the class
-	//	\date	2020/10/24 1:48
 	static SoundManager& instance( WAVEFORMATEXTENSIBLE *format = nullptr );
 public:
 	~SoundManager() noexcept;
@@ -106,10 +98,8 @@ public:
 	void setMasterVolume( float volume = 1.0f );
 	void setSubmixVolume( const Submix &submix, float volume = 1.0f ) cond_noex;
 	void playChannelSound( class Sound *sound, float volume );
-	//===================================================
-	//	\function	deactivateChannel
+	//	\function	deactivateChannel	||	\date	2020/10/25 20:18
 	//	\brief  removes occupied Channel & places it in the idle list
-	//	\date	2020/10/25 19:45
 	void deactivateChannel( Channel &channel );
 	//void disableSubmixVoice( const Submix &submix );
 private:
@@ -119,10 +109,8 @@ private:
 
 //============================================================
 //	\class	Sound
-//
 //	\author	KeyC0de
 //	\date	2020/10/24 1:51
-//
 //	\brief	move only
 //			front-end
 //			encapsulates a sound
@@ -142,38 +130,28 @@ class Sound final
 	std::condition_variable m_condVar;
 	std::vector<SoundManager::Channel*> m_busyChannels;	// those are currently playing
 public:
-	//===================================================
-	//	\function	findChunk
-	//	\brief  locates chunks in RIFF files
-	//	\date	2020/10/25 15:09
+	//	\function	findChunk	||	\date	2020/10/25 15:09
+	//	\brief	locates chunks in RIFF files
 	HRESULT findChunk( HANDLE file, DWORD fourcc, DWORD &chunkSize, DWORD &chunkDataPosition );
-	//===================================================
 	//	\function	readChunkData
 	//	\brief  read chunk's data (after the chunk has been located)
-	//	\date	2020/10/21 17:37
+
 	HRESULT readChunkData( HANDLE file, void *buffer, DWORD buffersize, DWORD bufferoffset );
 public:
 	// #TODO: Sound Looping
-	//===================================================
-	//	\function	Sound
-	//	\brief  constructor loads sound file and configures all its properties
-	//	\date	2020/10/25 15:04
+	//	\function	Sound	||	\date	2020/10/25 15:04
+	//	\brief	constructor loads sound file and configures all its properties
 	Sound( const char *zsFilename, const std::string &name = "", const std::string &submixName = "" );
 	Sound( Sound &&rhs ) cond_noex;
 	Sound& operator=( Sound &&rhs ) cond_noex;
 	~Sound() noexcept;
 
 	const std::string& getName() const cond_noex;
-	//===================================================
-	//	\function	getTypeName
-	//	\brief  get sound type eg effects, music, dialogue etc
-	//			each sound type corresponds to a Submix voice
-	//	\date	2020/10/25 14:05
+	//	\function	getTypeName	\date	2020/10/25 14:05
+	//	\brief	get sound type eg effects, music, dialogue etc. --- each sound type corresponds to a Submix voice
 	const std::string& getSubmixName() const cond_noex;
-	//===================================================
-	//	\function	play
-	//	\brief  instructs the sound manager to play the sound on free channel(s)
-	//	\date	2020/10/25 13:05
+	//	\function	play	||	\date	2020/10/25 13:05
+	//	\brief	instructs the sound manager to play the sound on free channel(s)
 	void play( float volume = 1.0f );
 	void stop();
 };

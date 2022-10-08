@@ -226,7 +226,7 @@
     <ClCompile Include="src\renderer_exception.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
-    <ClCompile Include="src\skybox_vscb.cpp">
+    <ClCompile Include="src\sky_vscb.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
     <ClCompile Include="src\texture.cpp">
@@ -969,7 +969,7 @@
     <ClInclude Include="inc\rendering_channel.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
-    <ClInclude Include="inc\skybox_vscb.h">
+    <ClInclude Include="inc\sky_vscb.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
     <ClInclude Include="inc\light.h">
@@ -1484,10 +1484,10 @@
     <FxCompile Include="shaders\shadow_vs.hlsl">
       <Filter>engine\vfx\shaders</Filter>
     </FxCompile>
-    <FxCompile Include="shaders\skybox_ps.hlsl">
+    <FxCompile Include="shaders\sky_ps.hlsl">
       <Filter>engine\vfx\shaders</Filter>
     </FxCompile>
-    <FxCompile Include="shaders\skybox_vs.hlsl">
+    <FxCompile Include="shaders\sky_vs.hlsl">
       <Filter>engine\vfx\shaders</Filter>
     </FxCompile>
     <FxCompile Include="shaders\blur_ps.hlsl">

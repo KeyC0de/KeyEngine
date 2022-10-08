@@ -20,11 +20,9 @@ namespace ren
 }
 
 //=============================================================
-//	\class	
-//
+//	\class	Mesh
 //	\author	KeyC0de
 //	\date	2022/09/12 23:26
-//
 //	\brief	imported Models will be handled via Mesh
 //			stand-alone Meshes should not touch `m_worldTransform`
 //			instead they should define their own transform vars (eg m_pos, m_rot, or m_scale) and override getTransform (for Cloning Bindables like TransformVSCB) that require the Mesh's transform to be bound to the pipeline
@@ -60,14 +58,11 @@ public:
 		}
 		return std::nullopt;
 	}
-	//===================================================
-	//	\function	addEffect
-	//	\brief  Effects are moved here
+	//	\function	addEffect	||	\date	2021/10/26 23:58
+	//	\brief	Effects are moved here
 	void addEffect( Effect ef ) noexcept;
-	//===================================================
-	//	\function	update
-	//	\brief  does gameplay, transformation, physics
-	//	\date	2021/10/26 23:58
+	//	\function	update	||	\date	2021/10/26 23:58
+	//	\brief	does gameplay, transformation, physics
 	void update( const float dt ) cond_noex;
 	void render( const size_t channels = rch::all ) const noexcept;
 	void bind( Graphics &gph ) const cond_noex;
@@ -75,9 +70,8 @@ public:
 	const unsigned getIndicesCount() const cond_noex;
 	void connectEffectsToRenderer( ren::Renderer &r );
 	//===================================================
-	//	\function	setTransform
-	//	\brief  sets the world transform matrix for the mesh
-	//	\date	2022/08/28 21:24
+	//	\function	setTransform	||	\date	2022/08/28 21:24
+	//	\brief	sets the world transform matrix for the mesh
 	void setTransform( const DirectX::XMMATRIX &worldTransform ) noexcept;
 	DirectX::XMFLOAT4X4& transform();
 	virtual const DirectX::XMMATRIX getTransform() const noexcept;
@@ -87,7 +81,6 @@ public:
 	DirectX::XMMATRIX calcRotationTr() const noexcept;
 	float calcScale() const noexcept;
 	DirectX::XMMATRIX calcScaleTr() const noexcept;
-	////////////////////////////////////////////////////////////////////////////////////////////////////
 	void setDistanceFromActiveCamera() noexcept;
 	const float getDistanceFromActiveCamera() const noexcept;
 protected:

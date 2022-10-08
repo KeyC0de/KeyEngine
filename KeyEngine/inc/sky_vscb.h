@@ -6,7 +6,7 @@
 
 class Camera;
 
-class SkyboxVSCB
+class SkyVSCB
 	: public IBindable
 {
 	struct Transform
@@ -15,7 +15,7 @@ class SkyboxVSCB
 	};
 	std::unique_ptr<VertexShaderConstantBuffer<Transform>> m_pVscb;
 public:
-	SkyboxVSCB( Graphics &gph, const unsigned slot = 0u );
+	SkyVSCB( Graphics &gph, const unsigned slot = 0u );
 
 	void bind( Graphics &gph ) cond_noex override;
 	Transform getTransform( Graphics &gph ) cond_noex;

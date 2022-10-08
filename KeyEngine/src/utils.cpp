@@ -189,22 +189,11 @@ std::tuple<int, int, int> secondsToHms( const int totalSecs )
 	return {hours, minutes, seconds};
 }
 
-//===================================================
-//	\function	secondsToTimeT
-//	\brief	convert seconds to time_t
-//			Although not defined, time_t is implementation defined
-//			It is almost always an integral value holding the number of seconds (not counting leap seconds) since 00:00, Jan 1 1970 UTC, corresponding to POSIX time.
-//	\date	2022/07/28 22:35
 inline time_t secondsToTimeT( const int s )
 {
 	return std::chrono::system_clock::to_time_t( std::chrono::system_clock::time_point( std::chrono::duration_cast<std::chrono::seconds>( std::chrono::duration<int>( s ) ) ) );
 }
 
-//===================================================
-//	\function	timeTtoSeconds
-//	\brief  convert time_t to seconds
-//			time_t can be acquired as if by means of time(nullptr)
-//	\date	2022/07/28 22:32
 long int timeTtoSeconds( const time_t t )
 {
 	return static_cast<long int>( t );

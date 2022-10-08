@@ -11,11 +11,9 @@
 
 
 //=============================================================
-//	\class
-//
+//	\class	Bitmap
 //	\author	KeyC0de
 //	\date	2021/10/04 12:56
-//
 //	\brief	uses DirectX Tex to load images into
 //			rule-of-0
 //=============================================================
@@ -40,10 +38,8 @@ private:
 	Bitmap( DirectX::ScratchImage rhs ) noexcept;
 public:
 	static Bitmap loadFromFile( const std::string &filename, unsigned wicFlags = DirectX::WIC_FLAGS_IGNORE_SRGB );
-	//===================================================
-	//	\function	colorToVector
-	//	\brief  convert from Color(0..255) to vector(-1..1)
-	//	\date	2022/02/18 17:49
+	//	\function	colorToVector	||	\date	2022/02/18 17:49
+	//	\brief	convert from Color(0..255) to vector(-1..1)
 	static const DirectX::XMVECTOR colorToVector( const Bitmap::Texel col ) noexcept;
 	static const Bitmap::Texel vectorToColor( const DirectX::XMVECTOR &v ) noexcept;
 public:
@@ -55,10 +51,8 @@ public:
 	const Texel getTexel( const unsigned int x, const unsigned int y ) const cond_noex;
 	const unsigned int getWidth() const noexcept;
 	const unsigned int getHeight() const noexcept;
-	//===================================================
-	//	\function	getPitch
-	//	\brief  === getWidth() * sizeof Texel
-	//	\date	2022/02/19 19:27
+	//	\function	getPitch	||	\date	2022/02/19 19:27
+	//	\brief	=== getWidth() * sizeof Texel
 	const unsigned int getPitch() const noexcept;
 	Texel* data() noexcept;
 	const Texel* getData() const noexcept;

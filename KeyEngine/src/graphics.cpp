@@ -28,7 +28,7 @@ namespace mwrl = Microsoft::WRL;
 namespace dx = DirectX;
 
 // create ITT string handles
-#ifdef KEYENGINE_PROFILE
+#ifdef _PROFILE
 static __itt_string_handle *pStrIttDrawIndexed = __itt_string_handle_create( L"DrawIndexed" );
 static __itt_string_handle *pStrIttDrawIndexedInstanced = __itt_string_handle_create( L"DrawIndexedInstanced" );
 static __itt_string_handle *pStrIttBeginRendering = __itt_string_handle_create( L"BeginRendering" );
@@ -55,13 +55,13 @@ IDXGIAdapter* Graphics::Adapter::adapter() const noexcept
 void Graphics::Adapter::getVRamDetails() const noexcept
 {
 	auto desc = getDesc();
-	
+
 	std::string description = util::ws2s( desc->Description );
 	INT64 vRam = desc->DedicatedVideoMemory;
 	INT64 ram = desc->DedicatedSystemMemory;
 	INT64 sharedRam = desc->SharedSystemMemory;
 	std::string featureLevel{ENUM_STR( Graphics::m_featureLevel )};
-	
+
 #if defined _DEBUG && !defined NDEBUG
 	KeyConsole& console = KeyConsole::instance();
 	console.print( "***************** GRAPHICS ADAPTER DETAILS ***********************" );
@@ -100,7 +100,7 @@ Graphics::Graphics( const HWND hWnd,
 		m_commandLists.reserve( settings.nRenderingThreads );
 	}
 
-	// create factory, adapter, device, front|back buffers swap chain, rendering contexts, output device
+	// create factory, adapter, device, device rendering context(s), front|back buffers swap chain, output device
 	createFactory();
 	createAdapters();
 	const auto &primaryAdapter = m_adapters.front();
@@ -255,19 +255,19 @@ void Graphics::clearShaderSlots() noexcept
 	// Clearing shader input slots to prevent simultaneous in/out binds carried over from previous frame.
 	// This is to prevent OMSetRenderTargets state hazard.
 	ID3D11ShaderResourceView *const pNullSrv = nullptr;
-	
+
 	// diffuse texture
 	m_pImmediateContext->PSSetShaderResources( 0u,
 		1u,
 		&pNullSrv );
 	DXGI_GET_QUEUE_INFO_GFX;
-	
+
 	// specular texture
 	m_pImmediateContext->PSSetShaderResources( 1u,
 		1u,
 		&pNullSrv );
 	DXGI_GET_QUEUE_INFO_GFX;
-	
+
 	// normal texture
 	m_pImmediateContext->PSSetShaderResources( 2u,
 		1u,
@@ -321,6 +321,8 @@ void Graphics::resize( const unsigned newWidth,
 void Graphics::releaseBackBufferForResizing()
 {
 	clearShaderSlots();
+
+	/// #FIXME: assemble all render targets and depth stencils and clear them
 	// release the render target view based on the back buffer:
 	m_rtv->clean( *this );
 
@@ -341,8 +343,7 @@ void Graphics::releaseBackBufferForResizing()
 	m_rtv.reset();
 	m_dsv.reset();
 
-	rtvRefs = m_rtv.use_count();
-	dsvRefs = m_dsv.use_count();
+	/// #FIXME: restore all render targets and depth stencils back
 	//ASSERT( rtvRefs == 1 && dsvRefs == 1, "More references to such resources still exist" );
 }
 
@@ -395,7 +396,7 @@ void Graphics::cleanState() noexcept
 	}
 }
 
-#ifdef KEYENGINE_PROFILE
+#ifdef _PROFILE
 void Graphics::profile() const noexcept
 {
 	HRESULT hres;
@@ -771,7 +772,7 @@ bool Graphics::checkTearingSupport()
 	hres = factory5->CheckFeatureSupport( DXGI_FEATURE_PRESENT_ALLOW_TEARING,
 		&bAllowTearing,
 		sizeof bAllowTearing );
-	
+
 	bAllowTearing = SUCCEEDED( hres ) && bAllowTearing;
 
 	return bAllowTearing;

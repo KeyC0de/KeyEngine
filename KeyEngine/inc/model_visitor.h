@@ -37,16 +37,12 @@ public:
 	void spawnModelImgui( Model &model );
 	const std::string& getName() const noexcept;
 private:
-	//===================================================
-	//	\function	visit
+	//	\function	visit	||	\date	2022/09/20 23:06
 	//	\brief  returns true if we want to render this Node in the ImGui tree hierarchy
 	//			"opens" the node for processing
-	//	\date	2022/09/20 23:06
 	bool visit( Node &node ) override;
-	//===================================================
-	//	\function	onVisited
+	//	\function	onVisited	||	\date	2022/09/20 23:07
 	//	\brief  if visit() returns true, "close" the node
-	//	\date	2022/09/20 23:07
 	void onVisited( Node &node ) override;
 	TransformData& calcTransform() noexcept;
 };

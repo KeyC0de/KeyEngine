@@ -8,52 +8,43 @@
 
 namespace ren
 {
-// #FIXME: Setup BlurPass - Graphics Debugging
+
 BlurPass::BlurPass( Graphics &gph,
-	const std::string &name )
+	const std::string &name,
+	const unsigned rezReductFactor )
 	:
-	FullscreenPass{gph, name}
+	IFullscreenPass{gph, name}
 {
-	addPassBindable( RasterizerState::fetch( gph,
-		RasterizerState::FrontSided,
-		RasterizerState::Solid ) );
-
-	addPassBindable( BlendState::fetch( gph,
-		BlendState::Mode::Additive,
-		0u ) );
-	
-	addPassBindable( DepthStencilState::fetch( gph,
-		DepthStencilState::Mode::Default ) );
-
+	addPassBindable( PixelShader::fetch( gph,
+		"blur_ps.cso" ) );
 	addPassBindable( TextureSamplerState::fetch( gph,
 		0u,
 		TextureSamplerState::FilterMode::Trilinear,
 		TextureSamplerState::AddressMode::Clamp ) );
+	addPassBindable( DepthStencilState::fetch( gph,
+		DepthStencilState::Mode::Default ) );
+	//addPassBindable( BlendState::fetch( gph,
+		//BlendState::Mode::NoBlend,
+		//0u ) );
+	addPassBindable( BlendState::fetch( gph,
+		BlendState::Mode::Alpha,
+		0u ) );
 
-	addPassBindable( PixelShader::fetch( gph,
-		"blur_ps.cso" ) );
+	//addConsumer( RenderSurfaceConsumer<IDepthStencilView>::make( "depthStencil",
+		//m_pDsv ) );
 
-	//addPassBindable( PixelShaderNull::fetch( gph ) );
-
-	// bind RT as Shader Input to read from it
-	auto rezReductFactor = 2;
 	const unsigned width = gph.getClientWidth() / rezReductFactor;
 	const unsigned height = gph.getClientHeight() / rezReductFactor;
-	
-	//m_pRtv = std::make_shared<RenderTargetShaderInput>( gph,
-	//	width,
-	//	height,
-	//	0u );
+	// create a SRV to read the main texture
+	m_pRtv = std::make_unique<RenderTargetShaderInput>( gph,
+		width,
+		height,
+		0u );
+	//addProducer( BindableProducer<IRenderTargetView>::make( "offscreenFullscreenBlurOut",
+		//m_pRtv ) );
 
-	addConsumer( RenderSurfaceConsumer<IRenderTargetView>::make( "renderTarget",
-		m_pRtv ) );
-	addConsumer( RenderSurfaceConsumer<IDepthStencilView>::make( "depthStencil",
-		m_pDsv ) );
-
-	addProducer( RenderSurfaceProducer<IRenderTargetView>::make( "renderTarget",
-		m_pRtv ) );
-	addProducer( RenderSurfaceProducer<IDepthStencilView>::make( "depthStencil",
-		m_pDsv ) );
+	//addProducer( RenderSurfaceProducer<IDepthStencilView>::make( "depthStencil",
+		//m_pDsv ) );
 }
 
 void BlurPass::reset() cond_noex

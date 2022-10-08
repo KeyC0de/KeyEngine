@@ -5,15 +5,15 @@
 #include "producer.h"
 #include "render_target.h"
 #include "blend_state.h"
+#include "texture_sampler_state.h"
 
 
 namespace ren
 {
 
-// targets offscreen buffer targets
 BlurOutlineDrawPass::BlurOutlineDrawPass( Graphics &gph,
 	const std::string &name,
-	const int rezReductFactor )
+	const unsigned rezReductFactor )
 	:
 	RenderQueuePass{name}
 {
@@ -21,23 +21,24 @@ BlurOutlineDrawPass::BlurOutlineDrawPass( Graphics &gph,
 		"flat_vs.cso" ) );
 	addPassBindable( PixelShader::fetch( gph,
 		"flat_ps.cso" ) );
+	addPassBindable( TextureSamplerState::fetch( gph,
+		0u,
+		TextureSamplerState::FilterMode::Trilinear,
+		TextureSamplerState::AddressMode::Clamp ) );
 	addPassBindable( DepthStencilState::fetch( gph,
 		DepthStencilState::Mode::DepthOffStencilReadFF ) );
 	addPassBindable( BlendState::fetch( gph,
 		BlendState::NoBlend,
 		0u ) );
 
-	const auto width = gph.getClientWidth() / rezReductFactor;
-	const auto height = gph.getClientHeight() / rezReductFactor;
-
+	const unsigned width = gph.getClientWidth() / rezReductFactor;
+	const unsigned height = gph.getClientHeight() / rezReductFactor;
+	// create a SRV to read the main texture
 	m_pRtv = std::make_unique<RenderTargetShaderInput>( gph,
 		width,
 		height,
 		0u );
-
-	// m_pRtv will be bound as an Output this Pass
-	// and as an input Bindable the next Pass (HorizontalBlurPass) to read from the texture
-	addProducer( BindableProducer<IRenderTargetView>::make( "blurRttOut",
+	addProducer( BindableProducer<IRenderTargetView>::make( "offscreenBlurOutlineOut",
 		m_pRtv ) );
 }
 

@@ -24,12 +24,10 @@ class DxgiInfoQueue final
 public:
 	DxgiInfoQueue();
 
-	//===================================================
-	//	\function	markQueueIndex
-	//	\brief  call this on frame end right before Present()ation
+	//	\function	markQueueIndex	||	\date	2021/01/14 21:47
+	//	\brief	call this on frame end right before Present()ation
 	//			it sets the message queue index so that with the next call to getInfo we
 	//			will get info messages generated after the last call to markQueueIndex()
-	//	\date	2021/01/14 21:47
 	void markQueueIndex() noexcept;
 	std::vector<std::string> getInfoMessages();
 };

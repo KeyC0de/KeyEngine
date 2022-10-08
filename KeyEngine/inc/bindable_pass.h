@@ -17,35 +17,28 @@ class IBindablePass
 {
 	std::vector<std::shared_ptr<IBindable>> m_bindables;
 protected:
-	// targets of the current pass (either back-buffer or offscreen target):
 	std::shared_ptr<IRenderTargetView> m_pRtv;
 	std::shared_ptr<IDepthStencilView> m_pDsv;
 protected:
-	IBindablePass( const std::string &name, const std::vector<std::shared_ptr<IBindable>>& bindables = {} );
+	IBindablePass( const std::string &name, const std::vector<std::shared_ptr<IBindable>> &bindables = {} );
 
-	//===================================================
-	//	\function	addPassBindable
-	//	\brief  add Bindables that will be shared by all meshes in this Pass
-	//	\date	2022/02/19 19:17
+	//	\function	addPassBindable	||	\date	2022/02/19 19:17
+	//	\brief	add Bindables that will be shared by all meshes in this Pass
 	void addPassBindable( std::shared_ptr<IBindable> bindable ) noexcept;
-	//===================================================
-	//	\function	bind
+	//	\function	bind	||	\date	2021/06/27 0:04
 	//	\brief  bind RTV OR DSV and other bindables shared by all Pass objects
 	//			call this function as the first thing you do on a child class's run function
-	//	\date	2021/06/27 0:04
 	void bind( Graphics &gph ) const cond_noex;
 	void validate() override;
 
-	//===================================================
-	//	\function	addContainerBindableConsumer
-	//	\brief  this should mostly used on the Pass that wants to read an offscreen texture buffer (via ita name)
-	//	\date	2022/10/02 20:49
+	//	\function	addContainerBindableConsumer	||	\date	2022/10/02 20:49
+	//	\brief	this should mostly be used on the Pass that wants to read an offscreen texture buffer
 	template<class T>
-	void addContainerBindableConsumer( const std::string &name )
+	void addContainerBindableConsumer( const std::string &consumerName )
 	{
 		const auto index = m_bindables.size();
 		m_bindables.emplace_back();
-		addConsumer( std::make_unique<ContainerBindableConsumer<T>>( name,
+		addConsumer( std::make_unique<ContainerBindableConsumer<T>>( consumerName,
 			m_bindables,
 			index ) );
 	}

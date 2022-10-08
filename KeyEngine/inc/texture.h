@@ -17,10 +17,8 @@ class Texture
 	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_pSrv;
 public:
 	Texture( Graphics &gph, const std::string &filepath, const unsigned slot );
-	//===================================================
-	//	\function	Texture
-	//	\brief  Texture constructor with dynamic CPU per frame update
-	//	\date	2021/10/30 3:42
+	//	\function	Texture	||	\date	2021/10/30 3:42
+	//	\brief	Texture constructor with dynamic CPU per frame update
 	Texture( Graphics &gph, const unsigned width, const unsigned height, const unsigned slot );
 
 	void paintTextureToBitmap( Graphics &gph, ID3D11Texture2D *tex, const Bitmap &bitmap, const D3D11_BOX *destPortion = nullptr );
@@ -31,21 +29,17 @@ public:
 	static std::shared_ptr<Texture> fetch( Graphics &gph, const std::string &filepath, const unsigned slot );
 	static std::string calcUid( const std::string &filepath, const unsigned slot );
 	const std::string getUid() const noexcept override;
-	
+
 public:
 	static void flipModelNormalMapsGreenChannel( const std::string &objPath );
-	//===================================================
-	//	\function	flipNormalMapGreenChannel
+	//	\function	flipNormalMapGreenChannel	||	\date	2022/02/19 17:22
 	//	\brief  flips the normal map green channel of given texture
-	//	\date	2022/02/19 17:22
 	static void flipNormalMapGreenChannel( const std::string &pathIn, const std::string &pathOut );
 	static void validateNormalMap( const std::string &pathIn, const float thresholdMin, const float thresholdMax );
 	static void makeStripes( const std::string &pathOut, const int size, const int stripeWidth );
 private:
-	//===================================================
-	//	\function	transformBitmap
+	//	\function	transformBitmap	||	\date	2022/02/18 19:14
 	//	\brief  apply function f at every Texel in the Bitmap
-	//	\date	2022/02/18 19:14
 	template<typename F>
 	static void transformBitmap( Bitmap &bitmap,
 		F &&f )

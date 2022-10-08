@@ -158,11 +158,11 @@ void Renderer::linkPassConsumers( IPass &pass )
 		if ( consumerPassName == "$" )
 		{
 			bool bLinked = false;
-			for ( auto &globalProd : m_globalProducers )
+			for ( auto &globalProducer : m_globalProducers )
 			{
-				if ( globalProd->getName() == consumer->getProducerName() )
+				if ( globalProducer->getName() == consumer->getProducerName() )
 				{
-					consumer->link( *globalProd );
+					consumer->link( *globalProducer );
 					bLinked = true;
 					break;
 				}
@@ -203,6 +203,8 @@ void Renderer::linkPassConsumers( IPass &pass )
 
 void Renderer::linkGlobalConsumers()
 {
+	this->validateConsumersLinkage();
+
 	for ( auto &consumer : m_globalConsumers )
 	{
 		const auto &consumerPassname = consumer->getPassName();
@@ -255,9 +257,9 @@ RenderQueuePass& Renderer::getRenderQueuePass( const std::string &name )
 
 
 Renderer3d::Renderer3d( Graphics &gph,
-	int radius,
-	float sigma,
-	KernelType kernelType )
+	const int radius,
+	const float sigma,
+	const KernelType kernelType )
 	:
 	Renderer{gph},
 	m_radius(radius),
@@ -273,15 +275,15 @@ Renderer3d::Renderer3d( Graphics &gph,
 	{
 		auto pass = std::make_unique<LambertianPass>( gph,
 			"lambertian" );
-		pass->setupConsumerTarget( "shadowCubemapRttIn",
-			"shadowMap",
-			"shadowCubemapRttOut" );
 		pass->setupConsumerTarget( "renderTarget",
 			"clearRt",
 			"buffer" );
 		pass->setupConsumerTarget( "depthStencil",
 			"clearDs",
 			"buffer" );
+		pass->setupConsumerTarget( "offscreenShadowCubemapIn",
+			"shadowMap",
+			"offscreenShadowCubemapOut" );
 		linkPassConsumers( *pass );
 		addPass( std::move( pass ) );
 	}
@@ -309,7 +311,7 @@ Renderer3d::Renderer3d( Graphics &gph,
 	{
 		auto pass = std::make_unique<BlurOutlineDrawPass>( gph,
 			"blurOutlineDraw",
-			4 );
+			s_fullscreenRezReductFactor );
 		linkPassConsumers( *pass );
 		addPass( std::move( pass ) );
 	}
@@ -319,7 +321,7 @@ Renderer3d::Renderer3d( Graphics &gph,
 			con::RawLayout layout;
 			layout.add<con::Integer>( "nTaps" );
 			layout.add<con::Array>( "coefficients" );
-			layout["coefficients"].set<con::Float>( m_maxRadius * 2 + 1 );
+			layout["coefficients"].set<con::Float>( s_maxRadius * 2 + 1 );
 
 			con::CBuffer cb{std::move( layout )};
 			m_blurKernel = std::make_shared<PixelShaderConstantBufferEx>( gph,
@@ -345,10 +347,10 @@ Renderer3d::Renderer3d( Graphics &gph,
 	{
 		auto pass = std::make_unique<HorizontalBlurPass>( gph,
 			"horizontalBlur",
-			4 );
-		pass->setupConsumerTarget( "blurRttIn",
+			s_fullscreenRezReductFactor );
+		pass->setupConsumerTarget( "offscreenBlurOutlineIn",
 			"blurOutlineDraw",
-			"blurRttOut" );
+			"offscreenBlurOutlineOut" );
 		pass->setupConsumerTarget( "blurKernel",
 			"$",
 			"blurKernel" );
@@ -367,9 +369,9 @@ Renderer3d::Renderer3d( Graphics &gph,
 		pass->setupConsumerTarget( "depthStencil",
 			"blurOutlineMask",
 			"depthStencil" );
-		pass->setupConsumerTarget( "blurRttIn",
+		pass->setupConsumerTarget( "offscreenBlurOutlineIn",
 			"horizontalBlur",
-			"blurRttOut" );
+			"offscreenBlurOutlineOut" );
 		pass->setupConsumerTarget( "blurKernel",
 			"$",
 			"blurKernel" );
@@ -403,6 +405,21 @@ Renderer3d::Renderer3d( Graphics &gph,
 		linkPassConsumers( *pass );
 		addPass( std::move( pass ) );
 	}
+	/*{
+		auto pass = std::make_unique<FullscreenPass>( gph,
+			"fullscreen" );
+		pass->setupConsumerTarget( "renderTarget",
+			"solidOutlineDraw",
+			"renderTarget" );
+		pass->setupConsumerTarget( "depthStencil",
+			"blur",
+			"depthStencil" );
+		pass->setupConsumerTarget( "offscreenFullscreenBlurIn",
+			"blur",
+			"offscreenFullscreenBlurOut" );
+		linkPassConsumers( *pass );
+		addPass( std::move( pass ) );
+	}*/
 	{
 		auto pass = std::make_unique<DepthReversedPass>( gph,
 			"depthReversed" );
@@ -412,6 +429,9 @@ Renderer3d::Renderer3d( Graphics &gph,
 		pass->setupConsumerTarget( "depthStencil",
 			"solidOutlineDraw",
 			"depthStencil" );
+		//pass->setupConsumerTarget( "offscreenFullscreenBlurIn",
+		//	"blur",
+		//	"offscreenFullscreenBlurOut" );
 		linkPassConsumers( *pass );
 		addPass( std::move( pass ) );
 	}
@@ -427,24 +447,16 @@ Renderer3d::Renderer3d( Graphics &gph,
 		linkPassConsumers( *pass );
 		addPass( std::move( pass ) );
 	}
-	
 	{
 		auto pass = std::make_unique<BlurPass>( gph,
-			"blur" );
-		pass->setupConsumerTarget( "renderTarget",
-			"wireframe",
-			"renderTarget" );
-		pass->setupConsumerTarget( "depthStencil",
-			"wireframe",
-			"depthStencil" );
+			"blur",
+			1u );
 		linkPassConsumers( *pass );
 		addPass( std::move( pass ) );
 	}
 
-	Renderer::validateConsumersLinkage();
-
 	setupGlobalConsumerTarget( "backColorbuffer",
-		"blur",
+		"wireframe",
 		"renderTarget" );
 	Renderer::linkGlobalConsumers();
 }
@@ -494,7 +506,7 @@ void Renderer3d::showGaussianBlurImguiWindow( Graphics &gph )
 		bool bRadiusChanged = ImGui::SliderInt( "Radius",
 			&m_radius,
 			0,
-			m_maxRadius );
+			s_maxRadius );
 
 		bool bSigmaChanged = false;
 		if ( m_kernelType == Gauss )
@@ -502,7 +514,7 @@ void Renderer3d::showGaussianBlurImguiWindow( Graphics &gph )
 			bSigmaChanged = ImGui::SliderFloat( "Sigma",
 				&m_sigma,
 				0.1f,
-				m_maxSigma );
+				s_maxSigma );
 		}
 
 		if ( bRadiusChanged || bSigmaChanged || bFilterChanged )
@@ -555,8 +567,8 @@ void Renderer3d::dumpShadowMap( Graphics &gph,
 void Renderer3d::setKernelGauss( int radius,
 	float sigma ) cond_noex
 {
-	ASSERT( radius <= m_maxRadius, "Blur Kernel radius is over the max!" );
-	ASSERT( sigma <= m_maxSigma, "Blur Kernel sigma is over the max!" );
+	ASSERT( radius <= s_maxRadius, "Blur Kernel radius is over the max!" );
+	ASSERT( sigma <= s_maxSigma, "Blur Kernel sigma is over the max!" );
 
 	auto cb = m_blurKernel->getBuffer();
 	const int nTaps = radius * 2 + 1;
@@ -581,7 +593,7 @@ void Renderer3d::setKernelGauss( int radius,
 
 void Renderer3d::setKernelBox( int radius ) cond_noex
 {
-	ASSERT( radius <= m_maxRadius, "Blur Kernel radius is over the max!" );
+	ASSERT( radius <= s_maxRadius, "Blur Kernel radius is over the max!" );
 
 	auto cb = m_blurKernel->getBuffer();
 	const int nTaps = radius * 2 + 1;
@@ -611,8 +623,6 @@ Renderer2d::Renderer2d( Graphics &gph )
 		linkPassConsumers( *pass );
 		addPass( std::move( pass ) );
 	}
-
-	Renderer::validateConsumersLinkage();
 
 	setupGlobalConsumerTarget( "backColorbuffer",
 		"pass2d",

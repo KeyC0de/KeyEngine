@@ -133,10 +133,8 @@ CB_LEAF_TYPES
 
 //=============================================================
 //	\class	CBElement
-//
 //	\author	KeyC0de
 //	\date	2022/08/21 19:55
-//
 //	\brief	CBElement instances form a tree that describes the layout of the data buffer
 //			supporting nested aggregates of structs and arrays
 //=============================================================
@@ -196,11 +194,9 @@ public:
 	{
 		return set( elem, size );
 	}
-	
-	//===================================================
-	//	\function	fetch
-	//	\brief  returns offset of leaf types for read/write purposes w/ typecheck in Debug
-	//	\date	2022/08/30 0:46
+
+	//	\function	fetch	||	\date	2022/08/30 0:46
+	//	\brief	returns offset of leaf types for read/write purposes w/ typecheck in Debug
 	template<typename T>
 	const size_t fetch() const cond_noex
 	{
@@ -218,10 +214,8 @@ CB_LEAF_TYPES
 		}
 	}
 private:
-	//===================================================
-	//	\function	ctor
-	//	\brief  construct an empty layout element
-	//	\date	2022/08/30 0:47
+	//	\function	CBElement	||	\date	2022/08/30 0:47
+	//	\brief	construct an empty layout element
 	CBElement() noexcept = default;
 	CBElement( const ElementType typeIn ) cond_noex;
 	// sets all offsets for element and subelements, prepending padding when necessary
@@ -253,10 +247,8 @@ private:
 
 //=============================================================
 //	\class	CBLayout
-//
 //	\author	KeyC0de
 //	\date	2022/08/21 19:56
-//
 //	\brief	the layout class serves as a shell to hold the root of the CBElement tree
 //			client does not create CBElements directly, create a raw layout and then
 //			use it to access the elements and add on from there. When building is done,
@@ -282,10 +274,8 @@ public:
 
 //=============================================================
 //	\class	RawLayout
-//
 //	\author	KeyC0de
 //	\date	2022/08/21 19:55
-//
 //	\brief	Raw layout represents a layout that has not yet been finalized and registered
 //			structure can be edited by adding layout nodes
 //=============================================================
@@ -307,20 +297,16 @@ public:
 private:
 	// reset this object with an empty struct at its root
 	void clear() noexcept;
-	//===================================================
-	//	\function	cookLayout
+	//	\function	cookLayout	||	\date	2022/08/21 19:50
 	//	\brief	cook/commit the layout and then relinquish (by yielding the root layout element)
-	//	\date	2022/08/21 19:50
 	std::shared_ptr<CBElement> cookLayout() noexcept;
 };
 
 
 //=============================================================
 //	\class	CookedLayout
-//
 //	\author	KeyC0de
 //	\date	2022/08/21 19:51
-//
 //	\brief	CookedLayout represents a completed and registered CBLayout shell object
 //			layout tree is fixed
 //=============================================================
@@ -330,24 +316,26 @@ class CookedLayout final
 	friend class LayoutMap;
 	friend class CBuffer;
 public:
-	// key into the root Struct (const to disable mutation of the layout)
+	//	\function	operator[]	||	\date	2022/08/21 19:50
+	//	\brief	key into the root Struct (const to disable mutation of the layout)
 	const CBElement& operator[]( const std::string &key ) const cond_noex;
-	// get a share on layout tree root
+	//	\function	shareRootElement	||	\date	2022/08/21 19:50
+	//	\brief	get a share on layout tree root
 	std::shared_ptr<CBElement> shareRootElement() const noexcept;
 private:
-	// this ctor used by BindableMap to return cooked layouts
+	//	\function	CookedLayout	||	\date	2022/08/21 19:50
+	//	\brief	this ctor used by BindableMap to return cooked layouts
 	CookedLayout( std::shared_ptr<CBElement> pRoot ) noexcept;
-	// use to pilfer the layout tree
+	//	\function	relinquishRoot	||	\date	2022/08/21 19:50
+	//	\brief	use to pilfer the layout tree
 	std::shared_ptr<CBElement> relinquishRoot() const noexcept;
 };
 
 
 //=============================================================
 //	\class	CBElementConstView
-//
 //	\author	KeyC0de
 //	\date	2022/08/21 19:51
-//
 //	\brief	proxy class that is emitted when keying/indexing into a Buffer
 //			implement conversions/assignment that allows manipulation of the raw bytes of the Buffer.
 //			This version is const, only supports reading
@@ -409,10 +397,8 @@ public:
 
 //=============================================================
 //	\class	CBElementView
-//
 //	\author	KeyC0de
 //	\date	2022/08/21 19:52
-//
 //	\brief	version of CBElementConstView that also allows writing to the bytes of Buffer
 //			see above in CBElementConstView for detailed description
 //			maintains a pointer to the byte vector of the Buffer
@@ -483,10 +469,8 @@ public:
 
 //=============================================================
 //	\class	LayoutMap
-//
 //	\author	KeyC0de
 //	\date	2022/08/21 19:53
-//
 //	\brief	maps CBElement strings with their CBElement objects
 //=============================================================
 class LayoutMap
@@ -501,11 +485,9 @@ private:
 
 
 //=============================================================
-//	\class	
-//
+//	\class	CBuffer
 //	\author	KeyC0de
 //	\date	2022/08/21 19:53
-//
 //	\brief	The buffer object is a combination of a raw byte buffer with a CBElement
 //			tree structure which acts as a view for those bytes
 //			operator[] indexes into the root Struct, returning a Ref shell that can be

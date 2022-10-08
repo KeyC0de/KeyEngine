@@ -24,15 +24,12 @@ ShadowPass::ShadowPass( Graphics &gph,
 	RenderQueuePass{name},
 	m_pLightVcb{std::make_shared<LightVSCB>( gph, 1u )}
 {
-	m_shadowMapResolution = shadowMapRez;
+	s_shadowMapResolution = shadowMapRez;
 
 	addPassBindable( m_pLightVcb );
 	addPassBindable( std::make_shared<ShadowMapSamplerState>( gph,
 		true,
 		ShadowMapSamplerState::FilterMode::Trilinear ) );
-	m_pDsvCubemap = std::make_shared<CubeTextureDS>( gph,
-		m_shadowMapResolution,
-		3u );
 	addPassBindable( VertexShader::fetch( gph,
 		"shadow_vs.cso" ) );
 	addPassBindable( PixelShaderNull::fetch( gph ) );
@@ -43,12 +40,21 @@ ShadowPass::ShadowPass( Graphics &gph,
 		50,
 		2.0f,
 		0.1f ) );
-	addProducer( BindableProducer<CubeTextureDS>::make( "shadowCubemapRttOut",
-		m_pDsvCubemap ) );
 
 	addPassBindable( BlendState::fetch( gph,
 		BlendState::NoBlend,
 		3u ) );
+
+	// create the offscreen texture - #TODO: check whether I can create it from the Dsv directly
+	m_pOffscreenDsvCubemap = std::make_shared<CubeTextureDS>( gph,
+		s_shadowMapResolution,
+		3u );
+
+	addProducer( BindableProducer<CubeTextureDS>::make( "offscreenShadowCubemapOut",
+		m_pOffscreenDsvCubemap ) );
+
+	// bind the DSV from the offscreen cube map ds texture side #0
+	m_pDsv = m_pOffscreenDsvCubemap->shareDepthBuffer( 0u );
 
 	DirectX::XMStoreFloat4x4( &m_cameraShadowProjectionMatrix,
 			Camera::getShadowProjectionMatrix() );
@@ -83,9 +89,6 @@ ShadowPass::ShadowPass( Graphics &gph,
 		DirectX::XMVectorSet( 0.0f, 0.0f, -1.0f, 0.0f ) );
 	DirectX::XMStoreFloat3( &m_cameraUps[5],
 		DirectX::XMVectorSet( 0.0f, 1.0f, 0.0f, 0.0f ) );
-
-	// get the depth stencil view
-	setDepthStencilView( m_pDsvCubemap->shareDepthBuffer( 0 ) );
 }
 
 void ShadowPass::run( Graphics &gph ) const cond_noex
@@ -96,9 +99,8 @@ void ShadowPass::run( Graphics &gph ) const cond_noex
 	gph.setProjectionMatrix( DirectX::XMLoadFloat4x4( &m_cameraShadowProjectionMatrix ) );
 	for ( size_t i = 0; i < 6; ++i )
 	{
-		auto dsv = m_pDsvCubemap->shareDepthBuffer( i );
-		dsv->clear( gph );
-		setDepthStencilView( std::move( dsv ) );
+		const_cast<ShadowPass*>( this )->m_pDsv = m_pOffscreenDsvCubemap->shareDepthBuffer( i );
+		m_pDsv->clear( gph );
 
 		const auto lookAt = DirectX::XMVectorAdd( pos,
 			DirectX::XMLoadFloat3( &m_cameraDirections[i] ) );
@@ -120,7 +122,7 @@ void ShadowPass::dumpShadowMap( Graphics &gph,
 {
 	for ( size_t i = 0; i < 6; ++i )
 	{
-		auto pDsvCubeTex = m_pDsvCubemap->shareDepthBuffer( i );
+		auto pDsvCubeTex = m_pOffscreenDsvCubemap->shareDepthBuffer( i );
 		pDsvCubeTex->convertToBitmap( gph,
 			gph.getClientWidth(),
 			gph.getClientHeight() ).save( path + std::to_string( i ) + ".png" );
@@ -129,12 +131,7 @@ void ShadowPass::dumpShadowMap( Graphics &gph,
 
 const unsigned ren::ShadowPass::getResolution() noexcept
 {
-	return m_shadowMapResolution;
-}
-
-void ShadowPass::setDepthStencilView( std::shared_ptr<IDepthStencilView> ds ) const
-{
-	const_cast<ShadowPass*>( this )->m_pDsv = std::move( ds );
+	return s_shadowMapResolution;
 }
 
 

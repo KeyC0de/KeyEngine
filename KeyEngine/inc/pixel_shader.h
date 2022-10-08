@@ -22,11 +22,9 @@ public:
 
 //=============================================================
 //	\class	PixelShaderNull
-//
 //	\author	KeyC0de
 //	\date	2021/06/25 20:21
-//
-//	\brief	writes nothing to color buffer - written as a separate class to avoid a branch in bind()
+//	\brief	Use it to prevent writing any pixels ---- written as a separate class to avoid a runtime branch in PixelShader::bind()
 //=============================================================
 class PixelShaderNull
 	: public IBindable

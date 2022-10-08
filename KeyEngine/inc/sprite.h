@@ -17,10 +17,8 @@ public:
 	Sprite( const std::wstring &filename, Graphics &gph );
 	virtual ~Sprite() noexcept = default;
 
-	//===================================================
-	//	\function	render
+	//	\function	render	||	\date	2022/09/11 20:33
 	//	\brief  draw the Sprite bitmap to the render target
-	//	\date	2022/09/11 20:33
 	void render( Graphics &gph, const D2D1_RECT_F &srcRect, const D2D1_RECT_F &destRect, const float alpha = 1.0f );
 
 	const float getWidth() const noexcept;

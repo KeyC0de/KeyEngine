@@ -16,12 +16,10 @@ public:
 	using IBindablePass::IBindablePass;	// pass name & bindables vector
 
 	void addJob( Job job ) noexcept;
-	//===================================================
-	//	\function	run
+	//	\function	run	||	\date	2021/06/27 0:11
 	//	\brief  call RenderQueuePass::run from derivedPassClass::run as a final task
 	//			Do that for a complete shader cycle:
 	//				eg Outline Mask is 1st "part" of Outline Effect, and Outline Draw is 2nd part of Outline Effect, so override `run only on the last part of the Effect.
-	//	\date	2021/06/27 0:11
 	void run( Graphics &gph ) const cond_noex override;
 	void reset() cond_noex override;
 };

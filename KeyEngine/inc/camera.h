@@ -61,10 +61,8 @@ public:
 	void rotateRel( const float dx, const float dy ) noexcept;
 	void translateRel( DirectX::XMFLOAT3 translation ) noexcept;
 	const DirectX::XMFLOAT3& getPosition() const noexcept;
-	//===================================================
-	//	\function	calcDirection
-	//	\brief  camDirection = camPosition - camTarget
-	//	\date	2022/08/30 23:11
+	//	\function	calcDirection	||	\date	2022/08/30 23:11
+	//	\brief	camDirection = camPosition - camTarget
 	DirectX::XMVECTOR calcDirection() const noexcept;
 	DirectX::XMVECTOR calcRight() const noexcept;
 	DirectX::XMVECTOR calcUp() const noexcept;

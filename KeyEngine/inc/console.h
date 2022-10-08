@@ -7,10 +7,8 @@
 
 //============================================================
 //	\class	KeyConsole
-//
 //	\author	KeyC0de
 //	\date	2020/07/10 15:10
-//
 //	\brief	interface to the process's console
 //			Singleton class
 //			by default set to output mode
@@ -34,26 +32,18 @@ public:
 	~KeyConsole();
 public:
 	static KeyConsole& instance() noexcept;
-	//===================================================
-	//	\function	resetInstance
+	//	\function	resetInstance	||	\date	2020/12/30 22:19
 	//	\brief  you must call this manually prior to program exit to avoid memory leaks
-	//	\date	2020/12/30 22:19
 	static void resetInstance();
 public:
-	//===================================================
-	//	\function	print
+	//	\function	print	||	\date	2020/12/30 22:19
 	//	\brief  print to stdout
-	//	\date	2020/12/01 21:36
 	DWORD print( const std::string &msg );
-	//===================================================
-	//	\function	log
+	//	\function	log	||	\date	2020/12/30 22:19
 	//	\brief  print to stderr
-	//	\date	2020/12/01 21:36
 	DWORD log( const std::string &msg );
-	//===================================================
-	//	\function	read
+	//	\function	read	||	\date	2020/12/30 22:19
 	//	\brief  read from stdin, returns the string
-	//	\date	2020/12/01 21:36
 	std::string read( const uint32_t maxChars = 1024u );
 
 	void setTitle( const std::string& title ) const;

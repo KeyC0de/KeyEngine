@@ -21,10 +21,8 @@ class IPass;
 
 //=============================================================
 //	\class	IConsumer
-//
 //	\author	KeyC0de
 //	\date	2022/09/29 20:48
-//
 //	\brief	Consumers link to Producers, so they require their names.
 //			The opposite is not strictly required.
 //			But I store the names of Consumers in case the system is expanded in the future, or may be needed for misc purposes.s
@@ -41,16 +39,13 @@ public:
 
 	void setPassAndProducerNames( const std::string &passName, const std::string &producerName );
 	virtual void link( IProducer &producer ) = 0;
-	//===================================================
-	//	\function	validateLinkage
+	//	\function	validateLinkage	||	\date	2021/06/26 23:57
 	//	\brief  assert validate after link()ing
-	//	\date	2021/06/26 23:57
 	virtual void validateLinkage() const = 0;
 	const std::string& getName() const noexcept;
 	const std::string& getPassName() const noexcept;
 	const std::string& getProducerName() const noexcept;
 };
-
 
 template<class T>
 class BindableConsumer final
@@ -112,17 +107,15 @@ public:
 
 //=============================================================
 //	\class	ContainerBindableConsumer
-//
 //	\author	KeyC0de
 //	\date	2022/08/21 0:17
-//
 //	\brief	Container Bindable is either an RTV, DSV or an array type Constant Buffer
 //=============================================================
 template<class T>
 class ContainerBindableConsumer final
 	: public IConsumer
 {
-	//static_assert( std::is_array_v<T> || std::is_base_of_v<IBindable, T>, "ContainerBindableConsumer target T must be IBindable." );
+	static_assert( std::is_array_v<T> || std::is_base_of_v<IBindable, T>, "ContainerBindableConsumer target T must be IBindable." );
 
 	std::vector<std::shared_ptr<IBindable>> &m_container;
 	size_t m_index;
@@ -171,7 +164,6 @@ public:
 		m_bLinked = true;
 	}
 };
-
 
 template<class T>
 class RenderSurfaceConsumer final

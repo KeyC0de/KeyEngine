@@ -9,9 +9,9 @@ namespace ren
 
 HorizontalBlurPass::HorizontalBlurPass( Graphics &gph,
 	const std::string &name,
-	const int rezReductFactor )
+	const unsigned rezReductFactor )
 	:
-	FullscreenPass{gph, name}
+	IFullscreenPass{gph, name}
 {
 	addPassBindable( PixelShader::fetch( gph,
 		"blur_separ_ps.cso" ) );
@@ -22,22 +22,22 @@ HorizontalBlurPass::HorizontalBlurPass( Graphics &gph,
 		TextureSamplerState::AddressMode::Clamp ) );
 
 	addPassBindable( BlendState::fetch( gph,
-		BlendState::NoBlend,
+		BlendState::Mode::Alpha,
 		0u ) );
 
-	addContainerBindableConsumer<IRenderTargetView>( "blurRttIn" );
-	addContainerBindableConsumer<PixelShaderConstantBufferEx>( "blurKernel" );
 	addConsumer( BindableConsumer<PixelShaderConstantBufferEx>::make( "blurDirection",
 		m_pPscbBlurDirection ) );
+	addContainerBindableConsumer<IRenderTargetView>( "offscreenBlurOutlineIn" );
+	addContainerBindableConsumer<PixelShaderConstantBufferEx>( "blurKernel" );
 
 	const unsigned width = gph.getClientWidth() / rezReductFactor;
 	const unsigned height = gph.getClientHeight() / rezReductFactor;
-
+	// create a SRV to read the main texture and perform the Horizontal Blur
 	m_pRtv = std::make_shared<RenderTargetShaderInput>( gph,
 		width,
 		height,
 		0u );
-	addProducer( BindableProducer<IRenderTargetView>::make( "blurRttOut",
+	addProducer( BindableProducer<IRenderTargetView>::make( "offscreenBlurOutlineOut",
 		m_pRtv ) );
 }
 
@@ -47,7 +47,7 @@ void HorizontalBlurPass::run( Graphics &gph ) const cond_noex
 	pscb["bHorizontal"] = true;
 	m_pPscbBlurDirection->setBuffer( pscb );
 	m_pPscbBlurDirection->bind( gph );
-	FullscreenPass::run( gph );
+	IFullscreenPass::run( gph );
 }
 
 void HorizontalBlurPass::reset() cond_noex

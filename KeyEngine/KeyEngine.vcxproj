@@ -5,8 +5,8 @@
       <Configuration>Debug</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Release|x64">
-      <Configuration>Release</Configuration>
+    <ProjectConfiguration Include="Profile|x64">
+      <Configuration>Profile</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Retail|x64">
@@ -28,7 +28,7 @@
     <CharacterSet>Unicode</CharacterSet>
     <SpectreMitigation>false</SpectreMitigation>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
@@ -53,7 +53,7 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="HLSL.props" />
   </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="HLSL.props" />
   </ImportGroup>
@@ -67,7 +67,7 @@
     <LibraryPath>$(ProjectDir)third_party\dxtex\bin\$(Configuration);$(ProjectDir)third_party\DirectXTK\bin\$(Configuration);$(ProjectDir)third_party\assimp\bin\x64;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)\int\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)third_party\dxtex\include;$(ProjectDir)third_party\assimp\include;$(ProjectDir)third_party\inih;$(ProjectDir)third_party\imgui;$(ProjectDir)third_party\DirectXTK\include;$(ProjectDir)inc;$(ProjectDir)third_party\catch;$(ProjectDir)third_party\jthread;C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include;$(ProjectDir)games</IncludePath>
     <LibraryPath>$(ProjectDir)third_party\dxtex\bin\$(Configuration);$(ProjectDir)third_party\DirectXTK\bin\$(Configuration);$(ProjectDir)third_party\assimp\bin\x64;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)\int\$(Platform)\$(Configuration)\</IntDir>
@@ -100,7 +100,7 @@
       <ObjectFileOutput>$(ProjectDir)\int\$(Platform)\shaders\$(Filename).cso</ObjectFileOutput>
     </FxCompile>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
@@ -109,7 +109,7 @@
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <PreprocessorDefinitions>FLIP_PRESENT;NDEBUG;NO_DUMPS;UNICODE;_UNICODE;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;%(PreprocessorDefinitions);BDEBUG=false;cond_noex=noexcept( !BDEBUG );pass_=(void)0;_CRT_SECURE_NO_WARNINGS;_32_BIT_ENTITY</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_PROFILE;FLIP_PRESENT;NDEBUG;NO_DUMPS;UNICODE;_UNICODE;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;%(PreprocessorDefinitions);BDEBUG=false;cond_noex=noexcept( !BDEBUG );pass_=(void)0;_CRT_SECURE_NO_WARNINGS;_32_BIT_ENTITY</PreprocessorDefinitions>
       <FloatingPointModel>Fast</FloatingPointModel>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalOptions>/we4239 /we4265 /we4715 /we4172 /Zc:__cplusplus /utf-8 %(AdditionalOptions)</AdditionalOptions>
@@ -217,7 +217,7 @@
     <ClCompile Include="src\message.cpp" />
     <ClCompile Include="src\message_queue_bus_dispatcher.cpp" />
     <ClCompile Include="src\octree.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
@@ -246,7 +246,7 @@
     <ClCompile Include="src\imgui_manager.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
       </ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
       </ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">
       </ExcludedFromBuild>
@@ -265,7 +265,7 @@
     <ClCompile Include="src\shadow_map_sampler_state.cpp" />
     <ClCompile Include="src\shadow_pass.cpp" />
     <ClCompile Include="src\signal_handling.cpp" />
-    <ClCompile Include="src\skybox_vscb.cpp" />
+    <ClCompile Include="src\sky_vscb.cpp" />
     <ClCompile Include="src\sky_pass.cpp" />
     <ClCompile Include="src\solid_outline_draw_pass.cpp" />
     <ClCompile Include="src\solid_outline_mask_pass.cpp" />
@@ -309,7 +309,7 @@
     <None Include="cpp.hint">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
       </ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
       </ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">
       </ExcludedFromBuild>
@@ -413,7 +413,7 @@
     <ClInclude Include="inc\serializable_index.h" />
     <ClInclude Include="inc\shadow_map_sampler_state.h" />
     <ClInclude Include="inc\shadow_pass.h" />
-    <ClInclude Include="inc\skybox_vscb.h" />
+    <ClInclude Include="inc\sky_vscb.h" />
     <ClInclude Include="inc\sky_pass.h" />
     <ClInclude Include="inc\solid_outline_draw_pass.h" />
     <ClInclude Include="inc\solid_outline_mask_pass.h" />
@@ -450,7 +450,7 @@
     <ClInclude Include="inc\imgui_manager.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
       </ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
       </ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">
       </ExcludedFromBuild>
@@ -472,7 +472,7 @@
     <ClInclude Include="inc\octree.h" />
     <ClInclude Include="inc\os_utils.h" />
     <ClInclude Include="inc\performance_log.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
       </ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">
       </ExcludedFromBuild>
@@ -636,81 +636,205 @@
   <ItemGroup>
     <FxCompile Include="shaders\blur_ps.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)\int\$(Platform)\shaders\$(Configuration)\blur_ps.cso</ObjectFileOutput>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
     <FxCompile Include="shaders\blur_separ_ps.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
     <FxCompile Include="shaders\cube_ps.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
-    <FxCompile Include="shaders\cube_vs.hlsl" />
+    <FxCompile Include="shaders\cube_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
     <FxCompile Include="shaders\digital_brain.hlsl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
     <FxCompile Include="shaders\flat2d_ps.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
-    <FxCompile Include="shaders\flat2d_vs.hlsl" />
+    <FxCompile Include="shaders\flat2d_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
     <FxCompile Include="shaders\flat_ps.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
-    <FxCompile Include="shaders\flat_vs.hlsl" />
-    <FxCompile Include="shaders\fullscreen_quad_vs.hlsl" />
-    <FxCompile Include="shaders\fullscreen_triangle_vs.hlsl" />
+    <FxCompile Include="shaders\flat_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\fullscreen_quad_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\fullscreen_triangle_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
     <FxCompile Include="shaders\particle_ps.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
-    <FxCompile Include="shaders\particle_vs.hlsl" />
+    <FxCompile Include="shaders\particle_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
     <FxCompile Include="shaders\phongDifAlpNrm_ps.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
-    <FxCompile Include="shaders\phongDifAlpNrm_vs.hlsl" />
+    <FxCompile Include="shaders\phongDifAlpNrm_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
     <FxCompile Include="shaders\phongDifAlpSpcNrm_ps.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
-    <FxCompile Include="shaders\phongDifAlpSpcNrm_vs.hlsl" />
+    <FxCompile Include="shaders\phongDifAlpSpcNrm_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
     <FxCompile Include="shaders\phongDifAlpSpc_ps.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
-    <FxCompile Include="shaders\phongDifAlpSpc_vs.hlsl" />
+    <FxCompile Include="shaders\phongDifAlpSpc_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
     <FxCompile Include="shaders\phongDifNrm_ps.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
-    <FxCompile Include="shaders\phongDifNrm_vs.hlsl" />
+    <FxCompile Include="shaders\phongDifNrm_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
     <FxCompile Include="shaders\phongDifSpcNrm_ps.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
-    <FxCompile Include="shaders\phongDifSpcNrm_vs.hlsl" />
+    <FxCompile Include="shaders\phongDifSpcNrm_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
     <FxCompile Include="shaders\phongDifSpc_ps.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
-    <FxCompile Include="shaders\phongDifSpc_vs.hlsl" />
+    <FxCompile Include="shaders\phongDifSpc_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
     <FxCompile Include="shaders\phongDif_ps.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
-    <FxCompile Include="shaders\phongDif_vs.hlsl" />
+    <FxCompile Include="shaders\phongDif_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
     <FxCompile Include="shaders\phong_ps.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
-    <FxCompile Include="shaders\phong_vs.hlsl" />
+    <FxCompile Include="shaders\phong_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
     <FxCompile Include="shaders\plane_ps.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
-    <FxCompile Include="shaders\plane_vs.hlsl" />
+    <FxCompile Include="shaders\plane_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
     <FxCompile Include="shaders\rng_cs.hlsl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
     <FxCompile Include="shaders\shadow_ps.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
-    <FxCompile Include="shaders\shadow_vs.hlsl" />
-    <FxCompile Include="shaders\skybox_ps.hlsl">
+    <FxCompile Include="shaders\shadow_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\sky_ps.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
-    <FxCompile Include="shaders\skybox_vs.hlsl" />
+    <FxCompile Include="shaders\sky_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

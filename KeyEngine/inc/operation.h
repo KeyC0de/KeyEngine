@@ -23,10 +23,8 @@ public:
 	Operation( Operation &&rhs ) noexcept;
 	Operation& operator=( Operation &&rhs ) noexcept;
 
-	//===================================================
-	//	\function	setup
-	//	\brief  setup function pointers
-	//	\date	2022/08/28 21:19
+	//	\function	setup	||	\date	2022/08/28 21:19
+	//	\brief	setup function pointers
 	template <typename TFunction, typename... TArgs>
 	static std::unique_ptr<Operation> setup( TFunction &&f,
 		TArgs&&... args )
@@ -35,10 +33,8 @@ public:
 	}
 	// TRet( *f )( std::forward<TArgs>( args )... );
 
-	//===================================================
-	//	\function	setup
-	//	\brief  setup member function pointers
-	//	\date	2022/08/28 21:19
+	//	\function	setup	||	\date	2022/08/28 21:19
+	//	\brief	setup member function pointers
 	template <typename TMethod, typename T, typename ...TArgs>
 	static std::unique_ptr<Operation> setup( TMethod &&mf,
 		T &&obj,

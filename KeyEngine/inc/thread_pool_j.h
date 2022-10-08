@@ -10,10 +10,8 @@
 
 //============================================================
 //	\class	ThreadPoolEx
-//
 //	\author	KeyC0de
 //	\date	25/9/2019 3:55
-//
 //	\brief	A class which encapsulates a Queue of Tasks & a Pool of threads and dispatches work on demand
 //				ie. upon an incoming Task - callable object - a thread is dispatched to execute it
 //			Singleton, move only class
@@ -50,10 +48,8 @@ public:
 	static ThreadPoolJ& instance( const std::size_t nThreads, const bool bEnabled );
 	static void resetInstance() noexcept;
 
-	//===================================================
-	//	\function	start
-	//	\brief  calls run
-	//	\date	25/9/2019 12:20
+	//	\function	start	||	\date	25/9/2019 12:20
+	//	\brief	calls run
 	void start();
 	void stop() noexcept;
 	bool isEnabled() const noexcept;
@@ -89,12 +85,9 @@ private:
 namespace func_async
 {
 
-//===================================================
-//	\function	doPeriodically
-//	\brief  like a timer event
-//			executes void(*f)() function at periodic (ms) intervals
+//	\function	doPeriodically	||	\date	2021/09/06 1:05
+//	\brief	like a timer event --- executes void(*f)() function at periodic (ms) intervals
 //	\arg	now : if you want to execute first up now
-//	\date	2021/09/06 1:05
 void doPeriodically( nonstd::stop_token st, const std::function<void(void)> &f, const size_t intervalMs, const bool now );
 void doLater( nonstd::stop_token st, const std::function<void(void)> &f, const size_t intervalMs );
 

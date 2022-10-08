@@ -10,9 +10,7 @@ using OctreeData = DirectX::XMFLOAT3;
 //============================================================
 //	\class	Octree
 //	\link	https://github.com/brandonpelfrey/SimpleOctree
-//
 //	\author	brandonpelfrey
-//
 //	\brief	Octree
 //		The tree has up to 8 children and can additionally store data (m_data),
 //			Children follow a predictable pattern to make accesses simple.

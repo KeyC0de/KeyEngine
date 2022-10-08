@@ -1,6 +1,6 @@
 #pragma once
 
-#ifdef KEYENGINE_PROFILE
+#ifdef _PROFILE
 
 // Intel Instrumentation & Tracing Technology
 #	include <ittnotify.h>

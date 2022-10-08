@@ -34,10 +34,8 @@ class Camera;
 
 //=============================================================
 //	\class	Graphics
-//
 //	\author	KeyC0de
 //	\date	2022/09/13 22:51
-//
 //	\brief	d3d11 Graphics encapsulator
 //			provides classic blt presentation functionality
 //			as well as upgraded DXGI 1.2 API with Flip enhanced presentation model (aiming for Independent Flip)
@@ -107,7 +105,7 @@ public:
 #if defined FLIP_PRESENT
 	void makeWindowAssociationWithFactory( HWND hWnd, const UINT flags = DXGI_MWA_NO_WINDOW_CHANGES );
 #endif
-#ifdef KEYENGINE_PROFILE
+#ifdef _PROFILE
 	void profile() const noexcept;
 #endif
 	void beginFrame() noexcept;
@@ -127,38 +125,27 @@ public:
 	std::shared_ptr<IDepthStencilView> depthStencil();
 	void createFactory();
 	void createAdapters();
-	//===================================================
-	//	\function	resize
-	//	\brief  sets windowed mode or Fullscreen, supply width & height of 0 to resize the buffers for fullscreen mode usage
-	//	\date	2022/09/17 19:44
+	//	\function	resize	||	\date	2022/09/17 19:44
+	//	\brief	sets windowed mode or Fullscreen, supply width & height of 0 to resize the buffers for fullscreen mode usage
 	void resize( const unsigned width, const unsigned height );
 	void releaseBackBufferForResizing();
-	//===================================================
-	//	\function	setupOutputDevice
+	//	\function	setupOutputDevice	||	\date	\date	2022/09/18 19:08
 	//	\brief  sets up the output device (such as a monitor)
 	//			#TODO: currently assuming only one output monitor is used, otherwise use EnumOutputs
-	//	\date	2022/09/18 19:08
 	void setupOutputDevice() noexcept;
 	double calcRefreshRate() const noexcept;
 #if defined _DEBUG && !defined NDEBUG
 	DxgiInfoQueue& infoQueue();
 #endif
 private:
-	//===================================================
-	//	\function	present
-	//	\brief  present the frame to DWM
-	//	\date	2022/09/13 22:12
+	//	\function	present	||	\date	2022/09/13 22:12
+	//	\brief	present the frame to DWM
 	void present();
-	//===================================================
-	//	\function	recordDeferredCommandList
-	//	\brief  probably should call this when the Model is being loaded not when pass->run() -> Job->run()
-	//	\date	2022/08/21 14:05
+	//	\function	recordDeferredCommandList	||	\date	2022/08/21 14:05
+	//	\brief	probably should call this when the Model is being loaded not when pass->run() -> Job->run()
 	void recordDeferredCommandList();
-	//===================================================
-	//	\function	playbackDeferredCommandList
-	//	\brief  ExecuteCommandList must be executed on the immediate context for recorded
-	//			commands to be run on the GPU
-	//	\date	2020/11/05 14:51
+	//	\function	playbackDeferredCommandList	||	\date	2020/11/05 14:51
+	//	\brief		ExecuteCommandList must be executed on the immediate context for recorded commands to be run on the GPU
 	void playbackDeferredCommandList();
 	void clearShaderSlots() noexcept;
 	void cleanState() noexcept;

@@ -181,10 +181,8 @@ constexpr T convertRange( const T valueInRange,
 	return newValueInRange;
 }
 
-//===================================================
-//	\function	wrapAngle
+//	\function	wrapAngle	||	/date	2020/07/15 5:10
 //	\brief wrap angle (in radians) in the range -pi to pi
-//	\date 2020/07/15 5:10
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
 constexpr T wrapAngle( const T angleRad )
 {
@@ -194,21 +192,16 @@ constexpr T wrapAngle( const T angleRad )
 		val;
 }
 
-//===================================================
-//	\function	toRadians
+//	\function	toRadians	||	/date	2020/07/15 5:13
 //	\brief convert angle in degrees to radians
-//	\date 2020/07/15 5:13
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
 constexpr T toRadians( const T deg )
 {
 	return ( deg * PI ) / (T)180.0;
 }
 
-//===================================================
-//	\function	interpolate
-//	\brief linear interpolation from src to dst value using alpha provided
-//			interpolates any two Types that support the operations +, -, *
-//	\date 2020/08/02 17:56
+//	\function	interpolate	||	/date	2020/08/02 17:56
+//	\brief linear interpolation from src to dst value using alpha provided, interpolates any two Types that support the operations +, -, *
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
 constexpr T interpolate( const T &src,
 	const T &dst,
@@ -228,10 +221,8 @@ constexpr T gaussianDistr( const T x,
 	return ( (T)1 / sqrt( (T)2 * (T)PI_D * ss ) ) * exp( -square( x - mean ) / ((T)2 * ss) );
 }
 
-//===================================================
-//	\function	powerOf
-//	\brief  calculate x^n, n > 1
-//	\date	2021/10/25 19:40
+//	\function	powerOf	||	/date	2021/10/25 19:40
+//	\brief	calculate x^n, n > 1
 template<typename T, typename J, typename = std::enable_if_t<std::is_arithmetic_v<T>>, typename = std::enable_if_t<std::is_arithmetic_v<J>>>
 constexpr T powerOf( T x,
 	J n )
@@ -276,27 +267,21 @@ constexpr T nthMultipleOf( const T number,
 	return multiple;
 }
 
-//===================================================
-//	\function	nextPowerOf2
-//	\brief  find smallest power of 2 greater than or equal to n
-//	\date	2022/04/06 12:52
+//	\function	nextPowerOf2	||	\date	2022/04/06 12:52
+//	\brief	find smallest power of 2 greater than or equal to n
 constexpr int nextPowerOf2( int n );
-//===================================================
-//	\function	gcd
-//	\brief  prints Greatest Common Divisor of numbers
+//	\function	gcd	||	\date	2022/08/29 0:04
+//	\brief	prints Greatest Common Divisor of numbers
 //			Complexity: O(log_n(m))
-//	\date	2022/08/29 0:04
 int gcd( int divident, int divisor );
 constexpr int factorialOf( int n ) noexcept;
 //===================================================
-//	\function	isPrime
-//	\brief  trial division method
-//	\date	2022/08/28 23:45
+//	\function	isPrime	||	\date	2022/08/28 23:45
+//	\brief	trial division method
 constexpr bool isPrime( const int number ) noexcept;
 //===================================================
-//	\function	squareRoot
-//	\brief  calculates the square root of a number
-//	\date	2022/08/28 23:46
+//	\function	squareRoot	||	\date	2022/08/28 23:46
+//	\brief	calculates the square root of a number
 constexpr float squareRoot( const float x ) noexcept;
 constexpr bool isPowerOfTwo( const std::size_t value ) noexcept;
 constexpr float cosine( float x ) noexcept;
@@ -309,50 +294,41 @@ int toDecimal( const int hex );
 int toHex( const int dec );
 
 /// bitwise ops
-//===================================================
-//	\function	printDec2Bin
-//	\brief  prints given datatype to binary
-//	\date	2022/08/29 0:03
+//	\function	printDec2Bin	||	\date	2022/08/29 0:03
+//	\brief	prints given datatype to binary
 void printDec2Bin( const size_t size, void const *const ptr ) noexcept;
 //===================================================
-//	\function	printDecToBin
-//	\brief  print binary conversion of supplied decimal number
-//	\date	2022/08/29 0:04
+//	\function	printDecToBin	||	\date	2022/08/29 0:04
+//	\brief	print binary conversion of supplied decimal number
 void printDecToBin( const int num ) noexcept;
 constexpr bool haveOppositeSigns( int x, int y ) noexcept;
 //===================================================
-//	\function	msbIndexOfDec
-//	\brief  finds MSB index in decimal number (counting from 0)
-//	\date	2022/08/29 0:04
+//	\function	msbIndexOfDec	||	\date	2022/08/29 0:04
+//	\brief	finds MSB index in decimal number (counting from 0)
 constexpr int msbIndexOfDec( int num ) noexcept;
 //===================================================
-//	\function	countSetBits
-//	\brief  count number of Ones in a given number
-//	\date	2022/08/29 0:02
+//	\function	countSetBits	||	\date	2022/08/29 0:02
+//	\brief	count number of Ones in a given number
 constexpr int countSetBits( int num ) noexcept;
 //===================================================
-//	\function	isPowerOf2
-//	\brief  checks whether a number is a power of 2
-//	\date	2022/08/29 0:02
+//	\function	isPowerOf2	||	\date	2022/08/29 0:02
+//	\brief	checks whether a number is a power of 2
 constexpr int isPowerOf2( const int num ) noexcept;
 constexpr void convertToBase( int number, const int base ) noexcept;
 //===================================================
-//	\function	swapBits
-//	\brief  swap the bits at position i and j of given number iff they are different
-//	\date	2022/08/29 0:02
+//	\function	swapBits	||	\date	2022/08/29 0:02
+//	\brief	swap the bits at position i and j of given number iff they are different
 constexpr int swapBits( int num, const int i, const int j ) noexcept;
 constexpr int setNthBit( int num, const unsigned n ) noexcept;
 constexpr int clearNthBit( int num, const unsigned n ) noexcept;
 constexpr int toggleNthBit( int num, const unsigned n ) noexcept;
 //===================================================
-//	\function	isSet
-//	\brief  check nth bit's state 0 or 1
-//	\date	2022/08/29 0:02
+//	\function	isSet	||	\date	2022/08/29 0:02
+//	\brief	check nth bit's state 0 or 1
 constexpr int isSet( int num, const unsigned n ) noexcept;
 //===================================================
-//	\function	changeNthBit
-//	\brief  change nth bit to bitVal
-//	\date	2022/08/29 0:02
+//	\function	changeNthBit	||	\date	2022/08/29 0:02
+//	\brief	change nth bit to bitVal
 constexpr int changeNthBit( int num, const unsigned n, const bool bitVal ) noexcept;
 
 template<int b>

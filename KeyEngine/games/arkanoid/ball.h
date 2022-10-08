@@ -18,9 +18,8 @@ public:
 	void render( Graphics &gph ) cond_noex;
 	bool doWallCollision( const Rect &wall );
 	//===================================================
-	//	\function	reboundX, reboundY
-	//	\brief  direction up = [0, 1] , down = [0, -1] , left = [0, -1] , right = [0, 1]
-	//	\date	2021/10/17 3:43
+	//	\function	reboundX, reboundY	||	\date	2021/10/17 3:43
+	//	\brief	direction up = [0, 1] , down = [0, -1] , left = [0, -1] , right = [0, 1]
 	void reboundX();
 	void reboundY();
 	Rect rect() const noexcept;

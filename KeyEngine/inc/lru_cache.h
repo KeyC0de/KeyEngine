@@ -7,10 +7,8 @@
 
 //=============================================================
 //	\class	LRUCache
-//
 //	\author	KeyC0de
 //	\date	2022/02/22 23:34
-//
 //	\brief	A data structure which can store a max amount of key-value pairs
 //			the list stores the data
 //			to find them fast a hash table stores references to each value in the cache
