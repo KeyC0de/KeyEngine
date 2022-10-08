@@ -17,18 +17,19 @@ BlurPass::BlurPass( Graphics &gph,
 {
 	addPassBindable( PixelShader::fetch( gph,
 		"blur_ps.cso" ) );
+	//addPassBindable( PixelShaderNull::fetch( gph ) );
 	addPassBindable( TextureSamplerState::fetch( gph,
 		0u,
 		TextureSamplerState::FilterMode::Trilinear,
 		TextureSamplerState::AddressMode::Clamp ) );
-	addPassBindable( DepthStencilState::fetch( gph,
-		DepthStencilState::Mode::Default ) );
+	//addPassBindable( DepthStencilState::fetch( gph,
+		//DepthStencilState::Mode::Default ) );
 	//addPassBindable( BlendState::fetch( gph,
 		//BlendState::Mode::NoBlend,
 		//0u ) );
-	addPassBindable( BlendState::fetch( gph,
-		BlendState::Mode::Alpha,
-		0u ) );
+	//addPassBindable( BlendState::fetch( gph,
+		//BlendState::Mode::NoBlend,
+		//0u ) );
 
 	//addConsumer( RenderSurfaceConsumer<IDepthStencilView>::make( "depthStencil",
 		//m_pDsv ) );
@@ -40,8 +41,8 @@ BlurPass::BlurPass( Graphics &gph,
 		width,
 		height,
 		0u );
-	//addProducer( BindableProducer<IRenderTargetView>::make( "offscreenFullscreenBlurOut",
-		//m_pRtv ) );
+	addProducer( BindableProducer<IRenderTargetView>::make( "offscreenFullscreenBlurOut",
+		m_pRtv ) );
 
 	//addProducer( RenderSurfaceProducer<IDepthStencilView>::make( "depthStencil",
 		//m_pDsv ) );

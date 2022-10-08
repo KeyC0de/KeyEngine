@@ -405,29 +405,36 @@ Renderer3d::Renderer3d( Graphics &gph,
 		linkPassConsumers( *pass );
 		addPass( std::move( pass ) );
 	}
-	/*{
+	{
+		auto pass = std::make_unique<BlurPass>( gph,
+			"blur",
+			1u );
+		linkPassConsumers( *pass );
+		addPass( std::move( pass ) );
+	}
+	{
 		auto pass = std::make_unique<FullscreenPass>( gph,
 			"fullscreen" );
 		pass->setupConsumerTarget( "renderTarget",
 			"solidOutlineDraw",
 			"renderTarget" );
 		pass->setupConsumerTarget( "depthStencil",
-			"blur",
+			"solidOutlineDraw",
 			"depthStencil" );
 		pass->setupConsumerTarget( "offscreenFullscreenBlurIn",
 			"blur",
 			"offscreenFullscreenBlurOut" );
 		linkPassConsumers( *pass );
 		addPass( std::move( pass ) );
-	}*/
+	}
 	{
 		auto pass = std::make_unique<DepthReversedPass>( gph,
 			"depthReversed" );
 		pass->setupConsumerTarget( "renderTarget",
-			"solidOutlineDraw",
+			"fullscreen",
 			"renderTarget" );
 		pass->setupConsumerTarget( "depthStencil",
-			"solidOutlineDraw",
+			"fullscreen",
 			"depthStencil" );
 		//pass->setupConsumerTarget( "offscreenFullscreenBlurIn",
 		//	"blur",
@@ -444,13 +451,6 @@ Renderer3d::Renderer3d( Graphics &gph,
 		pass->setupConsumerTarget( "depthStencil",
 			"depthReversed",
 			"depthStencil" );
-		linkPassConsumers( *pass );
-		addPass( std::move( pass ) );
-	}
-	{
-		auto pass = std::make_unique<BlurPass>( gph,
-			"blur",
-			1u );
 		linkPassConsumers( *pass );
 		addPass( std::move( pass ) );
 	}

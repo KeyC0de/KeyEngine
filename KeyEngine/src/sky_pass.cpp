@@ -30,10 +30,6 @@ SkyPass::SkyPass( Graphics &gph,
 	:
 	IBindablePass{name}
 {
-	addConsumer( RenderSurfaceConsumer<IRenderTargetView>::make( "renderTarget",
-		m_pRtv ) );
-	addConsumer( RenderSurfaceConsumer<IDepthStencilView>::make( "depthStencil",
-		m_pDsv ) );
 	addPassBindable( std::make_shared<CubeTexture>( gph,
 		"assets/textures/skybox/space",
 		0u ) );
@@ -78,6 +74,12 @@ SkyPass::SkyPass( Graphics &gph,
 		}
 		addPassBindable( std::move( vs ) );
 	}
+
+	addConsumer( RenderSurfaceConsumer<IRenderTargetView>::make( "renderTarget",
+		m_pRtv ) );
+	addConsumer( RenderSurfaceConsumer<IDepthStencilView>::make( "depthStencil",
+		m_pDsv ) );
+
 	addProducer( RenderSurfaceProducer<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );
 	addProducer( RenderSurfaceProducer<IDepthStencilView>::make( "depthStencil",

@@ -22,7 +22,7 @@ protected:
 	//	\brief  Render to Texture constructor
 	IRenderTargetView( Graphics &gph, const unsigned width, const unsigned height );
 	//	\function	IrenderTargetView	||	\date	2021/10/25 17:00
-	//	\brief  Render to a CubeTexture's face constructor
+	//	\brief  For creating an output RT only
 	IRenderTargetView( Graphics &gph, ID3D11Texture2D *pTex, std::optional<unsigned> face );
 public:
 	void bindRenderSurface( Graphics &gph ) cond_noex override;

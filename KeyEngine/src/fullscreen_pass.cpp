@@ -66,15 +66,15 @@ FullscreenPass::FullscreenPass( Graphics &gph,
 	//addPassBindable( PixelShader::fetch( gph,
 		//"blur_ps.cso" ) );
 
-	addPassBindable( TextureSamplerState::fetch( gph,
-		0u,
-		TextureSamplerState::FilterMode::Trilinear,
-		TextureSamplerState::AddressMode::Clamp ) );
+	//addPassBindable( TextureSamplerState::fetch( gph,
+		//0u,
+		//TextureSamplerState::FilterMode::Trilinear,
+		//TextureSamplerState::AddressMode::Clamp ) );
 	//addPassBindable( BlendState::fetch( gph,
 		//BlendState::Mode::Alpha,
 		//0u ) );
 
-	addPassBindable( PixelShaderNull::fetch( gph ) );
+	//addPassBindable( PixelShaderNull::fetch( gph ) );
 
 	addConsumer( RenderSurfaceConsumer<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );
