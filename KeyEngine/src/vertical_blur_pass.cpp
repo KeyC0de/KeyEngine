@@ -14,12 +14,10 @@ VerticalBlurPass::VerticalBlurPass( Graphics &gph,
 {
 	addPassBindable( PixelShader::fetch( gph,
 		"blur_separ_ps.cso" ) );
-
 	addPassBindable( TextureSamplerState::fetch( gph,
 		0u,
 		TextureSamplerState::FilterMode::Trilinear,
 		TextureSamplerState::AddressMode::Clamp ) );
-
 	addPassBindable( BlendState::fetch( gph,
 		BlendState::Mode::Alpha,
 		0u ) );

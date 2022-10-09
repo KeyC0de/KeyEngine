@@ -47,7 +47,7 @@ Effect::Effect( Effect &&rhs ) noexcept
 {
 	std::swap( m_bindables,
 		rhs.m_bindables );
-	
+
 	rhs.m_renderingChannels = 0u;
 	rhs.m_bActive = false;
 	rhs.m_pTargetPass = nullptr;
@@ -83,6 +83,15 @@ bool Effect::isEnabled() const noexcept
 void Effect::setEnabled( const bool b ) noexcept
 {
 	m_bActive = b;
+}
+
+void Effect::setEnabled( const size_t channels,
+	const bool bEnabled ) noexcept
+{
+	if ( (m_renderingChannels & channels) != 0 )
+	{
+		m_bActive = bEnabled;
+	}
 }
 
 const std::string& Effect::getTargetPassName() const noexcept
@@ -121,4 +130,9 @@ std::vector<std::shared_ptr<IBindable>>& Effect::bindables() noexcept
 const std::vector<std::shared_ptr<IBindable>>& Effect::getBindables() const noexcept
 {
 	return m_bindables;
+}
+
+const size_t Effect::getChannelMask() const noexcept
+{
+	return m_renderingChannels;
 }

@@ -33,10 +33,12 @@ public:
 	void bind( Graphics &gph ) const cond_noex;
 	bool isEnabled() const noexcept;
 	void setEnabled( const bool b ) noexcept;
+	void setEnabled( const size_t channels, const bool bEnabled ) noexcept;
 	const std::string& getTargetPassName() const noexcept;
 	void setMesh( const Mesh &parent ) noexcept;
 	void accept( IEffectVisitor &ev );
 	void connectPass( ren::Renderer &r );
 	std::vector<std::shared_ptr<IBindable>>& bindables() noexcept;
 	const std::vector<std::shared_ptr<IBindable>>& getBindables() const noexcept;
+	const size_t getChannelMask() const noexcept;
 };

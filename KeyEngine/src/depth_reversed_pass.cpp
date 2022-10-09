@@ -21,6 +21,7 @@ DepthReversedPass::DepthReversedPass( Graphics &gph,
 		m_pRtv ) );
 	addConsumer( RenderSurfaceConsumer<IDepthStencilView>::make( "depthStencil",
 		m_pDsv ) );
+	//addContainerBindableConsumer<IRenderTargetView>( "offscreenFullscreenBlurIn" );
 
 	addProducer( RenderSurfaceProducer<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );

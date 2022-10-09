@@ -63,18 +63,17 @@ FullscreenPass::FullscreenPass( Graphics &gph,
 	:
 	IFullscreenPass{gph, name}
 {
-	//addPassBindable( PixelShader::fetch( gph,
-		//"blur_ps.cso" ) );
+	addPassBindable( PixelShaderNull::fetch( gph ) );
+	addPassBindable( DepthStencilState::fetch( gph,
+		DepthStencilState::Mode::Default ) );
+	addPassBindable( RasterizerState::fetch( gph,
+		RasterizerState::CullMode::FrontSided,
+		RasterizerState::FillMode::Solid ) );
+	//addPassBindable( BlendState::fetch( gph,
+		//BlendState::Mode::Alpha,
+		//0u ) );
 
-	//addPassBindable( TextureSamplerState::fetch( gph,
-		//0u,
-		//TextureSamplerState::FilterMode::Trilinear,
-		//TextureSamplerState::AddressMode::Clamp ) );
-	addPassBindable( BlendState::fetch( gph,
-		BlendState::Mode::Alpha,
-		0u ) );
-
-	//addPassBindable( PixelShaderNull::fetch( gph ) );
+	/*addPassBindable( PixelShaderNull::fetch( gph ) );
 
 	addConsumer( RenderSurfaceConsumer<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );
@@ -85,7 +84,23 @@ FullscreenPass::FullscreenPass( Graphics &gph,
 	addProducer( RenderSurfaceProducer<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );
 	addProducer( RenderSurfaceProducer<IDepthStencilView>::make( "depthStencil",
+		m_pDsv ) );*/
+
+	addConsumer( RenderSurfaceConsumer<IRenderTargetView>::make( "renderTarget",
+		m_pRtv ) );
+	addConsumer( RenderSurfaceConsumer<IDepthStencilView>::make( "depthStencil",
 		m_pDsv ) );
+
+	addProducer( RenderSurfaceProducer<IRenderTargetView>::make( "renderTarget",
+		m_pRtv ) );
+	addProducer( RenderSurfaceProducer<IDepthStencilView>::make( "depthStencil",
+		m_pDsv ) );
+}
+
+void FullscreenPass::run( Graphics &gph ) const cond_noex
+{
+	m_pRtv->clear( gph );
+	IFullscreenPass::run( gph );
 }
 
 void FullscreenPass::reset() cond_noex

@@ -22,23 +22,16 @@ BlurOutlineDrawPass::BlurOutlineDrawPass( Graphics &gph,
 		"flat_vs.cso" ) );
 	addPassBindable( PixelShader::fetch( gph,
 		"flat_ps.cso" ) );
-	addPassBindable( TextureSamplerState::fetch( gph,
-		0u,
-		TextureSamplerState::FilterMode::Trilinear,
-		TextureSamplerState::AddressMode::Clamp ) );
 	addPassBindable( DepthStencilState::fetch( gph,
 		DepthStencilState::Mode::DepthOffStencilReadFF ) );
 	addPassBindable( BlendState::fetch( gph,
 		BlendState::NoBlend,
 		0u ) );
-	addPassBindable( RasterizerState::fetch( gph,
-		RasterizerState::CullMode::FrontSided,
-		RasterizerState::FillMode::Solid ) );
 
 	const unsigned width = gph.getClientWidth() / rezReductFactor;
 	const unsigned height = gph.getClientHeight() / rezReductFactor;
 	// create a SRV to read the main texture
-	m_pRtv = std::make_unique<RenderTargetShaderInput>( gph,
+	m_pRtv = std::make_shared<RenderTargetShaderInput>( gph,
 		width,
 		height,
 		0u );
@@ -48,7 +41,7 @@ BlurOutlineDrawPass::BlurOutlineDrawPass( Graphics &gph,
 
 void BlurOutlineDrawPass::run( Graphics &gph ) const cond_noex
 {
-	//m_pRtv->clear( gph );
+	m_pRtv->clear( gph );
 	RenderQueuePass::run( gph );
 }
 

@@ -17,7 +17,7 @@ DepthStencilState::DepthStencilState( Graphics &gph,
 	//StencilEnable = FALSE;
 	//StencilReadMask = D3D11_DEFAULT_STENCIL_READ_MASK;
 	//StencilWriteMask = D3D11_DEFAULT_STENCIL_WRITE_MASK;
-	//defaultStencilOp is D3D11_STENCIL_OP_KEEP
+	//D3D11_STENCIL_OP = D3D11_STENCIL_OP_KEEP
 	//FrontFace = defaultStencilOp;
 	//BackFace = defaultStencilOp;
 	if ( mode == DepthOffStencilOff )

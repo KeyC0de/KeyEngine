@@ -92,7 +92,7 @@ Plane::Plane( Graphics &gph,
 			*VertexShader::fetch( gph, "flat_vs.cso" ) ) );
 
 		addEffect( std::move( shadowMap ) );
-	}
+	}/*
 	{
 	// blur outline mask effect
 		Effect blurOutlineMask{rch::blurOutline, "blurOutlineMask", false};
@@ -122,7 +122,7 @@ Plane::Plane( Graphics &gph,
 			*VertexShader::fetch( gph, "flat_vs.cso" ) ) );
 
 		addEffect( std::move( blurOutlineDraw ) );
-	}
+	}*/
 	{
 	// solid outline mask effect
 		Effect solidOutlineMask{rch::solidOutline, "solidOutlineMask", true};
@@ -171,7 +171,7 @@ void Plane::setRotation( const DirectX::XMFLOAT3 &rot ) noexcept
 
 const dx::XMMATRIX Plane::getTransform() const noexcept
 {
-	return calcRotation() * calcPosition(); 
+	return calcRotation() * calcPosition();
 }
 
 const dx::XMMATRIX Plane::calcPosition() const noexcept

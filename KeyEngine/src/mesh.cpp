@@ -49,6 +49,17 @@ void Mesh::render( const size_t channels ) const noexcept
 	}
 }
 
+void Mesh::setEffectEnabled( const size_t channels,
+	const bool bEnabled ) noexcept
+{
+	ASSERT( !m_effects.empty(), "No Effects to submit to the Renderer!" );
+	for ( auto &effect : m_effects )
+	{
+		effect.setEnabled( channels,
+			bEnabled );
+	}
+}
+
 void Mesh::addEffect( Effect effect ) noexcept
 {
 	effect.setMesh( *this );

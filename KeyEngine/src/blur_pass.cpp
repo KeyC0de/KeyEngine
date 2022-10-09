@@ -17,39 +17,30 @@ BlurPass::BlurPass( Graphics &gph,
 {
 	addPassBindable( PixelShader::fetch( gph,
 		"blur_ps.cso" ) );
-	//addPassBindable( PixelShaderNull::fetch( gph ) );
 	addPassBindable( TextureSamplerState::fetch( gph,
 		0u,
 		TextureSamplerState::FilterMode::Trilinear,
 		TextureSamplerState::AddressMode::Clamp ) );
-	addPassBindable( DepthStencilState::fetch( gph,
-		DepthStencilState::Mode::Default ) );
 	addPassBindable( BlendState::fetch( gph,
 		BlendState::Mode::NoBlend,
 		0u ) );
 
-	//addConsumer( RenderSurfaceConsumer<IDepthStencilView>::make( "depthStencil",
-		//m_pDsv ) );
-
-	const unsigned width = gph.getClientWidth() / rezReductFactor;
-	const unsigned height = gph.getClientHeight() / rezReductFactor;
+	const unsigned width = gph.getClientWidth();
+	const unsigned height = gph.getClientHeight();
 	// create a SRV to read the main texture
-	m_pRtv = std::make_shared<RenderTargetShaderInput>( gph,
+	m_pRtv = std::make_unique<RenderTargetShaderInput>( gph,
 		width,
 		height,
 		0u );
 	addProducer( BindableProducer<IRenderTargetView>::make( "offscreenFullscreenBlurOut",
 		m_pRtv ) );
-
-	//addProducer( RenderSurfaceProducer<IDepthStencilView>::make( "depthStencil",
-		//m_pDsv ) );
 }
 
-void BlurPass::run( Graphics &gph ) const cond_noex
-{
-	m_pRtv->clear( gph );
-	IFullscreenPass::run( gph );
-}
+//void BlurPass::run( Graphics &gph ) const cond_noex
+//{
+	//m_pRtv->clear( gph );
+	//IFullscreenPass::run( gph );
+//}
 
 void BlurPass::reset() cond_noex
 {

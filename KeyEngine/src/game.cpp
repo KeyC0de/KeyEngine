@@ -214,6 +214,9 @@ Sandbox3d::Sandbox3d( const int width,
 	m_carabiner.connectEffectsToRenderer( m_renderer );
 	m_cameraMan.connectEffectsToRenderer( m_renderer );
 
+	m_cube1.setEffectEnabled( rch::blurOutline,
+		false );
+
 	if ( m_pPointLight1->isCastingShadows() )
 	{
 		m_renderer.setShadowCamera( *m_pPointLight1->shareCamera() );
@@ -408,9 +411,9 @@ void Sandbox3d::render( const float dt )
 	m_pPointLight1->render( rch::lambert );
 	//m_pPointLight2->render( rch::lambert );
 
-	m_cube1.render();
-	m_cube2.render( rch::lambert | rch::shadow | rch::solidOutline | rch::blurOutline );
-	m_testSphere.render( rch::lambert | rch::shadow | rch::solidOutline | rch::blurOutline );
+	m_cube1.render( rch::lambert | rch::shadow | rch::blurOutline );
+	m_cube2.render( rch::lambert | rch::shadow | rch::solidOutline );
+	m_testSphere.render();
 	m_nanoSuit.render( rch::lambert | rch::shadow | rch::blurOutline );
 	m_carabiner.render( rch::lambert | rch::shadow | rch::solidOutline | rch::blurOutline );
 	m_sponzaScene.render( rch::lambert | rch::shadow );

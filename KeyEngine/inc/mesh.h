@@ -65,6 +65,7 @@ public:
 	//	\brief	does gameplay, transformation, physics
 	void update( const float dt ) cond_noex;
 	void render( const size_t channels = rch::all ) const noexcept;
+	void setEffectEnabled( const size_t channels, const bool bEnabled ) noexcept;
 	void bind( Graphics &gph ) const cond_noex;
 	void accept( IEffectVisitor &ev );
 	const unsigned getIndicesCount() const cond_noex;

@@ -50,6 +50,21 @@ void Node::render( const size_t channels ) const cond_noex
 	}
 }
 
+void Node::setEffectEnabled( const size_t channels,
+	const bool bEnabled ) noexcept
+{
+	for ( const auto pMesh : m_meshes )
+	{
+		pMesh->setEffectEnabled( channels,
+			bEnabled );
+	}
+	for ( const auto &pNode : m_children )
+	{
+		pNode->setEffectEnabled( channels,
+			bEnabled );
+	}
+}
+
 const int Node::getImguiId() const noexcept
 {
 	return m_imguiId;

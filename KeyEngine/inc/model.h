@@ -28,6 +28,7 @@ public:
 
 	void update( const float dt ) const cond_noex;
 	void render( const size_t channels = rch::all ) const cond_noex;
+	void setEffectEnabled( const size_t channels, const bool bEnabled ) noexcept;
 	void accept( IModelVisitor &v );
 	void connectEffectsToRenderer( ren::Renderer &r );
 	////////////////////////////////////////////////////////////////////////////////////////////////////

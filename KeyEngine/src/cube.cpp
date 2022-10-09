@@ -88,9 +88,9 @@ Cube::Cube( Graphics &gph,
 			*VertexShader::fetch( gph, "flat_vs.cso" ) ) );
 
 		addEffect( std::move( shadowMap ) );
-	}
+	}/*
 	{// blur outline mask effect
-		Effect blurOutlineMask{rch::blurOutline, "blurOutlineMask", false};
+		Effect blurOutlineMask{rch::blurOutline, "blurOutlineMask", true};
 		blurOutlineMask.addBindable( transformVscb );
 
 		blurOutlineMask.addBindable( InputLayout::fetch( gph,
@@ -100,7 +100,7 @@ Cube::Cube( Graphics &gph,
 		addEffect( std::move( blurOutlineMask ) );
 	}
 	{// blur outline draw effect
-		Effect blurOutlineDraw{rch::blurOutline, "blurOutlineDraw", false};
+		Effect blurOutlineDraw{rch::blurOutline, "blurOutlineDraw", true};
 		blurOutlineDraw.addBindable( transformVscb );
 
 		con::RawLayout cbLayout;
@@ -116,7 +116,7 @@ Cube::Cube( Graphics &gph,
 			*VertexShader::fetch( gph, "flat_vs.cso" ) ) );
 
 		addEffect( std::move( blurOutlineDraw ) );
-	}
+	}*/
 	{// solid outline mask effect
 		Effect solidOutlineMask{rch::solidOutline, "solidOutlineMask", true};
 		solidOutlineMask.addBindable( transformVscb );

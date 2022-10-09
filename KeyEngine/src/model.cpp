@@ -60,6 +60,13 @@ void Model::render( const size_t channels ) const cond_noex
 	m_pRoot->render( channels );
 }
 
+void Model::setEffectEnabled( const size_t channels,
+	const bool bEnabled ) noexcept
+{
+	m_pRoot->setEffectEnabled( channels,
+		bEnabled );
+}
+
 void Model::accept( IModelVisitor &v )
 {
 	m_pRoot->accept( v );
@@ -105,7 +112,7 @@ std::unique_ptr<Node> Model::parseModelNodeGraph( const aiNode &ainode,
 			imguiNodeId,
 			scale ) ) );
 	}
-	
+
 	return pNode;
 }
 
@@ -122,7 +129,7 @@ void Model::setTransform( const DirectX::XMFLOAT4 &rot,
 		util::g_XMZero,
 		dx::XMLoadFloat4( &rot ),
 		dx::XMLoadFloat4( &pos ) );
-	
+
 	m_pRoot->setWorldTransform( worldTransform );
 }
 

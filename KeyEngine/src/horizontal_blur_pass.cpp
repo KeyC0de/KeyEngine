@@ -15,15 +15,10 @@ HorizontalBlurPass::HorizontalBlurPass( Graphics &gph,
 {
 	addPassBindable( PixelShader::fetch( gph,
 		"blur_separ_ps.cso" ) );
-
 	addPassBindable( TextureSamplerState::fetch( gph,
 		0u,
 		TextureSamplerState::FilterMode::Trilinear,
 		TextureSamplerState::AddressMode::Clamp ) );
-
-	//addPassBindable( BlendState::fetch( gph,
-		//BlendState::Mode::Alpha,
-		//0u ) );
 
 	addConsumer( BindableConsumer<PixelShaderConstantBufferEx>::make( "blurDirection",
 		m_pPscbBlurDirection ) );
@@ -32,7 +27,7 @@ HorizontalBlurPass::HorizontalBlurPass( Graphics &gph,
 
 	const unsigned width = gph.getClientWidth() / rezReductFactor;
 	const unsigned height = gph.getClientHeight() / rezReductFactor;
-	// create a SRV to read the main texture and perform the Horizontal Blur
+	// create a SRV to read the offscreen texture and perform the Horizontal Blur
 	m_pRtv = std::make_shared<RenderTargetShaderInput>( gph,
 		width,
 		height,

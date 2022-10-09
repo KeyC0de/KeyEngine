@@ -286,10 +286,10 @@ Renderer3d::Renderer3d( Graphics &gph,
 			"offscreenShadowCubemapOut" );
 		linkPassConsumers( *pass );
 		addPass( std::move( pass ) );
-	}
+	}/*
 	{
 		auto pass = std::make_unique<SkyPass>( gph,
-			"skybox" );
+			"sky" );
 		pass->setupConsumerTarget( "renderTarget",
 			"lambertian",
 			"renderTarget" );
@@ -303,7 +303,7 @@ Renderer3d::Renderer3d( Graphics &gph,
 		auto pass = std::make_unique<BlurOutlineMaskPass>( gph,
 			"blurOutlineMask" );
 		pass->setupConsumerTarget( "depthStencil",
-			"skybox",
+			"sky",
 			"depthStencil" );
 		linkPassConsumers( *pass );
 		addPass( std::move( pass ) );
@@ -364,7 +364,7 @@ Renderer3d::Renderer3d( Graphics &gph,
 		auto pass = std::make_unique<VerticalBlurPass>( gph,
 			"verticalBlur" );
 		pass->setupConsumerTarget( "renderTarget",
-			"skybox",
+			"sky",
 			"renderTarget" );
 		pass->setupConsumerTarget( "depthStencil",
 			"blurOutlineMask",
@@ -380,15 +380,15 @@ Renderer3d::Renderer3d( Graphics &gph,
 			"blurDirection" );
 		linkPassConsumers( *pass );
 		addPass( std::move( pass ) );
-	}
+	}*/
 	{
 		auto pass = std::make_unique<SolidOutlineMaskPass>( gph,
 			"solidOutlineMask" );
 		pass->setupConsumerTarget( "renderTarget",
-			"verticalBlur",
+			"lambertian",
 			"renderTarget" );
 		pass->setupConsumerTarget( "depthStencil",
-			"verticalBlur",
+			"lambertian",
 			"depthStencil" );
 		linkPassConsumers( *pass );
 		addPass( std::move( pass ) );
@@ -405,40 +405,41 @@ Renderer3d::Renderer3d( Graphics &gph,
 		linkPassConsumers( *pass );
 		addPass( std::move( pass ) );
 	}
-	{
-		auto pass = std::make_unique<BlurPass>( gph,
-			"blur",
-			1u );
-		linkPassConsumers( *pass );
-		addPass( std::move( pass ) );
-	}
-	{
-		auto pass = std::make_unique<FullscreenPass>( gph,
-			"fullscreen" );
-		pass->setupConsumerTarget( "renderTarget",
-			"solidOutlineDraw",
-			"renderTarget" );
-		pass->setupConsumerTarget( "depthStencil",
-			"solidOutlineDraw",
-			"depthStencil" );
-		pass->setupConsumerTarget( "offscreenFullscreenBlurIn",
-			"blur",
-			"offscreenFullscreenBlurOut" );
-		linkPassConsumers( *pass );
-		addPass( std::move( pass ) );
-	}
+
+	//{
+		//auto pass = std::make_unique<FullscreenPass>( gph,
+			//"fullscreen" );
+		//pass->setupConsumerTarget( "renderTarget",
+			//"solidOutlineDraw",
+			//"renderTarget" );
+		//pass->setupConsumerTarget( "depthStencil",
+			//"solidOutlineDraw",
+			//"depthStencil" );
+		//pass->setupConsumerTarget( "offscreenFullscreenBlurIn",
+			//"blur",
+			//"offscreenFullscreenBlurOut" );
+		//linkPassConsumers( *pass );
+		//addPass( std::move( pass ) );
+	//}
+	//{
+		//auto pass = std::make_unique<BlurPass>( gph,
+			//"blur",
+			//s_fullscreenRezReductFactor );
+		//linkPassConsumers( *pass );
+		//addPass( std::move( pass ) );
+	//}
 	{
 		auto pass = std::make_unique<DepthReversedPass>( gph,
 			"depthReversed" );
 		pass->setupConsumerTarget( "renderTarget",
-			"fullscreen",
+			"solidOutlineDraw",
 			"renderTarget" );
 		pass->setupConsumerTarget( "depthStencil",
-			"fullscreen",
+			"solidOutlineDraw",
 			"depthStencil" );
 		//pass->setupConsumerTarget( "offscreenFullscreenBlurIn",
-		//	"blur",
-		//	"offscreenFullscreenBlurOut" );
+			//"blur",
+			//"offscreenFullscreenBlurOut" );
 		linkPassConsumers( *pass );
 		addPass( std::move( pass ) );
 	}
@@ -465,7 +466,7 @@ void Renderer3d::showImGuiWindows( Graphics &gph )
 {
 	showShadowDumpImguiWindow( gph );
 	showGaussianBlurImguiWindow( gph );
-	dynamic_cast<SkyPass&>( getPass( "skybox" ) ).displayImguiWidgets();
+	//dynamic_cast<SkyPass&>( getPass( "sky" ) ).displayImguiWidgets();
 }
 
 void Renderer3d::showGaussianBlurImguiWindow( Graphics &gph )
@@ -536,7 +537,7 @@ void Renderer3d::showGaussianBlurImguiWindow( Graphics &gph )
 void ren::Renderer3d::setActiveCamera( Camera &cam )
 {
 	dynamic_cast<LambertianPass&>( getPass( "lambertian" ) ).setActiveCamera( cam );
-	dynamic_cast<SkyPass&>( getPass( "skybox" ) ).setActiveCamera( cam );
+	//dynamic_cast<SkyPass&>( getPass( "sky" ) ).setActiveCamera( cam );
 }
 
 void ren::Renderer3d::setShadowCamera( Camera &cam )

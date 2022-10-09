@@ -1,10 +1,8 @@
-
 #include "solid_outline_mask_pass.h"
-#include <string>
-#include "depth_stencil_state.h"
 #include "vertex_shader.h"
 #include "pixel_shader.h"
-#include "blend_state.h"
+#include "depth_stencil_state.h"
+#include "rasterizer_state.h"
 
 
 namespace ren
@@ -17,15 +15,12 @@ SolidOutlineMaskPass::SolidOutlineMaskPass( Graphics &gph,
 {
 	addPassBindable( VertexShader::fetch( gph,
 		"flat_vs.cso" ) );
-
+	addPassBindable( PixelShaderNull::fetch( gph ) );
 	addPassBindable( DepthStencilState::fetch( gph,
 		DepthStencilState::Mode::DepthOffStencilWriteFF ) );
-
-	addPassBindable( PixelShaderNull::fetch( gph ) );
-
-	addPassBindable( BlendState::fetch( gph,
-		BlendState::NoBlend,
-		0u ) );
+	addPassBindable( RasterizerState::fetch( gph,
+		RasterizerState::CullMode::FrontSided,
+		RasterizerState::FillMode::Solid ) );
 
 	addConsumer( RenderSurfaceConsumer<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );
