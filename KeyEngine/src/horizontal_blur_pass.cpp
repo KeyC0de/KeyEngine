@@ -21,9 +21,9 @@ HorizontalBlurPass::HorizontalBlurPass( Graphics &gph,
 		TextureSamplerState::FilterMode::Trilinear,
 		TextureSamplerState::AddressMode::Clamp ) );
 
-	addPassBindable( BlendState::fetch( gph,
-		BlendState::Mode::Alpha,
-		0u ) );
+	//addPassBindable( BlendState::fetch( gph,
+		//BlendState::Mode::Alpha,
+		//0u ) );
 
 	addConsumer( BindableConsumer<PixelShaderConstantBufferEx>::make( "blurDirection",
 		m_pPscbBlurDirection ) );

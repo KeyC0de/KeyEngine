@@ -1,7 +1,7 @@
 Texture2D tex : register(t0);
 SamplerState sampl : register(s0);
 
-static const int radius = 11;
+static const int radius = 20;
 static const float divisor = ( 2 * radius + 1 ) * ( 2 * radius + 1 );
 
 struct PSIn

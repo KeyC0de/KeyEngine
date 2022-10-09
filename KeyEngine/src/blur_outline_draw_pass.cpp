@@ -6,6 +6,7 @@
 #include "render_target.h"
 #include "blend_state.h"
 #include "texture_sampler_state.h"
+#include "rasterizer_state.h"
 
 
 namespace ren
@@ -30,6 +31,9 @@ BlurOutlineDrawPass::BlurOutlineDrawPass( Graphics &gph,
 	addPassBindable( BlendState::fetch( gph,
 		BlendState::NoBlend,
 		0u ) );
+	addPassBindable( RasterizerState::fetch( gph,
+		RasterizerState::CullMode::FrontSided,
+		RasterizerState::FillMode::Solid ) );
 
 	const unsigned width = gph.getClientWidth() / rezReductFactor;
 	const unsigned height = gph.getClientHeight() / rezReductFactor;
@@ -44,7 +48,7 @@ BlurOutlineDrawPass::BlurOutlineDrawPass( Graphics &gph,
 
 void BlurOutlineDrawPass::run( Graphics &gph ) const cond_noex
 {
-	m_pRtv->clear( gph );
+	//m_pRtv->clear( gph );
 	RenderQueuePass::run( gph );
 }
 

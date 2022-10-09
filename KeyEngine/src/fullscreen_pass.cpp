@@ -70,9 +70,9 @@ FullscreenPass::FullscreenPass( Graphics &gph,
 		//0u,
 		//TextureSamplerState::FilterMode::Trilinear,
 		//TextureSamplerState::AddressMode::Clamp ) );
-	//addPassBindable( BlendState::fetch( gph,
-		//BlendState::Mode::Alpha,
-		//0u ) );
+	addPassBindable( BlendState::fetch( gph,
+		BlendState::Mode::Alpha,
+		0u ) );
 
 	//addPassBindable( PixelShaderNull::fetch( gph ) );
 

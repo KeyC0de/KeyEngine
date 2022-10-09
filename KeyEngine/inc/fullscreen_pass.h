@@ -14,8 +14,6 @@ class IFullscreenPass
 public:
 	IFullscreenPass( Graphics &gph, const std::string &name ) cond_noex;
 
-	//	\function	run	||	\date	2022/10/02 10:48
-	//	\brief	Child::run must call IFullscreenPass:run as a last step
 	void run( Graphics &gph ) const cond_noex override;
 };
 
