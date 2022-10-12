@@ -22,10 +22,10 @@ BlurOutlineMaskPass::BlurOutlineMaskPass( Graphics &gph,
 		RasterizerState::CullMode::FrontSided,
 		RasterizerState::FillMode::Solid ) );
 
-	addConsumer( RenderSurfaceConsumer<IDepthStencilView>::make( "depthStencil",
+	addBinder( RenderSurfaceBinder<IDepthStencilView>::make( "depthStencil",
 		m_pDsv ) );
 
-	addProducer( RenderSurfaceProducer<IDepthStencilView>::make( "depthStencil",
+	addLinker( RenderSurfaceLinker<IDepthStencilView>::make( "depthStencil",
 		m_pDsv ) );
 }
 

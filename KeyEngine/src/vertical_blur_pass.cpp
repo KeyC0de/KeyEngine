@@ -22,18 +22,19 @@ VerticalBlurPass::VerticalBlurPass( Graphics &gph,
 		BlendState::Mode::Alpha,
 		0u ) );
 
-	addConsumer( RenderSurfaceConsumer<IRenderTargetView>::make( "renderTarget",
+	addBinder( RenderSurfaceBinder<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );
-	addConsumer( RenderSurfaceConsumer<IDepthStencilView>::make( "depthStencil",
+	addBinder( RenderSurfaceBinder<IDepthStencilView>::make( "depthStencil",
 		m_pDsv ) );
-	addConsumer( BindableConsumer<PixelShaderConstantBufferEx>::make( "blurDirection",
+	addBinder( Binder<PixelShaderConstantBufferEx>::make( "blurDirection",
 		m_pPscbBlurDirection ) );
-	addContainerBindableConsumer<IRenderTargetView>( "offscreenBlurOutlineIn" );
-	addContainerBindableConsumer<PixelShaderConstantBufferEx>( "blurKernel" );
+	// read from offscreen texture and Vertically Blur it (separated filter)
+	addContainerBindableBinder<IRenderTargetView>( "offscreenBlurOutlineIn" );
+	addContainerBindableBinder<PixelShaderConstantBufferEx>( "blurKernel" );
 
-	addProducer( RenderSurfaceProducer<IRenderTargetView>::make( "renderTarget",
+	addLinker( RenderSurfaceLinker<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );
-	addProducer( RenderSurfaceProducer<IDepthStencilView>::make( "depthStencil",
+	addLinker( RenderSurfaceLinker<IDepthStencilView>::make( "depthStencil",
 		m_pDsv ) );
 }
 

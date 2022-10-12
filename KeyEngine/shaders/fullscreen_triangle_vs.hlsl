@@ -1,3 +1,4 @@
+// currently unused
 struct VSIn
 {
 	float2 pos : Position;

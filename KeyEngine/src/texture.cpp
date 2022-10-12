@@ -356,3 +356,127 @@ const unsigned Texture::calculateNumberOfMipMaps( const unsigned width,
 	return (unsigned)std::max( xSteps,
 		ySteps );
 }
+
+
+
+
+/*
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+CubeTextureRT::CubeTextureRT( Graphics &gph,
+	const unsigned width,
+	const unsigned height,
+	const unsigned slot,
+	const DXGI_FORMAT format )
+	:
+	m_slot(slot)
+{
+	D3D11_TEXTURE2D_DESC texDesc{};
+	texDesc.Width = width;
+	texDesc.Height = height;
+	texDesc.MipLevels = 1u;
+	texDesc.ArraySize = 6u;
+	texDesc.Format = format;
+	texDesc.SampleDesc.Count = 1u;
+	texDesc.SampleDesc.Quality = 0u;
+	texDesc.Usage = D3D11_USAGE_DEFAULT;
+	texDesc.BindFlags = D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_RENDER_TARGET;
+	texDesc.CPUAccessFlags = 0u;
+	texDesc.MiscFlags = D3D11_RESOURCE_MISC_TEXTURECUBE;
+
+	mwrl::ComPtr<ID3D11Texture2D> pTex;
+	HRESULT hres = getDevice( gph )->CreateTexture2D( &texDesc,
+		nullptr,
+		&pTex );
+	ASSERT_HRES_IF_FAILED;
+
+	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc{};
+	srvDesc.Format = texDesc.Format;
+	srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURECUBE;
+	srvDesc.Texture2D.MostDetailedMip = 0u;
+	srvDesc.Texture2D.MipLevels = 1u;
+	hres = getDevice( gph )->CreateShaderResourceView( pTex.Get(),
+		&srvDesc,
+		&m_pSrv );
+	ASSERT_HRES_IF_FAILED;
+
+	// create RTVs on the texture cube's faces for capturing
+	for ( unsigned face = 0u; face < 6u; ++face )
+	{
+		m_renderTargetViews.push_back( std::make_shared<RenderTargetOutput>( gph,
+			pTex.Get(),
+			face ) );
+	}
+}
+
+void CubeTextureRT::bind( Graphics &gph ) cond_noex
+{
+	getDeviceContext( gph )->PSSetShaderResources( m_slot,
+		1u,
+		m_pSrv.GetAddressOf() );
+	DXGI_GET_QUEUE_INFO( gph );
+}
+
+std::shared_ptr<RenderTargetOutput> CubeTextureRT::shareRenderTarget( const size_t index ) const
+{
+	return m_renderTargetViews[index];
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+CubeTextureDS::CubeTextureDS( Graphics &gph,
+	const unsigned size,
+	const unsigned slot,
+	const DXGI_FORMAT format )
+	:
+	m_slot(slot)
+{
+	D3D11_TEXTURE2D_DESC texDesc{};
+	texDesc.Width = size;
+	texDesc.Height = size;
+	texDesc.MipLevels = 1u;
+	texDesc.ArraySize = 6u;
+	texDesc.Format = format;
+	texDesc.SampleDesc.Count = 1u;
+	texDesc.SampleDesc.Quality = 0u;
+	texDesc.Usage = D3D11_USAGE_DEFAULT;
+	texDesc.BindFlags = D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_DEPTH_STENCIL;
+	texDesc.CPUAccessFlags = 0u;
+	texDesc.MiscFlags = D3D11_RESOURCE_MISC_TEXTURECUBE;
+
+	mwrl::ComPtr<ID3D11Texture2D> pTex;
+	HRESULT hres = getDevice( gph )->CreateTexture2D( &texDesc,
+		nullptr,
+		&pTex );
+	ASSERT_HRES_IF_FAILED;
+
+	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc{};
+	srvDesc.Format = DXGI_FORMAT_R32_FLOAT;
+	srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURECUBE;
+	srvDesc.Texture2D.MostDetailedMip = 0u;
+	srvDesc.Texture2D.MipLevels = 1u;
+	hres = getDevice( gph )->CreateShaderResourceView( pTex.Get(),
+		&srvDesc,
+		&m_pSrv );
+	ASSERT_HRES_IF_FAILED;
+
+	// create DSVs on the texture cube's faces for capturing depth (for shadow mapping)
+	for ( unsigned face = 0u; face < 6u; ++face )
+	{
+		m_depthStencilViews.push_back( std::make_shared<DepthStencilOutput>( gph,
+			pTex,
+			face ) );
+	}
+}
+
+void CubeTextureDS::bind( Graphics &gph ) cond_noex
+{
+	getDeviceContext( gph )->PSSetShaderResources( m_slot,
+		1u,
+		m_pSrv.GetAddressOf() );
+	DXGI_GET_QUEUE_INFO( gph );
+}
+
+std::shared_ptr<DepthStencilOutput> CubeTextureDS::shareDepthBuffer( const size_t index ) const
+{
+	return m_depthStencilViews[index];
+}*/

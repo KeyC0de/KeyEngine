@@ -20,14 +20,14 @@ SolidOutlineDrawPass::SolidOutlineDrawPass( Graphics &gph,
 	addPassBindable( DepthStencilState::fetch( gph,
 		DepthStencilState::Mode::DepthOffStencilReadFF ) );
 
-	addConsumer( RenderSurfaceConsumer<IRenderTargetView>::make( "renderTarget",
+	addBinder( RenderSurfaceBinder<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );
-	addConsumer( RenderSurfaceConsumer<IDepthStencilView>::make( "depthStencil",
+	addBinder( RenderSurfaceBinder<IDepthStencilView>::make( "depthStencil",
 		m_pDsv ) );
 
-	addProducer( RenderSurfaceProducer<IRenderTargetView>::make( "renderTarget",
+	addLinker( RenderSurfaceLinker<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );
-	addProducer( RenderSurfaceProducer<IDepthStencilView>::make( "depthStencil",
+	addLinker( RenderSurfaceLinker<IDepthStencilView>::make( "depthStencil",
 		m_pDsv ) );
 }
 

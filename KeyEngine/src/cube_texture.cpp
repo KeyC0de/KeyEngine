@@ -124,6 +124,11 @@ void CubeTextureRT::bind( Graphics &gph ) cond_noex
 	DXGI_GET_QUEUE_INFO( gph );
 }
 
+std::shared_ptr<RenderTargetOutput> CubeTextureRT::shareRenderTarget( const size_t index ) const
+{
+	return m_renderTargetViews[index];
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 CubeTextureDS::CubeTextureDS( Graphics &gph,
 	const unsigned size,
@@ -170,15 +175,15 @@ CubeTextureDS::CubeTextureDS( Graphics &gph,
 	}
 }
 
-std::shared_ptr<DepthStencilOutput> CubeTextureDS::shareDepthBuffer( const size_t index ) const
-{
-	return m_depthStencilViews[index];
-}
-
 void CubeTextureDS::bind( Graphics &gph ) cond_noex
 {
 	getDeviceContext( gph )->PSSetShaderResources( m_slot,
 		1u,
 		m_pSrv.GetAddressOf() );
 	DXGI_GET_QUEUE_INFO( gph );
+}
+
+std::shared_ptr<DepthStencilOutput> CubeTextureDS::shareDepthBuffer( const size_t index ) const
+{
+	return m_depthStencilViews[index];
 }

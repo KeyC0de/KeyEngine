@@ -371,6 +371,11 @@ double Graphics::calcRefreshRate() const noexcept
 	return static_cast<double>( modeDesc.RefreshRate.Numerator ) / static_cast<double>( modeDesc.RefreshRate.Denominator );
 }
 
+size_t Graphics::getFrameNum() const noexcept
+{
+	return m_frameNum;
+}
+
 void Graphics::cleanState() noexcept
 {
 	if constexpr ( gph_mode::get() == gph_mode::_3D )
@@ -535,6 +540,8 @@ void Graphics::present()
 #endif
 
 	ASSERT_HRES_IF_FAILED;
+
+	++m_frameNum;
 }
 
 void Graphics::draw( const unsigned count ) cond_noex

@@ -2,7 +2,7 @@
 
 #include <memory>
 #include "pass.h"
-#include "consumer.h"
+#include "binder.h"
 
 
 class IBindable;
@@ -31,14 +31,14 @@ protected:
 	void bind( Graphics &gph ) const cond_noex;
 	void validate() override;
 
-	//	\function	addContainerBindableConsumer	||	\date	2022/10/02 20:49
+	//	\function	addContainerBindableBinder	||	\date	2022/10/02 20:49
 	//	\brief	this should mostly be used on the Pass that wants to read an offscreen texture buffer
 	template<class T>
-	void addContainerBindableConsumer( const std::string &consumerName )
+	void addContainerBindableBinder( const std::string &binderName )
 	{
 		const auto index = m_bindables.size();
 		m_bindables.emplace_back();
-		addConsumer( std::make_unique<ContainerBindableConsumer<T>>( consumerName,
+		addBinder( std::make_unique<ContainerBindableBinder<T>>( binderName,
 			m_bindables,
 			index ) );
 	}

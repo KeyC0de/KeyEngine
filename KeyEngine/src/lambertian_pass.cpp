@@ -1,7 +1,7 @@
 #include "lambertian_pass.h"
 #include <string>
-#include "consumer.h"
-#include "producer.h"
+#include "binder.h"
+#include "linker.h"
 #include "camera.h"
 #include "render_target.h"
 #include "depth_stencil_view.h"
@@ -27,15 +27,15 @@ LambertianPass::LambertianPass( Graphics &gph,
 	addPassBindable( DepthStencilState::fetch( gph,
 		DepthStencilState::Mode::Default ) );
 
-	addConsumer( RenderSurfaceConsumer<IRenderTargetView>::make( "renderTarget",
+	addBinder( RenderSurfaceBinder<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );
-	addConsumer( RenderSurfaceConsumer<IDepthStencilView>::make( "depthStencil",
+	addBinder( RenderSurfaceBinder<IDepthStencilView>::make( "depthStencil",
 		m_pDsv ) );
-	addContainerBindableConsumer<CubeTextureDS>( "offscreenShadowCubemapIn" );
+	addContainerBindableBinder<CubeTextureDS>( "offscreenShadowCubemapIn" );
 
-	addProducer( RenderSurfaceProducer<IRenderTargetView>::make( "renderTarget",
+	addLinker( RenderSurfaceLinker<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );
-	addProducer( RenderSurfaceProducer<IDepthStencilView>::make( "depthStencil",
+	addLinker( RenderSurfaceLinker<IDepthStencilView>::make( "depthStencil",
 		m_pDsv ) );
 }
 

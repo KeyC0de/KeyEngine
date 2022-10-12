@@ -94,6 +94,7 @@ private:
 	KeyTimer<std::chrono::microseconds> m_fpsTimer;
 	DirectX::XMMATRIX m_projection;
 	DirectX::XMMATRIX m_view;
+	size_t m_frameNum = 1u;
 	std::unique_ptr<DirectX::SpriteFont> m_pSpriteFont;
 	std::unique_ptr<DirectX::SpriteBatch> m_pFpsSpriteBatch;
 	std::vector<ID3D11DeviceContext*> m_deferredContexts;
@@ -134,6 +135,7 @@ public:
 	//			#TODO: currently assuming only one output monitor is used, otherwise use EnumOutputs
 	void setupOutputDevice() noexcept;
 	double calcRefreshRate() const noexcept;
+	size_t getFrameNum() const noexcept;
 #if defined _DEBUG && !defined NDEBUG
 	DxgiInfoQueue& infoQueue();
 #endif

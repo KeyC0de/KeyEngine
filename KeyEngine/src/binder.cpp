@@ -1,4 +1,4 @@
-#include "consumer.h"
+#include "binder.h"
 #include <cctype>
 #include "renderer_exception.h"
 #include "utils.h"
@@ -8,7 +8,7 @@
 namespace ren
 {
 
-IConsumer::IConsumer( const std::string &name )
+IBinder::IBinder( const std::string &name )
 	:
 	m_name{name}
 {
@@ -24,11 +24,11 @@ IConsumer::IConsumer( const std::string &name )
 	ASSERT( bValidName && !std::isdigit( name.front() ), "Invalid Input name!" );
 }
 
-void IConsumer::setPassAndProducerNames( const std::string &passName,
-	const std::string &producerName )
+void IBinder::setPassAndLinkerNames( const std::string &passName,
+	const std::string &linkerName )
 {
 	ASSERT( !passName.empty(), "Pass name is empty!" );
-	ASSERT( !producerName.empty(), "Output name is empty!" );
+	ASSERT( !linkerName.empty(), "Output name is empty!" );
 
 	const bool bPassNameValid = std::all_of( passName.begin(),
 		passName.end(),
@@ -39,37 +39,37 @@ void IConsumer::setPassAndProducerNames( const std::string &passName,
 
 	if ( passName != "$" && ( !bPassNameValid || std::isdigit( passName.front() ) ) )
 	{
-		THROW_RENDERER_EXCEPTION( "IConsumer - " + m_name + " : Invalid pass name: " + passName );
+		THROW_RENDERER_EXCEPTION( "IBinder - " + m_name + " : Invalid pass name: " + passName );
 	}
 	m_passName = passName;
 
-	const bool checkproducerName = std::all_of( producerName.begin(),
-		producerName.end(),
+	const bool checkLinkerName = std::all_of( linkerName.begin(),
+		linkerName.end(),
 		[]( char c )
 		{
 			return std::isalnum( c ) || c == '_';
 		} );
 
-	if ( !checkproducerName || std::isdigit( producerName.front() ) )
+	if ( !checkLinkerName || std::isdigit( linkerName.front() ) )
 	{
-		THROW_RENDERER_EXCEPTION( "IConsumer - " + m_name + " : Invalid output name: " + producerName );
+		THROW_RENDERER_EXCEPTION( "IBinder - " + m_name + " : Invalid output name: " + linkerName );
 	}
-	m_producerName = producerName;
+	m_linkerName = linkerName;
 }
 
-const std::string& IConsumer::getName() const noexcept
+const std::string& IBinder::getName() const noexcept
 {
 	return m_name;
 }
 
-const std::string& IConsumer::getPassName() const noexcept
+const std::string& IBinder::getPassName() const noexcept
 {
 	return m_passName;
 }
 
-const std::string& IConsumer::getProducerName() const noexcept
+const std::string& IBinder::getLinkerName() const noexcept
 {
-	return m_producerName;
+	return m_linkerName;
 }
 
 

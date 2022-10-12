@@ -32,6 +32,7 @@ public:
 	CubeTextureRT( Graphics &gph, const unsigned width, const unsigned height, const unsigned slot, const DXGI_FORMAT format = DXGI_FORMAT::DXGI_FORMAT_B8G8R8A8_UNORM );
 
 	void bind( Graphics &gph ) cond_noex override;
+	std::shared_ptr<RenderTargetOutput> shareRenderTarget( const size_t index ) const;
 };
 
 class CubeTextureDS

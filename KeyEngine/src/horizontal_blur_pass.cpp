@@ -20,19 +20,20 @@ HorizontalBlurPass::HorizontalBlurPass( Graphics &gph,
 		TextureSamplerState::FilterMode::Trilinear,
 		TextureSamplerState::AddressMode::Clamp ) );
 
-	addConsumer( BindableConsumer<PixelShaderConstantBufferEx>::make( "blurDirection",
+	addBinder( Binder<PixelShaderConstantBufferEx>::make( "blurDirection",
 		m_pPscbBlurDirection ) );
-	addContainerBindableConsumer<IRenderTargetView>( "offscreenBlurOutlineIn" );
-	addContainerBindableConsumer<PixelShaderConstantBufferEx>( "blurKernel" );
+	// read from offscreen texture and Horizontally Blur it (separated filter)
+	addContainerBindableBinder<IRenderTargetView>( "offscreenBlurOutlineIn" );
+	addContainerBindableBinder<PixelShaderConstantBufferEx>( "blurKernel" );
 
 	const unsigned width = gph.getClientWidth() / rezReductFactor;
 	const unsigned height = gph.getClientHeight() / rezReductFactor;
-	// create a SRV to read the offscreen texture and perform the Horizontal Blur
+	// create a RTV to write (the PS operation - which performs the Horizontal Blur) to an offscreen texture, next Pass we'll read from the offscreen tex (again)
 	m_pRtv = std::make_shared<RenderTargetShaderInput>( gph,
 		width,
 		height,
 		0u );
-	addProducer( BindableProducer<IRenderTargetView>::make( "offscreenBlurOutlineOut",
+	addLinker( BindableLinker<IRenderTargetView>::make( "offscreenBlurOutlineOut",
 		m_pRtv ) );
 }
 

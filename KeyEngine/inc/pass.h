@@ -11,22 +11,21 @@ class Graphics;
 namespace ren
 {
 
-class IConsumer;
-class IProducer;
+class IBinder;
+class ILinker;
 
 //=============================================================
 //	\class	IPass
 //	\author	KeyC0de
 //	\date	2021/10/20 16:28
 //	\brief	a rendering pass for all models with same material - GPU bindings
-//			a Consumer consumes what a Producer produces
 //=============================================================
 class IPass
 {
 	std::string m_name;
 	bool m_bActive;
-	std::vector<std::unique_ptr<IConsumer>> m_consumers;
-	std::vector<std::unique_ptr<IProducer>> m_producers;
+	std::vector<std::unique_ptr<IBinder>> m_binders;
+	std::vector<std::unique_ptr<ILinker>> m_linkers;
 public:
 	IPass( const std::string &name, bool bActive = true ) noexcept;
 	virtual ~IPass() noexcept;
@@ -36,22 +35,22 @@ public:
 	virtual void run( Graphics &gph ) const cond_noex = 0;
 	virtual void reset() cond_noex = 0;
 	const std::string& getName() const noexcept;
-	const std::vector<std::unique_ptr<IConsumer>>& getConsumers() const;
-	const std::vector<std::unique_ptr<IProducer>>& getProducers() const;
-	IConsumer& consumer( const std::string &name ) const;
-	IProducer& producer( const std::string &name ) const;
-	//	\function	setupConsumerTarget	||	\date	2021/06/28 0:30
-	//	\brief  link a consumer from this Pass to a producer of another targetPass
-	void setupConsumerTarget( const std::string &consumerName, const std::string &targetPassName, const std::string &targetPassProducerName );
+	const std::vector<std::unique_ptr<IBinder>>& getBinders() const;
+	const std::vector<std::unique_ptr<ILinker>>& getLinkers() const;
+	IBinder& binder( const std::string &name ) const;
+	ILinker& linker( const std::string &name ) const;
+	//	\function	setupBinderTarget	||	\date	2021/06/28 0:30
+	//	\brief  link a binder from this Pass to a linker of another targetPass
+	void setupBinderTarget( const std::string &binderName, const std::string &targetPassName, const std::string &targetPassLinkerName );
 	//	\function	validate	||	\date	2022/02/19 22:48
-	//	\brief  validate consumers are linked to their producers
+	//	\brief  validate binders are linked to their linkers
 	//			validation occurs only once (ctor) for every Pass
 	virtual void validate();
 	void setActive( const bool bActive ) noexcept;
 	const bool isActive() const noexcept;
 protected:
-	void addConsumer( std::unique_ptr<IConsumer> pConsumer );
-	void addProducer( std::unique_ptr<IProducer> pProducer );
+	void addBinder( std::unique_ptr<IBinder> pBinder );
+	void addLinker( std::unique_ptr<ILinker> pLinker );
 };
 
 

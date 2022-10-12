@@ -238,32 +238,32 @@
       <FileName>inc\pass.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ren::IConsumer" Collapsed="true">
+  <Class Name="ren::IBinder" Collapsed="true">
     <Position X="10.5" Y="32.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>FAAAAAIEAEAAAABAAABAACIAAAAAAAAAAAAEAAAAAEA=</HashCode>
-      <FileName>inc\consumer.h</FileName>
+      <FileName>inc\binder.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ren::BindableConsumer&lt;T&gt;" Collapsed="true">
+  <Class Name="ren::Binder&lt;T&gt;" Collapsed="true">
     <Position X="8.25" Y="33.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BgAAAAAAAEAAAAAAAAAAAAAAAAAAAQAAAAAAIAAAAEA=</HashCode>
-      <FileName>inc\consumer.h</FileName>
+      <FileName>inc\binder.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ren::ContainerBindableConsumer&lt;T&gt;" Collapsed="true">
+  <Class Name="ren::ContainerBindableBinder&lt;T&gt;" Collapsed="true">
     <Position X="10.5" Y="33.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAAAAAAEAAAAAAABAAAAAAAAAAAAAQAAAAAIAAAAEA=</HashCode>
-      <FileName>inc\consumer.h</FileName>
+      <FileName>inc\binder.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ren::RenderSurfaceConsumer&lt;T&gt;" Collapsed="true">
+  <Class Name="ren::RenderSurfaceBinder&lt;T&gt;" Collapsed="true">
     <Position X="12.75" Y="33.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BgAQAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAIAAAAEA=</HashCode>
-      <FileName>inc\consumer.h</FileName>
+      <FileName>inc\binder.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ren::LambertianPass" Collapsed="true">
@@ -273,25 +273,25 @@
       <FileName>inc\lambertian_pass.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ren::IProducer" Collapsed="true">
+  <Class Name="ren::ILinker" Collapsed="true">
     <Position X="17.25" Y="32.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAEAAEAABEAAA=</HashCode>
-      <FileName>inc\producer.h</FileName>
+      <FileName>inc\linker.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ren::BindableProducer&lt;T&gt;" Collapsed="true">
+  <Class Name="ren::BindableLinker&lt;T&gt;" Collapsed="true">
     <Position X="16" Y="33.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAAAABAAAAAAIAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
-      <FileName>inc\producer.h</FileName>
+      <FileName>inc\linker.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ren::RenderSurfaceProducer&lt;T&gt;" Collapsed="true">
+  <Class Name="ren::RenderSurfaceLinker&lt;T&gt;" Collapsed="true">
     <Position X="18.25" Y="33.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAAAAAAAAAAAAAAAAACAAAAAAAAAQAAAAAAIAAEAAA=</HashCode>
-      <FileName>inc\producer.h</FileName>
+      <FileName>inc\linker.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ren::BlurOutlineMaskPass" Collapsed="true">

@@ -1,5 +1,5 @@
 #include "render_surface_clear_pass.h"
-#include "consumer.h"
+#include "binder.h"
 
 
 namespace ren
@@ -9,9 +9,9 @@ RenderSurfaceClearPass::RenderSurfaceClearPass( const std::string &name )
 	:
 	IPass{name}
 {
-	addConsumer( RenderSurfaceConsumer<IRenderSurface>::make( "buffer",
+	addBinder( RenderSurfaceBinder<IRenderSurface>::make( "buffer",
 		m_pRenderSurface ) );
-	addProducer( RenderSurfaceProducer<IRenderSurface>::make( "buffer",
+	addLinker( RenderSurfaceLinker<IRenderSurface>::make( "buffer",
 		m_pRenderSurface ) );
 }
 

@@ -7,7 +7,7 @@
 
 // #TODO: rename all m_staticVar to s_staticVar
 // #TODO: rename all Texture2D HLSL variable names
-// #TODO: make Renderer more flexible with the names of Passes & Consumer-Producer names
+// #TODO: make Renderer more flexible with the names of Passes & Binder-Linker names
 
 class Graphics;
 class IRenderTargetView;
@@ -19,14 +19,14 @@ namespace ren
 
 class IPass;
 class RenderQueuePass;
-class IProducer;
-class IConsumer;
+class ILinker;
+class IBinder;
 
 class Renderer
 {
 	std::vector<std::unique_ptr<IPass>> m_passes;
-	std::vector<std::unique_ptr<IConsumer>> m_globalConsumers;
-	std::vector<std::unique_ptr<IProducer>> m_globalProducers;
+	std::vector<std::unique_ptr<IBinder>> m_globalBinders;
+	std::vector<std::unique_ptr<ILinker>> m_globalLinkers;
 	bool m_bValidatedPasses = false;
 protected:
 	std::shared_ptr<IRenderTargetView> m_globalColorBuffer;
@@ -39,18 +39,18 @@ public:
 	void reset() noexcept;
 	RenderQueuePass& getRenderQueuePass( const std::string &name );
 protected:
-	void addGlobalProducer( std::unique_ptr<IProducer> pProducer );
-	void addGlobalConsumer( std::unique_ptr<IConsumer> pConsumer );
+	void addGlobalLinker( std::unique_ptr<ILinker> pLinker );
+	void addGlobalBinder( std::unique_ptr<IBinder> pBinder );
 	void addPass( std::unique_ptr<IPass> pPass );
-	void setupGlobalConsumerTarget( const std::string &globalConsumerName, const std::string &passName, const std::string &producerName );
-	//	\function	linkPassConsumers	||	\date	2021/10/27 18:00
-	//	\brief	links pass's consumers to their producers
+	void setupGlobalBinderTarget( const std::string &globalBinderName, const std::string &passName, const std::string &linkerName );
+	//	\function	linkPassBinders	||	\date	2021/10/27 18:00
+	//	\brief	links pass's binders to their linkers
 	//			call this function last from derived Renderer's ctor
-	void linkPassConsumers( IPass &pass );
-	void linkGlobalConsumers();
+	void linkPassBinders( IPass &pass );
+	void linkGlobalBinders();
 	IPass& getPass( const std::string &name );
 private:
-	void validateConsumersLinkage();
+	void validateBindersLinkage();
 };
 
 class Renderer3d
@@ -78,10 +78,10 @@ public:
 	void setActiveCamera( Camera &cam );
 	void setShadowCamera( Camera &cam );
 private:
-	void showGaussianBlurImguiWindow( Graphics &gph );
 	void showShadowDumpImguiWindow( Graphics &gph );
-	void setKernelGauss( int radius, float sigma ) cond_noex;
-	void setKernelBox( int radius ) cond_noex;
+	void showGaussianBlurImguiWindow( Graphics &gph );
+	void setKernelGauss( const int radius, const float sigma ) cond_noex;
+	void setKernelBox( const int radius ) cond_noex;
 };
 
 class Renderer2d

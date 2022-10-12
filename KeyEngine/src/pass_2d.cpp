@@ -1,7 +1,7 @@
 #include "pass_2d.h"
 #include "graphics.h"
-#include "consumer.h"
-#include "producer.h"
+#include "binder.h"
+#include "linker.h"
 #include "render_target.h"
 #include "depth_stencil_view.h"
 #include "depth_stencil_state.h"
@@ -32,13 +32,6 @@ Pass2D::Pass2D( Graphics &gph,
 	IBindablePass{name}
 {
 	ASSERT( gph_mode::get() == gph_mode::_2D, "Not in d2d mode!" );
-
-	addConsumer( RenderSurfaceConsumer<IRenderTargetView>::make( "renderTarget",
-		m_pRtv ) );
-	addConsumer( RenderSurfaceConsumer<IDepthStencilView>::make( "depthStencil",
-		m_pDsv ) );
-	addProducer( RenderSurfaceProducer<IRenderTargetView>::make( "renderTarget",
-		m_pRtv ) );
 
 	addPassBindable( PrimitiveTopology::fetch( gph ) );
 
@@ -107,6 +100,14 @@ Pass2D::Pass2D( Graphics &gph,
 	//	gph,
 	//	32,
 	//	32 );
+
+	addBinder( RenderSurfaceBinder<IRenderTargetView>::make( "renderTarget",
+		m_pRtv ) );
+	addBinder( RenderSurfaceBinder<IDepthStencilView>::make( "depthStencil",
+		m_pDsv ) );
+
+	addLinker( RenderSurfaceLinker<IRenderTargetView>::make( "renderTarget",
+		m_pRtv ) );
 }
 
 /*
@@ -152,7 +153,7 @@ void Pass2D::run( Graphics &gph ) const cond_noex
 		m_spriteOrder[m_currentSpriteIndex],
 		300,
 		100 );
-*/	
+*/
 	bind( gph );
 	gph.drawIndexed( 6u );
 }

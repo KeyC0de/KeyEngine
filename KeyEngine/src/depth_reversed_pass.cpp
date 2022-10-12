@@ -1,6 +1,6 @@
 #include "depth_reversed_pass.h"
-#include "consumer.h"
-#include "producer.h"
+#include "binder.h"
+#include "linker.h"
 #include "render_target.h"
 #include "depth_stencil_view.h"
 #include "depth_stencil_state.h"
@@ -17,15 +17,14 @@ DepthReversedPass::DepthReversedPass( Graphics &gph,
 	addPassBindable( DepthStencilState::fetch( gph,
 		DepthStencilState::Mode::DepthReversed ) );
 
-	addConsumer( RenderSurfaceConsumer<IRenderTargetView>::make( "renderTarget",
+	addBinder( RenderSurfaceBinder<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );
-	addConsumer( RenderSurfaceConsumer<IDepthStencilView>::make( "depthStencil",
+	addBinder( RenderSurfaceBinder<IDepthStencilView>::make( "depthStencil",
 		m_pDsv ) );
-	//addContainerBindableConsumer<IRenderTargetView>( "offscreenFullscreenBlurIn" );
 
-	addProducer( RenderSurfaceProducer<IRenderTargetView>::make( "renderTarget",
+	addLinker( RenderSurfaceLinker<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );
-	addProducer( RenderSurfaceProducer<IDepthStencilView>::make( "depthStencil",
+	addLinker( RenderSurfaceLinker<IDepthStencilView>::make( "depthStencil",
 		m_pDsv ) );
 }
 

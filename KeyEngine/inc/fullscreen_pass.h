@@ -17,15 +17,5 @@ public:
 	void run( Graphics &gph ) const cond_noex override;
 };
 
-class FullscreenPass
-	: public IFullscreenPass
-{
-public:
-	FullscreenPass( Graphics &gph, const std::string &name );
-
-	void run( Graphics &gph ) const cond_noex override;
-	void reset() cond_noex override;
-};
-
 
 }//namespace ren

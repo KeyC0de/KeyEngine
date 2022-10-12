@@ -287,6 +287,16 @@ RenderTargetOutput::RenderTargetOutput( Graphics &gph,
 
 }
 
+RenderTargetOutput::RenderTargetOutput( Graphics &gph,
+	const unsigned width,
+	const unsigned height,
+	const unsigned slot )
+	:
+	IRenderTargetView{gph, width, height}
+{
+
+}
+
 void RenderTargetOutput::bind( Graphics &gph ) cond_noex
 {
 	ASSERT( false, "Cannot bind RenderTargetOutput to the pipeline!" );

@@ -11,13 +11,13 @@ class IRenderSurface;
 namespace ren
 {
 
-class IProducer
+class ILinker
 {
 	std::string m_name;
 protected:
-	IProducer( const std::string &name );
+	ILinker( const std::string &name );
 public:
-	virtual ~IProducer() noexcept = default;
+	virtual ~ILinker() noexcept = default;
 
 	const std::string& getName() const noexcept;
 	virtual std::shared_ptr<IBindable> getBindable();
@@ -25,32 +25,32 @@ public:
 };
 
 //=============================================================
-//	\class	BindableProducer
+//	\class	BindableLinker
 //	\author	KeyC0de
 //	\date	2022/10/02 21:08
 //	\brief	This T will mostly be RTV of an offscreen surface
 //=============================================================
 template<class T>
-class BindableProducer final
-	: public IProducer
+class BindableLinker final
+	: public ILinker
 {
-	static_assert( std::is_base_of_v<IBindable, T>, "BindableProducer target T is not IBindable!" );
+	static_assert( std::is_base_of_v<IBindable, T>, "BindableLinker target T is not IBindable!" );
 
 	std::shared_ptr<T> &m_target;
 public:
-	BindableProducer( const std::string &name,
+	BindableLinker( const std::string &name,
 		std::shared_ptr<T>& target )
 		:
-		IProducer{name},
+		ILinker{name},
 		m_target{target}
 	{
 
 	}
 
-	static std::unique_ptr<BindableProducer> make( const std::string &name,
+	static std::unique_ptr<BindableLinker> make( const std::string &name,
 		std::shared_ptr<T> &target )
 	{
-		return std::make_unique<BindableProducer>( name,
+		return std::make_unique<BindableLinker>( name,
 			target );
 	}
 
@@ -61,33 +61,33 @@ public:
 };
 
 //=============================================================
-//	\class	RenderSurfaceProducer
+//	\class	RenderSurfaceLinker
 //	\author	KeyC0de
 //	\date	2022/10/07 21:30
 //	\brief	T should mostly be the main Render Surface color texture/buffer or depth-stencil texture/buffer
 //=============================================================
 template<class T>
-class RenderSurfaceProducer final
-	: public IProducer
+class RenderSurfaceLinker final
+	: public ILinker
 {
-	static_assert( std::is_base_of_v<IRenderSurface, T>, "RenderSurfaceProducer target T is not IRenderSurface!" );
+	static_assert( std::is_base_of_v<IRenderSurface, T>, "RenderSurfaceLinker target T is not IRenderSurface!" );
 
 	std::shared_ptr<T> &m_target;
 	bool m_bLinked = false;
 public:
-	RenderSurfaceProducer( const std::string &name,
+	RenderSurfaceLinker( const std::string &name,
 		std::shared_ptr<T> &target )
 		:
-		IProducer{name},
+		ILinker{name},
 		m_target{target}
 	{
 
 	}
 
-	static std::unique_ptr<RenderSurfaceProducer> make( const std::string &name,
+	static std::unique_ptr<RenderSurfaceLinker> make( const std::string &name,
 		std::shared_ptr<T> &target )
 	{
-		return std::make_unique<RenderSurfaceProducer>( name,
+		return std::make_unique<RenderSurfaceLinker>( name,
 			target );
 	}
 

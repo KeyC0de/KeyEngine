@@ -57,7 +57,7 @@ public:
 //	\class	DepthStencilOutput
 //	\author	KeyC0de
 //	\date	2021/10/19 0:47
-//	\brief	depth stencil view used for regular rendering, or Rendering to a Texture (RTT) (offscreen buffer)
+//	\brief	depth stencil view used for Output only (offscreen/RTT/back buffer rendering)
 //=============================================================
 class DepthStencilOutput
 	: public IDepthStencilView

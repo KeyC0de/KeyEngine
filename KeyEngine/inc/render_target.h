@@ -56,13 +56,14 @@ public:
 //	\class	RenderTargetOutput
 //	\author	KeyC0de
 //	\date	2021/10/19 0:47
-//	\brief	render target view used for Rendering to a Texture (RTT) (offscreen buffer)
+//	\brief	render target view used for Output only (offscreen/RTT/back buffer rendering)
 //=============================================================
 class RenderTargetOutput
 	: public IRenderTargetView
 {
 public:
 	RenderTargetOutput( Graphics &gph, ID3D11Texture2D *pTex, std::optional<unsigned> face = {} );
+	RenderTargetOutput( Graphics &gph, const unsigned width, const unsigned height, const unsigned slot );	// no users
 
 	void bind( Graphics &gph ) cond_noex override;
 };

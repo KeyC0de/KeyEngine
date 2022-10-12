@@ -175,7 +175,7 @@
     <ClCompile Include="src\camera_manager.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
-    <ClCompile Include="src\consumer.cpp">
+    <ClCompile Include="src\binder.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
     <ClCompile Include="src\cube_texture.cpp">
@@ -217,7 +217,7 @@
     <ClCompile Include="src\mouse_picker.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
-    <ClCompile Include="src\producer.cpp">
+    <ClCompile Include="src\linker.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
     <ClCompile Include="src\renderer.cpp">
@@ -371,6 +371,9 @@
       <Filter>engine\vfx\pass</Filter>
     </ClCompile>
     <ClCompile Include="src\blur_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rtt_pass_post_process.cpp">
       <Filter>engine\vfx\pass</Filter>
     </ClCompile>
   </ItemGroup>
@@ -957,7 +960,7 @@
     <ClInclude Include="inc\mouse_picker.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
-    <ClInclude Include="inc\producer.h">
+    <ClInclude Include="inc\linker.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
     <ClInclude Include="inc\renderer.h">
@@ -1011,7 +1014,7 @@
     <ClInclude Include="inc\cube_texture.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
-    <ClInclude Include="inc\consumer.h">
+    <ClInclude Include="inc\binder.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
     <ClInclude Include="inc\color.h">
@@ -1181,6 +1184,12 @@
     </ClInclude>
     <ClInclude Include="inc\blur_pass.h">
       <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\rtt_pass_post_process.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\global_constants.h">
+      <Filter>engine\common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

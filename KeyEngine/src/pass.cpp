@@ -1,5 +1,5 @@
 #include "pass.h"
-#include "consumer.h"
+#include "binder.h"
 
 
 namespace ren
@@ -26,9 +26,9 @@ const std::string& IPass::getName() const noexcept
 
 void IPass::validate()
 {
-	for ( auto &consumer : m_consumers )
+	for ( auto &binder : m_binders )
 	{
-		consumer->validateLinkage();
+		binder->validateLinkage();
 	}
 }
 
@@ -42,85 +42,85 @@ const bool IPass::isActive() const noexcept
 	return m_bActive;
 }
 
-const std::vector<std::unique_ptr<IConsumer>>& IPass::getConsumers() const
+const std::vector<std::unique_ptr<IBinder>>& IPass::getBinders() const
 {
-	return m_consumers;
+	return m_binders;
 }
 
-const std::vector<std::unique_ptr<IProducer>>& IPass::getProducers() const
+const std::vector<std::unique_ptr<ILinker>>& IPass::getLinkers() const
 {
-	return m_producers;
+	return m_linkers;
 }
 
-IConsumer& IPass::consumer( const std::string &name ) const
+IBinder& IPass::binder( const std::string &name ) const
 {
-	for ( auto &consumer : m_consumers )
+	for ( auto &binder : m_binders )
 	{
-		if ( consumer->getName() == name )
+		if ( binder->getName() == name )
 		{
-			return *consumer;
+			return *binder;
 		}
 	}
 
 	std::ostringstream oss;
-	oss << "Consumer named ["
+	oss << "Binder named ["
 		<< name
 		<< "] not found in pass:"
 		<< getName();
 	THROW_RENDERER_EXCEPTION( oss.str() );
 }
 
-IProducer& IPass::producer( const std::string &name ) const
+ILinker& IPass::linker( const std::string &name ) const
 {
-	for ( auto &producer : m_producers )
-	{ 
-		if ( producer->getName() == name )
+	for ( auto &linker : m_linkers )
+	{
+		if ( linker->getName() == name )
 		{
-			return *producer;
+			return *linker;
 		}
 	}
 
 	std::ostringstream oss;
-	oss << "Producer named ["
+	oss << "Linker named ["
 		<< name
 		<< "] not found in pass: "
 		<< getName();
 	THROW_RENDERER_EXCEPTION( oss.str() );
 }
 
-void IPass::addConsumer( std::unique_ptr<IConsumer> pConsumer )
+void IPass::addBinder( std::unique_ptr<IBinder> pBinder )
 {
-	// verify there are no name collisions with other consumers
-	for ( auto &consumer : m_consumers )
+	// verify there are no name collisions with other binders
+	for ( auto &binder : m_binders )
 	{
-		if ( consumer->getName() == pConsumer->getName() )
+		if ( binder->getName() == pBinder->getName() )
 		{
-			THROW_RENDERER_EXCEPTION( "Consumer name " + pConsumer->getName() + " collides with existing." );
+			THROW_RENDERER_EXCEPTION( "Binder name " + pBinder->getName() + " collides with existing." );
 		}
 	}
-	m_consumers.emplace_back( std::move( pConsumer ) );
+	m_binders.emplace_back( std::move( pBinder ) );
 }
 
-void IPass::addProducer( std::unique_ptr<IProducer> pProducer )
+void IPass::addLinker( std::unique_ptr<ILinker> pLinker )
 {
-	// verify there are no name collisions with other producers
-	for ( auto &producer : m_producers )
+	// verify there are no name collisions with other linkers
+	for ( auto &linker : m_linkers )
 	{
-		if ( producer->getName() == pProducer->getName() )
+		if ( linker->getName() == pLinker->getName() )
 		{
-			THROW_RENDERER_EXCEPTION( "Producer name " + pProducer->getName() + " collides with existing." );
+			THROW_RENDERER_EXCEPTION( "Linker name " + pLinker->getName() + " collides with existing." );
 		}
 	}
-	m_producers.emplace_back( std::move( pProducer ) );
+	m_linkers.emplace_back( std::move( pLinker ) );
 }
 
-void IPass::setupConsumerTarget( const std::string &currentPassConsumerName,
+void IPass::setupBinderTarget( const std::string &currentPassBinderName,
 	const std::string &targetPassName,
-	const std::string &targetPassProducerName )
+	const std::string &targetPassLinkerName )
 {
-	auto &cons = consumer( currentPassConsumerName );
-	cons.setPassAndProducerNames( targetPassName,
-		targetPassProducerName );
+	auto &cons = binder( currentPassBinderName );
+	cons.setPassAndLinkerNames( targetPassName,
+		targetPassLinkerName );
 }
 
 

@@ -1,7 +1,7 @@
 #include "renderer.h"
 #include <string>
 #include "renderer_exception.h"
-#include "producer.h"
+#include "linker.h"
 #include "render_queue_pass.h"
 #include "render_surface_clear_pass.h"
 #include "shadow_pass.h"
@@ -21,6 +21,7 @@
 #include "math_utils.h"
 #include "assertions_console.h"
 #include "wireframe_pass.h"
+#include "rtt_pass_post_process.h"
 #include "blur_pass.h"
 
 
@@ -32,29 +33,29 @@ Renderer::Renderer( Graphics &gph )
 	m_globalColorBuffer{gph.renderTarget()},
 	m_globalDepthStencil{gph.depthStencil()}
 {
-	addGlobalConsumer( RenderSurfaceConsumer<IRenderTargetView>::make( "backColorbuffer",
+	addGlobalBinder( RenderSurfaceBinder<IRenderTargetView>::make( "backColorbuffer",
 		m_globalColorBuffer ) );
 
-	addGlobalProducer( RenderSurfaceProducer<IRenderTargetView>::make( "backColorbuffer",
+	addGlobalLinker( RenderSurfaceLinker<IRenderTargetView>::make( "backColorbuffer",
 		m_globalColorBuffer ) );
-	addGlobalProducer( RenderSurfaceProducer<IDepthStencilView>::make( "backDepthBuffer",
+	addGlobalLinker( RenderSurfaceLinker<IDepthStencilView>::make( "backDepthBuffer",
 		m_globalDepthStencil ) );
 
 	// #TODO: Add active flag as argument in the ctor of all Passes
 	{
 		auto pass = std::make_unique<RenderSurfaceClearPass>( "clearRt" );
-		pass->setupConsumerTarget( "buffer",
+		pass->setupBinderTarget( "buffer",
 			"$",
 			"backColorbuffer" );
-		linkPassConsumers( *pass );
+		linkPassBinders( *pass );
 		addPass( std::move( pass ) );
 	}
 	{
 		auto pass = std::make_unique<RenderSurfaceClearPass>( "clearDs" );
-		pass->setupConsumerTarget( "buffer",
+		pass->setupBinderTarget( "buffer",
 			"$",
 			"backDepthBuffer" );
-		linkPassConsumers( *pass );
+		linkPassBinders( *pass );
 		addPass( std::move( pass ) );
 	}
 }
@@ -64,14 +65,14 @@ Renderer::~Renderer() noexcept
 
 }
 
-void Renderer::addGlobalProducer( std::unique_ptr<IProducer> pProducer )
+void Renderer::addGlobalLinker( std::unique_ptr<ILinker> pLinker )
 {
-	m_globalProducers.emplace_back( std::move( pProducer ) );
+	m_globalLinkers.emplace_back( std::move( pLinker ) );
 }
 
-void Renderer::addGlobalConsumer( std::unique_ptr<IConsumer> pConsumer )
+void Renderer::addGlobalBinder( std::unique_ptr<IBinder> pBinder )
 {
-	m_globalConsumers.emplace_back( std::move( pConsumer ) );
+	m_globalBinders.emplace_back( std::move( pBinder ) );
 }
 
 void Renderer::run( Graphics &gph ) cond_noex
@@ -109,26 +110,26 @@ void Renderer::addPass( std::unique_ptr<IPass> pPass )
 	m_passes.emplace_back( std::move( pPass ) );
 }
 
-void Renderer::setupGlobalConsumerTarget( const std::string &globalConsumerName,
+void Renderer::setupGlobalBinderTarget( const std::string &globalBinderName,
 	const std::string &passName,
-	const std::string &producerName )
+	const std::string &linkerName )
 {
-	const auto passFinder = [&globalConsumerName]( const std::unique_ptr<IConsumer>& consumer )
+	const auto passFinder = [&globalBinderName]( const std::unique_ptr<IBinder>& binder )
 	{
-		return consumer->getName() == globalConsumerName;
+		return binder->getName() == globalBinderName;
 	};
-	const auto consumer = std::find_if( m_globalConsumers.begin(),
-		m_globalConsumers.end(),
+	const auto binder = std::find_if( m_globalBinders.begin(),
+		m_globalBinders.end(),
 		passFinder );
-	if ( consumer == m_globalConsumers.end() )
+	if ( binder == m_globalBinders.end() )
 	{
-		THROW_RENDERER_EXCEPTION( "Global consumer " + globalConsumerName + " does not exist!" );
+		THROW_RENDERER_EXCEPTION( "Global binder " + globalBinderName + " does not exist!" );
 	}
-	(*consumer)->setPassAndProducerNames( passName,
-		producerName );
+	(*binder)->setPassAndLinkerNames( passName,
+		linkerName );
 }
 
-void Renderer::validateConsumersLinkage()
+void Renderer::validateBindersLinkage()
 {
 	ASSERT( !m_bValidatedPasses, "Renderer is already validated!" );
 	for ( const auto &pass : m_passes )
@@ -138,31 +139,31 @@ void Renderer::validateConsumersLinkage()
 	m_bValidatedPasses = true;
 }
 
-void Renderer::linkPassConsumers( IPass &pass )
+void Renderer::linkPassBinders( IPass &pass )
 {
-	for ( auto &consumer : pass.getConsumers() )
+	for ( auto &binder : pass.getBinders() )
 	{
-		const auto &consumerPassName = consumer->getPassName();
-		if ( consumerPassName.empty() )
+		const auto &binderPassName = binder->getPassName();
+		if ( binderPassName.empty() )
 		{
 			std::ostringstream oss;
 			oss << "In pass named ["
 				<< pass.getName()
-				<< "] consumer named ["
-				<< consumer->getName()
-				<< "] has no target producer set.";
+				<< "] binder named ["
+				<< binder->getName()
+				<< "] has no target linker set.";
 			THROW_RENDERER_EXCEPTION( oss.str() );
 		}
 
-		// check whether consumer is global
-		if ( consumerPassName == "$" )
+		// check whether binder is global
+		if ( binderPassName == "$" )
 		{
 			bool bLinked = false;
-			for ( auto &globalProducer : m_globalProducers )
+			for ( auto &globalLinker : m_globalLinkers )
 			{
-				if ( globalProducer->getName() == consumer->getProducerName() )
+				if ( globalLinker->getName() == binder->getLinkerName() )
 				{
-					consumer->link( *globalProducer );
+					binder->link( *globalLinker );
 					bLinked = true;
 					break;
 				}
@@ -170,21 +171,21 @@ void Renderer::linkPassConsumers( IPass &pass )
 			if ( !bLinked )
 			{
 				std::ostringstream oss;
-				oss << "Producer named ["
-					<< consumer->getProducerName()
+				oss << "Linker named ["
+					<< binder->getLinkerName()
 					<< "] not a global";
 				THROW_RENDERER_EXCEPTION( oss.str() );
 			}
 		}
 		else
-		{// find producer from within existing passes
+		{// find linker from within existing passes
 			bool bLinked = false;
 			for ( auto &pass : m_passes )
 			{
-				if ( pass->getName() == consumerPassName )
+				if ( pass->getName() == binderPassName )
 				{
-					auto &producer = pass->producer( consumer->getProducerName() );
-					consumer->link( producer );
+					auto &linker = pass->linker( binder->getLinkerName() );
+					binder->link( linker );
 					bLinked = true;
 					break;
 				}
@@ -193,7 +194,7 @@ void Renderer::linkPassConsumers( IPass &pass )
 			{
 				std::ostringstream oss;
 				oss << "Pass named ["
-					<< consumerPassName
+					<< binderPassName
 					<< "] not found";
 				THROW_RENDERER_EXCEPTION( oss.str() );
 			}
@@ -201,19 +202,19 @@ void Renderer::linkPassConsumers( IPass &pass )
 	}
 }
 
-void Renderer::linkGlobalConsumers()
+void Renderer::linkGlobalBinders()
 {
-	this->validateConsumersLinkage();
+	this->validateBindersLinkage();
 
-	for ( auto &consumer : m_globalConsumers )
+	for ( auto &binder : m_globalBinders )
 	{
-		const auto &consumerPassname = consumer->getPassName();
+		const auto &binderPassName = binder->getPassName();
 		for ( auto &pass : m_passes )
 		{
-			if ( pass->getName() == consumerPassname )
+			if ( pass->getName() == binderPassName )
 			{
-				auto &producer = pass->producer( consumer->getProducerName() );
-				consumer->link( producer );
+				auto &linker = pass->linker( binder->getLinkerName() );
+				binder->link( linker );
 				break;
 			}
 		}
@@ -269,50 +270,50 @@ Renderer3d::Renderer3d( Graphics &gph,
 	{
 		auto pass = std::make_unique<ShadowPass>( gph,
 			"shadowMap" );
-		linkPassConsumers( *pass );
+		linkPassBinders( *pass );
 		addPass( std::move( pass ) );
 	}
 	{
 		auto pass = std::make_unique<LambertianPass>( gph,
 			"lambertian" );
-		pass->setupConsumerTarget( "renderTarget",
+		pass->setupBinderTarget( "renderTarget",
 			"clearRt",
 			"buffer" );
-		pass->setupConsumerTarget( "depthStencil",
+		pass->setupBinderTarget( "depthStencil",
 			"clearDs",
 			"buffer" );
-		pass->setupConsumerTarget( "offscreenShadowCubemapIn",
+		pass->setupBinderTarget( "offscreenShadowCubemapIn",
 			"shadowMap",
 			"offscreenShadowCubemapOut" );
-		linkPassConsumers( *pass );
+		linkPassBinders( *pass );
 		addPass( std::move( pass ) );
 	}/*
 	{
 		auto pass = std::make_unique<SkyPass>( gph,
 			"sky" );
-		pass->setupConsumerTarget( "renderTarget",
+		pass->setupBinderTarget( "renderTarget",
 			"lambertian",
 			"renderTarget" );
-		pass->setupConsumerTarget( "depthStencil",
+		pass->setupBinderTarget( "depthStencil",
 			"lambertian",
 			"depthStencil" );
-		linkPassConsumers( *pass );
+		linkPassBinders( *pass );
 		addPass( std::move( pass ) );
 	}
 	{
 		auto pass = std::make_unique<BlurOutlineMaskPass>( gph,
 			"blurOutlineMask" );
-		pass->setupConsumerTarget( "depthStencil",
+		pass->setupBinderTarget( "depthStencil",
 			"sky",
 			"depthStencil" );
-		linkPassConsumers( *pass );
+		linkPassBinders( *pass );
 		addPass( std::move( pass ) );
 	}
 	{
 		auto pass = std::make_unique<BlurOutlineDrawPass>( gph,
 			"blurOutlineDraw",
 			s_fullscreenRezReductFactor );
-		linkPassConsumers( *pass );
+		linkPassBinders( *pass );
 		addPass( std::move( pass ) );
 	}
 	{
@@ -329,7 +330,7 @@ Renderer3d::Renderer3d( Graphics &gph,
 				cb );
 			setKernelGauss( m_radius,
 				m_sigma );
-			addGlobalProducer( BindableProducer<PixelShaderConstantBufferEx>::make( "blurKernel",
+			addGlobalLinker( BindableLinker<PixelShaderConstantBufferEx>::make( "blurKernel",
 				m_blurKernel ) );
 		}
 		{
@@ -340,7 +341,7 @@ Renderer3d::Renderer3d( Graphics &gph,
 			m_blurDirection = std::make_shared<PixelShaderConstantBufferEx>( gph,
 				1u,
 				cb );
-			addGlobalProducer( BindableProducer<PixelShaderConstantBufferEx>::make( "blurDirection",
+			addGlobalLinker( BindableLinker<PixelShaderConstantBufferEx>::make( "blurDirection",
 				m_blurDirection ) );
 		}
 	}
@@ -348,118 +349,114 @@ Renderer3d::Renderer3d( Graphics &gph,
 		auto pass = std::make_unique<HorizontalBlurPass>( gph,
 			"horizontalBlur",
 			s_fullscreenRezReductFactor );
-		pass->setupConsumerTarget( "offscreenBlurOutlineIn",
+		pass->setupBinderTarget( "offscreenBlurOutlineIn",
 			"blurOutlineDraw",
 			"offscreenBlurOutlineOut" );
-		pass->setupConsumerTarget( "blurKernel",
+		pass->setupBinderTarget( "blurKernel",
 			"$",
 			"blurKernel" );
-		pass->setupConsumerTarget( "blurDirection",
+		pass->setupBinderTarget( "blurDirection",
 			"$",
 			"blurDirection" );
-		linkPassConsumers( *pass );
+		linkPassBinders( *pass );
 		addPass( std::move( pass ) );
 	}
 	{
 		auto pass = std::make_unique<VerticalBlurPass>( gph,
 			"verticalBlur" );
-		pass->setupConsumerTarget( "renderTarget",
+		pass->setupBinderTarget( "renderTarget",
 			"sky",
 			"renderTarget" );
-		pass->setupConsumerTarget( "depthStencil",
+		pass->setupBinderTarget( "depthStencil",
 			"blurOutlineMask",
 			"depthStencil" );
-		pass->setupConsumerTarget( "offscreenBlurOutlineIn",
+		pass->setupBinderTarget( "offscreenBlurOutlineIn",
 			"horizontalBlur",
 			"offscreenBlurOutlineOut" );
-		pass->setupConsumerTarget( "blurKernel",
+		pass->setupBinderTarget( "blurKernel",
 			"$",
 			"blurKernel" );
-		pass->setupConsumerTarget( "blurDirection",
+		pass->setupBinderTarget( "blurDirection",
 			"$",
 			"blurDirection" );
-		linkPassConsumers( *pass );
+		linkPassBinders( *pass );
 		addPass( std::move( pass ) );
 	}*/
 	{
 		auto pass = std::make_unique<SolidOutlineMaskPass>( gph,
 			"solidOutlineMask" );
-		pass->setupConsumerTarget( "renderTarget",
+		pass->setupBinderTarget( "renderTarget",
 			"lambertian",
 			"renderTarget" );
-		pass->setupConsumerTarget( "depthStencil",
+		pass->setupBinderTarget( "depthStencil",
 			"lambertian",
 			"depthStencil" );
-		linkPassConsumers( *pass );
+		linkPassBinders( *pass );
 		addPass( std::move( pass ) );
 	}
 	{
 		auto pass = std::make_unique<SolidOutlineDrawPass>( gph,
 			"solidOutlineDraw" );
-		pass->setupConsumerTarget( "renderTarget",
+		pass->setupBinderTarget( "renderTarget",
 			"solidOutlineMask",
 			"renderTarget" );
-		pass->setupConsumerTarget( "depthStencil",
+		pass->setupBinderTarget( "depthStencil",
 			"solidOutlineMask",
 			"depthStencil" );
-		linkPassConsumers( *pass );
+		linkPassBinders( *pass );
 		addPass( std::move( pass ) );
 	}
-
-	//{
-		//auto pass = std::make_unique<FullscreenPass>( gph,
-			//"fullscreen" );
-		//pass->setupConsumerTarget( "renderTarget",
-			//"solidOutlineDraw",
-			//"renderTarget" );
-		//pass->setupConsumerTarget( "depthStencil",
-			//"solidOutlineDraw",
-			//"depthStencil" );
-		//pass->setupConsumerTarget( "offscreenFullscreenBlurIn",
-			//"blur",
-			//"offscreenFullscreenBlurOut" );
-		//linkPassConsumers( *pass );
-		//addPass( std::move( pass ) );
-	//}
-	//{
-		//auto pass = std::make_unique<BlurPass>( gph,
-			//"blur",
-			//s_fullscreenRezReductFactor );
-		//linkPassConsumers( *pass );
-		//addPass( std::move( pass ) );
-	//}
+		{
+		auto pass = std::make_unique<RttPassForPostProcessing>( gph,
+			"rttFullscreenPp",
+			1u );
+		linkPassBinders( *pass );
+		addPass( std::move( pass ) );
+	}
+	{
+		auto pass = std::make_unique<BlurPass>( gph,
+			"blur" );
+		pass->setupBinderTarget( "renderTarget",
+			"solidOutlineDraw",
+			"renderTarget" );
+		pass->setupBinderTarget( "depthStencil",
+			"solidOutlineDraw",
+			"depthStencil" );
+		pass->setupBinderTarget( "offscreenPostProcessIn",
+			"rttFullscreenPp",
+			"offscreenPostProcessOut" );
+		linkPassBinders( *pass );
+		addPass( std::move( pass ) );
+	}
 	{
 		auto pass = std::make_unique<DepthReversedPass>( gph,
 			"depthReversed" );
-		pass->setupConsumerTarget( "renderTarget",
-			"solidOutlineDraw",
+		pass->setupBinderTarget( "renderTarget",
+			"blur",
 			"renderTarget" );
-		pass->setupConsumerTarget( "depthStencil",
-			"solidOutlineDraw",
+		pass->setupBinderTarget( "depthStencil",
+			"blur",
 			"depthStencil" );
-		//pass->setupConsumerTarget( "offscreenFullscreenBlurIn",
-			//"blur",
-			//"offscreenFullscreenBlurOut" );
-		linkPassConsumers( *pass );
+		linkPassBinders( *pass );
 		addPass( std::move( pass ) );
 	}
 	{
 		auto pass = std::make_unique<WireframePass>( gph,
 			"wireframe" );
-		pass->setupConsumerTarget( "renderTarget",
+		pass->setupBinderTarget( "renderTarget",
 			"depthReversed",
 			"renderTarget" );
-		pass->setupConsumerTarget( "depthStencil",
+		pass->setupBinderTarget( "depthStencil",
 			"depthReversed",
 			"depthStencil" );
-		linkPassConsumers( *pass );
+		linkPassBinders( *pass );
 		addPass( std::move( pass ) );
 	}
 
-	setupGlobalConsumerTarget( "backColorbuffer",
+	setupGlobalBinderTarget( "backColorbuffer",
 		"wireframe",
 		"renderTarget" );
-	Renderer::linkGlobalConsumers();
+	Renderer::linkGlobalBinders();
 }
 
 void Renderer3d::showImGuiWindows( Graphics &gph )
@@ -467,6 +464,19 @@ void Renderer3d::showImGuiWindows( Graphics &gph )
 	showShadowDumpImguiWindow( gph );
 	showGaussianBlurImguiWindow( gph );
 	//dynamic_cast<SkyPass&>( getPass( "sky" ) ).displayImguiWidgets();
+}
+
+void Renderer3d::showShadowDumpImguiWindow( Graphics &gph )
+{
+	if ( ImGui::Begin( "Shadow" ) )
+	{
+		if ( ImGui::Button( "Dump Cubemap" ) )
+		{
+			dumpShadowMap( gph,
+				"dumps/shadow_" );
+		}
+	}
+	ImGui::End();
 }
 
 void Renderer3d::showGaussianBlurImguiWindow( Graphics &gph )
@@ -545,19 +555,6 @@ void ren::Renderer3d::setShadowCamera( Camera &cam )
 	dynamic_cast<ShadowPass&>( getPass( "shadowMap" ) ).setShadowCamera( cam );
 }
 
-void ren::Renderer3d::showShadowDumpImguiWindow( Graphics &gph )
-{
-	if ( ImGui::Begin( "Shadow" ) )
-	{
-		if ( ImGui::Button( "Dump Cubemap" ) )
-		{
-			dumpShadowMap( gph,
-				"dumps/shadow_" );
-		}
-	}
-	ImGui::End();
-}
-
 void Renderer3d::dumpShadowMap( Graphics &gph,
 	const std::string &path )
 {
@@ -565,8 +562,8 @@ void Renderer3d::dumpShadowMap( Graphics &gph,
 		path );
 }
 
-void Renderer3d::setKernelGauss( int radius,
-	float sigma ) cond_noex
+void Renderer3d::setKernelGauss( const int radius,
+	const float sigma ) cond_noex
 {
 	ASSERT( radius <= s_maxRadius, "Blur Kernel radius is over the max!" );
 	ASSERT( sigma <= s_maxSigma, "Blur Kernel sigma is over the max!" );
@@ -592,7 +589,7 @@ void Renderer3d::setKernelGauss( int radius,
 	m_blurKernel->setBuffer( cb );
 }
 
-void Renderer3d::setKernelBox( int radius ) cond_noex
+void Renderer3d::setKernelBox( const int radius ) cond_noex
 {
 	ASSERT( radius <= s_maxRadius, "Blur Kernel radius is over the max!" );
 
@@ -615,20 +612,20 @@ Renderer2d::Renderer2d( Graphics &gph )
 	{
 		auto pass = std::make_unique<Pass2D>( gph,
 			"pass2d" );
-		pass->setupConsumerTarget( "renderTarget",
+		pass->setupBinderTarget( "renderTarget",
 			"clearRt",
 			"buffer" );
-		pass->setupConsumerTarget( "depthStencil",
+		pass->setupBinderTarget( "depthStencil",
 			"clearDs",
 			"buffer" );
-		linkPassConsumers( *pass );
+		linkPassBinders( *pass );
 		addPass( std::move( pass ) );
 	}
 
-	setupGlobalConsumerTarget( "backColorbuffer",
+	setupGlobalBinderTarget( "backColorbuffer",
 		"pass2d",
 		"renderTarget" );
-	Renderer::linkGlobalConsumers();
+	Renderer::linkGlobalBinders();
 }
 
 

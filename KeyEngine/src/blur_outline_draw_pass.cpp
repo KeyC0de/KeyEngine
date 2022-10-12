@@ -2,9 +2,8 @@
 #include "pixel_shader.h"
 #include "vertex_shader.h"
 #include "depth_stencil_state.h"
-#include "producer.h"
+#include "linker.h"
 #include "render_target.h"
-#include "blend_state.h"
 #include "texture_sampler_state.h"
 #include "rasterizer_state.h"
 
@@ -24,18 +23,15 @@ BlurOutlineDrawPass::BlurOutlineDrawPass( Graphics &gph,
 		"flat_ps.cso" ) );
 	addPassBindable( DepthStencilState::fetch( gph,
 		DepthStencilState::Mode::DepthOffStencilReadFF ) );
-	addPassBindable( BlendState::fetch( gph,
-		BlendState::NoBlend,
-		0u ) );
 
 	const unsigned width = gph.getClientWidth() / rezReductFactor;
 	const unsigned height = gph.getClientHeight() / rezReductFactor;
-	// create a SRV to read the main texture
-	m_pRtv = std::make_shared<RenderTargetShaderInput>( gph,
+	// create a RTV to write (the PS operation - which performs a flat color shading) to an offscreen texture, next Pass we'll read from it
+	m_pRtv = std::make_unique<RenderTargetShaderInput>( gph,
 		width,
 		height,
 		0u );
-	addProducer( BindableProducer<IRenderTargetView>::make( "offscreenBlurOutlineOut",
+	addLinker( BindableLinker<IRenderTargetView>::make( "offscreenBlurOutlineOut",
 		m_pRtv ) );
 }
 

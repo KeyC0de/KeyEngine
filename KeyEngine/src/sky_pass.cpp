@@ -1,7 +1,7 @@
 #include "sky_pass.h"
 #include <string>
-#include "consumer.h"
-#include "producer.h"
+#include "binder.h"
+#include "linker.h"
 #include "camera.h"
 #include "texture_sampler_state.h"
 #include "rasterizer_state.h"
@@ -75,14 +75,14 @@ SkyPass::SkyPass( Graphics &gph,
 		addPassBindable( std::move( vs ) );
 	}
 
-	addConsumer( RenderSurfaceConsumer<IRenderTargetView>::make( "renderTarget",
+	addBinder( RenderSurfaceBinder<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );
-	addConsumer( RenderSurfaceConsumer<IDepthStencilView>::make( "depthStencil",
+	addBinder( RenderSurfaceBinder<IDepthStencilView>::make( "depthStencil",
 		m_pDsv ) );
 
-	addProducer( RenderSurfaceProducer<IRenderTargetView>::make( "renderTarget",
+	addLinker( RenderSurfaceLinker<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );
-	addProducer( RenderSurfaceProducer<IDepthStencilView>::make( "depthStencil",
+	addLinker( RenderSurfaceLinker<IDepthStencilView>::make( "depthStencil",
 		m_pDsv ) );
 }
 

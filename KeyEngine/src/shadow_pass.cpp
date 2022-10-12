@@ -1,6 +1,6 @@
 #include "shadow_pass.h"
 #include "graphics.h"
-#include "producer.h"
+#include "linker.h"
 #include "vertex_shader.h"
 #include "pixel_shader.h"
 #include "depth_stencil_view.h"
@@ -41,16 +41,16 @@ ShadowPass::ShadowPass( Graphics &gph,
 		2.0f,
 		0.1f ) );
 
-	addPassBindable( BlendState::fetch( gph,
+	addPassBindable( BlendState::fetch( gph,	// #TODO: you could remove this
 		BlendState::NoBlend,
 		3u ) );
 
-	// create the offscreen texture - #TODO: check whether I can create it from the Dsv directly
+	// create the offscreen texture
 	m_pOffscreenDsvCubemap = std::make_shared<CubeTextureDS>( gph,
 		s_shadowMapResolution,
 		3u );
 
-	addProducer( BindableProducer<CubeTextureDS>::make( "offscreenShadowCubemapOut",
+	addLinker( BindableLinker<CubeTextureDS>::make( "offscreenShadowCubemapOut",
 		m_pOffscreenDsvCubemap ) );
 
 	// bind the DSV from the offscreen cube map ds texture side #0

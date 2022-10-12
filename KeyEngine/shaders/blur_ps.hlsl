@@ -1,7 +1,7 @@
-Texture2D tex : register(t0);
-SamplerState sampl : register(s0);
+Texture2D postFxOffscreenTex : register(t4);
+SamplerState sampl : register(s4);
 
-static const int radius = 20;
+static const int radius = 5;
 static const float divisor = ( 2 * radius + 1 ) * ( 2 * radius + 1 );
 
 struct PSIn
@@ -21,7 +21,7 @@ PSOut main( PSIn input )
 	uint width;
 	uint height;
 
-	tex.GetDimensions( width,
+	postFxOffscreenTex.GetDimensions( width,
 		height );
 
 	// distance {dx,dy} between neighboring pixels
@@ -34,7 +34,7 @@ PSOut main( PSIn input )
 		for ( int x = -radius; x <= radius; x++ )
 		{
 			const float2 tc = input.uv + float2( dx * x, dy * y );
-			output.finalColor += tex.Sample( sampl, tc ).rgba;
+			output.finalColor += postFxOffscreenTex.Sample( sampl, tc ).rgba;
 		}
 	}
 
