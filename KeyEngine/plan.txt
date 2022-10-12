@@ -1,4 +1,58 @@
-﻿-- 
+﻿-- Offscreen architecture
+Render a scene to texture?
+
+in d3d11 how would you render the scene to a texture?
+RedSkittleFox — Today at 5:21 PM
+Create RTV for normal texture then bind texture as an RTV 
+N!k — Today at 5:23 PM
+so basically creating an SRV?
+Chili — Today at 5:23 PM
+☝️
+well, srv is for using the texture as an input to a pixel shader
+RTV is for using it as the output
+N!k — Today at 5:23 PM
+ok, sry
+Chili — Today at 5:23 PM
+but both require an underlying texture resource
+N!k — Today at 5:25 PM
+right
+and how could you use that rendered texture on a shader?
+bind an srv to its slot right? 
+Chili — Today at 5:32 PM
+create srv based on the texture
+bind the srv to a slot and sample from pixel shader
+but make sure it's not still bound as a RTV when you bind it as SRV
+you may need to change your RTV bind order or manually unbind RTV before binding SRV
+(if you have debuginfo enabled it will tell you this)
+
+How to unbind it as RT you say?
+you unbind by setting render target to null, or to a different rt
+RedSkittleFox — Today at 6:24 PM
+ctx.OMSetRenderTargets(0, nullptr, nullptr);
+
+
+add unbind routines to RTV/DSV
+
+
+pass A:
+	1. write scene rtv/dsv to texture, Texture bindRenderSurface
+	2. output rtv/dsv to next Pass
+		addLinker( BindableLinker<Texture/RT/ds>::make( "offscreen*Out",
+			m_pOffscreenTex ) );
+	3. binds Null Pixel Shader - don't write anything to the screen
+	4. addPassBindable( DepthStencilState::fetch( gph,
+		DepthStencilState::Mode::Default ) );
+	5. on run:
+		a. clear the rtv/dsv
+		b. bindRenderSurface
+		c. bind all other bindables
+pass B:
+	1. addContainerBindableBinder<Texture/rt/ds>( "offscreenShadowCubemapIn" );
+	
+Producer: Linker - links/gives graphics resource to next Pass
+Consumer: Binder - binds the resource acquired from the Linker
+
+-- 
 How to get position between current pixel and camera in pixel shader?
 1. pass the camera position to vertex shader
 2. distanceBetweenVertexAndCamera = length( cameraPosition - vertexPositionInWorldSpace );
