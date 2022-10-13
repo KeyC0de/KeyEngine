@@ -1,7 +1,7 @@
 #include "blur_pass.h"
 #include "pixel_shader.h"
 #include "texture_sampler_state.h"
-#include "blend_state.h"
+//#include "blend_state.h"
 
 
 namespace ren
@@ -19,7 +19,7 @@ BlurPass::BlurPass( Graphics &gph,
 		TextureSamplerState::FilterMode::Trilinear,
 		TextureSamplerState::AddressMode::Clamp ) );
 	//addPassBindable( BlendState::fetch( gph,
-		//BlendState::Mode::Multiplicative,
+		//BlendState::Mode::Alpha,
 		//0u ) );
 
 	addBinder( RenderSurfaceBinder<IRenderTargetView>::make( "renderTarget",

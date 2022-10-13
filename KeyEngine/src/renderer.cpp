@@ -405,8 +405,8 @@ Renderer3d::Renderer3d( Graphics &gph,
 			"depthStencil" );
 		linkPassBinders( *pass );
 		addPass( std::move( pass ) );
-	}
-		{
+	}/*
+	{
 		auto pass = std::make_unique<RttPassForPostProcessing>( gph,
 			"rttFullscreenPp",
 			1u );
@@ -427,15 +427,15 @@ Renderer3d::Renderer3d( Graphics &gph,
 			"offscreenPostProcessOut" );
 		linkPassBinders( *pass );
 		addPass( std::move( pass ) );
-	}
+	}*/
 	{
 		auto pass = std::make_unique<DepthReversedPass>( gph,
 			"depthReversed" );
 		pass->setupBinderTarget( "renderTarget",
-			"blur",
+			"solidOutlineDraw",
 			"renderTarget" );
 		pass->setupBinderTarget( "depthStencil",
-			"blur",
+			"solidOutlineDraw",
 			"depthStencil" );
 		linkPassBinders( *pass );
 		addPass( std::move( pass ) );

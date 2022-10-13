@@ -278,6 +278,7 @@
     <ClCompile Include="src\testing.cpp" />
     <ClCompile Include="src\main_test.cpp" />
     <ClCompile Include="src\texture.cpp" />
+    <ClCompile Include="src\texture_desc.cpp" />
     <ClCompile Include="src\texture_sampler_state.cpp" />
     <ClCompile Include="src\thread_pool_j.cpp" />
     <ClCompile Include="src\transform_scale_vscb.cpp" />
@@ -426,6 +427,7 @@
     <ClInclude Include="inc\subject_observer.h" />
     <ClInclude Include="inc\testing.h" />
     <ClInclude Include="inc\texture.h" />
+    <ClInclude Include="inc\texture_desc.h" />
     <ClInclude Include="inc\texture_sampler_state.h" />
     <ClInclude Include="inc\thread_pool_j.h" />
     <ClInclude Include="inc\transform_scale_vscb.h" />

@@ -1,4 +1,5 @@
 #include "render_target.h"
+#include "texture_desc.h"
 #include "depth_stencil_view.h"
 #include "os_utils.h"
 #include "dxgi_info_queue.h"
@@ -17,18 +18,13 @@ IRenderTargetView::IRenderTargetView( Graphics &gph,
 	m_width(width),
 	m_height(height)
 {
-	D3D11_TEXTURE2D_DESC texDesc{};
-	texDesc.Width = width;
-	texDesc.Height = height;
-	texDesc.MipLevels = 1u;
-	texDesc.ArraySize = 1u;
-	texDesc.Format = DXGI_FORMAT_B8G8R8A8_UNORM;
-	texDesc.SampleDesc.Count = 1u;
-	texDesc.SampleDesc.Quality = 0u;
-	texDesc.Usage = D3D11_USAGE_DEFAULT;
-	texDesc.BindFlags = D3D11_BIND_RENDER_TARGET | D3D11_BIND_SHADER_RESOURCE;
-	texDesc.CPUAccessFlags = 0u;
-	texDesc.MiscFlags = 0u;
+	D3D11_TEXTURE2D_DESC texDesc = createTextureDescriptor( width,
+		height,
+		DXGI_FORMAT_B8G8R8A8_UNORM,
+		BindFlags::RenderTargetTexture,
+		CpuAccessFlags::NoCpuAccess,
+		false,
+		TextureUsage::Default );
 
 	mwrl::ComPtr<ID3D11Texture2D> pTex;
 	HRESULT hres = getDevice( gph )->CreateTexture2D( &texDesc,
@@ -164,12 +160,13 @@ std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC> IRender
 	D3D11_TEXTURE2D_DESC rtvTexDesc{};
 	pRtvTex->GetDesc( &rtvTexDesc );
 
-	D3D11_TEXTURE2D_DESC stagingTexDesc = rtvTexDesc;
-	stagingTexDesc.CPUAccessFlags = D3D11_CPU_ACCESS_READ;
-	stagingTexDesc.Usage = D3D11_USAGE_STAGING;
-	stagingTexDesc.ArraySize = 1u;
-	stagingTexDesc.BindFlags = 0u;
-	stagingTexDesc.MiscFlags = 0u;
+	D3D11_TEXTURE2D_DESC stagingTexDesc = createTextureDescriptor( rtvTexDesc.Width,
+		rtvTexDesc.Height,
+		rtvTexDesc.Format,
+		(BindFlags) rtvTexDesc.BindFlags,
+		CpuAccessFlags::CpuReadAccess,
+		false,
+		TextureUsage::Staging );
 
 	mwrl::ComPtr<ID3D11Texture2D> pStagingTex;
 	HRESULT hres = getDevice( gph )->CreateTexture2D( &stagingTexDesc,
@@ -251,7 +248,7 @@ RenderTargetShaderInput::RenderTargetShaderInput( Graphics &gph,
 	const unsigned height,
 	const unsigned slot )
 	:
-	IRenderTargetView{gph, width, height},
+	IRenderTargetView{gph, width, height},	// #TODO: add ctor argument bInput = true and RenderTargetOutput it will be false and change the BindFlags tex desc value accordingly
 	m_slot(slot)
 {
 	mwrl::ComPtr<ID3D11Resource> pRsc;
@@ -267,6 +264,11 @@ RenderTargetShaderInput::RenderTargetShaderInput( Graphics &gph,
 		&srvDesc,
 		&m_pSrv );
 	ASSERT_HRES_IF_FAILED;
+}
+
+unsigned RenderTargetShaderInput::getSlot() const noexcept
+{
+	return m_slot;
 }
 
 void RenderTargetShaderInput::bind( Graphics &gph ) cond_noex

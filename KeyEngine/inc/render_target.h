@@ -36,11 +36,17 @@ public:
 	const Bitmap convertToBitmap( Graphics &gph, const unsigned width, const unsigned height ) const;
 private:
 	//	\function	createStagingTexture	||	\date	2021/10/27 21:59
-	//	\brief  create a texture resource compatible with our rtv, but with Staging usage (CPU read access, no GPU access)
+	//	\brief  create a texture resource compatible with our RTV, but with Staging usage (CPU read access, no GPU access)
 	std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC> createStagingTexture( Graphics &gph ) const;
 	void bindRenderSurface( Graphics &gph, ID3D11DepthStencilView *pD3dDsv ) cond_noex;
 };
 
+//=============================================================
+//	\class	RenderTargetShaderInput
+//	\author	KeyC0de
+//	\date	2022/10/13 11:09
+//	\brief	RTV wrapper that will be used for Input from the Back Buffer only
+//=============================================================
 class RenderTargetShaderInput
 	: public IRenderTargetView
 {
@@ -50,13 +56,14 @@ public:
 	RenderTargetShaderInput( Graphics &gph, const unsigned width, const unsigned height, const unsigned slot );
 
 	void bind( Graphics &gph ) cond_noex override;
+	unsigned getSlot() const noexcept;
 };
 
 //=============================================================
 //	\class	RenderTargetOutput
 //	\author	KeyC0de
 //	\date	2021/10/19 0:47
-//	\brief	render target view used for Output only (offscreen/RTT/back buffer rendering)
+//	\brief	RTV wrapper that will be used for Output only
 //=============================================================
 class RenderTargetOutput
 	: public IRenderTargetView

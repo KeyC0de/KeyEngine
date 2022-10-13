@@ -9,7 +9,7 @@
 
 class Graphics;
 class Camera;
-class CubeTextureDS;
+class CubeTextureOffscreenDS;
 class IDepthStencilView;
 class LightVSCB;
 
@@ -28,7 +28,7 @@ class ShadowPass
 	static inline unsigned s_shadowMapResolution = 1024u;
 	const Camera *m_pShadowCamera = nullptr;
 	std::shared_ptr<LightVSCB> m_pLightVcb;
-	std::shared_ptr<CubeTextureDS> m_pOffscreenDsvCubemap;
+	std::shared_ptr<CubeTextureOffscreenDS> m_pOffscreenDsvCubemap;
 	DirectX::XMFLOAT4X4 m_cameraShadowProjectionMatrix;
 	std::vector<DirectX::XMFLOAT3> m_cameraDirections{6};
 	std::vector<DirectX::XMFLOAT3> m_cameraUps{6};

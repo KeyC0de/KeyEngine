@@ -22,18 +22,13 @@ CubeTexture::CubeTexture( Graphics &gph,
 		bitmaps.emplace_back( Bitmap::loadFromFile( path + std::to_string( i ) + ".png" ) );
 	}
 
-	D3D11_TEXTURE2D_DESC texDesc{};
-	texDesc.Width = bitmaps[0].getWidth();
-	texDesc.Height = bitmaps[0].getHeight();
-	texDesc.MipLevels = 1u;
-	texDesc.ArraySize = 6u;
-	texDesc.Format = DXGI_FORMAT_B8G8R8A8_UNORM;
-	texDesc.SampleDesc.Count = 1u;
-	texDesc.SampleDesc.Quality = 0u;
-	texDesc.Usage = D3D11_USAGE_DEFAULT;
-	texDesc.BindFlags = D3D11_BIND_SHADER_RESOURCE;
-	texDesc.CPUAccessFlags = 0u;
-	texDesc.MiscFlags = D3D11_RESOURCE_MISC_TEXTURECUBE;
+	D3D11_TEXTURE2D_DESC texDesc = createTextureDescriptor( bitmaps[0].getWidth(),
+		bitmaps[0].getHeight(),
+		DXGI_FORMAT_B8G8R8A8_UNORM,
+		BindFlags::TextureOnly,
+		CpuAccessFlags::NoCpuAccess,
+		true,
+		TextureUsage::Default );
 
 	D3D11_SUBRESOURCE_DATA subRscData[6]{};
 	for ( int i = 0; i < 6; i++ )
@@ -70,7 +65,7 @@ void CubeTexture::bind( Graphics &gph ) cond_noex
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-CubeTextureRT::CubeTextureRT( Graphics &gph,
+CubeTextureOffscreenRT::CubeTextureOffscreenRT( Graphics &gph,
 	const unsigned width,
 	const unsigned height,
 	const unsigned slot,
@@ -78,18 +73,13 @@ CubeTextureRT::CubeTextureRT( Graphics &gph,
 	:
 	m_slot(slot)
 {
-	D3D11_TEXTURE2D_DESC texDesc{};
-	texDesc.Width = width;
-	texDesc.Height = height;
-	texDesc.MipLevels = 1u;
-	texDesc.ArraySize = 6u;
-	texDesc.Format = format;
-	texDesc.SampleDesc.Count = 1u;
-	texDesc.SampleDesc.Quality = 0u;
-	texDesc.Usage = D3D11_USAGE_DEFAULT;
-	texDesc.BindFlags = D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_RENDER_TARGET;
-	texDesc.CPUAccessFlags = 0u;
-	texDesc.MiscFlags = D3D11_RESOURCE_MISC_TEXTURECUBE;
+	D3D11_TEXTURE2D_DESC texDesc = createTextureDescriptor( width,
+		height,
+		format,
+		BindFlags::RenderTargetTexture,
+		CpuAccessFlags::NoCpuAccess,
+		true,
+		TextureUsage::Default );
 
 	mwrl::ComPtr<ID3D11Texture2D> pTex;
 	HRESULT hres = getDevice( gph )->CreateTexture2D( &texDesc,
@@ -116,7 +106,7 @@ CubeTextureRT::CubeTextureRT( Graphics &gph,
 	}
 }
 
-void CubeTextureRT::bind( Graphics &gph ) cond_noex
+void CubeTextureOffscreenRT::bind( Graphics &gph ) cond_noex
 {
 	getDeviceContext( gph )->PSSetShaderResources( m_slot,
 		1u,
@@ -124,31 +114,27 @@ void CubeTextureRT::bind( Graphics &gph ) cond_noex
 	DXGI_GET_QUEUE_INFO( gph );
 }
 
-std::shared_ptr<RenderTargetOutput> CubeTextureRT::shareRenderTarget( const size_t index ) const
+std::shared_ptr<RenderTargetOutput> CubeTextureOffscreenRT::shareRenderTarget( const size_t index ) const
 {
 	return m_renderTargetViews[index];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-CubeTextureDS::CubeTextureDS( Graphics &gph,
-	const unsigned size,
+CubeTextureOffscreenDS::CubeTextureOffscreenDS( Graphics &gph,
+	const unsigned width,
+	const unsigned height,
 	const unsigned slot,
-	const DXGI_FORMAT format )
+	const DepthStencilViewMode dsMode )
 	:
 	m_slot(slot)
 {
-	D3D11_TEXTURE2D_DESC texDesc{};
-	texDesc.Width = size;
-	texDesc.Height = size;
-	texDesc.MipLevels = 1u;
-	texDesc.ArraySize = 6u;
-	texDesc.Format = format;
-	texDesc.SampleDesc.Count = 1u;
-	texDesc.SampleDesc.Quality = 0u;
-	texDesc.Usage = D3D11_USAGE_DEFAULT;
-	texDesc.BindFlags = D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_DEPTH_STENCIL;
-	texDesc.CPUAccessFlags = 0u;
-	texDesc.MiscFlags = D3D11_RESOURCE_MISC_TEXTURECUBE;
+	D3D11_TEXTURE2D_DESC texDesc = createTextureDescriptor( width,
+		height,
+		getTypelessFormatDs( dsMode ),
+		BindFlags::DepthStencilTexture,
+		CpuAccessFlags::NoCpuAccess,
+		true,
+		TextureUsage::Default );
 
 	mwrl::ComPtr<ID3D11Texture2D> pTex;
 	HRESULT hres = getDevice( gph )->CreateTexture2D( &texDesc,
@@ -157,7 +143,7 @@ CubeTextureDS::CubeTextureDS( Graphics &gph,
 	ASSERT_HRES_IF_FAILED;
 
 	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc{};
-	srvDesc.Format = DXGI_FORMAT_R32_FLOAT;
+	srvDesc.Format = getShaderInputFormatDs( dsMode );
 	srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURECUBE;
 	srvDesc.Texture2D.MostDetailedMip = 0u;
 	srvDesc.Texture2D.MipLevels = 1u;
@@ -175,7 +161,7 @@ CubeTextureDS::CubeTextureDS( Graphics &gph,
 	}
 }
 
-void CubeTextureDS::bind( Graphics &gph ) cond_noex
+void CubeTextureOffscreenDS::bind( Graphics &gph ) cond_noex
 {
 	getDeviceContext( gph )->PSSetShaderResources( m_slot,
 		1u,
@@ -183,7 +169,7 @@ void CubeTextureDS::bind( Graphics &gph ) cond_noex
 	DXGI_GET_QUEUE_INFO( gph );
 }
 
-std::shared_ptr<DepthStencilOutput> CubeTextureDS::shareDepthBuffer( const size_t index ) const
+std::shared_ptr<DepthStencilOutput> CubeTextureOffscreenDS::shareDepthBuffer( const size_t index ) const
 {
 	return m_depthStencilViews[index];
 }

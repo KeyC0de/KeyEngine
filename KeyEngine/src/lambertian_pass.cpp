@@ -31,7 +31,7 @@ LambertianPass::LambertianPass( Graphics &gph,
 		m_pRtv ) );
 	addBinder( RenderSurfaceBinder<IDepthStencilView>::make( "depthStencil",
 		m_pDsv ) );
-	addContainerBindableBinder<CubeTextureDS>( "offscreenShadowCubemapIn" );
+	addContainerBindableBinder<CubeTextureOffscreenDS>( "offscreenShadowCubemapIn" );
 
 	addLinker( RenderSurfaceLinker<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );

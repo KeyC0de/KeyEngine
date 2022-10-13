@@ -8,79 +8,33 @@
 
 namespace mwrl = Microsoft::WRL;
 
-// select the right dxgi format of the depth stencil view
-// DXGI_FORMAT_R32_TYPELESS is compatible with both DXGI_FORMAT_D32_FLOAT and DXGI_FORMAT_R32_FLOAT
-// _TYPELESS is actually a float type
-// Use when creating the texture descriptor
-const DXGI_FORMAT getTypelessFormat( const IDepthStencilView::Mode mode )
-{
-	switch ( mode )
-	{
-	case IDepthStencilView::Mode::Normal:
-		return DXGI_FORMAT::DXGI_FORMAT_R24G8_TYPELESS;//DXGI_FORMAT_D24_UNORM_S8_UINT
-	case IDepthStencilView::Mode::ShadowDepth:
-		return DXGI_FORMAT::DXGI_FORMAT_R32_TYPELESS;
-	}
-	THROW_BINDABLE_EXCEPTION( "Invalid mode for Typeless DXGI format in IDepthStencilView." );
-}
-
-// when we want to map a texture view on the Depth Stencil
-const DXGI_FORMAT getTypedFormat( const IDepthStencilView::Mode mode )
-{
-	switch ( mode )
-	{
-	case IDepthStencilView::Mode::Normal:
-		return DXGI_FORMAT::DXGI_FORMAT_D24_UNORM_S8_UINT;
-	case IDepthStencilView::Mode::ShadowDepth:
-		return DXGI_FORMAT::DXGI_FORMAT_D32_FLOAT;
-	}
-	THROW_BINDABLE_EXCEPTION( "Invalid mode for Typed DXGI format in IDepthStencilView." );
-}
-
-// when we want to sample from the Depth Stencil in the back buffer
-const DXGI_FORMAT getShaderInputFormat( const IDepthStencilView::Mode mode )
-{
-	switch ( mode )
-	{
-	case IDepthStencilView::Mode::Normal:
-		return DXGI_FORMAT::DXGI_FORMAT_R24_UNORM_X8_TYPELESS;
-	case IDepthStencilView::Mode::ShadowDepth:
-		return DXGI_FORMAT::DXGI_FORMAT_R32_FLOAT;
-	}
-	THROW_BINDABLE_EXCEPTION( "Invalid mode for Shader Input DXGI format in IDepthStencilView." );
-}
-
-
 IDepthStencilView::IDepthStencilView( Graphics &gph,
 	const unsigned width,
 	const unsigned height,
 	const bool bBindAsShaderInput,
-	const Mode mode )
+	const DepthStencilViewMode mode )
 	:
 	m_width(width),
 	m_height(height)
 {
 	mwrl::ComPtr<ID3D11Texture2D> pDepthStencil;
-	D3D11_TEXTURE2D_DESC dsTexDesc{};
-	dsTexDesc.Width = width;
-	dsTexDesc.Height = height;
-	dsTexDesc.MipLevels = 1u;
-	dsTexDesc.ArraySize = 1u;	// view on a single texture, not a texture cube (6 texs)
-	dsTexDesc.Format = getTypelessFormat( mode );
-	dsTexDesc.SampleDesc.Count = 1u;
-	dsTexDesc.SampleDesc.Quality = 0u;
-	dsTexDesc.Usage = D3D11_USAGE_DEFAULT;
-	dsTexDesc.BindFlags = D3D11_BIND_DEPTH_STENCIL | ( bBindAsShaderInput ?
-		D3D11_BIND_SHADER_RESOURCE :
-		0u );
-	HRESULT hres = getDevice( gph )->CreateTexture2D( &dsTexDesc,
+
+	D3D11_TEXTURE2D_DESC texDesc = createTextureDescriptor( width,
+		height,
+		getTypelessFormatDs( mode ),
+		( bBindAsShaderInput ? BindFlags::DepthStencilTexture : BindFlags::DepthStencilTexture ),
+		CpuAccessFlags::NoCpuAccess,
+		false,
+		TextureUsage::Default );
+
+	HRESULT hres = getDevice( gph )->CreateTexture2D( &texDesc,
 		nullptr,
 		&pDepthStencil );
 	ASSERT_HRES_IF_FAILED;
 
 	// create target view of depth stencil texture
 	D3D11_DEPTH_STENCIL_VIEW_DESC dsViewDesc{};
-	dsViewDesc.Format = getTypedFormat( mode );
+	dsViewDesc.Format = getTypedFormatDs( mode );
 	dsViewDesc.Flags = 0u;
 	dsViewDesc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
 	dsViewDesc.Texture2D.MipSlice = 0u; // no mips with depth maps
@@ -182,12 +136,13 @@ std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC> IDepthS
 	D3D11_TEXTURE2D_DESC dsvTexDesc{};
 	pDsTex->GetDesc( &dsvTexDesc );
 
-	D3D11_TEXTURE2D_DESC stagingTexDesc = dsvTexDesc;
-	stagingTexDesc.CPUAccessFlags = D3D11_CPU_ACCESS_READ;
-	stagingTexDesc.Usage = D3D11_USAGE_STAGING;
-	stagingTexDesc.ArraySize = 1u;
-	stagingTexDesc.BindFlags = 0u;
-	stagingTexDesc.MiscFlags = 0u;
+	D3D11_TEXTURE2D_DESC stagingTexDesc = createTextureDescriptor( dsvTexDesc.Width,
+		dsvTexDesc.Height,
+		dsvTexDesc.Format,
+		(BindFlags) dsvTexDesc.BindFlags,
+		CpuAccessFlags::CpuReadAccess,
+		false,
+		TextureUsage::Staging );
 
 	mwrl::ComPtr<ID3D11Texture2D> pStagingTex;
 	HRESULT hres = getDevice( gph )->CreateTexture2D( &stagingTexDesc,
@@ -317,7 +272,7 @@ const unsigned int IDepthStencilView::getHeight() const noexcept
 
 DepthStencilShaderInput::DepthStencilShaderInput( Graphics &gph,
 	const unsigned slot,
-	const Mode mode )
+	const DepthStencilViewMode mode )
 	:
 	DepthStencilShaderInput(gph, gph.getClientWidth(), gph.getClientHeight(), slot, mode)
 {
@@ -328,7 +283,7 @@ DepthStencilShaderInput::DepthStencilShaderInput( Graphics &gph,
 	const unsigned width,
 	const unsigned height,
 	const unsigned slot,
-	const Mode mode )
+	const DepthStencilViewMode mode )
 	:
 	IDepthStencilView(gph, width, height, true, mode),
 	m_slot(slot)
@@ -337,7 +292,7 @@ DepthStencilShaderInput::DepthStencilShaderInput( Graphics &gph,
 	m_pDsv->GetResource( &pRes );
 
 	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc{};
-	srvDesc.Format = getShaderInputFormat( mode );
+	srvDesc.Format = getShaderInputFormatDs( mode );
 	srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
 	srvDesc.Texture2D.MostDetailedMip = 0u;
 	srvDesc.Texture2D.MipLevels = 1u;
@@ -345,6 +300,11 @@ DepthStencilShaderInput::DepthStencilShaderInput( Graphics &gph,
 		&srvDesc,
 		&m_pSrv );
 	ASSERT_HRES_IF_FAILED;
+}
+
+unsigned DepthStencilShaderInput::getSlot() const noexcept
+{
+	return m_slot;
 }
 
 void DepthStencilShaderInput::bind( Graphics &gph ) cond_noex
@@ -367,7 +327,7 @@ DepthStencilOutput::DepthStencilOutput( Graphics &gph,
 	const unsigned width,
 	const unsigned height )
 	:
-	IDepthStencilView(gph, width, height, false, Mode::Normal)
+	IDepthStencilView(gph, width, height, false, DepthStencilViewMode::Normal)
 {
 
 }

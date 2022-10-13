@@ -11,6 +11,7 @@
 #include "camera.h"
 #include "math_utils.h"
 #include "light_vscb.h"
+#include "texture_desc.h"
 #include "shadow_map_sampler_state.h"
 
 
@@ -46,11 +47,13 @@ ShadowPass::ShadowPass( Graphics &gph,
 		3u ) );
 
 	// create the offscreen texture
-	m_pOffscreenDsvCubemap = std::make_shared<CubeTextureDS>( gph,
+	m_pOffscreenDsvCubemap = std::make_shared<CubeTextureOffscreenDS>( gph,
 		s_shadowMapResolution,
-		3u );
+		s_shadowMapResolution,
+		3u,
+		DepthStencilViewMode::ShadowDepth );
 
-	addLinker( BindableLinker<CubeTextureDS>::make( "offscreenShadowCubemapOut",
+	addLinker( BindableLinker<CubeTextureOffscreenDS>::make( "offscreenShadowCubemapOut",
 		m_pOffscreenDsvCubemap ) );
 
 	// bind the DSV from the offscreen cube map ds texture side #0

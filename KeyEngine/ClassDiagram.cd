@@ -469,14 +469,14 @@
       <FileName>inc\cube_texture.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CubeTextureRT" Collapsed="true">
+  <Class Name="CubeTextureOffscreenRT" Collapsed="true">
     <Position X="39" Y="74.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>SAAAAAAAAAAAAAEAAIAAAAAAAAAAAAAAQAAIAAAAAAA=</HashCode>
       <FileName>inc\cube_texture.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CubeTextureDS" Collapsed="true">
+  <Class Name="CubeTextureOffscreenDS" Collapsed="true">
     <Position X="41.25" Y="74.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CAAAAAAAAAAAAAEAAAAAAAAAAAAAAgAAAAIIAAAAAAA=</HashCode>

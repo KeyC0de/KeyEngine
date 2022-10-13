@@ -12,27 +12,26 @@ RttPassForPostProcessing::RttPassForPostProcessing( Graphics &gph,
 	:
 	IFullscreenPass{gph, name}
 {
-	addPassBindable( PixelShaderNull::fetch( gph ) );
 	addPassBindable( DepthStencilState::fetch( gph,
 		DepthStencilState::Mode::Default ) );
 
 	const unsigned width = gph.getClientWidth() / rezReductFactor;
 	const unsigned height = gph.getClientHeight() / rezReductFactor;
 	// create a RTV to render the scene to an offscreen texture, and next Pass we'll read it
-/*	m_pRtv = std::make_unique<RenderTargetShaderInput>( gph,
+	m_pRtv = std::make_unique<RenderTargetShaderInput>( gph,
 		width,
 		height,
 		4u );
 	addLinker( BindableLinker<IRenderTargetView>::make( "offscreenPostProcessOut",
-		m_pRtv ) );*/
+		m_pRtv ) );
 
-	m_pOffscreenPostProcessTex = std::make_shared<Texture>( gph,
+	/*m_pOffscreenPostProcessTex = std::make_shared<Texture>( gph,
 		width * height,
 		4u );
 
 	addLinker( BindableLinker<Texture>::make( "offscreenPostProcessOut",
 		m_pOffscreenPostProcessTex ) );
-	m_pRtv = m_pOffscreenPostProcessTex->sha;
+	m_pRtv = m_pOffscreenPostProcessTex->sha;*/
 }
 
 void RttPassForPostProcessing::run( Graphics &gph ) const cond_noex

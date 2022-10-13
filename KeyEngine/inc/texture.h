@@ -2,6 +2,9 @@
 
 #include "bindable.h"
 #include "bitmap.h"
+#include "render_target.h"
+#include "depth_stencil_view.h"
+#include "texture_desc.h"
 
 
 class Texture
@@ -29,7 +32,51 @@ public:
 	static std::shared_ptr<Texture> fetch( Graphics &gph, const std::string &filepath, const unsigned slot );
 	static std::string calcUid( const std::string &filepath, const unsigned slot );
 	const std::string getUid() const noexcept override;
+};
 
+//=============================================================
+//	\class	TextureOffscreenRT
+//	\author	KeyC0de
+//	\date	2022/10/13 11:08
+//	\brief	Flexible Render Target View Wrapper that will be used EITHER for input OR for output (offscreen/RTT/back buffer rendering)
+//=============================================================
+class TextureOffscreenRT
+	: public IBindable
+{
+	unsigned int m_slot;
+protected:
+	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_pSrv;
+	std::shared_ptr<RenderTargetOutput> m_pRtv;
+public:
+	TextureOffscreenRT( Graphics &gph, const unsigned width, const unsigned height, const unsigned slot, const DXGI_FORMAT format = DXGI_FORMAT::DXGI_FORMAT_B8G8R8A8_UNORM );
+
+	void bind( Graphics &gph ) cond_noex override;
+	std::shared_ptr<RenderTargetOutput> shareRenderTarget() const;
+};
+
+//=============================================================
+//	\class	TextureOffscreenDS
+//	\author	KeyC0de
+//	\date	2022/10/13 11:08
+//	\brief	Flexible Depth Stencil View Wrapper that will be used EITHER for input OR for output (offscreen/RTT/back buffer rendering)
+//=============================================================
+class TextureOffscreenDS
+	: public IBindable
+{
+	unsigned int m_slot;
+protected:
+	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_pSrv;
+	std::shared_ptr<DepthStencilOutput> m_pDsv;
+public:
+	TextureOffscreenDS( Graphics &gph, const unsigned width, const unsigned height, const unsigned slot, const DepthStencilViewMode dsMode );
+
+	void bind( Graphics &gph ) cond_noex override;
+	std::shared_ptr<DepthStencilOutput> shareDepthBuffer() const;
+};
+
+
+class TextureProcessor final
+{
 public:
 	static void flipModelNormalMapsGreenChannel( const std::string &objPath );
 	//	\function	flipNormalMapGreenChannel	||	\date	2022/02/19 17:22
@@ -65,39 +112,10 @@ private:
 		F &&f )
 	{
 		auto bitmap = Bitmap::loadFromFile( pathIn );
-		Texture::transformBitmap( bitmap,
+		TextureProcessor::transformBitmap( bitmap,
 			f );
 		bitmap.save( pathOut );
 	}
 
 	static const unsigned calculateNumberOfMipMaps( const unsigned width, const unsigned height ) noexcept;
 };
-
-/*
-class CubeTextureRT
-	: public IBindable
-{
-	unsigned int m_slot;
-protected:
-	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_pSrv;
-	std::vector<std::shared_ptr<RenderTargetOutput>> m_renderTargetViews;
-public:
-	CubeTextureRT( Graphics &gph, const unsigned width, const unsigned height, const unsigned slot, const DXGI_FORMAT format = DXGI_FORMAT::DXGI_FORMAT_B8G8R8A8_UNORM );
-
-	void bind( Graphics &gph ) cond_noex override;
-	std::shared_ptr<RenderTargetOutput> shareRenderTarget( const size_t index ) const;
-};
-
-class CubeTextureDS
-	: public IBindable
-{
-	unsigned int m_slot;
-protected:
-	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_pSrv;
-	std::vector<std::shared_ptr<DepthStencilOutput>> m_depthStencilViews;
-public:
-	CubeTextureDS( Graphics &gph, const unsigned size, const unsigned slot, const DXGI_FORMAT format = DXGI_FORMAT::DXGI_FORMAT_R32_TYPELESS );
-
-	void bind( Graphics &gph ) cond_noex override;
-	std::shared_ptr<DepthStencilOutput> shareDepthBuffer( const size_t index ) const;
-};*/

@@ -3,6 +3,7 @@
 #include "bindable.h"
 #include "render_surface.h"
 #include "bitmap.h"
+#include "texture_desc.h"
 
 
 class Graphics;
@@ -19,15 +20,9 @@ protected:
 	Microsoft::WRL::ComPtr<ID3D11DepthStencilView> m_pDsv;
 	unsigned int m_width;
 	unsigned int m_height;
-public:
-	enum Mode
-	{
-		Normal,
-		ShadowDepth,	// for a shadow buffer 32bit float ZB - no SB
-	};
 protected:
 	IDepthStencilView( Graphics &gph, Microsoft::WRL::ComPtr<ID3D11Texture2D> pTexture, const unsigned face );
-	IDepthStencilView( Graphics &gph, const unsigned width, const unsigned height, const bool bBindAsShaderInput, const Mode mode );
+	IDepthStencilView( Graphics &gph, const unsigned width, const unsigned height, const bool bBindAsShaderInput, const DepthStencilViewMode mode );
 public:
 	void bindRenderSurface( Graphics &gph ) cond_noex override;
 	void bindRenderSurface( Graphics &gph, IRenderSurface *rt ) cond_noex override;
@@ -47,10 +42,11 @@ class DepthStencilShaderInput
 	unsigned int m_slot;
 	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_pSrv;
 public:
-	DepthStencilShaderInput( Graphics &gph, const unsigned slot, const Mode mode = Mode::Normal );
-	DepthStencilShaderInput( Graphics &gph, const unsigned width, const unsigned height, const unsigned slot, const Mode mode = Mode::Normal );
+	DepthStencilShaderInput( Graphics &gph, const unsigned slot, const DepthStencilViewMode mode = DepthStencilViewMode::Normal );
+	DepthStencilShaderInput( Graphics &gph, const unsigned width, const unsigned height, const unsigned slot, const DepthStencilViewMode mode = DepthStencilViewMode::Normal );
 
 	void bind( Graphics &gph ) cond_noex override;
+	unsigned getSlot() const noexcept;
 };
 
 //=============================================================

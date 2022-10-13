@@ -376,6 +376,7 @@
     <ClCompile Include="src\rtt_pass_post_process.cpp">
       <Filter>engine\vfx\pass</Filter>
     </ClCompile>
+    <ClCompile Include="src\texture_desc.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="third_party\imgui\imconfig.h">
@@ -1191,6 +1192,7 @@
     <ClInclude Include="inc\global_constants.h">
       <Filter>engine\common</Filter>
     </ClInclude>
+    <ClInclude Include="inc\texture_desc.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\resources\tray_graffiti.ico">
