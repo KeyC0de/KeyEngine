@@ -622,7 +622,7 @@ const unsigned Graphics::getClientHeight() const noexcept
 	return m_height;
 }
 
-std::shared_ptr<IRenderTargetView> Graphics::renderTarget()
+std::shared_ptr<RenderTargetOutput> Graphics::renderTarget()
 {
 	if ( !m_rtv )
 	{
@@ -638,7 +638,7 @@ std::shared_ptr<IRenderTargetView> Graphics::renderTarget()
 	return m_rtv;
 }
 
-std::shared_ptr<IDepthStencilView> Graphics::depthStencil()
+std::shared_ptr<DepthStencilOutput> Graphics::depthStencil()
 {
 	if ( !m_dsv )
 	{

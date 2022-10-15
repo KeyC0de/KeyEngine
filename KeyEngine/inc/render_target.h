@@ -70,7 +70,6 @@ class RenderTargetOutput
 {
 public:
 	RenderTargetOutput( Graphics &gph, ID3D11Texture2D *pTex, std::optional<unsigned> face = {} );
-	RenderTargetOutput( Graphics &gph, const unsigned width, const unsigned height, const unsigned slot );	// no users
 
 	void bind( Graphics &gph ) cond_noex override;
 };

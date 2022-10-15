@@ -405,8 +405,8 @@ Renderer3d::Renderer3d( Graphics &gph,
 			"depthStencil" );
 		linkPassBinders( *pass );
 		addPass( std::move( pass ) );
-	}/*
-	{
+	}
+	/*{
 		auto pass = std::make_unique<RttPassForPostProcessing>( gph,
 			"rttFullscreenPp",
 			1u );
@@ -428,7 +428,7 @@ Renderer3d::Renderer3d( Graphics &gph,
 		linkPassBinders( *pass );
 		addPass( std::move( pass ) );
 	}*/
-	{
+	/*{
 		auto pass = std::make_unique<DepthReversedPass>( gph,
 			"depthReversed" );
 		pass->setupBinderTarget( "renderTarget",
@@ -451,10 +451,10 @@ Renderer3d::Renderer3d( Graphics &gph,
 			"depthStencil" );
 		linkPassBinders( *pass );
 		addPass( std::move( pass ) );
-	}
+	}*/
 
 	setupGlobalBinderTarget( "backColorbuffer",
-		"wireframe",
+		"solidOutlineDraw",
 		"renderTarget" );
 	Renderer::linkGlobalBinders();
 }

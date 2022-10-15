@@ -27,8 +27,8 @@
 
 
 class IBindable;
-class IRenderTargetView;
-class IDepthStencilView;
+class RenderTargetOutput;
+class DepthStencilOutput;
 class Window;
 class Camera;
 
@@ -85,8 +85,8 @@ private:
 	Microsoft::WRL::ComPtr<ID3D11Device> m_pDevice;
 	Microsoft::WRL::ComPtr<ID3D11DeviceContext> m_pImmediateContext;
 	Microsoft::WRL::ComPtr<IDXGIOutput1> m_pDxgiOutput;
-	std::shared_ptr<IRenderTargetView> m_rtv;
-	std::shared_ptr<IDepthStencilView> m_dsv;
+	std::shared_ptr<RenderTargetOutput> m_rtv;
+	std::shared_ptr<DepthStencilOutput> m_dsv;
 #if defined _DEBUG && !defined NDEBUG
 	DxgiInfoQueue m_infoQueue;
 	ATL::CComPtr<ID3D11Debug> m_pDebug;
@@ -122,8 +122,8 @@ public:
 	const DirectX::XMMATRIX& getProjectionMatrix() const noexcept;
 	const unsigned getClientWidth() const noexcept;
 	const unsigned getClientHeight() const noexcept;
-	std::shared_ptr<IRenderTargetView> renderTarget();
-	std::shared_ptr<IDepthStencilView> depthStencil();
+	std::shared_ptr<RenderTargetOutput> renderTarget();
+	std::shared_ptr<DepthStencilOutput> depthStencil();
 	void createFactory();
 	void createAdapters();
 	//	\function	resize	||	\date	2022/09/17 19:44

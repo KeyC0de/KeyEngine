@@ -36,7 +36,7 @@ const DXGI_FORMAT getTypelessFormatDs( const DepthStencilViewMode mode )
 	case DepthStencilViewMode::ShadowDepth:
 		return DXGI_FORMAT::DXGI_FORMAT_R32_TYPELESS;
 	}
-	THROW_BINDABLE_EXCEPTION( "Invalid mode for Typeless DXGI format in IDepthStencilView." );
+	THROW_BINDABLE_EXCEPTION( "Invalid Depth Stenvil View mode for Typeless DXGI format." );
 }
 
 const DXGI_FORMAT getTypedFormatDs( const DepthStencilViewMode mode )
@@ -48,7 +48,7 @@ const DXGI_FORMAT getTypedFormatDs( const DepthStencilViewMode mode )
 	case DepthStencilViewMode::ShadowDepth:
 		return DXGI_FORMAT::DXGI_FORMAT_D32_FLOAT;
 	}
-	THROW_BINDABLE_EXCEPTION( "Invalid mode for Typed DXGI format in IDepthStencilView." );
+	THROW_BINDABLE_EXCEPTION( "Invalid Depth Stenvil View mode for Typed DXGI format." );
 }
 
 const DXGI_FORMAT getShaderInputFormatDs( const DepthStencilViewMode mode )
@@ -60,5 +60,5 @@ const DXGI_FORMAT getShaderInputFormatDs( const DepthStencilViewMode mode )
 	case DepthStencilViewMode::ShadowDepth:
 		return DXGI_FORMAT::DXGI_FORMAT_R32_FLOAT;
 	}
-	THROW_BINDABLE_EXCEPTION( "Invalid mode for Shader Input DXGI format in IDepthStencilView." );
+	THROW_BINDABLE_EXCEPTION( "Invalid Depth Stenvil View mode for Shader Input DXGI format." );
 }

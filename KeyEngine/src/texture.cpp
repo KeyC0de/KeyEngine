@@ -216,6 +216,10 @@ TextureOffscreenRT::TextureOffscreenRT( Graphics &gph,
 	hres = getDevice( gph )->CreateShaderResourceView( pTex.Get(),
 		&srvDesc,
 		&m_pSrv );
+
+	// create RTV that will render on the created offscreen texture and on a next pass we can use this RTV to read that texture
+	m_pRtv = std::make_shared<RenderTargetOutput>( gph,
+			pTex.Get() );
 }
 
 void TextureOffscreenRT::bind( Graphics &gph ) cond_noex
@@ -263,6 +267,11 @@ TextureOffscreenDS::TextureOffscreenDS( Graphics &gph,
 		&srvDesc,
 		&m_pSrv );
 	ASSERT_HRES_IF_FAILED;
+
+	// create DSV that will render on the created offscreen texture and on a next pass we can use this SRV to read that texture
+	m_pDsv = std::make_shared<DepthStencilOutput>( gph,
+		pTex.Get(),
+		dsMode );
 }
 
 void TextureOffscreenDS::bind( Graphics &gph ) cond_noex

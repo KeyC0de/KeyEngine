@@ -21,8 +21,8 @@ protected:
 	unsigned int m_width;
 	unsigned int m_height;
 protected:
-	IDepthStencilView( Graphics &gph, Microsoft::WRL::ComPtr<ID3D11Texture2D> pTexture, const unsigned face );
-	IDepthStencilView( Graphics &gph, const unsigned width, const unsigned height, const bool bBindAsShaderInput, const DepthStencilViewMode mode );
+	IDepthStencilView( Graphics &gph, ID3D11Texture2D *pTexture, const DepthStencilViewMode dsMode, std::optional<unsigned> face );
+	IDepthStencilView( Graphics &gph, const unsigned width, const unsigned height, const bool bBindAsShaderInput, const DepthStencilViewMode dsMode );
 public:
 	void bindRenderSurface( Graphics &gph ) cond_noex override;
 	void bindRenderSurface( Graphics &gph, IRenderSurface *rt ) cond_noex override;
@@ -42,8 +42,8 @@ class DepthStencilShaderInput
 	unsigned int m_slot;
 	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_pSrv;
 public:
-	DepthStencilShaderInput( Graphics &gph, const unsigned slot, const DepthStencilViewMode mode = DepthStencilViewMode::Normal );
-	DepthStencilShaderInput( Graphics &gph, const unsigned width, const unsigned height, const unsigned slot, const DepthStencilViewMode mode = DepthStencilViewMode::Normal );
+	DepthStencilShaderInput( Graphics &gph, const unsigned slot, const DepthStencilViewMode dsMode = DepthStencilViewMode::Normal );
+	DepthStencilShaderInput( Graphics &gph, const unsigned width, const unsigned height, const unsigned slot, const DepthStencilViewMode dsMode = DepthStencilViewMode::Normal );
 
 	void bind( Graphics &gph ) cond_noex override;
 	unsigned getSlot() const noexcept;
@@ -61,7 +61,7 @@ class DepthStencilOutput
 public:
 	DepthStencilOutput( Graphics &gph );
 	DepthStencilOutput( Graphics &gph, const unsigned width, const unsigned height );
-	DepthStencilOutput( Graphics &gph, Microsoft::WRL::ComPtr<ID3D11Texture2D> pTexture, const unsigned face );
+	DepthStencilOutput( Graphics &gph, ID3D11Texture2D *pTexture, const DepthStencilViewMode dsMode, std::optional<unsigned> face = {} );
 
 	void bind( Graphics &gph ) cond_noex override;
 };

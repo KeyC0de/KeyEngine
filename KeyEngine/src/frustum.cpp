@@ -60,7 +60,7 @@ Frustum::Frustum( Graphics &gph,
 	// We draw the frustum two times
 	// 1. normal lambertian
 	// 2. DepthReversed mode and another color (dimmer) - only the occluded part of the frustum gets drawn
-	{
+	/*{
 		Effect wireframe{rch::wireframe, "wireframe", true};
 
 		auto pVs = VertexShader::fetch( gph,
@@ -114,7 +114,7 @@ Frustum::Frustum( Graphics &gph,
 			RasterizerState::Solid ) );
 
 		addEffect( std::move( occluded ) );
-	}
+	}*/
 }
 
 void Frustum::setupVertexBuffer( Graphics &gph,

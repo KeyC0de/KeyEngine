@@ -44,11 +44,11 @@ IRenderTargetView::IRenderTargetView( Graphics &gph,
 }
 
 IRenderTargetView::IRenderTargetView( Graphics &gph,
-	ID3D11Texture2D *pTex,
+	ID3D11Texture2D *pTexture,
 	std::optional<unsigned> face )
 {
 	D3D11_TEXTURE2D_DESC texDesc{};
-	pTex->GetDesc( &texDesc );
+	pTexture->GetDesc( &texDesc );
 
 	m_width = texDesc.Width;
 	m_height = texDesc.Height;
@@ -68,7 +68,7 @@ IRenderTargetView::IRenderTargetView( Graphics &gph,
 		rtvDesc.Texture2D = D3D11_TEX2D_RTV{0};
 	}
 
-	HRESULT hres = getDevice( gph )->CreateRenderTargetView( pTex,
+	HRESULT hres = getDevice( gph )->CreateRenderTargetView( pTexture,
 		&rtvDesc,
 		&m_pRtv );
 	ASSERT_HRES_IF_FAILED;
@@ -282,19 +282,9 @@ void RenderTargetShaderInput::bind( Graphics &gph ) cond_noex
 
 RenderTargetOutput::RenderTargetOutput( Graphics &gph,
 	ID3D11Texture2D *pTex,
-	std::optional<unsigned> face )
+	std::optional<unsigned> face /* = {} */ )
 	:
 	IRenderTargetView{gph, pTex, face}
-{
-
-}
-
-RenderTargetOutput::RenderTargetOutput( Graphics &gph,
-	const unsigned width,
-	const unsigned height,
-	const unsigned slot )
-	:
-	IRenderTargetView{gph, width, height}
 {
 
 }

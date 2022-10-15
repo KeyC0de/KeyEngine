@@ -1,4 +1,6 @@
-﻿-- Offscreen architecture
+﻿-- Write an unbind method
+
+-- Offscreen architecture
 Render a scene to texture?
 
 in d3d11 how would you render the scene to a texture?
@@ -39,18 +41,30 @@ pass A:
 	2. output rtv/dsv to next Pass
 		addLinker( BindableLinker<Texture/RT/ds>::make( "offscreen*Out",
 			m_pOffscreenTex ) );
-	3. binds Null Pixel Shader - don't write anything to the screen
-	4. addPassBindable( DepthStencilState::fetch( gph,
+	3. addPassBindable( DepthStencilState::fetch( gph,
 		DepthStencilState::Mode::Default ) );
-	5. on run:
+	4. on run:
 		a. clear the rtv/dsv
 		b. bindRenderSurface
 		c. bind all other bindables
 pass B:
 	1. addContainerBindableBinder<Texture/rt/ds>( "offscreenShadowCubemapIn" );
 	
-Producer: Linker - links/gives graphics resource to next Pass
-Consumer: Binder - binds the resource acquired from the Linker
+Linker - links/gives graphics resource to next Pass
+Binder - binds the resource acquired from the Linker
+
+cozzie:
+My post processing shaders have pixel shaders also, otherwise you can’t apply an “effect” to the texture you’re reading in from the pass before
+
+N!k:
+but the first time you write the offscreen texture do u bind a pixel shader?
+
+Josh:
+You have to or you get nothing in the texture.
+Conceptually, the first pass is roughly identical to regular rendering. Same vertex shaders, same pixel shaders, etc. The only difference is that you've bound a texture as the render target instead of a backbuffer.
+
+Render to offscreen and then next pass use that offscreen as an input to render to your back buffer.
+
 
 -- 
 How to get position between current pixel and camera in pixel shader?

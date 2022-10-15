@@ -156,7 +156,8 @@ CubeTextureOffscreenDS::CubeTextureOffscreenDS( Graphics &gph,
 	for ( unsigned face = 0u; face < 6u; ++face )
 	{
 		m_depthStencilViews.push_back( std::make_shared<DepthStencilOutput>( gph,
-			pTex,
+			pTex.Get(),
+			dsMode,
 			face ) );
 	}
 }

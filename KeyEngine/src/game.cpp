@@ -212,7 +212,7 @@ Sandbox3d::Sandbox3d( const int width,
 	m_sponzaScene.connectEffectsToRenderer( m_renderer );
 	m_nanoSuit.connectEffectsToRenderer( m_renderer );
 	m_carabiner.connectEffectsToRenderer( m_renderer );
-	m_cameraMan.connectEffectsToRenderer( m_renderer );
+	//m_cameraMan.connectEffectsToRenderer( m_renderer );
 
 	m_cube1.setEffectEnabled( rch::blurOutline,
 		false );

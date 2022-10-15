@@ -12,16 +12,16 @@ IDepthStencilView::IDepthStencilView( Graphics &gph,
 	const unsigned width,
 	const unsigned height,
 	const bool bBindAsShaderInput,
-	const DepthStencilViewMode mode )
+	const DepthStencilViewMode dsMode )
 	:
 	m_width(width),
 	m_height(height)
 {
-	mwrl::ComPtr<ID3D11Texture2D> pDepthStencil;
+	mwrl::ComPtr<ID3D11Texture2D> pTexture;
 
 	D3D11_TEXTURE2D_DESC texDesc = createTextureDescriptor( width,
 		height,
-		getTypelessFormatDs( mode ),
+		getTypelessFormatDs( dsMode ),
 		( bBindAsShaderInput ? BindFlags::DepthStencilTexture : BindFlags::DepthStencilTexture ),
 		CpuAccessFlags::NoCpuAccess,
 		false,
@@ -29,39 +29,49 @@ IDepthStencilView::IDepthStencilView( Graphics &gph,
 
 	HRESULT hres = getDevice( gph )->CreateTexture2D( &texDesc,
 		nullptr,
-		&pDepthStencil );
+		&pTexture );
 	ASSERT_HRES_IF_FAILED;
 
 	// create target view of depth stencil texture
 	D3D11_DEPTH_STENCIL_VIEW_DESC dsViewDesc{};
-	dsViewDesc.Format = getTypedFormatDs( mode );
+	dsViewDesc.Format = getTypedFormatDs( dsMode );
 	dsViewDesc.Flags = 0u;
 	dsViewDesc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
 	dsViewDesc.Texture2D.MipSlice = 0u; // no mips with depth maps
-	hres = getDevice( gph )->CreateDepthStencilView( pDepthStencil.Get(),
+	hres = getDevice( gph )->CreateDepthStencilView( pTexture.Get(),
 		&dsViewDesc,
 		&m_pDsv );
 	ASSERT_HRES_IF_FAILED;
 }
 
 IDepthStencilView::IDepthStencilView( Graphics &gph,
-	mwrl::ComPtr<ID3D11Texture2D> pTexture,
-	const unsigned face )
+	ID3D11Texture2D *pTexture,
+	const DepthStencilViewMode dsMode,
+	std::optional<unsigned> face )
 {
-	D3D11_TEXTURE2D_DESC descTex{};
-	pTexture->GetDesc( &descTex );
-	m_width = descTex.Width;
-	m_height = descTex.Height;
+	D3D11_TEXTURE2D_DESC texDesc{};
+	pTexture->GetDesc( &texDesc );
+	m_width = texDesc.Width;
+	m_height = texDesc.Height;
 
 	// create ds view into the depth stencil texture
 	D3D11_DEPTH_STENCIL_VIEW_DESC dsvDesc{};
-	dsvDesc.Format = DXGI_FORMAT_D32_FLOAT;
-	dsvDesc.Flags = 0u;
-	dsvDesc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2DARRAY;
-	dsvDesc.Texture2DArray.MipSlice = 0u;
-	dsvDesc.Texture2DArray.ArraySize = 1u;
-	dsvDesc.Texture2DArray.FirstArraySlice = face;
-	HRESULT hres = getDevice( gph )->CreateDepthStencilView( pTexture.Get(),
+	//dsvDesc.Flags = 0u;
+	dsvDesc.Format = getTypedFormatDs( dsMode );
+	if ( face.has_value() )
+	{
+		dsvDesc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2DARRAY;
+		dsvDesc.Texture2DArray.ArraySize = 1u;	// how many cube textures to create
+		dsvDesc.Texture2DArray.FirstArraySlice = *face;
+		dsvDesc.Texture2DArray.MipSlice = 0u;
+	}
+	else
+	{
+		dsvDesc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
+		dsvDesc.Texture2D = D3D11_TEX2D_DSV{0};
+	}
+
+	HRESULT hres = getDevice( gph )->CreateDepthStencilView( pTexture,
 		&dsvDesc,
 		&m_pDsv );
 	ASSERT_HRES_IF_FAILED;
@@ -96,7 +106,7 @@ void IDepthStencilView::bindRenderSurface( Graphics &gph,
 }
 
 void IDepthStencilView::clear( Graphics &gph,
-	const std::array<float, 4>& unused ) cond_noex
+	const std::array<float, 4> &unused ) cond_noex
 {
 	getDeviceContext( gph )->ClearDepthStencilView( m_pDsv.Get(),
 		D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL,
@@ -272,9 +282,9 @@ const unsigned int IDepthStencilView::getHeight() const noexcept
 
 DepthStencilShaderInput::DepthStencilShaderInput( Graphics &gph,
 	const unsigned slot,
-	const DepthStencilViewMode mode )
+	const DepthStencilViewMode dsMode )
 	:
-	DepthStencilShaderInput(gph, gph.getClientWidth(), gph.getClientHeight(), slot, mode)
+	DepthStencilShaderInput(gph, gph.getClientWidth(), gph.getClientHeight(), slot, dsMode)
 {
 
 }
@@ -283,16 +293,16 @@ DepthStencilShaderInput::DepthStencilShaderInput( Graphics &gph,
 	const unsigned width,
 	const unsigned height,
 	const unsigned slot,
-	const DepthStencilViewMode mode )
+	const DepthStencilViewMode dsMode )
 	:
-	IDepthStencilView(gph, width, height, true, mode),
+	IDepthStencilView(gph, width, height, true, dsMode),
 	m_slot(slot)
 {
 	mwrl::ComPtr<ID3D11Resource> pRes;
 	m_pDsv->GetResource( &pRes );
 
 	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc{};
-	srvDesc.Format = getShaderInputFormatDs( mode );
+	srvDesc.Format = getShaderInputFormatDs( dsMode );
 	srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
 	srvDesc.Texture2D.MostDetailedMip = 0u;
 	srvDesc.Texture2D.MipLevels = 1u;
@@ -333,10 +343,11 @@ DepthStencilOutput::DepthStencilOutput( Graphics &gph,
 }
 
 DepthStencilOutput::DepthStencilOutput( Graphics &gph,
-	mwrl::ComPtr<ID3D11Texture2D> pTexture,
-	const unsigned face )
+	ID3D11Texture2D *pTexture,
+	const DepthStencilViewMode dsMode,
+	std::optional<unsigned> face /* = {} */ )
 	:
-	IDepthStencilView(gph, std::move( pTexture ), face)
+	IDepthStencilView{gph, pTexture, dsMode, face}
 {
 
 }

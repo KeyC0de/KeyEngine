@@ -10,7 +10,7 @@ namespace ren
 class RttPassForPostProcessing
 	: public IFullscreenPass
 {
-	std::shared_ptr<Texture> m_pOffscreenPostProcessTex;
+	std::shared_ptr<TextureOffscreenRT> m_pOffscreenPostProcessTex;
 public:
 	RttPassForPostProcessing( Graphics &gph, const std::string &name, const unsigned rezReductFactor );
 
