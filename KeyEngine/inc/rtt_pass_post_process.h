@@ -7,12 +7,15 @@
 namespace ren
 {
 
-class RttPassForPostProcessing
+class BasePostProcessingPass
+	//: public IPass
+	//: public IBindablePass
 	: public IFullscreenPass
 {
+	//std::shared_ptr<IRenderTargetView> m_pRtv;
 	std::shared_ptr<TextureOffscreenRT> m_pOffscreenPostProcessTex;
 public:
-	RttPassForPostProcessing( Graphics &gph, const std::string &name, const unsigned rezReductFactor );
+	BasePostProcessingPass( Graphics &gph, const std::string &name, const unsigned rezReductFactor );
 
 	void run( Graphics &gph ) const cond_noex override;
 	void reset() cond_noex override;

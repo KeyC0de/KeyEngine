@@ -406,8 +406,8 @@ Renderer3d::Renderer3d( Graphics &gph,
 		linkPassBinders( *pass );
 		addPass( std::move( pass ) );
 	}
-	/*{
-		auto pass = std::make_unique<RttPassForPostProcessing>( gph,
+	{
+		auto pass = std::make_unique<BasePostProcessingPass>( gph,
 			"rttFullscreenPp",
 			1u );
 		linkPassBinders( *pass );
@@ -427,7 +427,7 @@ Renderer3d::Renderer3d( Graphics &gph,
 			"offscreenPostProcessOut" );
 		linkPassBinders( *pass );
 		addPass( std::move( pass ) );
-	}*/
+	}
 	/*{
 		auto pass = std::make_unique<DepthReversedPass>( gph,
 			"depthReversed" );
@@ -454,7 +454,7 @@ Renderer3d::Renderer3d( Graphics &gph,
 	}*/
 
 	setupGlobalBinderTarget( "backColorbuffer",
-		"solidOutlineDraw",
+		"blur",
 		"renderTarget" );
 	Renderer::linkGlobalBinders();
 }

@@ -2,8 +2,7 @@
 #include "pixel_shader.h"
 #include "texture_sampler_state.h"
 #include "texture.h"
-#include "depth_stencil_state.h"
-//#include "blend_state.h"
+#include "blend_state.h"
 
 
 namespace ren
@@ -20,10 +19,8 @@ BlurPass::BlurPass( Graphics &gph,
 		4u,
 		TextureSamplerState::FilterMode::Anisotropic,
 		TextureSamplerState::AddressMode::Wrap ) );
-	addPassBindable( DepthStencilState::fetch( gph,
-		DepthStencilState::Mode::Default ) );
 	//addPassBindable( BlendState::fetch( gph,
-		//BlendState::Mode::Alpha,
+		//BlendState::Mode::Additive,
 		//0u ) );
 
 	addBinder( RenderSurfaceBinder<IRenderTargetView>::make( "renderTarget",
@@ -31,7 +28,8 @@ BlurPass::BlurPass( Graphics &gph,
 	addBinder( RenderSurfaceBinder<IDepthStencilView>::make( "depthStencil",
 		m_pDsv ) );
 	// read from the offscreen texture and Blur it
-	addContainerBindableBinder<TextureOffscreenRT>( "offscreenPostProcessIn" );
+	//addContainerBindableBinder<TextureOffscreenRT>( "offscreenPostProcessIn" );
+	addContainerBindableBinder<IRenderTargetView>( "offscreenPostProcessIn" );
 
 	addLinker( RenderSurfaceLinker<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );

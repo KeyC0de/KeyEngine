@@ -278,6 +278,11 @@ void Graphics::clearShaderSlots() noexcept
 	m_pImmediateContext->PSSetShaderResources( 3u,
 		1u,
 		&pNullSrv );
+
+	// post processing texture
+	m_pImmediateContext->PSSetShaderResources( 4u,
+		1u,
+		&pNullSrv );
 	DXGI_GET_QUEUE_INFO_GFX;
 }
 

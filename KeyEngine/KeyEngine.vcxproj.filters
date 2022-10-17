@@ -1504,6 +1504,12 @@
     <FxCompile Include="shaders\blur_ps.hlsl">
       <Filter>engine\vfx\shaders</Filter>
     </FxCompile>
+    <FxCompile Include="shaders\passthrough_ps.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\negative_ps.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="KeyEngine.rc">

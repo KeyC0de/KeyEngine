@@ -105,6 +105,23 @@ void IRenderTargetView::bindRenderSurface( Graphics &gph,
 		(float) m_height );
 	viewport->bind( gph );
 
+	/*
+	std::array<ID3D11RenderTargetView*, 8u> rtvs =
+	{
+		m_pRtv.Get(),
+		nullptr,
+		nullptr,
+		nullptr,
+		nullptr,
+		nullptr,
+		nullptr,
+		nullptr,
+	};
+
+	getDeviceContext( gph )->OMSetRenderTargets( 8u,
+		rtvs.data(),
+		pD3dDsv );
+	*/
 	getDeviceContext( gph )->OMSetRenderTargets( 1u,
 		m_pRtv.GetAddressOf(),
 		pD3dDsv );
