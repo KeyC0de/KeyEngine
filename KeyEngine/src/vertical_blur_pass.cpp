@@ -40,7 +40,7 @@ VerticalBlurPass::VerticalBlurPass( Graphics &gph,
 
 void VerticalBlurPass::run( Graphics &gph ) const cond_noex
 {
-	auto pcBuf = m_pPscbBlurDirection->getBuffer();
+	auto pcBuf = m_pPscbBlurDirection->getBufferCopy();
 	pcBuf["bHorizontal"] = false;
 	m_pPscbBlurDirection->setBuffer( pcBuf );
 	m_pPscbBlurDirection->bind( gph );

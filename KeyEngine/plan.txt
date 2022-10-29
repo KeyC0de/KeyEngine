@@ -1,5 +1,4 @@
-﻿-- Write an unbind method
-
+﻿
 -- Offscreen architecture
 Render a scene to texture?
 

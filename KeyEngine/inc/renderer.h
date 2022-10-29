@@ -2,12 +2,11 @@
 
 #include <vector>
 #include <memory>
-#include "constant_buffer_ex.h"
+#include <string>
+//#include "constant_buffer_ex.h"
 
 
 // #TODO: rename all m_staticVar to s_staticVar
-// #TODO: rename all Texture2D HLSL variable names
-// #TODO: make Renderer more flexible with the names of Passes & Binder-Linker names
 
 class Graphics;
 class IRenderTargetView;
@@ -29,14 +28,14 @@ class Renderer
 	std::vector<std::unique_ptr<ILinker>> m_globalLinkers;
 	bool m_bValidatedPasses = false;
 protected:
-	std::shared_ptr<IRenderTargetView> m_globalColorBuffer;
-	std::shared_ptr<IDepthStencilView> m_globalDepthStencil;
+	std::shared_ptr<IRenderTargetView> m_pRtv;
+	std::shared_ptr<IDepthStencilView> m_pDsv;
 public:
 	Renderer( Graphics &gph );
-	~Renderer() noexcept;
+	virtual ~Renderer() noexcept;
 
 	void run( Graphics &gph ) cond_noex;
-	void reset() noexcept;
+	virtual void reset() noexcept;
 	RenderQueuePass& getRenderQueuePass( const std::string &name );
 protected:
 	void addGlobalLinker( std::unique_ptr<ILinker> pLinker );
@@ -60,8 +59,8 @@ class Renderer3d
 	static constexpr inline unsigned s_fullscreenRezReductFactor = 4u;
 	int m_radius;
 	float m_sigma;
-	std::shared_ptr<PixelShaderConstantBufferEx> m_blurKernel;
-	std::shared_ptr<PixelShaderConstantBufferEx> m_blurDirection;
+	//std::shared_ptr<PixelShaderConstantBufferEx> m_blurKernel;
+	//std::shared_ptr<PixelShaderConstantBufferEx> m_blurDirection;
 public:
 	enum KernelType
 	{

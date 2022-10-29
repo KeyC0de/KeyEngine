@@ -74,6 +74,14 @@ IRenderTargetView::IRenderTargetView( Graphics &gph,
 	ASSERT_HRES_IF_FAILED;
 }
 
+void IRenderTargetView::unbind( Graphics &gph ) noexcept
+{
+	getDeviceContext( gph )->OMSetRenderTargets( 0,
+		nullptr,
+		nullptr );
+	DXGI_GET_QUEUE_INFO( gph );
+}
+
 void IRenderTargetView::bindRenderSurface( Graphics &gph ) cond_noex
 {
 	bindRenderSurface( gph,

@@ -1,8 +1,8 @@
 #pragma once
 
 #include "bindable.h"
-#include "dynamic_constant_buffer.h"
 #include "effect_visitor.h"
+#include "dynamic_constant_buffer.h"
 
 
 class IConstantBufferEx
@@ -72,6 +72,11 @@ public:
 	const con::CBElement& getCbRootElement() const noexcept override
 	{
 		return m_cb.getRootElement();
+	}
+
+	con::CBuffer getBufferCopy() const noexcept
+	{
+		return m_cb;
 	}
 
 	const con::CBuffer& getBuffer() const noexcept

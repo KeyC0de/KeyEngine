@@ -15,11 +15,10 @@
 #include "os_utils.h"
 #include "color.h"
 #include "..\resource.h"
+#include "renderer.h"
 #if defined _DEBUG && !defined NDEBUG
 #	include "bindable_map.h"
 #endif
-
-#include "blur_pass.h"
 
 
 namespace dx = DirectX;
@@ -172,14 +171,13 @@ Sandbox3d::Sandbox3d( const int width,
 	const int height,
 	const int nWindows )
 	:
-	Game(width, height, "KeyEngine 3d Sandbox", nWindows),
-	m_renderer{m_mainWindow.getGraphics(), 4, 3.0f},
-	blurPass{std::make_unique<ren::BlurPass>( m_mainWindow.getGraphics(),
-		"blur" )}
+	Game(width, height, "KeyEngine 3d Sandbox", nWindows)
 {
-	m_cameraMan.setWidth( width );
-	m_cameraMan.setHeight( height );
-	m_cameraMan.add( std::make_unique<Camera>( m_mainWindow.getGraphics(),
+	auto &gph = m_mainWindow.getGraphics();
+
+	s_cameraMan.setWidth( width );
+	s_cameraMan.setHeight( height );
+	s_cameraMan.add( std::make_unique<Camera>( gph,
 		"A",
 		width,
 		height,
@@ -187,7 +185,7 @@ Sandbox3d::Sandbox3d( const int width,
 		dx::XMFLOAT3{-13.5f, 6.0f, 3.5f},
 		0.0f,
 		util::PI / 2.0f) );
-	m_cameraMan.add( std::make_unique<Camera>( m_mainWindow.getGraphics(),
+	s_cameraMan.add( std::make_unique<Camera>( gph,
 		"B",
 		width,
 		height,
@@ -195,11 +193,11 @@ Sandbox3d::Sandbox3d( const int width,
 		dx::XMFLOAT3{-13.5f, 28.8f, -6.4f},
 		util::PI / 180.0f * 13.0f,
 		util::PI / 180.0f * 61.0f ) );
-	m_pPointLight1 = std::make_unique<PointLight>( m_mainWindow.getGraphics(),
+	m_pPointLight1 = std::make_unique<PointLight>( gph,
 		dx::XMFLOAT3{10.0f, 5.0f, 0.0f} );
 	//m_pPointLight2 = std::make_unique<PointLight>( m_mainWindow.getGraphics(),
 	//	dx::XMFLOAT3{5.0f, 15.0f, 10.0f}, dx::XMFLOAT3{0.0f, 1.0f, 0.f}, false );
-	//m_cameraMan.add( m_pPointLight1->shareCamera() );
+	//s_cameraMan.add( m_pPointLight1->shareCamera() );
 
 	m_cube1.setPosition( {10.0f, 5.0f, 6.0f} );
 
@@ -207,27 +205,28 @@ Sandbox3d::Sandbox3d( const int width,
 		dx::XMMatrixTranslation( 27.f, -0.56f, 1.7f ) );
 	m_carabiner.setRootTransform( dx::XMMatrixTranslation( -10.0f, 6.0f, 0.0f ) );
 
-	m_pPointLight1->connectEffectsToRenderer( m_renderer );
-	//m_pPointLight2->connectEffectsToRenderer( m_renderer );
+	auto &renderer = gph.renderer();
+	m_pPointLight1->connectEffectsToRenderer( renderer );
+	//m_pPointLight2->connectEffectsToRenderer( renderer );
 
-	m_cube1.connectEffectsToRenderer( m_renderer );
-	m_cube2.connectEffectsToRenderer( m_renderer );
-	m_testSphere.connectEffectsToRenderer( m_renderer );
-	m_sponzaScene.connectEffectsToRenderer( m_renderer );
-	m_nanoSuit.connectEffectsToRenderer( m_renderer );
-	m_carabiner.connectEffectsToRenderer( m_renderer );
-	//m_cameraMan.connectEffectsToRenderer( m_renderer );
+	m_cube1.connectEffectsToRenderer( renderer );
+	m_cube2.connectEffectsToRenderer( renderer );
+	m_testSphere.connectEffectsToRenderer( renderer );
+	m_sponzaScene.connectEffectsToRenderer( renderer );
+	m_nanoSuit.connectEffectsToRenderer( renderer );
+	m_carabiner.connectEffectsToRenderer( renderer );
+	//s_cameraMan.connectEffectsToRenderer( renderer );
 
 	m_cube1.setEffectEnabled( rch::blurOutline,
 		false );
 
 	if ( m_pPointLight1->isCastingShadows() )
 	{
-		m_renderer.setShadowCamera( *m_pPointLight1->shareCamera() );
+		gph.renderer3d().setShadowCamera( *m_pPointLight1->shareCamera() );
 	}
 	//if ( m_pPointLight2->isCastingShadows() )
 	//{
-	//	m_renderer.setShadowCamera( *m_pPointLight2->shareCamera() );
+	//	renderer.setShadowCamera( *m_pPointLight2->shareCamera() );
 	//}
 
 	ThreadPoolJ &threadPool = ThreadPoolJ::instance( 4u,
@@ -324,14 +323,15 @@ int Sandbox3d::checkInput( const float dt )
 		}
 		case VK_RETURN:
 		{
-			m_renderer.dumpShadowMap( m_mainWindow.getGraphics(),
+			auto &gph = m_mainWindow.getGraphics();
+			gph.renderer3d().dumpShadowMap( gph,
 				"dumps/shadow_" );
 			break;
 		}
 		}//switch
 	}
 
-	auto &activeCamera = m_cameraMan.activeCamera();
+	auto &activeCamera = s_cameraMan.activeCamera();
 	if ( !m_mainWindow.isCursorEnabled() )
 	{
 		if ( keyboard.isKeyPressed( 'W' ) )
@@ -379,10 +379,10 @@ int Sandbox3d::checkInput( const float dt )
 
 void Sandbox3d::update( const float dt )
 {
-	auto &activeCamera = m_cameraMan.activeCamera();
+	auto &activeCamera = s_cameraMan.activeCamera();
 	// binds camera to all Passes that need it
-	m_renderer.setActiveCamera( activeCamera );
 	auto &gph = m_mainWindow.getGraphics();
+	gph.renderer3d().setActiveCamera( activeCamera );
 	/*
 	m_world.update( dt );		// updates current level-map stuff, terrain, weather, world globals etc.
 	// actor manager updates actors which also updates AI
@@ -427,19 +427,9 @@ void Sandbox3d::render( const float dt )
 	m_carabiner.render( rch::lambert | rch::shadow | rch::solidOutline | rch::blurOutline );
 	m_sponzaScene.render( rch::lambert | rch::shadow );
 
-	m_cameraMan.render( rch::lambert | rch::wireframe );
+	s_cameraMan.render( rch::lambert | rch::wireframe );
 
-	// offscreen buffer is set as output
-	// draw everything to offscreen buffer as set up in the renderer
-	m_renderer.run( gph );
-
-	// #TODO: organize these better, better they be put inside the Renderer class
-	// now bind back buffer as output
-	gph.renderTargetFromBackBuffer()->bindRenderSurface( gph );
-	// bind offscreen rt as input
-	gph.renderTargetOffscreen()->bind( gph );
-	// do post-processing pass
-	blurPass->run( gph );
+	gph.runRenderer();
 
 	gph.updateAndRenderFpsTimer();
 }
@@ -466,12 +456,12 @@ void Sandbox3d::test()
 	sponzaVisitor.spawnModelImgui( m_sponzaScene );
 	nanoSuitVisitor.spawnModelImgui( m_nanoSuit );
 	carabinerVisitor.spawnModelImgui( m_carabiner );
-	m_cameraMan.spawnImguiWindow( gph );
+	s_cameraMan.spawnImguiWindow( gph );
 	m_pPointLight1->displayImguiWidgets();
 	//m_pPointLight2->displayImguiWidgets();
 	m_cube1.displayImguiWidgets( gph, "Cube 1" );
 	m_cube2.displayImguiWidgets( gph, "Cube 2" );
-	m_renderer.showImGuiWindows( gph );
+	gph.renderer3d().showImGuiWindows( gph );
 
 	if ( b_bShowDemoWindow )
 	{
@@ -484,7 +474,6 @@ void Sandbox3d::present()
 {
 	auto &gph = m_mainWindow.getGraphics();
 	gph.endFrame();
-	m_renderer.reset();
 }
 
 
@@ -492,7 +481,6 @@ Arkanoid::Arkanoid( const int width,
 	const int height )
 	:
 	Game(width, height, "Arkanoid"),
-	m_renderer{m_mainWindow.getGraphics()},
 	m_ball(dx::XMFLOAT2{450.0f, 450.0f}, dx::XMFLOAT2{-300.0f, -300.0f}),
 	m_walls(Rect(0.0f, (float)width, 0.0f, (float)height)),
 	m_paddle(dx::XMFLOAT2(400.0f, 550.0f), 40.0f, 8.0f, col::Cyan, col::Orange),
@@ -656,7 +644,7 @@ void Arkanoid::render( const float dt )
 	}
 	m_paddle.render( gph );
 
-	m_renderer.run( gph );
+	gph.runRenderer();
 }
 
 #if defined _DEBUG && !defined NDEBUG
@@ -670,5 +658,4 @@ void Arkanoid::present()
 {
 	auto &gph = m_mainWindow.getGraphics();
 	gph.endFrame();
-	m_renderer.reset();
 }

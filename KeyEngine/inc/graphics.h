@@ -35,6 +35,16 @@ class TextureOffscreenDS;
 class Window;
 class Camera;
 
+namespace ren
+{
+
+class BlurPass;
+class Renderer;
+class Renderer3d;
+class Renderer2d;
+
+}
+
 //=============================================================
 //	\class	Graphics
 //	\author	KeyC0de
@@ -104,6 +114,10 @@ private:
 	std::unique_ptr<DirectX::SpriteBatch> m_pFpsSpriteBatch;
 	std::vector<ID3D11DeviceContext*> m_deferredContexts;
 	std::vector<ID3D11CommandList*> m_commandLists;
+	std::unique_ptr<ren::Renderer> m_pRenderer;
+	ren::Renderer3d* m_pRenderer3d;
+	ren::Renderer2d* m_pRenderer2d;
+	std::unique_ptr<ren::BlurPass> blurPass;
 public:
 	Graphics( const HWND hWnd, const int width, const int height );
 	~Graphics();
@@ -146,6 +160,10 @@ public:
 	void setupOutputDevice() noexcept;
 	double calcRefreshRate() const noexcept;
 	size_t getFrameNum() const noexcept;
+	void runRenderer() noexcept;
+	ren::Renderer& renderer() noexcept;
+	ren::Renderer3d& renderer3d() noexcept;
+	ren::Renderer2d& renderer2d() noexcept;
 #if defined _DEBUG && !defined NDEBUG
 	DxgiInfoQueue& infoQueue();
 #endif

@@ -15,6 +15,8 @@
 #include "vtune_itt_domain.h"
 #include "texture.h"
 #include "math_utils.h"
+#include "renderer.h"
+#include "blur_pass.h"
 
 #pragma comment( lib, "dxgi.lib" )
 #pragma comment( lib, "d3d11.lib" )
@@ -234,6 +236,21 @@ Graphics::Graphics( const HWND hWnd,
 
 	setupOutputDevice();
 
+	// Create Renderer
+	if constexpr ( gph_mode::get() == gph_mode::_3D )
+	{
+		m_pRenderer = std::make_unique<ren::Renderer3d>( *this, 4, 3.0f );
+		m_pRenderer3d = dynamic_cast<ren::Renderer3d*>( m_pRenderer.get() );
+	}
+	else
+	{
+		m_pRenderer = std::make_unique<ren::Renderer2d>( *this );
+		m_pRenderer2d = dynamic_cast<ren::Renderer2d*>( m_pRenderer.get() );
+	}
+	blurPass = std::make_unique<ren::BlurPass>( *this,
+		"blur" );
+
+	// Create rest of graphic assets
 	if constexpr ( gph_mode::get() != gph_mode::_3D )
 	{
 		m_pCpuBuffer = static_cast<ColorBGRA*>( _aligned_malloc( sizeof( ColorBGRA ) * width * height,
@@ -335,8 +352,6 @@ void Graphics::resize( const unsigned newWidth,
 	// recreate depth stencil
 	depthBufferFromBackBuffer();
 
-	// #TODO: consider setting the rtv and dsv back in the renderer
-
 	// Assert that window width/height is equal to swap-chain width/height
 	DXGI_SWAP_CHAIN_DESC desc;
 	POD_ZERO( desc );
@@ -407,6 +422,42 @@ double Graphics::calcRefreshRate() const noexcept
 size_t Graphics::getFrameNum() const noexcept
 {
 	return m_frameNum;
+}
+
+void Graphics::runRenderer() noexcept
+{
+	if constexpr ( gph_mode::get() == gph_mode::_3D )
+	{
+		m_pRenderer3d->run( *this );
+	}
+	else
+	{
+		m_pRenderer2d->run( *this );
+	}
+
+	// now bind back buffer as output
+	renderTargetFromBackBuffer()->bindRenderSurface( *this );
+	// bind offscreen rt as input
+	renderTargetOffscreen()->bind( *this );
+	// do post-processing pass
+	blurPass->run( *this );
+}
+
+ren::Renderer& Graphics::renderer() noexcept
+{
+	return *m_pRenderer;
+}
+
+ren::Renderer3d& Graphics::renderer3d() noexcept
+{
+	ASSERT( m_pRenderer3d, "3d Renderer not in place!" );
+	return *m_pRenderer3d;
+}
+
+ren::Renderer2d& Graphics::renderer2d() noexcept
+{
+	ASSERT( m_pRenderer2d, "2d Renderer not in place!" );
+	return *m_pRenderer2d;
 }
 
 void Graphics::cleanState() noexcept
@@ -516,6 +567,7 @@ void Graphics::updateAndRenderFpsTimer()
 
 void Graphics::endFrame()
 {
+	m_pRenderer->reset();
 	VTUNE_ITT_TASK_BEGIN( pStrIttEndRendering );
 	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{
@@ -763,11 +815,7 @@ void Graphics::bindBackBufferAsInput()
 		&backBufferSrvDesc,
 		&pBackBufferSrv );
 
-	// unbind any other targets from Output
-	m_pImmediateContext->OMSetRenderTargets( 0,
-		nullptr,
-		nullptr );
-	DXGI_GET_QUEUE_INFO_GFX;
+	IRenderTargetView::unbind( *this );
 
 	// now bind to slot 0 the back buffer srv
 	m_pImmediateContext->PSSetShaderResources( 0u,

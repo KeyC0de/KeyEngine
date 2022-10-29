@@ -52,7 +52,7 @@ HorizontalBlurPass::HorizontalBlurPass( Graphics &gph,
 
 void HorizontalBlurPass::run( Graphics &gph ) const cond_noex
 {
-	auto pscb = m_pPscbBlurDirection->getBuffer();
+	auto pscb = m_pPscbBlurDirection->getBufferCopy();
 	pscb["bHorizontal"] = true;
 	m_pPscbBlurDirection->setBuffer( pscb );
 	m_pPscbBlurDirection->bind( gph );

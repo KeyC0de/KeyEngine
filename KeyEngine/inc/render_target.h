@@ -25,6 +25,10 @@ protected:
 	//	\brief  For creating an output RT only
 	IRenderTargetView( Graphics &gph, ID3D11Texture2D *pTex, std::optional<unsigned> face );
 public:
+	//	\function	unbind	||	\date	2022/10/29 21:56
+	//	\brief	unbind any other targets from Output
+	static void unbind( Graphics &gph ) noexcept;
+public:
 	void bindRenderSurface( Graphics &gph ) cond_noex override;
 	void bindRenderSurface( Graphics &gph, IRenderSurface *pRs ) cond_noex override;
 	void bindRenderSurface( Graphics &gph, IDepthStencilView *pDepthStencilView ) cond_noex;

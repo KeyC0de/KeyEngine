@@ -11,7 +11,6 @@
 #include "sphere.h"
 #include "model.h"
 #include "non_copyable.h"
-#include "renderer.h"
 #include "settings_manager.h"
 #include "game_state.h"
 #include "sound_manager.h"
@@ -21,12 +20,6 @@
 #include "arkanoid/brick.h"
 #include "arkanoid/paddle.h"
 
-namespace ren
-{
-
-class IPass;
-
-}
 
 template<typename T>
 class Game
@@ -66,8 +59,7 @@ private:
 class Sandbox3d
 	: public Game<Sandbox3d>
 {
-	static inline CameraManager& m_cameraMan = CameraManager::instance();
-	ren::Renderer3d m_renderer;	// #TODO: move renderer to Graphics
+	static inline CameraManager& s_cameraMan = CameraManager::instance();
 	std::unique_ptr<PointLight> m_pPointLight1;
 	//std::unique_ptr<PointLight> m_pPointLight2;
 	bool b_bShowDemoWindow = false;
@@ -77,7 +69,6 @@ class Sandbox3d
 	Model m_sponzaScene{m_mainWindow.getGraphics(), "assets/models/sponza/sponza.obj", 1.0f / 8.0f};
 	Model m_nanoSuit{m_mainWindow.getGraphics(), "assets/models/nano_textured/nanosuit.obj", 2.0f};
 	Model m_carabiner{m_mainWindow.getGraphics(), "assets/models/carabiner/carabiner_hook.fbx", 1.0f};
-	std::unique_ptr<ren::IPass> blurPass;
 public:
 	Sandbox3d( const int width, const int height, const int nWindows = 1 );
 	~Sandbox3d() noexcept;
@@ -102,7 +93,6 @@ class Arkanoid final
 	static constexpr inline int m_nBricksVertically = 4;
 	static constexpr inline int m_nBricks = m_nBricksHorizontally * m_nBricksVertically;
 	static constexpr inline float m_speed = 300.0f;
-	ren::Renderer2d m_renderer;
 	Ball m_ball;
 	Rect m_walls;
 	Brick m_bricks[m_nBricks];

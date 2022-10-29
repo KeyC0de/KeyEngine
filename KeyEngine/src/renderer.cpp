@@ -1,5 +1,4 @@
 #include "renderer.h"
-#include <string>
 #include "renderer_exception.h"
 #include "linker.h"
 #include "render_queue_pass.h"
@@ -30,16 +29,16 @@ namespace ren
 
 Renderer::Renderer( Graphics &gph )
 	:
-	m_globalColorBuffer{gph.renderTargetOffscreen( 0u )->shareRenderTarget()},
-	m_globalDepthStencil{gph.depthBufferOffscreen( 0u, DepthStencilViewMode::Normal )->shareDepthBuffer()}
+	m_pRtv{gph.renderTargetOffscreen( 0u )->shareRenderTarget()},
+	m_pDsv{gph.depthBufferOffscreen( 0u, DepthStencilViewMode::Normal )->shareDepthBuffer()}
 {
 	addGlobalBinder( RenderSurfaceBinder<IRenderTargetView>::make( "backColorbuffer",
-		m_globalColorBuffer ) );
+		m_pRtv ) );
 
 	addGlobalLinker( RenderSurfaceLinker<IRenderTargetView>::make( "backColorbuffer",
-		m_globalColorBuffer ) );
+		m_pRtv ) );
 	addGlobalLinker( RenderSurfaceLinker<IDepthStencilView>::make( "backDepthBuffer",
-		m_globalDepthStencil ) );
+		m_pDsv ) );
 
 	// #TODO: Add active flag as argument in the ctor of all Passes
 	{
@@ -582,43 +581,43 @@ void Renderer3d::dumpShadowMap( Graphics &gph,
 void Renderer3d::setKernelGauss( const int radius,
 	const float sigma ) cond_noex
 {
-	ASSERT( radius <= s_maxRadius, "Blur Kernel radius is over the max!" );
-	ASSERT( sigma <= s_maxSigma, "Blur Kernel sigma is over the max!" );
-
-	auto cb = m_blurKernel->getBuffer();
-	const int nTaps = radius * 2 + 1;
-	cb["nTaps"] = nTaps;
-	float sum = 0.0f;
-	for ( int i = 0; i < nTaps; ++i )
-	{
-		const auto x = float( i - radius );
-		const auto coef = util::gaussianDistr( x,
-			sigma,
-			0.0f );
-		sum += coef;
-		cb["coefficients"][i] = coef;
-	}
-	// div by the weighted average
-	for ( int i = 0; i < nTaps; ++i )
-	{
-		cb["coefficients"][i] = (float)cb["coefficients"][i] / sum;
-	}
-	m_blurKernel->setBuffer( cb );
+//	ASSERT( radius <= s_maxRadius, "Blur Kernel radius is over the max!" );
+//	ASSERT( sigma <= s_maxSigma, "Blur Kernel sigma is over the max!" );
+//
+//	auto cb = m_blurKernel->getBufferCopy();
+//	const int nTaps = radius * 2 + 1;
+//	cb["nTaps"] = nTaps;
+//	float sum = 0.0f;
+//	for ( int i = 0; i < nTaps; ++i )
+//	{
+//		const auto x = float( i - radius );
+//		const auto coef = util::gaussianDistr( x,
+//			sigma,
+//			0.0f );
+//		sum += coef;
+//		cb["coefficients"][i] = coef;
+//	}
+//	// div by the weighted average
+//	for ( int i = 0; i < nTaps; ++i )
+//	{
+//		cb["coefficients"][i] = (float)cb["coefficients"][i] / sum;
+//	}
+//	m_blurKernel->setBuffer( cb );
 }
 
 void Renderer3d::setKernelBox( const int radius ) cond_noex
 {
-	ASSERT( radius <= s_maxRadius, "Blur Kernel radius is over the max!" );
-
-	auto cb = m_blurKernel->getBuffer();
-	const int nTaps = radius * 2 + 1;
-	cb["nTaps"] = nTaps;
-	const float c = 1.0f / nTaps;
-	for ( int i = 0; i < nTaps; ++i )
-	{
-		cb["coefficients"][i] = c;
-	}
-	m_blurKernel->setBuffer( cb );
+//	ASSERT( radius <= s_maxRadius, "Blur Kernel radius is over the max!" );
+//
+//	auto cb = m_blurKernel->getBufferCopy();
+//	const int nTaps = radius * 2 + 1;
+//	cb["nTaps"] = nTaps;
+//	const float c = 1.0f / nTaps;
+//	for ( int i = 0; i < nTaps; ++i )
+//	{
+//		cb["coefficients"][i] = c;
+//	}
+//	m_blurKernel->setBuffer( cb );
 }
 
 
