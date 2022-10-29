@@ -38,7 +38,6 @@ class Camera;
 namespace ren
 {
 
-class BlurPass;
 class Renderer;
 class Renderer3d;
 class Renderer2d;
@@ -117,7 +116,6 @@ private:
 	std::unique_ptr<ren::Renderer> m_pRenderer;
 	ren::Renderer3d* m_pRenderer3d;
 	ren::Renderer2d* m_pRenderer2d;
-	std::unique_ptr<ren::BlurPass> blurPass;
 public:
 	Graphics( const HWND hWnd, const int width, const int height );
 	~Graphics();

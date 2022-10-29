@@ -23,11 +23,12 @@ class IBinder;
 
 class Renderer
 {
+	bool m_bValidatedPasses = false;
 	std::vector<std::unique_ptr<IPass>> m_passes;
 	std::vector<std::unique_ptr<IBinder>> m_globalBinders;
 	std::vector<std::unique_ptr<ILinker>> m_globalLinkers;
-	bool m_bValidatedPasses = false;
 protected:
+	std::unique_ptr<IPass> m_pOnscreenPass;
 	std::shared_ptr<IRenderTargetView> m_pRtv;
 	std::shared_ptr<IDepthStencilView> m_pDsv;
 public:

@@ -77,6 +77,7 @@ void Renderer::addGlobalBinder( std::unique_ptr<IBinder> pBinder )
 void Renderer::run( Graphics &gph ) cond_noex
 {
 	ASSERT( m_bValidatedPasses, "Renderer is not validated!" );
+	// Run the offscreen passes
 	for ( auto &pass : m_passes )
 	{
 		if ( pass->isActive() )
@@ -84,6 +85,11 @@ void Renderer::run( Graphics &gph ) cond_noex
 			pass->run( gph );
 		}
 	}
+
+	// If there's an onscreen pass (Pass that renders directly to the Back Buffer) then swap the render targets and then run it
+	gph.renderTargetFromBackBuffer()->bindRenderSurface( gph );
+	gph.renderTargetOffscreen()->bind( gph );
+	m_pOnscreenPass->run( gph );
 }
 
 void Renderer::reset() noexcept
@@ -473,6 +479,11 @@ Renderer3d::Renderer3d( Graphics &gph,
 	//	addPass( std::move( pass ) );
 	//	//pass->run( gph );
 	//}
+
+	{
+		m_pOnscreenPass = std::make_unique<ren::BlurPass>( gph,
+			"blur" );
+	}
 }
 
 void Renderer3d::showImGuiWindows( Graphics &gph )

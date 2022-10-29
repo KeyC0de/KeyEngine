@@ -16,7 +16,6 @@
 #include "texture.h"
 #include "math_utils.h"
 #include "renderer.h"
-#include "blur_pass.h"
 
 #pragma comment( lib, "dxgi.lib" )
 #pragma comment( lib, "d3d11.lib" )
@@ -247,8 +246,6 @@ Graphics::Graphics( const HWND hWnd,
 		m_pRenderer = std::make_unique<ren::Renderer2d>( *this );
 		m_pRenderer2d = dynamic_cast<ren::Renderer2d*>( m_pRenderer.get() );
 	}
-	blurPass = std::make_unique<ren::BlurPass>( *this,
-		"blur" );
 
 	// Create rest of graphic assets
 	if constexpr ( gph_mode::get() != gph_mode::_3D )
@@ -434,13 +431,6 @@ void Graphics::runRenderer() noexcept
 	{
 		m_pRenderer2d->run( *this );
 	}
-
-	// now bind back buffer as output
-	renderTargetFromBackBuffer()->bindRenderSurface( *this );
-	// bind offscreen rt as input
-	renderTargetOffscreen()->bind( *this );
-	// do post-processing pass
-	blurPass->run( *this );
 }
 
 ren::Renderer& Graphics::renderer() noexcept
