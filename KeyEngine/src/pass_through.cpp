@@ -1,4 +1,4 @@
-#include "blur_pass.h"
+#include "pass_through.h"
 #include "pixel_shader.h"
 #include "texture_sampler_state.h"
 
@@ -6,7 +6,7 @@
 namespace ren
 {
 
-BlurPass::BlurPass( Graphics &gph,
+PassThrough::PassThrough( Graphics &gph,
 	const std::string &name )
 	:
 	IFullscreenPass{gph, name}
@@ -17,10 +17,10 @@ BlurPass::BlurPass( Graphics &gph,
 		TextureSamplerState::AddressMode::Wrap ) );
 
 	addPassBindable( PixelShader::fetch( gph,
-		"blur_ps.cso" ) );
+		"passthrough_ps.cso" ) );
 }
 
-void BlurPass::reset() cond_noex
+void PassThrough::reset() cond_noex
 {
 	pass_;
 }

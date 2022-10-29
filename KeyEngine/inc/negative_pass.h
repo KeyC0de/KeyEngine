@@ -12,17 +12,17 @@ namespace ren
 //=============================================================
 //	\class	BlurPass
 //	\author	KeyC0de
-//	\date	2022/10/03 10:31
-//	\brief	A Post Processing Pass, reads offscreen texture and Blurs it
+//	\date	2022/10/29 23:54
+//	\brief	A Post Processing Pass, reads offscreen texture and applies a digital negative effect
 //=============================================================
-class BlurPass
+class NegativePass
 	: public IFullscreenPass
 {
 public:
-	BlurPass( Graphics &gph, const std::string &name );
+	NegativePass( Graphics &gph, const std::string &name );
 
 	void reset() cond_noex override;
 };
 
 
-}
+}//ren

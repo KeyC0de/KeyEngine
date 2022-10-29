@@ -225,6 +225,7 @@
     <ClCompile Include="src\assertions_console.cpp" />
     <ClCompile Include="src\pass.cpp" />
     <ClCompile Include="src\pass_2d.cpp" />
+    <ClCompile Include="src\pass_through.cpp" />
     <ClCompile Include="src\pixel_shader.cpp" />
     <ClCompile Include="src\plane.cpp" />
     <ClCompile Include="src\primitive_topology.cpp" />
@@ -237,7 +238,7 @@
     <ClCompile Include="src\render_queue_pass.cpp" />
     <ClCompile Include="src\render_surface_clear_pass.cpp" />
     <ClCompile Include="src\render_target.cpp" />
-    <ClCompile Include="src\rtt_pass_post_process.cpp" />
+    <ClCompile Include="src\negative_pass.cpp" />
     <ClCompile Include="src\save_game.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
@@ -392,6 +393,7 @@
     <ClInclude Include="inc\mouse_picker.h" />
     <ClInclude Include="inc\pass.h" />
     <ClInclude Include="inc\pass_2d.h" />
+    <ClInclude Include="inc\pass_through.h" />
     <ClInclude Include="inc\pixel_shader.h" />
     <ClInclude Include="inc\plane.h" />
     <ClInclude Include="inc\primitive_topology.h" />
@@ -406,7 +408,7 @@
     <ClInclude Include="inc\render_surface.h" />
     <ClInclude Include="inc\render_surface_clear_pass.h" />
     <ClInclude Include="inc\render_target.h" />
-    <ClInclude Include="inc\rtt_pass_post_process.h" />
+    <ClInclude Include="inc\negative_pass.h" />
     <ClInclude Include="inc\save_game.h" />
     <ClInclude Include="inc\key_traits.h" />
     <ClInclude Include="inc\lru_cache.h" />

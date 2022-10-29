@@ -20,8 +20,9 @@
 #include "math_utils.h"
 #include "assertions_console.h"
 #include "wireframe_pass.h"
-#include "rtt_pass_post_process.h"
+#include "negative_pass.h"
 #include "blur_pass.h"
+#include "pass_through.h"
 
 
 namespace ren
@@ -410,7 +411,7 @@ Renderer3d::Renderer3d( Graphics &gph,
 		addPass( std::move( pass ) );
 	}
 	//{
-		//auto pass = std::make_unique<BasePostProcessingPass>( gph,
+		//auto pass = std::make_unique<NegativePass>( gph,
 			//"rttFullscreenPp",
 			//4u );
 		//linkPassBinders( *pass );
@@ -463,26 +464,13 @@ Renderer3d::Renderer3d( Graphics &gph,
 		"renderTarget" );
 	Renderer::linkGlobalBinders();
 
-	//{
-	//	auto pass = std::make_unique<BlurPass>( gph,
-	//		"blur" );
-	//	//pass->setupBinderTarget( "renderTarget",
-	//		//"solidOutlineDraw",
-	//		//"renderTarget" );
-	//	//pass->setupBinderTarget( "depthStencil",
-	//		//"solidOutlineDraw",
-	//		//"depthStencil" );
-	//	//pass->setupBinderTarget( "offscreenPostProcessIn",
-	//		//"rttFullscreenPp",
-	//		//"offscreenPostProcessOut" );
-	//	//linkPassBinders( *pass );
-	//	addPass( std::move( pass ) );
-	//	//pass->run( gph );
-	//}
-
 	{
-		m_pOnscreenPass = std::make_unique<ren::BlurPass>( gph,
-			"blur" );
+		//m_pOnscreenPass = std::make_unique<ren::BlurPass>( gph,
+			//"blur" );
+		//m_pOnscreenPass = std::make_unique<ren::NegativePass>( gph,
+			//"negative" );
+		m_pOnscreenPass = std::make_unique<ren::PassThrough>( gph,
+			"passthrough" );
 	}
 }
 

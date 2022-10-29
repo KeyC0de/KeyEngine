@@ -10,16 +10,16 @@ namespace ren
 {
 
 //=============================================================
-//	\class	BlurPass
+//	\class	PassThrough
 //	\author	KeyC0de
-//	\date	2022/10/03 10:31
-//	\brief	A Post Processing Pass, reads offscreen texture and Blurs it
+//	\date	2022/10/29 23:57
+//	\brief	A Post Processing Pass, reads offscreen texture and just copies it pixel per pixel to the back buffer
 //=============================================================
-class BlurPass
+class PassThrough
 	: public IFullscreenPass
 {
 public:
-	BlurPass( Graphics &gph, const std::string &name );
+	PassThrough( Graphics &gph, const std::string &name );
 
 	void reset() cond_noex override;
 };

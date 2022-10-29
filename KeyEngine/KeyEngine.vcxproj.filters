@@ -373,10 +373,13 @@
     <ClCompile Include="src\blur_pass.cpp">
       <Filter>engine\vfx\pass</Filter>
     </ClCompile>
-    <ClCompile Include="src\rtt_pass_post_process.cpp">
+    <ClCompile Include="src\negative_pass.cpp">
       <Filter>engine\vfx\pass</Filter>
     </ClCompile>
     <ClCompile Include="src\texture_desc.cpp" />
+    <ClCompile Include="src\pass_through.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="third_party\imgui\imconfig.h">
@@ -1186,13 +1189,16 @@
     <ClInclude Include="inc\blur_pass.h">
       <Filter>engine\vfx\pass</Filter>
     </ClInclude>
-    <ClInclude Include="inc\rtt_pass_post_process.h">
+    <ClInclude Include="inc\negative_pass.h">
       <Filter>engine\vfx\pass</Filter>
     </ClInclude>
     <ClInclude Include="inc\global_constants.h">
       <Filter>engine\common</Filter>
     </ClInclude>
     <ClInclude Include="inc\texture_desc.h" />
+    <ClInclude Include="inc\pass_through.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\resources\tray_graffiti.ico">
