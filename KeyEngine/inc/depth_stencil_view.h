@@ -17,7 +17,7 @@ class IDepthStencilView
 
 	std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC> createStagingTexture( Graphics &gph ) const;
 protected:
-	Microsoft::WRL::ComPtr<ID3D11DepthStencilView> m_pDsv;
+	Microsoft::WRL::ComPtr<ID3D11DepthStencilView> m_pD3dDsv;
 	unsigned int m_width;
 	unsigned int m_height;
 protected:
@@ -34,13 +34,16 @@ public:
 	const Bitmap convertToBitmap( Graphics &gph, const unsigned width, const unsigned height, bool bLinearize = true ) const;
 	const unsigned int getWidth() const noexcept;
 	const unsigned int getHeight() const noexcept;
+	Microsoft::WRL::ComPtr<ID3D11DepthStencilView>& d3dResourceCom() noexcept;
+	ID3D11DepthStencilView* d3dResource() const noexcept;
+	virtual void setDebugObjectName( const char* name ) noexcept override;
 };
 
 class DepthStencilShaderInput
 	: public IDepthStencilView
 {
 	unsigned int m_slot;
-	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_pSrv;
+	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_pD3dSrv;
 public:
 	DepthStencilShaderInput( Graphics &gph, const unsigned slot, const DepthStencilViewMode dsMode = DepthStencilViewMode::Normal );
 	DepthStencilShaderInput( Graphics &gph, const unsigned width, const unsigned height, const unsigned slot, const DepthStencilViewMode dsMode = DepthStencilViewMode::Normal );

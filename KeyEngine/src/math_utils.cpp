@@ -341,6 +341,23 @@ constexpr int isSet( int num,
 	return ( num >> n ) & 1;
 }
 
+bool isSetByNumber( int num,
+	int value ) noexcept
+{
+	if ( !isPowerOf2( value ) )
+	{
+		return false;
+	}
+
+	unsigned pos = 0;
+	while ( value % 2 == 0 )
+	{
+		value = value / 2;
+		++pos;
+	}
+	return ( num >> pos ) & 1;
+}
+
 #pragma warning( push, 0 )
 constexpr int changeNthBit( int num,
 	const unsigned n,

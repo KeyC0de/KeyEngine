@@ -268,7 +268,6 @@ _present/
 readme.html
 readme.site.md
 KeyEngine/int/
-KeyEngine/TODO.txt
-KeyEngine_tests/testing.h
-KeyEngine_tests/testing.cpp
+KeyEngine/src/testing.cpp
+KeyEngine/inc/testing.h
 KeyEngine/VTune Profiler Results

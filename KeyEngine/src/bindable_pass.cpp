@@ -27,7 +27,7 @@ void IBindablePass::bind( Graphics &gph ) const cond_noex
 		m_pRtv->bindRenderSurface( gph,
 			m_pDsv.get() );
 	}
-	else
+	else if ( m_pDsv )
 	{
 		m_pDsv->bindRenderSurface( gph );
 	}

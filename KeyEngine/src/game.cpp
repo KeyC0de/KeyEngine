@@ -19,6 +19,8 @@
 #	include "bindable_map.h"
 #endif
 
+#include "blur_pass.h"
+
 
 namespace dx = DirectX;
 
@@ -171,7 +173,9 @@ Sandbox3d::Sandbox3d( const int width,
 	const int nWindows )
 	:
 	Game(width, height, "KeyEngine 3d Sandbox", nWindows),
-	m_renderer{m_mainWindow.getGraphics(), 4, 3.0f}
+	m_renderer{m_mainWindow.getGraphics(), 4, 3.0f},
+	blurPass{std::make_unique<ren::BlurPass>( m_mainWindow.getGraphics(),
+		"blur" )}
 {
 	m_cameraMan.setWidth( width );
 	m_cameraMan.setHeight( height );
@@ -250,6 +254,11 @@ Sandbox3d::Sandbox3d( const int width,
 	auto menuState = std::make_unique<MenuState>();
 	setState( std::move( menuState ),
 		m_mainWindow.mouse() );
+}
+
+Sandbox3d::~Sandbox3d() noexcept
+{
+
 }
 
 int Sandbox3d::loop()
@@ -420,7 +429,17 @@ void Sandbox3d::render( const float dt )
 
 	m_cameraMan.render( rch::lambert | rch::wireframe );
 
+	// offscreen buffer is set as output
+	// draw everything to offscreen buffer as set up in the renderer
 	m_renderer.run( gph );
+
+	// #TODO: organize these better, better they be put inside the Renderer class
+	// now bind back buffer as output
+	gph.renderTargetFromBackBuffer()->bindRenderSurface( gph );
+	// bind offscreen rt as input
+	gph.renderTargetOffscreen()->bind( gph );
+	// do post-processing pass
+	blurPass->run( gph );
 
 	gph.updateAndRenderFpsTimer();
 }
@@ -436,7 +455,6 @@ void Sandbox3d::test()
 	console.print( "BindableMap instance count: "s + std::to_string( BindableMap::getInstanceCount() ) + "\n"s );
 	console.print( "BindableMap garbage count: "s + std::to_string( BindableMap::getGarbageCount() ) + "\n"s );
 	console.print( "Current distance from carabiner: "s + std::to_string( m_carabiner.getDistanceFromActiveCamera() ) + "\n"s );
-
 
 	/// Render Imgui stuff
 	auto &gph = m_mainWindow.getGraphics();

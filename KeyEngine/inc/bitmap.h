@@ -61,7 +61,7 @@ public:
 };
 
 
-#define throwBitmapException( msg ) throw BitmapException( __LINE__,\
+#define THROW_BITMAP_EXCEPTION( msg ) throw BitmapException( __LINE__,\
 	__FILE__,\
 	__FUNCTION__,\
 	msg )

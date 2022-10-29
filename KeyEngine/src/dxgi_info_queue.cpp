@@ -70,7 +70,7 @@ std::vector<std::string> DxgiInfoQueue::getInfoMessages()
 	{
 		HRESULT hres;
 		size_t messageLengthInBytes = 0;
-		
+
 		// first get the message length
 		hres = m_pDxgiInfoQueue->GetMessageW( m_msgProducer,
 			i,

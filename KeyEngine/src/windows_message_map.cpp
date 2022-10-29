@@ -35,7 +35,7 @@ WindowsMessageMap::WindowsMessageMap() noexcept
 		MAP_MESSAGE( WM_QUERYENDSESSION ),
 		MAP_MESSAGE( WM_QUIT ),
 		MAP_MESSAGE( WM_QUERYOPEN ),
-		MAP_MESSAGE( WM_ERASEBKGND ),
+		MAP_MESSAGE( WM_ERASEBKGND ),	// sent when the window background must be erased (for example, when a window is resized). The message is sent to prepare an invalidated portion of a window for painting. Better do all drawing on WM_PAINT to avoid flicker
 		MAP_MESSAGE( WM_SYSCOLORCHANGE ),
 		MAP_MESSAGE( WM_ENDSESSION ),
 		MAP_MESSAGE( WM_SHOWWINDOW ),
@@ -90,7 +90,7 @@ WindowsMessageMap::WindowsMessageMap() noexcept
 		MAP_MESSAGE( WM_SETICON ),
 		MAP_MESSAGE( WM_NCCREATE ),
 		MAP_MESSAGE( WM_NCDESTROY ),
-		MAP_MESSAGE( WM_NCCALCSIZE ),
+		MAP_MESSAGE( WM_NCCALCSIZE ),	// sent when the size and position of a window's client area must be calculated
 		MAP_MESSAGE( WM_NCHITTEST ),	// drags a window using its client area
 		MAP_MESSAGE( WM_NCPAINT ),
 		MAP_MESSAGE( WM_NCACTIVATE ),

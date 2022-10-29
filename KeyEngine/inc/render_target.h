@@ -16,7 +16,7 @@ class IRenderTargetView
 protected:
 	unsigned m_width;
 	unsigned m_height;
-	Microsoft::WRL::ComPtr<ID3D11RenderTargetView> m_pRtv;
+	Microsoft::WRL::ComPtr<ID3D11RenderTargetView> m_pD3dRtv;
 protected:
 	//	\function	IrenderTargetView	||	\date	2021/10/25 17:00
 	//	\brief  Render to Texture constructor
@@ -30,10 +30,12 @@ public:
 	void bindRenderSurface( Graphics &gph, IDepthStencilView *pDepthStencilView ) cond_noex;
 	void clear( Graphics &gph, const std::array<float, 4> &color = {0.0f, 0.0f, 0.0f, 0.0f} ) cond_noex override;
 	void clean( Graphics &gph ) cond_noex;
+	const Bitmap convertToBitmap( Graphics &gph, const unsigned width, const unsigned height ) const;
 	const unsigned getWidth() const noexcept;
 	const unsigned getHeight() const noexcept;
-	ID3D11RenderTargetView* renderTargetView() const noexcept;
-	const Bitmap convertToBitmap( Graphics &gph, const unsigned width, const unsigned height ) const;
+	Microsoft::WRL::ComPtr<ID3D11RenderTargetView>& d3dResourceCom() noexcept;
+	ID3D11RenderTargetView* d3dResource() const noexcept;
+	virtual void setDebugObjectName( const char* name ) noexcept override;
 private:
 	//	\function	createStagingTexture	||	\date	2021/10/27 21:59
 	//	\brief  create a texture resource compatible with our RTV, but with Staging usage (CPU read access, no GPU access)
@@ -51,9 +53,10 @@ class RenderTargetShaderInput
 	: public IRenderTargetView
 {
 	unsigned m_slot;
-	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_pSrv;
+	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_pD3dSrv;
 public:
 	RenderTargetShaderInput( Graphics &gph, const unsigned width, const unsigned height, const unsigned slot );
+	//RenderTargetShaderInput( Graphics &gph, ID3D11Texture2D *pTex, const unsigned slot, std::optional<unsigned> face = {} );
 
 	void bind( Graphics &gph ) cond_noex override;
 	unsigned getSlot() const noexcept;

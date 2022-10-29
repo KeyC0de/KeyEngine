@@ -133,6 +133,8 @@ public:
 	void setWindowStyles( const unsigned windowStyles ) const noexcept;
 	void setWindowStylesEx( const unsigned windowStylesEx ) const noexcept;
 	void setBorderless() const noexcept;
+	//	\function	setRedrawing	||	\date	2022/10/29 12:18
+	//	\brief	prevent intermediate redrawing
 	void setRedrawing( const bool bRedraw );
 	void showMenu( const HMENU hMenu );
 	void hideMenu();

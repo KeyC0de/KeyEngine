@@ -24,11 +24,14 @@
 #include "SpriteBatch.h"
 #include "color.h"
 #include "rectangle.h"
+#include "texture_desc.h"
 
 
 class IBindable;
 class RenderTargetOutput;
 class DepthStencilOutput;
+class TextureOffscreenRT;
+class TextureOffscreenDS;
 class Window;
 class Camera;
 
@@ -85,8 +88,10 @@ private:
 	Microsoft::WRL::ComPtr<ID3D11Device> m_pDevice;
 	Microsoft::WRL::ComPtr<ID3D11DeviceContext> m_pImmediateContext;
 	Microsoft::WRL::ComPtr<IDXGIOutput1> m_pDxgiOutput;
-	std::shared_ptr<RenderTargetOutput> m_rtv;
-	std::shared_ptr<DepthStencilOutput> m_dsv;
+	std::shared_ptr<RenderTargetOutput> m_pBackBufferRtv;
+	std::shared_ptr<DepthStencilOutput> m_pBackBufferDsv;
+	std::shared_ptr<TextureOffscreenRT> m_pOffscreenRtv;
+	std::shared_ptr<TextureOffscreenDS> m_pOffscreenDsv;
 #if defined _DEBUG && !defined NDEBUG
 	DxgiInfoQueue m_infoQueue;
 	ATL::CComPtr<ID3D11Debug> m_pDebug;
@@ -122,8 +127,13 @@ public:
 	const DirectX::XMMATRIX& getProjectionMatrix() const noexcept;
 	const unsigned getClientWidth() const noexcept;
 	const unsigned getClientHeight() const noexcept;
-	std::shared_ptr<RenderTargetOutput> renderTarget();
-	std::shared_ptr<DepthStencilOutput> depthStencil();
+	std::shared_ptr<RenderTargetOutput> renderTargetFromBackBuffer();
+	std::shared_ptr<DepthStencilOutput> depthBufferFromBackBuffer();
+	std::shared_ptr<TextureOffscreenRT> renderTargetOffscreen( const unsigned slot = 0u );
+	std::shared_ptr<TextureOffscreenDS> depthBufferOffscreen( const unsigned slot = 0u, DepthStencilViewMode dsvMode = DepthStencilViewMode::Normal );
+	void bindBackBufferAsOutput() const noexcept;
+	void bindBackBufferAsOutput( DepthStencilOutput *dsv ) const noexcept;
+	void bindBackBufferAsInput();
 	void createFactory();
 	void createAdapters();
 	//	\function	resize	||	\date	2022/09/17 19:44
@@ -151,11 +161,9 @@ private:
 	void playbackDeferredCommandList();
 	void clearShaderSlots() noexcept;
 	void cleanState() noexcept;
-#if defined _DEBUG && !defined NDEBUG
 	void interrogateDirectxFeatures();
 	bool checkTearingSupport();
 	void d3d11DebugReport();
-#endif
 #ifdef D2D_INTEROP
 private:
 	/// 2d & 3d Interoperability

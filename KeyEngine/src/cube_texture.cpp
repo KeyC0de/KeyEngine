@@ -52,7 +52,7 @@ CubeTexture::CubeTexture( Graphics &gph,
 	srvDesc.Texture2D.MipLevels = 1u;
 	hres = getDevice( gph )->CreateShaderResourceView( pTex.Get(),
 		&srvDesc,
-		&m_pSrv );
+		&m_pD3dSrv );
 	ASSERT_HRES_IF_FAILED;
 }
 
@@ -60,7 +60,7 @@ void CubeTexture::bind( Graphics &gph ) cond_noex
 {
 	getDeviceContext( gph )->PSSetShaderResources( m_slot,
 		1u,
-		m_pSrv.GetAddressOf() );
+		m_pD3dSrv.GetAddressOf() );
 	DXGI_GET_QUEUE_INFO( gph );
 }
 
@@ -94,7 +94,7 @@ CubeTextureOffscreenRT::CubeTextureOffscreenRT( Graphics &gph,
 	srvDesc.Texture2D.MipLevels = 1u;
 	hres = getDevice( gph )->CreateShaderResourceView( pTex.Get(),
 		&srvDesc,
-		&m_pSrv );
+		&m_pD3dSrv );
 	ASSERT_HRES_IF_FAILED;
 
 	// create RTVs on the texture cube's faces for capturing
@@ -110,13 +110,18 @@ void CubeTextureOffscreenRT::bind( Graphics &gph ) cond_noex
 {
 	getDeviceContext( gph )->PSSetShaderResources( m_slot,
 		1u,
-		m_pSrv.GetAddressOf() );
+		m_pD3dSrv.GetAddressOf() );
 	DXGI_GET_QUEUE_INFO( gph );
 }
 
 std::shared_ptr<RenderTargetOutput> CubeTextureOffscreenRT::shareRenderTarget( const size_t index ) const
 {
 	return m_renderTargetViews[index];
+}
+
+RenderTargetOutput* CubeTextureOffscreenRT::renderTarget( const size_t index )
+{
+	return m_renderTargetViews[index].get();
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -149,7 +154,7 @@ CubeTextureOffscreenDS::CubeTextureOffscreenDS( Graphics &gph,
 	srvDesc.Texture2D.MipLevels = 1u;
 	hres = getDevice( gph )->CreateShaderResourceView( pTex.Get(),
 		&srvDesc,
-		&m_pSrv );
+		&m_pD3dSrv );
 	ASSERT_HRES_IF_FAILED;
 
 	// create DSVs on the texture cube's faces for capturing depth (for shadow mapping)
@@ -166,11 +171,16 @@ void CubeTextureOffscreenDS::bind( Graphics &gph ) cond_noex
 {
 	getDeviceContext( gph )->PSSetShaderResources( m_slot,
 		1u,
-		m_pSrv.GetAddressOf() );
+		m_pD3dSrv.GetAddressOf() );
 	DXGI_GET_QUEUE_INFO( gph );
 }
 
 std::shared_ptr<DepthStencilOutput> CubeTextureOffscreenDS::shareDepthBuffer( const size_t index ) const
 {
 	return m_depthStencilViews[index];
+}
+
+DepthStencilOutput* CubeTextureOffscreenDS::depthBuffer( const size_t index )
+{
+	return m_depthStencilViews[index].get();
 }

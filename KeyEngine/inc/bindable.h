@@ -44,6 +44,11 @@ public:
 		ASSERT( false, "Base Bindable has no UID." );
 		return "";
 	}
+
+	virtual void setDebugObjectName( const char* name ) noexcept
+	{
+		pass_;
+	}
 };
 
 class IBindableCloning

@@ -1,5 +1,5 @@
-Texture2D tex : register(t0);
-SamplerState sampl : register(s0);
+Texture2D offscreenTex/* : register(t0)*/;
+SamplerState sampl/* : register(s0)*/;
 
 struct PSIn
 {
@@ -14,7 +14,7 @@ struct PSOut
 PSOut main( PSIn input )
 {
 	PSOut output;
-	output.finalColor = 1.0f - tex.Sample( sampl,
+	output.finalColor = 1.0f - offscreenTex.Sample(sampl,
 		input.uv ).rgba;
 	return output;
 }

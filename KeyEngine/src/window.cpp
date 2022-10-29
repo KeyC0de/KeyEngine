@@ -613,18 +613,18 @@ HICON Window::convertHbitmapToHicon( HBITMAP hBitmap )
 		sizeof bitmap,
 		&bitmap );
 	ASSERT( ret != 0, "Couldn't GetObject" );
-	
+
 	HBITMAP hbmMask = ::CreateCompatibleBitmap( ::GetDC( nullptr ),
 		bitmap.bmWidth,
 		bitmap.bmHeight );
-	
+
 	ICONINFO iconInfo{0};
 	iconInfo.fIcon = TRUE;
 	iconInfo.hbmColor = hBitmap;
 	iconInfo.hbmMask = hbmMask;
-	
+
 	HICON hIcon = ::CreateIconIndirect( &iconInfo );
-	
+
 	::DeleteObject( hbmMask );
 
 	return hIcon;
@@ -634,7 +634,7 @@ void saveClipboardTextAsVar()
 {
 	HANDLE hClipboard;
 	char *clipboardText;
-	
+
 	if ( OpenClipboard( nullptr ) )
 	{
 		hClipboard = GetClipboardData( CLIPBOARD_TEXT_FORMAT );
@@ -676,7 +676,7 @@ void Window::setupSplashWindow( HBITMAP hSplashBitmap )
 	RECT parentRect;
 	GetWindowRect( hWndParent,
 		&parentRect );
-	
+
 	const int parentWidth = parentRect.right - parentRect.left;
 	const int parentHeight = parentRect.bottom - parentRect.top;
 
@@ -823,7 +823,7 @@ LRESULT CALLBACK Window::windowProc( _In_ const HWND hWnd,
 			wParam,
 			lParam );
 	}
-	
+
 	// if we get a msg before the WM_NCCREATE msg handle it with the default windowProc
 	return DefWindowProcW( hWnd,
 		uMsg,
@@ -1240,7 +1240,7 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 	}
 	case WM_EXITSIZEMOVE:
 	{
-		// here is the other place where you handle the swapchain resize after the user stops using the 'rubber-band' 
+		// here is the other place where you handle the swapchain resize after the user stops using the 'rubber-band'
 		bCurrentlyResizing = false;
 		break;
 	}
@@ -1703,7 +1703,7 @@ LRESULT CALLBACK Window::dialogProc( _In_ const HWND hWnd,
 			// dialog box command ids
 			case IDOK:
 			{
-				if ( GetDlgItemTextW( hWnd, IDOK, itemName, BUTTON_TEXT_MAX_LENGTH ) ) 
+				if ( GetDlgItemTextW( hWnd, IDOK, itemName, BUTTON_TEXT_MAX_LENGTH ) )
 				{
 					EndDialog( hWnd,
 						wParam );
@@ -1713,7 +1713,7 @@ LRESULT CALLBACK Window::dialogProc( _In_ const HWND hWnd,
 			}
 			case IDCANCEL:
 			{
-				if ( GetDlgItemTextW( hWnd, IDCANCEL, itemName, BUTTON_TEXT_MAX_LENGTH ) ) 
+				if ( GetDlgItemTextW( hWnd, IDCANCEL, itemName, BUTTON_TEXT_MAX_LENGTH ) )
 				{
 					EndDialog( hWnd,
 						wParam );
@@ -1920,14 +1920,13 @@ void Window::setBorderless() const noexcept
 
 void Window::setRedrawing( const bool bRedraw )
 {
-	// hide the menu bar, change styles and position and redraw
-	// prevent intermediate redrawing
 	int ret = ::LockWindowUpdate( bRedraw ? nullptr : m_hWnd );
 	ASSERT( ret, "Could not lock window!" );
 }
 
 void Window::showMenu( const HMENU hMenu )
 {
+	// hide the menu bar, change styles and position and redraw
 	setRedrawing( false );
 
 	::SetMenu( m_hWnd,
@@ -2227,7 +2226,7 @@ bool Window::editPaste( UINT format )
 				ASSERT_HRES_WIN32_IF_FAILED;
 				return false;
 			}
-	 
+
 			HGLOBAL hClipboard = GetClipboardData( format );
 			ASSERT_HRES_WIN32_IF_FAILED;
 			if ( hClipboard == nullptr )
@@ -2236,7 +2235,7 @@ bool Window::editPaste( UINT format )
 				ASSERT_HRES_WIN32_IF_FAILED;
 				return false;
 			}
-			
+
 			wchar_t *pCopiedStr = static_cast<wchar_t*>( GlobalLock( hClipboard ) );
 			ASSERT_HRES_WIN32_IF_FAILED;
 			if ( pCopiedStr == nullptr )

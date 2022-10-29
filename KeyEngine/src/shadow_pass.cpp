@@ -53,6 +53,13 @@ ShadowPass::ShadowPass( Graphics &gph,
 		3u,
 		DepthStencilViewMode::ShadowDepth );
 
+#if defined _DEBUG && !defined NDEBUG
+	for ( size_t i = 0; i < 6; ++i )
+	{
+		m_pOffscreenDsvCubemap->depthBuffer( i )->setDebugObjectName( std::string{"ShadowPassDsv#" + std::to_string( i )}.c_str() );
+	}
+#endif
+
 	addLinker( BindableLinker<CubeTextureOffscreenDS>::make( "offscreenShadowCubemapOut",
 		m_pOffscreenDsvCubemap ) );
 

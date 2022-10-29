@@ -32,6 +32,7 @@ you unbind by setting render target to null, or to a different rt
 RedSkittleFox — Today at 6:24 PM
 ctx.OMSetRenderTargets(0, nullptr, nullptr);
 
+final rt should always be writing to back buffer
 
 add unbind routines to RTV/DSV
 
@@ -699,3 +700,15 @@ class Model
 	{
 		return const_cast<T&>( obj );
 	}
+
+
+// subclass boilerplate
+#define COMPONENT_CALLBACK_CLASS_BODY(class_id) public: \
+                                                                                                                                                                                                class_id()                                             : TWUI::ComponentCallbacks(#class_id) {  } \
+                                                                                                                                                                                                static PooledString TypeId() { static const PooledString type_id(#class_id); return type_id; }\
+                                                                                                                                                                                                const bool OfType(PooledString id) const override {return class_id::TypeId() == id ;}\
+                                                                                                                                                                                                protected: \
+                                                                                                                                                                                                class_id(const char * id, bool call_construct = true) : TWUI::ComponentCallbacks(id) { if (call_construct) Construct(); } \
+                                                                                                                                                                                                class_id(const char * id, TWUI::Component & c) : TWUI::ComponentCallbacks(id, c) { Construct(); } \
+                                                                                                                                                                                                class_id(TWUI::Component& c) : TWUI::ComponentCallbacks(#class_id, c) { Construct(); } \
+                                                                                                                                                                                                TWUI::ComponentCallbacks* Clone(TWUI::Component& c) const override { return new class_id(c); }

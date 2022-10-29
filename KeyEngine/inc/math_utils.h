@@ -326,6 +326,9 @@ constexpr int toggleNthBit( int num, const unsigned n ) noexcept;
 //	\function	isSet	||	\date	2022/08/29 0:02
 //	\brief	check nth bit's state 0 or 1
 constexpr int isSet( int num, const unsigned n ) noexcept;
+//	\function	isNumberSet	||	\date	2022/10/29 13:44
+//	\brief	check if num is set using value to determine the position we want to check. value must be a power of 2.
+bool isSetByNumber( int num, int value ) noexcept;
 //===================================================
 //	\function	changeNthBit	||	\date	2022/08/29 0:02
 //	\brief	change nth bit to bitVal

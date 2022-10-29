@@ -21,6 +21,12 @@
 #include "arkanoid/brick.h"
 #include "arkanoid/paddle.h"
 
+namespace ren
+{
+
+class IPass;
+
+}
 
 template<typename T>
 class Game
@@ -71,8 +77,10 @@ class Sandbox3d
 	Model m_sponzaScene{m_mainWindow.getGraphics(), "assets/models/sponza/sponza.obj", 1.0f / 8.0f};
 	Model m_nanoSuit{m_mainWindow.getGraphics(), "assets/models/nano_textured/nanosuit.obj", 2.0f};
 	Model m_carabiner{m_mainWindow.getGraphics(), "assets/models/carabiner/carabiner_hook.fbx", 1.0f};
+	std::unique_ptr<ren::IPass> blurPass;
 public:
 	Sandbox3d( const int width, const int height, const int nWindows = 1 );
+	~Sandbox3d() noexcept;
 
 	int loop();
 private:

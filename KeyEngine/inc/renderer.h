@@ -49,7 +49,6 @@ protected:
 	void linkPassBinders( IPass &pass );
 	void linkGlobalBinders();
 	IPass& getPass( const std::string &name );
-private:
 	void validateBindersLinkage();
 };
 

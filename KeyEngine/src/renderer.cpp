@@ -30,8 +30,8 @@ namespace ren
 
 Renderer::Renderer( Graphics &gph )
 	:
-	m_globalColorBuffer{gph.renderTarget()},
-	m_globalDepthStencil{gph.depthStencil()}
+	m_globalColorBuffer{gph.renderTargetOffscreen( 0u )->shareRenderTarget()},
+	m_globalDepthStencil{gph.depthBufferOffscreen( 0u, DepthStencilViewMode::Normal )->shareDepthBuffer()}
 {
 	addGlobalBinder( RenderSurfaceBinder<IRenderTargetView>::make( "backColorbuffer",
 		m_globalColorBuffer ) );
@@ -204,8 +204,6 @@ void Renderer::linkPassBinders( IPass &pass )
 
 void Renderer::linkGlobalBinders()
 {
-	this->validateBindersLinkage();
-
 	for ( auto &binder : m_globalBinders )
 	{
 		const auto &binderPassName = binder->getPassName();
@@ -406,28 +404,28 @@ Renderer3d::Renderer3d( Graphics &gph,
 		linkPassBinders( *pass );
 		addPass( std::move( pass ) );
 	}
-	{
-		auto pass = std::make_unique<BasePostProcessingPass>( gph,
-			"rttFullscreenPp",
-			1u );
-		linkPassBinders( *pass );
-		addPass( std::move( pass ) );
-	}
-	{
-		auto pass = std::make_unique<BlurPass>( gph,
-			"blur" );
-		pass->setupBinderTarget( "renderTarget",
-			"solidOutlineDraw",
-			"renderTarget" );
-		pass->setupBinderTarget( "depthStencil",
-			"solidOutlineDraw",
-			"depthStencil" );
-		pass->setupBinderTarget( "offscreenPostProcessIn",
-			"rttFullscreenPp",
-			"offscreenPostProcessOut" );
-		linkPassBinders( *pass );
-		addPass( std::move( pass ) );
-	}
+	//{
+		//auto pass = std::make_unique<BasePostProcessingPass>( gph,
+			//"rttFullscreenPp",
+			//4u );
+		//linkPassBinders( *pass );
+		//addPass( std::move( pass ) );
+	//}
+	//{
+	//	auto pass = std::make_unique<BlurPass>( gph,
+	//		"blur" );
+	//	pass->setupBinderTarget( "renderTarget",
+	//		"solidOutlineDraw",
+	//		"renderTarget" );
+	//	pass->setupBinderTarget( "depthStencil",
+	//		"solidOutlineDraw",
+	//		"depthStencil" );
+	//	//pass->setupBinderTarget( "offscreenPostProcessIn",
+	//		//"rttFullscreenPp",
+	//		//"offscreenPostProcessOut" );
+	//	linkPassBinders( *pass );
+	//	addPass( std::move( pass ) );
+	//}
 	/*{
 		auto pass = std::make_unique<DepthReversedPass>( gph,
 			"depthReversed" );
@@ -453,10 +451,29 @@ Renderer3d::Renderer3d( Graphics &gph,
 		addPass( std::move( pass ) );
 	}*/
 
+	Renderer::validateBindersLinkage();
+
 	setupGlobalBinderTarget( "backColorbuffer",
-		"blur",
+		"solidOutlineDraw",
 		"renderTarget" );
 	Renderer::linkGlobalBinders();
+
+	//{
+	//	auto pass = std::make_unique<BlurPass>( gph,
+	//		"blur" );
+	//	//pass->setupBinderTarget( "renderTarget",
+	//		//"solidOutlineDraw",
+	//		//"renderTarget" );
+	//	//pass->setupBinderTarget( "depthStencil",
+	//		//"solidOutlineDraw",
+	//		//"depthStencil" );
+	//	//pass->setupBinderTarget( "offscreenPostProcessIn",
+	//		//"rttFullscreenPp",
+	//		//"offscreenPostProcessOut" );
+	//	//linkPassBinders( *pass );
+	//	addPass( std::move( pass ) );
+	//	//pass->run( gph );
+	//}
 }
 
 void Renderer3d::showImGuiWindows( Graphics &gph )

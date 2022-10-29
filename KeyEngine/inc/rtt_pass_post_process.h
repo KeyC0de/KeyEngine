@@ -8,8 +8,6 @@ namespace ren
 {
 
 class BasePostProcessingPass
-	//: public IPass
-	//: public IBindablePass
 	: public IFullscreenPass
 {
 	//std::shared_ptr<IRenderTargetView> m_pRtv;

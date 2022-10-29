@@ -24,7 +24,7 @@ public:
 	//	\brief	Texture constructor with dynamic CPU per frame update
 	Texture( Graphics &gph, const unsigned width, const unsigned height, const unsigned slot );
 
-	void paintTextureToBitmap( Graphics &gph, ID3D11Texture2D *tex, const Bitmap &bitmap, const D3D11_BOX *destPortion = nullptr );
+	void paintBitmapToTexture( Graphics &gph, ID3D11Texture2D *tex, const Bitmap &bitmap, const D3D11_BOX *destPortion = nullptr );
 	void bind( Graphics &gph ) cond_noex override;
 	void update( Graphics &gph ) cond_noex;
 	bool hasAlpha() const noexcept;
@@ -52,6 +52,8 @@ public:
 
 	void bind( Graphics &gph ) cond_noex override;
 	std::shared_ptr<RenderTargetOutput> shareRenderTarget() const;
+	Microsoft::WRL::ComPtr<ID3D11RenderTargetView>& innerD3dResource() noexcept;
+	unsigned getSlot() const noexcept;
 };
 
 //=============================================================
@@ -72,6 +74,8 @@ public:
 
 	void bind( Graphics &gph ) cond_noex override;
 	std::shared_ptr<DepthStencilOutput> shareDepthBuffer() const;
+	Microsoft::WRL::ComPtr<ID3D11DepthStencilView>& innerD3dResource() noexcept;
+	unsigned getSlot() const noexcept;
 };
 
 

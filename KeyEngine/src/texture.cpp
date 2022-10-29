@@ -38,7 +38,7 @@ Texture::Texture( Graphics &gph,
 		&m_pTex );
 	ASSERT_HRES_IF_FAILED;
 
-	paintTextureToBitmap( gph,
+	paintBitmapToTexture( gph,
 		m_pTex.Get(),
 		bitmap );
 
@@ -100,7 +100,7 @@ Texture::Texture( Graphics &gph,
 	ASSERT_HRES_IF_FAILED;
 }
 
-void Texture::paintTextureToBitmap( Graphics &gph,
+void Texture::paintBitmapToTexture( Graphics &gph,
 	ID3D11Texture2D *tex,
 	const Bitmap &bitmap,
 	const D3D11_BOX *destPortion /* = nullptr */)
@@ -235,6 +235,17 @@ std::shared_ptr<RenderTargetOutput> TextureOffscreenRT::shareRenderTarget() cons
 	return m_pRtv;
 }
 
+Microsoft::WRL::ComPtr<ID3D11RenderTargetView>& TextureOffscreenRT::innerD3dResource() noexcept
+{
+	return m_pRtv->d3dResourceCom();
+}
+
+unsigned TextureOffscreenRT::getSlot() const noexcept
+{
+	return m_slot;
+}
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 TextureOffscreenDS::TextureOffscreenDS( Graphics &gph,
 	const unsigned width,
@@ -260,7 +271,7 @@ TextureOffscreenDS::TextureOffscreenDS( Graphics &gph,
 
 	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc{};
 	srvDesc.Format = getShaderInputFormatDs( dsMode );
-	srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURECUBE;
+	srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
 	srvDesc.Texture2D.MostDetailedMip = 0u;
 	srvDesc.Texture2D.MipLevels = 1u;
 	hres = getDevice( gph )->CreateShaderResourceView( pTex.Get(),
@@ -285,6 +296,16 @@ void TextureOffscreenDS::bind( Graphics &gph ) cond_noex
 std::shared_ptr<DepthStencilOutput> TextureOffscreenDS::shareDepthBuffer() const
 {
 	return m_pDsv;
+}
+
+unsigned TextureOffscreenDS::getSlot() const noexcept
+{
+	return m_slot;
+}
+
+Microsoft::WRL::ComPtr<ID3D11DepthStencilView>& TextureOffscreenDS::innerD3dResource() noexcept
+{
+	return m_pDsv->d3dResourceCom();
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -19,7 +19,7 @@ Bitmap::Bitmap( const unsigned int width,
 		1u );
 	if ( FAILED( hres ) )
 	{
-		throwBitmapException( "Failed to construct ScratchImage!" );
+		THROW_BITMAP_EXCEPTION( "Failed to construct ScratchImage!" );
 	}
 }
 
@@ -107,7 +107,7 @@ Bitmap Bitmap::loadFromFile( const std::string &name,
 		scratchImg );
 	if ( FAILED( hres ) )
 	{
-		throwBitmapException( "Failed to load image from file" );
+		THROW_BITMAP_EXCEPTION( "Failed to load image from file" );
 	}
 
 	// get first image
@@ -121,7 +121,7 @@ Bitmap Bitmap::loadFromFile( const std::string &name,
 			convertedImg );
 		if ( FAILED( hres ) )
 		{
-			throwBitmapException( "Failed to convert image" );
+			THROW_BITMAP_EXCEPTION( "Failed to convert image" );
 		}
 
 		return Bitmap{std::move( convertedImg )};
@@ -179,7 +179,7 @@ void Bitmap::save( const std::string &filename,
 		{
 			return dx::WIC_CODEC_BMP;
 		}
-		throwBitmapException( "Image format is not supported" );
+		THROW_BITMAP_EXCEPTION( "Image format is not supported" );
 	};
 
 	HRESULT hres = dx::SaveToWICFile( *m_scratchImg.GetImage( 0, 0, 0 ),
@@ -188,7 +188,7 @@ void Bitmap::save( const std::string &filename,
 		util::s2ws( filename ).c_str() );
 	if ( FAILED( hres ) )
 	{
-		throwBitmapException( "Failed to save image to file" );
+		THROW_BITMAP_EXCEPTION( "Failed to save image to file" );
 	}
 }
 

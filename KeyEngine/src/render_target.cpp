@@ -39,7 +39,7 @@ IRenderTargetView::IRenderTargetView( Graphics &gph,
 	rtvDesc.Texture2D = D3D11_TEX2D_RTV{0};
 	hres = getDevice( gph )->CreateRenderTargetView( pTex.Get(),
 		&rtvDesc,
-		&m_pRtv );
+		&m_pD3dRtv );
 	ASSERT_HRES_IF_FAILED;
 }
 
@@ -70,7 +70,7 @@ IRenderTargetView::IRenderTargetView( Graphics &gph,
 
 	HRESULT hres = getDevice( gph )->CreateRenderTargetView( pTexture,
 		&rtvDesc,
-		&m_pRtv );
+		&m_pD3dRtv );
 	ASSERT_HRES_IF_FAILED;
 }
 
@@ -93,13 +93,14 @@ void IRenderTargetView::bindRenderSurface( Graphics &gph,
 {
 	bindRenderSurface( gph,
 		pD3dDsv ?
-			pD3dDsv->m_pDsv.Get() :
+			pD3dDsv->m_pD3dDsv.Get() :
 			nullptr );
 }
 
 void IRenderTargetView::bindRenderSurface( Graphics &gph,
 	ID3D11DepthStencilView *pD3dDsv ) cond_noex
 {
+	// #TODO: consider making the viewport local as its faster
 	auto viewport = Viewport::fetch( gph,
 		(float) m_width,
 		(float) m_height );
@@ -108,7 +109,7 @@ void IRenderTargetView::bindRenderSurface( Graphics &gph,
 	/*
 	std::array<ID3D11RenderTargetView*, 8u> rtvs =
 	{
-		m_pRtv.Get(),
+		m_pD3dRtv.Get(),
 		nullptr,
 		nullptr,
 		nullptr,
@@ -123,7 +124,7 @@ void IRenderTargetView::bindRenderSurface( Graphics &gph,
 		pD3dDsv );
 	*/
 	getDeviceContext( gph )->OMSetRenderTargets( 1u,
-		m_pRtv.GetAddressOf(),
+		m_pD3dRtv.GetAddressOf(),
 		pD3dDsv );
 	DXGI_GET_QUEUE_INFO( gph );
 }
@@ -131,7 +132,7 @@ void IRenderTargetView::bindRenderSurface( Graphics &gph,
 void IRenderTargetView::clear( Graphics &gph,
 	const std::array<float, 4> &color ) cond_noex
 {
-	getDeviceContext( gph )->ClearRenderTargetView( m_pRtv.Get(),
+	getDeviceContext( gph )->ClearRenderTargetView( m_pD3dRtv.Get(),
 		color.data() );
 	DXGI_GET_QUEUE_INFO( gph );
 }
@@ -140,7 +141,7 @@ void IRenderTargetView::clean( Graphics &gph ) cond_noex
 {
 	// release the back buffer texture resource of the rtv
 	mwrl::ComPtr<ID3D11Resource> pRtvRsc;
-	m_pRtv->GetResource( &pRtvRsc );
+	m_pD3dRtv->GetResource( &pRtvRsc );
 
 	mwrl::ComPtr<ID3D11Texture2D> pRtvTex;
 	pRtvRsc.As( &pRtvTex );
@@ -148,28 +149,13 @@ void IRenderTargetView::clean( Graphics &gph ) cond_noex
 	pRtvTex.Reset();
 
 	// release the rtv resource itself
-	m_pRtv.Reset();
-}
-
-const unsigned IRenderTargetView::getWidth() const noexcept
-{
-	return m_width;
-}
-
-const unsigned IRenderTargetView::getHeight() const noexcept
-{
-	return m_height;
-}
-
-ID3D11RenderTargetView* IRenderTargetView::renderTargetView() const noexcept
-{
-	return m_pRtv.Get();
+	m_pD3dRtv.Reset();
 }
 
 std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC> IRenderTargetView::createStagingTexture( Graphics &gph ) const
 {
 	mwrl::ComPtr<ID3D11Resource> pRtvRsc;
-	m_pRtv->GetResource( &pRtvRsc );
+	m_pD3dRtv->GetResource( &pRtvRsc );
 
 	mwrl::ComPtr<ID3D11Texture2D> pRtvTex;
 	pRtvRsc.As( &pRtvTex );
@@ -192,7 +178,7 @@ std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC> IRender
 	ASSERT_HRES_IF_FAILED;
 
 	D3D11_RENDER_TARGET_VIEW_DESC rtvDesc{};
-	m_pRtv->GetDesc( &rtvDesc );
+	m_pD3dRtv->GetDesc( &rtvDesc );
 	// copy to staging texture
 	if ( rtvDesc.ViewDimension == D3D11_RTV_DIMENSION::D3D11_RTV_DIMENSION_TEXTURE2DARRAY )
 	{
@@ -259,6 +245,35 @@ const Bitmap IRenderTargetView::convertToBitmap( Graphics &gph,
 	return bitmap;
 }
 
+const unsigned IRenderTargetView::getWidth() const noexcept
+{
+	return m_width;
+}
+
+const unsigned IRenderTargetView::getHeight() const noexcept
+{
+	return m_height;
+}
+
+Microsoft::WRL::ComPtr<ID3D11RenderTargetView>& IRenderTargetView::d3dResourceCom() noexcept
+{
+	return m_pD3dRtv;
+}
+
+ID3D11RenderTargetView* IRenderTargetView::d3dResource() const noexcept
+{
+	return m_pD3dRtv.Get();
+}
+
+void IRenderTargetView::setDebugObjectName( const char* name ) noexcept
+{
+#if defined _DEBUG && !defined NDEBUG
+	m_pD3dRtv->SetPrivateData( WKPDID_D3DDebugObjectName,
+		(UINT) strlen( name ),
+		name );
+#endif
+}
+
 
 RenderTargetShaderInput::RenderTargetShaderInput( Graphics &gph,
 	const unsigned width,
@@ -269,7 +284,7 @@ RenderTargetShaderInput::RenderTargetShaderInput( Graphics &gph,
 	m_slot(slot)
 {
 	mwrl::ComPtr<ID3D11Resource> pRsc;
-	m_pRtv->GetResource( &pRsc );
+	m_pD3dRtv->GetResource( &pRsc );
 
 	// create the resource view on the texture
 	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc{};
@@ -279,9 +294,14 @@ RenderTargetShaderInput::RenderTargetShaderInput( Graphics &gph,
 	srvDesc.Texture2D.MipLevels = 1u;
 	HRESULT hres = getDevice( gph )->CreateShaderResourceView( pRsc.Get(),
 		&srvDesc,
-		&m_pSrv );
+		&m_pD3dSrv );
 	ASSERT_HRES_IF_FAILED;
 }
+
+//RenderTargetShaderInput::RenderTargetShaderInput( Graphics &gph, ID3D11Texture2D *pTex, const unsigned slot, std::optional<unsigned> face = {} )
+//{
+
+//}
 
 unsigned RenderTargetShaderInput::getSlot() const noexcept
 {
@@ -292,7 +312,7 @@ void RenderTargetShaderInput::bind( Graphics &gph ) cond_noex
 {
 	getDeviceContext( gph )->PSSetShaderResources( m_slot,
 		1u,
-		m_pSrv.GetAddressOf() );
+		m_pD3dSrv.GetAddressOf() );
 	DXGI_GET_QUEUE_INFO( gph );
 }
 

@@ -165,7 +165,6 @@ std::tuple<int,int> parseCommandLineArguments()
 
 void finally( const std::exception_ptr &exceptionPtr )
 {
-	ThreadPoolJ::resetInstance();
 #if defined _DEBUG && !defined NDEBUG
 	KeyConsole &console = KeyConsole::instance();
 	using namespace std::string_literals;
@@ -196,6 +195,7 @@ void finally( const std::exception_ptr &exceptionPtr )
 				MB_OK | MB_ICONEXCLAMATION );
 		}
 	}
+	ThreadPoolJ::resetInstance();
 
 #if defined _DEBUG && !defined NDEBUG
 	console.log( "KeyEngine shutting down..\n"s );

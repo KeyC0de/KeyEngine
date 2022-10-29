@@ -13,6 +13,8 @@
 #include "graphics_mode.h"
 #include "rectangle.h"
 #include "vtune_itt_domain.h"
+#include "texture.h"
+#include "math_utils.h"
 
 #pragma comment( lib, "dxgi.lib" )
 #pragma comment( lib, "d3d11.lib" )
@@ -40,6 +42,13 @@ Graphics::Adapter::Adapter( IDXGIAdapter *pAdapter )
 {
 	m_pAdapter = pAdapter;
 	pAdapter->GetDesc( &m_desc );
+
+#if defined _DEBUG && !defined NDEBUG
+	const char *primaryAdapterName = "PrimaryDxgiAdapter";
+	m_pAdapter->SetPrivateData( WKPDID_D3DDebugObjectName,
+		(UINT) strlen( primaryAdapterName ),
+		 primaryAdapterName );
+#endif
 }
 
 const DXGI_ADAPTER_DESC* Graphics::Adapter::getDesc() const noexcept
@@ -143,6 +152,18 @@ Graphics::Graphics( const HWND hWnd,
 	}
 	ASSERT_HRES_IF_FAILED;
 
+#if defined _DEBUG && !defined NDEBUG
+	const char *deviceName = "KeyDevice";
+	m_pDevice->SetPrivateData( WKPDID_D3DDebugObjectName,
+		(UINT) strlen( deviceName ),
+		 deviceName );
+
+	const char *immediateContextName = "ImmediateContext";
+	m_pImmediateContext->SetPrivateData( WKPDID_D3DDebugObjectName,
+		(UINT) strlen( immediateContextName ),
+		 immediateContextName );
+#endif
+
 	DXGI_SWAP_CHAIN_DESC1 swapChainDesc{};
 	swapChainDesc.Width = width;
 	swapChainDesc.Height = height;
@@ -209,7 +230,7 @@ Graphics::Graphics( const HWND hWnd,
 	interrogateDirectxFeatures();
 #endif
 
-	renderTarget();
+	renderTargetFromBackBuffer();
 
 	setupOutputDevice();
 
@@ -309,10 +330,10 @@ void Graphics::resize( const unsigned newWidth,
 	// may need to handle DXGI_ERROR_DEVICE_REMOVED & DXGI_ERROR_DEVICE_RESET
 
 	// recreate render target
-	renderTarget();
+	renderTargetFromBackBuffer();
 
 	// recreate depth stencil
-	depthStencil();
+	depthBufferFromBackBuffer();
 
 	// #TODO: consider setting the rtv and dsv back in the renderer
 
@@ -329,13 +350,13 @@ void Graphics::releaseBackBufferForResizing()
 
 	/// #FIXME: assemble all render targets and depth stencils and clear them
 	// release the render target view based on the back buffer:
-	m_rtv->clean( *this );
+	m_pBackBufferRtv->clean( *this );
 
 	// the depth stencil will need to be resized, so release it too:
-	m_dsv->clean( *this );
+	m_pBackBufferDsv->clean( *this );
 
-	UINT rtvRefs = m_rtv.use_count();
-	UINT dsvRefs = m_dsv.use_count();
+	UINT rtvRefs = m_pBackBufferRtv.use_count();
+	UINT dsvRefs = m_pBackBufferDsv.use_count();
 
 	// release any other outstanding references
 	m_pImmediateContext->ClearState();
@@ -345,8 +366,8 @@ void Graphics::releaseBackBufferForResizing()
 	// and wait until these changes are done/flushed
 	m_pImmediateContext->Flush();
 
-	m_rtv.reset();
-	m_dsv.reset();
+	m_pBackBufferRtv.reset();
+	m_pBackBufferDsv.reset();
 
 	/// #FIXME: restore all render targets and depth stencils back
 	//ASSERT( rtvRefs == 1 && dsvRefs == 1, "More references to such resources still exist" );
@@ -361,6 +382,13 @@ void Graphics::setupOutputDevice() noexcept
 
 	hres = dxgiOutput.As( &m_pDxgiOutput );
 	ASSERT_HRES_IF_FAILED;
+
+#if defined _DEBUG && !defined NDEBUG
+	const char *primaryOutputMonitor = "PrimaryOutputMonitor";
+	m_pDxgiOutput->SetPrivateData( WKPDID_D3DDebugObjectName,
+		(UINT) strlen( primaryOutputMonitor ),
+		 primaryOutputMonitor );
+#endif
 }
 
 double Graphics::calcRefreshRate() const noexcept
@@ -627,29 +655,125 @@ const unsigned Graphics::getClientHeight() const noexcept
 	return m_height;
 }
 
-std::shared_ptr<RenderTargetOutput> Graphics::renderTarget()
+std::shared_ptr<RenderTargetOutput> Graphics::renderTargetFromBackBuffer()
 {
-	if ( !m_rtv )
+	if ( !m_pBackBufferRtv )
 	{
-		Microsoft::WRL::ComPtr<ID3D11Texture2D> pD3dBackBuffer;
+		Microsoft::WRL::ComPtr<ID3D11Texture2D> pD3dBackBufferTex;
 		HRESULT hres = m_pSwapChain->GetBuffer( 0u,
 			__uuidof( ID3D11Texture2D ),
-			&pD3dBackBuffer );
+			&pD3dBackBufferTex );
 		ASSERT_HRES_IF_FAILED;
 
-		m_rtv = std::make_shared<RenderTargetOutput>( *this,
-			pD3dBackBuffer.Get() );
+		m_pBackBufferRtv = std::make_shared<RenderTargetOutput>( *this,
+			pD3dBackBufferTex.Get() );
+#if defined _DEBUG && !defined NDEBUG
+		m_pBackBufferRtv->setDebugObjectName( "BackBufferRenderTargetView" );
+#endif
 	}
-	return m_rtv;
+	return m_pBackBufferRtv;
 }
 
-std::shared_ptr<DepthStencilOutput> Graphics::depthStencil()
+std::shared_ptr<DepthStencilOutput> Graphics::depthBufferFromBackBuffer()
 {
-	if ( !m_dsv )
+	if ( !m_pBackBufferDsv )
 	{
-		m_dsv = std::make_shared<DepthStencilOutput>( *this );
+		m_pBackBufferDsv = std::make_shared<DepthStencilOutput>( *this );
+#if defined _DEBUG && !defined NDEBUG
+		m_pBackBufferDsv->setDebugObjectName( "BackBufferDepthStencilView" );
+#endif
 	}
-	return m_dsv;
+	return m_pBackBufferDsv;
+}
+
+std::shared_ptr<TextureOffscreenRT> Graphics::renderTargetOffscreen( const unsigned slot /*= 0u*/ )
+{
+	if ( !m_pOffscreenRtv )
+	{
+		m_pOffscreenRtv = std::make_unique<TextureOffscreenRT>( *this,
+			m_width,
+			m_height,
+			slot );
+#if defined _DEBUG && !defined NDEBUG
+		const char *offscreenRtv = "OffscreenRenderTargetView1";
+		m_pOffscreenRtv->innerD3dResource()->SetPrivateData( WKPDID_D3DDebugObjectName,
+		strlen( offscreenRtv ),
+		 offscreenRtv );
+#endif
+	}
+	return m_pOffscreenRtv;
+}
+
+std::shared_ptr<TextureOffscreenDS> Graphics::depthBufferOffscreen( const unsigned slot /*= 0u*/,
+	DepthStencilViewMode dsvMode /*= DepthStencilViewMode::Normal*/ )
+{
+	if ( !m_pOffscreenDsv )
+	{
+		m_pOffscreenDsv = std::make_unique<TextureOffscreenDS>( *this,
+			m_width,
+			m_height,
+			slot,
+			dsvMode );
+#if defined _DEBUG && !defined NDEBUG
+		const char *offscreenDsv = "OffscreenDepthStencilView1";
+		m_pOffscreenDsv->innerD3dResource()->SetPrivateData( WKPDID_D3DDebugObjectName,
+		strlen( offscreenDsv ),
+		 offscreenDsv );
+#endif
+	}
+	return m_pOffscreenDsv;
+}
+
+void Graphics::bindBackBufferAsOutput() const noexcept
+{
+	m_pImmediateContext->OMSetRenderTargets( 1u,
+		m_pBackBufferRtv->d3dResourceCom().GetAddressOf(),
+		m_pBackBufferDsv->d3dResource() );
+}
+
+void Graphics::bindBackBufferAsOutput( DepthStencilOutput *dsv ) const noexcept
+{
+	m_pImmediateContext->OMSetRenderTargets( 1u,
+		m_pBackBufferRtv->d3dResourceCom().GetAddressOf(),
+		dsv->d3dResource() );
+}
+
+void Graphics::bindBackBufferAsInput()
+{
+	mwrl::ComPtr<ID3D11Texture2D> pD3dBackBufferTex;
+	HRESULT hres = m_pSwapChain->GetBuffer( 0u,
+		__uuidof( ID3D11Texture2D ),
+		&pD3dBackBufferTex );
+
+	D3D11_TEXTURE2D_DESC pD3dBackBufferTexDesc{};
+	pD3dBackBufferTex->GetDesc( &pD3dBackBufferTexDesc );
+	if ( !util::isSetByNumber( pD3dBackBufferTexDesc.BindFlags, D3D11_BIND_SHADER_RESOURCE ) )		// requires SwapChain's desc BufferUsage to have `DXGI_USAGE_SHADER_INPUT` flag set
+	{
+		THROW_GRAPHICS_EXCEPTION( "You cannot bind the back buffer texture as Input to the pipeline! If you are using pre-D3D12 API use a different bufferUsage - like `DXGI_USAGE_SHADER_INPUT`" );
+	}
+
+	D3D11_SHADER_RESOURCE_VIEW_DESC backBufferSrvDesc = {};
+	backBufferSrvDesc.Format = pD3dBackBufferTexDesc.Format;
+	backBufferSrvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
+	backBufferSrvDesc.Texture2D.MostDetailedMip = 0;
+	backBufferSrvDesc.Texture2D.MipLevels = 1;
+
+	mwrl::ComPtr<ID3D11ShaderResourceView> pBackBufferSrv;
+	m_pDevice->CreateShaderResourceView( pD3dBackBufferTex.Get(),
+		&backBufferSrvDesc,
+		&pBackBufferSrv );
+
+	// unbind any other targets from Output
+	m_pImmediateContext->OMSetRenderTargets( 0,
+		nullptr,
+		nullptr );
+	DXGI_GET_QUEUE_INFO_GFX;
+
+	// now bind to slot 0 the back buffer srv
+	m_pImmediateContext->PSSetShaderResources( 0u,
+		1u,
+		pBackBufferSrv.GetAddressOf() );
+	DXGI_GET_QUEUE_INFO_GFX;
 }
 
 #if defined _DEBUG && !defined NDEBUG
@@ -673,6 +797,13 @@ void Graphics::createFactory()
 		reinterpret_cast<void**>( m_pDxgiFactory.GetAddressOf() ) );
 #endif
 	ASSERT_HRES_IF_FAILED;
+
+#if defined _DEBUG && !defined NDEBUG
+	const char *dxgiFactoryDebugName = "KeyDxgiFactory";
+	m_pDxgiFactory->SetPrivateData( WKPDID_D3DDebugObjectName,
+		(UINT) strlen( dxgiFactoryDebugName ),
+		 dxgiFactoryDebugName );
+#endif
 }
 
 void Graphics::createAdapters()
@@ -719,7 +850,6 @@ void Graphics::playbackDeferredCommandList()
 	//}
 }
 
-#if defined _DEBUG && !defined NDEBUG
 void Graphics::interrogateDirectxFeatures()
 {
 	// check for DirectX Math library support
@@ -811,7 +941,6 @@ void Graphics::d3d11DebugReport()
 	hres = m_pImmediateContext->QueryInterface( IID_PPV_ARGS( &pUserDefinedAnnotation ) );
 	ASSERT_HRES_IF_FAILED;
 }
-#endif
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////

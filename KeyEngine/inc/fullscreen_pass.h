@@ -10,7 +10,7 @@ namespace ren
 class IFullscreenPass
 	: public IBindablePass
 {
-	const char *m_fullscreenTag = "$fullscreen";
+	static constexpr const char *m_fullscreenTag = "$fullscreen";
 public:
 	IFullscreenPass( Graphics &gph, const std::string &name ) cond_noex;
 

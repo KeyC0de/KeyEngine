@@ -11,8 +11,6 @@ BasePostProcessingPass::BasePostProcessingPass( Graphics &gph,
 	const std::string &name,
 	const unsigned rezReductFactor )
 	:
-	//IPass{name}
-	//IBindablePass{name}
 	IFullscreenPass{gph, name}
 {
 	//addPassBindable( PixelShader::fetch( gph,
@@ -40,7 +38,7 @@ BasePostProcessingPass::BasePostProcessingPass( Graphics &gph,
 	m_pRtv = std::make_shared<RenderTargetShaderInput>( gph,
 		width,
 		height,
-		4u );
+		0u );
 	addLinker( BindableLinker<IRenderTargetView>::make( "offscreenPostProcessOut",
 		m_pRtv ) );
 
@@ -58,10 +56,10 @@ BasePostProcessingPass::BasePostProcessingPass( Graphics &gph,
 
 void BasePostProcessingPass::run( Graphics &gph ) const cond_noex
 {
-	//m_pRtv->clear( gph );
+	m_pRtv->clear( gph );
 	//m_pRtv->bind( gph );
-	IFullscreenPass::run( gph );
-	//bind( gph );
+	//IFullscreenPass::run( gph );
+	bind( gph );
 }
 
 void BasePostProcessingPass::reset() cond_noex

@@ -40,7 +40,7 @@ IDepthStencilView::IDepthStencilView( Graphics &gph,
 	dsViewDesc.Texture2D.MipSlice = 0u; // no mips with depth maps
 	hres = getDevice( gph )->CreateDepthStencilView( pTexture.Get(),
 		&dsViewDesc,
-		&m_pDsv );
+		&m_pD3dDsv);
 	ASSERT_HRES_IF_FAILED;
 }
 
@@ -73,7 +73,7 @@ IDepthStencilView::IDepthStencilView( Graphics &gph,
 
 	HRESULT hres = getDevice( gph )->CreateDepthStencilView( pTexture,
 		&dsvDesc,
-		&m_pDsv );
+		&m_pD3dDsv);
 	ASSERT_HRES_IF_FAILED;
 }
 
@@ -86,7 +86,7 @@ void IDepthStencilView::bindRenderSurface( Graphics &gph ) cond_noex
 
 	getDeviceContext( gph )->OMSetRenderTargets( 0u,
 		nullptr,
-		m_pDsv.Get() );
+		m_pD3dDsv.Get() );
 	DXGI_GET_QUEUE_INFO( gph );
 }
 
@@ -108,7 +108,7 @@ void IDepthStencilView::bindRenderSurface( Graphics &gph,
 void IDepthStencilView::clear( Graphics &gph,
 	const std::array<float, 4> &unused ) cond_noex
 {
-	getDeviceContext( gph )->ClearDepthStencilView( m_pDsv.Get(),
+	getDeviceContext( gph )->ClearDepthStencilView( m_pD3dDsv.Get(),
 		D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL,
 		1.0f,
 		0u );
@@ -124,7 +124,7 @@ void IDepthStencilView::clean( Graphics &gph ) cond_noex
 
 	// clean the texture resource of the dsv
 	mwrl::ComPtr<ID3D11Resource> pDsvRsc;
-	m_pDsv->GetResource( &pDsvRsc );
+	m_pD3dDsv->GetResource( &pDsvRsc );
 
 	mwrl::ComPtr<ID3D11Texture2D> pDsTex;
 	pDsvRsc.As( &pDsTex);
@@ -132,13 +132,13 @@ void IDepthStencilView::clean( Graphics &gph ) cond_noex
 	pDsTex.Reset();
 
 	// clean the dsv resource itself
-	m_pDsv.Reset();
+	m_pD3dDsv.Reset();
 }
 
 std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC> IDepthStencilView::createStagingTexture( Graphics &gph ) const
 {
 	mwrl::ComPtr<ID3D11Resource> pDsvRsc;
-	m_pDsv->GetResource( &pDsvRsc );
+	m_pD3dDsv->GetResource( &pDsvRsc );
 
 	mwrl::ComPtr<ID3D11Texture2D> pDsTex;
 	pDsvRsc.As( &pDsTex);
@@ -161,7 +161,7 @@ std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC> IDepthS
 	ASSERT_HRES_IF_FAILED;
 
 	D3D11_DEPTH_STENCIL_VIEW_DESC dsvDesc{};
-	m_pDsv->GetDesc( &dsvDesc );
+	m_pD3dDsv->GetDesc( &dsvDesc );
 	// copy to staging texture
 	if ( dsvDesc.ViewDimension == D3D11_DSV_DIMENSION::D3D11_DSV_DIMENSION_TEXTURE2DARRAY )
 	{
@@ -280,6 +280,26 @@ const unsigned int IDepthStencilView::getHeight() const noexcept
 	return m_height;
 }
 
+Microsoft::WRL::ComPtr<ID3D11DepthStencilView>& IDepthStencilView::d3dResourceCom() noexcept
+{
+	return m_pD3dDsv;
+}
+
+ID3D11DepthStencilView* IDepthStencilView::d3dResource() const noexcept
+{
+	return m_pD3dDsv.Get();
+}
+
+void IDepthStencilView::setDebugObjectName( const char* name ) noexcept
+{
+#if defined _DEBUG && !defined NDEBUG
+	m_pD3dDsv->SetPrivateData( WKPDID_D3DDebugObjectName,
+		(UINT) strlen( name ),
+		name );
+#endif
+}
+
+
 DepthStencilShaderInput::DepthStencilShaderInput( Graphics &gph,
 	const unsigned slot,
 	const DepthStencilViewMode dsMode )
@@ -299,7 +319,7 @@ DepthStencilShaderInput::DepthStencilShaderInput( Graphics &gph,
 	m_slot(slot)
 {
 	mwrl::ComPtr<ID3D11Resource> pRes;
-	m_pDsv->GetResource( &pRes );
+	m_pD3dDsv->GetResource( &pRes );
 
 	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc{};
 	srvDesc.Format = getShaderInputFormatDs( dsMode );
@@ -308,7 +328,7 @@ DepthStencilShaderInput::DepthStencilShaderInput( Graphics &gph,
 	srvDesc.Texture2D.MipLevels = 1u;
 	HRESULT hres = getDevice( gph )->CreateShaderResourceView( pRes.Get(),
 		&srvDesc,
-		&m_pSrv );
+		&m_pD3dSrv );
 	ASSERT_HRES_IF_FAILED;
 }
 
@@ -321,7 +341,7 @@ void DepthStencilShaderInput::bind( Graphics &gph ) cond_noex
 {
 	getDeviceContext( gph )->PSSetShaderResources( m_slot,
 		1u,
-		m_pSrv.GetAddressOf() );
+		m_pD3dSrv.GetAddressOf() );
 	DXGI_GET_QUEUE_INFO( gph );
 }
 

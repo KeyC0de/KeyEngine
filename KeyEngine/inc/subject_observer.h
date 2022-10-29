@@ -8,7 +8,7 @@
 
 
 template<typename T, typename = std::enable_if_t<!std::is_abstract_v<T>>>
-class Subscriber;
+class ISubscriber;
 
 //=============================================================
 //	\class	Subject<T>
@@ -20,9 +20,9 @@ class Subscriber;
 template<typename T, typename = std::enable_if_t<!std::is_abstract_v<T>>>
 class Subject
 {
-	friend class Subscriber<T>;
+	friend class ISubscriber<T>;
 
-	std::vector<Subscriber<T>*> m_subscribers;
+	std::vector<ISubscriber<T>*> m_subscribers;
 public:
 	Subject() = default;
 
@@ -32,7 +32,7 @@ public:
 		auto it = m_subscribers.begin();
 		while ( it != m_subscribers.end() )
 		{
-			Subscriber<T> *pSubscriber = *it;
+			ISubscriber<T> *pSubscriber = *it;
 			util::removeByBackSwap( m_subscribers,
 				it );
 			// this unsubscribeFromSubject call actually invalidates our iterator
@@ -44,16 +44,16 @@ public:
 		}
 	}
 
-	void removeSubscriber( const Subscriber<T> *pSubscriber,
+	void removeSubscriber( const ISubscriber<T> *pSubscriber,
 		bool bSubscriberRequested = false )
 	{
-		ASSERT( pSubscriber, "Subscriber was null!" );
-		std::vector<Subscriber<T>*>::iterator it = std::find( m_subscribers.begin(),
+		ASSERT( pSubscriber, "ISubscriber was null!" );
+		std::vector<ISubscriber<T>*>::iterator it = std::find( m_subscribers.begin(),
 			m_subscribers.end(),
 			pSubscriber );
 		if ( it != m_subscribers.end() )
 		{
-			Subscriber<T> *pTargetSubscriber = *it;
+			ISubscriber<T> *pTargetSubscriber = *it;
 			util::removeByBackSwap( m_subscribers,
 				it );
 			if ( pTargetSubscriber && !bSubscriberRequested )
@@ -67,6 +67,8 @@ public:
 	//	\brief	the Subject subclass must call this `notify()` to notify all its subscribers of an event T
 	void notify( const T& )
 	{
+		// take a copy of the list as during notify() some listeners might remove themselves thus invalidating the iterator
+		auto subscribers = m_subscribers;
 		for ( auto it = m_subscribers.begin(); it != m_subscribers.end(); ++it )
 		{
 			auto* p = *it;
@@ -92,11 +94,11 @@ protected:
 		return *this;
 	}
 private:
-	virtual void addSubscriber( const Subscriber<T> *pSubscriber )
+	virtual void addSubscriber( const ISubscriber<T> *pSubscriber )
 	{
-		ASSERT( pSubscriber, "Subscriber was null!" );
+		ASSERT( pSubscriber, "ISubscriber was null!" );
 		// if the subscriber isn't already in our list then add it
-		std::vector<Subscriber<T>*>::iterator it = std::find( m_subscribers.begin(),
+		std::vector<ISubscriber<T>*>::iterator it = std::find( m_subscribers.begin(),
 			m_subscribers.end(),
 			pSubscriber );
 		if ( it == m_subscribers.end() )
@@ -107,21 +109,21 @@ private:
 };
 
 //=============================================================
-//	\class	Subscriber<T>
+//	\class	ISubscriber<T>
 //	\author	KeyC0de
 //	\date	2022/08/27 19:22
-//	\brief	inherit from Subscriber using protected inheritance
-//			as such the concrete class is implemented in-terms-of-this Subscriber
+//	\brief	inherit from ISubscriber using protected inheritance
+//			as such the concrete class is implemented in-terms-of-this ISubscriber
 //			Subscribers cannot unsubscribe by themselves, they have to be X'd by the Subject
 //=============================================================
 template<typename T, typename = std::enable_if_t<!std::is_abstract_v<T>>>
-class Subscriber
+class ISubscriber
 {
 	std::vector<Subject<T>*> m_subjects;
 public:
-	Subscriber() = default;
+	ISubscriber() = default;
 
-	virtual ~Subscriber() noexcept
+	virtual ~ISubscriber() noexcept
 	{
 		unsubscribeAll();
 	}
@@ -193,12 +195,12 @@ public:
 	//			onNotify() must be called only by the base Subject
 	virtual void onNotify( const T &a ) const = 0;
 protected:
-	Subscriber( const Subscriber &rhs )
+	ISubscriber( const ISubscriber &rhs )
 	{
 		*this = rhs;
 	}
 
-	Subscriber& operator=( const Subscriber &rhs )
+	ISubscriber& operator=( const ISubscriber &rhs )
 	{
 		for ( auto it = rhs.m_subjects.begin(); it != rhs.m_subjects.end(); ++it )
 		{
@@ -405,11 +407,11 @@ class EVENT
 
 */
 
-//Example: A `Subscriber` (subscriber/reporter) may even observe multiple `Subject`s (listeners) of different types:
+//Example: A `ISubscriber` (subscriber/reporter) may even observe multiple `Subject`s (listeners) of different types:
 /*
 class EnvironmentPressureWindow
-	: public Subscriber<Temperature>,	// Yes Observers work with CRTP
-	public Subscriber<Pressure>
+	: public ISubscriber<Temperature>,	// Yes Observers work with CRTP
+	public ISubscriber<Pressure>
 {
 public:
 	EnvironmentWindow()
