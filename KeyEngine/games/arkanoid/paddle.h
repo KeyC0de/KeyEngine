@@ -11,7 +11,7 @@ struct Rect;
 class Paddle
 {
 	DirectX::XMFLOAT2 m_posCenter;
-	static constexpr float m_wingWidth = 10.0f;
+	static constexpr float s_wingWidth = 10.0f;
 	ColorBGRA m_color;
 	ColorBGRA m_wingColor;
 	float m_halfWidth;

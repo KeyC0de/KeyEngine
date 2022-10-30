@@ -18,7 +18,7 @@ StringBuffer::StringBuffer( StringBuffer &&rhs ) noexcept
 
 StringBuffer& StringBuffer::operator=( StringBuffer &&rhs ) noexcept
 {
-	std::lock_guard<std::mutex> lg{m_mu};
+	std::lock_guard<std::mutex> lg{s_mu};
 	m_ss << rhs.m_ss.str();
 	return *this;
 }
@@ -41,6 +41,6 @@ const std::string StringBuffer::get() const noexcept
 
 void StringBuffer::print()
 {
-	std::lock_guard<std::mutex> lg{m_mu};
+	std::lock_guard<std::mutex> lg{s_mu};
 	m_stream << m_ss.str();
 }

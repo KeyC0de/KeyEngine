@@ -3,7 +3,6 @@
 #include <vector>
 #include <memory>
 #include <string>
-//#include "constant_buffer_ex.h"
 
 
 // #TODO: rename all m_staticVar to s_staticVar
@@ -12,6 +11,11 @@ class Graphics;
 class IRenderTargetView;
 class IDepthStencilView;
 class Camera;
+
+class IPixelShaderConstantBufferEx;
+template<class>
+class ConstantBufferEx;
+using PixelShaderConstantBufferEx = ConstantBufferEx<IPixelShaderConstantBufferEx>;
 
 namespace ren
 {
@@ -32,7 +36,7 @@ protected:
 	std::shared_ptr<IRenderTargetView> m_pRtv;
 	std::shared_ptr<IDepthStencilView> m_pDsv;
 public:
-	Renderer( Graphics &gph );
+	Renderer( Graphics &gph, bool drawToOffscreen );
 	virtual ~Renderer() noexcept;
 
 	void run( Graphics &gph ) cond_noex;
@@ -60,8 +64,8 @@ class Renderer3d
 	static constexpr inline unsigned s_fullscreenRezReductFactor = 4u;
 	int m_radius;
 	float m_sigma;
-	//std::shared_ptr<PixelShaderConstantBufferEx> m_blurKernel;
-	//std::shared_ptr<PixelShaderConstantBufferEx> m_blurDirection;
+	std::shared_ptr<PixelShaderConstantBufferEx> m_blurKernel;
+	std::shared_ptr<PixelShaderConstantBufferEx> m_blurDirection;
 public:
 	enum KernelType
 	{
@@ -70,7 +74,7 @@ public:
 	};
 	KernelType m_kernelType;
 public:
-	Renderer3d( Graphics &gph, const int radius, const float sigma, KernelType kernelType = Gauss );
+	Renderer3d( Graphics &gph, bool drawToOffscreen, const int radius, const float sigma, KernelType kernelType = Gauss );
 
 	void showImGuiWindows( Graphics &gph );
 	void dumpShadowMap( Graphics &gph, const std::string &path );

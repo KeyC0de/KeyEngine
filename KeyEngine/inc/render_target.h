@@ -60,7 +60,6 @@ class RenderTargetShaderInput
 	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_pD3dSrv;
 public:
 	RenderTargetShaderInput( Graphics &gph, const unsigned width, const unsigned height, const unsigned slot );
-	//RenderTargetShaderInput( Graphics &gph, ID3D11Texture2D *pTex, const unsigned slot, std::optional<unsigned> face = {} );
 
 	void bind( Graphics &gph ) cond_noex override;
 	unsigned getSlot() const noexcept;

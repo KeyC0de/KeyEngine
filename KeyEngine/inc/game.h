@@ -35,8 +35,8 @@ class Game
 		virtual const char* what() const noexcept override final;
 	};
 protected:
-	static inline unsigned m_nWindows;
-	static inline SettingsManager &m_settingsMan = SettingsManager::instance();
+	static inline unsigned s_nWindows;
+	static inline SettingsManager &s_settingsMan = SettingsManager::instance();
 	std::unique_ptr<ImguiManager> m_pImguiMan;		// deleted 2nd
 	Window m_mainWindow;							// deleted 1st
 	std::unique_ptr<State> m_pCurrentState;
@@ -87,15 +87,15 @@ private:
 class Arkanoid final
 	: public Game<Arkanoid>
 {
-	static constexpr inline float m_brickWidth = 40.0f;
-	static constexpr inline float m_brickHeight = 20.0f;
-	static constexpr inline int m_nBricksHorizontally = 18;
-	static constexpr inline int m_nBricksVertically = 4;
-	static constexpr inline int m_nBricks = m_nBricksHorizontally * m_nBricksVertically;
-	static constexpr inline float m_speed = 300.0f;
+	static constexpr inline float s_brickWidth = 40.0f;
+	static constexpr inline float s_brickHeight = 20.0f;
+	static constexpr inline int s_nBricksHorizontally = 18;
+	static constexpr inline int s_nBricksVertically = 4;
+	static constexpr inline int s_nBricks = s_nBricksHorizontally * s_nBricksVertically;
+	static constexpr inline float s_speed = 300.0f;
 	Ball m_ball;
 	Rect m_walls;
-	Brick m_bricks[m_nBricks];
+	Brick m_bricks[s_nBricks];
 	Paddle m_paddle;
 	Sound m_brickSound;
 	Sound m_padSound;

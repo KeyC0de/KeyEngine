@@ -70,7 +70,7 @@ void Graphics::Adapter::getVRamDetails() const noexcept
 	INT64 vRam = desc->DedicatedVideoMemory;
 	INT64 ram = desc->DedicatedSystemMemory;
 	INT64 sharedRam = desc->SharedSystemMemory;
-	std::string featureLevel{ENUM_STR( Graphics::m_featureLevel )};
+	std::string featureLevel{ENUM_STR( Graphics::s_featureLevel )};
 
 #if defined _DEBUG && !defined NDEBUG
 	KeyConsole& console = KeyConsole::instance();
@@ -113,7 +113,7 @@ Graphics::Graphics( const HWND hWnd,
 	// create factory, adapter, device, device rendering context(s), front|back buffers swap chain, output device
 	createFactory();
 	createAdapters();
-	const auto &primaryAdapter = m_adapters.front();
+	const auto &primaryAdapter = s_adapters.front();
 	hres = E_INVALIDARG;
 
 #if defined _DEBUG && !defined NDEBUG
@@ -148,7 +148,7 @@ Graphics::Graphics( const HWND hWnd,
 			(unsigned) std::size( acceptableFeatureLevels ),
 			D3D11_SDK_VERSION,
 			&m_pDevice,
-			&m_featureLevel,
+			&s_featureLevel,
 			&m_pImmediateContext );
 	}
 	ASSERT_HRES_IF_FAILED;
@@ -219,13 +219,13 @@ Graphics::Graphics( const HWND hWnd,
 			&swapChainDesc,
 			&m_pSwapChain,
 			&m_pDevice,
-			&m_featureLevel,
+			&s_featureLevel,
 			&m_pImmediateContext );
 	}
 	ASSERT_HRES_IF_FAILED;
 #endif
 
-	ASSERT( m_featureLevel == D3D_FEATURE_LEVEL_11_1, "Old feature level!" );
+	ASSERT( s_featureLevel == D3D_FEATURE_LEVEL_11_1, "Old feature level!" );
 
 #if defined _DEBUG && !defined NDEBUG
 	interrogateDirectxFeatures();
@@ -238,7 +238,7 @@ Graphics::Graphics( const HWND hWnd,
 	// Create Renderer
 	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{
-		m_pRenderer = std::make_unique<ren::Renderer3d>( *this, 4, 3.0f );
+		m_pRenderer = std::make_unique<ren::Renderer3d>( *this, true, 4, 3.0f );
 		m_pRenderer3d = dynamic_cast<ren::Renderer3d*>( m_pRenderer.get() );
 	}
 	else
@@ -852,7 +852,7 @@ void Graphics::createAdapters()
 	while ( SUCCEEDED( m_pDxgiFactory->EnumAdapters( adapterIndex,
 		&pAdapter ) ) )
 	{
-		m_adapters.emplace_back( pAdapter );
+		s_adapters.emplace_back( pAdapter );
 		adapterIndex += 1;
 	}
 }

@@ -20,7 +20,7 @@ class IConstantBuffer
 protected:
 	Microsoft::WRL::ComPtr<ID3D11Buffer> m_pD3dCb;
 	unsigned m_slot;
-	static inline Graphics *m_gph;
+	static inline Graphics *s_gph;
 public:
 	//	\function	ctor	||	\date	2022/08/14 23:44
 	//	\brief	initially empty d3dcb - supply the data on update
@@ -29,7 +29,7 @@ public:
 		:
 		m_slot(slot)
 	{
-		m_gph = &gph;
+		s_gph = &gph;
 
 		D3D11_BUFFER_DESC cbDesc{};
 		setBufferDesc( cbDesc );
@@ -48,7 +48,7 @@ public:
 		:
 		m_slot(slot)
 	{
-		m_gph = &gph;
+		s_gph = &gph;
 
 		//ASSERT( util::isAligned( &cb, 16 ), "Constant Buffer not 16B aligned!" );
 		D3D11_BUFFER_DESC cbDesc{};
@@ -121,7 +121,7 @@ template<typename CB>
 class VertexShaderConstantBuffer final
 	: public IConstantBuffer<CB>
 {
-	using IConstantBuffer<CB>::m_gph;
+	using IConstantBuffer<CB>::s_gph;
 	using IConstantBuffer<CB>::m_pD3dCb;
 	using IConstantBuffer<CB>::m_slot;
 
@@ -182,14 +182,14 @@ public:
 		D3D11_BUFFER_DESC cbDesc{};
 		setBufferDesc( cbDesc );
 
-		HRESULT hres = getDevice( *m_gph )->CreateBuffer( &cbDesc,
+		HRESULT hres = getDevice( *s_gph )->CreateBuffer( &cbDesc,
 			nullptr,
 			&destBuf );
 		ASSERT_HRES_IF_FAILED;
 
-		getDeviceContext( *m_gph )->CopyResource( destBuf.Get(),
+		getDeviceContext( *s_gph )->CopyResource( destBuf.Get(),
 			srcBuf );
-		DXGI_GET_QUEUE_INFO_P( m_gph );
+		DXGI_GET_QUEUE_INFO_P( s_gph );
 
 		return VertexShaderConstantBuffer<CB>( destBuf,
 			slot );
@@ -200,7 +200,7 @@ template<typename CB>
 class PixelShaderConstantBuffer final
 	: public IConstantBuffer<CB>
 {
-	using IConstantBuffer<CB>::m_gph;
+	using IConstantBuffer<CB>::s_gph;
 	using IConstantBuffer<CB>::m_pD3dCb;
 	using IConstantBuffer<CB>::m_slot;
 
@@ -261,14 +261,14 @@ public:
 		D3D11_BUFFER_DESC cbDesc{};
 		setBufferDesc( cbDesc );
 
-		HRESULT hres = getDevice( *m_gph )->CreateBuffer( &cbDesc,
+		HRESULT hres = getDevice( *s_gph )->CreateBuffer( &cbDesc,
 			nullptr,
 			&destBuf );
 		ASSERT_HRES_IF_FAILED;
 
-		getDeviceContext( *m_gph )->CopyResource( destBuf.Get(),
+		getDeviceContext( *s_gph )->CopyResource( destBuf.Get(),
 			srcBuf );
-		DXGI_GET_QUEUE_INFO_P( m_gph );
+		DXGI_GET_QUEUE_INFO_P( s_gph );
 
 		return PixelShaderConstantBuffer<CB>( destBuf,
 			slot );

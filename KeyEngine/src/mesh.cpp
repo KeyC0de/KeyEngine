@@ -39,7 +39,7 @@ void Mesh::update( const float dt ) cond_noex
 	pass_;
 }
 
-void Mesh::render( const size_t channels ) const noexcept
+void Mesh::render( const size_t channels /* = rch::all*/ ) const noexcept
 {
 	ASSERT( !m_effects.empty(), "No Effects to submit to the Renderer!" );
 	for ( const auto &effect : m_effects )

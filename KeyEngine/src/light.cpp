@@ -28,7 +28,7 @@ PointLight::PointLight( Graphics &gph,
 	const float radius )
 	:
 	m_sphereMesh(gph, radius),
-	m_pscb(gph, m_pointLightPscbSlot),
+	m_pscb(gph, s_pointLightPscbSlot),
 	m_bShadowCasting{bShadowCasting}
 {
 	static int id = 0;

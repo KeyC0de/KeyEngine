@@ -1,4 +1,5 @@
 #include "renderer.h"
+#include "constant_buffer_ex.h"
 #include "renderer_exception.h"
 #include "linker.h"
 #include "render_queue_pass.h"
@@ -28,10 +29,11 @@
 namespace ren
 {
 
-Renderer::Renderer( Graphics &gph )
+Renderer::Renderer( Graphics &gph,
+	bool drawToOffscreen )
 	:
-	m_pRtv{gph.renderTargetOffscreen( 0u )->shareRenderTarget()},
-	m_pDsv{gph.depthBufferOffscreen( 0u, DepthStencilViewMode::Normal )->shareDepthBuffer()}
+	m_pRtv{drawToOffscreen ? gph.renderTargetOffscreen( 0u )->shareRenderTarget() : gph.renderTargetFromBackBuffer()},
+	m_pDsv{drawToOffscreen ? gph.depthBufferOffscreen( 0u, DepthStencilViewMode::Normal )->shareDepthBuffer() : gph.depthBufferFromBackBuffer()}
 {
 	addGlobalBinder( RenderSurfaceBinder<IRenderTargetView>::make( "backColorbuffer",
 		m_pRtv ) );
@@ -88,9 +90,12 @@ void Renderer::run( Graphics &gph ) cond_noex
 	}
 
 	// If there's an onscreen pass (Pass that renders directly to the Back Buffer) then swap the render targets and then run it
-	gph.renderTargetFromBackBuffer()->bindRenderSurface( gph );
-	gph.renderTargetOffscreen()->bind( gph );
-	m_pOnscreenPass->run( gph );
+	if ( m_pOnscreenPass )
+	{
+		gph.renderTargetFromBackBuffer()->bindRenderSurface( gph );
+		gph.renderTargetOffscreen()->bind( gph );
+		m_pOnscreenPass->run( gph );
+	}
 }
 
 void Renderer::reset() noexcept
@@ -262,11 +267,12 @@ RenderQueuePass& Renderer::getRenderQueuePass( const std::string &name )
 
 
 Renderer3d::Renderer3d( Graphics &gph,
+	bool drawToOffscreen,
 	const int radius,
 	const float sigma,
 	const KernelType kernelType )
 	:
-	Renderer{gph},
+	Renderer{gph, drawToOffscreen},
 	m_radius(radius),
 	m_sigma(sigma),
 	m_kernelType{kernelType}
@@ -291,7 +297,7 @@ Renderer3d::Renderer3d( Graphics &gph,
 			"offscreenShadowCubemapOut" );
 		linkPassBinders( *pass );
 		addPass( std::move( pass ) );
-	}/*
+	}
 	{
 		auto pass = std::make_unique<SkyPass>( gph,
 			"sky" );
@@ -303,7 +309,7 @@ Renderer3d::Renderer3d( Graphics &gph,
 			"depthStencil" );
 		linkPassBinders( *pass );
 		addPass( std::move( pass ) );
-	}
+	}/*
 	{
 		auto pass = std::make_unique<BlurOutlineMaskPass>( gph,
 			"blurOutlineMask" );
@@ -390,10 +396,10 @@ Renderer3d::Renderer3d( Graphics &gph,
 		auto pass = std::make_unique<SolidOutlineMaskPass>( gph,
 			"solidOutlineMask" );
 		pass->setupBinderTarget( "renderTarget",
-			"lambertian",
+			"sky",
 			"renderTarget" );
 		pass->setupBinderTarget( "depthStencil",
-			"lambertian",
+			"sky",
 			"depthStencil" );
 		linkPassBinders( *pass );
 		addPass( std::move( pass ) );
@@ -410,29 +416,7 @@ Renderer3d::Renderer3d( Graphics &gph,
 		linkPassBinders( *pass );
 		addPass( std::move( pass ) );
 	}
-	//{
-		//auto pass = std::make_unique<NegativePass>( gph,
-			//"rttFullscreenPp",
-			//4u );
-		//linkPassBinders( *pass );
-		//addPass( std::move( pass ) );
-	//}
-	//{
-	//	auto pass = std::make_unique<BlurPass>( gph,
-	//		"blur" );
-	//	pass->setupBinderTarget( "renderTarget",
-	//		"solidOutlineDraw",
-	//		"renderTarget" );
-	//	pass->setupBinderTarget( "depthStencil",
-	//		"solidOutlineDraw",
-	//		"depthStencil" );
-	//	//pass->setupBinderTarget( "offscreenPostProcessIn",
-	//		//"rttFullscreenPp",
-	//		//"offscreenPostProcessOut" );
-	//	linkPassBinders( *pass );
-	//	addPass( std::move( pass ) );
-	//}
-	/*{
+	{
 		auto pass = std::make_unique<DepthReversedPass>( gph,
 			"depthReversed" );
 		pass->setupBinderTarget( "renderTarget",
@@ -455,12 +439,12 @@ Renderer3d::Renderer3d( Graphics &gph,
 			"depthStencil" );
 		linkPassBinders( *pass );
 		addPass( std::move( pass ) );
-	}*/
+	}
 
 	Renderer::validateBindersLinkage();
 
 	setupGlobalBinderTarget( "backColorbuffer",
-		"solidOutlineDraw",
+		"wireframe",
 		"renderTarget" );
 	Renderer::linkGlobalBinders();
 
@@ -478,7 +462,7 @@ void Renderer3d::showImGuiWindows( Graphics &gph )
 {
 	showShadowDumpImguiWindow( gph );
 	showGaussianBlurImguiWindow( gph );
-	//dynamic_cast<SkyPass&>( getPass( "sky" ) ).displayImguiWidgets();
+	dynamic_cast<SkyPass&>( getPass( "sky" ) ).displayImguiWidgets();
 }
 
 void Renderer3d::showShadowDumpImguiWindow( Graphics &gph )
@@ -562,7 +546,7 @@ void Renderer3d::showGaussianBlurImguiWindow( Graphics &gph )
 void ren::Renderer3d::setActiveCamera( Camera &cam )
 {
 	dynamic_cast<LambertianPass&>( getPass( "lambertian" ) ).setActiveCamera( cam );
-	//dynamic_cast<SkyPass&>( getPass( "sky" ) ).setActiveCamera( cam );
+	dynamic_cast<SkyPass&>( getPass( "sky" ) ).setActiveCamera( cam );
 }
 
 void ren::Renderer3d::setShadowCamera( Camera &cam )
@@ -580,49 +564,49 @@ void Renderer3d::dumpShadowMap( Graphics &gph,
 void Renderer3d::setKernelGauss( const int radius,
 	const float sigma ) cond_noex
 {
-//	ASSERT( radius <= s_maxRadius, "Blur Kernel radius is over the max!" );
-//	ASSERT( sigma <= s_maxSigma, "Blur Kernel sigma is over the max!" );
-//
-//	auto cb = m_blurKernel->getBufferCopy();
-//	const int nTaps = radius * 2 + 1;
-//	cb["nTaps"] = nTaps;
-//	float sum = 0.0f;
-//	for ( int i = 0; i < nTaps; ++i )
-//	{
-//		const auto x = float( i - radius );
-//		const auto coef = util::gaussianDistr( x,
-//			sigma,
-//			0.0f );
-//		sum += coef;
-//		cb["coefficients"][i] = coef;
-//	}
-//	// div by the weighted average
-//	for ( int i = 0; i < nTaps; ++i )
-//	{
-//		cb["coefficients"][i] = (float)cb["coefficients"][i] / sum;
-//	}
-//	m_blurKernel->setBuffer( cb );
+	ASSERT( radius <= s_maxRadius, "Blur Kernel radius is over the max!" );
+	ASSERT( sigma <= s_maxSigma, "Blur Kernel sigma is over the max!" );
+
+	auto cb = m_blurKernel->getBufferCopy();
+	const int nTaps = radius * 2 + 1;
+	cb["nTaps"] = nTaps;
+	float sum = 0.0f;
+	for ( int i = 0; i < nTaps; ++i )
+	{
+		const auto x = float( i - radius );
+		const auto coef = util::gaussianDistr( x,
+			sigma,
+			0.0f );
+		sum += coef;
+		cb["coefficients"][i] = coef;
+	}
+	// div by the weighted average
+	for ( int i = 0; i < nTaps; ++i )
+	{
+		cb["coefficients"][i] = (float)cb["coefficients"][i] / sum;
+	}
+	m_blurKernel->setBuffer( cb );
 }
 
 void Renderer3d::setKernelBox( const int radius ) cond_noex
 {
-//	ASSERT( radius <= s_maxRadius, "Blur Kernel radius is over the max!" );
-//
-//	auto cb = m_blurKernel->getBufferCopy();
-//	const int nTaps = radius * 2 + 1;
-//	cb["nTaps"] = nTaps;
-//	const float c = 1.0f / nTaps;
-//	for ( int i = 0; i < nTaps; ++i )
-//	{
-//		cb["coefficients"][i] = c;
-//	}
-//	m_blurKernel->setBuffer( cb );
+	ASSERT( radius <= s_maxRadius, "Blur Kernel radius is over the max!" );
+
+	auto cb = m_blurKernel->getBufferCopy();
+	const int nTaps = radius * 2 + 1;
+	cb["nTaps"] = nTaps;
+	const float c = 1.0f / nTaps;
+	for ( int i = 0; i < nTaps; ++i )
+	{
+		cb["coefficients"][i] = c;
+	}
+	m_blurKernel->setBuffer( cb );
 }
 
 
 Renderer2d::Renderer2d( Graphics &gph )
 	:
-	Renderer{gph}
+	Renderer{gph, false}
 {
 	{
 		auto pass = std::make_unique<Pass2D>( gph,

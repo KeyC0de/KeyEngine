@@ -15,21 +15,21 @@ ThreadPoolJ::ThreadPoolJ( const std::size_t nthreads,
 ThreadPoolJ& ThreadPoolJ::instance( const std::size_t nThreads,
 	const bool bEnabled )
 {
-	std::unique_lock<std::recursive_mutex> lg{ms_mu};
-	if ( m_pInstance == nullptr )
+	std::unique_lock<std::recursive_mutex> lg{s_mu};
+	if ( s_pInstance == nullptr )
 	{
-		m_pInstance = new ThreadPoolJ{nThreads, bEnabled};
+		s_pInstance = new ThreadPoolJ{nThreads, bEnabled};
 	}
-	return *m_pInstance;
+	return *s_pInstance;
 }
 
 void ThreadPoolJ::resetInstance() noexcept
 {
-	std::unique_lock<std::recursive_mutex> lg{ms_mu};
-	if ( m_pInstance )
+	std::unique_lock<std::recursive_mutex> lg{s_mu};
+	if ( s_pInstance )
 	{
-		delete m_pInstance;
-		m_pInstance = nullptr;
+		delete s_pInstance;
+		s_pInstance = nullptr;
 	}
 }
 

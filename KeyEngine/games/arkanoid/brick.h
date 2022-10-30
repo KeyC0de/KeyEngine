@@ -10,7 +10,7 @@ class Ball;
 
 class Brick
 {
-	static constexpr float m_margin = 1.0f;
+	static constexpr float s_margin = 1.0f;
 	Rect m_rect;
 	ColorBGRA m_color;
 	bool m_bDestroyed = false;

@@ -79,8 +79,8 @@ class Graphics
 	};
 
 private:
-	static inline D3D_FEATURE_LEVEL m_featureLevel;
-	static inline std::vector<Adapter> m_adapters;
+	static inline D3D_FEATURE_LEVEL s_featureLevel;
+	static inline std::vector<Adapter> s_adapters;
 private:
 	unsigned m_width;
 	unsigned m_height;

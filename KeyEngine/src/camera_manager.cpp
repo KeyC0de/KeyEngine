@@ -6,8 +6,8 @@
 
 CameraManager& CameraManager::instance()
 {
-	static CameraManager m_instance{};
-	return m_instance;
+	static CameraManager instance{};
+	return instance;
 }
 
 void CameraManager::setWidth( const int width ) noexcept

@@ -306,11 +306,6 @@ RenderTargetShaderInput::RenderTargetShaderInput( Graphics &gph,
 	ASSERT_HRES_IF_FAILED;
 }
 
-//RenderTargetShaderInput::RenderTargetShaderInput( Graphics &gph, ID3D11Texture2D *pTex, const unsigned slot, std::optional<unsigned> face = {} )
-//{
-
-//}
-
 unsigned RenderTargetShaderInput::getSlot() const noexcept
 {
 	return m_slot;

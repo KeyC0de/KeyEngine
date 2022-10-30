@@ -34,18 +34,13 @@ HorizontalBlurPass::HorizontalBlurPass( Graphics &gph,
 		height,
 		0u );
 
-//#if defined _DEBUG && !defined NDEBUG
-//	UINT nameSize = 64;
-//	char offscreenRtvBlurOutlineNameTest[64] = "";
-//	m_pRtv->d3dResourceCom()->GetPrivateData( WKPDID_D3DDebugObjectName,
-//		&nameSize,
-//		 static_cast<void*>( offscreenRtvBlurOutlineNameTest ) );
-//
-//	const char *offscreenRtvBlurOutlineName = "OffscreenRenderTargetViewBlurOutline";
-//	m_pRtv->d3dResourceCom()->SetPrivateData( WKPDID_D3DDebugObjectName,
-//		strlen( offscreenRtvBlurOutlineName ),
-//		 offscreenRtvBlurOutlineName );
-//#endif
+#if defined _DEBUG && !defined NDEBUG
+	const char *offscreenRtvBlurOutlineName = "OffscreenRenderTargetViewSeparatedBlurFilter";
+	m_pRtv->d3dResourceCom()->SetPrivateData( WKPDID_D3DDebugObjectName,
+		strlen( offscreenRtvBlurOutlineName ),
+		 offscreenRtvBlurOutlineName );
+#endif
+
 	addLinker( BindableLinker<IRenderTargetView>::make( "offscreenBlurOutlineOut",
 		m_pRtv ) );
 }

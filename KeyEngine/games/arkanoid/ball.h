@@ -8,7 +8,7 @@ struct Rect;
 
 class Ball
 {
-	static constexpr inline float m_radius = 7.0f;
+	static constexpr inline float s_radius = 7.0f;
 	DirectX::XMFLOAT2 m_pos;
 	DirectX::XMFLOAT2 m_vel;
 public:

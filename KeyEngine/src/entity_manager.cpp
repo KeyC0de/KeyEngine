@@ -35,18 +35,18 @@ EntityManager::EntityManager()
 
 EntityManager& EntityManager::instance()
 {
-	if ( m_pInstance == nullptr )
+	if ( s_pInstance == nullptr )
 	{
-		m_pInstance = new EntityManager{};
+		s_pInstance = new EntityManager{};
 	}
-	return *m_pInstance;
+	return *s_pInstance;
 }
 
 void EntityManager::resetInstance()
 {
-	if ( m_pInstance != nullptr )
+	if ( s_pInstance != nullptr )
 	{
-		delete m_pInstance;
+		delete s_pInstance;
 	}
 }
 

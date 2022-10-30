@@ -17,7 +17,7 @@ namespace ren
 class CameraManager final
 	: public NonCopyable
 {
-	static inline CameraManager *m_pInstance;
+	static inline CameraManager *s_pInstance;
 	int m_activeCameraIndex = 0;
 	int m_controlledCameraIndex = 0;
 	unsigned int m_clientWidth;

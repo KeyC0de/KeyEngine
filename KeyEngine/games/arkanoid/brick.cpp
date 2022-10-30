@@ -19,7 +19,7 @@ void Brick::render( Graphics &gph ) const cond_noex
 {
 	if ( !m_bDestroyed )
 	{
-		gph.drawRectangle( m_rect.calcScaled( -m_margin ),
+		gph.drawRectangle( m_rect.calcScaled( -s_margin ),
 			m_color );
 	}
 }

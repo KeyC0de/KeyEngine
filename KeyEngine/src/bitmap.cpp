@@ -12,7 +12,7 @@ namespace dx = DirectX;
 Bitmap::Bitmap( const unsigned int width,
 	const unsigned int height )
 {
-	HRESULT hres = m_scratchImg.Initialize2D( m_format,
+	HRESULT hres = m_scratchImg.Initialize2D( s_format,
 		width,
 		height,
 		1u,
@@ -111,11 +111,11 @@ Bitmap Bitmap::loadFromFile( const std::string &name,
 	}
 
 	// get first image
-	if ( scratchImg.GetImage( 0, 0, 0 )->format != m_format )
+	if ( scratchImg.GetImage( 0, 0, 0 )->format != s_format )
 	{
 		dx::ScratchImage convertedImg;
 		hres = dx::Convert( *scratchImg.GetImage( 0, 0, 0 ),
-			m_format,
+			s_format,
 			dx::TEX_FILTER_DEFAULT,
 			dx::TEX_THRESHOLD_DEFAULT,
 			convertedImg );

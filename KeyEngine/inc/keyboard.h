@@ -11,8 +11,8 @@ class Keyboard final
 {
 	friend class Window;
 public:
-	static constexpr inline unsigned int m_nKeys = 256u;
-	static constexpr inline unsigned int m_maxBufferSize = 16u;
+	static constexpr inline unsigned int s_nKeys = 256u;
+	static constexpr inline unsigned int s_maxBufferSize = 16u;
 
 	class Event final
 	{
@@ -52,7 +52,7 @@ public:
 		}
 	};
 	bool m_bAutorepeat = false;
-	std::bitset<m_nKeys> m_keyStates;
+	std::bitset<s_nKeys> m_keyStates;
 	std::queue<Keyboard::Event> m_eventQueue;
 	std::queue<char> m_charBuffer;
 private:

@@ -222,7 +222,7 @@ void Mouse::onRawDelta( const int dx,
 
 void Mouse::trimEventQueue() noexcept
 {
-	while ( m_eventQueue.size() > m_maxBufferSize )
+	while ( m_eventQueue.size() > s_maxBufferSize )
 	{
 		m_eventQueue.pop();
 	}
@@ -230,7 +230,7 @@ void Mouse::trimEventQueue() noexcept
 
 void Mouse::trimRawInputBuffer() noexcept
 {
-	while ( m_rawDeltaBuffer.size() > m_maxBufferSize )
+	while ( m_rawDeltaBuffer.size() > s_maxBufferSize )
 	{
 		m_rawDeltaBuffer.pop();
 	}

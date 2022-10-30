@@ -17,9 +17,9 @@
 class KeyConsole final
 	: public NonCopyable
 {
-	static inline constexpr const char *currentVersion = "v0.4";
-	static inline constexpr const char *defaultConsoleTitle = "Debug Console - ";
-	static inline KeyConsole *m_pInstance;
+	static inline constexpr const char *s_currentVersion = "v0.4";
+	static inline constexpr const char *s_defaultConsoleTitle = "Debug Console - ";
+	static inline KeyConsole *s_pInstance;
 	FILE *m_fp;
 	DWORD m_stdDevice;
 	FILE *m_hMode;			// set this when you print/log/read to stdout/stderr/stdin

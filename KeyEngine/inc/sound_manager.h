@@ -34,7 +34,7 @@ public:
 	//	\date	2020/10/25 14:01
 	//	\brief	back-end
 	//			each Sound sticks to a single Channel
-	//			at most m_nMaxAudioChannels can play at a certain time
+	//			at most s_nMaxAudioChannels can play at a certain time
 	//=============================================================
 	class Channel final
 		: public NonCopyable
@@ -86,8 +86,8 @@ private:
 	std::vector<std::unique_ptr<Channel>> m_idleChannels;
 	std::vector<std::unique_ptr<Submix>> m_submixes;
 
-	static inline constexpr size_t m_nMaxAudioChannels = 16u;
-	static inline constexpr size_t m_nMaxSubmixes = 8u;
+	static inline constexpr size_t s_nMaxAudioChannels = 16u;
+	static inline constexpr size_t s_nMaxSubmixes = 8u;
 public:
 	//	\function	instance	||	\date	2020/10/25 21:38
 	//	\brief  return the single instance of the class

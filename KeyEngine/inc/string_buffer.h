@@ -18,7 +18,7 @@
 class StringBuffer final
 	: public NonCopyable
 {
-	static inline std::mutex m_mu;
+	static inline std::mutex s_mu;
 	std::ostringstream m_ss;
 	std::ostream &m_stream;
 

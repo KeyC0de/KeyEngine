@@ -18,7 +18,7 @@
 class DxgiInfoQueue final
 	: public NonCopyable
 {
-	static inline const DXGI_DEBUG_ID m_msgProducer = DXGI_DEBUG_ALL;
+	static inline const DXGI_DEBUG_ID s_msgProducer = DXGI_DEBUG_ALL;
 	size_t m_index = 0u;
 	Microsoft::WRL::ComPtr<IDXGIInfoQueue> m_pDxgiInfoQueue;
 public:

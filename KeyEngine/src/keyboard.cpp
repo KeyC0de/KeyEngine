@@ -119,7 +119,7 @@ void Keyboard::clearKeyStates() noexcept
 template<typename T>
 void Keyboard::trimBuffer( std::queue<T>& buf ) noexcept
 {
-	while ( buf.size() > m_maxBufferSize )
+	while ( buf.size() > s_maxBufferSize )
 	{
 		buf.pop();
 	}

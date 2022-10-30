@@ -6,7 +6,7 @@
 
 class SettingsManager final
 {
-	static inline SettingsManager *m_pInstance;
+	static inline SettingsManager *s_pInstance;
 	struct Settings
 	{
 		// defaults:

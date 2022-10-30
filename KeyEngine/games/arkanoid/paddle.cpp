@@ -26,8 +26,8 @@ void Paddle::render( Graphics &gph ) const cond_noex
 	Rect rect = this->rect();
 	gph.drawRectangle( rect,
 		m_wingColor );
-	rect.m_left += m_wingWidth;
-	rect.m_right -= m_wingWidth;
+	rect.m_left += s_wingWidth;
+	rect.m_right -= s_wingWidth;
 	gph.drawRectangle( rect,
 		m_color );
 }

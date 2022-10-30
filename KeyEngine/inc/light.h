@@ -13,7 +13,7 @@ class Camera;
 
 class DirectionalLight
 {
-	static constexpr unsigned m_directionalLightPscbSlot = 1u;
+	static constexpr unsigned s_directionalLightPscbSlot = 1u;
 	struct PSCB final	// DirectionalLightPSCB
 	{
 		alignas(16) DirectX::XMFLOAT3 dir;	// directionalLightDirViewSpace in HLSL
@@ -26,7 +26,7 @@ class DirectionalLight
 class PointLight
 {
 	std::string m_name;
-	static constexpr unsigned m_pointLightPscbSlot = 2u;
+	static constexpr unsigned s_pointLightPscbSlot = 2u;
 	struct PSCB final	// PointLightPSCB
 	{
 		alignas(16) DirectX::XMFLOAT3 pos;	// pointLightPosViewSpace in HLSL
@@ -60,7 +60,7 @@ public:
 
 class SpotLight
 {
-	static constexpr unsigned m_spotLightPscbSlot = 3u;
+	static constexpr unsigned s_spotLightPscbSlot = 3u;
 	struct PSCB final	// SpotLightPSCB
 	{
 		alignas(16) DirectX::XMFLOAT3 pos;	// spotLightPosViewSpace in HLSL

@@ -31,12 +31,12 @@ IFullscreenPass::IFullscreenPass( Graphics &gph,
 	vb.emplaceVertex( dx::XMFLOAT2{-1, -1} );
 	vb.emplaceVertex( dx::XMFLOAT2{1, -1} );
 	addPassBindable( VertexBuffer::fetch( gph,
-		m_fullscreenTag,
+		s_fullscreenTag,
 		vb ) );
 
 	std::vector<unsigned> indices{0, 1, 2, 1, 3, 2};
 	addPassBindable( IndexBuffer::fetch( gph,
-		m_fullscreenTag,
+		s_fullscreenTag,
 		indices ) );
 
 	auto vs = VertexShader::fetch( gph,

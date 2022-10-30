@@ -1,5 +1,35 @@
 ﻿
 -- Offscreen architecture
+		/// I. bind offscreen render target
+		ds.Clear( gfx );
+		rt.BindAsTarget( gfx,ds );
+
+		/// II. do normal rendering (to the currently bound -offscreen- rt) as if the offscreen rt was the regular back buffer rt...
+		// bind rt & ds ... (except now we won't render to the backbuffer rt & ds)
+		//ds.Clear( gfx );
+		//gfx.BindSwapBuffer( ds );
+		// main phong lighting pass
+		Stencil::Resolve( gfx,Stencil::Mode::Off )->Bind( gfx );
+		passes[0].Execute( gfx );
+		// outline masking pass
+		Stencil::Resolve( gfx,Stencil::Mode::Write )->Bind( gfx );
+		NullPixelShader::Resolve( gfx )->Bind( gfx );
+		passes[1].Execute( gfx );
+		// outline drawing pass
+		Stencil::Resolve( gfx,Stencil::Mode::Mask )->Bind( gfx );
+		passes[2].Execute( gfx );
+
+		/// III. bind - swap RTVs, output offscreen RT so far becomes input, and swap buffer becomes the output
+		// fullscreen post-process pass
+		gfx.BindSwapBuffer();
+		rt.BindAsTexture( gfx,0 );
+		pVbFull->Bind( gfx );
+		pIbFull->Bind( gfx );
+		pVsFull->Bind( gfx );
+		pPsFull->Bind( gfx );
+		pLayoutFull->Bind( gfx );
+		gfx.DrawIndexed( pIbFull->GetCount() );
+
 Render a scene to texture?
 
 in d3d11 how would you render the scene to a texture?

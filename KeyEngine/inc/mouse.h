@@ -10,7 +10,7 @@ class Mouse final
 {
 	friend class Window;
 
-	static constexpr inline unsigned int m_maxBufferSize = 16u;
+	static constexpr inline unsigned int s_maxBufferSize = 16u;
 
 	struct RawDelta
 	{

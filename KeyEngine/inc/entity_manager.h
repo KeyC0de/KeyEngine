@@ -18,7 +18,7 @@ class Entity;
 class EntityManager final
 	: public NonCopyable
 {
-	static inline EntityManager *m_pInstance;
+	static inline EntityManager *s_pInstance;
 private:
 	std::vector<std::unique_ptr<Entity>> m_entities;
 	std::vector<EntityIndex> m_freelist;

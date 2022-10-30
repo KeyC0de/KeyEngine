@@ -37,13 +37,13 @@ SoundManager::SoundManager( WAVEFORMATEXTENSIBLE *format )
 	ASSERT_HRES_IF_FAILED;
 
 	// create the channels
-	m_idleChannels.reserve( m_nMaxAudioChannels );
-	for ( size_t i = 0; i < m_nMaxAudioChannels; ++i )
+	m_idleChannels.reserve( s_nMaxAudioChannels );
+	for ( size_t i = 0; i < s_nMaxAudioChannels; ++i )
 	{
 		m_idleChannels.emplace_back( std::make_unique<Channel>() );
 	}
-	m_submixes.reserve( m_nMaxSubmixes );
-	for ( size_t i = 0; i < m_nMaxSubmixes; ++i )
+	m_submixes.reserve( s_nMaxSubmixes );
+	for ( size_t i = 0; i < s_nMaxSubmixes; ++i )
 	{
 		m_submixes.emplace_back( std::make_unique<Submix>() );
 	}
@@ -268,7 +268,7 @@ void SoundManager::playChannelSound( class Sound *sound,
 	float volume )
 {
 	std::unique_lock<std::mutex> ul{m_mu};
-	if ( !m_idleChannels.empty() && m_occupiedChannels.size() < m_nMaxAudioChannels )
+	if ( !m_idleChannels.empty() && m_occupiedChannels.size() < s_nMaxAudioChannels )
 	{
 		auto &channel = m_idleChannels.back();
 		channel->setupChannel( *this,

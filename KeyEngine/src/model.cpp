@@ -126,7 +126,7 @@ void Model::setTransform( const DirectX::XMFLOAT4 &rot,
 	const float scale ) cond_noex
 {
 	dx::XMMATRIX worldTransform = dx::XMMatrixAffineTransformation( dx::XMVectorReplicate( scale ),
-		util::g_XMZero,
+		util::s_XMZero,
 		dx::XMLoadFloat4( &rot ),
 		dx::XMLoadFloat4( &pos ) );
 

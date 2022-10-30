@@ -475,7 +475,7 @@ public:
 //=============================================================
 class LayoutMap
 {
-	static inline LayoutMap *m_pInstance;
+	static inline LayoutMap *s_pInstance;
 	std::unordered_map<std::string, std::shared_ptr<con::CBElement>> m_map;
 public:
 	static con::CookedLayout fetch( con::RawLayout &&cbLayout ) cond_noex;

@@ -28,8 +28,8 @@ class ThreadPoolJ final
 {
 	using Task = std::function<void(nonstd::stop_token)>;
 
-	static inline ThreadPoolJ *m_pInstance;
-	static inline std::recursive_mutex ms_mu;
+	static inline ThreadPoolJ *s_pInstance;
+	static inline std::recursive_mutex s_mu;
 
 	bool m_bEnabled = false;
 	std::vector<nonstd::jthread> m_pool;

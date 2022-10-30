@@ -40,39 +40,39 @@ DxgiInfoQueue::DxgiInfoQueue()
 	ASSERT_HRES_IF_FAILED;
 
 	// determine when to break execution
-	m_pDxgiInfoQueue->SetBreakOnSeverity( m_msgProducer,
+	m_pDxgiInfoQueue->SetBreakOnSeverity( s_msgProducer,
 		DXGI_INFO_QUEUE_MESSAGE_SEVERITY_ERROR,
 		true );
-	m_pDxgiInfoQueue->SetBreakOnSeverity( m_msgProducer,
+	m_pDxgiInfoQueue->SetBreakOnSeverity( s_msgProducer,
 		DXGI_INFO_QUEUE_MESSAGE_SEVERITY_CORRUPTION,
 		true );
-	m_pDxgiInfoQueue->SetBreakOnSeverity( m_msgProducer,
+	m_pDxgiInfoQueue->SetBreakOnSeverity( s_msgProducer,
 		DXGI_INFO_QUEUE_MESSAGE_SEVERITY_WARNING,
 		true );
-	m_pDxgiInfoQueue->SetBreakOnSeverity( m_msgProducer,
+	m_pDxgiInfoQueue->SetBreakOnSeverity( s_msgProducer,
 		DXGI_INFO_QUEUE_MESSAGE_SEVERITY_MESSAGE,
 		true );
-	m_pDxgiInfoQueue->SetBreakOnSeverity( m_msgProducer,
+	m_pDxgiInfoQueue->SetBreakOnSeverity( s_msgProducer,
 		DXGI_INFO_QUEUE_MESSAGE_SEVERITY_INFO,
 		true );
 }
 
 void DxgiInfoQueue::markQueueIndex() noexcept
 {
-	m_index = m_pDxgiInfoQueue->GetNumStoredMessages( m_msgProducer );
+	m_index = m_pDxgiInfoQueue->GetNumStoredMessages( s_msgProducer );
 }
 
 std::vector<std::string> DxgiInfoQueue::getInfoMessages()
 {
 	std::vector<std::string> messageDescriptions;
-	const size_t lastIndex = m_pDxgiInfoQueue->GetNumStoredMessages( m_msgProducer );
+	const size_t lastIndex = m_pDxgiInfoQueue->GetNumStoredMessages( s_msgProducer );
 	for( size_t i = m_index; i < lastIndex; ++i )
 	{
 		HRESULT hres;
 		size_t messageLengthInBytes = 0;
 
 		// first get the message length
-		hres = m_pDxgiInfoQueue->GetMessageW( m_msgProducer,
+		hres = m_pDxgiInfoQueue->GetMessageW( s_msgProducer,
 			i,
 			nullptr,
 			&messageLengthInBytes );
@@ -83,7 +83,7 @@ std::vector<std::string> DxgiInfoQueue::getInfoMessages()
 		DXGI_INFO_QUEUE_MESSAGE* pMsg = reinterpret_cast<DXGI_INFO_QUEUE_MESSAGE*>( pMsgStorage.get() );
 
 		// create the message
-		hres = m_pDxgiInfoQueue->GetMessageW( m_msgProducer,
+		hres = m_pDxgiInfoQueue->GetMessageW( s_msgProducer,
 			i,
 			pMsg,
 			&messageLengthInBytes );
@@ -92,7 +92,7 @@ std::vector<std::string> DxgiInfoQueue::getInfoMessages()
 		// add it to the list of messages
 		messageDescriptions.emplace_back( pMsg->pDescription );
 	}
-	//m_pDxgiInfoQueue->ClearStoredMessages( m_msgProducer );
+	//m_pDxgiInfoQueue->ClearStoredMessages( s_msgProducer );
 	//m_i = 0u;
 	return messageDescriptions;
 }

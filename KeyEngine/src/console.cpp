@@ -26,24 +26,24 @@ BOOL WINAPI SetCurrentConsoleFontEx( HANDLE hConsoleOutput, BOOL bMaximumWindow,
 #endif
 #endif // NOGDI
 
-#define MAKE_CONSOLE_DEFAULT_TITLE	std::string{defaultConsoleTitle} + std::string{" "} + std::string{currentVersion}
+#define MAKE_CONSOLE_DEFAULT_TITLE	std::string{s_defaultConsoleTitle} + std::string{" "} + std::string{s_currentVersion}
 #define MAX_CONSOLE_TITLE_LEN	128
 
 
 KeyConsole& KeyConsole::instance() noexcept
 {
-	if ( m_pInstance == nullptr )
+	if ( s_pInstance == nullptr )
 	{
-		m_pInstance = new KeyConsole;
+		s_pInstance = new KeyConsole;
 	}
-	return *m_pInstance;
+	return *s_pInstance;
 }
 
 void KeyConsole::resetInstance()
 {
-	if ( m_pInstance != nullptr )
+	if ( s_pInstance != nullptr )
 	{
-		delete m_pInstance;
+		delete s_pInstance;
 	}
 }
 

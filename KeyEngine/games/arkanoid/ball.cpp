@@ -66,8 +66,8 @@ void Ball::reboundY()
 Rect Ball::rect() const noexcept
 {
 	return Rect::makeGivenCenter( m_pos,
-		m_radius,
-		m_radius );
+		s_radius,
+		s_radius );
 }
 
 const dx::XMFLOAT2& Ball::getVelocity() const noexcept
@@ -82,8 +82,8 @@ const dx::XMFLOAT2& Ball::getPosition() const noexcept
 
 void Ball::render( Graphics &gph ) cond_noex
 {
-	const int x = (int) m_pos.x - (int) m_radius;
-	const int y = (int) m_pos.y - (int) m_radius;
+	const int x = (int) m_pos.x - (int) s_radius;
+	const int y = (int) m_pos.y - (int) s_radius;
 
 #pragma region ballPixels
 	gph.putPixel( 5 + x, 0 + y, col::Silver );

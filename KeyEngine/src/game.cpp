@@ -33,7 +33,7 @@ Game<T>::Game( const int width,
 	m_mainWindow{width, height, title.c_str(), MAIN_WINDOW_CLASS_NAME, Window::windowProc, 200, 200, ColorBGRA{255, 255, 255}, LoadMenuW( THIS_INSTANCE, MAKEINTRESOURCEW( IDR_MENU_APP ) )},
 	m_pCurrentState{std::make_unique<GameState>()}
 {
-	m_nWindows = nWindows;
+	s_nWindows = nWindows;
 }
 
 template <typename T>
@@ -110,7 +110,7 @@ State& Game<T>::state() noexcept
 template <typename T>
 const float Game<T>::calcDt()
 {
-	auto &settings = m_settingsMan.settings();
+	auto &settings = s_settingsMan.settings();
 	static float minFrameTime = 1.0f / settings.iMaxFps;
 	float dt = m_gameTimer.lap() * settings.fGameSpeed;
 
@@ -217,7 +217,7 @@ Sandbox3d::Sandbox3d( const int width,
 	m_carabiner.connectEffectsToRenderer( renderer );
 	//s_cameraMan.connectEffectsToRenderer( renderer );
 
-	m_cube1.setEffectEnabled( rch::blurOutline,
+	m_cube2.setEffectEnabled( rch::blurOutline,
 		false );
 
 	if ( m_pPointLight1->isCastingShadows() )
@@ -421,7 +421,7 @@ void Sandbox3d::render( const float dt )
 	//m_pPointLight2->render( rch::lambert );
 
 	m_cube1.render( rch::lambert | rch::shadow | rch::blurOutline );
-	m_cube2.render( rch::lambert | rch::shadow | rch::solidOutline );
+	m_cube2.render();
 	m_testSphere.render();
 	m_nanoSuit.render( rch::lambert | rch::shadow | rch::blurOutline );
 	m_carabiner.render( rch::lambert | rch::shadow | rch::solidOutline | rch::blurOutline );
@@ -491,15 +491,15 @@ Arkanoid::Arkanoid( const int width,
 	const ColorBGRA colors[4] = {col::Red, col::Green, col::Blue, col::Gold};
 	const dx::XMFLOAT2 topLeft{40.0f, 40.0f};
 
-	for ( int i = 0, y = 0; y < m_nBricksVertically; ++y )
+	for ( int i = 0, y = 0; y < s_nBricksVertically; ++y )
 	{
 		ColorBGRA rowCol = colors[y];
-		for ( int x = 0; x < m_nBricksHorizontally; ++x )
+		for ( int x = 0; x < s_nBricksHorizontally; ++x )
 		{
-			auto curBrickTopLeftOffset = dx::XMFLOAT2{x * m_brickWidth, y * m_brickHeight};
+			auto curBrickTopLeftOffset = dx::XMFLOAT2{x * s_brickWidth, y * s_brickHeight};
 			m_bricks[i] = Brick{Rect{dx::XMFLOAT2{topLeft.x + curBrickTopLeftOffset.x,
 									topLeft.y + curBrickTopLeftOffset.y},
-					m_brickWidth, m_brickHeight},
+					s_brickWidth, s_brickHeight},
 				rowCol};
 			++i;
 		}
@@ -567,11 +567,11 @@ int Arkanoid::checkInput( const float dt )
 
 	if ( keyboard.isKeyPressed( VK_LEFT ) )
 	{
-		m_paddle.setPositionRel( -m_speed * dt );
+		m_paddle.setPositionRel( -s_speed * dt );
 	}
 	if ( keyboard.isKeyPressed( VK_RIGHT ) )
 	{
-		m_paddle.setPositionRel( m_speed * dt );
+		m_paddle.setPositionRel( s_speed * dt );
 	}
 	if ( keyboard.isKeyPressed( VK_BACK ) )
 	{
@@ -588,7 +588,7 @@ void Arkanoid::update( const float dt )
 	bool bCollided = false;
 	float currentColDist = 999999.999f;
 	int curColBrickIndex;
-	for ( int i = 0; i < m_nBricks; ++i )
+	for ( int i = 0; i < s_nBricks; ++i )
 	{
 		if ( m_bricks[i].checkForBallCollision( m_ball ) )
 		{
