@@ -103,17 +103,6 @@ Plane::Plane( Graphics &gph,
 			*VertexShader::fetch( gph, "flat_vs.cso" ) ) );
 
 		addEffect( std::move( blurOutlineMask ) );
-	}/*
-	{
-	// solid outline mask effect
-		Effect solidOutlineMask{rch::solidOutline, "solidOutlineMask", true};
-		solidOutlineMask.addBindable( transformVscb );
-
-		solidOutlineMask.addBindable( InputLayout::fetch( gph,
-			plane.m_vb.getLayout(),
-			*VertexShader::fetch( gph, "flat_vs.cso" ) ) );
-
-		addEffect( std::move( solidOutlineMask ) );
 	}
 	{
 	// blur outline draw effect
@@ -133,7 +122,18 @@ Plane::Plane( Graphics &gph,
 			*VertexShader::fetch( gph, "flat_vs.cso" ) ) );
 
 		addEffect( std::move( blurOutlineDraw ) );
-	}*/
+	}
+	{
+	// solid outline mask effect
+		Effect solidOutlineMask{rch::solidOutline, "solidOutlineMask", true};
+		solidOutlineMask.addBindable( transformVscb );
+
+		solidOutlineMask.addBindable( InputLayout::fetch( gph,
+			plane.m_vb.getLayout(),
+			*VertexShader::fetch( gph, "flat_vs.cso" ) ) );
+
+		addEffect( std::move( solidOutlineMask ) );
+	}
 	{
 	// solid outline draw effect
 		Effect solidOutlineDraw{rch::solidOutline, "solidOutlineDraw", true};

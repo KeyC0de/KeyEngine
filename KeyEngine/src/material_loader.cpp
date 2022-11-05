@@ -178,7 +178,6 @@ MaterialLoader::MaterialLoader( Graphics &gph,
 
 		m_effects.emplace_back( std::move( shadowMap ) );
 	}
-	/*
 	{
 	// blur outline mask effect
 		Effect blurOutlineMask{rch::blurOutline, "blurOutlineMask", false};
@@ -211,7 +210,6 @@ MaterialLoader::MaterialLoader( Graphics &gph,
 
 		m_effects.emplace_back( std::move( blurOutlineDraw ) );
 	}
-	*/
 	{
 	// solid outline mask effect
 		Effect solidOutlineMask{rch::solidOutline, "solidOutlineMask", false};

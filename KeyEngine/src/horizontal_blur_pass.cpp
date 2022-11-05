@@ -28,7 +28,7 @@ HorizontalBlurPass::HorizontalBlurPass( Graphics &gph,
 
 	const unsigned width = gph.getClientWidth() / rezReductFactor;
 	const unsigned height = gph.getClientHeight() / rezReductFactor;
-	// create a RTV to write (the PS operation - which performs the Horizontal Blur) to an offscreen texture, next Pass we'll read from the offscreen tex (again)
+	// create a RTV to write (the PS operation - which performs the Horizontal Blur) to an offscreen texture, next Pass we'll read from it (again)
 	m_pRtv = std::make_shared<RenderTargetShaderInput>( gph,
 		width,
 		height,
@@ -47,6 +47,7 @@ HorizontalBlurPass::HorizontalBlurPass( Graphics &gph,
 
 void HorizontalBlurPass::run( Graphics &gph ) const cond_noex
 {
+	m_pRtv->clear( gph );
 	auto pscb = m_pPscbBlurDirection->getBufferCopy();
 	pscb["bHorizontal"] = true;
 	m_pPscbBlurDirection->setBuffer( pscb );

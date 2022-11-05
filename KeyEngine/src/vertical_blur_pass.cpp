@@ -18,9 +18,6 @@ VerticalBlurPass::VerticalBlurPass( Graphics &gph,
 		0u,
 		TextureSamplerState::FilterMode::Trilinear,
 		TextureSamplerState::AddressMode::Clamp ) );
-	addPassBindable( BlendState::fetch( gph,
-		BlendState::Mode::Alpha,
-		0u ) );
 
 	addBinder( RenderSurfaceBinder<IRenderTargetView>::make( "renderTarget",
 		m_pRtv ) );

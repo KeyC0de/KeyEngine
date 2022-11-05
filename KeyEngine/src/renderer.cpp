@@ -89,11 +89,9 @@ void Renderer::run( Graphics &gph ) cond_noex
 		}
 	}
 
-	// If there's an onscreen pass (Pass that renders directly to the Back Buffer) then swap the render targets and then run it
 	if ( m_pOnscreenPass )
 	{
-		gph.renderTargetFromBackBuffer()->bindRenderSurface( gph );
-		gph.renderTargetOffscreen()->bind( gph );
+		offscreenToBackBufferSwap( gph );
 		m_pOnscreenPass->run( gph );
 	}
 }
@@ -105,6 +103,12 @@ void Renderer::reset() noexcept
 	{
 		pass->reset();
 	}
+}
+
+void Renderer::offscreenToBackBufferSwap( Graphics &gph )
+{
+	gph.renderTargetFromBackBuffer()->bindRenderSurface( gph );
+	gph.renderTargetOffscreen()->bind( gph );
 }
 
 void Renderer::addPass( std::unique_ptr<IPass> pPass )
@@ -309,7 +313,7 @@ Renderer3d::Renderer3d( Graphics &gph,
 			"depthStencil" );
 		linkPassBinders( *pass );
 		addPass( std::move( pass ) );
-	}/*
+	}
 	{
 		auto pass = std::make_unique<BlurOutlineMaskPass>( gph,
 			"blurOutlineMask" );
@@ -391,15 +395,15 @@ Renderer3d::Renderer3d( Graphics &gph,
 			"blurDirection" );
 		linkPassBinders( *pass );
 		addPass( std::move( pass ) );
-	}*/
+	}
 	{
 		auto pass = std::make_unique<SolidOutlineMaskPass>( gph,
 			"solidOutlineMask" );
 		pass->setupBinderTarget( "renderTarget",
-			"sky",
+			"verticalBlur",
 			"renderTarget" );
 		pass->setupBinderTarget( "depthStencil",
-			"sky",
+			"verticalBlur",
 			"depthStencil" );
 		linkPassBinders( *pass );
 		addPass( std::move( pass ) );

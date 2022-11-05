@@ -42,9 +42,9 @@ ShadowPass::ShadowPass( Graphics &gph,
 		2.0f,
 		0.1f ) );
 
-	addPassBindable( BlendState::fetch( gph,	// #TODO: you could remove this
-		BlendState::NoBlend,
-		3u ) );
+	//addPassBindable( BlendState::fetch( gph,
+		//BlendState::NoBlend,
+		//3u ) );
 
 	// create the offscreen texture
 	m_pOffscreenDsvCubemap = std::make_shared<CubeTextureOffscreenDS>( gph,

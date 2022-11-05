@@ -54,6 +54,10 @@ protected:
 	void linkGlobalBinders();
 	IPass& getPass( const std::string &name );
 	void validateBindersLinkage();
+private:
+	//	\function	offscreenToBackBufferSwap	||	\date	2022/11/05 15:42
+	//	\brief	If there's an onscreen pass (Pass that renders directly to the Back Buffer) then swap the render targets (bind b.b. as output and offscreen b. as input) and then run it
+	void offscreenToBackBufferSwap(  Graphics &gph );
 };
 
 class Renderer3d
