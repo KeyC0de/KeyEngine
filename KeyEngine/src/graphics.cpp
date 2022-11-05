@@ -247,7 +247,7 @@ Graphics::Graphics( const HWND hWnd,
 		m_pRenderer2d = dynamic_cast<ren::Renderer2d*>( m_pRenderer.get() );
 	}
 
-	// Create rest of graphic assets
+	// Create the rest
 	if constexpr ( gph_mode::get() != gph_mode::_3D )
 	{
 		m_pCpuBuffer = static_cast<ColorBGRA*>( _aligned_malloc( sizeof( ColorBGRA ) * width * height,

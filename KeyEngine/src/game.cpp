@@ -142,6 +142,12 @@ const float Game<T>::calcDt()
 	return dt;
 }
 
+template<typename T>
+void Game<T>::present()
+{
+	auto &gph = m_mainWindow.getGraphics();
+	gph.endFrame();
+}
 
 template<typename T>
 Game<T>::GameException::GameException( const int line,
@@ -278,10 +284,10 @@ int Sandbox3d::loop()
 			break;
 		}
 		update( dt );
-		render( dt );
 #if defined _DEBUG && !defined NDEBUG
 		test();
 #endif
+		render( dt );
 		present();
 	}
 	return returnC0de;
@@ -470,12 +476,6 @@ void Sandbox3d::test()
 }
 #endif
 
-void Sandbox3d::present()
-{
-	auto &gph = m_mainWindow.getGraphics();
-	gph.endFrame();
-}
-
 
 Arkanoid::Arkanoid( const int width,
 	const int height )
@@ -653,9 +653,3 @@ void Arkanoid::test()
 
 }
 #endif
-
-void Arkanoid::present()
-{
-	auto &gph = m_mainWindow.getGraphics();
-	gph.endFrame();
-}

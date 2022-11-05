@@ -18,7 +18,7 @@ class Paddle
 	float m_halfHeight;
 	bool m_bInCollisionCooldown = false;
 public:
-	Paddle( const DirectX::XMFLOAT2 &position, const float width, const float height, const ColorBGRA col, const ColorBGRA wingCol );
+	Paddle( const DirectX::XMFLOAT2 &position, const float width, const float height, const ColorBGRA color, const ColorBGRA wingColor );
 
 	void render( Graphics &gph ) const cond_noex;
 	bool doBallCollision( Ball &ball );

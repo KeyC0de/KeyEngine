@@ -9,14 +9,14 @@ namespace dx = DirectX;
 Paddle::Paddle( const dx::XMFLOAT2 &pos,
 	float w,
 	float h,
-	ColorBGRA col,
-	ColorBGRA wingCol )
+	ColorBGRA color,
+	ColorBGRA wingColor )
 	:
 	m_posCenter{pos},
 	m_halfWidth(w),
 	m_halfHeight(h),
-	m_color(col),
-	m_wingColor(wingCol)
+	m_color(color),
+	m_wingColor(wingColor)
 {
 
 }

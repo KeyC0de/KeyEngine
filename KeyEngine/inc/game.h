@@ -48,6 +48,9 @@ protected:
 	Game( const int width, const int height, const std::string &title, const unsigned nWindows = 1 );
 
 	const float calcDt();
+	//	\function	present	||	\date	2022/11/05 16:33
+	//	\brief	all child Games must run this function as the very last statement in their render function
+	void present();
 	std::optional<Window*> getForegroundWindow() const noexcept;
 	void setState( std::unique_ptr<State> pNewState, Mouse &mouse );
 	const State* getState() const noexcept;
@@ -81,7 +84,6 @@ private:
 #if defined _DEBUG && !defined NDEBUG
 	void test();
 #endif
-	void present();
 };
 
 class Arkanoid final
@@ -110,7 +112,6 @@ private:
 #if defined _DEBUG && !defined NDEBUG
 	void test();
 #endif
-	void present();
 };
 
 
