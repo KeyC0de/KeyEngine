@@ -38,10 +38,6 @@ Pass2D::Pass2D( Graphics &gph,
 	addPassBindable( std::make_shared<DepthStencilState>( gph,
 		DepthStencilState::DepthOffStencilOff ) );
 
-	addPassBindable( std::make_shared<BlendState>( gph,
-		BlendState::NoBlend,
-		0 ) );
-
 	auto pVs = VertexShader::fetch( gph,
 		"flat2d_vs.cso" );
 

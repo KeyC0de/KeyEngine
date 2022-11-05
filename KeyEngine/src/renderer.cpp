@@ -625,6 +625,8 @@ Renderer2d::Renderer2d( Graphics &gph )
 		addPass( std::move( pass ) );
 	}
 
+	Renderer::validateBindersLinkage();
+
 	setupGlobalBinderTarget( "backColorbuffer",
 		"pass2d",
 		"renderTarget" );
