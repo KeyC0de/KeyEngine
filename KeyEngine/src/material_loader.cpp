@@ -67,6 +67,7 @@ MaterialLoader::MaterialLoader( Graphics &gph,
 			{
 				cbLayout.add<con::Float3>( "materialColor" );
 			}
+
 			RasterizerState::CullMode cullMode = bTextureAlphaChannel ?
 				RasterizerState::TwoSided :
 				RasterizerState::FrontSided;

@@ -246,3 +246,8 @@ std::array<float, 4>& BlendState::blendFactors()
 	ASSERT( m_blendFactors, "No blend factors set!" );
 	return *m_blendFactors;
 }
+
+const BlendState::Mode& BlendState::getBlendMode() const noexcept
+{
+	return m_mode;
+}

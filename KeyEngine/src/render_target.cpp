@@ -108,29 +108,9 @@ void IRenderTargetView::bindRenderSurface( Graphics &gph,
 void IRenderTargetView::bindRenderSurface( Graphics &gph,
 	ID3D11DepthStencilView *pD3dDsv ) cond_noex
 {
-	// #TODO: consider making the viewport local as its faster
-	auto viewport = Viewport::fetch( gph,
-		(float) m_width,
-		(float) m_height );
-	viewport->bind( gph );
+	Viewport viewport{gph, (float) m_width, (float) m_height};
+	viewport.bind( gph );
 
-	/*
-	std::array<ID3D11RenderTargetView*, 8u> rtvs =
-	{
-		m_pD3dRtv.Get(),
-		nullptr,
-		nullptr,
-		nullptr,
-		nullptr,
-		nullptr,
-		nullptr,
-		nullptr,
-	};
-
-	getDeviceContext( gph )->OMSetRenderTargets( 8u,
-		rtvs.data(),
-		pD3dDsv );
-	*/
 	getDeviceContext( gph )->OMSetRenderTargets( 1u,
 		m_pD3dRtv.GetAddressOf(),
 		pD3dDsv );

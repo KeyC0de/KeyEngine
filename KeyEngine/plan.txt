@@ -7,21 +7,6 @@
 dx * uv.u 
 dy * ui.v
 
--- About thick transparent - translucent - meshes we'll need extra work for them..
-
--- In RenderQueuePass separate the vector of Jobs to 2 vectors
-	1. for opaque meshes
-	2. for transparent meshes
-	Even better use a map structure which does auto sorting
-	Map transparents by distance map<float, Mesh, std::less> (back to front) and use reverse iterators to render
-		the Blender operation should be:
-		blendStateRTDesc.SrcBlend = D3D11_BLEND_SRC_ALPHA;
-		blendStateRTDesc.DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
-	std::map<float, Mesh*, std::less<float>> m_opaques;	// front to back
-	std::map<float, Mesh*, std::greater<float>> m_transparents;	// back to front
-
--- Instanced mesh rendering
-
 -- 3d Terrain/Landscape series:
 https://www.rastertek.com/tutdx11s2ter.html
 Landscape Components: Landscapes are divided into multiple Components, which are Unreal's base unit of rendering, visibility calculation, and collision. Components in a Landscape are all the same size and are always square. Each component's height data is stored in a single texture. Because of this, its size has to be a power-of-two number of vertices.
@@ -63,6 +48,11 @@ There is always one more row of vertices than there are quads (think of a quad a
 	m_entityManager
 	m_landscape
 	... 
+
+-- load transparent meshes
+
+-- Instanced mesh rendering
+https://www.braynzarsoft.net/viewtutorial/q16390-33-instancing-with-indexed-primitives
 
 -- Animation
 https://ogldev.org/www/tutorial38/tutorial38.html

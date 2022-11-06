@@ -70,6 +70,22 @@ public:
 		return std::nullopt;
 	}
 
+	template<typename T, typename = std::enable_if_t<std::is_base_of_v<IBindable, T>>>
+	std::optional<const T*> findBindable() const noexcept
+	{
+		for ( const auto &effect : m_effects )
+		{
+			for ( const auto &bindable : effect.getBindables() )
+			{
+				if ( const auto *pB = dynamic_cast<T*>( bindable.get() ) )
+				{
+					return pB;
+				}
+			}
+		}
+		return std::nullopt;
+	}
+
 	//	\function	addEffect	||	\date	2021/10/26 23:58
 	//	\brief	Effects are moved here
 	void addEffect( Effect ef ) noexcept;

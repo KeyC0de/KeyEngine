@@ -48,4 +48,5 @@ public:
 	const float getBlendFactorAlpha() const noexcept;
 	const std::array<float, 4>& getBlendFactors() const noexcept;
 	std::array<float, 4>& blendFactors();
+	const Mode& getBlendMode() const noexcept;
 };
