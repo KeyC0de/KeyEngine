@@ -277,6 +277,7 @@
     <ClCompile Include="src\sprite.cpp" />
     <ClCompile Include="src\string_buffer.cpp" />
     <ClCompile Include="src\sysmetrics.cpp" />
+    <ClCompile Include="src\terrain.cpp" />
     <ClCompile Include="src\testing.cpp" />
     <ClCompile Include="src\main_test.cpp" />
     <ClCompile Include="src\texture.cpp" />
@@ -428,6 +429,7 @@
     <ClInclude Include="inc\sprite.h" />
     <ClInclude Include="inc\string_buffer.h" />
     <ClInclude Include="inc\subject_observer.h" />
+    <ClInclude Include="inc\terrain.h" />
     <ClInclude Include="inc\testing.h" />
     <ClInclude Include="inc\texture.h" />
     <ClInclude Include="inc\texture_desc.h" />

@@ -380,6 +380,9 @@
     <ClCompile Include="src\pass_through.cpp">
       <Filter>engine\vfx\pass</Filter>
     </ClCompile>
+    <ClCompile Include="src\terrain.cpp">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="third_party\imgui\imconfig.h">
@@ -1199,6 +1202,7 @@
     <ClInclude Include="inc\pass_through.h">
       <Filter>engine\vfx\pass</Filter>
     </ClInclude>
+    <ClInclude Include="inc\terrain.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\resources\tray_graffiti.ico">
