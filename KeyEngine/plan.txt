@@ -4,7 +4,7 @@
 3. pass `distanceBetweenVertexAndCamera` to Pixel Shader
 
 -- distance in texture coordinate space:
-dx * uv.u 
+dx * uv.u
 dy * ui.v
 
 -- 3d Terrain/Landscape series:
@@ -47,7 +47,7 @@ There is always one more row of vertices than there are quads (think of a quad a
 -- World class
 	m_entityManager
 	m_landscape
-	... 
+	...
 
 -- load transparent meshes
 
@@ -227,6 +227,9 @@ DCC animation software (Blender, Max, Maya, ...) -> DCC exchange file format (gl
 
 In a way or an other, the aim of the pipeline and importer tools is to end up with runtime data structures (ozz::animation::Skeleton, ozz::animation::Animation, …) that can be used with the runtime libraries, on any platform. Run-time libraries provide jobs and data structures to process runtime operations like sampling, blending…
 
+-- picking
+https://www.youtube.com/watch?v=zbzCZeaWrsM
+
 -- in game ui - modified RmlUI with d3d11 backend
 
 -- Deferred shading to handle multiple dynamic lights
@@ -303,7 +306,7 @@ std::map<std::string, std::string> map;	// map of English string to localized st
 			  EMPIRECAMPAIGN_API CAMPAIGN_LOCALISATION();
 
 			  bool empty() const { return m_localisation_key.empty() && ((m_localised_string && m_localised_string->empty()) || m_custom_string.empty()); }
-			  
+
 			  void set_using_custom_string(const UniString & custom_string);       //If the user overwrites the string with a custom name, we want to store that string
 																														   //but we no longer need to keep the old localisation key, as we will no longer want to do
 																														   //a string table lookup for this string on load/save
@@ -393,7 +396,7 @@ GetKeyState() gets the key status returned from the thread's message queue. The 
 
 isPressed(Key)
 	return GetAsyncKeyState(key) < 0
-	
+
 whether the key was pressed since the last call to GetAsyncKeyState(), and whether the key is currently up or down. If the most significant bit is set, the key is down, and if the least significant bit is set, the key was pressed after the previous call to GetAsyncKeyState().
 
 GetAsyncKeyState just tells you the state right now, it should not be used to monitor possible changes over time!
@@ -413,77 +416,77 @@ example:
 DEFINE_SIMPLE_TWEAKER(OVERRIDE_CIVILIZATION_LEVEL, int32, 0);
 
 struct CLI_ITEM
-                {
-                                CLI_ITEM(CLI::CATEGORY category, const char* usage, const char* description, const char* file_name, int32 line_number, PROGRAMMER_ID owner);
+				{
+								CLI_ITEM(CLI::CATEGORY category, const char* usage, const char* description, const char* file_name, int32 line_number, PROGRAMMER_ID owner);
 
-                                const CLI::CATEGORY     m_category;
-                                const String                        m_usage;
-                                const String                        m_description;
-                                const String                        m_file_name;
-                                const int32                                          m_line_number;
-                                const PROGRAMMER_ID              m_owner;
-                };
+								const CLI::CATEGORY     m_category;
+								const String                        m_usage;
+								const String                        m_description;
+								const String                        m_file_name;
+								const int32                                          m_line_number;
+								const PROGRAMMER_ID              m_owner;
+				};
 
-                typedef HashTable<String, COMMAND*>             COMMAND_MAP;
+				typedef HashTable<String, COMMAND*>             COMMAND_MAP;
 
-                /*
-                The tweak template is a way of declaring an object such that it can be
-                tweaked externally if the subsystem is switched on
-                */
+				/*
+				The tweak template is a way of declaring an object such that it can be
+				tweaked externally if the subsystem is switched on
+				*/
 
 
-                class I_TWEAKER : public CLI_ITEM
-                {
-                public:
-                                UTILITY_API static I_TWEAKER* find(const String&);                                                                                                         // Find a tweaker
-                                UTILITY_API static card32                              find(CLI::CATEGORY, DynamicArray<I_TWEAKER*>&);     // Find all tweakers of a particular category
+				class I_TWEAKER : public CLI_ITEM
+				{
+				public:
+								UTILITY_API static I_TWEAKER* find(const String&);                                                                                                         // Find a tweaker
+								UTILITY_API static card32                              find(CLI::CATEGORY, DynamicArray<I_TWEAKER*>&);     // Find all tweakers of a particular category
 
-                                UTILITY_API I_TWEAKER(const char* name, bool is_environment_variable, CLI::CATEGORY category, const char* usage, const char* description, const char* file_name, int32 line_number, PROGRAMMER_ID owner);
+								UTILITY_API I_TWEAKER(const char* name, bool is_environment_variable, CLI::CATEGORY category, const char* usage, const char* description, const char* file_name, int32 line_number, PROGRAMMER_ID owner);
 
-                                UTILITY_API virtual void script(::UTILITYLIB::UniCharOStream&)  const;
-                                void                                                                                       clean()                                                                                                                                  const;
-                                bool                                                                                       dirty()                                                                                                                                   const;
-                                String                                                                                    name_as_string()                                                                                            const;
-                                String                                                                                    documentation(bool)                                                                                     const;
+								UTILITY_API virtual void script(::UTILITYLIB::UniCharOStream&)  const;
+								void                                                                                       clean()                                                                                                                                  const;
+								bool                                                                                       dirty()                                                                                                                                   const;
+								String                                                                                    name_as_string()                                                                                            const;
+								String                                                                                    documentation(bool)                                                                                     const;
 
-                                virtual const char*                                           type_name()                                                                                                                     const = 0;
-                                virtual void                                                         peek(::UTILITYLIB::UniCharOStream&)                   const = 0;
-                                virtual void                                                         tweak(::UTILITYLIB::UniCharIStream&)   const = 0;
+								virtual const char*                                           type_name()                                                                                                                     const = 0;
+								virtual void                                                         peek(::UTILITYLIB::UniCharOStream&)                   const = 0;
+								virtual void                                                         tweak(::UTILITYLIB::UniCharIStream&)   const = 0;
 
-                                virtual bool*                                                      value_as_bool()                                                                                                = 0;                                         // this is to allow TWEAKERs to be added to the debug menus, temporary measure until we move to a fully CLI menu system
+								virtual bool*                                                      value_as_bool()                                                                                                = 0;                                         // this is to allow TWEAKERs to be added to the debug menus, temporary measure until we move to a fully CLI menu system
 
-                                const String                        m_name;
-                                const bool                                           m_is_environment_variable;
+								const String                        m_name;
+								const bool                                           m_is_environment_variable;
 
-                protected:
-                                mutable bool                     m_dirty;
-                                const I_TWEAKER& operator=(const I_TWEAKER& rhs) const;
-                };
+				protected:
+								mutable bool                     m_dirty;
+								const I_TWEAKER& operator=(const I_TWEAKER& rhs) const;
+				};
 
-                template<typename T> class TWEAKER : public I_TWEAKER
-                {
-                public:
-                                friend FileOut& operator << ( FileOut& file, TWEAKER<T>& t );
+				template<typename T> class TWEAKER : public I_TWEAKER
+				{
+				public:
+								friend FileOut& operator << ( FileOut& file, TWEAKER<T>& t );
 
-                                TWEAKER(const T &t, const char *name, bool is_environment_variable, const char ignored[1], const char *usage, const char *description, const char *file_name, int32 line_number, PROGRAMMER_ID owner = PI_UNIDENTIFIED);
-                                TWEAKER(const T &t, const char *name, bool is_environment_variable, CLI::CATEGORY category, const char *usage, const char *description, const char *file_name, int32 line_number, PROGRAMMER_ID owner = PI_UNIDENTIFIED); // TWEAKER_V2, for the most part
+								TWEAKER(const T &t, const char *name, bool is_environment_variable, const char ignored[1], const char *usage, const char *description, const char *file_name, int32 line_number, PROGRAMMER_ID owner = PI_UNIDENTIFIED);
+								TWEAKER(const T &t, const char *name, bool is_environment_variable, CLI::CATEGORY category, const char *usage, const char *description, const char *file_name, int32 line_number, PROGRAMMER_ID owner = PI_UNIDENTIFIED); // TWEAKER_V2, for the most part
 
-                                T& operator=(const T& rhs)                         const;
-                                operator T()                                                                        const;
+								T& operator=(const T& rhs)                         const;
+								operator T()                                                                        const;
 
-                                const T&                                              val()                       const;
-                                                  T&                                        val();
+								const T&                                              val()                       const;
+												  T&                                        val();
 
-                                // I_TWEAKER
-                                virtual const char*           type_name()                                                                                                                                     const;
-                                virtual void                         peek(::UTILITYLIB::UniCharOStream& dest)          const;
-                                virtual void                         tweak(::UTILITYLIB::UniCharIStream& source)     const;
+								// I_TWEAKER
+								virtual const char*           type_name()                                                                                                                                     const;
+								virtual void                         peek(::UTILITYLIB::UniCharOStream& dest)          const;
+								virtual void                         tweak(::UTILITYLIB::UniCharIStream& source)     const;
 
-                                virtual bool*                      value_as_bool();
+								virtual bool*                      value_as_bool();
 
-                protected:
-                                mutable T                                            m_tweak;
-                };
+				protected:
+								mutable T                                            m_tweak;
+				};
 
 -- Integrate Terrain Navigation (Recast navigation)
 
@@ -499,11 +502,11 @@ class Model
 
 // subclass boilerplate
 #define COMPONENT_CALLBACK_CLASS_BODY(class_id) public: \
-                                                                                                                                                                                                class_id()                                             : TWUI::ComponentCallbacks(#class_id) {  } \
-                                                                                                                                                                                                static PooledString TypeId() { static const PooledString type_id(#class_id); return type_id; }\
-                                                                                                                                                                                                const bool OfType(PooledString id) const override {return class_id::TypeId() == id ;}\
-                                                                                                                                                                                                protected: \
-                                                                                                                                                                                                class_id(const char * id, bool call_construct = true) : TWUI::ComponentCallbacks(id) { if (call_construct) Construct(); } \
-                                                                                                                                                                                                class_id(const char * id, TWUI::Component & c) : TWUI::ComponentCallbacks(id, c) { Construct(); } \
-                                                                                                                                                                                                class_id(TWUI::Component& c) : TWUI::ComponentCallbacks(#class_id, c) { Construct(); } \
-                                                                                                                                                                                                TWUI::ComponentCallbacks* Clone(TWUI::Component& c) const override { return new class_id(c); }
+																																																class_id()                                             : TWUI::ComponentCallbacks(#class_id) {  } \
+																																																static PooledString TypeId() { static const PooledString type_id(#class_id); return type_id; }\
+																																																const bool OfType(PooledString id) const override {return class_id::TypeId() == id ;}\
+																																																protected: \
+																																																class_id(const char * id, bool call_construct = true) : TWUI::ComponentCallbacks(id) { if (call_construct) Construct(); } \
+																																																class_id(const char * id, TWUI::Component & c) : TWUI::ComponentCallbacks(id, c) { Construct(); } \
+																																																class_id(TWUI::Component& c) : TWUI::ComponentCallbacks(#class_id, c) { Construct(); } \
+																																																TWUI::ComponentCallbacks* Clone(TWUI::Component& c) const override { return new class_id(c); }
