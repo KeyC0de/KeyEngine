@@ -16,6 +16,7 @@ public:
 	virtual void onVisited( class Node &node ) = 0;
 };
 
+#ifndef FINAL_RELEASE
 class ImguiVisitor
 	: IModelVisitor
 {
@@ -46,3 +47,4 @@ private:
 	void onVisited( Node &node ) override;
 	TransformData& calcTransform() noexcept;
 };
+#endif

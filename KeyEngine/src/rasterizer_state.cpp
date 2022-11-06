@@ -20,7 +20,7 @@ RasterizerState::RasterizerState( Graphics &gph,
 	rasterDesc.FillMode = fillMode == FillMode::Solid ?
 		D3D11_FILL_SOLID :
 		D3D11_FILL_WIREFRAME;
-	
+
 	HRESULT hres = getDevice( gph )->CreateRasterizerState( &rasterDesc,
 		&m_pRasterizerState );
 	ASSERT_HRES_IF_FAILED;
@@ -79,4 +79,14 @@ const std::string RasterizerState::getUid() const noexcept
 {
 	return calcUid( m_cullMode,
 		m_fillMode );
+}
+
+const RasterizerState::CullMode& RasterizerState::getCullMode() const noexcept
+{
+	return m_cullMode;
+}
+
+const RasterizerState::FillMode& RasterizerState::getFillMode() const noexcept
+{
+	return m_fillMode;
 }

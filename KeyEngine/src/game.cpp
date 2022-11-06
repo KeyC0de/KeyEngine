@@ -39,14 +39,19 @@ Game<T>::Game( const int width,
 template <typename T>
 ImguiManager* Game<T>::createImgui() noexcept
 {
+#ifndef FINAL_RELEASE
 	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{
+
 		return new ImguiManager{};
 	}
 	else
 	{
 		return nullptr;
 	}
+#else
+	return nullptr;
+#endif
 }
 
 template <typename T>
@@ -284,10 +289,10 @@ int Sandbox3d::loop()
 			break;
 		}
 		update( dt );
+		render( dt );
 #if defined _DEBUG && !defined NDEBUG
 		test();
 #endif
-		render( dt );
 		present();
 	}
 	return returnC0de;
@@ -385,25 +390,11 @@ int Sandbox3d::checkInput( const float dt )
 
 void Sandbox3d::update( const float dt )
 {
-	auto &activeCamera = s_cameraMan.activeCamera();
+	const auto &activeCamera = s_cameraMan.getActiveCamera();
 	// binds camera to all Passes that need it
 	auto &gph = m_mainWindow.getGraphics();
 	gph.renderer3d().setActiveCamera( activeCamera );
-	/*
-	m_world.update( dt );		// updates current level-map stuff, terrain, weather, world globals etc.
-	// actor manager updates actors which also updates AI
-	m_actorManager.update( dt );	// updates actors - should be much more efficient after spatial partitioning and frustum culling - for rendering too
-	spatialPartitionGameObjects();		// actors + statics
-	frustumCullGameObjects();			// actors + statics - 1 frustum for each renderable viewpoint (typically just the player's camera)
 
-	m_physics.update( CONST_DT );
-	m_playerManager.update( dt );
-	m_skybox.update( dt );
-	m_lightManager.update( dt );	// update scene lights
-	m_cameraManager.update( dt );	// update active cameras
-	m_particles.update( dt );
-	m_soundManager.update( dt );
-	*/
 	m_pPointLight1->update( gph,
 		dt,
 		activeCamera.getViewMatrix() );
@@ -440,16 +431,17 @@ void Sandbox3d::render( const float dt )
 	gph.updateAndRenderFpsTimer();
 }
 
-#if defined _DEBUG && !defined NDEBUG
 void Sandbox3d::test()
 {
+#if defined _DEBUG && !defined NDEBUG
 	using namespace std::string_literals;
 	KeyConsole &console = KeyConsole::instance();
 
-	const BindableMap &instanceToBeInspected = BindableMap::getInstance();
+	//const BindableMap &instanceToBeInspected = BindableMap::getInstance();
 
-	console.print( "BindableMap instance count: "s + std::to_string( BindableMap::getInstanceCount() ) + "\n"s );
-	console.print( "BindableMap garbage count: "s + std::to_string( BindableMap::getGarbageCount() ) + "\n"s );
+	//console.print( "BindableMap instance count: "s + std::to_string( BindableMap::getInstanceCount() ) + "\n"s );
+	//console.print( "BindableMap garbage count: "s + std::to_string( BindableMap::getGarbageCount() ) + "\n"s );
+
 	console.print( "Current distance from carabiner: "s + std::to_string( m_carabiner.getDistanceFromActiveCamera() ) + "\n"s );
 
 	/// Render Imgui stuff
@@ -473,10 +465,10 @@ void Sandbox3d::test()
 	{
 		ImGui::ShowDemoWindow( &b_bShowDemoWindow );
 	}
-}
 #endif
+}
 
-
+////////////////////////////////////////////////////////////////////////////////////////////////////
 Arkanoid::Arkanoid( const int width,
 	const int height )
 	:
@@ -524,10 +516,10 @@ int Arkanoid::loop()
 			break;
 		}
 		update( dt );
+		render( dt );
 #if defined _DEBUG && !defined NDEBUG
 		test();
 #endif
-		render( dt );
 		present();
 	}
 	return returnC0de;
@@ -647,9 +639,9 @@ void Arkanoid::render( const float dt )
 	gph.runRenderer();
 }
 
-#if defined _DEBUG && !defined NDEBUG
 void Arkanoid::test()
 {
-
-}
+#if defined _DEBUG && !defined NDEBUG
+	pass_;
 #endif
+}

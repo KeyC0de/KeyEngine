@@ -1,5 +1,7 @@
 #include "camera.h"
-#include "imgui.h"
+#ifndef FINAL_RELEASE
+#	include "imgui.h"
+#endif
 #include "graphics.h"
 #include "math_utils.h"
 
@@ -128,6 +130,7 @@ DirectX::XMMATRIX Camera::getOrthographicProjectionMatrix( const unsigned viewWi
 
 void Camera::displayImguiWidgets( Graphics &gph ) noexcept
 {
+#ifndef FINAL_RELEASE
 	bool projDirty = false;
 	bool rotDirty = false;
 	bool posDirty = false;
@@ -191,6 +194,7 @@ void Camera::displayImguiWidgets( Graphics &gph ) noexcept
 			m_nearZ,
 			m_farZ );
 	}
+#endif
 }
 
 const float Camera::getFovRadians() const noexcept
@@ -297,4 +301,72 @@ void Camera::connectEffectsToRenderer( ren::Renderer &ren )
 {
 	m_cameraFrustum.connectEffectsToRenderer( ren );
 	m_widget.connectEffectsToRenderer( ren );
+}
+
+std::vector<dx::XMFLOAT4> Camera::getFrustumPlanes() const noexcept
+{
+	// x, y, z, and w represent A, B, C and D in the plane equation
+	// where ABC are the xyz of the planes normal, and D is the plane constant
+	std::vector<dx::XMFLOAT4> frustumPlanes( 6 );
+
+	dx::XMFLOAT4X4 viewProj;	// Left-Handed
+	dx::XMStoreFloat4x4( &viewProj,
+		getViewMatrix() * getPerspectiveProjectionMatrix() );
+
+	// .x|y|z|w of the plane represent A|B|C|D of the plane equation
+
+	// Left Frustum Plane
+	// add first column of the matrix to the fourth column
+	frustumPlanes[0].x = viewProj._14 + viewProj._11;
+	frustumPlanes[0].y = viewProj._24 + viewProj._21;
+	frustumPlanes[0].z = viewProj._34 + viewProj._31;
+	frustumPlanes[0].w = viewProj._44 + viewProj._41;
+
+	// Right Frustum Plane
+	// subtract first column of matrix from the fourth column
+	frustumPlanes[1].x = viewProj._14 - viewProj._11;
+	frustumPlanes[1].y = viewProj._24 - viewProj._21;
+	frustumPlanes[1].z = viewProj._34 - viewProj._31;
+	frustumPlanes[1].w = viewProj._44 - viewProj._41;
+
+	// Top Frustum Plane
+	// subtract second column of matrix from the fourth column
+	frustumPlanes[2].x = viewProj._14 - viewProj._12;
+	frustumPlanes[2].y = viewProj._24 - viewProj._22;
+	frustumPlanes[2].z = viewProj._34 - viewProj._32;
+	frustumPlanes[2].w = viewProj._44 - viewProj._42;
+
+	// Bottom Frustum Plane
+	// add second column of the matrix to the fourth column
+	frustumPlanes[3].x = viewProj._14 + viewProj._12;
+	frustumPlanes[3].y = viewProj._24 + viewProj._22;
+	frustumPlanes[3].z = viewProj._34 + viewProj._32;
+	frustumPlanes[3].w = viewProj._44 + viewProj._42;
+
+	// Near Frustum Plane
+	// we could add the third column to the fourth column to get the near plane, but we don't have to do this because the third column IS the near plane
+	frustumPlanes[4].x = viewProj._13;
+	frustumPlanes[4].y = viewProj._23;
+	frustumPlanes[4].z = viewProj._33;
+	frustumPlanes[4].w = viewProj._43;
+
+	// Far Frustum Plane
+	// subtract third column of matrix from the fourth column
+	frustumPlanes[5].x = viewProj._14 - viewProj._13;
+	frustumPlanes[5].y = viewProj._24 - viewProj._23;
+	frustumPlanes[5].z = viewProj._34 - viewProj._33;
+	frustumPlanes[5].w = viewProj._44 - viewProj._43;
+
+	// Normalize plane normals (A, B and C (xyz))
+	// take note that the planes face inward the frustum
+	for ( int i = 0; i < 6; ++i )
+	{
+		const float planeNormalLength = sqrt( ( frustumPlanes[i].x * frustumPlanes[i].x ) + ( frustumPlanes[i].y * frustumPlanes[i].y ) + ( frustumPlanes[i].z * frustumPlanes[i].z ) );
+		frustumPlanes[i].x /= planeNormalLength;
+		frustumPlanes[i].y /= planeNormalLength;
+		frustumPlanes[i].z /= planeNormalLength;
+		frustumPlanes[i].w /= planeNormalLength;
+	}
+
+	return frustumPlanes;
 }

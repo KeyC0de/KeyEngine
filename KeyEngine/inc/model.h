@@ -54,7 +54,9 @@ public:
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	//	\function	getDistanceFromActiveCamera	||	\date	2022/09/03 13:27
 	//	\brief	return the distance from the currently active camera for the primary Mesh
-	const float getDistanceFromActiveCamera() const noexcept;
+	float getDistanceFromActiveCamera() const noexcept;
+	void setCulled( const bool bCulled );
+	bool isCulled() const noexcept;
 private:
 	std::unique_ptr<Node> parseModelNodeGraph( const aiNode &node, int imguiNodeId, const float scale ) noexcept;
 };

@@ -23,5 +23,12 @@ void RenderQueuePass::reset() cond_noex
 	m_jobs.clear();
 }
 
+#if defined _DEBUG && !defined NDEBUG
+int RenderQueuePass::getJobCount() const noexcept
+{
+	return m_jobs.size();
+}
+#endif
+
 
 }//ren

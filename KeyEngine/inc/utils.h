@@ -36,7 +36,7 @@ Both of them are just performance hints to the compiler.
 //	\macro	ALIAS_FUNCTION
 //	\brief  optimal way of renaming/aliasing a function to another - can be inline & no unnecessary copies
 //	\date	2022/08/29 13:33
-#define ALIAS_FUNCTION( originalFunctionName, aliasedFunctionName) \
+#define ALIAS_FUNCTION( originalFunctionName, aliasedFunctionName ) \
 	template <typename... TArgs>\
 	inline auto aliasedFunctionName( TArgs&&... args ) -> decltype( originalFunctionName( std::forward<TArgs>( args )... ) )\
 	{\

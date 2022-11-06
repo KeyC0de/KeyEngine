@@ -1,6 +1,7 @@
-#include <filesystem>
 #include "imgui_manager.h"
-#include "imgui.h"
+#ifndef FINAL_RELEASE
+#	include <filesystem>
+#	include "imgui.h"
 
 
 ImguiManager::ImguiManager()
@@ -21,3 +22,5 @@ ImguiManager::~ImguiManager()
 {
 	ImGui::DestroyContext();
 }
+
+#endif

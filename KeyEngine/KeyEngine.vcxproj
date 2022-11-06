@@ -74,7 +74,7 @@
     <IntDir>$(ProjectDir)\int\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)third_party\dxtex\include;$(ProjectDir)third_party\assimp\include;$(ProjectDir)third_party\inih;$(ProjectDir)third_party\imgui;$(ProjectDir)third_party\DirectXTK\include;$(ProjectDir)inc;$(ProjectDir)third_party\catch;$(ProjectDir)third_party\jthread;C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include;$(ProjectDir)games</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)third_party\dxtex\include;$(ProjectDir)third_party\assimp\include;$(ProjectDir)third_party\inih;$(ProjectDir)third_party\DirectXTK\include;$(ProjectDir)inc;$(ProjectDir)third_party\catch;$(ProjectDir)third_party\jthread;C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include;$(ProjectDir)games</IncludePath>
     <LibraryPath>$(ProjectDir)third_party\dxtex\bin\Release;$(ProjectDir)third_party\DirectXTK\bin\Release;$(ProjectDir)third_party\assimp\bin\x64;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)\int\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>

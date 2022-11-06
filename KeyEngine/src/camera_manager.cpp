@@ -1,5 +1,7 @@
 #include "camera_manager.h"
-#include "imgui.h"
+#ifndef FINAL_RELEASE
+#	include "imgui.h"
+#endif
 #include "camera.h"
 #include "graphics.h"
 
@@ -32,9 +34,10 @@ const int CameraManager::getClientHeight() const noexcept
 
 void CameraManager::spawnImguiWindow( Graphics &gph )
 {
+#ifndef FINAL_RELEASE
 	if ( ImGui::Begin( "Cameras" ) )
 	{
-		if ( ImGui::BeginCombo( "Active", activeCamera().getName().c_str() ) )
+		if ( ImGui::BeginCombo( "Active", getActiveCamera().getName().c_str() ) )
 		{
 			for ( int i = 0; i < std::size( m_cameras ); ++i )
 			{
@@ -47,7 +50,7 @@ void CameraManager::spawnImguiWindow( Graphics &gph )
 			ImGui::EndCombo();
 		}
 
-		if ( ImGui::BeginCombo( "Controlled", controlledCamera().getName().c_str() ) )
+		if ( ImGui::BeginCombo( "Controlled", getControlledCamera().getName().c_str() ) )
 		{
 			for ( int i = 0; i < std::size( m_cameras ); ++i )
 			{
@@ -63,11 +66,13 @@ void CameraManager::spawnImguiWindow( Graphics &gph )
 		controlledCamera().displayImguiWidgets( gph );
 	}
 	ImGui::End();
+#endif
 }
 
 void CameraManager::bind( Graphics &gph )
 {
-	gph.setViewMatrix( activeCamera().getViewMatrix() );
+	ASSERT( m_clientWidth != 0 && m_clientHeight != 0, "Invalid camera binding!" );
+	gph.setViewMatrix( getActiveCamera().getViewMatrix() );
 }
 
 void CameraManager::add( std::shared_ptr<Camera> pCam )
@@ -94,7 +99,12 @@ void CameraManager::render( const size_t channels ) const
 	}
 }
 
-Camera& CameraManager::activeCamera() const noexcept
+Camera& CameraManager::activeCamera() cond_noex
+{
+	return *m_cameras[m_activeCameraIndex];
+}
+
+const Camera& CameraManager::getActiveCamera() const noexcept
 {
 	return *m_cameras[m_activeCameraIndex];
 }
@@ -104,7 +114,17 @@ std::shared_ptr<Camera> CameraManager::shareActiveCamera() const noexcept
 	return m_cameras[m_activeCameraIndex];
 }
 
-Camera& CameraManager::controlledCamera()
+Camera& CameraManager::controlledCamera() cond_noex
 {
 	return *m_cameras[m_controlledCameraIndex];
+}
+
+const Camera& CameraManager::getControlledCamera() const noexcept
+{
+	return *m_cameras[m_controlledCameraIndex];
+}
+
+std::shared_ptr<Camera> CameraManager::shareControlledCamera() const noexcept
+{
+	return m_cameras[m_controlledCameraIndex];
 }

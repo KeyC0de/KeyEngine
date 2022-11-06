@@ -71,7 +71,10 @@ CameraWidget::CameraWidget( Graphics &gph )
 	m_pPrimitiveTopology = PrimitiveTopology::fetch( gph,
 		D3D11_PRIMITIVE_TOPOLOGY_LINELIST );
 
-	/*{
+	createAabb( vb );
+	setMeshId();
+
+	{
 		Effect wireframe{rch::wireframe, "wireframe", true};
 
 		auto pVs = VertexShader::fetch( gph,
@@ -97,7 +100,7 @@ CameraWidget::CameraWidget( Graphics &gph )
 			0u ) );
 
 		addEffect( std::move( wireframe ) );
-	}*/
+	}
 }
 
 void CameraWidget::setPosition( const DirectX::XMFLOAT3 &pos )

@@ -25,7 +25,6 @@ class CameraManager final
 	std::vector<std::shared_ptr<Camera>> m_cameras;
 
 	CameraManager() = default;
-	Camera& controlledCamera();
 public:
 	static CameraManager& instance();
 public:
@@ -38,6 +37,10 @@ public:
 	void add( std::shared_ptr<Camera> pCam );
 	void connectEffectsToRenderer( ren::Renderer &r );
 	void render( const size_t channels = rch::all ) const;
-	Camera& activeCamera() const noexcept;
+	Camera& activeCamera() cond_noex;
+	const Camera& getActiveCamera() const noexcept;
 	std::shared_ptr<Camera> shareActiveCamera() const noexcept;
+	Camera& controlledCamera() cond_noex;
+	const Camera& getControlledCamera() const noexcept;
+	std::shared_ptr<Camera> shareControlledCamera() const noexcept;
 };

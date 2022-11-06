@@ -1,5 +1,7 @@
 #include "light.h"
-#include "imgui.h"
+#ifndef FINAL_RELEASE
+#	include "imgui.h"
+#endif
 #include "camera.h"
 #include "math_utils.h"
 #include "assertions_console.h"
@@ -78,6 +80,7 @@ bool PointLight::isCastingShadows() const noexcept
 
 void PointLight::displayImguiWidgets() noexcept
 {
+#ifndef FINAL_RELEASE
 	if ( ImGui::Begin( m_name.c_str() ) )
 	{
 		bool bDirty = false;
@@ -112,6 +115,7 @@ void PointLight::displayImguiWidgets() noexcept
 		}
 	}
 	ImGui::End();
+#endif
 }
 
 void PointLight::resetToDefault() noexcept

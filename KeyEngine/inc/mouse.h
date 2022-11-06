@@ -21,7 +21,7 @@ class Mouse final
 	class Event final
 	{
 	public:
-		enum class Type
+		enum Type
 		{
 			LMBPress,
 			LMBRelease,
@@ -60,7 +60,7 @@ class Mouse final
 
 		constexpr bool isValid() const noexcept
 		{
-			return m_type != Type::Invalid;
+			return m_type != Invalid;
 		}
 
 		constexpr Type getType() const noexcept

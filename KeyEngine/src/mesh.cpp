@@ -9,6 +9,13 @@
 #include "d3d_utils.h"
 
 
+namespace
+{
+
+static unsigned g_numMeshes = 0u;
+
+}
+
 namespace dx = DirectX;
 
 Mesh::Mesh( Graphics &gph,
@@ -27,6 +34,9 @@ Mesh::Mesh( Graphics &gph,
 	{
 		addEffect( std::move( effect ) );
 	}
+
+	createAabb( aimesh );
+	setMeshId();
 }
 
 //Mesh::~Mesh() noexcept
@@ -42,10 +52,17 @@ void Mesh::update( const float dt ) cond_noex
 void Mesh::render( const size_t channels /* = rch::all*/ ) const noexcept
 {
 	ASSERT( !m_effects.empty(), "No Effects to submit to the Renderer!" );
-	for ( const auto &effect : m_effects )
+
+	auto frustumPlanes = CameraManager::instance().getActiveCamera().getFrustumPlanes();
+
+	if ( m_meshId != 0 )
+	if ( !frustumCull( frustumPlanes ) )
 	{
-		effect.render( *this,
-			channels );
+		for ( const auto &effect : m_effects )
+		{
+			effect.render( *this,
+				channels );
+		}
 	}
 }
 
@@ -167,20 +184,145 @@ DirectX::XMMATRIX Mesh::calcScaleTr() const noexcept
 
 void Mesh::setDistanceFromActiveCamera() noexcept
 {
-	auto pos = calcPosition();
-	auto &cameraPos = CameraManager::instance().activeCamera().getPosition();
+	const auto pos = calcPosition();
+	const auto &cameraPos = CameraManager::instance().getActiveCamera().getPosition();
 	m_distanceFromActiveCamera = util::distance( pos,
 		cameraPos );
 }
 
-const float Mesh::getDistanceFromActiveCamera() const noexcept
+float Mesh::getDistanceFromActiveCamera() const noexcept
 {
 	return m_distanceFromActiveCamera;
 }
 
+void Mesh::setCulled( const bool bCulled )
+{
+	m_bCulledThisFrame = bCulled;
+}
+
+bool Mesh::isCulled() const noexcept
+{
+	return m_bCulledThisFrame;
+}
+
 float Mesh::calcDistanceFromActiveCamera( const DirectX::XMFLOAT3 &pos ) const noexcept
 {
-	auto &cameraPos = CameraManager::instance().activeCamera().getPosition();
+	const auto &cameraPos = CameraManager::instance().getActiveCamera().getPosition();
 	return util::distance( pos,
 		cameraPos );
+}
+
+void Mesh::setMeshId() noexcept
+{
+	++g_numMeshes;
+	m_meshId = g_numMeshes;
+}
+
+void Mesh::createAabb( const aiMesh &aiMesh )
+{
+	dx::XMFLOAT3 minVertex{FLT_MAX, FLT_MAX, FLT_MAX};
+	dx::XMFLOAT3 maxVertex{-FLT_MAX, -FLT_MAX, -FLT_MAX};
+
+	unsigned int n = aiMesh.mNumVertices;
+	for ( unsigned int i = 0; i < n; ++i )
+	{
+		// the minVertex and maxVertex will most likely not be actual vertices in the model, but vertices that use the smallest and largest x, y, and z values from the model to be sure ALL vertices are
+		// covered by the bounding volume
+
+		// get the smallest vertex
+		minVertex.x = std::min(minVertex.x, aiMesh.mVertices[i].x);
+		minVertex.y = std::min(minVertex.y, aiMesh.mVertices[i].y);
+		minVertex.z = std::min(minVertex.z, aiMesh.mVertices[i].z);
+
+		// get the largest vertex
+		maxVertex.x = std::max(maxVertex.x, aiMesh.mVertices[i].x);
+		maxVertex.y = std::max(maxVertex.y, aiMesh.mVertices[i].y);
+		maxVertex.z = std::max(maxVertex.z, aiMesh.mVertices[i].z);
+	}
+
+	m_aabb = std::make_pair( minVertex, maxVertex );
+}
+
+void Mesh::createAabb( const ver::VBuffer &verts )
+{
+	dx::XMFLOAT3 minVertex{FLT_MAX, FLT_MAX, FLT_MAX};
+	dx::XMFLOAT3 maxVertex{-FLT_MAX, -FLT_MAX, -FLT_MAX};
+
+	const auto n = verts.getVertexCount();
+	using Type = ver::VertexInputLayout::ILEementType;
+	for ( int i = 0; i < n; ++i )
+	{
+		const auto vertex = verts[i].getElement<Type::Position3D>();
+
+		minVertex.x = std::min(minVertex.x, vertex.x);
+		minVertex.y = std::min(minVertex.y, vertex.y);
+		minVertex.z = std::min(minVertex.z, vertex.z);
+
+		maxVertex.x = std::max(maxVertex.x, vertex.x);
+		maxVertex.y = std::max(maxVertex.y, vertex.y);
+		maxVertex.z = std::max(maxVertex.z, vertex.z);
+	}
+
+	m_aabb = std::make_pair( minVertex, maxVertex );
+}
+
+bool Mesh::frustumCull( const std::vector<dx::XMFLOAT4> &frustumPlanes ) const noexcept
+{
+	const unsigned numPlanes = frustumPlanes.size();
+	ASSERT( numPlanes == 6, "Invalid number of planes!" );
+
+	const auto &minVertex = m_aabb.first;
+	const auto &maxVertex = m_aabb.second;
+
+	const auto pos = calcPosition();
+
+	for ( int i = 0; i < numPlanes; ++i )
+	{
+		// AABB vertex furthest away from the direction the plane normal is facing
+		dx::XMFLOAT3 axisVert;
+
+		// along the ...
+		// ... x-axis
+		if ( frustumPlanes[i].x < 0.0f )
+		{
+			axisVert.x = minVertex.x + pos.x;
+		}
+		else
+		{
+			axisVert.x = maxVertex.x + pos.x;
+		}
+
+		// ... y-axis
+		if ( frustumPlanes[i].y < 0.0f )
+		{
+			axisVert.y = minVertex.y + pos.y;
+		}
+		else
+		{
+			axisVert.y = maxVertex.y + pos.y;
+		}
+
+		// ... z-axis
+		if ( frustumPlanes[i].z < 0.0f )
+		{
+			axisVert.z = minVertex.z + pos.z;
+		}
+		else
+		{
+			axisVert.z = maxVertex.z + pos.z;
+		}
+
+		const dx::XMVECTOR planeNormal{dx::XMVectorSet( frustumPlanes[i].x, frustumPlanes[i].y, frustumPlanes[i].z, 0.0f )};
+		const float planeConstant = frustumPlanes[i].w;
+
+		// get the signed distance from the AABB vertex that's furthest down the frustum planes normal, and if the signed distance is negative, then the entire bounding box is behind the frustum plane, which means that it should be culled
+		if ( dx::XMVectorGetX( dx::XMVector3Dot( planeNormal, dx::XMLoadFloat3( &axisVert ) ) ) + planeConstant < 0.0f )
+		{
+			m_bCulledThisFrame = true;
+			return true;
+		}
+	}
+
+	m_bCulledThisFrame = false;
+	return false;
 }

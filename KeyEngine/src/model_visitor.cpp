@@ -1,4 +1,5 @@
 #include "model_visitor.h"
+#ifndef FINAL_RELEASE
 #include <DirectXMath.h>
 #include "imgui.h"
 #include "model.h"
@@ -9,7 +10,6 @@
 
 
 namespace dx = DirectX;
-
 
 ImguiVisitor::ImguiVisitor( const std::string &name )
 	:
@@ -77,7 +77,7 @@ bool ImguiVisitor::visit( Node &node )
 	// if there is no selected node, set selectedNodeId to an impossible value
 	const int selectedNodeId = ( m_pSelectedNode == nullptr ) ? -1 :
 		m_pSelectedNode->getImguiId();
-	
+
 	// build up flags for current node
 	const auto nodeFlags = ImGuiTreeNodeFlags_OpenOnArrow
 		| ( ( node.getImguiId() == selectedNodeId ) ? ImGuiTreeNodeFlags_Selected : 0 )
@@ -87,12 +87,12 @@ bool ImguiVisitor::visit( Node &node )
 	const bool bNodeOpen = ImGui::TreeNodeEx( (void*)(intptr_t)node.getImguiId(),
 		nodeFlags,
 		node.getName().c_str() );
-	
+
 	if ( ImGui::IsItemClicked() )
 	{
 		m_pSelectedNode = &node;
 	}
-	
+
 	// if bNodeOpen is true then that's the go-signal for children Nodes to also be recursed
 	return bNodeOpen;
 }
@@ -119,10 +119,11 @@ ImguiVisitor::TransformData& ImguiVisitor::calcTransform() noexcept
 		td.x = translation.x;
 		td.y = translation.y;
 		td.z = translation.z;
-	
+
 		bool bInserted = false;
 		std::tie( it, bInserted ) = m_nodeMapTransforms.insert( {imguiNodeId, {td}} );
 		ASSERT( bInserted, "Transform not inserted or value already in the unordered_map!" );
 	}
 	return it->second;
 }
+#endif

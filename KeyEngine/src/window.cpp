@@ -3,7 +3,9 @@
 #include <windowsx.h>
 #include "window.h"
 #include "graphics.h"
-#include "imgui_impl_win32.h"
+#ifndef FINAL_RELEASE
+#	include "imgui_impl_win32.h"
+#endif
 #include "utils.h"
 #include "os_utils.h"
 #include "math_utils.h"
@@ -273,10 +275,12 @@ Window::Window( const int width,
 
 	setupTrayIcon();
 
-	// initialize ImGui
 	if constexpr( gph_mode::get() == gph_mode::_3D )
 	{
+#ifndef FINAL_RELEASE
+		// initialize ImGui
 		ImGui_ImplWin32_Init( m_hWnd );
+#endif
 	}
 
 	// setup Graphics for the Window
@@ -314,7 +318,9 @@ Window::~Window()
 	{
 		if ( m_windowClass.getName() == MAIN_WINDOW_CLASS_NAME )
 		{
+#ifndef FINAL_RELEASE
 			ImGui_ImplWin32_Shutdown();
+#endif
 		}
 	}
 	DestroyWindow( m_hWnd );
@@ -782,12 +788,16 @@ void Window::showCursor() noexcept
 
 void Window::enableImGuiMouse() noexcept
 {
+#ifndef FINAL_RELEASE
 	ImGui::GetIO().ConfigFlags &= ~ImGuiConfigFlags_NoMouse;
+#endif
 }
 
 void Window::disableImGuiMouse() noexcept
 {
+#ifndef FINAL_RELEASE
 	ImGui::GetIO().ConfigFlags |= ImGuiConfigFlags_NoMouse;
+#endif
 }
 
 LRESULT CALLBACK Window::windowProc( _In_ const HWND hWnd,
@@ -1084,12 +1094,14 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 {
 	PRINT_WIN_MESSAGE;
 
+#ifndef FINAL_RELEASE
 	// ImGui windowProc messages
 	if ( ImGui_ImplWin32_WndProcHandler( hWnd, uMsg, wParam, lParam ) )
 	{
 		return true;
 	}
 	const auto &imGuiIoContext = ImGui::GetIO();
+#endif
 
 	static bool bMinimized = false;
 	static bool bCurrentlyResizing = false;
@@ -1379,11 +1391,13 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		[[fallthrough]];
 	case WM_SYSKEYDOWN:
 	{
+#ifndef FINAL_RELEASE
 		// stifle this keyboard message if imgui wants to capture
 		if ( imGuiIoContext.WantCaptureKeyboard )
 		{
 			break;
 		}
+#endif
 		if ( (lParam | 0x40000000) && !s_keyboard.isAutorepeatEnabled() ) // filter autorepeat
 		{
 			s_keyboard.onKeyPressed( static_cast<unsigned char>( wParam ) );
@@ -1394,21 +1408,25 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		[[fallthrough]];
 	case WM_SYSKEYUP:
 	{
+#ifndef FINAL_RELEASE
 		// stifle this keyboard message if imgui wants to capture
 		if ( imGuiIoContext.WantCaptureKeyboard )
 		{
 			break;
 		}
+#endif
 		s_keyboard.onKeyReleased( static_cast<unsigned char>( wParam ) );
 		break;
 	}
 	case WM_CHAR:
 	{
+#ifndef FINAL_RELEASE
 		// stifle this keyboard message if imgui wants to capture
 		if ( imGuiIoContext.WantCaptureKeyboard )
 		{
 			break;
 		}
+#endif
 		s_keyboard.onChar( static_cast<unsigned char>( wParam ) );
 		break;
 	}
@@ -1427,11 +1445,13 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 			}
 			break;
 		}
+#ifndef FINAL_RELEASE
 		// stifle this mouse message if imgui wants to capture
 		if ( imGuiIoContext.WantCaptureMouse )
 		{
 			break;
 		}
+#endif
 		// in client region -> log move, and log enter + capture mouse (if not previously in window)
 		if ( pt.x >= 0 && pt.x < calcWidth() && pt.y >= 0 && pt.y < calcHeight() )
 		{
@@ -1471,11 +1491,13 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 			confineCursor();
 			hideCursor();
 		}
+#ifndef FINAL_RELEASE
 		// stifle this mouse message if imgui wants to capture
 		if ( imGuiIoContext.WantCaptureMouse )
 		{
 			break;
 		}
+#endif
 		const POINTS pt = MAKEPOINTS( lParam );
 		s_mouse.onLmbPressed( pt.x,
 			pt.y );
@@ -1483,11 +1505,13 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 	}
 	case WM_RBUTTONDOWN:
 	{
+#ifndef FINAL_RELEASE
 		// stifle this mouse message if imgui wants to capture
 		if ( imGuiIoContext.WantCaptureMouse )
 		{
 			break;
 		}
+#endif
 		const POINTS pt = MAKEPOINTS( lParam );
 		s_mouse.onRmbPressed( pt.x,
 			pt.y );
@@ -1495,11 +1519,13 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 	}
 	case WM_LBUTTONUP:
 	{
+#ifndef FINAL_RELEASE
 		// stifle this mouse message if imgui wants to capture
 		if ( imGuiIoContext.WantCaptureMouse )
 		{
 			break;
 		}
+#endif
 		const POINTS pt = MAKEPOINTS( lParam );
 		s_mouse.onLmbReleased( pt.x,
 			pt.y );
@@ -1513,11 +1539,13 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 	}
 	case WM_RBUTTONUP:
 	{
+#ifndef FINAL_RELEASE
 		// stifle this mouse message if imgui wants to capture
 		if ( imGuiIoContext.WantCaptureMouse )
 		{
 			break;
 		}
+#endif
 		const POINTS pt = MAKEPOINTS( lParam );
 		s_mouse.onRmbReleased( pt.x,
 			pt.y );
@@ -1531,11 +1559,13 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 	}
 	case WM_MOUSEWHEEL:
 	{
+#ifndef FINAL_RELEASE
 		// stifle this mouse message if imgui wants to capture
 		if ( imGuiIoContext.WantCaptureMouse )
 		{
 			break;
 		}
+#endif
 		const POINTS pt = MAKEPOINTS( lParam );
 		const int delta = GET_WHEEL_DELTA_WPARAM( wParam );
 		s_mouse.onWheelDelta( pt.x,

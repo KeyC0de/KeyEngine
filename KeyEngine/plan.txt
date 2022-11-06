@@ -1,5 +1,4 @@
-﻿-- 
-How to get position between current pixel and camera in pixel shader?
+﻿-- How to get position between current pixel and camera in pixel shader?
 1. pass the camera position to vertex shader
 2. distanceBetweenVertexAndCamera = length( cameraPosition - vertexPositionInWorldSpace );
 3. pass `distanceBetweenVertexAndCamera` to Pixel Shader
@@ -8,141 +7,20 @@ How to get position between current pixel and camera in pixel shader?
 dx * uv.u 
 dy * ui.v
 
--- Do frustum culling for entitiesndr
-https://www.rastertek.com/dx11tut16.html
-
-void Sandbox3d::frustumCullEntities()
-{
-	- If a model is fully inside the frustum, all meshes in the model are immediately added to the render-queue without checking their bounding boxes against the frustum.
-	- If a model is not inside the frustum at all, it is skipped.
-	- If a model is partially inside the frustum, meshes are each checked against the frustum before being added to the render-queue.
-		* Important. Remember that I said sub-meshes get added to the render-queue. When a mesh “adds itself” to a render-queue, it actually adds all of its sub-meshes to the render-queue. Sub-meshes do not have bounding boxes. When a mesh is determined to be inside the frustum, all sub-meshes are automatically added.
-		* The keys for sorting are created by the information on the sub-meshes. Shader ID, texture ID, etc. Only the depth comes from the mesh, which means all sub-meshes on a mesh have the same depth as far as the sort will know.
-		* Sub-meshes go to either the opaque or translucent render-queue. Both are being populated as you traverse the spatial partition.
-	- You have now populated a render-queue. For opaque render-queues, sort based on:
-		1. shader ID's
-		2. texture ID's
-		3. vertex buffers ID's
-		4. depth (front-to-back).
-		For translucent renders, sort based on depth only (back-to-front).
-		When sorting you don't need to sort the Jobs/items in the render queue you just need to sort the indices. Like these:
-		// std::vector<Job> m_opaques;
-		// std::vector<Job> m_transparents;
-		// std::vector<std::size_t> m_opaquesIndices;
-		// std::vector<std::size_t> m_transparentsIndices;
-	// - render m_opaques and m_transparents based on the sorted indices from m_opaquesIndices and m_transparentIndices respectively
-
-	Additionally to all of the above we could consider temporal coherence:
-	Don't clear the index render queues (the Job renderQueues are refilled each frame no matter what).
-	By keeping the array of indices for the next frame, you are likely to have the indices in already-sorted order.
-	Supporting frame-to-frame temporal coherence is a very simple extension of a standard render-queue, and benchmarking shows it makes a significant difference compared to sorting every frame, even if you use a quick sort (a radix sort is not possible, nor would it be faster anyway). An insertion sort is fastest because it simply makes a linear pass over the array of indices and is done. It is also stable, so things don't jitter inside the sorted array. Otherwise use quicksort. Both are stable so that's good.
-	There are only 3 cases to handle when preparing for a sort:
-		1. If the new total render-queue items is larger than it was before, add the extra indices to your index array in order.
-		example: If last frame we had 6 objects in the queue and now we have 8, add indices 6 and 7 to the end of the index array and leave the rest of the indices alone. So your sorted index array might look like 5, 1, 4, 3, 2, 0, 6, 7.
-		2. If the new total is the same as the last total, do nothing. Leave indices as they are.
-		3. If the new total is less than before, reset all the indices to 0, 1, 2, 3, 4, 5…
-	The code below illustrates these 3 cases:
-
-	//Prepares to sort the given number of elements, but does not sort them.
-	//\param _ui32Total The number of elements to prepare to sort.
-	LSVOID LSE_CALL		PrepareFor( LSUINT32 _ui32Total )
-	{
-		// Do we need to grow the array of incides?
-		if ( _ui32Total > m_ui32AllocIndices ) {
-			// Up-size the allocated amount.
-			delete [] m_pui32Indices;
-			m_pui32Indices = new LSUINT32[_ui32Total];
-			m_ui32AllocIndices = _ui32Total;
-			m_ui32TotalIndices = 0UL;	// Causes list to be fully reset to 0, 1, 2… below.
-		}
-		// Check for cases where we need to add or adjust indices.
-		if ( m_ui32TotalIndices > _ui32Total ) {
-			for ( LSUINT32 I = 0UL; I < _ui32Total; ++I ) {
-				// Add indices that were not added before.
-				m_pui32Indices[I] = I;
-			}
-		}
-		else {
-			for ( LSUINT32 I = m_ui32TotalIndices; I < _ui32Total; ++I ) {
-				// Add indices that were not added before.
-				m_pui32Indices[I] = I;
-			}
-		}
-		m_ui32TotalIndices = _ui32Total;
-	}
-
-}
-
+-- About thick transparent - translucent - meshes we'll need extra work for them..
 
 -- In RenderQueuePass separate the vector of Jobs to 2 vectors
 	1. for opaque meshes
 	2. for transparent meshes
 	Even better use a map structure which does auto sorting
 	Map transparents by distance map<float, Mesh, std::less> (back to front) and use reverse iterators to render
-		the Blender operation should be: src = GL_SRC_ALPHA, dst = GL_ONE_MINUS_SRC_ALPHA
+		the Blender operation should be:
+		blendStateRTDesc.SrcBlend = D3D11_BLEND_SRC_ALPHA;
+		blendStateRTDesc.DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
 	std::map<float, Mesh*, std::less<float>> m_opaques;	// front to back
 	std::map<float, Mesh*, std::greater<float>> m_transparents;	// back to front
--- About thick transparent - translucent - meshes we'll need extra work for them..
--- Lua Scripting engine
--- Organize Entities
--- Implement (Trigger) Volume system
-	Trigger System:
 
-	class Volume
-		: public Entity
-	{
-		bool m_enabled;
-		RenderableEntity *m_currentActor;
-		RenderableEntity *m_parent;
-	public:
-
-	};
-
-	// child volumes: DeferredDecal, AtmosphericFog, PostProcess, BoxReflectionCapture, PlanarReflection, Trigger Volume
-
-	class TriggerVolume
-		: public Volume
-	{
-	public:
-		TriggerVolume( enabled = true )
-			: m_enabled{enabled}
-		{}
-
-		onEnter( Actor *a );
-		onExit( Actor *a );
-		onHit( Projectile *a );
-	};
-
-	// child volumes: AudioVolume, BlockingVolume, CameraBlockingVolume, CullDistanceVolume, KillZVolume, NavMeshBounds, PainCausingVolume
-
--- Implement World Class
-
--- Unreal Direct3d 11 Hardware Accelerated Rendering:
-
-foreach( material )
-{
-	foreach( camera )
-	{
-		set_shader();
-		upload_material_parameters()
-		foreach( instanced_objects with that material )
-		{
-			set_mesh();
-			// already uploaded----upload_object_parameters()
-			// no need to upload data, just tell gpu to render at some index
-			render_instanced( instanced_objects.idx, instanced_objects.count )
-		}
-	}
-}
-
-The way the new unreal renderer works, is by having 2 parallel arrays, one on GPU and other of CPU, holding the object parameters(position, scale, etc) for literally the entire scene. At the beggining of the frame, it uploads only what has changed since last frame, and then when rendering it doesnt need to upload parameters because it does it in bulk. Because all the data is done in dumb arrays, its all parallelized and highly performant.
-
--- Implement particle system
-https://www.rastertek.com/dx11tut39.html
-https://gpuopen.com/learn/gpuparticles11-directx-11-sdk-sample/ gpu particles
-https://www.gamedev.net/blogs/entry/2255627-d3d11-port-of-particle-system-rendering-with-source/
-
--- Reflections
+-- Instanced mesh rendering
 
 -- 3d Terrain/Landscape series:
 https://www.rastertek.com/tutdx11s2ter.html
@@ -180,14 +58,11 @@ example: components of a single section of 64x64 verts, then the component size 
 Landscape > Components > Sections > Quads
 There is always one more row of vertices than there are quads (think of a quad as a 1x1 vertex grid; thus it needs 4 vertices), since the shared row of vertices along the edge of two neighboring components are duplicated and stored in each component.
 
--- Integrate Terrain Navigation (Recast navigation)
 
 -- World class
 	m_entityManager
 	m_landscape
 	... 
-
--- DXInput
 
 -- Animation
 https://ogldev.org/www/tutorial38/tutorial38.html
@@ -374,11 +249,22 @@ In a way or an other, the aim of the pipeline and importer tools is to end up wi
 		you'll need to set a PCB for that
 -- shadowing_ps.hlsli : set zf, zn in a CB and update it from ShadowMapPass - XMMatrixPerspectiveFovLH values
 
+-- DXInput
+
+-- Implement particle system
+https://www.rastertek.com/dx11tut39.html
+https://www.gamedev.net/blogs/entry/2255627-d3d11-port-of-particle-system-rendering-with-source/
+
+-- Reflections
+
+-- Lua Scripting engine
+
 -- PBR Metallic Renderer (UE4 based)
+
 -- Global Illumination
 
--- Instanced mesh rendering
 -- Model LOD automatic switching
+
 -- Multithreaded Rendering
 
 -- Physics: integrate Bullet Physics
@@ -388,7 +274,7 @@ http://blog.wolfire.com/2009/06/how-to-project-decals/
 deferred screenspace decals: https://martindevans.me/game-development/2015/02/27/Drawing-Stuff-On-Other-Stuff-With-Deferred-Screenspace-Decals/
 
 -- Save game system
--- Craft gameplay systems
+-- Craft gameplay systems from UE4 project
 
 -- Profiling with Intel's VTune
 
@@ -609,6 +495,7 @@ struct CLI_ITEM
                                 mutable T                                            m_tweak;
                 };
 
+-- Integrate Terrain Navigation (Recast navigation)
 
 -- Deconst functions
 class Model

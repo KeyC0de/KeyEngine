@@ -37,7 +37,9 @@ class Game
 protected:
 	static inline unsigned s_nWindows;
 	static inline SettingsManager &s_settingsMan = SettingsManager::instance();
+#ifndef FINAL_RELEASE
 	std::unique_ptr<ImguiManager> m_pImguiMan;		// deleted 2nd
+#endif
 	Window m_mainWindow;							// deleted 1st
 	std::unique_ptr<State> m_pCurrentState;
 	KeyTimer<std::chrono::milliseconds> m_gameTimer;
@@ -81,9 +83,7 @@ private:
 	int checkInput( const float dt );
 	void update( const float dt );
 	void render( const float dt );
-#if defined _DEBUG && !defined NDEBUG
 	void test();
-#endif
 };
 
 class Arkanoid final
@@ -109,9 +109,7 @@ private:
 	int checkInput( const float dt );
 	void update( const float dt );
 	void render( const float dt );
-#if defined _DEBUG && !defined NDEBUG
 	void test();
-#endif
 };
 
 

@@ -20,6 +20,9 @@ public:
 	//	\brief  call RenderQueuePass::run from derivedPassClass::run as a final task
 	void run( Graphics &gph ) const cond_noex override;
 	void reset() cond_noex override;
+#if defined _DEBUG && !defined NDEBUG
+	int getJobCount() const noexcept;
+#endif
 };
 
 

@@ -20,6 +20,21 @@ Model::Model( Graphics &gph,
 	Assimp::Importer importer;
 	const auto paiScene = importer.ReadFile( path.c_str(),
 		aiProcess_Triangulate | aiProcess_JoinIdenticalVertices | aiProcess_ConvertToLeftHanded | aiProcess_GenNormals | aiProcess_CalcTangentSpace );
+	//aiAnimation** mAnimations		// The array of animations.
+	//aiCamera** mCameras			// The array of cameras.
+	//unsigned int mFlags			// Any combination of the AI_SCENE_FLAGS_XXX flags.
+	//aiLight** mLights				// The array of light sources.
+	//aiMaterial** mMaterials		// The array of materials.
+	//aiMesh** mMeshes				// The array of meshes.
+	//unsigned int mNumAnimations	// The number of animations in the scene.
+	//unsigned int mNumCameras		// The number of cameras in the scene.
+	//unsigned int mNumLights		// The number of light sources in the scene.
+	//unsigned int mNumMaterials	// The number of materials in the scene.
+	//unsigned int mNumMeshes		// The number of meshes in the scene.
+	//unsigned int mNumTextures		// The number of textures embedded into the file.
+	//void* mPrivate 				// Internal data, do not touch.
+	//aiNode* mRootNode				// The root node of the hierarchy.
+	//aiTexture** mTextures			// The array of embedded textures. - only useful for model formals that contain embedded textures
 
 	ASSERT( paiScene, "aiScene is null!" );
 
@@ -37,6 +52,7 @@ Model::Model( Graphics &gph,
 	for ( size_t i = 0; i < paiScene->mNumMeshes; ++i )
 	{
 		const auto &aiMesh = *paiScene->mMeshes[i];
+
 		m_meshes.emplace_back( std::make_unique<Mesh>( gph,
 			materials[aiMesh.mMaterialIndex],
 			aiMesh,
@@ -243,7 +259,17 @@ DirectX::XMMATRIX Model::calcScaleTr() const noexcept
 	return m_meshes[0]->calcScaleTr();
 }
 
-const float Model::getDistanceFromActiveCamera() const noexcept
+float Model::getDistanceFromActiveCamera() const noexcept
 {
 	return m_meshes[0]->getDistanceFromActiveCamera();
+}
+
+void Model::setCulled( const bool bCulled )
+{
+	m_pRoot->setCulled( bCulled );
+}
+
+bool Model::isCulled() const noexcept
+{
+	return m_meshes[0]->isCulled();
 }

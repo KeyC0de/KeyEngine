@@ -18,19 +18,22 @@ Sphere::Sphere( Graphics &gph,
 	:
 	m_radius{radius}
 {
-	auto model = Geometry::makeTesselatedSphere();
-	model.transform( dx::XMMatrixScaling( radius,
+	auto sphere = Geometry::makeTesselatedSphere();
+	sphere.transform( dx::XMMatrixScaling( radius,
 		radius,
 		radius ) );
 
 	const auto geometryTag = "$sphere." + std::to_string( radius );
 	m_pVertexBuffer = VertexBuffer::fetch( gph,
 		geometryTag,
-		model.m_vb );
+		sphere.m_vb );
 	m_pIndexBuffer = IndexBuffer::fetch( gph,
 		geometryTag,
-		model.m_indices );
+		sphere.m_indices );
 	m_pPrimitiveTopology = PrimitiveTopology::fetch( gph );
+
+	createAabb( sphere.m_vb );
+	setMeshId();
 
 	{
 		Effect lambertian{rch::lambert, "lambertian", true};
@@ -38,7 +41,7 @@ Sphere::Sphere( Graphics &gph,
 		auto pvs = VertexShader::fetch( gph,
 			"flat_vs.cso" );
 		lambertian.addBindable( InputLayout::fetch( gph,
-			model.m_vb.getLayout(),
+			sphere.m_vb.getLayout(),
 			*pvs ) );
 		lambertian.addBindable( std::move( pvs ) );
 

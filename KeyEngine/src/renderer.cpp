@@ -17,7 +17,9 @@
 #include "pass_2d.h"
 #include "render_target.h"
 #include "dynamic_constant_buffer.h"
-#include "imgui.h"
+#ifndef FINAL_RELEASE
+#	include "imgui.h"
+#endif
 #include "math_utils.h"
 #include "assertions_console.h"
 #include "wireframe_pass.h"
@@ -86,6 +88,15 @@ void Renderer::run( Graphics &gph ) cond_noex
 		if ( pass->isActive() )
 		{
 			pass->run( gph );
+#if defined _DEBUG && !defined NDEBUG
+			auto *renderQueuePass = dynamic_cast<RenderQueuePass*>( pass.get() );
+			if ( renderQueuePass != nullptr )
+			{
+				using namespace std::string_literals;
+				KeyConsole &console = KeyConsole::instance();
+				console.print( pass->getName() + " "s + std::to_string( renderQueuePass->getJobCount() ) + "\n"s );
+			}
+#endif
 		}
 	}
 
@@ -464,13 +475,16 @@ Renderer3d::Renderer3d( Graphics &gph,
 
 void Renderer3d::showImGuiWindows( Graphics &gph )
 {
+#ifndef FINAL_RELEASE
 	showShadowDumpImguiWindow( gph );
 	showGaussianBlurImguiWindow( gph );
 	dynamic_cast<SkyPass&>( getPass( "sky" ) ).displayImguiWidgets();
+#endif
 }
 
 void Renderer3d::showShadowDumpImguiWindow( Graphics &gph )
 {
+#ifndef FINAL_RELEASE
 	if ( ImGui::Begin( "Shadow" ) )
 	{
 		if ( ImGui::Button( "Dump Cubemap" ) )
@@ -480,10 +494,12 @@ void Renderer3d::showShadowDumpImguiWindow( Graphics &gph )
 		}
 	}
 	ImGui::End();
+#endif
 }
 
 void Renderer3d::showGaussianBlurImguiWindow( Graphics &gph )
 {
+#ifndef FINAL_RELEASE
 	if ( ImGui::Begin( "Blur Kernel" ) )
 	{
 		bool bFilterChanged = false;
@@ -545,15 +561,16 @@ void Renderer3d::showGaussianBlurImguiWindow( Graphics &gph )
 		}
 	}
 	ImGui::End();
+#endif
 }
 
-void ren::Renderer3d::setActiveCamera( Camera &cam )
+void ren::Renderer3d::setActiveCamera( const Camera &cam )
 {
 	dynamic_cast<LambertianPass&>( getPass( "lambertian" ) ).setActiveCamera( cam );
 	dynamic_cast<SkyPass&>( getPass( "sky" ) ).setActiveCamera( cam );
 }
 
-void ren::Renderer3d::setShadowCamera( Camera &cam )
+void ren::Renderer3d::setShadowCamera( const Camera &cam )
 {
 	dynamic_cast<ShadowPass&>( getPass( "shadowMap" ) ).setShadowCamera( cam );
 }

@@ -12,7 +12,9 @@
 #include "texture_sampler_state.h"
 #include "rasterizer_state.h"
 #include "constant_buffer_ex.h"
-#include "imgui.h"
+#ifndef FINAL_RELEASE
+#	include "imgui.h"
+#endif
 #include "rendering_channel.h"
 #include "utils.h"
 #include "blend_state.h"
@@ -40,6 +42,9 @@ Plane::Plane( Graphics &gph,
 		geometryTag,
 		plane.m_indices );
 	m_pPrimitiveTopology = PrimitiveTopology::fetch( gph );
+
+	createAabb( plane.m_vb );
+	setMeshId();
 
 	auto transformVscb = std::make_shared<TransformVSCB>( gph,
 		0u );
@@ -187,6 +192,7 @@ const dx::XMMATRIX Plane::calcRotation() const noexcept
 void Plane::displayImguiWidgets( Graphics &gph,
 	const std::string &name ) noexcept
 {
+#ifndef FINAL_RELEASE
 	if ( ImGui::Begin( name.c_str() ) )
 	{
 		ImGui::Text( "Position" );
@@ -208,4 +214,5 @@ void Plane::displayImguiWidgets( Graphics &gph,
 		}
 	}
 	ImGui::End();
+#endif
 }

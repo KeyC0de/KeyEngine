@@ -18,7 +18,9 @@
 #include "primitive_topology.h"
 #include "input_layout.h"
 #include "assertions_console.h"
-#include "imgui.h"
+#ifndef FINAL_RELEASE
+#	include "imgui.h"
+#endif
 #include "triangle_mesh.h"
 
 
@@ -121,12 +123,14 @@ void SkyPass::reset() cond_noex
 
 void SkyPass::displayImguiWidgets()
 {
+#ifndef FINAL_RELEASE
 	if ( ImGui::Begin( "Skybox" ) )
 	{
 		ImGui::Checkbox( "Use Sphere",
 			&m_bUseSphere );
 	}
 	ImGui::End();
+#endif
 }
 
 

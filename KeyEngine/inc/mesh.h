@@ -12,11 +12,17 @@ class VertexBuffer;
 class PrimitiveTopology;
 class Graphics;
 class MaterialLoader;
+class IBindable;
 struct aiMesh;
 
 namespace ren
 {
 	class Renderer;
+}
+
+namespace ver
+{
+	class VBuffer;
 }
 
 //=============================================================
@@ -29,21 +35,26 @@ namespace ren
 //=============================================================
 class Mesh
 {
-	float m_distanceFromActiveCamera = 0.0f;
 	mutable DirectX::XMFLOAT4X4 m_worldTransform;
+	mutable bool m_bCulledThisFrame = false;
+	float m_distanceFromActiveCamera = 0.0f;
 protected:
+	unsigned m_meshId = 0u;
+	std::pair<DirectX::XMFLOAT3, DirectX::XMFLOAT3> m_aabb;	// #TODO: Collision mesh needs to be recalculated if the object is rotated, scaled or animated
 	std::shared_ptr<IndexBuffer> m_pIndexBuffer;
 	std::shared_ptr<VertexBuffer> m_pVertexBuffer;
 	std::shared_ptr<PrimitiveTopology> m_pPrimitiveTopology;
 	std::vector<Effect> m_effects;
 public:
 #pragma warning( disable : 26495 )
+	//	\function	Mesh	||	\date	2022/11/06 14:46
+	//	\brief	defctor to be called by subclasses - you must provide a m_meshId and an m_aabb yourself
 	Mesh() = default;
 #pragma warning( default : 26495 )
 	Mesh( Graphics &gph, const MaterialLoader &mat, const aiMesh &aimesh, const float scale = 1.0f ) noexcept;
 	virtual ~Mesh() noexcept = default;
 
-	template<class T>
+	template<typename T, typename = std::enable_if_t<std::is_base_of_v<IBindable, T>>>
 	std::optional<T*> findBindable() noexcept
 	{
 		for ( auto &effect : m_effects )
@@ -58,6 +69,7 @@ public:
 		}
 		return std::nullopt;
 	}
+
 	//	\function	addEffect	||	\date	2021/10/26 23:58
 	//	\brief	Effects are moved here
 	void addEffect( Effect ef ) noexcept;
@@ -83,7 +95,14 @@ public:
 	float calcScale() const noexcept;
 	DirectX::XMMATRIX calcScaleTr() const noexcept;
 	void setDistanceFromActiveCamera() noexcept;
-	const float getDistanceFromActiveCamera() const noexcept;
+	float getDistanceFromActiveCamera() const noexcept;
+	void setCulled( const bool bCulled );
+	bool isCulled() const noexcept;
+	bool frustumCull( const std::vector<DirectX::XMFLOAT4> &frustumPlanes ) const noexcept;
 protected:
 	float calcDistanceFromActiveCamera( const DirectX::XMFLOAT3 &pos ) const noexcept;
+	void setMeshId() noexcept;
+	void createAabb( const ver::VBuffer &verts );
+private:
+	void createAabb( const aiMesh &aiMesh );
 };

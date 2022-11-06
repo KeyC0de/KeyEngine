@@ -36,6 +36,7 @@ protected:
 	virtual bool onVisit( con::CBuffer &cb ) = 0;
 };
 
+#ifndef FINAL_RELEASE
 class EVShowcase
 	: public IEffectVisitor
 {
@@ -43,3 +44,4 @@ public:
 	bool onVisit( con::CBuffer &cb ) override;
 	void onSetEffect() override;
 };
+#endif

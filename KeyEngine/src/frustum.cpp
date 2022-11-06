@@ -60,7 +60,7 @@ Frustum::Frustum( Graphics &gph,
 	// We draw the frustum two times
 	// 1. normal lambertian
 	// 2. DepthReversed mode and another color (dimmer) - only the occluded part of the frustum gets drawn
-	/*{
+	{
 		Effect wireframe{rch::wireframe, "wireframe", true};
 
 		auto pVs = VertexShader::fetch( gph,
@@ -114,7 +114,9 @@ Frustum::Frustum( Graphics &gph,
 			RasterizerState::Solid ) );
 
 		addEffect( std::move( occluded ) );
-	}*/
+	}
+
+	setMeshId();
 }
 
 void Frustum::setupVertexBuffer( Graphics &gph,
@@ -142,6 +144,9 @@ void Frustum::setupVertexBuffer( Graphics &gph,
 		vb.emplaceVertex( dx::XMFLOAT3{farX, -farY, farZ} );
 		vb.emplaceVertex( dx::XMFLOAT3{-farX, -farY, farZ} );
 	}
+
+	createAabb( vb );
+
 	// we don't share the frustum in the BindableMap because each will be unique
 	m_pVertexBuffer = std::make_shared<VertexBuffer>( gph,
 		vb );

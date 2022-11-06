@@ -30,4 +30,6 @@ public:
 	static std::shared_ptr<RasterizerState> fetch( Graphics &gph, const CullMode cullMode, const FillMode fillMode = FillMode::Solid );
 	static std::string calcUid( const CullMode cullMode, const FillMode fillMode );
 	const std::string getUid() const noexcept override;
+	const CullMode& getCullMode() const noexcept;
+	const FillMode& getFillMode() const noexcept;
 };

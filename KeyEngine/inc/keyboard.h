@@ -17,7 +17,7 @@ public:
 	class Event final
 	{
 	public:
-		enum class Type
+		enum Type
 		{
 			Press,
 			Release,
@@ -38,12 +38,12 @@ public:
 
 		constexpr bool isPressEvent() const noexcept
 		{
-			return m_type == Type::Press;
+			return m_type == Press;
 		}
 
 		constexpr bool isReleaseEvent() const noexcept
 		{
-			return m_type == Type::Release;
+			return m_type == Release;
 		}
 
 		constexpr unsigned char getKeycode() const noexcept

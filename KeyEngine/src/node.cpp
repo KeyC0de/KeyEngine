@@ -117,6 +117,18 @@ DirectX::XMFLOAT4X4& Node::worldTransform()
 	return m_worldTransform;
 }
 
+void Node::setCulled( const bool bCulled )
+{
+	for ( const auto pMesh : m_meshes )
+	{
+		pMesh->setCulled( bCulled );
+	}
+	for ( const auto &pNode : m_children )
+	{
+		pNode->setCulled( bCulled );
+	}
+}
+
 void Node::addChild( std::unique_ptr<Node> pChild ) cond_noex
 {
 	ASSERT( pChild, "Node is null!" );

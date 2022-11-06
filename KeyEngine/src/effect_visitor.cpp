@@ -1,7 +1,9 @@
 #include "effect_visitor.h"
 #include <string>
 #include <DirectXMath.h>
-#include "imgui.h"
+#ifndef FINAL_RELEASE
+#	include "imgui.h"
+#endif
 #include "dynamic_constant_buffer.h"
 #include "effect.h"
 #include "utils.h"
@@ -33,6 +35,7 @@ void IEffectVisitor::onSetEffect()
 }
 
 
+#ifndef FINAL_RELEASE
 bool EVShowcase::onVisit( con::CBuffer &cb )
 {
 	bool bDirty = false;
@@ -112,3 +115,4 @@ void EVShowcase::onSetEffect()
 		&bActive );
 	m_pEffect->setEnabled( bActive );
 }
+#endif

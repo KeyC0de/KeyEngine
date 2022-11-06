@@ -11,7 +11,9 @@
 #include "texture_sampler_state.h"
 #include "rasterizer_state.h"
 #include "constant_buffer_ex.h"
-#include "imgui.h"
+#ifndef FINAL_RELEASE
+#	include "imgui.h"
+#endif
 #include "rendering_channel.h"
 #include "utils.h"
 
@@ -38,6 +40,9 @@ Cube::Cube( Graphics &gph,
 		geometryTag,
 		cube.m_indices );
 	m_pPrimitiveTopology = PrimitiveTopology::fetch( gph );
+
+	createAabb( cube.m_vb );
+	setMeshId();
 
 	auto transformVscb = std::make_shared<TransformVSCB>( gph,
 		0u );
@@ -180,6 +185,7 @@ const DirectX::XMMATRIX Cube::calcRotation() const noexcept
 void Cube::displayImguiWidgets( Graphics &gph,
 	const char *name ) noexcept
 {
+#ifndef FINAL_RELEASE
 	if ( ImGui::Begin( name ) )
 	{
 		ImGui::Text( "Position" );
@@ -284,4 +290,5 @@ void Cube::displayImguiWidgets( Graphics &gph,
 		accept( evCube );
 	}
 	ImGui::End();
+#endif
 }

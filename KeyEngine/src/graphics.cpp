@@ -2,8 +2,10 @@
 #include <mutex>
 #include "dxgi1_5.h"
 #include "graphics.h"
-#include "imgui_impl_dx11.h"
-#include "imgui_impl_win32.h"
+#ifndef FINAL_RELEASE
+#	include "imgui_impl_dx11.h"
+#	include "imgui_impl_win32.h"
+#endif // !FINAL_RELEASE
 #include "render_target.h"
 #include "depth_stencil_view.h"
 #include "utils.h"
@@ -258,11 +260,13 @@ Graphics::Graphics( const HWND hWnd,
 	m_pSpriteFont = std::make_unique<dx::SpriteFont>(m_pDevice.Get(),
 		L"assets/fonts/myComicSansMSSpriteFont.spritefont" );
 
-	// initialize Dear ImGui d3d11 Implementation
 	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{
+#ifndef FINAL_RELEASE
+		// initialize Dear ImGui d3d11 Implementation
 		ImGui_ImplDX11_Init( m_pDevice.Get(),
 			m_pImmediateContext.Get() );
+#endif
 	}
 
 	m_fpsTimer.start();
@@ -272,7 +276,9 @@ Graphics::~Graphics()
 {
 	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{
+#ifndef FINAL_RELEASE
 		ImGui_ImplDX11_Shutdown();
+#endif
 	}
 	else
 	{
@@ -499,11 +505,13 @@ void Graphics::beginFrame() noexcept
 {
 	VTUNE_ITT_TASK_BEGIN( pStrIttBeginRendering );
 	if constexpr ( gph_mode::get() == gph_mode::_3D )
-	{// imgui new frame
+	{
+#ifndef FINAL_RELEASE
+		// imgui new frame
 		ImGui_ImplDX11_NewFrame();
 		ImGui_ImplWin32_NewFrame();
 		ImGui::NewFrame();
-
+#endif
 		clearShaderSlots();
 #ifdef D2D_INTEROP
 		begin2dDraw();
@@ -561,8 +569,11 @@ void Graphics::endFrame()
 	VTUNE_ITT_TASK_BEGIN( pStrIttEndRendering );
 	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{
+#ifndef FINAL_RELEASE
 		ImGui::Render();
 		ImGui_ImplDX11_RenderDrawData( ImGui::GetDrawData() );
+#endif
+
 #ifdef D2D_INTEROP
 		end2dDraw();
 #endif
