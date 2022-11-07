@@ -43,6 +43,8 @@ example: components of a single section of 64x64 verts, then the component size 
 Landscape > Components > Sections > Quads
 There is always one more row of vertices than there are quads (think of a quad as a 1x1 vertex grid; thus it needs 4 vertices), since the shared row of vertices along the edge of two neighboring components are duplicated and stored in each component.
 
+-- Integrate Terrain Navigation (Recast navigation)
+
 
 -- World class
 	m_entityManager
@@ -53,6 +55,11 @@ There is always one more row of vertices than there are quads (think of a quad a
 
 -- Instanced mesh rendering
 https://www.braynzarsoft.net/viewtutorial/q16390-33-instancing-with-indexed-primitives
+
+-- picking
+https://www.youtube.com/watch?v=zbzCZeaWrsM
+
+-- in game ui - modified RmlUI with d3d11 backend
 
 -- Animation
 https://ogldev.org/www/tutorial38/tutorial38.html
@@ -227,12 +234,10 @@ DCC animation software (Blender, Max, Maya, ...) -> DCC exchange file format (gl
 
 In a way or an other, the aim of the pipeline and importer tools is to end up with runtime data structures (ozz::animation::Skeleton, ozz::animation::Animation, …) that can be used with the runtime libraries, on any platform. Run-time libraries provide jobs and data structures to process runtime operations like sampling, blending…
 
--- picking
-https://www.youtube.com/watch?v=zbzCZeaWrsM
-
--- in game ui - modified RmlUI with d3d11 backend
 
 -- Deferred shading to handle multiple dynamic lights
+https://www.rastertek.com/dx11tut30.html
+https://www.rastertek.com/dx11tut41.html
 -- Call shadowMapPass::run every 10 frames or so; it's expensive as it is now
 -- Model has 1 material for now - add the ability for multiple
 -- MaterialLoader will need to addBindable "Rasterizer" when 2 sided aiMaterials start getting introduced
@@ -246,27 +251,28 @@ https://www.youtube.com/watch?v=zbzCZeaWrsM
 
 -- Implement particle system
 https://www.rastertek.com/dx11tut39.html
-https://www.gamedev.net/blogs/entry/2255627-d3d11-port-of-particle-system-rendering-with-source/
+https://www.youtube.com/watch?v=fduKhsm3ID8
 
--- Reflections
+-- Physics: integrate Bullet Physics
 
 -- Lua Scripting engine
-
--- PBR Metallic Renderer (UE4 based)
-
--- Global Illumination
+https://www.youtube.com/watch?v=4l5HdmPoynw
+https://www.youtube.com/watch?v=E42Lyv2Ra1c
 
 -- Model LOD automatic switching
 
 -- Multithreaded Rendering
 
--- Physics: integrate Bullet Physics
+-- PBR Metallic Renderer (UE4 based)
+
+-- Reflections
+
+-- Global Illumination
 
 -- Decals
 http://blog.wolfire.com/2009/06/how-to-project-decals/
 deferred screenspace decals: https://martindevans.me/game-development/2015/02/27/Drawing-Stuff-On-Other-Stuff-With-Deferred-Screenspace-Decals/
 
--- Save game system
 -- Craft gameplay systems from UE4 project
 
 -- Profiling with Intel's VTune
@@ -383,11 +389,7 @@ std::map<std::string, std::string> map;	// map of English string to localized st
 	   }
 
 
--- TODO:
-fix the config of all shader files
-
-
--- MISC
+-- Clipboard
 
 
 GetKeyState() gets the key status returned from the thread's message queue. The status does not reflect the interrupt-level state associated with the hardware
@@ -402,111 +404,4 @@ whether the key was pressed since the last call to GetAsyncKeyState(), and wheth
 GetAsyncKeyState just tells you the state right now, it should not be used to monitor possible changes over time!
 
 
-
-
--- Tweakers
-========
-command_interpreter.h
-Tweakers can be controlled by designers and QA in real time which is very useful.
-
-#define DEFINE_SIMPLE_TWEAKER(id, type, initial_value) UTILITYDLL::TWEAKER<type> id(type(initial_value), #id, false, CLI::UNCATEGORISED, "usage", "description", __FILE__, __LINE__, PI_UNIDENTIFIED);
-#define DEFINE_NON_CONST_SIMPLE_TWEAKER DEFINE_SIMPLE_TWEAKER
-
-example:
-DEFINE_SIMPLE_TWEAKER(OVERRIDE_CIVILIZATION_LEVEL, int32, 0);
-
-struct CLI_ITEM
-				{
-								CLI_ITEM(CLI::CATEGORY category, const char* usage, const char* description, const char* file_name, int32 line_number, PROGRAMMER_ID owner);
-
-								const CLI::CATEGORY     m_category;
-								const String                        m_usage;
-								const String                        m_description;
-								const String                        m_file_name;
-								const int32                                          m_line_number;
-								const PROGRAMMER_ID              m_owner;
-				};
-
-				typedef HashTable<String, COMMAND*>             COMMAND_MAP;
-
-				/*
-				The tweak template is a way of declaring an object such that it can be
-				tweaked externally if the subsystem is switched on
-				*/
-
-
-				class I_TWEAKER : public CLI_ITEM
-				{
-				public:
-								UTILITY_API static I_TWEAKER* find(const String&);                                                                                                         // Find a tweaker
-								UTILITY_API static card32                              find(CLI::CATEGORY, DynamicArray<I_TWEAKER*>&);     // Find all tweakers of a particular category
-
-								UTILITY_API I_TWEAKER(const char* name, bool is_environment_variable, CLI::CATEGORY category, const char* usage, const char* description, const char* file_name, int32 line_number, PROGRAMMER_ID owner);
-
-								UTILITY_API virtual void script(::UTILITYLIB::UniCharOStream&)  const;
-								void                                                                                       clean()                                                                                                                                  const;
-								bool                                                                                       dirty()                                                                                                                                   const;
-								String                                                                                    name_as_string()                                                                                            const;
-								String                                                                                    documentation(bool)                                                                                     const;
-
-								virtual const char*                                           type_name()                                                                                                                     const = 0;
-								virtual void                                                         peek(::UTILITYLIB::UniCharOStream&)                   const = 0;
-								virtual void                                                         tweak(::UTILITYLIB::UniCharIStream&)   const = 0;
-
-								virtual bool*                                                      value_as_bool()                                                                                                = 0;                                         // this is to allow TWEAKERs to be added to the debug menus, temporary measure until we move to a fully CLI menu system
-
-								const String                        m_name;
-								const bool                                           m_is_environment_variable;
-
-				protected:
-								mutable bool                     m_dirty;
-								const I_TWEAKER& operator=(const I_TWEAKER& rhs) const;
-				};
-
-				template<typename T> class TWEAKER : public I_TWEAKER
-				{
-				public:
-								friend FileOut& operator << ( FileOut& file, TWEAKER<T>& t );
-
-								TWEAKER(const T &t, const char *name, bool is_environment_variable, const char ignored[1], const char *usage, const char *description, const char *file_name, int32 line_number, PROGRAMMER_ID owner = PI_UNIDENTIFIED);
-								TWEAKER(const T &t, const char *name, bool is_environment_variable, CLI::CATEGORY category, const char *usage, const char *description, const char *file_name, int32 line_number, PROGRAMMER_ID owner = PI_UNIDENTIFIED); // TWEAKER_V2, for the most part
-
-								T& operator=(const T& rhs)                         const;
-								operator T()                                                                        const;
-
-								const T&                                              val()                       const;
-												  T&                                        val();
-
-								// I_TWEAKER
-								virtual const char*           type_name()                                                                                                                                     const;
-								virtual void                         peek(::UTILITYLIB::UniCharOStream& dest)          const;
-								virtual void                         tweak(::UTILITYLIB::UniCharIStream& source)     const;
-
-								virtual bool*                      value_as_bool();
-
-				protected:
-								mutable T                                            m_tweak;
-				};
-
--- Integrate Terrain Navigation (Recast navigation)
-
--- Deconst functions
-class Model
-{
-	template<typename T>
-	T& deconst( const T& obj )
-	{
-		return const_cast<T&>( obj );
-	}
-
-
-// subclass boilerplate
-#define COMPONENT_CALLBACK_CLASS_BODY(class_id) public: \
-																																																class_id()                                             : TWUI::ComponentCallbacks(#class_id) {  } \
-																																																static PooledString TypeId() { static const PooledString type_id(#class_id); return type_id; }\
-																																																const bool OfType(PooledString id) const override {return class_id::TypeId() == id ;}\
-																																																protected: \
-																																																class_id(const char * id, bool call_construct = true) : TWUI::ComponentCallbacks(id) { if (call_construct) Construct(); } \
-																																																class_id(const char * id, TWUI::Component & c) : TWUI::ComponentCallbacks(id, c) { Construct(); } \
-																																																class_id(TWUI::Component& c) : TWUI::ComponentCallbacks(#class_id, c) { Construct(); } \
-																																																TWUI::ComponentCallbacks* Clone(TWUI::Component& c) const override { return new class_id(c); }
+-- Multiplayer

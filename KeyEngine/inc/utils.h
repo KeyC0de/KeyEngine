@@ -21,7 +21,7 @@ Both of them are just performance hints to the compiler.
 #if defined _MSC_VER || defined _WIN32 || defined _WIN64
 #	define restricted __declspec( restrict )
 #	define noaliasing __declspec( noalias )
-#	define compiler_hint __declspec( restrict ) __declspec( noalias )
+#	define compiler_hint restricted noaliasing
 #elif defined __unix__ || defined __unix || defined __APPLE__ && defined __MACH__
 #	define restricted __restrict__
 #	define noaliasing __restrict__
@@ -48,14 +48,14 @@ Both of them are just performance hints to the compiler.
 #define PRINT_ENUM( e )				std::printf( "'%s'", (#e) );
 #define PRINTW_ENUM( e )			std::wprintf( L"'%s'", (#e) );
 
-#define CLASS_NAMER( className ) private: \
-		static inline constexpr const char *s_className = #className ; \
-	public: \
-		static constexpr const char* getClassName() noexcept \
-		{ \
-			return s_className; \
-		} \
-	private: \
+#define CLASS_NAMER( className ) private:\
+		static inline constexpr const char *s_className = #className ;\
+	public:\
+		static constexpr const char* getClassName() noexcept\
+		{\
+			return s_className;\
+		}\
+	private:\
 // use it like so: `CLASS_NAMER( MyClassName );` as the first statement of your class
 
 
@@ -245,6 +245,18 @@ inline unsigned long long int volatile& readMEM( unsigned long long int memoryAd
 inline compiler_hint std::size_t* getUniqueMemory()
 {
 	return reinterpret_cast<std::size_t*>( new std::size_t{0} );
+}
+
+template<typename T>
+T& deconst( const T& obj )
+{
+	return const_cast<T&>( obj );
+}
+
+template<typename T>
+T* deconst( const T* obj )
+{
+	return const_cast<T*>( obj );
 }
 
 
