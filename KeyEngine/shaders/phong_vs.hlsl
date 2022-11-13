@@ -27,6 +27,6 @@ VSOut main( VSIn input )
 	output.pos = mul( float4(input.pos, 1.0f),
 		worldViewProjection );
 	output.posLightSpace = convertVertexPosToLightSpace( input.pos,
-		model );
+		world );
 	return output;
 }

@@ -1,5 +1,6 @@
 #include "sky_pass.h"
 #include <string>
+#include "primitive_topology.h"
 #include "binder.h"
 #include "linker.h"
 #include "camera.h"
@@ -32,6 +33,8 @@ SkyPass::SkyPass( Graphics &gph,
 	:
 	IBindablePass{name}
 {
+	addPassBindable( PrimitiveTopology::fetch( gph ) );
+
 	addPassBindable( std::make_shared<CubeTexture>( gph,
 		"assets/textures/skybox/space",
 		0u ) );
@@ -65,7 +68,7 @@ SkyPass::SkyPass( Graphics &gph,
 				*vs ) );
 		}
 		{// sphere
-			TriangleMesh sphere = Geometry::makeTesselatedSphere();
+			TriangleMesh sphere = Geometry::makeSphereTesselated();
 			m_pSphereVb = VertexBuffer::fetch( gph,
 				s_sphereGeometryTag,
 				sphere.m_vb );

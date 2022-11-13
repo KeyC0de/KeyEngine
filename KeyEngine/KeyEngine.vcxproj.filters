@@ -376,12 +376,17 @@
     <ClCompile Include="src\negative_pass.cpp">
       <Filter>engine\vfx\pass</Filter>
     </ClCompile>
-    <ClCompile Include="src\texture_desc.cpp" />
     <ClCompile Include="src\pass_through.cpp">
       <Filter>engine\vfx\pass</Filter>
     </ClCompile>
     <ClCompile Include="src\terrain.cpp">
       <Filter>engine\vfx\renderables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\font_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\texture_desc.cpp">
+      <Filter>engine\vfx</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -901,9 +906,6 @@
     <ClInclude Include="inc\string_buffer.h">
       <Filter>engine\common</Filter>
     </ClInclude>
-    <ClInclude Include="inc\consteval_forced.h">
-      <Filter>engine\common</Filter>
-    </ClInclude>
     <ClInclude Include="inc\dumpling.h">
       <Filter>engine\os\win</Filter>
     </ClInclude>
@@ -1198,11 +1200,18 @@
     <ClInclude Include="inc\global_constants.h">
       <Filter>engine\common</Filter>
     </ClInclude>
-    <ClInclude Include="inc\texture_desc.h" />
     <ClInclude Include="inc\pass_through.h">
       <Filter>engine\vfx\pass</Filter>
     </ClInclude>
-    <ClInclude Include="inc\terrain.h" />
+    <ClInclude Include="inc\font_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\terrain.h">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\texture_desc.h">
+      <Filter>engine\vfx</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\resources\tray_graffiti.ico">

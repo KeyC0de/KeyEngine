@@ -1,8 +1,8 @@
 #include "cube.h"
+#include "index_buffer.h"
 #include "geometry.h"
 #include "input_layout.h"
 #include "pixel_shader.h"
-#include "primitive_topology.h"
 #include "transform_vscb.h"
 #include "transform_scale_vscb.h"
 #include "vertex_buffer.h"
@@ -39,7 +39,6 @@ Cube::Cube( Graphics &gph,
 	m_pIndexBuffer = IndexBuffer::fetch( gph,
 		geometryTag,
 		cube.m_indices );
-	m_pPrimitiveTopology = PrimitiveTopology::fetch( gph );
 
 	createAabb( cube.m_vb );
 	setMeshId();

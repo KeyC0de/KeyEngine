@@ -9,7 +9,6 @@
 
 class IndexBuffer;
 class VertexBuffer;
-class PrimitiveTopology;
 class Graphics;
 class MaterialLoader;
 class IBindable;
@@ -43,7 +42,6 @@ protected:
 	std::pair<DirectX::XMFLOAT3, DirectX::XMFLOAT3> m_aabb;	// #TODO: Collision mesh needs to be recalculated if the object is rotated, scaled or animated
 	std::shared_ptr<IndexBuffer> m_pIndexBuffer;
 	std::shared_ptr<VertexBuffer> m_pVertexBuffer;
-	std::shared_ptr<PrimitiveTopology> m_pPrimitiveTopology;
 	std::vector<Effect> m_effects;
 public:
 #pragma warning( disable : 26495 )

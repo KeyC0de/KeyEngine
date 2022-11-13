@@ -1,4 +1,5 @@
 #include "renderer.h"
+#include "graphics_mode.h"
 #include "constant_buffer_ex.h"
 #include "renderer_exception.h"
 #include "linker.h"
@@ -26,6 +27,7 @@
 #include "negative_pass.h"
 #include "blur_pass.h"
 #include "pass_through.h"
+#include "font_pass.h"
 
 
 namespace ren
@@ -100,11 +102,14 @@ void Renderer::run( Graphics &gph ) cond_noex
 		}
 	}
 
-	if ( m_pOnscreenPass )
+	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{
 		offscreenToBackBufferSwap( gph );
 		m_pOnscreenPass->run( gph );
 	}
+
+	// UI rendering continues...
+	m_pFontPass->run( gph );
 }
 
 void Renderer::reset() noexcept
@@ -471,6 +476,10 @@ Renderer3d::Renderer3d( Graphics &gph,
 		m_pOnscreenPass = std::make_unique<ren::PassThrough>( gph,
 			"passthrough" );
 	}
+
+	m_pFontPass = std::make_unique<ren::FontPass>( gph,
+		"fpsText",
+		"myComicSansMSSpriteFont" );
 }
 
 void Renderer3d::showImGuiWindows( Graphics &gph )

@@ -4,7 +4,6 @@
 #include "index_buffer.h"
 #include "input_layout.h"
 #include "pixel_shader.h"
-#include "primitive_topology.h"
 #include "transform_vscb.h"
 #include "vertex_shader.h"
 #include "rasterizer_state.h"
@@ -68,8 +67,6 @@ CameraWidget::CameraWidget( Graphics &gph )
 	m_pIndexBuffer = IndexBuffer::fetch( gph,
 		s_geometryTag,
 		indices );
-	m_pPrimitiveTopology = PrimitiveTopology::fetch( gph,
-		D3D11_PRIMITIVE_TOPOLOGY_LINELIST );
 
 	createAabb( vb );
 	setMeshId();

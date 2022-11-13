@@ -46,7 +46,7 @@ public:
 	static DirectX::XMMATRIX getShadowOrthographicMatrix( const unsigned w, const unsigned h ) noexcept;
 	static DirectX::XMMATRIX getShadowProjectionMatrix( const float farZ = 9999 ) noexcept;
 public:
-	Camera( Graphics &gph, const std::string &name, const int width, const int height, const float fovDegrees = 90.0f, const DirectX::XMFLOAT3 &homePos = {0.0f, 0.0f, 0.0f}, const float homePitch = 0.0f, const float homeYaw = 0.0f, const bool bTethered = false, const float nearZ = 0.5f, const float farZ = 400.0f ) noexcept;
+	Camera( Graphics &gph, const std::string &name, const int width, const int height, const float fovDegrees = 90.0f, const DirectX::XMFLOAT3 &homePos = {0.0f, 0.0f, 0.0f}, const float homePitch = 0.0f, const float homeYaw = 0.0f, const bool bTethered = false, const float nearZ = 0.5f, const float farZ = 200.0f ) noexcept;
 
 	void render( const size_t channel = rch::all ) const;
 	void makeActive( Graphics &gph, bool bOrthographic ) const;

@@ -2,7 +2,6 @@
 #include "index_buffer.h"
 #include "input_layout.h"
 #include "pixel_shader.h"
-#include "primitive_topology.h"
 #include "transform_vscb.h"
 #include "vertex_buffer.h"
 #include "vertex_shader.h"
@@ -52,8 +51,6 @@ Frustum::Frustum( Graphics &gph,
 	m_pIndexBuffer = IndexBuffer::fetch( gph,
 		s_geometryTag,
 		indices );
-	m_pPrimitiveTopology = PrimitiveTopology::fetch( gph,
-		D3D11_PRIMITIVE_TOPOLOGY_LINELIST );
 
 	// Draw the frustum with a dimmer color for the pixels that are occluded.
 	// How? By leveraging the depth stencil modes

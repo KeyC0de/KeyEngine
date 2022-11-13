@@ -8,6 +8,7 @@ dx * uv.u
 dy * ui.v
 
 -- 3d Terrain/Landscape series:
+https://www.rastertek.com/tutterr.html
 https://www.rastertek.com/tutdx11s2ter.html
 Landscape Components: Landscapes are divided into multiple Components, which are Unreal's base unit of rendering, visibility calculation, and collision. Components in a Landscape are all the same size and are always square. Each component's height data is stored in a single texture. Because of this, its size has to be a power-of-two number of vertices.
 We should not scale the landscape as that can degrade its quality. Instead we should set its size via the following variables:
@@ -42,8 +43,6 @@ Heightmap black points: low values, ie low heights (sea floor level for lowest h
 example: components of a single section of 64x64 verts, then the component size is 64x64
 Landscape > Components > Sections > Quads
 There is always one more row of vertices than there are quads (think of a quad as a 1x1 vertex grid; thus it needs 4 vertices), since the shared row of vertices along the edge of two neighboring components are duplicated and stored in each component.
-
--- Integrate Terrain Navigation (Recast navigation)
 
 
 -- World class
@@ -247,6 +246,8 @@ https://www.rastertek.com/dx11tut41.html
 		you'll need to set a PCB for that
 -- shadowing_ps.hlsli : set zf, zn in a CB and update it from ShadowMapPass - XMMatrixPerspectiveFovLH values
 
+-- Integrate Terrain Navigation (Recast navigation)
+
 -- DXInput
 
 -- Implement particle system
@@ -389,6 +390,10 @@ std::map<std::string, std::string> map;	// map of English string to localized st
 	   }
 
 
+-- Multiplayer
+
+
+
 -- Clipboard
 
 
@@ -404,4 +409,52 @@ whether the key was pressed since the last call to GetAsyncKeyState(), and wheth
 GetAsyncKeyState just tells you the state right now, it should not be used to monitor possible changes over time!
 
 
--- Multiplayer
+
+`Entity`ies form an Entity graph
+some entities will be children of other entities. eg. a sword entity can be a child of a soldier entity which will be a child of a world entity
+
+// Actors are AI-enabled entities
+class Actor
+	:
+	public RenderableEntity
+{
+	// ...
+};
+
+// Characters can be Players: take input from human controller, no AI controller
+class Character
+	:
+	public Actor
+{
+	// ...
+};
+
+
+class World
+{
+	Entity *m_pEntityGraph = nullptr;
+};
+
+// consteval_forced.h
+// Goal: Making functions guaranteed to be executed at compile time
+// One way to make a variable guaranteed to be compiled at runtime is to make it call a constexpr function.
+template<auto V>
+static constexpr auto constevalForced = V;
+// you would do now:
+// consteval_forced<functionName(parameters...)>;
+// this is a bit verbose
+// so instead for each function you want to guarantee compile time evaluation do:
+//#define CONSTEVAL_FUNCTION_NAME(...) constevalForced<functionName(__VA_ARGS__)>
+
+constexpr decltype( auto ) calculateAddition( int x,
+	int y )
+{
+	return x + y;
+}
+#define CONSTEVAL_CALC_ADDITION( ... ) constevalForced<calculateAddition( __VA_ARGS__ )>
+
+/*
+auto result = CONSTEVAL_CALC_ADDITION( 5,
+		7 );
+std::cout << result << '\n';
+*/

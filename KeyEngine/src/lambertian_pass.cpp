@@ -1,5 +1,6 @@
 #include "lambertian_pass.h"
 #include <string>
+#include "primitive_topology.h"
 #include "binder.h"
 #include "linker.h"
 #include "camera.h"
@@ -19,6 +20,8 @@ LambertianPass::LambertianPass( Graphics &gph,
 	:
 	RenderQueuePass{name}
 {
+	addPassBindable( PrimitiveTopology::fetch( gph ) );
+
 	addPassBindable( std::make_shared<TextureSamplerState>( gph,
 		0u,
 		TextureSamplerState::FilterMode::Anisotropic,

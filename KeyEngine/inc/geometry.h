@@ -10,8 +10,9 @@ struct Geometry
 	static TriangleMesh makeCube( std::optional<ver::VertexInputLayout> layout = {} );
 	static TriangleMesh makeCubeIndependentFaces( ver::VertexInputLayout layout );;
 	static TriangleMesh makeCubeIndependentFacesTextured();
-
-	static TriangleMesh makeTesselatedSphere( std::optional<ver::VertexInputLayout> layout = std::nullopt, const unsigned nLateralDivs = 12, const unsigned nLongitudinalDivs = 24 );
-
-	static TriangleMesh makePlane( const int nDivisionsX = 1, const int nDivisionsY = 1 );
+	static TriangleMesh makeSphereTesselated( std::optional<ver::VertexInputLayout> layout = std::nullopt, const unsigned nLateralDivs = 12, const unsigned nLongitudinalDivs = 24 );
+	//	\function	makePlanarGridTextured	||	\date	2022/11/12 16:18
+	//	\brief	nDivisionsX are length divisions
+	static TriangleMesh makePlanarGrid( const float length = 2.0f, const float width = 2.0f, int nDivisionsX = 1, int nDivisionsY = 1 );
+	static TriangleMesh makePlanarGridTextured( const float length = 2.0f, const float width = 2.0f, int nDivisionsX = 1, int nDivisionsY = 1 );
 };

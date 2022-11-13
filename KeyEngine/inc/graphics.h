@@ -18,10 +18,9 @@
 #endif
 #include "non_copyable.h"
 #include "key_exception.h"
-#include "dxgi_info_queue.h"
-#include "key_timer.h"
-#include "SpriteFont.h"
-#include "SpriteBatch.h"
+#if defined _DEBUG && !defined NDEBUG
+#	include "dxgi_info_queue.h"
+#endif
 #include "color.h"
 #include "rectangle.h"
 #include "texture_desc.h"
@@ -105,12 +104,9 @@ private:
 	DxgiInfoQueue m_infoQueue;
 	ATL::CComPtr<ID3D11Debug> m_pDebug;
 #endif
-	KeyTimer<std::chrono::microseconds> m_fpsTimer;
 	DirectX::XMMATRIX m_projection;
 	DirectX::XMMATRIX m_view;
-	size_t m_frameNum = 1u;
-	std::unique_ptr<DirectX::SpriteFont> m_pSpriteFont;
-	std::unique_ptr<DirectX::SpriteBatch> m_pFpsSpriteBatch;
+	size_t m_currentFrame = 0u;
 	std::vector<ID3D11DeviceContext*> m_deferredContexts;
 	std::vector<ID3D11CommandList*> m_commandLists;
 	std::unique_ptr<ren::Renderer> m_pRenderer;

@@ -164,7 +164,7 @@ public:
 #pragma region delayFor
 	//===================================================
 	//	\function	delayFor
-	//	\brief  delays execution of this_thread for the amount of time specified
+	//	\brief  delays execution of this_thread for the amount of time specified (in milliseconds)
 	//	\date	2020/10/01 11:05
 	void delayFor( const size_t t ) const noexcept
 	{

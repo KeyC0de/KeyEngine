@@ -193,9 +193,12 @@ Sandbox3d::Sandbox3d( const int width,
 		width,
 		height,
 		60.0f,
-		dx::XMFLOAT3{-13.5f, 6.0f, 3.5f},
+		dx::XMFLOAT3{0.0f, 0.0f, 0.0f},
 		0.0f,
-		util::PI / 2.0f) );
+		util::PI / 2.0f,
+		false,
+		0.5f,
+		1000.0f ) );
 	s_cameraMan.add( std::make_unique<Camera>( gph,
 		"B",
 		width,
@@ -203,7 +206,10 @@ Sandbox3d::Sandbox3d( const int width,
 		45.0f,
 		dx::XMFLOAT3{-13.5f, 28.8f, -6.4f},
 		util::PI / 180.0f * 13.0f,
-		util::PI / 180.0f * 61.0f ) );
+		util::PI / 180.0f * 61.0f,
+		false,
+		0.5f,
+		1000.0f ) );
 	m_pPointLight1 = std::make_unique<PointLight>( gph,
 		dx::XMFLOAT3{10.0f, 5.0f, 0.0f} );
 	//m_pPointLight2 = std::make_unique<PointLight>( m_mainWindow.getGraphics(),
@@ -212,21 +218,24 @@ Sandbox3d::Sandbox3d( const int width,
 
 	m_cube1.setPosition( {10.0f, 5.0f, 6.0f} );
 
-	m_nanoSuit.setRootTransform( dx::XMMatrixRotationY( util::PI / 2.f ) *
-		dx::XMMatrixTranslation( 27.f, -0.56f, 1.7f ) );
+	//m_nanoSuit.setRootTransform( dx::XMMatrixRotationY( util::PI / 2.f ) *
+		//dx::XMMatrixTranslation( 27.f, -0.56f, 1.7f ) );
 	m_carabiner.setRootTransform( dx::XMMatrixTranslation( -10.0f, 6.0f, 0.0f ) );
 
 	auto &renderer = gph.renderer();
+
+	s_cameraMan.connectEffectsToRenderer( renderer );
+
 	m_pPointLight1->connectEffectsToRenderer( renderer );
 	//m_pPointLight2->connectEffectsToRenderer( renderer );
 
+	m_terrain.connectEffectsToRenderer( renderer );
 	m_cube1.connectEffectsToRenderer( renderer );
 	m_cube2.connectEffectsToRenderer( renderer );
 	m_testSphere.connectEffectsToRenderer( renderer );
-	m_sponzaScene.connectEffectsToRenderer( renderer );
-	m_nanoSuit.connectEffectsToRenderer( renderer );
+	//m_sponzaScene.connectEffectsToRenderer( renderer );
+	//m_nanoSuit.connectEffectsToRenderer( renderer );
 	m_carabiner.connectEffectsToRenderer( renderer );
-	//s_cameraMan.connectEffectsToRenderer( renderer );
 
 	m_cube2.setEffectEnabled( rch::blurOutline,
 		false );
@@ -240,7 +249,7 @@ Sandbox3d::Sandbox3d( const int width,
 	//	renderer.setShadowCamera( *m_pPointLight2->shareCamera() );
 	//}
 
-	ThreadPoolJ &threadPool = ThreadPoolJ::instance( 4u,
+	/*ThreadPoolJ &threadPool = ThreadPoolJ::instance( 4u,
 		true );
 	threadPool.enqueue( &func_async::doPeriodically,
 		&BindableMap::garbageCollect,
@@ -259,7 +268,7 @@ Sandbox3d::Sandbox3d( const int width,
 		{
 			this->m_testSphere.setRadius( 0.25f );
 		},
-		8000u );
+		8000u );*/
 
 	auto menuState = std::make_unique<MenuState>();
 	setState( std::move( menuState ),
@@ -345,29 +354,35 @@ int Sandbox3d::checkInput( const float dt )
 	auto &activeCamera = s_cameraMan.activeCamera();
 	if ( !m_mainWindow.isCursorEnabled() )
 	{
+		float camSpeed = dt;
+		if ( keyboard.isKeyPressed( VK_SHIFT ) )
+		{
+			camSpeed *= 10.0f;
+		}
+
 		if ( keyboard.isKeyPressed( 'W' ) )
 		{
-			activeCamera.translateRel( {0.0f, 0.0f, dt} );
+			activeCamera.translateRel( {0.0f, 0.0f, camSpeed} );
 		}
 		if ( keyboard.isKeyPressed( 'A' ) )
 		{
-			activeCamera.translateRel( {-dt, 0.0f, 0.0f} );
+			activeCamera.translateRel( {-camSpeed, 0.0f, 0.0f} );
 		}
 		if ( keyboard.isKeyPressed( 'S' ) )
 		{
-			activeCamera.translateRel( {0.0f, 0.0f, -dt} );
+			activeCamera.translateRel( {0.0f, 0.0f, -camSpeed} );
 		}
 		if ( keyboard.isKeyPressed( 'D' ) )
 		{
-			activeCamera.translateRel( {dt, 0.0f, 0.0f} );
+			activeCamera.translateRel( {camSpeed, 0.0f, 0.0f} );
 		}
 		if ( keyboard.isKeyPressed( 'E' ) )
 		{
-			activeCamera.translateRel( {0.0f, dt, 0.0f} );
+			activeCamera.translateRel( {0.0f, camSpeed, 0.0f} );
 		}
 		if ( keyboard.isKeyPressed( 'Q' ) )
 		{
-			activeCamera.translateRel( {0.0f, -dt, 0.0f} );
+			activeCamera.translateRel( {0.0f, -camSpeed, 0.0f} );
 		}
 		if ( keyboard.isKeyPressed( VK_BACK ) )
 		{
@@ -402,11 +417,12 @@ void Sandbox3d::update( const float dt )
 	//	dt,
 	//	activeCamera.getViewMatrix() );
 
+	m_terrain.update( dt );
 	m_cube1.update( dt );
 	m_cube2.update( dt );
-	m_nanoSuit.update( dt );
+	//m_nanoSuit.update( dt );
 	m_carabiner.update( dt );
-	m_sponzaScene.update( dt );
+	//m_sponzaScene.update( dt );
 }
 
 void Sandbox3d::render( const float dt )
@@ -417,18 +433,17 @@ void Sandbox3d::render( const float dt )
 	m_pPointLight1->render( rch::lambert );
 	//m_pPointLight2->render( rch::lambert );
 
+	m_terrain.render();
 	m_cube1.render( rch::lambert | rch::shadow | rch::blurOutline );
 	m_cube2.render();
 	m_testSphere.render();
-	m_nanoSuit.render( rch::lambert | rch::shadow | rch::blurOutline );
+	//m_nanoSuit.render( rch::lambert | rch::shadow | rch::blurOutline );
 	m_carabiner.render( rch::lambert | rch::shadow | rch::solidOutline | rch::blurOutline );
-	m_sponzaScene.render( rch::lambert | rch::shadow );
+	//m_sponzaScene.render( rch::lambert | rch::shadow );
 
 	s_cameraMan.render( rch::lambert | rch::wireframe );
 
 	gph.runRenderer();
-
-	gph.updateAndRenderFpsTimer();
 }
 
 void Sandbox3d::test()
@@ -448,17 +463,26 @@ void Sandbox3d::test()
 	auto &gph = m_mainWindow.getGraphics();
 
 	// Showcase Effect controls by passing visitors to the object hierarchies
-	static ImguiVisitor sponzaVisitor{"Sponza"};
-	static ImguiVisitor nanoSuitVisitor{"Nano"};
-	static ImguiVisitor carabinerVisitor{"Carabiner"};
-	sponzaVisitor.spawnModelImgui( m_sponzaScene );
-	nanoSuitVisitor.spawnModelImgui( m_nanoSuit );
-	carabinerVisitor.spawnModelImgui( m_carabiner );
 	s_cameraMan.spawnImguiWindow( gph );
+
 	m_pPointLight1->displayImguiWidgets();
 	//m_pPointLight2->displayImguiWidgets();
-	m_cube1.displayImguiWidgets( gph, "Cube 1" );
-	m_cube2.displayImguiWidgets( gph, "Cube 2" );
+
+	m_terrain.displayImguiWidgets( gph,
+		"Terrain Base" );
+
+	m_cube1.displayImguiWidgets( gph,
+		"Cube 1" );
+	m_cube2.displayImguiWidgets( gph,
+		"Cube 2" );
+
+	//static ImguiVisitor sponzaVisitor{"Sponza"};
+	//static ImguiVisitor nanoSuitVisitor{"Nano"};
+	static ImguiVisitor carabinerVisitor{"Carabiner"s};
+	//sponzaVisitor.spawnModelImgui( m_sponzaScene );
+	//nanoSuitVisitor.spawnModelImgui( m_nanoSuit );
+	carabinerVisitor.spawnModelImgui( m_carabiner );
+
 	gph.renderer3d().showImGuiWindows( gph );
 
 	if ( b_bShowDemoWindow )

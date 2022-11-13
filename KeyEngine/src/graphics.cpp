@@ -22,7 +22,6 @@
 #pragma comment( lib, "dxgi.lib" )
 #pragma comment( lib, "d3d11.lib" )
 #pragma comment( lib, "d3dcompiler.lib" )
-#pragma comment( lib, "DirectXTK.lib" )
 #ifdef D2D_INTEROP
 #	pragma comment( lib, "d2d1.lib" )
 #	pragma comment( lib, "dwrite.lib" )
@@ -256,10 +255,6 @@ Graphics::Graphics( const HWND hWnd,
 			16u ) );
 	}
 
-	m_pFpsSpriteBatch = std::make_unique<dx::SpriteBatch>(m_pImmediateContext.Get());
-	m_pSpriteFont = std::make_unique<dx::SpriteFont>(m_pDevice.Get(),
-		L"assets/fonts/myComicSansMSSpriteFont.spritefont" );
-
 	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{
 #ifndef FINAL_RELEASE
@@ -268,8 +263,6 @@ Graphics::Graphics( const HWND hWnd,
 			m_pImmediateContext.Get() );
 #endif
 	}
-
-	m_fpsTimer.start();
 }
 
 Graphics::~Graphics()
@@ -424,7 +417,7 @@ double Graphics::calcRefreshRate() const noexcept
 
 size_t Graphics::getFrameNum() const noexcept
 {
-	return m_frameNum;
+	return m_currentFrame;
 }
 
 void Graphics::runRenderer() noexcept
@@ -503,6 +496,7 @@ void Graphics::profile() const noexcept
 
 void Graphics::beginFrame() noexcept
 {
+	++m_currentFrame;
 	VTUNE_ITT_TASK_BEGIN( pStrIttBeginRendering );
 	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{
@@ -524,42 +518,6 @@ void Graphics::beginFrame() noexcept
 			0u,
 			cpuBuffer2dSize );
 	}
-	VTUNE_ITT_TASK_END;
-}
-
-void Graphics::updateAndRenderFpsTimer()
-{
-	VTUNE_ITT_TASK_BEGIN( pStrIttFpsTimerRendering );
-	static int fpsDisplayFrameCount = 0;
-	static std::wstring fps;
-
-	auto &setMan = SettingsManager::instance();
-	if ( setMan.getSettings().bFpsCounting )
-	{
-		++fpsDisplayFrameCount;
-
-		// if more than 1000 ms have passed do an fps count
-		if ( m_fpsTimer.getDurationFromStart() > 1000 )
-		{
-			fps = std::to_wstring( fpsDisplayFrameCount );
-#if defined _DEBUG && !defined NDEBUG
-			OutputDebugStringW( fps.data() );
-#endif
-			m_fpsTimer.restart();
-			fpsDisplayFrameCount = 0;
-		}
-	}
-
-	// draw FPS text
-	m_pFpsSpriteBatch->Begin();
-	m_pSpriteFont->DrawString(m_pFpsSpriteBatch.get(),
-		fps.c_str(),
-		dx::XMFLOAT2{0.0f, 0.0f},
-		dx::Colors::Green,
-		0.0f,
-		dx::XMFLOAT2{0.0f, 0.0f},
-		dx::XMFLOAT2{1.0f, 1.0f} );
-	m_pFpsSpriteBatch->End();
 	VTUNE_ITT_TASK_END;
 }
 
@@ -626,8 +584,6 @@ void Graphics::present()
 #endif
 
 	ASSERT_HRES_IF_FAILED;
-
-	++m_frameNum;
 }
 
 void Graphics::draw( const unsigned count ) cond_noex
@@ -985,10 +941,6 @@ void Graphics::d3d11DebugReport()
 		OutputDebugStringW( L"\n\n" );
 		m_pDebug = nullptr;
 	}
-
-	ATL::CComPtr<ID3DUserDefinedAnnotation> pUserDefinedAnnotation;
-	hres = m_pImmediateContext->QueryInterface( IID_PPV_ARGS( &pUserDefinedAnnotation ) );
-	ASSERT_HRES_IF_FAILED;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

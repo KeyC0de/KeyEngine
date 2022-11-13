@@ -1,4 +1,5 @@
 #include "wireframe_pass.h"
+#include "primitive_topology.h"
 #include "binder.h"
 #include "linker.h"
 #include "render_target.h"
@@ -17,6 +18,9 @@ WireframePass::WireframePass( Graphics &gph,
 	:
 	RenderQueuePass{name}
 {
+	addPassBindable( PrimitiveTopology::fetch( gph,
+		D3D11_PRIMITIVE_TOPOLOGY_LINELIST ) );
+
 	addPassBindable( RasterizerState::fetch( gph,
 		RasterizerState::FrontSided,
 		RasterizerState::Solid ) );

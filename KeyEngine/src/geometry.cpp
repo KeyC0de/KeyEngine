@@ -31,7 +31,7 @@ TriangleMesh Geometry::makeCube( std::optional<ver::VertexInputLayout> layout )
 
 	return
 	{
-		std::move( vertices ),
+		vertices,
 		{
 			0, 2, 1, 2, 3, 1,
 			1, 3, 5, 3, 7, 5,
@@ -77,7 +77,7 @@ TriangleMesh Geometry::makeCubeIndependentFaces( ver::VertexInputLayout layout )
 
 	return
 	{
-		std::move( vertices ),
+		vertices,
 		{
 			0,	2,	1,	3,	1,	2,
 			4,	5,	7,	4,	7,	6,
@@ -128,7 +128,7 @@ TriangleMesh Geometry::makeCubeIndependentFacesTextured()
 	return itl;
 }
 
-TriangleMesh Geometry::makeTesselatedSphere( std::optional<ver::VertexInputLayout> layout,
+TriangleMesh Geometry::makeSphereTesselated( std::optional<ver::VertexInputLayout> layout,
 	const unsigned nLateralDivs /* = 12 */,
 	const unsigned nLongitudinalDivs /* = 24 */ )
 {
@@ -237,40 +237,122 @@ TriangleMesh Geometry::makeTesselatedSphere( std::optional<ver::VertexInputLayou
 		nLongitudinalDivs - 1 ) );
 	indices.push_back( iSouthPole );
 
-	return {std::move( vb ), std::move( indices )};
+	return {vb, indices};
 }
 
-TriangleMesh Geometry::makePlane( const int nDivisionsX /* = 1 */,
-	const int nDivisionsY /* = 1 */ )
+TriangleMesh Geometry::makePlanarGrid( const float length /*= 2.0f*/,
+	const float width /*= 2.0f*/,
+	int nDivisionsX /*= 1*/,
+	int nDivisionsY /*= 1*/ )
 {
 	ASSERT( nDivisionsX >= 1, "X Divisions can't be less than 1!" );
 	ASSERT( nDivisionsY >= 1, "Y Divisions can't be less than 1!" );
+	ASSERT( nDivisionsX >= 1, "Longitudinal divisions have to be >= 1!" );
+	ASSERT( nDivisionsY >= 1, "Laterial divisions have to be >= 1!" );
+
+	if ( length > 2.0f && width > 2.0f && nDivisionsX == 1 && nDivisionsY == 1 )
+	{
+		nDivisionsX = 2;
+		nDivisionsY = 2;
+	}
+
+	const int nVerticesX = nDivisionsX + 1;
+	const int nVerticesY = nDivisionsY + 1;
+
+	ver::VertexInputLayout layout;
+	layout.add( ver::VertexInputLayout::Position3D );
+
+	ver::VBuffer vb{std::move( layout )};
+	{
+		const float sideX = length / 2.0f;
+		const float sideY = width / 2.0f;
+		const float nXDivisions = length / float( nDivisionsX );
+		const float nYDivisions = width / float( nDivisionsY );
+
+		for ( int y = 0; y < nVerticesY; ++y )
+		{
+			const float yPos = float( y ) * nYDivisions - sideY;
+			for ( int x = 0; x < nVerticesX; ++x )
+			{
+				const float xPos = float( x ) * nXDivisions - sideX;
+				vb.emplaceVertex( DirectX::XMFLOAT3{xPos, yPos, 0.0f} );
+			}
+		}
+	}
+
+	std::vector<unsigned> indices;
+	indices.reserve( util::square( nDivisionsX * nDivisionsY ) * 6 );
+	const auto calcCoords = [nVerticesX]( size_t x, size_t y )
+	{
+		return (unsigned)( y * nVerticesX + x );
+	};
+
+	for ( size_t y = 0; y < nDivisionsY; ++y )
+	{
+		for ( size_t x = 0; x < nDivisionsX; ++x )
+		{
+			const std::array<unsigned, 4> indexArray =
+			{
+				calcCoords( x, y ),
+				calcCoords( x + 1, y ),
+				calcCoords( x, y + 1 ),
+				calcCoords( x + 1, y + 1 )
+			};
+			indices.push_back( indexArray[0] );
+			indices.push_back( indexArray[2] );
+			indices.push_back( indexArray[1] );
+			indices.push_back( indexArray[1] );
+			indices.push_back( indexArray[2] );
+			indices.push_back( indexArray[3] );
+		}
+	}
+
+	return {vb, indices};
+}
+
+TriangleMesh Geometry::makePlanarGridTextured( const float length /*= 2.0f*/,
+	const float width /*= 2.0f*/,
+	int nDivisionsX /*= 1*/,
+	int nDivisionsY /*= 1*/)
+{
+	ASSERT( length >= 2, "Length has to be greater than 1!" );
+	ASSERT( width >= 2, "Width has to be greater than 1!" );
+	ASSERT( nDivisionsX >= 1, "Longitudinal divisions have to be >= 1!" );
+	ASSERT( nDivisionsY >= 1, "Laterial divisions have to be >= 1!" );
+
+	if ( length > 2.0f && width > 2.0f && nDivisionsX == 1 && nDivisionsY == 1 )
+	{
+		nDivisionsX = 2;
+		nDivisionsY = 2;
+	}
+
+	const int nVerticesX = nDivisionsX + 1;
+	const int nVerticesY = nDivisionsY + 1;
+
+	// eg. Edge: (*=vertex) with nVerticesX=2: nDivisionsX=1 *-------------------*-------------------	#TODO: connect final edge vertex
+	////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	ver::VertexInputLayout layout;
 	layout.add( ver::VertexInputLayout::Position3D );
 	layout.add( ver::VertexInputLayout::Normal );
 	layout.add( ver::VertexInputLayout::Texture2D );
 
-	constexpr float width = 2.0f;
-	constexpr float height = 2.0f;
-	const int nVerticesX = nDivisionsX + 1;
-	const int nVerticesY = nDivisionsY + 1;
 	ver::VBuffer vb{std::move( layout )};
 	{
-		const float sideX = width / 2.0f;
-		const float sideY = height / 2.0f;
-		const float nXDivisions = width / float( nDivisionsX );
-		const float nYDivisions = height / float( nDivisionsY );
+		const float halfLength = length / 2.0f;
+		const float halfWidth = width / 2.0f;
+		const float segmentLength = length / float( nDivisionsX );
+		const float segmentWidth = width / float( nDivisionsY );
 		const float nUDivisions = 1.0f / float( nDivisionsX );
 		const float nVDivisions = 1.0f / float( nDivisionsY );
 
-		for ( int y = 0, i = 0; y < nVerticesY; ++y )
+		for ( int y = 0; y < nVerticesY; ++y )
 		{
-			const float yPos = float( y ) * nYDivisions - sideY;
+			const float yPos = float( y ) * segmentWidth - halfWidth;
 			const float vPos = 1.0f - float( y ) * nVDivisions;
-			for ( int x = 0; x < nVerticesX; ++x, ++i )
+			for ( int x = 0; x < nVerticesX; ++x )
 			{
-				const float xPos = float( x ) * nXDivisions - sideX;
+				const float xPos = float( x ) * segmentLength - halfLength;
 				const float uPos = float( x ) * nUDivisions;
 				vb.emplaceVertex( DirectX::XMFLOAT3{xPos, yPos, 0.0f},
 					DirectX::XMFLOAT3{0.0f, 0.0f, -1.0f},
@@ -281,32 +363,31 @@ TriangleMesh Geometry::makePlane( const int nDivisionsX /* = 1 */,
 
 	std::vector<unsigned> indices;
 	indices.reserve( util::square( nDivisionsX * nDivisionsY ) * 6 );
+	const auto calcCoords = [nVerticesX]( const size_t x, const size_t y )
 	{
-		const auto vxy2i = [nVerticesX]( size_t x, size_t y )
-		{
-			return (unsigned)( y * nVerticesX + x );
-		};
+		return (unsigned)( y * nVerticesX + x );
+	};
 
-		for ( size_t y = 0; y < nDivisionsY; ++y )
+	for ( size_t y = 0; y < nDivisionsY; ++y )
+	{
+		for ( size_t x = 0; x < nDivisionsX; ++x )
 		{
-			for ( size_t x = 0; x < nDivisionsX; ++x )
+			const std::array<unsigned, 4> indexArray =
 			{
-				const std::array<unsigned, 4> indexArray =
-				{
-					vxy2i( x, y ),
-					vxy2i( x + 1, y ),
-					vxy2i( x, y + 1 ),
-					vxy2i( x + 1, y + 1 )
-				};
-				indices.push_back( indexArray[0] );
-				indices.push_back( indexArray[2] );
-				indices.push_back( indexArray[1] );
-				indices.push_back( indexArray[1] );
-				indices.push_back( indexArray[2] );
-				indices.push_back( indexArray[3] );
-			}
+				calcCoords( x, y ),
+				calcCoords( x + 1, y ),
+				calcCoords( x, y + 1 ),
+				calcCoords( x + 1, y + 1 )
+			};
+			// each quad needs 6 indices
+			indices.push_back( indexArray[0] );
+			indices.push_back( indexArray[2] );
+			indices.push_back( indexArray[1] );
+			indices.push_back( indexArray[1] );
+			indices.push_back( indexArray[2] );
+			indices.push_back( indexArray[3] );
 		}
 	}
 
-	return {std::move( vb ), std::move( indices )};
+	return {vb, indices};
 }

@@ -33,6 +33,7 @@ class Renderer
 	std::vector<std::unique_ptr<ILinker>> m_globalLinkers;
 protected:
 	std::unique_ptr<IPass> m_pOnscreenPass;
+	std::unique_ptr<IPass> m_pFontPass;
 	std::shared_ptr<IRenderTargetView> m_pRtv;
 	std::shared_ptr<IDepthStencilView> m_pDsv;
 public:

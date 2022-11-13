@@ -78,7 +78,7 @@ void Entity::printInfo() const noexcept
 		<< '\n';
 }
 
-const inline EntityId Entity::getId() const noexcept
+EntityId Entity::getId() const noexcept
 {
 #ifdef _32_BIT_ENTITY
 	return ( m_version << 16 ) | m_index;
@@ -175,7 +175,6 @@ void Entity::sendMessage( Message *msg ) const noexcept
 	auto &md = MessageDispatcher::instance();
 	md.addMessage( msg );
 }
-
 
 inline bool Entity::operator==( const Entity *rhs ) const noexcept
 {

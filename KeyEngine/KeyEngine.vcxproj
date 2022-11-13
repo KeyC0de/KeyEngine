@@ -189,6 +189,7 @@
     <ClCompile Include="src\dynamic_vertex_buffer.cpp" />
     <ClCompile Include="src\effect.cpp" />
     <ClCompile Include="src\effect_visitor.cpp" />
+    <ClCompile Include="src\font_pass.cpp" />
     <ClCompile Include="src\frustum.cpp" />
     <ClCompile Include="src\fullscreen_pass.cpp" />
     <ClCompile Include="src\geometry.cpp" />
@@ -362,7 +363,6 @@
     <ClInclude Include="inc\color.h" />
     <ClInclude Include="inc\constant_buffer.h" />
     <ClInclude Include="inc\constant_buffer_ex.h" />
-    <ClInclude Include="inc\consteval_forced.h" />
     <ClInclude Include="inc\binder.h" />
     <ClInclude Include="inc\cube.h" />
     <ClInclude Include="inc\cube_texture.h" />
@@ -374,6 +374,7 @@
     <ClInclude Include="inc\dynamic_vertex_buffer.h" />
     <ClInclude Include="inc\effect.h" />
     <ClInclude Include="inc\effect_visitor.h" />
+    <ClInclude Include="inc\font_pass.h" />
     <ClInclude Include="inc\frustum.h" />
     <ClInclude Include="inc\fullscreen_pass.h" />
     <ClInclude Include="inc\geometry.h" />

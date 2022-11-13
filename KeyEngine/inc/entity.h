@@ -49,7 +49,7 @@ public:
 	void printInfo() const noexcept;
 	//	\function	id	||	\date	2019/12/09 14:05
 	//	\brief	get entity id
-	const inline EntityId getId() const noexcept;
+	EntityId getId() const noexcept;
 	const std::string& getName() const noexcept;
 	const Category getCategory() const noexcept;
 	Entity* parent() const noexcept;
@@ -66,59 +66,3 @@ public:
 	inline bool operator==( const Entity &rhs ) const noexcept;
 	inline bool operator!=( const Entity &rhs ) const noexcept;
 };
-
-
-/*
-`Entity`ies form an Entity graph
-A World Entity's children will be most other entities
-	except some entities will be children of other entities. eg. a sword entity can be a child of a soldier entity which will be a child of a world entity
-
-Yes, a Terrain is just a special type of Entity (TerrainEntity).
-A Terrain is part of a World.
-
-class RenderableEntity
-	:
-	public Entity
-{
-	Model m_model;
-	// ...
-public:
-	RenderableEntity( ... )
-		: ...
-	{}
-	Model getModel() const noexcept;
-	// ...
-};
-
-// for example static objects are RenderableEntities
-// RenderableEntity rock1{L"path/to/rock/model"};
-
-
-class WorldEntity
-	:
-	public RenderableEntity
-{
-public:
-	WorldEntity( ... )
-		: ...
-	{}
-	// ...
-};
-
-// Actors are AI-enabled entities
-class Actor
-	:
-	public RenderableEntity
-{
-	// ...
-};
-
-// Characters can be Players: take input from human controller, no AI controller
-class Character
-	:
-	public Actor
-{
-	// ...
-};
-
-*/

@@ -8,13 +8,13 @@ class Plane
 {
 	DirectX::XMFLOAT3 m_pos{0.0f, 0.0f, 0.0f};
 	DirectX::XMFLOAT3 m_rot{0.0f, 0.0f, 0.0f};
-	
+
 	struct ColorPCB
 	{
 		DirectX::XMFLOAT4 color;
 	} m_colPcb;
 public:
-	Plane( Graphics &gph, const DirectX::XMFLOAT4 &color = {1.0f, 1.0f, 1.0f, 1.0f}, const float scale = 1.0f );
+	Plane( Graphics &gph, const DirectX::XMFLOAT4 &color = {1.0f, 1.0f, 1.0f, 1.0f}, const float scale = 1.0f, const int length = 2, const int width = 2, const DirectX::XMFLOAT3 &startingPos = {0.0f, 0.0f, 0.0f} );
 
 	void setPosition( const DirectX::XMFLOAT3 &pos ) noexcept;
 	void setRotation( const DirectX::XMFLOAT3 &rot ) noexcept;

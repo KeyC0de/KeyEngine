@@ -23,17 +23,22 @@
 namespace dx = DirectX;
 
 Plane::Plane( Graphics &gph,
-	const dx::XMFLOAT4 &color,
-	const float scale )
+	const dx::XMFLOAT4 &color /*= {1.0f, 1.0f, 1.0f, 1.0f}*/,
+	const float scale /*= 1.0f*/,
+	const int length /*= 2*/,
+	const int width /*= 2*/,
+	const DirectX::XMFLOAT3 &startingPos /*= {0.0f, 0.0f, 0.0f}*/ )
 	:
+	m_pos{startingPos},
 	m_colPcb{color}
 {
-	auto plane = Geometry::makePlane();
+	auto plane = Geometry::makePlanarGridTextured( length,
+		width );
 	plane.transform( dx::XMMatrixScaling( scale,
 		scale,
 		1.0f ) );
 
-	const auto geometryTag = "$plane." + std::to_string( scale );
+	const auto geometryTag = "$plane." + std::to_string( scale * length ) + std::to_string( scale * width );
 
 	m_pVertexBuffer = VertexBuffer::fetch( gph,
 		geometryTag,
@@ -41,7 +46,6 @@ Plane::Plane( Graphics &gph,
 	m_pIndexBuffer = IndexBuffer::fetch( gph,
 		geometryTag,
 		plane.m_indices );
-	m_pPrimitiveTopology = PrimitiveTopology::fetch( gph );
 
 	createAabb( plane.m_vb );
 	setMeshId();

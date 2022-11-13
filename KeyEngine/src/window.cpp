@@ -1400,7 +1400,7 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 #endif
 		if ( (lParam | 0x40000000) && !s_keyboard.isAutorepeatEnabled() ) // filter autorepeat
 		{
-			s_keyboard.onKeyPressed( static_cast<unsigned char>( wParam ) );
+			s_keyboard.onKeyPressed( static_cast<unsigned char>( wParam ) );	// wParam is key in decimal form
 		}
 		break;
 	}

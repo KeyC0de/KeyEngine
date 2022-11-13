@@ -1,6 +1,5 @@
 #include "mesh.h"
 #include "index_buffer.h"
-#include "primitive_topology.h"
 #include "vertex_buffer.h"
 #include "material_loader.h"
 #include "d3d_utils.h"
@@ -28,7 +27,6 @@ Mesh::Mesh( Graphics &gph,
 		scale );
 	m_pIndexBuffer = mat.makeIndexBuffer( gph,
 		aimesh );
-	m_pPrimitiveTopology = PrimitiveTopology::fetch( gph );
 
 	for ( auto &effect : mat.effects() )
 	{
@@ -52,18 +50,18 @@ void Mesh::update( const float dt ) cond_noex
 void Mesh::render( const size_t channels /* = rch::all*/ ) const noexcept
 {
 	ASSERT( !m_effects.empty(), "No Effects to submit to the Renderer!" );
+	ASSERT( m_meshId != 0, "Mesh Not initialized properly!" );
 
-	auto frustumPlanes = CameraManager::instance().getActiveCamera().getFrustumPlanes();
+	//auto frustumPlanes = CameraManager::instance().getActiveCamera().getFrustumPlanes();
 
-	if ( m_meshId != 0 )
-	if ( !frustumCull( frustumPlanes ) )
-	{
+	//if ( !frustumCull( frustumPlanes ) )
+	//{
 		for ( const auto &effect : m_effects )
 		{
 			effect.render( *this,
 				channels );
 		}
-	}
+	//}
 }
 
 void Mesh::setEffectEnabled( const size_t channels,
@@ -85,7 +83,6 @@ void Mesh::addEffect( Effect effect ) noexcept
 
 void Mesh::bind( Graphics &gph ) const cond_noex
 {
-	m_pPrimitiveTopology->bind( gph );
 	m_pIndexBuffer->bind( gph );
 	m_pVertexBuffer->bind( gph );
 }

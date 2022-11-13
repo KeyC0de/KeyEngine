@@ -2,7 +2,6 @@
 #include "index_buffer.h"
 #include "input_layout.h"
 #include "pixel_shader.h"
-#include "primitive_topology.h"
 #include "transform_vscb.h"
 #include "vertex_buffer.h"
 #include "vertex_shader.h"
@@ -18,7 +17,7 @@ Sphere::Sphere( Graphics &gph,
 	:
 	m_radius{radius}
 {
-	auto sphere = Geometry::makeTesselatedSphere();
+	auto sphere = Geometry::makeSphereTesselated();
 	sphere.transform( dx::XMMatrixScaling( radius,
 		radius,
 		radius ) );
@@ -30,7 +29,6 @@ Sphere::Sphere( Graphics &gph,
 	m_pIndexBuffer = IndexBuffer::fetch( gph,
 		geometryTag,
 		sphere.m_indices );
-	m_pPrimitiveTopology = PrimitiveTopology::fetch( gph );
 
 	createAabb( sphere.m_vb );
 	setMeshId();

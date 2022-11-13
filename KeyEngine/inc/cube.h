@@ -1,8 +1,6 @@
 #pragma once
 
 #include "mesh.h"
-#include "bindable.h"
-#include "index_buffer.h"
 
 
 class Cube

@@ -50,15 +50,15 @@ Camera::Camera( Graphics &gph,
 		(static_cast<float>(width) / util::gcd(width, height))),
 	m_homeWidth(m_width),
 	m_homeHeight(m_height),
-	m_homeNearZ(m_nearZ),
-	m_homeFarZ(m_farZ),
+	m_bTethered(bTethered),
+	m_nearZ(nearZ),
+	m_farZ(farZ),
+	m_homeNearZ(nearZ),
+	m_homeFarZ(farZ),
 	m_widget(gph),
 	m_cameraFrustum(gph, 1.0f, (static_cast<float>(height) / util::gcd(width, height)) /
 			(static_cast<float>(width) / util::gcd(width, height)),
-		m_nearZ, m_farZ),
-	m_bTethered(bTethered),
-	m_nearZ(nearZ),
-	m_farZ(farZ)
+		nearZ, farZ)
 {
 	if ( m_bTethered )
 	{

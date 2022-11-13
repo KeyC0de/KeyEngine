@@ -1,4 +1,5 @@
 #include "depth_reversed_pass.h"
+#include "primitive_topology.h"
 #include "binder.h"
 #include "linker.h"
 #include "render_target.h"
@@ -14,6 +15,9 @@ DepthReversedPass::DepthReversedPass( Graphics &gph,
 	:
 	RenderQueuePass{name}
 {
+	addPassBindable( PrimitiveTopology::fetch( gph,
+		D3D11_PRIMITIVE_TOPOLOGY_LINELIST ) );
+
 	addPassBindable( DepthStencilState::fetch( gph,
 		DepthStencilState::Mode::DepthReversed ) );
 

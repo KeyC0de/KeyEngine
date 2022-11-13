@@ -1,4 +1,5 @@
 #include "shadow_pass.h"
+#include "primitive_topology.h"
 #include "graphics.h"
 #include "linker.h"
 #include "vertex_shader.h"
@@ -26,6 +27,8 @@ ShadowPass::ShadowPass( Graphics &gph,
 	m_pLightVcb{std::make_shared<LightVSCB>( gph, 1u )}
 {
 	s_shadowMapResolution = shadowMapRez;
+
+	addPassBindable( PrimitiveTopology::fetch( gph ) );
 
 	addPassBindable( m_pLightVcb );
 	addPassBindable( std::make_shared<ShadowMapSamplerState>( gph,

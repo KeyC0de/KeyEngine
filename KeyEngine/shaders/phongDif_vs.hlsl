@@ -30,6 +30,6 @@ VSOut main( VSIn input )
 		worldViewProjection );
 	output.tc = input.tc;
 	output.posLightSpace = convertVertexPosToLightSpace( input.pos,
-		model );
+		world );
 	return output;
 }
