@@ -3,7 +3,7 @@
 
 namespace
 {
-using Byte = unsigned char;
+using Byte = uint8_t;
 }
 
 // For any DXGI format, the byte order is the order of the components in the format name.
@@ -154,6 +154,11 @@ struct ColorBGRA final
 	void setAlpha( const Byte a )
 	{
 		m_dword = ( m_dword & 0xFFFFFFu ) | ( a << 24u );
+	}
+
+	void set( const unsigned int value ) noexcept
+	{
+		m_dword = value;
 	}
 };
 

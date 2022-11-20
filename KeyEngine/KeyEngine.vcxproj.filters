@@ -388,6 +388,12 @@
     <ClCompile Include="src\texture_desc.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
+    <ClCompile Include="src\bmp_loader.cpp">
+      <Filter>engine\os\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\perlin_noise.cpp">
+      <Filter>engine\common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="third_party\imgui\imconfig.h">
@@ -1211,6 +1217,12 @@
     </ClInclude>
     <ClInclude Include="inc\texture_desc.h">
       <Filter>engine\vfx</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\bmp_loader.h">
+      <Filter>engine\os\win</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\perlin_noise.h">
+      <Filter>engine\common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

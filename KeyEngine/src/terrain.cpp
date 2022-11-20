@@ -26,14 +26,29 @@ namespace dx = DirectX;
 Terrain::Terrain( Graphics &gph,
 	const int length,
 	const int width,
+	const std::string &heightMapfilename /*= ""*/,
+	const int normalizeAmount /*= 4*/,
+	const int terrainAreaUnitMultiplier /*= 10*/,
 	const DirectX::XMFLOAT3 &startingPos /*= {0.0f, 0.0f, 0.0f}*/ )
 	:
 	m_pos{startingPos}
 {
-	auto planarGrid = Geometry::makePlanarGridTextured( length,
-		width,
-		util::ceil( length / 2 )  - 1,
-		util::ceil( width / 2 ) - 1 );
+	const int lengthVerts = util::ceil( length ) * 2;
+	const int widthVerts = util::ceil( width ) * 2;
+
+	auto planarGrid = heightMapfilename.empty() ?
+		Geometry::makePlanarGridTextured( length,
+			width,
+			lengthVerts,
+			widthVerts ) :
+		Geometry::makePlanarGridTexturedFromHeighmap( heightMapfilename,
+			normalizeAmount,
+			terrainAreaUnitMultiplier,
+			length,
+			width,
+			lengthVerts,
+			widthVerts );
+
 	planarGrid.transform( getRotation( {90.0f, 0.0f, 0.0f} ) );
 
 	const auto geometryTag = "terrainGrid." + std::to_string( length ) + std::to_string( width );
@@ -297,6 +312,16 @@ void Terrain::displayImguiWidgets( Graphics &gph,
 	}
 	ImGui::End();
 #endif
+}
+
+void Terrain::transformVertices( ver::VBuffer &vb,
+	const double value ) noexcept
+{
+	const size_t numVertices = vb.getVertexCount();
+	for ( size_t i = 0; i < numVertices; ++i )
+	{
+		auto &vertexHeight = vb[0].element<ver::VertexInputLayout::ILEementType::Position3D>().y;
+	}
 }
 
 dx::XMMATRIX Terrain::getRotation( const DirectX::XMFLOAT3 &rotIn ) cond_noex

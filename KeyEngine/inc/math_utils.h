@@ -51,21 +51,21 @@ constexpr T modulus( const T divident,
 }
 
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
-constexpr T ceil( const T val ) noexcept
+constexpr int ceil( const T val ) noexcept
 {
 	return val + (T)1 - modulus( val,
 		(T)1 );
 }
 
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
-constexpr T floor( const T val ) noexcept
+constexpr int floor( const T val ) noexcept
 {
 	return val - modulus( val,
 		(T)1 );
 }
 
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
-constexpr T round( const T val ) noexcept
+constexpr int round( const T val ) noexcept
 {
 	return floor( val + (T)0.5 );
 }
@@ -210,14 +210,49 @@ constexpr T interpolate( const T &src,
 }
 
 /// <image url="C:/Users/nikla/pictures/gaussian function distribution.png" scale=".4" />
-// x is distance from center of Kernel/curve
+//	\function	gaussian1d	||	\date	2022/11/20 12:40
+//	\brief	1d Gaussian distribution
+//			x is distance from center of Kernel/curve
+//			sigma is the standard deviation of the distribution
 template<typename T>
-constexpr T gaussianDistr( const T x,
+constexpr T gaussian1d( const T x,
 	const T sigma,
-	const T mean ) noexcept
+	const T mean = (T)0 ) noexcept
 {
 	const T ss = square( sigma );
 	return ( (T)1 / sqrt( (T)2 * (T)PI_D * ss ) ) * exp( -square( x - mean ) / ((T)2 * ss) );
+}
+
+//	\function	gaussian2d	||	\date	2022/11/20 12:41
+//	\brief	Isotropic (mean = 0) 2d Gaussian distribution
+template<typename T>
+constexpr T gaussian2d( const T x,
+	const T y,
+	const T sigma ) noexcept
+{
+	const T ss = square( sigma );
+	return ( (T)1 / sqrt( (T)2 * (T)PI_D * ss ) ) * exp( -( ( square( x ) + square( y ) ) / ( (T)2 * square( ss ) ) ) );
+}
+
+//	\function	gaussian2d	||	\date	2022/11/20 12:41
+//	\brief	Isotropic (mean = 0) 2d Gaussian distribution
+//			as an image filter it can be used to smoothen/blur
+// #TODO:
+template<typename T>
+constexpr T gaussianFilter( /*Image* img,*/
+	const T x,
+	const T y,
+	const int kernelSize = 5 ) noexcept
+{
+	const T sigma = ceil( ( kernelSize - (T)1 ) / (T)6 );
+	const T ss = square( sigma );
+	for ( int i = -kernelSize; i < kernelSize; ++i )
+	{
+		for ( int j = -kernelSize; j < kernelSize; ++j )
+		{
+			( (T)1 / sqrt( (T)2 * (T)PI_D * ss ) ) * exp( -( ( square( x ) + square( y ) ) / ( (T)2 * square( ss ) ) ) );
+		}
+	}
 }
 
 //	\function	powerOf	||	/date	2021/10/25 19:40

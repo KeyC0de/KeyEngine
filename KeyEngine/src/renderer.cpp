@@ -604,9 +604,8 @@ void Renderer3d::setKernelGauss( const int radius,
 	for ( int i = 0; i < nTaps; ++i )
 	{
 		const auto x = float( i - radius );
-		const auto coef = util::gaussianDistr( x,
-			sigma,
-			0.0f );
+		const auto coef = util::gaussian1d( x,
+			sigma );
 		sum += coef;
 		cb["coefficients"][i] = coef;
 	}

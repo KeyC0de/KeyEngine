@@ -10,6 +10,7 @@
 #include <tuple>
 #include "signal_handling.h"
 #include "thread_pool_j.h"
+#include "bmp_loader.h"
 
 #ifndef NO_DUMPS
 #	include "dumpling.h"
@@ -47,6 +48,10 @@ int WINAPI wWinMain( _In_ HINSTANCE hinstance,
 			windowsMetricsCheckTest();
 #endif
 			const auto& [width, height] = parseCommandLineArguments();
+
+			//BmpLoader bmp{"assets/textures/grey_image.bmp"};
+			//return bmp.applyPerlinNoise( "assets/textures/grey_image_out.bmp" ) == true ? EXIT_SUCCESS : EXIT_FAILURE;
+
 			if constexpr ( gph_mode::get() == gph_mode::_3D )
 			{
 				Sandbox3d game{width, height};
@@ -66,6 +71,7 @@ int WINAPI wWinMain( _In_ HINSTANCE hinstance,
 					//return game.loop();
 				//}
 			}
+
 		}
 		catch ( const KeyException &ex )
 		{

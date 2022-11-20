@@ -55,10 +55,27 @@ There is always one more row of vertices than there are quads (think of a quad a
 -- Instanced mesh rendering
 https://www.braynzarsoft.net/viewtutorial/q16390-33-instancing-with-indexed-primitives
 
+-- Hardware Tesselation
+https://www.rastertek.com/dx11tut38.html
+
 -- picking
 https://www.youtube.com/watch?v=zbzCZeaWrsM
 
+-- Implement particle system
+https://www.rastertek.com/dx11tut39.html
+https://www.youtube.com/watch?v=fduKhsm3ID8
+
 -- in game ui - modified RmlUI with d3d11 backend
+
+-- Lua Scripting engine
+https://www.youtube.com/watch?v=4l5HdmPoynw
+https://www.youtube.com/watch?v=E42Lyv2Ra1c
+
+-- DXInput
+
+-- Import fbx
+
+-- Model LOD automatic switching
 
 -- Animation
 https://ogldev.org/www/tutorial38/tutorial38.html
@@ -248,19 +265,7 @@ https://www.rastertek.com/dx11tut41.html
 
 -- Integrate Terrain Navigation (Recast navigation)
 
--- DXInput
-
--- Implement particle system
-https://www.rastertek.com/dx11tut39.html
-https://www.youtube.com/watch?v=fduKhsm3ID8
-
 -- Physics: integrate Bullet Physics
-
--- Lua Scripting engine
-https://www.youtube.com/watch?v=4l5HdmPoynw
-https://www.youtube.com/watch?v=E42Lyv2Ra1c
-
--- Model LOD automatic switching
 
 -- Multithreaded Rendering
 
@@ -273,8 +278,6 @@ https://www.youtube.com/watch?v=E42Lyv2Ra1c
 -- Decals
 http://blog.wolfire.com/2009/06/how-to-project-decals/
 deferred screenspace decals: https://martindevans.me/game-development/2015/02/27/Drawing-Stuff-On-Other-Stuff-With-Deferred-Screenspace-Decals/
-
--- Craft gameplay systems from UE4 project
 
 -- Profiling with Intel's VTune
 

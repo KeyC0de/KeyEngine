@@ -65,11 +65,11 @@ private:
 class Sandbox3d
 	: public Game<Sandbox3d>
 {
-	static inline CameraManager& s_cameraMan = CameraManager::instance();
+	static inline CameraManager &s_cameraMan = CameraManager::instance();
 	std::unique_ptr<PointLight> m_pPointLight1;
 	//std::unique_ptr<PointLight> m_pPointLight2;
 	bool b_bShowDemoWindow = false;
-	Terrain m_terrain{m_mainWindow.getGraphics(), 100.0f, 100.0f};
+	Terrain m_terrain{m_mainWindow.getGraphics(), 100.0f, 100.0f, "assets/textures/clouds_blurred.bmp"};
 	Cube m_cube1{m_mainWindow.getGraphics(), {10.0f, 5.0f, 6.0f}, 4.0f};
 	Cube m_cube2{m_mainWindow.getGraphics(), {16.0f, 6.0f, 8.0f}};
 	Sphere m_testSphere{m_mainWindow.getGraphics(), 1.0f, {40.0f, 20.0f, 8.0f}};

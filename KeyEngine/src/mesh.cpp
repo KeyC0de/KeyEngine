@@ -251,13 +251,19 @@ void Mesh::createAabb( const ver::VBuffer &verts )
 	{
 		const auto vertex = verts[i].getElement<Type::Position3D>();
 
-		minVertex.x = std::min(minVertex.x, vertex.x);
-		minVertex.y = std::min(minVertex.y, vertex.y);
-		minVertex.z = std::min(minVertex.z, vertex.z);
+		minVertex.x = std::min( minVertex.x,
+			vertex.x );
+		minVertex.y = std::min( minVertex.y,
+			vertex.y );
+		minVertex.z = std::min( minVertex.z,
+			vertex.z );
 
-		maxVertex.x = std::max(maxVertex.x, vertex.x);
-		maxVertex.y = std::max(maxVertex.y, vertex.y);
-		maxVertex.z = std::max(maxVertex.z, vertex.z);
+		maxVertex.x = std::max( maxVertex.x,
+			vertex.x );
+		maxVertex.y = std::max( maxVertex.y,
+			vertex.y );
+		maxVertex.z = std::max( maxVertex.z,
+			vertex.z );
 	}
 
 	m_aabb = std::make_pair( minVertex, maxVertex );
@@ -312,7 +318,8 @@ bool Mesh::frustumCull( const std::vector<dx::XMFLOAT4> &frustumPlanes ) const n
 		const dx::XMVECTOR planeNormal{dx::XMVectorSet( frustumPlanes[i].x, frustumPlanes[i].y, frustumPlanes[i].z, 0.0f )};
 		const float planeConstant = frustumPlanes[i].w;
 
-		// get the signed distance from the AABB vertex that's furthest down the frustum planes normal, and if the signed distance is negative, then the entire bounding box is behind the frustum plane, which means that it should be culled
+		// get the signed distance from the AABB vertex that's furthest down the frustum planes normal, and if the signed distance is negative
+		//	then the entire bounding box is behind the frustum plane, which means that it should be culled
 		if ( dx::XMVectorGetX( dx::XMVector3Dot( planeNormal, dx::XMLoadFloat3( &axisVert ) ) ) + planeConstant < 0.0f )
 		{
 			m_bCulledThisFrame = true;

@@ -235,6 +235,12 @@ std::string generateCaptcha( int len )
 	return captcha;
 }
 
+unsigned char mapToByte( double value )
+{
+	return floor( fmod( value,
+		255 ) );
+}
+
 bool isAligned( const volatile void *p,
 	const std::size_t alignment ) noexcept
 {

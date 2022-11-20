@@ -5,6 +5,7 @@
 #include <array>
 #include "math_utils.h"
 #include "assertions_console.h"
+#include "bmp_loader.h"
 
 
 TriangleMesh Geometry::makeCube( std::optional<ver::VertexInputLayout> layout )
@@ -281,7 +282,7 @@ TriangleMesh Geometry::makePlanarGrid( const float length /*= 2.0f*/,
 	}
 
 	std::vector<unsigned> indices;
-	indices.reserve( util::square( nDivisionsX * nDivisionsY ) * 6 );
+	indices.reserve( nDivisionsX * nDivisionsY * 6 );
 	const auto calcCoords = [nVerticesX]( size_t x, size_t y )
 	{
 		return (unsigned)( y * nVerticesX + x );
@@ -313,7 +314,7 @@ TriangleMesh Geometry::makePlanarGrid( const float length /*= 2.0f*/,
 TriangleMesh Geometry::makePlanarGridTextured( const float length /*= 2.0f*/,
 	const float width /*= 2.0f*/,
 	int nDivisionsX /*= 1*/,
-	int nDivisionsY /*= 1*/)
+	int nDivisionsY /*= 1*/ )
 {
 	ASSERT( length >= 2, "Length has to be greater than 1!" );
 	ASSERT( width >= 2, "Width has to be greater than 1!" );
@@ -343,17 +344,17 @@ TriangleMesh Geometry::makePlanarGridTextured( const float length /*= 2.0f*/,
 		const float halfWidth = width / 2.0f;
 		const float segmentLength = length / float( nDivisionsX );
 		const float segmentWidth = width / float( nDivisionsY );
-		const float nUDivisions = 1.0f / float( nDivisionsX );
-		const float nVDivisions = 1.0f / float( nDivisionsY );
+		const float du = 1.0f / float( nDivisionsX );	// u & v range /in [0,1]
+		const float dv = 1.0f / float( nDivisionsY );
 
 		for ( int y = 0; y < nVerticesY; ++y )
 		{
 			const float yPos = float( y ) * segmentWidth - halfWidth;
-			const float vPos = 1.0f - float( y ) * nVDivisions;
+			const float vPos = 1.0f - float( y ) * dv;
 			for ( int x = 0; x < nVerticesX; ++x )
 			{
 				const float xPos = float( x ) * segmentLength - halfLength;
-				const float uPos = float( x ) * nUDivisions;
+				const float uPos = float( x ) * du;
 				vb.emplaceVertex( DirectX::XMFLOAT3{xPos, yPos, 0.0f},
 					DirectX::XMFLOAT3{0.0f, 0.0f, -1.0f},
 					DirectX::XMFLOAT2{uPos, vPos} );
@@ -362,7 +363,118 @@ TriangleMesh Geometry::makePlanarGridTextured( const float length /*= 2.0f*/,
 	}
 
 	std::vector<unsigned> indices;
-	indices.reserve( util::square( nDivisionsX * nDivisionsY ) * 6 );
+	indices.reserve( nDivisionsX * nDivisionsY * 6 );
+	const auto calcCoords = [nVerticesX]( const size_t x, const size_t y )
+	{
+		return (unsigned)( y * nVerticesX + x );
+	};
+
+	for ( size_t y = 0; y < nDivisionsY; ++y )
+	{
+		for ( size_t x = 0; x < nDivisionsX; ++x )
+		{
+			const std::array<unsigned, 4> indexArray =
+			{
+				calcCoords( x, y ),
+				calcCoords( x + 1, y ),
+				calcCoords( x, y + 1 ),
+				calcCoords( x + 1, y + 1 )
+			};
+			// each quad needs 6 indices
+			indices.push_back( indexArray[0] );
+			indices.push_back( indexArray[2] );
+			indices.push_back( indexArray[1] );
+			indices.push_back( indexArray[1] );
+			indices.push_back( indexArray[2] );
+			indices.push_back( indexArray[3] );
+		}
+	}
+
+	return {vb, indices};
+}
+
+TriangleMesh Geometry::makePlanarGridTexturedFromHeighmap( const std::string &filename,
+	const int normalizeAmount /*= 4*/,
+	const int terrainAreaUnitMultiplier /*= 10*/,
+	const float length /*= 2.0f*/,
+	const float width /*= 2.0f*/,
+	int nDivisionsX /*= 1*/,
+	int nDivisionsY /*= 1*/ )
+{
+	ASSERT( length >= 2, "Length has to be greater than 1!" );
+	ASSERT( width >= 2, "Width has to be greater than 1!" );
+	ASSERT( nDivisionsX >= 1, "Longitudinal divisions have to be >= 1!" );
+	ASSERT( nDivisionsY >= 1, "Laterial divisions have to be >= 1!" );
+	ASSERT( normalizeAmount >= 0, "Normalization amount must be greater or equal to 0(ie no normalization of heightmap values)!" );
+
+	if ( length > 2.0f && width > 2.0f && nDivisionsX == 1 && nDivisionsY == 1 )
+	{
+		nDivisionsX = 2;
+		nDivisionsY = 2;
+	}
+
+	const int nVerticesX = nDivisionsX + 1;
+	const int nVerticesY = nDivisionsY + 1;
+
+	// setup the heightmap
+	BmpLoader bmp{filename};
+	const size_t imageWidth = bmp.getWidth();
+	const size_t imageHeight = bmp.getHeight();
+	const size_t numImageElements = imageWidth * imageHeight;
+	BmpLoader::ImageData *img = new BmpLoader::ImageData[numImageElements];
+
+	ASSERT( bmp.getBitCount() == 24, "Not made to handle non-24bit width heightmapts!" );	// #TODO: rework this into a try catch exception where you release `img`
+
+	bmp.readData( img );
+	if ( normalizeAmount )
+	{
+		bmp.normalizeHeightmap( img,
+			normalizeAmount );
+	}
+
+	const int imageDx = 3 * ( std::max( util::floor( (float) imageWidth / nVerticesX ), 1 ) );	// * 3 because the height value is replicated 3 times in this 24bit heightmap
+
+	// setup the Input Layout
+	ver::VertexInputLayout layout;
+	layout.add( ver::VertexInputLayout::Position3D );
+	layout.add( ver::VertexInputLayout::Normal );
+	layout.add( ver::VertexInputLayout::Texture2D );
+
+	// setup the vertices
+	ver::VBuffer vb{std::move( layout )};
+	{
+		const float halfLength = length / 2.0f;
+		const float halfWidth = width / 2.0f;
+		const float segmentLength = length / float( nDivisionsX );
+		const float segmentWidth = width / float( nDivisionsY );
+		const float du = 1.0f / float( nDivisionsX );	// u & v range /in [0,1]
+		const float dv = 1.0f / float( nDivisionsY );
+
+		for ( int y = 0; y < nVerticesY; ++y )
+		{
+			const float yPos = float( y ) * segmentWidth - halfWidth;
+			const float vPos = 1.0f - float( y ) * dv;
+			for ( int x = 0; x < nVerticesX; ++x )
+			{
+				const float xPos = float( x ) * segmentLength - halfLength;
+				const float uPos = float( x ) * du;
+
+				const float heightValue = static_cast<uint8_t>(img[y * imageWidth + x * imageDx]._24bit.b);
+
+				// add the heightValue to the z coordinate (and not to the y - height) because the grid is not created on the x-y plane - we will rotate it later to be this way
+				vb.emplaceVertex( DirectX::XMFLOAT3{xPos * terrainAreaUnitMultiplier, yPos * terrainAreaUnitMultiplier, heightValue},
+					DirectX::XMFLOAT3{0.0f, 0.0f, -1.0f},
+					DirectX::XMFLOAT2{uPos, vPos} );
+			}
+		}
+	}
+
+	// heightmap has been read so delete the memory consumed by its associated image data array
+	delete[] img;
+
+	// setup the indices
+	std::vector<unsigned> indices;
+	indices.reserve( nDivisionsX * nDivisionsY * 6 );
 	const auto calcCoords = [nVerticesX]( const size_t x, const size_t y )
 	{
 		return (unsigned)( y * nVerticesX + x );
