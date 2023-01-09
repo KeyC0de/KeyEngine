@@ -52,33 +52,6 @@ int gcd( int divident,
 	return divisor;
 }
 
-
-constexpr float squareRoot( const float x ) noexcept
-{
-	const float epsilon = .00001;
-	float guess = 1.0;
-	int i = 0;
-
-	if ( x < 0 )
-	{
-		std::cout << "Negative Argument. Error!\n";
-		return -1.0;
-	}
-
-	while ( abs( ( guess * guess ) / x - 1 ) >= epsilon )
-	{
-		guess = ( x / guess + guess ) / 2.0f;
-		std::cout << "rep = "
-			<< i
-			<< ", guess = "
-			<< guess
-			<< "\n";
-		++i;
-	}
-
-	return guess;
-}
-
 constexpr int factorialOf( int n ) noexcept
 {
 	int fact = 1;

@@ -21,7 +21,7 @@ public:
 	const DirectX::XMMATRIX calcPosition() const noexcept;
 	const DirectX::XMMATRIX calcRotation() const noexcept;
 	void displayImguiWidgets( Graphics &gph, const char *name ) noexcept;
-	//	\function	transformWithHeightmap	||	\date	2022/11/20 16:59
+	//	\function	transformVertices	||	\date	2022/11/20 16:59
 	//	\brief	transforms each vertex by a specified value - currently UNUSED
 	void transformVertices( ver::VBuffer &vb, const double value ) noexcept;
 private:

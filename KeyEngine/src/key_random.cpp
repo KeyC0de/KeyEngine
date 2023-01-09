@@ -44,8 +44,8 @@ double KeyRandom::getRandomDouble()
 int KeyRandom::getRandomIntInRange( const int start,
 	const int end )
 {
-	std::uniform_int_distribution<int> m_intDistr{start, end};
-	return m_intDistr( m_device );
+	std::uniform_int_distribution<int> intDistr{start, end};
+	return intDistr( m_device );
 }
 
 float KeyRandom::getRandomFloatInRange( const int start,

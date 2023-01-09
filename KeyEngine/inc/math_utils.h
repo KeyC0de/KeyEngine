@@ -32,7 +32,7 @@ template<typename T, typename = std::enable_if_t<std::is_floating_point_v<T>>>
 constexpr T modulusFloat( const T divident,
 	const T divisor )
 {
-	return divident - truncate( divident / divisor ) * divisor;
+	return divident - util::truncate( divident / divisor ) * divisor;
 }
 
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
@@ -41,8 +41,8 @@ constexpr T modulus( const T divident,
 {
 	if constexpr ( std::is_floating_point_v<T> )
 	{
-		return modulusFloat( divident,
-			abs( divisor ) );
+		return util::modulusFloat( divident,
+			util::abs( divisor ) );
 	}
 	else
 	{
@@ -53,14 +53,14 @@ constexpr T modulus( const T divident,
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
 constexpr int ceil( const T val ) noexcept
 {
-	return val + (T)1 - modulus( val,
+	return val + (T)1 - util::modulus( val,
 		(T)1 );
 }
 
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
 constexpr int floor( const T val ) noexcept
 {
-	return val - modulus( val,
+	return val - util::modulus( val,
 		(T)1 );
 }
 
@@ -78,7 +78,7 @@ constexpr T mapRange( const T val,
 	const T outLast ) noexcept
 {
 	double slope = 1.0 * ( outLast - outFirst ) / ( inLast - inFirst );
-	return outFirst + round( slope * ( val - inFirst ) );
+	return outFirst + util::round( slope * ( val - inFirst ) );
 }
 
 template<typename T, typename = std::enable_if_t<std::is_floating_point_v<T>>>
@@ -104,6 +104,36 @@ constexpr T div10( const T dividend )
 	return static_cast<T>( ( invDivisor * dividend ) >> 32 );
 }
 
+//===================================================
+//	\function	squareRoot	||	\date	2022/08/28 23:46
+//	\brief	calculates the square root of a number
+template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+constexpr T squareRoot( const T x ) noexcept
+{
+	const float epsilon = .00001;
+	T guess = 1.0;
+	int i = 0;
+
+	if ( x < 0 )
+	{
+		std::cout << "Negative Argument. Error!\n";
+		return -(T)1.0;
+	}
+
+	while ( util::abs( ( guess * guess ) / x - 1 ) >= epsilon )
+	{
+		guess = ( x / guess + guess ) / 2.0f;
+		std::cout << "rep = "
+			<< i
+			<< ", guess = "
+			<< guess
+			<< "\n";
+		++i;
+	}
+
+	return guess;
+}
+
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
 constexpr void quadratic( const T a,
 	const T b,
@@ -124,9 +154,9 @@ constexpr void quadratic( const T a,
 	else
 	{
 		std::cout << "1st root: "
-					<< ( -b + squareRoot( diakr ) ) / ( 2 * a )
+					<< ( -b + util::squareRoot( diakr ) ) / ( 2 * a )
 					<< "\t 2nd root: "
-					<< ( -b - squareRoot( diakr ) ) / ( 2 * a )
+					<< ( -b - util::squareRoot( diakr ) ) / ( 2 * a )
 					<< "\n";
 	}
 }
@@ -219,8 +249,8 @@ constexpr T gaussian1d( const T x,
 	const T sigma,
 	const T mean = (T)0 ) noexcept
 {
-	const T ss = square( sigma );
-	return ( (T)1 / sqrt( (T)2 * (T)PI_D * ss ) ) * exp( -square( x - mean ) / ((T)2 * ss) );
+	const T ss = util::square( sigma );
+	return ( (T)1 / sqrt( (T)2 * (T)PI_D * ss ) ) * exp( -util::square( x - mean ) / ((T)2 * ss) );
 }
 
 //	\function	gaussian2d	||	\date	2022/11/20 12:41
@@ -230,8 +260,8 @@ constexpr T gaussian2d( const T x,
 	const T y,
 	const T sigma ) noexcept
 {
-	const T ss = square( sigma );
-	return ( (T)1 / sqrt( (T)2 * (T)PI_D * ss ) ) * exp( -( ( square( x ) + square( y ) ) / ( (T)2 * square( ss ) ) ) );
+	const T ss = util::square( sigma );
+	return ( (T)1 / sqrt( (T)2 * (T)PI_D * ss ) ) * exp( -( ( util::square( x ) + util::square( y ) ) / ( (T)2 * util::square( ss ) ) ) );
 }
 
 //	\function	gaussian2d	||	\date	2022/11/20 12:41
@@ -244,13 +274,13 @@ constexpr T gaussianFilter( /*Image* img,*/
 	const T y,
 	const int kernelSize = 5 ) noexcept
 {
-	const T sigma = ceil( ( kernelSize - (T)1 ) / (T)6 );
-	const T ss = square( sigma );
+	const T sigma = util::ceil( ( kernelSize - (T)1 ) / (T)6 );
+	const T ss = util::square( sigma );
 	for ( int i = -kernelSize; i < kernelSize; ++i )
 	{
 		for ( int j = -kernelSize; j < kernelSize; ++j )
 		{
-			( (T)1 / sqrt( (T)2 * (T)PI_D * ss ) ) * exp( -( ( square( x ) + square( y ) ) / ( (T)2 * square( ss ) ) ) );
+			( (T)1 / sqrt( (T)2 * (T)PI_D * ss ) ) * exp( -( ( util::square( x ) + util::square( y ) ) / ( (T)2 * util::square( ss ) ) ) );
 		}
 	}
 }
@@ -313,10 +343,7 @@ constexpr int factorialOf( int n ) noexcept;
 //	\function	isPrime	||	\date	2022/08/28 23:45
 //	\brief	trial division method
 constexpr bool isPrime( const int number ) noexcept;
-//===================================================
-//	\function	squareRoot	||	\date	2022/08/28 23:46
-//	\brief	calculates the square root of a number
-constexpr float squareRoot( const float x ) noexcept;
+
 constexpr bool isPowerOfTwo( const std::size_t value ) noexcept;
 constexpr float cosine( float x ) noexcept;
 constexpr float sine( float x ) noexcept;

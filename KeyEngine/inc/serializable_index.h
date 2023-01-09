@@ -193,3 +193,10 @@ public:
 		return 4000;
 	}
 };
+
+
+/*
+The const wall: in order for all models on all machines in multiplayer to be in sync, it's important that all UI interactions do not directly affect the model.
+Instead those interactions affect the Command Queue, issuing a command to it in a fixed order.
+We provide the UI with only const access to the model.
+*
