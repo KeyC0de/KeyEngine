@@ -18,6 +18,7 @@ Model::Model( Graphics &gph,
 	const float scale )
 {
 	Assimp::Importer importer;
+	// #TODO: add ability to util::splitString( path, "/" );
 	const auto paiScene = importer.ReadFile( path.c_str(),
 		aiProcess_Triangulate | aiProcess_JoinIdenticalVertices | aiProcess_ConvertToLeftHanded | aiProcess_GenNormals | aiProcess_CalcTangentSpace );
 	//aiAnimation** mAnimations		// The array of animations.

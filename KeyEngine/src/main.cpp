@@ -42,7 +42,6 @@ int WINAPI wWinMain( _In_ HINSTANCE hinstance,
 	{
 		try
 		{
-			std::string commandLine = util::ws2s( pCmdLine );
 #if defined _DEBUG && !defined NDEBUG
 			KeyConsole &console = KeyConsole::instance();
 			windowsMetricsCheckTest();
@@ -138,8 +137,8 @@ void firstly()
 
 	std::set_terminate( [] ()
 		{
-			OutputDebugStringW( L"Unhandled exception. Aborting..\n" );
-			std::cout << "KeyEngine Unhandled exception: abort()ing..\n";
+			OutputDebugStringW( L"Unhandled exception: abort()ing..\n" );
+			std::cout << "Unhandled exception: abort()ing..\n";
 			std::abort();
 		} );
 

@@ -65,13 +65,13 @@ IDXGIAdapter* Graphics::Adapter::adapter() const noexcept
 
 void Graphics::Adapter::getVRamDetails() const noexcept
 {
-	auto desc = getDesc();
+	const auto desc = getDesc();
 
-	std::string description = util::ws2s( desc->Description );
-	INT64 vRam = desc->DedicatedVideoMemory;
-	INT64 ram = desc->DedicatedSystemMemory;
-	INT64 sharedRam = desc->SharedSystemMemory;
-	std::string featureLevel{ENUM_STR( Graphics::s_featureLevel )};
+	const std::string description = util::ws2s( desc->Description );
+	const INT64 vRam = desc->DedicatedVideoMemory;
+	const INT64 ram = desc->DedicatedSystemMemory;
+	const INT64 sharedRam = desc->SharedSystemMemory;
+	const std::string featureLevel{ENUM_STR( Graphics::s_featureLevel )};
 
 #if defined _DEBUG && !defined NDEBUG
 	KeyConsole& console = KeyConsole::instance();

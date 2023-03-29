@@ -1,0 +1,8 @@
+{
+	"ScriptPaths": [
+		"../",
+		"../scripts/"
+		"scripts/"
+		"KeyEngine/scripts/"
+	]
+}
