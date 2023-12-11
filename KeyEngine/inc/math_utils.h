@@ -22,11 +22,8 @@ constexpr T abs( const T val )
 		-val;
 }
 
-template<typename T>
-constexpr int truncate( const T val )
-{
-	return static_cast<int>( val );
-}
+template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+constexpr int truncate( const T val );
 
 template<typename T, typename = std::enable_if_t<std::is_floating_point_v<T>>>
 constexpr T modulusFloat( const T divident,
@@ -35,6 +32,8 @@ constexpr T modulusFloat( const T divident,
 	return divident - util::truncate( divident / divisor ) * divisor;
 }
 
+//	\function	modulus	||	\date	2023/05/09 19:16
+//	\brief	returns the signed remainder of a division after one divident is divided by divisor
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
 constexpr T modulus( const T divident,
 	const T divisor ) noexcept
@@ -64,10 +63,61 @@ constexpr int floor( const T val ) noexcept
 		(T)1 );
 }
 
+//	\function	truncate	||	\date	2023/05/09 18:37
+//	\brief	truncate the supplied number val; handles negative numbers as well
+template<typename T, typename>
+constexpr int truncate( const T val )
+{
+	return static_cast<int>( util::abs( val ) );
+}
+
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
 constexpr int round( const T val ) noexcept
 {
-	return floor( val + (T)0.5 );
+	return util::floor( val + (T)0.5 );
+}
+
+template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+constexpr T clamp( T number,
+	T minimum,
+	T maximum )
+{
+	if ( number < minimum )
+	{
+		return minimum;
+	}
+	else if ( number > maximum )
+	{
+		return maximum;
+	}
+	return number;
+}
+
+//	\function	numberToCoord	||	\date	2023/05/09 12:33
+//	\brief	transformation of a scalar (1D) to a Cartesian coordinate
+//		use this instead of mapRange when you don't want to scale the values of the range
+template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+int numberToCoord( T number,
+	int amountPerGradation,
+	int nGradations,
+	bool is_x_axis )
+{
+	int amountLimit = amountPerGradation * nGradations / 2;
+	int integer = static_cast<int>( number );
+	integer = util::clamp( integer,
+		-amountLimit,
+		amountLimit );
+
+	// we floor because we want to return a number in the form of an integer index
+	int coord = util::floor( integer / amountPerGradation );
+	coord = coord + ( nGradations / 2 ) + 1;
+
+	// flip
+	if ( !is_x_axis )
+	{
+		coord = nGradations + 1 - coord;
+	}
+	return coord;
 }
 
 template<typename T, typename = std::enable_if_t<std::is_floating_point_v<T>>>
@@ -139,13 +189,13 @@ constexpr void quadratic( const T a,
 	const T b,
 	const T c )
 {
-	T diakr = b * b - 4 * a * c;
+	T discriminant = b * b - 4 * a * c;	// diakrinousa
 
-	if ( diakr < 0 )
+	if ( discriminant < 0 )
 	{
 		std::cout << "Imaginary roots.\n";
 	}
-	else if ( diakr == 0 )
+	else if ( discriminant == 0 )
 	{
 		std::cout << "There is only one root: "
 			<< -b / (2.0 * a)
@@ -154,9 +204,9 @@ constexpr void quadratic( const T a,
 	else
 	{
 		std::cout << "1st root: "
-					<< ( -b + util::squareRoot( diakr ) ) / ( 2 * a )
+					<< ( -b + util::squareRoot( discriminant ) ) / ( 2 * a )
 					<< "\t 2nd root: "
-					<< ( -b - util::squareRoot( diakr ) ) / ( 2 * a )
+					<< ( -b - util::squareRoot( discriminant ) ) / ( 2 * a )
 					<< "\n";
 	}
 }

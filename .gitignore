@@ -264,9 +264,10 @@ __pycache__/
 *.VC.db
 *.opendb
 
-_present/
+plan.txt
 readme.html
 readme.site.md
+_present/
 KeyEngine/int/
 KeyEngine/src/testing.cpp
 KeyEngine/inc/testing.h

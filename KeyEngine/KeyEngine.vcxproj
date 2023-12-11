@@ -18,7 +18,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{63E56790-0977-47CC-B52B-B1BF8746AFD4}</ProjectGuid>
     <RootNamespace>KeyEngine</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -64,17 +64,19 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)third_party\dxtex\include;$(ProjectDir)third_party\assimp\include;$(ProjectDir)third_party\inih;$(ProjectDir)third_party\imgui;$(ProjectDir)third_party\DirectXTK\include;$(ProjectDir)inc;$(ProjectDir)third_party\catch;$(ProjectDir)third_party\jthread;C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include;$(ProjectDir)games</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)third_party\dxtex\include;$(ProjectDir)third_party\assimp\include;$(ProjectDir)third_party\inih;$(ProjectDir)third_party\google;$(ProjectDir)third_party\imgui;$(ProjectDir)third_party\DirectXTK\include;$(ProjectDir)inc;$(ProjectDir)third_party\catch;$(ProjectDir)third_party\jthread;$(ProjectDir)third_party\magic_enum;C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include;$(ProjectDir)games</IncludePath>
     <LibraryPath>$(ProjectDir)third_party\dxtex\bin\$(Configuration);$(ProjectDir)third_party\DirectXTK\bin\$(Configuration);$(ProjectDir)third_party\assimp\bin\x64;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)\int\$(Platform)\$(Configuration)\</IntDir>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\keyc0de_microsoft_modified_static_analysis_ruleset.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)third_party\dxtex\include;$(ProjectDir)third_party\assimp\include;$(ProjectDir)third_party\inih;$(ProjectDir)third_party\imgui;$(ProjectDir)third_party\DirectXTK\include;$(ProjectDir)inc;$(ProjectDir)third_party\catch;$(ProjectDir)third_party\jthread;C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include;$(ProjectDir)games</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)third_party\dxtex\include;$(ProjectDir)third_party\assimp\include;$(ProjectDir)third_party\inih;$(ProjectDir)third_party\google;$(ProjectDir)third_party\imgui;$(ProjectDir)third_party\DirectXTK\include;$(ProjectDir)inc;$(ProjectDir)third_party\catch;$(ProjectDir)third_party\jthread;$(ProjectDir)third_party\magic_enum;C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include;$(ProjectDir)games</IncludePath>
     <LibraryPath>$(ProjectDir)third_party\dxtex\bin\$(Configuration);$(ProjectDir)third_party\DirectXTK\bin\$(Configuration);$(ProjectDir)third_party\assimp\bin\x64;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)\int\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)third_party\dxtex\include;$(ProjectDir)third_party\assimp\include;$(ProjectDir)third_party\inih;$(ProjectDir)third_party\DirectXTK\include;$(ProjectDir)inc;$(ProjectDir)third_party\catch;$(ProjectDir)third_party\jthread;C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include;$(ProjectDir)games</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)third_party\dxtex\include;$(ProjectDir)third_party\assimp\include;$(ProjectDir)third_party\inih;$(ProjectDir)third_party\google;$(ProjectDir)third_party\DirectXTK\include;$(ProjectDir)inc;$(ProjectDir)third_party\catch;$(ProjectDir)third_party\jthread;$(ProjectDir)third_party\magic_enum;C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include;$(ProjectDir)games</IncludePath>
     <LibraryPath>$(ProjectDir)third_party\dxtex\bin\Release;$(ProjectDir)third_party\DirectXTK\bin\Release;$(ProjectDir)third_party\assimp\bin\x64;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)\int\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
@@ -90,6 +92,7 @@
       <AdditionalOptions>/we4239 /we4265 /we4715 /we4172 /Zc:__cplusplus /utf-8 %(AdditionalOptions)</AdditionalOptions>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
       <SuppressStartupBanner>false</SuppressStartupBanner>
+      <EnablePREfast>true</EnablePREfast>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -100,6 +103,14 @@
       <ShaderModel>5.0</ShaderModel>
       <ObjectFileOutput>$(ProjectDir)\int\$(Platform)\shaders\$(Filename).cso</ObjectFileOutput>
     </FxCompile>
+    <PreBuildEvent>
+      <Command>cd &gt; pre_build_event_output.log</Command>
+      <Message>Pre-Build event description.</Message>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>cd &gt; post_build_event_output.log</Command>
+      <Message>Post-Build event description.</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
     <ClCompile>
@@ -130,6 +141,14 @@
       <ShaderModel>5.0</ShaderModel>
       <ObjectFileOutput>$(ProjectDir)\int\$(Platform)\shaders\$(Filename).cso</ObjectFileOutput>
     </FxCompile>
+    <PreBuildEvent>
+      <Command>cd &gt; pre_build_event_output.log</Command>
+      <Message>Pre-Build event description.</Message>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>cd &gt; post_build_event_output.log</Command>
+      <Message>Post-Build event description.</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">
     <ClCompile>
@@ -161,12 +180,19 @@
       <ShaderModel>5.0</ShaderModel>
       <ObjectFileOutput>$(ProjectDir)\int\$(Platform)\shaders\$(Filename).cso</ObjectFileOutput>
     </FxCompile>
+    <PreBuildEvent>
+      <Command>cd &gt; pre_build_event_output.log</Command>
+      <Message>Pre-Build event description.</Message>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>cd &gt; post_build_event_output.log</Command>
+      <Message>Post-Build event description.</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="games\arkanoid\ball.cpp" />
     <ClCompile Include="games\arkanoid\brick.cpp" />
     <ClCompile Include="games\arkanoid\paddle.cpp" />
-    <ClCompile Include="src\algorithms.cpp" />
     <ClCompile Include="src\bindable_exception.cpp" />
     <ClCompile Include="src\bindable_pass.cpp" />
     <ClCompile Include="src\bitmap.cpp" />
@@ -349,7 +375,6 @@
     <ClInclude Include="games\arkanoid\ball.h" />
     <ClInclude Include="games\arkanoid\brick.h" />
     <ClInclude Include="games\arkanoid\paddle.h" />
-    <ClInclude Include="inc\algorithms.h" />
     <ClInclude Include="inc\bindable.h" />
     <ClInclude Include="inc\bindable_exception.h" />
     <ClInclude Include="inc\bindable_map.h" />
@@ -416,14 +441,12 @@
     <ClInclude Include="inc\render_target.h" />
     <ClInclude Include="inc\negative_pass.h" />
     <ClInclude Include="inc\save_game.h" />
-    <ClInclude Include="inc\key_traits.h" />
+    <ClInclude Include="inc\key_type_traits.h" />
     <ClInclude Include="inc\lru_cache.h" />
     <ClInclude Include="inc\lua_interface.h" />
     <ClInclude Include="inc\non_copyable.h" />
     <ClInclude Include="inc\assertions_console.h" />
     <ClInclude Include="inc\net_utils.h" />
-    <ClInclude Include="inc\safer_ptr_ref.h" />
-    <ClInclude Include="inc\serializable_index.h" />
     <ClInclude Include="inc\shadow_map_sampler_state.h" />
     <ClInclude Include="inc\shadow_pass.h" />
     <ClInclude Include="inc\sky_vscb.h" />
@@ -587,6 +610,18 @@
     <ClInclude Include="third_party\dxtex\include\dxtex\DirectXTexP.h" />
     <ClInclude Include="third_party\dxtex\include\dxtex\filters.h" />
     <ClInclude Include="third_party\dxtex\include\dxtex\scoped.h" />
+    <ClInclude Include="third_party\google\algorithm\algorithm.h" />
+    <ClInclude Include="third_party\google\base\attributes.h" />
+    <ClInclude Include="third_party\google\base\config.h" />
+    <ClInclude Include="third_party\google\base\internal\throw_delegate.h" />
+    <ClInclude Include="third_party\google\base\macros.h" />
+    <ClInclude Include="third_party\google\base\optimization.h" />
+    <ClInclude Include="third_party\google\base\options.h" />
+    <ClInclude Include="third_party\google\base\policy_checks.h" />
+    <ClInclude Include="third_party\google\base\port.h" />
+    <ClInclude Include="third_party\google\inlined_vector.h" />
+    <ClInclude Include="third_party\google\memory\memory.h" />
+    <ClInclude Include="third_party\google\meta\type_traits.h" />
     <ClInclude Include="third_party\imgui\imconfig.h" />
     <ClInclude Include="third_party\imgui\imgui.h" />
     <ClInclude Include="third_party\imgui\imgui_impl_dx11.h" />
@@ -598,6 +633,7 @@
     <ClInclude Include="third_party\inih\INIReader.h" />
     <ClInclude Include="third_party\jthread\jthread.h" />
     <ClInclude Include="third_party\jthread\stop_token.h" />
+    <ClInclude Include="third_party\magic_enum\magic_enum.h" />
     <ClInclude Include="third_party\rapidjson\cursorstreamwrapper.h" />
     <ClInclude Include="third_party\rapidjson\document.h" />
     <ClInclude Include="third_party\rapidjson\encodedstream.h" />
@@ -643,10 +679,6 @@
   <ItemGroup>
     <Image Include="assets\resources\keyc0de.ico" />
     <Image Include="assets\resources\tray_graffiti.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="design_doc\fantasia.txt" />
-    <Text Include="design_doc\plan.txt" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="shaders\blur_ps.hlsl">

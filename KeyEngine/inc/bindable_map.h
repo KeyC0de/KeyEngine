@@ -50,7 +50,6 @@ public:
 	static void garbageCollect()
 	{
 		auto &instance = BindableMap::instance();
-		size_t nGarbagePtrs = 0;
 		for ( std::unordered_map<std::string, std::shared_ptr<IBindable>>::iterator it = instance.m_bindableMap.begin(); it != instance.m_bindableMap.end(); ++it )
 		{
 			if ( it->second.use_count() <= 1 )

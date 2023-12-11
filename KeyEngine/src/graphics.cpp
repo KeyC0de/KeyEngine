@@ -548,28 +548,15 @@ void Graphics::present()
 	DXGI_PRESENT_PARAMETERS presentParams;
 	POD_ZERO( presentParams );
 #endif
-	if ( settings.getSettings().bVSync )
-	{
+	const bool hasVsync = settings.getSettings().bVSync;
 #if defined FLIP_PRESENT
-		hres = m_pSwapChain->Present1( settings.getSettings().iPresentInterval,
-			m_presentFlags,
-			&presentParams );
+	hres = m_pSwapChain->Present1( hasVsync ? settings.getSettings().iPresentInterval : 0u,
+		m_presentFlags,
+		hasVsync ? &presentParams : 0u );
 #else
-		hres = m_pSwapChain->Present( 1u,
-			0u );
+	hres = m_pSwapChain->Present( hasVsync ? 1u : 0u,
+		0u );
 #endif
-	}
-	else
-	{
-#if defined FLIP_PRESENT
-		hres = m_pSwapChain->Present1( 0u,
-			m_presentFlags,
-			&presentParams );
-#else
-		hres = m_pSwapChain->Present( 0u,
-			0u );
-#endif
-	}
 	DXGI_GET_QUEUE_INFO_GFX;
 
 #if defined _DEBUG && !defined NDEBUG
@@ -606,8 +593,8 @@ void Graphics::drawIndexed( const unsigned count ) cond_noex
 		m_pImmediateContext->DrawIndexed( count,
 			0u,
 			0u );
-		DXGI_GET_QUEUE_INFO_GFX;
 	}
+	DXGI_GET_QUEUE_INFO_GFX;
 	VTUNE_ITT_TASK_END;
 }
 
@@ -706,7 +693,7 @@ std::shared_ptr<TextureOffscreenRT> Graphics::renderTargetOffscreen( const unsig
 #if defined _DEBUG && !defined NDEBUG
 		const char *offscreenRtv = "OffscreenRenderTargetView1";
 		m_pOffscreenRtv->innerD3dResource()->SetPrivateData( WKPDID_D3DDebugObjectName,
-		strlen( offscreenRtv ),
+		(UINT) strlen( offscreenRtv ),
 		 offscreenRtv );
 #endif
 	}
@@ -726,7 +713,7 @@ std::shared_ptr<TextureOffscreenDS> Graphics::depthBufferOffscreen( const unsign
 #if defined _DEBUG && !defined NDEBUG
 		const char *offscreenDsv = "OffscreenDepthStencilView1";
 		m_pOffscreenDsv->innerD3dResource()->SetPrivateData( WKPDID_D3DDebugObjectName,
-		strlen( offscreenDsv ),
+		(UINT) strlen( offscreenDsv ),
 		 offscreenDsv );
 #endif
 	}

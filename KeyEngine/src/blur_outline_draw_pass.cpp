@@ -35,7 +35,7 @@ BlurOutlineDrawPass::BlurOutlineDrawPass( Graphics &gph,
 #if defined _DEBUG && !defined NDEBUG
 	const char *offscreenRtvBlurOutlineName = "OffscreenRenderTargetViewOutlineDraw";
 	m_pRtv->d3dResourceCom()->SetPrivateData( WKPDID_D3DDebugObjectName,
-		strlen( offscreenRtvBlurOutlineName ),
+		(UINT) strlen( offscreenRtvBlurOutlineName ),
 		 offscreenRtvBlurOutlineName );
 #endif
 

@@ -27,7 +27,7 @@ public:
 	//	\brief	setup function pointers
 	template <typename TFunction, typename... TArgs>
 	static std::unique_ptr<Operation> setup( TFunction &&f,
-		TArgs&&... args )
+		TArgs &&...args )
 	{
 		return std::make_unique<Operation>( std::bind( std::forward<TFunction>( f ), std::forward<TArgs>( args )... ) );
 	}
@@ -38,7 +38,7 @@ public:
 	template <typename TMethod, typename T, typename ...TArgs>
 	static std::unique_ptr<Operation> setup( TMethod &&mf,
 		T &&obj,
-		TArgs&& ...args )
+		TArgs &&...args )
 	{
 		return std::unique_ptr<Operation>( new Operation{std::bind( std::forward<TMethod>( mf ), std::forward<T>( obj ), std::forward<TArgs>( args )... )} );
 	}

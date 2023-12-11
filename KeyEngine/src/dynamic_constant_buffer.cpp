@@ -18,8 +18,8 @@ struct ExtraData final
 		: public CBElement::IExtraData
 	{
 		std::optional<CBElement> m_layoutElement;
-		size_t m_elementSize;
-		size_t m_size;
+		size_t m_elementSize = 0;
+		size_t m_size = 0;
 	};
 };
 
@@ -53,11 +53,10 @@ std::pair<size_t, const CBElement*> CBElement::calculateArrayIndexingOffset( con
 	ASSERT( m_type == Array, "Attempted to index into a non-array type" );
 	const auto &data = static_cast<ExtraData::Array&>( *m_pExtraData );
 	ASSERT( index < data.m_size, "Indexing arithmetic!" );
-	return {offset + data.m_elementSize * index,
-		&*data.m_layoutElement};
+	return {offset + data.m_elementSize * index, &*data.m_layoutElement};
 }
 
-CBElement &CBElement::operator[]( const std::string &key ) cond_noex
+CBElement& CBElement::operator[]( const std::string &key ) cond_noex
 {
 	ASSERT( m_type == Struct, "Attempted to key into a non-struct type" );
 	for ( auto &layEl : static_cast<ExtraData::Struct&>( *m_pExtraData ).m_layoutElements )
@@ -70,18 +69,18 @@ CBElement &CBElement::operator[]( const std::string &key ) cond_noex
 	return getEmptyElement();
 }
 
-const CBElement &CBElement::operator[]( const std::string &key ) const cond_noex
+const CBElement& CBElement::operator[]( const std::string &key ) const cond_noex
 {
 	return const_cast<CBElement&>( *this )[key];
 }
 
-CBElement &CBElement::T() cond_noex
+CBElement& CBElement::T() cond_noex
 {
 	ASSERT( m_type == Array, "Attempted to access inner CBElement type T of non-array type." );
 	return *static_cast<ExtraData::Array&>( *m_pExtraData ).m_layoutElement;
 }
 
-const CBElement &CBElement::T() const cond_noex
+const CBElement& CBElement::T() const cond_noex
 {
 	return const_cast<CBElement&>( *this ).T();
 }
@@ -121,7 +120,7 @@ const size_t CBElement::getSizeInBytes() const cond_noex
 	return getOffsetEnd() - getOffsetBegin();
 }
 
-CBElement &CBElement::add( const ElementType addedType,
+CBElement& CBElement::add( const ElementType addedType,
 	const std::string& name ) cond_noex
 {
 	ASSERT( m_type == Struct, "Attempted to add sub Element to non-Struct type" );
@@ -134,12 +133,12 @@ CBElement &CBElement::add( const ElementType addedType,
 			ASSERT( false, "Attempted to add element with duplicate name in Struct type." );
 		}
 	}
-	structData.m_layoutElements.emplace_back( std::move( name ),
+	structData.m_layoutElements.emplace_back( name,
 		CBElement{addedType} );
 	return *this;
 }
 
-CBElement &CBElement::set( const ElementType addedType,
+CBElement& CBElement::set( const ElementType addedType,
 	const size_t size ) cond_noex
 {
 	ASSERT( m_type == Array, "Set on non-array in layout" );
@@ -321,7 +320,7 @@ CookedLayout::CookedLayout( std::shared_ptr<CBElement> pRoot ) noexcept
 
 }
 
-std::shared_ptr<CBElement> CookedLayout::relinquishRoot() const noexcept
+std::shared_ptr<CBElement> CookedLayout::relinquishRoot() noexcept
 {
 	return std::move( m_pLayoutRoot );
 }
@@ -331,7 +330,7 @@ std::shared_ptr<CBElement> CookedLayout::shareRootElement() const noexcept
 	return m_pLayoutRoot;
 }
 
-const CBElement &CookedLayout::operator[]( const std::string &key ) const cond_noex
+const CBElement& CookedLayout::operator[]( const std::string &key ) const cond_noex
 {
 	return (*m_pLayoutRoot)[key];
 }

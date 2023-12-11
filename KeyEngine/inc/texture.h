@@ -4,7 +4,6 @@
 #include "bitmap.h"
 #include "render_target.h"
 #include "depth_stencil_view.h"
-#include "texture_desc.h"
 
 
 class Texture

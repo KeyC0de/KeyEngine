@@ -32,7 +32,7 @@ private:
 	std::vector<Entity*> m_recipients;
 	Message::Type m_type;
 public:
-	Message( Entity *srcId, const std::vector<Entity*>& destId, const Message::Type type );
+	Message( Entity *srcId, const std::vector<Entity*> &destId, const Message::Type type );
 	Message( Message &&rhs ) noexcept;
 	Message& operator=( Message &&rhs ) noexcept;
 	virtual ~Message() noexcept;
@@ -41,7 +41,7 @@ public:
 	const Entity* getSender() noexcept;
 	const std::vector<Entity*>& getRecipients() noexcept;
 	bool isHandled() const noexcept;
-	void setHandled( bool b ) noexcept;
+	void setHandled( const bool b ) noexcept;
 };
 
 
@@ -55,9 +55,9 @@ class MessageCall
 	:
 	public Message
 {
-	std::unique_ptr<class Operation> m_pFunc;
+	std::unique_ptr<Operation> m_pFunc;
 public:
-	MessageCall( Entity *psrc, const std::vector<Entity*>& pDests, Message::Type type, std::unique_ptr<Operation> df );
+	MessageCall( Entity *psrc, const std::vector<Entity*> &pDests, Message::Type type, std::unique_ptr<Operation> df );
 	MessageCall( MessageCall &&rhs ) noexcept;
 	MessageCall& operator=( MessageCall &&rhs ) noexcept;
 	virtual ~MessageCall() noexcept = default;
@@ -81,7 +81,7 @@ class MessageData
 public:
 	template<typename ... TParams>
 	MessageData( Entity *src,
-		const std::vector<Entity*>& pDests,
+		const std::vector<Entity*> &pDests,
 		Message::Type type,
 		TParams&&... args )
 		:

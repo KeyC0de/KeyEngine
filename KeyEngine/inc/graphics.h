@@ -47,7 +47,7 @@ class Renderer2d;
 //	\class	Graphics
 //	\author	KeyC0de
 //	\date	2022/09/13 22:51
-//	\brief	d3d11 Graphics encapsulator
+//	\brief	Graphics API (d3d11) encapsulator
 //			provides classic blt presentation functionality
 //			as well as upgraded DXGI 1.2 API with Flip enhanced presentation model (aiming for Independent Flip)
 //=============================================================
@@ -123,7 +123,6 @@ public:
 	void profile() const noexcept;
 #endif
 	void beginFrame() noexcept;
-	void updateAndRenderFpsTimer();
 	void endFrame();
 	void draw( const unsigned count ) cond_noex;
 	void drawIndexed( const unsigned count ) cond_noex;

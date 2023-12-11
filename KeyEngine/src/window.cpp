@@ -15,6 +15,7 @@
 #include "windows_message_map.h"
 #include "../resource.h"
 #include "winuser.h"
+#include "settings_manager.h"
 
 #define IDT_TIMER_SPLASH_WINDOW_DESTRUCTION	1000
 
@@ -462,14 +463,16 @@ const std::string& Window::getName() const noexcept
 
 void Window::minimize()
 {
-	ShowWindow( m_hWnd,
+	int ret = ShowWindow( m_hWnd,
 		SW_HIDE );
+	ASSERT( ret != 0, "The window is already hidden!" );
 }
 
 void Window::restore()
 {
-	ShowWindow( m_hWnd,
+	int ret = ShowWindow( m_hWnd,
 		SW_SHOW );
+	ASSERT( ret != 0, "The window is already visible!" );
 	SetForegroundWindow( m_hWnd );
 }
 
@@ -614,7 +617,7 @@ HBITMAP Window::convertHiconToHbitmap( HICON hIcon )
 
 HICON Window::convertHbitmapToHicon( HBITMAP hBitmap )
 {
-	BITMAP bitmap;
+	BITMAP bitmap{};
 	int ret = GetObjectW( hBitmap,
 		sizeof bitmap,
 		&bitmap );
@@ -636,7 +639,7 @@ HICON Window::convertHbitmapToHicon( HBITMAP hBitmap )
 	return hIcon;
 }
 
-void saveClipboardTextAsVar()
+void Window::saveClipboardTextAsVar()
 {
 	HANDLE hClipboard;
 	char *clipboardText;
@@ -657,7 +660,7 @@ void Window::setupSplashWindow( HBITMAP hSplashBitmap )
 {
 	int ret;
 
-	BITMAP bitmap;
+	BITMAP bitmap{};
 	ret = GetObjectW( hSplashBitmap,
 		sizeof bitmap,
 		&bitmap );
@@ -1103,8 +1106,8 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 	const auto &imGuiIoContext = ImGui::GetIO();
 #endif
 
-	static bool bMinimized = false;
-	static bool bCurrentlyResizing = false;
+	static bool s_bMinimized = false;
+	static bool s_bCurrentlyResizing = false;
 
 	// custom messages (create with RegisterWindowMessage)
 
@@ -1216,25 +1219,30 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 		if ( wParam == SIZE_MINIMIZED )
 		{
 			// the window was minimized
-			if ( !bMinimized )
+			if ( !s_bMinimized )
 			{
-				bMinimized = true;
+				s_bMinimized = true;
 				// #TODO: suspend the application at this point so that we don't waste resources
 			}
 		}
-		else if ( bMinimized )
+		else if ( s_bMinimized )
 		{
 			// the window was minimized and is now restored (resume from suspend)
-			bMinimized = false;
+			s_bMinimized = false;
 		}
-		else if ( !bCurrentlyResizing )
+		else if ( !s_bCurrentlyResizing )
 		{
 			// handle the swapchain resize for maximize or unmaximize
-			// another option would be to prevent window resizing and iInstead resize by ingame option - choosing resolution
-			unsigned width = LOWORD( lParam );
-			unsigned height = HIWORD( lParam );
+			if ( !SettingsManager::instance().getSettings().bAllowWindowResize )
+			{
+				// another option would be to prevent window resizing and innstead resize by ingame option - choosing resolution
+				break;
+			}
+
 			if ( m_pGraphics )
 			{
+				const unsigned width = LOWORD( lParam );
+				const unsigned height = HIWORD( lParam );
 				if ( width != calcWidth() && height != calcHeight() )
 				{
 					// #TODO: m_pGraphics->resize( width,
@@ -1247,17 +1255,18 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 	case WM_ENTERSIZEMOVE:
 	{
 		// we want to avoid trying to resize the swapchain as the user does the 'rubber band' resize:
-		bCurrentlyResizing = true;
+		s_bCurrentlyResizing = true;
 		break;
 	}
 	case WM_EXITSIZEMOVE:
 	{
-		// here is the other place where you handle the swapchain resize after the user stops using the 'rubber-band'
-		bCurrentlyResizing = false;
+		// here is the other place where you handle the swapchain resize after the user stops using the 'rubber-band' resize
+		s_bCurrentlyResizing = false;
 		break;
 	}
-	case WM_GETMINMAXINFO:	// send when the size or position of the window is about to change - This is the very 1st message being sent to a window b4 WM_NCCREATE we want to prevent the window from being set too tiny
+	case WM_GETMINMAXINFO:
 	{
+		// sent when the size or position of the window is about to change - This is the very 1st message being sent to a window b4 WM_NCCREATE we want to prevent the window from being set too tiny
 		auto info = reinterpret_cast<MINMAXINFO*>( lParam );
 		info->ptMinTrackSize.x = 320;
 		info->ptMinTrackSize.y = 200;

@@ -109,7 +109,7 @@ const Entity* Entity::getParent() const noexcept
 
 void Entity::addChild( Entity *child ) noexcept
 {
-	m_children.emplace_back( child );
+	m_children.push_back( child );
 }
 
 std::vector<Entity*>& Entity::children() noexcept
@@ -165,7 +165,9 @@ void Entity::onMessageReceived( std::unique_ptr<Message> msg )
 		break;
 	}
 	default:
+	{
 		break;
+	}
 	}
 	pDataMsg->setHandled( true );
 }

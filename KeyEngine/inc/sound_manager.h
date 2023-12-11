@@ -75,7 +75,7 @@ public:
 
 		const std::string& getName() const cond_noex;
 		void setName( const std::string &name ) cond_noex;
-		void setVolume( float volume = 1.0f ) cond_noex;
+		void setVolume( const float volume = 1.0f ) cond_noex;
 	};
 private:
 	WAVEFORMATEXTENSIBLE *m_pFormat;
@@ -95,9 +95,9 @@ public:
 public:
 	~SoundManager() noexcept;
 
-	void setMasterVolume( float volume = 1.0f );
-	void setSubmixVolume( const Submix &submix, float volume = 1.0f ) cond_noex;
-	void playChannelSound( class Sound *sound, float volume );
+	void setMasterVolume( const float volume = 1.0f );
+	void setSubmixVolume( const Submix &submix, const float volume = 1.0f ) cond_noex;
+	void playChannelSound( class Sound *sound, const float volume );
 	//	\function	deactivateChannel	||	\date	2020/10/25 20:18
 	//	\brief  removes occupied Channel & places it in the idle list
 	void deactivateChannel( Channel &channel );
@@ -152,6 +152,6 @@ public:
 	const std::string& getSubmixName() const cond_noex;
 	//	\function	play	||	\date	2020/10/25 13:05
 	//	\brief	instructs the sound manager to play the sound on free channel(s)
-	void play( float volume = 1.0f );
+	void play( const float volume = 1.0f );
 	void stop();
 };

@@ -34,8 +34,8 @@ class NonAssignable
 public:
 	NonAssignable() = default;
 	NonAssignable( const NonAssignable &rhs ) = default;
-	NonAssignable& operator=( const NonAssignable &rhs ) = delete;
 	//NonAssignable( NonAssignable &rhs ) = default;	// multiple versions of a defaulted special member are not allowed
+	NonAssignable& operator=( const NonAssignable &rhs ) = delete;
 	NonAssignable& operator=( NonAssignable &rhs ) = delete;
 	NonAssignable( NonAssignable &&rhs ) = default;
 	NonAssignable& operator=( NonAssignable &&rhs ) = delete;

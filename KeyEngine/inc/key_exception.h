@@ -11,7 +11,6 @@
 // \date	2019/09/11 19:38
 //
 // \brief	Custom exception hierarchy
-//			Protected ctor
 //			child/specific exception classes are nested in other classes & specify the concrete exception description
 //=============================================================
 class KeyException

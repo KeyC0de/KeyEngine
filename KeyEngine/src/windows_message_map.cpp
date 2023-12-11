@@ -12,8 +12,8 @@
 
 #define MAP_MESSAGE( msgId )	{msgId, #msgId}
 
-
 #if defined _DEBUG && !defined NDEBUG
+#pragma warning( disable : 6262 )
 WindowsMessageMap::WindowsMessageMap() noexcept
 	:
 	m_map( {
@@ -1067,6 +1067,7 @@ WindowsMessageMap::WindowsMessageMap() noexcept
 {
 
 }
+#pragma warning( default : 6262 )
 #else
 WindowsMessageMap::WindowsMessageMap() noexcept
 	:
@@ -1076,7 +1077,7 @@ WindowsMessageMap::WindowsMessageMap() noexcept
 }
 #endif
 
-std::string WindowsMessageMap::toString( DWORD uMsg ) const noexcept
+std::string WindowsMessageMap::toString( const DWORD uMsg ) const noexcept
 {
 	const auto it = m_map.find( uMsg );
 	std::ostringstream oss;

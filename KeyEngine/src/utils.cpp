@@ -11,6 +11,41 @@
 namespace util
 {
 
+// TODO:
+/*
+template<typename CONTAINER, typename STRINGTYPE, typename SEPARATORTYPE>
+void split(CONTAINER & output, const STRINGTYPE & to_split, const SEPARATORTYPE & seperator)
+{
+	STRINGTYPE::size_type start = 0;
+	STRINGTYPE::size_type end = to_split.find(seperator, start);
+	for (; end != STRINGTYPE::size_type(-1); end = to_split.find(seperator, start))
+	{
+		output.push_back(to_split.substr(start, end - start));
+		start = end + 1;
+	}
+	/// Add any remain string 
+	if (start != to_split.length())
+	{
+		output.push_back(to_split.substr(start, end - start));
+	}
+}
+// example:
+CA_STD::VECTOR<CA::String> sea_horde_faction_keys;
+sea_horde_faction_keys.reserve(16);
+CA::split(sea_horde_faction_keys, *sea_horde_faction_keys_serialized_string_shared_state_pointer, ",");
+*/
+
+/* TODO:
+* Predicate composition
+auto greater_than_checker = [&s] (const std::pair<int,int> &arg) -> bool { return arg.first > 100; };
+auto less_than_checker = [&s] (const std::pair<int,int> &arg) -> bool { return arg.second < 450; };
+
+auto predicate2_and = [f1 = greater_than_checker, f2 = less_than_checker] (const std::pair<int,int> &arg) { return f1(arg) && f2(arg) ;};
+auto predicate2_or = [f1 = greater_than_checker, f2 = less_than_checker] (const std::pair<int,int> &arg) { return f1(arg) || f2(arg) ;};
+
+bool has_found_any = std::find_if(s.begin(), s.end(), predicate2_and )
+	!= s.end();
+*/
 std::vector<std::string> tokenizeQuotedString( const std::string &input )
 {
 	std::istringstream stream;
@@ -72,7 +107,7 @@ void splitString_impl( const std::string &s,
 {
 	if ( delim.empty() )
 	{
-		*out++ = s;
+		*out = s;
 	}
 	else
 	{
@@ -82,12 +117,13 @@ void splitString_impl( const std::string &s,
 			a = b + delim.length(),
 			b = s.find( delim, a ) )
 		{
-			*out++ = std::move( s.substr( a,
+			*out = std::move( s.substr( a,
 				b - a ) );
 		}
-		*out++ = std::move( s.substr( a,
+		*out = std::move( s.substr( a,
 			s.length() - a ) );
 	}
+	++out;
 }
 
 std::vector<std::string> splitString( const std::string &s,
@@ -189,7 +225,7 @@ std::tuple<int, int, int> secondsToHms( const int totalSecs )
 	return {hours, minutes, seconds};
 }
 
-inline time_t secondsToTimeT( const int s )
+time_t secondsToTimeT( const int s )
 {
 	return std::chrono::system_clock::to_time_t( std::chrono::system_clock::time_point( std::chrono::duration_cast<std::chrono::seconds>( std::chrono::duration<int>( s ) ) ) );
 }
@@ -198,7 +234,6 @@ long int timeTtoSeconds( const time_t t )
 {
 	return static_cast<long int>( t );
 }
-
 
 std::uintptr_t pointerToInt( const void *p )
 {
@@ -318,6 +353,29 @@ const std::size_t getForwardPaddingWithHeader( const std::size_t p,
 		}
 	}
 	return padding;
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// ALGORITHMS
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void regexSearch( const std::regex &pattern )
+{
+	int lineNo = 0;
+	for ( std::string line; std::getline( std::cin, line ); )
+	{
+		++lineNo;
+		std::smatch matches;
+		if ( std::regex_search( line, matches, pattern ) )
+		{
+			std::cout << lineNo
+				<< ": "
+				<< matches[0]
+				<< '\n';
+		}
+	}
 }
 
 

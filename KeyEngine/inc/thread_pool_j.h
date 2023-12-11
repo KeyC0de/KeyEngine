@@ -64,7 +64,7 @@ public:
 				std::placeholders::_1,
 				std::forward<TArgs>( args )... );
 			{
-				std::lock_guard<std::mutex> lg{m_mu};
+				std::unique_lock<std::mutex> ul{m_mu};
 				m_tasks.emplace( std::move( task ) );
 			}
 

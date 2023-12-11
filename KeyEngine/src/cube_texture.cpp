@@ -1,4 +1,5 @@
 #include "cube_texture.h"
+#include "texture_desc.h"
 #include "depth_stencil_view.h"
 #include "render_target.h"
 #include "dxgi_info_queue.h"

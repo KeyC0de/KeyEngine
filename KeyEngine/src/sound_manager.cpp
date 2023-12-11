@@ -95,6 +95,11 @@ bool SoundManager::Channel::setupChannel( SoundManager &soundManager,
 		: public IXAudio2VoiceCallback
 	{
 	public:
+		virtual ~VoiceCallback() noexcept
+		{
+
+		}
+
 		// Called when the voice is about to start processing a new audio buffer.
 		void STDMETHODCALLTYPE OnBufferStart( void *pBufferContext ) override
 		{
@@ -259,13 +264,13 @@ SoundManager& SoundManager::instance( WAVEFORMATEXTENSIBLE *format )
 	return soundManager;
 }
 
-void SoundManager::setMasterVolume( float volume )
+void SoundManager::setMasterVolume( const float volume )
 {
 	m_pMasterVoice->SetVolume( volume );
 }
 
 void SoundManager::playChannelSound( class Sound *sound,
-	float volume )
+	const float volume )
 {
 	std::unique_lock<std::mutex> ul{m_mu};
 	if ( !m_idleChannels.empty() && m_occupiedChannels.size() < s_nMaxAudioChannels )
@@ -579,7 +584,7 @@ const std::string& Sound::getSubmixName() const cond_noex
 	return m_submixName;
 }
 
-void Sound::play( float volume )
+void Sound::play( const float volume )
 {
 	SoundManager::instance( m_pWaveFormat.get() )
 		.playChannelSound( this,
@@ -631,7 +636,7 @@ void SoundManager::Submix::setName( const std::string &name ) cond_noex
 }
 
 void SoundManager::setSubmixVolume( const Submix &submix,
-	float volume ) cond_noex
+	const float volume ) cond_noex
 {
 	std::lock_guard<std::mutex> lg{m_mu};
 	for ( const auto &s : m_submixes )
@@ -643,7 +648,7 @@ void SoundManager::setSubmixVolume( const Submix &submix,
 	}
 }
 
-void SoundManager::Submix::setVolume( float volume ) cond_noex
+void SoundManager::Submix::setVolume( const float volume ) cond_noex
 {
 	m_pSubmixVoice->SetVolume( volume );
 }
@@ -651,9 +656,9 @@ void SoundManager::Submix::setVolume( float volume ) cond_noex
 SoundManager::Submix::Submix( Submix &&rhs ) cond_noex
 	:
 	m_name{std::move( rhs.m_name )},
-	m_outputVoiceSendDesc{std::move( rhs.m_outputVoiceSendDesc )},
-	m_outputVoiceSends{std::move( rhs.m_outputVoiceSends )},
-	m_pSubmixVoice{std::move( rhs.m_pSubmixVoice )}
+	m_outputVoiceSendDesc{rhs.m_outputVoiceSendDesc},
+	m_outputVoiceSends{rhs.m_outputVoiceSends},
+	m_pSubmixVoice{rhs.m_pSubmixVoice}
 {
 	rhs.m_name = "";
 	rhs.m_pSubmixVoice = nullptr;

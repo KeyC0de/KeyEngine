@@ -16,7 +16,7 @@
 class WindowsMessageMap final
 {
 	std::unordered_map<DWORD, std::string> m_map;
-	
+
 	WindowsMessageMap() noexcept;
 public:
 	WindowsMessageMap( const WindowsMessageMap &rhs ) = delete;
@@ -28,5 +28,5 @@ public:
 		return inst;
 	}
 
-	std::string toString( DWORD uMsg ) const noexcept;
+	std::string toString( const DWORD uMsg ) const noexcept;
 };

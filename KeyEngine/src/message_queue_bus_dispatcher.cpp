@@ -11,7 +11,7 @@ void MessageBus::removeFrontByBackSwap()
 	m_vec.pop_back();
 }
 
-MessageBus::MessageBus( int initialCapacity )
+MessageBus::MessageBus( const int initialCapacity )
 	:
 	m_vec(initialCapacity)
 {
@@ -78,7 +78,7 @@ MessageBus::operator bool()
 	return !m_vec.empty();
 }
 
-Message* MessageBus::operator[]( std::size_t index )
+Message* MessageBus::operator[]( const std::size_t index )
 {
 	std::lock_guard<std::mutex> lg{m_mu};
 	if ( m_vec.empty() || index < 0 || index >= m_vec.size() )
@@ -88,7 +88,7 @@ Message* MessageBus::operator[]( std::size_t index )
 	return m_vec[index].get();
 }
 
-const Message* MessageBus::operator[]( std::size_t index ) const
+const Message* MessageBus::operator[]( const std::size_t index ) const
 {
 	std::lock_guard<std::mutex> lg{m_mu};
 	if ( m_vec.empty() || index < 0 || index >= m_vec.size() )
@@ -119,7 +119,7 @@ const std::size_t MessageBus::getCapacity() const noexcept
 }
 
 
-MessageDispatcher::MessageDispatcher( int initialCapacity )
+MessageDispatcher::MessageDispatcher( const int initialCapacity )
 	:
 	m_mb(initialCapacity)
 {
@@ -141,7 +141,7 @@ MessageDispatcher& MessageDispatcher::operator=( MessageDispatcher &&rhs ) noexc
 	return *this;
 }
 
-MessageDispatcher& MessageDispatcher::instance( int initialCapacity )
+MessageDispatcher& MessageDispatcher::instance( const int initialCapacity )
 {
 	static MessageDispatcher instance{initialCapacity};
 	return instance;

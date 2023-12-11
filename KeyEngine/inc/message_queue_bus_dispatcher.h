@@ -31,7 +31,7 @@ class MessageBus final
 	std::condition_variable m_cond;
 private:
 	MessageBus() = default;
-	MessageBus( int initialCapacity );
+	MessageBus( const int initialCapacity );
 private:
 	void removeFrontByBackSwap();
 public:
@@ -47,8 +47,8 @@ public:
 	const Message* peekFront() const noexcept;
 	const Message* peekBack() const noexcept;
 	explicit operator bool();
-	Message* operator[]( std::size_t index );
-	const Message* operator[]( std::size_t index ) const;
+	Message* operator[]( const std::size_t index );
+	const Message* operator[]( const std::size_t index ) const;
 	const std::size_t getSize() const noexcept;
 	const std::size_t getCapacity() const noexcept;
 	inline bool isEmpty() const noexcept;
@@ -61,20 +61,20 @@ public:
 //	\author	KeyC0de
 //	\date	2019/12/09 17:15
 //	\brief	Meyer's singleton
-//			owns & manages the message queue
+//			owns & manages the MessageBus/Queue
 //=============================================================
 class MessageDispatcher final
 	: public NonCopyable
 {
 	MessageBus m_mb;
 
-	MessageDispatcher( int initialCapacity );
+	MessageDispatcher( const int initialCapacity );
 public:
 	~MessageDispatcher() noexcept = default;
 	MessageDispatcher( MessageDispatcher &&rhs ) noexcept;
 	MessageDispatcher& operator=( MessageDispatcher &&rhs ) noexcept;
 
-	static MessageDispatcher& instance( int initialCapacity = 100 );
+	static MessageDispatcher& instance( const int initialCapacity = 100 );
 	//	\function	addMessage	||	\date	2020/12/10 4:47
 	//	\brief	add new message to the MessageBus
 	void addMessage( Message *msg );

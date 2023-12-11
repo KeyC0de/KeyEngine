@@ -27,10 +27,12 @@ template <typename T>
 Game<T>::Game( const int width,
 	const int height,
 	const std::string &title,
+	const int x,
+	const int y,
 	const unsigned nWindows )
 	:
 	m_pImguiMan{createImgui()},
-	m_mainWindow{width, height, title.c_str(), MAIN_WINDOW_CLASS_NAME, Window::windowProc, 200, 200, ColorBGRA{255, 255, 255}, LoadMenuW( THIS_INSTANCE, MAKEINTRESOURCEW( IDR_MENU_APP ) )},
+	m_mainWindow{width, height, title.c_str(), MAIN_WINDOW_CLASS_NAME, Window::windowProc, x, y, ColorBGRA{255, 255, 255}, LoadMenuW( THIS_INSTANCE, MAKEINTRESOURCEW( IDR_MENU_APP ) )},
 	m_pCurrentState{std::make_unique<GameState>()}
 {
 	s_nWindows = nWindows;
@@ -42,7 +44,6 @@ ImguiManager* Game<T>::createImgui() noexcept
 #ifndef FINAL_RELEASE
 	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{
-
 		return new ImguiManager{};
 	}
 	else
@@ -81,7 +82,7 @@ void Game<T>::setState( std::unique_ptr<State> pNewState,
 		mouse.enableRawInput();
 #if defined _DEBUG && !defined NDEBUG
 		KeyConsole &console = KeyConsole::instance();
-		console.print( "\nGame state is on!\n" );
+		console.print( "\nGame state is on.\n" );
 #endif
 	}
 	else if ( dynamic_cast<MenuState*>( pNewState.get() ) != nullptr )
@@ -90,7 +91,7 @@ void Game<T>::setState( std::unique_ptr<State> pNewState,
 		mouse.disableRawInput();
 #if defined _DEBUG && !defined NDEBUG
 		KeyConsole &console = KeyConsole::instance();
-		console.print( "\nMenu state is on!\n" );
+		console.print( "\nMenu state is on.\n" );
 #endif
 	}
 	else
@@ -129,7 +130,7 @@ const float Game<T>::calcDt()
 		+ "ms. Frame "s
 		+ std::to_string( settings.frameCount )
 		+ "\n"s;
-	console.print( std::move( frameStats ) );
+	console.print( frameStats );
 #endif // _DEBUG
 //	if ( settings.bFpsCap && !( settings.bFullscreen == true && settings.bVSync == true ) )
 //	{
@@ -180,9 +181,11 @@ const char* Game<T>::GameException::what() const noexcept
 
 Sandbox3d::Sandbox3d( const int width,
 	const int height,
+	const int x,
+	const int y,
 	const int nWindows )
 	:
-	Game(width, height, "KeyEngine 3d Sandbox", nWindows)
+	Game(width, height, "KeyEngine 3d Sandbox", x, y, nWindows)
 {
 	auto &gph = m_mainWindow.getGraphics();
 
@@ -324,7 +327,7 @@ int Sandbox3d::checkInput( const float dt )
 		{
 		case VK_ESCAPE:
 		{
-			if ( m_mainWindow.isCursorEnabled() )
+			if ( m_mainWindow.isCursorEnabled() )	// TODO: check the game state on how to respond not whether the cursor is enabled
 			{
 				setState( std::make_unique<GameState>(),
 					mouse );
@@ -494,9 +497,11 @@ void Sandbox3d::test()
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 Arkanoid::Arkanoid( const int width,
-	const int height )
+	const int height,
+	const int x,
+	const int y )
 	:
-	Game(width, height, "Arkanoid"),
+	Game(width, height, "Arkanoid", x, y),
 	m_ball(dx::XMFLOAT2{450.0f, 450.0f}, dx::XMFLOAT2{-300.0f, -300.0f}),
 	m_walls(Rect(0.0f, (float)width, 0.0f, (float)height)),
 	m_paddle(dx::XMFLOAT2(400.0f, 550.0f), 40.0f, 8.0f, col::Cyan, col::Orange),

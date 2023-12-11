@@ -8,27 +8,23 @@
 #include <cstddef>
 #include <cinttypes>
 #include <future>
+#include <algorithm>	// algorithms
+#include <numeric>		// algorithms
+#include <iterator>		// algorithms
+#include <regex>		// algorithms
+#include <execution>	// algorithms
 #include "assertions_console.h"
-#include "key_traits.h"
+#include "key_type_traits.h"
 
-/*
-__declspec(restrict) declares that the return value of a function points to memory that is not aliased. That is, the memory returned by the function is guaranteed to not be accessible through any other pointer in the program.
-
-__declspec(noalias) declares that the function does not modify memory outside the first level of indirection from the function's parameters. That is, the parameters are the only reference to the outside world the function has.
-
-Both of them are just performance hints to the compiler.
-*/
 #if defined _MSC_VER || defined _WIN32 || defined _WIN64
-#	define restricted __declspec( restrict )
-#	define noaliasing __declspec( noalias )
-#	define compiler_hint restricted noaliasing
+#	define restricted __declspec( restrict )	// indicates that a symbol is not aliased in the current scope, this semantic is propagated by the compiler
+#	define noaliasing __declspec( noalias )		// declares that the function does not modify memory outside the first level of indirection from the function's parameters. That is, the parameters are the only reference to the outside world the function has.
 #elif defined __unix__ || defined __unix || defined __APPLE__ && defined __MACH__
 #	define restricted __restrict__
 #	define noaliasing __restrict__
-#	define hint __restrict__
 #endif
 
-#define isOfTypeT( obj, T ) ( dynamic_cast<T*>( obj ) != nullptr ) ? true : false
+#define isOfType( obj, T ) ( dynamic_cast<T*>( obj ) != nullptr ) ? true : false
 #define SAFE_CALL( obj, function )			{ if ( obj ) { obj.function; } }
 #define SAFE_CALL_POINTER( obj, function )	{ if ( obj ) { obj->function; } }
 
@@ -59,6 +55,15 @@ Both of them are just performance hints to the compiler.
 // use it like so: `CLASS_NAMER( MyClassName );` as the first statement of your class
 
 
+template<typename T>
+constexpr typename std::remove_reference<T>::type makePrValue( T &&val )
+{
+	return val;
+}
+
+#define IS_CONSTEXPR(e)	noexcept( makePrValue(e) )
+
+
 namespace util
 {
 
@@ -73,7 +78,7 @@ void safeDelete( T*& p )
 }
 
 template<typename T, typename = std::enable_if_t<is_pointer_wrapper_v<T>>>
-void safeDelete( T& pSm )
+void safeDelete( T &pSm )
 {
 	if ( pSm )
 	{
@@ -141,7 +146,6 @@ std::string toString( const T &t )
 	return ss.str();
 }
 
-
 template<typename T, typename = std::enable_if_t<std::is_integral_v<T>>>
 void printBinary( const T val )
 {
@@ -155,7 +159,7 @@ std::tuple<int, int, int> secondsToHms( const int totalSecs );
 //	\function	secondsToTimeT	||	\date	2022/07/28 22:35
 //	\brief	convert seconds to time_t
 //			Although not defined, time_t is implementation defined, it is almost always an integral value holding the number of seconds (not counting leap seconds) since 00:00, Jan 1 1970 UTC, corresponding to POSIX time.
-inline time_t secondsToTimeT( const int s );
+time_t secondsToTimeT( const int s );
 //	\function	timeTtoSeconds	||	\date	2022/07/28 22:32
 //	\brief	convert time_t to seconds --- time_t can be acquired as if by means of time(nullptr)
 long int timeTtoSeconds( const time_t t );
@@ -244,21 +248,288 @@ inline unsigned long long int volatile& readMEM( unsigned long long int memoryAd
 }
 #pragma warning( default : 4312 )
 
-inline compiler_hint std::size_t* getUniqueMemory()
+// if you allocate an object on the heap, it will be given a unique address within that process; nothing else will be assigned that address until you free the object
+[[nodiscard]] inline restricted noaliasing void* getUniqueMemory( const std::size_t bytes )
 {
-	return reinterpret_cast<std::size_t*>( new std::size_t{0} );
+	return std::malloc(bytes);
 }
 
 template<typename T>
-T& deconst( const T& obj )
+T& deconst( const T &obj )
 {
 	return const_cast<T&>( obj );
 }
 
 template<typename T>
-T* deconst( const T* obj )
+T* deconst( const T *obj )
 {
 	return const_cast<T*>( obj );
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// ALGORITHMS
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+template<typename T>
+void removeByBackSwap( std::vector<T> &v,
+	std::size_t index )
+{
+	typename std::vector<T>::iterator itEnd = v.back();
+	std::swap( v[index],
+		itEnd );
+	v.pop_back();
+}
+
+template<typename T>
+void removeByBackSwap( std::vector<T> &v,
+	typename std::vector<T>::iterator it )
+{
+	typename std::vector<T>::iterator itEnd = v.back();
+	std::swap( it,
+		itEnd );
+	v.pop_back();
+}
+
+template<typename Container, typename Predicate>
+void removeByBackSwap( Container &c,
+	Predicate pred )
+{
+	const auto newEnd = std::remove_if( c.begin(),
+		c.end(),
+		pred );
+	c.erase( newEnd,
+		c.end() );
+}
+
+//	\function	shrinkCapacity	||	\date	2022/04/01 20:51
+//	\brief	shrink vector's capacity to its size
+template<typename T, class Alloc = std::allocator<T>>
+void shrinkCapacity( std::vector<T, Alloc>& v )
+{
+	std::vector<T, Alloc>( v.begin(),
+		v.end() ).swap( v );
+}
+
+template<typename Container, typename TP>
+decltype(auto) pointerToIterator( Container &c,
+	TP pElem )
+{
+	return std::find_if( c.begin(),
+		c.end(),
+		[&pElem] ( const TP &p )
+		{
+			return pElem == std::addressof(*p);
+		} );
+}
+
+// note that there is std::move(inIt1, inIt2, outIt);
+template<class InputIt, class OutputIt, class TPredicate>
+void moveIf( InputIt srcFirst,
+	InputIt srcLast,
+	OutputIt *destFirst,
+	TPredicate predicate )
+{
+	std::copy_if( std::move_iterator( srcFirst ),
+		std::move_iterator( srcLast ),
+		std::back_inserter( *destFirst ),
+		predicate );
+}
+
+//	\function	splitMovePartition	||	\date	2022/07/29 21:03
+//	\brief  like partition_move - puts the second group of an std::partition to another container removing them from the source container
+template<class Container, class TPredicate>
+void splitMovePartition( Container &src,
+	Container &dest,
+	TPredicate p )
+{
+	auto newEnd = std::partition_copy( std::move_iterator( src.begin() ),
+		std::move_iterator( src.end() ),
+		src.begin(),
+		std::back_inserter( dest ),
+		p );
+	src.erase( newEnd.first,
+		src.end() );
+}
+
+template<typename Container>
+void printContainer( const Container &cont,
+	const char *delimiter = " " )
+{
+	std::copy( cont.begin(),
+		cont.end(),
+		std::ostream_iterator<typename Container::value_type>( std::cout, delimiter ) );
+}
+
+void regexSearch( const std::regex &pattern );
+
+template<typename Container, typename Func>
+decltype(auto) doForAll( Container &c,
+	Func f )
+{
+	for ( auto &i : c )
+	{
+		f( i );
+	}
+}
+
+template<class Container, class FilterFunction>
+decltype(auto) filterContainer( Container &c,
+	const FilterFunction&& f )
+{
+	static_assert( is_container_v<Container>, "c is not a container type!" );
+
+	return std::transform( std::execution::par,
+		c.begin(),
+		c.end(),
+		f );
+}
+
+
+template<typename TContainer>
+typename TContainer::iterator erase( TContainer& container,
+	typename TContainer::const_reference element_to_erase )
+{
+	return container.erase( std::remove( std::begin( container ), std::end( container ), element_to_erase ),
+		std::end( container ) );
+}
+
+template<typename TContainer, typename TPredicate>
+typename TContainer::iterator eraseIf( TContainer& container,
+	TPredicate&& predicate )
+{
+	const TContainer::iterator old_end_itr = std::end( container );
+	const TContainer::iterator new_end_itr = std::remove_if( std::begin( container ),
+		old_end_itr,
+		std::forward<TPredicate>( predicate ) );
+
+	return container.erase( new_end_itr,
+		old_end_itr );
+}
+
+template<typename TContainer, typename T>
+bool containerContains( const TContainer& container,
+	const T& val )
+{
+	const auto cend = std::cend( container );
+	return std::find( std::cbegin( container ), cend, val ) != cend;
+}
+
+//	\function	atLeastNOfRange	\date	2022/08/28 23:30
+//	\brief	test if at least N elements of an iterator range match a predicate
+//			earlies out and returns once the required amount of elements have been matched
+template<typename TIt, typename TPredicate>
+bool atLeastNOfRange( TIt begin,
+	TIt end,
+	size_t n,
+	TPredicate &&predicate )
+{
+	using T = decltype( *begin );
+
+	return n == 0u
+		|| std::any_of(
+			begin,
+			end,
+			[&n, &predicate] ( const T &element )
+			{
+				n -= predicate( element ) ? 1u : 0u;
+				return n == 0u;
+			} );
+}
+
+template<typename TContainer, typename TPredicate>
+bool atLeastNOfRange( const TContainer &container,
+	size_t n,
+	TPredicate &&predicate )
+{
+	return atLeastNOfRange( std::cbegin( container ),
+		std::cend( container ),
+		n,
+		std::forward<TPredicate>( predicate ) );
+}
+
+template<typename TContainer, typename T>
+unsigned indexOf( const TContainer &container,
+	const T &val )
+{
+	const auto begin = std::begin( container );
+	const auto end = std::end( container );
+
+	return std::distance( begin,
+		std::find( begin, end, val ) );
+}
+
+template<typename TContainer, typename T, typename TInserter>
+bool insertUnique( const TContainer &container,
+	T &&val,
+	TInserter &&inserter )
+{
+	if ( !containerContains( container, val ) )
+	{
+		inserter( std::forward<T>( val ) );
+		return true;
+	}
+	return false;
+}
+
+template<typename TContainer, typename TPredicate, typename... TArgs>
+typename TContainer::iterator emplaceBackUniqueAndReturnIt( TContainer &container,
+	TPredicate &&predicate,
+	TArgs&&... args )
+{
+	typename TContainer::value_type* result = tryFindIf( container,
+		std::forward<TPredicate>( predicate ) );
+	if ( result == nullptr )
+	{
+		return &container.emplace_back( std::forward<TArgs>( args )... );
+
+	}
+	return result;
+}
+
+template<typename TContainer, typename TComparator>
+bool hasDuplicates( const TContainer &container,
+	const TComparator &comparator )
+{
+	using TIt = typename TContainer::const_iterator;
+	using T = typename TContainer::value_type;
+
+	bool is_unique = true;
+
+	for ( TIt end = std::end( container ), itr1 = std::begin( container ); is_unique && itr1 != end; itr1 = std::next( itr1 ) )
+	{
+		//If the type contained in the container is a pointer or a number we pass everything by value
+		if constexpr ( std::is_pointer_v<T> || std::is_arithmetic_v<T> )
+		{
+			const auto uniqueness_predicate = [&comparator, lhs = *itr1]( const T rhs )
+			{
+				return comparator( lhs, rhs );
+			};
+
+			is_unique = std::none_of( std::next( itr1 ), end, uniqueness_predicate );
+		}
+		// Otherwise pass everything by const lval ref
+		else
+		{
+			const auto uniqueness_predicate = [&comparator, &lhs = *itr1]( typename TContainer::const_reference rhs )
+			{
+				return comparator( lhs, rhs );
+			};
+
+			is_unique = std::none_of( std::next( itr1 ), end, uniqueness_predicate );
+		}
+
+	}
+
+	return is_unique == false;
+}
+
+template<typename TContainer>
+bool hasDuplicates( const TContainer &container )
+{
+	return hasDuplicates( container,
+		std::equal_to() );
 }
 
 

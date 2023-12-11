@@ -9,7 +9,6 @@ class Mesh;
 class IEffectVisitor;
 class Graphics;
 
-
 //=============================================================
 //	\class	IBindable
 //	\author	KeyC0de

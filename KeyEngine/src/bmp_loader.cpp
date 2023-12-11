@@ -229,9 +229,9 @@ void BmpLoader::readData( _Inout_ ImageData *img,
 	{
 		for ( int x = 0; x < m_width; ++x )
 		{
-			const unsigned char blue = m_file.get();
-			const unsigned char green = m_file.get();
-			const unsigned char red = m_file.get();
+			const unsigned char blue = (unsigned char) m_file.get();
+			const unsigned char green = (unsigned char) m_file.get();
+			const unsigned char red = (unsigned char) m_file.get();
 
 			auto &ar = img[y * m_width + x];
 
@@ -243,7 +243,7 @@ void BmpLoader::readData( _Inout_ ImageData *img,
 			}
 			else
 			{
-				const unsigned char alpha = m_file.get();
+				const unsigned char alpha = (unsigned char) m_file.get();
 				ar._32bit = ColorBGRA{red, green, blue, alpha};
 			}
 
@@ -482,9 +482,9 @@ void BmpLoader::normalizeHeightmap( _Inout_ ImageData *img,
 			if ( !b32Bits )
 			{
 				auto &element = img[y * m_width + x]._24bit;
-				element.b /= value;
-				element.g /= value;
-				element.r /= value;
+				element.b /= (unsigned char) value;
+				element.g /= (unsigned char) value;
+				element.r /= (unsigned char) value;
 			}
 			else
 			{

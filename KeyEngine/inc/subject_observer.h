@@ -4,7 +4,7 @@
 #include <iterator>
 #include <type_traits>
 #include "assertions_console.h"
-#include "algorithms.h"
+#include "utils.h"
 
 
 template<typename T, typename = std::enable_if_t<!std::is_abstract_v<T>>>

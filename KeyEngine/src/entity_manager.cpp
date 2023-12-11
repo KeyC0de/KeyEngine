@@ -98,7 +98,6 @@ EntityId EntityManager::spawnEntity( const std::string &name,
 			break;
 		}
 		}//switch
-
 	}
 	else	// if there are dead entities
 	{

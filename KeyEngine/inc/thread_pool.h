@@ -27,7 +27,7 @@ class ThreadPool final
 	std::condition_variable m_cond;
 	std::mutex m_mu;
 private:
-	explicit ThreadPool( std::size_t nthreads, bool bStart = true );
+	explicit ThreadPool( const std::size_t nthreads, const bool bStart = true );
 public:
 	~ThreadPool() noexcept;
 	ThreadPool( ThreadPool const &rhs ) = delete;
@@ -35,7 +35,7 @@ public:
 	ThreadPool( ThreadPool &&rhs ) noexcept;
 	ThreadPool& operator=( ThreadPool &&rhs ) noexcept;
 
-	static ThreadPool& getInstance( std::size_t nThreads = std::thread::hardware_concurrency(), bool bEnabled = true );
+	static ThreadPool& getInstance( const std::size_t nThreads = std::thread::hardware_concurrency(), const bool bEnabled = true );
 	//	\function	start	||	\date	25/9/2019 12:20
 	//	\brief  calls run
 	void start();

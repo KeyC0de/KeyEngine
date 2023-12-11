@@ -3,7 +3,6 @@
 #include "bindable.h"
 #include "render_surface.h"
 #include "bitmap.h"
-#include "texture_desc.h"
 
 
 class Graphics;
@@ -27,7 +26,7 @@ public:
 	void bindRenderSurface( Graphics &gph ) cond_noex override;
 	void bindRenderSurface( Graphics &gph, IRenderSurface *rt ) cond_noex override;
 	void bindRenderSurface( Graphics &gph, IRenderTargetView *rt ) cond_noex;
-	void clear( Graphics &gph, const std::array<float, 4>& unused = {} ) cond_noex override;
+	void clear( Graphics &gph, const std::array<float, 4> &unused = {} ) cond_noex override;
 	void clean( Graphics &gph ) cond_noex;
 	//	\function	convertToBitmap	||	\date	2021/06/25 18:55
 	//	\brief  copy from resource to staging --- linearize & normalize depth values by default

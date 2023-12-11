@@ -1,6 +1,5 @@
-#include <filesystem>
-#include <sstream>
 #include "texture.h"
+#include "texture_desc.h"
 #include "bindable_map.h"
 #include "os_utils.h"
 #include "dxgi_info_queue.h"
@@ -8,6 +7,8 @@
 #include "assimp/scene.h"
 #include "console.h"
 #include "assertions_console.h"
+#include <filesystem>
+#include <sstream>
 
 
 namespace mwrl = Microsoft::WRL;

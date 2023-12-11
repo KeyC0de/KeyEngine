@@ -52,8 +52,6 @@ ALIAS_FUNCTION( distanceSquared, lengthSquared );
 
 DXGI_RATIONAL queryRefreshRate( const unsigned screenWidth, const unsigned screenHeight, const bool bVsync );
 
-//	\function	loadShaderDynamically	||	\date	2019/12/30 17:28
-//	\brief	will be used to load and compile a shader at runtime
 template<class TShader>
 static TShader* createShaderObject( ID3D11Device *pD3dDevice, ID3DBlob *&pShaderBlob, ID3D11ClassLinkage *pClassLinkage );
 
@@ -93,6 +91,8 @@ static ID3D11PixelShader* createShaderObject<ID3D11PixelShader>( ID3D11Device *p
 	return pPixelShader;
 }
 
+//	\function	loadShaderDynamically	||	\date	2019/12/30 17:28
+//	\brief	will be used to load and compile a shader at runtime
 template<class TShader>
 TShader* loadShaderDynamically( ID3D11Device *pD3dDevice,
 	const std::wstring &fileName,
@@ -205,6 +205,8 @@ TShader* loadShaderDynamically( ID3D11Device *pD3dDevice,
 		nullptr );
 	return shader;
 }
+
+ALIAS_FUNCTION( loadShaderDynamically, compileShaderDynamically );
 
 
 }// namespace util

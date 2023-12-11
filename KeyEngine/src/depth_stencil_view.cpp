@@ -1,4 +1,5 @@
 #include "depth_stencil_view.h"
+#include "texture_desc.h"
 #include "render_target.h"
 #include "os_utils.h"
 #include "dxgi_info_queue.h"

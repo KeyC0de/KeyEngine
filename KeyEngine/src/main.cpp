@@ -10,7 +10,7 @@
 #include <tuple>
 #include "signal_handling.h"
 #include "thread_pool_j.h"
-#include "bmp_loader.h"
+//#include "bmp_loader.h"
 
 #ifndef NO_DUMPS
 #	include "dumpling.h"
@@ -24,7 +24,7 @@ static bool g_windowsExceptionOccurred = false;
 #define SEH_EXCEPTION_EXIT			-4
 
 
-std::tuple<int,int> parseCommandLineArguments();
+std::tuple<int,int,int,int> parseCommandLineArguments();
 void firstly();
 void finally( const std::exception_ptr &exceptionPtr );
 
@@ -46,14 +46,14 @@ int WINAPI wWinMain( _In_ HINSTANCE hinstance,
 			KeyConsole &console = KeyConsole::instance();
 			windowsMetricsCheckTest();
 #endif
-			const auto& [width, height] = parseCommandLineArguments();
+			const auto& [width, height, startX, startY] = parseCommandLineArguments();
 
 			//BmpLoader bmp{"assets/textures/grey_image.bmp"};
 			//return bmp.applyPerlinNoise( "assets/textures/grey_image_out.bmp" ) == true ? EXIT_SUCCESS : EXIT_FAILURE;
 
 			if constexpr ( gph_mode::get() == gph_mode::_3D )
 			{
-				Sandbox3d game{width, height};
+				Sandbox3d game{width, height, startX, startY};
 				return game.loop();
 			}
 			else if constexpr ( gph_mode::get() == gph_mode::_2D )
@@ -61,7 +61,7 @@ int WINAPI wWinMain( _In_ HINSTANCE hinstance,
 				SettingsManager &settingsMan = SettingsManager::instance();
 				//if ( settingsMan.getSettings().m_game == "Arkanoid2d" )
 				//{
-					Arkanoid game{800, 600};
+					Arkanoid game{800, 600, 125, 125};
 					return game.loop();
 				//}
 				//else if ( settingsMan.getSettings().m_game == "Minesweeper2d" )
@@ -146,7 +146,7 @@ void firstly()
 		installSigintHandler );
 }
 
-std::tuple<int,int> parseCommandLineArguments()
+std::tuple<int,int,int,int> parseCommandLineArguments()
 {
 	LPWSTR commandLine = GetCommandLineW();
 	int argc;
@@ -161,11 +161,17 @@ std::tuple<int,int> parseCommandLineArguments()
 	int height = std::wcstol( argv[2],
 		&end,
 		10 );
+	int startX = std::wcstol( argv[3],
+		&end,
+		10 );
+	int startY = std::wcstol( argv[4],
+		&end,
+		10 );
 #if defined _DEBUG && !defined NDEBUG
 	KeyConsole &console = KeyConsole::instance();
-	console.print( "(width,height)=(" + std::to_string( width ) + "," + std::to_string( height ) + ")" );
+	console.print( "(width,height,startX,startY)=(" + std::to_string( width ) + "," + std::to_string( height ) + "," + std::to_string( startX ) + "," + std::to_string( startY ) + ")" );
 #endif
-	return {width, height};
+	return {width, height, startX, startY};
 }
 
 void finally( const std::exception_ptr &exceptionPtr )

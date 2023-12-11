@@ -15,8 +15,7 @@
 class Entity
 {
 	friend class EntityManager;
-	// a version tag which will be unique for all objects that ever occupied that index
-	//	(inside an aggregate)
+	// a version tag which will be unique (inside an aggregate) for all objects that ever occupied that index
 	// = 1 initially (but it doesn't matter)
 	EntityIndex m_version;
 	// an index unique amongst all live m_entities

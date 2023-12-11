@@ -48,7 +48,7 @@ public:
 	~Game() noexcept = default;
 
 protected:
-	Game( const int width, const int height, const std::string &title, const unsigned nWindows = 1 );
+	Game( const int width, const int height, const std::string &title, const int x, const int y, const unsigned nWindows = 1 );
 
 	const float calcDt();
 	//	\function	present	||	\date	2022/11/05 16:33
@@ -69,7 +69,7 @@ class Sandbox3d
 	std::unique_ptr<PointLight> m_pPointLight1;
 	//std::unique_ptr<PointLight> m_pPointLight2;
 	bool b_bShowDemoWindow = false;
-	Terrain m_terrain{m_mainWindow.getGraphics(), 100.0f, 100.0f, "assets/textures/clouds_blurred.bmp"};
+	Terrain m_terrain{m_mainWindow.getGraphics(), 100, 100, "assets/textures/clouds_blurred.bmp"};
 	Cube m_cube1{m_mainWindow.getGraphics(), {10.0f, 5.0f, 6.0f}, 4.0f};
 	Cube m_cube2{m_mainWindow.getGraphics(), {16.0f, 6.0f, 8.0f}};
 	Sphere m_testSphere{m_mainWindow.getGraphics(), 1.0f, {40.0f, 20.0f, 8.0f}};
@@ -77,7 +77,7 @@ class Sandbox3d
 	//Model m_nanoSuit{m_mainWindow.getGraphics(), "assets/models/nano_textured/nanosuit.obj", 2.0f};
 	Model m_carabiner{m_mainWindow.getGraphics(), "assets/models/carabiner/carabiner_hook.fbx", 1.0f};
 public:
-	Sandbox3d( const int width, const int height, const int nWindows = 1 );
+	Sandbox3d( const int width, const int height, const int x, const int y, const int nWindows = 1 );
 	~Sandbox3d() noexcept;
 
 	int loop();
@@ -104,7 +104,7 @@ class Arkanoid final
 	Sound m_brickSound;
 	Sound m_padSound;
 public:
-	Arkanoid( const int width, const int height );
+	Arkanoid( const int width, const int height, const int x, const int y );
 
 	int loop();
 private:

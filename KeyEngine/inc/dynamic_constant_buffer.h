@@ -328,7 +328,7 @@ private:
 	CookedLayout( std::shared_ptr<CBElement> pRoot ) noexcept;
 	//	\function	relinquishRoot	||	\date	2022/08/21 19:50
 	//	\brief	use to pilfer the layout tree
-	std::shared_ptr<CBElement> relinquishRoot() const noexcept;
+	std::shared_ptr<CBElement> relinquishRoot() noexcept;
 };
 
 

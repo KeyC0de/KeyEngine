@@ -4,7 +4,7 @@
 
 
 Message::Message( Entity *pSrc,
-	const std::vector<Entity*>& pDests,
+	const std::vector<Entity*> &pDests,
 	const Message::Type type )
 	:
 	m_pSender(pSrc),
@@ -12,7 +12,7 @@ Message::Message( Entity *pSrc,
 {
 	for( Entity *dest : pDests )
 	{
-		m_recipients.emplace_back( dest );
+		m_recipients.push_back( dest );
 	}
 }
 
@@ -29,7 +29,7 @@ Message::Message( Message &&rhs ) noexcept
 {
 	for( Entity *dest : rhs.m_recipients )
 	{
-		m_recipients.emplace_back( dest );
+		m_recipients.push_back( dest );
 	}
 	rhs.m_recipients.clear();
 }
@@ -62,14 +62,14 @@ bool Message::isHandled() const noexcept
 	return m_bHandled;
 }
 
-void Message::setHandled( bool b ) noexcept
+void Message::setHandled( const bool b ) noexcept
 {
 	m_bHandled = b;
 }
 
 
 MessageCall::MessageCall( Entity *psrc,
-	const std::vector<Entity*>& pDests,
+	const std::vector<Entity*> &pDests,
 	Message::Type type,
 	std::unique_ptr<Operation> df )
 	:

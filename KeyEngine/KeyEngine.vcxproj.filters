@@ -124,9 +124,6 @@
     <ClCompile Include="src\node.cpp">
       <Filter>engine\gameplay</Filter>
     </ClCompile>
-    <ClCompile Include="src\algorithms.cpp">
-      <Filter>engine\util</Filter>
-    </ClCompile>
     <ClCompile Include="third_party\imgui\imgui.cpp">
       <Filter>third_party\imgui</Filter>
     </ClCompile>
@@ -888,9 +885,6 @@
     <ClInclude Include="inc\node.h">
       <Filter>engine\gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="inc\algorithms.h">
-      <Filter>engine\util</Filter>
-    </ClInclude>
     <ClInclude Include="inc\lru_cache.h">
       <Filter>engine\common</Filter>
     </ClInclude>
@@ -918,14 +912,8 @@
     <ClInclude Include="inc\os_utils.h">
       <Filter>engine\util</Filter>
     </ClInclude>
-    <ClInclude Include="inc\key_traits.h">
+    <ClInclude Include="inc\key_type_traits.h">
       <Filter>engine\util</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\serializable_index.h">
-      <Filter>engine\common</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\safer_ptr_ref.h">
-      <Filter>engine\common</Filter>
     </ClInclude>
     <ClInclude Include="inc\subject_observer.h">
       <Filter>engine\common</Filter>
@@ -1224,6 +1212,45 @@
     <ClInclude Include="inc\perlin_noise.h">
       <Filter>engine\common</Filter>
     </ClInclude>
+    <ClInclude Include="third_party\google\inlined_vector.h">
+      <Filter>third_party\google</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\google\algorithm\algorithm.h">
+      <Filter>third_party\google</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\google\base\attributes.h">
+      <Filter>third_party\google</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\google\base\config.h">
+      <Filter>third_party\google</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\google\base\macros.h">
+      <Filter>third_party\google</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\google\base\optimization.h">
+      <Filter>third_party\google</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\google\base\options.h">
+      <Filter>third_party\google</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\google\base\port.h">
+      <Filter>third_party\google</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\google\base\internal\throw_delegate.h">
+      <Filter>third_party\google</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\google\memory\memory.h">
+      <Filter>third_party\google</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\google\meta\type_traits.h">
+      <Filter>third_party\google</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\google\base\policy_checks.h">
+      <Filter>third_party\google</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\magic_enum\magic_enum.h">
+      <Filter>third_party\magic_enum</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\resources\tray_graffiti.ico">
@@ -1312,14 +1339,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="design_doc\fantasia.txt">
-      <Filter>design_doc</Filter>
-    </Text>
-    <Text Include="design_doc\plan.txt">
-      <Filter>design_doc</Filter>
-    </Text>
-  </ItemGroup>
-  <ItemGroup>
     <Filter Include="third_party">
       <UniqueIdentifier>{8aa2b81b-edfc-41e5-9c9c-5c70a8ab4ad5}</UniqueIdentifier>
     </Filter>
@@ -1371,9 +1390,6 @@
     <Filter Include="engine\scripts">
       <UniqueIdentifier>{ad7845c9-a9a6-4d4b-9c03-07302b9a4004}</UniqueIdentifier>
     </Filter>
-    <Filter Include="design_doc">
-      <UniqueIdentifier>{3ad4f368-ee79-4283-975f-64c0ccc2ab3a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="engine\db">
       <UniqueIdentifier>{4c358a06-f564-4993-8f0a-c91a48535e2d}</UniqueIdentifier>
     </Filter>
@@ -1424,6 +1440,12 @@
     </Filter>
     <Filter Include="engine\vfx\pass">
       <UniqueIdentifier>{2bb99e09-78f3-4723-bdbf-94c7cce309af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="third_party\google">
+      <UniqueIdentifier>{b4693ecb-ca2c-4032-9bdd-271308e8151c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="third_party\magic_enum">
+      <UniqueIdentifier>{e1d12a17-a9f1-446f-963e-e30dec788b4a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
