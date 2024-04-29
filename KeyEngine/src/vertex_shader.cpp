@@ -10,11 +10,8 @@ VertexShader::VertexShader( Graphics &gph,
 	:
 	m_path{filepath}
 {
-#if defined _DEBUG && !defined NDEBUG
-	HRESULT hres = D3DReadFileToBlob( util::s2ws( "int/x64/shaders/Debug/" + filepath ).c_str(), &m_pVsBlob );
-#else
-	HRESULT hres = D3DReadFileToBlob( util::s2ws( "int/x64/shaders/Release/" + filepath ).c_str(), &m_pVsBlob );
-#endif
+	using namespace std::string_literals;
+	HRESULT hres = D3DReadFileToBlob( util::s2ws( "int/x64/"s + SOLUTION_CONFIGURATION_STR + "/shaders/"s + filepath ).c_str(), &m_pVsBlob );
 	ASSERT_HRES_IF_FAILED_MSG( filepath );
 
 	hres = getDevice( gph )->CreateVertexShader( m_pVsBlob->GetBufferPointer(), m_pVsBlob->GetBufferSize(), nullptr, &m_pVertexShader );

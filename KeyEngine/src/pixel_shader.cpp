@@ -10,11 +10,8 @@ PixelShader::PixelShader( Graphics &gph,
 	:
 	m_path(filepath)
 {
-#if defined _DEBUG && !defined NDEBUG
-	HRESULT hres = D3DReadFileToBlob( util::s2ws( "int/x64/shaders/Debug/" + filepath ).c_str(), &m_pPsBlob );
-#else
-	HRESULT hres = D3DReadFileToBlob( util::s2ws( "int/x64/shaders/Release/" + filepath ).c_str(), &m_pPsBlob );
-#endif
+	using namespace std::string_literals;
+	HRESULT hres = D3DReadFileToBlob( util::s2ws( "int/x64/"s + SOLUTION_CONFIGURATION_STR + "/shaders/"s + filepath ).c_str(), &m_pPsBlob );
 	ASSERT_HRES_IF_FAILED;
 
 	hres = getDevice( gph )->CreatePixelShader( m_pPsBlob->GetBufferPointer(), m_pPsBlob->GetBufferSize(), nullptr, &m_pPixelShader );
