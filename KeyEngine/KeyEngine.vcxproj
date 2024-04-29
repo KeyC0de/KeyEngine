@@ -1,0 +1,852 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile|x64">
+      <Configuration>Profile</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Retail|x64">
+      <Configuration>Retail</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{63E56790-0977-47CC-B52B-B1BF8746AFD4}</ProjectGuid>
+    <RootNamespace>KeyEngine</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <SpectreMitigation>false</SpectreMitigation>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <SpectreMitigation>false</SpectreMitigation>
+    <UseIntelIPP1A>true</UseIntelIPP1A>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Retail|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <SpectreMitigation>false</SpectreMitigation>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="HLSL.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="HLSL.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Retail|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="HLSL.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)third_party\dxtex\include;$(ProjectDir)third_party\assimp\include;$(ProjectDir)third_party\inih;$(ProjectDir)third_party\google;$(ProjectDir)third_party\imgui;$(ProjectDir)third_party\DirectXTK\include;$(ProjectDir)inc;$(ProjectDir)third_party\catch;$(ProjectDir)third_party\jthread;$(ProjectDir)third_party\magic_enum;C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include;$(ProjectDir)games</IncludePath>
+    <LibraryPath>$(ProjectDir)third_party\dxtex\bin\$(Configuration);$(ProjectDir)third_party\DirectXTK\bin\$(Configuration);$(ProjectDir)third_party\assimp\bin\x64;$(LibraryPath)</LibraryPath>
+    <IntDir>$(ProjectDir)\int\$(Platform)\$(Configuration)\</IntDir>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\keyc0de_microsoft_modified_static_analysis_ruleset.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)third_party\dxtex\include;$(ProjectDir)third_party\assimp\include;$(ProjectDir)third_party\inih;$(ProjectDir)third_party\google;$(ProjectDir)third_party\imgui;$(ProjectDir)third_party\DirectXTK\include;$(ProjectDir)inc;$(ProjectDir)third_party\catch;$(ProjectDir)third_party\jthread;$(ProjectDir)third_party\magic_enum;C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include;$(ProjectDir)games</IncludePath>
+    <LibraryPath>$(ProjectDir)third_party\dxtex\bin\$(Configuration);$(ProjectDir)third_party\DirectXTK\bin\$(Configuration);$(ProjectDir)third_party\assimp\bin\x64;$(LibraryPath)</LibraryPath>
+    <IntDir>$(ProjectDir)\int\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)third_party\dxtex\include;$(ProjectDir)third_party\assimp\include;$(ProjectDir)third_party\inih;$(ProjectDir)third_party\google;$(ProjectDir)third_party\DirectXTK\include;$(ProjectDir)inc;$(ProjectDir)third_party\catch;$(ProjectDir)third_party\jthread;$(ProjectDir)third_party\magic_enum;C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include;$(ProjectDir)games</IncludePath>
+    <LibraryPath>$(ProjectDir)third_party\dxtex\bin\Release;$(ProjectDir)third_party\DirectXTK\bin\Release;$(ProjectDir)third_party\assimp\bin\x64;$(LibraryPath)</LibraryPath>
+    <IntDir>$(ProjectDir)\int\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <ConformanceMode>true</ConformanceMode>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <PreprocessorDefinitions>FLIP_PRESENT;_DEBUG;NO_DUMPS;UNICODE;_UNICODE;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;%(PreprocessorDefinitions);BDEBUG=true;cond_noex=noexcept( !BDEBUG );pass_=(void)0;_CRT_SECURE_NO_WARNINGS;_32_BIT_ENTITY</PreprocessorDefinitions>
+      <AdditionalOptions>/we4239 /we4265 /we4715 /we4172 /Zc:__cplusplus /utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <SuppressStartupBanner>false</SuppressStartupBanner>
+      <EnablePREfast>true</EnablePREfast>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;assimp-vc140-mt.lib;DirectXTex.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\lib64</AdditionalLibraryDirectories>
+    </Link>
+    <FxCompile>
+      <ShaderModel>5.0</ShaderModel>
+      <ObjectFileOutput>$(ProjectDir)\int\$(Platform)\shaders\$(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <PreBuildEvent>
+      <Command>cd &gt; pre_build_event_output.log</Command>
+      <Message>Pre-Build event description.</Message>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>cd &gt; post_build_event_output.log</Command>
+      <Message>Post-Build event description.</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <ConformanceMode>true</ConformanceMode>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <PreprocessorDefinitions>_PROFILE;FLIP_PRESENT;NDEBUG;NO_DUMPS;UNICODE;_UNICODE;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;%(PreprocessorDefinitions);BDEBUG=false;cond_noex=noexcept( !BDEBUG );pass_=(void)0;_CRT_SECURE_NO_WARNINGS;_32_BIT_ENTITY</PreprocessorDefinitions>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalOptions>/we4239 /we4265 /we4715 /we4172 /Zc:__cplusplus /utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <SDLCheck />
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <SuppressStartupBanner>false</SuppressStartupBanner>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;assimp-vc140-mt.lib;DirectXTex.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\lib64</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+    <FxCompile>
+      <ShaderModel>5.0</ShaderModel>
+      <ObjectFileOutput>$(ProjectDir)\int\$(Platform)\shaders\$(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <PreBuildEvent>
+      <Command>cd &gt; pre_build_event_output.log</Command>
+      <Message>Pre-Build event description.</Message>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>cd &gt; post_build_event_output.log</Command>
+      <Message>Post-Build event description.</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <ConformanceMode>true</ConformanceMode>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <PreprocessorDefinitions>FLIP_PRESENT;FINAL_RELEASE;NDEBUG;NO_DUMPS;UNICODE;_UNICODE;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;%(PreprocessorDefinitions);BDEBUG=false;cond_noex=noexcept( !BDEBUG );pass_=(void)0;_CRT_SECURE_NO_WARNINGS;_32_BIT_ENTITY</PreprocessorDefinitions>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalOptions>/we4239 /we4265 /we4715 /we4172 /Zc:__cplusplus /utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <SDLCheck>
+      </SDLCheck>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <SuppressStartupBanner>false</SuppressStartupBanner>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;assimp-vc140-mt.lib;DirectXTex.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\lib64</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+    <FxCompile>
+      <ShaderModel>5.0</ShaderModel>
+      <ObjectFileOutput>$(ProjectDir)\int\$(Platform)\shaders\$(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <PreBuildEvent>
+      <Command>cd &gt; pre_build_event_output.log</Command>
+      <Message>Pre-Build event description.</Message>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>cd &gt; post_build_event_output.log</Command>
+      <Message>Post-Build event description.</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="games\arkanoid\ball.cpp" />
+    <ClCompile Include="games\arkanoid\brick.cpp" />
+    <ClCompile Include="games\arkanoid\paddle.cpp" />
+    <ClCompile Include="src\bindable_exception.cpp" />
+    <ClCompile Include="src\bindable_pass.cpp" />
+    <ClCompile Include="src\bitmap.cpp" />
+    <ClCompile Include="src\blend_state.cpp" />
+    <ClCompile Include="src\blur_outline_draw_pass.cpp" />
+    <ClCompile Include="src\blur_outline_mask_pass.cpp" />
+    <ClCompile Include="src\blur_pass.cpp" />
+    <ClCompile Include="src\bmp_loader.cpp" />
+    <ClCompile Include="src\camera.cpp" />
+    <ClCompile Include="src\camera_manager.cpp" />
+    <ClCompile Include="src\camera_widget.cpp" />
+    <ClCompile Include="src\constant_buffer_ex.cpp" />
+    <ClCompile Include="src\binder.cpp" />
+    <ClCompile Include="src\cube.cpp" />
+    <ClCompile Include="src\cube_texture.cpp" />
+    <ClCompile Include="src\depth_reversed_pass.cpp" />
+    <ClCompile Include="src\depth_stencil_state.cpp" />
+    <ClCompile Include="src\depth_stencil_view.cpp" />
+    <ClCompile Include="src\dxgi_info_queue.cpp" />
+    <ClCompile Include="src\dynamic_constant_buffer.cpp" />
+    <ClCompile Include="src\dynamic_vertex_buffer.cpp" />
+    <ClCompile Include="src\effect.cpp" />
+    <ClCompile Include="src\imgui_visitors.cpp" />
+    <ClCompile Include="src\font_pass.cpp" />
+    <ClCompile Include="src\camera_frustum.cpp" />
+    <ClCompile Include="src\fullscreen_pass.cpp" />
+    <ClCompile Include="src\geometry.cpp" />
+    <ClCompile Include="src\graphics.cpp" />
+    <ClCompile Include="src\graphics_friend.cpp" />
+    <ClCompile Include="src\grid_location.cpp" />
+    <ClCompile Include="src\horizontal_blur_pass.cpp" />
+    <ClCompile Include="src\index_buffer.cpp" />
+    <ClCompile Include="src\input_layout.cpp" />
+    <ClCompile Include="src\job.cpp" />
+    <ClCompile Include="src\lambertian_pass.cpp" />
+    <ClCompile Include="src\light_source.cpp" />
+    <ClCompile Include="src\light_source_shadow_vscb.cpp" />
+    <ClCompile Include="src\material_loader.cpp" />
+    <ClCompile Include="src\mesh.cpp" />
+    <ClCompile Include="src\file_utils.cpp" />
+    <ClCompile Include="src\gameplay_exception.cpp" />
+    <ClCompile Include="src\game_state.cpp" />
+    <ClCompile Include="src\mouse_picker.cpp" />
+    <ClCompile Include="src\net_utils.cpp" />
+    <ClCompile Include="src\operation.cpp" />
+    <ClCompile Include="src\entity.cpp" />
+    <ClCompile Include="src\entity_manager.cpp" />
+    <ClCompile Include="src\key_random.cpp" />
+    <ClCompile Include="src\message.cpp" />
+    <ClCompile Include="src\message_queue_bus_dispatcher.cpp" />
+    <ClCompile Include="src\octree.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\assertions_console.cpp" />
+    <ClCompile Include="src\pass.cpp" />
+    <ClCompile Include="src\pass_2d.cpp" />
+    <ClCompile Include="src\pass_through.cpp" />
+    <ClCompile Include="src\perlin_noise.cpp" />
+    <ClCompile Include="src\pixel_shader.cpp" />
+    <ClCompile Include="src\plane.cpp" />
+    <ClCompile Include="src\primitive_topology.cpp" />
+    <ClCompile Include="src\linker.cpp" />
+    <ClCompile Include="src\rasterizer_state.cpp" />
+    <ClCompile Include="src\rectangle.cpp" />
+    <ClCompile Include="src\renderer.cpp" />
+    <ClCompile Include="src\renderer_exception.cpp" />
+    <ClCompile Include="src\render_queue_pass.cpp" />
+    <ClCompile Include="src\render_surface_clear_pass.cpp" />
+    <ClCompile Include="src\render_target.cpp" />
+    <ClCompile Include="src\negative_pass.cpp" />
+    <ClCompile Include="src\console.cpp" />
+    <ClCompile Include="src\d3d_utils.cpp" />
+    <ClCompile Include="src\dumpling.cpp" />
+    <ClCompile Include="src\game.cpp" />
+    <ClCompile Include="src\imgui_manager.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
+      </ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">
+      </ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\keyboard.cpp" />
+    <ClCompile Include="src\key_exception.cpp" />
+    <ClCompile Include="src\math_utils.cpp" />
+    <ClCompile Include="src\leak_checker_console.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\model.cpp" />
+    <ClCompile Include="src\mouse.cpp" />
+    <ClCompile Include="src\node.cpp" />
+    <ClCompile Include="src\os_utils.cpp" />
+    <ClCompile Include="src\performance_log.cpp" />
+    <ClCompile Include="src\settings_manager.cpp" />
+    <ClCompile Include="src\shadow_pass.cpp" />
+    <ClCompile Include="src\signal_handling.cpp" />
+    <ClCompile Include="src\sky_vscb.cpp" />
+    <ClCompile Include="src\sky_pass.cpp" />
+    <ClCompile Include="src\solid_outline_draw_pass.cpp" />
+    <ClCompile Include="src\solid_outline_mask_pass.cpp" />
+    <ClCompile Include="src\sound_manager.cpp" />
+    <ClCompile Include="src\sphere.cpp" />
+    <ClCompile Include="src\sprite.cpp" />
+    <ClCompile Include="src\string_buffer.cpp" />
+    <ClCompile Include="src\sysmetrics.cpp" />
+    <ClCompile Include="src\terrain.cpp" />
+    <ClCompile Include="src\testing.cpp" />
+    <ClCompile Include="src\main_test.cpp" />
+    <ClCompile Include="src\texture.cpp" />
+    <ClCompile Include="src\texture_desc.cpp" />
+    <ClCompile Include="src\texture_sampler_state.cpp" />
+    <ClCompile Include="src\jthread_pool.cpp" />
+    <ClCompile Include="src\transform_scale_vscb.cpp" />
+    <ClCompile Include="src\transform_vscb.cpp" />
+    <ClCompile Include="src\triangle_mesh.cpp" />
+    <ClCompile Include="src\utils.cpp" />
+    <ClCompile Include="src\util_exception.cpp" />
+    <ClCompile Include="src\vertex_buffer.cpp" />
+    <ClCompile Include="src\vertex_shader.cpp" />
+    <ClCompile Include="src\vertical_blur_pass.cpp" />
+    <ClCompile Include="src\viewport.cpp" />
+    <ClCompile Include="src\window.cpp" />
+    <ClCompile Include="src\windows_message_map.cpp" />
+    <ClCompile Include="src\wireframe_pass.cpp" />
+    <ClCompile Include="src\world.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="third_party\imgui\imgui.cpp" />
+    <ClCompile Include="third_party\imgui\imgui_demo.cpp" />
+    <ClCompile Include="third_party\imgui\imgui_draw.cpp" />
+    <ClCompile Include="third_party\imgui\imgui_impl_dx11.cpp" />
+    <ClCompile Include="third_party\imgui\imgui_impl_win32.cpp" />
+    <ClCompile Include="third_party\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="src\thread_pool.cpp" />
+    <None Include="assets\resources\arrow.cur" />
+    <None Include="assets\resources\homm_inspired_new.cur" />
+    <None Include="assimp-vc140-mt.dll" />
+    <None Include="ClassDiagram.cd" />
+    <None Include="config\config.ini" />
+    <None Include="cpp.hint">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
+      </ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">
+      </ExcludedFromBuild>
+    </None>
+    <None Include="config\imgui.ini" />
+    <None Include="config\imgui_default.ini" />
+    <None Include="scripts\scripting.lua" />
+    <None Include="config\test.ini" />
+    <None Include="shaders\hlsli\directional_light_pscb.hlsli" />
+    <None Include="shaders\hlsli\hlsl_misc.hlsli" />
+    <None Include="shaders\hlsli\point_light_pscb.hlsli" />
+    <None Include="shaders\hlsli\shading_ps.hlsli" />
+    <None Include="shaders\hlsli\shadowing_ps.hlsli" />
+    <None Include="shaders\hlsli\shadowing_vs.hlsli" />
+    <None Include="shaders\hlsli\spot_light_pscb.hlsli" />
+    <None Include="shaders\hlsli\transforms_vscb.hlsli" />
+    <None Include="third_party\assimp\include\assimp\color4.inl" />
+    <None Include="third_party\assimp\include\assimp\material.inl" />
+    <None Include="third_party\assimp\include\assimp\matrix3x3.inl" />
+    <None Include="third_party\assimp\include\assimp\matrix4x4.inl" />
+    <None Include="third_party\assimp\include\assimp\quaternion.inl" />
+    <None Include="third_party\assimp\include\assimp\SmoothingGroups.inl" />
+    <None Include="third_party\assimp\include\assimp\vector2.inl" />
+    <None Include="third_party\assimp\include\assimp\vector3.inl" />
+    <None Include="third_party\dxtex\include\dxtex\DirectXTex.inl" />
+    <None Include="zlib1.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="games\arkanoid\ball.h" />
+    <ClInclude Include="games\arkanoid\brick.h" />
+    <ClInclude Include="games\arkanoid\paddle.h" />
+    <ClInclude Include="inc\bindable.h" />
+    <ClInclude Include="inc\bindable_exception.h" />
+    <ClInclude Include="inc\bindable_map.h" />
+    <ClInclude Include="inc\bindable_pass.h" />
+    <ClInclude Include="inc\bitmap.h" />
+    <ClInclude Include="inc\blend_state.h" />
+    <ClInclude Include="inc\blur_outline_draw_pass.h" />
+    <ClInclude Include="inc\blur_outline_mask_pass.h" />
+    <ClInclude Include="inc\blur_pass.h" />
+    <ClInclude Include="inc\bmp_loader.h" />
+    <ClInclude Include="inc\camera.h" />
+    <ClInclude Include="inc\camera_manager.h" />
+    <ClInclude Include="inc\camera_widget.h" />
+    <ClInclude Include="inc\color.h" />
+    <ClInclude Include="inc\constant_buffer.h" />
+    <ClInclude Include="inc\constant_buffer_ex.h" />
+    <ClInclude Include="inc\binder.h" />
+    <ClInclude Include="inc\cube.h" />
+    <ClInclude Include="inc\cube_texture.h" />
+    <ClInclude Include="inc\depth_reversed_pass.h" />
+    <ClInclude Include="inc\depth_stencil_state.h" />
+    <ClInclude Include="inc\depth_stencil_view.h" />
+    <ClInclude Include="inc\dxgi_info_queue.h" />
+    <ClInclude Include="inc\dynamic_constant_buffer.h" />
+    <ClInclude Include="inc\dynamic_vertex_buffer.h" />
+    <ClInclude Include="inc\effect.h" />
+    <ClInclude Include="inc\imgui_visitors.h" />
+    <ClInclude Include="inc\font_pass.h" />
+    <ClInclude Include="inc\camera_frustum.h" />
+    <ClInclude Include="inc\fullscreen_pass.h" />
+    <ClInclude Include="inc\geometry.h" />
+    <ClInclude Include="inc\global_constants.h" />
+    <ClInclude Include="inc\graphics.h" />
+    <ClInclude Include="inc\graphics_friend.h" />
+    <ClInclude Include="inc\graphics_mode.h" />
+    <ClInclude Include="inc\grid_location.h" />
+    <ClInclude Include="inc\horizontal_blur_pass.h" />
+    <ClInclude Include="inc\index_buffer.h" />
+    <ClInclude Include="inc\input_layout.h" />
+    <ClInclude Include="inc\job.h" />
+    <ClInclude Include="inc\lambertian_pass.h" />
+    <ClInclude Include="inc\light_source.h" />
+    <ClInclude Include="inc\light_source_shadow_vscb.h" />
+    <ClInclude Include="inc\material_loader.h" />
+    <ClInclude Include="inc\mesh.h" />
+    <ClInclude Include="inc\mouse_picker.h" />
+    <ClInclude Include="inc\pass.h" />
+    <ClInclude Include="inc\pass_2d.h" />
+    <ClInclude Include="inc\pass_through.h" />
+    <ClInclude Include="inc\perlin_noise.h" />
+    <ClInclude Include="inc\pixel_shader.h" />
+    <ClInclude Include="inc\plane.h" />
+    <ClInclude Include="inc\primitive_topology.h" />
+    <ClInclude Include="inc\linker.h" />
+    <ClInclude Include="inc\rasterizer_state.h" />
+    <ClInclude Include="inc\rectangle.h" />
+    <ClInclude Include="inc\renderer.h" />
+    <ClInclude Include="inc\renderer_exception.h" />
+    <ClInclude Include="inc\rendering_channel.h" />
+    <ClInclude Include="inc\render_queue_pass.h" />
+    <ClInclude Include="inc\render_surface.h" />
+    <ClInclude Include="inc\render_surface_clear_pass.h" />
+    <ClInclude Include="inc\render_target.h" />
+    <ClInclude Include="inc\negative_pass.h" />
+    <ClInclude Include="inc\key_type_traits.h" />
+    <ClInclude Include="inc\lru_cache.h" />
+    <ClInclude Include="inc\non_copyable.h" />
+    <ClInclude Include="inc\assertions_console.h" />
+    <ClInclude Include="inc\net_utils.h" />
+    <ClInclude Include="inc\shadow_pass.h" />
+    <ClInclude Include="inc\sky_vscb.h" />
+    <ClInclude Include="inc\sky_pass.h" />
+    <ClInclude Include="inc\solid_outline_draw_pass.h" />
+    <ClInclude Include="inc\solid_outline_mask_pass.h" />
+    <ClInclude Include="inc\sphere.h" />
+    <ClInclude Include="inc\sprite.h" />
+    <ClInclude Include="inc\string_buffer.h" />
+    <ClInclude Include="inc\subject_observer.h" />
+    <ClInclude Include="inc\terrain.h" />
+    <ClInclude Include="inc\testing.h" />
+    <ClInclude Include="inc\texture.h" />
+    <ClInclude Include="inc\texture_desc.h" />
+    <ClInclude Include="inc\texture_sampler_state.h" />
+    <ClInclude Include="inc\jthread_pool.h" />
+    <ClInclude Include="inc\transform_scale_vscb.h" />
+    <ClInclude Include="inc\transform_vscb.h" />
+    <ClInclude Include="inc\triangle_mesh.h" />
+    <ClInclude Include="inc\types.h" />
+    <ClInclude Include="inc\util_exception.h" />
+    <ClInclude Include="inc\vertex_buffer.h" />
+    <ClInclude Include="inc\vertex_shader.h" />
+    <ClInclude Include="inc\vertical_blur_pass.h" />
+    <ClInclude Include="inc\viewport.h" />
+    <ClInclude Include="inc\vtune_itt_domain.h" />
+    <ClInclude Include="inc\windows_hidden_defs.h" />
+    <ClInclude Include="inc\console.h" />
+    <ClInclude Include="inc\d3d_utils.h" />
+    <ClInclude Include="inc\file_utils.h" />
+    <ClInclude Include="inc\operation.h" />
+    <ClInclude Include="inc\dumpling.h" />
+    <ClInclude Include="inc\entity.h" />
+    <ClInclude Include="inc\entity_defines.h" />
+    <ClInclude Include="inc\entity_manager.h" />
+    <ClInclude Include="inc\game.h" />
+    <ClInclude Include="inc\gameplay_exception.h" />
+    <ClInclude Include="inc\game_state.h" />
+    <ClInclude Include="inc\imgui_manager.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
+      </ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">
+      </ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="inc\keyboard.h" />
+    <ClInclude Include="inc\key_exception.h" />
+    <ClInclude Include="inc\math_utils.h" />
+    <ClInclude Include="inc\key_random.h" />
+    <ClInclude Include="inc\key_timer.h" />
+    <ClInclude Include="inc\key_wrl.h" />
+    <ClInclude Include="inc\leak_checker_console.h" />
+    <ClInclude Include="inc\message.h" />
+    <ClInclude Include="inc\message_queue_bus_dispatcher.h" />
+    <ClInclude Include="inc\model.h" />
+    <ClInclude Include="inc\mouse.h" />
+    <ClInclude Include="inc\node.h" />
+    <ClInclude Include="inc\object_pool.h" />
+    <ClInclude Include="inc\octree.h" />
+    <ClInclude Include="inc\os_utils.h" />
+    <ClInclude Include="inc\performance_log.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
+      </ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">
+      </ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="inc\wireframe_pass.h" />
+    <ClInclude Include="inc\world.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="inc\settings_manager.h" />
+    <ClInclude Include="inc\signal_handling.h" />
+    <ClInclude Include="inc\sound_manager.h" />
+    <ClInclude Include="inc\sysmetrics.h" />
+    <ClInclude Include="inc\utils.h" />
+    <ClInclude Include="inc\window.h" />
+    <ClInclude Include="inc\windows_message_map.h" />
+    <ClInclude Include="inc\winner.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\aiBitmap.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\aicamera.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\aimesh.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\aitexture.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\ai_assert.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\anim.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\BaseImporter.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\BlobIOSystem.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\ByteSwapper.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\cexport.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\cfileio.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\cimport.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\color4.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\Compiler\poppack1.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\Compiler\pstdint.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\Compiler\pushpack1.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\config.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\CreateAnimMesh.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\DefaultIOStream.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\DefaultIOSystem.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\DefaultLogger.hpp" />
+    <ClInclude Include="third_party\assimp\include\assimp\Defines.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\defs.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\Exceptional.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\Exporter.hpp" />
+    <ClInclude Include="third_party\assimp\include\assimp\fast_atof.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\GenericProperty.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\Hash.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\Importer.hpp" />
+    <ClInclude Include="third_party\assimp\include\assimp\importerdesc.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\IOStream.hpp" />
+    <ClInclude Include="third_party\assimp\include\assimp\IOStreamBuffer.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\IOSystem.hpp" />
+    <ClInclude Include="third_party\assimp\include\assimp\irrXMLWrapper.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\light.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\LineSplitter.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\LogAux.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\Logger.hpp" />
+    <ClInclude Include="third_party\assimp\include\assimp\LogStream.hpp" />
+    <ClInclude Include="third_party\assimp\include\assimp\Macros.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\material.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\MathFunctions.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\matrix3x3.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\matrix4x4.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\MemoryIOWrapper.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\metadata.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\NullLogger.hpp" />
+    <ClInclude Include="third_party\assimp\include\assimp\ParsingUtils.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\pbrmaterial.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\port\AndroidJNI\AndroidJNIIOSystem.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\postprocess.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\Profiler.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\ProgressHandler.hpp" />
+    <ClInclude Include="third_party\assimp\include\assimp\qnan.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\quaternion.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\RemoveComments.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\scene.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\SceneCombiner.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\SGSpatialSort.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\SkeletonMeshBuilder.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\SmoothingGroups.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\SpatialSort.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\StandardShapes.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\StreamReader.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\StreamWriter.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\StringComparison.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\StringUtils.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\Subdivision.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\TinyFormatter.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\types.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\vector2.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\vector3.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\version.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\Vertex.h" />
+    <ClInclude Include="third_party\assimp\include\assimp\XMLTools.h" />
+    <ClInclude Include="third_party\catch\catch.hpp" />
+    <ClInclude Include="third_party\dxtex\include\dxtex\BC.h" />
+    <ClInclude Include="third_party\dxtex\include\dxtex\BCDirectCompute.h" />
+    <ClInclude Include="third_party\dxtex\include\dxtex\d3dx12.h" />
+    <ClInclude Include="third_party\dxtex\include\dxtex\DDS.h" />
+    <ClInclude Include="third_party\dxtex\include\dxtex\DirectXTex.h" />
+    <ClInclude Include="third_party\dxtex\include\dxtex\DirectXTexP.h" />
+    <ClInclude Include="third_party\dxtex\include\dxtex\filters.h" />
+    <ClInclude Include="third_party\dxtex\include\dxtex\scoped.h" />
+    <ClInclude Include="third_party\google\algorithm\algorithm.h" />
+    <ClInclude Include="third_party\google\base\attributes.h" />
+    <ClInclude Include="third_party\google\base\config.h" />
+    <ClInclude Include="third_party\google\base\internal\throw_delegate.h" />
+    <ClInclude Include="third_party\google\base\macros.h" />
+    <ClInclude Include="third_party\google\base\optimization.h" />
+    <ClInclude Include="third_party\google\base\options.h" />
+    <ClInclude Include="third_party\google\base\policy_checks.h" />
+    <ClInclude Include="third_party\google\base\port.h" />
+    <ClInclude Include="third_party\google\inlined_vector.h" />
+    <ClInclude Include="third_party\google\memory\memory.h" />
+    <ClInclude Include="third_party\google\meta\type_traits.h" />
+    <ClInclude Include="third_party\imgui\imconfig.h" />
+    <ClInclude Include="third_party\imgui\imgui.h" />
+    <ClInclude Include="third_party\imgui\imgui_impl_dx11.h" />
+    <ClInclude Include="third_party\imgui\imgui_impl_win32.h" />
+    <ClInclude Include="third_party\imgui\imgui_internal.h" />
+    <ClInclude Include="third_party\imgui\imstb_rectpack.h" />
+    <ClInclude Include="third_party\imgui\imstb_textedit.h" />
+    <ClInclude Include="third_party\imgui\imstb_truetype.h" />
+    <ClInclude Include="third_party\inih\INIReader.h" />
+    <ClInclude Include="third_party\jthread\jthread.h" />
+    <ClInclude Include="third_party\jthread\stop_token.h" />
+    <ClInclude Include="third_party\magic_enum\magic_enum.h" />
+    <ClInclude Include="inc\thread_pool.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="KeyEngine.rc">
+      <FileType>CppCode</FileType>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\resources\keyc0de.ico" />
+    <Image Include="assets\resources\tray_graffiti.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="shaders\blur_ps.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\blur_separ_ps.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\cube_ps.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\cube_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\digital_brain.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\flat2d_ps.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\flat2d_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\flat_ps.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\flat_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\fullscreen_quad_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\fullscreen_triangle_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\negative_ps.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\particle_ps.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\particle_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\passthrough_ps.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\phong_DifAlpNrm_ps.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\phong_DifAlpNrm_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\phong_DifAlpSpcNrm_ps.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\phong_DifAlpSpcNrm_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\phong_DifAlpSpc_ps.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\phong_DifAlpSpc_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\phong_DifNrm_ps.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\phong_DifNrm_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\phong_DifSpcNrm_ps.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\phong_DifSpcNrm_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\phong_DifSpc_ps.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\phong_DifSpc_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\phong_Dif_ps.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\phong_Dif_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\phong__ps.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\phong__vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\plane_ps.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\plane_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\shadow_ps.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\shadow_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\sky_ps.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="shaders\sky_vs.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\shaders\$(Configuration)\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

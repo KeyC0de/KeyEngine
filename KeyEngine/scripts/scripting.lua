@@ -1,0 +1,1 @@
+print("Lua launched from KeyEngine!")

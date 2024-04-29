@@ -1,0 +1,1 @@
+attrib +r "inc\*" && attrib +r "src\*.cpp" && attrib +r "shaders\*" && attrib +r "shaders\hlsli\*"

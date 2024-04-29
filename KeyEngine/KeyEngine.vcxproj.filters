@@ -1,0 +1,1431 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="third_party\imgui\imgui_demo.cpp">
+      <Filter>third_party\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\imgui\imgui_draw.cpp">
+      <Filter>third_party\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\imgui\imgui_impl_dx11.cpp">
+      <Filter>third_party\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\imgui\imgui_impl_win32.cpp">
+      <Filter>third_party\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\imgui\imgui_widgets.cpp">
+      <Filter>third_party\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main_test.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="src\testing.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="src\entity.cpp">
+      <Filter>engine\gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="src\entity_manager.cpp">
+      <Filter>engine\gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game.cpp">
+      <Filter>engine\common_util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game_state.cpp">
+      <Filter>engine\common_util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\grid_location.cpp">
+      <Filter>engine\common_util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\message_queue_bus_dispatcher.cpp">
+      <Filter>engine\gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="src\operation.cpp">
+      <Filter>engine\gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gameplay_exception.cpp">
+      <Filter>engine\gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="src\imgui_manager.cpp">
+      <Filter>third_party\glue</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net_utils.cpp">
+      <Filter>engine\network</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mouse.cpp">
+      <Filter>engine\os\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\keyboard.cpp">
+      <Filter>engine\os\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\windows_message_map.cpp">
+      <Filter>engine\os\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\window.cpp">
+      <Filter>engine\os\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\message.cpp">
+      <Filter>engine\gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="src\leak_checker_console.cpp">
+      <Filter>engine\os\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\assertions_console.cpp">
+      <Filter>engine\os\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\console.cpp">
+      <Filter>engine\os\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sysmetrics.cpp">
+      <Filter>engine\os\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sound_manager.cpp">
+      <Filter>engine\sfx</Filter>
+    </ClCompile>
+    <ClCompile Include="src\signal_handling.cpp">
+      <Filter>engine\os\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\key_exception.cpp">
+      <Filter>engine\common_util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\key_random.cpp">
+      <Filter>engine\common_util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>engine\common_util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\performance_log.cpp">
+      <Filter>engine\common_util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\settings_manager.cpp">
+      <Filter>engine\common_util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\thread_pool.cpp">
+      <Filter>engine\common_util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model.cpp">
+      <Filter>engine\gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="src\node.cpp">
+      <Filter>engine\gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\imgui\imgui.cpp">
+      <Filter>third_party\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\octree.cpp">
+      <Filter>engine\gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="games\arkanoid\ball.cpp">
+      <Filter>games\2d\arkanoid</Filter>
+    </ClCompile>
+    <ClCompile Include="games\arkanoid\brick.cpp">
+      <Filter>games\2d\arkanoid</Filter>
+    </ClCompile>
+    <ClCompile Include="games\arkanoid\paddle.cpp">
+      <Filter>games\2d\arkanoid</Filter>
+    </ClCompile>
+    <ClCompile Include="src\string_buffer.cpp">
+      <Filter>engine\common_util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\dumpling.cpp">
+      <Filter>engine\os\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\jthread_pool.cpp">
+      <Filter>engine\common_util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\world.cpp">
+      <Filter>engine\gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bitmap.cpp">
+      <Filter>engine\vfx</Filter>
+    </ClCompile>
+    <ClCompile Include="src\camera.cpp">
+      <Filter>engine\vfx</Filter>
+    </ClCompile>
+    <ClCompile Include="src\camera_manager.cpp">
+      <Filter>engine\vfx</Filter>
+    </ClCompile>
+    <ClCompile Include="src\binder.cpp">
+      <Filter>engine\vfx</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cube_texture.cpp">
+      <Filter>engine\vfx</Filter>
+    </ClCompile>
+    <ClCompile Include="src\dxgi_info_queue.cpp">
+      <Filter>engine\vfx</Filter>
+    </ClCompile>
+    <ClCompile Include="src\dynamic_constant_buffer.cpp">
+      <Filter>engine\vfx</Filter>
+    </ClCompile>
+    <ClCompile Include="src\dynamic_vertex_buffer.cpp">
+      <Filter>engine\vfx</Filter>
+    </ClCompile>
+    <ClCompile Include="src\effect.cpp">
+      <Filter>engine\vfx</Filter>
+    </ClCompile>
+    <ClCompile Include="src\imgui_visitors.cpp">
+      <Filter>engine\vfx</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics.cpp">
+      <Filter>engine\vfx</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics_friend.cpp">
+      <Filter>engine\vfx</Filter>
+    </ClCompile>
+    <ClCompile Include="src\job.cpp">
+      <Filter>engine\vfx</Filter>
+    </ClCompile>
+    <ClCompile Include="src\light_source.cpp">
+      <Filter>engine\vfx</Filter>
+    </ClCompile>
+    <ClCompile Include="src\light_source_shadow_vscb.cpp">
+      <Filter>engine\vfx</Filter>
+    </ClCompile>
+    <ClCompile Include="src\material_loader.cpp">
+      <Filter>engine\vfx</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mouse_picker.cpp">
+      <Filter>engine\vfx</Filter>
+    </ClCompile>
+    <ClCompile Include="src\linker.cpp">
+      <Filter>engine\vfx</Filter>
+    </ClCompile>
+    <ClCompile Include="src\renderer.cpp">
+      <Filter>engine\vfx</Filter>
+    </ClCompile>
+    <ClCompile Include="src\renderer_exception.cpp">
+      <Filter>engine\vfx</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sky_vscb.cpp">
+      <Filter>engine\vfx</Filter>
+    </ClCompile>
+    <ClCompile Include="src\texture.cpp">
+      <Filter>engine\vfx</Filter>
+    </ClCompile>
+    <ClCompile Include="src\camera_widget.cpp">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cube.cpp">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\camera_frustum.cpp">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\geometry.cpp">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mesh.cpp">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\plane.cpp">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rectangle.cpp">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sphere.cpp">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sprite.cpp">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bindable_exception.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\blend_state.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\constant_buffer_ex.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\depth_stencil_state.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\depth_stencil_view.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\index_buffer.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\input_layout.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pixel_shader.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\primitive_topology.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rasterizer_state.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\render_target.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\transform_scale_vscb.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\transform_vscb.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\texture_sampler_state.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vertex_buffer.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vertex_shader.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\viewport.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\triangle_mesh.cpp">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bindable_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\blur_outline_draw_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\blur_outline_mask_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\depth_reversed_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fullscreen_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\horizontal_blur_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lambertian_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pass_2d.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\render_queue_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\render_surface_clear_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\shadow_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sky_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\solid_outline_draw_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\solid_outline_mask_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vertical_blur_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\wireframe_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\blur_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\negative_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pass_through.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\terrain.cpp">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\font_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\texture_desc.cpp">
+      <Filter>engine\vfx</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bmp_loader.cpp">
+      <Filter>engine\os\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\perlin_noise.cpp">
+      <Filter>engine\common_util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\d3d_utils.cpp">
+      <Filter>engine\common_util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\file_utils.cpp">
+      <Filter>engine\common_util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\math_utils.cpp">
+      <Filter>engine\common_util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\os_utils.cpp">
+      <Filter>engine\common_util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util_exception.cpp">
+      <Filter>engine\common_util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils.cpp">
+      <Filter>engine\common_util</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="third_party\imgui\imconfig.h">
+      <Filter>third_party\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\imgui\imgui.h">
+      <Filter>third_party\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\imgui\imgui_impl_dx11.h">
+      <Filter>third_party\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\imgui\imgui_impl_win32.h">
+      <Filter>third_party\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\imgui\imgui_internal.h">
+      <Filter>third_party\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\imgui\imstb_rectpack.h">
+      <Filter>third_party\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\imgui\imstb_textedit.h">
+      <Filter>third_party\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\imgui\imstb_truetype.h">
+      <Filter>third_party\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\inih\INIReader.h">
+      <Filter>third_party\inih</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\dxtex\include\dxtex\BC.h">
+      <Filter>third_party\dxtex</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\dxtex\include\dxtex\BCDirectCompute.h">
+      <Filter>third_party\dxtex</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\dxtex\include\dxtex\d3dx12.h">
+      <Filter>third_party\dxtex</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\dxtex\include\dxtex\DDS.h">
+      <Filter>third_party\dxtex</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\dxtex\include\dxtex\DirectXTex.h">
+      <Filter>third_party\dxtex</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\dxtex\include\dxtex\DirectXTexP.h">
+      <Filter>third_party\dxtex</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\dxtex\include\dxtex\filters.h">
+      <Filter>third_party\dxtex</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\dxtex\include\dxtex\scoped.h">
+      <Filter>third_party\dxtex</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\Compiler\poppack1.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\Compiler\pstdint.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\Compiler\pushpack1.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\port\AndroidJNI\AndroidJNIIOSystem.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\XMLTools.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\ai_assert.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\anim.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\BaseImporter.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\BlobIOSystem.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\ByteSwapper.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\cexport.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\cfileio.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\cimport.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\color4.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\config.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\CreateAnimMesh.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\DefaultIOStream.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\DefaultIOSystem.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\DefaultLogger.hpp">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\Defines.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\defs.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\Exceptional.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\Exporter.hpp">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\fast_atof.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\GenericProperty.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\Hash.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\Importer.hpp">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\importerdesc.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\IOStream.hpp">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\IOStreamBuffer.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\IOSystem.hpp">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\irrXMLWrapper.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\light.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\LineSplitter.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\LogAux.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\Logger.hpp">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\LogStream.hpp">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\Macros.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\material.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\MathFunctions.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\matrix3x3.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\matrix4x4.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\MemoryIOWrapper.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\metadata.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\NullLogger.hpp">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\ParsingUtils.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\pbrmaterial.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\postprocess.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\Profiler.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\ProgressHandler.hpp">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\qnan.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\quaternion.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\RemoveComments.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\scene.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\SceneCombiner.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\SGSpatialSort.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\SkeletonMeshBuilder.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\SmoothingGroups.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\SpatialSort.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\StandardShapes.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\StreamReader.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\StreamWriter.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\StringComparison.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\StringUtils.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\Subdivision.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\TinyFormatter.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\types.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\vector2.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\vector3.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\version.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\Vertex.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\catch\catch.hpp">
+      <Filter>third_party\catch</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\testing.h">
+      <Filter>tests</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\entity.h">
+      <Filter>engine\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\entity_defines.h">
+      <Filter>engine\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\entity_manager.h">
+      <Filter>engine\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\game_state.h">
+      <Filter>engine\common_util</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\game.h">
+      <Filter>engine\common_util</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\grid_location.h">
+      <Filter>engine\common_util</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\message.h">
+      <Filter>engine\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\message_queue_bus_dispatcher.h">
+      <Filter>engine\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\operation.h">
+      <Filter>engine\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\gameplay_exception.h">
+      <Filter>engine\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\imgui_manager.h">
+      <Filter>third_party\glue</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\net_utils.h">
+      <Filter>engine\network</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\mouse.h">
+      <Filter>engine\os\win</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\keyboard.h">
+      <Filter>engine\os\win</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\windows_message_map.h">
+      <Filter>engine\os\win</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\window.h">
+      <Filter>engine\os\win</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\leak_checker_console.h">
+      <Filter>engine\os\win</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\assertions_console.h">
+      <Filter>engine\os\win</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\console.h">
+      <Filter>engine\os\win</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\winner.h">
+      <Filter>engine\os\win</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\vtune_itt_domain.h">
+      <Filter>third_party\glue</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\sysmetrics.h">
+      <Filter>engine\os\win</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\sound_manager.h">
+      <Filter>engine\sfx</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\key_wrl.h">
+      <Filter>engine\os\win</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\signal_handling.h">
+      <Filter>engine\os\win</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\object_pool.h">
+      <Filter>engine\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\key_exception.h">
+      <Filter>engine\common_util</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\key_random.h">
+      <Filter>engine\common_util</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\key_timer.h">
+      <Filter>engine\common_util</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\performance_log.h">
+      <Filter>engine\common_util</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\settings_manager.h">
+      <Filter>engine\common_util</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\thread_pool.h">
+      <Filter>engine\common_util</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\model.h">
+      <Filter>engine\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\node.h">
+      <Filter>engine\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\lru_cache.h">
+      <Filter>engine\common_util</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\non_copyable.h">
+      <Filter>engine\common_util</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\octree.h">
+      <Filter>engine\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="games\arkanoid\ball.h">
+      <Filter>games\2d\arkanoid</Filter>
+    </ClInclude>
+    <ClInclude Include="games\arkanoid\brick.h">
+      <Filter>games\2d\arkanoid</Filter>
+    </ClInclude>
+    <ClInclude Include="games\arkanoid\paddle.h">
+      <Filter>games\2d\arkanoid</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\string_buffer.h">
+      <Filter>engine\common_util</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\dumpling.h">
+      <Filter>engine\os\win</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\subject_observer.h">
+      <Filter>engine\common_util</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\aimesh.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\aicamera.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\aiBitmap.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\jthread\stop_token.h">
+      <Filter>third_party\jthread</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\jthread\jthread.h">
+      <Filter>third_party\jthread</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\jthread_pool.h">
+      <Filter>engine\common_util</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\world.h">
+      <Filter>engine\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\types.h">
+      <Filter>engine\common_util</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\assimp\include\assimp\aitexture.h">
+      <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\windows_hidden_defs.h">
+      <Filter>engine\vfx</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\texture.h">
+      <Filter>engine\vfx</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\mouse_picker.h">
+      <Filter>engine\vfx</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\linker.h">
+      <Filter>engine\vfx</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\renderer.h">
+      <Filter>engine\vfx</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\renderer_exception.h">
+      <Filter>engine\vfx</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\rendering_channel.h">
+      <Filter>engine\vfx</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\sky_vscb.h">
+      <Filter>engine\vfx</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\light_source.h">
+      <Filter>engine\vfx</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\light_source_shadow_vscb.h">
+      <Filter>engine\vfx</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\material_loader.h">
+      <Filter>engine\vfx</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\job.h">
+      <Filter>engine\vfx</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\graphics_mode.h">
+      <Filter>engine\vfx</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\dxgi_info_queue.h">
+      <Filter>engine\vfx</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\dynamic_constant_buffer.h">
+      <Filter>engine\vfx</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\dynamic_vertex_buffer.h">
+      <Filter>engine\vfx</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\effect.h">
+      <Filter>engine\vfx</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\imgui_visitors.h">
+      <Filter>engine\vfx</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\graphics.h">
+      <Filter>engine\vfx</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\graphics_friend.h">
+      <Filter>engine\vfx</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\cube_texture.h">
+      <Filter>engine\vfx</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\binder.h">
+      <Filter>engine\vfx</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\color.h">
+      <Filter>engine\vfx</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\bitmap.h">
+      <Filter>engine\vfx</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\camera.h">
+      <Filter>engine\vfx</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\camera_manager.h">
+      <Filter>engine\vfx</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\camera_widget.h">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\cube.h">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\camera_frustum.h">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\geometry.h">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\mesh.h">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\plane.h">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\rectangle.h">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\sphere.h">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\sprite.h">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>assets\resources</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\bindable.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\bindable_exception.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\bindable_map.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\blend_state.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\constant_buffer.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\constant_buffer_ex.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\depth_stencil_state.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\depth_stencil_view.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\index_buffer.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\input_layout.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\pixel_shader.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\primitive_topology.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\rasterizer_state.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\render_surface.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\render_target.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\transform_scale_vscb.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\transform_vscb.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\texture_sampler_state.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\vertex_buffer.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\vertex_shader.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\viewport.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\triangle_mesh.h">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\bindable_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\blur_outline_draw_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\blur_outline_mask_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\depth_reversed_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\fullscreen_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\horizontal_blur_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\lambertian_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\pass_2d.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\render_queue_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\render_surface_clear_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\shadow_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\sky_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\solid_outline_draw_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\solid_outline_mask_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\vertical_blur_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\wireframe_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\blur_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\negative_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\global_constants.h">
+      <Filter>engine\common_util</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\pass_through.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\font_pass.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\terrain.h">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\texture_desc.h">
+      <Filter>engine\vfx</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\bmp_loader.h">
+      <Filter>engine\os\win</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\perlin_noise.h">
+      <Filter>engine\common_util</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\google\inlined_vector.h">
+      <Filter>third_party\google</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\google\algorithm\algorithm.h">
+      <Filter>third_party\google</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\google\base\attributes.h">
+      <Filter>third_party\google</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\google\base\config.h">
+      <Filter>third_party\google</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\google\base\macros.h">
+      <Filter>third_party\google</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\google\base\optimization.h">
+      <Filter>third_party\google</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\google\base\options.h">
+      <Filter>third_party\google</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\google\base\port.h">
+      <Filter>third_party\google</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\google\base\internal\throw_delegate.h">
+      <Filter>third_party\google</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\google\memory\memory.h">
+      <Filter>third_party\google</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\google\meta\type_traits.h">
+      <Filter>third_party\google</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\google\base\policy_checks.h">
+      <Filter>third_party\google</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\magic_enum\magic_enum.h">
+      <Filter>third_party\magic_enum</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\d3d_utils.h">
+      <Filter>engine\common_util</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\file_utils.h">
+      <Filter>engine\common_util</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\key_type_traits.h">
+      <Filter>engine\common_util</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\math_utils.h">
+      <Filter>engine\common_util</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\os_utils.h">
+      <Filter>engine\common_util</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\util_exception.h">
+      <Filter>engine\common_util</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\utils.h">
+      <Filter>engine\common_util</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\resources\tray_graffiti.ico">
+      <Filter>assets\resources</Filter>
+    </Image>
+    <Image Include="assets\resources\keyc0de.ico">
+      <Filter>assets\resources</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assimp-vc140-mt.dll" />
+    <None Include="zlib1.dll" />
+    <None Include="third_party\dxtex\include\dxtex\DirectXTex.inl">
+      <Filter>third_party\dxtex</Filter>
+    </None>
+    <None Include="third_party\assimp\include\assimp\color4.inl">
+      <Filter>third_party\assimp</Filter>
+    </None>
+    <None Include="third_party\assimp\include\assimp\material.inl">
+      <Filter>third_party\assimp</Filter>
+    </None>
+    <None Include="third_party\assimp\include\assimp\matrix3x3.inl">
+      <Filter>third_party\assimp</Filter>
+    </None>
+    <None Include="third_party\assimp\include\assimp\matrix4x4.inl">
+      <Filter>third_party\assimp</Filter>
+    </None>
+    <None Include="third_party\assimp\include\assimp\quaternion.inl">
+      <Filter>third_party\assimp</Filter>
+    </None>
+    <None Include="third_party\assimp\include\assimp\SmoothingGroups.inl">
+      <Filter>third_party\assimp</Filter>
+    </None>
+    <None Include="third_party\assimp\include\assimp\vector2.inl">
+      <Filter>third_party\assimp</Filter>
+    </None>
+    <None Include="third_party\assimp\include\assimp\vector3.inl">
+      <Filter>third_party\assimp</Filter>
+    </None>
+    <None Include="config\imgui_default.ini">
+      <Filter>config</Filter>
+    </None>
+    <None Include="config\imgui.ini">
+      <Filter>config</Filter>
+    </None>
+    <None Include="config\test.ini">
+      <Filter>config</Filter>
+    </None>
+    <None Include="scripts\scripting.lua">
+      <Filter>engine\scripts</Filter>
+    </None>
+    <None Include="config\config.ini">
+      <Filter>config</Filter>
+    </None>
+    <None Include="ClassDiagram.cd" />
+    <None Include="shaders\hlsli\transforms_vscb.hlsli">
+      <Filter>engine\vfx\shaders\hlsli</Filter>
+    </None>
+    <None Include="shaders\hlsli\spot_light_pscb.hlsli">
+      <Filter>engine\vfx\shaders\hlsli</Filter>
+    </None>
+    <None Include="shaders\hlsli\shadowing_vs.hlsli">
+      <Filter>engine\vfx\shaders\hlsli</Filter>
+    </None>
+    <None Include="shaders\hlsli\shadowing_ps.hlsli">
+      <Filter>engine\vfx\shaders\hlsli</Filter>
+    </None>
+    <None Include="shaders\hlsli\shading_ps.hlsli">
+      <Filter>engine\vfx\shaders\hlsli</Filter>
+    </None>
+    <None Include="shaders\hlsli\point_light_pscb.hlsli">
+      <Filter>engine\vfx\shaders\hlsli</Filter>
+    </None>
+    <None Include="shaders\hlsli\hlsl_misc.hlsli">
+      <Filter>engine\vfx\shaders\hlsli</Filter>
+    </None>
+    <None Include="shaders\hlsli\directional_light_pscb.hlsli">
+      <Filter>engine\vfx\shaders\hlsli</Filter>
+    </None>
+    <None Include="cpp.hint" />
+    <None Include="assets\resources\homm_inspired_new.cur">
+      <Filter>assets\resources</Filter>
+    </None>
+    <None Include="assets\resources\arrow.cur">
+      <Filter>assets\resources</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="third_party">
+      <UniqueIdentifier>{8aa2b81b-edfc-41e5-9c9c-5c70a8ab4ad5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="third_party\assimp">
+      <UniqueIdentifier>{cda3ce35-cb3c-4ca1-b954-411778bab4e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="third_party\dxtex">
+      <UniqueIdentifier>{3498e2b9-0cc0-4d71-9c6e-5d0fa1b87acb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="third_party\imgui">
+      <UniqueIdentifier>{2c7b2836-0f40-4c5c-a218-b58eb51d1dab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="third_party\inih">
+      <UniqueIdentifier>{ff431861-4869-494a-985a-c47b3939b32f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine">
+      <UniqueIdentifier>{2fb5ea07-a708-44fb-bdcf-e7ba4b16f7d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="games">
+      <UniqueIdentifier>{545bc607-b3b2-4433-b02d-43605e6de99c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config">
+      <UniqueIdentifier>{a81cadd4-b8cf-442b-9bd5-db30f2991786}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\sfx">
+      <UniqueIdentifier>{833d4a26-c978-45a2-abbf-ed8f832ec141}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\animation">
+      <UniqueIdentifier>{28638601-9fc1-453f-b947-56b805f19214}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\gameplay">
+      <UniqueIdentifier>{1039e577-9966-4205-951b-f77e90e733f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\ui">
+      <UniqueIdentifier>{e8dfe790-33e1-4de3-af86-47ec7add9c58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\scripts">
+      <UniqueIdentifier>{ad7845c9-a9a6-4d4b-9c03-07302b9a4004}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\db">
+      <UniqueIdentifier>{4c358a06-f564-4993-8f0a-c91a48535e2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\network">
+      <UniqueIdentifier>{5ee468db-0b71-4e70-b167-c3b6066d7777}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="third_party\catch">
+      <UniqueIdentifier>{2b32b339-38d6-4a4d-91d0-fd954869d1c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests">
+      <UniqueIdentifier>{7ad5d265-83b1-4cc0-8e75-e8d611634d79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="third_party\glue">
+      <UniqueIdentifier>{b9ef6ca7-7d36-456d-ace2-c579f2a1a0cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\os">
+      <UniqueIdentifier>{8a8f1ee2-2153-42ff-9217-aee1d11460b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\os\win">
+      <UniqueIdentifier>{c9c83815-2783-44c7-8c79-7c37300799a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="third_party\jthread">
+      <UniqueIdentifier>{291f9785-0019-4d87-9e2d-bedbb6af73fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\vfx">
+      <UniqueIdentifier>{d60a8bc1-bef7-4320-9cca-07e2664d3e83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\vfx\shaders">
+      <UniqueIdentifier>{d9b7fe8c-2162-4f86-96b0-cf0cb9984aea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\vfx\shaders\hlsli">
+      <UniqueIdentifier>{f7a2a16b-9319-4c9d-82c2-bcaf536ee5d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\vfx\renderables">
+      <UniqueIdentifier>{0d8b8b69-7e35-46b6-9f70-4f68c9e8a640}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="assets">
+      <UniqueIdentifier>{bd022272-2b3d-465c-8580-fcdbd4d74743}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="assets\resources">
+      <UniqueIdentifier>{5f3a7b52-ef98-4a37-9054-0eb49ef1ddcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\vfx\bindables">
+      <UniqueIdentifier>{53705c83-2213-4227-9477-d7029221fd35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\vfx\pass">
+      <UniqueIdentifier>{2bb99e09-78f3-4723-bdbf-94c7cce309af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="third_party\google">
+      <UniqueIdentifier>{b4693ecb-ca2c-4032-9bdd-271308e8151c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="third_party\magic_enum">
+      <UniqueIdentifier>{e1d12a17-a9f1-446f-963e-e30dec788b4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\common_util">
+      <UniqueIdentifier>{a52cfa5d-45f8-498a-81b4-a77e941af45e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="games\2d">
+      <UniqueIdentifier>{71b7ac52-c9fd-4e87-87f7-a51fef5b8ab4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="games\2d\arkanoid">
+      <UniqueIdentifier>{1f9c752e-4545-4057-8d5c-b74116ffd063}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="games\3d">
+      <UniqueIdentifier>{3f3affd8-58de-43c3-8a27-acffaeb3e31b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="shaders\blur_separ_ps.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\cube_ps.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\cube_vs.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\digital_brain.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\flat_ps.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\flat_vs.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\flat2d_ps.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\flat2d_vs.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\fullscreen_quad_vs.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\fullscreen_triangle_vs.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\particle_ps.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\particle_vs.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\phong__ps.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\phong__vs.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\phong_Dif_ps.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\phong_Dif_vs.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\phong_DifAlpNrm_ps.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\phong_DifAlpNrm_vs.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\phong_DifAlpSpc_ps.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\phong_DifAlpSpc_vs.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\phong_DifAlpSpcNrm_ps.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\phong_DifAlpSpcNrm_vs.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\phong_DifNrm_ps.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\phong_DifNrm_vs.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\phong_DifSpc_ps.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\phong_DifSpc_vs.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\phong_DifSpcNrm_ps.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\phong_DifSpcNrm_vs.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\plane_ps.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\plane_vs.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\shadow_ps.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\shadow_vs.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\sky_ps.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\sky_vs.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\blur_ps.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\passthrough_ps.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\negative_ps.hlsl">
+      <Filter>engine\vfx\shaders</Filter>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="KeyEngine.rc">
+      <Filter>assets\resources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

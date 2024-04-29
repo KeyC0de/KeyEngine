@@ -1,0 +1,46 @@
+#pragma once
+
+#include <array>
+#include "bindable.h"
+
+
+class RasterizerState
+	: public IBindable
+{
+public:
+	enum RasterizerMode
+	{
+		DefaultRS,
+		ShadowRS,
+	};
+	enum FillMode
+	{
+		Solid,
+		Wireframe,
+	};
+	enum FaceMode
+	{
+		Front,	// cull backsided faces (default)
+		Back,	// cull frontsided faces
+		Both,	// don't cull any faces
+	};
+protected:
+	Microsoft::WRL::ComPtr<ID3D11RasterizerState> m_pRasterizerState;
+	RasterizerMode m_mode;
+	FillMode m_fillMode;
+	FaceMode m_faceMode;
+	int m_depthBias;
+	float m_slopeBias;
+	float m_biasClamp;
+public:
+	//	\function	RasterizerState	||	\date	2024/04/27 14:28
+	//	\brief	if mode is RasterizerMode::ShadowRS then fillMode and faceMode values will be defaulted
+	//			if mode is RasterizerMode::DefaultRS then depthBias, slopeBias and biasClamp will be defaulted
+	RasterizerState( Graphics &gph, const RasterizerMode mode, const FillMode fillMode, const FaceMode faceMode, const int depthBias = D3D11_DEFAULT_DEPTH_BIAS, const float slopeBias = D3D11_DEFAULT_SLOPE_SCALED_DEPTH_BIAS, const float biasClamp = D3D11_DEFAULT_DEPTH_BIAS_CLAMP );
+
+	void bind( Graphics &gph ) cond_noex override;
+	static std::shared_ptr<RasterizerState> fetch( Graphics &gph, const RasterizerMode mode, const FillMode fillMode, const FaceMode faceMode, const int depthBias = D3D11_DEFAULT_DEPTH_BIAS, const float slopeBias = D3D11_DEFAULT_SLOPE_SCALED_DEPTH_BIAS, const float biasClamp = D3D11_DEFAULT_DEPTH_BIAS_CLAMP );
+	static std::string calcUid( const RasterizerMode mode, const FillMode fillMode, const FaceMode faceMode, const int depthBias = D3D11_DEFAULT_DEPTH_BIAS, const float slopeBias = D3D11_DEFAULT_SLOPE_SCALED_DEPTH_BIAS, const float biasClamp = D3D11_DEFAULT_DEPTH_BIAS_CLAMP );
+	std::string getUid() const noexcept override;
+	RasterizerMode getMode() const noexcept;
+};
