@@ -300,9 +300,9 @@ Window::~Window()
 	if ( className == MAIN_WINDOW_CLASS_NAME )
 	{
 		deleteTrayIcon();
-		// The destruction of a menu is done automatically when the menu is assigned to a window, otherwise you must call this function to free the HMENU's	resources
-		DestroyMenu( m_hTrayIconPopupMenu );
-		ASSERT_HRES_WIN32_IF_FAILED;
+		// a menu assigned to a window is automatically destroyed with the window
+		//DestroyMenu( m_hTrayIconPopupMenu );	// #FIXME: if the tray icon is hidden in the collapsed section this function will fail and trigger an exception
+		//ASSERT_HRES_WIN32_IF_FAILED;
 	}
 
 	if constexpr ( gph_mode::get() == gph_mode::_3D )
@@ -405,10 +405,10 @@ HDC Window::getDc() const noexcept
 	return GetWindowDC( m_hWnd );
 }
 
-void Window::displayMessageBox( const std::string &title,
+bool Window::displayMessageBoxYesNo( const std::string &title,
 	const std::string &message ) const
 {
-	MessageBoxW( m_hWnd, util::s2ws( message ).c_str(), util::s2ws( title ).c_str(), MB_OKCANCEL );
+	return MessageBoxW( m_hWnd, util::s2ws( message ).c_str(), util::s2ws( title ).c_str(), MB_OKCANCEL );
 }
 
 bool Window::isActive() const noexcept
@@ -1199,7 +1199,7 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 	}
 	case WM_SYSCOMMAND:
 	{
-		// sent when the user chooses a command from the Window menu (formerly known as the system or control menu) or when the user chooses the maximize/minimize/close buttons
+		// sent when the user chooses a command from the Window menu (formerly known as the system or control menu), or when the user chooses the maximize/minimize/close buttons, or when an accelerator keystroke is translated to be a syscommand
 		// in WM_SYSCOMMAND messages, the four low-order bits of the wParam parameter are used internally by the system
 		switch( wParam & 0xFFF0 )
 		{
@@ -1208,6 +1208,12 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 			break;
 		case SC_MAXIMIZE:
 			restore();
+			break;
+		case SC_CLOSE:	// ALT-F4, or when X-ing out the window
+			if ( displayMessageBoxYesNo( "Confirmation", "Are you sure you want to quit?" ) == IDOK )
+			{
+				PostQuitMessage( 0 );
+			}
 			break;
 		}
 		break;

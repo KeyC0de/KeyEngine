@@ -668,7 +668,7 @@ void Graphics::bindBackBufferAsOutput( DepthStencilOutput *dsv ) const noexcept
 	m_pImmediateContext->OMSetRenderTargets( 1u, m_pBackBufferRtv->d3dResourceCom().GetAddressOf(), dsv->d3dResource() );
 }
 
-void Graphics::bindBackBufferAsInput()
+void Graphics::bindBackBufferAsInput()	// #UNUSED
 {
 	mwrl::ComPtr<ID3D11Texture2D> pD3dBackBufferTex;
 	HRESULT hres = m_pSwapChain->GetBuffer( 0u, __uuidof( ID3D11Texture2D ), &pD3dBackBufferTex );

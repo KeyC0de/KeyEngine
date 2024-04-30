@@ -308,23 +308,23 @@ constexpr int toggleNthBit( int num,
 }
 
 constexpr int isSet( int num,
-	const unsigned n ) noexcept
+	const unsigned bitPos ) noexcept
 {
-	return ( num >> n ) & 1;
+	return ( num >> bitPos ) & 1;
 }
 
 bool isSetByNumber( int num,
-	int value ) noexcept
+	int bitFlag ) noexcept
 {
-	if ( !isPowerOf2( value ) )
+	if ( !isPowerOf2( bitFlag ) )
 	{
 		return false;
 	}
 
 	unsigned pos = 0;
-	while ( value % 2 == 0 )
+	while ( bitFlag % 2 == 0 )
 	{
-		value = value / 2;
+		bitFlag = bitFlag / 2;
 		++pos;
 	}
 	return ( num >> pos ) & 1;
