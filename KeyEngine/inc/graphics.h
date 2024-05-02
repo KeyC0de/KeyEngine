@@ -24,6 +24,7 @@
 #include "color.h"
 #include "rectangle.h"
 #include "texture_desc.h"
+#include "key_timer.h"
 
 
 class IBindable;
@@ -100,10 +101,8 @@ private:
 	std::shared_ptr<DepthStencilOutput> m_pBackBufferDsv;
 	std::shared_ptr<TextureOffscreenRT> m_pOffscreenRtv;
 	std::shared_ptr<TextureOffscreenDS> m_pOffscreenDsv;
-#if defined _DEBUG && !defined NDEBUG
 	DxgiInfoQueue m_infoQueue;
 	ATL::CComPtr<ID3D11Debug> m_pDebug;
-#endif
 	DirectX::XMMATRIX m_projection;
 	DirectX::XMMATRIX m_view;
 	size_t m_currentFrame = 0u;
@@ -112,16 +111,13 @@ private:
 	std::unique_ptr<ren::Renderer> m_pRenderer;
 	ren::Renderer3d* m_pRenderer3d;
 	ren::Renderer2d* m_pRenderer2d;
+	KeyTimer<std::chrono::microseconds> m_fpsTimer;
 public:
 	Graphics( const HWND hWnd, const int width, const int height, const unsigned swapChainFlags = DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH, const MultisamplingMode multisamplingMode = MultisamplingMode::None );
 	~Graphics();
 
-#if defined FLIP_PRESENT
 	void makeWindowAssociationWithFactory( HWND hWnd, const UINT flags );
-#endif
-#ifdef _PROFILE
 	void profile() const noexcept;
-#endif
 	void beginFrame() noexcept;
 	void endFrame();
 	void draw( const unsigned count ) cond_noex;
@@ -138,8 +134,6 @@ public:
 	std::shared_ptr<DepthStencilOutput> getDepthBufferFromBackBuffer();
 	std::shared_ptr<TextureOffscreenRT> getRenderTargetOffscreen( const unsigned slot, const RenderTargetViewMode rtvMode );
 	std::shared_ptr<TextureOffscreenDS> getDepthBufferOffscreen( const unsigned slot, const DepthStencilViewMode dsvMode );
-	void bindBackBufferAsOutput() const noexcept;
-	void bindBackBufferAsOutput( DepthStencilOutput *dsv ) const noexcept;
 	void bindBackBufferAsInput();
 	void createFactory();
 	void createAdapters();
@@ -157,9 +151,8 @@ public:
 	ren::Renderer& getRenderer() noexcept;
 	ren::Renderer3d& getRenderer3d() noexcept;
 	ren::Renderer2d& getRenderer2d() noexcept;
-#if defined _DEBUG && !defined NDEBUG
 	DxgiInfoQueue& getInfoQueue();
-#endif
+	KeyTimer<std::chrono::microseconds>& getFpsTimer() noexcept;
 private:
 	//	\function	present	||	\date	2022/09/13 22:12
 	//	\brief	present the frame to DWM

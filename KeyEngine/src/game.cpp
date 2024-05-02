@@ -38,6 +38,7 @@ Game<T>::Game( const int width,
 	m_pCurrentState{std::make_unique<GameState>()}
 {
 	s_nWindows = nWindows;
+	m_gameTimer.start();
 }
 
 template <typename T>
@@ -113,41 +114,6 @@ template <typename T>
 State* Game<T>::getState() noexcept
 {
 	return m_pCurrentState.get();
-}
-
-template <typename T>
-float Game<T>::calcDt()
-{
-	auto &settings = s_settingsMan.getSettings();
-	float dt = m_gameTimer.lap() * settings.fGameSpeed;
-
-#if defined _DEBUG && !defined NDEBUG
-	// print frame time
-	KeyConsole &console = KeyConsole::getInstance();
-	using namespace std::string_literals;
-	++settings.frameCount;
-	std::string frameStats = "Frame time : "s
-		+ std::to_string( dt )
-		+ "ms. Frame "s
-		+ std::to_string( settings.frameCount )
-		+ "\n"s;
-	console.print( frameStats );
-#endif // _DEBUG
-//	static float minFrameTime = 1.0f / settings.iMaxFps;
-//	if ( settings.bFpsCap && !( settings.bFullscreen == true && settings.bVSync == true ) )
-//	{
-//		// enable frame limiter
-//		// Put on a low bound on the timestep - any lower and it would exceed maxFps
-//		//dt /= 1000;
-//		const float remainingTime = dt - minFrameTime;
-//		if ( remainingTime < 0.0f )
-//		{
-//			m_gameTimer.delayFor( remainingTime );
-//			//dt = std::min<float>( dt, m_minTimeStep );
-//			dt = minFrameTime;
-//		}
-//	}
-	return dt;
 }
 
 template<typename T>
@@ -258,28 +224,74 @@ Sandbox3d::~Sandbox3d() noexcept
 
 int Sandbox3d::loop()
 {
-	m_gameTimer.start();
+	auto &settings = s_settingsMan.getSettings();
+
 	int returnC0de = -1;
+
+	bool bActive = true;
+	float dt;
+
+	auto runFixedLoop = [this] ( const float dt ) -> float
+		{
+			static constexpr int fixedUpdatesPerSecond = 60;
+			static constexpr float dtFixed = 1.0f / fixedUpdatesPerSecond;
+			static constexpr int maxFramesSkip = 10;	// if fps drops below fixedUpdatesPerSecond / maxFramesSkip the actual game will slow down
+
+			float accumulator = 0.0f;
+			accumulator += dt;
+			accumulator = std::min( accumulator, 2.0f );	// prevent huge delta times
+
+			float loops = 0;
+			while ( accumulator >= dtFixed && loops < maxFramesSkip )
+			{
+				this->updateFixed( dtFixed );
+				accumulator -= dtFixed;
+				++loops;
+			}
+
+			return accumulator / dtFixed;
+		};
+
 	while ( true )
 	{
-		if ( const auto exitCode = m_mainWindow.messageLoop() )
+		auto msgCode = m_mainWindow.messageLoop();
+		if ( msgCode )
 		{
-			return *exitCode;
+			if ( *msgCode == 0 )
+			{
+				return 0;
+			}
 		}
 
-		const float dt = calcDt();
-		returnC0de = checkInput( dt );
-		if ( returnC0de == 0 )
+		if ( bActive )
 		{
-			break;
-		}
-		update( dt );
-		render( dt );
-#if defined _DEBUG && !defined NDEBUG
-		test();
+			dt = m_gameTimer.lap() * settings.fGameSpeed;
+			returnC0de = checkInput( dt );
+			if ( returnC0de == 0 )
+			{
+				break;
+			}
+			update( dt );
+			float lerpBetweenFrames = runFixedLoop( dt );
+			render( lerpBetweenFrames );
+
+#ifndef FINAL_RELEASE
+			using namespace std::string_literals;
+			KeyConsole &console = KeyConsole::getInstance();
+			++settings.frameCount;
+			std::string frameStats = "Frame time : "s + std::to_string( dt ) + "ms. Frame "s + std::to_string( settings.frameCount ) + "\n"s;
+			console.print( frameStats );
 #endif
-		present();
+			test();
+			present();
+		}
+		else
+		{
+			// game is minimized/out-of-focus
+			m_gameTimer.delayFor( 10 );
+		}
 	}
+
 	return returnC0de;
 }
 
@@ -326,11 +338,11 @@ int Sandbox3d::checkInput( const float dt )
 		}//switch
 	}
 
+	const float camSpeed = keyboard.isKeyPressed( VK_SHIFT ) ? 10.0f : 1.0f;
+
 	auto &activeCamera = s_cameraMan.activeCamera();
 	if ( !m_mainWindow.isCursorEnabled() )
 	{
-		const float camSpeed = keyboard.isKeyPressed( VK_SHIFT ) ? 10.0f : 1.0f;
-
 		if ( keyboard.isKeyPressed( 'W' ) )
 		{
 			activeCamera.translateRel( DirectX::XMFLOAT3{0.0f, 0.0f, dt * camSpeed} );
@@ -366,7 +378,8 @@ int Sandbox3d::checkInput( const float dt )
 	{
 		if ( !m_mainWindow.isCursorEnabled() )
 		{
-			activeCamera.rotateRel( (float)delta->m_dx, (float)delta->m_dy );
+			const int camRotMult = 32;
+			activeCamera.rotateRel( dt * camSpeed * camRotMult * delta->m_dx, dt * camSpeed * camRotMult * delta->m_dy );
 		}
 	}
 
@@ -383,7 +396,7 @@ void Sandbox3d::update( const float dt )
 	m_pPointLight1->update( gph, dt, activeCamera.getViewMatrix() );
 	//m_pPointLight2->update( gph, dt, activeCamera.getViewMatrix() );
 
-	m_terrain.update( dt );
+	m_terrain.update( dt );	// #TODO: Mesh::update should actually be doing rendering and Mesh::render() simply submits bindables for rendering, so some reformatting and reorganizing here is definitely due
 	m_cube1.update( dt );
 	m_cube2.update( dt );
 	m_cube3.update( dt );
@@ -392,7 +405,16 @@ void Sandbox3d::update( const float dt )
 	//m_sponzaScene.update( dt );
 }
 
-void Sandbox3d::render( const float dt )
+void Sandbox3d::updateFixed( const float dt )
+{
+	// used for stuff that need to be in-step with the physics engine, in order to guarantee a deterministic timestep that is independent of the frame-rate dt
+	// apply continuous forces here (but an instantaneous impulse like a character jumping can and should be done in update instead after input detects it)
+	// also animation that pertains to gameplay (or physics) should be done here (eg character animation in multiplayer game) if you care about fairness
+
+
+}
+
+void Sandbox3d::render( const float renderFrameInterpolation )
 {
 	auto &gph = m_mainWindow.getGraphics();
 	gph.beginFrame();
@@ -421,9 +443,9 @@ void Sandbox3d::test()
 	KeyConsole &console = KeyConsole::getInstance();
 
 	//const BindableMap &instanceToBeInspected = BindableMap::getInstance();
-
 	//console.print( "BindableMap instance count: "s + std::to_string( BindableMap::getInstanceCount() ) + "\n"s );
 	//console.print( "BindableMap garbage count: "s + std::to_string( BindableMap::getGarbageCount() ) + "\n"s );
+
 
 	console.print( "Current distance from carabiner: "s + std::to_string( m_carabiner.getDistanceFromActiveCamera() ) + "\n"s );
 
@@ -488,9 +510,13 @@ int Arkanoid::loop()
 	m_gameTimer.start();
 	while ( true )
 	{
-		if ( const auto exitCode = m_mainWindow.messageLoop() )
+		auto exitCode = m_mainWindow.messageLoop();
+		if ( exitCode )
 		{
-			return *exitCode;
+			if ( *exitCode == 0 )
+			{
+				return 0;
+			}
 		}
 
 		const float dt = calcDt();
@@ -500,13 +526,20 @@ int Arkanoid::loop()
 			break;
 		}
 		update( dt );
-		render( dt );
+		render();
 #if defined _DEBUG && !defined NDEBUG
 		test();
 #endif
 		present();
 	}
 	return returnC0de;
+}
+
+float Arkanoid::calcDt()
+{
+	auto &settings = s_settingsMan.getSettings();
+	float dt = m_gameTimer.lap() * settings.fGameSpeed;
+	return dt;
 }
 
 int Arkanoid::checkInput( const float dt )
@@ -604,7 +637,7 @@ void Arkanoid::update( const float dt )
 	}
 }
 
-void Arkanoid::render( const float dt )
+void Arkanoid::render()
 {
 	auto &gph = m_mainWindow.getGraphics();
 	gph.beginFrame();

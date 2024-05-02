@@ -19,15 +19,19 @@ public:
 		return getInstance().fetch_impl<T>( gph, std::forward<TArgs>( args )... );
 	}
 
-#if defined _DEBUG && !defined NDEBUG
 	static std::size_t getInstanceCount()
 	{
+#if defined _DEBUG && !defined NDEBUG
 		const auto &instance = getInstance();
 		return instance.m_bindableMap.size();
+#else
+		return 0ull;
+#endif
 	}
 
 	static std::size_t getGarbageCount()
 	{
+#if defined _DEBUG && !defined NDEBUG
 		const auto &instance = getInstance();
 		size_t nGarbagePtrs = 0;
 		for ( const auto &elem : instance.m_bindableMap )
@@ -38,8 +42,10 @@ public:
 			}
 		}
 		return nGarbagePtrs;
-	}
+#else
+		return 0ull;
 #endif
+	}
 
 	static void garbageCollect()
 	{

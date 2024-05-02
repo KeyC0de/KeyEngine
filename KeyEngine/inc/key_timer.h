@@ -4,6 +4,7 @@
 #include <chrono>
 #include "console.h"
 #include "non_copyable.h"
+#include "math_utils.h"
 
 
 //=============================================================
@@ -73,11 +74,6 @@ public:
 	//	\date	2020/09/13 19:15
 	constexpr size_t getDurationFromStart() noexcept
 	{
-#if defined _DEBUG && !defined NDEBUG
-		KeyConsole &console = KeyConsole::getInstance();
-		using namespace std::string_literals;
-		console.log( "Duration from start (ms): "s );
-#endif
 		if constexpr( std::is_same_v<Resolution, std::chrono::nanoseconds> )
 		{
 			m_duration = static_cast<size_t>( std::chrono::duration_cast<Resolution>( TClock::now() - m_start ).count() / 1000000 );
@@ -94,6 +90,12 @@ public:
 		{
 			m_duration = static_cast<size_t>( std::chrono::duration_cast<Resolution>( TClock::now() - m_start ).count() * 1000 );
 		}
+
+#if defined _DEBUG && !defined NDEBUG
+		KeyConsole &console = KeyConsole::getInstance();
+		using namespace std::string_literals;
+		console.log( "Duration from start (ms): "s + std::to_string( m_duration ) + "\n" );
+#endif
 
 		return this->m_duration;
 	}
@@ -164,54 +166,28 @@ public:
 #pragma region delayFor
 	//===================================================
 	//	\function	delayFor
-	//	\brief  delays execution of this_thread for the amount of time specified (in milliseconds)
+	//	\brief  delays execution of this_thread for the amount of time specified (in milliseconds, or microseconds)
 	//	\date	2020/10/01 11:05
-	void delayFor( const size_t t ) const noexcept
+	template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+	void delayFor( const T t ) const noexcept
 	{
-		std::this_thread::sleep_for( std::chrono::duration<size_t>( t ) );
+		if constexpr( std::is_floating_point_v<T> )
+		{
+			const auto ms = static_cast<std::uint64_t>( t );
+			delayFor( std::chrono::milliseconds{ms} );
+			//const auto us = util::getFractionalPartAsInt( t, 3 );
+			//delayFor( std::chrono::microseconds{us} );
+		}
+		else
+		{
+			delayFor( std::chrono::milliseconds{static_cast<std::uint64_t>( t )} );
+		}
 	}
-
-	void delayFor( const float t ) const noexcept
-	{
-		std::this_thread::sleep_for( std::chrono::duration<float>( t ) );
-	}
-
-	void delayFor( const double t ) const noexcept
-	{
-		std::this_thread::sleep_for( std::chrono::duration<double>( t ) );
-	}
-
-	void delayFor( const int t ) const noexcept
-	{
-		std::this_thread::sleep_for( std::chrono::duration<int>( t ) );
-	}
-
-	void delayFor( const short t ) const noexcept
-	{
-		std::this_thread::sleep_for( std::chrono::duration<short>( t ) );
-	}
-
-	void delayFor( const unsigned short t ) const noexcept
-	{
-		std::this_thread::sleep_for( std::chrono::duration<unsigned short>( t ) );
-	}
-
-	void delayFor( const std::chrono::nanoseconds &t ) const noexcept
-	{
-		std::this_thread::sleep_for( t );
-	}
-
-	void delayFor( const std::chrono::microseconds &t ) const noexcept
-	{
-		std::this_thread::sleep_for( t );
-	}
-
 	void delayFor( const std::chrono::milliseconds &t ) const noexcept
 	{
 		std::this_thread::sleep_for( t );
 	}
-
-	void delayFor( const std::chrono::seconds &t ) const noexcept
+	void delayFor( const std::chrono::microseconds &t ) const noexcept
 	{
 		std::this_thread::sleep_for( t );
 	}

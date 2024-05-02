@@ -23,8 +23,6 @@ FontPass::FontPass( Graphics &gph,
 	using namespace std::string_literals;
 	const auto fpsFontRelativePath = L"assets/fonts/"s + util::s2ws( fpsFontNameNoExtension ) + L".spritefont"s;
 	m_pFpsSpriteFont = std::make_unique<dx::SpriteFont>( getDevice( gph ), fpsFontRelativePath.c_str() );
-
-	m_fpsTimer.start();
 }
 
 void FontPass::run( Graphics &gph ) const cond_noex
@@ -34,7 +32,7 @@ void FontPass::run( Graphics &gph ) const cond_noex
 	const auto &g_setMan = SettingsManager::getInstance();
 	if ( g_setMan.getSettings().bFpsCounting )
 	{
-		const_cast<FontPass*>( this )->updateAndRenderFpsTimer();
+		const_cast<FontPass*>( this )->updateAndRenderFpsTimer( gph );
 	}
 #endif
 }
@@ -44,21 +42,23 @@ void FontPass::reset() cond_noex
 	pass_;
 }
 
-void FontPass::updateAndRenderFpsTimer()
+void FontPass::updateAndRenderFpsTimer( Graphics &gph )
 {
 	static int fpsDisplayFrameCount = 0;
 	static std::wstring fpsText;
 
 	++fpsDisplayFrameCount;
 
+	auto &fpsTimer = gph.getFpsTimer();
+
 	// if more than 1000ms have passed do an fps count
-	if ( m_fpsTimer.getDurationFromStart() > 1000 )
+	if ( fpsTimer.getDurationFromStart() > 1000 )
 	{
 		fpsText = std::to_wstring( fpsDisplayFrameCount );
 #if defined _DEBUG && !defined NDEBUG
 		OutputDebugStringW( fpsText.data() );
 #endif
-		m_fpsTimer.restart();
+		fpsTimer.restart();
 		fpsDisplayFrameCount = 0;
 	}
 

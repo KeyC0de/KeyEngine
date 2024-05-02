@@ -82,14 +82,14 @@ void Graphics::Adapter::getVRamDetails() const noexcept
 #endif
 }
 
-#if defined FLIP_PRESENT
 void Graphics::makeWindowAssociationWithFactory( HWND hWnd,
 	UINT flags )
 {
+#if defined FLIP_PRESENT
 	HRESULT hres = m_pDxgiFactory->MakeWindowAssociation( hWnd, flags );
 	ASSERT_HRES_IF_FAILED;
-}
 #endif
+}
 
 Graphics::Graphics( const HWND hWnd,
 	const int width,
@@ -238,6 +238,13 @@ Graphics::Graphics( const HWND hWnd,
 	{
 		m_pCpuBuffer = static_cast<ColorBGRA*>( _aligned_malloc( sizeof( ColorBGRA ) * width * height, 16u ) );
 	}
+
+	if ( settings.bVSync )
+	{
+		settings.iMaxFps = util::round( getRefreshRate() );
+	}
+
+	m_fpsTimer.start();
 }
 
 Graphics::~Graphics()
@@ -254,9 +261,7 @@ Graphics::~Graphics()
 		m_pCpuBuffer = nullptr;
 	}
 	cleanState();
-#if defined _DEBUG && !defined NDEBUG
 	d3d11DebugReport();
-#endif
 }
 
 void Graphics::clearShaderSlots() noexcept
@@ -433,9 +438,9 @@ void Graphics::cleanState() noexcept
 	}
 }
 
-#ifdef _PROFILE
 void Graphics::profile() const noexcept
 {
+#ifdef _PROFILE
 	HRESULT hres;
 	unsigned nPresents = -1;
 	hres = m_pSwapChain->GetLastPresentCount( &nPresents );
@@ -450,8 +455,8 @@ void Graphics::profile() const noexcept
 	ASSERT_HRES_IF_FAILED;
 
 	// query frameStats for stuff
-}
 #endif
+}
 
 void Graphics::beginFrame() noexcept
 {
@@ -501,13 +506,23 @@ void Graphics::present()
 {
 	HRESULT hres;
 	SettingsManager &settings = SettingsManager::getInstance();
+	const bool hasVsync = settings.getSettings().bVSync;
+
+	//if ( settings.iMaxFps > 0 )
+	//{
+	//	// #TODO: enable frame limiter
+	//	const float waitForMs = minFrameTimeMs - frameTime;
+	//	if ( waitForMs > 0.0f )
+	//	{
+	//		m_gameTimer.delayFor( waitForMs );
+	//	}
+	//}
+
 #if defined FLIP_PRESENT
 	DXGI_PRESENT_PARAMETERS presentParams;
 	POD_ZERO( presentParams );
-#endif
-	const bool hasVsync = settings.getSettings().bVSync;
-#if defined FLIP_PRESENT
-	hres = m_pSwapChain->Present1( hasVsync ? settings.getSettings().iPresentInterval : 0u, m_presentFlags, hasVsync ? &presentParams : 0u );
+	// #FIXME: setting VSync off during flip model doesn't make it so
+	hres = m_pSwapChain->Present1( hasVsync ? settings.getSettings().iPresentInterval : 0u, m_presentFlags, &presentParams );
 #else
 	hres = m_pSwapChain->Present( hasVsync ? 1u : 0u, 0u );
 #endif
@@ -658,16 +673,6 @@ std::shared_ptr<TextureOffscreenDS> Graphics::getDepthBufferOffscreen( const uns
 	return m_pOffscreenDsv;
 }
 
-void Graphics::bindBackBufferAsOutput() const noexcept
-{
-	m_pImmediateContext->OMSetRenderTargets( 1u, m_pBackBufferRtv->d3dResourceCom().GetAddressOf(), m_pBackBufferDsv->d3dResource() );
-}
-
-void Graphics::bindBackBufferAsOutput( DepthStencilOutput *dsv ) const noexcept
-{
-	m_pImmediateContext->OMSetRenderTargets( 1u, m_pBackBufferRtv->d3dResourceCom().GetAddressOf(), dsv->d3dResource() );
-}
-
 void Graphics::bindBackBufferAsInput()	// #UNUSED
 {
 	mwrl::ComPtr<ID3D11Texture2D> pD3dBackBufferTex;
@@ -696,22 +701,28 @@ void Graphics::bindBackBufferAsInput()	// #UNUSED
 	DXGI_GET_QUEUE_INFO_GFX;
 }
 
-#if defined _DEBUG && !defined NDEBUG
 DxgiInfoQueue& Graphics::getInfoQueue()
 {
+#if defined _DEBUG && !defined NDEBUG
 	return m_infoQueue;
-}
 #endif
+}
+
+KeyTimer<std::chrono::microseconds>& Graphics::getFpsTimer() noexcept
+{
+	return m_fpsTimer;
+}
 
 void Graphics::createFactory()
 {
 	HRESULT hres;
 #ifdef FLIP_PRESENT
-	unsigned factoryFlags = 0u;
-#if defined _DEBUG && !defined NDEBUG
-	factoryFlags = DXGI_CREATE_FACTORY_DEBUG;
-#endif
 	hres = CreateDXGIFactory1( IID_PPV_ARGS( &m_pDxgiFactory ) );
+//#if defined _DEBUG && !defined NDEBUG
+//	unsigned dxgiFactoryFlags = 0u;
+//	dxgiFactoryFlags = DXGI_CREATE_FACTORY_DEBUG;
+//#endif
+//	hres = CreateDXGIFactory2( dxgiFactoryFlags, IID_PPV_ARGS( &m_pDxgiFactory ) );
 #else
 	hres = CreateDXGIFactory1( __uuidof( IDXGIFactory1 ), reinterpret_cast<void**>( m_pDxgiFactory.GetAddressOf() ) );
 #endif
@@ -825,6 +836,7 @@ bool Graphics::checkTearingSupport()
 
 void Graphics::d3d11DebugReport()
 {
+#if defined _DEBUG && !defined NDEBUG
 	HRESULT hres;
 	hres = m_pDevice->QueryInterface( __uuidof( ID3D11Debug ), reinterpret_cast<void**>( &m_pDebug ) );
 	ASSERT_HRES_IF_FAILED;
@@ -838,6 +850,7 @@ void Graphics::d3d11DebugReport()
 		OutputDebugStringW( L"\n\n" );
 		m_pDebug = nullptr;
 	}
+#endif
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

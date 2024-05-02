@@ -51,9 +51,6 @@ public:
 protected:
 	Game( const int width, const int height, const std::string &title, const int x, const int y, const unsigned nWindows = 1 );
 
-	//	\function	calcDt	||	\date	2024/04/15 17:14
-	//	\brief	dt is in milliseconds
-	float calcDt();
 	//	\function	present	||	\date	2022/11/05 16:33
 	//	\brief	all child Games must run this function as the very last statement in their render function
 	void present();
@@ -91,7 +88,8 @@ public:
 private:
 	int checkInput( const float dt );
 	void update( const float dt );
-	void render( const float dt );
+	void updateFixed( const float dt );
+	void render( const float frameInterpolation );
 	void test();
 };
 
@@ -115,9 +113,10 @@ public:
 
 	int loop();
 private:
+	float calcDt();
 	int checkInput( const float dt );
 	void update( const float dt );
-	void render( const float dt );
+	void render();
 	void test();
 };
 

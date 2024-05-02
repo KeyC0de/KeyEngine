@@ -4,7 +4,6 @@
 #include "graphics_friend.h"
 #include "SpriteFont.h"
 #include "SpriteBatch.h"
-#include "key_timer.h"
 #include "bindable_pass.h"
 
 
@@ -18,7 +17,6 @@ class FontPass
 {
 	std::unique_ptr<DirectX::SpriteBatch> m_pSpriteBatch;
 	std::unique_ptr<DirectX::SpriteFont> m_pFpsSpriteFont;
-	KeyTimer<std::chrono::microseconds> m_fpsTimer;
 public:
 	FontPass( Graphics &gph, const std::string &name, const std::string &fpsFontNameNoExtension );
 
@@ -27,7 +25,7 @@ public:
 private:
 	//	\function	updateAndRenderFpsTimer	||	\date	2022/11/13 16:21
 	//	\brief	draws FPS text
-	void updateAndRenderFpsTimer();
+	void updateAndRenderFpsTimer( Graphics &gph );
 };
 
 

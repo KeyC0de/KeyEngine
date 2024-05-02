@@ -73,6 +73,43 @@ constexpr int round( const T val ) noexcept
 	return util::floor( val + (T)0.5 );
 }
 
+//	\function	powerOf	||	/date	2021/10/25 19:40
+//	\brief	calculate x^n, n > 1
+template<typename T, typename J, typename = std::enable_if_t<std::is_arithmetic_v<T>>, typename = std::enable_if_t<std::is_arithmetic_v<J>>>
+constexpr T powerOf( T x,
+	J n )
+{
+	ASSERT( n >= 0, "powerOf doesn't handle negatives powers!" );
+	if ( n == 0 )
+	{
+		return 1;
+	}
+	T xo = x;
+	while ( --n > 0 )
+	{
+		x *= xo;
+	}
+	return x;
+}
+
+//	\function	getFractionalPart	||	\date	2024/05/01 0:13
+//	\brief	works like std::modf which decomposes given floating point value num into integral and fractional parts
+template<typename T, typename = std::enable_if_t<std::is_floating_point_v<T>>>
+constexpr T getFractionalPart( T val )
+{
+	val = util::abs( val );
+	return val - (std::int64_t)val;
+}
+
+template<typename T, typename = std::enable_if_t<std::is_floating_point_v<T>>>
+constexpr std::uint64_t getFractionalPartAsInt( const T val,
+	const int numberOfDecimalPlaces )
+{
+	T integralPart;
+	const T fractionalPart = std::modf( val, &integralPart );
+	return util::round( fractionalPart * util::powerOf( 10, numberOfDecimalPlaces ) );
+}
+
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
 constexpr T clamp( T number,
 	T minimum,
@@ -329,25 +366,6 @@ constexpr T gaussianFilter( /*Image* img,*/
 			( (T)1 / sqrt( (T)2 * (T)PI_D * ss ) ) * exp( -( ( util::square( x ) + util::square( y ) ) / ( (T)2 * util::square( ss ) ) ) );
 		}
 	}
-}
-
-//	\function	powerOf	||	/date	2021/10/25 19:40
-//	\brief	calculate x^n, n > 1
-template<typename T, typename J, typename = std::enable_if_t<std::is_arithmetic_v<T>>, typename = std::enable_if_t<std::is_arithmetic_v<J>>>
-constexpr T powerOf( T x,
-	J n )
-{
-	ASSERT( n >= 0, "powerOf doesn't handle negatives powers!" );
-	if ( n == 0 )
-	{
-		return 1;
-	}
-	T xo = x;
-	while ( --n > 0 )
-	{
-		x *= xo;
-	}
-	return x;
 }
 
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>

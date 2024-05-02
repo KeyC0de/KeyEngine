@@ -14,10 +14,9 @@ class SettingsManager final
 		std::string_view m_game = "Sandbox3d";
 		float fGameSpeed = 1.0f;
 		bool bVSync = true;
-		bool bFpsCap = false;
 		bool bFpsCounting = true;
 		int frameCount = 0;
-		int iMaxFps = 60;
+		int iMaxFps = -1;
 		unsigned iPresentInterval = 1u;
 		bool bStaticShaderCompilation = true;
 		bool bMultithreadedRendering = false;

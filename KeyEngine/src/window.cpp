@@ -494,6 +494,7 @@ Window::operator bool() const noexcept
 std::optional<int> Window::messageLoop() noexcept
 {
 	MSG msg;
+	// while there are windows messages process them
 	while ( PeekMessageW( &msg, nullptr, 0u, 0u, PM_REMOVE ) )
 	{
 		const unsigned uMsg = msg.message;
@@ -517,6 +518,7 @@ std::optional<int> Window::messageLoop() noexcept
 			DispatchMessageW( &msg );
 		}
 	}
+	// if there are no windows messages to process outside of Window just return
 	return std::nullopt;
 }
 

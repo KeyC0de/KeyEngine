@@ -80,8 +80,7 @@ decltype( auto ) askForCredentials( TCallback &&f,
 	if ( !dwErr )
 	{
 		//  Put code that uses the credentials here.
-		ret = std::invoke( std::forward<TCallback>( f ),
-			std::forward<TArgs>( args ) ... );
+		ret = std::invoke( std::forward<TCallback>( f ), std::forward<TArgs>( args ) ... );
 
 		//  when you have finished using the credentials, erase them from memory.
 		SecureZeroMemory( pszName, sizeof( pszName ) );
@@ -99,13 +98,7 @@ decltype( auto ) askForCredentials( TCallback &&f,
 	{\
 		std::ostringstream oss;\
 		using namespace std::string_literals;\
-		oss	<< "\n"s\
-			<< __FUNCTION__\
-			<< " @ line: "s\
-			<< __LINE__\
-			<< "\n"s\
-			<< util::printHresultErrorDescription( hres )\
-			<< "\n\n"s;\
+		oss	<< "\n"s << __FUNCTION__ << " @ line: "s << __LINE__ << "\n"s << util::printHresultErrorDescription( hres ) << "\n\n"s;\
 		KeyConsole &console = KeyConsole::getInstance();\
 		console.log( oss.str() );\
 		__debugbreak();\
@@ -120,13 +113,7 @@ decltype( auto ) askForCredentials( TCallback &&f,
 	{\
 		std::ostringstream oss;\
 		using namespace std::string_literals;\
-		oss	<< "\n"s\
-			<< __FUNCTION__\
-			<< " @ line: "s\
-			<< __LINE__\
-			<< "\n"s\
-			<< util::printHresultErrorDescription( hres )\
-			<< "\n\n"s;\
+		oss	<< "\n"s << __FUNCTION__ << " @ line: "s << __LINE__ << "\n"s << util::printHresultErrorDescription( hres ) << "\n\n"s;\
 		KeyConsole &console = KeyConsole::getInstance();\
 		console.log( oss.str() );\
 		__debugbreak();\
@@ -141,13 +128,7 @@ decltype( auto ) askForCredentials( TCallback &&f,
 	{\
 		std::ostringstream oss;\
 		using namespace std::string_literals;\
-		oss	<< "\n"s\
-			<< __FUNCTION__\
-			<< " @ line: "s\
-			<< __LINE__\
-			<< "\n"s\
-			<< util::printHresultErrorDescription( hres )\
-			<< "\n\n"s;\
+		oss	<< "\n"s << __FUNCTION__ << " @ line: "s << __LINE__ << "\n"s << util::printHresultErrorDescription( hres ) << "\n\n"s;\
 		KeyConsole &console = KeyConsole::getInstance();\
 		console.log( oss.str() );\
 		__debugbreak();\
@@ -162,16 +143,7 @@ decltype( auto ) askForCredentials( TCallback &&f,
 	{\
 		std::ostringstream oss;\
 		using namespace std::string_literals;\
-		oss	<< "\n"s\
-			<< __FUNCTION__\
-			<< " @ line: "s\
-			<< __LINE__\
-			<< "\n"s\
-			<< util::printHresultErrorDescription( hres )\
-			<< "\n"\
-			<< "msg: "\
-			<< msg\
-			<< "\n\n"s;\
+		oss	<< "\n"s << __FUNCTION__ << " @ line: "s << __LINE__ << "\n"s << util::printHresultErrorDescription( hres ) << "\n" << "msg: " << msg << "\n\n"s;\
 		KeyConsole &console = KeyConsole::getInstance();\
 		console.log( oss.str() );\
 		__debugbreak();\
@@ -198,13 +170,7 @@ decltype( auto ) askForCredentials( TCallback &&f,
 	{\
 		std::ostringstream oss;\
 		using namespace std::string_literals;\
-		oss	<< "\n"s\
-			<< __FUNCTION__\
-			<< " @ line: "s\
-			<< __LINE__\
-			<< "\n"s\
-			<< util::getLastNtErrorAsString( ntErrorCode )\
-			<< "\n\n"s;\
+		oss	<< "\n"s << __FUNCTION__ << " @ line: "s << __LINE__ << "\n"s << util::getLastNtErrorAsString( ntErrorCode ) << "\n\n"s;\
 		KeyConsole &console = KeyConsole::getInstance();\
 		console.log( oss.str() );\
 		__debugbreak();\
@@ -221,13 +187,7 @@ decltype( auto ) askForCredentials( TCallback &&f,
 	if ( ret != ERROR_SUCCESS )\
 	{\
 		wchar_t buffer[MAX_PATH];\
-		FormatMessageW( FORMAT_MESSAGE_FROM_SYSTEM,\
-			nullptr,\
-			ret,\
-			0,\
-			buffer,\
-			MAX_PATH,\
-			nullptr );\
+		FormatMessageW( FORMAT_MESSAGE_FROM_SYSTEM, nullptr, ret, 0, buffer, MAX_PATH, nullptr );\
 		KeyConsole &console = KeyConsole::getInstance();\
 		console.print( util::ws2s( buffer ) );\
 		__debugbreak();\

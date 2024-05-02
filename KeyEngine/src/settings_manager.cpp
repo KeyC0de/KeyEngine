@@ -3,7 +3,7 @@
 #include "INIReader.h"
 #include "console.h"
 #include "utils.h"
-#include "console.h"
+#include "math_utils.h"
 
 
 SettingsManager::SettingsManager( const std::string &filePath )
@@ -48,19 +48,11 @@ void SettingsManager::loadFromFile( const std::string &filePath )
 		std::terminate();
 	}
 
-#if defined _DEBUG && !defined NDEBUG
-	KeyConsole& console = KeyConsole::getInstance();
-	console.log( "\n\nConfig loaded from \"" + filePath + "\" - Provided patemeters: {"
-		"\n\tversion="
-		+ std::to_string( m_settings.version )
-		+ "\n\tgame="
-		+ std::string{m_settings.m_game}
-		//+ "\n\tpi="
-		//+ ini.GetReal( "user", "pi", -1 )
-		//+ "\n\tactive="
-		//+ ini.GetBoolean( "user", "active", true )
-		+ "\n}\n\n" );
-#endif
+	m_settings.fGameSpeed = ini.GetReal( "Gameplay", "fGameSpeed", 1.0f );
+
+	m_settings.bVSync = ini.GetBoolean( "Graphics", "bVSync", true );
+	m_settings.iMaxFps = ini.GetInteger( "Graphics", "iMaxFps", -1 );
+	m_settings.iPresentInterval = util::clamp( ini.GetInteger( "Graphics", "iPresentInterval", 1 ), 0l, 4l );
 }
 
 SettingsManager::Settings& SettingsManager::getSettings()
