@@ -141,10 +141,9 @@ public:
 	//	\brief	sets windowed mode or Fullscreen, supply width & height of 0 to resize the buffers for fullscreen mode usage
 	void resize( const unsigned width, const unsigned height );
 	void releaseBackBufferForResizing();
-	//	\function	setupOutputDevice	||	\date	\date	2022/09/18 19:08
-	//	\brief  sets up the output device (such as a monitor)
-	//			#TODO: currently assuming only one output monitor is used, otherwise use EnumOutputs
-	void setupOutputDevice() noexcept;
+	//	\function	setupMonitors	||	\date	2022/09/18 19:08
+	//	\brief	sets up the output monitor devices
+	void setupMonitors() noexcept;
 	double getRefreshRate() const noexcept;
 	size_t getFrameNum() const noexcept;
 	void runRenderer() noexcept;

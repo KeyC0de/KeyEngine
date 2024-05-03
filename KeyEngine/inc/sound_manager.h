@@ -88,6 +88,8 @@ private:
 
 	static inline constexpr size_t s_nMaxAudioChannels = 16u;
 	static inline constexpr size_t s_nMaxSubmixes = 8u;
+private:
+	SoundManager( WAVEFORMATEXTENSIBLE *format );
 public:
 	//	\function	getInstance	||	\date	2020/10/25 21:38
 	//	\brief  return the single instance of the class
@@ -102,8 +104,6 @@ public:
 	//	\brief  removes occupied Channel & places it in the idle list
 	void deactivateChannel( Channel &channel );
 	//void disableSubmixVoice( const Submix &submix );
-private:
-	SoundManager( WAVEFORMATEXTENSIBLE *format );
 };
 
 

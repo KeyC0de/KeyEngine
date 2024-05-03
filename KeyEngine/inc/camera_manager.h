@@ -14,6 +14,12 @@ namespace ren
 	class Renderer;
 }
 
+//=============================================================
+//	\class	CameraManager
+//	\author	KeyC0de
+//	\date	2022/05/03 12:08
+//	\brief	singleton class
+//=============================================================
 class CameraManager final
 	: public NonCopyable
 {
@@ -23,7 +29,7 @@ class CameraManager final
 	unsigned int m_clientWidth;
 	unsigned int m_clientHeight;
 	std::vector<std::shared_ptr<Camera>> m_cameras;
-
+private:
 	CameraManager() = default;
 public:
 	static CameraManager& getInstance();

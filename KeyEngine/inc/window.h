@@ -115,7 +115,8 @@ public:
 	void enableCursor() noexcept;
 	void disableCursor() noexcept;
 	bool isCursorEnabled() const noexcept;
-	bool displayMessageBoxYesNo( const std::string &title, const std::string &message ) const;
+	int displayMessageBoxYesNo( const std::string &title, const std::string &message ) const;
+	int displayMessageBoxOkCancel( const std::string &title, const std::string &message ) const;
 	bool isActive() const noexcept;
 	const std::string& getName() const noexcept;
 	void minimize();

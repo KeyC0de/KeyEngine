@@ -60,14 +60,14 @@ public:
 //	\class	MessageDispatcher
 //	\author	KeyC0de
 //	\date	2019/12/09 17:15
-//	\brief	Meyer's singleton
+//	\brief	Meyer's singleton class
 //			owns & manages the MessageBus/Queue
 //=============================================================
 class MessageDispatcher final
 	: public NonCopyable
 {
 	MessageBus m_mb;
-
+private:
 	MessageDispatcher( const int initialCapacity );
 public:
 	~MessageDispatcher() noexcept = default;

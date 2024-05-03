@@ -19,7 +19,7 @@ class EntityManager final
 	: public NonCopyable
 {
 	static inline EntityManager *s_pInstance;
-private:
+
 	std::vector<std::unique_ptr<Entity>> m_entities;
 	std::vector<EntityIndex> m_freelist;
 	std::vector<size_t> m_worldEntitiesIndices;
@@ -44,8 +44,6 @@ private:
 	Bucket m_ragDolls{3};
 	Bucket m_npcs{4};
 	Bucket m_mounts{5};
-private:
-	EntityManager();
 public:
 	static EntityManager& getInstance();
 	static void resetInstance();
@@ -64,4 +62,6 @@ public:
 	//	\function	world	||	\date	2022/08/28 13:06
 	//	\brief		gets the current world
 	Entity* world();
+private:
+	EntityManager();
 };

@@ -4,6 +4,12 @@
 #include <string_view>
 
 
+//=============================================================
+//	\class	SettingsManager
+//	\author	KeyC0de
+//	\date	2022/05/03 12:07
+//	\brief	singleton class
+//=============================================================
 class SettingsManager final
 {
 	static inline SettingsManager *s_pInstance;
@@ -25,7 +31,7 @@ class SettingsManager final
 		bool bFullscreen = false;
 		bool bAllowWindowResize = true;
 	} m_settings;
-
+private:
 	SettingsManager( const std::string &filePath );
 
 	void loadFromFile( const std::string &filePath );

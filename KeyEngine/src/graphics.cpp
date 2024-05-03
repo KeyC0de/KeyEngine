@@ -212,7 +212,7 @@ Graphics::Graphics( const HWND hWnd,
 
 	getRenderTargetFromBackBuffer();
 
-	setupOutputDevice();
+	setupMonitors();
 
 	// Create Renderer
 	if constexpr ( gph_mode::get() == gph_mode::_3D )
@@ -353,8 +353,25 @@ void Graphics::releaseBackBufferForResizing()
 	//ASSERT( rtvRefs == 1 && dsvRefs == 1, "More references to such resources still exist" );
 }
 
-void Graphics::setupOutputDevice() noexcept
+void Graphics::setupMonitors() noexcept
 {
+	auto *pMainAdapter = s_adapters[0].getAdapter();
+
+	// enumerate adapter outputs
+	IDXGIOutput* output;
+	unsigned i = 0;
+	while ( pMainAdapter->EnumOutputs( i, &output ) != DXGI_ERROR_NOT_FOUND )
+	{
+		DXGI_OUTPUT_DESC desc;
+		output->GetDesc( &desc );
+		++i;
+	}
+
+	if ( i > 1 )
+	{
+		THROW_GRAPHICS_EXCEPTION( "Multiple monitors are not currently supported. Please set only 1 monitor per graphics card for use in this application." );
+	}
+
 	HRESULT hres;
 	mwrl::ComPtr<IDXGIOutput> dxgiOutput;
 	hres = m_pSwapChain->GetContainingOutput( &dxgiOutput );
@@ -364,7 +381,7 @@ void Graphics::setupOutputDevice() noexcept
 	ASSERT_HRES_IF_FAILED;
 
 #if defined _DEBUG && !defined NDEBUG
-	const char *primaryOutputMonitor = "PrimaryOutputMonitor";
+	const char *primaryOutputMonitor = "OutputMonitorPrimary";
 	m_pDxgiOutput->SetPrivateData( WKPDID_D3DDebugObjectName, (UINT) strlen( primaryOutputMonitor ), primaryOutputMonitor );
 #endif
 }

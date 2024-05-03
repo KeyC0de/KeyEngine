@@ -10,7 +10,7 @@
 //	\author	KeyC0de
 //	\date	2020/07/10 15:10
 //	\brief	interface to the process's console
-//			Singleton class
+//			singleton class
 //			by default set to output mode
 //			the mode is changed dynamically depending on print/log/read operation request
 //=============================================================
@@ -26,16 +26,16 @@ class KeyConsole final
 	HANDLE m_hConsole;
 	WORD m_consoleAttributesDefault;
 	WORD m_consoleAttributes;
-
+private:
 	KeyConsole( const std::string &fontName = "Lucida Console" );
-public:
-	~KeyConsole();
 public:
 	static KeyConsole& getInstance() noexcept;
 	//	\function	resetInstance	||	\date	2020/12/30 22:19
 	//	\brief  you must call this manually prior to program exit to avoid memory leaks
 	static void resetInstance();
 public:
+	~KeyConsole();
+
 	//	\function	print	||	\date	2020/12/30 22:19
 	//	\brief  print to stdout
 	DWORD print( const std::string &msg );

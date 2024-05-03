@@ -405,10 +405,22 @@ HDC Window::getDc() const noexcept
 	return GetWindowDC( m_hWnd );
 }
 
-bool Window::displayMessageBoxYesNo( const std::string &title,
+int Window::displayMessageBoxYesNo( const std::string &title,
+	const std::string &message ) const
+{
+	return MessageBoxW( m_hWnd, util::s2ws( message ).c_str(), util::s2ws( title ).c_str(), MB_YESNOCANCEL );
+	// IDYES
+	// IDNO
+	// IDCANCEL
+}
+
+int Window::displayMessageBoxOkCancel( const std::string &title,
 	const std::string &message ) const
 {
 	return MessageBoxW( m_hWnd, util::s2ws( message ).c_str(), util::s2ws( title ).c_str(), MB_OKCANCEL );
+	// possible replies:
+	// IDOK
+	// IDCANCEL
 }
 
 bool Window::isActive() const noexcept
@@ -1041,11 +1053,10 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 
 		break;
 	}
+	case WM_DESTROY:
 	case WM_CLOSE:
-	{
-		PostQuitMessage( 0 );
+	case WM_QUIT:	// the final message sent upon window termination, no return value
 		break;
-	}
 	case WM_KILLFOCUS:
 	{
 		// clear keyboard button states when window loses focus to prevent keyboard input getting "stuck"
@@ -1212,11 +1223,11 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 			restore();
 			break;
 		case SC_CLOSE:	// ALT-F4, or when X-ing out the window
-			if ( displayMessageBoxYesNo( "Confirmation", "Are you sure you want to quit?" ) == IDOK )
+			if ( displayMessageBoxYesNo( "Confirmation", "Are you sure you want to quit?" ) == IDYES )
 			{
 				PostQuitMessage( 0 );
 			}
-			break;
+			return 0;
 		}
 		break;
 	}

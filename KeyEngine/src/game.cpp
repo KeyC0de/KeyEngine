@@ -244,7 +244,7 @@ int Sandbox3d::loop()
 			float loops = 0;
 			while ( accumulator >= dtFixed && loops < maxFramesSkip )
 			{
-				this->updateFixed( dtFixed );
+				updateFixed( dtFixed );
 				accumulator -= dtFixed;
 				++loops;
 			}

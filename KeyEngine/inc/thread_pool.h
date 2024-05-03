@@ -14,7 +14,7 @@
 //	\date	25/9/2019 3:55
 //	\brief	A class which encapsulates a Queue of Tasks & a Pool of threads and dispatches work on demand
 //				ie. upon an incoming Task - callable object - a thread is dispatched to execute it
-//			Singleton
+//			Singleton class
 //			move only
 //=============================================================
 class ThreadPool final
