@@ -165,7 +165,7 @@ private:
 	LRESULT windowProc_impl3d( _In_ const HWND pWndHandle, _In_ const unsigned msg, _In_ const WPARAM wparam, _In_ const LPARAM lparam );
 	LRESULT windowProc_impl2d( _In_ const HWND pWndHandle, _In_ const unsigned msg, _In_ const WPARAM wparam, _In_ const LPARAM lparam );
 	void setFont( const std::string &fontName );
-	void resize( const int width, const int height, const unsigned flags = SWP_NOZORDER | SWP_NOMOVE | SWP_NOACTIVATE ) const noexcept;
+	void setWindowProperties( const int width, const int height, const unsigned flags = SWP_NOZORDER | SWP_NOMOVE | SWP_NOACTIVATE ) cond_noex;
 	// Menu related functions
 	void WINAPI processMenu( HMENU hMenu );
 	bool editCopy( const unsigned format = CLIPBOARD_TEXT_FORMAT );
@@ -180,7 +180,5 @@ private:
 };
 
 
-#define THROW_WINDOW_EXCEPTION( msg ) throw WindowException( __LINE__,\
-	__FILE__,\
-	__FUNCTION__,\
-	msg );
+#define THROW_WINDOW_EXCEPTION( msg ) __debugbreak();\
+	throw WindowException( __LINE__, __FILE__, __FUNCTION__, msg );

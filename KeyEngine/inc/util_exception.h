@@ -14,8 +14,5 @@ public:
 };
 
 
-#define THROW_UTIL_EXCEPTION( msg ) throw UtilException( __LINE__,\
-	__FILE__,\
-	__FUNCTION__,\
-	msg );\
-	__debugbreak();
+#define THROW_UTIL_EXCEPTION( msg ) __debugbreak();\
+	throw UtilException( __LINE__, __FILE__, __FUNCTION__, msg );

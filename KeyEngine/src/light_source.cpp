@@ -5,7 +5,6 @@
 #include "camera.h"
 #include "math_utils.h"
 #include "assertions_console.h"
-#include "camera_manager.h"
 
 
 /*
@@ -38,7 +37,7 @@ PointLight::PointLight( Graphics &gph,
 	resetToDefault();
 	if ( bShadowCasting )
 	{
-		m_pCameraForShadowing = std::make_shared<Camera>( gph, std::string{"ShadowCam#"} + std::to_string( id ), CameraManager::getInstance().getClientWidth(), CameraManager::getInstance().getClientHeight(), 90.0f, m_pscbData.pos, 0.0f, util::PI / 2.0f, true );
+		m_pCameraForShadowing = std::make_shared<Camera>( gph, std::string{"ShadowCam#"} + std::to_string( id ), gph.getClientWidth(), gph.getClientHeight(), 90.0f, m_pscbData.pos, 0.0f, util::PI / 2.0f, true );
 	}
 }
 

@@ -29,7 +29,7 @@ class SettingsManager final
 		unsigned nRenderingThreads = 4u;
 		bool bGamePaused = false;
 		bool bFullscreen = false;
-		bool bAllowWindowResize = true;
+		bool bAllowWindowResize = false;
 	} m_settings;
 private:
 	SettingsManager( const std::string &filePath );

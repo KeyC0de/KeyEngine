@@ -40,8 +40,6 @@ protected:
 		m_bindables.emplace_back();
 		addBinder( std::make_unique<ContainerBindableBinder<T>>( binderName, m_bindables, index ) );
 	}
-
-	// #TODO: add releaseTargets() to release the RT & DS when we change the resolution of the swap chain & window
 };
 
 

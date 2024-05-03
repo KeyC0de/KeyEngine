@@ -12,26 +12,6 @@ CameraManager& CameraManager::getInstance()
 	return instance;
 }
 
-void CameraManager::setWidth( const int width ) noexcept
-{
-	m_clientWidth = width;
-}
-
-void CameraManager::setHeight( const int height ) noexcept
-{
-	m_clientHeight = height;
-}
-
-int CameraManager::getClientWidth() const noexcept
-{
-	return m_clientWidth;
-}
-
-int CameraManager::getClientHeight() const noexcept
-{
-	return m_clientWidth;
-}
-
 void CameraManager::displayImguiWidgets( Graphics &gph ) noexcept
 {
 #ifndef FINAL_RELEASE
@@ -63,16 +43,10 @@ void CameraManager::displayImguiWidgets( Graphics &gph ) noexcept
 			ImGui::EndCombo();
 		}
 
-		controlledCamera().displayImguiWidgets( gph );
+		getControlledCamera().displayImguiWidgets( gph );
 	}
 	ImGui::End();
 #endif
-}
-
-void CameraManager::bind( Graphics &gph )
-{
-	ASSERT( m_clientWidth != 0 && m_clientHeight != 0, "Invalid camera binding!" );
-	gph.setViewMatrix( getActiveCamera().getViewMatrix() );
 }
 
 void CameraManager::add( std::shared_ptr<Camera> pCam )
@@ -99,7 +73,15 @@ void CameraManager::render( const size_t channels ) const
 	}
 }
 
-Camera& CameraManager::activeCamera() cond_noex
+void CameraManager::updateDimensions( Graphics &gph )
+{
+	for ( auto& cam : m_cameras )
+	{
+		cam->updateDimensions( gph );
+	}
+}
+
+Camera& CameraManager::getActiveCamera() cond_noex
 {
 	return *m_cameras[m_activeCameraIndex];
 }
@@ -114,7 +96,7 @@ std::shared_ptr<Camera> CameraManager::shareActiveCamera() const noexcept
 	return m_cameras[m_activeCameraIndex];
 }
 
-Camera& CameraManager::controlledCamera() cond_noex
+Camera& CameraManager::getControlledCamera() cond_noex
 {
 	return *m_cameras[m_controlledCameraIndex];
 }

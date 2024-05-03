@@ -14,8 +14,5 @@ public:
 };
 
 
-#define THROW_BINDABLE_EXCEPTION( msg ) throw BindableException( __LINE__,\
-	__FILE__,\
-	__FUNCTION__,\
-	msg );\
-	__debugbreak();
+#define THROW_BINDABLE_EXCEPTION( msg ) __debugbreak();\
+	throw BindableException( __LINE__, __FILE__, __FUNCTION__, msg );

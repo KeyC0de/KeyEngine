@@ -4,7 +4,6 @@
 #include "pixel_shader.h"
 #include "primitive_topology.h"
 #include "transform_vscb.h"
-#include "transform_scale_vscb.h"
 #include "vertex_buffer.h"
 #include "index_buffer.h"
 #include "vertex_shader.h"

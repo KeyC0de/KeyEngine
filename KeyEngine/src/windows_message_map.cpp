@@ -29,7 +29,7 @@ WindowsMessageMap::WindowsMessageMap() noexcept
 		MAP_MESSAGE( WM_SETREDRAW ),
 		MAP_MESSAGE( WM_SETTEXT ),
 		MAP_MESSAGE( WM_GETTEXT ),	// Copies the text that corresponds to a window into a buffer provided by the caller.
-		MAP_MESSAGE( WM_GETTEXTLENGTH ),
+		MAP_MESSAGE( WM_GETTEXTLENGTH ),	// determines the length, in characters, of the text associated with a window
 		MAP_MESSAGE( WM_PAINT ),
 		MAP_MESSAGE( WM_CLOSE ),
 		MAP_MESSAGE( WM_QUERYENDSESSION ),

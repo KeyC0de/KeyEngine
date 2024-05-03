@@ -262,9 +262,6 @@
     <ClCompile Include="src\render_target.cpp">
       <Filter>engine\vfx\bindables</Filter>
     </ClCompile>
-    <ClCompile Include="src\transform_scale_vscb.cpp">
-      <Filter>engine\vfx\bindables</Filter>
-    </ClCompile>
     <ClCompile Include="src\transform_vscb.cpp">
       <Filter>engine\vfx\bindables</Filter>
     </ClCompile>
@@ -955,9 +952,6 @@
       <Filter>engine\vfx\bindables</Filter>
     </ClInclude>
     <ClInclude Include="inc\render_target.h">
-      <Filter>engine\vfx\bindables</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\transform_scale_vscb.h">
       <Filter>engine\vfx\bindables</Filter>
     </ClInclude>
     <ClInclude Include="inc\transform_vscb.h">

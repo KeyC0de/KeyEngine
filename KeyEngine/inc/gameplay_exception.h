@@ -14,8 +14,5 @@ public:
 };
 
 
-#define THROW_GAMEPLAY_EXCEPTION( msg ) throw GameplayException( __LINE__,\
-	__FILE__,\
-	__FUNCTION__,\
-	msg );\
-	__debugbreak();
+#define THROW_GAMEPLAY_EXCEPTION( msg ) __debugbreak();\
+	throw GameplayException( __LINE__, __FILE__, __FUNCTION__, msg );

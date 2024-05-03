@@ -77,6 +77,8 @@ public:
 	const std::string& getName() const noexcept;
 	std::vector<DirectX::XMFLOAT4> getFrustumPlanes() const noexcept;
 	void displayImguiWidgets( Graphics &gph ) noexcept;
+	void updateDimensions( Graphics &gph );
+	void setTethered( const bool bTethered ) cond_noex;
 private:
 	DirectX::XMMATRIX getPositionMatrix() const noexcept;
 	DirectX::XMMATRIX getRotationMatrix() const noexcept;

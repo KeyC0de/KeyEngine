@@ -123,6 +123,7 @@ void Camera::resetToDefault( Graphics &gph ) noexcept
 		m_cameraFrustum.setPosition( m_position );
 		m_cameraWidget.setPosition( m_position );
 	}
+
 	m_pitch = m_homePitch;
 	m_yaw = m_homeYaw;
 
@@ -139,6 +140,11 @@ void Camera::resetToDefault( Graphics &gph ) noexcept
 void Camera::rotateRel( const float dx,
 	const float dy ) noexcept
 {
+	if ( m_bTethered )
+	{
+		return;
+	}
+
 	m_pitch = std::clamp( m_pitch + dy * m_rotationSpeed, 0.995f * -util::PI / 2.0f, 0.995f * util::PI / 2.0f );
 	m_yaw = util::wrapAngle( m_yaw + dx * m_rotationSpeed );
 	const dx::XMFLOAT3 angles{m_pitch, m_yaw, 0.0f};
@@ -161,6 +167,11 @@ void Camera::translateRel( DirectX::XMFLOAT3 translation ) noexcept
 
 void Camera::setPosition( const DirectX::XMFLOAT3 &pos ) noexcept
 {
+	if ( m_bTethered )
+	{
+		return;
+	}
+
 	this->m_position = pos;
 	m_cameraFrustum.setPosition( pos );
 	m_cameraWidget.setPosition( pos );
@@ -336,6 +347,18 @@ void Camera::displayImguiWidgets( Graphics &gph ) noexcept
 #endif
 }
 
+void Camera::updateDimensions( Graphics &gph )
+{
+	m_width = gph.getClientWidth();
+	m_height = gph.getClientHeight();
+	updateCameraFrustum( gph );
+}
+
+void Camera::setTethered( const bool bTethered ) cond_noex
+{
+	m_bTethered = bTethered;
+}
+
 DirectX::XMMATRIX Camera::getPositionMatrix() const noexcept
 {
 	return dx::XMMatrixTranslation( m_position.x, m_position.y, m_position.z );
@@ -358,4 +381,5 @@ void Camera::updateCameraFrustum( Graphics &gph )
 	auto g = Geometry::makeCameraFrustum( m_width, m_height, m_nearZ, m_farZ );
 	m_cameraFrustum.getVertexBuffer() = std::make_shared<VertexBuffer>( gph, g.m_vb );
 	m_cameraFrustum.createAabb( g.m_vb );
+	m_aspectRatio = m_width / m_height;
 }

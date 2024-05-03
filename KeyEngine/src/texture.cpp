@@ -157,8 +157,8 @@ TextureOffscreenRT::TextureOffscreenRT( Graphics &gph,
 {
 	D3D11_TEXTURE2D_DESC texDesc = createTextureDescriptor( width, height, getFormatRtv( rtvMode ), BindFlags::RenderTargetTexture, CpuAccessFlags::NoCpuAccess, false, TextureUsage::Default );
 
-	mwrl::ComPtr<ID3D11Texture2D> pTex;
-	HRESULT hres = getDevice( gph )->CreateTexture2D( &texDesc, nullptr, &pTex );
+	mwrl::ComPtr<ID3D11Texture2D> pTexture;
+	HRESULT hres = getDevice( gph )->CreateTexture2D( &texDesc, nullptr, &pTexture );
 	ASSERT_HRES_IF_FAILED;
 
 	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc{};
@@ -166,10 +166,10 @@ TextureOffscreenRT::TextureOffscreenRT( Graphics &gph,
 	srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
 	srvDesc.Texture2D.MostDetailedMip = 0u;
 	srvDesc.Texture2D.MipLevels = 1u;
-	hres = getDevice( gph )->CreateShaderResourceView( pTex.Get(), &srvDesc, &m_pSrv );
+	hres = getDevice( gph )->CreateShaderResourceView( pTexture.Get(), &srvDesc, &m_pSrv );
 
 	// create RTV that will render on the created offscreen texture and on a next pass we can use this RTV to read that texture
-	m_pRtv = std::make_shared<RenderTargetOutput>( gph, pTex.Get() );
+	m_pRtv = std::make_shared<RenderTargetOutput>( gph, pTexture.Get() );
 }
 
 void TextureOffscreenRT::bind( Graphics &gph ) cond_noex
@@ -183,9 +183,9 @@ std::shared_ptr<RenderTargetOutput> TextureOffscreenRT::shareRenderTarget() cons
 	return m_pRtv;
 }
 
-Microsoft::WRL::ComPtr<ID3D11RenderTargetView>& TextureOffscreenRT::innerD3dResource() noexcept
+std::shared_ptr<RenderTargetOutput>& TextureOffscreenRT::rtv() noexcept
 {
-	return m_pRtv->d3dResourceCom();
+	return m_pRtv;
 }
 
 unsigned TextureOffscreenRT::getSlot() const noexcept
@@ -205,8 +205,8 @@ TextureOffscreenDS::TextureOffscreenDS( Graphics &gph,
 {
 	D3D11_TEXTURE2D_DESC texDesc = createTextureDescriptor( width, height, getTypelessFormatDsv( dsvMode ), BindFlags::DepthStencilTexture, CpuAccessFlags::NoCpuAccess, false, TextureUsage::Default );
 
-	mwrl::ComPtr<ID3D11Texture2D> pTex;
-	HRESULT hres = getDevice( gph )->CreateTexture2D( &texDesc, nullptr, &pTex );
+	mwrl::ComPtr<ID3D11Texture2D> pTexture;
+	HRESULT hres = getDevice( gph )->CreateTexture2D( &texDesc, nullptr, &pTexture );
 	ASSERT_HRES_IF_FAILED;
 
 	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc{};
@@ -214,11 +214,11 @@ TextureOffscreenDS::TextureOffscreenDS( Graphics &gph,
 	srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
 	srvDesc.Texture2D.MostDetailedMip = 0u;
 	srvDesc.Texture2D.MipLevels = 1u;
-	hres = getDevice( gph )->CreateShaderResourceView( pTex.Get(), &srvDesc, &m_pSrv );
+	hres = getDevice( gph )->CreateShaderResourceView( pTexture.Get(), &srvDesc, &m_pSrv );
 	ASSERT_HRES_IF_FAILED;
 
 	// create DSV that will render on the created offscreen texture and on a next pass we can use this SRV to read that texture
-	m_pDsv = std::make_shared<DepthStencilOutput>( gph, pTex.Get(), dsvMode );
+	m_pDsv = std::make_shared<DepthStencilOutput>( gph, pTexture.Get(), dsvMode );
 }
 
 void TextureOffscreenDS::bind( Graphics &gph ) cond_noex
@@ -232,14 +232,14 @@ std::shared_ptr<DepthStencilOutput> TextureOffscreenDS::shareDepthBuffer() const
 	return m_pDsv;
 }
 
+std::shared_ptr<DepthStencilOutput>& TextureOffscreenDS::dsv() noexcept
+{
+	return m_pDsv;
+}
+
 unsigned TextureOffscreenDS::getSlot() const noexcept
 {
 	return m_slot;
-}
-
-Microsoft::WRL::ComPtr<ID3D11DepthStencilView>& TextureOffscreenDS::innerD3dResource() noexcept
-{
-	return m_pDsv->d3dResourceCom();
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

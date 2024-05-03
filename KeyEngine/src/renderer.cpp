@@ -36,15 +36,35 @@ namespace ren
 Renderer::Renderer( Graphics &gph,
 	bool drawToOffscreen )
 	:
-	m_pRtv{drawToOffscreen ? gph.getRenderTargetOffscreen( 0u, RenderTargetViewMode::DefaultRT )->shareRenderTarget() : gph.getRenderTargetFromBackBuffer()},
-	m_pDsv{drawToOffscreen ? gph.getDepthBufferOffscreen( 0u, DepthStencilViewMode::DefaultDS )->shareDepthBuffer() : gph.getDepthBufferFromBackBuffer()}
+	m_bUsesOffscreen{drawToOffscreen}
 {
+	recreate( gph );
+}
+
+Renderer::~Renderer() noexcept
+{
+
+}
+
+void Renderer::recreate( Graphics &gph )
+{
+	m_passes.clear();
+	m_globalBinders.clear();
+	m_globalLinkers.clear();
+	m_pFinalPostProcessPass.reset();
+	m_pFontPass.reset();
+	m_pRtv.reset();
+	m_pDsv.reset();
+	m_bValidatedPasses = false;
+
+	m_pRtv = m_bUsesOffscreen ? gph.getRenderTargetOffscreen( 0u, RenderTargetViewMode::DefaultRT )->shareRenderTarget() : gph.getRenderTargetFromBackBuffer();
+	m_pDsv = m_bUsesOffscreen ? gph.getDepthBufferOffscreen( 0u, DepthStencilViewMode::DefaultDS )->shareDepthBuffer() : gph.getDepthBufferFromBackBuffer();
+
 	addGlobalBinder( RenderSurfaceBinder<IRenderTargetView>::make( "backColorbuffer", m_pRtv ) );
 
 	addGlobalLinker( RenderSurfaceLinker<IRenderTargetView>::make( "backColorbuffer", m_pRtv ) );
 	addGlobalLinker( RenderSurfaceLinker<IDepthStencilView>::make( "backDepthBuffer", m_pDsv ) );
 
-	// #TODO: Add active flag as argument in the ctor of all Passes
 	{
 		auto pass = std::make_unique<RenderSurfaceClearPass>( "clearRt" );
 		pass->setupBinderTarget( "buffer", "$", "backColorbuffer" );
@@ -55,11 +75,6 @@ Renderer::Renderer( Graphics &gph,
 		pass->setupBinderTarget( "buffer", "$", "backDepthBuffer" );
 		addPass( std::move( pass ) );
 	}
-}
-
-Renderer::~Renderer() noexcept
-{
-
 }
 
 void Renderer::addGlobalLinker( std::unique_ptr<ILinker> pLinker )
@@ -82,13 +97,13 @@ void Renderer::run( Graphics &gph ) cond_noex
 		{
 			pass->run( gph );
 #if defined _DEBUG && !defined NDEBUG
-			const auto *renderQueuePass = dynamic_cast<RenderQueuePass*>( pass.get() );
-			if ( renderQueuePass != nullptr )
-			{
-				using namespace std::string_literals;
-				KeyConsole &console = KeyConsole::getInstance();
-				console.print( pass->getName() + " "s + std::to_string( renderQueuePass->getJobCount() ) + "\n"s );
-			}
+//			const auto *renderQueuePass = dynamic_cast<RenderQueuePass*>( pass.get() );
+//			if ( renderQueuePass != nullptr )
+//			{
+//				using namespace std::string_literals;
+//				KeyConsole &console = KeyConsole::getInstance();
+//				console.print( pass->getName() + " "s + std::to_string( renderQueuePass->getJobCount() ) + "\n"s );
+//			}
 #endif
 		}
 	}
@@ -269,6 +284,19 @@ RenderQueuePass& Renderer::getRenderQueuePass( const std::string &name )
 	THROW_RENDERER_EXCEPTION( "Renderer::getRenderQueuePass pass '" + name + "' was not found" );
 }
 
+bool Renderer::isUsingOffscreenRendering() const noexcept
+{
+	return m_bUsesOffscreen;
+}
+
+void Renderer::recreateRtvsAndDsvs( Graphics &gph )
+{
+	for ( auto &pass : m_passes )
+	{
+		pass->recreateRtvsAndDsvs( gph );
+	}
+}
+
 
 Renderer3d::Renderer3d( Graphics &gph,
 	bool drawToOffscreen,
@@ -281,6 +309,13 @@ Renderer3d::Renderer3d( Graphics &gph,
 	m_sigma(sigma),
 	m_kernelType{kernelType}
 {
+	recreate( gph );
+}
+
+void Renderer3d::recreate( Graphics &gph )
+{
+	Renderer::recreate( gph );
+
 	{
 		auto pass = std::make_unique<ShadowPass>( gph, "shadowMap" );
 		addPass( std::move( pass ) );
@@ -387,6 +422,7 @@ void Renderer3d::displayImguiWidgets( Graphics &gph ) noexcept
 #ifndef FINAL_RELEASE
 	showShadowDumpImguiWindow( gph );
 	showGaussianBlurImguiWindow( gph );
+	showDisplayMode( gph );
 	dynamic_cast<SkyPass&>( getPass( "sky" ) ).displayImguiWidgets();
 #endif
 }
@@ -465,12 +501,42 @@ void Renderer3d::showGaussianBlurImguiWindow( Graphics &gph ) noexcept
 #endif
 }
 
+void ren::Renderer3d::showDisplayMode( Graphics &gph ) noexcept
+{
+#ifndef FINAL_RELEASE
+	bool bDirty = false;
+	const auto dirtyCheck = [&bDirty]( const bool bChanged )
+	{
+		bDirty = bDirty || bChanged;
+	};
+
+	if ( ImGui::Begin( "Display Mode" ) )
+	{
+		dirtyCheck( ImGui::Checkbox( "Fullscreen", &gph.getDisplayMode() ) );
+	}
+	ImGui::End();
+
+	if ( bDirty )
+	{
+		if ( gph.getDisplayMode() )
+		{
+			gph.resize( 0, 0 );
+		}
+		else
+		{
+			gph.resize( 1600, 900 );
+		}
+	}
+#endif
+}
+
 void ren::Renderer3d::setActiveCamera( const Camera &cam )
 {
 	dynamic_cast<LambertianPass&>( getPass( "lambertian" ) ).setActiveCamera( cam );
 	dynamic_cast<SkyPass&>( getPass( "sky" ) ).setActiveCamera( cam );
 }
 
+// #TODO: rename to addShadowCamera
 void ren::Renderer3d::setShadowCamera( const Camera &cam,
 	const bool bEnable )
 {

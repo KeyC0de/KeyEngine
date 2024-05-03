@@ -157,31 +157,16 @@ Sandbox3d::Sandbox3d( const int width,
 {
 	auto &gph = m_mainWindow.getGraphics();
 
-	s_cameraMan.setWidth( width );
-	s_cameraMan.setHeight( height );
 	s_cameraMan.add( std::make_unique<Camera>( gph, "A", width, height, 60.0f, dx::XMFLOAT3{0.0f, 0.0f, 0.0f}, 0.0f, util::PI / 2.0f, false, 0.5f, 1000.0f ) );
 	s_cameraMan.add( std::make_unique<Camera>( gph, "B", width, height, 45.0f, dx::XMFLOAT3{-13.5f, 28.8f, -6.4f}, util::PI / 180.0f * 13.0f, util::PI / 180.0f * 61.0f, false, 0.5f, 1000.0f ) );
 	m_pPointLight1 = std::make_unique<PointLight>( gph, dx::XMFLOAT3{10.0f, 5.0f, -1.4f} );
 	//m_pPointLight2 = std::make_unique<PointLight>( m_mainWindow.getGraphics(), dx::XMFLOAT3{5.0f, 15.0f, 10.0f}, dx::XMFLOAT3{0.0f, 1.0f, 0.f}, false );
-	//s_cameraMan.add( m_pPointLight1->shareCamera() );
 
 	m_cube1.setPosition( {10.0f, 5.0f, 6.0f} );
 
 	auto &renderer = gph.getRenderer();
 
-	s_cameraMan.connectEffectsToRenderer( renderer );
-
-	m_pPointLight1->connectEffectsToRenderer( renderer );
-	//m_pPointLight2->connectEffectsToRenderer( renderer );
-
-	m_terrain.connectEffectsToRenderer( renderer );
-	m_cube1.connectEffectsToRenderer( renderer );
-	m_cube2.connectEffectsToRenderer( renderer );
-	m_cube3.connectEffectsToRenderer( renderer );
-	m_testSphere.connectEffectsToRenderer( renderer );
-	//m_sponzaScene.connectEffectsToRenderer( renderer );
-	//m_nanoSuit.connectEffectsToRenderer( renderer );
-	m_carabiner.connectEffectsToRenderer( renderer );
+	connectEffectsToRenderer( renderer );
 
 	m_cube2.setEffectEnabled( rch::blurOutline, false );
 
@@ -340,7 +325,7 @@ int Sandbox3d::checkInput( const float dt )
 
 	const float camSpeed = keyboard.isKeyPressed( VK_SHIFT ) ? 10.0f : 1.0f;
 
-	auto &activeCamera = s_cameraMan.activeCamera();
+	auto &activeCamera = s_cameraMan.getActiveCamera();
 	if ( !m_mainWindow.isCursorEnabled() )
 	{
 		if ( keyboard.isKeyPressed( 'W' ) )
@@ -473,6 +458,23 @@ void Sandbox3d::test()
 		ImGui::ShowDemoWindow( &m_bShowDemoWindow );
 	}
 #endif
+}
+
+void Sandbox3d::connectEffectsToRenderer( ren::Renderer &renderer )
+{
+	s_cameraMan.connectEffectsToRenderer( renderer );
+
+	m_pPointLight1->connectEffectsToRenderer( renderer );
+	//m_pPointLight2->connectEffectsToRenderer( renderer );
+
+	m_terrain.connectEffectsToRenderer( renderer );
+	m_cube1.connectEffectsToRenderer( renderer );
+	m_cube2.connectEffectsToRenderer( renderer );
+	m_cube3.connectEffectsToRenderer( renderer );
+	m_testSphere.connectEffectsToRenderer( renderer );
+	//m_sponzaScene.connectEffectsToRenderer( renderer );
+	//m_nanoSuit.connectEffectsToRenderer( renderer );
+	m_carabiner.connectEffectsToRenderer( renderer );
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

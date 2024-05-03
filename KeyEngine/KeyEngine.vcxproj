@@ -306,7 +306,6 @@
     <ClCompile Include="src\texture_desc.cpp" />
     <ClCompile Include="src\texture_sampler_state.cpp" />
     <ClCompile Include="src\jthread_pool.cpp" />
-    <ClCompile Include="src\transform_scale_vscb.cpp" />
     <ClCompile Include="src\transform_vscb.cpp" />
     <ClCompile Include="src\triangle_mesh.cpp" />
     <ClCompile Include="src\utils.cpp" />
@@ -452,7 +451,6 @@
     <ClInclude Include="inc\texture_desc.h" />
     <ClInclude Include="inc\texture_sampler_state.h" />
     <ClInclude Include="inc\jthread_pool.h" />
-    <ClInclude Include="inc\transform_scale_vscb.h" />
     <ClInclude Include="inc\transform_vscb.h" />
     <ClInclude Include="inc\triangle_mesh.h" />
     <ClInclude Include="inc\types.h" />

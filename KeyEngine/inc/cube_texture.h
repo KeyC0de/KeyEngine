@@ -19,6 +19,10 @@ public:
 	CubeTexture( Graphics &gph, const std::string &path, const unsigned slot );
 
 	void bind( Graphics &gph ) cond_noex override;
+	const std::string& getPath() const noexcept;
+	static std::shared_ptr<CubeTexture> fetch( Graphics &gph, const std::string &filepath, const unsigned slot );
+	static std::string calcUid( const std::string &filepath, const unsigned slot );
+	std::string getUid() const noexcept override;
 };
 
 class CubeTextureOffscreenRT

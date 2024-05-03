@@ -49,8 +49,8 @@ IRenderTargetView::IRenderTargetView( Graphics &gph,
 {
 	D3D11_TEXTURE2D_DESC texDesc = createTextureDescriptor( width, height, DXGI_FORMAT_B8G8R8A8_UNORM, BindFlags::RenderTargetTexture, CpuAccessFlags::NoCpuAccess, false, TextureUsage::Default );
 
-	mwrl::ComPtr<ID3D11Texture2D> pTex;
-	HRESULT hres = getDevice( gph )->CreateTexture2D( &texDesc, nullptr, &pTex );
+	mwrl::ComPtr<ID3D11Texture2D> pTexture;
+	HRESULT hres = getDevice( gph )->CreateTexture2D( &texDesc, nullptr, &pTexture );
 	ASSERT_HRES_IF_FAILED;
 
 	// create the view on the texture (buffer)
@@ -58,7 +58,7 @@ IRenderTargetView::IRenderTargetView( Graphics &gph,
 	rtvDesc.Format = texDesc.Format;
 	rtvDesc.ViewDimension = D3D11_RTV_DIMENSION_TEXTURE2D;
 	rtvDesc.Texture2D = D3D11_TEX2D_RTV{0};
-	hres = getDevice( gph )->CreateRenderTargetView( pTex.Get(), &rtvDesc, &m_pD3dRtv );
+	hres = getDevice( gph )->CreateRenderTargetView( pTexture.Get(), &rtvDesc, &m_pD3dRtv );
 	ASSERT_HRES_IF_FAILED;
 }
 
@@ -89,8 +89,8 @@ void IRenderTargetView::bindRenderSurface( Graphics &gph,
 void IRenderTargetView::bindRenderSurface( Graphics &gph,
 	ID3D11DepthStencilView *pD3dDsv ) cond_noex
 {
-	Viewport viewport{gph, (float) m_width, (float) m_height};
-	viewport.bind( gph );
+	auto viewport = Viewport::fetch( gph, (float) m_width, (float) m_height );
+	viewport->bind( gph );
 
 	getDeviceContext( gph )->OMSetRenderTargets( 1u, m_pD3dRtv.GetAddressOf(), pD3dDsv );
 	DXGI_GET_QUEUE_INFO( gph );
@@ -253,10 +253,10 @@ void RenderTargetShaderInput::bind( Graphics &gph ) cond_noex
 
 
 RenderTargetOutput::RenderTargetOutput( Graphics &gph,
-	ID3D11Texture2D *pTex,
+	ID3D11Texture2D *pTexture,
 	std::optional<unsigned> face /* = {} */ )
 	:
-	IRenderTargetView{gph, pTex, face}
+	IRenderTargetView{gph, pTexture, face}
 {
 
 }

@@ -36,8 +36,5 @@ public:
 };
 
 
-#define THROW_KEY_EXCEPTION( msg ) throw KeyException( __LINE__,\
-	__FILE__,\
-	__FUNCTION__,\
-	msg );\
-	__debugbreak();
+#define THROW_KEY_EXCEPTION( msg ) __debugbreak();\
+	throw KeyException( __LINE__, __FILE__, __FUNCTION__, msg );

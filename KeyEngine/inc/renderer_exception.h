@@ -20,8 +20,5 @@ public:
 }
 
 
-#define THROW_RENDERER_EXCEPTION( msg ) throw ren::RendererException( __LINE__,\
-	__FILE__,\
-	__FUNCTION__,\
-	msg );\
-	__debugbreak();
+#define THROW_RENDERER_EXCEPTION( msg ) __debugbreak();\
+	throw ren::RendererException( __LINE__, __FILE__, __FUNCTION__, msg );

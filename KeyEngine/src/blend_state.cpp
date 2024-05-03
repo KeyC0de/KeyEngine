@@ -152,7 +152,7 @@ std::string BlendState::calcUid( const Mode mode,
 		modeId = "n"s;
 		break;
 	}
-	return typeid( BlendState ).name() + "#"s + std::to_string( renderTargetSlot ) + "#"s + modeId + ( blendFactors ? "#f"s + std::to_string( *blendFactors ) : ""s );
+	return typeid( BlendState ).name() + "#"s + std::to_string( renderTargetSlot ) + ":"s + modeId + ( blendFactors ? "#f"s + std::to_string( *blendFactors ) : ""s );
 }
 
 std::string BlendState::getUid() const noexcept

@@ -18,6 +18,8 @@
 #include "texture.h"
 #include "math_utils.h"
 #include "renderer.h"
+#include "camera_manager.h"
+#include "camera.h"
 
 #pragma comment( lib, "dxgi.lib" )
 #pragma comment( lib, "d3d11.lib" )
@@ -94,13 +96,12 @@ void Graphics::makeWindowAssociationWithFactory( HWND hWnd,
 Graphics::Graphics( const HWND hWnd,
 	const int width,
 	const int height,
-	const unsigned swapChainFlags /*= DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH*/, const
-	MultisamplingMode multisamplingMode /*= MultisamplingMode::None*/ )
+	const MultisamplingMode multisamplingMode /*= MultisamplingMode::None*/ )
 	:
 	m_width(width),
 	m_height(height),
 	m_hParentWnd{hWnd},
-	m_swapChainFlags{swapChainFlags}	
+	m_swapChainFlags{0u}
 {
 	HRESULT hres;
 	auto &settings = SettingsManager::getInstance().getSettings();
@@ -116,6 +117,7 @@ Graphics::Graphics( const HWND hWnd,
 	const auto &primaryAdapter = s_adapters.front();
 	hres = E_INVALIDARG;
 
+	m_swapChainFlags |= DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH;	// allows switching between fullscreen mode
 #if defined _DEBUG && !defined NDEBUG
 	m_swapChainFlags |= D3D11_CREATE_DEVICE_DEBUG;
 #endif
@@ -210,8 +212,6 @@ Graphics::Graphics( const HWND hWnd,
 	interrogateDirectxFeatures();
 #endif
 
-	getRenderTargetFromBackBuffer();
-
 	setupMonitors();
 
 	// Create Renderer
@@ -293,64 +293,117 @@ void Graphics::clearShaderSlots() noexcept
 void Graphics::resize( const unsigned newWidth,
 	const unsigned newHeight )
 {
-	// #FIXME: there are bugs
-	HRESULT hres;
+	auto &caman = CameraManager::getInstance();
+	caman.getActiveCamera().setTethered( true );		// prevent camera movement while resizing, #TODO: instead change state to MenuState
 
-	if ( newWidth == 0 && newHeight == 0 )
+#if defined _DEBUG && !defined NDEBUG
+	auto checkUseCounts = [this]()
+		{
+			UINT nRtvRefsBB = m_pBackBufferRtv.use_count();
+			UINT nDsvRefsBB = m_pBackBufferDsv.use_count();
+			UINT nRtvTexRefs = m_pOffscreenRtv.use_count();
+			if ( nRtvTexRefs > 0 )
+			{
+				UINT nRtvRefsOff = m_pOffscreenRtv->rtv().use_count();
+			}
+			UINT nDsvTexRefs = m_pOffscreenDsv.use_count();
+			if ( nDsvTexRefs > 0 )
+			{
+				UINT nDsvRefsOff = m_pOffscreenDsv->dsv().use_count();
+			}
+		};
+#endif
+
+	HRESULT hres;
 	{
-		hres = m_pSwapChain->SetFullscreenState( TRUE, m_pDxgiOutput.Get() );
-		ASSERT_HRES_IF_FAILED;
+		// assemble all bound RTV & DSVs and clear them
+		if ( m_pBackBufferRtv.use_count() > 0 )
+		{
+			m_pBackBufferRtv->clean( *this );
+		}
+		if ( m_pBackBufferDsv.use_count() > 0 )
+		{
+			m_pBackBufferDsv->clean( *this );
+		}
+		if ( m_pOffscreenRtv->rtv().use_count() > 0 )
+		{
+			m_pOffscreenRtv->rtv()->clean( *this );
+		}
+		if ( m_pOffscreenDsv->dsv().use_count() > 0 )
+		{
+			m_pOffscreenDsv->dsv()->clean( *this );
+		}
+
+		checkUseCounts();
+
+		//clearShaderSlots();
+		// release any other outstanding references
+		//m_pImmediateContext->ClearState();
+
+		// after releasing references to these resources, we need to call Flush() to ensure that Direct3D
+		// also releases any references it might still have to the same resources - such as pipeline bindings
+		// and wait until these changes are done/flushed
+		//m_pImmediateContext->Flush();
+
+		/// #FIXME: restore all render targets and depth stencils back
+		//ASSERT( rtvRefs == 1 && dsvRefs == 1, "More references to such resources still exist" );
 	}
 
-	releaseBackBufferForResizing();
-
+	// resize the RTV:
 	hres = m_pSwapChain->ResizeBuffers( 0u,	// No of Buffers, set to 0 to preserve existing setting
 		newWidth, newHeight,				// if width & height are set to 0 set the swap chain to match the screen resolution
-		DXGI_FORMAT_UNKNOWN,					// retain the current back buffer format
+		DXGI_FORMAT_UNKNOWN,					// retain the current back buffer format using DXGI_FORMAT_UNKNOWN
 		m_swapChainFlags );
 	ASSERT_HRES_IF_FAILED;
 	// may need to handle DXGI_ERROR_DEVICE_REMOVED & DXGI_ERROR_DEVICE_RESET
 
-	// recreate render target
-	getRenderTargetFromBackBuffer();
+	m_width = newWidth;
+	m_height = newHeight;
 
-	// recreate depth stencil
+	checkUseCounts();
+
+	m_pBackBufferRtv.reset();
+	m_pBackBufferDsv.reset();
+	m_pOffscreenRtv->rtv().reset();
+	m_pOffscreenRtv.reset();
+	m_pOffscreenDsv->dsv().reset();
+	m_pOffscreenDsv.reset();
+
+	checkUseCounts();
+
+	// recreate the RTVs & DSVs:
+	getRenderTargetFromBackBuffer();
 	getDepthBufferFromBackBuffer();
+	getRenderTargetOffscreen( 0u, RenderTargetViewMode::DefaultRT );
+	getDepthBufferOffscreen( 0u, DepthStencilViewMode::DefaultDS );
+
+	checkUseCounts();
 
 	// Assert that window width/height is equal to swap-chain width/height
 	DXGI_SWAP_CHAIN_DESC desc;
 	POD_ZERO( desc );
 	m_pSwapChain->GetDesc( &desc );
 	ASSERT( desc.BufferDesc.Width == newWidth && desc.BufferDesc.Height == newHeight, "Resizing malfunction!" );
-}
 
-void Graphics::releaseBackBufferForResizing()
-{
-	clearShaderSlots();
+	//const bool bOffscreenRendering = m_pRenderer->isUsingOffscreenRendering();
+	//m_pRenderer->reapplyRtv( bOffscreenRendering ? m_pOffscreenRtv->rtv() : m_pBackBufferRtv );
+	//m_pRenderer->reapplyDsv( bOffscreenRendering ? m_pOffscreenDsv->dsv() : m_pBackBufferDsv );
+	m_pRenderer->recreate( *this );
+	// #TODO:	1. send a notify listeners call here to be listened to by Game s.t. it can call connectEffectsToRenderer
+	//			2. and finally recreate the BindablePass-specific rtv & dsv -
+	// m_pRenderer->recreateRtvsAndDsvs( *this );
 
-	/// #FIXME: assemble all render targets and depth stencils and clear them
-	// release the render target view based on the back buffer:
-	m_pBackBufferRtv->clean( *this );
+	checkUseCounts();
 
-	// the depth stencil will need to be resized, so release it too:
-	m_pBackBufferDsv->clean( *this );
+	// set fullscreen flag
+	const bool bEnableFullScreen = newWidth == 0 && newHeight == 0;
+	hres = m_pSwapChain->SetFullscreenState( bEnableFullScreen ? TRUE : FALSE, bEnableFullScreen ? m_pDxgiOutput.Get() : nullptr );
+	ASSERT_HRES_IF_FAILED;
+	m_bFullscreenMode = bEnableFullScreen;
 
-	UINT rtvRefs = m_pBackBufferRtv.use_count();
-	UINT dsvRefs = m_pBackBufferDsv.use_count();
-
-	// release any other outstanding references
-	m_pImmediateContext->ClearState();
-
-	// after releasing references to these resources, we need to call Flush() to ensure that Direct3D
-	// also releases any references it might still have to the same resources - such as pipeline bindings
-	// and wait until these changes are done/flushed
-	m_pImmediateContext->Flush();
-
-	m_pBackBufferRtv.reset();
-	m_pBackBufferDsv.reset();
-
-	/// #FIXME: restore all render targets and depth stencils back
-	//ASSERT( rtvRefs == 1 && dsvRefs == 1, "More references to such resources still exist" );
+	// update cameras
+	CameraManager::getInstance().updateDimensions( *this );
+	caman.getActiveCamera().setTethered( false );
 }
 
 void Graphics::setupMonitors() noexcept
@@ -670,7 +723,7 @@ std::shared_ptr<TextureOffscreenRT> Graphics::getRenderTargetOffscreen( const un
 		m_pOffscreenRtv = std::make_unique<TextureOffscreenRT>( *this, m_width, m_height, slot, rtvMode );
 #if defined _DEBUG && !defined NDEBUG
 		const char *offscreenRtv = "OffscreenRenderTargetTextureView1";
-		m_pOffscreenRtv->innerD3dResource()->SetPrivateData( WKPDID_D3DDebugObjectName, (UINT) strlen( offscreenRtv ), offscreenRtv );
+		m_pOffscreenRtv->rtv()->d3dResource()->SetPrivateData( WKPDID_D3DDebugObjectName, (UINT) strlen( offscreenRtv ), offscreenRtv );
 #endif
 	}
 	return m_pOffscreenRtv;
@@ -684,7 +737,7 @@ std::shared_ptr<TextureOffscreenDS> Graphics::getDepthBufferOffscreen( const uns
 		m_pOffscreenDsv = std::make_unique<TextureOffscreenDS>( *this, m_width, m_height, slot, dsvMode );
 #if defined _DEBUG && !defined NDEBUG
 		const char *offscreenDsv = "OffscreenDepthStencilTextureView1";
-		m_pOffscreenDsv->innerD3dResource()->SetPrivateData( WKPDID_D3DDebugObjectName, (UINT) strlen( offscreenDsv ), offscreenDsv );
+		m_pOffscreenDsv->dsv()->d3dResource()->SetPrivateData( WKPDID_D3DDebugObjectName, (UINT) strlen( offscreenDsv ), offscreenDsv );
 #endif
 	}
 	return m_pOffscreenDsv;
@@ -728,6 +781,16 @@ DxgiInfoQueue& Graphics::getInfoQueue()
 KeyTimer<std::chrono::microseconds>& Graphics::getFpsTimer() noexcept
 {
 	return m_fpsTimer;
+}
+
+bool Graphics::getDisplayMode() const noexcept
+{
+	return m_bFullscreenMode;
+}
+
+bool& Graphics::getDisplayMode()
+{
+	return m_bFullscreenMode;
 }
 
 void Graphics::createFactory()

@@ -25,6 +25,7 @@ class IBinder;
 
 class Renderer
 {
+	bool m_bUsesOffscreen;
 	bool m_bValidatedPasses = false;
 	std::vector<std::unique_ptr<IPass>> m_passes;
 	std::vector<std::unique_ptr<IBinder>> m_globalBinders;
@@ -38,9 +39,12 @@ public:
 	Renderer( Graphics &gph, bool drawToOffscreen );
 	virtual ~Renderer() noexcept;
 
+	virtual void recreate( Graphics &gph );
+	void recreateRtvsAndDsvs( Graphics &gph );
 	void run( Graphics &gph ) cond_noex;
 	virtual void reset() noexcept;
 	RenderQueuePass& getRenderQueuePass( const std::string &name );
+	bool isUsingOffscreenRendering() const noexcept;
 protected:
 	void addGlobalLinker( std::unique_ptr<ILinker> pLinker );
 	void addGlobalBinder( std::unique_ptr<IBinder> pBinder );
@@ -79,14 +83,15 @@ public:
 public:
 	Renderer3d( Graphics &gph, bool drawToOffscreen, const int radius, const float sigma, KernelType kernelType = Gauss );
 
+	void recreate( Graphics &gph ) override;
 	void displayImguiWidgets( Graphics &gph ) noexcept;
 	void dumpShadowMap( Graphics &gph, const std::string &path );
 	void setActiveCamera( const Camera &cam );
-	// #TODO: rename to addShadowCamera
 	void setShadowCamera( const Camera &cam, const bool bEnable );
 private:
 	void showShadowDumpImguiWindow( Graphics &gph ) noexcept;
 	void showGaussianBlurImguiWindow( Graphics &gph ) noexcept;
+	void showDisplayMode( Graphics &gph ) noexcept;
 	void setKernelGauss( const int radius, const float sigma ) cond_noex;
 	void setKernelBox( const int radius ) cond_noex;
 };

@@ -48,6 +48,7 @@ public:
 	virtual void validate();
 	void setActive( const bool bActive ) noexcept;
 	const bool isActive() const noexcept;
+	virtual void recreateRtvsAndDsvs( Graphics &gph );
 protected:
 	void addBinder( std::unique_ptr<IBinder> pBinder );
 	void addLinker( std::unique_ptr<ILinker> pLinker );

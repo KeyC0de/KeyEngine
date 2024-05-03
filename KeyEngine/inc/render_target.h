@@ -20,7 +20,7 @@ protected:
 protected:
 	//	\function	IrenderTargetView	||	\date	2021/10/25 17:00
 	//	\brief  For creating an output RT only
-	IRenderTargetView( Graphics &gph, ID3D11Texture2D *pTex, std::optional<unsigned> face );
+	IRenderTargetView( Graphics &gph, ID3D11Texture2D *pTexture, std::optional<unsigned> face );
 	//	\function	IrenderTargetView	||	\date	2021/10/25 17:00
 	//	\brief  Render to Texture constructor
 	IRenderTargetView( Graphics &gph, const unsigned width, const unsigned height );
@@ -75,7 +75,7 @@ class RenderTargetOutput
 	: public IRenderTargetView
 {
 public:
-	RenderTargetOutput( Graphics &gph, ID3D11Texture2D *pTex, std::optional<unsigned> face = {} );
+	RenderTargetOutput( Graphics &gph, ID3D11Texture2D *pTexture, std::optional<unsigned> face = {} );
 
 	void bind( Graphics &gph ) cond_noex override;
 };

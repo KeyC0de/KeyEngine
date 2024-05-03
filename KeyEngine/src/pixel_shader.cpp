@@ -65,7 +65,8 @@ std::shared_ptr<PixelShaderNull> PixelShaderNull::fetch( Graphics &gph )
 
 std::string PixelShaderNull::calcUid()
 {
-	return typeid( PixelShaderNull ).name();
+	using namespace std::string_literals;
+	return typeid( PixelShaderNull ).name() + "#"s;
 }
 
 std::string PixelShaderNull::getUid() const noexcept

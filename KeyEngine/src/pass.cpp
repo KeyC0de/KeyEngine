@@ -42,6 +42,11 @@ const bool IPass::isActive() const noexcept
 	return m_bActive;
 }
 
+void IPass::recreateRtvsAndDsvs( Graphics &gph )
+{
+	pass_;
+}
+
 const std::vector<std::unique_ptr<IBinder>>& IPass::getBinders() const
 {
 	return m_binders;

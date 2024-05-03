@@ -5,7 +5,6 @@
 #include "blend_state.h"
 #include "pixel_shader.h"
 #include "transform_vscb.h"
-#include "transform_scale_vscb.h"
 #include "vertex_buffer.h"
 #include "vertex_shader.h"
 #include "texture.h"

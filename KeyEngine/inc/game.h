@@ -23,6 +23,11 @@
 #include "math_utils.h"
 
 
+namespace ren
+{
+	class Renderer;
+}
+
 template<typename T>
 class Game
 	: public NonCopyableAndNonMovable
@@ -91,6 +96,7 @@ private:
 	void updateFixed( const float dt );
 	void render( const float frameInterpolation );
 	void test();
+	void connectEffectsToRenderer( ren::Renderer &renderer );
 };
 
 class Arkanoid final

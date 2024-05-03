@@ -1057,6 +1057,8 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 	case WM_CLOSE:
 	case WM_QUIT:	// the final message sent upon window termination, no return value
 		break;
+	case WM_SETFOCUS:
+		break;
 	case WM_KILLFOCUS:
 	{
 		// clear keyboard button states when window loses focus to prevent keyboard input getting "stuck"
@@ -1118,7 +1120,7 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 			// the window was minimized and is now restored (resume from suspend)
 			s_bMinimized = false;
 		}
-		else if ( !s_bCurrentlyResizing )
+		else if ( s_bCurrentlyResizing )
 		{
 			// handle the swapchain resize for maximize or unmaximize
 			if ( !SettingsManager::getInstance().getSettings().bAllowWindowResize )
@@ -1129,14 +1131,24 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 
 			if ( m_pGraphics )
 			{
-				const unsigned width = LOWORD( lParam );
-				const unsigned height = HIWORD( lParam );
-				if ( width != getWidth() && height != getHeight() )
+				const int preMetricsWidth = GetSystemMetrics( SM_CXSCREEN );
+				const int preMetricsHeight = GetSystemMetrics( SM_CYSCREEN );
+				const int preWidth = getWidth();
+				const int preHeight = getHeight();
+				const int newWidth = static_cast<int>( LOWORD( lParam ) );
+				const int newHeight = static_cast<int>( HIWORD( lParam ) );
+				if ( newWidth != preWidth && newHeight != preHeight )
 				{
-					// #TODO: m_pGraphics->resize( width,
-					//	height );
+					m_pGraphics->resize( newWidth, newHeight );
 				}
+
+				const int metricsWidth = GetSystemMetrics( SM_CXSCREEN );
+				const int metricsHeight = GetSystemMetrics( SM_CYSCREEN );
+				//ASSERT( getWidth() == newWidth, "Window width not set correctly!" );
+				//ASSERT( getHeight() == newHeight, "Window height not set correctly!" );
+				int i = 0;
 			}
+			s_bCurrentlyResizing = false;
 		}
 		break;
 	}
@@ -1148,13 +1160,13 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 	}
 	case WM_EXITSIZEMOVE:
 	{
-		// here is the other place where you handle the swapchain resize after the user stops using the 'rubber-band' resize
-		s_bCurrentlyResizing = false;
+		// sent after the user stops using the 'rubber-band' resize
 		break;
 	}
 	case WM_GETMINMAXINFO:
 	{
-		// sent when the size or position of the window is about to change - This is the very 1st message being sent to a window b4 WM_NCCREATE we want to prevent the window from being set too tiny
+		// sent when the size or position of the window is about to change - This is the very 1st message being sent to a window b4 WM_NCCREATE
+		// we want to prevent the window from being too tiny, which can even cause a crash with d3d
 		auto info = reinterpret_cast<MINMAXINFO*>( lParam );
 		info->ptMinTrackSize.x = 320;
 		info->ptMinTrackSize.y = 200;
@@ -1688,9 +1700,9 @@ void Window::setFont( const std::string &fontName )
 	SendMessageW( m_hWnd, WM_SETFONT, (WPARAM)hFont, MAKELPARAM( TRUE, 0 ) );
 }
 
-void Window::resize( const int width,
+void Window::setWindowProperties( const int width,
 	const int height,
-	const unsigned flags /* = SWP_NOZORDER | SWP_NOMOVE | SWP_NOACTIVATE */ ) const noexcept
+	const unsigned flags /* = SWP_NOZORDER | SWP_NOMOVE | SWP_NOACTIVATE */ ) cond_noex
 {
 	SetWindowPos( m_hWnd, HWND_NOTOPMOST, getX(), getY(), width, height, flags );
 	ASSERT_HRES_WIN32_IF_FAILED;

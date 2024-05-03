@@ -159,7 +159,7 @@ std::string TextureSamplerState::calcUid( const TextureSamplerMode samplingMode,
 	};
 
 	using namespace std::string_literals;
-	return typeid( TextureSamplerState ).name() + "@"s + std::to_string( calcSlot( samplingMode ) ) + "#"s + getSamplingModeStr() + std::to_string( (int)filterMode ) + ":"s + getAddressModeStr() + ":"s + std::to_string( samplingMode == TextureSamplerMode::ShadowTS ? true : false );
+	return typeid( TextureSamplerState ).name() + "#"s + std::to_string( calcSlot( samplingMode ) ) + ":"s + getSamplingModeStr() + std::to_string( (int)filterMode ) + ":"s + getAddressModeStr() + ":"s + std::to_string( samplingMode == TextureSamplerMode::ShadowTS ? true : false );
 }
 
 std::string TextureSamplerState::getUid() const noexcept

@@ -51,7 +51,7 @@ public:
 
 	void bind( Graphics &gph ) cond_noex override;
 	std::shared_ptr<RenderTargetOutput> shareRenderTarget() const;
-	Microsoft::WRL::ComPtr<ID3D11RenderTargetView>& innerD3dResource() noexcept;
+	std::shared_ptr<RenderTargetOutput>& rtv() noexcept;
 	unsigned getSlot() const noexcept;
 };
 
@@ -73,7 +73,7 @@ public:
 
 	void bind( Graphics &gph ) cond_noex override;
 	std::shared_ptr<DepthStencilOutput> shareDepthBuffer() const;
-	Microsoft::WRL::ComPtr<ID3D11DepthStencilView>& innerD3dResource() noexcept;
+	std::shared_ptr<DepthStencilOutput>& dsv() noexcept;
 	unsigned getSlot() const noexcept;
 };
 

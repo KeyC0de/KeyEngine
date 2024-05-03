@@ -112,8 +112,9 @@ private:
 	ren::Renderer3d* m_pRenderer3d;
 	ren::Renderer2d* m_pRenderer2d;
 	KeyTimer<std::chrono::microseconds> m_fpsTimer;
+	bool m_bFullscreenMode = false;
 public:
-	Graphics( const HWND hWnd, const int width, const int height, const unsigned swapChainFlags = DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH, const MultisamplingMode multisamplingMode = MultisamplingMode::None );
+	Graphics( const HWND hWnd, const int width, const int height, const MultisamplingMode multisamplingMode = MultisamplingMode::None );
 	~Graphics();
 
 	void makeWindowAssociationWithFactory( HWND hWnd, const UINT flags );
@@ -140,7 +141,6 @@ public:
 	//	\function	resize	||	\date	2022/09/17 19:44
 	//	\brief	sets windowed mode or Fullscreen, supply width & height of 0 to resize the buffers for fullscreen mode usage
 	void resize( const unsigned width, const unsigned height );
-	void releaseBackBufferForResizing();
 	//	\function	setupMonitors	||	\date	2022/09/18 19:08
 	//	\brief	sets up the output monitor devices
 	void setupMonitors() noexcept;
@@ -152,6 +152,10 @@ public:
 	ren::Renderer2d& getRenderer2d() noexcept;
 	DxgiInfoQueue& getInfoQueue();
 	KeyTimer<std::chrono::microseconds>& getFpsTimer() noexcept;
+	//	\function	getDisplayMode	||	\date	2024/05/03 18:18
+	//	\brief	returns true if fullscreen application, false otherwise
+	bool getDisplayMode() const noexcept;
+	bool& getDisplayMode();
 private:
 	//	\function	present	||	\date	2022/09/13 22:12
 	//	\brief	present the frame to DWM
@@ -242,8 +246,5 @@ public:
 };
 
 
-#define THROW_GRAPHICS_EXCEPTION( msg ) throw GraphicsException( __LINE__,\
-	__FILE__,\
-	__FUNCTION__,\
-	msg );\
-	__debugbreak();
+#define THROW_GRAPHICS_EXCEPTION( msg ) __debugbreak();\
+	throw GraphicsException( __LINE__, __FILE__, __FUNCTION__, msg );
