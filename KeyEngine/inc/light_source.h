@@ -46,9 +46,9 @@ class PointLight
 	bool m_bShowMesh;
 	std::shared_ptr<Camera> m_pCameraForShadowing;
 public:
-	PointLight( Graphics &gph, const DirectX::XMFLOAT3 &pos = {8.0f, 8.0f, 2.f}, const DirectX::XMFLOAT3 &col = {1.0f, 1.0f, 1.0f}, const bool bShadowCasting = true, const bool bShowMesh = true, const float radius = 0.5f );
+	PointLight( Graphics &gfx, const DirectX::XMFLOAT3 &pos = {8.0f, 8.0f, 2.f}, const DirectX::XMFLOAT3 &col = {1.0f, 1.0f, 1.0f}, const bool bShadowCasting = true, const bool bShowMesh = true, const float radius = 0.5f );
 	
-	void update( Graphics &gph, const float dt, const DirectX::XMMATRIX &activeCameraViewMat ) const noexcept;
+	void update( Graphics &gfx, const float dt, const DirectX::XMMATRIX &activeCameraViewMat ) const noexcept;
 	void render( const size_t channels ) const cond_noex;
 	void connectEffectsToRenderer( ren::Renderer &r );
 	void setIntensity( const float newIntensity ) noexcept;

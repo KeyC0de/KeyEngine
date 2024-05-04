@@ -5,7 +5,7 @@
 #include "bindable_exception.h"
 
 
-TextureSamplerState::TextureSamplerState( Graphics &gph,
+TextureSamplerState::TextureSamplerState( Graphics &gfx,
 	const TextureSamplerMode samplingMode,
 	const FilterMode filterMode,
 	const AddressMode addressMode )
@@ -77,6 +77,7 @@ TextureSamplerState::TextureSamplerState( Graphics &gph,
 				case Bilinear:
 					return D3D11_FILTER_COMPARISON_MIN_MAG_MIP_POINT;
 				case Trilinear:
+				case Anisotropic:
 				default:
 					return D3D11_FILTER_COMPARISON_MIN_MAG_MIP_LINEAR;
 				}
@@ -95,6 +96,7 @@ TextureSamplerState::TextureSamplerState( Graphics &gph,
 					return D3D11_FILTER_MIN_MAG_MIP_POINT;
 				case Bilinear:
 				case Trilinear:
+				case Anisotropic:
 				default:
 					return D3D11_FILTER_MIN_MAG_MIP_LINEAR;
 				}
@@ -108,22 +110,22 @@ TextureSamplerState::TextureSamplerState( Graphics &gph,
 		THROW_BINDABLE_EXCEPTION( "Invalid Texture Sampler mode." );
 	}
 
-	HRESULT hres = getDevice( gph )->CreateSamplerState( &samplerDesc, &m_pSamplerState );
+	HRESULT hres = getDevice( gfx )->CreateSamplerState( &samplerDesc, &m_pSamplerState );
 	ASSERT_HRES_IF_FAILED;
 }
 
-void TextureSamplerState::bind( Graphics &gph ) cond_noex
+void TextureSamplerState::bind( Graphics &gfx ) cond_noex
 {
-	getDeviceContext( gph )->PSSetSamplers( m_slot, 1u, m_pSamplerState.GetAddressOf() );
-	DXGI_GET_QUEUE_INFO( gph );
+	getDeviceContext( gfx )->PSSetSamplers( m_slot, 1u, m_pSamplerState.GetAddressOf() );
+	DXGI_GET_QUEUE_INFO( gfx );
 }
 
-std::shared_ptr<TextureSamplerState> TextureSamplerState::fetch( Graphics &gph,
+std::shared_ptr<TextureSamplerState> TextureSamplerState::fetch( Graphics &gfx,
 	const TextureSamplerMode samplingMode,
 	const FilterMode filterMode,
 	const AddressMode addressMode )
 {
-	return BindableMap::fetch<TextureSamplerState>( gph, samplingMode, filterMode, addressMode );
+	return BindableMap::fetch<TextureSamplerState>( gfx, samplingMode, filterMode, addressMode );
 }
 
 std::string TextureSamplerState::calcUid( const TextureSamplerMode samplingMode,

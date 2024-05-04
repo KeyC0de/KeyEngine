@@ -22,7 +22,7 @@
 
 namespace dx = DirectX;
 
-Terrain::Terrain( Graphics &gph,
+Terrain::Terrain( Graphics &gfx,
 	const int length,
 	const int width,
 	const std::string &heightMapfilename /*= ""*/,
@@ -48,26 +48,26 @@ Terrain::Terrain( Graphics &gph,
 
 	const auto geometryTag = s_geometryTag + std::to_string( length ) + std::to_string( width ) + std::to_string( initialScale );
 
-	m_pVertexBuffer = VertexBuffer::fetch( gph, geometryTag, planarGrid.m_vb );
-	m_pIndexBuffer = IndexBuffer::fetch( gph, geometryTag, planarGrid.m_indices );
+	m_pVertexBuffer = VertexBuffer::fetch( gfx, geometryTag, planarGrid.m_vb );
+	m_pIndexBuffer = IndexBuffer::fetch( gfx, geometryTag, planarGrid.m_indices );
 
 	createAabb( planarGrid.m_vb );
 	setMeshId();
 
-	auto transformVscb = std::make_shared<TransformVSCB>( gph, 0u );
+	auto transformVscb = std::make_shared<TransformVSCB>( gfx, 0u );
 	{
 	// lambertian reflectance effect
 		Effect lambertian{rch::lambert, "lambertian", false};
 		lambertian.addBindable( transformVscb );
 
-		lambertian.addBindable( Texture::fetch( gph, "assets/models/brick_wall/brick_wall_diffuse.jpg", 0u ) );
-		lambertian.addBindable( TextureSamplerState::fetch( gph, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
+		lambertian.addBindable( Texture::fetch( gfx, "assets/models/brick_wall/brick_wall_diffuse.jpg", 0u ) );
+		lambertian.addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
 
-		auto pVs = VertexShader::fetch( gph, "plane_vs.cso" );
-		lambertian.addBindable( InputLayout::fetch( gph, planarGrid.m_vb.getLayout(), *pVs ) );
+		auto pVs = VertexShader::fetch( gfx, "plane_vs.cso" );
+		lambertian.addBindable( InputLayout::fetch( gfx, planarGrid.m_vb.getLayout(), *pVs ) );
 		lambertian.addBindable( std::move( pVs ) );
 
-		lambertian.addBindable( PixelShader::fetch( gph, "plane_ps.cso" ) );
+		lambertian.addBindable( PixelShader::fetch( gfx, "plane_ps.cso" ) );
 
 		con::RawLayout cbLayout;
 		cbLayout.add<con::Float3>( "modelSpecularColor" );
@@ -75,9 +75,9 @@ Terrain::Terrain( Graphics &gph,
 		auto cb = con::CBuffer( std::move( cbLayout ) );
 		cb["modelSpecularColor"] = dx::XMFLOAT3{1.0f, 1.0f, 1.0f};
 		cb["modelSpecularGloss"] = 20.0f;
-		lambertian.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gph, 0u, cb ) );
+		lambertian.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
 
-		lambertian.addBindable( RasterizerState::fetch( gph, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
+		lambertian.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
 
 		addEffect( std::move( lambertian ) );
 	}
@@ -86,7 +86,7 @@ Terrain::Terrain( Graphics &gph,
 		Effect shadowMap{rch::shadow, "shadowMap", false};
 		shadowMap.addBindable( transformVscb );
 
-		shadowMap.addBindable( InputLayout::fetch( gph, planarGrid.m_vb.getLayout(), *VertexShader::fetch( gph, "flat_vs.cso" ) ) );
+		shadowMap.addBindable( InputLayout::fetch( gfx, planarGrid.m_vb.getLayout(), *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 
 		addEffect( std::move( shadowMap ) );
 	}
@@ -95,7 +95,7 @@ Terrain::Terrain( Graphics &gph,
 		Effect solidOutlineMask{rch::solidOutline, "solidOutlineMask", false};
 		solidOutlineMask.addBindable( transformVscb );
 
-		solidOutlineMask.addBindable( InputLayout::fetch( gph, planarGrid.m_vb.getLayout(), *VertexShader::fetch( gph, "flat_vs.cso" ) ) );
+		solidOutlineMask.addBindable( InputLayout::fetch( gfx, planarGrid.m_vb.getLayout(), *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 
 		addEffect( std::move( solidOutlineMask ) );
 	}
@@ -103,27 +103,27 @@ Terrain::Terrain( Graphics &gph,
 	// solid outline draw effect
 		Effect solidOutlineDraw{rch::solidOutline, "solidOutlineDraw", false};
 
-		auto transformScaledVcb = std::make_shared<TransformScaleVSCB>( gph, 0u, 1.04f );
+		auto transformScaledVcb = std::make_shared<TransformScaleVSCB>( gfx, 0u, 1.04f );
 		solidOutlineDraw.addBindable( transformScaledVcb );
 
 		con::RawLayout cbLayout;
 		cbLayout.add<con::Float3>( "materialColor" );
 		auto cb = con::CBuffer( std::move( cbLayout ) );
 		cb["materialColor"] = dx::XMFLOAT3{1.0f, 0.4f, 0.4f};
-		solidOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gph, 0u, cb ) );
+		solidOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
 
-		solidOutlineDraw.addBindable( InputLayout::fetch( gph, planarGrid.m_vb.getLayout(), *VertexShader::fetch( gph, "flat_vs.cso" ) ) );
+		solidOutlineDraw.addBindable( InputLayout::fetch( gfx, planarGrid.m_vb.getLayout(), *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 
 		addEffect( std::move( solidOutlineDraw ) );
 	}
 	{
 		Effect wireframe{rch::wireframe, "wireframe", true};
 
-		auto pVs = VertexShader::fetch( gph, "flat_vs.cso" );
-		wireframe.addBindable( InputLayout::fetch( gph, m_pVertexBuffer->getLayout(), *pVs ) );
+		auto pVs = VertexShader::fetch( gfx, "flat_vs.cso" );
+		wireframe.addBindable( InputLayout::fetch( gfx, m_pVertexBuffer->getLayout(), *pVs ) );
 		wireframe.addBindable( std::move( pVs ) );
 
-		wireframe.addBindable( PixelShader::fetch( gph, "flat_ps.cso" ) );
+		wireframe.addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
 
 		struct ColorPCB
 		{
@@ -131,14 +131,14 @@ Terrain::Terrain( Graphics &gph,
 			float paddingPlaceholder = 0.0f;
 		} colorPcb;
 
-		wireframe.addBindable( PixelShaderConstantBuffer<ColorPCB>::fetch( gph, colorPcb, 0u ) );
-		wireframe.addBindable( std::make_shared<TransformVSCB>( gph, 0u ) );
+		wireframe.addBindable( PixelShaderConstantBuffer<ColorPCB>::fetch( gfx, colorPcb, 0u ) );
+		wireframe.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
 
 		addEffect( std::move( wireframe ) );
 	}
 }
 
-void Terrain::displayImguiWidgets( Graphics &gph,
+void Terrain::displayImguiWidgets( Graphics &gfx,
 	const std::string &name ) noexcept
 {
 #ifndef FINAL_RELEASE

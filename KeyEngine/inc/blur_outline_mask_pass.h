@@ -18,7 +18,7 @@ class BlurOutlineMaskPass
 	: public RenderQueuePass
 {
 public:
-	BlurOutlineMaskPass( Graphics &gph, const std::string &name );
+	BlurOutlineMaskPass( Graphics &gfx, const std::string &name );
 };
 
 

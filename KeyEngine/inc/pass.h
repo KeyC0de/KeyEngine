@@ -32,7 +32,7 @@ public:
 
 	//	\function	run	||	\date	2021/06/27 0:51
 	//	\brief  binds bindables & executes draw calls
-	virtual void run( Graphics &gph ) const cond_noex = 0;
+	virtual void run( Graphics &gfx ) const cond_noex = 0;
 	virtual void reset() cond_noex = 0;
 	const std::string& getName() const noexcept;
 	const std::vector<std::unique_ptr<IBinder>>& getBinders() const;
@@ -48,7 +48,7 @@ public:
 	virtual void validate();
 	void setActive( const bool bActive ) noexcept;
 	const bool isActive() const noexcept;
-	virtual void recreateRtvsAndDsvs( Graphics &gph );
+	virtual void recreateRtvsAndDsvs( Graphics &gfx );
 protected:
 	void addBinder( std::unique_ptr<IBinder> pBinder );
 	void addLinker( std::unique_ptr<ILinker> pLinker );

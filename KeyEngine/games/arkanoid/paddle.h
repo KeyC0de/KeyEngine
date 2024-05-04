@@ -20,7 +20,7 @@ class Paddle
 public:
 	Paddle( const DirectX::XMFLOAT2 &position, const float width, const float height, const ColorBGRA color, const ColorBGRA wingColor );
 
-	void render( Graphics &gph ) const cond_noex;
+	void render( Graphics &gfx ) const cond_noex;
 	bool doBallCollision( Ball &ball );
 	void doWallCollision( const Rect &walls );
 	Rect rect() const;

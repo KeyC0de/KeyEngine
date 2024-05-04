@@ -20,20 +20,20 @@ void IBindablePass::addPassBindable( std::shared_ptr<IBindable> bindable ) noexc
 	m_bindables.emplace_back( bindable );
 }
 
-void IBindablePass::bind( Graphics &gph ) const cond_noex
+void IBindablePass::bind( Graphics &gfx ) const cond_noex
 {
 	if ( m_pRtv )
 	{
-		m_pRtv->bindRenderSurface( gph, m_pDsv.get() );
+		m_pRtv->bindRenderSurface( gfx, m_pDsv.get() );
 	}
 	else if ( m_pDsv )
 	{
-		m_pDsv->bindRenderSurface( gph );
+		m_pDsv->bindRenderSurface( gfx );
 	}
 
 	for ( auto &b : m_bindables )
 	{
-		b->bind( gph );
+		b->bind( gfx );
 	}
 }
 

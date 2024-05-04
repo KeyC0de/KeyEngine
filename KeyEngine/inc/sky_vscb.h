@@ -15,8 +15,8 @@ class SkyVSCB
 	};
 	std::unique_ptr<VertexShaderConstantBuffer<Transform>> m_pVscb;
 public:
-	SkyVSCB( Graphics &gph, const unsigned slot = 0u );
+	SkyVSCB( Graphics &gfx, const unsigned slot = 0u );
 
-	void bind( Graphics &gph ) cond_noex override;
-	Transform getTransform( Graphics &gph ) cond_noex;
+	void bind( Graphics &gfx ) cond_noex override;
+	Transform getTransform( Graphics &gfx ) cond_noex;
 };

@@ -42,7 +42,7 @@ const bool IPass::isActive() const noexcept
 	return m_bActive;
 }
 
-void IPass::recreateRtvsAndDsvs( Graphics &gph )
+void IPass::recreateRtvsAndDsvs( Graphics &gfx )
 {
 	pass_;
 }

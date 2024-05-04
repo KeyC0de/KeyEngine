@@ -34,10 +34,10 @@ public:
 
 
 #if defined _DEBUG && !defined NDEBUG
-#	define DXGI_GET_QUEUE_INFO( gph ) \
+#	define DXGI_GET_QUEUE_INFO( gfx ) \
 	{\
 		KeyConsole &console = KeyConsole::getInstance();\
-		const auto &messages = gph.getInfoQueue().getInfoMessages();\
+		const auto &messages = gfx.getInfoQueue().getInfoMessages();\
 		if ( !messages.empty() )\
 		{\
 			for ( const auto &msg : messages )\
@@ -46,17 +46,17 @@ public:
 			}\
 			__debugbreak();\
 		}\
-		gph.getInfoQueue().markQueueIndex();\
+		gfx.getInfoQueue().markQueueIndex();\
 	}
 #else
 #	define DXGI_GET_QUEUE_INFO (void)0;
 #endif
 
 #if defined _DEBUG && !defined NDEBUG
-#	define DXGI_GET_QUEUE_INFO_P( gph ) \
+#	define DXGI_GET_QUEUE_INFO_P( gfx ) \
 	{\
 		KeyConsole &console = KeyConsole::getInstance();\
-		const auto &messages = gph->getInfoQueue().getInfoMessages();\
+		const auto &messages = gfx->getInfoQueue().getInfoMessages();\
 		if ( !messages.empty() )\
 		{\
 			for ( const auto &msg : messages )\
@@ -65,7 +65,7 @@ public:
 			}\
 			__debugbreak();\
 		}\
-		gph->getInfoQueue().markQueueIndex();\
+		gfx->getInfoQueue().markQueueIndex();\
 	}
 #else
 #	define DXGI_GET_QUEUE_INFO_P (void)0;

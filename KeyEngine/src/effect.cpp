@@ -69,11 +69,11 @@ void Effect::render( const Mesh &mesh,
 	}
 }
 
-void Effect::bind( Graphics &gph ) const cond_noex
+void Effect::bind( Graphics &gfx ) const cond_noex
 {
 	for ( const auto &bindable : m_bindables )
 	{
-		bindable->bind( gph );
+		bindable->bind( gfx );
 	}
 }
 

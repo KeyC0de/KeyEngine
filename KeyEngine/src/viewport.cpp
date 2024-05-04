@@ -3,14 +3,14 @@
 #include "bindable_map.h"
 
 
-Viewport::Viewport( Graphics &gph )
+Viewport::Viewport( Graphics &gfx )
 	:
-	Viewport{gph, static_cast<const float>(gph.getClientWidth()), static_cast<const float>(gph.getClientHeight())}
+	Viewport{gfx, static_cast<const float>(gfx.getClientWidth()), static_cast<const float>(gfx.getClientHeight())}
 {
 
 }
 
-Viewport::Viewport( Graphics &gph,
+Viewport::Viewport( Graphics &gfx,
 	const float width,
 	const float height )
 {
@@ -22,10 +22,10 @@ Viewport::Viewport( Graphics &gph,
 	m_viewport.TopLeftY = 0.0f;
 }
 
-void Viewport::bind( Graphics &gph ) cond_noex
+void Viewport::bind( Graphics &gfx ) cond_noex
 {
-	getDeviceContext( gph )->RSSetViewports( 1u, &m_viewport );
-	DXGI_GET_QUEUE_INFO( gph );
+	getDeviceContext( gfx )->RSSetViewports( 1u, &m_viewport );
+	DXGI_GET_QUEUE_INFO( gfx );
 }
 
 D3D11_VIEWPORT Viewport::getViewport() const noexcept
@@ -43,12 +43,12 @@ float Viewport::getHeight() const noexcept
 	return m_viewport.Height;
 }
 
-std::shared_ptr<Viewport> Viewport::fetch( Graphics &gph,
+std::shared_ptr<Viewport> Viewport::fetch( Graphics &gfx,
 	const float width,
 	const float height )
 {
 	using namespace std::string_literals;
-	return BindableMap::fetch<Viewport>( gph, width, height );
+	return BindableMap::fetch<Viewport>( gfx, width, height );
 }
 
 std::string Viewport::calcUid( const float width,

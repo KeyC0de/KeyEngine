@@ -9,7 +9,7 @@
 
 namespace mwrl = Microsoft::WRL;
 
-CubeTexture::CubeTexture( Graphics &gph,
+CubeTexture::CubeTexture( Graphics &gfx,
 	const std::string &path,
 	const unsigned slot )
 	:
@@ -35,7 +35,7 @@ CubeTexture::CubeTexture( Graphics &gph,
 	}
 
 	mwrl::ComPtr<ID3D11Texture2D> pTexture;
-	HRESULT hres = getDevice( gph )->CreateTexture2D( &texDesc, subRscData, &pTexture );
+	HRESULT hres = getDevice( gfx )->CreateTexture2D( &texDesc, subRscData, &pTexture );
 	ASSERT_HRES_IF_FAILED;
 
 	// create srv on the cubemap texture
@@ -44,14 +44,14 @@ CubeTexture::CubeTexture( Graphics &gph,
 	srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURECUBE;
 	srvDesc.Texture2D.MostDetailedMip = 0u;
 	srvDesc.Texture2D.MipLevels = 1u;
-	hres = getDevice( gph )->CreateShaderResourceView( pTexture.Get(), &srvDesc, &m_pD3dSrv );
+	hres = getDevice( gfx )->CreateShaderResourceView( pTexture.Get(), &srvDesc, &m_pD3dSrv );
 	ASSERT_HRES_IF_FAILED;
 }
 
-void CubeTexture::bind( Graphics &gph ) cond_noex
+void CubeTexture::bind( Graphics &gfx ) cond_noex
 {
-	getDeviceContext( gph )->PSSetShaderResources( m_slot, 1u, m_pD3dSrv.GetAddressOf() );
-	DXGI_GET_QUEUE_INFO( gph );
+	getDeviceContext( gfx )->PSSetShaderResources( m_slot, 1u, m_pD3dSrv.GetAddressOf() );
+	DXGI_GET_QUEUE_INFO( gfx );
 }
 
 const std::string& CubeTexture::getPath() const noexcept
@@ -59,11 +59,11 @@ const std::string& CubeTexture::getPath() const noexcept
 	return m_path;
 }
 
-std::shared_ptr<CubeTexture> CubeTexture::fetch( Graphics &gph,
+std::shared_ptr<CubeTexture> CubeTexture::fetch( Graphics &gfx,
 	const std::string &filepath,
 	const unsigned slot )
 {
-	return BindableMap::fetch<CubeTexture>( gph, filepath, slot );
+	return BindableMap::fetch<CubeTexture>( gfx, filepath, slot );
 }
 
 std::string CubeTexture::calcUid( const std::string &filepath,
@@ -79,7 +79,7 @@ std::string CubeTexture::getUid() const noexcept
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-CubeTextureOffscreenRT::CubeTextureOffscreenRT( Graphics &gph,
+CubeTextureOffscreenRT::CubeTextureOffscreenRT( Graphics &gfx,
 	const unsigned width,
 	const unsigned height,
 	const unsigned slot,
@@ -90,7 +90,7 @@ CubeTextureOffscreenRT::CubeTextureOffscreenRT( Graphics &gph,
 	D3D11_TEXTURE2D_DESC texDesc = createTextureDescriptor( width, height, format, BindFlags::RenderTargetTexture, CpuAccessFlags::NoCpuAccess, true, TextureUsage::Default );
 
 	mwrl::ComPtr<ID3D11Texture2D> pTexture;
-	HRESULT hres = getDevice( gph )->CreateTexture2D( &texDesc, nullptr, &pTexture );
+	HRESULT hres = getDevice( gfx )->CreateTexture2D( &texDesc, nullptr, &pTexture );
 	ASSERT_HRES_IF_FAILED;
 
 	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc{};
@@ -98,20 +98,20 @@ CubeTextureOffscreenRT::CubeTextureOffscreenRT( Graphics &gph,
 	srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURECUBE;
 	srvDesc.Texture2D.MostDetailedMip = 0u;
 	srvDesc.Texture2D.MipLevels = 1u;
-	hres = getDevice( gph )->CreateShaderResourceView( pTexture.Get(), &srvDesc, &m_pD3dSrv );
+	hres = getDevice( gfx )->CreateShaderResourceView( pTexture.Get(), &srvDesc, &m_pD3dSrv );
 	ASSERT_HRES_IF_FAILED;
 
 	// create RTVs on the texture cube's faces for capturing
 	for ( unsigned face = 0u; face < 6u; ++face )
 	{
-		m_renderTargetViews.push_back( std::make_shared<RenderTargetOutput>( gph, pTexture.Get(), face ) );
+		m_renderTargetViews.push_back( std::make_shared<RenderTargetOutput>( gfx, pTexture.Get(), face ) );
 	}
 }
 
-void CubeTextureOffscreenRT::bind( Graphics &gph ) cond_noex
+void CubeTextureOffscreenRT::bind( Graphics &gfx ) cond_noex
 {
-	getDeviceContext( gph )->PSSetShaderResources( m_slot, 1u, m_pD3dSrv.GetAddressOf() );
-	DXGI_GET_QUEUE_INFO( gph );
+	getDeviceContext( gfx )->PSSetShaderResources( m_slot, 1u, m_pD3dSrv.GetAddressOf() );
+	DXGI_GET_QUEUE_INFO( gfx );
 }
 
 std::shared_ptr<RenderTargetOutput> CubeTextureOffscreenRT::shareRenderTarget( const size_t index ) const
@@ -125,7 +125,7 @@ RenderTargetOutput* CubeTextureOffscreenRT::renderTarget( const size_t index )
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-CubeTextureOffscreenDS::CubeTextureOffscreenDS( Graphics &gph,
+CubeTextureOffscreenDS::CubeTextureOffscreenDS( Graphics &gfx,
 	const unsigned width,
 	const unsigned height,
 	const unsigned slot,
@@ -136,7 +136,7 @@ CubeTextureOffscreenDS::CubeTextureOffscreenDS( Graphics &gph,
 	D3D11_TEXTURE2D_DESC texDesc = createTextureDescriptor( width, height, getTypelessFormatDsv( dsvMode ), BindFlags::DepthStencilTexture, CpuAccessFlags::NoCpuAccess, true, TextureUsage::Default );
 
 	mwrl::ComPtr<ID3D11Texture2D> pTexture;
-	HRESULT hres = getDevice( gph )->CreateTexture2D( &texDesc, nullptr, &pTexture );
+	HRESULT hres = getDevice( gfx )->CreateTexture2D( &texDesc, nullptr, &pTexture );
 	ASSERT_HRES_IF_FAILED;
 
 	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc{};
@@ -144,20 +144,20 @@ CubeTextureOffscreenDS::CubeTextureOffscreenDS( Graphics &gph,
 	srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURECUBE;
 	srvDesc.Texture2D.MostDetailedMip = 0u;
 	srvDesc.Texture2D.MipLevels = 1u;
-	hres = getDevice( gph )->CreateShaderResourceView( pTexture.Get(), &srvDesc, &m_pD3dSrv );
+	hres = getDevice( gfx )->CreateShaderResourceView( pTexture.Get(), &srvDesc, &m_pD3dSrv );
 	ASSERT_HRES_IF_FAILED;
 
 	// create DSVs on the texture cube's faces for capturing depth (for shadow mapping)
 	for ( unsigned face = 0u; face < 6u; ++face )
 	{
-		m_depthStencilViews.push_back( std::make_shared<DepthStencilOutput>( gph, pTexture.Get(), dsvMode, face ) );
+		m_depthStencilViews.push_back( std::make_shared<DepthStencilOutput>( gfx, pTexture.Get(), dsvMode, face ) );
 	}
 }
 
-void CubeTextureOffscreenDS::bind( Graphics &gph ) cond_noex
+void CubeTextureOffscreenDS::bind( Graphics &gfx ) cond_noex
 {
-	getDeviceContext( gph )->PSSetShaderResources( m_slot, 1u, m_pD3dSrv.GetAddressOf() );
-	DXGI_GET_QUEUE_INFO( gph );
+	getDeviceContext( gfx )->PSSetShaderResources( m_slot, 1u, m_pD3dSrv.GetAddressOf() );
+	DXGI_GET_QUEUE_INFO( gfx );
 }
 
 std::shared_ptr<DepthStencilOutput> CubeTextureOffscreenDS::shareDepthBuffer( const size_t index ) const

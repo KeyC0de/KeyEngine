@@ -19,7 +19,7 @@ class BlurPass
 	: public IFullscreenPass
 {
 public:
-	BlurPass( Graphics &gph, const std::string &name );
+	BlurPass( Graphics &gfx, const std::string &name );
 
 	void reset() cond_noex override;
 };

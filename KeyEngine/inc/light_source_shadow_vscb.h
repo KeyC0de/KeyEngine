@@ -23,10 +23,10 @@ class PointLightSourceShadowVSCB
 	std::unique_ptr<VertexShaderConstantBuffer<PointLightSourceShadowTransformVSCB>> m_pVscb;
 	const Camera *m_pPointLightShadowCamera = nullptr;
 public:
-	PointLightSourceShadowVSCB( Graphics &gph, const unsigned slot );
+	PointLightSourceShadowVSCB( Graphics &gfx, const unsigned slot );
 
-	void update( Graphics &gph );
-	void bind( Graphics &gph ) cond_noex override;
+	void update( Graphics &gfx );
+	void bind( Graphics &gfx ) cond_noex override;
 	void setCamera( const Camera *pCam, const bool bEnable ) noexcept;
 	bool isCastingShadows() const noexcept;
 };

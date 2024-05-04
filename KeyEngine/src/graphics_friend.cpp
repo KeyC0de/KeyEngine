@@ -1,12 +1,12 @@
 #include "graphics_friend.h"
 
 
-ID3D11DeviceContext* GraphicsFriend::getDeviceContext( Graphics &gph ) noexcept
+ID3D11DeviceContext* GraphicsFriend::getDeviceContext( Graphics &gfx ) noexcept
 {
-	return gph.m_pImmediateContext.Get();
+	return gfx.m_pImmediateContext.Get();
 }
 
-ID3D11Device* GraphicsFriend::getDevice( Graphics &gph ) noexcept
+ID3D11Device* GraphicsFriend::getDevice( Graphics &gfx ) noexcept
 {
-	return gph.m_pDevice.Get();
+	return gfx.m_pDevice.Get();
 }

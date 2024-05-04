@@ -33,12 +33,12 @@
 namespace ren
 {
 
-Renderer::Renderer( Graphics &gph,
+Renderer::Renderer( Graphics &gfx,
 	bool drawToOffscreen )
 	:
 	m_bUsesOffscreen{drawToOffscreen}
 {
-	recreate( gph );
+	recreate( gfx );
 }
 
 Renderer::~Renderer() noexcept
@@ -46,7 +46,7 @@ Renderer::~Renderer() noexcept
 
 }
 
-void Renderer::recreate( Graphics &gph )
+void Renderer::recreate( Graphics &gfx )
 {
 	m_passes.clear();
 	m_globalBinders.clear();
@@ -57,8 +57,8 @@ void Renderer::recreate( Graphics &gph )
 	m_pDsv.reset();
 	m_bValidatedPasses = false;
 
-	m_pRtv = m_bUsesOffscreen ? gph.getRenderTargetOffscreen( 0u, RenderTargetViewMode::DefaultRT )->shareRenderTarget() : gph.getRenderTargetFromBackBuffer();
-	m_pDsv = m_bUsesOffscreen ? gph.getDepthBufferOffscreen( 0u, DepthStencilViewMode::DefaultDS )->shareDepthBuffer() : gph.getDepthBufferFromBackBuffer();
+	m_pRtv = m_bUsesOffscreen ? gfx.getRenderTargetOffscreen( 0u, RenderTargetViewMode::DefaultRT )->shareRenderTarget() : gfx.getRenderTargetFromBackBuffer();
+	m_pDsv = m_bUsesOffscreen ? gfx.getDepthBufferOffscreen( 0u, DepthStencilViewMode::DefaultDS )->shareDepthBuffer() : gfx.getDepthBufferFromBackBuffer();
 
 	addGlobalBinder( RenderSurfaceBinder<IRenderTargetView>::make( "backColorbuffer", m_pRtv ) );
 
@@ -87,7 +87,7 @@ void Renderer::addGlobalBinder( std::unique_ptr<IBinder> pBinder )
 	m_globalBinders.emplace_back( std::move( pBinder ) );
 }
 
-void Renderer::run( Graphics &gph ) cond_noex
+void Renderer::run( Graphics &gfx ) cond_noex
 {
 	ASSERT( m_bValidatedPasses, "Renderer is not validated!" );
 	// Run the offscreen passes
@@ -95,7 +95,7 @@ void Renderer::run( Graphics &gph ) cond_noex
 	{
 		if ( pass->isActive() )
 		{
-			pass->run( gph );
+			pass->run( gfx );
 #if defined _DEBUG && !defined NDEBUG
 //			const auto *renderQueuePass = dynamic_cast<RenderQueuePass*>( pass.get() );
 //			if ( renderQueuePass != nullptr )
@@ -110,12 +110,12 @@ void Renderer::run( Graphics &gph ) cond_noex
 
 	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{
-		offscreenToBackBufferSwap( gph );
-		m_pFinalPostProcessPass->run( gph );
+		offscreenToBackBufferSwap( gfx );
+		m_pFinalPostProcessPass->run( gfx );
 	}
 
 	// UI rendering continues...
-	m_pFontPass->run( gph );
+	m_pFontPass->run( gfx );
 }
 
 void Renderer::reset() noexcept
@@ -127,10 +127,10 @@ void Renderer::reset() noexcept
 	}
 }
 
-void Renderer::offscreenToBackBufferSwap( Graphics &gph )
+void Renderer::offscreenToBackBufferSwap( Graphics &gfx )
 {
-	gph.getRenderTargetFromBackBuffer()->bindRenderSurface( gph );
-	gph.getRenderTargetOffscreen( 0u, RenderTargetViewMode::DefaultRT )->bind( gph );
+	gfx.getRenderTargetFromBackBuffer()->bindRenderSurface( gfx );
+	gfx.getRenderTargetOffscreen( 0u, RenderTargetViewMode::DefaultRT )->bind( gfx );
 }
 
 void Renderer::addPass( std::unique_ptr<IPass> pPass )
@@ -289,57 +289,49 @@ bool Renderer::isUsingOffscreenRendering() const noexcept
 	return m_bUsesOffscreen;
 }
 
-void Renderer::recreateRtvsAndDsvs( Graphics &gph )
-{
-	for ( auto &pass : m_passes )
-	{
-		pass->recreateRtvsAndDsvs( gph );
-	}
-}
-
-
-Renderer3d::Renderer3d( Graphics &gph,
+////////////////////////////////////////////////////////////////////////////////////////////////////
+Renderer3d::Renderer3d( Graphics &gfx,
 	bool drawToOffscreen,
 	const int radius,
 	const float sigma,
 	const KernelType kernelType )
 	:
-	Renderer{gph, drawToOffscreen},
+	Renderer{gfx, drawToOffscreen},
 	m_radius(radius),
 	m_sigma(sigma),
 	m_kernelType{kernelType}
 {
-	recreate( gph );
+	recreate( gfx );
 }
 
-void Renderer3d::recreate( Graphics &gph )
+void Renderer3d::recreate( Graphics &gfx )
 {
-	Renderer::recreate( gph );
+	Renderer::recreate( gfx );
 
 	{
-		auto pass = std::make_unique<ShadowPass>( gph, "shadowMap" );
+		auto pass = std::make_unique<ShadowPass>( gfx, "shadowMap" );
 		addPass( std::move( pass ) );
 	}
 	{
-		auto pass = std::make_unique<LambertianPass>( gph, "lambertian" );
+		auto pass = std::make_unique<LambertianPass>( gfx, "lambertian" );
 		pass->setupBinderTarget( "renderTarget", "clearRt", "buffer" );
 		pass->setupBinderTarget( "depthStencil", "clearDs", "buffer" );
 		pass->setupBinderTarget( "offscreenShadowCubemapIn", "shadowMap", "offscreenShadowCubemapOut" );
 		addPass( std::move( pass ) );
 	}
 	{
-		auto pass = std::make_unique<SkyPass>( gph, "sky", true );
+		auto pass = std::make_unique<SkyPass>( gfx, "sky", true );
 		pass->setupBinderTarget( "renderTarget", "lambertian", "renderTarget" );
 		pass->setupBinderTarget( "depthStencil", "lambertian", "depthStencil" );
 		addPass( std::move( pass ) );
 	}
 	{
-		auto pass = std::make_unique<BlurOutlineMaskPass>( gph, "blurOutlineMask" );
+		auto pass = std::make_unique<BlurOutlineMaskPass>( gfx, "blurOutlineMask" );
 		pass->setupBinderTarget( "depthStencil", "sky", "depthStencil" );
 		addPass( std::move( pass ) );
 	}
 	{
-		auto pass = std::make_unique<BlurOutlineDrawPass>( gph, "blurOutlineDraw", s_fullscreenRezReductFactor );
+		auto pass = std::make_unique<BlurOutlineDrawPass>( gfx, "blurOutlineDraw", s_fullscreenRezReductFactor );
 		addPass( std::move( pass ) );
 	}
 	{
@@ -351,7 +343,7 @@ void Renderer3d::recreate( Graphics &gph )
 			layout["coefficients"].set<con::Float>( s_maxRadius * 2 + 1 );
 
 			con::CBuffer cb{std::move( layout )};
-			m_blurKernel = std::make_shared<PixelShaderConstantBufferEx>( gph, 0u, cb );
+			m_blurKernel = std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb );
 			setKernelGauss( m_radius, m_sigma );
 			addGlobalLinker( BindableLinker<PixelShaderConstantBufferEx>::make( "blurKernel", m_blurKernel ) );
 		}
@@ -360,19 +352,19 @@ void Renderer3d::recreate( Graphics &gph )
 			layout.add<con::Bool>( "bHorizontal" );
 
 			con::CBuffer cb{std::move( layout )};
-			m_blurDirection = std::make_shared<PixelShaderConstantBufferEx>( gph, 1u, cb );
+			m_blurDirection = std::make_shared<PixelShaderConstantBufferEx>( gfx, 1u, cb );
 			addGlobalLinker( BindableLinker<PixelShaderConstantBufferEx>::make( "blurDirection", m_blurDirection ) );
 		}
 	}
 	{
-		auto pass = std::make_unique<HorizontalBlurPass>( gph, "horizontalBlur", s_fullscreenRezReductFactor );
+		auto pass = std::make_unique<HorizontalBlurPass>( gfx, "horizontalBlur", s_fullscreenRezReductFactor );
 		pass->setupBinderTarget( "offscreenBlurOutlineIn", "blurOutlineDraw", "offscreenBlurOutlineOut" );
 		pass->setupBinderTarget( "blurKernel", "$", "blurKernel" );
 		pass->setupBinderTarget( "blurDirection", "$", "blurDirection" );
 		addPass( std::move( pass ) );
 	}
 	{
-		auto pass = std::make_unique<VerticalBlurPass>( gph, "verticalBlur" );
+		auto pass = std::make_unique<VerticalBlurPass>( gfx, "verticalBlur" );
 		pass->setupBinderTarget( "renderTarget", "sky", "renderTarget" );
 		pass->setupBinderTarget( "depthStencil", "blurOutlineMask", "depthStencil" );
 		pass->setupBinderTarget( "offscreenBlurOutlineIn", "horizontalBlur", "offscreenBlurOutlineOut" );
@@ -381,25 +373,25 @@ void Renderer3d::recreate( Graphics &gph )
 		addPass( std::move( pass ) );
 	}
 	{
-		auto pass = std::make_unique<SolidOutlineMaskPass>( gph, "solidOutlineMask" );
+		auto pass = std::make_unique<SolidOutlineMaskPass>( gfx, "solidOutlineMask" );
 		pass->setupBinderTarget( "renderTarget", "verticalBlur", "renderTarget" );
 		pass->setupBinderTarget( "depthStencil", "verticalBlur", "depthStencil" );
 		addPass( std::move( pass ) );
 	}
 	{
-		auto pass = std::make_unique<SolidOutlineDrawPass>( gph, "solidOutlineDraw" );
+		auto pass = std::make_unique<SolidOutlineDrawPass>( gfx, "solidOutlineDraw" );
 		pass->setupBinderTarget( "renderTarget", "solidOutlineMask", "renderTarget" );
 		pass->setupBinderTarget( "depthStencil", "solidOutlineMask", "depthStencil" );
 		addPass( std::move( pass ) );
 	}
 	{
-		auto pass = std::make_unique<DepthReversedPass>( gph, "depthReversed" );
+		auto pass = std::make_unique<DepthReversedPass>( gfx, "depthReversed" );
 		pass->setupBinderTarget( "renderTarget", "solidOutlineDraw", "renderTarget" );
 		pass->setupBinderTarget( "depthStencil", "solidOutlineDraw", "depthStencil" );
 		addPass( std::move( pass ) );
 	}
 	{
-		auto pass = std::make_unique<WireframePass>( gph, "wireframe" );
+		auto pass = std::make_unique<WireframePass>( gfx, "wireframe" );
 		pass->setupBinderTarget( "renderTarget", "depthReversed", "renderTarget" );
 		pass->setupBinderTarget( "depthStencil", "depthReversed", "depthStencil" );
 		addPass( std::move( pass ) );
@@ -409,39 +401,39 @@ void Renderer3d::recreate( Graphics &gph )
 	Renderer::linkGlobalBinders();
 
 	{
-		//m_pFinalPostProcessPass = std::make_unique<ren::BlurPass>( gph, "blur" );
-		//m_pFinalPostProcessPass = std::make_unique<ren::NegativePass>( gph, "negative" );
-		m_pFinalPostProcessPass = std::make_unique<ren::PassThrough>( gph, "passthrough" );
+		//m_pFinalPostProcessPass = std::make_unique<ren::BlurPass>( gfx, "blur" );
+		//m_pFinalPostProcessPass = std::make_unique<ren::NegativePass>( gfx, "negative" );
+		m_pFinalPostProcessPass = std::make_unique<ren::PassThrough>( gfx, "passthrough" );
 	}
 
-	m_pFontPass = std::make_unique<ren::FontPass>( gph, "fpsText", "myComicSansMSSpriteFont" );
+	m_pFontPass = std::make_unique<ren::FontPass>( gfx, "fpsText", "myComicSansMSSpriteFont" );
 }
 
-void Renderer3d::displayImguiWidgets( Graphics &gph ) noexcept
+void Renderer3d::displayImguiWidgets( Graphics &gfx ) noexcept
 {
 #ifndef FINAL_RELEASE
-	showShadowDumpImguiWindow( gph );
-	showGaussianBlurImguiWindow( gph );
-	showDisplayMode( gph );
+	showShadowDumpImguiWindow( gfx );
+	showGaussianBlurImguiWindow( gfx );
+	showDisplayMode( gfx );
 	dynamic_cast<SkyPass&>( getPass( "sky" ) ).displayImguiWidgets();
 #endif
 }
 
-void Renderer3d::showShadowDumpImguiWindow( Graphics &gph ) noexcept
+void Renderer3d::showShadowDumpImguiWindow( Graphics &gfx ) noexcept
 {
 #ifndef FINAL_RELEASE
 	if ( ImGui::Begin( "Shadow" ) )
 	{
 		if ( ImGui::Button( "Dump Cubemap" ) )
 		{
-			dumpShadowMap( gph, "dumps/shadow_" );
+			dumpShadowMap( gfx, "dumps/shadow_" );
 		}
 	}
 	ImGui::End();
 #endif
 }
 
-void Renderer3d::showGaussianBlurImguiWindow( Graphics &gph ) noexcept
+void Renderer3d::showGaussianBlurImguiWindow( Graphics &gfx ) noexcept
 {
 #ifndef FINAL_RELEASE
 	if ( ImGui::Begin( "Blur Kernel" ) )
@@ -501,7 +493,7 @@ void Renderer3d::showGaussianBlurImguiWindow( Graphics &gph ) noexcept
 #endif
 }
 
-void ren::Renderer3d::showDisplayMode( Graphics &gph ) noexcept
+void ren::Renderer3d::showDisplayMode( Graphics &gfx ) noexcept
 {
 #ifndef FINAL_RELEASE
 	bool bDirty = false;
@@ -512,19 +504,19 @@ void ren::Renderer3d::showDisplayMode( Graphics &gph ) noexcept
 
 	if ( ImGui::Begin( "Display Mode" ) )
 	{
-		dirtyCheck( ImGui::Checkbox( "Fullscreen", &gph.getDisplayMode() ) );
+		dirtyCheck( ImGui::Checkbox( "Fullscreen", &gfx.getDisplayMode() ) );
 	}
 	ImGui::End();
 
 	if ( bDirty )
 	{
-		if ( gph.getDisplayMode() )
+		if ( gfx.getDisplayMode() )
 		{
-			gph.resize( 0, 0 );
+			gfx.resize( 0, 0 );
 		}
 		else
 		{
-			gph.resize( 1600, 900 );
+			gfx.resize( 1600, 900 );
 		}
 	}
 #endif
@@ -543,10 +535,10 @@ void ren::Renderer3d::setShadowCamera( const Camera &cam,
 	dynamic_cast<ShadowPass&>( getPass( "shadowMap" ) ).setShadowCamera( cam, bEnable );
 }
 
-void Renderer3d::dumpShadowMap( Graphics &gph,
+void Renderer3d::dumpShadowMap( Graphics &gfx,
 	const std::string &path )
 {
-	dynamic_cast<ShadowPass&>( getPass( "shadowMap" ) ).dumpShadowMap( gph, path );
+	dynamic_cast<ShadowPass&>( getPass( "shadowMap" ) ).dumpShadowMap( gfx, path );
 }
 
 void Renderer3d::setKernelGauss( const int radius,
@@ -590,12 +582,20 @@ void Renderer3d::setKernelBox( const int radius ) cond_noex
 }
 
 
-Renderer2d::Renderer2d( Graphics &gph )
+////////////////////////////////////////////////////////////////////////////////////////////////////
+Renderer2d::Renderer2d( Graphics &gfx )
 	:
-	Renderer{gph, false}
+	Renderer{gfx, false}
 {
+	recreate( gfx );
+}
+
+void Renderer2d::recreate( Graphics &gfx )
+{
+	Renderer::recreate( gfx );
+
 	{
-		auto pass = std::make_unique<Pass2D>( gph, "pass2d" );
+		auto pass = std::make_unique<Pass2D>( gfx, "pass2d" );
 		pass->setupBinderTarget( "renderTarget", "clearRt", "buffer" );
 		pass->setupBinderTarget( "depthStencil", "clearDs", "buffer" );
 		addPass( std::move( pass ) );

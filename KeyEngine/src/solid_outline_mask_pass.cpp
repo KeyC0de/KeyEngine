@@ -8,15 +8,15 @@
 namespace ren
 {
 
-SolidOutlineMaskPass::SolidOutlineMaskPass( Graphics &gph,
+SolidOutlineMaskPass::SolidOutlineMaskPass( Graphics &gfx,
 	const std::string &name )
 	:
 	RenderQueuePass{name}
 {
-	addPassBindable( VertexShader::fetch( gph, "flat_vs.cso" ) );
-	addPassBindable( PixelShaderNull::fetch( gph ) );
-	addPassBindable( DepthStencilState::fetch( gph, DepthStencilState::Mode::DepthOffStencilWriteFF ) );
-	addPassBindable( RasterizerState::fetch( gph, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
+	addPassBindable( VertexShader::fetch( gfx, "flat_vs.cso" ) );
+	addPassBindable( PixelShaderNull::fetch( gfx ) );
+	addPassBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::DepthOffStencilWriteFF ) );
+	addPassBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
 
 	addBinder( RenderSurfaceBinder<IRenderTargetView>::make( "renderTarget", m_pRtv ) );
 	addBinder( RenderSurfaceBinder<IDepthStencilView>::make( "depthStencil", m_pDsv ) );

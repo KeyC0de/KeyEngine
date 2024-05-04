@@ -6,14 +6,14 @@
 namespace ren
 {
 
-BlurPass::BlurPass( Graphics &gph,
+BlurPass::BlurPass( Graphics &gfx,
 	const std::string &name )
 	:
-	IFullscreenPass{gph, name}
+	IFullscreenPass{gfx, name}
 {
-	addPassBindable( TextureSamplerState::fetch( gph, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
+	addPassBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
 
-	addPassBindable( PixelShader::fetch( gph, "blur_ps.cso" ) );
+	addPassBindable( PixelShader::fetch( gfx, "blur_ps.cso" ) );
 }
 
 void BlurPass::reset() cond_noex

@@ -25,9 +25,9 @@ class Pass2D
 	mutable KeyRandom m_randomness;
 	*/
 public:
-	Pass2D( Graphics &gph, const std::string &name );
+	Pass2D( Graphics &gfx, const std::string &name );
 
-	void run( Graphics &gph ) const cond_noex override;
+	void run( Graphics &gfx ) const cond_noex override;
 	void reset() cond_noex override;
 };
 

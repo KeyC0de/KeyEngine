@@ -18,7 +18,7 @@ class SolidOutlineDrawPass
 	: public RenderQueuePass
 {
 public:
-	SolidOutlineDrawPass( Graphics &gph, const std::string &name );
+	SolidOutlineDrawPass( Graphics &gfx, const std::string &name );
 };
 
 

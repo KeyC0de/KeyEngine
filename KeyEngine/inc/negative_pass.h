@@ -19,7 +19,7 @@ class NegativePass
 	: public IFullscreenPass
 {
 public:
-	NegativePass( Graphics &gph, const std::string &name );
+	NegativePass( Graphics &gfx, const std::string &name );
 
 	void reset() cond_noex override;
 };

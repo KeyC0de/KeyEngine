@@ -8,7 +8,7 @@
 namespace mwrl = Microsoft::WRL;
 
 Sprite::Sprite( const std::wstring& filename,
-	Graphics &gph )
+	Graphics &gfx )
 {
 	// create the wic factory
 	HRESULT hres = CoCreateInstance( CLSID_WICImagingFactory, nullptr, CLSCTX_INPROC_SERVER, IID_PPV_ARGS( &m_pWicFactory ) );
@@ -31,16 +31,16 @@ Sprite::Sprite( const std::wstring& filename,
 	ASSERT_HRES_IF_FAILED;
 
 	// create the D2D1 bitmap
-	hres = gph.renderTarget2d()->CreateBitmapFromWicBitmap( m_pWicConverter.Get(), nullptr, &m_pBitmap );
+	hres = gfx.renderTarget2d()->CreateBitmapFromWicBitmap( m_pWicConverter.Get(), nullptr, &m_pBitmap );
 	ASSERT_HRES_IF_FAILED;
 }
 
-void Sprite::render( Graphics &gph,
+void Sprite::render( Graphics &gfx,
 	const D2D1_RECT_F& srcRect,
 	const D2D1_RECT_F& destRect,
 	const float alpha )
 {
-	gph.renderTarget2d()->DrawBitmap( m_pBitmap.Get(), destRect, alpha, D2D1_BITMAP_INTERPOLATION_MODE::D2D1_BITMAP_INTERPOLATION_MODE_NEAREST_NEIGHBOR, 		srcRect );
+	gfx.renderTarget2d()->DrawBitmap( m_pBitmap.Get(), destRect, alpha, D2D1_BITMAP_INTERPOLATION_MODE::D2D1_BITMAP_INTERPOLATION_MODE_NEAREST_NEIGHBOR, 		srcRect );
 }
 
 float Sprite::getWidth() const noexcept
@@ -55,18 +55,18 @@ float Sprite::getHeight() const noexcept
 
 
 SpriteSheet::SpriteSheet( const std::wstring& filename,
-	Graphics &gph,
+	Graphics &gfx,
 	const int spriteWidth,
 	const int spriteHeight )
 	:
-	Sprite{filename, gph}
+	Sprite{filename, gfx}
 {
 	m_spriteWidth = spriteWidth;
 	m_spriteHeight = spriteHeight;
 	m_nSpritesAcross = (int)getWidth() / spriteWidth;
 }
 
-void SpriteSheet::render( Graphics &gph,
+void SpriteSheet::render( Graphics &gfx,
 	const int index,
 	const int x,
 	const int y,
@@ -77,6 +77,6 @@ void SpriteSheet::render( Graphics &gph,
 	D2D1_RECT_F srcRect = D2D1::RectF( (float) srcRectX, (float) srcRectY, (float) srcRectX + m_spriteWidth, (float) srcRectY + m_spriteHeight );
 	D2D1_RECT_F destRect = D2D1::RectF( (float) x, (float) y, (float) x + m_spriteWidth, (float) y + m_spriteHeight );
 
-	Sprite::render( gph, srcRect, destRect, alpha );
+	Sprite::render( gfx, srcRect, destRect, alpha );
 }
 #endif

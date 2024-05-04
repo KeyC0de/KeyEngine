@@ -20,21 +20,21 @@ protected:
 protected:
 	//	\function	IrenderTargetView	||	\date	2021/10/25 17:00
 	//	\brief  For creating an output RT only
-	IRenderTargetView( Graphics &gph, ID3D11Texture2D *pTexture, std::optional<unsigned> face );
+	IRenderTargetView( Graphics &gfx, ID3D11Texture2D *pTexture, std::optional<unsigned> face );
 	//	\function	IrenderTargetView	||	\date	2021/10/25 17:00
 	//	\brief  Render to Texture constructor
-	IRenderTargetView( Graphics &gph, const unsigned width, const unsigned height );
+	IRenderTargetView( Graphics &gfx, const unsigned width, const unsigned height );
 public:
 	//	\function	unbind	||	\date	2022/10/29 21:56
 	//	\brief	unbind targets from Output - currently UNUSED
-	static void unbind( Graphics &gph ) noexcept;
+	static void unbind( Graphics &gfx ) noexcept;
 public:
-	void bindRenderSurface( Graphics &gph ) cond_noex override;
-	void bindRenderSurface( Graphics &gph, IRenderSurface *pRs ) cond_noex override;
-	void bindRenderSurface( Graphics &gph, IDepthStencilView *pDepthStencilView ) cond_noex;
-	void clear( Graphics &gph, const std::array<float, 4> &color = {0.0f, 0.0f, 0.0f, 0.0f} ) cond_noex override;
-	void clean( Graphics &gph ) cond_noex;
-	const Bitmap convertToBitmap( Graphics &gph, const unsigned width, const unsigned height ) const;
+	void bindRenderSurface( Graphics &gfx ) cond_noex override;
+	void bindRenderSurface( Graphics &gfx, IRenderSurface *pRs ) cond_noex override;
+	void bindRenderSurface( Graphics &gfx, IDepthStencilView *pDepthStencilView ) cond_noex;
+	void clear( Graphics &gfx, const std::array<float, 4> &color = {0.0f, 0.0f, 0.0f, 0.0f} ) cond_noex override;
+	void clean( Graphics &gfx ) cond_noex;
+	const Bitmap convertToBitmap( Graphics &gfx, const unsigned width, const unsigned height ) const;
 	unsigned getWidth() const noexcept;
 	unsigned getHeight() const noexcept;
 	Microsoft::WRL::ComPtr<ID3D11RenderTargetView>& d3dResourceCom() noexcept;
@@ -43,8 +43,8 @@ public:
 private:
 	//	\function	createStagingTexture	||	\date	2021/10/27 21:59
 	//	\brief  create a texture resource compatible with our RTV, but with Staging usage (CPU read access, no GPU access)
-	std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC> createStagingTexture( Graphics &gph ) const;
-	void bindRenderSurface( Graphics &gph, ID3D11DepthStencilView *pD3dDsv ) cond_noex;
+	std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC> createStagingTexture( Graphics &gfx ) const;
+	void bindRenderSurface( Graphics &gfx, ID3D11DepthStencilView *pD3dDsv ) cond_noex;
 };
 
 //=============================================================
@@ -59,9 +59,9 @@ class RenderTargetShaderInput
 	unsigned m_slot;
 	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_pD3dSrv;
 public:
-	RenderTargetShaderInput( Graphics &gph, const unsigned width, const unsigned height, const unsigned slot, const RenderTargetViewMode rtvMode = DefaultRT );
+	RenderTargetShaderInput( Graphics &gfx, const unsigned width, const unsigned height, const unsigned slot, const RenderTargetViewMode rtvMode = DefaultRT );
 
-	void bind( Graphics &gph ) cond_noex override;
+	void bind( Graphics &gfx ) cond_noex override;
 	unsigned getSlot() const noexcept;
 };
 
@@ -75,7 +75,7 @@ class RenderTargetOutput
 	: public IRenderTargetView
 {
 public:
-	RenderTargetOutput( Graphics &gph, ID3D11Texture2D *pTexture, std::optional<unsigned> face = {} );
+	RenderTargetOutput( Graphics &gfx, ID3D11Texture2D *pTexture, std::optional<unsigned> face = {} );
 
-	void bind( Graphics &gph ) cond_noex override;
+	void bind( Graphics &gfx ) cond_noex override;
 };

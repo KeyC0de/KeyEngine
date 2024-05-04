@@ -13,15 +13,15 @@
 namespace ren
 {
 
-WireframePass::WireframePass( Graphics &gph,
+WireframePass::WireframePass( Graphics &gfx,
 	const std::string &name )
 	:
 	RenderQueuePass{name}
 {
-	addPassBindable( PrimitiveTopology::fetch( gph, D3D11_PRIMITIVE_TOPOLOGY_LINELIST ) );
+	addPassBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_LINELIST ) );
 
-	addPassBindable( RasterizerState::fetch( gph, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Wireframe, RasterizerState::FaceMode::Front ) );
-	addPassBindable( DepthStencilState::fetch( gph, DepthStencilState::Mode::Default ) );
+	addPassBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Wireframe, RasterizerState::FaceMode::Front ) );
+	addPassBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::Default ) );
 
 	addBinder( RenderSurfaceBinder<IRenderTargetView>::make( "renderTarget", m_pRtv ) );
 	addBinder( RenderSurfaceBinder<IDepthStencilView>::make( "depthStencil", m_pDsv ) );

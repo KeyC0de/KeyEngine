@@ -20,7 +20,7 @@ public:
 #pragma warning( default : 26495 )
 	Brick( const Rect &rect, const ColorBGRA col );
 
-	void render( Graphics &gph ) const cond_noex;
+	void render( Graphics &gfx ) const cond_noex;
 	bool checkForBallCollision( const Ball &ball ) const cond_noex;
 	void doBallCollision( Ball &ball );
 	const DirectX::XMFLOAT2 calcCenter() const noexcept;

@@ -19,27 +19,27 @@
 namespace ren
 {
 
-ShadowPass::ShadowPass( Graphics &gph,
+ShadowPass::ShadowPass( Graphics &gfx,
 	const std::string &name,
 	const unsigned shadowMapRez )
 	:
 	RenderQueuePass{name},
-	m_pLightVcb{std::make_shared<PointLightSourceShadowVSCB>( gph, 1u )}		// #TODO: currently supporting 1 shadow casting light source, for multiple ones (gotta have an upper limit too) supply the right slot to PointLightSourceShadowVSCB and also iterate through them appropriately below, @ ShadowPass::run, @ ShadowPass::setShadowCamera(cam, bAddOrRemove), also careful which slot # you pass here (must agree with PointLightSourceShadowTransformVSCB : register(b1) in shadowing_vs.hlsli)
+	m_pLightVcb{std::make_shared<PointLightSourceShadowVSCB>( gfx, 1u )}		// #TODO: currently supporting 1 shadow casting light source, for multiple ones (gotta have an upper limit too) supply the right slot to PointLightSourceShadowVSCB and also iterate through them appropriately below, @ ShadowPass::run, @ ShadowPass::setShadowCamera(cam, bAddOrRemove), also careful which slot # you pass here (must agree with PointLightSourceShadowTransformVSCB : register(b1) in shadowing_vs.hlsli)
 {
 	s_shadowMapResolution = shadowMapRez;
 
-	addPassBindable( PrimitiveTopology::fetch( gph, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
+	addPassBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
 	addPassBindable( m_pLightVcb );
-	addPassBindable( TextureSamplerState::fetch( gph, TextureSamplerState::TextureSamplerMode::ShadowTS, TextureSamplerState::FilterMode::Trilinear, TextureSamplerState::AddressMode::Border ) );
-	addPassBindable( VertexShader::fetch( gph, "shadow_vs.cso" ) );
-	addPassBindable( PixelShaderNull::fetch( gph ) );
-	addPassBindable( DepthStencilState::fetch( gph, DepthStencilState::Mode::Default ) );
+	addPassBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::ShadowTS, TextureSamplerState::FilterMode::Trilinear, TextureSamplerState::AddressMode::Border ) );
+	addPassBindable( VertexShader::fetch( gfx, "shadow_vs.cso" ) );
+	addPassBindable( PixelShaderNull::fetch( gfx ) );
+	addPassBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::Default ) );
 
-	addPassBindable( RasterizerState::fetch( gph, RasterizerState::RasterizerMode::ShadowRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front, 50, 2.0f, 0.1f ) );
+	addPassBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::ShadowRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front, 50, 2.0f, 0.1f ) );
 
 	// create the offscreen texture
-	m_pOffscreenDsvCubemap = std::make_shared<CubeTextureOffscreenDS>( gph, s_shadowMapResolution, s_shadowMapResolution, 3u, DepthStencilViewMode::ShadowDepth );
+	m_pOffscreenDsvCubemap = std::make_shared<CubeTextureOffscreenDS>( gfx, s_shadowMapResolution, s_shadowMapResolution, 3u, DepthStencilViewMode::ShadowDepth );
 
 #if defined _DEBUG && !defined NDEBUG
 	for ( size_t i = 0; i < 6; ++i )
@@ -75,22 +75,22 @@ ShadowPass::ShadowPass( Graphics &gph,
 	DirectX::XMStoreFloat3( &m_cameraUps[5], DirectX::XMVectorSet( 0.0f, 1.0f, 0.0f, 0.0f ) );
 }
 
-void ShadowPass::run( Graphics &gph ) const cond_noex
+void ShadowPass::run( Graphics &gfx ) const cond_noex
 {
 	if ( m_pLightVcb->isCastingShadows() )
 	{
-		m_pLightVcb->update( gph );
+		m_pLightVcb->update( gfx );
 		const auto pos = DirectX::XMLoadFloat3( &m_pCameraForShadowing->getPosition() );
 
-		gph.setProjectionMatrix( DirectX::XMLoadFloat4x4( &m_cameraShadowProjectionMatrix ) );
+		gfx.setProjectionMatrix( DirectX::XMLoadFloat4x4( &m_cameraShadowProjectionMatrix ) );
 		for ( size_t i = 0; i < 6; ++i )
 		{
 			const_cast<ShadowPass*>( this )->m_pDsv = m_pOffscreenDsvCubemap->shareDepthBuffer( i );
-			m_pDsv->clear( gph );
+			m_pDsv->clear( gfx );
 	
 			const auto lookAt = DirectX::XMVectorAdd( pos, DirectX::XMLoadFloat3( &m_cameraDirections[i] ) );
-			gph.setViewMatrix( DirectX::XMMatrixLookAtLH( pos, lookAt, DirectX::XMLoadFloat3( &m_cameraUps[i] ) ) );
-			RenderQueuePass::run( gph );
+			gfx.setViewMatrix( DirectX::XMMatrixLookAtLH( pos, lookAt, DirectX::XMLoadFloat3( &m_cameraUps[i] ) ) );
+			RenderQueuePass::run( gfx );
 		}
 	}
 }
@@ -105,13 +105,13 @@ void ShadowPass::setShadowCamera( const Camera &cam,
 	}
 }
 
-void ShadowPass::dumpShadowMap( Graphics &gph,
+void ShadowPass::dumpShadowMap( Graphics &gfx,
 	const std::string &path ) const
 {
 	for ( size_t i = 0; i < 6; ++i )
 	{
 		auto pDsvCubeTex = m_pOffscreenDsvCubemap->shareDepthBuffer( i );
-		pDsvCubeTex->convertToBitmap( gph, gph.getClientWidth(), gph.getClientHeight() ).save( path + std::to_string( i ) + ".png" );
+		pDsvCubeTex->convertToBitmap( gfx, gfx.getClientWidth(), gfx.getClientHeight() ).save( path + std::to_string( i ) + ".png" );
 	}
 }
 

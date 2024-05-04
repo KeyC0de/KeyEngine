@@ -19,7 +19,7 @@
 
 namespace dx = DirectX;
 
-Cube::Cube( Graphics &gph,
+Cube::Cube( Graphics &gfx,
 	const float initialScale /*= 1.0f*/,
 	const DirectX::XMFLOAT3 &initialRot /*= {0.0f, 0.0f, 0.0f}*/,
 	const DirectX::XMFLOAT3 &initialPos /*= {0.0f, 0.0f, 0.0f}*/,
@@ -41,25 +41,25 @@ Cube::Cube( Graphics &gph,
 	cube.setFlatShadedIndependentNormals();
 	const auto geometryTag = s_geometryTag + std::to_string( initialScale );
 
-	m_pVertexBuffer = VertexBuffer::fetch( gph, geometryTag, cube.m_vb );
-	m_pIndexBuffer = IndexBuffer::fetch( gph, geometryTag, cube.m_indices );
+	m_pVertexBuffer = VertexBuffer::fetch( gfx, geometryTag, cube.m_vb );
+	m_pIndexBuffer = IndexBuffer::fetch( gfx, geometryTag, cube.m_indices );
 
 	createAabb( cube.m_vb );
 	setMeshId();
 
-	auto transformVscb = std::make_shared<TransformVSCB>( gph, 0u );
+	auto transformVscb = std::make_shared<TransformVSCB>( gfx, 0u );
 	{// lambertian reflectance effect
 		Effect lambertian{rch::lambert, "lambertian", true};
 		lambertian.addBindable( transformVscb );
 
-		lambertian.addBindable( Texture::fetch( gph, "assets/models/brick_wall/brick_wall_diffuse.jpg", 0u ) );
-		lambertian.addBindable( TextureSamplerState::fetch( gph, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
+		lambertian.addBindable( Texture::fetch( gfx, "assets/models/brick_wall/brick_wall_diffuse.jpg", 0u ) );
+		lambertian.addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
 
-		auto pVs = VertexShader::fetch( gph, "cube_vs.cso" );
-		lambertian.addBindable( InputLayout::fetch( gph, cube.m_vb.getLayout(), *pVs ) );
+		auto pVs = VertexShader::fetch( gfx, "cube_vs.cso" );
+		lambertian.addBindable( InputLayout::fetch( gfx, cube.m_vb.getLayout(), *pVs ) );
 		lambertian.addBindable( std::move( pVs ) );
 
-		lambertian.addBindable( PixelShader::fetch( gph, "cube_ps.cso" ) );
+		lambertian.addBindable( PixelShader::fetch( gfx, "cube_ps.cso" ) );
 
 		con::RawLayout cbLayout;
 		cbLayout.add<con::Float3>( "modelSpecularColor" );
@@ -67,9 +67,9 @@ Cube::Cube( Graphics &gph,
 		auto cb = con::CBuffer( std::move( cbLayout ) );
 		cb["modelSpecularColor"] = dx::XMFLOAT3{1.0f, 1.0f, 1.0f};
 		cb["modelSpecularGloss"] = 20.0f;
-		lambertian.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gph, 0u, cb ) );
+		lambertian.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
 
-		lambertian.addBindable( RasterizerState::fetch( gph, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
+		lambertian.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
 
 		addEffect( std::move( lambertian ) );
 	}
@@ -77,7 +77,7 @@ Cube::Cube( Graphics &gph,
 		Effect shadowMap{rch::shadow, "shadowMap", true};
 		shadowMap.addBindable( transformVscb );
 
-		shadowMap.addBindable( InputLayout::fetch( gph, cube.m_vb.getLayout(), *VertexShader::fetch( gph, "flat_vs.cso" ) ) );
+		shadowMap.addBindable( InputLayout::fetch( gfx, cube.m_vb.getLayout(), *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 
 		addEffect( std::move( shadowMap ) );
 	}
@@ -85,7 +85,7 @@ Cube::Cube( Graphics &gph,
 		Effect blurOutlineMask{rch::blurOutline, "blurOutlineMask", true};
 		blurOutlineMask.addBindable( transformVscb );
 
-		blurOutlineMask.addBindable( InputLayout::fetch( gph, cube.m_vb.getLayout(), *VertexShader::fetch( gph, "flat_vs.cso" ) ) );
+		blurOutlineMask.addBindable( InputLayout::fetch( gfx, cube.m_vb.getLayout(), *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 
 		addEffect( std::move( blurOutlineMask ) );
 	}
@@ -97,9 +97,9 @@ Cube::Cube( Graphics &gph,
 		cbLayout.add<con::Float3>( "materialColor" );
 		auto cb = con::CBuffer( std::move( cbLayout ) );
 		cb["materialColor"] = color;
-		blurOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gph, 0u, cb ) );
+		blurOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
 
-		blurOutlineDraw.addBindable( InputLayout::fetch( gph, cube.m_vb.getLayout(), *VertexShader::fetch( gph, "flat_vs.cso" ) ) );
+		blurOutlineDraw.addBindable( InputLayout::fetch( gfx, cube.m_vb.getLayout(), *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 
 		addEffect( std::move( blurOutlineDraw ) );
 	}
@@ -107,29 +107,29 @@ Cube::Cube( Graphics &gph,
 		Effect solidOutlineMask{rch::solidOutline, "solidOutlineMask", true};
 		solidOutlineMask.addBindable( transformVscb );
 
-		solidOutlineMask.addBindable( InputLayout::fetch( gph, cube.m_vb.getLayout(), *VertexShader::fetch( gph, "flat_vs.cso" ) ) );
+		solidOutlineMask.addBindable( InputLayout::fetch( gfx, cube.m_vb.getLayout(), *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 
 		addEffect( std::move( solidOutlineMask ) );
 	}
 	{// solid outline draw effect
 		Effect solidOutlineDraw{rch::solidOutline, "solidOutlineDraw", true};
 
-		auto transformScaledVcb = std::make_shared<TransformScaleVSCB>( gph, 0u, 1.04f );
+		auto transformScaledVcb = std::make_shared<TransformScaleVSCB>( gfx, 0u, 1.04f );
 		solidOutlineDraw.addBindable( transformScaledVcb );
 
 		con::RawLayout cbLayout;
 		cbLayout.add<con::Float3>( "materialColor" );
 		auto cb = con::CBuffer( std::move( cbLayout ) );
 		cb["materialColor"] = color;
-		solidOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gph, 0u, cb ) );
+		solidOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
 
-		solidOutlineDraw.addBindable( InputLayout::fetch( gph, cube.m_vb.getLayout(), *VertexShader::fetch( gph, "flat_vs.cso" ) ) );
+		solidOutlineDraw.addBindable( InputLayout::fetch( gfx, cube.m_vb.getLayout(), *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 
 		addEffect( std::move( solidOutlineDraw ) );
 	}
 }
 
-void Cube::displayImguiWidgets( Graphics &gph,
+void Cube::displayImguiWidgets( Graphics &gfx,
 	const std::string &name ) noexcept
 {
 #ifndef FINAL_RELEASE

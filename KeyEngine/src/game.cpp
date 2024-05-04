@@ -119,8 +119,8 @@ State* Game<T>::getState() noexcept
 template<typename T>
 void Game<T>::present()
 {
-	auto &gph = m_mainWindow.getGraphics();
-	gph.endFrame();
+	auto &gfx = m_mainWindow.getGraphics();
+	gfx.endFrame();
 }
 
 template<typename T>
@@ -155,16 +155,16 @@ Sandbox3d::Sandbox3d( const int width,
 	:
 	Game(width, height, "KeyEngine 3d Sandbox", x, y, nWindows)
 {
-	auto &gph = m_mainWindow.getGraphics();
+	auto &gfx = m_mainWindow.getGraphics();
 
-	s_cameraMan.add( std::make_unique<Camera>( gph, "A", width, height, 60.0f, dx::XMFLOAT3{0.0f, 0.0f, 0.0f}, 0.0f, util::PI / 2.0f, false, 0.5f, 1000.0f ) );
-	s_cameraMan.add( std::make_unique<Camera>( gph, "B", width, height, 45.0f, dx::XMFLOAT3{-13.5f, 28.8f, -6.4f}, util::PI / 180.0f * 13.0f, util::PI / 180.0f * 61.0f, false, 0.5f, 1000.0f ) );
-	m_pPointLight1 = std::make_unique<PointLight>( gph, dx::XMFLOAT3{10.0f, 5.0f, -1.4f} );
+	s_cameraMan.add( std::make_unique<Camera>( gfx, "A", width, height, 60.0f, dx::XMFLOAT3{0.0f, 0.0f, 0.0f}, 0.0f, util::PI / 2.0f, false, 0.5f, 1000.0f ) );
+	s_cameraMan.add( std::make_unique<Camera>( gfx, "B", width, height, 45.0f, dx::XMFLOAT3{-13.5f, 28.8f, -6.4f}, util::PI / 180.0f * 13.0f, util::PI / 180.0f * 61.0f, false, 0.5f, 1000.0f ) );
+	m_pPointLight1 = std::make_unique<PointLight>( gfx, dx::XMFLOAT3{10.0f, 5.0f, -1.4f} );
 	//m_pPointLight2 = std::make_unique<PointLight>( m_mainWindow.getGraphics(), dx::XMFLOAT3{5.0f, 15.0f, 10.0f}, dx::XMFLOAT3{0.0f, 1.0f, 0.f}, false );
 
 	m_cube1.setPosition( {10.0f, 5.0f, 6.0f} );
 
-	auto &renderer = gph.getRenderer();
+	auto &renderer = gfx.getRenderer();
 
 	connectEffectsToRenderer( renderer );
 
@@ -172,7 +172,7 @@ Sandbox3d::Sandbox3d( const int width,
 
 	if ( m_pPointLight1->isCastingShadows() )
 	{
-		gph.getRenderer3d().setShadowCamera( *m_pPointLight1->shareCamera(), true );
+		gfx.getRenderer3d().setShadowCamera( *m_pPointLight1->shareCamera(), true );
 	}
 	//if ( m_pPointLight2->isCastingShadows() )
 	//{
@@ -256,9 +256,9 @@ int Sandbox3d::loop()
 			{
 				break;
 			}
-			update( dt );
 			float lerpBetweenFrames = runFixedLoop( dt );
-			render( lerpBetweenFrames );
+			update( dt, lerpBetweenFrames );
+			render();
 
 #ifndef FINAL_RELEASE
 			using namespace std::string_literals;
@@ -316,8 +316,8 @@ int Sandbox3d::checkInput( const float dt )
 #endif
 		case VK_RETURN:
 		{
-			auto &gph = m_mainWindow.getGraphics();
-			gph.getRenderer3d().dumpShadowMap( gph, "dumps/shadow_" );
+			auto &gfx = m_mainWindow.getGraphics();
+			gfx.getRenderer3d().dumpShadowMap( gfx, "dumps/shadow_" );
 			break;
 		}
 		}//switch
@@ -371,23 +371,23 @@ int Sandbox3d::checkInput( const float dt )
 	return 1;
 }
 
-void Sandbox3d::update( const float dt )
+void Sandbox3d::update( const float dt, const float lerpBetweenFrames )
 {
 	const auto &activeCamera = s_cameraMan.getActiveCamera();
 	// binds camera to all Passes that need it
-	auto &gph = m_mainWindow.getGraphics();
-	gph.getRenderer3d().setActiveCamera( activeCamera );
+	auto &gfx = m_mainWindow.getGraphics();
+	gfx.getRenderer3d().setActiveCamera( activeCamera );
 
-	m_pPointLight1->update( gph, dt, activeCamera.getViewMatrix() );
-	//m_pPointLight2->update( gph, dt, activeCamera.getViewMatrix() );
+	m_pPointLight1->update( gfx, dt, activeCamera.getViewMatrix() );
+	//m_pPointLight2->update( gfx, dt, activeCamera.getViewMatrix() );
 
-	m_terrain.update( dt );	// #TODO: Mesh::update should actually be doing rendering and Mesh::render() simply submits bindables for rendering, so some reformatting and reorganizing here is definitely due
-	m_cube1.update( dt );
-	m_cube2.update( dt );
-	m_cube3.update( dt );
-	//m_nanoSuit.update( dt );
-	m_carabiner.update( dt );
-	//m_sponzaScene.update( dt );
+	m_terrain.update( dt, lerpBetweenFrames );	// #TODO: Mesh::update should actually be doing rendering and Mesh::render() simply submits bindables for rendering, so some reformatting and reorganizing here is definitely due
+	m_cube1.update( dt, lerpBetweenFrames );
+	m_cube2.update( dt, lerpBetweenFrames );
+	m_cube3.update( dt, lerpBetweenFrames );
+	//m_nanoSuit.update( dt, lerpBetweenFrames );
+	m_carabiner.update( dt, lerpBetweenFrames );
+	//m_sponzaScene.update( dt, lerpBetweenFrames );
 }
 
 void Sandbox3d::updateFixed( const float dt )
@@ -399,10 +399,10 @@ void Sandbox3d::updateFixed( const float dt )
 
 }
 
-void Sandbox3d::render( const float renderFrameInterpolation )
+void Sandbox3d::render()
 {
-	auto &gph = m_mainWindow.getGraphics();
-	gph.beginFrame();
+	auto &gfx = m_mainWindow.getGraphics();
+	gfx.beginFrame();
 
 	m_pPointLight1->render( rch::lambert );
 	//m_pPointLight2->render( rch::lambert );
@@ -418,7 +418,7 @@ void Sandbox3d::render( const float renderFrameInterpolation )
 
 	s_cameraMan.render( rch::lambert | rch::wireframe );
 
-	gph.runRenderer();
+	gfx.runRenderer();
 }
 
 void Sandbox3d::test()
@@ -435,23 +435,23 @@ void Sandbox3d::test()
 	console.print( "Current distance from carabiner: "s + std::to_string( m_carabiner.getDistanceFromActiveCamera() ) + "\n"s );
 
 	/// Render Imgui stuff
-	auto &gph = m_mainWindow.getGraphics();
+	auto &gfx = m_mainWindow.getGraphics();
 
 	// Showcase Effect controls by passing visitors to the object hierarchies
-	s_cameraMan.displayImguiWidgets( gph );
+	s_cameraMan.displayImguiWidgets( gfx );
 
 	m_pPointLight1->displayImguiWidgets();
 	//m_pPointLight2->displayImguiWidgets();
 
-	m_terrain.displayImguiWidgets( gph, "Terrain Base"s );
+	m_terrain.displayImguiWidgets( gfx, "Terrain Base"s );
 
-	m_cube1.displayImguiWidgets( gph, "Cube 1"s );
-	m_cube2.displayImguiWidgets( gph, "Cube 2"s );
-	m_cube3.displayImguiWidgets( gph, "Cube 3"s );
+	m_cube1.displayImguiWidgets( gfx, "Cube 1"s );
+	m_cube2.displayImguiWidgets( gfx, "Cube 2"s );
+	m_cube3.displayImguiWidgets( gfx, "Cube 3"s );
 
-	m_carabiner.displayImguiWidgets( gph );
+	m_carabiner.displayImguiWidgets( gfx );
 
-	gph.getRenderer3d().displayImguiWidgets( gph );
+	gfx.getRenderer3d().displayImguiWidgets( gfx );
 
 	if ( m_bShowDemoWindow )
 	{
@@ -641,17 +641,17 @@ void Arkanoid::update( const float dt )
 
 void Arkanoid::render()
 {
-	auto &gph = m_mainWindow.getGraphics();
-	gph.beginFrame();
+	auto &gfx = m_mainWindow.getGraphics();
+	gfx.beginFrame();
 
-	m_ball.render( gph );
+	m_ball.render( gfx );
 	for ( const Brick &b : m_bricks )
 	{
-		b.render( gph );
+		b.render( gfx );
 	}
-	m_paddle.render( gph );
+	m_paddle.render( gfx );
 
-	gph.runRenderer();
+	gfx.runRenderer();
 }
 
 void Arkanoid::test()

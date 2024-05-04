@@ -16,9 +16,9 @@ class VerticalBlurPass
 {
 	std::shared_ptr<PixelShaderConstantBufferEx> m_pPscbBlurDirection;
 public:
-	VerticalBlurPass( Graphics &gph, const std::string &name );
+	VerticalBlurPass( Graphics &gfx, const std::string &name );
 
-	void run( Graphics &gph ) const cond_noex override;
+	void run( Graphics &gfx ) const cond_noex override;
 	void reset() cond_noex override;
 };
 

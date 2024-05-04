@@ -1395,9 +1395,6 @@
     <FxCompile Include="shaders\plane_vs.hlsl">
       <Filter>engine\vfx\shaders</Filter>
     </FxCompile>
-    <FxCompile Include="shaders\shadow_ps.hlsl">
-      <Filter>engine\vfx\shaders</Filter>
-    </FxCompile>
     <FxCompile Include="shaders\shadow_vs.hlsl">
       <Filter>engine\vfx\shaders</Filter>
     </FxCompile>

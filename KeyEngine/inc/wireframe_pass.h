@@ -10,7 +10,7 @@ class WireframePass
 	: public RenderQueuePass
 {
 public:
-	WireframePass( Graphics &gph, const std::string &name );
+	WireframePass( Graphics &gfx, const std::string &name );
 };
 
 

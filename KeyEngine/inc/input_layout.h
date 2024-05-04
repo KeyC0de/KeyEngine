@@ -20,11 +20,11 @@ protected:
 	std::string m_vertexShaderUID;
 	ver::VertexInputLayout m_vertexLayout;
 public:
-	InputLayout( Graphics &gph, const ver::VertexInputLayout &layout, const VertexShader &vs );
+	InputLayout( Graphics &gfx, const ver::VertexInputLayout &layout, const VertexShader &vs );
 
-	void bind( Graphics &gph ) cond_noex override;
+	void bind( Graphics &gfx ) cond_noex override;
 	const ver::VertexInputLayout getLayout() const noexcept;
-	static std::shared_ptr<InputLayout> fetch( Graphics &gph, const ver::VertexInputLayout &layout, const VertexShader &vs );
+	static std::shared_ptr<InputLayout> fetch( Graphics &gfx, const ver::VertexInputLayout &layout, const VertexShader &vs );
 	static std::string calcUid( const ver::VertexInputLayout &layout, const VertexShader &vs );
 	std::string getUid() const noexcept override;
 };

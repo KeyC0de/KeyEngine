@@ -20,20 +20,20 @@ void RenderQueuePass::addJob( Job job,
 	}
 }
 
-void RenderQueuePass::run( Graphics &gph ) const cond_noex
+void RenderQueuePass::run( Graphics &gfx ) const cond_noex
 {
-	IBindablePass::bind( gph );
+	IBindablePass::bind( gfx );
 
 	const_cast<RenderQueuePass*>( this )->sortJobs();
 
 	for ( const auto &job : m_opaques )
 	{
-		job.first.run( gph );
+		job.first.run( gfx );
 	}
 
 	for ( const auto &job : m_transparents )
 	{
-		job.first.run( gph );
+		job.first.run( gfx );
 	}
 }
 

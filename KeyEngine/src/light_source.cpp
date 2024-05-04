@@ -8,25 +8,25 @@
 
 
 /*
-void DirectionalLightVSCB::update( Graphics &gph )
+void DirectionalLightVSCB::update( Graphics &gfx )
 {
 	ASSERT( m_pDirectionalLightShadowCamera, "Camera not specified (null)!" );
 	dx::XMFLOAT3 dir;
 	dx::XMStoreFloat3( &dir, m_pDirectionalLightShadowCamera->getDirection() );
 	const DirectionalPointLightSourceShadowTransformVSCB vscb{dx::XMMatrixTranspose( dx::XMMatrixTranslation( -dir.x, -dir.y, -dir.z ) )};
-	m_pVscb->update( gph, vscb );
+	m_pVscb->update( gfx, vscb );
 }
 */
 
-PointLight::PointLight( Graphics &gph,
+PointLight::PointLight( Graphics &gfx,
 	const DirectX::XMFLOAT3 &pos,
 	const DirectX::XMFLOAT3 &col,
 	const bool bShadowCasting,
 	const bool bShowMesh,
 	const float radius )
 	:
-	m_sphereMesh(gph, radius),
-	m_pscb(gph, s_pointLightPscbSlot),
+	m_sphereMesh(gfx, radius),
+	m_pscb(gfx, s_pointLightPscbSlot),
 	m_bCastingShadows{bShadowCasting},
 	m_bShowMesh{bShowMesh}
 {
@@ -37,23 +37,23 @@ PointLight::PointLight( Graphics &gph,
 	resetToDefault();
 	if ( bShadowCasting )
 	{
-		m_pCameraForShadowing = std::make_shared<Camera>( gph, std::string{"ShadowCam#"} + std::to_string( id ), gph.getClientWidth(), gph.getClientHeight(), 90.0f, m_pscbData.pos, 0.0f, util::PI / 2.0f, true );
+		m_pCameraForShadowing = std::make_shared<Camera>( gfx, std::string{"ShadowCam#"} + std::to_string( id ), gfx.getClientWidth(), gfx.getClientHeight(), 90.0f, m_pscbData.pos, 0.0f, util::PI / 2.0f, true );
 	}
 }
 
-void PointLight::update( Graphics &gph,
+void PointLight::update( Graphics &gfx,
 	const float dt,
 	const DirectX::XMMATRIX &activeCameraViewMat ) const noexcept
 {
 	auto copy = m_pscbData;
 	const auto lightPos = DirectX::XMLoadFloat3( &m_pscbData.pos );
 	DirectX::XMStoreFloat3( &copy.pos, DirectX::XMVector3Transform( lightPos, activeCameraViewMat ) );
-	m_pscb.update( gph, copy );
+	m_pscb.update( gfx, copy );
 	if ( m_bShowMesh )
 	{
 		m_sphereMesh.setPosition( m_pscbData.pos );
 	}
-	m_pscb.bind( gph );
+	m_pscb.bind( gfx );
 }
 
 void PointLight::render( const size_t channels ) const cond_noex

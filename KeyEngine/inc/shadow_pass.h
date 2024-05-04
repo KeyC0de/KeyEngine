@@ -35,14 +35,14 @@ class ShadowPass
 public:
 	static unsigned getResolution() noexcept;
 public:
-	ShadowPass( Graphics &gph, const std::string &name, const unsigned shadowMapRez = s_shadowMapResolution );
+	ShadowPass( Graphics &gfx, const std::string &name, const unsigned shadowMapRez = s_shadowMapResolution );
 
 	//	\function	update	||	\date	2021/10/18 23:55
 	//	\brief  update the light's -camera- view Proj Matrix for projective texture shadow cube mapping
 	//				then render the depth buffer to texture 6 times
-	void run( Graphics &gph ) const cond_noex override;
+	void run( Graphics &gfx ) const cond_noex override;
 	void setShadowCamera( const Camera &cam, const bool bEnable ) noexcept;
-	void dumpShadowMap( Graphics &gph, const std::string &path ) const;
+	void dumpShadowMap( Graphics &gfx, const std::string &path ) const;
 };
 
 

@@ -27,10 +27,10 @@ class SkyPass
 	std::shared_ptr<IndexBuffer> m_pSphereIb;
 	bool m_bUseSphere;
 public:
-	SkyPass( Graphics &gph, const std::string &name, const bool useSphere );
+	SkyPass( Graphics &gfx, const std::string &name, const bool useSphere );
 
 	void setActiveCamera( const Camera &cam ) noexcept;
-	void run( Graphics &gph ) const cond_noex override;
+	void run( Graphics &gfx ) const cond_noex override;
 	void reset() cond_noex override;
 	void displayImguiWidgets() noexcept;
 };

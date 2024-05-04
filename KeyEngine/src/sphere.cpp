@@ -12,7 +12,7 @@
 
 namespace dx = DirectX;
 
-Sphere::Sphere( Graphics &gph,
+Sphere::Sphere( Graphics &gfx,
 	const float radius /*= 1.0f*/,
 	const DirectX::XMFLOAT3 &initialRot /*= {0.0f, 0.0f, 0.0f}*/,
 	const DirectX::XMFLOAT3 &initialPos /*= {0.0f, 0.0f, 0.0f}*/ )
@@ -27,8 +27,8 @@ Sphere::Sphere( Graphics &gph,
 	}
 
 	const auto geometryTag = s_geometryTag + std::to_string( radius );
-	m_pVertexBuffer = VertexBuffer::fetch( gph, geometryTag, sphere.m_vb );
-	m_pIndexBuffer = IndexBuffer::fetch( gph, geometryTag, sphere.m_indices );
+	m_pVertexBuffer = VertexBuffer::fetch( gfx, geometryTag, sphere.m_vb );
+	m_pIndexBuffer = IndexBuffer::fetch( gfx, geometryTag, sphere.m_indices );
 
 	createAabb( sphere.m_vb );
 	setMeshId();
@@ -36,22 +36,22 @@ Sphere::Sphere( Graphics &gph,
 	{
 		Effect lambertian{rch::lambert, "lambertian", true};
 
-		auto pvs = VertexShader::fetch( gph, "flat_vs.cso" );
-		lambertian.addBindable( InputLayout::fetch( gph, sphere.m_vb.getLayout(), *pvs ) );
+		auto pvs = VertexShader::fetch( gfx, "flat_vs.cso" );
+		lambertian.addBindable( InputLayout::fetch( gfx, sphere.m_vb.getLayout(), *pvs ) );
 		lambertian.addBindable( std::move( pvs ) );
 
-		lambertian.addBindable( PixelShader::fetch( gph, "flat_ps.cso" ) );
+		lambertian.addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
 
 		struct ColorPCB
 		{
 			dx::XMFLOAT3 color{1.0f, 1.0f, 1.0f};
 			float padding = 0.0f;
 		} colorCb;
-		lambertian.addBindable( PixelShaderConstantBuffer<ColorPCB>::fetch( gph, colorCb, 0u ) );
+		lambertian.addBindable( PixelShaderConstantBuffer<ColorPCB>::fetch( gfx, colorCb, 0u ) );
 
-		lambertian.addBindable( std::make_shared<TransformVSCB>( gph, 0u ) );
+		lambertian.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
 
-		lambertian.addBindable( RasterizerState::fetch( gph, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
+		lambertian.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
 
 		addEffect( std::move( lambertian ) );
 	}

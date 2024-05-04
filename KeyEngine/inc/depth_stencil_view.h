@@ -14,7 +14,7 @@ class IDepthStencilView
 {
 	friend IRenderTargetView;
 
-	std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC> createStagingTexture( Graphics &gph ) const;
+	std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC> createStagingTexture( Graphics &gfx ) const;
 protected:
 	Microsoft::WRL::ComPtr<ID3D11DepthStencilView> m_pD3dDsv;
 	unsigned int m_width;
@@ -22,19 +22,19 @@ protected:
 protected:
 	//	\function	IDepthStencilView	||	\date	2021/10/25 17:00
 	//	\brief  For creating an output DS only
-	IDepthStencilView( Graphics &gph, ID3D11Texture2D *pTexture, const DepthStencilViewMode dsvMode, std::optional<unsigned> face );
+	IDepthStencilView( Graphics &gfx, ID3D11Texture2D *pTexture, const DepthStencilViewMode dsvMode, std::optional<unsigned> face );
 	//	\function	IDepthStencilView	||	\date	2024/04/25 13:34
 	//	\brief	for binding depth stencil as input to the OM
-	IDepthStencilView( Graphics &gph, const unsigned width, const unsigned height, const bool bBindAsShaderInput, const DepthStencilViewMode dsvMode );
+	IDepthStencilView( Graphics &gfx, const unsigned width, const unsigned height, const bool bBindAsShaderInput, const DepthStencilViewMode dsvMode );
 public:
-	void bindRenderSurface( Graphics &gph ) cond_noex override;
-	void bindRenderSurface( Graphics &gph, IRenderSurface *rt ) cond_noex override;
-	void bindRenderSurface( Graphics &gph, IRenderTargetView *rt ) cond_noex;
-	void clear( Graphics &gph, const std::array<float, 4> &unused = {} ) cond_noex override;
-	void clean( Graphics &gph ) cond_noex;
+	void bindRenderSurface( Graphics &gfx ) cond_noex override;
+	void bindRenderSurface( Graphics &gfx, IRenderSurface *rt ) cond_noex override;
+	void bindRenderSurface( Graphics &gfx, IRenderTargetView *rt ) cond_noex;
+	void clear( Graphics &gfx, const std::array<float, 4> &unused = {} ) cond_noex override;
+	void clean( Graphics &gfx ) cond_noex;
 	//	\function	convertToBitmap	||	\date	2021/06/25 18:55
 	//	\brief  copy from resource to staging --- linearize & normalize depth values by default
-	const Bitmap convertToBitmap( Graphics &gph, const unsigned width, const unsigned height, bool bLinearize = true ) const;
+	const Bitmap convertToBitmap( Graphics &gfx, const unsigned width, const unsigned height, bool bLinearize = true ) const;
 	unsigned int getWidth() const noexcept;
 	unsigned int getHeight() const noexcept;
 	Microsoft::WRL::ComPtr<ID3D11DepthStencilView>& d3dResourceCom() noexcept;
@@ -48,10 +48,10 @@ class DepthStencilShaderInput
 	unsigned int m_slot;
 	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_pD3dSrv;
 public:
-	DepthStencilShaderInput( Graphics &gph, const unsigned slot, const DepthStencilViewMode dsvMode = DepthStencilViewMode::DefaultDS );
-	DepthStencilShaderInput( Graphics &gph, const unsigned width, const unsigned height, const unsigned slot, const DepthStencilViewMode dsvMode = DepthStencilViewMode::DefaultDS );
+	DepthStencilShaderInput( Graphics &gfx, const unsigned slot, const DepthStencilViewMode dsvMode = DepthStencilViewMode::DefaultDS );
+	DepthStencilShaderInput( Graphics &gfx, const unsigned width, const unsigned height, const unsigned slot, const DepthStencilViewMode dsvMode = DepthStencilViewMode::DefaultDS );
 
-	void bind( Graphics &gph ) cond_noex override;
+	void bind( Graphics &gfx ) cond_noex override;
 	unsigned getSlot() const noexcept;
 };
 
@@ -65,9 +65,9 @@ class DepthStencilOutput
 	: public IDepthStencilView
 {
 public:
-	DepthStencilOutput( Graphics &gph );
-	DepthStencilOutput( Graphics &gph, const unsigned width, const unsigned height );
-	DepthStencilOutput( Graphics &gph, ID3D11Texture2D *pTexture, const DepthStencilViewMode dsvMode, std::optional<unsigned> face = {} );
+	DepthStencilOutput( Graphics &gfx );
+	DepthStencilOutput( Graphics &gfx, const unsigned width, const unsigned height );
+	DepthStencilOutput( Graphics &gfx, ID3D11Texture2D *pTexture, const DepthStencilViewMode dsvMode, std::optional<unsigned> face = {} );
 
-	void bind( Graphics &gph ) cond_noex override;
+	void bind( Graphics &gfx ) cond_noex override;
 };

@@ -6,14 +6,14 @@
 namespace ren
 {
 
-PassThrough::PassThrough( Graphics &gph,
+PassThrough::PassThrough( Graphics &gfx,
 	const std::string &name )
 	:
-	IFullscreenPass{gph, name}
+	IFullscreenPass{gfx, name}
 {
-	addPassBindable( TextureSamplerState::fetch( gph, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
+	addPassBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
 
-	addPassBindable( PixelShader::fetch( gph, "passthrough_ps.cso" ) );
+	addPassBindable( PixelShader::fetch( gfx, "passthrough_ps.cso" ) );
 }
 
 void PassThrough::reset() cond_noex

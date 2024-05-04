@@ -33,10 +33,10 @@ public:
 		PBR_UE,
 	};
 public:
-	MaterialLoader( Graphics &gph, const aiMaterial &aimaterial, const std::filesystem::path &modelPath, const LightingModel lightingModel ) cond_noex;
+	MaterialLoader( Graphics &gfx, const aiMaterial &aimaterial, const std::filesystem::path &modelPath, const LightingModel lightingModel ) cond_noex;
 
-	std::shared_ptr<VertexBuffer> makeVertexBuffer( Graphics &gph, const aiMesh &aimesh, float scale = 1.0f ) const cond_noex;
-	std::shared_ptr<IndexBuffer> makeIndexBuffer( Graphics &gph, const aiMesh &aimesh ) const cond_noex;
+	std::shared_ptr<VertexBuffer> makeVertexBuffer( Graphics &gfx, const aiMesh &aimesh, float scale = 1.0f ) const cond_noex;
+	std::shared_ptr<IndexBuffer> makeIndexBuffer( Graphics &gfx, const aiMesh &aimesh ) const cond_noex;
 	std::vector<Effect> getEffects() const noexcept;
 private:
 	std::string calcMeshTag( const aiMesh &mesh ) const noexcept;

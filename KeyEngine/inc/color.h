@@ -8,9 +8,9 @@ using Byte = uint8_t;
 
 struct ColorBGR final
 {
-	unsigned char b;
-	unsigned char g;
-	unsigned char r;
+	Byte b;
+	Byte g;
+	Byte r;
 };
 
 // For any DXGI format, the byte order is the order of the components in the format name.

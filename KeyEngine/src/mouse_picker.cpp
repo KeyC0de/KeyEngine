@@ -8,22 +8,22 @@
 namespace dx = DirectX;
 
 #pragma warning( disable : 4244 )
-MousePicker::MousePicker( Graphics &gph,
+MousePicker::MousePicker( Graphics &gfx,
 	int screenX,
 	int screenY )
 {
 	// convert to NDC space
-	dx::XMFLOAT2 coordsNdc = convertToNdc( gph, dx::XMFLOAT2(screenX, screenY) );
+	dx::XMFLOAT2 coordsNdc = convertToNdc( gfx, dx::XMFLOAT2(screenX, screenY) );
 
 	// convert to clip space, account for the aspect ratio of the viewport
-	dx::XMFLOAT2 coordsClip{convertToClip( gph, coordsNdc )};
+	dx::XMFLOAT2 coordsClip{convertToClip( gfx, coordsNdc )};
 
 	// convert to view space
 	dx::XMFLOAT4 coordsView{};
-	dx::XMStoreFloat4( &coordsView, convertToViewSpace( gph, coordsClip ) );
+	dx::XMStoreFloat4( &coordsView, convertToViewSpace( gfx, coordsClip ) );
 
 	// convert to world space
-	dx::XMStoreFloat3( &m_rayDirectionWorldSpace, convertToWorldSpace( gph, coordsView ) );
+	dx::XMStoreFloat3( &m_rayDirectionWorldSpace, convertToWorldSpace( gfx, coordsView ) );
 
 	// normalize the ray direction
 	auto vec = dx::XMVector3Normalize( dx::XMLoadFloat3( &m_rayDirectionWorldSpace ) );
@@ -44,16 +44,16 @@ MousePicker::MousePicker( Graphics &gph,
 }
 #pragma warning( default : 4244 )
 
-DirectX::XMFLOAT2 MousePicker::convertToNdc( Graphics &gph,
+DirectX::XMFLOAT2 MousePicker::convertToNdc( Graphics &gfx,
 	const dx::XMFLOAT2 &coordsScreenSpace )
 {
-	return {(coordsScreenSpace.x * 2.0f) / gph.getClientWidth() - 1.0f, 1.0f - (coordsScreenSpace.y * 2.0f) / gph.getClientHeight()};
+	return {(coordsScreenSpace.x * 2.0f) / gfx.getClientWidth() - 1.0f, 1.0f - (coordsScreenSpace.y * 2.0f) / gfx.getClientHeight()};
 }
 
-DirectX::XMFLOAT2 MousePicker::convertToClip( Graphics &gph,
+DirectX::XMFLOAT2 MousePicker::convertToClip( Graphics &gfx,
 	const dx::XMFLOAT2 &coordsNdc )
 {
-	dx::XMMATRIX projectionMatrix{gph.getProjectionMatrix()};
+	dx::XMMATRIX projectionMatrix{gfx.getProjectionMatrix()};
 	dx::XMVECTOR row1 = projectionMatrix.r[0];
 	dx::XMFLOAT4 row1f{};
 	dx::XMStoreFloat4( &row1f, row1 );
@@ -66,16 +66,16 @@ DirectX::XMFLOAT2 MousePicker::convertToClip( Graphics &gph,
 	return {coordsNdc.x / zoomX, coordsNdc.y / zoomY};
 }
 
-DirectX::XMVECTOR MousePicker::convertToViewSpace( Graphics &gph,
+DirectX::XMVECTOR MousePicker::convertToViewSpace( Graphics &gfx,
 	const DirectX::XMFLOAT2 &coordsClip )
 {
-	dx::XMMATRIX invProjMatrix{dx::XMMatrixInverse( nullptr, gph.getProjectionMatrix() )};
+	dx::XMMATRIX invProjMatrix{dx::XMMatrixInverse( nullptr, gfx.getProjectionMatrix() )};
 	return dx::XMVector3Transform( dx::XMLoadFloat2( &coordsClip ), invProjMatrix );
 }
 
-DirectX::XMVECTOR MousePicker::convertToWorldSpace( Graphics &gph,
+DirectX::XMVECTOR MousePicker::convertToWorldSpace( Graphics &gfx,
 	const DirectX::XMFLOAT4 &coordsView )
 {
-	dx::XMMATRIX invViewMatrix{dx::XMMatrixInverse( nullptr, gph.getViewMatrix() )};
+	dx::XMMATRIX invViewMatrix{dx::XMMatrixInverse( nullptr, gfx.getViewMatrix() )};
 	return dx::XMVector4Transform( dx::XMLoadFloat4( &coordsView ), invViewMatrix );
 }

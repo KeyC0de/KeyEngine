@@ -19,9 +19,9 @@ class BlurOutlineDrawPass
 	: public RenderQueuePass
 {
 public:
-	BlurOutlineDrawPass( Graphics &gph, const std::string &name, const unsigned rezReductFactor );
+	BlurOutlineDrawPass( Graphics &gfx, const std::string &name, const unsigned rezReductFactor );
 
-	void run( Graphics &gph ) const cond_noex override;
+	void run( Graphics &gfx ) const cond_noex override;
 };
 
 

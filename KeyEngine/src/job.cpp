@@ -15,12 +15,12 @@ Job::Job( const Mesh *pMesh, const Effect *pEffect )
 
 }
 
-void Job::run( Graphics &gph ) const cond_noex
+void Job::run( Graphics &gfx ) const cond_noex
 {
-	m_pMesh->bind( gph );		// bind P.T., I.B., V.B.
-	m_pEffect->bind( gph );	// bind other bindables
-	gph.drawIndexed( m_pMesh->getIndicesCount() );
-	DXGI_GET_QUEUE_INFO( gph );
+	m_pMesh->bind( gfx );		// bind P.T., I.B., V.B.
+	m_pEffect->bind( gfx );	// bind other bindables
+	gfx.drawIndexed( m_pMesh->getIndicesCount() );
+	DXGI_GET_QUEUE_INFO( gfx );
 }
 
 

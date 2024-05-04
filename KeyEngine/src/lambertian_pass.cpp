@@ -15,16 +15,16 @@
 namespace ren
 {
 
-LambertianPass::LambertianPass( Graphics &gph,
+LambertianPass::LambertianPass( Graphics &gfx,
 	const std::string &name )
 	:
 	RenderQueuePass{name}
 {
-	addPassBindable( PrimitiveTopology::fetch( gph, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
+	addPassBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
-	addPassBindable( TextureSamplerState::fetch( gph, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
+	addPassBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
 
-	addPassBindable( DepthStencilState::fetch( gph, DepthStencilState::Mode::Default ) );
+	addPassBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::Default ) );
 
 	addBinder( RenderSurfaceBinder<IRenderTargetView>::make( "renderTarget", m_pRtv ) );
 	addBinder( RenderSurfaceBinder<IDepthStencilView>::make( "depthStencil", m_pDsv ) );
@@ -39,11 +39,11 @@ void LambertianPass::setActiveCamera( const Camera &cam ) noexcept
 	m_pActiveCamera = &cam;
 }
 
-void LambertianPass::run( Graphics &gph ) const cond_noex
+void LambertianPass::run( Graphics &gfx ) const cond_noex
 {
 	ASSERT( m_pActiveCamera, "Main camera is absent!!!" );
-	m_pActiveCamera->makeActive( gph, false );
-	RenderQueuePass::run( gph );
+	m_pActiveCamera->makeActive( gfx, false );
+	RenderQueuePass::run( gfx );
 }
 
 

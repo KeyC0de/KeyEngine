@@ -29,12 +29,12 @@ class Model
 	ImguiNodeVisitorShowcase m_imguiVisitor;
 #endif
 public:
-	Model( Graphics &gph, const std::string &path, const float initialScale = 1.0f, const DirectX::XMFLOAT3 &initialRot = {0, 0, 0}, const DirectX::XMFLOAT3 &initialPos = {0, 0, 0} );
+	Model( Graphics &gfx, const std::string &path, const float initialScale = 1.0f, const DirectX::XMFLOAT3 &initialRot = {0, 0, 0}, const DirectX::XMFLOAT3 &initialPos = {0, 0, 0} );
 
-	void update( const float dt ) const cond_noex;
+	void update( const float dt, const float renderFrameInterpolation ) const cond_noex;
 	void render( const size_t channels = rch::all ) const cond_noex;
 	void setEffectEnabled( const size_t channels, const bool bEnabled ) noexcept;
-	void displayImguiWidgets( Graphics &gph ) noexcept;
+	void displayImguiWidgets( Graphics &gfx ) noexcept;
 	void accept( IImguiNodeVisitor &v );
 	void connectEffectsToRenderer( ren::Renderer &r );
 	////////////////////////////////////////////////////////////////////////////////////////////////////

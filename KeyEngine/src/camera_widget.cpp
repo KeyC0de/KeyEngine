@@ -11,7 +11,7 @@
 
 namespace dx = DirectX;
 
-CameraWidget::CameraWidget( Graphics &gph,
+CameraWidget::CameraWidget( Graphics &gfx,
 	const float initialScale/* = 1.0f*/,
 	const DirectX::XMFLOAT3 &initialRot/*= {0.0f, 0.0f, 0.0f}*/,
 	const DirectX::XMFLOAT3 &initialPos/*= {0.0f, 0.0f, 0.0f}*/ )
@@ -25,8 +25,8 @@ CameraWidget::CameraWidget( Graphics &gph,
 	}
 
 	// we don't have to duplicate the CameraWidget buffers - they're all the same
-	m_pVertexBuffer = VertexBuffer::fetch( gph, s_geometryTag, g.m_vb );
-	m_pIndexBuffer = IndexBuffer::fetch( gph, s_geometryTag, g.m_indices );
+	m_pVertexBuffer = VertexBuffer::fetch( gfx, s_geometryTag, g.m_vb );
+	m_pIndexBuffer = IndexBuffer::fetch( gfx, s_geometryTag, g.m_indices );
 
 	createAabb( g.m_vb );
 	setMeshId();
@@ -34,11 +34,11 @@ CameraWidget::CameraWidget( Graphics &gph,
 	{
 		Effect wireframe{rch::wireframe, "wireframe", true};
 
-		auto pVs = VertexShader::fetch( gph, "flat_vs.cso" );
-		wireframe.addBindable( InputLayout::fetch( gph, m_pVertexBuffer->getLayout(), *pVs ) );
+		auto pVs = VertexShader::fetch( gfx, "flat_vs.cso" );
+		wireframe.addBindable( InputLayout::fetch( gfx, m_pVertexBuffer->getLayout(), *pVs ) );
 		wireframe.addBindable( std::move( pVs ) );
 
-		wireframe.addBindable( PixelShader::fetch( gph, "flat_ps.cso" ) );
+		wireframe.addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
 
 		struct ColorPCB
 		{
@@ -46,8 +46,8 @@ CameraWidget::CameraWidget( Graphics &gph,
 			float paddingPlaceholder = 0.0f;
 		} colorPcb;
 
-		wireframe.addBindable( PixelShaderConstantBuffer<ColorPCB>::fetch( gph, colorPcb, 0u ) );
-		wireframe.addBindable( std::make_shared<TransformVSCB>( gph, 0u ) );
+		wireframe.addBindable( PixelShaderConstantBuffer<ColorPCB>::fetch( gfx, colorPcb, 0u ) );
+		wireframe.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
 
 		addEffect( std::move( wireframe ) );
 	}

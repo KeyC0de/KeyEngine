@@ -17,7 +17,7 @@
 
 namespace dx = DirectX;
 
-MaterialLoader::MaterialLoader( Graphics &gph,
+MaterialLoader::MaterialLoader( Graphics &gfx,
 	const aiMaterial &aimaterial,
 	const std::filesystem::path &modelPath,
 	const LightingModel lightingModel ) cond_noex
@@ -55,7 +55,7 @@ MaterialLoader::MaterialLoader( Graphics &gph,
 					bTexture = true;
 					shaderFileName += "Dif";
 					m_vertexLayout.add( ver::VertexInputLayout::Texture2D );
-					auto tex = Texture::fetch( gph, rootPath + textureFileName.C_Str(), 0u );
+					auto tex = Texture::fetch( gfx, rootPath + textureFileName.C_Str(), 0u );
 					if ( tex->hasAlpha() )
 					{
 						bTextureAlphaChannel = true;
@@ -71,7 +71,7 @@ MaterialLoader::MaterialLoader( Graphics &gph,
 				RasterizerState::FaceMode faceMode = bTextureAlphaChannel ?
 					RasterizerState::FaceMode::Both :
 					RasterizerState::FaceMode::Front;
-				lambertian.addBindable( RasterizerState::fetch( gph, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, faceMode ) );
+				lambertian.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, faceMode ) );
 			}
 			{
 			// how about specular?
@@ -80,7 +80,7 @@ MaterialLoader::MaterialLoader( Graphics &gph,
 					bTexture = true;
 					shaderFileName += "Spc";
 					m_vertexLayout.add( ver::VertexInputLayout::Texture2D );
-					auto tex = Texture::fetch( gph, rootPath + textureFileName.C_Str(), 1u );
+					auto tex = Texture::fetch( gfx, rootPath + textureFileName.C_Str(), 1u );
 					bSpecularTextureAlpha = tex->hasAlpha();
 					lambertian.addBindable( std::move( tex ) );
 					// in our system of specular maps the alpha channel contains the gloss (specular power)
@@ -99,21 +99,21 @@ MaterialLoader::MaterialLoader( Graphics &gph,
 					m_vertexLayout.add( ver::VertexInputLayout::Texture2D );
 					m_vertexLayout.add( ver::VertexInputLayout::Tangent );
 					m_vertexLayout.add( ver::VertexInputLayout::Bitangent );
-					lambertian.addBindable( Texture::fetch( gph, rootPath + textureFileName.C_Str(), 2u ) );
+					lambertian.addBindable( Texture::fetch( gfx, rootPath + textureFileName.C_Str(), 2u ) );
 					cbLayout.add<con::Bool>( "bNormalMap" );
 					cbLayout.add<con::Float>( "normalMapStrength" );
 				}
 			}
 			{
 			// the rest of the Bindables:
-				lambertian.addBindable( std::make_shared<TransformVSCB>( gph, 0u ) );
-				auto pVs = VertexShader::fetch( gph, shaderFileName + "_vs.cso" );
-				lambertian.addBindable( InputLayout::fetch( gph, m_vertexLayout, *pVs ) );
+				lambertian.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
+				auto pVs = VertexShader::fetch( gfx, shaderFileName + "_vs.cso" );
+				lambertian.addBindable( InputLayout::fetch( gfx, m_vertexLayout, *pVs ) );
 				lambertian.addBindable( std::move( pVs ) );
-				lambertian.addBindable( PixelShader::fetch( gph, shaderFileName + "_ps.cso" ) );
+				lambertian.addBindable( PixelShader::fetch( gfx, shaderFileName + "_ps.cso" ) );
 				if ( bTexture )
 				{
-					lambertian.addBindable( TextureSamplerState::fetch( gph, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
+					lambertian.addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
 				}
 
 				// Assembling the Pixel Shader Constant Buffer
@@ -140,7 +140,7 @@ MaterialLoader::MaterialLoader( Graphics &gph,
 				}
 				pscb["bNormalMap"].setIfValid( true );
 				pscb["normalMapStrength"].setIfValid( 1.0f );
-				lambertian.addBindable( std::make_unique<PixelShaderConstantBufferEx>( gph, 0u, std::move( pscb ) ) );
+				lambertian.addBindable( std::make_unique<PixelShaderConstantBufferEx>( gfx, 0u, std::move( pscb ) ) );
 			}
 			m_effects.emplace_back( std::move( lambertian ) );
 		}
@@ -148,8 +148,8 @@ MaterialLoader::MaterialLoader( Graphics &gph,
 		// shadow map effect
 			Effect shadowMap{rch::shadow, "shadowMap", true};
 
-			shadowMap.addBindable( InputLayout::fetch( gph, m_vertexLayout, *VertexShader::fetch( gph, "flat_vs.cso" ) ) );
-			shadowMap.addBindable( std::make_shared<TransformVSCB>( gph, 0u ) );
+			shadowMap.addBindable( InputLayout::fetch( gfx, m_vertexLayout, *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
+			shadowMap.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
 
 			m_effects.emplace_back( std::move( shadowMap ) );
 		}
@@ -157,8 +157,8 @@ MaterialLoader::MaterialLoader( Graphics &gph,
 		// blur outline mask effect
 			Effect blurOutlineMask{rch::blurOutline, "blurOutlineMask", false};
 
-			blurOutlineMask.addBindable( InputLayout::fetch( gph, m_vertexLayout, *VertexShader::fetch( gph, "flat_vs.cso" ) ) );
-			blurOutlineMask.addBindable( std::make_shared<TransformVSCB>( gph, 0u ) );
+			blurOutlineMask.addBindable( InputLayout::fetch( gfx, m_vertexLayout, *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
+			blurOutlineMask.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
 
 			m_effects.emplace_back( std::move( blurOutlineMask ) );
 		}
@@ -170,19 +170,19 @@ MaterialLoader::MaterialLoader( Graphics &gph,
 				cbLayout.add<con::Float3>( "materialColor" );
 				auto cb = con::CBuffer{std::move( cbLayout )};
 				cb["materialColor"] = dx::XMFLOAT3{1.0f, 0.4f, 0.4f};
-				blurOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gph, 0u, cb ) );
+				blurOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
 			}
-			blurOutlineDraw.addBindable( InputLayout::fetch( gph, m_vertexLayout, *VertexShader::fetch( gph, "flat_vs.cso" ) ) );
-			blurOutlineDraw.addBindable( std::make_shared<TransformVSCB>( gph, 0u ) );
+			blurOutlineDraw.addBindable( InputLayout::fetch( gfx, m_vertexLayout, *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
+			blurOutlineDraw.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
 
 			m_effects.emplace_back( std::move( blurOutlineDraw ) );
 		}
 		{
 		// solid outline mask effect
 			Effect solidOutlineMask{rch::solidOutline, "solidOutlineMask", false};
-			solidOutlineMask.addBindable( std::make_shared<TransformVSCB>( gph, 0u ) );
+			solidOutlineMask.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
 
-			solidOutlineMask.addBindable( InputLayout::fetch( gph, m_vertexLayout, *VertexShader::fetch( gph, "flat_vs.cso" ) ) );
+			solidOutlineMask.addBindable( InputLayout::fetch( gfx, m_vertexLayout, *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 
 			m_effects.emplace_back( std::move( solidOutlineMask ) );
 		}
@@ -190,16 +190,16 @@ MaterialLoader::MaterialLoader( Graphics &gph,
 		// solid outline draw effect
 			Effect solidOutlineDraw{rch::solidOutline, "solidOutlineDraw", false};
 
-			auto transformScaledVcb = std::make_shared<TransformScaleVSCB>( gph, 0u, 1.04f );
+			auto transformScaledVcb = std::make_shared<TransformScaleVSCB>( gfx, 0u, 1.04f );
 			solidOutlineDraw.addBindable( transformScaledVcb );
 
 			con::RawLayout cbLayout;
 			cbLayout.add<con::Float3>( "materialColor" );
 			auto cb = con::CBuffer{std::move( cbLayout )};
 			cb["materialColor"] = dx::XMFLOAT3{1.0f, 0.4f, 0.4f};
-			solidOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gph, 0u, cb ) );
+			solidOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
 
-			solidOutlineDraw.addBindable( InputLayout::fetch( gph, m_vertexLayout, *VertexShader::fetch( gph, "flat_vs.cso" ) ) );
+			solidOutlineDraw.addBindable( InputLayout::fetch( gfx, m_vertexLayout, *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 
 			m_effects.emplace_back( std::move( solidOutlineDraw ) );
 		}
@@ -210,7 +210,7 @@ MaterialLoader::MaterialLoader( Graphics &gph,
 	}
 }
 
-std::shared_ptr<VertexBuffer> MaterialLoader::makeVertexBuffer( Graphics &gph,
+std::shared_ptr<VertexBuffer> MaterialLoader::makeVertexBuffer( Graphics &gfx,
 	const aiMesh &aimesh,
 	float scale ) const cond_noex
 {
@@ -225,13 +225,13 @@ std::shared_ptr<VertexBuffer> MaterialLoader::makeVertexBuffer( Graphics &gph,
 			pos.z *= scale;
 		}
 	}
-	return VertexBuffer::fetch( gph, calcMeshTag( aimesh ), vb );
+	return VertexBuffer::fetch( gfx, calcMeshTag( aimesh ), vb );
 }
 
-std::shared_ptr<IndexBuffer> MaterialLoader::makeIndexBuffer( Graphics &gph,
+std::shared_ptr<IndexBuffer> MaterialLoader::makeIndexBuffer( Graphics &gfx,
 	const aiMesh &aimesh ) const cond_noex
 {
-	return IndexBuffer::fetch( gph, calcMeshTag( aimesh ), makeIndexBuffer_impl( aimesh ) );
+	return IndexBuffer::fetch( gfx, calcMeshTag( aimesh ), makeIndexBuffer_impl( aimesh ) );
 }
 
 ver::VBuffer MaterialLoader::makeVertexBuffer_impl( const aiMesh &aimesh ) const noexcept

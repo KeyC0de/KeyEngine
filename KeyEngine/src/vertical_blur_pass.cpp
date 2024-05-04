@@ -7,13 +7,13 @@
 namespace ren
 {
 
-VerticalBlurPass::VerticalBlurPass( Graphics &gph,
+VerticalBlurPass::VerticalBlurPass( Graphics &gfx,
 	const std::string &name )
 	:
-	IFullscreenPass{gph, name}
+	IFullscreenPass{gfx, name}
 {
-	addPassBindable( PixelShader::fetch( gph, "blur_separ_ps.cso" ) );
-	addPassBindable( TextureSamplerState::fetch( gph, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Trilinear, TextureSamplerState::AddressMode::Clamp ) );
+	addPassBindable( PixelShader::fetch( gfx, "blur_separ_ps.cso" ) );
+	addPassBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Trilinear, TextureSamplerState::AddressMode::Clamp ) );
 
 	addBinder( RenderSurfaceBinder<IRenderTargetView>::make( "renderTarget", m_pRtv ) );
 	addBinder( RenderSurfaceBinder<IDepthStencilView>::make( "depthStencil", m_pDsv ) );
@@ -26,13 +26,13 @@ VerticalBlurPass::VerticalBlurPass( Graphics &gph,
 	addLinker( RenderSurfaceLinker<IDepthStencilView>::make( "depthStencil", m_pDsv ) );
 }
 
-void VerticalBlurPass::run( Graphics &gph ) const cond_noex
+void VerticalBlurPass::run( Graphics &gfx ) const cond_noex
 {
 	auto pcBuf = m_pPscbBlurDirection->getBufferCopy();
 	pcBuf["bHorizontal"] = false;
 	m_pPscbBlurDirection->setBuffer( pcBuf );
-	m_pPscbBlurDirection->bind( gph );
-	IFullscreenPass::run( gph );
+	m_pPscbBlurDirection->bind( gfx );
+	IFullscreenPass::run( gfx );
 }
 
 void VerticalBlurPass::reset() cond_noex

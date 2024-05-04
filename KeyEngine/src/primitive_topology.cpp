@@ -3,7 +3,7 @@
 #include "dxgi_info_queue.h"
 
 
-PrimitiveTopology::PrimitiveTopology( Graphics &gph,
+PrimitiveTopology::PrimitiveTopology( Graphics &gfx,
 	const D3D11_PRIMITIVE_TOPOLOGY topology )
 	:
 	m_d3dTopology{topology}
@@ -11,16 +11,16 @@ PrimitiveTopology::PrimitiveTopology( Graphics &gph,
 
 }
 
-void PrimitiveTopology::bind( Graphics &gph ) cond_noex
+void PrimitiveTopology::bind( Graphics &gfx ) cond_noex
 {
-	getDeviceContext( gph )->IASetPrimitiveTopology( m_d3dTopology );
-	DXGI_GET_QUEUE_INFO( gph );
+	getDeviceContext( gfx )->IASetPrimitiveTopology( m_d3dTopology );
+	DXGI_GET_QUEUE_INFO( gfx );
 }
 
-std::shared_ptr<PrimitiveTopology> PrimitiveTopology::fetch( Graphics &gph,
+std::shared_ptr<PrimitiveTopology> PrimitiveTopology::fetch( Graphics &gfx,
 	const D3D11_PRIMITIVE_TOPOLOGY topology )
 {
-	return BindableMap::fetch<PrimitiveTopology>( gph, topology );
+	return BindableMap::fetch<PrimitiveTopology>( gfx, topology );
 }
 
 std::string PrimitiveTopology::calcUid( const D3D11_PRIMITIVE_TOPOLOGY topology )

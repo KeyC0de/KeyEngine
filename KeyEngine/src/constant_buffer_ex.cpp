@@ -3,7 +3,7 @@
 #include "dxgi_info_queue.h"
 
 
-IConstantBufferEx::IConstantBufferEx( Graphics &gph,
+IConstantBufferEx::IConstantBufferEx( Graphics &gfx,
 	const unsigned slot,
 	const con::CBElement &layoutRoot,
 	const con::CBuffer *pBuf )
@@ -16,12 +16,12 @@ IConstantBufferEx::IConstantBufferEx( Graphics &gph,
 	{
 		D3D11_SUBRESOURCE_DATA subData{};
 		subData.pSysMem = pBuf->getRawBytes();
-		HRESULT hres = getDevice( gph )->CreateBuffer( &d3dBufDesc, &subData, &m_pD3dCb );
+		HRESULT hres = getDevice( gfx )->CreateBuffer( &d3dBufDesc, &subData, &m_pD3dCb );
 		ASSERT_HRES_IF_FAILED;
 	}
 	else
 	{
-		HRESULT hres = getDevice( gph )->CreateBuffer( &d3dBufDesc, nullptr, &m_pD3dCb );
+		HRESULT hres = getDevice( gfx )->CreateBuffer( &d3dBufDesc, nullptr, &m_pD3dCb );
 		ASSERT_HRES_IF_FAILED;
 	}
 }
@@ -37,31 +37,31 @@ void IConstantBufferEx::setBufferDesc( D3D11_BUFFER_DESC &d3dBufDesc,
 	d3dBufDesc.StructureByteStride = 0;
 }
 
-void IConstantBufferEx::update( Graphics &gph,
+void IConstantBufferEx::update( Graphics &gfx,
 	const con::CBuffer &cb )
 {
 	ASSERT( &cb.getRootElement() == &getCbRootElement(), "Input CB root element is not compatible!" );
 
 	D3D11_MAPPED_SUBRESOURCE msr{};
-	HRESULT hres = getDeviceContext( gph )->Map( m_pD3dCb.Get(), 0u, D3D11_MAP::D3D11_MAP_WRITE_DISCARD, 0u, &msr );
+	HRESULT hres = getDeviceContext( gfx )->Map( m_pD3dCb.Get(), 0u, D3D11_MAP::D3D11_MAP_WRITE_DISCARD, 0u, &msr );
 	ASSERT_HRES_IF_FAILED;
-	DXGI_GET_QUEUE_INFO( gph );
+	DXGI_GET_QUEUE_INFO( gfx );
 
 	memcpy( msr.pData, cb.getRawBytes(), cb.getSizeInBytes() );
 
-	getDeviceContext( gph )->Unmap( m_pD3dCb.Get(), 0u );
+	getDeviceContext( gfx )->Unmap( m_pD3dCb.Get(), 0u );
 }
 
 
-void IVertexShaderConstantBufferEx::bind( Graphics &gph ) cond_noex
+void IVertexShaderConstantBufferEx::bind( Graphics &gfx ) cond_noex
 {
-	getDeviceContext( gph )->VSSetConstantBuffers( m_slot, 1u, m_pD3dCb.GetAddressOf() );
-	DXGI_GET_QUEUE_INFO( gph );
+	getDeviceContext( gfx )->VSSetConstantBuffers( m_slot, 1u, m_pD3dCb.GetAddressOf() );
+	DXGI_GET_QUEUE_INFO( gfx );
 }
 
 
-void IPixelShaderConstantBufferEx::bind( Graphics &gph ) cond_noex
+void IPixelShaderConstantBufferEx::bind( Graphics &gfx ) cond_noex
 {
-	getDeviceContext( gph )->PSSetConstantBuffers( m_slot, 1u, m_pD3dCb.GetAddressOf() );
-	DXGI_GET_QUEUE_INFO( gph );
+	getDeviceContext( gfx )->PSSetConstantBuffers( m_slot, 1u, m_pD3dCb.GetAddressOf() );
+	DXGI_GET_QUEUE_INFO( gfx );
 }

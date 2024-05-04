@@ -8,14 +8,14 @@
 namespace ren
 {
 
-SolidOutlineDrawPass::SolidOutlineDrawPass( Graphics &gph,
+SolidOutlineDrawPass::SolidOutlineDrawPass( Graphics &gfx,
 	const std::string &name )
 	:
 	RenderQueuePass{name}
 {
-	addPassBindable( VertexShader::fetch( gph, "flat_vs.cso" ) );
-	addPassBindable( PixelShader::fetch( gph, "flat_ps.cso" ) );
-	addPassBindable( DepthStencilState::fetch( gph, DepthStencilState::Mode::DepthOffStencilReadFF ) );
+	addPassBindable( VertexShader::fetch( gfx, "flat_vs.cso" ) );
+	addPassBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
+	addPassBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::DepthOffStencilReadFF ) );
 
 	addBinder( RenderSurfaceBinder<IRenderTargetView>::make( "renderTarget", m_pRtv ) );
 	addBinder( RenderSurfaceBinder<IDepthStencilView>::make( "depthStencil", m_pDsv ) );

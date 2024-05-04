@@ -14,9 +14,9 @@ protected:
 protected:
 	static void setBufferDesc( D3D11_BUFFER_DESC &d3dBufDesc, const unsigned byteWidth );
 protected:
-	IConstantBufferEx( Graphics &gph, const unsigned slot, const con::CBElement &layoutRoot, const con::CBuffer *pBuf );
+	IConstantBufferEx( Graphics &gfx, const unsigned slot, const con::CBElement &layoutRoot, const con::CBuffer *pBuf );
 
-	void update( Graphics &gph, const con::CBuffer &buf );
+	void update( Graphics &gfx, const con::CBuffer &buf );
 public:
 	virtual const con::CBElement& getCbRootElement() const noexcept = 0;
 };
@@ -27,7 +27,7 @@ class IVertexShaderConstantBufferEx
 public:
 	using IConstantBufferEx::IConstantBufferEx;
 
-	void bind( Graphics &gph ) cond_noex override;
+	void bind( Graphics &gfx ) cond_noex override;
 };
 
 class IPixelShaderConstantBufferEx
@@ -36,7 +36,7 @@ class IPixelShaderConstantBufferEx
 public:
 	using IConstantBufferEx::IConstantBufferEx;
 
-	void bind( Graphics &gph ) cond_noex override;
+	void bind( Graphics &gfx ) cond_noex override;
 };
 
 template<class T>
@@ -49,21 +49,21 @@ class ConstantBufferEx final
 	con::CBuffer m_cb;
 public:
 	// empty cb
-	ConstantBufferEx( Graphics &gph,
+	ConstantBufferEx( Graphics &gfx,
 		const unsigned slot,
 		const con::CookedLayout &layout )
 		:
-		T{gph, slot, *layout.shareRootElement(), nullptr},
+		T{gfx, slot, *layout.shareRootElement(), nullptr},
 		m_cb{con::CBuffer{layout}}
 	{
 
 	}
 
-	ConstantBufferEx( Graphics &gph,
+	ConstantBufferEx( Graphics &gfx,
 		const unsigned slot,
 		const con::CBuffer &cb )
 		:
-		T{gph, slot, cb.getRootElement(), &cb},
+		T{gfx, slot, cb.getRootElement(), &cb},
 		m_cb{cb}
 	{
 
@@ -90,14 +90,14 @@ public:
 		m_bDirty = true;
 	}
 
-	void bind( Graphics &gph ) cond_noex override
+	void bind( Graphics &gfx ) cond_noex override
 	{
 		if ( m_bDirty )
 		{
-			T::update( gph, m_cb );
+			T::update( gfx, m_cb );
 			m_bDirty = false;
 		}
-		T::bind( gph );
+		T::bind( gfx );
 	}
 
 	void accept( IImGuiEffectVisitor &ev ) override

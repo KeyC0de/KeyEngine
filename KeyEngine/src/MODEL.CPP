@@ -13,7 +13,7 @@
 
 namespace dx = DirectX;
 
-Model::Model( Graphics &gph,
+Model::Model( Graphics &gfx,
 	const std::string &path,
 	const float initialScale /*= 1*/,
 	const DirectX::XMFLOAT3 &initialRot /*= {0, 0, 0}*/,
@@ -48,7 +48,7 @@ Model::Model( Graphics &gph,
 	materials.reserve( paiScene->mNumMaterials );
 	for ( size_t i = 0; i < paiScene->mNumMaterials; ++i )
 	{
-		materials.emplace_back( gph, *paiScene->mMaterials[i], path, MaterialLoader::LightingModel::BlinnPhong );
+		materials.emplace_back( gfx, *paiScene->mMaterials[i], path, MaterialLoader::LightingModel::BlinnPhong );
 	}
 
 	// create N meshes for N materials in the model file
@@ -56,7 +56,7 @@ Model::Model( Graphics &gph,
 	{
 		const auto &aiMesh = *paiScene->mMeshes[i];
 
-		m_meshes.emplace_back( std::make_unique<Mesh>( gph, materials[aiMesh.mMaterialIndex], aiMesh, initialScale ) );
+		m_meshes.emplace_back( std::make_unique<Mesh>( gfx, materials[aiMesh.mMaterialIndex], aiMesh, initialScale ) );
 	}
 
 	const int imguiNodeId = 0;
@@ -65,9 +65,10 @@ Model::Model( Graphics &gph,
 	setTransform( 1, initialRot, initialPos );
 }
 
-void Model::update( const float dt ) const cond_noex
+void Model::update( const float dt,
+	const float renderFrameInterpolation ) const cond_noex
 {
-	m_pRoot->update( dt, dx::XMMatrixIdentity() );
+	m_pRoot->update( dt, dx::XMMatrixIdentity(), renderFrameInterpolation );
 }
 
 void Model::render( const size_t channels ) const cond_noex
@@ -81,7 +82,7 @@ void Model::setEffectEnabled( const size_t channels,
 	m_pRoot->setEffectEnabled( channels, bEnabled );
 }
 
-void Model::displayImguiWidgets( Graphics &gph ) noexcept
+void Model::displayImguiWidgets( Graphics &gfx ) noexcept
 {
 #ifndef FINAL_RELEASE
 	m_imguiVisitor.displayImguiWidgets( *this );

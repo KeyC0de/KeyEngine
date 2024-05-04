@@ -6,10 +6,10 @@
 
 namespace dx = DirectX;
 
-TransformVSCB::TransformVSCB( Graphics &gph,
+TransformVSCB::TransformVSCB( Graphics &gfx,
 	const unsigned slot )
 	:
-	m_pVscb{std::make_unique<VertexShaderConstantBuffer<Transforms>>( gph, slot )}
+	m_pVscb{std::make_unique<VertexShaderConstantBuffer<Transforms>>( gfx, slot )}
 {
 
 }
@@ -43,10 +43,10 @@ TransformVSCB& TransformVSCB::operator=( TransformVSCB &&rhs ) noexcept
 	return *this;
 }
 
-void TransformVSCB::bind( Graphics &gph ) cond_noex
+void TransformVSCB::bind( Graphics &gfx ) cond_noex
 {
-	update( gph, getTransforms( gph ) );
-	bindCb( gph );
+	update( gfx, getTransforms( gfx ) );
+	bindCb( gfx );
 }
 
 void TransformVSCB::setMesh( const Mesh &mesh ) noexcept
@@ -64,35 +64,35 @@ std::unique_ptr<IBindableCloning> TransformVSCB::clone() noexcept
 	return std::make_unique<TransformVSCB>( std::move( *this ) );
 }
 
-void TransformVSCB::update( Graphics &gph,
+void TransformVSCB::update( Graphics &gfx,
 	const Transforms &transforms ) cond_noex
 {
-	m_pVscb->update( gph, transforms );
+	m_pVscb->update( gfx, transforms );
 }
 
-void TransformVSCB::bindCb( Graphics &gph ) cond_noex
+void TransformVSCB::bindCb( Graphics &gfx ) cond_noex
 {
 	ASSERT( m_pMesh != nullptr, "No Mesh set!" );
-	m_pVscb->bind( gph );
+	m_pVscb->bind( gfx );
 }
 
-TransformVSCB::Transforms TransformVSCB::getTransforms( Graphics &gph ) cond_noex
+TransformVSCB::Transforms TransformVSCB::getTransforms( Graphics &gfx ) cond_noex
 {
 	ASSERT( m_pMesh != nullptr, "No Mesh set!" );
 	const auto world = m_pMesh->getTransform();
-	const auto worldView = world * gph.getViewMatrix();
-	const auto worldViewProjection = worldView * gph.getProjectionMatrix();
+	const auto worldView = world * gfx.getViewMatrix();
+	const auto worldViewProjection = worldView * gfx.getProjectionMatrix();
 	// TODO: try removing transpose
 	return {dx::XMMatrixTranspose( world ), dx::XMMatrixTranspose( worldView ), dx::XMMatrixTranspose( worldViewProjection )};
 }
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-TransformScaleVSCB::TransformScaleVSCB( Graphics &gph,
+TransformScaleVSCB::TransformScaleVSCB( Graphics &gfx,
 	const unsigned slot,
 	const float scale )
 	:
-	TransformVSCB{gph, slot},
+	TransformVSCB{gfx, slot},
 	m_cbScale{calcCbLayout()}
 {
 	m_cbScale["scale"] = scale;
@@ -133,15 +133,15 @@ void TransformScaleVSCB::accept( IImGuiEffectVisitor &ev )
 	ev.visit( m_cbScale );
 }
 
-void TransformScaleVSCB::bind( Graphics &gph ) cond_noex
+void TransformScaleVSCB::bind( Graphics &gfx ) cond_noex
 {
 	const float scale = m_cbScale["scale"];
 	const auto scaleMatrix = dx::XMMatrixScaling( scale, scale, scale );
-	auto transforms = getTransforms( gph );
+	auto transforms = getTransforms( gfx );
 	transforms.worldView = transforms.worldView * scaleMatrix;
 	transforms.worldViewProjection = transforms.worldViewProjection * scaleMatrix;
-	update(gph, transforms );
-	bindCb( gph );
+	update(gfx, transforms );
+	bindCb( gfx );
 }
 
 std::unique_ptr<IBindableCloning> TransformScaleVSCB::clone() const noexcept

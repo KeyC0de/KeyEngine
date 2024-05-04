@@ -49,7 +49,7 @@ public:
 #pragma warning( default : 26495 )
 	//	\function	Mesh	||	\date	2024/04/21 12:11
 	//	\brief	ctor for imported models, creates bounding box & meshId
-	Mesh( Graphics &gph, const MaterialLoader &mat, const aiMesh &aimesh, const float initialScale = 1.0f ) noexcept;
+	Mesh( Graphics &gfx, const MaterialLoader &mat, const aiMesh &aimesh, const float initialScale = 1.0f ) noexcept;
 	//	\function	Mesh	||	\date	2024/04/21 12:11
 	//	\brief	ctors for primitive Meshes, eg Cube, Sphere etc.
 	Mesh( const DirectX::XMFLOAT3 &initialScale, const DirectX::XMFLOAT3 &initialRot = {0, 0, 0}, const DirectX::XMFLOAT3 &initialPos = {0, 0, 0} ) noexcept;
@@ -93,10 +93,10 @@ public:
 	void addEffect( Effect effect ) noexcept;
 	//	\function	update	||	\date	2021/10/26 23:58
 	//	\brief	does gameplay, physics etc.
-	void update( const float dt ) cond_noex;
+	void update( const float dt, const float renderFrameInterpolation ) cond_noex;
 	void render( const size_t channels = rch::all ) const noexcept;
 	void setEffectEnabled( const size_t channels, const bool bEnabled ) noexcept;
-	void bind( Graphics &gph ) const cond_noex;
+	void bind( Graphics &gfx ) const cond_noex;
 	void accept( IImGuiEffectVisitor &ev );
 	unsigned getIndicesCount() const cond_noex;
 	void connectEffectsToRenderer( ren::Renderer &r );
@@ -120,7 +120,7 @@ public:
 	void setCulled( const bool bCulled );
 	bool isCulled() const noexcept;
 	bool frustumCull( const std::vector<DirectX::XMFLOAT4> &frustumPlanes ) const noexcept;
-	virtual void displayImguiWidgets( Graphics &gph, const std::string &name ) noexcept
+	virtual void displayImguiWidgets( Graphics &gfx, const std::string &name ) noexcept
 	{
 		pass_;
 	}

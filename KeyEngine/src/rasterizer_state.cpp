@@ -5,7 +5,7 @@
 #include "bindable_exception.h"
 
 
-RasterizerState::RasterizerState( Graphics &gph,
+RasterizerState::RasterizerState( Graphics &gfx,
 	const RasterizerMode mode,
 	const FillMode fillMode,
 	const FaceMode faceMode,
@@ -52,17 +52,17 @@ RasterizerState::RasterizerState( Graphics &gph,
 		THROW_BINDABLE_EXCEPTION( "Invalid Rasterizer mode." );
 	}
 
-	HRESULT hres = getDevice( gph )->CreateRasterizerState( &rasterDesc, &m_pRasterizerState );
+	HRESULT hres = getDevice( gfx )->CreateRasterizerState( &rasterDesc, &m_pRasterizerState );
 	ASSERT_HRES_IF_FAILED;
 }
 
-void RasterizerState::bind( Graphics &gph ) cond_noex
+void RasterizerState::bind( Graphics &gfx ) cond_noex
 {
-	getDeviceContext( gph )->RSSetState( m_pRasterizerState.Get() );
-	DXGI_GET_QUEUE_INFO( gph );
+	getDeviceContext( gfx )->RSSetState( m_pRasterizerState.Get() );
+	DXGI_GET_QUEUE_INFO( gfx );
 }
 
-std::shared_ptr<RasterizerState> RasterizerState::fetch( Graphics &gph,
+std::shared_ptr<RasterizerState> RasterizerState::fetch( Graphics &gfx,
 	const RasterizerMode mode,
 	const FillMode fillMode,
 	const FaceMode faceMode,
@@ -70,7 +70,7 @@ std::shared_ptr<RasterizerState> RasterizerState::fetch( Graphics &gph,
 	const float slopeBias /*= D3D11_DEFAULT_SLOPE_SCALED_DEPTH_BIAS*/,
 	const float biasClamp /*= D3D11_DEFAULT_DEPTH_BIAS_CLAMP*/ )
 {
-	return BindableMap::fetch<RasterizerState>( gph, mode, fillMode, faceMode, depthBias, slopeBias, biasClamp );
+	return BindableMap::fetch<RasterizerState>( gfx, mode, fillMode, faceMode, depthBias, slopeBias, biasClamp );
 }
 
 std::string RasterizerState::calcUid( const RasterizerMode mode,

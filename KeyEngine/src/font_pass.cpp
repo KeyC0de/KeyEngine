@@ -6,33 +6,34 @@
 #pragma comment( lib, "DirectXTK.lib" )
 
 
+// #TODO: extend this into UiPass ...
 namespace dx = DirectX;
 
 namespace ren
 {
 
-FontPass::FontPass( Graphics &gph,
+FontPass::FontPass( Graphics &gfx,
 	const std::string &name,
 	const std::string &fpsFontNameNoExtension )
 	:
 	IBindablePass{name}
 {
-	addPassBindable( PrimitiveTopology::fetch( gph, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
+	addPassBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
-	m_pSpriteBatch = std::make_unique<dx::SpriteBatch>( getDeviceContext( gph ) );
+	m_pSpriteBatch = std::make_unique<dx::SpriteBatch>( getDeviceContext( gfx ) );
 	using namespace std::string_literals;
 	const auto fpsFontRelativePath = L"assets/fonts/"s + util::s2ws( fpsFontNameNoExtension ) + L".spritefont"s;
-	m_pFpsSpriteFont = std::make_unique<dx::SpriteFont>( getDevice( gph ), fpsFontRelativePath.c_str() );
+	m_pFpsSpriteFont = std::make_unique<dx::SpriteFont>( getDevice( gfx ), fpsFontRelativePath.c_str() );
 }
 
-void FontPass::run( Graphics &gph ) const cond_noex
+void FontPass::run( Graphics &gfx ) const cond_noex
 {
-	bind( gph );
+	bind( gfx );
 #if defined _DEBUG && !defined NDEBUG
 	const auto &g_setMan = SettingsManager::getInstance();
 	if ( g_setMan.getSettings().bFpsCounting )
 	{
-		const_cast<FontPass*>( this )->updateAndRenderFpsTimer( gph );
+		const_cast<FontPass*>( this )->updateAndRenderFpsTimer( gfx );
 	}
 #endif
 }
@@ -42,14 +43,14 @@ void FontPass::reset() cond_noex
 	pass_;
 }
 
-void FontPass::updateAndRenderFpsTimer( Graphics &gph )
+void FontPass::updateAndRenderFpsTimer( Graphics &gfx )
 {
 	static int fpsDisplayFrameCount = 0;
 	static std::wstring fpsText;
 
 	++fpsDisplayFrameCount;
 
-	auto &fpsTimer = gph.getFpsTimer();
+	auto &fpsTimer = gfx.getFpsTimer();
 
 	// if more than 1000ms have passed do an fps count
 	if ( fpsTimer.getDurationFromStart() > 1000 )

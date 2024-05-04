@@ -12,7 +12,7 @@ CameraManager& CameraManager::getInstance()
 	return instance;
 }
 
-void CameraManager::displayImguiWidgets( Graphics &gph ) noexcept
+void CameraManager::displayImguiWidgets( Graphics &gfx ) noexcept
 {
 #ifndef FINAL_RELEASE
 	if ( ImGui::Begin( "Cameras" ) )
@@ -43,7 +43,7 @@ void CameraManager::displayImguiWidgets( Graphics &gph ) noexcept
 			ImGui::EndCombo();
 		}
 
-		getControlledCamera().displayImguiWidgets( gph );
+		getControlledCamera().displayImguiWidgets( gfx );
 	}
 	ImGui::End();
 #endif
@@ -73,11 +73,11 @@ void CameraManager::render( const size_t channels ) const
 	}
 }
 
-void CameraManager::updateDimensions( Graphics &gph )
+void CameraManager::updateDimensions( Graphics &gfx )
 {
 	for ( auto& cam : m_cameras )
 	{
-		cam->updateDimensions( gph );
+		cam->updateDimensions( gfx );
 	}
 }
 

@@ -28,7 +28,7 @@ protected:
 	//	\function	bind	||	\date	2021/06/27 0:04
 	//	\brief  bind RTV or DSV and other bindables shared by all Pass objects
 	//			call this function as the first thing you do on a child class's run function
-	void bind( Graphics &gph ) const cond_noex;
+	void bind( Graphics &gfx ) const cond_noex;
 	void validate() override;
 
 	//	\function	addContainerBindableBinder	||	\date	2022/10/02 20:49

@@ -7,25 +7,25 @@
 namespace ren
 {
 
-HorizontalBlurPass::HorizontalBlurPass( Graphics &gph,
+HorizontalBlurPass::HorizontalBlurPass( Graphics &gfx,
 	const std::string &name,
 	const unsigned rezReductFactor )
 	:
-	IFullscreenPass{gph, name}
+	IFullscreenPass{gfx, name}
 {
-	addPassBindable( PixelShader::fetch( gph, "blur_separ_ps.cso" ) );
-	addPassBindable( TextureSamplerState::fetch( gph, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Trilinear, TextureSamplerState::AddressMode::Clamp ) );
+	addPassBindable( PixelShader::fetch( gfx, "blur_separ_ps.cso" ) );
+	addPassBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Trilinear, TextureSamplerState::AddressMode::Clamp ) );
 
 	addBinder( Binder<PixelShaderConstantBufferEx>::make( "blurDirection", m_pPscbBlurDirection ) );
 	// read from offscreen texture and Horizontally Blur it (separated filter)
 	addContainerBindableBinder<IRenderTargetView>( "offscreenBlurOutlineIn" );
 	addContainerBindableBinder<PixelShaderConstantBufferEx>( "blurKernel" );
 
-	const unsigned width = gph.getClientWidth() / rezReductFactor;
-	const unsigned height = gph.getClientHeight() / rezReductFactor;
+	const unsigned width = gfx.getClientWidth() / rezReductFactor;
+	const unsigned height = gfx.getClientHeight() / rezReductFactor;
 	// create a RTV to write (the PS operation - which performs the Horizontal Blur) to an offscreen texture
 	// next Pass we'll read from this RTV in the shader like a texture
-	m_pRtv = std::make_shared<RenderTargetShaderInput>( gph, width, height, 0u );
+	m_pRtv = std::make_shared<RenderTargetShaderInput>( gfx, width, height, 0u );
 
 #if defined _DEBUG && !defined NDEBUG
 	const char *offscreenRtvBlurOutlineName = "OffscreenRenderTargetViewSeparatedBlurFilter";
@@ -35,14 +35,14 @@ HorizontalBlurPass::HorizontalBlurPass( Graphics &gph,
 	addLinker( BindableLinker<IRenderTargetView>::make( "offscreenBlurOutlineOut", m_pRtv ) );
 }
 
-void HorizontalBlurPass::run( Graphics &gph ) const cond_noex
+void HorizontalBlurPass::run( Graphics &gfx ) const cond_noex
 {
-	m_pRtv->clear( gph );
+	m_pRtv->clear( gfx );
 	auto pscb = m_pPscbBlurDirection->getBufferCopy();
 	pscb["bHorizontal"] = true;
 	m_pPscbBlurDirection->setBuffer( pscb );
-	m_pPscbBlurDirection->bind( gph );
-	IFullscreenPass::run( gph );
+	m_pPscbBlurDirection->bind( gfx );
+	IFullscreenPass::run( gfx );
 }
 
 void HorizontalBlurPass::reset() cond_noex

@@ -35,7 +35,7 @@ public:
 
 	void addBindable( std::shared_ptr<IBindable> pBindable ) noexcept;
 	void render( const Mesh &mesh, const size_t channels ) const noexcept;
-	void bind( Graphics &gph ) const cond_noex;
+	void bind( Graphics &gfx ) const cond_noex;
 	bool isEnabled() const noexcept;
 	void setEnabled( const bool b ) noexcept;
 	void setEnabled( const size_t channels, const bool bEnabled ) noexcept;

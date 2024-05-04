@@ -48,16 +48,16 @@ public:
 	static DirectX::XMMATRIX getShadowOrthographicMatrix( const unsigned w, const unsigned h ) noexcept;
 	static DirectX::XMMATRIX getShadowProjectionMatrix( const float farZ = 9999 ) noexcept;
 public:
-	Camera( Graphics &gph, const std::string &name, const int width, const int height, const float fovDegrees = 90.0f, const DirectX::XMFLOAT3 &homePos = {0.0f, 0.0f, 0.0f}, const float homePitch = 0.0f, const float homeYaw = 0.0f, const bool bTethered = false, const float nearZ = 0.5f, const float farZ = 200.0f ) noexcept;
+	Camera( Graphics &gfx, const std::string &name, const int width, const int height, const float fovDegrees = 90.0f, const DirectX::XMFLOAT3 &homePos = {0.0f, 0.0f, 0.0f}, const float homePitch = 0.0f, const float homeYaw = 0.0f, const bool bTethered = false, const float nearZ = 0.5f, const float farZ = 200.0f ) noexcept;
 
 	void render( const size_t channel = rch::all ) const;
 	void connectEffectsToRenderer( ren::Renderer &ren );
-	void makeActive( Graphics &gph, const bool bOrthographic ) const;
+	void makeActive( Graphics &gfx, const bool bOrthographic ) const;
 	DirectX::XMMATRIX getViewMatrix() const noexcept;
 	DirectX::XMMATRIX getReflectionViewMatrix( const DirectX::XMVECTOR &mirrorPlane ) const noexcept;
 	DirectX::XMMATRIX getOrthographicProjectionMatrix( const unsigned width, const unsigned height ) const noexcept;
 	DirectX::XMMATRIX getPerspectiveProjectionMatrix() const noexcept;
-	void resetToDefault( Graphics &gph ) noexcept;
+	void resetToDefault( Graphics &gfx ) noexcept;
 	// rotate arguments is mouse dx, dy delta values
 	void rotateRel( const float dx, const float dy ) noexcept;
 	void translateRel( DirectX::XMFLOAT3 translation ) noexcept;
@@ -76,8 +76,8 @@ public:
 	float getFovRadians() const noexcept;
 	const std::string& getName() const noexcept;
 	std::vector<DirectX::XMFLOAT4> getFrustumPlanes() const noexcept;
-	void displayImguiWidgets( Graphics &gph ) noexcept;
-	void updateDimensions( Graphics &gph );
+	void displayImguiWidgets( Graphics &gfx ) noexcept;
+	void updateDimensions( Graphics &gfx );
 	void setTethered( const bool bTethered ) cond_noex;
 private:
 	DirectX::XMMATRIX getPositionMatrix() const noexcept;
@@ -86,7 +86,7 @@ private:
 	//	\brief	target is the position of the camera's focus/focal point
 	//			ofc the camera doesn't look at a position, it looks along a direction; any points along that direction will do to compute the view-matrix
 	DirectX::XMVECTOR getTarget() const noexcept;
-	void updateCameraFrustum( Graphics &gph );
+	void updateCameraFrustum( Graphics &gfx );
 };
 
 using Projector = Camera;

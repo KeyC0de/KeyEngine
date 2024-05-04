@@ -4,15 +4,15 @@
 #include "dxgi_info_queue.h"
 
 
-IndexBuffer::IndexBuffer( Graphics &gph,
+IndexBuffer::IndexBuffer( Graphics &gfx,
 	const std::vector<unsigned> &indices )
 	:
-	IndexBuffer(gph, "?", indices)
+	IndexBuffer(gfx, "?", indices)
 {
 
 }
 
-IndexBuffer::IndexBuffer( Graphics &gph,
+IndexBuffer::IndexBuffer( Graphics &gfx,
 	const std::string &tag,
 	const std::vector<unsigned> &indices )
 	:
@@ -29,14 +29,14 @@ IndexBuffer::IndexBuffer( Graphics &gph,
 
 	D3D11_SUBRESOURCE_DATA subRscData{};
 	subRscData.pSysMem = indices.data();
-	HRESULT hres = getDevice( gph )->CreateBuffer( &bd, &subRscData, &m_pIndexBuffer );
+	HRESULT hres = getDevice( gfx )->CreateBuffer( &bd, &subRscData, &m_pIndexBuffer );
 	ASSERT_HRES_IF_FAILED;
 }
 
-void IndexBuffer::bind( Graphics &gph ) cond_noex
+void IndexBuffer::bind( Graphics &gfx ) cond_noex
 {
-	getDeviceContext( gph )->IASetIndexBuffer( m_pIndexBuffer.Get(), DXGI_FORMAT_R32_UINT, 0u );
-	DXGI_GET_QUEUE_INFO( gph );
+	getDeviceContext( gfx )->IASetIndexBuffer( m_pIndexBuffer.Get(), DXGI_FORMAT_R32_UINT, 0u );
+	DXGI_GET_QUEUE_INFO( gfx );
 }
 
 unsigned IndexBuffer::getIndexCount() const noexcept
@@ -44,12 +44,12 @@ unsigned IndexBuffer::getIndexCount() const noexcept
 	return m_count;
 }
 
-std::shared_ptr<IndexBuffer> IndexBuffer::fetch( Graphics &gph,
+std::shared_ptr<IndexBuffer> IndexBuffer::fetch( Graphics &gfx,
 	const std::string &tag,
 	const std::vector<unsigned> &indices )
 {
 	ASSERT( tag != "?", "Invalid tag!" );
-	return BindableMap::fetch<IndexBuffer>( gph, tag, indices );
+	return BindableMap::fetch<IndexBuffer>( gfx, tag, indices );
 }
 
 std::string IndexBuffer::getUid() const noexcept

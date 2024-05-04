@@ -22,7 +22,7 @@ DirectX::XMMATRIX Camera::getShadowProjectionMatrix( const float farZ ) noexcept
 	return dx::XMMatrixPerspectiveFovLH( r, 1.0f, 1.0f, s_shadowFarZ );
 }
 
-Camera::Camera( Graphics &gph,
+Camera::Camera( Graphics &gfx,
 	const std::string &name,
 	const int width,
 	const int height,
@@ -50,8 +50,8 @@ Camera::Camera( Graphics &gph,
 	m_farZ(farZ),
 	m_homeNearZ(nearZ),
 	m_homeFarZ(farZ),
-	m_cameraWidget(gph),
-	m_cameraFrustum(gph, 1.0f, (static_cast<float>(height) / util::gcd(width, height)) /
+	m_cameraWidget(gfx),
+	m_cameraFrustum(gfx, 1.0f, (static_cast<float>(height) / util::gcd(width, height)) /
 			(static_cast<float>(width) / util::gcd(width, height)),
 		nearZ, farZ)
 {
@@ -61,7 +61,7 @@ Camera::Camera( Graphics &gph,
 		m_cameraFrustum.setPosition( m_position );
 		m_cameraWidget.setPosition( m_position );
 	}
-	resetToDefault( gph );
+	resetToDefault( gfx );
 }
 
 void Camera::render( const size_t channels ) const
@@ -82,12 +82,12 @@ void Camera::connectEffectsToRenderer( ren::Renderer &ren )
 	m_cameraWidget.connectEffectsToRenderer( ren );
 }
 
-void Camera::makeActive( Graphics &gph,
+void Camera::makeActive( Graphics &gfx,
 	const bool bOrthographic ) const
 {
-	gph.setViewMatrix( getViewMatrix() );
-	gph.setProjectionMatrix( bOrthographic ?
-		getOrthographicProjectionMatrix( gph.getClientWidth(), gph.getClientHeight() ) :
+	gfx.setViewMatrix( getViewMatrix() );
+	gfx.setProjectionMatrix( bOrthographic ?
+		getOrthographicProjectionMatrix( gfx.getClientWidth(), gfx.getClientHeight() ) :
 		getPerspectiveProjectionMatrix() );
 }
 
@@ -115,7 +115,7 @@ DirectX::XMMATRIX Camera::getPerspectiveProjectionMatrix() const noexcept
 	return dx::XMMatrixPerspectiveFovLH( m_fovRadians, m_aspectRatio, m_nearZ, m_farZ );
 }
 
-void Camera::resetToDefault( Graphics &gph ) noexcept
+void Camera::resetToDefault( Graphics &gfx ) noexcept
 {
 	if ( !m_bTethered )
 	{
@@ -134,7 +134,7 @@ void Camera::resetToDefault( Graphics &gph ) noexcept
 	m_height = m_homeHeight;
 	m_nearZ = m_homeNearZ;
 	m_farZ = m_homeFarZ;
-	updateCameraFrustum( gph );
+	updateCameraFrustum( gfx );
 }
 
 void Camera::rotateRel( const float dx,
@@ -290,7 +290,7 @@ std::vector<dx::XMFLOAT4> Camera::getFrustumPlanes() const noexcept
 	return frustumPlanes;
 }
 
-void Camera::displayImguiWidgets( Graphics &gph ) noexcept
+void Camera::displayImguiWidgets( Graphics &gfx ) noexcept
 {
 #ifndef FINAL_RELEASE
 	bool projDirty = false;
@@ -326,12 +326,12 @@ void Camera::displayImguiWidgets( Graphics &gph ) noexcept
 
 	if ( ImGui::Button( "Reset" ) )
 	{
-		resetToDefault( gph );
+		resetToDefault( gfx );
 	}
 
 	if ( projDirty )
 	{
-		updateCameraFrustum( gph );
+		updateCameraFrustum( gfx );
 	}
 	if ( rotDirty )
 	{
@@ -347,11 +347,11 @@ void Camera::displayImguiWidgets( Graphics &gph ) noexcept
 #endif
 }
 
-void Camera::updateDimensions( Graphics &gph )
+void Camera::updateDimensions( Graphics &gfx )
 {
-	m_width = gph.getClientWidth();
-	m_height = gph.getClientHeight();
-	updateCameraFrustum( gph );
+	m_width = gfx.getClientWidth();
+	m_height = gfx.getClientHeight();
+	updateCameraFrustum( gfx );
 }
 
 void Camera::setTethered( const bool bTethered ) cond_noex
@@ -376,10 +376,10 @@ DirectX::XMVECTOR Camera::getTarget() const noexcept
 	return dx::XMVectorAdd( camPosition, lookVector );
 }
 
-void Camera::updateCameraFrustum( Graphics &gph )
+void Camera::updateCameraFrustum( Graphics &gfx )
 {
 	auto g = Geometry::makeCameraFrustum( m_width, m_height, m_nearZ, m_farZ );
-	m_cameraFrustum.getVertexBuffer() = std::make_shared<VertexBuffer>( gph, g.m_vb );
+	m_cameraFrustum.getVertexBuffer() = std::make_shared<VertexBuffer>( gfx, g.m_vb );
 	m_cameraFrustum.createAabb( g.m_vb );
 	m_aspectRatio = m_width / m_height;
 }

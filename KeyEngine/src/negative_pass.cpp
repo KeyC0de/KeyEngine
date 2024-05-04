@@ -6,14 +6,14 @@
 namespace ren
 {
 
-NegativePass::NegativePass( Graphics &gph,
+NegativePass::NegativePass( Graphics &gfx,
 	const std::string &name )
 	:
-	IFullscreenPass{gph, name}
+	IFullscreenPass{gfx, name}
 {
-	addPassBindable( TextureSamplerState::fetch( gph, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
+	addPassBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
 
-	addPassBindable( PixelShader::fetch( gph, "negative_ps.cso" ) );
+	addPassBindable( PixelShader::fetch( gfx, "negative_ps.cso" ) );
 }
 
 void NegativePass::reset() cond_noex

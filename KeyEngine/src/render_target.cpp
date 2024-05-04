@@ -11,7 +11,7 @@
 
 namespace mwrl = Microsoft::WRL;
 
-IRenderTargetView::IRenderTargetView( Graphics &gph,
+IRenderTargetView::IRenderTargetView( Graphics &gfx,
 	ID3D11Texture2D *pTexture,
 	std::optional<unsigned> face )
 {
@@ -36,11 +36,11 @@ IRenderTargetView::IRenderTargetView( Graphics &gph,
 		rtvDesc.Texture2D = D3D11_TEX2D_RTV{0};
 	}
 
-	HRESULT hres = getDevice( gph )->CreateRenderTargetView( pTexture, &rtvDesc, &m_pD3dRtv );
+	HRESULT hres = getDevice( gfx )->CreateRenderTargetView( pTexture, &rtvDesc, &m_pD3dRtv );
 	ASSERT_HRES_IF_FAILED;
 }
 
-IRenderTargetView::IRenderTargetView( Graphics &gph,
+IRenderTargetView::IRenderTargetView( Graphics &gfx,
 	const unsigned width,
 	const unsigned height )
 	:
@@ -50,7 +50,7 @@ IRenderTargetView::IRenderTargetView( Graphics &gph,
 	D3D11_TEXTURE2D_DESC texDesc = createTextureDescriptor( width, height, DXGI_FORMAT_B8G8R8A8_UNORM, BindFlags::RenderTargetTexture, CpuAccessFlags::NoCpuAccess, false, TextureUsage::Default );
 
 	mwrl::ComPtr<ID3D11Texture2D> pTexture;
-	HRESULT hres = getDevice( gph )->CreateTexture2D( &texDesc, nullptr, &pTexture );
+	HRESULT hres = getDevice( gfx )->CreateTexture2D( &texDesc, nullptr, &pTexture );
 	ASSERT_HRES_IF_FAILED;
 
 	// create the view on the texture (buffer)
@@ -58,52 +58,52 @@ IRenderTargetView::IRenderTargetView( Graphics &gph,
 	rtvDesc.Format = texDesc.Format;
 	rtvDesc.ViewDimension = D3D11_RTV_DIMENSION_TEXTURE2D;
 	rtvDesc.Texture2D = D3D11_TEX2D_RTV{0};
-	hres = getDevice( gph )->CreateRenderTargetView( pTexture.Get(), &rtvDesc, &m_pD3dRtv );
+	hres = getDevice( gfx )->CreateRenderTargetView( pTexture.Get(), &rtvDesc, &m_pD3dRtv );
 	ASSERT_HRES_IF_FAILED;
 }
 
-void IRenderTargetView::unbind( Graphics &gph ) noexcept
+void IRenderTargetView::unbind( Graphics &gfx ) noexcept
 {
-	getDeviceContext( gph )->OMSetRenderTargets( 0, nullptr, nullptr );
-	DXGI_GET_QUEUE_INFO( gph );
+	getDeviceContext( gfx )->OMSetRenderTargets( 0, nullptr, nullptr );
+	DXGI_GET_QUEUE_INFO( gfx );
 }
 
-void IRenderTargetView::bindRenderSurface( Graphics &gph ) cond_noex
+void IRenderTargetView::bindRenderSurface( Graphics &gfx ) cond_noex
 {
-	bindRenderSurface( gph, static_cast<ID3D11DepthStencilView*>( nullptr ) );
+	bindRenderSurface( gfx, static_cast<ID3D11DepthStencilView*>( nullptr ) );
 }
 
-void IRenderTargetView::bindRenderSurface( Graphics &gph,
+void IRenderTargetView::bindRenderSurface( Graphics &gfx,
 	IRenderSurface *pRs ) cond_noex
 {
 	ASSERT( dynamic_cast<IDepthStencilView*>( pRs ) != nullptr, "Input Resource is not a IDepthStencilView!" );
-	bindRenderSurface( gph, static_cast<IDepthStencilView*>( pRs ) );
+	bindRenderSurface( gfx, static_cast<IDepthStencilView*>( pRs ) );
 }
 
-void IRenderTargetView::bindRenderSurface( Graphics &gph,
+void IRenderTargetView::bindRenderSurface( Graphics &gfx,
 	IDepthStencilView *pD3dDsv ) cond_noex
 {
-	bindRenderSurface( gph, pD3dDsv ? pD3dDsv->m_pD3dDsv.Get() : nullptr );
+	bindRenderSurface( gfx, pD3dDsv ? pD3dDsv->m_pD3dDsv.Get() : nullptr );
 }
 
-void IRenderTargetView::bindRenderSurface( Graphics &gph,
+void IRenderTargetView::bindRenderSurface( Graphics &gfx,
 	ID3D11DepthStencilView *pD3dDsv ) cond_noex
 {
-	auto viewport = Viewport::fetch( gph, (float) m_width, (float) m_height );
-	viewport->bind( gph );
+	auto viewport = Viewport::fetch( gfx, (float) m_width, (float) m_height );
+	viewport->bind( gfx );
 
-	getDeviceContext( gph )->OMSetRenderTargets( 1u, m_pD3dRtv.GetAddressOf(), pD3dDsv );
-	DXGI_GET_QUEUE_INFO( gph );
+	getDeviceContext( gfx )->OMSetRenderTargets( 1u, m_pD3dRtv.GetAddressOf(), pD3dDsv );
+	DXGI_GET_QUEUE_INFO( gfx );
 }
 
-void IRenderTargetView::clear( Graphics &gph,
+void IRenderTargetView::clear( Graphics &gfx,
 	const std::array<float, 4> &color ) cond_noex
 {
-	getDeviceContext( gph )->ClearRenderTargetView( m_pD3dRtv.Get(), color.data() );
-	DXGI_GET_QUEUE_INFO( gph );
+	getDeviceContext( gfx )->ClearRenderTargetView( m_pD3dRtv.Get(), color.data() );
+	DXGI_GET_QUEUE_INFO( gfx );
 }
 
-void IRenderTargetView::clean( Graphics &gph ) cond_noex
+void IRenderTargetView::clean( Graphics &gfx ) cond_noex
 {
 	// release the back buffer texture resource of the rtv
 	mwrl::ComPtr<ID3D11Resource> pRtvRsc;
@@ -118,7 +118,7 @@ void IRenderTargetView::clean( Graphics &gph ) cond_noex
 	m_pD3dRtv.Reset();
 }
 
-std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC> IRenderTargetView::createStagingTexture( Graphics &gph ) const
+std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC> IRenderTargetView::createStagingTexture( Graphics &gfx ) const
 {
 	mwrl::ComPtr<ID3D11Resource> pRtvRsc;
 	m_pD3dRtv->GetResource( &pRtvRsc );
@@ -132,7 +132,7 @@ std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC> IRender
 	D3D11_TEXTURE2D_DESC stagingTexDesc = createTextureDescriptor( rtvTexDesc.Width, rtvTexDesc.Height, rtvTexDesc.Format, (BindFlags) rtvTexDesc.BindFlags, CpuAccessFlags::CpuReadAccess, false, TextureUsage::Staging );
 
 	mwrl::ComPtr<ID3D11Texture2D> pStagingTex;
-	HRESULT hres = getDevice( gph )->CreateTexture2D( &stagingTexDesc, nullptr, &pStagingTex );
+	HRESULT hres = getDevice( gfx )->CreateTexture2D( &stagingTexDesc, nullptr, &pStagingTex );
 	ASSERT_HRES_IF_FAILED;
 
 	D3D11_RENDER_TARGET_VIEW_DESC rtvDesc{};
@@ -142,23 +142,23 @@ std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC> IRender
 	{
 		// source pRtvTex is actually inside a cubemap texture,
 		// use view info to find the correct slice and copy subresource
-		getDeviceContext( gph )->CopySubresourceRegion( pStagingTex.Get(), 0u, 0u, 0u, 0u, pRtvTex.Get(), rtvDesc.Texture2DArray.FirstArraySlice, nullptr );
-		DXGI_GET_QUEUE_INFO( gph );
+		getDeviceContext( gfx )->CopySubresourceRegion( pStagingTex.Get(), 0u, 0u, 0u, 0u, pRtvTex.Get(), rtvDesc.Texture2DArray.FirstArraySlice, nullptr );
+		DXGI_GET_QUEUE_INFO( gfx );
 	}
 	else
 	{
-		getDeviceContext( gph )->CopyResource( pStagingTex.Get(), pRtvTex.Get() );
-		DXGI_GET_QUEUE_INFO( gph );
+		getDeviceContext( gfx )->CopyResource( pStagingTex.Get(), pRtvTex.Get() );
+		DXGI_GET_QUEUE_INFO( gfx );
 	}
 
 	return {std::move( pStagingTex ), stagingTexDesc};
 }
 
-const Bitmap IRenderTargetView::convertToBitmap( Graphics &gph,
+const Bitmap IRenderTargetView::convertToBitmap( Graphics &gfx,
 	const unsigned width,
 	const unsigned height ) const
 {
-	auto [pStagingTex, stagingTexDesc] = createStagingTexture( gph );
+	auto [pStagingTex, stagingTexDesc] = createStagingTexture( gfx );
 
 	if ( stagingTexDesc.Format != DXGI_FORMAT::DXGI_FORMAT_B8G8R8A8_UNORM )
 	{
@@ -169,9 +169,9 @@ const Bitmap IRenderTargetView::convertToBitmap( Graphics &gph,
 	Bitmap bitmap{width, height};
 
 	D3D11_MAPPED_SUBRESOURCE msr{};
-	HRESULT hres = getDeviceContext( gph )->Map( pStagingTex.Get(), 0u, D3D11_MAP::D3D11_MAP_READ, 0u, &msr );
+	HRESULT hres = getDeviceContext( gfx )->Map( pStagingTex.Get(), 0u, D3D11_MAP::D3D11_MAP_READ, 0u, &msr );
 	ASSERT_HRES_IF_FAILED;
-	DXGI_GET_QUEUE_INFO( gph );
+	DXGI_GET_QUEUE_INFO( gfx );
 
 	auto pData = static_cast<const char*>( msr.pData );
 	// iterate by Height then Width over the staging texture
@@ -183,7 +183,7 @@ const Bitmap IRenderTargetView::convertToBitmap( Graphics &gph,
 			bitmap.setTexel( x, y, *( p + x ) );
 		}
 	}
-	getDeviceContext( gph )->Unmap( pStagingTex.Get(), 0 );
+	getDeviceContext( gfx )->Unmap( pStagingTex.Get(), 0 );
 
 	return bitmap;
 }
@@ -218,13 +218,13 @@ void IRenderTargetView::setDebugObjectName( const char* name ) noexcept
 }
 
 
-RenderTargetShaderInput::RenderTargetShaderInput( Graphics &gph,
+RenderTargetShaderInput::RenderTargetShaderInput( Graphics &gfx,
 	const unsigned width,
 	const unsigned height,
 	const unsigned slot,
 	const RenderTargetViewMode rtvMode /*= DefaultRT*/ )
 	:
-	IRenderTargetView{gph, width, height},
+	IRenderTargetView{gfx, width, height},
 	m_slot(slot)
 {
 	mwrl::ComPtr<ID3D11Resource> pRsc;
@@ -236,7 +236,7 @@ RenderTargetShaderInput::RenderTargetShaderInput( Graphics &gph,
 	srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
 	srvDesc.Texture2D.MostDetailedMip = 0u;
 	srvDesc.Texture2D.MipLevels = 1u;
-	HRESULT hres = getDevice( gph )->CreateShaderResourceView( pRsc.Get(), &srvDesc, &m_pD3dSrv );
+	HRESULT hres = getDevice( gfx )->CreateShaderResourceView( pRsc.Get(), &srvDesc, &m_pD3dSrv );
 	ASSERT_HRES_IF_FAILED;
 }
 
@@ -245,23 +245,23 @@ unsigned RenderTargetShaderInput::getSlot() const noexcept
 	return m_slot;
 }
 
-void RenderTargetShaderInput::bind( Graphics &gph ) cond_noex
+void RenderTargetShaderInput::bind( Graphics &gfx ) cond_noex
 {
-	getDeviceContext( gph )->PSSetShaderResources( m_slot, 1u, m_pD3dSrv.GetAddressOf() );
-	DXGI_GET_QUEUE_INFO( gph );
+	getDeviceContext( gfx )->PSSetShaderResources( m_slot, 1u, m_pD3dSrv.GetAddressOf() );
+	DXGI_GET_QUEUE_INFO( gfx );
 }
 
 
-RenderTargetOutput::RenderTargetOutput( Graphics &gph,
+RenderTargetOutput::RenderTargetOutput( Graphics &gfx,
 	ID3D11Texture2D *pTexture,
 	std::optional<unsigned> face /* = {} */ )
 	:
-	IRenderTargetView{gph, pTexture, face}
+	IRenderTargetView{gfx, pTexture, face}
 {
 
 }
 
-void RenderTargetOutput::bind( Graphics &gph ) cond_noex
+void RenderTargetOutput::bind( Graphics &gfx ) cond_noex
 {
 	ASSERT( false, "Cannot bind RenderTargetOutput as shader input!" );
 }

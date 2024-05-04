@@ -5,7 +5,7 @@
 #include "bindable_exception.h"
 
 
-DepthStencilState::DepthStencilState( Graphics &gph,
+DepthStencilState::DepthStencilState( Graphics &gfx,
 	const Mode mode )
 	:
 	m_mode(mode)
@@ -104,20 +104,20 @@ DepthStencilState::DepthStencilState( Graphics &gph,
 		THROW_BINDABLE_EXCEPTION( "Invalid Depth Stencil mode." );
 	}
 
-	HRESULT hres = getDevice( gph )->CreateDepthStencilState( &dsDesc, &m_pDepthStencilState );
+	HRESULT hres = getDevice( gfx )->CreateDepthStencilState( &dsDesc, &m_pDepthStencilState );
 	ASSERT_HRES_IF_FAILED;
 }
 
-void DepthStencilState::bind( Graphics &gph ) cond_noex
+void DepthStencilState::bind( Graphics &gfx ) cond_noex
 {
-	getDeviceContext( gph )->OMSetDepthStencilState( m_pDepthStencilState.Get(), 0xFF );
-	DXGI_GET_QUEUE_INFO( gph );
+	getDeviceContext( gfx )->OMSetDepthStencilState( m_pDepthStencilState.Get(), 0xFF );
+	DXGI_GET_QUEUE_INFO( gfx );
 }
 
-std::shared_ptr<DepthStencilState> DepthStencilState::fetch( Graphics &gph,
+std::shared_ptr<DepthStencilState> DepthStencilState::fetch( Graphics &gfx,
 	const Mode mode )
 {
-	return BindableMap::fetch<DepthStencilState>( gph, mode );
+	return BindableMap::fetch<DepthStencilState>( gfx, mode );
 }
 
 std::string DepthStencilState::calcUid( const Mode mode )

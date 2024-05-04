@@ -15,10 +15,10 @@ class LambertianPass
 {
 	const Camera *m_pActiveCamera = nullptr;
 public:
-	LambertianPass( Graphics &gph, const std::string &name );
+	LambertianPass( Graphics &gfx, const std::string &name );
 
 	void setActiveCamera( const Camera &cam ) noexcept;
-	void run( Graphics &gph ) const cond_noex override;
+	void run( Graphics &gfx ) const cond_noex override;
 };
 
 

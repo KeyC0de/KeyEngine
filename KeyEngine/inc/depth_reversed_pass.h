@@ -12,7 +12,7 @@ class DepthReversedPass
 	: public RenderQueuePass
 {
 public:
-	DepthReversedPass( Graphics &gph, const std::string &name );
+	DepthReversedPass( Graphics &gfx, const std::string &name );
 };
 
 

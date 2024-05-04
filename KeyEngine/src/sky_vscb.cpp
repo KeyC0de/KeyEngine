@@ -1,21 +1,21 @@
 #include "sky_vscb.h"
 
 
-SkyVSCB::SkyVSCB( Graphics &gph,
+SkyVSCB::SkyVSCB( Graphics &gfx,
 	const unsigned slot )
 	:
-	m_pVscb{std::make_unique<VertexShaderConstantBuffer<Transform>>( gph, slot )}
+	m_pVscb{std::make_unique<VertexShaderConstantBuffer<Transform>>( gfx, slot )}
 {
 
 }
 
-void SkyVSCB::bind( Graphics &gph ) cond_noex
+void SkyVSCB::bind( Graphics &gfx ) cond_noex
 {
-	m_pVscb->update( gph, getTransform( gph ) );
-	m_pVscb->bind( gph );
+	m_pVscb->update( gfx, getTransform( gfx ) );
+	m_pVscb->bind( gfx );
 }
 
-SkyVSCB::Transform SkyVSCB::getTransform( Graphics &gph ) cond_noex
+SkyVSCB::Transform SkyVSCB::getTransform( Graphics &gfx ) cond_noex
 {
-	return {DirectX::XMMatrixTranspose( gph.getViewMatrix() * gph.getProjectionMatrix() )};
+	return {DirectX::XMMatrixTranspose( gfx.getViewMatrix() * gfx.getProjectionMatrix() )};
 }

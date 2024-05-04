@@ -12,9 +12,9 @@ class IFullscreenPass
 {
 	static constexpr const char *s_fullscreenTag = "$fullscreen";
 public:
-	IFullscreenPass( Graphics &gph, const std::string &name ) cond_noex;
+	IFullscreenPass( Graphics &gfx, const std::string &name ) cond_noex;
 
-	void run( Graphics &gph ) const cond_noex override;
+	void run( Graphics &gfx ) const cond_noex override;
 };
 
 

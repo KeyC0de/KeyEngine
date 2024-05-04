@@ -7,7 +7,7 @@
 
 #define blendStateRTDesc blendStateDesc.RenderTarget[renderTargetSlot]
 
-BlendState::BlendState( Graphics &gph,
+BlendState::BlendState( Graphics &gfx,
 	const Mode mode,
 	const unsigned renderTargetSlot,
 	const std::optional<float> blendFactors )
@@ -106,22 +106,22 @@ BlendState::BlendState( Graphics &gph,
 		break;
 	}
 	}
-	HRESULT hres = getDevice( gph )->CreateBlendState( &blendStateDesc, &m_pBlendState );
+	HRESULT hres = getDevice( gfx )->CreateBlendState( &blendStateDesc, &m_pBlendState );
 	ASSERT_HRES_IF_FAILED;
 }
 
-void BlendState::bind( Graphics &gph ) cond_noex
+void BlendState::bind( Graphics &gfx ) cond_noex
 {
-	getDeviceContext( gph )->OMSetBlendState( m_pBlendState.Get(), m_blendFactors->data(), 0xFFFFFFFFu );
-	DXGI_GET_QUEUE_INFO( gph );
+	getDeviceContext( gfx )->OMSetBlendState( m_pBlendState.Get(), m_blendFactors->data(), 0xFFFFFFFFu );
+	DXGI_GET_QUEUE_INFO( gfx );
 }
 
-std::shared_ptr<BlendState> BlendState::fetch( Graphics &gph,
+std::shared_ptr<BlendState> BlendState::fetch( Graphics &gfx,
 	const Mode mode,
 	const unsigned renderTargetSlot,
 	std::optional<float> blendFactors )
 {
-	return BindableMap::fetch<BlendState>( gph, mode, renderTargetSlot, blendFactors );
+	return BindableMap::fetch<BlendState>( gfx, mode, renderTargetSlot, blendFactors );
 }
 
 std::string BlendState::calcUid( const Mode mode,

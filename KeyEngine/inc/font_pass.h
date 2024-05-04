@@ -10,7 +10,6 @@
 namespace ren
 {
 
-// #TODO: extend this into UiPass ...
 class FontPass
 	: public IBindablePass,
 	public GraphicsFriend
@@ -18,14 +17,14 @@ class FontPass
 	std::unique_ptr<DirectX::SpriteBatch> m_pSpriteBatch;
 	std::unique_ptr<DirectX::SpriteFont> m_pFpsSpriteFont;
 public:
-	FontPass( Graphics &gph, const std::string &name, const std::string &fpsFontNameNoExtension );
+	FontPass( Graphics &gfx, const std::string &name, const std::string &fpsFontNameNoExtension );
 
-	virtual void run( Graphics &gph ) const cond_noex override;
+	virtual void run( Graphics &gfx ) const cond_noex override;
 	virtual void reset() cond_noex override;
 private:
 	//	\function	updateAndRenderFpsTimer	||	\date	2022/11/13 16:21
 	//	\brief	draws FPS text
-	void updateAndRenderFpsTimer( Graphics &gph );
+	void updateAndRenderFpsTimer( Graphics &gfx );
 };
 
 

@@ -15,7 +15,7 @@ class RenderSurfaceClearPass
 public:
 	RenderSurfaceClearPass( const std::string &name );
 
-	void run( Graphics &gph ) const cond_noex override;
+	void run( Graphics &gfx ) const cond_noex override;
 	void reset() cond_noex override;
 };
 

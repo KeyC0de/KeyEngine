@@ -19,7 +19,7 @@ public:
 	void addJob( Job job, const float meshDistanceFromActiveCamera, const bool bTransparent = false ) noexcept;
 	//	\function	run	||	\date	2021/06/27 0:11
 	//	\brief  call RenderQueuePass::run from derivedPassClass::run as a final task
-	void run( Graphics &gph ) const cond_noex override;
+	void run( Graphics &gfx ) const cond_noex override;
 	void reset() cond_noex override;
 	int getNumOpaques() const noexcept;
 	int getNumTransparents() const noexcept;

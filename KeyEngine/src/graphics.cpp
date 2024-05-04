@@ -389,9 +389,7 @@ void Graphics::resize( const unsigned newWidth,
 	//m_pRenderer->reapplyRtv( bOffscreenRendering ? m_pOffscreenRtv->rtv() : m_pBackBufferRtv );
 	//m_pRenderer->reapplyDsv( bOffscreenRendering ? m_pOffscreenDsv->dsv() : m_pBackBufferDsv );
 	m_pRenderer->recreate( *this );
-	// #TODO:	1. send a notify listeners call here to be listened to by Game s.t. it can call connectEffectsToRenderer
-	//			2. and finally recreate the BindablePass-specific rtv & dsv -
-	// m_pRenderer->recreateRtvsAndDsvs( *this );
+	// #TODO:	send a notify listeners call here to be listened to by Game s.t. it can call connectEffectsToRenderer
 
 	checkUseCounts();
 

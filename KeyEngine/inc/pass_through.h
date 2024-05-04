@@ -19,7 +19,7 @@ class PassThrough
 	: public IFullscreenPass
 {
 public:
-	PassThrough( Graphics &gph, const std::string &name );
+	PassThrough( Graphics &gfx, const std::string &name );
 
 	void reset() cond_noex override;
 };

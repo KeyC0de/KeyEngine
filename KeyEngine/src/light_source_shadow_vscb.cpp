@@ -5,25 +5,25 @@
 
 namespace dx = DirectX;
 
-PointLightSourceShadowVSCB::PointLightSourceShadowVSCB( Graphics &gph,
+PointLightSourceShadowVSCB::PointLightSourceShadowVSCB( Graphics &gfx,
 	const unsigned slot )
 	:
-	m_pVscb{std::make_unique<VertexShaderConstantBuffer<PointLightSourceShadowTransformVSCB>>( gph, slot )}
+	m_pVscb{std::make_unique<VertexShaderConstantBuffer<PointLightSourceShadowTransformVSCB>>( gfx, slot )}
 {
 
 }
 
-void PointLightSourceShadowVSCB::update( Graphics &gph )
+void PointLightSourceShadowVSCB::update( Graphics &gfx )
 {
 	ASSERT( m_pPointLightShadowCamera, "Camera not specified (null)!" );
 	const auto &pos = m_pPointLightShadowCamera->getPosition();
 	const PointLightSourceShadowTransformVSCB vscb{dx::XMMatrixTranspose( dx::XMMatrixTranslation( -pos.x, -pos.y, -pos.z ) )};
-	m_pVscb->update( gph, vscb );
+	m_pVscb->update( gfx, vscb );
 }
 
-void PointLightSourceShadowVSCB::bind( Graphics &gph ) cond_noex
+void PointLightSourceShadowVSCB::bind( Graphics &gfx ) cond_noex
 {
-	m_pVscb->bind( gph );
+	m_pVscb->bind( gfx );
 }
 
 void PointLightSourceShadowVSCB::setCamera( const Camera *pCam, const bool bEnable ) noexcept

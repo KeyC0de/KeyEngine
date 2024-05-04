@@ -14,7 +14,7 @@
 namespace mwrl = Microsoft::WRL;
 namespace dx = DirectX;
 
-Texture::Texture( Graphics &gph,
+Texture::Texture( Graphics &gfx,
 	const std::string &filepath,
 	const unsigned slot )
 	:
@@ -28,10 +28,10 @@ Texture::Texture( Graphics &gph,
 
 	D3D11_TEXTURE2D_DESC texDesc = createTextureDescriptor( m_width, m_height, DXGI_FORMAT_B8G8R8A8_UNORM, BindFlags::RenderTargetTexture, CpuAccessFlags::NoCpuAccess, false, TextureUsage::Default );
 
-	HRESULT hres = getDevice( gph )->CreateTexture2D( &texDesc, nullptr, &m_pTex );
+	HRESULT hres = getDevice( gfx )->CreateTexture2D( &texDesc, nullptr, &m_pTex );
 	ASSERT_HRES_IF_FAILED;
 
-	paintTextureWithBitmap( gph, m_pTex.Get(), bitmap );
+	paintTextureWithBitmap( gfx, m_pTex.Get(), bitmap );
 
 	// create the resource view on the texture
 	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc{};
@@ -41,14 +41,14 @@ Texture::Texture( Graphics &gph,
 #pragma warning( disable: 4146 )
 	srvDesc.Texture2D.MipLevels = -1u;
 #pragma warning( default: 4146 )
-	hres = getDevice( gph )->CreateShaderResourceView( m_pTex.Get(), &srvDesc, &m_pSrv );
+	hres = getDevice( gfx )->CreateShaderResourceView( m_pTex.Get(), &srvDesc, &m_pSrv );
 	ASSERT_HRES_IF_FAILED;
 
-	getDeviceContext( gph )->GenerateMips( m_pSrv.Get() );
-	DXGI_GET_QUEUE_INFO( gph );
+	getDeviceContext( gfx )->GenerateMips( m_pSrv.Get() );
+	DXGI_GET_QUEUE_INFO( gfx );
 }
 
-Texture::Texture( Graphics &gph,
+Texture::Texture( Graphics &gfx,
 	const unsigned width,
 	const unsigned height,
 	const unsigned slot )
@@ -60,12 +60,12 @@ Texture::Texture( Graphics &gph,
 {
 	D3D11_TEXTURE2D_DESC texDesc = createTextureDescriptor( width, height, DXGI_FORMAT_B8G8R8A8_UNORM, BindFlags::TextureOnly, CpuAccessFlags::CpuWriteAccess, false, TextureUsage::Dynamic );
 
-	HRESULT hres = getDevice( gph )->CreateTexture2D( &texDesc, nullptr, &m_pTex );
+	HRESULT hres = getDevice( gfx )->CreateTexture2D( &texDesc, nullptr, &m_pTex );
 	ASSERT_HRES_IF_FAILED;
 
 #ifdef D2D_INTEROP
 	// create the DXGI Surface for d2d interoperability
-	hres = m_pTex->QueryInterface( __uuidof( IDXGISurface ), reinterpret_cast<void**>( gph.surface2d().GetAddressOf() ) );
+	hres = m_pTex->QueryInterface( __uuidof( IDXGISurface ), reinterpret_cast<void**>( gfx.surface2d().GetAddressOf() ) );
 	ASSERT_HRES_IF_FAILED;
 #endif
 
@@ -74,47 +74,47 @@ Texture::Texture( Graphics &gph,
 	srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
 	srvDesc.Texture2D.MostDetailedMip = 0u;
 	srvDesc.Texture2D.MipLevels = 1u;
-	hres = getDevice( gph )->CreateShaderResourceView( m_pTex.Get(), &srvDesc, &m_pSrv );
+	hres = getDevice( gfx )->CreateShaderResourceView( m_pTex.Get(), &srvDesc, &m_pSrv );
 	ASSERT_HRES_IF_FAILED;
 }
 
-void Texture::paintTextureWithBitmap( Graphics &gph,
+void Texture::paintTextureWithBitmap( Graphics &gfx,
 	ID3D11Texture2D *tex,
 	const Bitmap &bitmap,
 	const D3D11_BOX *destPortion /* = nullptr */ )
 {
-	getDeviceContext( gph )->UpdateSubresource( tex, 0u, destPortion, bitmap.getData(), bitmap.getPitch(), 0u );
-	DXGI_GET_QUEUE_INFO( gph );
+	getDeviceContext( gfx )->UpdateSubresource( tex, 0u, destPortion, bitmap.getData(), bitmap.getPitch(), 0u );
+	DXGI_GET_QUEUE_INFO( gfx );
 }
 
-void Texture::update( Graphics &gph ) cond_noex
+void Texture::update( Graphics &gfx ) cond_noex
 {
 	HRESULT hres;
 	D3D11_MAPPED_SUBRESOURCE msr{};
-	hres = getDeviceContext( gph )->Map( m_pTex.Get(), 0u, D3D11_MAP::D3D11_MAP_WRITE_DISCARD, 0u, &msr );
+	hres = getDeviceContext( gfx )->Map( m_pTex.Get(), 0u, D3D11_MAP::D3D11_MAP_WRITE_DISCARD, 0u, &msr );
 	ASSERT_HRES_IF_FAILED;
 
 	ColorBGRA *pDst = static_cast<ColorBGRA*>( msr.pData );
 	const unsigned dstWidth = msr.RowPitch / sizeof ColorBGRA;
 	const unsigned srcWidth = m_width;
 	const unsigned nRowBytes = srcWidth * sizeof ColorBGRA;
-	ColorBGRA *pSrc = gph.cpuBuffer();
+	ColorBGRA *pSrc = gfx.cpuBuffer();
 	// copy 1 line at a time from cpuBuffer to dynamic GPU texture
 	for ( unsigned y = 0u; y < m_height; ++y )
 	{
 		memcpy( &pDst[y * dstWidth], &pSrc[y * srcWidth], nRowBytes );
 	}
-	getDeviceContext( gph )->Unmap( m_pTex.Get(), 0u );
+	getDeviceContext( gfx )->Unmap( m_pTex.Get(), 0u );
 }
 
-void Texture::bind( Graphics &gph ) cond_noex
+void Texture::bind( Graphics &gfx ) cond_noex
 {
 	if ( m_bDynamic )
 	{
-		update( gph );
+		update( gfx );
 	}
-	getDeviceContext( gph )->PSSetShaderResources( m_slot, 1u, m_pSrv.GetAddressOf() );
-	DXGI_GET_QUEUE_INFO( gph );
+	getDeviceContext( gfx )->PSSetShaderResources( m_slot, 1u, m_pSrv.GetAddressOf() );
+	DXGI_GET_QUEUE_INFO( gfx );
 }
 
 bool Texture::hasAlpha() const noexcept
@@ -127,11 +127,11 @@ const std::string& Texture::getPath() const noexcept
 	return m_path;
 }
 
-std::shared_ptr<Texture> Texture::fetch( Graphics &gph,
+std::shared_ptr<Texture> Texture::fetch( Graphics &gfx,
 	const std::string &filepath,
 	const unsigned slot )
 {
-	return BindableMap::fetch<Texture>( gph, filepath, slot );
+	return BindableMap::fetch<Texture>( gfx, filepath, slot );
 }
 
 std::string Texture::calcUid( const std::string &filepath,
@@ -147,7 +147,7 @@ std::string Texture::getUid() const noexcept
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-TextureOffscreenRT::TextureOffscreenRT( Graphics &gph,
+TextureOffscreenRT::TextureOffscreenRT( Graphics &gfx,
 	const unsigned width,
 	const unsigned height,
 	const unsigned slot,
@@ -158,7 +158,7 @@ TextureOffscreenRT::TextureOffscreenRT( Graphics &gph,
 	D3D11_TEXTURE2D_DESC texDesc = createTextureDescriptor( width, height, getFormatRtv( rtvMode ), BindFlags::RenderTargetTexture, CpuAccessFlags::NoCpuAccess, false, TextureUsage::Default );
 
 	mwrl::ComPtr<ID3D11Texture2D> pTexture;
-	HRESULT hres = getDevice( gph )->CreateTexture2D( &texDesc, nullptr, &pTexture );
+	HRESULT hres = getDevice( gfx )->CreateTexture2D( &texDesc, nullptr, &pTexture );
 	ASSERT_HRES_IF_FAILED;
 
 	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc{};
@@ -166,16 +166,16 @@ TextureOffscreenRT::TextureOffscreenRT( Graphics &gph,
 	srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
 	srvDesc.Texture2D.MostDetailedMip = 0u;
 	srvDesc.Texture2D.MipLevels = 1u;
-	hres = getDevice( gph )->CreateShaderResourceView( pTexture.Get(), &srvDesc, &m_pSrv );
+	hres = getDevice( gfx )->CreateShaderResourceView( pTexture.Get(), &srvDesc, &m_pSrv );
 
 	// create RTV that will render on the created offscreen texture and on a next pass we can use this RTV to read that texture
-	m_pRtv = std::make_shared<RenderTargetOutput>( gph, pTexture.Get() );
+	m_pRtv = std::make_shared<RenderTargetOutput>( gfx, pTexture.Get() );
 }
 
-void TextureOffscreenRT::bind( Graphics &gph ) cond_noex
+void TextureOffscreenRT::bind( Graphics &gfx ) cond_noex
 {
-	getDeviceContext( gph )->PSSetShaderResources( m_slot, 1u, m_pSrv.GetAddressOf() );
-	DXGI_GET_QUEUE_INFO( gph );
+	getDeviceContext( gfx )->PSSetShaderResources( m_slot, 1u, m_pSrv.GetAddressOf() );
+	DXGI_GET_QUEUE_INFO( gfx );
 }
 
 std::shared_ptr<RenderTargetOutput> TextureOffscreenRT::shareRenderTarget() const
@@ -195,7 +195,7 @@ unsigned TextureOffscreenRT::getSlot() const noexcept
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-TextureOffscreenDS::TextureOffscreenDS( Graphics &gph,
+TextureOffscreenDS::TextureOffscreenDS( Graphics &gfx,
 	const unsigned width,
 	const unsigned height,
 	const unsigned slot,
@@ -206,7 +206,7 @@ TextureOffscreenDS::TextureOffscreenDS( Graphics &gph,
 	D3D11_TEXTURE2D_DESC texDesc = createTextureDescriptor( width, height, getTypelessFormatDsv( dsvMode ), BindFlags::DepthStencilTexture, CpuAccessFlags::NoCpuAccess, false, TextureUsage::Default );
 
 	mwrl::ComPtr<ID3D11Texture2D> pTexture;
-	HRESULT hres = getDevice( gph )->CreateTexture2D( &texDesc, nullptr, &pTexture );
+	HRESULT hres = getDevice( gfx )->CreateTexture2D( &texDesc, nullptr, &pTexture );
 	ASSERT_HRES_IF_FAILED;
 
 	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc{};
@@ -214,17 +214,17 @@ TextureOffscreenDS::TextureOffscreenDS( Graphics &gph,
 	srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
 	srvDesc.Texture2D.MostDetailedMip = 0u;
 	srvDesc.Texture2D.MipLevels = 1u;
-	hres = getDevice( gph )->CreateShaderResourceView( pTexture.Get(), &srvDesc, &m_pSrv );
+	hres = getDevice( gfx )->CreateShaderResourceView( pTexture.Get(), &srvDesc, &m_pSrv );
 	ASSERT_HRES_IF_FAILED;
 
 	// create DSV that will render on the created offscreen texture and on a next pass we can use this SRV to read that texture
-	m_pDsv = std::make_shared<DepthStencilOutput>( gph, pTexture.Get(), dsvMode );
+	m_pDsv = std::make_shared<DepthStencilOutput>( gfx, pTexture.Get(), dsvMode );
 }
 
-void TextureOffscreenDS::bind( Graphics &gph ) cond_noex
+void TextureOffscreenDS::bind( Graphics &gfx ) cond_noex
 {
-	getDeviceContext( gph )->PSSetShaderResources( m_slot, 1u, m_pSrv.GetAddressOf() );
-	DXGI_GET_QUEUE_INFO( gph );
+	getDeviceContext( gfx )->PSSetShaderResources( m_slot, 1u, m_pSrv.GetAddressOf() );
+	DXGI_GET_QUEUE_INFO( gfx );
 }
 
 std::shared_ptr<DepthStencilOutput> TextureOffscreenDS::shareDepthBuffer() const

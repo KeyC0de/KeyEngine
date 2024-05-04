@@ -6,6 +6,6 @@
 class GraphicsFriend
 {
 protected:
-	static ID3D11DeviceContext* getDeviceContext( Graphics &gph ) noexcept;
-	static ID3D11Device* getDevice( Graphics &gph ) noexcept;
+	static ID3D11DeviceContext* getDeviceContext( Graphics &gfx ) noexcept;
+	static ID3D11Device* getDevice( Graphics &gfx ) noexcept;
 };

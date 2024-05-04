@@ -18,17 +18,17 @@ class Texture
 	Microsoft::WRL::ComPtr<ID3D11Texture2D> m_pTex;
 	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_pSrv;
 public:
-	Texture( Graphics &gph, const std::string &filepath, const unsigned slot );
+	Texture( Graphics &gfx, const std::string &filepath, const unsigned slot );
 	//	\function	Texture	||	\date	2021/10/30 3:42
 	//	\brief	Texture constructor with dynamic CPU per frame update
-	Texture( Graphics &gph, const unsigned width, const unsigned height, const unsigned slot );
+	Texture( Graphics &gfx, const unsigned width, const unsigned height, const unsigned slot );
 
-	void paintTextureWithBitmap( Graphics &gph, ID3D11Texture2D *tex, const Bitmap &bitmap, const D3D11_BOX *destPortion = nullptr );
-	void bind( Graphics &gph ) cond_noex override;
-	void update( Graphics &gph ) cond_noex;
+	void paintTextureWithBitmap( Graphics &gfx, ID3D11Texture2D *tex, const Bitmap &bitmap, const D3D11_BOX *destPortion = nullptr );
+	void bind( Graphics &gfx ) cond_noex override;
+	void update( Graphics &gfx ) cond_noex;
 	bool hasAlpha() const noexcept;
 	const std::string& getPath() const noexcept;
-	static std::shared_ptr<Texture> fetch( Graphics &gph, const std::string &filepath, const unsigned slot );
+	static std::shared_ptr<Texture> fetch( Graphics &gfx, const std::string &filepath, const unsigned slot );
 	static std::string calcUid( const std::string &filepath, const unsigned slot );
 	std::string getUid() const noexcept override;
 };
@@ -47,9 +47,9 @@ protected:
 	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_pSrv;
 	std::shared_ptr<RenderTargetOutput> m_pRtv;
 public:
-	TextureOffscreenRT( Graphics &gph, const unsigned width, const unsigned height, const unsigned slot, const RenderTargetViewMode rtvMode );
+	TextureOffscreenRT( Graphics &gfx, const unsigned width, const unsigned height, const unsigned slot, const RenderTargetViewMode rtvMode );
 
-	void bind( Graphics &gph ) cond_noex override;
+	void bind( Graphics &gfx ) cond_noex override;
 	std::shared_ptr<RenderTargetOutput> shareRenderTarget() const;
 	std::shared_ptr<RenderTargetOutput>& rtv() noexcept;
 	unsigned getSlot() const noexcept;
@@ -69,9 +69,9 @@ protected:
 	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_pSrv;
 	std::shared_ptr<DepthStencilOutput> m_pDsv;
 public:
-	TextureOffscreenDS( Graphics &gph, const unsigned width, const unsigned height, const unsigned slot, const DepthStencilViewMode dsvMode );
+	TextureOffscreenDS( Graphics &gfx, const unsigned width, const unsigned height, const unsigned slot, const DepthStencilViewMode dsvMode );
 
-	void bind( Graphics &gph ) cond_noex override;
+	void bind( Graphics &gfx ) cond_noex override;
 	std::shared_ptr<DepthStencilOutput> shareDepthBuffer() const;
 	std::shared_ptr<DepthStencilOutput>& dsv() noexcept;
 	unsigned getSlot() const noexcept;

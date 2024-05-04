@@ -18,7 +18,7 @@ class SolidOutlineMaskPass
 	: public RenderQueuePass
 {
 public:
-	SolidOutlineMaskPass( Graphics &gph, const std::string &name );
+	SolidOutlineMaskPass( Graphics &gfx, const std::string &name );
 };
 
 

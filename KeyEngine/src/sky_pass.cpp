@@ -28,37 +28,37 @@
 namespace ren
 {
 
-SkyPass::SkyPass( Graphics &gph,
+SkyPass::SkyPass( Graphics &gfx,
 	const std::string &name,
 	const bool useSphere )
 	:
 	IBindablePass{name},
 	m_bUseSphere{useSphere}
 {
-	addPassBindable( PrimitiveTopology::fetch( gph, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
+	addPassBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
-	addPassBindable( std::make_shared<CubeTexture>( gph, "assets/textures/skybox/space", 0u ) );
-	addPassBindable( TextureSamplerState::fetch( gph, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Trilinear, TextureSamplerState::AddressMode::Wrap ) );
-	addPassBindable( DepthStencilState::fetch( gph, DepthStencilState::Mode::DepthEquals1 ) );
-	addPassBindable( RasterizerState::fetch( gph, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Both ) );
-	addPassBindable( PrimitiveTopology::fetch( gph, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
-	addPassBindable( std::make_shared<SkyVSCB>( gph ) );
-	addPassBindable( PixelShader::fetch( gph, "sky_ps.cso" ) );
+	addPassBindable( std::make_shared<CubeTexture>( gfx, "assets/textures/skybox/space", 0u ) );
+	addPassBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Trilinear, TextureSamplerState::AddressMode::Wrap ) );
+	addPassBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::DepthEquals1 ) );
+	addPassBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Both ) );
+	addPassBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
+	addPassBindable( std::make_shared<SkyVSCB>( gfx ) );
+	addPassBindable( PixelShader::fetch( gfx, "sky_ps.cso" ) );
 	{
-		auto vs = VertexShader::fetch( gph, "sky_vs.cso" );
+		auto vs = VertexShader::fetch( gfx, "sky_vs.cso" );
 		{// cube
 			TriangleMesh cube = Geometry::makeCube();
-			m_pCubeVb = VertexBuffer::fetch( gph, s_cubeGeometryTag, cube.m_vb );
-			m_pCubeIb = IndexBuffer::fetch( gph, s_cubeGeometryTag, cube.m_indices );
+			m_pCubeVb = VertexBuffer::fetch( gfx, s_cubeGeometryTag, cube.m_vb );
+			m_pCubeIb = IndexBuffer::fetch( gfx, s_cubeGeometryTag, cube.m_indices );
 			m_nCubeIndices = (unsigned)cube.m_indices.size();
-			addPassBindable( InputLayout::fetch( gph, cube.m_vb.getLayout(), *vs ) );
+			addPassBindable( InputLayout::fetch( gfx, cube.m_vb.getLayout(), *vs ) );
 		}
 		{// sphere
 			TriangleMesh sphere = Geometry::makeSphereTesselated();
-			m_pSphereVb = VertexBuffer::fetch( gph, s_sphereGeometryTag, sphere.m_vb );
-			m_pSphereIb = IndexBuffer::fetch( gph, s_sphereGeometryTag, sphere.m_indices );
+			m_pSphereVb = VertexBuffer::fetch( gfx, s_sphereGeometryTag, sphere.m_vb );
+			m_pSphereIb = IndexBuffer::fetch( gfx, s_sphereGeometryTag, sphere.m_indices );
 			m_nSphereIndices = (unsigned)sphere.m_indices.size();
-			addPassBindable( InputLayout::fetch( gph, sphere.m_vb.getLayout(), *vs ) );
+			addPassBindable( InputLayout::fetch( gfx, sphere.m_vb.getLayout(), *vs ) );
 		}
 		addPassBindable( std::move( vs ) );
 	}
@@ -75,26 +75,26 @@ void SkyPass::setActiveCamera( const Camera &cam ) noexcept
 	m_pActiveCamera = &cam;
 }
 
-void SkyPass::run( Graphics &gph ) const cond_noex
+void SkyPass::run( Graphics &gfx ) const cond_noex
 {
 	// no need to inherit from RenderQueuePass to add a Job for a single "special" object
 	ASSERT( m_pActiveCamera, "SkyPass - Main camera not specified (null)!" );
 	unsigned nIndices;
-	m_pActiveCamera->makeActive( gph, false );
+	m_pActiveCamera->makeActive( gfx, false );
 	if ( m_bUseSphere )
 	{
-		m_pSphereVb->bind( gph );
-		m_pSphereIb->bind( gph );
+		m_pSphereVb->bind( gfx );
+		m_pSphereIb->bind( gfx );
 		nIndices = m_nSphereIndices;
 	}
 	else
 	{
-		m_pCubeVb->bind( gph );
-		m_pCubeIb->bind( gph );
+		m_pCubeVb->bind( gfx );
+		m_pCubeIb->bind( gfx );
 		nIndices = m_nCubeIndices;
 	}
-	bind( gph );
-	gph.drawIndexed( nIndices );
+	bind( gfx );
+	gfx.drawIndexed( nIndices );
 }
 
 void SkyPass::reset() cond_noex

@@ -17,13 +17,13 @@ static unsigned g_numMeshes = 0u;
 
 namespace dx = DirectX;
 
-Mesh::Mesh( Graphics &gph,
+Mesh::Mesh( Graphics &gfx,
 	const MaterialLoader &mat,
 	const aiMesh &aimesh,
 	const float initialScale /*= 1.0f*/ ) noexcept
 {
-	m_pVertexBuffer = mat.makeVertexBuffer( gph, aimesh, initialScale );
-	m_pIndexBuffer = mat.makeIndexBuffer( gph, aimesh );
+	m_pVertexBuffer = mat.makeVertexBuffer( gfx, aimesh, initialScale );
+	m_pIndexBuffer = mat.makeIndexBuffer( gfx, aimesh );
 
 	for ( auto &effect : mat.getEffects() )
 	{
@@ -54,7 +54,8 @@ Mesh::Mesh( const DirectX::XMMATRIX &initialTransform ) noexcept
 //	pass_;
 //}
 
-void Mesh::update( const float dt ) cond_noex
+void Mesh::update( const float dt,
+	const float renderFrameInterpolation ) cond_noex
 {
 	setDistanceFromActiveCamera();
 }
@@ -92,10 +93,10 @@ void Mesh::addEffect( Effect effect ) noexcept
 	m_effects.emplace_back( std::move( effect ) );
 }
 
-void Mesh::bind( Graphics &gph ) const cond_noex
+void Mesh::bind( Graphics &gfx ) const cond_noex
 {
-	m_pIndexBuffer->bind( gph );
-	m_pVertexBuffer->bind( gph );
+	m_pIndexBuffer->bind( gfx );
+	m_pVertexBuffer->bind( gfx );
 }
 
 void Mesh::accept( IImGuiEffectVisitor &ev )

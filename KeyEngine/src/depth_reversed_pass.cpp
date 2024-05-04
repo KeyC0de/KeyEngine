@@ -10,14 +10,14 @@
 namespace ren
 {
 
-DepthReversedPass::DepthReversedPass( Graphics &gph,
+DepthReversedPass::DepthReversedPass( Graphics &gfx,
 	const std::string &name )
 	:
 	RenderQueuePass{name}
 {
-	addPassBindable( PrimitiveTopology::fetch( gph, D3D11_PRIMITIVE_TOPOLOGY_LINELIST ) );
+	addPassBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_LINELIST ) );
 
-	addPassBindable( DepthStencilState::fetch( gph, DepthStencilState::Mode::DepthReversedStencilOff ) );
+	addPassBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::DepthReversedStencilOff ) );
 
 	addBinder( RenderSurfaceBinder<IRenderTargetView>::make( "renderTarget", m_pRtv ) );
 	addBinder( RenderSurfaceBinder<IDepthStencilView>::make( "depthStencil", m_pDsv ) );

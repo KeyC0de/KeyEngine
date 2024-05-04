@@ -42,10 +42,10 @@ protected:
 	AddressMode m_addressingMode;
 	bool m_bHwPcf;
 public:
-	TextureSamplerState( Graphics &gph, const TextureSamplerMode samplingMode, const FilterMode filterMode, const AddressMode addressMode );
+	TextureSamplerState( Graphics &gfx, const TextureSamplerMode samplingMode, const FilterMode filterMode, const AddressMode addressMode );
 
-	void bind( Graphics &gph ) cond_noex override;
-	static std::shared_ptr<TextureSamplerState> fetch( Graphics &gph, const TextureSamplerMode samplingMode, const FilterMode filterMode, const AddressMode addressMode );
+	void bind( Graphics &gfx ) cond_noex override;
+	static std::shared_ptr<TextureSamplerState> fetch( Graphics &gfx, const TextureSamplerMode samplingMode, const FilterMode filterMode, const AddressMode addressMode );
 	static std::string calcUid( const TextureSamplerMode samplingMode, const FilterMode filterMode, const AddressMode addressMode );
 	std::string getUid() const noexcept override;
 	static unsigned calcSlot( const TextureSamplerMode samplingMode ) noexcept;

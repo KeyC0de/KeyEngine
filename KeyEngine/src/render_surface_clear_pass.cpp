@@ -13,9 +13,9 @@ RenderSurfaceClearPass::RenderSurfaceClearPass( const std::string &name )
 	addLinker( RenderSurfaceLinker<IRenderSurface>::make( "buffer", m_pRenderSurface ) );
 }
 
-void RenderSurfaceClearPass::run( Graphics &gph ) const cond_noex
+void RenderSurfaceClearPass::run( Graphics &gfx ) const cond_noex
 {
-	m_pRenderSurface->clear( gph );
+	m_pRenderSurface->clear( gfx );
 }
 
 void RenderSurfaceClearPass::reset() cond_noex

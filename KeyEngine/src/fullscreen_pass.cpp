@@ -16,7 +16,7 @@ namespace ren
 
 namespace dx = DirectX;
 
-IFullscreenPass::IFullscreenPass( Graphics &gph,
+IFullscreenPass::IFullscreenPass( Graphics &gfx,
 	const std::string &name ) cond_noex
 	:
 	IBindablePass{name}
@@ -30,22 +30,22 @@ IFullscreenPass::IFullscreenPass( Graphics &gph,
 	vb.emplaceVertex( dx::XMFLOAT2{1, 1} );
 	vb.emplaceVertex( dx::XMFLOAT2{-1, -1} );
 	vb.emplaceVertex( dx::XMFLOAT2{1, -1} );
-	addPassBindable( VertexBuffer::fetch( gph, s_fullscreenTag, vb ) );
+	addPassBindable( VertexBuffer::fetch( gfx, s_fullscreenTag, vb ) );
 
 	std::vector<unsigned> indices{0, 1, 2, 1, 3, 2};
-	addPassBindable( IndexBuffer::fetch( gph, s_fullscreenTag, indices ) );
+	addPassBindable( IndexBuffer::fetch( gfx, s_fullscreenTag, indices ) );
 
-	auto vs = VertexShader::fetch( gph, "fullscreen_quad_vs.cso" );
-	addPassBindable( InputLayout::fetch( gph, vil, *vs ) );
+	auto vs = VertexShader::fetch( gfx, "fullscreen_quad_vs.cso" );
+	addPassBindable( InputLayout::fetch( gfx, vil, *vs ) );
 	addPassBindable( std::move( vs ) );
-	addPassBindable( PrimitiveTopology::fetch( gph, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
-	addPassBindable( RasterizerState::fetch( gph, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
+	addPassBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
+	addPassBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
 }
 
-void IFullscreenPass::run( Graphics &gph ) const cond_noex
+void IFullscreenPass::run( Graphics &gfx ) const cond_noex
 {
-	bind( gph );
-	gph.drawIndexed( 6u );
+	bind( gfx );
+	gfx.drawIndexed( 6u );
 }
 
 

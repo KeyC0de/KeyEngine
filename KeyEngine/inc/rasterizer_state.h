@@ -36,10 +36,10 @@ public:
 	//	\function	RasterizerState	||	\date	2024/04/27 14:28
 	//	\brief	if mode is RasterizerMode::ShadowRS then fillMode and faceMode values will be defaulted
 	//			if mode is RasterizerMode::DefaultRS then depthBias, slopeBias and biasClamp will be defaulted
-	RasterizerState( Graphics &gph, const RasterizerMode mode, const FillMode fillMode, const FaceMode faceMode, const int depthBias = D3D11_DEFAULT_DEPTH_BIAS, const float slopeBias = D3D11_DEFAULT_SLOPE_SCALED_DEPTH_BIAS, const float biasClamp = D3D11_DEFAULT_DEPTH_BIAS_CLAMP );
+	RasterizerState( Graphics &gfx, const RasterizerMode mode, const FillMode fillMode, const FaceMode faceMode, const int depthBias = D3D11_DEFAULT_DEPTH_BIAS, const float slopeBias = D3D11_DEFAULT_SLOPE_SCALED_DEPTH_BIAS, const float biasClamp = D3D11_DEFAULT_DEPTH_BIAS_CLAMP );
 
-	void bind( Graphics &gph ) cond_noex override;
-	static std::shared_ptr<RasterizerState> fetch( Graphics &gph, const RasterizerMode mode, const FillMode fillMode, const FaceMode faceMode, const int depthBias = D3D11_DEFAULT_DEPTH_BIAS, const float slopeBias = D3D11_DEFAULT_SLOPE_SCALED_DEPTH_BIAS, const float biasClamp = D3D11_DEFAULT_DEPTH_BIAS_CLAMP );
+	void bind( Graphics &gfx ) cond_noex override;
+	static std::shared_ptr<RasterizerState> fetch( Graphics &gfx, const RasterizerMode mode, const FillMode fillMode, const FaceMode faceMode, const int depthBias = D3D11_DEFAULT_DEPTH_BIAS, const float slopeBias = D3D11_DEFAULT_SLOPE_SCALED_DEPTH_BIAS, const float biasClamp = D3D11_DEFAULT_DEPTH_BIAS_CLAMP );
 	static std::string calcUid( const RasterizerMode mode, const FillMode fillMode, const FaceMode faceMode, const int depthBias = D3D11_DEFAULT_DEPTH_BIAS, const float slopeBias = D3D11_DEFAULT_SLOPE_SCALED_DEPTH_BIAS, const float biasClamp = D3D11_DEFAULT_DEPTH_BIAS_CLAMP );
 	std::string getUid() const noexcept override;
 	RasterizerMode getMode() const noexcept;

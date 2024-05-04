@@ -32,11 +32,11 @@ private:
 public:
 	static CameraManager& getInstance();
 public:
-	void displayImguiWidgets( Graphics &gph ) noexcept;
+	void displayImguiWidgets( Graphics &gfx ) noexcept;
 	void add( std::shared_ptr<Camera> pCam );
 	void connectEffectsToRenderer( ren::Renderer &r );
 	void render( const size_t channels = rch::all ) const;
-	void updateDimensions( Graphics &gph );
+	void updateDimensions( Graphics &gfx );
 	Camera& getActiveCamera() cond_noex;
 	const Camera& getActiveCamera() const noexcept;
 	std::shared_ptr<Camera> shareActiveCamera() const noexcept;

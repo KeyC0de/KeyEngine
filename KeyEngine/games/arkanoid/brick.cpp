@@ -15,11 +15,11 @@ Brick::Brick( const Rect &rect,
 
 }
 
-void Brick::render( Graphics &gph ) const cond_noex
+void Brick::render( Graphics &gfx ) const cond_noex
 {
 	if ( !m_bDestroyed )
 	{
-		gph.drawRectangle( m_rect.calcScaled( -s_margin ), m_color );
+		gfx.drawRectangle( m_rect.calcScaled( -s_margin ), m_color );
 	}
 }
 

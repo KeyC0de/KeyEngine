@@ -24,29 +24,29 @@ protected:
 public:
 	//	\function	ctor	||	\date	2022/08/14 23:44
 	//	\brief	initially empty d3dcb - supply the data on update
-	IConstantBuffer( Graphics &gph,
+	IConstantBuffer( Graphics &gfx,
 		const unsigned slot )
 		:
 		m_slot(slot)
 	{
-		s_gph = &gph;
+		s_gph = &gfx;
 
 		D3D11_BUFFER_DESC cbDesc{};
 		setBufferDesc( cbDesc );
 
-		HRESULT hres = getDevice( gph )->CreateBuffer( &cbDesc, nullptr, &m_pD3dCb );
+		HRESULT hres = getDevice( gfx )->CreateBuffer( &cbDesc, nullptr, &m_pD3dCb );
 		ASSERT_HRES_IF_FAILED;
 	}
 
 	//	\function	IConstantBuffer	||	\date	2022/08/14 23:44
 	//	\brief	ctor with the data supplied
-	IConstantBuffer( Graphics &gph,
+	IConstantBuffer( Graphics &gfx,
 		const CB &cb,
 		const unsigned slot )
 		:
 		m_slot(slot)
 	{
-		s_gph = &gph;
+		s_gph = &gfx;
 
 		//ASSERT( util::isAligned( &cb, 16 ), "Constant Buffer not 16B aligned!" );
 		D3D11_BUFFER_DESC cbDesc{};
@@ -54,7 +54,7 @@ public:
 
 		D3D11_SUBRESOURCE_DATA SubRscData{};
 		SubRscData.pSysMem = &cb;
-		HRESULT hres = getDevice( gph )->CreateBuffer( &cbDesc, &SubRscData, &m_pD3dCb );
+		HRESULT hres = getDevice( gfx )->CreateBuffer( &cbDesc, &SubRscData, &m_pD3dCb );
 		ASSERT_HRES_IF_FAILED;
 	}
 
@@ -71,17 +71,17 @@ public:
 
 	//	\function	update	||	\date	2022/02/19 19:00
 	//	\brief	Map, paste to msr, Unmap
-	void update( Graphics &gph,
+	void update( Graphics &gfx,
 		const CB &cb )
 	{
 		D3D11_MAPPED_SUBRESOURCE msr{};
-		HRESULT hres = getDeviceContext( gph )->Map( m_pD3dCb.Get(), 0u, D3D11_MAP::D3D11_MAP_WRITE_DISCARD, 0u, &msr );
+		HRESULT hres = getDeviceContext( gfx )->Map( m_pD3dCb.Get(), 0u, D3D11_MAP::D3D11_MAP_WRITE_DISCARD, 0u, &msr );
 		ASSERT_HRES_IF_FAILED;
-		DXGI_GET_QUEUE_INFO( gph );
+		DXGI_GET_QUEUE_INFO( gfx );
 
 		memcpy( msr.pData, &cb, sizeof CB );
 
-		getDeviceContext( gph )->Unmap( m_pD3dCb.Get(), 0u );
+		getDeviceContext( gfx )->Unmap( m_pD3dCb.Get(), 0u );
 	}
 
 	ID3D11Buffer* getCb() const noexcept
@@ -122,23 +122,23 @@ public:
 	using IConstantBuffer<CB>::getCb;
 	using IConstantBuffer<CB>::getSlot;
 
-	void bind( Graphics &gph ) cond_noex override
+	void bind( Graphics &gfx ) cond_noex override
 	{
-		getDeviceContext( gph )->VSSetConstantBuffers( m_slot, 1u, m_pD3dCb.GetAddressOf() );
-		DXGI_GET_QUEUE_INFO( gph );
+		getDeviceContext( gfx )->VSSetConstantBuffers( m_slot, 1u, m_pD3dCb.GetAddressOf() );
+		DXGI_GET_QUEUE_INFO( gfx );
 	}
 
-	static std::shared_ptr<VertexShaderConstantBuffer> fetch( Graphics &gph,
+	static std::shared_ptr<VertexShaderConstantBuffer> fetch( Graphics &gfx,
 		const CB &cb,
 		const unsigned slot )
 	{
-		return BindableMap::fetch<VertexShaderConstantBuffer>( gph, cb, slot );
+		return BindableMap::fetch<VertexShaderConstantBuffer>( gfx, cb, slot );
 	}
 
-	static std::shared_ptr<VertexShaderConstantBuffer> fetch( Graphics &gph,
+	static std::shared_ptr<VertexShaderConstantBuffer> fetch( Graphics &gfx,
 		const unsigned slot )
 	{
-		return BindableMap::fetch<VertexShaderConstantBuffer>( gph, slot );
+		return BindableMap::fetch<VertexShaderConstantBuffer>( gfx, slot );
 	}
 
 	static std::string calcUid( const CB &cb,
@@ -192,23 +192,23 @@ public:
 	using IConstantBuffer<CB>::getCb;
 	using IConstantBuffer<CB>::getSlot;
 
-	void bind( Graphics &gph ) cond_noex override
+	void bind( Graphics &gfx ) cond_noex override
 	{
-		getDeviceContext( gph )->PSSetConstantBuffers( m_slot, 1u, m_pD3dCb.GetAddressOf() );
-		DXGI_GET_QUEUE_INFO( gph );
+		getDeviceContext( gfx )->PSSetConstantBuffers( m_slot, 1u, m_pD3dCb.GetAddressOf() );
+		DXGI_GET_QUEUE_INFO( gfx );
 	}
 
-	static std::shared_ptr<PixelShaderConstantBuffer> fetch( Graphics &gph,
+	static std::shared_ptr<PixelShaderConstantBuffer> fetch( Graphics &gfx,
 		const CB &cb,
 		const unsigned slot )
 	{
-		return BindableMap::fetch<PixelShaderConstantBuffer>( gph, cb, slot );
+		return BindableMap::fetch<PixelShaderConstantBuffer>( gfx, cb, slot );
 	}
 
-	static std::shared_ptr<PixelShaderConstantBuffer> fetch( Graphics &gph,
+	static std::shared_ptr<PixelShaderConstantBuffer> fetch( Graphics &gfx,
 		const unsigned slot )
 	{
-		return BindableMap::fetch<PixelShaderConstantBuffer>( gph, slot );
+		return BindableMap::fetch<PixelShaderConstantBuffer>( gfx, slot );
 	}
 	
 	static std::string calcUid( const CB &cb,

@@ -92,9 +92,9 @@ public:
 	int loop();
 private:
 	int checkInput( const float dt );
-	void update( const float dt );
+	void update( const float dt, const float lerpBetweenFrames );
 	void updateFixed( const float dt );
-	void render( const float frameInterpolation );
+	void render();
 	void test();
 	void connectEffectsToRenderer( ren::Renderer &renderer );
 };

@@ -5,15 +5,15 @@
 #include "assertions_console.h"
 
 
-VertexBuffer::VertexBuffer( Graphics &gph,
+VertexBuffer::VertexBuffer( Graphics &gfx,
 	const ver::VBuffer &vb )
 	:
-	VertexBuffer(gph, "?", vb)
+	VertexBuffer(gfx, "?", vb)
 {
 
 }
 
-VertexBuffer::VertexBuffer( Graphics &gph,
+VertexBuffer::VertexBuffer( Graphics &gfx,
 	const std::string &tag,
 	const ver::VBuffer &vb )
 	:
@@ -31,7 +31,7 @@ VertexBuffer::VertexBuffer( Graphics &gph,
 
 	D3D11_SUBRESOURCE_DATA subRscData{};
 	subRscData.pSysMem = vb.getRawBytes();
-	HRESULT hres = getDevice( gph )->CreateBuffer( &vbDesc, &subRscData, &m_pVertexBuffer );
+	HRESULT hres = getDevice( gfx )->CreateBuffer( &vbDesc, &subRscData, &m_pVertexBuffer );
 	ASSERT_HRES_IF_FAILED;
 }
 
@@ -40,19 +40,19 @@ const ver::VertexInputLayout& VertexBuffer::getLayout() const noexcept
 	return m_vertexLayout;
 }
 
-void VertexBuffer::bind( Graphics &gph ) cond_noex
+void VertexBuffer::bind( Graphics &gfx ) cond_noex
 {
 	const unsigned offset = 0u;
-	getDeviceContext( gph )->IASetVertexBuffers( 0u, 1u, m_pVertexBuffer.GetAddressOf(), &m_stride, &offset );
-	DXGI_GET_QUEUE_INFO( gph );
+	getDeviceContext( gfx )->IASetVertexBuffers( 0u, 1u, m_pVertexBuffer.GetAddressOf(), &m_stride, &offset );
+	DXGI_GET_QUEUE_INFO( gfx );
 }
 
-std::shared_ptr<VertexBuffer> VertexBuffer::fetch( Graphics &gph,
+std::shared_ptr<VertexBuffer> VertexBuffer::fetch( Graphics &gfx,
 	const std::string &tag,
 	const ver::VBuffer &vb )
 {
 	ASSERT( tag != "?", "No VertexBuffer tag available!" );
-	return BindableMap::fetch<VertexBuffer>( gph, tag, vb );
+	return BindableMap::fetch<VertexBuffer>( gfx, tag, vb );
 }
 
 std::string VertexBuffer::getUid() const noexcept
