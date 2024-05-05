@@ -54,6 +54,8 @@ void SettingsManager::loadFromFile( const std::string &filePath )
 	m_settings.iMaxFps = ini.GetInteger( "Graphics", "iMaxFps", -1 );
 	m_settings.bAllowWindowResize = ini.GetBoolean( "Graphics", "bAllowWindowResize", false );
 	m_settings.iPresentInterval = util::clamp( ini.GetInteger( "Graphics", "iPresentInterval", 1 ), 0l, 4l );
+	
+	m_settings.sSkyboxFileName = ini.Get( "Assets", "sSkyboxFileName", "" );
 }
 
 SettingsManager::Settings& SettingsManager::getSettings()

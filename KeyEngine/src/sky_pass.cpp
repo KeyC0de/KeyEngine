@@ -23,6 +23,7 @@
 #	include "imgui.h"
 #endif
 #include "triangle_mesh.h"
+#include "settings_manager.h"
 
 
 namespace ren
@@ -37,7 +38,8 @@ SkyPass::SkyPass( Graphics &gfx,
 {
 	addPassBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
-	addPassBindable( std::make_shared<CubeTexture>( gfx, "assets/textures/skybox/space", 0u ) );
+	const auto skyboxFilepath = std::string{"assets/textures/skybox/"} + SettingsManager::getInstance().getSettings().sSkyboxFileName;
+	addPassBindable( std::make_shared<CubeTexture>( gfx, skyboxFilepath, 0u ) );
 	addPassBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Trilinear, TextureSamplerState::AddressMode::Wrap ) );
 	addPassBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::DepthEquals1 ) );
 	addPassBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Both ) );

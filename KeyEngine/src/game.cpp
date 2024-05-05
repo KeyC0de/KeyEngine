@@ -323,7 +323,7 @@ int Sandbox3d::checkInput( const float dt )
 		}//switch
 	}
 
-	const float camSpeed = keyboard.isKeyPressed( VK_SHIFT ) ? 10.0f : 1.0f;
+	const float camSpeed = keyboard.isKeyPressed( VK_SHIFT ) ? 4.0f : 1.0f;
 
 	auto &activeCamera = s_cameraMan.getActiveCamera();
 	if ( !m_mainWindow.isCursorEnabled() )

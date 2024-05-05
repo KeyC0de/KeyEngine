@@ -5,9 +5,12 @@
 #include "dxgi_info_queue.h"
 #include "os_utils.h"
 #include "bindable_map.h"
+#include <array>
 
 
 namespace mwrl = Microsoft::WRL;
+
+static constexpr unsigned nFaces = 6u;
 
 CubeTexture::CubeTexture( Graphics &gfx,
 	const std::string &path,
@@ -18,16 +21,24 @@ CubeTexture::CubeTexture( Graphics &gfx,
 {
 	// load 6 bitmaps for the cube faces
 	std::vector<Bitmap> bitmaps;
-	bitmaps.reserve( 6u );
-	for ( int i = 0; i < 6; ++i )
+	bitmaps.reserve( nFaces );
+	std::array<std::string, nFaces> orientations = {
+		"posx",
+		"negx",
+		"posy",
+		"negy",
+		"posz",
+		"negz",
+	};
+	for ( unsigned i = 0; i < nFaces; ++i )
 	{
-		bitmaps.emplace_back( Bitmap::loadFromFile( path + std::to_string( i ) + ".png" ) );
+		bitmaps.emplace_back( Bitmap::loadFromFile( path + orientations[i] + ".png" ) );
 	}
 
 	D3D11_TEXTURE2D_DESC texDesc = createTextureDescriptor( bitmaps[0].getWidth(), bitmaps[0].getHeight(), DXGI_FORMAT_B8G8R8A8_UNORM, BindFlags::TextureOnly, CpuAccessFlags::NoCpuAccess, true, TextureUsage::Default );
 
-	D3D11_SUBRESOURCE_DATA subRscData[6]{};
-	for ( int i = 0; i < 6; i++ )
+	D3D11_SUBRESOURCE_DATA subRscData[nFaces]{};
+	for ( int i = 0; i < nFaces; i++ )
 	{
 		subRscData[i].pSysMem = bitmaps[i].getData();
 		subRscData[i].SysMemPitch = bitmaps[i].getPitch();
@@ -102,7 +113,7 @@ CubeTextureOffscreenRT::CubeTextureOffscreenRT( Graphics &gfx,
 	ASSERT_HRES_IF_FAILED;
 
 	// create RTVs on the texture cube's faces for capturing
-	for ( unsigned face = 0u; face < 6u; ++face )
+	for ( unsigned face = 0u; face < nFaces; ++face )
 	{
 		m_renderTargetViews.push_back( std::make_shared<RenderTargetOutput>( gfx, pTexture.Get(), face ) );
 	}
@@ -148,7 +159,7 @@ CubeTextureOffscreenDS::CubeTextureOffscreenDS( Graphics &gfx,
 	ASSERT_HRES_IF_FAILED;
 
 	// create DSVs on the texture cube's faces for capturing depth (for shadow mapping)
-	for ( unsigned face = 0u; face < 6u; ++face )
+	for ( unsigned face = 0u; face < nFaces; ++face )
 	{
 		m_depthStencilViews.push_back( std::make_shared<DepthStencilOutput>( gfx, pTexture.Get(), dsvMode, face ) );
 	}
