@@ -7,7 +7,7 @@
 
 //===================================================
 //	\function	Operation
-//	\brief  returns a ready-made callable with its arguments, packaged in a std::unique_ptr
+//	\brief	returns a ready-made callable with its arguments, packaged in a std::unique_ptr
 //			It can be inserted in any container or used for whatever purpose
 //			utilizes std::function for type erasure and std::bind for argument packing
 //	\date	2020/11/05 3:17

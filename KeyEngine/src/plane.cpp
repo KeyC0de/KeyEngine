@@ -16,7 +16,6 @@
 #endif
 #include "rendering_channel.h"
 #include "utils.h"
-#include "blend_state.h"
 
 
 namespace dx = DirectX;
@@ -170,15 +169,6 @@ void Plane::displayImguiWidgets( Graphics &gfx,
 		if ( bDirtyPos )
 		{
 			setPosition( pos );
-		}
-
-		ImGui::Text( "Shading" );
-		auto pBlendState = findBindable<BlendState>();
-		if ( pBlendState )
-		{
-			float factor = (*pBlendState)->getBlendFactorRed();
-			ImGui::SliderFloat( "Translucency", &factor, 0.0f, 1.0f );
-			(*pBlendState)->fillBlendFactors( factor );
 		}
 	}
 	ImGui::End();

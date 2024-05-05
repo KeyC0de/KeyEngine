@@ -19,10 +19,10 @@ protected:
 	Microsoft::WRL::ComPtr<ID3D11RenderTargetView> m_pD3dRtv;
 protected:
 	//	\function	IrenderTargetView	||	\date	2021/10/25 17:00
-	//	\brief  For creating an output RT only
+	//	\brief	For creating an output RT only
 	IRenderTargetView( Graphics &gfx, ID3D11Texture2D *pTexture, std::optional<unsigned> face );
 	//	\function	IrenderTargetView	||	\date	2021/10/25 17:00
-	//	\brief  Render to Texture constructor
+	//	\brief	Render to Texture constructor
 	IRenderTargetView( Graphics &gfx, const unsigned width, const unsigned height );
 public:
 	//	\function	unbind	||	\date	2022/10/29 21:56
@@ -42,7 +42,7 @@ public:
 	virtual void setDebugObjectName( const char* name ) noexcept override;
 private:
 	//	\function	createStagingTexture	||	\date	2021/10/27 21:59
-	//	\brief  create a texture resource compatible with our RTV, but with Staging usage (CPU read access, no GPU access)
+	//	\brief	create a texture resource compatible with our RTV, but with Staging usage (CPU read access, no GPU access)
 	std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC> createStagingTexture( Graphics &gfx ) const;
 	void bindRenderSurface( Graphics &gfx, ID3D11DepthStencilView *pD3dDsv ) cond_noex;
 };

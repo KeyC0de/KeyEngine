@@ -37,7 +37,7 @@ public:
 
 	static ThreadPool& getInstance( const std::size_t nThreads = std::thread::hardware_concurrency(), const bool bEnabled = true );
 	//	\function	start	||	\date	25/9/2019 12:20
-	//	\brief  calls run
+	//	\brief	calls run
 	void start();
 	void stop() noexcept;
 	void enable() noexcept;
@@ -80,7 +80,7 @@ public:
 		}
 	}
 	//	\function	resize	||	\date	25/9/2019 4:00
-	//	\brief  adds # or subtracts -# threads to the ThreadPool
+	//	\brief	adds # or subtracts -# threads to the ThreadPool
 	bool resize( int n );
 private:
 	void run();

@@ -44,7 +44,7 @@ PSOut main( PSIn input )
 		input.tc );
 #ifdef HAS_ALPHA
 	clip( albedoTexColor.a < 0.05f ? -1 : 1 );
-	// if backfacing fragment flip the normal
+	// if backfacing fragment flip the normal to look at the camera
 	if ( dot( input.fragNormalViewSpace, input.fragPosViewSpace ) >= 0.0f )
 	{
 		input.fragNormalViewSpace = -input.fragNormalViewSpace;

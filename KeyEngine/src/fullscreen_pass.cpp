@@ -6,7 +6,6 @@
 #include "vertex_shader.h"
 #include "pixel_shader.h"
 #include "rasterizer_state.h"
-#include "blend_state.h"
 #include "depth_stencil_state.h"
 #include "texture_sampler_state.h"
 

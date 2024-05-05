@@ -1,6 +1,5 @@
 #include "vertical_blur_pass.h"
 #include "pixel_shader.h"
-#include "blend_state.h"
 #include "texture_sampler_state.h"
 
 

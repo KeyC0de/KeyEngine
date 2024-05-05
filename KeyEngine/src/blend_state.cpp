@@ -5,151 +5,132 @@
 #include "assertions_console.h"
 
 
-#define blendStateRTDesc blendStateDesc.RenderTarget[renderTargetSlot]
+#define blendStateDescRTSlot blendStateDesc.RenderTarget[renderTargetSlot]
 
 BlendState::BlendState( Graphics &gfx,
 	const Mode mode,
 	const unsigned renderTargetSlot,
-	const std::optional<float> blendFactors )
+	const std::optional<float> blendFactors /*= {}*/,
+	const unsigned multisampleMask /*= 0xFFFFFFFFu*/ )
 	:
 	m_mode{mode},
-	m_renderTargetSlot{renderTargetSlot}
+	m_renderTargetSlot{renderTargetSlot},
+	m_multisampleMask{multisampleMask}
 {
+	D3D11_BLEND_DESC blendStateDesc{CD3D11_BLEND_DESC{CD3D11_DEFAULT{}}};
+	//default case NoBlend:
+	//blendStateDesc.AlphaToCoverageEnable = FALSE;
+	//blendStateDesc.IndependentBlendEnable = FALSE;
+	//blendStateDescRTSlot.BlendEnable = False;
+	//blendStateDescRTSlot.SrcBlend = D3D11_BLEND_ONE;
+	//blendStateDescRTSlot.DestBlend = D3D11_BLEND_ZERO;
+	//blendStateDescRTSlot.BlendOp = D3D11_BLEND_OP_ADD;
+	//blendStateDescRTSlot.SrcBlendAlpha = D3D11_BLEND_ONE;		// whether to blend the alpha channel values as well
+	//blendStateDescRTSlot.DestBlendAlpha = D3D11_BLEND_ZERO;	// otherwise only blend the RGB channel values
+	//blendStateDescRTSlot.BlendOpAlpha = D3D11_BLEND_OP_ADD;
+	//blendStateDescRTSlot.RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;	// per-bit targeting of specific channels to blend
+
 	if ( blendFactors )
 	{
 		m_blendFactors.emplace();
-		// set all with the same values for now
-		m_blendFactors->fill( *blendFactors );
+		m_blendFactors->fill( *blendFactors );	// set all channels with the same value for now
+
+		blendStateDescRTSlot.BlendEnable = TRUE;
+		blendStateDescRTSlot.SrcBlend = D3D11_BLEND_BLEND_FACTOR;
+		blendStateDescRTSlot.DestBlend = D3D11_BLEND_INV_BLEND_FACTOR;
 	}
 	else
 	{
 		std::array<float, 4> emptyArray{0};
-		emptyArray.fill( 0 );
+		emptyArray.fill( 1.0f );
 		m_blendFactors = std::make_optional<std::array<float, 4>>( emptyArray );
+
+		switch ( mode )
+		{
+		case Additive:
+		{
+			blendStateDescRTSlot.BlendEnable = TRUE;
+			blendStateDescRTSlot.SrcBlend = D3D11_BLEND_ONE;
+			blendStateDescRTSlot.DestBlend = D3D11_BLEND_ONE;
+			break;
+		}
+		case Multiplicative:
+		{
+			blendStateDescRTSlot.BlendEnable = TRUE;
+			blendStateDescRTSlot.SrcBlend = D3D11_BLEND_DEST_COLOR;
+			blendStateDescRTSlot.DestBlend = D3D11_BLEND_ZERO;
+			break;
+		}
+		case DoubleMultiplicative:
+		{
+			blendStateDescRTSlot.BlendEnable = TRUE;
+			blendStateDescRTSlot.SrcBlend = D3D11_BLEND_DEST_COLOR;
+			blendStateDescRTSlot.DestBlend = D3D11_BLEND_SRC_COLOR;
+			break;
+		}
+		case Alpha:
+		{
+			blendStateDescRTSlot.BlendEnable = TRUE;
+			blendStateDescRTSlot.SrcBlend = D3D11_BLEND_SRC_ALPHA;
+			blendStateDescRTSlot.DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
+			blendStateDescRTSlot.SrcBlendAlpha = D3D11_BLEND_ZERO;
+			blendStateDescRTSlot.RenderTargetWriteMask = 0x0f;
+			break;
+		}
+		case AlphaToCoverage:
+		{
+			blendStateDesc.AlphaToCoverageEnable = TRUE;
+			break;
+		}
+		}
 	}
 
-	D3D11_BLEND_DESC blendStateDesc{CD3D11_BLEND_DESC{CD3D11_DEFAULT{}}};
-	//default:
-	//case NoBlend:
-	//blendStateRTDesc.BlendEnable = False;
-	//blendStateRTDesc.BlendOp = D3D11_BLEND_OP_ADD;
-	//blendStateRTDesc.SrcBlendAlpha = D3D11_BLEND_ONE;
-	//blendStateRTDesc.DestBlendAlpha = D3D11_BLEND_ZERO;
-	//blendStateRTDesc.BlendOpAlpha = D3D11_BLEND_OP_ADD;
-	//blendStateRTDesc.RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
-	switch ( mode )
-	{
-	case Additive:
-	{
-		blendStateRTDesc.BlendEnable = TRUE;
-		if ( blendFactors )
-		{
-			blendStateRTDesc.SrcBlend = D3D11_BLEND_BLEND_FACTOR;
-			blendStateRTDesc.DestBlend = D3D11_BLEND_INV_BLEND_FACTOR;
-		}
-		else
-		{
-			blendStateRTDesc.SrcBlend = D3D11_BLEND_ONE;
-			blendStateRTDesc.DestBlend = D3D11_BLEND_ONE;
-		}
-		break;
-	}
-	case Multiplicative:
-	{
-		blendStateRTDesc.BlendEnable = TRUE;
-		if ( blendFactors )
-		{
-			blendStateRTDesc.SrcBlend = D3D11_BLEND_BLEND_FACTOR;
-			blendStateRTDesc.DestBlend = D3D11_BLEND_INV_BLEND_FACTOR;
-		}
-		else
-		{
-			blendStateRTDesc.SrcBlend = D3D11_BLEND_DEST_COLOR;
-			blendStateRTDesc.DestBlend = D3D11_BLEND_ZERO;
-		}
-		break;
-	}
-	case DoubleMultiplicative:
-	{
-		blendStateRTDesc.BlendEnable = TRUE;
-		if ( blendFactors )
-		{
-			blendStateRTDesc.SrcBlend = D3D11_BLEND_BLEND_FACTOR;
-			blendStateRTDesc.DestBlend = D3D11_BLEND_INV_BLEND_FACTOR;
-		}
-		else
-		{
-			blendStateRTDesc.SrcBlend = D3D11_BLEND_DEST_COLOR;
-			blendStateRTDesc.DestBlend = D3D11_BLEND_SRC_COLOR;
-		}
-		break;
-	}
-	case Alpha:
-	{
-		blendStateRTDesc.BlendEnable = TRUE;
-		if ( blendFactors )
-		{
-			blendStateRTDesc.SrcBlend = D3D11_BLEND_BLEND_FACTOR;
-			blendStateRTDesc.DestBlend = D3D11_BLEND_INV_BLEND_FACTOR;
-		}
-		else
-		{
-			blendStateRTDesc.SrcBlend = D3D11_BLEND_SRC_ALPHA;
-			blendStateRTDesc.DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
-			blendStateRTDesc.RenderTargetWriteMask = 0x0f;
-		}
-		break;
-	}
-	case AlphaToCoverage:
-	{
-		blendStateDesc.AlphaToCoverageEnable = TRUE;
-		break;
-	}
-	}
 	HRESULT hres = getDevice( gfx )->CreateBlendState( &blendStateDesc, &m_pBlendState );
 	ASSERT_HRES_IF_FAILED;
 }
 
 void BlendState::bind( Graphics &gfx ) cond_noex
 {
-	getDeviceContext( gfx )->OMSetBlendState( m_pBlendState.Get(), m_blendFactors->data(), 0xFFFFFFFFu );
+	getDeviceContext( gfx )->OMSetBlendState( m_pBlendState.Get(), m_blendFactors->data(), m_multisampleMask );
 	DXGI_GET_QUEUE_INFO( gfx );
 }
 
 std::shared_ptr<BlendState> BlendState::fetch( Graphics &gfx,
 	const Mode mode,
 	const unsigned renderTargetSlot,
-	std::optional<float> blendFactors )
+	std::optional<float> blendFactors /*= {}*/,
+	const unsigned multisampleMask /*= 0xFFFFFFFFu*/ )
 {
 	return BindableMap::fetch<BlendState>( gfx, mode, renderTargetSlot, blendFactors );
 }
 
 std::string BlendState::calcUid( const Mode mode,
 	const unsigned renderTargetSlot,
-	std::optional<float> blendFactors )
+	std::optional<float> blendFactors /*= {}*/,
+	const unsigned multisampleMask /*= 0xFFFFFFFFu*/ )
 {
 	using namespace std::string_literals;
 	std::string modeId;
 	switch ( mode )
 	{
 	case Additive:
-		modeId = "d"s;
+		modeId = "Add"s;
 		break;
 	case Multiplicative:
-		modeId = "m"s;
+		modeId = "Mul"s;
 		break;
 	case DoubleMultiplicative:
-		modeId = "u"s;
+		modeId = "Dmu"s;
 		break;
 	case Alpha:
-		modeId = "a"s;
+		modeId = "Alp"s;
 		break;
 	case AlphaToCoverage:
-		modeId = "o"s;
+		modeId = "Alc"s;
 		break;
 	case NoBlend:
 	default:
-		modeId = "n"s;
+		modeId = "Non"s;
 		break;
 	}
 	return typeid( BlendState ).name() + "#"s + std::to_string( renderTargetSlot ) + ":"s + modeId + ( blendFactors ? "#f"s + std::to_string( *blendFactors ) : ""s );

@@ -3,11 +3,10 @@
 #include <string>
 #include <memory>
 #include <typeinfo>
-#include <sstream>
 #include <type_traits>
 #include "linker.h"
-#include "render_surface.h"
 #include "bindable.h"
+#include "render_surface.h"
 #include "render_target.h"
 #include "depth_stencil_view.h"
 
@@ -23,10 +22,10 @@ class IPass;
 //	\class	IBinder
 //	\author	KeyC0de
 //	\date	2022/09/29 20:48
-//	\brief	Binders contain the graphics resources and those resources are bound to the pipeline of a next pass
-//			Linkers must link the resources of a previous pass to the next pass
-//			This linking is done using string names. So Binders try to find at runtime their Linker names to make the link. The opposite is not strictly required.
-//			But just in case, I currently store the names of Binders, in case the system is expanded in the future, or may be needed for misc purposes.
+//	\brief	Binder have a dependency: their target gfx resource which they must acquire from the Linker of the previous pass
+//			this link()ing will be done in Renderer::linkPassBinders
+//			linking is done purely using string names.
+//			Binder names are not required, but just in case, I currently store their names, in case the system is expanded in the future.
 //=============================================================
 class IBinder
 {
@@ -41,7 +40,7 @@ public:
 	void setPassAndLinkerNames( const std::string &passName, const std::string &linkerName );
 	virtual void link( ILinker &linker ) = 0;
 	//	\function	validateLinkage	||	\date	2021/06/26 23:57
-	//	\brief  assert validate after link()ing
+	//	\brief	assert validate after link()ing
 	virtual void validateLinkage() const = 0;
 	const std::string& getName() const noexcept;
 	const std::string& getPassName() const noexcept;
@@ -86,18 +85,7 @@ public:
 		if ( !bindable )
 		{
 			std::ostringstream oss;
-			oss << "Linking binder ["
-				<< getName()
-				<< "] with linker ["
-				<< getPassName()
-				<< "."
-				<< getLinkerName()
-				<< "] "
-				<< " { "
-				<< typeid( T ).name()
-				<< " } does not match { "
-				<< typeid( *linker.getBindable().get() ).name()
-				<< " }";
+			oss << "Linking binder [" << getName() << "] with linker [" << getPassName() << "." << getLinkerName() << "] " << " { " << typeid( T ).name() << " } does not match { " << typeid( *linker.getBindable().get() ).name() << " }";
 			THROW_RENDERER_EXCEPTION( oss.str() );
 		}
 		m_target = std::move( bindable );
@@ -109,7 +97,7 @@ public:
 //	\class	ContainerBindableBinder
 //	\author	KeyC0de
 //	\date	2022/08/21 0:17
-//	\brief	Container Bindable is either an RTV, DSV or an array type Constant Buffer
+//	\brief	Container Bindable T is either an RTV, DSV or an array type Constant Buffer
 //=============================================================
 template<class T>
 class ContainerBindableBinder final
@@ -117,7 +105,7 @@ class ContainerBindableBinder final
 {
 	static_assert( std::is_array_v<T> || std::is_base_of_v<IBindable, T>, "ContainerBindableBinder target T must be IBindable." );
 
-	std::vector<std::shared_ptr<IBindable>> &m_bindablesContainer;
+	std::vector<std::shared_ptr<IBindable>> &m_bindablesContainer;	// points to a Pass' bindables container
 	size_t m_index;
 	bool m_bLinked = false;
 public:
@@ -146,18 +134,7 @@ public:
 		if ( !bindable )
 		{
 			std::ostringstream oss;
-			oss << "Linking binder ["
-				<< getName()
-				<< "] with linker ["
-				<< getPassName()
-				<< "."
-				<< getLinkerName()
-				<< "] "
-				<< " { "
-				<< typeid( T ).name()
-				<< " } does not match { "
-				<< typeid( *linker.getBindable().get() ).name()
-				<< " }";
+			oss << "Linking binder [" << getName() << "] with linker [" << getPassName() << "." << getLinkerName() << "] " << " { " << typeid( T ).name() << " } does not match { " << typeid( *linker.getBindable().get() ).name() << " }";
 			THROW_RENDERER_EXCEPTION( oss.str() );
 		}
 		m_bindablesContainer[m_index] = std::move( bindable );
@@ -203,18 +180,7 @@ public:
 		if ( !buff )
 		{
 			std::ostringstream oss;
-			oss << "Linking binder ["
-				<< getName()
-				<< "] with linker ["
-				<< getPassName()
-				<< "."
-				<< getLinkerName()
-				<< "] "
-				<< " { "
-				<< typeid( T ).name()
-				<< " } not compatible with { "
-				<< typeid( *linker.getRenderSurface().get() ).name()
-				<< " }";
+			oss << "Linking binder [" << getName() << "] with linker [" << getPassName() << "." << getLinkerName() << "] " << " { " << typeid( T ).name() << " } not compatible with { " << typeid( *linker.getRenderSurface().get() ).name() << " }";
 			THROW_RENDERER_EXCEPTION( oss.str() );
 		}
 		m_target = std::move( buff );

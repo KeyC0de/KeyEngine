@@ -62,7 +62,7 @@ void CameraManager::connectEffectsToRenderer( ren::Renderer &r )
 	}
 }
 
-void CameraManager::render( const size_t channels ) const
+void CameraManager::render( const size_t channels /*= rch::all*/ ) const
 {
 	for ( size_t i = 0; i < m_cameras.size(); ++i )
 	{

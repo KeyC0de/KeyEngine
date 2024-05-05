@@ -19,7 +19,7 @@ public:
 	virtual ~Sprite() noexcept = default;
 
 	//	\function	render	||	\date	2022/09/11 20:33
-	//	\brief  draw the Sprite bitmap to the render target
+	//	\brief	draw the Sprite bitmap to the render target
 	void render( Graphics &gfx, const D2D1_RECT_F &srcRect, const D2D1_RECT_F &destRect, const float alpha = 1.0f );
 
 	float getWidth() const noexcept;

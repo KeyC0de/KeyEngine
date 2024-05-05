@@ -25,10 +25,10 @@ struct Rect
 	Rect( const DirectX::XMFLOAT2 &topLeft, const float width, const float height );
 
 	//	\function	isOverlappingWith	||	\date	2021/10/17 2:27
-	//	\brief  2d rectangle collision detection formula
+	//	\brief	2d rectangle collision detection formula
 	bool isOverlappingWith( const Rect &other ) const noexcept;
 	//	\function	calcScaled	||	\date	2021/10/17 2:21
-	//	\brief  gets an expanded (offset>0) or minimized (offset<0) form of the rectangle
+	//	\brief	gets an expanded (offset>0) or minimized (offset<0) form of the rectangle
 	Rect calcScaled( const float offset ) const noexcept;
 	float getWidth() const noexcept;
 	float getHeight() const noexcept;

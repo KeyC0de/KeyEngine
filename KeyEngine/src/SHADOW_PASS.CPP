@@ -6,7 +6,6 @@
 #include "pixel_shader.h"
 #include "depth_stencil_view.h"
 #include "depth_stencil_state.h"
-#include "blend_state.h"
 #include "rasterizer_state.h"
 #include "cube_texture.h"
 #include "camera.h"

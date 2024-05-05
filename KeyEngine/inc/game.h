@@ -78,11 +78,11 @@ class Sandbox3d
 #endif
 	Terrain m_terrain{m_mainWindow.getGraphics(), 100, 100, "assets/textures/clouds_blurred.bmp", 1.0f, { util::toRadians( 90.0f ), 0.0f, 0.0f}};
 	Cube m_cube1{m_mainWindow.getGraphics(), 4.0f, {0, 0, 0}, {10.0f, 5.0f, 6.0f}};
-	Cube m_cube2{m_mainWindow.getGraphics(), 1.0f, {0, 0, 0}, {9.9f, 4.9f, 1.4f}};
+	Cube m_cube2{m_mainWindow.getGraphics(), 1.0f, {0, 0, 0}, {9.9f, 4.9f, 1.4f}, {1.0f, 0.4f, 0.4f, 0.5f}};
 	Cube m_cube3{m_mainWindow.getGraphics(), 1.0f, {0, 0, 0}, {22.0f, 12.0f, 14.0f}};
 	Sphere m_testSphere{m_mainWindow.getGraphics(), 1.0f, {0, 0, 0}, {40.0f, 20.0f, 8.0f}};
 	// #TODO: use an array of Models and iterate through them
-	//Model m_sponzaScene{m_mainWindow.getGraphics(), "assets/models/sponza/sponza.obj", 1.0f / 8.0f};
+	Model m_sponzaScene{m_mainWindow.getGraphics(), "assets/models/sponza/sponza.obj", 1.0f / 8.0f, {0, 0, 0}, {0.0f, 0.0f, 0.0f}};
 	//Model m_nanoSuit{m_mainWindow.getGraphics(), "assets/models/nano_textured/nanosuit.obj", 2.0f, {0, util::PI / 2.f, 0}, {27.f, -0.56f, 1.7f}};
 	Model m_carabiner{m_mainWindow.getGraphics(), "assets/models/carabiner/carabiner_hook.fbx", 1.0f, {0, 0, 0}, {-10.0f, 6.0f, 0.0f}};
 public:

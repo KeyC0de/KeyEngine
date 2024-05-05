@@ -1,6 +1,5 @@
 #include "horizontal_blur_pass.h"
 #include "pixel_shader.h"
-#include "blend_state.h"
 #include "texture_sampler_state.h"
 
 
@@ -17,14 +16,13 @@ HorizontalBlurPass::HorizontalBlurPass( Graphics &gfx,
 	addPassBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Trilinear, TextureSamplerState::AddressMode::Clamp ) );
 
 	addBinder( Binder<PixelShaderConstantBufferEx>::make( "blurDirection", m_pPscbBlurDirection ) );
-	// read from offscreen texture and Horizontally Blur it (separated filter)
+	// we will use the offscreen texture from the previous pass and bind it as input in this pass so we can blur it
 	addContainerBindableBinder<IRenderTargetView>( "offscreenBlurOutlineIn" );
 	addContainerBindableBinder<PixelShaderConstantBufferEx>( "blurKernel" );
 
 	const unsigned width = gfx.getClientWidth() / rezReductFactor;
 	const unsigned height = gfx.getClientHeight() / rezReductFactor;
-	// create a RTV to write (the PS operation - which performs the Horizontal Blur) to an offscreen texture
-	// next Pass we'll read from this RTV in the shader like a texture
+	// create a RTV to write (the PS operation - which performs the Horizontal Blur) to an offscreen texture; next Pass we'll read from it
 	m_pRtv = std::make_shared<RenderTargetShaderInput>( gfx, width, height, 0u );
 
 #if defined _DEBUG && !defined NDEBUG

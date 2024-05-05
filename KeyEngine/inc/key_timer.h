@@ -153,7 +153,7 @@ public:
 
 	//===================================================
 	//	\function	lap
-	//	\brief  works like getTimeElapsed/getTimeElapsedSecs but may be more performant
+	//	\brief	works like getTimeElapsed/getTimeElapsedSecs but may be more performant
 	//	\date	2021/01/12 17:03
 	float lap() noexcept
 	{
@@ -166,7 +166,7 @@ public:
 #pragma region delayFor
 	//===================================================
 	//	\function	delayFor
-	//	\brief  delays execution of this_thread for the amount of time specified (in milliseconds, or microseconds)
+	//	\brief	delays execution of this_thread for the amount of time specified (in milliseconds, or microseconds)
 	//	\date	2020/10/01 11:05
 	template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
 	void delayFor( const T t ) const noexcept

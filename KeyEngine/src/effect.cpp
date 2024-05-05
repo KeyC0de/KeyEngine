@@ -2,7 +2,6 @@
 #include <memory>
 #include "mesh.h"
 #include "renderer.h"
-#include "blend_state.h"
 #include "imgui_visitors.h"
 #include "render_queue_pass.h"
 #include "assertions_console.h"
@@ -64,8 +63,7 @@ void Effect::render( const Mesh &mesh,
 {
 	if ( m_bActive && (m_renderingChannels & channels) != 0 )
 	{
-		const auto blendState = mesh.findBindable<BlendState>();
-		m_pTargetPass->addJob( ren::Job{&mesh, this}, mesh.getDistanceFromActiveCamera(), blendState.has_value() && (*blendState)->getBlendMode() == BlendState::Mode::Alpha );
+		m_pTargetPass->addJob( ren::Job{&mesh, this}, mesh.getDistanceFromActiveCamera() );
 	}
 }
 

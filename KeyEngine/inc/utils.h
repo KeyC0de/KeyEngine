@@ -31,7 +31,7 @@
 
 //===================================================
 //	\macro	ALIAS_FUNCTION
-//	\brief  optimal way of renaming/aliasing a function to another - can be inline & no unnecessary copies
+//	\brief	optimal way of renaming/aliasing a function to another - can be inline & no unnecessary copies
 //	\date	2022/08/29 13:33
 #define ALIAS_FUNCTION( originalFunctionName, aliasedFunctionName ) \
 	template <typename... TArgs>\
@@ -330,7 +330,7 @@ void moveIf( InputIt srcFirst,
 }
 
 //	\function	splitMovePartition	||	\date	2022/07/29 21:03
-//	\brief  like partition_move - puts the second group of an std::partition to another container removing them from the source container
+//	\brief	like partition_move - puts the second group of an std::partition to another container removing them from the source container
 template<class Container, class TPredicate>
 void splitMovePartition( Container &src,
 	Container &dest,

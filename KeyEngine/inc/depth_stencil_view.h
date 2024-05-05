@@ -21,7 +21,7 @@ protected:
 	unsigned int m_height;
 protected:
 	//	\function	IDepthStencilView	||	\date	2021/10/25 17:00
-	//	\brief  For creating an output DS only
+	//	\brief	For creating an output DS only
 	IDepthStencilView( Graphics &gfx, ID3D11Texture2D *pTexture, const DepthStencilViewMode dsvMode, std::optional<unsigned> face );
 	//	\function	IDepthStencilView	||	\date	2024/04/25 13:34
 	//	\brief	for binding depth stencil as input to the OM
@@ -33,7 +33,7 @@ public:
 	void clear( Graphics &gfx, const std::array<float, 4> &unused = {} ) cond_noex override;
 	void clean( Graphics &gfx ) cond_noex;
 	//	\function	convertToBitmap	||	\date	2021/06/25 18:55
-	//	\brief  copy from resource to staging --- linearize & normalize depth values by default
+	//	\brief	copy from resource to staging --- linearize & normalize depth values by default
 	const Bitmap convertToBitmap( Graphics &gfx, const unsigned width, const unsigned height, bool bLinearize = true ) const;
 	unsigned int getWidth() const noexcept;
 	unsigned int getHeight() const noexcept;

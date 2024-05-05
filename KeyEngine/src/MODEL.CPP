@@ -71,7 +71,7 @@ void Model::update( const float dt,
 	m_pRoot->update( dt, dx::XMMatrixIdentity(), renderFrameInterpolation );
 }
 
-void Model::render( const size_t channels ) const cond_noex
+void Model::render( const size_t channels /*= rch::all*/ ) const cond_noex
 {
 	m_pRoot->render( channels );
 }
@@ -214,21 +214,6 @@ DirectX::XMFLOAT3 Model::getPosition() const noexcept
 float Model::getDistanceFromActiveCamera() const noexcept
 {
 	return m_meshes[0]->getDistanceFromActiveCamera();	// #TODO:
-}
-
-void Model::setCulled( const bool bCulled )
-{
-	m_pRoot->setCulled( bCulled );
-}
-
-bool Model::isCulled() const noexcept
-{
-	bool bCulled = true;
-	for ( const auto &pMesh : m_meshes )
-	{
-		bCulled = bCulled && pMesh->isCulled();
-	}
-	return bCulled;	// if even 1 mesh is not culled then the model is not-culled
 }
 
 std::unique_ptr<Node> Model::parseModelNodeGraph( const aiNode &ainode,

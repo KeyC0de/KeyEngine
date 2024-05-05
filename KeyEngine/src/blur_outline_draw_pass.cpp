@@ -15,7 +15,7 @@ BlurOutlineDrawPass::BlurOutlineDrawPass( Graphics &gfx,
 	const std::string &name,
 	const unsigned rezReductFactor )
 	:
-	RenderQueuePass{name}
+	RenderQueuePass{name, {}, false}
 {
 	addPassBindable( VertexShader::fetch( gfx, "flat_vs.cso" ) );
 	addPassBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
@@ -23,8 +23,7 @@ BlurOutlineDrawPass::BlurOutlineDrawPass( Graphics &gfx,
 
 	const unsigned width = gfx.getClientWidth() / rezReductFactor;
 	const unsigned height = gfx.getClientHeight() / rezReductFactor;
-	// create a RTV to write (the PS operation - which performs a flat color shading) to an offscreen texture
-	// next Pass we'll read from this RTV in the shader like a texture
+	// create a RTV to write (the PS operation - which performs a flat color shading) to an offscreen texture; next Pass we'll read from it
 	m_pRtv = std::make_shared<RenderTargetShaderInput>( gfx, width, height, 0u );
 
 #if defined _DEBUG && !defined NDEBUG

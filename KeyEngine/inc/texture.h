@@ -83,13 +83,13 @@ class TextureProcessor final
 public:
 	static void flipModelNormalMapsGreenChannel( const std::string &objPath );
 	//	\function	flipNormalMapGreenChannel	||	\date	2022/02/19 17:22
-	//	\brief  flips the normal map green channel of given texture
+	//	\brief	flips the normal map green channel of given texture
 	static void flipNormalMapGreenChannel( const std::string &pathIn, const std::string &pathOut );
 	static void validateNormalMap( const std::string &pathIn, const float thresholdMin, const float thresholdMax );
 	static void makeStripes( const std::string &pathOut, const int size, const int stripeWidth );
 private:
 	//	\function	transformBitmap	||	\date	2022/02/18 19:14
-	//	\brief  apply function f at every Texel in the Bitmap
+	//	\brief	apply function f at every Texel in the Bitmap
 	template<typename F>
 	static void transformBitmap( Bitmap &bitmap,
 		F &&f )

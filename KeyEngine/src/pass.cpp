@@ -68,10 +68,7 @@ IBinder& IPass::getBinder( const std::string &name ) const
 	}
 
 	std::ostringstream oss;
-	oss << "Binder named ["
-		<< name
-		<< "] not found in pass:"
-		<< getName();
+	oss << "Binder named [" << name << "] not found in pass:" << getName();
 	THROW_RENDERER_EXCEPTION( oss.str() );
 }
 
@@ -86,10 +83,7 @@ ILinker& IPass::getLinker( const std::string &name ) const
 	}
 
 	std::ostringstream oss;
-	oss << "Linker named ["
-		<< name
-		<< "] not found in pass: "
-		<< getName();
+	oss << "Linker named [" << name << "] not found in pass: " << getName();
 	THROW_RENDERER_EXCEPTION( oss.str() );
 }
 

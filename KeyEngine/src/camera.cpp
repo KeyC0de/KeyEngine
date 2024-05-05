@@ -64,7 +64,7 @@ Camera::Camera( Graphics &gfx,
 	resetToDefault( gfx );
 }
 
-void Camera::render( const size_t channels ) const
+void Camera::render( const size_t channels /*= rch::all*/ ) const
 {
 	if ( m_bShowWidget )
 	{

@@ -373,6 +373,9 @@
     <ClCompile Include="src\utils.cpp">
       <Filter>engine\common_util</Filter>
     </ClCompile>
+    <ClCompile Include="src\transparent_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="third_party\imgui\imconfig.h">
@@ -1109,6 +1112,9 @@
     </ClInclude>
     <ClInclude Include="inc\utils.h">
       <Filter>engine\common_util</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\transparent_pass.h">
+      <Filter>engine\vfx\pass</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

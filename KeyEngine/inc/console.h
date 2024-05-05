@@ -31,19 +31,19 @@ private:
 public:
 	static KeyConsole& getInstance() noexcept;
 	//	\function	resetInstance	||	\date	2020/12/30 22:19
-	//	\brief  you must call this manually prior to program exit to avoid memory leaks
+	//	\brief	you must call this manually prior to program exit to avoid memory leaks
 	static void resetInstance();
 public:
 	~KeyConsole();
 
 	//	\function	print	||	\date	2020/12/30 22:19
-	//	\brief  print to stdout
+	//	\brief	print to stdout
 	DWORD print( const std::string &msg );
 	//	\function	log	||	\date	2020/12/30 22:19
-	//	\brief  print to stderr
+	//	\brief	print to stderr
 	DWORD log( const std::string &msg );
 	//	\function	read	||	\date	2020/12/30 22:19
-	//	\brief  read from stdin, returns the string
+	//	\brief	read from stdin, returns the string
 	std::string read( const uint32_t maxChars = 1024u );
 
 	void setTitle( const std::string& title ) const;

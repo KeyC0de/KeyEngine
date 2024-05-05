@@ -387,7 +387,7 @@ void Sandbox3d::update( const float dt, const float lerpBetweenFrames )
 	m_cube3.update( dt, lerpBetweenFrames );
 	//m_nanoSuit.update( dt, lerpBetweenFrames );
 	m_carabiner.update( dt, lerpBetweenFrames );
-	//m_sponzaScene.update( dt, lerpBetweenFrames );
+	m_sponzaScene.update( dt, lerpBetweenFrames );
 }
 
 void Sandbox3d::updateFixed( const float dt )
@@ -414,7 +414,7 @@ void Sandbox3d::render()
 	m_testSphere.render();
 	//m_nanoSuit.render( rch::lambert | rch::shadow | rch::blurOutline );
 	m_carabiner.render( rch::lambert | rch::shadow | rch::solidOutline | rch::blurOutline );
-	//m_sponzaScene.render( rch::lambert | rch::shadow );
+	m_sponzaScene.render( rch::lambert | rch::shadow );
 
 	s_cameraMan.render( rch::lambert | rch::wireframe );
 
@@ -472,9 +472,9 @@ void Sandbox3d::connectEffectsToRenderer( ren::Renderer &renderer )
 	m_cube2.connectEffectsToRenderer( renderer );
 	m_cube3.connectEffectsToRenderer( renderer );
 	m_testSphere.connectEffectsToRenderer( renderer );
-	//m_sponzaScene.connectEffectsToRenderer( renderer );
 	//m_nanoSuit.connectEffectsToRenderer( renderer );
 	m_carabiner.connectEffectsToRenderer( renderer );
+	m_sponzaScene.connectEffectsToRenderer( renderer );
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -29,7 +29,7 @@ public:
 
 	//===================================================
 	//	\function	find
-	//	\brief  refers element x with in the LRU cache
+	//	\brief	refers element x with in the LRU cache
 	//	\date	2022/07/30 21:08
 	void find( T x )
 	{

@@ -13,8 +13,8 @@ class VertexBuffer
 	Microsoft::WRL::ComPtr<ID3D11Buffer> m_pVertexBuffer;
 	ver::VertexInputLayout m_vertexLayout;
 public:
-	VertexBuffer( Graphics &gfx, const std::string &tag, const ver::VBuffer &vb );
 	VertexBuffer( Graphics &gfx, const ver::VBuffer &vb );
+	VertexBuffer( Graphics &gfx, const std::string &tag, const ver::VBuffer &vb );
 
 	void bind( Graphics &gfx ) cond_noex override;
 	const ver::VertexInputLayout& getLayout() const noexcept;

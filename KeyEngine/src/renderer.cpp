@@ -3,6 +3,7 @@
 #include "constant_buffer_ex.h"
 #include "renderer_exception.h"
 #include "linker.h"
+#include "dynamic_constant_buffer.h"
 #include "render_queue_pass.h"
 #include "render_surface_clear_pass.h"
 #include "shadow_pass.h"
@@ -15,19 +16,19 @@
 #include "solid_outline_mask_pass.h"
 #include "solid_outline_draw_pass.h"
 #include "depth_reversed_pass.h"
+#include "wireframe_pass.h"
+#include "transparent_pass.h"
+#include "negative_pass.h"
+#include "blur_pass.h"
+#include "pass_through.h"
+#include "font_pass.h"
 #include "pass_2d.h"
 #include "render_target.h"
-#include "dynamic_constant_buffer.h"
 #ifndef FINAL_RELEASE
 #	include "imgui.h"
 #endif
 #include "math_utils.h"
 #include "assertions_console.h"
-#include "wireframe_pass.h"
-#include "negative_pass.h"
-#include "blur_pass.h"
-#include "pass_through.h"
-#include "font_pass.h"
 
 
 namespace ren
@@ -67,12 +68,12 @@ void Renderer::recreate( Graphics &gfx )
 
 	{
 		auto pass = std::make_unique<RenderSurfaceClearPass>( "clearRt" );
-		pass->setupBinderTarget( "buffer", "$", "backColorbuffer" );
+		pass->setupBinderTarget( "render_surface", "$", "backColorbuffer" );
 		addPass( std::move( pass ) );
 	}
 	{
 		auto pass = std::make_unique<RenderSurfaceClearPass>( "clearDs" );
-		pass->setupBinderTarget( "buffer", "$", "backDepthBuffer" );
+		pass->setupBinderTarget( "render_surface", "$", "backDepthBuffer" );
 		addPass( std::move( pass ) );
 	}
 }
@@ -314,8 +315,8 @@ void Renderer3d::recreate( Graphics &gfx )
 	}
 	{
 		auto pass = std::make_unique<LambertianPass>( gfx, "lambertian" );
-		pass->setupBinderTarget( "renderTarget", "clearRt", "buffer" );
-		pass->setupBinderTarget( "depthStencil", "clearDs", "buffer" );
+		pass->setupBinderTarget( "renderTarget", "clearRt", "render_surface" );
+		pass->setupBinderTarget( "depthStencil", "clearDs", "render_surface" );
 		pass->setupBinderTarget( "offscreenShadowCubemapIn", "shadowMap", "offscreenShadowCubemapOut" );
 		addPass( std::move( pass ) );
 	}
@@ -396,8 +397,14 @@ void Renderer3d::recreate( Graphics &gfx )
 		pass->setupBinderTarget( "depthStencil", "depthReversed", "depthStencil" );
 		addPass( std::move( pass ) );
 	}
+	{
+		auto pass = std::make_unique<TransparentPass>( gfx, "transparent" );
+		pass->setupBinderTarget( "renderTarget", "wireframe", "renderTarget" );
+		pass->setupBinderTarget( "depthStencil", "wireframe", "depthStencil" );
+		addPass( std::move( pass ) );
+	}
 
-	setupGlobalBinderTarget( "backColorbuffer", "wireframe", "renderTarget" );
+	setupGlobalBinderTarget( "backColorbuffer", "transparent", "renderTarget" );
 	Renderer::linkGlobalBinders();
 
 	{
@@ -596,8 +603,8 @@ void Renderer2d::recreate( Graphics &gfx )
 
 	{
 		auto pass = std::make_unique<Pass2D>( gfx, "pass2d" );
-		pass->setupBinderTarget( "renderTarget", "clearRt", "buffer" );
-		pass->setupBinderTarget( "depthStencil", "clearDs", "buffer" );
+		pass->setupBinderTarget( "renderTarget", "clearRt", "render_surface" );
+		pass->setupBinderTarget( "depthStencil", "clearDs", "render_surface" );
 		addPass( std::move( pass ) );
 	}
 

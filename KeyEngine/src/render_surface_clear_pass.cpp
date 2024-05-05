@@ -9,8 +9,8 @@ RenderSurfaceClearPass::RenderSurfaceClearPass( const std::string &name )
 	:
 	IPass{name}
 {
-	addBinder( RenderSurfaceBinder<IRenderSurface>::make( "buffer", m_pRenderSurface ) );
-	addLinker( RenderSurfaceLinker<IRenderSurface>::make( "buffer", m_pRenderSurface ) );
+	addBinder( RenderSurfaceBinder<IRenderSurface>::make( "render_surface", m_pRenderSurface ) );
+	addLinker( RenderSurfaceLinker<IRenderSurface>::make( "render_surface", m_pRenderSurface ) );
 }
 
 void RenderSurfaceClearPass::run( Graphics &gfx ) const cond_noex

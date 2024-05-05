@@ -28,13 +28,14 @@ private:
 	Microsoft::WRL::ComPtr<ID3D11BlendState> m_pBlendState;
 	Mode m_mode;
 	unsigned m_renderTargetSlot;
-	std::optional<std::array<float, 4>> m_blendFactors;	//
+	unsigned m_multisampleMask;
+	std::optional<std::array<float, 4>> m_blendFactors;
 public:
-	BlendState( Graphics &gfx, const Mode mode, const unsigned renderTargetSlot, std::optional<float> blendFactors = {} );
+	BlendState( Graphics &gfx, const Mode mode, const unsigned renderTargetSlot, std::optional<float> blendFactors = {}, const unsigned multisampleMask = 0xFFFFFFFFu );
 
 	void bind( Graphics &gfx ) cond_noex override;
-	static std::shared_ptr<BlendState> fetch( Graphics &gfx, const Mode mode, const unsigned renderTargetSlot, std::optional<float> blendFactors = {} );
-	static std::string calcUid( const Mode mode, const unsigned renderTargetSlot, std::optional<float> blendFactors );
+	static std::shared_ptr<BlendState> fetch( Graphics &gfx, const Mode mode, const unsigned renderTargetSlot, std::optional<float> blendFactors = {}, const unsigned multisampleMask = 0xFFFFFFFFu );
+	static std::string calcUid( const Mode mode, const unsigned renderTargetSlot, std::optional<float> blendFactors = {}, const unsigned multisampleMask = 0xFFFFFFFFu );
 	std::string getUid() const noexcept override;
 	void fillBlendFactors( const float sameBlendFactor ) cond_noex;
 	void setBlendFactors( std::array<float, 4> blendFactors ) cond_noex;

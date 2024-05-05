@@ -11,19 +11,17 @@ namespace ren
 class RenderQueuePass
 	: public IBindablePass
 {
-	std::vector<std::pair<Job, float>> m_opaques;
-	std::vector<std::pair<Job, float>> m_transparents;
+	bool m_bTransparent;
+	std::vector<std::pair<Job, float>> m_meshes;
 public:
-	using IBindablePass::IBindablePass;	// pass name & bindables vector
+	RenderQueuePass( const std::string &name, const std::vector<std::shared_ptr<IBindable>> &bindables = {}, const bool bTransparentMeshPass = false );
 
-	void addJob( Job job, const float meshDistanceFromActiveCamera, const bool bTransparent = false ) noexcept;
+	void addJob( Job job, const float meshDistanceFromActiveCamera ) noexcept;
 	//	\function	run	||	\date	2021/06/27 0:11
-	//	\brief  call RenderQueuePass::run from derivedPassClass::run as a final task
+	//	\brief	call RenderQueuePass::run from derivedPassClass::run as a final task
 	void run( Graphics &gfx ) const cond_noex override;
 	void reset() cond_noex override;
-	int getNumOpaques() const noexcept;
-	int getNumTransparents() const noexcept;
-	int getJobCount() const noexcept;
+	int getNumMeshes() const noexcept;
 private:
 	void sortJobs();
 };

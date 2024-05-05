@@ -35,7 +35,6 @@ public:
 	void setWorldTransform( const DirectX::XMMATRIX &worldTransform ) noexcept;
 	DirectX::XMMATRIX getWorldTransform() const noexcept;
 	DirectX::XMFLOAT4X4& getWorldTransformAccess();
-	void setCulled( const bool bCulled );
 private:
 	void addChild( std::unique_ptr<Node> pChild ) cond_noex;
 };

@@ -22,7 +22,7 @@ public:
 	virtual ~IImguiNodeVisitor() noexcept = default;
 
 	//	\function	visit	||	\date	2022/09/20 23:06
-	//	\brief  returns true if we want to "open" the Node in the ImGui tree hierarchy for processing of its children
+	//	\brief	returns true if we want to "open" the Node in the ImGui tree hierarchy for processing of its children
 	bool visit( Node &node );
 	virtual void onVisit( class Node &node ) = 0;
 };
@@ -45,7 +45,7 @@ public:
 	ImguiNodeVisitorShowcase( const std::string &name );
 
 	//	\function	onVisit	||	\date	2022/09/20 23:07
-	//	\brief  if visit() returns true, "close" the node
+	//	\brief	if visit() returns true, "close" the node
 	void onVisit( Node &node ) override;
 	void displayImguiWidgets( Model &model ) noexcept;
 private:

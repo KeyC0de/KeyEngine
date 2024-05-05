@@ -53,7 +53,7 @@ public:
 		void playSound( Sound *sound, const float volume );
 		void stopSound() cond_noex;
 		//	\function	rechannel	||	\date	2020/10/25 19:18
-		//	\brief  finds new channel for the existing Sound
+		//	\brief	finds new channel for the existing Sound
 		void rechannel( const Sound *pOldSound, Sound *pNewSound );
 		Sound* getSound() const cond_noex;
 	};
@@ -92,7 +92,7 @@ private:
 	SoundManager( WAVEFORMATEXTENSIBLE *format );
 public:
 	//	\function	getInstance	||	\date	2020/10/25 21:38
-	//	\brief  return the single instance of the class
+	//	\brief	return the single instance of the class
 	static SoundManager& getInstance( WAVEFORMATEXTENSIBLE *format = nullptr );
 public:
 	~SoundManager() noexcept;
@@ -101,7 +101,7 @@ public:
 	void setSubmixVolume( const Submix &submix, const float volume = 1.0f ) cond_noex;
 	void playChannelSound( class Sound *sound, const float volume );
 	//	\function	deactivateChannel	||	\date	2020/10/25 20:18
-	//	\brief  removes occupied Channel & places it in the idle list
+	//	\brief	removes occupied Channel & places it in the idle list
 	void deactivateChannel( Channel &channel );
 	//void disableSubmixVoice( const Submix &submix );
 };
@@ -134,7 +134,7 @@ public:
 	//	\brief	locates chunks in RIFF files
 	HRESULT findChunk( HANDLE file, DWORD fourcc, DWORD &chunkSize, DWORD &chunkDataPosition );
 	//	\function	readChunkData
-	//	\brief  read chunk's data (after the chunk has been located)
+	//	\brief	read chunk's data (after the chunk has been located)
 
 	HRESULT readChunkData( HANDLE file, void *buffer, DWORD buffersize, DWORD bufferoffset );
 public:

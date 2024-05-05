@@ -507,7 +507,7 @@ public:
 	CBuffer& operator==( const CBuffer &rhs ) noexcept;
 	//===================================================
 	//	\function	mctor
-	//	\brief  	have to be careful with this one...
+	//	\brief		have to be careful with this one...
 	//				the buffer that has once been pilfered must not be used
 	//	\date	2022/08/21 19:58
 	CBuffer( CBuffer &&rhs ) noexcept;

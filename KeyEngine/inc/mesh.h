@@ -33,7 +33,6 @@ namespace ver
 class Mesh
 {
 	mutable DirectX::XMFLOAT4X4 m_worldTransform;
-	mutable bool m_bCulledThisFrame = false;
 	float m_distanceFromActiveCamera = 0.0f;
 protected:
 	unsigned m_meshId = 0u;
@@ -117,9 +116,9 @@ public:
 	DirectX::XMFLOAT3 getPosition() const noexcept;
 	void setDistanceFromActiveCamera() noexcept;
 	float getDistanceFromActiveCamera() const noexcept;
-	void setCulled( const bool bCulled );
-	bool isCulled() const noexcept;
-	bool frustumCull( const std::vector<DirectX::XMFLOAT4> &frustumPlanes ) const noexcept;
+	//	\function	isFrustumCulled	||	\date	2024/05/05 11:55
+	//	\brief	returns true if the Mesh is culled this frame by the active camera and false otherwise
+	bool isFrustumCulled() const noexcept;
 	virtual void displayImguiWidgets( Graphics &gfx, const std::string &name ) noexcept
 	{
 		pass_;

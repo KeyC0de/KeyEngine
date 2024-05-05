@@ -6,18 +6,20 @@
 namespace ren
 {
 
-void RenderQueuePass::addJob( Job job,
-	const float meshDistanceFromActiveCamera,
-	const bool bTransparent /*= false*/ ) noexcept
+RenderQueuePass::RenderQueuePass( const std::string &name,
+	const std::vector<std::shared_ptr<IBindable>> &bindables /*= {}*/,
+	const bool bTransparentMeshPass /*= false*/ )
+	:
+	IBindablePass{name, bindables},
+	m_bTransparent{bTransparentMeshPass}
 {
-	if ( bTransparent )
-	{
-		m_transparents.emplace_back( job, meshDistanceFromActiveCamera );
-	}
-	else
-	{
-		m_opaques.emplace_back( job, meshDistanceFromActiveCamera );
-	}
+
+}
+
+void RenderQueuePass::addJob( Job job,
+	const float meshDistanceFromActiveCamera ) noexcept
+{
+	m_meshes.emplace_back( job, meshDistanceFromActiveCamera );
 }
 
 void RenderQueuePass::run( Graphics &gfx ) const cond_noex
@@ -26,12 +28,7 @@ void RenderQueuePass::run( Graphics &gfx ) const cond_noex
 
 	const_cast<RenderQueuePass*>( this )->sortJobs();
 
-	for ( const auto &job : m_opaques )
-	{
-		job.first.run( gfx );
-	}
-
-	for ( const auto &job : m_transparents )
+	for ( const auto &job : m_meshes )
 	{
 		job.first.run( gfx );
 	}
@@ -39,54 +36,46 @@ void RenderQueuePass::run( Graphics &gfx ) const cond_noex
 
 void RenderQueuePass::reset() cond_noex
 {
-	m_opaques.clear();
-	m_transparents.clear();
+	m_meshes.clear();
 }
 
-int RenderQueuePass::getNumOpaques() const noexcept
+int RenderQueuePass::getNumMeshes() const noexcept
 {
-	return m_opaques.size();
-}
-
-int RenderQueuePass::getNumTransparents() const noexcept
-{
-	return m_transparents.size();
-}
-
-int RenderQueuePass::getJobCount() const noexcept
-{
-	return getNumOpaques() + getNumTransparents();
+	return m_meshes.size();
 }
 
 void RenderQueuePass::sortJobs()
 {
-	// sort opaques front to back (those with least distance from camera are rendered first)
-	std::sort( m_opaques.begin(), m_opaques.end(),
+	if ( m_bTransparent )
+	{
+		// if meshes are transparent sort them back to front (those with the largest distance from camera are rendered first)
+		std::sort( m_meshes.begin(), m_meshes.end(),
 		[] ( const auto &itLeft, const auto &itRight ) -> bool
-		{
-			const float distLeft = itLeft.second;
-			const float distRight = itRight.second;
-			if ( distLeft != distRight )
 			{
-				return distLeft < distRight;
-			}
-
-			return false;
-		} );
-
-	// sort transparents back to front (those with largest distance from camera are rendered first)
-	std::sort( m_transparents.begin(), m_transparents.end(),
+				const float distLeft = itLeft.second;
+				const float distRight = itRight.second;
+				if ( distLeft != distRight )
+				{
+					return distLeft > distRight;
+				}
+				return false;
+			} );
+	}
+	else
+	{
+		// if meshes are opaque sort them front to back (those with least distance from camera are rendered first)
+		std::sort( m_meshes.begin(), m_meshes.end(),
 		[] ( const auto &itLeft, const auto &itRight ) -> bool
-		{
-			const float distLeft = itLeft.second;
-			const float distRight = itRight.second;
-			if ( distLeft != distRight )
 			{
-				return distLeft > distRight;
-			}
-
-			return false;
-		} );
+				const float distLeft = itLeft.second;
+				const float distRight = itRight.second;
+				if ( distLeft != distRight )
+				{
+					return distLeft < distRight;
+				}
+				return false;
+			} );
+	}
 }
 
 

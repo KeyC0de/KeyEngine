@@ -10,6 +10,7 @@
 #include "texture_sampler_state.h"
 #include "rasterizer_state.h"
 #include "constant_buffer_ex.h"
+#include "blend_state.h"
 #ifndef FINAL_RELEASE
 #	include "imgui.h"
 #endif
@@ -23,7 +24,7 @@ Cube::Cube( Graphics &gfx,
 	const float initialScale /*= 1.0f*/,
 	const DirectX::XMFLOAT3 &initialRot /*= {0.0f, 0.0f, 0.0f}*/,
 	const DirectX::XMFLOAT3 &initialPos /*= {0.0f, 0.0f, 0.0f}*/,
-	const DirectX::XMFLOAT3 &color /*= {1.0f, 0.4f, 0.4f}*/ )
+	const DirectX::XMFLOAT4 &color /*= {1.0f, 0.4f, 0.4f, 1.0f}*/ )
 	:
 	Mesh{{1.0f, 1.0f, 1.0f}, initialRot, initialPos},
 	m_colPcb{color}
@@ -94,7 +95,7 @@ Cube::Cube( Graphics &gfx,
 		blurOutlineDraw.addBindable( transformVscb );
 
 		con::RawLayout cbLayout;
-		cbLayout.add<con::Float3>( "materialColor" );
+		cbLayout.add<con::Float4>( "materialColor" );
 		auto cb = con::CBuffer( std::move( cbLayout ) );
 		cb["materialColor"] = color;
 		blurOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
@@ -118,7 +119,7 @@ Cube::Cube( Graphics &gfx,
 		solidOutlineDraw.addBindable( transformScaledVcb );
 
 		con::RawLayout cbLayout;
-		cbLayout.add<con::Float3>( "materialColor" );
+		cbLayout.add<con::Float4>( "materialColor" );
 		auto cb = con::CBuffer( std::move( cbLayout ) );
 		cb["materialColor"] = color;
 		solidOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
@@ -126,6 +127,25 @@ Cube::Cube( Graphics &gfx,
 		solidOutlineDraw.addBindable( InputLayout::fetch( gfx, cube.m_vb.getLayout(), *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 
 		addEffect( std::move( solidOutlineDraw ) );
+	}
+	if ( color.w < 1.0f )
+	{
+	// transparent effect - #FIXME: doesn't work
+		Effect transparent{rch::transparent, "transparent", false};
+		transparent.addBindable( transformVscb );
+
+		transparent.addBindable( Texture::fetch( gfx, "assets/models/brick_wall/brick_wall_diffuse.jpg", 0u ) );
+		transparent.addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
+
+		auto pVs = VertexShader::fetch( gfx, "cube_vs.cso" );
+		transparent.addBindable( InputLayout::fetch( gfx, cube.m_vb.getLayout(), *pVs ) );
+		transparent.addBindable( std::move( pVs ) );
+
+		transparent.addBindable( PixelShader::fetch( gfx, "cube_ps.cso" ) );
+
+		transparent.addBindable( std::make_shared<BlendState>( gfx, BlendState::Mode::Alpha, 0u, color.w ) );
+
+		addEffect( std::move( transparent ) );
 	}
 }
 
@@ -167,6 +187,25 @@ void Cube::displayImguiWidgets( Graphics &gfx,
 			setPosition( pos );
 		}
 
+		auto pBlendState = findBindable<BlendState>();
+		if ( pBlendState )
+		{
+			bool bDirtyAlpha = false;
+			const auto dirtyCheckAlpha = []( const bool bChanged, bool &bDirtyAlpha )
+			{
+				bDirtyAlpha = bDirtyAlpha || bChanged;
+			};
+
+			ImGui::Text( "Blending" );
+			float factor = (*pBlendState)->getBlendFactorAlpha();
+			dirtyCheckAlpha( ImGui::SliderFloat( "Translucency", &factor, 0.0f, 1.0f ), bDirtyAlpha);
+
+			if ( bDirtyAlpha )
+			{
+				(*pBlendState)->fillBlendFactors( factor );
+			}
+		}
+
 		class EVCube
 			: public IImGuiEffectVisitor
 		{
@@ -203,7 +242,7 @@ void Cube::displayImguiWidgets( Graphics &gfx,
 
 				if ( auto el = cb["materialColor"]; el.isValid() )
 				{
-					dirtyCheck( ImGui::ColorPicker3( tagImGuiWidget( "materialColor" ), reinterpret_cast<float*>( &static_cast<dx::XMFLOAT3&>( el ) ) ) );
+					dirtyCheck( ImGui::ColorPicker4( tagImGuiWidget( "materialColor" ), reinterpret_cast<float*>( &static_cast<dx::XMFLOAT4&>( el ) ) ) );
 				}
 
 				if ( auto el = cb["specularIntensity"]; el.isValid() )

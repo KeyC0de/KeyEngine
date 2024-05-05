@@ -65,16 +65,13 @@ void Mesh::render( const size_t channels /* = rch::all*/ ) const noexcept
 	ASSERT( !m_effects.empty(), "No Effects to submit to the Renderer!" );
 	ASSERT( m_meshId != 0, "Mesh not initialized properly!" );
 
-	// #TODO: enable frustum culling
-	//auto frustumPlanes = CameraManager::getInstance().getActiveCamera().getFrustumPlanes();
-
-	//if ( !frustumCull( frustumPlanes ) )
-	//{
+	if ( !isFrustumCulled() )
+	{
 		for ( const auto &effect : m_effects )
 		{
 			effect.render( *this, channels );
 		}
-	//}
+	}
 }
 
 void Mesh::setEffectEnabled( const size_t channels,
@@ -202,18 +199,9 @@ float Mesh::getDistanceFromActiveCamera() const noexcept
 	return m_distanceFromActiveCamera;
 }
 
-void Mesh::setCulled( const bool bCulled )
+bool Mesh::isFrustumCulled() const noexcept
 {
-	m_bCulledThisFrame = bCulled;
-}
-
-bool Mesh::isCulled() const noexcept
-{
-	return m_bCulledThisFrame;
-}
-
-bool Mesh::frustumCull( const std::vector<dx::XMFLOAT4> &frustumPlanes ) const noexcept
-{
+	const std::vector<DirectX::XMFLOAT4> &frustumPlanes = CameraManager::getInstance().getActiveCamera().getFrustumPlanes();
 	const unsigned numPlanes = frustumPlanes.size();
 	ASSERT( numPlanes == 6, "Invalid number of planes!" );
 
@@ -265,12 +253,10 @@ bool Mesh::frustumCull( const std::vector<dx::XMFLOAT4> &frustumPlanes ) const n
 		//	then the entire bounding box is behind the frustum plane, which means that it should be culled
 		if ( dx::XMVectorGetX( dx::XMVector3Dot( planeNormal, dx::XMLoadFloat3( &axisVert ) ) ) + planeConstant < 0.0f )
 		{
-			m_bCulledThisFrame = true;
 			return true;
 		}
 	}
 
-	m_bCulledThisFrame = false;
 	return false;
 }
 

@@ -19,11 +19,11 @@ namespace util
 {
 
 //	\function	printHresultErrorDescription	||	\date	2021/09/03 21:45
-//	\brief  print HRESULT errors in understandable English
+//	\brief	print HRESULT errors in understandable English
 std::string printHresultErrorDescription( const HRESULT hres );
 std::wstring printHresultErrorDescriptionW( const HRESULT hres );
 //	\function	getLastErrorAsString	||	\date	2020/11/10 1:44
-//	\brief  Returns the last Win32 error, in string format.
+//	\brief	Returns the last Win32 error, in string format.
 //			Returns an empty string if there is no error.
 std::string getLastErrorAsString();
 std::string getLastNtErrorAsString( const DWORD ntStatusCode );
