@@ -1,6 +1,6 @@
 #include "camera.h"
 #ifndef FINAL_RELEASE
-#	include "imgui.h"
+#	include "imgui/imgui.h"
 #endif
 #include "graphics.h"
 #include "math_utils.h"
@@ -152,17 +152,42 @@ void Camera::rotateRel( const float dx,
 	m_cameraWidget.setRotation( angles );
 }
 
-void Camera::translateRel( DirectX::XMFLOAT3 translation ) noexcept
+void Camera::rotateRelSmooth( const float dx,
+	const float dy,
+	const float dt ) noexcept
 {
 	if ( m_bTethered )
 	{
 		return;
 	}
 
+
+}
+
+void Camera::translateRel( DirectX::XMFLOAT3 translation ) noexcept
+{
+	if ( m_bTethered )
+	{
+		return;
+	}
+	m_positionPrev = m_position;
+
 	dx::XMStoreFloat3( &translation, dx::XMVector3Transform( dx::XMLoadFloat3( &translation ), dx::XMMatrixScaling( m_travelSpeed, m_travelSpeed, m_travelSpeed ) * getRotationMatrix() ) );
 	m_position = {m_position.x + translation.x, m_position.y + translation.y, m_position.z + translation.z};
 	m_cameraFrustum.setPosition( m_position );
 	m_cameraWidget.setPosition( m_position );
+}
+
+void Camera::translateRelSmooth( DirectX::XMFLOAT3 translation,
+	const float dt ) noexcept
+{
+	if ( m_bTethered )
+	{
+		return;
+	}
+
+
+
 }
 
 void Camera::setPosition( const DirectX::XMFLOAT3 &pos ) noexcept

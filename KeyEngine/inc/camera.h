@@ -28,9 +28,12 @@ class Camera
 	std::string m_name;
 	float m_aspectRatio;
 	float m_fovRadians;
+	DirectX::XMFLOAT3 m_positionPrev;
 	DirectX::XMFLOAT3 m_position;
 	float m_pitch;
+	float m_pitchPrev;
 	float m_yaw;
+	float m_yawPrev;
 	DirectX::XMFLOAT3 m_homePosition;
 	float m_homePitch;
 	float m_homeYaw;
@@ -60,7 +63,9 @@ public:
 	void resetToDefault( Graphics &gfx ) noexcept;
 	// rotate arguments is mouse dx, dy delta values
 	void rotateRel( const float dx, const float dy ) noexcept;
+	void rotateRelSmooth( const float dx, const float dy, const float dt ) noexcept;
 	void translateRel( DirectX::XMFLOAT3 translation ) noexcept;
+	void translateRelSmooth( DirectX::XMFLOAT3 translation, const float dt ) noexcept;
 	void setPosition( const DirectX::XMFLOAT3 &pos ) noexcept;
 	//	\function	getTransform	||	\date	2024/04/28 13:10
 	//	\brief	gets the camera matrix

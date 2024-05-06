@@ -376,6 +376,9 @@
     <ClCompile Include="src\transparent_pass.cpp">
       <Filter>engine\vfx\pass</Filter>
     </ClCompile>
+    <ClCompile Include="src\player.cpp">
+      <Filter>engine\gameplay</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="third_party\imgui\imconfig.h">
@@ -1115,6 +1118,9 @@
     </ClInclude>
     <ClInclude Include="inc\transparent_pass.h">
       <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\player.h">
+      <Filter>engine\gameplay</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,7 +1,7 @@
 #include "imgui_visitors.h"
 #include <string>
 #include <DirectXMath.h>
-#include "imgui.h"
+#include "imgui/imgui.h"
 #include "model.h"
 #include "node.h"
 #include "d3d_utils.h"

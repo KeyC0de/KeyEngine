@@ -2,8 +2,8 @@
 
 #include <memory>
 #include "graphics_friend.h"
-#include "SpriteFont.h"
-#include "SpriteBatch.h"
+#include "DirectXTK/SpriteFont.h"
+#include "DirectXTK/SpriteBatch.h"
 #include "bindable_pass.h"
 
 

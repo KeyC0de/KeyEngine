@@ -25,7 +25,7 @@
 #include "pass_2d.h"
 #include "render_target.h"
 #ifndef FINAL_RELEASE
-#	include "imgui.h"
+#	include "imgui/imgui.h"
 #endif
 #include "math_utils.h"
 #include "assertions_console.h"

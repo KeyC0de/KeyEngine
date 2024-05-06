@@ -5,7 +5,7 @@
 #include <mutex>
 #include <condition_variable>
 #include "key_exception.h"
-#include "jthread.h"
+#include "jthread/jthread.h"
 
 
 //============================================================

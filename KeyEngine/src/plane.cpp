@@ -12,7 +12,7 @@
 #include "rasterizer_state.h"
 #include "constant_buffer_ex.h"
 #ifndef FINAL_RELEASE
-#	include "imgui.h"
+#	include "imgui/imgui.h"
 #endif
 #include "rendering_channel.h"
 #include "utils.h"

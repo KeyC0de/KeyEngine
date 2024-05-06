@@ -1,7 +1,7 @@
 #include "imgui_manager.h"
 #ifndef FINAL_RELEASE
 #	include <filesystem>
-#	include "imgui.h"
+#	include "imgui/imgui.h"
 
 
 ImguiManager::ImguiManager()

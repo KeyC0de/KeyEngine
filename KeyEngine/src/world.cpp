@@ -127,7 +127,7 @@ In order to use the interpolation step (which by the way is totally optional) yo
 
 void draw(double alpha)
 {
-     Vector3 vNowPosition = lerp(vCurrentPosition, vLastPosition, alpha);
+	 Vector3 vNowPosition = lerp(vCurrentPosition, vLastPosition, alpha);
 }
 // you would interpolate between rotation, and scale when talking about transforms as well. Also there are lots of other things that you could interpolate too, like alpha-values for fades; colors when doing blend-effects, etc…
 	same for drawing animation

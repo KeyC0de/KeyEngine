@@ -3,8 +3,8 @@
 #include "dxgi1_5.h"
 #include "graphics.h"
 #ifndef FINAL_RELEASE
-#	include "imgui_impl_dx11.h"
-#	include "imgui_impl_win32.h"
+#	include "imgui/imgui_impl_dx11.h"
+#	include "imgui/imgui_impl_win32.h"
 #endif // !FINAL_RELEASE
 #include "render_target.h"
 #include "depth_stencil_view.h"

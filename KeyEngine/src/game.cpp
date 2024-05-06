@@ -1,7 +1,7 @@
 #include "game.h"
 #include <algorithm>
 #ifndef FINAL_RELEASE
-#	include "imgui.h"
+#	include "imgui/imgui.h"
 #endif
 #include "imgui_visitors.h"
 #include "camera.h"

@@ -20,7 +20,7 @@
 #include "input_layout.h"
 #include "assertions_console.h"
 #ifndef FINAL_RELEASE
-#	include "imgui.h"
+#	include "imgui/imgui.h"
 #endif
 #include "triangle_mesh.h"
 #include "settings_manager.h"

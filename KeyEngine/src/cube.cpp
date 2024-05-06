@@ -12,7 +12,7 @@
 #include "constant_buffer_ex.h"
 #include "blend_state.h"
 #ifndef FINAL_RELEASE
-#	include "imgui.h"
+#	include "imgui/imgui.h"
 #endif
 #include "rendering_channel.h"
 #include "utils.h"

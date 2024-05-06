@@ -1,6 +1,6 @@
 #include "light_source.h"
 #ifndef FINAL_RELEASE
-#	include "imgui.h"
+#	include "imgui/imgui.h"
 #endif
 #include "camera.h"
 #include "math_utils.h"
