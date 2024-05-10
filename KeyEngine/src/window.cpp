@@ -4,7 +4,7 @@
 #include "window.h"
 #include "graphics.h"
 #ifndef FINAL_RELEASE
-#	include "imgui_impl_win32.h"
+#	include "imgui/imgui_impl_win32.h"
 #endif
 #include "utils.h"
 #include "os_utils.h"
@@ -150,8 +150,8 @@ Window::Window( const int width,
 		THROW_WINDOW_EXCEPTION( "Failed to adjust window rectangle" );
 	}
 
-	const int adjustedWindowWidth = rect.right - rect.left;
-	const int adjustedWindowHeight = rect.bottom - rect.top;
+	const int fullWindowWidth = rect.right - rect.left;
+	const int fullWindowHeight = rect.bottom - rect.top;
 
 	const std::wstring classNameWstr = util::s2ws( className );
 	const std::wstring nameWstr = util::s2ws( name );
@@ -172,8 +172,8 @@ Window::Window( const int width,
 			windowStyles,
 			x,
 			y,
-			adjustedWindowWidth,
-			adjustedWindowHeight,
+			fullWindowWidth,
+			fullWindowHeight,
 			parent == nullptr ? HWND_DESKTOP : parent->getHandle(),
 			nullptr,
 			THIS_INSTANCE,
@@ -188,8 +188,8 @@ Window::Window( const int width,
 			windowStyles,
 			x,
 			y,
-			adjustedWindowWidth,
-			adjustedWindowHeight,
+			fullWindowWidth,
+			fullWindowHeight,
 			parent == nullptr ? HWND_DESKTOP : parent->getHandle(),
 			nullptr,	// menu - if modeless window you can use (HMENU)IDC_MODELESS
 			THIS_INSTANCE,
@@ -257,7 +257,7 @@ Window::Window( const int width,
 	}
 
 	// setup Graphics for the Window
-	m_pGraphics = std::make_unique<Graphics>( m_hWnd, adjustedWindowWidth, adjustedWindowHeight );
+	m_pGraphics = std::make_unique<Graphics>( m_hWnd, fullWindowWidth, fullWindowHeight );
 
 	// show window
 	ret = UpdateWindow( m_hWnd );
@@ -1131,26 +1131,16 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 
 			if ( m_pGraphics )
 			{
-				const int preMetricsWidth = GetSystemMetrics( SM_CXSCREEN );
-				const int preMetricsHeight = GetSystemMetrics( SM_CYSCREEN );
-				const int preWidth = getWidth();
-				const int preHeight = getHeight();
-				const int newWidth = static_cast<int>( LOWORD( lParam ) );
-				const int newHeight = static_cast<int>( HIWORD( lParam ) );
-				if ( newWidth != preWidth && newHeight != preHeight )
-				{
-					m_pGraphics->resize( newWidth, newHeight );
-				}
+				const int requestedWidthClientArea = static_cast<int>( LOWORD( lParam ) );
+				const int requestedHeightClientArea = static_cast<int>( HIWORD( lParam ) );
+				m_pGraphics->resize( requestedWidthClientArea, requestedHeightClientArea );
 
-				const int metricsWidth = GetSystemMetrics( SM_CXSCREEN );
-				const int metricsHeight = GetSystemMetrics( SM_CYSCREEN );
-				//ASSERT( getWidth() == newWidth, "Window width not set correctly!" );
-				//ASSERT( getHeight() == newHeight, "Window height not set correctly!" );
-				int i = 0;
+				ASSERT( requestedWidthClientArea == getWidthClientArea(), "Width mismatch!" );
+				ASSERT( requestedHeightClientArea == getHeightClientArea(), "Height mismatch!" );
 			}
 			s_bCurrentlyResizing = false;
 		}
-		break;
+		return 0;
 	}
 	case WM_ENTERSIZEMOVE:
 	{
@@ -1818,10 +1808,24 @@ int Window::getWidth() const noexcept
 	return rect.right - rect.left;
 }
 
+int Window::getWidthClientArea() const noexcept
+{
+	RECT rect;
+	GetClientRect( m_hWnd, &rect );
+	return rect.right - rect.left;
+}
+
 int Window::getHeight() const noexcept
 {
 	RECT rect;
 	GetWindowRect( m_hWnd, &rect );
+	return rect.bottom - rect.top;
+}
+
+int Window::getHeightClientArea() const noexcept
+{
+	RECT rect;
+	GetClientRect( m_hWnd, &rect );
 	return rect.bottom - rect.top;
 }
 

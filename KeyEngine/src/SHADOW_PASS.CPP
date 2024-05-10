@@ -52,7 +52,7 @@ ShadowPass::ShadowPass( Graphics &gfx,
 	// bind the DSV from the offscreen cube map ds texture side #0
 	m_pDsv = m_pOffscreenDsvCubemap->shareDepthBuffer( 0u );
 
-	DirectX::XMStoreFloat4x4( &m_cameraShadowProjectionMatrix, Camera::getShadowProjectionMatrix() );
+	DirectX::XMStoreFloat4x4( &m_cameraShadowProjectionMatrix, Camera::getShadowProjectionMatrix( 100.0f ) );
 
 	// +x
 	DirectX::XMStoreFloat3( &m_cameraDirections[0], DirectX::XMVectorSet( 1.0f, 0.0f, 0.0f, 0.0f ) );

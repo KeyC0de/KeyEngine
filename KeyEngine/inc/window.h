@@ -29,7 +29,7 @@
 
 class Graphics;
 
-class Window
+class Window final
 	: public NonCopyable
 {
 	class WindowException final
@@ -146,7 +146,9 @@ public:
 	int getX() const noexcept;
 	int getY() const noexcept;
 	int getWidth() const noexcept;
+	int getWidthClientArea() const noexcept;
 	int getHeight() const noexcept;
+	int getHeightClientArea() const noexcept;
 	HWND getConsoleHandle() const;
 	const WindowClass& getWindowClass() noexcept;
 	//	\function	setupSplashWindow	||	\date	2022/10/01 20:30

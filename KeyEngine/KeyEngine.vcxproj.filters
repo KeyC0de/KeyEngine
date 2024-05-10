@@ -28,12 +28,6 @@
     <ClCompile Include="src\entity_manager.cpp">
       <Filter>engine\gameplay</Filter>
     </ClCompile>
-    <ClCompile Include="src\game.cpp">
-      <Filter>engine\common_util</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game_state.cpp">
-      <Filter>engine\common_util</Filter>
-    </ClCompile>
     <ClCompile Include="src\grid_location.cpp">
       <Filter>engine\common_util</Filter>
     </ClCompile>
@@ -379,6 +373,15 @@
     <ClCompile Include="src\player.cpp">
       <Filter>engine\gameplay</Filter>
     </ClCompile>
+    <ClCompile Include="src\game.cpp">
+      <Filter>engine\gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game_state.cpp">
+      <Filter>engine\gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="src\reporter_access.cpp">
+      <Filter>engine\common_util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="third_party\imgui\imconfig.h">
@@ -660,12 +663,6 @@
     <ClInclude Include="inc\entity_manager.h">
       <Filter>engine\gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="inc\game_state.h">
-      <Filter>engine\common_util</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\game.h">
-      <Filter>engine\common_util</Filter>
-    </ClInclude>
     <ClInclude Include="inc\grid_location.h">
       <Filter>engine\common_util</Filter>
     </ClInclude>
@@ -776,9 +773,6 @@
     </ClInclude>
     <ClInclude Include="inc\dumpling.h">
       <Filter>engine\os\win</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\subject_observer.h">
-      <Filter>engine\common_util</Filter>
     </ClInclude>
     <ClInclude Include="third_party\assimp\include\assimp\aimesh.h">
       <Filter>third_party\assimp</Filter>
@@ -1121,6 +1115,21 @@
     </ClInclude>
     <ClInclude Include="inc\player.h">
       <Filter>engine\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\reporter_listener.h">
+      <Filter>engine\common_util</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\reporter_listener_events.h">
+      <Filter>engine\common_util</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\game_state.h">
+      <Filter>engine\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\game.h">
+      <Filter>engine\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\reporter_access.h">
+      <Filter>engine\common_util</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

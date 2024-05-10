@@ -4,6 +4,7 @@
 #include <memory>
 #include <type_traits>
 #include "window.h"
+#include "reporter_listener.h"
 #include "key_timer.h"
 #include "camera_manager.h"
 #include "light_source.h"
@@ -68,9 +69,11 @@ private:
 };
 
 class Sandbox3d
-	: public Game<Sandbox3d>
+	: public Game<Sandbox3d>,
+	public IListener<SwapChainResized>
 {
 	static inline CameraManager &s_cameraMan = CameraManager::getInstance();
+
 	std::unique_ptr<PointLight> m_pPointLight1;
 	//std::unique_ptr<PointLight> m_pPointLight2;
 #ifndef FINAL_RELEASE
@@ -89,6 +92,7 @@ public:
 	Sandbox3d( const int width, const int height, const int x, const int y, const int nWindows = 1 );
 	~Sandbox3d() noexcept;
 
+	void notify( const SwapChainResized &event ) override;
 	int loop();
 private:
 	int checkInput( const float dt );
@@ -96,7 +100,7 @@ private:
 	void updateFixed( const float dt );
 	void render();
 	void test();
-	void connectEffectsToRenderer( ren::Renderer &renderer );
+	void connectEffectsToRenderer( ren::Renderer3d &renderer );
 };
 
 class Arkanoid final

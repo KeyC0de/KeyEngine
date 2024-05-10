@@ -1,4 +1,6 @@
 #include "game.h"
+#include "reporter_listener_events.h"
+#include "reporter_access.h"
 #include <algorithm>
 #ifndef FINAL_RELEASE
 #	include "imgui/imgui.h"
@@ -31,6 +33,7 @@ Game<T>::Game( const int width,
 	const int y,
 	const unsigned nWindows )
 	:
+	//IListener<SwapChainResized>(),
 #ifndef FINAL_RELEASE
 	m_pImguiMan{createImgui()},
 #endif
@@ -39,6 +42,8 @@ Game<T>::Game( const int width,
 {
 	s_nWindows = nWindows;
 	m_gameTimer.start();
+
+	//static_cast<const IReporter<SwapChainResized>&>( *this ).addListener( this );
 }
 
 template <typename T>
@@ -153,7 +158,8 @@ Sandbox3d::Sandbox3d( const int width,
 	const int y,
 	const int nWindows )
 	:
-	Game(width, height, "KeyEngine 3d Sandbox", x, y, nWindows)
+	Game(width, height, "KeyEngine 3d Sandbox", x, y, nWindows),
+	IListener<SwapChainResized>()
 {
 	auto &gfx = m_mainWindow.getGraphics();
 
@@ -164,16 +170,10 @@ Sandbox3d::Sandbox3d( const int width,
 
 	m_cube1.setPosition( {10.0f, 5.0f, 6.0f} );
 
-	auto &renderer = gfx.getRenderer();
+	auto &renderer = gfx.getRenderer3d();
 
 	connectEffectsToRenderer( renderer );
 
-	m_cube2.setEffectEnabled( rch::blurOutline, false );
-
-	if ( m_pPointLight1->isCastingShadows() )
-	{
-		gfx.getRenderer3d().setShadowCamera( *m_pPointLight1->shareCamera(), true );
-	}
 	//if ( m_pPointLight2->isCastingShadows() )
 	//{
 	//	renderer.setShadowCamera( *m_pPointLight2->shareCamera(), true );
@@ -200,11 +200,21 @@ Sandbox3d::Sandbox3d( const int width,
 
 	auto menuState = std::make_unique<MenuState>();
 	setState( std::move( menuState ), m_mainWindow.getMouse() );
+
+	auto &reportingNexus = ReportingNexus::getInstance();
+	static_cast<const IReporter<SwapChainResized>&>( reportingNexus ).addListener( this );
 }
 
 Sandbox3d::~Sandbox3d() noexcept
 {
 
+}
+
+void Sandbox3d::notify( const SwapChainResized &event )
+{
+	(void)event;
+
+	connectEffectsToRenderer( m_mainWindow.getGraphics().getRenderer3d() );
 }
 
 int Sandbox3d::loop()
@@ -314,6 +324,19 @@ int Sandbox3d::checkInput( const float dt )
 			break;
 		}
 #endif
+		case VK_F11:
+		{
+			auto &gfx = m_mainWindow.getGraphics();
+			if ( gfx.getDisplayMode() )
+			{
+				gfx.resize( 1600, 900 );
+			}
+			else
+			{
+				gfx.resize( 0, 0 );
+			}
+			break;
+		}
 		case VK_RETURN:
 		{
 			auto &gfx = m_mainWindow.getGraphics();
@@ -460,7 +483,7 @@ void Sandbox3d::test()
 #endif
 }
 
-void Sandbox3d::connectEffectsToRenderer( ren::Renderer &renderer )
+void Sandbox3d::connectEffectsToRenderer( ren::Renderer3d &renderer )
 {
 	s_cameraMan.connectEffectsToRenderer( renderer );
 
@@ -475,6 +498,13 @@ void Sandbox3d::connectEffectsToRenderer( ren::Renderer &renderer )
 	//m_nanoSuit.connectEffectsToRenderer( renderer );
 	m_carabiner.connectEffectsToRenderer( renderer );
 	m_sponzaScene.connectEffectsToRenderer( renderer );
+
+	m_cube2.setEffectEnabled( rch::blurOutline, false );
+
+	if ( m_pPointLight1->isCastingShadows() )
+	{
+		renderer.setShadowCamera( *m_pPointLight1->shareCamera(), true );
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -504,7 +534,15 @@ Arkanoid::Arkanoid( const int width,
 			++i;
 		}
 	}
+
+	//static_cast<const IReporter<SwapChainResized>&>(nullptr).addListener( this );
 }
+
+//void Arkanoid::notify( const SwapChainResized &event )
+//{
+//	(void)event;
+//	pass_;
+//}
 
 int Arkanoid::loop()
 {

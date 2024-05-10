@@ -4,17 +4,17 @@ SamplerComparisonState shadowCubeMapSampler : register(s1);
 
 float calculateShadowCubeMapSampleVectorProjectionLength( const in float3 fragPosLightSpace )
 {
-	static const float zf = 100.0f;
-	static const float zn = 1.0f;
-	static const float c0 = -zn * zf / ( zf - zn );
-	static const float c1 = zf / ( zf - zn );
+	static const float f = 100.0f;	// shadowCamFarZ
+	static const float n = 1.0f;
+	static const float A = -f * n / ( f - n );
+	static const float B = f / ( f - n );
 
 	// get magnitudes for each component
 	const float3 sampleVectorMags = abs( fragPosLightSpace);
 	// now we find out which is the major axis that corresponds to the face of the shadow cube map
 	const float dominantAxisLen = max( sampleVectorMags.x, max( sampleVectorMags.y, sampleVectorMags.z ) );
-	// project the light-space-fragment to the plane/face of the cube
-	return c0 / dominantAxisLen + c1;
+	// project the light space depth-coord (whichever one may be the dominant one, ie. x, y or z) into the corresponding face of the cube
+	return A / dominantAxisLen + B;	// f * ( 1 - n * dominantAxisLen ) / ( f - n );
 }
 
 // the Comparison Sampler is used here to filter out fragments that rest inside the light space

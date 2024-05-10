@@ -16,8 +16,6 @@ namespace ren
 
 class Camera
 {
-	static constexpr inline float s_shadowFarZ = 100.0f;	// Shadows farZ hardcoded at 100units for now
-
 	float m_travelSpeed = 12.0f;
 	float m_rotationSpeed = 0.004f;
 	float m_nearZ;
@@ -48,8 +46,8 @@ class Camera
 	CameraWidget m_cameraWidget;
 	CameraFrustum m_cameraFrustum;
 public:
-	static DirectX::XMMATRIX getShadowOrthographicMatrix( const unsigned w, const unsigned h ) noexcept;
-	static DirectX::XMMATRIX getShadowProjectionMatrix( const float farZ = 9999 ) noexcept;
+	static DirectX::XMMATRIX getShadowOrthographicMatrix( const unsigned w, const unsigned h, const float shadowCamFarZ, const float shadowCamNearZ = 1.0f ) noexcept;
+	static DirectX::XMMATRIX getShadowProjectionMatrix( const float shadowCamFarZ, const float shadowCamNearZ = 1.0f ) noexcept;
 public:
 	Camera( Graphics &gfx, const std::string &name, const int width, const int height, const float fovDegrees = 90.0f, const DirectX::XMFLOAT3 &homePos = {0.0f, 0.0f, 0.0f}, const float homePitch = 0.0f, const float homeYaw = 0.0f, const bool bTethered = false, const float nearZ = 0.5f, const float farZ = 200.0f ) noexcept;
 

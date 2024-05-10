@@ -215,6 +215,7 @@
     <ClCompile Include="src\dynamic_constant_buffer.cpp" />
     <ClCompile Include="src\dynamic_vertex_buffer.cpp" />
     <ClCompile Include="src\effect.cpp" />
+    <ClCompile Include="src\reporter_access.cpp" />
     <ClCompile Include="src\imgui_visitors.cpp" />
     <ClCompile Include="src\font_pass.cpp" />
     <ClCompile Include="src\camera_frustum.cpp" />
@@ -395,6 +396,7 @@
     <ClInclude Include="inc\dynamic_constant_buffer.h" />
     <ClInclude Include="inc\dynamic_vertex_buffer.h" />
     <ClInclude Include="inc\effect.h" />
+    <ClInclude Include="inc\reporter_access.h" />
     <ClInclude Include="inc\imgui_visitors.h" />
     <ClInclude Include="inc\font_pass.h" />
     <ClInclude Include="inc\camera_frustum.h" />
@@ -439,6 +441,8 @@
     <ClInclude Include="inc\non_copyable.h" />
     <ClInclude Include="inc\assertions_console.h" />
     <ClInclude Include="inc\net_utils.h" />
+    <ClInclude Include="inc\reporter_listener.h" />
+    <ClInclude Include="inc\reporter_listener_events.h" />
     <ClInclude Include="inc\shadow_pass.h" />
     <ClInclude Include="inc\sky_vscb.h" />
     <ClInclude Include="inc\sky_pass.h" />
@@ -447,7 +451,6 @@
     <ClInclude Include="inc\sphere.h" />
     <ClInclude Include="inc\sprite.h" />
     <ClInclude Include="inc\string_buffer.h" />
-    <ClInclude Include="inc\subject_observer.h" />
     <ClInclude Include="inc\terrain.h" />
     <ClInclude Include="inc\testing.h" />
     <ClInclude Include="inc\texture.h" />

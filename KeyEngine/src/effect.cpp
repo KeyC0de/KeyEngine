@@ -118,7 +118,6 @@ void Effect::accept( IImGuiEffectVisitor &ev )
 
 void Effect::connectPass( ren::Renderer &r )
 {
-	ASSERT( m_pTargetPass == nullptr, "Effect already connected to Renderer!" );
 	m_pTargetPass = &r.getRenderQueuePass( m_targetPassName );
 }
 

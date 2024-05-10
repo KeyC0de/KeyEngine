@@ -25,6 +25,8 @@
 #include "rectangle.h"
 #include "texture_desc.h"
 #include "key_timer.h"
+#include "reporter_listener.h"
+#include "reporter_listener_events.h"
 
 
 class IBindable;
@@ -52,7 +54,7 @@ class Renderer2d;
 //			provides classic blt presentation functionality
 //			as well as upgraded DXGI 1.2 API with Flip enhanced presentation model (aiming for Independent Flip)
 //=============================================================
-class Graphics
+class Graphics final
 	: NonCopyableAndNonMovable
 {
 	friend class GraphicsFriend;
@@ -140,10 +142,10 @@ public:
 	void createAdapters();
 	//	\function	resize	||	\date	2022/09/17 19:44
 	//	\brief	sets windowed mode or Fullscreen, supply width & height of 0 to resize the buffers for fullscreen mode usage
-	void resize( const unsigned width, const unsigned height );
+	void resize( unsigned width, unsigned height );
 	//	\function	setupMonitors	||	\date	2022/09/18 19:08
 	//	\brief	sets up the output monitor devices
-	void setupMonitors() noexcept;
+	void setupMonitors();
 	double getRefreshRate() const noexcept;
 	size_t getFrameNum() const noexcept;
 	void runRenderer() noexcept;

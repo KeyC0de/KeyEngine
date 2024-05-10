@@ -8,6 +8,8 @@
 #endif // !FINAL_RELEASE
 #include "render_target.h"
 #include "depth_stencil_view.h"
+#include "reporter_access.h"
+#include "reporter_listener_events.h"
 #include "utils.h"
 #include "os_utils.h"
 #include "settings_manager.h"
@@ -290,77 +292,48 @@ void Graphics::clearShaderSlots() noexcept
 	DXGI_GET_QUEUE_INFO_GFX;
 }
 
-void Graphics::resize( const unsigned newWidth,
-	const unsigned newHeight )
+void Graphics::resize( unsigned newWidth,
+	unsigned newHeight )
 {
 	auto &caman = CameraManager::getInstance();
 	caman.getActiveCamera().setTethered( true );		// prevent camera movement while resizing, #TODO: instead change state to MenuState
 
-#if defined _DEBUG && !defined NDEBUG
-	auto checkUseCounts = [this]()
-		{
-			UINT nRtvRefsBB = m_pBackBufferRtv.use_count();
-			UINT nDsvRefsBB = m_pBackBufferDsv.use_count();
-			UINT nRtvTexRefs = m_pOffscreenRtv.use_count();
-			if ( nRtvTexRefs > 0 )
-			{
-				UINT nRtvRefsOff = m_pOffscreenRtv->rtv().use_count();
-			}
-			UINT nDsvTexRefs = m_pOffscreenDsv.use_count();
-			if ( nDsvTexRefs > 0 )
-			{
-				UINT nDsvRefsOff = m_pOffscreenDsv->dsv().use_count();
-			}
-		};
-#endif
-
 	HRESULT hres;
+	if ( newWidth == 0 && newHeight == 0 )
 	{
-		// assemble all bound RTV & DSVs and clear them
-		if ( m_pBackBufferRtv.use_count() > 0 )
-		{
-			m_pBackBufferRtv->clean( *this );
-		}
-		if ( m_pBackBufferDsv.use_count() > 0 )
-		{
-			m_pBackBufferDsv->clean( *this );
-		}
-		if ( m_pOffscreenRtv->rtv().use_count() > 0 )
-		{
-			m_pOffscreenRtv->rtv()->clean( *this );
-		}
-		if ( m_pOffscreenDsv->dsv().use_count() > 0 )
-		{
-			m_pOffscreenDsv->dsv()->clean( *this );
-		}
-
-		checkUseCounts();
-
-		//clearShaderSlots();
-		// release any other outstanding references
-		//m_pImmediateContext->ClearState();
-
-		// after releasing references to these resources, we need to call Flush() to ensure that Direct3D
-		// also releases any references it might still have to the same resources - such as pipeline bindings
-		// and wait until these changes are done/flushed
-		//m_pImmediateContext->Flush();
-
-		/// #FIXME: restore all render targets and depth stencils back
-		//ASSERT( rtvRefs == 1 && dsvRefs == 1, "More references to such resources still exist" );
+		m_bFullscreenMode = true;
+		newWidth = GetSystemMetrics( SM_CXSCREEN );
+		newHeight = GetSystemMetrics( SM_CYSCREEN );
 	}
-
-	// resize the RTV:
-	hres = m_pSwapChain->ResizeBuffers( 0u,	// No of Buffers, set to 0 to preserve existing setting
-		newWidth, newHeight,				// if width & height are set to 0 set the swap chain to match the screen resolution
-		DXGI_FORMAT_UNKNOWN,					// retain the current back buffer format using DXGI_FORMAT_UNKNOWN
-		m_swapChainFlags );
-	ASSERT_HRES_IF_FAILED;
-	// may need to handle DXGI_ERROR_DEVICE_REMOVED & DXGI_ERROR_DEVICE_RESET
+	else
+	{
+		m_bFullscreenMode = false;
+	}
 
 	m_width = newWidth;
 	m_height = newHeight;
 
-	checkUseCounts();
+	// make a fullscreen transition if necessary; must be called before ResizeBuffers
+	hres = m_pSwapChain->SetFullscreenState( m_bFullscreenMode ? TRUE : FALSE, m_bFullscreenMode ? m_pDxgiOutput.Get() : nullptr );
+	ASSERT_HRES_IF_FAILED;
+
+	// assemble all bound RTV & DSVs and clear them & empty their shared_ptrs
+	if ( m_pBackBufferRtv.use_count() > 0 )
+	{
+		m_pBackBufferRtv->clean( *this );
+	}
+	if ( m_pBackBufferDsv.use_count() > 0 )
+	{
+		m_pBackBufferDsv->clean( *this );
+	}
+	if ( m_pOffscreenRtv->rtv().use_count() > 0 )
+	{
+		m_pOffscreenRtv->rtv()->clean( *this );
+	}
+	if ( m_pOffscreenDsv->dsv().use_count() > 0 )
+	{
+		m_pOffscreenDsv->dsv()->clean( *this );
+	}
 
 	m_pBackBufferRtv.reset();
 	m_pBackBufferDsv.reset();
@@ -369,7 +342,10 @@ void Graphics::resize( const unsigned newWidth,
 	m_pOffscreenDsv->dsv().reset();
 	m_pOffscreenDsv.reset();
 
-	checkUseCounts();
+	// resize the RTV:
+	hres = m_pSwapChain->ResizeBuffers( 0u, newWidth, newHeight, DXGI_FORMAT_UNKNOWN, m_swapChainFlags );
+	ASSERT_HRES_IF_FAILED;
+	// may need to handle DXGI_ERROR_DEVICE_REMOVED & DXGI_ERROR_DEVICE_RESET
 
 	// recreate the RTVs & DSVs:
 	getRenderTargetFromBackBuffer();
@@ -377,34 +353,24 @@ void Graphics::resize( const unsigned newWidth,
 	getRenderTargetOffscreen( 0u, RenderTargetViewMode::DefaultRT );
 	getDepthBufferOffscreen( 0u, DepthStencilViewMode::DefaultDS );
 
-	checkUseCounts();
-
+#if defined _DEBUG && !defined NDEBUG
 	// Assert that window width/height is equal to swap-chain width/height
 	DXGI_SWAP_CHAIN_DESC desc;
 	POD_ZERO( desc );
 	m_pSwapChain->GetDesc( &desc );
 	ASSERT( desc.BufferDesc.Width == newWidth && desc.BufferDesc.Height == newHeight, "Resizing malfunction!" );
+#endif
 
-	//const bool bOffscreenRendering = m_pRenderer->isUsingOffscreenRendering();
-	//m_pRenderer->reapplyRtv( bOffscreenRendering ? m_pOffscreenRtv->rtv() : m_pBackBufferRtv );
-	//m_pRenderer->reapplyDsv( bOffscreenRendering ? m_pOffscreenDsv->dsv() : m_pBackBufferDsv );
 	m_pRenderer->recreate( *this );
-	// #TODO:	send a notify listeners call here to be listened to by Game s.t. it can call connectEffectsToRenderer
-
-	checkUseCounts();
-
-	// set fullscreen flag
-	const bool bEnableFullScreen = newWidth == 0 && newHeight == 0;
-	hres = m_pSwapChain->SetFullscreenState( bEnableFullScreen ? TRUE : FALSE, bEnableFullScreen ? m_pDxgiOutput.Get() : nullptr );
-	ASSERT_HRES_IF_FAILED;
-	m_bFullscreenMode = bEnableFullScreen;
+	auto &reportingNexus = ReportingNexus::getInstance();
+	static_cast<IReporter<SwapChainResized>&>( reportingNexus ).notifyListeners( SwapChainResized{} );
 
 	// update cameras
 	CameraManager::getInstance().updateDimensions( *this );
 	caman.getActiveCamera().setTethered( false );
 }
 
-void Graphics::setupMonitors() noexcept
+void Graphics::setupMonitors()
 {
 	auto *pMainAdapter = s_adapters[0].getAdapter();
 
@@ -868,12 +834,12 @@ void Graphics::interrogateDirectxFeatures()
 	ASSERT_HRES_IF_FAILED;
 
 	using namespace std::string_literals;
-	auto &console = KeyConsole::getInstance();
-	console.log( threadingInfo.DriverConcurrentCreates ?
+	auto &con = KeyConsole::getInstance();
+	con.log( threadingInfo.DriverConcurrentCreates ?
 		"Resources can be created concurrently on multiple threads.\n"s :
 		"No DirectX concurrency possible\n"s );
 
-	console.log( threadingInfo.DriverCommandLists ?
+	con.log( threadingInfo.DriverCommandLists ?
 		"Command lists are supported by the current driver.\n"s :
 		"Commands lists will be emulated in software.\n"s );
 
@@ -883,11 +849,11 @@ void Graphics::interrogateDirectxFeatures()
 
 	if ( !d3d11HwOptions.MapNoOverwriteOnDynamicConstantBuffer )
 	{
-		console.log( "Constant Buffer D3D11_MAP_WRITE_NO_OVERWRITE unsupported!\n"s );
+		con.log( "Constant Buffer D3D11_MAP_WRITE_NO_OVERWRITE unsupported!\n"s );
 	}
 	if ( !d3d11HwOptions.MapNoOverwriteOnDynamicBufferSRV )
 	{
-		console.log( "Shader Resource View D3D11_MAP_WRITE_NO_OVERWRITE unsupported!\n"s );
+		con.log( "Shader Resource View D3D11_MAP_WRITE_NO_OVERWRITE unsupported!\n"s );
 	}
 
 	unsigned formatSupport;
@@ -1198,7 +1164,7 @@ void Graphics::drawStar( const float outerRadius,
 		star.emplace_back( rad * cos( float(i) * dTheta ), rad * sin( float(i) * dTheta ) );
 	}
 
-	for ( const dx::XMFLOAT2& coord : star )
+	for ( const dx::XMFLOAT2 &coord : star )
 	{
 		putPixel( coord.x, coord.y, color );
 	}

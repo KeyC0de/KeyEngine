@@ -11,15 +11,18 @@
 namespace dx = DirectX;
 
 DirectX::XMMATRIX Camera::getShadowOrthographicMatrix( const unsigned w,
-	const unsigned h ) noexcept
+	const unsigned h,
+	const float shadowCamFarZ,
+	const float shadowCamNearZ /*= 1.0f*/ ) noexcept
 {
-	return dx::XMMatrixOrthographicLH( (float) w, (float) h, 1.0f, s_shadowFarZ );
+	return dx::XMMatrixOrthographicLH( (float) w, (float) h, shadowCamNearZ, shadowCamFarZ );
 }
 
-DirectX::XMMATRIX Camera::getShadowProjectionMatrix( const float farZ ) noexcept
+DirectX::XMMATRIX Camera::getShadowProjectionMatrix( const float shadowCamFarZ,
+	const float shadowCamNearZ /*= 1.0f*/ ) noexcept
 {
 	static constexpr auto r = util::PI / 2.0f;
-	return dx::XMMatrixPerspectiveFovLH( r, 1.0f, 1.0f, s_shadowFarZ );
+	return dx::XMMatrixPerspectiveFovLH( r, 1.0f, shadowCamNearZ, shadowCamFarZ );
 }
 
 Camera::Camera( Graphics &gfx,
