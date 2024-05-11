@@ -47,3 +47,12 @@ Dumping objects ->
 Object dump complete.
 
 
+
+////////////////////////////////////////////////////
+Check for memory corruption:
+Using gflags:
+C:\WINDOWS\system32>"C:\Program Files\Windows Kits\8.1\Debuggers\x64\gflags" /p /enable "C:\Users\%username%\Documents\visual_studio_projects\KeyEngine\x64\Debug\KeyEngine.exe" /full
+
+Results are sent in debugger. Performance of the application will drop significantly while gflags is active.
+You can also check for memory issues using Application Verifier.
+
