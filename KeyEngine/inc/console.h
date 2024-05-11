@@ -26,6 +26,19 @@ class KeyConsole final
 	HANDLE m_hConsole;
 	WORD m_consoleAttributesDefault;
 	WORD m_consoleAttributes;
+
+	enum LogCategory
+	{
+		None,
+		OS,
+		Util,
+		Graphics,
+		Animation,
+		Gameplay,
+		UI,
+		Multiplayer,
+		Error,
+	};
 private:
 	KeyConsole( const std::string &fontName = "Lucida Console" );
 public:
@@ -39,9 +52,10 @@ public:
 	//	\function	print	||	\date	2020/12/30 22:19
 	//	\brief	print to stdout
 	DWORD print( const std::string &msg );
-	//	\function	log	||	\date	2020/12/30 22:19
+	DWORD log( const std::string &msg, LogCategory cat = None );
+	//	\function	error	||	\date	2020/12/30 22:19
 	//	\brief	print to stderr
-	DWORD log( const std::string &msg );
+	DWORD error( const std::string &msg );
 	//	\function	read	||	\date	2020/12/30 22:19
 	//	\brief	read from stdin, returns the string
 	std::string read( const uint32_t maxChars = 1024u );

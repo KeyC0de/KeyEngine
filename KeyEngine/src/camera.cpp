@@ -375,7 +375,7 @@ void Camera::displayImguiWidgets( Graphics &gfx ) noexcept
 #endif
 }
 
-void Camera::updateDimensions( Graphics &gfx )
+void Camera::onWindowResize( Graphics &gfx )
 {
 	m_width = gfx.getClientWidth();
 	m_height = gfx.getClientHeight();

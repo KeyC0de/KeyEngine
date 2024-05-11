@@ -1,5 +1,4 @@
 #include "game.h"
-#include "reporter_listener_events.h"
 #include "reporter_access.h"
 #include <algorithm>
 #ifndef FINAL_RELEASE
@@ -172,7 +171,7 @@ Sandbox3d::Sandbox3d( const int width,
 
 	auto &renderer = gfx.getRenderer3d();
 
-	connectEffectsToRenderer( renderer );
+	connectToRenderer( renderer );
 
 	//if ( m_pPointLight2->isCastingShadows() )
 	//{
@@ -214,7 +213,7 @@ void Sandbox3d::notify( const SwapChainResized &event )
 {
 	(void)event;
 
-	connectEffectsToRenderer( m_mainWindow.getGraphics().getRenderer3d() );
+	connectToRenderer( m_mainWindow.getGraphics().getRenderer3d() );
 }
 
 int Sandbox3d::loop()
@@ -483,7 +482,7 @@ void Sandbox3d::test()
 #endif
 }
 
-void Sandbox3d::connectEffectsToRenderer( ren::Renderer3d &renderer )
+void Sandbox3d::connectToRenderer( ren::Renderer3d &renderer )
 {
 	s_cameraMan.connectEffectsToRenderer( renderer );
 

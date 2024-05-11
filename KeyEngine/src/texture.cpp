@@ -63,7 +63,7 @@ Texture::Texture( Graphics &gfx,
 	HRESULT hres = getDevice( gfx )->CreateTexture2D( &texDesc, nullptr, &m_pTex );
 	ASSERT_HRES_IF_FAILED;
 
-#ifdef D2D_INTEROP
+#ifdef D2D_ONLY
 	// create the DXGI Surface for d2d interoperability
 	hres = m_pTex->QueryInterface( __uuidof( IDXGISurface ), reinterpret_cast<void**>( gfx.surface2d().GetAddressOf() ) );
 	ASSERT_HRES_IF_FAILED;

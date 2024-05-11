@@ -1,9 +1,9 @@
 #include "settings_manager.h"
 #include "winner.h"
-#include "INIReader.h"
 #include "console.h"
 #include "utils.h"
 #include "math_utils.h"
+#include "inih/INIReader.h"
 
 
 SettingsManager::SettingsManager( const std::string &filePath )

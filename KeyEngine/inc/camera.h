@@ -80,7 +80,7 @@ public:
 	const std::string& getName() const noexcept;
 	std::vector<DirectX::XMFLOAT4> getFrustumPlanes() const noexcept;
 	void displayImguiWidgets( Graphics &gfx ) noexcept;
-	void updateDimensions( Graphics &gfx );
+	void onWindowResize( Graphics &gfx );
 	void setTethered( const bool bTethered ) cond_noex;
 private:
 	DirectX::XMMATRIX getPositionMatrix() const noexcept;

@@ -5,6 +5,7 @@
 #include <type_traits>
 #include "window.h"
 #include "reporter_listener.h"
+#include "reporter_listener_events.h"
 #include "key_timer.h"
 #include "camera_manager.h"
 #include "light_source.h"
@@ -100,7 +101,7 @@ private:
 	void updateFixed( const float dt );
 	void render();
 	void test();
-	void connectEffectsToRenderer( ren::Renderer3d &renderer );
+	void connectToRenderer( ren::Renderer3d &renderer );
 };
 
 class Arkanoid final

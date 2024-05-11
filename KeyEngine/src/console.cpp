@@ -2,6 +2,7 @@
 #include "console.h"
 #include "os_utils.h"
 #include "utils.h"
+#include "magic_enum/magic_enum.h"
 
 #ifdef NOGDI
 # define LF_FACESIZE		32
@@ -107,15 +108,33 @@ DWORD KeyConsole::print( const std::string &msg )
 	m_hConsole = GetStdHandle( m_stdDevice );
 
 	DWORD nWritten = 0;
-	auto ret = WriteConsoleA( m_hConsole, msg.c_str(), static_cast<DWORD>( msg.length() ), &nWritten, nullptr );
-	if ( !ret )
-	{
-		OutputDebugStringW( util::printHresultErrorDescriptionW( HRESULT_FROM_WIN32( GetLastError() ) ).data() );
-	}
+	WriteConsoleA( m_hConsole, msg.c_str(), static_cast<DWORD>( msg.length() ), &nWritten, nullptr );
+	ASSERT_HRES_WIN32_IF_FAILED;
 	return nWritten;
 }
 
-DWORD KeyConsole::log( const std::string &msg )
+DWORD KeyConsole::log( const std::string &msg, LogCategory cat /*= None*/ )
+{
+	m_hMode = stdout;
+	m_fp = freopen( "CONOUT$", "w", m_hMode );
+	m_stdDevice = STD_OUTPUT_HANDLE;
+	m_hConsole = GetStdHandle( m_stdDevice );
+
+	std::string categoryStr;
+	if ( cat != LogCategory::None )
+	{
+		using namespace std::string_literals;
+		categoryStr = std::string{magic_enum::enum_name(cat)} + ": "s;
+	}
+	const std::string logStr = categoryStr + msg;
+
+	DWORD nWritten = 0;
+	WriteConsoleA( m_hConsole, logStr.c_str(), static_cast<DWORD>( logStr.length() ), &nWritten, nullptr );
+	ASSERT_HRES_WIN32_IF_FAILED;
+	return nWritten;
+}
+
+DWORD KeyConsole::error( const std::string &msg )
 {
 	m_hMode = stderr;
 	m_fp = freopen( "CONERR$", "w", m_hMode );
@@ -123,11 +142,8 @@ DWORD KeyConsole::log( const std::string &msg )
 	m_hConsole = GetStdHandle( m_stdDevice );
 
 	DWORD nWritten = 0;
-	auto ret = WriteConsoleA( m_hConsole, msg.c_str(), static_cast<DWORD>( msg.length() ), &nWritten, nullptr );
-	if ( !ret )
-	{
-		OutputDebugStringW( util::printHresultErrorDescriptionW( HRESULT_FROM_WIN32( GetLastError() ) ).data() );
-	}
+	WriteConsoleA( m_hConsole, msg.c_str(), static_cast<DWORD>( msg.length() ), &nWritten, nullptr );
+	ASSERT_HRES_WIN32_IF_FAILED;
 	return nWritten;
 }
 
@@ -142,12 +158,9 @@ std::string KeyConsole::read( const uint32_t maxChars )
 	std::string buff;
 	buff.reserve( maxChars );
 	buff.resize( maxChars );
-	auto ret = ReadConsoleA( m_hConsole, buff.data(), maxChars, &nRead, nullptr );
+	ReadConsoleA( m_hConsole, buff.data(), maxChars, &nRead, nullptr );
 	buff.resize( nRead - 2 );	// removing superfluous size including the size needed for \r\n
-	if ( !ret )
-	{
-		OutputDebugStringW( util::printHresultErrorDescriptionW( HRESULT_FROM_WIN32( GetLastError() ) ).data() );
-	}
+	ASSERT_HRES_WIN32_IF_FAILED;
 	return buff;
 }
 
@@ -307,14 +320,7 @@ DWORD KeyConsole::getFontFamily( const HANDLE h )
 {
 	CONSOLE_FONT_INFO cfi;
 	BOOL conFont = GetCurrentConsoleFont( h, false, &cfi );
-	std::cout << conFont
-		<< "\nnFont="
-		<< cfi.nFont
-		<< "fontSize=("
-		<< cfi.dwFontSize.X
-		<< ','
-		<< cfi.dwFontSize.Y
-		<< ")\n";
+	std::cout << conFont << "\nnFont=" << cfi.nFont << "fontSize=(" << cfi.dwFontSize.X << ',' << cfi.dwFontSize.Y << ")\n";
 	return conFont ? cfi.nFont : -1;
 }
 
@@ -325,11 +331,7 @@ void KeyConsole::getConsoleInfo( const HANDLE h )
 	auto GetNumberOfConsoleFonts = (GETNUMBEROFCONSOLEFONTS) GetProcAddress( LoadLibraryW( L"KERNEL32" ), "GetNumberOfConsoleFonts" );
 	auto SetConsoleFont = (SETCONSOLEFONT) GetProcAddress( LoadLibraryW( L"KERNEL32" ), "SetConsoleFont" );
 	auto font = getFontFamily( h );
-	std::cout << "nConsoleFonts="
-		<< GetNumberOfConsoleFonts()
-		<< "fontName="
-		<< font
-		<< '\n';
+	std::cout << "nConsoleFonts=" << GetNumberOfConsoleFonts() << "fontName=" << font << '\n';
 }
 
 bool KeyConsole::setDefaultColor()

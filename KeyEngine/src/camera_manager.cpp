@@ -73,11 +73,11 @@ void CameraManager::render( const size_t channels /*= rch::all*/ ) const
 	}
 }
 
-void CameraManager::updateDimensions( Graphics &gfx )
+void CameraManager::onWindowResize( Graphics &gfx )
 {
 	for ( auto& cam : m_cameras )
 	{
-		cam->updateDimensions( gfx );
+		cam->onWindowResize( gfx );
 	}
 }
 

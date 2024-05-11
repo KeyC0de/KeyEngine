@@ -1,6 +1,6 @@
 #pragma once
 
-#ifdef D2D_INTEROP
+#ifdef D2D_ONLY
 #include "graphics.h"
 #include <wincodec.h>
 #include "non_copyable.h"

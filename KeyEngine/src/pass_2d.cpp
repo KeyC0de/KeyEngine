@@ -66,7 +66,7 @@ Pass2D::Pass2D( Graphics &gfx,
 
 	addPassBindable( std::make_shared<Texture>( gfx, gfx.getClientWidth(), gfx.getClientHeight(), 0u ) );
 
-#ifdef D2D_INTEROP
+#ifdef D2D_ONLY
 	gfx.create2dInteroperability();
 #endif
 

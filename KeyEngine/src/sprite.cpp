@@ -1,4 +1,4 @@
-#ifdef D2D_INTEROP
+#ifdef D2D_ONLY
 #include "sprite.h"
 #include "os_utils.h"
 
