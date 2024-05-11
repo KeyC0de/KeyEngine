@@ -302,8 +302,12 @@
     <ClCompile Include="src\string_buffer.cpp" />
     <ClCompile Include="src\sysmetrics.cpp" />
     <ClCompile Include="src\terrain.cpp" />
-    <ClCompile Include="src\testing.cpp" />
-    <ClCompile Include="src\main_test.cpp" />
+    <ClCompile Include="src\testing.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\main_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="src\texture.cpp" />
     <ClCompile Include="src\texture_desc.cpp" />
     <ClCompile Include="src\texture_sampler_state.cpp" />

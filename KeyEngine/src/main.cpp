@@ -159,9 +159,7 @@ void finally( const std::exception_ptr &exceptionPtr )
 #	ifndef NO_DUMPS
 	if ( g_windowsExceptionOccurred )
 	{
-		const std::string &dumpLog = "\nMiniDump Location = "s
-			+ util::ws2s( g_dumpFile )
-			+ "\n"s;
+		const std::string &dumpLog = "\nMiniDump Location = "s + util::ws2s( g_dumpFile ) + "\n"s;
 		console.log( dumpLog );
 		OutputDebugStringA( dumpLog.c_str() );
 	}

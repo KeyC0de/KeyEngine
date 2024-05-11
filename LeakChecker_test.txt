@@ -1,0 +1,38 @@
+Leak checker test by putting:
+int *i = new int[1024];
+in main function
+
+LeakChecker output as a static global variable
+==============================================
+_CrtMemDifference output = 10 bytes in 0 Free Blocks.
+4096 bytes in 1 Normal Blocks.
+11557 bytes in 41 CRT Blocks.
+0 bytes in 0 Ignore Blocks.
+0 bytes in 0 Client Blocks.
+Largest number used: 33788351 bytes.
+Total allocations: 649550233 bytes.
+Detected memory leaks!
+Dumping objects ->
+{1649011} normal block at 0x00000211D209B2C0, 4096 bytes long.
+ Data: <                > CD CD CD CD CD CD CD CD CD CD CD CD CD CD CD CD 
+Object dump complete.
+
+Leaking.
+
+
+LeakChecker output as a non-Static global variable
+==================================================
+
+_CrtMemDifference output = 10 bytes in 0 Free Blocks.
+4096 bytes in 1 Normal Blocks.
+11557 bytes in 41 CRT Blocks.
+0 bytes in 0 Ignore Blocks.
+0 bytes in 0 Client Blocks.
+Largest number used: 33788351 bytes.
+Total allocations: 661748825 bytes.
+Detected memory leaks!
+Dumping objects ->
+{2202444} normal block at 0x000001EB1784B2B0, 4096 bytes long.
+ Data: <                > CD CD CD CD CD CD CD CD CD CD CD CD CD CD CD CD 
+Object dump complete.
+

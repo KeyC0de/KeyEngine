@@ -106,6 +106,13 @@ static_assert( _MSVC_LANG >= 201703L, "C++17 language conformance or later requi
 #	undef _ALLOW_KEYWORD_MACROS
 #endif // _ALLOW_KEYWORD_MACROS
 
+#if defined _DEBUG && !defined NDEBUG
+#	define	_CRTDBG_MAP_ALLOC
+#	define	_CRTDBG_MAP_ALLOC_NEW
+#	include <stdlib.h>
+#	include <crtdbg.h>
+#endif	// _DEBUG
+
 #include <Windows.h>
 
 

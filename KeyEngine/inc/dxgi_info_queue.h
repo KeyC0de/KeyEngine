@@ -4,9 +4,7 @@
 #include <string>
 #include <dxgidebug.h>
 #include "console.h"
-#pragma warning( disable: 4265 )
-#	include <wrl.h>
-#pragma warning( default: 4265 )
+#include "key_wrl.h"
 
 
 // ref: https://walbourn.github.io/dxgi-debug-device/
