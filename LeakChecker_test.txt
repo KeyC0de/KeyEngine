@@ -1,3 +1,13 @@
+To show file name of the leak use:
+#ifdef _DEBUG
+#	define DEBUG_NEW new(_NORMAL_BLOCK, __FILE__, __LINE__)
+#	define new DEBUG_NEW
+#endif
+after you include #include <crtdbg.h>
+I haven't done it because it yields errors in some external files I'm apparently including.
+
+
+////////////////////////////////////////////////
 Leak checker test by putting:
 int *i = new int[1024];
 in main function
@@ -35,4 +45,5 @@ Dumping objects ->
 {2202444} normal block at 0x000001EB1784B2B0, 4096 bytes long.
  Data: <                > CD CD CD CD CD CD CD CD CD CD CD CD CD CD CD CD 
 Object dump complete.
+
 

@@ -33,6 +33,7 @@ BSTR strToBstr( const std::wstring &str );
 
 __int64 filetimeToInt64( const FILETIME &fileTime );
 void pinThreadToCore( const HANDLE hThread, const DWORD core );
+void setCurrentThreadName( const std::string &name );
 
 std::string getKnownFolderPath( const int id = CSIDL_PERSONAL );
 

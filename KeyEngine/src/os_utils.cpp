@@ -90,6 +90,15 @@ void pinThreadToCore( const HANDLE hThread,
 	auto ret = SetThreadAffinityMask( GetCurrentThread(), mask );
 }
 
+void setCurrentThreadName( const std::string &name )
+{
+	// Thread objects in the Windows OS do not have a name. Naming threads is purely a feature of the debugger.
+	// The function to 'set' a thread's name is SetThreadName and it raises an MS_VC_EXCEPTION that's caught by the debugger, and the information used for the debugging experience. If no debugger is present, the exception filter simply continues execution. Unless you attach a debugger the function call will fail.
+	// The description of a thread can be set more than once; the most recently set value is used. You can retrieve the description of a thread by calling GetThreadDescription.
+	HRESULT hres = SetThreadDescription( GetCurrentThread(), L"ThisIsMyThreadName!" );
+	ASSERT_HRES_IF_FAILED( hres );
+}
+
 std::string getKnownFolderPath( const int id /*= CSIDL_PERSONAL*/ )
 {
 	std::wstring myDocuments;
