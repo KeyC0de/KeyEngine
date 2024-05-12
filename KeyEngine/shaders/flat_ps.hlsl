@@ -1,4 +1,4 @@
-cbuffer ColorPCB : register(b0)
+cbuffer ColorPSCB : register(b0)
 {
 	float3 materialColor;
 };

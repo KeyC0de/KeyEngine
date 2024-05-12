@@ -345,7 +345,7 @@ int Sandbox3d::checkInput( const float dt )
 		}//switch
 	}
 
-	const float camSpeed = keyboard.isKeyPressed( VK_SHIFT ) ? 4.0f : 1.0f;
+	const float camSpeed = keyboard.isKeyPressed( VK_SHIFT ) ? 6.0f : 1.0f;
 
 	auto &activeCamera = s_cameraMan.getActiveCamera();
 	if ( !m_mainWindow.isCursorEnabled() )
@@ -385,8 +385,7 @@ int Sandbox3d::checkInput( const float dt )
 	{
 		if ( !m_mainWindow.isCursorEnabled() )
 		{
-			const int camRotMult = 32;
-			activeCamera.rotateRel( dt * camSpeed * camRotMult * delta->m_dx, dt * camSpeed * camRotMult * delta->m_dy );
+			activeCamera.rotateRel( dt * camSpeed * delta->m_dx, dt * camSpeed * delta->m_dy );
 		}
 	}
 
@@ -514,7 +513,7 @@ Arkanoid::Arkanoid( const int width,
 	:
 	Game(width, height, "Arkanoid", x, y),
 	m_ball(dx::XMFLOAT2{450.0f, 450.0f}, dx::XMFLOAT2{-300.0f, -300.0f}),
-	m_walls(Rect(0.0f, (float)width, 0.0f, (float)height)),
+	m_walls(R3ctangle(0.0f, (float)width, 0.0f, (float)height)),
 	m_paddle(dx::XMFLOAT2(400.0f, 550.0f), 40.0f, 8.0f, col::Cyan, col::Orange),
 	m_brickSound("assets/sfx/arkanoid_brick.wav", "Arkanoid Brick"),
 	m_padSound("assets/sfx/arkanoid_pad.wav", "Arkanoid Pad")
@@ -529,7 +528,7 @@ Arkanoid::Arkanoid( const int width,
 		for ( int xi = 0; xi < s_nBricksHorizontally; ++xi )
 		{
 			auto curBrickTopLeftOffset = dx::XMFLOAT2{xi * s_brickWidth, yi * s_brickHeight};
-			m_bricks[i] = Brick{Rect{dx::XMFLOAT2{topLeft.x + curBrickTopLeftOffset.x, topLeft.y + curBrickTopLeftOffset.y}, s_brickWidth, s_brickHeight}, rowCol};
+			m_bricks[i] = Brick{R3ctangle{dx::XMFLOAT2{topLeft.x + curBrickTopLeftOffset.x, topLeft.y + curBrickTopLeftOffset.y}, s_brickWidth, s_brickHeight}, rowCol};
 			++i;
 		}
 	}

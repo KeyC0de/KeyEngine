@@ -44,12 +44,12 @@ CameraFrustum::CameraFrustum( Graphics &gfx,
 		front.addBindable( std::move( pVs ) );
 		front.addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
 
-		struct ColorPCB
+		struct ColorPSCB
 		{
 			dx::XMFLOAT3 color{0.6f, 0.2f, 0.2f};
 			float padding = 0.0f;
-		} colorPcb;
-		front.addBindable( PixelShaderConstantBuffer<ColorPCB>::fetch( gfx, colorPcb, 0u ) );
+		} colorPscb;
+		front.addBindable( PixelShaderConstantBuffer<ColorPSCB>::fetch( gfx, colorPscb, 0u ) );
 		front.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
 
 		addEffect( std::move( front ) );
@@ -63,12 +63,12 @@ CameraFrustum::CameraFrustum( Graphics &gfx,
 		occluded.addBindable( std::move( pvs ) );
 		occluded.addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
 
-		struct ColorPCB2
+		struct ColorPSCB2
 		{
 			dx::XMFLOAT3 color{0.15f, 0.08f, 0.08f};
 			float padding = 0.0f;
-		} colorPcb;
-		occluded.addBindable( PixelShaderConstantBuffer<ColorPCB2>::fetch( gfx, colorPcb, 0u ) );
+		} colorPscb;
+		occluded.addBindable( PixelShaderConstantBuffer<ColorPSCB2>::fetch( gfx, colorPscb, 0u ) );
 		occluded.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
 
 		addEffect( std::move( occluded ) );

@@ -40,13 +40,13 @@ CameraWidget::CameraWidget( Graphics &gfx,
 
 		wireframe.addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
 
-		struct ColorPCB
+		struct ColorPSCB
 		{
 			dx::XMFLOAT3 color{0.2f, 0.2f, 0.6f};
 			float paddingPlaceholder = 0.0f;
-		} colorPcb;
+		} colorPscb;
 
-		wireframe.addBindable( PixelShaderConstantBuffer<ColorPCB>::fetch( gfx, colorPcb, 0u ) );
+		wireframe.addBindable( PixelShaderConstantBuffer<ColorPSCB>::fetch( gfx, colorPscb, 0u ) );
 		wireframe.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
 
 		addEffect( std::move( wireframe ) );

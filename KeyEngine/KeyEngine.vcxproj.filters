@@ -337,9 +337,6 @@
     <ClCompile Include="src\terrain.cpp">
       <Filter>engine\vfx\renderables</Filter>
     </ClCompile>
-    <ClCompile Include="src\font_pass.cpp">
-      <Filter>engine\vfx\pass</Filter>
-    </ClCompile>
     <ClCompile Include="src\texture_desc.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
@@ -381,6 +378,12 @@
     </ClCompile>
     <ClCompile Include="src\reporter_access.cpp">
       <Filter>engine\common_util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui_component.cpp">
+      <Filter>engine\vfx\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui_pass.cpp">
+      <Filter>engine\vfx\pass</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1035,9 +1038,6 @@
     <ClInclude Include="inc\pass_through.h">
       <Filter>engine\vfx\pass</Filter>
     </ClInclude>
-    <ClInclude Include="inc\font_pass.h">
-      <Filter>engine\vfx\pass</Filter>
-    </ClInclude>
     <ClInclude Include="inc\terrain.h">
       <Filter>engine\vfx\renderables</Filter>
     </ClInclude>
@@ -1130,6 +1130,12 @@
     </ClInclude>
     <ClInclude Include="inc\reporter_access.h">
       <Filter>engine\common_util</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\ui_component.h">
+      <Filter>engine\vfx\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\ui_pass.h">
+      <Filter>engine\vfx\pass</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1252,9 +1258,6 @@
     <Filter Include="engine\gameplay">
       <UniqueIdentifier>{1039e577-9966-4205-951b-f77e90e733f8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="engine\ui">
-      <UniqueIdentifier>{e8dfe790-33e1-4de3-af86-47ec7add9c58}</UniqueIdentifier>
-    </Filter>
     <Filter Include="engine\scripts">
       <UniqueIdentifier>{ad7845c9-a9a6-4d4b-9c03-07302b9a4004}</UniqueIdentifier>
     </Filter>
@@ -1324,6 +1327,9 @@
     <Filter Include="games\3d">
       <UniqueIdentifier>{3f3affd8-58de-43c3-8a27-acffaeb3e31b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="engine\vfx\ui">
+      <UniqueIdentifier>{e8dfe790-33e1-4de3-af86-47ec7add9c58}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="shaders\blur_separ_ps.hlsl">
@@ -1333,9 +1339,6 @@
       <Filter>engine\vfx\shaders</Filter>
     </FxCompile>
     <FxCompile Include="shaders\cube_vs.hlsl">
-      <Filter>engine\vfx\shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="shaders\digital_brain.hlsl">
       <Filter>engine\vfx\shaders</Filter>
     </FxCompile>
     <FxCompile Include="shaders\flat_ps.hlsl">

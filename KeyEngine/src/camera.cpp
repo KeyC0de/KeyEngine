@@ -24,19 +24,22 @@ DirectX::XMMATRIX Camera::getShadowProjectionMatrix( const float shadowCamFarZ,
 	static constexpr auto r = util::PI / 2.0f;
 	return dx::XMMatrixPerspectiveFovLH( r, 1.0f, shadowCamNearZ, shadowCamFarZ );
 }
-
 Camera::Camera( Graphics &gfx,
 	const std::string &name,
 	const int width,
 	const int height,
-	const float fovDegrees,
-	const DirectX::XMFLOAT3 &homePos,
-	const float homePitch,
-	const float homeYaw,
-	const bool bTethered,
-	const float nearZ,
-	const float farZ ) noexcept
+	const float fovDegrees /*= 90.0f*/,
+	const DirectX::XMFLOAT3 &homePos /*= {0.0f, 0.0f, 0.0f}*/,
+	const float homePitch /*= 0.0f*/,
+	const float homeYaw /*= 0.0f*/,
+	const bool bTethered /*= false*/,
+	const float nearZ /*= 0.5f*/,
+	const float farZ /*= 200.0f*/,
+	const float translationSpeed /*= 16.0f*/,
+	const float rotationSpeed /*= 0.096f*/ ) noexcept
 	:
+	m_translationSpeed{translationSpeed},
+	m_rotationSpeed{rotationSpeed},
 	m_name(name),
 	m_aspectRatio(static_cast<float>(width) / height),
 	m_fovRadians{dx::XMConvertToRadians( fovDegrees )},
@@ -175,7 +178,7 @@ void Camera::translateRel( DirectX::XMFLOAT3 translation ) noexcept
 	}
 	m_positionPrev = m_position;
 
-	dx::XMStoreFloat3( &translation, dx::XMVector3Transform( dx::XMLoadFloat3( &translation ), dx::XMMatrixScaling( m_travelSpeed, m_travelSpeed, m_travelSpeed ) * getRotationMatrix() ) );
+	dx::XMStoreFloat3( &translation, dx::XMVector3Transform( dx::XMLoadFloat3( &translation ), dx::XMMatrixScaling( m_translationSpeed, m_translationSpeed, m_translationSpeed ) * getRotationMatrix() ) );
 	m_position = {m_position.x + translation.x, m_position.y + translation.y, m_position.z + translation.z};
 	m_cameraFrustum.setPosition( m_position );
 	m_cameraWidget.setPosition( m_position );
@@ -385,6 +388,16 @@ void Camera::onWindowResize( Graphics &gfx )
 void Camera::setTethered( const bool bTethered ) cond_noex
 {
 	m_bTethered = bTethered;
+}
+
+void Camera::setRotationSpeed( const float rotationSpeed ) noexcept
+{
+	m_rotationSpeed = rotationSpeed;
+}
+
+float Camera::getRotationSpeed() const noexcept
+{
+	return m_rotationSpeed;
 }
 
 DirectX::XMMATRIX Camera::getPositionMatrix() const noexcept

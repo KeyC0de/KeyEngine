@@ -6,7 +6,7 @@
 class Plane
 	: public Mesh
 {
-	struct ColorPCB
+	struct ColorPSCB
 	{
 		DirectX::XMFLOAT3 color;
 		float padding = 0.0f;

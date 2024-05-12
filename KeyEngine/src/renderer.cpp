@@ -21,7 +21,7 @@
 #include "negative_pass.h"
 #include "blur_pass.h"
 #include "pass_through.h"
-#include "font_pass.h"
+#include "ui_pass.h"
 #include "pass_2d.h"
 #include "render_target.h"
 #ifndef FINAL_RELEASE
@@ -413,7 +413,7 @@ void Renderer3d::recreate( Graphics &gfx )
 		m_pFinalPostProcessPass = std::make_unique<ren::PassThrough>( gfx, "passthrough" );
 	}
 
-	m_pFontPass = std::make_unique<ren::FontPass>( gfx, "fpsText", "myComicSansMSSpriteFont" );
+	m_pFontPass = std::make_unique<ren::UIPass>( gfx, "ui", "myComicSansMSSpriteFont" );
 }
 
 void Renderer3d::displayImguiWidgets( Graphics &gfx ) noexcept

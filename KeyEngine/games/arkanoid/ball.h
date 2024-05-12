@@ -4,7 +4,7 @@
 
 
 class Graphics;
-struct Rect;
+struct R3ctangle;
 
 class Ball
 {
@@ -16,13 +16,13 @@ public:
 
 	void update( const float dt );
 	void render( Graphics &gfx ) cond_noex;
-	bool doWallCollision( const Rect &wall );
+	bool doWallCollision( const R3ctangle &wall );
 	//===================================================
 	//	\function	reboundX, reboundY	||	\date	2021/10/17 3:43
 	//	\brief	direction up = [0, 1] , down = [0, -1] , left = [0, -1] , right = [0, 1]
 	void reboundX();
 	void reboundY();
-	Rect rect() const noexcept;
+	R3ctangle rect() const noexcept;
 	const DirectX::XMFLOAT2& getVelocity() const noexcept;
 	const DirectX::XMFLOAT2& getPosition() const noexcept;
 };

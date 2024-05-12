@@ -147,8 +147,7 @@ void firstly()
 			std::abort();
 		} );
 
-	std::signal( SIGINT,
-		installSigintHandler );
+	std::signal( SIGINT, installSigintHandler );
 }
 
 void finally( const std::exception_ptr &exceptionPtr )

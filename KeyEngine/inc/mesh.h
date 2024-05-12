@@ -24,12 +24,6 @@ namespace ver
 	class VBuffer;
 }
 
-//=============================================================
-//	\class	Mesh
-//	\author	KeyC0de
-//	\date	2022/09/12 23:26
-//	\brief	imported Models will be handled via Mesh
-//=============================================================
 class Mesh
 {
 	mutable DirectX::XMFLOAT4X4 m_worldTransform;

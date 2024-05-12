@@ -114,7 +114,7 @@ class Arkanoid final
 	static constexpr inline int s_nBricks = s_nBricksHorizontally * s_nBricksVertically;
 	static constexpr inline float s_speed = 300.0f;
 	Ball m_ball;
-	Rect m_walls;
+	R3ctangle m_walls;
 	Brick m_bricks[s_nBricks];
 	Paddle m_paddle;
 	Sound m_brickSound;

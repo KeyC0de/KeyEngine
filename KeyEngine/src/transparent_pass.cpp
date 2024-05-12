@@ -17,6 +17,7 @@ TransparentPass::TransparentPass( Graphics &gfx,
 	:
 	RenderQueuePass{name, {}, true}
 {
+	// #FIXME: load transparent meshes properly
 	//addPassBindable( BlendState::fetch( gfx, BlendState::Mode::Alpha, 0u ) );
 
 	addPassBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );

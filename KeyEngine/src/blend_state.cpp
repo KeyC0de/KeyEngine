@@ -85,13 +85,13 @@ BlendState::BlendState( Graphics &gfx,
 		}
 	}
 
-	HRESULT hres = getDevice( gfx )->CreateBlendState( &blendStateDesc, &m_pBlendState );
+	HRESULT hres = getDevice( gfx )->CreateBlendState( &blendStateDesc, &m_pD3dBlendState );
 	ASSERT_HRES_IF_FAILED;
 }
 
 void BlendState::bind( Graphics &gfx ) cond_noex
 {
-	getDeviceContext( gfx )->OMSetBlendState( m_pBlendState.Get(), m_blendFactors->data(), m_multisampleMask );
+	getDeviceContext( gfx )->OMSetBlendState( m_pD3dBlendState.Get(), m_blendFactors->data(), m_multisampleMask );
 	DXGI_GET_QUEUE_INFO( gfx );
 }
 
@@ -216,4 +216,9 @@ std::array<float, 4>& BlendState::blendFactors()
 const BlendState::Mode& BlendState::getBlendMode() const noexcept
 {
 	return m_mode;
+}
+
+Microsoft::WRL::ComPtr<ID3D11BlendState>& BlendState::getD3dBlendState()
+{
+	return m_pD3dBlendState;
 }

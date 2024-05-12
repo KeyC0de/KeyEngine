@@ -21,6 +21,12 @@ namespace ren
 	class Renderer;
 }
 
+//=============================================================
+//	\class	Model
+//	\author	KeyC0de
+//	\date	2022/09/12 23:26
+//	\brief	imported meshes will be handled via the Model class
+//=============================================================
 class Model
 {
 	std::unique_ptr<Node> m_pRoot;

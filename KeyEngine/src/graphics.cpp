@@ -22,6 +22,7 @@
 #include "renderer.h"
 #include "camera_manager.h"
 #include "camera.h"
+#include "rectangle.h"
 
 #pragma comment( lib, "dxgi.lib" )
 #pragma comment( lib, "d3d11.lib" )
@@ -922,6 +923,15 @@ void Graphics::putPixel( const int x,
 	m_pCpuBuffer[m_width * y + x] = color;
 }
 
+void Graphics::putPixel( const int x,
+	const int y,
+	const int r,
+	const int g,
+	const int b )
+{
+	putPixel( x, y, {static_cast<BYTE>( r ), static_cast<BYTE>( g ), static_cast<BYTE>( b )} );
+}
+
 void Graphics::drawLine( int x0,
 	int x1,
 	int y0,
@@ -997,6 +1007,21 @@ void Graphics::drawRectangle( int x0,
 			putPixel( x, y, col );
 		}
 	}
+}
+
+void Graphics::drawRectangle( const R3ctangle &rect,
+	const ColorBGRA col )
+{
+	drawRectangle( static_cast<int>( rect.m_left ), static_cast<int>( rect.m_top ), static_cast<int>( rect.m_right ), static_cast<int> ( rect.m_bottom ), col );
+}
+
+void Graphics::drawRectWH( const int x0,
+	const int y0,
+	const int width,
+	const int height,
+	const ColorBGRA col )
+{
+	drawRectangle( x0, y0, x0 + width, y0 + height, col );
 }
 
 void Graphics::drawTriangle( int x0,
@@ -1169,7 +1194,22 @@ private boolean isUnderGround(Vector3f testPoint) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 #ifdef D2D_ONLY
 /// d2d only
-void Graphics::create2dInteroperability()
+void Graphics::begin2dDraw()
+{
+	m_p2DRenderTarget->BeginDraw();
+}
+
+void Graphics::end2dDraw()
+{
+	m_p2DRenderTarget->EndDraw();
+}
+
+void Graphics::clear( const D2D1::ColorF &rgb = D2D1::ColorF{0.0f, 0.0f, 0.0f} )
+{
+	m_p2DRenderTarget->Clear( rgb );
+}
+
+void Graphics::create2dFactory()
 {
 	ASSERT( m_p2DSurface, "DXGISurface has not been created!" );
 

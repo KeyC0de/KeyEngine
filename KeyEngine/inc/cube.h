@@ -7,7 +7,7 @@ class Cube
 	: public Mesh
 {
 	static inline constexpr const char *s_geometryTag = "$cube";
-	struct ColorPCB
+	struct ColorPSCB
 	{
 		DirectX::XMFLOAT4 color;
 	} m_colPcb;

@@ -130,18 +130,18 @@ Cube::Cube( Graphics &gfx,
 	}
 	if ( color.w < 1.0f )
 	{
-	// transparent effect - #FIXME: doesn't work
+	// transparent effect - #FIXME: doesn't work, maybe put the transparent pass first
 		Effect transparent{rch::transparent, "transparent", false};
 		transparent.addBindable( transformVscb );
 
-		transparent.addBindable( Texture::fetch( gfx, "assets/models/brick_wall/brick_wall_diffuse.jpg", 0u ) );
-		transparent.addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
+		//transparent.addBindable( Texture::fetch( gfx, "assets/models/brick_wall/brick_wall_diffuse.jpg", 0u ) );
+		//transparent.addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
 
-		auto pVs = VertexShader::fetch( gfx, "cube_vs.cso" );
-		transparent.addBindable( InputLayout::fetch( gfx, cube.m_vb.getLayout(), *pVs ) );
-		transparent.addBindable( std::move( pVs ) );
+		//auto pVs = VertexShader::fetch( gfx, "cube_vs.cso" );
+		//transparent.addBindable( InputLayout::fetch( gfx, cube.m_vb.getLayout(), *pVs ) );
+		//transparent.addBindable( std::move( pVs ) );
 
-		transparent.addBindable( PixelShader::fetch( gfx, "cube_ps.cso" ) );
+		//transparent.addBindable( PixelShader::fetch( gfx, "cube_ps.cso" ) );
 
 		transparent.addBindable( std::make_shared<BlendState>( gfx, BlendState::Mode::Alpha, 0u, color.w ) );
 

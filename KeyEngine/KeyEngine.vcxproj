@@ -217,7 +217,7 @@
     <ClCompile Include="src\effect.cpp" />
     <ClCompile Include="src\reporter_access.cpp" />
     <ClCompile Include="src\imgui_visitors.cpp" />
-    <ClCompile Include="src\font_pass.cpp" />
+    <ClCompile Include="src\ui_pass.cpp" />
     <ClCompile Include="src\camera_frustum.cpp" />
     <ClCompile Include="src\fullscreen_pass.cpp" />
     <ClCompile Include="src\geometry.cpp" />
@@ -304,9 +304,13 @@
     <ClCompile Include="src\terrain.cpp" />
     <ClCompile Include="src\testing.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="src\main_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="src\texture.cpp" />
     <ClCompile Include="src\texture_desc.cpp" />
@@ -315,6 +319,7 @@
     <ClCompile Include="src\transform_vscb.cpp" />
     <ClCompile Include="src\transparent_pass.cpp" />
     <ClCompile Include="src\triangle_mesh.cpp" />
+    <ClCompile Include="src\ui_component.cpp" />
     <ClCompile Include="src\utils.cpp" />
     <ClCompile Include="src\util_exception.cpp" />
     <ClCompile Include="src\vertex_buffer.cpp" />
@@ -402,7 +407,7 @@
     <ClInclude Include="inc\effect.h" />
     <ClInclude Include="inc\reporter_access.h" />
     <ClInclude Include="inc\imgui_visitors.h" />
-    <ClInclude Include="inc\font_pass.h" />
+    <ClInclude Include="inc\ui_pass.h" />
     <ClInclude Include="inc\camera_frustum.h" />
     <ClInclude Include="inc\fullscreen_pass.h" />
     <ClInclude Include="inc\geometry.h" />
@@ -465,6 +470,7 @@
     <ClInclude Include="inc\transparent_pass.h" />
     <ClInclude Include="inc\triangle_mesh.h" />
     <ClInclude Include="inc\types.h" />
+    <ClInclude Include="inc\ui_component.h" />
     <ClInclude Include="inc\util_exception.h" />
     <ClInclude Include="inc\vertex_buffer.h" />
     <ClInclude Include="inc\vertex_shader.h" />
@@ -664,12 +670,6 @@
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\$(Configuration)\shaders\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
     <FxCompile Include="shaders\cube_vs.hlsl">
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\$(Configuration)\shaders\%(Filename).cso</ObjectFileOutput>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\$(Configuration)\shaders\%(Filename).cso</ObjectFileOutput>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\$(Configuration)\shaders\%(Filename).cso</ObjectFileOutput>
-    </FxCompile>
-    <FxCompile Include="shaders\digital_brain.hlsl">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)int\$(Platform)\$(Configuration)\shaders\%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\$(Configuration)\shaders\%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\$(Configuration)\shaders\%(Filename).cso</ObjectFileOutput>

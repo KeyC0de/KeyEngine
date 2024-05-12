@@ -6,7 +6,6 @@
 #include "depth_stencil_view.h"
 #include "rasterizer_state.h"
 #include "depth_stencil_state.h"
-#include "blend_state.h"
 
 
 namespace ren

@@ -4,7 +4,7 @@
 
 namespace dx = DirectX;
 
-Rect::Rect( const float left,
+R3ctangle::R3ctangle( const float left,
 	const float right,
 	const float top,
 	const float bottom )
@@ -17,24 +17,24 @@ Rect::Rect( const float left,
 
 }
 
-Rect::Rect( const dx::XMFLOAT2 &topLeft,
+R3ctangle::R3ctangle( const dx::XMFLOAT2 &topLeft,
 	const dx::XMFLOAT2 &bottomRight )
 	:
-	Rect{topLeft.x, bottomRight.x, topLeft.y, bottomRight.y}
+	R3ctangle{topLeft.x, bottomRight.x, topLeft.y, bottomRight.y}
 {
 
 }
 
-Rect::Rect( const dx::XMFLOAT2 &topLeft,
+R3ctangle::R3ctangle( const dx::XMFLOAT2 &topLeft,
 	const float width,
 	const float height )
 	:
-	Rect{topLeft.x, topLeft.x + width, topLeft.y, topLeft.y + height}
+	R3ctangle{topLeft.x, topLeft.x + width, topLeft.y, topLeft.y + height}
 {
 
 }
 
-Rect Rect::makeGivenCenter( const dx::XMFLOAT2 &center,
+R3ctangle R3ctangle::makeGivenCenter( const dx::XMFLOAT2 &center,
 	const float halfWidth,
 	const float halfHeight)
 {
@@ -43,7 +43,7 @@ Rect Rect::makeGivenCenter( const dx::XMFLOAT2 &center,
 	return {topLeft, bottomRight};
 }
 
-bool Rect::isOverlappingWith( const Rect &other ) const noexcept
+bool R3ctangle::isOverlappingWith( const R3ctangle &other ) const noexcept
 {
 	/*return right > other.left
 		&& left < other.right
@@ -55,22 +55,22 @@ bool Rect::isOverlappingWith( const Rect &other ) const noexcept
 		&& std::min( m_top, m_bottom ) < std::max( other.m_top, other.m_bottom );
 }
 
-Rect Rect::calcScaled( const float offset ) const noexcept
+R3ctangle R3ctangle::calcScaled( const float offset ) const noexcept
 {
-	return Rect{m_left - offset, m_right + offset, m_top - offset, m_bottom + offset};
+	return R3ctangle{m_left - offset, m_right + offset, m_top - offset, m_bottom + offset};
 }
 
-float Rect::getWidth() const noexcept
+float R3ctangle::getWidth() const noexcept
 {
 	return m_right - m_left;
 }
 
-float Rect::getHeight() const noexcept
+float R3ctangle::getHeight() const noexcept
 {
 	return m_bottom - m_top;
 }
 
-dx::XMFLOAT2 Rect::calcCenter() const noexcept
+dx::XMFLOAT2 R3ctangle::calcCenter() const noexcept
 {
 	return dx::XMFLOAT2{(m_left + m_right) / 2.0f, (m_top + m_bottom) / 2.0f};
 }

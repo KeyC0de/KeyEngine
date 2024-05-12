@@ -2,7 +2,6 @@
 #include "index_buffer.h"
 #include "geometry.h"
 #include "input_layout.h"
-#include "blend_state.h"
 #include "pixel_shader.h"
 #include "transform_vscb.h"
 #include "vertex_buffer.h"
@@ -125,13 +124,13 @@ Terrain::Terrain( Graphics &gfx,
 
 		wireframe.addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
 
-		struct ColorPCB
+		struct ColorPSCB
 		{
 			dx::XMFLOAT3 color{1.0f, 1.0f, 1.0f};
 			float paddingPlaceholder = 0.0f;
-		} colorPcb;
+		} colorPscb;
 
-		wireframe.addBindable( PixelShaderConstantBuffer<ColorPCB>::fetch( gfx, colorPcb, 0u ) );
+		wireframe.addBindable( PixelShaderConstantBuffer<ColorPSCB>::fetch( gfx, colorPscb, 0u ) );
 		wireframe.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
 
 		addEffect( std::move( wireframe ) );

@@ -127,6 +127,11 @@ const std::string& Texture::getPath() const noexcept
 	return m_path;
 }
 
+Microsoft::WRL::ComPtr<ID3D11ShaderResourceView>& Texture::getD3dSrv()
+{
+	return m_pSrv;
+}
+
 std::shared_ptr<Texture> Texture::fetch( Graphics &gfx,
 	const std::string &filepath,
 	const unsigned slot )

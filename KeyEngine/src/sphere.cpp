@@ -42,12 +42,12 @@ Sphere::Sphere( Graphics &gfx,
 
 		lambertian.addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
 
-		struct ColorPCB
+		struct ColorPSCB
 		{
 			dx::XMFLOAT3 color{1.0f, 1.0f, 1.0f};
 			float padding = 0.0f;
 		} colorCb;
-		lambertian.addBindable( PixelShaderConstantBuffer<ColorPCB>::fetch( gfx, colorCb, 0u ) );
+		lambertian.addBindable( PixelShaderConstantBuffer<ColorPSCB>::fetch( gfx, colorCb, 0u ) );
 
 		lambertian.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
 

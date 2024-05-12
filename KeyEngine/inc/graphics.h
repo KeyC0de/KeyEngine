@@ -22,7 +22,6 @@
 #	include "dxgi_info_queue.h"
 #endif
 #include "color.h"
-#include "rectangle.h"
 #include "texture_desc.h"
 #include "key_timer.h"
 
@@ -34,6 +33,7 @@ class TextureOffscreenRT;
 class TextureOffscreenDS;
 class Window;
 class Camera;
+struct R3ctangle;
 
 namespace ren
 {
@@ -176,33 +176,14 @@ private:
 public:
 	ColorBGRA getPixel( const int x, const int y ) const noexcept;
 	void putPixel( const int x, const int y, const ColorBGRA color );
-	inline void putPixel( const int x,
-		const int y,
-		const int r,
-		const int g,
-		const int b )
-	{
-		putPixel( x, y, {static_cast<BYTE>( r ), static_cast<BYTE>( g ), static_cast<BYTE>( b )} );
-	}
+	void putPixel( const int x, const int y, const int r, const int g, const int b );
 	//	\function	drawLine	||	\date	2021/04/26 21:27
 	//	\brief	uses the Bresenham algorithm to draw lines, ie. connect 2d positions together by drawing straight lines between them
 	//			this is one of the algorithms by D3D as well during rasterization
 	void drawLine( int x0, int x1, int y0, int y1, const ColorBGRA col );
 	void drawRectangle( int x0, int y0, int x1, int y1, const ColorBGRA col );
-	inline void drawRectangle( const Rect &rect, const ColorBGRA col )
-	{
-		drawRectangle( static_cast<int>( rect.m_left ), static_cast<int>( rect.m_top ), static_cast<int>( rect.m_right ), static_cast<int> ( rect.m_bottom ), col );
-	}
-
-	inline void drawRectWH( const int x0,
-		const int y0,
-		const int width,
-		const int height,
-		const ColorBGRA col )
-	{
-		drawRectangle( x0, y0, x0 + width, y0 + height, col );
-	}
-
+	void drawRectangle( const R3ctangle &rect, const ColorBGRA col );
+	void drawRectWH( const int x0, const int y0, const int width, const int height, const ColorBGRA col );
 	void drawTriangle( int x0, int y0, int x1, int y1, int x2, int y2, const ColorBGRA col );
 	void drawCircle( const int centerX, const int centerY, const int radius, const ColorBGRA col );
 	void drawStar( const float outerRadius, const float innerRadius, const ColorBGRA color, const int nFlares = 5);
@@ -217,20 +198,11 @@ private:
 	Microsoft::WRL::ComPtr<IDWriteFactory> m_pWriteFactory;
 	Microsoft::WRL::ComPtr<IDWriteTextFormat> m_pTextFormat;
 private:
-	inline void begin2dDraw()
-	{
-		m_p2DRenderTarget->BeginDraw();
-	}
-	inline void end2dDraw()
-	{
-		m_p2DRenderTarget->EndDraw();
-	}
-	inline void clear( const D2D1::ColorF &rgb = D2D1::ColorF{0.0f, 0.0f, 0.0f} )
-	{
-		m_p2DRenderTarget->Clear( rgb );
-	}
+	void begin2dDraw();
+	void end2dDraw();
+	void clear( const D2D1::ColorF &rgb = D2D1::ColorF{0.0f, 0.0f, 0.0f} );
 public:
-	void create2dInteroperability();
+	void create2dFactory();
 	Microsoft::WRL::ComPtr<IDXGISurface>& surface2d();
 	ID2D1HwndRenderTarget* renderTarget2d();
 

@@ -16,8 +16,8 @@ namespace ren
 
 class Camera
 {
-	float m_travelSpeed = 12.0f;
-	float m_rotationSpeed = 0.004f;
+	float m_translationSpeed;
+	float m_rotationSpeed;
 	float m_nearZ;
 	float m_farZ;
 	// tethered flag indicates whether the Camera's position is bound to another object
@@ -49,7 +49,7 @@ public:
 	static DirectX::XMMATRIX getShadowOrthographicMatrix( const unsigned w, const unsigned h, const float shadowCamFarZ, const float shadowCamNearZ = 1.0f ) noexcept;
 	static DirectX::XMMATRIX getShadowProjectionMatrix( const float shadowCamFarZ, const float shadowCamNearZ = 1.0f ) noexcept;
 public:
-	Camera( Graphics &gfx, const std::string &name, const int width, const int height, const float fovDegrees = 90.0f, const DirectX::XMFLOAT3 &homePos = {0.0f, 0.0f, 0.0f}, const float homePitch = 0.0f, const float homeYaw = 0.0f, const bool bTethered = false, const float nearZ = 0.5f, const float farZ = 200.0f ) noexcept;
+	Camera( Graphics &gfx, const std::string &name, const int width, const int height, const float fovDegrees = 90.0f, const DirectX::XMFLOAT3 &homePos = {0.0f, 0.0f, 0.0f}, const float homePitch = 0.0f, const float homeYaw = 0.0f, const bool bTethered = false, const float nearZ = 0.5f, const float farZ = 200.0f, const float translationSpeed = 16.0f, const float rotationSpeed = 0.096f ) noexcept;
 
 	void render( const size_t channel = rch::all ) const;
 	void connectEffectsToRenderer( ren::Renderer &ren );
@@ -82,6 +82,8 @@ public:
 	void displayImguiWidgets( Graphics &gfx ) noexcept;
 	void onWindowResize( Graphics &gfx );
 	void setTethered( const bool bTethered ) cond_noex;
+	void setRotationSpeed( const float rotationSpeed ) noexcept;
+	float getRotationSpeed() const noexcept;
 private:
 	DirectX::XMMATRIX getPositionMatrix() const noexcept;
 	DirectX::XMMATRIX getRotationMatrix() const noexcept;

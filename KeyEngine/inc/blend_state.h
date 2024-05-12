@@ -25,7 +25,7 @@ public:
 		AlphaToCoverage
 	};
 private:
-	Microsoft::WRL::ComPtr<ID3D11BlendState> m_pBlendState;
+	Microsoft::WRL::ComPtr<ID3D11BlendState> m_pD3dBlendState;
 	Mode m_mode;
 	unsigned m_renderTargetSlot;
 	unsigned m_multisampleMask;
@@ -50,4 +50,5 @@ public:
 	const std::array<float, 4>& getBlendFactors() const noexcept;
 	std::array<float, 4>& blendFactors();
 	const Mode& getBlendMode() const noexcept;
+	Microsoft::WRL::ComPtr<ID3D11BlendState>& getD3dBlendState();
 };
