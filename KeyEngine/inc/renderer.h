@@ -32,7 +32,7 @@ class Renderer
 	std::vector<std::unique_ptr<ILinker>> m_globalLinkers;
 protected:
 	std::unique_ptr<IPass> m_pFinalPostProcessPass;
-	std::unique_ptr<IPass> m_pFontPass;
+	std::unique_ptr<IPass> m_pUiPass;
 	std::shared_ptr<IRenderTargetView> m_pRtv;
 	std::shared_ptr<IDepthStencilView> m_pDsv;
 public:

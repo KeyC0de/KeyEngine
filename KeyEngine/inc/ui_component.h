@@ -8,15 +8,14 @@ namespace ui
 
 class Component
 {
-	int m_hierarchyId;
-	std::string m_id;
+	int m_id;
+	std::string m_name;
 public:
 	Component( const std::string &name );
 	virtual ~Component() noexcept;
 
-	int getHierarchyId() const noexcept;
+	int getId() const noexcept;
 	std::string getName() const noexcept;
-	std::string getId() const noexcept;
 private:
 	int getNextId() const noexcept;
 };

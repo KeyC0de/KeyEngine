@@ -383,7 +383,7 @@
       <Filter>engine\vfx\ui</Filter>
     </ClCompile>
     <ClCompile Include="src\ui_pass.cpp">
-      <Filter>engine\vfx\pass</Filter>
+      <Filter>engine\vfx\ui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1135,7 +1135,7 @@
       <Filter>engine\vfx\ui</Filter>
     </ClInclude>
     <ClInclude Include="inc\ui_pass.h">
-      <Filter>engine\vfx\pass</Filter>
+      <Filter>engine\vfx\ui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

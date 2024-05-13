@@ -29,6 +29,7 @@ public:
 	DepthStencilState( Graphics &gfx, const Mode mode );
 
 	void bind( Graphics &gfx ) cond_noex override;
+	Microsoft::WRL::ComPtr<ID3D11DepthStencilState>& getD3dDepthStencilState();
 	static std::shared_ptr<DepthStencilState> fetch( Graphics &gfx, const Mode mode );
 	static std::string calcUid( const Mode mode );
 	std::string getUid() const noexcept override;

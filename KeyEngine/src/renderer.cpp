@@ -53,7 +53,7 @@ void Renderer::recreate( Graphics &gfx )
 	m_globalBinders.clear();
 	m_globalLinkers.clear();
 	m_pFinalPostProcessPass.reset();
-	m_pFontPass.reset();
+	m_pUiPass.reset();
 	m_pRtv.reset();
 	m_pDsv.reset();
 	m_bValidatedPasses = false;
@@ -116,7 +116,7 @@ void Renderer::run( Graphics &gfx ) cond_noex
 	}
 
 	// UI rendering continues...
-	m_pFontPass->run( gfx );
+	m_pUiPass->run( gfx );
 }
 
 void Renderer::reset() noexcept
@@ -126,6 +126,8 @@ void Renderer::reset() noexcept
 	{
 		pass->reset();
 	}
+	m_pFinalPostProcessPass->reset();
+	m_pUiPass->reset();
 }
 
 void Renderer::offscreenToBackBufferSwap( Graphics &gfx )
@@ -413,7 +415,7 @@ void Renderer3d::recreate( Graphics &gfx )
 		m_pFinalPostProcessPass = std::make_unique<ren::PassThrough>( gfx, "passthrough" );
 	}
 
-	m_pFontPass = std::make_unique<ren::UIPass>( gfx, "ui", "myComicSansMSSpriteFont" );
+	m_pUiPass = std::make_unique<ren::UIPass>( gfx, "ui" );
 }
 
 void Renderer3d::displayImguiWidgets( Graphics &gfx ) noexcept

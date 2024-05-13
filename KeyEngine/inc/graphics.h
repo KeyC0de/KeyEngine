@@ -118,6 +118,8 @@ public:
 
 	void makeWindowAssociationWithFactory( HWND hWnd, const UINT flags );
 	void profile() const noexcept;
+	void clearShaderSlots() noexcept;
+	void cleanState() noexcept;
 	void beginFrame() noexcept;
 	void endFrame();
 	void draw( const unsigned count ) cond_noex;
@@ -155,18 +157,16 @@ public:
 	//	\brief	returns true if fullscreen application, false otherwise
 	bool getDisplayMode() const noexcept;
 	bool& getDisplayMode();
-private:
-	//	\function	present	||	\date	2022/09/13 22:12
-	//	\brief	present the frame to DWM
-	void present();
 	//	\function	recordDeferredCommandList	||	\date	2022/08/21 14:05
 	//	\brief	probably should call this when the Model is being loaded not when pass->run() -> Job->run()
 	void recordDeferredCommandList();
 	//	\function	playbackDeferredCommandList	||	\date	2020/11/05 14:51
 	//	\brief		ExecuteCommandList must be executed on the immediate context for recorded commands to be run on the GPU
 	void playbackDeferredCommandList();
-	void clearShaderSlots() noexcept;
-	void cleanState() noexcept;
+private:
+	//	\function	present	||	\date	2022/09/13 22:12
+	//	\brief	present the frame to DWM
+	void present();
 	void interrogateDirectxFeatures();
 	bool checkTearingSupport();
 	void d3d11DebugReport();

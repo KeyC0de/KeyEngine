@@ -114,6 +114,11 @@ void DepthStencilState::bind( Graphics &gfx ) cond_noex
 	DXGI_GET_QUEUE_INFO( gfx );
 }
 
+Microsoft::WRL::ComPtr<ID3D11DepthStencilState>& DepthStencilState::getD3dDepthStencilState()
+{
+	return m_pDepthStencilState;
+}
+
 std::shared_ptr<DepthStencilState> DepthStencilState::fetch( Graphics &gfx,
 	const Mode mode )
 {

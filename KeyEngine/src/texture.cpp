@@ -44,6 +44,13 @@ Texture::Texture( Graphics &gfx,
 	hres = getDevice( gfx )->CreateShaderResourceView( m_pTex.Get(), &srvDesc, &m_pSrv );
 	ASSERT_HRES_IF_FAILED;
 
+#if defined _DEBUG && !defined NDEBUG
+	using namespace std::string_literals;
+	const std::string srvName = "srv_filepath"s + "@"s + std::to_string( slot );
+	const auto cstr = srvName.c_str();
+	m_pSrv->SetPrivateData( WKPDID_D3DDebugObjectName, (UINT) strlen( cstr ), cstr );
+#endif
+
 	getDeviceContext( gfx )->GenerateMips( m_pSrv.Get() );
 	DXGI_GET_QUEUE_INFO( gfx );
 }
@@ -125,6 +132,16 @@ bool Texture::hasAlpha() const noexcept
 const std::string& Texture::getPath() const noexcept
 {
 	return m_path;
+}
+
+unsigned Texture::getWidth() const noexcept
+{
+	return m_width;
+}
+
+unsigned Texture::getHeight() const noexcept
+{
+	return m_height;
 }
 
 Microsoft::WRL::ComPtr<ID3D11ShaderResourceView>& Texture::getD3dSrv()

@@ -135,3 +135,8 @@ RasterizerState::RasterizerMode RasterizerState::getMode() const noexcept
 {
 	return m_mode;
 }
+
+Microsoft::WRL::ComPtr<ID3D11RasterizerState>& RasterizerState::getD3dRasterizerState()
+{
+	return m_pRasterizerState;
+}

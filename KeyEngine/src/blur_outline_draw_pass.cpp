@@ -27,7 +27,7 @@ BlurOutlineDrawPass::BlurOutlineDrawPass( Graphics &gfx,
 	m_pRtv = std::make_shared<RenderTargetShaderInput>( gfx, width, height, 0u );
 
 #if defined _DEBUG && !defined NDEBUG
-	const char *offscreenRtvBlurOutlineName = "OffscreenRenderTargetViewOutlineDraw";
+	const char *offscreenRtvBlurOutlineName = "OffscreenRenderTargetViewBlurOutlineDraw";
 	m_pRtv->d3dResourceCom()->SetPrivateData( WKPDID_D3DDebugObjectName, (UINT) strlen( offscreenRtvBlurOutlineName ), offscreenRtvBlurOutlineName );
 #endif
 

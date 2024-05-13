@@ -43,4 +43,5 @@ public:
 	static std::string calcUid( const RasterizerMode mode, const FillMode fillMode, const FaceMode faceMode, const int depthBias = D3D11_DEFAULT_DEPTH_BIAS, const float slopeBias = D3D11_DEFAULT_SLOPE_SCALED_DEPTH_BIAS, const float biasClamp = D3D11_DEFAULT_DEPTH_BIAS_CLAMP );
 	std::string getUid() const noexcept override;
 	RasterizerMode getMode() const noexcept;
+	Microsoft::WRL::ComPtr<ID3D11RasterizerState>& getD3dRasterizerState();
 };

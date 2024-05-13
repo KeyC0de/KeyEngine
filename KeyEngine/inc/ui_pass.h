@@ -8,6 +8,8 @@
 #include "bindable_pass.h"
 #include "ui_component.h"
 #include "blend_state.h"
+#include "rasterizer_state.h"
+#include "depth_stencil_state.h"
 #include "texture.h"
 
 
@@ -23,18 +25,23 @@ class UIPass
 		bool operator()( const std::unique_ptr<ui::Component> pComponent1, const std::unique_ptr<ui::Component> pComponent2 );
 	};
 
+	std::wstring m_fontFilenameNoExtension = L"myComicSansMSSpriteFont";
 	std::set<std::unique_ptr<ui::Component>> m_components;	// ui component hierarchy
 	std::unique_ptr<DirectX::SpriteBatch> m_pSpriteBatch;
 	std::unique_ptr<DirectX::SpriteFont> m_pFpsSpriteFont;
 	std::shared_ptr<BlendState> m_pBlendState;
-	std::shared_ptr<Texture> m_pTexture;
+	std::shared_ptr<RasterizerState> m_pRasterizerState;
+	std::shared_ptr<DepthStencilState> m_pDepthStencil;
+	std::shared_ptr<Texture> m_pTexture1;
+	std::shared_ptr<Texture> m_pTexture2;
 public:
-	UIPass( Graphics &gfx, const std::string &name, const std::string &fpsFontNameNoExtension );
+	UIPass( Graphics &gfx, const std::string &name );
 
 	virtual void run( Graphics &gfx ) const cond_noex override;
 	virtual void reset() cond_noex override;
-	void drawText( Graphics &gfx, const std::string &text, const DirectX::XMFLOAT2 &pos, const DirectX::XMVECTORF32 color = DirectX::Colors::White, const DirectX::XMFLOAT2 &scale = DirectX::XMFLOAT2{1.0f, 1.0f} );
-	void drawTexture( Graphics &gfx, const int x, const int y, const int width, const int height );
+	void drawText( Graphics &gfx, const std::string &text, const DirectX::XMFLOAT2 &pos, const DirectX::XMVECTORF32 &color = DirectX::Colors::White, const DirectX::XMFLOAT2 &scale = DirectX::XMFLOAT2{1.0f, 1.0f} );
+	void drawTexture1( Graphics &gfx, const int x, const int y, const int width, const int height );
+	void drawTexture2( Graphics &gfx, const int x, const int y, const int width, const int height );
 private:
 	//	\function	updateAndRenderFpsTimer	||	\date	2022/11/13 16:21
 	//	\brief	draws FPS text

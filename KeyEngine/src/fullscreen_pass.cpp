@@ -20,6 +20,8 @@ IFullscreenPass::IFullscreenPass( Graphics &gfx,
 	:
 	IBindablePass{name}
 {
+	addPassBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
+
 	// setup fullscreen geometry
 	ver::VertexInputLayout vil;
 	vil.add( ver::VertexInputLayout::Position2D );
@@ -37,7 +39,6 @@ IFullscreenPass::IFullscreenPass( Graphics &gfx,
 	auto vs = VertexShader::fetch( gfx, "fullscreen_quad_vs.cso" );
 	addPassBindable( InputLayout::fetch( gfx, vil, *vs ) );
 	addPassBindable( std::move( vs ) );
-	addPassBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 	addPassBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
 }
 

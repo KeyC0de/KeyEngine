@@ -28,6 +28,8 @@ public:
 	void update( Graphics &gfx ) cond_noex;
 	bool hasAlpha() const noexcept;
 	const std::string& getPath() const noexcept;
+	unsigned getWidth() const noexcept;
+	unsigned getHeight() const noexcept;
 	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView>& getD3dSrv();
 	static std::shared_ptr<Texture> fetch( Graphics &gfx, const std::string &filepath, const unsigned slot );
 	static std::string calcUid( const std::string &filepath, const unsigned slot );

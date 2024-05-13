@@ -8,8 +8,8 @@ static int g_numComponents = 0u;
 
 Component::Component( const std::string &name )
 	:
-	m_hierarchyId{getNextId()},
-	m_id{name}
+	m_id{getNextId()},
+	m_name{name}
 {
 
 }
@@ -19,19 +19,14 @@ Component::~Component() noexcept
 
 }
 
-int Component::getHierarchyId() const noexcept
+int Component::getId() const noexcept
 {
-	return m_hierarchyId;
+	return m_id;
 }
 
 std::string Component::getName() const noexcept
 {
-	return m_id;
-}
-
-std::string Component::getId() const noexcept
-{
-	return m_id;
+	return m_name;
 }
 
 int Component::getNextId() const noexcept

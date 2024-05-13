@@ -267,32 +267,6 @@ Graphics::~Graphics()
 	d3d11DebugReport();
 }
 
-void Graphics::clearShaderSlots() noexcept
-{
-	// Clearing shader input slots to prevent simultaneous in/out binds carried over from previous frame.
-	// This is to prevent OMSetRenderTargets state hazard.
-	ID3D11ShaderResourceView *const pNullSrv = nullptr;
-
-	// diffuse texture
-	m_pImmediateContext->PSSetShaderResources( 0u, 1u, &pNullSrv );
-	DXGI_GET_QUEUE_INFO_GFX;
-
-	// specular texture
-	m_pImmediateContext->PSSetShaderResources( 1u, 1u, &pNullSrv );
-	DXGI_GET_QUEUE_INFO_GFX;
-
-	// normal texture
-	m_pImmediateContext->PSSetShaderResources( 2u, 1u, &pNullSrv );
-	DXGI_GET_QUEUE_INFO_GFX;
-
-	// shadow map texture
-	m_pImmediateContext->PSSetShaderResources( 3u, 1u, &pNullSrv );
-
-	// post processing texture
-	m_pImmediateContext->PSSetShaderResources( 4u, 1u, &pNullSrv );
-	DXGI_GET_QUEUE_INFO_GFX;
-}
-
 void Graphics::resize( unsigned newWidth,
 	unsigned newHeight )
 {
@@ -451,30 +425,6 @@ ren::Renderer2d& Graphics::getRenderer2d() noexcept
 	return *m_pRenderer2d;
 }
 
-void Graphics::cleanState() noexcept
-{
-	if constexpr ( gph_mode::get() == gph_mode::_3D )
-	{
-		clearShaderSlots();
-		m_pImmediateContext->ClearState();	// release all references
-		for ( auto dc : m_commandLists )
-		{
-			if ( dc )
-			{
-				m_pImmediateContext->FinishCommandList( FALSE, &dc );
-				dc->Release();
-			}
-		}
-		m_pImmediateContext->Flush();		// flush any remaining commands
-	}
-	else
-	{
-#ifdef D2D_ONLY
-		m_p2DContext->Flush();
-#endif
-	}
-}
-
 void Graphics::profile() const noexcept
 {
 #ifdef _PROFILE
@@ -493,6 +443,56 @@ void Graphics::profile() const noexcept
 
 	// query frameStats for stuff
 #endif
+}
+
+void Graphics::clearShaderSlots() noexcept
+{
+	// Clearing shader input slots to prevent simultaneous in/out binds carried over from previous frame.
+	// This is to prevent OMSetRenderTargets state hazard.
+	ID3D11ShaderResourceView *const pNullSrv = nullptr;
+
+	// diffuse texture
+	m_pImmediateContext->PSSetShaderResources( 0u, 1u, &pNullSrv );
+	DXGI_GET_QUEUE_INFO_GFX;
+
+	// specular texture
+	m_pImmediateContext->PSSetShaderResources( 1u, 1u, &pNullSrv );
+	DXGI_GET_QUEUE_INFO_GFX;
+
+	// normal texture
+	m_pImmediateContext->PSSetShaderResources( 2u, 1u, &pNullSrv );
+	DXGI_GET_QUEUE_INFO_GFX;
+
+	// shadow map texture
+	m_pImmediateContext->PSSetShaderResources( 3u, 1u, &pNullSrv );
+
+	// post processing texture
+	m_pImmediateContext->PSSetShaderResources( 4u, 1u, &pNullSrv );
+	DXGI_GET_QUEUE_INFO_GFX;
+}
+
+void Graphics::cleanState() noexcept
+{
+	if constexpr ( gph_mode::get() == gph_mode::_3D )
+	{
+		clearShaderSlots();
+		m_pImmediateContext->ClearState();	// release all bindable state and set a default state
+		for ( auto dc : m_commandLists )
+		{
+			if ( dc )
+			{
+				m_pImmediateContext->FinishCommandList( FALSE, &dc );
+				dc->Release();
+			}
+		}
+		m_pImmediateContext->Flush();		// flush any remaining commands
+	}
+	else
+	{
+#ifdef D2D_ONLY
+		m_p2DContext->Flush();
+#endif
+	}
 }
 
 void Graphics::beginFrame() noexcept
@@ -760,6 +760,26 @@ bool& Graphics::getDisplayMode()
 	return m_bFullscreenMode;
 }
 
+void Graphics::recordDeferredCommandList()
+{
+	//HRESULT hres;
+	//hres = m_pDevice->CreateDeferredContext( 0, &pDeferredContexts );
+	//// Use the deferred context to render:
+	//float ClearColor[4] = { 0.0f, 0.125f, 0.3f, 1.0f };
+	//pDeferredContexts->ClearRenderTargetView( pRenderTargetView, ClearColor );
+	//// Add additional rendering commands
+	//// ...
+	//hres = pDeferredContexts->FinishCommandList( FALSE, &pCommandList);
+}
+
+void Graphics::playbackDeferredCommandList()
+{
+	//if( pCommandList )
+	//{
+	//	m_pImmediateContext->ExecuteCommandList( pCommandList, TRUE );
+	//}
+}
+
 void Graphics::createFactory()
 {
 	HRESULT hres;
@@ -791,35 +811,6 @@ void Graphics::createAdapters()
 		s_adapters.emplace_back( pAdapter );
 		adapterIndex += 1;
 	}
-}
-
-//void Graphics::render3dSceneToBitmap()
-//{
-//	ASSERT( m_p2DSurface, "DXGISurface has not been created!" );
-//	HRESULT hres = m_p2DRenderTarget->CreateSharedBitmap( );
-//	ASSERT_HRES_IF_FAILED;
-//
-//	// you can render this bitmap with Direct2d
-//}
-
-void Graphics::recordDeferredCommandList()
-{
-	//HRESULT hres;
-	//hres = m_pDevice->CreateDeferredContext( 0, &pDeferredContexts );
-	//// Use the deferred context to render:
-	//float ClearColor[4] = { 0.0f, 0.125f, 0.3f, 1.0f };
-	//pDeferredContexts->ClearRenderTargetView( pRenderTargetView, ClearColor );
-	//// Add additional rendering commands
-	//// ...
-	//hres = pDeferredContexts->FinishCommandList( FALSE, &pCommandList);
-}
-
-void Graphics::playbackDeferredCommandList()
-{
-	//if( pCommandList )
-	//{
-	//	m_pImmediateContext->ExecuteCommandList( pCommandList, TRUE );
-	//}
 }
 
 void Graphics::interrogateDirectxFeatures()
