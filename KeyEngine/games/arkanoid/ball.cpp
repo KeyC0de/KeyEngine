@@ -24,28 +24,28 @@ bool Ball::doWallCollision( const R3ctangle &wall )
 {
 	bool collided = false;
 	const R3ctangle rect = this->rect();
-	if ( rect.m_left < wall.m_left )
+	if ( rect.getLeft() < wall.getLeft() )
 	{
-		m_pos.x += wall.m_left - rect.m_left;
+		m_pos.x += wall.getLeft() - rect.getLeft();
 		reboundX();
 		collided = true;
 	}
-	else if ( rect.m_right > wall.m_right )
+	else if ( rect.getRight() > wall.getRight() )
 	{
-		m_pos.x -= rect.m_right - wall.m_right;
+		m_pos.x -= rect.getRight() - wall.getRight();
 		reboundX();
 		collided = true;
 	}
 
-	if ( rect.m_top < wall.m_top )
+	if ( rect.getTop() < wall.getTop() )
 	{
-		m_pos.y += wall.m_top - rect.m_top;
+		m_pos.y += wall.getTop() - rect.getTop();
 		reboundY();
 		collided = true;
 	}
-	else if ( rect.m_bottom > wall.m_bottom )
+	else if ( rect.getBottom() > wall.getBottom() )
 	{
-		m_pos.y -= rect.m_bottom - wall.m_bottom;
+		m_pos.y -= rect.getBottom() - wall.getBottom();
 		reboundY();
 		collided = true;
 	}

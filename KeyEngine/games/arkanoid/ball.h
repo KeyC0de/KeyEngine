@@ -4,7 +4,7 @@
 
 
 class Graphics;
-struct R3ctangle;
+class R3ctangle;
 
 class Ball
 {

@@ -1,7 +1,4 @@
 #include "ui_pass.h"
-#include "primitive_topology.h"
-#include "pixel_shader.h"
-#include "texture_sampler_state.h"
 #include "utils.h"
 #include "settings_manager.h"
 
@@ -24,33 +21,24 @@ UIPass::UIPass( Graphics &gfx,
 	const std::string &name )
 	:
 	IBindablePass{name},
-	m_pBlendState{BlendState::fetch( gfx, BlendState::Mode::NoBlend, 0u )}
+	m_fontFilenameNoExtension{util::s2ws( SettingsManager::getInstance().getSettings().sFontName )}
 {
-	//addPassBindable( m_pBlendState );
-
-	//addPassBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
-
 	m_pRasterizerState = RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Back );
-	//addPassBindable( m_pRasterizerState );
-
-	//addPassBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
 	
-	m_pDepthStencil = std::make_shared<DepthStencilState>( gfx, DepthStencilState::Mode::DepthOffStencilOff );
-
-	//addPassBindable( m_pDepthStencil );
-
 	m_pSpriteBatch = std::make_unique<dx::SpriteBatch>( getDeviceContext( gfx ) );
 	using namespace std::string_literals;
 	const auto fontPath = L"assets/fonts/"s + m_fontFilenameNoExtension + L".spritefont"s;
 	m_pFpsSpriteFont = std::make_unique<dx::SpriteFont>( getDevice( gfx ), fontPath.c_str() );
 
-	//addPassBindable( std::make_shared<PixelShader>( gfx, "flat2d_ps.cso" ) );
-
 	m_pTexture1 = std::make_shared<Texture>( gfx, "assets/textures/ui/red_vignette.png"s, 0u );
 	m_pTexture2 = std::make_shared<Texture>( gfx, "assets/textures/ui/health_icon.png"s, 1u );
-	//addPassBindable( m_pTexture );
+}
 
-	//addPassBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Point, TextureSamplerState::AddressMode::Clamp ) );
+void UIPass::update( Graphics &gfx,
+	const float dt,
+	const float lerpBetweenFrames ) cond_noex
+{
+
 }
 
 void UIPass::run( Graphics &gfx ) const cond_noex

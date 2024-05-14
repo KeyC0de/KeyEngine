@@ -7,9 +7,7 @@
 #include "DirectXTK/SpriteBatch.h"
 #include "bindable_pass.h"
 #include "ui_component.h"
-#include "blend_state.h"
 #include "rasterizer_state.h"
-#include "depth_stencil_state.h"
 #include "texture.h"
 
 
@@ -25,18 +23,17 @@ class UIPass
 		bool operator()( const std::unique_ptr<ui::Component> pComponent1, const std::unique_ptr<ui::Component> pComponent2 );
 	};
 
-	std::wstring m_fontFilenameNoExtension = L"myComicSansMSSpriteFont";
 	std::set<std::unique_ptr<ui::Component>> m_components;	// ui component hierarchy
+	std::wstring m_fontFilenameNoExtension;
 	std::unique_ptr<DirectX::SpriteBatch> m_pSpriteBatch;
 	std::unique_ptr<DirectX::SpriteFont> m_pFpsSpriteFont;
-	std::shared_ptr<BlendState> m_pBlendState;
 	std::shared_ptr<RasterizerState> m_pRasterizerState;
-	std::shared_ptr<DepthStencilState> m_pDepthStencil;
 	std::shared_ptr<Texture> m_pTexture1;
 	std::shared_ptr<Texture> m_pTexture2;
 public:
 	UIPass( Graphics &gfx, const std::string &name );
 
+	void update( Graphics &gfx, const float dt, const float lerpBetweenFrames ) cond_noex;
 	virtual void run( Graphics &gfx ) const cond_noex override;
 	virtual void reset() cond_noex override;
 	void drawText( Graphics &gfx, const std::string &text, const DirectX::XMFLOAT2 &pos, const DirectX::XMVECTORF32 &color = DirectX::Colors::White, const DirectX::XMFLOAT2 &scale = DirectX::XMFLOAT2{1.0f, 1.0f} );

@@ -37,7 +37,7 @@ void Brick::doBallCollision( Ball &ball )
 	{
 		ball.reboundY();
 	}
-	else if ( ballPos.x >= m_rect.m_left && ballPos.x <= m_rect.m_right )
+	else if ( ballPos.x >= m_rect.getLeft() && ballPos.x <= m_rect.getRight() )
 	{
 		ball.reboundY();
 	}

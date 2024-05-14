@@ -25,8 +25,8 @@ void Paddle::render( Graphics &gfx ) const cond_noex
 {
 	R3ctangle rect = this->rect();
 	gfx.drawRectangle( rect, m_wingColor );
-	rect.m_left += s_wingWidth;
-	rect.m_right -= s_wingWidth;
+	rect.getLeft() += s_wingWidth;
+	rect.getRight() -= s_wingWidth;
 	gfx.drawRectangle( rect, m_color );
 }
 
@@ -42,7 +42,7 @@ bool Paddle::doBallCollision( Ball &ball )
 			{// inside approach
 				ball.reboundY();
 			}
-			else if ( ballPos.x >= rect.m_left && ballPos.x <= rect.m_right )
+			else if ( ballPos.x >= rect.getLeft() && ballPos.x <= rect.getRight() )
 			{// top-down collision
 				ball.reboundY();
 			}
@@ -60,13 +60,13 @@ bool Paddle::doBallCollision( Ball &ball )
 void Paddle::doWallCollision( const R3ctangle &walls )
 {
 	const R3ctangle hitBox = rect();
-	if ( hitBox.m_left < walls.m_left )
+	if ( hitBox.getLeft() < walls.getLeft() )
 	{
-		m_posCenter.x += walls.m_left - hitBox.m_left;
+		m_posCenter.x += walls.getLeft() - hitBox.getLeft();
 	}
-	else if ( hitBox.m_right > walls.m_right )
+	else if ( hitBox.getRight() > walls.getRight() )
 	{
-		m_posCenter.x -= hitBox.m_right - walls.m_right;
+		m_posCenter.x -= hitBox.getRight() - walls.getRight();
 	}
 }
 

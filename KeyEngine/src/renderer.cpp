@@ -31,6 +31,13 @@
 #include "assertions_console.h"
 
 
+namespace
+{
+
+ren::UIPass *g_pUiPass;
+
+}
+
 namespace ren
 {
 
@@ -54,6 +61,7 @@ void Renderer::recreate( Graphics &gfx )
 	m_globalLinkers.clear();
 	m_pFinalPostProcessPass.reset();
 	m_pUiPass.reset();
+	g_pUiPass = nullptr;
 	m_pRtv.reset();
 	m_pDsv.reset();
 	m_bValidatedPasses = false;
@@ -86,6 +94,13 @@ void Renderer::addGlobalLinker( std::unique_ptr<ILinker> pLinker )
 void Renderer::addGlobalBinder( std::unique_ptr<IBinder> pBinder )
 {
 	m_globalBinders.emplace_back( std::move( pBinder ) );
+}
+
+void Renderer::updateUi( Graphics &gfx,
+	const float dt,
+	const float lerpBetweenFrames ) cond_noex
+{
+	pass_;
 }
 
 void Renderer::run( Graphics &gfx ) cond_noex
@@ -307,6 +322,13 @@ Renderer3d::Renderer3d( Graphics &gfx,
 	recreate( gfx );
 }
 
+void Renderer3d::updateUi( Graphics &gfx,
+	const float dt,
+	const float lerpBetweenFrames ) cond_noex
+{
+	g_pUiPass->update( gfx, dt, lerpBetweenFrames );
+}
+
 void Renderer3d::recreate( Graphics &gfx )
 {
 	Renderer::recreate( gfx );
@@ -416,6 +438,7 @@ void Renderer3d::recreate( Graphics &gfx )
 	}
 
 	m_pUiPass = std::make_unique<ren::UIPass>( gfx, "ui" );
+	g_pUiPass = dynamic_cast<ren::UIPass*>( m_pUiPass.get() );
 }
 
 void Renderer3d::displayImguiWidgets( Graphics &gfx ) noexcept

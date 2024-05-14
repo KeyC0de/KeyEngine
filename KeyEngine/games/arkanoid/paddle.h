@@ -6,7 +6,7 @@
 
 class Graphics;
 class Ball;
-struct R3ctangle;
+class R3ctangle;
 
 class Paddle
 {

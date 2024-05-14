@@ -31,6 +31,7 @@ class SettingsManager final
 		bool bFullscreen = false;
 		bool bAllowWindowResize = false;
 		std::string sSkyboxFileName = "";
+		std::string sFontName = "myComicSansMSSpriteFont";
 	} m_settings;
 private:
 	SettingsManager( const std::string &filePath );

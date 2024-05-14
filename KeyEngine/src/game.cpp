@@ -392,7 +392,8 @@ int Sandbox3d::checkInput( const float dt )
 	return 1;
 }
 
-void Sandbox3d::update( const float dt, const float lerpBetweenFrames )
+void Sandbox3d::update( const float dt,
+	const float lerpBetweenFrames )
 {
 	const auto &activeCamera = s_cameraMan.getActiveCamera();
 	// binds camera to all Passes that need it
@@ -409,6 +410,8 @@ void Sandbox3d::update( const float dt, const float lerpBetweenFrames )
 	//m_nanoSuit.update( dt, lerpBetweenFrames );
 	m_carabiner.update( dt, lerpBetweenFrames );
 	m_sponzaScene.update( dt, lerpBetweenFrames );
+
+	gfx.getRenderer3d().updateUi( gfx, dt, lerpBetweenFrames );
 }
 
 void Sandbox3d::updateFixed( const float dt )

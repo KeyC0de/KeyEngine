@@ -56,6 +56,8 @@ void SettingsManager::loadFromFile( const std::string &filePath )
 	m_settings.iPresentInterval = util::clamp( ini.GetInteger( "Graphics", "iPresentInterval", 1 ), 0l, 4l );
 	
 	m_settings.sSkyboxFileName = ini.Get( "Assets", "sSkyboxFileName", "" );
+
+	m_settings.sFontName = ini.Get( "Graphics", "sFontName", "myComicSansMSSpriteFont" );
 }
 
 SettingsManager::Settings& SettingsManager::getSettings()

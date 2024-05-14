@@ -1003,7 +1003,7 @@ void Graphics::drawRectangle( int x0,
 void Graphics::drawRectangle( const R3ctangle &rect,
 	const ColorBGRA col )
 {
-	drawRectangle( static_cast<int>( rect.m_left ), static_cast<int>( rect.m_top ), static_cast<int>( rect.m_right ), static_cast<int> ( rect.m_bottom ), col );
+	drawRectangle( static_cast<int>( rect.getLeft() ), static_cast<int>( rect.getTop() ), static_cast<int>( rect.getRight() ), static_cast<int> ( rect.getBottom() ), col );
 }
 
 void Graphics::drawRectWH( const int x0,

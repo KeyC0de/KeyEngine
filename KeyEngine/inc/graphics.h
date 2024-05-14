@@ -33,7 +33,7 @@ class TextureOffscreenRT;
 class TextureOffscreenDS;
 class Window;
 class Camera;
-struct R3ctangle;
+class R3ctangle;
 
 namespace ren
 {

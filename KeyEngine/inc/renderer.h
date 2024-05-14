@@ -39,6 +39,7 @@ public:
 	Renderer( Graphics &gfx, bool drawToOffscreen );
 	virtual ~Renderer() noexcept;
 
+	virtual void updateUi( Graphics &gfx, const float dt, const float lerpBetweenFrames ) cond_noex;
 	void run( Graphics &gfx ) cond_noex;
 	virtual void recreate( Graphics &gfx );
 	virtual void reset() noexcept;
@@ -82,6 +83,7 @@ public:
 public:
 	Renderer3d( Graphics &gfx, bool drawToOffscreen, const int radius, const float sigma, KernelType kernelType = Gauss );
 
+	void updateUi( Graphics &gfx, const float dt, const float lerpBetweenFrames ) cond_noex override;
 	void recreate( Graphics &gfx ) override;
 	void displayImguiWidgets( Graphics &gfx ) noexcept;
 	void dumpShadowMap( Graphics &gfx, const std::string &path );
