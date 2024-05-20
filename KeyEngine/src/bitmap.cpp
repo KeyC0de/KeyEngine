@@ -1,7 +1,5 @@
 #include <sstream>
-#include <filesystem>
 #include "bitmap.h"
-#include "window.h"
 #include "utils.h"
 #include "file_utils.h"
 #include "assertions_console.h"

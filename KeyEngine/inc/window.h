@@ -69,10 +69,10 @@ private:
 	std::string m_title;
 	HWND m_hWnd;
 	std::unique_ptr<Graphics> m_pGraphics;
-	WINDOWINFO m_info;
+	WINDOWINFO m_info{};
 	std::array<unsigned, 8> m_clipboardFormats;	// {0: unicode format,...}
-	HMENU m_hTrayIconPopupMenu;
-	NOTIFYICONDATA m_trayIconData;
+	HMENU m_hTrayIconPopupMenu = nullptr;
+	NOTIFYICONDATA m_trayIconData{};
 	std::unique_ptr<Window> m_pModalDialog;
 	std::unique_ptr<Window> m_pSplash;
 private:

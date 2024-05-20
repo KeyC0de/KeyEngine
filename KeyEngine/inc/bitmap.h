@@ -2,7 +2,6 @@
 
 #include "winner.h"
 #include <string>
-#include <optional>
 #include <DirectxMath.h>
 #include <dxtex/DirectXTex.h>
 #include "key_exception.h"

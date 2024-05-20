@@ -21,6 +21,7 @@
 
 #if defined _DEBUG && !defined NDEBUG
 #	define PRINT_WIN_MESSAGE	{\
+									auto &console = KeyConsole::getInstance();\
 									console.print( "win msgId: " + WindowsMessageMap::getInstance().toString( uMsg ) + "\n");\
 								}
 #else
@@ -778,7 +779,6 @@ LRESULT CALLBACK Window::windowProcDelegate( _In_ const HWND hWnd,
 	_In_ const LPARAM lParam )
 {
 #if defined _DEBUG && !defined NDEBUG
-	auto &console = KeyConsole::getInstance();
 	PRINT_WIN_MESSAGE;
 #endif
 
@@ -799,7 +799,6 @@ LRESULT Window::windowProc_impl2d( _In_ const HWND hWnd,
 	_In_ const LPARAM lParam )
 {
 #if defined _DEBUG && !defined NDEBUG
-	auto &console = KeyConsole::getInstance();
 	PRINT_WIN_MESSAGE;
 #endif
 
@@ -825,6 +824,7 @@ LRESULT Window::windowProc_impl2d( _In_ const HWND hWnd,
 	{
 #if defined _DEBUG && !defined NDEBUG
 		using namespace std::string_literals;
+		auto &console = KeyConsole::getInstance();
 		console.log( "'WM_ACTIVATEAPP' : message ID received\n"s );
 #endif
 		if ( !m_bCursorEnabled )
@@ -1001,7 +1001,6 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 	_In_ const LPARAM lParam )
 {
 #if defined _DEBUG && !defined NDEBUG
-	auto &console = KeyConsole::getInstance();
 	PRINT_WIN_MESSAGE;
 #endif
 
@@ -1025,6 +1024,7 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 	case WM_CREATE:	// send to a window being initialized. Controls - child windows, set default values for controls
 	{
 #if defined _DEBUG && !defined NDEBUG
+		auto &console = KeyConsole::getInstance();
 		using namespace std::string_literals;
 		console.log( "'WM_CREATE' : window created\n"s );
 #endif
@@ -1069,6 +1069,7 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 	case WM_ACTIVATE:	// message sent to the window being activated and to the window being deactivated
 	{
 #if defined _DEBUG && !defined NDEBUG
+		auto &console = KeyConsole::getInstance();
 		using namespace std::string_literals;
 		console.log( "'WM_ACTIVATEAPP' : message ID received\n"s );
 #endif
@@ -1092,6 +1093,7 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 #if defined _DEBUG && !defined NDEBUG
 	case WM_SHOWWINDOW:	// sent when the window is about to be hidden or shown
 	{
+		auto &console = KeyConsole::getInstance();
 		if ( wParam == TRUE )
 		{
 			console.log( "Window " + getTitle() + " is visible.\n" );
@@ -1237,6 +1239,7 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 	{
 		// Sent when a drop-down menu or submenu is about to become active. This allows an application to modify the menu before it is displayed, without changing the entire menu.
 #if defined _DEBUG && !defined NDEBUG
+		auto &console = KeyConsole::getInstance();
 		using namespace std::string_literals;
 		console.log( "Clipboard processing\n"s );
 #endif
@@ -1570,7 +1573,6 @@ LRESULT CALLBACK Window::dialogProc( _In_ const HWND hWnd,
 	_In_ const LPARAM lParam )
 {
 #if defined _DEBUG && !defined NDEBUG
-	auto &console = KeyConsole::getInstance();
 	PRINT_WIN_MESSAGE;
 #endif
 
@@ -1579,6 +1581,7 @@ LRESULT CALLBACK Window::dialogProc( _In_ const HWND hWnd,
 	case WM_CREATE:
 	{
 #if defined _DEBUG && !defined NDEBUG
+		auto &console = KeyConsole::getInstance();
 		console.print( "Modal Dialog Window created!" );
 #endif
 		break;
@@ -1632,7 +1635,6 @@ LRESULT CALLBACK Window::splashWindowProc( _In_ const HWND hWnd,
 	_In_ const LPARAM lParam )
 {
 #if defined _DEBUG && !defined NDEBUG
-	auto &console = KeyConsole::getInstance();
 	PRINT_WIN_MESSAGE;
 #endif
 
@@ -1641,6 +1643,7 @@ LRESULT CALLBACK Window::splashWindowProc( _In_ const HWND hWnd,
 	case WM_CREATE:
 	{
 #if defined _DEBUG && !defined NDEBUG
+		auto &console = KeyConsole::getInstance();
 		console.print( "Splash Window has been created!" );
 #endif
 		break;
@@ -1665,13 +1668,13 @@ void CALLBACK Window::splashWindowTimerProc( _In_ const HWND hWnd,
 	_In_ const DWORD time )
 {
 #if defined _DEBUG && !defined NDEBUG
-	auto &console = KeyConsole::getInstance();
 	PRINT_WIN_MESSAGE;
 #endif
 
 	if ( s_timerEvent == idEvent )
 	{
 #if defined _DEBUG && !defined NDEBUG
+		auto &console = KeyConsole::getInstance();
 		console.print( "Timer about to be killed!" );
 #endif
 		DestroyWindow( hWnd );

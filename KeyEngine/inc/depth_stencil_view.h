@@ -1,5 +1,6 @@
 #pragma once
 
+#include <optional>
 #include "bindable.h"
 #include "render_surface.h"
 #include "bitmap.h"
