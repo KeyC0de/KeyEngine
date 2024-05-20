@@ -128,6 +128,7 @@ Cube::Cube( Graphics &gfx,
 
 		addEffect( std::move( solidOutlineDraw ) );
 	}
+	/*
 	if ( color.w < 1.0f )
 	{
 	// transparent effect - #FIXME: doesn't work, maybe put the transparent pass first
@@ -147,6 +148,7 @@ Cube::Cube( Graphics &gfx,
 
 		addEffect( std::move( transparent ) );
 	}
+	*/
 }
 
 void Cube::displayImguiWidgets( Graphics &gfx,

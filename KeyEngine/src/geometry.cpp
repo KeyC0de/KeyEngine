@@ -380,8 +380,8 @@ TriangleMesh Geometry::makePlanarGridTextured( const int length /*= 2*/,
 TriangleMesh Geometry::makePlanarGridTexturedFromHeighmap( const std::string &filename,
 	const int normalizeAmount /*= 4*/,
 	const int terrainAreaUnitMultiplier /*= 10*/,
-	const float length /*= 2.0f*/,
-	const float width /*= 2.0f*/,
+	const int length /*= 2*/,
+	const int width /*= 2*/,
 	int nDivisionsX /*= 1*/,
 	int nDivisionsY /*= 1*/ )
 {

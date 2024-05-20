@@ -14,7 +14,7 @@ BmpLoader::BmpLoader( const std::string& filename )
 {
 	ASSERT( m_file, "File is missing!" );
 
-	/// <image url="C:/Users/nikla/Pictures/bitmap file structure.png" scale="1" opacity="1" />
+	/// <image url="%Pictures%/bitmap file structure.png" scale="1" opacity="1" />
 	// .bmp file Implementation details:
 	// first 3 bytes are:
 	//	42 4D sizeOfFile = B M 14 + 40 + bytesOfColorDataIncludingPaddingSinceEachRowOfColorDataNeedsToBeAMultipleOf4Bytes
@@ -337,7 +337,7 @@ void BmpLoader::transformData( _Inout_ ImageData *img,
 	generateData( img, imageFilters, true, filename );
 }
 
-void BmpLoader::writeData( _Out_ ImageData *img,
+void BmpLoader::writeData( ImageData *img,
 	const std::string &filename /*= ""*/ )
 {
 	m_file.open( filename == "" ? m_filename : filename, std::ios::out | std::ios::binary );

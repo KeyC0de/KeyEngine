@@ -88,14 +88,29 @@ class Mouse final
 			return m_bLmbPressed;
 		}
 
+		constexpr bool isLmbReleased() const noexcept
+		{
+			return m_bLmbPressed == false;
+		}
+
 		constexpr bool isRmbPressed() const noexcept
 		{
 			return m_bRmbPressed;
 		}
 
+		constexpr bool isRmbReleased() const noexcept
+		{
+			return m_bRmbPressed == false;
+		}
+
 		constexpr bool isMmbPressed() const noexcept
 		{
 			return m_bMmbPressed;
+		}
+
+		constexpr bool isMmbReleased() const noexcept
+		{
+			return m_bMmbPressed == false;
 		}
 	};
 

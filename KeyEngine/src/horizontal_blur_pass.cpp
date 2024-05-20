@@ -27,7 +27,7 @@ HorizontalBlurPass::HorizontalBlurPass( Graphics &gfx,
 
 #if defined _DEBUG && !defined NDEBUG
 	const char *offscreenRtvBlurOutlineName = "OffscreenRenderTargetViewSeparatedBlurFilter";
-	m_pRtv->d3dResourceCom()->SetPrivateData( WKPDID_D3DDebugObjectName, strlen( offscreenRtvBlurOutlineName ), offscreenRtvBlurOutlineName );
+	m_pRtv->d3dResourceCom()->SetPrivateData( WKPDID_D3DDebugObjectName, (UINT) strlen( offscreenRtvBlurOutlineName ), offscreenRtvBlurOutlineName );
 #endif
 
 	addLinker( BindableLinker<IRenderTargetView>::make( "offscreenBlurOutlineOut", m_pRtv ) );

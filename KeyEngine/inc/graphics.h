@@ -33,7 +33,7 @@ class TextureOffscreenRT;
 class TextureOffscreenDS;
 class Window;
 class Camera;
-class R3ctangle;
+class RectangleF;
 
 namespace ren
 {
@@ -182,7 +182,7 @@ public:
 	//			this is one of the algorithms by D3D as well during rasterization
 	void drawLine( int x0, int x1, int y0, int y1, const ColorBGRA col );
 	void drawRectangle( int x0, int y0, int x1, int y1, const ColorBGRA col );
-	void drawRectangle( const R3ctangle &rect, const ColorBGRA col );
+	void drawRectangle( const RectangleF &rect, const ColorBGRA col );
 	void drawRectWH( const int x0, const int y0, const int width, const int height, const ColorBGRA col );
 	void drawTriangle( int x0, int y0, int x1, int y1, int x2, int y2, const ColorBGRA col );
 	void drawCircle( const int centerX, const int centerY, const int radius, const ColorBGRA col );

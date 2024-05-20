@@ -15,7 +15,7 @@ DirectX::XMMATRIX Camera::getShadowOrthographicMatrix( const unsigned w,
 	const float shadowCamFarZ,
 	const float shadowCamNearZ /*= 1.0f*/ ) noexcept
 {
-	return dx::XMMatrixOrthographicLH( (float) w, (float) h, shadowCamNearZ, shadowCamFarZ );
+	return dx::XMMatrixOrthographicLH( static_cast<float>( w ), static_cast<float>( h ), shadowCamNearZ, shadowCamFarZ );
 }
 
 DirectX::XMMATRIX Camera::getShadowProjectionMatrix( const float shadowCamFarZ,
@@ -113,7 +113,7 @@ DirectX::XMMATRIX Camera::getReflectionViewMatrix( const dx::XMVECTOR &mirrorPla
 DirectX::XMMATRIX Camera::getOrthographicProjectionMatrix( const unsigned width,
 	const unsigned height ) const noexcept
 {
-	return dx::XMMatrixOrthographicLH( (float) width, (float) height, m_nearZ, m_farZ );
+	return dx::XMMatrixOrthographicLH( static_cast<float>( width ), static_cast<float>( height ), m_nearZ, m_farZ );
 }
 
 DirectX::XMMATRIX Camera::getPerspectiveProjectionMatrix() const noexcept
@@ -380,8 +380,8 @@ void Camera::displayImguiWidgets( Graphics &gfx ) noexcept
 
 void Camera::onWindowResize( Graphics &gfx )
 {
-	m_width = gfx.getClientWidth();
-	m_height = gfx.getClientHeight();
+	m_width = static_cast<float>( gfx.getClientWidth() );
+	m_height = static_cast<float>( gfx.getClientHeight() );
 	updateCameraFrustum( gfx );
 }
 

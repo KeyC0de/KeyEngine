@@ -1,5 +1,7 @@
 #include "d3d_utils.h"
 #include "math_utils.h"
+#include "DirectXTK/SpriteFont.h"
+#include "DirectXTK/SpriteBatch.h"
 
 
 namespace util
@@ -249,6 +251,576 @@ DXGI_RATIONAL queryRefreshRate( const unsigned screenWidth,
 	}
 
 	return refreshRate;
+}
+
+std::optional<DirectX::XMVECTORF32> getDirectXColorFromString( const std::string &dxColorString )
+{
+	if ( dxColorString == "AliceBlue" )
+	{
+		return DirectX::Colors::AliceBlue;
+	}
+	if ( dxColorString == "AntiqueWhite" )
+	{
+		return DirectX::Colors::AntiqueWhite;
+	}
+	if ( dxColorString == "Aqua" )
+	{
+		return DirectX::Colors::Aqua;
+	}
+	if ( dxColorString == "Aquamarine" )
+	{
+		return DirectX::Colors::Aquamarine;
+	}
+	if ( dxColorString == "Azure" )
+	{
+		return DirectX::Colors::Azure;
+	}
+	if ( dxColorString == "Beige" )
+	{
+		return DirectX::Colors::Beige;
+	}
+	if ( dxColorString == "Bisque" )
+	{
+		return DirectX::Colors::Bisque;
+	}
+	if ( dxColorString == "Black" )
+	{
+		return DirectX::Colors::Black;
+	}
+	if ( dxColorString == "BlanchedAlmond" )
+	{
+		return DirectX::Colors::BlanchedAlmond;
+	}
+	if ( dxColorString == "Blue" )
+	{
+		return DirectX::Colors::Blue;
+	}
+	if ( dxColorString == "BlueViolet" )
+	{
+		return DirectX::Colors::BlueViolet;
+	}
+	if ( dxColorString == "Brown" )
+	{
+		return DirectX::Colors::Brown;
+	}
+	if ( dxColorString == "BurlyWood" )
+	{
+		return DirectX::Colors::BurlyWood;
+	}
+	if ( dxColorString == "CadetBlue" )
+	{
+		return DirectX::Colors::CadetBlue;
+	}
+	if ( dxColorString == "Chartreuse" )
+	{
+		return DirectX::Colors::Chartreuse;
+	}
+	if ( dxColorString == "Chocolate" )
+	{
+		return DirectX::Colors::Chocolate;
+	}
+	if ( dxColorString == "Coral" )
+	{
+		return DirectX::Colors::Coral;
+	}
+	if ( dxColorString == "CornflowerBlue" )
+	{
+		return DirectX::Colors::CornflowerBlue;
+	}
+	if ( dxColorString == "Cornsilk" )
+	{
+		return DirectX::Colors::Cornsilk;
+	}
+	if ( dxColorString == "Crimson" )
+	{
+		return DirectX::Colors::Crimson;
+	}
+	if ( dxColorString == "Cyan" )
+	{
+		return DirectX::Colors::Cyan;
+	}
+	if ( dxColorString == "DarkBlue" )
+	{
+		return DirectX::Colors::DarkBlue;
+	}
+	if ( dxColorString == "DarkCyan" )
+	{
+		return DirectX::Colors::DarkCyan;
+	}
+	if ( dxColorString == "DarkGoldenrod" )
+	{
+		return DirectX::Colors::DarkGoldenrod;
+	}
+	if ( dxColorString == "DarkGray" )
+	{
+		return DirectX::Colors::DarkGray;
+	}
+	if ( dxColorString == "DarkGreen" )
+	{
+		return DirectX::Colors::DarkGreen;
+	}
+	if ( dxColorString == "DarkKhaki" )
+	{
+		return DirectX::Colors::DarkKhaki;
+	}
+	if ( dxColorString == "DarkMagenta" )
+	{
+		return DirectX::Colors::DarkMagenta;
+	}
+	if ( dxColorString == "DarkOliveGreen" )
+	{
+		return DirectX::Colors::DarkOliveGreen;
+	}
+	if ( dxColorString == "DarkOrange" )
+	{
+		return DirectX::Colors::DarkOrange;
+	}
+	if ( dxColorString == "DarkOrchid" )
+	{
+		return DirectX::Colors::DarkOrchid;
+	}
+	if ( dxColorString == "DarkRed" )
+	{
+		return DirectX::Colors::DarkRed;
+	}
+	if ( dxColorString == "DarkSalmon" )
+	{
+		return DirectX::Colors::DarkSalmon;
+	}
+	if ( dxColorString == "DarkSeaGreen" )
+	{
+		return DirectX::Colors::DarkSeaGreen;
+	}
+	if ( dxColorString == "DarkSlateBlue" )
+	{
+		return DirectX::Colors::DarkSlateBlue;
+	}
+	if ( dxColorString == "DarkSlateGray" )
+	{
+		return DirectX::Colors::DarkSlateGray;
+	}
+	if ( dxColorString == "DarkTurquoise" )
+	{
+		return DirectX::Colors::DarkTurquoise;
+	}
+	if ( dxColorString == "DarkViolet" )
+	{
+		return DirectX::Colors::DarkViolet;
+	}
+	if ( dxColorString == "DeepPink" )
+	{
+		return DirectX::Colors::DeepPink;
+	}
+	if ( dxColorString == "DeepSkyBlue" )
+	{
+		return DirectX::Colors::DeepSkyBlue;
+	}
+	if ( dxColorString == "DimGray" )
+	{
+		return DirectX::Colors::DimGray;
+	}
+	if ( dxColorString == "DodgerBlue" )
+	{
+		return DirectX::Colors::DodgerBlue;
+	}
+	if ( dxColorString == "Firebrick" )
+	{
+		return DirectX::Colors::Firebrick;
+	}
+	if ( dxColorString == "FloralWhite" )
+	{
+		return DirectX::Colors::FloralWhite;
+	}
+	if ( dxColorString == "ForestGreen" )
+	{
+		return DirectX::Colors::ForestGreen;
+	}
+	if ( dxColorString == "Fuchsia" )
+	{
+		return DirectX::Colors::Fuchsia;
+	}
+	if ( dxColorString == "Gainsboro" )
+	{
+		return DirectX::Colors::Gainsboro;
+	}
+	if ( dxColorString == "GhostWhite" )
+	{
+		return DirectX::Colors::GhostWhite;
+	}
+	if ( dxColorString == "Gold" )
+	{
+		return DirectX::Colors::Gold;
+	}
+	if ( dxColorString == "Goldenrod" )
+	{
+		return DirectX::Colors::Goldenrod;
+	}
+	if ( dxColorString == "Gray" )
+	{
+		return DirectX::Colors::Gray;
+	}
+	if ( dxColorString == "Green" )
+	{
+		return DirectX::Colors::Green;
+	}
+	if ( dxColorString == "GreenYellow" )
+	{
+		return DirectX::Colors::GreenYellow;
+	}
+	if ( dxColorString == "Honeydew" )
+	{
+		return DirectX::Colors::Honeydew;
+	}
+	if ( dxColorString == "HotPink" )
+	{
+		return DirectX::Colors::HotPink;
+	}
+	if ( dxColorString == "IndianRed" )
+	{
+		return DirectX::Colors::IndianRed;
+	}
+	if ( dxColorString == "Indigo" )
+	{
+		return DirectX::Colors::Indigo;
+	}
+	if ( dxColorString == "Ivory" )
+	{
+		return DirectX::Colors::Ivory;
+	}
+	if ( dxColorString == "Khaki" )
+	{
+		return DirectX::Colors::Khaki;
+	}
+	if ( dxColorString == "Lavender" )
+	{
+		return DirectX::Colors::Lavender;
+	}
+	if ( dxColorString == "LavenderBlush" )
+	{
+		return DirectX::Colors::LavenderBlush;
+	}
+	if ( dxColorString == "LawnGreen" )
+	{
+		return DirectX::Colors::LawnGreen;
+	}
+	if ( dxColorString == "LemonChiffon" )
+	{
+		return DirectX::Colors::LemonChiffon;
+	}
+	if ( dxColorString == "LightBlue" )
+	{
+		return DirectX::Colors::LightBlue;
+	}
+	if ( dxColorString == "LightCoral" )
+	{
+		return DirectX::Colors::LightCoral;
+	}
+	if ( dxColorString == "LightCyan" )
+	{
+		return DirectX::Colors::LightCyan;
+	}
+	if ( dxColorString == "LightGoldenrodYellow" )
+	{
+		return DirectX::Colors::LightGoldenrodYellow;
+	}
+	if ( dxColorString == "LightGreen" )
+	{
+		return DirectX::Colors::LightGreen;
+	}
+	if ( dxColorString == "LightGray" )
+	{
+		return DirectX::Colors::LightGray;
+	}
+	if ( dxColorString == "LightPink" )
+	{
+		return DirectX::Colors::LightPink;
+	}
+	if ( dxColorString == "LightSalmon" )
+	{
+		return DirectX::Colors::LightSalmon;
+	}
+	if ( dxColorString == "LightSeaGreen" )
+	{
+		return DirectX::Colors::LightSeaGreen;
+	}
+	if ( dxColorString == "LightSkyBlue" )
+	{
+		return DirectX::Colors::LightSkyBlue;
+	}
+	if ( dxColorString == "LightSlateGray" )
+	{
+		return DirectX::Colors::LightSlateGray;
+	}
+	if ( dxColorString == "LightSteelBlue" )
+	{
+		return DirectX::Colors::LightSteelBlue;
+	}
+	if ( dxColorString == "LightYellow" )
+	{
+		return DirectX::Colors::LightYellow;
+	}
+	if ( dxColorString == "Lime" )
+	{
+		return DirectX::Colors::Lime;
+	}
+	if ( dxColorString == "LimeGreen" )
+	{
+		return DirectX::Colors::LimeGreen;
+	}
+	if ( dxColorString == "Linen" )
+	{
+		return DirectX::Colors::Linen;
+	}
+	if ( dxColorString == "Magenta" )
+	{
+		return DirectX::Colors::Magenta;
+	}
+	if ( dxColorString == "Maroon" )
+	{
+		return DirectX::Colors::Maroon;
+	}
+	if ( dxColorString == "MediumAquamarine" )
+	{
+		return DirectX::Colors::MediumAquamarine;
+	}
+	if ( dxColorString == "MediumBlue" )
+	{
+		return DirectX::Colors::MediumBlue;
+	}
+	if ( dxColorString == "MediumOrchid" )
+	{
+		return DirectX::Colors::MediumOrchid;
+	}
+	if ( dxColorString == "MediumPurple" )
+	{
+		return DirectX::Colors::MediumPurple;
+	}
+	if ( dxColorString == "MediumSeaGreen" )
+	{
+		return DirectX::Colors::MediumSeaGreen;
+	}
+	if ( dxColorString == "MediumSlateBlue" )
+	{
+		return DirectX::Colors::MediumSlateBlue;
+	}
+	if ( dxColorString == "MediumSpringGreen" )
+	{
+		return DirectX::Colors::MediumSpringGreen;
+	}
+	if ( dxColorString == "MediumTurquoise" )
+	{
+		return DirectX::Colors::MediumTurquoise;
+	}
+	if ( dxColorString == "MediumVioletRed" )
+	{
+		return DirectX::Colors::MediumVioletRed;
+	}
+	if ( dxColorString == "MidnightBlue" )
+	{
+		return DirectX::Colors::MidnightBlue;
+	}
+	if ( dxColorString == "MintCream" )
+	{
+		return DirectX::Colors::MintCream;
+	}
+	if ( dxColorString == "MistyRose" )
+	{
+		return DirectX::Colors::MistyRose;
+	}
+	if ( dxColorString == "Moccasin" )
+	{
+		return DirectX::Colors::Moccasin;
+	}
+	if ( dxColorString == "NavajoWhite" )
+	{
+		return DirectX::Colors::NavajoWhite;
+	}
+	if ( dxColorString == "Navy" )
+	{
+		return DirectX::Colors::Navy;
+	}
+	if ( dxColorString == "OldLace" )
+	{
+		return DirectX::Colors::OldLace;
+	}
+	if ( dxColorString == "Olive" )
+	{
+		return DirectX::Colors::Olive;
+	}
+	if ( dxColorString == "OliveDrab" )
+	{
+		return DirectX::Colors::OliveDrab;
+	}
+	if ( dxColorString == "Orange" )
+	{
+		return DirectX::Colors::Orange;
+	}
+	if ( dxColorString == "OrangeRed" )
+	{
+		return DirectX::Colors::OrangeRed;
+	}
+	if ( dxColorString == "Orchid" )
+	{
+		return DirectX::Colors::Orchid;
+	}
+	if ( dxColorString == "PaleGoldenrod" )
+	{
+		return DirectX::Colors::PaleGoldenrod;
+	}
+	if ( dxColorString == "PaleGreen" )
+	{
+		return DirectX::Colors::PaleGreen;
+	}
+	if ( dxColorString == "PaleTurquoise" )
+	{
+		return DirectX::Colors::PaleTurquoise;
+	}
+	if ( dxColorString == "PaleVioletRed" )
+	{
+		return DirectX::Colors::PaleVioletRed;
+	}
+	if ( dxColorString == "PapayaWhip" )
+	{
+		return DirectX::Colors::PapayaWhip;
+	}
+	if ( dxColorString == "PeachPuff" )
+	{
+		return DirectX::Colors::PeachPuff;
+	}
+	if ( dxColorString == "Peru" )
+	{
+		return DirectX::Colors::Peru;
+	}
+	if ( dxColorString == "Pink" )
+	{
+		return DirectX::Colors::Pink;
+	}
+	if ( dxColorString == "Plum" )
+	{
+		return DirectX::Colors::Plum;
+	}
+	if ( dxColorString == "PowderBlue" )
+	{
+		return DirectX::Colors::PowderBlue;
+	}
+	if ( dxColorString == "Purple" )
+	{
+		return DirectX::Colors::Purple;
+	}
+	if ( dxColorString == "Red" )
+	{
+		return DirectX::Colors::Red;
+	}
+	if ( dxColorString == "RosyBrown" )
+	{
+		return DirectX::Colors::RosyBrown;
+	}
+	if ( dxColorString == "RoyalBlue" )
+	{
+		return DirectX::Colors::RoyalBlue;
+	}
+	if ( dxColorString == "SaddleBrown" )
+	{
+		return DirectX::Colors::SaddleBrown;
+	}
+	if ( dxColorString == "Salmon" )
+	{
+		return DirectX::Colors::Salmon;
+	}
+	if ( dxColorString == "SandyBrown" )
+	{
+		return DirectX::Colors::SandyBrown;
+	}
+	if ( dxColorString == "SeaGreen" )
+	{
+		return DirectX::Colors::SeaGreen;
+	}
+	if ( dxColorString == "SeaShell" )
+	{
+		return DirectX::Colors::SeaShell;
+	}
+	if ( dxColorString == "Sienna" )
+	{
+		return DirectX::Colors::Sienna;
+	}
+	if ( dxColorString == "Silver" )
+	{
+		return DirectX::Colors::Silver;
+	}
+	if ( dxColorString == "SkyBlue" )
+	{
+		return DirectX::Colors::SkyBlue;
+	}
+	if ( dxColorString == "SlateBlue" )
+	{
+		return DirectX::Colors::SlateBlue;
+	}
+	if ( dxColorString == "SlateGray" )
+	{
+		return DirectX::Colors::SlateGray;
+	}
+	if ( dxColorString == "Snow" )
+	{
+		return DirectX::Colors::Snow;
+	}
+	if ( dxColorString == "SpringGreen" )
+	{
+		return DirectX::Colors::SpringGreen;
+	}
+	if ( dxColorString == "SteelBlue" )
+	{
+		return DirectX::Colors::SteelBlue;
+	}
+	if ( dxColorString == "Tan" )
+	{
+		return DirectX::Colors::Tan;
+	}
+	if ( dxColorString == "Teal" )
+	{
+		return DirectX::Colors::Teal;
+	}
+	if ( dxColorString == "Thistle" )
+	{
+		return DirectX::Colors::Thistle;
+	}
+	if ( dxColorString == "Tomato" )
+	{
+		return DirectX::Colors::Tomato;
+	}
+	if ( dxColorString == "Transparent" )
+	{
+		return DirectX::Colors::Transparent;
+	}
+	if ( dxColorString == "Turquoise" )
+	{
+		return DirectX::Colors::Turquoise;
+	}
+	if ( dxColorString == "Violet" )
+	{
+		return DirectX::Colors::Violet;
+	}
+	if ( dxColorString == "Wheat" )
+	{
+		return DirectX::Colors::Wheat;
+	}
+	if ( dxColorString == "White" )
+	{
+		return DirectX::Colors::White;
+	}
+	if ( dxColorString == "WhiteSmoke" )
+	{
+		return DirectX::Colors::WhiteSmoke;
+	}
+	if ( dxColorString == "Yellow" )
+	{
+		return DirectX::Colors::Yellow;
+	}
+	if ( dxColorString == "YellowGreen" )
+	{
+		return DirectX::Colors::YellowGreen;
+	}
+
+	return std::nullopt;
 }
 
 

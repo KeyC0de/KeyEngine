@@ -4,7 +4,20 @@
 
 namespace dx = DirectX;
 
-R3ctangle::R3ctangle( const float left,
+RectangleF::RectangleF( const int x,
+	const int y,
+	const int width,
+	const int height )
+	:
+	m_left(x),
+	m_right(x + width),
+	m_top(y),
+	m_bottom(y + height)
+{
+
+}
+
+RectangleF::RectangleF( const float left,
 	const float right,
 	const float top,
 	const float bottom )
@@ -17,24 +30,24 @@ R3ctangle::R3ctangle( const float left,
 
 }
 
-R3ctangle::R3ctangle( const dx::XMFLOAT2 &xAndY,
+RectangleF::RectangleF( const dx::XMFLOAT2 &xAndY,
 	const dx::XMFLOAT2 &bottomRight )
 	:
-	R3ctangle{xAndY.x, bottomRight.x, xAndY.y, bottomRight.y}
+	RectangleF{xAndY.x, bottomRight.x, xAndY.y, bottomRight.y}
 {
 
 }
 
-R3ctangle::R3ctangle( const dx::XMFLOAT2 &xAndY,
+RectangleF::RectangleF( const dx::XMFLOAT2 &xAndY,
 	const float width,
 	const float height )
 	:
-	R3ctangle{xAndY.x, xAndY.x + width, xAndY.y, xAndY.y + height}
+	RectangleF{xAndY.x, xAndY.x + width, xAndY.y, xAndY.y + height}
 {
 
 }
 
-R3ctangle R3ctangle::makeGivenCenter( const dx::XMFLOAT2 &center,
+RectangleF RectangleF::makeGivenCenter( const dx::XMFLOAT2 &center,
 	const float halfWidth,
 	const float halfHeight)
 {
@@ -43,7 +56,7 @@ R3ctangle R3ctangle::makeGivenCenter( const dx::XMFLOAT2 &center,
 	return {xAndY, bottomRight};
 }
 
-bool R3ctangle::isOverlappingWith( const R3ctangle &other ) const noexcept
+bool RectangleF::isOverlappingWith( const RectangleF &other ) const noexcept
 {
 	return std::max( m_left, m_right ) > std::min( other.m_left, other.m_right )	// right > other.left
 		&& std::min( m_left, m_right ) < std::max( other.m_left, other.m_right )	// && left < other.right
@@ -51,82 +64,197 @@ bool R3ctangle::isOverlappingWith( const R3ctangle &other ) const noexcept
 		&& std::min( m_top, m_bottom ) < std::max( other.m_top, other.m_bottom );	// && top < other.bottom;
 }
 
-R3ctangle R3ctangle::calcScaled( const float offset ) const noexcept
+RectangleF RectangleF::calcScaled( const float offset ) const noexcept
 {
-	return R3ctangle{m_left - offset, m_right + offset, m_top - offset, m_bottom + offset};
+	return RectangleF{m_left - offset, m_right + offset, m_top - offset, m_bottom + offset};
 }
 
-dx::XMFLOAT2 R3ctangle::calcCenter() const noexcept
+dx::XMFLOAT2 RectangleF::calcCenter() const noexcept
 {
 	return dx::XMFLOAT2{(m_left + m_right) / 2.0f, (m_top + m_bottom) / 2.0f};
 }
 
-float R3ctangle::getLeft() const noexcept
+float RectangleF::getLeft() const noexcept
 {
 	return m_left;
 }
 
-float& R3ctangle::getLeft()
+float& RectangleF::getLeft()
 {
 	return m_left;
 }
 
-float R3ctangle::getX() const noexcept
+float RectangleF::getX() const noexcept
 {
 	return m_left;
 }
 
-float& R3ctangle::getX()
+float& RectangleF::getX()
 {
 	return m_left;
 }
 
-float R3ctangle::getRight() const noexcept
+float RectangleF::getRight() const noexcept
 {
 	return m_right;
 }
 
-float& R3ctangle::getRight()
+float& RectangleF::getRight()
 {
 	return m_right;
 }
 
-float R3ctangle::getTop() const noexcept
+float RectangleF::getTop() const noexcept
 {
 	return m_top;
 }
 
-float& R3ctangle::getTop()
+float& RectangleF::getTop()
 {
 	return m_top;
 }
 
-float R3ctangle::getY() const noexcept
+float RectangleF::getY() const noexcept
 {
 	return m_top;
 }
 
-float& R3ctangle::getY()
+float& RectangleF::getY()
 {
 	return m_top;
 }
 
-float R3ctangle::getBottom() const noexcept
+float RectangleF::getBottom() const noexcept
 {
 	return m_bottom;
 }
 
-float& R3ctangle::getBottom()
+float& RectangleF::getBottom()
 {
 	return m_bottom;
 }
 
-float R3ctangle::getWidth() const noexcept
+float RectangleF::getWidth() const noexcept
 {
 	return m_right - m_left;
 }
 
-float R3ctangle::getHeight() const noexcept
+float RectangleF::getHeight() const noexcept
+{
+	return m_bottom - m_top;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+RectangleI::RectangleI( const int x,
+	const int y,
+	const int width,
+	const int height )
+	:
+	m_left(x),
+	m_right(x + width),
+	m_top(y),
+	m_bottom(y + height)
+{
+
+}
+
+RectangleI RectangleI::makeGivenCenter( const dx::XMFLOAT2 &center,
+	const int halfWidth,
+	const int halfHeight )
+{
+	const dx::XMFLOAT2 xAndY{center.x - halfWidth, center.y - halfHeight};
+	const dx::XMFLOAT2 bottomRight{center.x + halfWidth, center.y + halfHeight};
+	const int x = static_cast<int>( xAndY.x );
+	const int y = static_cast<int>( xAndY.y );
+	const int width = static_cast<int>( bottomRight.x ) - x;
+	const int height = static_cast<int>( bottomRight.y ) - y;
+	return {x, y, width, height};
+}
+
+bool RectangleI::isOverlappingWith( const RectangleI &other ) const noexcept
+{
+	return std::max( m_left, m_right ) > std::min( other.m_left, other.m_right )	// right > other.left
+		&& std::min( m_left, m_right ) < std::max( other.m_left, other.m_right )	// && left < other.right
+		&& std::max( m_top, m_bottom ) > std::min( other.m_top, other.m_bottom )	// && bottom > other.top
+		&& std::min( m_top, m_bottom ) < std::max( other.m_top, other.m_bottom );	// && top < other.bottom;
+}
+
+RectangleI RectangleI::calcScaled( const int offset ) const noexcept
+{
+	return RectangleI{m_left - offset, m_right + offset, m_top - offset, m_bottom + offset};
+}
+
+dx::XMFLOAT2 RectangleI::calcCenter() const noexcept
+{
+	return dx::XMFLOAT2{(m_left + m_right) / 2.0f, (m_top + m_bottom) / 2.0f};
+}
+
+int RectangleI::getLeft() const noexcept
+{
+	return m_left;
+}
+
+int& RectangleI::getLeft()
+{
+	return m_left;
+}
+
+int RectangleI::getX() const noexcept
+{
+	return m_left;
+}
+
+int& RectangleI::getX()
+{
+	return m_left;
+}
+
+int RectangleI::getRight() const noexcept
+{
+	return m_right;
+}
+
+int& RectangleI::getRight()
+{
+	return m_right;
+}
+
+int RectangleI::getTop() const noexcept
+{
+	return m_top;
+}
+
+int& RectangleI::getTop()
+{
+	return m_top;
+}
+
+int RectangleI::getY() const noexcept
+{
+	return m_top;
+}
+
+int& RectangleI::getY()
+{
+	return m_top;
+}
+
+int RectangleI::getBottom() const noexcept
+{
+	return m_bottom;
+}
+
+int& RectangleI::getBottom()
+{
+	return m_bottom;
+}
+
+int RectangleI::getWidth() const noexcept
+{
+	return m_right - m_left;
+}
+
+int RectangleI::getHeight() const noexcept
 {
 	return m_bottom - m_top;
 }

@@ -312,7 +312,6 @@ HRESULT Sound::findChunk( HANDLE file,
 
 	while ( hr == S_OK )
 	{
-		DWORD bytesRead;
 		if ( ReadFile( file, &chunkType, sizeof( DWORD ), &bytesRead, nullptr ) == 0 )
 		{
 			hr = HRESULT_FROM_WIN32( GetLastError() );
@@ -398,7 +397,7 @@ Sound::Sound( const char *zsFilename,
 	}
 
 	HRESULT hres = SetFilePointer( file/*-V303*/, 0, nullptr, FILE_BEGIN );
-	if ( hres == INVALID_SET_FILE_POINTER )
+	if ( (DWORD) hres == INVALID_SET_FILE_POINTER )
 	{
 		ASSERT_HRES_IF_FAILED( HRESULT_FROM_WIN32( GetLastError() ) );
 	}

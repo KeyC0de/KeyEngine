@@ -42,7 +42,7 @@ public:
 		friend class Sound;
 
 		struct IXAudio2SourceVoice *m_pSourceVoice = nullptr;
-		Sound *m_pSound;
+		Sound *m_pSound = nullptr;
 	public:
 		Channel() = default;
 		Channel( Channel &&rhs ) cond_noex;

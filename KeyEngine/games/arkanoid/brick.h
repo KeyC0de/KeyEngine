@@ -11,14 +11,14 @@ class Ball;
 class Brick
 {
 	static constexpr float s_margin = 1.0f;
-	R3ctangle m_rect;
+	RectangleF m_rect;
 	ColorBGRA m_color;
 	bool m_bDestroyed = false;
 public:
 #pragma warning( disable : 26495 )
 	Brick() = default;
 #pragma warning( default : 26495 )
-	Brick( const R3ctangle &rect, const ColorBGRA col );
+	Brick( const RectangleF &rect, const ColorBGRA col );
 
 	void render( Graphics &gfx ) const cond_noex;
 	bool checkForBallCollision( const Ball &ball ) const cond_noex;

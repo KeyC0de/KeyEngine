@@ -8,6 +8,7 @@
 #include "d3d_utils.h"
 
 
+// #TODO: Model LOD automatic switching
 namespace mesh
 {
 
@@ -65,7 +66,8 @@ void Mesh::render( const size_t channels /* = rch::all*/ ) const noexcept
 	ASSERT( !m_effects.empty(), "No Effects to submit to the Renderer!" );
 	ASSERT( m_meshId != 0, "Mesh not initialized properly!" );
 
-	if ( !isFrustumCulled() )
+	m_bRenderedThisFrame = !isFrustumCulled();
+	if ( m_bRenderedThisFrame )
 	{
 		for ( const auto &effect : m_effects )
 		{
@@ -199,65 +201,9 @@ float Mesh::getDistanceFromActiveCamera() const noexcept
 	return m_distanceFromActiveCamera;
 }
 
-bool Mesh::isFrustumCulled() const noexcept
+bool Mesh::isRenderedThisFrame() const noexcept
 {
-	const std::vector<DirectX::XMFLOAT4> &frustumPlanes = CameraManager::getInstance().getActiveCamera().getFrustumPlanes();
-	const unsigned numPlanes = frustumPlanes.size();
-	ASSERT( numPlanes == 6, "Invalid number of planes!" );
-
-	const auto &minVertex = m_aabb.first;
-	const auto &maxVertex = m_aabb.second;
-
-	const auto pos = getPosition();
-
-	for ( int i = 0; i < numPlanes; ++i )
-	{
-		// AABB vertex furthest away from the direction the plane normal is facing
-		dx::XMFLOAT3 axisVert{};
-
-		// along the ...
-		// ... x-axis
-		if ( frustumPlanes[i].x < 0.0f )
-		{
-			axisVert.x = minVertex.x + pos.x;
-		}
-		else
-		{
-			axisVert.x = maxVertex.x + pos.x;
-		}
-
-		// ... y-axis
-		if ( frustumPlanes[i].y < 0.0f )
-		{
-			axisVert.y = minVertex.y + pos.y;
-		}
-		else
-		{
-			axisVert.y = maxVertex.y + pos.y;
-		}
-
-		// ... z-axis
-		if ( frustumPlanes[i].z < 0.0f )
-		{
-			axisVert.z = minVertex.z + pos.z;
-		}
-		else
-		{
-			axisVert.z = maxVertex.z + pos.z;
-		}
-
-		const dx::XMVECTOR planeNormal{dx::XMVectorSet( frustumPlanes[i].x, frustumPlanes[i].y, frustumPlanes[i].z, 0.0f )};
-		const float planeConstant = frustumPlanes[i].w;
-
-		// get the signed distance from the AABB vertex that's furthest down the frustum planes normal, and if the signed distance is negative
-		//	then the entire bounding box is behind the frustum plane, which means that it should be culled
-		if ( dx::XMVectorGetX( dx::XMVector3Dot( planeNormal, dx::XMLoadFloat3( &axisVert ) ) ) + planeConstant < 0.0f )
-		{
-			return true;
-		}
-	}
-
-	return false;
+	return m_bRenderedThisFrame;
 }
 
 void Mesh::createAabb( const ver::VBuffer &verts )
@@ -318,4 +264,65 @@ void Mesh::createAabb( const aiMesh &aiMesh )
 	}
 
 	m_aabb = std::make_pair( minVertex, maxVertex );
+}
+
+bool Mesh::isFrustumCulled() const noexcept
+{
+	const std::vector<DirectX::XMFLOAT4> &frustumPlanes = CameraManager::getInstance().getActiveCamera().getFrustumPlanes();
+	const int numPlanes = static_cast<const int>( frustumPlanes.size() );
+	ASSERT( numPlanes == 6, "Invalid number of planes!" );
+
+	const auto &minVertex = m_aabb.first;
+	const auto &maxVertex = m_aabb.second;
+
+	const auto pos = getPosition();
+
+	for ( int i = 0; i < numPlanes; ++i )
+	{
+		// AABB vertex furthest away from the direction the plane normal is facing
+		dx::XMFLOAT3 axisVert{};
+
+		// along the ...
+		// ... x-axis
+		if ( frustumPlanes[i].x < 0.0f )
+		{
+			axisVert.x = minVertex.x + pos.x;
+		}
+		else
+		{
+			axisVert.x = maxVertex.x + pos.x;
+		}
+
+		// ... y-axis
+		if ( frustumPlanes[i].y < 0.0f )
+		{
+			axisVert.y = minVertex.y + pos.y;
+		}
+		else
+		{
+			axisVert.y = maxVertex.y + pos.y;
+		}
+
+		// ... z-axis
+		if ( frustumPlanes[i].z < 0.0f )
+		{
+			axisVert.z = minVertex.z + pos.z;
+		}
+		else
+		{
+			axisVert.z = maxVertex.z + pos.z;
+		}
+
+		const dx::XMVECTOR planeNormal{dx::XMVectorSet( frustumPlanes[i].x, frustumPlanes[i].y, frustumPlanes[i].z, 0.0f )};
+		const float planeConstant = frustumPlanes[i].w;
+
+		// get the signed distance from the AABB vertex that's furthest down the frustum planes normal, and if the signed distance is negative
+		//	then the entire bounding box is behind the frustum plane, which means that it should be culled
+		if ( dx::XMVectorGetX( dx::XMVector3Dot( planeNormal, dx::XMLoadFloat3( &axisVert ) ) ) + planeConstant < 0.0f )
+		{
+			return true;
+		}
+	}
+
+	return false;
 }

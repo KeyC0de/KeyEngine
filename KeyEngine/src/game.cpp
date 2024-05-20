@@ -20,6 +20,8 @@
 #if defined _DEBUG && !defined NDEBUG
 #	include "bindable_map.h"
 #endif
+//#include "ui_pass.h"
+//#include "ui_component.h"
 
 
 namespace dx = DirectX;
@@ -32,7 +34,7 @@ Game<T>::Game( const int width,
 	const int y,
 	const unsigned nWindows )
 	:
-	//IListener<SwapChainResized>(),
+	//IListener<SwapChainResizedEvent>(),
 #ifndef FINAL_RELEASE
 	m_pImguiMan{createImgui()},
 #endif
@@ -42,7 +44,7 @@ Game<T>::Game( const int width,
 	s_nWindows = nWindows;
 	m_gameTimer.start();
 
-	//static_cast<const IReporter<SwapChainResized>&>( *this ).addListener( this );
+	//static_cast<const IReporter<SwapChainResizedEvent>&>( *this ).addListener( this );
 }
 
 template <typename T>
@@ -158,7 +160,7 @@ Sandbox3d::Sandbox3d( const int width,
 	const int nWindows )
 	:
 	Game(width, height, "KeyEngine 3d Sandbox", x, y, nWindows),
-	IListener<SwapChainResized>()
+	IListener<SwapChainResizedEvent>()
 {
 	auto &gfx = m_mainWindow.getGraphics();
 
@@ -197,11 +199,13 @@ Sandbox3d::Sandbox3d( const int width,
 		8000u );
 	*/
 
+	//m_gui = std::make_unique<gui::UIPass>( gfx );
+
 	auto menuState = std::make_unique<MenuState>();
 	setState( std::move( menuState ), m_mainWindow.getMouse() );
 
 	auto &reportingNexus = ReportingNexus::getInstance();
-	static_cast<const IReporter<SwapChainResized>&>( reportingNexus ).addListener( this );
+	static_cast<const IReporter<SwapChainResizedEvent>&>( reportingNexus ).addListener( this );
 }
 
 Sandbox3d::~Sandbox3d() noexcept
@@ -209,7 +213,7 @@ Sandbox3d::~Sandbox3d() noexcept
 
 }
 
-void Sandbox3d::notify( const SwapChainResized &event )
+void Sandbox3d::notify( const SwapChainResizedEvent &event )
 {
 	(void)event;
 
@@ -294,7 +298,8 @@ int Sandbox3d::checkInput( const float dt )
 	auto &keyboard = m_mainWindow.getKeyboard();
 	auto &mouse = m_mainWindow.getMouse();
 
-	// process any keyboard events
+	const bool bCursorEnabled = m_mainWindow.isCursorEnabled();
+
 	while ( const auto ev = keyboard.readEventQueue() )
 	{
 		if ( !ev->isPressEvent() )
@@ -306,7 +311,7 @@ int Sandbox3d::checkInput( const float dt )
 		{
 		case VK_ESCAPE:
 		{
-			if ( m_mainWindow.isCursorEnabled() )	// TODO: check the game state on how to respond not whether the cursor is enabled
+			if ( bCursorEnabled )	// TODO: check the game state on how to respond not whether the cursor is enabled
 			{
 				setState( std::make_unique<GameState>(), mouse );
 			}
@@ -348,7 +353,26 @@ int Sandbox3d::checkInput( const float dt )
 	const float camSpeed = keyboard.isKeyPressed( VK_SHIFT ) ? 6.0f : 1.0f;
 
 	auto &activeCamera = s_cameraMan.getActiveCamera();
-	if ( !m_mainWindow.isCursorEnabled() )
+	if ( bCursorEnabled )
+	{
+	//	while ( const auto ev = mouse.readEventQueue() )
+	//	{
+	//		gui::Point ui_point{mouse.getX(), mouse.getY()};
+	//		if ( ev->isLmbPressed() )
+	//		{
+	//			m_gui->getRoot()->on_lmb_down( dt, ui_point );
+	//		}
+	//		else if ( ev->isLmbReleased() )
+	//		{
+	//			m_gui->getRoot()->on_lmb_up( dt, ui_point );
+	//		}
+	//		else if ( ev->isRmbReleased() )
+	//		{
+	//			m_gui->getRoot()->on_rmb_up( dt, ui_point );
+	//		}
+	//	}
+	}
+	else
 	{
 		if ( keyboard.isKeyPressed( 'W' ) )
 		{
@@ -380,7 +404,7 @@ int Sandbox3d::checkInput( const float dt )
 		}
 	}
 
-	// Rotate Camera if in game mode
+	// rotate Camera if in game mode
 	while ( const auto &delta = mouse.readRawDeltaBuffer() )
 	{
 		if ( !m_mainWindow.isCursorEnabled() )
@@ -411,7 +435,7 @@ void Sandbox3d::update( const float dt,
 	m_carabiner.update( dt, lerpBetweenFrames );
 	m_sponzaScene.update( dt, lerpBetweenFrames );
 
-	gfx.getRenderer3d().updateUi( gfx, dt, lerpBetweenFrames );
+	//m_gui->update( dt, inputXandY, lerpBetweenFrames );
 }
 
 void Sandbox3d::updateFixed( const float dt )
@@ -443,6 +467,8 @@ void Sandbox3d::render()
 	s_cameraMan.render( rch::lambert | rch::wireframe );
 
 	gfx.runRenderer();
+
+	//m_gui->render( gfx );
 }
 
 void Sandbox3d::test()
@@ -516,7 +542,7 @@ Arkanoid::Arkanoid( const int width,
 	:
 	Game(width, height, "Arkanoid", x, y),
 	m_ball(dx::XMFLOAT2{450.0f, 450.0f}, dx::XMFLOAT2{-300.0f, -300.0f}),
-	m_walls(R3ctangle(0.0f, (float)width, 0.0f, (float)height)),
+	m_walls(RectangleF(0.0f, (float)width, 0.0f, (float)height)),
 	m_paddle(dx::XMFLOAT2(400.0f, 550.0f), 40.0f, 8.0f, col::Cyan, col::Orange),
 	m_brickSound("assets/sfx/arkanoid_brick.wav", "Arkanoid Brick"),
 	m_padSound("assets/sfx/arkanoid_pad.wav", "Arkanoid Pad")
@@ -531,15 +557,15 @@ Arkanoid::Arkanoid( const int width,
 		for ( int xi = 0; xi < s_nBricksHorizontally; ++xi )
 		{
 			auto curBrickTopLeftOffset = dx::XMFLOAT2{xi * s_brickWidth, yi * s_brickHeight};
-			m_bricks[i] = Brick{R3ctangle{dx::XMFLOAT2{topLeft.x + curBrickTopLeftOffset.x, topLeft.y + curBrickTopLeftOffset.y}, s_brickWidth, s_brickHeight}, rowCol};
+			m_bricks[i] = Brick{RectangleF{dx::XMFLOAT2{topLeft.x + curBrickTopLeftOffset.x, topLeft.y + curBrickTopLeftOffset.y}, s_brickWidth, s_brickHeight}, rowCol};
 			++i;
 		}
 	}
 
-	//static_cast<const IReporter<SwapChainResized>&>(nullptr).addListener( this );
+	//static_cast<const IReporter<SwapChainResizedEvent>&>(nullptr).addListener( this );
 }
 
-//void Arkanoid::notify( const SwapChainResized &event )
+//void Arkanoid::notify( const SwapChainResizedEvent &event )
 //{
 //	(void)event;
 //	pass_;

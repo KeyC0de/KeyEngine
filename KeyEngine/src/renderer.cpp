@@ -21,7 +21,7 @@
 #include "negative_pass.h"
 #include "blur_pass.h"
 #include "pass_through.h"
-#include "ui_pass.h"
+//#include "ui_pass.h"
 #include "pass_2d.h"
 #include "render_target.h"
 #ifndef FINAL_RELEASE
@@ -30,13 +30,6 @@
 #include "math_utils.h"
 #include "assertions_console.h"
 
-
-namespace
-{
-
-ren::UIPass *g_pUiPass;
-
-}
 
 namespace ren
 {
@@ -60,8 +53,6 @@ void Renderer::recreate( Graphics &gfx )
 	m_globalBinders.clear();
 	m_globalLinkers.clear();
 	m_pFinalPostProcessPass.reset();
-	m_pUiPass.reset();
-	g_pUiPass = nullptr;
 	m_pRtv.reset();
 	m_pDsv.reset();
 	m_bValidatedPasses = false;
@@ -96,13 +87,6 @@ void Renderer::addGlobalBinder( std::unique_ptr<IBinder> pBinder )
 	m_globalBinders.emplace_back( std::move( pBinder ) );
 }
 
-void Renderer::updateUi( Graphics &gfx,
-	const float dt,
-	const float lerpBetweenFrames ) cond_noex
-{
-	pass_;
-}
-
 void Renderer::run( Graphics &gfx ) cond_noex
 {
 	ASSERT( m_bValidatedPasses, "Renderer is not validated!" );
@@ -124,14 +108,14 @@ void Renderer::run( Graphics &gfx ) cond_noex
 		}
 	}
 
-	if constexpr ( gph_mode::get() == gph_mode::_3D )
-	{
-		offscreenToBackBufferSwap( gfx );
-		m_pFinalPostProcessPass->run( gfx );
-	}
+	//offscreenToBackBufferSwap( gfx );
+	//if ( m_bUsesOffscreen )
+	//{
+		//m_pFinalPostProcessPass->run( gfx );
+	//}
 
 	// UI rendering continues...
-	m_pUiPass->run( gfx );
+	//m_pUiPass->run( gfx );
 }
 
 void Renderer::reset() noexcept
@@ -141,8 +125,7 @@ void Renderer::reset() noexcept
 	{
 		pass->reset();
 	}
-	m_pFinalPostProcessPass->reset();
-	m_pUiPass->reset();
+	//m_pFinalPostProcessPass->reset();
 }
 
 void Renderer::offscreenToBackBufferSwap( Graphics &gfx )
@@ -194,15 +177,15 @@ void Renderer::validateBindersLinkage()
 	m_bValidatedPasses = true;
 }
 
-void Renderer::linkPassBinders( IPass &pass )
+void Renderer::linkPassBinders( IPass &targetPass )
 {
-	for ( auto &binder : pass.getBinders() )
+	for ( auto &binder : targetPass.getBinders() )
 	{
 		const auto &binderPassName = binder->getPassName();
 		if ( binderPassName.empty() )
 		{
 			std::ostringstream oss;
-			oss << "In pass named [" << pass.getName() << "] binder named [" << binder->getName() << "] has no target linker set.";
+			oss << "In pass named [" << targetPass.getName() << "] binder named [" << binder->getName() << "] has no target linker set.";
 			THROW_RENDERER_EXCEPTION( oss.str() );
 		}
 
@@ -309,24 +292,17 @@ bool Renderer::isUsingOffscreenRendering() const noexcept
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 Renderer3d::Renderer3d( Graphics &gfx,
-	bool drawToOffscreen,
+	bool bDrawToOffscreen,
 	const int radius,
 	const float sigma,
 	const KernelType kernelType )
 	:
-	Renderer{gfx, drawToOffscreen},
+	Renderer{gfx, bDrawToOffscreen},
 	m_radius(radius),
 	m_sigma(sigma),
 	m_kernelType{kernelType}
 {
 	recreate( gfx );
-}
-
-void Renderer3d::updateUi( Graphics &gfx,
-	const float dt,
-	const float lerpBetweenFrames ) cond_noex
-{
-	g_pUiPass->update( gfx, dt, lerpBetweenFrames );
 }
 
 void Renderer3d::recreate( Graphics &gfx )
@@ -422,23 +398,24 @@ void Renderer3d::recreate( Graphics &gfx )
 		addPass( std::move( pass ) );
 	}
 	{
-		auto pass = std::make_unique<TransparentPass>( gfx, "transparent" );
-		pass->setupBinderTarget( "renderTarget", "wireframe", "renderTarget" );
-		pass->setupBinderTarget( "depthStencil", "wireframe", "depthStencil" );
-		addPass( std::move( pass ) );
+		//auto pass = std::make_unique<TransparentPass>( gfx, "transparent" );
+		//pass->setupBinderTarget( "renderTarget", "wireframe", "renderTarget" );
+		//pass->setupBinderTarget( "depthStencil", "wireframe", "depthStencil" );
+		//addPass( std::move( pass ) );
 	}
 
-	setupGlobalBinderTarget( "backColorbuffer", "transparent", "renderTarget" );
+	setupGlobalBinderTarget( "backColorbuffer", "wireframe", "renderTarget" );
+	//setupGlobalBinderTarget( "backColorbuffer", "transparent", "renderTarget" );
 	Renderer::linkGlobalBinders();
 
+	if ( isUsingOffscreenRendering() )
 	{
 		//m_pFinalPostProcessPass = std::make_unique<ren::BlurPass>( gfx, "blur" );
 		//m_pFinalPostProcessPass = std::make_unique<ren::NegativePass>( gfx, "negative" );
 		m_pFinalPostProcessPass = std::make_unique<ren::PassThrough>( gfx, "passthrough" );
 	}
 
-	m_pUiPass = std::make_unique<ren::UIPass>( gfx, "ui" );
-	g_pUiPass = dynamic_cast<ren::UIPass*>( m_pUiPass.get() );
+	//m_pUiPass = std::make_unique<gui::UIPass>( gfx );
 }
 
 void Renderer3d::displayImguiWidgets( Graphics &gfx ) noexcept

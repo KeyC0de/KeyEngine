@@ -125,6 +125,7 @@ void setupDetachedThreadsVector( unsigned nThreads )
 	g_detachedThreads.reserve( nThreads );
 }
 
+#pragma warning( disable : 6246 )
 void terminateDetachedThreads()
 {
 #if defined _DEBUG && !defined NDEBUG
@@ -155,6 +156,7 @@ void terminateDetachedThreads()
 	CloseHandle( g_hThreadQuitcEvent );
 	ASSERT_HRES_WIN32_IF_FAILED;
 }
+#pragma warning( default : 6246 )
 #pragma endregion DetachedThreads
 
 
@@ -224,6 +226,9 @@ void launchProcess( const std::string &path )
 
 	CreateProcessW( util::s2ws( path ).c_str(), nullptr, nullptr, nullptr, FALSE, 0, nullptr, nullptr, &si, &pi );
 	ASSERT_HRES_WIN32_IF_FAILED;
+
+	CloseHandle( pi.hProcess );
+	CloseHandle( pi.hThread );
 
 	/*
 	std::cout << "Process creation successful.\n";

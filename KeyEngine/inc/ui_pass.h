@@ -1,49 +1,43 @@
 #pragma once
 
 #include <memory>
-#include <set>
 #include "graphics_friend.h"
-#include "DirectXTK/SpriteFont.h"
-#include "DirectXTK/SpriteBatch.h"
-#include "bindable_pass.h"
-#include "ui_component.h"
-#include "rasterizer_state.h"
-#include "texture.h"
 
 
-namespace ren
+namespace DirectX
 {
+
+class SpriteBatch;
+class SpriteFont;
+
+}
+
+class RasterizerState;
+class Texture;
+
+namespace gui
+{
+
+class Component;
 
 class UIPass
-	: public IBindablePass,
-	public GraphicsFriend
+	: public GraphicsFriend
 {
-	struct ComponentComparator
-	{
-		bool operator()( const std::unique_ptr<ui::Component> pComponent1, const std::unique_ptr<ui::Component> pComponent2 );
-	};
-
-	std::set<std::unique_ptr<ui::Component>> m_components;	// ui component hierarchy
-	std::wstring m_fontFilenameNoExtension;
+	std::unique_ptr<Component> m_pRoot;
 	std::unique_ptr<DirectX::SpriteBatch> m_pSpriteBatch;
-	std::unique_ptr<DirectX::SpriteFont> m_pFpsSpriteFont;
+	std::unique_ptr<DirectX::SpriteFont> m_pSpriteFont;
 	std::shared_ptr<RasterizerState> m_pRasterizerState;
-	std::shared_ptr<Texture> m_pTexture1;
-	std::shared_ptr<Texture> m_pTexture2;
 public:
-	UIPass( Graphics &gfx, const std::string &name );
+	UIPass( Graphics &gfx );
 
-	void update( Graphics &gfx, const float dt, const float lerpBetweenFrames ) cond_noex;
-	virtual void run( Graphics &gfx ) const cond_noex override;
-	virtual void reset() cond_noex override;
-	void drawText( Graphics &gfx, const std::string &text, const DirectX::XMFLOAT2 &pos, const DirectX::XMVECTORF32 &color = DirectX::Colors::White, const DirectX::XMFLOAT2 &scale = DirectX::XMFLOAT2{1.0f, 1.0f} );
-	void drawTexture1( Graphics &gfx, const int x, const int y, const int width, const int height );
-	void drawTexture2( Graphics &gfx, const int x, const int y, const int width, const int height );
-private:
-	//	\function	updateAndRenderFpsTimer	||	\date	2022/11/13 16:21
-	//	\brief	draws FPS text
-	void updateAndRenderFpsTimer( Graphics &gfx );
+	~UIPass() noexcept;
+
+	void recreate( Graphics &gfx );
+	void update( const float dt, const std::pair<int, int> inputXandY, const float lerpBetweenFrames ) cond_noex;
+	void render( Graphics &gfx ) const cond_noex;
+	const std::unique_ptr<Component>& getRoot() const noexcept;
+	std::unique_ptr<Component>& getRoot();
 };
 
 
-}//namespace ren}
+}//namespace gui

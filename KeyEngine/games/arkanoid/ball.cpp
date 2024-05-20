@@ -20,10 +20,10 @@ void Ball::update( const float dt )
 	dx::XMStoreFloat2( &m_pos, {m_pos.x + change.x, m_pos.y + change.y} );
 }
 
-bool Ball::doWallCollision( const R3ctangle &wall )
+bool Ball::doWallCollision( const RectangleF &wall )
 {
 	bool collided = false;
-	const R3ctangle rect = this->rect();
+	const RectangleF rect = this->rect();
 	if ( rect.getLeft() < wall.getLeft() )
 	{
 		m_pos.x += wall.getLeft() - rect.getLeft();
@@ -62,9 +62,9 @@ void Ball::reboundY()
 	m_vel.y = -m_vel.y;
 }
 
-R3ctangle Ball::rect() const noexcept
+RectangleF Ball::rect() const noexcept
 {
-	return R3ctangle::makeGivenCenter( m_pos, s_radius, s_radius );
+	return RectangleF::makeGivenCenter( m_pos, s_radius, s_radius );
 }
 
 const dx::XMFLOAT2& Ball::getVelocity() const noexcept

@@ -39,7 +39,7 @@ Texture::Texture( Graphics &gfx,
 	srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
 	srvDesc.Texture2D.MostDetailedMip = 0u;
 #pragma warning( disable: 4146 )
-	srvDesc.Texture2D.MipLevels = -1u;
+	srvDesc.Texture2D.MipLevels = -1u;	// generate all Mips from #(MostDetailedMip) down to least detailed
 #pragma warning( default: 4146 )
 	hres = getDevice( gfx )->CreateShaderResourceView( m_pTex.Get(), &srvDesc, &m_pSrv );
 	ASSERT_HRES_IF_FAILED;

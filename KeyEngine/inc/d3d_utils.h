@@ -3,6 +3,7 @@
 #include "winner.h"
 #include <string>
 #include <vector>
+#include <optional>
 #include <d3d11.h>
 #include <d3dcompiler.h>
 #include <DirectXMath.h>
@@ -205,5 +206,6 @@ TShader* loadShaderDynamically( ID3D11Device *pD3dDevice,
 
 ALIAS_FUNCTION( loadShaderDynamically, compileShaderDynamically );
 
+std::optional<DirectX::XMVECTORF32> getDirectXColorFromString( const std::string &dxColorString );
 
 }// namespace util

@@ -30,6 +30,11 @@ namespace ren
 	class Renderer;
 }
 
+//namespace gui
+//{
+//	class UIPass;
+//}
+
 template<typename T>
 class Game
 	: public NonCopyableAndNonMovable
@@ -71,10 +76,11 @@ private:
 
 class Sandbox3d
 	: public Game<Sandbox3d>,
-	public IListener<SwapChainResized>
+	public IListener<SwapChainResizedEvent>
 {
 	static inline CameraManager &s_cameraMan = CameraManager::getInstance();
 
+	//std::unique_ptr<gui::UIPass> m_gui;
 	std::unique_ptr<PointLight> m_pPointLight1;
 	//std::unique_ptr<PointLight> m_pPointLight2;
 #ifndef FINAL_RELEASE
@@ -93,7 +99,7 @@ public:
 	Sandbox3d( const int width, const int height, const int x, const int y, const int nWindows = 1 );
 	~Sandbox3d() noexcept;
 
-	void notify( const SwapChainResized &event ) override;
+	void notify( const SwapChainResizedEvent &event ) override;
 	int loop();
 private:
 	int checkInput( const float dt );
@@ -114,7 +120,7 @@ class Arkanoid final
 	static constexpr inline int s_nBricks = s_nBricksHorizontally * s_nBricksVertically;
 	static constexpr inline float s_speed = 300.0f;
 	Ball m_ball;
-	R3ctangle m_walls;
+	RectangleF m_walls;
 	Brick m_bricks[s_nBricks];
 	Paddle m_paddle;
 	Sound m_brickSound;

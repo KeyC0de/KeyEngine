@@ -23,7 +23,7 @@ Paddle::Paddle( const dx::XMFLOAT2 &pos,
 
 void Paddle::render( Graphics &gfx ) const cond_noex
 {
-	R3ctangle rect = this->rect();
+	RectangleF rect = this->rect();
 	gfx.drawRectangle( rect, m_wingColor );
 	rect.getLeft() += s_wingWidth;
 	rect.getRight() -= s_wingWidth;
@@ -34,7 +34,7 @@ bool Paddle::doBallCollision( Ball &ball )
 {
 	if ( !m_bInCollisionCooldown )
 	{
-		const R3ctangle rect = this->rect();
+		const RectangleF rect = this->rect();
 		if ( rect.isOverlappingWith( ball.rect() ) )
 		{
 			const dx::XMFLOAT2 ballPos = ball.getPosition();
@@ -57,9 +57,9 @@ bool Paddle::doBallCollision( Ball &ball )
 	return false;
 }
 
-void Paddle::doWallCollision( const R3ctangle &walls )
+void Paddle::doWallCollision( const RectangleF &walls )
 {
-	const R3ctangle hitBox = rect();
+	const RectangleF hitBox = rect();
 	if ( hitBox.getLeft() < walls.getLeft() )
 	{
 		m_posCenter.x += walls.getLeft() - hitBox.getLeft();
@@ -70,9 +70,9 @@ void Paddle::doWallCollision( const R3ctangle &walls )
 	}
 }
 
-R3ctangle Paddle::rect() const
+RectangleF Paddle::rect() const
 {
-	return R3ctangle::makeGivenCenter( m_posCenter, m_halfWidth, m_halfHeight );
+	return RectangleF::makeGivenCenter( m_posCenter, m_halfWidth, m_halfHeight );
 }
 
 void Paddle::resetCollisionCooldown()

@@ -220,7 +220,7 @@ Graphics::Graphics( const HWND hWnd,
 	// Create Renderer
 	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{
-		m_pRenderer = std::make_unique<ren::Renderer3d>( *this, true, 4, 3.0f );
+		m_pRenderer = std::make_unique<ren::Renderer3d>( *this, false, 4, 3.0f );
 		m_pRenderer3d = dynamic_cast<ren::Renderer3d*>( m_pRenderer.get() );
 	}
 	else
@@ -340,7 +340,7 @@ void Graphics::resize( unsigned newWidth,
 
 	m_pRenderer->recreate( *this );
 	auto &reportingNexus = ReportingNexus::getInstance();
-	static_cast<IReporter<SwapChainResized>&>( reportingNexus ).notifyListeners( SwapChainResized{} );
+	static_cast<IReporter<SwapChainResizedEvent>&>( reportingNexus ).notifyListeners( SwapChainResizedEvent{*this} );
 
 	// update cameras
 	CameraManager::getInstance().onWindowResize( *this );
@@ -398,14 +398,7 @@ size_t Graphics::getFrameNum() const noexcept
 
 void Graphics::runRenderer() noexcept
 {
-	if constexpr ( gph_mode::get() == gph_mode::_3D )
-	{
-		m_pRenderer3d->run( *this );
-	}
-	else
-	{
-		m_pRenderer2d->run( *this );
-	}
+	m_pRenderer->run( *this );
 }
 
 ren::Renderer& Graphics::getRenderer() noexcept
@@ -1000,7 +993,7 @@ void Graphics::drawRectangle( int x0,
 	}
 }
 
-void Graphics::drawRectangle( const R3ctangle &rect,
+void Graphics::drawRectangle( const RectangleF &rect,
 	const ColorBGRA col )
 {
 	drawRectangle( static_cast<int>( rect.getLeft() ), static_cast<int>( rect.getTop() ), static_cast<int>( rect.getRight() ), static_cast<int> ( rect.getBottom() ), col );
@@ -1057,7 +1050,7 @@ void Graphics::drawCircle( const int centerX,
 void Graphics::drawStar( const float outerRadius,
 	const float innerRadius,
 	const ColorBGRA color,
-	const int nFlares /*= 5 */)
+	const int nFlares /*= 5 */ )
 {
 	std::vector<dx::XMFLOAT2> star;
 	star.reserve( (size_t)nFlares * 2 );
@@ -1067,12 +1060,13 @@ void Graphics::drawStar( const float outerRadius,
 		const float rad = ( i % 2 == 0 ) ?
 			outerRadius :
 			innerRadius;
+		//xAndY, bottomRight
 		star.emplace_back( rad * cos( float(i) * dTheta ), rad * sin( float(i) * dTheta ) );
 	}
 
 	for ( const dx::XMFLOAT2 &coord : star )
 	{
-		putPixel( coord.x, coord.y, color );
+		putPixel( static_cast<int>( coord.x ), static_cast<int>( coord.y ), color );
 	}
 }
 

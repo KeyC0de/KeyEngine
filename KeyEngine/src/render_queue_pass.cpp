@@ -39,7 +39,7 @@ void RenderQueuePass::reset() cond_noex
 	m_meshes.clear();
 }
 
-int RenderQueuePass::getNumMeshes() const noexcept
+size_t RenderQueuePass::getNumMeshes() const noexcept
 {
 	return m_meshes.size();
 }

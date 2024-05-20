@@ -48,7 +48,7 @@ void SettingsManager::loadFromFile( const std::string &filePath )
 		std::terminate();
 	}
 
-	m_settings.fGameSpeed = ini.GetReal( "Gameplay", "fGameSpeed", 1.0f );
+	m_settings.fGameSpeed = static_cast<float>( ini.GetReal( "Gameplay", "fGameSpeed", 1.0f ) );
 
 	m_settings.bVSync = ini.GetBoolean( "Graphics", "bVSync", true );
 	m_settings.iMaxFps = ini.GetInteger( "Graphics", "iMaxFps", -1 );

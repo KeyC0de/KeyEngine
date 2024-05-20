@@ -271,9 +271,9 @@ Window::Window( const int width,
 Window::Window( Window &&rhs ) noexcept
 	:
 	m_windowClass{std::move( rhs.m_windowClass )},
-	m_bCursorEnabled{std::move( rhs.m_bCursorEnabled )},
+	m_bCursorEnabled{rhs.m_bCursorEnabled},
 	m_name{std::move( rhs.m_name )},
-	m_hWnd{std::move( rhs.m_hWnd )},
+	m_hWnd{rhs.m_hWnd},
 	m_pGraphics{std::move( rhs.m_pGraphics )},
 	m_info{std::move( rhs.m_info )},
 	m_clipboardFormats{std::move( rhs.m_clipboardFormats )},
@@ -893,7 +893,7 @@ LRESULT Window::windowProc_impl2d( _In_ const HWND hWnd,
 				s_mouse.onMouseEnterWindow();
 			}
 		}
-		// not in client -> log move / maintain capture if button down
+		// not in client region -> log move / maintain capture if button down
 		else
 		{
 			//if ( wParam & (MK_LBUTTON | MK_RBUTTON) )
@@ -910,7 +910,7 @@ LRESULT Window::windowProc_impl2d( _In_ const HWND hWnd,
 				s_mouse.onMouseLeaveWindow();
 			}
 		}
-		break;
+		return 0;
 	}
 	case WM_LBUTTONDOWN:
 	{
@@ -1374,7 +1374,7 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 				s_mouse.onMouseLeaveWindow();
 			}
 		}
-		break;
+		return 0;
 	}
 	case WM_LBUTTONDOWN:
 	{
@@ -1832,7 +1832,7 @@ int Window::getHeightClientArea() const noexcept
 HWND Window::getConsoleHandle() const
 {
 	HWND ret = FindWindowA("ConsoleWindowClass", nullptr );
-	if ( ret == 0 )
+	if ( ret == nullptr )
 	{
 		THROW_WINDOW_EXCEPTION( "No console has been allocated for this window." );
 	}

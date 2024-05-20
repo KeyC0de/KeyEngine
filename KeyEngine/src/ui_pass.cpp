@@ -1,4 +1,10 @@
 #include "ui_pass.h"
+#include "ui_component.h"
+#include "DirectXTK/SpriteFont.h"
+#include "DirectXTK/SpriteBatch.h"
+#include <variant>
+#include "rasterizer_state.h"
+#include "texture.h"
 #include "utils.h"
 #include "settings_manager.h"
 
@@ -7,127 +13,95 @@
 
 namespace dx = DirectX;
 
-namespace ren
+namespace gui
 {
 
-bool UIPass::ComponentComparator::operator()( const std::unique_ptr<ui::Component> pComponent1,
-	const std::unique_ptr<ui::Component> pComponent2 )
+UIPass::UIPass( Graphics &gfx )
 {
-	return pComponent1->getId() < pComponent2->getId();
+	recreate( gfx );
 }
 
+UIPass::~UIPass() noexcept
+{
+}
 
-UIPass::UIPass( Graphics &gfx,
-	const std::string &name )
-	:
-	IBindablePass{name},
-	m_fontFilenameNoExtension{util::s2ws( SettingsManager::getInstance().getSettings().sFontName )}
+void UIPass::recreate( Graphics &gfx )
 {
 	m_pRasterizerState = RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Back );
-	
+
 	m_pSpriteBatch = std::make_unique<dx::SpriteBatch>( getDeviceContext( gfx ) );
 	using namespace std::string_literals;
-	const auto fontPath = L"assets/fonts/"s + m_fontFilenameNoExtension + L".spritefont"s;
-	m_pFpsSpriteFont = std::make_unique<dx::SpriteFont>( getDevice( gfx ), fontPath.c_str() );
+	const auto fontPath = L"assets/fonts/"s + util::s2ws( SettingsManager::getInstance().getSettings().sFontName ) + L".spritefont"s;
+	m_pSpriteFont = std::make_unique<dx::SpriteFont>( getDevice( gfx ), fontPath.c_str() );
 
-	m_pTexture1 = std::make_shared<Texture>( gfx, "assets/textures/ui/red_vignette.png"s, 0u );
-	m_pTexture2 = std::make_shared<Texture>( gfx, "assets/textures/ui/health_icon.png"s, 1u );
-}
+	// create root Component
+	m_pRoot = std::make_unique<Component>( gfx, "root", nullptr, 0, 0, gfx.getClientWidth(), gfx.getClientHeight() );
 
-void UIPass::update( Graphics &gfx,
-	const float dt,
-	const float lerpBetweenFrames ) cond_noex
-{
+	std::variant<Component*, std::string> pRoot;
+	pRoot = m_pRoot.get();
 
-}
-
-void UIPass::run( Graphics &gfx ) const cond_noex
-{
-	// By default SpriteBatch uses premultiplied alpha blending, no depth buffer, counter clockwise culling, and linear filtering with clamp texture addressing. You can change this by passing custom state objects to SpriteBatch::Begin. Pass null for any parameters that should use their default value.
-	// SpriteBatch makes use of the following states: BlendState, Constant buffer (Vertex Shader stage, slot 0), DepthStencilState, Index buffer, Input layout, Pixel shader, Primitive topology, RasterizerState, SamplerState (Pixel Shader stage, slot 0), Shader resources (Pixel Shader stage, slot 0), Vertex buffer (slot 0), Vertex shader
-	// The SpriteBatch class assumes you've already set the Render Target view, Depth Stencil view, and Viewport. It will also read the first viewport set on the device unless you've explicitly called SetViewport.
-	// Be sure that if you set any of the following shaders prior to using SpriteBatch that you clear them: Geometry Shader, Hull Shader, Domain Shader, Compute Shader.
-
-	bind( gfx );
-
-	auto nonConstThis = const_cast<UIPass*>( this );
-	nonConstThis->drawTexture1( gfx, (gfx.getClientWidth() >> 1) - (m_pTexture1->getWidth() >> 1), (gfx.getClientHeight() >> 1) + (m_pTexture1->getHeight() >> 1), m_pTexture1->getWidth(), m_pTexture1->getHeight() );
-	nonConstThis->drawTexture2( gfx, 10, gfx.getClientHeight() - 10 - m_pTexture2->getHeight(), m_pTexture2->getWidth(), m_pTexture2->getHeight() );
-	nonConstThis->drawText( gfx, "KeyEngine - All Rights Reserved", dx::XMFLOAT2(gfx.getClientWidth() - 320, gfx.getClientHeight() - 100), dx::Colors::White, dx::XMFLOAT2{.8f, .8f} );
-
-#if defined _DEBUG && !defined NDEBUG
+	// create the rest of the components
+	{
+		std::vector<std::pair<std::string, std::string>> compStateTexts;
+		compStateTexts.emplace_back( "default"s, "KeyEngine - All Rights Reserved"s );
+		Component::create_component( gfx, "logo", pRoot, gfx.getClientWidth() - 320, gfx.getClientHeight() - 100, 60, 6, false, compStateTexts );
+		// #TODO: come up with automatic sizing of text-only components given the length of the text size-to-content
+	}
 	if ( SettingsManager::getInstance().getSettings().bFpsCounting )
 	{
-		nonConstThis->updateAndRenderFpsTimer( gfx );
+		std::vector<std::pair<std::string, std::string>> compStateTexts;
+		compStateTexts.emplace_back( "default_fps_counter"s, "fps_counter"s );
+		Component::create_component( gfx, "fps_counter", pRoot, 0, 0, 32, 8, false, compStateTexts );
 	}
-#endif
-}
-
-void UIPass::reset() cond_noex
-{
-	pass_;
-}
-
-void UIPass::drawText( Graphics &gfx,
-	const std::string &text,
-	const DirectX::XMFLOAT2 &pos,
-	const DirectX::XMVECTORF32 &color /*= DirectX::Colors::White*/,
-	const DirectX::XMFLOAT2 &scale /*= DirectX::XMFLOAT2{1.0f, 1.0f}*/ )
-{
-	m_pSpriteBatch->Begin();
-	m_pFpsSpriteFont->DrawString(m_pSpriteBatch.get(), text.c_str(), pos, color, 0.0f, dx::XMFLOAT2{0.0f, 0.0f}, scale );
-	m_pSpriteBatch->End();
-}
-
-// #TODO: make this extensible
-void UIPass::drawTexture1( Graphics &gfx,
-	const int x,
-	const int y,
-	const int width,
-	const int height )
-{
-	RECT rect{x, y, x + width, y - height};
-
-	m_pSpriteBatch->Begin( DirectX::SpriteSortMode::SpriteSortMode_Deferred, nullptr, nullptr, nullptr, m_pRasterizerState->getD3dRasterizerState().Get() );
-	m_pSpriteBatch->Draw( m_pTexture1->getD3dSrv().Get(), rect );
-	m_pSpriteBatch->End();
-}
-
-void UIPass::drawTexture2( Graphics &gfx,
-	const int x,
-	const int y,
-	const int width,
-	const int height )
-{
-	RECT rect{x, y, x + width, y - height};
-
-	m_pSpriteBatch->Begin( DirectX::SpriteSortMode::SpriteSortMode_Deferred, nullptr, nullptr, nullptr, m_pRasterizerState->getD3dRasterizerState().Get() );
-	m_pSpriteBatch->Draw( m_pTexture2->getD3dSrv().Get(), rect );
-	m_pSpriteBatch->End();
-}
-
-void UIPass::updateAndRenderFpsTimer( Graphics &gfx )
-{
-	static int fpsDisplayFrameCount = 0;
-	static std::string fpsText;
-
-	++fpsDisplayFrameCount;
-
-	auto &fpsTimer = gfx.getFpsTimer();
-
-	// if more than 1000ms have passed count fps
-	if ( fpsTimer.getDurationFromStart() > 1000 )
 	{
-		fpsText = std::to_string( fpsDisplayFrameCount );
-#if defined _DEBUG && !defined NDEBUG
-		OutputDebugStringA( fpsText.data() );
-#endif
-		fpsTimer.restart();
-		fpsDisplayFrameCount = 0;
+		std::vector<std::pair<std::string, std::string>> compStateImages;
+		const std::string filepath = "assets/textures/ui/red_vignette.png"s;
+		compStateImages.emplace_back( "default"s, filepath );
+		int bitmapWidth;
+		int bitmapHeight;
+		{
+			const auto bitmap = Bitmap::loadFromFile( filepath );
+			bitmapWidth = bitmap.getWidth();
+			bitmapHeight = bitmap.getHeight();
+		}
+		Component::create_component( gfx, "vignette", pRoot, (gfx.getClientWidth() >> 1) - (bitmapWidth >> 1), (gfx.getClientHeight() >> 1) + (bitmapHeight >> 1), bitmapWidth, bitmapHeight, false, {}, compStateImages );
 	}
+	{
+		std::vector<std::pair<std::string, std::string>> compStateImages;
+		const std::string filepath = "assets/textures/ui/health_icon.png"s;
+		compStateImages.emplace_back( "default"s, filepath );
+		int bitmapWidth;
+		int bitmapHeight;
+		{
+			const auto bitmap = Bitmap::loadFromFile( filepath );
+			bitmapWidth = bitmap.getWidth();
+			bitmapHeight = bitmap.getHeight();
+		}
+		Component::create_component( gfx, "health_icon", pRoot, 10, gfx.getClientHeight() - 10 - bitmapHeight, bitmapWidth, bitmapHeight, false, {}, compStateImages );
+	}
+}
 
-	drawText( gfx, fpsText, dx::XMFLOAT2{0.0f, 0.0f}, dx::Colors::Green );
+void UIPass::update( const float dt,
+	const std::pair<int, int> inputXandY,
+	const float lerpBetweenFrames ) cond_noex
+{
+	m_pRoot->update( dt, {inputXandY.first, inputXandY.second}, lerpBetweenFrames );
+}
+
+void UIPass::render( Graphics &gfx ) const cond_noex
+{
+	m_pRoot->render( gfx, m_pSpriteBatch.get(), m_pSpriteFont.get(), m_pRasterizerState.get() );
+}
+
+const std::unique_ptr<Component>& UIPass::getRoot() const noexcept
+{
+	return m_pRoot;
+}
+
+std::unique_ptr<Component>& UIPass::getRoot()
+{
+	return m_pRoot;
 }
 
 
-}//namespace ren
+}//namespace gui

@@ -753,9 +753,6 @@
     <ClInclude Include="inc\node.h">
       <Filter>engine\gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="inc\lru_cache.h">
-      <Filter>engine\common_util</Filter>
-    </ClInclude>
     <ClInclude Include="inc\non_copyable.h">
       <Filter>engine\common_util</Filter>
     </ClInclude>

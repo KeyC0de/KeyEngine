@@ -4,7 +4,10 @@
 
 
 /////////
-struct SwapChainResized;
+struct SwapChainResizedEvent;
+struct UISoundEvent;
+struct UserPropertyChanged;
+struct UiMsg;
 /////////
 
 class ReportingNexus;
@@ -17,8 +20,10 @@ public:
 };
 
 class ReportingNexus
-	: public IReporter<SwapChainResized>
-	//, public IReporter<OtherEventType>
+	: public IReporter<SwapChainResizedEvent>
+	, public IReporter<UISoundEvent>
+	, public IReporter<UserPropertyChanged>
+	, public IReporter<UiMsg>
 {
 	static inline ReporterAccess s_accessKey{};
 private:

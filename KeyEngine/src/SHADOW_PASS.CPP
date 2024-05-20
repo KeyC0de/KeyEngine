@@ -74,6 +74,7 @@ ShadowPass::ShadowPass( Graphics &gfx,
 	DirectX::XMStoreFloat3( &m_cameraUps[5], DirectX::XMVectorSet( 0.0f, 1.0f, 0.0f, 0.0f ) );
 }
 
+// #TODO: once you integrate multiple lights perhaps call shadowMapPass::run every 10 frames or so; it's expensive as it is now
 void ShadowPass::run( Graphics &gfx ) const cond_noex
 {
 	if ( m_pLightVcb->isCastingShadows() )

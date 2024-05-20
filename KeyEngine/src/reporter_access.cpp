@@ -10,15 +10,20 @@ ReporterAccess::ReporterAccess()
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ReportingNexus::ReportingNexus( ReporterAccess &access )
 	:
-	IReporter<SwapChainResized>{access}
-	//, IReporter<OtherEventType>{access}
+	IReporter<SwapChainResizedEvent>{access},
+	IReporter<UISoundEvent>{access},
+	IReporter<UserPropertyChanged>{access},
+	IReporter<UiMsg>{access}
 {
 	
 }
 
 ReportingNexus::~ReportingNexus() noexcept
 {
-	IReporter<SwapChainResized>::removeThisFromListenersList();
+	IReporter<SwapChainResizedEvent>::removeThisFromListenersList();
+	IReporter<UISoundEvent>::removeThisFromListenersList();
+	IReporter<UserPropertyChanged>::removeThisFromListenersList();
+	IReporter<UiMsg>::removeThisFromListenersList();
 }
 
 ReportingNexus& ReportingNexus::getInstance()

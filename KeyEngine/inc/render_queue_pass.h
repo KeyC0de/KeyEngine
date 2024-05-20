@@ -21,7 +21,7 @@ public:
 	//	\brief	call RenderQueuePass::run from derivedPassClass::run as a final task
 	void run( Graphics &gfx ) const cond_noex override;
 	void reset() cond_noex override;
-	int getNumMeshes() const noexcept;
+	size_t getNumMeshes() const noexcept;
 private:
 	void sortJobs();
 };

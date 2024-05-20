@@ -102,5 +102,5 @@ private:
 	//	\function	transformData	||	\date	2022/11/20 13:33
 	//	\brief	transforms the data of file and outputs it in `img`, transformData = readData + generateData
 	void transformData( _Inout_ ImageData *img, std::vector<std::function<double(double, double)>> &imageFilters, const std::string &filename = "" );
-	void writeData( _Out_ ImageData *img, const std::string &filename = "" );
+	void writeData( ImageData *img, const std::string &filename = "" );
 };

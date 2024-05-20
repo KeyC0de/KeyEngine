@@ -15,6 +15,7 @@
 #include "assertions_console.h"
 
 
+// #TODO: PBR Metallic Renderer (UE4 based)
 namespace dx = DirectX;
 
 MaterialLoader::MaterialLoader( Graphics &gfx,

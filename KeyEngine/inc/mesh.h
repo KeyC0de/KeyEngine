@@ -28,6 +28,7 @@ class Mesh
 {
 	mutable DirectX::XMFLOAT4X4 m_worldTransform;
 	float m_distanceFromActiveCamera = 0.0f;
+	mutable bool m_bRenderedThisFrame = false;
 protected:
 	unsigned m_meshId = 0u;
 	std::pair<DirectX::XMFLOAT3, DirectX::XMFLOAT3> m_aabb{{0, 0, 0},{0, 0, 0}};	// #TODO: Collision mesh needs to be recalculated if the object is rotated, scaled or animated
@@ -110,9 +111,7 @@ public:
 	DirectX::XMFLOAT3 getPosition() const noexcept;
 	void setDistanceFromActiveCamera() noexcept;
 	float getDistanceFromActiveCamera() const noexcept;
-	//	\function	isFrustumCulled	||	\date	2024/05/05 11:55
-	//	\brief	returns true if the Mesh is culled this frame by the active camera and false otherwise
-	bool isFrustumCulled() const noexcept;
+	bool isRenderedThisFrame() const noexcept;
 	virtual void displayImguiWidgets( Graphics &gfx, const std::string &name ) noexcept
 	{
 		pass_;
@@ -123,4 +122,7 @@ protected:
 	void setMeshId() noexcept;
 private:
 	void createAabb( const aiMesh &aiMesh );
+	//	\function	isFrustumCulled	||	\date	2024/05/05 11:55
+	//	\brief	returns true if the Mesh is culled this frame by the active camera and false otherwise
+	bool isFrustumCulled() const noexcept;
 };

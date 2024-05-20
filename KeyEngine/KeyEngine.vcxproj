@@ -217,7 +217,10 @@
     <ClCompile Include="src\effect.cpp" />
     <ClCompile Include="src\reporter_access.cpp" />
     <ClCompile Include="src\imgui_visitors.cpp" />
-    <ClCompile Include="src\ui_pass.cpp" />
+    <ClCompile Include="src\ui_pass.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="src\camera_frustum.cpp" />
     <ClCompile Include="src\fullscreen_pass.cpp" />
     <ClCompile Include="src\geometry.cpp" />
@@ -319,7 +322,10 @@
     <ClCompile Include="src\transform_vscb.cpp" />
     <ClCompile Include="src\transparent_pass.cpp" />
     <ClCompile Include="src\triangle_mesh.cpp" />
-    <ClCompile Include="src\ui_component.cpp" />
+    <ClCompile Include="src\ui_component.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="src\utils.cpp" />
     <ClCompile Include="src\util_exception.cpp" />
     <ClCompile Include="src\vertex_buffer.cpp" />
@@ -446,7 +452,6 @@
     <ClInclude Include="inc\render_target.h" />
     <ClInclude Include="inc\negative_pass.h" />
     <ClInclude Include="inc\key_type_traits.h" />
-    <ClInclude Include="inc\lru_cache.h" />
     <ClInclude Include="inc\non_copyable.h" />
     <ClInclude Include="inc\assertions_console.h" />
     <ClInclude Include="inc\net_utils.h" />

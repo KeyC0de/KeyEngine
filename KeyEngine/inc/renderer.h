@@ -5,6 +5,13 @@
 #include <string>
 
 
+namespace gui
+{
+
+class UIPass;
+
+}
+
 class Graphics;
 class IRenderTargetView;
 class IDepthStencilView;
@@ -32,14 +39,13 @@ class Renderer
 	std::vector<std::unique_ptr<ILinker>> m_globalLinkers;
 protected:
 	std::unique_ptr<IPass> m_pFinalPostProcessPass;
-	std::unique_ptr<IPass> m_pUiPass;
+	//std::unique_ptr<gui::UIPass> m_pUiPass;
 	std::shared_ptr<IRenderTargetView> m_pRtv;
 	std::shared_ptr<IDepthStencilView> m_pDsv;
 public:
 	Renderer( Graphics &gfx, bool drawToOffscreen );
 	virtual ~Renderer() noexcept;
 
-	virtual void updateUi( Graphics &gfx, const float dt, const float lerpBetweenFrames ) cond_noex;
 	void run( Graphics &gfx ) cond_noex;
 	virtual void recreate( Graphics &gfx );
 	virtual void reset() noexcept;
@@ -81,9 +87,8 @@ public:
 	};
 	KernelType m_kernelType;
 public:
-	Renderer3d( Graphics &gfx, bool drawToOffscreen, const int radius, const float sigma, KernelType kernelType = Gauss );
+	Renderer3d( Graphics &gfx, bool bDrawToOffscreen, const int radius, const float sigma, KernelType kernelType = Gauss );
 
-	void updateUi( Graphics &gfx, const float dt, const float lerpBetweenFrames ) cond_noex override;
 	void recreate( Graphics &gfx ) override;
 	void displayImguiWidgets( Graphics &gfx ) noexcept;
 	void dumpShadowMap( Graphics &gfx, const std::string &path );

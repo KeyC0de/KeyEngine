@@ -6,7 +6,7 @@
 
 namespace dx = DirectX;
 
-Brick::Brick( const R3ctangle &rect,
+Brick::Brick( const RectangleF &rect,
 	const ColorBGRA col )
 	:
 	m_rect{rect},

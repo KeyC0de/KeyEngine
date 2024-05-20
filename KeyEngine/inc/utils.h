@@ -275,25 +275,46 @@ T* deconst( const T *obj )
 // ALGORITHMS
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-template<typename T>
-void removeByBackSwap( std::vector<T> &v,
-	std::size_t index )
+template<typename TContainer, typename TP>
+decltype(auto) pointerToIterator( TContainer &c,
+	TP pElem )
 {
-	typename std::vector<T>::iterator itEnd = v.back();
-	std::swap( v[index], itEnd );
+	return std::find_if( c.begin(), c.end(), [&pElem] ( const TP &p )
+		{
+			return pElem == std::addressof( *p );
+		} );
+}
+
+template <typename TContainer>
+void removeByBackSwap( TContainer &container,
+	typename TContainer::size_type index )
+{
+	container[index] = std::move( container.back() );
+	container.pop_back();
+}
+
+template <typename TContainer>
+void removeByBackSwap( TContainer &container,
+	typename TContainer::iterator iter )
+{
+	*iter = std::move( container.back() );
+	container.pop_back();
+}
+
+template<typename T, class Alloc = std::allocator<T>, typename = std::enable_if_t<std::is_pointer_v<T>>>
+void removeByBackSwap( std::vector<T, Alloc> &v,
+	T p )
+{
+	typename std::vector<T, Alloc>::iterator iter = pointerToIterator( v, p );
+	if ( iter == v.end() )
+	{
+		return;
+	}
+	*iter = std::move( v.back() );
 	v.pop_back();
 }
 
-template<typename T>
-void removeByBackSwap( std::vector<T> &v,
-	typename std::vector<T>::iterator it )
-{
-	typename std::vector<T>::iterator itEnd = v.back();
-	std::swap( it, itEnd );
-	v.pop_back();
-}
-
-template<typename TContainer, typename Predicate>
+template<typename TContainer, typename Predicate, typename = std::enable_if_t<std::is_function_v<Predicate>>>
 void removeByBackSwap( TContainer &c,
 	Predicate pred )
 {
@@ -307,16 +328,6 @@ template<typename T, class Alloc = std::allocator<T>>
 void shrinkCapacity( std::vector<T, Alloc>& v )
 {
 	std::vector<T, Alloc>( v.begin(), v.end() ).swap( v );
-}
-
-template<typename TContainer, typename TP>
-decltype(auto) pointerToIterator( TContainer &c,
-	TP pElem )
-{
-	return std::find_if( c.begin(), c.end(), [&pElem] ( const TP &p )
-		{
-			return pElem == std::addressof(*p);
-		} );
 }
 
 // note that there is std::move(inIt1, inIt2, outIt);

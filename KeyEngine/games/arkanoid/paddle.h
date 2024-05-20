@@ -6,7 +6,7 @@
 
 class Graphics;
 class Ball;
-class R3ctangle;
+class RectangleF;
 
 class Paddle
 {
@@ -22,8 +22,8 @@ public:
 
 	void render( Graphics &gfx ) const cond_noex;
 	bool doBallCollision( Ball &ball );
-	void doWallCollision( const R3ctangle &walls );
-	R3ctangle rect() const;
+	void doWallCollision( const RectangleF &walls );
+	RectangleF rect() const;
 	void resetCollisionCooldown();
 	void setPositionRel( const float val );
 };
