@@ -70,7 +70,7 @@ Cube::Cube( Graphics &gfx,
 		cbLayout.add<con::Float>( "modelSpecularGloss" );
 		auto cb = con::CBuffer( std::move( cbLayout ) );
 		cb["modelSpecularColor"] = dx::XMFLOAT3{color.x, color.y, color.z};
-		cb["modelSpecularGloss"] = 4.0f;
+		cb["modelSpecularGloss"] = 128.0f;
 		transparent.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
 
 		transparent.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
@@ -99,7 +99,7 @@ Cube::Cube( Graphics &gfx,
 		cbLayout.add<con::Float>( "modelSpecularGloss" );
 		auto cb = con::CBuffer( std::move( cbLayout ) );
 		cb["modelSpecularColor"] = dx::XMFLOAT3{1.0f, 1.0f, 1.0f};
-		cb["modelSpecularGloss"] = 20.0f;
+		cb["modelSpecularGloss"] = 128.0f;
 		opaque.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
 
 		opaque.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
@@ -265,7 +265,7 @@ void Cube::displayImguiWidgets( Graphics &gfx,
 
 				if ( auto el = cb["modelSpecularGloss"]; el.isValid() )
 				{
-					dirtyCheck( ImGui::SliderFloat( tagImGuiWidget( "Glossiness" ), &el, 1.0f, 100.0f, "%.1f", 1.5f ) );
+					dirtyCheck( ImGui::SliderFloat( tagImGuiWidget( "Glossiness" ), &el, 1.0f, 200.0f, "%.1f", 1.5f ) );
 				}
 
 				return bDirty;

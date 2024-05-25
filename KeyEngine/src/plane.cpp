@@ -28,7 +28,7 @@ Plane::Plane( Graphics &gfx,
 	const DirectX::XMFLOAT3 &initialRot /*= {0.0f, 0.0f, 0.0f}*/,
 	const DirectX::XMFLOAT3 &initialPos /*= {0.0f, 0.0f, 0.0f}*/,
 	const DirectX::XMFLOAT4 &color /*= {1.0f, 1.0f, 1.0f, 1.0f}*/,
-	const std::optional<std::string> &diffuseTexturePath /*= "assets/models/brick_wall/brick_wall_diffuse.jpg"*/ )
+	const std::string &diffuseTexturePath /*= "assets/models/brick_wall/brick_wall_diffuse.jpg"*/ )
 	:
 	Mesh{{1.0f, 1.0f, 1.0f}, initialRot, initialPos},
 	m_colPcb{color}
@@ -57,9 +57,9 @@ Plane::Plane( Graphics &gfx,
 		transparent.addBindable( InputLayout::fetch( gfx, plane.m_vb.getLayout(), *pVs ) );
 		transparent.addBindable( std::move( pVs ) );
 
-		if ( diffuseTexturePath.has_value() )
+		if ( !diffuseTexturePath.empty() )
 		{
-			transparent.addBindable( Texture::fetch( gfx, *diffuseTexturePath, 0u ) );
+			transparent.addBindable( Texture::fetch( gfx, diffuseTexturePath, 0u ) );
 
 			transparent.addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
 
@@ -70,7 +70,7 @@ Plane::Plane( Graphics &gfx,
 			cbLayout.add<con::Float>( "modelSpecularGloss" );
 			auto cb = con::CBuffer( std::move( cbLayout ) );
 			cb["modelSpecularColor"] = dx::XMFLOAT3{1.0f, 1.0f, 1.0f};
-			cb["modelSpecularGloss"] = 20.0f;
+			cb["modelSpecularGloss"] = 128.0f;
 			transparent.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
 		}
 		else
@@ -91,7 +91,7 @@ Plane::Plane( Graphics &gfx,
 		Effect opaque{rch::opaque, "opaque", true};
 		opaque.addBindable( transformVscb );
 
-		opaque.addBindable( Texture::fetch( gfx, *diffuseTexturePath, 0u ) );
+		opaque.addBindable( Texture::fetch( gfx, diffuseTexturePath, 0u ) );
 
 		opaque.addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
 
@@ -106,7 +106,7 @@ Plane::Plane( Graphics &gfx,
 		cbLayout.add<con::Float>( "modelSpecularGloss" );
 		auto cb = con::CBuffer( std::move( cbLayout ) );
 		cb["modelSpecularColor"] = dx::XMFLOAT3{1.0f, 1.0f, 1.0f};
-		cb["modelSpecularGloss"] = 20.0f;
+		cb["modelSpecularGloss"] = 128.0f;
 		opaque.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
 
 		opaque.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Both ) );

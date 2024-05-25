@@ -92,8 +92,8 @@ class Sandbox3d
 	Cube m_cube2{m_mainWindow.getGraphics(), 1.0f, {0, 0, 0}, {9.9f, 4.9f, 1.4f}, {1.0f, 0.4f, 0.4f, 0.5f}};
 	Cube m_cube3{m_mainWindow.getGraphics(), 1.0f, {0, 0, 0}, {22.0f, 12.0f, 14.0f}};
 	Sphere m_testSphere{m_mainWindow.getGraphics(), 1.0f, {0, 0, 0}, {40.0f, 20.0f, 8.0f}};
-	Plane m_plane1Red{m_mainWindow.getGraphics(), 8, 8, 1.0f, {0, 0, 0}, {40.0f, 10.0f, 20.0f}, {1.0f, 0.0f, 0.1f, 0.8f}, {}};
-	Plane m_plane2Green{m_mainWindow.getGraphics(), 4, 4, 1.0f, {0, 0, 0}, {40.0f, 10.0f, 16.0f}, {0.1f, 1.0f, 0.0f, 0.5f}, {}};
+	Plane m_plane1Red{m_mainWindow.getGraphics(), 8, 8, 1.0f, {0, 0, 0}, {40.0f, 10.0f, 20.0f}, {1.0f, 0.0f, 0.1f, 0.8f}, ""};
+	Plane m_plane2Green{m_mainWindow.getGraphics(), 4, 4, 1.0f, {0, 0, 0}, {40.0f, 10.0f, 16.0f}, {0.1f, 1.0f, 0.0f, 0.5f}, ""};
 	Plane m_plane3Textured{m_mainWindow.getGraphics(), 6, 6, 1.0f, {0, 0, 0}, {40.0f, 10.0f, 12.0f}, {1.0f, 1.0f, 1.0f, 1.0f}};
 	// #TODO: use an array of Models and iterate through them
 	Model m_sponzaScene{m_mainWindow.getGraphics(), "assets/models/sponza/sponza.obj", 1.0f / 8.0f, {0, 0, 0}, {0.0f, 0.0f, 0.0f}};

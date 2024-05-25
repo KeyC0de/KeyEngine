@@ -1,5 +1,5 @@
-#include "winner.h"
 #include "sound_manager.h"
+#include "winner.h"
 #include "assertions_console.h"
 #include "utils.h"
 #include "os_utils.h"
@@ -421,9 +421,7 @@ Sound::Sound( const char *zsFilename,
 	ASSERT_HRES_IF_FAILED;
 	if ( fileType != fourccWAVE )
 	{
-		std::cout << "Unsupported Filetype '"
-			<< fileType
-			<< "' discovered:\n";
+		std::cout << "Unsupported Filetype '" << fileType << "' discovered:\n";
 #if defined _DEBUG && !defined NDEBUG
 		__debugbreak();
 #endif // _DEBUG
@@ -502,6 +500,12 @@ Sound::~Sound() noexcept
 		// wait for those channels to finish playing
 		m_condVar.wait( ul, [this] () { return m_busyChannels.size() == 0; } );
 	}
+}
+
+int Sound::getDuration() const noexcept
+{
+	const uint64_t nSamples = ( uint64_t(m_pXaudioBuffer->AudioBytes) * 8 ) / ( uint64_t(m_pWaveFormat->Format.wBitsPerSample) * uint64_t(m_pWaveFormat->Format.nChannels) );
+	return (nSamples / float(m_pWaveFormat->Format.nSamplesPerSec)) * 1000ull;
 }
 
 const std::string& Sound::getName() const cond_noex
@@ -626,7 +630,7 @@ void SoundPlayer::notify( const UISoundEvent &event )
 			{
 				Sound component_hovered_sound{UISoundEvent::getSoundPath( event.m_soundType ), "component_hovered", "ui"};
 				component_hovered_sound.play();
-				Sleep( 200 );
+				Sleep( component_hovered_sound.getDuration() );
 			};
 		threadPool.enqueue( lambda );
 	}
