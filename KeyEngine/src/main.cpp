@@ -11,6 +11,7 @@
 #include "signal_handling.h"
 #include "jthread_pool.h"
 //#include "bmp_loader.h"
+#include "sound_manager.h"
 
 #ifndef NO_DUMPS
 #	include "dumpling.h"
@@ -148,6 +149,9 @@ void firstly()
 		} );
 
 	std::signal( SIGINT, installSigintHandler );
+
+	ThreadPoolJ &threadPool = ThreadPoolJ::getInstance( 4u, true );
+	auto &soundPlayer = SoundPlayer::getInstance();
 }
 
 void finally( const std::exception_ptr &exceptionPtr )

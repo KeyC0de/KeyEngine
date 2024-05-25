@@ -36,9 +36,8 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 
 	if ( lightingModel == LightingModel::BlinnPhong )
 	{
-		{
-		// lambertian effect
-			Effect lambertian{rch::lambert, "lambertian", true};
+		{// opaque effect
+			Effect opaque{rch::opaque, "opaque", true};
 
 			shaderFileName = "phong_";
 			aiString textureFileName;
@@ -48,8 +47,7 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 			con::RawLayout cbLayout;
 			bool bTexture = false;
 			bool bSpecularTextureAlpha = false;
-			{
-			// does aiMaterial have a diffuse/albedo texture?
+			{// does aiMaterial have a diffuse/albedo texture?
 				bool bTextureAlphaChannel = false;
 				if ( aimaterial.GetTexture( aiTextureType_DIFFUSE, 0u, &textureFileName ) == aiReturn_SUCCESS )
 				{
@@ -62,7 +60,7 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 						bTextureAlphaChannel = true;
 						shaderFileName += "Alp";
 					}
-					lambertian.addBindable( std::move( tex ) );
+					opaque.addBindable( std::move( tex ) );
 				}
 				else
 				{
@@ -72,10 +70,9 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 				RasterizerState::FaceMode faceMode = bTextureAlphaChannel ?
 					RasterizerState::FaceMode::Both :
 					RasterizerState::FaceMode::Front;
-				lambertian.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, faceMode ) );
+				opaque.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, faceMode ) );
 			}
-			{
-			// how about specular?
+			{// how about specular texture?
 				if ( aimaterial.GetTexture( aiTextureType_SPECULAR, 0u, &textureFileName ) == aiReturn_SUCCESS )
 				{
 					bTexture = true;
@@ -83,7 +80,7 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 					m_vertexLayout.add( ver::VertexInputLayout::Texture2D );
 					auto tex = Texture::fetch( gfx, rootPath + textureFileName.C_Str(), 1u );
 					bSpecularTextureAlpha = tex->hasAlpha();
-					lambertian.addBindable( std::move( tex ) );
+					opaque.addBindable( std::move( tex ) );
 					// in our system of specular maps the alpha channel contains the gloss (specular power)
 					cbLayout.add<con::Bool>( "bSpecularMap" );
 					cbLayout.add<con::Bool>( "bSpecularMapAlpha" );
@@ -91,8 +88,7 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 				cbLayout.add<con::Float3>( "modelSpecularColor" );
 				cbLayout.add<con::Float>( "modelSpecularGloss" );
 			}
-			{
-			// normal texture?
+			{// how about normal texture?
 				if ( aimaterial.GetTexture( aiTextureType_NORMALS, 0, &textureFileName ) == aiReturn_SUCCESS )
 				{
 					bTexture = true;
@@ -100,21 +96,20 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 					m_vertexLayout.add( ver::VertexInputLayout::Texture2D );
 					m_vertexLayout.add( ver::VertexInputLayout::Tangent );
 					m_vertexLayout.add( ver::VertexInputLayout::Bitangent );
-					lambertian.addBindable( Texture::fetch( gfx, rootPath + textureFileName.C_Str(), 2u ) );
+					opaque.addBindable( Texture::fetch( gfx, rootPath + textureFileName.C_Str(), 2u ) );
 					cbLayout.add<con::Bool>( "bNormalMap" );
 					cbLayout.add<con::Float>( "normalMapStrength" );
 				}
 			}
-			{
-			// the rest of the Bindables:
-				lambertian.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
+			{// the rest of the Bindables:
+				opaque.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
 				auto pVs = VertexShader::fetch( gfx, shaderFileName + "_vs.cso" );
-				lambertian.addBindable( InputLayout::fetch( gfx, m_vertexLayout, *pVs ) );
-				lambertian.addBindable( std::move( pVs ) );
-				lambertian.addBindable( PixelShader::fetch( gfx, shaderFileName + "_ps.cso" ) );
+				opaque.addBindable( InputLayout::fetch( gfx, m_vertexLayout, *pVs ) );
+				opaque.addBindable( std::move( pVs ) );
+				opaque.addBindable( PixelShader::fetch( gfx, shaderFileName + "_ps.cso" ) );
 				if ( bTexture )
 				{
-					lambertian.addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
+					opaque.addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
 				}
 
 				// Assembling the Pixel Shader Constant Buffer
@@ -141,12 +136,11 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 				}
 				pscb["bNormalMap"].setIfValid( true );
 				pscb["normalMapStrength"].setIfValid( 1.0f );
-				lambertian.addBindable( std::make_unique<PixelShaderConstantBufferEx>( gfx, 0u, std::move( pscb ) ) );
+				opaque.addBindable( std::make_unique<PixelShaderConstantBufferEx>( gfx, 0u, std::move( pscb ) ) );
 			}
-			m_effects.emplace_back( std::move( lambertian ) );
+			m_effects.emplace_back( std::move( opaque ) );
 		}
-		{
-		// shadow map effect
+		{// shadow map effect
 			Effect shadowMap{rch::shadow, "shadowMap", true};
 
 			shadowMap.addBindable( InputLayout::fetch( gfx, m_vertexLayout, *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
@@ -154,8 +148,7 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 
 			m_effects.emplace_back( std::move( shadowMap ) );
 		}
-		{
-		// blur outline mask effect
+		{// blur outline mask effect
 			Effect blurOutlineMask{rch::blurOutline, "blurOutlineMask", false};
 
 			blurOutlineMask.addBindable( InputLayout::fetch( gfx, m_vertexLayout, *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
@@ -163,8 +156,7 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 
 			m_effects.emplace_back( std::move( blurOutlineMask ) );
 		}
-		{
-		// blur outline draw effect
+		{// blur outline draw effect
 			Effect blurOutlineDraw{rch::blurOutline, "blurOutlineDraw", false};
 			{
 				con::RawLayout cbLayout;
@@ -178,8 +170,7 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 
 			m_effects.emplace_back( std::move( blurOutlineDraw ) );
 		}
-		{
-		// solid outline mask effect
+		{// solid outline mask effect
 			Effect solidOutlineMask{rch::solidOutline, "solidOutlineMask", false};
 			solidOutlineMask.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
 
@@ -187,8 +178,7 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 
 			m_effects.emplace_back( std::move( solidOutlineMask ) );
 		}
-		{
-		// solid outline draw effect
+		{// solid outline draw effect
 			Effect solidOutlineDraw{rch::solidOutline, "solidOutlineDraw", false};
 
 			auto transformScaledVcb = std::make_shared<TransformScaleVSCB>( gfx, 0u, 1.04f );

@@ -16,6 +16,13 @@ namespace DirectX
 class SpriteBatch;
 class SpriteFont;
 
+	namespace Colors
+	{
+
+	const XMVECTORF32 White;
+
+	}
+
 }
 
 class Graphics;
@@ -24,7 +31,6 @@ class Mesh;
 class RasterizerState;
 
 struct SwapChainResizedEvent;
-struct UISoundEvent;
 struct UserPropertyChanged;
 struct UiMsg;
 
@@ -65,7 +71,6 @@ static const Point g_point_zero{0, 0};
 
 class Component
 	: public IListener<SwapChainResizedEvent>,
-	public IListener<UISoundEvent>,
 	public IListener<UserPropertyChanged>,
 	public IListener<UiMsg>
 {
@@ -151,12 +156,13 @@ private:
 		Dock_Point m_docking = Dock_Point::Dock_Point_None;
 		Text_Justification m_text_justification;
 		DirectX::XMVECTORF32 m_color;
+		const DirectX::XMFLOAT2 m_text_scale;
 		std::shared_ptr<Texture> m_texture;
 		std::function<void(Graphics&)> m_custom_render_func;
 
 		//	\function	Component_State	||	\date	2024/05/18 20:23
 		//	\brief	image_path will either contain the path to the texture file or the flat color of the texture
-		Component_State( Graphics &gfx, const RectangleI &collision_shape, const std::string &name = "default", const std::string &text = "", const std::string image_path = "", const bool is_interactive = true, const bool is_enabled = false, const bool can_resize_width = true, const bool can_resize_height = true, const Dock_Point docking = Dock_Point::Dock_Point_None, const Text_Justification text_justification = Text_Justification::Text_Justification_Left );
+		Component_State( Graphics &gfx, const RectangleI &collision_shape, const std::string &name = "default", const std::string &text = "", const std::string image_path = "", const DirectX::XMVECTORF32 &text_color = DirectX::Colors::White, const DirectX::XMFLOAT2 &text_scale = DirectX::XMFLOAT2{1.0f, 1.0f}, const bool is_interactive = true, const bool is_enabled = false, const bool can_resize_width = true, const bool can_resize_height = true, const Dock_Point docking = Dock_Point::Dock_Point_None, const Text_Justification text_justification = Text_Justification::Text_Justification_Left );
 
 		~Component_State() noexcept;
 
@@ -164,9 +170,10 @@ private:
 		void render( Graphics &gfx, DirectX::SpriteBatch *pSpriteBatch, DirectX::SpriteFont *pSpriteFont, RasterizerState *pRasterizerState );
 		void resize( const int new_width, const int new_height );
 	private:
-		void drawText( Graphics &gfx, DirectX::SpriteBatch *pSpriteBatch, DirectX::SpriteFont *pSpriteFont, const DirectX::XMFLOAT2 &scale = DirectX::XMFLOAT2{1.0f, 1.0f} );
-		void drawTexture( Graphics &gfx, DirectX::SpriteBatch *pSpriteBatch, RasterizerState *pRasterizerState );
+		void draw_text( Graphics &gfx, DirectX::SpriteBatch *pSpriteBatch, DirectX::SpriteFont *pSpriteFont );
+		void draw_texture( Graphics &gfx, DirectX::SpriteBatch *pSpriteBatch, RasterizerState *pRasterizerState );
 	};
+
 	std::vector<std::unique_ptr<Component_State>> m_states;
 	int m_current_state_index = -1;	// the current state; this is what is currently displayed and handles events
 public:
@@ -175,7 +182,7 @@ public:
 	//			the root Component must already be constructed using the class ctor
 	//			this function must have all the arguments and in the same order as the class ctor
 	//			width & height will be automatically generarated for image components
-	static bool create_component( Graphics &gfx, const std::string &name, const std::variant<Component*, std::string> parent, const int x, const int y, const int width, const int height, const bool is_tooltip = false, const std::vector<std::pair<std::string, std::string>> &state_texts = {}, const std::vector<std::pair<std::string, std::string>> &state_image_paths = {}, const std::string &tooltip_text = "", Mesh *mesh = nullptr, const bool is_interactive = true, const bool is_enabled = false, const bool visible = true, const bool update_when_not_visible = false, const Aspect_Ratio_Locked_Behavior aspect_ratio_locked_behavior = Aspect_Ratio_Locked_Behavior::Aspect_Ratio_None, const Dock_Point docking = Dock_Point::Dock_Point_None, const Text_Justification text_justification = Text_Justification::Text_Justification_Left );
+	static bool create_component( Graphics &gfx, const std::string &name, const std::variant<Component*, std::string> parent, const int x, const int y, const int width, const int height, const bool is_tooltip = false, const std::vector<std::pair<std::string, std::string>> &state_texts = {}, const std::vector<std::pair<std::string, std::string>> &state_image_paths = {}, const DirectX::XMVECTORF32 &text_color = DirectX::Colors::White, const DirectX::XMFLOAT2 &text_scale = DirectX::XMFLOAT2{1.0f, 1.0f}, const std::string &tooltip_text = "", Mesh *mesh = nullptr, const bool is_interactive = true, const bool is_enabled = false, const bool visible = true, const bool update_when_not_visible = false, const Aspect_Ratio_Locked_Behavior aspect_ratio_locked_behavior = Aspect_Ratio_Locked_Behavior::Aspect_Ratio_None, const Dock_Point docking = Dock_Point::Dock_Point_None, const Text_Justification text_justification = Text_Justification::Text_Justification_Left );
 	static Component* find_forward( Component *comp, const std::string &name, const bool is_recursive );
 	static Component* find_backward( const Component *comp, const std::string &name );
 	static int get_num_components();
@@ -194,15 +201,14 @@ public:
 	//	\function	Component	||	\date	2024/05/17 18:35
 	//	\brief	you must supply either a non "" text, or an <component_state_str, image_path_str> argument
 	//			aside from the root all new Components should be created using the static function create_component by specifying the parent Component of the to-be-created-Component
-	Component( Graphics &gfx, const std::string &name, const std::variant<Component*, std::string> parent, const int x, const int y, const int width, const int height, const bool is_tooltip = false, const std::vector<std::pair<std::string, std::string>> &state_texts = {}, const std::vector<std::pair<std::string, std::string>> &state_image_paths = {}, const std::string &tooltip_text = "", Mesh *mesh = nullptr, const bool is_interactive = true, const bool is_enabled = false, const bool visible = true, const bool update_when_not_visible = false, const Aspect_Ratio_Locked_Behavior aspect_ratio_locked_behavior = Aspect_Ratio_Locked_Behavior::Aspect_Ratio_None, const Dock_Point docking = Dock_Point::Dock_Point_None, const Text_Justification text_justification = Text_Justification::Text_Justification_Left );
+	Component( Graphics &gfx, const std::string &name, const std::variant<Component*, std::string> parent, const int x, const int y, const int width, const int height, const bool is_tooltip = false, const std::vector<std::pair<std::string, std::string>> &state_texts = {}, const std::vector<std::pair<std::string, std::string>> &state_image_paths = {}, const DirectX::XMVECTORF32 &text_color = DirectX::Colors::White, const DirectX::XMFLOAT2 &text_scale = DirectX::XMFLOAT2{1.0f, 1.0f}, const std::string &tooltip_text = "", Mesh *mesh = nullptr, const bool is_interactive = true, const bool is_enabled = false, const bool visible = true, const bool update_when_not_visible = false, const Aspect_Ratio_Locked_Behavior aspect_ratio_locked_behavior = Aspect_Ratio_Locked_Behavior::Aspect_Ratio_None, const Dock_Point docking = Dock_Point::Dock_Point_None, const Text_Justification text_justification = Text_Justification::Text_Justification_Left );
 	~Component() noexcept;
 
 	// #TODO: write copyers
 
-	void create_tooltip( Graphics &gfx, const std::string &name, const int x, const int y, const int width, const int height, const std::vector<std::pair<std::string, std::string>> &state_texts, const Aspect_Ratio_Locked_Behavior aspect_ratio_locked_behavior = Aspect_Ratio_Locked_Behavior::Aspect_Ratio_None, const Dock_Point docking = Dock_Point::Dock_Point_None, const Text_Justification text_justification = Text_Justification::Text_Justification_Left );
+	void create_tooltip( Graphics &gfx, const std::string &name, const int x, const int y, const int width, const int height, const std::vector<std::pair<std::string, std::string>> &state_texts, const DirectX::XMVECTORF32 &text_color = DirectX::Colors::White, const DirectX::XMFLOAT2 &text_scale = DirectX::XMFLOAT2{1.0f, 1.0f}, const Aspect_Ratio_Locked_Behavior aspect_ratio_locked_behavior = Aspect_Ratio_Locked_Behavior::Aspect_Ratio_None, const Dock_Point docking = Dock_Point::Dock_Point_None, const Text_Justification text_justification = Text_Justification::Text_Justification_Left );
 
 	void notify( const SwapChainResizedEvent &event ) override;
-	void notify( const UISoundEvent &event ) override;
 	void notify( const UserPropertyChanged &event ) override;
 	void notify( const UiMsg &event ) override;
 
@@ -309,9 +315,8 @@ public:
 	bool has_even_been_updated() const noexcept;
 	RectangleI get_collision_shape() const noexcept;
 
-	void on_lmb_up( const float dt, const Point &input_pos );
 	void on_lmb_down( const float dt, const Point &input_pos );
-	void on_rmb_up( const float dt, const Point &input_pos );
+	void on_rmb_down( const float dt, const Point &input_pos );
 
 	// Callable has this signature: void(*)(Component*)
 	template<typename Callable>

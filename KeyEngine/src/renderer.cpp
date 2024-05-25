@@ -7,7 +7,7 @@
 #include "render_queue_pass.h"
 #include "render_surface_clear_pass.h"
 #include "shadow_pass.h"
-#include "lambertian_pass.h"
+#include "opaque_pass.h"
 #include "sky_pass.h"
 #include "blur_outline_mask_pass.h"
 #include "blur_outline_draw_pass.h"
@@ -21,7 +21,6 @@
 #include "negative_pass.h"
 #include "blur_pass.h"
 #include "pass_through.h"
-//#include "ui_pass.h"
 #include "pass_2d.h"
 #include "render_target.h"
 #ifndef FINAL_RELEASE
@@ -35,7 +34,7 @@ namespace ren
 {
 
 Renderer::Renderer( Graphics &gfx,
-	bool drawToOffscreen )
+	const bool drawToOffscreen )
 	:
 	m_bUsesOffscreen{drawToOffscreen}
 {
@@ -90,7 +89,12 @@ void Renderer::addGlobalBinder( std::unique_ptr<IBinder> pBinder )
 void Renderer::run( Graphics &gfx ) cond_noex
 {
 	ASSERT( m_bValidatedPasses, "Renderer is not validated!" );
-	// Run the offscreen passes
+	if ( m_bUsesOffscreen )
+	{
+		gfx.getRenderTargetFromBackBuffer()->clear( gfx );
+		gfx.getDepthBufferFromBackBuffer()->clear( gfx );
+	}
+
 	for ( auto &pass : m_passes )
 	{
 		if ( pass->isActive() )
@@ -108,14 +112,11 @@ void Renderer::run( Graphics &gfx ) cond_noex
 		}
 	}
 
-	//offscreenToBackBufferSwap( gfx );
-	//if ( m_bUsesOffscreen )
-	//{
-		//m_pFinalPostProcessPass->run( gfx );
-	//}
-
-	// UI rendering continues...
-	//m_pUiPass->run( gfx );
+	if ( m_bUsesOffscreen )
+	{
+		offscreenToBackBufferSwap( gfx );
+		m_pFinalPostProcessPass->run( gfx );
+	}
 }
 
 void Renderer::reset() noexcept
@@ -125,7 +126,13 @@ void Renderer::reset() noexcept
 	{
 		pass->reset();
 	}
-	//m_pFinalPostProcessPass->reset();
+#if defined _DEBUG && !defined NDEBUG
+	// final post process pass doesn't do anything on reset()
+	if ( m_bUsesOffscreen )
+	{
+		m_pFinalPostProcessPass->reset();
+	}
+#endif
 }
 
 void Renderer::offscreenToBackBufferSwap( Graphics &gfx )
@@ -292,10 +299,10 @@ bool Renderer::isUsingOffscreenRendering() const noexcept
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 Renderer3d::Renderer3d( Graphics &gfx,
-	bool bDrawToOffscreen,
+	const bool bDrawToOffscreen,
 	const int radius,
 	const float sigma,
-	const KernelType kernelType )
+	const KernelType kernelType /*= Gauss*/ )
 	:
 	Renderer{gfx, bDrawToOffscreen},
 	m_radius(radius),
@@ -314,7 +321,7 @@ void Renderer3d::recreate( Graphics &gfx )
 		addPass( std::move( pass ) );
 	}
 	{
-		auto pass = std::make_unique<LambertianPass>( gfx, "lambertian" );
+		auto pass = std::make_unique<OpaquePass>( gfx, "opaque" );
 		pass->setupBinderTarget( "renderTarget", "clearRt", "render_surface" );
 		pass->setupBinderTarget( "depthStencil", "clearDs", "render_surface" );
 		pass->setupBinderTarget( "offscreenShadowCubemapIn", "shadowMap", "offscreenShadowCubemapOut" );
@@ -322,8 +329,8 @@ void Renderer3d::recreate( Graphics &gfx )
 	}
 	{
 		auto pass = std::make_unique<SkyPass>( gfx, "sky", true );
-		pass->setupBinderTarget( "renderTarget", "lambertian", "renderTarget" );
-		pass->setupBinderTarget( "depthStencil", "lambertian", "depthStencil" );
+		pass->setupBinderTarget( "renderTarget", "opaque", "renderTarget" );
+		pass->setupBinderTarget( "depthStencil", "opaque", "depthStencil" );
 		addPass( std::move( pass ) );
 	}
 	{
@@ -398,24 +405,22 @@ void Renderer3d::recreate( Graphics &gfx )
 		addPass( std::move( pass ) );
 	}
 	{
-		//auto pass = std::make_unique<TransparentPass>( gfx, "transparent" );
-		//pass->setupBinderTarget( "renderTarget", "wireframe", "renderTarget" );
-		//pass->setupBinderTarget( "depthStencil", "wireframe", "depthStencil" );
-		//addPass( std::move( pass ) );
+		auto pass = std::make_unique<TransparentPass>( gfx, "transparent" );
+		pass->setupBinderTarget( "renderTarget", "wireframe", "renderTarget" );
+		pass->setupBinderTarget( "depthStencil", "wireframe", "depthStencil" );
+		addPass( std::move( pass ) );
 	}
 
-	setupGlobalBinderTarget( "backColorbuffer", "wireframe", "renderTarget" );
-	//setupGlobalBinderTarget( "backColorbuffer", "transparent", "renderTarget" );
+	//setupGlobalBinderTarget( "backColorbuffer", "wireframe", "renderTarget" );
+	setupGlobalBinderTarget( "backColorbuffer", "transparent", "renderTarget" );
 	Renderer::linkGlobalBinders();
 
-	if ( isUsingOffscreenRendering() )
+	if ( m_bUsesOffscreen )
 	{
 		//m_pFinalPostProcessPass = std::make_unique<ren::BlurPass>( gfx, "blur" );
 		//m_pFinalPostProcessPass = std::make_unique<ren::NegativePass>( gfx, "negative" );
 		m_pFinalPostProcessPass = std::make_unique<ren::PassThrough>( gfx, "passthrough" );
 	}
-
-	//m_pUiPass = std::make_unique<gui::UIPass>( gfx );
 }
 
 void Renderer3d::displayImguiWidgets( Graphics &gfx ) noexcept
@@ -533,8 +538,8 @@ void ren::Renderer3d::showDisplayMode( Graphics &gfx ) noexcept
 
 void ren::Renderer3d::setActiveCamera( const Camera &cam )
 {
-	dynamic_cast<LambertianPass&>( getPass( "lambertian" ) ).setActiveCamera( cam );
-	dynamic_cast<SkyPass&>( getPass( "sky" ) ).setActiveCamera( cam );
+	dynamic_cast<OpaquePass&>( getPass( "opaque" ) ).setActiveCamera( cam );
+	dynamic_cast<TransparentPass&>( getPass( "transparent" ) ).setActiveCamera( cam );
 }
 
 // #TODO: rename to addShadowCamera

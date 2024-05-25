@@ -27,7 +27,7 @@ UIPass::~UIPass() noexcept
 
 void UIPass::recreate( Graphics &gfx )
 {
-	m_pRasterizerState = RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Back );
+	m_pRasterizerState = RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front );
 
 	m_pSpriteBatch = std::make_unique<dx::SpriteBatch>( getDeviceContext( gfx ) );
 	using namespace std::string_literals;
@@ -44,14 +44,14 @@ void UIPass::recreate( Graphics &gfx )
 	{
 		std::vector<std::pair<std::string, std::string>> compStateTexts;
 		compStateTexts.emplace_back( "default"s, "KeyEngine - All Rights Reserved"s );
-		Component::create_component( gfx, "logo", pRoot, gfx.getClientWidth() - 320, gfx.getClientHeight() - 100, 60, 6, false, compStateTexts );
+		Component::create_component( gfx, "logo", pRoot, gfx.getClientWidth() - 320, gfx.getClientHeight() - 100, 60, 6, false, compStateTexts, {}, dx::Colors::White, dx::XMFLOAT2{.8f, .8f}/*, "With a tooltip too!"*/ );
 		// #TODO: come up with automatic sizing of text-only components given the length of the text size-to-content
 	}
 	if ( SettingsManager::getInstance().getSettings().bFpsCounting )
 	{
 		std::vector<std::pair<std::string, std::string>> compStateTexts;
 		compStateTexts.emplace_back( "default_fps_counter"s, "fps_counter"s );
-		Component::create_component( gfx, "fps_counter", pRoot, 0, 0, 32, 8, false, compStateTexts );
+		Component::create_component( gfx, "fps_counter", pRoot, 0, 0, 32, 8, false, compStateTexts, {}, dx::Colors::Green );
 	}
 	{
 		std::vector<std::pair<std::string, std::string>> compStateImages;
@@ -64,7 +64,7 @@ void UIPass::recreate( Graphics &gfx )
 			bitmapWidth = bitmap.getWidth();
 			bitmapHeight = bitmap.getHeight();
 		}
-		Component::create_component( gfx, "vignette", pRoot, (gfx.getClientWidth() >> 1) - (bitmapWidth >> 1), (gfx.getClientHeight() >> 1) + (bitmapHeight >> 1), bitmapWidth, bitmapHeight, false, {}, compStateImages );
+		Component::create_component( gfx, "vignette", pRoot, (gfx.getClientWidth() >> 1) - (bitmapWidth >> 1), (gfx.getClientHeight() >> 1) - (bitmapHeight >> 1), bitmapWidth, bitmapHeight, false, {}, compStateImages );
 	}
 	{
 		std::vector<std::pair<std::string, std::string>> compStateImages;
@@ -77,7 +77,7 @@ void UIPass::recreate( Graphics &gfx )
 			bitmapWidth = bitmap.getWidth();
 			bitmapHeight = bitmap.getHeight();
 		}
-		Component::create_component( gfx, "health_icon", pRoot, 10, gfx.getClientHeight() - 10 - bitmapHeight, bitmapWidth, bitmapHeight, false, {}, compStateImages );
+		Component::create_component( gfx, "health_icon", pRoot, 10, gfx.getClientHeight() - 10 - bitmapHeight * 1.7, bitmapWidth, bitmapHeight, false, {}, compStateImages );
 	}
 }
 

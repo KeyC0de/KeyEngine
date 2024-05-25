@@ -18,7 +18,6 @@ class IndexBuffer;
 //	\date	2021/10/29 21:04
 //	\brief	dynamically populate model Bindables & attributes given
 //				Assimp::aiMaterial attributes
-//			m_vertexLayout is automatically populated in the Lambertian Reflectance Effect
 //=============================================================
 class MaterialLoader final
 {

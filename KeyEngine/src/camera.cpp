@@ -254,6 +254,7 @@ const std::string& Camera::getName() const noexcept
 	return m_name;
 }
 
+// #TODO: cache this per frame:
 std::vector<dx::XMFLOAT4> Camera::getFrustumPlanes() const noexcept
 {
 	// x, y, z, and w represent A, B, C and D in the plane equation

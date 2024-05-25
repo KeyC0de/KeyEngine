@@ -11,7 +11,7 @@
 #include "assertions_console.h"
 #include "mesh.h"
 #include "graphics_mode.h"
-#include "jthread_pool.h"
+//#include "jthread_pool.h"
 #include "utils.h"
 #include "os_utils.h"
 #include "color.h"
@@ -20,8 +20,8 @@
 #if defined _DEBUG && !defined NDEBUG
 #	include "bindable_map.h"
 #endif
-//#include "ui_pass.h"
-//#include "ui_component.h"
+#include "ui_pass.h"
+#include "ui_component.h"
 
 
 namespace dx = DirectX;
@@ -34,7 +34,6 @@ Game<T>::Game( const int width,
 	const int y,
 	const unsigned nWindows )
 	:
-	//IListener<SwapChainResizedEvent>(),
 #ifndef FINAL_RELEASE
 	m_pImguiMan{createImgui()},
 #endif
@@ -43,8 +42,6 @@ Game<T>::Game( const int width,
 {
 	s_nWindows = nWindows;
 	m_gameTimer.start();
-
-	//static_cast<const IReporter<SwapChainResizedEvent>&>( *this ).addListener( this );
 }
 
 template <typename T>
@@ -199,7 +196,7 @@ Sandbox3d::Sandbox3d( const int width,
 		8000u );
 	*/
 
-	//m_gui = std::make_unique<gui::UIPass>( gfx );
+	m_gui = std::make_unique<gui::UIPass>( gfx );
 
 	auto menuState = std::make_unique<MenuState>();
 	setState( std::move( menuState ), m_mainWindow.getMouse() );
@@ -311,7 +308,7 @@ int Sandbox3d::checkInput( const float dt )
 		{
 		case VK_ESCAPE:
 		{
-			if ( bCursorEnabled )	// TODO: check the game state on how to respond not whether the cursor is enabled
+			if ( bCursorEnabled )	// #TODO: check the game state on how to respond not whether the cursor is enabled
 			{
 				setState( std::make_unique<GameState>(), mouse );
 			}
@@ -355,22 +352,19 @@ int Sandbox3d::checkInput( const float dt )
 	auto &activeCamera = s_cameraMan.getActiveCamera();
 	if ( bCursorEnabled )
 	{
-	//	while ( const auto ev = mouse.readEventQueue() )
-	//	{
-	//		gui::Point ui_point{mouse.getX(), mouse.getY()};
-	//		if ( ev->isLmbPressed() )
-	//		{
-	//			m_gui->getRoot()->on_lmb_down( dt, ui_point );
-	//		}
-	//		else if ( ev->isLmbReleased() )
-	//		{
-	//			m_gui->getRoot()->on_lmb_up( dt, ui_point );
-	//		}
-	//		else if ( ev->isRmbReleased() )
-	//		{
-	//			m_gui->getRoot()->on_rmb_up( dt, ui_point );
-	//		}
-	//	}
+		while ( const auto ev = mouse.readEventQueue() )
+		{
+			gui::Point ui_point{mouse.getX(), mouse.getY()};
+			if ( ev->isLmbPressed() )
+			{
+				// #FIXME: once lmb is down it doesn't go up
+				m_gui->getRoot()->on_lmb_down( dt, ui_point );
+			}
+			else if ( ev->isRmbPressed() )
+			{
+				m_gui->getRoot()->on_rmb_down( dt, ui_point );
+			}
+		}
 	}
 	else
 	{
@@ -420,8 +414,13 @@ void Sandbox3d::update( const float dt,
 	const float lerpBetweenFrames )
 {
 	const auto &activeCamera = s_cameraMan.getActiveCamera();
-	// binds camera to all Passes that need it
+	
+	// set cameras to the passes that need them - the right V & P matrices to be used for each pass
 	auto &gfx = m_mainWindow.getGraphics();
+	if ( m_pPointLight1->isCastingShadows() )
+	{
+		gfx.getRenderer3d().setShadowCamera( *m_pPointLight1->shareCamera(), true );
+	}
 	gfx.getRenderer3d().setActiveCamera( activeCamera );
 
 	m_pPointLight1->update( gfx, dt, activeCamera.getViewMatrix() );
@@ -431,11 +430,16 @@ void Sandbox3d::update( const float dt,
 	m_cube1.update( dt, lerpBetweenFrames );
 	m_cube2.update( dt, lerpBetweenFrames );
 	m_cube3.update( dt, lerpBetweenFrames );
+	m_plane1Red.update( dt, lerpBetweenFrames );
+	m_plane2Green.update( dt, lerpBetweenFrames );
+	m_plane3Textured.update( dt, lerpBetweenFrames );
 	//m_nanoSuit.update( dt, lerpBetweenFrames );
 	m_carabiner.update( dt, lerpBetweenFrames );
 	m_sponzaScene.update( dt, lerpBetweenFrames );
 
-	//m_gui->update( dt, inputXandY, lerpBetweenFrames );
+	auto &mouse = m_mainWindow.getMouse();
+	gui::Point ui_point{mouse.getX(), mouse.getY()};
+	m_gui->update( dt, ui_point, lerpBetweenFrames );
 }
 
 void Sandbox3d::updateFixed( const float dt )
@@ -452,23 +456,27 @@ void Sandbox3d::render()
 	auto &gfx = m_mainWindow.getGraphics();
 	gfx.beginFrame();
 
-	m_pPointLight1->render( rch::lambert );
-	//m_pPointLight2->render( rch::lambert );
+	m_pPointLight1->render( rch::opaque );
+	//m_pPointLight2->render( rch::opaque );
 
 	m_terrain.render();
-	m_cube1.render( rch::lambert | rch::shadow | rch::blurOutline );
+	m_cube1.render( rch::opaque | rch::shadow | rch::blurOutline );
 	m_cube2.render();
 	m_cube3.render();
 	m_testSphere.render();
-	//m_nanoSuit.render( rch::lambert | rch::shadow | rch::blurOutline );
-	m_carabiner.render( rch::lambert | rch::shadow | rch::solidOutline | rch::blurOutline );
-	m_sponzaScene.render( rch::lambert | rch::shadow );
+	m_plane1Red.render();
+	m_plane2Green.render();
+	m_plane3Textured.render(rch::opaque | rch::shadow );
+	//m_nanoSuit.render( rch::opaque | rch::shadow | rch::blurOutline );
+	m_carabiner.render( rch::opaque | rch::shadow | rch::solidOutline | rch::blurOutline );
+	m_sponzaScene.render( rch::opaque | rch::shadow );
 
-	s_cameraMan.render( rch::lambert | rch::wireframe );
+	s_cameraMan.render( rch::opaque | rch::wireframe );
 
+	s_cameraMan.getActiveCamera().makeActive( gfx, false );
 	gfx.runRenderer();
 
-	//m_gui->render( gfx );
+	m_gui->render( gfx );
 }
 
 void Sandbox3d::test()
@@ -498,6 +506,9 @@ void Sandbox3d::test()
 	m_cube1.displayImguiWidgets( gfx, "Cube 1"s );
 	m_cube2.displayImguiWidgets( gfx, "Cube 2"s );
 	m_cube3.displayImguiWidgets( gfx, "Cube 3"s );
+	m_plane1Red.displayImguiWidgets( gfx, "Plane 1"s );
+	m_plane2Green.displayImguiWidgets( gfx, "Plane 2"s );
+	m_plane3Textured.displayImguiWidgets( gfx, "Plane 3"s );
 
 	m_carabiner.displayImguiWidgets( gfx );
 
@@ -522,16 +533,14 @@ void Sandbox3d::connectToRenderer( ren::Renderer3d &renderer )
 	m_cube2.connectEffectsToRenderer( renderer );
 	m_cube3.connectEffectsToRenderer( renderer );
 	m_testSphere.connectEffectsToRenderer( renderer );
+	m_plane1Red.connectEffectsToRenderer( renderer );
+	m_plane2Green.connectEffectsToRenderer( renderer );
+	m_plane3Textured.connectEffectsToRenderer( renderer );
 	//m_nanoSuit.connectEffectsToRenderer( renderer );
 	m_carabiner.connectEffectsToRenderer( renderer );
 	m_sponzaScene.connectEffectsToRenderer( renderer );
 
 	m_cube2.setEffectEnabled( rch::blurOutline, false );
-
-	if ( m_pPointLight1->isCastingShadows() )
-	{
-		renderer.setShadowCamera( *m_pPointLight1->shareCamera(), true );
-	}
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -561,15 +570,7 @@ Arkanoid::Arkanoid( const int width,
 			++i;
 		}
 	}
-
-	//static_cast<const IReporter<SwapChainResizedEvent>&>(nullptr).addListener( this );
 }
-
-//void Arkanoid::notify( const SwapChainResizedEvent &event )
-//{
-//	(void)event;
-//	pass_;
-//}
 
 int Arkanoid::loop()
 {

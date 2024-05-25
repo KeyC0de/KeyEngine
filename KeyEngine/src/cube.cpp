@@ -48,19 +48,51 @@ Cube::Cube( Graphics &gfx,
 	createAabb( cube.m_vb );
 	setMeshId();
 
+	const std::string diffuseTexturePath{"assets/models/brick_wall/brick_wall_diffuse.jpg"};
 	auto transformVscb = std::make_shared<TransformVSCB>( gfx, 0u );
-	{// lambertian reflectance effect
-		Effect lambertian{rch::lambert, "lambertian", true};
-		lambertian.addBindable( transformVscb );
+	if ( color.w < 1.0f )
+	{// transparent reflectance effect
+		Effect transparent{rch::transparent, "transparent", true};
+		transparent.addBindable( transformVscb );
 
-		lambertian.addBindable( Texture::fetch( gfx, "assets/models/brick_wall/brick_wall_diffuse.jpg", 0u ) );
-		lambertian.addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
+		transparent.addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
+
+		transparent.addBindable( Texture::fetch( gfx, diffuseTexturePath, 0u ) );
 
 		auto pVs = VertexShader::fetch( gfx, "cube_vs.cso" );
-		lambertian.addBindable( InputLayout::fetch( gfx, cube.m_vb.getLayout(), *pVs ) );
-		lambertian.addBindable( std::move( pVs ) );
+		transparent.addBindable( InputLayout::fetch( gfx, cube.m_vb.getLayout(), *pVs ) );
+		transparent.addBindable( std::move( pVs ) );
 
-		lambertian.addBindable( PixelShader::fetch( gfx, "cube_ps.cso" ) );
+		transparent.addBindable( PixelShader::fetch( gfx, "cube_ps.cso" ) );
+
+		con::RawLayout cbLayout;
+		cbLayout.add<con::Float3>( "modelSpecularColor" );
+		cbLayout.add<con::Float>( "modelSpecularGloss" );
+		auto cb = con::CBuffer( std::move( cbLayout ) );
+		cb["modelSpecularColor"] = dx::XMFLOAT3{color.x, color.y, color.z};
+		cb["modelSpecularGloss"] = 4.0f;
+		transparent.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
+
+		transparent.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
+
+		transparent.addBindable( std::make_shared<BlendState>( gfx, BlendState::Mode::Alpha, 0u, color.w ) );
+
+		addEffect( std::move( transparent ) );
+	}
+	else
+	{// opaque reflectance effect
+		Effect opaque{rch::opaque, "opaque", true};
+		opaque.addBindable( transformVscb );
+
+		opaque.addBindable( Texture::fetch( gfx, diffuseTexturePath, 0u ) );
+
+		opaque.addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
+
+		auto pVs = VertexShader::fetch( gfx, "cube_vs.cso" );
+		opaque.addBindable( InputLayout::fetch( gfx, cube.m_vb.getLayout(), *pVs ) );
+		opaque.addBindable( std::move( pVs ) );
+
+		opaque.addBindable( PixelShader::fetch( gfx, "cube_ps.cso" ) );
 
 		con::RawLayout cbLayout;
 		cbLayout.add<con::Float3>( "modelSpecularColor" );
@@ -68,11 +100,11 @@ Cube::Cube( Graphics &gfx,
 		auto cb = con::CBuffer( std::move( cbLayout ) );
 		cb["modelSpecularColor"] = dx::XMFLOAT3{1.0f, 1.0f, 1.0f};
 		cb["modelSpecularGloss"] = 20.0f;
-		lambertian.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
+		opaque.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
 
-		lambertian.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
+		opaque.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
 
-		addEffect( std::move( lambertian ) );
+		addEffect( std::move( opaque ) );
 	}
 	{// shadow map effect
 		Effect shadowMap{rch::shadow, "shadowMap", true};
@@ -128,27 +160,6 @@ Cube::Cube( Graphics &gfx,
 
 		addEffect( std::move( solidOutlineDraw ) );
 	}
-	/*
-	if ( color.w < 1.0f )
-	{
-	// transparent effect - #FIXME: doesn't work, maybe put the transparent pass first
-		Effect transparent{rch::transparent, "transparent", false};
-		transparent.addBindable( transformVscb );
-
-		//transparent.addBindable( Texture::fetch( gfx, "assets/models/brick_wall/brick_wall_diffuse.jpg", 0u ) );
-		//transparent.addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
-
-		//auto pVs = VertexShader::fetch( gfx, "cube_vs.cso" );
-		//transparent.addBindable( InputLayout::fetch( gfx, cube.m_vb.getLayout(), *pVs ) );
-		//transparent.addBindable( std::move( pVs ) );
-
-		//transparent.addBindable( PixelShader::fetch( gfx, "cube_ps.cso" ) );
-
-		transparent.addBindable( std::make_shared<BlendState>( gfx, BlendState::Mode::Alpha, 0u, color.w ) );
-
-		addEffect( std::move( transparent ) );
-	}
-	*/
 }
 
 void Cube::displayImguiWidgets( Graphics &gfx,
@@ -200,7 +211,7 @@ void Cube::displayImguiWidgets( Graphics &gfx,
 
 			ImGui::Text( "Blending" );
 			float factor = (*pBlendState)->getBlendFactorAlpha();
-			dirtyCheckAlpha( ImGui::SliderFloat( "Translucency", &factor, 0.0f, 1.0f ), bDirtyAlpha);
+			dirtyCheckAlpha( ImGui::SliderFloat( "Transparency", &factor, 0.0f, 1.0f ), bDirtyAlpha);
 
 			if ( bDirtyAlpha )
 			{

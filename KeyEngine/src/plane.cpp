@@ -10,6 +10,7 @@
 #include "texture.h"
 #include "texture_sampler_state.h"
 #include "rasterizer_state.h"
+#include "blend_state.h"
 #include "constant_buffer_ex.h"
 #ifndef FINAL_RELEASE
 #	include "imgui/imgui.h"
@@ -26,7 +27,8 @@ Plane::Plane( Graphics &gfx,
 	const float initialScale /*= 1.0f*/,
 	const DirectX::XMFLOAT3 &initialRot /*= {0.0f, 0.0f, 0.0f}*/,
 	const DirectX::XMFLOAT3 &initialPos /*= {0.0f, 0.0f, 0.0f}*/,
-	const DirectX::XMFLOAT3 &color /*= {1.0f, 1.0f, 1.0f}*/ )
+	const DirectX::XMFLOAT4 &color /*= {1.0f, 1.0f, 1.0f, 1.0f}*/,
+	const std::optional<std::string> &diffuseTexturePath /*= "assets/models/brick_wall/brick_wall_diffuse.jpg"*/ )
 	:
 	Mesh{{1.0f, 1.0f, 1.0f}, initialRot, initialPos},
 	m_colPcb{color}
@@ -46,19 +48,58 @@ Plane::Plane( Graphics &gfx,
 	setMeshId();
 
 	auto transformVscb = std::make_shared<TransformVSCB>( gfx, 0u );
-	{
-	// lambertian reflectance effect
-		Effect lambertian{rch::lambert, "lambertian", true};
-		lambertian.addBindable( transformVscb );
-
-		lambertian.addBindable( Texture::fetch( gfx, "assets/models/brick_wall/brick_wall_diffuse.jpg", 0u ) );
-		lambertian.addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
+	if ( color.w < 1.0f )
+	{// transparent reflectance effect
+		Effect transparent{rch::transparent, "transparent", true};
+		transparent.addBindable( transformVscb );
 
 		auto pVs = VertexShader::fetch( gfx, "plane_vs.cso" );
-		lambertian.addBindable( InputLayout::fetch( gfx, plane.m_vb.getLayout(), *pVs ) );
-		lambertian.addBindable( std::move( pVs ) );
+		transparent.addBindable( InputLayout::fetch( gfx, plane.m_vb.getLayout(), *pVs ) );
+		transparent.addBindable( std::move( pVs ) );
 
-		lambertian.addBindable( PixelShader::fetch( gfx, "plane_ps.cso" ) );
+		if ( diffuseTexturePath.has_value() )
+		{
+			transparent.addBindable( Texture::fetch( gfx, *diffuseTexturePath, 0u ) );
+
+			transparent.addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
+
+			transparent.addBindable( PixelShader::fetch( gfx, "plane_ps.cso" ) );
+
+			con::RawLayout cbLayout;
+			cbLayout.add<con::Float3>( "modelSpecularColor" );
+			cbLayout.add<con::Float>( "modelSpecularGloss" );
+			auto cb = con::CBuffer( std::move( cbLayout ) );
+			cb["modelSpecularColor"] = dx::XMFLOAT3{1.0f, 1.0f, 1.0f};
+			cb["modelSpecularGloss"] = 20.0f;
+			transparent.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
+		}
+		else
+		{
+			transparent.addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
+
+			transparent.addBindable( std::make_shared<PixelShaderConstantBuffer<ColorPSCB>>( gfx, m_colPcb, 0u ) );
+		}
+
+		transparent.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Both ) );
+
+		transparent.addBindable( std::make_shared<BlendState>( gfx, BlendState::Mode::Alpha, 0u, color.w ) );
+
+		addEffect( std::move( transparent ) );
+	}
+	else
+	{// opaque reflectance effect
+		Effect opaque{rch::opaque, "opaque", true};
+		opaque.addBindable( transformVscb );
+
+		opaque.addBindable( Texture::fetch( gfx, *diffuseTexturePath, 0u ) );
+
+		opaque.addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
+
+		auto pVs = VertexShader::fetch( gfx, "plane_vs.cso" );
+		opaque.addBindable( InputLayout::fetch( gfx, plane.m_vb.getLayout(), *pVs ) );
+		opaque.addBindable( std::move( pVs ) );
+
+		opaque.addBindable( PixelShader::fetch( gfx, "plane_ps.cso" ) );
 
 		con::RawLayout cbLayout;
 		cbLayout.add<con::Float3>( "modelSpecularColor" );
@@ -66,14 +107,13 @@ Plane::Plane( Graphics &gfx,
 		auto cb = con::CBuffer( std::move( cbLayout ) );
 		cb["modelSpecularColor"] = dx::XMFLOAT3{1.0f, 1.0f, 1.0f};
 		cb["modelSpecularGloss"] = 20.0f;
-		lambertian.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
+		opaque.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
 
-		lambertian.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
+		opaque.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Both ) );
 
-		addEffect( std::move( lambertian ) );
+		addEffect( std::move( opaque ) );
 	}
-	{
-	// shadow map effect
+	{// shadow map effect
 		Effect shadowMap{rch::shadow, "shadowMap", true};
 		shadowMap.addBindable( transformVscb );
 
@@ -81,8 +121,7 @@ Plane::Plane( Graphics &gfx,
 
 		addEffect( std::move( shadowMap ) );
 	}
-	{
-	// blur outline mask effect
+	{// blur outline mask effect
 		Effect blurOutlineMask{rch::blurOutline, "blurOutlineMask", false};
 		blurOutlineMask.addBindable( transformVscb );
 
@@ -90,13 +129,12 @@ Plane::Plane( Graphics &gfx,
 
 		addEffect( std::move( blurOutlineMask ) );
 	}
-	{
-	// blur outline draw effect
+	{// blur outline draw effect
 		Effect blurOutlineDraw{rch::blurOutline, "blurOutlineDraw", false};
 		blurOutlineDraw.addBindable( transformVscb );
 
 		con::RawLayout cbLayout;
-		cbLayout.add<con::Float3>( "materialColor" );
+		cbLayout.add<con::Float4>( "materialColor" );
 		auto cb = con::CBuffer( std::move( cbLayout ) );
 		cb["materialColor"] = color;
 		blurOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
@@ -105,8 +143,7 @@ Plane::Plane( Graphics &gfx,
 
 		addEffect( std::move( blurOutlineDraw ) );
 	}
-	{
-	// solid outline mask effect
+	{// solid outline mask effect
 		Effect solidOutlineMask{rch::solidOutline, "solidOutlineMask", true};
 		solidOutlineMask.addBindable( transformVscb );
 
@@ -114,15 +151,14 @@ Plane::Plane( Graphics &gfx,
 
 		addEffect( std::move( solidOutlineMask ) );
 	}
-	{
-	// solid outline draw effect
+	{// solid outline draw effect
 		Effect solidOutlineDraw{rch::solidOutline, "solidOutlineDraw", true};
 
 		auto transformScaledVcb = std::make_shared<TransformScaleVSCB>( gfx, 0u, 1.04f );
 		solidOutlineDraw.addBindable( transformScaledVcb );
 
 		con::RawLayout cbLayout;
-		cbLayout.add<con::Float3>( "materialColor" );
+		cbLayout.add<con::Float4>( "materialColor" );
 		auto cb = con::CBuffer( std::move( cbLayout ) );
 		cb["materialColor"] = color;
 		solidOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
@@ -169,6 +205,25 @@ void Plane::displayImguiWidgets( Graphics &gfx,
 		if ( bDirtyPos )
 		{
 			setPosition( pos );
+		}
+
+		auto pBlendState = findBindable<BlendState>();
+		if ( pBlendState )
+		{
+			bool bDirtyAlpha = false;
+			const auto dirtyCheckAlpha = []( const bool bChanged, bool &bDirtyAlpha )
+			{
+				bDirtyAlpha = bDirtyAlpha || bChanged;
+			};
+
+			ImGui::Text( "Blending" );
+			float factor = (*pBlendState)->getBlendFactorAlpha();
+			dirtyCheckAlpha( ImGui::SliderFloat( "Transparency", &factor, 0.0f, 1.0f ), bDirtyAlpha);
+
+			if ( bDirtyAlpha )
+			{
+				(*pBlendState)->fillBlendFactors( factor );
+			}
 		}
 	}
 	ImGui::End();

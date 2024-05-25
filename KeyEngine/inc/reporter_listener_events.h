@@ -32,7 +32,7 @@ struct UISoundEvent
 		switch ( soundType )
 		{
 		case Component_Hovered:
-			return "assets/sfx/611451__eminyildirim__ui-click-menu-hover.wav";
+			return "assets/sfx/611451__eminyildirim__ui-click-menu-hover_16_bit.wav";
 		case Component_Unhovered:
 			return "";
 		}

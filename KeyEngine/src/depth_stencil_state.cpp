@@ -94,7 +94,11 @@ DepthStencilState::DepthStencilState( Graphics &gfx,
 	{
 		dsDesc.DepthFunc = D3D11_COMPARISON_GREATER;
 	}
-	else if ( mode == DepthEquals1 )
+	else if ( mode == DepthReadOnlyStencilOff )
+	{
+		dsDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ZERO;
+	}
+	else if ( mode == DepthReadOnlyEquals1StencilOff )
 	{
 		dsDesc.DepthFunc = D3D11_COMPARISON_EQUAL;
 		dsDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ZERO;
@@ -154,8 +158,8 @@ std::string DepthStencilState::calcUid( const Mode mode )
 			return "DepthOffStencilReadBF"s;
 		case DepthReversedStencilOff:
 			return "DepthReversedStencilOff"s;
-		case DepthEquals1:
-			return "DepthEquals1"s;
+		case DepthReadOnlyEquals1StencilOff:
+			return "DepthReadOnlyEquals1StencilOff"s;
 		default:
 			return "!INV!"s;
 		}

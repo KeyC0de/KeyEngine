@@ -10,6 +10,7 @@
 #include "camera_manager.h"
 #include "light_source.h"
 #include "terrain.h"
+#include "plane.h"
 #include "cube.h"
 #include "sphere.h"
 #include "model.h"
@@ -30,10 +31,10 @@ namespace ren
 	class Renderer;
 }
 
-//namespace gui
-//{
-//	class UIPass;
-//}
+namespace gui
+{
+	class UIPass;
+}
 
 template<typename T>
 class Game
@@ -80,7 +81,7 @@ class Sandbox3d
 {
 	static inline CameraManager &s_cameraMan = CameraManager::getInstance();
 
-	//std::unique_ptr<gui::UIPass> m_gui;
+	std::unique_ptr<gui::UIPass> m_gui;
 	std::unique_ptr<PointLight> m_pPointLight1;
 	//std::unique_ptr<PointLight> m_pPointLight2;
 #ifndef FINAL_RELEASE
@@ -91,6 +92,9 @@ class Sandbox3d
 	Cube m_cube2{m_mainWindow.getGraphics(), 1.0f, {0, 0, 0}, {9.9f, 4.9f, 1.4f}, {1.0f, 0.4f, 0.4f, 0.5f}};
 	Cube m_cube3{m_mainWindow.getGraphics(), 1.0f, {0, 0, 0}, {22.0f, 12.0f, 14.0f}};
 	Sphere m_testSphere{m_mainWindow.getGraphics(), 1.0f, {0, 0, 0}, {40.0f, 20.0f, 8.0f}};
+	Plane m_plane1Red{m_mainWindow.getGraphics(), 8, 8, 1.0f, {0, 0, 0}, {40.0f, 10.0f, 20.0f}, {1.0f, 0.0f, 0.1f, 0.8f}, {}};
+	Plane m_plane2Green{m_mainWindow.getGraphics(), 4, 4, 1.0f, {0, 0, 0}, {40.0f, 10.0f, 16.0f}, {0.1f, 1.0f, 0.0f, 0.5f}, {}};
+	Plane m_plane3Textured{m_mainWindow.getGraphics(), 6, 6, 1.0f, {0, 0, 0}, {40.0f, 10.0f, 12.0f}, {1.0f, 1.0f, 1.0f, 1.0f}};
 	// #TODO: use an array of Models and iterate through them
 	Model m_sponzaScene{m_mainWindow.getGraphics(), "assets/models/sponza/sponza.obj", 1.0f / 8.0f, {0, 0, 0}, {0.0f, 0.0f, 0.0f}};
 	//Model m_nanoSuit{m_mainWindow.getGraphics(), "assets/models/nano_textured/nanosuit.obj", 2.0f, {0, util::PI / 2.f, 0}, {27.f, -0.56f, 1.7f}};

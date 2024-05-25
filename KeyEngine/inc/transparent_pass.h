@@ -4,6 +4,7 @@
 
 
 class Graphics;
+class Camera;
 
 namespace ren
 {
@@ -17,8 +18,12 @@ namespace ren
 class TransparentPass
 	: public RenderQueuePass
 {
+	const Camera *m_pActiveCamera = nullptr;
 public:
 	TransparentPass( Graphics &gfx, const std::string &name );
+
+	void run( Graphics &gfx ) const cond_noex override;
+	void setActiveCamera( const Camera &cam ) noexcept;
 };
 
 

@@ -82,7 +82,6 @@ TransformVSCB::Transforms TransformVSCB::getTransforms( Graphics &gfx ) cond_noe
 	const auto world = m_pMesh->getTransform();
 	const auto worldView = world * gfx.getViewMatrix();
 	const auto worldViewProjection = worldView * gfx.getProjectionMatrix();
-	// TODO: try removing transpose
 	return {dx::XMMatrixTranspose( world ), dx::XMMatrixTranspose( worldView ), dx::XMMatrixTranspose( worldViewProjection )};
 }
 

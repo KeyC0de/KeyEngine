@@ -54,19 +54,19 @@ Terrain::Terrain( Graphics &gfx,
 	setMeshId();
 
 	auto transformVscb = std::make_shared<TransformVSCB>( gfx, 0u );
-	{
-	// lambertian reflectance effect
-		Effect lambertian{rch::lambert, "lambertian", false};
-		lambertian.addBindable( transformVscb );
+	{// opaque reflectance effect
+		Effect opaque{rch::opaque, "opaque", false};
+		opaque.addBindable( transformVscb );
 
-		lambertian.addBindable( Texture::fetch( gfx, "assets/models/brick_wall/brick_wall_diffuse.jpg", 0u ) );
-		lambertian.addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
+		opaque.addBindable( Texture::fetch( gfx, "assets/models/brick_wall/brick_wall_diffuse.jpg", 0u ) );
+
+		opaque.addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
 
 		auto pVs = VertexShader::fetch( gfx, "plane_vs.cso" );
-		lambertian.addBindable( InputLayout::fetch( gfx, planarGrid.m_vb.getLayout(), *pVs ) );
-		lambertian.addBindable( std::move( pVs ) );
+		opaque.addBindable( InputLayout::fetch( gfx, planarGrid.m_vb.getLayout(), *pVs ) );
+		opaque.addBindable( std::move( pVs ) );
 
-		lambertian.addBindable( PixelShader::fetch( gfx, "plane_ps.cso" ) );
+		opaque.addBindable( PixelShader::fetch( gfx, "plane_ps.cso" ) );
 
 		con::RawLayout cbLayout;
 		cbLayout.add<con::Float3>( "modelSpecularColor" );
@@ -74,14 +74,13 @@ Terrain::Terrain( Graphics &gfx,
 		auto cb = con::CBuffer( std::move( cbLayout ) );
 		cb["modelSpecularColor"] = dx::XMFLOAT3{1.0f, 1.0f, 1.0f};
 		cb["modelSpecularGloss"] = 20.0f;
-		lambertian.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
+		opaque.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
 
-		lambertian.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
+		opaque.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
 
-		addEffect( std::move( lambertian ) );
+		addEffect( std::move( opaque ) );
 	}
-	{
-	//shadow map effect
+	{//shadow map effect
 		Effect shadowMap{rch::shadow, "shadowMap", false};
 		shadowMap.addBindable( transformVscb );
 
@@ -89,8 +88,7 @@ Terrain::Terrain( Graphics &gfx,
 
 		addEffect( std::move( shadowMap ) );
 	}
-	{
-	// solid outline mask effect
+	{// solid outline mask effect
 		Effect solidOutlineMask{rch::solidOutline, "solidOutlineMask", false};
 		solidOutlineMask.addBindable( transformVscb );
 
@@ -98,8 +96,7 @@ Terrain::Terrain( Graphics &gfx,
 
 		addEffect( std::move( solidOutlineMask ) );
 	}
-	{
-	// solid outline draw effect
+	{// solid outline draw effect
 		Effect solidOutlineDraw{rch::solidOutline, "solidOutlineDraw", false};
 
 		auto transformScaledVcb = std::make_shared<TransformScaleVSCB>( gfx, 0u, 1.04f );
@@ -115,7 +112,7 @@ Terrain::Terrain( Graphics &gfx,
 
 		addEffect( std::move( solidOutlineDraw ) );
 	}
-	{
+	{// wireframe effect
 		Effect wireframe{rch::wireframe, "wireframe", true};
 
 		auto pVs = VertexShader::fetch( gfx, "flat_vs.cso" );

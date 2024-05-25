@@ -20,7 +20,8 @@ public:
 		DepthOffStencilWriteBF,
 		DepthOffStencilReadBF,
 		DepthReversedStencilOff,// only things that are occluded should be drawn
-		DepthEquals1,
+		DepthReadOnlyStencilOff,		// useful for Transparency
+		DepthReadOnlyEquals1StencilOff,		// useful for Skybox
 	};
 private:
 	Mode m_mode;

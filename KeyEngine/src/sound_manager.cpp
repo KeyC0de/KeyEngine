@@ -7,6 +7,9 @@
 #if defined _DEBUG && !defined NDEBUG
 #	include <iostream>
 #endif // _DEBUG
+#include "reporter_access.h"
+#include "reporter_listener_events.h"
+#include "jthread_pool.h"
 
 #pragma comment( lib, "xaudio2_8.lib" )
 
@@ -24,10 +27,13 @@ namespace wav
 
 SoundManager::SoundManager( WAVEFORMATEXTENSIBLE *format )
 {
+	HRESULT hres;
+	hres = CoInitializeEx( nullptr, COINIT_MULTITHREADED );
+	ASSERT_HRES_IF_FAILED;
+
 	// keep a pointer to the format
 	m_pFormat = format;
 
-	HRESULT hres;
 	hres = XAudio2Create( &m_pXAudio2, 0u, XAUDIO2_DEFAULT_PROCESSOR );
 	ASSERT_HRES_IF_FAILED;
 
@@ -510,8 +516,7 @@ const std::string& Sound::getSubmixName() const cond_noex
 
 void Sound::play( const float volume )
 {
-	SoundManager::getInstance( m_pWaveFormat.get() )
-		.playChannelSound( this, volume );
+	SoundManager::getInstance( m_pWaveFormat.get() ).playChannelSound( this, volume );
 }
 
 void Sound::stop()
@@ -592,4 +597,42 @@ SoundManager::Submix& SoundManager::Submix::operator=( Submix &&rhs ) cond_noex
 	Submix tmp{std::move( rhs )};
 	std::swap( *this, tmp );
 	return *this;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+SoundPlayer::SoundPlayer()
+	:
+	IListener<UISoundEvent>()
+{
+	auto &reportingNexus = ReportingNexus::getInstance();
+	static_cast<const IReporter<UISoundEvent>&>( reportingNexus ).addListener( this );
+}
+
+SoundPlayer& SoundPlayer::getInstance()
+{
+	static SoundPlayer soundPlayer{};
+	return soundPlayer;
+}
+
+void SoundPlayer::notify( const UISoundEvent &event )
+{
+	switch ( event.m_soundType )
+	{
+	case UISoundEvent::Component_Hovered:
+	{
+		auto &threadPool = ThreadPoolJ::getInstance();
+
+		auto lambda = [event] ( nonstd::stop_token st )
+			{
+				Sound component_hovered_sound{UISoundEvent::getSoundPath( event.m_soundType ), "component_hovered", "ui"};
+				component_hovered_sound.play();
+				Sleep( 200 );
+			};
+		threadPool.enqueue( lambda );
+	}
+	case UISoundEvent::Component_Unhovered:
+	{
+
+	}
+	}
 }

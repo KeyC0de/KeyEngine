@@ -6,6 +6,7 @@
 #include <condition_variable>
 #include "key_exception.h"
 #include "jthread/jthread.h"
+#include "jthread/stop_token.h"
 
 
 //============================================================
@@ -46,7 +47,7 @@ public:
 	ThreadPoolJ( ThreadPoolJ &&rhs ) noexcept;
 	ThreadPoolJ& operator=( ThreadPoolJ &&rhs ) noexcept;
 
-	static ThreadPoolJ& instance( const std::size_t nThreads, const bool bEnabled );
+	static ThreadPoolJ& getInstance( const std::size_t nThreads = 4u, const bool bEnabled = true );
 	static void resetInstance() noexcept;
 
 	//	\function	start	||	\date	25/9/2019 12:20

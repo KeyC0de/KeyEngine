@@ -25,6 +25,8 @@ Component::Component_State::Component_State( Graphics &gfx,
 	const std::string &name /*= "default"*/,
 	const std::string &text /*= ""*/,
 	const std::string image_path /*= ""*/,
+	const DirectX::XMVECTORF32 &text_color /*= DirectX::Colors::White*/,
+	const DirectX::XMFLOAT2 &text_scale /*= DirectX::XMFLOAT2{1.0f, 1.0f}*/,
 	const bool is_interactive /*= true*/,
 	const bool is_enabled /*= false*/,
 	const bool can_resize_width /*= true*/,
@@ -41,7 +43,8 @@ Component::Component_State::Component_State( Graphics &gfx,
 	m_can_resize_height{can_resize_height},
 	m_docking{docking},
 	m_text_justification{text_justification},
-	m_color{DirectX::Colors::White}
+	m_color{text_color},
+	m_text_scale{text_scale}
 {
 	if ( !image_path.empty() )
 	{
@@ -99,24 +102,14 @@ void Component::Component_State::render( Graphics &gfx,
 	DirectX::SpriteFont *pSpriteFont,
 	RasterizerState *pRasterizerState )
 {
-	if ( m_custom_render_func )
-	{
-		m_custom_render_func( gfx );
-	}
 	// By default SpriteBatch uses premultiplied alpha blending, no depth buffer, counter clockwise culling, and linear filtering with clamp texture addressing. You can change this by passing custom state objects to SpriteBatch::Begin. Pass null for any parameters that should use their default value.
-	// SpriteBatch makes use of the following states: BlendState, Constant buffer (Vertex Shader stage, slot 0), DepthStencilState, Index buffer, Input layout, Pixel shader, Primitive topology, RasterizerState, SamplerState (Pixel Shader stage, slot 0), Shader resources (Pixel Shader stage, slot 0), Vertex buffer (slot 0), Vertex shader
+	// SpriteBatch makes use of the following states: BlendState (Alpha Blending), Constant buffer (Vertex Shader stage, slot 0), DepthStencilState, Index buffer, Input layout, Pixel shader, Primitive topology, RasterizerState, SamplerState (Pixel Shader stage, slot 0), Shader resources (Pixel Shader stage, slot 0), Vertex buffer (slot 0), Vertex shader
 	// The SpriteBatch class assumes you've already set the Render Target view, Depth Stencil view, and Viewport. It will also read the first viewport set on the device unless you've explicitly called SetViewport.
 	// Be sure that if you set any of the following shaders prior to using SpriteBatch that you clear them: Geometry Shader, Hull Shader, Domain Shader, Compute Shader.
 
-	if ( m_texture )
-	{
-		drawTexture( gfx, pSpriteBatch, pRasterizerState );
-	}
-
-	if ( !m_text.empty() )
-	{
-		drawText( gfx, pSpriteBatch, pSpriteFont );
-	}
+	m_custom_render_func ? m_custom_render_func( gfx ) : void(0);
+	m_texture ? draw_texture( gfx, pSpriteBatch, pRasterizerState ) : void(0);
+	!m_text.empty() ? draw_text( gfx, pSpriteBatch, pSpriteFont ) : void(0);
 }
 
 void Component::Component_State::resize( const int new_width,
@@ -125,21 +118,21 @@ void Component::Component_State::resize( const int new_width,
 	pass_;
 }
 
-void Component::Component_State::drawText( Graphics &gfx,
+void Component::Component_State::draw_text( Graphics &gfx,
 	DirectX::SpriteBatch *pSpriteBatch,
-	DirectX::SpriteFont *pSpriteFont,
-	const DirectX::XMFLOAT2 &scale /*= DirectX::XMFLOAT2{1.0f, 1.0f}*/ )
+	DirectX::SpriteFont *pSpriteFont )
 {
 	pSpriteBatch->Begin();
-	pSpriteFont->DrawString( pSpriteBatch, m_text.c_str(), DirectX::XMFLOAT2{static_cast<float>( m_collision_shape.getX() ), static_cast<float>( m_collision_shape.getY() )}, m_color, 0.0f, DirectX::XMFLOAT2{0.0f, 0.0f}, scale );
+	pSpriteFont->DrawString( pSpriteBatch, m_text.c_str(), DirectX::XMFLOAT2{static_cast<float>( m_collision_shape.getX() ), static_cast<float>( m_collision_shape.getY() )}, m_color, 0.0f, DirectX::XMFLOAT2{0.0f, 0.0f}, m_text_scale );
 	pSpriteBatch->End();
 }
 
-void Component::Component_State::drawTexture( Graphics &gfx, DirectX::SpriteBatch *pSpriteBatch, RasterizerState *pRasterizerState )
+void Component::Component_State::draw_texture( Graphics &gfx,
+	DirectX::SpriteBatch *pSpriteBatch,
+	RasterizerState *pRasterizerState )
 {
 	// #TODO: drawrectanglewithcolor?
 	//you can't do that, a texture is required, just create a white texture and specify color in Draw's third parameter
-
 	pSpriteBatch->Begin( DirectX::SpriteSortMode::SpriteSortMode_Deferred, nullptr, nullptr, nullptr, pRasterizerState->getD3dRasterizerState().Get() );
 	pSpriteBatch->Draw( m_texture->getD3dSrv().Get(), m_collision_shape );
 	pSpriteBatch->End();
@@ -156,6 +149,8 @@ bool Component::create_component( Graphics &gfx,
 	const bool is_tooltip /*= false*/,
 	const std::vector<std::pair<std::string, std::string>> &state_texts /*= {}*/,
 	const std::vector<std::pair<std::string, std::string>> &state_image_paths /*= {}*/,
+	const DirectX::XMVECTORF32 &text_color /*= DirectX::Colors::White*/,
+	const DirectX::XMFLOAT2 &text_scale /*= DirectX::XMFLOAT2{1.0f, 1.0f}*/,
 	const std::string &tooltip_text /*= ""*/,
 	Mesh *mesh /*= nullptr*/,
 	const bool is_interactive /*= true*/,
@@ -185,7 +180,7 @@ bool Component::create_component( Graphics &gfx,
 		return false;
 	}
 
-	p_parent->m_children.emplace_back( std::make_unique<Component>( gfx, name, parent, x, y, width, height, is_tooltip, state_texts, state_image_paths, tooltip_text, mesh, is_interactive, is_enabled, visible, update_when_not_visible, aspect_ratio_locked_behavior, docking, text_justification ) );
+	p_parent->m_children.emplace_back( std::make_unique<Component>( gfx, name, parent, x, y, width, height, is_tooltip, state_texts, state_image_paths, text_color, text_scale, tooltip_text, mesh, is_interactive, is_enabled, visible, update_when_not_visible, aspect_ratio_locked_behavior, docking, text_justification ) );
 	return true;
 }
 
@@ -207,6 +202,10 @@ Component* Component::find_forward( Component *comp,
 		if ( found && found->m_name == name )
 		{
 			break;
+		}
+		else
+		{
+			found = nullptr;
 		}
 	}
 	return found;
@@ -257,6 +256,8 @@ Component::Component( Graphics &gfx,
 	const bool is_tooltip /*= false*/,
 	const std::vector<std::pair<std::string, std::string>> &state_texts /*= {}*/,
 	const std::vector<std::pair<std::string, std::string>> &state_image_paths /*= {}*/,
+	const DirectX::XMVECTORF32 &text_color /*= DirectX::Colors::White*/,
+	const DirectX::XMFLOAT2 &text_scale /*= DirectX::XMFLOAT2{1.0f, 1.0f}*/,
 	const std::string &tooltip_text /*= ""*/,
 	Mesh *mesh /*= nullptr*/,
 	const bool is_interactive /*= true*/,
@@ -268,7 +269,6 @@ Component::Component( Graphics &gfx,
 	const Text_Justification text_justification /*= Text_Justification::Text_Justification_Left*/ )
 	:
 	IListener<SwapChainResizedEvent>(),
-	IListener<UISoundEvent>(),
 	IListener<UserPropertyChanged>(),
 	IListener<UiMsg>(),
 	m_id{get_next_id()},
@@ -288,40 +288,40 @@ Component::Component( Graphics &gfx,
 		m_parent = s_root->find( parent_name );
 	}
 
-	ASSERT( is_attached_to_root(), "Component is not attached to the root! This is not allowed at this point!!!" )
-
 	RectangleI collision_shape{x, y, width, height};
 
 	if ( m_parent == nullptr && s_root == nullptr ) 
 	{
 		s_root = this;
+		m_can_move = false;
 		m_is_visible = false;
 		m_depth = 1000.0f;
 		++m_current_state_index;
-		m_states[m_current_state_index] = std::make_unique<Component_State>( gfx, collision_shape );
+		m_states.emplace_back( std::make_unique<Component_State>( gfx, collision_shape ) );
 		m_current_state->m_is_interactive = false;
 		m_current_state->m_can_resize_width = false;
 		m_current_state->m_can_resize_height = false;
-		return;
-		// end of root component initialization
+		return;	// end of root component initialization
 	}
 
-	ASSERT( m_parent != nullptr, "Invalid parameters! Use create_component static function to create a new Component as a child of an existing Component!" );
+	ASSERT( is_attached_to_root(), "Component is not attached to the root! This is not allowed at this point!!!\nUse create_component static function to create a new Component as a child of an existing Component!" )
 
+#pragma warning( disable : 6011 )
 	m_depth = ( m_parent->m_depth / 2 + m_id );
+#pragma warning( default : 6011 )
 
-	ASSERT( state_texts.empty() && state_image_paths.empty(), "you must supply either text or an image path for the Component to properly initialize." );
+	ASSERT( !state_texts.empty() || !state_image_paths.empty(), "you must supply either text or an image path for the Component to properly initialize." );
 
-	m_states.reserve( state_texts.size() + state_image_paths.size() );
+	m_states.resize( state_texts.size() + state_image_paths.size() );
 	for ( auto & state_name_text : state_texts )
 	{
 		++m_current_state_index;
-		m_states[m_current_state_index] = std::make_unique<Component_State>( gfx, collision_shape, state_name_text.first, state_name_text.second, "", is_interactive, is_enabled, true, true, docking, text_justification );
+		m_states[m_current_state_index] = std::make_unique<Component_State>( gfx, collision_shape, state_name_text.first, state_name_text.second, "", text_color, text_scale, is_interactive, is_enabled, true, true, docking, text_justification );
 	}
 	for ( auto &state_name_and_image_path : state_image_paths )
 	{
 		++m_current_state_index;
-		m_states[m_current_state_index] = std::make_unique<Component_State>( gfx, collision_shape, state_name_and_image_path.first, "", state_name_and_image_path.second, is_interactive, is_enabled, true, true, docking, text_justification );
+		m_states[m_current_state_index] = std::make_unique<Component_State>( gfx, collision_shape, state_name_and_image_path.first, "", state_name_and_image_path.second, text_color, text_scale, is_interactive, is_enabled, true, true, docking, text_justification );
 	}
 
 	if ( mesh != nullptr )
@@ -336,9 +336,14 @@ Component::Component( Graphics &gfx,
 		tooltip_comp_state_texts.emplace_back( "default", tooltip_text );
 
 		// create textual component out of tooltip
-		create_tooltip( gfx, "tooltip"s + name, x, y, width, height, tooltip_comp_state_texts, aspect_ratio_locked_behavior, docking, text_justification );
+		create_tooltip( gfx, "tooltip_"s + name, x, y, width, height, tooltip_comp_state_texts, text_color, text_scale, aspect_ratio_locked_behavior, docking, text_justification );
 		s_num_tooltips++;
 	}
+
+	auto &reportingNexus = ReportingNexus::getInstance();
+	static_cast<const IReporter<SwapChainResizedEvent>&>( reportingNexus ).addListener( this );
+	static_cast<const IReporter<UserPropertyChanged>&>( reportingNexus ).addListener( this );
+	static_cast<const IReporter<UiMsg>&>( reportingNexus ).addListener( this );
 }
 
 Component::~Component()
@@ -383,6 +388,8 @@ void Component::create_tooltip( Graphics &gfx,
 	const int width,
 	const int height,
 	const std::vector<std::pair<std::string, std::string>> &state_texts,
+	const DirectX::XMVECTORF32 &text_color /*= DirectX::Colors::White*/,
+	const DirectX::XMFLOAT2 &text_scale /*= DirectX::XMFLOAT2{1.0f, 1.0f}*/,
 	const Aspect_Ratio_Locked_Behavior aspect_ratio_locked_behavior /*= Aspect_Ratio_Locked_Behavior::Aspect_Ratio_None*/,
 	const Dock_Point docking /*= Dock_Point::Dock_Point_None*/,
 	const Text_Justification text_justification /*= Text_Justification::Text_Justification_Left*/ )
@@ -391,7 +398,7 @@ void Component::create_tooltip( Graphics &gfx,
 	parent = this;
 	// tooltip_text parameter is empty for a Component
 	std::vector<std::pair<std::string, std::string>> compStateImages;
-	m_tooltip = std::make_unique<Component>( gfx, name, parent, x, y, width, height, true, state_texts, compStateImages, "", nullptr, true, false, false, false, aspect_ratio_locked_behavior, docking, text_justification );
+	m_tooltip = std::make_unique<Component>( gfx, name, parent, x, y, width, height, true, state_texts, compStateImages, text_color, text_scale, "", nullptr, true, false, false, false, aspect_ratio_locked_behavior, docking, text_justification );
 
 	// make sure tooltip is topmost so it renders on top of everything
 	m_tooltip->set_enable_top_most( true );
@@ -403,22 +410,6 @@ void Component::create_tooltip( Graphics &gfx,
 void Component::notify( const SwapChainResizedEvent &event )
 {
 	resize( event.gfx.getClientWidth(), event.gfx.getClientHeight() );
-}
-
-void Component::notify( const UISoundEvent &event )
-{
-	switch ( event.m_soundType )
-	{
-	case UISoundEvent::Component_Hovered:
-	{
-		Sound component_hovered_sound{UISoundEvent::getSoundPath( event.m_soundType ), "component_hovered", "ui"};
-		component_hovered_sound.play();
-	}
-	case UISoundEvent::Component_Unhovered:
-	{
-
-	}
-	}
 }
 
 void Component::notify( const UserPropertyChanged &event )
@@ -474,13 +465,25 @@ void Component::evaluate_current_hover()
 		child->evaluate_current_hover();
 	}
 
+	if ( this == s_root )
+	{
+		return;
+	}
+
 	if ( has_current_hover( s_last_input_pos ) )
 	{
+		// #FIXME: if you hover component A unhover it without hovering any other one (except root) and hover it again then you spam-enter this function
+		// if you hover another component B and then you hover A again it works fine
+		if ( this != s_current_hover )
+		{
+			// instantaneous hover stuff
+			on_hover( s_last_dt, s_last_input_pos );
+		}
+		// continuous hover stuff
 		s_current_hover = this;
-		++m_last_update_tick;
-		on_hover( s_last_dt, s_last_input_pos );
+		m_last_update_tick = s_current_tick;
 	}
-	else if ( updated_last_tick() )
+	else if ( updated_last_tick() && this == s_current_hover )
 	{
 		on_hover_off();
 	}
@@ -493,7 +496,7 @@ void Component::render_regular_components( Graphics &gfx,
 {
 	// if this Component is not visible (except if it's the root which is made invisible) then nothing to render
 	// world_space & top_most components will be rendered separately later
-	if ( ( !m_is_visible && m_parent != nullptr ) || is_world_space() || is_top_most() )
+	if ( ( !m_is_visible && m_parent != nullptr ) /*|| is_world_space() || is_top_most()*/ )
 	{
 		return;
 	}
@@ -586,17 +589,9 @@ void Component::force_hover( Component *comp,
 
 bool Component::has_current_hover( const Point &input_pos ) const noexcept
 {
-	if ( this == s_current_hover || this == s_root )
-	{
-		return true;
-	}
-
-	if ( !can_handle_hover() )
-	{
-		return false;
-	}
-
-	return ( m_is_visible || m_update_when_not_visible ) && is_interactive() && is_point_inside( input_pos );
+	return can_handle_hover() ?
+		is_point_inside( input_pos ) :
+		false;
 }
 
 bool Component::is_current_hover_over_any_child() const noexcept
@@ -1200,62 +1195,37 @@ int Component::get_next_id() const noexcept
 	return s_num_components;
 }
 
-void Component::on_lmb_up( const float dt,
-	const Point &input_pos )
-{
-	if ( !can_handle_press() )
-	{
-		return;
-	}
-
-	if ( !is_point_inside( input_pos ) )
-	{
-		return;
-	}
-
-	// as the children are naturally rendered on top of the parent check whether any of the children want to handle this event before this gets a chance to do so
-	for ( auto &child : m_children )
-	{
-		child->on_lmb_up( dt, input_pos );
-	}
-}
-
 void Component::on_lmb_down( const float dt,
 	const Point &input_pos )
 {
-	if ( !can_handle_press() )
-	{
-		return;
-	}
-
-	if ( !is_point_inside( input_pos ) )
-	{
-		return;
-	}
-
+	// as the children are naturally rendered on top of the parent check whether any of the children want to handle this event before this gets a chance to do so
 	for ( auto &child : m_children )
 	{
 		child->on_lmb_down( dt, input_pos );
 	}
+
+	if ( !can_handle_press() || !is_point_inside( input_pos ) )
+	{
+		return;
+	}
+
+	// do stuff
 }
 
-void Component::on_rmb_up( const float dt,
+void Component::on_rmb_down( const float dt,
 	const Point &input_pos )
 {
-	if ( !can_handle_press() )
-	{
-		return;
-	}
-
-	if ( !is_point_inside( input_pos ) )
-	{
-		return;
-	}
-
 	for ( auto &child : m_children )
 	{
-		child->on_rmb_up( dt, input_pos );
+		child->on_rmb_down( dt, input_pos );
 	}
+
+	if ( !can_handle_press() || !is_point_inside( input_pos ) )
+	{
+		return;
+	}
+
+	// do stuff
 }
 
 bool Component::validate_name( const std::string &name )
@@ -1272,12 +1242,14 @@ bool Component::validate_name( const std::string &name )
 
 bool Component::can_handle_hover() const noexcept
 {
-	return is_interactive() && ( m_is_visible || m_update_when_not_visible ) && ( s_current_hover != s_last_hover );
+	return this == s_root ||
+		( is_interactive() && ( m_is_visible || m_update_when_not_visible ) && ( s_last_hover == nullptr || s_current_hover != s_last_hover ) );
 }
 
 bool Component::can_handle_press() const noexcept
 {
-	return is_enabled() && is_interactive() && ( m_is_visible || m_update_when_not_visible );
+	return this == s_root ||
+		is_enabled() && ( m_is_visible || m_update_when_not_visible );
 }
 
 void Component::on_hover( const float dt,
@@ -1293,6 +1265,7 @@ void Component::on_hover( const float dt,
 void Component::on_hover_off()
 {
 	s_last_hover = s_current_hover;
+	s_current_hover = nullptr;
 	m_last_update_tick = 0;
 
 	auto &reportingNexus = ReportingNexus::getInstance();

@@ -28,7 +28,7 @@ BlendState::BlendState( Graphics &gfx,
 	//blendStateDescRTSlot.SrcBlendAlpha = D3D11_BLEND_ONE;		// whether to blend the alpha channel values as well
 	//blendStateDescRTSlot.DestBlendAlpha = D3D11_BLEND_ZERO;	// otherwise only blend the RGB channel values
 	//blendStateDescRTSlot.BlendOpAlpha = D3D11_BLEND_OP_ADD;
-	//blendStateDescRTSlot.RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;	// per-bit targeting of specific channels to blend
+	//blendStateDescRTSlot.RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL; /*(0x0f)*/	// per-bit targeting of specific channels to blend
 
 	if ( blendFactors )
 	{
@@ -74,7 +74,6 @@ BlendState::BlendState( Graphics &gfx,
 			blendStateDescRTSlot.SrcBlend = D3D11_BLEND_SRC_ALPHA;
 			blendStateDescRTSlot.DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
 			blendStateDescRTSlot.SrcBlendAlpha = D3D11_BLEND_ZERO;
-			blendStateDescRTSlot.RenderTargetWriteMask = 0x0f;
 			break;
 		}
 		case AlphaToCoverage:

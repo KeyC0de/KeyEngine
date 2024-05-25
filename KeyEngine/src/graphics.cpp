@@ -220,7 +220,7 @@ Graphics::Graphics( const HWND hWnd,
 	// Create Renderer
 	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{
-		m_pRenderer = std::make_unique<ren::Renderer3d>( *this, false, 4, 3.0f );
+		m_pRenderer = std::make_unique<ren::Renderer3d>( *this, true, 4, 3.0f );
 		m_pRenderer3d = dynamic_cast<ren::Renderer3d*>( m_pRenderer.get() );
 	}
 	else
@@ -302,21 +302,28 @@ void Graphics::resize( unsigned newWidth,
 		{
 			m_pBackBufferDsv->clean( *this );
 		}
-		if ( m_pOffscreenRtv->rtv().use_count() > 0 )
+
+		if ( m_pRenderer->isUsingOffscreenRendering() )
 		{
-			m_pOffscreenRtv->rtv()->clean( *this );
-		}
-		if ( m_pOffscreenDsv->dsv().use_count() > 0 )
-		{
-			m_pOffscreenDsv->dsv()->clean( *this );
+			if ( m_pOffscreenRtv->rtv().use_count() > 0 )
+			{
+				m_pOffscreenRtv->rtv()->clean( *this );
+			}
+			if ( m_pOffscreenDsv->dsv().use_count() > 0 )
+			{
+				m_pOffscreenDsv->dsv()->clean( *this );
+			}
 		}
 
 		m_pBackBufferRtv.reset();
 		m_pBackBufferDsv.reset();
-		m_pOffscreenRtv->rtv().reset();
-		m_pOffscreenRtv.reset();
-		m_pOffscreenDsv->dsv().reset();
-		m_pOffscreenDsv.reset();
+		if ( m_pRenderer->isUsingOffscreenRendering() )
+		{
+			m_pOffscreenRtv->rtv().reset();
+			m_pOffscreenRtv.reset();
+			m_pOffscreenDsv->dsv().reset();
+			m_pOffscreenDsv.reset();
+		}
 	}
 
 	// resize the RTV:
@@ -327,8 +334,11 @@ void Graphics::resize( unsigned newWidth,
 	// recreate the RTVs & DSVs:
 	getRenderTargetFromBackBuffer();
 	getDepthBufferFromBackBuffer();
-	getRenderTargetOffscreen( 0u, RenderTargetViewMode::DefaultRT );
-	getDepthBufferOffscreen( 0u, DepthStencilViewMode::DefaultDS );
+	if ( m_pRenderer->isUsingOffscreenRendering() )
+	{
+		getRenderTargetOffscreen( 0u, RenderTargetViewMode::DefaultRT );
+		getDepthBufferOffscreen( 0u, DepthStencilViewMode::DefaultDS );
+	}
 
 #if defined _DEBUG && !defined NDEBUG
 	// Assert that window width/height is equal to swap-chain width/height

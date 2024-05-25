@@ -266,11 +266,11 @@
       <FileName>inc\binder.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ren::LambertianPass" Collapsed="true">
+  <Class Name="ren::OpaquePass" Collapsed="true">
     <Position X="24" Y="28" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAAAEAAAAAAAAAAAAAAAAAAAAAEQAAAAA=</HashCode>
-      <FileName>inc\lambertian_pass.h</FileName>
+      <FileName>inc\opaque_pass.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ren::ILinker" Collapsed="true">

@@ -34,26 +34,26 @@ Sphere::Sphere( Graphics &gfx,
 	setMeshId();
 
 	{
-		Effect lambertian{rch::lambert, "lambertian", true};
+		Effect opaque{rch::opaque, "opaque", true};
 
 		auto pvs = VertexShader::fetch( gfx, "flat_vs.cso" );
-		lambertian.addBindable( InputLayout::fetch( gfx, sphere.m_vb.getLayout(), *pvs ) );
-		lambertian.addBindable( std::move( pvs ) );
+		opaque.addBindable( InputLayout::fetch( gfx, sphere.m_vb.getLayout(), *pvs ) );
+		opaque.addBindable( std::move( pvs ) );
 
-		lambertian.addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
+		opaque.addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
 
 		struct ColorPSCB
 		{
 			dx::XMFLOAT3 color{1.0f, 1.0f, 1.0f};
 			float padding = 0.0f;
 		} colorCb;
-		lambertian.addBindable( PixelShaderConstantBuffer<ColorPSCB>::fetch( gfx, colorCb, 0u ) );
+		opaque.addBindable( PixelShaderConstantBuffer<ColorPSCB>::fetch( gfx, colorCb, 0u ) );
 
-		lambertian.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
+		opaque.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
 
-		lambertian.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
+		opaque.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
 
-		addEffect( std::move( lambertian ) );
+		addEffect( std::move( opaque ) );
 	}
 }
 

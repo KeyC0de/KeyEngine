@@ -218,7 +218,8 @@
     <ClCompile Include="src\reporter_access.cpp" />
     <ClCompile Include="src\imgui_visitors.cpp" />
     <ClCompile Include="src\ui_pass.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="src\camera_frustum.cpp" />
     <ClCompile Include="src\fullscreen_pass.cpp" />
@@ -230,7 +231,7 @@
     <ClCompile Include="src\index_buffer.cpp" />
     <ClCompile Include="src\input_layout.cpp" />
     <ClCompile Include="src\job.cpp" />
-    <ClCompile Include="src\lambertian_pass.cpp" />
+    <ClCompile Include="src\opaque_pass.cpp" />
     <ClCompile Include="src\light_source.cpp" />
     <ClCompile Include="src\light_source_shadow_vscb.cpp" />
     <ClCompile Include="src\material_loader.cpp" />
@@ -322,7 +323,8 @@
     <ClCompile Include="src\transparent_pass.cpp" />
     <ClCompile Include="src\triangle_mesh.cpp" />
     <ClCompile Include="src\ui_component.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="src\utils.cpp" />
     <ClCompile Include="src\util_exception.cpp" />
@@ -424,7 +426,7 @@
     <ClInclude Include="inc\index_buffer.h" />
     <ClInclude Include="inc\input_layout.h" />
     <ClInclude Include="inc\job.h" />
-    <ClInclude Include="inc\lambertian_pass.h" />
+    <ClInclude Include="inc\opaque_pass.h" />
     <ClInclude Include="inc\light_source.h" />
     <ClInclude Include="inc\light_source_shadow_vscb.h" />
     <ClInclude Include="inc\material_loader.h" />

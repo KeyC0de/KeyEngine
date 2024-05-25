@@ -5,13 +5,6 @@
 #include <string>
 
 
-namespace gui
-{
-
-class UIPass;
-
-}
-
 class Graphics;
 class IRenderTargetView;
 class IDepthStencilView;
@@ -32,18 +25,17 @@ class IBinder;
 
 class Renderer
 {
-	bool m_bUsesOffscreen;
 	bool m_bValidatedPasses = false;
 	std::vector<std::unique_ptr<IPass>> m_passes;
 	std::vector<std::unique_ptr<IBinder>> m_globalBinders;
 	std::vector<std::unique_ptr<ILinker>> m_globalLinkers;
 protected:
+	bool m_bUsesOffscreen;
 	std::unique_ptr<IPass> m_pFinalPostProcessPass;
-	//std::unique_ptr<gui::UIPass> m_pUiPass;
 	std::shared_ptr<IRenderTargetView> m_pRtv;
 	std::shared_ptr<IDepthStencilView> m_pDsv;
 public:
-	Renderer( Graphics &gfx, bool drawToOffscreen );
+	Renderer( Graphics &gfx, const bool drawToOffscreen );
 	virtual ~Renderer() noexcept;
 
 	void run( Graphics &gfx ) cond_noex;
@@ -87,11 +79,13 @@ public:
 	};
 	KernelType m_kernelType;
 public:
-	Renderer3d( Graphics &gfx, bool bDrawToOffscreen, const int radius, const float sigma, KernelType kernelType = Gauss );
+	Renderer3d( Graphics &gfx, const bool bDrawToOffscreen, const int radius, const float sigma, const KernelType kernelType = Gauss );
 
 	void recreate( Graphics &gfx ) override;
 	void displayImguiWidgets( Graphics &gfx ) noexcept;
 	void dumpShadowMap( Graphics &gfx, const std::string &path );
+	//	\function	setActiveCamera	||	\date	2022/05/24 17:10
+	//	\brief	binds active camera to all Passes that need it
 	void setActiveCamera( const Camera &cam );
 	void setShadowCamera( const Camera &cam, const bool bEnable );
 private:

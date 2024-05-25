@@ -289,7 +289,7 @@
     <ClCompile Include="src\horizontal_blur_pass.cpp">
       <Filter>engine\vfx\pass</Filter>
     </ClCompile>
-    <ClCompile Include="src\lambertian_pass.cpp">
+    <ClCompile Include="src\opaque_pass.cpp">
       <Filter>engine\vfx\pass</Filter>
     </ClCompile>
     <ClCompile Include="src\pass.cpp">
@@ -987,7 +987,7 @@
     <ClInclude Include="inc\horizontal_blur_pass.h">
       <Filter>engine\vfx\pass</Filter>
     </ClInclude>
-    <ClInclude Include="inc\lambertian_pass.h">
+    <ClInclude Include="inc\opaque_pass.h">
       <Filter>engine\vfx\pass</Filter>
     </ClInclude>
     <ClInclude Include="inc\pass.h">

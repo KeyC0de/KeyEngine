@@ -3,7 +3,6 @@
 #include "primitive_topology.h"
 #include "binder.h"
 #include "linker.h"
-#include "camera.h"
 #include "texture_sampler_state.h"
 #include "rasterizer_state.h"
 #include "render_target.h"
@@ -41,7 +40,7 @@ SkyPass::SkyPass( Graphics &gfx,
 	const auto skyboxFilepath = std::string{"assets/textures/skybox/"} + SettingsManager::getInstance().getSettings().sSkyboxFileName;
 	addPassBindable( std::make_shared<CubeTexture>( gfx, skyboxFilepath, 0u ) );
 	addPassBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Trilinear, TextureSamplerState::AddressMode::Wrap ) );
-	addPassBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::DepthEquals1 ) );
+	addPassBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::DepthReadOnlyEquals1StencilOff ) );
 	addPassBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Both ) );
 	addPassBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 	addPassBindable( std::make_shared<SkyVSCB>( gfx ) );
@@ -72,17 +71,10 @@ SkyPass::SkyPass( Graphics &gfx,
 	addLinker( RenderSurfaceLinker<IDepthStencilView>::make( "depthStencil", m_pDsv ) );
 }
 
-void SkyPass::setActiveCamera( const Camera &cam ) noexcept
-{
-	m_pActiveCamera = &cam;
-}
-
 void SkyPass::run( Graphics &gfx ) const cond_noex
 {
 	// no need to inherit from RenderQueuePass to add a Job for a single "special" object
-	ASSERT( m_pActiveCamera, "SkyPass - Main camera not specified (null)!" );
 	unsigned nIndices;
-	m_pActiveCamera->makeActive( gfx, false );
 	if ( m_bUseSphere )
 	{
 		m_pSphereVb->bind( gfx );

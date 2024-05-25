@@ -11,6 +11,7 @@
 //#include <xapofx.h>
 #include <x3daudio.h>
 #include "non_copyable.h"
+#include "reporter_listener.h"
 
 
 //============================================================
@@ -154,4 +155,18 @@ public:
 	//	\brief	instructs the sound manager to play the sound on free channel(s)
 	void play( const float volume = 1.0f );
 	void stop();
+};
+
+
+struct UISoundEvent;
+
+class SoundPlayer
+	: public IListener<UISoundEvent>
+{
+private:
+	SoundPlayer();
+public:
+	static SoundPlayer& getInstance();
+
+	void notify( const UISoundEvent &event ) override;
 };

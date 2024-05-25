@@ -33,7 +33,7 @@ CameraFrustum::CameraFrustum( Graphics &gfx,
 	// Draw the frustum with a dimmer color for the pixels that are occluded.
 	// How? By leveraging the depth stencil modes
 	// We draw the frustum two times
-	// 1. normal lambertian
+	// 1. normal opaque
 	// 2. DepthReversed mode and another color (dimmer) - only the occluded part of the frustum gets drawn
 	{
 		Effect front{rch::wireframe, "wireframe", true};
@@ -65,7 +65,7 @@ CameraFrustum::CameraFrustum( Graphics &gfx,
 
 		struct ColorPSCB2
 		{
-			dx::XMFLOAT3 color{0.15f, 0.08f, 0.08f};
+			dx::XMFLOAT3 materialColor{0.15f, 0.08f, 0.08f};
 			float padding = 0.0f;
 		} colorPscb;
 		occluded.addBindable( PixelShaderConstantBuffer<ColorPSCB2>::fetch( gfx, colorPscb, 0u ) );

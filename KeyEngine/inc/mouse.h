@@ -114,8 +114,8 @@ class Mouse final
 		}
 	};
 
-	int m_x = 0;
-	int m_y = 0;
+	int m_x = -1;
+	int m_y = -1;
 	bool m_bLmbPressed = false;
 	bool m_bRmbPressed = false;
 	bool m_bMmbPressed = false;

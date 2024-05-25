@@ -1,6 +1,5 @@
 #pragma once
 
-#include <memory>
 #include "render_queue_pass.h"
 
 
@@ -10,15 +9,15 @@ class Camera;
 namespace ren
 {
 
-class LambertianPass
+class OpaquePass
 	: public RenderQueuePass
 {
 	const Camera *m_pActiveCamera = nullptr;
 public:
-	LambertianPass( Graphics &gfx, const std::string &name );
+	OpaquePass( Graphics &gfx, const std::string &name );
 
-	void setActiveCamera( const Camera &cam ) noexcept;
 	void run( Graphics &gfx ) const cond_noex override;
+	void setActiveCamera( const Camera &cam ) noexcept;
 };
 
 

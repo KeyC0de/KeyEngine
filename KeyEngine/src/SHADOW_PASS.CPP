@@ -13,6 +13,7 @@
 #include "light_source_shadow_vscb.h"
 #include "texture_desc.h"
 #include "texture_sampler_state.h"
+#include "blend_state.h"
 
 
 namespace ren
@@ -26,6 +27,8 @@ ShadowPass::ShadowPass( Graphics &gfx,
 	m_pLightVcb{std::make_shared<PointLightSourceShadowVSCB>( gfx, 1u )}		// #TODO: currently supporting 1 shadow casting light source, for multiple ones (gotta have an upper limit too) supply the right slot to PointLightSourceShadowVSCB and also iterate through them appropriately below, @ ShadowPass::run, @ ShadowPass::setShadowCamera(cam, bAddOrRemove), also careful which slot # you pass here (must agree with PointLightSourceShadowTransformVSCB : register(b1) in shadowing_vs.hlsli)
 {
 	s_shadowMapResolution = shadowMapRez;
+
+	addPassBindable( BlendState::fetch( gfx, BlendState::Mode::NoBlend, 0u ) );
 
 	addPassBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 

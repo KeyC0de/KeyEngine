@@ -12,8 +12,8 @@ ThreadPoolJ::ThreadPoolJ( const std::size_t nthreads,
 	}
 }
 
-ThreadPoolJ& ThreadPoolJ::instance( const std::size_t nThreads,
-	const bool bEnabled )
+ThreadPoolJ& ThreadPoolJ::getInstance( const std::size_t nThreads /*= 4u*/,
+	const bool bEnabled /*= true*/ )
 {
 	std::unique_lock<std::recursive_mutex> lg{s_mu};
 	if ( s_pInstance == nullptr )
