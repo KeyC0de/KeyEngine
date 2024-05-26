@@ -1,10 +1,11 @@
 #include "terrain.h"
+#include "vertex_buffer.h"
 #include "index_buffer.h"
+#include "primitive_topology.h"
 #include "geometry.h"
 #include "input_layout.h"
 #include "pixel_shader.h"
 #include "transform_vscb.h"
-#include "vertex_buffer.h"
 #include "vertex_shader.h"
 #include "texture.h"
 #include "texture_sampler_state.h"
@@ -49,6 +50,7 @@ Terrain::Terrain( Graphics &gfx,
 
 	m_pVertexBuffer = VertexBuffer::fetch( gfx, geometryTag, planarGrid.m_vb );
 	m_pIndexBuffer = IndexBuffer::fetch( gfx, geometryTag, planarGrid.m_indices );
+	m_pPrimitiveTopology = PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST );
 
 	createAabb( planarGrid.m_vb );
 	setMeshId();
@@ -57,6 +59,8 @@ Terrain::Terrain( Graphics &gfx,
 	{// opaque reflectance effect
 		Effect opaque{rch::opaque, "opaque", false};
 		opaque.addBindable( transformVscb );
+
+		opaque.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
 		opaque.addBindable( Texture::fetch( gfx, "assets/models/brick_wall/brick_wall_diffuse.jpg", 0u ) );
 
@@ -83,6 +87,8 @@ Terrain::Terrain( Graphics &gfx,
 	{//shadow map effect
 		Effect shadowMap{rch::shadow, "shadowMap", false};
 		shadowMap.addBindable( transformVscb );
+
+		shadowMap.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
 		shadowMap.addBindable( InputLayout::fetch( gfx, planarGrid.m_vb.getLayout(), *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 
@@ -114,6 +120,8 @@ Terrain::Terrain( Graphics &gfx,
 	}
 	{// wireframe effect
 		Effect wireframe{rch::wireframe, "wireframe", true};
+
+		wireframe.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_LINELIST ) );
 
 		auto pVs = VertexShader::fetch( gfx, "flat_vs.cso" );
 		wireframe.addBindable( InputLayout::fetch( gfx, m_pVertexBuffer->getLayout(), *pVs ) );

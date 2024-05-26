@@ -1,5 +1,4 @@
 #include "wireframe_pass.h"
-#include "primitive_topology.h"
 #include "binder.h"
 #include "linker.h"
 #include "render_target.h"
@@ -16,8 +15,6 @@ WireframePass::WireframePass( Graphics &gfx,
 	:
 	RenderQueuePass{name}
 {
-	addPassBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_LINELIST ) );
-
 	addPassBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Wireframe, RasterizerState::FaceMode::Front ) );
 	addPassBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::Default ) );
 

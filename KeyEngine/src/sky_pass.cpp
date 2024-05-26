@@ -42,7 +42,6 @@ SkyPass::SkyPass( Graphics &gfx,
 	addPassBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Trilinear, TextureSamplerState::AddressMode::Wrap ) );
 	addPassBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::DepthReadOnlyEquals1StencilOff ) );
 	addPassBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Both ) );
-	addPassBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 	addPassBindable( std::make_shared<SkyVSCB>( gfx ) );
 	addPassBindable( PixelShader::fetch( gfx, "sky_ps.cso" ) );
 	{

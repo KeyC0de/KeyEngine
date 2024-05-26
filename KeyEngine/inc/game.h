@@ -11,6 +11,7 @@
 #include "light_source.h"
 #include "terrain.h"
 #include "plane.h"
+#include "line.h"
 #include "cube.h"
 #include "sphere.h"
 #include "model.h"
@@ -88,6 +89,7 @@ class Sandbox3d
 	bool m_bShowDemoWindow = false;
 #endif
 	Terrain m_terrain{m_mainWindow.getGraphics(), 100, 100, "assets/textures/clouds_blurred.bmp", 1.0f, { util::toRadians( 90.0f ), 0.0f, 0.0f}, { 0.0f, -100.0f, 0.0f}};
+	Line m_debugLine1{m_mainWindow.getGraphics(), 4.0f, {0, 0, 0}, {10.0f, 10.0f, 6.0f}, {1.0f, 0.0f, 0.0f, 1.0f}};
 	Cube m_cube1{m_mainWindow.getGraphics(), 4.0f, {0, 0, 0}, {10.0f, 5.0f, 6.0f}};
 	Cube m_cube2{m_mainWindow.getGraphics(), 1.0f, {0, 0, 0}, {9.9f, 4.9f, 1.4f}, {1.0f, 0.4f, 0.4f, 0.5f}};
 	Cube m_cube3{m_mainWindow.getGraphics(), 1.0f, {0, 0, 0}, {22.0f, 12.0f, 14.0f}};

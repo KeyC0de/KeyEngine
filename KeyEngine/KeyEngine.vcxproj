@@ -215,6 +215,7 @@
     <ClCompile Include="src\dynamic_constant_buffer.cpp" />
     <ClCompile Include="src\dynamic_vertex_buffer.cpp" />
     <ClCompile Include="src\effect.cpp" />
+    <ClCompile Include="src\line.cpp" />
     <ClCompile Include="src\reporter_access.cpp" />
     <ClCompile Include="src\imgui_visitors.cpp" />
     <ClCompile Include="src\ui_pass.cpp">
@@ -411,6 +412,7 @@
     <ClInclude Include="inc\dynamic_constant_buffer.h" />
     <ClInclude Include="inc\dynamic_vertex_buffer.h" />
     <ClInclude Include="inc\effect.h" />
+    <ClInclude Include="inc\line.h" />
     <ClInclude Include="inc\reporter_access.h" />
     <ClInclude Include="inc\imgui_visitors.h" />
     <ClInclude Include="inc\ui_pass.h" />

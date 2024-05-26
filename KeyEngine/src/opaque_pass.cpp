@@ -1,7 +1,6 @@
 #include "opaque_pass.h"
 #include <string>
 #include "camera.h"
-#include "primitive_topology.h"
 #include "binder.h"
 #include "linker.h"
 #include "render_target.h"
@@ -19,8 +18,6 @@ OpaquePass::OpaquePass( Graphics &gfx,
 	:
 	RenderQueuePass{name}
 {
-	addPassBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
-
 	addPassBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::Default ) );
 
 	// TextureSamplerState is set per mesh depending on whether the mesh has a texture

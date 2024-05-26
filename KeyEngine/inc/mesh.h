@@ -7,8 +7,9 @@
 #include "rendering_channel.h"
 
 
-class IndexBuffer;
 class VertexBuffer;
+class IndexBuffer;
+class PrimitiveTopology;
 class Graphics;
 class MaterialLoader;
 class IBindable;
@@ -32,8 +33,9 @@ class Mesh
 protected:
 	unsigned m_meshId = 0u;
 	std::pair<DirectX::XMFLOAT3, DirectX::XMFLOAT3> m_aabb{{0, 0, 0},{0, 0, 0}};	// #TODO: Collision mesh needs to be recalculated if the object is rotated, scaled or animated
-	std::shared_ptr<IndexBuffer> m_pIndexBuffer;
 	std::shared_ptr<VertexBuffer> m_pVertexBuffer;
+	std::shared_ptr<IndexBuffer> m_pIndexBuffer;
+	std::shared_ptr<PrimitiveTopology> m_pPrimitiveTopology;
 	std::vector<Effect> m_effects;
 public:
 #pragma warning( disable : 26495 )

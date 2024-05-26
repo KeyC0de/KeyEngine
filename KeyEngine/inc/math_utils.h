@@ -55,17 +55,21 @@ constexpr T modulus( const T divident,
 	}
 }
 
+#pragma warning( disable : 4244 )
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
 constexpr int ceil( const T val ) noexcept
 {
 	return val + (T)1 - util::modulus( val, (T)1 );
 }
+#pragma warning( default : 4244 )
 
+#pragma warning( disable : 4244 )
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
 constexpr int floor( const T val ) noexcept
 {
 	return val - util::modulus( val, (T)1 );
 }
+#pragma warning( default : 4244 )
 
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
 constexpr int round( const T val ) noexcept

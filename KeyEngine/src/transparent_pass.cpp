@@ -1,6 +1,5 @@
 #include "transparent_pass.h"
 #include "camera.h"
-#include "primitive_topology.h"
 #include "pixel_shader.h"
 #include "vertex_shader.h"
 #include "depth_stencil_state.h"
@@ -16,8 +15,6 @@ TransparentPass::TransparentPass( Graphics &gfx,
 	:
 	RenderQueuePass{name, {}, true}
 {
-	addPassBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
-
 	addPassBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::DepthReadOnlyStencilOff ) );
 
 	// TextureSamplerState is set per mesh depending on whether the mesh has a texture

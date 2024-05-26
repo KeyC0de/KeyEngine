@@ -17,7 +17,7 @@ Job::Job( const Mesh *pMesh, const Effect *pEffect )
 
 void Job::run( Graphics &gfx ) const cond_noex
 {
-	m_pMesh->bind( gfx );		// bind I.B., V.B.
+	m_pMesh->bind( gfx );		// bind P.T., V.B., I.B.
 	m_pEffect->bind( gfx );	// bind other bindables
 	gfx.drawIndexed( m_pMesh->getIndicesCount() );
 	DXGI_GET_QUEUE_INFO( gfx );

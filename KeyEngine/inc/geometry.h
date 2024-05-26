@@ -7,6 +7,7 @@
 
 struct Geometry
 {
+	static TriangleMesh makeLine( const float length = 1.0f / 2.0f, std::optional<ver::VertexInputLayout> layout = {} );
 	static TriangleMesh makeCube( std::optional<ver::VertexInputLayout> layout = {}, const float side = 1.0f / 2.0f );
 	static TriangleMesh makeCubeIndependentFaces( ver::VertexInputLayout layout, const float side = 1.0f / 2.0f );
 	static TriangleMesh makeCubeIndependentFacesTextured();

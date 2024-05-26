@@ -2,6 +2,7 @@
 #include "geometry.h"
 #include "vertex_buffer.h"
 #include "index_buffer.h"
+#include "primitive_topology.h"
 #include "input_layout.h"
 #include "vertex_shader.h"
 #include "transform_vscb.h"
@@ -26,6 +27,7 @@ CameraFrustum::CameraFrustum( Graphics &gfx,
 
 	m_pVertexBuffer = std::make_shared<VertexBuffer>( gfx, g.m_vb );	// we don't share the frustum in the BindableMap because each will be unique
 	m_pIndexBuffer = IndexBuffer::fetch( gfx, s_geometryTag, g.m_indices );
+	m_pPrimitiveTopology = PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_LINELIST );
 
 	createAabb( g.m_vb );
 	setMeshId();
@@ -37,6 +39,8 @@ CameraFrustum::CameraFrustum( Graphics &gfx,
 	// 2. DepthReversed mode and another color (dimmer) - only the occluded part of the frustum gets drawn
 	{
 		Effect front{rch::wireframe, "wireframe", true};
+
+		front.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_LINELIST ) );
 
 		auto pVs = VertexShader::fetch( gfx, "flat_vs.cso" );
 
@@ -56,6 +60,8 @@ CameraFrustum::CameraFrustum( Graphics &gfx,
 	}
 	{
 		Effect occluded{rch::wireframe, "depthReversed", true};
+
+		occluded.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_LINELIST ) );
 
 		auto pvs = VertexShader::fetch( gfx, "flat_vs.cso" );
 

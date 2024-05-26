@@ -127,7 +127,6 @@ void Renderer::reset() noexcept
 		pass->reset();
 	}
 #if defined _DEBUG && !defined NDEBUG
-	// final post process pass doesn't do anything on reset()
 	if ( m_bUsesOffscreen )
 	{
 		m_pFinalPostProcessPass->reset();

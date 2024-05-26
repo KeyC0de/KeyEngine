@@ -1,9 +1,10 @@
 #include "sphere.h"
+#include "vertex_buffer.h"
 #include "index_buffer.h"
+#include "primitive_topology.h"
 #include "input_layout.h"
 #include "pixel_shader.h"
 #include "transform_vscb.h"
-#include "vertex_buffer.h"
 #include "vertex_shader.h"
 #include "rasterizer_state.h"
 #include "geometry.h"
@@ -29,12 +30,15 @@ Sphere::Sphere( Graphics &gfx,
 	const auto geometryTag = s_geometryTag + std::to_string( radius );
 	m_pVertexBuffer = VertexBuffer::fetch( gfx, geometryTag, sphere.m_vb );
 	m_pIndexBuffer = IndexBuffer::fetch( gfx, geometryTag, sphere.m_indices );
+	m_pPrimitiveTopology = PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST );
 
 	createAabb( sphere.m_vb );
 	setMeshId();
 
 	{
 		Effect opaque{rch::opaque, "opaque", true};
+
+		opaque.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
 		auto pvs = VertexShader::fetch( gfx, "flat_vs.cso" );
 		opaque.addBindable( InputLayout::fetch( gfx, sphere.m_vb.getLayout(), *pvs ) );

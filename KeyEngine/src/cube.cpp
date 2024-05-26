@@ -1,10 +1,11 @@
 #include "cube.h"
+#include "vertex_buffer.h"
 #include "index_buffer.h"
+#include "primitive_topology.h"
 #include "geometry.h"
 #include "input_layout.h"
 #include "pixel_shader.h"
 #include "transform_vscb.h"
-#include "vertex_buffer.h"
 #include "vertex_shader.h"
 #include "texture.h"
 #include "texture_sampler_state.h"
@@ -27,7 +28,7 @@ Cube::Cube( Graphics &gfx,
 	const DirectX::XMFLOAT4 &color /*= {1.0f, 0.4f, 0.4f, 1.0f}*/ )
 	:
 	Mesh{{1.0f, 1.0f, 1.0f}, initialRot, initialPos},
-	m_colPcb{color}
+	m_colorPscb{color}
 {
 	auto cube = Geometry::makeCubeIndependentFacesTextured();
 	if ( initialScale != 1.0f )
@@ -44,6 +45,7 @@ Cube::Cube( Graphics &gfx,
 
 	m_pVertexBuffer = VertexBuffer::fetch( gfx, geometryTag, cube.m_vb );
 	m_pIndexBuffer = IndexBuffer::fetch( gfx, geometryTag, cube.m_indices );
+	m_pPrimitiveTopology = PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST );
 
 	createAabb( cube.m_vb );
 	setMeshId();
@@ -54,6 +56,8 @@ Cube::Cube( Graphics &gfx,
 	{// transparent reflectance effect
 		Effect transparent{rch::transparent, "transparent", true};
 		transparent.addBindable( transformVscb );
+
+		transparent.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
 		transparent.addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
 
@@ -84,6 +88,8 @@ Cube::Cube( Graphics &gfx,
 		Effect opaque{rch::opaque, "opaque", true};
 		opaque.addBindable( transformVscb );
 
+		opaque.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
+
 		opaque.addBindable( Texture::fetch( gfx, diffuseTexturePath, 0u ) );
 
 		opaque.addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
@@ -109,6 +115,8 @@ Cube::Cube( Graphics &gfx,
 	{// shadow map effect
 		Effect shadowMap{rch::shadow, "shadowMap", true};
 		shadowMap.addBindable( transformVscb );
+
+		shadowMap.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
 		shadowMap.addBindable( InputLayout::fetch( gfx, cube.m_vb.getLayout(), *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 

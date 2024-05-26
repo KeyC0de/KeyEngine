@@ -1,5 +1,4 @@
 #include "shadow_pass.h"
-#include "primitive_topology.h"
 #include "graphics.h"
 #include "linker.h"
 #include "vertex_shader.h"
@@ -29,8 +28,6 @@ ShadowPass::ShadowPass( Graphics &gfx,
 	s_shadowMapResolution = shadowMapRez;
 
 	addPassBindable( BlendState::fetch( gfx, BlendState::Mode::NoBlend, 0u ) );
-
-	addPassBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
 	addPassBindable( m_pLightVcb );
 	addPassBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::ShadowTS, TextureSamplerState::FilterMode::Trilinear, TextureSamplerState::AddressMode::Border ) );

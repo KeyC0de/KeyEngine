@@ -427,6 +427,7 @@ void Sandbox3d::update( const float dt,
 	//m_pPointLight2->update( gfx, dt, activeCamera.getViewMatrix() );
 
 	m_terrain.update( dt, lerpBetweenFrames );	// #TODO: Mesh::update should actually be doing rendering and Mesh::render() simply submits bindables for rendering, so some reformatting and reorganizing here is definitely due
+	m_debugLine1.update( dt, lerpBetweenFrames );
 	m_cube1.update( dt, lerpBetweenFrames );
 	m_cube2.update( dt, lerpBetweenFrames );
 	m_cube3.update( dt, lerpBetweenFrames );
@@ -460,6 +461,7 @@ void Sandbox3d::render()
 	//m_pPointLight2->render( rch::opaque );
 
 	m_terrain.render();
+	m_debugLine1.render();
 	m_cube1.render( rch::opaque | rch::shadow | rch::blurOutline );
 	m_cube2.render();
 	m_cube3.render();
@@ -503,6 +505,7 @@ void Sandbox3d::test()
 
 	m_terrain.displayImguiWidgets( gfx, "Terrain Base"s );
 
+	m_debugLine1.displayImguiWidgets( gfx, "Debug Line 1"s );
 	m_cube1.displayImguiWidgets( gfx, "Cube 1"s );
 	m_cube2.displayImguiWidgets( gfx, "Cube 2"s );
 	m_cube3.displayImguiWidgets( gfx, "Cube 3"s );
@@ -529,6 +532,7 @@ void Sandbox3d::connectToRenderer( ren::Renderer3d &renderer )
 	//m_pPointLight2->connectEffectsToRenderer( renderer );
 
 	m_terrain.connectEffectsToRenderer( renderer );
+	m_debugLine1.connectEffectsToRenderer( renderer );
 	m_cube1.connectEffectsToRenderer( renderer );
 	m_cube2.connectEffectsToRenderer( renderer );
 	m_cube3.connectEffectsToRenderer( renderer );

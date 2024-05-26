@@ -31,7 +31,7 @@ Plane::Plane( Graphics &gfx,
 	const std::string &diffuseTexturePath /*= "assets/models/brick_wall/brick_wall_diffuse.jpg"*/ )
 	:
 	Mesh{{1.0f, 1.0f, 1.0f}, initialRot, initialPos},
-	m_colPcb{color}
+	m_colorPscb{color}
 {
 	auto plane = Geometry::makePlanarGridTextured( length, width );
 	if ( initialScale != 1.0f )
@@ -43,6 +43,7 @@ Plane::Plane( Graphics &gfx,
 
 	m_pVertexBuffer = VertexBuffer::fetch( gfx, geometryTag, plane.m_vb );
 	m_pIndexBuffer = IndexBuffer::fetch( gfx, geometryTag, plane.m_indices );
+	m_pPrimitiveTopology = PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST );
 
 	createAabb( plane.m_vb );
 	setMeshId();
@@ -52,6 +53,8 @@ Plane::Plane( Graphics &gfx,
 	{// transparent reflectance effect
 		Effect transparent{rch::transparent, "transparent", true};
 		transparent.addBindable( transformVscb );
+
+		transparent.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
 		auto pVs = VertexShader::fetch( gfx, "plane_vs.cso" );
 		transparent.addBindable( InputLayout::fetch( gfx, plane.m_vb.getLayout(), *pVs ) );
@@ -77,7 +80,7 @@ Plane::Plane( Graphics &gfx,
 		{
 			transparent.addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
 
-			transparent.addBindable( std::make_shared<PixelShaderConstantBuffer<ColorPSCB>>( gfx, m_colPcb, 0u ) );
+			transparent.addBindable( std::make_shared<PixelShaderConstantBuffer<ColorPSCB>>( gfx, m_colorPscb, 0u ) );
 		}
 
 		transparent.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Both ) );
@@ -90,6 +93,8 @@ Plane::Plane( Graphics &gfx,
 	{// opaque reflectance effect
 		Effect opaque{rch::opaque, "opaque", true};
 		opaque.addBindable( transformVscb );
+
+		opaque.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
 		opaque.addBindable( Texture::fetch( gfx, diffuseTexturePath, 0u ) );
 
@@ -116,6 +121,8 @@ Plane::Plane( Graphics &gfx,
 	{// shadow map effect
 		Effect shadowMap{rch::shadow, "shadowMap", true};
 		shadowMap.addBindable( transformVscb );
+
+		shadowMap.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
 		shadowMap.addBindable( InputLayout::fetch( gfx, plane.m_vb.getLayout(), *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 

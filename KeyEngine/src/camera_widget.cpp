@@ -2,6 +2,7 @@
 #include "geometry.h"
 #include "vertex_buffer.h"
 #include "index_buffer.h"
+#include "primitive_topology.h"
 #include "input_layout.h"
 #include "pixel_shader.h"
 #include "transform_vscb.h"
@@ -27,12 +28,15 @@ CameraWidget::CameraWidget( Graphics &gfx,
 	// we don't have to duplicate the CameraWidget buffers - they're all the same
 	m_pVertexBuffer = VertexBuffer::fetch( gfx, s_geometryTag, g.m_vb );
 	m_pIndexBuffer = IndexBuffer::fetch( gfx, s_geometryTag, g.m_indices );
+	m_pPrimitiveTopology = PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_LINELIST );
 
 	createAabb( g.m_vb );
 	setMeshId();
 
 	{
 		Effect wireframe{rch::wireframe, "wireframe", true};
+
+		wireframe.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_LINELIST ) );
 
 		auto pVs = VertexShader::fetch( gfx, "flat_vs.cso" );
 		wireframe.addBindable( InputLayout::fetch( gfx, m_pVertexBuffer->getLayout(), *pVs ) );

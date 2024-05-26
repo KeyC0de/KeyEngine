@@ -1,6 +1,7 @@
 #include "mesh.h"
-#include "index_buffer.h"
 #include "vertex_buffer.h"
+#include "index_buffer.h"
+#include "primitive_topology.h"
 #include "material_loader.h"
 #include "d3d_utils.h"
 #include "camera_manager.h"
@@ -25,6 +26,7 @@ Mesh::Mesh( Graphics &gfx,
 {
 	m_pVertexBuffer = mat.makeVertexBuffer( gfx, aimesh, initialScale );
 	m_pIndexBuffer = mat.makeIndexBuffer( gfx, aimesh );
+	m_pPrimitiveTopology = PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST );
 
 	for ( auto &effect : mat.getEffects() )
 	{
@@ -94,8 +96,9 @@ void Mesh::addEffect( Effect effect ) noexcept
 
 void Mesh::bind( Graphics &gfx ) const cond_noex
 {
-	m_pIndexBuffer->bind( gfx );
 	m_pVertexBuffer->bind( gfx );
+	m_pIndexBuffer->bind( gfx );
+	m_pPrimitiveTopology->bind( gfx );
 }
 
 void Mesh::accept( IImGuiEffectVisitor &ev )

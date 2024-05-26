@@ -385,6 +385,9 @@
     <ClCompile Include="src\rectangle.cpp">
       <Filter>engine\vfx\ui</Filter>
     </ClCompile>
+    <ClCompile Include="src\line.cpp">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="third_party\imgui\imconfig.h">
@@ -1133,6 +1136,9 @@
     </ClInclude>
     <ClInclude Include="inc\rectangle.h">
       <Filter>engine\vfx\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\line.h">
+      <Filter>engine\vfx\renderables</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

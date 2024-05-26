@@ -1,11 +1,12 @@
 #include "material_loader.h"
 #include "graphics.h"
 #include "effect.h"
+#include "vertex_buffer.h"
 #include "index_buffer.h"
+#include "primitive_topology.h"
 #include "input_layout.h"
 #include "pixel_shader.h"
 #include "transform_vscb.h"
-#include "vertex_buffer.h"
 #include "vertex_shader.h"
 #include "texture.h"
 #include "texture_sampler_state.h"
@@ -36,8 +37,11 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 
 	if ( lightingModel == LightingModel::BlinnPhong )
 	{
+		// #TODO: add transparent effect
 		{// opaque effect
 			Effect opaque{rch::opaque, "opaque", true};
+
+			opaque.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
 			shaderFileName = "phong_";
 			aiString textureFileName;
@@ -142,6 +146,8 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 		}
 		{// shadow map effect
 			Effect shadowMap{rch::shadow, "shadowMap", true};
+
+			shadowMap.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
 			shadowMap.addBindable( InputLayout::fetch( gfx, m_vertexLayout, *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 			shadowMap.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );

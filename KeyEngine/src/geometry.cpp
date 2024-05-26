@@ -10,6 +10,30 @@
 
 namespace dx = DirectX;
 
+TriangleMesh Geometry::makeLine( const float length /*=  1.0f / 2.0f*/,
+	std::optional<ver::VertexInputLayout> layout /*= {}*/ )
+{
+	using Type = ver::VertexInputLayout::ILEementType;
+
+	if ( !layout )
+	{
+		layout = ver::VertexInputLayout{};
+		layout->add( Type::Position3D );
+	}
+
+	ver::VBuffer vb{std::move( *layout ), 2u};
+	vb[0].getElement<Type::Position3D>() = {-length, -length, -length};
+	vb[1].getElement<Type::Position3D>() = {length, length, length};
+
+	return
+	{
+		vb,
+		{
+			0, 1, 1,
+		}
+	};
+}
+
 TriangleMesh Geometry::makeCube( std::optional<ver::VertexInputLayout> layout,
 	const float side/* = 1.0f / 2.0f*/ )
 {
@@ -40,7 +64,7 @@ TriangleMesh Geometry::makeCube( std::optional<ver::VertexInputLayout> layout,
 			2, 6, 3, 3, 6, 7,
 			4, 5, 7, 4, 7, 6,
 			0, 4, 2, 2, 4, 6,
-			0, 1, 4, 1, 5, 4
+			0, 1, 4, 1, 5, 4,
 		}
 	};
 }
@@ -85,7 +109,7 @@ TriangleMesh Geometry::makeCubeIndependentFaces( ver::VertexInputLayout layout,
 			8,	10, 9,	10, 11,	9,
 			12, 13, 15, 12, 15, 14,
 			16, 17, 18, 18, 17, 19,
-			20, 23, 21, 20, 22, 23
+			20, 23, 21, 20, 22, 23,
 		}
 	};
 }
