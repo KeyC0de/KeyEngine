@@ -73,7 +73,7 @@
     <ClCompile Include="src\sysmetrics.cpp">
       <Filter>engine\os\win</Filter>
     </ClCompile>
-    <ClCompile Include="src\sound_manager.cpp">
+    <ClCompile Include="src\key_sound.cpp">
       <Filter>engine\sfx</Filter>
     </ClCompile>
     <ClCompile Include="src\signal_handling.cpp">
@@ -717,7 +717,7 @@
     <ClInclude Include="inc\sysmetrics.h">
       <Filter>engine\os\win</Filter>
     </ClInclude>
-    <ClInclude Include="inc\sound_manager.h">
+    <ClInclude Include="inc\key_sound.h">
       <Filter>engine\sfx</Filter>
     </ClInclude>
     <ClInclude Include="inc\key_wrl.h">

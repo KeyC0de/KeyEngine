@@ -17,6 +17,7 @@ class SettingsManager final
 	{
 		// defaults:
 		int version = 0;
+		unsigned nThreads = 4;
 		std::string_view m_game = "Sandbox3d";
 		float fGameSpeed = 1.0f;
 		bool bVSync = true;

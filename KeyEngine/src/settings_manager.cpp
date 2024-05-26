@@ -28,7 +28,8 @@ void SettingsManager::loadFromFile( const std::string &filePath )
 		std::terminate();
 	}
 
-	m_settings.version = ini.GetInteger( "Protocol", "Version", -1 );
+	m_settings.version = ini.GetInteger( "System", "Version", -1 );
+	m_settings.nThreads = (unsigned) ini.GetInteger( "System", "nThreads", 4 );
 
 	if ( ini.GetInteger( "GameSelection", "Sandbox3d", 0 ) )
 	{

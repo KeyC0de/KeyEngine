@@ -17,7 +17,7 @@
 #include "non_copyable.h"
 #include "settings_manager.h"
 #include "game_state.h"
-#include "sound_manager.h"
+#include "key_sound.h"
 #include "rectangle.h"
 #include "imgui_manager.h"
 #include "arkanoid/ball.h"

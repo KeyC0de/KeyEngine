@@ -11,7 +11,7 @@
 #include "signal_handling.h"
 #include "jthread_pool.h"
 //#include "bmp_loader.h"
-#include "sound_manager.h"
+#include "key_sound.h"
 
 #ifndef NO_DUMPS
 #	include "dumpling.h"
@@ -117,10 +117,10 @@ int WINAPI wWinMain( _In_ HINSTANCE hinstance,
 #ifndef NO_DUMPS
 	//__except ( generateDump( GetExceptionInformation(), g_dumpFile ) )
 	//{
-	g_windowsExceptionOccurred = true;
-	MessageBoxW( nullptr, L"Windows SEH Exception!", L"Dump generated", MB_ICONERROR | MB_OK );
+	//g_windowsExceptionOccurred = true;
+	//MessageBoxW( nullptr, L"Windows SEH Exception!", L"Dump generated", MB_ICONERROR | MB_OK );
 
-	exitCode = SEH_EXCEPTION_EXIT;
+	//exitCode = SEH_EXCEPTION_EXIT;
 	//}
 #endif // !NO_DUMPS
 	//__finally
@@ -150,7 +150,9 @@ void firstly()
 
 	std::signal( SIGINT, installSigintHandler );
 
-	ThreadPoolJ &threadPool = ThreadPoolJ::getInstance( 4u, true );
+	// initialize Singleton systems
+	SettingsManager &settingsMan = SettingsManager::getInstance();
+	ThreadPoolJ &threadPool = ThreadPoolJ::getInstance( settingsMan.getSettings().nThreads, true );
 	auto &soundPlayer = SoundPlayer::getInstance();
 }
 

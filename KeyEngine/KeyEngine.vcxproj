@@ -299,7 +299,7 @@
     <ClCompile Include="src\sky_pass.cpp" />
     <ClCompile Include="src\solid_outline_draw_pass.cpp" />
     <ClCompile Include="src\solid_outline_mask_pass.cpp" />
-    <ClCompile Include="src\sound_manager.cpp" />
+    <ClCompile Include="src\key_sound.cpp" />
     <ClCompile Include="src\sphere.cpp" />
     <ClCompile Include="src\sprite.cpp" />
     <ClCompile Include="src\string_buffer.cpp" />
@@ -528,7 +528,7 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="inc\settings_manager.h" />
     <ClInclude Include="inc\signal_handling.h" />
-    <ClInclude Include="inc\sound_manager.h" />
+    <ClInclude Include="inc\key_sound.h" />
     <ClInclude Include="inc\sysmetrics.h" />
     <ClInclude Include="inc\utils.h" />
     <ClInclude Include="inc\window.h" />

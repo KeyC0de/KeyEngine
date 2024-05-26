@@ -970,14 +970,14 @@
     <Position X="151" Y="70.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAQAAAAAAAAIAAQAABAIEQAgICAAQAgAAgAQAAABA=</HashCode>
-      <FileName>inc\sound_manager.h</FileName>
+      <FileName>inc\key_sound.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Sound" Collapsed="true">
     <Position X="149.25" Y="70.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAAACIBQAQAAAAAAAAAAEAAAACiAAAABAIgAAAAEAQ=</HashCode>
-      <FileName>inc\sound_manager.h</FileName>
+      <FileName>inc\key_sound.h</FileName>
     </TypeIdentifier>
   </Class>
   <Struct Name="ColorBGRA" Collapsed="true">

@@ -11,7 +11,7 @@
 #include "assertions_console.h"
 #include "settings_manager.h"
 #include "mesh.h"
-#include "sound_manager.h"
+#include "key_sound.h"
 #include "d3d_utils.h"
 
 #define m_current_state m_states[m_current_state_index]
