@@ -412,6 +412,7 @@
     <ClInclude Include="inc\dynamic_constant_buffer.h" />
     <ClInclude Include="inc\dynamic_vertex_buffer.h" />
     <ClInclude Include="inc\effect.h" />
+    <ClInclude Include="inc\lighting_mode.h" />
     <ClInclude Include="inc\line.h" />
     <ClInclude Include="inc\reporter_access.h" />
     <ClInclude Include="inc\imgui_visitors.h" />

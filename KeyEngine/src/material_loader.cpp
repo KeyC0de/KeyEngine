@@ -14,6 +14,7 @@
 #include "constant_buffer_ex.h"
 #include "rendering_channel.h"
 #include "assertions_console.h"
+#include "lighting_mode.h"
 
 
 // #TODO: PBR Metallic Renderer (UE4 based)
@@ -21,8 +22,7 @@ namespace dx = DirectX;
 
 MaterialLoader::MaterialLoader( Graphics &gfx,
 	const aiMaterial &aimaterial,
-	const std::filesystem::path &modelPath,
-	const LightingModel lightingModel ) cond_noex
+	const std::filesystem::path &modelPath ) cond_noex
 	:
 	m_modelPath{modelPath.string()}
 {
@@ -35,7 +35,7 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 
 	std::string shaderFileName;
 
-	if ( lightingModel == LightingModel::BlinnPhong )
+	if constexpr ( lgh_mode::get() == lgh_mode::LightingMode::BlinnPhong )
 	{
 		// #TODO: add transparent effect
 		{// opaque effect
@@ -201,7 +201,7 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 			m_effects.emplace_back( std::move( solidOutlineDraw ) );
 		}
 	}//BlinnPhong
-	else if ( lightingModel == LightingModel::PBR_UE )
+	if constexpr ( lgh_mode::get() == lgh_mode::LightingMode::PBR_UE )
 	{
 		// #TODO:
 	}

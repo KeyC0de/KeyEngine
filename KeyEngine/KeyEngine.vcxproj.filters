@@ -1140,6 +1140,9 @@
     <ClInclude Include="inc\line.h">
       <Filter>engine\vfx\renderables</Filter>
     </ClInclude>
+    <ClInclude Include="inc\lighting_mode.h">
+      <Filter>engine\vfx</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\resources\tray_graffiti.ico">

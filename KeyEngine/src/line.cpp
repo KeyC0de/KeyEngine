@@ -39,7 +39,6 @@ Line::Line( Graphics &gfx,
 		line.transform( dx::XMMatrixRotationRollPitchYaw( initialRot.x, initialRot.y, initialRot.z ) );
 	}
 
-	//line.setFlatShadedIndependentNormals();
 	const auto geometryTag = s_geometryTag + std::to_string( length );
 
 	m_pVertexBuffer = VertexBuffer::fetch( gfx, geometryTag, line.m_vb );

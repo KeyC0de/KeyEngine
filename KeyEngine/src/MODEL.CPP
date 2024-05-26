@@ -48,7 +48,7 @@ Model::Model( Graphics &gfx,
 	materials.reserve( paiScene->mNumMaterials );
 	for ( size_t i = 0; i < paiScene->mNumMaterials; ++i )
 	{
-		materials.emplace_back( gfx, *paiScene->mMaterials[i], path, MaterialLoader::LightingModel::BlinnPhong );
+		materials.emplace_back( gfx, *paiScene->mMaterials[i], path );
 	}
 
 	// create N meshes for N materials in the model file

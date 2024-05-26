@@ -26,13 +26,7 @@ class MaterialLoader final
 	std::string m_name;
 	std::vector<Effect> m_effects;
 public:
-	enum LightingModel
-	{
-		BlinnPhong,
-		PBR_UE,
-	};
-public:
-	MaterialLoader( Graphics &gfx, const aiMaterial &aimaterial, const std::filesystem::path &modelPath, const LightingModel lightingModel ) cond_noex;
+	MaterialLoader( Graphics &gfx, const aiMaterial &aimaterial, const std::filesystem::path &modelPath ) cond_noex;
 
 	std::shared_ptr<VertexBuffer> makeVertexBuffer( Graphics &gfx, const aiMesh &aimesh, float scale = 1.0f ) const cond_noex;
 	std::shared_ptr<IndexBuffer> makeIndexBuffer( Graphics &gfx, const aiMesh &aimesh ) const cond_noex;
