@@ -166,7 +166,7 @@ std::string Texture::calcUid( const std::string &filepath,
 	TextureOp op /*= nullptr*/ )
 {
 	using namespace std::string_literals;
-	return typeid( Texture ).name() + "#"s + filepath + "#"s + std::to_string( slot ) + "#" + std::to_string( util::pointerToInt( std::addressof(op) ) );
+	return typeid( Texture ).name() + "#"s + filepath + "#"s + std::to_string( slot ) + ( op != nullptr ? "#" + std::to_string( util::pointerToInt( std::addressof(op) ) ) : "" );
 }
 
 std::string Texture::getUid() const noexcept
