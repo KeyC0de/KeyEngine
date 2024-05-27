@@ -502,7 +502,7 @@ Sound::~Sound() noexcept
 	}
 }
 
-int Sound::getDuration() const noexcept
+float Sound::getDuration() const noexcept
 {
 	const uint64_t nSamples = ( uint64_t(m_pXaudioBuffer->AudioBytes) * 8 ) / ( uint64_t(m_pWaveFormat->Format.wBitsPerSample) * uint64_t(m_pWaveFormat->Format.nChannels) );
 	return (nSamples / float(m_pWaveFormat->Format.nSamplesPerSec)) * 1000ull;
@@ -630,7 +630,7 @@ void SoundPlayer::notify( const UISoundEvent &event )
 			{
 				Sound component_hovered_sound{UISoundEvent::getSoundPath( event.m_soundType ), "component_hovered", "ui"};
 				component_hovered_sound.play();
-				Sleep( component_hovered_sound.getDuration() );
+				Sleep( static_cast<DWORD>(component_hovered_sound.getDuration()) );
 			};
 		threadPool.enqueue( lambda );
 	}

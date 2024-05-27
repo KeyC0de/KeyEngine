@@ -2,8 +2,7 @@
 Open Asset Import Library (assimp)
 ----------------------------------------------------------------------
 
-Copyright (c) 2006-2018, assimp team
-
+Copyright (c) 2006-2024, assimp team
 
 All rights reserved.
 
@@ -40,9 +39,16 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ----------------------------------------------------------------------
 */
 
-/** @file Default implementation of IOSystem using the standard C file functions */
+/**
+ *  @file Default implementation of IOSystem using the standard C file functions
+ */
+#pragma once
 #ifndef AI_DEFAULTIOSYSTEM_H_INC
 #define AI_DEFAULTIOSYSTEM_H_INC
+
+#ifdef __GNUC__
+#   pragma GCC system_header
+#endif
 
 #include <assimp/IOSystem.hpp>
 
@@ -50,43 +56,42 @@ namespace Assimp    {
 
 // ---------------------------------------------------------------------------
 /** Default implementation of IOSystem using the standard C file functions */
-class ASSIMP_API DefaultIOSystem : public IOSystem
-{
+class ASSIMP_API DefaultIOSystem : public IOSystem {
 public:
-	// -------------------------------------------------------------------
-	/** Tests for the existence of a file at the given path. */
-	bool Exists( const char *pFile) const;
+    // -------------------------------------------------------------------
+    /** Tests for the existence of a file at the given path. */
+    bool Exists( const char* pFile) const override;
 
-	// -------------------------------------------------------------------
-	/** Returns the directory separator. */
-	char getOsSeparator() const;
+    // -------------------------------------------------------------------
+    /** Returns the directory separator. */
+    char getOsSeparator() const override;
 
-	// -------------------------------------------------------------------
-	/** Open a new file with a given path. */
-	IOStream *Open( const char *pFile, const char *pMode = "rb");
+    // -------------------------------------------------------------------
+    /** Open a new file with a given path. */
+    IOStream* Open( const char* pFile, const char* pMode = "rb") override;
 
-	// -------------------------------------------------------------------
-	/** Closes the given file and releases all resources associated with it. */
-	void Close( IOStream *pFile);
+    // -------------------------------------------------------------------
+    /** Closes the given file and releases all resources associated with it. */
+    void Close( IOStream* pFile) override;
 
-	// -------------------------------------------------------------------
-	/** Compare two paths */
-	bool ComparePaths (const char *one, const char *second) const;
+    // -------------------------------------------------------------------
+    /** Compare two paths */
+    bool ComparePaths (const char* one, const char* second) const override;
 
-	/** @brief get the file name of a full filepath
-	 * example: /tmp/archive.tar.gz -> archive.tar.gz
-	 */
-	static std::string fileName( const std::string &path );
+    /** @brief get the file name of a full filepath
+     * example: /tmp/archive.tar.gz -> archive.tar.gz
+     */
+    static std::string fileName( const std::string &path );
 
-	/** @brief get the complete base name of a full filepath
-	 * example: /tmp/archive.tar.gz -> archive.tar
-	 */
-	static std::string completeBaseName( const std::string &path);
+    /** @brief get the complete base name of a full filepath
+     * example: /tmp/archive.tar.gz -> archive.tar
+     */
+    static std::string completeBaseName( const std::string &path);
 
-	/** @brief get the path of a full filepath
-	 * example: /tmp/archive.tar.gz -> /tmp/
-	 */
-	static std::string absolutePath( const std::string &path);
+    /** @brief get the path of a full filepath
+     * example: /tmp/archive.tar.gz -> /tmp/
+     */
+    static std::string absolutePath( const std::string &path);
 };
 
 } //!ns Assimp

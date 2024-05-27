@@ -2,7 +2,7 @@
 Open Asset Import Library (assimp)
 ----------------------------------------------------------------------
 
-Copyright (c) 2006-2018, assimp team
+Copyright (c) 2006-2024, assimp team
 
 
 All rights reserved.
@@ -40,44 +40,49 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ----------------------------------------------------------------------
 */
 
+#pragma once
 #ifndef INCLUDED_ASSIMP_XML_TOOLS_H
 #define INCLUDED_ASSIMP_XML_TOOLS_H
+
+#ifdef __GNUC__
+#   pragma GCC system_header
+#endif
 
 #include <string>
 
 namespace Assimp {
-	// XML escape the 5 XML special characters (",',<,> and &) in |data|
-	// Based on http://stackoverflow.com/questions/5665231
-	std::string XMLEscape(const std::string &data) {
-		std::string buffer;
+    // XML escape the 5 XML special characters (",',<,> and &) in |data|
+    // Based on http://stackoverflow.com/questions/5665231
+    std::string XMLEscape(const std::string& data) {
+        std::string buffer;
 
-		const size_t size = data.size();
-		buffer.reserve(size + size / 8);
-		for(size_t i = 0; i < size; ++i) {
-			const char c = data[i];
-			switch(c) {
-				case '&' :
-					buffer.append("&amp;");
-					break;
-				case '\"':
-					buffer.append("&quot;");
-					break;
-				case '\'':
-					buffer.append("&apos;");
-					break;
-				case '<' :
-					buffer.append("&lt;");
-					break;
-				case '>' :
-					buffer.append("&gt;");
-					break;
-				default:
-					buffer.append(&c, 1);
-					break;
-			}
-		}
-		return buffer;
-	}
+        const size_t size = data.size();
+        buffer.reserve(size + size / 8);
+        for(size_t i = 0; i < size; ++i) {
+            const char c = data[i];
+            switch(c) {
+                case '&' :
+                    buffer.append("&amp;");
+                    break;
+                case '\"':
+                    buffer.append("&quot;");
+                    break;
+                case '\'':
+                    buffer.append("&apos;");
+                    break;
+                case '<' :
+                    buffer.append("&lt;");
+                    break;
+                case '>' :
+                    buffer.append("&gt;");
+                    break;
+                default:
+                    buffer.append(&c, 1);
+                    break;
+            }
+        }
+        return buffer;
+    }
 }
 
 #endif // INCLUDED_ASSIMP_XML_TOOLS_H

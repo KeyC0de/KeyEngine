@@ -149,7 +149,7 @@ public:
 
 	//	\function	getDuration	||	\date	2024/05/25 23:06
 	//	\brief	return PCM audio's duration in milliseconds
-	int getDuration() const noexcept;
+	float getDuration() const noexcept;
 	const std::string& getName() const cond_noex;
 	//	\function	getTypeName	\date	2020/10/25 14:05
 	//	\brief	get sound type eg effects, music, dialogue etc. --- each sound type corresponds to a Submix voice

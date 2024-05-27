@@ -186,7 +186,8 @@ std::string getNumberString( const T num )
 
 std::string generateCaptcha( int len );
 
-unsigned char mapToByte( double value );
+unsigned char mapToByte( const float value );
+unsigned char mapToByte( const double value );
 
 //	\function	isAligned	||	\date	2022/08/30 9:40
 //	\brief	check whether the address is aligned to `alignment` boundary

@@ -2,8 +2,7 @@
 Open Asset Import Library (assimp)
 ----------------------------------------------------------------------
 
-Copyright (c) 2006-2018, assimp team
-
+Copyright (c) 2006-2024, assimp team
 
 All rights reserved.
 
@@ -41,159 +40,200 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 /** @file MemoryIOWrapper.h
- *  Handy IOStream/IOSystem implemetation to read directly from a memory buffer */
+ *  Handy IOStream/IOSystem implementation to read directly from a memory buffer */
+#pragma once
 #ifndef AI_MEMORYIOSTREAM_H_INC
 #define AI_MEMORYIOSTREAM_H_INC
 
+#ifdef __GNUC__
+#   pragma GCC system_header
+#endif
+
 #include <assimp/IOStream.hpp>
 #include <assimp/IOSystem.hpp>
-#include "assimp/ai_assert.h"
+#include <assimp/ai_assert.h>
+
 #include <stdint.h>
 
 namespace Assimp    {
+
 #define AI_MEMORYIO_MAGIC_FILENAME "$$$___magic___$$$"
 #define AI_MEMORYIO_MAGIC_FILENAME_LENGTH 17
 
 // ----------------------------------------------------------------------------------
 /** Implementation of IOStream to read directly from a memory buffer */
 // ----------------------------------------------------------------------------------
-class MemoryIOStream : public IOStream
-{
-	//friend class MemoryIOSystem;
+class MemoryIOStream : public IOStream {
 public:
-	MemoryIOStream (const uint8_t *buff, size_t len, bool own = false)
-		: buffer (buff)
-		, length(len)
-		, pos((size_t)0)
-		, own(own)
-	{
-	}
+    MemoryIOStream (const uint8_t* buff, size_t len, bool own = false) :
+            buffer (buff),
+            length(len),
+            pos(static_cast<size_t>(0)),
+            own(own) {
+        // empty
+    }
 
-public:
+    ~MemoryIOStream() override  {
+        if(own) {
+            delete[] buffer;
+        }
+    }
 
-	~MemoryIOStream ()  {
-		if(own) {
-			delete[] buffer;
-		}
-	}
+    size_t Read(void* pvBuffer, size_t pSize, size_t pCount) override {
+        ai_assert(nullptr != pvBuffer);
+        ai_assert(0 != pSize);
 
-	// -------------------------------------------------------------------
-	// Read from stream
-	size_t Read(void *pvBuffer, size_t pSize, size_t pCount)    {
-		const size_t cnt = std::min(pCount,(length-pos)/pSize),ofs = pSize*cnt;
+        const size_t cnt = std::min( pCount, (length-pos) / pSize);
+        const size_t ofs = pSize * cnt;
 
-		memcpy(pvBuffer,buffer+pos,ofs);
-		pos += ofs;
+        ::memcpy(pvBuffer,buffer+pos,ofs);
+        pos += ofs;
 
-		return cnt;
-	}
+        return cnt;
+    }
 
-	// -------------------------------------------------------------------
-	// Write to stream
-	size_t Write(const void* /*pvBuffer*/, size_t /*pSize*/,size_t /*pCount*/)  {
-		ai_assert(false); // won't be needed
-		return 0;
-	}
+    size_t Write(const void*, size_t, size_t ) override {
+        ai_assert(false); // won't be needed
+        return 0;
+    }
 
-	// -------------------------------------------------------------------
-	// Seek specific position
-	aiReturn Seek(size_t pOffset, aiOrigin pOrigin) {
-		if (aiOrigin_SET == pOrigin) {
-			if (pOffset > length) {
-				return AI_FAILURE;
-			}
-			pos = pOffset;
-		}
-		else if (aiOrigin_END == pOrigin) {
-			if (pOffset > length) {
-				return AI_FAILURE;
-			}
-			pos = length-pOffset;
-		}
-		else {
-			if (pOffset+pos > length) {
-				return AI_FAILURE;
-			}
-			pos += pOffset;
-		}
-		return AI_SUCCESS;
-	}
+    aiReturn Seek(size_t pOffset, aiOrigin pOrigin) override {
+        if (aiOrigin_SET == pOrigin) {
+            if (pOffset > length) {
+                return AI_FAILURE;
+            }
+            pos = pOffset;
+        } else if (aiOrigin_END == pOrigin) {
+            if (pOffset > length) {
+                return AI_FAILURE;
+            }
+            pos = length-pOffset;
+        } else {
+            if (pOffset+pos > length) {
+                return AI_FAILURE;
+            }
+            pos += pOffset;
+        }
+        return AI_SUCCESS;
+    }
 
-	// -------------------------------------------------------------------
-	// Get current seek position
-	size_t Tell() const {
-		return pos;
-	}
+    size_t Tell() const override {
+        return pos;
+    }
 
-	// -------------------------------------------------------------------
-	// Get size of file
-	size_t FileSize() const {
-		return length;
-	}
+    size_t FileSize() const override {
+        return length;
+    }
 
-	// -------------------------------------------------------------------
-	// Flush file contents
-	void Flush() {
-		ai_assert(false); // won't be needed
-	}
+    void Flush() override{
+        ai_assert(false); // won't be needed
+    }
 
 private:
-	const uint8_t *buffer;
-	size_t length,pos;
-	bool own;
+    const uint8_t* buffer;
+    size_t length,pos;
+    bool own;
 };
 
 // ---------------------------------------------------------------------------
-/** Dummy IO system to read from a memory buffer */
-class MemoryIOSystem : public IOSystem
-{
+/// @brief Dummy IO system to read from a memory buffer.
+class MemoryIOSystem : public IOSystem {
 public:
-	/** Constructor. */
-	MemoryIOSystem (const uint8_t *buff, size_t len)
-		: buffer (buff), length(len) {
-	}
+    /// @brief Constructor.
+    MemoryIOSystem(const uint8_t* buff, size_t len, IOSystem* io) : buffer(buff), length(len), existing_io(io) {
+        // empty
+    }
 
-	/** Destructor. */
-	~MemoryIOSystem() {
-	}
+    /// @brief Destructor.
+    ~MemoryIOSystem() override = default;
 
-	// -------------------------------------------------------------------
-	/** Tests for the existence of a file at the given path. */
-	bool Exists( const char *pFile) const {
-		return !strncmp(pFile,AI_MEMORYIO_MAGIC_FILENAME,AI_MEMORYIO_MAGIC_FILENAME_LENGTH);
-	}
+    // -------------------------------------------------------------------
+    /// @brief Tests for the existence of a file at the given path.
+    bool Exists(const char* pFile) const override {
+        if (0 == strncmp( pFile, AI_MEMORYIO_MAGIC_FILENAME, AI_MEMORYIO_MAGIC_FILENAME_LENGTH ) ) {
+            return true;
+        }
+        return existing_io ? existing_io->Exists(pFile) : false;
+    }
 
-	// -------------------------------------------------------------------
-	/** Returns the directory separator. */
-	char getOsSeparator() const {
-		return '/'; // why not? it doesn't care
-	}
+    // -------------------------------------------------------------------
+    /// @brief Returns the directory separator.
+    char getOsSeparator() const override {
+        return existing_io ? existing_io->getOsSeparator()
+                           : '/';  // why not? it doesn't care
+    }
 
-	// -------------------------------------------------------------------
-	/** Open a new file with a given path. */
-	IOStream *Open( const char *pFile, const char* /*pMode*/ = "rb") {
-		if (strncmp(pFile,AI_MEMORYIO_MAGIC_FILENAME,AI_MEMORYIO_MAGIC_FILENAME_LENGTH)) {
-			return NULL;
-		}
-		return new MemoryIOStream(buffer,length);
-	}
+    // -------------------------------------------------------------------
+    /// @brief Open a new file with a given path.
+    IOStream* Open(const char* pFile, const char* pMode = "rb") override {
+        if ( 0 == strncmp( pFile, AI_MEMORYIO_MAGIC_FILENAME, AI_MEMORYIO_MAGIC_FILENAME_LENGTH ) ) {
+            created_streams.emplace_back(new MemoryIOStream(buffer, length));
+            return created_streams.back();
+        }
+        return existing_io ? existing_io->Open(pFile, pMode) : nullptr;
+    }
 
-	// -------------------------------------------------------------------
-	/** Closes the given file and releases all resources associated with it. */
-	void Close( IOStream *pFile) {
-		delete pFile;
-	}
+    // -------------------------------------------------------------------
+    /// @brief Closes the given file and releases all resources associated with it.
+    void Close( IOStream* pFile) override {
+        auto it = std::find(created_streams.begin(), created_streams.end(), pFile);
+        if (it != created_streams.end()) {
+            delete pFile;
+            created_streams.erase(it);
+        } else if (existing_io) {
+            existing_io->Close(pFile);
+        }
+    }
 
-	// -------------------------------------------------------------------
-	/** Compare two paths */
-	bool ComparePaths (const char* /*one*/, const char* /*second*/) const {
-		return false;
-	}
+    // -------------------------------------------------------------------
+    /// @brief Compare two paths
+    bool ComparePaths(const char* one, const char* second) const override {
+        return existing_io ? existing_io->ComparePaths(one, second) : false;
+    }
+
+    /// @brief Will push the directory.
+    bool PushDirectory( const std::string &path ) override {
+        return existing_io ? existing_io->PushDirectory(path) : false;
+    }
+
+    /// @brief Will return the current directory from the stack top.
+    const std::string &CurrentDirectory() const override {
+        static std::string empty;
+        return existing_io ? existing_io->CurrentDirectory() : empty;
+    }
+
+    /// @brief Returns the stack size.
+    size_t StackSize() const override {
+        return existing_io ? existing_io->StackSize() : 0;
+    }
+
+    /// @brief Will pop the upper directory.
+    bool PopDirectory() override {
+        return existing_io ? existing_io->PopDirectory() : false;
+    }
+
+    /// @brief Will create the directory.
+    bool CreateDirectory( const std::string &path ) override {
+        return existing_io ? existing_io->CreateDirectory(path) : false;
+    }
+
+    /// @brief Will change the directory.
+    bool ChangeDirectory( const std::string &path ) override {
+        return existing_io ? existing_io->ChangeDirectory(path) : false;
+    }
+
+    /// @brief Will delete the file.
+    bool DeleteFile( const std::string &file ) override {
+        return existing_io ? existing_io->DeleteFile(file) : false;
+    }
 
 private:
-	const uint8_t *buffer;
-	size_t length;
+    const uint8_t* buffer;
+    size_t length;
+    IOSystem* existing_io;
+    std::vector<IOStream*> created_streams;
 };
+
 } // end namespace Assimp
 
-#endif
+#endif // AI_MEMORYIOSTREAM_H_INC

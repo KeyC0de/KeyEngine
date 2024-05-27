@@ -6,6 +6,7 @@
 #pragma comment( lib, "dbghelp.lib" )
 
 
+#pragma warning( disable : 6340 )
 bool generateDump( EXCEPTION_POINTERS *pExceptionPointers,
 	WCHAR *szFileName )
 {
@@ -52,3 +53,4 @@ bool generateDump( EXCEPTION_POINTERS *pExceptionPointers,
 
 	return EXCEPTION_EXECUTE_HANDLER && bMiniDumpSuccessful;
 }
+#pragma warning( default : 6340 )

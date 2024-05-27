@@ -298,9 +298,14 @@ std::string generateCaptcha( int len )
 	return captcha;
 }
 
-unsigned char mapToByte( double value )
+unsigned char mapToByte( const float value )
 {
-	return floor( fmod( value, 255 ) );
+	return static_cast<unsigned char>(floor( fmod( value, 255 ) ));
+}
+
+unsigned char mapToByte( const double value )
+{
+	return static_cast<unsigned char>(floor( fmod( value, 255 ) ));
 }
 
 bool isAligned( const volatile void *p,

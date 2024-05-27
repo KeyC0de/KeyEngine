@@ -2,7 +2,7 @@
 Open Asset Import Library (assimp)
 ----------------------------------------------------------------------
 
-Copyright (c) 2006-2018, assimp team
+Copyright (c) 2006-2024, assimp team
 
 
 All rights reserved.
@@ -43,12 +43,17 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /** @file Profiler.h
  *  @brief Utility to measure the respective runtime of each import step
  */
-#ifndef INCLUDED_PROFILER_H
-#define INCLUDED_PROFILER_H
+#pragma once
+#ifndef AI_INCLUDED_PROFILER_H
+#define AI_INCLUDED_PROFILER_H
+
+#ifdef __GNUC__
+#   pragma GCC system_header
+#endif
 
 #include <chrono>
-#include "assimp/DefaultLogger.hpp"
-#include "TinyFormatter.h"
+#include <assimp/DefaultLogger.hpp>
+#include <assimp/TinyFormatter.h>
 
 #include <map>
 
@@ -63,37 +68,34 @@ using namespace Formatter;
  */
 class Profiler {
 public:
-	Profiler() {
-		// empty
-	}
-
-public:
-
-	/** Start a named timer */
-	void BeginRegion(const std::string &region) {
-		regions[region] = std::chrono::system_clock::now();
-		ASSIMP_LOG_DEBUG((format("START `"),region,"`"));
-	}
+    Profiler() = default;
 
 
-	/** End a specific named timer and write its end time to the log */
-	void EndRegion(const std::string &region) {
-		RegionMap::const_iterator it = regions.find(region);
-		if (it == regions.end()) {
-			return;
-		}
+    /** Start a named timer */
+    void BeginRegion(const std::string& region) {
+        regions[region] = std::chrono::system_clock::now();
+        ASSIMP_LOG_DEBUG("START `",region,"`");
+    }
 
-		std::chrono::duration<double> elapsedSeconds = std::chrono::system_clock::now() - regions[region];
-		ASSIMP_LOG_DEBUG((format("END   `"),region,"`, dt= ", elapsedSeconds.count()," s"));
-	}
+
+    /** End a specific named timer and write its end time to the log */
+    void EndRegion(const std::string& region) {
+        RegionMap::const_iterator it = regions.find(region);
+        if (it == regions.end()) {
+            return;
+        }
+
+        std::chrono::duration<double> elapsedSeconds = std::chrono::system_clock::now() - regions[region];
+        ASSIMP_LOG_DEBUG("END   `",region,"`, dt= ", elapsedSeconds.count()," s");
+    }
 
 private:
-	typedef std::map<std::string,std::chrono::time_point<std::chrono::system_clock>> RegionMap;
-	RegionMap regions;
+    typedef std::map<std::string,std::chrono::time_point<std::chrono::system_clock>> RegionMap;
+    RegionMap regions;
 };
 
 }
 }
 
-#endif
+#endif // AI_INCLUDED_PROFILER_H
 

@@ -105,7 +105,7 @@
  *       WINT_MAX
  *
  *   10) The criteria for defining (u)int_least(*)_t isn't clear,
- *       except for systems which don't have a m_topo that precisely
+ *       except for systems which don't have a type that precisely
  *       defined 8, 16, or 32 bit types (which this include file does
  *       not support anyways). Default definitions have been given.
  *
@@ -117,7 +117,7 @@
  *       especially those whose vendors make both the compiler and the
  *       system.  Default definitions have been given, but its strongly
  *       recommended that users never use these definitions for any
- *       reason (they do *NOT *deliver any serious guarantee of
+ *       reason (they do *NOT* deliver any serious guarantee of
  *       improved performance -- not in this file, nor any vendor's
  *       stdint.h).
  *
@@ -160,7 +160,7 @@
  *       PRINTF_UINT8_DEC_WIDTH
  *
  *       Which specifies the maximum number of characters required to
- *       print the number of that m_topo in either hexadecimal or decimal.
+ *       print the number of that type in either hexadecimal or decimal.
  *       These are an extension beyond what C99 specifies must be in
  *       stdint.h.
  *
@@ -293,28 +293,28 @@
 
 # if defined (__WATCOMC__) && __WATCOMC__ >= 1250
 #  if !defined (INT64_C)
-#   define INT64_C(m_x)   (m_x + (INT64_MAX - INT64_MAX))
+#   define INT64_C(x)   (x + (INT64_MAX - INT64_MAX))
 #  endif
 #  if !defined (UINT64_C)
-#   define UINT64_C(m_x)  (m_x + (UINT64_MAX - UINT64_MAX))
+#   define UINT64_C(x)  (x + (UINT64_MAX - UINT64_MAX))
 #  endif
 #  if !defined (INT32_C)
-#   define INT32_C(m_x)   (m_x + (INT32_MAX - INT32_MAX))
+#   define INT32_C(x)   (x + (INT32_MAX - INT32_MAX))
 #  endif
 #  if !defined (UINT32_C)
-#   define UINT32_C(m_x)  (m_x + (UINT32_MAX - UINT32_MAX))
+#   define UINT32_C(x)  (x + (UINT32_MAX - UINT32_MAX))
 #  endif
 #  if !defined (INT16_C)
-#   define INT16_C(m_x)   (m_x)
+#   define INT16_C(x)   (x)
 #  endif
 #  if !defined (UINT16_C)
-#   define UINT16_C(m_x)  (m_x)
+#   define UINT16_C(x)  (x)
 #  endif
 #  if !defined (INT8_C)
-#   define INT8_C(m_x)   (m_x)
+#   define INT8_C(x)   (x)
 #  endif
 #  if !defined (UINT8_C)
-#   define UINT8_C(m_x)  (m_x)
+#   define UINT8_C(x)  (x)
 #  endif
 #  if !defined (UINT64_MAX)
 #   define UINT64_MAX  18446744073709551615ULL
@@ -359,7 +359,7 @@
 #endif
 
 /*
- *  Deduce the m_topo assignments from limits.h under the assumption that
+ *  Deduce the type assignments from limits.h under the assumption that
  *  integer sizes in bits are powers of 2, and follow the ANSI
  *  definitions.
  */
@@ -369,7 +369,7 @@
 #endif
 #if !defined(uint8_t) && !defined(_UINT8_T) && !defined(vxWorks)
 # if (UCHAR_MAX == UINT8_MAX) || defined (S_SPLINT_S)
-	typedef unsigned char uint8_t;
+    typedef unsigned char uint8_t;
 #   define UINT8_C(v) ((uint8_t) v)
 # else
 #   error "Platform not supported"
@@ -384,7 +384,7 @@
 #endif
 #if !defined(int8_t) && !defined(_INT8_T) && !defined(vxWorks)
 # if (SCHAR_MAX == INT8_MAX) || defined (S_SPLINT_S)
-	typedef signed char int8_t;
+    typedef signed char int8_t;
 #   define INT8_C(v) ((int8_t) v)
 # else
 #   error "Platform not supported"
@@ -670,8 +670,8 @@
 # define  INT_LEAST16_MIN  INT16_MIN
 # define  INT_LEAST32_MIN  INT32_MIN
 # ifdef stdint_int64_defined
-	typedef  int64_t  int_least64_t;
-	typedef uint64_t uint_least64_t;
+    typedef  int64_t  int_least64_t;
+    typedef uint64_t uint_least64_t;
 #   define PRINTF_LEAST64_MODIFIER PRINTF_INT64_MODIFIER
 #   define UINT_LEAST64_MAX UINT64_MAX
 #   define  INT_LEAST64_MAX  INT64_MAX
@@ -683,10 +683,10 @@
 /*
  *  The ANSI C committee pretending to know or specify anything about
  *  performance is the epitome of misguided arrogance.  The mandate of
- *  this file is to *ONLY *ever support that absolute minimum
+ *  this file is to *ONLY* ever support that absolute minimum
  *  definition of the fast integer types, for compatibility purposes.
  *  No extensions, and no attempt to suggest what may or may not be a
- *  faster integer m_topo will ever be made in this file.  Developers are
+ *  faster integer type will ever be made in this file.  Developers are
  *  warned to stay away from these types when using this or any other
  *  stdint.h.
  */
@@ -718,7 +718,7 @@ typedef uint_least32_t uint_fast32_t;
 
 /*
  *  Whatever piecemeal, per compiler thing we can do about the wchar_t
- *  m_topo limits.
+ *  type limits.
  */
 
 #if defined(__WATCOMC__) || defined(_MSC_VER) || defined (__GNUC__) && !defined(vxWorks)
@@ -752,6 +752,7 @@ typedef uint_least32_t uint_fast32_t;
 # elif defined (__i386__) || defined (_WIN32) || defined (WIN32) || defined (__ppc64__)
 #  define stdint_intptr_bits 32
 # elif defined (__INTEL_COMPILER)
+/* TODO -- what did Intel do about x86-64? */
 # else
 /* #error "This platform might not be supported yet" */
 # endif
@@ -769,7 +770,7 @@ typedef uint_least32_t uint_fast32_t;
 #    define PTRDIFF_MIN                 stdint_intptr_glue3(INT,stdint_intptr_bits,_MIN)
 #  endif
 #  ifndef UINTPTR_MAX
-#    define UINTPTR_MAX                 stdint_intptr_glue3(unsigned,stdint_intptr_bits,_MAX)
+#    define UINTPTR_MAX                 stdint_intptr_glue3(UINT,stdint_intptr_bits,_MAX)
 #  endif
 #  ifndef INTPTR_MAX
 #    define INTPTR_MAX                  stdint_intptr_glue3(INT,stdint_intptr_bits,_MAX)
@@ -778,15 +779,15 @@ typedef uint_least32_t uint_fast32_t;
 #    define INTPTR_MIN                  stdint_intptr_glue3(INT,stdint_intptr_bits,_MIN)
 #  endif
 #  ifndef INTPTR_C
-#    define INTPTR_C(m_x)                 stdint_intptr_glue3(INT,stdint_intptr_bits,_C)(m_x)
+#    define INTPTR_C(x)                 stdint_intptr_glue3(INT,stdint_intptr_bits,_C)(x)
 #  endif
 #  ifndef UINTPTR_C
-#    define UINTPTR_C(m_x)                stdint_intptr_glue3(unsigned,stdint_intptr_bits,_C)(m_x)
+#    define UINTPTR_C(x)                stdint_intptr_glue3(UINT,stdint_intptr_bits,_C)(x)
 #  endif
   typedef stdint_intptr_glue3(uint,stdint_intptr_bits,_t) uintptr_t;
   typedef stdint_intptr_glue3( int,stdint_intptr_bits,_t)  intptr_t;
 # else
-/* WARNING: This following is likely wrong for some platforms, and does
+/* TODO -- This following is likely wrong for some platforms, and does
    nothing for the definition of uintptr_t. */
   typedef ptrdiff_t intptr_t;
 # endif
@@ -814,15 +815,15 @@ typedef uint_least32_t uint_fast32_t;
 #include <stdio.h>
 #include <string.h>
 
-#define glue3_aux(m_x,m_y,z) m_x ## m_y ## z
-#define glue3(m_x,m_y,z) glue3_aux(m_x,m_y,z)
+#define glue3_aux(x,y,z) x ## y ## z
+#define glue3(x,y,z) glue3_aux(x,y,z)
 
-#define DECLU(bits) glue3(uint,bits,_t) glue3(u,bits,) = glue3(unsigned,bits,_C) (0);
+#define DECLU(bits) glue3(uint,bits,_t) glue3(u,bits,) = glue3(UINT,bits,_C) (0);
 #define DECLI(bits) glue3(int,bits,_t) glue3(i,bits,) = glue3(INT,bits,_C) (0);
 
 #define DECL(us,bits) glue3(DECL,us,) (bits)
 
-#define TESTUMAX(bits) glue3(u,bits,) = ~glue3(u,bits,); if (glue3(unsigned,bits,_MAX) != glue3(u,bits,)) printf ("Something wrong with unsigned%d_MAX\n", bits)
+#define TESTUMAX(bits) glue3(u,bits,) = ~glue3(u,bits,); if (glue3(UINT,bits,_MAX) != glue3(u,bits,)) printf ("Something wrong with UINT%d_MAX\n", bits)
 
 #define REPORTERROR(msg) { err_n++; if (err_first <= 0) err_first = __LINE__; printf msg; }
 

@@ -512,7 +512,6 @@ std::optional<int> Window::messageLoop() noexcept
 	{
 		const unsigned uMsg = msg.message;
 #if defined _DEBUG && !defined NDEBUG
-		auto &console = KeyConsole::getInstance();
 		PRINT_WIN_MESSAGE( uMsg );
 #endif
 
@@ -749,14 +748,13 @@ LRESULT CALLBACK Window::windowProc( _In_ const HWND hWnd,
 	_In_ const LPARAM lParam )
 {
 #if defined _DEBUG && !defined NDEBUG
-	auto &console = KeyConsole::getInstance();
-	console.log( "windowProc() entered\n" );
 	PRINT_WIN_MESSAGE;
 #endif
 
 	if ( uMsg == WM_NCCREATE )
 	{
 #if defined _DEBUG && !defined NDEBUG
+		auto &console = KeyConsole::getInstance();
 		console.log( "windowProc() WM_NCCREATE message\n" );
 #endif
 		const CREATESTRUCTW *const cs = (CREATESTRUCTW*) lParam;
@@ -1024,9 +1022,11 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 	case WM_CREATE:	// send to a window being initialized. Controls - child windows, set default values for controls
 	{
 #if defined _DEBUG && !defined NDEBUG
-		auto &console = KeyConsole::getInstance();
-		using namespace std::string_literals;
-		console.log( "'WM_CREATE' : window created\n"s );
+		{
+			auto &console = KeyConsole::getInstance();
+			using namespace std::string_literals;
+			console.log( "'WM_CREATE' : window created\n"s );
+		}
 #endif
 
 		// create tray icon

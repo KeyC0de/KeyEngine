@@ -3,9 +3,7 @@
 Open Asset Import Library (assimp)
 ---------------------------------------------------------------------------
 
-Copyright (c) 2006-2018, assimp team
-
-
+Copyright (c) 2006-2024, assimp team
 
 All rights reserved.
 
@@ -48,10 +46,16 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef AI_FILEIO_H_INC
 #define AI_FILEIO_H_INC
 
+#ifdef __GNUC__
+#   pragma GCC system_header
+#endif
+
 #include <assimp/types.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
+
 struct aiFileIO;
 struct aiFile;
 
@@ -67,7 +71,7 @@ typedef C_STRUCT aiFile* (*aiFileOpenProc)  (C_STRUCT aiFileIO*, const char*, co
 typedef void             (*aiFileCloseProc) (C_STRUCT aiFileIO*, C_STRUCT aiFile*);
 
 // Represents user-defined data
-typedef char *aiUserData;
+typedef char* aiUserData;
 
 // ----------------------------------------------------------------------------------
 /** @brief C-API: File system callbacks
@@ -78,16 +82,16 @@ typedef char *aiUserData;
  *  or memory locations. */
 struct aiFileIO
 {
-	/** Function used to open a new file
-	 */
-	aiFileOpenProc OpenProc;
+    /** Function used to open a new file
+     */
+    aiFileOpenProc OpenProc;
 
-	/** Function used to close an existing file
-	 */
-	aiFileCloseProc CloseProc;
+    /** Function used to close an existing file
+     */
+    aiFileCloseProc CloseProc;
 
-	/** User-defined, opaque data */
-	aiUserData UserData;
+    /** User-defined, opaque data */
+    aiUserData UserData;
 };
 
 // ----------------------------------------------------------------------------------
@@ -100,36 +104,35 @@ struct aiFileIO
  *  the CRT. However, you can supply a custom implementation to Assimp by
  *  delivering a custom aiFileIO. Use this to enable reading from other sources,
  *  such as ZIP archives or memory locations. */
-struct aiFile
-{
-	/** Callback to read from a file */
-	aiFileReadProc ReadProc;
+struct aiFile {
+    /** Callback to read from a file */
+    aiFileReadProc ReadProc;
 
-	/** Callback to write to a file */
-	aiFileWriteProc WriteProc;
+    /** Callback to write to a file */
+    aiFileWriteProc WriteProc;
 
-	/** Callback to retrieve the current position of
-	 *  the file cursor (ftell())
-	 */
-	aiFileTellProc TellProc;
+    /** Callback to retrieve the current position of
+     *  the file cursor (ftell())
+     */
+    aiFileTellProc TellProc;
 
-	/** Callback to retrieve the size of the file,
-	 *  in bytes
-	 */
-	aiFileTellProc FileSizeProc;
+    /** Callback to retrieve the size of the file,
+     *  in bytes
+     */
+    aiFileTellProc FileSizeProc;
 
-	/** Callback to set the current position
-	 * of the file cursor (fseek())
-	 */
-	aiFileSeek SeekProc;
+    /** Callback to set the current position
+     * of the file cursor (fseek())
+     */
+    aiFileSeek SeekProc;
 
-	/** Callback to flush the file contents
-	 */
-	aiFileFlushProc FlushProc;
+    /** Callback to flush the file contents
+     */
+    aiFileFlushProc FlushProc;
 
-	/** User-defined, opaque data
-	 */
-	aiUserData UserData;
+    /** User-defined, opaque data
+     */
+    aiUserData UserData;
 };
 
 #ifdef __cplusplus

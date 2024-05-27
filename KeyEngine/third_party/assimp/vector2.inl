@@ -3,7 +3,7 @@
 Open Asset Import Library (assimp)
 ---------------------------------------------------------------------------
 
-Copyright (c) 2006-2018, assimp team
+Copyright (c) 2006-2024, assimp team
 
 
 
@@ -48,8 +48,12 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef AI_VECTOR2D_INL_INC
 #define AI_VECTOR2D_INL_INC
 
+#ifdef __GNUC__
+#   pragma GCC system_header
+#endif
+
 #ifdef __cplusplus
-#include "vector2.h"
+#include <assimp/vector2.h>
 
 #include <cmath>
 
@@ -57,67 +61,67 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 template <typename TReal>
 template <typename TOther>
 aiVector2t<TReal>::operator aiVector2t<TOther> () const {
-	return aiVector2t<TOther>(static_cast<TOther>(x),static_cast<TOther>(y));
+    return aiVector2t<TOther>(static_cast<TOther>(x),static_cast<TOther>(y));
 }
 // ------------------------------------------------------------------------------------------------
 template <typename TReal>
 inline
 void aiVector2t<TReal>::Set( TReal pX, TReal pY) {
-	x = pX; y = pY;
+    x = pX; y = pY;
 }
 
 // ------------------------------------------------------------------------------------------------
 template <typename TReal>
 inline
 TReal aiVector2t<TReal>::SquareLength() const {
-	return x*x + y*y;
+    return x*x + y*y;
 }
 
 // ------------------------------------------------------------------------------------------------
 template <typename TReal>
 inline
 TReal aiVector2t<TReal>::Length() const {
-	return std::sqrt( SquareLength());
+    return std::sqrt( SquareLength());
 }
 
 // ------------------------------------------------------------------------------------------------
 template <typename TReal>
 inline
 aiVector2t<TReal>& aiVector2t<TReal>::Normalize() {
-	*this /= Length();
-	return *this;
+    *this /= Length();
+    return *this;
 }
 
 // ------------------------------------------------------------------------------------------------
 template <typename TReal>
 inline
-const aiVector2t<TReal>& aiVector2t<TReal>::operator += (const aiVector2t &o) {
-	x += o.x; y += o.y;
-	return *this;
+const aiVector2t<TReal>& aiVector2t<TReal>::operator += (const aiVector2t& o) {
+    x += o.x; y += o.y;
+    return *this;
 }
 
 // ------------------------------------------------------------------------------------------------
 template <typename TReal>
 inline
-const aiVector2t<TReal>& aiVector2t<TReal>::operator -= (const aiVector2t &o) {
-	x -= o.x; y -= o.y;
-	return *this;
+const aiVector2t<TReal>& aiVector2t<TReal>::operator -= (const aiVector2t& o) {
+    x -= o.x; y -= o.y;
+    return *this;
 }
 
 // ------------------------------------------------------------------------------------------------
 template <typename TReal>
 inline
 const aiVector2t<TReal>& aiVector2t<TReal>::operator *= (TReal f) {
-	x *= f; y *= f;
-	return *this;
+    x *= f; y *= f;
+    return *this;
 }
 
 // ------------------------------------------------------------------------------------------------
 template <typename TReal>
 inline
 const aiVector2t<TReal>& aiVector2t<TReal>::operator /= (TReal f) {
-	x /= f; y /= f;
-	return *this;
+    x /= f; y /= f;
+    return *this;
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -132,46 +136,46 @@ TReal aiVector2t<TReal>::operator[](unsigned int i) const {
 		default:
 			break;
 
-	}
-	return x;
+    }
+    return x;
 }
 
 // ------------------------------------------------------------------------------------------------
 template <typename TReal>
 inline
-bool aiVector2t<TReal>::operator== (const aiVector2t &other) const {
-	return x == other.x && y == other.y;
+bool aiVector2t<TReal>::operator== (const aiVector2t& other) const {
+    return x == other.x && y == other.y;
 }
 
 // ------------------------------------------------------------------------------------------------
 template <typename TReal>
 inline
-bool aiVector2t<TReal>::operator!= (const aiVector2t &other) const {
-	return x != other.x || y != other.y;
+bool aiVector2t<TReal>::operator!= (const aiVector2t& other) const {
+    return x != other.x || y != other.y;
 }
 
 // ---------------------------------------------------------------------------
 template<typename TReal>
 inline
-bool aiVector2t<TReal>::Equal(const aiVector2t &other, TReal epsilon) const {
-	return
-		std::abs(x - other.x) <= epsilon &&
-		std::abs(y - other.y) <= epsilon;
+bool aiVector2t<TReal>::Equal(const aiVector2t& other, TReal epsilon) const {
+    return
+        std::abs(x - other.x) <= epsilon &&
+        std::abs(y - other.y) <= epsilon;
 }
 
 // ------------------------------------------------------------------------------------------------
 template <typename TReal>
 inline
 aiVector2t<TReal>& aiVector2t<TReal>::operator= (TReal f)   {
-	x = y = f;
-	return *this;
+    x = y = f;
+    return *this;
 }
 
 // ------------------------------------------------------------------------------------------------
 template <typename TReal>
 inline
-const aiVector2t<TReal> aiVector2t<TReal>::SymMul(const aiVector2t &o) {
-	return aiVector2t(x*o.x,y*o.y);
+const aiVector2t<TReal> aiVector2t<TReal>::SymMul(const aiVector2t& o) {
+    return aiVector2t(x*o.x,y*o.y);
 }
 
 
@@ -180,7 +184,7 @@ const aiVector2t<TReal> aiVector2t<TReal>::SymMul(const aiVector2t &o) {
 template <typename TReal>
 inline
 aiVector2t<TReal> operator + (const aiVector2t<TReal>& v1, const aiVector2t<TReal>& v2) {
-	return aiVector2t<TReal>( v1.x + v2.x, v1.y + v2.y);
+    return aiVector2t<TReal>( v1.x + v2.x, v1.y + v2.y);
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -188,7 +192,7 @@ aiVector2t<TReal> operator + (const aiVector2t<TReal>& v1, const aiVector2t<TRea
 template <typename TReal>
 inline
 aiVector2t<TReal> operator - (const aiVector2t<TReal>& v1, const aiVector2t<TReal>& v2) {
-	return aiVector2t<TReal>( v1.x - v2.x, v1.y - v2.y);
+    return aiVector2t<TReal>( v1.x - v2.x, v1.y - v2.y);
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -196,7 +200,7 @@ aiVector2t<TReal> operator - (const aiVector2t<TReal>& v1, const aiVector2t<TRea
 template <typename TReal>
 inline
 TReal operator * (const aiVector2t<TReal>& v1, const aiVector2t<TReal>& v2) {
-	return v1.x*v2.x + v1.y*v2.y;
+    return v1.x*v2.x + v1.y*v2.y;
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -204,7 +208,7 @@ TReal operator * (const aiVector2t<TReal>& v1, const aiVector2t<TReal>& v2) {
 template <typename TReal>
 inline
 aiVector2t<TReal> operator * ( TReal f, const aiVector2t<TReal>& v) {
-	return aiVector2t<TReal>( f*v.x, f*v.y);
+    return aiVector2t<TReal>( f*v.x, f*v.y);
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -212,7 +216,7 @@ aiVector2t<TReal> operator * ( TReal f, const aiVector2t<TReal>& v) {
 template <typename TReal>
 inline
 aiVector2t<TReal> operator * ( const aiVector2t<TReal>& v, TReal f) {
-	return aiVector2t<TReal>( f*v.x, f*v.y);
+    return aiVector2t<TReal>( f*v.x, f*v.y);
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -220,7 +224,7 @@ aiVector2t<TReal> operator * ( const aiVector2t<TReal>& v, TReal f) {
 template <typename TReal>
 inline
 aiVector2t<TReal> operator / ( const aiVector2t<TReal>& v, TReal f) {
-	return v * (1/f);
+    return v * (1/f);
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -228,7 +232,7 @@ aiVector2t<TReal> operator / ( const aiVector2t<TReal>& v, TReal f) {
 template <typename TReal>
 inline
 aiVector2t<TReal> operator / ( const aiVector2t<TReal>& v, const aiVector2t<TReal>& v2) {
-	return aiVector2t<TReal>(v.x / v2.x,v.y / v2.y);
+    return aiVector2t<TReal>(v.x / v2.x,v.y / v2.y);
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -236,7 +240,7 @@ aiVector2t<TReal> operator / ( const aiVector2t<TReal>& v, const aiVector2t<TRea
 template <typename TReal>
 inline
 aiVector2t<TReal> operator - ( const aiVector2t<TReal>& v) {
-	return aiVector2t<TReal>( -v.x, -v.y);
+    return aiVector2t<TReal>( -v.x, -v.y);
 }
 
 #endif

@@ -4,6 +4,7 @@
 
 namespace dx = DirectX;
 
+#pragma warning( disable : 4244 )
 RectangleF::RectangleF( const int x,
 	const int y,
 	const int width,
@@ -16,6 +17,7 @@ RectangleF::RectangleF( const int x,
 {
 
 }
+#pragma warning( default : 4244 )
 
 RectangleF::RectangleF( const float left,
 	const float right,

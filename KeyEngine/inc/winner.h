@@ -110,7 +110,9 @@ static_assert( _MSVC_LANG >= 201703L, "C++17 language conformance or later requi
 #	define	_CRTDBG_MAP_ALLOC
 #	define	_CRTDBG_MAP_ALLOC_NEW
 #	include <stdlib.h>
+#pragma warning( disable : 4005 )
 #	include <crtdbg.h>
+#pragma warning( default : 4005 )
 #endif	// _DEBUG
 
 #include <Windows.h>

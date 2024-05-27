@@ -2,8 +2,7 @@
 Open Asset Import Library (assimp)
 ----------------------------------------------------------------------
 
-Copyright (c) 2006-2018, assimp team
-
+Copyright (c) 2006-2024, assimp team
 
 All rights reserved.
 
@@ -43,11 +42,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /** @file Declares a helper class, "CommentRemover", which can be
  *  used to remove comments (single and multi line) from a text file.
  */
+#pragma once
 #ifndef AI_REMOVE_COMMENTS_H_INC
 #define AI_REMOVE_COMMENTS_H_INC
 
+#ifdef __GNUC__
+#   pragma GCC system_header
+#endif
 
-#include "assimp/defs.h"
+#include <assimp/defs.h>
 
 namespace Assimp    {
 
@@ -58,33 +61,32 @@ namespace Assimp    {
  *  to those in C or C++ so this code has been moved to a separate
  *  module.
  */
-class ASSIMP_API CommentRemover
-{
-	// class cannot be instanced
-	CommentRemover() {}
+class ASSIMP_API CommentRemover {
+    // class cannot be instanced
+    CommentRemover() {}
 
 public:
 
-	//! Remove single-line comments. The end of a line is
-	//! expected to be either NL or CR or NLCR.
-	//! \param szComment The start sequence of the comment, e.g. "//"
-	//! \param szBuffer Buffer to work with
-	//! \param chReplacement Character to be used as replacement
-	//! for commented lines. By default this is ' '
-	static void RemoveLineComments(const char *szComment,
-		char *szBuffer, char chReplacement = ' ');
+    //! Remove single-line comments. The end of a line is
+    //! expected to be either NL or CR or NLCR.
+    //! \param szComment The start sequence of the comment, e.g. "//"
+    //! \param szBuffer Buffer to work with
+    //! \param chReplacement Character to be used as replacement
+    //! for commented lines. By default this is ' '
+    static void RemoveLineComments(const char* szComment,
+        char* szBuffer, char chReplacement = ' ');
 
-	//! Remove multi-line comments. The end of a line is
-	//! expected to be either NL or CR or NLCR. Multi-line comments
-	//! may not be nested (as in C).
-	//! \param szCommentStart The start sequence of the comment, e.g. "/*"
-	//! \param szCommentEnd The end sequence of the comment, e.g. "*/"
-	//! \param szBuffer Buffer to work with
-	//! \param chReplacement Character to be used as replacement
-	//! for commented lines. By default this is ' '
-	static void RemoveMultiLineComments(const char *szCommentStart,
-		const char *szCommentEnd,char *szBuffer,
-		char chReplacement = ' ');
+    //! Remove multi-line comments. The end of a line is
+    //! expected to be either NL or CR or NLCR. Multi-line comments
+    //! may not be nested (as in C).
+    //! \param szCommentStart The start sequence of the comment, e.g. "/*"
+    //! \param szCommentEnd The end sequence of the comment, e.g. "*/"
+    //! \param szBuffer Buffer to work with
+    //! \param chReplacement Character to be used as replacement
+    //! for commented lines. By default this is ' '
+    static void RemoveMultiLineComments(const char* szCommentStart,
+        const char* szCommentEnd,char* szBuffer,
+        char chReplacement = ' ');
 };
 } // ! Assimp
 
