@@ -64,20 +64,20 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)inc;$(ProjectDir)third_party;C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include;$(ProjectDir)games</IncludePath>
-    <LibraryPath>$(ProjectDir)third_party\dxtex\bin\$(Configuration);$(ProjectDir)third_party\DirectXTK\bin\$(Configuration);$(ProjectDir)third_party\assimp\bin\x64;$(ProjectDir)third_party\lua\bin\$(Configuration);$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(ProjectDir)third_party\dxtex\bin\$(Configuration);$(ProjectDir)third_party\DirectXTK\bin\$(Configuration);$(ProjectDir)third_party\assimp\bin\$(Configuration);$(ProjectDir)third_party\lua\bin\$(Configuration);$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)\int\$(Platform)\$(Configuration)\</IntDir>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CodeAnalysisRuleSet>..\keyc0de_microsoft_modified_static_analysis_ruleset.ruleset</CodeAnalysisRuleSet>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)inc;$(ProjectDir)third_party;C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include;$(ProjectDir)games</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)inc;$(ProjectDir)third_party;C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include;$(ProjectDir)games</IncludePath>
-    <LibraryPath>$(ProjectDir)third_party\dxtex\bin\$(Configuration);$(ProjectDir)third_party\DirectXTK\bin\$(Configuration);$(ProjectDir)third_party\assimp\bin\x64;$(ProjectDir)third_party\lua\bin\$(Configuration);$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(ProjectDir)third_party\dxtex\bin\$(Configuration);$(ProjectDir)third_party\DirectXTK\bin\$(Configuration);$(ProjectDir)third_party\assimp\bin\$(Configuration);$(ProjectDir)third_party\lua\bin\$(Configuration);$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)\int\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)inc;$(ProjectDir)third_party;C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include;$(ProjectDir)games</IncludePath>
-    <LibraryPath>$(ProjectDir)third_party\dxtex\bin\Release;$(ProjectDir)third_party\DirectXTK\bin\Release;$(ProjectDir)third_party\assimp\bin\x64;$(ProjectDir)third_party\lua\bin\$(Configuration);$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(ProjectDir)third_party\dxtex\bin\$(Configuration);$(ProjectDir)third_party\DirectXTK\bin\$(Configuration);$(ProjectDir)third_party\assimp\bin\$(Configuration);$(ProjectDir)third_party\lua\bin\$(Configuration);$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)\int\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
