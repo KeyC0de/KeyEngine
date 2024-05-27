@@ -40,7 +40,7 @@ public:
 	//	\function	colorToVector	||	\date	2022/02/18 17:49
 	//	\brief	convert from Color(0..255) to vector(-1..1)
 	static const DirectX::XMVECTOR colorToVector( const Bitmap::Texel col ) noexcept;
-	static const Bitmap::Texel vectorToColor( const DirectX::XMVECTOR &v ) noexcept;
+	static Bitmap::Texel vectorToColor( DirectX::XMVECTOR v ) noexcept;
 public:
 	Bitmap( const unsigned int width, const unsigned int height );
 

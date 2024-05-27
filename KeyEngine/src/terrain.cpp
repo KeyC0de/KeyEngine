@@ -29,10 +29,13 @@ Terrain::Terrain( Graphics &gfx,
 	const float initialScale /*= 1.0f*/,
 	const DirectX::XMFLOAT3 &initialRot /*= {0.0f, 0.0f, 0.0f}*/,
 	const DirectX::XMFLOAT3 &initialPos /*= {0.0f, 0.0f, 0.0f}*/,
+	const DirectX::XMFLOAT4 &color /*= {1.0f, 1.0f, 1.0f, 1.0f}*/,
+	const std::string &diffuseTexturePath /*= "assets/models/brick_wall/brick_wall_diffuse.jpg"*/,
 	const int normalizeAmount /*= 4*/,
 	const int terrainAreaUnitMultiplier /*= 10*/ )
 	:
-	Mesh{{1.0f, 1.0f, 1.0f}, initialRot, initialPos}
+	Mesh{{1.0f, 1.0f, 1.0f}, initialRot, initialPos},
+	m_colorPscb{color}
 {
 	const int lengthVerts = util::ceil( length ) * 2;
 	const int widthVerts = util::ceil( width ) * 2;
@@ -62,23 +65,41 @@ Terrain::Terrain( Graphics &gfx,
 
 		opaque.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
-		opaque.addBindable( Texture::fetch( gfx, "assets/models/brick_wall/brick_wall_diffuse.jpg", 0u ) );
-
-		opaque.addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
-
 		auto pVs = VertexShader::fetch( gfx, "plane_vs.cso" );
 		opaque.addBindable( InputLayout::fetch( gfx, planarGrid.m_vb.getLayout(), *pVs ) );
 		opaque.addBindable( std::move( pVs ) );
 
-		opaque.addBindable( PixelShader::fetch( gfx, "plane_ps.cso" ) );
+		if ( diffuseTexturePath.empty() && ( color.x != 1.0f || color.y != 1.0f || color.z != 1.0f ) )
+		{
+			opaque.addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
 
-		con::RawLayout cbLayout;
-		cbLayout.add<con::Float3>( "modelSpecularColor" );
-		cbLayout.add<con::Float>( "modelSpecularGloss" );
-		auto cb = con::CBuffer( std::move( cbLayout ) );
-		cb["modelSpecularColor"] = dx::XMFLOAT3{1.0f, 1.0f, 1.0f};
-		cb["modelSpecularGloss"] = 128.0f;
-		opaque.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
+			opaque.addBindable( std::make_shared<PixelShaderConstantBuffer<ColorPSCB>>( gfx, m_colorPscb, 0u ) );
+		}
+		else
+		{
+			auto lightenTexture = [] ( Bitmap::Texel col ) -> dx::XMVECTOR
+				{
+					const auto v = Bitmap::colorToVector( col );
+					const auto lighter = dx::XMVectorReplicate( 1.2f );
+					return dx::XMVectorMultiply( v, lighter );
+				};
+
+			opaque.addBindable( Texture::fetch( gfx, diffuseTexturePath, 0u, lightenTexture ) );
+
+			opaque.addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
+
+			con::RawLayout cbLayout;
+			cbLayout.add<con::Float3>( "modelSpecularColor" );
+			cbLayout.add<con::Float>( "modelSpecularGloss" );
+			auto cb = con::CBuffer( std::move( cbLayout ) );
+			cb["modelSpecularColor"] = dx::XMFLOAT3{1.0f, 1.0f, 1.0f};
+			cb["modelSpecularGloss"] = 32.0f;
+
+
+			opaque.addBindable( PixelShader::fetch( gfx, "plane_ps.cso" ) );
+
+			opaque.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
+		}
 
 		opaque.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
 

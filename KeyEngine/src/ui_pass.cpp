@@ -53,6 +53,7 @@ void UIPass::recreate( Graphics &gfx )
 		compStateTexts.emplace_back( "default_fps_counter"s, "fps_counter"s );
 		Component::create_component( gfx, "fps_counter", pRoot, 0, 0, 32, 8, false, compStateTexts, {}, dx::Colors::Green );
 	}
+	/*
 	{
 		std::vector<std::pair<std::string, std::string>> compStateImages;
 		const std::string filepath = "assets/textures/ui/red_vignette.png"s;
@@ -66,6 +67,7 @@ void UIPass::recreate( Graphics &gfx )
 		}
 		Component::create_component( gfx, "vignette", pRoot, (gfx.getClientWidth() >> 1) - (bitmapWidth >> 1), (gfx.getClientHeight() >> 1) - (bitmapHeight >> 1), bitmapWidth, bitmapHeight, false, {}, compStateImages );
 	}
+	*/
 	{
 		std::vector<std::pair<std::string, std::string>> compStateImages;
 		const std::string filepath = "assets/textures/ui/health_icon.png"s;

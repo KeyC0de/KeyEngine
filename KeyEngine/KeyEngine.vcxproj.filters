@@ -388,6 +388,9 @@
     <ClCompile Include="src\key_lua.cpp">
       <Filter>engine\scripts</Filter>
     </ClCompile>
+    <ClCompile Include="src\texture_processor.cpp">
+      <Filter>engine\vfx</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="third_party\imgui\imconfig.h">
@@ -1175,6 +1178,9 @@
     </ClInclude>
     <ClInclude Include="third_party\assimp\ZipArchiveIOSystem.h">
       <Filter>third_party\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\texture_processor.h">
+      <Filter>engine\vfx</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

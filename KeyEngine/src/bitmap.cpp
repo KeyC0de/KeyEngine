@@ -125,7 +125,7 @@ const dx::XMVECTOR Bitmap::colorToVector( const Bitmap::Texel col ) noexcept
 	return v;
 }
 
-const Bitmap::Texel Bitmap::vectorToColor( const dx::XMVECTOR &v ) noexcept
+Bitmap::Texel Bitmap::vectorToColor( dx::XMVECTOR v ) noexcept
 {
 	const auto all1 = dx::XMVectorReplicate( 1.0f );
 	dx::XMVECTOR nOut = dx::XMVectorAdd( v, all1 );

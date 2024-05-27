@@ -7,6 +7,7 @@
 #include "camera_manager.h"
 #include "camera.h"
 #include "d3d_utils.h"
+#include "settings_manager.h"
 
 
 // #TODO: Model LOD automatic switching
@@ -67,7 +68,7 @@ void Mesh::render( const size_t channels /* = rch::all*/ ) const noexcept
 {
 	ASSERT( !m_materials.empty(), "No Materials to submit to the Renderer!" );
 	ASSERT( m_meshId != 0, "Mesh not initialized properly!" );
-
+	
 	m_bRenderedThisFrame = !isFrustumCulled();
 	if ( m_bRenderedThisFrame )
 	{
@@ -271,6 +272,12 @@ void Mesh::createAabb( const aiMesh &aiMesh )
 
 bool Mesh::isFrustumCulled() const noexcept
 {
+	static auto &s = SettingsManager::getInstance();
+	if ( !s.getSettings().bEnableFrustumCuling )
+	{
+		return false;
+	}
+
 	const std::vector<DirectX::XMFLOAT4> &frustumPlanes = CameraManager::getInstance().getActiveCamera().getFrustumPlanes();
 	const int numPlanes = static_cast<const int>( frustumPlanes.size() );
 	ASSERT( numPlanes == 6, "Invalid number of planes!" );

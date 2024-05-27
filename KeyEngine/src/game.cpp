@@ -166,6 +166,8 @@ Sandbox3d::Sandbox3d( const int width,
 	m_pPointLight1 = std::make_unique<PointLight>( gfx, dx::XMFLOAT3{10.0f, 5.0f, -1.4f} );
 	//m_pPointLight2 = std::make_unique<PointLight>( m_mainWindow.getGraphics(), dx::XMFLOAT3{5.0f, 15.0f, 10.0f}, dx::XMFLOAT3{0.0f, 1.0f, 0.f}, false );
 
+	// #TODO: use an array of Models and iterate through them
+
 	m_cube1.setPosition( {10.0f, 5.0f, 6.0f} );
 
 	auto &renderer = gfx.getRenderer3d();
@@ -434,9 +436,8 @@ void Sandbox3d::update( const float dt,
 	m_plane1Red.update( dt, lerpBetweenFrames );
 	m_plane2Green.update( dt, lerpBetweenFrames );
 	m_plane3Textured.update( dt, lerpBetweenFrames );
-	//m_nanoSuit.update( dt, lerpBetweenFrames );
 	m_carabiner.update( dt, lerpBetweenFrames );
-	m_sponzaScene.update( dt, lerpBetweenFrames );
+	//m_sponzaScene.update( dt, lerpBetweenFrames );
 
 	auto &mouse = m_mainWindow.getMouse();
 	gui::Point ui_point{mouse.getX(), mouse.getY()};
@@ -469,9 +470,8 @@ void Sandbox3d::render()
 	m_plane1Red.render();
 	m_plane2Green.render();
 	m_plane3Textured.render(rch::opaque | rch::shadow );
-	//m_nanoSuit.render( rch::opaque | rch::shadow | rch::blurOutline );
 	m_carabiner.render( rch::opaque | rch::shadow | rch::solidOutline | rch::blurOutline );
-	m_sponzaScene.render( rch::opaque | rch::shadow );
+	//m_sponzaScene.render( rch::opaque | rch::shadow );
 
 	s_cameraMan.render( rch::opaque | rch::wireframe );
 
@@ -540,10 +540,11 @@ void Sandbox3d::connectToRenderer( ren::Renderer3d &renderer )
 	m_plane1Red.connectMaterialsToRenderer( renderer );
 	m_plane2Green.connectMaterialsToRenderer( renderer );
 	m_plane3Textured.connectMaterialsToRenderer( renderer );
-	//m_nanoSuit.connectMaterialsToRenderer( renderer );
 	m_carabiner.connectMaterialsToRenderer( renderer );
-	m_sponzaScene.connectMaterialsToRenderer( renderer );
+	//m_sponzaScene.connectMaterialsToRenderer( renderer );
 
+	m_terrain.setMaterialEnabled( rch::wireframe, false );
+	m_terrain.setMaterialEnabled( rch::opaque, true );
 	m_cube2.setMaterialEnabled( rch::blurOutline, false );
 }
 

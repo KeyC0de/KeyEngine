@@ -31,6 +31,7 @@ class SettingsManager final
 		bool bGamePaused = false;
 		bool bFullscreen = false;
 		bool bAllowWindowResize = false;
+		bool bEnableFrustumCuling = true;
 		std::string sSkyboxFileName = "";
 		std::string sFontName = "myComicSansMSSpriteFont";
 	} m_settings;

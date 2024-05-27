@@ -60,7 +60,13 @@ Plane::Plane( Graphics &gfx,
 		transparent.addBindable( InputLayout::fetch( gfx, plane.m_vb.getLayout(), *pVs ) );
 		transparent.addBindable( std::move( pVs ) );
 
-		if ( !diffuseTexturePath.empty() )
+		if ( diffuseTexturePath.empty() && ( color.x != 1.0f || color.y != 1.0f || color.z != 1.0f ) )
+		{
+			transparent.addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
+
+			transparent.addBindable( std::make_shared<PixelShaderConstantBuffer<ColorPSCB>>( gfx, m_colorPscb, 0u ) );
+		}
+		else
 		{
 			transparent.addBindable( Texture::fetch( gfx, diffuseTexturePath, 0u ) );
 
@@ -76,12 +82,6 @@ Plane::Plane( Graphics &gfx,
 			cb["modelSpecularGloss"] = 128.0f;
 			transparent.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
 		}
-		else
-		{
-			transparent.addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
-
-			transparent.addBindable( std::make_shared<PixelShaderConstantBuffer<ColorPSCB>>( gfx, m_colorPscb, 0u ) );
-		}
 
 		transparent.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Both ) );
 
@@ -96,23 +96,34 @@ Plane::Plane( Graphics &gfx,
 
 		opaque.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
-		opaque.addBindable( Texture::fetch( gfx, diffuseTexturePath, 0u ) );
-
-		opaque.addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
-
 		auto pVs = VertexShader::fetch( gfx, "plane_vs.cso" );
 		opaque.addBindable( InputLayout::fetch( gfx, plane.m_vb.getLayout(), *pVs ) );
 		opaque.addBindable( std::move( pVs ) );
 
 		opaque.addBindable( PixelShader::fetch( gfx, "plane_ps.cso" ) );
 
-		con::RawLayout cbLayout;
-		cbLayout.add<con::Float3>( "modelSpecularColor" );
-		cbLayout.add<con::Float>( "modelSpecularGloss" );
-		auto cb = con::CBuffer( std::move( cbLayout ) );
-		cb["modelSpecularColor"] = dx::XMFLOAT3{1.0f, 1.0f, 1.0f};
-		cb["modelSpecularGloss"] = 128.0f;
-		opaque.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
+		if ( diffuseTexturePath.empty() && ( color.x != 1.0f || color.y != 1.0f || color.z != 1.0f ) )
+		{
+			opaque.addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
+
+			opaque.addBindable( std::make_shared<PixelShaderConstantBuffer<ColorPSCB>>( gfx, m_colorPscb, 0u ) );
+		}
+		else
+		{
+			opaque.addBindable( Texture::fetch( gfx, diffuseTexturePath, 0u ) );
+
+			opaque.addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
+
+			opaque.addBindable( PixelShader::fetch( gfx, "plane_ps.cso" ) );
+
+			con::RawLayout cbLayout;
+			cbLayout.add<con::Float3>( "modelSpecularColor" );
+			cbLayout.add<con::Float>( "modelSpecularGloss" );
+			auto cb = con::CBuffer( std::move( cbLayout ) );
+			cb["modelSpecularColor"] = dx::XMFLOAT3{1.0f, 1.0f, 1.0f};
+			cb["modelSpecularGloss"] = 128.0f;
+			opaque.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
+		}
 
 		opaque.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Both ) );
 

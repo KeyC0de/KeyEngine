@@ -219,6 +219,7 @@
     <ClCompile Include="src\line.cpp" />
     <ClCompile Include="src\reporter_access.cpp" />
     <ClCompile Include="src\imgui_visitors.cpp" />
+    <ClCompile Include="src\texture_processor.cpp" />
     <ClCompile Include="src\ui_pass.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
       </ExcludedFromBuild>
@@ -422,6 +423,7 @@
     <ClInclude Include="inc\line.h" />
     <ClInclude Include="inc\reporter_access.h" />
     <ClInclude Include="inc\imgui_visitors.h" />
+    <ClInclude Include="inc\texture_processor.h" />
     <ClInclude Include="inc\ui_pass.h" />
     <ClInclude Include="inc\camera_frustum.h" />
     <ClInclude Include="inc\fullscreen_pass.h" />
