@@ -9,8 +9,10 @@
 #include <iostream>
 #include <tuple>
 #include "signal_handling.h"
-#include "jthread_pool.h"
-//#include "bmp_loader.h"
+#include "thread_poolj.h"
+#ifndef FINAL_RELEASE
+#	include "testing.h"
+#endif
 #include "key_sound.h"
 
 #ifndef NO_DUMPS
@@ -61,14 +63,7 @@ int WINAPI wWinMain( _In_ HINSTANCE hinstance,
 	{
 		try
 		{
-#if defined _DEBUG && !defined NDEBUG
-			KeyConsole &console = KeyConsole::getInstance();
-			checkWindowsMetricsTest();
-#endif
 			const auto& [width, height, startX, startY] = parseCommandLineArguments();
-
-			//BmpLoader bmp{"assets/textures/grey_image.bmp"};
-			//return bmp.applyPerlinNoise( "assets/textures/grey_image_out.bmp" ) == true ? EXIT_SUCCESS : EXIT_FAILURE;
 
 			if constexpr ( gph_mode::get() == gph_mode::_3D )
 			{
@@ -137,6 +132,11 @@ int WINAPI wWinMain( _In_ HINSTANCE hinstance,
 
 void firstly()
 {
+#ifndef FINAL_RELEASE
+	// testing
+	//testLuaScripting();
+#endif
+
 	fflush( stdin );
 	fflush( stderr );
 	fflush( stdout );
@@ -154,6 +154,10 @@ void firstly()
 	SettingsManager &settingsMan = SettingsManager::getInstance();
 	ThreadPoolJ &threadPool = ThreadPoolJ::getInstance( settingsMan.getSettings().nThreads, true );
 	auto &soundPlayer = SoundPlayer::getInstance();
+#if defined _DEBUG && !defined NDEBUG
+	KeyConsole &console = KeyConsole::getInstance();
+	checkWindowsMetricsTest();
+#endif
 }
 
 void finally( const std::exception_ptr &exceptionPtr )

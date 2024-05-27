@@ -9,7 +9,7 @@
 #endif // _DEBUG
 #include "reporter_access.h"
 #include "reporter_listener_events.h"
-#include "jthread_pool.h"
+#include "thread_poolj.h"
 
 #pragma comment( lib, "xaudio2_8.lib" )
 

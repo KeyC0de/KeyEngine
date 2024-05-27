@@ -65,19 +65,19 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)inc;$(ProjectDir)third_party;C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include;$(ProjectDir)games</IncludePath>
-    <LibraryPath>$(ProjectDir)third_party\dxtex\bin\$(Configuration);$(ProjectDir)third_party\DirectXTK\bin\$(Configuration);$(ProjectDir)third_party\assimp\bin\x64;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(ProjectDir)third_party\dxtex\bin\$(Configuration);$(ProjectDir)third_party\DirectXTK\bin\$(Configuration);$(ProjectDir)third_party\assimp\bin\x64;$(ProjectDir)third_party\lua\bin\$(Configuration);$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)\int\$(Platform)\$(Configuration)\</IntDir>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CodeAnalysisRuleSet>..\keyc0de_microsoft_modified_static_analysis_ruleset.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)inc;$(ProjectDir)third_party;C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include;$(ProjectDir)games</IncludePath>
-    <LibraryPath>$(ProjectDir)third_party\dxtex\bin\$(Configuration);$(ProjectDir)third_party\DirectXTK\bin\$(Configuration);$(ProjectDir)third_party\assimp\bin\x64;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(ProjectDir)third_party\dxtex\bin\$(Configuration);$(ProjectDir)third_party\DirectXTK\bin\$(Configuration);$(ProjectDir)third_party\assimp\bin\x64;$(ProjectDir)third_party\lua\bin\$(Configuration);$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)\int\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)inc;$(ProjectDir)third_party;C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include;$(ProjectDir)games</IncludePath>
-    <LibraryPath>$(ProjectDir)third_party\dxtex\bin\Release;$(ProjectDir)third_party\DirectXTK\bin\Release;$(ProjectDir)third_party\assimp\bin\x64;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(ProjectDir)third_party\dxtex\bin\Release;$(ProjectDir)third_party\DirectXTK\bin\Release;$(ProjectDir)third_party\assimp\bin\x64;$(ProjectDir)third_party\lua\bin\$(Configuration);$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)\int\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -215,6 +215,7 @@
     <ClCompile Include="src\dynamic_constant_buffer.cpp" />
     <ClCompile Include="src\dynamic_vertex_buffer.cpp" />
     <ClCompile Include="src\effect.cpp" />
+    <ClCompile Include="src\key_lua.cpp" />
     <ClCompile Include="src\line.cpp" />
     <ClCompile Include="src\reporter_access.cpp" />
     <ClCompile Include="src\imgui_visitors.cpp" />
@@ -307,11 +308,12 @@
     <ClCompile Include="src\sysmetrics.cpp" />
     <ClCompile Include="src\terrain.cpp" />
     <ClCompile Include="src\testing.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="src\main_test.cpp">
+    <ClCompile Include="src\catch_test_main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">true</ExcludedFromBuild>
@@ -319,7 +321,7 @@
     <ClCompile Include="src\texture.cpp" />
     <ClCompile Include="src\texture_desc.cpp" />
     <ClCompile Include="src\texture_sampler_state.cpp" />
-    <ClCompile Include="src\jthread_pool.cpp" />
+    <ClCompile Include="src\thread_poolj.cpp" />
     <ClCompile Include="src\transform_vscb.cpp" />
     <ClCompile Include="src\transparent_pass.cpp" />
     <ClCompile Include="src\triangle_mesh.cpp" />
@@ -345,7 +347,6 @@
     <ClCompile Include="third_party\imgui\imgui_impl_dx11.cpp" />
     <ClCompile Include="third_party\imgui\imgui_impl_win32.cpp" />
     <ClCompile Include="third_party\imgui\imgui_widgets.cpp" />
-    <ClCompile Include="src\thread_pool.cpp" />
     <None Include="assets\resources\arrow.cur" />
     <None Include="assets\resources\homm_inspired_new.cur" />
     <None Include="assimp-vc140-mt.dll" />
@@ -361,6 +362,7 @@
     </None>
     <None Include="config\imgui.ini" />
     <None Include="config\imgui_default.ini" />
+    <None Include="lua53.dll" />
     <None Include="scripts\scripting.lua" />
     <None Include="config\test.ini" />
     <None Include="shaders\hlsli\directional_light_pscb.hlsli" />
@@ -412,6 +414,7 @@
     <ClInclude Include="inc\dynamic_constant_buffer.h" />
     <ClInclude Include="inc\dynamic_vertex_buffer.h" />
     <ClInclude Include="inc\effect.h" />
+    <ClInclude Include="inc\key_lua.h" />
     <ClInclude Include="inc\lighting_mode.h" />
     <ClInclude Include="inc\line.h" />
     <ClInclude Include="inc\reporter_access.h" />
@@ -473,7 +476,7 @@
     <ClInclude Include="inc\texture.h" />
     <ClInclude Include="inc\texture_desc.h" />
     <ClInclude Include="inc\texture_sampler_state.h" />
-    <ClInclude Include="inc\jthread_pool.h" />
+    <ClInclude Include="inc\thread_poolj.h" />
     <ClInclude Include="inc\transform_vscb.h" />
     <ClInclude Include="inc\transparent_pass.h" />
     <ClInclude Include="inc\triangle_mesh.h" />
@@ -644,8 +647,11 @@
     <ClInclude Include="third_party\inih\INIReader.h" />
     <ClInclude Include="third_party\jthread\jthread.h" />
     <ClInclude Include="third_party\jthread\stop_token.h" />
+    <ClInclude Include="third_party\lua\lauxlib.h" />
+    <ClInclude Include="third_party\lua\lua.h" />
+    <ClInclude Include="third_party\lua\luaconf.h" />
+    <ClInclude Include="third_party\lua\lualib.h" />
     <ClInclude Include="third_party\magic_enum\magic_enum.h" />
-    <ClInclude Include="inc\thread_pool.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="KeyEngine.rc">
@@ -856,6 +862,9 @@
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">$(ProjectDir)int\$(Platform)\$(Configuration)\shaders\%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(ProjectDir)int\$(Platform)\$(Configuration)\shaders\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="third_party\lua\version.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

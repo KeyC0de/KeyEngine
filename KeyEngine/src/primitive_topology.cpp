@@ -3,6 +3,9 @@
 #include "dxgi_info_queue.h"
 
 
+// #TODO: add a static function in each bindable that returns a static identifier that identifies the stage of the GPU pipeline this Bindable/GPU-state will run in
+// eg PrimitiveTopology runs in Input Assembler
+
 PrimitiveTopology::PrimitiveTopology( Graphics &gfx,
 	const D3D11_PRIMITIVE_TOPOLOGY topology )
 	:

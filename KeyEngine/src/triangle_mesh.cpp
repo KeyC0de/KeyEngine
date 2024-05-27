@@ -10,7 +10,7 @@ TriangleMesh::TriangleMesh( const ver::VBuffer &vertices,
 	m_vb{vertices},
 	m_indices(indices)
 {
-	//ASSERT( m_vb.getVertexCount() > 2, "Insufficient vertices!" );
+	ASSERT( m_vb.getVertexCount() > 2 || ( m_vb.getVertexCount() > 1 && m_indices.size() == 3 /*for line rendering*/), "Insufficient vertices!" );
 	if ( !bMultimesh )
 	{
 		ASSERT( m_indices.size() % 3 == 0, "indices not a multiple of 3!" );

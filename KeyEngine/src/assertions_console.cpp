@@ -13,20 +13,21 @@ bool assertPrint( const char *expr,
 	const char *msg )
 {
 	KeyConsole &console = KeyConsole::getInstance();
-	console.error( ">> Assertion failed @ file: ");
-	console.error( file );
-	console.error( "\n>> function: " );
-	console.error( function );
-	console.error( "\n>> line: " );
-	console.error( std::to_string( line ) );
-	console.error( "\n>> ( " );
-	console.error( expr );
-	console.error( " )\n" );
+	//console.error( ">> Assertion failed @ file: ");	// #FIXME: console::error outputing issues in console
+	console.log( ">> Assertion failed @ file: ");
+	console.log( file );
+	console.log( "\n>> function: " );
+	console.log( function );
+	console.log( "\n>> line: " );
+	console.log( std::to_string( line ) );
+	console.log( "\n>> ( " );
+	console.log( expr );
+	console.log( " )\n" );
 	if ( msg != nullptr )
 	{
-		console.error( ">> Diagnostic message: " );
-		console.error( msg );
-		console.error( "\n" );
+		console.log( ">> Diagnostic message: " );
+		console.log( msg );
+		console.log( "\n" );
 	}
 	return true;
 }

@@ -16,7 +16,7 @@
     <ClCompile Include="third_party\imgui\imgui_widgets.cpp">
       <Filter>third_party\imgui</Filter>
     </ClCompile>
-    <ClCompile Include="src\main_test.cpp">
+    <ClCompile Include="src\catch_test_main.cpp">
       <Filter>tests</Filter>
     </ClCompile>
     <ClCompile Include="src\testing.cpp">
@@ -94,9 +94,6 @@
     <ClCompile Include="src\settings_manager.cpp">
       <Filter>engine\common_util</Filter>
     </ClCompile>
-    <ClCompile Include="src\thread_pool.cpp">
-      <Filter>engine\common_util</Filter>
-    </ClCompile>
     <ClCompile Include="src\model.cpp">
       <Filter>engine\gameplay</Filter>
     </ClCompile>
@@ -124,7 +121,7 @@
     <ClCompile Include="src\dumpling.cpp">
       <Filter>engine\os\win</Filter>
     </ClCompile>
-    <ClCompile Include="src\jthread_pool.cpp">
+    <ClCompile Include="src\thread_poolj.cpp">
       <Filter>engine\common_util</Filter>
     </ClCompile>
     <ClCompile Include="src\world.cpp">
@@ -388,6 +385,7 @@
     <ClCompile Include="src\line.cpp">
       <Filter>engine\vfx\renderables</Filter>
     </ClCompile>
+    <ClCompile Include="src\key_lua.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="third_party\imgui\imconfig.h">
@@ -747,9 +745,6 @@
     <ClInclude Include="inc\settings_manager.h">
       <Filter>engine\common_util</Filter>
     </ClInclude>
-    <ClInclude Include="inc\thread_pool.h">
-      <Filter>engine\common_util</Filter>
-    </ClInclude>
     <ClInclude Include="inc\model.h">
       <Filter>engine\gameplay</Filter>
     </ClInclude>
@@ -792,7 +787,7 @@
     <ClInclude Include="third_party\jthread\jthread.h">
       <Filter>third_party\jthread</Filter>
     </ClInclude>
-    <ClInclude Include="inc\jthread_pool.h">
+    <ClInclude Include="inc\thread_poolj.h">
       <Filter>engine\common_util</Filter>
     </ClInclude>
     <ClInclude Include="inc\world.h">
@@ -1143,6 +1138,21 @@
     <ClInclude Include="inc\lighting_mode.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
+    <ClInclude Include="inc\key_lua.h">
+      <Filter>engine\scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\lua\lauxlib.h">
+      <Filter>third_party\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\lua\lua.h">
+      <Filter>third_party\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\lua\luaconf.h">
+      <Filter>third_party\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\lua\lualib.h">
+      <Filter>third_party\lua</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\resources\tray_graffiti.ico">
@@ -1229,6 +1239,7 @@
     <None Include="assets\resources\arrow.cur">
       <Filter>assets\resources</Filter>
     </None>
+    <None Include="lua53.dll" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="third_party">
@@ -1335,6 +1346,9 @@
     </Filter>
     <Filter Include="engine\vfx\ui">
       <UniqueIdentifier>{e8dfe790-33e1-4de3-af86-47ec7add9c58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="third_party\lua">
+      <UniqueIdentifier>{94ac4f72-42a2-4e50-add5-5e44df6e617f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1448,5 +1462,10 @@
     <ResourceCompile Include="KeyEngine.rc">
       <Filter>assets\resources</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="third_party\lua\version.txt">
+      <Filter>third_party\lua</Filter>
+    </Text>
   </ItemGroup>
 </Project>
