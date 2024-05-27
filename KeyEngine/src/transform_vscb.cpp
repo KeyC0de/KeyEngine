@@ -127,7 +127,7 @@ TransformScaleVSCB& TransformScaleVSCB::operator=( TransformScaleVSCB &&rhs ) no
 	return *this;
 }
 
-void TransformScaleVSCB::accept( IImGuiEffectVisitor &ev )
+void TransformScaleVSCB::accept( IImGuiMaterialVisitor &ev )
 {
 	ev.visit( m_cbScale );
 }

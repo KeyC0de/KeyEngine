@@ -36,7 +36,7 @@ Sphere::Sphere( Graphics &gfx,
 	setMeshId();
 
 	{
-		Effect opaque{rch::opaque, "opaque", true};
+		Material opaque{rch::opaque, "opaque", true};
 
 		opaque.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
@@ -57,7 +57,7 @@ Sphere::Sphere( Graphics &gfx,
 
 		opaque.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
 
-		addEffect( std::move( opaque ) );
+		addMaterial( std::move( opaque ) );
 	}
 }
 

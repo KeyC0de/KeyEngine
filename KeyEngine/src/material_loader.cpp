@@ -1,6 +1,6 @@
 #include "material_loader.h"
 #include "graphics.h"
-#include "effect.h"
+#include "material.h"
 #include "vertex_buffer.h"
 #include "index_buffer.h"
 #include "primitive_topology.h"
@@ -37,9 +37,9 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 
 	if constexpr ( lgh_mode::get() == lgh_mode::LightingMode::BlinnPhong )
 	{
-		// #TODO: add transparent effect
-		{// opaque effect
-			Effect opaque{rch::opaque, "opaque", true};
+		// #TODO: add transparent material
+		{// opaque material
+			Material opaque{rch::opaque, "opaque", true};
 
 			opaque.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
@@ -142,28 +142,28 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 				pscb["normalMapStrength"].setIfValid( 1.0f );
 				opaque.addBindable( std::make_unique<PixelShaderConstantBufferEx>( gfx, 0u, std::move( pscb ) ) );
 			}
-			m_effects.emplace_back( std::move( opaque ) );
+			m_materials.emplace_back( std::move( opaque ) );
 		}
-		{// shadow map effect
-			Effect shadowMap{rch::shadow, "shadowMap", true};
+		{// shadow map material
+			Material shadowMap{rch::shadow, "shadowMap", true};
 
 			shadowMap.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
 			shadowMap.addBindable( InputLayout::fetch( gfx, m_vertexLayout, *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 			shadowMap.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
 
-			m_effects.emplace_back( std::move( shadowMap ) );
+			m_materials.emplace_back( std::move( shadowMap ) );
 		}
-		{// blur outline mask effect
-			Effect blurOutlineMask{rch::blurOutline, "blurOutlineMask", false};
+		{// blur outline mask material
+			Material blurOutlineMask{rch::blurOutline, "blurOutlineMask", false};
 
 			blurOutlineMask.addBindable( InputLayout::fetch( gfx, m_vertexLayout, *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 			blurOutlineMask.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
 
-			m_effects.emplace_back( std::move( blurOutlineMask ) );
+			m_materials.emplace_back( std::move( blurOutlineMask ) );
 		}
-		{// blur outline draw effect
-			Effect blurOutlineDraw{rch::blurOutline, "blurOutlineDraw", false};
+		{// blur outline draw material
+			Material blurOutlineDraw{rch::blurOutline, "blurOutlineDraw", false};
 			{
 				con::RawLayout cbLayout;
 				cbLayout.add<con::Float3>( "materialColor" );
@@ -174,18 +174,18 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 			blurOutlineDraw.addBindable( InputLayout::fetch( gfx, m_vertexLayout, *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 			blurOutlineDraw.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
 
-			m_effects.emplace_back( std::move( blurOutlineDraw ) );
+			m_materials.emplace_back( std::move( blurOutlineDraw ) );
 		}
-		{// solid outline mask effect
-			Effect solidOutlineMask{rch::solidOutline, "solidOutlineMask", false};
+		{// solid outline mask material
+			Material solidOutlineMask{rch::solidOutline, "solidOutlineMask", false};
 			solidOutlineMask.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
 
 			solidOutlineMask.addBindable( InputLayout::fetch( gfx, m_vertexLayout, *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 
-			m_effects.emplace_back( std::move( solidOutlineMask ) );
+			m_materials.emplace_back( std::move( solidOutlineMask ) );
 		}
-		{// solid outline draw effect
-			Effect solidOutlineDraw{rch::solidOutline, "solidOutlineDraw", false};
+		{// solid outline draw material
+			Material solidOutlineDraw{rch::solidOutline, "solidOutlineDraw", false};
 
 			auto transformScaledVcb = std::make_shared<TransformScaleVSCB>( gfx, 0u, 1.04f );
 			solidOutlineDraw.addBindable( transformScaledVcb );
@@ -198,7 +198,7 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 
 			solidOutlineDraw.addBindable( InputLayout::fetch( gfx, m_vertexLayout, *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 
-			m_effects.emplace_back( std::move( solidOutlineDraw ) );
+			m_materials.emplace_back( std::move( solidOutlineDraw ) );
 		}
 	}//BlinnPhong
 	if constexpr ( lgh_mode::get() == lgh_mode::LightingMode::PBR_UE )
@@ -256,7 +256,7 @@ std::string MaterialLoader::calcMeshTag( const aiMesh &aimesh ) const noexcept
 	return m_modelPath + "%" + aimesh.mName.C_Str();
 }
 
-std::vector<Effect> MaterialLoader::getEffects() const noexcept
+std::vector<Material> MaterialLoader::getMaterial() const noexcept
 {
-	return m_effects;
+	return m_materials;
 }

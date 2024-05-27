@@ -82,10 +82,10 @@ void Camera::render( const size_t channels /*= rch::all*/ ) const
 	}
 }
 
-void Camera::connectEffectsToRenderer( ren::Renderer &ren )
+void Camera::connectMaterialsToRenderer( ren::Renderer &ren )
 {
-	m_cameraFrustum.connectEffectsToRenderer( ren );
-	m_cameraWidget.connectEffectsToRenderer( ren );
+	m_cameraFrustum.connectMaterialsToRenderer( ren );
+	m_cameraWidget.connectMaterialsToRenderer( ren );
 }
 
 void Camera::makeActive( Graphics &gfx,

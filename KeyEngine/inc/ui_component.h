@@ -147,7 +147,7 @@ private:
 		std::string m_text;
 		// Interactive vs Enabled component:
 		// disabled means you can't interact with the component at all, no tooltips and no mouse interactions (for example just text or image display)
-		// interactive and disabled is to be able to show only tooltips but no clicks (so for example an effect with tooltip but that you can't click)
+		// interactive and disabled is to be able to show only tooltips but no clicks (so for example an material with tooltip but that you can't click)
 		// interactive and enabled is both tooltips and clicks (so like a button)
 		bool m_is_interactive = true;
 		bool m_is_enabled = false;

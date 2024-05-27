@@ -76,10 +76,10 @@ void Model::render( const size_t channels /*= rch::all*/ ) const cond_noex
 	m_pRoot->render( channels );
 }
 
-void Model::setEffectEnabled( const size_t channels,
+void Model::setMaterialEnabled( const size_t channels,
 	const bool bEnabled ) noexcept
 {
-	m_pRoot->setEffectEnabled( channels, bEnabled );
+	m_pRoot->setMaterialEnabled( channels, bEnabled );
 }
 
 void Model::displayImguiWidgets( Graphics &gfx ) noexcept
@@ -94,12 +94,12 @@ void Model::accept( IImguiNodeVisitor &v )
 	m_pRoot->accept( v );
 }
 
-void Model::connectEffectsToRenderer( ren::Renderer &r )
+void Model::connectMaterialsToRenderer( ren::Renderer &r )
 {
 	ASSERT( !m_meshes.empty(), "Model has no meshes to render!" );
 	for ( auto &pMesh : m_meshes )
 	{
-		pMesh->connectEffectsToRenderer( r );
+		pMesh->connectMaterialsToRenderer( r );
 	}
 }
 

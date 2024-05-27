@@ -7,7 +7,7 @@
 #include "d3d_utils.h"
 #include "assertions_console.h"
 #include "dynamic_constant_buffer.h"
-#include "effect.h"
+#include "material.h"
 #include "utils.h"
 
 
@@ -81,7 +81,7 @@ void ImguiNodeVisitorShowcase::displayImguiWidgets( Model &model ) noexcept
 			m_pSelectedNode->setWorldTransform( dx::XMMatrixRotationX( tf.pitch ) * dx::XMMatrixRotationY( tf.yaw ) * dx::XMMatrixRotationZ( tf.roll ) * dx::XMMatrixTranslation( tf.x, tf.y, tf.z ) );
 		}
 
-		ImguiEffectVisitorShowcase ev;
+		ImguiMaterialVisitorShowcase ev;
 		m_pSelectedNode->accept( ev );
 	}
 	ImGui::End();
@@ -113,21 +113,21 @@ ImguiNodeVisitorShowcase::TransformData& ImguiNodeVisitorShowcase::calcTransform
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-void IImGuiEffectVisitor::setEffect( Effect *pEffect )
+void IImGuiMaterialVisitor::setMaterial( Material *pMaterial )
 {
-	m_pEffect = pEffect;
-	++m_effectId;
-	onSetEffect();
+	m_pMaterial = pMaterial;
+	++m_materialId;
+	onSetMaterial();
 }
 
-bool IImGuiEffectVisitor::visit( con::CBuffer &cb )
+bool IImGuiMaterialVisitor::visit( con::CBuffer &cb )
 {
 	++m_imguiId;
 	return onVisit( cb );
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-bool ImguiEffectVisitorShowcase::onVisit( con::CBuffer &cb )
+bool ImguiMaterialVisitorShowcase::onVisit( con::CBuffer &cb )
 {
 	bool bDirty = false;
 	const auto dirtyCheck = [&bDirty]( const bool bChanged )
@@ -187,12 +187,12 @@ bool ImguiEffectVisitorShowcase::onVisit( con::CBuffer &cb )
 	return bDirty;
 }
 
-void ImguiEffectVisitorShowcase::onSetEffect()
+void ImguiMaterialVisitorShowcase::onSetMaterial()
 {
-	ImGui::TextColored( {0.4f, 1.0f, 0.6f, 1.0f}, util::capitalizeFirstLetter( m_pEffect->getTargetPassName() ).c_str() );
+	ImGui::TextColored( {0.4f, 1.0f, 0.6f, 1.0f}, util::capitalizeFirstLetter( m_pMaterial->getTargetPassName() ).c_str() );
 
-	bool bActive = m_pEffect->isEnabled();
+	bool bActive = m_pMaterial->isEnabled();
 	using namespace std::string_literals;
-	ImGui::Checkbox( ( "Effect Active#"s + std::to_string( m_effectId ) ).c_str(), &bActive );
-	m_pEffect->setEnabled( bActive );
+	ImGui::Checkbox( ( "Material Active#"s + std::to_string( m_materialId ) ).c_str(), &bActive );
+	m_pMaterial->setEnabled( bActive );
 }

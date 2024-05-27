@@ -497,7 +497,7 @@ void Sandbox3d::test()
 	/// Render Imgui stuff
 	auto &gfx = m_mainWindow.getGraphics();
 
-	// Showcase Effect controls by passing visitors to the object hierarchies
+	// Showcase Material controls by passing visitors to the object hierarchies
 	s_cameraMan.displayImguiWidgets( gfx );
 
 	m_pPointLight1->displayImguiWidgets();
@@ -526,25 +526,25 @@ void Sandbox3d::test()
 
 void Sandbox3d::connectToRenderer( ren::Renderer3d &renderer )
 {
-	s_cameraMan.connectEffectsToRenderer( renderer );
+	s_cameraMan.connectMaterialsToRenderer( renderer );
 
-	m_pPointLight1->connectEffectsToRenderer( renderer );
-	//m_pPointLight2->connectEffectsToRenderer( renderer );
+	m_pPointLight1->connectMaterialsToRenderer( renderer );
+	//m_pPointLight2->connectMaterialsToRenderer( renderer );
 
-	m_terrain.connectEffectsToRenderer( renderer );
-	m_debugLine1.connectEffectsToRenderer( renderer );
-	m_cube1.connectEffectsToRenderer( renderer );
-	m_cube2.connectEffectsToRenderer( renderer );
-	m_cube3.connectEffectsToRenderer( renderer );
-	m_testSphere.connectEffectsToRenderer( renderer );
-	m_plane1Red.connectEffectsToRenderer( renderer );
-	m_plane2Green.connectEffectsToRenderer( renderer );
-	m_plane3Textured.connectEffectsToRenderer( renderer );
-	//m_nanoSuit.connectEffectsToRenderer( renderer );
-	m_carabiner.connectEffectsToRenderer( renderer );
-	m_sponzaScene.connectEffectsToRenderer( renderer );
+	m_terrain.connectMaterialsToRenderer( renderer );
+	m_debugLine1.connectMaterialsToRenderer( renderer );
+	m_cube1.connectMaterialsToRenderer( renderer );
+	m_cube2.connectMaterialsToRenderer( renderer );
+	m_cube3.connectMaterialsToRenderer( renderer );
+	m_testSphere.connectMaterialsToRenderer( renderer );
+	m_plane1Red.connectMaterialsToRenderer( renderer );
+	m_plane2Green.connectMaterialsToRenderer( renderer );
+	m_plane3Textured.connectMaterialsToRenderer( renderer );
+	//m_nanoSuit.connectMaterialsToRenderer( renderer );
+	m_carabiner.connectMaterialsToRenderer( renderer );
+	m_sponzaScene.connectMaterialsToRenderer( renderer );
 
-	m_cube2.setEffectEnabled( rch::blurOutline, false );
+	m_cube2.setMaterialEnabled( rch::blurOutline, false );
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

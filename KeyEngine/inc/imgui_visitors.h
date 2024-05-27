@@ -7,7 +7,7 @@
 
 class Model;
 class Node;
-class Effect;
+class Material;
 
 namespace con
 {
@@ -53,34 +53,34 @@ private:
 };
 
 //============================================================
-//	\class	IImGuiEffectVisitor
+//	\class	IImGuiMaterialVisitor
 //	\author	KeyC0de
 //	\date	2020/01/09 15:53
 //	\brief	implement and override on* methods
-//			targets a Model with a specific effect
+//			targets a Model with a specific material
 //			the IDs are for tagging ImGui widgets/controls
 //=============================================================
-class IImGuiEffectVisitor
+class IImGuiMaterialVisitor
 {
 protected:
-	Effect *m_pEffect = nullptr;
-	size_t m_effectId = std::numeric_limits<size_t>::max();
+	Material *m_pMaterial = nullptr;
+	size_t m_materialId = std::numeric_limits<size_t>::max();
 	size_t m_imguiId = std::numeric_limits<size_t>::max();
 public:
-	virtual ~IImGuiEffectVisitor() noexcept = default;
+	virtual ~IImGuiMaterialVisitor() noexcept = default;
 
-	void setEffect( Effect *ef );
+	void setMaterial( Material *ef );
 	//	\function	visit	||	\date	2022/08/31 11:33
 	//	\brief	returns true if concrete bindable (with a con::CBuffer) requires an update
 	bool visit( con::CBuffer &cb );
 	virtual bool onVisit( con::CBuffer &cb ) = 0;
-	virtual void onSetEffect() = 0;
+	virtual void onSetMaterial() = 0;
 };
 
-class ImguiEffectVisitorShowcase final
-	: public IImGuiEffectVisitor
+class ImguiMaterialVisitorShowcase final
+	: public IImGuiMaterialVisitor
 {
 public:
 	bool onVisit( con::CBuffer &cb ) override;
-	void onSetEffect() override;
+	void onSetMaterial() override;
 };

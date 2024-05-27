@@ -214,7 +214,7 @@
     <ClCompile Include="src\dxgi_info_queue.cpp" />
     <ClCompile Include="src\dynamic_constant_buffer.cpp" />
     <ClCompile Include="src\dynamic_vertex_buffer.cpp" />
-    <ClCompile Include="src\effect.cpp" />
+    <ClCompile Include="src\material.cpp" />
     <ClCompile Include="src\key_lua.cpp" />
     <ClCompile Include="src\line.cpp" />
     <ClCompile Include="src\reporter_access.cpp" />
@@ -416,7 +416,7 @@
     <ClInclude Include="inc\dxgi_info_queue.h" />
     <ClInclude Include="inc\dynamic_constant_buffer.h" />
     <ClInclude Include="inc\dynamic_vertex_buffer.h" />
-    <ClInclude Include="inc\effect.h" />
+    <ClInclude Include="inc\material.h" />
     <ClInclude Include="inc\key_lua.h" />
     <ClInclude Include="inc\lighting_mode.h" />
     <ClInclude Include="inc\line.h" />

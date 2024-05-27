@@ -64,9 +64,9 @@ void PointLight::render( const size_t channels ) const cond_noex
 	}
 }
 
-void PointLight::connectEffectsToRenderer( ren::Renderer &r )
+void PointLight::connectMaterialsToRenderer( ren::Renderer &r )
 {
-	m_sphereMesh.connectEffectsToRenderer( r );
+	m_sphereMesh.connectMaterialsToRenderer( r );
 }
 
 void PointLight::setIntensity( const float newIntensity ) noexcept

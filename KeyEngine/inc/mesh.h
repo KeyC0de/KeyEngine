@@ -3,7 +3,7 @@
 #include <DirectXMath.h>
 #include <memory>
 #include <optional>
-#include "effect.h"
+#include "material.h"
 #include "rendering_channel.h"
 
 
@@ -36,7 +36,7 @@ protected:
 	std::shared_ptr<VertexBuffer> m_pVertexBuffer;
 	std::shared_ptr<IndexBuffer> m_pIndexBuffer;
 	std::shared_ptr<PrimitiveTopology> m_pPrimitiveTopology;
-	std::vector<Effect> m_effects;
+	std::vector<Material> m_materials;
 public:
 #pragma warning( disable : 26495 )
 	//	\function	Mesh	||	\date	2022/11/06 14:46
@@ -55,9 +55,9 @@ public:
 	template<typename T, typename = std::enable_if_t<std::is_base_of_v<IBindable, T>>>
 	std::optional<T*> findBindable() noexcept
 	{
-		for ( auto &effect : m_effects )
+		for ( auto &material : m_materials )
 		{
-			for ( auto &bindable : effect.getBindables() )
+			for ( auto &bindable : material.getBindables() )
 			{
 				if ( auto *pB = dynamic_cast<T*>( bindable.get() ) )
 				{
@@ -71,9 +71,9 @@ public:
 	template<typename T, typename = std::enable_if_t<std::is_base_of_v<IBindable, T>>>
 	std::optional<const T*> findBindable() const noexcept
 	{
-		for ( const auto &effect : m_effects )
+		for ( const auto &material : m_materials )
 		{
-			for ( const auto &bindable : effect.getBindables() )
+			for ( const auto &bindable : material.getBindables() )
 			{
 				if ( const auto *pB = dynamic_cast<T*>( bindable.get() ) )
 				{
@@ -84,18 +84,18 @@ public:
 		return std::nullopt;
 	}
 
-	//	\function	addEffect	||	\date	2021/10/26 23:58
-	//	\brief	Effects are moved here
-	void addEffect( Effect effect ) noexcept;
+	//	\function	addMaterial	||	\date	2021/10/26 23:58
+	//	\brief	Materials are moved here
+	void addMaterial( Material material ) noexcept;
 	//	\function	update	||	\date	2021/10/26 23:58
 	//	\brief	does gameplay, physics etc.
 	void update( const float dt, const float renderFrameInterpolation ) cond_noex;
 	void render( const size_t channels = rch::all ) const noexcept;
-	void setEffectEnabled( const size_t channels, const bool bEnabled ) noexcept;
+	void setMaterialEnabled( const size_t channels, const bool bEnabled ) noexcept;
 	void bind( Graphics &gfx ) const cond_noex;
-	void accept( IImGuiEffectVisitor &ev );
+	void accept( IImGuiMaterialVisitor &ev );
 	unsigned getIndicesCount() const cond_noex;
-	void connectEffectsToRenderer( ren::Renderer &r );
+	void connectMaterialsToRenderer( ren::Renderer &r );
 	// #TODO: consider adding transform( matrix ) method, check TriangleMesh::transform
 	//===================================================
 	//	\function	setTransform	||	\date	2022/08/28 21:24

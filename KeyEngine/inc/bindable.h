@@ -6,7 +6,7 @@
 
 
 class Mesh;
-class IImGuiEffectVisitor;
+class IImGuiMaterialVisitor;
 class Graphics;
 
 //=============================================================
@@ -33,7 +33,7 @@ public:
 		pass_;
 	}
 
-	virtual void accept( IImGuiEffectVisitor &ev )
+	virtual void accept( IImGuiMaterialVisitor &ev )
 	{
 		pass_;
 	}

@@ -100,7 +100,7 @@ public:
 		T::bind( gfx );
 	}
 
-	void accept( IImGuiEffectVisitor &ev ) override
+	void accept( IImGuiMaterialVisitor &ev ) override
 	{
 		if ( ev.visit( m_cb ) )
 		{

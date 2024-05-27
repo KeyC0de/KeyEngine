@@ -1,10 +1,10 @@
 #pragma once
 
 //
-//										   _-- Bindable1
-//					  _-- Pass1|Effect1 --+--- Bindable2
-// RenderingChannel -+--- Pass2|Effect2	   --- BindableN
-//					  --- PassN|EffectN
+//												--- Bindable1
+//					  _-- Pass1|Material1 ----+---- Bindable2
+// RenderingChannel -+--- Pass2|Material2		--- BindableN
+//					  --- PassN|MaterialN
 //
 
 // #TODO: turn it into an enum class

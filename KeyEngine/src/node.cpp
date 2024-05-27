@@ -46,16 +46,16 @@ void Node::render( const size_t channels ) const cond_noex
 	}
 }
 
-void Node::setEffectEnabled( const size_t channels,
+void Node::setMaterialEnabled( const size_t channels,
 	const bool bEnabled ) noexcept
 {
 	for ( const auto pMesh : m_meshes )
 	{
-		pMesh->setEffectEnabled( channels, bEnabled );
+		pMesh->setMaterialEnabled( channels, bEnabled );
 	}
 	for ( const auto &pNode : m_children )
 	{
-		pNode->setEffectEnabled( channels, bEnabled );
+		pNode->setMaterialEnabled( channels, bEnabled );
 	}
 }
 
@@ -77,7 +77,7 @@ void Node::accept( IImguiNodeVisitor &mv )
 	}
 }
 
-void Node::accept( IImGuiEffectVisitor &ev )
+void Node::accept( IImGuiMaterialVisitor &ev )
 {
 	for ( auto &mesh : m_meshes )
 	{

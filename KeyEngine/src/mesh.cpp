@@ -28,9 +28,9 @@ Mesh::Mesh( Graphics &gfx,
 	m_pIndexBuffer = mat.makeIndexBuffer( gfx, aimesh );
 	m_pPrimitiveTopology = PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST );
 
-	for ( auto &effect : mat.getEffects() )
+	for ( auto &material : mat.getMaterial() )
 	{
-		addEffect( std::move( effect ) );
+		addMaterial( std::move( material ) );
 	}
 
 	createAabb( aimesh );
@@ -65,33 +65,33 @@ void Mesh::update( const float dt,
 
 void Mesh::render( const size_t channels /* = rch::all*/ ) const noexcept
 {
-	ASSERT( !m_effects.empty(), "No Effects to submit to the Renderer!" );
+	ASSERT( !m_materials.empty(), "No Materials to submit to the Renderer!" );
 	ASSERT( m_meshId != 0, "Mesh not initialized properly!" );
 
 	m_bRenderedThisFrame = !isFrustumCulled();
 	if ( m_bRenderedThisFrame )
 	{
-		for ( const auto &effect : m_effects )
+		for ( const auto &material : m_materials )
 		{
-			effect.render( *this, channels );
+			material.render( *this, channels );
 		}
 	}
 }
 
-void Mesh::setEffectEnabled( const size_t channels,
+void Mesh::setMaterialEnabled( const size_t channels,
 	const bool bEnabled ) noexcept
 {
-	ASSERT( !m_effects.empty(), "No Effects to submit to the Renderer!" );
-	for ( auto &effect : m_effects )
+	ASSERT( !m_materials.empty(), "No Materials to submit to the Renderer!" );
+	for ( auto &material : m_materials )
 	{
-		effect.setEnabled( channels, bEnabled );
+		material.setEnabled( channels, bEnabled );
 	}
 }
 
-void Mesh::addEffect( Effect effect ) noexcept
+void Mesh::addMaterial( Material material ) noexcept
 {
-	effect.setMesh( *this );
-	m_effects.emplace_back( std::move( effect ) );
+	material.setMesh( *this );
+	m_materials.emplace_back( std::move( material ) );
 }
 
 void Mesh::bind( Graphics &gfx ) const cond_noex
@@ -101,11 +101,11 @@ void Mesh::bind( Graphics &gfx ) const cond_noex
 	m_pPrimitiveTopology->bind( gfx );
 }
 
-void Mesh::accept( IImGuiEffectVisitor &ev )
+void Mesh::accept( IImGuiMaterialVisitor &ev )
 {
-	for ( auto &effect : m_effects )
+	for ( auto &material : m_materials )
 	{
-		effect.accept( ev );
+		material.accept( ev );
 	}
 }
 
@@ -114,12 +114,12 @@ unsigned Mesh::getIndicesCount() const cond_noex
 	return m_pIndexBuffer->getIndexCount();
 }
 
-void Mesh::connectEffectsToRenderer( ren::Renderer &r )
+void Mesh::connectMaterialsToRenderer( ren::Renderer &r )
 {
-	ASSERT( !m_effects.empty(), "No Effects to submit to the Renderer!" );
-	for ( auto &effect : m_effects )
+	ASSERT( !m_materials.empty(), "No Materials to submit to the Renderer!" );
+	for ( auto &material : m_materials )
 	{
-		effect.connectPass( r );
+		material.connectPass( r );
 	}
 }
 

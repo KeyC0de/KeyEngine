@@ -42,21 +42,21 @@
       <FileName>inc\camera_manager.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Effect" Collapsed="true">
+  <Class Name="Material" Collapsed="true">
     <Position X="9.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAACAEAgAAYAAAAAAAAAAAAAAGBAACCBgigAQIAA=</HashCode>
-      <FileName>inc\effect.h</FileName>
+      <FileName>inc\material.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="IImGuiEffectVisitor" Collapsed="true">
+  <Class Name="IImGuiMaterialVisitor" Collapsed="true">
     <Position X="3.75" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAgAAAACAEAAAAAgAIACAAAAAAAAAAgAA=</HashCode>
       <FileName>inc\imgui_visitors.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ImguiEffectVisitorShowcase" Collapsed="true">
+  <Class Name="ImguiMaterialVisitorShowcase" Collapsed="true">
     <Position X="3.75" Y="9" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAACAAAAAAAAAAAAA=</HashCode>

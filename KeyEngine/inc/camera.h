@@ -52,7 +52,7 @@ public:
 	Camera( Graphics &gfx, const std::string &name, const int width, const int height, const float fovDegrees = 90.0f, const DirectX::XMFLOAT3 &homePos = {0.0f, 0.0f, 0.0f}, const float homePitch = 0.0f, const float homeYaw = 0.0f, const bool bTethered = false, const float nearZ = 0.5f, const float farZ = 200.0f, const float translationSpeed = 16.0f, const float rotationSpeed = 0.096f ) noexcept;
 
 	void render( const size_t channel = rch::all ) const;
-	void connectEffectsToRenderer( ren::Renderer &ren );
+	void connectMaterialsToRenderer( ren::Renderer &ren );
 	void makeActive( Graphics &gfx, const bool bOrthographic ) const;
 	DirectX::XMMATRIX getViewMatrix() const noexcept;
 	DirectX::XMMATRIX getReflectionViewMatrix( const DirectX::XMVECTOR &mirrorPlane ) const noexcept;

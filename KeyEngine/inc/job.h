@@ -3,7 +3,7 @@
 
 class Mesh;
 class Graphics;
-class Effect;
+class Material;
 
 namespace ren
 {
@@ -11,9 +11,9 @@ namespace ren
 class Job
 {
 	const Mesh *m_pMesh;
-	const Effect *m_pEffect;
+	const Material *m_pMaterial;
 public:
-	Job( const Mesh *pMesh, const Effect *pEffect );
+	Job( const Mesh *pMesh, const Material *pMaterial );
 
 	//===================================================
 	//	\function	run

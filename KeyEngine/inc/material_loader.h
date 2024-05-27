@@ -8,7 +8,7 @@
 struct aiMaterial;
 struct aiMesh;
 class Graphics;
-class Effect;
+class Material;
 class VertexBuffer;
 class IndexBuffer;
 
@@ -24,13 +24,13 @@ class MaterialLoader final
 	ver::VertexInputLayout m_vertexLayout;
 	std::string m_modelPath;
 	std::string m_name;
-	std::vector<Effect> m_effects;
+	std::vector<Material> m_materials;
 public:
 	MaterialLoader( Graphics &gfx, const aiMaterial &aimaterial, const std::filesystem::path &modelPath ) cond_noex;
 
 	std::shared_ptr<VertexBuffer> makeVertexBuffer( Graphics &gfx, const aiMesh &aimesh, float scale = 1.0f ) const cond_noex;
 	std::shared_ptr<IndexBuffer> makeIndexBuffer( Graphics &gfx, const aiMesh &aimesh ) const cond_noex;
-	std::vector<Effect> getEffects() const noexcept;
+	std::vector<Material> getMaterial() const noexcept;
 private:
 	std::string calcMeshTag( const aiMesh &mesh ) const noexcept;
 	ver::VBuffer makeVertexBuffer_impl( const aiMesh &aimesh ) const noexcept;

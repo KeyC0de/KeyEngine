@@ -51,8 +51,8 @@ Line::Line( Graphics &gfx,
 
 	auto transformVscb = std::make_shared<TransformVSCB>( gfx, 0u );
 	if ( color.w < 1.0f )
-	{// transparent reflectance effect
-		Effect transparent{rch::transparent, "transparent", true};
+	{// transparent reflectance material
+		Material transparent{rch::transparent, "transparent", true};
 		transparent.addBindable( transformVscb );
 
 		auto pVs = VertexShader::fetch( gfx, "flat_vs.cso" );
@@ -71,12 +71,12 @@ Line::Line( Graphics &gfx,
 
 		transparent.addBindable( std::make_shared<BlendState>( gfx, BlendState::Mode::Alpha, 0u, color.w ) );
 
-		addEffect( std::move( transparent ) );
+		addMaterial( std::move( transparent ) );
 	}
 	else
-	{// opaque reflectance effect
+	{// opaque reflectance material
 
-		Effect opaque{rch::opaque, "opaque", true};
+		Material opaque{rch::opaque, "opaque", true};
 		opaque.addBindable( transformVscb );
 
 		auto pVs = VertexShader::fetch( gfx, "flat_vs.cso" );
@@ -93,15 +93,15 @@ Line::Line( Graphics &gfx,
 
 		opaque.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Both ) );
 
-		addEffect( std::move( opaque ) );
+		addMaterial( std::move( opaque ) );
 	}
-	{// shadow map effect
-		Effect shadowMap{rch::shadow, "shadowMap", false};
+	{// shadow map material
+		Material shadowMap{rch::shadow, "shadowMap", false};
 		shadowMap.addBindable( transformVscb );
 
 		shadowMap.addBindable( InputLayout::fetch( gfx, line.m_vb.getLayout(), *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 
-		addEffect( std::move( shadowMap ) );
+		addMaterial( std::move( shadowMap ) );
 	}
 }
 
@@ -163,17 +163,17 @@ void Line::displayImguiWidgets( Graphics &gfx,
 		}
 
 		class EVLine
-			: public IImGuiEffectVisitor
+			: public IImGuiMaterialVisitor
 		{
 		public:
-			void onSetEffect() override
+			void onSetMaterial() override
 			{
-				ImGui::TextColored( {0.4f, 1.0f, 0.6f, 1.0f}, util::capitalizeFirstLetter( m_pEffect->getTargetPassName() ).c_str() );
+				ImGui::TextColored( {0.4f, 1.0f, 0.6f, 1.0f}, util::capitalizeFirstLetter( m_pMaterial->getTargetPassName() ).c_str() );
 
-				bool active = m_pEffect->isEnabled();
+				bool active = m_pMaterial->isEnabled();
 				using namespace std::string_literals;
-				ImGui::Checkbox( ( "Effect Active#"s + std::to_string( m_effectId ) ).c_str(), &active );
-				m_pEffect->setEnabled( active );
+				ImGui::Checkbox( ( "Material Active#"s + std::to_string( m_materialId ) ).c_str(), &active );
+				m_pMaterial->setEnabled( active );
 			}
 
 			bool onVisit( con::CBuffer &cb ) override

@@ -7,7 +7,7 @@
 
 
 class Mesh;
-class IImGuiEffectVisitor;
+class IImGuiMaterialVisitor;
 class IImguiNodeVisitor;
 
 class Node
@@ -25,11 +25,11 @@ public:
 
 	void update( const float dt, const DirectX::XMMATRIX &parentWorldTransform, const float renderFrameInterpolation ) const cond_noex;
 	void render( const size_t channels ) const cond_noex;
-	void setEffectEnabled( const size_t channels, const bool bEnabled ) noexcept;
+	void setMaterialEnabled( const size_t channels, const bool bEnabled ) noexcept;
 	int getImguiId() const noexcept;
 	bool hasChildren() const noexcept;
 	void accept( IImguiNodeVisitor &mv );
-	void accept( IImGuiEffectVisitor &ev );
+	void accept( IImGuiMaterialVisitor &ev );
 	const std::string& getName() const noexcept;
 	void setWorldTransform( const DirectX::XMFLOAT4X4 &worldTransform ) noexcept;
 	void setWorldTransform( const DirectX::XMMATRIX &worldTransform ) noexcept;

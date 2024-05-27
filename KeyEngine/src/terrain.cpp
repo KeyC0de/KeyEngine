@@ -56,8 +56,8 @@ Terrain::Terrain( Graphics &gfx,
 	setMeshId();
 
 	auto transformVscb = std::make_shared<TransformVSCB>( gfx, 0u );
-	{// opaque reflectance effect
-		Effect opaque{rch::opaque, "opaque", false};
+	{// opaque reflectance material
+		Material opaque{rch::opaque, "opaque", false};
 		opaque.addBindable( transformVscb );
 
 		opaque.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
@@ -82,28 +82,28 @@ Terrain::Terrain( Graphics &gfx,
 
 		opaque.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
 
-		addEffect( std::move( opaque ) );
+		addMaterial( std::move( opaque ) );
 	}
-	{//shadow map effect
-		Effect shadowMap{rch::shadow, "shadowMap", false};
+	{//shadow map material
+		Material shadowMap{rch::shadow, "shadowMap", false};
 		shadowMap.addBindable( transformVscb );
 
 		shadowMap.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
 		shadowMap.addBindable( InputLayout::fetch( gfx, planarGrid.m_vb.getLayout(), *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 
-		addEffect( std::move( shadowMap ) );
+		addMaterial( std::move( shadowMap ) );
 	}
-	{// solid outline mask effect
-		Effect solidOutlineMask{rch::solidOutline, "solidOutlineMask", false};
+	{// solid outline mask material
+		Material solidOutlineMask{rch::solidOutline, "solidOutlineMask", false};
 		solidOutlineMask.addBindable( transformVscb );
 
 		solidOutlineMask.addBindable( InputLayout::fetch( gfx, planarGrid.m_vb.getLayout(), *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 
-		addEffect( std::move( solidOutlineMask ) );
+		addMaterial( std::move( solidOutlineMask ) );
 	}
-	{// solid outline draw effect
-		Effect solidOutlineDraw{rch::solidOutline, "solidOutlineDraw", false};
+	{// solid outline draw material
+		Material solidOutlineDraw{rch::solidOutline, "solidOutlineDraw", false};
 
 		auto transformScaledVcb = std::make_shared<TransformScaleVSCB>( gfx, 0u, 1.04f );
 		solidOutlineDraw.addBindable( transformScaledVcb );
@@ -116,10 +116,10 @@ Terrain::Terrain( Graphics &gfx,
 
 		solidOutlineDraw.addBindable( InputLayout::fetch( gfx, planarGrid.m_vb.getLayout(), *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 
-		addEffect( std::move( solidOutlineDraw ) );
+		addMaterial( std::move( solidOutlineDraw ) );
 	}
-	{// wireframe effect
-		Effect wireframe{rch::wireframe, "wireframe", true};
+	{// wireframe material
+		Material wireframe{rch::wireframe, "wireframe", true};
 
 		wireframe.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_LINELIST ) );
 
@@ -138,7 +138,7 @@ Terrain::Terrain( Graphics &gfx,
 		wireframe.addBindable( PixelShaderConstantBuffer<ColorPSCB>::fetch( gfx, colorPscb, 0u ) );
 		wireframe.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
 
-		addEffect( std::move( wireframe ) );
+		addMaterial( std::move( wireframe ) );
 	}
 }
 
@@ -181,17 +181,17 @@ void Terrain::displayImguiWidgets( Graphics &gfx,
 		}
 
 		class EVTerrain
-			: public IImGuiEffectVisitor
+			: public IImGuiMaterialVisitor
 		{
 		public:
-			void onSetEffect() override
+			void onSetMaterial() override
 			{
-				ImGui::TextColored( {0.4f, 1.0f, 0.6f, 1.0f}, util::capitalizeFirstLetter( m_pEffect->getTargetPassName() ).c_str() );
+				ImGui::TextColored( {0.4f, 1.0f, 0.6f, 1.0f}, util::capitalizeFirstLetter( m_pMaterial->getTargetPassName() ).c_str() );
 
-				bool active = m_pEffect->isEnabled();
+				bool active = m_pMaterial->isEnabled();
 				using namespace std::string_literals;
-				ImGui::Checkbox( ( "Effect Active#"s + std::to_string( m_effectId ) ).c_str(), &active );
-				m_pEffect->setEnabled( active );
+				ImGui::Checkbox( ( "Material Active#"s + std::to_string( m_materialId ) ).c_str(), &active );
+				m_pMaterial->setEnabled( active );
 			}
 
 			bool onVisit( con::CBuffer &cb ) override

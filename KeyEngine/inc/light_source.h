@@ -50,7 +50,7 @@ public:
 	
 	void update( Graphics &gfx, const float dt, const DirectX::XMMATRIX &activeCameraViewMat ) const noexcept;
 	void render( const size_t channels ) const cond_noex;
-	void connectEffectsToRenderer( ren::Renderer &r );
+	void connectMaterialsToRenderer( ren::Renderer &r );
 	void setIntensity( const float newIntensity ) noexcept;
 	void setColor( const DirectX::XMFLOAT3 &diffuseColor ) noexcept;
 	void displayImguiWidgets() noexcept;

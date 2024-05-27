@@ -181,7 +181,7 @@ Graphics::Graphics( const HWND hWnd,
 	swapChainDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
 	swapChainDesc.BufferCount = 1u;
 	swapChainDesc.OutputWindow = hWnd;
-	swapChainDesc.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
+	swapChainDesc.SwapMaterial = DXGI_SWAP_EFFECT_DISCARD;
 	swapChainDesc.Windowed = true;
 	swapChainDesc.Flags = m_swapChainFlags;
 	swapChainDesc.BufferDesc.Width = width;

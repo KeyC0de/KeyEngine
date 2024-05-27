@@ -50,8 +50,8 @@ Plane::Plane( Graphics &gfx,
 
 	auto transformVscb = std::make_shared<TransformVSCB>( gfx, 0u );
 	if ( color.w < 1.0f )
-	{// transparent reflectance effect
-		Effect transparent{rch::transparent, "transparent", true};
+	{// transparent reflectance material
+		Material transparent{rch::transparent, "transparent", true};
 		transparent.addBindable( transformVscb );
 
 		transparent.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
@@ -87,11 +87,11 @@ Plane::Plane( Graphics &gfx,
 
 		transparent.addBindable( std::make_shared<BlendState>( gfx, BlendState::Mode::Alpha, 0u, color.w ) );
 
-		addEffect( std::move( transparent ) );
+		addMaterial( std::move( transparent ) );
 	}
 	else
-	{// opaque reflectance effect
-		Effect opaque{rch::opaque, "opaque", true};
+	{// opaque reflectance material
+		Material opaque{rch::opaque, "opaque", true};
 		opaque.addBindable( transformVscb );
 
 		opaque.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
@@ -116,28 +116,28 @@ Plane::Plane( Graphics &gfx,
 
 		opaque.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Both ) );
 
-		addEffect( std::move( opaque ) );
+		addMaterial( std::move( opaque ) );
 	}
-	{// shadow map effect
-		Effect shadowMap{rch::shadow, "shadowMap", true};
+	{// shadow map material
+		Material shadowMap{rch::shadow, "shadowMap", true};
 		shadowMap.addBindable( transformVscb );
 
 		shadowMap.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
 		shadowMap.addBindable( InputLayout::fetch( gfx, plane.m_vb.getLayout(), *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 
-		addEffect( std::move( shadowMap ) );
+		addMaterial( std::move( shadowMap ) );
 	}
-	{// blur outline mask effect
-		Effect blurOutlineMask{rch::blurOutline, "blurOutlineMask", false};
+	{// blur outline mask material
+		Material blurOutlineMask{rch::blurOutline, "blurOutlineMask", false};
 		blurOutlineMask.addBindable( transformVscb );
 
 		blurOutlineMask.addBindable( InputLayout::fetch( gfx, plane.m_vb.getLayout(), *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 
-		addEffect( std::move( blurOutlineMask ) );
+		addMaterial( std::move( blurOutlineMask ) );
 	}
-	{// blur outline draw effect
-		Effect blurOutlineDraw{rch::blurOutline, "blurOutlineDraw", false};
+	{// blur outline draw material
+		Material blurOutlineDraw{rch::blurOutline, "blurOutlineDraw", false};
 		blurOutlineDraw.addBindable( transformVscb );
 
 		con::RawLayout cbLayout;
@@ -148,18 +148,18 @@ Plane::Plane( Graphics &gfx,
 
 		blurOutlineDraw.addBindable( InputLayout::fetch( gfx, plane.m_vb.getLayout(), *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 
-		addEffect( std::move( blurOutlineDraw ) );
+		addMaterial( std::move( blurOutlineDraw ) );
 	}
-	{// solid outline mask effect
-		Effect solidOutlineMask{rch::solidOutline, "solidOutlineMask", true};
+	{// solid outline mask material
+		Material solidOutlineMask{rch::solidOutline, "solidOutlineMask", true};
 		solidOutlineMask.addBindable( transformVscb );
 
 		solidOutlineMask.addBindable( InputLayout::fetch( gfx, plane.m_vb.getLayout(), *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 
-		addEffect( std::move( solidOutlineMask ) );
+		addMaterial( std::move( solidOutlineMask ) );
 	}
-	{// solid outline draw effect
-		Effect solidOutlineDraw{rch::solidOutline, "solidOutlineDraw", true};
+	{// solid outline draw material
+		Material solidOutlineDraw{rch::solidOutline, "solidOutlineDraw", true};
 
 		auto transformScaledVcb = std::make_shared<TransformScaleVSCB>( gfx, 0u, 1.04f );
 		solidOutlineDraw.addBindable( transformScaledVcb );
@@ -172,7 +172,7 @@ Plane::Plane( Graphics &gfx,
 
 		solidOutlineDraw.addBindable( InputLayout::fetch( gfx, plane.m_vb.getLayout(), *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 
-		addEffect( std::move( solidOutlineDraw ) );
+		addMaterial( std::move( solidOutlineDraw ) );
 	}
 }
 

@@ -1,4 +1,4 @@
-#include "effect.h"
+#include "material.h"
 #include <memory>
 #include "mesh.h"
 #include "renderer.h"
@@ -7,7 +7,7 @@
 #include "assertions_console.h"
 
 
-Effect::Effect( const size_t channels,
+Material::Material( const size_t channels,
 	const std::string &targetPassName,
 	const bool bStartActive ) noexcept
 	:
@@ -18,7 +18,7 @@ Effect::Effect( const size_t channels,
 
 }
 
-Effect::Effect( const Effect &rhs )
+Material::Material( const Material &rhs )
 	:
 	m_renderingChannels{rhs.m_renderingChannels},
 	m_bActive{rhs.m_bActive},
@@ -39,7 +39,7 @@ Effect::Effect( const Effect &rhs )
 	}
 }
 
-Effect::Effect( Effect &&rhs ) noexcept
+Material::Material( Material &&rhs ) noexcept
 	:
 	m_renderingChannels{rhs.m_renderingChannels},
 	m_bActive{rhs.m_bActive},
@@ -53,12 +53,12 @@ Effect::Effect( Effect &&rhs ) noexcept
 	rhs.m_pTargetPass = nullptr;
 }
 
-void Effect::addBindable( std::shared_ptr<IBindable> pBindable ) noexcept
+void Material::addBindable( std::shared_ptr<IBindable> pBindable ) noexcept
 {
 	m_bindables.emplace_back( std::move( pBindable ) );
 }
 
-void Effect::render( const Mesh &mesh,
+void Material::render( const Mesh &mesh,
 	const size_t channels ) const noexcept
 {
 	if ( m_bActive && (m_renderingChannels & channels) != 0 )
@@ -67,7 +67,7 @@ void Effect::render( const Mesh &mesh,
 	}
 }
 
-void Effect::bind( Graphics &gfx ) const cond_noex
+void Material::bind( Graphics &gfx ) const cond_noex
 {
 	for ( const auto &bindable : m_bindables )
 	{
@@ -75,17 +75,17 @@ void Effect::bind( Graphics &gfx ) const cond_noex
 	}
 }
 
-bool Effect::isEnabled() const noexcept
+bool Material::isEnabled() const noexcept
 {
 	return m_bActive;
 }
 
-void Effect::setEnabled( const bool b ) noexcept
+void Material::setEnabled( const bool b ) noexcept
 {
 	m_bActive = b;
 }
 
-void Effect::setEnabled( const size_t channels,
+void Material::setEnabled( const size_t channels,
 	const bool bEnabled ) noexcept
 {
 	if ( (m_renderingChannels & channels) != 0 )
@@ -94,12 +94,12 @@ void Effect::setEnabled( const size_t channels,
 	}
 }
 
-const std::string& Effect::getTargetPassName() const noexcept
+const std::string& Material::getTargetPassName() const noexcept
 {
 	return m_targetPassName;
 }
 
-void Effect::setMesh( const Mesh &parent ) noexcept
+void Material::setMesh( const Mesh &parent ) noexcept
 {
 	for ( auto &bindable : m_bindables )
 	{
@@ -107,31 +107,31 @@ void Effect::setMesh( const Mesh &parent ) noexcept
 	}
 }
 
-void Effect::accept( IImGuiEffectVisitor &ev )
+void Material::accept( IImGuiMaterialVisitor &ev )
 {
-	ev.setEffect( this );
+	ev.setMaterial( this );
 	for ( auto &bindable : m_bindables )
 	{
 		bindable->accept( ev );
 	}
 }
 
-void Effect::connectPass( ren::Renderer &r )
+void Material::connectPass( ren::Renderer &r )
 {
 	m_pTargetPass = &r.getRenderQueuePass( m_targetPassName );
 }
 
-std::vector<std::shared_ptr<IBindable>>& Effect::getBindables()
+std::vector<std::shared_ptr<IBindable>>& Material::getBindables()
 {
 	return m_bindables;
 }
 
-const std::vector<std::shared_ptr<IBindable>>& Effect::getBindables() const noexcept
+const std::vector<std::shared_ptr<IBindable>>& Material::getBindables() const noexcept
 {
 	return m_bindables;
 }
 
-size_t Effect::getChannelMask() const noexcept
+size_t Material::getChannelMask() const noexcept
 {
 	return m_renderingChannels;
 }

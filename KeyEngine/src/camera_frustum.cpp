@@ -38,7 +38,7 @@ CameraFrustum::CameraFrustum( Graphics &gfx,
 	// 1. normal opaque
 	// 2. DepthReversed mode and another color (dimmer) - only the occluded part of the frustum gets drawn
 	{
-		Effect front{rch::wireframe, "wireframe", true};
+		Material front{rch::wireframe, "wireframe", true};
 
 		front.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_LINELIST ) );
 
@@ -56,10 +56,10 @@ CameraFrustum::CameraFrustum( Graphics &gfx,
 		front.addBindable( PixelShaderConstantBuffer<ColorPSCB>::fetch( gfx, colorPscb, 0u ) );
 		front.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
 
-		addEffect( std::move( front ) );
+		addMaterial( std::move( front ) );
 	}
 	{
-		Effect occluded{rch::wireframe, "depthReversed", true};
+		Material occluded{rch::wireframe, "depthReversed", true};
 
 		occluded.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_LINELIST ) );
 
@@ -77,7 +77,7 @@ CameraFrustum::CameraFrustum( Graphics &gfx,
 		occluded.addBindable( PixelShaderConstantBuffer<ColorPSCB2>::fetch( gfx, colorPscb, 0u ) );
 		occluded.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
 
-		addEffect( std::move( occluded ) );
+		addMaterial( std::move( occluded ) );
 	}
 }
 

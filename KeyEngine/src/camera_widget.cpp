@@ -34,7 +34,7 @@ CameraWidget::CameraWidget( Graphics &gfx,
 	setMeshId();
 
 	{
-		Effect wireframe{rch::wireframe, "wireframe", true};
+		Material wireframe{rch::wireframe, "wireframe", true};
 
 		wireframe.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_LINELIST ) );
 
@@ -53,6 +53,6 @@ CameraWidget::CameraWidget( Graphics &gfx,
 		wireframe.addBindable( PixelShaderConstantBuffer<ColorPSCB>::fetch( gfx, colorPscb, 0u ) );
 		wireframe.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
 
-		addEffect( std::move( wireframe ) );
+		addMaterial( std::move( wireframe ) );
 	}
 }

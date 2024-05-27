@@ -151,7 +151,7 @@
     <ClCompile Include="src\dynamic_vertex_buffer.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
-    <ClCompile Include="src\effect.cpp">
+    <ClCompile Include="src\material.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
     <ClCompile Include="src\imgui_visitors.cpp">
@@ -385,7 +385,9 @@
     <ClCompile Include="src\line.cpp">
       <Filter>engine\vfx\renderables</Filter>
     </ClCompile>
-    <ClCompile Include="src\key_lua.cpp" />
+    <ClCompile Include="src\key_lua.cpp">
+      <Filter>engine\scripts</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="third_party\imgui\imconfig.h">
@@ -622,7 +624,7 @@
     <ClInclude Include="inc\dynamic_vertex_buffer.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
-    <ClInclude Include="inc\effect.h">
+    <ClInclude Include="inc\material.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
     <ClInclude Include="inc\imgui_visitors.h">

@@ -48,7 +48,7 @@ public:
 	TransformScaleVSCB( TransformScaleVSCB &&rhs ) noexcept;
 	TransformScaleVSCB& operator=( TransformScaleVSCB &&rhs ) noexcept;
 
-	void accept( IImGuiEffectVisitor &ev ) override;
+	void accept( IImGuiMaterialVisitor &ev ) override;
 	void bind( Graphics &gfx ) cond_noex override;
 	std::unique_ptr<IBindableCloning> clone() const noexcept override;
 	std::unique_ptr<IBindableCloning> clone() noexcept override;

@@ -54,11 +54,11 @@ void CameraManager::add( std::shared_ptr<Camera> pCam )
 	m_cameras.push_back( std::move( pCam ) );
 }
 
-void CameraManager::connectEffectsToRenderer( ren::Renderer &r )
+void CameraManager::connectMaterialsToRenderer( ren::Renderer &r )
 {
 	for ( auto &pCam : m_cameras )
 	{
-		pCam->connectEffectsToRenderer( r );
+		pCam->connectMaterialsToRenderer( r );
 	}
 }
 

@@ -6,7 +6,7 @@
 
 
 class Mesh;
-class IImGuiEffectVisitor;
+class IImGuiMaterialVisitor;
 
 namespace ren
 {
@@ -14,7 +14,7 @@ namespace ren
 	class Renderer;
 }
 
-class Effect
+class Material
 {
 	size_t m_renderingChannels;
 	bool m_bActive = true;
@@ -22,16 +22,16 @@ class Effect
 	ren::RenderQueuePass *m_pTargetPass = nullptr;
 	std::vector<std::shared_ptr<IBindable>> m_bindables;
 public:
-	//	\function	Effect	||	\date	2024/04/25 13:55
-	//	\brief	the channels is a bitwise mask (rendering_channel.h) which corresponds to the Rendering channel(s) used for this Effect
-	//			the rendering channel can cross multiple `Pass`es to render, but a single `Effect` targets a single `Pass`
-	//			so channels are used to group similar effects
-	//			bStartActive refers to whether this Effect is enabled (not the Pass or the channel(s)), if the Effect is not enabled at a specific frame it will not pass its bindables to the renderer and as such the Mesh won't render the effect
-	Effect( const size_t channels, const std::string &targetPassName, const bool bStartActive ) noexcept;
-	Effect( const Effect &rhs );
-	Effect& operator=( const Effect &rhs ) = delete;
-	Effect( Effect &&rhs ) noexcept;
-	Effect& operator=( Effect &&rhs ) = delete;
+	//	\function	Material	||	\date	2024/04/25 13:55
+	//	\brief	the channels is a bitwise mask (rendering_channel.h) which corresponds to the Rendering channel(s) used for this Material
+	//			the rendering channel can cross multiple `Pass`es to render, but a single `Material` targets a single `Pass`
+	//			so channels are used to group similar materials
+	//			bStartActive refers to whether this Material is enabled (not the Pass or the channel(s)), if the Material is not enabled at a specific frame it will not pass its bindables to the renderer and as such the Mesh won't render the material
+	Material( const size_t channels, const std::string &targetPassName, const bool bStartActive ) noexcept;
+	Material( const Material &rhs );
+	Material& operator=( const Material &rhs ) = delete;
+	Material( Material &&rhs ) noexcept;
+	Material& operator=( Material &&rhs ) = delete;
 
 	void addBindable( std::shared_ptr<IBindable> pBindable ) noexcept;
 	void render( const Mesh &mesh, const size_t channels ) const noexcept;
@@ -41,7 +41,7 @@ public:
 	void setEnabled( const size_t channels, const bool bEnabled ) noexcept;
 	const std::string& getTargetPassName() const noexcept;
 	void setMesh( const Mesh &parent ) noexcept;
-	void accept( IImGuiEffectVisitor &ev );
+	void accept( IImGuiMaterialVisitor &ev );
 	void connectPass( ren::Renderer &r );
 	std::vector<std::shared_ptr<IBindable>>& getBindables();
 	const std::vector<std::shared_ptr<IBindable>>& getBindables() const noexcept;

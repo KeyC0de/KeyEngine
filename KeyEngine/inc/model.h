@@ -39,10 +39,10 @@ public:
 
 	void update( const float dt, const float renderFrameInterpolation ) const cond_noex;
 	void render( const size_t channels = rch::all ) const cond_noex;
-	void setEffectEnabled( const size_t channels, const bool bEnabled ) noexcept;
+	void setMaterialEnabled( const size_t channels, const bool bEnabled ) noexcept;
 	void displayImguiWidgets( Graphics &gfx ) noexcept;
 	void accept( IImguiNodeVisitor &v );
-	void connectEffectsToRenderer( ren::Renderer &r );
+	void connectMaterialsToRenderer( ren::Renderer &r );
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	//	\function	setTransform	||	\date	2022/09/03 20:25
 	//	\brief	Sets the root Node's Worldtransform

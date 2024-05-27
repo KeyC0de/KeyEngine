@@ -30,7 +30,7 @@ RasterizerState::RasterizerState( Graphics &gfx,
 	//rasterDesc.DepthBiasClamp = D3D11_DEFAULT_DEPTH_BIAS_CLAMP;				// maximum depth bias of a pixel
 	//rasterDesc.DepthClipEnable = TRUE;		// enables clipping based on distance
 	//rasterDesc.ScissorEnable = FALSE;			// enables scissor-rectangle culling; all pixels outside an active scissor rectangle are culled
-	//rasterDesc.MultisampleEnable = FALSE;		// set to TRUE to use the quadrilateral line anti-aliasing algorithm, or set to FALSE to use the alpha line anti-aliasing algorithm. Both have an effect only on multisample antialiasing (MSAA) render targets
+	//rasterDesc.MultisampleEnable = FALSE;		// set to TRUE to use the quadrilateral line anti-aliasing algorithm, or set to FALSE to use the alpha line anti-aliasing algorithm. Both have an material only on multisample antialiasing (MSAA) render targets
 	//rasterDesc.AntialiasedLineEnable = FALSE;	// enables line antialiasing; only applies if doing line drawing and MultisampleEnable is FALSE
 
 	if ( mode == DefaultRS )
