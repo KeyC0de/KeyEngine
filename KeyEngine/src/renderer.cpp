@@ -1,4 +1,5 @@
 #include "renderer.h"
+#include "graphics.h"
 #include "graphics_mode.h"
 #include "constant_buffer_ex.h"
 #include "renderer_exception.h"

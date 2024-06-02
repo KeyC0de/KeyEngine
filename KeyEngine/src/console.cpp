@@ -1,5 +1,6 @@
 #include <iostream>
 #include "console.h"
+#include "key_timer.h"
 #include "os_utils.h"
 #include "utils.h"
 #include "magic_enum/magic_enum.h"
@@ -186,7 +187,7 @@ const HWND KeyConsole::getWindowHandle() const noexcept
 	const char* phTitle = "console placeholder title";
 	setTitle( phTitle );
 
-	Sleep( 10 );	// ensure window title has been updated
+	SleepTimer::sleepFor( 10 );	// ensure window title has been updated
 
 	const HWND consoleHWnd = FindWindowW( nullptr, util::s2ws( phTitle ).c_str() );
 	ASSERT_HRES_WIN32_IF_FAILED;

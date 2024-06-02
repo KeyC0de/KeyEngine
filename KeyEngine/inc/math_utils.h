@@ -314,6 +314,17 @@ constexpr T toRadians( const T deg )
 	return ( deg * PI ) / (T)180.0;
 }
 
+//	\function	toDegrees	||	/date	2020/07/15 5:13
+//	\brief convert angle in radians to degrees
+template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+constexpr T toDegrees( const T rad )
+{
+	return ( rad * (T)180.0 ) / PI;
+}
+
+void normalizeAngleDeg( float& angleDeg );
+bool isAngleDegWithinRange( float angleDeg, float a, float b );
+
 //	\function	interpolate	||	/date	2020/08/02 17:56
 //	\brief linear interpolation from src to dst value using alpha provided, interpolates any two Types that support the operations +, -, *
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
@@ -444,6 +455,7 @@ constexpr int countSetBits( int num ) noexcept;
 //	\brief	checks whether a number is a power of 2
 constexpr int isPowerOf2( const int num ) noexcept;
 constexpr void convertToBase( int number, const int base ) noexcept;
+constexpr bool isNthBitSet( const int value, const int posOfTestBit );
 //===================================================
 //	\function	swapBits	||	\date	2022/08/29 0:02
 //	\brief	swap the bits at position i and j of given number iff they are different

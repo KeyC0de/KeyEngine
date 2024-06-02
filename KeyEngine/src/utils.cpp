@@ -121,6 +121,26 @@ void splitString_impl( const std::string &s,
 	++out;
 }
 
+std::string trimStringFromStart( const std::string &str,
+	const int nChars )
+{
+	std::string trimmed = str.substr( nChars, str.length() - nChars );
+	return trimmed;
+}
+
+std::string trimStringFromEnd( const std::string &str,
+	const int nChars )
+{
+	std::string trimmed = str.substr( str.length() - nChars );
+	return trimmed;
+}
+
+void trimStringFromEndInPlace( std::string &str,
+	const int nChars )
+{
+	str.erase( str.length() - nChars );
+}
+
 std::vector<std::string> splitString( const std::string &s,
 	const std::string &delim )
 {
@@ -191,7 +211,7 @@ int stringToInt( const std::string &str ) noexcept
 	return result;
 }
 
-void trimL( std::string &s )
+void trimSpacesLeft( std::string &s )
 {
 	s.erase( s.begin(), std::find_if( s.begin(), s.end(),
 		[] ( unsigned char ch )
@@ -200,7 +220,7 @@ void trimL( std::string &s )
 		} ) );
 }
 
-void trimR( std::string &s )
+void trimSpacesRight( std::string &s )
 {
 	s.erase( std::find_if( s.rbegin(), s.rend(),
 		[] ( unsigned char ch )
@@ -209,27 +229,27 @@ void trimR( std::string &s )
 		} ).base(), s.end() );
 }
 
-void trim( std::string &s )
+void trimSpaces( std::string &s )
 {
-	trimL( s );
-	trimR( s );
+	trimSpacesLeft( s );
+	trimSpacesRight( s );
 }
 
-std::string trimCopy( std::string s )
+std::string trimSpacesCopy( std::string s )
 {
-	trim( s );
+	trimSpaces( s );
 	return s;
 }
 
-std::string trimLCopy( std::string s )
+std::string trimSpacesLCopy( std::string s )
 {
-	trimL( s );
+	trimSpacesLeft( s );
 	return s;
 }
 
-std::string trimRCopy( std::string s )
+std::string trimSpacesRightCopy( std::string s )
 {
-	trimR( s );
+	trimSpacesRight( s );
 	return s;
 }
 

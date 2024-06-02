@@ -1,4 +1,5 @@
 #include "ui_pass.h"
+#include "graphics.h"
 #include "ui_component.h"
 #include "DirectXTK/SpriteFont.h"
 #include "DirectXTK/SpriteBatch.h"

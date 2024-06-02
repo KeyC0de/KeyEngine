@@ -75,6 +75,30 @@ float getRoll( const dx::XMFLOAT4X4 &mat )
 	return eulerRot.z;
 }
 
+bool operator==( const DirectX::XMFLOAT3 &lhs,
+	const DirectX::XMFLOAT3 &rhs )
+{
+	return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z;
+}
+
+bool operator!=( const DirectX::XMFLOAT3 &lhs,
+	const DirectX::XMFLOAT3 &rhs )
+{
+	return !( lhs == rhs );
+}
+
+bool operator==( const DirectX::XMFLOAT4 &lhs,
+	const DirectX::XMFLOAT4 &rhs )
+{
+	return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z && lhs.w == rhs.w;
+}
+
+bool operator!=( const DirectX::XMFLOAT4 &lhs,
+	const DirectX::XMFLOAT4 &rhs )
+{
+	return !( lhs == rhs );
+}
+
 dx::XMFLOAT3 extractTranslation( const dx::XMFLOAT4X4 &mat )
 {
 	return {mat._41/* x */, mat._42/* y */, mat._43/* z */};
@@ -90,12 +114,18 @@ dx::XMMATRIX XM_CALLCONV scaleTranslation( const dx::XMMATRIX &mat,
 	return tmp;
 }
 
-dx::XMVECTOR XM_CALLCONV pitchYawRollToQuaternion( const dx::XMVECTOR& pitchYawRollAngles )
+dx::XMVECTOR XM_CALLCONV pitchYawRollToQuaternion( const dx::XMVECTOR& pitchYawRollAnglesVec )
 {
-	return dx::XMQuaternionRotationRollPitchYawFromVector( pitchYawRollAngles );
+	return dx::XMQuaternionRotationRollPitchYawFromVector( pitchYawRollAnglesVec );
 }
 
-void quaternionToEulerAngles( dx::XMFLOAT4 &quat,
+dx::XMVECTOR XM_CALLCONV pitchYawRollToQuaternion( const dx::XMFLOAT3& pitchYawRollAngles )
+{
+	dx::XMVECTOR pitchYawRollAnglesVec = dx::XMLoadFloat3( &pitchYawRollAngles );
+	return dx::XMQuaternionRotationRollPitchYawFromVector( pitchYawRollAnglesVec );
+}
+
+void quaternionToEulerAngles( const DirectX::XMFLOAT4 &quat,
 	float &pitch,
 	float &yaw,
 	float &roll )
@@ -105,12 +135,80 @@ void quaternionToEulerAngles( dx::XMFLOAT4 &quat,
 	roll = atan2( 2 * ( quat.w * quat.z + quat.y * quat.x ), 1 - 2 * ( quat.x * quat.x + quat.z * quat.z ) );
 }
 
+DirectX::XMFLOAT3 quaternionToEulerAngles( const DirectX::XMFLOAT4 &quat )
+{
+	return {asin( 2 * ( quat.w * quat.x - quat.z * quat.y ) ),
+		atan2( 2 * ( quat.w * quat.y + quat.x * quat.z ), 1 - 2 * ( quat.y * quat.y + quat.x * quat.x ) ),
+		atan2( 2 * ( quat.w * quat.z + quat.y * quat.x ), 1 - 2 * ( quat.x * quat.x + quat.z * quat.z ) )};
+}
+
+std::tuple<DirectX::XMFLOAT3,DirectX::XMFLOAT3,DirectX::XMFLOAT3> decomposeAffineMatrix( const DirectX::XMFLOAT4X4 &transform )
+{
+	return decomposeAffineMatrix( dx::XMLoadFloat4x4( &transform ) );
+}
+
 DirectX::XMFLOAT3 quaternionToPitchYawRoll( dx::XMFLOAT4 &quat )
 {
 	DirectX::XMFLOAT3 pitchYawRoll{asin( 2 * ( quat.w * quat.x - quat.z * quat.y ) ),
 		atan2( 2 * ( quat.w * quat.y + quat.x * quat.z ), 1 - 2 * ( quat.y * quat.y + quat.x * quat.x ) ),
 		atan2( 2 * ( quat.w * quat.z + quat.y * quat.x ), 1 - 2 * ( quat.x * quat.x + quat.z * quat.z ) )};
 	return pitchYawRoll;
+}
+
+std::tuple<DirectX::XMFLOAT3, DirectX::XMFLOAT3, DirectX::XMFLOAT3> decomposeAffineMatrix( const DirectX::XMMATRIX &transform )
+{
+	dx::XMVECTOR currentScaleMat{};
+	dx::XMVECTOR currentRotQuatMat{};
+	dx::XMVECTOR currentPosMat{};
+#if defined _DEBUG && !defined NDEBUG
+	const bool ret =
+#endif
+	dx::XMMatrixDecompose( &currentScaleMat, &currentRotQuatMat, &currentPosMat, transform );
+	ASSERT( ret, "Matrix decomposition failed!" );
+
+	dx::XMFLOAT3 currentScale{};
+	dx::XMStoreFloat3( &currentScale, currentScaleMat );
+
+	dx::XMFLOAT4 currentRotQuat4{};
+	dx::XMStoreFloat4( &currentRotQuat4, currentRotQuatMat );
+	dx::XMFLOAT3 currentRotEulerAngles = util::quaternionToEulerAngles( currentRotQuat4 );
+
+	dx::XMFLOAT3 currentPos{};
+	dx::XMStoreFloat3( &currentPos, currentPosMat );
+
+	return {currentScale, currentRotEulerAngles, currentPos};
+}
+
+void toDegrees3InPlace( DirectX::XMFLOAT3 &rotAngles )
+{
+	rotAngles.x = dx::XMConvertToDegrees( rotAngles.x );
+	rotAngles.y = dx::XMConvertToDegrees( rotAngles.y );
+	rotAngles.z = dx::XMConvertToDegrees( rotAngles.z );
+}
+
+DirectX::XMFLOAT3 toDegrees3( const DirectX::XMFLOAT3 &rotAngles )
+{
+	return {
+		dx::XMConvertToDegrees( rotAngles.x ),
+		dx::XMConvertToDegrees( rotAngles.y ),
+		dx::XMConvertToDegrees( rotAngles.z )
+	};
+}
+
+void toRadians3InPlace( DirectX::XMFLOAT3 &rotAngles )
+{
+	rotAngles.x = dx::XMConvertToRadians( rotAngles.x );
+	rotAngles.y = dx::XMConvertToRadians( rotAngles.y );
+	rotAngles.z = dx::XMConvertToRadians( rotAngles.z );
+}
+
+DirectX::XMFLOAT3 toRadians3( const DirectX::XMFLOAT3 &rotAngles )
+{
+	return {
+		dx::XMConvertToRadians( rotAngles.x ),
+		dx::XMConvertToRadians( rotAngles.y ),
+		dx::XMConvertToRadians( rotAngles.z )
+	};
 }
 
 dx::XMVECTOR XM_CALLCONV pitchYawRollToVector( const float pitch,

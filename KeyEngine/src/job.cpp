@@ -1,4 +1,5 @@
 #include "job.h"
+#include "graphics.h"
 #include "mesh.h"
 #include "material.h"
 #include "dxgi_info_queue.h"
@@ -17,7 +18,7 @@ Job::Job( const Mesh *pMesh, const Material *pMaterial )
 
 void Job::run( Graphics &gfx ) const cond_noex
 {
-	m_pMesh->bind( gfx );		// bind P.T., V.B., I.B.
+	m_pMesh->bind( gfx );		// bind P.T., V.B., I.B., TransformVSCB
 	m_pMaterial->bind( gfx );	// bind other bindables
 	gfx.drawIndexed( m_pMesh->getIndicesCount() );
 	DXGI_GET_QUEUE_INFO( gfx );

@@ -3,6 +3,7 @@
 #include "winner.h"
 #include <string>
 #include <vector>
+#include <tuple>
 #include <optional>
 #include <d3d11.h>
 #include <d3dcompiler.h>
@@ -39,11 +40,24 @@ ALIAS_FUNCTION( extractRotation, extractEulerAngles );
 float getPitch( const DirectX::XMFLOAT4X4 &mat );
 float getYaw( const DirectX::XMFLOAT4X4 &mat );
 float getRoll( const DirectX::XMFLOAT4X4 &mat );
+bool operator==( const DirectX::XMFLOAT3 &lhs, const DirectX::XMFLOAT3 &rhs );
+bool operator!=( const DirectX::XMFLOAT3 &lhs, const DirectX::XMFLOAT3 &rhs );
+bool operator==( const DirectX::XMFLOAT4 &lhs, const DirectX::XMFLOAT4 &rhs );
+bool operator!=( const DirectX::XMFLOAT4 &lhs, const DirectX::XMFLOAT4 &rhs );
 DirectX::XMFLOAT3 extractTranslation( const DirectX::XMFLOAT4X4 &mat );
 DirectX::XMMATRIX XM_CALLCONV scaleTranslation( const DirectX::XMMATRIX &mat, const float scale );
-DirectX::XMVECTOR XM_CALLCONV pitchYawRollToQuaternion( const DirectX::XMVECTOR& pitchYawRollAngles );
+DirectX::XMVECTOR XM_CALLCONV pitchYawRollToQuaternion( const DirectX::XMVECTOR& pitchYawRollAnglesVec );
+DirectX::XMVECTOR XM_CALLCONV pitchYawRollToQuaternion( const DirectX::XMFLOAT3& pitchYawRollAngles );
 ALIAS_FUNCTION( pitchYawRollToQuaternion, eulerAnglesToQuaternion );
-void quaternionToEulerAngles( DirectX::XMFLOAT4 &quat, float &pitch, float &yaw, float &roll );
+void quaternionToEulerAngles( const DirectX::XMFLOAT4 &quat, float &pitch, float &yaw, float &roll );
+DirectX::XMFLOAT3 quaternionToEulerAngles( const DirectX::XMFLOAT4 &quat );
+std::tuple<DirectX::XMFLOAT3, DirectX::XMFLOAT3, DirectX::XMFLOAT3> decomposeAffineMatrix( const DirectX::XMFLOAT4X4 &transform );
+std::tuple<DirectX::XMFLOAT3, DirectX::XMFLOAT3, DirectX::XMFLOAT3> decomposeAffineMatrix( const DirectX::XMMATRIX &transform );
+
+void toDegrees3InPlace( DirectX::XMFLOAT3 &rotAngles );
+DirectX::XMFLOAT3 toDegrees3( const DirectX::XMFLOAT3 &rotAngles );
+void toRadians3InPlace( DirectX::XMFLOAT3 &rotAngles );
+DirectX::XMFLOAT3 toRadians3( const DirectX::XMFLOAT3 &rotAngles );
 
 //	\function	quaternionToPitchYawRoll	||	\date	2022/09/03 14:48
 //	\brief	same as quaternionToEulerAngles except this version returns the euler angles in a float3 vector

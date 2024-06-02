@@ -1,7 +1,9 @@
 #pragma once
 
-#include "graphics.h"
+#include <d3d11.h>
 
+
+class Graphics;
 
 class GraphicsFriend
 {

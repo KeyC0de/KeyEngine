@@ -1,11 +1,16 @@
 #include "light_source.h"
+#include "sphere.h"
+#include "graphics.h"
+#include "camera.h"
+#include "math_utils.h"
+#include "d3d_utils.h"
+#include "assertions_console.h"
 #ifndef FINAL_RELEASE
 #	include "imgui/imgui.h"
 #endif
-#include "camera.h"
-#include "math_utils.h"
-#include "assertions_console.h"
 
+
+namespace dx = DirectX;
 
 /*
 void DirectionalLightVSCB::update( Graphics &gfx )
@@ -18,32 +23,45 @@ void DirectionalLightVSCB::update( Graphics &gfx )
 }
 */
 
+
 PointLight::PointLight( Graphics &gfx,
-	const DirectX::XMFLOAT3 &pos,
-	const DirectX::XMFLOAT3 &col,
-	const bool bShadowCasting,
-	const bool bShowMesh,
-	const float radius )
+	const float radiusScale /*= 0.5f*/,
+	const DirectX::XMFLOAT3 &initialRotDeg /*= {0.0f, 0.0f, 0.f}*/,
+	const DirectX::XMFLOAT3 &pos /*= {8.0f, 8.0f, 2.f}*/,
+	const std::variant<DirectX::XMFLOAT4, std::string> &colorOrTexturePath /*= DirectX::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f}*/,
+	const bool bShadowCasting /*= true*/,
+	const bool bShowMesh /*= true*/ )
 	:
-	m_sphereMesh(gfx, radius),
+	m_rot{util::toRadians3( initialRotDeg )},
+	m_sphereMesh(std::make_unique<Sphere>(gfx, radiusScale, colorOrTexturePath), gfx, initialRotDeg, pos),
 	m_pscb(gfx, s_pointLightPscbSlot),
 	m_bCastingShadows{bShadowCasting},
 	m_bShowMesh{bShowMesh}
 {
-	static int id = 0;
-	++id;
-	m_name = std::string{"Light#"} + std::to_string( id );
-	m_pscbHomeData = {pos, {0.08f, 0.08f, 0.08f}, col, 1.0f, 1.0f, 0.025f, 0.0030f};
+	static int s_id = 0;
+	++s_id;
+	m_name = std::string{"Light#"} + std::to_string( s_id );
+
+	const dx::XMFLOAT4 lightColor = std::holds_alternative<dx::XMFLOAT4>( colorOrTexturePath ) ? std::get<dx::XMFLOAT4>( colorOrTexturePath ) : dx::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f};
+	m_pscbDataDefault = {pos,
+		{0.08f, 0.08f, 0.08f},
+		{lightColor.x, lightColor.y, lightColor.z},
+		1.0f,
+		1.0f,
+		0.025f,
+		0.0030f};
 	resetToDefault();
 	if ( bShadowCasting )
 	{
-		m_pCameraForShadowing = std::make_shared<Camera>( gfx, std::string{"ShadowCam#"} + std::to_string( id ), gfx.getClientWidth(), gfx.getClientHeight(), 90.0f, m_pscbData.pos, 0.0f, util::PI / 2.0f, true );
+		m_pCameraForShadowing = std::make_shared<Camera>( gfx, 90.0f, m_pscbData.pos, initialRotDeg.x, initialRotDeg.y, true );
 	}
 }
 
+// #TODO: rework this
 void PointLight::update( Graphics &gfx,
 	const float dt,
-	const DirectX::XMMATRIX &activeCameraViewMat ) const noexcept
+	const DirectX::XMMATRIX &activeCameraViewMat,
+	const bool bEnableSmoothMovement /*= false*/ ) cond_noex
 {
 	auto copy = m_pscbData;
 	const auto lightPos = DirectX::XMLoadFloat3( &m_pscbData.pos );
@@ -51,7 +69,8 @@ void PointLight::update( Graphics &gfx,
 	m_pscb.update( gfx, copy );
 	if ( m_bShowMesh )
 	{
-		m_sphereMesh.setPosition( m_pscbData.pos );
+		m_sphereMesh.setTranslation( m_pscbData.pos );
+		m_sphereMesh.setRotation( m_rot );
 	}
 	m_pscb.bind( gfx );
 }
@@ -90,14 +109,38 @@ void PointLight::displayImguiWidgets() noexcept
 			bDirtyRot = bDirtyRot || bChanged;
 		};
 		
-		ImGui::Text( "Position" );
-		dirtyCheckRot( ImGui::SliderFloat( "X", &m_pscbData.pos.x, -60.0f, 60.0f, "%.1f" ) );
-		dirtyCheckRot( ImGui::SliderFloat( "Y", &m_pscbData.pos.y, -60.0f, 60.0f, "%.1f" ) );
-		dirtyCheckRot( ImGui::SliderFloat( "Z", &m_pscbData.pos.z, -60.0f, 60.0f, "%.1f" ) );
+		ImGui::Text( "Rotation" );
+		dirtyCheckRot( ImGui::SliderFloat( "Pitch", &m_rot.x, -60.0f, 60.0f, "%.1f" ) );
+		dirtyCheckRot( ImGui::SliderFloat( "Yaw", &m_rot.y, -60.0f, 60.0f, "%.1f" ) );
+		dirtyCheckRot( ImGui::SliderFloat( "Roll", &m_rot.z, -60.0f, 60.0f, "%.1f" ) );
 
-		if ( bDirtyRot && m_bCastingShadows )
+		if ( bDirtyRot )
 		{
-			m_pCameraForShadowing->setPosition( m_pscbData.pos );
+			m_pCameraForShadowing->setRotation( m_rot );
+			if ( m_bShowMesh )
+			{
+				m_sphereMesh.setRotation( m_rot );
+			}
+		}
+
+		bool bDirtyPos = false;
+		const auto dirtyCheckPos = [&bDirtyPos]( const bool bChanged )
+		{
+			bDirtyPos = bDirtyPos || bChanged;
+		};
+		
+		ImGui::Text( "Position" );
+		dirtyCheckPos( ImGui::SliderFloat( "X", &m_pscbData.pos.x, -100.0f, 100.0f, "%.1f" ) );
+		dirtyCheckPos( ImGui::SliderFloat( "Y", &m_pscbData.pos.y, -100.0f, 100.0f, "%.1f" ) );
+		dirtyCheckPos( ImGui::SliderFloat( "Z", &m_pscbData.pos.z, -100.0f, 100.0f, "%.1f" ) );
+
+		if ( bDirtyPos )
+		{
+			m_pCameraForShadowing->setTranslation( m_pscbData.pos );
+			if ( m_bShowMesh )
+			{
+				m_sphereMesh.setTranslation( m_pscbData.pos );
+			}
 		}
 
 		ImGui::Text( "Intensity & Color" );
@@ -123,7 +166,7 @@ void PointLight::displayImguiWidgets() noexcept
 
 void PointLight::resetToDefault() noexcept
 {
-	m_pscbData = m_pscbHomeData;
+	m_pscbData = m_pscbDataDefault;
 }
 
 std::shared_ptr<Camera> PointLight::shareCamera() const noexcept
@@ -137,7 +180,7 @@ bool PointLight::isCastingShadows() const noexcept
 	return m_bCastingShadows;
 }
 
-const std::string& PointLight::getName() const noexcept
+std::string PointLight::getName() const noexcept
 {
 	return m_name;
 }

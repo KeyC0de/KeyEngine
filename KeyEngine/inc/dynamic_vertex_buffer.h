@@ -324,7 +324,7 @@ class VBuffer final
 public:
 	VBuffer( VertexInputLayout layout, const size_t vertexCount = 0u ) cond_noex;
 	VBuffer( VertexInputLayout layout, const aiMesh &mesh );
-	const char* getRawBytes() const cond_noex;
+	const char* data() const cond_noex;
 	const VertexInputLayout& getLayout() const noexcept;
 	void resize( const size_t newVertexCount ) cond_noex;
 	size_t getVertexCount() const cond_noex;

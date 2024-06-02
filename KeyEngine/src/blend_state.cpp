@@ -1,11 +1,12 @@
 #include "blend_state.h"
+#include "graphics.h"
 #include "bindable_map.h"
 #include "os_utils.h"
 #include "dxgi_info_queue.h"
 #include "assertions_console.h"
 
-
 #define blendStateDescRTSlot blendStateDesc.RenderTarget[renderTargetSlot]
+
 
 BlendState::BlendState( Graphics &gfx,
 	const Mode mode,

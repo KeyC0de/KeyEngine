@@ -9,6 +9,33 @@
 namespace util
 {
 
+void normalizeAngleDeg( float& angleDeg ) 
+{
+	while ( angleDeg < -180 )
+	{
+		angleDeg += 360;
+	}
+	while ( angleDeg >  180 )
+	{
+		angleDeg -= 360;
+	}
+}
+
+bool isAngleDegWithinRange( float angleDeg,
+	float a,
+	float b )
+{
+	a -= angleDeg;
+	b -= angleDeg;
+	normalizeAngleDeg( a );
+	normalizeAngleDeg( b );
+	if ( a * b >= 0 )
+	{
+		return false;
+	}
+	return fabs( a - b ) < 180;
+}
+
 constexpr int nextPowerOf2( int n )
 {
 	if ( n < 0 )
@@ -271,6 +298,12 @@ constexpr void convertToBase( int number,
 		++i;
 		number /= base;
 	} while ( number != 0 );
+}
+
+constexpr bool isNthBitSet( const int value,
+	const int posOfTestBit )
+{
+	return value & ( 1 << ( posOfTestBit + 1 ) );
 }
 
 constexpr int swapBits( int num,

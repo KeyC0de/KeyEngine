@@ -1,4 +1,5 @@
 #include "primitive_topology.h"
+#include "graphics.h"
 #include "bindable_map.h"
 #include "dxgi_info_queue.h"
 

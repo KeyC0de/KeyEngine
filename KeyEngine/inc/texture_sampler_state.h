@@ -1,7 +1,10 @@
 #pragma once
 
+#include "key_wrl.h"
 #include "bindable.h"
 
+
+class Graphics;
 
 //=============================================================
 //	\class	TextureSamplerState

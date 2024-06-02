@@ -1,8 +1,8 @@
 #pragma once
 
-#include <limits>
-#include <unordered_map>
 #include <string>
+#include <unordered_map>
+#include <limits>
 
 
 class Model;
@@ -27,7 +27,7 @@ public:
 	virtual void onVisit( class Node &node ) = 0;
 };
 
-class ImguiNodeVisitorShowcase final
+class ImguiPerModelNodeVisitor final
 	: IImguiNodeVisitor
 {
 	std::string m_name;
@@ -42,32 +42,37 @@ class ImguiNodeVisitorShowcase final
 	};
 	std::unordered_map<int, TransformData> m_nodeMapTransforms;
 public:
-	ImguiNodeVisitorShowcase( const std::string &name );
+	ImguiPerModelNodeVisitor() = default;
+	ImguiPerModelNodeVisitor( const std::string &name );
 
 	//	\function	onVisit	||	\date	2022/09/20 23:07
 	//	\brief	if visit() returns true, "close" the node
 	void onVisit( Node &node ) override;
 	void displayImguiWidgets( Model &model ) noexcept;
 private:
-	TransformData& calcTransform() noexcept;
+	TransformData& getNodeTransform() noexcept;
 };
 
+#ifdef max
+#	undef max
+#endif
+
 //============================================================
-//	\class	IImGuiMaterialVisitor
+//	\class	IImGuiConstantBufferVisitor
 //	\author	KeyC0de
 //	\date	2020/01/09 15:53
-//	\brief	implement and override on* methods
+//	\brief	Visitor that operates on a material that contains a con::CBuffer and its Bindable(s) override Bindable::accept() which ultimately call IImGuiConstantBufferVisitor::visit( cb )
 //			targets a Model with a specific material
 //			the IDs are for tagging ImGui widgets/controls
 //=============================================================
-class IImGuiMaterialVisitor
+class IImGuiConstantBufferVisitor
 {
 protected:
 	Material *m_pMaterial = nullptr;
 	size_t m_materialId = std::numeric_limits<size_t>::max();
 	size_t m_imguiId = std::numeric_limits<size_t>::max();
 public:
-	virtual ~IImGuiMaterialVisitor() noexcept = default;
+	virtual ~IImGuiConstantBufferVisitor() noexcept = default;
 
 	void setMaterial( Material *ef );
 	//	\function	visit	||	\date	2022/08/31 11:33
@@ -77,8 +82,8 @@ public:
 	virtual void onSetMaterial() = 0;
 };
 
-class ImguiMaterialVisitorShowcase final
-	: public IImGuiMaterialVisitor
+class ImguiConstantBufferVisitorShowcase final
+	: public IImGuiConstantBufferVisitor
 {
 public:
 	bool onVisit( con::CBuffer &cb ) override;

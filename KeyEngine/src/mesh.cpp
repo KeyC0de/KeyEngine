@@ -1,16 +1,16 @@
 #include "mesh.h"
+#include "node.h"
 #include "vertex_buffer.h"
 #include "index_buffer.h"
 #include "primitive_topology.h"
 #include "material_loader.h"
-#include "d3d_utils.h"
 #include "camera_manager.h"
 #include "camera.h"
-#include "d3d_utils.h"
 #include "settings_manager.h"
+#include "utils.h"
+#include "d3d_utils.h"
 
 
-// #TODO: Model LOD automatic switching
 namespace mesh
 {
 
@@ -23,11 +23,12 @@ namespace dx = DirectX;
 Mesh::Mesh( Graphics &gfx,
 	const MaterialLoader &mat,
 	const aiMesh &aimesh,
-	const float initialScale /*= 1.0f*/ ) noexcept
+	const float initialScale /*= 1.0f*/ )
 {
 	m_pVertexBuffer = mat.makeVertexBuffer( gfx, aimesh, initialScale );
 	m_pIndexBuffer = mat.makeIndexBuffer( gfx, aimesh );
 	m_pPrimitiveTopology = PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST );
+	m_pTransformVscb = std::make_unique<TransformVSCB>( gfx, 0u, *this );
 
 	for ( auto &material : mat.getMaterial() )
 	{
@@ -38,29 +39,47 @@ Mesh::Mesh( Graphics &gfx,
 	setMeshId();
 }
 
-Mesh::Mesh( const DirectX::XMFLOAT3 &initialScale,
-	const DirectX::XMFLOAT3 &initialRot /*= {0, 0, 0}*/,
-	const DirectX::XMFLOAT3 &initialPos /*= {0, 0, 0}*/ ) noexcept
+Mesh::~Mesh() noexcept
 {
-	const dx::XMMATRIX scaleMat = dx::XMMatrixScaling( initialScale.x, initialScale.y, initialScale.z );
-	const dx::XMMATRIX rotMat = dx::XMMatrixRotationRollPitchYaw( initialRot.x, initialRot.y, initialRot.z );
-	const dx::XMMATRIX posMat = dx::XMMatrixTranslation( initialPos.x, initialPos.y, initialPos.z );
-	dx::XMStoreFloat4x4( &m_worldTransform, scaleMat * rotMat * posMat );
+	m_materials.clear();
+	m_pTransformVscb.reset();
+	m_pPrimitiveTopology.reset();
+	m_pIndexBuffer.reset();
+	m_pVertexBuffer.reset();
+	m_pNode = nullptr;
+	m_meshId = 0u;
+	m_bRenderedThisFrame = false;
+	m_distanceFromActiveCamera = -1.0f;
 }
 
-Mesh::Mesh( const DirectX::XMMATRIX &initialTransform ) noexcept
+Mesh::Mesh( Mesh &&rhs ) noexcept
+	:
+	m_distanceFromActiveCamera{rhs.m_distanceFromActiveCamera},
+	m_bRenderedThisFrame{rhs.m_bRenderedThisFrame},
+	m_meshId{rhs.m_meshId},
+	m_pNode{rhs.m_pNode},
+	m_aabb{rhs.m_aabb},
+	m_pVertexBuffer{std::move( rhs.m_pVertexBuffer )},		// TODO: ???
+	m_pIndexBuffer{std::move( rhs.m_pIndexBuffer )},
+	m_pPrimitiveTopology{std::move( rhs.m_pPrimitiveTopology )},
+	m_pTransformVscb{std::move( rhs.m_pTransformVscb )},
+	m_materials{std::move( rhs.m_materials )}
 {
-	dx::XMStoreFloat4x4( &m_worldTransform, initialTransform );
+	rhs.m_pNode = nullptr;
+	rhs.m_pVertexBuffer = nullptr;
+	rhs.m_pIndexBuffer = nullptr;
+	rhs.m_pPrimitiveTopology = nullptr;
 }
 
-//Mesh::~Mesh() noexcept
-//{
-//	pass_;
-//}
+void Mesh::setNode( Node &node )
+{
+	m_pNode = &node;
+}
 
 void Mesh::update( const float dt,
 	const float renderFrameInterpolation ) cond_noex
 {
+	//ASSERT( m_pNode, "Critical: Node absent!" );	// #TODO: use only for Mesh Nodes
 	setDistanceFromActiveCamera();
 }
 
@@ -79,6 +98,20 @@ void Mesh::render( const size_t channels /* = rch::all*/ ) const noexcept
 	}
 }
 
+void Mesh::bind( Graphics &gfx ) const cond_noex
+{
+	m_pVertexBuffer->bind( gfx );
+	m_pIndexBuffer->bind( gfx );
+	m_pPrimitiveTopology->bind( gfx );
+	m_pTransformVscb->bind( gfx );
+}
+
+void Mesh::addMaterial( Material material ) noexcept
+{
+	material.setMesh( *this );
+	m_materials.emplace_back( std::move( material ) );
+}
+
 void Mesh::setMaterialEnabled( const size_t channels,
 	const bool bEnabled ) noexcept
 {
@@ -89,20 +122,7 @@ void Mesh::setMaterialEnabled( const size_t channels,
 	}
 }
 
-void Mesh::addMaterial( Material material ) noexcept
-{
-	material.setMesh( *this );
-	m_materials.emplace_back( std::move( material ) );
-}
-
-void Mesh::bind( Graphics &gfx ) const cond_noex
-{
-	m_pVertexBuffer->bind( gfx );
-	m_pIndexBuffer->bind( gfx );
-	m_pPrimitiveTopology->bind( gfx );
-}
-
-void Mesh::accept( IImGuiMaterialVisitor &ev )
+void Mesh::accept( IImGuiConstantBufferVisitor &ev )
 {
 	for ( auto &material : m_materials )
 	{
@@ -124,82 +144,6 @@ void Mesh::connectMaterialsToRenderer( ren::Renderer &r )
 	}
 }
 
-void Mesh::setTransform( const dx::XMMATRIX &worldTransform ) noexcept
-{
-	dx::XMStoreFloat4x4( &m_worldTransform, worldTransform );
-}
-
-void Mesh::setTransform( const dx::XMFLOAT4X4 &worldTransform ) noexcept
-{
-	m_worldTransform = worldTransform;
-}
-
-void Mesh::setScale( const DirectX::XMFLOAT3 &scale ) cond_noex
-{
-	const auto &currentTransform = dx::XMLoadFloat4x4( &m_worldTransform );
-	dx::XMVECTOR currentScale{}, currentRotQuat{}, currentPos{};
-	const bool ret = dx::XMMatrixDecompose( &currentScale, &currentRotQuat, &currentPos, currentTransform );
-	ASSERT( ret, "Matrix decomposition failed!" );
-
-	const dx::XMMATRIX scaleMat = dx::XMMatrixScaling( scale.x, scale.y, scale.z );
-	const dx::XMMATRIX rotMat = dx::XMMatrixRotationQuaternion( currentRotQuat );
-	const dx::XMMATRIX posMat = dx::XMMatrixTranslationFromVector( currentPos );
-	dx::XMStoreFloat4x4( &m_worldTransform, scaleMat * rotMat * posMat );
-}
-
-void Mesh::setRotation( const DirectX::XMFLOAT3 &rot ) cond_noex
-{
-	const auto &currentTransform = dx::XMLoadFloat4x4( &m_worldTransform );
-	dx::XMVECTOR currentScale{}, currentRotQuat{}, currentPos{};
-	const bool ret = dx::XMMatrixDecompose( &currentScale, &currentRotQuat, &currentPos, currentTransform );
-	ASSERT( ret, "Matrix decomposition failed!" );
-
-	const dx::XMMATRIX scaleMat = dx::XMMatrixScalingFromVector( currentScale );
-	const dx::XMMATRIX rotMat = dx::XMMatrixRotationRollPitchYaw( rot.x, rot.y, rot.z );
-	const dx::XMMATRIX posMat = dx::XMMatrixTranslationFromVector( currentPos );
-	dx::XMStoreFloat4x4( &m_worldTransform, scaleMat * rotMat * posMat );
-}
-
-void Mesh::setPosition( const DirectX::XMFLOAT3 &pos ) cond_noex
-{
-	m_worldTransform._41 = pos.x;
-	m_worldTransform._42 = pos.y;
-	m_worldTransform._43 = pos.z;
-}
-
-DirectX::XMMATRIX Mesh::getTransform() const noexcept
-{
-	return dx::XMLoadFloat4x4( &m_worldTransform );
-}
-
-float Mesh::getScale() const noexcept
-{
-	dx::XMVECTOR currentScale{}, currentRotQuat{}, currentPos{};
-	const bool ret = dx::XMMatrixDecompose( &currentScale, &currentRotQuat, &currentPos, dx::XMLoadFloat4x4( &m_worldTransform ) );
-	ASSERT( ret, "Matrix decomposition failed!" );
-
-	float scale;
-	dx::XMStoreFloat( &scale, currentScale );
-	return scale;
-}
-
-DirectX::XMFLOAT3 Mesh::getRotation() const noexcept
-{
-	return util::extractRotation( m_worldTransform );
-}
-
-DirectX::XMFLOAT3 Mesh::getPosition() const noexcept
-{
-	return util::extractTranslation( m_worldTransform );
-}
-
-void Mesh::setDistanceFromActiveCamera() noexcept
-{
-	const auto pos = getPosition();
-	const auto &cameraPos = CameraManager::getInstance().getActiveCamera().getPosition();
-	m_distanceFromActiveCamera = util::distance( pos, cameraPos );
-}
-
 float Mesh::getDistanceFromActiveCamera() const noexcept
 {
 	return m_distanceFromActiveCamera;
@@ -208,6 +152,11 @@ float Mesh::getDistanceFromActiveCamera() const noexcept
 bool Mesh::isRenderedThisFrame() const noexcept
 {
 	return m_bRenderedThisFrame;
+}
+
+std::shared_ptr<VertexBuffer>& Mesh::getVertexBuffer()
+{
+	return m_pVertexBuffer;
 }
 
 void Mesh::createAabb( const ver::VBuffer &verts )
@@ -233,6 +182,25 @@ void Mesh::createAabb( const ver::VBuffer &verts )
 	m_aabb = std::make_pair( minVertex, maxVertex );
 }
 
+const Node* Mesh::getNode() const noexcept
+{
+	return m_pNode;
+}
+
+std::string Mesh::getName() const noexcept
+{
+	using namespace std::string_literals;
+	// even though the function is not virtual *this will take into account the "virtuality" of the class
+	auto str = std::string{typeid( *this ).name()} + "#"s + std::to_string( m_meshId );
+	// str = "class whatever#34" or "struct whatever#34"
+	return util::trimStringFromStart( str, 6 );
+}
+
+unsigned Mesh::getMeshId() const noexcept
+{
+	return m_meshId;
+}
+
 float Mesh::getDistanceFromActiveCamera( const DirectX::XMFLOAT3 &pos ) const noexcept
 {
 	const auto &cameraPos = CameraManager::getInstance().getActiveCamera().getPosition();
@@ -243,6 +211,13 @@ void Mesh::setMeshId() noexcept
 {
 	++mesh::g_numMeshes;
 	m_meshId = mesh::g_numMeshes;
+}
+
+void Mesh::setDistanceFromActiveCamera() noexcept
+{
+	const auto pos = m_pNode->getPosition();
+	const auto &cameraPos = CameraManager::getInstance().getActiveCamera().getPosition();
+	m_distanceFromActiveCamera = util::distance( pos, cameraPos );
 }
 
 void Mesh::createAabb( const aiMesh &aiMesh )
@@ -285,7 +260,7 @@ bool Mesh::isFrustumCulled() const noexcept
 	const auto &minVertex = m_aabb.first;
 	const auto &maxVertex = m_aabb.second;
 
-	const auto pos = getPosition();
+	const auto pos = m_pNode->getPosition();
 
 	for ( int i = 0; i < numPlanes; ++i )
 	{

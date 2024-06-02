@@ -1,10 +1,13 @@
 #pragma once
 
+#include "key_wrl.h"
 #include "bindable.h"
 #include "bitmap.h"
 #include "render_target.h"
 #include "depth_stencil_view.h"
 
+
+class Graphics;
 
 using TextureOp = DirectX::XMVECTOR(*)(Bitmap::Texel);
 

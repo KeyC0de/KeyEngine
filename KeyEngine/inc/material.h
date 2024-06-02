@@ -6,7 +6,7 @@
 
 
 class Mesh;
-class IImGuiMaterialVisitor;
+class IImGuiConstantBufferVisitor;
 
 namespace ren
 {
@@ -41,7 +41,7 @@ public:
 	void setEnabled( const size_t channels, const bool bEnabled ) noexcept;
 	const std::string& getTargetPassName() const noexcept;
 	void setMesh( const Mesh &parent ) noexcept;
-	void accept( IImGuiMaterialVisitor &ev );
+	void accept( IImGuiConstantBufferVisitor &ev );
 	void connectPass( ren::Renderer &r );
 	std::vector<std::shared_ptr<IBindable>>& getBindables();
 	const std::vector<std::shared_ptr<IBindable>>& getBindables() const noexcept;

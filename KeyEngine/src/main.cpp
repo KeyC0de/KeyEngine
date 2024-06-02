@@ -152,7 +152,7 @@ void firstly()
 
 	// initialize Singleton systems
 	SettingsManager &settingsMan = SettingsManager::getInstance();
-	ThreadPoolJ &threadPool = ThreadPoolJ::getInstance( settingsMan.getSettings().nThreads, true );
+	ThreadPoolJ &threadPool = ThreadPoolJ::getInstance( std::thread::hardware_concurrency() / 2, true );
 	auto &soundPlayer = SoundPlayer::getInstance();
 #if defined _DEBUG && !defined NDEBUG
 	KeyConsole &console = KeyConsole::getInstance();

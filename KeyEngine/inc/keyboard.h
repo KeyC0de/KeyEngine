@@ -6,6 +6,8 @@
 #include "non_copyable.h"
 
 
+class Window;
+
 class Keyboard final
 	: NonCopyable
 {

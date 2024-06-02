@@ -1,6 +1,7 @@
 #include "texture.h"
 #include "texture_desc.h"
 #include "texture_processor.h"
+#include "graphics.h"
 #include "bindable_map.h"
 #include "os_utils.h"
 #include "dxgi_info_queue.h"
@@ -18,6 +19,8 @@ Texture::Texture( Graphics &gfx,
 	m_slot(slot),
 	m_op(op)
 {
+	// #TODO: the rendering pipeline should not involve code paths that require loading assets from disk.
+	// so preload bitmaps & shaders
 	auto bitmap = Bitmap::loadFromFile( filepath );
 	m_bAlpha = bitmap.hasAlpha();
 	m_width = bitmap.getWidth();

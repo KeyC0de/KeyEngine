@@ -82,9 +82,9 @@ public:
 
     // -----------------------------------------
     /** construct from existing stream reader
-    note: trim is *always* assumed true if skyp_empty_lines==true
+    note: trimSpaces is *always* assumed true if skyp_empty_lines==true
     */
-    LineSplitter(StreamReaderLE& stream, bool skip_empty_lines = true, bool trim = true);
+    LineSplitter(StreamReaderLE& stream, bool skip_empty_lines = true, bool trimSpaces = true);
 
     ~LineSplitter() = default;
 
@@ -146,14 +146,14 @@ private:
     bool mSwallow, mSkip_empty_lines, mTrim;
 };
 
-AI_FORCE_INLINE LineSplitter::LineSplitter(StreamReaderLE& stream, bool skip_empty_lines, bool trim ) :
+AI_FORCE_INLINE LineSplitter::LineSplitter(StreamReaderLE& stream, bool skip_empty_lines, bool trimSpaces ) :
         mIdx(0),
         mCur(),
         mEnd(nullptr),
         mStream(stream),
         mSwallow(),
         mSkip_empty_lines(skip_empty_lines),
-        mTrim(trim) {
+        mTrim(trimSpaces) {
     mCur.reserve(1024);
     mEnd = mCur.c_str() + 1024;
     operator++();

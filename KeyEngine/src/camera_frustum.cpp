@@ -1,33 +1,45 @@
 #include "camera_frustum.h"
+#include "graphics.h"
 #include "geometry.h"
 #include "vertex_buffer.h"
 #include "index_buffer.h"
 #include "primitive_topology.h"
 #include "input_layout.h"
 #include "vertex_shader.h"
-#include "transform_vscb.h"
 #include "pixel_shader.h"
+#include "transform_vscb.h"
+#include "constant_buffer.h"
 #include "rendering_channel.h"
 
 
 namespace dx = DirectX;
 
 CameraFrustum::CameraFrustum( Graphics &gfx,
-	const float width,
-	const float height,
-	const float nearZ,
-	const float farZ,
 	const float initialScale/* = 1.0f*/,
-	const DirectX::XMFLOAT3 &initialRot/*= {0.0f, 0.0f, 0.0f}*/,
-	const DirectX::XMFLOAT3 &initialPos/*= {0.0f, 0.0f, 0.0f}*/ )
-	:
-	Mesh{{1.0f, 1.0f, 1.0f}, initialRot, initialPos}
+	const std::variant<DirectX::XMFLOAT4, std::string> &colorOrTexturePath /*= DirectX::XMFLOAT4{0.6f, 0.2f, 0.2f, 1.0f}*/,
+	const float width /*= 1.0f*/,
+	const float height /*= 1.0f*/,
+	const float nearZ /*= 0.5f*/,
+	const float farZ /*= 200.0f*/ )
 {
+	std::string diffuseTexturePath;
+	if ( std::holds_alternative<DirectX::XMFLOAT4>( colorOrTexturePath ) )
+	{
+		m_colorPscb.materialColor = std::get<DirectX::XMFLOAT4>( colorOrTexturePath );
+	}
+	else
+	{
+		diffuseTexturePath = std::get<std::string>( colorOrTexturePath );
+	}
+
 	auto g = Geometry::makeCameraFrustum( width, height, nearZ, farZ );
 
-	m_pVertexBuffer = std::make_shared<VertexBuffer>( gfx, g.m_vb );	// we don't share the frustum in the BindableMap because each will be unique
-	m_pIndexBuffer = IndexBuffer::fetch( gfx, s_geometryTag, g.m_indices );
-	m_pPrimitiveTopology = PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_LINELIST );
+	{
+		m_pVertexBuffer = std::make_shared<VertexBuffer>( gfx, g.m_vb );	// we don't share the frustum in the BindableMap because each will be unique
+		m_pIndexBuffer = IndexBuffer::fetch( gfx, s_geometryTag, g.m_indices );
+		m_pPrimitiveTopology = PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_LINELIST );
+		m_pTransformVscb = std::make_unique<TransformVSCB>( gfx, 0u, *this );
+	}
 
 	createAabb( g.m_vb );
 	setMeshId();
@@ -48,13 +60,7 @@ CameraFrustum::CameraFrustum( Graphics &gfx,
 		front.addBindable( std::move( pVs ) );
 		front.addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
 
-		struct ColorPSCB
-		{
-			dx::XMFLOAT3 color{0.6f, 0.2f, 0.2f};
-			float padding = 0.0f;
-		} colorPscb;
-		front.addBindable( PixelShaderConstantBuffer<ColorPSCB>::fetch( gfx, colorPscb, 0u ) );
-		front.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
+		front.addBindable( PixelShaderConstantBuffer<ColorPSCB3>::fetch( gfx, m_colorPscbWireframe, 0u ) );
 
 		addMaterial( std::move( front ) );
 	}
@@ -69,19 +75,8 @@ CameraFrustum::CameraFrustum( Graphics &gfx,
 		occluded.addBindable( std::move( pvs ) );
 		occluded.addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
 
-		struct ColorPSCB2
-		{
-			dx::XMFLOAT3 materialColor{0.15f, 0.08f, 0.08f};
-			float padding = 0.0f;
-		} colorPscb;
-		occluded.addBindable( PixelShaderConstantBuffer<ColorPSCB2>::fetch( gfx, colorPscb, 0u ) );
-		occluded.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
+		occluded.addBindable( PixelShaderConstantBuffer<ColorPSCB4>::fetch( gfx, m_colorPscbDepthReversed, 0u ) );
 
 		addMaterial( std::move( occluded ) );
 	}
-}
-
-std::shared_ptr<VertexBuffer>& CameraFrustum::getVertexBuffer()
-{
-	return m_pVertexBuffer;
 }

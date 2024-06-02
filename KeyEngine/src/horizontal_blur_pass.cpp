@@ -1,4 +1,5 @@
 #include "horizontal_blur_pass.h"
+#include "graphics.h"
 #include "pixel_shader.h"
 #include "texture_sampler_state.h"
 

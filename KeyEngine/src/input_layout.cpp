@@ -1,4 +1,5 @@
 #include "input_layout.h"
+#include "graphics.h"
 #include "bindable_map.h"
 #include "vertex_shader.h"
 #include "os_utils.h"

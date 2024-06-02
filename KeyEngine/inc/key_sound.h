@@ -14,6 +14,7 @@
 #include "reporter_listener.h"
 
 
+class Sound;
 //============================================================
 //	\class	SoundManager
 //	\author	KeyC0de

@@ -183,8 +183,8 @@ AI_FORCE_INLINE std::string ai_rgba2hex(int r, int g, int b, int a, bool with_he
 }
 
 // ---------------------------------------------------------------------------------
-/// @brief   Performs a trim from start (in place)
-/// @param  s   string to trim.
+/// @brief   Performs a trimSpaces from start (in place)
+/// @param  s   string to trimSpaces.
 AI_FORCE_INLINE void ai_trim_left(std::string &s) {
     s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](unsigned char ch) {
         return !std::isspace(ch);
@@ -192,8 +192,8 @@ AI_FORCE_INLINE void ai_trim_left(std::string &s) {
 }
 
 // ---------------------------------------------------------------------------------
-/// @brief  Performs a trim from end (in place).
-/// @param  s   string to trim.
+/// @brief  Performs a trimSpaces from end (in place).
+/// @param  s   string to trimSpaces.
 // ---------------------------------------------------------------------------------
 // ---------------------------------------------------------------------------------
 AI_FORCE_INLINE void ai_trim_right(std::string &s) {
@@ -203,8 +203,8 @@ AI_FORCE_INLINE void ai_trim_right(std::string &s) {
 }
 
 // ---------------------------------------------------------------------------------
-/// @brief  Performs a trim from both ends (in place).
-/// @param  s   string to trim.
+/// @brief  Performs a trimSpaces from both ends (in place).
+/// @param  s   string to trimSpaces.
 // ---------------------------------------------------------------------------------
 AI_FORCE_INLINE std::string ai_trim(std::string &s) {
     std::string out(s);

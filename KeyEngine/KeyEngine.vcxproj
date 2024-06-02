@@ -208,6 +208,7 @@
     <ClCompile Include="src\binder.cpp" />
     <ClCompile Include="src\cube.cpp" />
     <ClCompile Include="src\cube_texture.cpp" />
+    <ClCompile Include="src\database.cpp" />
     <ClCompile Include="src\depth_reversed_pass.cpp" />
     <ClCompile Include="src\depth_stencil_state.cpp" />
     <ClCompile Include="src\depth_stencil_view.cpp" />
@@ -411,6 +412,7 @@
     <ClInclude Include="inc\binder.h" />
     <ClInclude Include="inc\cube.h" />
     <ClInclude Include="inc\cube_texture.h" />
+    <ClInclude Include="inc\database.h" />
     <ClInclude Include="inc\depth_reversed_pass.h" />
     <ClInclude Include="inc\depth_stencil_state.h" />
     <ClInclude Include="inc\depth_stencil_view.h" />

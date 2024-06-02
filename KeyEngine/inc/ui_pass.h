@@ -12,6 +12,7 @@ class SpriteFont;
 
 }
 
+class Graphics;
 class RasterizerState;
 class Texture;
 

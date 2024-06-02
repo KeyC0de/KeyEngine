@@ -5,6 +5,8 @@
 #include "non_copyable.h"
 
 
+class Window;
+
 class Mouse final
 	: public NonCopyable
 {

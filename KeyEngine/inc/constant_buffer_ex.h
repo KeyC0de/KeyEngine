@@ -1,9 +1,13 @@
 #pragma once
 
+#include "key_wrl.h"
 #include "bindable.h"
-#include "imgui_visitors.h"
 #include "dynamic_constant_buffer.h"
+#ifndef FINAL_RELEASE
+#	include "imgui_visitors.h"
+#endif
 
+class Graphics;
 
 class IConstantBufferEx
 	: public IBindable
@@ -100,7 +104,7 @@ public:
 		T::bind( gfx );
 	}
 
-	void accept( IImGuiMaterialVisitor &ev ) override
+	void accept( IImGuiConstantBufferVisitor &ev ) override
 	{
 		if ( ev.visit( m_cb ) )
 		{

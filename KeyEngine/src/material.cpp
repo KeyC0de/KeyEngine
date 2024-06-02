@@ -2,9 +2,11 @@
 #include <memory>
 #include "mesh.h"
 #include "renderer.h"
-#include "imgui_visitors.h"
 #include "render_queue_pass.h"
 #include "assertions_console.h"
+#ifndef FINAL_RELEASE
+#	include "imgui_visitors.h"
+#endif
 
 
 Material::Material( const size_t channels,
@@ -58,10 +60,11 @@ void Material::addBindable( std::shared_ptr<IBindable> pBindable ) noexcept
 	m_bindables.emplace_back( std::move( pBindable ) );
 }
 
+
 void Material::render( const Mesh &mesh,
 	const size_t channels ) const noexcept
 {
-	if ( m_bActive && (m_renderingChannels & channels) != 0 )
+	if ( m_bActive && ( ( m_renderingChannels & channels ) != 0 ) )
 	{
 		m_pTargetPass->addJob( ren::Job{&mesh, this}, mesh.getDistanceFromActiveCamera() );
 	}
@@ -107,7 +110,7 @@ void Material::setMesh( const Mesh &parent ) noexcept
 	}
 }
 
-void Material::accept( IImGuiMaterialVisitor &ev )
+void Material::accept( IImGuiConstantBufferVisitor &ev )
 {
 	ev.setMaterial( this );
 	for ( auto &bindable : m_bindables )

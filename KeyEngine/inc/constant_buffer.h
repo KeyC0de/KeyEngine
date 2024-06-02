@@ -1,5 +1,6 @@
 #pragma once
 
+#include "graphics.h"
 #include "bindable.h"
 #include "bindable_map.h"
 #include "os_utils.h"

@@ -1,4 +1,5 @@
 #include "pixel_shader.h"
+#include "graphics.h"
 #include "bindable_map.h"
 #include "utils.h"
 #include "os_utils.h"

@@ -1,4 +1,5 @@
 #include "graphics_friend.h"
+#include "graphics.h"
 
 
 ID3D11DeviceContext* GraphicsFriend::getDeviceContext( Graphics &gfx ) noexcept

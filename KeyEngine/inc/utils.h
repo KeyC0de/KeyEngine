@@ -115,6 +115,11 @@ std::wstring s2ws( const std::string &narrow );
 //	\brief	convert wide strings/wchar_ts to strings/chars
 std::string ws2s( const std::wstring &wide );
 
+//	\function	trimStringFromStart	||	\date	2024/05/31 23:53
+//	\brief	trim nChars from the start of the string
+std::string trimStringFromStart( const std::string &str, const int nChars );
+std::string trimStringFromEnd( const std::string &str, const int nChars );
+void trimStringFromEndInPlace( std::string &str, const int nChars );
 std::vector<std::string> splitString( const std::string &s, const std::string &delim );
 bool stringContains( std::string_view haystack, std::string_view needle );
 std::string& capitalizeFirstLetter( std::string &str );
@@ -122,24 +127,24 @@ std::string capitalizeFirstLetter( const std::string &str );
 std::string intToStr( int integer ) noexcept;
 int stringToInt( const std::string &str ) noexcept;
 
-//	\function	trimL	||	\date	2022/07/29 21:12
-//	\brief	trim from start (in place)
-void trimL( std::string &s );
-//	\function	trimR	||	\date	2022/07/29 21:13
-//	\brief	trim from end (in place)
-void trimR( std::string &s );
-//	\function	trim	||	\date	2022/07/29 21:13
-//	\brief	trim from both ends (in place)
-void trim( std::string &s );
-//	\function	trimCopy	||	\date	2022/07/29 21:13
-//	\brief	trim from both ends (copying)
-std::string trimCopy( std::string s );
-//	\function	trimLCopy	||	\date	2022/07/29 21:13
-//	\brief	trim from start (copying)
-std::string trimLCopy( std::string s );
-//	\function	trimRCopy	||	\date	2022/07/29 21:14
-//	\brief	trim from end (copying)
-std::string trimRCopy( std::string s );
+//	\function	trimSpacesLeft	||	\date	2022/07/29 21:12
+//	\brief	trimSpaces from start (in place)
+void trimSpacesLeft( std::string &s );
+//	\function	trimSpacesRight	||	\date	2022/07/29 21:13
+//	\brief	trimSpaces from end (in place)
+void trimSpacesRight( std::string &s );
+//	\function	trimSpaces	||	\date	2022/07/29 21:13
+//	\brief	trimSpaces from both ends (in place)
+void trimSpaces( std::string &s );
+//	\function	trimSpacesCopy	||	\date	2022/07/29 21:13
+//	\brief	trimSpaces from both ends (copying)
+std::string trimSpacesCopy( std::string s );
+//	\function	trimSpacesLCopy	||	\date	2022/07/29 21:13
+//	\brief	trimSpaces from start (copying)
+std::string trimSpacesLCopy( std::string s );
+//	\function	trimSpacesRightCopy	||	\date	2022/07/29 21:14
+//	\brief	trimSpaces from end (copying)
+std::string trimSpacesRightCopy( std::string s );
 
 template<typename T>
 std::string toString( const T &t )

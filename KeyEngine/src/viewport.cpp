@@ -1,6 +1,8 @@
 #include "viewport.h"
-#include "dxgi_info_queue.h"
+#include <typeinfo>
+#include "graphics.h"
 #include "bindable_map.h"
+#include "dxgi_info_queue.h"
 
 
 Viewport::Viewport( Graphics &gfx )

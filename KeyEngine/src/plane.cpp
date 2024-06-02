@@ -1,4 +1,6 @@
 #include "plane.h"
+#include "graphics.h"
+#include "node.h"
 #include "geometry.h"
 #include "input_layout.h"
 #include "pixel_shader.h"
@@ -12,9 +14,6 @@
 #include "rasterizer_state.h"
 #include "blend_state.h"
 #include "constant_buffer_ex.h"
-#ifndef FINAL_RELEASE
-#	include "imgui/imgui.h"
-#endif
 #include "rendering_channel.h"
 #include "utils.h"
 
@@ -22,37 +21,43 @@
 namespace dx = DirectX;
 
 Plane::Plane( Graphics &gfx,
-	const int length /*= 2*/,
-	const int width /*= 2*/,
 	const float initialScale /*= 1.0f*/,
-	const DirectX::XMFLOAT3 &initialRot /*= {0.0f, 0.0f, 0.0f}*/,
-	const DirectX::XMFLOAT3 &initialPos /*= {0.0f, 0.0f, 0.0f}*/,
-	const DirectX::XMFLOAT4 &color /*= {1.0f, 1.0f, 1.0f, 1.0f}*/,
-	const std::string &diffuseTexturePath /*= "assets/models/brick_wall/brick_wall_diffuse.jpg"*/ )
-	:
-	Mesh{{1.0f, 1.0f, 1.0f}, initialRot, initialPos},
-	m_colorPscb{color}
+	const std::variant<DirectX::XMFLOAT4, std::string> &colorOrTexturePath /*= "assets/models/brick_wall/brick_wall_diffuse.jpg"*/,
+	const int length /*= 2*/,
+	const int width /*= 2*/ )
 {
+	std::string diffuseTexturePath;
+	if ( std::holds_alternative<DirectX::XMFLOAT4>( colorOrTexturePath ) )
+	{
+		m_colorPscb.materialColor = std::get<DirectX::XMFLOAT4>( colorOrTexturePath );
+	}
+	else
+	{
+		diffuseTexturePath = std::get<std::string>( colorOrTexturePath );
+	}
+
 	auto plane = Geometry::makePlanarGridTextured( length, width );
 	if ( initialScale != 1.0f )
 	{
 		plane.transform( dx::XMMatrixScaling( initialScale, initialScale, 1.0f ) );
 	}
 
-	const auto geometryTag = "$plane." + std::to_string( initialScale * length ) + std::to_string( initialScale * width );
+	{
+		using namespace std::string_literals;
+		const auto geometryTag = s_geometryTag + "#len"s + std::to_string( (int)initialScale * length ) + "#wid"s + std::to_string( (int)initialScale * width );
 
-	m_pVertexBuffer = VertexBuffer::fetch( gfx, geometryTag, plane.m_vb );
-	m_pIndexBuffer = IndexBuffer::fetch( gfx, geometryTag, plane.m_indices );
-	m_pPrimitiveTopology = PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST );
+		m_pVertexBuffer = VertexBuffer::fetch( gfx, geometryTag, plane.m_vb );
+		m_pIndexBuffer = IndexBuffer::fetch( gfx, geometryTag, plane.m_indices );
+		m_pPrimitiveTopology = PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST );
+		m_pTransformVscb = std::make_unique<TransformVSCB>( gfx, 0u, *this );
+	}
 
 	createAabb( plane.m_vb );
 	setMeshId();
 
-	auto transformVscb = std::make_shared<TransformVSCB>( gfx, 0u );
-	if ( color.w < 1.0f )
+	if ( m_colorPscb.materialColor.w < 1.0f )
 	{// transparent reflectance material
 		Material transparent{rch::transparent, "transparent", true};
-		transparent.addBindable( transformVscb );
 
 		transparent.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
@@ -60,11 +65,15 @@ Plane::Plane( Graphics &gfx,
 		transparent.addBindable( InputLayout::fetch( gfx, plane.m_vb.getLayout(), *pVs ) );
 		transparent.addBindable( std::move( pVs ) );
 
-		if ( diffuseTexturePath.empty() && ( color.x != 1.0f || color.y != 1.0f || color.z != 1.0f ) )
+		if ( diffuseTexturePath.empty() && ( m_colorPscb.materialColor.x != 1.0f || m_colorPscb.materialColor.y != 1.0f || m_colorPscb.materialColor.z != 1.0f ) )
 		{
 			transparent.addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
 
-			transparent.addBindable( std::make_shared<PixelShaderConstantBuffer<ColorPSCB>>( gfx, m_colorPscb, 0u ) );
+			con::RawLayout cbLayout;
+			cbLayout.add<con::Float4>( "materialColor" );
+			auto cb = con::CBuffer( std::move( cbLayout ) );
+			cb["materialColor"] = m_colorPscb.materialColor;
+			transparent.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx,0u, cb ) );
 		}
 		else
 		{
@@ -85,14 +94,13 @@ Plane::Plane( Graphics &gfx,
 
 		transparent.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Both ) );
 
-		transparent.addBindable( std::make_shared<BlendState>( gfx, BlendState::Mode::Alpha, 0u, color.w ) );
+		transparent.addBindable( std::make_shared<BlendState>( gfx, BlendState::Mode::Alpha, 0u, m_colorPscb.materialColor.w ) );
 
 		addMaterial( std::move( transparent ) );
 	}
 	else
 	{// opaque reflectance material
 		Material opaque{rch::opaque, "opaque", true};
-		opaque.addBindable( transformVscb );
 
 		opaque.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
@@ -100,13 +108,15 @@ Plane::Plane( Graphics &gfx,
 		opaque.addBindable( InputLayout::fetch( gfx, plane.m_vb.getLayout(), *pVs ) );
 		opaque.addBindable( std::move( pVs ) );
 
-		opaque.addBindable( PixelShader::fetch( gfx, "plane_ps.cso" ) );
-
-		if ( diffuseTexturePath.empty() && ( color.x != 1.0f || color.y != 1.0f || color.z != 1.0f ) )
+		if ( diffuseTexturePath.empty() && ( m_colorPscb.materialColor.x != 1.0f || m_colorPscb.materialColor.y != 1.0f || m_colorPscb.materialColor.z != 1.0f ) )
 		{
 			opaque.addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
 
-			opaque.addBindable( std::make_shared<PixelShaderConstantBuffer<ColorPSCB>>( gfx, m_colorPscb, 0u ) );
+			con::RawLayout cbLayout;
+			cbLayout.add<con::Float4>( "materialColor" );
+			auto cb = con::CBuffer( std::move( cbLayout ) );
+			cb["materialColor"] = m_colorPscb.materialColor;
+			opaque.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx,0u, cb ) );
 		}
 		else
 		{
@@ -131,7 +141,6 @@ Plane::Plane( Graphics &gfx,
 	}
 	{// shadow map material
 		Material shadowMap{rch::shadow, "shadowMap", true};
-		shadowMap.addBindable( transformVscb );
 
 		shadowMap.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
@@ -141,7 +150,6 @@ Plane::Plane( Graphics &gfx,
 	}
 	{// blur outline mask material
 		Material blurOutlineMask{rch::blurOutline, "blurOutlineMask", false};
-		blurOutlineMask.addBindable( transformVscb );
 
 		blurOutlineMask.addBindable( InputLayout::fetch( gfx, plane.m_vb.getLayout(), *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 
@@ -149,12 +157,11 @@ Plane::Plane( Graphics &gfx,
 	}
 	{// blur outline draw material
 		Material blurOutlineDraw{rch::blurOutline, "blurOutlineDraw", false};
-		blurOutlineDraw.addBindable( transformVscb );
 
 		con::RawLayout cbLayout;
 		cbLayout.add<con::Float4>( "materialColor" );
 		auto cb = con::CBuffer( std::move( cbLayout ) );
-		cb["materialColor"] = color;
+		cb["materialColor"] = m_colorPscbOutline.materialColor;
 		blurOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
 
 		blurOutlineDraw.addBindable( InputLayout::fetch( gfx, plane.m_vb.getLayout(), *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
@@ -163,7 +170,6 @@ Plane::Plane( Graphics &gfx,
 	}
 	{// solid outline mask material
 		Material solidOutlineMask{rch::solidOutline, "solidOutlineMask", true};
-		solidOutlineMask.addBindable( transformVscb );
 
 		solidOutlineMask.addBindable( InputLayout::fetch( gfx, plane.m_vb.getLayout(), *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 
@@ -172,78 +178,16 @@ Plane::Plane( Graphics &gfx,
 	{// solid outline draw material
 		Material solidOutlineDraw{rch::solidOutline, "solidOutlineDraw", true};
 
-		auto transformScaledVcb = std::make_shared<TransformScaleVSCB>( gfx, 0u, 1.04f );
-		solidOutlineDraw.addBindable( transformScaledVcb );
+		solidOutlineDraw.addBindable( std::make_shared<TransformScaleVSCB>( gfx, 0u, 1.04f ) );
 
 		con::RawLayout cbLayout;
 		cbLayout.add<con::Float4>( "materialColor" );
 		auto cb = con::CBuffer( std::move( cbLayout ) );
-		cb["materialColor"] = color;
+		cb["materialColor"] = m_colorPscbOutline.materialColor;
 		solidOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
 
 		solidOutlineDraw.addBindable( InputLayout::fetch( gfx, plane.m_vb.getLayout(), *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 
 		addMaterial( std::move( solidOutlineDraw ) );
 	}
-}
-
-void Plane::displayImguiWidgets( Graphics &gfx,
-	const std::string &name ) noexcept
-{
-#ifndef FINAL_RELEASE
-	if ( ImGui::Begin( name.c_str() ) )
-	{
-		bool bDirtyRot = false;
-		const auto dirtyCheckRot = []( const bool bChanged, bool &bDirtyRot )
-		{
-			bDirtyRot = bDirtyRot || bChanged;
-		};
-
-		ImGui::Text( "Orientation" );
-		dx::XMFLOAT3 rot = getRotation();
-		dirtyCheckRot( ImGui::SliderAngle( "Pitch", &rot.x, 0.995f * -90.0f, 0.995f * 90.0f ), bDirtyRot );
-		dirtyCheckRot( ImGui::SliderAngle( "Yaw", &rot.y, -180.0f, 180.0f ), bDirtyRot );
-		dirtyCheckRot( ImGui::SliderAngle( "Roll", &rot.z, -180.0f, 180.0f ), bDirtyRot );
-		if ( bDirtyRot )
-		{
-			setRotation( rot );
-		}
-
-		bool bDirtyPos = false;
-		const auto dirtyCheckPos = []( const bool bChanged, bool &bDirtyPos )
-		{
-			bDirtyPos = bDirtyPos || bChanged;
-		};
-
-		ImGui::Text( "Position" );
-		dx::XMFLOAT3 pos = getPosition();
-		dirtyCheckPos( ImGui::SliderFloat( "X", &pos.x, -80.0f, 80.0f, "%.1f" ), bDirtyPos );
-		dirtyCheckPos( ImGui::SliderFloat( "Y", &pos.y, -80.0f, 80.0f, "%.1f" ), bDirtyPos );
-		dirtyCheckPos( ImGui::SliderFloat( "Z", &pos.z, -80.0f, 80.0f, "%.1f" ), bDirtyPos );
-		if ( bDirtyPos )
-		{
-			setPosition( pos );
-		}
-
-		auto pBlendState = findBindable<BlendState>();
-		if ( pBlendState )
-		{
-			bool bDirtyAlpha = false;
-			const auto dirtyCheckAlpha = []( const bool bChanged, bool &bDirtyAlpha )
-			{
-				bDirtyAlpha = bDirtyAlpha || bChanged;
-			};
-
-			ImGui::Text( "Blending" );
-			float factor = (*pBlendState)->getBlendFactorAlpha();
-			dirtyCheckAlpha( ImGui::SliderFloat( "Transparency", &factor, 0.0f, 1.0f ), bDirtyAlpha);
-
-			if ( bDirtyAlpha )
-			{
-				(*pBlendState)->fillBlendFactors( factor );
-			}
-		}
-	}
-	ImGui::End();
-#endif
 }

@@ -1,8 +1,9 @@
 #pragma once
 
 #include "bindable.h"
-#include <typeinfo>
 
+
+class Graphics;
 
 class Viewport
 	: public IBindable

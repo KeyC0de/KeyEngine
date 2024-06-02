@@ -163,33 +163,35 @@ public:
 		return dur.count();
 	}
 
-#pragma region delayFor
+#pragma region sleepFor
 	//===================================================
-	//	\function	delayFor
+	//	\function	sleepFor
 	//	\brief	delays execution of this_thread for the amount of time specified (in milliseconds, or microseconds)
 	//	\date	2020/10/01 11:05
-	template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
-	void delayFor( const T t ) const noexcept
+	static void sleepFor( const float t )
 	{
-		if constexpr( std::is_floating_point_v<T> )
-		{
-			const auto ms = static_cast<std::uint64_t>( t );
-			delayFor( std::chrono::milliseconds{ms} );
-			//const auto us = util::getFractionalPartAsInt( t, 3 );
-			//delayFor( std::chrono::microseconds{us} );
-		}
-		else
-		{
-			delayFor( std::chrono::milliseconds{static_cast<std::uint64_t>( t )} );
-		}
+		const auto ms = static_cast<std::uint64_t>( t );
+		sleepFor( std::chrono::milliseconds{ms} );
+		//const auto us = util::getFractionalPartAsInt( t, 3 );
+		//sleepFor( std::chrono::microseconds{us} );
 	}
-	void delayFor( const std::chrono::milliseconds &t ) const noexcept
+	static void sleepFor( const int t )
+	{
+		sleepFor( std::chrono::milliseconds{static_cast<uint64_t>( t )} );
+	}
+	static void sleepFor( const uint64_t t )
+	{
+		sleepFor( std::chrono::milliseconds{t} );
+	}
+	static void sleepFor( const std::chrono::milliseconds &t )
 	{
 		std::this_thread::sleep_for( t );
 	}
-	void delayFor( const std::chrono::microseconds &t ) const noexcept
+	static void sleepFor( const std::chrono::microseconds &t )
 	{
 		std::this_thread::sleep_for( t );
 	}
 #pragma endregion
 };
+
+using SleepTimer = KeyTimer<std::chrono::milliseconds>;

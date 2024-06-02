@@ -1,4 +1,5 @@
 #include "constant_buffer_ex.h"
+#include "graphics.h"
 #include "os_utils.h"
 #include "dxgi_info_queue.h"
 
@@ -15,7 +16,7 @@ IConstantBufferEx::IConstantBufferEx( Graphics &gfx,
 	if ( pBuf != nullptr )
 	{
 		D3D11_SUBRESOURCE_DATA subData{};
-		subData.pSysMem = pBuf->getRawBytes();
+		subData.pSysMem = pBuf->data();
 		HRESULT hres = getDevice( gfx )->CreateBuffer( &d3dBufDesc, &subData, &m_pD3dCb );
 		ASSERT_HRES_IF_FAILED;
 	}
@@ -47,7 +48,7 @@ void IConstantBufferEx::update( Graphics &gfx,
 	ASSERT_HRES_IF_FAILED;
 	DXGI_GET_QUEUE_INFO( gfx );
 
-	memcpy( msr.pData, cb.getRawBytes(), cb.getSizeInBytes() );
+	memcpy( msr.pData, cb.data(), cb.getSizeInBytes() );
 
 	getDeviceContext( gfx )->Unmap( m_pD3dCb.Get(), 0u );
 }

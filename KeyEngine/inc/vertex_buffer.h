@@ -1,17 +1,20 @@
 #pragma once
 
 #include <string>
+#include "key_wrl.h"
 #include "bindable.h"
 #include "dynamic_vertex_buffer.h"
 
+
+class Graphics;
 
 class VertexBuffer
 	: public IBindable
 {
 	unsigned m_stride;
 	std::string m_tag;
-	Microsoft::WRL::ComPtr<ID3D11Buffer> m_pVertexBuffer;
 	ver::VertexInputLayout m_vertexLayout;
+	Microsoft::WRL::ComPtr<ID3D11Buffer> m_pVertexBuffer;
 public:
 	VertexBuffer( Graphics &gfx, const ver::VBuffer &vb );
 	VertexBuffer( Graphics &gfx, const std::string &tag, const ver::VBuffer &vb );

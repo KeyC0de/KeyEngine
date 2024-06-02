@@ -1,8 +1,12 @@
 #pragma once
 
+#include "key_wrl.h"
 #include <array>
 #include "bindable.h"
+#include "texture_desc.h"
 
+
+class Graphics;
 
 class RasterizerState
 	: public IBindable

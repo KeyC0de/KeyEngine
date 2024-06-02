@@ -481,7 +481,7 @@ void Window::deleteTrayIcon() noexcept
 {
 	BOOL ret = Shell_NotifyIconW( NIM_DELETE, &m_trayIconData );
 	//ASSERT( ret == TRUE, "Tray icon setup unsuccessful!" );
-	Sleep( 10 );
+	SleepTimer::sleepFor( 10 );
 }
 
 bool Window::isHidden() const noexcept

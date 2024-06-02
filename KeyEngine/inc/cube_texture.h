@@ -1,8 +1,10 @@
 #pragma once
 
+#include "key_wrl.h"
 #include <vector>
 #include <memory>
 #include "bindable.h"
+#include "texture_desc.h"
 
 
 class RenderTargetOutput;

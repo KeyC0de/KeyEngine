@@ -527,11 +527,6 @@ const char* CBuffer::data() const noexcept
 	return m_buffer.data();
 }
 
-const char* CBuffer::getRawBytes() const noexcept
-{
-	return m_buffer.data();
-}
-
 size_t CBuffer::getSizeInBytes() const noexcept
 {
 	return m_buffer.size();

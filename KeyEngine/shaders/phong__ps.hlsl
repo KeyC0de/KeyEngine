@@ -5,7 +5,7 @@
 
 cbuffer ModelPCB : register(b0)
 {
-	float3 materialColor;
+	float4 materialColor;
 	float3 modelSpecularColor;
 	float modelSpecularGloss;
 };
@@ -45,6 +45,6 @@ PSOut main( PSIn input )
 		diffuse = specular = 0.0f;
 	}
 
-	output.finalColor = float4(saturate( (diffuse + ambient) * materialColor + specular ), 1.0f );
+	output.finalColor = float4(saturate( (diffuse + ambient) * materialColor.xyz + specular ), 1.0f );
 	return output;
 }

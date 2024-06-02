@@ -1,10 +1,12 @@
 #include "sphere.h"
+#include "graphics.h"
 #include "vertex_buffer.h"
 #include "index_buffer.h"
 #include "primitive_topology.h"
 #include "input_layout.h"
 #include "pixel_shader.h"
 #include "transform_vscb.h"
+#include "constant_buffer_ex.h"
 #include "vertex_shader.h"
 #include "rasterizer_state.h"
 #include "geometry.h"
@@ -14,23 +16,34 @@
 namespace dx = DirectX;
 
 Sphere::Sphere( Graphics &gfx,
-	const float radius /*= 1.0f*/,
-	const DirectX::XMFLOAT3 &initialRot /*= {0.0f, 0.0f, 0.0f}*/,
-	const DirectX::XMFLOAT3 &initialPos /*= {0.0f, 0.0f, 0.0f}*/ )
-	:
-	Mesh{{1.0f, 1.0f, 1.0f}, initialRot, initialPos},
-	m_radius{radius}
+	const float initialScale /*= 1.0f*/,	// radius
+	const std::variant<DirectX::XMFLOAT4, std::string> &colorOrTexturePath /*= DirectX::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f}*/ )
 {
-	auto sphere = Geometry::makeSphereTesselated();
-	if ( radius != 1.0f )
+	std::string diffuseTexturePath;
+	if ( std::holds_alternative<DirectX::XMFLOAT4>( colorOrTexturePath ) )
 	{
-		sphere.transform( dx::XMMatrixScaling( radius, radius, radius ) );
+		m_colorPscb.materialColor = std::get<DirectX::XMFLOAT4>( colorOrTexturePath );
+	}
+	else
+	{
+		diffuseTexturePath = std::get<std::string>( colorOrTexturePath );
 	}
 
-	const auto geometryTag = s_geometryTag + std::to_string( radius );
-	m_pVertexBuffer = VertexBuffer::fetch( gfx, geometryTag, sphere.m_vb );
-	m_pIndexBuffer = IndexBuffer::fetch( gfx, geometryTag, sphere.m_indices );
-	m_pPrimitiveTopology = PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST );
+	auto sphere = Geometry::makeSphereTesselated();
+	if ( initialScale != 1.0f )
+	{
+		sphere.transform( dx::XMMatrixScaling( initialScale, initialScale, initialScale ) );
+	}
+
+	{
+		using namespace std::string_literals;
+		const auto geometryTag = s_geometryTag + "#"s + std::to_string( (int)initialScale );
+
+		m_pVertexBuffer = VertexBuffer::fetch( gfx, geometryTag, sphere.m_vb );
+		m_pIndexBuffer = IndexBuffer::fetch( gfx, geometryTag, sphere.m_indices );
+		m_pPrimitiveTopology = PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST );
+		m_pTransformVscb = std::make_unique<TransformVSCB>( gfx, 0u, *this );
+	}
 
 	createAabb( sphere.m_vb );
 	setMeshId();
@@ -46,28 +59,14 @@ Sphere::Sphere( Graphics &gfx,
 
 		opaque.addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
 
-		struct ColorPSCB
-		{
-			dx::XMFLOAT3 color{1.0f, 1.0f, 1.0f};
-			float padding = 0.0f;
-		} colorCb;
-		opaque.addBindable( PixelShaderConstantBuffer<ColorPSCB>::fetch( gfx, colorCb, 0u ) );
-
-		opaque.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
+		con::RawLayout cbLayout;
+		cbLayout.add<con::Float4>( "materialColor" );
+		auto cb = con::CBuffer( std::move( cbLayout ) );
+		cb["materialColor"] = m_colorPscb.materialColor;
+		opaque.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx,0u, cb ) );
 
 		opaque.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
 
 		addMaterial( std::move( opaque ) );
 	}
-}
-
-void Sphere::setRadius( const float radius ) noexcept
-{
-	setScale( {radius, radius, radius} );
-	m_radius = radius;
-}
-
-float Sphere::getRadius() const noexcept
-{
-	return m_radius;
 }

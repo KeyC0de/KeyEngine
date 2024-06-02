@@ -4,13 +4,14 @@
 #include <queue>
 #include <mutex>
 #include <condition_variable>
-#include "key_exception.h"
 #include "jthread/jthread.h"
 #include "jthread/stop_token.h"
+#include "non_copyable.h"
+#include "key_exception.h"
 
 
 //============================================================
-//	\class	ThreadPoolEx
+//	\class	ThreadPoolJ
 //	\author	KeyC0de
 //	\date	25/9/2019 3:55
 //	\brief	A class which encapsulates a Queue of Tasks & a Pool of threads and dispatches work on demand
@@ -27,6 +28,7 @@
 //		threadPool.enqueue( &func_async::doPeriodically, &func2, 1000, false );
 //=============================================================
 class ThreadPoolJ final
+	: public NonCopyable
 {
 	using Task = std::function<void(nonstd::stop_token)>;
 

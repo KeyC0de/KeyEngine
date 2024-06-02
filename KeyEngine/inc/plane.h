@@ -1,17 +1,15 @@
 #pragma once
 
 #include "mesh.h"
+#include <variant>
 
+
+class Graphics;
 
 class Plane
 	: public Mesh
 {
-	struct ColorPSCB
-	{
-		DirectX::XMFLOAT4 materialColor;
-	} m_colorPscb;
+	static inline constexpr const char *s_geometryTag = "$plane";
 public:
-	Plane( Graphics &gfx, const int length = 2, const int width = 2, const float initialScale = 1.0f, const DirectX::XMFLOAT3 &initialRot = {0.0f, 0.0f, 0.0f}, const DirectX::XMFLOAT3 &initialPos = {0.0f, 0.0f, 0.0f}, const DirectX::XMFLOAT4 &color = {1.0f, 1.0f, 1.0f, 1.0f}, const std::string &diffuseTexturePath = "assets/models/brick_wall/brick_wall_diffuse.jpg" );
-
-	virtual void displayImguiWidgets( Graphics &gfx, const std::string &name ) noexcept override;
+	Plane( Graphics &gfx, const float initialScale = 1.0f, const std::variant<DirectX::XMFLOAT4, std::string> &colorOrTexturePath = "assets/models/brick_wall/brick_wall_diffuse.jpg", const int length = 2, const int width = 2 );
 };

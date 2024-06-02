@@ -11,7 +11,6 @@
 #include <d3dcompiler.h>
 #include <DirectXMath.h>
 #include <memory>
-#include <random>
 #include <vector>
 #if defined _DEBUG && !defined NDEBUG
 #	include <atlbase.h>
@@ -26,6 +25,7 @@
 #include "key_timer.h"
 
 
+class GraphicsFriend;
 class IBindable;
 class RenderTargetOutput;
 class DepthStencilOutput;
@@ -100,8 +100,10 @@ private:
 	std::shared_ptr<DepthStencilOutput> m_pBackBufferDsv;
 	std::shared_ptr<TextureOffscreenRT> m_pOffscreenRtv;
 	std::shared_ptr<TextureOffscreenDS> m_pOffscreenDsv;
+#if defined _DEBUG && !defined NDEBUG
 	DxgiInfoQueue m_infoQueue;
 	ATL::CComPtr<ID3D11Debug> m_pDebug;
+#endif
 	DirectX::XMMATRIX m_projection;
 	DirectX::XMMATRIX m_view;
 	size_t m_currentFrame = 0u;
@@ -151,7 +153,9 @@ public:
 	ren::Renderer& getRenderer() noexcept;
 	ren::Renderer3d& getRenderer3d() noexcept;
 	ren::Renderer2d& getRenderer2d() noexcept;
+#if defined _DEBUG && !defined NDEBUG
 	DxgiInfoQueue& getInfoQueue();
+#endif
 	KeyTimer<std::chrono::microseconds>& getFpsTimer() noexcept;
 	//	\function	getDisplayMode	||	\date	2024/05/03 18:18
 	//	\brief	returns true if fullscreen application, false otherwise
@@ -169,7 +173,9 @@ private:
 	void present();
 	void interrogateDirectxFeatures();
 	bool checkTearingSupport();
+#if defined _DEBUG && !defined NDEBUG
 	void d3d11DebugReport();
+#endif
 private:
 	/// d2d via d3d Interoperability
 	ColorBGRA *m_pCpuBuffer = nullptr;

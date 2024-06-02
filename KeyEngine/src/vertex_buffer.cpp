@@ -1,4 +1,5 @@
 #include "vertex_buffer.h"
+#include "graphics.h"
 #include "bindable_map.h"
 #include "os_utils.h"
 #include "dxgi_info_queue.h"
@@ -30,7 +31,7 @@ VertexBuffer::VertexBuffer( Graphics &gfx,
 	vbDesc.StructureByteStride = m_stride;
 
 	D3D11_SUBRESOURCE_DATA subRscData{};
-	subRscData.pSysMem = vb.getRawBytes();
+	subRscData.pSysMem = vb.data();
 	HRESULT hres = getDevice( gfx )->CreateBuffer( &vbDesc, &subRscData, &m_pVertexBuffer );
 	ASSERT_HRES_IF_FAILED;
 }

@@ -1,4 +1,5 @@
 #include "depth_stencil_state.h"
+#include "graphics.h"
 #include "bindable_map.h"
 #include "os_utils.h"
 #include "dxgi_info_queue.h"

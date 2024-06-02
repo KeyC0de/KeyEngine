@@ -1,4 +1,5 @@
 #include "blur_outline_draw_pass.h"
+#include "graphics.h"
 #include "pixel_shader.h"
 #include "vertex_shader.h"
 #include "depth_stencil_state.h"

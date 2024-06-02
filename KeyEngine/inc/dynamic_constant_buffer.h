@@ -519,7 +519,6 @@ public:
 	// if Buffer is const, you only get to index into the buffer with a read-only proxy
 	CBElementConstView operator[]( const std::string &key ) const cond_noex;
 	const char* data() const noexcept;
-	const char* getRawBytes() const noexcept;
 	// size of the raw byte buffer
 	size_t getSizeInBytes() const noexcept;
 	const CBElement& getRootElement() const noexcept;

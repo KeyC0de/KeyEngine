@@ -1,10 +1,10 @@
 #pragma once
 
-#ifdef D2D_ONLY
-#include "graphics.h"
 #include <wincodec.h>
-#include "non_copyable.h"
+#include <d2d1.h>
 
+
+class Graphics;
 
 // https://docs.microsoft.com/en-us/windows/win32/wic/jpeg-ycbcr-support
 class Sprite
@@ -37,4 +37,3 @@ public:
 
 	void render( Graphics &gfx, const int index, const int x, const int y, const float alpha = 1.0f );
 };
-#endif

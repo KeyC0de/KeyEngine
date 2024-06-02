@@ -1,11 +1,13 @@
 #include "camera.h"
-#ifndef FINAL_RELEASE
-#	include "imgui/imgui.h"
-#endif
 #include "graphics.h"
+#include "camera_widget.h"
+#include "camera_frustum.h"
 #include "math_utils.h"
 #include "geometry.h"
 #include "vertex_buffer.h"
+#ifndef FINAL_RELEASE
+#	include "imgui/imgui.h"
+#endif
 
 
 namespace dx = DirectX;
@@ -24,53 +26,59 @@ DirectX::XMMATRIX Camera::getShadowProjectionMatrix( const float shadowCamFarZ,
 	static constexpr auto r = util::PI / 2.0f;
 	return dx::XMMatrixPerspectiveFovLH( r, 1.0f, shadowCamNearZ, shadowCamFarZ );
 }
+
 Camera::Camera( Graphics &gfx,
-	const std::string &name,
-	const int width,
-	const int height,
 	const float fovDegrees /*= 90.0f*/,
-	const DirectX::XMFLOAT3 &homePos /*= {0.0f, 0.0f, 0.0f}*/,
-	const float homePitch /*= 0.0f*/,
-	const float homeYaw /*= 0.0f*/,
+	const DirectX::XMFLOAT3 &posDefault /*= {0.0f, 0.0f, 0.0f}*/,
+	const float pitchDegDefault /*= 0.0f*/,
+	const float yawDegDefault /*= 0.0f*/,
 	const bool bTethered /*= false*/,
 	const float nearZ /*= 0.5f*/,
 	const float farZ /*= 200.0f*/,
+	const DirectX::XMFLOAT4 camWidgetColor /*= {0.2f, 0.2f, 0.6f, 1.0f}*/,
+	const DirectX::XMFLOAT4 camFrustumColor /*= {0.6f, 0.2f, 0.2f, 1.0f}*/,
 	const float translationSpeed /*= 16.0f*/,
 	const float rotationSpeed /*= 0.096f*/ ) noexcept
 	:
 	m_translationSpeed{translationSpeed},
 	m_rotationSpeed{rotationSpeed},
-	m_name(name),
-	m_aspectRatio(static_cast<float>(width) / height),
-	m_fovRadians{dx::XMConvertToRadians( fovDegrees )},
-	m_homePosition(homePos),
-	m_homePitch(homePitch),
-	m_homeYaw(homeYaw),
-	m_width(1.0f),
-	m_height((static_cast<float>(height) / util::gcd(width, height)) /
-		(static_cast<float>(width) / util::gcd(width, height))),
-	m_homeWidth(m_width),
-	m_homeHeight(m_height),
-	m_bTethered(bTethered),
 	m_nearZ(nearZ),
 	m_farZ(farZ),
-	m_homeNearZ(nearZ),
-	m_homeFarZ(farZ),
-	m_cameraWidget(gfx),
-	m_cameraFrustum(gfx, 1.0f, (static_cast<float>(height) / util::gcd(width, height)) /
-			(static_cast<float>(width) / util::gcd(width, height)),
-		nearZ, farZ)
+	m_NearZDefault(nearZ),
+	m_FarZDefault(farZ),
+	m_width(1.0f),
+	m_height((static_cast<float>(gfx.getClientHeight()) / util::gcd(gfx.getClientWidth(), gfx.getClientHeight())) /
+		(static_cast<float>(gfx.getClientWidth()) / util::gcd(gfx.getClientWidth(), gfx.getClientHeight()))),
+	m_widthDefault(m_width),
+	m_heightDefault(m_height),
+	m_aspectRatio(static_cast<float>(gfx.getClientWidth()) / gfx.getClientHeight()),
+	m_fovRadians{dx::XMConvertToRadians( fovDegrees )},
+	m_posDefault(posDefault),
+	m_pitchDefault(util::toRadians( pitchDegDefault)),
+	m_yawDefault(util::toRadians( yawDegDefault)),
+	m_bTethered(bTethered),
+	m_cameraWidget(std::make_unique<CameraWidget>(gfx, 1.0f, camWidgetColor), gfx, {pitchDegDefault, yawDegDefault, 0.0f}, posDefault),
+	m_cameraFrustum(std::make_unique<CameraFrustum>(gfx, 1.0f, camFrustumColor, 1.0f, m_height, nearZ, farZ), gfx, {yawDegDefault, yawDegDefault, 0.0f}, posDefault)
 {
+	static int s_id = 0;
+	s_id++;
+	m_name = std::string{"Camera#"} + std::to_string( s_id );
+
 	if ( m_bTethered )
 	{
-		m_position = homePos;
-		m_cameraFrustum.setPosition( m_position );
-		m_cameraWidget.setPosition( m_position );
+		m_pos = posDefault;
 	}
 	resetToDefault( gfx );
 }
 
-void Camera::render( const size_t channels /*= rch::all*/ ) const
+void Camera::update( const float dt,
+	const float renderFrameInterpolation,
+	const bool bEnableSmoothMovement /*= false*/ )
+{
+
+}
+
+void Camera::render( const size_t channels /*= rch::all*/ ) const cond_noex
 {
 	if ( m_bShowWidget )
 	{
@@ -84,8 +92,8 @@ void Camera::render( const size_t channels /*= rch::all*/ ) const
 
 void Camera::connectMaterialsToRenderer( ren::Renderer &ren )
 {
-	m_cameraFrustum.connectMaterialsToRenderer( ren );
 	m_cameraWidget.connectMaterialsToRenderer( ren );
+	m_cameraFrustum.connectMaterialsToRenderer( ren );
 }
 
 void Camera::makeActive( Graphics &gfx,
@@ -97,9 +105,31 @@ void Camera::makeActive( Graphics &gfx,
 		getPerspectiveProjectionMatrix() );
 }
 
+void Camera::resetToDefault( Graphics &gfx ) noexcept
+{
+	if ( !m_bTethered )
+	{
+		m_pos = m_posDefault;
+		m_cameraWidget.setTranslation( m_pos );
+		m_cameraFrustum.setTranslation( m_pos );
+	}
+
+	m_pitch = m_pitchDefault;
+	m_yaw = m_yawDefault;
+
+	const dx::XMFLOAT3 angles{m_pitch, m_yaw, 0.0f};
+	m_cameraWidget.setRotation( angles );
+	m_cameraFrustum.setRotation( angles );
+	m_width = m_widthDefault;
+	m_height = m_heightDefault;
+	m_nearZ = m_NearZDefault;
+	m_farZ = m_FarZDefault;
+	updateCameraFrustum( gfx );
+}
+
 DirectX::XMMATRIX Camera::getViewMatrix() const noexcept
 {
-	const auto camPosition = dx::XMLoadFloat3( &m_position );
+	const auto camPosition = dx::XMLoadFloat3( &m_pos );
 	const auto camTarget = getTarget();
 	return dx::XMMatrixLookAtLH( camPosition, camTarget, getUp() );
 }
@@ -119,113 +149,6 @@ DirectX::XMMATRIX Camera::getOrthographicProjectionMatrix( const unsigned width,
 DirectX::XMMATRIX Camera::getPerspectiveProjectionMatrix() const noexcept
 {
 	return dx::XMMatrixPerspectiveFovLH( m_fovRadians, m_aspectRatio, m_nearZ, m_farZ );
-}
-
-void Camera::resetToDefault( Graphics &gfx ) noexcept
-{
-	if ( !m_bTethered )
-	{
-		m_position = m_homePosition;
-		m_cameraFrustum.setPosition( m_position );
-		m_cameraWidget.setPosition( m_position );
-	}
-
-	m_pitch = m_homePitch;
-	m_yaw = m_homeYaw;
-
-	const dx::XMFLOAT3 angles{m_pitch, m_yaw, 0.0f};
-	m_cameraWidget.setRotation( angles );
-	m_cameraFrustum.setRotation( angles );
-	m_width = m_homeWidth;
-	m_height = m_homeHeight;
-	m_nearZ = m_homeNearZ;
-	m_farZ = m_homeFarZ;
-	updateCameraFrustum( gfx );
-}
-
-void Camera::rotateRel( const float dx,
-	const float dy ) noexcept
-{
-	if ( m_bTethered )
-	{
-		return;
-	}
-
-	m_pitch = std::clamp( m_pitch + dy * m_rotationSpeed, 0.995f * -util::PI / 2.0f, 0.995f * util::PI / 2.0f );
-	m_yaw = util::wrapAngle( m_yaw + dx * m_rotationSpeed );
-	const dx::XMFLOAT3 angles{m_pitch, m_yaw, 0.0f};
-	m_cameraFrustum.setRotation( angles );
-	m_cameraWidget.setRotation( angles );
-}
-
-void Camera::rotateRelSmooth( const float dx,
-	const float dy,
-	const float dt ) noexcept
-{
-	if ( m_bTethered )
-	{
-		return;
-	}
-
-
-}
-
-void Camera::translateRel( DirectX::XMFLOAT3 translation ) noexcept
-{
-	if ( m_bTethered )
-	{
-		return;
-	}
-	m_positionPrev = m_position;
-
-	dx::XMStoreFloat3( &translation, dx::XMVector3Transform( dx::XMLoadFloat3( &translation ), dx::XMMatrixScaling( m_translationSpeed, m_translationSpeed, m_translationSpeed ) * getRotationMatrix() ) );
-	m_position = {m_position.x + translation.x, m_position.y + translation.y, m_position.z + translation.z};
-	m_cameraFrustum.setPosition( m_position );
-	m_cameraWidget.setPosition( m_position );
-}
-
-void Camera::translateRelSmooth( DirectX::XMFLOAT3 translation,
-	const float dt ) noexcept
-{
-	if ( m_bTethered )
-	{
-		return;
-	}
-
-
-
-}
-
-void Camera::setPosition( const DirectX::XMFLOAT3 &pos ) noexcept
-{
-	if ( m_bTethered )
-	{
-		return;
-	}
-
-	this->m_position = pos;
-	m_cameraFrustum.setPosition( pos );
-	m_cameraWidget.setPosition( pos );
-}
-
-DirectX::XMMATRIX Camera::getTransform() const noexcept
-{
-	return getRotationMatrix() * getPositionMatrix();
-}
-
-const DirectX::XMFLOAT3& Camera::getPosition() const noexcept
-{
-	return m_position;
-}
-
-DirectX::XMFLOAT3& Camera::getPosition()
-{
-	return m_position;
-}
-
-DirectX::XMFLOAT3 Camera::getRotation() const noexcept
-{
-	return dx::XMFLOAT3{m_pitch, m_yaw, 0};
 }
 
 DirectX::XMVECTOR Camera::getDirection() const noexcept
@@ -254,7 +177,6 @@ const std::string& Camera::getName() const noexcept
 	return m_name;
 }
 
-// #TODO: cache this per frame:
 std::vector<dx::XMFLOAT4> Camera::getFrustumPlanes() const noexcept
 {
 	// x, y, z, and w represent A, B, C and D in the plane equation
@@ -339,7 +261,7 @@ void Camera::displayImguiWidgets( Graphics &gfx ) noexcept
 	dirtyCheck( ImGui::SliderFloat( "Near Z", &m_nearZ, 0.01f, m_farZ - 0.01f, "%.2f", 4.0f ), projDirty );
 	dirtyCheck( ImGui::SliderFloat( "Far Z", &m_farZ, m_nearZ + 0.01f, 1000.0f, "%.2f", 4.0f ), projDirty );
 
-	ImGui::Text( "Orientation" );
+	ImGui::Text( "Rotation" );
 	// set m_pitch to 99.5% of +-90 degrees max to prevent euler angle gimbal lock
 	dirtyCheck( ImGui::SliderAngle( "Pitch", &m_pitch, 0.995f * -90.0f, 0.995f * 90.0f ), rotDirty );
 	dirtyCheck( ImGui::SliderAngle( "Yaw", &m_yaw, -180.0f, 180.0f ), rotDirty );
@@ -348,9 +270,9 @@ void Camera::displayImguiWidgets( Graphics &gfx ) noexcept
 	if ( !m_bTethered )
 	{
 		ImGui::Text( "Position" );
-		dirtyCheck( ImGui::SliderFloat( "X", &m_position.x, -80.0f, 80.0f, "%.1f" ), posDirty );
-		dirtyCheck( ImGui::SliderFloat( "Y", &m_position.y, -80.0f, 80.0f, "%.1f" ), posDirty );
-		dirtyCheck( ImGui::SliderFloat( "Z", &m_position.z, -80.0f, 80.0f, "%.1f" ), posDirty );
+		dirtyCheck( ImGui::SliderFloat( "X", &m_pos.x, -80.0f, 80.0f, "%.1f" ), posDirty );
+		dirtyCheck( ImGui::SliderFloat( "Y", &m_pos.y, -80.0f, 80.0f, "%.1f" ), posDirty );
+		dirtyCheck( ImGui::SliderFloat( "Z", &m_pos.z, -80.0f, 80.0f, "%.1f" ), posDirty );
 	}
 
 	ImGui::Checkbox( "Camera Widget", &m_bShowWidget );
@@ -368,13 +290,13 @@ void Camera::displayImguiWidgets( Graphics &gfx ) noexcept
 	if ( rotDirty )
 	{
 		const dx::XMFLOAT3 angles{m_pitch, m_yaw, 0.0f};
-		m_cameraFrustum.setRotation( angles );
 		m_cameraWidget.setRotation( angles );
+		m_cameraFrustum.setRotation( angles );
 	}
 	if ( posDirty )
 	{
-		m_cameraFrustum.setPosition( m_position );
-		m_cameraWidget.setPosition( m_position );
+		m_cameraWidget.setTranslation( m_pos );
+		m_cameraFrustum.setTranslation( m_pos );
 	}
 #endif
 }
@@ -401,9 +323,75 @@ float Camera::getRotationSpeed() const noexcept
 	return m_rotationSpeed;
 }
 
+void Camera::setRotation( const DirectX::XMFLOAT3 &rot ) noexcept
+{
+	m_pitch = rot.x;
+	m_yaw = rot.y;
+	const dx::XMFLOAT3 angles{m_pitch, m_yaw, 0.0f};
+	m_cameraWidget.setRotation( angles );
+	m_cameraFrustum.setRotation( angles );
+}
+
+void Camera::rotateRel( const float dx,
+	const float dy ) noexcept
+{
+	if ( m_bTethered )
+	{
+		return;
+	}
+
+	m_pitch = std::clamp( m_pitch + dy * m_rotationSpeed, 0.995f * -util::PI / 2.0f, 0.995f * util::PI / 2.0f );
+	m_yaw = util::wrapAngle( m_yaw + dx * m_rotationSpeed );
+
+	const dx::XMFLOAT3 angles{m_pitch, m_yaw, 0.0f};
+	m_cameraWidget.setRotation( angles );
+	m_cameraFrustum.setRotation( angles );
+}
+
+void Camera::translateRel( DirectX::XMFLOAT3 translation ) noexcept
+{
+	if ( m_bTethered )
+	{
+		return;
+	}
+	m_posPrev = m_pos;
+
+	dx::XMStoreFloat3( &translation, dx::XMVector3Transform( dx::XMLoadFloat3( &translation ), dx::XMMatrixScaling( m_translationSpeed, m_translationSpeed, m_translationSpeed ) * getRotationMatrix() ) );
+	m_pos = {m_pos.x + translation.x, m_pos.y + translation.y, m_pos.z + translation.z};
+	m_cameraWidget.setTranslation( m_pos );
+	m_cameraFrustum.setTranslation( m_pos );
+}
+
+void Camera::setTranslation( const DirectX::XMFLOAT3 &pos ) noexcept
+{
+	if ( m_bTethered )
+	{
+		return;
+	}
+
+	this->m_pos = pos;
+	m_cameraWidget.setTranslation( pos );
+	m_cameraFrustum.setTranslation( pos );
+}
+
+const DirectX::XMFLOAT3& Camera::getPosition() const noexcept
+{
+	return m_pos;
+}
+
+DirectX::XMFLOAT3& Camera::getPosition()
+{
+	return m_pos;
+}
+
+DirectX::XMFLOAT3 Camera::getRotation() const noexcept
+{
+	return dx::XMFLOAT3{m_pitch, m_yaw, 0};
+}
+
 DirectX::XMMATRIX Camera::getPositionMatrix() const noexcept
 {
-	return dx::XMMatrixTranslation( m_position.x, m_position.y, m_position.z );
+	return dx::XMMatrixTranslation( m_pos.x, m_pos.y, m_pos.z );
 }
 
 DirectX::XMMATRIX Camera::getRotationMatrix() const noexcept
@@ -414,14 +402,15 @@ DirectX::XMMATRIX Camera::getRotationMatrix() const noexcept
 DirectX::XMVECTOR Camera::getTarget() const noexcept
 {
 	const auto lookVector = getDirection();
-	const auto camPosition = dx::XMLoadFloat3( &m_position );
+	const auto camPosition = dx::XMLoadFloat3( &m_pos );
 	return dx::XMVectorAdd( camPosition, lookVector );
 }
 
 void Camera::updateCameraFrustum( Graphics &gfx )
 {
 	auto g = Geometry::makeCameraFrustum( m_width, m_height, m_nearZ, m_farZ );
-	m_cameraFrustum.getVertexBuffer() = std::make_shared<VertexBuffer>( gfx, g.m_vb );
-	m_cameraFrustum.createAabb( g.m_vb );
+	auto *frustumMesh = m_cameraFrustum.getMesh();
+	frustumMesh->getVertexBuffer() = std::make_shared<VertexBuffer>( gfx, g.m_vb );
+	frustumMesh->createAabb( g.m_vb );
 	m_aspectRatio = m_width / m_height;
 }

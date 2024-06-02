@@ -2,8 +2,11 @@
 
 #include <array>
 #include <optional>
+#include "key_wrl.h"
 #include "bindable.h"
 
+
+class Graphics;
 
 //=============================================================
 //	\class	BlendState

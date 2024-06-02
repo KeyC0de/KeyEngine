@@ -2,6 +2,7 @@
 
 #include <string>
 #include <string_view>
+#include "non_copyable.h"
 
 
 //=============================================================
@@ -11,8 +12,8 @@
 //	\brief	singleton class
 //=============================================================
 class SettingsManager final
+	: public NonCopyable
 {
-	static inline SettingsManager *s_pInstance;
 	struct Settings
 	{
 		// defaults:

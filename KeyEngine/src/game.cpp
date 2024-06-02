@@ -1,27 +1,31 @@
 #include "game.h"
-#include "reporter_access.h"
 #include <algorithm>
-#ifndef FINAL_RELEASE
-#	include "imgui/imgui.h"
-#endif
-#include "imgui_visitors.h"
+#include "reporter_access.h"
+#include "game_state.h"
 #include "camera.h"
 #include "rendering_channel.h"
 #include "console.h"
 #include "assertions_console.h"
 #include "mesh.h"
+#include "graphics.h"
 #include "graphics_mode.h"
-//#include "thread_poolj.h"
-#include "utils.h"
 #include "os_utils.h"
 #include "color.h"
 #include "..\resource.h"
 #include "renderer.h"
+#include "ui_pass.h"
+#include "ui_component.h"
+#include "cube.h"
+#include "sphere.h"
+#include "line.h"
+#include "plane.h"
+#ifndef FINAL_RELEASE
+#	include "imgui/imgui.h"
+#	include "imgui_visitors.h"
+#endif
 #if defined _DEBUG && !defined NDEBUG
 #	include "bindable_map.h"
 #endif
-#include "ui_pass.h"
-#include "ui_component.h"
 
 
 namespace dx = DirectX;
@@ -35,7 +39,7 @@ Game<T>::Game( const int width,
 	const unsigned nWindows )
 	:
 #ifndef FINAL_RELEASE
-	m_pImguiMan{createImgui()},
+	m_pImguiMan{createImguiManager()},
 #endif
 	m_mainWindow{width, height, title.c_str(), MAIN_WINDOW_CLASS_NAME, Window::windowProc, x, y, ColorBGRA{255, 255, 255}, LoadMenuW( THIS_INSTANCE, MAKEINTRESOURCEW( IDR_MENU_APP ) )},
 	m_pCurrentState{std::make_unique<GameState>()}
@@ -45,7 +49,7 @@ Game<T>::Game( const int width,
 }
 
 template <typename T>
-ImguiManager* Game<T>::createImgui() noexcept
+ImguiManager* Game<T>::createImguiManager() noexcept
 {
 #ifndef FINAL_RELEASE
 	if constexpr ( gph_mode::get() == gph_mode::_3D )
@@ -161,42 +165,35 @@ Sandbox3d::Sandbox3d( const int width,
 {
 	auto &gfx = m_mainWindow.getGraphics();
 
-	s_cameraMan.add( std::make_unique<Camera>( gfx, "A", width, height, 60.0f, dx::XMFLOAT3{0.0f, 0.0f, 0.0f}, 0.0f, util::PI / 2.0f, false, 0.5f, 1000.0f ) );
-	s_cameraMan.add( std::make_unique<Camera>( gfx, "B", width, height, 45.0f, dx::XMFLOAT3{-13.5f, 28.8f, -6.4f}, util::PI / 180.0f * 13.0f, util::PI / 180.0f * 61.0f, false, 0.5f, 1000.0f ) );
-	m_pPointLight1 = std::make_unique<PointLight>( gfx, dx::XMFLOAT3{10.0f, 5.0f, -1.4f} );
-	//m_pPointLight2 = std::make_unique<PointLight>( m_mainWindow.getGraphics(), dx::XMFLOAT3{5.0f, 15.0f, 10.0f}, dx::XMFLOAT3{0.0f, 1.0f, 0.f}, false );
+	s_cameraMan.add( std::make_unique<Camera>( gfx, 60.0f, dx::XMFLOAT3{0.0f, 0.0f, 0.0f}, 0.0f, 90.0f, false, 0.5f, 1000.0f ) );
+	s_cameraMan.add( std::make_unique<Camera>( gfx, 45.0f, dx::XMFLOAT3{-13.5f, 28.8f, -6.4f}, 13.0f, 61.0f, false, 0.5f, 400.0f ) );
 
-	// #TODO: use an array of Models and iterate through them
+	m_pPointLight1 = std::make_unique<PointLight>( gfx, 0.5f, DirectX::XMFLOAT3{0.0f, 0.0f, 0.0f}, DirectX::XMFLOAT3{10.0f, 5.0f, -1.4f}, DirectX::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f}, true, true );
+	//m_pPointLight2 = std::make_unique<PointLight>( gfx, 1.0f, {0.0f, 1.0f, 0.f}, {5.0f, 15.0f, 10.0f}, DirectX::XMFLOAT4{1.0f, 1.0f, 0.2f, 0.25f}, false, false );
 
-	m_cube1.setPosition( {10.0f, 5.0f, 6.0f} );
 
-	auto &renderer = gfx.getRenderer3d();
+	m_models.reserve( 16 );
 
-	connectToRenderer( renderer );
+	m_models.emplace_back( std::make_unique<Line>(gfx, 4.0f, DirectX::XMFLOAT4{1.0f, 0.0f, 0.0f, 1.0f}), gfx, dx::XMFLOAT3{0, 0, 0}, dx::XMFLOAT3{10.0f, 10.0f, 6.0f} );
+	m_models.emplace_back( std::make_unique<Cube>(gfx, 4.0f, "assets/models/brick_wall/brick_wall_diffuse.jpg"), gfx, dx::XMFLOAT3{0, 0, 0}, dx::XMFLOAT3{10.0f, 5.0f, 6.0f} );
+	m_models.emplace_back( std::make_unique<Cube>(gfx, 1.0f, "assets/models/brick_wall/brick_wall_diffuse.jpg"), gfx, dx::XMFLOAT3{0, 0, 0}, dx::XMFLOAT3{9.9f, 4.9f, 1.4f} );
+	m_models.emplace_back( std::make_unique<Cube>(gfx, 1.0f, DirectX::XMFLOAT4{1.0f, 0.6f, 1.0f, 0.6f}), gfx, dx::XMFLOAT3{0, 0, 0}, dx::XMFLOAT3{22.0f, 12.0f, 14.0f} );
+	m_models.emplace_back( std::make_unique<Sphere>(gfx, 1.0f, DirectX::XMFLOAT4{1.0f, 1.0f, 0.0f, 1.0f}), gfx, dx::XMFLOAT3{0, 0, 0}, dx::XMFLOAT3{40.0f, 20.0f, 8.0f} );
+	m_models.emplace_back( std::make_unique<Plane>(gfx, 1.0f, DirectX::XMFLOAT4{1.0f, 0.0f, 0.1f, 0.8f}, 8, 8), gfx, dx::XMFLOAT3{0, 0, 0}, dx::XMFLOAT3{40.0f, 20.0f, 20.0f} );
+	m_models.emplace_back( std::make_unique<Plane>(gfx, 1.0f, DirectX::XMFLOAT4{0.1f, 1.0f, 0.0f, 0.5f}, 4, 4), gfx, dx::XMFLOAT3{0, 0, 0}, dx::XMFLOAT3{40.0f, 20.0f, 16.0f} );
+	m_models.emplace_back( std::make_unique<Plane>(gfx, 1.0f, "assets/models/brick_wall/brick_wall_diffuse.jpg", 6, 6), gfx, dx::XMFLOAT3{0, 0, 0}, dx::XMFLOAT3{40.0f, 20.0f, 12.0f} );
+	m_models.emplace_back( gfx, "assets/models/carabiner/carabiner_hook.fbx", 1.0f, dx::XMFLOAT3{0, 0, 0}, dx::XMFLOAT3{-10.0f, 6.0f, 0.0f}/*{0.0f, 0.0f, 0.0f}*/ );
+	//m_models.emplace_back( Model(gfx, "assets/models/sponza/sponza.obj", 1.0f / 8.0f, {0, 0, 0}, {0.0f, 0.0f, 0.0f}) );
+
+
+	//m_cube1.setTranslation( {10.0f, 5.0f, 6.0f} );
+
+	connectToRenderer( gfx.getRenderer3d() );
 
 	//if ( m_pPointLight2->isCastingShadows() )
 	//{
 	//	renderer.setShadowCamera( *m_pPointLight2->shareCamera(), true );
 	//}
-
-	/*
-	ThreadPoolJ &threadPool = ThreadPoolJ::instance( 4u, true );
-	threadPool.enqueue( &func_async::doPeriodically, &BindableMap::garbageCollect, 5000u, false );
-
-	threadPool.enqueue( &func_async::doLater,
-		[this]() -> void
-		{
-			this->m_testSphere.setRadius( 4.0f );
-		},
-		4000u );
-
-	threadPool.enqueue( &func_async::doLater,
-		[this]() -> void
-		{
-			this->m_testSphere.setRadius( 0.25f );
-		},
-		8000u );
-	*/
 
 	m_gui = std::make_unique<gui::UIPass>( gfx );
 
@@ -207,10 +204,7 @@ Sandbox3d::Sandbox3d( const int width,
 	static_cast<const IReporter<SwapChainResizedEvent>&>( reportingNexus ).addListener( this );
 }
 
-Sandbox3d::~Sandbox3d() noexcept
-{
-
-}
+Sandbox3d::~Sandbox3d() noexcept = default;
 
 void Sandbox3d::notify( const SwapChainResizedEvent &event )
 {
@@ -285,7 +279,7 @@ int Sandbox3d::loop()
 		else
 		{
 			// game is minimized/out-of-focus
-			m_gameTimer.delayFor( 10 );
+			SleepTimer::sleepFor( 10 );
 		}
 	}
 
@@ -416,7 +410,6 @@ void Sandbox3d::update( const float dt,
 	const float lerpBetweenFrames )
 {
 	const auto &activeCamera = s_cameraMan.getActiveCamera();
-	
 	// set cameras to the passes that need them - the right V & P matrices to be used for each pass
 	auto &gfx = m_mainWindow.getGraphics();
 	if ( m_pPointLight1->isCastingShadows() )
@@ -429,15 +422,11 @@ void Sandbox3d::update( const float dt,
 	//m_pPointLight2->update( gfx, dt, activeCamera.getViewMatrix() );
 
 	m_terrain.update( dt, lerpBetweenFrames );	// #TODO: Mesh::update should actually be doing rendering and Mesh::render() simply submits bindables for rendering, so some reformatting and reorganizing here is definitely due
-	m_debugLine1.update( dt, lerpBetweenFrames );
-	m_cube1.update( dt, lerpBetweenFrames );
-	m_cube2.update( dt, lerpBetweenFrames );
-	m_cube3.update( dt, lerpBetweenFrames );
-	m_plane1Red.update( dt, lerpBetweenFrames );
-	m_plane2Green.update( dt, lerpBetweenFrames );
-	m_plane3Textured.update( dt, lerpBetweenFrames );
-	m_carabiner.update( dt, lerpBetweenFrames );
-	//m_sponzaScene.update( dt, lerpBetweenFrames );
+
+	for ( auto &model : m_models )
+	{
+		model.update( dt, lerpBetweenFrames );
+	}
 
 	auto &mouse = m_mainWindow.getMouse();
 	gui::Point ui_point{mouse.getX(), mouse.getY()};
@@ -458,24 +447,18 @@ void Sandbox3d::render()
 	auto &gfx = m_mainWindow.getGraphics();
 	gfx.beginFrame();
 
+	s_cameraMan.render( rch::opaque | rch::wireframe );
+	s_cameraMan.getActiveCamera().makeActive( gfx, false );
+
 	m_pPointLight1->render( rch::opaque );
 	//m_pPointLight2->render( rch::opaque );
 
-	m_terrain.render();
-	m_debugLine1.render();
-	m_cube1.render( rch::opaque | rch::shadow | rch::blurOutline );
-	m_cube2.render();
-	m_cube3.render();
-	m_testSphere.render();
-	m_plane1Red.render();
-	m_plane2Green.render();
-	m_plane3Textured.render(rch::opaque | rch::shadow );
-	m_carabiner.render( rch::opaque | rch::shadow | rch::solidOutline | rch::blurOutline );
-	//m_sponzaScene.render( rch::opaque | rch::shadow );
+	m_terrain.render( rch::opaque | rch::wireframe );
+	for ( auto &model : m_models )
+	{
+		model.render();
+	}
 
-	s_cameraMan.render( rch::opaque | rch::wireframe );
-
-	s_cameraMan.getActiveCamera().makeActive( gfx, false );
 	gfx.runRenderer();
 
 	m_gui->render( gfx );
@@ -492,28 +475,29 @@ void Sandbox3d::test()
 	//console.print( "BindableMap garbage count: "s + std::to_string( BindableMap::getGarbageCount() ) + "\n"s );
 
 
-	console.print( "Current distance from carabiner: "s + std::to_string( m_carabiner.getDistanceFromActiveCamera() ) + "\n"s );
+	//const auto &carabiner =  m_models.back();
+	//if (s1.find(s2) != std::string::npos) {
+	//	std::cout << "found!" << '\n';
+	//}
+	//if ( carabiner.getName() ==  )
+	//console.print( "Current distance from carabiner: "s + std::to_string(  m_carabiner.getDistanceFromActiveCamera() ) + "\n"s );
 
 	/// Render Imgui stuff
 	auto &gfx = m_mainWindow.getGraphics();
 
-	// Showcase Material controls by passing visitors to the object hierarchies
+	// showcase Material controls by passing visitors to the object hierarchies
 	s_cameraMan.displayImguiWidgets( gfx );
 
 	m_pPointLight1->displayImguiWidgets();
 	//m_pPointLight2->displayImguiWidgets();
 
-	m_terrain.displayImguiWidgets( gfx, "Terrain Base"s );
 
-	m_debugLine1.displayImguiWidgets( gfx, "Debug Line 1"s );
-	m_cube1.displayImguiWidgets( gfx, "Cube 1"s );
-	m_cube2.displayImguiWidgets( gfx, "Cube 2"s );
-	m_cube3.displayImguiWidgets( gfx, "Cube 3"s );
-	m_plane1Red.displayImguiWidgets( gfx, "Plane 1"s );
-	m_plane2Green.displayImguiWidgets( gfx, "Plane 2"s );
-	m_plane3Textured.displayImguiWidgets( gfx, "Plane 3"s );
+	m_terrain.displayImguiWidgets( gfx );
 
-	m_carabiner.displayImguiWidgets( gfx );
+	for ( auto &model : m_models )
+	{
+		model.displayImguiWidgets( gfx );
+	}
 
 	gfx.getRenderer3d().displayImguiWidgets( gfx );
 
@@ -527,25 +511,15 @@ void Sandbox3d::test()
 void Sandbox3d::connectToRenderer( ren::Renderer3d &renderer )
 {
 	s_cameraMan.connectMaterialsToRenderer( renderer );
-
 	m_pPointLight1->connectMaterialsToRenderer( renderer );
 	//m_pPointLight2->connectMaterialsToRenderer( renderer );
 
 	m_terrain.connectMaterialsToRenderer( renderer );
-	m_debugLine1.connectMaterialsToRenderer( renderer );
-	m_cube1.connectMaterialsToRenderer( renderer );
-	m_cube2.connectMaterialsToRenderer( renderer );
-	m_cube3.connectMaterialsToRenderer( renderer );
-	m_testSphere.connectMaterialsToRenderer( renderer );
-	m_plane1Red.connectMaterialsToRenderer( renderer );
-	m_plane2Green.connectMaterialsToRenderer( renderer );
-	m_plane3Textured.connectMaterialsToRenderer( renderer );
-	m_carabiner.connectMaterialsToRenderer( renderer );
-	//m_sponzaScene.connectMaterialsToRenderer( renderer );
-
-	m_terrain.setMaterialEnabled( rch::wireframe, false );
-	m_terrain.setMaterialEnabled( rch::opaque, true );
-	m_cube2.setMaterialEnabled( rch::blurOutline, false );
+	m_terrain.setMaterialEnabled( rch::opaque, false );
+	for ( auto &model : m_models )
+	{
+		model.connectMaterialsToRenderer( renderer );
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

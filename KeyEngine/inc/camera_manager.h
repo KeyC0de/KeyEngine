@@ -24,6 +24,7 @@ class CameraManager final
 	: public NonCopyable
 {
 	static inline CameraManager *s_pInstance;
+
 	int m_activeCameraIndex = 0;
 	int m_controlledCameraIndex = 0;
 	std::vector<std::shared_ptr<Camera>> m_cameras;

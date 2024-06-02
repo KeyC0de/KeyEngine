@@ -1,10 +1,12 @@
 #pragma once
 
+#include "key_wrl.h"
 #include "bindable.h"
 #include "dynamic_vertex_buffer.h"
 
 
 class VertexShader;
+class Graphics;
 
 //=============================================================
 //	\class	InputLayout

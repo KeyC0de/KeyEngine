@@ -3203,9 +3203,9 @@ namespace Catch {
 	void toLowerInPlace( std::string &s );
 	std::string toLower( std::string const &s );
 	//! Returns a new string without whitespace at the start/end
-	std::string trim( std::string const &str );
+	std::string trimSpaces( std::string const &str );
 	//! Returns a substring of the original ref without whitespace. Beware lifetimes!
-	StringRef trim(StringRef ref);
+	StringRef trimSpaces(StringRef ref);
 
 	// !!! Be aware, returns refs into original string - make sure original string outlives them
 	std::vector<StringRef> splitStringRef( StringRef str, char delimiter );
@@ -9720,7 +9720,7 @@ namespace Catch {
 
 				std::string line;
 				while( std::getline( f, line ) ) {
-					line = trim(line);
+					line = trimSpaces(line);
 					if( !line.empty() && !startsWith( line, '#' ) ) {
 						if( !startsWith( line, '"' ) )
 							line = '"' + line + '"';
@@ -9946,15 +9946,15 @@ namespace Catch {
 	:   m_data( data ),
 		m_stream( openStream() )
 	{
-		// We need to trim filter specs to avoid trouble with superfluous
+		// We need to trimSpaces filter specs to avoid trouble with superfluous
 		// whitespace (esp. important for bdd macros, as those are manually
 		// aligned with whitespace).
 
 		for (auto &elem : m_data.testsOrTags) {
-			elem = trim(elem);
+			elem = trimSpaces(elem);
 		}
 		for (auto &elem : m_data.sectionsToRun) {
-			elem = trim(elem);
+			elem = trimSpaces(elem);
 		}
 
 		TestSpecParser parser(ITagAliasRegistry::get());
@@ -10598,7 +10598,7 @@ namespace Catch {
 			std::vector<StringRef> parsed;
 			parsed.reserve( enumValues.size() );
 			for( auto const &enumValue : enumValues ) {
-				parsed.push_back(trim(extractInstanceName(enumValue)));
+				parsed.push_back(trimSpaces(extractInstanceName(enumValue)));
 			}
 			return parsed;
 		}
@@ -13829,7 +13829,7 @@ namespace Catch {
 		toLowerInPlace( lc );
 		return lc;
 	}
-	std::string trim( std::string const &str ) {
+	std::string trimSpaces( std::string const &str ) {
 		static char const *whitespaceChars = "\n\r\t ";
 		std::string::size_type start = str.find_first_not_of( whitespaceChars );
 		std::string::size_type end = str.find_last_not_of( whitespaceChars );
@@ -13837,7 +13837,7 @@ namespace Catch {
 		return start != std::string::npos ? str.substr( start, 1+end-start ) : std::string();
 	}
 
-	StringRef trim(StringRef ref) {
+	StringRef trimSpaces(StringRef ref) {
 		const auto is_ws = [](char c) {
 			return c == ' ' || c == '\t' || c == '\n' || c == '\r';
 		};
@@ -14496,7 +14496,7 @@ namespace TestCaseTracking {
 
 	SectionTracker::SectionTracker( NameAndLocation const &nameAndLocation, TrackerContext &ctx, ITracker *parent )
 	:   TrackerBase( nameAndLocation, ctx, parent ),
-		m_trimmed_name(trim(nameAndLocation.name))
+		m_trimmed_name(trimSpaces(nameAndLocation.name))
 	{
 		if( parent ) {
 			while( !parent->isSectionTracker() )
@@ -15420,7 +15420,7 @@ namespace Catch {
 	}
 
 	std::string WildcardPattern::normaliseString( std::string const &str ) const {
-		return trim( m_caseSensitivity == CaseSensitive::No ? toLower( str ) : str );
+		return trimSpaces( m_caseSensitivity == CaseSensitive::No ? toLower( str ) : str );
 	}
 }
 // end catch_wildcard_pattern.cpp
@@ -16933,8 +16933,8 @@ namespace Catch {
 		for( auto const &child : groupNode.children )
 			writeTestCase( *child );
 
-		xml.scopedElement( "system-out" ).writeText( trim( stdOutForSuite ), XmlFormatting::Newline );
-		xml.scopedElement( "system-err" ).writeText( trim( stdErrForSuite ), XmlFormatting::Newline );
+		xml.scopedElement( "system-out" ).writeText( trimSpaces( stdOutForSuite ), XmlFormatting::Newline );
+		xml.scopedElement( "system-err" ).writeText( trimSpaces( stdErrForSuite ), XmlFormatting::Newline );
 	}
 
 	void JunitReporter::writeTestCase( TestCaseNode const &testCaseNode ) {
@@ -16963,7 +16963,7 @@ namespace Catch {
 									  std::string const &rootName,
 									  SectionNode const &sectionNode,
 									  bool testOkToFail) {
-		std::string name = trim( sectionNode.stats.sectionInfo.name );
+		std::string name = trimSpaces( sectionNode.stats.sectionInfo.name );
 		if( !rootName.empty() )
 			name = rootName + '/' + name;
 
@@ -16994,9 +16994,9 @@ namespace Catch {
 			writeAssertions( sectionNode );
 
 			if( !sectionNode.stdOut.empty() )
-				xml.scopedElement( "system-out" ).writeText( trim( sectionNode.stdOut ), XmlFormatting::Newline );
+				xml.scopedElement( "system-out" ).writeText( trimSpaces( sectionNode.stdOut ), XmlFormatting::Newline );
 			if( !sectionNode.stdErr.empty() )
-				xml.scopedElement( "system-err" ).writeText( trim( sectionNode.stdErr ), XmlFormatting::Newline );
+				xml.scopedElement( "system-err" ).writeText( trimSpaces( sectionNode.stdErr ), XmlFormatting::Newline );
 		}
 		for( auto const &childNode : sectionNode.childSections )
 			if( className.empty() )
@@ -17289,7 +17289,7 @@ namespace Catch {
 	void XmlReporter::testCaseStarting( TestCaseInfo const &testInfo ) {
 		StreamingReporterBase::testCaseStarting(testInfo);
 		m_xml.startElement( "TestCase" )
-			.writeAttribute( "name", trim( testInfo.name ) )
+			.writeAttribute( "name", trimSpaces( testInfo.name ) )
 			.writeAttribute( "description", testInfo.description )
 			.writeAttribute( "tags", testInfo.tagsAsString() );
 
@@ -17304,7 +17304,7 @@ namespace Catch {
 		StreamingReporterBase::sectionStarting( sectionInfo );
 		if( m_sectionDepth++ > 0 ) {
 			m_xml.startElement( "Section" )
-				.writeAttribute( "name", trim( sectionInfo.name ) );
+				.writeAttribute( "name", trimSpaces( sectionInfo.name ) );
 			writeSourceInfo( sectionInfo.lineInfo );
 			m_xml.ensureTagClosed();
 		}
@@ -17410,9 +17410,9 @@ namespace Catch {
 			e.writeAttribute( "durationInSeconds", m_testCaseTimer.getElapsedSeconds() );
 
 		if( !testCaseStats.stdOut.empty() )
-			m_xml.scopedElement( "StdOut" ).writeText( trim( testCaseStats.stdOut ), XmlFormatting::Newline );
+			m_xml.scopedElement( "StdOut" ).writeText( trimSpaces( testCaseStats.stdOut ), XmlFormatting::Newline );
 		if( !testCaseStats.stdErr.empty() )
-			m_xml.scopedElement( "StdErr" ).writeText( trim( testCaseStats.stdErr ), XmlFormatting::Newline );
+			m_xml.scopedElement( "StdErr" ).writeText( trimSpaces( testCaseStats.stdErr ), XmlFormatting::Newline );
 
 		m_xml.endElement();
 	}

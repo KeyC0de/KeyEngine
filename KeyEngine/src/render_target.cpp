@@ -1,4 +1,5 @@
 #include "render_target.h"
+#include "graphics.h"
 #include "texture_desc.h"
 #include "depth_stencil_view.h"
 #include "os_utils.h"

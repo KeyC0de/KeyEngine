@@ -1,4 +1,5 @@
 #include "fullscreen_pass.h"
+#include "graphics.h"
 #include "index_buffer.h"
 #include "input_layout.h"
 #include "primitive_topology.h"

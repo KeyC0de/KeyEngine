@@ -8,6 +8,7 @@
 
 
 class Message;
+class MessageDispatcher;
 
 //============================================================
 //	\class	MessageBus

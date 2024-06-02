@@ -1,8 +1,10 @@
 #pragma once
 
 #include <optional>
+#include "key_wrl.h"
 #include "bindable.h"
 #include "render_surface.h"
+#include "texture_desc.h"
 
 
 class Graphics;

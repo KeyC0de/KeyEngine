@@ -1,5 +1,6 @@
 #include "key_sound.h"
 #include "winner.h"
+#include "key_timer.h"
 #include "assertions_console.h"
 #include "utils.h"
 #include "os_utils.h"
@@ -630,7 +631,7 @@ void SoundPlayer::notify( const UISoundEvent &event )
 			{
 				Sound component_hovered_sound{UISoundEvent::getSoundPath( event.m_soundType ), "component_hovered", "ui"};
 				component_hovered_sound.play();
-				Sleep( static_cast<DWORD>(component_hovered_sound.getDuration()) );
+				SleepTimer::sleepFor( static_cast<uint64_t>( component_hovered_sound.getDuration() ) );
 			};
 		threadPool.enqueue( lambda );
 	}

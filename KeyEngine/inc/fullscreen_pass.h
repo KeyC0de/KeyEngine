@@ -4,6 +4,8 @@
 #include "render_queue_pass.h"
 
 
+class Graphics;
+
 namespace ren
 {
 

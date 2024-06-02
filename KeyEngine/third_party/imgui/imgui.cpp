@@ -3174,7 +3174,7 @@ void ImGui::UpdateMouseMovingWindowEndFrame()
 	if (g.IO.MouseClicked[1])
 	{
 		// Find the top-most window between HoveredWindow and the front most Modal Window.
-		// This is where we can trim the popup stack.
+		// This is where we can trimSpaces the popup stack.
 		ImGuiWindow *modal = GetFrontMostPopupModal();
 		bool hovered_window_above_modal = false;
 		if (modal == NULL)

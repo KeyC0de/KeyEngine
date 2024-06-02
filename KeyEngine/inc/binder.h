@@ -4,6 +4,7 @@
 #include <memory>
 #include <typeinfo>
 #include <type_traits>
+#include <sstream>
 #include "linker.h"
 #include "bindable.h"
 #include "render_surface.h"

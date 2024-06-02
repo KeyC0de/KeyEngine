@@ -1,8 +1,8 @@
 #include "model.h"
-#include <string>
+#include "node.h"
+#include "graphics.h"
 #include "assimp/Importer.hpp"
 #include "assimp/postprocess.h"
-#include "node.h"
 #include "mesh.h"
 #include "material_loader.h"
 #include "math_utils.h"
@@ -11,13 +11,14 @@
 #include "file_utils.h"
 
 
+// #TODO: Model LOD automatic switching
 namespace dx = DirectX;
 
 Model::Model( Graphics &gfx,
 	const std::string &path,
-	const float initialScale /*= 1*/,
-	const DirectX::XMFLOAT3 &initialRot /*= {0, 0, 0}*/,
-	const DirectX::XMFLOAT3 &initialPos /*= {0, 0, 0}*/ )
+	const float initialScale /*= 1.0f*/,
+	const DirectX::XMFLOAT3 &initialRotDeg /*= {0.0f, 0.0f, 0.0f}*/,
+	const DirectX::XMFLOAT3 &initialPos /*= {0.0f, 0.0f, 0.0f}*/ )
 #ifndef FINAL_RELEASE
 	:
 	m_imguiVisitor{util::getFilename( path )}
@@ -59,32 +60,96 @@ Model::Model( Graphics &gfx,
 		m_meshes.emplace_back( std::make_unique<Mesh>( gfx, materials[aiMesh.mMaterialIndex], aiMesh, initialScale ) );
 	}
 
-	const int imguiNodeId = 0;
-	m_pRoot = parseModelNodeGraph( *paiScene->mRootNode, imguiNodeId, initialScale );
+	ASSERT( paiScene->mNumMeshes < 2, "Alert me if an importer has more than 1 mesh!" );
 
-	setTransform( 1, initialRot, initialPos );
+	const int imguiNodeId = 0;
+	m_pRoot = parseModelNodeGraph( nullptr, *paiScene->mRootNode, imguiNodeId, initialScale );
+
+	ASSERT( m_nMeshNodes == 1, "In KeyEngine every model must have 1 and only 1 Mesh Node (such that we only need to apply transforms to the root Node." );
+
+	setTransform( 1, util::toRadians3( initialRotDeg ), initialPos );
+}
+
+Model::Model( std::unique_ptr<Mesh> pMesh,
+	Graphics &gfx,
+	const DirectX::XMFLOAT3 &initialRotDeg,
+	const DirectX::XMFLOAT3 &initialPos )
+	:
+	m_nNodes{1},
+	m_nMeshNodes{1}
+{
+	const auto &meshName = pMesh->getName();
+	const auto &meshId = pMesh->getMeshId();
+#ifndef FINAL_RELEASE
+	m_imguiVisitor = ImguiPerModelNodeVisitor{meshName};
+#endif
+
+	m_meshes.emplace_back( std::move( pMesh ) );
+
+	std::vector<Mesh*> pMeshes;
+	pMeshes.reserve( 1 );
+	pMeshes.push_back( m_meshes.at( 0 ).get() );
+
+	const auto localNodeTransform = util::scaleTranslation( dx::XMMatrixIdentity(), 1.0f );
+	using namespace std::string_literals;
+	const auto &nodeName = "Node#"s + std::to_string( 0 ) + "#"s + meshName;
+	m_pRoot = std::make_unique<Node>( nullptr, 0, nodeName, localNodeTransform, std::move( pMeshes ) );
+
+	setTransform( 1.0f, util::toRadians3( initialRotDeg ), initialPos );
+
+	m_name = "Model#"s + meshName;
+}
+
+Model::~Model() noexcept
+{
+	m_meshes.clear();
+}
+
+Model::Model( Model &&rhs ) noexcept
+	:
+	m_nNodes{rhs.m_nNodes},
+	m_nMeshNodes{rhs.m_nMeshNodes},
+	m_name{std::move( rhs.m_name )},
+	m_pRoot{std::move( rhs.m_pRoot )},
+	m_meshes{std::move( rhs.m_meshes )}
+#ifndef FINAL_RELEASE
+	, m_imguiVisitor{rhs.m_imguiVisitor}
+#endif
+{
+	rhs.m_pRoot = nullptr;
 }
 
 void Model::update( const float dt,
-	const float renderFrameInterpolation ) const cond_noex
+	const float renderFrameInterpolation,
+	const bool bEnableSmoothMovement /*= false*/ ) cond_noex
 {
-	m_pRoot->update( dt, dx::XMMatrixIdentity(), renderFrameInterpolation );
+	m_pRoot->update( dt, dx::XMMatrixIdentity(), renderFrameInterpolation, bEnableSmoothMovement );
 }
 
 void Model::render( const size_t channels /*= rch::all*/ ) const cond_noex
 {
-	m_pRoot->render( channels );
+	for ( const auto &pMesh : m_meshes )
+	{
+		pMesh->render( channels );
+	}
 }
 
 void Model::setMaterialEnabled( const size_t channels,
 	const bool bEnabled ) noexcept
 {
-	m_pRoot->setMaterialEnabled( channels, bEnabled );
+	for ( const auto &pMesh : m_meshes )
+	{
+		pMesh->setMaterialEnabled( channels, bEnabled );
+	}
 }
 
 void Model::displayImguiWidgets( Graphics &gfx ) noexcept
 {
 #ifndef FINAL_RELEASE
+	if ( m_nNodes > 6 )
+	{
+		return;
+	}
 	m_imguiVisitor.displayImguiWidgets( *this );
 #endif
 }
@@ -103,92 +168,70 @@ void Model::connectMaterialsToRenderer( ren::Renderer &r )
 	}
 }
 
+void Model::setTransform( const DirectX::XMFLOAT4X4 &tr ) cond_noex
+{
+	m_pRoot->setWorldTransform( tr );
+}
+
 void Model::setTransform( const DirectX::XMMATRIX &tr ) cond_noex
 {
 	m_pRoot->setWorldTransform( tr );
 }
 
 void Model::setTransform( const float scale,
-	const DirectX::XMFLOAT3 &rotAngles,
+	const DirectX::XMFLOAT3 &rotAnglesRadians,
 	const DirectX::XMFLOAT3 &pos ) cond_noex
 {
-	const dx::XMVECTOR rotQuat = util::pitchYawRollToQuaternion( dx::XMLoadFloat3( &rotAngles ) );
-
-	dx::XMMATRIX worldTransform = dx::XMMatrixAffineTransformation( dx::XMVectorReplicate( scale ), util::s_XMZero, rotQuat, dx::XMLoadFloat3( &pos ) );
-
-	m_pRoot->setWorldTransform( worldTransform );
+	m_pRoot->setWorldTransform( scale, rotAnglesRadians, pos );
 }
 
 void Model::setTransform( const float scale,
 	const DirectX::XMFLOAT4 &rotQuat,
 	const DirectX::XMFLOAT3 &pos ) cond_noex
 {
-	dx::XMMATRIX worldTransform = dx::XMMatrixAffineTransformation( dx::XMVectorReplicate( scale ), util::s_XMZero, dx::XMLoadFloat4( &rotQuat ), dx::XMLoadFloat3( &pos ) );
-
-	m_pRoot->setWorldTransform( worldTransform );
+	m_pRoot->setWorldTransform( scale, rotQuat, pos );
 }
 
 void Model::setTransform( const float scale,
 	const DirectX::XMVECTOR &rotQuat,
 	const DirectX::XMFLOAT3 &pos ) cond_noex
 {
-	dx::XMMATRIX worldTransform = dx::XMMatrixAffineTransformation( dx::XMVectorReplicate( scale ), util::s_XMZero, rotQuat, dx::XMLoadFloat3( &pos ) );
+	m_pRoot->setWorldTransform( scale, rotQuat, pos );
+}
 
-	m_pRoot->setWorldTransform( worldTransform );
+void Model::setScale( const float scale ) cond_noex
+{
+	m_pRoot->setScale( scale );
 }
 
 void Model::setScale( const DirectX::XMFLOAT3 &scale ) cond_noex
 {
-	const auto &currentTransform = m_pRoot->getWorldTransform();
-	dx::XMVECTOR currentScale{}, currentRotQuat{}, currentPos{};
-	const bool ret = dx::XMMatrixDecompose( &currentScale, &currentRotQuat, &currentPos, currentTransform );
-	ASSERT( ret, "Matrix decomposition failed!" );
-
-	const dx::XMMATRIX scaleMat = dx::XMMatrixScaling( scale.x, scale.y, scale.z );
-	const dx::XMMATRIX rotMat = dx::XMMatrixRotationQuaternion( currentRotQuat );
-	const dx::XMMATRIX posMat = dx::XMMatrixTranslationFromVector( currentPos );
-	m_pRoot->setWorldTransform( scaleMat * rotMat * posMat );
+	m_pRoot->setScale( scale );
 }
 
-void Model::setRotation( const DirectX::XMFLOAT3 &rot ) cond_noex
+void Model::scaleRel( const DirectX::XMFLOAT3 &scale )
 {
-	const auto &currentTransform = m_pRoot->getWorldTransform();
-	dx::XMVECTOR currentScale{}, currentRotQuat{}, currentPos{};
-	const bool ret = dx::XMMatrixDecompose( &currentScale, &currentRotQuat, &currentPos, currentTransform );
-	ASSERT( ret, "Matrix decomposition failed!" );
-
-	const dx::XMMATRIX scaleMat = dx::XMMatrixScalingFromVector( currentScale );
-	const dx::XMMATRIX rotMat = dx::XMMatrixRotationRollPitchYaw( rot.x, rot.y, rot.z );
-	const dx::XMMATRIX posMat = dx::XMMatrixTranslationFromVector( currentPos );
-	m_pRoot->setWorldTransform( scaleMat * rotMat * posMat );
+	m_pRoot->setScale( scale );
 }
 
-void Model::rotateRel( const DirectX::XMFLOAT3 &rot ) cond_noex
+void Model::setRotation( const DirectX::XMFLOAT3 &rotAnglesRadians ) cond_noex
 {
-	const auto &currentTransform = m_pRoot->getWorldTransform();
-	dx::XMFLOAT4X4 currentTransform4x4{};
-	dx::XMStoreFloat4x4( &currentTransform4x4, currentTransform );
-	const dx::XMFLOAT3 pitchYawRoll = util::extractRotation( currentTransform4x4 );
-	const float pitch = std::clamp( pitchYawRoll.x + rot.x, 0.995f * -util::PI / 2.0f, 0.995f * util::PI / 2.0f );
-	const float yaw = util::wrapAngle( pitchYawRoll.y + rot.y );
-	const float roll = std::clamp( pitchYawRoll.z + rot.z, 0.995f * -util::PI / 2.0f, 0.995f * util::PI / 2.0f );
-	setRotation( dx::XMFLOAT3{pitch, yaw, roll} );
+	m_pRoot->setRotation( rotAnglesRadians );
 }
 
-void Model::setPosition( const DirectX::XMFLOAT3 &pos ) cond_noex
+void Model::rotateRel( const DirectX::XMFLOAT3 &rotAnglesRadians ) cond_noex
 {
-	auto &worldTransform = m_pRoot->getWorldTransformAccess();
-	worldTransform._41 = pos.x;
-	worldTransform._42 = pos.y;
-	worldTransform._43 = pos.z;
+	m_pRoot->rotateRel( rotAnglesRadians );
+}
+
+void Model::setTranslation( const DirectX::XMFLOAT3 &pos ) cond_noex
+{
+	m_pRoot->setTranslation( pos );
 }
 
 void Model::translateRel( const DirectX::XMFLOAT3 &pos ) cond_noex
 {
-	auto &worldTransform = m_pRoot->getWorldTransformAccess();
-	worldTransform._41 += pos.x;
-	worldTransform._42 += pos.y;
-	worldTransform._43 += pos.z;
+	m_pRoot->translateRel( pos );
 }
 
 DirectX::XMMATRIX Model::getTransform() const noexcept
@@ -196,33 +239,64 @@ DirectX::XMMATRIX Model::getTransform() const noexcept
 	return m_pRoot->getWorldTransform();
 }
 
+DirectX::XMFLOAT4X4 Model::getTransform4x4() const noexcept
+{
+	return m_pRoot->getWorldTransform4x4();
+}
+
 float Model::getScale() const noexcept
 {
-	return m_meshes[0]->getScale();
+	return m_pRoot->getScale();
+}
+
+DirectX::XMFLOAT3 Model::getScale3() const noexcept
+{
+	return m_pRoot->getScale3();
 }
 
 DirectX::XMFLOAT3 Model::getRotation() const noexcept
 {
-	return m_meshes[0]->getRotation();
+	return m_pRoot->getRotation();
+}
+
+DirectX::XMVECTOR Model::getRotationQuat() const noexcept
+{
+	return m_pRoot->getRotationQuat();
 }
 
 DirectX::XMFLOAT3 Model::getPosition() const noexcept
 {
-	return m_meshes[0]->getPosition();
+	return m_pRoot->getPosition();
 }
 
-float Model::getDistanceFromActiveCamera() const noexcept
+float Model::getDistanceFromActiveCamera( const int index /*= 0*/ ) const noexcept
 {
-	return m_meshes[0]->getDistanceFromActiveCamera();	// #TODO:
+	return ( index > -1 && index < m_meshes.size() ) ? m_meshes[index]->getDistanceFromActiveCamera() : -1;
 }
 
-std::unique_ptr<Node> Model::parseModelNodeGraph( const aiNode &ainode,
+const std::string& Model::getName() const noexcept
+{
+	return m_name;
+}
+
+const Mesh* const Model::getMesh( const int index /*= 0*/ ) const noexcept
+{
+	return ( index > -1 && index < m_meshes.size() ) ? m_meshes[index].get() : nullptr;
+}
+
+Mesh* const Model::getMesh( const int index /*= 0*/ )
+{
+	return ( index > -1 && index < m_meshes.size() ) ? m_meshes[index].get() : nullptr;
+}
+
+std::unique_ptr<Node> Model::parseModelNodeGraph( Node *pParent,
+	const aiNode &ainode,
 	int imguiNodeId,
-	const float scale ) noexcept
+	const float initialScale ) cond_noex
 {
 	namespace dx = DirectX;
 	// Assimp is row major
-	const auto transform = util::scaleTranslation( dx::XMLoadFloat4x4( reinterpret_cast<const dx::XMFLOAT4X4*>( &ainode.mTransformation ) ), scale );
+	const auto localNodeTransform = util::scaleTranslation( dx::XMLoadFloat4x4( reinterpret_cast<const dx::XMFLOAT4X4*>( &ainode.mTransformation ) ), initialScale );
 
 	std::vector<Mesh*> pMeshes;
 	pMeshes.reserve( ainode.mNumMeshes );
@@ -230,15 +304,24 @@ std::unique_ptr<Node> Model::parseModelNodeGraph( const aiNode &ainode,
 	{
 		const unsigned int meshId = ainode.mMeshes[i];
 		pMeshes.push_back( m_meshes.at( meshId ).get() );
+		++m_nMeshNodes;
+		m_name = "Model#" + m_meshes.at( meshId )->getName();
 	}
 
-	auto pNode = std::make_unique<Node>( imguiNodeId, ainode.mName.C_Str(), transform, std::move( pMeshes ) );
+	ASSERT( pMeshes.size() <= 1, "In KeyEngine, we attach up to 1 single Mesh to each MeshNode for the time being! The root Node has no Meshes or anything else attached to it." );
+	// Only child Nodes have stuff attached to them (Meshes, Cameras, Lights, Helpers, Pivots etc.)
+	// Not all imported-file/fbx `Node`s are Mesh Nodes!
+	// Consider making a Node inheritance hierarchy and the current Node should be MeshNode
+
+	auto pNode = std::make_unique<Node>( pParent, imguiNodeId, ainode.mName.C_Str(), localNodeTransform, std::move( pMeshes ) );
+
+	++m_nNodes;
 
 	// create children Nodes and attach them to the Model's hierarchical tree structure
 	++imguiNodeId;
 	for ( size_t i = 0; i < ainode.mNumChildren; ++i )
 	{
-		pNode->addChild( std::move( parseModelNodeGraph( *ainode.mChildren[i], imguiNodeId, scale ) ) );
+		pNode->addChild( std::move( parseModelNodeGraph( pNode.get(), *ainode.mChildren[i], imguiNodeId, initialScale ) ) );
 	}
 
 	return pNode;

@@ -2,6 +2,7 @@
 
 #include <optional>
 #include <memory>
+#include <vector>
 #include <type_traits>
 #include "window.h"
 #include "reporter_listener.h"
@@ -10,32 +11,32 @@
 #include "camera_manager.h"
 #include "light_source.h"
 #include "terrain.h"
-#include "plane.h"
-#include "line.h"
-#include "cube.h"
-#include "sphere.h"
 #include "model.h"
 #include "non_copyable.h"
 #include "settings_manager.h"
-#include "game_state.h"
 #include "key_sound.h"
 #include "rectangle.h"
-#include "imgui_manager.h"
 #include "arkanoid/ball.h"
 #include "arkanoid/brick.h"
 #include "arkanoid/paddle.h"
 #include "math_utils.h"
+#ifndef FINAL_RELEASE
+#	include "imgui_manager.h"
+#endif
 
 
 namespace ren
 {
 	class Renderer;
+	class Renderer3d;
 }
 
 namespace gui
 {
 	class UIPass;
 }
+
+class State;
 
 template<typename T>
 class Game
@@ -73,7 +74,7 @@ protected:
 	const State* getState() const noexcept;
 	State* getState() noexcept;
 private:
-	ImguiManager* createImgui() noexcept;
+	ImguiManager* createImguiManager() noexcept;
 };
 
 class Sandbox3d
@@ -88,17 +89,8 @@ class Sandbox3d
 #ifndef FINAL_RELEASE
 	bool m_bShowDemoWindow = false;
 #endif
-	Terrain m_terrain{m_mainWindow.getGraphics(), 100, 100, "assets/textures/clouds_blurred.bmp", 1.0f, {util::toRadians( 90.0f ), 0.0f, 0.0f}, {0.0f, -100.0f, 0.0f}/*, {0.0f, 1.0f, 0.0f, 1.0f}*/};
-	Line m_debugLine1{m_mainWindow.getGraphics(), 4.0f, {0, 0, 0}, {10.0f, 10.0f, 6.0f}, {1.0f, 0.0f, 0.0f, 1.0f}};
-	Cube m_cube1{m_mainWindow.getGraphics(), 4.0f, {0, 0, 0}, {10.0f, 5.0f, 6.0f}};
-	Cube m_cube2{m_mainWindow.getGraphics(), 1.0f, {0, 0, 0}, {9.9f, 4.9f, 1.4f}, {1.0f, 0.4f, 0.4f, 0.5f}};
-	Cube m_cube3{m_mainWindow.getGraphics(), 1.0f, {0, 0, 0}, {22.0f, 12.0f, 14.0f}};
-	Sphere m_testSphere{m_mainWindow.getGraphics(), 1.0f, {0, 0, 0}, {40.0f, 20.0f, 8.0f}};
-	Plane m_plane1Red{m_mainWindow.getGraphics(), 8, 8, 1.0f, {0, 0, 0}, {40.0f, 10.0f, 20.0f}, {1.0f, 0.0f, 0.1f, 0.8f}, ""};
-	Plane m_plane2Green{m_mainWindow.getGraphics(), 4, 4, 1.0f, {0, 0, 0}, {40.0f, 10.0f, 16.0f}, {0.1f, 1.0f, 0.0f, 0.5f}, ""};
-	Plane m_plane3Textured{m_mainWindow.getGraphics(), 6, 6, 1.0f, {0, 0, 0}, {40.0f, 10.0f, 12.0f}, {1.0f, 1.0f, 1.0f, 1.0f}};
-	//Model m_sponzaScene{m_mainWindow.getGraphics(), "assets/models/sponza/sponza.obj", 1.0f / 8.0f, {0, 0, 0}, {0.0f, 0.0f, 0.0f}};
-	Model m_carabiner{m_mainWindow.getGraphics(), "assets/models/carabiner/carabiner_hook.fbx", 1.0f, {0, 0, 0}, {-10.0f, 6.0f, 0.0f}};
+	Model m_terrain{std::make_unique<Terrain>(m_mainWindow.getGraphics(), 1.0f, DirectX::XMFLOAT4{0.1f, 0.8f, 0.05f, 1.0f}, "assets/textures/clouds_blurred.bmp", 100, 100), m_mainWindow.getGraphics(), {90.0f, 0.0f, 0.0f}, {0.0f, -100.0f, 0.0f}};
+	std::vector<Model> m_models;
 public:
 	Sandbox3d( const int width, const int height, const int x, const int y, const int nWindows = 1 );
 	~Sandbox3d() noexcept;
@@ -114,6 +106,7 @@ private:
 	void connectToRenderer( ren::Renderer3d &renderer );
 };
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
 class Arkanoid final
 	: public Game<Arkanoid>
 {

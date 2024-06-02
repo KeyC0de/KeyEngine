@@ -6,7 +6,7 @@
 
 
 class Mesh;
-class IImGuiMaterialVisitor;
+class IImGuiConstantBufferVisitor;
 class Graphics;
 
 //=============================================================
@@ -33,7 +33,7 @@ public:
 		pass_;
 	}
 
-	virtual void accept( IImGuiMaterialVisitor &ev )
+	virtual void accept( IImGuiConstantBufferVisitor &ev )
 	{
 		pass_;
 	}

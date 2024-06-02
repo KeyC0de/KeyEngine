@@ -1,16 +1,21 @@
 #pragma once
 
 #include <DirectXMath.h>
-#include "constant_buffer.h"
-#include "mesh.h"
+#include "bindable.h"
 #include "dynamic_constant_buffer.h"
 
+
+template<typename CB>
+class VertexShaderConstantBuffer;
+class Graphics;
+class IImGuiConstantBufferVisitor;
+class Mesh;
 
 class TransformVSCB
 	: public IBindableCloning
 {
-	const Mesh *m_pMesh = nullptr;
 protected:
+	const Mesh *m_pMesh = nullptr;
 	struct Transforms
 	{
 		DirectX::XMMATRIX world;
@@ -20,6 +25,7 @@ protected:
 private:
 	std::unique_ptr<VertexShaderConstantBuffer<Transforms>> m_pVscb;
 public:
+	TransformVSCB( Graphics &gfx, const unsigned slot, const Mesh &mesh );
 	TransformVSCB( Graphics &gfx, const unsigned slot );
 	TransformVSCB( const TransformVSCB &rhs );
 	TransformVSCB& operator=( const TransformVSCB &rhs );
@@ -27,7 +33,6 @@ public:
 	TransformVSCB& operator=( TransformVSCB &&rhs ) noexcept;
 
 	void bind( Graphics &gfx ) cond_noex override;
-	void setMesh( const Mesh &mesh ) noexcept override;
 	std::unique_ptr<IBindableCloning> clone() const noexcept override;
 	std::unique_ptr<IBindableCloning> clone() noexcept override;
 protected:
@@ -48,8 +53,9 @@ public:
 	TransformScaleVSCB( TransformScaleVSCB &&rhs ) noexcept;
 	TransformScaleVSCB& operator=( TransformScaleVSCB &&rhs ) noexcept;
 
-	void accept( IImGuiMaterialVisitor &ev ) override;
+	void accept( IImGuiConstantBufferVisitor &ev ) override;
 	void bind( Graphics &gfx ) cond_noex override;
+	void setMesh( const Mesh &mesh ) noexcept override;
 	std::unique_ptr<IBindableCloning> clone() const noexcept override;
 	std::unique_ptr<IBindableCloning> clone() noexcept override;
 private:

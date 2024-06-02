@@ -5,6 +5,8 @@
 #include "entity_defines.h"
 
 
+class EntityManager;
+
 //============================================================
 //	\class	Entity
 //	\author	KeyC0de

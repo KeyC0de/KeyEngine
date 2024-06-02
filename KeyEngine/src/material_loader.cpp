@@ -68,7 +68,7 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 				}
 				else
 				{
-					cbLayout.add<con::Float3>( "materialColor" );
+					cbLayout.add<con::Float4>( "materialColor" );
 				}
 
 				RasterizerState::FaceMode faceMode = bTextureAlphaChannel ?
@@ -106,7 +106,6 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 				}
 			}
 			{// the rest of the Bindables:
-				opaque.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
 				auto pVs = VertexShader::fetch( gfx, shaderFileName + "_vs.cso" );
 				opaque.addBindable( InputLayout::fetch( gfx, m_vertexLayout, *pVs ) );
 				opaque.addBindable( std::move( pVs ) );
@@ -120,9 +119,9 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 				con::CBuffer pscb{std::move( cbLayout )};
 				if ( auto cbElem = pscb["materialColor"]; cbElem.isValid() )
 				{
-					aiColor3D difCol = {0.45f, 0.45f, 0.85f};
+					aiColor4D difCol = {0.45f, 0.45f, 0.85f, 1.0f};
 					aimaterial.Get( AI_MATKEY_COLOR_DIFFUSE, difCol );
-					cbElem = reinterpret_cast<dx::XMFLOAT3&>( difCol );
+					cbElem = reinterpret_cast<dx::XMFLOAT4&>( difCol );
 				}
 				pscb["bSpecularMap"].setIfValid( true );
 				pscb["bSpecularMapAlpha"].setIfValid( bSpecularTextureAlpha );
@@ -150,7 +149,6 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 			shadowMap.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
 			shadowMap.addBindable( InputLayout::fetch( gfx, m_vertexLayout, *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
-			shadowMap.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
 
 			m_materials.emplace_back( std::move( shadowMap ) );
 		}
@@ -158,7 +156,6 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 			Material blurOutlineMask{rch::blurOutline, "blurOutlineMask", false};
 
 			blurOutlineMask.addBindable( InputLayout::fetch( gfx, m_vertexLayout, *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
-			blurOutlineMask.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
 
 			m_materials.emplace_back( std::move( blurOutlineMask ) );
 		}
@@ -166,19 +163,17 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 			Material blurOutlineDraw{rch::blurOutline, "blurOutlineDraw", false};
 			{
 				con::RawLayout cbLayout;
-				cbLayout.add<con::Float3>( "materialColor" );
+				cbLayout.add<con::Float4>( "materialColor" );
 				auto cb = con::CBuffer{std::move( cbLayout )};
-				cb["materialColor"] = dx::XMFLOAT3{1.0f, 0.4f, 0.4f};
+				cb["materialColor"] = dx::XMFLOAT4{1.0f, 0.4f, 0.4f, 1.0f};
 				blurOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
 			}
 			blurOutlineDraw.addBindable( InputLayout::fetch( gfx, m_vertexLayout, *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
-			blurOutlineDraw.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
 
 			m_materials.emplace_back( std::move( blurOutlineDraw ) );
 		}
 		{// solid outline mask material
 			Material solidOutlineMask{rch::solidOutline, "solidOutlineMask", false};
-			solidOutlineMask.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
 
 			solidOutlineMask.addBindable( InputLayout::fetch( gfx, m_vertexLayout, *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 
@@ -187,13 +182,12 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 		{// solid outline draw material
 			Material solidOutlineDraw{rch::solidOutline, "solidOutlineDraw", false};
 
-			auto transformScaledVcb = std::make_shared<TransformScaleVSCB>( gfx, 0u, 1.04f );
-			solidOutlineDraw.addBindable( transformScaledVcb );
+			solidOutlineDraw.addBindable( std::make_shared<TransformScaleVSCB>( gfx, 0u, 1.04f ) );
 
 			con::RawLayout cbLayout;
-			cbLayout.add<con::Float3>( "materialColor" );
+			cbLayout.add<con::Float4>( "materialColor" );
 			auto cb = con::CBuffer{std::move( cbLayout )};
-			cb["materialColor"] = dx::XMFLOAT3{1.0f, 0.4f, 0.4f};
+			cb["materialColor"] = dx::XMFLOAT4{1.0f, 0.4f, 0.4f, 1.0f};
 			solidOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
 
 			solidOutlineDraw.addBindable( InputLayout::fetch( gfx, m_vertexLayout, *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );

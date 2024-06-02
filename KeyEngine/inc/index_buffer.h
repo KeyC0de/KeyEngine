@@ -1,8 +1,12 @@
 #pragma once
 
 #include <string>
+#include <vector>
+#include "key_wrl.h"
 #include "bindable.h"
 
+
+class Graphics;
 
 class IndexBuffer
 	: public IBindable

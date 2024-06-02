@@ -1,9 +1,9 @@
 #include "camera_manager.h"
+#include "camera.h"
+#include "graphics.h"
 #ifndef FINAL_RELEASE
 #	include "imgui/imgui.h"
 #endif
-#include "camera.h"
-#include "graphics.h"
 
 
 CameraManager& CameraManager::getInstance()

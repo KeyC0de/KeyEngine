@@ -182,7 +182,7 @@ void VBuffer::resize( const size_t newVertexCount ) cond_noex
 	}
 }
 
-const char* VBuffer::getRawBytes() const cond_noex
+const char* VBuffer::data() const cond_noex
 {
 	return m_data.data();
 }

@@ -264,7 +264,9 @@ Graphics::~Graphics()
 		m_pCpuBuffer = nullptr;
 	}
 	cleanState();
+#if defined _DEBUG && !defined NDEBUG
 	d3d11DebugReport();
+#endif
 }
 
 void Graphics::resize( unsigned newWidth,
@@ -554,7 +556,7 @@ void Graphics::present()
 	//	const float waitForMs = minFrameTimeMs - frameTime;
 	//	if ( waitForMs > 0.0f )
 	//	{
-	//		m_gameTimer.delayFor( waitForMs );
+	//		m_gameTimer.sleepFor( waitForMs );
 	//	}
 	//}
 
@@ -741,12 +743,12 @@ void Graphics::bindBackBufferAsInput()	// #UNUSED
 	DXGI_GET_QUEUE_INFO_GFX;
 }
 
+#if defined _DEBUG && !defined NDEBUG
 DxgiInfoQueue& Graphics::getInfoQueue()
 {
-#if defined _DEBUG && !defined NDEBUG
 	return m_infoQueue;
-#endif
 }
+#endif
 
 KeyTimer<std::chrono::microseconds>& Graphics::getFpsTimer() noexcept
 {
@@ -875,9 +877,9 @@ bool Graphics::checkTearingSupport()
 	return bAllowTearing;
 }
 
+#if defined _DEBUG && !defined NDEBUG
 void Graphics::d3d11DebugReport()
 {
-#if defined _DEBUG && !defined NDEBUG
 	HRESULT hres;
 	hres = m_pDevice->QueryInterface( __uuidof( ID3D11Debug ), reinterpret_cast<void**>( &m_pDebug ) );
 	ASSERT_HRES_IF_FAILED;
@@ -891,8 +893,8 @@ void Graphics::d3d11DebugReport()
 		OutputDebugStringW( L"\n\n" );
 		m_pDebug = nullptr;
 	}
-#endif
 }
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 /// d2d via d3d Interoperability

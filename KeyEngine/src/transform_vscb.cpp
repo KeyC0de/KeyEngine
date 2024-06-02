@@ -1,10 +1,26 @@
 #include "transform_vscb.h"
+#include "constant_buffer.h"
+#include "graphics.h"
+#include "node.h"
+#include "mesh.h"
 #include "dxgi_info_queue.h"
 #include "assertions_console.h"
-#include "imgui_visitors.h"
+#ifndef FINAL_RELEASE
+#	include "imgui_visitors.h"
+#endif
 
 
 namespace dx = DirectX;
+
+TransformVSCB::TransformVSCB( Graphics &gfx,
+	const unsigned slot,
+	const Mesh &mesh )
+	:
+	m_pMesh{&mesh},
+	m_pVscb{std::make_unique<VertexShaderConstantBuffer<Transforms>>( gfx, slot )}
+{
+
+}
 
 TransformVSCB::TransformVSCB( Graphics &gfx,
 	const unsigned slot )
@@ -49,11 +65,6 @@ void TransformVSCB::bind( Graphics &gfx ) cond_noex
 	bindCb( gfx );
 }
 
-void TransformVSCB::setMesh( const Mesh &mesh ) noexcept
-{
-	m_pMesh = &mesh;
-}
-
 std::unique_ptr<IBindableCloning> TransformVSCB::clone() const noexcept
 {
 	return std::make_unique<TransformVSCB>( *this );
@@ -79,7 +90,7 @@ void TransformVSCB::bindCb( Graphics &gfx ) cond_noex
 TransformVSCB::Transforms TransformVSCB::getTransforms( Graphics &gfx ) cond_noex
 {
 	ASSERT( m_pMesh != nullptr, "No Mesh set!" );
-	const auto world = m_pMesh->getTransform();
+	const auto world = m_pMesh->getNode()->getWorldTransform();
 	const auto worldView = world * gfx.getViewMatrix();
 	const auto worldViewProjection = worldView * gfx.getProjectionMatrix();
 	return {dx::XMMatrixTranspose( world ), dx::XMMatrixTranspose( worldView ), dx::XMMatrixTranspose( worldViewProjection )};
@@ -127,7 +138,7 @@ TransformScaleVSCB& TransformScaleVSCB::operator=( TransformScaleVSCB &&rhs ) no
 	return *this;
 }
 
-void TransformScaleVSCB::accept( IImGuiMaterialVisitor &ev )
+void TransformScaleVSCB::accept( IImGuiConstantBufferVisitor &ev )
 {
 	ev.visit( m_cbScale );
 }
@@ -141,6 +152,11 @@ void TransformScaleVSCB::bind( Graphics &gfx ) cond_noex
 	transforms.worldViewProjection = transforms.worldViewProjection * scaleMatrix;
 	update(gfx, transforms );
 	bindCb( gfx );
+}
+
+void TransformScaleVSCB::setMesh( const Mesh &mesh ) noexcept
+{
+	m_pMesh = &mesh;
 }
 
 std::unique_ptr<IBindableCloning> TransformScaleVSCB::clone() const noexcept

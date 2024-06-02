@@ -1,4 +1,5 @@
 #include "terrain.h"
+#include "graphics.h"
 #include "vertex_buffer.h"
 #include "index_buffer.h"
 #include "primitive_topology.h"
@@ -10,10 +11,8 @@
 #include "texture.h"
 #include "texture_sampler_state.h"
 #include "rasterizer_state.h"
+#include "constant_buffer.h"
 #include "constant_buffer_ex.h"
-#ifndef FINAL_RELEASE
-#	include "imgui/imgui.h"
-#endif
 #include "rendering_channel.h"
 #include "utils.h"
 #include "math_utils.h"
@@ -23,20 +22,24 @@
 namespace dx = DirectX;
 
 Terrain::Terrain( Graphics &gfx,
-	const int length,
-	const int width,
-	const std::string &heightMapfilename /*= ""*/,
 	const float initialScale /*= 1.0f*/,
-	const DirectX::XMFLOAT3 &initialRot /*= {0.0f, 0.0f, 0.0f}*/,
-	const DirectX::XMFLOAT3 &initialPos /*= {0.0f, 0.0f, 0.0f}*/,
-	const DirectX::XMFLOAT4 &color /*= {1.0f, 1.0f, 1.0f, 1.0f}*/,
-	const std::string &diffuseTexturePath /*= "assets/models/brick_wall/brick_wall_diffuse.jpg"*/,
+	const std::variant<DirectX::XMFLOAT4, std::string> &colorOrTexturePath /*= "assets/models/brick_wall/brick_wall_diffuse.jpg"*/,
+	const std::string &heightMapfilename /*= ""*/,
+	const int length /*= 100*/,
+	const int width /*= 100*/,
 	const int normalizeAmount /*= 4*/,
 	const int terrainAreaUnitMultiplier /*= 10*/ )
-	:
-	Mesh{{1.0f, 1.0f, 1.0f}, initialRot, initialPos},
-	m_colorPscb{color}
 {
+	std::string diffuseTexturePath;
+	if ( std::holds_alternative<DirectX::XMFLOAT4>( colorOrTexturePath ) )
+	{
+		m_colorPscb.materialColor = std::get<DirectX::XMFLOAT4>( colorOrTexturePath );
+	}
+	else
+	{
+		diffuseTexturePath = std::get<std::string>( colorOrTexturePath );
+	}
+
 	const int lengthVerts = util::ceil( length ) * 2;
 	const int widthVerts = util::ceil( width ) * 2;
 
@@ -49,19 +52,21 @@ Terrain::Terrain( Graphics &gfx,
 		planarGrid.transform( dx::XMMatrixScaling( initialScale, initialScale, initialScale ) );
 	}
 
-	const auto geometryTag = s_geometryTag + std::to_string( length ) + std::to_string( width ) + std::to_string( initialScale );
+	{
+		using namespace std::string_literals;
+		const auto geometryTag = s_geometryTag + "#len"s + std::to_string( length ) + "#wid"s + std::to_string( width ) + "#scale"s + std::to_string( (int)initialScale );
 
-	m_pVertexBuffer = VertexBuffer::fetch( gfx, geometryTag, planarGrid.m_vb );
-	m_pIndexBuffer = IndexBuffer::fetch( gfx, geometryTag, planarGrid.m_indices );
-	m_pPrimitiveTopology = PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST );
+		m_pVertexBuffer = VertexBuffer::fetch( gfx, geometryTag, planarGrid.m_vb );
+		m_pIndexBuffer = IndexBuffer::fetch( gfx, geometryTag, planarGrid.m_indices );
+		m_pPrimitiveTopology = PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST );
+		m_pTransformVscb = std::make_unique<TransformVSCB>( gfx, 0u, *this );
+	}
 
 	createAabb( planarGrid.m_vb );
 	setMeshId();
 
-	auto transformVscb = std::make_shared<TransformVSCB>( gfx, 0u );
 	{// opaque reflectance material
-		Material opaque{rch::opaque, "opaque", false};
-		opaque.addBindable( transformVscb );
+		Material opaque{rch::opaque, "opaque", true};
 
 		opaque.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
@@ -69,7 +74,7 @@ Terrain::Terrain( Graphics &gfx,
 		opaque.addBindable( InputLayout::fetch( gfx, planarGrid.m_vb.getLayout(), *pVs ) );
 		opaque.addBindable( std::move( pVs ) );
 
-		if ( diffuseTexturePath.empty() && ( color.x != 1.0f || color.y != 1.0f || color.z != 1.0f ) )
+		if ( diffuseTexturePath.empty() && ( m_colorPscb.materialColor.x != 1.0f || m_colorPscb.materialColor.y != 1.0f || m_colorPscb.materialColor.z != 1.0f ) )
 		{
 			opaque.addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
 
@@ -95,7 +100,6 @@ Terrain::Terrain( Graphics &gfx,
 			cb["modelSpecularColor"] = dx::XMFLOAT3{1.0f, 1.0f, 1.0f};
 			cb["modelSpecularGloss"] = 32.0f;
 
-
 			opaque.addBindable( PixelShader::fetch( gfx, "plane_ps.cso" ) );
 
 			opaque.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
@@ -107,7 +111,6 @@ Terrain::Terrain( Graphics &gfx,
 	}
 	{//shadow map material
 		Material shadowMap{rch::shadow, "shadowMap", false};
-		shadowMap.addBindable( transformVscb );
 
 		shadowMap.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
@@ -117,7 +120,6 @@ Terrain::Terrain( Graphics &gfx,
 	}
 	{// solid outline mask material
 		Material solidOutlineMask{rch::solidOutline, "solidOutlineMask", false};
-		solidOutlineMask.addBindable( transformVscb );
 
 		solidOutlineMask.addBindable( InputLayout::fetch( gfx, planarGrid.m_vb.getLayout(), *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 
@@ -126,13 +128,12 @@ Terrain::Terrain( Graphics &gfx,
 	{// solid outline draw material
 		Material solidOutlineDraw{rch::solidOutline, "solidOutlineDraw", false};
 
-		auto transformScaledVcb = std::make_shared<TransformScaleVSCB>( gfx, 0u, 1.04f );
-		solidOutlineDraw.addBindable( transformScaledVcb );
+		solidOutlineDraw.addBindable( std::make_shared<TransformScaleVSCB>( gfx, 0u, 1.04f ) );
 
 		con::RawLayout cbLayout;
-		cbLayout.add<con::Float3>( "materialColor" );
+		cbLayout.add<con::Float4>( "materialColor" );
 		auto cb = con::CBuffer( std::move( cbLayout ) );
-		cb["materialColor"] = dx::XMFLOAT3{1.0f, 0.4f, 0.4f};
+		cb["materialColor"] = m_colorPscbOutline.materialColor;
 		solidOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
 
 		solidOutlineDraw.addBindable( InputLayout::fetch( gfx, planarGrid.m_vb.getLayout(), *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
@@ -150,114 +151,10 @@ Terrain::Terrain( Graphics &gfx,
 
 		wireframe.addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
 
-		struct ColorPSCB
-		{
-			dx::XMFLOAT3 color{1.0f, 1.0f, 1.0f};
-			float paddingPlaceholder = 0.0f;
-		} colorPscb;
-
-		wireframe.addBindable( PixelShaderConstantBuffer<ColorPSCB>::fetch( gfx, colorPscb, 0u ) );
-		wireframe.addBindable( std::make_shared<TransformVSCB>( gfx, 0u ) );
+		wireframe.addBindable( PixelShaderConstantBuffer<ColorPSCB3>::fetch( gfx, m_colorPscbWireframe, 0u ) );
 
 		addMaterial( std::move( wireframe ) );
 	}
-}
-
-void Terrain::displayImguiWidgets( Graphics &gfx,
-	const std::string &name ) noexcept
-{
-#ifndef FINAL_RELEASE
-	if ( ImGui::Begin( name.c_str() ) )
-	{
-		bool bDirtyRot = false;
-		const auto dirtyCheckRot = []( const bool bChanged, bool &bDirtyRot )
-		{
-			bDirtyRot = bDirtyRot || bChanged;
-		};
-
-		ImGui::Text( "Orientation" );
-		dx::XMFLOAT3 rot = getRotation();
-		dirtyCheckRot( ImGui::SliderAngle( "Pitch", &rot.x, 0.995f * -90.0f, 0.995f * 90.0f ), bDirtyRot );
-		dirtyCheckRot( ImGui::SliderAngle( "Yaw", &rot.y, -180.0f, 180.0f ), bDirtyRot );
-		dirtyCheckRot( ImGui::SliderAngle( "Roll", &rot.z, -180.0f, 180.0f ), bDirtyRot );
-		if ( bDirtyRot )
-		{
-			setRotation( rot );
-		}
-
-		bool bDirtyPos = false;
-		const auto dirtyCheckPos = []( const bool bChanged, bool &bDirtyPos )
-		{
-			bDirtyPos = bDirtyPos || bChanged;
-		};
-
-		ImGui::Text( "Position" );
-		dx::XMFLOAT3 pos = getPosition();
-		dirtyCheckPos( ImGui::SliderFloat( "X", &pos.x, -80.0f, 80.0f, "%.1f" ), bDirtyPos );
-		dirtyCheckPos( ImGui::SliderFloat( "Y", &pos.y, -80.0f, 80.0f, "%.1f" ), bDirtyPos );
-		dirtyCheckPos( ImGui::SliderFloat( "Z", &pos.z, -80.0f, 80.0f, "%.1f" ), bDirtyPos );
-		if ( bDirtyPos )
-		{
-			setPosition( pos );
-		}
-
-		class EVTerrain
-			: public IImGuiMaterialVisitor
-		{
-		public:
-			void onSetMaterial() override
-			{
-				ImGui::TextColored( {0.4f, 1.0f, 0.6f, 1.0f}, util::capitalizeFirstLetter( m_pMaterial->getTargetPassName() ).c_str() );
-
-				bool active = m_pMaterial->isEnabled();
-				using namespace std::string_literals;
-				ImGui::Checkbox( ( "Material Active#"s + std::to_string( m_materialId ) ).c_str(), &active );
-				m_pMaterial->setEnabled( active );
-			}
-
-			bool onVisit( con::CBuffer &cb ) override
-			{
-				bool bDirty = false;
-				const auto dirtyCheck = [&bDirty]( const bool bChanged )
-				{
-					bDirty = bDirty || bChanged;
-				};
-				auto tagImGuiWidget = [imguiNodeLabel = std::string{},
-					strImguiId = "#" + std::to_string( m_imguiId )]
-					( const char *label ) mutable
-					{
-						imguiNodeLabel = label + strImguiId;
-						return imguiNodeLabel.c_str();
-					};
-
-				if ( auto el = cb["scale"]; el.isValid() )
-				{
-					dirtyCheck( ImGui::SliderFloat( tagImGuiWidget( "Scale" ), &el, 1.0f, 2.0f, "%.3f", 3.5f ) );
-				}
-
-				if ( auto el = cb["materialColor"]; el.isValid() )
-				{
-					dirtyCheck( ImGui::ColorPicker3( tagImGuiWidget( "materialColor" ), reinterpret_cast<float*>( &static_cast<dx::XMFLOAT3&>( el ) ) ) );
-				}
-
-				if ( auto el = cb["specularIntensity"]; el.isValid() )
-				{
-					dirtyCheck( ImGui::SliderFloat( tagImGuiWidget( "Specular Intensity" ), &el, 0.0f, 1.0f ) );
-				}
-
-				if ( auto el = cb["modelSpecularGloss"]; el.isValid() )
-				{
-					dirtyCheck( ImGui::SliderFloat( tagImGuiWidget( "Glossiness" ), &el, 1.0f, 200.0f, "%.1f", 1.5f ) );
-				}
-
-				return bDirty;
-			}
-		} evTerrain;
-
-		accept( evTerrain );
-	}
-	ImGui::End();
-#endif
 }
 
 void Terrain::transformVertices( ver::VBuffer &vb,

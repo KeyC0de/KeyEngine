@@ -94,12 +94,6 @@
     <ClCompile Include="src\settings_manager.cpp">
       <Filter>engine\common_util</Filter>
     </ClCompile>
-    <ClCompile Include="src\model.cpp">
-      <Filter>engine\gameplay</Filter>
-    </ClCompile>
-    <ClCompile Include="src\node.cpp">
-      <Filter>engine\gameplay</Filter>
-    </ClCompile>
     <ClCompile Include="third_party\imgui\imgui.cpp">
       <Filter>third_party\imgui</Filter>
     </ClCompile>
@@ -391,6 +385,15 @@
     <ClCompile Include="src\texture_processor.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
+    <ClCompile Include="src\database.cpp">
+      <Filter>engine\gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model.cpp">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\node.cpp">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="third_party\imgui\imconfig.h">
@@ -536,12 +539,6 @@
     </ClInclude>
     <ClInclude Include="inc\settings_manager.h">
       <Filter>engine\common_util</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\model.h">
-      <Filter>engine\gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\node.h">
-      <Filter>engine\gameplay</Filter>
     </ClInclude>
     <ClInclude Include="inc\non_copyable.h">
       <Filter>engine\common_util</Filter>
@@ -1181,6 +1178,15 @@
     </ClInclude>
     <ClInclude Include="inc\texture_processor.h">
       <Filter>engine\vfx</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\database.h">
+      <Filter>engine\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\model.h">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\node.h">
+      <Filter>engine\vfx\renderables</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
