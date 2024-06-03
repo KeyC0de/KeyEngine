@@ -7,11 +7,6 @@
 #endif
 
 
-// #TODO: 1. call the transformation function
-// #TODO: 2. set m_bWorldTransformNeedsUpdate = true
-// updating the parent's transform should not update the transform of the child
-//		the child should be affected only during update() given the built transform of the parent
-
 namespace dx = DirectX;
 
 Node::Node( Node *pParent,
@@ -28,7 +23,10 @@ Node::Node( Node *pParent,
 	dx::XMStoreFloat4x4( &m_localTransform, localTransform );
 	dx::XMStoreFloat4x4( &m_worldTransform, dx::XMMatrixIdentity() );
 
-	const auto &[scale, rot, pos] = util::decomposeAffineMatrix( m_worldTransform );
+	bool somethingWrong = false;
+	using namespace util;
+
+	const auto &[scale, rot, pos] = util::decomposeAffineMatrix( m_localTransform );
 
 	m_scalePrev = m_scale = scale;
 	m_rotPrev = m_rot = rot;
@@ -48,7 +46,7 @@ Node::~Node() noexcept
 
 Node::Node( Node &&rhs ) noexcept
 	:
-	m_bWorldTransformNeedsUpdate{rhs.m_bWorldTransformNeedsUpdate},
+	m_bTransformNeedsUpdate{rhs.m_bTransformNeedsUpdate},
 	m_imguiId{rhs.m_imguiId},
 	m_name{std::move( rhs.m_name )},
 	m_scale{rhs.m_scale},
@@ -80,7 +78,7 @@ Node& Node::operator=( Node &&rhs ) noexcept
 void swap( Node &lhs,
 	Node &rhs )
 {
-	lhs.m_bWorldTransformNeedsUpdate = rhs.m_bWorldTransformNeedsUpdate;
+	lhs.m_bTransformNeedsUpdate = rhs.m_bTransformNeedsUpdate;
 	lhs.m_imguiId = rhs.m_imguiId;
 	std::swap(lhs.m_name, rhs. m_name );
 	lhs.m_scale = rhs.m_scale;
@@ -97,29 +95,27 @@ void swap( Node &lhs,
 }
 
 void Node::update( const float dt,
-	const dx::XMMATRIX &parentBuiltTransform,
+	const dx::XMMATRIX &parentWorldTransform,
 	const float renderFrameInterpolation,
 	const bool bEnableSmoothMovement /*= false*/ ) cond_noex
 {
-	if ( m_bWorldTransformNeedsUpdate )
+	static dx::XMMATRIX worldTransform;
+	if ( m_bTransformNeedsUpdate )
 	{
-		updateWorldTransform( dt, renderFrameInterpolation, bEnableSmoothMovement );
-	}
+		updateLocalTransform( dt, renderFrameInterpolation, bEnableSmoothMovement );
 
-	const auto builtTransform = dx::XMLoadFloat4x4( &m_localTransform ) * dx::XMLoadFloat4x4( &m_worldTransform ) * parentBuiltTransform;
+		worldTransform = dx::XMLoadFloat4x4( &m_localTransform ) * parentWorldTransform;
 
-	for ( const auto pMesh : m_meshes )
-	{
-		pMesh->update( dt, renderFrameInterpolation );
-	}
-	if ( m_bWorldTransformNeedsUpdate && !m_meshes.empty() )
-	{
-		setWorldTransform( builtTransform );
+		setWorldTransform( worldTransform );
+		for ( const auto pMesh : m_meshes )
+		{
+			pMesh->update( dt, renderFrameInterpolation );
+		}
 	}
 
 	for ( const auto &pNode : m_children )
 	{
-		pNode->update( dt, builtTransform, renderFrameInterpolation, bEnableSmoothMovement );
+		pNode->update( dt, worldTransform, renderFrameInterpolation, bEnableSmoothMovement );
 	}
 }
 
@@ -129,19 +125,22 @@ void Node::addChild( std::unique_ptr<Node> pChild ) cond_noex
 	m_children.emplace_back( std::move( pChild ) );
 }
 
-void Node::setWorldTransform( const dx::XMFLOAT4X4 &worldTransform ) cond_noex
+void Node::invalidateChildrenTransform() noexcept
 {
-	m_worldTransform = worldTransform;
-	m_bWorldTransformNeedsUpdate = false;	// #TODO: could be false here not sure
+	m_bTransformNeedsUpdate = true;
+	for ( auto &pNode : m_children )
+	{
+		pNode->invalidateChildrenTransform();
+	}
 }
 
 void Node::setWorldTransform( const dx::XMMATRIX &worldTransform ) cond_noex
 {
 	dx::XMStoreFloat4x4( &m_worldTransform, worldTransform );
-	m_bWorldTransformNeedsUpdate = false;	// #TODO: could be false here not sure
+	m_bTransformNeedsUpdate = false;
 }
 
-void Node::setWorldTransform( const float scale,
+void Node::setTransform( const float scale,
 	const DirectX::XMFLOAT3 &rotAnglesRadians,
 	const DirectX::XMFLOAT3 &pos ) cond_noex
 {
@@ -150,7 +149,7 @@ void Node::setWorldTransform( const float scale,
 	setTranslation( pos );
 }
 
-void Node::setWorldTransform( const float scale,
+void Node::setTransform( const float scale,
 	const DirectX::XMFLOAT4 &rotQuat,
 	const DirectX::XMFLOAT3 &pos ) cond_noex
 {
@@ -161,7 +160,7 @@ void Node::setWorldTransform( const float scale,
 	setTranslation( pos );
 }
 
-void Node::setWorldTransform( const float scale,
+void Node::setTransform( const float scale,
 	const DirectX::XMVECTOR &rotQuat,
 	const DirectX::XMFLOAT3 &pos ) cond_noex
 {
@@ -179,7 +178,7 @@ void Node::setScale( const float scale ) cond_noex
 	if ( m_scale.x != scale )
 	{
 		dx::XMVectorReplicate( scale );
-		m_bWorldTransformNeedsUpdate = true;
+		invalidateChildrenTransform();
 	}
 }
 
@@ -189,7 +188,7 @@ void Node::setScale( const DirectX::XMFLOAT3 &scale ) cond_noex
 	if ( m_scale != scale )
 	{
 		m_scale = scale;
-		m_bWorldTransformNeedsUpdate = true;
+		invalidateChildrenTransform();
 	}
 }
 
@@ -199,7 +198,7 @@ void Node::scaleRel( const DirectX::XMFLOAT3 &scale ) cond_noex
 	m_scale.x += scale.x;
 	m_scale.y += scale.y;
 	m_scale.z += scale.z;
-	m_bWorldTransformNeedsUpdate = true;
+	invalidateChildrenTransform();
 }
 
 void Node::setRotation( const DirectX::XMFLOAT3 &rotAnglesRadians ) cond_noex
@@ -208,7 +207,7 @@ void Node::setRotation( const DirectX::XMFLOAT3 &rotAnglesRadians ) cond_noex
 	if ( m_rot != rotAnglesRadians )
 	{
 		m_rot = rotAnglesRadians;
-		m_bWorldTransformNeedsUpdate = true;
+		invalidateChildrenTransform();
 	}
 }
 
@@ -218,7 +217,7 @@ void Node::rotateRel( const DirectX::XMFLOAT3 &rotAnglesRadians ) cond_noex
 	m_rot.x += rotAnglesRadians.x;
 	m_rot.y += rotAnglesRadians.y;
 	m_rot.z += rotAnglesRadians.z;
-	m_bWorldTransformNeedsUpdate = true;
+	invalidateChildrenTransform();
 }
 
 void Node::setTranslation( const DirectX::XMFLOAT3 &pos ) cond_noex
@@ -229,7 +228,7 @@ void Node::setTranslation( const DirectX::XMFLOAT3 &pos ) cond_noex
 		m_pos.x = pos.x;
 		m_pos.y = pos.y;
 		m_pos.z = pos.z;
-		m_bWorldTransformNeedsUpdate = true;
+		invalidateChildrenTransform();
 	}
 }
 
@@ -239,10 +238,10 @@ void Node::translateRel( const DirectX::XMFLOAT3 &pos ) cond_noex
 	m_pos.x += pos.x;
 	m_pos.y += pos.y;
 	m_pos.z += pos.z;
-	m_bWorldTransformNeedsUpdate = true;
+	invalidateChildrenTransform();
 }
 
-void Node::updateWorldTransform( const float dt,
+void Node::updateLocalTransform( const float dt,
 	const float renderFrameInterpolation,
 	const bool bEnableSmoothMovement /*= false*/ ) cond_noex
 {
@@ -281,9 +280,7 @@ void Node::updateWorldTransform( const float dt,
 	const dx::XMMATRIX rotMat = dx::XMMatrixRotationQuaternion( rotQuatVec );
 	const dx::XMMATRIX posMat = dx::XMMatrixTranslationFromVector( posVec );
 
-	dx::XMStoreFloat4x4( &m_worldTransform, scaleMat * rotMat * posMat );
-
-	m_bWorldTransformNeedsUpdate = false;
+	dx::XMStoreFloat4x4( &m_localTransform, scaleMat * rotMat * posMat );
 }
 
 DirectX::XMMATRIX Node::getWorldTransform() const noexcept

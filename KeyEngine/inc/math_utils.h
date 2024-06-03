@@ -5,6 +5,7 @@
 #include <type_traits>
 #include <sstream>
 #include <iomanip>
+#include <limits>
 #include "assertions_console.h"
 #include "utils.h"
 
@@ -14,6 +15,10 @@ namespace util
 
 constexpr float PI = 3.14159265f;
 constexpr double PI_D = 3.1415926535897932;
+template<typename T>
+constexpr T Epsilon = std::numeric_limits<T>::epsilon();
+// constexpr float Epsilon = 1.19209e-07;		// DirectXMath default
+// constexpr double Epsilon_d = 2.22045e-16;
 
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
 constexpr T abs( const T val )
@@ -166,11 +171,16 @@ constexpr T mapRange( const T val,
 	return outFirst + util::round( slope * ( val - inFirst ) );
 }
 
+//	\function	isApproximatelyEqual	||	\date	2024/06/03 17:54
+//	\brief	checks for approximate equality between floating point numbers
+// examples:
+//		util::isApproximatelyEqual( 8.74227766e-08f, 0.0f );	// true
+//		util::isApproximatelyEqual( -0.999999940f, -1.0f );		// true
 template<typename T, typename = std::enable_if_t<std::is_floating_point_v<T>>>
-constexpr bool approximatelyEqual( const T x,
+constexpr bool isApproximatelyEqual( const T x,
 	const T y )
 {
-	return std::fabs( x - y ) <= std::numeric_limits<T>::epsilon();
+	return std::fabs( x - y ) <= Epsilon<T>;
 }
 
 // fast multiplication by 10

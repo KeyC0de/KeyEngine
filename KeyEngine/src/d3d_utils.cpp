@@ -76,25 +76,61 @@ float getRoll( const dx::XMFLOAT4X4 &mat )
 }
 
 bool operator==( const DirectX::XMFLOAT3 &lhs,
-	const DirectX::XMFLOAT3 &rhs )
+	const DirectX::XMFLOAT3 &rhs ) noexcept
 {
 	return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z;
 }
 
 bool operator!=( const DirectX::XMFLOAT3 &lhs,
-	const DirectX::XMFLOAT3 &rhs )
+	const DirectX::XMFLOAT3 &rhs ) noexcept
 {
 	return !( lhs == rhs );
 }
 
 bool operator==( const DirectX::XMFLOAT4 &lhs,
-	const DirectX::XMFLOAT4 &rhs )
+	const DirectX::XMFLOAT4 &rhs ) noexcept
 {
 	return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z && lhs.w == rhs.w;
 }
 
 bool operator!=( const DirectX::XMFLOAT4 &lhs,
-	const DirectX::XMFLOAT4 &rhs )
+	const DirectX::XMFLOAT4 &rhs ) noexcept
+{
+	return !( lhs == rhs );
+}
+
+bool operator==( const DirectX::XMVECTOR &lhs,
+	const DirectX::XMVECTOR &rhs ) noexcept
+{
+	const dx::XMVECTOR result = dx::XMVectorEqual( lhs, rhs );
+	return dx::XMVector4EqualInt( result, dx::XMVectorTrueInt() );
+}
+
+bool operator!=( const DirectX::XMVECTOR &lhs,
+	const DirectX::XMVECTOR &rhs ) noexcept
+{
+	return !( lhs == rhs );
+}
+
+bool operator==( const DirectX::XMMATRIX &lhs,
+	const DirectX::XMMATRIX &rhs ) noexcept
+{
+	const dx::XMVECTOR lhsRow1 = lhs.r[0];
+	const dx::XMVECTOR lhsRow2 = lhs.r[1];
+	const dx::XMVECTOR lhsRow3 = lhs.r[2];
+	const dx::XMVECTOR lhsRow4 = lhs.r[3];
+
+	const dx::XMVECTOR rhsRow1 = rhs.r[0];
+	const dx::XMVECTOR rhsRow2 = rhs.r[1];
+	const dx::XMVECTOR rhsRow3 = rhs.r[2];
+	const dx::XMVECTOR rhsRow4 = rhs.r[3];
+	
+	// compare each row
+	return lhsRow1 == rhsRow1 && lhsRow2 == rhsRow2 && lhsRow3 == rhsRow3 && lhsRow4 == rhsRow4;
+}
+
+bool operator!=( const DirectX::XMMATRIX &lhs,
+	const DirectX::XMMATRIX &rhs ) noexcept
 {
 	return !( lhs == rhs );
 }
@@ -145,14 +181,6 @@ DirectX::XMFLOAT3 quaternionToEulerAngles( const DirectX::XMFLOAT4 &quat )
 std::tuple<DirectX::XMFLOAT3,DirectX::XMFLOAT3,DirectX::XMFLOAT3> decomposeAffineMatrix( const DirectX::XMFLOAT4X4 &transform )
 {
 	return decomposeAffineMatrix( dx::XMLoadFloat4x4( &transform ) );
-}
-
-DirectX::XMFLOAT3 quaternionToPitchYawRoll( dx::XMFLOAT4 &quat )
-{
-	DirectX::XMFLOAT3 pitchYawRoll{asin( 2 * ( quat.w * quat.x - quat.z * quat.y ) ),
-		atan2( 2 * ( quat.w * quat.y + quat.x * quat.z ), 1 - 2 * ( quat.y * quat.y + quat.x * quat.x ) ),
-		atan2( 2 * ( quat.w * quat.z + quat.y * quat.x ), 1 - 2 * ( quat.x * quat.x + quat.z * quat.z ) )};
-	return pitchYawRoll;
 }
 
 std::tuple<DirectX::XMFLOAT3, DirectX::XMFLOAT3, DirectX::XMFLOAT3> decomposeAffineMatrix( const DirectX::XMMATRIX &transform )
@@ -209,6 +237,14 @@ DirectX::XMFLOAT3 toRadians3( const DirectX::XMFLOAT3 &rotAngles )
 		dx::XMConvertToRadians( rotAngles.y ),
 		dx::XMConvertToRadians( rotAngles.z )
 	};
+}
+
+DirectX::XMFLOAT3 quaternionToPitchYawRoll( dx::XMFLOAT4 &quat )
+{
+	DirectX::XMFLOAT3 pitchYawRoll{asin( 2 * ( quat.w * quat.x - quat.z * quat.y ) ),
+		atan2( 2 * ( quat.w * quat.y + quat.x * quat.z ), 1 - 2 * ( quat.y * quat.y + quat.x * quat.x ) ),
+		atan2( 2 * ( quat.w * quat.z + quat.y * quat.x ), 1 - 2 * ( quat.x * quat.x + quat.z * quat.z ) )};
+	return pitchYawRoll;
 }
 
 dx::XMVECTOR XM_CALLCONV pitchYawRollToVector( const float pitch,

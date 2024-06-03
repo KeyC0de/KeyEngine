@@ -59,7 +59,7 @@ Mesh::Mesh( Mesh &&rhs ) noexcept
 	m_meshId{rhs.m_meshId},
 	m_pNode{rhs.m_pNode},
 	m_aabb{rhs.m_aabb},
-	m_pVertexBuffer{std::move( rhs.m_pVertexBuffer )},		// TODO: ???
+	m_pVertexBuffer{std::move( rhs.m_pVertexBuffer )},		// #TODO: ???
 	m_pIndexBuffer{std::move( rhs.m_pIndexBuffer )},
 	m_pPrimitiveTopology{std::move( rhs.m_pPrimitiveTopology )},
 	m_pTransformVscb{std::move( rhs.m_pTransformVscb )},
@@ -79,7 +79,6 @@ void Mesh::setNode( Node &node )
 void Mesh::update( const float dt,
 	const float renderFrameInterpolation ) cond_noex
 {
-	//ASSERT( m_pNode, "Critical: Node absent!" );	// #TODO: use only for Mesh Nodes
 	setDistanceFromActiveCamera();
 }
 

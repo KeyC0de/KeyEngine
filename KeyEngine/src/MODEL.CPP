@@ -60,12 +60,8 @@ Model::Model( Graphics &gfx,
 		m_meshes.emplace_back( std::make_unique<Mesh>( gfx, materials[aiMesh.mMaterialIndex], aiMesh, initialScale ) );
 	}
 
-	ASSERT( paiScene->mNumMeshes < 2, "Alert me if an importer has more than 1 mesh!" );
-
 	const int imguiNodeId = 0;
 	m_pRoot = parseModelNodeGraph( nullptr, *paiScene->mRootNode, imguiNodeId, initialScale );
-
-	ASSERT( m_nMeshNodes == 1, "In KeyEngine every model must have 1 and only 1 Mesh Node (such that we only need to apply transforms to the root Node." );
 
 	setTransform( 1, util::toRadians3( initialRotDeg ), initialPos );
 }
@@ -168,11 +164,6 @@ void Model::connectMaterialsToRenderer( ren::Renderer &r )
 	}
 }
 
-void Model::setTransform( const DirectX::XMFLOAT4X4 &tr ) cond_noex
-{
-	m_pRoot->setWorldTransform( tr );
-}
-
 void Model::setTransform( const DirectX::XMMATRIX &tr ) cond_noex
 {
 	m_pRoot->setWorldTransform( tr );
@@ -182,21 +173,21 @@ void Model::setTransform( const float scale,
 	const DirectX::XMFLOAT3 &rotAnglesRadians,
 	const DirectX::XMFLOAT3 &pos ) cond_noex
 {
-	m_pRoot->setWorldTransform( scale, rotAnglesRadians, pos );
+	m_pRoot->setTransform( scale, rotAnglesRadians, pos );
 }
 
 void Model::setTransform( const float scale,
 	const DirectX::XMFLOAT4 &rotQuat,
 	const DirectX::XMFLOAT3 &pos ) cond_noex
 {
-	m_pRoot->setWorldTransform( scale, rotQuat, pos );
+	m_pRoot->setTransform( scale, rotQuat, pos );
 }
 
 void Model::setTransform( const float scale,
 	const DirectX::XMVECTOR &rotQuat,
 	const DirectX::XMFLOAT3 &pos ) cond_noex
 {
-	m_pRoot->setWorldTransform( scale, rotQuat, pos );
+	m_pRoot->setTransform( scale, rotQuat, pos );
 }
 
 void Model::setScale( const float scale ) cond_noex
@@ -308,10 +299,10 @@ std::unique_ptr<Node> Model::parseModelNodeGraph( Node *pParent,
 		m_name = "Model#" + m_meshes.at( meshId )->getName();
 	}
 
-	ASSERT( pMeshes.size() <= 1, "In KeyEngine, we attach up to 1 single Mesh to each MeshNode for the time being! The root Node has no Meshes or anything else attached to it." );
 	// Only child Nodes have stuff attached to them (Meshes, Cameras, Lights, Helpers, Pivots etc.)
 	// Not all imported-file/fbx `Node`s are Mesh Nodes!
-	// Consider making a Node inheritance hierarchy and the current Node should be MeshNode
+	//ASSERT( pMeshes.size() <= 1, "In KeyEngine, we attach up to 1 single Mesh to each MeshNode for the time being! The root Node has no Meshes or anything else attached to it." );
+	ASSERT( pMeshes.size() <= 2, "test" );
 
 	auto pNode = std::make_unique<Node>( pParent, imguiNodeId, ainode.mName.C_Str(), localNodeTransform, std::move( pMeshes ) );
 

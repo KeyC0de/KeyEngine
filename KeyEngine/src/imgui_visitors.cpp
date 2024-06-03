@@ -119,7 +119,7 @@ void ImguiPerModelNodeVisitor::displayImguiWidgets( Model &model ) noexcept
 
 		if ( bDirty )
 		{
-			m_pSelectedNode->setWorldTransform( dx::XMMatrixRotationX( tf.pitch ) * dx::XMMatrixRotationY( tf.yaw ) * dx::XMMatrixRotationZ( tf.roll ) * dx::XMMatrixTranslation( tf.x, tf.y, tf.z ) );
+			m_pSelectedNode->setTransform( dx::XMMatrixScaling( 1.0f, 1.0f, 1.0f ) * dx::XMMatrixRotationX( tf.pitch ) * dx::XMMatrixRotationY( tf.yaw ) * dx::XMMatrixRotationZ( tf.roll ) * dx::XMMatrixTranslation( tf.x, tf.y, tf.z ) );
 		}
 		*/
 

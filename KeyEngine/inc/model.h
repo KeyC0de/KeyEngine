@@ -53,14 +53,15 @@ public:
 	void displayImguiWidgets( Graphics &gfx ) noexcept;
 	void accept( IImguiNodeVisitor &v );
 	void connectMaterialsToRenderer( ren::Renderer &r );
+private:
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	//	\function	setTransform	||	\date	2022/09/03 20:25
 	//	\brief	All transformation-related-functions simply call the root Node's corresponding function and propagate the operation down the Node hierarchy; the world transform itself is updated only once-per-tick during update
-	void setTransform( const DirectX::XMFLOAT4X4 &tr ) cond_noex;
 	void setTransform( const DirectX::XMMATRIX &tr ) cond_noex;
 	void setTransform( const float scale, const DirectX::XMFLOAT3 &rotAnglesRadians, const DirectX::XMFLOAT3 &pos ) cond_noex;
 	void setTransform( const float scale, const DirectX::XMFLOAT4 &rotQuat, const DirectX::XMFLOAT3 &pos ) cond_noex;
 	void setTransform( const float scale, const DirectX::XMVECTOR &rotQuat, const DirectX::XMFLOAT3 &pos ) cond_noex;
+public:
 	void setScale( const float scale ) cond_noex;
 	void setScale( const DirectX::XMFLOAT3 &scale ) cond_noex;
 	void scaleRel( const DirectX::XMFLOAT3 &scale ) cond_noex;

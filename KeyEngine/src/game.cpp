@@ -182,18 +182,10 @@ Sandbox3d::Sandbox3d( const int width,
 	m_models.emplace_back( std::make_unique<Plane>(gfx, 1.0f, DirectX::XMFLOAT4{1.0f, 0.0f, 0.1f, 0.8f}, 8, 8), gfx, dx::XMFLOAT3{0, 0, 0}, dx::XMFLOAT3{40.0f, 20.0f, 20.0f} );
 	m_models.emplace_back( std::make_unique<Plane>(gfx, 1.0f, DirectX::XMFLOAT4{0.1f, 1.0f, 0.0f, 0.5f}, 4, 4), gfx, dx::XMFLOAT3{0, 0, 0}, dx::XMFLOAT3{40.0f, 20.0f, 16.0f} );
 	m_models.emplace_back( std::make_unique<Plane>(gfx, 1.0f, "assets/models/brick_wall/brick_wall_diffuse.jpg", 6, 6), gfx, dx::XMFLOAT3{0, 0, 0}, dx::XMFLOAT3{40.0f, 20.0f, 12.0f} );
-	m_models.emplace_back( gfx, "assets/models/carabiner/carabiner_hook.fbx", 1.0f, dx::XMFLOAT3{0, 0, 0}, dx::XMFLOAT3{-10.0f, 6.0f, 0.0f}/*{0.0f, 0.0f, 0.0f}*/ );
-	//m_models.emplace_back( Model(gfx, "assets/models/sponza/sponza.obj", 1.0f / 8.0f, {0, 0, 0}, {0.0f, 0.0f, 0.0f}) );
-
-
-	//m_cube1.setTranslation( {10.0f, 5.0f, 6.0f} );
+	m_models.emplace_back( gfx, "assets/models/carabiner/carabiner_hook.fbx", 1.0f, dx::XMFLOAT3{50, 0, 0}, dx::XMFLOAT3{-10.0f, 3.0f, 0.0f}/*{0.0f, 0.0f, 0.0f}*/ );
+	m_models.emplace_back( gfx, "assets/models/sponza/sponza.obj", 1.0f / 8.0f, dx::XMFLOAT3{0, 0, 0}, dx::XMFLOAT3{0.0f, 0.0f, 0.0f} );
 
 	connectToRenderer( gfx.getRenderer3d() );
-
-	//if ( m_pPointLight2->isCastingShadows() )
-	//{
-	//	renderer.setShadowCamera( *m_pPointLight2->shareCamera(), true );
-	//}
 
 	m_gui = std::make_unique<gui::UIPass>( gfx );
 
