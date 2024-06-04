@@ -96,26 +96,26 @@ void swap( Node &lhs,
 
 void Node::update( const float dt,
 	const dx::XMMATRIX &parentWorldTransform,
-	const float renderFrameInterpolation,
+	const float lerpBetweenFrames,
 	const bool bEnableSmoothMovement /*= false*/ ) cond_noex
 {
 	static dx::XMMATRIX worldTransform;
 	if ( m_bTransformNeedsUpdate )
 	{
-		updateLocalTransform( dt, renderFrameInterpolation, bEnableSmoothMovement );
+		updateLocalTransform( dt, lerpBetweenFrames, bEnableSmoothMovement );
 
 		worldTransform = dx::XMLoadFloat4x4( &m_localTransform ) * parentWorldTransform;
 
 		setWorldTransform( worldTransform );
 		for ( const auto pMesh : m_meshes )
 		{
-			pMesh->update( dt, renderFrameInterpolation );
+			pMesh->update( dt, lerpBetweenFrames );
 		}
 	}
 
 	for ( const auto &pNode : m_children )
 	{
-		pNode->update( dt, worldTransform, renderFrameInterpolation, bEnableSmoothMovement );
+		pNode->update( dt, worldTransform, lerpBetweenFrames, bEnableSmoothMovement );
 	}
 }
 
@@ -242,7 +242,7 @@ void Node::translateRel( const DirectX::XMFLOAT3 &pos ) cond_noex
 }
 
 void Node::updateLocalTransform( const float dt,
-	const float renderFrameInterpolation,
+	const float lerpBetweenFrames,
 	const bool bEnableSmoothMovement /*= false*/ ) cond_noex
 {
 	dx::XMVECTOR scaleVec{};
@@ -251,7 +251,7 @@ void Node::updateLocalTransform( const float dt,
 
 	if ( bEnableSmoothMovement )
 	{
-		const float alpha = 3 * dt /** renderFrameInterpolation*/;
+		const float alpha = 3 * dt /** lerpBetweenFrames*/;
 
 		const dx::XMVECTOR scaleVecPrev = dx::XMLoadFloat3( &m_scalePrev );
 		const dx::XMVECTOR rotQuatVecPrev = util::pitchYawRollToQuaternion( m_rotPrev );

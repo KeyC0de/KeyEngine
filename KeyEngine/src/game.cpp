@@ -124,9 +124,8 @@ State* Game<T>::getState() noexcept
 }
 
 template<typename T>
-void Game<T>::present()
+void Game<T>::present( Graphics &gfx )
 {
-	auto &gfx = m_mainWindow.getGraphics();
 	gfx.endFrame();
 }
 
@@ -235,6 +234,8 @@ int Sandbox3d::loop()
 			return accumulator / dtFixed;
 		};
 
+	Graphics &gfx = m_mainWindow.getGraphics();
+
 	while ( true )
 	{
 		auto msgCode = m_mainWindow.messageLoop();
@@ -255,8 +256,8 @@ int Sandbox3d::loop()
 				break;
 			}
 			float lerpBetweenFrames = runFixedLoop( dt );
-			update( dt, lerpBetweenFrames );
-			render();
+			update( gfx, dt, lerpBetweenFrames );
+			render( gfx );
 
 #ifndef FINAL_RELEASE
 			using namespace std::string_literals;
@@ -264,9 +265,10 @@ int Sandbox3d::loop()
 			++settings.frameCount;
 			std::string frameStats = "Frame time : "s + std::to_string( dt ) + "ms. Frame "s + std::to_string( settings.frameCount ) + "\n"s;
 			console.print( frameStats );
+
+			test( gfx );
 #endif
-			test();
-			present();
+			present( gfx );
 		}
 		else
 		{
@@ -398,26 +400,29 @@ int Sandbox3d::checkInput( const float dt )
 	return 1;
 }
 
-void Sandbox3d::update( const float dt,
+void Sandbox3d::update( Graphics &gfx,
+	const float dt,
 	const float lerpBetweenFrames )
 {
 	const auto &activeCamera = s_cameraMan.getActiveCamera();
+	activeCamera.makeActive( gfx, false );
 	// set cameras to the passes that need them - the right V & P matrices to be used for each pass
-	auto &gfx = m_mainWindow.getGraphics();
 	if ( m_pPointLight1->isCastingShadows() )
 	{
 		gfx.getRenderer3d().setShadowCamera( *m_pPointLight1->shareCamera(), true );
 	}
 	gfx.getRenderer3d().setActiveCamera( activeCamera );
 
-	m_pPointLight1->update( gfx, dt, activeCamera.getViewMatrix() );
-	//m_pPointLight2->update( gfx, dt, activeCamera.getViewMatrix() );
+	const auto &settings = s_settingsMan.getSettings();
 
-	m_terrain.update( dt, lerpBetweenFrames );	// #TODO: Mesh::update should actually be doing rendering and Mesh::render() simply submits bindables for rendering, so some reformatting and reorganizing here is definitely due
+	m_pPointLight1->update( gfx, dt, lerpBetweenFrames, settings.bEnableSmoothMovement );
+	//m_pPointLight2->update( gfx, dt, lerpBetweenFrames, settings.bEnableSmoothMovement );
+
+	m_terrain.update( dt, lerpBetweenFrames, settings.bEnableSmoothMovement );
 
 	for ( auto &model : m_models )
 	{
-		model.update( dt, lerpBetweenFrames );
+		model.update( dt, lerpBetweenFrames, settings.bEnableSmoothMovement );
 	}
 
 	auto &mouse = m_mainWindow.getMouse();
@@ -434,13 +439,11 @@ void Sandbox3d::updateFixed( const float dt )
 
 }
 
-void Sandbox3d::render()
+void Sandbox3d::render( Graphics &gfx )
 {
-	auto &gfx = m_mainWindow.getGraphics();
 	gfx.beginFrame();
 
 	s_cameraMan.render( rch::opaque | rch::wireframe );
-	s_cameraMan.getActiveCamera().makeActive( gfx, false );
 
 	m_pPointLight1->render( rch::opaque );
 	//m_pPointLight2->render( rch::opaque );
@@ -456,7 +459,7 @@ void Sandbox3d::render()
 	m_gui->render( gfx );
 }
 
-void Sandbox3d::test()
+void Sandbox3d::test( Graphics &gfx )
 {
 #ifndef FINAL_RELEASE
 	using namespace std::string_literals;
@@ -475,7 +478,6 @@ void Sandbox3d::test()
 	//console.print( "Current distance from carabiner: "s + std::to_string(  m_carabiner.getDistanceFromActiveCamera() ) + "\n"s );
 
 	/// Render Imgui stuff
-	auto &gfx = m_mainWindow.getGraphics();
 
 	// showcase Material controls by passing visitors to the object hierarchies
 	s_cameraMan.displayImguiWidgets( gfx );
@@ -546,6 +548,8 @@ Arkanoid::Arkanoid( const int width,
 int Arkanoid::loop()
 {
 	int returnC0de = -1;
+	Graphics &gfx = m_mainWindow.getGraphics();
+
 	m_gameTimer.start();
 	while ( true )
 	{
@@ -564,19 +568,19 @@ int Arkanoid::loop()
 		{
 			break;
 		}
-		update( dt );
-		render();
+		update( gfx, dt );
+		render( gfx );
 #if defined _DEBUG && !defined NDEBUG
 		test();
 #endif
-		present();
+		present( gfx );
 	}
 	return returnC0de;
 }
 
 float Arkanoid::calcDt()
 {
-	auto &settings = s_settingsMan.getSettings();
+	const auto &settings = s_settingsMan.getSettings();
 	float dt = m_gameTimer.lap() * settings.fGameSpeed;
 	return dt;
 }
@@ -626,7 +630,8 @@ int Arkanoid::checkInput( const float dt )
 	return 1;
 }
 
-void Arkanoid::update( const float dt )
+void Arkanoid::update( Graphics &gfx,
+	const float dt )
 {
 	m_ball.update( dt );
 	m_paddle.doWallCollision( m_walls );
@@ -676,9 +681,8 @@ void Arkanoid::update( const float dt )
 	}
 }
 
-void Arkanoid::render()
+void Arkanoid::render( Graphics &gfx )
 {
-	auto &gfx = m_mainWindow.getGraphics();
 	gfx.beginFrame();
 
 	m_ball.render( gfx );

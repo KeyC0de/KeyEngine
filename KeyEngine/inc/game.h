@@ -68,7 +68,7 @@ protected:
 
 	//	\function	present	||	\date	2022/11/05 16:33
 	//	\brief	all child Games must run this function as the very last statement in their render function
-	void present();
+	void present( Graphics &gfx );
 	std::optional<Window*> getForegroundWindow() const noexcept;
 	void setState( std::unique_ptr<State> pNewState, Mouse &mouse );
 	const State* getState() const noexcept;
@@ -99,10 +99,10 @@ public:
 	int loop();
 private:
 	int checkInput( const float dt );
-	void update( const float dt, const float lerpBetweenFrames );
+	void update( Graphics &gfx, const float dt, const float lerpBetweenFrames );
 	void updateFixed( const float dt );
-	void render();
-	void test();
+	void render( Graphics &gfx );
+	void test( Graphics &gfx );
 	void connectToRenderer( ren::Renderer3d &renderer );
 };
 
@@ -129,8 +129,8 @@ public:
 private:
 	float calcDt();
 	int checkInput( const float dt );
-	void update( const float dt );
-	void render();
+	void update( Graphics &gfx, const float dt );
+	void render( Graphics &gfx );
 	void test();
 };
 

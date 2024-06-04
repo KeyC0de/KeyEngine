@@ -77,7 +77,7 @@ void Mesh::setNode( Node &node )
 }
 
 void Mesh::update( const float dt,
-	const float renderFrameInterpolation ) cond_noex
+	const float lerpBetweenFrames ) cond_noex
 {
 	setDistanceFromActiveCamera();
 }

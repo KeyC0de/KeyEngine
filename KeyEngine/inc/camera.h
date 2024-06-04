@@ -50,7 +50,7 @@ public:
 public:
 	Camera( Graphics &gfx, const float fovDegrees = 90.0f, const DirectX::XMFLOAT3 &posDefault = {0.0f, 0.0f, 0.0f}, const float pitchDegDefault = 0.0f, const float yawDegDefault = 0.0f, const bool bTethered = false, const float nearZ = 0.5f, const float farZ = 200.0f, const DirectX::XMFLOAT4 camWidgetColor = {0.2f, 0.2f, 0.6f, 1.0f}, const DirectX::XMFLOAT4 camFrustumColor = {0.6f, 0.2f, 0.2f, 1.0f}, const float translationSpeed = 16.0f, const float rotationSpeed = 0.096f ) noexcept;
 
-	void update( const float dt, const float renderFrameInterpolation, const bool bEnableSmoothMovement = false ) cond_noex;
+	void update( const float dt, const float lerpBetweenFrames, const bool bEnableSmoothMovement = false ) cond_noex;
 	void render( const size_t channel = rch::all ) const cond_noex;
 	void connectMaterialsToRenderer( ren::Renderer &ren );
 	void makeActive( Graphics &gfx, const bool bOrthographic ) const;

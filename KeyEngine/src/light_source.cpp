@@ -2,6 +2,7 @@
 #include "sphere.h"
 #include "graphics.h"
 #include "camera.h"
+#include "camera_manager.h"
 #include "math_utils.h"
 #include "d3d_utils.h"
 #include "assertions_console.h"
@@ -12,18 +13,106 @@
 
 namespace dx = DirectX;
 
-/*
-void DirectionalLightVSCB::update( Graphics &gfx )
+ILightSource::ILightSource( Model model,
+	const bool bShadowCasting /*= true*/,
+	const bool bShowMesh /*= true*/,
+	const DirectX::XMFLOAT3 &initialRotDeg /*= {0.0f, 0.0f, 0.f}*/ )
+	:
+	m_bShowMesh{bShowMesh},
+	m_bCastingShadows{bShadowCasting},
+	m_rot{util::toRadians3( initialRotDeg )},
+	m_lightMesh(std::move( model) )
 {
+	static int s_id = 0;
+	++s_id;
+	m_name = std::string{"Light#"} + std::to_string( s_id );
+}
+
+void ILightSource::update( Graphics &gfx,
+	const float dt,
+	const float lerpBetweenFrames,
+	const bool bEnableSmoothMovement /*= false*/ ) cond_noex
+{
+	if ( m_bShowMesh )
+	{
+		m_lightMesh.update( dt, lerpBetweenFrames, bEnableSmoothMovement );
+	}
+}
+
+void ILightSource::render( const size_t channels ) const cond_noex
+{
+	if ( m_bShowMesh )
+	{
+		m_lightMesh.render( channels );
+	}
+}
+
+void ILightSource::connectMaterialsToRenderer( ren::Renderer &r )
+{
+	m_lightMesh.connectMaterialsToRenderer( r );
+}
+
+std::shared_ptr<Camera> ILightSource::shareCamera() const noexcept
+{
+	ASSERT( m_pCameraForShadowing, "There is no shadow camera!" );
+	return m_pCameraForShadowing;
+}
+
+bool ILightSource::isCastingShadows() const noexcept
+{
+	return m_bCastingShadows;
+}
+
+std::string ILightSource::getName() const noexcept
+{
+	return m_name;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+DirectionalLight::DirectionalLight( Graphics &gfx,
+	const float radiusScale /*= 1.0f*/,
+	const DirectX::XMFLOAT3 &initialRotDeg /*= {0.0f, 0.0f, 0.f}*/,
+	const DirectX::XMFLOAT3 &pos /*= {8.0f, 8.0f, 2.f}*/,
+	const std::variant<DirectX::XMFLOAT4,std::string> &colorOrTexturePath /*= DirectX::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f}*/,
+	const bool bShadowCasting /*= true*/,
+	const bool bShowMesh /*= true*/ )
+	:
+	ILightSource(Model(std::make_unique<Sphere>(gfx, radiusScale, colorOrTexturePath), gfx, initialRotDeg, pos), bShadowCasting, bShowMesh, initialRotDeg),
+	m_pscb(gfx, s_directionalLightPscbSlot)
+{
+
+}
+
+void DirectionalLight::update( Graphics &gfx,
+	const float dt,
+	const float lerpBetweenFrames,
+	const bool bEnableSmoothMovement /*= false*/ ) cond_noex
+{
+	/*
 	ASSERT( m_pDirectionalLightShadowCamera, "Camera not specified (null)!" );
 	dx::XMFLOAT3 dir;
 	dx::XMStoreFloat3( &dir, m_pDirectionalLightShadowCamera->getDirection() );
 	const DirectionalPointLightSourceShadowTransformVSCB vscb{dx::XMMatrixTranspose( dx::XMMatrixTranslation( -dir.x, -dir.y, -dir.z ) )};
 	m_pVscb->update( gfx, vscb );
+	*/
 }
-*/
 
+void DirectionalLight::displayImguiWidgets() noexcept
+{
+	pass_;
+}
 
+void DirectionalLight::setIntensity( const float newIntensity ) noexcept
+{
+	m_pscbData.intensity = newIntensity;
+}
+
+void DirectionalLight::setColor( const DirectX::XMFLOAT3 &diffuseColor ) noexcept
+{
+	m_pscbData.lightColor = diffuseColor;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
 PointLight::PointLight( Graphics &gfx,
 	const float radiusScale /*= 0.5f*/,
 	const DirectX::XMFLOAT3 &initialRotDeg /*= {0.0f, 0.0f, 0.f}*/,
@@ -32,70 +121,39 @@ PointLight::PointLight( Graphics &gfx,
 	const bool bShadowCasting /*= true*/,
 	const bool bShowMesh /*= true*/ )
 	:
-	m_rot{util::toRadians3( initialRotDeg )},
-	m_sphereMesh(std::make_unique<Sphere>(gfx, radiusScale, colorOrTexturePath), gfx, initialRotDeg, pos),
-	m_pscb(gfx, s_pointLightPscbSlot),
-	m_bCastingShadows{bShadowCasting},
-	m_bShowMesh{bShowMesh}
+	ILightSource(Model(std::make_unique<Sphere>(gfx, radiusScale, colorOrTexturePath), gfx, initialRotDeg, pos), bShadowCasting, bShowMesh, initialRotDeg),
+	m_pscb(gfx, s_pointLightPscbSlot)
 {
-	static int s_id = 0;
-	++s_id;
-	m_name = std::string{"Light#"} + std::to_string( s_id );
-
 	const dx::XMFLOAT4 lightColor = std::holds_alternative<dx::XMFLOAT4>( colorOrTexturePath ) ? std::get<dx::XMFLOAT4>( colorOrTexturePath ) : dx::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f};
-	m_pscbDataDefault = {pos,
+	m_pscbData = {pos,
 		{0.08f, 0.08f, 0.08f},
 		{lightColor.x, lightColor.y, lightColor.z},
 		1.0f,
 		1.0f,
 		0.025f,
 		0.0030f};
-	resetToDefault();
 	if ( bShadowCasting )
 	{
-		m_pCameraForShadowing = std::make_shared<Camera>( gfx, 90.0f, m_pscbData.pos, initialRotDeg.x, initialRotDeg.y, true );
+		m_pCameraForShadowing = std::make_shared<Camera>( gfx, 90.0f, m_pscbData.pointLightPosViewSpace, initialRotDeg.x, initialRotDeg.y, true );
 	}
 }
 
-// #TODO: rework this
 void PointLight::update( Graphics &gfx,
 	const float dt,
-	const DirectX::XMMATRIX &activeCameraViewMat,
+	const float lerpBetweenFrames,
 	const bool bEnableSmoothMovement /*= false*/ ) cond_noex
 {
+	static CameraManager &s_cameraMan = CameraManager::getInstance();
+	const auto &activeCameraViewMat = s_cameraMan.getActiveCamera().getViewMatrix();
+
 	auto copy = m_pscbData;
-	const auto lightPos = DirectX::XMLoadFloat3( &m_pscbData.pos );
-	DirectX::XMStoreFloat3( &copy.pos, DirectX::XMVector3Transform( lightPos, activeCameraViewMat ) );
+	const auto lightPosViewSpace = DirectX::XMLoadFloat3( &m_pscbData.pointLightPosViewSpace );
+
+	DirectX::XMStoreFloat3( &copy.pointLightPosViewSpace, DirectX::XMVector3Transform( lightPosViewSpace, activeCameraViewMat ) );
 	m_pscb.update( gfx, copy );
-	if ( m_bShowMesh )
-	{
-		m_sphereMesh.setTranslation( m_pscbData.pos );
-		m_sphereMesh.setRotation( m_rot );
-	}
 	m_pscb.bind( gfx );
-}
 
-void PointLight::render( const size_t channels ) const cond_noex
-{
-	if ( m_bShowMesh )
-	{
-		m_sphereMesh.render( channels );
-	}
-}
-
-void PointLight::connectMaterialsToRenderer( ren::Renderer &r )
-{
-	m_sphereMesh.connectMaterialsToRenderer( r );
-}
-
-void PointLight::setIntensity( const float newIntensity ) noexcept
-{
-	m_pscbData.intensity = newIntensity;
-}
-
-void PointLight::setColor( const DirectX::XMFLOAT3 &diffuseColor ) noexcept
-{
-	m_pscbData.lightColor = diffuseColor;
+	ILightSource::update( gfx, dt, lerpBetweenFrames, bEnableSmoothMovement );
 }
 
 void PointLight::displayImguiWidgets() noexcept
@@ -116,11 +174,11 @@ void PointLight::displayImguiWidgets() noexcept
 
 		if ( bDirtyRot )
 		{
-			m_pCameraForShadowing->setRotation( m_rot );
-			if ( m_bShowMesh )
+			if ( m_bCastingShadows )
 			{
-				m_sphereMesh.setRotation( m_rot );
+				m_pCameraForShadowing->setRotation( m_rot );
 			}
+			m_lightMesh.setRotation( m_rot );
 		}
 
 		bool bDirtyPos = false;
@@ -130,17 +188,17 @@ void PointLight::displayImguiWidgets() noexcept
 		};
 		
 		ImGui::Text( "Position" );
-		dirtyCheckPos( ImGui::SliderFloat( "X", &m_pscbData.pos.x, -100.0f, 100.0f, "%.1f" ) );
-		dirtyCheckPos( ImGui::SliderFloat( "Y", &m_pscbData.pos.y, -100.0f, 100.0f, "%.1f" ) );
-		dirtyCheckPos( ImGui::SliderFloat( "Z", &m_pscbData.pos.z, -100.0f, 100.0f, "%.1f" ) );
+		dirtyCheckPos( ImGui::SliderFloat( "X", &m_pscbData.pointLightPosViewSpace.x, -100.0f, 100.0f, "%.1f" ) );
+		dirtyCheckPos( ImGui::SliderFloat( "Y", &m_pscbData.pointLightPosViewSpace.y, -100.0f, 100.0f, "%.1f" ) );
+		dirtyCheckPos( ImGui::SliderFloat( "Z", &m_pscbData.pointLightPosViewSpace.z, -100.0f, 100.0f, "%.1f" ) );
 
 		if ( bDirtyPos )
 		{
-			m_pCameraForShadowing->setTranslation( m_pscbData.pos );
-			if ( m_bShowMesh )
+			if ( m_bCastingShadows )
 			{
-				m_sphereMesh.setTranslation( m_pscbData.pos );
+				m_pCameraForShadowing->setTranslation( m_pscbData.pointLightPosViewSpace );
 			}
+			m_lightMesh.setTranslation( m_pscbData.pointLightPosViewSpace );
 		}
 
 		ImGui::Text( "Intensity & Color" );
@@ -154,33 +212,56 @@ void PointLight::displayImguiWidgets() noexcept
 		ImGui::SliderFloat( "Quadratic", &m_pscbData.attQuadratic, 0.0000001f, 10.0f, "%.7f", 10.0f);
 
 		ImGui::Checkbox( "Show Sphere Mesh", &m_bShowMesh );
-
-		if ( ImGui::Button( "Reset" ) )
-		{
-			resetToDefault();
-		}
 	}
 	ImGui::End();
 #endif
 }
 
-void PointLight::resetToDefault() noexcept
+void PointLight::setIntensity( const float newIntensity ) noexcept
 {
-	m_pscbData = m_pscbDataDefault;
+	m_pscbData.intensity = newIntensity;
 }
 
-std::shared_ptr<Camera> PointLight::shareCamera() const noexcept
+void PointLight::setColor( const DirectX::XMFLOAT3 &diffuseColor ) noexcept
 {
-	ASSERT( m_pCameraForShadowing, "There is no shadow camera!" );
-	return m_pCameraForShadowing;
+	m_pscbData.lightColor = diffuseColor;
 }
 
-bool PointLight::isCastingShadows() const noexcept
+////////////////////////////////////////////////////////////////////////////////////////////////////
+SpotLight::SpotLight( Graphics &gfx,
+	const float radiusScale /*= 1.0f*/,
+	const DirectX::XMFLOAT3 &initialRotDeg /*= {0.0f, 0.0f, 0.f}*/,
+	const DirectX::XMFLOAT3 &pos /*= {8.0f, 8.0f, 2.f}*/,
+	const std::variant<DirectX::XMFLOAT4,std::string> &colorOrTexturePath /*= DirectX::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f}*/,
+	const float coneAngle /*= 60.0f*/,
+	const bool bShadowCasting /*= true*/,
+	const bool bShowMesh /*= true*/ )
+	:
+	ILightSource(Model(std::make_unique<Sphere>(gfx, radiusScale, colorOrTexturePath), gfx, initialRotDeg, pos), bShadowCasting, bShowMesh, initialRotDeg),
+	m_pscb(gfx, s_spotLightPscbSlot)
 {
-	return m_bCastingShadows;
+
 }
 
-std::string PointLight::getName() const noexcept
+void SpotLight::update( Graphics &gfx,
+	const float dt,
+	const float lerpBetweenFrames,
+	const bool bEnableSmoothMovement /*= false*/ ) cond_noex
 {
-	return m_name;
+	pass_;
+}
+
+void SpotLight::displayImguiWidgets() noexcept
+{
+	pass_;
+}
+
+void SpotLight::setIntensity( const float newIntensity ) noexcept
+{
+	m_pscbData.intensity = newIntensity;
+}
+
+void SpotLight::setColor( const DirectX::XMFLOAT3 &diffuseColor ) noexcept
+{
+	m_pscbData.lightColor = diffuseColor;
 }

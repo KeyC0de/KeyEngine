@@ -116,10 +116,10 @@ Model::Model( Model &&rhs ) noexcept
 }
 
 void Model::update( const float dt,
-	const float renderFrameInterpolation,
+	const float lerpBetweenFrames,
 	const bool bEnableSmoothMovement /*= false*/ ) cond_noex
 {
-	m_pRoot->update( dt, dx::XMMatrixIdentity(), renderFrameInterpolation, bEnableSmoothMovement );
+	m_pRoot->update( dt, dx::XMMatrixIdentity(), lerpBetweenFrames, bEnableSmoothMovement );
 }
 
 void Model::render( const size_t channels /*= rch::all*/ ) const cond_noex

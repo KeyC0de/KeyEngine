@@ -29,9 +29,9 @@ class Node
 	DirectX::XMFLOAT4X4 m_worldTransform;
 	Node* m_pParent;
 	std::vector<std::unique_ptr<Node>> m_children;
-	std::vector<Mesh*> m_meshes;	// a node can technically have multiple meshes; however, typically, it has only a single Mesh/geometric-entity attached to it; this is just common practice & not a strict rule
+	std::vector<Mesh*> m_meshes;
 private:
-	void update( const float dt, const DirectX::XMMATRIX &parentWorldTransform, const float renderFrameInterpolation, const bool bEnableSmoothMovement = false ) cond_noex;
+	void update( const float dt, const DirectX::XMMATRIX &parentWorldTransform, const float lerpBetweenFrames, const bool bEnableSmoothMovement = false ) cond_noex;
 	void addChild( std::unique_ptr<Node> pChild ) cond_noex;
 	void invalidateChildrenTransform() noexcept;
 	void setWorldTransform( const DirectX::XMMATRIX &worldTransform ) cond_noex;
@@ -56,7 +56,7 @@ public:
 	void rotateRel( const DirectX::XMFLOAT3 &rotAnglesRadians ) cond_noex;
 	void setTranslation( const DirectX::XMFLOAT3 &pos ) cond_noex;
 	void translateRel( const DirectX::XMFLOAT3 &pos ) cond_noex;
-	void updateLocalTransform( const float dt, const float renderFrameInterpolation, const bool bEnableSmoothMovement = false ) cond_noex;
+	void updateLocalTransform( const float dt, const float lerpBetweenFrames, const bool bEnableSmoothMovement = false ) cond_noex;
 	DirectX::XMMATRIX getWorldTransform() const noexcept;
 	DirectX::XMFLOAT4X4 getWorldTransform4x4() const noexcept;
 	float getScale() const noexcept;

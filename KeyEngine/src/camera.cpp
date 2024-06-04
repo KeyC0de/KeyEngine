@@ -72,7 +72,7 @@ Camera::Camera( Graphics &gfx,
 }
 
 void Camera::update( const float dt,
-	const float renderFrameInterpolation,
+	const float lerpBetweenFrames,
 	const bool bEnableSmoothMovement /*= false*/ )
 {
 

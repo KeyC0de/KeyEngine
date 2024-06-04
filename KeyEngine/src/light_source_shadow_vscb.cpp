@@ -26,7 +26,8 @@ void PointLightSourceShadowVSCB::bind( Graphics &gfx ) cond_noex
 	m_pVscb->bind( gfx );
 }
 
-void PointLightSourceShadowVSCB::setCamera( const Camera *pCam, const bool bEnable ) noexcept
+void PointLightSourceShadowVSCB::setCamera( const Camera *pCam,
+	const bool bEnable ) noexcept
 {
 	if ( bEnable )
 	{

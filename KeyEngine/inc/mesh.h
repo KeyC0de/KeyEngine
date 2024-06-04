@@ -76,7 +76,7 @@ public:
 	Mesh& operator=( Mesh &&rhs ) noexcept = delete;
 
 	void setNode( Node &node );
-	void update( const float dt, const float renderFrameInterpolation ) cond_noex;
+	void update( const float dt, const float lerpBetweenFrames ) cond_noex;
 	void render( const size_t channels = rch::all ) const noexcept;
 	void bind( Graphics &gfx ) const cond_noex;
 

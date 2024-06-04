@@ -47,7 +47,7 @@ public:
 	Model( Model &&rhs ) noexcept;
 	Model& operator=( Model &&rhs ) noexcept = delete;
 
-	void update( const float dt, const float renderFrameInterpolation, const bool bEnableSmoothMovemenzzt = false ) cond_noex;
+	void update( const float dt, const float lerpBetweenFrames, const bool bEnableSmoothMovemenzzt = false ) cond_noex;
 	void render( const size_t channels = rch::all ) const cond_noex;
 	void setMaterialEnabled( const size_t channels, const bool bEnabled ) noexcept;
 	void displayImguiWidgets( Graphics &gfx ) noexcept;
