@@ -317,14 +317,15 @@ void Renderer3d::recreate( Graphics &gfx )
 	Renderer::recreate( gfx );
 
 	{
-		auto pass = std::make_unique<ShadowPass>( gfx, "shadowMap" );
+		auto pass = std::make_unique<ShadowPass>( gfx, "shadow" );
 		addPass( std::move( pass ) );
 	}
 	{
 		auto pass = std::make_unique<OpaquePass>( gfx, "opaque" );
 		pass->setupBinderTarget( "renderTarget", "clearRt", "render_surface" );
 		pass->setupBinderTarget( "depthStencil", "clearDs", "render_surface" );
-		pass->setupBinderTarget( "offscreenShadowCubemapIn", "shadowMap", "offscreenShadowCubemapOut" );
+		pass->setupBinderTarget( "offscreenShadowmapIn", "shadow", "offscreenShadowmapOut" );
+		pass->setupBinderTarget( "offscreenShadowCubemapIn", "shadow", "offscreenShadowCubemapOut" );
 		addPass( std::move( pass ) );
 	}
 	{
@@ -411,7 +412,6 @@ void Renderer3d::recreate( Graphics &gfx )
 		addPass( std::move( pass ) );
 	}
 
-	//setupGlobalBinderTarget( "backColorbuffer", "wireframe", "renderTarget" );
 	setupGlobalBinderTarget( "backColorbuffer", "transparent", "renderTarget" );
 	Renderer::linkGlobalBinders();
 
@@ -438,7 +438,11 @@ void Renderer3d::showShadowDumpImguiWindow( Graphics &gfx ) noexcept
 #ifndef FINAL_RELEASE
 	if ( ImGui::Begin( "Shadow" ) )
 	{
-		if ( ImGui::Button( "Dump Cubemap" ) )
+		if ( ImGui::Button( "Dump Shadow TextureCubeArray" ) )
+		{
+			dumpShadowCubeMap( gfx, "dumps/shadow_" );
+		}
+		if ( ImGui::Button( "Dump Shadow Texture2DArray" ) )
 		{
 			dumpShadowMap( gfx, "dumps/shadow_" );
 		}
@@ -542,17 +546,22 @@ void ren::Renderer3d::setActiveCamera( const Camera &cam )
 	dynamic_cast<TransparentPass&>( getPass( "transparent" ) ).setActiveCamera( cam );
 }
 
-// #TODO: rename to addShadowCamera
-void ren::Renderer3d::setShadowCamera( const Camera &cam,
-	const bool bEnable )
+void ren::Renderer3d::setShadowCastingLights( Graphics &gfx,
+	const std::vector<ILightSource*> &shadowCastingLights )
 {
-	dynamic_cast<ShadowPass&>( getPass( "shadowMap" ) ).setShadowCamera( cam, bEnable );
+	dynamic_cast<ShadowPass&>( getPass( "shadow" ) ).setShadowCastingLights( gfx, shadowCastingLights );
 }
 
 void Renderer3d::dumpShadowMap( Graphics &gfx,
 	const std::string &path )
 {
-	dynamic_cast<ShadowPass&>( getPass( "shadowMap" ) ).dumpShadowMap( gfx, path );
+	dynamic_cast<ShadowPass&>( getPass( "shadow" ) ).dumpShadowMap( gfx, path );
+}
+
+void Renderer3d::dumpShadowCubeMap( Graphics &gfx,
+	const std::string &path )
+{
+	dynamic_cast<ShadowPass&>( getPass( "shadow" ) ).dumpShadowCubeMap( gfx, path );
 }
 
 void Renderer3d::setKernelGauss( const int radius,

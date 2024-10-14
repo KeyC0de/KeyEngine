@@ -7,6 +7,7 @@
 #include "depth_stencil_view.h"
 #include "depth_stencil_state.h"
 #include "assertions_console.h"
+#include "texture.h"
 #include "cube_texture.h"
 
 
@@ -18,7 +19,7 @@ OpaquePass::OpaquePass( Graphics &gfx,
 	:
 	RenderQueuePass{name}
 {
-	addPassBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::Default ) );
+	addBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::Default ) );
 
 	// TextureSamplerState is set per mesh depending on whether the mesh has a texture
 
@@ -26,7 +27,8 @@ OpaquePass::OpaquePass( Graphics &gfx,
 
 	addBinder( RenderSurfaceBinder<IRenderTargetView>::make( "renderTarget", m_pRtv ) );
 	addBinder( RenderSurfaceBinder<IDepthStencilView>::make( "depthStencil", m_pDsv ) );
-	addContainerBindableBinder<CubeTextureOffscreenDS>( "offscreenShadowCubemapIn" );
+	addBindableBinderUsingContainerIndex<TextureArrayOffscreenDS>( "offscreenShadowmapIn" );
+	addBindableBinderUsingContainerIndex<CubeTextureArrayOffscreenDS>( "offscreenShadowCubemapIn" );
 
 	addLinker( RenderSurfaceLinker<IRenderTargetView>::make( "renderTarget", m_pRtv ) );
 	addLinker( RenderSurfaceLinker<IDepthStencilView>::make( "depthStencil", m_pDsv ) );

@@ -25,13 +25,13 @@ ILinker::ILinker( const std::string &name )
 
 std::shared_ptr<IBindable> ILinker::getBindable()
 {
-	THROW_RENDERER_EXCEPTION( "ILinker class cannot be a target of a Binder!" );
+	THROW_RENDERER_EXCEPTION( "ILinker class cannot be a target of a BindableBinder!" );
 }
 
 std::shared_ptr<IRenderSurface> ILinker::getRenderSurface()
 {
 	ASSERT( false, "Should never happen!" );
-	THROW_RENDERER_EXCEPTION( "ILinker class cannot be a target of a Binder!" );
+	THROW_RENDERER_EXCEPTION( "ILinker class cannot be a target of a BindableBinder!" );
 }
 
 const std::string& ILinker::getName() const noexcept

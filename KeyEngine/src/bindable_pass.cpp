@@ -15,7 +15,7 @@ IBindablePass::IBindablePass( const std::string &name,
 
 }
 
-void IBindablePass::addPassBindable( std::shared_ptr<IBindable> bindable ) noexcept
+void IBindablePass::addBindable( std::shared_ptr<IBindable> bindable ) noexcept
 {
 	m_bindables.emplace_back( bindable );
 }
@@ -40,7 +40,7 @@ void IBindablePass::bind( Graphics &gfx ) const cond_noex
 void IBindablePass::validate()
 {
 	IPass::validate();
-	if ( !m_pRtv && !m_pDsv )
+	if ( !m_pRtv && !m_pDsv && getName() != "shadow" /*Shadow Pass's render surfaces are bound during run()*/ )
 	{
 		THROW_RENDERER_EXCEPTION( "IBindablePass: Both IRenderTargetView & IDepthStencilView are null!" + getName() );
 	}

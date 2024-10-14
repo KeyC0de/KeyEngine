@@ -11,7 +11,6 @@ struct VSOut
 	float4 pos : SV_Position;
 };
 
-
 VSOut main( VSIn input )
 {
 	VSOut output;

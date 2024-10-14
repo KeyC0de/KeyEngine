@@ -23,8 +23,7 @@ Node::Node( Node *pParent,
 	dx::XMStoreFloat4x4( &m_localTransform, localTransform );
 	dx::XMStoreFloat4x4( &m_worldTransform, dx::XMMatrixIdentity() );
 
-	bool somethingWrong = false;
-	using namespace util;
+	//using namespace util;
 
 	const auto &[scale, rot, pos] = util::decomposeAffineMatrix( m_localTransform );
 

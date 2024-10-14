@@ -248,6 +248,7 @@ void ImGui_ImplDX11_RenderDrawData(ImDrawData *draw_data)
 	ctx->IASetInputLayout(old.InputLayout); if (old.InputLayout) old.InputLayout->Release();
 }
 
+#pragma warning( disable : 6387 )
 static void ImGui_ImplDX11_CreateFontsTexture()
 {
 	// Build texture atlas
@@ -306,6 +307,7 @@ static void ImGui_ImplDX11_CreateFontsTexture()
 		g_pd3dDevice->CreateSamplerState(&desc, &g_pFontSampler);
 	}
 }
+#pragma warning( default : 6387 )
 
 bool    ImGui_ImplDX11_CreateDeviceObjects()
 {

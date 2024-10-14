@@ -104,6 +104,11 @@ constexpr bool isPrime( const int number ) noexcept
 	return true;
 }
 
+constexpr size_t computeTriangularNumber( const int number ) noexcept
+{
+	return ( number * (number + 1) ) / ((size_t) 2);
+}
+
 constexpr bool isPowerOfTwo( const std::size_t value ) noexcept
 {
 	return value > 0 && ( value & ( value - 1 ) ) == 0;

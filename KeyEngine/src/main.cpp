@@ -130,6 +130,7 @@ int WINAPI wWinMain( _In_ HINSTANCE hinstance,
 }
 //////////////////////////////////////////////////////////////////////
 
+#pragma warning( disable : 4189 )
 void firstly()
 {
 #ifndef FINAL_RELEASE
@@ -159,6 +160,7 @@ void firstly()
 	checkWindowsMetricsTest();
 #endif
 }
+#pragma warning( default : 4189 )
 
 void finally( const std::exception_ptr &exceptionPtr )
 {

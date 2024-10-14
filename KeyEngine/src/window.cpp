@@ -473,14 +473,14 @@ void Window::setupTrayIcon()
 
 void Window::showTrayIcon() noexcept
 {
-	BOOL ret = Shell_NotifyIconW( NIM_ADD, &m_trayIconData );
-	//ASSERT( ret == TRUE, "Tray icon setup unsuccessful!" );
+	/*BOOL ret = */Shell_NotifyIconW( NIM_ADD, &m_trayIconData );
+	//ASSERT( ret == TRUE, "Tray icon setup unsuccessful!" );	// #UNUSED: return values here are irregular
 }
 
 void Window::deleteTrayIcon() noexcept
 {
-	BOOL ret = Shell_NotifyIconW( NIM_DELETE, &m_trayIconData );
-	//ASSERT( ret == TRUE, "Tray icon setup unsuccessful!" );
+	/*BOOL ret = */Shell_NotifyIconW( NIM_DELETE, &m_trayIconData );
+	//ASSERT( ret == TRUE, "Tray icon setup unsuccessful!" );	// #UNUSED: return values here are irregular
 	SleepTimer::sleepFor( 10 );
 }
 
@@ -1031,8 +1031,8 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 
 		// create tray icon
 		m_hTrayIconPopupMenu = CreatePopupMenu();
-		int ret = AppendMenuW( m_hTrayIconPopupMenu, MF_STRING, IDM_TRAY_ICON_EXIT, L"Exit the Application." );
-		//ASSERT_HRES_WIN32_IF_FAILED;	// GetLastError crashes here - unknown Windows Bug
+		AppendMenuW( m_hTrayIconPopupMenu, MF_STRING, IDM_TRAY_ICON_EXIT, L"Exit the Application." );
+		//ASSERT_HRES_WIN32_IF_FAILED;	// #WARNING: GetLastError crashes here - unknown Windows Bug
 
 		// create splash Window
 		const int splashWindowWidth = 480;
@@ -1167,8 +1167,9 @@ LRESULT Window::windowProc_impl3d( _In_ const HWND hWnd,
 	/// Menu messages
 	case WM_COMMAND:
 	{// sent when the user selects a command item from a menu, when a control sends a notification message to its parent window, or when an accelerator keystroke is translated
+		// lParam is not used
 		const UINT id = LOWORD( wParam );
-		const UINT bAccelerator = HIWORD( wParam ); // lParam is not used
+		//const UINT accelerator = HIWORD( wParam );
 		switch ( id )
 		{
 		case IDM_EDIT_CUT:

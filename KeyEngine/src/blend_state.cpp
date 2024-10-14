@@ -1,6 +1,6 @@
 #include "blend_state.h"
 #include "graphics.h"
-#include "bindable_map.h"
+#include "bindable_registry.h"
 #include "os_utils.h"
 #include "dxgi_info_queue.h"
 #include "assertions_console.h"
@@ -101,7 +101,7 @@ std::shared_ptr<BlendState> BlendState::fetch( Graphics &gfx,
 	std::optional<float> blendFactors /*= {}*/,
 	const unsigned multisampleMask /*= 0xFFFFFFFFu*/ )
 {
-	return BindableMap::fetch<BlendState>( gfx, mode, renderTargetSlot, blendFactors );
+	return BindableRegistry::fetch<BlendState>( gfx, mode, renderTargetSlot, blendFactors );
 }
 
 std::string BlendState::calcUid( const Mode mode,

@@ -53,6 +53,12 @@ void SettingsManager::loadFromFile( const std::string &filePath )
 
 	m_settings.bVSync = ini.GetBoolean( "Graphics", "bVSync", true );
 	m_settings.iMaxFps = ini.GetInteger( "Graphics", "iMaxFps", -1 );
+	{
+		m_settings.iMaxShadowCastingDynamicLights = ini.GetInteger( "Graphics", "iMaxShadowCastingDynamicLights", 16 );
+		m_settings.iMaxShadowCastingDynamicLights = std::clamp( m_settings.iMaxShadowCastingDynamicLights, 2, 16 );
+		m_settings.iMaxShadowCastingPointLights = ini.GetInteger( "Graphics", "iMaxShadowCastingPointLights", 12 );
+		m_settings.iMaxShadowCastingPointLights = std::clamp( m_settings.iMaxShadowCastingPointLights, 1, m_settings.iMaxShadowCastingDynamicLights - 1 );
+	}
 	m_settings.bAllowWindowResize = ini.GetBoolean( "Graphics", "bAllowWindowResize", false );
 	m_settings.bEnableFrustumCuling = ini.GetBoolean( "Graphics", "bEnableFrustumCuling", true );
 	m_settings.bEnableSmoothMovement = ini.GetBoolean( "Graphics", "bEnableSmoothMovement", true );

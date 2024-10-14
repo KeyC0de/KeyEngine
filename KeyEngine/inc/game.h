@@ -19,7 +19,6 @@
 #include "arkanoid/ball.h"
 #include "arkanoid/brick.h"
 #include "arkanoid/paddle.h"
-#include "math_utils.h"
 #ifndef FINAL_RELEASE
 #	include "imgui_manager.h"
 #endif
@@ -84,11 +83,10 @@ class Sandbox3d
 	static inline CameraManager &s_cameraMan = CameraManager::getInstance();
 
 	std::unique_ptr<gui::UIPass> m_gui;
-	std::unique_ptr<PointLight> m_pPointLight1;
-	//std::unique_ptr<PointLight> m_pPointLight2;
 #ifndef FINAL_RELEASE
 	bool m_bShowDemoWindow = false;
 #endif
+	std::vector<std::unique_ptr<ILightSource>> m_lights;
 	Model m_terrain{std::make_unique<Terrain>(m_mainWindow.getGraphics(), 1.0f, DirectX::XMFLOAT4{0.1f, 0.8f, 0.05f, 1.0f}, "assets/textures/clouds_blurred.bmp", 100, 100), m_mainWindow.getGraphics(), {90.0f, 0.0f, 0.0f}, {0.0f, -100.0f, 0.0f}};
 	std::vector<Model> m_models;
 public:

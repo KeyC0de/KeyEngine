@@ -34,7 +34,7 @@ TransformVSCB::TransformVSCB( const TransformVSCB &rhs )
 	:
 	m_pMesh{rhs.m_pMesh}
 {
-	m_pVscb = std::make_unique<VertexShaderConstantBuffer<Transforms>>( VertexShaderConstantBuffer<Transforms>::makeACopy( rhs.m_pVscb->getCb(), rhs.m_pVscb->getSlot() ) );
+	m_pVscb = std::make_unique<VertexShaderConstantBuffer<Transforms>>( VertexShaderConstantBuffer<Transforms>::makeCopy( rhs.m_pVscb->getCb(), rhs.m_pVscb->getSlot() ) );
 }
 
 TransformVSCB& TransformVSCB::operator=( const TransformVSCB &rhs )

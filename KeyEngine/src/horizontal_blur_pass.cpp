@@ -13,13 +13,13 @@ HorizontalBlurPass::HorizontalBlurPass( Graphics &gfx,
 	:
 	IFullscreenPass{gfx, name}
 {
-	addPassBindable( PixelShader::fetch( gfx, "blur_separ_ps.cso" ) );
-	addPassBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Trilinear, TextureSamplerState::AddressMode::Clamp ) );
+	addBindable( PixelShader::fetch( gfx, "blur_separ_ps.cso" ) );
+	addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Trilinear, TextureSamplerState::AddressMode::Clamp ) );
 
-	addContainerBindableBinder<PixelShaderConstantBufferEx>( "blurKernel" );
-	addBinder( Binder<PixelShaderConstantBufferEx>::make( "blurDirection", m_pPscbBlurDirection ) );
+	addBindableBinderUsingContainerIndex<PixelShaderConstantBufferEx>( "blurKernel" );
+	addBinder( BindableBinder<PixelShaderConstantBufferEx>::make( "blurDirection", m_pPscbBlurDirection ) );
 	// we will use the offscreen texture from the previous pass and bind it as input in this pass so we can blur it
-	addContainerBindableBinder<IRenderTargetView>( "offscreenBlurOutlineIn" );
+	addBindableBinderUsingContainerIndex<IRenderTargetView>( "offscreenBlurOutlineIn" );
 
 	const unsigned width = gfx.getClientWidth() / rezReductFactor;
 	const unsigned height = gfx.getClientHeight() / rezReductFactor;

@@ -248,6 +248,7 @@ Graphics::Graphics( const HWND hWnd,
 	}
 
 	m_fpsTimer.start();
+	m_realTimer.start();
 }
 
 Graphics::~Graphics()
@@ -307,13 +308,13 @@ void Graphics::resize( unsigned newWidth,
 
 		if ( m_pRenderer->isUsingOffscreenRendering() )
 		{
-			if ( m_pOffscreenRtv->rtv().use_count() > 0 )
+			if ( m_pOffscreenRtv->accessRtv().use_count() > 0 )
 			{
-				m_pOffscreenRtv->rtv()->clean( *this );
+				m_pOffscreenRtv->accessRtv()->clean( *this );
 			}
-			if ( m_pOffscreenDsv->dsv().use_count() > 0 )
+			if ( m_pOffscreenDsv->accessDsv().use_count() > 0 )
 			{
-				m_pOffscreenDsv->dsv()->clean( *this );
+				m_pOffscreenDsv->accessDsv()->clean( *this );
 			}
 		}
 
@@ -321,9 +322,9 @@ void Graphics::resize( unsigned newWidth,
 		m_pBackBufferDsv.reset();
 		if ( m_pRenderer->isUsingOffscreenRendering() )
 		{
-			m_pOffscreenRtv->rtv().reset();
+			m_pOffscreenRtv->accessRtv().reset();
 			m_pOffscreenRtv.reset();
-			m_pOffscreenDsv->dsv().reset();
+			m_pOffscreenDsv->accessDsv().reset();
 			m_pOffscreenDsv.reset();
 		}
 	}
@@ -468,11 +469,11 @@ void Graphics::clearShaderSlots() noexcept
 	m_pImmediateContext->PSSetShaderResources( 2u, 1u, &pNullSrv );
 	DXGI_GET_QUEUE_INFO_GFX;
 
-	// shadow map texture
+	// shadow cube map array texture
 	m_pImmediateContext->PSSetShaderResources( 3u, 1u, &pNullSrv );
 
-	// post processing texture
-	m_pImmediateContext->PSSetShaderResources( 4u, 1u, &pNullSrv );
+	// shadow map array texture
+	//m_pImmediateContext->PSSetShaderResources( 4u, 1u, &pNullSrv );
 	DXGI_GET_QUEUE_INFO_GFX;
 }
 
@@ -695,7 +696,7 @@ std::shared_ptr<TextureOffscreenRT> Graphics::getRenderTargetOffscreen( const un
 		m_pOffscreenRtv = std::make_unique<TextureOffscreenRT>( *this, m_width, m_height, slot, rtvMode );
 #if defined _DEBUG && !defined NDEBUG
 		const char *offscreenRtv = "OffscreenRenderTargetTextureView1";
-		m_pOffscreenRtv->rtv()->d3dResource()->SetPrivateData( WKPDID_D3DDebugObjectName, (UINT) strlen( offscreenRtv ), offscreenRtv );
+		m_pOffscreenRtv->accessRtv()->d3dResource()->SetPrivateData( WKPDID_D3DDebugObjectName, (UINT) strlen( offscreenRtv ), offscreenRtv );
 #endif
 	}
 	return m_pOffscreenRtv;
@@ -709,7 +710,7 @@ std::shared_ptr<TextureOffscreenDS> Graphics::getDepthBufferOffscreen( const uns
 		m_pOffscreenDsv = std::make_unique<TextureOffscreenDS>( *this, m_width, m_height, slot, dsvMode );
 #if defined _DEBUG && !defined NDEBUG
 		const char *offscreenDsv = "OffscreenDepthStencilTextureView1";
-		m_pOffscreenDsv->dsv()->d3dResource()->SetPrivateData( WKPDID_D3DDebugObjectName, (UINT) strlen( offscreenDsv ), offscreenDsv );
+		m_pOffscreenDsv->accessDsv()->d3dResource()->SetPrivateData( WKPDID_D3DDebugObjectName, (UINT) strlen( offscreenDsv ), offscreenDsv );
 #endif
 	}
 	return m_pOffscreenDsv;
@@ -719,6 +720,7 @@ void Graphics::bindBackBufferAsInput()	// #UNUSED
 {
 	mwrl::ComPtr<ID3D11Texture2D> pD3dBackBufferTex;
 	HRESULT hres = m_pSwapChain->GetBuffer( 0u, __uuidof( ID3D11Texture2D ), &pD3dBackBufferTex );
+	ASSERT_HRES_IF_FAILED;
 
 	D3D11_TEXTURE2D_DESC pD3dBackBufferTexDesc{};
 	pD3dBackBufferTex->GetDesc( &pD3dBackBufferTexDesc );
@@ -753,6 +755,11 @@ DxgiInfoQueue& Graphics::getInfoQueue()
 KeyTimer<std::chrono::microseconds>& Graphics::getFpsTimer() noexcept
 {
 	return m_fpsTimer;
+}
+
+KeyTimer<std::chrono::seconds>& Graphics::getRealTimer() noexcept
+{
+	return m_realTimer;
 }
 
 bool Graphics::getDisplayMode() const noexcept

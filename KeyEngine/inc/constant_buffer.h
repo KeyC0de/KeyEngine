@@ -2,7 +2,7 @@
 
 #include "graphics.h"
 #include "bindable.h"
-#include "bindable_map.h"
+#include "bindable_registry.h"
 #include "os_utils.h"
 #include "assertions_console.h"
 #include "dxgi_info_queue.h"
@@ -133,13 +133,13 @@ public:
 		const CB &cb,
 		const unsigned slot )
 	{
-		return BindableMap::fetch<VertexShaderConstantBuffer>( gfx, cb, slot );
+		return BindableRegistry::fetch<VertexShaderConstantBuffer>( gfx, cb, slot );
 	}
 
 	static std::shared_ptr<VertexShaderConstantBuffer> fetch( Graphics &gfx,
 		const unsigned slot )
 	{
-		return BindableMap::fetch<VertexShaderConstantBuffer>( gfx, slot );
+		return BindableRegistry::fetch<VertexShaderConstantBuffer>( gfx, slot );
 	}
 
 	static std::string calcUid( const CB &cb,
@@ -159,7 +159,7 @@ public:
 		return calcUid( m_slot );
 	}
 
-	static VertexShaderConstantBuffer<CB> makeACopy( ID3D11Buffer *srcBuf,
+	static VertexShaderConstantBuffer<CB> makeCopy( ID3D11Buffer *srcBuf,
 		const unsigned slot )
 	{
 		Microsoft::WRL::ComPtr<ID3D11Buffer> destBuf;
@@ -203,13 +203,13 @@ public:
 		const CB &cb,
 		const unsigned slot )
 	{
-		return BindableMap::fetch<PixelShaderConstantBuffer>( gfx, cb, slot );
+		return BindableRegistry::fetch<PixelShaderConstantBuffer>( gfx, cb, slot );
 	}
 
 	static std::shared_ptr<PixelShaderConstantBuffer> fetch( Graphics &gfx,
 		const unsigned slot )
 	{
-		return BindableMap::fetch<PixelShaderConstantBuffer>( gfx, slot );
+		return BindableRegistry::fetch<PixelShaderConstantBuffer>( gfx, slot );
 	}
 	
 	static std::string calcUid( const CB &cb,
@@ -229,7 +229,7 @@ public:
 		return calcUid( m_slot );
 	}
 
-	static PixelShaderConstantBuffer<CB> makeACopy( ID3D11Buffer *srcBuf,
+	static PixelShaderConstantBuffer<CB> makeCopy( ID3D11Buffer *srcBuf,
 		const unsigned slot )
 	{
 		Microsoft::WRL::ComPtr<ID3D11Buffer> destBuf;

@@ -1,5 +1,6 @@
 #define maxRadius 13
 
+
 Texture2D blurOutlineRtt : register(t0);
 SamplerState sampl : register(s0);
 
@@ -23,7 +24,6 @@ struct PSOut
 {
 	float4 finalColor : SV_Target;
 };
-
 
 PSOut main( PSIn input )
 {

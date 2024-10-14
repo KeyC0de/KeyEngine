@@ -7,6 +7,7 @@
 #	include "imgui_visitors.h"
 #endif
 
+
 class Graphics;
 
 class IConstantBufferEx

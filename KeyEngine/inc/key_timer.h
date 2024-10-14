@@ -39,7 +39,7 @@ public:
 
 	~KeyTimer() noexcept
 	{
-		size_t dur = getDurationFromStart();
+		size_t dur = getMilliSecondsFromStart();
 #if defined _DEBUG && !defined NDEBUG
 		KeyConsole &console = KeyConsole::getInstance();
 		using namespace std::string_literals;
@@ -69,10 +69,10 @@ public:
 	}
 
 	//===================================================
-	//	\function	getDurationFromStart
+	//	\function	getMilliSecondsFromStart
 	//	\brief	returns the duration between m_start and now in milliseconds
 	//	\date	2020/09/13 19:15
-	constexpr size_t getDurationFromStart() noexcept
+	constexpr size_t getMilliSecondsFromStart() noexcept
 	{
 		if constexpr( std::is_same_v<Resolution, std::chrono::nanoseconds> )
 		{
@@ -98,6 +98,39 @@ public:
 #endif
 
 		return this->m_duration;
+	}
+
+	//===================================================
+	//	\function	getSecondsFromStart
+	//	\brief	returns the duration between m_start and now in seconds
+	//	\date	2020/09/13 19:15
+	constexpr float getSecondsFromStart() noexcept
+	{
+		float ret;
+		if constexpr( std::is_same_v<Resolution, std::chrono::nanoseconds> )
+		{
+			ret = static_cast<float>( std::chrono::duration_cast<Resolution>( TClock::now() - m_start ).count() / 1000000000.0f );
+		}
+		else if constexpr( std::is_same_v<Resolution, std::chrono::microseconds> )
+		{
+			ret = static_cast<float>( std::chrono::duration_cast<Resolution>( TClock::now() - m_start ).count() / 1000000.0f );
+		}
+		else if constexpr( std::is_same_v<Resolution, std::chrono::milliseconds> )
+		{
+			ret = static_cast<float>( std::chrono::duration_cast<Resolution>( TClock::now() - m_start ).count() / 1000.0f );
+		}
+		else if constexpr( std::is_same_v<Resolution, std::chrono::seconds> )
+		{
+			ret = static_cast<float>( std::chrono::duration_cast<Resolution>( TClock::now() - m_start ).count() );
+		}
+
+#if defined _DEBUG && !defined NDEBUG
+		KeyConsole &console = KeyConsole::getInstance();
+		using namespace std::string_literals;
+		console.log( "Duration from start (sec): "s + std::to_string( ret ) + "\n" );
+#endif
+
+		return ret;
 	}
 
 	//===================================================

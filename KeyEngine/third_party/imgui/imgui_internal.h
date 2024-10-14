@@ -1,3 +1,4 @@
+#pragma warning( push, 0 )
 // dear imgui, v1.69 WIP
 // (internal structures/api)
 
@@ -1569,3 +1570,4 @@ extern void                 ImGuiTestEngineHook_ItemInfo(ImGuiContext *ctx, ImGu
 #ifdef _MSC_VER
 #pragma warning (pop)
 #endif
+#pragma warning( pop )

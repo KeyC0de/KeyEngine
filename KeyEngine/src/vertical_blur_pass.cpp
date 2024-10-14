@@ -12,17 +12,17 @@ VerticalBlurPass::VerticalBlurPass( Graphics &gfx,
 	:
 	IFullscreenPass{gfx, name}
 {
-	addPassBindable( BlendState::fetch( gfx, BlendState::Mode::Alpha, 0u ) );
+	addBindable( BlendState::fetch( gfx, BlendState::Mode::Alpha, 0u ) );
 
-	addPassBindable( PixelShader::fetch( gfx, "blur_separ_ps.cso" ) );
-	addPassBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Trilinear, TextureSamplerState::AddressMode::Clamp ) );
+	addBindable( PixelShader::fetch( gfx, "blur_separ_ps.cso" ) );
+	addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Trilinear, TextureSamplerState::AddressMode::Clamp ) );
 
 	addBinder( RenderSurfaceBinder<IRenderTargetView>::make( "renderTarget", m_pRtv ) );
 	addBinder( RenderSurfaceBinder<IDepthStencilView>::make( "depthStencil", m_pDsv ) );
-	addBinder( Binder<PixelShaderConstantBufferEx>::make( "blurDirection", m_pPscbBlurDirection ) );
+	addBinder( BindableBinder<PixelShaderConstantBufferEx>::make( "blurDirection", m_pPscbBlurDirection ) );
 	// read from offscreen texture and Vertically Blur it (separated filter)
-	addContainerBindableBinder<IRenderTargetView>( "offscreenBlurOutlineIn" );
-	addContainerBindableBinder<PixelShaderConstantBufferEx>( "blurKernel" );
+	addBindableBinderUsingContainerIndex<IRenderTargetView>( "offscreenBlurOutlineIn" );
+	addBindableBinderUsingContainerIndex<PixelShaderConstantBufferEx>( "blurKernel" );
 
 	addLinker( RenderSurfaceLinker<IRenderTargetView>::make( "renderTarget", m_pRtv ) );
 	addLinker( RenderSurfaceLinker<IDepthStencilView>::make( "depthStencil", m_pDsv ) );

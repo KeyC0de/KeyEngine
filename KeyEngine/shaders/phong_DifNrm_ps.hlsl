@@ -1,9 +1,10 @@
+#include "hlsli/globals_pscb.hlsli"
+#include "hlsli/light_pscb.hlsli"
 #include "hlsli/shading_ps.hlsli"
-#include "hlsli/point_light_pscb.hlsli"
 #include "hlsli/shadowing_ps.hlsli"
 
 
-cbuffer ModelPCB : register(b0)
+cbuffer ModelPSCB : register(b0)
 {
 	float3 modelSpecularColor;
 	float modelSpecularGloss;
@@ -17,12 +18,12 @@ SamplerState sampl : register(s0);
 
 struct PSIn
 {
-	float3 fragPosViewSpace : Position;
-	float3 fragNormalViewSpace : Normal;
+	float3 viewSpacePos : PositionViewSpace;
+	float3 viewSpaceNormal : Normal;
+	float2 tc : TexCoord;
 	float3 tangentViewSpace : Tangent;
 	float3 bitangentViewSpace : Bitangent;
-	float2 tc : TexCoord;
-	float4 posLightSpace : PositionLightSpace;
+	float4 posLightSpace[MAX_LIGHTS] : PositionLightSpace;
 };
 
 struct PSOut
@@ -30,46 +31,67 @@ struct PSOut
 	float4 finalColor : SV_Target;
 };
 
-
 PSOut main( PSIn input )
 {
-	float3 diffuse;
-	float3 specular;
-
-	// shadow occlusion test
-	const float shadowLevel = calculateShadowLevel( input.posLightSpace );
-	if ( shadowLevel != 0.0f )
+	input.viewSpaceNormal = normalize( input.viewSpaceNormal );
+	if ( bNormalMap )
 	{
-		// normalize the mesh normal
-		input.fragNormalViewSpace = normalize( input.fragNormalViewSpace );
+		const float3 mappedNormal = calculateNormalMapNormal( normalize( input.tangentViewSpace ), normalize( input.bitangentViewSpace ), input.viewSpaceNormal, input.tc, normTex, sampl );
 		// lerp normal with the normal map's normal if there's a normal map
-		if ( bNormalMap )
-		{
-			const float3 mappedNormal = calculateNormalMapNormal( normalize( input.tangentViewSpace ), normalize( input.bitangentViewSpace ), input.fragNormalViewSpace, input.tc, normTex, sampl );
-			input.fragNormalViewSpace = lerp( input.fragNormalViewSpace, mappedNormal, normalMapStrength );
-		}
-		const PointLightVectors lv = calculatePointLightVectors( pointLightPosViewSpace, input.fragPosViewSpace );
-		// light attenuation
-		const float attenuation = calculateLightAttenuation( lv.lengthOfL, attConstant, attLinear, attQuadratic );
-		// diffuse contribution
-		diffuse = calculateLightDiffuseContribution( lightColor, intensity, attenuation, lv.vToL_normalized, input.fragNormalViewSpace );
-		// specular contribution
-		specular = calculateLightSpecularContribution( lightColor, modelSpecularColor, intensity, modelSpecularGloss, input.fragNormalViewSpace, lv.vToL, input.fragPosViewSpace, attenuation );
-		// scale contributions by shadow level
-		diffuse *= shadowLevel;
-		specular *= shadowLevel;
-	}
-	else
-	{
-		// if another pixel is occluding this one, then this one will be in shadow
-		// so don't apply lighting and only add an ambient light term
-		diffuse = specular = 0.0f;
+		input.viewSpaceNormal = lerp( input.viewSpaceNormal, mappedNormal, normalMapStrength );
 	}
 
-	// #TODO: check HAS_ALPHA and work the alpha output component
-	// calculate texture contribution
+	float3 lightCombinedDiffuse = float3(0, 0, 0);
+	float3 lightCombinedSpecular = float3(0, 0, 0);
+
+	for ( int i = 0; i < cb_nLights; ++i )
+	{
+		float3 diffuseL = 0.0f;
+		float3 specularL = 0.0f;
+		float shadowLevel = 0.0f;
+		LightProperties currentLight = cb_lights[i];
+
+		if ( currentLight.cb_bCastingShadows )
+		{
+			if (currentLight.cb_lightType == 1 || currentLight.cb_lightType == 2)
+			{
+				//shadowLevel = calculateShadowLevelMapArray(input.posLightSpace[i], i);	// #TODO:
+			}
+			else if (currentLight.cb_lightType == 3)
+			{
+				shadowLevel = calculateShadowLevelCubeMapArray(input.posLightSpace[i], i);
+			}
+		}
+
+		if ( shadowLevel != 0.0f )
+		{
+			if (currentLight.cb_lightType == 1)
+			{
+				// #TODO:
+			}
+			else if (currentLight.cb_lightType == 2)
+			{
+				// #TODO:
+			}
+			else if (currentLight.cb_lightType == 3)
+			{
+				const PointLightVectors lv = calculatePointLightVectors( currentLight.cb_lightPosViewSpace, input.viewSpacePos );
+
+				const float attenuation = calculateLightAttenuation( lv.lengthOfL, currentLight.attConstant, currentLight.attLinear, currentLight.attQuadratic );
+				diffuseL = calculateLightDiffuseContribution( currentLight.lightColor, currentLight.intensity, attenuation, lv.vToL_normalized, input.viewSpaceNormal );
+				specularL = calculateLightSpecularContribution( currentLight.lightColor, modelSpecularColor, currentLight.intensity, modelSpecularGloss, input.viewSpaceNormal, lv.vToL, input.viewSpacePos, attenuation );
+			}
+
+			diffuseL *= shadowLevel;
+			specularL *= shadowLevel;
+		}
+
+		lightCombinedDiffuse += diffuseL + currentLight.ambient;
+		lightCombinedSpecular += specularL;
+	}
+
+	float4 albedoTexColor = albedoTex.Sample(sampl, input.tc);
 	PSOut output;
-	float4 albedoTexColor = albedoTex.Sample( sampl, input.tc );
-	output.finalColor = float4(saturate( (diffuse + ambient) * albedoTexColor.rgb + specular ), 1.0f);
+	output.finalColor = float4(saturate(lightCombinedDiffuse * albedoTexColor.rgb + lightCombinedSpecular), 1.0f);	// #TODO: at some point take alpha into account
 	return output;
 }

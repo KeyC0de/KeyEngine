@@ -14,7 +14,7 @@ DepthReversedPass::DepthReversedPass( Graphics &gfx,
 	:
 	RenderQueuePass{name}
 {
-	addPassBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::DepthReversedStencilOff ) );
+	addBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::DepthReversedStencilOff ) );
 
 	addBinder( RenderSurfaceBinder<IRenderTargetView>::make( "renderTarget", m_pRtv ) );
 	addBinder( RenderSurfaceBinder<IDepthStencilView>::make( "depthStencil", m_pDsv ) );

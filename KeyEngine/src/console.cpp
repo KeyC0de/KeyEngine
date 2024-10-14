@@ -271,6 +271,9 @@ void KeyConsole::setFont( const std::string &fontName )
 	wcscpy( cfie.FaceName, util::s2ws( fontName ).data() );
 	SetCurrentConsoleFontEx( m_hConsole, false, &cfie );
 	getConsoleInfo( m_hConsole );
+
+	//using SETCONSOLEFONT = BOOL (WINAPI*)( HANDLE hConOut, DWORD nFont );
+	//auto SetConsoleFont = (SETCONSOLEFONT) GetProcAddress( LoadLibraryW( L"KERNEL32" ), "SetConsoleFont" );
 }
 
 int32_t KeyConsole::setCurcorPos( const _COORD xy /* = { 0,0 } */ )
@@ -325,15 +328,15 @@ DWORD KeyConsole::getFontFamily( const HANDLE h )
 	return conFont ? cfi.nFont : -1;
 }
 
+#pragma warning( disable : 6387 )
 void KeyConsole::getConsoleInfo( const HANDLE h )
 {
 	using GETNUMBEROFCONSOLEFONTS = DWORD (WINAPI* )();
-	using SETCONSOLEFONT = BOOL (WINAPI*)( HANDLE hConOut, DWORD nFont );
 	auto GetNumberOfConsoleFonts = (GETNUMBEROFCONSOLEFONTS) GetProcAddress( LoadLibraryW( L"KERNEL32" ), "GetNumberOfConsoleFonts" );
-	auto SetConsoleFont = (SETCONSOLEFONT) GetProcAddress( LoadLibraryW( L"KERNEL32" ), "SetConsoleFont" );
 	auto font = getFontFamily( h );
 	std::cout << "nConsoleFonts=" << GetNumberOfConsoleFonts() << "fontName=" << font << '\n';
 }
+#pragma warning( default : 6387 )
 
 bool KeyConsole::setDefaultColor()
 {

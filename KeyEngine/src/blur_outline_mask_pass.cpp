@@ -13,10 +13,10 @@ BlurOutlineMaskPass::BlurOutlineMaskPass( Graphics &gfx,
 	:
 	RenderQueuePass{name}
 {
-	addPassBindable( VertexShader::fetch( gfx, "flat_vs.cso" ) );
-	addPassBindable( PixelShaderNull::fetch( gfx ) );
-	addPassBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::DepthOffStencilWriteFF ) );
-	addPassBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
+	addBindable( VertexShader::fetch( gfx, "flat_vs.cso" ) );
+	addBindable( PixelShaderNull::fetch( gfx ) );
+	addBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::DepthOffStencilWriteFF ) );
+	addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
 
 	addBinder( RenderSurfaceBinder<IDepthStencilView>::make( "depthStencil", m_pDsv ) );
 

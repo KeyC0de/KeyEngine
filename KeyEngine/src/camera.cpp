@@ -8,6 +8,7 @@
 #ifndef FINAL_RELEASE
 #	include "imgui/imgui.h"
 #endif
+#include "d3d_utils.h"
 
 
 namespace dx = DirectX;
@@ -27,18 +28,50 @@ DirectX::XMMATRIX Camera::getShadowProjectionMatrix( const float shadowCamFarZ,
 	return dx::XMMatrixPerspectiveFovLH( r, 1.0f, shadowCamNearZ, shadowCamFarZ );
 }
 
+DirectX::XMVECTOR Camera::computeTargetVector( const DirectX::XMFLOAT3 &pos,
+	const float pitchDeg,
+	const float yawDeg ) noexcept
+{
+	const dx::XMVECTOR lightPosition = dx::XMVectorSet( pos.x, pos.y, pos.z, 1.0f );
+
+	const float pitchRadians = util::toRadians( pitchDeg );
+	const float yawRadians = util::toRadians( yawDeg );
+
+	// Calculate the direction vector from pitch and yaw using trigonometry
+	const float x = std::cos( yawRadians ) * cos( pitchRadians );	// horizontal component - yaw affects X and Z
+	const float y = std::sin( pitchRadians );							// vertical component - pitch affects Y
+	const float z = std::sin( yawRadians ) * cos( pitchRadians );	// depth component - yaw affects Z
+
+	const dx::XMVECTOR lightDirection = dx::XMVectorSet( x, y, z, 0.0f );
+	// add this direction vector to the light's position to get the point it's looking at (target)
+	return dx::XMVectorAdd( lightPosition, lightDirection );
+}
+
+std::pair<float,float> Camera::computePitchYawInDegFromDirectionVector( const DirectX::XMFLOAT3 &directionNormalized )
+{
+	ASSERT( util::isNormalized( directionNormalized ), "Provided direction vector is not normalized!" );
+
+	const float yawRadians = std::atan2f( directionNormalized.z, directionNormalized.x );		// yaw /in [-pi, pi] radians
+	const float pitchRadians = std::asin( directionNormalized.y );								// pitch /in [-pi/2, pi/2] radians
+	return {util::toDegrees( yawRadians ), util::toDegrees( pitchRadians )};
+}
+
 Camera::Camera( Graphics &gfx,
+	const float width,
+	const float height,
 	const float fovDegrees /*= 90.0f*/,
 	const DirectX::XMFLOAT3 &posDefault /*= {0.0f, 0.0f, 0.0f}*/,
 	const float pitchDegDefault /*= 0.0f*/,
 	const float yawDegDefault /*= 0.0f*/,
 	const bool bTethered /*= false*/,
+	const bool bPerspectiveProjection /*= true*/,
 	const float nearZ /*= 0.5f*/,
 	const float farZ /*= 200.0f*/,
 	const DirectX::XMFLOAT4 camWidgetColor /*= {0.2f, 0.2f, 0.6f, 1.0f}*/,
 	const DirectX::XMFLOAT4 camFrustumColor /*= {0.6f, 0.2f, 0.2f, 1.0f}*/,
 	const float translationSpeed /*= 16.0f*/,
-	const float rotationSpeed /*= 0.096f*/ ) noexcept
+	const float rotationSpeed /*= 0.096f*/,
+	const bool bShowDebugMeshes /*= false*/ ) noexcept
 	:
 	m_translationSpeed{translationSpeed},
 	m_rotationSpeed{rotationSpeed},
@@ -46,19 +79,21 @@ Camera::Camera( Graphics &gfx,
 	m_farZ(farZ),
 	m_NearZDefault(nearZ),
 	m_FarZDefault(farZ),
-	m_width(1.0f),
-	m_height((static_cast<float>(gfx.getClientHeight()) / util::gcd(gfx.getClientWidth(), gfx.getClientHeight())) /
-		(static_cast<float>(gfx.getClientWidth()) / util::gcd(gfx.getClientWidth(), gfx.getClientHeight()))),
-	m_widthDefault(m_width),
-	m_heightDefault(m_height),
-	m_aspectRatio(static_cast<float>(gfx.getClientWidth()) / gfx.getClientHeight()),
+	m_width(width),
+	m_height(height),
+	m_widthDefault(width),
+	m_heightDefault(height),
+	m_aspectRatio(static_cast<float>(width) / height),
 	m_fovRadians{dx::XMConvertToRadians( fovDegrees )},
 	m_posDefault(posDefault),
 	m_pitchDefault(util::toRadians( pitchDegDefault)),
 	m_yawDefault(util::toRadians( yawDegDefault)),
 	m_bTethered(bTethered),
+	m_bPespectiveProjection(bPerspectiveProjection),
 	m_cameraWidget(std::make_unique<CameraWidget>(gfx, 1.0f, camWidgetColor), gfx, {pitchDegDefault, yawDegDefault, 0.0f}, posDefault),
-	m_cameraFrustum(std::make_unique<CameraFrustum>(gfx, 1.0f, camFrustumColor, 1.0f, m_height, nearZ, farZ), gfx, {yawDegDefault, yawDegDefault, 0.0f}, posDefault)
+	m_cameraFrustum(std::make_unique<CameraFrustum>(gfx, 1.0f, camFrustumColor, 1.0f, height, nearZ, farZ), gfx, {yawDegDefault, yawDegDefault, 0.0f}, posDefault),
+	m_bShowWidget{bShowDebugMeshes},
+	m_bShowFrustum{bShowDebugMeshes}
 {
 	static int s_id = 0;
 	s_id++;
@@ -101,7 +136,7 @@ void Camera::makeActive( Graphics &gfx,
 {
 	gfx.setViewMatrix( getViewMatrix() );
 	gfx.setProjectionMatrix( bOrthographic ?
-		getOrthographicProjectionMatrix( gfx.getClientWidth(), gfx.getClientHeight() ) :
+		getOrthographicProjectionMatrix( m_width, m_height ) :
 		getPerspectiveProjectionMatrix() );
 }
 
@@ -140,15 +175,13 @@ DirectX::XMMATRIX Camera::getReflectionViewMatrix( const dx::XMVECTOR &mirrorPla
 	return dx::XMMatrixMultiply( getViewMatrix(), R );
 }
 
-DirectX::XMMATRIX Camera::getOrthographicProjectionMatrix( const unsigned width,
-	const unsigned height ) const noexcept
+DirectX::XMMATRIX Camera::getProjectionMatrix( Graphics &gfx,
+	const bool bForShadows,
+	const float shadowCamFarZ ) const noexcept
 {
-	return dx::XMMatrixOrthographicLH( static_cast<float>( width ), static_cast<float>( height ), m_nearZ, m_farZ );
-}
-
-DirectX::XMMATRIX Camera::getPerspectiveProjectionMatrix() const noexcept
-{
-	return dx::XMMatrixPerspectiveFovLH( m_fovRadians, m_aspectRatio, m_nearZ, m_farZ );
+	return m_bPespectiveProjection ?
+		( bForShadows ? getShadowProjectionMatrix( shadowCamFarZ ) : getPerspectiveProjectionMatrix() )
+		: ( bForShadows ? getShadowOrthographicMatrix( m_width, m_height, shadowCamFarZ ) : getOrthographicProjectionMatrix( m_width, m_height ) );
 }
 
 DirectX::XMVECTOR Camera::getDirection() const noexcept
@@ -303,9 +336,10 @@ void Camera::displayImguiWidgets( Graphics &gfx ) noexcept
 
 void Camera::onWindowResize( Graphics &gfx )
 {
-	m_width = static_cast<float>( gfx.getClientWidth() );
-	m_height = static_cast<float>( gfx.getClientHeight() );
-	updateCameraFrustum( gfx );
+	// #TODO: probably not needed cause camera dimensions are not necessarily tied to gfx dimensions
+	//m_width = static_cast<float>( gfx.getClientWidth() );
+	//m_height = static_cast<float>( gfx.getClientHeight() );
+	//updateCameraFrustum( gfx );
 }
 
 void Camera::setTethered( const bool bTethered ) cond_noex
@@ -401,8 +435,8 @@ DirectX::XMMATRIX Camera::getRotationMatrix() const noexcept
 
 DirectX::XMVECTOR Camera::getTarget() const noexcept
 {
-	const auto lookVector = getDirection();
 	const auto camPosition = dx::XMLoadFloat3( &m_pos );
+	const auto lookVector = getDirection();
 	return dx::XMVectorAdd( camPosition, lookVector );
 }
 
@@ -413,4 +447,15 @@ void Camera::updateCameraFrustum( Graphics &gfx )
 	frustumMesh->getVertexBuffer() = std::make_shared<VertexBuffer>( gfx, g.m_vb );
 	frustumMesh->createAabb( g.m_vb );
 	m_aspectRatio = m_width / m_height;
+}
+
+DirectX::XMMATRIX Camera::getOrthographicProjectionMatrix( const unsigned width,
+	const unsigned height ) const noexcept
+{
+	return dx::XMMatrixOrthographicLH( static_cast<float>( width ), static_cast<float>( height ), m_nearZ, m_farZ );
+}
+
+DirectX::XMMATRIX Camera::getPerspectiveProjectionMatrix() const noexcept
+{
+	return dx::XMMatrixPerspectiveFovLH( m_fovRadians, m_aspectRatio, m_nearZ, m_farZ );
 }

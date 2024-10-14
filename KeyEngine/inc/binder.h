@@ -23,10 +23,10 @@ class IPass;
 //	\class	IBinder
 //	\author	KeyC0de
 //	\date	2022/09/29 20:48
-//	\brief	Binder have a dependency: their target gfx resource which they must acquire from the Linker of the previous pass
+//	\brief	BindableBinder have a dependency: their target gfx resource; they must acquire it from the Linker of the target pass
 //			this link()ing will be done in Renderer::linkPassBinders
-//			linking is done purely using string names.
-//			Binder names are not required, but just in case, I currently store their names, in case the system is expanded in the future.
+//			BindableBinder names are not required, but just in case, I currently store their names, in case the system is expanded in the future.
+//			IBinder has a protected ctor; create child objects using the maker pattern
 //=============================================================
 class IBinder
 {
@@ -49,15 +49,15 @@ public:
 };
 
 template<class T>
-class Binder final
+class BindableBinder final
 	: public IBinder
 {
-	static_assert( std::is_base_of_v<IBindable, T>, "Binder target T must be IBindable." );
+	static_assert( std::is_base_of_v<IBindable, T>, "BindableBinder target T must be IBindable." );
 
 	std::shared_ptr<T> &m_target;	// target Linker resource Bindable
 	bool m_bLinked = false;
 public:
-	Binder( const std::string &name,
+	BindableBinder( const std::string &name,
 		std::shared_ptr<T> &target )
 		:
 		IBinder{name},
@@ -69,7 +69,7 @@ public:
 	static std::unique_ptr<IBinder> make( const std::string &name,
 		std::shared_ptr<T> &target )
 	{
-		return std::make_unique<Binder>( name, target );
+		return std::make_unique<BindableBinder>( name, target );
 	}
 
 	void validateLinkage() const override
@@ -98,7 +98,7 @@ public:
 //	\class	ContainerBindableBinder
 //	\author	KeyC0de
 //	\date	2022/08/21 0:17
-//	\brief	Container Bindable T is either an RTV, DSV or an array type Constant Buffer
+//	\brief	Used to make a BindableBinder 
 //=============================================================
 template<class T>
 class ContainerBindableBinder final
@@ -125,7 +125,7 @@ public:
 	{
 		if ( !m_bLinked )
 		{
-			THROW_RENDERER_EXCEPTION( "Binder " + getName() + " unliked! Target hasn't been set!" );
+			THROW_RENDERER_EXCEPTION( "BindableBinder " + getName() + " unliked! Target hasn't been set!" );
 		}
 	}
 
@@ -171,7 +171,7 @@ public:
 	{
 		if ( !m_bLinked )
 		{
-			THROW_RENDERER_EXCEPTION( "Binder " + getName() + " unliked! Target hasn't been set!" );
+			THROW_RENDERER_EXCEPTION( "BindableBinder " + getName() + " unliked! Target hasn't been set!" );
 		}
 	}
 

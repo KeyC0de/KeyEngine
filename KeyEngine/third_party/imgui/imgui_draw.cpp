@@ -1,3 +1,4 @@
+#pragma warning( push, 0 )
 // dear imgui, v1.69 WIP
 // (drawing and font code)
 
@@ -665,6 +666,7 @@ void ImDrawList::PrimQuadUV(const ImVec2 &a, const ImVec2 &b, const ImVec2 &c, c
 
 // WARNING: Thickness anti-aliased lines cap are missing their AA fringe.
 // We avoid using the ImVec2 math operators here to reduce cost to a minimum for debug/non-inlined builds.
+#pragma warning( disable : 6255 )
 void ImDrawList::AddPolyline(const ImVec2 *points, const int points_count, ImU32 col, bool closed, float thickness)
 {
 	if (points_count < 2)
@@ -851,8 +853,10 @@ void ImDrawList::AddPolyline(const ImVec2 *points, const int points_count, ImU32
 		}
 	}
 }
+#pragma warning( default : 6255 )
 
 // We intentionally avoid using ImVec2 and its math operators here to reduce cost to a minimum for debug/non-inlined builds.
+#pragma warning( disable : 6255 )
 void ImDrawList::AddConvexPolyFilled(const ImVec2 *points, const int points_count, ImU32 col)
 {
 	if (points_count < 3)
@@ -933,6 +937,7 @@ void ImDrawList::AddConvexPolyFilled(const ImVec2 *points, const int points_coun
 		_VtxCurrentIdx += (ImDrawIdx)vtx_count;
 	}
 }
+#pragma warning( default : 6255 )
 
 void ImDrawList::PathArcToFast(const ImVec2 &centre, float radius, int a_min_of_12, int a_max_of_12)
 {
@@ -3285,3 +3290,4 @@ static const char *GetDefaultCompressedFontDataTTFBase85()
 {
 	return proggy_clean_ttf_compressed_data_base85;
 }
+#pragma warning( pop )

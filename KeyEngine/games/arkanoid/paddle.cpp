@@ -80,7 +80,7 @@ void Paddle::resetCollisionCooldown()
 	m_bInCollisionCooldown = false;
 }
 
-void Paddle::setPositionRel( const float val )
+void Paddle::setTranslationRel( const float val )
 {
 	m_posCenter.x += val;
 }

@@ -82,12 +82,14 @@ __int64 filetimeToInt64( const FILETIME &fileTime )
 	return static_cast<__int64>( ui64.QuadPart );
 }
 
-void pinThreadToCore( const HANDLE hThread,
+DWORD_PTR pinThreadToCore( const HANDLE hThread,
 	const DWORD core )
 {
 	// a set bit represents a CPU core
 	DWORD_PTR mask = ( static_cast<DWORD_PTR>( 1 ) << core );
-	auto ret = SetThreadAffinityMask( GetCurrentThread(), mask );
+	DWORD_PTR previousAffinityMask = SetThreadAffinityMask( GetCurrentThread(), mask );
+	ASSERT_HRES_WIN32_IF_FAILED;
+	return previousAffinityMask;
 }
 
 void setCurrentThreadName( const std::string &name )

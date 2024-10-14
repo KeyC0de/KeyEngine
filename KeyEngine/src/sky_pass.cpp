@@ -35,15 +35,15 @@ SkyPass::SkyPass( Graphics &gfx,
 	IBindablePass{name},
 	m_bUseSphere{useSphere}
 {
-	addPassBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
+	addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
 	const auto skyboxFilepath = std::string{"assets/textures/skybox/"} + SettingsManager::getInstance().getSettings().sSkyboxFileName;
-	addPassBindable( std::make_shared<CubeTexture>( gfx, skyboxFilepath, 0u ) );
-	addPassBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Trilinear, TextureSamplerState::AddressMode::Wrap ) );
-	addPassBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::DepthReadOnlyEquals1StencilOff ) );
-	addPassBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Both ) );
-	addPassBindable( std::make_shared<SkyVSCB>( gfx ) );
-	addPassBindable( PixelShader::fetch( gfx, "sky_ps.cso" ) );
+	addBindable( std::make_shared<CubeTexture>( gfx, skyboxFilepath, 0u ) );
+	addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Trilinear, TextureSamplerState::AddressMode::Wrap ) );
+	addBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::DepthReadOnlyEquals1StencilOff ) );
+	addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Both ) );
+	addBindable( std::make_shared<SkyVSCB>( gfx ) );
+	addBindable( PixelShader::fetch( gfx, "sky_ps.cso" ) );
 	{
 		auto vs = VertexShader::fetch( gfx, "sky_vs.cso" );
 		{// cube
@@ -51,16 +51,16 @@ SkyPass::SkyPass( Graphics &gfx,
 			m_pCubeVb = VertexBuffer::fetch( gfx, s_cubeGeometryTag, cube.m_vb );
 			m_pCubeIb = IndexBuffer::fetch( gfx, s_cubeGeometryTag, cube.m_indices );
 			m_nCubeIndices = (unsigned)cube.m_indices.size();
-			addPassBindable( InputLayout::fetch( gfx, cube.m_vb.getLayout(), *vs ) );
+			addBindable( InputLayout::fetch( gfx, cube.m_vb.getLayout(), *vs ) );
 		}
 		{// sphere
 			TriangleMesh sphere = Geometry::makeSphereTesselated();
 			m_pSphereVb = VertexBuffer::fetch( gfx, s_sphereGeometryTag, sphere.m_vb );
 			m_pSphereIb = IndexBuffer::fetch( gfx, s_sphereGeometryTag, sphere.m_indices );
 			m_nSphereIndices = (unsigned)sphere.m_indices.size();
-			addPassBindable( InputLayout::fetch( gfx, sphere.m_vb.getLayout(), *vs ) );
+			addBindable( InputLayout::fetch( gfx, sphere.m_vb.getLayout(), *vs ) );
 		}
-		addPassBindable( std::move( vs ) );
+		addBindable( std::move( vs ) );
 	}
 
 	addBinder( RenderSurfaceBinder<IRenderTargetView>::make( "renderTarget", m_pRtv ) );

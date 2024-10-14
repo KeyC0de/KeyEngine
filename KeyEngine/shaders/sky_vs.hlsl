@@ -10,10 +10,9 @@ struct VSIn
 
 struct VSOut
 {
-	float3 worldPos : Position;
+	float3 worldPos : PositionWorldSpace;
 	float4 pos : SV_Position;
 };
-
 
 VSOut main( VSIn input )
 {

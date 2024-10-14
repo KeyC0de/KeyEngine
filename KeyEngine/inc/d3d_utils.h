@@ -31,8 +31,8 @@ inline void comSafeRelease( T &p )
 
 static auto s_XMZero = DirectX::XMVectorZero();
 
+bool isNormalized( const DirectX::XMFLOAT3 &vec );
 DirectX::XMMATRIX XM_CALLCONV computeTransform( const DirectX::XMFLOAT3 &scale, const DirectX::XMFLOAT3 &pos, const DirectX::XMFLOAT3 &rot );
-
 //	\function	extractRotation	||	\date	2022/09/03 14:37
 //	\brief	builds a FLOAT3 of {x=pitch,y=yaw,z=roll}
 DirectX::XMFLOAT3 extractRotation( const DirectX::XMFLOAT4X4 &mat );

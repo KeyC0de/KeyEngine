@@ -140,7 +140,7 @@ Cube::Cube( Graphics &gfx,
 		addMaterial( std::move( opaque ) );
 	}
 	{// shadow map material
-		Material shadowMap{rch::shadow, "shadowMap", true};
+		Material shadowMap{rch::shadow, "shadow", true};
 
 		shadowMap.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 

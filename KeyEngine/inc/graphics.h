@@ -113,6 +113,7 @@ private:
 	ren::Renderer3d* m_pRenderer3d;
 	ren::Renderer2d* m_pRenderer2d;
 	KeyTimer<std::chrono::microseconds> m_fpsTimer;
+	KeyTimer<std::chrono::seconds> m_realTimer;
 	bool m_bFullscreenMode = false;
 public:
 	Graphics( const HWND hWnd, const int width, const int height, const MultisamplingMode multisamplingMode = MultisamplingMode::None );
@@ -157,6 +158,7 @@ public:
 	DxgiInfoQueue& getInfoQueue();
 #endif
 	KeyTimer<std::chrono::microseconds>& getFpsTimer() noexcept;
+	KeyTimer<std::chrono::seconds>& getRealTimer() noexcept;
 	//	\function	getDisplayMode	||	\date	2024/05/03 18:18
 	//	\brief	returns true if fullscreen application, false otherwise
 	bool getDisplayMode() const noexcept;

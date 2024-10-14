@@ -1,6 +1,6 @@
 #include "pixel_shader.h"
 #include "graphics.h"
-#include "bindable_map.h"
+#include "bindable_registry.h"
 #include "utils.h"
 #include "os_utils.h"
 #include "dxgi_info_queue.h"
@@ -28,7 +28,7 @@ void PixelShader::bind( Graphics &gfx ) cond_noex
 std::shared_ptr<PixelShader> PixelShader::fetch( Graphics &gfx,
 	const std::string &filepath )
 {
-	return BindableMap::fetch<PixelShader>( gfx, filepath );
+	return BindableRegistry::fetch<PixelShader>( gfx, filepath );
 }
 
 ID3DBlob* PixelShader::getBytecode() const noexcept
@@ -61,7 +61,7 @@ void PixelShaderNull::bind( Graphics &gfx ) cond_noex
 
 std::shared_ptr<PixelShaderNull> PixelShaderNull::fetch( Graphics &gfx )
 {
-	return BindableMap::fetch<PixelShaderNull>( gfx );
+	return BindableRegistry::fetch<PixelShaderNull>( gfx );
 }
 
 std::string PixelShaderNull::calcUid()

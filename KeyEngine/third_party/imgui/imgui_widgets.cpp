@@ -1620,6 +1620,7 @@ static void DataTypeApplyOp(ImGuiDataType data_type, int op, void *output, void 
 
 // User can input math operators (e.g. +100) to edit a numerical values.
 // NB: This is _not_ a full expression evaluator. We should probably add one and replace this dumb mess..
+#pragma warning( disable : 6031 )
 static bool DataTypeApplyOpFromText(const char *buf, const char *initial_value_buf, ImGuiDataType data_type, void *data_ptr, const char *format)
 {
 	while (ImCharIsBlankA(*buf))
@@ -1719,6 +1720,7 @@ static bool DataTypeApplyOpFromText(const char *buf, const char *initial_value_b
 
 	return memcmp(data_backup, data_ptr, GDataTypeInfo[data_type].Size) != 0;
 }
+#pragma warning( default : 6031 )
 
 static float GetMinimumStepAtDecimalPrecision(int decimal_precision)
 {
@@ -3941,6 +3943,7 @@ bool ImGui::ColorEdit3(const char *label, float col[3], ImGuiColorEditFlags flag
 // Edit colors components (each component in 0.0f..1.0f range).
 // See enum ImGuiColorEditFlags_ for available options. e.g. Only access 3 floats if ImGuiColorEditFlags_NoAlpha flag is set.
 // With typical options: Left-click on colored square to open color picker. Right-click to open option menu. CTRL-Click over input fields to edit them and TAB to go to next item.
+#pragma warning( disable : 6031 )
 bool ImGui::ColorEdit4(const char *label, float col[4], ImGuiColorEditFlags flags)
 {
 	ImGuiWindow *window = GetCurrentWindow();
@@ -4148,6 +4151,7 @@ bool ImGui::ColorEdit4(const char *label, float col[4], ImGuiColorEditFlags flag
 
 	return value_changed;
 }
+#pragma warning( default : 6031 )
 
 bool ImGui::ColorPicker3(const char *label, float col[3], ImGuiColorEditFlags flags)
 {
@@ -5666,6 +5670,7 @@ bool ImGui::BeginMenuBar()
 	return true;
 }
 
+#pragma warning( disable : 6011 )
 void ImGui::EndMenuBar()
 {
 	ImGuiWindow *window = GetCurrentWindow();
@@ -5705,6 +5710,7 @@ void ImGui::EndMenuBar()
 	window->DC.NavLayerCurrentMask = (1 << ImGuiNavLayer_Main);
 	window->DC.MenuBarAppending = false;
 }
+#pragma warning( default : 6011 )
 
 bool ImGui::BeginMenu(const char *label, bool enabled)
 {

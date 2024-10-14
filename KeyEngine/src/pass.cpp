@@ -68,7 +68,7 @@ IBinder& IPass::getBinder( const std::string &name ) const
 	}
 
 	std::ostringstream oss;
-	oss << "Binder named [" << name << "] not found in pass:" << getName();
+	oss << "BindableBinder named [" << name << "] not found in pass:" << getName();
 	THROW_RENDERER_EXCEPTION( oss.str() );
 }
 
@@ -94,7 +94,7 @@ void IPass::addBinder( std::unique_ptr<IBinder> pBinder )
 	{
 		if ( binder->getName() == pBinder->getName() )
 		{
-			THROW_RENDERER_EXCEPTION( "Binder name " + pBinder->getName() + " collides with existing." );
+			THROW_RENDERER_EXCEPTION( "BindableBinder name " + pBinder->getName() + " collides with existing." );
 		}
 	}
 	m_binders.emplace_back( std::move( pBinder ) );

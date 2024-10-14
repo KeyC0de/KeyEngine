@@ -1,7 +1,7 @@
 #include "viewport.h"
 #include <typeinfo>
 #include "graphics.h"
-#include "bindable_map.h"
+#include "bindable_registry.h"
 #include "dxgi_info_queue.h"
 
 
@@ -50,7 +50,7 @@ std::shared_ptr<Viewport> Viewport::fetch( Graphics &gfx,
 	const float height )
 {
 	using namespace std::string_literals;
-	return BindableMap::fetch<Viewport>( gfx, width, height );
+	return BindableRegistry::fetch<Viewport>( gfx, width, height );
 }
 
 std::string Viewport::calcUid( const float width,

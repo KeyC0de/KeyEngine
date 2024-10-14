@@ -252,8 +252,8 @@ private:
 //	\brief	the layout class serves as a shell to hold the root of the CBElement tree
 //			client does not create CBElements directly, create a raw layout and then
 //			use it to access the elements and add on from there. When building is done,
-//			raw layout is moved to BindableMap (usually via Buffer::make), and the internal layout
-//			element tree is "delivered" (finalized and moved out). BindableMap returns a baked
+//			raw layout is moved to BindableRegistry (usually via Buffer::make), and the internal layout
+//			element tree is "delivered" (finalized and moved out). BindableRegistry returns a baked
 //			layout, which the buffer can then use to initialize itself. Baked layout can
 //			also be used to directly init multiple Buffers. Baked layouts are conceptually immutable.
 //			Base CBLayout class cannot be constructed.
@@ -324,7 +324,7 @@ public:
 	std::shared_ptr<CBElement> shareRootElement() const noexcept;
 private:
 	//	\function	CookedLayout	||	\date	2022/08/21 19:50
-	//	\brief	this ctor used by BindableMap to return cooked layouts
+	//	\brief	this ctor used by BindableRegistry to return cooked layouts
 	CookedLayout( std::shared_ptr<CBElement> pRoot ) noexcept;
 	//	\function	relinquishRoot	||	\date	2022/08/21 19:50
 	//	\brief	use to pilfer the layout tree

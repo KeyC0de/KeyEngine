@@ -1,9 +1,10 @@
+#include "hlsli/globals_pscb.hlsli"
+#include "hlsli/light_pscb.hlsli"
 #include "hlsli/shading_ps.hlsli"
-#include "hlsli/point_light_pscb.hlsli"
 #include "hlsli/shadowing_ps.hlsli"
 
 
-cbuffer ModelPCB : register(b0)
+cbuffer ModelPSCB : register(b0)
 {
 	float4 materialColor;
 	float3 modelSpecularColor;
@@ -12,9 +13,9 @@ cbuffer ModelPCB : register(b0)
 
 struct PSIn
 {
-	float3 fragPosViewSpace : Position;
-	float3 fragNormalViewSpace : Normal;
-	float4 posLightSpace : PositionLightSpace;
+	float3 viewSpacePos : PositionViewSpace;
+	float3 viewSpaceNormal : Normal;
+	float4 posLightSpace[MAX_LIGHTS] : PositionLightSpace;
 };
 
 struct PSOut
@@ -22,29 +23,60 @@ struct PSOut
 	float4 finalColor : SV_Target;
 };
 
-
 PSOut main( PSIn input )
 {
+	input.viewSpaceNormal = normalize( input.viewSpaceNormal );
+
+	float3 lightCombinedDiffuse = float3(0, 0, 0);
+	float3 lightCombinedSpecular = float3(0, 0, 0);
+
+	for ( int i = 0; i < cb_nLights; ++i )
+	{
+		float3 diffuseL = 0.0f;
+		float3 specularL = 0.0f;
+		float shadowLevel = 0.0f;
+		LightProperties currentLight = cb_lights[i];
+
+		if ( currentLight.cb_bCastingShadows )
+		{
+			if (currentLight.cb_lightType == 1 || currentLight.cb_lightType == 2)
+			{
+				//shadowLevel = calculateShadowLevelMapArray(input.posLightSpace[i], i);	// #TODO:
+			}
+			else if (currentLight.cb_lightType == 3)
+			{
+				shadowLevel = calculateShadowLevelCubeMapArray(input.posLightSpace[i], i);
+			}
+		}
+
+		if ( shadowLevel != 0.0f )
+		{
+			if (currentLight.cb_lightType == 1)
+			{
+				// #TODO:
+			}
+			else if (currentLight.cb_lightType == 2)
+			{
+				// #TODO:
+			}
+			else if (currentLight.cb_lightType == 3)
+			{
+				const PointLightVectors lv = calculatePointLightVectors( currentLight.cb_lightPosViewSpace, input.viewSpacePos );
+
+				const float attenuation = calculateLightAttenuation( lv.lengthOfL, currentLight.attConstant, currentLight.attLinear, currentLight.attQuadratic );
+				diffuseL = calculateLightDiffuseContribution( currentLight.lightColor, currentLight.intensity, attenuation, lv.vToL_normalized, input.viewSpaceNormal );
+				specularL = calculateLightSpecularContribution( currentLight.lightColor, modelSpecularColor, currentLight.intensity, modelSpecularGloss, input.viewSpaceNormal, lv.vToL, input.viewSpacePos, attenuation );
+			}
+
+			diffuseL *= shadowLevel;
+			specularL *= shadowLevel;
+		}
+
+		lightCombinedDiffuse += diffuseL + currentLight.ambient;
+		lightCombinedSpecular += specularL;
+	}
+
 	PSOut output;
-	float3 diffuse;
-	float3 specular;
-
-	const float shadowLevel = calculateShadowLevel( input.posLightSpace );
-	if ( shadowLevel != 0.0f )
-	{
-		input.fragNormalViewSpace = normalize( input.fragNormalViewSpace );
-		const PointLightVectors lv = calculatePointLightVectors( pointLightPosViewSpace, input.fragPosViewSpace );
-		const float attenuation = calculateLightAttenuation( lv.lengthOfL, attConstant, attLinear, attQuadratic );
-		diffuse = calculateLightDiffuseContribution( lightColor, intensity, attenuation, lv.vToL_normalized, input.fragNormalViewSpace );
-		specular = calculateLightSpecularContribution( lightColor, modelSpecularColor, intensity, modelSpecularGloss, input.fragNormalViewSpace, lv.vToL, input.fragPosViewSpace, attenuation );
-		diffuse *= shadowLevel;
-		specular *= shadowLevel;
-	}
-	else
-	{
-		diffuse = specular = 0.0f;
-	}
-
-	output.finalColor = float4(saturate( (diffuse + ambient) * materialColor.xyz + specular ), 1.0f );
+	output.finalColor = float4(saturate(lightCombinedDiffuse + lightCombinedSpecular), 1.0f);
 	return output;
 }

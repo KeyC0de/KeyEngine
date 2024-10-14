@@ -8,7 +8,6 @@ struct PSOut
 	float4 finalColor : SV_Target;
 };
 
-
 PSOut main()
 {
 	PSOut output;

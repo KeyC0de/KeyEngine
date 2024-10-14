@@ -32,7 +32,9 @@ std::wstring bstrToStr( const BSTR &bstr );
 BSTR strToBstr( const std::wstring &str );
 
 __int64 filetimeToInt64( const FILETIME &fileTime );
-void pinThreadToCore( const HANDLE hThread, const DWORD core );
+//	\function	pinThreadToCore	||	\date	2024/09/07 21:06
+//	\brief	returns the thread's previous affinity mask
+[[maybe_unused]] DWORD_PTR pinThreadToCore( const HANDLE hThread, const DWORD core );
 void setCurrentThreadName( const std::string &name );
 
 std::string getKnownFolderPath( const int id = CSIDL_PERSONAL );

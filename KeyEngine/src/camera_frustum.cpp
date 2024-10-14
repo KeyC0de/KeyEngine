@@ -35,7 +35,7 @@ CameraFrustum::CameraFrustum( Graphics &gfx,
 	auto g = Geometry::makeCameraFrustum( width, height, nearZ, farZ );
 
 	{
-		m_pVertexBuffer = std::make_shared<VertexBuffer>( gfx, g.m_vb );	// we don't share the frustum in the BindableMap because each will be unique
+		m_pVertexBuffer = std::make_shared<VertexBuffer>( gfx, g.m_vb );	// we don't share the frustum in the BindableRegistry because each will be unique
 		m_pIndexBuffer = IndexBuffer::fetch( gfx, s_geometryTag, g.m_indices );
 		m_pPrimitiveTopology = PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_LINELIST );
 		m_pTransformVscb = std::make_unique<TransformVSCB>( gfx, 0u, *this );

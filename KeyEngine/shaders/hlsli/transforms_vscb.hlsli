@@ -1,6 +1,6 @@
 cbuffer TransformsVSCB : register(b0)
 {
-	matrix world;
-	matrix worldView;
-	matrix worldViewProjection;
+	matrix cb_world;
+	matrix cb_worldView;
+	matrix cb_worldViewProjection;
 };

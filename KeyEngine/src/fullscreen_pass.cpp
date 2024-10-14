@@ -21,7 +21,7 @@ IFullscreenPass::IFullscreenPass( Graphics &gfx,
 	:
 	IBindablePass{name}
 {
-	addPassBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
+	addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
 	// setup fullscreen geometry
 	ver::VertexInputLayout vil;
@@ -32,15 +32,15 @@ IFullscreenPass::IFullscreenPass( Graphics &gfx,
 	vb.emplaceVertex( dx::XMFLOAT2{1, 1} );
 	vb.emplaceVertex( dx::XMFLOAT2{-1, -1} );
 	vb.emplaceVertex( dx::XMFLOAT2{1, -1} );
-	addPassBindable( VertexBuffer::fetch( gfx, s_fullscreenTag, vb ) );
+	addBindable( VertexBuffer::fetch( gfx, s_fullscreenTag, vb ) );
 
 	std::vector<unsigned> indices{0, 1, 2, 1, 3, 2};
-	addPassBindable( IndexBuffer::fetch( gfx, s_fullscreenTag, indices ) );
+	addBindable( IndexBuffer::fetch( gfx, s_fullscreenTag, indices ) );
 
 	auto vs = VertexShader::fetch( gfx, "fullscreen_quad_vs.cso" );
-	addPassBindable( InputLayout::fetch( gfx, vil, *vs ) );
-	addPassBindable( std::move( vs ) );
-	addPassBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
+	addBindable( InputLayout::fetch( gfx, vil, *vs ) );
+	addBindable( std::move( vs ) );
+	addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
 }
 
 void IFullscreenPass::run( Graphics &gfx ) const cond_noex

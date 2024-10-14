@@ -15,8 +15,8 @@ WireframePass::WireframePass( Graphics &gfx,
 	:
 	RenderQueuePass{name}
 {
-	addPassBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Wireframe, RasterizerState::FaceMode::Front ) );
-	addPassBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::Default ) );
+	addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Wireframe, RasterizerState::FaceMode::Front ) );
+	addBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::Default ) );
 
 	addBinder( RenderSurfaceBinder<IRenderTargetView>::make( "renderTarget", m_pRtv ) );
 	addBinder( RenderSurfaceBinder<IDepthStencilView>::make( "depthStencil", m_pDsv ) );

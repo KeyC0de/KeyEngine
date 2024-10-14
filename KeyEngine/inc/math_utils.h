@@ -160,14 +160,14 @@ int numberToCoord( T number,
 	return coord;
 }
 
-template<typename T, typename = std::enable_if_t<std::is_floating_point_v<T>>>
+template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
 constexpr T mapRange( const T val,
 	const T inFirst,
 	const T inLast,
 	const T outFirst,
 	const T outLast ) noexcept
 {
-	double slope = 1.0 * ( outLast - outFirst ) / ( inLast - inFirst );
+	const double slope = 1.0 * ( outLast - outFirst ) / ( inLast - inFirst );
 	return outFirst + util::round( slope * ( val - inFirst ) );
 }
 
@@ -432,6 +432,10 @@ constexpr int factorialOf( int n ) noexcept;
 //	\function	isPrime	||	\date	2022/08/28 23:45
 //	\brief	trial division method
 constexpr bool isPrime( const int number ) noexcept;
+
+//	\function	computeTriangularNumber	||	\date	2024/08/29 1:33
+//	\brief	Triangular numbers represent the number of dots that can form an equilateral triangle.
+constexpr size_t computeTriangularNumber( const int number ) noexcept;
 
 constexpr bool isPowerOfTwo( const std::size_t value ) noexcept;
 float cosine( float x ) noexcept;

@@ -13,9 +13,9 @@ SolidOutlineDrawPass::SolidOutlineDrawPass( Graphics &gfx,
 	:
 	RenderQueuePass{name}
 {
-	addPassBindable( VertexShader::fetch( gfx, "flat_vs.cso" ) );
-	addPassBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
-	addPassBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::DepthOffStencilReadFF ) );
+	addBindable( VertexShader::fetch( gfx, "flat_vs.cso" ) );
+	addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
+	addBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::DepthOffStencilReadFF ) );
 
 	addBinder( RenderSurfaceBinder<IRenderTargetView>::make( "renderTarget", m_pRtv ) );
 	addBinder( RenderSurfaceBinder<IDepthStencilView>::make( "depthStencil", m_pDsv ) );

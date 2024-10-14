@@ -9,6 +9,7 @@ class Graphics;
 class IRenderTargetView;
 class IDepthStencilView;
 class Camera;
+class ILightSource;
 
 class IPixelShaderConstantBufferEx;
 template<class>
@@ -84,10 +85,11 @@ public:
 	void recreate( Graphics &gfx ) override;
 	void displayImguiWidgets( Graphics &gfx ) noexcept;
 	void dumpShadowMap( Graphics &gfx, const std::string &path );
+	void dumpShadowCubeMap( Graphics &gfx, const std::string &path );
 	//	\function	setActiveCamera	||	\date	2022/05/24 17:10
 	//	\brief	binds active camera to all Passes that need it
 	void setActiveCamera( const Camera &cam );
-	void setShadowCamera( const Camera &cam, const bool bEnable );
+	void setShadowCastingLights( Graphics &gfx, const std::vector<ILightSource*> &shadowCastingLights );
 private:
 	void showShadowDumpImguiWindow( Graphics &gfx ) noexcept;
 	void showGaussianBlurImguiWindow( Graphics &gfx ) noexcept;

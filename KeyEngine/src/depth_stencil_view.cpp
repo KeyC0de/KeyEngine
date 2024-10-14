@@ -5,7 +5,6 @@
 #include "os_utils.h"
 #include "dxgi_info_queue.h"
 #include "viewport.h"
-#include "bindable_exception.h"
 
 
 namespace mwrl = Microsoft::WRL;
@@ -27,9 +26,9 @@ IDepthStencilView::IDepthStencilView( Graphics &gfx,
 	if ( face.has_value() )
 	{
 		dsvDesc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2DARRAY;
-		dsvDesc.Texture2DArray.ArraySize = 1u;	// how many cube textures to create
-		dsvDesc.Texture2DArray.FirstArraySlice = *face;
-		dsvDesc.Texture2DArray.MipSlice = 0u;
+		dsvDesc.Texture2DArray.ArraySize = 1u;			// how many (cube) textures to create; this would not be equal to 1 only in the case of using `SV_RenderTargetArrayIndex`
+		dsvDesc.Texture2DArray.FirstArraySlice = *face;	// texture slice in the Texture2DArray to use
+		dsvDesc.Texture2DArray.MipSlice = 0u;			// mip level to use
 	}
 	else
 	{
@@ -38,6 +37,40 @@ IDepthStencilView::IDepthStencilView( Graphics &gfx,
 	}
 
 	HRESULT hres = getDevice( gfx )->CreateDepthStencilView( pTexture, &dsvDesc, &m_pD3dDsv );
+	ASSERT_HRES_IF_FAILED;
+}
+
+IDepthStencilView::IDepthStencilView( Graphics &gfx,
+	ID3D11Texture2D *pTextureRsc,
+	const DepthStencilViewMode dsvMode,
+	const int textureArrayIndex,
+	std::optional<unsigned> face )
+{
+	D3D11_TEXTURE2D_DESC texDesc{};
+	pTextureRsc->GetDesc( &texDesc );
+	m_width = texDesc.Width;
+	m_height = texDesc.Height;
+
+	// create ds view into the depth stencil texture
+	D3D11_DEPTH_STENCIL_VIEW_DESC dsvDesc{};
+	//dsvDesc.Flags = 0u;
+	dsvDesc.Format = getTypedFormatDsv( dsvMode );
+	if ( face.has_value() )
+	{
+		dsvDesc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2DARRAY;
+		dsvDesc.Texture2DArray.ArraySize = 1u;										// we're still only rendering to 1 face at a time
+		dsvDesc.Texture2DArray.FirstArraySlice = (textureArrayIndex * 6) + *face;	// first texture slice in the Texture2DArray to use
+		dsvDesc.Texture2DArray.MipSlice = 0u;
+	}
+	else
+	{
+		dsvDesc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2DARRAY;
+		dsvDesc.Texture2DArray.ArraySize = 1u;										// we're rendering depth/stencil to 1 face at a time
+		dsvDesc.Texture2DArray.FirstArraySlice = textureArrayIndex;
+		dsvDesc.Texture2DArray.MipSlice = 0u;
+	}
+
+	HRESULT hres = getDevice( gfx )->CreateDepthStencilView( pTextureRsc, &dsvDesc, &m_pD3dDsv );
 	ASSERT_HRES_IF_FAILED;
 }
 
@@ -52,7 +85,7 @@ IDepthStencilView::IDepthStencilView( Graphics &gfx,
 {
 	mwrl::ComPtr<ID3D11Texture2D> pTexture;
 
-	D3D11_TEXTURE2D_DESC texDesc = createTextureDescriptor( width, height, getTypelessFormatDsv( dsvMode ), ( bBindAsShaderInput ? BindFlags::DepthStencilTexture : BindFlags::DepthStencilTexture ), CpuAccessFlags::NoCpuAccess, false, TextureUsage::Default );
+	D3D11_TEXTURE2D_DESC texDesc = createTextureDescriptor( width, height, getTypelessFormatDsv( dsvMode ), ( bBindAsShaderInput ? BindFlags::DepthStencilTexture : BindFlags::DepthStencilTexture ), CpuAccessFlags::NoCpuAccess, TextureUsage::Default, false );
 
 	HRESULT hres = getDevice( gfx )->CreateTexture2D( &texDesc, nullptr, &pTexture );
 	ASSERT_HRES_IF_FAILED;
@@ -125,7 +158,7 @@ std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC> IDepthS
 	D3D11_TEXTURE2D_DESC dsvTexDesc{};
 	pDsTex->GetDesc( &dsvTexDesc );
 
-	D3D11_TEXTURE2D_DESC stagingTexDesc = createTextureDescriptor( dsvTexDesc.Width, dsvTexDesc.Height, dsvTexDesc.Format, (BindFlags) dsvTexDesc.BindFlags, CpuAccessFlags::CpuReadAccess, false, TextureUsage::Staging );
+	D3D11_TEXTURE2D_DESC stagingTexDesc = createTextureDescriptor( dsvTexDesc.Width, dsvTexDesc.Height, dsvTexDesc.Format, BindFlags::Unbind, CpuAccessFlags::CpuReadAccess, TextureUsage::Staging, false );
 
 	mwrl::ComPtr<ID3D11Texture2D> pStagingTex;
 	HRESULT hres = getDevice( gfx )->CreateTexture2D( &stagingTexDesc, nullptr, &pStagingTex );
@@ -149,14 +182,14 @@ std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC> IDepthS
 }
 
 const Bitmap IDepthStencilView::convertToBitmap( Graphics &gfx,
-	const unsigned width,
-	const unsigned height,
-	bool bLinearize /*= true*/ ) const
+	const unsigned textureWidth,
+	const unsigned textureHeight,
+	const bool bLinearize /*= true*/ ) const
 {
-	auto [pStagingTex, stagingTexDesc] = createStagingTexture( gfx );
+	const auto& [pStagingTex, stagingTexDesc] = createStagingTexture( gfx );
 
 	// create Bitmap and copy from staging texture to it
-	Bitmap bitmap{width, height};
+	Bitmap bitmap{textureWidth, textureHeight};
 	D3D11_MAPPED_SUBRESOURCE msr{};
 	HRESULT hres = getDeviceContext( gfx )->Map( pStagingTex.Get(), 0u, D3D11_MAP::D3D11_MAP_READ, 0u, &msr );
 	ASSERT_HRES_IF_FAILED;
@@ -166,14 +199,14 @@ const Bitmap IDepthStencilView::convertToBitmap( Graphics &gfx,
 	// .RowPitch contains the value that the runtime adds to pData to move from row to row, where each row contains multiple pixels.
 	// Note that the runtime might assign values to RowPitch and DepthPitch that are larger than anticipated because there might be padding between rows and depth
 	auto pData = static_cast<const char*>( msr.pData );
-	for ( unsigned y = 0u; y < height; ++y )
+	for ( unsigned y = 0u; y < textureHeight; ++y )
 	{
 		struct Pixel
 		{
 			unsigned char data[4];
 		};
 		auto p = reinterpret_cast<const Pixel*>( pData + msr.RowPitch * size_t( y ) );
-		for ( unsigned int x = 0; x < width; ++x )
+		for ( unsigned int x = 0; x < textureWidth; ++x )
 		{
 			if ( stagingTexDesc.Format == DXGI_FORMAT::DXGI_FORMAT_R24G8_TYPELESS )
 			{
@@ -312,9 +345,20 @@ DepthStencilOutput::DepthStencilOutput( Graphics &gfx,
 DepthStencilOutput::DepthStencilOutput( Graphics &gfx,
 	ID3D11Texture2D *pTexture,
 	const DepthStencilViewMode dsvMode,
-	std::optional<unsigned> face /*= {}*/ )
+	std::optional<unsigned> face )
 	:
 	IDepthStencilView{gfx, pTexture, dsvMode, face}
+{
+
+}
+
+DepthStencilOutput::DepthStencilOutput( Graphics &gfx,
+	ID3D11Texture2D *pTexture,
+	const DepthStencilViewMode dsvMode,
+	const int textureArrayIndex,
+	std::optional<unsigned> face )
+	:
+	IDepthStencilView(gfx, pTexture, dsvMode, textureArrayIndex, face)
 {
 
 }

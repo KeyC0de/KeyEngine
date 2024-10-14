@@ -15,7 +15,7 @@ TransparentPass::TransparentPass( Graphics &gfx,
 	:
 	RenderQueuePass{name, {}, true}
 {
-	addPassBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::DepthReadOnlyStencilOff ) );
+	addBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::DepthReadOnlyStencilOff ) );
 
 	// TextureSamplerState is set per mesh depending on whether the mesh has a texture
 

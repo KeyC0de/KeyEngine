@@ -1,6 +1,6 @@
 #include "texture_sampler_state.h"
 #include "graphics.h"
-#include "bindable_map.h"
+#include "bindable_registry.h"
 #include "os_utils.h"
 #include "dxgi_info_queue.h"
 #include "bindable_exception.h"
@@ -126,7 +126,7 @@ std::shared_ptr<TextureSamplerState> TextureSamplerState::fetch( Graphics &gfx,
 	const FilterMode filterMode,
 	const AddressMode addressMode )
 {
-	return BindableMap::fetch<TextureSamplerState>( gfx, samplingMode, filterMode, addressMode );
+	return BindableRegistry::fetch<TextureSamplerState>( gfx, samplingMode, filterMode, addressMode );
 }
 
 std::string TextureSamplerState::calcUid( const TextureSamplerMode samplingMode,

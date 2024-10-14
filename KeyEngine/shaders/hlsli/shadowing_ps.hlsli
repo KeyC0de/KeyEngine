@@ -1,30 +1,60 @@
-// Omnidirectional (PointLight) Cube Texture for Shadow mapping
-TextureCube shadowCubeMap : register(t3);
-SamplerComparisonState shadowCubeMapSampler : register(s1);
+#define MAX_LIGHTS 16
 
+
+// Omnidirectional (PointLight) Cube Texture for Shadow mapping
+//TextureCube shadowCubeMap : register(t4);
+//Texture2DArray shadowMapArray : register(t3);
+TextureCubeArray shadowCubeMapArray : register(t4);
+SamplerComparisonState shadowMapSampler : register(s1);
+
+// sampling the depth from the appropriate face of the shadow cube map
 float calculateShadowCubeMapSampleVectorProjectionLength( const in float3 fragPosLightSpace )
 {
 	static const float f = 100.0f;	// shadowCamFarZ
-	static const float n = 1.0f;
+	static const float n = 1.0f;	// shadowCamNearZ
 	static const float A = -f * n / ( f - n );
 	static const float B = f / ( f - n );
 
 	// get magnitudes for each component
-	const float3 sampleVectorMags = abs( fragPosLightSpace);
+	const float3 sampleVectorMags = abs( fragPosLightSpace );
 	// now we find out which is the major axis that corresponds to the face of the shadow cube map
+	// the dominant component determines the face of the cube we sample from
 	const float dominantAxisLen = max( sampleVectorMags.x, max( sampleVectorMags.y, sampleVectorMags.z ) );
+	// once the dominant component (of the uvw coordinate) is found then the other 2 components are used to compute the uv coordinates on that face
 	// project the light space depth-coord (whichever one may be the dominant one, ie. x, y or z) into the corresponding face of the cube
 	return A / dominantAxisLen + B;	// f * ( 1 - n * dominantAxisLen ) / ( f - n );
+
+	// The .x, .y, and .z components of fragPosLightSpace are not UVW coordinates by themselves.
+	// Instead they are manipulated in the above manner to determine the UVW coordinates
+	// example: Direction Vector (1.2, -0.5, 0.2):
+	// Face Selection: Here, 1.2 is the largest absolute value, so the positive X face (+X) is selected.
+	// 2D Coordinates: The Y and Z components (-0.5, 0.2) are used to compute the 2D coordinates on the +X face.
+	//		you could think of -0.5 and 0.2 as the uv coordinates that will map on the +x face
 }
 
-// the Comparison Sampler is used here to filter out fragments that rest inside the light space
+// the Comparison Sampler is used here to filter out fragments that rest outside the light space
 // this will be the case if the position of the fragment indicated by the sample vector's length is less than 1.0f
 // so if that fragment is not visible to the light ie when:
 // ( input.fragPosLightSpace.x < -1.0f || input.fragPosLightSpace.x > 1.0f ||
 //		input.fragPosLightSpace.y < -1.0f || input.fragPosLightSpace.y > 1.0f ||
 //		input.fragPosLightSpace.z < 0.0f  || input.fragPosLightSpace.z > 1.0f )
 // we will not illuminate it and we will apply the appropriate shadow level
-float calculateShadowLevel( const in float4 fragPosLightSpace )
+// using TextureCubeArray for now to accommodate multiple point lights
+//float calculateShadowLevelCubeMap( const in float4 fragPosLightSpace )
+//{
+//	return shadowCubeMap.SampleCmpLevelZero( shadowMapSampler, fragPosLightSpace.xyz, calculateShadowCubeMapSampleVectorProjectionLength( fragPosLightSpace.xyz ) ).x;
+//}
+
+float calculateShadowLevelCubeMapArray( const in float4 fragPosLightSpace,
+	const in float arrayIndex )
 {
-	return shadowCubeMap.SampleCmpLevelZero( shadowCubeMapSampler, fragPosLightSpace.xyz, calculateShadowCubeMapSampleVectorProjectionLength( fragPosLightSpace.xyz ) );
+	return shadowCubeMapArray.SampleCmpLevelZero( shadowMapSampler, float4(fragPosLightSpace.xyz, arrayIndex), calculateShadowCubeMapSampleVectorProjectionLength( fragPosLightSpace.xyz ) ).x;
 }
+
+/*
+float calculateShadowLevelMapArray( const in float2 uv,
+	const in float arrayIndex )
+{
+	return shadowMapArray.Sample( shadowMapSampler, float3(uv, arrayIndex) ).x;
+}
+*/

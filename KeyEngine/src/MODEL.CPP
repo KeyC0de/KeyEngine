@@ -75,7 +75,6 @@ Model::Model( std::unique_ptr<Mesh> pMesh,
 	m_nMeshNodes{1}
 {
 	const auto &meshName = pMesh->getName();
-	const auto &meshId = pMesh->getMeshId();
 #ifndef FINAL_RELEASE
 	m_imguiVisitor = ImguiPerModelNodeVisitor{meshName};
 #endif
@@ -88,7 +87,7 @@ Model::Model( std::unique_ptr<Mesh> pMesh,
 
 	const auto localNodeTransform = util::scaleTranslation( dx::XMMatrixIdentity(), 1.0f );
 	using namespace std::string_literals;
-	const auto &nodeName = "Node#"s + std::to_string( 0 ) + "#"s + meshName;
+	const auto &nodeName = "Node#"s + std::to_string( 0 ) + "#"s + meshName /*+ "_"s + std::to_string( pMesh->getMeshId() )*/;
 	m_pRoot = std::make_unique<Node>( nullptr, 0, nodeName, localNodeTransform, std::move( pMeshes ) );
 
 	setTransform( 1.0f, util::toRadians3( initialRotDeg ), initialPos );

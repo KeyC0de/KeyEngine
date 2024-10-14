@@ -1,6 +1,6 @@
 #include "vertex_shader.h"
 #include "graphics.h"
-#include "bindable_map.h"
+#include "bindable_registry.h"
 #include "utils.h"
 #include "os_utils.h"
 #include "dxgi_info_queue.h"
@@ -33,7 +33,7 @@ ID3DBlob* VertexShader::getBytecode() const noexcept
 std::shared_ptr<VertexShader> VertexShader::fetch( Graphics &gfx,
 	const std::string &filepath )
 {
-	return BindableMap::fetch<VertexShader>( gfx, filepath );
+	return BindableRegistry::fetch<VertexShader>( gfx, filepath );
 }
 
 std::string VertexShader::calcUid( const std::string &filepath )

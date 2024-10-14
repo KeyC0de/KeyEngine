@@ -7,8 +7,9 @@ const D3D11_TEXTURE2D_DESC createTextureDescriptor( const unsigned width,
 	const DXGI_FORMAT format,
 	const BindFlags bindFlags,
 	const CpuAccessFlags cpuAccessFlags,
-	const bool bCube,
 	const TextureUsage usage,
+	const bool bCube,
+	const unsigned nTextures /*= 1u*/,
 	const MultisamplingMode multisamplingMode /*= MultisamplingMode::None*/ )
 {
 	D3D11_TEXTURE2D_DESC texDesc{};
@@ -29,9 +30,7 @@ const D3D11_TEXTURE2D_DESC createTextureDescriptor( const unsigned width,
 	texDesc.Usage = (D3D11_USAGE) usage;
 	texDesc.BindFlags = (unsigned) bindFlags;
 	texDesc.CPUAccessFlags = (unsigned) cpuAccessFlags;
-	texDesc.ArraySize = bCube ?
-		6u :
-		1u;
+	texDesc.ArraySize = ( bCube == true ? 6u : 1u ) * nTextures;
 	texDesc.MiscFlags = bCube ?
 		D3D11_RESOURCE_MISC_TEXTURECUBE :
 		( bindFlags == BindFlags::RenderTargetTexture ? D3D11_RESOURCE_MISC_GENERATE_MIPS : 0u );

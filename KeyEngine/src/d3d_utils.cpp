@@ -10,6 +10,12 @@ namespace util
 namespace dx = DirectX;
 
 
+bool isNormalized( const DirectX::XMFLOAT3 &vec )
+{
+	const float magnitude = std::sqrt( vec.x * vec.x + vec.y * vec.y + vec.z * vec.z );
+	return util::abs( magnitude - 1.0 ) < Epsilon<float>;
+}
+
 DirectX::XMMATRIX XM_CALLCONV computeTransform( const DirectX::XMFLOAT3 &scale,
 	const DirectX::XMFLOAT3 &pos,
 	const DirectX::XMFLOAT3 &rot )

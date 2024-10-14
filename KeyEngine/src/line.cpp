@@ -96,7 +96,7 @@ Line::Line( Graphics &gfx,
 		addMaterial( std::move( opaque ) );
 	}
 	{// shadow map material
-		Material shadowMap{rch::shadow, "shadowMap", false};
+		Material shadowMap{rch::shadow, "shadow", false};
 
 		shadowMap.addBindable( InputLayout::fetch( gfx, line.m_vb.getLayout(), *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
 

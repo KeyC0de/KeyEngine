@@ -1,6 +1,6 @@
 #include "depth_stencil_state.h"
 #include "graphics.h"
-#include "bindable_map.h"
+#include "bindable_registry.h"
 #include "os_utils.h"
 #include "dxgi_info_queue.h"
 #include "bindable_exception.h"
@@ -127,7 +127,7 @@ Microsoft::WRL::ComPtr<ID3D11DepthStencilState>& DepthStencilState::getD3dDepthS
 std::shared_ptr<DepthStencilState> DepthStencilState::fetch( Graphics &gfx,
 	const Mode mode )
 {
-	return BindableMap::fetch<DepthStencilState>( gfx, mode );
+	return BindableRegistry::fetch<DepthStencilState>( gfx, mode );
 }
 
 std::string DepthStencilState::calcUid( const Mode mode )

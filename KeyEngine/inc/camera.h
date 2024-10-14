@@ -38,17 +38,21 @@ class Camera
 	float m_yawPrev;
 	// tethered flag indicates whether the Camera's position is bound to another object
 	// (eg shadow casting light), st when the object moves the camera moves along with it
-	bool m_bTethered;
+	bool m_bTethered;	// #TODO: instead of storing bool, store a raw pointer to the object to which this Camera is tethered to and check if Camera's functions restricted by it are being called by that object; if so then allow the operation, otherwise return
+	bool m_bPespectiveProjection;
 	bool m_bShowWidget = false;
 	bool m_bShowFrustum = false;
 	Model m_cameraWidget;
 	Model m_cameraFrustum;
 	std::string m_name;
-public:
+private:
 	static DirectX::XMMATRIX getShadowOrthographicMatrix( const unsigned w, const unsigned h, const float shadowCamFarZ, const float shadowCamNearZ = 1.0f ) noexcept;
 	static DirectX::XMMATRIX getShadowProjectionMatrix( const float shadowCamFarZ, const float shadowCamNearZ = 1.0f ) noexcept;
 public:
-	Camera( Graphics &gfx, const float fovDegrees = 90.0f, const DirectX::XMFLOAT3 &posDefault = {0.0f, 0.0f, 0.0f}, const float pitchDegDefault = 0.0f, const float yawDegDefault = 0.0f, const bool bTethered = false, const float nearZ = 0.5f, const float farZ = 200.0f, const DirectX::XMFLOAT4 camWidgetColor = {0.2f, 0.2f, 0.6f, 1.0f}, const DirectX::XMFLOAT4 camFrustumColor = {0.6f, 0.2f, 0.2f, 1.0f}, const float translationSpeed = 16.0f, const float rotationSpeed = 0.096f ) noexcept;
+	static DirectX::XMVECTOR computeTargetVector( const DirectX::XMFLOAT3 &pos, const float pitchDeg, const float yawDeg ) noexcept;
+	static std::pair<float, float> computePitchYawInDegFromDirectionVector( const DirectX::XMFLOAT3 &directionNormalized );
+public:
+	Camera( Graphics &gfx, const float width, const float height, const float fovDegrees = 90.0f, const DirectX::XMFLOAT3 &posDefault = {0.0f, 0.0f, 0.0f}, const float pitchDegDefault = 0.0f, const float yawDegDefault = 0.0f, const bool bTethered = false, const bool bPerspectiveProjection = true, const float nearZ = 0.5f, const float farZ = 200.0f, const DirectX::XMFLOAT4 camWidgetColor = {0.2f, 0.2f, 0.6f, 1.0f}, const DirectX::XMFLOAT4 camFrustumColor = {0.6f, 0.2f, 0.2f, 1.0f}, const float translationSpeed = 16.0f, const float rotationSpeed = 0.096f, const bool bShowDebugMeshes = false ) noexcept;
 
 	void update( const float dt, const float lerpBetweenFrames, const bool bEnableSmoothMovement = false ) cond_noex;
 	void render( const size_t channel = rch::all ) const cond_noex;
@@ -57,10 +61,9 @@ public:
 	void resetToDefault( Graphics &gfx ) noexcept;
 	DirectX::XMMATRIX getViewMatrix() const noexcept;
 	DirectX::XMMATRIX getReflectionViewMatrix( const DirectX::XMVECTOR &mirrorPlane ) const noexcept;
-	DirectX::XMMATRIX getOrthographicProjectionMatrix( const unsigned width, const unsigned height ) const noexcept;
-	DirectX::XMMATRIX getPerspectiveProjectionMatrix() const noexcept;
+	DirectX::XMMATRIX getProjectionMatrix( Graphics &gfx, const bool bForShadows, const float shadowCamFarZ ) const noexcept;
 	//	\function	getDirection	||	\date	2022/08/30 23:11
-	//	\brief	returns the vector describing the camera's direction aka "lookVector"
+	//	\brief	returns the vector describing the camera's direction - ie the direction the light is pointining - aka "lookVector"
 	DirectX::XMVECTOR getDirection() const noexcept;
 	DirectX::XMVECTOR getRight() const noexcept;
 	DirectX::XMVECTOR getUp() const noexcept;
@@ -91,6 +94,8 @@ private:
 	//			ofc the camera doesn't look at a position, it looks along a direction; any points along that direction will do to compute the view-matrix
 	DirectX::XMVECTOR getTarget() const noexcept;
 	void updateCameraFrustum( Graphics &gfx );
+	DirectX::XMMATRIX getOrthographicProjectionMatrix( const unsigned width, const unsigned height ) const noexcept;
+	DirectX::XMMATRIX getPerspectiveProjectionMatrix() const noexcept;
 };
 
 using Projector = Camera;

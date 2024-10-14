@@ -89,7 +89,7 @@
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PreprocessorDefinitions>SOLUTION_CONFIGURATION_STR="$(ConfigurationName)";FLIP_PRESENT;_DEBUG;NO_DUMPS;UNICODE;_UNICODE;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;%(PreprocessorDefinitions);BDEBUG=true;cond_noex=noexcept( !BDEBUG );pass_=(void)0;_CRT_SECURE_NO_WARNINGS;_32_BIT_ENTITY</PreprocessorDefinitions>
-      <AdditionalOptions>/we4239 /we4265 /we4715 /we4172 /Zc:__cplusplus /utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/we4239 /we4265 /we4715 /we4172 /we4189 /Zc:__cplusplus /utf-8 %(AdditionalOptions)</AdditionalOptions>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
       <SuppressStartupBanner>false</SuppressStartupBanner>
       <EnablePREfast>true</EnablePREfast>
@@ -124,7 +124,7 @@
       <PreprocessorDefinitions>SOLUTION_CONFIGURATION_STR="$(ConfigurationName)";_PROFILE;FLIP_PRESENT;NDEBUG;NO_DUMPS;UNICODE;_UNICODE;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;%(PreprocessorDefinitions);BDEBUG=false;cond_noex=noexcept( !BDEBUG );pass_=(void)0;_CRT_SECURE_NO_WARNINGS;_32_BIT_ENTITY</PreprocessorDefinitions>
       <FloatingPointModel>Fast</FloatingPointModel>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalOptions>/we4239 /we4265 /we4715 /we4172 /Zc:__cplusplus /utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/we4239 /we4265 /we4715 /we4172 /we4189 /Zc:__cplusplus /utf-8 %(AdditionalOptions)</AdditionalOptions>
       <SDLCheck />
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
       <SuppressStartupBanner>false</SuppressStartupBanner>
@@ -162,7 +162,7 @@
       <PreprocessorDefinitions>SOLUTION_CONFIGURATION_STR="$(ConfigurationName)";FLIP_PRESENT;FINAL_RELEASE;NDEBUG;NO_DUMPS;UNICODE;_UNICODE;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;%(PreprocessorDefinitions);BDEBUG=false;cond_noex=noexcept( !BDEBUG );pass_=(void)0;_CRT_SECURE_NO_WARNINGS;_32_BIT_ENTITY</PreprocessorDefinitions>
       <FloatingPointModel>Fast</FloatingPointModel>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalOptions>/we4239 /we4265 /we4715 /we4172 /Zc:__cplusplus /utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/we4239 /we4265 /we4715 /we4172 /we4189 /Zc:__cplusplus /utf-8 %(AdditionalOptions)</AdditionalOptions>
       <SDLCheck>
       </SDLCheck>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
@@ -237,7 +237,6 @@
     <ClCompile Include="src\job.cpp" />
     <ClCompile Include="src\opaque_pass.cpp" />
     <ClCompile Include="src\light_source.cpp" />
-    <ClCompile Include="src\light_source_shadow_vscb.cpp" />
     <ClCompile Include="src\material_loader.cpp" />
     <ClCompile Include="src\mesh.cpp" />
     <ClCompile Include="src\file_utils.cpp" />
@@ -344,11 +343,25 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="third_party\imgui\imgui.cpp" />
-    <ClCompile Include="third_party\imgui\imgui_demo.cpp" />
-    <ClCompile Include="third_party\imgui\imgui_draw.cpp" />
+    <ClCompile Include="third_party\imgui\imgui_demo.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/external:W0 %(AdditionalOptions)</AdditionalOptions>
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </DisableSpecificWarnings>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">/external:W0 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">/external:W0 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="third_party\imgui\imgui_draw.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/external:W0 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">/external:W0 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">/external:W0 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
     <ClCompile Include="third_party\imgui\imgui_impl_dx11.cpp" />
     <ClCompile Include="third_party\imgui\imgui_impl_win32.cpp" />
-    <ClCompile Include="third_party\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="third_party\imgui\imgui_widgets.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/external:W0 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">/external:W0 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">/external:W0 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
     <None Include="assets\resources\arrow.cur" />
     <None Include="assets\resources\homm_inspired_new.cur" />
     <None Include="assimp-vc143-mt.dll" />
@@ -368,13 +381,13 @@
     <None Include="lua53.dll" />
     <None Include="scripts\scripting.lua" />
     <None Include="config\test.ini" />
-    <None Include="shaders\hlsli\directional_light_pscb.hlsli" />
+    <None Include="shaders\hlsli\globals_pscb.hlsli" />
+    <None Include="shaders\hlsli\globals_vscb.hlsli" />
     <None Include="shaders\hlsli\hlsl_misc.hlsli" />
-    <None Include="shaders\hlsli\point_light_pscb.hlsli" />
+    <None Include="shaders\hlsli\light_pscb.hlsli" />
     <None Include="shaders\hlsli\shading_ps.hlsli" />
     <None Include="shaders\hlsli\shadowing_ps.hlsli" />
-    <None Include="shaders\hlsli\shadowing_vs.hlsli" />
-    <None Include="shaders\hlsli\spot_light_pscb.hlsli" />
+    <None Include="shaders\hlsli\light_vscb.hlsli" />
     <None Include="shaders\hlsli\transforms_vscb.hlsli" />
     <None Include="third_party\assimp\.editorconfig" />
     <None Include="third_party\assimp\color4.inl" />
@@ -395,7 +408,7 @@
     <ClInclude Include="games\arkanoid\paddle.h" />
     <ClInclude Include="inc\bindable.h" />
     <ClInclude Include="inc\bindable_exception.h" />
-    <ClInclude Include="inc\bindable_map.h" />
+    <ClInclude Include="inc\bindable_registry.h" />
     <ClInclude Include="inc\bindable_pass.h" />
     <ClInclude Include="inc\bitmap.h" />
     <ClInclude Include="inc\blend_state.h" />
@@ -441,7 +454,6 @@
     <ClInclude Include="inc\job.h" />
     <ClInclude Include="inc\opaque_pass.h" />
     <ClInclude Include="inc\light_source.h" />
-    <ClInclude Include="inc\light_source_shadow_vscb.h" />
     <ClInclude Include="inc\material_loader.h" />
     <ClInclude Include="inc\mesh.h" />
     <ClInclude Include="inc\mouse_picker.h" />

@@ -71,7 +71,7 @@ Component::Component_State::Component_State( Graphics &gfx,
 				auto &fpsTimer = gfx.getFpsTimer();
 
 				// if more than 1000ms have passed count fps
-				if ( fpsTimer.getDurationFromStart() > 1000 )
+				if ( fpsTimer.getMilliSecondsFromStart() > 1000 )
 				{
 					fpsText = std::to_string( fpsDisplayFrameCount );
 #if defined _DEBUG && !defined NDEBUG
@@ -707,9 +707,9 @@ void Component::resize( const int width,
 		//calculate_aspect_ratio_locked_resize( m_aspect_ratio_locked_behavior, previous_width, previous_height, new_width, new_height );
 	}
 
-	// DO NOT MOVE THIS below resize, as if you do, scale will always be 1
-	const float wScale = previous_width > 0 ? float(new_width) / float(previous_width) : 0.0f;
-	const float hScale = previous_height > 0 ? float(new_height) / float(previous_height) : 0.0f;
+	// #TODO: DO NOT MOVE THIS below resize, as if you do, scale will always be 1
+	//const float wScale = previous_width > 0 ? float(new_width) / float(previous_width) : 0.0f;
+	//const float hScale = previous_height > 0 ? float(new_height) / float(previous_height) : 0.0f;
 
 	for ( std::vector<std::unique_ptr<Component_State>>::iterator it = m_states.begin(); it != m_states.end(); ++it )
 	{

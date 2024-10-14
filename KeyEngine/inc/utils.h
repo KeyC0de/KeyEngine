@@ -17,6 +17,9 @@
 #include "assertions_console.h"
 #include "key_type_traits.h"
 
+#define FORCE_CRASH		int *var = nullptr;\
+						*var = 0xDEADBEEF;
+
 #if defined _MSC_VER || defined _WIN32 || defined _WIN64
 #	define restricted __declspec( restrict )	// indicates that a symbol is not aliased in the current scope, this semantic is propagated by the compiler
 #	define noaliasing __declspec( noalias )		// declares that the function does not modify memory outside the first level of indirection from the function's parameters. That is, the parameters are the only reference to the outside world the function has.
@@ -67,6 +70,8 @@ constexpr typename std::remove_reference<T>::type makePrValue( T &&val )
 
 namespace util
 {
+
+uint64_t combineUnsignedInt32to64( const unsigned int high32Bit, const unsigned int low32Bit );
 
 template<typename T>
 void safeDelete( T*& p )
@@ -459,9 +464,10 @@ bool insertUnique( const TContainer &container,
 	}
 	return false;
 }
+ALIAS_FUNCTION( insertUnique, emplaceBackUnique );
 
 template<typename TContainer, typename TPredicate, typename... TArgs>
-typename TContainer::iterator emplaceBackUniqueAndReturnIt( TContainer &container,
+typename TContainer::iterator insertUniqueAndReturnIt( TContainer &container,
 	TPredicate &&predicate,
 	TArgs&&... args )
 {
@@ -474,6 +480,7 @@ typename TContainer::iterator emplaceBackUniqueAndReturnIt( TContainer &containe
 	}
 	return result;
 }
+ALIAS_FUNCTION( insertUniqueAndReturnIt, emplaceBackUniqueAndReturnIt );
 
 template<typename TContainer, typename TComparator>
 bool hasDuplicates( const TContainer &container,
@@ -506,7 +513,6 @@ bool hasDuplicates( const TContainer &container,
 
 			is_unique = std::none_of( std::next( itr1 ), end, uniqueness_predicate );
 		}
-
 	}
 
 	return is_unique == false;

@@ -1,5 +1,6 @@
+#include "hlsli/globals_vscb.hlsli"
 #include "hlsli/transforms_vscb.hlsli"
-#include "hlsli/shadowing_vs.hlsli"
+#include "hlsli/light_vscb.hlsli"
 
 
 struct VSIn
@@ -11,21 +12,42 @@ struct VSIn
 
 struct VSOut
 {
-	float3 viewSpacePos : Position;
-	float3 normalViewSpace : Normal;
+	float3 viewSpacePos : PositionViewSpace;
+	float3 viewSpaceNormal : Normal;
 	float2 tc : TexCoord;
-	float4 posLightSpace : PositionLightSpace;
+	float4 posLightSpace[MAX_LIGHTS] : PositionLightSpace;
 	float4 pos : SV_Position;
 };
 
-
 VSOut main( VSIn input )
 {
+	const float4 inputPos = float4(input.pos, 1.0f);
+
 	VSOut output;
-	output.viewSpacePos = (float3) mul( float4(input.pos, 1.0f), worldView );
-	output.normalViewSpace = mul( input.nrm, (float3x3) worldView );
-	output.pos = mul( float4(input.pos, 1.0f), worldViewProjection );
+	output.viewSpacePos = (float3) mul( inputPos, cb_worldView );
+	output.viewSpaceNormal = mul( input.nrm, (float3x3) cb_worldView );
 	output.tc = input.tc;
-	output.posLightSpace = convertVertexPosToLightSpace( input.pos, world );
+	output.pos = mul( inputPos, cb_worldViewProjection );
+
+	float4 localPosLightSpace[MAX_LIGHTS];
+	int nNonPointLights = cb_nLights - cb_nPointLights;
+	int i = 0;
+	for ( i = 0; i < cb_nLights && i < MAX_LIGHTS; ++i )
+	{
+		if (i < nNonPointLights)
+		{
+			localPosLightSpace[i] = convertVertexPosToNonPointLightSpace(inputPos, cb_world, i);
+		}
+		else
+		{
+			localPosLightSpace[i] = convertVertexPosToPointLightSpace(inputPos, cb_world, i);
+		}
+	}
+	[unroll]
+	for ( i = 0; i < cb_nLights && i < MAX_LIGHTS; ++i )
+	{
+		output.posLightSpace[i] = localPosLightSpace[i];
+	}
+
 	return output;
 }

@@ -1,6 +1,6 @@
 #include "index_buffer.h"
 #include "graphics.h"
-#include "bindable_map.h"
+#include "bindable_registry.h"
 #include "os_utils.h"
 #include "dxgi_info_queue.h"
 
@@ -50,7 +50,7 @@ std::shared_ptr<IndexBuffer> IndexBuffer::fetch( Graphics &gfx,
 	const std::vector<unsigned> &indices )
 {
 	ASSERT( tag != "?", "Invalid tag!" );
-	return BindableMap::fetch<IndexBuffer>( gfx, tag, indices );
+	return BindableRegistry::fetch<IndexBuffer>( gfx, tag, indices );
 }
 
 std::string IndexBuffer::getUid() const noexcept

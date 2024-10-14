@@ -36,7 +36,7 @@ public:
 	void bindRenderSurface( Graphics &gfx, IDepthStencilView *pDepthStencilView ) cond_noex;
 	void clear( Graphics &gfx, const std::array<float, 4> &color = {0.0f, 0.0f, 0.0f, 0.0f} ) cond_noex override;
 	void clean( Graphics &gfx ) cond_noex;
-	const Bitmap convertToBitmap( Graphics &gfx, const unsigned width, const unsigned height ) const;
+	const Bitmap convertToBitmap( Graphics &gfx, const unsigned textureWidth, const unsigned textureHeight ) const;
 	unsigned getWidth() const noexcept;
 	unsigned getHeight() const noexcept;
 	Microsoft::WRL::ComPtr<ID3D11RenderTargetView>& d3dResourceCom() noexcept;

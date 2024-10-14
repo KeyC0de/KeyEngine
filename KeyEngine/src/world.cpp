@@ -7,7 +7,7 @@ void World::update( const float dt )
 
 	/*
 	ThreadPoolJ &threadPool = ThreadPoolJ::instance( 4u, true );
-	threadPool.enqueue( &func_async::doPeriodically, &BindableMap::garbageCollect, 5000u, false );
+	threadPool.enqueue( &func_async::doPeriodically, &BindableRegistry::garbageCollect, 5000u, false );
 
 	threadPool.enqueue( &func_async::doLater,
 		[this]() -> void

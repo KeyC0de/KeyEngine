@@ -32,9 +32,9 @@ Pass2D::Pass2D( Graphics &gfx,
 {
 	ASSERT( gph_mode::get() == gph_mode::_2D, "Not in d2d mode!" );
 
-	addPassBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
+	addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
-	addPassBindable( std::make_shared<DepthStencilState>( gfx, DepthStencilState::DepthOffStencilOff ) );
+	addBindable( std::make_shared<DepthStencilState>( gfx, DepthStencilState::DepthOffStencilOff ) );
 
 	auto pVs = VertexShader::fetch( gfx, "flat2d_vs.cso" );
 
@@ -53,26 +53,26 @@ Pass2D::Pass2D( Graphics &gfx,
 	vb[2].getElement<Type::Texture2D>() = {1.0f, 1.0f};
 	vb[3].getElement<Type::Texture2D>() = {0.0f, 1.0f};
 
-	addPassBindable( InputLayout::fetch( gfx, vb.getLayout(), *pVs ) );
+	addBindable( InputLayout::fetch( gfx, vb.getLayout(), *pVs ) );
 
-	addPassBindable( std::make_shared<VertexBuffer>( gfx, vb ) );
+	addBindable( std::make_shared<VertexBuffer>( gfx, vb ) );
 
-	addPassBindable( std::move( pVs ) );
+	addBindable( std::move( pVs ) );
 
 	std::vector<unsigned> indices = {0, 1, 2, 2, 3, 0};
-	addPassBindable( std::make_shared<IndexBuffer>( gfx, indices ) );
+	addBindable( std::make_shared<IndexBuffer>( gfx, indices ) );
 
-	addPassBindable( std::make_shared<PixelShader>( gfx, "flat2d_ps.cso" ) );
+	addBindable( std::make_shared<PixelShader>( gfx, "flat2d_ps.cso" ) );
 
-	addPassBindable( std::make_shared<Texture>( gfx, gfx.getClientWidth(), gfx.getClientHeight(), 0u ) );
+	addBindable( std::make_shared<Texture>( gfx, gfx.getClientWidth(), gfx.getClientHeight(), 0u ) );
 
 #ifdef D2D_ONLY
 	gfx.create2dFactory();
 #endif
 
-	addPassBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
+	addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );
 
-	addPassBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Point, TextureSamplerState::AddressMode::Clamp ) );
+	addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Point, TextureSamplerState::AddressMode::Clamp ) );
 
 	//m_sprite = std::make_unique<Sprite>( LR"(assets\textures\ba2_icon.png)", gfx );
 	//m_player = std::make_unique<SpriteSheet>( LR"(assets\textures\player.png)", gfx, 32, 32 );

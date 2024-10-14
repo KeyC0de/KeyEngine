@@ -18,9 +18,9 @@ BlurOutlineDrawPass::BlurOutlineDrawPass( Graphics &gfx,
 	:
 	RenderQueuePass{name, {}, false}
 {
-	addPassBindable( VertexShader::fetch( gfx, "flat_vs.cso" ) );
-	addPassBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
-	addPassBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::DepthOffStencilReadFF ) );
+	addBindable( VertexShader::fetch( gfx, "flat_vs.cso" ) );
+	addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
+	addBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::DepthOffStencilReadFF ) );
 
 	const unsigned width = gfx.getClientWidth() / rezReductFactor;
 	const unsigned height = gfx.getClientHeight() / rezReductFactor;

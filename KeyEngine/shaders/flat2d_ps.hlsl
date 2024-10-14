@@ -1,7 +1,6 @@
 Texture2D texture2d : register(t0);
 SamplerState sam : register(s0);
 
-
 struct PSIn
 {
 	float4 pos : SV_Position;
@@ -12,7 +11,6 @@ struct PSOut
 {
 	float4 finalColor : SV_Target;
 };
-
 
 PSOut main( PSIn input )
 {

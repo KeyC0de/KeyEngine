@@ -110,7 +110,7 @@ Terrain::Terrain( Graphics &gfx,
 		addMaterial( std::move( opaque ) );
 	}
 	{//shadow map material
-		Material shadowMap{rch::shadow, "shadowMap", false};
+		Material shadowMap{rch::shadow, "shadow", false};
 
 		shadowMap.addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
 
@@ -157,12 +157,13 @@ Terrain::Terrain( Graphics &gfx,
 	}
 }
 
-void Terrain::transformVertices( ver::VBuffer &vb,
-	const double value ) noexcept
+void Terrain::transformVerticesPosition( ver::VBuffer &vb,
+	const DirectX::XMMATRIX &matrix ) noexcept
 {
 	const size_t numVertices = vb.getVertexCount();
 	for ( size_t i = 0; i < numVertices; ++i )
 	{
-		auto &vertexHeight = vb[0].getElement<ver::VertexInputLayout::ILEementType::Position3D>().y;
+		auto &pos = vb[0].getElement<ver::VertexInputLayout::ILEementType::Position3D>();
+		dx::XMStoreFloat3( &pos, dx::XMVector3Transform( dx::XMLoadFloat3( &pos ), matrix ) );
 	}
 }

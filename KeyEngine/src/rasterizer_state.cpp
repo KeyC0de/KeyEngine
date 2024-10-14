@@ -1,6 +1,6 @@
 #include "rasterizer_state.h"
 #include "graphics.h"
-#include "bindable_map.h"
+#include "bindable_registry.h"
 #include "os_utils.h"
 #include "bindable_exception.h"
 #include "dxgi_info_queue.h"
@@ -71,7 +71,7 @@ std::shared_ptr<RasterizerState> RasterizerState::fetch( Graphics &gfx,
 	const float slopeBias /*= D3D11_DEFAULT_SLOPE_SCALED_DEPTH_BIAS*/,
 	const float biasClamp /*= D3D11_DEFAULT_DEPTH_BIAS_CLAMP*/ )
 {
-	return BindableMap::fetch<RasterizerState>( gfx, mode, fillMode, faceMode, depthBias, slopeBias, biasClamp );
+	return BindableRegistry::fetch<RasterizerState>( gfx, mode, fillMode, faceMode, depthBias, slopeBias, biasClamp );
 }
 
 std::string RasterizerState::calcUid( const RasterizerMode mode,

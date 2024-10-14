@@ -1,6 +1,6 @@
 #include "input_layout.h"
 #include "graphics.h"
-#include "bindable_map.h"
+#include "bindable_registry.h"
 #include "vertex_shader.h"
 #include "os_utils.h"
 #include "dxgi_info_queue.h"
@@ -34,7 +34,7 @@ std::shared_ptr<InputLayout> InputLayout::fetch( Graphics &gfx,
 	const ver::VertexInputLayout &vertexLayout,
 	const VertexShader &vs )
 {
-	return BindableMap::fetch<InputLayout>( gfx, vertexLayout, vs );
+	return BindableRegistry::fetch<InputLayout>( gfx, vertexLayout, vs );
 }
 
 std::string InputLayout::calcUid( const ver::VertexInputLayout &vertexLayout,

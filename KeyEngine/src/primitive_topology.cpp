@@ -1,6 +1,6 @@
 #include "primitive_topology.h"
 #include "graphics.h"
-#include "bindable_map.h"
+#include "bindable_registry.h"
 #include "dxgi_info_queue.h"
 
 
@@ -24,7 +24,7 @@ void PrimitiveTopology::bind( Graphics &gfx ) cond_noex
 std::shared_ptr<PrimitiveTopology> PrimitiveTopology::fetch( Graphics &gfx,
 	const D3D11_PRIMITIVE_TOPOLOGY topology )
 {
-	return BindableMap::fetch<PrimitiveTopology>( gfx, topology );
+	return BindableRegistry::fetch<PrimitiveTopology>( gfx, topology );
 }
 
 std::string PrimitiveTopology::calcUid( const D3D11_PRIMITIVE_TOPOLOGY topology )

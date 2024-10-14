@@ -24,7 +24,7 @@
 #	include "imgui_visitors.h"
 #endif
 #if defined _DEBUG && !defined NDEBUG
-#	include "bindable_map.h"
+#	include "bindable_registry.h"
 #endif
 
 
@@ -162,13 +162,18 @@ Sandbox3d::Sandbox3d( const int width,
 	Game(width, height, "KeyEngine 3d Sandbox", x, y, nWindows),
 	IListener<SwapChainResizedEvent>()
 {
+	const auto &settings = s_settingsMan.getSettings();
+
 	auto &gfx = m_mainWindow.getGraphics();
 
-	s_cameraMan.add( std::make_unique<Camera>( gfx, 60.0f, dx::XMFLOAT3{0.0f, 0.0f, 0.0f}, 0.0f, 90.0f, false, 0.5f, 1000.0f ) );
-	s_cameraMan.add( std::make_unique<Camera>( gfx, 45.0f, dx::XMFLOAT3{-13.5f, 28.8f, -6.4f}, 13.0f, 61.0f, false, 0.5f, 400.0f ) );
+	s_cameraMan.add( std::make_unique<Camera>( gfx, gfx.getClientWidth(), gfx.getClientHeight(), 60.0f, dx::XMFLOAT3{0.0f, 0.0f, 0.0f}, 0.0f, 90.0f, false, true, 0.5f, 1000.0f ) );
+	s_cameraMan.add( std::make_unique<Camera>( gfx, gfx.getClientWidth(), gfx.getClientHeight(), 45.0f, dx::XMFLOAT3{-13.5f, 28.8f, -6.4f}, 13.0f, 61.0f, false, true, 0.5f, 400.0f ) );
 
-	m_pPointLight1 = std::make_unique<PointLight>( gfx, 0.5f, DirectX::XMFLOAT3{0.0f, 0.0f, 0.0f}, DirectX::XMFLOAT3{10.0f, 5.0f, -1.4f}, DirectX::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f}, true, true );
-	//m_pPointLight2 = std::make_unique<PointLight>( gfx, 1.0f, {0.0f, 1.0f, 0.f}, {5.0f, 15.0f, 10.0f}, DirectX::XMFLOAT4{1.0f, 1.0f, 0.2f, 0.25f}, false, false );
+
+	m_lights.reserve( settings.iMaxShadowCastingDynamicLights );
+	//m_lights.push_back( std::make_unique<DirectionalLight>( gfx, 0.5f, DirectX::XMFLOAT3{0.0f, 0.0f, 0.0f}, DirectX::XMFLOAT3{10.0f, 5.0f, -1.4f}, DirectX::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f}, true, true, 1.0f ) );
+	m_lights.push_back( std::make_unique<PointLight>( gfx, 0.5f, DirectX::XMFLOAT3{0.0f, 0.0f, 0.0f}, DirectX::XMFLOAT3{10.0f, 5.0f, -1.4f}, DirectX::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f}, true, true, 1.0f ) );
+	//m_lights.push_back( std::make_unique<PointLight>( gfx, 1.0f, DirectX::XMFLOAT3{0.0f, 1.0f, 0.f}, DirectX::XMFLOAT3{5.0f, 15.0f, 10.0f}, DirectX::XMFLOAT4{1.0f, 1.0f, 0.2f, 0.25f}, true, true, 0.5f ) );
 
 
 	m_models.reserve( 16 );
@@ -404,19 +409,65 @@ void Sandbox3d::update( Graphics &gfx,
 	const float dt,
 	const float lerpBetweenFrames )
 {
+	static const auto &settings = s_settingsMan.getSettings();
+
 	const auto &activeCamera = s_cameraMan.getActiveCamera();
 	activeCamera.makeActive( gfx, false );
-	// set cameras to the passes that need them - the right V & P matrices to be used for each pass
-	if ( m_pPointLight1->isCastingShadows() )
-	{
-		gfx.getRenderer3d().setShadowCamera( *m_pPointLight1->shareCamera(), true );
-	}
 	gfx.getRenderer3d().setActiveCamera( activeCamera );
 
-	const auto &settings = s_settingsMan.getSettings();
+	//if ( util::modulus( gfx.getFrameNum(), 5ull ) == 0 )	// #optimization: no need to update shadows every frame
+	{
+		std::sort( m_lights.begin(), m_lights.end(), [] (std::unique_ptr<ILightSource> &lhs, std::unique_ptr<ILightSource> &rhs)
+			{
+				// shadow-casting lights come first
+				const unsigned lhsShadowCasting = lhs->isCastingShadows() ? 0 : 1;
+				const unsigned rhsShadowCasting = rhs->isCastingShadows() ? 0 : 1;
+				if ( lhsShadowCasting != rhsShadowCasting )
+				{
+					return lhsShadowCasting < rhsShadowCasting;
+				}
 
-	m_pPointLight1->update( gfx, dt, lerpBetweenFrames, settings.bEnableSmoothMovement );
-	//m_pPointLight2->update( gfx, dt, lerpBetweenFrames, settings.bEnableSmoothMovement );
+				// non-frustum culled lights come second
+				const unsigned lhsFrustumCulled = lhs->isFrustumCulled() ? 1 : 0;
+				const unsigned rhsFrustumCulled = rhs->isFrustumCulled() ? 1 : 0;
+				if ( lhsFrustumCulled != rhsFrustumCulled )
+				{
+					return lhsFrustumCulled < rhsFrustumCulled;
+				}
+
+				// non-point lights come third
+				const unsigned lhsLightTypeId = (unsigned) lhs->getType();
+				const unsigned rhsLightTypeId = (unsigned) rhs->getType();
+				if ( lhsLightTypeId != rhsLightTypeId )
+				{
+					return lhsLightTypeId < rhsLightTypeId;
+				}
+
+				return false;
+			} );
+
+		const auto numShadowCastingUnculledLights = std::count_if( m_lights.begin(), m_lights.end(), [] (std::unique_ptr<ILightSource> &pLight)
+			{
+				return pLight->isCastingShadows() && !pLight->isFrustumCulled();
+			} );
+
+		std::vector<ILightSource*> shadowCastingUnculledLights;
+		shadowCastingUnculledLights.reserve( numShadowCastingUnculledLights );
+		for ( const auto &pLight : m_lights )
+		{
+			if ( pLight->isCastingShadows() )
+			{
+				shadowCastingUnculledLights.push_back( pLight.get() );
+			}
+		}
+
+		gfx.getRenderer3d().setShadowCastingLights( gfx, shadowCastingUnculledLights );
+	}
+
+	for ( auto &pLight : m_lights )
+	{
+		pLight->update( gfx, dt, lerpBetweenFrames, settings.bEnableSmoothMovement );
+	}
 
 	m_terrain.update( dt, lerpBetweenFrames, settings.bEnableSmoothMovement );
 
@@ -435,8 +486,6 @@ void Sandbox3d::updateFixed( const float dt )
 	// used for stuff that need to be in-step with the physics engine, in order to guarantee a deterministic timestep that is independent of the frame-rate dt
 	// apply continuous forces here (but an instantaneous impulse like a character jumping can and should be done in update instead after input detects it)
 	// also animation that pertains to gameplay (or physics) should be done here (eg character animation in multiplayer game) if you care about fairness
-
-
 }
 
 void Sandbox3d::render( Graphics &gfx )
@@ -445,8 +494,10 @@ void Sandbox3d::render( Graphics &gfx )
 
 	s_cameraMan.render( rch::opaque | rch::wireframe );
 
-	m_pPointLight1->render( rch::opaque );
-	//m_pPointLight2->render( rch::opaque );
+	for ( auto &pLight : m_lights )
+	{
+		pLight->render( rch::opaque );
+	}
 
 	m_terrain.render( rch::opaque | rch::wireframe );
 	for ( auto &model : m_models )
@@ -463,11 +514,11 @@ void Sandbox3d::test( Graphics &gfx )
 {
 #ifndef FINAL_RELEASE
 	using namespace std::string_literals;
-	KeyConsole &console = KeyConsole::getInstance();
+	//KeyConsole &console = KeyConsole::getInstance();
 
-	//const BindableMap &instanceToBeInspected = BindableMap::getInstance();
-	//console.print( "BindableMap instance count: "s + std::to_string( BindableMap::getInstanceCount() ) + "\n"s );
-	//console.print( "BindableMap garbage count: "s + std::to_string( BindableMap::getGarbageCount() ) + "\n"s );
+	//const BindableRegistry &instanceToBeInspected = BindableRegistry::getInstance();
+	//console.print( "BindableRegistry instance count: "s + std::to_string( BindableRegistry::getInstanceCount() ) + "\n"s );
+	//console.print( "BindableRegistry garbage count: "s + std::to_string( BindableRegistry::getGarbageCount() ) + "\n"s );
 
 
 	//const auto &carabiner =  m_models.back();
@@ -482,9 +533,10 @@ void Sandbox3d::test( Graphics &gfx )
 	// showcase Material controls by passing visitors to the object hierarchies
 	s_cameraMan.displayImguiWidgets( gfx );
 
-	m_pPointLight1->displayImguiWidgets();
-	//m_pPointLight2->displayImguiWidgets();
-
+	for ( auto &light : m_lights )
+	{
+		light->displayImguiWidgets();
+	}
 
 	m_terrain.displayImguiWidgets( gfx );
 
@@ -505,8 +557,10 @@ void Sandbox3d::test( Graphics &gfx )
 void Sandbox3d::connectToRenderer( ren::Renderer3d &renderer )
 {
 	s_cameraMan.connectMaterialsToRenderer( renderer );
-	m_pPointLight1->connectMaterialsToRenderer( renderer );
-	//m_pPointLight2->connectMaterialsToRenderer( renderer );
+	for ( auto &pLight : m_lights )
+	{
+		pLight->connectMaterialsToRenderer( renderer );
+	}
 
 	m_terrain.connectMaterialsToRenderer( renderer );
 	m_terrain.setMaterialEnabled( rch::opaque, false );
@@ -617,11 +671,11 @@ int Arkanoid::checkInput( const float dt )
 
 	if ( keyboard.isKeyPressed( VK_LEFT ) )
 	{
-		m_paddle.setPositionRel( -s_speed * dt );
+		m_paddle.setTranslationRel( -s_speed * dt );
 	}
 	if ( keyboard.isKeyPressed( VK_RIGHT ) )
 	{
-		m_paddle.setPositionRel( s_speed * dt );
+		m_paddle.setTranslationRel( s_speed * dt );
 	}
 	if ( keyboard.isKeyPressed( VK_BACK ) )
 	{

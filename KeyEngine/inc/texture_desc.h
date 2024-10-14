@@ -5,6 +5,7 @@
 
 enum BindFlags : unsigned
 {
+	Unbind = 0u,
 	TextureOnly = D3D11_BIND_SHADER_RESOURCE,
 	RenderTargetOnly = D3D11_BIND_RENDER_TARGET,
 	RenderTargetTexture = D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_RENDER_TARGET,
@@ -44,7 +45,7 @@ enum MultisamplingMode : unsigned
 	Max,	// #TODO: multisampling
 };
 
-const D3D11_TEXTURE2D_DESC createTextureDescriptor( const unsigned width, const unsigned height, const DXGI_FORMAT format, const BindFlags bindFlags, const CpuAccessFlags cpuAccessFlags, const bool bCube, const TextureUsage usage, const MultisamplingMode multisamplingMode = MultisamplingMode::None );
+const D3D11_TEXTURE2D_DESC createTextureDescriptor( const unsigned width, const unsigned height, const DXGI_FORMAT format, const BindFlags bindFlags, const CpuAccessFlags cpuAccessFlags, const TextureUsage usage, const bool bCube, const unsigned nTextures = 1u, const MultisamplingMode multisamplingMode = MultisamplingMode::None );
 
 const DXGI_FORMAT getFormatRtv( const RenderTargetViewMode mode );
 
@@ -53,6 +54,7 @@ const DXGI_FORMAT getFormatRtv( const RenderTargetViewMode mode );
 //				DS format for D3D11_TEXTURE2D_DESC creation
 //				_TYPELESS is actually a float type
 //				DXGI_FORMAT_R32_TYPELESS is compatible with both DXGI_FORMAT_D32_FLOAT and DXGI_FORMAT_R32_FLOAT
+//				typeless formats that allow the same texture to be interpreted differently depending on the context and they are necessary if the texture is to be used in multiple contexts eg. depth testing and sampling in shaders
 const DXGI_FORMAT getTypelessFormatDsv( const DepthStencilViewMode mode );
 
 //	\function		||	\date	2022/10/13 13:52

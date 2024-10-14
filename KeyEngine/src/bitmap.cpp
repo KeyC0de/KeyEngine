@@ -31,9 +31,9 @@ size_t Bitmap::getSize() const noexcept
 
 void Bitmap::clear( const Texel fillValue ) noexcept
 {
-	const auto width = getWidth();
 	const auto height = getHeight();
 	auto &imgData = *m_scratchImg.GetImage( 0, 0, 0 );
+	ASSERT( (size_t) getWidth() == imgData.width, "Inconsistent bitmap width!" );
 	for ( size_t y = 0u; y < height; ++y )
 	{
 		auto rowStart = reinterpret_cast<Texel*>( imgData.pixels + imgData.rowPitch * y );

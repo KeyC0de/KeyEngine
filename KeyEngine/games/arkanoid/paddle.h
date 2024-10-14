@@ -25,5 +25,5 @@ public:
 	void doWallCollision( const RectangleF &walls );
 	RectangleF rect() const;
 	void resetCollisionCooldown();
-	void setPositionRel( const float val );
+	void setTranslationRel( const float val );
 };

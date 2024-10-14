@@ -13,11 +13,11 @@ BlurPass::BlurPass( Graphics &gfx,
 	IFullscreenPass{gfx, name}
 {
 	// disable Blend State here for any later UI Passes
-	addPassBindable( BlendState::fetch( gfx, BlendState::Mode::NoBlend, 0u ) );
+	addBindable( BlendState::fetch( gfx, BlendState::Mode::NoBlend, 0u ) );
 
-	addPassBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
+	addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
 
-	addPassBindable( PixelShader::fetch( gfx, "blur_ps.cso" ) );
+	addBindable( PixelShader::fetch( gfx, "blur_ps.cso" ) );
 }
 
 void BlurPass::reset() cond_noex

@@ -3845,6 +3845,7 @@ STBTT_DEF void stbtt_PackSetSkipMissingCodepoints(stbtt_pack_context *spc, int s
 
 #define STBTT__OVER_MASK  (STBTT_MAX_OVERSAMPLE-1)
 
+#pragma warning( disable : 3902 6385 )
 static void stbtt__h_prefilter(unsigned char *pixels, int w, int h, int stride_in_bytes, unsigned int kernel_width)
 {
    unsigned char buffer[STBTT_MAX_OVERSAMPLE];
@@ -3906,7 +3907,9 @@ static void stbtt__h_prefilter(unsigned char *pixels, int w, int h, int stride_i
 	  pixels += stride_in_bytes;
    }
 }
+#pragma warning( default : 3902 6385 )
 
+#pragma warning( disable : 6385 )
 static void stbtt__v_prefilter(unsigned char *pixels, int w, int h, int stride_in_bytes, unsigned int kernel_width)
 {
    unsigned char buffer[STBTT_MAX_OVERSAMPLE];
@@ -3968,6 +3971,7 @@ static void stbtt__v_prefilter(unsigned char *pixels, int w, int h, int stride_i
 	  pixels += 1;
    }
 }
+#pragma warning( default : 6385 )
 
 static float stbtt__oversample_shift(int oversample)
 {

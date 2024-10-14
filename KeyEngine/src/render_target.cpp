@@ -48,7 +48,7 @@ IRenderTargetView::IRenderTargetView( Graphics &gfx,
 	m_width(width),
 	m_height(height)
 {
-	D3D11_TEXTURE2D_DESC texDesc = createTextureDescriptor( width, height, DXGI_FORMAT_B8G8R8A8_UNORM, BindFlags::RenderTargetTexture, CpuAccessFlags::NoCpuAccess, false, TextureUsage::Default );
+	D3D11_TEXTURE2D_DESC texDesc = createTextureDescriptor( width, height, DXGI_FORMAT_B8G8R8A8_UNORM, BindFlags::RenderTargetTexture, CpuAccessFlags::NoCpuAccess, TextureUsage::Default, false );
 
 	mwrl::ComPtr<ID3D11Texture2D> pTexture;
 	HRESULT hres = getDevice( gfx )->CreateTexture2D( &texDesc, nullptr, &pTexture );
@@ -130,7 +130,7 @@ std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC> IRender
 	D3D11_TEXTURE2D_DESC rtvTexDesc{};
 	pRtvTex->GetDesc( &rtvTexDesc );
 
-	D3D11_TEXTURE2D_DESC stagingTexDesc = createTextureDescriptor( rtvTexDesc.Width, rtvTexDesc.Height, rtvTexDesc.Format, (BindFlags) rtvTexDesc.BindFlags, CpuAccessFlags::CpuReadAccess, false, TextureUsage::Staging );
+	D3D11_TEXTURE2D_DESC stagingTexDesc = createTextureDescriptor( rtvTexDesc.Width, rtvTexDesc.Height, rtvTexDesc.Format, BindFlags::Unbind, CpuAccessFlags::CpuReadAccess, TextureUsage::Staging, false );
 
 	mwrl::ComPtr<ID3D11Texture2D> pStagingTex;
 	HRESULT hres = getDevice( gfx )->CreateTexture2D( &stagingTexDesc, nullptr, &pStagingTex );
@@ -156,8 +156,8 @@ std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC> IRender
 }
 
 const Bitmap IRenderTargetView::convertToBitmap( Graphics &gfx,
-	const unsigned width,
-	const unsigned height ) const
+	const unsigned textureWidth,
+	const unsigned textureHeight ) const
 {
 	auto [pStagingTex, stagingTexDesc] = createStagingTexture( gfx );
 
@@ -167,7 +167,7 @@ const Bitmap IRenderTargetView::convertToBitmap( Graphics &gfx,
 	}
 
 	// mapping texture and preparing vector
-	Bitmap bitmap{width, height};
+	Bitmap bitmap{textureWidth, textureHeight};
 
 	D3D11_MAPPED_SUBRESOURCE msr{};
 	HRESULT hres = getDeviceContext( gfx )->Map( pStagingTex.Get(), 0u, D3D11_MAP::D3D11_MAP_READ, 0u, &msr );
@@ -176,10 +176,10 @@ const Bitmap IRenderTargetView::convertToBitmap( Graphics &gfx,
 
 	auto pData = static_cast<const char*>( msr.pData );
 	// iterate by Height then Width over the staging texture
-	for ( unsigned int y = 0; y < height; ++y )
+	for ( unsigned int y = 0; y < textureHeight; ++y )
 	{
 		auto p = reinterpret_cast<const Bitmap::Texel*>( pData + msr.RowPitch * y );
-		for ( unsigned int x = 0; x < width; ++x )
+		for ( unsigned int x = 0; x < textureWidth; ++x )
 		{
 			bitmap.setTexel( x, y, *( p + x ) );
 		}

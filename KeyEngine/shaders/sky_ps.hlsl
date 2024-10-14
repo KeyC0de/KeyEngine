@@ -3,14 +3,13 @@ SamplerState sampl : register(s0);
 
 struct PSIn
 {
-	float3 worldPos : Position;
+	float3 worldPos : PositionWorldSpace;
 };
 
 struct PSOut
 {
 	float4 finalColor : SV_Target;
 };
-
 
 PSOut main( PSIn input )
 {

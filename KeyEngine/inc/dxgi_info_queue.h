@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <dxgidebug.h>
+#include <algorithm>
 #include "console.h"
 #include "key_wrl.h"
 
@@ -38,11 +39,30 @@ public:
 		const auto &messages = gfx.getInfoQueue().getInfoMessages();\
 		if ( !messages.empty() )\
 		{\
-			for ( const auto &msg : messages )\
+			const std::string ignored_warnings[] =\
 			{\
-				console.log( msg + "\n" );\
+				"ID3D11DeviceContext::DrawIndexed: The size of the Constant Buffer at slot 2 of the Vertex Shader unit is too small",\
+				"ID3D11DeviceContext::DrawIndexed: The size of the Constant Buffer at slot 2 of the Pixel Shader unit is too small"\
+			};\
+			bool found_non_ignored_warnings = std::none_of( messages.begin(), messages.end(), [&ignored_warnings](const std::string& message)\
+				{\
+					for ( const std::string &ignored_warning : ignored_warnings )\
+					{\
+						if ( message.find(ignored_warning) != std::string::npos )\
+						{\
+							return true;\
+						}\
+					}\
+					return false;\
+				} );\
+			if ( found_non_ignored_warnings )\
+			{\
+				for ( const auto &msg : messages )\
+				{\
+					console.log( msg + "\n" );\
+				}\
+				__debugbreak();\
 			}\
-			__debugbreak();\
 		}\
 		gfx.getInfoQueue().markQueueIndex();\
 	}
@@ -57,9 +77,28 @@ public:
 		const auto &messages = gfx->getInfoQueue().getInfoMessages();\
 		if ( !messages.empty() )\
 		{\
-			for ( const auto &msg : messages )\
+			const std::string ignored_warnings[] =\
 			{\
-				console.log( msg + "\n" );\
+				"ID3D11DeviceContext::DrawIndexed: The size of the Constant Buffer at slot 2 of the Vertex Shader unit is too small",\
+				"ID3D11DeviceContext::DrawIndexed: The size of the Constant Buffer at slot 2 of the Pixel Shader unit is too small"\
+			};\
+			bool found_non_ignored_warnings = std::none_of( messages.begin(), messages.end(), [&ignored_warnings](const std::string& message)\
+				{\
+					for ( const std::string &ignored_warning : ignored_warnings )\
+					{\
+						if ( message.find(ignored_warning) != std::string::npos )\
+						{\
+							return true;\
+						}\
+					}\
+					return false;\
+				} );\
+			if ( found_non_ignored_warnings )\
+			{\
+				for ( const auto &msg : messages )\
+				{\
+					console.log( msg + "\n" );\
+				}\
 			}\
 			__debugbreak();\
 		}\
@@ -77,11 +116,30 @@ public:
 		const auto &messages = m_infoQueue.getInfoMessages();\
 		if ( !messages.empty() )\
 		{\
-			for ( const auto &msg : messages )\
+			const std::string ignored_warnings[] =\
 			{\
-				console.log( msg + "\n" );\
+				"ID3D11DeviceContext::DrawIndexed: The size of the Constant Buffer at slot 2 of the Vertex Shader unit is too small",\
+				"ID3D11DeviceContext::DrawIndexed: The size of the Constant Buffer at slot 2 of the Pixel Shader unit is too small"\
+			};\
+			bool found_non_ignored_warnings = std::none_of( messages.begin(), messages.end(), [&ignored_warnings](const std::string& message)\
+				{\
+					for ( const std::string &ignored_warning : ignored_warnings )\
+					{\
+						if ( message.find(ignored_warning) != std::string::npos )\
+						{\
+							return true;\
+						}\
+					}\
+					return false;\
+				} );\
+			if ( found_non_ignored_warnings )\
+			{\
+				for ( const auto &msg : messages )\
+				{\
+					console.log( msg + "\n" );\
+				}\
+				__debugbreak();\
 			}\
-			__debugbreak();\
 		}\
 		m_infoQueue.markQueueIndex();\
 	}

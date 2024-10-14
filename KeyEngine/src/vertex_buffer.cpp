@@ -1,6 +1,6 @@
 #include "vertex_buffer.h"
 #include "graphics.h"
-#include "bindable_map.h"
+#include "bindable_registry.h"
 #include "os_utils.h"
 #include "dxgi_info_queue.h"
 #include "assertions_console.h"
@@ -53,7 +53,7 @@ std::shared_ptr<VertexBuffer> VertexBuffer::fetch( Graphics &gfx,
 	const ver::VBuffer &vb )
 {
 	ASSERT( tag != "?", "No VertexBuffer tag available!" );
-	return BindableMap::fetch<VertexBuffer>( gfx, tag, vb );
+	return BindableRegistry::fetch<VertexBuffer>( gfx, tag, vb );
 }
 
 std::string VertexBuffer::getUid() const noexcept

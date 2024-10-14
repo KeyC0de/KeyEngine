@@ -40,7 +40,7 @@ public:
 	IBinder& getBinder( const std::string &name ) const;
 	ILinker& getLinker( const std::string &name ) const;
 	//	\function	setupBinderTarget	||	\date	2021/06/28 0:30
-	//	\brief	link a Binder from this Pass to a Linker of another targetPass
+	//	\brief	link a BindableBinder from this Pass to a Linker of another targetPass
 	void setupBinderTarget( const std::string &binderName, const std::string &targetPassName, const std::string &targetPassLinkerName );
 	//	\function	validate	||	\date	2022/02/19 22:48
 	//	\brief	validate binders are linked to their linkers

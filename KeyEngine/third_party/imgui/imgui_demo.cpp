@@ -1,3 +1,4 @@
+#pragma warning( push, 0 )
 // dear imgui, v1.69 WIP
 // (demo code)
 
@@ -2798,7 +2799,7 @@ void ImGui::ShowFontSelector(const char *label)
 		"- Read FAQ and documentation in misc/fonts/ for more details.\n"
 		"- If you need to add/remove fonts at runtime (e.g. for DPI change), do it before calling NewFrame().");
 }
-
+#pragma warning( disable : 6011 )
 void ImGui::ShowStyleEditor(ImGuiStyle *ref)
 {
 	// You can pass in a reference ImGuiStyle structure to compare to, revert to and save to (else it compares to an internally stored reference)
@@ -3036,6 +3037,7 @@ void ImGui::ShowStyleEditor(ImGuiStyle *ref)
 
 	ImGui::PopItemWidth();
 }
+#pragma warning( default : 6011 )
 
 //-----------------------------------------------------------------------------
 // [SECTION] Example App: Main Menu Bar / ShowExampleAppMainMenuBar()
@@ -4344,3 +4346,4 @@ void ImGui::ShowUserGuide() {}
 void ImGui::ShowStyleEditor(ImGuiStyle*) {}
 
 #endif
+#pragma warning( pop )

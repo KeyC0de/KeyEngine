@@ -25,6 +25,8 @@ class SettingsManager final
 		bool bFpsCounting = true;
 		int frameCount = 0;
 		int iMaxFps = -1;
+		int iMaxShadowCastingDynamicLights = 8;
+		int iMaxShadowCastingPointLights = 6;
 		unsigned iPresentInterval = 1u;
 		bool bStaticShaderCompilation = true;
 		bool bMultithreadedRendering = false;

@@ -1,0 +1,6 @@
+{
+	"files.exclude":
+	{
+		"KeyEngine/third_party" : true
+	}
+}

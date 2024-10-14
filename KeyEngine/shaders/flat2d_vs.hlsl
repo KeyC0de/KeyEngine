@@ -10,7 +10,6 @@ struct VSOut
 	float2 uv : TexCoord;
 };
 
-
 VSOut main( VSIn input )
 {
 	VSOut output;

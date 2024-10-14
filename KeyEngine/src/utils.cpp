@@ -11,6 +11,13 @@
 namespace util
 {
 
+uint64_t combineUnsignedInt32to64( const unsigned int high32Bit,
+	const unsigned int low32Bit )
+{
+	uint64_t packed = ( (uint64_t(high32Bit) << 32u) | uint64_t(low32Bit) );
+	return packed;
+}
+
 // #TODO:
 /*
 template<typename CONTAINER, typename STRINGTYPE, typename SEPARATORTYPE>

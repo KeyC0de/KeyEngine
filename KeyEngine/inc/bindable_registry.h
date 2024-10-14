@@ -6,8 +6,7 @@
 #include "bindable.h"
 
 
-// #TODO: replace shared_ptr to IBindable with weak_ptr to get rid of the usefulness of garbage collection
-class BindableMap final
+class BindableRegistry final
 {
 	std::unordered_map<std::string, std::shared_ptr<IBindable>> m_bindableMap;
 public:
@@ -49,7 +48,7 @@ public:
 
 	static void garbageCollect()
 	{
-		auto &instance = BindableMap::getInstance();
+		auto &instance = BindableRegistry::getInstance();
 		for ( std::unordered_map<std::string, std::shared_ptr<IBindable>>::iterator it = instance.m_bindableMap.begin(); it != instance.m_bindableMap.end(); ++it )
 		{
 			if ( it->second.use_count() <= 1 )
@@ -78,9 +77,9 @@ private:
 		}
 	}
 
-	static BindableMap& getInstance()
+	static BindableRegistry& getInstance()
 	{
-		static BindableMap instance;
+		static BindableRegistry instance;
 		return instance;
 	}
 };

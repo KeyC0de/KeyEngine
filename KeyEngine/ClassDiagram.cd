@@ -21,11 +21,11 @@
       <FileName>inc\bindable_exception.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BindableMap" Collapsed="true">
+  <Class Name="BindableRegistry" Collapsed="true">
     <Position X="9.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>inc\bindable_map.h</FileName>
+      <FileName>inc\bindable_registry.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Camera" Collapsed="true">
@@ -245,7 +245,7 @@
       <FileName>inc\binder.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ren::Binder&lt;T&gt;" Collapsed="true">
+  <Class Name="ren::BindableBinder&lt;T&gt;" Collapsed="true">
     <Position X="8.25" Y="33.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BgAAAAAAAEAAAAAAAAAAAAAAAAAAAQAAAAAAIAAAAEA=</HashCode>

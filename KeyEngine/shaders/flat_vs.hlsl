@@ -11,10 +11,11 @@ struct VSOut
 	float4 pos : SV_Position;
 };
 
-
 VSOut main( VSIn input )
 {
+	const float4 inputPos = float4(input.pos, 1.0f);
+
 	VSOut output;
-	output.pos = mul( float4(input.pos, 1.0f), worldViewProjection );
+	output.pos = mul( inputPos, cb_worldViewProjection );
 	return output;
 }
