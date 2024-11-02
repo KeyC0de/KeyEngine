@@ -13,6 +13,7 @@
 #include "texture_sampler_state.h"
 #include "blend_state.h"
 #include "settings_manager.h"
+#include "global_constants.h"
 #include "renderer_exception.h"
 #if defined _DEBUG && !defined NDEBUG
 #	include "d3d_utils.h"
@@ -92,10 +93,12 @@ ShadowPass::ShadowPass( Graphics &gfx,
 
 void ShadowPass::run( Graphics &gfx ) const cond_noex
 {
-	const_cast<ShadowPass*>( this )->bindCBs( gfx );
+	const_cast<ShadowPass*>( this )->bindGlobalCBs( gfx );
 
-	//if ( util::modulus( gfx.getFrameNum(), 5ull ) == 1 )	// #optimization: no need to update shadows every frame
+	//if ( util::modulus( gfx.getFrameNum(), g_nFramesPerShadowUpdate ) == 1 )	// #optimization: no need to update shadows every frame
 	{
+		const_cast<ShadowPass*>( this )->bindLightCBs( gfx );
+
 		const unsigned nShadowCastingLights = m_shadowCastingLights.size();
 		for ( int lightIndex = 0; lightIndex < nShadowCastingLights; ++lightIndex )
 		{
@@ -207,7 +210,7 @@ void ShadowPass::dumpShadowCubeMap( Graphics &gfx,
 	}
 }
 
-void ShadowPass::bindCBs( Graphics &gfx )
+void ShadowPass::bindGlobalCBs( Graphics &gfx ) cond_noex
 {
 	const unsigned nShadowCastingLights = m_shadowCastingLights.size();
 	const unsigned nShadowCastingPointLights = std::count_if( m_shadowCastingLights.begin(), m_shadowCastingLights.end(), [] (const ILightSource *pLight) { return pLight->getType() == LightSourceType::Point; } );
@@ -220,6 +223,11 @@ void ShadowPass::bindCBs( Graphics &gfx )
 	const GlobalsPSCB pscb{seconds, nShadowCastingLights, nShadowCastingPointLights, 0.0f};
 	m_globalsPscb.update( gfx, pscb );
 	m_globalsPscb.bind( gfx );
+}
+
+void ShadowPass::bindLightCBs( Graphics &gfx ) cond_noex
+{
+	const unsigned nShadowCastingLights = m_shadowCastingLights.size();
 
 	LightsVSCB vscbLightData{};
 	LightsPSCB pscbLightData{};

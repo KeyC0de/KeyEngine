@@ -19,6 +19,7 @@
 #include "sphere.h"
 #include "line.h"
 #include "plane.h"
+#include "global_constants.h"
 #ifndef FINAL_RELEASE
 #	include "imgui/imgui.h"
 #	include "imgui_visitors.h"
@@ -415,6 +416,7 @@ void Sandbox3d::update( Graphics &gfx,
 	activeCamera.makeActive( gfx, false );
 	gfx.getRenderer3d().setActiveCamera( activeCamera );
 
+	//if ( util::modulus( gfx.getFrameNum(), g_nFramesPerShadowUpdate ) == 0 )	// #optimization: no need to update shadows every frame
 	{
 		std::sort( m_lights.begin(), m_lights.end(), [] (std::unique_ptr<ILightSource> &lhs, std::unique_ptr<ILightSource> &rhs)
 			{
@@ -487,6 +489,7 @@ void Sandbox3d::render( Graphics &gfx )
 		model.render();
 	}
 
+	//if ( util::modulus( gfx.getFrameNum(), g_nFramesPerShadowUpdate ) == 1 )	// #optimization: no need to update shadows every frame
 	{
 		static const auto &settings = s_settingsMan.getSettings();
 

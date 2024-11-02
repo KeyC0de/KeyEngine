@@ -80,7 +80,8 @@ public:
 	void dumpShadowMap( Graphics &gfx, const std::string &path ) const;
 	void dumpShadowCubeMap( Graphics &gfx, const std::string &path ) const;
 private:
-	void bindCBs( Graphics &gfx ) cond_noex;
+	void bindGlobalCBs( Graphics &gfx ) cond_noex;
+	void bindLightCBs( Graphics &gfx ) cond_noex;
 };
 
 
