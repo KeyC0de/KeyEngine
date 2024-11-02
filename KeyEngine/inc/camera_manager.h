@@ -11,7 +11,7 @@ class Graphics;
 
 namespace ren
 {
-	class Renderer;
+class Renderer;
 }
 
 //=============================================================

@@ -1,5 +1,6 @@
 #include "utils.h"
 #include <algorithm>
+#include <vector>
 #include <chrono>
 #include <locale>
 #include <codecvt>
@@ -14,43 +15,9 @@ namespace util
 uint64_t combineUnsignedInt32to64( const unsigned int high32Bit,
 	const unsigned int low32Bit )
 {
-	uint64_t packed = ( (uint64_t(high32Bit) << 32u) | uint64_t(low32Bit) );
-	return packed;
+	return ( (uint64_t(high32Bit) << 32u) | uint64_t(low32Bit) );
 }
 
-// #TODO:
-/*
-template<typename CONTAINER, typename STRINGTYPE, typename SEPARATORTYPE>
-void split(CONTAINER & output, const STRINGTYPE & to_split, const SEPARATORTYPE & seperator)
-{
-	STRINGTYPE::size_type start = 0;
-	STRINGTYPE::size_type end = to_split.find(seperator, start);
-	for (; end != STRINGTYPE::size_type(-1); end = to_split.find(seperator, start))
-	{
-		output.push_back(to_split.substr(start, end - start));
-		start = end + 1;
-	}
-	/// Add any remain string 
-	if (start != to_split.length())
-	{
-		output.push_back(to_split.substr(start, end - start));
-	}
-}
-// example:
-CA_STD::VECTOR<CA::String> sea_horde_faction_keys;
-sea_horde_faction_keys.reserve(16);
-CA::split(sea_horde_faction_keys, *sea_horde_faction_keys_serialized_string_shared_state_pointer, ",");
-
-// #TODO:
-* Predicate composition
-auto greater_than_checker = [&s] (const std::pair<int,int> &arg) -> bool { return arg.first > 100; };
-auto less_than_checker = [&s] (const std::pair<int,int> &arg) -> bool { return arg.second < 450; };
-
-auto predicate2_and = [f1 = greater_than_checker, f2 = less_than_checker] (const std::pair<int,int> &arg) { return f1(arg) && f2(arg) ;};
-auto predicate2_or = [f1 = greater_than_checker, f2 = less_than_checker] (const std::pair<int,int> &arg) { return f1(arg) || f2(arg) ;};
-
-bool has_found_any = std::find_if(s.begin(), s.end(), predicate2_and ) != s.end();
-*/
 std::vector<std::string> tokenizeQuotedString( const std::string &input )
 {
 	std::istringstream stream;
@@ -105,6 +72,26 @@ std::string ws2s( const std::wstring &ws )
 	}
 }
 
+std::string trimStringFromStart( const std::string &str,
+	const int nChars )
+{
+	std::string trimmed = str.substr( nChars, str.length() - nChars );
+	return trimmed;
+}
+
+std::string trimStringFromEnd( const std::string &str,
+	const int nChars )
+{
+	std::string trimmed = str.substr( str.length() - nChars );
+	return trimmed;
+}
+
+void trimStringFromEndInPlace( std::string &str,
+	const int nChars )
+{
+	str.erase( str.length() - nChars );
+}
+
 template<class Iter>
 void splitString_impl( const std::string &s,
 	const std::string &delim,
@@ -126,26 +113,6 @@ void splitString_impl( const std::string &s,
 		*out = std::move( s.substr( a, s.length() - a ) );
 	}
 	++out;
-}
-
-std::string trimStringFromStart( const std::string &str,
-	const int nChars )
-{
-	std::string trimmed = str.substr( nChars, str.length() - nChars );
-	return trimmed;
-}
-
-std::string trimStringFromEnd( const std::string &str,
-	const int nChars )
-{
-	std::string trimmed = str.substr( str.length() - nChars );
-	return trimmed;
-}
-
-void trimStringFromEndInPlace( std::string &str,
-	const int nChars )
-{
-	str.erase( str.length() - nChars );
 }
 
 std::vector<std::string> splitString( const std::string &s,

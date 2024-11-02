@@ -10,8 +10,8 @@ class IImGuiConstantBufferVisitor;
 
 namespace ren
 {
-	class RenderQueuePass;
-	class Renderer;
+class RenderQueuePass;
+class Renderer;
 }
 
 class Material

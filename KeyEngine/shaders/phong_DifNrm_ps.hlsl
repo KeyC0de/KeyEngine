@@ -37,7 +37,6 @@ PSOut main( PSIn input )
 	if ( bNormalMap )
 	{
 		const float3 mappedNormal = calculateNormalMapNormal( normalize( input.tangentViewSpace ), normalize( input.bitangentViewSpace ), input.viewSpaceNormal, input.tc, normTex, sampl );
-		// lerp normal with the normal map's normal if there's a normal map
 		input.viewSpaceNormal = lerp( input.viewSpaceNormal, mappedNormal, normalMapStrength );
 	}
 
@@ -92,6 +91,6 @@ PSOut main( PSIn input )
 
 	float4 albedoTexColor = albedoTex.Sample(sampl, input.tc);
 	PSOut output;
-	output.finalColor = float4(saturate(lightCombinedDiffuse * albedoTexColor.rgb + lightCombinedSpecular), 1.0f);	// #TODO: at some point take alpha into account
+	output.finalColor = float4(saturate(lightCombinedDiffuse * albedoTexColor.rgb + lightCombinedSpecular), 1.0f);
 	return output;
 }

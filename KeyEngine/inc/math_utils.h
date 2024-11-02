@@ -161,14 +161,25 @@ int numberToCoord( T number,
 }
 
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+constexpr T mapRangeRounded( const T val,
+	const T inFirst,
+	const T inLast,
+	const T outFirst,
+	const T outLast ) noexcept
+{
+	const double slope = static_cast<double>(outLast - outFirst) / static_cast<double>(inLast - inFirst);
+	return static_cast<T>( outFirst + util::round(slope * ( val - inFirst )) );
+}
+
+template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
 constexpr T mapRange( const T val,
 	const T inFirst,
 	const T inLast,
 	const T outFirst,
 	const T outLast ) noexcept
 {
-	const double slope = 1.0 * ( outLast - outFirst ) / ( inLast - inFirst );
-	return outFirst + util::round( slope * ( val - inFirst ) );
+	const double slope = static_cast<double>(outLast - outFirst) / static_cast<double>(inLast - inFirst);
+	return static_cast<T>( outFirst + slope * (val - inFirst) );
 }
 
 //	\function	isApproximatelyEqual	||	\date	2024/06/03 17:54

@@ -26,13 +26,13 @@
 
 namespace ren
 {
-	class Renderer;
-	class Renderer3d;
+class Renderer;
+class Renderer3d;
 }
 
 namespace gui
 {
-	class UIPass;
+class UIPass;
 }
 
 class State;

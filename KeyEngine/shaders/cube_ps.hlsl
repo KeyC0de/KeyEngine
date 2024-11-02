@@ -7,8 +7,9 @@
 cbuffer ModelPSCB : register(b0)
 {
 	float3 modelSpecularColor;
-	float modelSpecularGloss;	// the specular power factor
+	float modelSpecularGloss;
 };
+
 Texture2D albedoTex : register(t0);
 SamplerState sampl : register(s0);
 
@@ -80,6 +81,6 @@ PSOut main( PSIn input )
 
 	float4 albedoTexColor = albedoTex.Sample(sampl, input.tc);
 	PSOut output;
-	output.finalColor = float4(saturate(lightCombinedDiffuse * albedoTexColor.rgb + lightCombinedSpecular), 1.0f);	// #TODO: at some point take alpha into account
+	output.finalColor = float4(saturate(lightCombinedDiffuse * albedoTexColor.rgb + lightCombinedSpecular), 1.0f);
 	return output;
 }

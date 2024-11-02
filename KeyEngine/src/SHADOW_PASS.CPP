@@ -8,7 +8,6 @@
 #include "texture.h"
 #include "cube_texture.h"
 #include "camera.h"
-#include "light_source.h"
 #include "math_utils.h"
 #include "texture_desc.h"
 #include "texture_sampler_state.h"
@@ -23,13 +22,20 @@
 namespace ren
 {
 
+unsigned ren::ShadowPass::getResolution() noexcept
+{
+	return s_shadowMapResolution;
+}
+
 ShadowPass::ShadowPass( Graphics &gfx,
 	const std::string &name,
 	const unsigned shadowMapRez )
 	:
 	RenderQueuePass{name},
 	m_globalsVscb{gfx, s_globalsVscbSlot},
-	m_globalsPscb{gfx, s_globalsPscbSlot}
+	m_globalsPscb{gfx, s_globalsPscbSlot},
+	m_vscb{gfx, s_lightArrayVertexShaderCBSlot},
+	m_pscb{gfx, s_lightArrayPixelShaderCBSlot}
 {
 	s_shadowMapResolution = shadowMapRez;
 
@@ -86,77 +92,59 @@ ShadowPass::ShadowPass( Graphics &gfx,
 
 void ShadowPass::run( Graphics &gfx ) const cond_noex
 {
-	const unsigned nShadowCastingLights = m_shadowCastingLights.size();
-	const unsigned nShadowCastingPointLights = std::count_if( m_shadowCastingLights.begin(), m_shadowCastingLights.end(), [] (const ILightSource *pLight) { return pLight->getType() == LightSourceType::Point; } );
-	const_cast<ShadowPass*>( this )->bindGlobalConstantBuffers( gfx, nShadowCastingLights, nShadowCastingPointLights );
+	const_cast<ShadowPass*>( this )->bindCBs( gfx );
 
-	//if ( util::modulus( gfx.getFrameNum(), 5ull ) != 1 )
-	//{
-		//return;	// #optimization: no need to update shadows every frame
-	//}
-
-	for ( int lightIndex = 0; lightIndex < nShadowCastingLights; ++lightIndex )
+	//if ( util::modulus( gfx.getFrameNum(), 5ull ) == 1 )	// #optimization: no need to update shadows every frame
 	{
-		ILightSource *pLight = m_shadowCastingLights[lightIndex];
+		const unsigned nShadowCastingLights = m_shadowCastingLights.size();
+		for ( int lightIndex = 0; lightIndex < nShadowCastingLights; ++lightIndex )
+		{
+			ILightSource *pLight = m_shadowCastingLights[lightIndex];
 
-		gfx.setProjectionMatrix( pLight->getShadowCameraProjectionMatrix( gfx ) );
+			gfx.setProjectionMatrix( pLight->getShadowCamera()->getProjectionMatrix(gfx, true, pLight->m_shadowCamFarZ) );
 
-		pLight->updateVscb( gfx );
-		pLight->bindVscb( gfx );
-
-		const auto &pos = pLight->getPosition();
+			const auto &pos = pLight->getPosition();
 #if defined _DEBUG && !defined NDEBUG
-		ASSERT( util::operator==(pLight->getShadowCamera()->getPosition(), pos), "Inconsistent light and shadow camera positions!" );
+			const auto &shadowCamPos = pLight->getShadowCamera()->getPosition();
+			ASSERT( util::operator==(pos, shadowCamPos), "Inconsistent light and shadow camera positions!" );
 #endif
-		const auto posVec = DirectX::XMLoadFloat3( &pos );
-		const LightSourceType lightType = pLight->getType();
-		if ( lightType == LightSourceType::Directional )
-		{
-			const_cast<ShadowPass*>( this )->m_pDsv = m_pOffscreenDsvMapArray->shareDepthBuffer( lightIndex );
-			m_pDsv->clear( gfx );
-		}
-		else if ( lightType == LightSourceType::Spot )
-		{
-			const_cast<ShadowPass*>( this )->m_pDsv = m_pOffscreenDsvMapArray->shareDepthBuffer( lightIndex );
-			m_pDsv->clear( gfx );
-		}
-		else if ( lightType == LightSourceType::Point )
-		{
-			for ( int face = 0; face < 6; ++face )
+			const auto posVec = DirectX::XMLoadFloat3( &pos );
+			const LightSourceType lightType = pLight->getType();
+			if ( lightType == LightSourceType::Directional )
 			{
-				// bind the DSV from the offscreen cube map ds texture
-				const_cast<ShadowPass*>( this )->m_pDsv = m_pOffscreenDsvCubemapArray->shareDepthBuffer( lightIndex, face );
+				const_cast<ShadowPass*>( this )->m_pDsv = m_pOffscreenDsvMapArray->shareDepthBuffer( lightIndex );
 				m_pDsv->clear( gfx );
+			}
+			else if ( lightType == LightSourceType::Spot )
+			{
+				const_cast<ShadowPass*>( this )->m_pDsv = m_pOffscreenDsvMapArray->shareDepthBuffer( lightIndex );
+				m_pDsv->clear( gfx );
+			}
+			else if ( lightType == LightSourceType::Point )
+			{
+				for ( int face = 0; face < 6; ++face )
+				{
+					// bind the DSV from the offscreen cube map ds texture
+					const_cast<ShadowPass*>( this )->m_pDsv = m_pOffscreenDsvCubemapArray->shareDepthBuffer( lightIndex, face );
+					m_pDsv->clear( gfx );
 
-				const auto lookAt = DirectX::XMVectorAdd( posVec, m_cameraDirections[face] );
-				gfx.setViewMatrix( DirectX::XMMatrixLookAtLH( posVec, lookAt, m_cameraUps[face] ) );
-				RenderQueuePass::run( gfx );
+					const auto lookAt = DirectX::XMVectorAdd( posVec, m_cameraDirections[face] );
+					gfx.setViewMatrix( DirectX::XMMatrixLookAtLH( posVec, lookAt, m_cameraUps[face] ) );
+					RenderQueuePass::run( gfx );
+				}
 			}
 		}
 	}
 }
 
-void ShadowPass::bindGlobalConstantBuffers( Graphics &gfx,
-	const unsigned nShadowCastingLights,
-	const unsigned nShadowCastingPointLights )
-{
-	const float seconds = gfx.getRealTimer().getSecondsFromStart();
-	const GlobalsVSCB vscb{seconds, nShadowCastingLights, nShadowCastingPointLights, 0.0f};
-	m_globalsVscb.update( gfx, vscb );
-	m_globalsVscb.bind( gfx );
-
-	const GlobalsPSCB pscb{seconds, nShadowCastingLights, nShadowCastingPointLights, 0.0f};
-	m_globalsPscb.update( gfx, pscb );
-	m_globalsPscb.bind( gfx );
-}
-
-void ShadowPass::setShadowCastingLights( Graphics &gfx,
+void ShadowPass::bindShadowCastingLights( Graphics &gfx,
 	const std::vector<ILightSource*> &shadowCastingLights )
 {
+	const unsigned nShadowCastingLights = shadowCastingLights.size();
 #if defined _DEBUG && !defined NDEBUG
 	{
 		static const auto &settings = SettingsManager::getInstance().getSettings();
-		if ( shadowCastingLights.size() > settings.iMaxShadowCastingDynamicLights )
+		if ( nShadowCastingLights > settings.iMaxShadowCastingDynamicLights )
 		{
 			THROW_RENDERER_EXCEPTION( "Attempted to create more shadow casting lights than the current limit of " + std::to_string( settings.iMaxShadowCastingDynamicLights ) + "!" );
 		}
@@ -164,21 +152,22 @@ void ShadowPass::setShadowCastingLights( Graphics &gfx,
 #endif
 
 	m_shadowCastingLights.clear();
-	m_shadowCastingLights.reserve( shadowCastingLights.size() );
+	m_shadowCastingLights.reserve( nShadowCastingLights );
 
 	for ( ILightSource *pLight : shadowCastingLights )
 	{
 		m_shadowCastingLights.push_back( pLight );
 	}
 
-	const unsigned nShadowCastingNonPointLights = std::count_if( shadowCastingLights.begin(), shadowCastingLights.end(), [] (const ILightSource *pLight) { return pLight->getType() != LightSourceType::Point; } );
+	// create the Texture Arrays
+	const unsigned nShadowCastingNonPointLights = std::count_if( m_shadowCastingLights.begin(), m_shadowCastingLights.end(), [] (const ILightSource *pLight) { return pLight->getType() != LightSourceType::Point; } );
 	if ( nShadowCastingNonPointLights > 0 )
 	{
 		std::shared_ptr<TextureArrayOffscreenDS> temp_pOffscreenDsvMapArray = std::make_shared<TextureArrayOffscreenDS>( gfx, s_shadowMapResolution, s_shadowMapResolution, s_shadowMapArraySlot, DepthStencilViewMode::ShadowDepth, nShadowCastingNonPointLights );
 		*m_pOffscreenDsvMapArray = *temp_pOffscreenDsvMapArray;
 	}
 
-	const unsigned nShadowCastingPointLights = std::count_if( shadowCastingLights.begin(), shadowCastingLights.end(), [] (const ILightSource *pLight) { return pLight->getType() == LightSourceType::Point; } );
+	const unsigned nShadowCastingPointLights = std::count_if( m_shadowCastingLights.begin(), m_shadowCastingLights.end(), [] (const ILightSource *pLight) { return pLight->getType() == LightSourceType::Point; } );
 	if ( nShadowCastingPointLights > 0 )
 	{
 		std::shared_ptr<CubeTextureArrayOffscreenDS> temp_pOffscreenDsvCubemapArray = std::make_shared<CubeTextureArrayOffscreenDS>( gfx, s_shadowMapResolution, s_shadowMapResolution, s_shadowCubeMapArraySlot, DepthStencilViewMode::ShadowDepth, nShadowCastingPointLights );
@@ -218,9 +207,36 @@ void ShadowPass::dumpShadowCubeMap( Graphics &gfx,
 	}
 }
 
-unsigned ren::ShadowPass::getResolution() noexcept
+void ShadowPass::bindCBs( Graphics &gfx )
 {
-	return s_shadowMapResolution;
+	const unsigned nShadowCastingLights = m_shadowCastingLights.size();
+	const unsigned nShadowCastingPointLights = std::count_if( m_shadowCastingLights.begin(), m_shadowCastingLights.end(), [] (const ILightSource *pLight) { return pLight->getType() == LightSourceType::Point; } );
+
+	const float seconds = gfx.getRealTimer().getSecondsFromStart();
+	const GlobalsVSCB vscb{seconds, nShadowCastingLights, nShadowCastingPointLights, 0.0f};
+	m_globalsVscb.update( gfx, vscb );
+	m_globalsVscb.bind( gfx );
+
+	const GlobalsPSCB pscb{seconds, nShadowCastingLights, nShadowCastingPointLights, 0.0f};
+	m_globalsPscb.update( gfx, pscb );
+	m_globalsPscb.bind( gfx );
+
+	LightsVSCB vscbLightData{};
+	LightsPSCB pscbLightData{};
+	// populate CB Lights Data, then update & Bind the CBs
+	for ( int i = 0; i < nShadowCastingLights; ++i )
+	{
+		ILightSource *pLight = m_shadowCastingLights[i];
+		pLight->populateCBData( gfx );
+		vscbLightData[i] = pLight->getVscbData();
+		pscbLightData[i] = pLight->getPscbData();
+	}
+
+	m_vscb.update( gfx, vscbLightData );
+	m_vscb.bind( gfx );
+
+	m_pscb.update( gfx, pscbLightData );
+	m_pscb.bind( gfx );
 }
 
 

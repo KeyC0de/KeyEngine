@@ -146,6 +146,11 @@ dx::XMFLOAT3 extractTranslation( const dx::XMFLOAT4X4 &mat )
 	return {mat._41/* x */, mat._42/* y */, mat._43/* z */};
 }
 
+dx::XMFLOAT3 extractTranslationColumnMatrix( const dx::XMFLOAT4X4 &mat )
+{
+	return {mat._14/* x */, mat._24/* y */, mat._34/* z */};
+}
+
 dx::XMMATRIX XM_CALLCONV scaleTranslation( const dx::XMMATRIX &mat,
 	const float scale )
 {

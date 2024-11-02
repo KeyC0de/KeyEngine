@@ -19,12 +19,12 @@ struct aiMesh;
 
 namespace ren
 {
-	class Renderer;
+class Renderer;
 }
 
 namespace ver
 {
-	class VBuffer;
+class VBuffer;
 }
 
 class Mesh

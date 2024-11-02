@@ -3,12 +3,12 @@
 #include <variant>
 #include <DirectXMath.h>
 #include "model.h"
-#include "constant_buffer.h"
 
 
 namespace ren
 {
-	class Renderer;
+class Renderer;
+class ShadowPass;
 }
 
 class Graphics;
@@ -22,44 +22,26 @@ enum LightSourceType : unsigned
 	Point,
 };
 
-//=============================================================
-//	\class	LightSourceVSCB
-//	\author	KeyC0de
-//	\date	2022/02/19 22:35
-//	\brief	VSCB for a light source for the purposes of shadowing, used to pass its location to GPU/HLSL(shadowing_vs.hlsli)
-//=============================================================
-class LightSourceVSCB
-	: public IBindable
+////////////////////////////////////////////////////////////////////////////////////////////////////
+class ILightSource
 {
-	friend class ILightSource;
+	friend class ren::ShadowPass;
+
+	LightSourceType m_type;
+protected:
+	float m_shadowCamFarZ;
+	std::string m_name;
+	bool m_bShowMesh;
+	bool m_bCastingShadows;
+	DirectX::XMFLOAT3 m_rot;// {x = pitch, y = yaw, y = roll} - in radians
+	Model m_lightMesh;
 
 	struct LightVSCB
 	{
 		DirectX::XMMATRIX cb_lightMatrix;
 	};
-	std::unique_ptr<VertexShaderConstantBuffer<LightVSCB>> m_pVscb;
-	std::unique_ptr<Camera> m_pCameraForShadowing;	// these cameras are not shared in CameraManager
-	LightSourceType m_type;
-	float m_shadowCamFarZ;
-public:
-	LightSourceVSCB( Graphics &gfx, const LightSourceType type, const float shadowCamFovDegrees = 90.0f, const DirectX::XMFLOAT3 &shadowCamPos = DirectX::XMFLOAT3{0.0f, 0.0f, 0.0f}, const float shadowCamPitchDeg = 0.0f, const float shadowCamYawDeg = 0.0f, const float shadowCamNearZ = 1.0f, const float shadowCamFarZ = 100.0f, const DirectX::XMFLOAT3 &direction = DirectX::XMFLOAT3{0.0f, 0.0f, 0.0f} );
-
-	void bind( Graphics &gfx ) cond_noex override;
-	void update( Graphics &gfx ) cond_noex;
-};
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-class ILightSource
-{
-	LightSourceType m_type;
-	float m_shadowCamFarZ;
-protected:
-	std::string m_name;
-	bool m_bShowMesh;
-	bool m_bCastingShadows;
-	DirectX::XMFLOAT3 m_rot;		// {x = pitch, y = yaw, y = roll} - in radians
-	Model m_lightMesh;
-	std::shared_ptr<LightSourceVSCB> m_lightVscb;
+	LightVSCB m_vscbData;	// used for shadowing
+	std::unique_ptr<Camera> m_pCameraForShadowing;	// this camera is not shared in CameraManager
 
 	struct LightPSCB
 	{
@@ -77,34 +59,38 @@ protected:
 		float cb_coneAngle;									// only used for Spot Lights
 	};
 	LightPSCB m_pscbData;
-	PixelShaderConstantBuffer<LightPSCB> m_pscb;
+	LightPSCB m_pscbDataPrev;
 public:
 	ILightSource( Graphics &gfx, const LightSourceType type, Model model, const std::variant<DirectX::XMFLOAT4,std::string> &colorOrTexturePath = DirectX::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f}, const bool bShadowCasting = true, const bool bShowMesh = true, const DirectX::XMFLOAT3 &initialRotDeg = {0.0f, 0.0f, 0.f}, const DirectX::XMFLOAT3 &pos = DirectX::XMFLOAT3{8.0f, 8.0f, 2.f}, const float intensity = 1.0f, const DirectX::XMFLOAT3 &direction = DirectX::XMFLOAT3{0.0f, 0.0f, 0.0f}, const float fovDeg = 0.0f, const float shadowCamNearZ = 1.0f, const float shadowCamFarZ = 100.0f );
 	virtual ~ILightSource() noexcept = default;
 
-	virtual void update( Graphics &gfx, const float dt, const float lerpBetweenFrames, const bool bEnableSmoothMovement = false ) cond_noex;
+	//	\function	update	||	\date	2024/10/27 19:44
+	//	\brief	update the "model" side part of the light
+	void update( Graphics &gfx, const float dt, const float lerpBetweenFrames, const bool bEnableSmoothMovement = false ) cond_noex;
+	//	\function	render ||	\date	2024/10/27 21:57
+	//	\brief	render the "model" side part of the light
 	void render( const size_t channels ) const cond_noex;
-	void updateVscb( Graphics &gfx ) const cond_noex;
-	void bindVscb( Graphics &gfx ) const cond_noex;
 	void connectMaterialsToRenderer( ren::Renderer &r );
 	virtual void displayImguiWidgets() noexcept = 0;
 	virtual void setIntensity( const float newIntensity ) noexcept = 0;
 	virtual void setColor( const DirectX::XMFLOAT3 &diffuseColor ) noexcept = 0;
-	Camera* getShadowCamera() const;
-	std::shared_ptr<LightSourceVSCB> shareVscb() const noexcept;
-	LightSourceType getType() const noexcept;
-	unsigned getSlot() const noexcept;
-	bool isCastingShadows() const noexcept;
-	bool isFrustumCulled() const noexcept;
-	std::string getName() const noexcept;
 	void setRotation( const DirectX::XMFLOAT3 &rot );
 	void setTranslation( const DirectX::XMFLOAT3 &pos );
+	LightSourceType getType() const noexcept;
+	unsigned getSlot() const noexcept;
+	std::string getName() const noexcept;
+	bool isCastingShadows() const noexcept;
+	bool isFrustumCulled() const noexcept;
 	DirectX::XMFLOAT3 getRotation() const noexcept;
 	virtual DirectX::XMFLOAT3 getPosition() const noexcept = 0;
+	Camera* getShadowCamera() const;
 	float getShadowCameraFarZ() const noexcept;
-	DirectX::XMMATRIX getShadowCameraProjectionMatrix( Graphics &gfx ) cond_noex;
-protected:
-	Camera* accessShadowCamera();
+private:
+	LightVSCB getVscbData() noexcept;
+	LightPSCB getPscbData() noexcept;
+	void populateCBData( Graphics &gfx ) cond_noex;
+	virtual void populateVscbData( Graphics &gfx ) cond_noex = 0;
+	virtual void populatePscbData( Graphics &gfx ) cond_noex = 0;
 };
 
 class DirectionalLight final
@@ -113,11 +99,13 @@ class DirectionalLight final
 public:
 	DirectionalLight( Graphics &gfx, const float radiusScale = 1.0f, const DirectX::XMFLOAT3 &initialRotDeg = {0.0f, 0.0f, 0.f}, const DirectX::XMFLOAT3 &pos = {8.0f, 8.0f, 2.f}, const std::variant<DirectX::XMFLOAT4, std::string> &colorOrTexturePath = DirectX::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f}, const bool bShadowCasting = true, const bool bShowMesh = true, const float intensity = 1.0f, const DirectX::XMFLOAT3 &direction = DirectX::XMFLOAT3{0.0f, 0.0f, 0.0f}, const float shadowCamNearZ = 1.0f, const float shadowCamFarZ = 2000.0f );
 
-	void update( Graphics &gfx, const float dt, const float lerpBetweenFrames, const bool bEnableSmoothMovement = false ) cond_noex override;
 	void displayImguiWidgets() noexcept override;
 	void setIntensity( const float newIntensity ) noexcept override;
 	void setColor( const DirectX::XMFLOAT3 &diffuseColor ) noexcept override;
 	virtual DirectX::XMFLOAT3 getPosition() const noexcept override;
+private:
+	virtual void populateVscbData( Graphics &gfx ) cond_noex override;
+	virtual void populatePscbData( Graphics &gfx ) cond_noex override;
 };
 
 class SpotLight final
@@ -126,11 +114,13 @@ class SpotLight final
 public:
 	SpotLight( Graphics &gfx, const float radiusScale = 1.0f, const DirectX::XMFLOAT3 &initialRotDeg = {0.0f, 0.0f, 0.f}, const DirectX::XMFLOAT3 &pos = {8.0f, 8.0f, 2.f}, const std::variant<DirectX::XMFLOAT4, std::string> &colorOrTexturePath = DirectX::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f}, const bool bShadowCasting = true, const bool bShowMesh = true, const float intensity = 1.0f, const DirectX::XMFLOAT3 &direction = DirectX::XMFLOAT3{0.0f, 0.0f, 1.0f}, const float fovConeAngle = 60.0f, const float shadowCamNearZ = 0.5f, const float shadowCamFarZ = 80.0f );
 
-	void update( Graphics &gfx, const float dt, const float lerpBetweenFrames, const bool bEnableSmoothMovement = false ) cond_noex override;
 	void displayImguiWidgets() noexcept override;
 	void setIntensity( const float newIntensity ) noexcept override;
 	void setColor( const DirectX::XMFLOAT3 &diffuseColor ) noexcept override;
 	virtual DirectX::XMFLOAT3 getPosition() const noexcept override;
+private:
+	virtual void populateVscbData( Graphics &gfx ) cond_noex override;
+	virtual void populatePscbData( Graphics &gfx ) cond_noex override;
 };
 
 class PointLight final
@@ -138,10 +128,12 @@ class PointLight final
 {
 public:
 	PointLight( Graphics &gfx, const float radiusScale = 0.5f, const DirectX::XMFLOAT3 &initialRotDeg = {0.0f, 0.0f, 0.f}, const DirectX::XMFLOAT3 &pos = {8.0f, 8.0f, 2.f}, const std::variant<DirectX::XMFLOAT4, std::string> &colorOrTexturePath = DirectX::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f}, const bool bShadowCasting = true, const bool bShowMesh = true, const float intensity = 1.0f, const float shadowCamNearZ = 1.0f, const float shadowCamFarZ = 100.0f );
-	
-	void update( Graphics &gfx, const float dt, const float lerpBetweenFrames, const bool bEnableSmoothMovement = false ) cond_noex override;
+
 	void displayImguiWidgets() noexcept override;
 	void setIntensity( const float newIntensity ) noexcept override;
 	void setColor( const DirectX::XMFLOAT3 &diffuseColor ) noexcept override;
 	virtual DirectX::XMFLOAT3 getPosition() const noexcept override;
+private:
+	virtual void populateVscbData( Graphics &gfx ) cond_noex override;
+	virtual void populatePscbData( Graphics &gfx ) cond_noex override;
 };

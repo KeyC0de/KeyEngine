@@ -4,12 +4,13 @@
 #include "hlsli/shadowing_ps.hlsli"
 
 
+// PS Resources
 cbuffer ModelPSCB : register(b0)
 {
 	bool bSpecularMap;
 	bool bSpecularMapAlpha;
 	float3 modelSpecularColor;
-	float modelSpecularGloss;
+	float modelSpecularGloss;	// the specular power factor
 	bool bNormalMap;
 	float normalMapStrength;
 };
@@ -19,6 +20,7 @@ Texture2D specTex : register(t1);
 Texture2D normTex : register(t2);
 SamplerState sampl : register(s0);
 
+// PS Input
 struct PSIn
 {
 	float3 viewSpacePos : PositionViewSpace;
@@ -29,6 +31,7 @@ struct PSIn
 	float4 posLightSpace[MAX_LIGHTS] : PositionLightSpace;
 };
 
+// PS Output
 struct PSOut
 {
 	float4 finalColor : SV_Target;
@@ -53,6 +56,7 @@ PSOut main( PSIn input )
 	if (bNormalMap)
 	{
 		const float3 mappedNormal = calculateNormalMapNormal(normalize(input.tangentViewSpace), normalize(input.bitangentViewSpace), input.viewSpaceNormal, input.tc, normTex, sampl);
+		// lerp normal with the normal map's normal if there's a normal map
 		input.viewSpaceNormal = lerp(input.viewSpaceNormal, mappedNormal, normalMapStrength);
 	}
 

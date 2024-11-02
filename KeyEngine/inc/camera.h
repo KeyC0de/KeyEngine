@@ -10,7 +10,7 @@ class Graphics;
 
 namespace ren
 {
-	class Renderer;
+class Renderer;
 }
 
 class Camera

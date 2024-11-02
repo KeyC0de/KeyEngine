@@ -6,6 +6,7 @@
 #include <DirectXMath.h>
 #include "render_queue_pass.h"
 #include "constant_buffer.h"
+#include "light_source.h"
 
 
 class Graphics;
@@ -13,7 +14,6 @@ class Camera;
 class TextureArrayOffscreenDS;
 class CubeTextureArrayOffscreenDS;
 class IDepthStencilView;
-class ILightSource;
 
 namespace ren
 {
@@ -27,11 +27,14 @@ namespace ren
 class ShadowPass
 	: public RenderQueuePass
 {
+	static constexpr inline unsigned s_maxShadowCastingLights = 16u;
+	static constexpr inline unsigned s_globalsVscbSlot = 1u;
+	static constexpr inline unsigned s_globalsPscbSlot = 1u;
+	static constexpr inline unsigned s_lightArrayVertexShaderCBSlot = 2u;
+	static constexpr inline unsigned s_lightArrayPixelShaderCBSlot = 2u;
+	static constexpr inline unsigned s_shadowMapArraySlot = 3u;
+	static constexpr inline unsigned s_shadowCubeMapArraySlot = 4u;
 	static inline unsigned s_shadowMapResolution = 1024u;
-	static inline unsigned s_globalsVscbSlot = 1u;
-	static inline unsigned s_globalsPscbSlot = 1u;
-	static inline unsigned s_shadowMapArraySlot = 3u;
-	static inline unsigned s_shadowCubeMapArraySlot = 4u;
 
 	struct GlobalsVSCB
 	{
@@ -51,6 +54,11 @@ class ShadowPass
 	};
 	PixelShaderConstantBuffer<GlobalsPSCB> m_globalsPscb;
 
+	using LightsVSCB = ILightSource::LightVSCB[s_maxShadowCastingLights];
+	VertexShaderConstantBuffer<LightsVSCB> m_vscb;
+	using LightsPSCB = ILightSource::LightPSCB[s_maxShadowCastingLights];
+	PixelShaderConstantBuffer<LightsPSCB> m_pscb;
+
 	std::vector<DirectX::XMVECTOR> m_cameraDirections{6};
 	std::vector<DirectX::XMVECTOR> m_cameraUps{6};
 	std::vector<ILightSource*> m_shadowCastingLights;
@@ -65,13 +73,14 @@ public:
 	//	\brief	update the light's -camera- view Proj Matrix for projective texture shadow cube mapping
 	//				then render the depth buffer to texture 6 times
 	void run( Graphics &gfx ) const cond_noex override;
-	void bindGlobalConstantBuffers( Graphics &gfx, const unsigned nShadowCastingLights, const unsigned nShadowCastingPointLights ) cond_noex;
-	//	\function	setShadowCastingLights	||	\date	2024/09/07 9:38
+	//	\function	bindShadowCastingLights	||	\date	2024/09/07 9:38
 	//	\brief	populate shadow casting lights for this frame and setup their offscreen shadow maps for rendering into
-	void setShadowCastingLights( Graphics &gfx, const std::vector<ILightSource*> &shadowCastingLights );
+	void bindShadowCastingLights( Graphics &gfx, const std::vector<ILightSource*> &shadowCastingLights );
 	// currently only dumping shadow map of the first registered shadow casting light
 	void dumpShadowMap( Graphics &gfx, const std::string &path ) const;
 	void dumpShadowCubeMap( Graphics &gfx, const std::string &path ) const;
+private:
+	void bindCBs( Graphics &gfx ) cond_noex;
 };
 
 

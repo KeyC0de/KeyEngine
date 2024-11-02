@@ -19,7 +19,7 @@ struct aiNode;
 
 namespace ren
 {
-	class Renderer;
+class Renderer;
 }
 
 class Model

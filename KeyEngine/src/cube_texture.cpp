@@ -215,13 +215,12 @@ CubeTextureArrayOffscreenDS::CubeTextureArrayOffscreenDS( Graphics &gfx,
 	srvDesc.TextureCubeArray.First2DArrayFace = 0u;				// start of the array for each cubemap
 	srvDesc.TextureCubeArray.MostDetailedMip = 0u;
 	srvDesc.TextureCubeArray.MipLevels = texDesc.MipLevels;
-	ASSERT( srvDesc.TextureCubeArray.NumCubes == texDesc.ArraySize / 6 && srvDesc.TextureCubeArray.NumCubes == nCubeTextures, "Invalid amount of cube textures in array!" );
+	ASSERT( srvDesc.TextureCubeArray.NumCubes == texDesc.ArraySize / nCubeFaces && srvDesc.TextureCubeArray.NumCubes == nCubeTextures, "Invalid amount of cube textures in array!" );
 	hres = getDevice( gfx )->CreateShaderResourceView( pTextureArray.Get(), &srvDesc, &m_pD3dSrv );
 	ASSERT_HRES_IF_FAILED;
 
-	m_depthStencilViews.reserve( nCubeTextures );
-
 	// create DSV texture array
+	m_depthStencilViews.reserve( nCubeTextures );
 	for ( unsigned i = 0u; i < nCubeTextures; ++i )
 	{
 		m_depthStencilViews.emplace_back();

@@ -33,7 +33,6 @@ PSOut main( PSIn input )
 {
 	input.viewSpaceNormal = normalize( input.viewSpaceNormal );
 
-	// Specular map contribution
 	float modelSpecularGloss_var = modelSpecularGloss;
 	float3 specularFactor = float3(0, 0, 0);
 	if ( bSpecularMap )

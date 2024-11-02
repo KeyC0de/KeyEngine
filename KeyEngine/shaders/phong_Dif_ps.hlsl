@@ -9,6 +9,7 @@ cbuffer ModelPSCB : register(b0)
 	float3 modelSpecularColor;
 	float modelSpecularGloss;
 };
+
 Texture2D albedoTex : register(t0);
 SamplerState sampl : register(s0);
 

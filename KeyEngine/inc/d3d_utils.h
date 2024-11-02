@@ -49,6 +49,7 @@ bool operator!=( const DirectX::XMVECTOR &lhs, const DirectX::XMVECTOR &rhs ) no
 bool operator==( const DirectX::XMMATRIX &lhs, const DirectX::XMMATRIX &rhs ) noexcept;
 bool operator!=( const DirectX::XMMATRIX &lhs, const DirectX::XMMATRIX &rhs ) noexcept;
 DirectX::XMFLOAT3 extractTranslation( const DirectX::XMFLOAT4X4 &mat );
+DirectX::XMFLOAT3 extractTranslationColumnMatrix( const DirectX::XMFLOAT4X4 &mat );
 DirectX::XMMATRIX XM_CALLCONV scaleTranslation( const DirectX::XMMATRIX &mat, const float scale );
 DirectX::XMVECTOR XM_CALLCONV pitchYawRollToQuaternion( const DirectX::XMVECTOR& pitchYawRollAnglesVec );
 DirectX::XMVECTOR XM_CALLCONV pitchYawRollToQuaternion( const DirectX::XMFLOAT3& pitchYawRollAngles );

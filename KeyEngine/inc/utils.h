@@ -65,7 +65,30 @@ constexpr typename std::remove_reference<T>::type makePrValue( T &&val )
 	return val;
 }
 
+// checks whether an expression e can be evaluated at compile-time as a constant expression
 #define IS_CONSTEXPR(e)	noexcept( makePrValue(e) )
+// eg.
+// constexpr int a = 10;
+// int b = 20;
+// constexpr int constexprFunc(int x) { return x * 2; }
+// static_assert(IS_CONSTEXPR(a), "a is not constexpr!");					// This will pass
+// static_assert(!IS_CONSTEXPR(b), "b is not constexpr!");					// This will pass because b is not constexpr
+// static_assert(constexprFunc(5) == 10, "constexprFunc is not constexpr");	// This will pass
+
+
+template<typename T, typename TDeleter>
+bool operator==( const std::unique_ptr<T, TDeleter> &lhs,
+	const T *rhs )
+{
+	return lhs.get() == rhs;
+}
+
+template<typename T, typename TDeleter>
+bool operator!=( const std::unique_ptr<T, TDeleter> &lhs,
+	const T *rhs )
+{
+	return !( lhs == rhs );
+}
 
 
 namespace util
@@ -125,6 +148,8 @@ std::string ws2s( const std::wstring &wide );
 std::string trimStringFromStart( const std::string &str, const int nChars );
 std::string trimStringFromEnd( const std::string &str, const int nChars );
 void trimStringFromEndInPlace( std::string &str, const int nChars );
+//	\function	splitString	||	\date	2024/10/18 23:22
+//	\example	split( sea_horde_faction_keys, *serialized_string_shared_state_pointer, "," );
 std::vector<std::string> splitString( const std::string &s, const std::string &delim );
 bool stringContains( std::string_view haystack, std::string_view needle );
 std::string& capitalizeFirstLetter( std::string &str );

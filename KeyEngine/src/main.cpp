@@ -1,6 +1,7 @@
 #include "winner.h"
 #include "game.h"
 #include "utils.h"
+#include "os_utils.h"
 #include "console.h"
 #include "graphics_mode.h"
 #include "sysmetrics.h"

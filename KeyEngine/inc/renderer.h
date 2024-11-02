@@ -89,7 +89,7 @@ public:
 	//	\function	setActiveCamera	||	\date	2022/05/24 17:10
 	//	\brief	binds active camera to all Passes that need it
 	void setActiveCamera( const Camera &cam );
-	void setShadowCastingLights( Graphics &gfx, const std::vector<ILightSource*> &shadowCastingLights );
+	void bindShadowCastingLights( Graphics &gfx, const std::vector<ILightSource*> &shadowCastingLights );
 private:
 	void showShadowDumpImguiWindow( Graphics &gfx ) noexcept;
 	void showGaussianBlurImguiWindow( Graphics &gfx ) noexcept;

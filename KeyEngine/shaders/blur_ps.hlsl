@@ -1,8 +1,8 @@
-Texture2D offscreenTex/* : register(t0)*/;
-SamplerState sampl/* : register(s0)*/;
-
 static const int radius = 5;
 static const float divisor = ( 2 * radius + 1 ) * ( 2 * radius + 1 );
+
+Texture2D offscreenTex/* : register(t0)*/;
+SamplerState sampl/* : register(s0)*/;
 
 struct PSIn
 {

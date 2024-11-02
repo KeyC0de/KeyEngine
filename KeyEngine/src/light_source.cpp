@@ -1,6 +1,7 @@
 #include "light_source.h"
 #include "sphere.h"
 #include "graphics.h"
+#include "shadow_pass.h"
 #include "camera.h"
 #include "camera_manager.h"
 #include "math_utils.h"
@@ -11,67 +12,7 @@
 #endif
 
 
-namespace
-{
-constexpr const unsigned g_lightVertexShaderSlot = 2u;
-constexpr const unsigned g_lightPixelShaderSlot = 2u;
-}
-
 namespace dx = DirectX;
-
-LightSourceVSCB::LightSourceVSCB( Graphics &gfx,
-	const LightSourceType type,
-	const float shadowCamFovDegrees /*= 90.0f*/,
-	const DirectX::XMFLOAT3 &shadowCamPos /*= DirectX::XMFLOAT3{0.0f, 0.0f, 0.0f}*/,
-	const float shadowCamPitchDeg /*= 0.0f*/,
-	const float shadowCamYawDeg /*= 0.0f*/,
-	const float shadowCamNearZ /*= 1.0f*/,
-	const float shadowCamFarZ /*= 100.0f*/,
-	const DirectX::XMFLOAT3 &direction /*= DirectX::XMFLOAT3{0.0f, 0.0f, 0.0f}*/ )
-	:
-	m_pVscb{std::make_unique<VertexShaderConstantBuffer<LightVSCB>>( gfx, g_lightVertexShaderSlot )},
-	m_type{type},
-	m_shadowCamFarZ{shadowCamFarZ}
-{
-	if ( type == LightSourceType::Directional )
-	{
-		ASSERT( util::operator==(shadowCamPos, dx::XMFLOAT3{0.0f, 0.0f, 0.0f}), "Directional Light position must is at the origin, very far away! (.w will be equal to 1 in shader)" );
-		const std::pair<float, float> pitchAndYaw = Camera::computePitchYawInDegFromDirectionVector( direction );	// direction{0,0,0} = Directional Light direction vector looks at the center of the scene
-		// ensure orthographic projection matrix is used to capture all relevant shadow details in the entire scene (with appropriately big farZ)
-		// also make sure width and height are equal for Orthographic projection and big enough such that Directional/Star-light shadows cover pretty much the entire scene
-		m_pCameraForShadowing = std::make_unique<Camera>( gfx, shadowCamFarZ, shadowCamFarZ, shadowCamFovDegrees, shadowCamPos, pitchAndYaw.first, pitchAndYaw.second, true, false, shadowCamNearZ, shadowCamFarZ );
-	}
-	else if ( type == LightSourceType::Spot )
-	{
-		// set 1.0 aspect ratio for a Spot Light to have a square frustum; the spotlight is typically symmetric (meaning it has the same horizontal and vertical FOV)
-		m_pCameraForShadowing = std::make_unique<Camera>( gfx, shadowCamFarZ, shadowCamFarZ, shadowCamFovDegrees, shadowCamPos, shadowCamPitchDeg, shadowCamYawDeg, true, true, shadowCamNearZ, shadowCamFarZ );
-	}
-	else if ( type == LightSourceType::Point )
-	{
-		m_pCameraForShadowing = std::make_unique<Camera>( gfx, gfx.getClientWidth(), gfx.getClientHeight(), shadowCamFovDegrees, shadowCamPos, shadowCamPitchDeg, shadowCamYawDeg, true, true, shadowCamNearZ, shadowCamFarZ );
-	}
-}
-
-void LightSourceVSCB::bind( Graphics &gfx ) cond_noex
-{
-	m_pVscb->bind( gfx );
-}
-
-void LightSourceVSCB::update( Graphics &gfx ) cond_noex
-{
-	ASSERT( m_pCameraForShadowing, "Camera not specified (null)!" );
-	LightVSCB vscb{};
-	if ( m_type == LightSourceType::Directional || m_type == LightSourceType::Spot )
-	{
-		vscb = {dx::XMMatrixTranspose( m_pCameraForShadowing->getViewMatrix() * m_pCameraForShadowing->getProjectionMatrix( gfx, true, m_shadowCamFarZ ) )};
-	}
-	else if ( m_type == LightSourceType::Point )
-	{
-		const auto &pos = m_pCameraForShadowing->getPosition();
-		vscb = {dx::XMMatrixTranspose( dx::XMMatrixTranslation( -pos.x, -pos.y, -pos.z ) )};
-	}
-	m_pVscb->update( gfx, vscb );
-}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ILightSource::ILightSource( Graphics &gfx,
@@ -93,7 +34,7 @@ ILightSource::ILightSource( Graphics &gfx,
 	m_bCastingShadows{bShadowCasting},
 	m_rot{util::toRadians3( initialRotDeg )},
 	m_lightMesh(std::move( model)),
-	m_pscb(gfx, g_lightPixelShaderSlot),
+	m_vscbData{},
 	m_shadowCamFarZ{shadowCamFarZ}
 {
 	static int s_id = 0;
@@ -115,8 +56,31 @@ ILightSource::ILightSource( Graphics &gfx,
 		type == LightSourceType::Spot ? fovDeg : 0.0f};
 	if ( bShadowCasting )
 	{
-		// #TODO: consider using a shared_ptr and sharing it in the BindableRegistry
-		m_lightVscb = std::make_unique<LightSourceVSCB>( gfx, m_type, fovDeg, m_pscbData.cb_lightPosViewSpace, initialRotDeg.x, initialRotDeg.y );
+		const DirectX::XMFLOAT3 &shadowCamPos = m_pscbData.cb_lightPosViewSpace;
+		if ( type == LightSourceType::Directional )
+		{
+			ASSERT( util::operator==(shadowCamPos, dx::XMFLOAT3{0.0f, 0.0f, 0.0f}), "Directional Light position must is at the origin, very far away! (.w will be equal to 1 in shader)" );
+			const std::pair<float, float> pitchAndYaw = Camera::computePitchYawInDegFromDirectionVector( direction );	// direction{0,0,0} = Directional Light direction vector looks at the center of the scene
+			// ensure orthographic projection matrix is used to capture all relevant shadow details in the entire scene (with appropriately big farZ)
+			// also make sure width and height are equal for Orthographic projection and big enough such that Directional/Star-light shadows cover pretty much the entire scene
+			m_pCameraForShadowing = std::make_unique<Camera>( gfx, shadowCamFarZ, shadowCamFarZ, fovDeg, shadowCamPos, pitchAndYaw.first, pitchAndYaw.second, true, false, shadowCamNearZ, shadowCamFarZ );
+		}
+		else if ( type == LightSourceType::Spot )
+		{
+			const float shadowCamPitchDeg = initialRotDeg.x;
+			const float shadowCamYawDeg = initialRotDeg.y;
+
+			// set 1.0 aspect ratio for a Spot Light to have a square frustum; the spotlight is typically symmetric (meaning it has the same horizontal and vertical FOV)
+			m_pCameraForShadowing = std::make_unique<Camera>( gfx, shadowCamFarZ, shadowCamFarZ, fovDeg, shadowCamPos, shadowCamPitchDeg, shadowCamYawDeg, true, true, shadowCamNearZ, shadowCamFarZ );
+		}
+		else if ( type == LightSourceType::Point )
+		{
+			const float shadowCamPitchDeg = initialRotDeg.x;
+			const float shadowCamYawDeg = initialRotDeg.y;
+
+			m_pCameraForShadowing = std::make_unique<Camera>( gfx, gfx.getClientWidth(), gfx.getClientHeight(), fovDeg, shadowCamPos, shadowCamPitchDeg, shadowCamYawDeg, true, true, shadowCamNearZ, shadowCamFarZ );
+		}
+
 	}
 }
 
@@ -139,14 +103,10 @@ void ILightSource::render( const size_t channels ) const cond_noex
 	}
 }
 
-void ILightSource::updateVscb( Graphics &gfx ) const cond_noex
+void ILightSource::populateCBData( Graphics &gfx ) cond_noex
 {
-	m_lightVscb->update( gfx );
-}
-
-void ILightSource::bindVscb( Graphics &gfx ) const cond_noex
-{
-	m_lightVscb->bind( gfx );
+	populateVscbData( gfx );
+	populatePscbData( gfx );
 }
 
 void ILightSource::connectMaterialsToRenderer( ren::Renderer &r )
@@ -154,15 +114,24 @@ void ILightSource::connectMaterialsToRenderer( ren::Renderer &r )
 	m_lightMesh.connectMaterialsToRenderer( r );
 }
 
-Camera* ILightSource::getShadowCamera() const
+void ILightSource::setRotation( const DirectX::XMFLOAT3 &rot )
 {
-	ASSERT( m_bCastingShadows, "There is no shadow camera!" );
-	return m_lightVscb->m_pCameraForShadowing.get();
+	if ( m_bCastingShadows )
+	{
+		m_pCameraForShadowing->setRotation( rot );
+	}
+	m_lightMesh.setRotation( rot );
 }
 
-std::shared_ptr<LightSourceVSCB> ILightSource::shareVscb() const noexcept
+void ILightSource::setTranslation( const DirectX::XMFLOAT3 &pos )
 {
-	return m_lightVscb;
+	if ( m_bCastingShadows )
+	{
+		m_pCameraForShadowing->setTethered( false );
+		m_pCameraForShadowing->setTranslation( pos );
+		m_pCameraForShadowing->setTethered( true );
+	}
+	m_lightMesh.setTranslation( pos );
 }
 
 LightSourceType ILightSource::getType() const noexcept
@@ -173,6 +142,11 @@ LightSourceType ILightSource::getType() const noexcept
 unsigned ILightSource::getSlot() const noexcept
 {
 	return static_cast<unsigned>( m_pscbData.cb_lightType );
+}
+
+std::string ILightSource::getName() const noexcept
+{
+	return m_name;
 }
 
 bool ILightSource::isCastingShadows() const noexcept
@@ -186,34 +160,15 @@ bool ILightSource::isFrustumCulled() const noexcept
 	return false;
 }
 
-std::string ILightSource::getName() const noexcept
-{
-	return m_name;
-}
-
-void ILightSource::setRotation( const DirectX::XMFLOAT3 &rot )
-{
-	if ( m_bCastingShadows )
-	{
-		accessShadowCamera()->setRotation( rot );
-	}
-	m_lightMesh.setRotation( rot );
-}
-
-void ILightSource::setTranslation( const DirectX::XMFLOAT3 &pos )
-{
-	if ( m_bCastingShadows )
-	{
-		accessShadowCamera()->setTethered( false );
-		accessShadowCamera()->setTranslation( pos );
-		accessShadowCamera()->setTethered( true );
-	}
-	m_lightMesh.setTranslation( pos );
-}
-
 DirectX::XMFLOAT3 ILightSource::getRotation() const noexcept
 {
 	return m_lightMesh.getRotation();
+}
+
+Camera* ILightSource::getShadowCamera() const
+{
+	ASSERT( m_bCastingShadows, "There is no shadow camera!" );
+	return m_pCameraForShadowing.get();
 }
 
 float ILightSource::getShadowCameraFarZ() const noexcept
@@ -221,15 +176,14 @@ float ILightSource::getShadowCameraFarZ() const noexcept
 	return m_shadowCamFarZ;
 }
 
-DirectX::XMMATRIX ILightSource::getShadowCameraProjectionMatrix( Graphics &gfx ) cond_noex
+ILightSource::LightVSCB ILightSource::getVscbData() noexcept
 {
-	ASSERT( m_bCastingShadows, "Light is not casting any shadows!" );
-	return accessShadowCamera()->getProjectionMatrix( gfx, true, m_shadowCamFarZ );
+	return m_vscbData;
 }
 
-Camera* ILightSource::accessShadowCamera()
+ILightSource::LightPSCB ILightSource::getPscbData() noexcept
 {
-	return m_lightVscb->m_pCameraForShadowing.get();
+	return m_pscbDataPrev;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -248,20 +202,6 @@ DirectionalLight::DirectionalLight( Graphics &gfx,
 	ILightSource(gfx, LightSourceType::Directional, Model(std::make_unique<Sphere>(gfx, radiusScale, colorOrTexturePath), gfx, initialRotDeg, pos), colorOrTexturePath, bShadowCasting, bShowMesh, initialRotDeg, pos, intensity, direction, shadowCamNearZ, shadowCamFarZ)
 {
 
-}
-
-void DirectionalLight::update( Graphics &gfx,
-	const float dt,
-	const float lerpBetweenFrames,
-	const bool bEnableSmoothMovement /*= false*/ ) cond_noex
-{
-	/*
-	ASSERT( m_pDirectionalLightShadowCamera, "Camera not specified (null)!" );
-	dx::XMFLOAT3 dir;
-	dx::XMStoreFloat3( &dir, m_pDirectionalLightShadowCamera->getDirection() );
-	const DirectionalPointLightSourceShadowTransformVSCB vscb{dx::XMMatrixTranspose( dx::XMMatrixTranslation( -dir.x, -dir.y, -dir.z ) )};
-	m_pVscb->update( gfx, vscb );
-	*/
 }
 
 void DirectionalLight::displayImguiWidgets() noexcept
@@ -284,6 +224,23 @@ DirectX::XMFLOAT3 DirectionalLight::getPosition() const noexcept
 	return m_lightMesh.getPosition();
 }
 
+void DirectionalLight::populateVscbData( Graphics &gfx ) cond_noex
+{
+	ASSERT( m_pCameraForShadowing, "Camera not specified (null)!" );
+	m_vscbData = {dx::XMMatrixTranspose( m_pCameraForShadowing->getViewMatrix() * m_pCameraForShadowing->getProjectionMatrix( gfx, true, m_shadowCamFarZ ) )};
+}
+
+void DirectionalLight::populatePscbData( Graphics &gfx ) cond_noex
+{
+	/*
+	ASSERT( m_pDirectionalLightShadowCamera, "Camera not specified (null)!" );
+	dx::XMFLOAT3 dir;
+	dx::XMStoreFloat3( &dir, m_pDirectionalLightShadowCamera->getDirection() );
+	const DirectionalPointLightSourceShadowTransformVSCB vscb{dx::XMMatrixTranspose( dx::XMMatrixTranslation( -dir.x, -dir.y, -dir.z ) )};
+	m_pVscb->update( gfx, vscb );
+	*/
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 SpotLight::SpotLight( Graphics &gfx,
 	const float radiusScale /*= 1.0f*/,
@@ -301,14 +258,6 @@ SpotLight::SpotLight( Graphics &gfx,
 	ILightSource(gfx, LightSourceType::Spot, Model(std::make_unique<Sphere>(gfx, radiusScale, colorOrTexturePath), gfx, initialRotDeg, pos), colorOrTexturePath, bShadowCasting, bShowMesh, initialRotDeg, pos, intensity, direction, fovConeAngle, shadowCamNearZ, shadowCamFarZ)
 {
 
-}
-
-void SpotLight::update( Graphics &gfx,
-	const float dt,
-	const float lerpBetweenFrames,
-	const bool bEnableSmoothMovement /*= false*/ ) cond_noex
-{
-	pass_;
 }
 
 void SpotLight::displayImguiWidgets() noexcept
@@ -331,6 +280,17 @@ DirectX::XMFLOAT3 SpotLight::getPosition() const noexcept
 	return m_pscbData.cb_lightPosViewSpace;
 }
 
+void SpotLight::populateVscbData( Graphics &gfx ) cond_noex
+{
+	ASSERT( m_pCameraForShadowing, "Camera not specified (null)!" );
+	m_vscbData = {dx::XMMatrixTranspose( m_pCameraForShadowing->getViewMatrix() * m_pCameraForShadowing->getProjectionMatrix( gfx, true, m_shadowCamFarZ ) )};
+}
+
+void SpotLight::populatePscbData( Graphics &gfx ) cond_noex
+{
+	pass_;
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 PointLight::PointLight( Graphics &gfx,
 	const float radiusScale /*= 0.5f*/,
@@ -346,24 +306,6 @@ PointLight::PointLight( Graphics &gfx,
 	ILightSource(gfx, LightSourceType::Point, Model(std::make_unique<Sphere>(gfx, radiusScale, colorOrTexturePath), gfx, initialRotDeg, pos), colorOrTexturePath, bShadowCasting, bShowMesh, initialRotDeg, pos, intensity, {0.0f, 0.0f, 0.0f}, 90.0f, shadowCamNearZ, shadowCamFarZ)
 {
 	
-}
-
-void PointLight::update( Graphics &gfx,
-	const float dt,
-	const float lerpBetweenFrames,
-	const bool bEnableSmoothMovement /*= false*/ ) cond_noex
-{
-	static CameraManager &s_cameraMan = CameraManager::getInstance();
-	const auto &activeCameraViewMat = s_cameraMan.getActiveCamera().getViewMatrix();
-
-	auto copy = m_pscbData;
-	const auto lightPos = DirectX::XMLoadFloat3( &m_pscbData.cb_lightPosViewSpace );
-
-	DirectX::XMStoreFloat3( &copy.cb_lightPosViewSpace, DirectX::XMVector3Transform( lightPos, activeCameraViewMat ) );
-	m_pscb.update( gfx, copy );
-	m_pscb.bind( gfx );
-
-	ILightSource::update( gfx, dt, lerpBetweenFrames, bEnableSmoothMovement );
 }
 
 void PointLight::displayImguiWidgets() noexcept
@@ -406,7 +348,7 @@ void PointLight::displayImguiWidgets() noexcept
 
 		ImGui::Text( "Intensity & Color" );
 		ImGui::SliderFloat( "Intensity", &m_pscbData.intensity, 0.01f, 4.0f, "%.2f", 2.0f );
-		ImGui::ColorEdit3( "Diffuse", &m_pscbData.lightColor.x );
+		ImGui::ColorEdit3( "Diffuse", &m_pscbData.lightColor.x );	// #TODO: expose model's material properties cb to change its color when changing the light's color here
 		ImGui::ColorEdit3( "Ambient", &m_pscbData.ambient.x );
 
 		ImGui::Text( "Attenuation" );
@@ -433,4 +375,20 @@ void PointLight::setColor( const DirectX::XMFLOAT3 &diffuseColor ) noexcept
 DirectX::XMFLOAT3 PointLight::getPosition() const noexcept
 {
 	return m_pscbData.cb_lightPosViewSpace;
+}
+
+void PointLight::populateVscbData( Graphics &gfx ) cond_noex
+{
+	ASSERT( m_pCameraForShadowing, "Camera not specified (null)!" );
+	const auto &pos = m_pCameraForShadowing->getPosition();
+	m_vscbData = {dx::XMMatrixTranspose( dx::XMMatrixTranslation( -pos.x, -pos.y, -pos.z ) )};
+}
+
+void PointLight::populatePscbData( Graphics &gfx ) cond_noex
+{
+	static CameraManager &s_cameraMan = CameraManager::getInstance();
+	const auto &activeCameraViewMat = s_cameraMan.getActiveCamera().getViewMatrix();
+	m_pscbDataPrev = m_pscbData;
+	const auto lightPos = DirectX::XMLoadFloat3( &m_pscbData.cb_lightPosViewSpace );
+	DirectX::XMStoreFloat3( &m_pscbDataPrev.cb_lightPosViewSpace, DirectX::XMVector3Transform( lightPos, activeCameraViewMat ) );
 }

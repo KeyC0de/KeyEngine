@@ -173,7 +173,7 @@ Sandbox3d::Sandbox3d( const int width,
 	m_lights.reserve( settings.iMaxShadowCastingDynamicLights );
 	//m_lights.push_back( std::make_unique<DirectionalLight>( gfx, 0.5f, DirectX::XMFLOAT3{0.0f, 0.0f, 0.0f}, DirectX::XMFLOAT3{10.0f, 5.0f, -1.4f}, DirectX::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f}, true, true, 1.0f ) );
 	m_lights.push_back( std::make_unique<PointLight>( gfx, 0.5f, DirectX::XMFLOAT3{0.0f, 0.0f, 0.0f}, DirectX::XMFLOAT3{10.0f, 5.0f, -1.4f}, DirectX::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f}, true, true, 1.0f ) );
-	//m_lights.push_back( std::make_unique<PointLight>( gfx, 1.0f, DirectX::XMFLOAT3{0.0f, 1.0f, 0.f}, DirectX::XMFLOAT3{5.0f, 15.0f, 10.0f}, DirectX::XMFLOAT4{1.0f, 1.0f, 0.2f, 0.25f}, true, true, 0.5f ) );
+	m_lights.push_back( std::make_unique<PointLight>( gfx, 1.0f, DirectX::XMFLOAT3{0.0f, 1.0f, 0.f}, DirectX::XMFLOAT3{5.0f, 15.0f, 0.0f}, DirectX::XMFLOAT4{1.0f, 1.0f, 0.2f, 0.25f}, true, true, 0.5f ) );
 
 
 	m_models.reserve( 16 );
@@ -415,7 +415,6 @@ void Sandbox3d::update( Graphics &gfx,
 	activeCamera.makeActive( gfx, false );
 	gfx.getRenderer3d().setActiveCamera( activeCamera );
 
-	//if ( util::modulus( gfx.getFrameNum(), 5ull ) == 0 )	// #optimization: no need to update shadows every frame
 	{
 		std::sort( m_lights.begin(), m_lights.end(), [] (std::unique_ptr<ILightSource> &lhs, std::unique_ptr<ILightSource> &rhs)
 			{
@@ -435,7 +434,7 @@ void Sandbox3d::update( Graphics &gfx,
 					return lhsFrustumCulled < rhsFrustumCulled;
 				}
 
-				// non-point lights come third
+				// ordering by type of light: 1. Directional Lights, 2. Spot-lights, 3. Point lights
 				const unsigned lhsLightTypeId = (unsigned) lhs->getType();
 				const unsigned rhsLightTypeId = (unsigned) rhs->getType();
 				if ( lhsLightTypeId != rhsLightTypeId )
@@ -445,23 +444,6 @@ void Sandbox3d::update( Graphics &gfx,
 
 				return false;
 			} );
-
-		const auto numShadowCastingUnculledLights = std::count_if( m_lights.begin(), m_lights.end(), [] (std::unique_ptr<ILightSource> &pLight)
-			{
-				return pLight->isCastingShadows() && !pLight->isFrustumCulled();
-			} );
-
-		std::vector<ILightSource*> shadowCastingUnculledLights;
-		shadowCastingUnculledLights.reserve( numShadowCastingUnculledLights );
-		for ( const auto &pLight : m_lights )
-		{
-			if ( pLight->isCastingShadows() )
-			{
-				shadowCastingUnculledLights.push_back( pLight.get() );
-			}
-		}
-
-		gfx.getRenderer3d().setShadowCastingLights( gfx, shadowCastingUnculledLights );
 	}
 
 	for ( auto &pLight : m_lights )
@@ -503,6 +485,22 @@ void Sandbox3d::render( Graphics &gfx )
 	for ( auto &model : m_models )
 	{
 		model.render();
+	}
+
+	{
+		static const auto &settings = s_settingsMan.getSettings();
+
+		std::vector<ILightSource*> shadowCastingUnculledLights;
+		shadowCastingUnculledLights.reserve( settings.iMaxShadowCastingDynamicLights );
+		for ( const auto &pLight : m_lights )
+		{
+			if ( pLight->isCastingShadows() && !pLight->isFrustumCulled() )
+			{
+				shadowCastingUnculledLights.push_back( pLight.get() );
+			}
+		}
+
+		gfx.getRenderer3d().bindShadowCastingLights( gfx, shadowCastingUnculledLights );
 	}
 
 	gfx.runRenderer();

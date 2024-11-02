@@ -546,10 +546,10 @@ void ren::Renderer3d::setActiveCamera( const Camera &cam )
 	dynamic_cast<TransparentPass&>( getPass( "transparent" ) ).setActiveCamera( cam );
 }
 
-void ren::Renderer3d::setShadowCastingLights( Graphics &gfx,
+void ren::Renderer3d::bindShadowCastingLights( Graphics &gfx,
 	const std::vector<ILightSource*> &shadowCastingLights )
 {
-	dynamic_cast<ShadowPass&>( getPass( "shadow" ) ).setShadowCastingLights( gfx, shadowCastingLights );
+	dynamic_cast<ShadowPass&>( getPass( "shadow" ) ).bindShadowCastingLights( gfx, shadowCastingLights );
 }
 
 void Renderer3d::dumpShadowMap( Graphics &gfx,
