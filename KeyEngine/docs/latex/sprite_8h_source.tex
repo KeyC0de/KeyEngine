@@ -1,0 +1,43 @@
+\doxysection{sprite.\+h}
+\hypertarget{sprite_8h_source}{}\label{sprite_8h_source}\index{inc/sprite.h@{inc/sprite.h}}
+\mbox{\hyperlink{sprite_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <wincodec.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <d2d1.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGraphics}{Graphics}};}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ https://docs.microsoft.com/en-\/us/windows/win32/wic/jpeg-\/ycbcr-\/support}}
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSprite}{Sprite}}}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ Microsoft::WRL::ComPtr<IWICImagingFactory>\ \mbox{\hyperlink{classSprite_a3dbe733528fa98914c69bd28daf4a0d7_a3dbe733528fa98914c69bd28daf4a0d7}{m\_pWicFactory}};}
+\DoxyCodeLine{00013\ \ \ \ \ Microsoft::WRL::ComPtr<IWICBitmapDecoder>\ \mbox{\hyperlink{classSprite_a9c6d51fd94758772cd56c11a77258632_a9c6d51fd94758772cd56c11a77258632}{m\_pWicDecoder}};}
+\DoxyCodeLine{00014\ \ \ \ \ Microsoft::WRL::ComPtr<IWICBitmapFrameDecode>\ \mbox{\hyperlink{classSprite_a70937b7742f455409a65c9ba0291cad0_a70937b7742f455409a65c9ba0291cad0}{m\_pBitmapFrame}};}
+\DoxyCodeLine{00015\ \ \ \ \ Microsoft::WRL::ComPtr<IWICFormatConverter>\ \mbox{\hyperlink{classSprite_aef826d0df94614600d606692ba16ef3b_aef826d0df94614600d606692ba16ef3b}{m\_pWicConverter}};}
+\DoxyCodeLine{00016\ \ \ \ \ Microsoft::WRL::ComPtr<ID2D1Bitmap>\ \mbox{\hyperlink{classSprite_a90981aba92daf4a67769cd2dbba71df3_a90981aba92daf4a67769cd2dbba71df3}{m\_pBitmap}};}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{classSprite_a9b366efc8c486932e9d93dd99f4334e3_a9b366efc8c486932e9d93dd99f4334e3}{Sprite}}(\ \textcolor{keyword}{const}\ std::wstring\ \&filename,\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx\ );}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classSprite_ac82b8f8bcd32c57032e739ce956c455b_ac82b8f8bcd32c57032e739ce956c455b}{\string~Sprite}}()\ noexcept\ =\ default;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSprite_a6588f564b921aad761c3ed67f2efcba9_a6588f564b921aad761c3ed67f2efcba9}{render}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx,\ const\ D2D1\_RECT\_F\ \&srcRect,\ const\ D2D1\_RECT\_F\ \&destRect,\ const\ \textcolor{keywordtype}{float}\ alpha\ =\ 1.0f\ );}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classSprite_a131be40bb93d9e5daba29db542a83e75_a131be40bb93d9e5daba29db542a83e75}{getWidth}}()\ const\ noexcept;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classSprite_a887f3dba52d6ca4ccd3daaf2e0cf2b6a_a887f3dba52d6ca4ccd3daaf2e0cf2b6a}{getHeight}}()\ const\ noexcept;}
+\DoxyCodeLine{00026\ \};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ class\ \mbox{\hyperlink{classSpriteSheet}{SpriteSheet}}}
+\DoxyCodeLine{00029\ \ \ \ \ :\ public\ \mbox{\hyperlink{classSprite}{Sprite}}}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSpriteSheet_ac6203ad7f0502e2f28bd4098d6d82eb7_ac6203ad7f0502e2f28bd4098d6d82eb7}{m\_spriteWidth}};}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSpriteSheet_a8bd9f94a60cb9083afa06164be191180_a8bd9f94a60cb9083afa06164be191180}{m\_spriteHeight}};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSpriteSheet_a6ab705e124b172192eab92a4aac87d51_a6ab705e124b172192eab92a4aac87d51}{m\_nSpritesAcross}};}
+\DoxyCodeLine{00034\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{classSpriteSheet_a5b1f2658e7f7946ef4a4cced2bf5945d_a5b1f2658e7f7946ef4a4cced2bf5945d}{SpriteSheet}}(\ \textcolor{keyword}{const}\ std::wstring\&\ filename,\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ spriteWidth,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ spriteHeight\ );}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSpriteSheet_af8c4a8772b7febaa235249662fd22e6a_af8c4a8772b7febaa235249662fd22e6a}{render}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ index,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ alpha\ =\ 1.0f\ );}
+\DoxyCodeLine{00038\ \};}
+
+\end{DoxyCode}

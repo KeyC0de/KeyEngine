@@ -1,0 +1,21 @@
+\doxysection{plane.\+h}
+\hypertarget{plane_8h_source}{}\label{plane_8h_source}\index{inc/plane.h@{inc/plane.h}}
+\mbox{\hyperlink{plane_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{mesh_8h}{mesh.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <variant>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGraphics}{Graphics}};}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classPlane}{Plane}}}
+\DoxyCodeLine{00010\ \ \ \ \ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classMesh}{Mesh}}}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{classPlane_a719a4649c973568b79d2f92fb7b7ac19_a719a4649c973568b79d2f92fb7b7ac19}{s\_geometryTag}}\ =\ \textcolor{stringliteral}{"{}\$plane"{}};}
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{classPlane_a70e7a5971d34e1130740e843a6a18896_a70e7a5971d34e1130740e843a6a18896}{Plane}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ initialScale\ =\ 1.0f,\ \textcolor{keyword}{const}\ std::variant<DirectX::XMFLOAT4,\ std::string>\ \&colorOrTexturePath\ =\ \textcolor{stringliteral}{"{}assets/models/brick\_wall/brick\_wall\_diffuse.jpg"{}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ length\ =\ 2,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ width\ =\ 2\ );}
+\DoxyCodeLine{00015\ \};}
+
+\end{DoxyCode}

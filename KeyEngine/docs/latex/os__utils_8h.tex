@@ -1,0 +1,140 @@
+\doxysection{inc/os\+\_\+utils.h File Reference}
+\hypertarget{os__utils_8h}{}\label{os__utils_8h}\index{inc/os\_utils.h@{inc/os\_utils.h}}
+{\ttfamily \#include "{}winner.\+h"{}}\newline
+{\ttfamily \#include $<$winternl.\+h$>$}\newline
+{\ttfamily \#include $<$comdef.\+h$>$}\newline
+{\ttfamily \#include $<$tlhelp32.\+h$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include "{}console.\+h"{}}\newline
+{\ttfamily \#include $<$functional$>$}\newline
+{\ttfamily \#include $<$optional$>$}\newline
+{\ttfamily \#include $<$Shl\+Obj.\+h$>$}\newline
+{\ttfamily \#include $<$wincred.\+h$>$}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceutil}{util}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{os__utils_8h_a796263d2d6b5e79e1fd4029fb6ebf58d_a796263d2d6b5e79e1fd4029fb6ebf58d}{POD\+\_\+\+ZERO}}(arg)
+\item 
+\#define \mbox{\hyperlink{os__utils_8h_a25e84d8771362a5139c04067d39d8446_a25e84d8771362a5139c04067d39d8446}{ASSERT\+\_\+\+RETURN\+\_\+\+HRES\+\_\+\+IF\+\_\+\+FAILED}}(hres)
+\item 
+\#define \mbox{\hyperlink{os__utils_8h_a06ad2606426e941f7509aeb2e14a3eaf_a06ad2606426e941f7509aeb2e14a3eaf}{ASSERT\+\_\+\+IF\+\_\+\+FAILED}}(hres)
+\item 
+\#define \mbox{\hyperlink{os__utils_8h_a7027472bc9b182c0fea900713e4541e3_a7027472bc9b182c0fea900713e4541e3}{ASSERT\+\_\+\+HRES\+\_\+\+IF\+\_\+\+FAILED}}~(void)0;
+\item 
+\#define \mbox{\hyperlink{os__utils_8h_a8b751108e3b0b41a0ea1d5dd4d440b1b_a8b751108e3b0b41a0ea1d5dd4d440b1b}{ASSERT\+\_\+\+HRES\+\_\+\+IF\+\_\+\+FAILED\+\_\+\+MSG}}~(void)0;
+\item 
+\#define \mbox{\hyperlink{os__utils_8h_a5d073df04e4d5048059e9a110173b9f0_a5d073df04e4d5048059e9a110173b9f0}{ASSERT\+\_\+\+HRES\+\_\+\+WIN32\+\_\+\+IF\+\_\+\+FAILED}}~(void)0;
+\item 
+\#define \mbox{\hyperlink{os__utils_8h_af662511c5dd990965f3c067711f6ef62_af662511c5dd990965f3c067711f6ef62}{ASSERT\+\_\+\+NTSTATUS\+\_\+\+IF\+\_\+\+FAILED}}~(void)0;
+\item 
+\#define \mbox{\hyperlink{os__utils_8h_abc339680801477d89bc65c0a978bd85f_abc339680801477d89bc65c0a978bd85f}{ASSERT\+\_\+\+HRES\+\_\+\+REGISTRY\+\_\+\+IF\+\_\+\+FAILED}}~(void)0;
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{namespaceutil_a3cb6f8f22822b4670fa970bce585e52a_a3cb6f8f22822b4670fa970bce585e52a}{util\+::print\+Hresult\+Error\+Description}} (const HRESULT hres)
+\begin{DoxyCompactList}\small\item\em print HRESULT errors in understandable English \end{DoxyCompactList}\item 
+std\+::wstring \mbox{\hyperlink{namespaceutil_a742e4cf7eec6ab440f6a51fa98cdb42b_a742e4cf7eec6ab440f6a51fa98cdb42b}{util\+::print\+Hresult\+Error\+DescriptionW}} (const HRESULT hres)
+\item 
+std\+::string \mbox{\hyperlink{namespaceutil_a566f2bbc4b5cafc9971186f0d707bf3e_a566f2bbc4b5cafc9971186f0d707bf3e}{util\+::get\+Last\+Error\+As\+String}} ()
+\begin{DoxyCompactList}\small\item\em Returns the last Win32 error, in string format. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespaceutil_a9a0b0bfad82a59556195c73d4d2cda5e_a9a0b0bfad82a59556195c73d4d2cda5e}{util\+::get\+Last\+Nt\+Error\+As\+String}} (const DWORD nt\+Status\+Code)
+\item 
+std\+::wstring \mbox{\hyperlink{namespaceutil_a35e258ec68cdc2634e69fad1574f982b_a35e258ec68cdc2634e69fad1574f982b}{util\+::bstr\+To\+Str}} (const BSTR \&bstr)
+\item 
+BSTR \mbox{\hyperlink{namespaceutil_a525e6245d3b2156e2d85aaedb8f7bb2e_a525e6245d3b2156e2d85aaedb8f7bb2e}{util\+::str\+To\+Bstr}} (const std\+::wstring \&str)
+\item 
+\+\_\+\+\_\+int64 \mbox{\hyperlink{namespaceutil_a3e3c5eab6a6d57d880fd94d44f599cb4_a3e3c5eab6a6d57d880fd94d44f599cb4}{util\+::filetime\+To\+Int64}} (const FILETIME \&file\+Time)
+\item 
+DWORD\+\_\+\+PTR \mbox{\hyperlink{namespaceutil_a12eed248853b800635a584152eda83a5_a12eed248853b800635a584152eda83a5}{util\+::pin\+Thread\+To\+Core}} (const HANDLE h\+Thread, const DWORD core)
+\begin{DoxyCompactList}\small\item\em returns the thread\textquotesingle{}s previous affinity mask \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceutil_a26eb5943c9263e29706bf7ea9817bd26_a26eb5943c9263e29706bf7ea9817bd26}{util\+::set\+Current\+Thread\+Name}} (const std\+::string \&name)
+\item 
+std\+::string \mbox{\hyperlink{namespaceutil_a08c4e4a29b0a0e5157b152b140bc094e_a08c4e4a29b0a0e5157b152b140bc094e}{util\+::get\+Known\+Folder\+Path}} (const int id=CSIDL\+\_\+\+PERSONAL)
+\item 
+void \mbox{\hyperlink{namespaceutil_a79a4c5df290b7c3f50617ad7ffa131b2_a79a4c5df290b7c3f50617ad7ffa131b2}{util\+::setup\+Detached\+Threads\+Vector}} (const unsigned n\+Threads)
+\item 
+void \mbox{\hyperlink{namespaceutil_a3a780a09a3dffe65ca6df0ff68298fa9_a3a780a09a3dffe65ca6df0ff68298fa9}{util\+::terminate\+Detached\+Threads}} ()
+\item 
+std\+::optional$<$ DWORD $>$ \mbox{\hyperlink{namespaceutil_a2e444da6f9f3edb24cbdfdd3acd8eef5_a2e444da6f9f3edb24cbdfdd3acd8eef5}{util\+::registry\+Get\+Dword}} (const HKEY h\+Key, const std\+::wstring \&reg\+Name)
+\item 
+std\+::optional$<$ std\+::wstring $>$ \mbox{\hyperlink{namespaceutil_a461bbc2dfa40d2dae1639cce3f6db772_a461bbc2dfa40d2dae1639cce3f6db772}{util\+::registry\+Get\+String}} (const HKEY h\+Key, const std\+::wstring \&reg\+Name)
+\item 
+static void \mbox{\hyperlink{namespaceutil_a833373d99efbf126ccbb44456500085f_a833373d99efbf126ccbb44456500085f}{util\+::suspend\+All\+Threads}} ()
+\item 
+void \mbox{\hyperlink{namespaceutil_a49087246809a040488fc33d84239de83_a49087246809a040488fc33d84239de83}{util\+::launch\+Process}} (const std\+::string \&path)
+\item 
+{\footnotesize template$<$typename TCallback , typename... TArgs$>$ }\\decltype(auto) \mbox{\hyperlink{namespaceutil_ad7c794e52973c3fe00e125e69d29a011_ad7c794e52973c3fe00e125e69d29a011}{util\+::ask\+For\+Credentials}} (TCallback \&\&f, TArgs \&\&... args)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{os__utils_8h_a7027472bc9b182c0fea900713e4541e3_a7027472bc9b182c0fea900713e4541e3}\index{os\_utils.h@{os\_utils.h}!ASSERT\_HRES\_IF\_FAILED@{ASSERT\_HRES\_IF\_FAILED}}
+\index{ASSERT\_HRES\_IF\_FAILED@{ASSERT\_HRES\_IF\_FAILED}!os\_utils.h@{os\_utils.h}}
+\doxysubsubsection{\texorpdfstring{ASSERT\_HRES\_IF\_FAILED}{ASSERT\_HRES\_IF\_FAILED}}
+{\footnotesize\ttfamily \label{os__utils_8h_a7027472bc9b182c0fea900713e4541e3_a7027472bc9b182c0fea900713e4541e3} 
+\#define ASSERT\+\_\+\+HRES\+\_\+\+IF\+\_\+\+FAILED~(void)0;}
+
+\Hypertarget{os__utils_8h_a8b751108e3b0b41a0ea1d5dd4d440b1b_a8b751108e3b0b41a0ea1d5dd4d440b1b}\index{os\_utils.h@{os\_utils.h}!ASSERT\_HRES\_IF\_FAILED\_MSG@{ASSERT\_HRES\_IF\_FAILED\_MSG}}
+\index{ASSERT\_HRES\_IF\_FAILED\_MSG@{ASSERT\_HRES\_IF\_FAILED\_MSG}!os\_utils.h@{os\_utils.h}}
+\doxysubsubsection{\texorpdfstring{ASSERT\_HRES\_IF\_FAILED\_MSG}{ASSERT\_HRES\_IF\_FAILED\_MSG}}
+{\footnotesize\ttfamily \label{os__utils_8h_a8b751108e3b0b41a0ea1d5dd4d440b1b_a8b751108e3b0b41a0ea1d5dd4d440b1b} 
+\#define ASSERT\+\_\+\+HRES\+\_\+\+IF\+\_\+\+FAILED\+\_\+\+MSG~(void)0;}
+
+\Hypertarget{os__utils_8h_abc339680801477d89bc65c0a978bd85f_abc339680801477d89bc65c0a978bd85f}\index{os\_utils.h@{os\_utils.h}!ASSERT\_HRES\_REGISTRY\_IF\_FAILED@{ASSERT\_HRES\_REGISTRY\_IF\_FAILED}}
+\index{ASSERT\_HRES\_REGISTRY\_IF\_FAILED@{ASSERT\_HRES\_REGISTRY\_IF\_FAILED}!os\_utils.h@{os\_utils.h}}
+\doxysubsubsection{\texorpdfstring{ASSERT\_HRES\_REGISTRY\_IF\_FAILED}{ASSERT\_HRES\_REGISTRY\_IF\_FAILED}}
+{\footnotesize\ttfamily \label{os__utils_8h_abc339680801477d89bc65c0a978bd85f_abc339680801477d89bc65c0a978bd85f} 
+\#define ASSERT\+\_\+\+HRES\+\_\+\+REGISTRY\+\_\+\+IF\+\_\+\+FAILED~(void)0;}
+
+\Hypertarget{os__utils_8h_a5d073df04e4d5048059e9a110173b9f0_a5d073df04e4d5048059e9a110173b9f0}\index{os\_utils.h@{os\_utils.h}!ASSERT\_HRES\_WIN32\_IF\_FAILED@{ASSERT\_HRES\_WIN32\_IF\_FAILED}}
+\index{ASSERT\_HRES\_WIN32\_IF\_FAILED@{ASSERT\_HRES\_WIN32\_IF\_FAILED}!os\_utils.h@{os\_utils.h}}
+\doxysubsubsection{\texorpdfstring{ASSERT\_HRES\_WIN32\_IF\_FAILED}{ASSERT\_HRES\_WIN32\_IF\_FAILED}}
+{\footnotesize\ttfamily \label{os__utils_8h_a5d073df04e4d5048059e9a110173b9f0_a5d073df04e4d5048059e9a110173b9f0} 
+\#define ASSERT\+\_\+\+HRES\+\_\+\+WIN32\+\_\+\+IF\+\_\+\+FAILED~(void)0;}
+
+\Hypertarget{os__utils_8h_a06ad2606426e941f7509aeb2e14a3eaf_a06ad2606426e941f7509aeb2e14a3eaf}\index{os\_utils.h@{os\_utils.h}!ASSERT\_IF\_FAILED@{ASSERT\_IF\_FAILED}}
+\index{ASSERT\_IF\_FAILED@{ASSERT\_IF\_FAILED}!os\_utils.h@{os\_utils.h}}
+\doxysubsubsection{\texorpdfstring{ASSERT\_IF\_FAILED}{ASSERT\_IF\_FAILED}}
+{\footnotesize\ttfamily \label{os__utils_8h_a06ad2606426e941f7509aeb2e14a3eaf_a06ad2606426e941f7509aeb2e14a3eaf} 
+\#define ASSERT\+\_\+\+IF\+\_\+\+FAILED(\begin{DoxyParamCaption}\item[{}]{hres}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(void)0;}
+
+\end{DoxyCode}
+\Hypertarget{os__utils_8h_af662511c5dd990965f3c067711f6ef62_af662511c5dd990965f3c067711f6ef62}\index{os\_utils.h@{os\_utils.h}!ASSERT\_NTSTATUS\_IF\_FAILED@{ASSERT\_NTSTATUS\_IF\_FAILED}}
+\index{ASSERT\_NTSTATUS\_IF\_FAILED@{ASSERT\_NTSTATUS\_IF\_FAILED}!os\_utils.h@{os\_utils.h}}
+\doxysubsubsection{\texorpdfstring{ASSERT\_NTSTATUS\_IF\_FAILED}{ASSERT\_NTSTATUS\_IF\_FAILED}}
+{\footnotesize\ttfamily \label{os__utils_8h_af662511c5dd990965f3c067711f6ef62_af662511c5dd990965f3c067711f6ef62} 
+\#define ASSERT\+\_\+\+NTSTATUS\+\_\+\+IF\+\_\+\+FAILED~(void)0;}
+
+\Hypertarget{os__utils_8h_a25e84d8771362a5139c04067d39d8446_a25e84d8771362a5139c04067d39d8446}\index{os\_utils.h@{os\_utils.h}!ASSERT\_RETURN\_HRES\_IF\_FAILED@{ASSERT\_RETURN\_HRES\_IF\_FAILED}}
+\index{ASSERT\_RETURN\_HRES\_IF\_FAILED@{ASSERT\_RETURN\_HRES\_IF\_FAILED}!os\_utils.h@{os\_utils.h}}
+\doxysubsubsection{\texorpdfstring{ASSERT\_RETURN\_HRES\_IF\_FAILED}{ASSERT\_RETURN\_HRES\_IF\_FAILED}}
+{\footnotesize\ttfamily \label{os__utils_8h_a25e84d8771362a5139c04067d39d8446_a25e84d8771362a5139c04067d39d8446} 
+\#define ASSERT\+\_\+\+RETURN\+\_\+\+HRES\+\_\+\+IF\+\_\+\+FAILED(\begin{DoxyParamCaption}\item[{}]{hres}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(void)0;}
+
+\end{DoxyCode}
+\Hypertarget{os__utils_8h_a796263d2d6b5e79e1fd4029fb6ebf58d_a796263d2d6b5e79e1fd4029fb6ebf58d}\index{os\_utils.h@{os\_utils.h}!POD\_ZERO@{POD\_ZERO}}
+\index{POD\_ZERO@{POD\_ZERO}!os\_utils.h@{os\_utils.h}}
+\doxysubsubsection{\texorpdfstring{POD\_ZERO}{POD\_ZERO}}
+{\footnotesize\ttfamily \label{os__utils_8h_a796263d2d6b5e79e1fd4029fb6ebf58d_a796263d2d6b5e79e1fd4029fb6ebf58d} 
+\#define POD\+\_\+\+ZERO(\begin{DoxyParamCaption}\item[{}]{arg}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ZeroMemory(\ \&arg,\ \textcolor{keyword}{sizeof}(\ arg\ )\ );}
+
+\end{DoxyCode}

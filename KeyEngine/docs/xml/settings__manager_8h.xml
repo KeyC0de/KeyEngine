@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="settings__manager_8h" kind="file" language="C++">
+    <compoundname>settings_manager.h</compoundname>
+    <includes local="no">string</includes>
+    <includes local="no">string_view</includes>
+    <includes refid="non__copyable_8h" local="yes">non_copyable.h</includes>
+    <includedby refid="game_8h" local="yes">inc/game.h</includedby>
+    <includedby refid="SHADOW__PASS_8CPP" local="yes">src/SHADOW_PASS.CPP</includedby>
+    <includedby refid="graphics_8cpp" local="yes">src/graphics.cpp</includedby>
+    <includedby refid="mesh_8cpp" local="yes">src/mesh.cpp</includedby>
+    <includedby refid="settings__manager_8cpp" local="yes">src/settings_manager.cpp</includedby>
+    <includedby refid="sky__pass_8cpp" local="yes">src/sky_pass.cpp</includedby>
+    <includedby refid="ui__component_8cpp" local="yes">src/ui_component.cpp</includedby>
+    <includedby refid="ui__pass_8cpp" local="yes">src/ui_pass.cpp</includedby>
+    <includedby refid="window_8cpp" local="yes">src/window.cpp</includedby>
+    <incdepgraph>
+      <node id="4">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="1">
+        <label>inc/settings_manager.h</label>
+        <link refid="settings__manager_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>string</label>
+      </node>
+      <node id="3">
+        <label>string_view</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>inc/game.h</label>
+        <link refid="game_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/settings_manager.h</label>
+        <link refid="settings__manager_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>src/SHADOW_PASS.CPP</label>
+        <link refid="SHADOW__PASS_8CPP"/>
+      </node>
+      <node id="3">
+        <label>src/game.cpp</label>
+        <link refid="game_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/graphics.cpp</label>
+        <link refid="graphics_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="7">
+        <label>src/mesh.cpp</label>
+        <link refid="mesh_8cpp"/>
+      </node>
+      <node id="8">
+        <label>src/settings_manager.cpp</label>
+        <link refid="settings__manager_8cpp"/>
+      </node>
+      <node id="9">
+        <label>src/sky_pass.cpp</label>
+        <link refid="sky__pass_8cpp"/>
+      </node>
+      <node id="10">
+        <label>src/ui_component.cpp</label>
+        <link refid="ui__component_8cpp"/>
+      </node>
+      <node id="11">
+        <label>src/ui_pass.cpp</label>
+        <link refid="ui__pass_8cpp"/>
+      </node>
+      <node id="12">
+        <label>src/window.cpp</label>
+        <link refid="window_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classSettingsManager" prot="public">SettingsManager</innerclass>
+    <innerclass refid="structSettingsManager_1_1Settings" prot="private">SettingsManager::Settings</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string_view&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="non__copyable_8h" kindref="compound">non_copyable.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classSettingsManager" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classSettingsManager" kindref="compound">SettingsManager</ref><sp/>final</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classNonCopyable" kindref="compound">NonCopyable</ref></highlight></codeline>
+<codeline lineno="16"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="17" refid="structSettingsManager_1_1Settings" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structSettingsManager_1_1Settings" kindref="compound">Settings</ref></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>defaults:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="structSettingsManager_1_1Settings_a2c06b29af8cfe5ab34696f43e1807876_1a2c06b29af8cfe5ab34696f43e1807876" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structSettingsManager_1_1Settings_a2c06b29af8cfe5ab34696f43e1807876_1a2c06b29af8cfe5ab34696f43e1807876" kindref="member">version</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="21" refid="structSettingsManager_1_1Settings_acbf8d0d28a3a3e30cd04a12d94fbe58c_1acbf8d0d28a3a3e30cd04a12d94fbe58c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="structSettingsManager_1_1Settings_acbf8d0d28a3a3e30cd04a12d94fbe58c_1acbf8d0d28a3a3e30cd04a12d94fbe58c" kindref="member">nThreads</ref><sp/>=<sp/>4;</highlight></codeline>
+<codeline lineno="22" refid="structSettingsManager_1_1Settings_a534e1d1fcebd6c936cb7dad777dafcfd_1a534e1d1fcebd6c936cb7dad777dafcfd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><ref refid="structSettingsManager_1_1Settings_a534e1d1fcebd6c936cb7dad777dafcfd_1a534e1d1fcebd6c936cb7dad777dafcfd" kindref="member">m_game</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Sandbox3d&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="23" refid="structSettingsManager_1_1Settings_adeca7d225f36bae671932e9df7453b9f_1adeca7d225f36bae671932e9df7453b9f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structSettingsManager_1_1Settings_adeca7d225f36bae671932e9df7453b9f_1adeca7d225f36bae671932e9df7453b9f" kindref="member">fGameSpeed</ref><sp/>=<sp/>1.0f;</highlight></codeline>
+<codeline lineno="24" refid="structSettingsManager_1_1Settings_a5e2af2ae92348ac3947844c6efb9f63c_1a5e2af2ae92348ac3947844c6efb9f63c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structSettingsManager_1_1Settings_a5e2af2ae92348ac3947844c6efb9f63c_1a5e2af2ae92348ac3947844c6efb9f63c" kindref="member">bVSync</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="25" refid="structSettingsManager_1_1Settings_aad1a58c2d307367227539c1734581f73_1aad1a58c2d307367227539c1734581f73" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structSettingsManager_1_1Settings_aad1a58c2d307367227539c1734581f73_1aad1a58c2d307367227539c1734581f73" kindref="member">bFpsCounting</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="26" refid="structSettingsManager_1_1Settings_a39040a7c4589754946ab51d892995c3d_1a39040a7c4589754946ab51d892995c3d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structSettingsManager_1_1Settings_a39040a7c4589754946ab51d892995c3d_1a39040a7c4589754946ab51d892995c3d" kindref="member">frameCount</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="27" refid="structSettingsManager_1_1Settings_af9d46a557e2718570ef71f27cbc2326e_1af9d46a557e2718570ef71f27cbc2326e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structSettingsManager_1_1Settings_af9d46a557e2718570ef71f27cbc2326e_1af9d46a557e2718570ef71f27cbc2326e" kindref="member">iMaxFps</ref><sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="28" refid="structSettingsManager_1_1Settings_acbffc94f53fcde24062262ec6fc7fe98_1acbffc94f53fcde24062262ec6fc7fe98" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structSettingsManager_1_1Settings_acbffc94f53fcde24062262ec6fc7fe98_1acbffc94f53fcde24062262ec6fc7fe98" kindref="member">iMaxShadowCastingDynamicLights</ref><sp/>=<sp/>8;</highlight></codeline>
+<codeline lineno="29" refid="structSettingsManager_1_1Settings_adf668f55ebdfe2fe09f4eabaedefa686_1adf668f55ebdfe2fe09f4eabaedefa686" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structSettingsManager_1_1Settings_adf668f55ebdfe2fe09f4eabaedefa686_1adf668f55ebdfe2fe09f4eabaedefa686" kindref="member">iMaxShadowCastingPointLights</ref><sp/>=<sp/>6;</highlight></codeline>
+<codeline lineno="30" refid="structSettingsManager_1_1Settings_abdcf08e1d968e1808a0b958b03b98da6_1abdcf08e1d968e1808a0b958b03b98da6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="structSettingsManager_1_1Settings_abdcf08e1d968e1808a0b958b03b98da6_1abdcf08e1d968e1808a0b958b03b98da6" kindref="member">iPresentInterval</ref><sp/>=<sp/>1u;</highlight></codeline>
+<codeline lineno="31" refid="structSettingsManager_1_1Settings_ad5996b24f10d4d93181117ac2bb1fac6_1ad5996b24f10d4d93181117ac2bb1fac6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structSettingsManager_1_1Settings_ad5996b24f10d4d93181117ac2bb1fac6_1ad5996b24f10d4d93181117ac2bb1fac6" kindref="member">bStaticShaderCompilation</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="32" refid="structSettingsManager_1_1Settings_a324fc6a4ad4adff120ba68bc6cc19cd7_1a324fc6a4ad4adff120ba68bc6cc19cd7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structSettingsManager_1_1Settings_a324fc6a4ad4adff120ba68bc6cc19cd7_1a324fc6a4ad4adff120ba68bc6cc19cd7" kindref="member">bMultithreadedRendering</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="33" refid="structSettingsManager_1_1Settings_a0bb359506914f0cd9c2cb3d9e70cb8b0_1a0bb359506914f0cd9c2cb3d9e70cb8b0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="structSettingsManager_1_1Settings_a0bb359506914f0cd9c2cb3d9e70cb8b0_1a0bb359506914f0cd9c2cb3d9e70cb8b0" kindref="member">nRenderingThreads</ref><sp/>=<sp/>4u;</highlight></codeline>
+<codeline lineno="34" refid="structSettingsManager_1_1Settings_ab63a70fbda1fd12a6fb9d001cd81de0c_1ab63a70fbda1fd12a6fb9d001cd81de0c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structSettingsManager_1_1Settings_ab63a70fbda1fd12a6fb9d001cd81de0c_1ab63a70fbda1fd12a6fb9d001cd81de0c" kindref="member">bGamePaused</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="35" refid="structSettingsManager_1_1Settings_a43faecede361b9fcaaf3df7117e6fe49_1a43faecede361b9fcaaf3df7117e6fe49" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structSettingsManager_1_1Settings_a43faecede361b9fcaaf3df7117e6fe49_1a43faecede361b9fcaaf3df7117e6fe49" kindref="member">bFullscreen</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="36" refid="structSettingsManager_1_1Settings_a808ed110b1305cb51725361df2fc2ac9_1a808ed110b1305cb51725361df2fc2ac9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structSettingsManager_1_1Settings_a808ed110b1305cb51725361df2fc2ac9_1a808ed110b1305cb51725361df2fc2ac9" kindref="member">bAllowWindowResize</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="37" refid="structSettingsManager_1_1Settings_a2f27e1cb95f5656398c0cd012e72291c_1a2f27e1cb95f5656398c0cd012e72291c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structSettingsManager_1_1Settings_a2f27e1cb95f5656398c0cd012e72291c_1a2f27e1cb95f5656398c0cd012e72291c" kindref="member">bEnableFrustumCuling</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="38" refid="structSettingsManager_1_1Settings_a12444bd23fba8e04de9d835dc06756ef_1a12444bd23fba8e04de9d835dc06756ef" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structSettingsManager_1_1Settings_a12444bd23fba8e04de9d835dc06756ef_1a12444bd23fba8e04de9d835dc06756ef" kindref="member">bEnableSmoothMovement</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="39" refid="structSettingsManager_1_1Settings_a1ee7648a0b3045e9cefbded5c0f534f1_1a1ee7648a0b3045e9cefbded5c0f534f1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structSettingsManager_1_1Settings_a1ee7648a0b3045e9cefbded5c0f534f1_1a1ee7648a0b3045e9cefbded5c0f534f1" kindref="member">sSkyboxFileName</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="40" refid="structSettingsManager_1_1Settings_a46fc42cb1e29f0338b66b4cc67cd455e_1a46fc42cb1e29f0338b66b4cc67cd455e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structSettingsManager_1_1Settings_a46fc42cb1e29f0338b66b4cc67cd455e_1a46fc42cb1e29f0338b66b4cc67cd455e" kindref="member">sFontName</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;myComicSansMSSpriteFont&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="41" refid="classSettingsManager_ae233137553f2cd2c32a71856f1a76130_1ae233137553f2cd2c32a71856f1a76130" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><ref refid="classSettingsManager_ae233137553f2cd2c32a71856f1a76130_1ae233137553f2cd2c32a71856f1a76130" kindref="member">m_settings</ref>;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSettingsManager_a3c61f6afcf474f6cc1143216262848b8_1a3c61f6afcf474f6cc1143216262848b8" kindref="member">SettingsManager</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;filePath<sp/>);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSettingsManager_a5e4c7dd1554609fe8ac4fac171e3c4a5_1a5e4c7dd1554609fe8ac4fac171e3c4a5" kindref="member">loadFromFile</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;filePath<sp/>);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classSettingsManager" kindref="compound">SettingsManager</ref>&amp;<sp/><ref refid="classSettingsManager_a92617e378ef941b075dd8343d283bd00_1a92617e378ef941b075dd8343d283bd00" kindref="member">getInstance</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;filePath<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;config.ini&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>Settings&amp;<sp/><ref refid="classSettingsManager_a2634a5f2822112f9bf7cd42dcf440288_1a2634a5f2822112f9bf7cd42dcf440288" kindref="member">getSettings</ref>();</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Settings&amp;<sp/><ref refid="classSettingsManager_a2634a5f2822112f9bf7cd42dcf440288_1a2634a5f2822112f9bf7cd42dcf440288" kindref="member">getSettings</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/settings_manager.h"/>
+  </compounddef>
+</doxygen>

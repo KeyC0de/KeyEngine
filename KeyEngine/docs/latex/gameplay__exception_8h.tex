@@ -1,0 +1,28 @@
+\doxysection{inc/gameplay\+\_\+exception.h File Reference}
+\hypertarget{gameplay__exception_8h}{}\label{gameplay__exception_8h}\index{inc/gameplay\_exception.h@{inc/gameplay\_exception.h}}
+{\ttfamily \#include "{}key\+\_\+exception.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classGameplayException}{Gameplay\+Exception}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{gameplay__exception_8h_a7e7f8c8434b9545ae37b6973764f75d7_a7e7f8c8434b9545ae37b6973764f75d7}{THROW\+\_\+\+GAMEPLAY\+\_\+\+EXCEPTION}}(msg)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{gameplay__exception_8h_a7e7f8c8434b9545ae37b6973764f75d7_a7e7f8c8434b9545ae37b6973764f75d7}\index{gameplay\_exception.h@{gameplay\_exception.h}!THROW\_GAMEPLAY\_EXCEPTION@{THROW\_GAMEPLAY\_EXCEPTION}}
+\index{THROW\_GAMEPLAY\_EXCEPTION@{THROW\_GAMEPLAY\_EXCEPTION}!gameplay\_exception.h@{gameplay\_exception.h}}
+\doxysubsubsection{\texorpdfstring{THROW\_GAMEPLAY\_EXCEPTION}{THROW\_GAMEPLAY\_EXCEPTION}}
+{\footnotesize\ttfamily \label{gameplay__exception_8h_a7e7f8c8434b9545ae37b6973764f75d7_a7e7f8c8434b9545ae37b6973764f75d7} 
+\#define THROW\+\_\+\+GAMEPLAY\+\_\+\+EXCEPTION(\begin{DoxyParamCaption}\item[{}]{msg}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \_\_debugbreak();\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classGameplayException}{GameplayException}}(\ \_\_LINE\_\_,\ \_\_FILE\_\_,\ \_\_FUNCTION\_\_,\ msg\ );}
+
+\end{DoxyCode}

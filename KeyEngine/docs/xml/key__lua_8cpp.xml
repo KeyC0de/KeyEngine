@@ -1,0 +1,374 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="key__lua_8cpp" kind="file" language="C++">
+    <compoundname>key_lua.cpp</compoundname>
+    <includes refid="key__lua_8h" local="yes">key_lua.h</includes>
+    <incdepgraph>
+      <node id="5">
+        <label>assertions_console.h</label>
+        <link refid="assertions__console_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>key_lua.h</label>
+        <link refid="key__lua_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/key_lua.cpp</label>
+        <link refid="key__lua_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>iostream</label>
+      </node>
+      <node id="7">
+        <label>lua/lauxlib.h</label>
+      </node>
+      <node id="6">
+        <label>lua/lua.h</label>
+      </node>
+      <node id="8">
+        <label>lua/lualib.h</label>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="key__lua_8cpp_a169ba3c8f52adabd940ce47e0ee586f7_1a169ba3c8f52adabd940ce47e0ee586f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool luaCheck</definition>
+        <argsstring>(lua_State *luaVm, const int ret)</argsstring>
+        <name>luaCheck</name>
+        <param>
+          <type>lua_State *</type>
+          <declname>luaVm</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>ret</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/key_lua.cpp" line="4" column="6" bodyfile="src/key_lua.cpp" bodystart="4" bodyend="14"/>
+        <referencedby refid="key__lua_8h_ae70e285207ed78c0103f9f9994f89bd1_1ae70e285207ed78c0103f9f9994f89bd1" compoundref="key__lua_8h" startline="26" endline="53">executeLuaCFunctionFromFile</referencedby>
+        <referencedby refid="key__lua_8h_ab8b6c22163bde5d322ccaf0eb5e0dbef_1ab8b6c22163bde5d322ccaf0eb5e0dbef" compoundref="key__lua_8cpp" startline="49" endline="62">executeLuaFileGetNumber</referencedby>
+        <referencedby refid="key__lua_8h_a01e737dd70f18856bd8f5b529dbbdcbc_1a01e737dd70f18856bd8f5b529dbbdcbc" compoundref="key__lua_8cpp" startline="64" endline="107">executeLuaFileGetTable</referencedby>
+        <referencedby refid="key__lua_8h_a4585437b5d2a3962599b401c11ac49eb_1a4585437b5d2a3962599b401c11ac49eb" compoundref="key__lua_8cpp" startline="109" endline="137">executeLuaFunctionFromFile</referencedby>
+        <referencedby refid="key__lua_8h_a2168990b58602bd64dc1ea30895b2f67_1a2168990b58602bd64dc1ea30895b2f67" compoundref="key__lua_8cpp" startline="16" endline="32">executeLuaGetNumber</referencedby>
+        <referencedby refid="key__lua_8h_a6b8c25239871bd970d2e9e32c41d38f0_1a6b8c25239871bd970d2e9e32c41d38f0" compoundref="key__lua_8cpp" startline="34" endline="47">executeLuaGetString</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="key__lua_8cpp_a2168990b58602bd64dc1ea30895b2f67_1a2168990b58602bd64dc1ea30895b2f67" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void executeLuaGetNumber</definition>
+        <argsstring>(lua_State *luaVm, const std::string &amp;strVar)</argsstring>
+        <name>executeLuaGetNumber</name>
+        <param>
+          <type>lua_State *</type>
+          <declname>luaVm</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>strVar</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/key_lua.cpp" line="16" column="6" bodyfile="src/key_lua.cpp" bodystart="16" bodyend="32"/>
+        <referencedby refid="testing_8h_a90951fbdfdc4dc81d9dd7a95ee39feb5_1a90951fbdfdc4dc81d9dd7a95ee39feb5" compoundref="testing_8cpp" startline="407" endline="439">testLuaScripting</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="key__lua_8cpp_a6b8c25239871bd970d2e9e32c41d38f0_1a6b8c25239871bd970d2e9e32c41d38f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void executeLuaGetString</definition>
+        <argsstring>(lua_State *luaVm, const std::string &amp;strVar)</argsstring>
+        <name>executeLuaGetString</name>
+        <param>
+          <type>lua_State *</type>
+          <declname>luaVm</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>strVar</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/key_lua.cpp" line="34" column="6" bodyfile="src/key_lua.cpp" bodystart="34" bodyend="47"/>
+        <referencedby refid="testing_8h_a90951fbdfdc4dc81d9dd7a95ee39feb5_1a90951fbdfdc4dc81d9dd7a95ee39feb5" compoundref="testing_8cpp" startline="407" endline="439">testLuaScripting</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="key__lua_8cpp_ab8b6c22163bde5d322ccaf0eb5e0dbef_1ab8b6c22163bde5d322ccaf0eb5e0dbef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void executeLuaFileGetNumber</definition>
+        <argsstring>(lua_State *luaVm, const std::string &amp;filename)</argsstring>
+        <name>executeLuaFileGetNumber</name>
+        <param>
+          <type>lua_State *</type>
+          <declname>luaVm</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/key_lua.cpp" line="49" column="6" bodyfile="src/key_lua.cpp" bodystart="49" bodyend="62"/>
+        <referencedby refid="testing_8h_a90951fbdfdc4dc81d9dd7a95ee39feb5_1a90951fbdfdc4dc81d9dd7a95ee39feb5" compoundref="testing_8cpp" startline="407" endline="439">testLuaScripting</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="key__lua_8cpp_a01e737dd70f18856bd8f5b529dbbdcbc_1a01e737dd70f18856bd8f5b529dbbdcbc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void executeLuaFileGetTable</definition>
+        <argsstring>(lua_State *luaVm, const std::string &amp;filename, const std::string &amp;tableName)</argsstring>
+        <name>executeLuaFileGetTable</name>
+        <param>
+          <type>lua_State *</type>
+          <declname>luaVm</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>tableName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/key_lua.cpp" line="64" column="6" bodyfile="src/key_lua.cpp" bodystart="64" bodyend="107"/>
+        <referencedby refid="testing_8h_a90951fbdfdc4dc81d9dd7a95ee39feb5_1a90951fbdfdc4dc81d9dd7a95ee39feb5" compoundref="testing_8cpp" startline="407" endline="439">testLuaScripting</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="key__lua_8cpp_a4585437b5d2a3962599b401c11ac49eb_1a4585437b5d2a3962599b401c11ac49eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void executeLuaFunctionFromFile</definition>
+        <argsstring>(lua_State *luaVm, const std::string &amp;filename, const std::string &amp;functionName)</argsstring>
+        <name>executeLuaFunctionFromFile</name>
+        <param>
+          <type>lua_State *</type>
+          <declname>luaVm</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>functionName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/key_lua.cpp" line="109" column="6" bodyfile="src/key_lua.cpp" bodystart="109" bodyend="137"/>
+        <referencedby refid="testing_8h_a90951fbdfdc4dc81d9dd7a95ee39feb5_1a90951fbdfdc4dc81d9dd7a95ee39feb5" compoundref="testing_8cpp" startline="407" endline="439">testLuaScripting</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="key__lua_8cpp_a94bac6ec9430904b22c125178cbe4b9b_1a94bac6ec9430904b22c125178cbe4b9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int callableFromLua_mySum</definition>
+        <argsstring>(lua_State *luaVm)</argsstring>
+        <name>callableFromLua_mySum</name>
+        <param>
+          <type>lua_State *</type>
+          <declname>luaVm</declname>
+        </param>
+        <briefdescription>
+<para>C++ functions callable from Lua: </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/key_lua.cpp" line="139" column="16" bodyfile="src/key_lua.cpp" bodystart="139" bodyend="149"/>
+        <referencedby refid="testing_8h_a90951fbdfdc4dc81d9dd7a95ee39feb5_1a90951fbdfdc4dc81d9dd7a95ee39feb5" compoundref="testing_8cpp" startline="407" endline="439">testLuaScripting</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="key__lua_8h" kindref="compound">key_lua.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4" refid="key__lua_8h_a169ba3c8f52adabd940ce47e0ee586f7_1a169ba3c8f52adabd940ce47e0ee586f7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="key__lua_8cpp_a169ba3c8f52adabd940ce47e0ee586f7_1a169ba3c8f52adabd940ce47e0ee586f7" kindref="member">luaCheck</ref>(<sp/>lua_State<sp/>*luaVm,</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>)</highlight></codeline>
+<codeline lineno="6"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>ret<sp/>!=<sp/>LUA_OK<sp/>)</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>errorMsg<sp/>=<sp/>lua_tostring(<sp/>luaVm,<sp/>-1<sp/>);</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>errorMsg<sp/>&lt;&lt;<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="key__lua_8h_a2168990b58602bd64dc1ea30895b2f67_1a2168990b58602bd64dc1ea30895b2f67" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="key__lua_8cpp_a2168990b58602bd64dc1ea30895b2f67_1a2168990b58602bd64dc1ea30895b2f67" kindref="member">executeLuaGetNumber</ref>(<sp/>lua_State<sp/>*luaVm,</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;strVar<sp/>)</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>luaL_dostring(luaVm,<sp/>strVar.c_str());</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/><ref refid="key__lua_8cpp_a169ba3c8f52adabd940ce47e0ee586f7_1a169ba3c8f52adabd940ce47e0ee586f7" kindref="member">luaCheck</ref>(<sp/>luaVm,<sp/>ret),<sp/></highlight><highlight class="stringliteral">&quot;Lua<sp/>error!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>executed<sp/>successfully<sp/>the<sp/>result<sp/>&quot;a&quot;<sp/>exists<sp/>globally<sp/>in<sp/>the<sp/>Lua<sp/>vm</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>lua_getglobal(luaVm,<sp/></highlight><highlight class="stringliteral">&quot;a&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>pushes<sp/>&quot;a&quot;<sp/>to<sp/>the<sp/>stack<sp/>and<sp/>Lua<sp/>replaces<sp/>it,<sp/>if<sp/>it<sp/>finds<sp/>it,<sp/>with<sp/>the<sp/>contents<sp/>of<sp/>&quot;a&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>lua<sp/>communicates<sp/>with<sp/>C<sp/>via<sp/>the<sp/>Lua<sp/>stack</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>-1<sp/>is<sp/>the<sp/>Last<sp/>entered<sp/>position<sp/>in<sp/>the<sp/>stack<sp/>(Lua<sp/>uses<sp/>1-indexing)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>lua_isnumber(luaVm,<sp/>-1)<sp/>)</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>a_c<sp/>=<sp/>(float)lua_tonumber(luaVm,<sp/>-1);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;a=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>a_c<sp/>&lt;&lt;<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="key__lua_8h_a6b8c25239871bd970d2e9e32c41d38f0_1a6b8c25239871bd970d2e9e32c41d38f0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="key__lua_8cpp_a6b8c25239871bd970d2e9e32c41d38f0_1a6b8c25239871bd970d2e9e32c41d38f0" kindref="member">executeLuaGetString</ref>(<sp/>lua_State<sp/>*luaVm,</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;strVar<sp/>)</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>luaL_dostring(luaVm,<sp/>strVar.c_str());</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/><ref refid="key__lua_8cpp_a169ba3c8f52adabd940ce47e0ee586f7_1a169ba3c8f52adabd940ce47e0ee586f7" kindref="member">luaCheck</ref>(<sp/>luaVm,<sp/>ret),<sp/></highlight><highlight class="stringliteral">&quot;Lua<sp/>error!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>lua_getglobal(luaVm,<sp/></highlight><highlight class="stringliteral">&quot;PlayerName&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>lua_isstring(luaVm,<sp/>-1)<sp/>)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>str_c<sp/>=<sp/>(std::string)lua_tostring(luaVm,<sp/>-1);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;PlayerName=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>str_c<sp/>&lt;&lt;<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="key__lua_8h_ab8b6c22163bde5d322ccaf0eb5e0dbef_1ab8b6c22163bde5d322ccaf0eb5e0dbef" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="key__lua_8cpp_ab8b6c22163bde5d322ccaf0eb5e0dbef_1ab8b6c22163bde5d322ccaf0eb5e0dbef" kindref="member">executeLuaFileGetNumber</ref>(<sp/>lua_State<sp/>*luaVm,</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;filename<sp/>)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>luaL_dofile(luaVm,<sp/>filename.c_str());</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/><ref refid="key__lua_8cpp_a169ba3c8f52adabd940ce47e0ee586f7_1a169ba3c8f52adabd940ce47e0ee586f7" kindref="member">luaCheck</ref>(<sp/>luaVm,<sp/>ret),<sp/></highlight><highlight class="stringliteral">&quot;Lua<sp/>error!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>lua_getglobal(luaVm,<sp/></highlight><highlight class="stringliteral">&quot;file_result&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>lua_isnumber(luaVm,<sp/>-1)<sp/>)</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>file_result_c<sp/>=<sp/>(float)lua_tonumber(luaVm,<sp/>-1);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;file_result=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>file_result_c<sp/>&lt;&lt;<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="key__lua_8h_a01e737dd70f18856bd8f5b529dbbdcbc_1a01e737dd70f18856bd8f5b529dbbdcbc" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="key__lua_8cpp_a01e737dd70f18856bd8f5b529dbbdcbc_1a01e737dd70f18856bd8f5b529dbbdcbc" kindref="member">executeLuaFileGetTable</ref>(<sp/>lua_State<sp/>*luaVm,</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;filename,</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;tableName<sp/>)</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="classPlayer" kindref="compound">Player</ref></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>title;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>name;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>family;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>level;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>player;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>luaL_dofile(luaVm,<sp/>filename.c_str());</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/><ref refid="key__lua_8cpp_a169ba3c8f52adabd940ce47e0ee586f7_1a169ba3c8f52adabd940ce47e0ee586f7" kindref="member">luaCheck</ref>(<sp/>luaVm,<sp/>ret),<sp/></highlight><highlight class="stringliteral">&quot;Lua<sp/>error!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>lua_getglobal(luaVm,<sp/>tableName.c_str());</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>lua_istable(luaVm,<sp/>-1)<sp/>)</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lua_pushstring(luaVm,<sp/></highlight><highlight class="stringliteral">&quot;Name&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>pushes<sp/>a<sp/>lua<sp/>string<sp/>variable<sp/>at<sp/>the<sp/>top<sp/>of<sp/>the<sp/>stack</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lua_gettable(luaVm,<sp/>-2);<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>since<sp/>&quot;name&quot;<sp/>was<sp/>pushed<sp/>to<sp/>the<sp/>top<sp/>of<sp/>the<sp/>stack<sp/>(@<sp/>index<sp/>=<sp/>-1)<sp/>tableName<sp/>is<sp/>now<sp/>@<sp/>index<sp/>=<sp/>-2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>lua_getttable<sp/>searches<sp/>for<sp/>(by<sp/>means<sp/>of<sp/>key-value<sp/>pair)<sp/>the<sp/>parameter<sp/>with<sp/>name<sp/>located<sp/>at<sp/>the<sp/>top<sp/>of<sp/>the<sp/>lua<sp/>stack<sp/>pops<sp/>it<sp/>from<sp/>the<sp/>to<sp/>of<sp/>the<sp/>stack<sp/>and<sp/>replaces<sp/>it<sp/>with<sp/>its<sp/>value</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>player.name<sp/>=<sp/>lua_tostring(luaVm,<sp/>-1);<sp/><sp/></highlight><highlight class="comment">//<sp/>so<sp/>now<sp/>we<sp/>get<sp/>that<sp/>value</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lua_pop(luaVm,<sp/>1);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>pop<sp/>top<sp/>of<sp/>the<sp/>stack<sp/>string<sp/>variable<sp/>so<sp/>now<sp/>we<sp/>can<sp/>search<sp/>for<sp/>the<sp/>new<sp/>key<sp/>of<sp/>the<sp/>table<sp/>we<sp/>want<sp/>to<sp/>query</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>notice<sp/>for<sp/>pop()ping<sp/>the<sp/>index<sp/>reverses</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lua_pushstring(luaVm,<sp/></highlight><highlight class="stringliteral">&quot;Title&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lua_gettable(luaVm,<sp/>-2);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>player.title<sp/>=<sp/>lua_tostring(luaVm,<sp/>-1);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lua_pop(luaVm,<sp/>1);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lua_pushstring(luaVm,<sp/></highlight><highlight class="stringliteral">&quot;Family&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lua_gettable(luaVm,<sp/>-2);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>player.family<sp/>=<sp/>lua_tostring(luaVm,<sp/>-1);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lua_pop(luaVm,<sp/>1);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lua_pushstring(luaVm,<sp/></highlight><highlight class="stringliteral">&quot;Level&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lua_gettable(luaVm,<sp/>-2);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>player.level<sp/>=<sp/>(int)<sp/>lua_tonumber(luaVm,<sp/>-1);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lua_pop(luaVm,<sp/>1);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>player.title<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>player.name<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>player.family<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>player.level;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="key__lua_8h_a4585437b5d2a3962599b401c11ac49eb_1a4585437b5d2a3962599b401c11ac49eb" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="key__lua_8cpp_a4585437b5d2a3962599b401c11ac49eb_1a4585437b5d2a3962599b401c11ac49eb" kindref="member">executeLuaFunctionFromFile</ref>(<sp/>lua_State<sp/>*luaVm,</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;filename,</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;functionName<sp/>)</highlight></codeline>
+<codeline lineno="112"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>luaL_dofile(luaVm,<sp/>filename.c_str());</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/><ref refid="key__lua_8cpp_a169ba3c8f52adabd940ce47e0ee586f7_1a169ba3c8f52adabd940ce47e0ee586f7" kindref="member">luaCheck</ref>(<sp/>luaVm,<sp/>ret),<sp/></highlight><highlight class="stringliteral">&quot;Lua<sp/>error!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>lua_getglobal(<sp/>luaVm,<sp/>functionName.c_str()<sp/>);<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>gets<sp/>the<sp/>global<sp/>lua<sp/>object<sp/>and<sp/>puts<sp/>it<sp/>in<sp/>the<sp/>lua<sp/>stack</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>lua_isfunction(luaVm,<sp/>-1)<sp/>)</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>push<sp/>2<sp/>args<sp/>to<sp/>the<sp/>stack<sp/>for<sp/>the<sp/>lua<sp/>function<sp/>to<sp/>receive</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lua_pushnumber(<sp/>luaVm,<sp/>10.19f<sp/>);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lua_pushnumber(<sp/>luaVm,<sp/>33.01f<sp/>);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>lua_pcall(luaVm,</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2,<sp/><sp/></highlight><highlight class="comment">//<sp/>how<sp/>many<sp/>args<sp/>we&apos;re<sp/>passing<sp/>to<sp/>the<sp/>lua<sp/>func</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1,<sp/><sp/></highlight><highlight class="comment">//<sp/>how<sp/>many<sp/>args<sp/>we&apos;re<sp/>returning<sp/>from<sp/>the<sp/>lua<sp/>func</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>error<sp/>checking</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/><ref refid="key__lua_8cpp_a169ba3c8f52adabd940ce47e0ee586f7_1a169ba3c8f52adabd940ce47e0ee586f7" kindref="member">luaCheck</ref>(<sp/>luaVm,<sp/>ret<sp/>),<sp/></highlight><highlight class="stringliteral">&quot;Lua<sp/>function<sp/>error!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>return<sp/>value<sp/>of<sp/>the<sp/>function<sp/>is,<sp/>as<sp/>usual,<sp/>at<sp/>the<sp/>top<sp/>of<sp/>the<sp/>stack<sp/>has</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>function_result_c<sp/>=<sp/>(float)lua_tonumber(luaVm,<sp/>-1);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;[C++:]<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>functionName<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;(a,<sp/>b)<sp/>returned<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>function_result_c<sp/>&lt;&lt;<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139" refid="key__lua_8h_a94bac6ec9430904b22c125178cbe4b9b_1a94bac6ec9430904b22c125178cbe4b9b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="key__lua_8cpp_a94bac6ec9430904b22c125178cbe4b9b_1a94bac6ec9430904b22c125178cbe4b9b" kindref="member">callableFromLua_mySum</ref>(<sp/>lua_State<sp/>*luaVm<sp/>)</highlight></codeline>
+<codeline lineno="140"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>a<sp/>=<sp/>(float)<sp/>lua_tonumber(<sp/>luaVm,<sp/>1<sp/>);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>b<sp/>=<sp/>(float)<sp/>lua_tonumber(<sp/>luaVm,<sp/>2<sp/>);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;[C++:]<sp/>callableFromLua_mySum(&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>a<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>b<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;)<sp/>called<sp/>from<sp/>Lua&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>c<sp/>=<sp/>a<sp/>*<sp/>b;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>lua_pushnumber(<sp/>luaVm,<sp/>c<sp/>);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>returns<sp/>#<sp/>of<sp/>arguments<sp/>passed<sp/>to<sp/>Lua</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/key_lua.cpp"/>
+  </compounddef>
+</doxygen>

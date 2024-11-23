@@ -1,0 +1,382 @@
+\doxysection{Model Class Reference}
+\hypertarget{classModel}{}\label{classModel}\index{Model@{Model}}
+
+
+{\ttfamily \#include $<$model.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classModel_a0600c0c1f47a574ab81a6e0e73f3520e_a0600c0c1f47a574ab81a6e0e73f3520e}{Model}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const std\+::string \&path, const float initial\+Scale=1.\+0f, const Direct\+X\+::\+XMFLOAT3 \&initial\+Rot\+Deg=\{0.\+0f, 0.\+0f, 0.\+0f\}, const Direct\+X\+::\+XMFLOAT3 \&initial\+Pos=\{0.\+0f, 0.\+0f, 0.\+0f\})
+\begin{DoxyCompactList}\small\item\em \doxylink{classModel}{Model} ctor for imported meshes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classModel_a2bb58287e2762dd3fbd905929b7a4c9c_a2bb58287e2762dd3fbd905929b7a4c9c}{Model}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classMesh}{Mesh}} $>$ p\+Mesh, \mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const Direct\+X\+::\+XMFLOAT3 \&initial\+Rot\+Deg, const Direct\+X\+::\+XMFLOAT3 \&initial\+Pos)
+\begin{DoxyCompactList}\small\item\em ctor for single-\/\+Mesh/\+Node primitives \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classModel_affb7503ef06f714be1de64e7df97664b_affb7503ef06f714be1de64e7df97664b}{\texorpdfstring{$\sim$}{\string~}\+Model}} () noexcept
+\item 
+\mbox{\hyperlink{classModel_af09f61d22a6c1f1f9a815b80519ea98a_af09f61d22a6c1f1f9a815b80519ea98a}{Model}} (const \mbox{\hyperlink{classModel}{Model}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classModel}{Model}} \& \mbox{\hyperlink{classModel_a137f319d98a3c60467eaaf1b6bf548b3_a137f319d98a3c60467eaaf1b6bf548b3}{operator=}} (const \mbox{\hyperlink{classModel}{Model}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classModel_a65852929a8bbdcc448b9efa714185a9a_a65852929a8bbdcc448b9efa714185a9a}{Model}} (\mbox{\hyperlink{classModel}{Model}} \&\&rhs) noexcept
+\item 
+\mbox{\hyperlink{classModel}{Model}} \& \mbox{\hyperlink{classModel_ac65bf876216dc900b83fbed12e450743_ac65bf876216dc900b83fbed12e450743}{operator=}} (\mbox{\hyperlink{classModel}{Model}} \&\&rhs) noexcept=delete
+\item 
+void \mbox{\hyperlink{classModel_a87092d0e63f1ff00e92f155d1e3e9c42_a87092d0e63f1ff00e92f155d1e3e9c42}{update}} (const float dt, const float lerp\+Between\+Frames, const bool b\+Enable\+Smooth\+Movemenzzt=false) cond\+\_\+noex
+\item 
+void \mbox{\hyperlink{classModel_aa33a40fb50f074d5928c15c82074a0b6_aa33a40fb50f074d5928c15c82074a0b6}{render}} (const size\+\_\+t channels=\mbox{\hyperlink{namespacerch_a7bda900872e1367b3434b6b548e17d2c_a7bda900872e1367b3434b6b548e17d2c}{rch\+::all}}) const cond\+\_\+noex
+\item 
+void \mbox{\hyperlink{classModel_ad9673dfef4bf662ef742ea17b7704099_ad9673dfef4bf662ef742ea17b7704099}{set\+Material\+Enabled}} (const size\+\_\+t channels, const bool b\+Enabled) noexcept
+\item 
+void \mbox{\hyperlink{classModel_a5c541a8bb0012d4cbb64f2cb809f1638_a5c541a8bb0012d4cbb64f2cb809f1638}{display\+Imgui\+Widgets}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) noexcept
+\item 
+void \mbox{\hyperlink{classModel_af4731ff2dc420c06801f4f5281af04b8_af4731ff2dc420c06801f4f5281af04b8}{accept}} (\mbox{\hyperlink{classIImguiNodeVisitor}{IImgui\+Node\+Visitor}} \&v)
+\item 
+void \mbox{\hyperlink{classModel_a026f7d322b40a3488184d711962d92c2_a026f7d322b40a3488184d711962d92c2}{connect\+Materials\+To\+Renderer}} (\mbox{\hyperlink{classren_1_1Renderer}{ren\+::\+Renderer}} \&r)
+\item 
+void \mbox{\hyperlink{classModel_a907f793106a2fc7b955b945873c37ce2_a907f793106a2fc7b955b945873c37ce2}{set\+Scale}} (const float scale) cond\+\_\+noex
+\item 
+void \mbox{\hyperlink{classModel_a5df221b34d95f2db129a4b3cc564c403_a5df221b34d95f2db129a4b3cc564c403}{set\+Scale}} (const Direct\+X\+::\+XMFLOAT3 \&scale) cond\+\_\+noex
+\item 
+void \mbox{\hyperlink{classModel_abdad4d48fa4a4ed0680bee4a3ef8c7a7_abdad4d48fa4a4ed0680bee4a3ef8c7a7}{scale\+Rel}} (const Direct\+X\+::\+XMFLOAT3 \&scale) cond\+\_\+noex
+\item 
+void \mbox{\hyperlink{classModel_ae218f9aa7ff8225ecc9f250a057030af_ae218f9aa7ff8225ecc9f250a057030af}{set\+Rotation}} (const Direct\+X\+::\+XMFLOAT3 \&rot\+Angles\+Radians) cond\+\_\+noex
+\item 
+void \mbox{\hyperlink{classModel_a4f4450d1d501356cbacf57992f8f32c2_a4f4450d1d501356cbacf57992f8f32c2}{rotate\+Rel}} (const Direct\+X\+::\+XMFLOAT3 \&rot\+Angles\+Radians) cond\+\_\+noex
+\item 
+void \mbox{\hyperlink{classModel_a2f34019f76af71a4b0f120e6c83fa734_a2f34019f76af71a4b0f120e6c83fa734}{set\+Translation}} (const Direct\+X\+::\+XMFLOAT3 \&pos) cond\+\_\+noex
+\item 
+void \mbox{\hyperlink{classModel_a88c39a8c514b6abdf0bda067c7a0f326_a88c39a8c514b6abdf0bda067c7a0f326}{translate\+Rel}} (const Direct\+X\+::\+XMFLOAT3 \&pos) cond\+\_\+noex
+\item 
+Direct\+X\+::\+XMMATRIX \mbox{\hyperlink{classModel_a5ebe7821b16ec75c882ad5c797980c9c_a5ebe7821b16ec75c882ad5c797980c9c}{get\+Transform}} () const noexcept
+\item 
+Direct\+X\+::\+XMFLOAT4\+X4 \mbox{\hyperlink{classModel_a97c6fc1a512ac57979f0fc63c1d34085_a97c6fc1a512ac57979f0fc63c1d34085}{get\+Transform4x4}} () const noexcept
+\item 
+float \mbox{\hyperlink{classModel_ab52e612aed8183547ee0d58aab900631_ab52e612aed8183547ee0d58aab900631}{get\+Scale}} () const noexcept
+\item 
+Direct\+X\+::\+XMFLOAT3 \mbox{\hyperlink{classModel_a713fb2d948d1e0b246edfaf100a96d13_a713fb2d948d1e0b246edfaf100a96d13}{get\+Scale3}} () const noexcept
+\item 
+Direct\+X\+::\+XMFLOAT3 \mbox{\hyperlink{classModel_a309132aa630a396fdb2c7626d5272bb1_a309132aa630a396fdb2c7626d5272bb1}{get\+Rotation}} () const noexcept
+\item 
+Direct\+X\+::\+XMVECTOR \mbox{\hyperlink{classModel_a581366c3323ea82fea0d599c1a053ad4_a581366c3323ea82fea0d599c1a053ad4}{get\+Rotation\+Quat}} () const noexcept
+\item 
+Direct\+X\+::\+XMFLOAT3 \mbox{\hyperlink{classModel_a22cb995d5e3ddbf2c9cd303e90820aba_a22cb995d5e3ddbf2c9cd303e90820aba}{get\+Position}} () const noexcept
+\item 
+float \mbox{\hyperlink{classModel_a0cc7d6fa891126a1daa9237d89cd1693_a0cc7d6fa891126a1daa9237d89cd1693}{get\+Distance\+From\+Active\+Camera}} (const int index=0) const noexcept
+\begin{DoxyCompactList}\small\item\em return the distance between the currently active camera and the \doxylink{classMesh}{Mesh} at specified index \end{DoxyCompactList}\item 
+const std\+::string \& \mbox{\hyperlink{classModel_a0580611e0db6e9def73246c306c19a06_a0580611e0db6e9def73246c306c19a06}{get\+Name}} () const noexcept
+\item 
+const \mbox{\hyperlink{classMesh}{Mesh}} \texorpdfstring{$\ast$}{*}const \mbox{\hyperlink{classModel_aeaa2b630fba75a0b911db2f655301160_aeaa2b630fba75a0b911db2f655301160}{get\+Mesh}} (const int index=0) const noexcept
+\item 
+\mbox{\hyperlink{classMesh}{Mesh}} \texorpdfstring{$\ast$}{*}const \mbox{\hyperlink{classModel_a66b94da2a771a7c6cc33af0a26ef045e_a66b94da2a771a7c6cc33af0a26ef045e}{get\+Mesh}} (const int index=0)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classModel_af45461230e9c72025a6ce6a7ba699bdc_af45461230e9c72025a6ce6a7ba699bdc}{set\+Transform}} (const Direct\+X\+::\+XMMATRIX \&tr) cond\+\_\+noex
+\begin{DoxyCompactList}\small\item\em All transformation-\/related-\/functions simply call the root \doxylink{classNode}{Node}\textquotesingle{}s corresponding function and propagate the operation down the \doxylink{classNode}{Node} hierarchy; the world transform itself is updated only once-\/per-\/tick during update. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classModel_a2d9ea5f25b9ae643e92c21aa286dea9c_a2d9ea5f25b9ae643e92c21aa286dea9c}{set\+Transform}} (const float scale, const Direct\+X\+::\+XMFLOAT3 \&rot\+Angles\+Radians, const Direct\+X\+::\+XMFLOAT3 \&pos) cond\+\_\+noex
+\item 
+void \mbox{\hyperlink{classModel_a82dfe0f182853642b5ccb9f3d33f24c3_a82dfe0f182853642b5ccb9f3d33f24c3}{set\+Transform}} (const float scale, const Direct\+X\+::\+XMFLOAT4 \&rot\+Quat, const Direct\+X\+::\+XMFLOAT3 \&pos) cond\+\_\+noex
+\item 
+void \mbox{\hyperlink{classModel_a216593e7d84051b6b883fbc2ddc4d75a_a216593e7d84051b6b883fbc2ddc4d75a}{set\+Transform}} (const float scale, const Direct\+X\+::\+XMVECTOR \&rot\+Quat, const Direct\+X\+::\+XMFLOAT3 \&pos) cond\+\_\+noex
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ \mbox{\hyperlink{classModel_af3dcc0a8bac832b284c12f479d88903e_af3dcc0a8bac832b284c12f479d88903e}{parse\+Model\+Node\+Graph}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}p\+Parent, const ai\+Node \&node, int imgui\+Node\+Id, const float initial\+Scale) cond\+\_\+noex
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classModel_a3b47d3369a4091b6e9a31a8a909b6d12_a3b47d3369a4091b6e9a31a8a909b6d12}{m\+\_\+n\+Nodes}} = 0
+\item 
+int \mbox{\hyperlink{classModel_af8ef6c44138a7d35a0cfda35af5f1958_af8ef6c44138a7d35a0cfda35af5f1958}{m\+\_\+n\+Mesh\+Nodes}} = 0
+\item 
+std\+::string \mbox{\hyperlink{classModel_a459f3420c7e47200f15c946cb7702170_a459f3420c7e47200f15c946cb7702170}{m\+\_\+name}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ \mbox{\hyperlink{classModel_aea1cd1a8e46e5b976f66047fdbd58add_aea1cd1a8e46e5b976f66047fdbd58add}{m\+\_\+p\+Root}}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classMesh}{Mesh}} $>$ $>$ \mbox{\hyperlink{classModel_aac9199ace6d820b21545f4a33c80abef_aac9199ace6d820b21545f4a33c80abef}{m\+\_\+meshes}}
+\item 
+\mbox{\hyperlink{classImguiPerModelNodeVisitor}{Imgui\+Per\+Model\+Node\+Visitor}} \mbox{\hyperlink{classModel_ab4b4337502032a0d09a2be19f3939afe_ab4b4337502032a0d09a2be19f3939afe}{m\+\_\+imgui\+Visitor}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classModel_a0600c0c1f47a574ab81a6e0e73f3520e_a0600c0c1f47a574ab81a6e0e73f3520e}\index{Model@{Model}!Model@{Model}}
+\index{Model@{Model}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{Model()}{Model()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classModel_a0600c0c1f47a574ab81a6e0e73f3520e_a0600c0c1f47a574ab81a6e0e73f3520e} 
+Model\+::\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const std\+::string \&}]{path}{, }\item[{const float}]{initial\+Scale}{ = {\ttfamily 1.0f}, }\item[{const Direct\+X\+::\+XMFLOAT3 \&}]{initial\+Rot\+Deg}{ = {\ttfamily \{0.0f,~0.0f,~0.0f\}}, }\item[{const Direct\+X\+::\+XMFLOAT3 \&}]{initial\+Pos}{ = {\ttfamily \{0.0f,~0.0f,~0.0f\}}}\end{DoxyParamCaption})}
+
+
+
+\doxylink{classModel}{Model} ctor for imported meshes. 
+
+initial\+Rot is in degrees -\/ it will be converted and stored as radians \Hypertarget{classModel_a2bb58287e2762dd3fbd905929b7a4c9c_a2bb58287e2762dd3fbd905929b7a4c9c}\index{Model@{Model}!Model@{Model}}
+\index{Model@{Model}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{Model()}{Model()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classModel_a2bb58287e2762dd3fbd905929b7a4c9c_a2bb58287e2762dd3fbd905929b7a4c9c} 
+Model\+::\+Model (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classMesh}{Mesh}} $>$}]{p\+Mesh}{, }\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const Direct\+X\+::\+XMFLOAT3 \&}]{initial\+Rot\+Deg}{, }\item[{const Direct\+X\+::\+XMFLOAT3 \&}]{initial\+Pos}{}\end{DoxyParamCaption})}
+
+
+
+ctor for single-\/\+Mesh/\+Node primitives 
+
+initial\+Rot is in degrees -\/ it will be converted and stored as radians \Hypertarget{classModel_affb7503ef06f714be1de64e7df97664b_affb7503ef06f714be1de64e7df97664b}\index{Model@{Model}!````~Model@{\texorpdfstring{$\sim$}{\string~}Model}}
+\index{````~Model@{\texorpdfstring{$\sim$}{\string~}Model}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Model()}{\string~Model()}}
+{\footnotesize\ttfamily \label{classModel_affb7503ef06f714be1de64e7df97664b_affb7503ef06f714be1de64e7df97664b} 
+Model\+::\texorpdfstring{$\sim$}{\string~}\+Model (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classModel_af09f61d22a6c1f1f9a815b80519ea98a_af09f61d22a6c1f1f9a815b80519ea98a}\index{Model@{Model}!Model@{Model}}
+\index{Model@{Model}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{Model()}{Model()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classModel_af09f61d22a6c1f1f9a815b80519ea98a_af09f61d22a6c1f1f9a815b80519ea98a} 
+Model\+::\+Model (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classModel}{Model}} \&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\Hypertarget{classModel_a65852929a8bbdcc448b9efa714185a9a_a65852929a8bbdcc448b9efa714185a9a}\index{Model@{Model}!Model@{Model}}
+\index{Model@{Model}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{Model()}{Model()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classModel_a65852929a8bbdcc448b9efa714185a9a_a65852929a8bbdcc448b9efa714185a9a} 
+Model\+::\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classModel}{Model}} \&\&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classModel_af4731ff2dc420c06801f4f5281af04b8_af4731ff2dc420c06801f4f5281af04b8}\index{Model@{Model}!accept@{accept}}
+\index{accept@{accept}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{accept()}{accept()}}
+{\footnotesize\ttfamily \label{classModel_af4731ff2dc420c06801f4f5281af04b8_af4731ff2dc420c06801f4f5281af04b8} 
+void Model\+::accept (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIImguiNodeVisitor}{IImgui\+Node\+Visitor}} \&}]{v}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classModel_a026f7d322b40a3488184d711962d92c2_a026f7d322b40a3488184d711962d92c2}\index{Model@{Model}!connectMaterialsToRenderer@{connectMaterialsToRenderer}}
+\index{connectMaterialsToRenderer@{connectMaterialsToRenderer}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{connectMaterialsToRenderer()}{connectMaterialsToRenderer()}}
+{\footnotesize\ttfamily \label{classModel_a026f7d322b40a3488184d711962d92c2_a026f7d322b40a3488184d711962d92c2} 
+void Model\+::connect\+Materials\+To\+Renderer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classren_1_1Renderer}{ren\+::\+Renderer}} \&}]{r}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classModel_a5c541a8bb0012d4cbb64f2cb809f1638_a5c541a8bb0012d4cbb64f2cb809f1638}\index{Model@{Model}!displayImguiWidgets@{displayImguiWidgets}}
+\index{displayImguiWidgets@{displayImguiWidgets}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{displayImguiWidgets()}{displayImguiWidgets()}}
+{\footnotesize\ttfamily \label{classModel_a5c541a8bb0012d4cbb64f2cb809f1638_a5c541a8bb0012d4cbb64f2cb809f1638} 
+void Model\+::display\+Imgui\+Widgets (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classModel_a0cc7d6fa891126a1daa9237d89cd1693_a0cc7d6fa891126a1daa9237d89cd1693}\index{Model@{Model}!getDistanceFromActiveCamera@{getDistanceFromActiveCamera}}
+\index{getDistanceFromActiveCamera@{getDistanceFromActiveCamera}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{getDistanceFromActiveCamera()}{getDistanceFromActiveCamera()}}
+{\footnotesize\ttfamily \label{classModel_a0cc7d6fa891126a1daa9237d89cd1693_a0cc7d6fa891126a1daa9237d89cd1693} 
+float Model\+::get\+Distance\+From\+Active\+Camera (\begin{DoxyParamCaption}\item[{const int}]{index}{ = {\ttfamily 0}}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+return the distance between the currently active camera and the \doxylink{classMesh}{Mesh} at specified index 
+
+if index == 0 -\/\texorpdfstring{$>$}{>} it\textquotesingle{}s the root \doxylink{classNode}{Node}\textquotesingle{}s \doxylink{classMesh}{Mesh} \Hypertarget{classModel_a66b94da2a771a7c6cc33af0a26ef045e_a66b94da2a771a7c6cc33af0a26ef045e}\index{Model@{Model}!getMesh@{getMesh}}
+\index{getMesh@{getMesh}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{getMesh()}{getMesh()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classModel_a66b94da2a771a7c6cc33af0a26ef045e_a66b94da2a771a7c6cc33af0a26ef045e} 
+\mbox{\hyperlink{classMesh}{Mesh}} \texorpdfstring{$\ast$}{*}const Model\+::get\+Mesh (\begin{DoxyParamCaption}\item[{const int}]{index}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+\Hypertarget{classModel_aeaa2b630fba75a0b911db2f655301160_aeaa2b630fba75a0b911db2f655301160}\index{Model@{Model}!getMesh@{getMesh}}
+\index{getMesh@{getMesh}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{getMesh()}{getMesh()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classModel_aeaa2b630fba75a0b911db2f655301160_aeaa2b630fba75a0b911db2f655301160} 
+const \mbox{\hyperlink{classMesh}{Mesh}} \texorpdfstring{$\ast$}{*}const Model\+::get\+Mesh (\begin{DoxyParamCaption}\item[{const int}]{index}{ = {\ttfamily 0}}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classModel_a0580611e0db6e9def73246c306c19a06_a0580611e0db6e9def73246c306c19a06}\index{Model@{Model}!getName@{getName}}
+\index{getName@{getName}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily \label{classModel_a0580611e0db6e9def73246c306c19a06_a0580611e0db6e9def73246c306c19a06} 
+const std\+::string \& Model\+::get\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classModel_a22cb995d5e3ddbf2c9cd303e90820aba_a22cb995d5e3ddbf2c9cd303e90820aba}\index{Model@{Model}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily \label{classModel_a22cb995d5e3ddbf2c9cd303e90820aba_a22cb995d5e3ddbf2c9cd303e90820aba} 
+Direct\+X\+::\+XMFLOAT3 Model\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classModel_a309132aa630a396fdb2c7626d5272bb1_a309132aa630a396fdb2c7626d5272bb1}\index{Model@{Model}!getRotation@{getRotation}}
+\index{getRotation@{getRotation}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{getRotation()}{getRotation()}}
+{\footnotesize\ttfamily \label{classModel_a309132aa630a396fdb2c7626d5272bb1_a309132aa630a396fdb2c7626d5272bb1} 
+Direct\+X\+::\+XMFLOAT3 Model\+::get\+Rotation (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classModel_a581366c3323ea82fea0d599c1a053ad4_a581366c3323ea82fea0d599c1a053ad4}\index{Model@{Model}!getRotationQuat@{getRotationQuat}}
+\index{getRotationQuat@{getRotationQuat}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{getRotationQuat()}{getRotationQuat()}}
+{\footnotesize\ttfamily \label{classModel_a581366c3323ea82fea0d599c1a053ad4_a581366c3323ea82fea0d599c1a053ad4} 
+Direct\+X\+::\+XMVECTOR Model\+::get\+Rotation\+Quat (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classModel_ab52e612aed8183547ee0d58aab900631_ab52e612aed8183547ee0d58aab900631}\index{Model@{Model}!getScale@{getScale}}
+\index{getScale@{getScale}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{getScale()}{getScale()}}
+{\footnotesize\ttfamily \label{classModel_ab52e612aed8183547ee0d58aab900631_ab52e612aed8183547ee0d58aab900631} 
+float Model\+::get\+Scale (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classModel_a713fb2d948d1e0b246edfaf100a96d13_a713fb2d948d1e0b246edfaf100a96d13}\index{Model@{Model}!getScale3@{getScale3}}
+\index{getScale3@{getScale3}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{getScale3()}{getScale3()}}
+{\footnotesize\ttfamily \label{classModel_a713fb2d948d1e0b246edfaf100a96d13_a713fb2d948d1e0b246edfaf100a96d13} 
+Direct\+X\+::\+XMFLOAT3 Model\+::get\+Scale3 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classModel_a5ebe7821b16ec75c882ad5c797980c9c_a5ebe7821b16ec75c882ad5c797980c9c}\index{Model@{Model}!getTransform@{getTransform}}
+\index{getTransform@{getTransform}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{getTransform()}{getTransform()}}
+{\footnotesize\ttfamily \label{classModel_a5ebe7821b16ec75c882ad5c797980c9c_a5ebe7821b16ec75c882ad5c797980c9c} 
+Direct\+X\+::\+XMMATRIX Model\+::get\+Transform (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classModel_a97c6fc1a512ac57979f0fc63c1d34085_a97c6fc1a512ac57979f0fc63c1d34085}\index{Model@{Model}!getTransform4x4@{getTransform4x4}}
+\index{getTransform4x4@{getTransform4x4}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{getTransform4x4()}{getTransform4x4()}}
+{\footnotesize\ttfamily \label{classModel_a97c6fc1a512ac57979f0fc63c1d34085_a97c6fc1a512ac57979f0fc63c1d34085} 
+Direct\+X\+::\+XMFLOAT4\+X4 Model\+::get\+Transform4x4 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classModel_a137f319d98a3c60467eaaf1b6bf548b3_a137f319d98a3c60467eaaf1b6bf548b3}\index{Model@{Model}!operator=@{operator=}}
+\index{operator=@{operator=}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classModel_a137f319d98a3c60467eaaf1b6bf548b3_a137f319d98a3c60467eaaf1b6bf548b3} 
+\mbox{\hyperlink{classModel}{Model}} \& Model\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classModel}{Model}} \&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\Hypertarget{classModel_ac65bf876216dc900b83fbed12e450743_ac65bf876216dc900b83fbed12e450743}\index{Model@{Model}!operator=@{operator=}}
+\index{operator=@{operator=}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classModel_ac65bf876216dc900b83fbed12e450743_ac65bf876216dc900b83fbed12e450743} 
+\mbox{\hyperlink{classModel}{Model}} \& Model\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classModel}{Model}} \&\&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classModel_af3dcc0a8bac832b284c12f479d88903e_af3dcc0a8bac832b284c12f479d88903e}\index{Model@{Model}!parseModelNodeGraph@{parseModelNodeGraph}}
+\index{parseModelNodeGraph@{parseModelNodeGraph}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{parseModelNodeGraph()}{parseModelNodeGraph()}}
+{\footnotesize\ttfamily \label{classModel_af3dcc0a8bac832b284c12f479d88903e_af3dcc0a8bac832b284c12f479d88903e} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classNode}{Node}} $>$ Model\+::parse\+Model\+Node\+Graph (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{p\+Parent}{, }\item[{const ai\+Node \&}]{node}{, }\item[{int}]{imgui\+Node\+Id}{, }\item[{const float}]{initial\+Scale}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classModel_aa33a40fb50f074d5928c15c82074a0b6_aa33a40fb50f074d5928c15c82074a0b6}\index{Model@{Model}!render@{render}}
+\index{render@{render}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily \label{classModel_aa33a40fb50f074d5928c15c82074a0b6_aa33a40fb50f074d5928c15c82074a0b6} 
+void Model\+::render (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{channels}{ = {\ttfamily \mbox{\hyperlink{namespacerch_a7bda900872e1367b3434b6b548e17d2c_a7bda900872e1367b3434b6b548e17d2c}{rch\+::all}}}}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classModel_a4f4450d1d501356cbacf57992f8f32c2_a4f4450d1d501356cbacf57992f8f32c2}\index{Model@{Model}!rotateRel@{rotateRel}}
+\index{rotateRel@{rotateRel}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{rotateRel()}{rotateRel()}}
+{\footnotesize\ttfamily \label{classModel_a4f4450d1d501356cbacf57992f8f32c2_a4f4450d1d501356cbacf57992f8f32c2} 
+void Model\+::rotate\+Rel (\begin{DoxyParamCaption}\item[{const Direct\+X\+::\+XMFLOAT3 \&}]{rot\+Angles\+Radians}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classModel_abdad4d48fa4a4ed0680bee4a3ef8c7a7_abdad4d48fa4a4ed0680bee4a3ef8c7a7}\index{Model@{Model}!scaleRel@{scaleRel}}
+\index{scaleRel@{scaleRel}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{scaleRel()}{scaleRel()}}
+{\footnotesize\ttfamily \label{classModel_abdad4d48fa4a4ed0680bee4a3ef8c7a7_abdad4d48fa4a4ed0680bee4a3ef8c7a7} 
+void Model\+::scale\+Rel (\begin{DoxyParamCaption}\item[{const Direct\+X\+::\+XMFLOAT3 \&}]{scale}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classModel_ad9673dfef4bf662ef742ea17b7704099_ad9673dfef4bf662ef742ea17b7704099}\index{Model@{Model}!setMaterialEnabled@{setMaterialEnabled}}
+\index{setMaterialEnabled@{setMaterialEnabled}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{setMaterialEnabled()}{setMaterialEnabled()}}
+{\footnotesize\ttfamily \label{classModel_ad9673dfef4bf662ef742ea17b7704099_ad9673dfef4bf662ef742ea17b7704099} 
+void Model\+::set\+Material\+Enabled (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{channels}{, }\item[{const bool}]{b\+Enabled}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classModel_ae218f9aa7ff8225ecc9f250a057030af_ae218f9aa7ff8225ecc9f250a057030af}\index{Model@{Model}!setRotation@{setRotation}}
+\index{setRotation@{setRotation}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{setRotation()}{setRotation()}}
+{\footnotesize\ttfamily \label{classModel_ae218f9aa7ff8225ecc9f250a057030af_ae218f9aa7ff8225ecc9f250a057030af} 
+void Model\+::set\+Rotation (\begin{DoxyParamCaption}\item[{const Direct\+X\+::\+XMFLOAT3 \&}]{rot\+Angles\+Radians}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classModel_a5df221b34d95f2db129a4b3cc564c403_a5df221b34d95f2db129a4b3cc564c403}\index{Model@{Model}!setScale@{setScale}}
+\index{setScale@{setScale}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{setScale()}{setScale()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classModel_a5df221b34d95f2db129a4b3cc564c403_a5df221b34d95f2db129a4b3cc564c403} 
+void Model\+::set\+Scale (\begin{DoxyParamCaption}\item[{const Direct\+X\+::\+XMFLOAT3 \&}]{scale}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classModel_a907f793106a2fc7b955b945873c37ce2_a907f793106a2fc7b955b945873c37ce2}\index{Model@{Model}!setScale@{setScale}}
+\index{setScale@{setScale}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{setScale()}{setScale()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classModel_a907f793106a2fc7b955b945873c37ce2_a907f793106a2fc7b955b945873c37ce2} 
+void Model\+::set\+Scale (\begin{DoxyParamCaption}\item[{const float}]{scale}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classModel_af45461230e9c72025a6ce6a7ba699bdc_af45461230e9c72025a6ce6a7ba699bdc}\index{Model@{Model}!setTransform@{setTransform}}
+\index{setTransform@{setTransform}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{setTransform()}{setTransform()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classModel_af45461230e9c72025a6ce6a7ba699bdc_af45461230e9c72025a6ce6a7ba699bdc} 
+void Model\+::set\+Transform (\begin{DoxyParamCaption}\item[{const Direct\+X\+::\+XMMATRIX \&}]{tr}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+All transformation-\/related-\/functions simply call the root \doxylink{classNode}{Node}\textquotesingle{}s corresponding function and propagate the operation down the \doxylink{classNode}{Node} hierarchy; the world transform itself is updated only once-\/per-\/tick during update. 
+
+\Hypertarget{classModel_a2d9ea5f25b9ae643e92c21aa286dea9c_a2d9ea5f25b9ae643e92c21aa286dea9c}\index{Model@{Model}!setTransform@{setTransform}}
+\index{setTransform@{setTransform}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{setTransform()}{setTransform()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classModel_a2d9ea5f25b9ae643e92c21aa286dea9c_a2d9ea5f25b9ae643e92c21aa286dea9c} 
+void Model\+::set\+Transform (\begin{DoxyParamCaption}\item[{const float}]{scale}{, }\item[{const Direct\+X\+::\+XMFLOAT3 \&}]{rot\+Angles\+Radians}{, }\item[{const Direct\+X\+::\+XMFLOAT3 \&}]{pos}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classModel_a82dfe0f182853642b5ccb9f3d33f24c3_a82dfe0f182853642b5ccb9f3d33f24c3}\index{Model@{Model}!setTransform@{setTransform}}
+\index{setTransform@{setTransform}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{setTransform()}{setTransform()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classModel_a82dfe0f182853642b5ccb9f3d33f24c3_a82dfe0f182853642b5ccb9f3d33f24c3} 
+void Model\+::set\+Transform (\begin{DoxyParamCaption}\item[{const float}]{scale}{, }\item[{const Direct\+X\+::\+XMFLOAT4 \&}]{rot\+Quat}{, }\item[{const Direct\+X\+::\+XMFLOAT3 \&}]{pos}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classModel_a216593e7d84051b6b883fbc2ddc4d75a_a216593e7d84051b6b883fbc2ddc4d75a}\index{Model@{Model}!setTransform@{setTransform}}
+\index{setTransform@{setTransform}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{setTransform()}{setTransform()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classModel_a216593e7d84051b6b883fbc2ddc4d75a_a216593e7d84051b6b883fbc2ddc4d75a} 
+void Model\+::set\+Transform (\begin{DoxyParamCaption}\item[{const float}]{scale}{, }\item[{const Direct\+X\+::\+XMVECTOR \&}]{rot\+Quat}{, }\item[{const Direct\+X\+::\+XMFLOAT3 \&}]{pos}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classModel_a2f34019f76af71a4b0f120e6c83fa734_a2f34019f76af71a4b0f120e6c83fa734}\index{Model@{Model}!setTranslation@{setTranslation}}
+\index{setTranslation@{setTranslation}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{setTranslation()}{setTranslation()}}
+{\footnotesize\ttfamily \label{classModel_a2f34019f76af71a4b0f120e6c83fa734_a2f34019f76af71a4b0f120e6c83fa734} 
+void Model\+::set\+Translation (\begin{DoxyParamCaption}\item[{const Direct\+X\+::\+XMFLOAT3 \&}]{pos}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classModel_a88c39a8c514b6abdf0bda067c7a0f326_a88c39a8c514b6abdf0bda067c7a0f326}\index{Model@{Model}!translateRel@{translateRel}}
+\index{translateRel@{translateRel}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{translateRel()}{translateRel()}}
+{\footnotesize\ttfamily \label{classModel_a88c39a8c514b6abdf0bda067c7a0f326_a88c39a8c514b6abdf0bda067c7a0f326} 
+void Model\+::translate\+Rel (\begin{DoxyParamCaption}\item[{const Direct\+X\+::\+XMFLOAT3 \&}]{pos}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classModel_a87092d0e63f1ff00e92f155d1e3e9c42_a87092d0e63f1ff00e92f155d1e3e9c42}\index{Model@{Model}!update@{update}}
+\index{update@{update}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{classModel_a87092d0e63f1ff00e92f155d1e3e9c42_a87092d0e63f1ff00e92f155d1e3e9c42} 
+void Model\+::update (\begin{DoxyParamCaption}\item[{const float}]{dt}{, }\item[{const float}]{lerp\+Between\+Frames}{, }\item[{const bool}]{b\+Enable\+Smooth\+Movemenzzt}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classModel_ab4b4337502032a0d09a2be19f3939afe_ab4b4337502032a0d09a2be19f3939afe}\index{Model@{Model}!m\_imguiVisitor@{m\_imguiVisitor}}
+\index{m\_imguiVisitor@{m\_imguiVisitor}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{m\_imguiVisitor}{m\_imguiVisitor}}
+{\footnotesize\ttfamily \label{classModel_ab4b4337502032a0d09a2be19f3939afe_ab4b4337502032a0d09a2be19f3939afe} 
+\mbox{\hyperlink{classImguiPerModelNodeVisitor}{Imgui\+Per\+Model\+Node\+Visitor}} Model\+::m\+\_\+imgui\+Visitor\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classModel_aac9199ace6d820b21545f4a33c80abef_aac9199ace6d820b21545f4a33c80abef}\index{Model@{Model}!m\_meshes@{m\_meshes}}
+\index{m\_meshes@{m\_meshes}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{m\_meshes}{m\_meshes}}
+{\footnotesize\ttfamily \label{classModel_aac9199ace6d820b21545f4a33c80abef_aac9199ace6d820b21545f4a33c80abef} 
+std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classMesh}{Mesh}}$>$ $>$ Model\+::m\+\_\+meshes\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classModel_a459f3420c7e47200f15c946cb7702170_a459f3420c7e47200f15c946cb7702170}\index{Model@{Model}!m\_name@{m\_name}}
+\index{m\_name@{m\_name}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{m\_name}{m\_name}}
+{\footnotesize\ttfamily \label{classModel_a459f3420c7e47200f15c946cb7702170_a459f3420c7e47200f15c946cb7702170} 
+std\+::string Model\+::m\+\_\+name\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classModel_af8ef6c44138a7d35a0cfda35af5f1958_af8ef6c44138a7d35a0cfda35af5f1958}\index{Model@{Model}!m\_nMeshNodes@{m\_nMeshNodes}}
+\index{m\_nMeshNodes@{m\_nMeshNodes}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{m\_nMeshNodes}{m\_nMeshNodes}}
+{\footnotesize\ttfamily \label{classModel_af8ef6c44138a7d35a0cfda35af5f1958_af8ef6c44138a7d35a0cfda35af5f1958} 
+int Model\+::m\+\_\+n\+Mesh\+Nodes = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classModel_a3b47d3369a4091b6e9a31a8a909b6d12_a3b47d3369a4091b6e9a31a8a909b6d12}\index{Model@{Model}!m\_nNodes@{m\_nNodes}}
+\index{m\_nNodes@{m\_nNodes}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{m\_nNodes}{m\_nNodes}}
+{\footnotesize\ttfamily \label{classModel_a3b47d3369a4091b6e9a31a8a909b6d12_a3b47d3369a4091b6e9a31a8a909b6d12} 
+int Model\+::m\+\_\+n\+Nodes = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classModel_aea1cd1a8e46e5b976f66047fdbd58add_aea1cd1a8e46e5b976f66047fdbd58add}\index{Model@{Model}!m\_pRoot@{m\_pRoot}}
+\index{m\_pRoot@{m\_pRoot}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{m\_pRoot}{m\_pRoot}}
+{\footnotesize\ttfamily \label{classModel_aea1cd1a8e46e5b976f66047fdbd58add_aea1cd1a8e46e5b976f66047fdbd58add} 
+std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classNode}{Node}}$>$ Model\+::m\+\_\+p\+Root\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{model_8h}{model.\+h}}\item 
+src/\mbox{\hyperlink{MODEL_8CPP}{MODEL.\+CPP}}\end{DoxyCompactItemize}

@@ -1,0 +1,66 @@
+\doxysection{IReporter\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Reference}
+\hypertarget{classIReporter_3_01T_01_4}{}\label{classIReporter_3_01T_01_4}\index{IReporter$<$ T $>$@{IReporter$<$ T $>$}}
+
+
+Templated Observer design pattern (Class Template 2 of 2)  
+
+
+
+
+{\ttfamily \#include $<$reporter\+\_\+listener.\+h$>$}
+
+
+
+\doxysubsection{Detailed Description}
+Templated Observer design pattern (Class Template 2 of 2) 
+
+=============================================================
+
+\begin{DoxyAuthor}{Author}
+Key\+C0de 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2024/05/07 22\+:49
+\end{DoxyDate}
+To become an \doxylink{classIReporter}{IReporter} of an event T, U, V a class ("{}\+My\+Class"{}) must do the following\+:
+
+
+\begin{DoxyEnumerate}
+\item Inherit from \doxylink{classIReporter}{IReporter}\+:
+\end{DoxyEnumerate}
+
+class My\+Class
+
+\+: ...
+
+public \doxylink{classIReporter_3_01T_01_4}{IReporter$<$\+T$>$} // eg. T = Started\+Temperature\+Measurements
+
+
+\begin{DoxyEnumerate}
+\item make sure all inheriting concrete classes implement a destructor which calls {\ttfamily remove\+This\+From\+Listeners\+List()} as the last instruction, for all the \doxylink{classIReporter}{IReporter}\textquotesingle{}s it inherited from.
+\end{DoxyEnumerate}
+
+{\ttfamily remove\+This\+From\+Listeners\+List()}
+
+{\ttfamily \doxylink{classIReporter}{IReporter}\texorpdfstring{$<$}{<}T\texorpdfstring{$>$}{>}::remove\+This\+From\+Listeners\+List()}
+
+If a derived class doesn\textquotesingle{}t implement a destructor it will be an abstract class.
+
+
+\begin{DoxyEnumerate}
+\item at some point My\+Class will want to report on the event T, which will trigger the {\ttfamily notify( const T\& )} method of all of its IListenes$<$\+T$>$.
+\end{DoxyEnumerate}
+
+To do that you must get a hold of a \doxylink{classReportingNexus}{Reporting\+Nexus} object, cast it to the proper \doxylink{classIReporter}{IReporter} sub-\/class and finally\+:
+
+static\+\_\+cast\texorpdfstring{$<$}{<}\doxylink{classIReporter_3_01T_01_4}{IReporter$<$\+T$>$}\&\texorpdfstring{$>$}{>}( reporting\+Nexus ).notify\+Listeners( T( /\texorpdfstring{$\ast$}{*}ctor arguments for event T\texorpdfstring{$\ast$}{*}/ ) ); // the cast is necessary only if My\+Class derives from multiple IReporter$<$$>$s.
+
+eg.
+
+static\+\_\+cast\texorpdfstring{$<$}{<}IReporter$<$\+Started\+Temperature\+Measurements$>$\&\texorpdfstring{$>$}{>}( \texorpdfstring{$\ast$}{*}this ).notify\+Listeners( Started\+Temperature\+Measurements( m\+\_\+measrements ) );
+
+IReporter$<$\+Object\+Destroyed$<$\+My\+Class$>$$>$\+::notify\+Listeners( Object\+Destroyed$<$\+My\+Class$>$( \texorpdfstring{$\ast$}{*}this ) ); \doxysubsection*{IReporter$<$\+Object\+Destroyed$<$\+Instrumentation$>$$>$\+::notify\+Listeners( Object\+Destroyed$<$\+Instrumentation$>$( \texorpdfstring{$\ast$}{*}m\+\_\+thermometer ) ); }
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{reporter__listener_8h}{reporter\+\_\+listener.\+h}}\end{DoxyCompactItemize}

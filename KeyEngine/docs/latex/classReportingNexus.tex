@@ -1,0 +1,214 @@
+\doxysection{Reporting\+Nexus Class Reference}
+\hypertarget{classReportingNexus}{}\label{classReportingNexus}\index{ReportingNexus@{ReportingNexus}}
+
+
+{\ttfamily \#include $<$reporter\+\_\+access.\+h$>$}
+
+Inheritance diagram for Reporting\+Nexus\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.779661cm]{classReportingNexus}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classReportingNexus_a7b1c65220d0e3d88c28f3cbfd005e103_a7b1c65220d0e3d88c28f3cbfd005e103}{\texorpdfstring{$\sim$}{\string~}\+Reporting\+Nexus}} () noexcept
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classIReporter}{IReporter$<$ Swap\+Chain\+Resized\+Event $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classIReporter_ac46be9ddfe8366814c85b4b6e68e6f2e_ac46be9ddfe8366814c85b4b6e68e6f2e}{IReporter}} (\mbox{\hyperlink{classReporterAccess}{Reporter\+Access}} \&)
+\item 
+virtual \mbox{\hyperlink{classIReporter_a73657c8a169a89c3fcc12e27d08b8783_a73657c8a169a89c3fcc12e27d08b8783}{\texorpdfstring{$\sim$}{\string~}\+IReporter}} () noexcept=0
+\item 
+bool \mbox{\hyperlink{classIReporter_aa86f1962c6830b3a20c94c17f2cf34e2_aa86f1962c6830b3a20c94c17f2cf34e2}{has\+Listener}} (\mbox{\hyperlink{classIListener}{IListener}}$<$ \mbox{\hyperlink{structSwapChainResizedEvent}{Swap\+Chain\+Resized\+Event}} $>$ \texorpdfstring{$\ast$}{*}listener) const
+\item 
+void \mbox{\hyperlink{classIReporter_a6525b196ee174f7c0b3f583da9f0492c_a6525b196ee174f7c0b3f583da9f0492c}{add\+Listener}} (\mbox{\hyperlink{classIListener}{IListener}}$<$ \mbox{\hyperlink{structSwapChainResizedEvent}{Swap\+Chain\+Resized\+Event}} $>$ \texorpdfstring{$\ast$}{*}listener) const
+\item 
+void \mbox{\hyperlink{classIReporter_a1e48a61d8ea294e895bc58d43516c700_a1e48a61d8ea294e895bc58d43516c700}{remove\+Listener}} (const \mbox{\hyperlink{classIListener}{IListener}}$<$ \mbox{\hyperlink{structSwapChainResizedEvent}{Swap\+Chain\+Resized\+Event}} $>$ \texorpdfstring{$\ast$}{*}listener) const
+\begin{DoxyCompactList}\small\item\em called from \texorpdfstring{$\sim$}{\string~}\+IListener \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classIReporter_ac8104201bb71f8748952e39a13e1043e_ac8104201bb71f8748952e39a13e1043e}{notify\+Listeners}} (const \mbox{\hyperlink{structSwapChainResizedEvent}{Swap\+Chain\+Resized\+Event}} \&obj)
+\item 
+void \mbox{\hyperlink{classIReporter_acb5055f18fc9be9d150dbe6f3514e778_acb5055f18fc9be9d150dbe6f3514e778}{notify\+Listeners}} (\mbox{\hyperlink{structSwapChainResizedEvent}{Swap\+Chain\+Resized\+Event}} \&\&reporter)
+\item 
+void \mbox{\hyperlink{classIReporter_afee97efe68b72d86958d6075edd29427_afee97efe68b72d86958d6075edd29427}{notify\+Listeners}} (TArgs \&\&...args)
+\item 
+bool \mbox{\hyperlink{classIReporter_a20ff25f7f6d46d778d2197ebf2a7062f_a20ff25f7f6d46d778d2197ebf2a7062f}{any\+Listeners\+Present}} () const
+\item 
+int \mbox{\hyperlink{classIReporter_a808f4be43a1a2774b7fdf2091718d179_a808f4be43a1a2774b7fdf2091718d179}{num\+Listeners}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classNonCopyableAndNonMovable}{Non\+Copyable\+And\+Non\+Movable}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNonCopyableAndNonMovable_a0f3fc95f2c582514d58832b7c14d2965_a0f3fc95f2c582514d58832b7c14d2965}{Non\+Copyable\+And\+Non\+Movable}} ()=default
+\item 
+\mbox{\hyperlink{classNonCopyableAndNonMovable_a3502311a2435129e171eb36ba05f0b2f_a3502311a2435129e171eb36ba05f0b2f}{Non\+Copyable\+And\+Non\+Movable}} (const \mbox{\hyperlink{classNonCopyableAndNonMovable}{Non\+Copyable\+And\+Non\+Movable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyableAndNonMovable}{Non\+Copyable\+And\+Non\+Movable}} \& \mbox{\hyperlink{classNonCopyableAndNonMovable_a6541862f56b2fcaa89155f08b8adaf11_a6541862f56b2fcaa89155f08b8adaf11}{operator=}} (const \mbox{\hyperlink{classNonCopyableAndNonMovable}{Non\+Copyable\+And\+Non\+Movable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyableAndNonMovable_a259655d15f1887d015c6d77a0f09f4ff_a259655d15f1887d015c6d77a0f09f4ff}{Non\+Copyable\+And\+Non\+Movable}} (\mbox{\hyperlink{classNonCopyableAndNonMovable}{Non\+Copyable\+And\+Non\+Movable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyableAndNonMovable}{Non\+Copyable\+And\+Non\+Movable}} \& \mbox{\hyperlink{classNonCopyableAndNonMovable_aa3af41edbd14c886cdec335b22254829_aa3af41edbd14c886cdec335b22254829}{operator=}} (\mbox{\hyperlink{classNonCopyableAndNonMovable}{Non\+Copyable\+And\+Non\+Movable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyableAndNonMovable_acadc47621b689b1b95bef13a35f18572_acadc47621b689b1b95bef13a35f18572}{Non\+Copyable\+And\+Non\+Movable}} (\mbox{\hyperlink{classNonCopyableAndNonMovable}{Non\+Copyable\+And\+Non\+Movable}} \&\&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyableAndNonMovable}{Non\+Copyable\+And\+Non\+Movable}} \& \mbox{\hyperlink{classNonCopyableAndNonMovable_a972632a389e0f2370de9604df60ea9d6_a972632a389e0f2370de9604df60ea9d6}{operator=}} (\mbox{\hyperlink{classNonCopyableAndNonMovable}{Non\+Copyable\+And\+Non\+Movable}} \&\&rhs)=delete
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classIReporter}{IReporter$<$ UISound\+Event $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classIReporter_ac46be9ddfe8366814c85b4b6e68e6f2e_ac46be9ddfe8366814c85b4b6e68e6f2e}{IReporter}} (\mbox{\hyperlink{classReporterAccess}{Reporter\+Access}} \&)
+\item 
+virtual \mbox{\hyperlink{classIReporter_a73657c8a169a89c3fcc12e27d08b8783_a73657c8a169a89c3fcc12e27d08b8783}{\texorpdfstring{$\sim$}{\string~}\+IReporter}} () noexcept=0
+\item 
+bool \mbox{\hyperlink{classIReporter_aa86f1962c6830b3a20c94c17f2cf34e2_aa86f1962c6830b3a20c94c17f2cf34e2}{has\+Listener}} (\mbox{\hyperlink{classIListener}{IListener}}$<$ \mbox{\hyperlink{structUISoundEvent}{UISound\+Event}} $>$ \texorpdfstring{$\ast$}{*}listener) const
+\item 
+void \mbox{\hyperlink{classIReporter_a6525b196ee174f7c0b3f583da9f0492c_a6525b196ee174f7c0b3f583da9f0492c}{add\+Listener}} (\mbox{\hyperlink{classIListener}{IListener}}$<$ \mbox{\hyperlink{structUISoundEvent}{UISound\+Event}} $>$ \texorpdfstring{$\ast$}{*}listener) const
+\item 
+void \mbox{\hyperlink{classIReporter_a1e48a61d8ea294e895bc58d43516c700_a1e48a61d8ea294e895bc58d43516c700}{remove\+Listener}} (const \mbox{\hyperlink{classIListener}{IListener}}$<$ \mbox{\hyperlink{structUISoundEvent}{UISound\+Event}} $>$ \texorpdfstring{$\ast$}{*}listener) const
+\begin{DoxyCompactList}\small\item\em called from \texorpdfstring{$\sim$}{\string~}\+IListener \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classIReporter_ac8104201bb71f8748952e39a13e1043e_ac8104201bb71f8748952e39a13e1043e}{notify\+Listeners}} (const \mbox{\hyperlink{structUISoundEvent}{UISound\+Event}} \&obj)
+\item 
+void \mbox{\hyperlink{classIReporter_acb5055f18fc9be9d150dbe6f3514e778_acb5055f18fc9be9d150dbe6f3514e778}{notify\+Listeners}} (\mbox{\hyperlink{structUISoundEvent}{UISound\+Event}} \&\&reporter)
+\item 
+void \mbox{\hyperlink{classIReporter_afee97efe68b72d86958d6075edd29427_afee97efe68b72d86958d6075edd29427}{notify\+Listeners}} (TArgs \&\&...args)
+\item 
+bool \mbox{\hyperlink{classIReporter_a20ff25f7f6d46d778d2197ebf2a7062f_a20ff25f7f6d46d778d2197ebf2a7062f}{any\+Listeners\+Present}} () const
+\item 
+int \mbox{\hyperlink{classIReporter_a808f4be43a1a2774b7fdf2091718d179_a808f4be43a1a2774b7fdf2091718d179}{num\+Listeners}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classIReporter}{IReporter$<$ User\+Property\+Changed $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classIReporter_ac46be9ddfe8366814c85b4b6e68e6f2e_ac46be9ddfe8366814c85b4b6e68e6f2e}{IReporter}} (\mbox{\hyperlink{classReporterAccess}{Reporter\+Access}} \&)
+\item 
+virtual \mbox{\hyperlink{classIReporter_a73657c8a169a89c3fcc12e27d08b8783_a73657c8a169a89c3fcc12e27d08b8783}{\texorpdfstring{$\sim$}{\string~}\+IReporter}} () noexcept=0
+\item 
+bool \mbox{\hyperlink{classIReporter_aa86f1962c6830b3a20c94c17f2cf34e2_aa86f1962c6830b3a20c94c17f2cf34e2}{has\+Listener}} (\mbox{\hyperlink{classIListener}{IListener}}$<$ \mbox{\hyperlink{structUserPropertyChanged}{User\+Property\+Changed}} $>$ \texorpdfstring{$\ast$}{*}listener) const
+\item 
+void \mbox{\hyperlink{classIReporter_a6525b196ee174f7c0b3f583da9f0492c_a6525b196ee174f7c0b3f583da9f0492c}{add\+Listener}} (\mbox{\hyperlink{classIListener}{IListener}}$<$ \mbox{\hyperlink{structUserPropertyChanged}{User\+Property\+Changed}} $>$ \texorpdfstring{$\ast$}{*}listener) const
+\item 
+void \mbox{\hyperlink{classIReporter_a1e48a61d8ea294e895bc58d43516c700_a1e48a61d8ea294e895bc58d43516c700}{remove\+Listener}} (const \mbox{\hyperlink{classIListener}{IListener}}$<$ \mbox{\hyperlink{structUserPropertyChanged}{User\+Property\+Changed}} $>$ \texorpdfstring{$\ast$}{*}listener) const
+\begin{DoxyCompactList}\small\item\em called from \texorpdfstring{$\sim$}{\string~}\+IListener \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classIReporter_ac8104201bb71f8748952e39a13e1043e_ac8104201bb71f8748952e39a13e1043e}{notify\+Listeners}} (const \mbox{\hyperlink{structUserPropertyChanged}{User\+Property\+Changed}} \&obj)
+\item 
+void \mbox{\hyperlink{classIReporter_acb5055f18fc9be9d150dbe6f3514e778_acb5055f18fc9be9d150dbe6f3514e778}{notify\+Listeners}} (\mbox{\hyperlink{structUserPropertyChanged}{User\+Property\+Changed}} \&\&reporter)
+\item 
+void \mbox{\hyperlink{classIReporter_afee97efe68b72d86958d6075edd29427_afee97efe68b72d86958d6075edd29427}{notify\+Listeners}} (TArgs \&\&...args)
+\item 
+bool \mbox{\hyperlink{classIReporter_a20ff25f7f6d46d778d2197ebf2a7062f_a20ff25f7f6d46d778d2197ebf2a7062f}{any\+Listeners\+Present}} () const
+\item 
+int \mbox{\hyperlink{classIReporter_a808f4be43a1a2774b7fdf2091718d179_a808f4be43a1a2774b7fdf2091718d179}{num\+Listeners}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classIReporter}{IReporter$<$ Ui\+Msg $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classIReporter_ac46be9ddfe8366814c85b4b6e68e6f2e_ac46be9ddfe8366814c85b4b6e68e6f2e}{IReporter}} (\mbox{\hyperlink{classReporterAccess}{Reporter\+Access}} \&)
+\item 
+virtual \mbox{\hyperlink{classIReporter_a73657c8a169a89c3fcc12e27d08b8783_a73657c8a169a89c3fcc12e27d08b8783}{\texorpdfstring{$\sim$}{\string~}\+IReporter}} () noexcept=0
+\item 
+bool \mbox{\hyperlink{classIReporter_aa86f1962c6830b3a20c94c17f2cf34e2_aa86f1962c6830b3a20c94c17f2cf34e2}{has\+Listener}} (\mbox{\hyperlink{classIListener}{IListener}}$<$ \mbox{\hyperlink{structUiMsg}{Ui\+Msg}} $>$ \texorpdfstring{$\ast$}{*}listener) const
+\item 
+void \mbox{\hyperlink{classIReporter_a6525b196ee174f7c0b3f583da9f0492c_a6525b196ee174f7c0b3f583da9f0492c}{add\+Listener}} (\mbox{\hyperlink{classIListener}{IListener}}$<$ \mbox{\hyperlink{structUiMsg}{Ui\+Msg}} $>$ \texorpdfstring{$\ast$}{*}listener) const
+\item 
+void \mbox{\hyperlink{classIReporter_a1e48a61d8ea294e895bc58d43516c700_a1e48a61d8ea294e895bc58d43516c700}{remove\+Listener}} (const \mbox{\hyperlink{classIListener}{IListener}}$<$ \mbox{\hyperlink{structUiMsg}{Ui\+Msg}} $>$ \texorpdfstring{$\ast$}{*}listener) const
+\begin{DoxyCompactList}\small\item\em called from \texorpdfstring{$\sim$}{\string~}\+IListener \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classIReporter_ac8104201bb71f8748952e39a13e1043e_ac8104201bb71f8748952e39a13e1043e}{notify\+Listeners}} (const \mbox{\hyperlink{structUiMsg}{Ui\+Msg}} \&obj)
+\item 
+void \mbox{\hyperlink{classIReporter_acb5055f18fc9be9d150dbe6f3514e778_acb5055f18fc9be9d150dbe6f3514e778}{notify\+Listeners}} (\mbox{\hyperlink{structUiMsg}{Ui\+Msg}} \&\&reporter)
+\item 
+void \mbox{\hyperlink{classIReporter_afee97efe68b72d86958d6075edd29427_afee97efe68b72d86958d6075edd29427}{notify\+Listeners}} (TArgs \&\&...args)
+\item 
+bool \mbox{\hyperlink{classIReporter_a20ff25f7f6d46d778d2197ebf2a7062f_a20ff25f7f6d46d778d2197ebf2a7062f}{any\+Listeners\+Present}} () const
+\item 
+int \mbox{\hyperlink{classIReporter_a808f4be43a1a2774b7fdf2091718d179_a808f4be43a1a2774b7fdf2091718d179}{num\+Listeners}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classReportingNexus}{Reporting\+Nexus}} \& \mbox{\hyperlink{classReportingNexus_a56fd3891e87dd3c034b8cfd7c84cfe16_a56fd3891e87dd3c034b8cfd7c84cfe16}{get\+Instance}} ()
+\item 
+static \mbox{\hyperlink{classReporterAccess}{Reporter\+Access}} \& \mbox{\hyperlink{classReportingNexus_afe287dd4254b46f0ff514e2aebb1104b_afe287dd4254b46f0ff514e2aebb1104b}{get\+Reporter\+Access}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classReportingNexus_ad1c92ce66fcd12b24d7a3021b4d4631b_ad1c92ce66fcd12b24d7a3021b4d4631b}{Reporting\+Nexus}} (\mbox{\hyperlink{classReporterAccess}{Reporter\+Access}} \&access)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classReporterAccess}{Reporter\+Access}} \mbox{\hyperlink{classReportingNexus_a7e24b604477f1a59fbe8e9df1ad7ef7f_a7e24b604477f1a59fbe8e9df1ad7ef7f}{s\+\_\+access\+Key}} \{\}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classIReporter}{IReporter$<$ Swap\+Chain\+Resized\+Event $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classIReporter_a2f468eee19811b61d1367363f9e34c6b_a2f468eee19811b61d1367363f9e34c6b}{remove\+This\+From\+Listeners\+List}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classNonCopyableAndNonMovable}{Non\+Copyable\+And\+Non\+Movable}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNonCopyableAndNonMovable_aa6874bb9a99fe151e8c2eda429fe5867_aa6874bb9a99fe151e8c2eda429fe5867}{\texorpdfstring{$\sim$}{\string~}\+Non\+Copyable\+And\+Non\+Movable}} () noexcept=default
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classIReporter}{IReporter$<$ UISound\+Event $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classIReporter_a2f468eee19811b61d1367363f9e34c6b_a2f468eee19811b61d1367363f9e34c6b}{remove\+This\+From\+Listeners\+List}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classIReporter}{IReporter$<$ User\+Property\+Changed $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classIReporter_a2f468eee19811b61d1367363f9e34c6b_a2f468eee19811b61d1367363f9e34c6b}{remove\+This\+From\+Listeners\+List}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classIReporter}{IReporter$<$ Ui\+Msg $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classIReporter_a2f468eee19811b61d1367363f9e34c6b_a2f468eee19811b61d1367363f9e34c6b}{remove\+This\+From\+Listeners\+List}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classReportingNexus_ad1c92ce66fcd12b24d7a3021b4d4631b_ad1c92ce66fcd12b24d7a3021b4d4631b}\index{ReportingNexus@{ReportingNexus}!ReportingNexus@{ReportingNexus}}
+\index{ReportingNexus@{ReportingNexus}!ReportingNexus@{ReportingNexus}}
+\doxysubsubsection{\texorpdfstring{ReportingNexus()}{ReportingNexus()}}
+{\footnotesize\ttfamily \label{classReportingNexus_ad1c92ce66fcd12b24d7a3021b4d4631b_ad1c92ce66fcd12b24d7a3021b4d4631b} 
+Reporting\+Nexus\+::\+Reporting\+Nexus (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classReporterAccess}{Reporter\+Access}} \&}]{access}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classReportingNexus_a7b1c65220d0e3d88c28f3cbfd005e103_a7b1c65220d0e3d88c28f3cbfd005e103}\index{ReportingNexus@{ReportingNexus}!````~ReportingNexus@{\texorpdfstring{$\sim$}{\string~}ReportingNexus}}
+\index{````~ReportingNexus@{\texorpdfstring{$\sim$}{\string~}ReportingNexus}!ReportingNexus@{ReportingNexus}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ReportingNexus()}{\string~ReportingNexus()}}
+{\footnotesize\ttfamily \label{classReportingNexus_a7b1c65220d0e3d88c28f3cbfd005e103_a7b1c65220d0e3d88c28f3cbfd005e103} 
+Reporting\+Nexus\+::\texorpdfstring{$\sim$}{\string~}\+Reporting\+Nexus (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classReportingNexus_a56fd3891e87dd3c034b8cfd7c84cfe16_a56fd3891e87dd3c034b8cfd7c84cfe16}\index{ReportingNexus@{ReportingNexus}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!ReportingNexus@{ReportingNexus}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \label{classReportingNexus_a56fd3891e87dd3c034b8cfd7c84cfe16_a56fd3891e87dd3c034b8cfd7c84cfe16} 
+\mbox{\hyperlink{classReportingNexus}{Reporting\+Nexus}} \& Reporting\+Nexus\+::get\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classReportingNexus_afe287dd4254b46f0ff514e2aebb1104b_afe287dd4254b46f0ff514e2aebb1104b}\index{ReportingNexus@{ReportingNexus}!getReporterAccess@{getReporterAccess}}
+\index{getReporterAccess@{getReporterAccess}!ReportingNexus@{ReportingNexus}}
+\doxysubsubsection{\texorpdfstring{getReporterAccess()}{getReporterAccess()}}
+{\footnotesize\ttfamily \label{classReportingNexus_afe287dd4254b46f0ff514e2aebb1104b_afe287dd4254b46f0ff514e2aebb1104b} 
+\mbox{\hyperlink{classReporterAccess}{Reporter\+Access}} \& Reporting\+Nexus\+::get\+Reporter\+Access (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classReportingNexus_a7e24b604477f1a59fbe8e9df1ad7ef7f_a7e24b604477f1a59fbe8e9df1ad7ef7f}\index{ReportingNexus@{ReportingNexus}!s\_accessKey@{s\_accessKey}}
+\index{s\_accessKey@{s\_accessKey}!ReportingNexus@{ReportingNexus}}
+\doxysubsubsection{\texorpdfstring{s\_accessKey}{s\_accessKey}}
+{\footnotesize\ttfamily \label{classReportingNexus_a7e24b604477f1a59fbe8e9df1ad7ef7f_a7e24b604477f1a59fbe8e9df1ad7ef7f} 
+\mbox{\hyperlink{classReporterAccess}{Reporter\+Access}} Reporting\+Nexus\+::s\+\_\+access\+Key \{\}\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{reporter__access_8h}{reporter\+\_\+access.\+h}}\item 
+src/\mbox{\hyperlink{reporter__access_8cpp}{reporter\+\_\+access.\+cpp}}\end{DoxyCompactItemize}

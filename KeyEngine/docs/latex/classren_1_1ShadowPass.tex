@@ -1,0 +1,369 @@
+\doxysection{ren\+::Shadow\+Pass Class Reference}
+\hypertarget{classren_1_1ShadowPass}{}\label{classren_1_1ShadowPass}\index{ren::ShadowPass@{ren::ShadowPass}}
+
+
+An offscreen Pass -\/ output only pass DSV   
+
+
+
+
+{\ttfamily \#include $<$shadow\+\_\+pass.\+h$>$}
+
+Inheritance diagram for ren\+::Shadow\+Pass\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classren_1_1ShadowPass}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structren_1_1ShadowPass_1_1GlobalsPSCB}{Globals\+PSCB}}
+\item 
+struct \mbox{\hyperlink{structren_1_1ShadowPass_1_1GlobalsVSCB}{Globals\+VSCB}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classren_1_1ShadowPass_a89e7feb05baff9858c8b91edcb5a5d51_a89e7feb05baff9858c8b91edcb5a5d51}{Shadow\+Pass}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const std\+::string \&name, const unsigned shadow\+Map\+Rez=\mbox{\hyperlink{classren_1_1ShadowPass_a7f7b6d1fa45f819dd55562fc55886bdc_a7f7b6d1fa45f819dd55562fc55886bdc}{s\+\_\+shadow\+Map\+Resolution}})
+\item 
+void \mbox{\hyperlink{classren_1_1ShadowPass_a31a85426ffac3f700c0b3c187b0567af_a31a85426ffac3f700c0b3c187b0567af}{run}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) const cond\+\_\+noex override
+\begin{DoxyCompactList}\small\item\em update the light\textquotesingle{}s -\/camera-\/ view Proj Matrix for projective texture shadow cube mapping \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classren_1_1ShadowPass_a90d4ac05ba7d7f2cb3ae06ce0ffae448_a90d4ac05ba7d7f2cb3ae06ce0ffae448}{bind\+Shadow\+Casting\+Lights}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const std\+::vector$<$ \mbox{\hyperlink{classILightSource}{ILight\+Source}} \texorpdfstring{$\ast$}{*} $>$ \&shadow\+Casting\+Lights)
+\begin{DoxyCompactList}\small\item\em populate shadow casting lights for this frame and setup their offscreen shadow maps for rendering into \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classren_1_1ShadowPass_abfd441eaa17f14d2f82fea433806a4f4_abfd441eaa17f14d2f82fea433806a4f4}{dump\+Shadow\+Map}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const std\+::string \&path) const
+\begin{DoxyCompactList}\small\item\em currently only dumping shadow map of the first registered shadow casting light \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classren_1_1ShadowPass_a88f8d3b07f57c1d6a98a78fec2e68b5f_a88f8d3b07f57c1d6a98a78fec2e68b5f}{dump\+Shadow\+Cube\+Map}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const std\+::string \&path) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classren_1_1RenderQueuePass}{ren\+::\+Render\+Queue\+Pass}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classren_1_1RenderQueuePass_a3087e6d681a46755bfe9397cabd5e0c3_a3087e6d681a46755bfe9397cabd5e0c3}{Render\+Queue\+Pass}} (const std\+::string \&name, const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIBindable}{IBindable}} $>$ $>$ \&bindables=\{\}, const bool b\+Transparent\+Mesh\+Pass=false)
+\item 
+void \mbox{\hyperlink{classren_1_1RenderQueuePass_a9e30ba0fcf0e1f184445ba918438687b_a9e30ba0fcf0e1f184445ba918438687b}{add\+Job}} (\mbox{\hyperlink{classren_1_1Job}{Job}} job, const float mesh\+Distance\+From\+Active\+Camera) noexcept
+\item 
+void \mbox{\hyperlink{classren_1_1RenderQueuePass_a23b96814aa56f5c6a2b6806ad848e4fe_a23b96814aa56f5c6a2b6806ad848e4fe}{reset}} () cond\+\_\+noex override
+\item 
+size\+\_\+t \mbox{\hyperlink{classren_1_1RenderQueuePass_a0343fd2e2aaad7b646381a9713c7202c_a0343fd2e2aaad7b646381a9713c7202c}{get\+Num\+Meshes}} () const noexcept
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classren_1_1IPass}{ren\+::\+IPass}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classren_1_1IPass_a72360515966748b13f592095c12f58fa_a72360515966748b13f592095c12f58fa}{IPass}} (const std\+::string \&name, bool b\+Active=true) noexcept
+\item 
+virtual \mbox{\hyperlink{classren_1_1IPass_ac0132ac18bad1d6379a9d27e3d25bc18_ac0132ac18bad1d6379a9d27e3d25bc18}{\texorpdfstring{$\sim$}{\string~}\+IPass}} () noexcept
+\item 
+const std\+::string \& \mbox{\hyperlink{classren_1_1IPass_a3c9f7768f492d9a50371acec9b61f12b_a3c9f7768f492d9a50371acec9b61f12b}{get\+Name}} () const noexcept
+\item 
+const std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classren_1_1IBinder}{IBinder}} $>$ $>$ \& \mbox{\hyperlink{classren_1_1IPass_aebd5aa69455727600d0e979906a0a111_aebd5aa69455727600d0e979906a0a111}{get\+Binders}} () const
+\item 
+const std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classren_1_1ILinker}{ILinker}} $>$ $>$ \& \mbox{\hyperlink{classren_1_1IPass_ae0910189678e800c86f665bca8c88a03_ae0910189678e800c86f665bca8c88a03}{get\+Linkers}} () const
+\item 
+\mbox{\hyperlink{classren_1_1IBinder}{IBinder}} \& \mbox{\hyperlink{classren_1_1IPass_a6cffed1b315846ece319e4ce5f508843_a6cffed1b315846ece319e4ce5f508843}{get\+Binder}} (const std\+::string \&name) const
+\item 
+\mbox{\hyperlink{classren_1_1ILinker}{ILinker}} \& \mbox{\hyperlink{classren_1_1IPass_a171eeb96584abbbbe1f158fbca5628f0_a171eeb96584abbbbe1f158fbca5628f0}{get\+Linker}} (const std\+::string \&name) const
+\item 
+void \mbox{\hyperlink{classren_1_1IPass_a261403c4ce33bc13fe3b5e0487c79664_a261403c4ce33bc13fe3b5e0487c79664}{setup\+Binder\+Target}} (const std\+::string \&binder\+Name, const std\+::string \&target\+Pass\+Name, const std\+::string \&target\+Pass\+Linker\+Name)
+\begin{DoxyCompactList}\small\item\em link a \doxylink{classren_1_1BindableBinder}{Bindable\+Binder} from this Pass to a Linker of another target\+Pass \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classren_1_1IPass_ae8d7a067929cabbe900ec89643cbcdba_ae8d7a067929cabbe900ec89643cbcdba}{set\+Active}} (const bool b\+Active) noexcept
+\item 
+const bool \mbox{\hyperlink{classren_1_1IPass_a7ef6e9979f151480bc34dca08b19bec1_a7ef6e9979f151480bc34dca08b19bec1}{is\+Active}} () const noexcept
+\item 
+virtual void \mbox{\hyperlink{classren_1_1IPass_a589910e72e67f1d1ec37faea4d840074_a589910e72e67f1d1ec37faea4d840074}{recreate\+Rtvs\+And\+Dsvs}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static unsigned \mbox{\hyperlink{classren_1_1ShadowPass_abe2e960e1ee7226dc547ac67616aecc1_abe2e960e1ee7226dc547ac67616aecc1}{get\+Resolution}} () noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classren_1_1ShadowPass_a09354ae41187122545fb29cf0d7794fd_a09354ae41187122545fb29cf0d7794fd}{Lights\+VSCB}} = \mbox{\hyperlink{structILightSource_1_1LightVSCB}{ILight\+Source\+::\+Light\+VSCB}}\mbox{[}\mbox{\hyperlink{classren_1_1ShadowPass_a78befc9467180544b3e1b7ea9c6db0c1_a78befc9467180544b3e1b7ea9c6db0c1}{s\+\_\+max\+Shadow\+Casting\+Lights}}\mbox{]}
+\item 
+using \mbox{\hyperlink{classren_1_1ShadowPass_afd94955d277d6d9df9571863056cbe55_afd94955d277d6d9df9571863056cbe55}{Lights\+PSCB}} = \mbox{\hyperlink{structILightSource_1_1LightPSCB}{ILight\+Source\+::\+Light\+PSCB}}\mbox{[}\mbox{\hyperlink{classren_1_1ShadowPass_a78befc9467180544b3e1b7ea9c6db0c1_a78befc9467180544b3e1b7ea9c6db0c1}{s\+\_\+max\+Shadow\+Casting\+Lights}}\mbox{]}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classren_1_1ShadowPass_a2dcba5ef918addeb7a105cce0fe45fe0_a2dcba5ef918addeb7a105cce0fe45fe0}{bind\+Global\+CBs}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) cond\+\_\+noex
+\item 
+void \mbox{\hyperlink{classren_1_1ShadowPass_a3dfc4bceb738b9e479457502373f6b38_a3dfc4bceb738b9e479457502373f6b38}{bind\+Light\+CBs}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) cond\+\_\+noex
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVertexShaderConstantBuffer}{Vertex\+Shader\+Constant\+Buffer}}$<$ \mbox{\hyperlink{structren_1_1ShadowPass_1_1GlobalsVSCB}{Globals\+VSCB}} $>$ \mbox{\hyperlink{classren_1_1ShadowPass_a0c0dd1bd05256ed899612d08eea83e25_a0c0dd1bd05256ed899612d08eea83e25}{m\+\_\+globals\+Vscb}}
+\item 
+\mbox{\hyperlink{classPixelShaderConstantBuffer}{Pixel\+Shader\+Constant\+Buffer}}$<$ \mbox{\hyperlink{structren_1_1ShadowPass_1_1GlobalsPSCB}{Globals\+PSCB}} $>$ \mbox{\hyperlink{classren_1_1ShadowPass_a5166c73b0a29b04d5e50dfd998c48628_a5166c73b0a29b04d5e50dfd998c48628}{m\+\_\+globals\+Pscb}}
+\item 
+\mbox{\hyperlink{classVertexShaderConstantBuffer}{Vertex\+Shader\+Constant\+Buffer}}$<$ \mbox{\hyperlink{classren_1_1ShadowPass_a09354ae41187122545fb29cf0d7794fd_a09354ae41187122545fb29cf0d7794fd}{Lights\+VSCB}} $>$ \mbox{\hyperlink{classren_1_1ShadowPass_aed4d50a7bfde597dc4247ce3ecaa6ada_aed4d50a7bfde597dc4247ce3ecaa6ada}{m\+\_\+vscb}}
+\item 
+\mbox{\hyperlink{classPixelShaderConstantBuffer}{Pixel\+Shader\+Constant\+Buffer}}$<$ \mbox{\hyperlink{classren_1_1ShadowPass_afd94955d277d6d9df9571863056cbe55_afd94955d277d6d9df9571863056cbe55}{Lights\+PSCB}} $>$ \mbox{\hyperlink{classren_1_1ShadowPass_adccb30c5bb3a2e7ade417c7157b83ca4_adccb30c5bb3a2e7ade417c7157b83ca4}{m\+\_\+pscb}}
+\item 
+std\+::vector$<$ Direct\+X\+::\+XMVECTOR $>$ \mbox{\hyperlink{classren_1_1ShadowPass_a9352a3d27813950414fbed5a9ea476c7_a9352a3d27813950414fbed5a9ea476c7}{m\+\_\+camera\+Directions}} \{6\}
+\item 
+std\+::vector$<$ Direct\+X\+::\+XMVECTOR $>$ \mbox{\hyperlink{classren_1_1ShadowPass_a892a877625b3f74424b05cfe66c84603_a892a877625b3f74424b05cfe66c84603}{m\+\_\+camera\+Ups}} \{6\}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classILightSource}{ILight\+Source}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classren_1_1ShadowPass_ad8703170561e0605426d5e43ecc96324_ad8703170561e0605426d5e43ecc96324}{m\+\_\+shadow\+Casting\+Lights}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTextureArrayOffscreenDS}{Texture\+Array\+Offscreen\+DS}} $>$ \mbox{\hyperlink{classren_1_1ShadowPass_af4f3a07a55a116c015e4d5cf7b704343_af4f3a07a55a116c015e4d5cf7b704343}{m\+\_\+p\+Offscreen\+Dsv\+Map\+Array}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCubeTextureArrayOffscreenDS}{Cube\+Texture\+Array\+Offscreen\+DS}} $>$ \mbox{\hyperlink{classren_1_1ShadowPass_a385c01dc0ae5345d932f14e54846a515_a385c01dc0ae5345d932f14e54846a515}{m\+\_\+p\+Offscreen\+Dsv\+Cubemap\+Array}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr unsigned \mbox{\hyperlink{classren_1_1ShadowPass_a78befc9467180544b3e1b7ea9c6db0c1_a78befc9467180544b3e1b7ea9c6db0c1}{s\+\_\+max\+Shadow\+Casting\+Lights}} = 16u
+\item 
+static constexpr unsigned \mbox{\hyperlink{classren_1_1ShadowPass_a0a9da504ea83b9478583b9fc996a56be_a0a9da504ea83b9478583b9fc996a56be}{s\+\_\+globals\+Vscb\+Slot}} = 1u
+\item 
+static constexpr unsigned \mbox{\hyperlink{classren_1_1ShadowPass_a0f684ab6eadd250671eeff37319d7ac1_a0f684ab6eadd250671eeff37319d7ac1}{s\+\_\+globals\+Pscb\+Slot}} = 1u
+\item 
+static constexpr unsigned \mbox{\hyperlink{classren_1_1ShadowPass_ab2d17ab137ff24dfd2e7f219b1da5bfd_ab2d17ab137ff24dfd2e7f219b1da5bfd}{s\+\_\+light\+Array\+Vertex\+Shader\+CBSlot}} = 2u
+\item 
+static constexpr unsigned \mbox{\hyperlink{classren_1_1ShadowPass_aabd9a71155ac410aa5a12a732b48a762_aabd9a71155ac410aa5a12a732b48a762}{s\+\_\+light\+Array\+Pixel\+Shader\+CBSlot}} = 2u
+\item 
+static constexpr unsigned \mbox{\hyperlink{classren_1_1ShadowPass_affb066b0b62365f2371369da5e7b164f_affb066b0b62365f2371369da5e7b164f}{s\+\_\+shadow\+Map\+Array\+Slot}} = 3u
+\item 
+static constexpr unsigned \mbox{\hyperlink{classren_1_1ShadowPass_a57668a13b79c7b97a93535fc9f328e0e_a57668a13b79c7b97a93535fc9f328e0e}{s\+\_\+shadow\+Cube\+Map\+Array\+Slot}} = 4u
+\item 
+static unsigned \mbox{\hyperlink{classren_1_1ShadowPass_a7f7b6d1fa45f819dd55562fc55886bdc_a7f7b6d1fa45f819dd55562fc55886bdc}{s\+\_\+shadow\+Map\+Resolution}} = 1024u
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classren_1_1IBindablePass}{ren\+::\+IBindable\+Pass}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classren_1_1IBindablePass_a3e5e7d5dbe096d11031a8d23050c12b6_a3e5e7d5dbe096d11031a8d23050c12b6}{IBindable\+Pass}} (const std\+::string \&name, const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIBindable}{IBindable}} $>$ $>$ \&bindables=\{\})
+\item 
+void \mbox{\hyperlink{classren_1_1IBindablePass_af7205f7049013c5d02ec74952f5a0d05_af7205f7049013c5d02ec74952f5a0d05}{add\+Bindable}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIBindable}{IBindable}} $>$ bindable) noexcept
+\begin{DoxyCompactList}\small\item\em add Bindables that will be shared by all meshes in this Pass \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classren_1_1IBindablePass_ab47b1d5abffbf0aaeb44ae3968942503_ab47b1d5abffbf0aaeb44ae3968942503}{bind}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) const cond\+\_\+noex
+\begin{DoxyCompactList}\small\item\em bind RTV or DSV and other bindables shared by all Pass objects \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classren_1_1IBindablePass_ae2b3e270005268576afb65f16a9545a7_ae2b3e270005268576afb65f16a9545a7}{validate}} () override
+\begin{DoxyCompactList}\small\item\em validate binders are linked to their linkers \end{DoxyCompactList}\item 
+{\footnotesize template$<$class T $>$ }\\void \mbox{\hyperlink{classren_1_1IBindablePass_a5d189176a206854e34a9c168a0aad74a_a5d189176a206854e34a9c168a0aad74a}{add\+Bindable\+Binder\+Using\+Container\+Index}} (const std\+::string \&binder\+Name)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classren_1_1IPass}{ren\+::\+IPass}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classren_1_1IPass_ab8c6a6dae673214dccd302aea9ce6e72_ab8c6a6dae673214dccd302aea9ce6e72}{add\+Binder}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classren_1_1IBinder}{IBinder}} $>$ p\+Binder)
+\item 
+void \mbox{\hyperlink{classren_1_1IPass_aa9c50563c1bd98e1c377d819d9e2dc09_aa9c50563c1bd98e1c377d819d9e2dc09}{add\+Linker}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classren_1_1ILinker}{ILinker}} $>$ p\+Linker)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classren_1_1IBindablePass}{ren\+::\+IBindable\+Pass}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIRenderTargetView}{IRender\+Target\+View}} $>$ \mbox{\hyperlink{classren_1_1IBindablePass_a3994a46ac4e6f7d96c7ebe8b2d9630cb_a3994a46ac4e6f7d96c7ebe8b2d9630cb}{m\+\_\+p\+Rtv}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIDepthStencilView}{IDepth\+Stencil\+View}} $>$ \mbox{\hyperlink{classren_1_1IBindablePass_a8c5f88422771fc4b7ceb1dca77219cfe_a8c5f88422771fc4b7ceb1dca77219cfe}{m\+\_\+p\+Dsv}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An offscreen Pass -\/ output only pass DSV  
+
+=============================================================
+
+\begin{DoxyAuthor}{Author}
+Key\+C0de 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/10/03 10\+:30 \doxysubsection*{}
+\end{DoxyDate}
+
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classren_1_1ShadowPass_afd94955d277d6d9df9571863056cbe55_afd94955d277d6d9df9571863056cbe55}\index{ren::ShadowPass@{ren::ShadowPass}!LightsPSCB@{LightsPSCB}}
+\index{LightsPSCB@{LightsPSCB}!ren::ShadowPass@{ren::ShadowPass}}
+\doxysubsubsection{\texorpdfstring{LightsPSCB}{LightsPSCB}}
+{\footnotesize\ttfamily \label{classren_1_1ShadowPass_afd94955d277d6d9df9571863056cbe55_afd94955d277d6d9df9571863056cbe55} 
+using \mbox{\hyperlink{classren_1_1ShadowPass_afd94955d277d6d9df9571863056cbe55_afd94955d277d6d9df9571863056cbe55}{ren\+::\+Shadow\+Pass\+::\+Lights\+PSCB}} = \mbox{\hyperlink{structILightSource_1_1LightPSCB}{ILight\+Source\+::\+Light\+PSCB}}\mbox{[}\mbox{\hyperlink{classren_1_1ShadowPass_a78befc9467180544b3e1b7ea9c6db0c1_a78befc9467180544b3e1b7ea9c6db0c1}{s\+\_\+max\+Shadow\+Casting\+Lights}}\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classren_1_1ShadowPass_a09354ae41187122545fb29cf0d7794fd_a09354ae41187122545fb29cf0d7794fd}\index{ren::ShadowPass@{ren::ShadowPass}!LightsVSCB@{LightsVSCB}}
+\index{LightsVSCB@{LightsVSCB}!ren::ShadowPass@{ren::ShadowPass}}
+\doxysubsubsection{\texorpdfstring{LightsVSCB}{LightsVSCB}}
+{\footnotesize\ttfamily \label{classren_1_1ShadowPass_a09354ae41187122545fb29cf0d7794fd_a09354ae41187122545fb29cf0d7794fd} 
+using \mbox{\hyperlink{classren_1_1ShadowPass_a09354ae41187122545fb29cf0d7794fd_a09354ae41187122545fb29cf0d7794fd}{ren\+::\+Shadow\+Pass\+::\+Lights\+VSCB}} = \mbox{\hyperlink{structILightSource_1_1LightVSCB}{ILight\+Source\+::\+Light\+VSCB}}\mbox{[}\mbox{\hyperlink{classren_1_1ShadowPass_a78befc9467180544b3e1b7ea9c6db0c1_a78befc9467180544b3e1b7ea9c6db0c1}{s\+\_\+max\+Shadow\+Casting\+Lights}}\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classren_1_1ShadowPass_a89e7feb05baff9858c8b91edcb5a5d51_a89e7feb05baff9858c8b91edcb5a5d51}\index{ren::ShadowPass@{ren::ShadowPass}!ShadowPass@{ShadowPass}}
+\index{ShadowPass@{ShadowPass}!ren::ShadowPass@{ren::ShadowPass}}
+\doxysubsubsection{\texorpdfstring{ShadowPass()}{ShadowPass()}}
+{\footnotesize\ttfamily \label{classren_1_1ShadowPass_a89e7feb05baff9858c8b91edcb5a5d51_a89e7feb05baff9858c8b91edcb5a5d51} 
+ren\+::\+Shadow\+Pass\+::\+Shadow\+Pass (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const std\+::string \&}]{name}{, }\item[{const unsigned}]{shadow\+Map\+Rez}{ = {\ttfamily \mbox{\hyperlink{classren_1_1ShadowPass_a7f7b6d1fa45f819dd55562fc55886bdc_a7f7b6d1fa45f819dd55562fc55886bdc}{s\+\_\+shadow\+Map\+Resolution}}}}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classren_1_1ShadowPass_a2dcba5ef918addeb7a105cce0fe45fe0_a2dcba5ef918addeb7a105cce0fe45fe0}\index{ren::ShadowPass@{ren::ShadowPass}!bindGlobalCBs@{bindGlobalCBs}}
+\index{bindGlobalCBs@{bindGlobalCBs}!ren::ShadowPass@{ren::ShadowPass}}
+\doxysubsubsection{\texorpdfstring{bindGlobalCBs()}{bindGlobalCBs()}}
+{\footnotesize\ttfamily \label{classren_1_1ShadowPass_a2dcba5ef918addeb7a105cce0fe45fe0_a2dcba5ef918addeb7a105cce0fe45fe0} 
+void ren\+::\+Shadow\+Pass\+::bind\+Global\+CBs (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classren_1_1ShadowPass_a3dfc4bceb738b9e479457502373f6b38_a3dfc4bceb738b9e479457502373f6b38}\index{ren::ShadowPass@{ren::ShadowPass}!bindLightCBs@{bindLightCBs}}
+\index{bindLightCBs@{bindLightCBs}!ren::ShadowPass@{ren::ShadowPass}}
+\doxysubsubsection{\texorpdfstring{bindLightCBs()}{bindLightCBs()}}
+{\footnotesize\ttfamily \label{classren_1_1ShadowPass_a3dfc4bceb738b9e479457502373f6b38_a3dfc4bceb738b9e479457502373f6b38} 
+void ren\+::\+Shadow\+Pass\+::bind\+Light\+CBs (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classren_1_1ShadowPass_a90d4ac05ba7d7f2cb3ae06ce0ffae448_a90d4ac05ba7d7f2cb3ae06ce0ffae448}\index{ren::ShadowPass@{ren::ShadowPass}!bindShadowCastingLights@{bindShadowCastingLights}}
+\index{bindShadowCastingLights@{bindShadowCastingLights}!ren::ShadowPass@{ren::ShadowPass}}
+\doxysubsubsection{\texorpdfstring{bindShadowCastingLights()}{bindShadowCastingLights()}}
+{\footnotesize\ttfamily \label{classren_1_1ShadowPass_a90d4ac05ba7d7f2cb3ae06ce0ffae448_a90d4ac05ba7d7f2cb3ae06ce0ffae448} 
+void ren\+::\+Shadow\+Pass\+::bind\+Shadow\+Casting\+Lights (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const std\+::vector$<$ \mbox{\hyperlink{classILightSource}{ILight\+Source}} \texorpdfstring{$\ast$}{*} $>$ \&}]{shadow\+Casting\+Lights}{}\end{DoxyParamCaption})}
+
+
+
+populate shadow casting lights for this frame and setup their offscreen shadow maps for rendering into 
+
+\Hypertarget{classren_1_1ShadowPass_a88f8d3b07f57c1d6a98a78fec2e68b5f_a88f8d3b07f57c1d6a98a78fec2e68b5f}\index{ren::ShadowPass@{ren::ShadowPass}!dumpShadowCubeMap@{dumpShadowCubeMap}}
+\index{dumpShadowCubeMap@{dumpShadowCubeMap}!ren::ShadowPass@{ren::ShadowPass}}
+\doxysubsubsection{\texorpdfstring{dumpShadowCubeMap()}{dumpShadowCubeMap()}}
+{\footnotesize\ttfamily \label{classren_1_1ShadowPass_a88f8d3b07f57c1d6a98a78fec2e68b5f_a88f8d3b07f57c1d6a98a78fec2e68b5f} 
+void ren\+::\+Shadow\+Pass\+::dump\+Shadow\+Cube\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const std\+::string \&}]{path}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classren_1_1ShadowPass_abfd441eaa17f14d2f82fea433806a4f4_abfd441eaa17f14d2f82fea433806a4f4}\index{ren::ShadowPass@{ren::ShadowPass}!dumpShadowMap@{dumpShadowMap}}
+\index{dumpShadowMap@{dumpShadowMap}!ren::ShadowPass@{ren::ShadowPass}}
+\doxysubsubsection{\texorpdfstring{dumpShadowMap()}{dumpShadowMap()}}
+{\footnotesize\ttfamily \label{classren_1_1ShadowPass_abfd441eaa17f14d2f82fea433806a4f4_abfd441eaa17f14d2f82fea433806a4f4} 
+void ren\+::\+Shadow\+Pass\+::dump\+Shadow\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const std\+::string \&}]{path}{}\end{DoxyParamCaption}) const}
+
+
+
+currently only dumping shadow map of the first registered shadow casting light 
+
+\Hypertarget{classren_1_1ShadowPass_abe2e960e1ee7226dc547ac67616aecc1_abe2e960e1ee7226dc547ac67616aecc1}\index{ren::ShadowPass@{ren::ShadowPass}!getResolution@{getResolution}}
+\index{getResolution@{getResolution}!ren::ShadowPass@{ren::ShadowPass}}
+\doxysubsubsection{\texorpdfstring{getResolution()}{getResolution()}}
+{\footnotesize\ttfamily \label{classren_1_1ShadowPass_abe2e960e1ee7226dc547ac67616aecc1_abe2e960e1ee7226dc547ac67616aecc1} 
+unsigned ren\+::\+Shadow\+Pass\+::get\+Resolution (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classren_1_1ShadowPass_a31a85426ffac3f700c0b3c187b0567af_a31a85426ffac3f700c0b3c187b0567af}\index{ren::ShadowPass@{ren::ShadowPass}!run@{run}}
+\index{run@{run}!ren::ShadowPass@{ren::ShadowPass}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily \label{classren_1_1ShadowPass_a31a85426ffac3f700c0b3c187b0567af_a31a85426ffac3f700c0b3c187b0567af} 
+void ren\+::\+Shadow\+Pass\+::run (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+update the light\textquotesingle{}s -\/camera-\/ view Proj Matrix for projective texture shadow cube mapping 
+
+
+
+Reimplemented from \mbox{\hyperlink{classren_1_1RenderQueuePass_a8c01bb14c9e11b7e9c328ddf6cc39af2_a8c01bb14c9e11b7e9c328ddf6cc39af2}{ren\+::\+Render\+Queue\+Pass}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classren_1_1ShadowPass_a9352a3d27813950414fbed5a9ea476c7_a9352a3d27813950414fbed5a9ea476c7}\index{ren::ShadowPass@{ren::ShadowPass}!m\_cameraDirections@{m\_cameraDirections}}
+\index{m\_cameraDirections@{m\_cameraDirections}!ren::ShadowPass@{ren::ShadowPass}}
+\doxysubsubsection{\texorpdfstring{m\_cameraDirections}{m\_cameraDirections}}
+{\footnotesize\ttfamily \label{classren_1_1ShadowPass_a9352a3d27813950414fbed5a9ea476c7_a9352a3d27813950414fbed5a9ea476c7} 
+std\+::vector$<$Direct\+X\+::\+XMVECTOR$>$ ren\+::\+Shadow\+Pass\+::m\+\_\+camera\+Directions \{6\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classren_1_1ShadowPass_a892a877625b3f74424b05cfe66c84603_a892a877625b3f74424b05cfe66c84603}\index{ren::ShadowPass@{ren::ShadowPass}!m\_cameraUps@{m\_cameraUps}}
+\index{m\_cameraUps@{m\_cameraUps}!ren::ShadowPass@{ren::ShadowPass}}
+\doxysubsubsection{\texorpdfstring{m\_cameraUps}{m\_cameraUps}}
+{\footnotesize\ttfamily \label{classren_1_1ShadowPass_a892a877625b3f74424b05cfe66c84603_a892a877625b3f74424b05cfe66c84603} 
+std\+::vector$<$Direct\+X\+::\+XMVECTOR$>$ ren\+::\+Shadow\+Pass\+::m\+\_\+camera\+Ups \{6\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classren_1_1ShadowPass_a5166c73b0a29b04d5e50dfd998c48628_a5166c73b0a29b04d5e50dfd998c48628}\index{ren::ShadowPass@{ren::ShadowPass}!m\_globalsPscb@{m\_globalsPscb}}
+\index{m\_globalsPscb@{m\_globalsPscb}!ren::ShadowPass@{ren::ShadowPass}}
+\doxysubsubsection{\texorpdfstring{m\_globalsPscb}{m\_globalsPscb}}
+{\footnotesize\ttfamily \label{classren_1_1ShadowPass_a5166c73b0a29b04d5e50dfd998c48628_a5166c73b0a29b04d5e50dfd998c48628} 
+\mbox{\hyperlink{classPixelShaderConstantBuffer}{Pixel\+Shader\+Constant\+Buffer}}$<$\mbox{\hyperlink{structren_1_1ShadowPass_1_1GlobalsPSCB}{Globals\+PSCB}}$>$ ren\+::\+Shadow\+Pass\+::m\+\_\+globals\+Pscb\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classren_1_1ShadowPass_a0c0dd1bd05256ed899612d08eea83e25_a0c0dd1bd05256ed899612d08eea83e25}\index{ren::ShadowPass@{ren::ShadowPass}!m\_globalsVscb@{m\_globalsVscb}}
+\index{m\_globalsVscb@{m\_globalsVscb}!ren::ShadowPass@{ren::ShadowPass}}
+\doxysubsubsection{\texorpdfstring{m\_globalsVscb}{m\_globalsVscb}}
+{\footnotesize\ttfamily \label{classren_1_1ShadowPass_a0c0dd1bd05256ed899612d08eea83e25_a0c0dd1bd05256ed899612d08eea83e25} 
+\mbox{\hyperlink{classVertexShaderConstantBuffer}{Vertex\+Shader\+Constant\+Buffer}}$<$\mbox{\hyperlink{structren_1_1ShadowPass_1_1GlobalsVSCB}{Globals\+VSCB}}$>$ ren\+::\+Shadow\+Pass\+::m\+\_\+globals\+Vscb\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classren_1_1ShadowPass_a385c01dc0ae5345d932f14e54846a515_a385c01dc0ae5345d932f14e54846a515}\index{ren::ShadowPass@{ren::ShadowPass}!m\_pOffscreenDsvCubemapArray@{m\_pOffscreenDsvCubemapArray}}
+\index{m\_pOffscreenDsvCubemapArray@{m\_pOffscreenDsvCubemapArray}!ren::ShadowPass@{ren::ShadowPass}}
+\doxysubsubsection{\texorpdfstring{m\_pOffscreenDsvCubemapArray}{m\_pOffscreenDsvCubemapArray}}
+{\footnotesize\ttfamily \label{classren_1_1ShadowPass_a385c01dc0ae5345d932f14e54846a515_a385c01dc0ae5345d932f14e54846a515} 
+std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classCubeTextureArrayOffscreenDS}{Cube\+Texture\+Array\+Offscreen\+DS}}$>$ ren\+::\+Shadow\+Pass\+::m\+\_\+p\+Offscreen\+Dsv\+Cubemap\+Array\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classren_1_1ShadowPass_af4f3a07a55a116c015e4d5cf7b704343_af4f3a07a55a116c015e4d5cf7b704343}\index{ren::ShadowPass@{ren::ShadowPass}!m\_pOffscreenDsvMapArray@{m\_pOffscreenDsvMapArray}}
+\index{m\_pOffscreenDsvMapArray@{m\_pOffscreenDsvMapArray}!ren::ShadowPass@{ren::ShadowPass}}
+\doxysubsubsection{\texorpdfstring{m\_pOffscreenDsvMapArray}{m\_pOffscreenDsvMapArray}}
+{\footnotesize\ttfamily \label{classren_1_1ShadowPass_af4f3a07a55a116c015e4d5cf7b704343_af4f3a07a55a116c015e4d5cf7b704343} 
+std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classTextureArrayOffscreenDS}{Texture\+Array\+Offscreen\+DS}}$>$ ren\+::\+Shadow\+Pass\+::m\+\_\+p\+Offscreen\+Dsv\+Map\+Array\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classren_1_1ShadowPass_adccb30c5bb3a2e7ade417c7157b83ca4_adccb30c5bb3a2e7ade417c7157b83ca4}\index{ren::ShadowPass@{ren::ShadowPass}!m\_pscb@{m\_pscb}}
+\index{m\_pscb@{m\_pscb}!ren::ShadowPass@{ren::ShadowPass}}
+\doxysubsubsection{\texorpdfstring{m\_pscb}{m\_pscb}}
+{\footnotesize\ttfamily \label{classren_1_1ShadowPass_adccb30c5bb3a2e7ade417c7157b83ca4_adccb30c5bb3a2e7ade417c7157b83ca4} 
+\mbox{\hyperlink{classPixelShaderConstantBuffer}{Pixel\+Shader\+Constant\+Buffer}}$<$\mbox{\hyperlink{classren_1_1ShadowPass_afd94955d277d6d9df9571863056cbe55_afd94955d277d6d9df9571863056cbe55}{Lights\+PSCB}}$>$ ren\+::\+Shadow\+Pass\+::m\+\_\+pscb\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classren_1_1ShadowPass_ad8703170561e0605426d5e43ecc96324_ad8703170561e0605426d5e43ecc96324}\index{ren::ShadowPass@{ren::ShadowPass}!m\_shadowCastingLights@{m\_shadowCastingLights}}
+\index{m\_shadowCastingLights@{m\_shadowCastingLights}!ren::ShadowPass@{ren::ShadowPass}}
+\doxysubsubsection{\texorpdfstring{m\_shadowCastingLights}{m\_shadowCastingLights}}
+{\footnotesize\ttfamily \label{classren_1_1ShadowPass_ad8703170561e0605426d5e43ecc96324_ad8703170561e0605426d5e43ecc96324} 
+std\+::vector$<$\mbox{\hyperlink{classILightSource}{ILight\+Source}}\texorpdfstring{$\ast$}{*}$>$ ren\+::\+Shadow\+Pass\+::m\+\_\+shadow\+Casting\+Lights\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classren_1_1ShadowPass_aed4d50a7bfde597dc4247ce3ecaa6ada_aed4d50a7bfde597dc4247ce3ecaa6ada}\index{ren::ShadowPass@{ren::ShadowPass}!m\_vscb@{m\_vscb}}
+\index{m\_vscb@{m\_vscb}!ren::ShadowPass@{ren::ShadowPass}}
+\doxysubsubsection{\texorpdfstring{m\_vscb}{m\_vscb}}
+{\footnotesize\ttfamily \label{classren_1_1ShadowPass_aed4d50a7bfde597dc4247ce3ecaa6ada_aed4d50a7bfde597dc4247ce3ecaa6ada} 
+\mbox{\hyperlink{classVertexShaderConstantBuffer}{Vertex\+Shader\+Constant\+Buffer}}$<$\mbox{\hyperlink{classren_1_1ShadowPass_a09354ae41187122545fb29cf0d7794fd_a09354ae41187122545fb29cf0d7794fd}{Lights\+VSCB}}$>$ ren\+::\+Shadow\+Pass\+::m\+\_\+vscb\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classren_1_1ShadowPass_a0f684ab6eadd250671eeff37319d7ac1_a0f684ab6eadd250671eeff37319d7ac1}\index{ren::ShadowPass@{ren::ShadowPass}!s\_globalsPscbSlot@{s\_globalsPscbSlot}}
+\index{s\_globalsPscbSlot@{s\_globalsPscbSlot}!ren::ShadowPass@{ren::ShadowPass}}
+\doxysubsubsection{\texorpdfstring{s\_globalsPscbSlot}{s\_globalsPscbSlot}}
+{\footnotesize\ttfamily \label{classren_1_1ShadowPass_a0f684ab6eadd250671eeff37319d7ac1_a0f684ab6eadd250671eeff37319d7ac1} 
+unsigned ren\+::\+Shadow\+Pass\+::s\+\_\+globals\+Pscb\+Slot = 1u\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+\Hypertarget{classren_1_1ShadowPass_a0a9da504ea83b9478583b9fc996a56be_a0a9da504ea83b9478583b9fc996a56be}\index{ren::ShadowPass@{ren::ShadowPass}!s\_globalsVscbSlot@{s\_globalsVscbSlot}}
+\index{s\_globalsVscbSlot@{s\_globalsVscbSlot}!ren::ShadowPass@{ren::ShadowPass}}
+\doxysubsubsection{\texorpdfstring{s\_globalsVscbSlot}{s\_globalsVscbSlot}}
+{\footnotesize\ttfamily \label{classren_1_1ShadowPass_a0a9da504ea83b9478583b9fc996a56be_a0a9da504ea83b9478583b9fc996a56be} 
+unsigned ren\+::\+Shadow\+Pass\+::s\+\_\+globals\+Vscb\+Slot = 1u\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+\Hypertarget{classren_1_1ShadowPass_aabd9a71155ac410aa5a12a732b48a762_aabd9a71155ac410aa5a12a732b48a762}\index{ren::ShadowPass@{ren::ShadowPass}!s\_lightArrayPixelShaderCBSlot@{s\_lightArrayPixelShaderCBSlot}}
+\index{s\_lightArrayPixelShaderCBSlot@{s\_lightArrayPixelShaderCBSlot}!ren::ShadowPass@{ren::ShadowPass}}
+\doxysubsubsection{\texorpdfstring{s\_lightArrayPixelShaderCBSlot}{s\_lightArrayPixelShaderCBSlot}}
+{\footnotesize\ttfamily \label{classren_1_1ShadowPass_aabd9a71155ac410aa5a12a732b48a762_aabd9a71155ac410aa5a12a732b48a762} 
+unsigned ren\+::\+Shadow\+Pass\+::s\+\_\+light\+Array\+Pixel\+Shader\+CBSlot = 2u\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+\Hypertarget{classren_1_1ShadowPass_ab2d17ab137ff24dfd2e7f219b1da5bfd_ab2d17ab137ff24dfd2e7f219b1da5bfd}\index{ren::ShadowPass@{ren::ShadowPass}!s\_lightArrayVertexShaderCBSlot@{s\_lightArrayVertexShaderCBSlot}}
+\index{s\_lightArrayVertexShaderCBSlot@{s\_lightArrayVertexShaderCBSlot}!ren::ShadowPass@{ren::ShadowPass}}
+\doxysubsubsection{\texorpdfstring{s\_lightArrayVertexShaderCBSlot}{s\_lightArrayVertexShaderCBSlot}}
+{\footnotesize\ttfamily \label{classren_1_1ShadowPass_ab2d17ab137ff24dfd2e7f219b1da5bfd_ab2d17ab137ff24dfd2e7f219b1da5bfd} 
+unsigned ren\+::\+Shadow\+Pass\+::s\+\_\+light\+Array\+Vertex\+Shader\+CBSlot = 2u\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+\Hypertarget{classren_1_1ShadowPass_a78befc9467180544b3e1b7ea9c6db0c1_a78befc9467180544b3e1b7ea9c6db0c1}\index{ren::ShadowPass@{ren::ShadowPass}!s\_maxShadowCastingLights@{s\_maxShadowCastingLights}}
+\index{s\_maxShadowCastingLights@{s\_maxShadowCastingLights}!ren::ShadowPass@{ren::ShadowPass}}
+\doxysubsubsection{\texorpdfstring{s\_maxShadowCastingLights}{s\_maxShadowCastingLights}}
+{\footnotesize\ttfamily \label{classren_1_1ShadowPass_a78befc9467180544b3e1b7ea9c6db0c1_a78befc9467180544b3e1b7ea9c6db0c1} 
+unsigned ren\+::\+Shadow\+Pass\+::s\+\_\+max\+Shadow\+Casting\+Lights = 16u\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+\Hypertarget{classren_1_1ShadowPass_a57668a13b79c7b97a93535fc9f328e0e_a57668a13b79c7b97a93535fc9f328e0e}\index{ren::ShadowPass@{ren::ShadowPass}!s\_shadowCubeMapArraySlot@{s\_shadowCubeMapArraySlot}}
+\index{s\_shadowCubeMapArraySlot@{s\_shadowCubeMapArraySlot}!ren::ShadowPass@{ren::ShadowPass}}
+\doxysubsubsection{\texorpdfstring{s\_shadowCubeMapArraySlot}{s\_shadowCubeMapArraySlot}}
+{\footnotesize\ttfamily \label{classren_1_1ShadowPass_a57668a13b79c7b97a93535fc9f328e0e_a57668a13b79c7b97a93535fc9f328e0e} 
+unsigned ren\+::\+Shadow\+Pass\+::s\+\_\+shadow\+Cube\+Map\+Array\+Slot = 4u\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+\Hypertarget{classren_1_1ShadowPass_affb066b0b62365f2371369da5e7b164f_affb066b0b62365f2371369da5e7b164f}\index{ren::ShadowPass@{ren::ShadowPass}!s\_shadowMapArraySlot@{s\_shadowMapArraySlot}}
+\index{s\_shadowMapArraySlot@{s\_shadowMapArraySlot}!ren::ShadowPass@{ren::ShadowPass}}
+\doxysubsubsection{\texorpdfstring{s\_shadowMapArraySlot}{s\_shadowMapArraySlot}}
+{\footnotesize\ttfamily \label{classren_1_1ShadowPass_affb066b0b62365f2371369da5e7b164f_affb066b0b62365f2371369da5e7b164f} 
+unsigned ren\+::\+Shadow\+Pass\+::s\+\_\+shadow\+Map\+Array\+Slot = 3u\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+\Hypertarget{classren_1_1ShadowPass_a7f7b6d1fa45f819dd55562fc55886bdc_a7f7b6d1fa45f819dd55562fc55886bdc}\index{ren::ShadowPass@{ren::ShadowPass}!s\_shadowMapResolution@{s\_shadowMapResolution}}
+\index{s\_shadowMapResolution@{s\_shadowMapResolution}!ren::ShadowPass@{ren::ShadowPass}}
+\doxysubsubsection{\texorpdfstring{s\_shadowMapResolution}{s\_shadowMapResolution}}
+{\footnotesize\ttfamily \label{classren_1_1ShadowPass_a7f7b6d1fa45f819dd55562fc55886bdc_a7f7b6d1fa45f819dd55562fc55886bdc} 
+unsigned ren\+::\+Shadow\+Pass\+::s\+\_\+shadow\+Map\+Resolution = 1024u\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{shadow__pass_8h}{shadow\+\_\+pass.\+h}}\item 
+src/\mbox{\hyperlink{SHADOW__PASS_8CPP}{SHADOW\+\_\+\+PASS.\+CPP}}\end{DoxyCompactItemize}

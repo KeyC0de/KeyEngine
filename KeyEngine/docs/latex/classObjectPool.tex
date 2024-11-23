@@ -1,0 +1,229 @@
+\doxysection{Object\+Pool\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classObjectPool}{}\label{classObjectPool}\index{ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}}
+
+
+=============================================================  
+
+
+
+
+{\ttfamily \#include $<$object\+\_\+pool.\+h$>$}
+
+Inheritance diagram for Object\+Pool\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classObjectPool}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+union \mbox{\hyperlink{unionObjectPool_1_1Object}{Object}}
+\item 
+struct \mbox{\hyperlink{structObjectPool_1_1rebind}{rebind}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classObjectPool_a3e774e7272b0a82d646ffac444289db6_a3e774e7272b0a82d646ffac444289db6}{value\+\_\+type}} = T
+\item 
+using \mbox{\hyperlink{classObjectPool_a8c28e441fbf200b22110784d2d22ab36_a8c28e441fbf200b22110784d2d22ab36}{pointer}} = T\texorpdfstring{$\ast$}{*}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classObjectPool_ae3b6a071a40dec3b4acc5a873c416b01_ae3b6a071a40dec3b4acc5a873c416b01}{Object\+Pool}} (const std\+::size\+\_\+t n\+Objs)
+\begin{DoxyCompactList}\small\item\em ctor creates the pool given the amount of objects it will hold \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classObjectPool_a93dd6b1dbb1f87e2e25cceb13d76e0ab_a93dd6b1dbb1f87e2e25cceb13d76e0ab}{\texorpdfstring{$\sim$}{\string~}\+Object\+Pool}} () noexcept=default
+\item 
+\mbox{\hyperlink{classObjectPool_af33673fed86d55a5f05fc99ceb49fc22_af33673fed86d55a5f05fc99ceb49fc22}{Object\+Pool}} (\mbox{\hyperlink{classObjectPool}{Object\+Pool}} \&\&rhs) noexcept
+\item 
+\mbox{\hyperlink{classObjectPool}{Object\+Pool}} \& \mbox{\hyperlink{classObjectPool_aef644afca4b172a0826e7597ecb4e1a5_aef644afca4b172a0826e7597ecb4e1a5}{operator=}} (\mbox{\hyperlink{classObjectPool}{Object\+Pool}} \&\&rhs) noexcept
+\item 
+T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classObjectPool_a2730a24e7e924ddcf0cee57d35866528_a2730a24e7e924ddcf0cee57d35866528}{address}} (T \&r) const noexcept
+\item 
+const T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classObjectPool_a26818f2614771d79e113207b54f6ca31_a26818f2614771d79e113207b54f6ca31}{address}} (const T \&r) const noexcept
+\item 
+T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classObjectPool_aade24458eccdfddc0ec175a5cec8d1ea_aade24458eccdfddc0ec175a5cec8d1ea}{allocate}} ()
+\item 
+void \mbox{\hyperlink{classObjectPool_a9a0046c3811cd3b22b45c7c730d85915_a9a0046c3811cd3b22b45c7c730d85915}{deallocate}} (T \texorpdfstring{$\ast$}{*}p, std\+::size\+\_\+t count=0) noexcept
+\item 
+{\footnotesize template$<$typename... TArgs$>$ }\\T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classObjectPool_a00b06a510030de58a1cea2ca9cc3c8fa_a00b06a510030de58a1cea2ca9cc3c8fa}{construct}} (TArgs... args)
+\item 
+void \mbox{\hyperlink{classObjectPool_a874712d8c259e45121f90be4a2542cc3_a874712d8c259e45121f90be4a2542cc3}{destroy}} (T \texorpdfstring{$\ast$}{*}p) noexcept
+\item 
+std\+::size\+\_\+t \mbox{\hyperlink{classObjectPool_a422f245c28eb4070c9ca3a5d479e3012_a422f245c28eb4070c9ca3a5d479e3012}{get\+Size}} () noexcept
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNonCopyable_a809b6e4ade7ae32f6d248f2a3b783d45_a809b6e4ade7ae32f6d248f2a3b783d45}{Non\+Copyable}} ()=default
+\item 
+\mbox{\hyperlink{classNonCopyable_a15aa3015488bb26c47ded914cb630cf5_a15aa3015488bb26c47ded914cb630cf5}{Non\+Copyable}} (const \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_af4788b57da9a9faa570c754c22c724f5_af4788b57da9a9faa570c754c22c724f5}{operator=}} (const \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable_a487646562ae30ece23d7638f2aed1dde_a487646562ae30ece23d7638f2aed1dde}{Non\+Copyable}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_ae032ca32cda9c836c27b28eb6a087d18_ae032ca32cda9c836c27b28eb6a087d18}{operator=}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable_af716e4cfb79381710ef4490414939ae9_af716e4cfb79381710ef4490414939ae9}{Non\+Copyable}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&\&rhs)=default
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_af81816bd4c2c4421a6eab98843ead6e4_af81816bd4c2c4421a6eab98843ead6e4}{operator=}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&\&rhs)=default
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{unionObjectPool_1_1Object}{Object}}\mbox{[}$\,$\mbox{]}$>$ \mbox{\hyperlink{classObjectPool_a9f4f64b95a30f89419809ee8f30fc92f_a9f4f64b95a30f89419809ee8f30fc92f}{m\+\_\+pool}}
+\item 
+\mbox{\hyperlink{unionObjectPool_1_1Object}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classObjectPool_aaa415b3cb968dcb61ef6711f4d3c4c03_aaa415b3cb968dcb61ef6711f4d3c4c03}{m\+\_\+p\+Next\+Free}}
+\item 
+std\+::size\+\_\+t \mbox{\hyperlink{classObjectPool_ac393625c067bea5325dd1978084e6b47_ac393625c067bea5325dd1978084e6b47}{m\+\_\+n\+Objs}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNonCopyable_a3e461fb46c72b9a5af7df7e74dbd899e_a3e461fb46c72b9a5af7df7e74dbd899e}{\texorpdfstring{$\sim$}{\string~}\+Non\+Copyable}} () noexcept=default
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class Object\+Pool$<$ T $>$}
+============================================================= 
+
+============================================================= 
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classObjectPool_a8c28e441fbf200b22110784d2d22ab36_a8c28e441fbf200b22110784d2d22ab36}\index{ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}!pointer@{pointer}}
+\index{pointer@{pointer}!ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{pointer}{pointer}}
+{\footnotesize\ttfamily \label{classObjectPool_a8c28e441fbf200b22110784d2d22ab36_a8c28e441fbf200b22110784d2d22ab36} 
+template$<$typename T $>$ \\
+using \mbox{\hyperlink{classObjectPool}{Object\+Pool}}$<$ T $>$\+::pointer = T\texorpdfstring{$\ast$}{*}}
+
+\Hypertarget{classObjectPool_a3e774e7272b0a82d646ffac444289db6_a3e774e7272b0a82d646ffac444289db6}\index{ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}!value\_type@{value\_type}}
+\index{value\_type@{value\_type}!ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{value\_type}{value\_type}}
+{\footnotesize\ttfamily \label{classObjectPool_a3e774e7272b0a82d646ffac444289db6_a3e774e7272b0a82d646ffac444289db6} 
+template$<$typename T $>$ \\
+using \mbox{\hyperlink{classObjectPool}{Object\+Pool}}$<$ T $>$\mbox{\hyperlink{key__type__traits_8h_a8830bb58807ed58aea5046e0894d8b93_a8830bb58807ed58aea5046e0894d8b93}{\+::value\+\_\+type}} = T}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classObjectPool_ae3b6a071a40dec3b4acc5a873c416b01_ae3b6a071a40dec3b4acc5a873c416b01}\index{ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}!ObjectPool@{ObjectPool}}
+\index{ObjectPool@{ObjectPool}!ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{ObjectPool()}{ObjectPool()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classObjectPool_ae3b6a071a40dec3b4acc5a873c416b01_ae3b6a071a40dec3b4acc5a873c416b01} 
+template$<$typename T $>$ \\
+\mbox{\hyperlink{classObjectPool}{Object\+Pool}}$<$ T $>$\mbox{\hyperlink{classObjectPool}{\+::\+Object\+Pool}} (\begin{DoxyParamCaption}\item[{const std\+::size\+\_\+t}]{n\+Objs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+ctor creates the pool given the amount of objects it will hold 
+
+\Hypertarget{classObjectPool_a93dd6b1dbb1f87e2e25cceb13d76e0ab_a93dd6b1dbb1f87e2e25cceb13d76e0ab}\index{ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}!````~ObjectPool@{\texorpdfstring{$\sim$}{\string~}ObjectPool}}
+\index{````~ObjectPool@{\texorpdfstring{$\sim$}{\string~}ObjectPool}!ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ObjectPool()}{\string~ObjectPool()}}
+{\footnotesize\ttfamily \label{classObjectPool_a93dd6b1dbb1f87e2e25cceb13d76e0ab_a93dd6b1dbb1f87e2e25cceb13d76e0ab} 
+template$<$typename T $>$ \\
+\mbox{\hyperlink{classObjectPool}{Object\+Pool}}$<$ T $>$\+::\texorpdfstring{$\sim$}{\string~}\mbox{\hyperlink{classObjectPool}{Object\+Pool}} (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classObjectPool_af33673fed86d55a5f05fc99ceb49fc22_af33673fed86d55a5f05fc99ceb49fc22}\index{ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}!ObjectPool@{ObjectPool}}
+\index{ObjectPool@{ObjectPool}!ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{ObjectPool()}{ObjectPool()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classObjectPool_af33673fed86d55a5f05fc99ceb49fc22_af33673fed86d55a5f05fc99ceb49fc22} 
+template$<$typename T $>$ \\
+\mbox{\hyperlink{classObjectPool}{Object\+Pool}}$<$ T $>$\mbox{\hyperlink{classObjectPool}{\+::\+Object\+Pool}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classObjectPool}{Object\+Pool}}$<$ T $>$ \&\&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classObjectPool_a26818f2614771d79e113207b54f6ca31_a26818f2614771d79e113207b54f6ca31}\index{ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}!address@{address}}
+\index{address@{address}!ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{address()}{address()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classObjectPool_a26818f2614771d79e113207b54f6ca31_a26818f2614771d79e113207b54f6ca31} 
+template$<$typename T $>$ \\
+const T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classObjectPool}{Object\+Pool}}$<$ T $>$\+::address (\begin{DoxyParamCaption}\item[{const T \&}]{r}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classObjectPool_a2730a24e7e924ddcf0cee57d35866528_a2730a24e7e924ddcf0cee57d35866528}\index{ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}!address@{address}}
+\index{address@{address}!ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{address()}{address()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classObjectPool_a2730a24e7e924ddcf0cee57d35866528_a2730a24e7e924ddcf0cee57d35866528} 
+template$<$typename T $>$ \\
+T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classObjectPool}{Object\+Pool}}$<$ T $>$\+::address (\begin{DoxyParamCaption}\item[{T \&}]{r}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classObjectPool_aade24458eccdfddc0ec175a5cec8d1ea_aade24458eccdfddc0ec175a5cec8d1ea}\index{ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}!allocate@{allocate}}
+\index{allocate@{allocate}!ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{allocate()}{allocate()}}
+{\footnotesize\ttfamily \label{classObjectPool_aade24458eccdfddc0ec175a5cec8d1ea_aade24458eccdfddc0ec175a5cec8d1ea} 
+template$<$typename T $>$ \\
+T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classObjectPool}{Object\+Pool}}$<$ T $>$\+::allocate (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+\Hypertarget{classObjectPool_a00b06a510030de58a1cea2ca9cc3c8fa_a00b06a510030de58a1cea2ca9cc3c8fa}\index{ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}!construct@{construct}}
+\index{construct@{construct}!ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{construct()}{construct()}}
+{\footnotesize\ttfamily \label{classObjectPool_a00b06a510030de58a1cea2ca9cc3c8fa_a00b06a510030de58a1cea2ca9cc3c8fa} 
+template$<$typename T $>$ \\
+template$<$typename... TArgs$>$ \\
+T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classObjectPool}{Object\+Pool}}$<$ T $>$\+::construct (\begin{DoxyParamCaption}\item[{TArgs...}]{args}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+\Hypertarget{classObjectPool_a9a0046c3811cd3b22b45c7c730d85915_a9a0046c3811cd3b22b45c7c730d85915}\index{ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}!deallocate@{deallocate}}
+\index{deallocate@{deallocate}!ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{deallocate()}{deallocate()}}
+{\footnotesize\ttfamily \label{classObjectPool_a9a0046c3811cd3b22b45c7c730d85915_a9a0046c3811cd3b22b45c7c730d85915} 
+template$<$typename T $>$ \\
+void \mbox{\hyperlink{classObjectPool}{Object\+Pool}}$<$ T $>$\+::deallocate (\begin{DoxyParamCaption}\item[{T \texorpdfstring{$\ast$}{*}}]{p}{, }\item[{std\+::size\+\_\+t}]{count}{ = {\ttfamily 0}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classObjectPool_a874712d8c259e45121f90be4a2542cc3_a874712d8c259e45121f90be4a2542cc3}\index{ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}!destroy@{destroy}}
+\index{destroy@{destroy}!ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{destroy()}{destroy()}}
+{\footnotesize\ttfamily \label{classObjectPool_a874712d8c259e45121f90be4a2542cc3_a874712d8c259e45121f90be4a2542cc3} 
+template$<$typename T $>$ \\
+void \mbox{\hyperlink{classObjectPool}{Object\+Pool}}$<$ T $>$\+::destroy (\begin{DoxyParamCaption}\item[{T \texorpdfstring{$\ast$}{*}}]{p}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classObjectPool_a422f245c28eb4070c9ca3a5d479e3012_a422f245c28eb4070c9ca3a5d479e3012}\index{ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}!getSize@{getSize}}
+\index{getSize@{getSize}!ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily \label{classObjectPool_a422f245c28eb4070c9ca3a5d479e3012_a422f245c28eb4070c9ca3a5d479e3012} 
+template$<$typename T $>$ \\
+std\+::size\+\_\+t \mbox{\hyperlink{classObjectPool}{Object\+Pool}}$<$ T $>$\+::get\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classObjectPool_aef644afca4b172a0826e7597ecb4e1a5_aef644afca4b172a0826e7597ecb4e1a5}\index{ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{classObjectPool_aef644afca4b172a0826e7597ecb4e1a5_aef644afca4b172a0826e7597ecb4e1a5} 
+template$<$typename T $>$ \\
+\mbox{\hyperlink{classObjectPool}{Object\+Pool}} \& \mbox{\hyperlink{classObjectPool}{Object\+Pool}}$<$ T $>$\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classObjectPool}{Object\+Pool}}$<$ T $>$ \&\&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classObjectPool_ac393625c067bea5325dd1978084e6b47_ac393625c067bea5325dd1978084e6b47}\index{ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}!m\_nObjs@{m\_nObjs}}
+\index{m\_nObjs@{m\_nObjs}!ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{m\_nObjs}{m\_nObjs}}
+{\footnotesize\ttfamily \label{classObjectPool_ac393625c067bea5325dd1978084e6b47_ac393625c067bea5325dd1978084e6b47} 
+template$<$typename T $>$ \\
+std\+::size\+\_\+t \mbox{\hyperlink{classObjectPool}{Object\+Pool}}$<$ T $>$\+::m\+\_\+n\+Objs\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classObjectPool_aaa415b3cb968dcb61ef6711f4d3c4c03_aaa415b3cb968dcb61ef6711f4d3c4c03}\index{ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}!m\_pNextFree@{m\_pNextFree}}
+\index{m\_pNextFree@{m\_pNextFree}!ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{m\_pNextFree}{m\_pNextFree}}
+{\footnotesize\ttfamily \label{classObjectPool_aaa415b3cb968dcb61ef6711f4d3c4c03_aaa415b3cb968dcb61ef6711f4d3c4c03} 
+template$<$typename T $>$ \\
+\mbox{\hyperlink{unionObjectPool_1_1Object}{Object}}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classObjectPool}{Object\+Pool}}$<$ T $>$\+::m\+\_\+p\+Next\+Free\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classObjectPool_a9f4f64b95a30f89419809ee8f30fc92f_a9f4f64b95a30f89419809ee8f30fc92f}\index{ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}!m\_pool@{m\_pool}}
+\index{m\_pool@{m\_pool}!ObjectPool$<$ T $>$@{ObjectPool$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{m\_pool}{m\_pool}}
+{\footnotesize\ttfamily \label{classObjectPool_a9f4f64b95a30f89419809ee8f30fc92f_a9f4f64b95a30f89419809ee8f30fc92f} 
+template$<$typename T $>$ \\
+std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{unionObjectPool_1_1Object}{Object}}\mbox{[}$\,$\mbox{]}$>$ \mbox{\hyperlink{classObjectPool}{Object\+Pool}}$<$ T $>$\+::m\+\_\+pool\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{object__pool_8h}{object\+\_\+pool.\+h}}\end{DoxyCompactItemize}

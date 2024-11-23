@@ -1,0 +1,338 @@
+\doxysection{dynamic\+\_\+vertex\+\_\+buffer.\+h}
+\hypertarget{dynamic__vertex__buffer_8h_source}{}\label{dynamic__vertex__buffer_8h_source}\index{inc/dynamic\_vertex\_buffer.h@{inc/dynamic\_vertex\_buffer.h}}
+\mbox{\hyperlink{dynamic__vertex__buffer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{winner_8h}{winner.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <DirectXMath.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <d3d11.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <type\_traits>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{color_8h}{color.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}assimp/scene.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{assertions__console_8h}{assertions\_console.h}}"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ tapping\ into\ Assimp\ aiMesh\ elements\ given\ ElementProperties}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ ASSIMP\_EXTRACT\_AIMESH(\ element\ )\ \(\backslash\)}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\ \ \ \ static\ CPUType\ extract(\ const\ aiMesh\ \&mesh,\(\backslash\)}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ const\ size\_t\ i\ )\ noexcept\(\backslash\)}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\ \ \ \ \{\(\backslash\)}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ return\ *reinterpret\_cast<const\ CPUType*>(\ \&mesh.element[i]\ );\(\backslash\)}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\ \ \ \ \}}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ VERTEX\_INPUT\_LAYOUT\_ELEMENT\_TYPES\ \(\backslash\)}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\ \ \ \ X(\ Position2D\ )\ \(\backslash\)}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\ \ \ \ X(\ Position3D\ )\ \(\backslash\)}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\ \ \ \ X(\ Texture2D\ )\ \(\backslash\)}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\ \ \ \ X(\ Normal\ )\ \(\backslash\)}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\ \ \ \ X(\ Tangent\ )\ \(\backslash\)}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\ \ \ \ X(\ Bitangent\ )\ \(\backslash\)}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\ \ \ \ X(\ Float3Color\ )\ \(\backslash\)}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\ \ \ \ X(\ Float4Color\ )\ \(\backslash\)}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\ \ \ \ X(\ BGRAColor\ )\ \(\backslash\)}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\ \ \ \ X(\ Count\ )}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacever}{ver}}}
+\DoxyCodeLine{00036\ \{}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{comment}{//\ example\ VertexInputLayout:\ P3NT2\ signifying:\ Position3,\ Normal,\ UV\ Tex\ Coords}}
+\DoxyCodeLine{00039\ \textcolor{comment}{//\ assembled\ by\ appending\ ILElement\ \`{}tag`s\ next\ to\ each\ other}}
+\DoxyCodeLine{00040\ \textcolor{comment}{//\ careful\ the\ Direct3d\ runtime\ will\ check\ at\ runtime\ that\ there\ are\ not\ multiple\ hlslSemantics\ on\ a\ single\ Vertex\ Buffer\ Input\ Layout!}}
+\DoxyCodeLine{00041\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classver_1_1VertexInputLayout}{VertexInputLayout}}\ final}
+\DoxyCodeLine{00042\ \{}
+\DoxyCodeLine{00043\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classver_1_1VertexInputLayout_1_1ILElement}{ILElement}};}
+\DoxyCodeLine{00045\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00046\ \ \ \ \ std::vector<ILElement>\ \mbox{\hyperlink{classver_1_1VertexInputLayout_a3e560d20053a7a9a8b9696170b8e7e71_a3e560d20053a7a9a8b9696170b8e7e71}{m\_vertexLayoutElements}};}
+\DoxyCodeLine{00047\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1a}{ILEementType}}}
+\DoxyCodeLine{00049\ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ X(\ el\ )\ el,}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1aa1e76919a8e9feb0228ed99dd30683544}{VERTEX\_INPUT\_LAYOUT\_ELEMENT\_TYPES}}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#undef\ X}}
+\DoxyCodeLine{00053\ \ \ \ \ \};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{template}<ILEementType>}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties}{ElementProperties}};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties}{ElementProperties}}<Position2D>}
+\DoxyCodeLine{00060\ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties_3_01Position2D_01_4_a465d797915a46774ff65328f0ed4c3a5_a465d797915a46774ff65328f0ed4c3a5}{CPUType}}\ =\ DirectX::XMFLOAT2;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ DXGI\_FORMAT\ dxgiFormat\ =\ DXGI\_FORMAT\_R32G32\_FLOAT;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *hlslSemantic\ =\ \textcolor{stringliteral}{"{}Position"{}};}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *tag\ =\ \textcolor{stringliteral}{"{}P2"{}};}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dynamic__vertex__buffer_8h_aa9ae34007b2412618c1be887ff7a2e79_aa9ae34007b2412618c1be887ff7a2e79}{ASSIMP\_EXTRACT\_AIMESH}}(\ mVertices\ )}
+\DoxyCodeLine{00066\ \ \ \ \ \};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties}{ElementProperties}}<Position3D>}
+\DoxyCodeLine{00070\ \ \ \ \ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties_3_01Position3D_01_4_a0ec0f028f0fe963cfbd8086b3a9e4739_a0ec0f028f0fe963cfbd8086b3a9e4739}{CPUType}}\ =\ DirectX::XMFLOAT3;}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ DXGI\_FORMAT\ dxgiFormat\ =\ DXGI\_FORMAT\_R32G32B32\_FLOAT;}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *hlslSemantic\ =\ \textcolor{stringliteral}{"{}Position"{}};}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *tag\ =\ \textcolor{stringliteral}{"{}P3"{}};}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dynamic__vertex__buffer_8h_aa9ae34007b2412618c1be887ff7a2e79_aa9ae34007b2412618c1be887ff7a2e79}{ASSIMP\_EXTRACT\_AIMESH}}(\ mVertices\ )}
+\DoxyCodeLine{00076\ \ \ \ \ \};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties}{ElementProperties}}<Texture2D>}
+\DoxyCodeLine{00080\ \ \ \ \ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties_3_01Texture2D_01_4_a34415efd0cad322d9cfda28b0c3c55fd_a34415efd0cad322d9cfda28b0c3c55fd}{CPUType}}\ =\ DirectX::XMFLOAT2;}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ DXGI\_FORMAT\ dxgiFormat\ =\ DXGI\_FORMAT\_R32G32\_FLOAT;}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *hlslSemantic\ =\ \textcolor{stringliteral}{"{}Texcoord"{}};}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *tag\ =\ \textcolor{stringliteral}{"{}T2"{}};}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dynamic__vertex__buffer_8h_aa9ae34007b2412618c1be887ff7a2e79_aa9ae34007b2412618c1be887ff7a2e79}{ASSIMP\_EXTRACT\_AIMESH}}(\ mTextureCoords[0]\ )}
+\DoxyCodeLine{00086\ \ \ \ \ \};}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties}{ElementProperties}}<Normal>}
+\DoxyCodeLine{00090\ \ \ \ \ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties_3_01Normal_01_4_abe0c9880c26e9f7a0bb5d3173102c86d_abe0c9880c26e9f7a0bb5d3173102c86d}{CPUType}}\ =\ DirectX::XMFLOAT3;}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ DXGI\_FORMAT\ dxgiFormat\ =\ DXGI\_FORMAT\_R32G32B32\_FLOAT;}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *hlslSemantic\ =\ \textcolor{stringliteral}{"{}Normal"{}};}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *tag\ =\ \textcolor{stringliteral}{"{}N"{}};}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dynamic__vertex__buffer_8h_aa9ae34007b2412618c1be887ff7a2e79_aa9ae34007b2412618c1be887ff7a2e79}{ASSIMP\_EXTRACT\_AIMESH}}(\ mNormals\ )}
+\DoxyCodeLine{00096\ \ \ \ \ \};}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties}{ElementProperties}}<Tangent>}
+\DoxyCodeLine{00100\ \ \ \ \ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties_3_01Tangent_01_4_ae08536ead954c3a4cd7758a24eaa46c9_ae08536ead954c3a4cd7758a24eaa46c9}{CPUType}}\ =\ DirectX::XMFLOAT3;}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ DXGI\_FORMAT\ dxgiFormat\ =\ DXGI\_FORMAT\_R32G32B32\_FLOAT;}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *hlslSemantic\ =\ \textcolor{stringliteral}{"{}Tangent"{}};}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *tag\ =\ \textcolor{stringliteral}{"{}Nt"{}};}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dynamic__vertex__buffer_8h_aa9ae34007b2412618c1be887ff7a2e79_aa9ae34007b2412618c1be887ff7a2e79}{ASSIMP\_EXTRACT\_AIMESH}}(\ mTangents\ )}
+\DoxyCodeLine{00106\ \ \ \ \ \};}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties}{ElementProperties}}<Bitangent>}
+\DoxyCodeLine{00110\ \ \ \ \ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties_3_01Bitangent_01_4_adb91cb0470996d97b5c1d8d3f271eece_adb91cb0470996d97b5c1d8d3f271eece}{CPUType}}\ =\ DirectX::XMFLOAT3;}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ DXGI\_FORMAT\ dxgiFormat\ =\ DXGI\_FORMAT\_R32G32B32\_FLOAT;}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *hlslSemantic\ =\ \textcolor{stringliteral}{"{}Bitangent"{}};}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *tag\ =\ \textcolor{stringliteral}{"{}Nb"{}};}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dynamic__vertex__buffer_8h_aa9ae34007b2412618c1be887ff7a2e79_aa9ae34007b2412618c1be887ff7a2e79}{ASSIMP\_EXTRACT\_AIMESH}}(\ mBitangents\ )}
+\DoxyCodeLine{00116\ \ \ \ \ \};}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties}{ElementProperties}}<Float3Color>}
+\DoxyCodeLine{00120\ \ \ \ \ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties_3_01Float3Color_01_4_a13f8d53bc2c2c9cfe5c986b672692d4e_a13f8d53bc2c2c9cfe5c986b672692d4e}{CPUType}}\ =\ DirectX::XMFLOAT3;}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ DXGI\_FORMAT\ dxgiFormat\ =\ DXGI\_FORMAT\_R32G32B32\_FLOAT;}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *hlslSemantic\ =\ \textcolor{stringliteral}{"{}Color"{}};}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *tag\ =\ \textcolor{stringliteral}{"{}C3"{}};}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dynamic__vertex__buffer_8h_aa9ae34007b2412618c1be887ff7a2e79_aa9ae34007b2412618c1be887ff7a2e79}{ASSIMP\_EXTRACT\_AIMESH}}(\ mColors[0]\ )}
+\DoxyCodeLine{00126\ \ \ \ \ \};}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties}{ElementProperties}}<Float4Color>}
+\DoxyCodeLine{00130\ \ \ \ \ \{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties_3_01Float4Color_01_4_ac581b9b5fce47297324373c8a4f0fd4a_ac581b9b5fce47297324373c8a4f0fd4a}{CPUType}}\ =\ DirectX::XMFLOAT4;}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ DXGI\_FORMAT\ dxgiFormat\ =\ DXGI\_FORMAT\_R32G32B32A32\_FLOAT;}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *hlslSemantic\ =\ \textcolor{stringliteral}{"{}Color"{}};}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *tag\ =\ \textcolor{stringliteral}{"{}C4"{}};}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dynamic__vertex__buffer_8h_aa9ae34007b2412618c1be887ff7a2e79_aa9ae34007b2412618c1be887ff7a2e79}{ASSIMP\_EXTRACT\_AIMESH}}(\ mColors[0]\ )}
+\DoxyCodeLine{00136\ \ \ \ \ \};}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties}{ElementProperties}}<BGRAColor>}
+\DoxyCodeLine{00140\ \ \ \ \ \{}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{structColorBGRA}{CPUType}}\ =\ \mbox{\hyperlink{structColorBGRA}{ColorBGRA}};}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ DXGI\_FORMAT\ dxgiFormat\ =\ DXGI\_FORMAT\_B8G8R8A8\_UNORM;}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *hlslSemantic\ =\ \textcolor{stringliteral}{"{}Color"{}};}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *tag\ =\ \textcolor{stringliteral}{"{}C9"{}};}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dynamic__vertex__buffer_8h_aa9ae34007b2412618c1be887ff7a2e79_aa9ae34007b2412618c1be887ff7a2e79}{ASSIMP\_EXTRACT\_AIMESH}}(\ mColors[0]\ )}
+\DoxyCodeLine{00146\ \ \ \ \ \};}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{comment}{//template<>}}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{comment}{//struct\ ElementProperties<RGBAColor>}}
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{comment}{//\{}}
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{comment}{//\ \ using\ CPUType\ =\ col::RGBAColor;}}
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{comment}{//\ \ static\ constexpr\ DXGI\_FORMAT\ dxgiFormat\ =\ DXGI\_FORMAT\_R8G8B8A8\_UNORM;}}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{comment}{//\ \ static\ constexpr\ const\ char\ *hlslSemantic\ =\ "{}Color"{};}}
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{comment}{//\ \ static\ constexpr\ const\ char\ *tag\ =\ "{}C8"{};}}
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{comment}{//\ \ ASSIMP\_EXTRACT\_AIMESH(\ mColors[0]\ )}}
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{comment}{//\};}}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties}{ElementProperties}}<Count>}
+\DoxyCodeLine{00160\ \ \ \ \ \{}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties_3_01Count_01_4_aea89dbcf50f63b63b2b94a6a35964e65_aea89dbcf50f63b63b2b94a6a35964e65}{CPUType}}\ =\ \textcolor{keywordtype}{long}\ double;}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ DXGI\_FORMAT\ dxgiFormat\ =\ DXGI\_FORMAT\_UNKNOWN;}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *hlslSemantic\ =\ \textcolor{stringliteral}{"{}Invalid"{}};}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *tag\ =\ \textcolor{stringliteral}{"{}INV"{}};}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dynamic__vertex__buffer_8h_aa9ae34007b2412618c1be887ff7a2e79_aa9ae34007b2412618c1be887ff7a2e79}{ASSIMP\_EXTRACT\_AIMESH}}(\ mFaces\ )}
+\DoxyCodeLine{00166\ \ \ \ \ \};}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00169\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \`{}template<VertexInputLayout::ILEementType>\ class\ T;\ \`{}\ is\ a\ pimpl\ with\ an\ exec()\ method\ queyring\ one\ of\ those\ elements}}
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{template}<VertexInputLayout::ILEementType>\ \textcolor{keyword}{class\ }T,\ \textcolor{keyword}{typename}...\ Args>}
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classver_1_1VertexInputLayout_a452fe701708b2ce80a4b957de00b5640_a452fe701708b2ce80a4b957de00b5640}{bridge}}(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1a}{VertexInputLayout::ILEementType}}\ type,}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ Args\&\&...\ args\ )\ cond\_noex}
+\DoxyCodeLine{00173\ \ \ \ \ \{}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}(\ type\ )}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00176\ \textcolor{preprocessor}{\#define\ X(\ el\ )\ case\ VertexInputLayout::el:\ \(\backslash\)}}
+\DoxyCodeLine{00177\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \{\ \(\backslash\)}}
+\DoxyCodeLine{00178\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ T<VertexInputLayout::el>::exec(\ std::forward<Args>(\ args\ )...\ );\ \(\backslash\)}}
+\DoxyCodeLine{00179\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1aa1e76919a8e9feb0228ed99dd30683544}{VERTEX\_INPUT\_LAYOUT\_ELEMENT\_TYPES}}}
+\DoxyCodeLine{00181\ \textcolor{preprocessor}{\#undef\ X}}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ default:}}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{assertions__console_8h_af3e11288cb5021b91949be5058816137_af3e11288cb5021b91949be5058816137}{ASSERT}}(\ \textcolor{keyword}{false},\ \textcolor{stringliteral}{"{}Invalid\ element\ type\ query."{}}\ );}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ T<VertexInputLayout::Count>::exec(\ std::forward<Args>(\ args\ )...\ );}
+\DoxyCodeLine{00186\ \ \ \ \ \}}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classver_1_1VertexInputLayout_1_1ILElement}{ILElement}}\ final}
+\DoxyCodeLine{00195\ \ \ \ \ \{}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1a}{ILEementType}}\ \mbox{\hyperlink{classver_1_1VertexInputLayout_1_1ILElement_a6faed9c2324cb3801ae6c3aedf140f78_a6faed9c2324cb3801ae6c3aedf140f78}{m\_type}};}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classver_1_1VertexInputLayout_1_1ILElement_aea007302404ed22f54b3805f60c43cb9_aea007302404ed22f54b3805f60c43cb9}{m\_offset}};\ \ \ \ \textcolor{comment}{//\ byte\ offset\ of\ this\ ILElement\ inside\ VertexInputLayout}}
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classver_1_1VertexInputLayout_1_1ILElement_a0f6e5ba8edb16bab19476ca9af242e03_a0f6e5ba8edb16bab19476ca9af242e03}{getElementTypeSize}}(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1a}{ILEementType}}\ type\ )\ cond\_noex;}
+\DoxyCodeLine{00200\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classver_1_1VertexInputLayout_1_1ILElement_a300e5339c189e1bd42b353d94c14c515_a300e5339c189e1bd42b353d94c14c515}{ILElement}}(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1a}{ILEementType}}\ type,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ offset\ );}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classver_1_1VertexInputLayout_1_1ILElement_aafcbf5036b53d4facb76513fbeb369b1_aafcbf5036b53d4facb76513fbeb369b1}{getOffsetAfterThis}}()\ const\ cond\_noex;\ \ \textcolor{comment}{//\ byte\ offset\ after\ this\ ILElement\ inside\ VertexInputLayout}}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classver_1_1VertexInputLayout_1_1ILElement_ae00f05f297640e6c0abff8c4d3c9f427_ae00f05f297640e6c0abff8c4d3c9f427}{getOffset}}()\ const;}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ const\ \mbox{\hyperlink{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1a}{ILEementType}}\ \mbox{\hyperlink{classver_1_1VertexInputLayout_1_1ILElement_a0003dedeefe176499659b929def6a030_a0003dedeefe176499659b929def6a030}{getType}}()\ const\ noexcept;}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ const\ D3D11\_INPUT\_ELEMENT\_DESC\ \mbox{\hyperlink{classver_1_1VertexInputLayout_1_1ILElement_a70dd3eb7bd8279a8171b33b2213f5491_a70dd3eb7bd8279a8171b33b2213f5491}{getD3dDesc}}()\ const\ cond\_noex;}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ const\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{classver_1_1VertexInputLayout_1_1ILElement_ab12096f4ca21416fbdcc3bbb4e521504_ab12096f4ca21416fbdcc3bbb4e521504}{getTag}}()\ const\ noexcept;}
+\DoxyCodeLine{00209\ \ \ \ \ \};}
+\DoxyCodeLine{00210\ public:}
+\DoxyCodeLine{00211\ \ \ \ \ template<\mbox{\hyperlink{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1a}{ILEementType}}\ layoutType>}
+\DoxyCodeLine{00212\ \ \ \ \ const\ \mbox{\hyperlink{classver_1_1VertexInputLayout_1_1ILElement}{ILElement}}\&\ \mbox{\hyperlink{classver_1_1VertexInputLayout_ac7399fc698252e90645b4afc155c284b_ac7399fc698252e90645b4afc155c284b}{fetch}}()\ const\ cond\_noex}
+\DoxyCodeLine{00213\ \ \ \ \ \{}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{auto}\ \&e\ :\ \mbox{\hyperlink{classver_1_1VertexInputLayout_a3e560d20053a7a9a8b9696170b8e7e71_a3e560d20053a7a9a8b9696170b8e7e71}{m\_vertexLayoutElements}}\ )}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ e.getType()\ ==\ layoutType\ )}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ e;}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{assertions__console_8h_af3e11288cb5021b91949be5058816137_af3e11288cb5021b91949be5058816137}{ASSERT}}(\ \textcolor{keyword}{false},\ \textcolor{stringliteral}{"{}Could\ not\ find\ requeted\ Element's\ type"{}}\ );}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classver_1_1VertexInputLayout_a3e560d20053a7a9a8b9696170b8e7e71_a3e560d20053a7a9a8b9696170b8e7e71}{m\_vertexLayoutElements}}.front();}
+\DoxyCodeLine{00223\ \ \ \ \ \}}
+\DoxyCodeLine{00224\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classver_1_1VertexInputLayout_1_1ILElement_a300e5339c189e1bd42b353d94c14c515_a300e5339c189e1bd42b353d94c14c515}{ILElement}}\&\ \mbox{\hyperlink{classver_1_1VertexInputLayout_a08e18188f08b7631be3e7901b8b5ee3b_a08e18188f08b7631be3e7901b8b5ee3b}{getElementByIndex}}(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ i\ )\ \textcolor{keyword}{const}\ cond\_noex;}
+\DoxyCodeLine{00225\ \ \ \ \ \mbox{\hyperlink{classver_1_1VertexInputLayout}{VertexInputLayout}}\&\ \mbox{\hyperlink{classver_1_1VertexInputLayout_a7adfb63eeb82ed86d1144d70fddc0dee_a7adfb63eeb82ed86d1144d70fddc0dee}{add}}(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1a}{ILEementType}}\ type\ )\ cond\_noex;}
+\DoxyCodeLine{00226\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classver_1_1VertexInputLayout_aa4d03e06b3df44cd4b80095f57f01aa2_aa4d03e06b3df44cd4b80095f57f01aa2}{getSizeInBytes}}()\ const\ cond\_noex;}
+\DoxyCodeLine{00227\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classver_1_1VertexInputLayout_a0864ab48170f7826b431314283b20ab9_a0864ab48170f7826b431314283b20ab9}{getElementCount}}()\ const\ noexcept;}
+\DoxyCodeLine{00228\ \ \ \ \ std::vector<D3D11\_INPUT\_ELEMENT\_DESC>\ \mbox{\hyperlink{classver_1_1VertexInputLayout_a7e6126ae398fd20640edf6a42c2b744b_a7e6126ae398fd20640edf6a42c2b744b}{getD3DInputElementDescs}}()\ const\ cond\_noex;}
+\DoxyCodeLine{00229\ \ \ \ \ std::\textcolor{keywordtype}{string}\ \mbox{\hyperlink{classver_1_1VertexInputLayout_aad3d42fc8e63ce215f8b9965bc0bb699_aad3d42fc8e63ce215f8b9965bc0bb699}{calcSignature}}()\ const\ cond\_noex;}
+\DoxyCodeLine{00230\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classver_1_1VertexInputLayout_a2185ef30b26586b87f40fa3905c37c38_a2185ef30b26586b87f40fa3905c37c38}{hasType}}(\ const\ \mbox{\hyperlink{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1a}{ILEementType}}\&\ type\ )\ const\ noexcept;}
+\DoxyCodeLine{00231\ \};\textcolor{comment}{//VertexInputLayout}}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00233\ }
+\DoxyCodeLine{00234\ class\ \mbox{\hyperlink{classver_1_1VBElementView}{VBElementView}}\ final}
+\DoxyCodeLine{00235\ \{}
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classver_1_1VBuffer}{VBuffer}};}
+\DoxyCodeLine{00237\ }
+\DoxyCodeLine{00238\ \ \ \ \ \textcolor{keywordtype}{char}\ *m\_p\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00239\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classver_1_1VertexInputLayout}{VertexInputLayout}}\ \&\mbox{\hyperlink{classver_1_1VBElementView_a6b6f42e976f3918c4a7e08ff97bf930f_a6b6f42e976f3918c4a7e08ff97bf930f}{m\_layout}};}
+\DoxyCodeLine{00240\ }
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keyword}{template}<VertexInputLayout::ILEementType\ layoutType>}
+\DoxyCodeLine{00242\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structver_1_1VBElementView_1_1ElementSetter}{ElementSetter}}\ final}
+\DoxyCodeLine{00243\ \ \ \ \ \{}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{structver_1_1VBElementView_1_1ElementSetter_ac6eb62e37603bdcadda0196cd2488240_ac6eb62e37603bdcadda0196cd2488240}{exec}}(\ \mbox{\hyperlink{classver_1_1VBElementView}{VBElementView}}\ *pVertex,}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *pElement,}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ T\ \&\&val\ )\ cond\_noex}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ pVertex-\/>setElement<layoutType>(\ pElement,\ std::forward<T>(\ val\ )\ );}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00252\ \ \ \ \ \};}
+\DoxyCodeLine{00253\ }
+\DoxyCodeLine{00255\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00256\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classver_1_1VBElementView_a0985e157553a8dfe4fdd37443295f5f7_a0985e157553a8dfe4fdd37443295f5f7}{setElementByIndex}}(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ i,}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ T\ \&\&val\ )\ cond\_noex}
+\DoxyCodeLine{00258\ \ \ \ \ \{}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&element\ =\ m\_layout.\mbox{\hyperlink{classver_1_1VertexInputLayout_a08e18188f08b7631be3e7901b8b5ee3b_a08e18188f08b7631be3e7901b8b5ee3b}{getElementByIndex}}(\ i\ );}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ pElement\ =\ m\_p\ +\ element.\mbox{\hyperlink{classver_1_1VertexInputLayout_1_1ILElement_ae00f05f297640e6c0abff8c4d3c9f427_ae00f05f297640e6c0abff8c4d3c9f427}{getOffset}}();}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classver_1_1VertexInputLayout_a452fe701708b2ce80a4b957de00b5640_a452fe701708b2ce80a4b957de00b5640}{VertexInputLayout::bridge<ElementSetter>}}(\ element.getType(),\ \textcolor{keyword}{this},\ pElement,\ std::forward<T>(\ val\ )\ );}
+\DoxyCodeLine{00262\ \ \ \ \ \}}
+\DoxyCodeLine{00263\ }
+\DoxyCodeLine{00265\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ First,\ \textcolor{keyword}{typename}\ ...Rest>}
+\DoxyCodeLine{00266\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classver_1_1VBElementView_a8e75c1b364fa38cbbcb51c0837bed523_a8e75c1b364fa38cbbcb51c0837bed523}{setElementByIndex}}(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ i,}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ First\ \&\&first,}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ Rest\&\&...\ rest\ )\ cond\_noex}
+\DoxyCodeLine{00269\ \ \ \ \ \{}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ setElementByIndex(\ i,\ std::forward<First>(\ first\ )\ );\ \ \ \ \ \ \ \textcolor{comment}{//\ base\ case}}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ setElementByIndex(\ i\ +\ 1,\ std::forward<Rest>(\ rest\ )...\ );\ \ \textcolor{comment}{//\ recursive\ case}}
+\DoxyCodeLine{00272\ \ \ \ \ \}}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00275\ \ \ \ \ \textcolor{keyword}{template}<VertexInputLayout::ILEementType\ layoutType,\ \textcolor{keyword}{typename}\ SrcType>}
+\DoxyCodeLine{00276\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classver_1_1VBElementView_aee66ecea0394f7d0e5244ad70223abef_aee66ecea0394f7d0e5244ad70223abef}{setElement}}(\ \textcolor{keywordtype}{char}\ *pElement,}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ SrcType\ \&\&val\ )\ cond\_noex}
+\DoxyCodeLine{00278\ \ \ \ \ \{}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }Dest\ =\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties}{VertexInputLayout::ElementProperties<layoutType>::CPUType}};}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}(\ std::is\_assignable<Dest,\ SrcType>::value\ )}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \ \ \ \ *\textcolor{keyword}{reinterpret\_cast<}Dest*\textcolor{keyword}{>}(\ pElement\ )\ =\ val;}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ else\ ASSERT(\ false,\ "{}Element\ type\ mismatch!"{}\ );}}
+\DoxyCodeLine{00285\ \ \ \ \ \}}
+\DoxyCodeLine{00286\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00287\ \ \ \ \ \mbox{\hyperlink{classver_1_1VBElementView}{VBElementView}}(\ \textcolor{keywordtype}{char}\ *pData,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classver_1_1VertexInputLayout}{VertexInputLayout}}\ \&layout\ )\ cond\_noex;}
+\DoxyCodeLine{00288\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00290\ \ \ \ \ \textcolor{keyword}{template}<VertexInputLayout::ILEementType\ layoutType>}
+\DoxyCodeLine{00291\ \ \ \ \ \textcolor{keyword}{auto}\&\ \mbox{\hyperlink{classver_1_1VBElementView_ac9e037ac6b0fd340869a0f26e88ab3a3_ac9e037ac6b0fd340869a0f26e88ab3a3}{getElement}}()\ cond\_noex}
+\DoxyCodeLine{00292\ \ \ \ \ \{}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{assertions__console_8h_af3e11288cb5021b91949be5058816137_af3e11288cb5021b91949be5058816137}{ASSERT}}(\ m\_p,\ \textcolor{stringliteral}{"{}Element\ not\ in\ View\ of\ Input\ Layout!"{}}\ );}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ pElement\ =\ m\_p\ +\ m\_layout.\mbox{\hyperlink{classver_1_1VertexInputLayout_ac7399fc698252e90645b4afc155c284b_ac7399fc698252e90645b4afc155c284b}{fetch}}<layoutType>().\mbox{\hyperlink{classver_1_1VertexInputLayout_1_1ILElement_ae00f05f297640e6c0abff8c4d3c9f427_ae00f05f297640e6c0abff8c4d3c9f427}{getOffset}}();}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{reinterpret\_cast<}typename\ \mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties}{VertexInputLayout::ElementProperties<layoutType>::CPUType}}*\textcolor{keyword}{>}(\ pElement\ );}
+\DoxyCodeLine{00296\ \ \ \ \ \}}
+\DoxyCodeLine{00297\ \};}
+\DoxyCodeLine{00298\ }
+\DoxyCodeLine{00299\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classver_1_1VBElementConstView}{VBElementConstView}}\ final}
+\DoxyCodeLine{00300\ \{}
+\DoxyCodeLine{00301\ \ \ \ \ \mbox{\hyperlink{classver_1_1VBElementView}{VBElementView}}\ \mbox{\hyperlink{classver_1_1VBElementConstView_a2272c4ae2e1df217da1a6c75fe30b486_a2272c4ae2e1df217da1a6c75fe30b486}{m\_vertexView}};}
+\DoxyCodeLine{00302\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00303\ \ \ \ \ \mbox{\hyperlink{classver_1_1VBElementConstView}{VBElementConstView}}(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classver_1_1VBElementView}{VBElementView}}\ \&v\ )\ cond\_noex;}
+\DoxyCodeLine{00304\ }
+\DoxyCodeLine{00305\ \ \ \ \ \textcolor{keyword}{template}<VertexInputLayout::ILEementType\ layoutType>}
+\DoxyCodeLine{00306\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ \mbox{\hyperlink{classver_1_1VBElementConstView_a40724c98236104c30ffb6a60ebd2ee41_a40724c98236104c30ffb6a60ebd2ee41}{getElement}}()\ const\ cond\_noex}
+\DoxyCodeLine{00307\ \ \ \ \ \{}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{const\_cast<}\mbox{\hyperlink{classver_1_1VBElementView}{VBElementView}}\&\textcolor{keyword}{>}(\ m\_vertexView\ ).getElement<layoutType>();}
+\DoxyCodeLine{00309\ \ \ \ \ \}}
+\DoxyCodeLine{00310\ \};}
+\DoxyCodeLine{00311\ }
+\DoxyCodeLine{00312\ }
+\DoxyCodeLine{00313\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classver_1_1VBuffer}{VBuffer}}\ final}
+\DoxyCodeLine{00314\ \{}
+\DoxyCodeLine{00315\ \ \ \ \ std::vector<char>\ \mbox{\hyperlink{classver_1_1VBuffer_a04387a33b0b38a4eda64c4d84d314558_a04387a33b0b38a4eda64c4d84d314558}{m\_data}};}
+\DoxyCodeLine{00316\ \ \ \ \ \mbox{\hyperlink{classver_1_1VertexInputLayout}{VertexInputLayout}}\ \mbox{\hyperlink{classver_1_1VBuffer_a151ec260bf0f942b1f67517558fa179b_a151ec260bf0f942b1f67517558fa179b}{m\_vertexLayout}};}
+\DoxyCodeLine{00317\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00318\ \ \ \ \ \mbox{\hyperlink{classver_1_1VBuffer}{VBuffer}}(\ \mbox{\hyperlink{classver_1_1VertexInputLayout}{VertexInputLayout}}\ layout,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ vertexCount\ =\ 0u\ )\ cond\_noex;}
+\DoxyCodeLine{00319\ \ \ \ \ \mbox{\hyperlink{classver_1_1VBuffer}{VBuffer}}(\ \mbox{\hyperlink{classver_1_1VertexInputLayout}{VertexInputLayout}}\ layout,\ \textcolor{keyword}{const}\ aiMesh\ \&\mbox{\hyperlink{namespacemesh}{mesh}}\ );}
+\DoxyCodeLine{00320\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ data()\ const\ cond\_noex;}
+\DoxyCodeLine{00321\ \ \ \ \ const\ \mbox{\hyperlink{classver_1_1VertexInputLayout}{VertexInputLayout}}\&\ getLayout()\ const\ noexcept;}
+\DoxyCodeLine{00322\ \ \ \ \ \textcolor{keywordtype}{void}\ resize(\ const\ \textcolor{keywordtype}{size\_t}\ newVertexCount\ )\ cond\_noex;}
+\DoxyCodeLine{00323\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ getVertexCount()\ const\ cond\_noex;}
+\DoxyCodeLine{00324\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ getSizeInBytes()\ const\ cond\_noex;}
+\DoxyCodeLine{00325\ }
+\DoxyCodeLine{00326\ \ \ \ \ template<typename\ ...TArgs>}
+\DoxyCodeLine{00327\ \ \ \ \ \textcolor{keywordtype}{void}\ emplaceVertex(\ TArgs\&\&...\ args\ )\ cond\_noex}
+\DoxyCodeLine{00328\ \ \ \ \ \{}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{assertions__console_8h_af3e11288cb5021b91949be5058816137_af3e11288cb5021b91949be5058816137}{ASSERT}}(\ \textcolor{keyword}{sizeof}...(\ args\ )\ ==\ m\_vertexLayout.\mbox{\hyperlink{classver_1_1VertexInputLayout_a0864ab48170f7826b431314283b20ab9_a0864ab48170f7826b431314283b20ab9}{getElementCount}}(),\ \textcolor{stringliteral}{"{}Parameter\ count\ doesn't\ match\ the\ amount\ of\ vertex\ Elements\ in\ the\ layout"{}}\ );}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ m\_data.resize(\ m\_data.size()\ +\ m\_vertexLayout.\mbox{\hyperlink{classver_1_1VertexInputLayout_aa4d03e06b3df44cd4b80095f57f01aa2_aa4d03e06b3df44cd4b80095f57f01aa2}{getSizeInBytes}}()\ );}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ back().setElementByIndex(\ 0u,\ std::forward<TArgs>(\ args\ )...\ );}
+\DoxyCodeLine{00332\ \ \ \ \ \}}
+\DoxyCodeLine{00333\ \ \ \ \ \mbox{\hyperlink{classver_1_1VBElementView}{VBElementView}}\ back()\ cond\_noex;}
+\DoxyCodeLine{00334\ \ \ \ \ \mbox{\hyperlink{classver_1_1VBElementConstView}{VBElementConstView}}\ back()\ const\ cond\_noex;}
+\DoxyCodeLine{00335\ \ \ \ \ \mbox{\hyperlink{classver_1_1VBElementView}{VBElementView}}\ front()\ cond\_noex;}
+\DoxyCodeLine{00336\ \ \ \ \ \mbox{\hyperlink{classver_1_1VBElementConstView}{VBElementConstView}}\ front()\ const\ cond\_noex;}
+\DoxyCodeLine{00337\ \ \ \ \ \mbox{\hyperlink{classver_1_1VBElementView}{VBElementView}}\ operator[](\ const\ \textcolor{keywordtype}{size\_t}\ i\ )\ cond\_noex;}
+\DoxyCodeLine{00338\ \ \ \ \ \mbox{\hyperlink{classver_1_1VBElementConstView}{VBElementConstView}}\ operator[](\ const\ \textcolor{keywordtype}{size\_t}\ i\ )\ const\ cond\_noex;}
+\DoxyCodeLine{00339\ \};}
+\DoxyCodeLine{00340\ }
+\DoxyCodeLine{00341\ }
+\DoxyCodeLine{00342\ \}\textcolor{comment}{//\ namespace\ ver}}
+\DoxyCodeLine{00343\ }
+\DoxyCodeLine{00344\ \textcolor{preprocessor}{\#undef\ ASSIMP\_EXTRACT\_AIMESH}}
+\DoxyCodeLine{00345\ \textcolor{preprocessor}{\#undef\ VERTEX\_INPUT\_LAYOUT\_ELEMENT\_TYPES}}
+
+\end{DoxyCode}

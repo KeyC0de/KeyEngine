@@ -1,0 +1,221 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="dxgi__info__queue_8cpp" kind="file" language="C++">
+    <compoundname>dxgi_info_queue.cpp</compoundname>
+    <includes refid="dxgi__info__queue_8h" local="yes">dxgi_info_queue.h</includes>
+    <includes refid="winner_8h" local="yes">winner.h</includes>
+    <includes refid="os__utils_8h" local="yes">os_utils.h</includes>
+    <incdepgraph>
+      <node id="7">
+        <label>console.h</label>
+        <link refid="console_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>dxgi_info_queue.h</label>
+        <link refid="dxgi__info__queue_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>key_wrl.h</label>
+        <link refid="key__wrl_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="14">
+        <label>os_utils.h</label>
+        <link refid="os__utils_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>winner.h</label>
+        <link refid="winner_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/dxgi_info_queue.cpp</label>
+        <link refid="dxgi__info__queue_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>ShlObj.h</label>
+      </node>
+      <node id="10">
+        <label>Windows.h</label>
+      </node>
+      <node id="6">
+        <label>algorithm</label>
+      </node>
+      <node id="16">
+        <label>comdef.h</label>
+      </node>
+      <node id="5">
+        <label>dxgidebug.h</label>
+      </node>
+      <node id="19">
+        <label>functional</label>
+      </node>
+      <node id="20">
+        <label>optional</label>
+      </node>
+      <node id="9">
+        <label>sdkddkver.h</label>
+      </node>
+      <node id="18">
+        <label>sstream</label>
+      </node>
+      <node id="4">
+        <label>string</label>
+      </node>
+      <node id="17">
+        <label>tlhelp32.h</label>
+      </node>
+      <node id="3">
+        <label>vector</label>
+      </node>
+      <node id="22">
+        <label>wincred.h</label>
+      </node>
+      <node id="15">
+        <label>winternl.h</label>
+      </node>
+      <node id="13">
+        <label>wrl.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dxgi__info__queue_8h" kindref="compound">dxgi_info_queue.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="winner_8h" kindref="compound">winner.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="os__utils_8h" kindref="compound">os_utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>comment(<sp/>lib,<sp/>&quot;dxguid.lib&quot;<sp/>)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="classDxgiInfoQueue_a7644b9ea0418efcb1589f4c05e243c48_1a7644b9ea0418efcb1589f4c05e243c48" refkind="member"><highlight class="normal"><ref refid="classDxgiInfoQueue_a7644b9ea0418efcb1589f4c05e243c48_1a7644b9ea0418efcb1589f4c05e243c48" kindref="member">DxgiInfoQueue::DxgiInfoQueue</ref>()</highlight></codeline>
+<codeline lineno="9"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>HMODULE<sp/>dxgidebugLib<sp/>=<sp/>LoadLibraryExW(<sp/>L</highlight><highlight class="stringliteral">&quot;dxgidebug.dll&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>LOAD_LIBRARY_SEARCH_SYSTEM32<sp/>);</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!dxgidebugLib<sp/>)</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>_DEBUG<sp/>&amp;&amp;<sp/>!defined<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classKeyConsole" kindref="compound">KeyConsole</ref><sp/>&amp;console<sp/>=<sp/><ref refid="classKeyConsole_a31cfe6a77156baf79a0a74ea338c6e18_1a31cfe6a77156baf79a0a74ea338c6e18" kindref="member">KeyConsole::getInstance</ref>();</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">std::string_literals;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>console.<ref refid="classKeyConsole_a453538c0c27b7fb4311391485e3c3788_1a453538c0c27b7fb4311391485e3c3788" kindref="member">log</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Could<sp/>not<sp/>acquire<sp/>dxgidebug<sp/>library.&quot;</highlight><highlight class="normal">s<sp/>);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::terminate();</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">DXGIGetDebugInterface<sp/>=<sp/>HRESULT(<sp/>WINAPI<sp/>*<sp/>)(<sp/>REFIID,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>**<sp/>);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DXGIGetDebugInterface<sp/>dxgiGetDebugInterface<sp/>=<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal">DXGIGetDebugInterface</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/>GetProcAddress(<sp/>dxgidebugLib,<sp/></highlight><highlight class="stringliteral">&quot;DXGIGetDebugInterface&quot;</highlight><highlight class="normal"><sp/>)<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!dxgiGetDebugInterface<sp/>)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>_DEBUG<sp/>&amp;&amp;<sp/>!defined<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classKeyConsole" kindref="compound">KeyConsole</ref><sp/>&amp;console<sp/>=<sp/><ref refid="classKeyConsole_a31cfe6a77156baf79a0a74ea338c6e18_1a31cfe6a77156baf79a0a74ea338c6e18" kindref="member">KeyConsole::getInstance</ref>();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">std::string_literals;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>console.<ref refid="classKeyConsole_a453538c0c27b7fb4311391485e3c3788_1a453538c0c27b7fb4311391485e3c3788" kindref="member">log</ref>(<sp/></highlight><highlight class="stringliteral">&quot;DXGIGetDebugInterface<sp/>function<sp/>was<sp/>not<sp/>located<sp/>in<sp/>the<sp/>library.&quot;</highlight><highlight class="normal">s<sp/>);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::terminate();</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//HRESULT<sp/>hres<sp/>=<sp/>dxgiGetDebugInterface(<sp/>IID_PPV_ARGS(<sp/>&amp;m_pDxgiInfoQueue<sp/>)<sp/>);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>HRESULT<sp/>hres<sp/>=<sp/>dxgiGetDebugInterface(<sp/>__uuidof(<sp/>IDXGIInfoQueue<sp/>),<sp/>&amp;<ref refid="classDxgiInfoQueue_af1c7a98bd242b5efdad64a2f0d11f952_1af1c7a98bd242b5efdad64a2f0d11f952" kindref="member">m_pDxgiInfoQueue</ref><sp/>);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="os__utils_8h_a7027472bc9b182c0fea900713e4541e3_1a7027472bc9b182c0fea900713e4541e3" kindref="member">ASSERT_HRES_IF_FAILED</ref>;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>determine<sp/>when<sp/>to<sp/>break<sp/>execution</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDxgiInfoQueue_af1c7a98bd242b5efdad64a2f0d11f952_1af1c7a98bd242b5efdad64a2f0d11f952" kindref="member">m_pDxgiInfoQueue</ref>-&gt;SetBreakOnSeverity(<sp/><ref refid="classDxgiInfoQueue_af4c8c1e80e3cae76b219754e5a0414a5_1af4c8c1e80e3cae76b219754e5a0414a5" kindref="member">s_msgProducer</ref>,<sp/>DXGI_INFO_QUEUE_MESSAGE_SEVERITY_ERROR,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDxgiInfoQueue_af1c7a98bd242b5efdad64a2f0d11f952_1af1c7a98bd242b5efdad64a2f0d11f952" kindref="member">m_pDxgiInfoQueue</ref>-&gt;SetBreakOnSeverity(<sp/><ref refid="classDxgiInfoQueue_af4c8c1e80e3cae76b219754e5a0414a5_1af4c8c1e80e3cae76b219754e5a0414a5" kindref="member">s_msgProducer</ref>,<sp/>DXGI_INFO_QUEUE_MESSAGE_SEVERITY_CORRUPTION,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDxgiInfoQueue_af1c7a98bd242b5efdad64a2f0d11f952_1af1c7a98bd242b5efdad64a2f0d11f952" kindref="member">m_pDxgiInfoQueue</ref>-&gt;SetBreakOnSeverity(<sp/><ref refid="classDxgiInfoQueue_af4c8c1e80e3cae76b219754e5a0414a5_1af4c8c1e80e3cae76b219754e5a0414a5" kindref="member">s_msgProducer</ref>,<sp/>DXGI_INFO_QUEUE_MESSAGE_SEVERITY_WARNING,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDxgiInfoQueue_af1c7a98bd242b5efdad64a2f0d11f952_1af1c7a98bd242b5efdad64a2f0d11f952" kindref="member">m_pDxgiInfoQueue</ref>-&gt;SetBreakOnSeverity(<sp/><ref refid="classDxgiInfoQueue_af4c8c1e80e3cae76b219754e5a0414a5_1af4c8c1e80e3cae76b219754e5a0414a5" kindref="member">s_msgProducer</ref>,<sp/>DXGI_INFO_QUEUE_MESSAGE_SEVERITY_MESSAGE,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDxgiInfoQueue_af1c7a98bd242b5efdad64a2f0d11f952_1af1c7a98bd242b5efdad64a2f0d11f952" kindref="member">m_pDxgiInfoQueue</ref>-&gt;SetBreakOnSeverity(<sp/><ref refid="classDxgiInfoQueue_af4c8c1e80e3cae76b219754e5a0414a5_1af4c8c1e80e3cae76b219754e5a0414a5" kindref="member">s_msgProducer</ref>,<sp/>DXGI_INFO_QUEUE_MESSAGE_SEVERITY_INFO,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="classDxgiInfoQueue_ace09aa82678fd24ebe87df6b4f8f160d_1ace09aa82678fd24ebe87df6b4f8f160d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classDxgiInfoQueue_ace09aa82678fd24ebe87df6b4f8f160d_1ace09aa82678fd24ebe87df6b4f8f160d" kindref="member">DxgiInfoQueue::markQueueIndex</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDxgiInfoQueue_a938cd2d3102fcdf2d019c03aaf871cbc_1a938cd2d3102fcdf2d019c03aaf871cbc" kindref="member">m_index</ref><sp/>=<sp/><ref refid="classDxgiInfoQueue_af1c7a98bd242b5efdad64a2f0d11f952_1af1c7a98bd242b5efdad64a2f0d11f952" kindref="member">m_pDxgiInfoQueue</ref>-&gt;GetNumStoredMessages(<sp/><ref refid="classDxgiInfoQueue_af4c8c1e80e3cae76b219754e5a0414a5_1af4c8c1e80e3cae76b219754e5a0414a5" kindref="member">s_msgProducer</ref><sp/>);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classDxgiInfoQueue_a62e99064151930158243a23579849967_1a62e99064151930158243a23579849967" refkind="member"><highlight class="normal">std::vector&lt;std::string&gt;<sp/><ref refid="classDxgiInfoQueue_a62e99064151930158243a23579849967_1a62e99064151930158243a23579849967" kindref="member">DxgiInfoQueue::getInfoMessages</ref>()</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>messageDescriptions;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>lastIndex<sp/>=<sp/><ref refid="classDxgiInfoQueue_af1c7a98bd242b5efdad64a2f0d11f952_1af1c7a98bd242b5efdad64a2f0d11f952" kindref="member">m_pDxgiInfoQueue</ref>-&gt;GetNumStoredMessages(<sp/><ref refid="classDxgiInfoQueue_af4c8c1e80e3cae76b219754e5a0414a5_1af4c8c1e80e3cae76b219754e5a0414a5" kindref="member">s_msgProducer</ref><sp/>);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/><ref refid="classDxgiInfoQueue_a938cd2d3102fcdf2d019c03aaf871cbc_1a938cd2d3102fcdf2d019c03aaf871cbc" kindref="member">m_index</ref>;<sp/>i<sp/>&lt;<sp/>lastIndex;<sp/>++i<sp/>)</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HRESULT<sp/>hres;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>messageLengthInBytes<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>first<sp/>get<sp/>the<sp/>message<sp/>length</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hres<sp/>=<sp/><ref refid="classDxgiInfoQueue_af1c7a98bd242b5efdad64a2f0d11f952_1af1c7a98bd242b5efdad64a2f0d11f952" kindref="member">m_pDxgiInfoQueue</ref>-&gt;GetMessageW(<sp/><ref refid="classDxgiInfoQueue_af4c8c1e80e3cae76b219754e5a0414a5_1af4c8c1e80e3cae76b219754e5a0414a5" kindref="member">s_msgProducer</ref>,<sp/>i,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>&amp;messageLengthInBytes<sp/>);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="os__utils_8h_a7027472bc9b182c0fea900713e4541e3_1a7027472bc9b182c0fea900713e4541e3" kindref="member">ASSERT_HRES_IF_FAILED</ref>;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>allocate<sp/>storage<sp/>for<sp/>the<sp/>message</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>pMsgStorage<sp/>=<sp/>std::make_unique&lt;wchar_t[]&gt;(<sp/>messageLengthInBytes<sp/>);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DXGI_INFO_QUEUE_MESSAGE*<sp/>pMsg<sp/>=<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal">DXGI_INFO_QUEUE_MESSAGE*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/>pMsgStorage.get()<sp/>);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>the<sp/>message</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hres<sp/>=<sp/><ref refid="classDxgiInfoQueue_af1c7a98bd242b5efdad64a2f0d11f952_1af1c7a98bd242b5efdad64a2f0d11f952" kindref="member">m_pDxgiInfoQueue</ref>-&gt;GetMessageW(<sp/><ref refid="classDxgiInfoQueue_af4c8c1e80e3cae76b219754e5a0414a5_1af4c8c1e80e3cae76b219754e5a0414a5" kindref="member">s_msgProducer</ref>,<sp/>i,<sp/>pMsg,<sp/>&amp;messageLengthInBytes<sp/>);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="os__utils_8h_a7027472bc9b182c0fea900713e4541e3_1a7027472bc9b182c0fea900713e4541e3" kindref="member">ASSERT_HRES_IF_FAILED</ref>;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>add<sp/>it<sp/>to<sp/>the<sp/>list<sp/>of<sp/>messages</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>messageDescriptions.emplace_back(<sp/>pMsg-&gt;pDescription<sp/>);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//m_pDxgiInfoQueue-&gt;ClearStoredMessages(<sp/>s_msgProducer<sp/>);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//m_i<sp/>=<sp/>0u;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>messageDescriptions;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/dxgi_info_queue.cpp"/>
+  </compounddef>
+</doxygen>

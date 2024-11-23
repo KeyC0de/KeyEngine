@@ -1,0 +1,1242 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="non__copyable_8h" kind="file" language="C++">
+    <compoundname>non_copyable.h</compoundname>
+    <includedby refid="bitmap_8h" local="yes">inc/bitmap.h</includedby>
+    <includedby refid="camera__manager_8h" local="yes">inc/camera_manager.h</includedby>
+    <includedby refid="console_8h" local="yes">inc/console.h</includedby>
+    <includedby refid="entity__manager_8h" local="yes">inc/entity_manager.h</includedby>
+    <includedby refid="game_8h" local="yes">inc/game.h</includedby>
+    <includedby refid="graphics_8h" local="yes">inc/graphics.h</includedby>
+    <includedby refid="key__sound_8h" local="yes">inc/key_sound.h</includedby>
+    <includedby refid="key__timer_8h" local="yes">inc/key_timer.h</includedby>
+    <includedby refid="keyboard_8h" local="yes">inc/keyboard.h</includedby>
+    <includedby refid="message_8h" local="yes">inc/message.h</includedby>
+    <includedby refid="message__queue__bus__dispatcher_8h" local="yes">inc/message_queue_bus_dispatcher.h</includedby>
+    <includedby refid="mouse_8h" local="yes">inc/mouse.h</includedby>
+    <includedby refid="object__pool_8h" local="yes">inc/object_pool.h</includedby>
+    <includedby refid="operation_8h" local="yes">inc/operation.h</includedby>
+    <includedby refid="performance__log_8h" local="yes">inc/performance_log.h</includedby>
+    <includedby refid="reporter__listener_8h" local="yes">inc/reporter_listener.h</includedby>
+    <includedby refid="settings__manager_8h" local="yes">inc/settings_manager.h</includedby>
+    <includedby refid="string__buffer_8h" local="yes">inc/string_buffer.h</includedby>
+    <includedby refid="thread__poolj_8h" local="yes">inc/thread_poolj.h</includedby>
+    <includedby refid="window_8h" local="yes">inc/window.h</includedby>
+    <invincdepgraph>
+      <node id="5">
+        <label>inc/bindable_pass.h</label>
+        <link refid="bindable__pass_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>inc/binder.h</label>
+        <link refid="binder_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>inc/bitmap.h</label>
+        <link refid="bitmap_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>inc/blur_outline_draw_pass.h</label>
+        <link refid="blur__outline__draw__pass_8h"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>inc/blur_outline_mask_pass.h</label>
+        <link refid="blur__outline__mask__pass_8h"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>inc/blur_pass.h</label>
+        <link refid="blur__pass_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="65">
+        <label>inc/camera_manager.h</label>
+        <link refid="camera__manager_8h"/>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+      </node>
+      <node id="72">
+        <label>inc/console.h</label>
+        <link refid="console_8h"/>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="106" relation="include">
+        </childnode>
+        <childnode refid="112" relation="include">
+        </childnode>
+        <childnode refid="104" relation="include">
+        </childnode>
+        <childnode refid="113" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="114" relation="include">
+        </childnode>
+        <childnode refid="115" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="101" relation="include">
+        </childnode>
+      </node>
+      <node id="74">
+        <label>inc/constant_buffer.h</label>
+        <link refid="constant__buffer_8h"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+      </node>
+      <node id="107">
+        <label>inc/d3d_utils.h</label>
+        <link refid="d3d__utils_8h"/>
+        <childnode refid="96" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+        <childnode refid="109" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="110" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>inc/depth_reversed_pass.h</label>
+        <link refid="depth__reversed__pass_8h"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>inc/depth_stencil_view.h</label>
+        <link refid="depth__stencil__view_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="73">
+        <label>inc/dxgi_info_queue.h</label>
+        <link refid="dxgi__info__queue_8h"/>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="83" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="85" relation="include">
+        </childnode>
+        <childnode refid="86" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="90" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="91" relation="include">
+        </childnode>
+        <childnode refid="92" relation="include">
+        </childnode>
+        <childnode refid="93" relation="include">
+        </childnode>
+      </node>
+      <node id="116">
+        <label>inc/entity_manager.h</label>
+        <link refid="entity__manager_8h"/>
+        <childnode refid="117" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>inc/fullscreen_pass.h</label>
+        <link refid="fullscreen__pass_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="66">
+        <label>inc/game.h</label>
+        <link refid="game_8h"/>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+      </node>
+      <node id="95">
+        <label>inc/graphics.h</label>
+        <link refid="graphics_8h"/>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="96" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="98" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="85" relation="include">
+        </childnode>
+        <childnode refid="86" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="100" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="90" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="91" relation="include">
+        </childnode>
+        <childnode refid="92" relation="include">
+        </childnode>
+        <childnode refid="93" relation="include">
+        </childnode>
+        <childnode refid="101" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>inc/horizontal_blur_pass.h</label>
+        <link refid="horizontal__blur__pass_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="118">
+        <label>inc/key_sound.h</label>
+        <link refid="key__sound_8h"/>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="105" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+      </node>
+      <node id="94">
+        <label>inc/key_timer.h</label>
+        <link refid="key__timer_8h"/>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="95" relation="include">
+        </childnode>
+        <childnode refid="102" relation="include">
+        </childnode>
+        <childnode refid="104" relation="include">
+        </childnode>
+        <childnode refid="105" relation="include">
+        </childnode>
+      </node>
+      <node id="119">
+        <label>inc/keyboard.h</label>
+        <link refid="keyboard_8h"/>
+        <childnode refid="120" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
+        </childnode>
+      </node>
+      <node id="122">
+        <label>inc/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="123" relation="include">
+        </childnode>
+        <childnode refid="124" relation="include">
+        </childnode>
+        <childnode refid="125" relation="include">
+        </childnode>
+      </node>
+      <node id="126">
+        <label>inc/message_queue_bus_dispatcher.h</label>
+        <link refid="message__queue__bus__dispatcher_8h"/>
+        <childnode refid="123" relation="include">
+        </childnode>
+        <childnode refid="125" relation="include">
+        </childnode>
+      </node>
+      <node id="127">
+        <label>inc/mouse.h</label>
+        <link refid="mouse_8h"/>
+        <childnode refid="120" relation="include">
+        </childnode>
+        <childnode refid="128" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>inc/negative_pass.h</label>
+        <link refid="negative__pass_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="116" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="95" relation="include">
+        </childnode>
+        <childnode refid="118" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="119" relation="include">
+        </childnode>
+        <childnode refid="122" relation="include">
+        </childnode>
+        <childnode refid="126" relation="include">
+        </childnode>
+        <childnode refid="127" relation="include">
+        </childnode>
+        <childnode refid="129" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+        <childnode refid="102" relation="include">
+        </childnode>
+        <childnode refid="132" relation="include">
+        </childnode>
+        <childnode refid="136" relation="include">
+        </childnode>
+        <childnode refid="137" relation="include">
+        </childnode>
+        <childnode refid="139" relation="include">
+        </childnode>
+        <childnode refid="120" relation="include">
+        </childnode>
+      </node>
+      <node id="129">
+        <label>inc/object_pool.h</label>
+        <link refid="object__pool_8h"/>
+      </node>
+      <node id="28">
+        <label>inc/opaque_pass.h</label>
+        <link refid="opaque__pass_8h"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="130">
+        <label>inc/operation.h</label>
+        <link refid="operation_8h"/>
+        <childnode refid="123" relation="include">
+        </childnode>
+        <childnode refid="124" relation="include">
+        </childnode>
+        <childnode refid="131" relation="include">
+        </childnode>
+      </node>
+      <node id="106">
+        <label>inc/os_utils.h</label>
+        <link refid="os__utils_8h"/>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="107" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="104" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="83" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="85" relation="include">
+        </childnode>
+        <childnode refid="105" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="111" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="90" relation="include">
+        </childnode>
+        <childnode refid="91" relation="include">
+        </childnode>
+        <childnode refid="92" relation="include">
+        </childnode>
+        <childnode refid="101" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>inc/pass_2d.h</label>
+        <link refid="pass__2d_8h"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>inc/pass_through.h</label>
+        <link refid="pass__through_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="102">
+        <label>inc/performance_log.h</label>
+        <link refid="performance__log_8h"/>
+        <childnode refid="103" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>inc/render_queue_pass.h</label>
+        <link refid="render__queue__pass_8h"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="133">
+        <label>inc/reporter_access.h</label>
+        <link refid="reporter__access_8h"/>
+        <childnode refid="134" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="105" relation="include">
+        </childnode>
+        <childnode refid="135" relation="include">
+        </childnode>
+      </node>
+      <node id="132">
+        <label>inc/reporter_listener.h</label>
+        <link refid="reporter__listener_8h"/>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="118" relation="include">
+        </childnode>
+        <childnode refid="133" relation="include">
+        </childnode>
+      </node>
+      <node id="136">
+        <label>inc/settings_manager.h</label>
+        <link refid="settings__manager_8h"/>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="114" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="101" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>inc/shadow_pass.h</label>
+        <link refid="shadow__pass_8h"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>inc/sky_pass.h</label>
+        <link refid="sky__pass_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+      </node>
+      <node id="75">
+        <label>inc/sky_vscb.h</label>
+        <link refid="sky__vscb_8h"/>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>inc/solid_outline_draw_pass.h</label>
+        <link refid="solid__outline__draw__pass_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>inc/solid_outline_mask_pass.h</label>
+        <link refid="solid__outline__mask__pass_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+      </node>
+      <node id="137">
+        <label>inc/string_buffer.h</label>
+        <link refid="string__buffer_8h"/>
+        <childnode refid="138" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>inc/texture.h</label>
+        <link refid="texture_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="62">
+        <label>inc/texture_processor.h</label>
+        <link refid="texture__processor_8h"/>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+      </node>
+      <node id="139">
+        <label>inc/thread_poolj.h</label>
+        <link refid="thread__poolj_8h"/>
+        <childnode refid="105" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="140" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>inc/transparent_pass.h</label>
+        <link refid="transparent__pass_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="134">
+        <label>inc/ui_component.h</label>
+        <link refid="ui__component_8h"/>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>inc/vertical_blur_pass.h</label>
+        <link refid="vertical__blur__pass_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="120">
+        <label>inc/window.h</label>
+        <link refid="window_8h"/>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="101" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>inc/wireframe_pass.h</label>
+        <link refid="wireframe__pass_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="96">
+        <label>src/MODEL.CPP</label>
+        <link refid="MODEL_8CPP"/>
+      </node>
+      <node id="31">
+        <label>src/SHADOW_PASS.CPP</label>
+        <link refid="SHADOW__PASS_8CPP"/>
+      </node>
+      <node id="112">
+        <label>src/assertions_console.cpp</label>
+        <link refid="assertions__console_8cpp"/>
+      </node>
+      <node id="45">
+        <label>src/bindable_pass.cpp</label>
+        <link refid="bindable__pass_8cpp"/>
+      </node>
+      <node id="46">
+        <label>src/binder.cpp</label>
+        <link refid="binder_8cpp"/>
+      </node>
+      <node id="63">
+        <label>src/bitmap.cpp</label>
+        <link refid="bitmap_8cpp"/>
+      </node>
+      <node id="80">
+        <label>src/blend_state.cpp</label>
+        <link refid="blend__state_8cpp"/>
+      </node>
+      <node id="23">
+        <label>src/blur_outline_draw_pass.cpp</label>
+        <link refid="blur__outline__draw__pass_8cpp"/>
+      </node>
+      <node id="25">
+        <label>src/blur_outline_mask_pass.cpp</label>
+        <link refid="blur__outline__mask__pass_8cpp"/>
+      </node>
+      <node id="8">
+        <label>src/blur_pass.cpp</label>
+        <link refid="blur__pass_8cpp"/>
+      </node>
+      <node id="97">
+        <label>src/camera.cpp</label>
+        <link refid="camera_8cpp"/>
+      </node>
+      <node id="77">
+        <label>src/camera_frustum.cpp</label>
+        <link refid="camera__frustum_8cpp"/>
+      </node>
+      <node id="69">
+        <label>src/camera_manager.cpp</label>
+        <link refid="camera__manager_8cpp"/>
+      </node>
+      <node id="78">
+        <label>src/camera_widget.cpp</label>
+        <link refid="camera__widget_8cpp"/>
+      </node>
+      <node id="104">
+        <label>src/console.cpp</label>
+        <link refid="console_8cpp"/>
+      </node>
+      <node id="81">
+        <label>src/constant_buffer_ex.cpp</label>
+        <link refid="constant__buffer__ex_8cpp"/>
+      </node>
+      <node id="50">
+        <label>src/cube.cpp</label>
+        <link refid="cube_8cpp"/>
+      </node>
+      <node id="59">
+        <label>src/cube_texture.cpp</label>
+        <link refid="cube__texture_8cpp"/>
+      </node>
+      <node id="108">
+        <label>src/d3d_utils.cpp</label>
+        <link refid="d3d__utils_8cpp"/>
+      </node>
+      <node id="27">
+        <label>src/depth_reversed_pass.cpp</label>
+        <link refid="depth__reversed__pass_8cpp"/>
+      </node>
+      <node id="82">
+        <label>src/depth_stencil_state.cpp</label>
+        <link refid="depth__stencil__state_8cpp"/>
+      </node>
+      <node id="60">
+        <label>src/depth_stencil_view.cpp</label>
+        <link refid="depth__stencil__view_8cpp"/>
+      </node>
+      <node id="83">
+        <label>src/dxgi_info_queue.cpp</label>
+        <link refid="dxgi__info__queue_8cpp"/>
+      </node>
+      <node id="123">
+        <label>src/entity.cpp</label>
+        <link refid="entity_8cpp"/>
+      </node>
+      <node id="117">
+        <label>src/entity_manager.cpp</label>
+        <link refid="entity__manager_8cpp"/>
+      </node>
+      <node id="113">
+        <label>src/file_utils.cpp</label>
+        <link refid="file__utils_8cpp"/>
+      </node>
+      <node id="18">
+        <label>src/fullscreen_pass.cpp</label>
+        <link refid="fullscreen__pass_8cpp"/>
+      </node>
+      <node id="67">
+        <label>src/game.cpp</label>
+        <link refid="game_8cpp"/>
+      </node>
+      <node id="51">
+        <label>src/graphics.cpp</label>
+        <link refid="graphics_8cpp"/>
+      </node>
+      <node id="98">
+        <label>src/graphics_friend.cpp</label>
+        <link refid="graphics__friend_8cpp"/>
+      </node>
+      <node id="11">
+        <label>src/horizontal_blur_pass.cpp</label>
+        <link refid="horizontal__blur__pass_8cpp"/>
+      </node>
+      <node id="109">
+        <label>src/imgui_visitors.cpp</label>
+        <link refid="imgui__visitors_8cpp"/>
+      </node>
+      <node id="84">
+        <label>src/index_buffer.cpp</label>
+        <link refid="index__buffer_8cpp"/>
+      </node>
+      <node id="85">
+        <label>src/input_layout.cpp</label>
+        <link refid="input__layout_8cpp"/>
+      </node>
+      <node id="86">
+        <label>src/job.cpp</label>
+        <link refid="job_8cpp"/>
+      </node>
+      <node id="105">
+        <label>src/key_sound.cpp</label>
+        <link refid="key__sound_8cpp"/>
+      </node>
+      <node id="121">
+        <label>src/keyboard.cpp</label>
+        <link refid="keyboard_8cpp"/>
+      </node>
+      <node id="32">
+        <label>src/light_source.cpp</label>
+        <link refid="light__source_8cpp"/>
+      </node>
+      <node id="99">
+        <label>src/line.cpp</label>
+        <link refid="line_8cpp"/>
+      </node>
+      <node id="68">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="41">
+        <label>src/material.cpp</label>
+        <link refid="material_8cpp"/>
+      </node>
+      <node id="52">
+        <label>src/material_loader.cpp</label>
+        <link refid="material__loader_8cpp"/>
+      </node>
+      <node id="70">
+        <label>src/mesh.cpp</label>
+        <link refid="mesh_8cpp"/>
+      </node>
+      <node id="124">
+        <label>src/message.cpp</label>
+        <link refid="message_8cpp"/>
+      </node>
+      <node id="125">
+        <label>src/message_queue_bus_dispatcher.cpp</label>
+        <link refid="message__queue__bus__dispatcher_8cpp"/>
+      </node>
+      <node id="128">
+        <label>src/mouse.cpp</label>
+        <link refid="mouse_8cpp"/>
+      </node>
+      <node id="71">
+        <label>src/mouse_picker.cpp</label>
+        <link refid="mouse__picker_8cpp"/>
+      </node>
+      <node id="13">
+        <label>src/negative_pass.cpp</label>
+        <link refid="negative__pass_8cpp"/>
+      </node>
+      <node id="110">
+        <label>src/node.cpp</label>
+        <link refid="node_8cpp"/>
+      </node>
+      <node id="29">
+        <label>src/opaque_pass.cpp</label>
+        <link refid="opaque__pass_8cpp"/>
+      </node>
+      <node id="131">
+        <label>src/operation.cpp</label>
+        <link refid="operation_8cpp"/>
+      </node>
+      <node id="111">
+        <label>src/os_utils.cpp</label>
+        <link refid="os__utils_8cpp"/>
+      </node>
+      <node id="47">
+        <label>src/pass.cpp</label>
+        <link refid="pass_8cpp"/>
+      </node>
+      <node id="20">
+        <label>src/pass_2d.cpp</label>
+        <link refid="pass__2d_8cpp"/>
+      </node>
+      <node id="15">
+        <label>src/pass_through.cpp</label>
+        <link refid="pass__through_8cpp"/>
+      </node>
+      <node id="103">
+        <label>src/performance_log.cpp</label>
+        <link refid="performance__log_8cpp"/>
+      </node>
+      <node id="87">
+        <label>src/pixel_shader.cpp</label>
+        <link refid="pixel__shader_8cpp"/>
+      </node>
+      <node id="53">
+        <label>src/plane.cpp</label>
+        <link refid="plane_8cpp"/>
+      </node>
+      <node id="88">
+        <label>src/primitive_topology.cpp</label>
+        <link refid="primitive__topology_8cpp"/>
+      </node>
+      <node id="89">
+        <label>src/rasterizer_state.cpp</label>
+        <link refid="rasterizer__state_8cpp"/>
+      </node>
+      <node id="42">
+        <label>src/render_queue_pass.cpp</label>
+        <link refid="render__queue__pass_8cpp"/>
+      </node>
+      <node id="48">
+        <label>src/render_surface_clear_pass.cpp</label>
+        <link refid="render__surface__clear__pass_8cpp"/>
+      </node>
+      <node id="61">
+        <label>src/render_target.cpp</label>
+        <link refid="render__target_8cpp"/>
+      </node>
+      <node id="9">
+        <label>src/renderer.cpp</label>
+        <link refid="renderer_8cpp"/>
+      </node>
+      <node id="135">
+        <label>src/reporter_access.cpp</label>
+        <link refid="reporter__access_8cpp"/>
+      </node>
+      <node id="114">
+        <label>src/settings_manager.cpp</label>
+        <link refid="settings__manager_8cpp"/>
+      </node>
+      <node id="115">
+        <label>src/signal_handling.cpp</label>
+        <link refid="signal__handling_8cpp"/>
+      </node>
+      <node id="44">
+        <label>src/sky_pass.cpp</label>
+        <link refid="sky__pass_8cpp"/>
+      </node>
+      <node id="76">
+        <label>src/sky_vscb.cpp</label>
+        <link refid="sky__vscb_8cpp"/>
+      </node>
+      <node id="34">
+        <label>src/solid_outline_draw_pass.cpp</label>
+        <link refid="solid__outline__draw__pass_8cpp"/>
+      </node>
+      <node id="36">
+        <label>src/solid_outline_mask_pass.cpp</label>
+        <link refid="solid__outline__mask__pass_8cpp"/>
+      </node>
+      <node id="100">
+        <label>src/sphere.cpp</label>
+        <link refid="sphere_8cpp"/>
+      </node>
+      <node id="138">
+        <label>src/string_buffer.cpp</label>
+        <link refid="string__buffer_8cpp"/>
+      </node>
+      <node id="54">
+        <label>src/terrain.cpp</label>
+        <link refid="terrain_8cpp"/>
+      </node>
+      <node id="64">
+        <label>src/testing.cpp</label>
+        <link refid="testing_8cpp"/>
+      </node>
+      <node id="55">
+        <label>src/texture.cpp</label>
+        <link refid="texture_8cpp"/>
+      </node>
+      <node id="56">
+        <label>src/texture_processor.cpp</label>
+        <link refid="texture__processor_8cpp"/>
+      </node>
+      <node id="90">
+        <label>src/texture_sampler_state.cpp</label>
+        <link refid="texture__sampler__state_8cpp"/>
+      </node>
+      <node id="140">
+        <label>src/thread_poolj.cpp</label>
+        <link refid="thread__poolj_8cpp"/>
+      </node>
+      <node id="79">
+        <label>src/transform_vscb.cpp</label>
+        <link refid="transform__vscb_8cpp"/>
+      </node>
+      <node id="38">
+        <label>src/transparent_pass.cpp</label>
+        <link refid="transparent__pass_8cpp"/>
+      </node>
+      <node id="57">
+        <label>src/ui_component.cpp</label>
+        <link refid="ui__component_8cpp"/>
+      </node>
+      <node id="58">
+        <label>src/ui_pass.cpp</label>
+        <link refid="ui__pass_8cpp"/>
+      </node>
+      <node id="91">
+        <label>src/vertex_buffer.cpp</label>
+        <link refid="vertex__buffer_8cpp"/>
+      </node>
+      <node id="92">
+        <label>src/vertex_shader.cpp</label>
+        <link refid="vertex__shader_8cpp"/>
+      </node>
+      <node id="17">
+        <label>src/vertical_blur_pass.cpp</label>
+        <link refid="vertical__blur__pass_8cpp"/>
+      </node>
+      <node id="93">
+        <label>src/viewport.cpp</label>
+        <link refid="viewport_8cpp"/>
+      </node>
+      <node id="101">
+        <label>src/window.cpp</label>
+        <link refid="window_8cpp"/>
+      </node>
+      <node id="40">
+        <label>src/wireframe_pass.cpp</label>
+        <link refid="wireframe__pass_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classNonCopyable" prot="public">NonCopyable</innerclass>
+    <innerclass refid="classNonCopyableAndNonMovable" prot="public">NonCopyableAndNonMovable</innerclass>
+    <innerclass refid="classNonAssignable" prot="public">NonAssignable</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4" refid="classNonCopyable" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classNonCopyable" kindref="compound">NonCopyable</ref></highlight></codeline>
+<codeline lineno="5"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="7" refid="classNonCopyable_a809b6e4ade7ae32f6d248f2a3b783d45_1a809b6e4ade7ae32f6d248f2a3b783d45" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNonCopyable_a809b6e4ade7ae32f6d248f2a3b783d45_1a809b6e4ade7ae32f6d248f2a3b783d45" kindref="member">NonCopyable</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="8" refid="classNonCopyable_a15aa3015488bb26c47ded914cb630cf5_1a15aa3015488bb26c47ded914cb630cf5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNonCopyable_a15aa3015488bb26c47ded914cb630cf5_1a15aa3015488bb26c47ded914cb630cf5" kindref="member">NonCopyable</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNonCopyable" kindref="compound">NonCopyable</ref><sp/>&amp;rhs<sp/>)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="9" refid="classNonCopyable_af4788b57da9a9faa570c754c22c724f5_1af4788b57da9a9faa570c754c22c724f5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNonCopyable" kindref="compound">NonCopyable</ref>&amp;<sp/><ref refid="classNonCopyable_af4788b57da9a9faa570c754c22c724f5_1af4788b57da9a9faa570c754c22c724f5" kindref="member">operator=</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNonCopyable" kindref="compound">NonCopyable</ref><sp/>&amp;rhs<sp/>)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="10" refid="classNonCopyable_a487646562ae30ece23d7638f2aed1dde_1a487646562ae30ece23d7638f2aed1dde" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNonCopyable_a487646562ae30ece23d7638f2aed1dde_1a487646562ae30ece23d7638f2aed1dde" kindref="member">NonCopyable</ref>(<sp/><ref refid="classNonCopyable" kindref="compound">NonCopyable</ref><sp/>&amp;rhs<sp/>)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="11" refid="classNonCopyable_ae032ca32cda9c836c27b28eb6a087d18_1ae032ca32cda9c836c27b28eb6a087d18" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNonCopyable" kindref="compound">NonCopyable</ref>&amp;<sp/><ref refid="classNonCopyable_ae032ca32cda9c836c27b28eb6a087d18_1ae032ca32cda9c836c27b28eb6a087d18" kindref="member">operator=</ref>(<sp/><ref refid="classNonCopyable" kindref="compound">NonCopyable</ref><sp/>&amp;rhs<sp/>)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="12" refid="classNonCopyable_af716e4cfb79381710ef4490414939ae9_1af716e4cfb79381710ef4490414939ae9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNonCopyable_af716e4cfb79381710ef4490414939ae9_1af716e4cfb79381710ef4490414939ae9" kindref="member">NonCopyable</ref>(<sp/><ref refid="classNonCopyable" kindref="compound">NonCopyable</ref><sp/>&amp;&amp;rhs<sp/>)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="13" refid="classNonCopyable_af81816bd4c2c4421a6eab98843ead6e4_1af81816bd4c2c4421a6eab98843ead6e4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNonCopyable" kindref="compound">NonCopyable</ref>&amp;<sp/><ref refid="classNonCopyable_af81816bd4c2c4421a6eab98843ead6e4_1af81816bd4c2c4421a6eab98843ead6e4" kindref="member">operator=</ref>(<sp/><ref refid="classNonCopyable" kindref="compound">NonCopyable</ref><sp/>&amp;&amp;rhs<sp/>)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="15" refid="classNonCopyable_a3e461fb46c72b9a5af7df7e74dbd899e_1a3e461fb46c72b9a5af7df7e74dbd899e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNonCopyable_a3e461fb46c72b9a5af7df7e74dbd899e_1a3e461fb46c72b9a5af7df7e74dbd899e" kindref="member">~NonCopyable</ref>()<sp/>noexcept<sp/>=<sp/>default;<sp/><sp/></highlight><highlight class="comment">//<sp/>remember<sp/>an<sp/>explicitly<sp/>defaulted<sp/>dtor<sp/>suppresses<sp/>movers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="classNonCopyableAndNonMovable" refkind="compound"><highlight class="normal">class<sp/><ref refid="classNonCopyableAndNonMovable" kindref="compound">NonCopyableAndNonMovable</ref></highlight></codeline>
+<codeline lineno="19"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="21" refid="classNonCopyableAndNonMovable_a0f3fc95f2c582514d58832b7c14d2965_1a0f3fc95f2c582514d58832b7c14d2965" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNonCopyableAndNonMovable_a0f3fc95f2c582514d58832b7c14d2965_1a0f3fc95f2c582514d58832b7c14d2965" kindref="member">NonCopyableAndNonMovable</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="22" refid="classNonCopyableAndNonMovable_a3502311a2435129e171eb36ba05f0b2f_1a3502311a2435129e171eb36ba05f0b2f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNonCopyableAndNonMovable_a3502311a2435129e171eb36ba05f0b2f_1a3502311a2435129e171eb36ba05f0b2f" kindref="member">NonCopyableAndNonMovable</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNonCopyableAndNonMovable" kindref="compound">NonCopyableAndNonMovable</ref><sp/>&amp;rhs<sp/>)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="23" refid="classNonCopyableAndNonMovable_a6541862f56b2fcaa89155f08b8adaf11_1a6541862f56b2fcaa89155f08b8adaf11" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNonCopyableAndNonMovable" kindref="compound">NonCopyableAndNonMovable</ref>&amp;<sp/><ref refid="classNonCopyableAndNonMovable_a6541862f56b2fcaa89155f08b8adaf11_1a6541862f56b2fcaa89155f08b8adaf11" kindref="member">operator=</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNonCopyableAndNonMovable" kindref="compound">NonCopyableAndNonMovable</ref><sp/>&amp;rhs<sp/>)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="24" refid="classNonCopyableAndNonMovable_a259655d15f1887d015c6d77a0f09f4ff_1a259655d15f1887d015c6d77a0f09f4ff" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNonCopyableAndNonMovable_a259655d15f1887d015c6d77a0f09f4ff_1a259655d15f1887d015c6d77a0f09f4ff" kindref="member">NonCopyableAndNonMovable</ref>(<sp/><ref refid="classNonCopyableAndNonMovable" kindref="compound">NonCopyableAndNonMovable</ref><sp/>&amp;rhs<sp/>)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="25" refid="classNonCopyableAndNonMovable_aa3af41edbd14c886cdec335b22254829_1aa3af41edbd14c886cdec335b22254829" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNonCopyableAndNonMovable" kindref="compound">NonCopyableAndNonMovable</ref>&amp;<sp/><ref refid="classNonCopyableAndNonMovable_aa3af41edbd14c886cdec335b22254829_1aa3af41edbd14c886cdec335b22254829" kindref="member">operator=</ref>(<sp/><ref refid="classNonCopyableAndNonMovable" kindref="compound">NonCopyableAndNonMovable</ref><sp/>&amp;rhs<sp/>)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="26" refid="classNonCopyableAndNonMovable_acadc47621b689b1b95bef13a35f18572_1acadc47621b689b1b95bef13a35f18572" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNonCopyableAndNonMovable_acadc47621b689b1b95bef13a35f18572_1acadc47621b689b1b95bef13a35f18572" kindref="member">NonCopyableAndNonMovable</ref>(<sp/><ref refid="classNonCopyableAndNonMovable" kindref="compound">NonCopyableAndNonMovable</ref><sp/>&amp;&amp;rhs<sp/>)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="27" refid="classNonCopyableAndNonMovable_a972632a389e0f2370de9604df60ea9d6_1a972632a389e0f2370de9604df60ea9d6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNonCopyableAndNonMovable" kindref="compound">NonCopyableAndNonMovable</ref>&amp;<sp/><ref refid="classNonCopyableAndNonMovable_a972632a389e0f2370de9604df60ea9d6_1a972632a389e0f2370de9604df60ea9d6" kindref="member">operator=</ref>(<sp/><ref refid="classNonCopyableAndNonMovable" kindref="compound">NonCopyableAndNonMovable</ref><sp/>&amp;&amp;rhs<sp/>)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="29" refid="classNonCopyableAndNonMovable_aa6874bb9a99fe151e8c2eda429fe5867_1aa6874bb9a99fe151e8c2eda429fe5867" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNonCopyableAndNonMovable_aa6874bb9a99fe151e8c2eda429fe5867_1aa6874bb9a99fe151e8c2eda429fe5867" kindref="member">~NonCopyableAndNonMovable</ref>()<sp/>noexcept<sp/>=<sp/>default;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classNonAssignable" refkind="compound"><highlight class="normal">class<sp/><ref refid="classNonAssignable" kindref="compound">NonAssignable</ref></highlight></codeline>
+<codeline lineno="33"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="35" refid="classNonAssignable_a7e74521669e0eb4b4de284cef74e5ece_1a7e74521669e0eb4b4de284cef74e5ece" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNonAssignable_a7e74521669e0eb4b4de284cef74e5ece_1a7e74521669e0eb4b4de284cef74e5ece" kindref="member">NonAssignable</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="36" refid="classNonAssignable_a4a8d37fc9697cf1841d0f857d3951829_1a4a8d37fc9697cf1841d0f857d3951829" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNonAssignable_a4a8d37fc9697cf1841d0f857d3951829_1a4a8d37fc9697cf1841d0f857d3951829" kindref="member">NonAssignable</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNonAssignable" kindref="compound">NonAssignable</ref><sp/>&amp;rhs<sp/>)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//NonAssignable(<sp/>NonAssignable<sp/>&amp;rhs<sp/>)<sp/>=<sp/>default;<sp/><sp/><sp/><sp/>//<sp/>multiple<sp/>versions<sp/>of<sp/>a<sp/>defaulted<sp/>special<sp/>member<sp/>are<sp/>not<sp/>allowed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classNonAssignable_a203fd5bec7c9367a0a2873d1950eaace_1a203fd5bec7c9367a0a2873d1950eaace" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNonAssignable" kindref="compound">NonAssignable</ref>&amp;<sp/><ref refid="classNonAssignable_a203fd5bec7c9367a0a2873d1950eaace_1a203fd5bec7c9367a0a2873d1950eaace" kindref="member">operator=</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNonAssignable" kindref="compound">NonAssignable</ref><sp/>&amp;rhs<sp/>)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="39" refid="classNonAssignable_ab64cbabfeea05c9c628a79f8792cbce6_1ab64cbabfeea05c9c628a79f8792cbce6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNonAssignable" kindref="compound">NonAssignable</ref>&amp;<sp/><ref refid="classNonAssignable_ab64cbabfeea05c9c628a79f8792cbce6_1ab64cbabfeea05c9c628a79f8792cbce6" kindref="member">operator=</ref>(<sp/><ref refid="classNonAssignable" kindref="compound">NonAssignable</ref><sp/>&amp;rhs<sp/>)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="40" refid="classNonAssignable_a6a7e74b85940a32bbb1a772e3b5347f2_1a6a7e74b85940a32bbb1a772e3b5347f2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNonAssignable_a6a7e74b85940a32bbb1a772e3b5347f2_1a6a7e74b85940a32bbb1a772e3b5347f2" kindref="member">NonAssignable</ref>(<sp/><ref refid="classNonAssignable" kindref="compound">NonAssignable</ref><sp/>&amp;&amp;rhs<sp/>)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="41" refid="classNonAssignable_af015afab26199d8b8fb97fb3ba8f5a64_1af015afab26199d8b8fb97fb3ba8f5a64" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNonAssignable" kindref="compound">NonAssignable</ref>&amp;<sp/><ref refid="classNonAssignable_af015afab26199d8b8fb97fb3ba8f5a64_1af015afab26199d8b8fb97fb3ba8f5a64" kindref="member">operator=</ref>(<sp/><ref refid="classNonAssignable" kindref="compound">NonAssignable</ref><sp/>&amp;&amp;rhs<sp/>)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="43" refid="classNonAssignable_a505b71e803c930314cacc61244c0edf4_1a505b71e803c930314cacc61244c0edf4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNonAssignable_a505b71e803c930314cacc61244c0edf4_1a505b71e803c930314cacc61244c0edf4" kindref="member">~NonAssignable</ref>()<sp/>noexcept<sp/>=<sp/>default;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/non_copyable.h"/>
+  </compounddef>
+</doxygen>

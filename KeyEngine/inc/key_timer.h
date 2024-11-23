@@ -7,15 +7,15 @@
 #include "math_utils.h"
 
 
-//=============================================================
-//	\class	KeyTimer<Resolution>
-//	\author	KeyC0de
-//	\date	2020/09/23 15:26
-//	\brief	the KeyTimer that records time like a badass
-//			Resolution specified the accuracy of the KeyTimer
-//			output values are always displayed in milliseconds
-//			the KeyTimer can also wait for a specified amount of time pausing execution
-//=============================================================
+///=============================================================
+/// \class	KeyTimer<Resolution>
+/// \author	KeyC0de
+/// \date	2020/09/23 15:26
+/// \brief	the KeyTimer that records time like a badass
+/// \brief	Resolution specified the accuracy of the KeyTimer
+/// \brief	output values are always displayed in milliseconds
+/// \brief	the KeyTimer can also wait for a specified amount of time pausing execution
+///=============================================================
 template<typename Resolution = std::chrono::milliseconds>
 class KeyTimer final
 	: NonCopyableAndNonMovable
@@ -68,10 +68,7 @@ public:
 		m_start = std::chrono::time_point_cast<Resolution>( TClock::time_point::min() );
 	}
 
-	//===================================================
-	//	\function	getMilliSecondsFromStart
-	//	\brief	returns the duration between m_start and now in milliseconds
-	//	\date	2020/09/13 19:15
+	/// \brief	returns the duration between m_start and now in milliseconds
 	constexpr size_t getMilliSecondsFromStart() noexcept
 	{
 		if constexpr( std::is_same_v<Resolution, std::chrono::nanoseconds> )
@@ -100,10 +97,7 @@ public:
 		return this->m_duration;
 	}
 
-	//===================================================
-	//	\function	getSecondsFromStart
-	//	\brief	returns the duration between m_start and now in seconds
-	//	\date	2020/09/13 19:15
+	/// \brief	returns the duration between m_start and now in seconds
 	constexpr float getSecondsFromStart() noexcept
 	{
 		float ret;
@@ -133,12 +127,8 @@ public:
 		return ret;
 	}
 
-	//===================================================
-	//	\function	getTimeElapsed
-	//	\brief	marks a lap
-	//			returns duration in targeted Time Resolution between successive calls of the function and
-	//			marks the current time
-	//	\date	2020/09/13 19:20
+	/// \brief	marks a lap, which marks the current time
+	/// \brief	returns duration in targeted Time Resolution between successive calls of the function and
 	float getTimeElapsed() noexcept
 	{
 		const auto old = m_last;
@@ -146,11 +136,8 @@ public:
 		return static_cast<float>( std::chrono::duration_cast<Resolution>( m_last - old ).count() );
 	}
 
-	//===================================================
-	//	\function	getTimeElapsedSecs
-	//	\brief	marks a lap
-	//			returns duration in seconds
-	//	\date	2020/09/13 19:20
+	/// \brief	marks a lap
+	/// \brief	returns duration in seconds
 	float getTimeElapsedSecs() noexcept
 	{
 		const auto old = m_last;
@@ -175,19 +162,13 @@ public:
 		return ret;
 	}
 
-	//===================================================
-	//	\function	peekTimeElapsed
-	//	\brief	returns duration between the last call of getTimeElapsed() and now
-	//	\date	2020/09/13 19:26
+	/// \brief	returns duration between the last call of getTimeElapsed() and now
 	float peekTimeElapsed() const noexcept
 	{
 		return static_cast<float>( std::chrono::duration_cast<Resolution>( TClock::now() - m_last ).count() );
 	}
 
-	//===================================================
-	//	\function	lap
-	//	\brief	works like getTimeElapsed/getTimeElapsedSecs but may be more performant
-	//	\date	2021/01/12 17:03
+	/// \brief	works like getTimeElapsed/getTimeElapsedSecs but may be more performant
 	float lap() noexcept
 	{
 		const auto old = m_last;
@@ -197,10 +178,7 @@ public:
 	}
 
 #pragma region sleepFor
-	//===================================================
-	//	\function	sleepFor
-	//	\brief	delays execution of this_thread for the amount of time specified (in milliseconds, or microseconds)
-	//	\date	2020/10/01 11:05
+	/// \brief	delays execution of this_thread for the amount of time specified (in milliseconds, or microseconds)
 	static void sleepFor( const float t )
 	{
 		const auto ms = static_cast<std::uint64_t>( t );

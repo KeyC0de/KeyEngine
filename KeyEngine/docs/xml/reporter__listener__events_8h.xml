@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="reporter__listener__events_8h" kind="file" language="C++">
+    <compoundname>reporter_listener_events.h</compoundname>
+    <includes local="no">string</includes>
+    <includedby refid="game_8h" local="yes">inc/game.h</includedby>
+    <includedby refid="graphics_8cpp" local="yes">src/graphics.cpp</includedby>
+    <includedby refid="key__sound_8cpp" local="yes">src/key_sound.cpp</includedby>
+    <includedby refid="reporter__access_8cpp" local="yes">src/reporter_access.cpp</includedby>
+    <includedby refid="ui__component_8cpp" local="yes">src/ui_component.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>inc/reporter_listener_events.h</label>
+        <link refid="reporter__listener__events_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>string</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>inc/game.h</label>
+        <link refid="game_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/reporter_listener_events.h</label>
+        <link refid="reporter__listener__events_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>src/game.cpp</label>
+        <link refid="game_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/graphics.cpp</label>
+        <link refid="graphics_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/key_sound.cpp</label>
+        <link refid="key__sound_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="7">
+        <label>src/reporter_access.cpp</label>
+        <link refid="reporter__access_8cpp"/>
+      </node>
+      <node id="8">
+        <label>src/ui_component.cpp</label>
+        <link refid="ui__component_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structSwapChainResizedEvent" prot="public">SwapChainResizedEvent</innerclass>
+    <innerclass refid="structUISoundEvent" prot="public">UISoundEvent</innerclass>
+    <innerclass refid="structUserPropertyChanged" prot="public">UserPropertyChanged</innerclass>
+    <innerclass refid="structUiMsg" prot="public">UiMsg</innerclass>
+    <innernamespace refid="namespacegui">gui</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classGraphics" kindref="compound">Graphics</ref>;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacegui" kindref="compound">gui</ref></highlight></codeline>
+<codeline lineno="9"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Component;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="structSwapChainResizedEvent" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structSwapChainResizedEvent" kindref="compound">SwapChainResizedEvent</ref></highlight></codeline>
+<codeline lineno="17"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="18" refid="structSwapChainResizedEvent_afd16eb6b0ce40fec5c0293984162f5bf_1afd16eb6b0ce40fec5c0293984162f5bf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;<ref refid="structSwapChainResizedEvent_afd16eb6b0ce40fec5c0293984162f5bf_1afd16eb6b0ce40fec5c0293984162f5bf" kindref="member">gfx</ref>;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="structUISoundEvent" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structUISoundEvent" kindref="compound">UISoundEvent</ref></highlight></codeline>
+<codeline lineno="22"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="23" refid="structUISoundEvent_a324aa5866f6d08effd4864d11796047f_1a324aa5866f6d08effd4864d11796047f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="structUISoundEvent_a324aa5866f6d08effd4864d11796047f_1a324aa5866f6d08effd4864d11796047f" kindref="member">SoundType</ref></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="25" refid="structUISoundEvent_a324aa5866f6d08effd4864d11796047f_1a324aa5866f6d08effd4864d11796047faed4436f06acc902b7713999999d95d8d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structUISoundEvent_a324aa5866f6d08effd4864d11796047f_1a324aa5866f6d08effd4864d11796047faed4436f06acc902b7713999999d95d8d" kindref="member">Component_Hovered</ref>,</highlight></codeline>
+<codeline lineno="26" refid="structUISoundEvent_a324aa5866f6d08effd4864d11796047f_1a324aa5866f6d08effd4864d11796047fafbf07ec633d0aa76e7cd7378c97a1fc4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structUISoundEvent_a324aa5866f6d08effd4864d11796047f_1a324aa5866f6d08effd4864d11796047fafbf07ec633d0aa76e7cd7378c97a1fc4" kindref="member">Component_Unhovered</ref>,</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="28" refid="structUISoundEvent_a964bfc8559ea04e0ad9c6eb38eb02224_1a964bfc8559ea04e0ad9c6eb38eb02224" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structUISoundEvent_a324aa5866f6d08effd4864d11796047f_1a324aa5866f6d08effd4864d11796047f" kindref="member">SoundType</ref><sp/><ref refid="structUISoundEvent_a964bfc8559ea04e0ad9c6eb38eb02224_1a964bfc8559ea04e0ad9c6eb38eb02224" kindref="member">m_soundType</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="structUISoundEvent_ac72d4f677eeed4b461cc1345533b8832_1ac72d4f677eeed4b461cc1345533b8832" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="structUISoundEvent_ac72d4f677eeed4b461cc1345533b8832_1ac72d4f677eeed4b461cc1345533b8832" kindref="member">getSoundPath</ref>(<sp/><ref refid="structUISoundEvent_a324aa5866f6d08effd4864d11796047f_1a324aa5866f6d08effd4864d11796047f" kindref="member">SoundType</ref><sp/>soundType<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(<sp/>soundType<sp/>)</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="structUISoundEvent_a324aa5866f6d08effd4864d11796047f_1a324aa5866f6d08effd4864d11796047faed4436f06acc902b7713999999d95d8d" kindref="member">Component_Hovered</ref>:</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;assets/sfx/611451__eminyildirim__ui-click-menu-hover_16_bit.wav&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="structUISoundEvent_a324aa5866f6d08effd4864d11796047f_1a324aa5866f6d08effd4864d11796047fafbf07ec633d0aa76e7cd7378c97a1fc4" kindref="member">Component_Unhovered</ref>:</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="structUserPropertyChanged" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structUserPropertyChanged" kindref="compound">UserPropertyChanged</ref></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="46" refid="structUserPropertyChanged_a2d3015520bc250b949676f85e22440a4_1a2d3015520bc250b949676f85e22440a4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classgui_1_1Component" kindref="compound">gui::Component</ref>*<sp/><ref refid="structUserPropertyChanged_a2d3015520bc250b949676f85e22440a4_1a2d3015520bc250b949676f85e22440a4" kindref="member">comp</ref>;</highlight></codeline>
+<codeline lineno="47" refid="structUserPropertyChanged_a781bf493e13748580a7c0f0d4ac21aa6_1a781bf493e13748580a7c0f0d4ac21aa6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structUserPropertyChanged_a781bf493e13748580a7c0f0d4ac21aa6_1a781bf493e13748580a7c0f0d4ac21aa6" kindref="member">propertyName</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="structUiMsg" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structUiMsg" kindref="compound">UiMsg</ref></highlight></codeline>
+<codeline lineno="58"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="60" refid="structUiMsg_ad68dc035df4cedcc37efa64b4d7b7ab4_1ad68dc035df4cedcc37efa64b4d7b7ab4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structUiMsg_ad68dc035df4cedcc37efa64b4d7b7ab4_1ad68dc035df4cedcc37efa64b4d7b7ab4" kindref="member">m_msgId</ref>;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>id<sp/>of<sp/>ui<sp/>message</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="62" refid="structUiMsg_adfad73b3c73f93418e80a4e02b81aba0_1adfad73b3c73f93418e80a4e02b81aba0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structUiMsg_adfad73b3c73f93418e80a4e02b81aba0_1adfad73b3c73f93418e80a4e02b81aba0" kindref="member">UiMsg</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="64" refid="structUiMsg_aea744f632449e9fbc54d8ce9ac3430cb_1aea744f632449e9fbc54d8ce9ac3430cb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structUiMsg_aea744f632449e9fbc54d8ce9ac3430cb_1aea744f632449e9fbc54d8ce9ac3430cb" kindref="member">UiMsg</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;msg_id<sp/>)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structUiMsg_ad68dc035df4cedcc37efa64b4d7b7ab4_1ad68dc035df4cedcc37efa64b4d7b7ab4" kindref="member">m_msgId</ref>(msg_id)</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="70" refid="structUiMsg_a607596242f828531fd00e07f892d411a_1a607596242f828531fd00e07f892d411a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structUiMsg_a607596242f828531fd00e07f892d411a_1a607596242f828531fd00e07f892d411a" kindref="member">UiMsg</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*msg_id<sp/>)</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structUiMsg_ad68dc035df4cedcc37efa64b4d7b7ab4_1ad68dc035df4cedcc37efa64b4d7b7ab4" kindref="member">m_msgId</ref>(msg_id)</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="76" refid="structUiMsg_a6530da64ee51ba5c88ea4acbe74d015f_1a6530da64ee51ba5c88ea4acbe74d015f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/><ref refid="structUiMsg_a6530da64ee51ba5c88ea4acbe74d015f_1a6530da64ee51ba5c88ea4acbe74d015f" kindref="member">id</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structUiMsg_ad68dc035df4cedcc37efa64b4d7b7ab4_1ad68dc035df4cedcc37efa64b4d7b7ab4" kindref="member">m_msgId</ref>;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/reporter_listener_events.h"/>
+  </compounddef>
+</doxygen>

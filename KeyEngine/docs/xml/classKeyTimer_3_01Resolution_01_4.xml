@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classKeyTimer_3_01Resolution_01_4" kind="class" language="C++" prot="public">
+    <compoundname>KeyTimer&lt; Resolution &gt;</compoundname>
+    <includes refid="key__timer_8h" local="no">key_timer.h</includes>
+    <briefdescription>
+<para>the <ref refid="classKeyTimer" kindref="compound">KeyTimer</ref> that records time like a badass </para>
+    </briefdescription>
+    <detaileddescription>
+<para>=============================================================</para>
+<para><simplesect kind="author"><para>KeyC0de </para>
+</simplesect>
+<simplesect kind="date"><para>2020/09/23 15:26</para>
+</simplesect>
+Resolution specified the accuracy of the <ref refid="classKeyTimer" kindref="compound">KeyTimer</ref></para>
+<para>output values are always displayed in milliseconds <heading level="1">the <ref refid="classKeyTimer" kindref="compound">KeyTimer</ref> can also wait for a specified amount of time pausing execution </heading>
+</para>
+    </detaileddescription>
+    <location file="inc/key_timer.h" line="11" column="1"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

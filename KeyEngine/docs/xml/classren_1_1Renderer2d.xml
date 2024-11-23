@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classren_1_1Renderer2d" kind="class" language="C++" prot="public">
+    <compoundname>ren::Renderer2d</compoundname>
+    <basecompoundref refid="classren_1_1Renderer" prot="public" virt="non-virtual">ren::Renderer</basecompoundref>
+    <includes refid="renderer_8h" local="no">renderer.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classren_1_1Renderer2d_a8e7530c00c6cecb780698c8bf8e5f568_1a8e7530c00c6cecb780698c8bf8e5f568" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ren::Renderer2d::Renderer2d</definition>
+        <argsstring>(Graphics &amp;gfx)</argsstring>
+        <name>Renderer2d</name>
+        <qualifiedname>ren::Renderer2d::Renderer2d</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/renderer.h" line="102" column="1" bodyfile="src/renderer.cpp" bodystart="609" bodyend="614"/>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1Renderer2d_a910d5e8a5d26cdc2c4eaf7a30dd304af_1a910d5e8a5d26cdc2c4eaf7a30dd304af" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ren::Renderer2d::recreate</definition>
+        <argsstring>(Graphics &amp;gfx) override</argsstring>
+        <name>recreate</name>
+        <qualifiedname>ren::Renderer2d::recreate</qualifiedname>
+        <reimplements refid="classren_1_1Renderer_ae20ba92f5c1d98a6bcb0a04e258991f4_1ae20ba92f5c1d98a6bcb0a04e258991f4">recreate</reimplements>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/renderer.h" line="104" column="6" bodyfile="src/renderer.cpp" bodystart="616" bodyend="629"/>
+        <referencedby refid="classren_1_1Renderer2d_a8e7530c00c6cecb780698c8bf8e5f568_1a8e7530c00c6cecb780698c8bf8e5f568" compoundref="renderer_8cpp" startline="609" endline="614">Renderer2d</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>ren::Renderer</label>
+        <link refid="classren_1_1Renderer"/>
+      </node>
+      <node id="1">
+        <label>ren::Renderer2d</label>
+        <link refid="classren_1_1Renderer2d"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>ren::Renderer</label>
+        <link refid="classren_1_1Renderer"/>
+      </node>
+      <node id="1">
+        <label>ren::Renderer2d</label>
+        <link refid="classren_1_1Renderer2d"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/renderer.h" line="98" column="1" bodyfile="inc/renderer.h" bodystart="100" bodyend="105"/>
+    <listofallmembers>
+      <member refid="classren_1_1Renderer_afefad320dd9bae3f7d22b382bfd1d5bc_1afefad320dd9bae3f7d22b382bfd1d5bc" prot="protected" virt="non-virtual"><scope>ren::Renderer2d</scope><name>addGlobalBinder</name></member>
+      <member refid="classren_1_1Renderer_ac15c40de52d25e712c8f95b0b758114e_1ac15c40de52d25e712c8f95b0b758114e" prot="protected" virt="non-virtual"><scope>ren::Renderer2d</scope><name>addGlobalLinker</name></member>
+      <member refid="classren_1_1Renderer_a5a6320465c595b0b1bddd2c330678d88_1a5a6320465c595b0b1bddd2c330678d88" prot="protected" virt="non-virtual"><scope>ren::Renderer2d</scope><name>addPass</name></member>
+      <member refid="classren_1_1Renderer_a12d7d108754fc228d0c157b350f965d7_1a12d7d108754fc228d0c157b350f965d7" prot="protected" virt="non-virtual"><scope>ren::Renderer2d</scope><name>getPass</name></member>
+      <member refid="classren_1_1Renderer_a9cb92496179a0e4d85037ce03ee07475_1a9cb92496179a0e4d85037ce03ee07475" prot="public" virt="non-virtual"><scope>ren::Renderer2d</scope><name>getRenderQueuePass</name></member>
+      <member refid="classren_1_1Renderer_a810fc6594a4b225e51e54aed0b28dcf6_1a810fc6594a4b225e51e54aed0b28dcf6" prot="public" virt="non-virtual"><scope>ren::Renderer2d</scope><name>isUsingOffscreenRendering</name></member>
+      <member refid="classren_1_1Renderer_a007187fada4994fb8912be70dcc4aa1f_1a007187fada4994fb8912be70dcc4aa1f" prot="protected" virt="non-virtual"><scope>ren::Renderer2d</scope><name>linkGlobalBinders</name></member>
+      <member refid="classren_1_1Renderer_a9ae7a8a655f01eb7bf44e63c27448f99_1a9ae7a8a655f01eb7bf44e63c27448f99" prot="private" virt="non-virtual"><scope>ren::Renderer2d</scope><name>linkPassBinders</name></member>
+      <member refid="classren_1_1Renderer_af0aa20f264507605ced6ae4385799d8e_1af0aa20f264507605ced6ae4385799d8e" prot="protected" virt="non-virtual"><scope>ren::Renderer2d</scope><name>m_bUsesOffscreen</name></member>
+      <member refid="classren_1_1Renderer_aa06e4a5dce3c714d10c78b5034215c65_1aa06e4a5dce3c714d10c78b5034215c65" prot="private" virt="non-virtual"><scope>ren::Renderer2d</scope><name>m_bValidatedPasses</name></member>
+      <member refid="classren_1_1Renderer_a36dec28555a118fb8fda6da31b48f763_1a36dec28555a118fb8fda6da31b48f763" prot="private" virt="non-virtual"><scope>ren::Renderer2d</scope><name>m_globalBinders</name></member>
+      <member refid="classren_1_1Renderer_ac111bc3886db540e5304924719e06fea_1ac111bc3886db540e5304924719e06fea" prot="private" virt="non-virtual"><scope>ren::Renderer2d</scope><name>m_globalLinkers</name></member>
+      <member refid="classren_1_1Renderer_af737ba7e14287ff34496ae7c9ba2cc3e_1af737ba7e14287ff34496ae7c9ba2cc3e" prot="private" virt="non-virtual"><scope>ren::Renderer2d</scope><name>m_passes</name></member>
+      <member refid="classren_1_1Renderer_a97b542b21987b7df6560c3327f89e2aa_1a97b542b21987b7df6560c3327f89e2aa" prot="protected" virt="non-virtual"><scope>ren::Renderer2d</scope><name>m_pDsv</name></member>
+      <member refid="classren_1_1Renderer_abbbe922d48fe9c2f02cb2cf454bb3c96_1abbbe922d48fe9c2f02cb2cf454bb3c96" prot="protected" virt="non-virtual"><scope>ren::Renderer2d</scope><name>m_pFinalPostProcessPass</name></member>
+      <member refid="classren_1_1Renderer_a7b79ebe1dd8b11bb7f762152f8f57720_1a7b79ebe1dd8b11bb7f762152f8f57720" prot="protected" virt="non-virtual"><scope>ren::Renderer2d</scope><name>m_pRtv</name></member>
+      <member refid="classren_1_1Renderer_adcff6686a1d6685acee17ebc9b9677d3_1adcff6686a1d6685acee17ebc9b9677d3" prot="private" virt="non-virtual"><scope>ren::Renderer2d</scope><name>offscreenToBackBufferSwap</name></member>
+      <member refid="classren_1_1Renderer2d_a910d5e8a5d26cdc2c4eaf7a30dd304af_1a910d5e8a5d26cdc2c4eaf7a30dd304af" prot="public" virt="virtual"><scope>ren::Renderer2d</scope><name>recreate</name></member>
+      <member refid="classren_1_1Renderer_a0b75fa1102c3a19fa22f0ee847f85e49_1a0b75fa1102c3a19fa22f0ee847f85e49" prot="public" virt="non-virtual"><scope>ren::Renderer2d</scope><name>Renderer</name></member>
+      <member refid="classren_1_1Renderer2d_a8e7530c00c6cecb780698c8bf8e5f568_1a8e7530c00c6cecb780698c8bf8e5f568" prot="public" virt="non-virtual"><scope>ren::Renderer2d</scope><name>Renderer2d</name></member>
+      <member refid="classren_1_1Renderer_ab6665daa173077d48680689f6c1d3ecf_1ab6665daa173077d48680689f6c1d3ecf" prot="public" virt="virtual"><scope>ren::Renderer2d</scope><name>reset</name></member>
+      <member refid="classren_1_1Renderer_a2d83d7207a80302f16ae4e8e082a572a_1a2d83d7207a80302f16ae4e8e082a572a" prot="public" virt="non-virtual"><scope>ren::Renderer2d</scope><name>run</name></member>
+      <member refid="classren_1_1Renderer_ac7031cf5bbcadcf0c7ce0cfe450a9711_1ac7031cf5bbcadcf0c7ce0cfe450a9711" prot="protected" virt="non-virtual"><scope>ren::Renderer2d</scope><name>setupGlobalBinderTarget</name></member>
+      <member refid="classren_1_1Renderer_ac05409fe49000fe8f9a2eabed45b4757_1ac05409fe49000fe8f9a2eabed45b4757" prot="private" virt="non-virtual"><scope>ren::Renderer2d</scope><name>validateBindersLinkage</name></member>
+      <member refid="classren_1_1Renderer_ac73a62446f1263fb388eb41f0b739ddf_1ac73a62446f1263fb388eb41f0b739ddf" prot="public" virt="virtual"><scope>ren::Renderer2d</scope><name>~Renderer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

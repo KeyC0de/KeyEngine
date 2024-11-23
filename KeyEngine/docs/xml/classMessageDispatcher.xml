@@ -1,0 +1,266 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classMessageDispatcher" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>MessageDispatcher</compoundname>
+    <basecompoundref refid="classNonCopyable" prot="public" virt="non-virtual">NonCopyable</basecompoundref>
+    <includes refid="message__queue__bus__dispatcher_8h" local="no">message_queue_bus_dispatcher.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classMessageDispatcher_addbf4f6ed8cd98fea50341827ac8476b_1addbf4f6ed8cd98fea50341827ac8476b" prot="private" static="no" mutable="no">
+        <type><ref refid="classMessageBus" kindref="compound">MessageBus</ref></type>
+        <definition>MessageBus MessageDispatcher::m_mb</definition>
+        <argsstring></argsstring>
+        <name>m_mb</name>
+        <qualifiedname>MessageDispatcher::m_mb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/message_queue_bus_dispatcher.h" line="68" column="12" bodyfile="inc/message_queue_bus_dispatcher.h" bodystart="68" bodyend="-1"/>
+        <referencedby refid="classMessageDispatcher_a1965dca63a394952ac2d0c4845b5ce61_1a1965dca63a394952ac2d0c4845b5ce61" compoundref="message__queue__bus__dispatcher_8cpp" startline="147" endline="150">addMessage</referencedby>
+        <referencedby refid="classMessageDispatcher_a567945bff2a283bd5143036743c0c8c1_1a567945bff2a283bd5143036743c0c8c1" compoundref="message__queue__bus__dispatcher_8cpp" startline="176" endline="179">clear</referencedby>
+        <referencedby refid="classMessageDispatcher_adf8ef455119ea22ff7ab9bfad3ffffd6_1adf8ef455119ea22ff7ab9bfad3ffffd6" compoundref="message__queue__bus__dispatcher_8cpp" startline="152" endline="164">dispatchAll</referencedby>
+        <referencedby refid="classMessageDispatcher_a14b3a48e0102f1431e5c98acb420883f_1a14b3a48e0102f1431e5c98acb420883f" compoundref="message__queue__bus__dispatcher_8cpp" startline="171" endline="174">getCapacity</referencedby>
+        <referencedby refid="classMessageDispatcher_a987a81db38368b17ad63a4a0bcffac06_1a987a81db38368b17ad63a4a0bcffac06" compoundref="message__queue__bus__dispatcher_8cpp" startline="166" endline="169">getSize</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classMessageDispatcher_afb9b280725d98139078d0ff70d9184d7_1afb9b280725d98139078d0ff70d9184d7" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MessageDispatcher::MessageDispatcher</definition>
+        <argsstring>(const int initialCapacity)</argsstring>
+        <name>MessageDispatcher</name>
+        <qualifiedname>MessageDispatcher::MessageDispatcher</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>initialCapacity</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/message_queue_bus_dispatcher.h" line="70" column="1" bodyfile="src/message_queue_bus_dispatcher.cpp" bodystart="120" bodyend="125"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classMessageDispatcher_aae7761b005e409403fae393855c11db6_1aae7761b005e409403fae393855c11db6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>MessageDispatcher::~MessageDispatcher</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>~MessageDispatcher</name>
+        <qualifiedname>MessageDispatcher::~MessageDispatcher</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/message_queue_bus_dispatcher.h" line="72" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classMessageDispatcher_a54c87d777197854caa4235edcca7434a_1a54c87d777197854caa4235edcca7434a" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>MessageDispatcher::MessageDispatcher</definition>
+        <argsstring>(MessageDispatcher &amp;&amp;rhs) noexcept</argsstring>
+        <name>MessageDispatcher</name>
+        <qualifiedname>MessageDispatcher::MessageDispatcher</qualifiedname>
+        <param>
+          <type><ref refid="classMessageDispatcher" kindref="compound">MessageDispatcher</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/message_queue_bus_dispatcher.h" line="73" column="1" bodyfile="src/message_queue_bus_dispatcher.cpp" bodystart="127" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="classMessageDispatcher_a99ddac95e38f4656990aee38b55270bc_1a99ddac95e38f4656990aee38b55270bc" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classMessageDispatcher" kindref="compound">MessageDispatcher</ref> &amp;</type>
+        <definition>MessageDispatcher &amp; MessageDispatcher::operator=</definition>
+        <argsstring>(MessageDispatcher &amp;&amp;rhs) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>MessageDispatcher::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classMessageDispatcher" kindref="compound">MessageDispatcher</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/message_queue_bus_dispatcher.h" line="74" column="19" bodyfile="src/message_queue_bus_dispatcher.cpp" bodystart="134" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="classMessageDispatcher_a1965dca63a394952ac2d0c4845b5ce61_1a1965dca63a394952ac2d0c4845b5ce61" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MessageDispatcher::addMessage</definition>
+        <argsstring>(Message *msg)</argsstring>
+        <name>addMessage</name>
+        <qualifiedname>MessageDispatcher::addMessage</qualifiedname>
+        <param>
+          <type><ref refid="classMessage" kindref="compound">Message</ref> *</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+<para>add new message to the <ref refid="classMessageBus" kindref="compound">MessageBus</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/message_queue_bus_dispatcher.h" line="78" column="6" bodyfile="src/message_queue_bus_dispatcher.cpp" bodystart="147" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="classMessageDispatcher_adf8ef455119ea22ff7ab9bfad3ffffd6_1adf8ef455119ea22ff7ab9bfad3ffffd6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MessageDispatcher::dispatchAll</definition>
+        <argsstring>()</argsstring>
+        <name>dispatchAll</name>
+        <qualifiedname>MessageDispatcher::dispatchAll</qualifiedname>
+        <briefdescription>
+<para>dispatch all pending messages </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/message_queue_bus_dispatcher.h" line="80" column="6" bodyfile="src/message_queue_bus_dispatcher.cpp" bodystart="152" bodyend="164"/>
+      </memberdef>
+      <memberdef kind="function" id="classMessageDispatcher_a567945bff2a283bd5143036743c0c8c1_1a567945bff2a283bd5143036743c0c8c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MessageDispatcher::clear</definition>
+        <argsstring>()</argsstring>
+        <name>clear</name>
+        <qualifiedname>MessageDispatcher::clear</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/message_queue_bus_dispatcher.h" line="83" column="6" bodyfile="src/message_queue_bus_dispatcher.cpp" bodystart="176" bodyend="179"/>
+      </memberdef>
+      <memberdef kind="function" id="classMessageDispatcher_a987a81db38368b17ad63a4a0bcffac06_1a987a81db38368b17ad63a4a0bcffac06" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>std::size_t</type>
+        <definition>std::size_t MessageDispatcher::getSize</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getSize</name>
+        <qualifiedname>MessageDispatcher::getSize</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/message_queue_bus_dispatcher.h" line="85" column="13" bodyfile="src/message_queue_bus_dispatcher.cpp" bodystart="166" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="classMessageDispatcher_a14b3a48e0102f1431e5c98acb420883f_1a14b3a48e0102f1431e5c98acb420883f" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>std::size_t</type>
+        <definition>std::size_t MessageDispatcher::getCapacity</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getCapacity</name>
+        <qualifiedname>MessageDispatcher::getCapacity</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/message_queue_bus_dispatcher.h" line="86" column="13" bodyfile="src/message_queue_bus_dispatcher.cpp" bodystart="171" bodyend="174"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classMessageDispatcher_a0481f9fa137bdb67d0feedc6535a9c5b_1a0481f9fa137bdb67d0feedc6535a9c5b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classMessageDispatcher" kindref="compound">MessageDispatcher</ref> &amp;</type>
+        <definition>MessageDispatcher &amp; MessageDispatcher::getInstance</definition>
+        <argsstring>(const int initialCapacity=100)</argsstring>
+        <name>getInstance</name>
+        <qualifiedname>MessageDispatcher::getInstance</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>initialCapacity</declname>
+          <defval>100</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/message_queue_bus_dispatcher.h" line="76" column="26" bodyfile="src/message_queue_bus_dispatcher.cpp" bodystart="141" bodyend="145"/>
+        <referencedby refid="classEntity_a14ed30fc6bd75271d4d0ca80133079a7_1a14ed30fc6bd75271d4d0ca80133079a7" compoundref="entity_8cpp" startline="174" endline="178">Entity::sendMessage</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Meyer&apos;s singleton class. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>============================================================</para>
+<para><simplesect kind="author"><para>KeyC0de </para>
+</simplesect>
+<simplesect kind="date"><para>2019/12/09 17:15 <heading level="1">owns &amp; manages the MessageBus/Queue </heading>
+</para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>MessageDispatcher</label>
+        <link refid="classMessageDispatcher"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>NonCopyable</label>
+        <link refid="classNonCopyable"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>MessageBus</label>
+        <link refid="classMessageBus"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>MessageDispatcher</label>
+        <link refid="classMessageDispatcher"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>m_mb</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>NonCopyable</label>
+        <link refid="classNonCopyable"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/message_queue_bus_dispatcher.h" line="65" column="1" bodyfile="inc/message_queue_bus_dispatcher.h" bodystart="67" bodyend="87"/>
+    <listofallmembers>
+      <member refid="classMessageDispatcher_a1965dca63a394952ac2d0c4845b5ce61_1a1965dca63a394952ac2d0c4845b5ce61" prot="public" virt="non-virtual"><scope>MessageDispatcher</scope><name>addMessage</name></member>
+      <member refid="classMessageDispatcher_a567945bff2a283bd5143036743c0c8c1_1a567945bff2a283bd5143036743c0c8c1" prot="public" virt="non-virtual"><scope>MessageDispatcher</scope><name>clear</name></member>
+      <member refid="classMessageDispatcher_adf8ef455119ea22ff7ab9bfad3ffffd6_1adf8ef455119ea22ff7ab9bfad3ffffd6" prot="public" virt="non-virtual"><scope>MessageDispatcher</scope><name>dispatchAll</name></member>
+      <member refid="classMessageDispatcher_a14b3a48e0102f1431e5c98acb420883f_1a14b3a48e0102f1431e5c98acb420883f" prot="public" virt="non-virtual"><scope>MessageDispatcher</scope><name>getCapacity</name></member>
+      <member refid="classMessageDispatcher_a0481f9fa137bdb67d0feedc6535a9c5b_1a0481f9fa137bdb67d0feedc6535a9c5b" prot="public" virt="non-virtual"><scope>MessageDispatcher</scope><name>getInstance</name></member>
+      <member refid="classMessageDispatcher_a987a81db38368b17ad63a4a0bcffac06_1a987a81db38368b17ad63a4a0bcffac06" prot="public" virt="non-virtual"><scope>MessageDispatcher</scope><name>getSize</name></member>
+      <member refid="classMessageDispatcher_addbf4f6ed8cd98fea50341827ac8476b_1addbf4f6ed8cd98fea50341827ac8476b" prot="private" virt="non-virtual"><scope>MessageDispatcher</scope><name>m_mb</name></member>
+      <member refid="classMessageDispatcher_afb9b280725d98139078d0ff70d9184d7_1afb9b280725d98139078d0ff70d9184d7" prot="private" virt="non-virtual"><scope>MessageDispatcher</scope><name>MessageDispatcher</name></member>
+      <member refid="classMessageDispatcher_a54c87d777197854caa4235edcca7434a_1a54c87d777197854caa4235edcca7434a" prot="public" virt="non-virtual"><scope>MessageDispatcher</scope><name>MessageDispatcher</name></member>
+      <member refid="classNonCopyable_a809b6e4ade7ae32f6d248f2a3b783d45_1a809b6e4ade7ae32f6d248f2a3b783d45" prot="public" virt="non-virtual"><scope>MessageDispatcher</scope><name>NonCopyable</name></member>
+      <member refid="classNonCopyable_a15aa3015488bb26c47ded914cb630cf5_1a15aa3015488bb26c47ded914cb630cf5" prot="public" virt="non-virtual"><scope>MessageDispatcher</scope><name>NonCopyable</name></member>
+      <member refid="classNonCopyable_a487646562ae30ece23d7638f2aed1dde_1a487646562ae30ece23d7638f2aed1dde" prot="public" virt="non-virtual"><scope>MessageDispatcher</scope><name>NonCopyable</name></member>
+      <member refid="classNonCopyable_af716e4cfb79381710ef4490414939ae9_1af716e4cfb79381710ef4490414939ae9" prot="public" virt="non-virtual"><scope>MessageDispatcher</scope><name>NonCopyable</name></member>
+      <member refid="classMessageDispatcher_a99ddac95e38f4656990aee38b55270bc_1a99ddac95e38f4656990aee38b55270bc" prot="public" virt="non-virtual"><scope>MessageDispatcher</scope><name>operator=</name></member>
+      <member refid="classNonCopyable_af4788b57da9a9faa570c754c22c724f5_1af4788b57da9a9faa570c754c22c724f5" prot="public" virt="non-virtual" ambiguityscope="NonCopyable::"><scope>MessageDispatcher</scope><name>operator=</name></member>
+      <member refid="classNonCopyable_ae032ca32cda9c836c27b28eb6a087d18_1ae032ca32cda9c836c27b28eb6a087d18" prot="public" virt="non-virtual" ambiguityscope="NonCopyable::"><scope>MessageDispatcher</scope><name>operator=</name></member>
+      <member refid="classNonCopyable_af81816bd4c2c4421a6eab98843ead6e4_1af81816bd4c2c4421a6eab98843ead6e4" prot="public" virt="non-virtual" ambiguityscope="NonCopyable::"><scope>MessageDispatcher</scope><name>operator=</name></member>
+      <member refid="classMessageDispatcher_aae7761b005e409403fae393855c11db6_1aae7761b005e409403fae393855c11db6" prot="public" virt="non-virtual"><scope>MessageDispatcher</scope><name>~MessageDispatcher</name></member>
+      <member refid="classNonCopyable_a3e461fb46c72b9a5af7df7e74dbd899e_1a3e461fb46c72b9a5af7df7e74dbd899e" prot="protected" virt="non-virtual"><scope>MessageDispatcher</scope><name>~NonCopyable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

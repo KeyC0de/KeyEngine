@@ -1,0 +1,207 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classCubeTextureOffscreenRT" kind="class" language="C++" prot="public">
+    <compoundname>CubeTextureOffscreenRT</compoundname>
+    <basecompoundref refid="classIBindable" prot="public" virt="non-virtual">IBindable</basecompoundref>
+    <includes refid="cube__texture_8h" local="no">cube_texture.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classCubeTextureOffscreenRT_a5776455690d8a3e5a15fc50d8dfa6550_1a5776455690d8a3e5a15fc50d8dfa6550" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int CubeTextureOffscreenRT::m_slot</definition>
+        <argsstring></argsstring>
+        <name>m_slot</name>
+        <qualifiedname>CubeTextureOffscreenRT::m_slot</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/cube_texture.h" line="36" column="14" bodyfile="inc/cube_texture.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classCubeTextureOffscreenRT_a8016dcfd405ea4374bc30961d84d339a_1a8016dcfd405ea4374bc30961d84d339a" prot="protected" static="no" mutable="no">
+        <type>Microsoft::WRL::ComPtr&lt; ID3D11ShaderResourceView &gt;</type>
+        <definition>Microsoft::WRL::ComPtr&lt;ID3D11ShaderResourceView&gt; CubeTextureOffscreenRT::m_pD3dSrv</definition>
+        <argsstring></argsstring>
+        <name>m_pD3dSrv</name>
+        <qualifiedname>CubeTextureOffscreenRT::m_pD3dSrv</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/cube_texture.h" line="38" column="24" bodyfile="inc/cube_texture.h" bodystart="38" bodyend="-1"/>
+        <referencedby refid="classCubeTextureOffscreenRT_a3443a4a46383409c079a83b6eb8cd11d_1a3443a4a46383409c079a83b6eb8cd11d" compoundref="cube__texture_8cpp" startline="98" endline="125">CubeTextureOffscreenRT</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classCubeTextureOffscreenRT_ab112729a7663fb3f5c9650f5eb8852d5_1ab112729a7663fb3f5c9650f5eb8852d5" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classRenderTargetOutput" kindref="compound">RenderTargetOutput</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::shared_ptr&lt;RenderTargetOutput&gt; &gt; CubeTextureOffscreenRT::m_renderTargetViews</definition>
+        <argsstring></argsstring>
+        <name>m_renderTargetViews</name>
+        <qualifiedname>CubeTextureOffscreenRT::m_renderTargetViews</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/cube_texture.h" line="39" column="13" bodyfile="inc/cube_texture.h" bodystart="39" bodyend="-1"/>
+        <referencedby refid="classCubeTextureOffscreenRT_a3443a4a46383409c079a83b6eb8cd11d_1a3443a4a46383409c079a83b6eb8cd11d" compoundref="cube__texture_8cpp" startline="98" endline="125">CubeTextureOffscreenRT</referencedby>
+        <referencedby refid="classCubeTextureOffscreenRT_aa10d493216e222e276c3318e1937a4ee_1aa10d493216e222e276c3318e1937a4ee" compoundref="cube__texture_8cpp" startline="138" endline="141">accessRenderTarget</referencedby>
+        <referencedby refid="classCubeTextureOffscreenRT_abebcddc65e85f6937180a84f1bdd86e0_1abebcddc65e85f6937180a84f1bdd86e0" compoundref="cube__texture_8cpp" startline="133" endline="136">shareRenderTarget</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classCubeTextureOffscreenRT_a3443a4a46383409c079a83b6eb8cd11d_1a3443a4a46383409c079a83b6eb8cd11d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CubeTextureOffscreenRT::CubeTextureOffscreenRT</definition>
+        <argsstring>(Graphics &amp;gfx, const unsigned width, const unsigned height, const unsigned slot, const DXGI_FORMAT format)</argsstring>
+        <name>CubeTextureOffscreenRT</name>
+        <qualifiedname>CubeTextureOffscreenRT::CubeTextureOffscreenRT</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>height</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>slot</declname>
+        </param>
+        <param>
+          <type>const DXGI_FORMAT</type>
+          <declname>format</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/cube_texture.h" line="41" column="1" bodyfile="src/cube_texture.cpp" bodystart="98" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="classCubeTextureOffscreenRT_a86463c3c6cca882c031fcc24ab95c1ff_1a86463c3c6cca882c031fcc24ab95c1ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void CubeTextureOffscreenRT::bind</definition>
+        <argsstring>(Graphics &amp;gfx) cond_noex override</argsstring>
+        <name>bind</name>
+        <qualifiedname>CubeTextureOffscreenRT::bind</qualifiedname>
+        <reimplements refid="classIBindable_add4560f78e76629ee81ba701ba1052e1_1add4560f78e76629ee81ba701ba1052e1">bind</reimplements>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+<para>bind graphics resource to a certain stage of the graphics pipeline </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/cube_texture.h" line="43" column="6" bodyfile="src/cube_texture.cpp" bodystart="127" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="classCubeTextureOffscreenRT_abebcddc65e85f6937180a84f1bdd86e0_1abebcddc65e85f6937180a84f1bdd86e0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classRenderTargetOutput" kindref="compound">RenderTargetOutput</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; RenderTargetOutput &gt; CubeTextureOffscreenRT::shareRenderTarget</definition>
+        <argsstring>(const size_t index) const</argsstring>
+        <name>shareRenderTarget</name>
+        <qualifiedname>CubeTextureOffscreenRT::shareRenderTarget</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/cube_texture.h" line="44" column="17" bodyfile="src/cube_texture.cpp" bodystart="133" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="classCubeTextureOffscreenRT_aa10d493216e222e276c3318e1937a4ee_1aa10d493216e222e276c3318e1937a4ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classRenderTargetOutput" kindref="compound">RenderTargetOutput</ref> *</type>
+        <definition>RenderTargetOutput * CubeTextureOffscreenRT::accessRenderTarget</definition>
+        <argsstring>(const size_t index)</argsstring>
+        <name>accessRenderTarget</name>
+        <qualifiedname>CubeTextureOffscreenRT::accessRenderTarget</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/cube_texture.h" line="45" column="20" bodyfile="src/cube_texture.cpp" bodystart="138" bodyend="141"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>CubeTextureOffscreenRT</label>
+        <link refid="classCubeTextureOffscreenRT"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>GraphicsFriend</label>
+        <link refid="classGraphicsFriend"/>
+      </node>
+      <node id="2">
+        <label>IBindable</label>
+        <link refid="classIBindable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>CubeTextureOffscreenRT</label>
+        <link refid="classCubeTextureOffscreenRT"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>GraphicsFriend</label>
+        <link refid="classGraphicsFriend"/>
+      </node>
+      <node id="2">
+        <label>IBindable</label>
+        <link refid="classIBindable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/cube_texture.h" line="33" column="1" bodyfile="inc/cube_texture.h" bodystart="35" bodyend="46"/>
+    <listofallmembers>
+      <member refid="classIBindable_a608c5066b829febbd49cd82d1d1fa353_1a608c5066b829febbd49cd82d1d1fa353" prot="public" virt="virtual"><scope>CubeTextureOffscreenRT</scope><name>accept</name></member>
+      <member refid="classCubeTextureOffscreenRT_aa10d493216e222e276c3318e1937a4ee_1aa10d493216e222e276c3318e1937a4ee" prot="public" virt="non-virtual"><scope>CubeTextureOffscreenRT</scope><name>accessRenderTarget</name></member>
+      <member refid="classCubeTextureOffscreenRT_a86463c3c6cca882c031fcc24ab95c1ff_1a86463c3c6cca882c031fcc24ab95c1ff" prot="public" virt="virtual"><scope>CubeTextureOffscreenRT</scope><name>bind</name></member>
+      <member refid="classCubeTextureOffscreenRT_a3443a4a46383409c079a83b6eb8cd11d_1a3443a4a46383409c079a83b6eb8cd11d" prot="public" virt="non-virtual"><scope>CubeTextureOffscreenRT</scope><name>CubeTextureOffscreenRT</name></member>
+      <member refid="classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_1a175df79f82ab5a6dad1df24b5a242ef7" prot="protected" virt="non-virtual"><scope>CubeTextureOffscreenRT</scope><name>getDevice</name></member>
+      <member refid="classGraphicsFriend_a619e32893ab49ea6c5200e7c2d52e2f2_1a619e32893ab49ea6c5200e7c2d52e2f2" prot="protected" virt="non-virtual"><scope>CubeTextureOffscreenRT</scope><name>getDeviceContext</name></member>
+      <member refid="classIBindable_a7d88cdbd5d500d6d7f1bfabe16927855_1a7d88cdbd5d500d6d7f1bfabe16927855" prot="public" virt="virtual"><scope>CubeTextureOffscreenRT</scope><name>getUid</name></member>
+      <member refid="classCubeTextureOffscreenRT_a8016dcfd405ea4374bc30961d84d339a_1a8016dcfd405ea4374bc30961d84d339a" prot="protected" virt="non-virtual"><scope>CubeTextureOffscreenRT</scope><name>m_pD3dSrv</name></member>
+      <member refid="classCubeTextureOffscreenRT_ab112729a7663fb3f5c9650f5eb8852d5_1ab112729a7663fb3f5c9650f5eb8852d5" prot="protected" virt="non-virtual"><scope>CubeTextureOffscreenRT</scope><name>m_renderTargetViews</name></member>
+      <member refid="classCubeTextureOffscreenRT_a5776455690d8a3e5a15fc50d8dfa6550_1a5776455690d8a3e5a15fc50d8dfa6550" prot="private" virt="non-virtual"><scope>CubeTextureOffscreenRT</scope><name>m_slot</name></member>
+      <member refid="classIBindable_a4d590eebe80fa4e0aa865a875ff86c02_1a4d590eebe80fa4e0aa865a875ff86c02" prot="public" virt="virtual"><scope>CubeTextureOffscreenRT</scope><name>setDebugObjectName</name></member>
+      <member refid="classIBindable_a12fe8725cb3f4836f22d1592b07e2c91_1a12fe8725cb3f4836f22d1592b07e2c91" prot="public" virt="virtual"><scope>CubeTextureOffscreenRT</scope><name>setMesh</name></member>
+      <member refid="classCubeTextureOffscreenRT_abebcddc65e85f6937180a84f1bdd86e0_1abebcddc65e85f6937180a84f1bdd86e0" prot="public" virt="non-virtual"><scope>CubeTextureOffscreenRT</scope><name>shareRenderTarget</name></member>
+      <member refid="classIBindable_a7f68262ff85e25e9f826eae7c01bbfa1_1a7f68262ff85e25e9f826eae7c01bbfa1" prot="public" virt="virtual"><scope>CubeTextureOffscreenRT</scope><name>~IBindable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

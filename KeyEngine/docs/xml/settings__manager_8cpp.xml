@@ -1,0 +1,296 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="settings__manager_8cpp" kind="file" language="C++">
+    <compoundname>settings_manager.cpp</compoundname>
+    <includes refid="settings__manager_8h" local="yes">settings_manager.h</includes>
+    <includes refid="winner_8h" local="yes">winner.h</includes>
+    <includes refid="console_8h" local="yes">console.h</includes>
+    <includes refid="utils_8h" local="yes">utils.h</includes>
+    <includes refid="math__utils_8h" local="yes">math_utils.h</includes>
+    <includes local="yes">inih/INIReader.h</includes>
+    <incdepgraph>
+      <node id="24">
+        <label>assertions_console.h</label>
+        <link refid="assertions__console_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>console.h</label>
+        <link refid="console_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>key_type_traits.h</label>
+        <link refid="key__type__traits_8h"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>math_utils.h</label>
+        <link refid="math__utils_8h"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="2">
+        <label>settings_manager.h</label>
+        <link refid="settings__manager_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>utils_global.h</label>
+        <link refid="utils__global_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>winner.h</label>
+        <link refid="winner_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/settings_manager.cpp</label>
+        <link refid="settings__manager_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>Windows.h</label>
+      </node>
+      <node id="19">
+        <label>algorithm</label>
+      </node>
+      <node id="15">
+        <label>bitset</label>
+      </node>
+      <node id="17">
+        <label>cinttypes</label>
+      </node>
+      <node id="29">
+        <label>cmath</label>
+      </node>
+      <node id="16">
+        <label>cstddef</label>
+      </node>
+      <node id="30">
+        <label>cstdint</label>
+      </node>
+      <node id="23">
+        <label>execution</label>
+      </node>
+      <node id="18">
+        <label>future</label>
+      </node>
+      <node id="33">
+        <label>inih/INIReader.h</label>
+      </node>
+      <node id="31">
+        <label>iomanip</label>
+      </node>
+      <node id="13">
+        <label>iostream</label>
+      </node>
+      <node id="21">
+        <label>iterator</label>
+      </node>
+      <node id="32">
+        <label>limits</label>
+      </node>
+      <node id="20">
+        <label>numeric</label>
+      </node>
+      <node id="22">
+        <label>regex</label>
+      </node>
+      <node id="7">
+        <label>sdkddkver.h</label>
+      </node>
+      <node id="14">
+        <label>set</label>
+      </node>
+      <node id="12">
+        <label>sstream</label>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+      <node id="4">
+        <label>string_view</label>
+      </node>
+      <node id="26">
+        <label>type_traits</label>
+      </node>
+      <node id="11">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="settings__manager_8h" kindref="compound">settings_manager.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="winner_8h" kindref="compound">winner.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="console_8h" kindref="compound">console.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="utils_8h" kindref="compound">utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="math__utils_8h" kindref="compound">math_utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;inih/INIReader.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="classSettingsManager_a3c61f6afcf474f6cc1143216262848b8_1a3c61f6afcf474f6cc1143216262848b8" refkind="member"><highlight class="normal"><ref refid="classSettingsManager_a3c61f6afcf474f6cc1143216262848b8_1a3c61f6afcf474f6cc1143216262848b8" kindref="member">SettingsManager::SettingsManager</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;filePath<sp/>)</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSettingsManager_a5e4c7dd1554609fe8ac4fac171e3c4a5_1a5e4c7dd1554609fe8ac4fac171e3c4a5" kindref="member">loadFromFile</ref>(<sp/>filePath<sp/>);</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classSettingsManager_a92617e378ef941b075dd8343d283bd00_1a92617e378ef941b075dd8343d283bd00" refkind="member"><highlight class="normal"><ref refid="classSettingsManager" kindref="compound">SettingsManager</ref>&amp;<sp/><ref refid="classSettingsManager_a92617e378ef941b075dd8343d283bd00_1a92617e378ef941b075dd8343d283bd00" kindref="member">SettingsManager::getInstance</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;filePath<sp/>)</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classSettingsManager" kindref="compound">SettingsManager</ref><sp/>s_instance{std::string{</highlight><highlight class="stringliteral">&quot;config/&quot;</highlight><highlight class="normal">}<sp/>+<sp/>filePath};</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s_instance;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="classSettingsManager_a5e4c7dd1554609fe8ac4fac171e3c4a5_1a5e4c7dd1554609fe8ac4fac171e3c4a5" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSettingsManager_a5e4c7dd1554609fe8ac4fac171e3c4a5_1a5e4c7dd1554609fe8ac4fac171e3c4a5" kindref="member">SettingsManager::loadFromFile</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;filePath<sp/>)</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>INIReader<sp/>ini{filePath};</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>ini.ParseError()<sp/>&lt;<sp/>0<sp/>)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::wstring<sp/>msgText<sp/>=<sp/>L</highlight><highlight class="stringliteral">&quot;Couldn&apos;t<sp/>not<sp/>load<sp/>file<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="namespaceutil_a6f14f660ccbdb1435f227700fa1dfd94_1a6f14f660ccbdb1435f227700fa1dfd94" kindref="member">util::s2ws</ref>(<sp/>filePath<sp/>);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MessageBoxW(<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>msgText.data(),<sp/>L</highlight><highlight class="stringliteral">&quot;File<sp/>not<sp/>found!&quot;</highlight><highlight class="normal">,<sp/>MB_OK<sp/>|<sp/>MB_ICONEXCLAMATION<sp/>);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::terminate();</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSettingsManager_ae233137553f2cd2c32a71856f1a76130_1ae233137553f2cd2c32a71856f1a76130" kindref="member">m_settings</ref>.<ref refid="structSettingsManager_1_1Settings_a2c06b29af8cfe5ab34696f43e1807876_1a2c06b29af8cfe5ab34696f43e1807876" kindref="member">version</ref><sp/>=<sp/>ini.GetInteger(<sp/></highlight><highlight class="stringliteral">&quot;System&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Version&quot;</highlight><highlight class="normal">,<sp/>-1<sp/>);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSettingsManager_ae233137553f2cd2c32a71856f1a76130_1ae233137553f2cd2c32a71856f1a76130" kindref="member">m_settings</ref>.<ref refid="structSettingsManager_1_1Settings_acbf8d0d28a3a3e30cd04a12d94fbe58c_1acbf8d0d28a3a3e30cd04a12d94fbe58c" kindref="member">nThreads</ref><sp/>=<sp/>(unsigned)<sp/>ini.GetInteger(<sp/></highlight><highlight class="stringliteral">&quot;System&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;nThreads&quot;</highlight><highlight class="normal">,<sp/>4<sp/>);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>ini.GetInteger(<sp/></highlight><highlight class="stringliteral">&quot;GameSelection&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Sandbox3d&quot;</highlight><highlight class="normal">,<sp/>0<sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSettingsManager_ae233137553f2cd2c32a71856f1a76130_1ae233137553f2cd2c32a71856f1a76130" kindref="member">m_settings</ref>.<ref refid="structSettingsManager_1_1Settings_a534e1d1fcebd6c936cb7dad777dafcfd_1a534e1d1fcebd6c936cb7dad777dafcfd" kindref="member">m_game</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Sandbox3d&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>ini.GetInteger(<sp/></highlight><highlight class="stringliteral">&quot;GameSelection&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Arkanoid2d&quot;</highlight><highlight class="normal">,<sp/>0<sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSettingsManager_ae233137553f2cd2c32a71856f1a76130_1ae233137553f2cd2c32a71856f1a76130" kindref="member">m_settings</ref>.<ref refid="structSettingsManager_1_1Settings_a534e1d1fcebd6c936cb7dad777dafcfd_1a534e1d1fcebd6c936cb7dad777dafcfd" kindref="member">m_game</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Arkanoid2d&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>ini.GetInteger(<sp/></highlight><highlight class="stringliteral">&quot;GameSelection&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Minesweeper2d&quot;</highlight><highlight class="normal">,<sp/>0<sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSettingsManager_ae233137553f2cd2c32a71856f1a76130_1ae233137553f2cd2c32a71856f1a76130" kindref="member">m_settings</ref>.<ref refid="structSettingsManager_1_1Settings_a534e1d1fcebd6c936cb7dad777dafcfd_1a534e1d1fcebd6c936cb7dad777dafcfd" kindref="member">m_game</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Minesweeper2d&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MessageBoxW(<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>L</highlight><highlight class="stringliteral">&quot;No<sp/>game<sp/>selected<sp/>in<sp/>the<sp/>config.ini<sp/>file.<sp/>Please<sp/>specify<sp/>a<sp/>game.&quot;</highlight><highlight class="normal">,<sp/>L</highlight><highlight class="stringliteral">&quot;No<sp/>Selected<sp/>Game!&quot;</highlight><highlight class="normal">,<sp/>MB_OK<sp/>|<sp/>MB_ICONEXCLAMATION<sp/>);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::terminate();</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSettingsManager_ae233137553f2cd2c32a71856f1a76130_1ae233137553f2cd2c32a71856f1a76130" kindref="member">m_settings</ref>.<ref refid="structSettingsManager_1_1Settings_adeca7d225f36bae671932e9df7453b9f_1adeca7d225f36bae671932e9df7453b9f" kindref="member">fGameSpeed</ref><sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">float</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/>ini.GetReal(<sp/></highlight><highlight class="stringliteral">&quot;Gameplay&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;fGameSpeed&quot;</highlight><highlight class="normal">,<sp/>1.0f<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSettingsManager_ae233137553f2cd2c32a71856f1a76130_1ae233137553f2cd2c32a71856f1a76130" kindref="member">m_settings</ref>.<ref refid="structSettingsManager_1_1Settings_a5e2af2ae92348ac3947844c6efb9f63c_1a5e2af2ae92348ac3947844c6efb9f63c" kindref="member">bVSync</ref><sp/>=<sp/>ini.GetBoolean(<sp/></highlight><highlight class="stringliteral">&quot;Graphics&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;bVSync&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSettingsManager_ae233137553f2cd2c32a71856f1a76130_1ae233137553f2cd2c32a71856f1a76130" kindref="member">m_settings</ref>.<ref refid="structSettingsManager_1_1Settings_af9d46a557e2718570ef71f27cbc2326e_1af9d46a557e2718570ef71f27cbc2326e" kindref="member">iMaxFps</ref><sp/>=<sp/>ini.GetInteger(<sp/></highlight><highlight class="stringliteral">&quot;Graphics&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;iMaxFps&quot;</highlight><highlight class="normal">,<sp/>-1<sp/>);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSettingsManager_ae233137553f2cd2c32a71856f1a76130_1ae233137553f2cd2c32a71856f1a76130" kindref="member">m_settings</ref>.<ref refid="structSettingsManager_1_1Settings_acbffc94f53fcde24062262ec6fc7fe98_1acbffc94f53fcde24062262ec6fc7fe98" kindref="member">iMaxShadowCastingDynamicLights</ref><sp/>=<sp/>ini.GetInteger(<sp/></highlight><highlight class="stringliteral">&quot;Graphics&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;iMaxShadowCastingDynamicLights&quot;</highlight><highlight class="normal">,<sp/>16<sp/>);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSettingsManager_ae233137553f2cd2c32a71856f1a76130_1ae233137553f2cd2c32a71856f1a76130" kindref="member">m_settings</ref>.<ref refid="structSettingsManager_1_1Settings_acbffc94f53fcde24062262ec6fc7fe98_1acbffc94f53fcde24062262ec6fc7fe98" kindref="member">iMaxShadowCastingDynamicLights</ref><sp/>=<sp/>std::clamp(<sp/><ref refid="classSettingsManager_ae233137553f2cd2c32a71856f1a76130_1ae233137553f2cd2c32a71856f1a76130" kindref="member">m_settings</ref>.<ref refid="structSettingsManager_1_1Settings_acbffc94f53fcde24062262ec6fc7fe98_1acbffc94f53fcde24062262ec6fc7fe98" kindref="member">iMaxShadowCastingDynamicLights</ref>,<sp/>2,<sp/>16<sp/>);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSettingsManager_ae233137553f2cd2c32a71856f1a76130_1ae233137553f2cd2c32a71856f1a76130" kindref="member">m_settings</ref>.<ref refid="structSettingsManager_1_1Settings_adf668f55ebdfe2fe09f4eabaedefa686_1adf668f55ebdfe2fe09f4eabaedefa686" kindref="member">iMaxShadowCastingPointLights</ref><sp/>=<sp/>ini.GetInteger(<sp/></highlight><highlight class="stringliteral">&quot;Graphics&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;iMaxShadowCastingPointLights&quot;</highlight><highlight class="normal">,<sp/>12<sp/>);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSettingsManager_ae233137553f2cd2c32a71856f1a76130_1ae233137553f2cd2c32a71856f1a76130" kindref="member">m_settings</ref>.<ref refid="structSettingsManager_1_1Settings_adf668f55ebdfe2fe09f4eabaedefa686_1adf668f55ebdfe2fe09f4eabaedefa686" kindref="member">iMaxShadowCastingPointLights</ref><sp/>=<sp/>std::clamp(<sp/><ref refid="classSettingsManager_ae233137553f2cd2c32a71856f1a76130_1ae233137553f2cd2c32a71856f1a76130" kindref="member">m_settings</ref>.<ref refid="structSettingsManager_1_1Settings_adf668f55ebdfe2fe09f4eabaedefa686_1adf668f55ebdfe2fe09f4eabaedefa686" kindref="member">iMaxShadowCastingPointLights</ref>,<sp/>1,<sp/><ref refid="classSettingsManager_ae233137553f2cd2c32a71856f1a76130_1ae233137553f2cd2c32a71856f1a76130" kindref="member">m_settings</ref>.<ref refid="structSettingsManager_1_1Settings_acbffc94f53fcde24062262ec6fc7fe98_1acbffc94f53fcde24062262ec6fc7fe98" kindref="member">iMaxShadowCastingDynamicLights</ref><sp/>-<sp/>1<sp/>);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSettingsManager_ae233137553f2cd2c32a71856f1a76130_1ae233137553f2cd2c32a71856f1a76130" kindref="member">m_settings</ref>.<ref refid="structSettingsManager_1_1Settings_a808ed110b1305cb51725361df2fc2ac9_1a808ed110b1305cb51725361df2fc2ac9" kindref="member">bAllowWindowResize</ref><sp/>=<sp/>ini.GetBoolean(<sp/></highlight><highlight class="stringliteral">&quot;Graphics&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;bAllowWindowResize&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSettingsManager_ae233137553f2cd2c32a71856f1a76130_1ae233137553f2cd2c32a71856f1a76130" kindref="member">m_settings</ref>.<ref refid="structSettingsManager_1_1Settings_a2f27e1cb95f5656398c0cd012e72291c_1a2f27e1cb95f5656398c0cd012e72291c" kindref="member">bEnableFrustumCuling</ref><sp/>=<sp/>ini.GetBoolean(<sp/></highlight><highlight class="stringliteral">&quot;Graphics&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;bEnableFrustumCuling&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSettingsManager_ae233137553f2cd2c32a71856f1a76130_1ae233137553f2cd2c32a71856f1a76130" kindref="member">m_settings</ref>.<ref refid="structSettingsManager_1_1Settings_a12444bd23fba8e04de9d835dc06756ef_1a12444bd23fba8e04de9d835dc06756ef" kindref="member">bEnableSmoothMovement</ref><sp/>=<sp/>ini.GetBoolean(<sp/></highlight><highlight class="stringliteral">&quot;Graphics&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;bEnableSmoothMovement&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSettingsManager_ae233137553f2cd2c32a71856f1a76130_1ae233137553f2cd2c32a71856f1a76130" kindref="member">m_settings</ref>.<ref refid="structSettingsManager_1_1Settings_abdcf08e1d968e1808a0b958b03b98da6_1abdcf08e1d968e1808a0b958b03b98da6" kindref="member">iPresentInterval</ref><sp/>=<sp/><ref refid="namespaceutil_abbef8e9194b651fe51e9b998c26739e7_1abbef8e9194b651fe51e9b998c26739e7" kindref="member">util::clamp</ref>(<sp/>ini.GetInteger(<sp/></highlight><highlight class="stringliteral">&quot;Graphics&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;iPresentInterval&quot;</highlight><highlight class="normal">,<sp/>1<sp/>),<sp/>0l,<sp/>4l<sp/>);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSettingsManager_ae233137553f2cd2c32a71856f1a76130_1ae233137553f2cd2c32a71856f1a76130" kindref="member">m_settings</ref>.<ref refid="structSettingsManager_1_1Settings_a1ee7648a0b3045e9cefbded5c0f534f1_1a1ee7648a0b3045e9cefbded5c0f534f1" kindref="member">sSkyboxFileName</ref><sp/>=<sp/>ini.Get(<sp/></highlight><highlight class="stringliteral">&quot;Assets&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;sSkyboxFileName&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSettingsManager_ae233137553f2cd2c32a71856f1a76130_1ae233137553f2cd2c32a71856f1a76130" kindref="member">m_settings</ref>.<ref refid="structSettingsManager_1_1Settings_a46fc42cb1e29f0338b66b4cc67cd455e_1a46fc42cb1e29f0338b66b4cc67cd455e" kindref="member">sFontName</ref><sp/>=<sp/>ini.Get(<sp/></highlight><highlight class="stringliteral">&quot;Graphics&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;sFontName&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;myComicSansMSSpriteFont&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="classSettingsManager_a2634a5f2822112f9bf7cd42dcf440288_1a2634a5f2822112f9bf7cd42dcf440288" refkind="member"><highlight class="normal"><ref refid="structSettingsManager_1_1Settings" kindref="compound">SettingsManager::Settings</ref>&amp;<sp/><ref refid="classSettingsManager_a2634a5f2822112f9bf7cd42dcf440288_1a2634a5f2822112f9bf7cd42dcf440288" kindref="member">SettingsManager::getSettings</ref>()</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSettingsManager_ae233137553f2cd2c32a71856f1a76130_1ae233137553f2cd2c32a71856f1a76130" kindref="member">m_settings</ref>;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="classSettingsManager_a814a879cd8737e7f95a2974061648331_1a814a879cd8737e7f95a2974061648331" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structSettingsManager_1_1Settings" kindref="compound">SettingsManager::Settings</ref>&amp;<sp/><ref refid="classSettingsManager_a2634a5f2822112f9bf7cd42dcf440288_1a2634a5f2822112f9bf7cd42dcf440288" kindref="member">SettingsManager::getSettings</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="78"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSettingsManager_ae233137553f2cd2c32a71856f1a76130_1ae233137553f2cd2c32a71856f1a76130" kindref="member">m_settings</ref>;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/settings_manager.cpp"/>
+  </compounddef>
+</doxygen>

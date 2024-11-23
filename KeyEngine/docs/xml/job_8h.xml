@@ -1,0 +1,289 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="job_8h" kind="file" language="C++">
+    <compoundname>job.h</compoundname>
+    <includedby refid="render__queue__pass_8h" local="yes">inc/render_queue_pass.h</includedby>
+    <includedby refid="job_8cpp" local="yes">src/job.cpp</includedby>
+    <invincdepgraph>
+      <node id="3">
+        <label>inc/blur_outline_draw_pass.h</label>
+        <link refid="blur__outline__draw__pass_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>inc/blur_outline_mask_pass.h</label>
+        <link refid="blur__outline__mask__pass_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>inc/blur_pass.h</label>
+        <link refid="blur__pass_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>inc/depth_reversed_pass.h</label>
+        <link refid="depth__reversed__pass_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>inc/fullscreen_pass.h</label>
+        <link refid="fullscreen__pass_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>inc/horizontal_blur_pass.h</label>
+        <link refid="horizontal__blur__pass_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/job.h</label>
+        <link refid="job_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>inc/negative_pass.h</label>
+        <link refid="negative__pass_8h"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>inc/opaque_pass.h</label>
+        <link refid="opaque__pass_8h"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>inc/pass_through.h</label>
+        <link refid="pass__through_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>inc/render_queue_pass.h</label>
+        <link refid="render__queue__pass_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>inc/shadow_pass.h</label>
+        <link refid="shadow__pass_8h"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>inc/solid_outline_draw_pass.h</label>
+        <link refid="solid__outline__draw__pass_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>inc/solid_outline_mask_pass.h</label>
+        <link refid="solid__outline__mask__pass_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>inc/transparent_pass.h</label>
+        <link refid="transparent__pass_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>inc/vertical_blur_pass.h</label>
+        <link refid="vertical__blur__pass_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>inc/wireframe_pass.h</label>
+        <link refid="wireframe__pass_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>src/SHADOW_PASS.CPP</label>
+        <link refid="SHADOW__PASS_8CPP"/>
+      </node>
+      <node id="4">
+        <label>src/blur_outline_draw_pass.cpp</label>
+        <link refid="blur__outline__draw__pass_8cpp"/>
+      </node>
+      <node id="7">
+        <label>src/blur_outline_mask_pass.cpp</label>
+        <link refid="blur__outline__mask__pass_8cpp"/>
+      </node>
+      <node id="12">
+        <label>src/blur_pass.cpp</label>
+        <link refid="blur__pass_8cpp"/>
+      </node>
+      <node id="9">
+        <label>src/depth_reversed_pass.cpp</label>
+        <link refid="depth__reversed__pass_8cpp"/>
+      </node>
+      <node id="21">
+        <label>src/fullscreen_pass.cpp</label>
+        <link refid="fullscreen__pass_8cpp"/>
+      </node>
+      <node id="14">
+        <label>src/horizontal_blur_pass.cpp</label>
+        <link refid="horizontal__blur__pass_8cpp"/>
+      </node>
+      <node id="37">
+        <label>src/job.cpp</label>
+        <link refid="job_8cpp"/>
+      </node>
+      <node id="26">
+        <label>src/light_source.cpp</label>
+        <link refid="light__source_8cpp"/>
+      </node>
+      <node id="35">
+        <label>src/material.cpp</label>
+        <link refid="material_8cpp"/>
+      </node>
+      <node id="16">
+        <label>src/negative_pass.cpp</label>
+        <link refid="negative__pass_8cpp"/>
+      </node>
+      <node id="23">
+        <label>src/opaque_pass.cpp</label>
+        <link refid="opaque__pass_8cpp"/>
+      </node>
+      <node id="18">
+        <label>src/pass_through.cpp</label>
+        <link refid="pass__through_8cpp"/>
+      </node>
+      <node id="36">
+        <label>src/render_queue_pass.cpp</label>
+        <link refid="render__queue__pass_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/renderer.cpp</label>
+        <link refid="renderer_8cpp"/>
+      </node>
+      <node id="28">
+        <label>src/solid_outline_draw_pass.cpp</label>
+        <link refid="solid__outline__draw__pass_8cpp"/>
+      </node>
+      <node id="30">
+        <label>src/solid_outline_mask_pass.cpp</label>
+        <link refid="solid__outline__mask__pass_8cpp"/>
+      </node>
+      <node id="32">
+        <label>src/transparent_pass.cpp</label>
+        <link refid="transparent__pass_8cpp"/>
+      </node>
+      <node id="20">
+        <label>src/vertical_blur_pass.cpp</label>
+        <link refid="vertical__blur__pass_8cpp"/>
+      </node>
+      <node id="34">
+        <label>src/wireframe_pass.cpp</label>
+        <link refid="wireframe__pass_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classren_1_1Job" prot="public">ren::Job</innerclass>
+    <innernamespace refid="namespaceren">ren</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMesh" kindref="compound">Mesh</ref>;</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classGraphics" kindref="compound">Graphics</ref>;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMaterial" kindref="compound">Material</ref>;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceren" kindref="compound">ren</ref></highlight></codeline>
+<codeline lineno="9"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="classren_1_1Job" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classren_1_1Job" kindref="compound">Job</ref></highlight></codeline>
+<codeline lineno="12"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="13" refid="classren_1_1Job_aad2242ac2e134720361b8f11341baf99_1aad2242ac2e134720361b8f11341baf99" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMesh" kindref="compound">Mesh</ref><sp/>*<ref refid="classren_1_1Job_aad2242ac2e134720361b8f11341baf99_1aad2242ac2e134720361b8f11341baf99" kindref="member">m_pMesh</ref>;</highlight></codeline>
+<codeline lineno="14" refid="classren_1_1Job_a67972ae793801883a97e9d2e9a6af8d0_1a67972ae793801883a97e9d2e9a6af8d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMaterial" kindref="compound">Material</ref><sp/>*<ref refid="classren_1_1Job_a67972ae793801883a97e9d2e9a6af8d0_1a67972ae793801883a97e9d2e9a6af8d0" kindref="member">m_pMaterial</ref>;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classren_1_1Job_a4c0738020f77ca43bdcd78d8f8c2949e_1a4c0738020f77ca43bdcd78d8f8c2949e" kindref="member">Job</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMesh" kindref="compound">Mesh</ref><sp/>*pMesh,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMaterial" kindref="compound">Material</ref><sp/>*pMaterial<sp/>);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classren_1_1Job_a7904359dc487cfe80118ce58c7442381_1a7904359dc487cfe80118ce58c7442381" kindref="member">run</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>cond_noex;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}</highlight><highlight class="comment">//ren</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="inc/job.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,872 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="graphics_8h" kind="file" language="C++">
+    <compoundname>graphics.h</compoundname>
+    <includes refid="winner_8h" local="yes">winner.h</includes>
+    <includes refid="key__wrl_8h" local="yes">key_wrl.h</includes>
+    <includes local="yes">dxgi1_4.h</includes>
+    <includes local="no">d3d11.h</includes>
+    <includes local="no">d3dcompiler.h</includes>
+    <includes local="no">DirectXMath.h</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">vector</includes>
+    <includes refid="non__copyable_8h" local="yes">non_copyable.h</includes>
+    <includes refid="key__exception_8h" local="yes">key_exception.h</includes>
+    <includes refid="color_8h" local="yes">color.h</includes>
+    <includes refid="texture__desc_8h" local="yes">texture_desc.h</includes>
+    <includes refid="key__timer_8h" local="yes">key_timer.h</includes>
+    <includedby refid="constant__buffer_8h" local="yes">inc/constant_buffer.h</includedby>
+    <includedby refid="MODEL_8CPP" local="yes">src/MODEL.CPP</includedby>
+    <includedby refid="SHADOW__PASS_8CPP" local="yes">src/SHADOW_PASS.CPP</includedby>
+    <includedby refid="blend__state_8cpp" local="yes">src/blend_state.cpp</includedby>
+    <includedby refid="blur__outline__draw__pass_8cpp" local="yes">src/blur_outline_draw_pass.cpp</includedby>
+    <includedby refid="camera_8cpp" local="yes">src/camera.cpp</includedby>
+    <includedby refid="camera__frustum_8cpp" local="yes">src/camera_frustum.cpp</includedby>
+    <includedby refid="camera__manager_8cpp" local="yes">src/camera_manager.cpp</includedby>
+    <includedby refid="camera__widget_8cpp" local="yes">src/camera_widget.cpp</includedby>
+    <includedby refid="constant__buffer__ex_8cpp" local="yes">src/constant_buffer_ex.cpp</includedby>
+    <includedby refid="cube_8cpp" local="yes">src/cube.cpp</includedby>
+    <includedby refid="cube__texture_8cpp" local="yes">src/cube_texture.cpp</includedby>
+    <includedby refid="depth__stencil__state_8cpp" local="yes">src/depth_stencil_state.cpp</includedby>
+    <includedby refid="depth__stencil__view_8cpp" local="yes">src/depth_stencil_view.cpp</includedby>
+    <includedby refid="fullscreen__pass_8cpp" local="yes">src/fullscreen_pass.cpp</includedby>
+    <includedby refid="game_8cpp" local="yes">src/game.cpp</includedby>
+    <includedby refid="graphics_8cpp" local="yes">src/graphics.cpp</includedby>
+    <includedby refid="graphics__friend_8cpp" local="yes">src/graphics_friend.cpp</includedby>
+    <includedby refid="horizontal__blur__pass_8cpp" local="yes">src/horizontal_blur_pass.cpp</includedby>
+    <includedby refid="index__buffer_8cpp" local="yes">src/index_buffer.cpp</includedby>
+    <includedby refid="input__layout_8cpp" local="yes">src/input_layout.cpp</includedby>
+    <includedby refid="job_8cpp" local="yes">src/job.cpp</includedby>
+    <includedby refid="light__source_8cpp" local="yes">src/light_source.cpp</includedby>
+    <includedby refid="line_8cpp" local="yes">src/line.cpp</includedby>
+    <includedby refid="material__loader_8cpp" local="yes">src/material_loader.cpp</includedby>
+    <includedby refid="mouse__picker_8cpp" local="yes">src/mouse_picker.cpp</includedby>
+    <includedby refid="pass__2d_8cpp" local="yes">src/pass_2d.cpp</includedby>
+    <includedby refid="pixel__shader_8cpp" local="yes">src/pixel_shader.cpp</includedby>
+    <includedby refid="plane_8cpp" local="yes">src/plane.cpp</includedby>
+    <includedby refid="primitive__topology_8cpp" local="yes">src/primitive_topology.cpp</includedby>
+    <includedby refid="rasterizer__state_8cpp" local="yes">src/rasterizer_state.cpp</includedby>
+    <includedby refid="render__target_8cpp" local="yes">src/render_target.cpp</includedby>
+    <includedby refid="renderer_8cpp" local="yes">src/renderer.cpp</includedby>
+    <includedby refid="sphere_8cpp" local="yes">src/sphere.cpp</includedby>
+    <includedby refid="terrain_8cpp" local="yes">src/terrain.cpp</includedby>
+    <includedby refid="testing_8cpp" local="yes">src/testing.cpp</includedby>
+    <includedby refid="texture_8cpp" local="yes">src/texture.cpp</includedby>
+    <includedby refid="texture__sampler__state_8cpp" local="yes">src/texture_sampler_state.cpp</includedby>
+    <includedby refid="transform__vscb_8cpp" local="yes">src/transform_vscb.cpp</includedby>
+    <includedby refid="ui__component_8cpp" local="yes">src/ui_component.cpp</includedby>
+    <includedby refid="ui__pass_8cpp" local="yes">src/ui_pass.cpp</includedby>
+    <includedby refid="vertex__buffer_8cpp" local="yes">src/vertex_buffer.cpp</includedby>
+    <includedby refid="vertex__shader_8cpp" local="yes">src/vertex_shader.cpp</includedby>
+    <includedby refid="viewport_8cpp" local="yes">src/viewport.cpp</includedby>
+    <includedby refid="window_8cpp" local="yes">src/window.cpp</includedby>
+    <incdepgraph>
+      <node id="30">
+        <label>assertions_console.h</label>
+        <link refid="assertions__console_8h"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>color.h</label>
+        <link refid="color_8h"/>
+      </node>
+      <node id="22">
+        <label>console.h</label>
+        <link refid="console_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/graphics.h</label>
+        <link refid="graphics_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>key_exception.h</label>
+        <link refid="key__exception_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>key_timer.h</label>
+        <link refid="key__timer_8h"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>key_type_traits.h</label>
+        <link refid="key__type__traits_8h"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>key_wrl.h</label>
+        <link refid="key__wrl_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>math_utils.h</label>
+        <link refid="math__utils_8h"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="18">
+        <label>texture_desc.h</label>
+        <link refid="texture__desc_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>utils_global.h</label>
+        <link refid="utils__global_8h"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>winner.h</label>
+        <link refid="winner_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>DirectXMath.h</label>
+      </node>
+      <node id="4">
+        <label>Windows.h</label>
+      </node>
+      <node id="38">
+        <label>algorithm</label>
+      </node>
+      <node id="34">
+        <label>bitset</label>
+      </node>
+      <node id="21">
+        <label>chrono</label>
+      </node>
+      <node id="36">
+        <label>cinttypes</label>
+      </node>
+      <node id="24">
+        <label>cmath</label>
+      </node>
+      <node id="35">
+        <label>cstddef</label>
+      </node>
+      <node id="25">
+        <label>cstdint</label>
+      </node>
+      <node id="8">
+        <label>d3d11.h</label>
+      </node>
+      <node id="9">
+        <label>d3dcompiler.h</label>
+      </node>
+      <node id="7">
+        <label>dxgi1_4.h</label>
+      </node>
+      <node id="42">
+        <label>execution</label>
+      </node>
+      <node id="37">
+        <label>future</label>
+      </node>
+      <node id="28">
+        <label>iomanip</label>
+      </node>
+      <node id="31">
+        <label>iostream</label>
+      </node>
+      <node id="40">
+        <label>iterator</label>
+      </node>
+      <node id="29">
+        <label>limits</label>
+      </node>
+      <node id="11">
+        <label>memory</label>
+      </node>
+      <node id="39">
+        <label>numeric</label>
+      </node>
+      <node id="41">
+        <label>regex</label>
+      </node>
+      <node id="3">
+        <label>sdkddkver.h</label>
+      </node>
+      <node id="33">
+        <label>set</label>
+      </node>
+      <node id="27">
+        <label>sstream</label>
+      </node>
+      <node id="16">
+        <label>stdexcept</label>
+      </node>
+      <node id="15">
+        <label>string</label>
+      </node>
+      <node id="20">
+        <label>thread</label>
+      </node>
+      <node id="26">
+        <label>type_traits</label>
+      </node>
+      <node id="12">
+        <label>vector</label>
+      </node>
+      <node id="6">
+        <label>wrl.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>inc/constant_buffer.h</label>
+        <link refid="constant__buffer_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/graphics.h</label>
+        <link refid="graphics_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>inc/shadow_pass.h</label>
+        <link refid="shadow__pass_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>inc/sky_vscb.h</label>
+        <link refid="sky__vscb_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>src/MODEL.CPP</label>
+        <link refid="MODEL_8CPP"/>
+      </node>
+      <node id="4">
+        <label>src/SHADOW_PASS.CPP</label>
+        <link refid="SHADOW__PASS_8CPP"/>
+      </node>
+      <node id="15">
+        <label>src/blend_state.cpp</label>
+        <link refid="blend__state_8cpp"/>
+      </node>
+      <node id="16">
+        <label>src/blur_outline_draw_pass.cpp</label>
+        <link refid="blur__outline__draw__pass_8cpp"/>
+      </node>
+      <node id="17">
+        <label>src/camera.cpp</label>
+        <link refid="camera_8cpp"/>
+      </node>
+      <node id="10">
+        <label>src/camera_frustum.cpp</label>
+        <link refid="camera__frustum_8cpp"/>
+      </node>
+      <node id="18">
+        <label>src/camera_manager.cpp</label>
+        <link refid="camera__manager_8cpp"/>
+      </node>
+      <node id="11">
+        <label>src/camera_widget.cpp</label>
+        <link refid="camera__widget_8cpp"/>
+      </node>
+      <node id="19">
+        <label>src/constant_buffer_ex.cpp</label>
+        <link refid="constant__buffer__ex_8cpp"/>
+      </node>
+      <node id="20">
+        <label>src/cube.cpp</label>
+        <link refid="cube_8cpp"/>
+      </node>
+      <node id="21">
+        <label>src/cube_texture.cpp</label>
+        <link refid="cube__texture_8cpp"/>
+      </node>
+      <node id="22">
+        <label>src/depth_stencil_state.cpp</label>
+        <link refid="depth__stencil__state_8cpp"/>
+      </node>
+      <node id="23">
+        <label>src/depth_stencil_view.cpp</label>
+        <link refid="depth__stencil__view_8cpp"/>
+      </node>
+      <node id="24">
+        <label>src/fullscreen_pass.cpp</label>
+        <link refid="fullscreen__pass_8cpp"/>
+      </node>
+      <node id="25">
+        <label>src/game.cpp</label>
+        <link refid="game_8cpp"/>
+      </node>
+      <node id="26">
+        <label>src/graphics.cpp</label>
+        <link refid="graphics_8cpp"/>
+      </node>
+      <node id="27">
+        <label>src/graphics_friend.cpp</label>
+        <link refid="graphics__friend_8cpp"/>
+      </node>
+      <node id="28">
+        <label>src/horizontal_blur_pass.cpp</label>
+        <link refid="horizontal__blur__pass_8cpp"/>
+      </node>
+      <node id="29">
+        <label>src/index_buffer.cpp</label>
+        <link refid="index__buffer_8cpp"/>
+      </node>
+      <node id="30">
+        <label>src/input_layout.cpp</label>
+        <link refid="input__layout_8cpp"/>
+      </node>
+      <node id="31">
+        <label>src/job.cpp</label>
+        <link refid="job_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/light_source.cpp</label>
+        <link refid="light__source_8cpp"/>
+      </node>
+      <node id="32">
+        <label>src/line.cpp</label>
+        <link refid="line_8cpp"/>
+      </node>
+      <node id="33">
+        <label>src/material_loader.cpp</label>
+        <link refid="material__loader_8cpp"/>
+      </node>
+      <node id="34">
+        <label>src/mouse_picker.cpp</label>
+        <link refid="mouse__picker_8cpp"/>
+      </node>
+      <node id="35">
+        <label>src/pass_2d.cpp</label>
+        <link refid="pass__2d_8cpp"/>
+      </node>
+      <node id="36">
+        <label>src/pixel_shader.cpp</label>
+        <link refid="pixel__shader_8cpp"/>
+      </node>
+      <node id="37">
+        <label>src/plane.cpp</label>
+        <link refid="plane_8cpp"/>
+      </node>
+      <node id="38">
+        <label>src/primitive_topology.cpp</label>
+        <link refid="primitive__topology_8cpp"/>
+      </node>
+      <node id="39">
+        <label>src/rasterizer_state.cpp</label>
+        <link refid="rasterizer__state_8cpp"/>
+      </node>
+      <node id="40">
+        <label>src/render_target.cpp</label>
+        <link refid="render__target_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/renderer.cpp</label>
+        <link refid="renderer_8cpp"/>
+      </node>
+      <node id="8">
+        <label>src/sky_pass.cpp</label>
+        <link refid="sky__pass_8cpp"/>
+      </node>
+      <node id="9">
+        <label>src/sky_vscb.cpp</label>
+        <link refid="sky__vscb_8cpp"/>
+      </node>
+      <node id="41">
+        <label>src/sphere.cpp</label>
+        <link refid="sphere_8cpp"/>
+      </node>
+      <node id="12">
+        <label>src/terrain.cpp</label>
+        <link refid="terrain_8cpp"/>
+      </node>
+      <node id="42">
+        <label>src/testing.cpp</label>
+        <link refid="testing_8cpp"/>
+      </node>
+      <node id="43">
+        <label>src/texture.cpp</label>
+        <link refid="texture_8cpp"/>
+      </node>
+      <node id="44">
+        <label>src/texture_sampler_state.cpp</label>
+        <link refid="texture__sampler__state_8cpp"/>
+      </node>
+      <node id="13">
+        <label>src/transform_vscb.cpp</label>
+        <link refid="transform__vscb_8cpp"/>
+      </node>
+      <node id="45">
+        <label>src/ui_component.cpp</label>
+        <link refid="ui__component_8cpp"/>
+      </node>
+      <node id="46">
+        <label>src/ui_pass.cpp</label>
+        <link refid="ui__pass_8cpp"/>
+      </node>
+      <node id="47">
+        <label>src/vertex_buffer.cpp</label>
+        <link refid="vertex__buffer_8cpp"/>
+      </node>
+      <node id="48">
+        <label>src/vertex_shader.cpp</label>
+        <link refid="vertex__shader_8cpp"/>
+      </node>
+      <node id="49">
+        <label>src/viewport.cpp</label>
+        <link refid="viewport_8cpp"/>
+      </node>
+      <node id="50">
+        <label>src/window.cpp</label>
+        <link refid="window_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classGraphics" prot="public">Graphics</innerclass>
+    <innerclass refid="classGraphics_1_1GraphicsException" prot="private">Graphics::GraphicsException</innerclass>
+    <innerclass refid="classGraphics_1_1Adapter" prot="private">Graphics::Adapter</innerclass>
+    <innernamespace refid="namespaceren">ren</innernamespace>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="graphics_8h_a93ba40510117bb29955d8a89703f449b_1a93ba40510117bb29955d8a89703f449b" prot="public" static="no">
+        <name>THROW_GRAPHICS_EXCEPTION</name>
+        <param><defname>msg</defname></param>
+        <initializer>	__debugbreak();\
+	throw GraphicsException( __LINE__, __FILE__, __FUNCTION__, msg );</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/graphics.h" line="221" column="9" bodyfile="inc/graphics.h" bodystart="221" bodyend="222"/>
+        <referencedby refid="classGraphics_a9a6ad2b28b7f765c6c7ed63b664754d8_1a9a6ad2b28b7f765c6c7ed63b664754d8" compoundref="graphics_8cpp" startline="719" endline="746">Graphics::bindBackBufferAsInput</referencedby>
+        <referencedby refid="classGraphics_aefe40c94ce078f84342864b959543c99_1aefe40c94ce078f84342864b959543c99" compoundref="graphics_8cpp" startline="548" endline="586">Graphics::present</referencedby>
+        <referencedby refid="classGraphics_a7dce5b31ab15931acd9812956a118ab2_1a7dce5b31ab15931acd9812956a118ab2" compoundref="graphics_8cpp" startline="363" endline="394">Graphics::setupMonitors</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="winner_8h" kindref="compound">winner.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="key__wrl_8h" kindref="compound">key_wrl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;dxgi1_4.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;d3d11.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>D2D_ONLY</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>include<sp/>&lt;d2d1_1.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>include<sp/>&lt;dwrite.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;d3dcompiler.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;DirectXMath.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>_DEBUG<sp/>&amp;&amp;<sp/>!defined<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>include<sp/>&lt;atlbase.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="non__copyable_8h" kindref="compound">non_copyable.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="key__exception_8h" kindref="compound">key_exception.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>_DEBUG<sp/>&amp;&amp;<sp/>!defined<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>include<sp/>&quot;<ref refid="dxgi__info__queue_8h" kindref="compound">dxgi_info_queue.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="color_8h" kindref="compound">color.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="texture__desc_8h" kindref="compound">texture_desc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="key__timer_8h" kindref="compound">key_timer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classGraphicsFriend" kindref="compound">GraphicsFriend</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classIBindable" kindref="compound">IBindable</ref>;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classRenderTargetOutput" kindref="compound">RenderTargetOutput</ref>;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classDepthStencilOutput" kindref="compound">DepthStencilOutput</ref>;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classTextureOffscreenRT" kindref="compound">TextureOffscreenRT</ref>;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classTextureOffscreenDS" kindref="compound">TextureOffscreenDS</ref>;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classWindow" kindref="compound">Window</ref>;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classCamera" kindref="compound">Camera</ref>;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classRectangleF" kindref="compound">RectangleF</ref>;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceren" kindref="compound">ren</ref></highlight></codeline>
+<codeline lineno="39"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Renderer;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Renderer3d;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Renderer2d;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="classGraphics" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>final</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/><ref refid="classNonCopyableAndNonMovable" kindref="compound">NonCopyableAndNonMovable</ref></highlight></codeline>
+<codeline lineno="57"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="58" refid="classGraphics_ae895ca46466a7d73fa1d852bc5a89c2f_1ae895ca46466a7d73fa1d852bc5a89c2f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classGraphicsFriend" kindref="compound">GraphicsFriend</ref>;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classGraphics_1_1GraphicsException" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classGraphics_1_1GraphicsException" kindref="compound">GraphicsException</ref><sp/>final</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classKeyException" kindref="compound">KeyException</ref></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGraphics_1_1GraphicsException_a3732e09860dbf7cf9d560665a5669488_1a3732e09860dbf7cf9d560665a5669488" kindref="member">GraphicsException</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>line,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*file,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*function,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;msg<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classGraphics_1_1GraphicsException_aaab3179bfd3ebd5a2c312593ad9cd10b_1aaab3179bfd3ebd5a2c312593ad9cd10b" kindref="member">getType</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classGraphics_1_1GraphicsException_a0b6d2d087b97cb0d7cadf25299909e90_1a0b6d2d087b97cb0d7cadf25299909e90" kindref="member">what</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="classGraphics_1_1Adapter" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classGraphics_1_1Adapter" kindref="compound">Adapter</ref><sp/>final</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="72" refid="classGraphics_1_1Adapter_a6b5496c21afd87729babc3a5dffe7a1d_1a6b5496c21afd87729babc3a5dffe7a1d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Microsoft::WRL::ComPtr&lt;IDXGIAdapter&gt;<sp/><ref refid="classGraphics_1_1Adapter_a6b5496c21afd87729babc3a5dffe7a1d_1a6b5496c21afd87729babc3a5dffe7a1d" kindref="member">m_pAdapter</ref>;</highlight></codeline>
+<codeline lineno="73" refid="classGraphics_1_1Adapter_a39682db9c01cedf9e9df01eae4509e7d_1a39682db9c01cedf9e9df01eae4509e7d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DXGI_ADAPTER_DESC<sp/><ref refid="classGraphics_1_1Adapter_a39682db9c01cedf9e9df01eae4509e7d_1a39682db9c01cedf9e9df01eae4509e7d" kindref="member">m_desc</ref>;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGraphics_1_1Adapter_a075d6b4e89a60bf695d724379161751e_1a075d6b4e89a60bf695d724379161751e" kindref="member">Adapter</ref>(<sp/>IDXGIAdapter<sp/>*pAdapter<sp/>);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DXGI_ADAPTER_DESC*<sp/><ref refid="classGraphics_1_1Adapter_ae672fea008e3fd6b33932f597470af18_1ae672fea008e3fd6b33932f597470af18" kindref="member">getDesc</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>IDXGIAdapter*<sp/><ref refid="classGraphics_1_1Adapter_a2cbe03324f6a33d65eb030144fda67f0_1a2cbe03324f6a33d65eb030144fda67f0" kindref="member">getAdapter</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_1_1Adapter_ad40a2841488cf71cbee71eb9eeb12c72_1ad40a2841488cf71cbee71eb9eeb12c72" kindref="member">getVRamDetails</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">private:</highlight></codeline>
+<codeline lineno="81" refid="classGraphics_aed265fd9f7b2e9eeb65f184260037e3d_1aed265fd9f7b2e9eeb65f184260037e3d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/>inline<sp/>D3D_FEATURE_LEVEL<sp/><ref refid="classGraphics_aed265fd9f7b2e9eeb65f184260037e3d_1aed265fd9f7b2e9eeb65f184260037e3d" kindref="member">s_featureLevel</ref>;</highlight></codeline>
+<codeline lineno="82" refid="classGraphics_a0b498c6167c3a63bf4539d04110ca63f_1a0b498c6167c3a63bf4539d04110ca63f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/>inline<sp/>std::vector&lt;<ref refid="classGraphics_1_1Adapter" kindref="compound">Adapter</ref>&gt;<sp/><ref refid="classGraphics_a0b498c6167c3a63bf4539d04110ca63f_1a0b498c6167c3a63bf4539d04110ca63f" kindref="member">s_adapters</ref>;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">private:</highlight></codeline>
+<codeline lineno="84" refid="classGraphics_a1a6c82a84419185a87858541fa094066_1a1a6c82a84419185a87858541fa094066" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classGraphics_a1a6c82a84419185a87858541fa094066_1a1a6c82a84419185a87858541fa094066" kindref="member">m_width</ref>;</highlight></codeline>
+<codeline lineno="85" refid="classGraphics_abeb2d8d4b81e71ad34102c1526ef28b6_1abeb2d8d4b81e71ad34102c1526ef28b6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classGraphics_abeb2d8d4b81e71ad34102c1526ef28b6_1abeb2d8d4b81e71ad34102c1526ef28b6" kindref="member">m_height</ref>;</highlight></codeline>
+<codeline lineno="86" refid="classGraphics_a0082e76df00907ea297d37abccd21d8f_1a0082e76df00907ea297d37abccd21d8f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>HWND<sp/><ref refid="classGraphics_a0082e76df00907ea297d37abccd21d8f_1a0082e76df00907ea297d37abccd21d8f" kindref="member">m_hParentWnd</ref>;</highlight></codeline>
+<codeline lineno="87" refid="classGraphics_a691874fb352051093a2ec88f3c5a3d11_1a691874fb352051093a2ec88f3c5a3d11" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT<sp/><ref refid="classGraphics_a691874fb352051093a2ec88f3c5a3d11_1a691874fb352051093a2ec88f3c5a3d11" kindref="member">m_swapChainFlags</ref><sp/>=<sp/>0u;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>FLIP_PRESENT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>m_presentFlags<sp/>=<sp/>0u;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>only<sp/>valid<sp/>in<sp/>windowed<sp/>mode</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>Microsoft::WRL::ComPtr&lt;IDXGIFactory4&gt;<sp/><ref refid="classGraphics_ad5ab15e2a2efd332ba0a1a67ba232c83_1ad5ab15e2a2efd332ba0a1a67ba232c83" kindref="member">m_pDxgiFactory</ref>;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>Microsoft::WRL::ComPtr&lt;IDXGISwapChain1&gt;<sp/><ref refid="classGraphics_addd97d44d286a2a1960a0d25883bb6fa_1addd97d44d286a2a1960a0d25883bb6fa" kindref="member">m_pSwapChain</ref>;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="classGraphics_ad5ab15e2a2efd332ba0a1a67ba232c83_1ad5ab15e2a2efd332ba0a1a67ba232c83" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Microsoft::WRL::ComPtr&lt;IDXGIFactory1&gt;<sp/><ref refid="classGraphics_ad5ab15e2a2efd332ba0a1a67ba232c83_1ad5ab15e2a2efd332ba0a1a67ba232c83" kindref="member">m_pDxgiFactory</ref>;</highlight></codeline>
+<codeline lineno="94" refid="classGraphics_addd97d44d286a2a1960a0d25883bb6fa_1addd97d44d286a2a1960a0d25883bb6fa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Microsoft::WRL::ComPtr&lt;IDXGISwapChain&gt;<sp/><ref refid="classGraphics_addd97d44d286a2a1960a0d25883bb6fa_1addd97d44d286a2a1960a0d25883bb6fa" kindref="member">m_pSwapChain</ref>;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="classGraphics_a575747a53aa1953a098aa64992149188_1a575747a53aa1953a098aa64992149188" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Microsoft::WRL::ComPtr&lt;ID3D11Device&gt;<sp/><ref refid="classGraphics_a575747a53aa1953a098aa64992149188_1a575747a53aa1953a098aa64992149188" kindref="member">m_pDevice</ref>;</highlight></codeline>
+<codeline lineno="97" refid="classGraphics_aaa529cec9fbc7cb5b9914e0c1f431efe_1aaa529cec9fbc7cb5b9914e0c1f431efe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Microsoft::WRL::ComPtr&lt;ID3D11DeviceContext&gt;<sp/><ref refid="classGraphics_aaa529cec9fbc7cb5b9914e0c1f431efe_1aaa529cec9fbc7cb5b9914e0c1f431efe" kindref="member">m_pImmediateContext</ref>;</highlight></codeline>
+<codeline lineno="98" refid="classGraphics_a6305d6fcb9798d15ed15dead4c3fc3a5_1a6305d6fcb9798d15ed15dead4c3fc3a5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Microsoft::WRL::ComPtr&lt;IDXGIOutput1&gt;<sp/><ref refid="classGraphics_a6305d6fcb9798d15ed15dead4c3fc3a5_1a6305d6fcb9798d15ed15dead4c3fc3a5" kindref="member">m_pDxgiOutput</ref>;</highlight></codeline>
+<codeline lineno="99" refid="classGraphics_a02e3b57e9a06dca3b04e368cae000820_1a02e3b57e9a06dca3b04e368cae000820" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;RenderTargetOutput&gt;<sp/><ref refid="classGraphics_a02e3b57e9a06dca3b04e368cae000820_1a02e3b57e9a06dca3b04e368cae000820" kindref="member">m_pBackBufferRtv</ref>;</highlight></codeline>
+<codeline lineno="100" refid="classGraphics_a974483c4adc9f12211ca4916594f47f8_1a974483c4adc9f12211ca4916594f47f8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;DepthStencilOutput&gt;<sp/><ref refid="classGraphics_a974483c4adc9f12211ca4916594f47f8_1a974483c4adc9f12211ca4916594f47f8" kindref="member">m_pBackBufferDsv</ref>;</highlight></codeline>
+<codeline lineno="101" refid="classGraphics_a38b40521639124e322cf9b63c1b6c26f_1a38b40521639124e322cf9b63c1b6c26f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;TextureOffscreenRT&gt;<sp/><ref refid="classGraphics_a38b40521639124e322cf9b63c1b6c26f_1a38b40521639124e322cf9b63c1b6c26f" kindref="member">m_pOffscreenRtv</ref>;</highlight></codeline>
+<codeline lineno="102" refid="classGraphics_a22e51ce136cf34e39ac7745c4490de4d_1a22e51ce136cf34e39ac7745c4490de4d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;TextureOffscreenDS&gt;<sp/><ref refid="classGraphics_a22e51ce136cf34e39ac7745c4490de4d_1a22e51ce136cf34e39ac7745c4490de4d" kindref="member">m_pOffscreenDsv</ref>;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>_DEBUG<sp/>&amp;&amp;<sp/>!defined<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDxgiInfoQueue" kindref="compound">DxgiInfoQueue</ref><sp/>m_infoQueue;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>ATL::CComPtr&lt;ID3D11Debug&gt;<sp/>m_pDebug;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107" refid="classGraphics_a6492e28efe827048fcf68db711c33e69_1a6492e28efe827048fcf68db711c33e69" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>DirectX::XMMATRIX<sp/><ref refid="classGraphics_a6492e28efe827048fcf68db711c33e69_1a6492e28efe827048fcf68db711c33e69" kindref="member">m_projection</ref>;</highlight></codeline>
+<codeline lineno="108" refid="classGraphics_a953a1c18c19e3ff6a84e43ddab99da2a_1a953a1c18c19e3ff6a84e43ddab99da2a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>DirectX::XMMATRIX<sp/><ref refid="classGraphics_a953a1c18c19e3ff6a84e43ddab99da2a_1a953a1c18c19e3ff6a84e43ddab99da2a" kindref="member">m_view</ref>;</highlight></codeline>
+<codeline lineno="109" refid="classGraphics_ae0b5cbf6ca77fd072fbd23ad50c9336d_1ae0b5cbf6ca77fd072fbd23ad50c9336d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classGraphics_ae0b5cbf6ca77fd072fbd23ad50c9336d_1ae0b5cbf6ca77fd072fbd23ad50c9336d" kindref="member">m_currentFrame</ref><sp/>=<sp/>0u;</highlight></codeline>
+<codeline lineno="110" refid="classGraphics_ab66e3729912e3c267d200d7d1ee35af2_1ab66e3729912e3c267d200d7d1ee35af2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;ID3D11DeviceContext*&gt;<sp/><ref refid="classGraphics_ab66e3729912e3c267d200d7d1ee35af2_1ab66e3729912e3c267d200d7d1ee35af2" kindref="member">m_deferredContexts</ref>;</highlight></codeline>
+<codeline lineno="111" refid="classGraphics_a2e75ada04a8515bf3504a539112bba05_1a2e75ada04a8515bf3504a539112bba05" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;ID3D11CommandList*&gt;<sp/><ref refid="classGraphics_a2e75ada04a8515bf3504a539112bba05_1a2e75ada04a8515bf3504a539112bba05" kindref="member">m_commandLists</ref>;</highlight></codeline>
+<codeline lineno="112" refid="classGraphics_a31c3e0ab1991c2693da1295f1e4f6702_1a31c3e0ab1991c2693da1295f1e4f6702" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;ren::Renderer&gt;<sp/><ref refid="classGraphics_a31c3e0ab1991c2693da1295f1e4f6702_1a31c3e0ab1991c2693da1295f1e4f6702" kindref="member">m_pRenderer</ref>;</highlight></codeline>
+<codeline lineno="113" refid="classGraphics_a23f562aa7303bb49e73bb104a7d50271_1a23f562aa7303bb49e73bb104a7d50271" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classren_1_1Renderer3d" kindref="compound">ren::Renderer3d</ref>*<sp/><ref refid="classGraphics_a23f562aa7303bb49e73bb104a7d50271_1a23f562aa7303bb49e73bb104a7d50271" kindref="member">m_pRenderer3d</ref>;</highlight></codeline>
+<codeline lineno="114" refid="classGraphics_ae24eda5d4c47a906eafa9555bf76c70e_1ae24eda5d4c47a906eafa9555bf76c70e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classren_1_1Renderer2d" kindref="compound">ren::Renderer2d</ref>*<sp/><ref refid="classGraphics_ae24eda5d4c47a906eafa9555bf76c70e_1ae24eda5d4c47a906eafa9555bf76c70e" kindref="member">m_pRenderer2d</ref>;</highlight></codeline>
+<codeline lineno="115" refid="classGraphics_ad6709c3134a823fa8ef55de9542cf2f9_1ad6709c3134a823fa8ef55de9542cf2f9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyTimer" kindref="compound">KeyTimer&lt;std::chrono::microseconds&gt;</ref><sp/><ref refid="classGraphics_ad6709c3134a823fa8ef55de9542cf2f9_1ad6709c3134a823fa8ef55de9542cf2f9" kindref="member">m_fpsTimer</ref>;</highlight></codeline>
+<codeline lineno="116" refid="classGraphics_ab51ca0bbae080a1912493a2ef70cdec1_1ab51ca0bbae080a1912493a2ef70cdec1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyTimer" kindref="compound">KeyTimer&lt;std::chrono::seconds&gt;</ref><sp/><ref refid="classGraphics_ab51ca0bbae080a1912493a2ef70cdec1_1ab51ca0bbae080a1912493a2ef70cdec1" kindref="member">m_realTimer</ref>;</highlight></codeline>
+<codeline lineno="117" refid="classGraphics_ae0c36774c2093f5cfc1424187b0e1c31_1ae0c36774c2093f5cfc1424187b0e1c31" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classGraphics_ae0c36774c2093f5cfc1424187b0e1c31_1ae0c36774c2093f5cfc1424187b0e1c31" kindref="member">m_bFullscreenMode</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGraphics_ad5811b30333f3f4918b4d8d52fe19002_1ad5811b30333f3f4918b4d8d52fe19002" kindref="member">Graphics</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>HWND<sp/>hWnd,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>width,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>height,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="texture__desc_8h_a5a6f50353d158fb3e2d2234fde1353a4_1a5a6f50353d158fb3e2d2234fde1353a4" kindref="member">MultisamplingMode</ref><sp/>multisamplingMode<sp/>=<sp/><ref refid="texture__desc_8h_a5a6f50353d158fb3e2d2234fde1353a4_1a5a6f50353d158fb3e2d2234fde1353a4ac9d3e887722f2bc482bcca9d41c512af" kindref="member">MultisamplingMode::None</ref><sp/>);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGraphics_a7841c9a961ac9bca33bd30ddf8066cdb_1a7841c9a961ac9bca33bd30ddf8066cdb" kindref="member">~Graphics</ref>();</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_a9901788d977a1cb176ffc589bc7a9488_1a9901788d977a1cb176ffc589bc7a9488" kindref="member">makeWindowAssociationWithFactory</ref>(<sp/>HWND<sp/>hWnd,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UINT<sp/>flags<sp/>);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_a9c3fa6f796b990c8d62a77bb2146740c_1a9c3fa6f796b990c8d62a77bb2146740c" kindref="member">profile</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_a658256d93cbb6e78b8b0ecb319e38ad5_1a658256d93cbb6e78b8b0ecb319e38ad5" kindref="member">clearShaderSlots</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_aa810ea01a036c99e63ca86974ff85d13_1aa810ea01a036c99e63ca86974ff85d13" kindref="member">cleanState</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_ac25c31fbc763dc6970ae9c730b441129_1ac25c31fbc763dc6970ae9c730b441129" kindref="member">beginFrame</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_a3db48982641ea1fb21947e1524af9648_1a3db48982641ea1fb21947e1524af9648" kindref="member">endFrame</ref>();</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_a3c4a1c6f6675b97cedf9a0f45901212d_1a3c4a1c6f6675b97cedf9a0f45901212d" kindref="member">draw</ref>(<sp/>const<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>count<sp/>)<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_a29fa45ba5e44f5e574e4d0c0298bd02b_1a29fa45ba5e44f5e574e4d0c0298bd02b" kindref="member">drawIndexed</ref>(<sp/>const<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>count<sp/>)<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_a1e53b789df983b36aedcc1357eae4bf8_1a1e53b789df983b36aedcc1357eae4bf8" kindref="member">drawIndexedInstanced</ref>(<sp/>const<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>indexCount,<sp/>const<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>instanceCount<sp/>)<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref>*&amp;<sp/><ref refid="classGraphics_a4d6cdd9c40b62e88ede5f063b3192d29_1a4d6cdd9c40b62e88ede5f063b3192d29" kindref="member">cpuBuffer</ref>();</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_a1318c2c7f400f63a1b70391bebab4673_1a1318c2c7f400f63a1b70391bebab4673" kindref="member">setViewMatrix</ref>(<sp/>const<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>::XMMATRIX<sp/>&amp;cam<sp/>)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_a2ae47898ec3e6e2a64b3a8149a26ca6d_1a2ae47898ec3e6e2a64b3a8149a26ca6d" kindref="member">setProjectionMatrix</ref>(<sp/>const<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>::XMMATRIX<sp/>&amp;proj<sp/>)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>::XMMATRIX&amp;<sp/><ref refid="classGraphics_a51c3473e1b393df2a67432a10a8979cc_1a51c3473e1b393df2a67432a10a8979cc" kindref="member">getViewMatrix</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>::XMMATRIX&amp;<sp/><ref refid="classGraphics_a89eb80f0fd26a04206c4654c9928ca57_1a89eb80f0fd26a04206c4654c9928ca57" kindref="member">getProjectionMatrix</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classGraphics_af1489a7a2f0b6cf0f94f31ccb03943fa_1af1489a7a2f0b6cf0f94f31ccb03943fa" kindref="member">getClientWidth</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classGraphics_a6b1ed076f5063af9f5814d23df30dc24_1a6b1ed076f5063af9f5814d23df30dc24" kindref="member">getClientHeight</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;<ref refid="classRenderTargetOutput" kindref="compound">RenderTargetOutput</ref>&gt;<sp/><ref refid="classGraphics_a937fe925bd73dc37c24c0b728fabacee_1a937fe925bd73dc37c24c0b728fabacee" kindref="member">getRenderTargetFromBackBuffer</ref>();</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;<ref refid="classDepthStencilOutput" kindref="compound">DepthStencilOutput</ref>&gt;<sp/><ref refid="classGraphics_aecb2784a1b3b55dd7b1f90f52cd09297_1aecb2784a1b3b55dd7b1f90f52cd09297" kindref="member">getDepthBufferFromBackBuffer</ref>();</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;<ref refid="classTextureOffscreenRT" kindref="compound">TextureOffscreenRT</ref>&gt;<sp/><ref refid="classGraphics_a506691019858e4dbe5c5b4477f73f38f_1a506691019858e4dbe5c5b4477f73f38f" kindref="member">getRenderTargetOffscreen</ref>(<sp/>const<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>slot,<sp/>const<sp/><ref refid="texture__desc_8h_a6b4948cc0d12c93e6396540e02e2df58_1a6b4948cc0d12c93e6396540e02e2df58" kindref="member">RenderTargetViewMode</ref><sp/>rtvMode<sp/>);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;<ref refid="classTextureOffscreenDS" kindref="compound">TextureOffscreenDS</ref>&gt;<sp/><ref refid="classGraphics_a084646abddc266bd1098f7fec6fc6d93_1a084646abddc266bd1098f7fec6fc6d93" kindref="member">getDepthBufferOffscreen</ref>(<sp/>const<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>slot,<sp/>const<sp/><ref refid="texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_1a5aacc2000fea78d975de8fe06e3698f2" kindref="member">DepthStencilViewMode</ref><sp/>dsvMode<sp/>);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_a9a6ad2b28b7f765c6c7ed63b664754d8_1a9a6ad2b28b7f765c6c7ed63b664754d8" kindref="member">bindBackBufferAsInput</ref>();</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_a355c17321d44862d7ef0f93416492d6a_1a355c17321d44862d7ef0f93416492d6a" kindref="member">createFactory</ref>();</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_a80cc8527cd2fab207205fc3962fba585_1a80cc8527cd2fab207205fc3962fba585" kindref="member">createAdapters</ref>();</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_a02c044c5edb7ba86edb3b480ae2b2938_1a02c044c5edb7ba86edb3b480ae2b2938" kindref="member">resize</ref>(<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>newWidth,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>newHeight<sp/>);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_a7dce5b31ab15931acd9812956a118ab2_1a7dce5b31ab15931acd9812956a118ab2" kindref="member">setupMonitors</ref>();</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classGraphics_ac24292486c6316265844e447ecf3fe6d_1ac24292486c6316265844e447ecf3fe6d" kindref="member">getRefreshRate</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classGraphics_a320484260cb43b55ed1c4e0a468a1fa2_1a320484260cb43b55ed1c4e0a468a1fa2" kindref="member">getFrameNum</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_a48c55f80bdfdba34f8282ddc4c656e8a_1a48c55f80bdfdba34f8282ddc4c656e8a" kindref="member">runRenderer</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceren" kindref="compound">ren</ref>::Renderer&amp;<sp/><ref refid="classGraphics_ad411222985a4f1db857bbd79a9d324db_1ad411222985a4f1db857bbd79a9d324db" kindref="member">getRenderer</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceren" kindref="compound">ren</ref>::Renderer3d&amp;<sp/><ref refid="classGraphics_a2318eb0a55cbadf1eeeb7fe565b6b5cb_1a2318eb0a55cbadf1eeeb7fe565b6b5cb" kindref="member">getRenderer3d</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceren" kindref="compound">ren</ref>::Renderer2d&amp;<sp/><ref refid="classGraphics_ab1d1528c7a038c5ed47d392718603a7c_1ab1d1528c7a038c5ed47d392718603a7c" kindref="member">getRenderer2d</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>_DEBUG<sp/>&amp;&amp;<sp/>!defined<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDxgiInfoQueue" kindref="compound">DxgiInfoQueue</ref>&amp;<sp/>getInfoQueue();</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyTimer" kindref="compound">KeyTimer&lt;std::chrono::microseconds&gt;</ref>&amp;<sp/><ref refid="classGraphics_ace65c05b562f91e3270dc6c12836e0d8_1ace65c05b562f91e3270dc6c12836e0d8" kindref="member">getFpsTimer</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyTimer" kindref="compound">KeyTimer</ref>&lt;std::chrono::seconds&gt;&amp;<sp/><ref refid="classGraphics_a537fbfc5679f9f4001cdaa53ac233bb7_1a537fbfc5679f9f4001cdaa53ac233bb7" kindref="member">getRealTimer</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classGraphics_a01fc5b831899ec962977d6e132575283_1a01fc5b831899ec962977d6e132575283" kindref="member">getDisplayMode</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">&amp;<sp/><ref refid="classGraphics_a01fc5b831899ec962977d6e132575283_1a01fc5b831899ec962977d6e132575283" kindref="member">getDisplayMode</ref>();</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_ac0920b9480e1d140de868e7526d62074_1ac0920b9480e1d140de868e7526d62074" kindref="member">recordDeferredCommandList</ref>();</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_ada2873db798d493f4bb95d4ccb25c203_1ada2873db798d493f4bb95d4ccb25c203" kindref="member">playbackDeferredCommandList</ref>();</highlight></codeline>
+<codeline lineno="167"><highlight class="normal">private:</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_aefe40c94ce078f84342864b959543c99_1aefe40c94ce078f84342864b959543c99" kindref="member">present</ref>();</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_a5cc0d3b4dd8e0c60c55a67c31b3b64f9_1a5cc0d3b4dd8e0c60c55a67c31b3b64f9" kindref="member">interrogateDirectxFeatures</ref>();</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classGraphics_a4d2ce74d9116c803e4f5514fa9a8e51f_1a4d2ce74d9116c803e4f5514fa9a8e51f" kindref="member">checkTearingSupport</ref>();</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>_DEBUG<sp/>&amp;&amp;<sp/>!defined<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>d3d11DebugReport();</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="177" refid="classGraphics_a756515d158986ac14d289551b3531ed8_1a756515d158986ac14d289551b3531ed8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref><sp/>*<ref refid="classGraphics_a756515d158986ac14d289551b3531ed8_1a756515d158986ac14d289551b3531ed8" kindref="member">m_pCpuBuffer</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref><sp/><ref refid="classGraphics_a772e015f5d4e2838186d75f7fff38537_1a772e015f5d4e2838186d75f7fff38537" kindref="member">getPixel</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_a1f8c50c04b66e7d32fc0ddd29791ffdf_1a1f8c50c04b66e7d32fc0ddd29791ffdf" kindref="member">putPixel</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref><sp/>color<sp/>);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_a1f8c50c04b66e7d32fc0ddd29791ffdf_1a1f8c50c04b66e7d32fc0ddd29791ffdf" kindref="member">putPixel</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>r,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>g,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>b<sp/>);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this<sp/>is<sp/>one<sp/>of<sp/>the<sp/>algorithms<sp/>by<sp/>D3D<sp/>as<sp/>well<sp/>during<sp/>rasterization</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_a0cd69139e91c30dcf1db018d3093dcf9_1a0cd69139e91c30dcf1db018d3093dcf9" kindref="member">drawLine</ref>(<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x0,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x1,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y0,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y1,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref><sp/><ref refid="namespacecol" kindref="compound">col</ref><sp/>);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_aa7d408ae4c83eac1858dafa707e84799_1aa7d408ae4c83eac1858dafa707e84799" kindref="member">drawRectangle</ref>(<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x0,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y0,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x1,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y1,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref><sp/><ref refid="namespacecol" kindref="compound">col</ref><sp/>);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_aa7d408ae4c83eac1858dafa707e84799_1aa7d408ae4c83eac1858dafa707e84799" kindref="member">drawRectangle</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classRectangleF" kindref="compound">RectangleF</ref><sp/>&amp;rect,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref><sp/><ref refid="namespacecol" kindref="compound">col</ref><sp/>);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_ad2c624508f0ca102a2af94d107c7d697_1ad2c624508f0ca102a2af94d107c7d697" kindref="member">drawRectWH</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x0,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y0,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>width,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>height,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref><sp/><ref refid="namespacecol" kindref="compound">col</ref><sp/>);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_aed08b42d035efb0db4a31fa39acd28c0_1aed08b42d035efb0db4a31fa39acd28c0" kindref="member">drawTriangle</ref>(<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x0,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y0,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x1,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y1,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x2,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y2,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref><sp/><ref refid="namespacecol" kindref="compound">col</ref><sp/>);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_ad6ed9684c70ad5a7c5bd5335a1776d17_1ad6ed9684c70ad5a7c5bd5335a1776d17" kindref="member">drawCircle</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>centerX,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>centerY,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>radius,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref><sp/><ref refid="namespacecol" kindref="compound">col</ref><sp/>);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_a679fdec87f220496e1e9a9fb96abb8ce_1a679fdec87f220496e1e9a9fb96abb8ce" kindref="member">drawStar</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>outerRadius,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>innerRadius,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref><sp/>color,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nFlares<sp/>=<sp/>5);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>D2D_ONLY</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>Microsoft::WRL::ComPtr&lt;ID2D1Factory&gt;<sp/>m_p2DFactory;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>Microsoft::WRL::ComPtr&lt;IDXGISurface&gt;<sp/>m_p2DSurface;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>Microsoft::WRL::ComPtr&lt;ID2D1HwndRenderTarget&gt;<sp/>m_p2DRenderTarget;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>Microsoft::WRL::ComPtr&lt;ID2D1DeviceContext&gt;<sp/>m_p2DContext;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>Microsoft::WRL::ComPtr&lt;ID2D1SolidColorBrush&gt;<sp/>m_p2dSolidColorBrush;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>Microsoft::WRL::ComPtr&lt;IDWriteFactory&gt;<sp/>m_pWriteFactory;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>Microsoft::WRL::ComPtr&lt;IDWriteTextFormat&gt;<sp/>m_pTextFormat;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>begin2dDraw();</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>end2dDraw();</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>clear(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>D2D1::ColorF<sp/>&amp;rgb<sp/>=<sp/>D2D1::ColorF{0.0f,<sp/>0.0f,<sp/>0.0f}<sp/>);</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>create2dFactory();</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>Microsoft::WRL::ComPtr&lt;IDXGISurface&gt;&amp;<sp/>surface2d();</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/>ID2D1HwndRenderTarget*<sp/>renderTarget2d();</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>createTextFormat(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::wstring&amp;<sp/>fontName<sp/>=<sp/>L</highlight><highlight class="stringliteral">&quot;Arial&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>fontSize<sp/>=<sp/>24.0f,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::wstring<sp/>&amp;fontLocale<sp/>=<sp/>L</highlight><highlight class="stringliteral">&quot;en-us&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_a0cd69139e91c30dcf1db018d3093dcf9_1a0cd69139e91c30dcf1db018d3093dcf9" kindref="member">drawLine</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>D2D1_POINT_2F<sp/>&amp;v0,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>D2D1_POINT_2F<sp/>&amp;v1,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>D2D1::ColorF<sp/>&amp;rgba,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>strokeWidth<sp/>=<sp/>1.0f<sp/>);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>drawRect(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>D2D1_RECT_F<sp/>&amp;rect,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>D2D1::ColorF<sp/>&amp;rgba,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>strokeWidth<sp/>=<sp/>1.0f<sp/>);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>drawRoundedRect(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>D2D1_RECT_F<sp/>&amp;rect,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>radiusX,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>radiusY,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>D2D1::ColorF<sp/>&amp;rgba,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>strokeWidth<sp/>=<sp/>1.0f<sp/>);</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>drawEllipse(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>hRadius,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>vRadius,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>D2D1::ColorF<sp/>&amp;rgba,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>strokeWidth<sp/>=<sp/>1.0f<sp/>);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classGraphics_ad6ed9684c70ad5a7c5bd5335a1776d17_1ad6ed9684c70ad5a7c5bd5335a1776d17" kindref="member">drawCircle</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>radius,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>D2D1::ColorF<sp/>&amp;rgba,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>strokeWidth<sp/>=<sp/>1.0f<sp/>);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>drawText(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::wstring<sp/>&amp;txt,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>D2D1_RECT_F<sp/>&amp;rect,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>D2D1::ColorF<sp/>&amp;rgba<sp/>);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221" refid="graphics_8h_a93ba40510117bb29955d8a89703f449b_1a93ba40510117bb29955d8a89703f449b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>THROW_GRAPHICS_EXCEPTION(<sp/>msg<sp/>)<sp/>__debugbreak();\</highlight></codeline>
+<codeline lineno="222"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>throw<sp/>GraphicsException(<sp/>__LINE__,<sp/>__FILE__,<sp/>__FUNCTION__,<sp/>msg<sp/>);</highlight></codeline>
+    </programlisting>
+    <location file="inc/graphics.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,158 @@
+\doxysection{Sound\+Manager\+::Submix Class Reference}
+\hypertarget{classSoundManager_1_1Submix}{}\label{classSoundManager_1_1Submix}\index{SoundManager::Submix@{SoundManager::Submix}}
+
+
+{\ttfamily \#include $<$key\+\_\+sound.\+h$>$}
+
+Inheritance diagram for Sound\+Manager\+::Submix\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classSoundManager_1_1Submix}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSoundManager_1_1Submix_ae4c7cb208375b6c2f7ac2611df851e44_ae4c7cb208375b6c2f7ac2611df851e44}{Submix}} (const std\+::string \&name="{}"{})
+\item 
+\mbox{\hyperlink{classSoundManager_1_1Submix_a38e1ecc9f28325b9fb651de7fc620059_a38e1ecc9f28325b9fb651de7fc620059}{\texorpdfstring{$\sim$}{\string~}\+Submix}} () noexcept
+\item 
+\mbox{\hyperlink{classSoundManager_1_1Submix_afc2778a8bfe2367403a5c49f5cfa18ef_afc2778a8bfe2367403a5c49f5cfa18ef}{Submix}} (\mbox{\hyperlink{classSoundManager_1_1Submix}{Submix}} \&\&rhs) cond\+\_\+noex
+\item 
+\mbox{\hyperlink{classSoundManager_1_1Submix}{Submix}} \& \mbox{\hyperlink{classSoundManager_1_1Submix_a5e2bbc328f21ea543eae3601cfb1afa3_a5e2bbc328f21ea543eae3601cfb1afa3}{operator=}} (\mbox{\hyperlink{classSoundManager_1_1Submix}{Submix}} \&\&rhs) cond\+\_\+noex
+\item 
+const std\+::string \& \mbox{\hyperlink{classSoundManager_1_1Submix_a5b6a3783d0d9a6f778dabd7dbb106452_a5b6a3783d0d9a6f778dabd7dbb106452}{get\+Name}} () const cond\+\_\+noex
+\item 
+void \mbox{\hyperlink{classSoundManager_1_1Submix_a283167e84b415a1b784de6986e5f6c56_a283167e84b415a1b784de6986e5f6c56}{set\+Name}} (const std\+::string \&name) cond\+\_\+noex
+\item 
+void \mbox{\hyperlink{classSoundManager_1_1Submix_a408d8937c046c185e9a78057f38df784_a408d8937c046c185e9a78057f38df784}{set\+Volume}} (const float volume=1.\+0f) cond\+\_\+noex
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNonCopyable_a809b6e4ade7ae32f6d248f2a3b783d45_a809b6e4ade7ae32f6d248f2a3b783d45}{Non\+Copyable}} ()=default
+\item 
+\mbox{\hyperlink{classNonCopyable_a15aa3015488bb26c47ded914cb630cf5_a15aa3015488bb26c47ded914cb630cf5}{Non\+Copyable}} (const \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_af4788b57da9a9faa570c754c22c724f5_af4788b57da9a9faa570c754c22c724f5}{operator=}} (const \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable_a487646562ae30ece23d7638f2aed1dde_a487646562ae30ece23d7638f2aed1dde}{Non\+Copyable}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_ae032ca32cda9c836c27b28eb6a087d18_ae032ca32cda9c836c27b28eb6a087d18}{operator=}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable_af716e4cfb79381710ef4490414939ae9_af716e4cfb79381710ef4490414939ae9}{Non\+Copyable}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&\&rhs)=default
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_af81816bd4c2c4421a6eab98843ead6e4_af81816bd4c2c4421a6eab98843ead6e4}{operator=}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&\&rhs)=default
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classSoundManager_1_1Submix_abc991e483b130dc00ddae3e8022c2306_abc991e483b130dc00ddae3e8022c2306}{m\+\_\+name}}
+\item 
+XAUDIO2\+\_\+\+SEND\+\_\+\+DESCRIPTOR \mbox{\hyperlink{classSoundManager_1_1Submix_adde7894c87985a42e8351391124c80a7_adde7894c87985a42e8351391124c80a7}{m\+\_\+output\+Voice\+Send\+Desc}}
+\item 
+XAUDIO2\+\_\+\+VOICE\+\_\+\+SENDS \mbox{\hyperlink{classSoundManager_1_1Submix_a6f371ff726b20e56d18572aec8e44b9e_a6f371ff726b20e56d18572aec8e44b9e}{m\+\_\+output\+Voice\+Sends}}
+\item 
+struct IXAudio2\+Submix\+Voice \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classSoundManager_1_1Submix_abbeaca08940af523143c7405537257a1_abbeaca08940af523143c7405537257a1}{m\+\_\+p\+Submix\+Voice}} = nullptr
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classSoundManager_1_1Submix_ac47342240f21ce36f47485e4ab41a10d_ac47342240f21ce36f47485e4ab41a10d}{Channel}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNonCopyable_a3e461fb46c72b9a5af7df7e74dbd899e_a3e461fb46c72b9a5af7df7e74dbd899e}{\texorpdfstring{$\sim$}{\string~}\+Non\+Copyable}} () noexcept=default
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classSoundManager_1_1Submix_ae4c7cb208375b6c2f7ac2611df851e44_ae4c7cb208375b6c2f7ac2611df851e44}\index{SoundManager::Submix@{SoundManager::Submix}!Submix@{Submix}}
+\index{Submix@{Submix}!SoundManager::Submix@{SoundManager::Submix}}
+\doxysubsubsection{\texorpdfstring{Submix()}{Submix()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classSoundManager_1_1Submix_ae4c7cb208375b6c2f7ac2611df851e44_ae4c7cb208375b6c2f7ac2611df851e44} 
+Sound\+Manager\+::\+Submix\+::\+Submix (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})}
+
+\Hypertarget{classSoundManager_1_1Submix_a38e1ecc9f28325b9fb651de7fc620059_a38e1ecc9f28325b9fb651de7fc620059}\index{SoundManager::Submix@{SoundManager::Submix}!````~Submix@{\texorpdfstring{$\sim$}{\string~}Submix}}
+\index{````~Submix@{\texorpdfstring{$\sim$}{\string~}Submix}!SoundManager::Submix@{SoundManager::Submix}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Submix()}{\string~Submix()}}
+{\footnotesize\ttfamily \label{classSoundManager_1_1Submix_a38e1ecc9f28325b9fb651de7fc620059_a38e1ecc9f28325b9fb651de7fc620059} 
+Sound\+Manager\+::\+Submix\+::\texorpdfstring{$\sim$}{\string~}\+Submix (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classSoundManager_1_1Submix_afc2778a8bfe2367403a5c49f5cfa18ef_afc2778a8bfe2367403a5c49f5cfa18ef}\index{SoundManager::Submix@{SoundManager::Submix}!Submix@{Submix}}
+\index{Submix@{Submix}!SoundManager::Submix@{SoundManager::Submix}}
+\doxysubsubsection{\texorpdfstring{Submix()}{Submix()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classSoundManager_1_1Submix_afc2778a8bfe2367403a5c49f5cfa18ef_afc2778a8bfe2367403a5c49f5cfa18ef} 
+Sound\+Manager\+::\+Submix\+::\+Submix (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSoundManager_1_1Submix}{Submix}} \&\&}]{rhs}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classSoundManager_1_1Submix_a5b6a3783d0d9a6f778dabd7dbb106452_a5b6a3783d0d9a6f778dabd7dbb106452}\index{SoundManager::Submix@{SoundManager::Submix}!getName@{getName}}
+\index{getName@{getName}!SoundManager::Submix@{SoundManager::Submix}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily \label{classSoundManager_1_1Submix_a5b6a3783d0d9a6f778dabd7dbb106452_a5b6a3783d0d9a6f778dabd7dbb106452} 
+const std\+::string \& Sound\+Manager\+::\+Submix\+::get\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classSoundManager_1_1Submix_a5e2bbc328f21ea543eae3601cfb1afa3_a5e2bbc328f21ea543eae3601cfb1afa3}\index{SoundManager::Submix@{SoundManager::Submix}!operator=@{operator=}}
+\index{operator=@{operator=}!SoundManager::Submix@{SoundManager::Submix}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{classSoundManager_1_1Submix_a5e2bbc328f21ea543eae3601cfb1afa3_a5e2bbc328f21ea543eae3601cfb1afa3} 
+\mbox{\hyperlink{classSoundManager_1_1Submix}{Sound\+Manager\+::\+Submix}} \& Sound\+Manager\+::\+Submix\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSoundManager_1_1Submix}{Submix}} \&\&}]{rhs}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classSoundManager_1_1Submix_a283167e84b415a1b784de6986e5f6c56_a283167e84b415a1b784de6986e5f6c56}\index{SoundManager::Submix@{SoundManager::Submix}!setName@{setName}}
+\index{setName@{setName}!SoundManager::Submix@{SoundManager::Submix}}
+\doxysubsubsection{\texorpdfstring{setName()}{setName()}}
+{\footnotesize\ttfamily \label{classSoundManager_1_1Submix_a283167e84b415a1b784de6986e5f6c56_a283167e84b415a1b784de6986e5f6c56} 
+void Sound\+Manager\+::\+Submix\+::set\+Name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classSoundManager_1_1Submix_a408d8937c046c185e9a78057f38df784_a408d8937c046c185e9a78057f38df784}\index{SoundManager::Submix@{SoundManager::Submix}!setVolume@{setVolume}}
+\index{setVolume@{setVolume}!SoundManager::Submix@{SoundManager::Submix}}
+\doxysubsubsection{\texorpdfstring{setVolume()}{setVolume()}}
+{\footnotesize\ttfamily \label{classSoundManager_1_1Submix_a408d8937c046c185e9a78057f38df784_a408d8937c046c185e9a78057f38df784} 
+void Sound\+Manager\+::\+Submix\+::set\+Volume (\begin{DoxyParamCaption}\item[{const float}]{volume}{ = {\ttfamily 1.0f}}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{classSoundManager_1_1Submix_ac47342240f21ce36f47485e4ab41a10d_ac47342240f21ce36f47485e4ab41a10d}\index{SoundManager::Submix@{SoundManager::Submix}!Channel@{Channel}}
+\index{Channel@{Channel}!SoundManager::Submix@{SoundManager::Submix}}
+\doxysubsubsection{\texorpdfstring{Channel}{Channel}}
+{\footnotesize\ttfamily \label{classSoundManager_1_1Submix_ac47342240f21ce36f47485e4ab41a10d_ac47342240f21ce36f47485e4ab41a10d} 
+friend class \mbox{\hyperlink{classSoundManager_1_1Channel}{Channel}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classSoundManager_1_1Submix_abc991e483b130dc00ddae3e8022c2306_abc991e483b130dc00ddae3e8022c2306}\index{SoundManager::Submix@{SoundManager::Submix}!m\_name@{m\_name}}
+\index{m\_name@{m\_name}!SoundManager::Submix@{SoundManager::Submix}}
+\doxysubsubsection{\texorpdfstring{m\_name}{m\_name}}
+{\footnotesize\ttfamily \label{classSoundManager_1_1Submix_abc991e483b130dc00ddae3e8022c2306_abc991e483b130dc00ddae3e8022c2306} 
+std\+::string Sound\+Manager\+::\+Submix\+::m\+\_\+name\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classSoundManager_1_1Submix_adde7894c87985a42e8351391124c80a7_adde7894c87985a42e8351391124c80a7}\index{SoundManager::Submix@{SoundManager::Submix}!m\_outputVoiceSendDesc@{m\_outputVoiceSendDesc}}
+\index{m\_outputVoiceSendDesc@{m\_outputVoiceSendDesc}!SoundManager::Submix@{SoundManager::Submix}}
+\doxysubsubsection{\texorpdfstring{m\_outputVoiceSendDesc}{m\_outputVoiceSendDesc}}
+{\footnotesize\ttfamily \label{classSoundManager_1_1Submix_adde7894c87985a42e8351391124c80a7_adde7894c87985a42e8351391124c80a7} 
+XAUDIO2\+\_\+\+SEND\+\_\+\+DESCRIPTOR Sound\+Manager\+::\+Submix\+::m\+\_\+output\+Voice\+Send\+Desc\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classSoundManager_1_1Submix_a6f371ff726b20e56d18572aec8e44b9e_a6f371ff726b20e56d18572aec8e44b9e}\index{SoundManager::Submix@{SoundManager::Submix}!m\_outputVoiceSends@{m\_outputVoiceSends}}
+\index{m\_outputVoiceSends@{m\_outputVoiceSends}!SoundManager::Submix@{SoundManager::Submix}}
+\doxysubsubsection{\texorpdfstring{m\_outputVoiceSends}{m\_outputVoiceSends}}
+{\footnotesize\ttfamily \label{classSoundManager_1_1Submix_a6f371ff726b20e56d18572aec8e44b9e_a6f371ff726b20e56d18572aec8e44b9e} 
+XAUDIO2\+\_\+\+VOICE\+\_\+\+SENDS Sound\+Manager\+::\+Submix\+::m\+\_\+output\+Voice\+Sends\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classSoundManager_1_1Submix_abbeaca08940af523143c7405537257a1_abbeaca08940af523143c7405537257a1}\index{SoundManager::Submix@{SoundManager::Submix}!m\_pSubmixVoice@{m\_pSubmixVoice}}
+\index{m\_pSubmixVoice@{m\_pSubmixVoice}!SoundManager::Submix@{SoundManager::Submix}}
+\doxysubsubsection{\texorpdfstring{m\_pSubmixVoice}{m\_pSubmixVoice}}
+{\footnotesize\ttfamily \label{classSoundManager_1_1Submix_abbeaca08940af523143c7405537257a1_abbeaca08940af523143c7405537257a1} 
+struct IXAudio2\+Submix\+Voice\texorpdfstring{$\ast$}{*} Sound\+Manager\+::\+Submix\+::m\+\_\+p\+Submix\+Voice = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{key__sound_8h}{key\+\_\+sound.\+h}}\item 
+src/\mbox{\hyperlink{key__sound_8cpp}{key\+\_\+sound.\+cpp}}\end{DoxyCompactItemize}

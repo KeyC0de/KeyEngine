@@ -1,0 +1,879 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="material__loader_8cpp" kind="file" language="C++">
+    <compoundname>material_loader.cpp</compoundname>
+    <includes refid="material__loader_8h" local="yes">material_loader.h</includes>
+    <includes refid="graphics_8h" local="yes">graphics.h</includes>
+    <includes refid="material_8h" local="yes">material.h</includes>
+    <includes refid="vertex__buffer_8h" local="yes">vertex_buffer.h</includes>
+    <includes refid="index__buffer_8h" local="yes">index_buffer.h</includes>
+    <includes refid="primitive__topology_8h" local="yes">primitive_topology.h</includes>
+    <includes refid="input__layout_8h" local="yes">input_layout.h</includes>
+    <includes refid="pixel__shader_8h" local="yes">pixel_shader.h</includes>
+    <includes refid="transform__vscb_8h" local="yes">transform_vscb.h</includes>
+    <includes refid="vertex__shader_8h" local="yes">vertex_shader.h</includes>
+    <includes refid="texture_8h" local="yes">texture.h</includes>
+    <includes refid="texture__sampler__state_8h" local="yes">texture_sampler_state.h</includes>
+    <includes refid="rasterizer__state_8h" local="yes">rasterizer_state.h</includes>
+    <includes refid="constant__buffer__ex_8h" local="yes">constant_buffer_ex.h</includes>
+    <includes refid="rendering__channel_8h" local="yes">rendering_channel.h</includes>
+    <includes refid="assertions__console_8h" local="yes">assertions_console.h</includes>
+    <includes refid="lighting__mode_8h" local="yes">lighting_mode.h</includes>
+    <incdepgraph>
+      <node id="15">
+        <label>assertions_console.h</label>
+        <link refid="assertions__console_8h"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="52">
+        <label>bindable.h</label>
+        <link refid="bindable_8h"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="66">
+        <label>bitmap.h</label>
+        <link refid="bitmap_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>color.h</label>
+        <link refid="color_8h"/>
+      </node>
+      <node id="31">
+        <label>console.h</label>
+        <link refid="console_8h"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="75">
+        <label>constant_buffer_ex.h</label>
+        <link refid="constant__buffer__ex_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+      </node>
+      <node id="72">
+        <label>depth_stencil_view.h</label>
+        <link refid="depth__stencil__view_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="60">
+        <label>dynamic_constant_buffer.h</label>
+        <link refid="dynamic__constant__buffer_8h"/>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>dynamic_vertex_buffer.h</label>
+        <link refid="dynamic__vertex__buffer_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>graphics.h</label>
+        <link refid="graphics_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="53">
+        <label>graphics_friend.h</label>
+        <link refid="graphics__friend_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="76">
+        <label>imgui_visitors.h</label>
+        <link refid="imgui__visitors_8h"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+      <node id="55">
+        <label>index_buffer.h</label>
+        <link refid="index__buffer_8h"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+      </node>
+      <node id="57">
+        <label>input_layout.h</label>
+        <link refid="input__layout_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>key_exception.h</label>
+        <link refid="key__exception_8h"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>key_timer.h</label>
+        <link refid="key__timer_8h"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>key_type_traits.h</label>
+        <link refid="key__type__traits_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>key_wrl.h</label>
+        <link refid="key__wrl_8h"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="78">
+        <label>lighting_mode.h</label>
+        <link refid="lighting__mode_8h"/>
+      </node>
+      <node id="51">
+        <label>material.h</label>
+        <link refid="material_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>material_loader.h</label>
+        <link refid="material__loader_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>math_utils.h</label>
+        <link refid="math__utils_8h"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="58">
+        <label>pixel_shader.h</label>
+        <link refid="pixel__shader_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+      </node>
+      <node id="56">
+        <label>primitive_topology.h</label>
+        <link refid="primitive__topology_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+      </node>
+      <node id="74">
+        <label>rasterizer_state.h</label>
+        <link refid="rasterizer__state_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="70">
+        <label>render_surface.h</label>
+        <link refid="render__surface_8h"/>
+        <childnode refid="71" relation="include">
+        </childnode>
+      </node>
+      <node id="69">
+        <label>render_target.h</label>
+        <link refid="render__target_8h"/>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="77">
+        <label>rendering_channel.h</label>
+        <link refid="rendering__channel_8h"/>
+      </node>
+      <node id="65">
+        <label>texture.h</label>
+        <link refid="texture_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>texture_desc.h</label>
+        <link refid="texture__desc_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="73">
+        <label>texture_sampler_state.h</label>
+        <link refid="texture__sampler__state_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+      </node>
+      <node id="59">
+        <label>transform_vscb.h</label>
+        <link refid="transform__vscb_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>utils_global.h</label>
+        <link refid="utils__global_8h"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+      </node>
+      <node id="54">
+        <label>vertex_buffer.h</label>
+        <link refid="vertex__buffer_8h"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="64">
+        <label>vertex_shader.h</label>
+        <link refid="vertex__shader_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>winner.h</label>
+        <link refid="winner_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/material_loader.cpp</label>
+        <link refid="material__loader_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>DirectXMath.h</label>
+      </node>
+      <node id="67">
+        <label>DirectxMath.h</label>
+      </node>
+      <node id="8">
+        <label>Windows.h</label>
+      </node>
+      <node id="44">
+        <label>algorithm</label>
+      </node>
+      <node id="71">
+        <label>array</label>
+      </node>
+      <node id="14">
+        <label>assimp/scene.h</label>
+      </node>
+      <node id="40">
+        <label>bitset</label>
+      </node>
+      <node id="61">
+        <label>cassert</label>
+      </node>
+      <node id="30">
+        <label>chrono</label>
+      </node>
+      <node id="42">
+        <label>cinttypes</label>
+      </node>
+      <node id="33">
+        <label>cmath</label>
+      </node>
+      <node id="41">
+        <label>cstddef</label>
+      </node>
+      <node id="34">
+        <label>cstdint</label>
+      </node>
+      <node id="10">
+        <label>d3d11.h</label>
+      </node>
+      <node id="21">
+        <label>d3dcompiler.h</label>
+      </node>
+      <node id="20">
+        <label>dxgi1_4.h</label>
+      </node>
+      <node id="68">
+        <label>dxtex/DirectXTex.h</label>
+      </node>
+      <node id="48">
+        <label>execution</label>
+      </node>
+      <node id="3">
+        <label>filesystem</label>
+      </node>
+      <node id="43">
+        <label>future</label>
+      </node>
+      <node id="36">
+        <label>iomanip</label>
+      </node>
+      <node id="16">
+        <label>iostream</label>
+      </node>
+      <node id="46">
+        <label>iterator</label>
+      </node>
+      <node id="37">
+        <label>limits</label>
+      </node>
+      <node id="22">
+        <label>memory</label>
+      </node>
+      <node id="45">
+        <label>numeric</label>
+      </node>
+      <node id="62">
+        <label>optional</label>
+      </node>
+      <node id="47">
+        <label>regex</label>
+      </node>
+      <node id="7">
+        <label>sdkddkver.h</label>
+      </node>
+      <node id="39">
+        <label>set</label>
+      </node>
+      <node id="35">
+        <label>sstream</label>
+      </node>
+      <node id="26">
+        <label>stdexcept</label>
+      </node>
+      <node id="25">
+        <label>string</label>
+      </node>
+      <node id="29">
+        <label>thread</label>
+      </node>
+      <node id="11">
+        <label>type_traits</label>
+      </node>
+      <node id="63">
+        <label>unordered_map</label>
+      </node>
+      <node id="12">
+        <label>utility</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
+      </node>
+      <node id="19">
+        <label>wrl.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="material__loader_8h" kindref="compound">material_loader.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="graphics_8h" kindref="compound">graphics.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="material_8h" kindref="compound">material.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="vertex__buffer_8h" kindref="compound">vertex_buffer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="index__buffer_8h" kindref="compound">index_buffer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="primitive__topology_8h" kindref="compound">primitive_topology.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="input__layout_8h" kindref="compound">input_layout.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="pixel__shader_8h" kindref="compound">pixel_shader.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="transform__vscb_8h" kindref="compound">transform_vscb.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="vertex__shader_8h" kindref="compound">vertex_shader.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="texture_8h" kindref="compound">texture.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="texture__sampler__state_8h" kindref="compound">texture_sampler_state.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="rasterizer__state_8h" kindref="compound">rasterizer_state.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="constant__buffer__ex_8h" kindref="compound">constant_buffer_ex.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="rendering__channel_8h" kindref="compound">rendering_channel.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="assertions__console_8h" kindref="compound">assertions_console.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="lighting__mode_8h" kindref="compound">lighting_mode.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#TODO:<sp/>PBR<sp/>Metallic<sp/>Renderer<sp/>(UE4<sp/>based)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceDirectX" kindref="compound">dx</ref><sp/>=<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classMaterialLoader_a1416b536d4e7913c309f50fbda7945ab_1a1416b536d4e7913c309f50fbda7945ab" refkind="member"><highlight class="normal"><ref refid="classMaterialLoader_a1416b536d4e7913c309f50fbda7945ab_1a1416b536d4e7913c309f50fbda7945ab" kindref="member">MaterialLoader::MaterialLoader</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>aiMaterial<sp/>&amp;aimaterial,</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::filesystem::path<sp/>&amp;modelPath<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>m_modelPath{modelPath.string()}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>rootPath<sp/>=<sp/>modelPath.parent_path().string()<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;/&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>aiString<sp/>matName;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>aimaterial.Get(<sp/>AI_MATKEY_NAME,<sp/>matName<sp/>);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_name<sp/>=<sp/>matName.C_Str();</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>shaderFileName;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>(<sp/><ref refid="namespacelgh__mode_a564e54d45cf1d02ebd633f9777c7ea4b_1a564e54d45cf1d02ebd633f9777c7ea4b" kindref="member">lgh_mode::get</ref>()<sp/>==<sp/><ref refid="namespacelgh__mode_a6aef2c1a3a5f02c97a5f730e5d813496_1a6aef2c1a3a5f02c97a5f730e5d813496a969eeb55e098d22c095f22418676c238" kindref="member">lgh_mode::LightingMode::BlinnPhong</ref><sp/>)</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>#TODO:<sp/>add<sp/>transparent<sp/>material</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="comment">//<sp/>opaque<sp/>material</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMaterial" kindref="compound">Material</ref><sp/>opaque{<ref refid="namespacerch_a2e8849c8ce6b8977aaffe7f9dc10509d_1a2e8849c8ce6b8977aaffe7f9dc10509d" kindref="member">rch::opaque</ref>,<sp/></highlight><highlight class="stringliteral">&quot;opaque&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>opaque.<ref refid="classMaterial_afe5fc1c1346a8d176afbb312d4a11915_1afe5fc1c1346a8d176afbb312d4a11915" kindref="member">addBindable</ref>(<sp/><ref refid="classPrimitiveTopology_a1f65640090cc0f20dd4115f25ff24e09_1a1f65640090cc0f20dd4115f25ff24e09" kindref="member">PrimitiveTopology::fetch</ref>(<sp/>gfx,<sp/>D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shaderFileName<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;phong_&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>aiString<sp/>textureFileName;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_vertexLayout.add(<sp/>ver::VertexInputLayout::Position3D<sp/>);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_vertexLayout.add(<sp/>ver::VertexInputLayout::Normal<sp/>);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classcon_1_1RawLayout" kindref="compound">con::RawLayout</ref><sp/>cbLayout;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bTexture<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bSpecularTextureAlpha<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="comment">//<sp/>does<sp/>aiMaterial<sp/>have<sp/>a<sp/>diffuse/albedo<sp/>texture?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bTextureAlphaChannel<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>aimaterial.GetTexture(<sp/>aiTextureType_DIFFUSE,<sp/>0u,<sp/>&amp;textureFileName<sp/>)<sp/>==<sp/>aiReturn_SUCCESS<sp/>)</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bTexture<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shaderFileName<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;Dif&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_vertexLayout.add(<sp/>ver::VertexInputLayout::Texture2D<sp/>);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>tex<sp/>=<sp/><ref refid="classTexture_a9a7654906f9ca05ca82c96f1f2da576e_1a9a7654906f9ca05ca82c96f1f2da576e" kindref="member">Texture::fetch</ref>(<sp/>gfx,<sp/>rootPath<sp/>+<sp/>textureFileName.C_Str(),<sp/>0u<sp/>);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>tex-&gt;hasAlpha()<sp/>)</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bTextureAlphaChannel<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shaderFileName<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;Alp&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>opaque.addBindable(<sp/>std::move(<sp/>tex<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cbLayout.<ref refid="classcon_1_1RawLayout_ac4cd4dabf994fd33e4cfb154e0dbe94c_1ac4cd4dabf994fd33e4cfb154e0dbe94c" kindref="member">add</ref>&lt;con::Float4&gt;(<sp/></highlight><highlight class="stringliteral">&quot;materialColor&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classRasterizerState_aeaf96eb61bdc4f7e17fe5c351a090891_1aeaf96eb61bdc4f7e17fe5c351a090891" kindref="member">RasterizerState::FaceMode</ref><sp/>faceMode<sp/>=<sp/>bTextureAlphaChannel<sp/>?</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classRasterizerState_aeaf96eb61bdc4f7e17fe5c351a090891_1aeaf96eb61bdc4f7e17fe5c351a090891a7d450507cfc5245a2704fbfbbfb1c1e3" kindref="member">RasterizerState::FaceMode::Both</ref><sp/>:</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classRasterizerState_aeaf96eb61bdc4f7e17fe5c351a090891_1aeaf96eb61bdc4f7e17fe5c351a090891ac3b808e9b6b703082096f4da97d5d401" kindref="member">RasterizerState::FaceMode::Front</ref>;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>opaque.addBindable(<sp/><ref refid="classRasterizerState_ae33cba5eb6c008f927cb16e8c3c226f1_1ae33cba5eb6c008f927cb16e8c3c226f1" kindref="member">RasterizerState::fetch</ref>(<sp/>gfx,<sp/><ref refid="classRasterizerState_a3151107239aadcbe3426db7cce10f08e_1a3151107239aadcbe3426db7cce10f08eae2d59bb2d8146bb29d1722df1efc72e1" kindref="member">RasterizerState::RasterizerMode::DefaultRS</ref>,<sp/><ref refid="classRasterizerState_ab64eb708d2b58194806f2bee4f93dd65_1ab64eb708d2b58194806f2bee4f93dd65a816d9b64ac288103c37d263f3b2113cf" kindref="member">RasterizerState::FillMode::Solid</ref>,<sp/>faceMode<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="comment">//<sp/>how<sp/>about<sp/>specular<sp/>texture?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>aimaterial.GetTexture(<sp/>aiTextureType_SPECULAR,<sp/>0u,<sp/>&amp;textureFileName<sp/>)<sp/>==<sp/>aiReturn_SUCCESS<sp/>)</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bTexture<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shaderFileName<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;Spc&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_vertexLayout.add(<sp/>ver::VertexInputLayout::Texture2D<sp/>);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>tex<sp/>=<sp/><ref refid="classTexture_a9a7654906f9ca05ca82c96f1f2da576e_1a9a7654906f9ca05ca82c96f1f2da576e" kindref="member">Texture::fetch</ref>(<sp/>gfx,<sp/>rootPath<sp/>+<sp/>textureFileName.C_Str(),<sp/>1u<sp/>);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bSpecularTextureAlpha<sp/>=<sp/>tex-&gt;hasAlpha();</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>opaque.addBindable(<sp/>std::move(<sp/>tex<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>in<sp/>our<sp/>system<sp/>of<sp/>specular<sp/>maps<sp/>the<sp/>alpha<sp/>channel<sp/>contains<sp/>the<sp/>gloss<sp/>(specular<sp/>power)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cbLayout.<ref refid="classcon_1_1RawLayout_ac4cd4dabf994fd33e4cfb154e0dbe94c_1ac4cd4dabf994fd33e4cfb154e0dbe94c" kindref="member">add</ref>&lt;con::Bool&gt;(<sp/></highlight><highlight class="stringliteral">&quot;bSpecularMap&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cbLayout.<ref refid="classcon_1_1RawLayout_ac4cd4dabf994fd33e4cfb154e0dbe94c_1ac4cd4dabf994fd33e4cfb154e0dbe94c" kindref="member">add</ref>&lt;con::Bool&gt;(<sp/></highlight><highlight class="stringliteral">&quot;bSpecularMapAlpha&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cbLayout.<ref refid="classcon_1_1RawLayout_ac4cd4dabf994fd33e4cfb154e0dbe94c_1ac4cd4dabf994fd33e4cfb154e0dbe94c" kindref="member">add</ref>&lt;con::Float3&gt;(<sp/></highlight><highlight class="stringliteral">&quot;modelSpecularColor&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cbLayout.<ref refid="classcon_1_1RawLayout_ac4cd4dabf994fd33e4cfb154e0dbe94c_1ac4cd4dabf994fd33e4cfb154e0dbe94c" kindref="member">add</ref>&lt;con::Float&gt;(<sp/></highlight><highlight class="stringliteral">&quot;modelSpecularGloss&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="comment">//<sp/>how<sp/>about<sp/>normal<sp/>texture?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>aimaterial.GetTexture(<sp/>aiTextureType_NORMALS,<sp/>0,<sp/>&amp;textureFileName<sp/>)<sp/>==<sp/>aiReturn_SUCCESS<sp/>)</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bTexture<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shaderFileName<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;Nrm&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_vertexLayout.add(<sp/>ver::VertexInputLayout::Texture2D<sp/>);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_vertexLayout.add(<sp/>ver::VertexInputLayout::Tangent<sp/>);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_vertexLayout.add(<sp/>ver::VertexInputLayout::Bitangent<sp/>);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>opaque.addBindable(<sp/><ref refid="classTexture_a9a7654906f9ca05ca82c96f1f2da576e_1a9a7654906f9ca05ca82c96f1f2da576e" kindref="member">Texture::fetch</ref>(<sp/>gfx,<sp/>rootPath<sp/>+<sp/>textureFileName.C_Str(),<sp/>2u<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cbLayout.<ref refid="classcon_1_1RawLayout_ac4cd4dabf994fd33e4cfb154e0dbe94c_1ac4cd4dabf994fd33e4cfb154e0dbe94c" kindref="member">add</ref>&lt;con::Bool&gt;(<sp/></highlight><highlight class="stringliteral">&quot;bNormalMap&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cbLayout.<ref refid="classcon_1_1RawLayout_ac4cd4dabf994fd33e4cfb154e0dbe94c_1ac4cd4dabf994fd33e4cfb154e0dbe94c" kindref="member">add</ref>&lt;con::Float&gt;(<sp/></highlight><highlight class="stringliteral">&quot;normalMapStrength&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="comment">//<sp/>the<sp/>rest<sp/>of<sp/>the<sp/>Bindables:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>pVs<sp/>=<sp/><ref refid="classVertexShader_ad90bf6654d053a4fe7a3c699acf6f4ff_1ad90bf6654d053a4fe7a3c699acf6f4ff" kindref="member">VertexShader::fetch</ref>(<sp/>gfx,<sp/>shaderFileName<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;_vs.cso&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>opaque.addBindable(<sp/><ref refid="classInputLayout_a28404524310f3bdf8ba2537206e1e109_1a28404524310f3bdf8ba2537206e1e109" kindref="member">InputLayout::fetch</ref>(<sp/>gfx,<sp/>m_vertexLayout,<sp/>*pVs<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>opaque.addBindable(<sp/>std::move(<sp/>pVs<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>opaque.addBindable(<sp/><ref refid="classPixelShader_a308b5792652bde2a8fe1df25b297c381_1a308b5792652bde2a8fe1df25b297c381" kindref="member">PixelShader::fetch</ref>(<sp/>gfx,<sp/>shaderFileName<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;_ps.cso&quot;</highlight><highlight class="normal"><sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>bTexture<sp/>)</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>opaque.addBindable(<sp/><ref refid="classTextureSamplerState_a6377e3c13f22788c7df198a89776f233_1a6377e3c13f22788c7df198a89776f233" kindref="member">TextureSamplerState::fetch</ref>(<sp/>gfx,<sp/><ref refid="classTextureSamplerState_a09f125be8b09c0e4562055300b70c101_1a09f125be8b09c0e4562055300b70c101af2841c64c9a21504b070f374c6f9172d" kindref="member">TextureSamplerState::TextureSamplerMode::DefaultTS</ref>,<sp/><ref refid="classTextureSamplerState_a522727e53ff60ae76a59306e75441049_1a522727e53ff60ae76a59306e75441049a7343d64712a2927f43203c3404ff5599" kindref="member">TextureSamplerState::FilterMode::Anisotropic</ref>,<sp/><ref refid="classTextureSamplerState_a04b3655d1fd4f84a73017e3f3fb17ba9_1a04b3655d1fd4f84a73017e3f3fb17ba9a73d65b0f10657603b41077ed5f4514d5" kindref="member">TextureSamplerState::AddressMode::Wrap</ref><sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Assembling<sp/>the<sp/>Pixel<sp/>Shader<sp/>Constant<sp/>Buffer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classcon_1_1CBuffer" kindref="compound">con::CBuffer</ref><sp/>pscb{std::move(<sp/>cbLayout<sp/>)};</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>cbElem<sp/>=<sp/>pscb[</highlight><highlight class="stringliteral">&quot;materialColor&quot;</highlight><highlight class="normal">];<sp/>cbElem.isValid()<sp/>)</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>aiColor4D<sp/>difCol<sp/>=<sp/>{0.45f,<sp/>0.45f,<sp/>0.85f,<sp/>1.0f};</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>aimaterial.Get(<sp/>AI_MATKEY_COLOR_DIFFUSE,<sp/>difCol<sp/>);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cbElem<sp/>=<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal">dx::XMFLOAT4&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/>difCol<sp/>);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pscb[</highlight><highlight class="stringliteral">&quot;bSpecularMap&quot;</highlight><highlight class="normal">].setIfValid(<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pscb[</highlight><highlight class="stringliteral">&quot;bSpecularMapAlpha&quot;</highlight><highlight class="normal">].setIfValid(<sp/>bSpecularTextureAlpha<sp/>);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>cbElem<sp/>=<sp/>pscb[</highlight><highlight class="stringliteral">&quot;modelSpecularColor&quot;</highlight><highlight class="normal">];<sp/>cbElem.isValid()<sp/>)</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>aiColor3D<sp/>specCol<sp/>=<sp/>{0.18f,<sp/>0.18f,<sp/>0.18f};</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>aimaterial.Get(<sp/>AI_MATKEY_COLOR_SPECULAR,<sp/>specCol<sp/>);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cbElem<sp/>=<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal">dx::XMFLOAT3&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/>specCol<sp/>);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>cbElem<sp/>=<sp/>pscb[</highlight><highlight class="stringliteral">&quot;modelSpecularGloss&quot;</highlight><highlight class="normal">];<sp/>cbElem.isValid()<sp/>)</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>specGloss<sp/>=<sp/>8.0f;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>aimaterial.Get(<sp/>AI_MATKEY_SHININESS,<sp/>specGloss<sp/>);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cbElem<sp/>=<sp/>specGloss;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pscb[</highlight><highlight class="stringliteral">&quot;bNormalMap&quot;</highlight><highlight class="normal">].setIfValid(<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pscb[</highlight><highlight class="stringliteral">&quot;normalMapStrength&quot;</highlight><highlight class="normal">].setIfValid(<sp/>1.0f<sp/>);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>opaque.addBindable(<sp/>std::make_unique&lt;PixelShaderConstantBufferEx&gt;(<sp/>gfx,<sp/>0u,<sp/>std::move(<sp/>pscb<sp/>)<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_materials.emplace_back(<sp/>std::move(<sp/>opaque<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="comment">//<sp/>shadow<sp/>map<sp/>material</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMaterial" kindref="compound">Material</ref><sp/>shadowMap{<ref refid="namespacerch_af980c08a8330f8578f0ef2ed06660dcb_1af980c08a8330f8578f0ef2ed06660dcb" kindref="member">rch::shadow</ref>,<sp/></highlight><highlight class="stringliteral">&quot;shadow&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shadowMap.<ref refid="classMaterial_afe5fc1c1346a8d176afbb312d4a11915_1afe5fc1c1346a8d176afbb312d4a11915" kindref="member">addBindable</ref>(<sp/><ref refid="classPrimitiveTopology_a1f65640090cc0f20dd4115f25ff24e09_1a1f65640090cc0f20dd4115f25ff24e09" kindref="member">PrimitiveTopology::fetch</ref>(<sp/>gfx,<sp/>D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shadowMap.addBindable(<sp/><ref refid="classInputLayout_a28404524310f3bdf8ba2537206e1e109_1a28404524310f3bdf8ba2537206e1e109" kindref="member">InputLayout::fetch</ref>(<sp/>gfx,<sp/>m_vertexLayout,<sp/>*<ref refid="classVertexShader_ad90bf6654d053a4fe7a3c699acf6f4ff_1ad90bf6654d053a4fe7a3c699acf6f4ff" kindref="member">VertexShader::fetch</ref>(<sp/>gfx,<sp/></highlight><highlight class="stringliteral">&quot;flat_vs.cso&quot;</highlight><highlight class="normal"><sp/>)<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_materials.emplace_back(<sp/>std::move(<sp/>shadowMap<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="comment">//<sp/>blur<sp/>outline<sp/>mask<sp/>material</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMaterial" kindref="compound">Material</ref><sp/>blurOutlineMask{<ref refid="namespacerch_a7b0086c7ccf1a4961698a40e72d5ab85_1a7b0086c7ccf1a4961698a40e72d5ab85" kindref="member">rch::blurOutline</ref>,<sp/></highlight><highlight class="stringliteral">&quot;blurOutlineMask&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>blurOutlineMask.<ref refid="classMaterial_afe5fc1c1346a8d176afbb312d4a11915_1afe5fc1c1346a8d176afbb312d4a11915" kindref="member">addBindable</ref>(<sp/><ref refid="classInputLayout_a28404524310f3bdf8ba2537206e1e109_1a28404524310f3bdf8ba2537206e1e109" kindref="member">InputLayout::fetch</ref>(<sp/>gfx,<sp/>m_vertexLayout,<sp/>*<ref refid="classVertexShader_ad90bf6654d053a4fe7a3c699acf6f4ff_1ad90bf6654d053a4fe7a3c699acf6f4ff" kindref="member">VertexShader::fetch</ref>(<sp/>gfx,<sp/></highlight><highlight class="stringliteral">&quot;flat_vs.cso&quot;</highlight><highlight class="normal"><sp/>)<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_materials.emplace_back(<sp/>std::move(<sp/>blurOutlineMask<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="comment">//<sp/>blur<sp/>outline<sp/>draw<sp/>material</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMaterial" kindref="compound">Material</ref><sp/>blurOutlineDraw{<ref refid="namespacerch_a7b0086c7ccf1a4961698a40e72d5ab85_1a7b0086c7ccf1a4961698a40e72d5ab85" kindref="member">rch::blurOutline</ref>,<sp/></highlight><highlight class="stringliteral">&quot;blurOutlineDraw&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classcon_1_1RawLayout" kindref="compound">con::RawLayout</ref><sp/>cbLayout;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cbLayout.<ref refid="classcon_1_1RawLayout_ac4cd4dabf994fd33e4cfb154e0dbe94c_1ac4cd4dabf994fd33e4cfb154e0dbe94c" kindref="member">add</ref>&lt;con::Float4&gt;(<sp/></highlight><highlight class="stringliteral">&quot;materialColor&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>cb<sp/>=<sp/><ref refid="classcon_1_1CBuffer" kindref="compound">con::CBuffer</ref>{std::move(<sp/>cbLayout<sp/>)};</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cb[</highlight><highlight class="stringliteral">&quot;materialColor&quot;</highlight><highlight class="normal">]<sp/>=<sp/>dx::XMFLOAT4{1.0f,<sp/>0.4f,<sp/>0.4f,<sp/>1.0f};</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>blurOutlineDraw.addBindable(<sp/>std::make_shared&lt;PixelShaderConstantBufferEx&gt;(<sp/>gfx,<sp/>0u,<sp/>cb<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>blurOutlineDraw.<ref refid="classMaterial_afe5fc1c1346a8d176afbb312d4a11915_1afe5fc1c1346a8d176afbb312d4a11915" kindref="member">addBindable</ref>(<sp/><ref refid="classInputLayout_a28404524310f3bdf8ba2537206e1e109_1a28404524310f3bdf8ba2537206e1e109" kindref="member">InputLayout::fetch</ref>(<sp/>gfx,<sp/>m_vertexLayout,<sp/>*<ref refid="classVertexShader_ad90bf6654d053a4fe7a3c699acf6f4ff_1ad90bf6654d053a4fe7a3c699acf6f4ff" kindref="member">VertexShader::fetch</ref>(<sp/>gfx,<sp/></highlight><highlight class="stringliteral">&quot;flat_vs.cso&quot;</highlight><highlight class="normal"><sp/>)<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_materials.emplace_back(<sp/>std::move(<sp/>blurOutlineDraw<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="comment">//<sp/>solid<sp/>outline<sp/>mask<sp/>material</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMaterial" kindref="compound">Material</ref><sp/>solidOutlineMask{<ref refid="namespacerch_a03c7b4bca893f3d99b98e641f9acea25_1a03c7b4bca893f3d99b98e641f9acea25" kindref="member">rch::solidOutline</ref>,<sp/></highlight><highlight class="stringliteral">&quot;solidOutlineMask&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>solidOutlineMask.<ref refid="classMaterial_afe5fc1c1346a8d176afbb312d4a11915_1afe5fc1c1346a8d176afbb312d4a11915" kindref="member">addBindable</ref>(<sp/><ref refid="classInputLayout_a28404524310f3bdf8ba2537206e1e109_1a28404524310f3bdf8ba2537206e1e109" kindref="member">InputLayout::fetch</ref>(<sp/>gfx,<sp/>m_vertexLayout,<sp/>*<ref refid="classVertexShader_ad90bf6654d053a4fe7a3c699acf6f4ff_1ad90bf6654d053a4fe7a3c699acf6f4ff" kindref="member">VertexShader::fetch</ref>(<sp/>gfx,<sp/></highlight><highlight class="stringliteral">&quot;flat_vs.cso&quot;</highlight><highlight class="normal"><sp/>)<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_materials.emplace_back(<sp/>std::move(<sp/>solidOutlineMask<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="comment">//<sp/>solid<sp/>outline<sp/>draw<sp/>material</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMaterial" kindref="compound">Material</ref><sp/>solidOutlineDraw{<ref refid="namespacerch_a03c7b4bca893f3d99b98e641f9acea25_1a03c7b4bca893f3d99b98e641f9acea25" kindref="member">rch::solidOutline</ref>,<sp/></highlight><highlight class="stringliteral">&quot;solidOutlineDraw&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>solidOutlineDraw.<ref refid="classMaterial_afe5fc1c1346a8d176afbb312d4a11915_1afe5fc1c1346a8d176afbb312d4a11915" kindref="member">addBindable</ref>(<sp/>std::make_shared&lt;TransformScaleVSCB&gt;(<sp/>gfx,<sp/>0u,<sp/>1.04f<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classcon_1_1RawLayout" kindref="compound">con::RawLayout</ref><sp/>cbLayout;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cbLayout.<ref refid="classcon_1_1RawLayout_ac4cd4dabf994fd33e4cfb154e0dbe94c_1ac4cd4dabf994fd33e4cfb154e0dbe94c" kindref="member">add</ref>&lt;con::Float4&gt;(<sp/></highlight><highlight class="stringliteral">&quot;materialColor&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>cb<sp/>=<sp/><ref refid="classcon_1_1CBuffer" kindref="compound">con::CBuffer</ref>{std::move(<sp/>cbLayout<sp/>)};</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cb[</highlight><highlight class="stringliteral">&quot;materialColor&quot;</highlight><highlight class="normal">]<sp/>=<sp/>dx::XMFLOAT4{1.0f,<sp/>0.4f,<sp/>0.4f,<sp/>1.0f};</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>solidOutlineDraw.addBindable(<sp/>std::make_shared&lt;PixelShaderConstantBufferEx&gt;(<sp/>gfx,<sp/>0u,<sp/>cb<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>solidOutlineDraw.addBindable(<sp/><ref refid="classInputLayout_a28404524310f3bdf8ba2537206e1e109_1a28404524310f3bdf8ba2537206e1e109" kindref="member">InputLayout::fetch</ref>(<sp/>gfx,<sp/>m_vertexLayout,<sp/>*<ref refid="classVertexShader_ad90bf6654d053a4fe7a3c699acf6f4ff_1ad90bf6654d053a4fe7a3c699acf6f4ff" kindref="member">VertexShader::fetch</ref>(<sp/>gfx,<sp/></highlight><highlight class="stringliteral">&quot;flat_vs.cso&quot;</highlight><highlight class="normal"><sp/>)<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_materials.emplace_back(<sp/>std::move(<sp/>solidOutlineDraw<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight><highlight class="comment">//BlinnPhong</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>(<sp/><ref refid="namespacelgh__mode_a564e54d45cf1d02ebd633f9777c7ea4b_1a564e54d45cf1d02ebd633f9777c7ea4b" kindref="member">lgh_mode::get</ref>()<sp/>==<sp/><ref refid="namespacelgh__mode_a6aef2c1a3a5f02c97a5f730e5d813496_1a6aef2c1a3a5f02c97a5f730e5d813496af033ec4abb2e762ab4ed18d47cc1d6d9" kindref="member">lgh_mode::LightingMode::PBR_UE</ref><sp/>)</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>#TODO:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204" refid="classMaterialLoader_a1014105d2a8d4a0cbe81ab367185eef9_1a1014105d2a8d4a0cbe81ab367185eef9" refkind="member"><highlight class="normal">std::shared_ptr&lt;VertexBuffer&gt;<sp/><ref refid="classMaterialLoader_a1014105d2a8d4a0cbe81ab367185eef9_1a1014105d2a8d4a0cbe81ab367185eef9" kindref="member">MaterialLoader::makeVertexBuffer</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>aiMesh<sp/>&amp;aimesh,</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>scale<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>cond_noex</highlight></codeline>
+<codeline lineno="207"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>vb<sp/>=<sp/>makeVertexBuffer_impl(<sp/>aimesh<sp/>);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>scale<sp/>!=<sp/>1.0f<sp/>)</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0u;<sp/>i<sp/>&lt;<sp/>vb.getVertexCount();<sp/>++i<sp/>)</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dx::XMFLOAT3<sp/>&amp;pos<sp/>=<sp/>vb[i].getElement&lt;ver::VertexInputLayout::ILEementType::Position3D&gt;();</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pos.x<sp/>*=<sp/>scale;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pos.y<sp/>*=<sp/>scale;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pos.z<sp/>*=<sp/>scale;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classVertexBuffer_a2d44b7aade969e7f5f748eb2cbb5bd30_1a2d44b7aade969e7f5f748eb2cbb5bd30" kindref="member">VertexBuffer::fetch</ref>(<sp/>gfx,<sp/>calcMeshTag(<sp/>aimesh<sp/>),<sp/>vb<sp/>);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222" refid="classMaterialLoader_acfd3864b8b7d374a8f70c0be06ddb2dc_1acfd3864b8b7d374a8f70c0be06ddb2dc" refkind="member"><highlight class="normal">std::shared_ptr&lt;IndexBuffer&gt;<sp/><ref refid="classMaterialLoader_acfd3864b8b7d374a8f70c0be06ddb2dc_1acfd3864b8b7d374a8f70c0be06ddb2dc" kindref="member">MaterialLoader::makeIndexBuffer</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>aiMesh<sp/>&amp;aimesh<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>cond_noex</highlight></codeline>
+<codeline lineno="224"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classIndexBuffer_abcbdeb2e6ecd7a5dd93c4c397e8ae368_1abcbdeb2e6ecd7a5dd93c4c397e8ae368" kindref="member">IndexBuffer::fetch</ref>(<sp/>gfx,<sp/>calcMeshTag(<sp/>aimesh<sp/>),<sp/>makeIndexBuffer_impl(<sp/>aimesh<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="226"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228" refid="classMaterialLoader_a9b9ae1a8001257bc0d3514670b9b26b6_1a9b9ae1a8001257bc0d3514670b9b26b6" refkind="member"><highlight class="normal"><ref refid="classver_1_1VBuffer" kindref="compound">ver::VBuffer</ref><sp/><ref refid="classMaterialLoader_a9b9ae1a8001257bc0d3514670b9b26b6_1a9b9ae1a8001257bc0d3514670b9b26b6" kindref="member">MaterialLoader::makeVertexBuffer_impl</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>aiMesh<sp/>&amp;aimesh<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{m_vertexLayout,<sp/>aimesh};</highlight></codeline>
+<codeline lineno="231"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233" refid="classMaterialLoader_a39cf30ab56dc88368a28c939766e18e0_1a39cf30ab56dc88368a28c939766e18e0" refkind="member"><highlight class="normal">std::vector&lt;unsigned&gt;<sp/><ref refid="classMaterialLoader_a39cf30ab56dc88368a28c939766e18e0_1a39cf30ab56dc88368a28c939766e18e0" kindref="member">MaterialLoader::makeIndexBuffer_impl</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>aiMesh<sp/>&amp;aimesh<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;unsigned&gt;<sp/>indices;</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/>indices.reserve(<sp/>aimesh.mNumFaces<sp/>*<sp/>3<sp/>);</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>aimesh.mNumFaces;<sp/>++i<sp/>)</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;face<sp/>=<sp/>aimesh.mFaces[i];</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>face.mNumIndices<sp/>==<sp/>3,<sp/></highlight><highlight class="stringliteral">&quot;Non-triangle<sp/>face<sp/>detected!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>indices.push_back(<sp/>face.mIndices[0]<sp/>);</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>indices.push_back(<sp/>face.mIndices[1]<sp/>);</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>indices.push_back(<sp/>face.mIndices[2]<sp/>);</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>indices;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight></codeline>
+<codeline lineno="248" refid="classMaterialLoader_a37ae0b3a40ee290880edcb797ff126d1_1a37ae0b3a40ee290880edcb797ff126d1" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classMaterialLoader_a37ae0b3a40ee290880edcb797ff126d1_1a37ae0b3a40ee290880edcb797ff126d1" kindref="member">MaterialLoader::calcMeshTag</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>aiMesh<sp/>&amp;aimesh<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m_modelPath<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;%&quot;</highlight><highlight class="normal"><sp/>+<sp/>aimesh.mName.C_Str();</highlight></codeline>
+<codeline lineno="251"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight></codeline>
+<codeline lineno="253" refid="classMaterialLoader_a0163720457b84671424d5e36cac4763e_1a0163720457b84671424d5e36cac4763e" refkind="member"><highlight class="normal">std::vector&lt;Material&gt;<sp/><ref refid="classMaterialLoader_a0163720457b84671424d5e36cac4763e_1a0163720457b84671424d5e36cac4763e" kindref="member">MaterialLoader::getMaterial</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="254"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMaterialLoader_a301221dd2d8fefbf78dda135baa3b63a_1a301221dd2d8fefbf78dda135baa3b63a" kindref="member">m_materials</ref>;</highlight></codeline>
+<codeline lineno="256"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/material_loader.cpp"/>
+  </compounddef>
+</doxygen>

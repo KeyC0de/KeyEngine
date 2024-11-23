@@ -41,7 +41,7 @@ PSOut main( PSIn input )
 {
 	float4 albedoTexColor = albedoTex.Sample(sampl, input.tc);
 #ifdef HAS_ALPHA
-	clip( albedoTexColor.a < 0.05f ? -1 : 1 );
+	clip( albedoTexColor.a < 0.05f ? -1 : 1 );	// calls discard; internally
 	// if backfacing fragment flip the normal to look at the camera
 	if ( dot( input.viewSpaceNormal, input.viewSpacePos ) >= 0.0f )
 	{
@@ -78,7 +78,7 @@ PSOut main( PSIn input )
 	}
 
 	// if another pixel is occluding this one, then this one will be in shadow
-	// so don't apply lighting and only add an ambient light term
+	// so don't apply lighting and only add an cb_ambientColor light term
 	float3 lightCombinedDiffuse = float3(0, 0, 0);
 	float3 lightCombinedSpecular = float3(0, 0, 0);
 
@@ -115,16 +115,16 @@ PSOut main( PSIn input )
 			{
 				const PointLightVectors lv = calculatePointLightVectors(currentLight.cb_lightPosViewSpace, input.viewSpacePos);
 
-				const float attenuation = calculateLightAttenuation(lv.lengthOfL, currentLight.attConstant, currentLight.attLinear, currentLight.attQuadratic);
-				diffuseL = calculateLightDiffuseContribution(currentLight.lightColor, currentLight.intensity, attenuation, lv.vToL_normalized, input.viewSpaceNormal);
-				specularL = calculateLightSpecularContribution(currentLight.lightColor, specularFactor, currentLight.intensity, modelSpecularGloss_var, input.viewSpaceNormal, lv.vToL, input.viewSpacePos, attenuation);
+				const float attenuation = calculateLightAttenuation(lv.lengthOfL, currentLight.cb_attConstant, currentLight.cb_attLinear, currentLight.cb_attQuadratic);
+				diffuseL = calculateLightDiffuseContribution(currentLight.cb_lightColor, currentLight.intensity, attenuation, lv.vToL_normalized, input.viewSpaceNormal);
+				specularL = calculateLightSpecularContribution(currentLight.cb_lightColor, specularFactor, currentLight.intensity, modelSpecularGloss_var, input.viewSpaceNormal, lv.vToL, input.viewSpacePos, attenuation);
 			}
 
 			diffuseL *= shadowLevel;
 			specularL *= shadowLevel;
 		}
 
-		lightCombinedDiffuse += diffuseL + currentLight.ambient;
+		lightCombinedDiffuse += diffuseL + currentLight.cb_ambientColor;
 		lightCombinedSpecular += specularL;
 	}
 

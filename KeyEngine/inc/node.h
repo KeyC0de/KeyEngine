@@ -61,8 +61,7 @@ public:
 	DirectX::XMFLOAT4X4 getWorldTransform4x4() const noexcept;
 	float getScale() const noexcept;
 	DirectX::XMFLOAT3 getScale3() const noexcept;
-	//	\function	getRotation	||	\date	2024/04/20 18:12
-	//	\brief	return Euler Angles {pitch,yaw,roll}
+	/// \brief	return Euler Angles {pitch,yaw,roll}
 	DirectX::XMFLOAT3 getRotation() const noexcept;
 	DirectX::XMVECTOR getRotationQuat() const noexcept;
 	DirectX::XMFLOAT3 getPosition() const noexcept;

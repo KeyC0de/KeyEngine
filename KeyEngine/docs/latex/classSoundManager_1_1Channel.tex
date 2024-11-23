@@ -1,0 +1,180 @@
+\doxysection{Sound\+Manager\+::Channel Class Reference}
+\hypertarget{classSoundManager_1_1Channel}{}\label{classSoundManager_1_1Channel}\index{SoundManager::Channel@{SoundManager::Channel}}
+
+
+back-\/end  
+
+
+
+
+{\ttfamily \#include $<$key\+\_\+sound.\+h$>$}
+
+Inheritance diagram for Sound\+Manager\+::Channel\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classSoundManager_1_1Channel}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSoundManager_1_1Channel_a04e2334276c6b3fb260569adf6a2dfd2_a04e2334276c6b3fb260569adf6a2dfd2}{Channel}} ()=default
+\item 
+\mbox{\hyperlink{classSoundManager_1_1Channel_a2763d55d0132595bc75bd5023629c11b_a2763d55d0132595bc75bd5023629c11b}{Channel}} (\mbox{\hyperlink{classSoundManager_1_1Channel}{Channel}} \&\&rhs) cond\+\_\+noex
+\item 
+\mbox{\hyperlink{classSoundManager_1_1Channel}{Channel}} \& \mbox{\hyperlink{classSoundManager_1_1Channel_a64d6f61f24fd7514322dbc2193c63f49_a64d6f61f24fd7514322dbc2193c63f49}{operator=}} (\mbox{\hyperlink{classSoundManager_1_1Channel}{Channel}} \&\&rhs) cond\+\_\+noex
+\item 
+\mbox{\hyperlink{classSoundManager_1_1Channel_aadc3d5523ad54205848ae16d235c3b78_aadc3d5523ad54205848ae16d235c3b78}{\texorpdfstring{$\sim$}{\string~}\+Channel}} () noexcept
+\item 
+bool \mbox{\hyperlink{classSoundManager_1_1Channel_ac96947ac0fe438b53be241d5b0f02a45_ac96947ac0fe438b53be241d5b0f02a45}{setup\+Channel}} (\mbox{\hyperlink{classSoundManager}{Sound\+Manager}} \&sound\+Manager, \mbox{\hyperlink{classSound}{Sound}} \&sound)
+\item 
+void \mbox{\hyperlink{classSoundManager_1_1Channel_add92a4f1a98fc8ee81732f3ff04bc51e_add92a4f1a98fc8ee81732f3ff04bc51e}{play\+Sound}} (\mbox{\hyperlink{classSound}{Sound}} \texorpdfstring{$\ast$}{*}sound, const float volume)
+\item 
+void \mbox{\hyperlink{classSoundManager_1_1Channel_a6849d436e409966424b6c6ed899cc8a6_a6849d436e409966424b6c6ed899cc8a6}{stop\+Sound}} () cond\+\_\+noex
+\item 
+void \mbox{\hyperlink{classSoundManager_1_1Channel_a6ffecb785dc031c585f2058fa62435e5_a6ffecb785dc031c585f2058fa62435e5}{rechannel}} (const \mbox{\hyperlink{classSound}{Sound}} \texorpdfstring{$\ast$}{*}p\+Old\+Sound, \mbox{\hyperlink{classSound}{Sound}} \texorpdfstring{$\ast$}{*}p\+New\+Sound)
+\begin{DoxyCompactList}\small\item\em finds new channel for the existing \doxylink{classSound}{Sound} \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classSound}{Sound}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classSoundManager_1_1Channel_a12172872c5d842ec03398e6438564ea6_a12172872c5d842ec03398e6438564ea6}{get\+Sound}} () const cond\+\_\+noex
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNonCopyable_a809b6e4ade7ae32f6d248f2a3b783d45_a809b6e4ade7ae32f6d248f2a3b783d45}{Non\+Copyable}} ()=default
+\item 
+\mbox{\hyperlink{classNonCopyable_a15aa3015488bb26c47ded914cb630cf5_a15aa3015488bb26c47ded914cb630cf5}{Non\+Copyable}} (const \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_af4788b57da9a9faa570c754c22c724f5_af4788b57da9a9faa570c754c22c724f5}{operator=}} (const \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable_a487646562ae30ece23d7638f2aed1dde_a487646562ae30ece23d7638f2aed1dde}{Non\+Copyable}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_ae032ca32cda9c836c27b28eb6a087d18_ae032ca32cda9c836c27b28eb6a087d18}{operator=}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable_af716e4cfb79381710ef4490414939ae9_af716e4cfb79381710ef4490414939ae9}{Non\+Copyable}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&\&rhs)=default
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_af81816bd4c2c4421a6eab98843ead6e4_af81816bd4c2c4421a6eab98843ead6e4}{operator=}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&\&rhs)=default
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+struct IXAudio2\+Source\+Voice \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classSoundManager_1_1Channel_adc2592dd8f7f2ed3701a32baf12df372_adc2592dd8f7f2ed3701a32baf12df372}{m\+\_\+p\+Source\+Voice}} = nullptr
+\item 
+\mbox{\hyperlink{classSound}{Sound}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classSoundManager_1_1Channel_a7a4d36846e0e0fb4a1354c98c72359b0_a7a4d36846e0e0fb4a1354c98c72359b0}{m\+\_\+p\+Sound}} = nullptr
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classSoundManager_1_1Channel_a50914f77c7cf4fb97616c898c5291f4b_a50914f77c7cf4fb97616c898c5291f4b}{Sound}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNonCopyable_a3e461fb46c72b9a5af7df7e74dbd899e_a3e461fb46c72b9a5af7df7e74dbd899e}{\texorpdfstring{$\sim$}{\string~}\+Non\+Copyable}} () noexcept=default
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+back-\/end 
+
+============================================================
+
+\begin{DoxyAuthor}{Author}
+Key\+C0de 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2020/10/25 14\+:01
+\end{DoxyDate}
+each \doxylink{classSound}{Sound} sticks to a single \doxylink{classSoundManager_1_1Channel}{Channel} \doxysubsection*{at most s\+\_\+n\+Max\+Audio\+Channels can play at a certain time }
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classSoundManager_1_1Channel_a04e2334276c6b3fb260569adf6a2dfd2_a04e2334276c6b3fb260569adf6a2dfd2}\index{SoundManager::Channel@{SoundManager::Channel}!Channel@{Channel}}
+\index{Channel@{Channel}!SoundManager::Channel@{SoundManager::Channel}}
+\doxysubsubsection{\texorpdfstring{Channel()}{Channel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classSoundManager_1_1Channel_a04e2334276c6b3fb260569adf6a2dfd2_a04e2334276c6b3fb260569adf6a2dfd2} 
+Sound\+Manager\+::\+Channel\+::\+Channel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\Hypertarget{classSoundManager_1_1Channel_a2763d55d0132595bc75bd5023629c11b_a2763d55d0132595bc75bd5023629c11b}\index{SoundManager::Channel@{SoundManager::Channel}!Channel@{Channel}}
+\index{Channel@{Channel}!SoundManager::Channel@{SoundManager::Channel}}
+\doxysubsubsection{\texorpdfstring{Channel()}{Channel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classSoundManager_1_1Channel_a2763d55d0132595bc75bd5023629c11b_a2763d55d0132595bc75bd5023629c11b} 
+Sound\+Manager\+::\+Channel\+::\+Channel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSoundManager_1_1Channel}{Channel}} \&\&}]{rhs}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classSoundManager_1_1Channel_aadc3d5523ad54205848ae16d235c3b78_aadc3d5523ad54205848ae16d235c3b78}\index{SoundManager::Channel@{SoundManager::Channel}!````~Channel@{\texorpdfstring{$\sim$}{\string~}Channel}}
+\index{````~Channel@{\texorpdfstring{$\sim$}{\string~}Channel}!SoundManager::Channel@{SoundManager::Channel}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Channel()}{\string~Channel()}}
+{\footnotesize\ttfamily \label{classSoundManager_1_1Channel_aadc3d5523ad54205848ae16d235c3b78_aadc3d5523ad54205848ae16d235c3b78} 
+Sound\+Manager\+::\+Channel\+::\texorpdfstring{$\sim$}{\string~}\+Channel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classSoundManager_1_1Channel_a12172872c5d842ec03398e6438564ea6_a12172872c5d842ec03398e6438564ea6}\index{SoundManager::Channel@{SoundManager::Channel}!getSound@{getSound}}
+\index{getSound@{getSound}!SoundManager::Channel@{SoundManager::Channel}}
+\doxysubsubsection{\texorpdfstring{getSound()}{getSound()}}
+{\footnotesize\ttfamily \label{classSoundManager_1_1Channel_a12172872c5d842ec03398e6438564ea6_a12172872c5d842ec03398e6438564ea6} 
+\mbox{\hyperlink{classSound}{Sound}} \texorpdfstring{$\ast$}{*} Sound\+Manager\+::\+Channel\+::get\+Sound (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classSoundManager_1_1Channel_a64d6f61f24fd7514322dbc2193c63f49_a64d6f61f24fd7514322dbc2193c63f49}\index{SoundManager::Channel@{SoundManager::Channel}!operator=@{operator=}}
+\index{operator=@{operator=}!SoundManager::Channel@{SoundManager::Channel}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{classSoundManager_1_1Channel_a64d6f61f24fd7514322dbc2193c63f49_a64d6f61f24fd7514322dbc2193c63f49} 
+auto Sound\+Manager\+::\+Channel\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSoundManager_1_1Channel}{Channel}} \&\&}]{rhs}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classSoundManager_1_1Channel_add92a4f1a98fc8ee81732f3ff04bc51e_add92a4f1a98fc8ee81732f3ff04bc51e}\index{SoundManager::Channel@{SoundManager::Channel}!playSound@{playSound}}
+\index{playSound@{playSound}!SoundManager::Channel@{SoundManager::Channel}}
+\doxysubsubsection{\texorpdfstring{playSound()}{playSound()}}
+{\footnotesize\ttfamily \label{classSoundManager_1_1Channel_add92a4f1a98fc8ee81732f3ff04bc51e_add92a4f1a98fc8ee81732f3ff04bc51e} 
+void Sound\+Manager\+::\+Channel\+::play\+Sound (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSound}{Sound}} \texorpdfstring{$\ast$}{*}}]{sound}{, }\item[{const float}]{volume}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classSoundManager_1_1Channel_a6ffecb785dc031c585f2058fa62435e5_a6ffecb785dc031c585f2058fa62435e5}\index{SoundManager::Channel@{SoundManager::Channel}!rechannel@{rechannel}}
+\index{rechannel@{rechannel}!SoundManager::Channel@{SoundManager::Channel}}
+\doxysubsubsection{\texorpdfstring{rechannel()}{rechannel()}}
+{\footnotesize\ttfamily \label{classSoundManager_1_1Channel_a6ffecb785dc031c585f2058fa62435e5_a6ffecb785dc031c585f2058fa62435e5} 
+void Sound\+Manager\+::\+Channel\+::rechannel (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classSound}{Sound}} \texorpdfstring{$\ast$}{*}}]{p\+Old\+Sound}{, }\item[{\mbox{\hyperlink{classSound}{Sound}} \texorpdfstring{$\ast$}{*}}]{p\+New\+Sound}{}\end{DoxyParamCaption})}
+
+
+
+finds new channel for the existing \doxylink{classSound}{Sound} 
+
+\Hypertarget{classSoundManager_1_1Channel_ac96947ac0fe438b53be241d5b0f02a45_ac96947ac0fe438b53be241d5b0f02a45}\index{SoundManager::Channel@{SoundManager::Channel}!setupChannel@{setupChannel}}
+\index{setupChannel@{setupChannel}!SoundManager::Channel@{SoundManager::Channel}}
+\doxysubsubsection{\texorpdfstring{setupChannel()}{setupChannel()}}
+{\footnotesize\ttfamily \label{classSoundManager_1_1Channel_ac96947ac0fe438b53be241d5b0f02a45_ac96947ac0fe438b53be241d5b0f02a45} 
+bool Sound\+Manager\+::\+Channel\+::setup\+Channel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSoundManager}{Sound\+Manager}} \&}]{sound\+Manager}{, }\item[{\mbox{\hyperlink{classSound}{Sound}} \&}]{sound}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classSoundManager_1_1Channel_a6849d436e409966424b6c6ed899cc8a6_a6849d436e409966424b6c6ed899cc8a6}\index{SoundManager::Channel@{SoundManager::Channel}!stopSound@{stopSound}}
+\index{stopSound@{stopSound}!SoundManager::Channel@{SoundManager::Channel}}
+\doxysubsubsection{\texorpdfstring{stopSound()}{stopSound()}}
+{\footnotesize\ttfamily \label{classSoundManager_1_1Channel_a6849d436e409966424b6c6ed899cc8a6_a6849d436e409966424b6c6ed899cc8a6} 
+void Sound\+Manager\+::\+Channel\+::stop\+Sound (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{classSoundManager_1_1Channel_a50914f77c7cf4fb97616c898c5291f4b_a50914f77c7cf4fb97616c898c5291f4b}\index{SoundManager::Channel@{SoundManager::Channel}!Sound@{Sound}}
+\index{Sound@{Sound}!SoundManager::Channel@{SoundManager::Channel}}
+\doxysubsubsection{\texorpdfstring{Sound}{Sound}}
+{\footnotesize\ttfamily \label{classSoundManager_1_1Channel_a50914f77c7cf4fb97616c898c5291f4b_a50914f77c7cf4fb97616c898c5291f4b} 
+friend class \mbox{\hyperlink{classSound}{Sound}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classSoundManager_1_1Channel_a7a4d36846e0e0fb4a1354c98c72359b0_a7a4d36846e0e0fb4a1354c98c72359b0}\index{SoundManager::Channel@{SoundManager::Channel}!m\_pSound@{m\_pSound}}
+\index{m\_pSound@{m\_pSound}!SoundManager::Channel@{SoundManager::Channel}}
+\doxysubsubsection{\texorpdfstring{m\_pSound}{m\_pSound}}
+{\footnotesize\ttfamily \label{classSoundManager_1_1Channel_a7a4d36846e0e0fb4a1354c98c72359b0_a7a4d36846e0e0fb4a1354c98c72359b0} 
+\mbox{\hyperlink{classSound}{Sound}}\texorpdfstring{$\ast$}{*} Sound\+Manager\+::\+Channel\+::m\+\_\+p\+Sound = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classSoundManager_1_1Channel_adc2592dd8f7f2ed3701a32baf12df372_adc2592dd8f7f2ed3701a32baf12df372}\index{SoundManager::Channel@{SoundManager::Channel}!m\_pSourceVoice@{m\_pSourceVoice}}
+\index{m\_pSourceVoice@{m\_pSourceVoice}!SoundManager::Channel@{SoundManager::Channel}}
+\doxysubsubsection{\texorpdfstring{m\_pSourceVoice}{m\_pSourceVoice}}
+{\footnotesize\ttfamily \label{classSoundManager_1_1Channel_adc2592dd8f7f2ed3701a32baf12df372_adc2592dd8f7f2ed3701a32baf12df372} 
+struct IXAudio2\+Source\+Voice\texorpdfstring{$\ast$}{*} Sound\+Manager\+::\+Channel\+::m\+\_\+p\+Source\+Voice = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{key__sound_8h}{key\+\_\+sound.\+h}}\item 
+src/\mbox{\hyperlink{key__sound_8cpp}{key\+\_\+sound.\+cpp}}\end{DoxyCompactItemize}

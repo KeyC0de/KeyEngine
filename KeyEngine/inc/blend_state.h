@@ -8,12 +8,12 @@
 
 class Graphics;
 
-//=============================================================
-//	\class	BlendState
-//	\author	KeyC0de
-//	\date	2022/02/19 10:23
-//	\brief	blending factors are optional : apply separate values for R, G, B, A channels
-//=============================================================
+///=============================================================
+/// \class	BlendState
+/// \author	KeyC0de
+/// \date	2022/02/19 10:23
+/// \brief	blending factors are optional : apply separate values for R, G, B, A channels
+///=============================================================
 class BlendState
 	: public IBindable
 {

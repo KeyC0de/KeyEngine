@@ -1,0 +1,61 @@
+\doxysection{key\+\_\+lua.\+h}
+\hypertarget{key__lua_8h_source}{}\label{key__lua_8h_source}\index{inc/key\_lua.h@{inc/key\_lua.h}}
+\mbox{\hyperlink{key__lua_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{assertions__console_8h}{assertions\_console.h}}>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Lua\ is\ a\ C\ library}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}lua/lua.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}lua/lauxlib.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}lua/lualib.h"{}}}
+\DoxyCodeLine{00013\ \}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#pragma\ comment(\ lib,\ "{}lua53.lib"{}\ )}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{key__lua_8h_a169ba3c8f52adabd940ce47e0ee586f7_a169ba3c8f52adabd940ce47e0ee586f7}{luaCheck}}(\ lua\_State\ *luaVm,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ ret\ );}
+\DoxyCodeLine{00019\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{key__lua_8h_a2168990b58602bd64dc1ea30895b2f67_a2168990b58602bd64dc1ea30895b2f67}{executeLuaGetNumber}}(\ lua\_State\ *luaVm,\ \textcolor{keyword}{const}\ std::string\ \&strVar\ );}
+\DoxyCodeLine{00020\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{key__lua_8h_a6b8c25239871bd970d2e9e32c41d38f0_a6b8c25239871bd970d2e9e32c41d38f0}{executeLuaGetString}}(\ lua\_State\ *luaVm,\ \textcolor{keyword}{const}\ std::string\ \&strVar\ );}
+\DoxyCodeLine{00021\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{key__lua_8h_ab8b6c22163bde5d322ccaf0eb5e0dbef_ab8b6c22163bde5d322ccaf0eb5e0dbef}{executeLuaFileGetNumber}}(\ lua\_State\ *luaVm,\ \textcolor{keyword}{const}\ std::string\ \&filename\ );}
+\DoxyCodeLine{00022\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{key__lua_8h_a01e737dd70f18856bd8f5b529dbbdcbc_a01e737dd70f18856bd8f5b529dbbdcbc}{executeLuaFileGetTable}}(\ lua\_State\ *luaVm,\ \textcolor{keyword}{const}\ std::string\ \&filename,\ \textcolor{keyword}{const}\ std::string\ \&tableName\ );}
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{key__lua_8h_a4585437b5d2a3962599b401c11ac49eb_a4585437b5d2a3962599b401c11ac49eb}{executeLuaFunctionFromFile}}(\ lua\_State\ *luaVm,\ \textcolor{keyword}{const}\ std::string\ \&filename,\ \textcolor{keyword}{const}\ std::string\ \&functionName\ );}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ TCallable>}
+\DoxyCodeLine{00026\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{key__lua_8h_ae70e285207ed78c0103f9f9994f89bd1_ae70e285207ed78c0103f9f9994f89bd1}{executeLuaCFunctionFromFile}}(\ lua\_State\ *luaVm,}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&filename,}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&luaFunctionName,}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&cFunctionName,}
+\DoxyCodeLine{00030\ \ \ \ \ TCallable\ f\ )}
+\DoxyCodeLine{00031\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ lua\_register(luaVm,\ cFunctionName.c\_str(),\ f);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{int}\ ret\ =\ luaL\_dofile(luaVm,\ filename.c\_str());}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{assertions__console_8h_af3e11288cb5021b91949be5058816137_af3e11288cb5021b91949be5058816137}{ASSERT}}(\ \mbox{\hyperlink{key__lua_8h_a169ba3c8f52adabd940ce47e0ee586f7_a169ba3c8f52adabd940ce47e0ee586f7}{luaCheck}}(\ luaVm,\ ret),\ \textcolor{stringliteral}{"{}Lua\ error!"{}}\ );}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ lua\_getglobal(\ luaVm,\ luaFunctionName.c\_str()\ );\ \ \ \ \textcolor{comment}{//\ gets\ the\ global\ lua\ object\ and\ puts\ it\ in\ the\ lua\ stack}}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ lua\_isfunction(luaVm,\ -\/1)\ )}
+\DoxyCodeLine{00039\ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ lua\_pushnumber(\ luaVm,\ 1.0f\ );}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ lua\_pushnumber(\ luaVm,\ 2.0f\ );}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ ret\ =\ lua\_pcall(luaVm,\ 2,\ 1,\ 0);}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{assertions__console_8h_af3e11288cb5021b91949be5058816137_af3e11288cb5021b91949be5058816137}{ASSERT}}(\ \mbox{\hyperlink{key__lua_8h_a169ba3c8f52adabd940ce47e0ee586f7_a169ba3c8f52adabd940ce47e0ee586f7}{luaCheck}}(\ luaVm,\ ret\ ),\ \textcolor{stringliteral}{"{}Lua\ function\ error!"{}}\ );}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ return\ value\ of\ the\ function\ is,\ as\ usual,\ at\ the\ top\ of\ the\ stack\ has}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ function\_result\_c\ =\ (float)lua\_tonumber(luaVm,\ -\/1);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}[C++:]\ "{}}\ <<\ luaFunctionName\ <<\ \textcolor{stringliteral}{"{}(a,\ b)\ returned\ "{}}\ <<\ \ function\_result\_c\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ std::cout\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00053\ \}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00056\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{key__lua_8h_a94bac6ec9430904b22c125178cbe4b9b_a94bac6ec9430904b22c125178cbe4b9b}{callableFromLua\_mySum}}(\ lua\_State\ *luaVm\ );}
+
+\end{DoxyCode}

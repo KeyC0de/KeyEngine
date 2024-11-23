@@ -1,0 +1,29 @@
+\doxysection{inc/key\+\_\+exception.h File Reference}
+\hypertarget{key__exception_8h}{}\label{key__exception_8h}\index{inc/key\_exception.h@{inc/key\_exception.h}}
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classKeyException}{Key\+Exception}}
+\begin{DoxyCompactList}\small\item\em Custom exception hierarchy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{key__exception_8h_ad3b2ea7a349e411ed47fba062fe034f2_ad3b2ea7a349e411ed47fba062fe034f2}{THROW\+\_\+\+KEY\+\_\+\+EXCEPTION}}(msg)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{key__exception_8h_ad3b2ea7a349e411ed47fba062fe034f2_ad3b2ea7a349e411ed47fba062fe034f2}\index{key\_exception.h@{key\_exception.h}!THROW\_KEY\_EXCEPTION@{THROW\_KEY\_EXCEPTION}}
+\index{THROW\_KEY\_EXCEPTION@{THROW\_KEY\_EXCEPTION}!key\_exception.h@{key\_exception.h}}
+\doxysubsubsection{\texorpdfstring{THROW\_KEY\_EXCEPTION}{THROW\_KEY\_EXCEPTION}}
+{\footnotesize\ttfamily \label{key__exception_8h_ad3b2ea7a349e411ed47fba062fe034f2_ad3b2ea7a349e411ed47fba062fe034f2} 
+\#define THROW\+\_\+\+KEY\+\_\+\+EXCEPTION(\begin{DoxyParamCaption}\item[{}]{msg}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \_\_debugbreak();\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classKeyException}{KeyException}}(\ \_\_LINE\_\_,\ \_\_FILE\_\_,\ \_\_FUNCTION\_\_,\ msg\ );}
+
+\end{DoxyCode}

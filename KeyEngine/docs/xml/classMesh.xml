@@ -1,0 +1,998 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classMesh" kind="class" language="C++" prot="public">
+    <compoundname>Mesh</compoundname>
+    <derivedcompoundref refid="classCameraFrustum" prot="public" virt="non-virtual">CameraFrustum</derivedcompoundref>
+    <derivedcompoundref refid="classCameraWidget" prot="public" virt="non-virtual">CameraWidget</derivedcompoundref>
+    <derivedcompoundref refid="classCube" prot="public" virt="non-virtual">Cube</derivedcompoundref>
+    <derivedcompoundref refid="classLine" prot="public" virt="non-virtual">Line</derivedcompoundref>
+    <derivedcompoundref refid="classPlane" prot="public" virt="non-virtual">Plane</derivedcompoundref>
+    <derivedcompoundref refid="classSphere" prot="public" virt="non-virtual">Sphere</derivedcompoundref>
+    <derivedcompoundref refid="classTerrain" prot="public" virt="non-virtual">Terrain</derivedcompoundref>
+    <includes refid="mesh_8h" local="no">mesh.h</includes>
+    <innerclass refid="structMesh_1_1ColorPSCB" prot="protected">Mesh::ColorPSCB</innerclass>
+    <innerclass refid="structMesh_1_1ColorPSCB2" prot="protected">Mesh::ColorPSCB2</innerclass>
+    <innerclass refid="structMesh_1_1ColorPSCB3" prot="protected">Mesh::ColorPSCB3</innerclass>
+    <innerclass refid="structMesh_1_1ColorPSCB4" prot="protected">Mesh::ColorPSCB4</innerclass>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classMesh_a1072334674042ddad806e28bdeaad983_1a1072334674042ddad806e28bdeaad983" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Mesh::m_distanceFromActiveCamera</definition>
+        <argsstring></argsstring>
+        <name>m_distanceFromActiveCamera</name>
+        <qualifiedname>Mesh::m_distanceFromActiveCamera</qualifiedname>
+        <initializer>= 0.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="32" column="7" bodyfile="inc/mesh.h" bodystart="32" bodyend="-1"/>
+        <referencedby refid="classMesh_a508b14c30f81bdc95a94ec112ff1d8e2_1a508b14c30f81bdc95a94ec112ff1d8e2" compoundref="mesh_8cpp" startline="42" endline="53">~Mesh</referencedby>
+        <referencedby refid="classMesh_abde180d729a79a487bd6568d42771697_1abde180d729a79a487bd6568d42771697" compoundref="mesh_8cpp" startline="146" endline="149">getDistanceFromActiveCamera</referencedby>
+        <referencedby refid="classMesh_a8aeff98bfd0c764a8917047c98f9962f_1a8aeff98bfd0c764a8917047c98f9962f" compoundref="mesh_8cpp" startline="215" endline="220">setDistanceFromActiveCamera</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classMesh_a5a75c6d3a47632d15ff774245e878111_1a5a75c6d3a47632d15ff774245e878111" prot="private" static="no" mutable="yes">
+        <type>bool</type>
+        <definition>bool Mesh::m_bRenderedThisFrame</definition>
+        <argsstring></argsstring>
+        <name>m_bRenderedThisFrame</name>
+        <qualifiedname>Mesh::m_bRenderedThisFrame</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="33" column="14" bodyfile="inc/mesh.h" bodystart="33" bodyend="-1"/>
+        <referencedby refid="classMesh_a508b14c30f81bdc95a94ec112ff1d8e2_1a508b14c30f81bdc95a94ec112ff1d8e2" compoundref="mesh_8cpp" startline="42" endline="53">~Mesh</referencedby>
+        <referencedby refid="classMesh_a1d18ad52515cfd7e2cca966cfb76dddd_1a1d18ad52515cfd7e2cca966cfb76dddd" compoundref="mesh_8cpp" startline="151" endline="154">isRenderedThisFrame</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classMesh_a2be1d0d997a5ea723e79320cd5a360d2_1a2be1d0d997a5ea723e79320cd5a360d2" prot="protected" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned Mesh::m_meshId</definition>
+        <argsstring></argsstring>
+        <name>m_meshId</name>
+        <qualifiedname>Mesh::m_meshId</qualifiedname>
+        <initializer>= 0u</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="35" column="10" bodyfile="inc/mesh.h" bodystart="35" bodyend="-1"/>
+        <referencedby refid="classMesh_a508b14c30f81bdc95a94ec112ff1d8e2_1a508b14c30f81bdc95a94ec112ff1d8e2" compoundref="mesh_8cpp" startline="42" endline="53">~Mesh</referencedby>
+        <referencedby refid="classMesh_a3d2f9912e0fa051f1a756a57bb225adb_1a3d2f9912e0fa051f1a756a57bb225adb" compoundref="mesh_8cpp" startline="198" endline="201">getMeshId</referencedby>
+        <referencedby refid="classMesh_a2e68eeb89cb2cb8b1caa45911f569ed4_1a2e68eeb89cb2cb8b1caa45911f569ed4" compoundref="mesh_8cpp" startline="189" endline="196">getName</referencedby>
+        <referencedby refid="classMesh_add44446356aaf7c808a25562090cc556_1add44446356aaf7c808a25562090cc556" compoundref="mesh_8cpp" startline="209" endline="213">setMeshId</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classMesh_af08edebaaa5ca60d67aa42c9f4f4d75f_1af08edebaaa5ca60d67aa42c9f4f4d75f" prot="protected" static="no" mutable="no">
+        <type><ref refid="classNode" kindref="compound">Node</ref> *</type>
+        <definition>Node* Mesh::m_pNode</definition>
+        <argsstring></argsstring>
+        <name>m_pNode</name>
+        <qualifiedname>Mesh::m_pNode</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="36" column="6" bodyfile="inc/mesh.h" bodystart="36" bodyend="-1"/>
+        <referencedby refid="classMesh_a508b14c30f81bdc95a94ec112ff1d8e2_1a508b14c30f81bdc95a94ec112ff1d8e2" compoundref="mesh_8cpp" startline="42" endline="53">~Mesh</referencedby>
+        <referencedby refid="classMesh_a425a3ab4960ac4a925aba7c6df2da63b_1a425a3ab4960ac4a925aba7c6df2da63b" compoundref="mesh_8cpp" startline="184" endline="187">getNode</referencedby>
+        <referencedby refid="classMesh_aab3b7f01c082616f9656d44d7f75fdec_1aab3b7f01c082616f9656d44d7f75fdec" compoundref="mesh_8cpp" startline="247" endline="312">isFrustumCulled</referencedby>
+        <referencedby refid="classMesh_a8aeff98bfd0c764a8917047c98f9962f_1a8aeff98bfd0c764a8917047c98f9962f" compoundref="mesh_8cpp" startline="215" endline="220">setDistanceFromActiveCamera</referencedby>
+        <referencedby refid="classMesh_a501f7dc11f57390edcd9acaf5a1b07cd_1a501f7dc11f57390edcd9acaf5a1b07cd" compoundref="mesh_8cpp" startline="74" endline="77">setNode</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classMesh_a77337ee8b7114ef5311bcf27e0046e22_1a77337ee8b7114ef5311bcf27e0046e22" prot="protected" static="no" mutable="no">
+        <type>std::pair&lt; DirectX::XMFLOAT3, DirectX::XMFLOAT3 &gt;</type>
+        <definition>std::pair&lt;DirectX::XMFLOAT3, DirectX::XMFLOAT3&gt; Mesh::m_aabb</definition>
+        <argsstring></argsstring>
+        <name>m_aabb</name>
+        <qualifiedname>Mesh::m_aabb</qualifiedname>
+        <initializer>{{0, 0, 0},{0, 0, 0}}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="37" column="11" bodyfile="inc/mesh.h" bodystart="37" bodyend="37"/>
+        <referencedby refid="classLine_ab4004be2273185c41037d4dd14e02990_1ab4004be2273185c41037d4dd14e02990" compoundref="line_8cpp" startline="22" endline="105">Line::Line</referencedby>
+        <referencedby refid="classMesh_aa5d30468013b994c7eb1897d2544a480_1aa5d30468013b994c7eb1897d2544a480" compoundref="mesh_8cpp" startline="222" endline="245">createAabb</referencedby>
+        <referencedby refid="classMesh_a2e47e473545615fcbffff761d8912ea1_1a2e47e473545615fcbffff761d8912ea1" compoundref="mesh_8cpp" startline="161" endline="182">createAabb</referencedby>
+        <referencedby refid="classMesh_aab3b7f01c082616f9656d44d7f75fdec_1aab3b7f01c082616f9656d44d7f75fdec" compoundref="mesh_8cpp" startline="247" endline="312">isFrustumCulled</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classMesh_a05ef62d082e7a5c1fb49bded4e8c69ea_1a05ef62d082e7a5c1fb49bded4e8c69ea" prot="protected" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classVertexBuffer" kindref="compound">VertexBuffer</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;VertexBuffer&gt; Mesh::m_pVertexBuffer</definition>
+        <argsstring></argsstring>
+        <name>m_pVertexBuffer</name>
+        <qualifiedname>Mesh::m_pVertexBuffer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="38" column="17" bodyfile="inc/mesh.h" bodystart="38" bodyend="-1"/>
+        <referencedby refid="classCameraFrustum_a73a48e8fbde4b02b50e32746b50e03b8_1a73a48e8fbde4b02b50e32746b50e03b8" compoundref="camera__frustum_8cpp" startline="17" endline="82">CameraFrustum::CameraFrustum</referencedby>
+        <referencedby refid="classCameraWidget_a0c41231fcab87a5a4aeb57d87aecb55e_1a0c41231fcab87a5a4aeb57d87aecb55e" compoundref="camera__widget_8cpp" startline="17" endline="63">CameraWidget::CameraWidget</referencedby>
+        <referencedby refid="classCube_af0fe61f07cbc70de782950bac056988b_1af0fe61f07cbc70de782950bac056988b" compoundref="cube_8cpp" startline="23" endline="194">Cube::Cube</referencedby>
+        <referencedby refid="classLine_ab4004be2273185c41037d4dd14e02990_1ab4004be2273185c41037d4dd14e02990" compoundref="line_8cpp" startline="22" endline="105">Line::Line</referencedby>
+        <referencedby refid="classMesh_a5a611a59702d1b70366c71bcbfbe90a9_1a5a611a59702d1b70366c71bcbfbe90a9" compoundref="mesh_8cpp" startline="23" endline="40">Mesh</referencedby>
+        <referencedby refid="classPlane_a70e7a5971d34e1130740e843a6a18896_1a70e7a5971d34e1130740e843a6a18896" compoundref="plane_8cpp" startline="23" endline="193">Plane::Plane</referencedby>
+        <referencedby refid="classSphere_a80bdf896453fbb509c1e6170e0022c29_1a80bdf896453fbb509c1e6170e0022c29" compoundref="sphere_8cpp" startline="18" endline="72">Sphere::Sphere</referencedby>
+        <referencedby refid="classTerrain_af5a4ec6ff724b557052dd12be7f0de0c_1af5a4ec6ff724b557052dd12be7f0de0c" compoundref="terrain_8cpp" startline="24" endline="158">Terrain::Terrain</referencedby>
+        <referencedby refid="classMesh_a508b14c30f81bdc95a94ec112ff1d8e2_1a508b14c30f81bdc95a94ec112ff1d8e2" compoundref="mesh_8cpp" startline="42" endline="53">~Mesh</referencedby>
+        <referencedby refid="classMesh_a8cb16fb21424f90eadf022d531d17d30_1a8cb16fb21424f90eadf022d531d17d30" compoundref="mesh_8cpp" startline="156" endline="159">getVertexBuffer</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classMesh_aa5fc2902e90f9ccb60a85d79c2ee85f7_1aa5fc2902e90f9ccb60a85d79c2ee85f7" prot="protected" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classIndexBuffer" kindref="compound">IndexBuffer</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;IndexBuffer&gt; Mesh::m_pIndexBuffer</definition>
+        <argsstring></argsstring>
+        <name>m_pIndexBuffer</name>
+        <qualifiedname>Mesh::m_pIndexBuffer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="39" column="17" bodyfile="inc/mesh.h" bodystart="39" bodyend="-1"/>
+        <referencedby refid="classCameraFrustum_a73a48e8fbde4b02b50e32746b50e03b8_1a73a48e8fbde4b02b50e32746b50e03b8" compoundref="camera__frustum_8cpp" startline="17" endline="82">CameraFrustum::CameraFrustum</referencedby>
+        <referencedby refid="classCameraWidget_a0c41231fcab87a5a4aeb57d87aecb55e_1a0c41231fcab87a5a4aeb57d87aecb55e" compoundref="camera__widget_8cpp" startline="17" endline="63">CameraWidget::CameraWidget</referencedby>
+        <referencedby refid="classCube_af0fe61f07cbc70de782950bac056988b_1af0fe61f07cbc70de782950bac056988b" compoundref="cube_8cpp" startline="23" endline="194">Cube::Cube</referencedby>
+        <referencedby refid="classLine_ab4004be2273185c41037d4dd14e02990_1ab4004be2273185c41037d4dd14e02990" compoundref="line_8cpp" startline="22" endline="105">Line::Line</referencedby>
+        <referencedby refid="classMesh_a5a611a59702d1b70366c71bcbfbe90a9_1a5a611a59702d1b70366c71bcbfbe90a9" compoundref="mesh_8cpp" startline="23" endline="40">Mesh</referencedby>
+        <referencedby refid="classPlane_a70e7a5971d34e1130740e843a6a18896_1a70e7a5971d34e1130740e843a6a18896" compoundref="plane_8cpp" startline="23" endline="193">Plane::Plane</referencedby>
+        <referencedby refid="classSphere_a80bdf896453fbb509c1e6170e0022c29_1a80bdf896453fbb509c1e6170e0022c29" compoundref="sphere_8cpp" startline="18" endline="72">Sphere::Sphere</referencedby>
+        <referencedby refid="classTerrain_af5a4ec6ff724b557052dd12be7f0de0c_1af5a4ec6ff724b557052dd12be7f0de0c" compoundref="terrain_8cpp" startline="24" endline="158">Terrain::Terrain</referencedby>
+        <referencedby refid="classMesh_a508b14c30f81bdc95a94ec112ff1d8e2_1a508b14c30f81bdc95a94ec112ff1d8e2" compoundref="mesh_8cpp" startline="42" endline="53">~Mesh</referencedby>
+        <referencedby refid="classMesh_ab13c2e773a18856f04a52c1d748c4be2_1ab13c2e773a18856f04a52c1d748c4be2" compoundref="mesh_8cpp" startline="132" endline="135">getIndicesCount</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classMesh_ae621e49b973b900a5247f661ee4d7f01_1ae621e49b973b900a5247f661ee4d7f01" prot="protected" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classPrimitiveTopology" kindref="compound">PrimitiveTopology</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;PrimitiveTopology&gt; Mesh::m_pPrimitiveTopology</definition>
+        <argsstring></argsstring>
+        <name>m_pPrimitiveTopology</name>
+        <qualifiedname>Mesh::m_pPrimitiveTopology</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="40" column="17" bodyfile="inc/mesh.h" bodystart="40" bodyend="-1"/>
+        <referencedby refid="classCameraFrustum_a73a48e8fbde4b02b50e32746b50e03b8_1a73a48e8fbde4b02b50e32746b50e03b8" compoundref="camera__frustum_8cpp" startline="17" endline="82">CameraFrustum::CameraFrustum</referencedby>
+        <referencedby refid="classCameraWidget_a0c41231fcab87a5a4aeb57d87aecb55e_1a0c41231fcab87a5a4aeb57d87aecb55e" compoundref="camera__widget_8cpp" startline="17" endline="63">CameraWidget::CameraWidget</referencedby>
+        <referencedby refid="classCube_af0fe61f07cbc70de782950bac056988b_1af0fe61f07cbc70de782950bac056988b" compoundref="cube_8cpp" startline="23" endline="194">Cube::Cube</referencedby>
+        <referencedby refid="classLine_ab4004be2273185c41037d4dd14e02990_1ab4004be2273185c41037d4dd14e02990" compoundref="line_8cpp" startline="22" endline="105">Line::Line</referencedby>
+        <referencedby refid="classMesh_a5a611a59702d1b70366c71bcbfbe90a9_1a5a611a59702d1b70366c71bcbfbe90a9" compoundref="mesh_8cpp" startline="23" endline="40">Mesh</referencedby>
+        <referencedby refid="classPlane_a70e7a5971d34e1130740e843a6a18896_1a70e7a5971d34e1130740e843a6a18896" compoundref="plane_8cpp" startline="23" endline="193">Plane::Plane</referencedby>
+        <referencedby refid="classSphere_a80bdf896453fbb509c1e6170e0022c29_1a80bdf896453fbb509c1e6170e0022c29" compoundref="sphere_8cpp" startline="18" endline="72">Sphere::Sphere</referencedby>
+        <referencedby refid="classTerrain_af5a4ec6ff724b557052dd12be7f0de0c_1af5a4ec6ff724b557052dd12be7f0de0c" compoundref="terrain_8cpp" startline="24" endline="158">Terrain::Terrain</referencedby>
+        <referencedby refid="classMesh_a508b14c30f81bdc95a94ec112ff1d8e2_1a508b14c30f81bdc95a94ec112ff1d8e2" compoundref="mesh_8cpp" startline="42" endline="53">~Mesh</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classMesh_a20c8448dfbc8df1b7fa70a07b1d55470_1a20c8448dfbc8df1b7fa70a07b1d55470" prot="protected" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classTransformVSCB" kindref="compound">TransformVSCB</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;TransformVSCB&gt; Mesh::m_pTransformVscb</definition>
+        <argsstring></argsstring>
+        <name>m_pTransformVscb</name>
+        <qualifiedname>Mesh::m_pTransformVscb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="41" column="17" bodyfile="inc/mesh.h" bodystart="41" bodyend="-1"/>
+        <referencedby refid="classCameraFrustum_a73a48e8fbde4b02b50e32746b50e03b8_1a73a48e8fbde4b02b50e32746b50e03b8" compoundref="camera__frustum_8cpp" startline="17" endline="82">CameraFrustum::CameraFrustum</referencedby>
+        <referencedby refid="classCameraWidget_a0c41231fcab87a5a4aeb57d87aecb55e_1a0c41231fcab87a5a4aeb57d87aecb55e" compoundref="camera__widget_8cpp" startline="17" endline="63">CameraWidget::CameraWidget</referencedby>
+        <referencedby refid="classCube_af0fe61f07cbc70de782950bac056988b_1af0fe61f07cbc70de782950bac056988b" compoundref="cube_8cpp" startline="23" endline="194">Cube::Cube</referencedby>
+        <referencedby refid="classLine_ab4004be2273185c41037d4dd14e02990_1ab4004be2273185c41037d4dd14e02990" compoundref="line_8cpp" startline="22" endline="105">Line::Line</referencedby>
+        <referencedby refid="classMesh_a5a611a59702d1b70366c71bcbfbe90a9_1a5a611a59702d1b70366c71bcbfbe90a9" compoundref="mesh_8cpp" startline="23" endline="40">Mesh</referencedby>
+        <referencedby refid="classPlane_a70e7a5971d34e1130740e843a6a18896_1a70e7a5971d34e1130740e843a6a18896" compoundref="plane_8cpp" startline="23" endline="193">Plane::Plane</referencedby>
+        <referencedby refid="classSphere_a80bdf896453fbb509c1e6170e0022c29_1a80bdf896453fbb509c1e6170e0022c29" compoundref="sphere_8cpp" startline="18" endline="72">Sphere::Sphere</referencedby>
+        <referencedby refid="classTerrain_af5a4ec6ff724b557052dd12be7f0de0c_1af5a4ec6ff724b557052dd12be7f0de0c" compoundref="terrain_8cpp" startline="24" endline="158">Terrain::Terrain</referencedby>
+        <referencedby refid="classMesh_a508b14c30f81bdc95a94ec112ff1d8e2_1a508b14c30f81bdc95a94ec112ff1d8e2" compoundref="mesh_8cpp" startline="42" endline="53">~Mesh</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classMesh_a50eabba438bb2476103fa94c20521800_1a50eabba438bb2476103fa94c20521800" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classMaterial" kindref="compound">Material</ref> &gt;</type>
+        <definition>std::vector&lt;Material&gt; Mesh::m_materials</definition>
+        <argsstring></argsstring>
+        <name>m_materials</name>
+        <qualifiedname>Mesh::m_materials</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="42" column="13" bodyfile="inc/mesh.h" bodystart="42" bodyend="-1"/>
+        <referencedby refid="classMesh_a508b14c30f81bdc95a94ec112ff1d8e2_1a508b14c30f81bdc95a94ec112ff1d8e2" compoundref="mesh_8cpp" startline="42" endline="53">~Mesh</referencedby>
+        <referencedby refid="classMesh_a513b4f9e4065d0b004474722f1ddd148_1a513b4f9e4065d0b004474722f1ddd148" compoundref="mesh_8cpp" startline="124" endline="130">accept</referencedby>
+        <referencedby refid="classMesh_a0f3175b74632a675caad84b8f5defb8b_1a0f3175b74632a675caad84b8f5defb8b" compoundref="mesh_8cpp" startline="137" endline="144">connectMaterialsToRenderer</referencedby>
+        <referencedby refid="classMesh_ada9efb2af727b0ff2573bdac9bdd156d_1ada9efb2af727b0ff2573bdac9bdd156d" compoundref="mesh_8h" startline="98" endline="111">findBindable</referencedby>
+        <referencedby refid="classMesh_a1599e16a5e4753ac3c28dbc493cbd0ec_1a1599e16a5e4753ac3c28dbc493cbd0ec" compoundref="mesh_8h" startline="82" endline="95">findBindable</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classMesh_a39d8f1407340f362a62b55d583bcf940_1a39d8f1407340f362a62b55d583bcf940" prot="protected" static="no" mutable="no">
+        <type>struct <ref refid="structMesh_1_1ColorPSCB" kindref="compound">Mesh::ColorPSCB</ref></type>
+        <definition>struct Mesh::ColorPSCB Mesh::m_colorPscb</definition>
+        <argsstring></argsstring>
+        <name>m_colorPscb</name>
+        <qualifiedname>Mesh::m_colorPscb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="47" column="13"/>
+        <referencedby refid="classCameraFrustum_a73a48e8fbde4b02b50e32746b50e03b8_1a73a48e8fbde4b02b50e32746b50e03b8" compoundref="camera__frustum_8cpp" startline="17" endline="82">CameraFrustum::CameraFrustum</referencedby>
+        <referencedby refid="classCameraWidget_a0c41231fcab87a5a4aeb57d87aecb55e_1a0c41231fcab87a5a4aeb57d87aecb55e" compoundref="camera__widget_8cpp" startline="17" endline="63">CameraWidget::CameraWidget</referencedby>
+        <referencedby refid="classCube_af0fe61f07cbc70de782950bac056988b_1af0fe61f07cbc70de782950bac056988b" compoundref="cube_8cpp" startline="23" endline="194">Cube::Cube</referencedby>
+        <referencedby refid="classLine_ab4004be2273185c41037d4dd14e02990_1ab4004be2273185c41037d4dd14e02990" compoundref="line_8cpp" startline="22" endline="105">Line::Line</referencedby>
+        <referencedby refid="classPlane_a70e7a5971d34e1130740e843a6a18896_1a70e7a5971d34e1130740e843a6a18896" compoundref="plane_8cpp" startline="23" endline="193">Plane::Plane</referencedby>
+        <referencedby refid="classSphere_a80bdf896453fbb509c1e6170e0022c29_1a80bdf896453fbb509c1e6170e0022c29" compoundref="sphere_8cpp" startline="18" endline="72">Sphere::Sphere</referencedby>
+        <referencedby refid="classTerrain_af5a4ec6ff724b557052dd12be7f0de0c_1af5a4ec6ff724b557052dd12be7f0de0c" compoundref="terrain_8cpp" startline="24" endline="158">Terrain::Terrain</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classMesh_aa46b1429ae3e0ab7ff10c1fea306d3cd_1aa46b1429ae3e0ab7ff10c1fea306d3cd" prot="protected" static="no" mutable="no">
+        <type>struct <ref refid="structMesh_1_1ColorPSCB2" kindref="compound">Mesh::ColorPSCB2</ref></type>
+        <definition>struct Mesh::ColorPSCB2 Mesh::m_colorPscbOutline</definition>
+        <argsstring></argsstring>
+        <name>m_colorPscbOutline</name>
+        <qualifiedname>Mesh::m_colorPscbOutline</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="52" column="20"/>
+        <referencedby refid="classCube_af0fe61f07cbc70de782950bac056988b_1af0fe61f07cbc70de782950bac056988b" compoundref="cube_8cpp" startline="23" endline="194">Cube::Cube</referencedby>
+        <referencedby refid="classPlane_a70e7a5971d34e1130740e843a6a18896_1a70e7a5971d34e1130740e843a6a18896" compoundref="plane_8cpp" startline="23" endline="193">Plane::Plane</referencedby>
+        <referencedby refid="classTerrain_af5a4ec6ff724b557052dd12be7f0de0c_1af5a4ec6ff724b557052dd12be7f0de0c" compoundref="terrain_8cpp" startline="24" endline="158">Terrain::Terrain</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classMesh_a832c0d6e6367ecf9926c690678498c99_1a832c0d6e6367ecf9926c690678498c99" prot="protected" static="no" mutable="no">
+        <type>struct <ref refid="structMesh_1_1ColorPSCB3" kindref="compound">Mesh::ColorPSCB3</ref></type>
+        <definition>struct Mesh::ColorPSCB3 Mesh::m_colorPscbWireframe</definition>
+        <argsstring></argsstring>
+        <name>m_colorPscbWireframe</name>
+        <qualifiedname>Mesh::m_colorPscbWireframe</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="57" column="22"/>
+        <referencedby refid="classCameraFrustum_a73a48e8fbde4b02b50e32746b50e03b8_1a73a48e8fbde4b02b50e32746b50e03b8" compoundref="camera__frustum_8cpp" startline="17" endline="82">CameraFrustum::CameraFrustum</referencedby>
+        <referencedby refid="classCameraWidget_a0c41231fcab87a5a4aeb57d87aecb55e_1a0c41231fcab87a5a4aeb57d87aecb55e" compoundref="camera__widget_8cpp" startline="17" endline="63">CameraWidget::CameraWidget</referencedby>
+        <referencedby refid="classTerrain_af5a4ec6ff724b557052dd12be7f0de0c_1af5a4ec6ff724b557052dd12be7f0de0c" compoundref="terrain_8cpp" startline="24" endline="158">Terrain::Terrain</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classMesh_a38b2f938403ca728ab9b7f64ccc74724_1a38b2f938403ca728ab9b7f64ccc74724" prot="protected" static="no" mutable="no">
+        <type>struct <ref refid="structMesh_1_1ColorPSCB4" kindref="compound">Mesh::ColorPSCB4</ref></type>
+        <definition>struct Mesh::ColorPSCB4 Mesh::m_colorPscbDepthReversed</definition>
+        <argsstring></argsstring>
+        <name>m_colorPscbDepthReversed</name>
+        <qualifiedname>Mesh::m_colorPscbDepthReversed</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="62" column="26"/>
+        <referencedby refid="classCameraFrustum_a73a48e8fbde4b02b50e32746b50e03b8_1a73a48e8fbde4b02b50e32746b50e03b8" compoundref="camera__frustum_8cpp" startline="17" endline="82">CameraFrustum::CameraFrustum</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classMesh_ae6b6c56f0ebfa2f6b2b10d25a835c865_1ae6b6c56f0ebfa2f6b2b10d25a835c865" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Mesh::Mesh</definition>
+        <argsstring>()=default</argsstring>
+        <name>Mesh</name>
+        <qualifiedname>Mesh::Mesh</qualifiedname>
+        <briefdescription>
+<para>defctor to be called by subclasses </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="66" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classMesh_a5a611a59702d1b70366c71bcbfbe90a9_1a5a611a59702d1b70366c71bcbfbe90a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Mesh::Mesh</definition>
+        <argsstring>(Graphics &amp;gfx, const MaterialLoader &amp;mat, const aiMesh &amp;aimesh, const float initialScale=1.0f)</argsstring>
+        <name>Mesh</name>
+        <qualifiedname>Mesh::Mesh</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classMaterialLoader" kindref="compound">MaterialLoader</ref> &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <param>
+          <type>const aiMesh &amp;</type>
+          <declname>aimesh</declname>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>initialScale</declname>
+          <defval>1.0f</defval>
+        </param>
+        <briefdescription>
+<para>ctor for imported models, creates bounding box &amp; meshId </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="69" column="1" bodyfile="src/mesh.cpp" bodystart="23" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classMesh_a508b14c30f81bdc95a94ec112ff1d8e2_1a508b14c30f81bdc95a94ec112ff1d8e2" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type></type>
+        <definition>Mesh::~Mesh</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>~Mesh</name>
+        <qualifiedname>Mesh::~Mesh</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="70" column="9" bodyfile="src/mesh.cpp" bodystart="42" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classMesh_a092585e17e17fda4a97ed3ef55f7e6de_1a092585e17e17fda4a97ed3ef55f7e6de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Mesh::Mesh</definition>
+        <argsstring>(const Mesh &amp;rhs)=delete</argsstring>
+        <name>Mesh</name>
+        <qualifiedname>Mesh::Mesh</qualifiedname>
+        <param>
+          <type>const <ref refid="classMesh" kindref="compound">Mesh</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="71" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classMesh_ae40add8703d205cee7cd05df39a61152_1ae40add8703d205cee7cd05df39a61152" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classMesh" kindref="compound">Mesh</ref> &amp;</type>
+        <definition>Mesh &amp; Mesh::operator=</definition>
+        <argsstring>(const Mesh &amp;rhs)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Mesh::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classMesh" kindref="compound">Mesh</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="72" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classMesh_a207b46f564a431b6b3a5a5f3da7638e3_1a207b46f564a431b6b3a5a5f3da7638e3" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Mesh::Mesh</definition>
+        <argsstring>(Mesh &amp;&amp;rhs) noexcept</argsstring>
+        <name>Mesh</name>
+        <qualifiedname>Mesh::Mesh</qualifiedname>
+        <param>
+          <type><ref refid="classMesh" kindref="compound">Mesh</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="73" column="1" bodyfile="src/mesh.cpp" bodystart="55" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="classMesh_a5013b72eca2bd43b1853cd0b8c98498c_1a5013b72eca2bd43b1853cd0b8c98498c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classMesh" kindref="compound">Mesh</ref> &amp;</type>
+        <definition>Mesh &amp; Mesh::operator=</definition>
+        <argsstring>(Mesh &amp;&amp;rhs) noexcept=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Mesh::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classMesh" kindref="compound">Mesh</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="74" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classMesh_a501f7dc11f57390edcd9acaf5a1b07cd_1a501f7dc11f57390edcd9acaf5a1b07cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mesh::setNode</definition>
+        <argsstring>(Node &amp;node)</argsstring>
+        <name>setNode</name>
+        <qualifiedname>Mesh::setNode</qualifiedname>
+        <param>
+          <type><ref refid="classNode" kindref="compound">Node</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="76" column="6" bodyfile="src/mesh.cpp" bodystart="74" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="classMesh_a31cc65adefd11990f5246435cedaaf1e_1a31cc65adefd11990f5246435cedaaf1e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mesh::update</definition>
+        <argsstring>(const float dt, const float lerpBetweenFrames) cond_noex</argsstring>
+        <name>update</name>
+        <qualifiedname>Mesh::update</qualifiedname>
+        <param>
+          <type>const float</type>
+          <declname>dt</declname>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>lerpBetweenFrames</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="77" column="6" bodyfile="src/mesh.cpp" bodystart="79" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="classMesh_a582af69212023f64426c5f2fbd816e4c_1a582af69212023f64426c5f2fbd816e4c" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mesh::render</definition>
+        <argsstring>(const size_t channels=rch::all) const noexcept</argsstring>
+        <name>render</name>
+        <qualifiedname>Mesh::render</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>channels</declname>
+          <defval><ref refid="namespacerch_a7bda900872e1367b3434b6b548e17d2c_1a7bda900872e1367b3434b6b548e17d2c" kindref="member">rch::all</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="78" column="6" bodyfile="src/mesh.cpp" bodystart="85" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="classMesh_a45a4b9d8490d23482ebef2e5138b7351_1a45a4b9d8490d23482ebef2e5138b7351" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mesh::bind</definition>
+        <argsstring>(Graphics &amp;gfx) const cond_noex</argsstring>
+        <name>bind</name>
+        <qualifiedname>Mesh::bind</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="79" column="6" bodyfile="src/mesh.cpp" bodystart="100" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="classMesh_a1599e16a5e4753ac3c28dbc493cbd0ec_1a1599e16a5e4753ac3c28dbc493cbd0ec" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_base_of_v&lt;<ref refid="classIBindable" kindref="compound">IBindable</ref>, T&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>std::optional&lt; T * &gt;</type>
+        <definition>std::optional&lt; T * &gt; Mesh::findBindable</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>findBindable</name>
+        <qualifiedname>Mesh::findBindable</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="82" column="15" bodyfile="inc/mesh.h" bodystart="82" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="classMesh_ada9efb2af727b0ff2573bdac9bdd156d_1ada9efb2af727b0ff2573bdac9bdd156d" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_base_of_v&lt;<ref refid="classIBindable" kindref="compound">IBindable</ref>, T&gt;&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>std::optional&lt; const T * &gt;</type>
+        <definition>std::optional&lt; const T * &gt; Mesh::findBindable</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>findBindable</name>
+        <qualifiedname>Mesh::findBindable</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="98" column="15" bodyfile="inc/mesh.h" bodystart="98" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="classMesh_a76bbd879b2115f72799c5d1676a8960b_1a76bbd879b2115f72799c5d1676a8960b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mesh::addMaterial</definition>
+        <argsstring>(Material material) noexcept</argsstring>
+        <name>addMaterial</name>
+        <qualifiedname>Mesh::addMaterial</qualifiedname>
+        <param>
+          <type><ref refid="classMaterial" kindref="compound">Material</ref></type>
+          <declname>material</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="113" column="6" bodyfile="src/mesh.cpp" bodystart="108" bodyend="112"/>
+        <referencedby refid="classCameraFrustum_a73a48e8fbde4b02b50e32746b50e03b8_1a73a48e8fbde4b02b50e32746b50e03b8" compoundref="camera__frustum_8cpp" startline="17" endline="82">CameraFrustum::CameraFrustum</referencedby>
+        <referencedby refid="classCameraWidget_a0c41231fcab87a5a4aeb57d87aecb55e_1a0c41231fcab87a5a4aeb57d87aecb55e" compoundref="camera__widget_8cpp" startline="17" endline="63">CameraWidget::CameraWidget</referencedby>
+        <referencedby refid="classCube_af0fe61f07cbc70de782950bac056988b_1af0fe61f07cbc70de782950bac056988b" compoundref="cube_8cpp" startline="23" endline="194">Cube::Cube</referencedby>
+        <referencedby refid="classLine_ab4004be2273185c41037d4dd14e02990_1ab4004be2273185c41037d4dd14e02990" compoundref="line_8cpp" startline="22" endline="105">Line::Line</referencedby>
+        <referencedby refid="classMesh_a5a611a59702d1b70366c71bcbfbe90a9_1a5a611a59702d1b70366c71bcbfbe90a9" compoundref="mesh_8cpp" startline="23" endline="40">Mesh</referencedby>
+        <referencedby refid="classPlane_a70e7a5971d34e1130740e843a6a18896_1a70e7a5971d34e1130740e843a6a18896" compoundref="plane_8cpp" startline="23" endline="193">Plane::Plane</referencedby>
+        <referencedby refid="classSphere_a80bdf896453fbb509c1e6170e0022c29_1a80bdf896453fbb509c1e6170e0022c29" compoundref="sphere_8cpp" startline="18" endline="72">Sphere::Sphere</referencedby>
+        <referencedby refid="classTerrain_af5a4ec6ff724b557052dd12be7f0de0c_1af5a4ec6ff724b557052dd12be7f0de0c" compoundref="terrain_8cpp" startline="24" endline="158">Terrain::Terrain</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classMesh_a258f981ef88fe2dc1b4095e089dd99f2_1a258f981ef88fe2dc1b4095e089dd99f2" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mesh::setMaterialEnabled</definition>
+        <argsstring>(const size_t channels, const bool bEnabled) noexcept</argsstring>
+        <name>setMaterialEnabled</name>
+        <qualifiedname>Mesh::setMaterialEnabled</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>channels</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>bEnabled</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="114" column="6" bodyfile="src/mesh.cpp" bodystart="114" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="classMesh_a513b4f9e4065d0b004474722f1ddd148_1a513b4f9e4065d0b004474722f1ddd148" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mesh::accept</definition>
+        <argsstring>(IImGuiConstantBufferVisitor &amp;ev)</argsstring>
+        <name>accept</name>
+        <qualifiedname>Mesh::accept</qualifiedname>
+        <param>
+          <type><ref refid="classIImGuiConstantBufferVisitor" kindref="compound">IImGuiConstantBufferVisitor</ref> &amp;</type>
+          <declname>ev</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="115" column="6" bodyfile="src/mesh.cpp" bodystart="124" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="classMesh_ab13c2e773a18856f04a52c1d748c4be2_1ab13c2e773a18856f04a52c1d748c4be2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned Mesh::getIndicesCount</definition>
+        <argsstring>() const cond_noex</argsstring>
+        <name>getIndicesCount</name>
+        <qualifiedname>Mesh::getIndicesCount</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="116" column="10" bodyfile="src/mesh.cpp" bodystart="132" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="classMesh_a0f3175b74632a675caad84b8f5defb8b_1a0f3175b74632a675caad84b8f5defb8b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mesh::connectMaterialsToRenderer</definition>
+        <argsstring>(ren::Renderer &amp;r)</argsstring>
+        <name>connectMaterialsToRenderer</name>
+        <qualifiedname>Mesh::connectMaterialsToRenderer</qualifiedname>
+        <param>
+          <type><ref refid="classren_1_1Renderer" kindref="compound">ren::Renderer</ref> &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="117" column="6" bodyfile="src/mesh.cpp" bodystart="137" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="classMesh_abde180d729a79a487bd6568d42771697_1abde180d729a79a487bd6568d42771697" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float Mesh::getDistanceFromActiveCamera</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getDistanceFromActiveCamera</name>
+        <qualifiedname>Mesh::getDistanceFromActiveCamera</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="118" column="7" bodyfile="src/mesh.cpp" bodystart="146" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="classMesh_a1d18ad52515cfd7e2cca966cfb76dddd_1a1d18ad52515cfd7e2cca966cfb76dddd" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Mesh::isRenderedThisFrame</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>isRenderedThisFrame</name>
+        <qualifiedname>Mesh::isRenderedThisFrame</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="119" column="6" bodyfile="src/mesh.cpp" bodystart="151" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="function" id="classMesh_a8cb16fb21424f90eadf022d531d17d30_1a8cb16fb21424f90eadf022d531d17d30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classVertexBuffer" kindref="compound">VertexBuffer</ref> &gt; &amp;</type>
+        <definition>std::shared_ptr&lt; VertexBuffer &gt; &amp; Mesh::getVertexBuffer</definition>
+        <argsstring>()</argsstring>
+        <name>getVertexBuffer</name>
+        <qualifiedname>Mesh::getVertexBuffer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="120" column="17" bodyfile="src/mesh.cpp" bodystart="156" bodyend="159"/>
+        <referencedby refid="classCamera_af22387b11c0559714e2c2681171f242d_1af22387b11c0559714e2c2681171f242d" compoundref="camera_8cpp" startline="449" endline="456">Camera::updateCameraFrustum</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classMesh_a2e47e473545615fcbffff761d8912ea1_1a2e47e473545615fcbffff761d8912ea1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mesh::createAabb</definition>
+        <argsstring>(const ver::VBuffer &amp;verts)</argsstring>
+        <name>createAabb</name>
+        <qualifiedname>Mesh::createAabb</qualifiedname>
+        <param>
+          <type>const <ref refid="classver_1_1VBuffer" kindref="compound">ver::VBuffer</ref> &amp;</type>
+          <declname>verts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="121" column="6" bodyfile="src/mesh.cpp" bodystart="161" bodyend="182"/>
+        <referencedby refid="classCameraFrustum_a73a48e8fbde4b02b50e32746b50e03b8_1a73a48e8fbde4b02b50e32746b50e03b8" compoundref="camera__frustum_8cpp" startline="17" endline="82">CameraFrustum::CameraFrustum</referencedby>
+        <referencedby refid="classCameraWidget_a0c41231fcab87a5a4aeb57d87aecb55e_1a0c41231fcab87a5a4aeb57d87aecb55e" compoundref="camera__widget_8cpp" startline="17" endline="63">CameraWidget::CameraWidget</referencedby>
+        <referencedby refid="classCube_af0fe61f07cbc70de782950bac056988b_1af0fe61f07cbc70de782950bac056988b" compoundref="cube_8cpp" startline="23" endline="194">Cube::Cube</referencedby>
+        <referencedby refid="classMesh_a5a611a59702d1b70366c71bcbfbe90a9_1a5a611a59702d1b70366c71bcbfbe90a9" compoundref="mesh_8cpp" startline="23" endline="40">Mesh</referencedby>
+        <referencedby refid="classPlane_a70e7a5971d34e1130740e843a6a18896_1a70e7a5971d34e1130740e843a6a18896" compoundref="plane_8cpp" startline="23" endline="193">Plane::Plane</referencedby>
+        <referencedby refid="classSphere_a80bdf896453fbb509c1e6170e0022c29_1a80bdf896453fbb509c1e6170e0022c29" compoundref="sphere_8cpp" startline="18" endline="72">Sphere::Sphere</referencedby>
+        <referencedby refid="classTerrain_af5a4ec6ff724b557052dd12be7f0de0c_1af5a4ec6ff724b557052dd12be7f0de0c" compoundref="terrain_8cpp" startline="24" endline="158">Terrain::Terrain</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classMesh_a425a3ab4960ac4a925aba7c6df2da63b_1a425a3ab4960ac4a925aba7c6df2da63b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const <ref refid="classNode" kindref="compound">Node</ref> *</type>
+        <definition>const Node * Mesh::getNode</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getNode</name>
+        <qualifiedname>Mesh::getNode</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="122" column="12" bodyfile="src/mesh.cpp" bodystart="184" bodyend="187"/>
+      </memberdef>
+      <memberdef kind="function" id="classMesh_a2e68eeb89cb2cb8b1caa45911f569ed4_1a2e68eeb89cb2cb8b1caa45911f569ed4" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string Mesh::getName</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getName</name>
+        <qualifiedname>Mesh::getName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="123" column="13" bodyfile="src/mesh.cpp" bodystart="189" bodyend="196"/>
+      </memberdef>
+      <memberdef kind="function" id="classMesh_a3d2f9912e0fa051f1a756a57bb225adb_1a3d2f9912e0fa051f1a756a57bb225adb" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned Mesh::getMeshId</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getMeshId</name>
+        <qualifiedname>Mesh::getMeshId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="124" column="10" bodyfile="src/mesh.cpp" bodystart="198" bodyend="201"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classMesh_ac1a06f67124e572821e7fc985711c8dd_1ac1a06f67124e572821e7fc985711c8dd" prot="protected" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float Mesh::getDistanceFromActiveCamera</definition>
+        <argsstring>(const DirectX::XMFLOAT3 &amp;pos) const noexcept</argsstring>
+        <name>getDistanceFromActiveCamera</name>
+        <qualifiedname>Mesh::getDistanceFromActiveCamera</qualifiedname>
+        <param>
+          <type>const DirectX::XMFLOAT3 &amp;</type>
+          <declname>pos</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="126" column="7" bodyfile="src/mesh.cpp" bodystart="203" bodyend="207"/>
+      </memberdef>
+      <memberdef kind="function" id="classMesh_add44446356aaf7c808a25562090cc556_1add44446356aaf7c808a25562090cc556" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mesh::setMeshId</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>setMeshId</name>
+        <qualifiedname>Mesh::setMeshId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="127" column="6" bodyfile="src/mesh.cpp" bodystart="209" bodyend="213"/>
+        <referencedby refid="classCameraFrustum_a73a48e8fbde4b02b50e32746b50e03b8_1a73a48e8fbde4b02b50e32746b50e03b8" compoundref="camera__frustum_8cpp" startline="17" endline="82">CameraFrustum::CameraFrustum</referencedby>
+        <referencedby refid="classCameraWidget_a0c41231fcab87a5a4aeb57d87aecb55e_1a0c41231fcab87a5a4aeb57d87aecb55e" compoundref="camera__widget_8cpp" startline="17" endline="63">CameraWidget::CameraWidget</referencedby>
+        <referencedby refid="classCube_af0fe61f07cbc70de782950bac056988b_1af0fe61f07cbc70de782950bac056988b" compoundref="cube_8cpp" startline="23" endline="194">Cube::Cube</referencedby>
+        <referencedby refid="classLine_ab4004be2273185c41037d4dd14e02990_1ab4004be2273185c41037d4dd14e02990" compoundref="line_8cpp" startline="22" endline="105">Line::Line</referencedby>
+        <referencedby refid="classMesh_a5a611a59702d1b70366c71bcbfbe90a9_1a5a611a59702d1b70366c71bcbfbe90a9" compoundref="mesh_8cpp" startline="23" endline="40">Mesh</referencedby>
+        <referencedby refid="classPlane_a70e7a5971d34e1130740e843a6a18896_1a70e7a5971d34e1130740e843a6a18896" compoundref="plane_8cpp" startline="23" endline="193">Plane::Plane</referencedby>
+        <referencedby refid="classSphere_a80bdf896453fbb509c1e6170e0022c29_1a80bdf896453fbb509c1e6170e0022c29" compoundref="sphere_8cpp" startline="18" endline="72">Sphere::Sphere</referencedby>
+        <referencedby refid="classTerrain_af5a4ec6ff724b557052dd12be7f0de0c_1af5a4ec6ff724b557052dd12be7f0de0c" compoundref="terrain_8cpp" startline="24" endline="158">Terrain::Terrain</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classMesh_a8aeff98bfd0c764a8917047c98f9962f_1a8aeff98bfd0c764a8917047c98f9962f" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mesh::setDistanceFromActiveCamera</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>setDistanceFromActiveCamera</name>
+        <qualifiedname>Mesh::setDistanceFromActiveCamera</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="129" column="6" bodyfile="src/mesh.cpp" bodystart="215" bodyend="220"/>
+      </memberdef>
+      <memberdef kind="function" id="classMesh_aa5d30468013b994c7eb1897d2544a480_1aa5d30468013b994c7eb1897d2544a480" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mesh::createAabb</definition>
+        <argsstring>(const aiMesh &amp;aiMesh)</argsstring>
+        <name>createAabb</name>
+        <qualifiedname>Mesh::createAabb</qualifiedname>
+        <param>
+          <type>const aiMesh &amp;</type>
+          <declname>aiMesh</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="130" column="6" bodyfile="src/mesh.cpp" bodystart="222" bodyend="245"/>
+      </memberdef>
+      <memberdef kind="function" id="classMesh_aab3b7f01c082616f9656d44d7f75fdec_1aab3b7f01c082616f9656d44d7f75fdec" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Mesh::isFrustumCulled</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>isFrustumCulled</name>
+        <qualifiedname>Mesh::isFrustumCulled</qualifiedname>
+        <briefdescription>
+<para>returns true if the <ref refid="classMesh" kindref="compound">Mesh</ref> is culled this frame by the active camera and false otherwise </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="132" column="6" bodyfile="src/mesh.cpp" bodystart="247" bodyend="312"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>CameraFrustum</label>
+        <link refid="classCameraFrustum"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>CameraWidget</label>
+        <link refid="classCameraWidget"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Cube</label>
+        <link refid="classCube"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Line</label>
+        <link refid="classLine"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Mesh</label>
+        <link refid="classMesh"/>
+      </node>
+      <node id="6">
+        <label>Plane</label>
+        <link refid="classPlane"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>Sphere</label>
+        <link refid="classSphere"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>Terrain</label>
+        <link refid="classTerrain"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Mesh</label>
+        <link refid="classMesh"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>m_pNode</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>m_colorPscb</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>m_colorPscbOutline</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>m_colorPscbWireframe</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>m_colorPscbDepthReversed</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Mesh::ColorPSCB</label>
+        <link refid="structMesh_1_1ColorPSCB"/>
+      </node>
+      <node id="4">
+        <label>Mesh::ColorPSCB2</label>
+        <link refid="structMesh_1_1ColorPSCB2"/>
+      </node>
+      <node id="5">
+        <label>Mesh::ColorPSCB3</label>
+        <link refid="structMesh_1_1ColorPSCB3"/>
+      </node>
+      <node id="6">
+        <label>Mesh::ColorPSCB4</label>
+        <link refid="structMesh_1_1ColorPSCB4"/>
+      </node>
+      <node id="2">
+        <label>Node</label>
+        <link refid="classNode"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>m_pParent</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/mesh.h" line="30" column="1" bodyfile="inc/mesh.h" bodystart="31" bodyend="133"/>
+    <listofallmembers>
+      <member refid="classMesh_a513b4f9e4065d0b004474722f1ddd148_1a513b4f9e4065d0b004474722f1ddd148" prot="public" virt="non-virtual"><scope>Mesh</scope><name>accept</name></member>
+      <member refid="classMesh_a76bbd879b2115f72799c5d1676a8960b_1a76bbd879b2115f72799c5d1676a8960b" prot="public" virt="non-virtual"><scope>Mesh</scope><name>addMaterial</name></member>
+      <member refid="classMesh_a45a4b9d8490d23482ebef2e5138b7351_1a45a4b9d8490d23482ebef2e5138b7351" prot="public" virt="non-virtual"><scope>Mesh</scope><name>bind</name></member>
+      <member refid="classMesh_a0f3175b74632a675caad84b8f5defb8b_1a0f3175b74632a675caad84b8f5defb8b" prot="public" virt="non-virtual"><scope>Mesh</scope><name>connectMaterialsToRenderer</name></member>
+      <member refid="classMesh_a2e47e473545615fcbffff761d8912ea1_1a2e47e473545615fcbffff761d8912ea1" prot="public" virt="non-virtual"><scope>Mesh</scope><name>createAabb</name></member>
+      <member refid="classMesh_aa5d30468013b994c7eb1897d2544a480_1aa5d30468013b994c7eb1897d2544a480" prot="private" virt="non-virtual"><scope>Mesh</scope><name>createAabb</name></member>
+      <member refid="classMesh_a1599e16a5e4753ac3c28dbc493cbd0ec_1a1599e16a5e4753ac3c28dbc493cbd0ec" prot="public" virt="non-virtual"><scope>Mesh</scope><name>findBindable</name></member>
+      <member refid="classMesh_ada9efb2af727b0ff2573bdac9bdd156d_1ada9efb2af727b0ff2573bdac9bdd156d" prot="public" virt="non-virtual"><scope>Mesh</scope><name>findBindable</name></member>
+      <member refid="classMesh_abde180d729a79a487bd6568d42771697_1abde180d729a79a487bd6568d42771697" prot="public" virt="non-virtual"><scope>Mesh</scope><name>getDistanceFromActiveCamera</name></member>
+      <member refid="classMesh_ac1a06f67124e572821e7fc985711c8dd_1ac1a06f67124e572821e7fc985711c8dd" prot="protected" virt="non-virtual"><scope>Mesh</scope><name>getDistanceFromActiveCamera</name></member>
+      <member refid="classMesh_ab13c2e773a18856f04a52c1d748c4be2_1ab13c2e773a18856f04a52c1d748c4be2" prot="public" virt="non-virtual"><scope>Mesh</scope><name>getIndicesCount</name></member>
+      <member refid="classMesh_a3d2f9912e0fa051f1a756a57bb225adb_1a3d2f9912e0fa051f1a756a57bb225adb" prot="public" virt="non-virtual"><scope>Mesh</scope><name>getMeshId</name></member>
+      <member refid="classMesh_a2e68eeb89cb2cb8b1caa45911f569ed4_1a2e68eeb89cb2cb8b1caa45911f569ed4" prot="public" virt="non-virtual"><scope>Mesh</scope><name>getName</name></member>
+      <member refid="classMesh_a425a3ab4960ac4a925aba7c6df2da63b_1a425a3ab4960ac4a925aba7c6df2da63b" prot="public" virt="non-virtual"><scope>Mesh</scope><name>getNode</name></member>
+      <member refid="classMesh_a8cb16fb21424f90eadf022d531d17d30_1a8cb16fb21424f90eadf022d531d17d30" prot="public" virt="non-virtual"><scope>Mesh</scope><name>getVertexBuffer</name></member>
+      <member refid="classMesh_aab3b7f01c082616f9656d44d7f75fdec_1aab3b7f01c082616f9656d44d7f75fdec" prot="private" virt="non-virtual"><scope>Mesh</scope><name>isFrustumCulled</name></member>
+      <member refid="classMesh_a1d18ad52515cfd7e2cca966cfb76dddd_1a1d18ad52515cfd7e2cca966cfb76dddd" prot="public" virt="non-virtual"><scope>Mesh</scope><name>isRenderedThisFrame</name></member>
+      <member refid="classMesh_a77337ee8b7114ef5311bcf27e0046e22_1a77337ee8b7114ef5311bcf27e0046e22" prot="protected" virt="non-virtual"><scope>Mesh</scope><name>m_aabb</name></member>
+      <member refid="classMesh_a5a75c6d3a47632d15ff774245e878111_1a5a75c6d3a47632d15ff774245e878111" prot="private" virt="non-virtual"><scope>Mesh</scope><name>m_bRenderedThisFrame</name></member>
+      <member refid="classMesh_a39d8f1407340f362a62b55d583bcf940_1a39d8f1407340f362a62b55d583bcf940" prot="protected" virt="non-virtual"><scope>Mesh</scope><name>m_colorPscb</name></member>
+      <member refid="classMesh_a38b2f938403ca728ab9b7f64ccc74724_1a38b2f938403ca728ab9b7f64ccc74724" prot="protected" virt="non-virtual"><scope>Mesh</scope><name>m_colorPscbDepthReversed</name></member>
+      <member refid="classMesh_aa46b1429ae3e0ab7ff10c1fea306d3cd_1aa46b1429ae3e0ab7ff10c1fea306d3cd" prot="protected" virt="non-virtual"><scope>Mesh</scope><name>m_colorPscbOutline</name></member>
+      <member refid="classMesh_a832c0d6e6367ecf9926c690678498c99_1a832c0d6e6367ecf9926c690678498c99" prot="protected" virt="non-virtual"><scope>Mesh</scope><name>m_colorPscbWireframe</name></member>
+      <member refid="classMesh_a1072334674042ddad806e28bdeaad983_1a1072334674042ddad806e28bdeaad983" prot="private" virt="non-virtual"><scope>Mesh</scope><name>m_distanceFromActiveCamera</name></member>
+      <member refid="classMesh_a50eabba438bb2476103fa94c20521800_1a50eabba438bb2476103fa94c20521800" prot="protected" virt="non-virtual"><scope>Mesh</scope><name>m_materials</name></member>
+      <member refid="classMesh_a2be1d0d997a5ea723e79320cd5a360d2_1a2be1d0d997a5ea723e79320cd5a360d2" prot="protected" virt="non-virtual"><scope>Mesh</scope><name>m_meshId</name></member>
+      <member refid="classMesh_aa5fc2902e90f9ccb60a85d79c2ee85f7_1aa5fc2902e90f9ccb60a85d79c2ee85f7" prot="protected" virt="non-virtual"><scope>Mesh</scope><name>m_pIndexBuffer</name></member>
+      <member refid="classMesh_af08edebaaa5ca60d67aa42c9f4f4d75f_1af08edebaaa5ca60d67aa42c9f4f4d75f" prot="protected" virt="non-virtual"><scope>Mesh</scope><name>m_pNode</name></member>
+      <member refid="classMesh_ae621e49b973b900a5247f661ee4d7f01_1ae621e49b973b900a5247f661ee4d7f01" prot="protected" virt="non-virtual"><scope>Mesh</scope><name>m_pPrimitiveTopology</name></member>
+      <member refid="classMesh_a20c8448dfbc8df1b7fa70a07b1d55470_1a20c8448dfbc8df1b7fa70a07b1d55470" prot="protected" virt="non-virtual"><scope>Mesh</scope><name>m_pTransformVscb</name></member>
+      <member refid="classMesh_a05ef62d082e7a5c1fb49bded4e8c69ea_1a05ef62d082e7a5c1fb49bded4e8c69ea" prot="protected" virt="non-virtual"><scope>Mesh</scope><name>m_pVertexBuffer</name></member>
+      <member refid="classMesh_ae6b6c56f0ebfa2f6b2b10d25a835c865_1ae6b6c56f0ebfa2f6b2b10d25a835c865" prot="public" virt="non-virtual"><scope>Mesh</scope><name>Mesh</name></member>
+      <member refid="classMesh_a5a611a59702d1b70366c71bcbfbe90a9_1a5a611a59702d1b70366c71bcbfbe90a9" prot="public" virt="non-virtual"><scope>Mesh</scope><name>Mesh</name></member>
+      <member refid="classMesh_a092585e17e17fda4a97ed3ef55f7e6de_1a092585e17e17fda4a97ed3ef55f7e6de" prot="public" virt="non-virtual"><scope>Mesh</scope><name>Mesh</name></member>
+      <member refid="classMesh_a207b46f564a431b6b3a5a5f3da7638e3_1a207b46f564a431b6b3a5a5f3da7638e3" prot="public" virt="non-virtual"><scope>Mesh</scope><name>Mesh</name></member>
+      <member refid="classMesh_ae40add8703d205cee7cd05df39a61152_1ae40add8703d205cee7cd05df39a61152" prot="public" virt="non-virtual"><scope>Mesh</scope><name>operator=</name></member>
+      <member refid="classMesh_a5013b72eca2bd43b1853cd0b8c98498c_1a5013b72eca2bd43b1853cd0b8c98498c" prot="public" virt="non-virtual"><scope>Mesh</scope><name>operator=</name></member>
+      <member refid="classMesh_a582af69212023f64426c5f2fbd816e4c_1a582af69212023f64426c5f2fbd816e4c" prot="public" virt="non-virtual"><scope>Mesh</scope><name>render</name></member>
+      <member refid="classMesh_a8aeff98bfd0c764a8917047c98f9962f_1a8aeff98bfd0c764a8917047c98f9962f" prot="private" virt="non-virtual"><scope>Mesh</scope><name>setDistanceFromActiveCamera</name></member>
+      <member refid="classMesh_a258f981ef88fe2dc1b4095e089dd99f2_1a258f981ef88fe2dc1b4095e089dd99f2" prot="public" virt="non-virtual"><scope>Mesh</scope><name>setMaterialEnabled</name></member>
+      <member refid="classMesh_add44446356aaf7c808a25562090cc556_1add44446356aaf7c808a25562090cc556" prot="protected" virt="non-virtual"><scope>Mesh</scope><name>setMeshId</name></member>
+      <member refid="classMesh_a501f7dc11f57390edcd9acaf5a1b07cd_1a501f7dc11f57390edcd9acaf5a1b07cd" prot="public" virt="non-virtual"><scope>Mesh</scope><name>setNode</name></member>
+      <member refid="classMesh_a31cc65adefd11990f5246435cedaaf1e_1a31cc65adefd11990f5246435cedaaf1e" prot="public" virt="non-virtual"><scope>Mesh</scope><name>update</name></member>
+      <member refid="classMesh_a508b14c30f81bdc95a94ec112ff1d8e2_1a508b14c30f81bdc95a94ec112ff1d8e2" prot="public" virt="virtual"><scope>Mesh</scope><name>~Mesh</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

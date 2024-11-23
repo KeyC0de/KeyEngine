@@ -1,0 +1,24 @@
+\doxysection{util\+\_\+exception.\+h}
+\hypertarget{util__exception_8h_source}{}\label{util__exception_8h_source}\index{inc/util\_exception.h@{inc/util\_exception.h}}
+\mbox{\hyperlink{util__exception_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{key__exception_8h}{key\_exception.h}}"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classUtilException}{UtilException}}\ final}
+\DoxyCodeLine{00007\ \ \ \ \ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classKeyException}{KeyException}}}
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00009\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{classUtilException_a6aab5d0114e7eea39c9e668bea66ab37_a6aab5d0114e7eea39c9e668bea66ab37}{UtilException}}(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ line,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *file,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *function,\ \textcolor{keyword}{const}\ std::string\ \&msg\ )\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \ \ \ \ std::string\ \mbox{\hyperlink{classUtilException_a2752efa8887758cb0d3ed094cbc45738_a2752efa8887758cb0d3ed094cbc45738}{getType}}()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \textcolor{keyword}{override}\ \textcolor{keyword}{final};}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{classUtilException_ae0e75ef62cc274b85e19d850ac0dbc5a_ae0e75ef62cc274b85e19d850ac0dbc5a}{what}}()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \textcolor{keyword}{override}\ \textcolor{keyword}{final};}
+\DoxyCodeLine{00014\ \};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ THROW\_UTIL\_EXCEPTION(\ msg\ )\ \_\_debugbreak();\(\backslash\)}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\ \ \ \ throw\ UtilException(\ \_\_LINE\_\_,\ \_\_FILE\_\_,\ \_\_FUNCTION\_\_,\ msg\ );}}
+
+\end{DoxyCode}

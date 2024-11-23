@@ -1,0 +1,129 @@
+\doxysection{con\+::Raw\+Layout Class Reference}
+\hypertarget{classcon_1_1RawLayout}{}\label{classcon_1_1RawLayout}\index{con::RawLayout@{con::RawLayout}}
+
+
+Raw layout represents a layout that has not yet been finalized and registered.  
+
+
+
+
+{\ttfamily \#include $<$dynamic\+\_\+constant\+\_\+buffer.\+h$>$}
+
+Inheritance diagram for con\+::Raw\+Layout\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcon_1_1RawLayout}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcon_1_1RawLayout_a34bf6b8f99c3d029c6af8c81cd50d454_a34bf6b8f99c3d029c6af8c81cd50d454}{Raw\+Layout}} () noexcept
+\item 
+\mbox{\hyperlink{classcon_1_1CBElement}{CBElement}} \& \mbox{\hyperlink{classcon_1_1RawLayout_af98b51f5c4279ced1927a1953430be8b_af98b51f5c4279ced1927a1953430be8b}{operator\mbox{[}$\,$\mbox{]}}} (const std\+::string \&key) cond\+\_\+noex
+\item 
+{\footnotesize template$<$\mbox{\hyperlink{namespacecon_a715a53e528376e9d85ea035a2db279a5_a715a53e528376e9d85ea035a2db279a5}{Element\+Type}} elem$>$ }\\\mbox{\hyperlink{classcon_1_1CBElement}{CBElement}} \& \mbox{\hyperlink{classcon_1_1RawLayout_ac4cd4dabf994fd33e4cfb154e0dbe94c_ac4cd4dabf994fd33e4cfb154e0dbe94c}{add}} (const std\+::string \&key) cond\+\_\+noex
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classcon_1_1CBLayout}{con\+::\+CBLayout}}}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{classcon_1_1CBLayout_a38fe5d51ff565b2f6089861086125341_a38fe5d51ff565b2f6089861086125341}{get\+Size\+In\+Bytes}} () const noexcept
+\item 
+std\+::string \mbox{\hyperlink{classcon_1_1CBLayout_ad0f25a176e697cb4a7c8a2bc938ea909_ad0f25a176e697cb4a7c8a2bc938ea909}{calc\+Signature}} () const cond\+\_\+noex
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcon_1_1RawLayout_acc57850a3374dae3395727d4ef902d7c_acc57850a3374dae3395727d4ef902d7c}{clear}} () noexcept
+\begin{DoxyCompactList}\small\item\em reset this object with an empty struct at its root \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classcon_1_1CBElement}{CBElement}} $>$ \mbox{\hyperlink{classcon_1_1RawLayout_aa73c4eddf4e7b53a1bf873bc89f0044e_aa73c4eddf4e7b53a1bf873bc89f0044e}{cook\+Layout}} () noexcept
+\begin{DoxyCompactList}\small\item\em cook/commit the layout and then relinquish (by yielding the root layout element) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classcon_1_1RawLayout_a87b6f773d0354ee3da4e455c08002867_a87b6f773d0354ee3da4e455c08002867}{Layout\+Map}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classcon_1_1CBLayout}{con\+::\+CBLayout}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcon_1_1CBLayout_a9b04357032146c78e74cce1e9843a788_a9b04357032146c78e74cce1e9843a788}{CBLayout}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classcon_1_1CBElement}{CBElement}} $>$ p\+Root) noexcept
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classcon_1_1CBLayout}{con\+::\+CBLayout}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classcon_1_1CBElement}{CBElement}} $>$ \mbox{\hyperlink{classcon_1_1CBLayout_a0b1d411cd40cd4aed65e330a385a03f2_a0b1d411cd40cd4aed65e330a385a03f2}{m\+\_\+p\+Layout\+Root}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Raw layout represents a layout that has not yet been finalized and registered. 
+
+=============================================================
+
+\begin{DoxyAuthor}{Author}
+Key\+C0de 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/08/21 19\+:55 \doxysubsection*{structure can be edited by adding layout nodes }
+\end{DoxyDate}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classcon_1_1RawLayout_a34bf6b8f99c3d029c6af8c81cd50d454_a34bf6b8f99c3d029c6af8c81cd50d454}\index{con::RawLayout@{con::RawLayout}!RawLayout@{RawLayout}}
+\index{RawLayout@{RawLayout}!con::RawLayout@{con::RawLayout}}
+\doxysubsubsection{\texorpdfstring{RawLayout()}{RawLayout()}}
+{\footnotesize\ttfamily \label{classcon_1_1RawLayout_a34bf6b8f99c3d029c6af8c81cd50d454_a34bf6b8f99c3d029c6af8c81cd50d454} 
+con\+::\+Raw\+Layout\+::\+Raw\+Layout (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcon_1_1RawLayout_ac4cd4dabf994fd33e4cfb154e0dbe94c_ac4cd4dabf994fd33e4cfb154e0dbe94c}\index{con::RawLayout@{con::RawLayout}!add@{add}}
+\index{add@{add}!con::RawLayout@{con::RawLayout}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily \label{classcon_1_1RawLayout_ac4cd4dabf994fd33e4cfb154e0dbe94c_ac4cd4dabf994fd33e4cfb154e0dbe94c} 
+template$<$\mbox{\hyperlink{namespacecon_a715a53e528376e9d85ea035a2db279a5_a715a53e528376e9d85ea035a2db279a5}{Element\+Type}} elem$>$ \\
+\mbox{\hyperlink{classcon_1_1CBElement}{CBElement}} \& con\+::\+Raw\+Layout\+::add (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classcon_1_1RawLayout_acc57850a3374dae3395727d4ef902d7c_acc57850a3374dae3395727d4ef902d7c}\index{con::RawLayout@{con::RawLayout}!clear@{clear}}
+\index{clear@{clear}!con::RawLayout@{con::RawLayout}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily \label{classcon_1_1RawLayout_acc57850a3374dae3395727d4ef902d7c_acc57850a3374dae3395727d4ef902d7c} 
+void con\+::\+Raw\+Layout\+::clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+reset this object with an empty struct at its root 
+
+\Hypertarget{classcon_1_1RawLayout_aa73c4eddf4e7b53a1bf873bc89f0044e_aa73c4eddf4e7b53a1bf873bc89f0044e}\index{con::RawLayout@{con::RawLayout}!cookLayout@{cookLayout}}
+\index{cookLayout@{cookLayout}!con::RawLayout@{con::RawLayout}}
+\doxysubsubsection{\texorpdfstring{cookLayout()}{cookLayout()}}
+{\footnotesize\ttfamily \label{classcon_1_1RawLayout_aa73c4eddf4e7b53a1bf873bc89f0044e_aa73c4eddf4e7b53a1bf873bc89f0044e} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classcon_1_1CBElement}{CBElement}} $>$ con\+::\+Raw\+Layout\+::cook\+Layout (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+cook/commit the layout and then relinquish (by yielding the root layout element) 
+
+\Hypertarget{classcon_1_1RawLayout_af98b51f5c4279ced1927a1953430be8b_af98b51f5c4279ced1927a1953430be8b}\index{con::RawLayout@{con::RawLayout}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!con::RawLayout@{con::RawLayout}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily \label{classcon_1_1RawLayout_af98b51f5c4279ced1927a1953430be8b_af98b51f5c4279ced1927a1953430be8b} 
+\mbox{\hyperlink{classcon_1_1CBElement}{CBElement}} \& con\+::\+Raw\+Layout\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{classcon_1_1RawLayout_a87b6f773d0354ee3da4e455c08002867_a87b6f773d0354ee3da4e455c08002867}\index{con::RawLayout@{con::RawLayout}!LayoutMap@{LayoutMap}}
+\index{LayoutMap@{LayoutMap}!con::RawLayout@{con::RawLayout}}
+\doxysubsubsection{\texorpdfstring{LayoutMap}{LayoutMap}}
+{\footnotesize\ttfamily \label{classcon_1_1RawLayout_a87b6f773d0354ee3da4e455c08002867_a87b6f773d0354ee3da4e455c08002867} 
+friend class \mbox{\hyperlink{classcon_1_1LayoutMap}{Layout\+Map}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{dynamic__constant__buffer_8h}{dynamic\+\_\+constant\+\_\+buffer.\+h}}\item 
+src/\mbox{\hyperlink{dynamic__constant__buffer_8cpp}{dynamic\+\_\+constant\+\_\+buffer.\+cpp}}\end{DoxyCompactItemize}

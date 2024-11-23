@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classMessageData_3_01T_01_4" kind="class" language="C++" prot="public">
+    <compoundname>MessageData&lt; T &gt;</compoundname>
+    <includes refid="message_8h" local="no">message.h</includes>
+    <briefdescription>
+<para>a <ref refid="classMessage" kindref="compound">Message</ref> with arbitrary data payload T  </para>
+    </briefdescription>
+    <detaileddescription>
+<para>============================================================</para>
+<para><simplesect kind="author"><para>KeyC0de </para>
+</simplesect>
+<simplesect kind="date"><para>2019/12/10 3:01 <heading level="1"></heading>
+</para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="inc/message.h" line="70" column="1"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

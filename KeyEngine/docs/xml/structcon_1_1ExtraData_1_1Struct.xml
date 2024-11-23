@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="structcon_1_1ExtraData_1_1Struct" kind="struct" language="C++" prot="public" final="yes">
+    <compoundname>con::ExtraData::Struct</compoundname>
+    <basecompoundref refid="structcon_1_1CBElement_1_1IExtraData" prot="public" virt="non-virtual">con::CBElement::IExtraData</basecompoundref>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structcon_1_1ExtraData_1_1Struct_a68097dc05fa936af9fa1fd52e208c22f_1a68097dc05fa936af9fa1fd52e208c22f" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; std::pair&lt; std::string, <ref refid="classcon_1_1CBElement" kindref="compound">CBElement</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::pair&lt;std::string, CBElement&gt; &gt; con::ExtraData::Struct::m_layoutElements</definition>
+        <argsstring></argsstring>
+        <name>m_layoutElements</name>
+        <qualifiedname>con::ExtraData::Struct::m_layoutElements</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dynamic_constant_buffer.cpp" line="14" column="13" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="14" bodyend="-1"/>
+        <referencedby refid="classcon_1_1CBElement_a87ecde2b649ee3a518a5f99d94d488fb_1a87ecde2b649ee3a518a5f99d94d488fb" compoundref="dynamic__constant__buffer_8cpp" startline="123" endline="138">con::CBElement::add</referencedby>
+        <referencedby refid="classcon_1_1CBElement_a8aaf2878bfbd36368d13f7d4bf6e4805_1a8aaf2878bfbd36368d13f7d4bf6e4805" compoundref="dynamic__constant__buffer_8cpp" startline="186" endline="196">con::CBElement::getSignatureForStruct</referencedby>
+        <referencedby refid="classcon_1_1CBElement_a6d3aa5a18126043ef7e3851d6a4b7cc6_1a6d3aa5a18126043ef7e3851d6a4b7cc6" compoundref="dynamic__constant__buffer_8cpp" startline="59" endline="70">con::CBElement::operator[]</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>con::CBElement::IExtraData</label>
+        <link refid="structcon_1_1CBElement_1_1IExtraData"/>
+      </node>
+      <node id="1">
+        <label>con::ExtraData::Struct</label>
+        <link refid="structcon_1_1ExtraData_1_1Struct"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>con::CBElement::IExtraData</label>
+        <link refid="structcon_1_1CBElement_1_1IExtraData"/>
+      </node>
+      <node id="1">
+        <label>con::ExtraData::Struct</label>
+        <link refid="structcon_1_1ExtraData_1_1Struct"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/dynamic_constant_buffer.cpp" line="11" column="1" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="13" bodyend="15"/>
+    <listofallmembers>
+      <member refid="structcon_1_1ExtraData_1_1Struct_a68097dc05fa936af9fa1fd52e208c22f_1a68097dc05fa936af9fa1fd52e208c22f" prot="public" virt="non-virtual"><scope>con::ExtraData::Struct</scope><name>m_layoutElements</name></member>
+      <member refid="structcon_1_1CBElement_1_1IExtraData_a741cbc7c7feb161aae64c7c9ddbc0d5b_1a741cbc7c7feb161aae64c7c9ddbc0d5b" prot="public" virt="virtual"><scope>con::ExtraData::Struct</scope><name>~IExtraData</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

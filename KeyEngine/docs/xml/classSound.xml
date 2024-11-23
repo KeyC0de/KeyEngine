@@ -1,0 +1,451 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classSound" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>Sound</compoundname>
+    <basecompoundref refid="classNonCopyable" prot="public" virt="non-virtual">NonCopyable</basecompoundref>
+    <includes refid="key__sound_8h" local="no">key_sound.h</includes>
+    <sectiondef kind="friend">
+      <memberdef kind="friend" id="classSound_af745e0d8e6ab90ae46446ec9b002322b_1af745e0d8e6ab90ae46446ec9b002322b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class SoundManager::Channel</definition>
+        <argsstring></argsstring>
+        <name>SoundManager::Channel</name>
+        <qualifiedname>Sound::Channel</qualifiedname>
+        <param>
+          <type><ref refid="classSoundManager_1_1Channel" kindref="compound">SoundManager::Channel</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="122" column="14" bodyfile="inc/key_sound.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classSound_afa7a8ee25ff90df31a64249c3fb11699_1afa7a8ee25ff90df31a64249c3fb11699" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Sound::m_name</definition>
+        <argsstring></argsstring>
+        <name>m_name</name>
+        <qualifiedname>Sound::m_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="124" column="13" bodyfile="inc/key_sound.h" bodystart="124" bodyend="-1"/>
+        <referencedby refid="classSound_a0261bcce77a045e0b35f47f1dcb56b14_1a0261bcce77a045e0b35f47f1dcb56b14" compoundref="key__sound_8cpp" startline="512" endline="515">getName</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classSound_ae77349e3740f83530cedcc45d6133d03_1ae77349e3740f83530cedcc45d6133d03" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Sound::m_submixName</definition>
+        <argsstring></argsstring>
+        <name>m_submixName</name>
+        <qualifiedname>Sound::m_submixName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="125" column="13" bodyfile="inc/key_sound.h" bodystart="125" bodyend="-1"/>
+        <referencedby refid="classSound_a049651015596575bea8bff0e5ecf7e3c_1a049651015596575bea8bff0e5ecf7e3c" compoundref="key__sound_8cpp" startline="517" endline="520">getSubmixName</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classSound_a69f0d170fc046263c8310e7faa395e74_1a69f0d170fc046263c8310e7faa395e74" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; BYTE[]&gt;</type>
+        <definition>std::unique_ptr&lt;BYTE[]&gt; Sound::m_pAudioData</definition>
+        <argsstring></argsstring>
+        <name>m_pAudioData</name>
+        <qualifiedname>Sound::m_pAudioData</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="126" column="17" bodyfile="inc/key_sound.h" bodystart="126" bodyend="-1"/>
+        <referencedby refid="classSound_a14ac6aede2a2992054c848975f8062b5_1a14ac6aede2a2992054c848975f8062b5" compoundref="key__sound_8cpp" startline="390" endline="465">Sound</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classSound_ad0471d12fe02f7b968fdf088f64dd285_1ad0471d12fe02f7b968fdf088f64dd285" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; WAVEFORMATEXTENSIBLE &gt;</type>
+        <definition>std::unique_ptr&lt;WAVEFORMATEXTENSIBLE&gt; Sound::m_pWaveFormat</definition>
+        <argsstring></argsstring>
+        <name>m_pWaveFormat</name>
+        <qualifiedname>Sound::m_pWaveFormat</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="127" column="17" bodyfile="inc/key_sound.h" bodystart="127" bodyend="-1"/>
+        <referencedby refid="classSound_a14ac6aede2a2992054c848975f8062b5_1a14ac6aede2a2992054c848975f8062b5" compoundref="key__sound_8cpp" startline="390" endline="465">Sound</referencedby>
+        <referencedby refid="classSound_aae672cbd1cd79b249c3087b35d752e14_1aae672cbd1cd79b249c3087b35d752e14" compoundref="key__sound_8cpp" startline="506" endline="510">getDuration</referencedby>
+        <referencedby refid="classSound_a5f01178c19bf0948cfba57b3692d1808_1a5f01178c19bf0948cfba57b3692d1808" compoundref="key__sound_8cpp" startline="522" endline="525">play</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classSound_a683cc91ae131910996217112a025b084_1a683cc91ae131910996217112a025b084" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; struct XAUDIO2_BUFFER &gt;</type>
+        <definition>std::unique_ptr&lt;struct XAUDIO2_BUFFER&gt; Sound::m_pXaudioBuffer</definition>
+        <argsstring></argsstring>
+        <name>m_pXaudioBuffer</name>
+        <qualifiedname>Sound::m_pXaudioBuffer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="128" column="17" bodyfile="inc/key_sound.h" bodystart="128" bodyend="-1"/>
+        <referencedby refid="classSound_a14ac6aede2a2992054c848975f8062b5_1a14ac6aede2a2992054c848975f8062b5" compoundref="key__sound_8cpp" startline="390" endline="465">Sound</referencedby>
+        <referencedby refid="classSound_aae672cbd1cd79b249c3087b35d752e14_1aae672cbd1cd79b249c3087b35d752e14" compoundref="key__sound_8cpp" startline="506" endline="510">getDuration</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classSound_a13942758c6ccf762d830daf2e5db2fc6_1a13942758c6ccf762d830daf2e5db2fc6" prot="private" static="no" mutable="no">
+        <type>std::mutex</type>
+        <definition>std::mutex Sound::m_mu</definition>
+        <argsstring></argsstring>
+        <name>m_mu</name>
+        <qualifiedname>Sound::m_mu</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="129" column="12" bodyfile="inc/key_sound.h" bodystart="129" bodyend="-1"/>
+        <referencedby refid="classSound_aa5dbce029e55af68f2c135ca9b51e0a4_1aa5dbce029e55af68f2c135ca9b51e0a4" compoundref="key__sound_8cpp" startline="492" endline="504">~Sound</referencedby>
+        <referencedby refid="classSound_a07c551ab56d2f83a861a2f7fd81b480a_1a07c551ab56d2f83a861a2f7fd81b480a" compoundref="key__sound_8cpp" startline="527" endline="541">stop</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classSound_a48edb3fd85b64943a27420d56c516c4c_1a48edb3fd85b64943a27420d56c516c4c" prot="private" static="no" mutable="no">
+        <type>std::condition_variable</type>
+        <definition>std::condition_variable Sound::m_condVar</definition>
+        <argsstring></argsstring>
+        <name>m_condVar</name>
+        <qualifiedname>Sound::m_condVar</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="130" column="25" bodyfile="inc/key_sound.h" bodystart="130" bodyend="-1"/>
+        <referencedby refid="classSound_aa5dbce029e55af68f2c135ca9b51e0a4_1aa5dbce029e55af68f2c135ca9b51e0a4" compoundref="key__sound_8cpp" startline="492" endline="504">~Sound</referencedby>
+        <referencedby refid="classSoundManager_1_1Channel_ac96947ac0fe438b53be241d5b0f02a45_1ac96947ac0fe438b53be241d5b0f02a45" compoundref="key__sound_8cpp" startline="93" endline="207">SoundManager::Channel::setupChannel</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classSound_ad09685bdd580fcef12897080e6e0219c_1ad09685bdd580fcef12897080e6e0219c" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classSoundManager_1_1Channel" kindref="compound">SoundManager::Channel</ref> * &gt;</type>
+        <definition>std::vector&lt;SoundManager::Channel*&gt; Sound::m_busyChannels</definition>
+        <argsstring></argsstring>
+        <name>m_busyChannels</name>
+        <qualifiedname>Sound::m_busyChannels</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="131" column="13" bodyfile="inc/key_sound.h" bodystart="131" bodyend="-1"/>
+        <referencedby refid="classSound_aa5dbce029e55af68f2c135ca9b51e0a4_1aa5dbce029e55af68f2c135ca9b51e0a4" compoundref="key__sound_8cpp" startline="492" endline="504">~Sound</referencedby>
+        <referencedby refid="classSoundManager_1_1Channel_add92a4f1a98fc8ee81732f3ff04bc51e_1add92a4f1a98fc8ee81732f3ff04bc51e" compoundref="key__sound_8cpp" startline="209" endline="221">SoundManager::Channel::playSound</referencedby>
+        <referencedby refid="classSoundManager_1_1Channel_ac96947ac0fe438b53be241d5b0f02a45_1ac96947ac0fe438b53be241d5b0f02a45" compoundref="key__sound_8cpp" startline="93" endline="207">SoundManager::Channel::setupChannel</referencedby>
+        <referencedby refid="classSound_a07c551ab56d2f83a861a2f7fd81b480a_1a07c551ab56d2f83a861a2f7fd81b480a" compoundref="key__sound_8cpp" startline="527" endline="541">stop</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classSound_ac387272947ef28e7a64947fc8950a540_1ac387272947ef28e7a64947fc8950a540" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>HRESULT</type>
+        <definition>HRESULT Sound::findChunk</definition>
+        <argsstring>(HANDLE file, DWORD fourcc, DWORD &amp;chunkSize, DWORD &amp;chunkDataPosition)</argsstring>
+        <name>findChunk</name>
+        <qualifiedname>Sound::findChunk</qualifiedname>
+        <param>
+          <type>HANDLE</type>
+          <declname>file</declname>
+        </param>
+        <param>
+          <type>DWORD</type>
+          <declname>fourcc</declname>
+        </param>
+        <param>
+          <type>DWORD &amp;</type>
+          <declname>chunkSize</declname>
+        </param>
+        <param>
+          <type>DWORD &amp;</type>
+          <declname>chunkDataPosition</declname>
+        </param>
+        <briefdescription>
+<para>locates chunks in RIFF files </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="134" column="9" bodyfile="src/key_sound.cpp" bodystart="302" bodyend="368"/>
+        <referencedby refid="classSound_a14ac6aede2a2992054c848975f8062b5_1a14ac6aede2a2992054c848975f8062b5" compoundref="key__sound_8cpp" startline="390" endline="465">Sound</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classSound_a766823ef672cb6bf5cbd0681d834c3c0_1a766823ef672cb6bf5cbd0681d834c3c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>HRESULT</type>
+        <definition>HRESULT Sound::readChunkData</definition>
+        <argsstring>(HANDLE file, void *buffer, DWORD buffersize, DWORD bufferoffset)</argsstring>
+        <name>readChunkData</name>
+        <qualifiedname>Sound::readChunkData</qualifiedname>
+        <param>
+          <type>HANDLE</type>
+          <declname>file</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>DWORD</type>
+          <declname>buffersize</declname>
+        </param>
+        <param>
+          <type>DWORD</type>
+          <declname>bufferoffset</declname>
+        </param>
+        <briefdescription>
+<para>read chunk&apos;s data (after the chunk has been located) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="137" column="9" bodyfile="src/key_sound.cpp" bodystart="370" bodyend="386"/>
+        <referencedby refid="classSound_a14ac6aede2a2992054c848975f8062b5_1a14ac6aede2a2992054c848975f8062b5" compoundref="key__sound_8cpp" startline="390" endline="465">Sound</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classSound_a14ac6aede2a2992054c848975f8062b5_1a14ac6aede2a2992054c848975f8062b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Sound::Sound</definition>
+        <argsstring>(const char *zsFilename, const std::string &amp;name=&quot;&quot;, const std::string &amp;submixName=&quot;&quot;)</argsstring>
+        <name>Sound</name>
+        <qualifiedname>Sound::Sound</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>zsFilename</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>submixName</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <briefdescription>
+<para>constructor loads sound file and configures all its properties </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="141" column="1" bodyfile="src/key_sound.cpp" bodystart="390" bodyend="465"/>
+      </memberdef>
+      <memberdef kind="function" id="classSound_ab627b166f7ca6d7cef78abba28f0947c_1ab627b166f7ca6d7cef78abba28f0947c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Sound::Sound</definition>
+        <argsstring>(Sound &amp;&amp;rhs) cond_noex</argsstring>
+        <name>Sound</name>
+        <qualifiedname>Sound::Sound</qualifiedname>
+        <param>
+          <type><ref refid="classSound" kindref="compound">Sound</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="142" column="1" bodyfile="src/key_sound.cpp" bodystart="467" bodyend="483"/>
+      </memberdef>
+      <memberdef kind="function" id="classSound_afc1c20cd01b2306b31362b12cb526ac2_1afc1c20cd01b2306b31362b12cb526ac2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classSound" kindref="compound">Sound</ref> &amp;</type>
+        <definition>Sound &amp; Sound::operator=</definition>
+        <argsstring>(Sound &amp;&amp;rhs) cond_noex</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Sound::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classSound" kindref="compound">Sound</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="143" column="7" bodyfile="src/key_sound.cpp" bodystart="485" bodyend="490"/>
+      </memberdef>
+      <memberdef kind="function" id="classSound_aa5dbce029e55af68f2c135ca9b51e0a4_1aa5dbce029e55af68f2c135ca9b51e0a4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Sound::~Sound</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>~Sound</name>
+        <qualifiedname>Sound::~Sound</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="144" column="1" bodyfile="src/key_sound.cpp" bodystart="492" bodyend="504"/>
+      </memberdef>
+      <memberdef kind="function" id="classSound_aae672cbd1cd79b249c3087b35d752e14_1aae672cbd1cd79b249c3087b35d752e14" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float Sound::getDuration</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getDuration</name>
+        <qualifiedname>Sound::getDuration</qualifiedname>
+        <briefdescription>
+<para>return PCM audio&apos;s duration in milliseconds </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="147" column="7" bodyfile="src/key_sound.cpp" bodystart="506" bodyend="510"/>
+      </memberdef>
+      <memberdef kind="function" id="classSound_a0261bcce77a045e0b35f47f1dcb56b14_1a0261bcce77a045e0b35f47f1dcb56b14" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; Sound::getName</definition>
+        <argsstring>() const cond_noex</argsstring>
+        <name>getName</name>
+        <qualifiedname>Sound::getName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="148" column="19" bodyfile="src/key_sound.cpp" bodystart="512" bodyend="515"/>
+      </memberdef>
+      <memberdef kind="function" id="classSound_a049651015596575bea8bff0e5ecf7e3c_1a049651015596575bea8bff0e5ecf7e3c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; Sound::getSubmixName</definition>
+        <argsstring>() const cond_noex</argsstring>
+        <name>getSubmixName</name>
+        <qualifiedname>Sound::getSubmixName</qualifiedname>
+        <briefdescription>
+<para>get sound type eg effects, music, dialogue etc. <mdash/> each sound type corresponds to a Submix voice </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="150" column="19" bodyfile="src/key_sound.cpp" bodystart="517" bodyend="520"/>
+        <referencedby refid="classSoundManager_1_1Channel_ac96947ac0fe438b53be241d5b0f02a45_1ac96947ac0fe438b53be241d5b0f02a45" compoundref="key__sound_8cpp" startline="93" endline="207">SoundManager::Channel::setupChannel</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classSound_a5f01178c19bf0948cfba57b3692d1808_1a5f01178c19bf0948cfba57b3692d1808" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Sound::play</definition>
+        <argsstring>(const float volume=1.0f)</argsstring>
+        <name>play</name>
+        <qualifiedname>Sound::play</qualifiedname>
+        <param>
+          <type>const float</type>
+          <declname>volume</declname>
+          <defval>1.0f</defval>
+        </param>
+        <briefdescription>
+<para>instructs the sound manager to play the sound on free channel(s) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="152" column="6" bodyfile="src/key_sound.cpp" bodystart="522" bodyend="525"/>
+        <referencedby refid="classSoundPlayer_a29bf19ba13cb2e0f237f46e300d02d89_1a29bf19ba13cb2e0f237f46e300d02d89" compoundref="key__sound_8cpp" startline="622" endline="643">SoundPlayer::notify</referencedby>
+        <referencedby refid="classArkanoid_a5aea992cd4e9a1d0fad1d5308c444b20_1a5aea992cd4e9a1d0fad1d5308c444b20" compoundref="game_8cpp" startline="688" endline="737">Arkanoid::update</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classSound_a07c551ab56d2f83a861a2f7fd81b480a_1a07c551ab56d2f83a861a2f7fd81b480a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Sound::stop</definition>
+        <argsstring>()</argsstring>
+        <name>stop</name>
+        <qualifiedname>Sound::stop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="153" column="6" bodyfile="src/key_sound.cpp" bodystart="527" bodyend="541"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>move only </para>
+    </briefdescription>
+    <detaileddescription>
+<para>============================================================</para>
+<para><simplesect kind="author"><para>KeyC0de </para>
+</simplesect>
+<simplesect kind="date"><para>2020/10/24 1:51</para>
+</simplesect>
+front-end</para>
+<para>encapsulates a sound <heading level="1">ctor creates the sound properties </heading>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>NonCopyable</label>
+        <link refid="classNonCopyable"/>
+      </node>
+      <node id="1">
+        <label>Sound</label>
+        <link refid="classSound"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>NonCopyable</label>
+        <link refid="classNonCopyable"/>
+      </node>
+      <node id="1">
+        <label>Sound</label>
+        <link refid="classSound"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/key_sound.h" line="119" column="1" bodyfile="inc/key_sound.h" bodystart="121" bodyend="154"/>
+    <listofallmembers>
+      <member refid="classSound_ac387272947ef28e7a64947fc8950a540_1ac387272947ef28e7a64947fc8950a540" prot="public" virt="non-virtual"><scope>Sound</scope><name>findChunk</name></member>
+      <member refid="classSound_aae672cbd1cd79b249c3087b35d752e14_1aae672cbd1cd79b249c3087b35d752e14" prot="public" virt="non-virtual"><scope>Sound</scope><name>getDuration</name></member>
+      <member refid="classSound_a0261bcce77a045e0b35f47f1dcb56b14_1a0261bcce77a045e0b35f47f1dcb56b14" prot="public" virt="non-virtual"><scope>Sound</scope><name>getName</name></member>
+      <member refid="classSound_a049651015596575bea8bff0e5ecf7e3c_1a049651015596575bea8bff0e5ecf7e3c" prot="public" virt="non-virtual"><scope>Sound</scope><name>getSubmixName</name></member>
+      <member refid="classSound_ad09685bdd580fcef12897080e6e0219c_1ad09685bdd580fcef12897080e6e0219c" prot="private" virt="non-virtual"><scope>Sound</scope><name>m_busyChannels</name></member>
+      <member refid="classSound_a48edb3fd85b64943a27420d56c516c4c_1a48edb3fd85b64943a27420d56c516c4c" prot="private" virt="non-virtual"><scope>Sound</scope><name>m_condVar</name></member>
+      <member refid="classSound_a13942758c6ccf762d830daf2e5db2fc6_1a13942758c6ccf762d830daf2e5db2fc6" prot="private" virt="non-virtual"><scope>Sound</scope><name>m_mu</name></member>
+      <member refid="classSound_afa7a8ee25ff90df31a64249c3fb11699_1afa7a8ee25ff90df31a64249c3fb11699" prot="private" virt="non-virtual"><scope>Sound</scope><name>m_name</name></member>
+      <member refid="classSound_a69f0d170fc046263c8310e7faa395e74_1a69f0d170fc046263c8310e7faa395e74" prot="private" virt="non-virtual"><scope>Sound</scope><name>m_pAudioData</name></member>
+      <member refid="classSound_ad0471d12fe02f7b968fdf088f64dd285_1ad0471d12fe02f7b968fdf088f64dd285" prot="private" virt="non-virtual"><scope>Sound</scope><name>m_pWaveFormat</name></member>
+      <member refid="classSound_a683cc91ae131910996217112a025b084_1a683cc91ae131910996217112a025b084" prot="private" virt="non-virtual"><scope>Sound</scope><name>m_pXaudioBuffer</name></member>
+      <member refid="classSound_ae77349e3740f83530cedcc45d6133d03_1ae77349e3740f83530cedcc45d6133d03" prot="private" virt="non-virtual"><scope>Sound</scope><name>m_submixName</name></member>
+      <member refid="classNonCopyable_a809b6e4ade7ae32f6d248f2a3b783d45_1a809b6e4ade7ae32f6d248f2a3b783d45" prot="public" virt="non-virtual"><scope>Sound</scope><name>NonCopyable</name></member>
+      <member refid="classNonCopyable_a15aa3015488bb26c47ded914cb630cf5_1a15aa3015488bb26c47ded914cb630cf5" prot="public" virt="non-virtual"><scope>Sound</scope><name>NonCopyable</name></member>
+      <member refid="classNonCopyable_a487646562ae30ece23d7638f2aed1dde_1a487646562ae30ece23d7638f2aed1dde" prot="public" virt="non-virtual"><scope>Sound</scope><name>NonCopyable</name></member>
+      <member refid="classNonCopyable_af716e4cfb79381710ef4490414939ae9_1af716e4cfb79381710ef4490414939ae9" prot="public" virt="non-virtual"><scope>Sound</scope><name>NonCopyable</name></member>
+      <member refid="classSound_afc1c20cd01b2306b31362b12cb526ac2_1afc1c20cd01b2306b31362b12cb526ac2" prot="public" virt="non-virtual"><scope>Sound</scope><name>operator=</name></member>
+      <member refid="classNonCopyable_af4788b57da9a9faa570c754c22c724f5_1af4788b57da9a9faa570c754c22c724f5" prot="public" virt="non-virtual" ambiguityscope="NonCopyable::"><scope>Sound</scope><name>operator=</name></member>
+      <member refid="classNonCopyable_ae032ca32cda9c836c27b28eb6a087d18_1ae032ca32cda9c836c27b28eb6a087d18" prot="public" virt="non-virtual" ambiguityscope="NonCopyable::"><scope>Sound</scope><name>operator=</name></member>
+      <member refid="classNonCopyable_af81816bd4c2c4421a6eab98843ead6e4_1af81816bd4c2c4421a6eab98843ead6e4" prot="public" virt="non-virtual" ambiguityscope="NonCopyable::"><scope>Sound</scope><name>operator=</name></member>
+      <member refid="classSound_a5f01178c19bf0948cfba57b3692d1808_1a5f01178c19bf0948cfba57b3692d1808" prot="public" virt="non-virtual"><scope>Sound</scope><name>play</name></member>
+      <member refid="classSound_a766823ef672cb6bf5cbd0681d834c3c0_1a766823ef672cb6bf5cbd0681d834c3c0" prot="public" virt="non-virtual"><scope>Sound</scope><name>readChunkData</name></member>
+      <member refid="classSound_a14ac6aede2a2992054c848975f8062b5_1a14ac6aede2a2992054c848975f8062b5" prot="public" virt="non-virtual"><scope>Sound</scope><name>Sound</name></member>
+      <member refid="classSound_ab627b166f7ca6d7cef78abba28f0947c_1ab627b166f7ca6d7cef78abba28f0947c" prot="public" virt="non-virtual"><scope>Sound</scope><name>Sound</name></member>
+      <member refid="classSound_af745e0d8e6ab90ae46446ec9b002322b_1af745e0d8e6ab90ae46446ec9b002322b" prot="public" virt="non-virtual"><scope>Sound</scope><name>SoundManager::Channel</name></member>
+      <member refid="classSound_a07c551ab56d2f83a861a2f7fd81b480a_1a07c551ab56d2f83a861a2f7fd81b480a" prot="public" virt="non-virtual"><scope>Sound</scope><name>stop</name></member>
+      <member refid="classNonCopyable_a3e461fb46c72b9a5af7df7e74dbd899e_1a3e461fb46c72b9a5af7df7e74dbd899e" prot="protected" virt="non-virtual"><scope>Sound</scope><name>~NonCopyable</name></member>
+      <member refid="classSound_aa5dbce029e55af68f2c135ca9b51e0a4_1aa5dbce029e55af68f2c135ca9b51e0a4" prot="public" virt="non-virtual"><scope>Sound</scope><name>~Sound</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

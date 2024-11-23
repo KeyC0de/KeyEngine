@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="structTransformVSCB_1_1Transforms" kind="struct" language="C++" prot="protected">
+    <compoundname>TransformVSCB::Transforms</compoundname>
+    <includes refid="transform__vscb_8h" local="no">transform_vscb.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTransformVSCB_1_1Transforms_a3e979a25a12f1c055e93f9dce8add1d5_1a3e979a25a12f1c055e93f9dce8add1d5" prot="public" static="no" mutable="no">
+        <type>DirectX::XMMATRIX</type>
+        <definition>DirectX::XMMATRIX TransformVSCB::Transforms::world</definition>
+        <argsstring></argsstring>
+        <name>world</name>
+        <qualifiedname>TransformVSCB::Transforms::world</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/transform_vscb.h" line="21" column="19" bodyfile="inc/transform_vscb.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTransformVSCB_1_1Transforms_a19dc3c5042c2f17252cc343072176fd0_1a19dc3c5042c2f17252cc343072176fd0" prot="public" static="no" mutable="no">
+        <type>DirectX::XMMATRIX</type>
+        <definition>DirectX::XMMATRIX TransformVSCB::Transforms::worldView</definition>
+        <argsstring></argsstring>
+        <name>worldView</name>
+        <qualifiedname>TransformVSCB::Transforms::worldView</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/transform_vscb.h" line="22" column="19" bodyfile="inc/transform_vscb.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTransformVSCB_1_1Transforms_a68f82122a1c06c71f700783e57399a20_1a68f82122a1c06c71f700783e57399a20" prot="public" static="no" mutable="no">
+        <type>DirectX::XMMATRIX</type>
+        <definition>DirectX::XMMATRIX TransformVSCB::Transforms::worldViewProjection</definition>
+        <argsstring></argsstring>
+        <name>worldViewProjection</name>
+        <qualifiedname>TransformVSCB::Transforms::worldViewProjection</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/transform_vscb.h" line="23" column="19" bodyfile="inc/transform_vscb.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/transform_vscb.h" line="19" column="1" bodyfile="inc/transform_vscb.h" bodystart="20" bodyend="24"/>
+    <listofallmembers>
+      <member refid="structTransformVSCB_1_1Transforms_a3e979a25a12f1c055e93f9dce8add1d5_1a3e979a25a12f1c055e93f9dce8add1d5" prot="public" virt="non-virtual"><scope>TransformVSCB::Transforms</scope><name>world</name></member>
+      <member refid="structTransformVSCB_1_1Transforms_a19dc3c5042c2f17252cc343072176fd0_1a19dc3c5042c2f17252cc343072176fd0" prot="public" virt="non-virtual"><scope>TransformVSCB::Transforms</scope><name>worldView</name></member>
+      <member refid="structTransformVSCB_1_1Transforms_a68f82122a1c06c71f700783e57399a20_1a68f82122a1c06c71f700783e57399a20" prot="public" virt="non-virtual"><scope>TransformVSCB::Transforms</scope><name>worldViewProjection</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,370 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="structSettingsManager_1_1Settings" kind="struct" language="C++" prot="private">
+    <compoundname>SettingsManager::Settings</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structSettingsManager_1_1Settings_a2c06b29af8cfe5ab34696f43e1807876_1a2c06b29af8cfe5ab34696f43e1807876" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int SettingsManager::Settings::version</definition>
+        <argsstring></argsstring>
+        <name>version</name>
+        <qualifiedname>SettingsManager::Settings::version</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/settings_manager.h" line="20" column="5" bodyfile="inc/settings_manager.h" bodystart="20" bodyend="-1"/>
+        <referencedby refid="classSettingsManager_a5e4c7dd1554609fe8ac4fac171e3c4a5_1a5e4c7dd1554609fe8ac4fac171e3c4a5" compoundref="settings__manager_8cpp" startline="20" endline="70">SettingsManager::loadFromFile</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structSettingsManager_1_1Settings_acbf8d0d28a3a3e30cd04a12d94fbe58c_1acbf8d0d28a3a3e30cd04a12d94fbe58c" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned SettingsManager::Settings::nThreads</definition>
+        <argsstring></argsstring>
+        <name>nThreads</name>
+        <qualifiedname>SettingsManager::Settings::nThreads</qualifiedname>
+        <initializer>= 4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/settings_manager.h" line="21" column="10" bodyfile="inc/settings_manager.h" bodystart="21" bodyend="-1"/>
+        <referencedby refid="classSettingsManager_a5e4c7dd1554609fe8ac4fac171e3c4a5_1a5e4c7dd1554609fe8ac4fac171e3c4a5" compoundref="settings__manager_8cpp" startline="20" endline="70">SettingsManager::loadFromFile</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structSettingsManager_1_1Settings_a534e1d1fcebd6c936cb7dad777dafcfd_1a534e1d1fcebd6c936cb7dad777dafcfd" prot="public" static="no" mutable="no">
+        <type>std::string_view</type>
+        <definition>std::string_view SettingsManager::Settings::m_game</definition>
+        <argsstring></argsstring>
+        <name>m_game</name>
+        <qualifiedname>SettingsManager::Settings::m_game</qualifiedname>
+        <initializer>= &quot;Sandbox3d&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/settings_manager.h" line="22" column="18" bodyfile="inc/settings_manager.h" bodystart="22" bodyend="-1"/>
+        <referencedby refid="classSettingsManager_a5e4c7dd1554609fe8ac4fac171e3c4a5_1a5e4c7dd1554609fe8ac4fac171e3c4a5" compoundref="settings__manager_8cpp" startline="20" endline="70">SettingsManager::loadFromFile</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structSettingsManager_1_1Settings_adeca7d225f36bae671932e9df7453b9f_1adeca7d225f36bae671932e9df7453b9f" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float SettingsManager::Settings::fGameSpeed</definition>
+        <argsstring></argsstring>
+        <name>fGameSpeed</name>
+        <qualifiedname>SettingsManager::Settings::fGameSpeed</qualifiedname>
+        <initializer>= 1.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/settings_manager.h" line="23" column="7" bodyfile="inc/settings_manager.h" bodystart="23" bodyend="-1"/>
+        <referencedby refid="classSettingsManager_a5e4c7dd1554609fe8ac4fac171e3c4a5_1a5e4c7dd1554609fe8ac4fac171e3c4a5" compoundref="settings__manager_8cpp" startline="20" endline="70">SettingsManager::loadFromFile</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structSettingsManager_1_1Settings_a5e2af2ae92348ac3947844c6efb9f63c_1a5e2af2ae92348ac3947844c6efb9f63c" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SettingsManager::Settings::bVSync</definition>
+        <argsstring></argsstring>
+        <name>bVSync</name>
+        <qualifiedname>SettingsManager::Settings::bVSync</qualifiedname>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/settings_manager.h" line="24" column="6" bodyfile="inc/settings_manager.h" bodystart="24" bodyend="-1"/>
+        <referencedby refid="classSettingsManager_a5e4c7dd1554609fe8ac4fac171e3c4a5_1a5e4c7dd1554609fe8ac4fac171e3c4a5" compoundref="settings__manager_8cpp" startline="20" endline="70">SettingsManager::loadFromFile</referencedby>
+        <referencedby refid="classGraphics_aefe40c94ce078f84342864b959543c99_1aefe40c94ce078f84342864b959543c99" compoundref="graphics_8cpp" startline="548" endline="586">Graphics::present</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structSettingsManager_1_1Settings_aad1a58c2d307367227539c1734581f73_1aad1a58c2d307367227539c1734581f73" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SettingsManager::Settings::bFpsCounting</definition>
+        <argsstring></argsstring>
+        <name>bFpsCounting</name>
+        <qualifiedname>SettingsManager::Settings::bFpsCounting</qualifiedname>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/settings_manager.h" line="25" column="6" bodyfile="inc/settings_manager.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structSettingsManager_1_1Settings_a39040a7c4589754946ab51d892995c3d_1a39040a7c4589754946ab51d892995c3d" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int SettingsManager::Settings::frameCount</definition>
+        <argsstring></argsstring>
+        <name>frameCount</name>
+        <qualifiedname>SettingsManager::Settings::frameCount</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/settings_manager.h" line="26" column="5" bodyfile="inc/settings_manager.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structSettingsManager_1_1Settings_af9d46a557e2718570ef71f27cbc2326e_1af9d46a557e2718570ef71f27cbc2326e" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int SettingsManager::Settings::iMaxFps</definition>
+        <argsstring></argsstring>
+        <name>iMaxFps</name>
+        <qualifiedname>SettingsManager::Settings::iMaxFps</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/settings_manager.h" line="27" column="5" bodyfile="inc/settings_manager.h" bodystart="27" bodyend="-1"/>
+        <referencedby refid="classSettingsManager_a5e4c7dd1554609fe8ac4fac171e3c4a5_1a5e4c7dd1554609fe8ac4fac171e3c4a5" compoundref="settings__manager_8cpp" startline="20" endline="70">SettingsManager::loadFromFile</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structSettingsManager_1_1Settings_acbffc94f53fcde24062262ec6fc7fe98_1acbffc94f53fcde24062262ec6fc7fe98" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int SettingsManager::Settings::iMaxShadowCastingDynamicLights</definition>
+        <argsstring></argsstring>
+        <name>iMaxShadowCastingDynamicLights</name>
+        <qualifiedname>SettingsManager::Settings::iMaxShadowCastingDynamicLights</qualifiedname>
+        <initializer>= 8</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/settings_manager.h" line="28" column="5" bodyfile="inc/settings_manager.h" bodystart="28" bodyend="-1"/>
+        <referencedby refid="classSettingsManager_a5e4c7dd1554609fe8ac4fac171e3c4a5_1a5e4c7dd1554609fe8ac4fac171e3c4a5" compoundref="settings__manager_8cpp" startline="20" endline="70">SettingsManager::loadFromFile</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structSettingsManager_1_1Settings_adf668f55ebdfe2fe09f4eabaedefa686_1adf668f55ebdfe2fe09f4eabaedefa686" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int SettingsManager::Settings::iMaxShadowCastingPointLights</definition>
+        <argsstring></argsstring>
+        <name>iMaxShadowCastingPointLights</name>
+        <qualifiedname>SettingsManager::Settings::iMaxShadowCastingPointLights</qualifiedname>
+        <initializer>= 6</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/settings_manager.h" line="29" column="5" bodyfile="inc/settings_manager.h" bodystart="29" bodyend="-1"/>
+        <referencedby refid="classSettingsManager_a5e4c7dd1554609fe8ac4fac171e3c4a5_1a5e4c7dd1554609fe8ac4fac171e3c4a5" compoundref="settings__manager_8cpp" startline="20" endline="70">SettingsManager::loadFromFile</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structSettingsManager_1_1Settings_abdcf08e1d968e1808a0b958b03b98da6_1abdcf08e1d968e1808a0b958b03b98da6" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned SettingsManager::Settings::iPresentInterval</definition>
+        <argsstring></argsstring>
+        <name>iPresentInterval</name>
+        <qualifiedname>SettingsManager::Settings::iPresentInterval</qualifiedname>
+        <initializer>= 1u</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/settings_manager.h" line="30" column="10" bodyfile="inc/settings_manager.h" bodystart="30" bodyend="-1"/>
+        <referencedby refid="classSettingsManager_a5e4c7dd1554609fe8ac4fac171e3c4a5_1a5e4c7dd1554609fe8ac4fac171e3c4a5" compoundref="settings__manager_8cpp" startline="20" endline="70">SettingsManager::loadFromFile</referencedby>
+        <referencedby refid="classGraphics_aefe40c94ce078f84342864b959543c99_1aefe40c94ce078f84342864b959543c99" compoundref="graphics_8cpp" startline="548" endline="586">Graphics::present</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structSettingsManager_1_1Settings_ad5996b24f10d4d93181117ac2bb1fac6_1ad5996b24f10d4d93181117ac2bb1fac6" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SettingsManager::Settings::bStaticShaderCompilation</definition>
+        <argsstring></argsstring>
+        <name>bStaticShaderCompilation</name>
+        <qualifiedname>SettingsManager::Settings::bStaticShaderCompilation</qualifiedname>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/settings_manager.h" line="31" column="6" bodyfile="inc/settings_manager.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structSettingsManager_1_1Settings_a324fc6a4ad4adff120ba68bc6cc19cd7_1a324fc6a4ad4adff120ba68bc6cc19cd7" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SettingsManager::Settings::bMultithreadedRendering</definition>
+        <argsstring></argsstring>
+        <name>bMultithreadedRendering</name>
+        <qualifiedname>SettingsManager::Settings::bMultithreadedRendering</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/settings_manager.h" line="32" column="6" bodyfile="inc/settings_manager.h" bodystart="32" bodyend="-1"/>
+        <referencedby refid="classGraphics_a29fa45ba5e44f5e574e4d0c0298bd02b_1a29fa45ba5e44f5e574e4d0c0298bd02b" compoundref="graphics_8cpp" startline="594" endline="608">Graphics::drawIndexed</referencedby>
+        <referencedby refid="classGraphics_a1e53b789df983b36aedcc1357eae4bf8_1a1e53b789df983b36aedcc1357eae4bf8" compoundref="graphics_8cpp" startline="610" endline="625">Graphics::drawIndexedInstanced</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structSettingsManager_1_1Settings_a0bb359506914f0cd9c2cb3d9e70cb8b0_1a0bb359506914f0cd9c2cb3d9e70cb8b0" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned SettingsManager::Settings::nRenderingThreads</definition>
+        <argsstring></argsstring>
+        <name>nRenderingThreads</name>
+        <qualifiedname>SettingsManager::Settings::nRenderingThreads</qualifiedname>
+        <initializer>= 4u</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/settings_manager.h" line="33" column="10" bodyfile="inc/settings_manager.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structSettingsManager_1_1Settings_ab63a70fbda1fd12a6fb9d001cd81de0c_1ab63a70fbda1fd12a6fb9d001cd81de0c" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SettingsManager::Settings::bGamePaused</definition>
+        <argsstring></argsstring>
+        <name>bGamePaused</name>
+        <qualifiedname>SettingsManager::Settings::bGamePaused</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/settings_manager.h" line="34" column="6" bodyfile="inc/settings_manager.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structSettingsManager_1_1Settings_a43faecede361b9fcaaf3df7117e6fe49_1a43faecede361b9fcaaf3df7117e6fe49" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SettingsManager::Settings::bFullscreen</definition>
+        <argsstring></argsstring>
+        <name>bFullscreen</name>
+        <qualifiedname>SettingsManager::Settings::bFullscreen</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/settings_manager.h" line="35" column="6" bodyfile="inc/settings_manager.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structSettingsManager_1_1Settings_a808ed110b1305cb51725361df2fc2ac9_1a808ed110b1305cb51725361df2fc2ac9" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SettingsManager::Settings::bAllowWindowResize</definition>
+        <argsstring></argsstring>
+        <name>bAllowWindowResize</name>
+        <qualifiedname>SettingsManager::Settings::bAllowWindowResize</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/settings_manager.h" line="36" column="6" bodyfile="inc/settings_manager.h" bodystart="36" bodyend="-1"/>
+        <referencedby refid="classSettingsManager_a5e4c7dd1554609fe8ac4fac171e3c4a5_1a5e4c7dd1554609fe8ac4fac171e3c4a5" compoundref="settings__manager_8cpp" startline="20" endline="70">SettingsManager::loadFromFile</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structSettingsManager_1_1Settings_a2f27e1cb95f5656398c0cd012e72291c_1a2f27e1cb95f5656398c0cd012e72291c" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SettingsManager::Settings::bEnableFrustumCuling</definition>
+        <argsstring></argsstring>
+        <name>bEnableFrustumCuling</name>
+        <qualifiedname>SettingsManager::Settings::bEnableFrustumCuling</qualifiedname>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/settings_manager.h" line="37" column="6" bodyfile="inc/settings_manager.h" bodystart="37" bodyend="-1"/>
+        <referencedby refid="classSettingsManager_a5e4c7dd1554609fe8ac4fac171e3c4a5_1a5e4c7dd1554609fe8ac4fac171e3c4a5" compoundref="settings__manager_8cpp" startline="20" endline="70">SettingsManager::loadFromFile</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structSettingsManager_1_1Settings_a12444bd23fba8e04de9d835dc06756ef_1a12444bd23fba8e04de9d835dc06756ef" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SettingsManager::Settings::bEnableSmoothMovement</definition>
+        <argsstring></argsstring>
+        <name>bEnableSmoothMovement</name>
+        <qualifiedname>SettingsManager::Settings::bEnableSmoothMovement</qualifiedname>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/settings_manager.h" line="38" column="6" bodyfile="inc/settings_manager.h" bodystart="38" bodyend="-1"/>
+        <referencedby refid="classSettingsManager_a5e4c7dd1554609fe8ac4fac171e3c4a5_1a5e4c7dd1554609fe8ac4fac171e3c4a5" compoundref="settings__manager_8cpp" startline="20" endline="70">SettingsManager::loadFromFile</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structSettingsManager_1_1Settings_a1ee7648a0b3045e9cefbded5c0f534f1_1a1ee7648a0b3045e9cefbded5c0f534f1" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string SettingsManager::Settings::sSkyboxFileName</definition>
+        <argsstring></argsstring>
+        <name>sSkyboxFileName</name>
+        <qualifiedname>SettingsManager::Settings::sSkyboxFileName</qualifiedname>
+        <initializer>= &quot;&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/settings_manager.h" line="39" column="13" bodyfile="inc/settings_manager.h" bodystart="39" bodyend="-1"/>
+        <referencedby refid="classren_1_1SkyPass_a1b9881827b6ffe6063f3c40e3689da6d_1a1b9881827b6ffe6063f3c40e3689da6d" compoundref="sky__pass_8cpp" startline="31" endline="71">ren::SkyPass::SkyPass</referencedby>
+        <referencedby refid="classSettingsManager_a5e4c7dd1554609fe8ac4fac171e3c4a5_1a5e4c7dd1554609fe8ac4fac171e3c4a5" compoundref="settings__manager_8cpp" startline="20" endline="70">SettingsManager::loadFromFile</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structSettingsManager_1_1Settings_a46fc42cb1e29f0338b66b4cc67cd455e_1a46fc42cb1e29f0338b66b4cc67cd455e" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string SettingsManager::Settings::sFontName</definition>
+        <argsstring></argsstring>
+        <name>sFontName</name>
+        <qualifiedname>SettingsManager::Settings::sFontName</qualifiedname>
+        <initializer>= &quot;myComicSansMSSpriteFont&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/settings_manager.h" line="40" column="13" bodyfile="inc/settings_manager.h" bodystart="40" bodyend="-1"/>
+        <referencedby refid="classSettingsManager_a5e4c7dd1554609fe8ac4fac171e3c4a5_1a5e4c7dd1554609fe8ac4fac171e3c4a5" compoundref="settings__manager_8cpp" startline="20" endline="70">SettingsManager::loadFromFile</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/settings_manager.h" line="17" column="1" bodyfile="inc/settings_manager.h" bodystart="18" bodyend="41"/>
+    <listofallmembers>
+      <member refid="structSettingsManager_1_1Settings_a808ed110b1305cb51725361df2fc2ac9_1a808ed110b1305cb51725361df2fc2ac9" prot="public" virt="non-virtual"><scope>SettingsManager::Settings</scope><name>bAllowWindowResize</name></member>
+      <member refid="structSettingsManager_1_1Settings_a2f27e1cb95f5656398c0cd012e72291c_1a2f27e1cb95f5656398c0cd012e72291c" prot="public" virt="non-virtual"><scope>SettingsManager::Settings</scope><name>bEnableFrustumCuling</name></member>
+      <member refid="structSettingsManager_1_1Settings_a12444bd23fba8e04de9d835dc06756ef_1a12444bd23fba8e04de9d835dc06756ef" prot="public" virt="non-virtual"><scope>SettingsManager::Settings</scope><name>bEnableSmoothMovement</name></member>
+      <member refid="structSettingsManager_1_1Settings_aad1a58c2d307367227539c1734581f73_1aad1a58c2d307367227539c1734581f73" prot="public" virt="non-virtual"><scope>SettingsManager::Settings</scope><name>bFpsCounting</name></member>
+      <member refid="structSettingsManager_1_1Settings_a43faecede361b9fcaaf3df7117e6fe49_1a43faecede361b9fcaaf3df7117e6fe49" prot="public" virt="non-virtual"><scope>SettingsManager::Settings</scope><name>bFullscreen</name></member>
+      <member refid="structSettingsManager_1_1Settings_ab63a70fbda1fd12a6fb9d001cd81de0c_1ab63a70fbda1fd12a6fb9d001cd81de0c" prot="public" virt="non-virtual"><scope>SettingsManager::Settings</scope><name>bGamePaused</name></member>
+      <member refid="structSettingsManager_1_1Settings_a324fc6a4ad4adff120ba68bc6cc19cd7_1a324fc6a4ad4adff120ba68bc6cc19cd7" prot="public" virt="non-virtual"><scope>SettingsManager::Settings</scope><name>bMultithreadedRendering</name></member>
+      <member refid="structSettingsManager_1_1Settings_ad5996b24f10d4d93181117ac2bb1fac6_1ad5996b24f10d4d93181117ac2bb1fac6" prot="public" virt="non-virtual"><scope>SettingsManager::Settings</scope><name>bStaticShaderCompilation</name></member>
+      <member refid="structSettingsManager_1_1Settings_a5e2af2ae92348ac3947844c6efb9f63c_1a5e2af2ae92348ac3947844c6efb9f63c" prot="public" virt="non-virtual"><scope>SettingsManager::Settings</scope><name>bVSync</name></member>
+      <member refid="structSettingsManager_1_1Settings_adeca7d225f36bae671932e9df7453b9f_1adeca7d225f36bae671932e9df7453b9f" prot="public" virt="non-virtual"><scope>SettingsManager::Settings</scope><name>fGameSpeed</name></member>
+      <member refid="structSettingsManager_1_1Settings_a39040a7c4589754946ab51d892995c3d_1a39040a7c4589754946ab51d892995c3d" prot="public" virt="non-virtual"><scope>SettingsManager::Settings</scope><name>frameCount</name></member>
+      <member refid="structSettingsManager_1_1Settings_af9d46a557e2718570ef71f27cbc2326e_1af9d46a557e2718570ef71f27cbc2326e" prot="public" virt="non-virtual"><scope>SettingsManager::Settings</scope><name>iMaxFps</name></member>
+      <member refid="structSettingsManager_1_1Settings_acbffc94f53fcde24062262ec6fc7fe98_1acbffc94f53fcde24062262ec6fc7fe98" prot="public" virt="non-virtual"><scope>SettingsManager::Settings</scope><name>iMaxShadowCastingDynamicLights</name></member>
+      <member refid="structSettingsManager_1_1Settings_adf668f55ebdfe2fe09f4eabaedefa686_1adf668f55ebdfe2fe09f4eabaedefa686" prot="public" virt="non-virtual"><scope>SettingsManager::Settings</scope><name>iMaxShadowCastingPointLights</name></member>
+      <member refid="structSettingsManager_1_1Settings_abdcf08e1d968e1808a0b958b03b98da6_1abdcf08e1d968e1808a0b958b03b98da6" prot="public" virt="non-virtual"><scope>SettingsManager::Settings</scope><name>iPresentInterval</name></member>
+      <member refid="structSettingsManager_1_1Settings_a534e1d1fcebd6c936cb7dad777dafcfd_1a534e1d1fcebd6c936cb7dad777dafcfd" prot="public" virt="non-virtual"><scope>SettingsManager::Settings</scope><name>m_game</name></member>
+      <member refid="structSettingsManager_1_1Settings_a0bb359506914f0cd9c2cb3d9e70cb8b0_1a0bb359506914f0cd9c2cb3d9e70cb8b0" prot="public" virt="non-virtual"><scope>SettingsManager::Settings</scope><name>nRenderingThreads</name></member>
+      <member refid="structSettingsManager_1_1Settings_acbf8d0d28a3a3e30cd04a12d94fbe58c_1acbf8d0d28a3a3e30cd04a12d94fbe58c" prot="public" virt="non-virtual"><scope>SettingsManager::Settings</scope><name>nThreads</name></member>
+      <member refid="structSettingsManager_1_1Settings_a46fc42cb1e29f0338b66b4cc67cd455e_1a46fc42cb1e29f0338b66b4cc67cd455e" prot="public" virt="non-virtual"><scope>SettingsManager::Settings</scope><name>sFontName</name></member>
+      <member refid="structSettingsManager_1_1Settings_a1ee7648a0b3045e9cefbded5c0f534f1_1a1ee7648a0b3045e9cefbded5c0f534f1" prot="public" virt="non-virtual"><scope>SettingsManager::Settings</scope><name>sSkyboxFileName</name></member>
+      <member refid="structSettingsManager_1_1Settings_a2c06b29af8cfe5ab34696f43e1807876_1a2c06b29af8cfe5ab34696f43e1807876" prot="public" virt="non-virtual"><scope>SettingsManager::Settings</scope><name>version</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

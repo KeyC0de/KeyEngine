@@ -33,13 +33,11 @@ class Model
 	ImguiPerModelNodeVisitor m_imguiVisitor;
 #endif
 public:
-	//	\function	Model	||	\date	2021/05/27 23:38
-	//	\brief	Model ctor for imported meshes
-	//			initialRot is in degrees - it will be converted and stored as radians
+	/// \brief	Model ctor for imported meshes
+	/// \brief	initialRot is in degrees - it will be converted and stored as radians
 	Model( Graphics &gfx, const std::string &path, const float initialScale = 1.0f, const DirectX::XMFLOAT3 &initialRotDeg = {0.0f, 0.0f, 0.0f}, const DirectX::XMFLOAT3 &initialPos = {0.0f, 0.0f, 0.0f} );
-	//	\function	Model	||	\date	2024/05/27 23:39
-	//	\brief	ctor for single-Mesh/Node primitives
-	//			initialRot is in degrees - it will be converted and stored as radians
+	/// \brief	ctor for single-Mesh/Node primitives
+	/// \brief	initialRot is in degrees - it will be converted and stored as radians
 	Model( std::unique_ptr<Mesh> pMesh, Graphics &gfx, const DirectX::XMFLOAT3 &initialRotDeg, const DirectX::XMFLOAT3 &initialPos );
 	~Model() noexcept;
 	Model( const Model &rhs ) = delete;
@@ -55,8 +53,7 @@ public:
 	void connectMaterialsToRenderer( ren::Renderer &r );
 private:
 	////////////////////////////////////////////////////////////////////////////////////////////////////
-	//	\function	setTransform	||	\date	2022/09/03 20:25
-	//	\brief	All transformation-related-functions simply call the root Node's corresponding function and propagate the operation down the Node hierarchy; the world transform itself is updated only once-per-tick during update
+	/// \brief	All transformation-related-functions simply call the root Node's corresponding function and propagate the operation down the Node hierarchy; the world transform itself is updated only once-per-tick during update
 	void setTransform( const DirectX::XMMATRIX &tr ) cond_noex;
 	void setTransform( const float scale, const DirectX::XMFLOAT3 &rotAnglesRadians, const DirectX::XMFLOAT3 &pos ) cond_noex;
 	void setTransform( const float scale, const DirectX::XMFLOAT4 &rotQuat, const DirectX::XMFLOAT3 &pos ) cond_noex;
@@ -77,9 +74,8 @@ public:
 	DirectX::XMVECTOR getRotationQuat() const noexcept;
 	DirectX::XMFLOAT3 getPosition() const noexcept;
 	////////////////////////////////////////////////////////////////////////////////////////////////////
-	//	\function	getDistanceFromActiveCamera	||	\date	2022/09/03 13:27
-	//	\brief	return the distance between the currently active camera and the Mesh at specified index
-	//			if index == 0 -> it's the root Node's Mesh
+	/// \brief	return the distance between the currently active camera and the Mesh at specified index
+	/// \brief	if index == 0 -> it's the root Node's Mesh
 	float getDistanceFromActiveCamera( const int index = 0 ) const noexcept;
 	const std::string& getName() const noexcept;
 	const Mesh* const getMesh( const int index = 0 ) const noexcept;

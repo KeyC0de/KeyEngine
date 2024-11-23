@@ -1,0 +1,156 @@
+\doxysection{ren\+::IBinder Class Reference}
+\hypertarget{classren_1_1IBinder}{}\label{classren_1_1IBinder}\index{ren::IBinder@{ren::IBinder}}
+
+
+\doxylink{classren_1_1BindableBinder}{Bindable\+Binder} have a dependency\+: their target gfx resource; they must acquire it from the Linker of the target pass.  
+
+
+
+
+{\ttfamily \#include $<$binder.\+h$>$}
+
+Inheritance diagram for ren\+::IBinder\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.720430cm]{classren_1_1IBinder}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classren_1_1IBinder_ae2550445c774f45b664719684187c341_ae2550445c774f45b664719684187c341}{\texorpdfstring{$\sim$}{\string~}\+IBinder}} ()=default
+\item 
+void \mbox{\hyperlink{classren_1_1IBinder_addedf6dfc3d0ed6066b26fc04705d349_addedf6dfc3d0ed6066b26fc04705d349}{set\+Pass\+And\+Linker\+Names}} (const std\+::string \&pass\+Name, const std\+::string \&linker\+Name)
+\item 
+virtual void \mbox{\hyperlink{classren_1_1IBinder_ab0e3027bb1ad6a632befb4d502fe0d70_ab0e3027bb1ad6a632befb4d502fe0d70}{link}} (\mbox{\hyperlink{classren_1_1ILinker}{ILinker}} \&linker)=0
+\item 
+virtual void \mbox{\hyperlink{classren_1_1IBinder_abe560e5bd14aa61bf28d99dba88eceec_abe560e5bd14aa61bf28d99dba88eceec}{validate\+Linkage}} () const =0
+\begin{DoxyCompactList}\small\item\em assert validate after \doxylink{classren_1_1IBinder_ab0e3027bb1ad6a632befb4d502fe0d70_ab0e3027bb1ad6a632befb4d502fe0d70}{link()}ing \end{DoxyCompactList}\item 
+const std\+::string \& \mbox{\hyperlink{classren_1_1IBinder_ae172f9fbccaa1892ec815db67f65eb91_ae172f9fbccaa1892ec815db67f65eb91}{get\+Name}} () const noexcept
+\item 
+const std\+::string \& \mbox{\hyperlink{classren_1_1IBinder_a64585dc2d047254637335f70083a67b6_a64585dc2d047254637335f70083a67b6}{get\+Pass\+Name}} () const noexcept
+\item 
+const std\+::string \& \mbox{\hyperlink{classren_1_1IBinder_ac109d2e346a1ab633d0e41d096227b2f_ac109d2e346a1ab633d0e41d096227b2f}{get\+Linker\+Name}} () const noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classren_1_1IBinder_ac1030ca1e3d499a26546667741065bf6_ac1030ca1e3d499a26546667741065bf6}{IBinder}} (const std\+::string \&name)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classren_1_1IBinder_a35c782b42674b69887f03fc038ccf6a8_a35c782b42674b69887f03fc038ccf6a8}{m\+\_\+name}}
+\item 
+std\+::string \mbox{\hyperlink{classren_1_1IBinder_a94cccb29d98a504bfa532559a059cf69_a94cccb29d98a504bfa532559a059cf69}{m\+\_\+pass\+Name}}
+\item 
+std\+::string \mbox{\hyperlink{classren_1_1IBinder_a08396c56db98c2a56856889425faf612_a08396c56db98c2a56856889425faf612}{m\+\_\+linker\+Name}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classren_1_1BindableBinder}{Bindable\+Binder} have a dependency\+: their target gfx resource; they must acquire it from the Linker of the target pass. 
+
+=============================================================
+
+\begin{DoxyAuthor}{Author}
+Key\+C0de 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/09/29 20\+:48
+\end{DoxyDate}
+this \doxylink{classren_1_1IBinder_ab0e3027bb1ad6a632befb4d502fe0d70_ab0e3027bb1ad6a632befb4d502fe0d70}{link()}ing will be done in \doxylink{classren_1_1Renderer_a9ae7a8a655f01eb7bf44e63c27448f99_a9ae7a8a655f01eb7bf44e63c27448f99}{Renderer\+::link\+Pass\+Binders}
+
+\doxylink{classren_1_1BindableBinder}{Bindable\+Binder} names are not required, but just in case, I currently store their names, in case the system is expanded in the future. \doxysubsection*{\doxylink{classren_1_1IBinder}{IBinder} has a protected ctor; create child objects using the maker pattern }
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classren_1_1IBinder_ac1030ca1e3d499a26546667741065bf6_ac1030ca1e3d499a26546667741065bf6}\index{ren::IBinder@{ren::IBinder}!IBinder@{IBinder}}
+\index{IBinder@{IBinder}!ren::IBinder@{ren::IBinder}}
+\doxysubsubsection{\texorpdfstring{IBinder()}{IBinder()}}
+{\footnotesize\ttfamily \label{classren_1_1IBinder_ac1030ca1e3d499a26546667741065bf6_ac1030ca1e3d499a26546667741065bf6} 
+ren\+::\+IBinder\+::\+IBinder (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classren_1_1IBinder_ae2550445c774f45b664719684187c341_ae2550445c774f45b664719684187c341}\index{ren::IBinder@{ren::IBinder}!````~IBinder@{\texorpdfstring{$\sim$}{\string~}IBinder}}
+\index{````~IBinder@{\texorpdfstring{$\sim$}{\string~}IBinder}!ren::IBinder@{ren::IBinder}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}IBinder()}{\string~IBinder()}}
+{\footnotesize\ttfamily \label{classren_1_1IBinder_ae2550445c774f45b664719684187c341_ae2550445c774f45b664719684187c341} 
+virtual ren\+::\+IBinder\+::\texorpdfstring{$\sim$}{\string~}\+IBinder (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classren_1_1IBinder_ac109d2e346a1ab633d0e41d096227b2f_ac109d2e346a1ab633d0e41d096227b2f}\index{ren::IBinder@{ren::IBinder}!getLinkerName@{getLinkerName}}
+\index{getLinkerName@{getLinkerName}!ren::IBinder@{ren::IBinder}}
+\doxysubsubsection{\texorpdfstring{getLinkerName()}{getLinkerName()}}
+{\footnotesize\ttfamily \label{classren_1_1IBinder_ac109d2e346a1ab633d0e41d096227b2f_ac109d2e346a1ab633d0e41d096227b2f} 
+const std\+::string \& ren\+::\+IBinder\+::get\+Linker\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classren_1_1IBinder_ae172f9fbccaa1892ec815db67f65eb91_ae172f9fbccaa1892ec815db67f65eb91}\index{ren::IBinder@{ren::IBinder}!getName@{getName}}
+\index{getName@{getName}!ren::IBinder@{ren::IBinder}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily \label{classren_1_1IBinder_ae172f9fbccaa1892ec815db67f65eb91_ae172f9fbccaa1892ec815db67f65eb91} 
+const std\+::string \& ren\+::\+IBinder\+::get\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classren_1_1IBinder_a64585dc2d047254637335f70083a67b6_a64585dc2d047254637335f70083a67b6}\index{ren::IBinder@{ren::IBinder}!getPassName@{getPassName}}
+\index{getPassName@{getPassName}!ren::IBinder@{ren::IBinder}}
+\doxysubsubsection{\texorpdfstring{getPassName()}{getPassName()}}
+{\footnotesize\ttfamily \label{classren_1_1IBinder_a64585dc2d047254637335f70083a67b6_a64585dc2d047254637335f70083a67b6} 
+const std\+::string \& ren\+::\+IBinder\+::get\+Pass\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classren_1_1IBinder_ab0e3027bb1ad6a632befb4d502fe0d70_ab0e3027bb1ad6a632befb4d502fe0d70}\index{ren::IBinder@{ren::IBinder}!link@{link}}
+\index{link@{link}!ren::IBinder@{ren::IBinder}}
+\doxysubsubsection{\texorpdfstring{link()}{link()}}
+{\footnotesize\ttfamily \label{classren_1_1IBinder_ab0e3027bb1ad6a632befb4d502fe0d70_ab0e3027bb1ad6a632befb4d502fe0d70} 
+virtual void ren\+::\+IBinder\+::link (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classren_1_1ILinker}{ILinker}} \&}]{linker}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classren_1_1BindableBinder_a9956cd019281cc69d6fd7c3e7c2a7e5a_a9956cd019281cc69d6fd7c3e7c2a7e5a}{ren\+::\+Bindable\+Binder$<$ T $>$}}, \mbox{\hyperlink{classren_1_1ContainerBindableBinder_a676ce1c15a0dcf4f602b179c55ff0bae_a676ce1c15a0dcf4f602b179c55ff0bae}{ren\+::\+Container\+Bindable\+Binder$<$ T $>$}}, and \mbox{\hyperlink{classren_1_1RenderSurfaceBinder_ade9ca47a6a9efb126dd1232a253356e9_ade9ca47a6a9efb126dd1232a253356e9}{ren\+::\+Render\+Surface\+Binder$<$ T $>$}}.
+
+\Hypertarget{classren_1_1IBinder_addedf6dfc3d0ed6066b26fc04705d349_addedf6dfc3d0ed6066b26fc04705d349}\index{ren::IBinder@{ren::IBinder}!setPassAndLinkerNames@{setPassAndLinkerNames}}
+\index{setPassAndLinkerNames@{setPassAndLinkerNames}!ren::IBinder@{ren::IBinder}}
+\doxysubsubsection{\texorpdfstring{setPassAndLinkerNames()}{setPassAndLinkerNames()}}
+{\footnotesize\ttfamily \label{classren_1_1IBinder_addedf6dfc3d0ed6066b26fc04705d349_addedf6dfc3d0ed6066b26fc04705d349} 
+void ren\+::\+IBinder\+::set\+Pass\+And\+Linker\+Names (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{pass\+Name}{, }\item[{const std\+::string \&}]{linker\+Name}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classren_1_1IBinder_abe560e5bd14aa61bf28d99dba88eceec_abe560e5bd14aa61bf28d99dba88eceec}\index{ren::IBinder@{ren::IBinder}!validateLinkage@{validateLinkage}}
+\index{validateLinkage@{validateLinkage}!ren::IBinder@{ren::IBinder}}
+\doxysubsubsection{\texorpdfstring{validateLinkage()}{validateLinkage()}}
+{\footnotesize\ttfamily \label{classren_1_1IBinder_abe560e5bd14aa61bf28d99dba88eceec_abe560e5bd14aa61bf28d99dba88eceec} 
+virtual void ren\+::\+IBinder\+::validate\+Linkage (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+assert validate after \doxylink{classren_1_1IBinder_ab0e3027bb1ad6a632befb4d502fe0d70_ab0e3027bb1ad6a632befb4d502fe0d70}{link()}ing 
+
+
+
+Implemented in \mbox{\hyperlink{classren_1_1BindableBinder_ad67acc8ef7f72cefc8849eed44e044a3_ad67acc8ef7f72cefc8849eed44e044a3}{ren\+::\+Bindable\+Binder$<$ T $>$}}, \mbox{\hyperlink{classren_1_1ContainerBindableBinder_aa2f8f6b21247ed4a8c7b9262bbd59e23_aa2f8f6b21247ed4a8c7b9262bbd59e23}{ren\+::\+Container\+Bindable\+Binder$<$ T $>$}}, and \mbox{\hyperlink{classren_1_1RenderSurfaceBinder_ae93d14c9a9c04c69a1464066a2a470ae_ae93d14c9a9c04c69a1464066a2a470ae}{ren\+::\+Render\+Surface\+Binder$<$ T $>$}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classren_1_1IBinder_a08396c56db98c2a56856889425faf612_a08396c56db98c2a56856889425faf612}\index{ren::IBinder@{ren::IBinder}!m\_linkerName@{m\_linkerName}}
+\index{m\_linkerName@{m\_linkerName}!ren::IBinder@{ren::IBinder}}
+\doxysubsubsection{\texorpdfstring{m\_linkerName}{m\_linkerName}}
+{\footnotesize\ttfamily \label{classren_1_1IBinder_a08396c56db98c2a56856889425faf612_a08396c56db98c2a56856889425faf612} 
+std\+::string ren\+::\+IBinder\+::m\+\_\+linker\+Name\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classren_1_1IBinder_a35c782b42674b69887f03fc038ccf6a8_a35c782b42674b69887f03fc038ccf6a8}\index{ren::IBinder@{ren::IBinder}!m\_name@{m\_name}}
+\index{m\_name@{m\_name}!ren::IBinder@{ren::IBinder}}
+\doxysubsubsection{\texorpdfstring{m\_name}{m\_name}}
+{\footnotesize\ttfamily \label{classren_1_1IBinder_a35c782b42674b69887f03fc038ccf6a8_a35c782b42674b69887f03fc038ccf6a8} 
+std\+::string ren\+::\+IBinder\+::m\+\_\+name\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classren_1_1IBinder_a94cccb29d98a504bfa532559a059cf69_a94cccb29d98a504bfa532559a059cf69}\index{ren::IBinder@{ren::IBinder}!m\_passName@{m\_passName}}
+\index{m\_passName@{m\_passName}!ren::IBinder@{ren::IBinder}}
+\doxysubsubsection{\texorpdfstring{m\_passName}{m\_passName}}
+{\footnotesize\ttfamily \label{classren_1_1IBinder_a94cccb29d98a504bfa532559a059cf69_a94cccb29d98a504bfa532559a059cf69} 
+std\+::string ren\+::\+IBinder\+::m\+\_\+pass\+Name\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{binder_8h}{binder.\+h}}\item 
+src/\mbox{\hyperlink{binder_8cpp}{binder.\+cpp}}\end{DoxyCompactItemize}

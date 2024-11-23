@@ -1,0 +1,137 @@
+\doxysection{Key\+Random Class Reference}
+\hypertarget{classKeyRandom}{}\label{classKeyRandom}\index{KeyRandom@{KeyRandom}}
+
+
+{\ttfamily \#include $<$key\+\_\+random.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classKeyRandom_ac220b9e31d2bebf5a392343777615c62_ac220b9e31d2bebf5a392343777615c62}{Key\+Random}} (bool started=true)
+\item 
+void \mbox{\hyperlink{classKeyRandom_af77e8974f4a8f86e4bfca8f883a493cf_af77e8974f4a8f86e4bfca8f883a493cf}{start}} () noexcept
+\item 
+\mbox{\hyperlink{classKeyRandom_a96585ba8e023a48e624ab3f7a701fc89_a96585ba8e023a48e624ab3f7a701fc89}{operator bool}} () noexcept
+\item 
+int \mbox{\hyperlink{classKeyRandom_afd6f965cc40ba00aebb5abfbe7b87edd_afd6f965cc40ba00aebb5abfbe7b87edd}{rand}} ()
+\item 
+int \mbox{\hyperlink{classKeyRandom_a43adda5b2928d7bf3d42fde02e1aa3d2_a43adda5b2928d7bf3d42fde02e1aa3d2}{get\+Random\+Int}} ()
+\item 
+float \mbox{\hyperlink{classKeyRandom_ae4a57a8361faf2b3d9710470395d3433_ae4a57a8361faf2b3d9710470395d3433}{get\+Random\+Float}} ()
+\item 
+double \mbox{\hyperlink{classKeyRandom_a2be85d488cdb2380fc02bfe77cafe0a8_a2be85d488cdb2380fc02bfe77cafe0a8}{get\+Random\+Double}} ()
+\item 
+int \mbox{\hyperlink{classKeyRandom_a18445a55faeecb68c06335b7df36b4f7_a18445a55faeecb68c06335b7df36b4f7}{get\+Random\+Int\+In\+Range}} (const int \mbox{\hyperlink{classKeyRandom_af77e8974f4a8f86e4bfca8f883a493cf_af77e8974f4a8f86e4bfca8f883a493cf}{start}}, const int end)
+\item 
+float \mbox{\hyperlink{classKeyRandom_ab5157649dbef846b678c6238bfbca70a_ab5157649dbef846b678c6238bfbca70a}{get\+Random\+Float\+In\+Range}} (const int \mbox{\hyperlink{classKeyRandom_af77e8974f4a8f86e4bfca8f883a493cf_af77e8974f4a8f86e4bfca8f883a493cf}{start}}=0, const int end=1)
+\begin{DoxyCompactList}\small\item\em returns random float from 0 to 1 by default \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classKeyRandom_acca815327d6a3ce9c9fd678071524800_acca815327d6a3ce9c9fd678071524800}{get\+Random\+Double\+In\+Range}} (const int \mbox{\hyperlink{classKeyRandom_af77e8974f4a8f86e4bfca8f883a493cf_af77e8974f4a8f86e4bfca8f883a493cf}{start}}=0, const int end=1)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::mt19937 \mbox{\hyperlink{classKeyRandom_ad69c267e8b0d6e9648b082eb27b52cfb_ad69c267e8b0d6e9648b082eb27b52cfb}{m\+\_\+device}}
+\item 
+bool \mbox{\hyperlink{classKeyRandom_a17c6edd9dd7bf9f48bf53414e6bb8c3a_a17c6edd9dd7bf9f48bf53414e6bb8c3a}{m\+\_\+b\+Started}} = false
+\item 
+std\+::uniform\+\_\+int\+\_\+distribution$<$ std\+::mt19937\+::result\+\_\+type $>$ \mbox{\hyperlink{classKeyRandom_a14617b22802ec2b3ffb825a5d44853a7_a14617b22802ec2b3ffb825a5d44853a7}{m\+\_\+distr}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classKeyRandom_ac220b9e31d2bebf5a392343777615c62_ac220b9e31d2bebf5a392343777615c62}\index{KeyRandom@{KeyRandom}!KeyRandom@{KeyRandom}}
+\index{KeyRandom@{KeyRandom}!KeyRandom@{KeyRandom}}
+\doxysubsubsection{\texorpdfstring{KeyRandom()}{KeyRandom()}}
+{\footnotesize\ttfamily \label{classKeyRandom_ac220b9e31d2bebf5a392343777615c62_ac220b9e31d2bebf5a392343777615c62} 
+Key\+Random\+::\+Key\+Random (\begin{DoxyParamCaption}\item[{bool}]{started}{ = {\ttfamily true}}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classKeyRandom_a2be85d488cdb2380fc02bfe77cafe0a8_a2be85d488cdb2380fc02bfe77cafe0a8}\index{KeyRandom@{KeyRandom}!getRandomDouble@{getRandomDouble}}
+\index{getRandomDouble@{getRandomDouble}!KeyRandom@{KeyRandom}}
+\doxysubsubsection{\texorpdfstring{getRandomDouble()}{getRandomDouble()}}
+{\footnotesize\ttfamily \label{classKeyRandom_a2be85d488cdb2380fc02bfe77cafe0a8_a2be85d488cdb2380fc02bfe77cafe0a8} 
+double Key\+Random\+::get\+Random\+Double (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classKeyRandom_acca815327d6a3ce9c9fd678071524800_acca815327d6a3ce9c9fd678071524800}\index{KeyRandom@{KeyRandom}!getRandomDoubleInRange@{getRandomDoubleInRange}}
+\index{getRandomDoubleInRange@{getRandomDoubleInRange}!KeyRandom@{KeyRandom}}
+\doxysubsubsection{\texorpdfstring{getRandomDoubleInRange()}{getRandomDoubleInRange()}}
+{\footnotesize\ttfamily \label{classKeyRandom_acca815327d6a3ce9c9fd678071524800_acca815327d6a3ce9c9fd678071524800} 
+double Key\+Random\+::get\+Random\+Double\+In\+Range (\begin{DoxyParamCaption}\item[{const int}]{start}{ = {\ttfamily 0}, }\item[{const int}]{end}{ = {\ttfamily 1}}\end{DoxyParamCaption})}
+
+\Hypertarget{classKeyRandom_ae4a57a8361faf2b3d9710470395d3433_ae4a57a8361faf2b3d9710470395d3433}\index{KeyRandom@{KeyRandom}!getRandomFloat@{getRandomFloat}}
+\index{getRandomFloat@{getRandomFloat}!KeyRandom@{KeyRandom}}
+\doxysubsubsection{\texorpdfstring{getRandomFloat()}{getRandomFloat()}}
+{\footnotesize\ttfamily \label{classKeyRandom_ae4a57a8361faf2b3d9710470395d3433_ae4a57a8361faf2b3d9710470395d3433} 
+float Key\+Random\+::get\+Random\+Float (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classKeyRandom_ab5157649dbef846b678c6238bfbca70a_ab5157649dbef846b678c6238bfbca70a}\index{KeyRandom@{KeyRandom}!getRandomFloatInRange@{getRandomFloatInRange}}
+\index{getRandomFloatInRange@{getRandomFloatInRange}!KeyRandom@{KeyRandom}}
+\doxysubsubsection{\texorpdfstring{getRandomFloatInRange()}{getRandomFloatInRange()}}
+{\footnotesize\ttfamily \label{classKeyRandom_ab5157649dbef846b678c6238bfbca70a_ab5157649dbef846b678c6238bfbca70a} 
+float Key\+Random\+::get\+Random\+Float\+In\+Range (\begin{DoxyParamCaption}\item[{const int}]{start}{ = {\ttfamily 0}, }\item[{const int}]{end}{ = {\ttfamily 1}}\end{DoxyParamCaption})}
+
+
+
+returns random float from 0 to 1 by default 
+
+start = specify lower limit on range of output values
+
+end = specify upper limit on range of output \Hypertarget{classKeyRandom_a43adda5b2928d7bf3d42fde02e1aa3d2_a43adda5b2928d7bf3d42fde02e1aa3d2}\index{KeyRandom@{KeyRandom}!getRandomInt@{getRandomInt}}
+\index{getRandomInt@{getRandomInt}!KeyRandom@{KeyRandom}}
+\doxysubsubsection{\texorpdfstring{getRandomInt()}{getRandomInt()}}
+{\footnotesize\ttfamily \label{classKeyRandom_a43adda5b2928d7bf3d42fde02e1aa3d2_a43adda5b2928d7bf3d42fde02e1aa3d2} 
+int Key\+Random\+::get\+Random\+Int (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classKeyRandom_a18445a55faeecb68c06335b7df36b4f7_a18445a55faeecb68c06335b7df36b4f7}\index{KeyRandom@{KeyRandom}!getRandomIntInRange@{getRandomIntInRange}}
+\index{getRandomIntInRange@{getRandomIntInRange}!KeyRandom@{KeyRandom}}
+\doxysubsubsection{\texorpdfstring{getRandomIntInRange()}{getRandomIntInRange()}}
+{\footnotesize\ttfamily \label{classKeyRandom_a18445a55faeecb68c06335b7df36b4f7_a18445a55faeecb68c06335b7df36b4f7} 
+int Key\+Random\+::get\+Random\+Int\+In\+Range (\begin{DoxyParamCaption}\item[{const int}]{start}{, }\item[{const int}]{end}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classKeyRandom_a96585ba8e023a48e624ab3f7a701fc89_a96585ba8e023a48e624ab3f7a701fc89}\index{KeyRandom@{KeyRandom}!operator bool@{operator bool}}
+\index{operator bool@{operator bool}!KeyRandom@{KeyRandom}}
+\doxysubsubsection{\texorpdfstring{operator bool()}{operator bool()}}
+{\footnotesize\ttfamily \label{classKeyRandom_a96585ba8e023a48e624ab3f7a701fc89_a96585ba8e023a48e624ab3f7a701fc89} 
+Key\+Random\+::operator bool (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classKeyRandom_afd6f965cc40ba00aebb5abfbe7b87edd_afd6f965cc40ba00aebb5abfbe7b87edd}\index{KeyRandom@{KeyRandom}!rand@{rand}}
+\index{rand@{rand}!KeyRandom@{KeyRandom}}
+\doxysubsubsection{\texorpdfstring{rand()}{rand()}}
+{\footnotesize\ttfamily \label{classKeyRandom_afd6f965cc40ba00aebb5abfbe7b87edd_afd6f965cc40ba00aebb5abfbe7b87edd} 
+int Key\+Random\+::rand (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classKeyRandom_af77e8974f4a8f86e4bfca8f883a493cf_af77e8974f4a8f86e4bfca8f883a493cf}\index{KeyRandom@{KeyRandom}!start@{start}}
+\index{start@{start}!KeyRandom@{KeyRandom}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily \label{classKeyRandom_af77e8974f4a8f86e4bfca8f883a493cf_af77e8974f4a8f86e4bfca8f883a493cf} 
+void Key\+Random\+::start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classKeyRandom_a17c6edd9dd7bf9f48bf53414e6bb8c3a_a17c6edd9dd7bf9f48bf53414e6bb8c3a}\index{KeyRandom@{KeyRandom}!m\_bStarted@{m\_bStarted}}
+\index{m\_bStarted@{m\_bStarted}!KeyRandom@{KeyRandom}}
+\doxysubsubsection{\texorpdfstring{m\_bStarted}{m\_bStarted}}
+{\footnotesize\ttfamily \label{classKeyRandom_a17c6edd9dd7bf9f48bf53414e6bb8c3a_a17c6edd9dd7bf9f48bf53414e6bb8c3a} 
+bool Key\+Random\+::m\+\_\+b\+Started = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classKeyRandom_ad69c267e8b0d6e9648b082eb27b52cfb_ad69c267e8b0d6e9648b082eb27b52cfb}\index{KeyRandom@{KeyRandom}!m\_device@{m\_device}}
+\index{m\_device@{m\_device}!KeyRandom@{KeyRandom}}
+\doxysubsubsection{\texorpdfstring{m\_device}{m\_device}}
+{\footnotesize\ttfamily \label{classKeyRandom_ad69c267e8b0d6e9648b082eb27b52cfb_ad69c267e8b0d6e9648b082eb27b52cfb} 
+std\+::mt19937 Key\+Random\+::m\+\_\+device\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classKeyRandom_a14617b22802ec2b3ffb825a5d44853a7_a14617b22802ec2b3ffb825a5d44853a7}\index{KeyRandom@{KeyRandom}!m\_distr@{m\_distr}}
+\index{m\_distr@{m\_distr}!KeyRandom@{KeyRandom}}
+\doxysubsubsection{\texorpdfstring{m\_distr}{m\_distr}}
+{\footnotesize\ttfamily \label{classKeyRandom_a14617b22802ec2b3ffb825a5d44853a7_a14617b22802ec2b3ffb825a5d44853a7} 
+std\+::uniform\+\_\+int\+\_\+distribution$<$std\+::mt19937\+::result\+\_\+type$>$ Key\+Random\+::m\+\_\+distr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{key__random_8h}{key\+\_\+random.\+h}}\item 
+src/\mbox{\hyperlink{key__random_8cpp}{key\+\_\+random.\+cpp}}\end{DoxyCompactItemize}

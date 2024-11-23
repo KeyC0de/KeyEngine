@@ -1,0 +1,293 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="texture__desc_8cpp" kind="file" language="C++">
+    <compoundname>texture_desc.cpp</compoundname>
+    <includes refid="texture__desc_8h" local="yes">texture_desc.h</includes>
+    <includes refid="bindable__exception_8h" local="yes">bindable_exception.h</includes>
+    <incdepgraph>
+      <node id="4">
+        <label>bindable_exception.h</label>
+        <link refid="bindable__exception_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>key_exception.h</label>
+        <link refid="key__exception_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>texture_desc.h</label>
+        <link refid="texture__desc_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/texture_desc.cpp</label>
+        <link refid="texture__desc_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>d3d11.h</label>
+      </node>
+      <node id="7">
+        <label>stdexcept</label>
+      </node>
+      <node id="6">
+        <label>string</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="texture__desc_8cpp_afa24887e1c1a12976d13acff0273f721_1afa24887e1c1a12976d13acff0273f721" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const D3D11_TEXTURE2D_DESC</type>
+        <definition>const D3D11_TEXTURE2D_DESC createTextureDescriptor</definition>
+        <argsstring>(const unsigned width, const unsigned height, const DXGI_FORMAT format, const BindFlags bindFlags, const CpuAccessFlags cpuAccessFlags, const TextureUsage usage, const bool bCube, const unsigned nTextures, const MultisamplingMode multisamplingMode)</argsstring>
+        <name>createTextureDescriptor</name>
+        <param>
+          <type>const unsigned</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>height</declname>
+        </param>
+        <param>
+          <type>const DXGI_FORMAT</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>const <ref refid="texture__desc_8h_a84e8864fab1faebd38dd020fb6050ee2_1a84e8864fab1faebd38dd020fb6050ee2" kindref="member">BindFlags</ref></type>
+          <declname>bindFlags</declname>
+        </param>
+        <param>
+          <type>const <ref refid="texture__desc_8h_a7e39f63b567b83d32dd82e7a0c062e08_1a7e39f63b567b83d32dd82e7a0c062e08" kindref="member">CpuAccessFlags</ref></type>
+          <declname>cpuAccessFlags</declname>
+        </param>
+        <param>
+          <type>const <ref refid="texture__desc_8h_af3a2e76419de0e0d1ec1b12a83047412_1af3a2e76419de0e0d1ec1b12a83047412" kindref="member">TextureUsage</ref></type>
+          <declname>usage</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>bCube</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>nTextures</declname>
+        </param>
+        <param>
+          <type>const <ref refid="texture__desc_8h_a5a6f50353d158fb3e2d2234fde1353a4_1a5a6f50353d158fb3e2d2234fde1353a4" kindref="member">MultisamplingMode</ref></type>
+          <declname>multisamplingMode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/texture_desc.cpp" line="5" column="28" bodyfile="src/texture_desc.cpp" bodystart="5" bodyend="39"/>
+        <referencedby refid="classCubeTexture_ac47739d4264634c91ed909bbf8500493_1ac47739d4264634c91ed909bbf8500493" compoundref="cube__texture_8cpp" startline="15" endline="60">CubeTexture::CubeTexture</referencedby>
+        <referencedby refid="classCubeTextureArrayOffscreenDS_ac422df6b364d82f12a2cae8ed9ba746b_1ac422df6b364d82f12a2cae8ed9ba746b" compoundref="cube__texture_8cpp" startline="195" endline="232">CubeTextureArrayOffscreenDS::CubeTextureArrayOffscreenDS</referencedby>
+        <referencedby refid="classCubeTextureOffscreenDS_acf33325ed70eae54244224c65f65bc3a_1acf33325ed70eae54244224c65f65bc3a" compoundref="cube__texture_8cpp" startline="144" endline="171">CubeTextureOffscreenDS::CubeTextureOffscreenDS</referencedby>
+        <referencedby refid="classCubeTextureOffscreenRT_a3443a4a46383409c079a83b6eb8cd11d_1a3443a4a46383409c079a83b6eb8cd11d" compoundref="cube__texture_8cpp" startline="98" endline="125">CubeTextureOffscreenRT::CubeTextureOffscreenRT</referencedby>
+        <referencedby refid="classIDepthStencilView_aec7a25978c04ff1bcb0a047882c8836d_1aec7a25978c04ff1bcb0a047882c8836d" compoundref="depth__stencil__view_8cpp" startline="77" endline="101">IDepthStencilView::IDepthStencilView</referencedby>
+        <referencedby refid="classIRenderTargetView_aeb1ecdc0e7dad9ee0927ea4f028d7a5e_1aeb1ecdc0e7dad9ee0927ea4f028d7a5e" compoundref="render__target_8cpp" startline="44" endline="64">IRenderTargetView::IRenderTargetView</referencedby>
+        <referencedby refid="classTexture_a0331ea0fa1111565a77e34930527aa9f_1a0331ea0fa1111565a77e34930527aa9f" compoundref="texture_8cpp" startline="14" endline="62">Texture::Texture</referencedby>
+        <referencedby refid="classTexture_a8077b6ae80650f4901ed7f77e014e25b_1a8077b6ae80650f4901ed7f77e014e25b" compoundref="texture_8cpp" startline="64" endline="94">Texture::Texture</referencedby>
+        <referencedby refid="classTextureArrayOffscreenDS_aca6d6cb9a7b1e8449149ba3937dd7c6e_1aca6d6cb9a7b1e8449149ba3937dd7c6e" compoundref="texture_8cpp" startline="282" endline="317">TextureArrayOffscreenDS::TextureArrayOffscreenDS</referencedby>
+        <referencedby refid="classTextureOffscreenDS_a945e26603caa6d94b95e1852faa6438e_1a945e26603caa6d94b95e1852faa6438e" compoundref="texture_8cpp" startline="234" endline="258">TextureOffscreenDS::TextureOffscreenDS</referencedby>
+        <referencedby refid="classTextureOffscreenRT_a20c9af6ea2487abb5c34158ee58c072f_1a20c9af6ea2487abb5c34158ee58c072f" compoundref="texture_8cpp" startline="187" endline="210">TextureOffscreenRT::TextureOffscreenRT</referencedby>
+        <referencedby refid="classIDepthStencilView_a59c87083dbbb991cc621dedcb4cbd58d_1a59c87083dbbb991cc621dedcb4cbd58d" compoundref="depth__stencil__view_8cpp" startline="150" endline="182">IDepthStencilView::createStagingTexture</referencedby>
+        <referencedby refid="classIRenderTargetView_a1399fd548f196216820ac8d19dd87621_1a1399fd548f196216820ac8d19dd87621" compoundref="render__target_8cpp" startline="122" endline="156">IRenderTargetView::createStagingTexture</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="texture__desc_8cpp_a42d18799df978a38e809f8588cbd5f7b_1a42d18799df978a38e809f8588cbd5f7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const DXGI_FORMAT</type>
+        <definition>const DXGI_FORMAT getFormatRtv</definition>
+        <argsstring>(const RenderTargetViewMode mode)</argsstring>
+        <name>getFormatRtv</name>
+        <param>
+          <type>const <ref refid="texture__desc_8h_a6b4948cc0d12c93e6396540e02e2df58_1a6b4948cc0d12c93e6396540e02e2df58" kindref="member">RenderTargetViewMode</ref></type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/texture_desc.cpp" line="41" column="19" bodyfile="src/texture_desc.cpp" bodystart="41" bodyend="49"/>
+        <referencedby refid="classRenderTargetShaderInput_a21e6a2b15ca1fb99618b200fcbe0c3a8_1a21e6a2b15ca1fb99618b200fcbe0c3a8" compoundref="render__target_8cpp" startline="222" endline="242">RenderTargetShaderInput::RenderTargetShaderInput</referencedby>
+        <referencedby refid="classTextureOffscreenRT_a20c9af6ea2487abb5c34158ee58c072f_1a20c9af6ea2487abb5c34158ee58c072f" compoundref="texture_8cpp" startline="187" endline="210">TextureOffscreenRT::TextureOffscreenRT</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="texture__desc_8cpp_a70ee284a2074507d586cded00e2e8617_1a70ee284a2074507d586cded00e2e8617" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const DXGI_FORMAT</type>
+        <definition>const DXGI_FORMAT getTypelessFormatDsv</definition>
+        <argsstring>(const DepthStencilViewMode mode)</argsstring>
+        <name>getTypelessFormatDsv</name>
+        <param>
+          <type>const <ref refid="texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_1a5aacc2000fea78d975de8fe06e3698f2" kindref="member">DepthStencilViewMode</ref></type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+<para>Use when creating the texture descriptor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>DS format for D3D11_TEXTURE2D_DESC creation</para>
+<para>_TYPELESS is actually a float type</para>
+<para>DXGI_FORMAT_R32_TYPELESS is compatible with both DXGI_FORMAT_D32_FLOAT and DXGI_FORMAT_R32_FLOAT</para>
+<para>typeless formats that allow the same texture to be interpreted differently depending on the context and they are necessary if the texture is to be used in multiple contexts eg. depth testing and sampling in shaders </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/texture_desc.cpp" line="51" column="19" bodyfile="src/texture_desc.cpp" bodystart="51" bodyend="61"/>
+        <referencedby refid="classCubeTextureArrayOffscreenDS_ac422df6b364d82f12a2cae8ed9ba746b_1ac422df6b364d82f12a2cae8ed9ba746b" compoundref="cube__texture_8cpp" startline="195" endline="232">CubeTextureArrayOffscreenDS::CubeTextureArrayOffscreenDS</referencedby>
+        <referencedby refid="classCubeTextureOffscreenDS_acf33325ed70eae54244224c65f65bc3a_1acf33325ed70eae54244224c65f65bc3a" compoundref="cube__texture_8cpp" startline="144" endline="171">CubeTextureOffscreenDS::CubeTextureOffscreenDS</referencedby>
+        <referencedby refid="classIDepthStencilView_aec7a25978c04ff1bcb0a047882c8836d_1aec7a25978c04ff1bcb0a047882c8836d" compoundref="depth__stencil__view_8cpp" startline="77" endline="101">IDepthStencilView::IDepthStencilView</referencedby>
+        <referencedby refid="classTextureArrayOffscreenDS_aca6d6cb9a7b1e8449149ba3937dd7c6e_1aca6d6cb9a7b1e8449149ba3937dd7c6e" compoundref="texture_8cpp" startline="282" endline="317">TextureArrayOffscreenDS::TextureArrayOffscreenDS</referencedby>
+        <referencedby refid="classTextureOffscreenDS_a945e26603caa6d94b95e1852faa6438e_1a945e26603caa6d94b95e1852faa6438e" compoundref="texture_8cpp" startline="234" endline="258">TextureOffscreenDS::TextureOffscreenDS</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="texture__desc_8cpp_ada981af37c5ea1a0d8713e52ca9e28ea_1ada981af37c5ea1a0d8713e52ca9e28ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const DXGI_FORMAT</type>
+        <definition>const DXGI_FORMAT getTypedFormatDsv</definition>
+        <argsstring>(const DepthStencilViewMode mode)</argsstring>
+        <name>getTypedFormatDsv</name>
+        <param>
+          <type>const <ref refid="texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_1a5aacc2000fea78d975de8fe06e3698f2" kindref="member">DepthStencilViewMode</ref></type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+<para>when we want to map a texture view on the Depth Stencil </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/texture_desc.cpp" line="63" column="19" bodyfile="src/texture_desc.cpp" bodystart="63" bodyend="73"/>
+        <referencedby refid="classIDepthStencilView_aec7a25978c04ff1bcb0a047882c8836d_1aec7a25978c04ff1bcb0a047882c8836d" compoundref="depth__stencil__view_8cpp" startline="77" endline="101">IDepthStencilView::IDepthStencilView</referencedby>
+        <referencedby refid="classIDepthStencilView_a2d41ae84140c62fafde60b52a884831e_1a2d41ae84140c62fafde60b52a884831e" compoundref="depth__stencil__view_8cpp" startline="12" endline="41">IDepthStencilView::IDepthStencilView</referencedby>
+        <referencedby refid="classIDepthStencilView_a40482838c8e1421a622521a2ec8aae40_1a40482838c8e1421a622521a2ec8aae40" compoundref="depth__stencil__view_8cpp" startline="43" endline="75">IDepthStencilView::IDepthStencilView</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="texture__desc_8cpp_a735b8903be34d33b390feb6524fffcb7_1a735b8903be34d33b390feb6524fffcb7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const DXGI_FORMAT</type>
+        <definition>const DXGI_FORMAT getShaderInputFormatDsv</definition>
+        <argsstring>(const DepthStencilViewMode mode)</argsstring>
+        <name>getShaderInputFormatDsv</name>
+        <param>
+          <type>const <ref refid="texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_1a5aacc2000fea78d975de8fe06e3698f2" kindref="member">DepthStencilViewMode</ref></type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+<para>when we want to sample from the Depth Stencil in the back buffer </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/texture_desc.cpp" line="75" column="19" bodyfile="src/texture_desc.cpp" bodystart="75" bodyend="85"/>
+        <referencedby refid="classCubeTextureArrayOffscreenDS_ac422df6b364d82f12a2cae8ed9ba746b_1ac422df6b364d82f12a2cae8ed9ba746b" compoundref="cube__texture_8cpp" startline="195" endline="232">CubeTextureArrayOffscreenDS::CubeTextureArrayOffscreenDS</referencedby>
+        <referencedby refid="classCubeTextureOffscreenDS_acf33325ed70eae54244224c65f65bc3a_1acf33325ed70eae54244224c65f65bc3a" compoundref="cube__texture_8cpp" startline="144" endline="171">CubeTextureOffscreenDS::CubeTextureOffscreenDS</referencedby>
+        <referencedby refid="classDepthStencilShaderInput_a1c9e5ca399f351e0d92057aabebe5850_1a1c9e5ca399f351e0d92057aabebe5850" compoundref="depth__stencil__view_8cpp" startline="296" endline="315">DepthStencilShaderInput::DepthStencilShaderInput</referencedby>
+        <referencedby refid="classTextureArrayOffscreenDS_aca6d6cb9a7b1e8449149ba3937dd7c6e_1aca6d6cb9a7b1e8449149ba3937dd7c6e" compoundref="texture_8cpp" startline="282" endline="317">TextureArrayOffscreenDS::TextureArrayOffscreenDS</referencedby>
+        <referencedby refid="classTextureOffscreenDS_a945e26603caa6d94b95e1852faa6438e_1a945e26603caa6d94b95e1852faa6438e" compoundref="texture_8cpp" startline="234" endline="258">TextureOffscreenDS::TextureOffscreenDS</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="texture__desc_8h" kindref="compound">texture_desc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="bindable__exception_8h" kindref="compound">bindable_exception.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="texture__desc_8h_aed49d8003c0bd913475b88771be11296_1aed49d8003c0bd913475b88771be11296" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>D3D11_TEXTURE2D_DESC<sp/><ref refid="texture__desc_8cpp_afa24887e1c1a12976d13acff0273f721_1afa24887e1c1a12976d13acff0273f721" kindref="member">createTextureDescriptor</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>width,</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>height,</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DXGI_FORMAT<sp/>format,</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="texture__desc_8h_a84e8864fab1faebd38dd020fb6050ee2_1a84e8864fab1faebd38dd020fb6050ee2" kindref="member">BindFlags</ref><sp/>bindFlags,</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="texture__desc_8h_a7e39f63b567b83d32dd82e7a0c062e08_1a7e39f63b567b83d32dd82e7a0c062e08" kindref="member">CpuAccessFlags</ref><sp/>cpuAccessFlags,</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="texture__desc_8h_af3a2e76419de0e0d1ec1b12a83047412_1af3a2e76419de0e0d1ec1b12a83047412" kindref="member">TextureUsage</ref><sp/>usage,</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bCube,</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>nTextures<sp/></highlight><highlight class="comment">/*=<sp/>1u*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="texture__desc_8h_a5a6f50353d158fb3e2d2234fde1353a4_1a5a6f50353d158fb3e2d2234fde1353a4" kindref="member">MultisamplingMode</ref><sp/>multisamplingMode<sp/></highlight><highlight class="comment">/*=<sp/>MultisamplingMode::None*/</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>D3D11_TEXTURE2D_DESC<sp/>texDesc{};</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>texDesc.Width<sp/>=<sp/>width;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>texDesc.Height<sp/>=<sp/>height;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>texDesc.Format<sp/>=<sp/>format;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>texDesc.MipLevels<sp/>=<sp/>1u;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>multisamplingMode<sp/>==<sp/><ref refid="texture__desc_8h_a5a6f50353d158fb3e2d2234fde1353a4_1a5a6f50353d158fb3e2d2234fde1353a4ac9d3e887722f2bc482bcca9d41c512af" kindref="member">MultisamplingMode::None</ref><sp/>)</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>texDesc.SampleDesc.Count<sp/>=<sp/>1u;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>texDesc.SampleDesc.Quality<sp/>=<sp/>0u;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//texDesc.SampleDesc.Count<sp/>=<sp/>1u;<sp/><sp/><sp/><sp/>//<sp/>#TODO:<sp/>multisampling</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//texDesc.SampleDesc.Quality<sp/>=<sp/>0u;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>texDesc.Usage<sp/>=<sp/>(D3D11_USAGE)<sp/>usage;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>texDesc.BindFlags<sp/>=<sp/>(unsigned)<sp/>bindFlags;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>texDesc.CPUAccessFlags<sp/>=<sp/>(unsigned)<sp/>cpuAccessFlags;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>texDesc.ArraySize<sp/>=<sp/>(<sp/>bCube<sp/>==<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal"><sp/>?<sp/>6u<sp/>:<sp/>1u<sp/>)<sp/>*<sp/>nTextures;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>texDesc.MiscFlags<sp/>=<sp/>bCube<sp/>?</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>D3D11_RESOURCE_MISC_TEXTURECUBE<sp/>:</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(<sp/>bindFlags<sp/>==<sp/><ref refid="texture__desc_8h_a84e8864fab1faebd38dd020fb6050ee2_1a84e8864fab1faebd38dd020fb6050ee2a9504b991462f464a38554ba3f1a804ee" kindref="member">BindFlags::RenderTargetTexture</ref><sp/>?<sp/>D3D11_RESOURCE_MISC_GENERATE_MIPS<sp/>:<sp/>0u<sp/>);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>texDesc;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="texture__desc_8h_a42d18799df978a38e809f8588cbd5f7b_1a42d18799df978a38e809f8588cbd5f7b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DXGI_FORMAT<sp/><ref refid="texture__desc_8cpp_a42d18799df978a38e809f8588cbd5f7b_1a42d18799df978a38e809f8588cbd5f7b" kindref="member">getFormatRtv</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="texture__desc_8h_a6b4948cc0d12c93e6396540e02e2df58_1a6b4948cc0d12c93e6396540e02e2df58" kindref="member">RenderTargetViewMode</ref><sp/>mode<sp/>)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(<sp/>mode<sp/>)</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="texture__desc_8h_a6b4948cc0d12c93e6396540e02e2df58_1a6b4948cc0d12c93e6396540e02e2df58adf32226797485bb0becd7063638f54c5" kindref="member">RenderTargetViewMode::DefaultRT</ref>:</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>DXGI_FORMAT::DXGI_FORMAT_B8G8R8A8_UNORM;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bindable__exception_8h_a49daaad773d173079645f4c159841e69_1a49daaad773d173079645f4c159841e69" kindref="member">THROW_BINDABLE_EXCEPTION</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Invalid<sp/>Render<sp/>Target<sp/>View<sp/>mode<sp/>DXGI<sp/>format.&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="texture__desc_8h_a70ee284a2074507d586cded00e2e8617_1a70ee284a2074507d586cded00e2e8617" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DXGI_FORMAT<sp/><ref refid="texture__desc_8cpp_a70ee284a2074507d586cded00e2e8617_1a70ee284a2074507d586cded00e2e8617" kindref="member">getTypelessFormatDsv</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_1a5aacc2000fea78d975de8fe06e3698f2" kindref="member">DepthStencilViewMode</ref><sp/>mode<sp/>)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(<sp/>mode<sp/>)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_1a5aacc2000fea78d975de8fe06e3698f2a968332242896839ab1a3ac1040c11ae9" kindref="member">DepthStencilViewMode::DefaultDS</ref>:</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>DXGI_FORMAT::DXGI_FORMAT_R24G8_TYPELESS;</highlight><highlight class="comment">//DXGI_FORMAT_D24_UNORM_S8_UINT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_1a5aacc2000fea78d975de8fe06e3698f2aa3f0d1b560601f1a90fd3835cad4f1f1" kindref="member">DepthStencilViewMode::ShadowDepth</ref>:</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>DXGI_FORMAT::DXGI_FORMAT_R32_TYPELESS;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bindable__exception_8h_a49daaad773d173079645f4c159841e69_1a49daaad773d173079645f4c159841e69" kindref="member">THROW_BINDABLE_EXCEPTION</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Invalid<sp/>Depth<sp/>Stenvil<sp/>View<sp/>mode<sp/>for<sp/>Typeless<sp/>DXGI<sp/>format.&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="texture__desc_8h_ada981af37c5ea1a0d8713e52ca9e28ea_1ada981af37c5ea1a0d8713e52ca9e28ea" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DXGI_FORMAT<sp/><ref refid="texture__desc_8cpp_ada981af37c5ea1a0d8713e52ca9e28ea_1ada981af37c5ea1a0d8713e52ca9e28ea" kindref="member">getTypedFormatDsv</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_1a5aacc2000fea78d975de8fe06e3698f2" kindref="member">DepthStencilViewMode</ref><sp/>mode<sp/>)</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(<sp/>mode<sp/>)</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_1a5aacc2000fea78d975de8fe06e3698f2a968332242896839ab1a3ac1040c11ae9" kindref="member">DepthStencilViewMode::DefaultDS</ref>:</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>DXGI_FORMAT::DXGI_FORMAT_D24_UNORM_S8_UINT;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_1a5aacc2000fea78d975de8fe06e3698f2aa3f0d1b560601f1a90fd3835cad4f1f1" kindref="member">DepthStencilViewMode::ShadowDepth</ref>:</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>DXGI_FORMAT::DXGI_FORMAT_D32_FLOAT;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bindable__exception_8h_a49daaad773d173079645f4c159841e69_1a49daaad773d173079645f4c159841e69" kindref="member">THROW_BINDABLE_EXCEPTION</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Invalid<sp/>Depth<sp/>Stenvil<sp/>View<sp/>mode<sp/>for<sp/>Typed<sp/>DXGI<sp/>format.&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="texture__desc_8h_a735b8903be34d33b390feb6524fffcb7_1a735b8903be34d33b390feb6524fffcb7" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DXGI_FORMAT<sp/><ref refid="texture__desc_8cpp_a735b8903be34d33b390feb6524fffcb7_1a735b8903be34d33b390feb6524fffcb7" kindref="member">getShaderInputFormatDsv</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_1a5aacc2000fea78d975de8fe06e3698f2" kindref="member">DepthStencilViewMode</ref><sp/>mode<sp/>)</highlight></codeline>
+<codeline lineno="76"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(<sp/>mode<sp/>)</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_1a5aacc2000fea78d975de8fe06e3698f2a968332242896839ab1a3ac1040c11ae9" kindref="member">DepthStencilViewMode::DefaultDS</ref>:</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>DXGI_FORMAT::DXGI_FORMAT_R24_UNORM_X8_TYPELESS;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_1a5aacc2000fea78d975de8fe06e3698f2aa3f0d1b560601f1a90fd3835cad4f1f1" kindref="member">DepthStencilViewMode::ShadowDepth</ref>:</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>DXGI_FORMAT::DXGI_FORMAT_R32_FLOAT;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bindable__exception_8h_a49daaad773d173079645f4c159841e69_1a49daaad773d173079645f4c159841e69" kindref="member">THROW_BINDABLE_EXCEPTION</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Invalid<sp/>Depth<sp/>Stenvil<sp/>View<sp/>mode<sp/>for<sp/>Shader<sp/>Input<sp/>DXGI<sp/>format.&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/texture_desc.cpp"/>
+  </compounddef>
+</doxygen>

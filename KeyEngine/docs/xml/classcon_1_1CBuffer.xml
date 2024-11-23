@@ -1,0 +1,366 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classcon_1_1CBuffer" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>con::CBuffer</compoundname>
+    <includes refid="dynamic__constant__buffer_8h" local="no">dynamic_constant_buffer.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classcon_1_1CBuffer_a5ecfa284966d4210f13d994a12281cda_1a5ecfa284966d4210f13d994a12281cda" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classcon_1_1CBElement" kindref="compound">CBElement</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;CBElement&gt; con::CBuffer::m_pLayoutRoot</definition>
+        <argsstring></argsstring>
+        <name>m_pLayoutRoot</name>
+        <qualifiedname>con::CBuffer::m_pLayoutRoot</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="495" column="17" bodyfile="inc/dynamic_constant_buffer.h" bodystart="495" bodyend="-1"/>
+        <referencedby refid="classcon_1_1CBuffer_a7a7b7a79390beb654e99f63f43edee28_1a7a7b7a79390beb654e99f63f43edee28" compoundref="dynamic__constant__buffer_8cpp" startline="492" endline="499">CBuffer</referencedby>
+        <referencedby refid="classcon_1_1CBuffer_aae7b9c1a51d54e3026ae8c67ba9583be_1aae7b9c1a51d54e3026ae8c67ba9583be" compoundref="dynamic__constant__buffer_8cpp" startline="508" endline="512">~CBuffer</referencedby>
+        <referencedby refid="classcon_1_1CBuffer_a2a30c70381d0caa697535aa139455b3f_1a2a30c70381d0caa697535aa139455b3f" compoundref="dynamic__constant__buffer_8cpp" startline="535" endline="538">getRootElement</referencedby>
+        <referencedby refid="classcon_1_1CBuffer_aedf1ab4ab2022c99bee4321c59b240bc_1aedf1ab4ab2022c99bee4321c59b240bc" compoundref="dynamic__constant__buffer_8cpp" startline="552" endline="555">shareLayoutRoot</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classcon_1_1CBuffer_a93c17d7a23341b5058734e6e8202d6a5_1a93c17d7a23341b5058734e6e8202d6a5" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; char &gt;</type>
+        <definition>std::vector&lt;char&gt; con::CBuffer::m_buffer</definition>
+        <argsstring></argsstring>
+        <name>m_buffer</name>
+        <qualifiedname>con::CBuffer::m_buffer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="496" column="13" bodyfile="inc/dynamic_constant_buffer.h" bodystart="496" bodyend="-1"/>
+        <referencedby refid="classcon_1_1CBuffer_aae7b9c1a51d54e3026ae8c67ba9583be_1aae7b9c1a51d54e3026ae8c67ba9583be" compoundref="dynamic__constant__buffer_8cpp" startline="508" endline="512">~CBuffer</referencedby>
+        <referencedby refid="classcon_1_1CBuffer_a26a7a955de3e03646e833c252c9a01de_1a26a7a955de3e03646e833c252c9a01de" compoundref="dynamic__constant__buffer_8cpp" startline="525" endline="528">data</referencedby>
+        <referencedby refid="classcon_1_1CBuffer_ad701e6213cfa305f4556aa408e01b9a7_1ad701e6213cfa305f4556aa408e01b9a7" compoundref="dynamic__constant__buffer_8cpp" startline="530" endline="533">getSizeInBytes</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classcon_1_1CBuffer_a9087299fd88bab576c65e5c2df81e9dd_1a9087299fd88bab576c65e5c2df81e9dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>con::CBuffer::CBuffer</definition>
+        <argsstring>(RawLayout &amp;&amp;lay) cond_noex</argsstring>
+        <name>CBuffer</name>
+        <qualifiedname>con::CBuffer::CBuffer</qualifiedname>
+        <param>
+          <type><ref refid="classcon_1_1RawLayout" kindref="compound">RawLayout</ref> &amp;&amp;</type>
+          <declname>lay</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="498" column="1" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="453" bodyend="458"/>
+      </memberdef>
+      <memberdef kind="function" id="classcon_1_1CBuffer_ab8a2bbb4e0c2eef348680051b4e3f536_1ab8a2bbb4e0c2eef348680051b4e3f536" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>con::CBuffer::CBuffer</definition>
+        <argsstring>(const CookedLayout &amp;lay) cond_noex</argsstring>
+        <name>CBuffer</name>
+        <qualifiedname>con::CBuffer::CBuffer</qualifiedname>
+        <param>
+          <type>const <ref refid="classcon_1_1CookedLayout" kindref="compound">CookedLayout</ref> &amp;</type>
+          <declname>lay</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="499" column="1" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="460" bodyend="466"/>
+      </memberdef>
+      <memberdef kind="function" id="classcon_1_1CBuffer_a02924aeccb95b183321a5d3bebfda819_1a02924aeccb95b183321a5d3bebfda819" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>con::CBuffer::CBuffer</definition>
+        <argsstring>(CookedLayout &amp;&amp;lay) cond_noex</argsstring>
+        <name>CBuffer</name>
+        <qualifiedname>con::CBuffer::CBuffer</qualifiedname>
+        <param>
+          <type><ref refid="classcon_1_1CookedLayout" kindref="compound">CookedLayout</ref> &amp;&amp;</type>
+          <declname>lay</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="500" column="1" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="468" bodyend="474"/>
+      </memberdef>
+      <memberdef kind="function" id="classcon_1_1CBuffer_a9a6b92055d7ec71594a7e89bd8bd3d7d_1a9a6b92055d7ec71594a7e89bd8bd3d7d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>con::CBuffer::CBuffer</definition>
+        <argsstring>(const CBuffer &amp;rhs) noexcept</argsstring>
+        <name>CBuffer</name>
+        <qualifiedname>con::CBuffer::CBuffer</qualifiedname>
+        <param>
+          <type>const <ref refid="classcon_1_1CBuffer" kindref="compound">CBuffer</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="501" column="1" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="476" bodyend="482"/>
+      </memberdef>
+      <memberdef kind="function" id="classcon_1_1CBuffer_a11ade6c9e75640cec81598b080683996_1a11ade6c9e75640cec81598b080683996" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classcon_1_1CBuffer" kindref="compound">CBuffer</ref> &amp;</type>
+        <definition>CBuffer &amp; con::CBuffer::operator==</definition>
+        <argsstring>(const CBuffer &amp;rhs) noexcept</argsstring>
+        <name>operator==</name>
+        <qualifiedname>con::CBuffer::operator==</qualifiedname>
+        <param>
+          <type>const <ref refid="classcon_1_1CBuffer" kindref="compound">CBuffer</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="502" column="9" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="485" bodyend="489"/>
+      </memberdef>
+      <memberdef kind="function" id="classcon_1_1CBuffer_a7a7b7a79390beb654e99f63f43edee28_1a7a7b7a79390beb654e99f63f43edee28" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>con::CBuffer::CBuffer</definition>
+        <argsstring>(CBuffer &amp;&amp;rhs) noexcept</argsstring>
+        <name>CBuffer</name>
+        <qualifiedname>con::CBuffer::CBuffer</qualifiedname>
+        <param>
+          <type><ref refid="classcon_1_1CBuffer" kindref="compound">CBuffer</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>have to be careful with this one... </para>
+        </briefdescription>
+        <detaileddescription>
+<para>===================================================</para>
+<para>the buffer that has once been pilfered must not be used </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="506" column="1" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="492" bodyend="499"/>
+      </memberdef>
+      <memberdef kind="function" id="classcon_1_1CBuffer_a37ec6ef9e6f601ee541e7a42d51b1972_1a37ec6ef9e6f601ee541e7a42d51b1972" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classcon_1_1CBuffer" kindref="compound">CBuffer</ref> &amp;</type>
+        <definition>CBuffer &amp; con::CBuffer::operator=</definition>
+        <argsstring>(CBuffer &amp;&amp;rhs) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>con::CBuffer::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classcon_1_1CBuffer" kindref="compound">CBuffer</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="507" column="9" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="501" bodyend="506"/>
+      </memberdef>
+      <memberdef kind="function" id="classcon_1_1CBuffer_aae7b9c1a51d54e3026ae8c67ba9583be_1aae7b9c1a51d54e3026ae8c67ba9583be" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>con::CBuffer::~CBuffer</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>~CBuffer</name>
+        <qualifiedname>con::CBuffer::~CBuffer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="508" column="1" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="508" bodyend="512"/>
+      </memberdef>
+      <memberdef kind="function" id="classcon_1_1CBuffer_ad81b180faf019ca7e3da617dc7eb2a85_1ad81b180faf019ca7e3da617dc7eb2a85" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcon_1_1CBElementView" kindref="compound">CBElementView</ref></type>
+        <definition>CBElementView con::CBuffer::operator[]</definition>
+        <argsstring>(const std::string &amp;key) cond_noex</argsstring>
+        <name>operator[]</name>
+        <qualifiedname>con::CBuffer::operator[]</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>operator[] is how you begin indexing into buffer (root is always Struct) </para>
+        </briefdescription>
+        <detaileddescription>
+<para>if Buffer is const, you only get to index into the buffer with a read-only proxy </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="512" column="15" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="515" bodyend="518"/>
+      </memberdef>
+      <memberdef kind="function" id="classcon_1_1CBuffer_acc163c2127739c4d17697dedb13982f8_1acc163c2127739c4d17697dedb13982f8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcon_1_1CBElementConstView" kindref="compound">CBElementConstView</ref></type>
+        <definition>CBElementConstView con::CBuffer::operator[]</definition>
+        <argsstring>(const std::string &amp;key) const cond_noex</argsstring>
+        <name>operator[]</name>
+        <qualifiedname>con::CBuffer::operator[]</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="513" column="20" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="520" bodyend="523"/>
+      </memberdef>
+      <memberdef kind="function" id="classcon_1_1CBuffer_a26a7a955de3e03646e833c252c9a01de_1a26a7a955de3e03646e833c252c9a01de" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * con::CBuffer::data</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>data</name>
+        <qualifiedname>con::CBuffer::data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="514" column="12" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="525" bodyend="528"/>
+        <referencedby refid="classIConstantBufferEx_adcce676e6fdded705b765915736adf6d_1adcce676e6fdded705b765915736adf6d" compoundref="constant__buffer__ex_8cpp" startline="7" endline="28">IConstantBufferEx::IConstantBufferEx</referencedby>
+        <referencedby refid="classIConstantBufferEx_a6b89a10f5e7371ddf568346bdf980bbe_1a6b89a10f5e7371ddf568346bdf980bbe" compoundref="constant__buffer__ex_8cpp" startline="41" endline="54">IConstantBufferEx::update</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classcon_1_1CBuffer_ad701e6213cfa305f4556aa408e01b9a7_1ad701e6213cfa305f4556aa408e01b9a7" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t con::CBuffer::getSizeInBytes</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getSizeInBytes</name>
+        <qualifiedname>con::CBuffer::getSizeInBytes</qualifiedname>
+        <briefdescription>
+<para>size of the raw byte buffer </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="516" column="8" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="530" bodyend="533"/>
+        <referencedby refid="classIConstantBufferEx_a6b89a10f5e7371ddf568346bdf980bbe_1a6b89a10f5e7371ddf568346bdf980bbe" compoundref="constant__buffer__ex_8cpp" startline="41" endline="54">IConstantBufferEx::update</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classcon_1_1CBuffer_a2a30c70381d0caa697535aa139455b3f_1a2a30c70381d0caa697535aa139455b3f" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const <ref refid="classcon_1_1CBElement" kindref="compound">CBElement</ref> &amp;</type>
+        <definition>const CBElement &amp; con::CBuffer::getRootElement</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getRootElement</name>
+        <qualifiedname>con::CBuffer::getRootElement</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="517" column="17" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="535" bodyend="538"/>
+        <referencedby refid="classConstantBufferEx_ad6302ddec2ecc314a39220e2fc5e42ee_1ad6302ddec2ecc314a39220e2fc5e42ee" compoundref="constant__buffer__ex_8h" startline="77" endline="80">ConstantBufferEx&lt; T &gt;::getCbRootElement</referencedby>
+        <referencedby refid="classIConstantBufferEx_a6b89a10f5e7371ddf568346bdf980bbe_1a6b89a10f5e7371ddf568346bdf980bbe" compoundref="constant__buffer__ex_8cpp" startline="41" endline="54">IConstantBufferEx::update</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classcon_1_1CBuffer_afb7ac8e042c7d759a58ed3731b4ce295_1afb7ac8e042c7d759a58ed3731b4ce295" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void con::CBuffer::copyFrom</definition>
+        <argsstring>(const CBuffer &amp;) cond_noex</argsstring>
+        <name>copyFrom</name>
+        <qualifiedname>con::CBuffer::copyFrom</qualifiedname>
+        <param>
+          <type>const <ref refid="classcon_1_1CBuffer" kindref="compound">CBuffer</ref> &amp;</type>
+          <defname>other</defname>
+        </param>
+        <briefdescription>
+<para>copy bytes from another buffer (layouts must match) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="519" column="6" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="540" bodyend="544"/>
+        <referencedby refid="classTransformScaleVSCB_af30654378cc9097227e684f792e0b770_1af30654378cc9097227e684f792e0b770" compoundref="transform__vscb_8cpp" startline="119" endline="124">TransformScaleVSCB::operator=</referencedby>
+        <referencedby refid="classConstantBufferEx_aa2a12472fc3c3cde1452421fd907cdcb_1aa2a12472fc3c3cde1452421fd907cdcb" compoundref="constant__buffer__ex_8h" startline="92" endline="96">ConstantBufferEx&lt; T &gt;::setBuffer</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classcon_1_1CBuffer_a8408feac69a51d15ec6bc47656766cec_1a8408feac69a51d15ec6bc47656766cec" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void con::CBuffer::moveFrom</definition>
+        <argsstring>(CBuffer &amp;) noexcept</argsstring>
+        <name>moveFrom</name>
+        <qualifiedname>con::CBuffer::moveFrom</qualifiedname>
+        <param>
+          <type><ref refid="classcon_1_1CBuffer" kindref="compound">CBuffer</ref> &amp;</type>
+          <defname>other</defname>
+        </param>
+        <briefdescription>
+<para>move bytes from another buffer (layouts must match) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="521" column="6" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="546" bodyend="550"/>
+      </memberdef>
+      <memberdef kind="function" id="classcon_1_1CBuffer_aedf1ab4ab2022c99bee4321c59b240bc_1aedf1ab4ab2022c99bee4321c59b240bc" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classcon_1_1CBElement" kindref="compound">CBElement</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; CBElement &gt; con::CBuffer::shareLayoutRoot</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>shareLayoutRoot</name>
+        <qualifiedname>con::CBuffer::shareLayoutRoot</qualifiedname>
+        <briefdescription>
+<para>return another sptr to the layout root </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="523" column="17" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="552" bodyend="555"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>The buffer object is a combination of a raw byte buffer with a <ref refid="classcon_1_1CBElement" kindref="compound">CBElement</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>=============================================================</para>
+<para><simplesect kind="author"><para>KeyC0de </para>
+</simplesect>
+<simplesect kind="date"><para>2022/08/21 19:53</para>
+</simplesect>
+tree structure which acts as a view for those bytes</para>
+<para>operator[] indexes into the root Struct, returning a Ref shell that can be</para>
+<para>used to further index if struct/array, returning further Ref shells, or used</para>
+<para>to access the data stored in the buffer if a Leaf element class <heading level="1">various resources can be used to construct a <ref refid="classcon_1_1CBuffer" kindref="compound">CBuffer</ref> </heading>
+</para>
+    </detaileddescription>
+    <location file="inc/dynamic_constant_buffer.h" line="493" column="1" bodyfile="inc/dynamic_constant_buffer.h" bodystart="494" bodyend="524"/>
+    <listofallmembers>
+      <member refid="classcon_1_1CBuffer_a9087299fd88bab576c65e5c2df81e9dd_1a9087299fd88bab576c65e5c2df81e9dd" prot="public" virt="non-virtual"><scope>con::CBuffer</scope><name>CBuffer</name></member>
+      <member refid="classcon_1_1CBuffer_ab8a2bbb4e0c2eef348680051b4e3f536_1ab8a2bbb4e0c2eef348680051b4e3f536" prot="public" virt="non-virtual"><scope>con::CBuffer</scope><name>CBuffer</name></member>
+      <member refid="classcon_1_1CBuffer_a02924aeccb95b183321a5d3bebfda819_1a02924aeccb95b183321a5d3bebfda819" prot="public" virt="non-virtual"><scope>con::CBuffer</scope><name>CBuffer</name></member>
+      <member refid="classcon_1_1CBuffer_a9a6b92055d7ec71594a7e89bd8bd3d7d_1a9a6b92055d7ec71594a7e89bd8bd3d7d" prot="public" virt="non-virtual"><scope>con::CBuffer</scope><name>CBuffer</name></member>
+      <member refid="classcon_1_1CBuffer_a7a7b7a79390beb654e99f63f43edee28_1a7a7b7a79390beb654e99f63f43edee28" prot="public" virt="non-virtual"><scope>con::CBuffer</scope><name>CBuffer</name></member>
+      <member refid="classcon_1_1CBuffer_afb7ac8e042c7d759a58ed3731b4ce295_1afb7ac8e042c7d759a58ed3731b4ce295" prot="public" virt="non-virtual"><scope>con::CBuffer</scope><name>copyFrom</name></member>
+      <member refid="classcon_1_1CBuffer_a26a7a955de3e03646e833c252c9a01de_1a26a7a955de3e03646e833c252c9a01de" prot="public" virt="non-virtual"><scope>con::CBuffer</scope><name>data</name></member>
+      <member refid="classcon_1_1CBuffer_a2a30c70381d0caa697535aa139455b3f_1a2a30c70381d0caa697535aa139455b3f" prot="public" virt="non-virtual"><scope>con::CBuffer</scope><name>getRootElement</name></member>
+      <member refid="classcon_1_1CBuffer_ad701e6213cfa305f4556aa408e01b9a7_1ad701e6213cfa305f4556aa408e01b9a7" prot="public" virt="non-virtual"><scope>con::CBuffer</scope><name>getSizeInBytes</name></member>
+      <member refid="classcon_1_1CBuffer_a93c17d7a23341b5058734e6e8202d6a5_1a93c17d7a23341b5058734e6e8202d6a5" prot="private" virt="non-virtual"><scope>con::CBuffer</scope><name>m_buffer</name></member>
+      <member refid="classcon_1_1CBuffer_a5ecfa284966d4210f13d994a12281cda_1a5ecfa284966d4210f13d994a12281cda" prot="private" virt="non-virtual"><scope>con::CBuffer</scope><name>m_pLayoutRoot</name></member>
+      <member refid="classcon_1_1CBuffer_a8408feac69a51d15ec6bc47656766cec_1a8408feac69a51d15ec6bc47656766cec" prot="public" virt="non-virtual"><scope>con::CBuffer</scope><name>moveFrom</name></member>
+      <member refid="classcon_1_1CBuffer_a37ec6ef9e6f601ee541e7a42d51b1972_1a37ec6ef9e6f601ee541e7a42d51b1972" prot="public" virt="non-virtual"><scope>con::CBuffer</scope><name>operator=</name></member>
+      <member refid="classcon_1_1CBuffer_a11ade6c9e75640cec81598b080683996_1a11ade6c9e75640cec81598b080683996" prot="public" virt="non-virtual"><scope>con::CBuffer</scope><name>operator==</name></member>
+      <member refid="classcon_1_1CBuffer_ad81b180faf019ca7e3da617dc7eb2a85_1ad81b180faf019ca7e3da617dc7eb2a85" prot="public" virt="non-virtual"><scope>con::CBuffer</scope><name>operator[]</name></member>
+      <member refid="classcon_1_1CBuffer_acc163c2127739c4d17697dedb13982f8_1acc163c2127739c4d17697dedb13982f8" prot="public" virt="non-virtual"><scope>con::CBuffer</scope><name>operator[]</name></member>
+      <member refid="classcon_1_1CBuffer_aedf1ab4ab2022c99bee4321c59b240bc_1aedf1ab4ab2022c99bee4321c59b240bc" prot="public" virt="non-virtual"><scope>con::CBuffer</scope><name>shareLayoutRoot</name></member>
+      <member refid="classcon_1_1CBuffer_aae7b9c1a51d54e3026ae8c67ba9583be_1aae7b9c1a51d54e3026ae8c67ba9583be" prot="public" virt="non-virtual"><scope>con::CBuffer</scope><name>~CBuffer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

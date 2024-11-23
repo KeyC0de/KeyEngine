@@ -1,0 +1,47 @@
+\doxysection{camera\+\_\+manager.\+h}
+\hypertarget{camera__manager_8h_source}{}\label{camera__manager_8h_source}\index{inc/camera\_manager.h@{inc/camera\_manager.h}}
+\mbox{\hyperlink{camera__manager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{non__copyable_8h}{non\_copyable.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{rendering__channel_8h}{rendering\_channel.h}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCamera}{Camera}};}
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGraphics}{Graphics}};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceren}{ren}}}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }Renderer;}
+\DoxyCodeLine{00015\ \}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCameraManager}{CameraManager}}\ final}
+\DoxyCodeLine{00024\ \ \ \ \ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classNonCopyable}{NonCopyable}}}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classCameraManager}{CameraManager}}\ *\mbox{\hyperlink{classCameraManager_a2d404308eaffbbee0630a22e1318ad1d_a2d404308eaffbbee0630a22e1318ad1d}{s\_pInstance}};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classCameraManager_a688f373f7162d92e2f17934bcf941317_a688f373f7162d92e2f17934bcf941317}{m\_activeCameraIndex}}\ =\ 0;}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classCameraManager_accac5104526f70019911393072806f72_accac5104526f70019911393072806f72}{m\_controlledCameraIndex}}\ =\ 0;}
+\DoxyCodeLine{00030\ \ \ \ \ std::vector<std::shared\_ptr<Camera>>\ \mbox{\hyperlink{classCameraManager_a4c221f7117b26ad11d83522b36707870_a4c221f7117b26ad11d83522b36707870}{m\_cameras}};}
+\DoxyCodeLine{00031\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{classCameraManager_af1976881cb3c38701dd487f4ff19bc19_af1976881cb3c38701dd487f4ff19bc19}{CameraManager}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00033\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classCameraManager}{CameraManager}}\&\ \mbox{\hyperlink{classCameraManager_ac7e6b0996395dcaaa889d17d5a8a639e_ac7e6b0996395dcaaa889d17d5a8a639e}{getInstance}}();}
+\DoxyCodeLine{00035\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCameraManager_a41a699cd43fdb81d7a8b93ca8b9867ee_a41a699cd43fdb81d7a8b93ca8b9867ee}{displayImguiWidgets}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx\ )\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCameraManager_a434536c5857da84fbb3a93e7071cdfca_a434536c5857da84fbb3a93e7071cdfca}{add}}(\ std::shared\_ptr<Camera>\ pCam\ );}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCameraManager_ad457347093fe6fae1d65b1a3d6324fd5_ad457347093fe6fae1d65b1a3d6324fd5}{connectMaterialsToRenderer}}(\ \mbox{\hyperlink{classren_1_1Renderer}{ren::Renderer}}\ \&r\ );}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCameraManager_ab38254a7e009c21fdb7577c1e9b090e7_ab38254a7e009c21fdb7577c1e9b090e7}{render}}(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ channels\ =\ \mbox{\hyperlink{namespacerch_a7bda900872e1367b3434b6b548e17d2c_a7bda900872e1367b3434b6b548e17d2c}{rch::all}}\ )\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCameraManager_a549ef1d47bd5fd7294c6213c7e4e8dd1_a549ef1d47bd5fd7294c6213c7e4e8dd1}{onWindowResize}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx\ );}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{classCamera}{Camera}}\&\ \mbox{\hyperlink{classCameraManager_abdf764797cf31edf23ae92496b6dfcf1_abdf764797cf31edf23ae92496b6dfcf1}{getActiveCamera}}()\ cond\_noex;}
+\DoxyCodeLine{00042\ \ \ \ \ const\ \mbox{\hyperlink{classCamera}{Camera}}\&\ \mbox{\hyperlink{classCameraManager_abdf764797cf31edf23ae92496b6dfcf1_abdf764797cf31edf23ae92496b6dfcf1}{getActiveCamera}}()\ const\ noexcept;}
+\DoxyCodeLine{00043\ \ \ \ \ std::shared\_ptr<\mbox{\hyperlink{classCamera}{Camera}}>\ \mbox{\hyperlink{classCameraManager_a51f0f22d423edcbd14d305705d680aaa_a51f0f22d423edcbd14d305705d680aaa}{shareActiveCamera}}()\ const\ noexcept;}
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{classCamera}{Camera}}\&\ \mbox{\hyperlink{classCameraManager_a4947ac4aaea7190d58f2e5ac1795fd34_a4947ac4aaea7190d58f2e5ac1795fd34}{getControlledCamera}}()\ cond\_noex;}
+\DoxyCodeLine{00045\ \ \ \ \ const\ \mbox{\hyperlink{classCamera}{Camera}}\&\ \mbox{\hyperlink{classCameraManager_a4947ac4aaea7190d58f2e5ac1795fd34_a4947ac4aaea7190d58f2e5ac1795fd34}{getControlledCamera}}()\ const\ noexcept;}
+\DoxyCodeLine{00046\ \ \ \ \ std::shared\_ptr<\mbox{\hyperlink{classCamera}{Camera}}>\ \mbox{\hyperlink{classCameraManager_a3449fa52852d18549a3ee5948bc43405_a3449fa52852d18549a3ee5948bc43405}{shareControlledCamera}}()\ const\ noexcept;}
+\DoxyCodeLine{00047\ \};}
+
+\end{DoxyCode}

@@ -49,18 +49,15 @@ const D3D11_TEXTURE2D_DESC createTextureDescriptor( const unsigned width, const 
 
 const DXGI_FORMAT getFormatRtv( const RenderTargetViewMode mode );
 
-//	\function		||	\date	2022/10/13 13:52
-//	\brief	Use when creating the texture descriptor
-//				DS format for D3D11_TEXTURE2D_DESC creation
-//				_TYPELESS is actually a float type
-//				DXGI_FORMAT_R32_TYPELESS is compatible with both DXGI_FORMAT_D32_FLOAT and DXGI_FORMAT_R32_FLOAT
-//				typeless formats that allow the same texture to be interpreted differently depending on the context and they are necessary if the texture is to be used in multiple contexts eg. depth testing and sampling in shaders
+/// \brief	Use when creating the texture descriptor
+/// \brief	DS format for D3D11_TEXTURE2D_DESC creation
+/// \brief	_TYPELESS is actually a float type
+/// \brief	DXGI_FORMAT_R32_TYPELESS is compatible with both DXGI_FORMAT_D32_FLOAT and DXGI_FORMAT_R32_FLOAT
+/// \brief	typeless formats that allow the same texture to be interpreted differently depending on the context and they are necessary if the texture is to be used in multiple contexts eg. depth testing and sampling in shaders
 const DXGI_FORMAT getTypelessFormatDsv( const DepthStencilViewMode mode );
 
-//	\function		||	\date	2022/10/13 13:52
-//	\brief	when we want to map a texture view on the Depth Stencil
+/// \brief	when we want to map a texture view on the Depth Stencil
 const DXGI_FORMAT getTypedFormatDsv( const DepthStencilViewMode mode );
 
-//	\function		||	\date	2022/10/13 13:52
-//	\brief	when we want to sample from the Depth Stencil in the back buffer
+/// \brief	when we want to sample from the Depth Stencil in the back buffer
 const DXGI_FORMAT getShaderInputFormatDsv( const DepthStencilViewMode mode );

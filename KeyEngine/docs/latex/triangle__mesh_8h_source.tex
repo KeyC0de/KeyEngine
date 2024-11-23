@@ -1,0 +1,23 @@
+\doxysection{triangle\+\_\+mesh.\+h}
+\hypertarget{triangle__mesh_8h_source}{}\label{triangle__mesh_8h_source}\index{inc/triangle\_mesh.h@{inc/triangle\_mesh.h}}
+\mbox{\hyperlink{triangle__mesh_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{dynamic__vertex__buffer_8h}{dynamic\_vertex\_buffer.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structTriangleMesh}{TriangleMesh}}\ final}
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \mbox{\hyperlink{classver_1_1VBuffer}{ver::VBuffer}}\ \mbox{\hyperlink{structTriangleMesh_ad2c351e592766008f10cd37c3b71350b_ad2c351e592766008f10cd37c3b71350b}{m\_vb}};}
+\DoxyCodeLine{00010\ \ \ \ \ std::vector<unsigned>\ \mbox{\hyperlink{structTriangleMesh_a6eb90d0e6a6a925013922f6182dc1a5e_a6eb90d0e6a6a925013922f6182dc1a5e}{m\_indices}};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{structTriangleMesh_aabd3741e2a547fb34c206069ebfd4b6c_aabd3741e2a547fb34c206069ebfd4b6c}{TriangleMesh}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{structTriangleMesh_aabd3741e2a547fb34c206069ebfd4b6c_aabd3741e2a547fb34c206069ebfd4b6c}{TriangleMesh}}(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classver_1_1VBuffer}{ver::VBuffer}}\ \&vertices,\ \textcolor{keyword}{const}\ std::vector<unsigned>\ \&indices,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ bMultimesh\ =\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structTriangleMesh_ad6f2bd41d5ff9a09d7ac19366ab20604_ad6f2bd41d5ff9a09d7ac19366ab20604}{transform}}(\ \textcolor{keyword}{const}\ DirectX::XMMATRIX\ \&matrix\ );}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structTriangleMesh_af284c2748d511589f18788bf245ca998_af284c2748d511589f18788bf245ca998}{setFlatShadedIndependentNormals}}()\ cond\_noex;}
+\DoxyCodeLine{00017\ \};}
+
+\end{DoxyCode}

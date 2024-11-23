@@ -1,0 +1,254 @@
+\doxysection{Bitmap Class Reference}
+\hypertarget{classBitmap}{}\label{classBitmap}\index{Bitmap@{Bitmap}}
+
+
+uses \doxylink{namespaceDirectX}{DirectX} Tex to load images into  
+
+
+
+
+{\ttfamily \#include $<$bitmap.\+h$>$}
+
+Inheritance diagram for Bitmap\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classBitmap}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classBitmap_1_1BitmapException}{Bitmap\+Exception}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classBitmap_a83b763f52f32144764bf50ba22c3c080_a83b763f52f32144764bf50ba22c3c080}{Texel}} = \mbox{\hyperlink{structColorBGRA}{Color\+BGRA}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBitmap_ab6e8f8dd32a68a28c12aee9d0b6838fa_ab6e8f8dd32a68a28c12aee9d0b6838fa}{Bitmap}} (const unsigned int width, const unsigned int height)
+\item 
+size\+\_\+t \mbox{\hyperlink{classBitmap_a6da8f036b61df856831b4307b3d583a2_a6da8f036b61df856831b4307b3d583a2}{get\+Size}} () const noexcept
+\item 
+void \mbox{\hyperlink{classBitmap_a972095607f9943d271588c0d425cb665_a972095607f9943d271588c0d425cb665}{clear}} (const \mbox{\hyperlink{classBitmap_a83b763f52f32144764bf50ba22c3c080_a83b763f52f32144764bf50ba22c3c080}{Texel}} fill\+Value) noexcept
+\item 
+void \mbox{\hyperlink{classBitmap_a84a99a827a407f53aa2415122c64ff2c_a84a99a827a407f53aa2415122c64ff2c}{set\+Texel}} (const unsigned int x, const unsigned int y, const \mbox{\hyperlink{classBitmap_a83b763f52f32144764bf50ba22c3c080_a83b763f52f32144764bf50ba22c3c080}{Texel}} col) cond\+\_\+noex
+\item 
+const \mbox{\hyperlink{classBitmap_a83b763f52f32144764bf50ba22c3c080_a83b763f52f32144764bf50ba22c3c080}{Texel}} \mbox{\hyperlink{classBitmap_a533369def9843f9412f1621c0b6142d5_a533369def9843f9412f1621c0b6142d5}{get\+Texel}} (const unsigned int x, const unsigned int y) const cond\+\_\+noex
+\item 
+unsigned int \mbox{\hyperlink{classBitmap_a202f7fe815d1cfa32f243d2037c5cb0b_a202f7fe815d1cfa32f243d2037c5cb0b}{get\+Width}} () const noexcept
+\item 
+unsigned int \mbox{\hyperlink{classBitmap_a690ad3010a52d955d017c7f5003e2c12_a690ad3010a52d955d017c7f5003e2c12}{get\+Height}} () const noexcept
+\item 
+unsigned int \mbox{\hyperlink{classBitmap_a55f7f5472b895c5eed369cf9b9c685da_a55f7f5472b895c5eed369cf9b9c685da}{get\+Pitch}} () const noexcept
+\begin{DoxyCompactList}\small\item\em === \doxylink{classBitmap_a202f7fe815d1cfa32f243d2037c5cb0b_a202f7fe815d1cfa32f243d2037c5cb0b}{get\+Width()} \texorpdfstring{$\ast$}{*} sizeof Texel \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBitmap_a83b763f52f32144764bf50ba22c3c080_a83b763f52f32144764bf50ba22c3c080}{Texel}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classBitmap_a373fc15124cd8efc77c01edb142d55af_a373fc15124cd8efc77c01edb142d55af}{data}} () noexcept
+\item 
+const \mbox{\hyperlink{classBitmap_a83b763f52f32144764bf50ba22c3c080_a83b763f52f32144764bf50ba22c3c080}{Texel}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classBitmap_a405a23fbca1232ebd8e2bbbc05cd6fae_a405a23fbca1232ebd8e2bbbc05cd6fae}{get\+Data}} () const noexcept
+\item 
+void \mbox{\hyperlink{classBitmap_ada5bff46e6270af0cbed7f8252af7956_ada5bff46e6270af0cbed7f8252af7956}{save}} (const std\+::string \&filename, const unsigned wic\+Flags=Direct\+X\+::\+WIC\+\_\+\+FLAGS\+\_\+\+NONE) const
+\item 
+bool \mbox{\hyperlink{classBitmap_aec31e1d65a346963947e83e29aa00d34_aec31e1d65a346963947e83e29aa00d34}{has\+Alpha}} () const noexcept
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNonCopyable_a809b6e4ade7ae32f6d248f2a3b783d45_a809b6e4ade7ae32f6d248f2a3b783d45}{Non\+Copyable}} ()=default
+\item 
+\mbox{\hyperlink{classNonCopyable_a15aa3015488bb26c47ded914cb630cf5_a15aa3015488bb26c47ded914cb630cf5}{Non\+Copyable}} (const \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_af4788b57da9a9faa570c754c22c724f5_af4788b57da9a9faa570c754c22c724f5}{operator=}} (const \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable_a487646562ae30ece23d7638f2aed1dde_a487646562ae30ece23d7638f2aed1dde}{Non\+Copyable}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_ae032ca32cda9c836c27b28eb6a087d18_ae032ca32cda9c836c27b28eb6a087d18}{operator=}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable_af716e4cfb79381710ef4490414939ae9_af716e4cfb79381710ef4490414939ae9}{Non\+Copyable}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&\&rhs)=default
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_af81816bd4c2c4421a6eab98843ead6e4_af81816bd4c2c4421a6eab98843ead6e4}{operator=}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&\&rhs)=default
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classBitmap}{Bitmap}} \mbox{\hyperlink{classBitmap_a6e287dc135d2267f1ec28766b54f58ac_a6e287dc135d2267f1ec28766b54f58ac}{load\+From\+File}} (const std\+::string \&filename, unsigned wic\+Flags=Direct\+X\+::\+WIC\+\_\+\+FLAGS\+\_\+\+IGNORE\+\_\+\+SRGB)
+\item 
+static const Direct\+X\+::\+XMVECTOR \mbox{\hyperlink{classBitmap_ad54deb3c80e50da488b3ebc109a35c46_ad54deb3c80e50da488b3ebc109a35c46}{color\+To\+Vector}} (const \mbox{\hyperlink{classBitmap_a83b763f52f32144764bf50ba22c3c080_a83b763f52f32144764bf50ba22c3c080}{Bitmap\+::\+Texel}} col) noexcept
+\begin{DoxyCompactList}\small\item\em convert from Color(0..255) to vector(-\/1..1) \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classBitmap_a83b763f52f32144764bf50ba22c3c080_a83b763f52f32144764bf50ba22c3c080}{Bitmap\+::\+Texel}} \mbox{\hyperlink{classBitmap_a8c616d78d019253dd00223f34f7b0735_a8c616d78d019253dd00223f34f7b0735}{vector\+To\+Color}} (Direct\+X\+::\+XMVECTOR v) noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBitmap_a15eff666964a36f6dad26d31183346f0_a15eff666964a36f6dad26d31183346f0}{Bitmap}} (Direct\+X\+::\+Scratch\+Image rhs) noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Direct\+X\+::\+Scratch\+Image \mbox{\hyperlink{classBitmap_a0b8cb0045f1f373cd41d2c6c53589a5a_a0b8cb0045f1f373cd41d2c6c53589a5a}{m\+\_\+scratch\+Img}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr DXGI\+\_\+\+FORMAT \mbox{\hyperlink{classBitmap_a768217e6da0d65bed9bdc270159d0d16_a768217e6da0d65bed9bdc270159d0d16}{s\+\_\+format}} = DXGI\+\_\+\+FORMAT\+::\+DXGI\+\_\+\+FORMAT\+\_\+\+B8\+G8\+R8\+A8\+\_\+\+UNORM
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNonCopyable_a3e461fb46c72b9a5af7df7e74dbd899e_a3e461fb46c72b9a5af7df7e74dbd899e}{\texorpdfstring{$\sim$}{\string~}\+Non\+Copyable}} () noexcept=default
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+uses \doxylink{namespaceDirectX}{DirectX} Tex to load images into 
+
+=============================================================
+
+\begin{DoxyAuthor}{Author}
+Key\+C0de 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2021/10/04 12\+:56 \doxysubsection*{rule-\/of-\/0 }
+\end{DoxyDate}
+
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classBitmap_a83b763f52f32144764bf50ba22c3c080_a83b763f52f32144764bf50ba22c3c080}\index{Bitmap@{Bitmap}!Texel@{Texel}}
+\index{Texel@{Texel}!Bitmap@{Bitmap}}
+\doxysubsubsection{\texorpdfstring{Texel}{Texel}}
+{\footnotesize\ttfamily \label{classBitmap_a83b763f52f32144764bf50ba22c3c080_a83b763f52f32144764bf50ba22c3c080} 
+using \mbox{\hyperlink{classBitmap_a83b763f52f32144764bf50ba22c3c080_a83b763f52f32144764bf50ba22c3c080}{Bitmap\+::\+Texel}} = \mbox{\hyperlink{structColorBGRA}{Color\+BGRA}}}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classBitmap_a15eff666964a36f6dad26d31183346f0_a15eff666964a36f6dad26d31183346f0}\index{Bitmap@{Bitmap}!Bitmap@{Bitmap}}
+\index{Bitmap@{Bitmap}!Bitmap@{Bitmap}}
+\doxysubsubsection{\texorpdfstring{Bitmap()}{Bitmap()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classBitmap_a15eff666964a36f6dad26d31183346f0_a15eff666964a36f6dad26d31183346f0} 
+Bitmap\+::\+Bitmap (\begin{DoxyParamCaption}\item[{Direct\+X\+::\+Scratch\+Image}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classBitmap_ab6e8f8dd32a68a28c12aee9d0b6838fa_ab6e8f8dd32a68a28c12aee9d0b6838fa}\index{Bitmap@{Bitmap}!Bitmap@{Bitmap}}
+\index{Bitmap@{Bitmap}!Bitmap@{Bitmap}}
+\doxysubsubsection{\texorpdfstring{Bitmap()}{Bitmap()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classBitmap_ab6e8f8dd32a68a28c12aee9d0b6838fa_ab6e8f8dd32a68a28c12aee9d0b6838fa} 
+Bitmap\+::\+Bitmap (\begin{DoxyParamCaption}\item[{const unsigned int}]{width}{, }\item[{const unsigned int}]{height}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classBitmap_a972095607f9943d271588c0d425cb665_a972095607f9943d271588c0d425cb665}\index{Bitmap@{Bitmap}!clear@{clear}}
+\index{clear@{clear}!Bitmap@{Bitmap}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily \label{classBitmap_a972095607f9943d271588c0d425cb665_a972095607f9943d271588c0d425cb665} 
+void Bitmap\+::clear (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBitmap_a83b763f52f32144764bf50ba22c3c080_a83b763f52f32144764bf50ba22c3c080}{Texel}}}]{fill\+Value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classBitmap_ad54deb3c80e50da488b3ebc109a35c46_ad54deb3c80e50da488b3ebc109a35c46}\index{Bitmap@{Bitmap}!colorToVector@{colorToVector}}
+\index{colorToVector@{colorToVector}!Bitmap@{Bitmap}}
+\doxysubsubsection{\texorpdfstring{colorToVector()}{colorToVector()}}
+{\footnotesize\ttfamily \label{classBitmap_ad54deb3c80e50da488b3ebc109a35c46_ad54deb3c80e50da488b3ebc109a35c46} 
+const dx\+::\+XMVECTOR Bitmap\+::color\+To\+Vector (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBitmap_a83b763f52f32144764bf50ba22c3c080_a83b763f52f32144764bf50ba22c3c080}{Bitmap\+::\+Texel}}}]{col}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+
+
+convert from Color(0..255) to vector(-\/1..1) 
+
+\Hypertarget{classBitmap_a373fc15124cd8efc77c01edb142d55af_a373fc15124cd8efc77c01edb142d55af}\index{Bitmap@{Bitmap}!data@{data}}
+\index{data@{data}!Bitmap@{Bitmap}}
+\doxysubsubsection{\texorpdfstring{data()}{data()}}
+{\footnotesize\ttfamily \label{classBitmap_a373fc15124cd8efc77c01edb142d55af_a373fc15124cd8efc77c01edb142d55af} 
+\mbox{\hyperlink{classBitmap_a83b763f52f32144764bf50ba22c3c080_a83b763f52f32144764bf50ba22c3c080}{Bitmap\+::\+Texel}} \texorpdfstring{$\ast$}{*} Bitmap\+::data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classBitmap_a405a23fbca1232ebd8e2bbbc05cd6fae_a405a23fbca1232ebd8e2bbbc05cd6fae}\index{Bitmap@{Bitmap}!getData@{getData}}
+\index{getData@{getData}!Bitmap@{Bitmap}}
+\doxysubsubsection{\texorpdfstring{getData()}{getData()}}
+{\footnotesize\ttfamily \label{classBitmap_a405a23fbca1232ebd8e2bbbc05cd6fae_a405a23fbca1232ebd8e2bbbc05cd6fae} 
+const \mbox{\hyperlink{classBitmap_a83b763f52f32144764bf50ba22c3c080_a83b763f52f32144764bf50ba22c3c080}{Bitmap\+::\+Texel}} \texorpdfstring{$\ast$}{*} Bitmap\+::get\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classBitmap_a690ad3010a52d955d017c7f5003e2c12_a690ad3010a52d955d017c7f5003e2c12}\index{Bitmap@{Bitmap}!getHeight@{getHeight}}
+\index{getHeight@{getHeight}!Bitmap@{Bitmap}}
+\doxysubsubsection{\texorpdfstring{getHeight()}{getHeight()}}
+{\footnotesize\ttfamily \label{classBitmap_a690ad3010a52d955d017c7f5003e2c12_a690ad3010a52d955d017c7f5003e2c12} 
+unsigned int Bitmap\+::get\+Height (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classBitmap_a55f7f5472b895c5eed369cf9b9c685da_a55f7f5472b895c5eed369cf9b9c685da}\index{Bitmap@{Bitmap}!getPitch@{getPitch}}
+\index{getPitch@{getPitch}!Bitmap@{Bitmap}}
+\doxysubsubsection{\texorpdfstring{getPitch()}{getPitch()}}
+{\footnotesize\ttfamily \label{classBitmap_a55f7f5472b895c5eed369cf9b9c685da_a55f7f5472b895c5eed369cf9b9c685da} 
+unsigned int Bitmap\+::get\+Pitch (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+=== \doxylink{classBitmap_a202f7fe815d1cfa32f243d2037c5cb0b_a202f7fe815d1cfa32f243d2037c5cb0b}{get\+Width()} \texorpdfstring{$\ast$}{*} sizeof Texel 
+
+\Hypertarget{classBitmap_a6da8f036b61df856831b4307b3d583a2_a6da8f036b61df856831b4307b3d583a2}\index{Bitmap@{Bitmap}!getSize@{getSize}}
+\index{getSize@{getSize}!Bitmap@{Bitmap}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily \label{classBitmap_a6da8f036b61df856831b4307b3d583a2_a6da8f036b61df856831b4307b3d583a2} 
+size\+\_\+t Bitmap\+::get\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classBitmap_a533369def9843f9412f1621c0b6142d5_a533369def9843f9412f1621c0b6142d5}\index{Bitmap@{Bitmap}!getTexel@{getTexel}}
+\index{getTexel@{getTexel}!Bitmap@{Bitmap}}
+\doxysubsubsection{\texorpdfstring{getTexel()}{getTexel()}}
+{\footnotesize\ttfamily \label{classBitmap_a533369def9843f9412f1621c0b6142d5_a533369def9843f9412f1621c0b6142d5} 
+const \mbox{\hyperlink{classBitmap_a83b763f52f32144764bf50ba22c3c080_a83b763f52f32144764bf50ba22c3c080}{Bitmap\+::\+Texel}} Bitmap\+::get\+Texel (\begin{DoxyParamCaption}\item[{const unsigned int}]{x}{, }\item[{const unsigned int}]{y}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classBitmap_a202f7fe815d1cfa32f243d2037c5cb0b_a202f7fe815d1cfa32f243d2037c5cb0b}\index{Bitmap@{Bitmap}!getWidth@{getWidth}}
+\index{getWidth@{getWidth}!Bitmap@{Bitmap}}
+\doxysubsubsection{\texorpdfstring{getWidth()}{getWidth()}}
+{\footnotesize\ttfamily \label{classBitmap_a202f7fe815d1cfa32f243d2037c5cb0b_a202f7fe815d1cfa32f243d2037c5cb0b} 
+unsigned int Bitmap\+::get\+Width (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classBitmap_aec31e1d65a346963947e83e29aa00d34_aec31e1d65a346963947e83e29aa00d34}\index{Bitmap@{Bitmap}!hasAlpha@{hasAlpha}}
+\index{hasAlpha@{hasAlpha}!Bitmap@{Bitmap}}
+\doxysubsubsection{\texorpdfstring{hasAlpha()}{hasAlpha()}}
+{\footnotesize\ttfamily \label{classBitmap_aec31e1d65a346963947e83e29aa00d34_aec31e1d65a346963947e83e29aa00d34} 
+bool Bitmap\+::has\+Alpha (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classBitmap_a6e287dc135d2267f1ec28766b54f58ac_a6e287dc135d2267f1ec28766b54f58ac}\index{Bitmap@{Bitmap}!loadFromFile@{loadFromFile}}
+\index{loadFromFile@{loadFromFile}!Bitmap@{Bitmap}}
+\doxysubsubsection{\texorpdfstring{loadFromFile()}{loadFromFile()}}
+{\footnotesize\ttfamily \label{classBitmap_a6e287dc135d2267f1ec28766b54f58ac_a6e287dc135d2267f1ec28766b54f58ac} 
+\mbox{\hyperlink{classBitmap}{Bitmap}} Bitmap\+::load\+From\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename}{, }\item[{unsigned}]{wic\+Flags}{ = {\ttfamily DirectX\+:\+:WIC\+\_\+FLAGS\+\_\+IGNORE\+\_\+SRGB}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classBitmap_ada5bff46e6270af0cbed7f8252af7956_ada5bff46e6270af0cbed7f8252af7956}\index{Bitmap@{Bitmap}!save@{save}}
+\index{save@{save}!Bitmap@{Bitmap}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily \label{classBitmap_ada5bff46e6270af0cbed7f8252af7956_ada5bff46e6270af0cbed7f8252af7956} 
+void Bitmap\+::save (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename}{, }\item[{const unsigned}]{wic\+Flags}{ = {\ttfamily DirectX\+:\+:WIC\+\_\+FLAGS\+\_\+NONE}}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classBitmap_a84a99a827a407f53aa2415122c64ff2c_a84a99a827a407f53aa2415122c64ff2c}\index{Bitmap@{Bitmap}!setTexel@{setTexel}}
+\index{setTexel@{setTexel}!Bitmap@{Bitmap}}
+\doxysubsubsection{\texorpdfstring{setTexel()}{setTexel()}}
+{\footnotesize\ttfamily \label{classBitmap_a84a99a827a407f53aa2415122c64ff2c_a84a99a827a407f53aa2415122c64ff2c} 
+void Bitmap\+::set\+Texel (\begin{DoxyParamCaption}\item[{const unsigned int}]{x}{, }\item[{const unsigned int}]{y}{, }\item[{const \mbox{\hyperlink{classBitmap_a83b763f52f32144764bf50ba22c3c080_a83b763f52f32144764bf50ba22c3c080}{Texel}}}]{col}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classBitmap_a8c616d78d019253dd00223f34f7b0735_a8c616d78d019253dd00223f34f7b0735}\index{Bitmap@{Bitmap}!vectorToColor@{vectorToColor}}
+\index{vectorToColor@{vectorToColor}!Bitmap@{Bitmap}}
+\doxysubsubsection{\texorpdfstring{vectorToColor()}{vectorToColor()}}
+{\footnotesize\ttfamily \label{classBitmap_a8c616d78d019253dd00223f34f7b0735_a8c616d78d019253dd00223f34f7b0735} 
+\mbox{\hyperlink{classBitmap_a83b763f52f32144764bf50ba22c3c080_a83b763f52f32144764bf50ba22c3c080}{Bitmap\+::\+Texel}} Bitmap\+::vector\+To\+Color (\begin{DoxyParamCaption}\item[{Direct\+X\+::\+XMVECTOR}]{v}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classBitmap_a0b8cb0045f1f373cd41d2c6c53589a5a_a0b8cb0045f1f373cd41d2c6c53589a5a}\index{Bitmap@{Bitmap}!m\_scratchImg@{m\_scratchImg}}
+\index{m\_scratchImg@{m\_scratchImg}!Bitmap@{Bitmap}}
+\doxysubsubsection{\texorpdfstring{m\_scratchImg}{m\_scratchImg}}
+{\footnotesize\ttfamily \label{classBitmap_a0b8cb0045f1f373cd41d2c6c53589a5a_a0b8cb0045f1f373cd41d2c6c53589a5a} 
+Direct\+X\+::\+Scratch\+Image Bitmap\+::m\+\_\+scratch\+Img\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classBitmap_a768217e6da0d65bed9bdc270159d0d16_a768217e6da0d65bed9bdc270159d0d16}\index{Bitmap@{Bitmap}!s\_format@{s\_format}}
+\index{s\_format@{s\_format}!Bitmap@{Bitmap}}
+\doxysubsubsection{\texorpdfstring{s\_format}{s\_format}}
+{\footnotesize\ttfamily \label{classBitmap_a768217e6da0d65bed9bdc270159d0d16_a768217e6da0d65bed9bdc270159d0d16} 
+DXGI\+\_\+\+FORMAT Bitmap\+::s\+\_\+format = DXGI\+\_\+\+FORMAT\+::\+DXGI\+\_\+\+FORMAT\+\_\+\+B8\+G8\+R8\+A8\+\_\+\+UNORM\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{bitmap_8h}{bitmap.\+h}}\item 
+src/\mbox{\hyperlink{bitmap_8cpp}{bitmap.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,975 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classNode" kind="class" language="C++" prot="public">
+    <compoundname>Node</compoundname>
+    <includes refid="node_8h" local="no">node.h</includes>
+    <sectiondef kind="friend">
+      <memberdef kind="friend" id="classNode_a2bf2a0e9b454c55aa5dcb5aa4698697b_1a2bf2a0e9b454c55aa5dcb5aa4698697b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class Model</definition>
+        <argsstring></argsstring>
+        <name>Model</name>
+        <qualifiedname>Node::Model</qualifiedname>
+        <param>
+          <type><ref refid="classModel" kindref="compound">Model</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="16" column="14" bodyfile="inc/node.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="classNode_a7033474dc4dd44415f17c4db50e49143_1a7033474dc4dd44415f17c4db50e49143" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void swap</definition>
+        <argsstring>(Node &amp;lhs, Node &amp;rhs)</argsstring>
+        <name>swap</name>
+        <qualifiedname>Node::swap</qualifiedname>
+        <param>
+          <type><ref refid="classNode" kindref="compound">Node</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="classNode" kindref="compound">Node</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="46" column="13" bodyfile="src/node.cpp" bodystart="77" bodyend="94"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classNode_a4673b20c008a3c356038b50004322d8b_1a4673b20c008a3c356038b50004322d8b" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Node::m_bTransformNeedsUpdate</definition>
+        <argsstring></argsstring>
+        <name>m_bTransformNeedsUpdate</name>
+        <qualifiedname>Node::m_bTransformNeedsUpdate</qualifiedname>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="19" column="6" bodyfile="inc/node.h" bodystart="19" bodyend="-1"/>
+        <referencedby refid="classNode_a7eb3bd9d15572570aacde0f582eb374a_1a7eb3bd9d15572570aacde0f582eb374a" compoundref="node_8cpp" startline="127" endline="134">invalidateChildrenTransform</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classNode_adcaca1c8286daf7c8168939407a45d21_1adcaca1c8286daf7c8168939407a45d21" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Node::m_imguiId</definition>
+        <argsstring></argsstring>
+        <name>m_imguiId</name>
+        <qualifiedname>Node::m_imguiId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="20" column="5" bodyfile="inc/node.h" bodystart="20" bodyend="-1"/>
+        <referencedby refid="classNode_a0374f189312791b63f5a85a5b6dc2b04_1a0374f189312791b63f5a85a5b6dc2b04" compoundref="node_8cpp" startline="341" endline="344">getImguiId</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classNode_ac1c15ca33da3a3c9eaa09c43e94f6404_1ac1c15ca33da3a3c9eaa09c43e94f6404" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Node::m_name</definition>
+        <argsstring></argsstring>
+        <name>m_name</name>
+        <qualifiedname>Node::m_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="21" column="13" bodyfile="inc/node.h" bodystart="21" bodyend="-1"/>
+        <referencedby refid="classNode_a7c70be855427bd60746b450074640816_1a7c70be855427bd60746b450074640816" compoundref="node_8cpp" startline="351" endline="354">getName</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classNode_a20db0fe1c3f41388e1787f5c50f13e03_1a20db0fe1c3f41388e1787f5c50f13e03" prot="private" static="no" mutable="no">
+        <type>DirectX::XMFLOAT3</type>
+        <definition>DirectX::XMFLOAT3 Node::m_scale</definition>
+        <argsstring></argsstring>
+        <name>m_scale</name>
+        <qualifiedname>Node::m_scale</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="22" column="19" bodyfile="inc/node.h" bodystart="22" bodyend="-1"/>
+        <referencedby refid="classNode_a05f9d16dc2cfba19c76ca22e9b39b817_1a05f9d16dc2cfba19c76ca22e9b39b817" compoundref="node_8cpp" startline="12" endline="38">Node</referencedby>
+        <referencedby refid="classNode_a5414597b9851bd398548999e3565aea1_1a5414597b9851bd398548999e3565aea1" compoundref="node_8cpp" startline="295" endline="298">getScale</referencedby>
+        <referencedby refid="classNode_a1c7b6dca6b31ea7e6564fc5c8517a5af_1a1c7b6dca6b31ea7e6564fc5c8517a5af" compoundref="node_8cpp" startline="300" endline="303">getScale3</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classNode_a85016078ebbef63b1f473cb440ebcaf5_1a85016078ebbef63b1f473cb440ebcaf5" prot="private" static="no" mutable="no">
+        <type>DirectX::XMFLOAT3</type>
+        <definition>DirectX::XMFLOAT3 Node::m_rot</definition>
+        <argsstring></argsstring>
+        <name>m_rot</name>
+        <qualifiedname>Node::m_rot</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="23" column="19" bodyfile="inc/node.h" bodystart="23" bodyend="-1"/>
+        <referencedby refid="classNode_a05f9d16dc2cfba19c76ca22e9b39b817_1a05f9d16dc2cfba19c76ca22e9b39b817" compoundref="node_8cpp" startline="12" endline="38">Node</referencedby>
+        <referencedby refid="classNode_ab61123bd9fcbad0b02f8363e7df24e7d_1ab61123bd9fcbad0b02f8363e7df24e7d" compoundref="node_8cpp" startline="305" endline="308">getRotation</referencedby>
+        <referencedby refid="classNode_a22dfd767bbb91e603baf265377b2a888_1a22dfd767bbb91e603baf265377b2a888" compoundref="node_8cpp" startline="310" endline="313">getRotationQuat</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classNode_ac130bb9d04a120c890b5908df58e2814_1ac130bb9d04a120c890b5908df58e2814" prot="private" static="no" mutable="no">
+        <type>DirectX::XMFLOAT3</type>
+        <definition>DirectX::XMFLOAT3 Node::m_pos</definition>
+        <argsstring></argsstring>
+        <name>m_pos</name>
+        <qualifiedname>Node::m_pos</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="24" column="19" bodyfile="inc/node.h" bodystart="24" bodyend="-1"/>
+        <referencedby refid="classNode_a05f9d16dc2cfba19c76ca22e9b39b817_1a05f9d16dc2cfba19c76ca22e9b39b817" compoundref="node_8cpp" startline="12" endline="38">Node</referencedby>
+        <referencedby refid="classNode_aa38921aea0a3a3473512631daf05ebd8_1aa38921aea0a3a3473512631daf05ebd8" compoundref="node_8cpp" startline="315" endline="318">getPosition</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classNode_ae9db78eb26f3ab20b4d1dbebfdd89aa6_1ae9db78eb26f3ab20b4d1dbebfdd89aa6" prot="private" static="no" mutable="no">
+        <type>DirectX::XMFLOAT3</type>
+        <definition>DirectX::XMFLOAT3 Node::m_scalePrev</definition>
+        <argsstring></argsstring>
+        <name>m_scalePrev</name>
+        <qualifiedname>Node::m_scalePrev</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="25" column="19" bodyfile="inc/node.h" bodystart="25" bodyend="-1"/>
+        <referencedby refid="classNode_a05f9d16dc2cfba19c76ca22e9b39b817_1a05f9d16dc2cfba19c76ca22e9b39b817" compoundref="node_8cpp" startline="12" endline="38">Node</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classNode_ac1647faf191b8e44f65572df021d9dff_1ac1647faf191b8e44f65572df021d9dff" prot="private" static="no" mutable="no">
+        <type>DirectX::XMFLOAT3</type>
+        <definition>DirectX::XMFLOAT3 Node::m_rotPrev</definition>
+        <argsstring></argsstring>
+        <name>m_rotPrev</name>
+        <qualifiedname>Node::m_rotPrev</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="26" column="19" bodyfile="inc/node.h" bodystart="26" bodyend="-1"/>
+        <referencedby refid="classNode_a05f9d16dc2cfba19c76ca22e9b39b817_1a05f9d16dc2cfba19c76ca22e9b39b817" compoundref="node_8cpp" startline="12" endline="38">Node</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classNode_ac3433e243642beabe381192163b729be_1ac3433e243642beabe381192163b729be" prot="private" static="no" mutable="no">
+        <type>DirectX::XMFLOAT3</type>
+        <definition>DirectX::XMFLOAT3 Node::m_posPrev</definition>
+        <argsstring></argsstring>
+        <name>m_posPrev</name>
+        <qualifiedname>Node::m_posPrev</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="27" column="19" bodyfile="inc/node.h" bodystart="27" bodyend="-1"/>
+        <referencedby refid="classNode_a05f9d16dc2cfba19c76ca22e9b39b817_1a05f9d16dc2cfba19c76ca22e9b39b817" compoundref="node_8cpp" startline="12" endline="38">Node</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classNode_a087367a284aa72681e670b708100b2ab_1a087367a284aa72681e670b708100b2ab" prot="private" static="no" mutable="no">
+        <type>DirectX::XMFLOAT4X4</type>
+        <definition>DirectX::XMFLOAT4X4 Node::m_localTransform</definition>
+        <argsstring></argsstring>
+        <name>m_localTransform</name>
+        <qualifiedname>Node::m_localTransform</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="28" column="21" bodyfile="inc/node.h" bodystart="28" bodyend="-1"/>
+        <referencedby refid="classNode_a05f9d16dc2cfba19c76ca22e9b39b817_1a05f9d16dc2cfba19c76ca22e9b39b817" compoundref="node_8cpp" startline="12" endline="38">Node</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classNode_ae0a32bf0a1332abc261a5f2124dbcfe8_1ae0a32bf0a1332abc261a5f2124dbcfe8" prot="private" static="no" mutable="no">
+        <type>DirectX::XMFLOAT4X4</type>
+        <definition>DirectX::XMFLOAT4X4 Node::m_worldTransform</definition>
+        <argsstring></argsstring>
+        <name>m_worldTransform</name>
+        <qualifiedname>Node::m_worldTransform</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="29" column="21" bodyfile="inc/node.h" bodystart="29" bodyend="-1"/>
+        <referencedby refid="classNode_a05f9d16dc2cfba19c76ca22e9b39b817_1a05f9d16dc2cfba19c76ca22e9b39b817" compoundref="node_8cpp" startline="12" endline="38">Node</referencedby>
+        <referencedby refid="classNode_aa13d41a9bd40f5109f49929838af0e56_1aa13d41a9bd40f5109f49929838af0e56" compoundref="node_8cpp" startline="285" endline="288">getWorldTransform</referencedby>
+        <referencedby refid="classNode_a21a501aca121414cf5fb85a3649d6ddb_1a21a501aca121414cf5fb85a3649d6ddb" compoundref="node_8cpp" startline="290" endline="293">getWorldTransform4x4</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classNode_a62217e5625c118036a0c8bc2170b1c36_1a62217e5625c118036a0c8bc2170b1c36" prot="private" static="no" mutable="no">
+        <type><ref refid="classNode" kindref="compound">Node</ref> *</type>
+        <definition>Node* Node::m_pParent</definition>
+        <argsstring></argsstring>
+        <name>m_pParent</name>
+        <qualifiedname>Node::m_pParent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="30" column="6" bodyfile="inc/node.h" bodystart="30" bodyend="-1"/>
+        <referencedby refid="classNode_a707a17c5abadbfe7a9db1fd45b0e0e8d_1a707a17c5abadbfe7a9db1fd45b0e0e8d" compoundref="node_8cpp" startline="356" endline="359">isRoot</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classNode_a303c3095973f876cee6709d5b33bce2e_1a303c3095973f876cee6709d5b33bce2e" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::unique_ptr&lt; <ref refid="classNode" kindref="compound">Node</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::unique_ptr&lt;Node&gt; &gt; Node::m_children</definition>
+        <argsstring></argsstring>
+        <name>m_children</name>
+        <qualifiedname>Node::m_children</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="31" column="13" bodyfile="inc/node.h" bodystart="31" bodyend="-1"/>
+        <referencedby refid="classNode_a19615e680e25e3e4f5d3c583cbb041ed_1a19615e680e25e3e4f5d3c583cbb041ed" compoundref="node_8cpp" startline="40" endline="44">~Node</referencedby>
+        <referencedby refid="classNode_a54b3bd58295e8a1dee6b8a8acfced8ea_1a54b3bd58295e8a1dee6b8a8acfced8ea" compoundref="node_8cpp" startline="320" endline="331">accept</referencedby>
+        <referencedby refid="classNode_a2378c8d52ee672fdd22a480fa6cc83e5_1a2378c8d52ee672fdd22a480fa6cc83e5" compoundref="node_8cpp" startline="346" endline="349">hasChildren</referencedby>
+        <referencedby refid="classNode_a7eb3bd9d15572570aacde0f582eb374a_1a7eb3bd9d15572570aacde0f582eb374a" compoundref="node_8cpp" startline="127" endline="134">invalidateChildrenTransform</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classNode_a0ebf1ae732e341e11fc4b86ea8a94f5d_1a0ebf1ae732e341e11fc4b86ea8a94f5d" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classMesh" kindref="compound">Mesh</ref> * &gt;</type>
+        <definition>std::vector&lt;Mesh*&gt; Node::m_meshes</definition>
+        <argsstring></argsstring>
+        <name>m_meshes</name>
+        <qualifiedname>Node::m_meshes</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="32" column="13" bodyfile="inc/node.h" bodystart="32" bodyend="-1"/>
+        <referencedby refid="classNode_a05f9d16dc2cfba19c76ca22e9b39b817_1a05f9d16dc2cfba19c76ca22e9b39b817" compoundref="node_8cpp" startline="12" endline="38">Node</referencedby>
+        <referencedby refid="classNode_a19615e680e25e3e4f5d3c583cbb041ed_1a19615e680e25e3e4f5d3c583cbb041ed" compoundref="node_8cpp" startline="40" endline="44">~Node</referencedby>
+        <referencedby refid="classNode_a1bc2242ba461172b0ad628f131d8dc3c_1a1bc2242ba461172b0ad628f131d8dc3c" compoundref="node_8cpp" startline="333" endline="339">accept</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classNode_ac813be287eef4d0672a08487ab0d35b0_1ac813be287eef4d0672a08487ab0d35b0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Node::update</definition>
+        <argsstring>(const float dt, const DirectX::XMMATRIX &amp;parentWorldTransform, const float lerpBetweenFrames, const bool bEnableSmoothMovement=false) cond_noex</argsstring>
+        <name>update</name>
+        <qualifiedname>Node::update</qualifiedname>
+        <param>
+          <type>const float</type>
+          <declname>dt</declname>
+        </param>
+        <param>
+          <type>const DirectX::XMMATRIX &amp;</type>
+          <declname>parentWorldTransform</declname>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>lerpBetweenFrames</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>bEnableSmoothMovement</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="34" column="6" bodyfile="src/node.cpp" bodystart="96" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="classNode_a80616842a9027c391581175686991599_1a80616842a9027c391581175686991599" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Node::addChild</definition>
+        <argsstring>(std::unique_ptr&lt; Node &gt; pChild) cond_noex</argsstring>
+        <name>addChild</name>
+        <qualifiedname>Node::addChild</qualifiedname>
+        <param>
+          <type>std::unique_ptr&lt; <ref refid="classNode" kindref="compound">Node</ref> &gt;</type>
+          <declname>pChild</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="35" column="6" bodyfile="src/node.cpp" bodystart="121" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="classNode_a7eb3bd9d15572570aacde0f582eb374a_1a7eb3bd9d15572570aacde0f582eb374a" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Node::invalidateChildrenTransform</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>invalidateChildrenTransform</name>
+        <qualifiedname>Node::invalidateChildrenTransform</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="36" column="6" bodyfile="src/node.cpp" bodystart="127" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="classNode_acea3ab87949fd8fbbfa7524371f5ee80_1acea3ab87949fd8fbbfa7524371f5ee80" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Node::setWorldTransform</definition>
+        <argsstring>(const DirectX::XMMATRIX &amp;worldTransform) cond_noex</argsstring>
+        <name>setWorldTransform</name>
+        <qualifiedname>Node::setWorldTransform</qualifiedname>
+        <param>
+          <type>const DirectX::XMMATRIX &amp;</type>
+          <declname>worldTransform</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="37" column="6" bodyfile="src/node.cpp" bodystart="136" bodyend="140"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classNode_a05f9d16dc2cfba19c76ca22e9b39b817_1a05f9d16dc2cfba19c76ca22e9b39b817" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Node::Node</definition>
+        <argsstring>(Node *pParent, const int imguiId, const std::string &amp;name, const DirectX::XMMATRIX &amp;localTransform, std::vector&lt; Mesh * &gt; meshes)</argsstring>
+        <name>Node</name>
+        <qualifiedname>Node::Node</qualifiedname>
+        <param>
+          <type><ref refid="classNode" kindref="compound">Node</ref> *</type>
+          <declname>pParent</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>imguiId</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const DirectX::XMMATRIX &amp;</type>
+          <declname>localTransform</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="classMesh" kindref="compound">Mesh</ref> * &gt;</type>
+          <declname>meshes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="39" column="1" bodyfile="src/node.cpp" bodystart="12" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classNode_a19615e680e25e3e4f5d3c583cbb041ed_1a19615e680e25e3e4f5d3c583cbb041ed" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Node::~Node</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>~Node</name>
+        <qualifiedname>Node::~Node</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="40" column="1" bodyfile="src/node.cpp" bodystart="40" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classNode_ae879c06fe4c952dd8f790ac51ad80f17_1ae879c06fe4c952dd8f790ac51ad80f17" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Node::Node</definition>
+        <argsstring>(const Node &amp;rhs)=delete</argsstring>
+        <name>Node</name>
+        <qualifiedname>Node::Node</qualifiedname>
+        <param>
+          <type>const <ref refid="classNode" kindref="compound">Node</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="41" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classNode_a4a5a3d9fb02f38a659afe2875c23f067_1a4a5a3d9fb02f38a659afe2875c23f067" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classNode" kindref="compound">Node</ref> &amp;</type>
+        <definition>Node &amp; Node::operator=</definition>
+        <argsstring>(const Node &amp;rhs)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Node::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classNode" kindref="compound">Node</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="42" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classNode_ac5c19f66ccd0def92cf50d9b49007ea4_1ac5c19f66ccd0def92cf50d9b49007ea4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Node::Node</definition>
+        <argsstring>(Node &amp;&amp;rhs) noexcept</argsstring>
+        <name>Node</name>
+        <qualifiedname>Node::Node</qualifiedname>
+        <param>
+          <type><ref refid="classNode" kindref="compound">Node</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="43" column="1" bodyfile="src/node.cpp" bodystart="46" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="classNode_a3bf02421192799b0e21d4d2f4bb0d748_1a3bf02421192799b0e21d4d2f4bb0d748" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classNode" kindref="compound">Node</ref> &amp;</type>
+        <definition>Node &amp; Node::operator=</definition>
+        <argsstring>(Node &amp;&amp;rhs) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Node::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classNode" kindref="compound">Node</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="44" column="6" bodyfile="src/node.cpp" bodystart="70" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classNode_a2a69d3d37f1a4f37110f6bab1e9db440_1a2a69d3d37f1a4f37110f6bab1e9db440" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Node::setTransform</definition>
+        <argsstring>(const float scale, const DirectX::XMFLOAT3 &amp;rotAnglesRadians, const DirectX::XMFLOAT3 &amp;pos) cond_noex</argsstring>
+        <name>setTransform</name>
+        <qualifiedname>Node::setTransform</qualifiedname>
+        <param>
+          <type>const float</type>
+          <declname>scale</declname>
+        </param>
+        <param>
+          <type>const DirectX::XMFLOAT3 &amp;</type>
+          <declname>rotAnglesRadians</declname>
+        </param>
+        <param>
+          <type>const DirectX::XMFLOAT3 &amp;</type>
+          <declname>pos</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="49" column="6" bodyfile="src/node.cpp" bodystart="142" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="classNode_afe80a694754e96b529d59e9c8ea72c07_1afe80a694754e96b529d59e9c8ea72c07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Node::setTransform</definition>
+        <argsstring>(const float scale, const DirectX::XMFLOAT4 &amp;rotQuat, const DirectX::XMFLOAT3 &amp;pos) cond_noex</argsstring>
+        <name>setTransform</name>
+        <qualifiedname>Node::setTransform</qualifiedname>
+        <param>
+          <type>const float</type>
+          <declname>scale</declname>
+        </param>
+        <param>
+          <type>const DirectX::XMFLOAT4 &amp;</type>
+          <declname>rotQuat</declname>
+        </param>
+        <param>
+          <type>const DirectX::XMFLOAT3 &amp;</type>
+          <declname>pos</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="50" column="6" bodyfile="src/node.cpp" bodystart="151" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="classNode_a7521f7c7b62ae35229b89cae6f10d461_1a7521f7c7b62ae35229b89cae6f10d461" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Node::setTransform</definition>
+        <argsstring>(const float scale, const DirectX::XMVECTOR &amp;rotQuat, const DirectX::XMFLOAT3 &amp;pos) cond_noex</argsstring>
+        <name>setTransform</name>
+        <qualifiedname>Node::setTransform</qualifiedname>
+        <param>
+          <type>const float</type>
+          <declname>scale</declname>
+        </param>
+        <param>
+          <type>const DirectX::XMVECTOR &amp;</type>
+          <declname>rotQuat</declname>
+        </param>
+        <param>
+          <type>const DirectX::XMFLOAT3 &amp;</type>
+          <declname>pos</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="51" column="6" bodyfile="src/node.cpp" bodystart="162" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="classNode_ad4567bfce5a93e58b598475c9a4decc9_1ad4567bfce5a93e58b598475c9a4decc9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Node::setScale</definition>
+        <argsstring>(const float scale) cond_noex</argsstring>
+        <name>setScale</name>
+        <qualifiedname>Node::setScale</qualifiedname>
+        <param>
+          <type>const float</type>
+          <declname>scale</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="52" column="6" bodyfile="src/node.cpp" bodystart="175" bodyend="182"/>
+      </memberdef>
+      <memberdef kind="function" id="classNode_a91a4cba0b740b43b17823efe14c9ca4e_1a91a4cba0b740b43b17823efe14c9ca4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Node::setScale</definition>
+        <argsstring>(const DirectX::XMFLOAT3 &amp;scale) cond_noex</argsstring>
+        <name>setScale</name>
+        <qualifiedname>Node::setScale</qualifiedname>
+        <param>
+          <type>const DirectX::XMFLOAT3 &amp;</type>
+          <declname>scale</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="53" column="6" bodyfile="src/node.cpp" bodystart="184" bodyend="192"/>
+      </memberdef>
+      <memberdef kind="function" id="classNode_a285a6160e0f168657c41bdaa796f4f90_1a285a6160e0f168657c41bdaa796f4f90" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Node::scaleRel</definition>
+        <argsstring>(const DirectX::XMFLOAT3 &amp;scale) cond_noex</argsstring>
+        <name>scaleRel</name>
+        <qualifiedname>Node::scaleRel</qualifiedname>
+        <param>
+          <type>const DirectX::XMFLOAT3 &amp;</type>
+          <declname>scale</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="54" column="6" bodyfile="src/node.cpp" bodystart="194" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="classNode_aec1598a16c459b61cb837c7d937f9596_1aec1598a16c459b61cb837c7d937f9596" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Node::setRotation</definition>
+        <argsstring>(const DirectX::XMFLOAT3 &amp;rotAnglesRadians) cond_noex</argsstring>
+        <name>setRotation</name>
+        <qualifiedname>Node::setRotation</qualifiedname>
+        <param>
+          <type>const DirectX::XMFLOAT3 &amp;</type>
+          <declname>rotAnglesRadians</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="55" column="6" bodyfile="src/node.cpp" bodystart="203" bodyend="211"/>
+      </memberdef>
+      <memberdef kind="function" id="classNode_a0d2d32c7c6f8ae40c1120285da062eb1_1a0d2d32c7c6f8ae40c1120285da062eb1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Node::rotateRel</definition>
+        <argsstring>(const DirectX::XMFLOAT3 &amp;rotAnglesRadians) cond_noex</argsstring>
+        <name>rotateRel</name>
+        <qualifiedname>Node::rotateRel</qualifiedname>
+        <param>
+          <type>const DirectX::XMFLOAT3 &amp;</type>
+          <declname>rotAnglesRadians</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="56" column="6" bodyfile="src/node.cpp" bodystart="213" bodyend="220"/>
+      </memberdef>
+      <memberdef kind="function" id="classNode_a9e1c557f08a393ba879fba874129be60_1a9e1c557f08a393ba879fba874129be60" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Node::setTranslation</definition>
+        <argsstring>(const DirectX::XMFLOAT3 &amp;pos) cond_noex</argsstring>
+        <name>setTranslation</name>
+        <qualifiedname>Node::setTranslation</qualifiedname>
+        <param>
+          <type>const DirectX::XMFLOAT3 &amp;</type>
+          <declname>pos</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="57" column="6" bodyfile="src/node.cpp" bodystart="222" bodyend="232"/>
+      </memberdef>
+      <memberdef kind="function" id="classNode_ac29f7a250f3edfb8de121396a13a9d07_1ac29f7a250f3edfb8de121396a13a9d07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Node::translateRel</definition>
+        <argsstring>(const DirectX::XMFLOAT3 &amp;pos) cond_noex</argsstring>
+        <name>translateRel</name>
+        <qualifiedname>Node::translateRel</qualifiedname>
+        <param>
+          <type>const DirectX::XMFLOAT3 &amp;</type>
+          <declname>pos</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="58" column="6" bodyfile="src/node.cpp" bodystart="234" bodyend="241"/>
+      </memberdef>
+      <memberdef kind="function" id="classNode_a80faf48b135a1702a1811d40aec96e47_1a80faf48b135a1702a1811d40aec96e47" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Node::updateLocalTransform</definition>
+        <argsstring>(const float dt, const float lerpBetweenFrames, const bool bEnableSmoothMovement=false) cond_noex</argsstring>
+        <name>updateLocalTransform</name>
+        <qualifiedname>Node::updateLocalTransform</qualifiedname>
+        <param>
+          <type>const float</type>
+          <declname>dt</declname>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>lerpBetweenFrames</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>bEnableSmoothMovement</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para>lerpBetweenFrames</para>
+        </inbodydescription>
+        <location file="inc/node.h" line="59" column="6" bodyfile="src/node.cpp" bodystart="243" bodyend="283"/>
+      </memberdef>
+      <memberdef kind="function" id="classNode_aa13d41a9bd40f5109f49929838af0e56_1aa13d41a9bd40f5109f49929838af0e56" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>DirectX::XMMATRIX</type>
+        <definition>DirectX::XMMATRIX Node::getWorldTransform</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getWorldTransform</name>
+        <qualifiedname>Node::getWorldTransform</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="60" column="19" bodyfile="src/node.cpp" bodystart="285" bodyend="288"/>
+      </memberdef>
+      <memberdef kind="function" id="classNode_a21a501aca121414cf5fb85a3649d6ddb_1a21a501aca121414cf5fb85a3649d6ddb" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>DirectX::XMFLOAT4X4</type>
+        <definition>DirectX::XMFLOAT4X4 Node::getWorldTransform4x4</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getWorldTransform4x4</name>
+        <qualifiedname>Node::getWorldTransform4x4</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="61" column="21" bodyfile="src/node.cpp" bodystart="290" bodyend="293"/>
+      </memberdef>
+      <memberdef kind="function" id="classNode_a5414597b9851bd398548999e3565aea1_1a5414597b9851bd398548999e3565aea1" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float Node::getScale</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getScale</name>
+        <qualifiedname>Node::getScale</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="62" column="7" bodyfile="src/node.cpp" bodystart="295" bodyend="298"/>
+      </memberdef>
+      <memberdef kind="function" id="classNode_a1c7b6dca6b31ea7e6564fc5c8517a5af_1a1c7b6dca6b31ea7e6564fc5c8517a5af" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>DirectX::XMFLOAT3</type>
+        <definition>DirectX::XMFLOAT3 Node::getScale3</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getScale3</name>
+        <qualifiedname>Node::getScale3</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="63" column="19" bodyfile="src/node.cpp" bodystart="300" bodyend="303"/>
+      </memberdef>
+      <memberdef kind="function" id="classNode_ab61123bd9fcbad0b02f8363e7df24e7d_1ab61123bd9fcbad0b02f8363e7df24e7d" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>DirectX::XMFLOAT3</type>
+        <definition>DirectX::XMFLOAT3 Node::getRotation</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getRotation</name>
+        <qualifiedname>Node::getRotation</qualifiedname>
+        <briefdescription>
+<para>return Euler Angles {pitch,yaw,roll} </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="65" column="19" bodyfile="src/node.cpp" bodystart="305" bodyend="308"/>
+        <referencedby refid="classImguiPerModelNodeVisitor_afa4104c926e409f0dbdd385aa4db5d7c_1afa4104c926e409f0dbdd385aa4db5d7c" compoundref="imgui__visitors_8cpp" startline="151" endline="173">ImguiPerModelNodeVisitor::getNodeTransform</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classNode_a22dfd767bbb91e603baf265377b2a888_1a22dfd767bbb91e603baf265377b2a888" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>DirectX::XMVECTOR</type>
+        <definition>DirectX::XMVECTOR Node::getRotationQuat</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getRotationQuat</name>
+        <qualifiedname>Node::getRotationQuat</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="66" column="19" bodyfile="src/node.cpp" bodystart="310" bodyend="313"/>
+      </memberdef>
+      <memberdef kind="function" id="classNode_aa38921aea0a3a3473512631daf05ebd8_1aa38921aea0a3a3473512631daf05ebd8" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>DirectX::XMFLOAT3</type>
+        <definition>DirectX::XMFLOAT3 Node::getPosition</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getPosition</name>
+        <qualifiedname>Node::getPosition</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="67" column="19" bodyfile="src/node.cpp" bodystart="315" bodyend="318"/>
+        <referencedby refid="classImguiPerModelNodeVisitor_afa4104c926e409f0dbdd385aa4db5d7c_1afa4104c926e409f0dbdd385aa4db5d7c" compoundref="imgui__visitors_8cpp" startline="151" endline="173">ImguiPerModelNodeVisitor::getNodeTransform</referencedby>
+        <referencedby refid="classMesh_aab3b7f01c082616f9656d44d7f75fdec_1aab3b7f01c082616f9656d44d7f75fdec" compoundref="mesh_8cpp" startline="247" endline="312">Mesh::isFrustumCulled</referencedby>
+        <referencedby refid="classMesh_a8aeff98bfd0c764a8917047c98f9962f_1a8aeff98bfd0c764a8917047c98f9962f" compoundref="mesh_8cpp" startline="215" endline="220">Mesh::setDistanceFromActiveCamera</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classNode_a54b3bd58295e8a1dee6b8a8acfced8ea_1a54b3bd58295e8a1dee6b8a8acfced8ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Node::accept</definition>
+        <argsstring>(IImguiNodeVisitor &amp;mv)</argsstring>
+        <name>accept</name>
+        <qualifiedname>Node::accept</qualifiedname>
+        <param>
+          <type><ref refid="classIImguiNodeVisitor" kindref="compound">IImguiNodeVisitor</ref> &amp;</type>
+          <declname>mv</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="69" column="6" bodyfile="src/node.cpp" bodystart="320" bodyend="331"/>
+      </memberdef>
+      <memberdef kind="function" id="classNode_a1bc2242ba461172b0ad628f131d8dc3c_1a1bc2242ba461172b0ad628f131d8dc3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Node::accept</definition>
+        <argsstring>(IImGuiConstantBufferVisitor &amp;ev)</argsstring>
+        <name>accept</name>
+        <qualifiedname>Node::accept</qualifiedname>
+        <param>
+          <type><ref refid="classIImGuiConstantBufferVisitor" kindref="compound">IImGuiConstantBufferVisitor</ref> &amp;</type>
+          <declname>ev</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="70" column="6" bodyfile="src/node.cpp" bodystart="333" bodyend="339"/>
+      </memberdef>
+      <memberdef kind="function" id="classNode_a0374f189312791b63f5a85a5b6dc2b04_1a0374f189312791b63f5a85a5b6dc2b04" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int Node::getImguiId</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getImguiId</name>
+        <qualifiedname>Node::getImguiId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="71" column="5" bodyfile="src/node.cpp" bodystart="341" bodyend="344"/>
+        <referencedby refid="classImguiPerModelNodeVisitor_afa4104c926e409f0dbdd385aa4db5d7c_1afa4104c926e409f0dbdd385aa4db5d7c" compoundref="imgui__visitors_8cpp" startline="151" endline="173">ImguiPerModelNodeVisitor::getNodeTransform</referencedby>
+        <referencedby refid="classIImguiNodeVisitor_a3ffe58aedb22d53f18611cd112b25bbd_1a3ffe58aedb22d53f18611cd112b25bbd" compoundref="imgui__visitors_8cpp" startline="21" endline="40">IImguiNodeVisitor::visit</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classNode_a2378c8d52ee672fdd22a480fa6cc83e5_1a2378c8d52ee672fdd22a480fa6cc83e5" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Node::hasChildren</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>hasChildren</name>
+        <qualifiedname>Node::hasChildren</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="72" column="6" bodyfile="src/node.cpp" bodystart="346" bodyend="349"/>
+        <referencedby refid="classIImguiNodeVisitor_a3ffe58aedb22d53f18611cd112b25bbd_1a3ffe58aedb22d53f18611cd112b25bbd" compoundref="imgui__visitors_8cpp" startline="21" endline="40">IImguiNodeVisitor::visit</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classNode_a7c70be855427bd60746b450074640816_1a7c70be855427bd60746b450074640816" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; Node::getName</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getName</name>
+        <qualifiedname>Node::getName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="73" column="19" bodyfile="src/node.cpp" bodystart="351" bodyend="354"/>
+        <referencedby refid="classIImguiNodeVisitor_a3ffe58aedb22d53f18611cd112b25bbd_1a3ffe58aedb22d53f18611cd112b25bbd" compoundref="imgui__visitors_8cpp" startline="21" endline="40">IImguiNodeVisitor::visit</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classNode_a707a17c5abadbfe7a9db1fd45b0e0e8d_1a707a17c5abadbfe7a9db1fd45b0e0e8d" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Node::isRoot</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>isRoot</name>
+        <qualifiedname>Node::isRoot</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/node.h" line="74" column="6" bodyfile="src/node.cpp" bodystart="356" bodyend="359"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Node</label>
+        <link refid="classNode"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>m_pParent</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/node.h" line="14" column="1" bodyfile="inc/node.h" bodystart="15" bodyend="75"/>
+    <listofallmembers>
+      <member refid="classNode_a54b3bd58295e8a1dee6b8a8acfced8ea_1a54b3bd58295e8a1dee6b8a8acfced8ea" prot="public" virt="non-virtual"><scope>Node</scope><name>accept</name></member>
+      <member refid="classNode_a1bc2242ba461172b0ad628f131d8dc3c_1a1bc2242ba461172b0ad628f131d8dc3c" prot="public" virt="non-virtual"><scope>Node</scope><name>accept</name></member>
+      <member refid="classNode_a80616842a9027c391581175686991599_1a80616842a9027c391581175686991599" prot="private" virt="non-virtual"><scope>Node</scope><name>addChild</name></member>
+      <member refid="classNode_a0374f189312791b63f5a85a5b6dc2b04_1a0374f189312791b63f5a85a5b6dc2b04" prot="public" virt="non-virtual"><scope>Node</scope><name>getImguiId</name></member>
+      <member refid="classNode_a7c70be855427bd60746b450074640816_1a7c70be855427bd60746b450074640816" prot="public" virt="non-virtual"><scope>Node</scope><name>getName</name></member>
+      <member refid="classNode_aa38921aea0a3a3473512631daf05ebd8_1aa38921aea0a3a3473512631daf05ebd8" prot="public" virt="non-virtual"><scope>Node</scope><name>getPosition</name></member>
+      <member refid="classNode_ab61123bd9fcbad0b02f8363e7df24e7d_1ab61123bd9fcbad0b02f8363e7df24e7d" prot="public" virt="non-virtual"><scope>Node</scope><name>getRotation</name></member>
+      <member refid="classNode_a22dfd767bbb91e603baf265377b2a888_1a22dfd767bbb91e603baf265377b2a888" prot="public" virt="non-virtual"><scope>Node</scope><name>getRotationQuat</name></member>
+      <member refid="classNode_a5414597b9851bd398548999e3565aea1_1a5414597b9851bd398548999e3565aea1" prot="public" virt="non-virtual"><scope>Node</scope><name>getScale</name></member>
+      <member refid="classNode_a1c7b6dca6b31ea7e6564fc5c8517a5af_1a1c7b6dca6b31ea7e6564fc5c8517a5af" prot="public" virt="non-virtual"><scope>Node</scope><name>getScale3</name></member>
+      <member refid="classNode_aa13d41a9bd40f5109f49929838af0e56_1aa13d41a9bd40f5109f49929838af0e56" prot="public" virt="non-virtual"><scope>Node</scope><name>getWorldTransform</name></member>
+      <member refid="classNode_a21a501aca121414cf5fb85a3649d6ddb_1a21a501aca121414cf5fb85a3649d6ddb" prot="public" virt="non-virtual"><scope>Node</scope><name>getWorldTransform4x4</name></member>
+      <member refid="classNode_a2378c8d52ee672fdd22a480fa6cc83e5_1a2378c8d52ee672fdd22a480fa6cc83e5" prot="public" virt="non-virtual"><scope>Node</scope><name>hasChildren</name></member>
+      <member refid="classNode_a7eb3bd9d15572570aacde0f582eb374a_1a7eb3bd9d15572570aacde0f582eb374a" prot="private" virt="non-virtual"><scope>Node</scope><name>invalidateChildrenTransform</name></member>
+      <member refid="classNode_a707a17c5abadbfe7a9db1fd45b0e0e8d_1a707a17c5abadbfe7a9db1fd45b0e0e8d" prot="public" virt="non-virtual"><scope>Node</scope><name>isRoot</name></member>
+      <member refid="classNode_a4673b20c008a3c356038b50004322d8b_1a4673b20c008a3c356038b50004322d8b" prot="private" virt="non-virtual"><scope>Node</scope><name>m_bTransformNeedsUpdate</name></member>
+      <member refid="classNode_a303c3095973f876cee6709d5b33bce2e_1a303c3095973f876cee6709d5b33bce2e" prot="private" virt="non-virtual"><scope>Node</scope><name>m_children</name></member>
+      <member refid="classNode_adcaca1c8286daf7c8168939407a45d21_1adcaca1c8286daf7c8168939407a45d21" prot="private" virt="non-virtual"><scope>Node</scope><name>m_imguiId</name></member>
+      <member refid="classNode_a087367a284aa72681e670b708100b2ab_1a087367a284aa72681e670b708100b2ab" prot="private" virt="non-virtual"><scope>Node</scope><name>m_localTransform</name></member>
+      <member refid="classNode_a0ebf1ae732e341e11fc4b86ea8a94f5d_1a0ebf1ae732e341e11fc4b86ea8a94f5d" prot="private" virt="non-virtual"><scope>Node</scope><name>m_meshes</name></member>
+      <member refid="classNode_ac1c15ca33da3a3c9eaa09c43e94f6404_1ac1c15ca33da3a3c9eaa09c43e94f6404" prot="private" virt="non-virtual"><scope>Node</scope><name>m_name</name></member>
+      <member refid="classNode_ac130bb9d04a120c890b5908df58e2814_1ac130bb9d04a120c890b5908df58e2814" prot="private" virt="non-virtual"><scope>Node</scope><name>m_pos</name></member>
+      <member refid="classNode_ac3433e243642beabe381192163b729be_1ac3433e243642beabe381192163b729be" prot="private" virt="non-virtual"><scope>Node</scope><name>m_posPrev</name></member>
+      <member refid="classNode_a62217e5625c118036a0c8bc2170b1c36_1a62217e5625c118036a0c8bc2170b1c36" prot="private" virt="non-virtual"><scope>Node</scope><name>m_pParent</name></member>
+      <member refid="classNode_a85016078ebbef63b1f473cb440ebcaf5_1a85016078ebbef63b1f473cb440ebcaf5" prot="private" virt="non-virtual"><scope>Node</scope><name>m_rot</name></member>
+      <member refid="classNode_ac1647faf191b8e44f65572df021d9dff_1ac1647faf191b8e44f65572df021d9dff" prot="private" virt="non-virtual"><scope>Node</scope><name>m_rotPrev</name></member>
+      <member refid="classNode_a20db0fe1c3f41388e1787f5c50f13e03_1a20db0fe1c3f41388e1787f5c50f13e03" prot="private" virt="non-virtual"><scope>Node</scope><name>m_scale</name></member>
+      <member refid="classNode_ae9db78eb26f3ab20b4d1dbebfdd89aa6_1ae9db78eb26f3ab20b4d1dbebfdd89aa6" prot="private" virt="non-virtual"><scope>Node</scope><name>m_scalePrev</name></member>
+      <member refid="classNode_ae0a32bf0a1332abc261a5f2124dbcfe8_1ae0a32bf0a1332abc261a5f2124dbcfe8" prot="private" virt="non-virtual"><scope>Node</scope><name>m_worldTransform</name></member>
+      <member refid="classNode_a2bf2a0e9b454c55aa5dcb5aa4698697b_1a2bf2a0e9b454c55aa5dcb5aa4698697b" prot="private" virt="non-virtual"><scope>Node</scope><name>Model</name></member>
+      <member refid="classNode_a05f9d16dc2cfba19c76ca22e9b39b817_1a05f9d16dc2cfba19c76ca22e9b39b817" prot="public" virt="non-virtual"><scope>Node</scope><name>Node</name></member>
+      <member refid="classNode_ae879c06fe4c952dd8f790ac51ad80f17_1ae879c06fe4c952dd8f790ac51ad80f17" prot="public" virt="non-virtual"><scope>Node</scope><name>Node</name></member>
+      <member refid="classNode_ac5c19f66ccd0def92cf50d9b49007ea4_1ac5c19f66ccd0def92cf50d9b49007ea4" prot="public" virt="non-virtual"><scope>Node</scope><name>Node</name></member>
+      <member refid="classNode_a4a5a3d9fb02f38a659afe2875c23f067_1a4a5a3d9fb02f38a659afe2875c23f067" prot="public" virt="non-virtual"><scope>Node</scope><name>operator=</name></member>
+      <member refid="classNode_a3bf02421192799b0e21d4d2f4bb0d748_1a3bf02421192799b0e21d4d2f4bb0d748" prot="public" virt="non-virtual"><scope>Node</scope><name>operator=</name></member>
+      <member refid="classNode_a0d2d32c7c6f8ae40c1120285da062eb1_1a0d2d32c7c6f8ae40c1120285da062eb1" prot="public" virt="non-virtual"><scope>Node</scope><name>rotateRel</name></member>
+      <member refid="classNode_a285a6160e0f168657c41bdaa796f4f90_1a285a6160e0f168657c41bdaa796f4f90" prot="public" virt="non-virtual"><scope>Node</scope><name>scaleRel</name></member>
+      <member refid="classNode_aec1598a16c459b61cb837c7d937f9596_1aec1598a16c459b61cb837c7d937f9596" prot="public" virt="non-virtual"><scope>Node</scope><name>setRotation</name></member>
+      <member refid="classNode_ad4567bfce5a93e58b598475c9a4decc9_1ad4567bfce5a93e58b598475c9a4decc9" prot="public" virt="non-virtual"><scope>Node</scope><name>setScale</name></member>
+      <member refid="classNode_a91a4cba0b740b43b17823efe14c9ca4e_1a91a4cba0b740b43b17823efe14c9ca4e" prot="public" virt="non-virtual"><scope>Node</scope><name>setScale</name></member>
+      <member refid="classNode_a2a69d3d37f1a4f37110f6bab1e9db440_1a2a69d3d37f1a4f37110f6bab1e9db440" prot="public" virt="non-virtual"><scope>Node</scope><name>setTransform</name></member>
+      <member refid="classNode_afe80a694754e96b529d59e9c8ea72c07_1afe80a694754e96b529d59e9c8ea72c07" prot="public" virt="non-virtual"><scope>Node</scope><name>setTransform</name></member>
+      <member refid="classNode_a7521f7c7b62ae35229b89cae6f10d461_1a7521f7c7b62ae35229b89cae6f10d461" prot="public" virt="non-virtual"><scope>Node</scope><name>setTransform</name></member>
+      <member refid="classNode_a9e1c557f08a393ba879fba874129be60_1a9e1c557f08a393ba879fba874129be60" prot="public" virt="non-virtual"><scope>Node</scope><name>setTranslation</name></member>
+      <member refid="classNode_acea3ab87949fd8fbbfa7524371f5ee80_1acea3ab87949fd8fbbfa7524371f5ee80" prot="private" virt="non-virtual"><scope>Node</scope><name>setWorldTransform</name></member>
+      <member refid="classNode_a7033474dc4dd44415f17c4db50e49143_1a7033474dc4dd44415f17c4db50e49143" prot="public" virt="non-virtual"><scope>Node</scope><name>swap</name></member>
+      <member refid="classNode_ac29f7a250f3edfb8de121396a13a9d07_1ac29f7a250f3edfb8de121396a13a9d07" prot="public" virt="non-virtual"><scope>Node</scope><name>translateRel</name></member>
+      <member refid="classNode_ac813be287eef4d0672a08487ab0d35b0_1ac813be287eef4d0672a08487ab0d35b0" prot="private" virt="non-virtual"><scope>Node</scope><name>update</name></member>
+      <member refid="classNode_a80faf48b135a1702a1811d40aec96e47_1a80faf48b135a1702a1811d40aec96e47" prot="public" virt="non-virtual"><scope>Node</scope><name>updateLocalTransform</name></member>
+      <member refid="classNode_a19615e680e25e3e4f5d3c583cbb041ed_1a19615e680e25e3e4f5d3c583cbb041ed" prot="public" virt="non-virtual"><scope>Node</scope><name>~Node</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

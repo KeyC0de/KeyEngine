@@ -15,11 +15,8 @@ class Job
 public:
 	Job( const Mesh *pMesh, const Material *pMaterial );
 
-	//===================================================
-	//	\function	run
-	//	\brief	1. binds mesh
-	//			2. executes draw call
-	//	\date	2022/08/15 17:22
+	/// \brief	1. binds mesh
+	/// \brief	2. executes draw call
 	void run( Graphics &gfx ) const cond_noex;
 };
 

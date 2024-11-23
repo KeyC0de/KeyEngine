@@ -1,0 +1,343 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classNonCopyableAndNonMovable" kind="class" language="C++" prot="public">
+    <compoundname>NonCopyableAndNonMovable</compoundname>
+    <derivedcompoundref refid="classGame" prot="public" virt="non-virtual">Game&lt; Arkanoid &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classGame" prot="public" virt="non-virtual">Game&lt; Sandbox3d &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classIListener" prot="public" virt="non-virtual">IListener&lt; SwapChainResizedEvent &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classIListener" prot="public" virt="non-virtual">IListener&lt; UISoundEvent &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classIListener" prot="public" virt="non-virtual">IListener&lt; UserPropertyChanged &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classIListener" prot="public" virt="non-virtual">IListener&lt; UiMsg &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classIReporter" prot="public" virt="non-virtual">IReporter&lt; SwapChainResizedEvent &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classIReporter" prot="public" virt="non-virtual">IReporter&lt; UISoundEvent &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classIReporter" prot="public" virt="non-virtual">IReporter&lt; UserPropertyChanged &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classIReporter" prot="public" virt="non-virtual">IReporter&lt; UiMsg &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classKeyTimer" prot="private" virt="non-virtual">KeyTimer&lt; std::chrono::milliseconds &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classKeyTimer" prot="private" virt="non-virtual">KeyTimer&lt; std::chrono::microseconds &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classKeyTimer" prot="private" virt="non-virtual">KeyTimer&lt; std::chrono::seconds &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classGame" prot="public" virt="non-virtual">Game&lt; T &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classGraphics" prot="private" virt="non-virtual">Graphics</derivedcompoundref>
+    <derivedcompoundref refid="classIListener" prot="public" virt="non-virtual">IListener&lt; T &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classIReporter" prot="public" virt="non-virtual">IReporter&lt; T &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classKeyTimer" prot="private" virt="non-virtual">KeyTimer&lt; Resolution &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classSoundManager" prot="public" virt="non-virtual">SoundManager</derivedcompoundref>
+    <includes refid="non__copyable_8h" local="no">non_copyable.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classNonCopyableAndNonMovable_a0f3fc95f2c582514d58832b7c14d2965_1a0f3fc95f2c582514d58832b7c14d2965" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>NonCopyableAndNonMovable::NonCopyableAndNonMovable</definition>
+        <argsstring>()=default</argsstring>
+        <name>NonCopyableAndNonMovable</name>
+        <qualifiedname>NonCopyableAndNonMovable::NonCopyableAndNonMovable</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/non_copyable.h" line="21" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classNonCopyableAndNonMovable_a3502311a2435129e171eb36ba05f0b2f_1a3502311a2435129e171eb36ba05f0b2f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>NonCopyableAndNonMovable::NonCopyableAndNonMovable</definition>
+        <argsstring>(const NonCopyableAndNonMovable &amp;rhs)=delete</argsstring>
+        <name>NonCopyableAndNonMovable</name>
+        <qualifiedname>NonCopyableAndNonMovable::NonCopyableAndNonMovable</qualifiedname>
+        <param>
+          <type>const <ref refid="classNonCopyableAndNonMovable" kindref="compound">NonCopyableAndNonMovable</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/non_copyable.h" line="22" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classNonCopyableAndNonMovable_a6541862f56b2fcaa89155f08b8adaf11_1a6541862f56b2fcaa89155f08b8adaf11" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classNonCopyableAndNonMovable" kindref="compound">NonCopyableAndNonMovable</ref> &amp;</type>
+        <definition>NonCopyableAndNonMovable &amp; NonCopyableAndNonMovable::operator=</definition>
+        <argsstring>(const NonCopyableAndNonMovable &amp;rhs)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>NonCopyableAndNonMovable::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classNonCopyableAndNonMovable" kindref="compound">NonCopyableAndNonMovable</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/non_copyable.h" line="23" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classNonCopyableAndNonMovable_a259655d15f1887d015c6d77a0f09f4ff_1a259655d15f1887d015c6d77a0f09f4ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>NonCopyableAndNonMovable::NonCopyableAndNonMovable</definition>
+        <argsstring>(NonCopyableAndNonMovable &amp;rhs)=delete</argsstring>
+        <name>NonCopyableAndNonMovable</name>
+        <qualifiedname>NonCopyableAndNonMovable::NonCopyableAndNonMovable</qualifiedname>
+        <param>
+          <type><ref refid="classNonCopyableAndNonMovable" kindref="compound">NonCopyableAndNonMovable</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/non_copyable.h" line="24" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classNonCopyableAndNonMovable_aa3af41edbd14c886cdec335b22254829_1aa3af41edbd14c886cdec335b22254829" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classNonCopyableAndNonMovable" kindref="compound">NonCopyableAndNonMovable</ref> &amp;</type>
+        <definition>NonCopyableAndNonMovable &amp; NonCopyableAndNonMovable::operator=</definition>
+        <argsstring>(NonCopyableAndNonMovable &amp;rhs)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>NonCopyableAndNonMovable::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classNonCopyableAndNonMovable" kindref="compound">NonCopyableAndNonMovable</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/non_copyable.h" line="25" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classNonCopyableAndNonMovable_acadc47621b689b1b95bef13a35f18572_1acadc47621b689b1b95bef13a35f18572" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>NonCopyableAndNonMovable::NonCopyableAndNonMovable</definition>
+        <argsstring>(NonCopyableAndNonMovable &amp;&amp;rhs)=delete</argsstring>
+        <name>NonCopyableAndNonMovable</name>
+        <qualifiedname>NonCopyableAndNonMovable::NonCopyableAndNonMovable</qualifiedname>
+        <param>
+          <type><ref refid="classNonCopyableAndNonMovable" kindref="compound">NonCopyableAndNonMovable</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/non_copyable.h" line="26" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classNonCopyableAndNonMovable_a972632a389e0f2370de9604df60ea9d6_1a972632a389e0f2370de9604df60ea9d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classNonCopyableAndNonMovable" kindref="compound">NonCopyableAndNonMovable</ref> &amp;</type>
+        <definition>NonCopyableAndNonMovable &amp; NonCopyableAndNonMovable::operator=</definition>
+        <argsstring>(NonCopyableAndNonMovable &amp;&amp;rhs)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>NonCopyableAndNonMovable::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classNonCopyableAndNonMovable" kindref="compound">NonCopyableAndNonMovable</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/non_copyable.h" line="27" column="26"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classNonCopyableAndNonMovable_aa6874bb9a99fe151e8c2eda429fe5867_1aa6874bb9a99fe151e8c2eda429fe5867" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>NonCopyableAndNonMovable::~NonCopyableAndNonMovable</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>~NonCopyableAndNonMovable</name>
+        <qualifiedname>NonCopyableAndNonMovable::~NonCopyableAndNonMovable</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/non_copyable.h" line="29" column="1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>Arkanoid</label>
+        <link refid="classArkanoid"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>Game&lt; T &gt;</label>
+        <link refid="classGame"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Game&lt; Arkanoid &gt;</label>
+        <link refid="classGame"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Game&lt; Sandbox3d &gt;</label>
+        <link refid="classGame"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>Graphics</label>
+        <link refid="classGraphics"/>
+        <childnode refid="1" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>IListener&lt; T &gt;</label>
+        <link refid="classIListener"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>IListener&lt; SwapChainResizedEvent &gt;</label>
+        <link refid="classIListener"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>IListener&lt; UISoundEvent &gt;</label>
+        <link refid="classIListener"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>IListener&lt; UiMsg &gt;</label>
+        <link refid="classIListener"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>IListener&lt; UserPropertyChanged &gt;</label>
+        <link refid="classIListener"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>IReporter&lt; T &gt;</label>
+        <link refid="classIReporter"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>IReporter&lt; SwapChainResizedEvent &gt;</label>
+        <link refid="classIReporter"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>IReporter&lt; UISoundEvent &gt;</label>
+        <link refid="classIReporter"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>IReporter&lt; UiMsg &gt;</label>
+        <link refid="classIReporter"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>IReporter&lt; UserPropertyChanged &gt;</label>
+        <link refid="classIReporter"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>KeyTimer&lt; Resolution &gt;</label>
+        <link refid="classKeyTimer"/>
+        <childnode refid="1" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>KeyTimer&lt; std::chrono::microseconds &gt;</label>
+        <link refid="classKeyTimer"/>
+        <childnode refid="1" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>KeyTimer&lt; std::chrono::milliseconds &gt;</label>
+        <link refid="classKeyTimer"/>
+        <childnode refid="1" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>KeyTimer&lt; std::chrono::seconds &gt;</label>
+        <link refid="classKeyTimer"/>
+        <childnode refid="1" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>NonCopyableAndNonMovable</label>
+        <link refid="classNonCopyableAndNonMovable"/>
+      </node>
+      <node id="13">
+        <label>ReportingNexus</label>
+        <link refid="classReportingNexus"/>
+        <childnode refid="12" relation="public-inheritance">
+        </childnode>
+        <childnode refid="14" relation="public-inheritance">
+        </childnode>
+        <childnode refid="15" relation="public-inheritance">
+        </childnode>
+        <childnode refid="16" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Sandbox3d</label>
+        <link refid="classSandbox3d"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>SoundManager</label>
+        <link refid="classSoundManager"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>SoundPlayer</label>
+        <link refid="classSoundPlayer"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>gui::Component</label>
+        <link refid="classgui_1_1Component"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+        <childnode refid="11" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="inc/non_copyable.h" line="18" column="1" bodyfile="inc/non_copyable.h" bodystart="19" bodyend="30"/>
+    <listofallmembers>
+      <member refid="classNonCopyableAndNonMovable_a0f3fc95f2c582514d58832b7c14d2965_1a0f3fc95f2c582514d58832b7c14d2965" prot="public" virt="non-virtual"><scope>NonCopyableAndNonMovable</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_a3502311a2435129e171eb36ba05f0b2f_1a3502311a2435129e171eb36ba05f0b2f" prot="public" virt="non-virtual"><scope>NonCopyableAndNonMovable</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_a259655d15f1887d015c6d77a0f09f4ff_1a259655d15f1887d015c6d77a0f09f4ff" prot="public" virt="non-virtual"><scope>NonCopyableAndNonMovable</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_acadc47621b689b1b95bef13a35f18572_1acadc47621b689b1b95bef13a35f18572" prot="public" virt="non-virtual"><scope>NonCopyableAndNonMovable</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_a6541862f56b2fcaa89155f08b8adaf11_1a6541862f56b2fcaa89155f08b8adaf11" prot="public" virt="non-virtual"><scope>NonCopyableAndNonMovable</scope><name>operator=</name></member>
+      <member refid="classNonCopyableAndNonMovable_aa3af41edbd14c886cdec335b22254829_1aa3af41edbd14c886cdec335b22254829" prot="public" virt="non-virtual"><scope>NonCopyableAndNonMovable</scope><name>operator=</name></member>
+      <member refid="classNonCopyableAndNonMovable_a972632a389e0f2370de9604df60ea9d6_1a972632a389e0f2370de9604df60ea9d6" prot="public" virt="non-virtual"><scope>NonCopyableAndNonMovable</scope><name>operator=</name></member>
+      <member refid="classNonCopyableAndNonMovable_aa6874bb9a99fe151e8c2eda429fe5867_1aa6874bb9a99fe151e8c2eda429fe5867" prot="protected" virt="non-virtual"><scope>NonCopyableAndNonMovable</scope><name>~NonCopyableAndNonMovable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Texture2D_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>ver::VertexInputLayout::ElementProperties&lt; Texture2D &gt;</compoundname>
+    <includes refid="dynamic__vertex__buffer_8h" local="no">dynamic_vertex_buffer.h</includes>
+    <templateparamlist>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Texture2D_01_4_a34415efd0cad322d9cfda28b0c3c55fd_1a34415efd0cad322d9cfda28b0c3c55fd" prot="public" static="no">
+        <type>DirectX::XMFLOAT2</type>
+        <definition>using ver::VertexInputLayout::ElementProperties&lt; Texture2D &gt;::CPUType =  DirectX::XMFLOAT2</definition>
+        <argsstring></argsstring>
+        <name>CPUType</name>
+        <qualifiedname>ver::VertexInputLayout::ElementProperties&lt; Texture2D &gt;::CPUType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="81" column="1" bodyfile="inc/dynamic_vertex_buffer.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Texture2D_01_4_ac99474922703a1c037e3d3206a25b594_1ac99474922703a1c037e3d3206a25b594" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>DXGI_FORMAT</type>
+        <definition>DXGI_FORMAT ver::VertexInputLayout::ElementProperties&lt; Texture2D &gt;::dxgiFormat</definition>
+        <argsstring></argsstring>
+        <name>dxgiFormat</name>
+        <qualifiedname>ver::VertexInputLayout::ElementProperties&lt; Texture2D &gt;::dxgiFormat</qualifiedname>
+        <initializer>= DXGI_FORMAT_R32G32_FLOAT</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="82" column="30" bodyfile="inc/dynamic_vertex_buffer.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Texture2D_01_4_ad566a4727e02d8bdd34ce5a16b8107d6_1ad566a4727e02d8bdd34ce5a16b8107d6" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>const char *</type>
+        <definition>const char* ver::VertexInputLayout::ElementProperties&lt; Texture2D &gt;::hlslSemantic</definition>
+        <argsstring></argsstring>
+        <name>hlslSemantic</name>
+        <qualifiedname>ver::VertexInputLayout::ElementProperties&lt; Texture2D &gt;::hlslSemantic</qualifiedname>
+        <initializer>= &quot;Texcoord&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="83" column="29" bodyfile="inc/dynamic_vertex_buffer.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Texture2D_01_4_a47e21c29f8f2480e5372b1ff5e118393_1a47e21c29f8f2480e5372b1ff5e118393" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>const char *</type>
+        <definition>const char* ver::VertexInputLayout::ElementProperties&lt; Texture2D &gt;::tag</definition>
+        <argsstring></argsstring>
+        <name>tag</name>
+        <qualifiedname>ver::VertexInputLayout::ElementProperties&lt; Texture2D &gt;::tag</qualifiedname>
+        <initializer>= &quot;T2&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="84" column="29" bodyfile="inc/dynamic_vertex_buffer.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/dynamic_vertex_buffer.h" line="79" column="1" bodyfile="inc/dynamic_vertex_buffer.h" bodystart="80" bodyend="86"/>
+    <listofallmembers>
+      <member refid="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Texture2D_01_4_a34415efd0cad322d9cfda28b0c3c55fd_1a34415efd0cad322d9cfda28b0c3c55fd" prot="public" virt="non-virtual"><scope>ver::VertexInputLayout::ElementProperties&lt; Texture2D &gt;</scope><name>CPUType</name></member>
+      <member refid="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Texture2D_01_4_ac99474922703a1c037e3d3206a25b594_1ac99474922703a1c037e3d3206a25b594" prot="public" virt="non-virtual"><scope>ver::VertexInputLayout::ElementProperties&lt; Texture2D &gt;</scope><name>dxgiFormat</name></member>
+      <member refid="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Texture2D_01_4_ad566a4727e02d8bdd34ce5a16b8107d6_1ad566a4727e02d8bdd34ce5a16b8107d6" prot="public" virt="non-virtual"><scope>ver::VertexInputLayout::ElementProperties&lt; Texture2D &gt;</scope><name>hlslSemantic</name></member>
+      <member refid="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Texture2D_01_4_a47e21c29f8f2480e5372b1ff5e118393_1a47e21c29f8f2480e5372b1ff5e118393" prot="public" virt="non-virtual"><scope>ver::VertexInputLayout::ElementProperties&lt; Texture2D &gt;</scope><name>tag</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

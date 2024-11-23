@@ -1,0 +1,49 @@
+\doxysection{texture\+\_\+processor.\+h}
+\hypertarget{texture__processor_8h_source}{}\label{texture__processor_8h_source}\index{inc/texture\_processor.h@{inc/texture\_processor.h}}
+\mbox{\hyperlink{texture__processor_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{bitmap_8h}{bitmap.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{using\ }\mbox{\hyperlink{texture_8h_a48efc2b83d04747965ce26c7eb8d406c_a48efc2b83d04747965ce26c7eb8d406c}{TextureOp}}\ =\ DirectX::XMVECTOR(*)(\mbox{\hyperlink{classBitmap_a83b763f52f32144764bf50ba22c3c080_a83b763f52f32144764bf50ba22c3c080}{Bitmap::Texel}});}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTextureProcessor}{TextureProcessor}}\ final}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ F>}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTextureProcessor_a53ce5cb452ed9f3de57818dd153d7501_a53ce5cb452ed9f3de57818dd153d7501}{transformFile}}(\ \textcolor{keyword}{const}\ std::string\ \&pathIn,}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&pathOut,}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ F\ \&\&f\ )}
+\DoxyCodeLine{00015\ \ \ \ \ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ bitmap\ =\ \mbox{\hyperlink{classBitmap_a6e287dc135d2267f1ec28766b54f58ac_a6e287dc135d2267f1ec28766b54f58ac}{Bitmap::loadFromFile}}(\ pathIn\ );}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTextureProcessor_a1ea179c15897e25858f4e2a4ee67f339_a1ea179c15897e25858f4e2a4ee67f339}{TextureProcessor::transformBitmap}}(\ bitmap,\ f\ );}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ bitmap.save(\ pathOut\ );}
+\DoxyCodeLine{00019\ \ \ \ \ \}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classTextureProcessor_a538e567e3ef03332e9f7e1b240bef944_a538e567e3ef03332e9f7e1b240bef944}{calculateNumberOfMipMaps}}(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ width,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ height\ )\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTextureProcessor_a9f728161057ae7aa759bec966e8f75c4_a9f728161057ae7aa759bec966e8f75c4}{flipModelNormalMapsGreenChannel}}(\ \textcolor{keyword}{const}\ std::string\ \&objPath\ );}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTextureProcessor_a6f40014bf51081226164f27f1dea675b_a6f40014bf51081226164f27f1dea675b}{flipNormalMapGreenChannel}}(\ \textcolor{keyword}{const}\ std::string\ \&pathIn,\ \textcolor{keyword}{const}\ std::string\ \&pathOut\ );}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTextureProcessor_a46767ffa63ec6315abbd399d16ee1328_a46767ffa63ec6315abbd399d16ee1328}{validateNormalMap}}(\ \textcolor{keyword}{const}\ std::string\ \&pathIn,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ thresholdMin,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ thresholdMax\ );}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTextureProcessor_afe57fa7233ced0bf86bc2a7ee1cdc81e_afe57fa7233ced0bf86bc2a7ee1cdc81e}{makeStripes}}(\ \textcolor{keyword}{const}\ std::string\ \&pathOut,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ size,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ stripeWidth\ );}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTextureProcessor_a1ea179c15897e25858f4e2a4ee67f339_a1ea179c15897e25858f4e2a4ee67f339}{transformBitmap}}(\ \mbox{\hyperlink{classBitmap}{Bitmap}}\ \&bitmap,\ \mbox{\hyperlink{texture_8h_a48efc2b83d04747965ce26c7eb8d406c_a48efc2b83d04747965ce26c7eb8d406c}{TextureOp}}\ f\ );}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ F>}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTextureProcessor_a3c6c41ce9a3433e958176851f7265e24_a3c6c41ce9a3433e958176851f7265e24}{transformBitmap}}(\ \mbox{\hyperlink{classBitmap}{Bitmap}}\ \&bitmap,}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ F\ \&\&f\ )}
+\DoxyCodeLine{00033\ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ width\ =\ bitmap.\mbox{\hyperlink{classBitmap_a202f7fe815d1cfa32f243d2037c5cb0b_a202f7fe815d1cfa32f243d2037c5cb0b}{getWidth}}();}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ height\ =\ bitmap.\mbox{\hyperlink{classBitmap_a690ad3010a52d955d017c7f5003e2c12_a690ad3010a52d955d017c7f5003e2c12}{getHeight}}();}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{unsigned}\ y\ =\ 0;\ y\ <\ height;\ ++y\ )}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{unsigned}\ x\ =\ 0;\ x\ <\ width;\ ++x\ )}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ v\ =\ \mbox{\hyperlink{classBitmap_ad54deb3c80e50da488b3ebc109a35c46_ad54deb3c80e50da488b3ebc109a35c46}{Bitmap::colorToVector}}(\ bitmap.\mbox{\hyperlink{classBitmap_a533369def9843f9412f1621c0b6142d5_a533369def9843f9412f1621c0b6142d5}{getTexel}}(\ x,\ y\ )\ );}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bitmap.\mbox{\hyperlink{classBitmap_a84a99a827a407f53aa2415122c64ff2c_a84a99a827a407f53aa2415122c64ff2c}{setTexel}}(\ x,\ y,\ \mbox{\hyperlink{classBitmap_a8c616d78d019253dd00223f34f7b0735_a8c616d78d019253dd00223f34f7b0735}{Bitmap::vectorToColor}}(\ f(\ v,\ x,\ y\ )\ )\ );}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \};}
+
+\end{DoxyCode}

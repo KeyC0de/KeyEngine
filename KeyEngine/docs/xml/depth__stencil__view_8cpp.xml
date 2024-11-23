@@ -1,0 +1,818 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="depth__stencil__view_8cpp" kind="file" language="C++">
+    <compoundname>depth_stencil_view.cpp</compoundname>
+    <includes refid="depth__stencil__view_8h" local="yes">depth_stencil_view.h</includes>
+    <includes refid="graphics_8h" local="yes">graphics.h</includes>
+    <includes refid="texture__desc_8h" local="yes">texture_desc.h</includes>
+    <includes refid="render__target_8h" local="yes">render_target.h</includes>
+    <includes refid="os__utils_8h" local="yes">os_utils.h</includes>
+    <includes refid="dxgi__info__queue_8h" local="yes">dxgi_info_queue.h</includes>
+    <includes refid="viewport_8h" local="yes">viewport.h</includes>
+    <incdepgraph>
+      <node id="10">
+        <label>assertions_console.h</label>
+        <link refid="assertions__console_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>bindable.h</label>
+        <link refid="bindable_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>bitmap.h</label>
+        <link refid="bitmap_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>color.h</label>
+        <link refid="color_8h"/>
+      </node>
+      <node id="34">
+        <label>console.h</label>
+        <link refid="console_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>depth_stencil_view.h</label>
+        <link refid="depth__stencil__view_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>dxgi_info_queue.h</label>
+        <link refid="dxgi__info__queue_8h"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>graphics.h</label>
+        <link refid="graphics_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>graphics_friend.h</label>
+        <link refid="graphics__friend_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>key_exception.h</label>
+        <link refid="key__exception_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>key_timer.h</label>
+        <link refid="key__timer_8h"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="53">
+        <label>key_type_traits.h</label>
+        <link refid="key__type__traits_8h"/>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>key_wrl.h</label>
+        <link refid="key__wrl_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>math_utils.h</label>
+        <link refid="math__utils_8h"/>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="56">
+        <label>os_utils.h</label>
+        <link refid="os__utils_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>render_surface.h</label>
+        <link refid="render__surface_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="55">
+        <label>render_target.h</label>
+        <link refid="render__target_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>texture_desc.h</label>
+        <link refid="texture__desc_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+      </node>
+      <node id="54">
+        <label>utils_global.h</label>
+        <link refid="utils__global_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+      </node>
+      <node id="65">
+        <label>viewport.h</label>
+        <link refid="viewport_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>winner.h</label>
+        <link refid="winner_8h"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/depth_stencil_view.cpp</label>
+        <link refid="depth__stencil__view_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>DirectXMath.h</label>
+      </node>
+      <node id="19">
+        <label>DirectxMath.h</label>
+      </node>
+      <node id="61">
+        <label>ShlObj.h</label>
+      </node>
+      <node id="17">
+        <label>Windows.h</label>
+      </node>
+      <node id="48">
+        <label>algorithm</label>
+      </node>
+      <node id="13">
+        <label>array</label>
+      </node>
+      <node id="44">
+        <label>bitset</label>
+      </node>
+      <node id="33">
+        <label>chrono</label>
+      </node>
+      <node id="46">
+        <label>cinttypes</label>
+      </node>
+      <node id="36">
+        <label>cmath</label>
+      </node>
+      <node id="58">
+        <label>comdef.h</label>
+      </node>
+      <node id="45">
+        <label>cstddef</label>
+      </node>
+      <node id="37">
+        <label>cstdint</label>
+      </node>
+      <node id="9">
+        <label>d3d11.h</label>
+      </node>
+      <node id="28">
+        <label>d3dcompiler.h</label>
+      </node>
+      <node id="27">
+        <label>dxgi1_4.h</label>
+      </node>
+      <node id="64">
+        <label>dxgidebug.h</label>
+      </node>
+      <node id="20">
+        <label>dxtex/DirectXTex.h</label>
+      </node>
+      <node id="52">
+        <label>execution</label>
+      </node>
+      <node id="60">
+        <label>functional</label>
+      </node>
+      <node id="47">
+        <label>future</label>
+      </node>
+      <node id="40">
+        <label>iomanip</label>
+      </node>
+      <node id="11">
+        <label>iostream</label>
+      </node>
+      <node id="50">
+        <label>iterator</label>
+      </node>
+      <node id="41">
+        <label>limits</label>
+      </node>
+      <node id="7">
+        <label>memory</label>
+      </node>
+      <node id="49">
+        <label>numeric</label>
+      </node>
+      <node id="5">
+        <label>optional</label>
+      </node>
+      <node id="51">
+        <label>regex</label>
+      </node>
+      <node id="16">
+        <label>sdkddkver.h</label>
+      </node>
+      <node id="43">
+        <label>set</label>
+      </node>
+      <node id="39">
+        <label>sstream</label>
+      </node>
+      <node id="22">
+        <label>stdexcept</label>
+      </node>
+      <node id="18">
+        <label>string</label>
+      </node>
+      <node id="32">
+        <label>thread</label>
+      </node>
+      <node id="59">
+        <label>tlhelp32.h</label>
+      </node>
+      <node id="38">
+        <label>type_traits</label>
+      </node>
+      <node id="30">
+        <label>vector</label>
+      </node>
+      <node id="62">
+        <label>wincred.h</label>
+      </node>
+      <node id="57">
+        <label>winternl.h</label>
+      </node>
+      <node id="4">
+        <label>wrl.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="depth__stencil__view_8h" kindref="compound">depth_stencil_view.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="graphics_8h" kindref="compound">graphics.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="texture__desc_8h" kindref="compound">texture_desc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="render__target_8h" kindref="compound">render_target.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="os__utils_8h" kindref="compound">os_utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dxgi__info__queue_8h" kindref="compound">dxgi_info_queue.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="viewport_8h" kindref="compound">viewport.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mwrl<sp/>=<sp/>Microsoft::WRL;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="classIDepthStencilView_a2d41ae84140c62fafde60b52a884831e_1a2d41ae84140c62fafde60b52a884831e" refkind="member"><highlight class="normal"><ref refid="classIDepthStencilView_a2d41ae84140c62fafde60b52a884831e_1a2d41ae84140c62fafde60b52a884831e" kindref="member">IDepthStencilView::IDepthStencilView</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>ID3D11Texture2D<sp/>*pTexture,</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_1a5aacc2000fea78d975de8fe06e3698f2" kindref="member">DepthStencilViewMode</ref><sp/>dsvMode,</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;unsigned&gt;<sp/>face<sp/>)</highlight></codeline>
+<codeline lineno="16"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>D3D11_TEXTURE2D_DESC<sp/>texDesc{};</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>pTexture-&gt;GetDesc(<sp/>&amp;texDesc<sp/>);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classIDepthStencilView_a77e7a6639ca4a086a64470f0a22e8a58_1a77e7a6639ca4a086a64470f0a22e8a58" kindref="member">m_width</ref><sp/>=<sp/>texDesc.Width;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classIDepthStencilView_a5b67794aed2406ff0f17b9a76d8a5bc5_1a5b67794aed2406ff0f17b9a76d8a5bc5" kindref="member">m_height</ref><sp/>=<sp/>texDesc.Height;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>ds<sp/>view<sp/>into<sp/>the<sp/>depth<sp/>stencil<sp/>texture</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>D3D11_DEPTH_STENCIL_VIEW_DESC<sp/>dsvDesc{};</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//dsvDesc.Flags<sp/>=<sp/>0u;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>dsvDesc.Format<sp/>=<sp/><ref refid="texture__desc_8h_ada981af37c5ea1a0d8713e52ca9e28ea_1ada981af37c5ea1a0d8713e52ca9e28ea" kindref="member">getTypedFormatDsv</ref>(<sp/>dsvMode<sp/>);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>face.has_value()<sp/>)</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsvDesc.ViewDimension<sp/>=<sp/>D3D11_DSV_DIMENSION_TEXTURE2DARRAY;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsvDesc.Texture2DArray.ArraySize<sp/>=<sp/>1u;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>how<sp/>many<sp/>(cube)<sp/>textures<sp/>to<sp/>create;<sp/>this<sp/>would<sp/>not<sp/>be<sp/>equal<sp/>to<sp/>1<sp/>only<sp/>in<sp/>the<sp/>case<sp/>of<sp/>using<sp/>`SV_RenderTargetArrayIndex`</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsvDesc.Texture2DArray.FirstArraySlice<sp/>=<sp/>*face;<sp/></highlight><highlight class="comment">//<sp/>texture<sp/>slice<sp/>in<sp/>the<sp/>Texture2DArray<sp/>to<sp/>use</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsvDesc.Texture2DArray.MipSlice<sp/>=<sp/>0u;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>mip<sp/>level<sp/>to<sp/>use</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsvDesc.ViewDimension<sp/>=<sp/>D3D11_DSV_DIMENSION_TEXTURE2D;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsvDesc.Texture2D<sp/>=<sp/>D3D11_TEX2D_DSV{0};</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>HRESULT<sp/>hres<sp/>=<sp/><ref refid="classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_1a175df79f82ab5a6dad1df24b5a242ef7" kindref="member">getDevice</ref>(<sp/>gfx<sp/>)-&gt;CreateDepthStencilView(<sp/>pTexture,<sp/>&amp;dsvDesc,<sp/>&amp;<ref refid="classIDepthStencilView_a1101dd9a388839f785ef9e69dd389684_1a1101dd9a388839f785ef9e69dd389684" kindref="member">m_pD3dDsv</ref><sp/>);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="os__utils_8h_a7027472bc9b182c0fea900713e4541e3_1a7027472bc9b182c0fea900713e4541e3" kindref="member">ASSERT_HRES_IF_FAILED</ref>;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="classIDepthStencilView_a40482838c8e1421a622521a2ec8aae40_1a40482838c8e1421a622521a2ec8aae40" refkind="member"><highlight class="normal"><ref refid="classIDepthStencilView_a2d41ae84140c62fafde60b52a884831e_1a2d41ae84140c62fafde60b52a884831e" kindref="member">IDepthStencilView::IDepthStencilView</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>ID3D11Texture2D<sp/>*pTextureRsc,</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_1a5aacc2000fea78d975de8fe06e3698f2" kindref="member">DepthStencilViewMode</ref><sp/>dsvMode,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>textureArrayIndex,</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;unsigned&gt;<sp/>face<sp/>)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>D3D11_TEXTURE2D_DESC<sp/>texDesc{};</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>pTextureRsc-&gt;GetDesc(<sp/>&amp;texDesc<sp/>);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classIDepthStencilView_a77e7a6639ca4a086a64470f0a22e8a58_1a77e7a6639ca4a086a64470f0a22e8a58" kindref="member">m_width</ref><sp/>=<sp/>texDesc.Width;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classIDepthStencilView_a5b67794aed2406ff0f17b9a76d8a5bc5_1a5b67794aed2406ff0f17b9a76d8a5bc5" kindref="member">m_height</ref><sp/>=<sp/>texDesc.Height;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>ds<sp/>view<sp/>into<sp/>the<sp/>depth<sp/>stencil<sp/>texture</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>D3D11_DEPTH_STENCIL_VIEW_DESC<sp/>dsvDesc{};</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//dsvDesc.Flags<sp/>=<sp/>0u;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>dsvDesc.Format<sp/>=<sp/><ref refid="texture__desc_8h_ada981af37c5ea1a0d8713e52ca9e28ea_1ada981af37c5ea1a0d8713e52ca9e28ea" kindref="member">getTypedFormatDsv</ref>(<sp/>dsvMode<sp/>);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>face.has_value()<sp/>)</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsvDesc.ViewDimension<sp/>=<sp/>D3D11_DSV_DIMENSION_TEXTURE2DARRAY;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsvDesc.Texture2DArray.ArraySize<sp/>=<sp/>1u;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>we&apos;re<sp/>still<sp/>only<sp/>rendering<sp/>to<sp/>1<sp/>face<sp/>at<sp/>a<sp/>time</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsvDesc.Texture2DArray.FirstArraySlice<sp/>=<sp/>(textureArrayIndex<sp/>*<sp/>6)<sp/>+<sp/>*face;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>first<sp/>texture<sp/>slice<sp/>in<sp/>the<sp/>Texture2DArray<sp/>to<sp/>use</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsvDesc.Texture2DArray.MipSlice<sp/>=<sp/>0u;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsvDesc.ViewDimension<sp/>=<sp/>D3D11_DSV_DIMENSION_TEXTURE2DARRAY;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsvDesc.Texture2DArray.ArraySize<sp/>=<sp/>1u;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>we&apos;re<sp/>rendering<sp/>depth/stencil<sp/>to<sp/>1<sp/>face<sp/>at<sp/>a<sp/>time</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsvDesc.Texture2DArray.FirstArraySlice<sp/>=<sp/>textureArrayIndex;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsvDesc.Texture2DArray.MipSlice<sp/>=<sp/>0u;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>HRESULT<sp/>hres<sp/>=<sp/><ref refid="classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_1a175df79f82ab5a6dad1df24b5a242ef7" kindref="member">getDevice</ref>(<sp/>gfx<sp/>)-&gt;CreateDepthStencilView(<sp/>pTextureRsc,<sp/>&amp;dsvDesc,<sp/>&amp;<ref refid="classIDepthStencilView_a1101dd9a388839f785ef9e69dd389684_1a1101dd9a388839f785ef9e69dd389684" kindref="member">m_pD3dDsv</ref><sp/>);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="os__utils_8h_a7027472bc9b182c0fea900713e4541e3_1a7027472bc9b182c0fea900713e4541e3" kindref="member">ASSERT_HRES_IF_FAILED</ref>;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="classIDepthStencilView_aec7a25978c04ff1bcb0a047882c8836d_1aec7a25978c04ff1bcb0a047882c8836d" refkind="member"><highlight class="normal"><ref refid="classIDepthStencilView_a2d41ae84140c62fafde60b52a884831e_1a2d41ae84140c62fafde60b52a884831e" kindref="member">IDepthStencilView::IDepthStencilView</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>width,</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>height,</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bBindAsShaderInput,</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_1a5aacc2000fea78d975de8fe06e3698f2" kindref="member">DepthStencilViewMode</ref><sp/>dsvMode<sp/>)</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>m_width(width),</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>m_height(height)</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>mwrl::ComPtr&lt;ID3D11Texture2D&gt;<sp/>pTexture;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>D3D11_TEXTURE2D_DESC<sp/>texDesc<sp/>=<sp/><ref refid="texture__desc_8h_aed49d8003c0bd913475b88771be11296_1aed49d8003c0bd913475b88771be11296" kindref="member">createTextureDescriptor</ref>(<sp/>width,<sp/>height,<sp/><ref refid="texture__desc_8h_a70ee284a2074507d586cded00e2e8617_1a70ee284a2074507d586cded00e2e8617" kindref="member">getTypelessFormatDsv</ref>(<sp/>dsvMode<sp/>),<sp/>(<sp/>bBindAsShaderInput<sp/>?<sp/><ref refid="texture__desc_8h_a84e8864fab1faebd38dd020fb6050ee2_1a84e8864fab1faebd38dd020fb6050ee2a05274c5f679d387842c005d8563da7c7" kindref="member">BindFlags::DepthStencilTexture</ref><sp/>:<sp/><ref refid="texture__desc_8h_a84e8864fab1faebd38dd020fb6050ee2_1a84e8864fab1faebd38dd020fb6050ee2a05274c5f679d387842c005d8563da7c7" kindref="member">BindFlags::DepthStencilTexture</ref><sp/>),<sp/><ref refid="texture__desc_8h_a7e39f63b567b83d32dd82e7a0c062e08_1a7e39f63b567b83d32dd82e7a0c062e08a3986e6101d3d5b354d3b3b58445d046b" kindref="member">CpuAccessFlags::NoCpuAccess</ref>,<sp/><ref refid="texture__desc_8h_af3a2e76419de0e0d1ec1b12a83047412_1af3a2e76419de0e0d1ec1b12a83047412a79935518a3889663d8688b6b01fff051" kindref="member">TextureUsage::Default</ref>,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>HRESULT<sp/>hres<sp/>=<sp/><ref refid="classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_1a175df79f82ab5a6dad1df24b5a242ef7" kindref="member">getDevice</ref>(<sp/>gfx<sp/>)-&gt;CreateTexture2D(<sp/>&amp;texDesc,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>&amp;pTexture<sp/>);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="os__utils_8h_a7027472bc9b182c0fea900713e4541e3_1a7027472bc9b182c0fea900713e4541e3" kindref="member">ASSERT_HRES_IF_FAILED</ref>;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>target<sp/>view<sp/>of<sp/>depth<sp/>stencil<sp/>texture</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>D3D11_DEPTH_STENCIL_VIEW_DESC<sp/>dsViewDesc{};</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>dsViewDesc.Format<sp/>=<sp/><ref refid="texture__desc_8h_ada981af37c5ea1a0d8713e52ca9e28ea_1ada981af37c5ea1a0d8713e52ca9e28ea" kindref="member">getTypedFormatDsv</ref>(<sp/>dsvMode<sp/>);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>dsViewDesc.Flags<sp/>=<sp/>0u;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>dsViewDesc.ViewDimension<sp/>=<sp/>D3D11_DSV_DIMENSION_TEXTURE2D;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>dsViewDesc.Texture2D.MipSlice<sp/>=<sp/>0u;<sp/></highlight><highlight class="comment">//<sp/>no<sp/>mips<sp/>with<sp/>depth<sp/>maps</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>hres<sp/>=<sp/><ref refid="classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_1a175df79f82ab5a6dad1df24b5a242ef7" kindref="member">getDevice</ref>(<sp/>gfx<sp/>)-&gt;CreateDepthStencilView(<sp/>pTexture.Get(),<sp/>&amp;dsViewDesc,<sp/>&amp;<ref refid="classIDepthStencilView_a1101dd9a388839f785ef9e69dd389684_1a1101dd9a388839f785ef9e69dd389684" kindref="member">m_pD3dDsv</ref><sp/>);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="os__utils_8h_a7027472bc9b182c0fea900713e4541e3_1a7027472bc9b182c0fea900713e4541e3" kindref="member">ASSERT_HRES_IF_FAILED</ref>;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103" refid="classIDepthStencilView_a75916f855423f1737747566b136e1208_1a75916f855423f1737747566b136e1208" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classIDepthStencilView_a75916f855423f1737747566b136e1208_1a75916f855423f1737747566b136e1208" kindref="member">IDepthStencilView::bindRenderSurface</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>viewport<sp/>=<sp/><ref refid="classViewport_a1256dfd86a85d8bf84da6a0fec8b0ad6_1a1256dfd86a85d8bf84da6a0fec8b0ad6" kindref="member">Viewport::fetch</ref>(<sp/>gfx,<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)<sp/>m_width,<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)<sp/>m_height<sp/>);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>viewport-&gt;bind(<sp/>gfx<sp/>);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>getDeviceContext(<sp/>gfx<sp/>)-&gt;OMSetRenderTargets(<sp/>0u,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>m_pD3dDsv.Get()<sp/>);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dxgi__info__queue_8h_accf41747d77929c5a185f1f7d5c72263_1accf41747d77929c5a185f1f7d5c72263" kindref="member">DXGI_GET_QUEUE_INFO</ref>(<sp/>gfx<sp/>);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112" refid="classIDepthStencilView_aabbb45b15b9db4ac1db93a8fae7b48b3_1aabbb45b15b9db4ac1db93a8fae7b48b3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classIDepthStencilView_a75916f855423f1737747566b136e1208_1a75916f855423f1737747566b136e1208" kindref="member">IDepthStencilView::bindRenderSurface</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classIRenderSurface" kindref="compound">IRenderSurface</ref><sp/>*rt<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="114"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/></highlight><highlight class="keyword">dynamic_cast&lt;</highlight><highlight class="normal"><ref refid="classIRenderTargetView" kindref="compound">IRenderTargetView</ref>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/>rt<sp/>)<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Bad<sp/>cast.<sp/>IRenderSurface<sp/>is<sp/>not<sp/>a<sp/>IRenderTargetView!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>bindRenderSurface(<sp/>gfx,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classIRenderTargetView" kindref="compound">IRenderTargetView</ref>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/>rt<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="classIDepthStencilView_a690af44ba0b174d334547fb31648cd7b_1a690af44ba0b174d334547fb31648cd7b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classIDepthStencilView_a75916f855423f1737747566b136e1208_1a75916f855423f1737747566b136e1208" kindref="member">IDepthStencilView::bindRenderSurface</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classIRenderTargetView" kindref="compound">IRenderTargetView</ref><sp/>*rt<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="121"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>rt-&gt;bindRenderSurface(<sp/>gfx,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125" refid="classIDepthStencilView_a6ca65a2cd33a548c011ea479c6a3ae1d_1a6ca65a2cd33a548c011ea479c6a3ae1d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classIDepthStencilView_a6ca65a2cd33a548c011ea479c6a3ae1d_1a6ca65a2cd33a548c011ea479c6a3ae1d" kindref="member">IDepthStencilView::clear</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::array&lt;float,<sp/>4&gt;<sp/>&amp;unused<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="127"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>getDeviceContext(<sp/>gfx<sp/>)-&gt;ClearDepthStencilView(<sp/>m_pD3dDsv.Get(),<sp/>D3D11_CLEAR_DEPTH<sp/>|<sp/>D3D11_CLEAR_STENCIL,<sp/>1.0f,<sp/>0ui8<sp/>);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dxgi__info__queue_8h_accf41747d77929c5a185f1f7d5c72263_1accf41747d77929c5a185f1f7d5c72263" kindref="member">DXGI_GET_QUEUE_INFO</ref>(<sp/>gfx<sp/>);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132" refid="classIDepthStencilView_ac702b43307640c51399dde368e1b9809_1ac702b43307640c51399dde368e1b9809" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classIDepthStencilView_ac702b43307640c51399dde368e1b9809_1ac702b43307640c51399dde368e1b9809" kindref="member">IDepthStencilView::clean</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="133"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>unbind<sp/>the<sp/>render<sp/>target<sp/>and<sp/>any<sp/>depth/stencil<sp/>buffer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>getDeviceContext(<sp/>gfx<sp/>)-&gt;OMSetRenderTargets(<sp/>0u,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>clean<sp/>the<sp/>texture<sp/>resource<sp/>of<sp/>the<sp/>dsv</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>mwrl::ComPtr&lt;ID3D11Resource&gt;<sp/>pDsvRsc;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pD3dDsv-&gt;GetResource(<sp/>&amp;pDsvRsc<sp/>);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>mwrl::ComPtr&lt;ID3D11Texture2D&gt;<sp/>pDsTex;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>pDsvRsc.As(<sp/>&amp;pDsTex);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>pDsTex.Reset();</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>clean<sp/>the<sp/>dsv<sp/>resource<sp/>itself</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pD3dDsv.Reset();</highlight></codeline>
+<codeline lineno="148"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150" refid="classIDepthStencilView_a59c87083dbbb991cc621dedcb4cbd58d_1a59c87083dbbb991cc621dedcb4cbd58d" refkind="member"><highlight class="normal">std::pair&lt;Microsoft::WRL::ComPtr&lt;ID3D11Texture2D&gt;,<sp/>D3D11_TEXTURE2D_DESC&gt;<sp/><ref refid="classIDepthStencilView_a59c87083dbbb991cc621dedcb4cbd58d_1a59c87083dbbb991cc621dedcb4cbd58d" kindref="member">IDepthStencilView::createStagingTexture</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="151"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>mwrl::ComPtr&lt;ID3D11Resource&gt;<sp/>pDsvRsc;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classIDepthStencilView_a1101dd9a388839f785ef9e69dd389684_1a1101dd9a388839f785ef9e69dd389684" kindref="member">m_pD3dDsv</ref>-&gt;GetResource(<sp/>&amp;pDsvRsc<sp/>);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>mwrl::ComPtr&lt;ID3D11Texture2D&gt;<sp/>pDsTex;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>pDsvRsc.As(<sp/>&amp;pDsTex);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>D3D11_TEXTURE2D_DESC<sp/>dsvTexDesc{};</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>pDsTex-&gt;GetDesc(<sp/>&amp;dsvTexDesc<sp/>);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>D3D11_TEXTURE2D_DESC<sp/>stagingTexDesc<sp/>=<sp/><ref refid="texture__desc_8h_aed49d8003c0bd913475b88771be11296_1aed49d8003c0bd913475b88771be11296" kindref="member">createTextureDescriptor</ref>(<sp/>dsvTexDesc.Width,<sp/>dsvTexDesc.Height,<sp/>dsvTexDesc.Format,<sp/><ref refid="texture__desc_8h_a84e8864fab1faebd38dd020fb6050ee2_1a84e8864fab1faebd38dd020fb6050ee2a5c6d78108f09eba58cd00a5c54e0fe7c" kindref="member">BindFlags::Unbind</ref>,<sp/><ref refid="texture__desc_8h_a7e39f63b567b83d32dd82e7a0c062e08_1a7e39f63b567b83d32dd82e7a0c062e08a7ff97f5206ae35949e4966e6e7bb9b5e" kindref="member">CpuAccessFlags::CpuReadAccess</ref>,<sp/><ref refid="texture__desc_8h_af3a2e76419de0e0d1ec1b12a83047412_1af3a2e76419de0e0d1ec1b12a83047412a8276b751ae03734b4c04237a8c2c18c7" kindref="member">TextureUsage::Staging</ref>,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>mwrl::ComPtr&lt;ID3D11Texture2D&gt;<sp/>pStagingTex;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>HRESULT<sp/>hres<sp/>=<sp/><ref refid="classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_1a175df79f82ab5a6dad1df24b5a242ef7" kindref="member">getDevice</ref>(<sp/>gfx<sp/>)-&gt;CreateTexture2D(<sp/>&amp;stagingTexDesc,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>&amp;pStagingTex<sp/>);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="os__utils_8h_a7027472bc9b182c0fea900713e4541e3_1a7027472bc9b182c0fea900713e4541e3" kindref="member">ASSERT_HRES_IF_FAILED</ref>;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>D3D11_DEPTH_STENCIL_VIEW_DESC<sp/>dsvDesc{};</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classIDepthStencilView_a1101dd9a388839f785ef9e69dd389684_1a1101dd9a388839f785ef9e69dd389684" kindref="member">m_pD3dDsv</ref>-&gt;GetDesc(<sp/>&amp;dsvDesc<sp/>);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>copy<sp/>to<sp/>staging<sp/>texture</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>dsvDesc.ViewDimension<sp/>==<sp/>D3D11_DSV_DIMENSION::D3D11_DSV_DIMENSION_TEXTURE2DARRAY<sp/>)</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGraphicsFriend_a619e32893ab49ea6c5200e7c2d52e2f2_1a619e32893ab49ea6c5200e7c2d52e2f2" kindref="member">getDeviceContext</ref>(<sp/>gfx<sp/>)-&gt;CopySubresourceRegion(<sp/>pStagingTex.Get(),<sp/>0u,<sp/>0u,<sp/>0u,<sp/>0u,<sp/>pDsTex.Get(),<sp/>dsvDesc.Texture2DArray.FirstArraySlice,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dxgi__info__queue_8h_accf41747d77929c5a185f1f7d5c72263_1accf41747d77929c5a185f1f7d5c72263" kindref="member">DXGI_GET_QUEUE_INFO</ref>(<sp/>gfx<sp/>);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGraphicsFriend_a619e32893ab49ea6c5200e7c2d52e2f2_1a619e32893ab49ea6c5200e7c2d52e2f2" kindref="member">getDeviceContext</ref>(<sp/>gfx<sp/>)-&gt;CopyResource(<sp/>pStagingTex.Get(),<sp/>pDsTex.Get()<sp/>);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dxgi__info__queue_8h_accf41747d77929c5a185f1f7d5c72263_1accf41747d77929c5a185f1f7d5c72263" kindref="member">DXGI_GET_QUEUE_INFO</ref>(<sp/>gfx<sp/>);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{std::move(<sp/>pStagingTex<sp/>),<sp/>stagingTexDesc};</highlight></codeline>
+<codeline lineno="182"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184" refid="classIDepthStencilView_a1662957998b0c724568daf3ac739bc27_1a1662957998b0c724568daf3ac739bc27" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classBitmap" kindref="compound">Bitmap</ref><sp/><ref refid="classIDepthStencilView_a1662957998b0c724568daf3ac739bc27_1a1662957998b0c724568daf3ac739bc27" kindref="member">IDepthStencilView::convertToBitmap</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>textureWidth,</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>textureHeight,</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bLinearize<sp/></highlight><highlight class="comment">/*=<sp/>true*/</highlight><highlight class="normal"><sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="188"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>[pStagingTex,<sp/>stagingTexDesc]<sp/>=<sp/><ref refid="classIDepthStencilView_a59c87083dbbb991cc621dedcb4cbd58d_1a59c87083dbbb991cc621dedcb4cbd58d" kindref="member">createStagingTexture</ref>(<sp/>gfx<sp/>);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>Bitmap<sp/>and<sp/>copy<sp/>from<sp/>staging<sp/>texture<sp/>to<sp/>it</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBitmap" kindref="compound">Bitmap</ref><sp/>bitmap{textureWidth,<sp/>textureHeight};</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>D3D11_MAPPED_SUBRESOURCE<sp/>msr{};</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>HRESULT<sp/>hres<sp/>=<sp/><ref refid="classGraphicsFriend_a619e32893ab49ea6c5200e7c2d52e2f2_1a619e32893ab49ea6c5200e7c2d52e2f2" kindref="member">getDeviceContext</ref>(<sp/>gfx<sp/>)-&gt;Map(<sp/>pStagingTex.Get(),<sp/>0u,<sp/>D3D11_MAP::D3D11_MAP_READ,<sp/>0u,<sp/>&amp;msr<sp/>);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="os__utils_8h_a7027472bc9b182c0fea900713e4541e3_1a7027472bc9b182c0fea900713e4541e3" kindref="member">ASSERT_HRES_IF_FAILED</ref>;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dxgi__info__queue_8h_accf41747d77929c5a185f1f7d5c72263_1accf41747d77929c5a185f1f7d5c72263" kindref="member">DXGI_GET_QUEUE_INFO</ref>(<sp/>gfx<sp/>);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>.pData<sp/>points<sp/>to<sp/>row<sp/>0<sp/>and<sp/>depth<sp/>slice<sp/>0.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>.RowPitch<sp/>contains<sp/>the<sp/>value<sp/>that<sp/>the<sp/>runtime<sp/>adds<sp/>to<sp/>pData<sp/>to<sp/>move<sp/>from<sp/>row<sp/>to<sp/>row,<sp/>where<sp/>each<sp/>row<sp/>contains<sp/>multiple<sp/>pixels.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Note<sp/>that<sp/>the<sp/>runtime<sp/>might<sp/>assign<sp/>values<sp/>to<sp/>RowPitch<sp/>and<sp/>DepthPitch<sp/>that<sp/>are<sp/>larger<sp/>than<sp/>anticipated<sp/>because<sp/>there<sp/>might<sp/>be<sp/>padding<sp/>between<sp/>rows<sp/>and<sp/>depth</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>pData<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/>msr.pData<sp/>);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>y<sp/>=<sp/>0u;<sp/>y<sp/>&lt;<sp/>textureHeight;<sp/>++y<sp/>)</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">Pixel</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>data[4];</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>p<sp/>=<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal">Pixel*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/>pData<sp/>+<sp/>msr.RowPitch<sp/>*<sp/>size_t(<sp/>y<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>textureWidth;<sp/>++x<sp/>)</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>stagingTexDesc.Format<sp/>==<sp/>DXGI_FORMAT::DXGI_FORMAT_R24G8_TYPELESS<sp/>)</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>mask<sp/>out<sp/>the<sp/>last<sp/>8<sp/>bits<sp/>-<sp/>val<sp/>becomes<sp/>24<sp/>bits<sp/>-<sp/>last<sp/>Byte<sp/>is<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>val<sp/>=<sp/>0x00FFFFFF<sp/>&amp;<sp/>*</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/>p<sp/>+<sp/>x<sp/>);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>bLinearize<sp/>)</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>normalized<sp/>=<sp/>(float)val<sp/>/<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)0x00FFFFFF;</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>linearized<sp/>=<sp/>0.01f<sp/>/<sp/>(<sp/>1.01f<sp/>-<sp/>normalized<sp/>);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespacecol" kindref="compound">col</ref><sp/>=<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>char(<sp/>linearized<sp/>*<sp/>255.0f<sp/>);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bitmap.setTexel(<sp/>x,<sp/>y,<sp/>{<ref refid="namespacecol" kindref="compound">col</ref>,<sp/><ref refid="namespacecol" kindref="compound">col</ref>,<sp/><ref refid="namespacecol" kindref="compound">col</ref>}<sp/>);</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>b<sp/>=<sp/>val<sp/>&amp;<sp/>0xFF;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>g<sp/>=<sp/>(val<sp/>&gt;&gt;<sp/>8)<sp/>&amp;<sp/>0xFF;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>r<sp/>=<sp/>(val<sp/>&gt;&gt;<sp/>16)<sp/>&amp;<sp/>0xFF;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bitmap.setTexel(<sp/>x,<sp/>y,<sp/>{r,<sp/>g,<sp/>b}<sp/>);</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>stagingTexDesc.Format<sp/>==<sp/>DXGI_FORMAT::DXGI_FORMAT_R32_TYPELESS<sp/>)</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>val<sp/>=<sp/>*</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/>p<sp/>+<sp/>x<sp/>);</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>bLinearize<sp/>)</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>linearized<sp/>=<sp/>0.01f<sp/>/<sp/>(<sp/>1.01f<sp/>-<sp/>val<sp/>);</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespacecol" kindref="compound">col</ref><sp/>=<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>char(linearized<sp/>*<sp/>255.0f);</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bitmap.setTexel(<sp/>x,<sp/>y,<sp/>{<ref refid="namespacecol" kindref="compound">col</ref>,<sp/><ref refid="namespacecol" kindref="compound">col</ref>,<sp/><ref refid="namespacecol" kindref="compound">col</ref>}<sp/>);</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespacecol" kindref="compound">col</ref><sp/>=<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>char(val<sp/>*<sp/>255.0f);</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bitmap.setTexel(<sp/>x,<sp/>y,<sp/>{<ref refid="namespacecol" kindref="compound">col</ref>,<sp/><ref refid="namespacecol" kindref="compound">col</ref>,<sp/><ref refid="namespacecol" kindref="compound">col</ref>}<sp/>);</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classGraphicsFriend_a619e32893ab49ea6c5200e7c2d52e2f2_1a619e32893ab49ea6c5200e7c2d52e2f2" kindref="member">getDeviceContext</ref>(<sp/>gfx<sp/>)-&gt;Unmap(<sp/>pStagingTex.Get(),<sp/>0u<sp/>);</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::runtime_error{</highlight><highlight class="stringliteral">&quot;Bad<sp/>IDepthStencilView<sp/>dxgi<sp/>format<sp/>when<sp/>converting<sp/>to<sp/>Bitmap&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGraphicsFriend_a619e32893ab49ea6c5200e7c2d52e2f2_1a619e32893ab49ea6c5200e7c2d52e2f2" kindref="member">getDeviceContext</ref>(<sp/>gfx<sp/>)-&gt;Unmap(<sp/>pStagingTex.Get(),<sp/>0u<sp/>);</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>bitmap;</highlight></codeline>
+<codeline lineno="255"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="257" refid="classIDepthStencilView_aec747cf5dbd4fb40bc46de500143d42f_1aec747cf5dbd4fb40bc46de500143d42f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classIDepthStencilView_aec747cf5dbd4fb40bc46de500143d42f_1aec747cf5dbd4fb40bc46de500143d42f" kindref="member">IDepthStencilView::getWidth</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="258"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classIDepthStencilView_a77e7a6639ca4a086a64470f0a22e8a58_1a77e7a6639ca4a086a64470f0a22e8a58" kindref="member">m_width</ref>;</highlight></codeline>
+<codeline lineno="260"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="262" refid="classIDepthStencilView_a3d74e596cc9d164d50946d746e475c6e_1a3d74e596cc9d164d50946d746e475c6e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classIDepthStencilView_a3d74e596cc9d164d50946d746e475c6e_1a3d74e596cc9d164d50946d746e475c6e" kindref="member">IDepthStencilView::getHeight</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="263"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classIDepthStencilView_a5b67794aed2406ff0f17b9a76d8a5bc5_1a5b67794aed2406ff0f17b9a76d8a5bc5" kindref="member">m_height</ref>;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267" refid="classIDepthStencilView_a9113581f39ad84b4c49cb0afa27a7016_1a9113581f39ad84b4c49cb0afa27a7016" refkind="member"><highlight class="normal">Microsoft::WRL::ComPtr&lt;ID3D11DepthStencilView&gt;&amp;<sp/><ref refid="classIDepthStencilView_a9113581f39ad84b4c49cb0afa27a7016_1a9113581f39ad84b4c49cb0afa27a7016" kindref="member">IDepthStencilView::d3dResourceCom</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="268"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classIDepthStencilView_a1101dd9a388839f785ef9e69dd389684_1a1101dd9a388839f785ef9e69dd389684" kindref="member">m_pD3dDsv</ref>;</highlight></codeline>
+<codeline lineno="270"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272" refid="classIDepthStencilView_acffcf6d1015ae08263c14ce78a71c514_1acffcf6d1015ae08263c14ce78a71c514" refkind="member"><highlight class="normal">ID3D11DepthStencilView*<sp/><ref refid="classIDepthStencilView_acffcf6d1015ae08263c14ce78a71c514_1acffcf6d1015ae08263c14ce78a71c514" kindref="member">IDepthStencilView::d3dResource</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="273"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classIDepthStencilView_a1101dd9a388839f785ef9e69dd389684_1a1101dd9a388839f785ef9e69dd389684" kindref="member">m_pD3dDsv</ref>.Get();</highlight></codeline>
+<codeline lineno="275"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277" refid="classIDepthStencilView_a37ea21d058018da8f23c574e502f5581_1a37ea21d058018da8f23c574e502f5581" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classIDepthStencilView_a37ea21d058018da8f23c574e502f5581_1a37ea21d058018da8f23c574e502f5581" kindref="member">IDepthStencilView::setDebugObjectName</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>name<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>_DEBUG<sp/>&amp;&amp;<sp/>!defined<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pD3dDsv-&gt;SetPrivateData(<sp/>WKPDID_D3DDebugObjectName,<sp/>(UINT)<sp/>strlen(<sp/>name<sp/>),<sp/>name<sp/>);</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)name;</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"></highlight></codeline>
+<codeline lineno="287" refid="classDepthStencilShaderInput_a581983ebd554e30de03effc1b68c08d3_1a581983ebd554e30de03effc1b68c08d3" refkind="member"><highlight class="normal"><ref refid="classDepthStencilShaderInput_a581983ebd554e30de03effc1b68c08d3_1a581983ebd554e30de03effc1b68c08d3" kindref="member">DepthStencilShaderInput::DepthStencilShaderInput</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>slot,</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_1a5aacc2000fea78d975de8fe06e3698f2" kindref="member">DepthStencilViewMode</ref><sp/>dsvMode<sp/>)</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDepthStencilShaderInput" kindref="compound">DepthStencilShaderInput</ref>(gfx,<sp/>gfx.getClientWidth(),<sp/>gfx.getClientHeight(),<sp/>slot,<sp/>dsvMode)</highlight></codeline>
+<codeline lineno="292"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight></codeline>
+<codeline lineno="296" refid="classDepthStencilShaderInput_a1c9e5ca399f351e0d92057aabebe5850_1a1c9e5ca399f351e0d92057aabebe5850" refkind="member"><highlight class="normal"><ref refid="classDepthStencilShaderInput_a581983ebd554e30de03effc1b68c08d3_1a581983ebd554e30de03effc1b68c08d3" kindref="member">DepthStencilShaderInput::DepthStencilShaderInput</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>width,</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>height,</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>slot,</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_1a5aacc2000fea78d975de8fe06e3698f2" kindref="member">DepthStencilViewMode</ref><sp/>dsvMode<sp/></highlight><highlight class="comment">/*=<sp/>DepthStencilViewMode::DefaultDS*/</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classIDepthStencilView" kindref="compound">IDepthStencilView</ref>(gfx,<sp/>width,<sp/>height,<sp/>true,<sp/>dsvMode),</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/>m_slot(slot)</highlight></codeline>
+<codeline lineno="304"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/>mwrl::ComPtr&lt;ID3D11Resource&gt;<sp/>pRes;</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classIDepthStencilView_a1101dd9a388839f785ef9e69dd389684_1a1101dd9a388839f785ef9e69dd389684" kindref="member">m_pD3dDsv</ref>-&gt;GetResource(<sp/>&amp;pRes<sp/>);</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/>D3D11_SHADER_RESOURCE_VIEW_DESC<sp/>srvDesc{};</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/>srvDesc.Format<sp/>=<sp/><ref refid="texture__desc_8h_a735b8903be34d33b390feb6524fffcb7_1a735b8903be34d33b390feb6524fffcb7" kindref="member">getShaderInputFormatDsv</ref>(<sp/>dsvMode<sp/>);</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/>srvDesc.ViewDimension<sp/>=<sp/>D3D11_SRV_DIMENSION_TEXTURE2D;</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/>srvDesc.Texture2D.MostDetailedMip<sp/>=<sp/>0u;</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/>srvDesc.Texture2D.MipLevels<sp/>=<sp/>1u;</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/>HRESULT<sp/>hres<sp/>=<sp/><ref refid="classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_1a175df79f82ab5a6dad1df24b5a242ef7" kindref="member">getDevice</ref>(<sp/>gfx<sp/>)-&gt;CreateShaderResourceView(<sp/>pRes.Get(),<sp/>&amp;srvDesc,<sp/>&amp;<ref refid="classDepthStencilShaderInput_ae1357b42b8506dfbb0ce4029a297625f_1ae1357b42b8506dfbb0ce4029a297625f" kindref="member">m_pD3dSrv</ref><sp/>);</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="os__utils_8h_a7027472bc9b182c0fea900713e4541e3_1a7027472bc9b182c0fea900713e4541e3" kindref="member">ASSERT_HRES_IF_FAILED</ref>;</highlight></codeline>
+<codeline lineno="315"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight></codeline>
+<codeline lineno="317" refid="classDepthStencilShaderInput_ae455b3720634cabfb01dd4e563e9610d_1ae455b3720634cabfb01dd4e563e9610d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classDepthStencilShaderInput_ae455b3720634cabfb01dd4e563e9610d_1ae455b3720634cabfb01dd4e563e9610d" kindref="member">DepthStencilShaderInput::getSlot</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="318"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classDepthStencilShaderInput_ae6b965e0c2e0f527d59b2b090fdce898_1ae6b965e0c2e0f527d59b2b090fdce898" kindref="member">m_slot</ref>;</highlight></codeline>
+<codeline lineno="320"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"></highlight></codeline>
+<codeline lineno="322" refid="classDepthStencilShaderInput_acd00dc6db5f67213bc2337c9d94deadc_1acd00dc6db5f67213bc2337c9d94deadc" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classDepthStencilShaderInput_acd00dc6db5f67213bc2337c9d94deadc_1acd00dc6db5f67213bc2337c9d94deadc" kindref="member">DepthStencilShaderInput::bind</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="323"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/>getDeviceContext(<sp/>gfx<sp/>)-&gt;PSSetShaderResources(<sp/>m_slot,<sp/>1u,<sp/>m_pD3dSrv.GetAddressOf()<sp/>);</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dxgi__info__queue_8h_accf41747d77929c5a185f1f7d5c72263_1accf41747d77929c5a185f1f7d5c72263" kindref="member">DXGI_GET_QUEUE_INFO</ref>(<sp/>gfx<sp/>);</highlight></codeline>
+<codeline lineno="326"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"></highlight></codeline>
+<codeline lineno="328"><highlight class="normal"></highlight></codeline>
+<codeline lineno="329" refid="classDepthStencilOutput_acfaa4e7f29e110fc44197165be0a2807_1acfaa4e7f29e110fc44197165be0a2807" refkind="member"><highlight class="normal"><ref refid="classDepthStencilOutput_acfaa4e7f29e110fc44197165be0a2807_1acfaa4e7f29e110fc44197165be0a2807" kindref="member">DepthStencilOutput::DepthStencilOutput</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDepthStencilOutput" kindref="compound">DepthStencilOutput</ref>(gfx,<sp/>gfx.getClientWidth(),<sp/>gfx.getClientHeight())</highlight></codeline>
+<codeline lineno="332"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"></highlight></codeline>
+<codeline lineno="336" refid="classDepthStencilOutput_ad228332c899ddde9b850356dab0d95f3_1ad228332c899ddde9b850356dab0d95f3" refkind="member"><highlight class="normal"><ref refid="classDepthStencilOutput_acfaa4e7f29e110fc44197165be0a2807_1acfaa4e7f29e110fc44197165be0a2807" kindref="member">DepthStencilOutput::DepthStencilOutput</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>width,</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>height<sp/>)</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classIDepthStencilView" kindref="compound">IDepthStencilView</ref>(gfx,<sp/>width,<sp/>height,<sp/>false,<sp/><ref refid="texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_1a5aacc2000fea78d975de8fe06e3698f2" kindref="member">DepthStencilViewMode</ref>::<ref refid="texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_1a5aacc2000fea78d975de8fe06e3698f2a968332242896839ab1a3ac1040c11ae9" kindref="member">DefaultDS</ref>)</highlight></codeline>
+<codeline lineno="341"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"></highlight></codeline>
+<codeline lineno="343"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"></highlight></codeline>
+<codeline lineno="345" refid="classDepthStencilOutput_aa22068e5cedb9f09ee4a4b9108b772b6_1aa22068e5cedb9f09ee4a4b9108b772b6" refkind="member"><highlight class="normal"><ref refid="classDepthStencilOutput_acfaa4e7f29e110fc44197165be0a2807_1acfaa4e7f29e110fc44197165be0a2807" kindref="member">DepthStencilOutput::DepthStencilOutput</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/>ID3D11Texture2D<sp/>*pTexture,</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_1a5aacc2000fea78d975de8fe06e3698f2" kindref="member">DepthStencilViewMode</ref><sp/>dsvMode,</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;unsigned&gt;<sp/>face<sp/>)</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classIDepthStencilView" kindref="compound">IDepthStencilView</ref>{gfx,<sp/>pTexture,<sp/>dsvMode,<sp/>face}</highlight></codeline>
+<codeline lineno="351"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"></highlight></codeline>
+<codeline lineno="353"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"></highlight></codeline>
+<codeline lineno="355" refid="classDepthStencilOutput_a41da368966c376688966c50b61871dd6_1a41da368966c376688966c50b61871dd6" refkind="member"><highlight class="normal"><ref refid="classDepthStencilOutput_acfaa4e7f29e110fc44197165be0a2807_1acfaa4e7f29e110fc44197165be0a2807" kindref="member">DepthStencilOutput::DepthStencilOutput</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/>ID3D11Texture2D<sp/>*pTexture,</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_1a5aacc2000fea78d975de8fe06e3698f2" kindref="member">DepthStencilViewMode</ref><sp/>dsvMode,</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>textureArrayIndex,</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;unsigned&gt;<sp/>face<sp/>)</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classIDepthStencilView" kindref="compound">IDepthStencilView</ref>(gfx,<sp/>pTexture,<sp/>dsvMode,<sp/>textureArrayIndex,<sp/>face)</highlight></codeline>
+<codeline lineno="362"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"></highlight></codeline>
+<codeline lineno="364"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"></highlight></codeline>
+<codeline lineno="366" refid="classDepthStencilOutput_a5bd0b7547e6cd08adfae998cca034d8a_1a5bd0b7547e6cd08adfae998cca034d8a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classDepthStencilOutput_a5bd0b7547e6cd08adfae998cca034d8a_1a5bd0b7547e6cd08adfae998cca034d8a" kindref="member">DepthStencilOutput::bind</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="367"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>bind<sp/>DepthStencilOutput<sp/>as<sp/>shader<sp/>input!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="369"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/depth_stencil_view.cpp"/>
+  </compounddef>
+</doxygen>

@@ -12,13 +12,13 @@ class Material;
 class VertexBuffer;
 class IndexBuffer;
 
-//=============================================================
-//	\class	MaterialLoader
-//	\author	KeyC0de
-//	\date	2021/10/29 21:04
-//	\brief	dynamically populate model Bindables & attributes given
-//				Assimp::aiMaterial attributes
-//=============================================================
+///=============================================================
+/// \class	MaterialLoader
+/// \author	KeyC0de
+/// \date	2021/10/29 21:04
+/// \brief	dynamically populate model Bindables & attributes given
+/// \brief	Assimp::aiMaterial attributes
+///=============================================================
 class MaterialLoader final
 {
 	ver::VertexInputLayout m_vertexLayout;

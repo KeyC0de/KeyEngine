@@ -5,12 +5,12 @@
 #include "non_copyable.h"
 
 
-//=============================================================
-//	\class	SettingsManager
-//	\author	KeyC0de
-//	\date	2022/05/03 12:07
-//	\brief	singleton class
-//=============================================================
+///=============================================================
+/// \class	SettingsManager
+/// \author	KeyC0de
+/// \date	2022/05/03 12:07
+/// \brief	singleton class
+///=============================================================
 class SettingsManager final
 	: public NonCopyable
 {

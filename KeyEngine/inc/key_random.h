@@ -23,12 +23,9 @@ public:
 	// 0.0 - 1.0 double
 	double getRandomDouble();
 	int getRandomIntInRange( const int start, const int end );
-	//===================================================
-	//	\function	getRandomInRange
-	//	\brief	returns random float from 0 to 1 by default
-	//			start = specify lower limit on range of output values
-	//			end = specify upper limit on range of output
-	//	\date	2020/12/18 1:49
+	/// \brief	returns random float from 0 to 1 by default
+	/// \brief	start = specify lower limit on range of output values
+	/// \brief	end = specify upper limit on range of output
 	float getRandomFloatInRange( const int start = 0, const int end = 1 );
 	double getRandomDoubleInRange( const int start = 0, const int end = 1 );
 };

@@ -7,14 +7,14 @@
 #include "non_copyable.h"
 
 
-//=============================================================
-//	\class	StringBuffer
-//	\author	KeyC0de
-//	\date	2021/09/28 15:32
-//	\brief	thread safe (given its allocator is thread safe) std::ostringstream - also guarantees consistent output
-//			offers templated operator<< for appending into this stringstream object
-//				but you must provide your own guards around string and stream objects that are shared among threads.
-//=============================================================
+///=============================================================
+/// \class	StringBuffer
+/// \author	KeyC0de
+/// \date	2021/09/28 15:32
+/// \brief	thread safe (given its allocator is thread safe) std::ostringstream - also guarantees consistent output
+/// \brief	offers templated operator<< for appending into this stringstream object
+/// \brief		but you must provide your own guards around string and stream objects that are shared among threads.
+///=============================================================
 class StringBuffer final
 	: public NonCopyable
 {

@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classver_1_1VertexInputLayout_1_1ILElement" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>ver::VertexInputLayout::ILElement</compoundname>
+    <includes refid="dynamic__vertex__buffer_8h" local="no">dynamic_vertex_buffer.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classver_1_1VertexInputLayout_1_1ILElement_a6faed9c2324cb3801ae6c3aedf140f78_1a6faed9c2324cb3801ae6c3aedf140f78" prot="private" static="no" mutable="no">
+        <type><ref refid="classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_1a7582c10f2c7a3ac24f95015bcbeb8c1a" kindref="member">ILEementType</ref></type>
+        <definition>ILEementType ver::VertexInputLayout::ILElement::m_type</definition>
+        <argsstring></argsstring>
+        <name>m_type</name>
+        <qualifiedname>ver::VertexInputLayout::ILElement::m_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="196" column="14" bodyfile="inc/dynamic_vertex_buffer.h" bodystart="196" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classver_1_1VertexInputLayout_1_1ILElement_aea007302404ed22f54b3805f60c43cb9_1aea007302404ed22f54b3805f60c43cb9" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t ver::VertexInputLayout::ILElement::m_offset</definition>
+        <argsstring></argsstring>
+        <name>m_offset</name>
+        <qualifiedname>ver::VertexInputLayout::ILElement::m_offset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="197" column="8" bodyfile="inc/dynamic_vertex_buffer.h" bodystart="197" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classver_1_1VertexInputLayout_1_1ILElement_a0f6e5ba8edb16bab19476ca9af242e03_1a0f6e5ba8edb16bab19476ca9af242e03" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t ver::VertexInputLayout::ILElement::getElementTypeSize</definition>
+        <argsstring>(const ILEementType type) cond_noex</argsstring>
+        <name>getElementTypeSize</name>
+        <qualifiedname>ver::VertexInputLayout::ILElement::getElementTypeSize</qualifiedname>
+        <param>
+          <type>const <ref refid="classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_1a7582c10f2c7a3ac24f95015bcbeb8c1a" kindref="member">ILEementType</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="199" column="25" bodyfile="src/dynamic_vertex_buffer.cpp" bodystart="121" bodyend="124"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classver_1_1VertexInputLayout_1_1ILElement_a300e5339c189e1bd42b353d94c14c515_1a300e5339c189e1bd42b353d94c14c515" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ver::VertexInputLayout::ILElement::ILElement</definition>
+        <argsstring>(const ILEementType type, const size_t offset)</argsstring>
+        <name>ILElement</name>
+        <qualifiedname>ver::VertexInputLayout::ILElement::ILElement</qualifiedname>
+        <param>
+          <type>const <ref refid="classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_1a7582c10f2c7a3ac24f95015bcbeb8c1a" kindref="member">ILEementType</ref></type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>offset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="201" column="1" bodyfile="src/dynamic_vertex_buffer.cpp" bodystart="112" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="classver_1_1VertexInputLayout_1_1ILElement_aafcbf5036b53d4facb76513fbeb369b1_1aafcbf5036b53d4facb76513fbeb369b1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t ver::VertexInputLayout::ILElement::getOffsetAfterThis</definition>
+        <argsstring>() const cond_noex</argsstring>
+        <name>getOffsetAfterThis</name>
+        <qualifiedname>ver::VertexInputLayout::ILElement::getOffsetAfterThis</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="203" column="8" bodyfile="src/dynamic_vertex_buffer.cpp" bodystart="131" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="classver_1_1VertexInputLayout_1_1ILElement_ae00f05f297640e6c0abff8c4d3c9f427_1ae00f05f297640e6c0abff8c4d3c9f427" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t ver::VertexInputLayout::ILElement::getOffset</definition>
+        <argsstring>() const</argsstring>
+        <name>getOffset</name>
+        <qualifiedname>ver::VertexInputLayout::ILElement::getOffset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="204" column="8" bodyfile="src/dynamic_vertex_buffer.cpp" bodystart="126" bodyend="129"/>
+        <referencedby refid="classver_1_1VBElementView_ac9e037ac6b0fd340869a0f26e88ab3a3_1ac9e037ac6b0fd340869a0f26e88ab3a3" compoundref="dynamic__vertex__buffer_8h" startline="291" endline="296">ver::VBElementView::getElement</referencedby>
+        <referencedby refid="classver_1_1VBElementView_a0985e157553a8dfe4fdd37443295f5f7_1a0985e157553a8dfe4fdd37443295f5f7" compoundref="dynamic__vertex__buffer_8h" startline="256" endline="262">ver::VBElementView::setElementByIndex</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classver_1_1VertexInputLayout_1_1ILElement_a0003dedeefe176499659b929def6a030_1a0003dedeefe176499659b929def6a030" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const <ref refid="classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_1a7582c10f2c7a3ac24f95015bcbeb8c1a" kindref="member">ILEementType</ref></type>
+        <definition>const VertexInputLayout::ILEementType ver::VertexInputLayout::ILElement::getType</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getType</name>
+        <qualifiedname>ver::VertexInputLayout::ILElement::getType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="205" column="20" bodyfile="src/dynamic_vertex_buffer.cpp" bodystart="136" bodyend="139"/>
+        <referencedby refid="classver_1_1VBuffer_ad7f7cf56612462254808173841a75576_1ad7f7cf56612462254808173841a75576" compoundref="dynamic__vertex__buffer_8cpp" startline="191" endline="201">ver::VBuffer::VBuffer</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classver_1_1VertexInputLayout_1_1ILElement_a70dd3eb7bd8279a8171b33b2213f5491_1a70dd3eb7bd8279a8171b33b2213f5491" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const D3D11_INPUT_ELEMENT_DESC</type>
+        <definition>const D3D11_INPUT_ELEMENT_DESC ver::VertexInputLayout::ILElement::getD3dDesc</definition>
+        <argsstring>() const cond_noex</argsstring>
+        <name>getD3dDesc</name>
+        <qualifiedname>ver::VertexInputLayout::ILElement::getD3dDesc</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="206" column="32" bodyfile="src/dynamic_vertex_buffer.cpp" bodystart="141" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="classver_1_1VertexInputLayout_1_1ILElement_ab12096f4ca21416fbdcc3bbb4e521504_1ab12096f4ca21416fbdcc3bbb4e521504" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * ver::VertexInputLayout::ILElement::getTag</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getTag</name>
+        <qualifiedname>ver::VertexInputLayout::ILElement::getTag</qualifiedname>
+        <briefdescription>
+<para>return a tag identifying this <ref refid="classver_1_1VertexInputLayout_1_1ILElement" kindref="compound">ILElement</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="208" column="12" bodyfile="src/dynamic_vertex_buffer.cpp" bodystart="146" bodyend="149"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Vertex Buffer Input Layout Element  </para>
+    </briefdescription>
+    <detaileddescription>
+<para>=============================================================</para>
+<para><simplesect kind="author"><para>KeyC0de </para>
+</simplesect>
+<simplesect kind="date"><para>2022/09/11 16:16 <heading level="1"></heading>
+</para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="inc/dynamic_vertex_buffer.h" line="194" column="1" bodyfile="inc/dynamic_vertex_buffer.h" bodystart="195" bodyend="209"/>
+    <listofallmembers>
+      <member refid="classver_1_1VertexInputLayout_1_1ILElement_a70dd3eb7bd8279a8171b33b2213f5491_1a70dd3eb7bd8279a8171b33b2213f5491" prot="public" virt="non-virtual"><scope>ver::VertexInputLayout::ILElement</scope><name>getD3dDesc</name></member>
+      <member refid="classver_1_1VertexInputLayout_1_1ILElement_a0f6e5ba8edb16bab19476ca9af242e03_1a0f6e5ba8edb16bab19476ca9af242e03" prot="public" virt="non-virtual"><scope>ver::VertexInputLayout::ILElement</scope><name>getElementTypeSize</name></member>
+      <member refid="classver_1_1VertexInputLayout_1_1ILElement_ae00f05f297640e6c0abff8c4d3c9f427_1ae00f05f297640e6c0abff8c4d3c9f427" prot="public" virt="non-virtual"><scope>ver::VertexInputLayout::ILElement</scope><name>getOffset</name></member>
+      <member refid="classver_1_1VertexInputLayout_1_1ILElement_aafcbf5036b53d4facb76513fbeb369b1_1aafcbf5036b53d4facb76513fbeb369b1" prot="public" virt="non-virtual"><scope>ver::VertexInputLayout::ILElement</scope><name>getOffsetAfterThis</name></member>
+      <member refid="classver_1_1VertexInputLayout_1_1ILElement_ab12096f4ca21416fbdcc3bbb4e521504_1ab12096f4ca21416fbdcc3bbb4e521504" prot="public" virt="non-virtual"><scope>ver::VertexInputLayout::ILElement</scope><name>getTag</name></member>
+      <member refid="classver_1_1VertexInputLayout_1_1ILElement_a0003dedeefe176499659b929def6a030_1a0003dedeefe176499659b929def6a030" prot="public" virt="non-virtual"><scope>ver::VertexInputLayout::ILElement</scope><name>getType</name></member>
+      <member refid="classver_1_1VertexInputLayout_1_1ILElement_a300e5339c189e1bd42b353d94c14c515_1a300e5339c189e1bd42b353d94c14c515" prot="public" virt="non-virtual"><scope>ver::VertexInputLayout::ILElement</scope><name>ILElement</name></member>
+      <member refid="classver_1_1VertexInputLayout_1_1ILElement_aea007302404ed22f54b3805f60c43cb9_1aea007302404ed22f54b3805f60c43cb9" prot="private" virt="non-virtual"><scope>ver::VertexInputLayout::ILElement</scope><name>m_offset</name></member>
+      <member refid="classver_1_1VertexInputLayout_1_1ILElement_a6faed9c2324cb3801ae6c3aedf140f78_1a6faed9c2324cb3801ae6c3aedf140f78" prot="private" virt="non-virtual"><scope>ver::VertexInputLayout::ILElement</scope><name>m_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

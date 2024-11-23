@@ -1,0 +1,287 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classReportingNexus" kind="class" language="C++" prot="public">
+    <compoundname>ReportingNexus</compoundname>
+    <basecompoundref refid="classIReporter" prot="public" virt="non-virtual">IReporter&lt; SwapChainResizedEvent &gt;</basecompoundref>
+    <basecompoundref refid="classIReporter" prot="public" virt="non-virtual">IReporter&lt; UISoundEvent &gt;</basecompoundref>
+    <basecompoundref refid="classIReporter" prot="public" virt="non-virtual">IReporter&lt; UserPropertyChanged &gt;</basecompoundref>
+    <basecompoundref refid="classIReporter" prot="public" virt="non-virtual">IReporter&lt; UiMsg &gt;</basecompoundref>
+    <includes refid="reporter__access_8h" local="no">reporter_access.h</includes>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classReportingNexus_a7e24b604477f1a59fbe8e9df1ad7ef7f_1a7e24b604477f1a59fbe8e9df1ad7ef7f" prot="private" static="yes" mutable="no">
+        <type><ref refid="classReporterAccess" kindref="compound">ReporterAccess</ref></type>
+        <definition>ReporterAccess ReportingNexus::s_accessKey</definition>
+        <argsstring></argsstring>
+        <name>s_accessKey</name>
+        <qualifiedname>ReportingNexus::s_accessKey</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/reporter_access.h" line="28" column="30" bodyfile="inc/reporter_access.h" bodystart="28" bodyend="28"/>
+        <referencedby refid="classReportingNexus_a56fd3891e87dd3c034b8cfd7c84cfe16_1a56fd3891e87dd3c034b8cfd7c84cfe16" compoundref="reporter__access_8cpp" startline="29" endline="33">getInstance</referencedby>
+        <referencedby refid="classReportingNexus_afe287dd4254b46f0ff514e2aebb1104b_1afe287dd4254b46f0ff514e2aebb1104b" compoundref="reporter__access_8cpp" startline="35" endline="38">getReporterAccess</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classReportingNexus_ad1c92ce66fcd12b24d7a3021b4d4631b_1ad1c92ce66fcd12b24d7a3021b4d4631b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ReportingNexus::ReportingNexus</definition>
+        <argsstring>(ReporterAccess &amp;access)</argsstring>
+        <name>ReportingNexus</name>
+        <qualifiedname>ReportingNexus::ReportingNexus</qualifiedname>
+        <param>
+          <type><ref refid="classReporterAccess" kindref="compound">ReporterAccess</ref> &amp;</type>
+          <declname>access</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/reporter_access.h" line="30" column="1" bodyfile="src/reporter_access.cpp" bodystart="11" bodyend="19"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classReportingNexus_a7b1c65220d0e3d88c28f3cbfd005e103_1a7b1c65220d0e3d88c28f3cbfd005e103" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>ReportingNexus::~ReportingNexus</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>~ReportingNexus</name>
+        <qualifiedname>ReportingNexus::~ReportingNexus</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/reporter_access.h" line="32" column="1" bodyfile="src/reporter_access.cpp" bodystart="21" bodyend="27"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classReportingNexus_a56fd3891e87dd3c034b8cfd7c84cfe16_1a56fd3891e87dd3c034b8cfd7c84cfe16" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classReportingNexus" kindref="compound">ReportingNexus</ref> &amp;</type>
+        <definition>ReportingNexus &amp; ReportingNexus::getInstance</definition>
+        <argsstring>()</argsstring>
+        <name>getInstance</name>
+        <qualifiedname>ReportingNexus::getInstance</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/reporter_access.h" line="34" column="23" bodyfile="src/reporter_access.cpp" bodystart="29" bodyend="33"/>
+        <referencedby refid="classgui_1_1Component_a01e01e70075a0a68c8a2fbb8fc72e86a_1a01e01e70075a0a68c8a2fbb8fc72e86a" compoundref="ui__component_8cpp" startline="249" endline="347">gui::Component::Component</referencedby>
+        <referencedby refid="classSandbox3d_a60fad847bf17eed5f75b7b270173c6dd_1a60fad847bf17eed5f75b7b270173c6dd" compoundref="game_8cpp" startline="157" endline="202">Sandbox3d::Sandbox3d</referencedby>
+        <referencedby refid="classSoundPlayer_ac7107aecd54bdcfac29486487768ebc6_1ac7107aecd54bdcfac29486487768ebc6" compoundref="key__sound_8cpp" startline="608" endline="614">SoundPlayer::SoundPlayer</referencedby>
+        <referencedby refid="classgui_1_1Component_ad290f672e141c61e48556348b6995166_1ad290f672e141c61e48556348b6995166" compoundref="ui__component_8cpp" startline="1255" endline="1263">gui::Component::on_hover</referencedby>
+        <referencedby refid="classgui_1_1Component_a213a0032842fb15a9570fb712545eff6_1a213a0032842fb15a9570fb712545eff6" compoundref="ui__component_8cpp" startline="1265" endline="1273">gui::Component::on_hover_off</referencedby>
+        <referencedby refid="classgui_1_1Component_ae5b1426f22cae824c53869d6a2236f8d_1ae5b1426f22cae824c53869d6a2236f8d" compoundref="ui__component_8cpp" startline="861" endline="877">gui::Component::remove_user_property</referencedby>
+        <referencedby refid="classGraphics_a02c044c5edb7ba86edb3b480ae2b2938_1a02c044c5edb7ba86edb3b480ae2b2938" compoundref="graphics_8cpp" startline="273" endline="361">Graphics::resize</referencedby>
+        <referencedby refid="classgui_1_1Component_a730733a4badb1d79d41ba54006c4ec9d_1a730733a4badb1d79d41ba54006c4ec9d" compoundref="ui__component_8cpp" startline="803" endline="859">gui::Component::set_user_property</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classReportingNexus_afe287dd4254b46f0ff514e2aebb1104b_1afe287dd4254b46f0ff514e2aebb1104b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classReporterAccess" kindref="compound">ReporterAccess</ref> &amp;</type>
+        <definition>ReporterAccess &amp; ReportingNexus::getReporterAccess</definition>
+        <argsstring>()</argsstring>
+        <name>getReporterAccess</name>
+        <qualifiedname>ReportingNexus::getReporterAccess</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/reporter_access.h" line="35" column="23" bodyfile="src/reporter_access.cpp" bodystart="35" bodyend="38"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>IReporter&lt; SwapChainResizedEvent &gt;</label>
+        <link refid="classIReporter"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>IReporter&lt; UISoundEvent &gt;</label>
+        <link refid="classIReporter"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>IReporter&lt; UiMsg &gt;</label>
+        <link refid="classIReporter"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>IReporter&lt; UserPropertyChanged &gt;</label>
+        <link refid="classIReporter"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>NonCopyableAndNonMovable</label>
+        <link refid="classNonCopyableAndNonMovable"/>
+      </node>
+      <node id="1">
+        <label>ReportingNexus</label>
+        <link refid="classReportingNexus"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>IReporter&lt; SwapChainResizedEvent &gt;</label>
+        <link refid="classIReporter"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>IReporter&lt; UISoundEvent &gt;</label>
+        <link refid="classIReporter"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>IReporter&lt; UiMsg &gt;</label>
+        <link refid="classIReporter"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>IReporter&lt; UserPropertyChanged &gt;</label>
+        <link refid="classIReporter"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>NonCopyableAndNonMovable</label>
+        <link refid="classNonCopyableAndNonMovable"/>
+      </node>
+      <node id="7">
+        <label>ReporterAccess</label>
+        <link refid="classReporterAccess"/>
+      </node>
+      <node id="1">
+        <label>ReportingNexus</label>
+        <link refid="classReportingNexus"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>s_accessKey</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/reporter_access.h" line="22" column="1" bodyfile="inc/reporter_access.h" bodystart="27" bodyend="36"/>
+    <listofallmembers>
+      <member refid="classIReporter_a6525b196ee174f7c0b3f583da9f0492c_1a6525b196ee174f7c0b3f583da9f0492c" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; SwapChainResizedEvent &gt;::"><scope>ReportingNexus</scope><name>addListener</name></member>
+      <member refid="classIReporter_a6525b196ee174f7c0b3f583da9f0492c_1a6525b196ee174f7c0b3f583da9f0492c" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UISoundEvent &gt;::"><scope>ReportingNexus</scope><name>addListener</name></member>
+      <member refid="classIReporter_a6525b196ee174f7c0b3f583da9f0492c_1a6525b196ee174f7c0b3f583da9f0492c" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UserPropertyChanged &gt;::"><scope>ReportingNexus</scope><name>addListener</name></member>
+      <member refid="classIReporter_a6525b196ee174f7c0b3f583da9f0492c_1a6525b196ee174f7c0b3f583da9f0492c" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UiMsg &gt;::"><scope>ReportingNexus</scope><name>addListener</name></member>
+      <member refid="classIReporter_a20ff25f7f6d46d778d2197ebf2a7062f_1a20ff25f7f6d46d778d2197ebf2a7062f" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; SwapChainResizedEvent &gt;::"><scope>ReportingNexus</scope><name>anyListenersPresent</name></member>
+      <member refid="classIReporter_a20ff25f7f6d46d778d2197ebf2a7062f_1a20ff25f7f6d46d778d2197ebf2a7062f" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UISoundEvent &gt;::"><scope>ReportingNexus</scope><name>anyListenersPresent</name></member>
+      <member refid="classIReporter_a20ff25f7f6d46d778d2197ebf2a7062f_1a20ff25f7f6d46d778d2197ebf2a7062f" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UserPropertyChanged &gt;::"><scope>ReportingNexus</scope><name>anyListenersPresent</name></member>
+      <member refid="classIReporter_a20ff25f7f6d46d778d2197ebf2a7062f_1a20ff25f7f6d46d778d2197ebf2a7062f" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UiMsg &gt;::"><scope>ReportingNexus</scope><name>anyListenersPresent</name></member>
+      <member refid="classReportingNexus_a56fd3891e87dd3c034b8cfd7c84cfe16_1a56fd3891e87dd3c034b8cfd7c84cfe16" prot="public" virt="non-virtual"><scope>ReportingNexus</scope><name>getInstance</name></member>
+      <member refid="classReportingNexus_afe287dd4254b46f0ff514e2aebb1104b_1afe287dd4254b46f0ff514e2aebb1104b" prot="public" virt="non-virtual"><scope>ReportingNexus</scope><name>getReporterAccess</name></member>
+      <member refid="classIReporter_aa86f1962c6830b3a20c94c17f2cf34e2_1aa86f1962c6830b3a20c94c17f2cf34e2" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; SwapChainResizedEvent &gt;::"><scope>ReportingNexus</scope><name>hasListener</name></member>
+      <member refid="classIReporter_aa86f1962c6830b3a20c94c17f2cf34e2_1aa86f1962c6830b3a20c94c17f2cf34e2" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UISoundEvent &gt;::"><scope>ReportingNexus</scope><name>hasListener</name></member>
+      <member refid="classIReporter_aa86f1962c6830b3a20c94c17f2cf34e2_1aa86f1962c6830b3a20c94c17f2cf34e2" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UserPropertyChanged &gt;::"><scope>ReportingNexus</scope><name>hasListener</name></member>
+      <member refid="classIReporter_aa86f1962c6830b3a20c94c17f2cf34e2_1aa86f1962c6830b3a20c94c17f2cf34e2" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UiMsg &gt;::"><scope>ReportingNexus</scope><name>hasListener</name></member>
+      <member refid="classIReporter_ac46be9ddfe8366814c85b4b6e68e6f2e_1ac46be9ddfe8366814c85b4b6e68e6f2e" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; SwapChainResizedEvent &gt;::"><scope>ReportingNexus</scope><name>IReporter</name></member>
+      <member refid="classIReporter_ac46be9ddfe8366814c85b4b6e68e6f2e_1ac46be9ddfe8366814c85b4b6e68e6f2e" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UISoundEvent &gt;::"><scope>ReportingNexus</scope><name>IReporter</name></member>
+      <member refid="classIReporter_ac46be9ddfe8366814c85b4b6e68e6f2e_1ac46be9ddfe8366814c85b4b6e68e6f2e" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UserPropertyChanged &gt;::"><scope>ReportingNexus</scope><name>IReporter</name></member>
+      <member refid="classIReporter_ac46be9ddfe8366814c85b4b6e68e6f2e_1ac46be9ddfe8366814c85b4b6e68e6f2e" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UiMsg &gt;::"><scope>ReportingNexus</scope><name>IReporter</name></member>
+      <member refid="classIReporter_a0a32cf9b1242701c050f1d61b57e24e3_1a0a32cf9b1242701c050f1d61b57e24e3" prot="private" virt="non-virtual" ambiguityscope="IReporter&lt; SwapChainResizedEvent &gt;::"><scope>ReportingNexus</scope><name>m_listeners</name></member>
+      <member refid="classIReporter_a9f0ba8c768eeb5b0f466a64c1a18c562_1a9f0ba8c768eeb5b0f466a64c1a18c562" prot="private" virt="non-virtual" ambiguityscope="IReporter&lt; SwapChainResizedEvent &gt;::"><scope>ReportingNexus</scope><name>m_listenersPendingAdd</name></member>
+      <member refid="classIReporter_ad77afbe023f9088b01dea619c9bd9d19_1ad77afbe023f9088b01dea619c9bd9d19" prot="private" virt="non-virtual" ambiguityscope="IReporter&lt; SwapChainResizedEvent &gt;::"><scope>ReportingNexus</scope><name>m_notifyCounter</name></member>
+      <member refid="classNonCopyableAndNonMovable_a0f3fc95f2c582514d58832b7c14d2965_1a0f3fc95f2c582514d58832b7c14d2965" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; SwapChainResizedEvent &gt;::"><scope>ReportingNexus</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_a3502311a2435129e171eb36ba05f0b2f_1a3502311a2435129e171eb36ba05f0b2f" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; SwapChainResizedEvent &gt;::"><scope>ReportingNexus</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_a259655d15f1887d015c6d77a0f09f4ff_1a259655d15f1887d015c6d77a0f09f4ff" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; SwapChainResizedEvent &gt;::"><scope>ReportingNexus</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_acadc47621b689b1b95bef13a35f18572_1acadc47621b689b1b95bef13a35f18572" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; SwapChainResizedEvent &gt;::"><scope>ReportingNexus</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_a0f3fc95f2c582514d58832b7c14d2965_1a0f3fc95f2c582514d58832b7c14d2965" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UISoundEvent &gt;::"><scope>ReportingNexus</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_a3502311a2435129e171eb36ba05f0b2f_1a3502311a2435129e171eb36ba05f0b2f" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UISoundEvent &gt;::"><scope>ReportingNexus</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_a259655d15f1887d015c6d77a0f09f4ff_1a259655d15f1887d015c6d77a0f09f4ff" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UISoundEvent &gt;::"><scope>ReportingNexus</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_acadc47621b689b1b95bef13a35f18572_1acadc47621b689b1b95bef13a35f18572" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UISoundEvent &gt;::"><scope>ReportingNexus</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_a0f3fc95f2c582514d58832b7c14d2965_1a0f3fc95f2c582514d58832b7c14d2965" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UserPropertyChanged &gt;::"><scope>ReportingNexus</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_a3502311a2435129e171eb36ba05f0b2f_1a3502311a2435129e171eb36ba05f0b2f" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UserPropertyChanged &gt;::"><scope>ReportingNexus</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_a259655d15f1887d015c6d77a0f09f4ff_1a259655d15f1887d015c6d77a0f09f4ff" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UserPropertyChanged &gt;::"><scope>ReportingNexus</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_acadc47621b689b1b95bef13a35f18572_1acadc47621b689b1b95bef13a35f18572" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UserPropertyChanged &gt;::"><scope>ReportingNexus</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_a0f3fc95f2c582514d58832b7c14d2965_1a0f3fc95f2c582514d58832b7c14d2965" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UiMsg &gt;::"><scope>ReportingNexus</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_a3502311a2435129e171eb36ba05f0b2f_1a3502311a2435129e171eb36ba05f0b2f" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UiMsg &gt;::"><scope>ReportingNexus</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_a259655d15f1887d015c6d77a0f09f4ff_1a259655d15f1887d015c6d77a0f09f4ff" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UiMsg &gt;::"><scope>ReportingNexus</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_acadc47621b689b1b95bef13a35f18572_1acadc47621b689b1b95bef13a35f18572" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UiMsg &gt;::"><scope>ReportingNexus</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classIReporter_ac8104201bb71f8748952e39a13e1043e_1ac8104201bb71f8748952e39a13e1043e" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; SwapChainResizedEvent &gt;::"><scope>ReportingNexus</scope><name>notifyListeners</name></member>
+      <member refid="classIReporter_acb5055f18fc9be9d150dbe6f3514e778_1acb5055f18fc9be9d150dbe6f3514e778" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; SwapChainResizedEvent &gt;::"><scope>ReportingNexus</scope><name>notifyListeners</name></member>
+      <member refid="classIReporter_afee97efe68b72d86958d6075edd29427_1afee97efe68b72d86958d6075edd29427" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; SwapChainResizedEvent &gt;::"><scope>ReportingNexus</scope><name>notifyListeners</name></member>
+      <member refid="classIReporter_ac8104201bb71f8748952e39a13e1043e_1ac8104201bb71f8748952e39a13e1043e" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UISoundEvent &gt;::"><scope>ReportingNexus</scope><name>notifyListeners</name></member>
+      <member refid="classIReporter_acb5055f18fc9be9d150dbe6f3514e778_1acb5055f18fc9be9d150dbe6f3514e778" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UISoundEvent &gt;::"><scope>ReportingNexus</scope><name>notifyListeners</name></member>
+      <member refid="classIReporter_afee97efe68b72d86958d6075edd29427_1afee97efe68b72d86958d6075edd29427" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UISoundEvent &gt;::"><scope>ReportingNexus</scope><name>notifyListeners</name></member>
+      <member refid="classIReporter_ac8104201bb71f8748952e39a13e1043e_1ac8104201bb71f8748952e39a13e1043e" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UserPropertyChanged &gt;::"><scope>ReportingNexus</scope><name>notifyListeners</name></member>
+      <member refid="classIReporter_acb5055f18fc9be9d150dbe6f3514e778_1acb5055f18fc9be9d150dbe6f3514e778" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UserPropertyChanged &gt;::"><scope>ReportingNexus</scope><name>notifyListeners</name></member>
+      <member refid="classIReporter_afee97efe68b72d86958d6075edd29427_1afee97efe68b72d86958d6075edd29427" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UserPropertyChanged &gt;::"><scope>ReportingNexus</scope><name>notifyListeners</name></member>
+      <member refid="classIReporter_ac8104201bb71f8748952e39a13e1043e_1ac8104201bb71f8748952e39a13e1043e" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UiMsg &gt;::"><scope>ReportingNexus</scope><name>notifyListeners</name></member>
+      <member refid="classIReporter_acb5055f18fc9be9d150dbe6f3514e778_1acb5055f18fc9be9d150dbe6f3514e778" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UiMsg &gt;::"><scope>ReportingNexus</scope><name>notifyListeners</name></member>
+      <member refid="classIReporter_afee97efe68b72d86958d6075edd29427_1afee97efe68b72d86958d6075edd29427" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UiMsg &gt;::"><scope>ReportingNexus</scope><name>notifyListeners</name></member>
+      <member refid="classIReporter_a808f4be43a1a2774b7fdf2091718d179_1a808f4be43a1a2774b7fdf2091718d179" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; SwapChainResizedEvent &gt;::"><scope>ReportingNexus</scope><name>numListeners</name></member>
+      <member refid="classIReporter_a808f4be43a1a2774b7fdf2091718d179_1a808f4be43a1a2774b7fdf2091718d179" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UISoundEvent &gt;::"><scope>ReportingNexus</scope><name>numListeners</name></member>
+      <member refid="classIReporter_a808f4be43a1a2774b7fdf2091718d179_1a808f4be43a1a2774b7fdf2091718d179" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UserPropertyChanged &gt;::"><scope>ReportingNexus</scope><name>numListeners</name></member>
+      <member refid="classIReporter_a808f4be43a1a2774b7fdf2091718d179_1a808f4be43a1a2774b7fdf2091718d179" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UiMsg &gt;::"><scope>ReportingNexus</scope><name>numListeners</name></member>
+      <member refid="classNonCopyableAndNonMovable_a6541862f56b2fcaa89155f08b8adaf11_1a6541862f56b2fcaa89155f08b8adaf11" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; SwapChainResizedEvent &gt;::"><scope>ReportingNexus</scope><name>operator=</name></member>
+      <member refid="classNonCopyableAndNonMovable_aa3af41edbd14c886cdec335b22254829_1aa3af41edbd14c886cdec335b22254829" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; SwapChainResizedEvent &gt;::"><scope>ReportingNexus</scope><name>operator=</name></member>
+      <member refid="classNonCopyableAndNonMovable_a972632a389e0f2370de9604df60ea9d6_1a972632a389e0f2370de9604df60ea9d6" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; SwapChainResizedEvent &gt;::"><scope>ReportingNexus</scope><name>operator=</name></member>
+      <member refid="classNonCopyableAndNonMovable_a6541862f56b2fcaa89155f08b8adaf11_1a6541862f56b2fcaa89155f08b8adaf11" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UISoundEvent &gt;::"><scope>ReportingNexus</scope><name>operator=</name></member>
+      <member refid="classNonCopyableAndNonMovable_aa3af41edbd14c886cdec335b22254829_1aa3af41edbd14c886cdec335b22254829" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UISoundEvent &gt;::"><scope>ReportingNexus</scope><name>operator=</name></member>
+      <member refid="classNonCopyableAndNonMovable_a972632a389e0f2370de9604df60ea9d6_1a972632a389e0f2370de9604df60ea9d6" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UISoundEvent &gt;::"><scope>ReportingNexus</scope><name>operator=</name></member>
+      <member refid="classNonCopyableAndNonMovable_a6541862f56b2fcaa89155f08b8adaf11_1a6541862f56b2fcaa89155f08b8adaf11" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UserPropertyChanged &gt;::"><scope>ReportingNexus</scope><name>operator=</name></member>
+      <member refid="classNonCopyableAndNonMovable_aa3af41edbd14c886cdec335b22254829_1aa3af41edbd14c886cdec335b22254829" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UserPropertyChanged &gt;::"><scope>ReportingNexus</scope><name>operator=</name></member>
+      <member refid="classNonCopyableAndNonMovable_a972632a389e0f2370de9604df60ea9d6_1a972632a389e0f2370de9604df60ea9d6" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UserPropertyChanged &gt;::"><scope>ReportingNexus</scope><name>operator=</name></member>
+      <member refid="classNonCopyableAndNonMovable_a6541862f56b2fcaa89155f08b8adaf11_1a6541862f56b2fcaa89155f08b8adaf11" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UiMsg &gt;::"><scope>ReportingNexus</scope><name>operator=</name></member>
+      <member refid="classNonCopyableAndNonMovable_aa3af41edbd14c886cdec335b22254829_1aa3af41edbd14c886cdec335b22254829" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UiMsg &gt;::"><scope>ReportingNexus</scope><name>operator=</name></member>
+      <member refid="classNonCopyableAndNonMovable_a972632a389e0f2370de9604df60ea9d6_1a972632a389e0f2370de9604df60ea9d6" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UiMsg &gt;::"><scope>ReportingNexus</scope><name>operator=</name></member>
+      <member refid="classIReporter_a1e48a61d8ea294e895bc58d43516c700_1a1e48a61d8ea294e895bc58d43516c700" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; SwapChainResizedEvent &gt;::"><scope>ReportingNexus</scope><name>removeListener</name></member>
+      <member refid="classIReporter_a1e48a61d8ea294e895bc58d43516c700_1a1e48a61d8ea294e895bc58d43516c700" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UISoundEvent &gt;::"><scope>ReportingNexus</scope><name>removeListener</name></member>
+      <member refid="classIReporter_a1e48a61d8ea294e895bc58d43516c700_1a1e48a61d8ea294e895bc58d43516c700" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UserPropertyChanged &gt;::"><scope>ReportingNexus</scope><name>removeListener</name></member>
+      <member refid="classIReporter_a1e48a61d8ea294e895bc58d43516c700_1a1e48a61d8ea294e895bc58d43516c700" prot="public" virt="non-virtual" ambiguityscope="IReporter&lt; UiMsg &gt;::"><scope>ReportingNexus</scope><name>removeListener</name></member>
+      <member refid="classIReporter_a2f468eee19811b61d1367363f9e34c6b_1a2f468eee19811b61d1367363f9e34c6b" prot="protected" virt="non-virtual" ambiguityscope="IReporter&lt; SwapChainResizedEvent &gt;::"><scope>ReportingNexus</scope><name>removeThisFromListenersList</name></member>
+      <member refid="classIReporter_a2f468eee19811b61d1367363f9e34c6b_1a2f468eee19811b61d1367363f9e34c6b" prot="protected" virt="non-virtual" ambiguityscope="IReporter&lt; UISoundEvent &gt;::"><scope>ReportingNexus</scope><name>removeThisFromListenersList</name></member>
+      <member refid="classIReporter_a2f468eee19811b61d1367363f9e34c6b_1a2f468eee19811b61d1367363f9e34c6b" prot="protected" virt="non-virtual" ambiguityscope="IReporter&lt; UserPropertyChanged &gt;::"><scope>ReportingNexus</scope><name>removeThisFromListenersList</name></member>
+      <member refid="classIReporter_a2f468eee19811b61d1367363f9e34c6b_1a2f468eee19811b61d1367363f9e34c6b" prot="protected" virt="non-virtual" ambiguityscope="IReporter&lt; UiMsg &gt;::"><scope>ReportingNexus</scope><name>removeThisFromListenersList</name></member>
+      <member refid="classReportingNexus_ad1c92ce66fcd12b24d7a3021b4d4631b_1ad1c92ce66fcd12b24d7a3021b4d4631b" prot="private" virt="non-virtual"><scope>ReportingNexus</scope><name>ReportingNexus</name></member>
+      <member refid="classReportingNexus_a7e24b604477f1a59fbe8e9df1ad7ef7f_1a7e24b604477f1a59fbe8e9df1ad7ef7f" prot="private" virt="non-virtual"><scope>ReportingNexus</scope><name>s_accessKey</name></member>
+      <member refid="classIReporter_a126e81114a8b775b3e7c66aa86592edb_1a126e81114a8b775b3e7c66aa86592edb" prot="private" virt="non-virtual" ambiguityscope="IReporter&lt; SwapChainResizedEvent &gt;::"><scope>ReportingNexus</scope><name>tryAddListener</name></member>
+      <member refid="classIReporter_a73657c8a169a89c3fcc12e27d08b8783_1a73657c8a169a89c3fcc12e27d08b8783" prot="public" virt="pure-virtual" ambiguityscope="IReporter&lt; SwapChainResizedEvent &gt;::"><scope>ReportingNexus</scope><name>~IReporter</name></member>
+      <member refid="classIReporter_a73657c8a169a89c3fcc12e27d08b8783_1a73657c8a169a89c3fcc12e27d08b8783" prot="public" virt="pure-virtual" ambiguityscope="IReporter&lt; UISoundEvent &gt;::"><scope>ReportingNexus</scope><name>~IReporter</name></member>
+      <member refid="classIReporter_a73657c8a169a89c3fcc12e27d08b8783_1a73657c8a169a89c3fcc12e27d08b8783" prot="public" virt="pure-virtual" ambiguityscope="IReporter&lt; UserPropertyChanged &gt;::"><scope>ReportingNexus</scope><name>~IReporter</name></member>
+      <member refid="classIReporter_a73657c8a169a89c3fcc12e27d08b8783_1a73657c8a169a89c3fcc12e27d08b8783" prot="public" virt="pure-virtual" ambiguityscope="IReporter&lt; UiMsg &gt;::"><scope>ReportingNexus</scope><name>~IReporter</name></member>
+      <member refid="classNonCopyableAndNonMovable_aa6874bb9a99fe151e8c2eda429fe5867_1aa6874bb9a99fe151e8c2eda429fe5867" prot="protected" virt="non-virtual" ambiguityscope="IReporter&lt; SwapChainResizedEvent &gt;::"><scope>ReportingNexus</scope><name>~NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_aa6874bb9a99fe151e8c2eda429fe5867_1aa6874bb9a99fe151e8c2eda429fe5867" prot="protected" virt="non-virtual" ambiguityscope="IReporter&lt; UISoundEvent &gt;::"><scope>ReportingNexus</scope><name>~NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_aa6874bb9a99fe151e8c2eda429fe5867_1aa6874bb9a99fe151e8c2eda429fe5867" prot="protected" virt="non-virtual" ambiguityscope="IReporter&lt; UserPropertyChanged &gt;::"><scope>ReportingNexus</scope><name>~NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_aa6874bb9a99fe151e8c2eda429fe5867_1aa6874bb9a99fe151e8c2eda429fe5867" prot="protected" virt="non-virtual" ambiguityscope="IReporter&lt; UiMsg &gt;::"><scope>ReportingNexus</scope><name>~NonCopyableAndNonMovable</name></member>
+      <member refid="classReportingNexus_a7b1c65220d0e3d88c28f3cbfd005e103_1a7b1c65220d0e3d88c28f3cbfd005e103" prot="public" virt="non-virtual"><scope>ReportingNexus</scope><name>~ReportingNexus</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

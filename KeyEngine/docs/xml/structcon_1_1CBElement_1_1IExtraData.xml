@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="structcon_1_1CBElement_1_1IExtraData" kind="class" language="C++" prot="private">
+    <compoundname>con::CBElement::IExtraData</compoundname>
+    <derivedcompoundref refid="structcon_1_1ExtraData_1_1Array" prot="public" virt="non-virtual">con::ExtraData::Array</derivedcompoundref>
+    <derivedcompoundref refid="structcon_1_1ExtraData_1_1Struct" prot="public" virt="non-virtual">con::ExtraData::Struct</derivedcompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structcon_1_1CBElement_1_1IExtraData_a741cbc7c7feb161aae64c7c9ddbc0d5b_1a741cbc7c7feb161aae64c7c9ddbc0d5b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual con::CBElement::IExtraData::~IExtraData</definition>
+        <argsstring>()=default</argsstring>
+        <name>~IExtraData</name>
+        <qualifiedname>con::CBElement::IExtraData::~IExtraData</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="157" column="9"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>this forms the polymorpic base for extra data that Struct and Array <computeroutput><ref refid="classcon_1_1CBElement" kindref="compound">CBElement</ref></computeroutput>s have  </para>
+    </briefdescription>
+    <detaileddescription>
+<para>=============================================================</para>
+<para><simplesect kind="author"><para>KeyC0de </para>
+</simplesect>
+<simplesect kind="date"><para>2022/08/21 13:50 <heading level="1"></heading>
+</para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>con::CBElement::IExtraData</label>
+        <link refid="structcon_1_1CBElement_1_1IExtraData"/>
+      </node>
+      <node id="2">
+        <label>con::ExtraData::Array</label>
+        <link refid="structcon_1_1ExtraData_1_1Array"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>con::ExtraData::Struct</label>
+        <link refid="structcon_1_1ExtraData_1_1Struct"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="inc/dynamic_constant_buffer.h" line="155" column="1" bodyfile="inc/dynamic_constant_buffer.h" bodystart="156" bodyend="158"/>
+    <listofallmembers>
+      <member refid="structcon_1_1CBElement_1_1IExtraData_a741cbc7c7feb161aae64c7c9ddbc0d5b_1a741cbc7c7feb161aae64c7c9ddbc0d5b" prot="public" virt="virtual"><scope>con::CBElement::IExtraData</scope><name>~IExtraData</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

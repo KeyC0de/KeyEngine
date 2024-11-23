@@ -1,0 +1,129 @@
+\doxysection{gui\+::UIPass Class Reference}
+\hypertarget{classgui_1_1UIPass}{}\label{classgui_1_1UIPass}\index{gui::UIPass@{gui::UIPass}}
+
+
+{\ttfamily \#include $<$ui\+\_\+pass.\+h$>$}
+
+Inheritance diagram for gui\+::UIPass\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classgui_1_1UIPass}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classgui_1_1UIPass_adf242a98de9ca144f16b77fa7f4714f8_adf242a98de9ca144f16b77fa7f4714f8}{UIPass}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx)
+\item 
+\mbox{\hyperlink{classgui_1_1UIPass_a3381a5aaacd06f25dc83043e8dfa2296_a3381a5aaacd06f25dc83043e8dfa2296}{\texorpdfstring{$\sim$}{\string~}\+UIPass}} () noexcept
+\item 
+void \mbox{\hyperlink{classgui_1_1UIPass_a020ffc12ad8cc707ffa8e427361831ae_a020ffc12ad8cc707ffa8e427361831ae}{recreate}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx)
+\item 
+void \mbox{\hyperlink{classgui_1_1UIPass_ab34b6f0aba97ebace64355b7a0b701e9_ab34b6f0aba97ebace64355b7a0b701e9}{update}} (const float dt, const std\+::pair$<$ int, int $>$ input\+XandY, const float lerp\+Between\+Frames) cond\+\_\+noex
+\item 
+void \mbox{\hyperlink{classgui_1_1UIPass_af36b0efb0e82c0b8ea32a3a8da8c53b0_af36b0efb0e82c0b8ea32a3a8da8c53b0}{render}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) const cond\+\_\+noex
+\item 
+const std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classgui_1_1Component}{Component}} $>$ \& \mbox{\hyperlink{classgui_1_1UIPass_a0ae0211dcaa6b7289d14b062dc1ff8ea_a0ae0211dcaa6b7289d14b062dc1ff8ea}{get\+Root}} () const noexcept
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classgui_1_1Component}{Component}} $>$ \& \mbox{\hyperlink{classgui_1_1UIPass_a31c2ddfaea8547324c2b2708ffb111b1_a31c2ddfaea8547324c2b2708ffb111b1}{get\+Root}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classgui_1_1Component}{Component}} $>$ \mbox{\hyperlink{classgui_1_1UIPass_a0b0211f474ae7c90cc23eb3aa7e47cb4_a0b0211f474ae7c90cc23eb3aa7e47cb4}{m\+\_\+p\+Root}}
+\item 
+std\+::unique\+\_\+ptr$<$ Direct\+X\+::\+Sprite\+Batch $>$ \mbox{\hyperlink{classgui_1_1UIPass_a729c5a16e681f696a5adbcc74e6a0f2f_a729c5a16e681f696a5adbcc74e6a0f2f}{m\+\_\+p\+Sprite\+Batch}}
+\item 
+std\+::unique\+\_\+ptr$<$ Direct\+X\+::\+Sprite\+Font $>$ \mbox{\hyperlink{classgui_1_1UIPass_aaaa613b46c210567ab1849fde72cd737_aaaa613b46c210567ab1849fde72cd737}{m\+\_\+p\+Sprite\+Font}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRasterizerState}{Rasterizer\+State}} $>$ \mbox{\hyperlink{classgui_1_1UIPass_a4233726966cf31e5ccb392234fb53616_a4233726966cf31e5ccb392234fb53616}{m\+\_\+p\+Rasterizer\+State}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classGraphicsFriend}{Graphics\+Friend}}}
+\begin{DoxyCompactItemize}
+\item 
+static ID3\+D11\+Device\+Context \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGraphicsFriend_a619e32893ab49ea6c5200e7c2d52e2f2_a619e32893ab49ea6c5200e7c2d52e2f2}{get\+Device\+Context}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) noexcept
+\item 
+static ID3\+D11\+Device \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_a175df79f82ab5a6dad1df24b5a242ef7}{get\+Device}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) noexcept
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classgui_1_1UIPass_adf242a98de9ca144f16b77fa7f4714f8_adf242a98de9ca144f16b77fa7f4714f8}\index{gui::UIPass@{gui::UIPass}!UIPass@{UIPass}}
+\index{UIPass@{UIPass}!gui::UIPass@{gui::UIPass}}
+\doxysubsubsection{\texorpdfstring{UIPass()}{UIPass()}}
+{\footnotesize\ttfamily \label{classgui_1_1UIPass_adf242a98de9ca144f16b77fa7f4714f8_adf242a98de9ca144f16b77fa7f4714f8} 
+gui\+::\+UIPass\+::\+UIPass (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classgui_1_1UIPass_a3381a5aaacd06f25dc83043e8dfa2296_a3381a5aaacd06f25dc83043e8dfa2296}\index{gui::UIPass@{gui::UIPass}!````~UIPass@{\texorpdfstring{$\sim$}{\string~}UIPass}}
+\index{````~UIPass@{\texorpdfstring{$\sim$}{\string~}UIPass}!gui::UIPass@{gui::UIPass}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}UIPass()}{\string~UIPass()}}
+{\footnotesize\ttfamily \label{classgui_1_1UIPass_a3381a5aaacd06f25dc83043e8dfa2296_a3381a5aaacd06f25dc83043e8dfa2296} 
+gui\+::\+UIPass\+::\texorpdfstring{$\sim$}{\string~}\+UIPass (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classgui_1_1UIPass_a31c2ddfaea8547324c2b2708ffb111b1_a31c2ddfaea8547324c2b2708ffb111b1}\index{gui::UIPass@{gui::UIPass}!getRoot@{getRoot}}
+\index{getRoot@{getRoot}!gui::UIPass@{gui::UIPass}}
+\doxysubsubsection{\texorpdfstring{getRoot()}{getRoot()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classgui_1_1UIPass_a31c2ddfaea8547324c2b2708ffb111b1_a31c2ddfaea8547324c2b2708ffb111b1} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classgui_1_1Component}{Component}} $>$ \& gui\+::\+UIPass\+::get\+Root (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classgui_1_1UIPass_a0ae0211dcaa6b7289d14b062dc1ff8ea_a0ae0211dcaa6b7289d14b062dc1ff8ea}\index{gui::UIPass@{gui::UIPass}!getRoot@{getRoot}}
+\index{getRoot@{getRoot}!gui::UIPass@{gui::UIPass}}
+\doxysubsubsection{\texorpdfstring{getRoot()}{getRoot()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classgui_1_1UIPass_a0ae0211dcaa6b7289d14b062dc1ff8ea_a0ae0211dcaa6b7289d14b062dc1ff8ea} 
+const std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classgui_1_1Component}{Component}} $>$ \& gui\+::\+UIPass\+::get\+Root (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classgui_1_1UIPass_a020ffc12ad8cc707ffa8e427361831ae_a020ffc12ad8cc707ffa8e427361831ae}\index{gui::UIPass@{gui::UIPass}!recreate@{recreate}}
+\index{recreate@{recreate}!gui::UIPass@{gui::UIPass}}
+\doxysubsubsection{\texorpdfstring{recreate()}{recreate()}}
+{\footnotesize\ttfamily \label{classgui_1_1UIPass_a020ffc12ad8cc707ffa8e427361831ae_a020ffc12ad8cc707ffa8e427361831ae} 
+void gui\+::\+UIPass\+::recreate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classgui_1_1UIPass_af36b0efb0e82c0b8ea32a3a8da8c53b0_af36b0efb0e82c0b8ea32a3a8da8c53b0}\index{gui::UIPass@{gui::UIPass}!render@{render}}
+\index{render@{render}!gui::UIPass@{gui::UIPass}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily \label{classgui_1_1UIPass_af36b0efb0e82c0b8ea32a3a8da8c53b0_af36b0efb0e82c0b8ea32a3a8da8c53b0} 
+void gui\+::\+UIPass\+::render (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classgui_1_1UIPass_ab34b6f0aba97ebace64355b7a0b701e9_ab34b6f0aba97ebace64355b7a0b701e9}\index{gui::UIPass@{gui::UIPass}!update@{update}}
+\index{update@{update}!gui::UIPass@{gui::UIPass}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{classgui_1_1UIPass_ab34b6f0aba97ebace64355b7a0b701e9_ab34b6f0aba97ebace64355b7a0b701e9} 
+void gui\+::\+UIPass\+::update (\begin{DoxyParamCaption}\item[{const float}]{dt}{, }\item[{const std\+::pair$<$ int, int $>$}]{input\+XandY}{, }\item[{const float}]{lerp\+Between\+Frames}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classgui_1_1UIPass_a4233726966cf31e5ccb392234fb53616_a4233726966cf31e5ccb392234fb53616}\index{gui::UIPass@{gui::UIPass}!m\_pRasterizerState@{m\_pRasterizerState}}
+\index{m\_pRasterizerState@{m\_pRasterizerState}!gui::UIPass@{gui::UIPass}}
+\doxysubsubsection{\texorpdfstring{m\_pRasterizerState}{m\_pRasterizerState}}
+{\footnotesize\ttfamily \label{classgui_1_1UIPass_a4233726966cf31e5ccb392234fb53616_a4233726966cf31e5ccb392234fb53616} 
+std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classRasterizerState}{Rasterizer\+State}}$>$ gui\+::\+UIPass\+::m\+\_\+p\+Rasterizer\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classgui_1_1UIPass_a0b0211f474ae7c90cc23eb3aa7e47cb4_a0b0211f474ae7c90cc23eb3aa7e47cb4}\index{gui::UIPass@{gui::UIPass}!m\_pRoot@{m\_pRoot}}
+\index{m\_pRoot@{m\_pRoot}!gui::UIPass@{gui::UIPass}}
+\doxysubsubsection{\texorpdfstring{m\_pRoot}{m\_pRoot}}
+{\footnotesize\ttfamily \label{classgui_1_1UIPass_a0b0211f474ae7c90cc23eb3aa7e47cb4_a0b0211f474ae7c90cc23eb3aa7e47cb4} 
+std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classgui_1_1Component}{Component}}$>$ gui\+::\+UIPass\+::m\+\_\+p\+Root\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classgui_1_1UIPass_a729c5a16e681f696a5adbcc74e6a0f2f_a729c5a16e681f696a5adbcc74e6a0f2f}\index{gui::UIPass@{gui::UIPass}!m\_pSpriteBatch@{m\_pSpriteBatch}}
+\index{m\_pSpriteBatch@{m\_pSpriteBatch}!gui::UIPass@{gui::UIPass}}
+\doxysubsubsection{\texorpdfstring{m\_pSpriteBatch}{m\_pSpriteBatch}}
+{\footnotesize\ttfamily \label{classgui_1_1UIPass_a729c5a16e681f696a5adbcc74e6a0f2f_a729c5a16e681f696a5adbcc74e6a0f2f} 
+std\+::unique\+\_\+ptr$<$Direct\+X\+::\+Sprite\+Batch$>$ gui\+::\+UIPass\+::m\+\_\+p\+Sprite\+Batch\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classgui_1_1UIPass_aaaa613b46c210567ab1849fde72cd737_aaaa613b46c210567ab1849fde72cd737}\index{gui::UIPass@{gui::UIPass}!m\_pSpriteFont@{m\_pSpriteFont}}
+\index{m\_pSpriteFont@{m\_pSpriteFont}!gui::UIPass@{gui::UIPass}}
+\doxysubsubsection{\texorpdfstring{m\_pSpriteFont}{m\_pSpriteFont}}
+{\footnotesize\ttfamily \label{classgui_1_1UIPass_aaaa613b46c210567ab1849fde72cd737_aaaa613b46c210567ab1849fde72cd737} 
+std\+::unique\+\_\+ptr$<$Direct\+X\+::\+Sprite\+Font$>$ gui\+::\+UIPass\+::m\+\_\+p\+Sprite\+Font\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{ui__pass_8h}{ui\+\_\+pass.\+h}}\item 
+src/\mbox{\hyperlink{ui__pass_8cpp}{ui\+\_\+pass.\+cpp}}\end{DoxyCompactItemize}

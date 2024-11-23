@@ -26,8 +26,7 @@ class Texture
 	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_pD3dSrv;
 public:
 	Texture( Graphics &gfx, const std::string &filepath, const unsigned slot, TextureOp op = nullptr );
-	//	\function	Texture	||	\date	2021/10/30 3:42
-	//	\brief	Texture constructor with dynamic CPU per frame update
+	/// \brief	Texture constructor with dynamic CPU per frame update
 	Texture( Graphics &gfx, const unsigned width, const unsigned height, const unsigned slot, TextureOp op = nullptr );
 
 	void paintTextureWithBitmap( Graphics &gfx, ID3D11Texture2D *tex, const Bitmap &bitmap, const D3D11_BOX *destPortion = nullptr );
@@ -44,12 +43,12 @@ public:
 	unsigned getSlot() const noexcept;
 };
 
-//=============================================================
-//	\class	TextureOffscreenRT
-//	\author	KeyC0de
-//	\date	2022/10/13 11:08
-//	\brief	Flexible Render Target View Wrapper that will be used EITHER for input OR for output (offscreen/RTT/back buffer rendering)
-//=============================================================
+///=============================================================
+/// \class	TextureOffscreenRT
+/// \author	KeyC0de
+/// \date	2022/10/13 11:08
+/// \brief	Flexible Render Target View Wrapper that will be used EITHER for input OR for output (offscreen/RTT/back buffer rendering)
+///=============================================================
 class TextureOffscreenRT
 	: public IBindable
 {
@@ -66,12 +65,12 @@ public:
 	unsigned getSlot() const noexcept;
 };
 
-//=============================================================
-//	\class	TextureOffscreenDS
-//	\author	KeyC0de
-//	\date	2022/10/13 11:08
-//	\brief	A flexible Texture2D, SRV for HLSL access & Depth Stencil View Wrapper; can be used either for input OR for output (offscreen/RTT rendering)
-//=============================================================
+///=============================================================
+/// \class	TextureOffscreenDS
+/// \author	KeyC0de
+/// \date	2022/10/13 11:08
+/// \brief	A flexible Texture2D, SRV for HLSL access & Depth Stencil View Wrapper; can be used either for input OR for output (offscreen/RTT rendering)
+///=============================================================
 class TextureOffscreenDS
 	: public IBindable
 {
@@ -88,12 +87,12 @@ public:
 	unsigned getSlot() const noexcept;
 };
 
-//=============================================================
-//	\class	TextureArrayOffscreenDS
-//	\author	KeyC0de
-//	\date	2024/09/03 21:33
-//	\brief	A Texture2dArray (HLSL), SRV for HLSL access & Depth Stencil View all wrapped up; can be used either for input OR for output
-//=============================================================
+///=============================================================
+/// \class	TextureArrayOffscreenDS
+/// \author	KeyC0de
+/// \date	2024/09/03 21:33
+/// \brief	A Texture2dArray (HLSL), SRV for HLSL access & Depth Stencil View all wrapped up; can be used either for input OR for output
+///=============================================================
 class TextureArrayOffscreenDS
 	: public IBindable
 {

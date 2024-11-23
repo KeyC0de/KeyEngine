@@ -1,0 +1,125 @@
+\doxysection{inc/dynamic\+\_\+vertex\+\_\+buffer.h File Reference}
+\hypertarget{dynamic__vertex__buffer_8h}{}\label{dynamic__vertex__buffer_8h}\index{inc/dynamic\_vertex\_buffer.h@{inc/dynamic\_vertex\_buffer.h}}
+{\ttfamily \#include "{}winner.\+h"{}}\newline
+{\ttfamily \#include $<$Direct\+XMath.\+h$>$}\newline
+{\ttfamily \#include $<$d3d11.\+h$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$type\+\_\+traits$>$}\newline
+{\ttfamily \#include $<$utility$>$}\newline
+{\ttfamily \#include "{}color.\+h"{}}\newline
+{\ttfamily \#include "{}assimp/scene.\+h"{}}\newline
+{\ttfamily \#include "{}assertions\+\_\+console.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classver_1_1VertexInputLayout}{ver\+::\+Vertex\+Input\+Layout}}
+\item 
+struct \mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties_3_01Position2D_01_4}{ver\+::\+Vertex\+Input\+Layout\+::\+Element\+Properties$<$ Position2\+D $>$}}
+\item 
+struct \mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties_3_01Position3D_01_4}{ver\+::\+Vertex\+Input\+Layout\+::\+Element\+Properties$<$ Position3\+D $>$}}
+\item 
+struct \mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties_3_01Texture2D_01_4}{ver\+::\+Vertex\+Input\+Layout\+::\+Element\+Properties$<$ Texture2\+D $>$}}
+\item 
+struct \mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties_3_01Normal_01_4}{ver\+::\+Vertex\+Input\+Layout\+::\+Element\+Properties$<$ Normal $>$}}
+\item 
+struct \mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties_3_01Tangent_01_4}{ver\+::\+Vertex\+Input\+Layout\+::\+Element\+Properties$<$ Tangent $>$}}
+\item 
+struct \mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties_3_01Bitangent_01_4}{ver\+::\+Vertex\+Input\+Layout\+::\+Element\+Properties$<$ Bitangent $>$}}
+\item 
+struct \mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties_3_01Float3Color_01_4}{ver\+::\+Vertex\+Input\+Layout\+::\+Element\+Properties$<$ Float3\+Color $>$}}
+\item 
+struct \mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties_3_01Float4Color_01_4}{ver\+::\+Vertex\+Input\+Layout\+::\+Element\+Properties$<$ Float4\+Color $>$}}
+\item 
+struct \mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties_3_01BGRAColor_01_4}{ver\+::\+Vertex\+Input\+Layout\+::\+Element\+Properties$<$ BGRAColor $>$}}
+\item 
+struct \mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties_3_01Count_01_4}{ver\+::\+Vertex\+Input\+Layout\+::\+Element\+Properties$<$ Count $>$}}
+\item 
+class \mbox{\hyperlink{classver_1_1VertexInputLayout_1_1ILElement}{ver\+::\+Vertex\+Input\+Layout\+::\+ILElement}}
+\begin{DoxyCompactList}\small\item\em Vertex Buffer Input Layout Element  \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classver_1_1VBElementView}{ver\+::\+VBElement\+View}}
+\item 
+struct \mbox{\hyperlink{structver_1_1VBElementView_1_1ElementSetter}{ver\+::\+VBElement\+View\+::\+Element\+Setter$<$ layout\+Type $>$}}
+\item 
+class \mbox{\hyperlink{classver_1_1VBElementConstView}{ver\+::\+VBElement\+Const\+View}}
+\item 
+class \mbox{\hyperlink{classver_1_1VBuffer}{ver\+::\+VBuffer}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacever}{ver}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{dynamic__vertex__buffer_8h_aa9ae34007b2412618c1be887ff7a2e79_aa9ae34007b2412618c1be887ff7a2e79}{ASSIMP\+\_\+\+EXTRACT\+\_\+\+AIMESH}}(element)
+\item 
+\#define \mbox{\hyperlink{dynamic__vertex__buffer_8h_a423bfa02373fec04c54b75d70d37be1c_a423bfa02373fec04c54b75d70d37be1c}{VERTEX\+\_\+\+INPUT\+\_\+\+LAYOUT\+\_\+\+ELEMENT\+\_\+\+TYPES}}
+\item 
+\#define \mbox{\hyperlink{dynamic__vertex__buffer_8h_abded13e89fb148f56b327029ac1b3042_abded13e89fb148f56b327029ac1b3042}{X}}(el)
+\item 
+\#define \mbox{\hyperlink{dynamic__vertex__buffer_8h_abded13e89fb148f56b327029ac1b3042_abded13e89fb148f56b327029ac1b3042}{X}}(el)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{dynamic__vertex__buffer_8h_aa9ae34007b2412618c1be887ff7a2e79_aa9ae34007b2412618c1be887ff7a2e79}\index{dynamic\_vertex\_buffer.h@{dynamic\_vertex\_buffer.h}!ASSIMP\_EXTRACT\_AIMESH@{ASSIMP\_EXTRACT\_AIMESH}}
+\index{ASSIMP\_EXTRACT\_AIMESH@{ASSIMP\_EXTRACT\_AIMESH}!dynamic\_vertex\_buffer.h@{dynamic\_vertex\_buffer.h}}
+\doxysubsubsection{\texorpdfstring{ASSIMP\_EXTRACT\_AIMESH}{ASSIMP\_EXTRACT\_AIMESH}}
+{\footnotesize\ttfamily \label{dynamic__vertex__buffer_8h_aa9ae34007b2412618c1be887ff7a2e79_aa9ae34007b2412618c1be887ff7a2e79} 
+\#define ASSIMP\+\_\+\+EXTRACT\+\_\+\+AIMESH(\begin{DoxyParamCaption}\item[{}]{element}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ CPUType\ extract(\ \textcolor{keyword}{const}\ aiMesh\ \&\mbox{\hyperlink{namespacemesh}{mesh}},\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ i\ )\ \textcolor{keyword}{noexcept}\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \{\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }CPUType*\textcolor{keyword}{>}(\ \&\mbox{\hyperlink{namespacemesh}{mesh}}.element[i]\ );\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{dynamic__vertex__buffer_8h_a423bfa02373fec04c54b75d70d37be1c_a423bfa02373fec04c54b75d70d37be1c}\index{dynamic\_vertex\_buffer.h@{dynamic\_vertex\_buffer.h}!VERTEX\_INPUT\_LAYOUT\_ELEMENT\_TYPES@{VERTEX\_INPUT\_LAYOUT\_ELEMENT\_TYPES}}
+\index{VERTEX\_INPUT\_LAYOUT\_ELEMENT\_TYPES@{VERTEX\_INPUT\_LAYOUT\_ELEMENT\_TYPES}!dynamic\_vertex\_buffer.h@{dynamic\_vertex\_buffer.h}}
+\doxysubsubsection{\texorpdfstring{VERTEX\_INPUT\_LAYOUT\_ELEMENT\_TYPES}{VERTEX\_INPUT\_LAYOUT\_ELEMENT\_TYPES}}
+{\footnotesize\ttfamily \label{dynamic__vertex__buffer_8h_a423bfa02373fec04c54b75d70d37be1c_a423bfa02373fec04c54b75d70d37be1c} 
+\#define VERTEX\+\_\+\+INPUT\+\_\+\+LAYOUT\+\_\+\+ELEMENT\+\_\+\+TYPES}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{dynamic__vertex__buffer_8h_abded13e89fb148f56b327029ac1b3042_abded13e89fb148f56b327029ac1b3042}{X}}(\ Position2D\ )\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ X(\ Position3D\ )\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ X(\ Texture2D\ )\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ X(\ Normal\ )\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ X(\ Tangent\ )\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ X(\ Bitangent\ )\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ X(\ Float3Color\ )\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ X(\ Float4Color\ )\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ X(\ BGRAColor\ )\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ X(\ Count\ )}
+
+\end{DoxyCode}
+\Hypertarget{dynamic__vertex__buffer_8h_abded13e89fb148f56b327029ac1b3042_abded13e89fb148f56b327029ac1b3042}\index{dynamic\_vertex\_buffer.h@{dynamic\_vertex\_buffer.h}!X@{X}}
+\index{X@{X}!dynamic\_vertex\_buffer.h@{dynamic\_vertex\_buffer.h}}
+\doxysubsubsection{\texorpdfstring{X}{X}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{dynamic__vertex__buffer_8h_abded13e89fb148f56b327029ac1b3042_abded13e89fb148f56b327029ac1b3042} 
+\#define X(\begin{DoxyParamCaption}\item[{}]{el}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{el,}
+
+\end{DoxyCode}
+\Hypertarget{dynamic__vertex__buffer_8h_abded13e89fb148f56b327029ac1b3042_abded13e89fb148f56b327029ac1b3042}\index{dynamic\_vertex\_buffer.h@{dynamic\_vertex\_buffer.h}!X@{X}}
+\index{X@{X}!dynamic\_vertex\_buffer.h@{dynamic\_vertex\_buffer.h}}
+\doxysubsubsection{\texorpdfstring{X}{X}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{dynamic__vertex__buffer_8h_abded13e89fb148f56b327029ac1b3042_abded13e89fb148f56b327029ac1b3042} 
+\#define X(\begin{DoxyParamCaption}\item[{}]{el}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ VertexInputLayout::el:\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ T<VertexInputLayout::el>::exec(\ std::forward<Args>(\ args\ )...\ );\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,271 @@
+\doxysection{Bmp\+Loader Class Reference}
+\hypertarget{classBmpLoader}{}\label{classBmpLoader}\index{BmpLoader@{BmpLoader}}
+
+
+BMPs BGRA color order if bit count is 32bit, or BGR if 24bit.  
+
+
+
+
+{\ttfamily \#include $<$bmp\+\_\+loader.\+h$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+union \mbox{\hyperlink{unionBmpLoader_1_1ImageData}{Image\+Data}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBmpLoader_a4f49f7c797d93e19683423364696259a_a4f49f7c797d93e19683423364696259a}{Bmp\+Loader}} ()=default
+\item 
+\mbox{\hyperlink{classBmpLoader_af42406771e5c8b53ed9bc7ae4f65ff8c_af42406771e5c8b53ed9bc7ae4f65ff8c}{Bmp\+Loader}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em store sprite (.bmp format) from file into data structure \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBmpLoader_ad2703edaf759df09af600c82db23e10d_ad2703edaf759df09af600c82db23e10d}{Bmp\+Loader}} (const \mbox{\hyperlink{classBmpLoader}{Bmp\+Loader}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classBmpLoader}{Bmp\+Loader}} \& \mbox{\hyperlink{classBmpLoader_a67d0ea1111e24756493283f95587ec1e_a67d0ea1111e24756493283f95587ec1e}{operator=}} (const \mbox{\hyperlink{classBmpLoader}{Bmp\+Loader}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classBmpLoader_a9cbba122836cb183499d1b5bf390da9d_a9cbba122836cb183499d1b5bf390da9d}{Bmp\+Loader}} (\mbox{\hyperlink{classBmpLoader}{Bmp\+Loader}} \&\&rhs) noexcept
+\item 
+\mbox{\hyperlink{classBmpLoader}{Bmp\+Loader}} \& \mbox{\hyperlink{classBmpLoader_a31a45b54c585cebb13f99190226d479e_a31a45b54c585cebb13f99190226d479e}{operator=}} (\mbox{\hyperlink{classBmpLoader}{Bmp\+Loader}} \&\&rhs) noexcept
+\item 
+int \mbox{\hyperlink{classBmpLoader_a707ac0783cfaff0f2d20ccb08adae5c4_a707ac0783cfaff0f2d20ccb08adae5c4}{get\+Width}} () const noexcept
+\item 
+int \mbox{\hyperlink{classBmpLoader_a992bee22fc9d7a7d6baf6e50e052d9af_a992bee22fc9d7a7d6baf6e50e052d9af}{get\+Height}} () const noexcept
+\item 
+unsigned short \mbox{\hyperlink{classBmpLoader_ab1a8509180849db8df178210044e6517_ab1a8509180849db8df178210044e6517}{get\+Bit\+Count}} () const noexcept
+\item 
+void \mbox{\hyperlink{classBmpLoader_aaaca1f056800ab156ae35e10aebe3eb5_aaaca1f056800ab156ae35e10aebe3eb5}{flush}} () noexcept
+\begin{DoxyCompactList}\small\item\em writing after reading requires flushing of the file stream \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classBmpLoader_a6fdcb726696c80848ef8e69219e8dd16_a6fdcb726696c80848ef8e69219e8dd16}{apply\+Perlin\+Noise}} (const std\+::string \&filename="{}"{})
+\item 
+void \mbox{\hyperlink{classBmpLoader_a9294d410ab0ada7721273ccefcde68e3_a9294d410ab0ada7721273ccefcde68e3}{read\+Data}} (\+\_\+\+Inout\+\_\+ \mbox{\hyperlink{unionBmpLoader_1_1ImageData}{Image\+Data}} \texorpdfstring{$\ast$}{*}img, const std\+::string \&filename="{}"{})
+\item 
+void \mbox{\hyperlink{classBmpLoader_a9c6b03620c9edafc6b6ded786b1b4aaa_a9c6b03620c9edafc6b6ded786b1b4aaa}{normalize\+Heightmap}} (\+\_\+\+Inout\+\_\+ \mbox{\hyperlink{unionBmpLoader_1_1ImageData}{Image\+Data}} \texorpdfstring{$\ast$}{*}img, const double value) noexcept
+\begin{DoxyCompactList}\small\item\em goes through the image data and divides each height value so that the terrain doesn\textquotesingle{}t look too spikey \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classBmpLoader_af131d0b1d9d80ed9dd4bf878a8e18a65_af131d0b1d9d80ed9dd4bf878a8e18a65}{ufstream}} = std\+::basic\+\_\+fstream$<$unsigned char, std\+::char\+\_\+traits$<$unsigned char$>$$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classBmpLoader_aeef90c16086d9134cb1724f28688dce7_aeef90c16086d9134cb1724f28688dce7}{generate\+Data}} (\+\_\+\+Inout\+\_\+ \mbox{\hyperlink{unionBmpLoader_1_1ImageData}{Image\+Data}} \texorpdfstring{$\ast$}{*}img, std\+::vector$<$ std\+::function$<$ double(double, double)$>$ $>$ \&image\+Filters, const bool b\+Transform=false, const std\+::string \&filename="{}"{})
+\begin{DoxyCompactList}\small\item\em generates data from a combination of filters and outputs it in {\ttfamily img}, essentially creates an image anew \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBmpLoader_a96916dc9f8cbffbc1bb10098ce844a14_a96916dc9f8cbffbc1bb10098ce844a14}{transform\+Data}} (\+\_\+\+Inout\+\_\+ \mbox{\hyperlink{unionBmpLoader_1_1ImageData}{Image\+Data}} \texorpdfstring{$\ast$}{*}img, std\+::vector$<$ std\+::function$<$ double(double, double)$>$ $>$ \&image\+Filters, const std\+::string \&filename="{}"{})
+\begin{DoxyCompactList}\small\item\em transforms the data of file and outputs it in {\ttfamily img}, transform\+Data = read\+Data + generate\+Data \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBmpLoader_ab846077b54999db0ecc1f19ecec9b9c2_ab846077b54999db0ecc1f19ecec9b9c2}{write\+Data}} (\mbox{\hyperlink{unionBmpLoader_1_1ImageData}{Image\+Data}} \texorpdfstring{$\ast$}{*}img, const std\+::string \&filename="{}"{})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classBmpLoader_a7e35757a22047e5c9a49e56cdde46923_a7e35757a22047e5c9a49e56cdde46923}{m\+\_\+width}} = 0
+\item 
+int \mbox{\hyperlink{classBmpLoader_af2275302ca1b1cb5827e884e553e931e_af2275302ca1b1cb5827e884e553e931e}{m\+\_\+height}} = 0
+\item 
+std\+::string \mbox{\hyperlink{classBmpLoader_ad992b5b9fefe9e21e48efa269bbffee6_ad992b5b9fefe9e21e48efa269bbffee6}{m\+\_\+filename}}
+\item 
+unsigned short \mbox{\hyperlink{classBmpLoader_a7a815ea0daafb1cf78b9bd26c0d72fd5_a7a815ea0daafb1cf78b9bd26c0d72fd5}{m\+\_\+bit\+Count}}
+\item 
+BITMAPFILEHEADER \mbox{\hyperlink{classBmpLoader_afb1c02f31a2cce78d8270dfea476eab5_afb1c02f31a2cce78d8270dfea476eab5}{m\+\_\+bmp\+File\+Header}}
+\item 
+BITMAPINFOHEADER \mbox{\hyperlink{classBmpLoader_a5ba3892b7debe81a24937a0b3492f997_a5ba3892b7debe81a24937a0b3492f997}{m\+\_\+bmp\+Info\+Header}}
+\item 
+\mbox{\hyperlink{classBmpLoader_af131d0b1d9d80ed9dd4bf878a8e18a65_af131d0b1d9d80ed9dd4bf878a8e18a65}{ufstream}} \mbox{\hyperlink{classBmpLoader_a511a88cbef035802afe02a3d837749f2_a511a88cbef035802afe02a3d837749f2}{m\+\_\+file}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+BMPs BGRA color order if bit count is 32bit, or BGR if 24bit. 
+
+=============================================================
+
+\begin{DoxyAuthor}{Author}
+Key\+C0de 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/11/19 14\+:15 \doxysubsection*{Windows only, as Linux doesn\textquotesingle{}t provide facets/locales for basic\+\_\+fstream of "{}unsigned char"{} }
+\end{DoxyDate}
+
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classBmpLoader_af131d0b1d9d80ed9dd4bf878a8e18a65_af131d0b1d9d80ed9dd4bf878a8e18a65}\index{BmpLoader@{BmpLoader}!ufstream@{ufstream}}
+\index{ufstream@{ufstream}!BmpLoader@{BmpLoader}}
+\doxysubsubsection{\texorpdfstring{ufstream}{ufstream}}
+{\footnotesize\ttfamily \label{classBmpLoader_af131d0b1d9d80ed9dd4bf878a8e18a65_af131d0b1d9d80ed9dd4bf878a8e18a65} 
+using \mbox{\hyperlink{classBmpLoader_af131d0b1d9d80ed9dd4bf878a8e18a65_af131d0b1d9d80ed9dd4bf878a8e18a65}{Bmp\+Loader\+::ufstream}} = std\+::basic\+\_\+fstream$<$unsigned char, std\+::char\+\_\+traits$<$unsigned char$>$$>$\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classBmpLoader_a4f49f7c797d93e19683423364696259a_a4f49f7c797d93e19683423364696259a}\index{BmpLoader@{BmpLoader}!BmpLoader@{BmpLoader}}
+\index{BmpLoader@{BmpLoader}!BmpLoader@{BmpLoader}}
+\doxysubsubsection{\texorpdfstring{BmpLoader()}{BmpLoader()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classBmpLoader_a4f49f7c797d93e19683423364696259a_a4f49f7c797d93e19683423364696259a} 
+Bmp\+Loader\+::\+Bmp\+Loader (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\Hypertarget{classBmpLoader_af42406771e5c8b53ed9bc7ae4f65ff8c_af42406771e5c8b53ed9bc7ae4f65ff8c}\index{BmpLoader@{BmpLoader}!BmpLoader@{BmpLoader}}
+\index{BmpLoader@{BmpLoader}!BmpLoader@{BmpLoader}}
+\doxysubsubsection{\texorpdfstring{BmpLoader()}{BmpLoader()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classBmpLoader_af42406771e5c8b53ed9bc7ae4f65ff8c_af42406771e5c8b53ed9bc7ae4f65ff8c} 
+Bmp\+Loader\+::\+Bmp\+Loader (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+store sprite (.bmp format) from file into data structure 
+
+$<$image url="{}\%\+Pictures\%/bitmap file structure.\+png"{} scale="{}1"{} opacity="{}1"{} $>$\Hypertarget{classBmpLoader_ad2703edaf759df09af600c82db23e10d_ad2703edaf759df09af600c82db23e10d}\index{BmpLoader@{BmpLoader}!BmpLoader@{BmpLoader}}
+\index{BmpLoader@{BmpLoader}!BmpLoader@{BmpLoader}}
+\doxysubsubsection{\texorpdfstring{BmpLoader()}{BmpLoader()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classBmpLoader_ad2703edaf759df09af600c82db23e10d_ad2703edaf759df09af600c82db23e10d} 
+Bmp\+Loader\+::\+Bmp\+Loader (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBmpLoader}{Bmp\+Loader}} \&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\Hypertarget{classBmpLoader_a9cbba122836cb183499d1b5bf390da9d_a9cbba122836cb183499d1b5bf390da9d}\index{BmpLoader@{BmpLoader}!BmpLoader@{BmpLoader}}
+\index{BmpLoader@{BmpLoader}!BmpLoader@{BmpLoader}}
+\doxysubsubsection{\texorpdfstring{BmpLoader()}{BmpLoader()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classBmpLoader_a9cbba122836cb183499d1b5bf390da9d_a9cbba122836cb183499d1b5bf390da9d} 
+Bmp\+Loader\+::\+Bmp\+Loader (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBmpLoader}{Bmp\+Loader}} \&\&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classBmpLoader_a6fdcb726696c80848ef8e69219e8dd16_a6fdcb726696c80848ef8e69219e8dd16}\index{BmpLoader@{BmpLoader}!applyPerlinNoise@{applyPerlinNoise}}
+\index{applyPerlinNoise@{applyPerlinNoise}!BmpLoader@{BmpLoader}}
+\doxysubsubsection{\texorpdfstring{applyPerlinNoise()}{applyPerlinNoise()}}
+{\footnotesize\ttfamily \label{classBmpLoader_a6fdcb726696c80848ef8e69219e8dd16_a6fdcb726696c80848ef8e69219e8dd16} 
+bool Bmp\+Loader\+::apply\+Perlin\+Noise (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})}
+
+\Hypertarget{classBmpLoader_aaaca1f056800ab156ae35e10aebe3eb5_aaaca1f056800ab156ae35e10aebe3eb5}\index{BmpLoader@{BmpLoader}!flush@{flush}}
+\index{flush@{flush}!BmpLoader@{BmpLoader}}
+\doxysubsubsection{\texorpdfstring{flush()}{flush()}}
+{\footnotesize\ttfamily \label{classBmpLoader_aaaca1f056800ab156ae35e10aebe3eb5_aaaca1f056800ab156ae35e10aebe3eb5} 
+void Bmp\+Loader\+::flush (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+writing after reading requires flushing of the file stream 
+
+\Hypertarget{classBmpLoader_aeef90c16086d9134cb1724f28688dce7_aeef90c16086d9134cb1724f28688dce7}\index{BmpLoader@{BmpLoader}!generateData@{generateData}}
+\index{generateData@{generateData}!BmpLoader@{BmpLoader}}
+\doxysubsubsection{\texorpdfstring{generateData()}{generateData()}}
+{\footnotesize\ttfamily \label{classBmpLoader_aeef90c16086d9134cb1724f28688dce7_aeef90c16086d9134cb1724f28688dce7} 
+void Bmp\+Loader\+::generate\+Data (\begin{DoxyParamCaption}\item[{\+\_\+\+Inout\+\_\+ \mbox{\hyperlink{unionBmpLoader_1_1ImageData}{Image\+Data}} \texorpdfstring{$\ast$}{*}}]{img}{, }\item[{std\+::vector$<$ std\+::function$<$ double(double, double)$>$ $>$ \&}]{image\+Filters}{, }\item[{const bool}]{b\+Transform}{ = {\ttfamily false}, }\item[{const std\+::string \&}]{filename}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+generates data from a combination of filters and outputs it in {\ttfamily img}, essentially creates an image anew 
+
+\Hypertarget{classBmpLoader_ab1a8509180849db8df178210044e6517_ab1a8509180849db8df178210044e6517}\index{BmpLoader@{BmpLoader}!getBitCount@{getBitCount}}
+\index{getBitCount@{getBitCount}!BmpLoader@{BmpLoader}}
+\doxysubsubsection{\texorpdfstring{getBitCount()}{getBitCount()}}
+{\footnotesize\ttfamily \label{classBmpLoader_ab1a8509180849db8df178210044e6517_ab1a8509180849db8df178210044e6517} 
+unsigned short Bmp\+Loader\+::get\+Bit\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classBmpLoader_a992bee22fc9d7a7d6baf6e50e052d9af_a992bee22fc9d7a7d6baf6e50e052d9af}\index{BmpLoader@{BmpLoader}!getHeight@{getHeight}}
+\index{getHeight@{getHeight}!BmpLoader@{BmpLoader}}
+\doxysubsubsection{\texorpdfstring{getHeight()}{getHeight()}}
+{\footnotesize\ttfamily \label{classBmpLoader_a992bee22fc9d7a7d6baf6e50e052d9af_a992bee22fc9d7a7d6baf6e50e052d9af} 
+int Bmp\+Loader\+::get\+Height (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classBmpLoader_a707ac0783cfaff0f2d20ccb08adae5c4_a707ac0783cfaff0f2d20ccb08adae5c4}\index{BmpLoader@{BmpLoader}!getWidth@{getWidth}}
+\index{getWidth@{getWidth}!BmpLoader@{BmpLoader}}
+\doxysubsubsection{\texorpdfstring{getWidth()}{getWidth()}}
+{\footnotesize\ttfamily \label{classBmpLoader_a707ac0783cfaff0f2d20ccb08adae5c4_a707ac0783cfaff0f2d20ccb08adae5c4} 
+int Bmp\+Loader\+::get\+Width (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classBmpLoader_a9c6b03620c9edafc6b6ded786b1b4aaa_a9c6b03620c9edafc6b6ded786b1b4aaa}\index{BmpLoader@{BmpLoader}!normalizeHeightmap@{normalizeHeightmap}}
+\index{normalizeHeightmap@{normalizeHeightmap}!BmpLoader@{BmpLoader}}
+\doxysubsubsection{\texorpdfstring{normalizeHeightmap()}{normalizeHeightmap()}}
+{\footnotesize\ttfamily \label{classBmpLoader_a9c6b03620c9edafc6b6ded786b1b4aaa_a9c6b03620c9edafc6b6ded786b1b4aaa} 
+void Bmp\+Loader\+::normalize\+Heightmap (\begin{DoxyParamCaption}\item[{\+\_\+\+Inout\+\_\+ \mbox{\hyperlink{unionBmpLoader_1_1ImageData}{Image\+Data}} \texorpdfstring{$\ast$}{*}}]{img}{, }\item[{const double}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+goes through the image data and divides each height value so that the terrain doesn\textquotesingle{}t look too spikey 
+
+\Hypertarget{classBmpLoader_a31a45b54c585cebb13f99190226d479e_a31a45b54c585cebb13f99190226d479e}\index{BmpLoader@{BmpLoader}!operator=@{operator=}}
+\index{operator=@{operator=}!BmpLoader@{BmpLoader}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classBmpLoader_a31a45b54c585cebb13f99190226d479e_a31a45b54c585cebb13f99190226d479e} 
+\mbox{\hyperlink{classBmpLoader}{Bmp\+Loader}} \& Bmp\+Loader\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBmpLoader}{Bmp\+Loader}} \&\&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classBmpLoader_a67d0ea1111e24756493283f95587ec1e_a67d0ea1111e24756493283f95587ec1e}\index{BmpLoader@{BmpLoader}!operator=@{operator=}}
+\index{operator=@{operator=}!BmpLoader@{BmpLoader}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classBmpLoader_a67d0ea1111e24756493283f95587ec1e_a67d0ea1111e24756493283f95587ec1e} 
+\mbox{\hyperlink{classBmpLoader}{Bmp\+Loader}} \& Bmp\+Loader\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBmpLoader}{Bmp\+Loader}} \&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\Hypertarget{classBmpLoader_a9294d410ab0ada7721273ccefcde68e3_a9294d410ab0ada7721273ccefcde68e3}\index{BmpLoader@{BmpLoader}!readData@{readData}}
+\index{readData@{readData}!BmpLoader@{BmpLoader}}
+\doxysubsubsection{\texorpdfstring{readData()}{readData()}}
+{\footnotesize\ttfamily \label{classBmpLoader_a9294d410ab0ada7721273ccefcde68e3_a9294d410ab0ada7721273ccefcde68e3} 
+void Bmp\+Loader\+::read\+Data (\begin{DoxyParamCaption}\item[{\+\_\+\+Inout\+\_\+ \mbox{\hyperlink{unionBmpLoader_1_1ImageData}{Image\+Data}} \texorpdfstring{$\ast$}{*}}]{img}{, }\item[{const std\+::string \&}]{filename}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})}
+
+\Hypertarget{classBmpLoader_a96916dc9f8cbffbc1bb10098ce844a14_a96916dc9f8cbffbc1bb10098ce844a14}\index{BmpLoader@{BmpLoader}!transformData@{transformData}}
+\index{transformData@{transformData}!BmpLoader@{BmpLoader}}
+\doxysubsubsection{\texorpdfstring{transformData()}{transformData()}}
+{\footnotesize\ttfamily \label{classBmpLoader_a96916dc9f8cbffbc1bb10098ce844a14_a96916dc9f8cbffbc1bb10098ce844a14} 
+void Bmp\+Loader\+::transform\+Data (\begin{DoxyParamCaption}\item[{\+\_\+\+Inout\+\_\+ \mbox{\hyperlink{unionBmpLoader_1_1ImageData}{Image\+Data}} \texorpdfstring{$\ast$}{*}}]{img}{, }\item[{std\+::vector$<$ std\+::function$<$ double(double, double)$>$ $>$ \&}]{image\+Filters}{, }\item[{const std\+::string \&}]{filename}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+transforms the data of file and outputs it in {\ttfamily img}, transform\+Data = read\+Data + generate\+Data 
+
+\Hypertarget{classBmpLoader_ab846077b54999db0ecc1f19ecec9b9c2_ab846077b54999db0ecc1f19ecec9b9c2}\index{BmpLoader@{BmpLoader}!writeData@{writeData}}
+\index{writeData@{writeData}!BmpLoader@{BmpLoader}}
+\doxysubsubsection{\texorpdfstring{writeData()}{writeData()}}
+{\footnotesize\ttfamily \label{classBmpLoader_ab846077b54999db0ecc1f19ecec9b9c2_ab846077b54999db0ecc1f19ecec9b9c2} 
+void Bmp\+Loader\+::write\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unionBmpLoader_1_1ImageData}{Image\+Data}} \texorpdfstring{$\ast$}{*}}]{img}{, }\item[{const std\+::string \&}]{filename}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classBmpLoader_a7a815ea0daafb1cf78b9bd26c0d72fd5_a7a815ea0daafb1cf78b9bd26c0d72fd5}\index{BmpLoader@{BmpLoader}!m\_bitCount@{m\_bitCount}}
+\index{m\_bitCount@{m\_bitCount}!BmpLoader@{BmpLoader}}
+\doxysubsubsection{\texorpdfstring{m\_bitCount}{m\_bitCount}}
+{\footnotesize\ttfamily \label{classBmpLoader_a7a815ea0daafb1cf78b9bd26c0d72fd5_a7a815ea0daafb1cf78b9bd26c0d72fd5} 
+unsigned short Bmp\+Loader\+::m\+\_\+bit\+Count\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classBmpLoader_afb1c02f31a2cce78d8270dfea476eab5_afb1c02f31a2cce78d8270dfea476eab5}\index{BmpLoader@{BmpLoader}!m\_bmpFileHeader@{m\_bmpFileHeader}}
+\index{m\_bmpFileHeader@{m\_bmpFileHeader}!BmpLoader@{BmpLoader}}
+\doxysubsubsection{\texorpdfstring{m\_bmpFileHeader}{m\_bmpFileHeader}}
+{\footnotesize\ttfamily \label{classBmpLoader_afb1c02f31a2cce78d8270dfea476eab5_afb1c02f31a2cce78d8270dfea476eab5} 
+BITMAPFILEHEADER Bmp\+Loader\+::m\+\_\+bmp\+File\+Header\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classBmpLoader_a5ba3892b7debe81a24937a0b3492f997_a5ba3892b7debe81a24937a0b3492f997}\index{BmpLoader@{BmpLoader}!m\_bmpInfoHeader@{m\_bmpInfoHeader}}
+\index{m\_bmpInfoHeader@{m\_bmpInfoHeader}!BmpLoader@{BmpLoader}}
+\doxysubsubsection{\texorpdfstring{m\_bmpInfoHeader}{m\_bmpInfoHeader}}
+{\footnotesize\ttfamily \label{classBmpLoader_a5ba3892b7debe81a24937a0b3492f997_a5ba3892b7debe81a24937a0b3492f997} 
+BITMAPINFOHEADER Bmp\+Loader\+::m\+\_\+bmp\+Info\+Header\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classBmpLoader_a511a88cbef035802afe02a3d837749f2_a511a88cbef035802afe02a3d837749f2}\index{BmpLoader@{BmpLoader}!m\_file@{m\_file}}
+\index{m\_file@{m\_file}!BmpLoader@{BmpLoader}}
+\doxysubsubsection{\texorpdfstring{m\_file}{m\_file}}
+{\footnotesize\ttfamily \label{classBmpLoader_a511a88cbef035802afe02a3d837749f2_a511a88cbef035802afe02a3d837749f2} 
+\mbox{\hyperlink{classBmpLoader_af131d0b1d9d80ed9dd4bf878a8e18a65_af131d0b1d9d80ed9dd4bf878a8e18a65}{ufstream}} Bmp\+Loader\+::m\+\_\+file\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classBmpLoader_ad992b5b9fefe9e21e48efa269bbffee6_ad992b5b9fefe9e21e48efa269bbffee6}\index{BmpLoader@{BmpLoader}!m\_filename@{m\_filename}}
+\index{m\_filename@{m\_filename}!BmpLoader@{BmpLoader}}
+\doxysubsubsection{\texorpdfstring{m\_filename}{m\_filename}}
+{\footnotesize\ttfamily \label{classBmpLoader_ad992b5b9fefe9e21e48efa269bbffee6_ad992b5b9fefe9e21e48efa269bbffee6} 
+std\+::string Bmp\+Loader\+::m\+\_\+filename\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classBmpLoader_af2275302ca1b1cb5827e884e553e931e_af2275302ca1b1cb5827e884e553e931e}\index{BmpLoader@{BmpLoader}!m\_height@{m\_height}}
+\index{m\_height@{m\_height}!BmpLoader@{BmpLoader}}
+\doxysubsubsection{\texorpdfstring{m\_height}{m\_height}}
+{\footnotesize\ttfamily \label{classBmpLoader_af2275302ca1b1cb5827e884e553e931e_af2275302ca1b1cb5827e884e553e931e} 
+int Bmp\+Loader\+::m\+\_\+height = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classBmpLoader_a7e35757a22047e5c9a49e56cdde46923_a7e35757a22047e5c9a49e56cdde46923}\index{BmpLoader@{BmpLoader}!m\_width@{m\_width}}
+\index{m\_width@{m\_width}!BmpLoader@{BmpLoader}}
+\doxysubsubsection{\texorpdfstring{m\_width}{m\_width}}
+{\footnotesize\ttfamily \label{classBmpLoader_a7e35757a22047e5c9a49e56cdde46923_a7e35757a22047e5c9a49e56cdde46923} 
+int Bmp\+Loader\+::m\+\_\+width = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{bmp__loader_8h}{bmp\+\_\+loader.\+h}}\item 
+src/\mbox{\hyperlink{bmp__loader_8cpp}{bmp\+\_\+loader.\+cpp}}\end{DoxyCompactItemize}

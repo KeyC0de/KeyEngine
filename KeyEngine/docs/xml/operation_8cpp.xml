@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="operation_8cpp" kind="file" language="C++">
+    <compoundname>operation.cpp</compoundname>
+    <includes refid="operation_8h" local="yes">operation.h</includes>
+    <incdepgraph>
+      <node id="5">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="2">
+        <label>operation.h</label>
+        <link refid="operation_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/operation.cpp</label>
+        <link refid="operation_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>functional</label>
+      </node>
+      <node id="4">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="operation_8h" kindref="compound">operation.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4" refid="classOperation_a969d86df18a051bd684baf0bbda533c2_1a969d86df18a051bd684baf0bbda533c2" refkind="member"><highlight class="normal"><ref refid="classOperation_a969d86df18a051bd684baf0bbda533c2_1a969d86df18a051bd684baf0bbda533c2" kindref="member">Operation::Operation</ref>(<sp/><ref refid="classOperation_aa3d6c997112b92e3f69a41212e70518e_1aa3d6c997112b92e3f69a41212e70518e" kindref="member">TF</ref><sp/>&amp;&amp;f<sp/>)</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/>m_f{std::forward&lt;<ref refid="classOperation_aa3d6c997112b92e3f69a41212e70518e_1aa3d6c997112b92e3f69a41212e70518e" kindref="member">TF</ref>&gt;(<sp/>f<sp/>)}</highlight></codeline>
+<codeline lineno="7"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="classOperation_a9608233a9ffb59244f68cd9ce0072ef5_1a9608233a9ffb59244f68cd9ce0072ef5" refkind="member"><highlight class="normal"><ref refid="classOperation_a9608233a9ffb59244f68cd9ce0072ef5_1a9608233a9ffb59244f68cd9ce0072ef5" kindref="member">Operation::~Operation</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOperation_a251f901c6cd9f7aa88d88af641d9b10d_1a251f901c6cd9f7aa88d88af641d9b10d" kindref="member">reset</ref>();</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="classOperation_a0879bce8215e86a23802d5171c04a4ab_1a0879bce8215e86a23802d5171c04a4ab" refkind="member"><highlight class="normal"><ref refid="classOperation_a969d86df18a051bd684baf0bbda533c2_1a969d86df18a051bd684baf0bbda533c2" kindref="member">Operation::Operation</ref>(<sp/><ref refid="classOperation" kindref="compound">Operation</ref><sp/>&amp;&amp;rhs<sp/>)<sp/>noexcept</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>m_f{std::move(<sp/>rhs.m_f<sp/>)}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classOperation_acab0d4a120ffe69b45112a02e630dcdc_1acab0d4a120ffe69b45112a02e630dcdc" refkind="member"><highlight class="normal"><ref refid="classOperation" kindref="compound">Operation</ref>&amp;<sp/><ref refid="classOperation_acab0d4a120ffe69b45112a02e630dcdc_1acab0d4a120ffe69b45112a02e630dcdc" kindref="member">Operation::operator=</ref>(<sp/><ref refid="classOperation" kindref="compound">Operation</ref><sp/>&amp;&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="node_8cpp_a7033474dc4dd44415f17c4db50e49143_1a7033474dc4dd44415f17c4db50e49143" kindref="member">swap</ref>(<sp/>rhs<sp/>);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classOperation_a7d006b5788e6f0f6a818ad478e43f9d8_1a7d006b5788e6f0f6a818ad478e43f9d8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOperation_a7d006b5788e6f0f6a818ad478e43f9d8_1a7d006b5788e6f0f6a818ad478e43f9d8" kindref="member">Operation::operator()</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="30"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOperation_a1d65aa6390838c774e7032221d8e12bb_1a1d65aa6390838c774e7032221d8e12bb" kindref="member">m_f</ref>();</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classOperation_a1a6693e431a3b4a6a2acd6b77df6203e_1a1a6693e431a3b4a6a2acd6b77df6203e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOperation_a1a6693e431a3b4a6a2acd6b77df6203e_1a1a6693e431a3b4a6a2acd6b77df6203e" kindref="member">Operation::swap</ref>(<sp/><ref refid="classOperation" kindref="compound">Operation</ref><sp/>&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>std::swap(<sp/>m_f,<sp/>rhs.m_f<sp/>);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classOperation_a251f901c6cd9f7aa88d88af641d9b10d_1a251f901c6cd9f7aa88d88af641d9b10d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOperation_a251f901c6cd9f7aa88d88af641d9b10d_1a251f901c6cd9f7aa88d88af641d9b10d" kindref="member">Operation::reset</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOperation_a1d65aa6390838c774e7032221d8e12bb_1a1d65aa6390838c774e7032221d8e12bb" kindref="member">m_f</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="classOperation_ab3dbd0f8650d51af9e9ea7e6993e84b5_1ab3dbd0f8650d51af9e9ea7e6993e84b5" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>Operation::operator<sp/>bool()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m_f<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="classOperation_a4d34cac8f04a582091200f2376c9c612_1a4d34cac8f04a582091200f2376c9c612" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classOperation_a4d34cac8f04a582091200f2376c9c612_1a4d34cac8f04a582091200f2376c9c612" kindref="member">Operation::operator==</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classOperation" kindref="compound">Operation</ref><sp/>&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;this-&gt;m_f<sp/>==<sp/>&amp;rhs.m_f;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="classOperation_a60f40ceb41f507e00fd9fe5e167e3cb1_1a60f40ceb41f507e00fd9fe5e167e3cb1" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classOperation_a60f40ceb41f507e00fd9fe5e167e3cb1_1a60f40ceb41f507e00fd9fe5e167e3cb1" kindref="member">Operation::operator!=</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classOperation" kindref="compound">Operation</ref><sp/>&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;this-&gt;m_f<sp/>!=<sp/>&amp;rhs.m_f;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="classOperation_ada2e435d3b303594c614642f16f376e7_1ada2e435d3b303594c614642f16f376e7" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classOperation_a4d34cac8f04a582091200f2376c9c612_1a4d34cac8f04a582091200f2376c9c612" kindref="member">Operation::operator==</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classOperation" kindref="compound">Operation</ref><sp/>*rhs<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;this-&gt;m_f<sp/>==<sp/>&amp;rhs-&gt;m_f;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="classOperation_a19b50cf24cc8d10b5dba9dee2127de9f_1a19b50cf24cc8d10b5dba9dee2127de9f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classOperation_a60f40ceb41f507e00fd9fe5e167e3cb1_1a60f40ceb41f507e00fd9fe5e167e3cb1" kindref="member">Operation::operator!=</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classOperation" kindref="compound">Operation</ref><sp/>*rhs<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;this-&gt;m_f<sp/>!=<sp/>&amp;rhs-&gt;m_f;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/operation.cpp"/>
+  </compounddef>
+</doxygen>

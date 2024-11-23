@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classver_1_1VBElementConstView" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>ver::VBElementConstView</compoundname>
+    <includes refid="dynamic__vertex__buffer_8h" local="no">dynamic_vertex_buffer.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classver_1_1VBElementConstView_a2272c4ae2e1df217da1a6c75fe30b486_1a2272c4ae2e1df217da1a6c75fe30b486" prot="private" static="no" mutable="no">
+        <type><ref refid="classver_1_1VBElementView" kindref="compound">VBElementView</ref></type>
+        <definition>VBElementView ver::VBElementConstView::m_vertexView</definition>
+        <argsstring></argsstring>
+        <name>m_vertexView</name>
+        <qualifiedname>ver::VBElementConstView::m_vertexView</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="301" column="15" bodyfile="inc/dynamic_vertex_buffer.h" bodystart="301" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classver_1_1VBElementConstView_a04893e6ad5793e8892d562fda93fec13_1a04893e6ad5793e8892d562fda93fec13" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ver::VBElementConstView::VBElementConstView</definition>
+        <argsstring>(const VBElementView &amp;v) cond_noex</argsstring>
+        <name>VBElementConstView</name>
+        <qualifiedname>ver::VBElementConstView::VBElementConstView</qualifiedname>
+        <param>
+          <type>const <ref refid="classver_1_1VBElementView" kindref="compound">VBElementView</ref> &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="303" column="1" bodyfile="src/dynamic_vertex_buffer.cpp" bodystart="161" bodyend="166"/>
+      </memberdef>
+      <memberdef kind="function" id="classver_1_1VBElementConstView_a40724c98236104c30ffb6a60ebd2ee41_1a40724c98236104c30ffb6a60ebd2ee41" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_1a7582c10f2c7a3ac24f95015bcbeb8c1a" kindref="member">VertexInputLayout::ILEementType</ref></type>
+            <declname>layoutType</declname>
+            <defname>layoutType</defname>
+          </param>
+        </templateparamlist>
+        <type>const auto &amp;</type>
+        <definition>const auto &amp; ver::VBElementConstView::getElement</definition>
+        <argsstring>() const cond_noex</argsstring>
+        <name>getElement</name>
+        <qualifiedname>ver::VBElementConstView::getElement</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="306" column="12" bodyfile="inc/dynamic_vertex_buffer.h" bodystart="306" bodyend="309"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>ver::VBElementConstView</label>
+        <link refid="classver_1_1VBElementConstView"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>m_vertexView</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ver::VBElementView</label>
+        <link refid="classver_1_1VBElementView"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>m_layout</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>ver::VertexInputLayout</label>
+        <link refid="classver_1_1VertexInputLayout"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/dynamic_vertex_buffer.h" line="299" column="1" bodyfile="inc/dynamic_vertex_buffer.h" bodystart="300" bodyend="310"/>
+    <listofallmembers>
+      <member refid="classver_1_1VBElementConstView_a40724c98236104c30ffb6a60ebd2ee41_1a40724c98236104c30ffb6a60ebd2ee41" prot="public" virt="non-virtual"><scope>ver::VBElementConstView</scope><name>getElement</name></member>
+      <member refid="classver_1_1VBElementConstView_a2272c4ae2e1df217da1a6c75fe30b486_1a2272c4ae2e1df217da1a6c75fe30b486" prot="private" virt="non-virtual"><scope>ver::VBElementConstView</scope><name>m_vertexView</name></member>
+      <member refid="classver_1_1VBElementConstView_a04893e6ad5793e8892d562fda93fec13_1a04893e6ad5793e8892d562fda93fec13" prot="public" virt="non-virtual"><scope>ver::VBElementConstView</scope><name>VBElementConstView</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

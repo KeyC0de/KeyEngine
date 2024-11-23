@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="linker_8cpp" kind="file" language="C++">
+    <compoundname>linker.cpp</compoundname>
+    <includes refid="linker_8h" local="yes">linker.h</includes>
+    <includes local="no">algorithm</includes>
+    <includes local="no">cctype</includes>
+    <includes refid="assertions__console_8h" local="yes">assertions_console.h</includes>
+    <incdepgraph>
+      <node id="10">
+        <label>assertions_console.h</label>
+        <link refid="assertions__console_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>key_exception.h</label>
+        <link refid="key__exception_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>linker.h</label>
+        <link refid="linker_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>renderer_exception.h</label>
+        <link refid="renderer__exception_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/linker.cpp</label>
+        <link refid="linker_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>algorithm</label>
+      </node>
+      <node id="9">
+        <label>cctype</label>
+      </node>
+      <node id="11">
+        <label>iostream</label>
+      </node>
+      <node id="4">
+        <label>memory</label>
+      </node>
+      <node id="7">
+        <label>stdexcept</label>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceren">ren</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="linker_8h" kindref="compound">linker.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cctype&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="assertions__console_8h" kindref="compound">assertions_console.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceren" kindref="compound">ren</ref></highlight></codeline>
+<codeline lineno="8"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="classren_1_1ILinker_ad259b0ea4d66752335fa4f57817af71f_1ad259b0ea4d66752335fa4f57817af71f" refkind="member"><highlight class="normal"><ref refid="classren_1_1ILinker_ad259b0ea4d66752335fa4f57817af71f_1ad259b0ea4d66752335fa4f57817af71f" kindref="member">ILinker::ILinker</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;name<sp/>)</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>m_name{name}</highlight></codeline>
+<codeline lineno="13"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>!name.empty(),<sp/></highlight><highlight class="stringliteral">&quot;Linker<sp/>name<sp/>is<sp/>null!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bNameValid<sp/>=<sp/>std::all_of(<sp/>name.begin(),<sp/>name.end(),</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[](<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>c<sp/>)</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>std::isalnum(<sp/>c<sp/>)<sp/>||<sp/>c<sp/>==<sp/></highlight><highlight class="stringliteral">&apos;_&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>bNameValid<sp/>&amp;&amp;<sp/>!std::isdigit(<sp/>name.front()<sp/>),</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string{</highlight><highlight class="stringliteral">&quot;Invalid<sp/>linker<sp/>name:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>name}.c_str()<sp/>);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classren_1_1ILinker_a931d059b56fdbc42f198bff4c9056e87_1a931d059b56fdbc42f198bff4c9056e87" refkind="member"><highlight class="normal">std::shared_ptr&lt;IBindable&gt;<sp/><ref refid="classren_1_1ILinker_a931d059b56fdbc42f198bff4c9056e87_1a931d059b56fdbc42f198bff4c9056e87" kindref="member">ILinker::getBindable</ref>()</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="renderer__exception_8h_aa44af0d97aee41f6d2d530c50166b864_1aa44af0d97aee41f6d2d530c50166b864" kindref="member">THROW_RENDERER_EXCEPTION</ref>(<sp/></highlight><highlight class="stringliteral">&quot;ILinker<sp/>class<sp/>cannot<sp/>be<sp/>a<sp/>target<sp/>of<sp/>a<sp/>BindableBinder!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classren_1_1ILinker_a9a44001279f58f2071f8a21becaa50c1_1a9a44001279f58f2071f8a21becaa50c1" refkind="member"><highlight class="normal">std::shared_ptr&lt;IRenderSurface&gt;<sp/><ref refid="classren_1_1ILinker_a9a44001279f58f2071f8a21becaa50c1_1a9a44001279f58f2071f8a21becaa50c1" kindref="member">ILinker::getRenderSurface</ref>()</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Should<sp/>never<sp/>happen!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="renderer__exception_8h_aa44af0d97aee41f6d2d530c50166b864_1aa44af0d97aee41f6d2d530c50166b864" kindref="member">THROW_RENDERER_EXCEPTION</ref>(<sp/></highlight><highlight class="stringliteral">&quot;ILinker<sp/>class<sp/>cannot<sp/>be<sp/>a<sp/>target<sp/>of<sp/>a<sp/>BindableBinder!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="classren_1_1ILinker_a4192feae9df332056a8487b6d1e08f1b_1a4192feae9df332056a8487b6d1e08f1b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/><ref refid="classren_1_1ILinker_a4192feae9df332056a8487b6d1e08f1b_1a4192feae9df332056a8487b6d1e08f1b" kindref="member">ILinker::getName</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classren_1_1ILinker_a90402bb7d4c9078d4d7f153809d30aaf_1a90402bb7d4c9078d4d7f153809d30aaf" kindref="member">m_name</ref>;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/linker.cpp"/>
+  </compounddef>
+</doxygen>

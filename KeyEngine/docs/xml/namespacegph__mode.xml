@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="namespacegph__mode" kind="namespace" language="C++">
+    <compoundname>gph_mode</compoundname>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespacegph__mode_ac01893bc47c796c0175b9ef51d09bf01_1ac01893bc47c796c0175b9ef51d09bf01" prot="public" static="no" strong="no">
+        <type></type>
+        <name>Mode</name>
+        <qualifiedname>gph_mode::Mode</qualifiedname>
+        <enumvalue id="namespacegph__mode_ac01893bc47c796c0175b9ef51d09bf01_1ac01893bc47c796c0175b9ef51d09bf01aad65d998c17e59bc3fc24a106869e33f" prot="public">
+          <name>_2D</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacegph__mode_ac01893bc47c796c0175b9ef51d09bf01_1ac01893bc47c796c0175b9ef51d09bf01ab9ccae78a7ef0f76b67c0f0d858990e3" prot="public">
+          <name>_3D</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/graphics_mode.h" line="7" column="1" bodyfile="inc/graphics_mode.h" bodystart="8" bodyend="11"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespacegph__mode_a2c9b7aaec489622e40e4e824e88cb131_1a2c9b7aaec489622e40e4e824e88cb131" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>const int</type>
+        <definition>const int gph_mode::s_currentMode</definition>
+        <argsstring></argsstring>
+        <name>s_currentMode</name>
+        <qualifiedname>gph_mode::s_currentMode</qualifiedname>
+        <initializer>= <ref refid="namespacegph__mode_ac01893bc47c796c0175b9ef51d09bf01_1ac01893bc47c796c0175b9ef51d09bf01ab9ccae78a7ef0f76b67c0f0d858990e3" kindref="member">_3D</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/graphics_mode.h" line="13" column="35" bodyfile="inc/graphics_mode.h" bodystart="13" bodyend="-1"/>
+        <referencedby refid="namespacegph__mode_aea02034656cf9c2fe5f8de0f20497209_1aea02034656cf9c2fe5f8de0f20497209" compoundref="graphics__mode_8h" startline="15" endline="18">get</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespacegph__mode_aea02034656cf9c2fe5f8de0f20497209_1aea02034656cf9c2fe5f8de0f20497209" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const int</type>
+        <definition>static constexpr const int gph_mode::get</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>get</name>
+        <qualifiedname>gph_mode::get</qualifiedname>
+        <briefdescription>
+<para>you have to manually change this to switch modes (and potentially games) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/graphics_mode.h" line="15" column="35" bodyfile="inc/graphics_mode.h" bodystart="15" bodyend="18"/>
+        <referencedby refid="classGraphics_ad5811b30333f3f4918b4d8d52fe19002_1ad5811b30333f3f4918b4d8d52fe19002" compoundref="graphics_8cpp" startline="99" endline="252">Graphics::Graphics</referencedby>
+        <referencedby refid="classren_1_1Pass2D_adc44db26e4e8dce5aa8450b875541109_1adc44db26e4e8dce5aa8450b875541109" compoundref="pass__2d_8cpp" startline="28" endline="84">ren::Pass2D::Pass2D</referencedby>
+        <referencedby refid="classWindow_a69f83cc5dc2d4f9807e4d11d2b2623e1_1a69f83cc5dc2d4f9807e4d11d2b2623e1" compoundref="window_8cpp" startline="118" endline="270">Window::Window</referencedby>
+        <referencedby refid="classGraphics_a7841c9a961ac9bca33bd30ddf8066cdb_1a7841c9a961ac9bca33bd30ddf8066cdb" compoundref="graphics_8cpp" startline="254" endline="271">Graphics::~Graphics</referencedby>
+        <referencedby refid="classWindow_a245d821e6016fa1f6970ccbbedd635f6_1a245d821e6016fa1f6970ccbbedd635f6" compoundref="window_8cpp" startline="298" endline="330">Window::~Window</referencedby>
+        <referencedby refid="classGraphics_ac25c31fbc763dc6970ae9c730b441129_1ac25c31fbc763dc6970ae9c730b441129" compoundref="graphics_8cpp" startline="504" endline="527">Graphics::beginFrame</referencedby>
+        <referencedby refid="classGraphics_aa810ea01a036c99e63ca86974ff85d13_1aa810ea01a036c99e63ca86974ff85d13" compoundref="graphics_8cpp" startline="480" endline="502">Graphics::cleanState</referencedby>
+        <referencedby refid="classWindow_a0a62a86c1134a2579afff3bfc2487d0b_1a0a62a86c1134a2579afff3bfc2487d0b" compoundref="window_8cpp" startline="388" endline="397">Window::disableCursor</referencedby>
+        <referencedby refid="classWindow_a03a5e37c7d4e07b4e77c08776f82e476_1a03a5e37c7d4e07b4e77c08776f82e476" compoundref="window_8cpp" startline="377" endline="386">Window::enableCursor</referencedby>
+        <referencedby refid="classGraphics_a3db48982641ea1fb21947e1524af9648_1a3db48982641ea1fb21947e1524af9648" compoundref="graphics_8cpp" startline="529" endline="546">Graphics::endFrame</referencedby>
+        <referencedby refid="classWindow_a73049005d1b7e248e423374b50ec1915_1a73049005d1b7e248e423374b50ec1915" compoundref="window_8cpp" startline="774" endline="792">Window::windowProcDelegate</referencedby>
+        <referencedby refid="main_8cpp_afe0d6866f7c067e4b3768107caa40799_1afe0d6866f7c067e4b3768107caa40799" compoundref="main_8cpp" startline="54" endline="131">wWinMain</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/graphics_mode.h" line="4" column="1"/>
+  </compounddef>
+</doxygen>

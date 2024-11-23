@@ -18,12 +18,10 @@
 namespace util
 {
 
-//	\function	printHresultErrorDescription	||	\date	2021/09/03 21:45
-//	\brief	print HRESULT errors in understandable English
+/// \brief	print HRESULT errors in understandable English
 std::string printHresultErrorDescription( const HRESULT hres );
 std::wstring printHresultErrorDescriptionW( const HRESULT hres );
-//	\function	getLastErrorAsString	||	\date	2020/11/10 1:44
-//	\brief	Returns the last Win32 error, in string format.
+/// \brief	Returns the last Win32 error, in string format.
 //			Returns an empty string if there is no error.
 std::string getLastErrorAsString();
 std::string getLastNtErrorAsString( const DWORD ntStatusCode );
@@ -32,8 +30,7 @@ std::wstring bstrToStr( const BSTR &bstr );
 BSTR strToBstr( const std::wstring &str );
 
 __int64 filetimeToInt64( const FILETIME &fileTime );
-//	\function	pinThreadToCore	||	\date	2024/09/07 21:06
-//	\brief	returns the thread's previous affinity mask
+/// \brief	returns the thread's previous affinity mask
 [[maybe_unused]] DWORD_PTR pinThreadToCore( const HANDLE hThread, const DWORD core );
 void setCurrentThreadName( const std::string &name );
 
@@ -102,8 +99,8 @@ decltype( auto ) askForCredentials( TCallback &&f,
 		std::ostringstream oss;\
 		using namespace std::string_literals;\
 		oss	<< "\n"s << __FUNCTION__ << " @ line: "s << __LINE__ << "\n"s << util::printHresultErrorDescription( hres ) << "\n\n"s;\
-		KeyConsole &console = KeyConsole::getInstance();\
-		console.log( oss.str() );\
+		KeyConsole &con = KeyConsole::getInstance();\
+		con.log( oss.str() );\
 		__debugbreak();\
 		return hres;\
 	}
@@ -117,8 +114,8 @@ decltype( auto ) askForCredentials( TCallback &&f,
 		std::ostringstream oss;\
 		using namespace std::string_literals;\
 		oss	<< "\n"s << __FUNCTION__ << " @ line: "s << __LINE__ << "\n"s << util::printHresultErrorDescription( hres ) << "\n\n"s;\
-		KeyConsole &console = KeyConsole::getInstance();\
-		console.log( oss.str() );\
+		KeyConsole &con = KeyConsole::getInstance();\
+		con.log( oss.str() );\
 		__debugbreak();\
 		std::exit( hres );\
 	}
@@ -132,8 +129,8 @@ decltype( auto ) askForCredentials( TCallback &&f,
 		std::ostringstream oss;\
 		using namespace std::string_literals;\
 		oss	<< "\n"s << __FUNCTION__ << " @ line: "s << __LINE__ << "\n"s << util::printHresultErrorDescription( hres ) << "\n\n"s;\
-		KeyConsole &console = KeyConsole::getInstance();\
-		console.log( oss.str() );\
+		KeyConsole &con = KeyConsole::getInstance();\
+		con.log( oss.str() );\
 		__debugbreak();\
 		std::exit( hres );\
 	}
@@ -147,8 +144,8 @@ decltype( auto ) askForCredentials( TCallback &&f,
 		std::ostringstream oss;\
 		using namespace std::string_literals;\
 		oss	<< "\n"s << __FUNCTION__ << " @ line: "s << __LINE__ << "\n"s << util::printHresultErrorDescription( hres ) << "\n" << "msg: " << msg << "\n\n"s;\
-		KeyConsole &console = KeyConsole::getInstance();\
-		console.log( oss.str() );\
+		KeyConsole &con = KeyConsole::getInstance();\
+		con.log( oss.str() );\
 		__debugbreak();\
 		std::exit( hres );\
 	}
@@ -174,8 +171,8 @@ decltype( auto ) askForCredentials( TCallback &&f,
 		std::ostringstream oss;\
 		using namespace std::string_literals;\
 		oss	<< "\n"s << __FUNCTION__ << " @ line: "s << __LINE__ << "\n"s << util::getLastNtErrorAsString( ntErrorCode ) << "\n\n"s;\
-		KeyConsole &console = KeyConsole::getInstance();\
-		console.log( oss.str() );\
+		KeyConsole &con = KeyConsole::getInstance();\
+		con.log( oss.str() );\
 		__debugbreak();\
 		std::exit( hres );\
 	}
@@ -191,8 +188,8 @@ decltype( auto ) askForCredentials( TCallback &&f,
 	{\
 		wchar_t buffer[MAX_PATH];\
 		FormatMessageW( FORMAT_MESSAGE_FROM_SYSTEM, nullptr, ret, 0, buffer, MAX_PATH, nullptr );\
-		KeyConsole &console = KeyConsole::getInstance();\
-		console.print( util::ws2s( buffer ) );\
+		KeyConsole &con = KeyConsole::getInstance();\
+		con.print( util::ws2s( buffer ) );\
 		__debugbreak();\
 		std::exit( ret );\
 	}

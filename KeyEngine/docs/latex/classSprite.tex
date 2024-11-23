@@ -1,0 +1,116 @@
+\doxysection{Sprite Class Reference}
+\hypertarget{classSprite}{}\label{classSprite}\index{Sprite@{Sprite}}
+
+
+{\ttfamily \#include $<$sprite.\+h$>$}
+
+Inheritance diagram for Sprite\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classSprite}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSprite_a9b366efc8c486932e9d93dd99f4334e3_a9b366efc8c486932e9d93dd99f4334e3}{Sprite}} (const std\+::wstring \&filename, \mbox{\hyperlink{classGraphics}{Graphics}} \&gfx)
+\item 
+virtual \mbox{\hyperlink{classSprite_ac82b8f8bcd32c57032e739ce956c455b_ac82b8f8bcd32c57032e739ce956c455b}{\texorpdfstring{$\sim$}{\string~}\+Sprite}} () noexcept=default
+\item 
+void \mbox{\hyperlink{classSprite_a6588f564b921aad761c3ed67f2efcba9_a6588f564b921aad761c3ed67f2efcba9}{render}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const D2\+D1\+\_\+\+RECT\+\_\+F \&src\+Rect, const D2\+D1\+\_\+\+RECT\+\_\+F \&dest\+Rect, const float alpha=1.\+0f)
+\begin{DoxyCompactList}\small\item\em draw the \doxylink{classSprite}{Sprite} bitmap to the render target \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classSprite_a131be40bb93d9e5daba29db542a83e75_a131be40bb93d9e5daba29db542a83e75}{get\+Width}} () const noexcept
+\item 
+float \mbox{\hyperlink{classSprite_a887f3dba52d6ca4ccd3daaf2e0cf2b6a_a887f3dba52d6ca4ccd3daaf2e0cf2b6a}{get\+Height}} () const noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ IWICImaging\+Factory $>$ \mbox{\hyperlink{classSprite_a3dbe733528fa98914c69bd28daf4a0d7_a3dbe733528fa98914c69bd28daf4a0d7}{m\+\_\+p\+Wic\+Factory}}
+\item 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ IWICBitmap\+Decoder $>$ \mbox{\hyperlink{classSprite_a9c6d51fd94758772cd56c11a77258632_a9c6d51fd94758772cd56c11a77258632}{m\+\_\+p\+Wic\+Decoder}}
+\item 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ IWICBitmap\+Frame\+Decode $>$ \mbox{\hyperlink{classSprite_a70937b7742f455409a65c9ba0291cad0_a70937b7742f455409a65c9ba0291cad0}{m\+\_\+p\+Bitmap\+Frame}}
+\item 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ IWICFormat\+Converter $>$ \mbox{\hyperlink{classSprite_aef826d0df94614600d606692ba16ef3b_aef826d0df94614600d606692ba16ef3b}{m\+\_\+p\+Wic\+Converter}}
+\item 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ ID2\+D1\+Bitmap $>$ \mbox{\hyperlink{classSprite_a90981aba92daf4a67769cd2dbba71df3_a90981aba92daf4a67769cd2dbba71df3}{m\+\_\+p\+Bitmap}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classSprite_a9b366efc8c486932e9d93dd99f4334e3_a9b366efc8c486932e9d93dd99f4334e3}\index{Sprite@{Sprite}!Sprite@{Sprite}}
+\index{Sprite@{Sprite}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{Sprite()}{Sprite()}}
+{\footnotesize\ttfamily \label{classSprite_a9b366efc8c486932e9d93dd99f4334e3_a9b366efc8c486932e9d93dd99f4334e3} 
+Sprite\+::\+Sprite (\begin{DoxyParamCaption}\item[{const std\+::wstring \&}]{filename}{, }\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classSprite_ac82b8f8bcd32c57032e739ce956c455b_ac82b8f8bcd32c57032e739ce956c455b}\index{Sprite@{Sprite}!````~Sprite@{\texorpdfstring{$\sim$}{\string~}Sprite}}
+\index{````~Sprite@{\texorpdfstring{$\sim$}{\string~}Sprite}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Sprite()}{\string~Sprite()}}
+{\footnotesize\ttfamily \label{classSprite_ac82b8f8bcd32c57032e739ce956c455b_ac82b8f8bcd32c57032e739ce956c455b} 
+virtual Sprite\+::\texorpdfstring{$\sim$}{\string~}\+Sprite (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}, {\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classSprite_a887f3dba52d6ca4ccd3daaf2e0cf2b6a_a887f3dba52d6ca4ccd3daaf2e0cf2b6a}\index{Sprite@{Sprite}!getHeight@{getHeight}}
+\index{getHeight@{getHeight}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{getHeight()}{getHeight()}}
+{\footnotesize\ttfamily \label{classSprite_a887f3dba52d6ca4ccd3daaf2e0cf2b6a_a887f3dba52d6ca4ccd3daaf2e0cf2b6a} 
+float Sprite\+::get\+Height (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classSprite_a131be40bb93d9e5daba29db542a83e75_a131be40bb93d9e5daba29db542a83e75}\index{Sprite@{Sprite}!getWidth@{getWidth}}
+\index{getWidth@{getWidth}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{getWidth()}{getWidth()}}
+{\footnotesize\ttfamily \label{classSprite_a131be40bb93d9e5daba29db542a83e75_a131be40bb93d9e5daba29db542a83e75} 
+float Sprite\+::get\+Width (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classSprite_a6588f564b921aad761c3ed67f2efcba9_a6588f564b921aad761c3ed67f2efcba9}\index{Sprite@{Sprite}!render@{render}}
+\index{render@{render}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily \label{classSprite_a6588f564b921aad761c3ed67f2efcba9_a6588f564b921aad761c3ed67f2efcba9} 
+void Sprite\+::render (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const D2\+D1\+\_\+\+RECT\+\_\+F \&}]{src\+Rect}{, }\item[{const D2\+D1\+\_\+\+RECT\+\_\+F \&}]{dest\+Rect}{, }\item[{const float}]{alpha}{ = {\ttfamily 1.0f}}\end{DoxyParamCaption})}
+
+
+
+draw the \doxylink{classSprite}{Sprite} bitmap to the render target 
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classSprite_a90981aba92daf4a67769cd2dbba71df3_a90981aba92daf4a67769cd2dbba71df3}\index{Sprite@{Sprite}!m\_pBitmap@{m\_pBitmap}}
+\index{m\_pBitmap@{m\_pBitmap}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{m\_pBitmap}{m\_pBitmap}}
+{\footnotesize\ttfamily \label{classSprite_a90981aba92daf4a67769cd2dbba71df3_a90981aba92daf4a67769cd2dbba71df3} 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ID2\+D1\+Bitmap$>$ Sprite\+::m\+\_\+p\+Bitmap\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classSprite_a70937b7742f455409a65c9ba0291cad0_a70937b7742f455409a65c9ba0291cad0}\index{Sprite@{Sprite}!m\_pBitmapFrame@{m\_pBitmapFrame}}
+\index{m\_pBitmapFrame@{m\_pBitmapFrame}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{m\_pBitmapFrame}{m\_pBitmapFrame}}
+{\footnotesize\ttfamily \label{classSprite_a70937b7742f455409a65c9ba0291cad0_a70937b7742f455409a65c9ba0291cad0} 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$IWICBitmap\+Frame\+Decode$>$ Sprite\+::m\+\_\+p\+Bitmap\+Frame\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classSprite_aef826d0df94614600d606692ba16ef3b_aef826d0df94614600d606692ba16ef3b}\index{Sprite@{Sprite}!m\_pWicConverter@{m\_pWicConverter}}
+\index{m\_pWicConverter@{m\_pWicConverter}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{m\_pWicConverter}{m\_pWicConverter}}
+{\footnotesize\ttfamily \label{classSprite_aef826d0df94614600d606692ba16ef3b_aef826d0df94614600d606692ba16ef3b} 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$IWICFormat\+Converter$>$ Sprite\+::m\+\_\+p\+Wic\+Converter\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classSprite_a9c6d51fd94758772cd56c11a77258632_a9c6d51fd94758772cd56c11a77258632}\index{Sprite@{Sprite}!m\_pWicDecoder@{m\_pWicDecoder}}
+\index{m\_pWicDecoder@{m\_pWicDecoder}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{m\_pWicDecoder}{m\_pWicDecoder}}
+{\footnotesize\ttfamily \label{classSprite_a9c6d51fd94758772cd56c11a77258632_a9c6d51fd94758772cd56c11a77258632} 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$IWICBitmap\+Decoder$>$ Sprite\+::m\+\_\+p\+Wic\+Decoder\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classSprite_a3dbe733528fa98914c69bd28daf4a0d7_a3dbe733528fa98914c69bd28daf4a0d7}\index{Sprite@{Sprite}!m\_pWicFactory@{m\_pWicFactory}}
+\index{m\_pWicFactory@{m\_pWicFactory}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{m\_pWicFactory}{m\_pWicFactory}}
+{\footnotesize\ttfamily \label{classSprite_a3dbe733528fa98914c69bd28daf4a0d7_a3dbe733528fa98914c69bd28daf4a0d7} 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$IWICImaging\+Factory$>$ Sprite\+::m\+\_\+p\+Wic\+Factory\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{sprite_8h}{sprite.\+h}}\end{DoxyCompactItemize}

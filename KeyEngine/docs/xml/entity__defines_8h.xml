@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="entity__defines_8h" kind="file" language="C++">
+    <compoundname>entity_defines.h</compoundname>
+    <includes local="no">cstdint</includes>
+    <includedby refid="entity_8h" local="yes">inc/entity.h</includedby>
+    <includedby refid="entity__manager_8h" local="yes">inc/entity_manager.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>inc/entity_defines.h</label>
+        <link refid="entity__defines_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>cstdint</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>inc/entity.h</label>
+        <link refid="entity_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/entity_defines.h</label>
+        <link refid="entity__defines_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>inc/entity_manager.h</label>
+        <link refid="entity__manager_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>src/entity.cpp</label>
+        <link refid="entity_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/entity_manager.cpp</label>
+        <link refid="entity__manager_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/message.cpp</label>
+        <link refid="message_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/message_queue_bus_dispatcher.cpp</label>
+        <link refid="message__queue__bus__dispatcher_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>choose<sp/>entity<sp/>representation<sp/>-<sp/>32bit<sp/>should<sp/>generally<sp/>be<sp/>enough</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>_32_BIT_ENTITY</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">EntityId<sp/>=<sp/>std::uint32_t;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">EntityIndex<sp/>=<sp/>std::uint16_t;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>_64_BIT_ENTITY</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">EntityId<sp/>=<sp/>std::uint64_t;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">EntityIndex<sp/>=<sp/>std::uint32_t;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="inc/entity_defines.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,325 @@
+\doxysection{Blend\+State Class Reference}
+\hypertarget{classBlendState}{}\label{classBlendState}\index{BlendState@{BlendState}}
+
+
+blending factors are optional \+: apply separate values for R, G, B, A channels   
+
+
+
+
+{\ttfamily \#include $<$blend\+\_\+state.\+h$>$}
+
+Inheritance diagram for Blend\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classBlendState}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936e}{Mode}} \{ \newline
+\mbox{\hyperlink{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936ea88d24e12f11fcf30e7645cd90307ae76}{No\+Blend}}
+, \mbox{\hyperlink{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936ea51ee57fb900686d7df5c44536ef5dd30}{Additive}}
+, \mbox{\hyperlink{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936ea13d941d78111e944f66303026b5aa0a6}{Multiplicative}}
+, \mbox{\hyperlink{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936ea7fb6dd3e3861c00b85cdd7ca10e22705}{Double\+Multiplicative}}
+, \newline
+\mbox{\hyperlink{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936eac4db6edab9e8acb7e065a2202d738ec2}{Alpha}}
+, \mbox{\hyperlink{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936eae9aa96aa9fa1073f4a8ea331394472ab}{Alpha\+To\+Coverage}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBlendState_aa3065367e75ee165cbeac58483aa19fc_aa3065367e75ee165cbeac58483aa19fc}{Blend\+State}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const \mbox{\hyperlink{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936e}{Mode}} mode, const unsigned render\+Target\+Slot, std\+::optional$<$ float $>$ \mbox{\hyperlink{classBlendState_a03ad465f2b071208e008af7842f5335b_a03ad465f2b071208e008af7842f5335b}{blend\+Factors}}=\{\}, const unsigned multisample\+Mask=0x\+FFFFFFFFu)
+\item 
+void \mbox{\hyperlink{classBlendState_a40b232bc0e513ab020aa07a29a66558a_a40b232bc0e513ab020aa07a29a66558a}{bind}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) cond\+\_\+noex override
+\begin{DoxyCompactList}\small\item\em bind graphics resource to a certain stage of the graphics pipeline \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classBlendState_aa6b960f91dea5183e301313830bd162f_aa6b960f91dea5183e301313830bd162f}{get\+Uid}} () const noexcept override
+\item 
+void \mbox{\hyperlink{classBlendState_a17a6b675b9df1a037279bd09857d020d_a17a6b675b9df1a037279bd09857d020d}{fill\+Blend\+Factors}} (const float same\+Blend\+Factor) cond\+\_\+noex
+\item 
+void \mbox{\hyperlink{classBlendState_af1d7b126eac3ac613d65acc22c1f39f0_af1d7b126eac3ac613d65acc22c1f39f0}{set\+Blend\+Factors}} (std\+::array$<$ float, 4 $>$ \mbox{\hyperlink{classBlendState_a03ad465f2b071208e008af7842f5335b_a03ad465f2b071208e008af7842f5335b}{blend\+Factors}}) cond\+\_\+noex
+\item 
+void \mbox{\hyperlink{classBlendState_a601807fc7b470ddf241094a8857a6d11_a601807fc7b470ddf241094a8857a6d11}{set\+Blend\+Factor\+Red}} (const float blend\+Factor\+Red) cond\+\_\+noex
+\item 
+void \mbox{\hyperlink{classBlendState_aa01ebb731ef55fba7e9d2b6928c60e64_aa01ebb731ef55fba7e9d2b6928c60e64}{set\+Blend\+Factor\+Green}} (const float blend\+Factor\+Green) cond\+\_\+noex
+\item 
+void \mbox{\hyperlink{classBlendState_ae74c15a0ef48f209a4a46a9cbe78c496_ae74c15a0ef48f209a4a46a9cbe78c496}{set\+Blend\+Factor\+Blue}} (const float blend\+Factor\+Blue) cond\+\_\+noex
+\item 
+void \mbox{\hyperlink{classBlendState_a0ef99680704ad33b5370cc39d5a5c4df_a0ef99680704ad33b5370cc39d5a5c4df}{set\+Blend\+Factor\+Alpha}} (const float blend\+Factor\+Alpha) cond\+\_\+noex
+\item 
+float \mbox{\hyperlink{classBlendState_a58f01f80e13f9aaf7bb529f140b86bd6_a58f01f80e13f9aaf7bb529f140b86bd6}{get\+Blend\+Factor\+Red}} () const noexcept
+\item 
+float \mbox{\hyperlink{classBlendState_a4420126a1c3fadfe8435f575c6130e72_a4420126a1c3fadfe8435f575c6130e72}{get\+Blend\+Factor\+Green}} () const noexcept
+\item 
+float \mbox{\hyperlink{classBlendState_a3fcd66aa1fcde4353ad604aeefbb51fd_a3fcd66aa1fcde4353ad604aeefbb51fd}{get\+Blend\+Factor\+Blue}} () const noexcept
+\item 
+float \mbox{\hyperlink{classBlendState_a1094dbecb76242f5ec740222a2ef14ba_a1094dbecb76242f5ec740222a2ef14ba}{get\+Blend\+Factor\+Alpha}} () const noexcept
+\item 
+const std\+::array$<$ float, 4 $>$ \& \mbox{\hyperlink{classBlendState_a8f07f9b08fc1bbede5bd92211476f363_a8f07f9b08fc1bbede5bd92211476f363}{get\+Blend\+Factors}} () const noexcept
+\item 
+std\+::array$<$ float, 4 $>$ \& \mbox{\hyperlink{classBlendState_a03ad465f2b071208e008af7842f5335b_a03ad465f2b071208e008af7842f5335b}{blend\+Factors}} ()
+\item 
+const \mbox{\hyperlink{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936e}{Mode}} \& \mbox{\hyperlink{classBlendState_ad1d598669c960e2542c8526f7145e92e_ad1d598669c960e2542c8526f7145e92e}{get\+Blend\+Mode}} () const noexcept
+\item 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ ID3\+D11\+Blend\+State $>$ \& \mbox{\hyperlink{classBlendState_a246f8b7d930fd91ccf4586e19f789347_a246f8b7d930fd91ccf4586e19f789347}{get\+D3d\+Blend\+State}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classIBindable}{IBindable}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classIBindable_a7f68262ff85e25e9f826eae7c01bbfa1_a7f68262ff85e25e9f826eae7c01bbfa1}{\texorpdfstring{$\sim$}{\string~}\+IBindable}} () noexcept
+\item 
+virtual void \mbox{\hyperlink{classIBindable_a12fe8725cb3f4836f22d1592b07e2c91_a12fe8725cb3f4836f22d1592b07e2c91}{set\+Mesh}} (const \mbox{\hyperlink{classMesh}{Mesh}} \&mesh) noexcept
+\item 
+virtual void \mbox{\hyperlink{classIBindable_a608c5066b829febbd49cd82d1d1fa353_a608c5066b829febbd49cd82d1d1fa353}{accept}} (\mbox{\hyperlink{classIImGuiConstantBufferVisitor}{IIm\+Gui\+Constant\+Buffer\+Visitor}} \&ev)
+\item 
+virtual void \mbox{\hyperlink{classIBindable_a4d590eebe80fa4e0aa865a875ff86c02_a4d590eebe80fa4e0aa865a875ff86c02}{set\+Debug\+Object\+Name}} (const char \texorpdfstring{$\ast$}{*}name) noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classBlendState}{Blend\+State}} $>$ \mbox{\hyperlink{classBlendState_aa27898f671e468ccc0c397dc297f6891_aa27898f671e468ccc0c397dc297f6891}{fetch}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const \mbox{\hyperlink{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936e}{Mode}} mode, const unsigned render\+Target\+Slot, std\+::optional$<$ float $>$ \mbox{\hyperlink{classBlendState_a03ad465f2b071208e008af7842f5335b_a03ad465f2b071208e008af7842f5335b}{blend\+Factors}}=\{\}, const unsigned multisample\+Mask=0x\+FFFFFFFFu)
+\item 
+static std\+::string \mbox{\hyperlink{classBlendState_a0fb024a3ef2865d6a01b52c8a8fe3d8f_a0fb024a3ef2865d6a01b52c8a8fe3d8f}{calc\+Uid}} (const \mbox{\hyperlink{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936e}{Mode}} mode, const unsigned render\+Target\+Slot, std\+::optional$<$ float $>$ \mbox{\hyperlink{classBlendState_a03ad465f2b071208e008af7842f5335b_a03ad465f2b071208e008af7842f5335b}{blend\+Factors}}=\{\}, const unsigned multisample\+Mask=0x\+FFFFFFFFu)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ ID3\+D11\+Blend\+State $>$ \mbox{\hyperlink{classBlendState_aebac6c50cb7654c15583717e8d1f7541_aebac6c50cb7654c15583717e8d1f7541}{m\+\_\+p\+D3d\+Blend\+State}}
+\item 
+\mbox{\hyperlink{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936e}{Mode}} \mbox{\hyperlink{classBlendState_aaef013e94e297fb5be8b230eff905d05_aaef013e94e297fb5be8b230eff905d05}{m\+\_\+mode}}
+\item 
+unsigned \mbox{\hyperlink{classBlendState_ac7b44a7f4cc9e0bf8146a0440c5d5053_ac7b44a7f4cc9e0bf8146a0440c5d5053}{m\+\_\+render\+Target\+Slot}}
+\item 
+unsigned \mbox{\hyperlink{classBlendState_af3ccc9c9f130298e269db7c4118f413a_af3ccc9c9f130298e269db7c4118f413a}{m\+\_\+multisample\+Mask}}
+\item 
+std\+::optional$<$ std\+::array$<$ float, 4 $>$ $>$ \mbox{\hyperlink{classBlendState_a2fa89574ea511e403205f884e221a7df_a2fa89574ea511e403205f884e221a7df}{m\+\_\+blend\+Factors}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classGraphicsFriend}{Graphics\+Friend}}}
+\begin{DoxyCompactItemize}
+\item 
+static ID3\+D11\+Device\+Context \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGraphicsFriend_a619e32893ab49ea6c5200e7c2d52e2f2_a619e32893ab49ea6c5200e7c2d52e2f2}{get\+Device\+Context}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) noexcept
+\item 
+static ID3\+D11\+Device \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_a175df79f82ab5a6dad1df24b5a242ef7}{get\+Device}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) noexcept
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+blending factors are optional \+: apply separate values for R, G, B, A channels  
+
+=============================================================
+
+\begin{DoxyAuthor}{Author}
+Key\+C0de 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/02/19 10\+:23 \doxysubsection*{}
+\end{DoxyDate}
+
+
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936e}\index{BlendState@{BlendState}!Mode@{Mode}}
+\index{Mode@{Mode}!BlendState@{BlendState}}
+\doxysubsubsection{\texorpdfstring{Mode}{Mode}}
+{\footnotesize\ttfamily \label{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936e} 
+enum \mbox{\hyperlink{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936e}{Blend\+State\+::\+Mode}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NoBlend@{NoBlend}!BlendState@{BlendState}}\index{BlendState@{BlendState}!NoBlend@{NoBlend}}}\Hypertarget{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936ea88d24e12f11fcf30e7645cd90307ae76}\label{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936e} 
+No\+Blend&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Additive@{Additive}!BlendState@{BlendState}}\index{BlendState@{BlendState}!Additive@{Additive}}}\Hypertarget{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936ea51ee57fb900686d7df5c44536ef5dd30}\label{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936e} 
+Additive&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Multiplicative@{Multiplicative}!BlendState@{BlendState}}\index{BlendState@{BlendState}!Multiplicative@{Multiplicative}}}\Hypertarget{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936ea13d941d78111e944f66303026b5aa0a6}\label{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936e} 
+Multiplicative&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DoubleMultiplicative@{DoubleMultiplicative}!BlendState@{BlendState}}\index{BlendState@{BlendState}!DoubleMultiplicative@{DoubleMultiplicative}}}\Hypertarget{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936ea7fb6dd3e3861c00b85cdd7ca10e22705}\label{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936e} 
+Double\+Multiplicative&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Alpha@{Alpha}!BlendState@{BlendState}}\index{BlendState@{BlendState}!Alpha@{Alpha}}}\Hypertarget{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936eac4db6edab9e8acb7e065a2202d738ec2}\label{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936e} 
+Alpha&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AlphaToCoverage@{AlphaToCoverage}!BlendState@{BlendState}}\index{BlendState@{BlendState}!AlphaToCoverage@{AlphaToCoverage}}}\Hypertarget{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936eae9aa96aa9fa1073f4a8ea331394472ab}\label{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936e} 
+Alpha\+To\+Coverage&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classBlendState_aa3065367e75ee165cbeac58483aa19fc_aa3065367e75ee165cbeac58483aa19fc}\index{BlendState@{BlendState}!BlendState@{BlendState}}
+\index{BlendState@{BlendState}!BlendState@{BlendState}}
+\doxysubsubsection{\texorpdfstring{BlendState()}{BlendState()}}
+{\footnotesize\ttfamily \label{classBlendState_aa3065367e75ee165cbeac58483aa19fc_aa3065367e75ee165cbeac58483aa19fc} 
+Blend\+State\+::\+Blend\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const \mbox{\hyperlink{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936e}{Mode}}}]{mode}{, }\item[{const unsigned}]{render\+Target\+Slot}{, }\item[{std\+::optional$<$ float $>$}]{blend\+Factors}{ = {\ttfamily \{\}}, }\item[{const unsigned}]{multisample\+Mask}{ = {\ttfamily 0xFFFFFFFFu}}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classBlendState_a40b232bc0e513ab020aa07a29a66558a_a40b232bc0e513ab020aa07a29a66558a}\index{BlendState@{BlendState}!bind@{bind}}
+\index{bind@{bind}!BlendState@{BlendState}}
+\doxysubsubsection{\texorpdfstring{bind()}{bind()}}
+{\footnotesize\ttfamily \label{classBlendState_a40b232bc0e513ab020aa07a29a66558a_a40b232bc0e513ab020aa07a29a66558a} 
+void Blend\+State\+::bind (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+bind graphics resource to a certain stage of the graphics pipeline 
+
+
+
+Implements \mbox{\hyperlink{classIBindable_add4560f78e76629ee81ba701ba1052e1_add4560f78e76629ee81ba701ba1052e1}{IBindable}}.
+
+\Hypertarget{classBlendState_a03ad465f2b071208e008af7842f5335b_a03ad465f2b071208e008af7842f5335b}\index{BlendState@{BlendState}!blendFactors@{blendFactors}}
+\index{blendFactors@{blendFactors}!BlendState@{BlendState}}
+\doxysubsubsection{\texorpdfstring{blendFactors()}{blendFactors()}}
+{\footnotesize\ttfamily \label{classBlendState_a03ad465f2b071208e008af7842f5335b_a03ad465f2b071208e008af7842f5335b} 
+std\+::array$<$ float, 4 $>$ \& Blend\+State\+::blend\+Factors (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classBlendState_a0fb024a3ef2865d6a01b52c8a8fe3d8f_a0fb024a3ef2865d6a01b52c8a8fe3d8f}\index{BlendState@{BlendState}!calcUid@{calcUid}}
+\index{calcUid@{calcUid}!BlendState@{BlendState}}
+\doxysubsubsection{\texorpdfstring{calcUid()}{calcUid()}}
+{\footnotesize\ttfamily \label{classBlendState_a0fb024a3ef2865d6a01b52c8a8fe3d8f_a0fb024a3ef2865d6a01b52c8a8fe3d8f} 
+std\+::string Blend\+State\+::calc\+Uid (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936e}{Mode}}}]{mode}{, }\item[{const unsigned}]{render\+Target\+Slot}{, }\item[{std\+::optional$<$ float $>$}]{blend\+Factors}{ = {\ttfamily \{\}}, }\item[{const unsigned}]{multisample\+Mask}{ = {\ttfamily 0xFFFFFFFFu}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classBlendState_aa27898f671e468ccc0c397dc297f6891_aa27898f671e468ccc0c397dc297f6891}\index{BlendState@{BlendState}!fetch@{fetch}}
+\index{fetch@{fetch}!BlendState@{BlendState}}
+\doxysubsubsection{\texorpdfstring{fetch()}{fetch()}}
+{\footnotesize\ttfamily \label{classBlendState_aa27898f671e468ccc0c397dc297f6891_aa27898f671e468ccc0c397dc297f6891} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classBlendState}{Blend\+State}} $>$ Blend\+State\+::fetch (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const \mbox{\hyperlink{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936e}{Mode}}}]{mode}{, }\item[{const unsigned}]{render\+Target\+Slot}{, }\item[{std\+::optional$<$ float $>$}]{blend\+Factors}{ = {\ttfamily \{\}}, }\item[{const unsigned}]{multisample\+Mask}{ = {\ttfamily 0xFFFFFFFFu}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classBlendState_a17a6b675b9df1a037279bd09857d020d_a17a6b675b9df1a037279bd09857d020d}\index{BlendState@{BlendState}!fillBlendFactors@{fillBlendFactors}}
+\index{fillBlendFactors@{fillBlendFactors}!BlendState@{BlendState}}
+\doxysubsubsection{\texorpdfstring{fillBlendFactors()}{fillBlendFactors()}}
+{\footnotesize\ttfamily \label{classBlendState_a17a6b675b9df1a037279bd09857d020d_a17a6b675b9df1a037279bd09857d020d} 
+void Blend\+State\+::fill\+Blend\+Factors (\begin{DoxyParamCaption}\item[{const float}]{same\+Blend\+Factor}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classBlendState_a1094dbecb76242f5ec740222a2ef14ba_a1094dbecb76242f5ec740222a2ef14ba}\index{BlendState@{BlendState}!getBlendFactorAlpha@{getBlendFactorAlpha}}
+\index{getBlendFactorAlpha@{getBlendFactorAlpha}!BlendState@{BlendState}}
+\doxysubsubsection{\texorpdfstring{getBlendFactorAlpha()}{getBlendFactorAlpha()}}
+{\footnotesize\ttfamily \label{classBlendState_a1094dbecb76242f5ec740222a2ef14ba_a1094dbecb76242f5ec740222a2ef14ba} 
+float Blend\+State\+::get\+Blend\+Factor\+Alpha (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classBlendState_a3fcd66aa1fcde4353ad604aeefbb51fd_a3fcd66aa1fcde4353ad604aeefbb51fd}\index{BlendState@{BlendState}!getBlendFactorBlue@{getBlendFactorBlue}}
+\index{getBlendFactorBlue@{getBlendFactorBlue}!BlendState@{BlendState}}
+\doxysubsubsection{\texorpdfstring{getBlendFactorBlue()}{getBlendFactorBlue()}}
+{\footnotesize\ttfamily \label{classBlendState_a3fcd66aa1fcde4353ad604aeefbb51fd_a3fcd66aa1fcde4353ad604aeefbb51fd} 
+float Blend\+State\+::get\+Blend\+Factor\+Blue (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classBlendState_a4420126a1c3fadfe8435f575c6130e72_a4420126a1c3fadfe8435f575c6130e72}\index{BlendState@{BlendState}!getBlendFactorGreen@{getBlendFactorGreen}}
+\index{getBlendFactorGreen@{getBlendFactorGreen}!BlendState@{BlendState}}
+\doxysubsubsection{\texorpdfstring{getBlendFactorGreen()}{getBlendFactorGreen()}}
+{\footnotesize\ttfamily \label{classBlendState_a4420126a1c3fadfe8435f575c6130e72_a4420126a1c3fadfe8435f575c6130e72} 
+float Blend\+State\+::get\+Blend\+Factor\+Green (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classBlendState_a58f01f80e13f9aaf7bb529f140b86bd6_a58f01f80e13f9aaf7bb529f140b86bd6}\index{BlendState@{BlendState}!getBlendFactorRed@{getBlendFactorRed}}
+\index{getBlendFactorRed@{getBlendFactorRed}!BlendState@{BlendState}}
+\doxysubsubsection{\texorpdfstring{getBlendFactorRed()}{getBlendFactorRed()}}
+{\footnotesize\ttfamily \label{classBlendState_a58f01f80e13f9aaf7bb529f140b86bd6_a58f01f80e13f9aaf7bb529f140b86bd6} 
+float Blend\+State\+::get\+Blend\+Factor\+Red (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classBlendState_a8f07f9b08fc1bbede5bd92211476f363_a8f07f9b08fc1bbede5bd92211476f363}\index{BlendState@{BlendState}!getBlendFactors@{getBlendFactors}}
+\index{getBlendFactors@{getBlendFactors}!BlendState@{BlendState}}
+\doxysubsubsection{\texorpdfstring{getBlendFactors()}{getBlendFactors()}}
+{\footnotesize\ttfamily \label{classBlendState_a8f07f9b08fc1bbede5bd92211476f363_a8f07f9b08fc1bbede5bd92211476f363} 
+const std\+::array$<$ float, 4 $>$ \& Blend\+State\+::get\+Blend\+Factors (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classBlendState_ad1d598669c960e2542c8526f7145e92e_ad1d598669c960e2542c8526f7145e92e}\index{BlendState@{BlendState}!getBlendMode@{getBlendMode}}
+\index{getBlendMode@{getBlendMode}!BlendState@{BlendState}}
+\doxysubsubsection{\texorpdfstring{getBlendMode()}{getBlendMode()}}
+{\footnotesize\ttfamily \label{classBlendState_ad1d598669c960e2542c8526f7145e92e_ad1d598669c960e2542c8526f7145e92e} 
+const \mbox{\hyperlink{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936e}{Blend\+State\+::\+Mode}} \& Blend\+State\+::get\+Blend\+Mode (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classBlendState_a246f8b7d930fd91ccf4586e19f789347_a246f8b7d930fd91ccf4586e19f789347}\index{BlendState@{BlendState}!getD3dBlendState@{getD3dBlendState}}
+\index{getD3dBlendState@{getD3dBlendState}!BlendState@{BlendState}}
+\doxysubsubsection{\texorpdfstring{getD3dBlendState()}{getD3dBlendState()}}
+{\footnotesize\ttfamily \label{classBlendState_a246f8b7d930fd91ccf4586e19f789347_a246f8b7d930fd91ccf4586e19f789347} 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ ID3\+D11\+Blend\+State $>$ \& Blend\+State\+::get\+D3d\+Blend\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classBlendState_aa6b960f91dea5183e301313830bd162f_aa6b960f91dea5183e301313830bd162f}\index{BlendState@{BlendState}!getUid@{getUid}}
+\index{getUid@{getUid}!BlendState@{BlendState}}
+\doxysubsubsection{\texorpdfstring{getUid()}{getUid()}}
+{\footnotesize\ttfamily \label{classBlendState_aa6b960f91dea5183e301313830bd162f_aa6b960f91dea5183e301313830bd162f} 
+std\+::string Blend\+State\+::get\+Uid (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classIBindable_a7d88cdbd5d500d6d7f1bfabe16927855_a7d88cdbd5d500d6d7f1bfabe16927855}{IBindable}}.
+
+\Hypertarget{classBlendState_a0ef99680704ad33b5370cc39d5a5c4df_a0ef99680704ad33b5370cc39d5a5c4df}\index{BlendState@{BlendState}!setBlendFactorAlpha@{setBlendFactorAlpha}}
+\index{setBlendFactorAlpha@{setBlendFactorAlpha}!BlendState@{BlendState}}
+\doxysubsubsection{\texorpdfstring{setBlendFactorAlpha()}{setBlendFactorAlpha()}}
+{\footnotesize\ttfamily \label{classBlendState_a0ef99680704ad33b5370cc39d5a5c4df_a0ef99680704ad33b5370cc39d5a5c4df} 
+void Blend\+State\+::set\+Blend\+Factor\+Alpha (\begin{DoxyParamCaption}\item[{const float}]{blend\+Factor\+Alpha}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classBlendState_ae74c15a0ef48f209a4a46a9cbe78c496_ae74c15a0ef48f209a4a46a9cbe78c496}\index{BlendState@{BlendState}!setBlendFactorBlue@{setBlendFactorBlue}}
+\index{setBlendFactorBlue@{setBlendFactorBlue}!BlendState@{BlendState}}
+\doxysubsubsection{\texorpdfstring{setBlendFactorBlue()}{setBlendFactorBlue()}}
+{\footnotesize\ttfamily \label{classBlendState_ae74c15a0ef48f209a4a46a9cbe78c496_ae74c15a0ef48f209a4a46a9cbe78c496} 
+void Blend\+State\+::set\+Blend\+Factor\+Blue (\begin{DoxyParamCaption}\item[{const float}]{blend\+Factor\+Blue}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classBlendState_aa01ebb731ef55fba7e9d2b6928c60e64_aa01ebb731ef55fba7e9d2b6928c60e64}\index{BlendState@{BlendState}!setBlendFactorGreen@{setBlendFactorGreen}}
+\index{setBlendFactorGreen@{setBlendFactorGreen}!BlendState@{BlendState}}
+\doxysubsubsection{\texorpdfstring{setBlendFactorGreen()}{setBlendFactorGreen()}}
+{\footnotesize\ttfamily \label{classBlendState_aa01ebb731ef55fba7e9d2b6928c60e64_aa01ebb731ef55fba7e9d2b6928c60e64} 
+void Blend\+State\+::set\+Blend\+Factor\+Green (\begin{DoxyParamCaption}\item[{const float}]{blend\+Factor\+Green}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classBlendState_a601807fc7b470ddf241094a8857a6d11_a601807fc7b470ddf241094a8857a6d11}\index{BlendState@{BlendState}!setBlendFactorRed@{setBlendFactorRed}}
+\index{setBlendFactorRed@{setBlendFactorRed}!BlendState@{BlendState}}
+\doxysubsubsection{\texorpdfstring{setBlendFactorRed()}{setBlendFactorRed()}}
+{\footnotesize\ttfamily \label{classBlendState_a601807fc7b470ddf241094a8857a6d11_a601807fc7b470ddf241094a8857a6d11} 
+void Blend\+State\+::set\+Blend\+Factor\+Red (\begin{DoxyParamCaption}\item[{const float}]{blend\+Factor\+Red}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classBlendState_af1d7b126eac3ac613d65acc22c1f39f0_af1d7b126eac3ac613d65acc22c1f39f0}\index{BlendState@{BlendState}!setBlendFactors@{setBlendFactors}}
+\index{setBlendFactors@{setBlendFactors}!BlendState@{BlendState}}
+\doxysubsubsection{\texorpdfstring{setBlendFactors()}{setBlendFactors()}}
+{\footnotesize\ttfamily \label{classBlendState_af1d7b126eac3ac613d65acc22c1f39f0_af1d7b126eac3ac613d65acc22c1f39f0} 
+void Blend\+State\+::set\+Blend\+Factors (\begin{DoxyParamCaption}\item[{std\+::array$<$ float, 4 $>$}]{blend\+Factors}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classBlendState_a2fa89574ea511e403205f884e221a7df_a2fa89574ea511e403205f884e221a7df}\index{BlendState@{BlendState}!m\_blendFactors@{m\_blendFactors}}
+\index{m\_blendFactors@{m\_blendFactors}!BlendState@{BlendState}}
+\doxysubsubsection{\texorpdfstring{m\_blendFactors}{m\_blendFactors}}
+{\footnotesize\ttfamily \label{classBlendState_a2fa89574ea511e403205f884e221a7df_a2fa89574ea511e403205f884e221a7df} 
+std\+::optional$<$std\+::array$<$float, 4$>$ $>$ Blend\+State\+::m\+\_\+blend\+Factors\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classBlendState_aaef013e94e297fb5be8b230eff905d05_aaef013e94e297fb5be8b230eff905d05}\index{BlendState@{BlendState}!m\_mode@{m\_mode}}
+\index{m\_mode@{m\_mode}!BlendState@{BlendState}}
+\doxysubsubsection{\texorpdfstring{m\_mode}{m\_mode}}
+{\footnotesize\ttfamily \label{classBlendState_aaef013e94e297fb5be8b230eff905d05_aaef013e94e297fb5be8b230eff905d05} 
+\mbox{\hyperlink{classBlendState_a97c6194868baa55cdcf8e6440357936e_a97c6194868baa55cdcf8e6440357936e}{Mode}} Blend\+State\+::m\+\_\+mode\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classBlendState_af3ccc9c9f130298e269db7c4118f413a_af3ccc9c9f130298e269db7c4118f413a}\index{BlendState@{BlendState}!m\_multisampleMask@{m\_multisampleMask}}
+\index{m\_multisampleMask@{m\_multisampleMask}!BlendState@{BlendState}}
+\doxysubsubsection{\texorpdfstring{m\_multisampleMask}{m\_multisampleMask}}
+{\footnotesize\ttfamily \label{classBlendState_af3ccc9c9f130298e269db7c4118f413a_af3ccc9c9f130298e269db7c4118f413a} 
+unsigned Blend\+State\+::m\+\_\+multisample\+Mask\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classBlendState_aebac6c50cb7654c15583717e8d1f7541_aebac6c50cb7654c15583717e8d1f7541}\index{BlendState@{BlendState}!m\_pD3dBlendState@{m\_pD3dBlendState}}
+\index{m\_pD3dBlendState@{m\_pD3dBlendState}!BlendState@{BlendState}}
+\doxysubsubsection{\texorpdfstring{m\_pD3dBlendState}{m\_pD3dBlendState}}
+{\footnotesize\ttfamily \label{classBlendState_aebac6c50cb7654c15583717e8d1f7541_aebac6c50cb7654c15583717e8d1f7541} 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ID3\+D11\+Blend\+State$>$ Blend\+State\+::m\+\_\+p\+D3d\+Blend\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classBlendState_ac7b44a7f4cc9e0bf8146a0440c5d5053_ac7b44a7f4cc9e0bf8146a0440c5d5053}\index{BlendState@{BlendState}!m\_renderTargetSlot@{m\_renderTargetSlot}}
+\index{m\_renderTargetSlot@{m\_renderTargetSlot}!BlendState@{BlendState}}
+\doxysubsubsection{\texorpdfstring{m\_renderTargetSlot}{m\_renderTargetSlot}}
+{\footnotesize\ttfamily \label{classBlendState_ac7b44a7f4cc9e0bf8146a0440c5d5053_ac7b44a7f4cc9e0bf8146a0440c5d5053} 
+unsigned Blend\+State\+::m\+\_\+render\+Target\+Slot\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{blend__state_8h}{blend\+\_\+state.\+h}}\item 
+src/\mbox{\hyperlink{blend__state_8cpp}{blend\+\_\+state.\+cpp}}\end{DoxyCompactItemize}

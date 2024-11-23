@@ -1,0 +1,240 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classConstantBufferEx" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>ConstantBufferEx</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">T</basecompoundref>
+    <includes refid="constant__buffer__ex_8h" local="no">constant_buffer_ex.h</includes>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classConstantBufferEx_ae3030b454d653edf95c8562c2c37af6b_1ae3030b454d653edf95c8562c2c37af6b" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool ConstantBufferEx&lt; T &gt;::m_bDirty</definition>
+        <argsstring></argsstring>
+        <name>m_bDirty</name>
+        <qualifiedname>ConstantBufferEx::m_bDirty</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/constant_buffer_ex.h" line="53" column="6" bodyfile="inc/constant_buffer_ex.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classConstantBufferEx_aaf977739746cefc16a91006ba35ffef4_1aaf977739746cefc16a91006ba35ffef4" prot="private" static="no" mutable="no">
+        <type><ref refid="classcon_1_1CBuffer" kindref="compound">con::CBuffer</ref></type>
+        <definition>con::CBuffer ConstantBufferEx&lt; T &gt;::m_cb</definition>
+        <argsstring></argsstring>
+        <name>m_cb</name>
+        <qualifiedname>ConstantBufferEx::m_cb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/constant_buffer_ex.h" line="54" column="14" bodyfile="inc/constant_buffer_ex.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classConstantBufferEx_af6f3be800ce1a21916faee4e0f481050_1af6f3be800ce1a21916faee4e0f481050" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ConstantBufferEx&lt; T &gt;::ConstantBufferEx</definition>
+        <argsstring>(Graphics &amp;gfx, const unsigned slot, const con::CookedLayout &amp;layout)</argsstring>
+        <name>ConstantBufferEx</name>
+        <qualifiedname>ConstantBufferEx::ConstantBufferEx</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>slot</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcon_1_1CookedLayout" kindref="compound">con::CookedLayout</ref> &amp;</type>
+          <declname>layout</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/constant_buffer_ex.h" line="57" column="1" bodyfile="inc/constant_buffer_ex.h" bodystart="57" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="classConstantBufferEx_a0fa730ecce97deba00448b85178e49f8_1a0fa730ecce97deba00448b85178e49f8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ConstantBufferEx&lt; T &gt;::ConstantBufferEx</definition>
+        <argsstring>(Graphics &amp;gfx, const unsigned slot, const con::CBuffer &amp;cb)</argsstring>
+        <name>ConstantBufferEx</name>
+        <qualifiedname>ConstantBufferEx::ConstantBufferEx</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>slot</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classcon_1_1CBuffer" kindref="compound">con::CBuffer</ref> &amp;</type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/constant_buffer_ex.h" line="67" column="1" bodyfile="inc/constant_buffer_ex.h" bodystart="67" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classConstantBufferEx_ad6302ddec2ecc314a39220e2fc5e42ee_1ad6302ddec2ecc314a39220e2fc5e42ee" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const <ref refid="classcon_1_1CBElement" kindref="compound">con::CBElement</ref> &amp;</type>
+        <definition>const con::CBElement &amp; ConstantBufferEx&lt; T &gt;::getCbRootElement</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>getCbRootElement</name>
+        <qualifiedname>ConstantBufferEx::getCbRootElement</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/constant_buffer_ex.h" line="77" column="22" bodyfile="inc/constant_buffer_ex.h" bodystart="77" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classConstantBufferEx_a8e8b0a7169b991f78fd93db8503c7d9f_1a8e8b0a7169b991f78fd93db8503c7d9f" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classcon_1_1CBuffer" kindref="compound">con::CBuffer</ref></type>
+        <definition>con::CBuffer ConstantBufferEx&lt; T &gt;::getBufferCopy</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getBufferCopy</name>
+        <qualifiedname>ConstantBufferEx::getBufferCopy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/constant_buffer_ex.h" line="82" column="14" bodyfile="inc/constant_buffer_ex.h" bodystart="82" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="classConstantBufferEx_a277ddbd6d0c832fb60be636501f47125_1a277ddbd6d0c832fb60be636501f47125" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const <ref refid="classcon_1_1CBuffer" kindref="compound">con::CBuffer</ref> &amp;</type>
+        <definition>const con::CBuffer &amp; ConstantBufferEx&lt; T &gt;::getBuffer</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getBuffer</name>
+        <qualifiedname>ConstantBufferEx::getBuffer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/constant_buffer_ex.h" line="87" column="20" bodyfile="inc/constant_buffer_ex.h" bodystart="87" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="classConstantBufferEx_aa2a12472fc3c3cde1452421fd907cdcb_1aa2a12472fc3c3cde1452421fd907cdcb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConstantBufferEx&lt; T &gt;::setBuffer</definition>
+        <argsstring>(const con::CBuffer &amp;cb)</argsstring>
+        <name>setBuffer</name>
+        <qualifiedname>ConstantBufferEx::setBuffer</qualifiedname>
+        <param>
+          <type>const <ref refid="classcon_1_1CBuffer" kindref="compound">con::CBuffer</ref> &amp;</type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/constant_buffer_ex.h" line="92" column="6" bodyfile="inc/constant_buffer_ex.h" bodystart="92" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="classConstantBufferEx_a9a54fd78ded9d12ae51e4ceba4f208f2_1a9a54fd78ded9d12ae51e4ceba4f208f2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConstantBufferEx&lt; T &gt;::bind</definition>
+        <argsstring>(Graphics &amp;gfx) cond_noex override</argsstring>
+        <name>bind</name>
+        <qualifiedname>ConstantBufferEx::bind</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/constant_buffer_ex.h" line="98" column="6" bodyfile="inc/constant_buffer_ex.h" bodystart="98" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="classConstantBufferEx_a4d5333c31ccf89e3fbd83ddaa3793b9c_1a4d5333c31ccf89e3fbd83ddaa3793b9c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConstantBufferEx&lt; T &gt;::accept</definition>
+        <argsstring>(IImGuiConstantBufferVisitor &amp;ev) override</argsstring>
+        <name>accept</name>
+        <qualifiedname>ConstantBufferEx::accept</qualifiedname>
+        <param>
+          <type><ref refid="classIImGuiConstantBufferVisitor" kindref="compound">IImGuiConstantBufferVisitor</ref> &amp;</type>
+          <declname>ev</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/constant_buffer_ex.h" line="108" column="6" bodyfile="inc/constant_buffer_ex.h" bodystart="108" bodyend="114"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>ConstantBufferEx&lt; T &gt;</label>
+        <link refid="classConstantBufferEx"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>T</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>ConstantBufferEx&lt; T &gt;</label>
+        <link refid="classConstantBufferEx"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>m_cb</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>T</label>
+      </node>
+      <node id="3">
+        <label>con::CBuffer</label>
+        <link refid="classcon_1_1CBuffer"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/constant_buffer_ex.h" line="48" column="1" bodyfile="inc/constant_buffer_ex.h" bodystart="50" bodyend="115"/>
+    <listofallmembers>
+      <member refid="classConstantBufferEx_a4d5333c31ccf89e3fbd83ddaa3793b9c_1a4d5333c31ccf89e3fbd83ddaa3793b9c" prot="public" virt="non-virtual"><scope>ConstantBufferEx</scope><name>accept</name></member>
+      <member refid="classConstantBufferEx_a9a54fd78ded9d12ae51e4ceba4f208f2_1a9a54fd78ded9d12ae51e4ceba4f208f2" prot="public" virt="non-virtual"><scope>ConstantBufferEx</scope><name>bind</name></member>
+      <member refid="classConstantBufferEx_af6f3be800ce1a21916faee4e0f481050_1af6f3be800ce1a21916faee4e0f481050" prot="public" virt="non-virtual"><scope>ConstantBufferEx</scope><name>ConstantBufferEx</name></member>
+      <member refid="classConstantBufferEx_a0fa730ecce97deba00448b85178e49f8_1a0fa730ecce97deba00448b85178e49f8" prot="public" virt="non-virtual"><scope>ConstantBufferEx</scope><name>ConstantBufferEx</name></member>
+      <member refid="classConstantBufferEx_a277ddbd6d0c832fb60be636501f47125_1a277ddbd6d0c832fb60be636501f47125" prot="public" virt="non-virtual"><scope>ConstantBufferEx</scope><name>getBuffer</name></member>
+      <member refid="classConstantBufferEx_a8e8b0a7169b991f78fd93db8503c7d9f_1a8e8b0a7169b991f78fd93db8503c7d9f" prot="public" virt="non-virtual"><scope>ConstantBufferEx</scope><name>getBufferCopy</name></member>
+      <member refid="classConstantBufferEx_ad6302ddec2ecc314a39220e2fc5e42ee_1ad6302ddec2ecc314a39220e2fc5e42ee" prot="public" virt="non-virtual"><scope>ConstantBufferEx</scope><name>getCbRootElement</name></member>
+      <member refid="classConstantBufferEx_ae3030b454d653edf95c8562c2c37af6b_1ae3030b454d653edf95c8562c2c37af6b" prot="private" virt="non-virtual"><scope>ConstantBufferEx</scope><name>m_bDirty</name></member>
+      <member refid="classConstantBufferEx_aaf977739746cefc16a91006ba35ffef4_1aaf977739746cefc16a91006ba35ffef4" prot="private" virt="non-virtual"><scope>ConstantBufferEx</scope><name>m_cb</name></member>
+      <member refid="classConstantBufferEx_aa2a12472fc3c3cde1452421fd907cdcb_1aa2a12472fc3c3cde1452421fd907cdcb" prot="public" virt="non-virtual"><scope>ConstantBufferEx</scope><name>setBuffer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

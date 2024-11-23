@@ -78,8 +78,7 @@ private:
 private:
 	static LRESULT CALLBACK windowProcDelegate( _In_ const HWND pWndHandle, _In_ const unsigned uMsg, _In_ const WPARAM wParam, _In_ const LPARAM lParam );
 public:
-	//	\function	messageBoxPrintf	||	\date	2023/04/08 11:02
-	//	\brief	a wrapper over Windows MessageBox function, first argument `window` can be nullptr
+	/// \brief	a wrapper over Windows MessageBox function, first argument `window` can be nullptr
 	static int messageBoxPrintf( const HWND window, const TCHAR *caption, const TCHAR *format, ... );
 	static LRESULT CALLBACK windowProc( _In_ const HWND pWnd, _In_ const unsigned uMsg, _In_ const WPARAM wParam, _In_ const LPARAM lParam );
 	static LRESULT CALLBACK dialogProc( _In_ const HWND hWnd, _In_ const unsigned uMsg, _In_ const WPARAM wParam, _In_ const LPARAM lParam );
@@ -89,11 +88,10 @@ public:
 	static Mouse& getMouse() noexcept;
 	static bool isDescendantOf( const HWND targethWnd, const HWND parent ) noexcept;
 	static void saveClipboardTextAsVar();
-	//	\function	convertHiconToHbitmap	||	\date	2022/10/02 1:51
-	//	\brief	hIcon vs hBitmap
-	//			hIcon is a handle to one of the system resources that Windows OS requires for providing a graphical USER interface.
-	//			SHELL applications like Windows Explorer, Desktop etc, use this system resource extensively.
-	//			hBITMAP is a graphical object which can be manipulated with GDI. hBitmaps can be altered with GDI either by selecting it to a DC or by manipulating the bits directly. GDI cannot handle an hICON.
+	/// \brief	hIcon vs hBitmap
+	/// \brief	hIcon is a handle to one of the system resources that Windows OS requires for providing a graphical USER interface.
+	/// \brief	SHELL applications like Windows Explorer, Desktop etc, use this system resource extensively.
+	/// \brief	hBITMAP is a graphical object which can be manipulated with GDI. hBitmaps can be altered with GDI either by selecting it to a DC or by manipulating the bits directly. GDI cannot handle an hICON.
 	static HBITMAP convertHiconToHbitmap( HICON hIcon );
 	static HICON convertHbitmapToHicon( HBITMAP bitmap );
 public:
@@ -106,8 +104,7 @@ public:
 	void setEnable( const bool b );
 	void setOnTop();
 	const HWND setFocus();
-	//	\function	hasParent	||	\date	2022/09/22 19:52
-	//	\brief	returns true if this Window has a parent that is not the Desktop window
+	/// \brief	returns true if this Window has a parent that is not the Desktop window
 	bool hasParent() const noexcept;
 	const HWND getParent() const noexcept;
 	void setTitle( const std::string &title );
@@ -127,8 +124,7 @@ public:
 	operator bool() const noexcept;
 	Graphics& getGraphics();
 	const HWND getHandle() const noexcept;
-	//	\function	getDc	||	\date	2022/09/22 19:35
-	//	\brief	get Window's Device Context (DC) - a "device context" contains information about the drawing attributes of a device such as a display or a printer, so if you have two different DC's, you're drawing in two different places; like a file handle for drawing
+	/// \brief	get Window's Device Context (DC) - a "device context" contains information about the drawing attributes of a device such as a display or a printer, so if you have two different DC's, you're drawing in two different places; like a file handle for drawing
 	HDC getDc() const noexcept;
 	WINDOWINFO getInfo() const noexcept;
 	unsigned getWindowStyles() const noexcept;
@@ -136,8 +132,7 @@ public:
 	void setWindowStyles( const unsigned windowStyles ) const noexcept;
 	void setWindowStylesEx( const unsigned windowStylesEx ) const noexcept;
 	void setBorderless() const noexcept;
-	//	\function	setRedrawing	||	\date	2022/10/29 12:18
-	//	\brief	prevent intermediate redrawing
+	/// \brief	prevent intermediate redrawing
 	void setRedrawing( const bool bRedraw );
 	void showMenu( const HMENU hMenu );
 	void hideMenu();
@@ -151,11 +146,10 @@ public:
 	int getHeightClientArea() const noexcept;
 	HWND getConsoleHandle() const;
 	const WindowClass& getWindowClass() noexcept;
-	//	\function	setupSplashWindow	||	\date	2022/10/01 20:30
-	//	\brief	create an Alpha enabled Splash window for the main application window
-	//			We'll use a layered window to do it (recommended method for Windows 2000+).
-	//			The beauty of layered windows and the UpdateLayeredWindow function is that the splash window doesn't have to respond to WM_PAINT messages; Windows will paint it (and blend it correctly with the windows below it) by default.
-	//			#WARNING: load the BMP with black color for the transparent places
+	/// \brief	create an Alpha enabled Splash window for the main application window
+	/// \brief	We'll use a layered window to do it (recommended method for Windows 2000+).
+	/// \brief	The beauty of layered windows and the UpdateLayeredWindow function is that the splash window doesn't have to respond to WM_PAINT messages; Windows will paint it (and blend it correctly with the windows below it) by default.
+	/// \brief	#WARNING: load the BMP with black color for the transparent places
 	void setupSplashWindow( HBITMAP hSplashBitmap );
 private:
 	void confineCursor() noexcept;
@@ -168,13 +162,12 @@ private:
 	LRESULT windowProc_impl2d( _In_ const HWND pWndHandle, _In_ const unsigned msg, _In_ const WPARAM wparam, _In_ const LPARAM lparam );
 	void setFont( const std::string &fontName );
 	void setWindowProperties( const int width, const int height, const unsigned flags = SWP_NOZORDER | SWP_NOMOVE | SWP_NOACTIVATE ) cond_noex;
-	// Menu related functions
+	/// \brief	Menu related functions
 	void WINAPI processMenu( HMENU hMenu );
 	bool editCopy( const unsigned format = CLIPBOARD_TEXT_FORMAT );
 	bool editPaste( const unsigned format = CLIPBOARD_TEXT_FORMAT );
 	void renderClipboardFormat( unsigned format = CLIPBOARD_TEXT_FORMAT );
-	//	\function	editDelete	||	\date	2022/09/18 18:01
-	//	\brief	delete selected text, eg as if you pressed "cut" or the "delete" key
+	/// \brief	delete selected text, eg as if you pressed "cut" or the "delete" key
 	void editDelete();
 	void setupTrayIcon();
 	void showTrayIcon() noexcept;

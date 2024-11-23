@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="message_8h" kind="file" language="C++">
+    <compoundname>message.h</compoundname>
+    <includes local="no">memory</includes>
+    <includes local="no">vector</includes>
+    <includes refid="non__copyable_8h" local="yes">non_copyable.h</includes>
+    <includedby refid="entity_8cpp" local="yes">src/entity.cpp</includedby>
+    <includedby refid="message_8cpp" local="yes">src/message.cpp</includedby>
+    <includedby refid="message__queue__bus__dispatcher_8cpp" local="yes">src/message_queue_bus_dispatcher.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>inc/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="2">
+        <label>memory</label>
+      </node>
+      <node id="3">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>inc/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/entity.cpp</label>
+        <link refid="entity_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/message.cpp</label>
+        <link refid="message_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/message_queue_bus_dispatcher.cpp</label>
+        <link refid="message__queue__bus__dispatcher_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classMessage" prot="public">Message</innerclass>
+    <innerclass refid="classMessageCall" prot="public">MessageCall</innerclass>
+    <innerclass refid="classMessageData" prot="public">MessageData</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="non__copyable_8h" kindref="compound">non_copyable.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classEntity" kindref="compound">Entity</ref>;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classOperation" kindref="compound">Operation</ref>;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="classMessage" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMessage" kindref="compound">Message</ref></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classNonCopyable" kindref="compound">NonCopyable</ref></highlight></codeline>
+<codeline lineno="19"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="21" refid="classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_1a1c65ab3f02ba5b175f583f9d275ecf2b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_1a1c65ab3f02ba5b175f583f9d275ecf2b" kindref="member">Type</ref></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="23" refid="classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_1a1c65ab3f02ba5b175f583f9d275ecf2baea3a964e490ef1b7386b3f4e5335a4e9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_1a1c65ab3f02ba5b175f583f9d275ecf2baea3a964e490ef1b7386b3f4e5335a4e9" kindref="member">Idle</ref><sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="24" refid="classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_1a1c65ab3f02ba5b175f583f9d275ecf2ba0a6b82414cfc3aff979f9fdc6a4e42ad" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_1a1c65ab3f02ba5b175f583f9d275ecf2ba0a6b82414cfc3aff979f9fdc6a4e42ad" kindref="member">Damage</ref>,</highlight></codeline>
+<codeline lineno="25" refid="classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_1a1c65ab3f02ba5b175f583f9d275ecf2ba553d8a661eaafb91ffe6908243a40eff" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_1a1c65ab3f02ba5b175f583f9d275ecf2ba553d8a661eaafb91ffe6908243a40eff" kindref="member">Heal</ref>,</highlight></codeline>
+<codeline lineno="26" refid="classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_1a1c65ab3f02ba5b175f583f9d275ecf2ba9a537a18982ba50a4352ede8fb744262" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_1a1c65ab3f02ba5b175f583f9d275ecf2ba9a537a18982ba50a4352ede8fb744262" kindref="member">Greet</ref>,</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_1a1c65ab3f02ba5b175f583f9d275ecf2badf66c83a17ebb8124f629a50e12fffd1" kindref="member">PhysicsCollision</ref></highlight></codeline>
+<codeline lineno="28" refid="classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_1a1c65ab3f02ba5b175f583f9d275ecf2badf66c83a17ebb8124f629a50e12fffd1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="30" refid="classMessage_af011f97019a4f01798685fcf7f722083_1af011f97019a4f01798685fcf7f722083" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMessage_af011f97019a4f01798685fcf7f722083_1af011f97019a4f01798685fcf7f722083" kindref="member">m_bHandled</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="31" refid="classMessage_a38a89c52c76f0101314001449fedf756_1a38a89c52c76f0101314001449fedf756" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEntity" kindref="compound">Entity</ref><sp/>*<ref refid="classMessage_a38a89c52c76f0101314001449fedf756_1a38a89c52c76f0101314001449fedf756" kindref="member">m_pSender</ref>;</highlight></codeline>
+<codeline lineno="32" refid="classMessage_a728af9544d443fbedda21ae6d6811178_1a728af9544d443fbedda21ae6d6811178" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Entity*&gt;<sp/><ref refid="classMessage_a728af9544d443fbedda21ae6d6811178_1a728af9544d443fbedda21ae6d6811178" kindref="member">m_recipients</ref>;</highlight></codeline>
+<codeline lineno="33" refid="classMessage_a731f6269cb7c4b3ef3cc9413920e8c90_1a731f6269cb7c4b3ef3cc9413920e8c90" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_1a1c65ab3f02ba5b175f583f9d275ecf2b" kindref="member">Message::Type</ref><sp/><ref refid="classMessage_a731f6269cb7c4b3ef3cc9413920e8c90_1a731f6269cb7c4b3ef3cc9413920e8c90" kindref="member">m_type</ref>;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_a219e57a060b856d7833e4e515554bdf7_1a219e57a060b856d7833e4e515554bdf7" kindref="member">Message</ref>(<sp/><ref refid="classEntity" kindref="compound">Entity</ref><sp/>*srcId,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;Entity*&gt;<sp/>&amp;destId,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_1a1c65ab3f02ba5b175f583f9d275ecf2b" kindref="member">Message::Type</ref><sp/>type<sp/>);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_a219e57a060b856d7833e4e515554bdf7_1a219e57a060b856d7833e4e515554bdf7" kindref="member">Message</ref>(<sp/><ref refid="classMessage" kindref="compound">Message</ref><sp/>&amp;&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage" kindref="compound">Message</ref>&amp;<sp/><ref refid="classMessage_abfee673e583d1a7ed4779b9d7474a7ac_1abfee673e583d1a7ed4779b9d7474a7ac" kindref="member">operator=</ref>(<sp/><ref refid="classMessage" kindref="compound">Message</ref><sp/>&amp;&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classMessage_a08d7eaea217280c72b8306c65ce3abb7_1a08d7eaea217280c72b8306c65ce3abb7" kindref="member">~Message</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/><ref refid="classMessage" kindref="compound">Message</ref>::<ref refid="classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_1a1c65ab3f02ba5b175f583f9d275ecf2b" kindref="member">Type</ref><sp/><ref refid="classMessage_aa5bdf441eeab24a8d7f33fbadc5b5e78_1aa5bdf441eeab24a8d7f33fbadc5b5e78" kindref="member">getType</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/><ref refid="classEntity" kindref="compound">Entity</ref>*<sp/><ref refid="classMessage_a0185ebea724dd090e25a0342bec4a411_1a0185ebea724dd090e25a0342bec4a411" kindref="member">getSender</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>std::vector&lt;<ref refid="classEntity" kindref="compound">Entity</ref>*&gt;&amp;<sp/><ref refid="classMessage_a2bb193b1289d2b72207c1ba9dbcf2683_1a2bb193b1289d2b72207c1ba9dbcf2683" kindref="member">getRecipients</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMessage_a7e1b4800230dd0fc7415f8ccdc288c13_1a7e1b4800230dd0fc7415f8ccdc288c13" kindref="member">isHandled</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMessage_ae57959dd9f150e9933f6dbeb20a4150a_1ae57959dd9f150e9933f6dbeb20a4150a" kindref="member">setHandled</ref>(<sp/>const<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>b<sp/>)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="classMessageCall" refkind="compound"><highlight class="normal">class<sp/><ref refid="classMessageCall" kindref="compound">MessageCall</ref></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>public<sp/><ref refid="classMessage" kindref="compound">Message</ref></highlight></codeline>
+<codeline lineno="57"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="58" refid="classMessageCall_a6502a214dfdec2ec7f1da9e2f43e36f2_1a6502a214dfdec2ec7f1da9e2f43e36f2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;Operation&gt;<sp/><ref refid="classMessageCall_a6502a214dfdec2ec7f1da9e2f43e36f2_1a6502a214dfdec2ec7f1da9e2f43e36f2" kindref="member">m_pFunc</ref>;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessageCall" kindref="compound">MessageCall</ref>(<sp/><ref refid="classEntity" kindref="compound">Entity</ref><sp/>*psrc,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;Entity*&gt;<sp/>&amp;pDests,<sp/><ref refid="classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_1a1c65ab3f02ba5b175f583f9d275ecf2b" kindref="member">Message::Type</ref><sp/>type,<sp/>std::unique_ptr&lt;Operation&gt;<sp/>df<sp/>);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessageCall" kindref="compound">MessageCall</ref>(<sp/><ref refid="classMessageCall" kindref="compound">MessageCall</ref><sp/>&amp;&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessageCall" kindref="compound">MessageCall</ref>&amp;<sp/><ref refid="classMessage_abfee673e583d1a7ed4779b9d7474a7ac_1abfee673e583d1a7ed4779b9d7474a7ac" kindref="member">operator=</ref>(<sp/><ref refid="classMessageCall" kindref="compound">MessageCall</ref><sp/>&amp;&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="63" refid="classMessageCall_a9a2fdcbf5db679760a1dba2233d9486b_1a9a2fdcbf5db679760a1dba2233d9486b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classMessageCall_a9a2fdcbf5db679760a1dba2233d9486b_1a9a2fdcbf5db679760a1dba2233d9486b" kindref="member">~MessageCall</ref>()<sp/>noexcept<sp/>=<sp/>default;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOperation" kindref="compound">Operation</ref>*<sp/>getCallable()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal">template&lt;class<sp/>T&gt;</highlight></codeline>
+<codeline lineno="76" refid="classMessageData" refkind="compound"><highlight class="normal">class<sp/><ref refid="classMessageData" kindref="compound">MessageData</ref></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>public<sp/><ref refid="classMessage" kindref="compound">Message</ref></highlight></codeline>
+<codeline lineno="79"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="80" refid="classMessageData_a6fadeb02b510f4a80d6437013c66911e_1a6fadeb02b510f4a80d6437013c66911e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;T&gt;<sp/><ref refid="classMessageData_a6fadeb02b510f4a80d6437013c66911e_1a6fadeb02b510f4a80d6437013c66911e" kindref="member">m_pPayload</ref>;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>...<sp/>TParams&gt;</highlight></codeline>
+<codeline lineno="83" refid="classMessageData_a8e216ff6cc67d98b61d46dc33de503b4_1a8e216ff6cc67d98b61d46dc33de503b4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessageData_a8e216ff6cc67d98b61d46dc33de503b4_1a8e216ff6cc67d98b61d46dc33de503b4" kindref="member">MessageData</ref>(<sp/><ref refid="classEntity" kindref="compound">Entity</ref><sp/>*src,</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;Entity*&gt;<sp/>&amp;pDests,</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_1a1c65ab3f02ba5b175f583f9d275ecf2b" kindref="member">Message::Type</ref><sp/>type,</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TParams&amp;&amp;...<sp/>args<sp/>)</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage" kindref="compound">Message</ref>{src,<sp/>pDests,<sp/>type},</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_pPayload{std::make_unique&lt;T&gt;(<sp/>std::forward&lt;TParams&gt;(<sp/>args<sp/>)...<sp/>)}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94" refid="classMessageData_a0c664a4e4203a47bbc75fae9cc15e47f_1a0c664a4e4203a47bbc75fae9cc15e47f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classMessageData_a0c664a4e4203a47bbc75fae9cc15e47f_1a0c664a4e4203a47bbc75fae9cc15e47f" kindref="member">~MessageData</ref>()<sp/>noexcept<sp/>=<sp/>default;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="classMessageData_a9ebbd7cfd8a93774160f4efe901b7a6f_1a9ebbd7cfd8a93774160f4efe901b7a6f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessageData" kindref="compound">MessageData</ref>(<sp/><ref refid="classMessageData" kindref="compound">MessageData</ref><sp/>&amp;&amp;rhs<sp/>)<sp/>noexcept</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage" kindref="compound">Message</ref>{std::move(<sp/>rhs<sp/>)},</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_pPayload{std::move(<sp/>rhs.m_pPayload<sp/>)}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="classMessageData_ae04bed58599d30745ccb62bf9685433d_1ae04bed58599d30745ccb62bf9685433d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessageData" kindref="compound">MessageData</ref>&amp;<sp/><ref refid="classMessageData_ae04bed58599d30745ccb62bf9685433d_1ae04bed58599d30745ccb62bf9685433d" kindref="member">operator=</ref>(<sp/><ref refid="classMessageData" kindref="compound">MessageData</ref><sp/>&amp;&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_abfee673e583d1a7ed4779b9d7474a7ac_1abfee673e583d1a7ed4779b9d7474a7ac" kindref="member">Message::operator=</ref>(<sp/>std::move(<sp/>rhs<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::swap(<sp/>m_pPayload,<sp/>rhs.m_pPayload<sp/>);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="classMessageData_afa9026e3b1778a18bdaaa8a0d41218a0_1afa9026e3b1778a18bdaaa8a0d41218a0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>T*<sp/><ref refid="classMessageData_afa9026e3b1778a18bdaaa8a0d41218a0_1afa9026e3b1778a18bdaaa8a0d41218a0" kindref="member">getPayload</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m_pPayload.get();</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/message.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,454 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="constant__buffer__ex_8h" kind="file" language="C++">
+    <compoundname>constant_buffer_ex.h</compoundname>
+    <includes refid="key__wrl_8h" local="yes">key_wrl.h</includes>
+    <includes refid="bindable_8h" local="yes">bindable.h</includes>
+    <includes refid="dynamic__constant__buffer_8h" local="yes">dynamic_constant_buffer.h</includes>
+    <includes refid="imgui__visitors_8h" local="yes">imgui_visitors.h</includes>
+    <includedby refid="horizontal__blur__pass_8h" local="yes">inc/horizontal_blur_pass.h</includedby>
+    <includedby refid="vertical__blur__pass_8h" local="yes">inc/vertical_blur_pass.h</includedby>
+    <includedby refid="constant__buffer__ex_8cpp" local="yes">src/constant_buffer_ex.cpp</includedby>
+    <includedby refid="cube_8cpp" local="yes">src/cube.cpp</includedby>
+    <includedby refid="line_8cpp" local="yes">src/line.cpp</includedby>
+    <includedby refid="material__loader_8cpp" local="yes">src/material_loader.cpp</includedby>
+    <includedby refid="plane_8cpp" local="yes">src/plane.cpp</includedby>
+    <includedby refid="renderer_8cpp" local="yes">src/renderer.cpp</includedby>
+    <includedby refid="sphere_8cpp" local="yes">src/sphere.cpp</includedby>
+    <includedby refid="terrain_8cpp" local="yes">src/terrain.cpp</includedby>
+    <incdepgraph>
+      <node id="8">
+        <label>assertions_console.h</label>
+        <link refid="assertions__console_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>bindable.h</label>
+        <link refid="bindable_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/constant_buffer_ex.h</label>
+        <link refid="constant__buffer__ex_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>dynamic_constant_buffer.h</label>
+        <link refid="dynamic__constant__buffer_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>graphics_friend.h</label>
+        <link refid="graphics__friend_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>imgui_visitors.h</label>
+        <link refid="imgui__visitors_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>key_type_traits.h</label>
+        <link refid="key__type__traits_8h"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>key_wrl.h</label>
+        <link refid="key__wrl_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>utils_global.h</label>
+        <link refid="utils__global_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>DirectXMath.h</label>
+      </node>
+      <node id="24">
+        <label>algorithm</label>
+      </node>
+      <node id="20">
+        <label>bitset</label>
+      </node>
+      <node id="11">
+        <label>cassert</label>
+      </node>
+      <node id="22">
+        <label>cinttypes</label>
+      </node>
+      <node id="21">
+        <label>cstddef</label>
+      </node>
+      <node id="7">
+        <label>d3d11.h</label>
+      </node>
+      <node id="28">
+        <label>execution</label>
+      </node>
+      <node id="23">
+        <label>future</label>
+      </node>
+      <node id="9">
+        <label>iostream</label>
+      </node>
+      <node id="26">
+        <label>iterator</label>
+      </node>
+      <node id="33">
+        <label>limits</label>
+      </node>
+      <node id="5">
+        <label>memory</label>
+      </node>
+      <node id="25">
+        <label>numeric</label>
+      </node>
+      <node id="14">
+        <label>optional</label>
+      </node>
+      <node id="27">
+        <label>regex</label>
+      </node>
+      <node id="19">
+        <label>set</label>
+      </node>
+      <node id="18">
+        <label>sstream</label>
+      </node>
+      <node id="15">
+        <label>string</label>
+      </node>
+      <node id="30">
+        <label>type_traits</label>
+      </node>
+      <node id="16">
+        <label>unordered_map</label>
+      </node>
+      <node id="13">
+        <label>vector</label>
+      </node>
+      <node id="3">
+        <label>wrl.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>inc/constant_buffer_ex.h</label>
+        <link refid="constant__buffer__ex_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>inc/horizontal_blur_pass.h</label>
+        <link refid="horizontal__blur__pass_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>inc/vertical_blur_pass.h</label>
+        <link refid="vertical__blur__pass_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>src/constant_buffer_ex.cpp</label>
+        <link refid="constant__buffer__ex_8cpp"/>
+      </node>
+      <node id="8">
+        <label>src/cube.cpp</label>
+        <link refid="cube_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/horizontal_blur_pass.cpp</label>
+        <link refid="horizontal__blur__pass_8cpp"/>
+      </node>
+      <node id="9">
+        <label>src/line.cpp</label>
+        <link refid="line_8cpp"/>
+      </node>
+      <node id="10">
+        <label>src/material_loader.cpp</label>
+        <link refid="material__loader_8cpp"/>
+      </node>
+      <node id="11">
+        <label>src/plane.cpp</label>
+        <link refid="plane_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/renderer.cpp</label>
+        <link refid="renderer_8cpp"/>
+      </node>
+      <node id="12">
+        <label>src/sphere.cpp</label>
+        <link refid="sphere_8cpp"/>
+      </node>
+      <node id="13">
+        <label>src/terrain.cpp</label>
+        <link refid="terrain_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/vertical_blur_pass.cpp</label>
+        <link refid="vertical__blur__pass_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classIConstantBufferEx" prot="public">IConstantBufferEx</innerclass>
+    <innerclass refid="classIVertexShaderConstantBufferEx" prot="public">IVertexShaderConstantBufferEx</innerclass>
+    <innerclass refid="classIPixelShaderConstantBufferEx" prot="public">IPixelShaderConstantBufferEx</innerclass>
+    <innerclass refid="classConstantBufferEx" prot="public">ConstantBufferEx</innerclass>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="constant__buffer__ex_8h_a94d120f7e5f9e7793b1dabf563083fa4_1a94d120f7e5f9e7793b1dabf563083fa4" prot="public" static="no">
+        <type><ref refid="classConstantBufferEx" kindref="compound">ConstantBufferEx</ref>&lt; <ref refid="classIVertexShaderConstantBufferEx" kindref="compound">IVertexShaderConstantBufferEx</ref> &gt;</type>
+        <definition>using VertexShaderConstantBufferEx =  ConstantBufferEx&lt;IVertexShaderConstantBufferEx&gt;</definition>
+        <argsstring></argsstring>
+        <name>VertexShaderConstantBufferEx</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/constant_buffer_ex.h" line="117" column="1" bodyfile="inc/constant_buffer_ex.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="constant__buffer__ex_8h_a40b2387135b18453c8f82b1552a96747_1a40b2387135b18453c8f82b1552a96747" prot="public" static="no">
+        <type><ref refid="classConstantBufferEx" kindref="compound">ConstantBufferEx</ref>&lt; <ref refid="classIPixelShaderConstantBufferEx" kindref="compound">IPixelShaderConstantBufferEx</ref> &gt;</type>
+        <definition>using PixelShaderConstantBufferEx =  ConstantBufferEx&lt;IPixelShaderConstantBufferEx&gt;</definition>
+        <argsstring></argsstring>
+        <name>PixelShaderConstantBufferEx</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/constant_buffer_ex.h" line="118" column="1" bodyfile="inc/constant_buffer_ex.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="key__wrl_8h" kindref="compound">key_wrl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="bindable_8h" kindref="compound">bindable.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dynamic__constant__buffer_8h" kindref="compound">dynamic_constant_buffer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>FINAL_RELEASE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>include<sp/>&quot;<ref refid="imgui__visitors_8h" kindref="compound">imgui_visitors.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classGraphics" kindref="compound">Graphics</ref>;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="classIConstantBufferEx" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classIConstantBufferEx" kindref="compound">IConstantBufferEx</ref></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classIBindable" kindref="compound">IBindable</ref></highlight></codeline>
+<codeline lineno="15"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="17" refid="classIConstantBufferEx_a83026baf7ff85865556061036e880437_1a83026baf7ff85865556061036e880437" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Microsoft::WRL::ComPtr&lt;ID3D11Buffer&gt;<sp/><ref refid="classIConstantBufferEx_a83026baf7ff85865556061036e880437_1a83026baf7ff85865556061036e880437" kindref="member">m_pD3dCb</ref>;</highlight></codeline>
+<codeline lineno="18" refid="classIConstantBufferEx_a6607af2670f23eebf64b6c38b4548833_1a6607af2670f23eebf64b6c38b4548833" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classIConstantBufferEx_a6607af2670f23eebf64b6c38b4548833_1a6607af2670f23eebf64b6c38b4548833" kindref="member">m_slot</ref>;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classIConstantBufferEx_ab982c5a58f14c8ae70a2a3d2f2c0d20a_1ab982c5a58f14c8ae70a2a3d2f2c0d20a" kindref="member">setBufferDesc</ref>(<sp/>D3D11_BUFFER_DESC<sp/>&amp;d3dBufDesc,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>byteWidth<sp/>);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classIConstantBufferEx_adcce676e6fdded705b765915736adf6d_1adcce676e6fdded705b765915736adf6d" kindref="member">IConstantBufferEx</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>slot,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcon_1_1CBElement" kindref="compound">con::CBElement</ref><sp/>&amp;layoutRoot,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcon_1_1CBuffer" kindref="compound">con::CBuffer</ref><sp/>*pBuf<sp/>);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classIConstantBufferEx_a6b89a10f5e7371ddf568346bdf980bbe_1a6b89a10f5e7371ddf568346bdf980bbe" kindref="member">update</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcon_1_1CBuffer" kindref="compound">con::CBuffer</ref><sp/>&amp;buf<sp/>);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="26" refid="classIConstantBufferEx_aa22a7c172dc08de3908e3b0a0368337a_1aa22a7c172dc08de3908e3b0a0368337a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcon_1_1CBElement" kindref="compound">con::CBElement</ref>&amp;<sp/><ref refid="classIConstantBufferEx_aa22a7c172dc08de3908e3b0a0368337a_1aa22a7c172dc08de3908e3b0a0368337a" kindref="member">getCbRootElement</ref>()<sp/>const<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classIVertexShaderConstantBufferEx" refkind="compound"><highlight class="normal">class<sp/><ref refid="classIVertexShaderConstantBufferEx" kindref="compound">IVertexShaderConstantBufferEx</ref></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>public<sp/><ref refid="classIConstantBufferEx" kindref="compound">IConstantBufferEx</ref></highlight></codeline>
+<codeline lineno="31"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="classIConstantBufferEx_adcce676e6fdded705b765915736adf6d_1adcce676e6fdded705b765915736adf6d" kindref="member">IConstantBufferEx::IConstantBufferEx</ref>;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classIBindable_add4560f78e76629ee81ba701ba1052e1_1add4560f78e76629ee81ba701ba1052e1" kindref="member">bind</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classIPixelShaderConstantBufferEx" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classIPixelShaderConstantBufferEx" kindref="compound">IPixelShaderConstantBufferEx</ref></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classIConstantBufferEx" kindref="compound">IConstantBufferEx</ref></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="classIConstantBufferEx_adcce676e6fdded705b765915736adf6d_1adcce676e6fdded705b765915736adf6d" kindref="member">IConstantBufferEx::IConstantBufferEx</ref>;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>bind(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="48" refid="classConstantBufferEx" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classConstantBufferEx" kindref="compound">ConstantBufferEx</ref><sp/>final</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>T</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static_assert</highlight><highlight class="normal">(<sp/>std::is_base_of_v&lt;IConstantBufferEx,<sp/>T&gt;,<sp/></highlight><highlight class="stringliteral">&quot;T<sp/>is<sp/>not<sp/>IConstantBufferEx!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="classConstantBufferEx_ae3030b454d653edf95c8562c2c37af6b_1ae3030b454d653edf95c8562c2c37af6b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>m_bDirty<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54" refid="classConstantBufferEx_aaf977739746cefc16a91006ba35ffef4_1aaf977739746cefc16a91006ba35ffef4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcon_1_1CBuffer" kindref="compound">con::CBuffer</ref><sp/><ref refid="classConstantBufferEx_aaf977739746cefc16a91006ba35ffef4_1aaf977739746cefc16a91006ba35ffef4" kindref="member">m_cb</ref>;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>empty<sp/>cb</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="classConstantBufferEx_af6f3be800ce1a21916faee4e0f481050_1af6f3be800ce1a21916faee4e0f481050" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classConstantBufferEx_af6f3be800ce1a21916faee4e0f481050_1af6f3be800ce1a21916faee4e0f481050" kindref="member">ConstantBufferEx</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>slot,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcon_1_1CookedLayout" kindref="compound">con::CookedLayout</ref><sp/>&amp;layout<sp/>)</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>T{gfx,<sp/>slot,<sp/>*layout.shareRootElement(),<sp/>nullptr},</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_cb{<ref refid="namespacecon" kindref="compound">con</ref>::CBuffer{layout}}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="classConstantBufferEx_a0fa730ecce97deba00448b85178e49f8_1a0fa730ecce97deba00448b85178e49f8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classConstantBufferEx_a0fa730ecce97deba00448b85178e49f8_1a0fa730ecce97deba00448b85178e49f8" kindref="member">ConstantBufferEx</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>slot,</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcon_1_1CBuffer" kindref="compound">con::CBuffer</ref><sp/>&amp;cb<sp/>)</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>T{gfx,<sp/>slot,<sp/>cb.getRootElement(),<sp/>&amp;cb},</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_cb{cb}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="classConstantBufferEx_ad6302ddec2ecc314a39220e2fc5e42ee_1ad6302ddec2ecc314a39220e2fc5e42ee" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcon_1_1CBElement" kindref="compound">con::CBElement</ref>&amp;<sp/><ref refid="classConstantBufferEx_ad6302ddec2ecc314a39220e2fc5e42ee_1ad6302ddec2ecc314a39220e2fc5e42ee" kindref="member">getCbRootElement</ref>()<sp/>const<sp/>noexcept</highlight><highlight class="keyword"><sp/>override</highlight></codeline>
+<codeline lineno="78"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m_cb.<ref refid="classcon_1_1CBuffer_a2a30c70381d0caa697535aa139455b3f_1a2a30c70381d0caa697535aa139455b3f" kindref="member">getRootElement</ref>();</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="classConstantBufferEx_a8e8b0a7169b991f78fd93db8503c7d9f_1a8e8b0a7169b991f78fd93db8503c7d9f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcon_1_1CBuffer" kindref="compound">con::CBuffer</ref><sp/><ref refid="classConstantBufferEx_a8e8b0a7169b991f78fd93db8503c7d9f_1a8e8b0a7169b991f78fd93db8503c7d9f" kindref="member">getBufferCopy</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m_cb;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="classConstantBufferEx_a277ddbd6d0c832fb60be636501f47125_1a277ddbd6d0c832fb60be636501f47125" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcon_1_1CBuffer" kindref="compound">con::CBuffer</ref>&amp;<sp/><ref refid="classConstantBufferEx_a277ddbd6d0c832fb60be636501f47125_1a277ddbd6d0c832fb60be636501f47125" kindref="member">getBuffer</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m_cb;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="classConstantBufferEx_aa2a12472fc3c3cde1452421fd907cdcb_1aa2a12472fc3c3cde1452421fd907cdcb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classConstantBufferEx_aa2a12472fc3c3cde1452421fd907cdcb_1aa2a12472fc3c3cde1452421fd907cdcb" kindref="member">setBuffer</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classcon_1_1CBuffer" kindref="compound">con::CBuffer</ref><sp/>&amp;cb<sp/>)</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_cb.<ref refid="classcon_1_1CBuffer_afb7ac8e042c7d759a58ed3731b4ce295_1afb7ac8e042c7d759a58ed3731b4ce295" kindref="member">copyFrom</ref>(<sp/>cb<sp/>);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_bDirty<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98" refid="classConstantBufferEx_a9a54fd78ded9d12ae51e4ceba4f208f2_1a9a54fd78ded9d12ae51e4ceba4f208f2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classConstantBufferEx_a9a54fd78ded9d12ae51e4ceba4f208f2_1a9a54fd78ded9d12ae51e4ceba4f208f2" kindref="member">bind</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>m_bDirty<sp/>)</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>T::update(<sp/>gfx,<sp/>m_cb<sp/>);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_bDirty<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>T::bind(<sp/>gfx<sp/>);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="classConstantBufferEx_a4d5333c31ccf89e3fbd83ddaa3793b9c_1a4d5333c31ccf89e3fbd83ddaa3793b9c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classConstantBufferEx_a4d5333c31ccf89e3fbd83ddaa3793b9c_1a4d5333c31ccf89e3fbd83ddaa3793b9c" kindref="member">accept</ref>(<sp/><ref refid="classIImGuiConstantBufferVisitor" kindref="compound">IImGuiConstantBufferVisitor</ref><sp/>&amp;ev<sp/>)</highlight><highlight class="keyword"><sp/>override</highlight></codeline>
+<codeline lineno="109"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>ev.<ref refid="classIImGuiConstantBufferVisitor_ab4925bd7f0cadefc621eb971cfa0d2b2_1ab4925bd7f0cadefc621eb971cfa0d2b2" kindref="member">visit</ref>(<sp/>m_cb<sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_bDirty<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="constant__buffer__ex_8h_a94d120f7e5f9e7793b1dabf563083fa4_1a94d120f7e5f9e7793b1dabf563083fa4" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="classConstantBufferEx" kindref="compound">VertexShaderConstantBufferEx</ref><sp/>=<sp/><ref refid="classConstantBufferEx" kindref="compound">ConstantBufferEx&lt;IVertexShaderConstantBufferEx&gt;</ref>;</highlight></codeline>
+<codeline lineno="118" refid="constant__buffer__ex_8h_a40b2387135b18453c8f82b1552a96747_1a40b2387135b18453c8f82b1552a96747" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="classConstantBufferEx" kindref="compound">PixelShaderConstantBufferEx</ref><sp/>=<sp/><ref refid="classConstantBufferEx" kindref="compound">ConstantBufferEx&lt;IPixelShaderConstantBufferEx&gt;</ref>;</highlight></codeline>
+    </programlisting>
+    <location file="inc/constant_buffer_ex.h"/>
+  </compounddef>
+</doxygen>

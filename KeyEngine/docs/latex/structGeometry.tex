@@ -1,0 +1,106 @@
+\doxysection{Geometry Struct Reference}
+\hypertarget{structGeometry}{}\label{structGeometry}\index{Geometry@{Geometry}}
+
+
+{\ttfamily \#include $<$geometry.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{structTriangleMesh}{Triangle\+Mesh}} \mbox{\hyperlink{structGeometry_a3442ce56732507eed4e375c3d0fbf269_a3442ce56732507eed4e375c3d0fbf269}{make\+Line}} (const float length=1.\+0f/2.\+0f, std\+::optional$<$ \mbox{\hyperlink{classver_1_1VertexInputLayout}{ver\+::\+Vertex\+Input\+Layout}} $>$ layout=\{\})
+\item 
+static \mbox{\hyperlink{structTriangleMesh}{Triangle\+Mesh}} \mbox{\hyperlink{structGeometry_ad6a2e76395426ee4014b46795ea25eea_ad6a2e76395426ee4014b46795ea25eea}{make\+Cube}} (std\+::optional$<$ \mbox{\hyperlink{classver_1_1VertexInputLayout}{ver\+::\+Vertex\+Input\+Layout}} $>$ layout=\{\}, const float side=1.\+0f/2.\+0f)
+\item 
+static \mbox{\hyperlink{structTriangleMesh}{Triangle\+Mesh}} \mbox{\hyperlink{structGeometry_a6a03748c43a90b74e22f48de60c1e706_a6a03748c43a90b74e22f48de60c1e706}{make\+Cube\+Independent\+Faces}} (\mbox{\hyperlink{classver_1_1VertexInputLayout}{ver\+::\+Vertex\+Input\+Layout}} layout, const float side=1.\+0f/2.\+0f)
+\item 
+static \mbox{\hyperlink{structTriangleMesh}{Triangle\+Mesh}} \mbox{\hyperlink{structGeometry_a86cd2ba34214c359643cfb2009b60acd_a86cd2ba34214c359643cfb2009b60acd}{make\+Cube\+Independent\+Faces\+Textured}} ()
+\item 
+static \mbox{\hyperlink{structTriangleMesh}{Triangle\+Mesh}} \mbox{\hyperlink{structGeometry_afafcbc076c42fa8fc3fa44592e755385_afafcbc076c42fa8fc3fa44592e755385}{make\+Sphere\+Tesselated}} (std\+::optional$<$ \mbox{\hyperlink{classver_1_1VertexInputLayout}{ver\+::\+Vertex\+Input\+Layout}} $>$ layout=std\+::nullopt, const unsigned n\+Lateral\+Divs=12, const unsigned n\+Longitudinal\+Divs=24, const float radius=1.\+0f)
+\item 
+static \mbox{\hyperlink{structTriangleMesh}{Triangle\+Mesh}} \mbox{\hyperlink{structGeometry_a90c5449438c31aae13d7cdfbaa678c74_a90c5449438c31aae13d7cdfbaa678c74}{make\+Planar\+Grid}} (const int length=2, const int width=2, int n\+DivisionsX=1, int n\+DivisionsY=1)
+\begin{DoxyCompactList}\small\item\em n\+DivisionsX are length divisions \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{structTriangleMesh}{Triangle\+Mesh}} \mbox{\hyperlink{structGeometry_a18d0b1f6bcbc3f36c2dec3315a04c220_a18d0b1f6bcbc3f36c2dec3315a04c220}{make\+Planar\+Grid\+Textured}} (const int length=2, const int width=2, int n\+DivisionsX=1, int n\+DivisionsY=1)
+\item 
+static \mbox{\hyperlink{structTriangleMesh}{Triangle\+Mesh}} \mbox{\hyperlink{structGeometry_a79e26ca18bc0353a8c700025cde4fb73_a79e26ca18bc0353a8c700025cde4fb73}{make\+Planar\+Grid\+Textured\+From\+Heighmap}} (const std\+::string \&filename, const int normalize\+Amount=4, const int terrain\+Area\+Unit\+Multiplier=10, const int length=2, const int width=2, int n\+DivisionsX=1, int n\+DivisionsY=1)
+\begin{DoxyCompactList}\small\item\em engine unit is cm, terrain has to be relatively large without consuming a vast amount of memory with indices and vertices, so we multiply its area by {\ttfamily terrain\+Area\+Unit\+Multiplier} \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{structTriangleMesh}{Triangle\+Mesh}} \mbox{\hyperlink{structGeometry_a026f26f5b340b8ded93d710b9ae82f47_a026f26f5b340b8ded93d710b9ae82f47}{make\+Camera\+Frustum}} (const float width, const float height, const float nearZ, const float farZ)
+\item 
+static \mbox{\hyperlink{structTriangleMesh}{Triangle\+Mesh}} \mbox{\hyperlink{structGeometry_a26b5674a1de8475cb8735a0a622cfe45_a26b5674a1de8475cb8735a0a622cfe45}{make\+Camera\+Widget}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structGeometry_a026f26f5b340b8ded93d710b9ae82f47_a026f26f5b340b8ded93d710b9ae82f47}\index{Geometry@{Geometry}!makeCameraFrustum@{makeCameraFrustum}}
+\index{makeCameraFrustum@{makeCameraFrustum}!Geometry@{Geometry}}
+\doxysubsubsection{\texorpdfstring{makeCameraFrustum()}{makeCameraFrustum()}}
+{\footnotesize\ttfamily \label{structGeometry_a026f26f5b340b8ded93d710b9ae82f47_a026f26f5b340b8ded93d710b9ae82f47} 
+\mbox{\hyperlink{structTriangleMesh}{Triangle\+Mesh}} Geometry\+::make\+Camera\+Frustum (\begin{DoxyParamCaption}\item[{const float}]{width}{, }\item[{const float}]{height}{, }\item[{const float}]{nearZ}{, }\item[{const float}]{farZ}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{structGeometry_a26b5674a1de8475cb8735a0a622cfe45_a26b5674a1de8475cb8735a0a622cfe45}\index{Geometry@{Geometry}!makeCameraWidget@{makeCameraWidget}}
+\index{makeCameraWidget@{makeCameraWidget}!Geometry@{Geometry}}
+\doxysubsubsection{\texorpdfstring{makeCameraWidget()}{makeCameraWidget()}}
+{\footnotesize\ttfamily \label{structGeometry_a26b5674a1de8475cb8735a0a622cfe45_a26b5674a1de8475cb8735a0a622cfe45} 
+\mbox{\hyperlink{structTriangleMesh}{Triangle\+Mesh}} Geometry\+::make\+Camera\+Widget (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{structGeometry_ad6a2e76395426ee4014b46795ea25eea_ad6a2e76395426ee4014b46795ea25eea}\index{Geometry@{Geometry}!makeCube@{makeCube}}
+\index{makeCube@{makeCube}!Geometry@{Geometry}}
+\doxysubsubsection{\texorpdfstring{makeCube()}{makeCube()}}
+{\footnotesize\ttfamily \label{structGeometry_ad6a2e76395426ee4014b46795ea25eea_ad6a2e76395426ee4014b46795ea25eea} 
+\mbox{\hyperlink{structTriangleMesh}{Triangle\+Mesh}} Geometry\+::make\+Cube (\begin{DoxyParamCaption}\item[{std\+::optional$<$ \mbox{\hyperlink{classver_1_1VertexInputLayout}{ver\+::\+Vertex\+Input\+Layout}} $>$}]{layout}{ = {\ttfamily \{\}}, }\item[{const float}]{side}{ = {\ttfamily 1.0f~/~2.0f}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{structGeometry_a6a03748c43a90b74e22f48de60c1e706_a6a03748c43a90b74e22f48de60c1e706}\index{Geometry@{Geometry}!makeCubeIndependentFaces@{makeCubeIndependentFaces}}
+\index{makeCubeIndependentFaces@{makeCubeIndependentFaces}!Geometry@{Geometry}}
+\doxysubsubsection{\texorpdfstring{makeCubeIndependentFaces()}{makeCubeIndependentFaces()}}
+{\footnotesize\ttfamily \label{structGeometry_a6a03748c43a90b74e22f48de60c1e706_a6a03748c43a90b74e22f48de60c1e706} 
+\mbox{\hyperlink{structTriangleMesh}{Triangle\+Mesh}} Geometry\+::make\+Cube\+Independent\+Faces (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classver_1_1VertexInputLayout}{ver\+::\+Vertex\+Input\+Layout}}}]{layout}{, }\item[{const float}]{side}{ = {\ttfamily 1.0f~/~2.0f}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{structGeometry_a86cd2ba34214c359643cfb2009b60acd_a86cd2ba34214c359643cfb2009b60acd}\index{Geometry@{Geometry}!makeCubeIndependentFacesTextured@{makeCubeIndependentFacesTextured}}
+\index{makeCubeIndependentFacesTextured@{makeCubeIndependentFacesTextured}!Geometry@{Geometry}}
+\doxysubsubsection{\texorpdfstring{makeCubeIndependentFacesTextured()}{makeCubeIndependentFacesTextured()}}
+{\footnotesize\ttfamily \label{structGeometry_a86cd2ba34214c359643cfb2009b60acd_a86cd2ba34214c359643cfb2009b60acd} 
+\mbox{\hyperlink{structTriangleMesh}{Triangle\+Mesh}} Geometry\+::make\+Cube\+Independent\+Faces\+Textured (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{structGeometry_a3442ce56732507eed4e375c3d0fbf269_a3442ce56732507eed4e375c3d0fbf269}\index{Geometry@{Geometry}!makeLine@{makeLine}}
+\index{makeLine@{makeLine}!Geometry@{Geometry}}
+\doxysubsubsection{\texorpdfstring{makeLine()}{makeLine()}}
+{\footnotesize\ttfamily \label{structGeometry_a3442ce56732507eed4e375c3d0fbf269_a3442ce56732507eed4e375c3d0fbf269} 
+\mbox{\hyperlink{structTriangleMesh}{Triangle\+Mesh}} Geometry\+::make\+Line (\begin{DoxyParamCaption}\item[{const float}]{length}{ = {\ttfamily 1.0f~/~2.0f}, }\item[{std\+::optional$<$ \mbox{\hyperlink{classver_1_1VertexInputLayout}{ver\+::\+Vertex\+Input\+Layout}} $>$}]{layout}{ = {\ttfamily \{\}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{structGeometry_a90c5449438c31aae13d7cdfbaa678c74_a90c5449438c31aae13d7cdfbaa678c74}\index{Geometry@{Geometry}!makePlanarGrid@{makePlanarGrid}}
+\index{makePlanarGrid@{makePlanarGrid}!Geometry@{Geometry}}
+\doxysubsubsection{\texorpdfstring{makePlanarGrid()}{makePlanarGrid()}}
+{\footnotesize\ttfamily \label{structGeometry_a90c5449438c31aae13d7cdfbaa678c74_a90c5449438c31aae13d7cdfbaa678c74} 
+\mbox{\hyperlink{structTriangleMesh}{Triangle\+Mesh}} Geometry\+::make\+Planar\+Grid (\begin{DoxyParamCaption}\item[{const int}]{length}{ = {\ttfamily 2}, }\item[{const int}]{width}{ = {\ttfamily 2}, }\item[{int}]{n\+DivisionsX}{ = {\ttfamily 1}, }\item[{int}]{n\+DivisionsY}{ = {\ttfamily 1}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+n\+DivisionsX are length divisions 
+
+\Hypertarget{structGeometry_a18d0b1f6bcbc3f36c2dec3315a04c220_a18d0b1f6bcbc3f36c2dec3315a04c220}\index{Geometry@{Geometry}!makePlanarGridTextured@{makePlanarGridTextured}}
+\index{makePlanarGridTextured@{makePlanarGridTextured}!Geometry@{Geometry}}
+\doxysubsubsection{\texorpdfstring{makePlanarGridTextured()}{makePlanarGridTextured()}}
+{\footnotesize\ttfamily \label{structGeometry_a18d0b1f6bcbc3f36c2dec3315a04c220_a18d0b1f6bcbc3f36c2dec3315a04c220} 
+\mbox{\hyperlink{structTriangleMesh}{Triangle\+Mesh}} Geometry\+::make\+Planar\+Grid\+Textured (\begin{DoxyParamCaption}\item[{const int}]{length}{ = {\ttfamily 2}, }\item[{const int}]{width}{ = {\ttfamily 2}, }\item[{int}]{n\+DivisionsX}{ = {\ttfamily 1}, }\item[{int}]{n\+DivisionsY}{ = {\ttfamily 1}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{structGeometry_a79e26ca18bc0353a8c700025cde4fb73_a79e26ca18bc0353a8c700025cde4fb73}\index{Geometry@{Geometry}!makePlanarGridTexturedFromHeighmap@{makePlanarGridTexturedFromHeighmap}}
+\index{makePlanarGridTexturedFromHeighmap@{makePlanarGridTexturedFromHeighmap}!Geometry@{Geometry}}
+\doxysubsubsection{\texorpdfstring{makePlanarGridTexturedFromHeighmap()}{makePlanarGridTexturedFromHeighmap()}}
+{\footnotesize\ttfamily \label{structGeometry_a79e26ca18bc0353a8c700025cde4fb73_a79e26ca18bc0353a8c700025cde4fb73} 
+\mbox{\hyperlink{structTriangleMesh}{Triangle\+Mesh}} Geometry\+::make\+Planar\+Grid\+Textured\+From\+Heighmap (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename}{, }\item[{const int}]{normalize\+Amount}{ = {\ttfamily 4}, }\item[{const int}]{terrain\+Area\+Unit\+Multiplier}{ = {\ttfamily 10}, }\item[{const int}]{length}{ = {\ttfamily 2}, }\item[{const int}]{width}{ = {\ttfamily 2}, }\item[{int}]{n\+DivisionsX}{ = {\ttfamily 1}, }\item[{int}]{n\+DivisionsY}{ = {\ttfamily 1}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+engine unit is cm, terrain has to be relatively large without consuming a vast amount of memory with indices and vertices, so we multiply its area by {\ttfamily terrain\+Area\+Unit\+Multiplier} 
+
+\Hypertarget{structGeometry_afafcbc076c42fa8fc3fa44592e755385_afafcbc076c42fa8fc3fa44592e755385}\index{Geometry@{Geometry}!makeSphereTesselated@{makeSphereTesselated}}
+\index{makeSphereTesselated@{makeSphereTesselated}!Geometry@{Geometry}}
+\doxysubsubsection{\texorpdfstring{makeSphereTesselated()}{makeSphereTesselated()}}
+{\footnotesize\ttfamily \label{structGeometry_afafcbc076c42fa8fc3fa44592e755385_afafcbc076c42fa8fc3fa44592e755385} 
+\mbox{\hyperlink{structTriangleMesh}{Triangle\+Mesh}} Geometry\+::make\+Sphere\+Tesselated (\begin{DoxyParamCaption}\item[{std\+::optional$<$ \mbox{\hyperlink{classver_1_1VertexInputLayout}{ver\+::\+Vertex\+Input\+Layout}} $>$}]{layout}{ = {\ttfamily std\+:\+:nullopt}, }\item[{const unsigned}]{n\+Lateral\+Divs}{ = {\ttfamily 12}, }\item[{const unsigned}]{n\+Longitudinal\+Divs}{ = {\ttfamily 24}, }\item[{const float}]{radius}{ = {\ttfamily 1.0f}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{geometry_8h}{geometry.\+h}}\item 
+src/\mbox{\hyperlink{geometry_8cpp}{geometry.\+cpp}}\end{DoxyCompactItemize}

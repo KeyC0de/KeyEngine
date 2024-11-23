@@ -1,0 +1,461 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classRectangleI" kind="class" language="C++" prot="public">
+    <compoundname>RectangleI</compoundname>
+    <includes refid="rectangle_8h" local="no">rectangle.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classRectangleI_af0482e2935aaca525dd746821604493f_1af0482e2935aaca525dd746821604493f" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int RectangleI::m_left</definition>
+        <argsstring></argsstring>
+        <name>m_left</name>
+        <qualifiedname>RectangleI::m_left</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/rectangle.h" line="64" column="5" bodyfile="inc/rectangle.h" bodystart="64" bodyend="-1"/>
+        <referencedby refid="classRectangleI_a95c27cc70d7c8bd579472775eaa6204c_1a95c27cc70d7c8bd579472775eaa6204c" compoundref="rectangle_8cpp" startline="189" endline="192">calcCenter</referencedby>
+        <referencedby refid="classRectangleI_af6f8235c6a2ba63a156b996ea918f5f6_1af6f8235c6a2ba63a156b996ea918f5f6" compoundref="rectangle_8cpp" startline="199" endline="202">getLeft</referencedby>
+        <referencedby refid="classRectangleI_a9736eee10a368fd8f3ee58eca4f55265_1a9736eee10a368fd8f3ee58eca4f55265" compoundref="rectangle_8cpp" startline="194" endline="197">getLeft</referencedby>
+        <referencedby refid="classRectangleI_ab0132faf26c7359d886d6f98a615cbac_1ab0132faf26c7359d886d6f98a615cbac" compoundref="rectangle_8cpp" startline="254" endline="257">getWidth</referencedby>
+        <referencedby refid="classRectangleI_a546e6cc5419623b103b5c053b4d26a57_1a546e6cc5419623b103b5c053b4d26a57" compoundref="rectangle_8cpp" startline="209" endline="212">getX</referencedby>
+        <referencedby refid="classRectangleI_ab1572b3cc33406bce8ba1ad6b77bdb97_1ab1572b3cc33406bce8ba1ad6b77bdb97" compoundref="rectangle_8cpp" startline="204" endline="207">getX</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classRectangleI_a22e1474e16c5c7757fb2ab281a2799e7_1a22e1474e16c5c7757fb2ab281a2799e7" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int RectangleI::m_right</definition>
+        <argsstring></argsstring>
+        <name>m_right</name>
+        <qualifiedname>RectangleI::m_right</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/rectangle.h" line="65" column="5" bodyfile="inc/rectangle.h" bodystart="65" bodyend="-1"/>
+        <referencedby refid="classRectangleI_a95c27cc70d7c8bd579472775eaa6204c_1a95c27cc70d7c8bd579472775eaa6204c" compoundref="rectangle_8cpp" startline="189" endline="192">calcCenter</referencedby>
+        <referencedby refid="classRectangleI_a3a06629adcd1be884320f446b4784dca_1a3a06629adcd1be884320f446b4784dca" compoundref="rectangle_8cpp" startline="219" endline="222">getRight</referencedby>
+        <referencedby refid="classRectangleI_af6bfda731aac24f7d8aeea69797c6813_1af6bfda731aac24f7d8aeea69797c6813" compoundref="rectangle_8cpp" startline="214" endline="217">getRight</referencedby>
+        <referencedby refid="classRectangleI_ab0132faf26c7359d886d6f98a615cbac_1ab0132faf26c7359d886d6f98a615cbac" compoundref="rectangle_8cpp" startline="254" endline="257">getWidth</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classRectangleI_a92016d68fa2dfb5c6e8371fd80910f5c_1a92016d68fa2dfb5c6e8371fd80910f5c" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int RectangleI::m_top</definition>
+        <argsstring></argsstring>
+        <name>m_top</name>
+        <qualifiedname>RectangleI::m_top</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/rectangle.h" line="66" column="5" bodyfile="inc/rectangle.h" bodystart="66" bodyend="-1"/>
+        <referencedby refid="classRectangleI_a95c27cc70d7c8bd579472775eaa6204c_1a95c27cc70d7c8bd579472775eaa6204c" compoundref="rectangle_8cpp" startline="189" endline="192">calcCenter</referencedby>
+        <referencedby refid="classRectangleI_a0d851ffaa0203ce6d7a593e22d95bd76_1a0d851ffaa0203ce6d7a593e22d95bd76" compoundref="rectangle_8cpp" startline="259" endline="262">getHeight</referencedby>
+        <referencedby refid="classRectangleI_a63e0994c27bce0fec2625811933a30b2_1a63e0994c27bce0fec2625811933a30b2" compoundref="rectangle_8cpp" startline="229" endline="232">getTop</referencedby>
+        <referencedby refid="classRectangleI_ab6d91cac2ed08f731610ab69fb483729_1ab6d91cac2ed08f731610ab69fb483729" compoundref="rectangle_8cpp" startline="224" endline="227">getTop</referencedby>
+        <referencedby refid="classRectangleI_abda864f3e9da0389c082ccbf2b0a7b9b_1abda864f3e9da0389c082ccbf2b0a7b9b" compoundref="rectangle_8cpp" startline="239" endline="242">getY</referencedby>
+        <referencedby refid="classRectangleI_ac0b538043e5837e5170f7da4a27bb90c_1ac0b538043e5837e5170f7da4a27bb90c" compoundref="rectangle_8cpp" startline="234" endline="237">getY</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classRectangleI_a7d1e062cb6aae2e374e7ff0e14f64d95_1a7d1e062cb6aae2e374e7ff0e14f64d95" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int RectangleI::m_bottom</definition>
+        <argsstring></argsstring>
+        <name>m_bottom</name>
+        <qualifiedname>RectangleI::m_bottom</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/rectangle.h" line="67" column="5" bodyfile="inc/rectangle.h" bodystart="67" bodyend="-1"/>
+        <referencedby refid="classRectangleI_a95c27cc70d7c8bd579472775eaa6204c_1a95c27cc70d7c8bd579472775eaa6204c" compoundref="rectangle_8cpp" startline="189" endline="192">calcCenter</referencedby>
+        <referencedby refid="classRectangleI_ac40a49fdec8270ef9b2b4ced8da96c92_1ac40a49fdec8270ef9b2b4ced8da96c92" compoundref="rectangle_8cpp" startline="249" endline="252">getBottom</referencedby>
+        <referencedby refid="classRectangleI_abc7618243b6817455f144b25447b3e22_1abc7618243b6817455f144b25447b3e22" compoundref="rectangle_8cpp" startline="244" endline="247">getBottom</referencedby>
+        <referencedby refid="classRectangleI_a0d851ffaa0203ce6d7a593e22d95bd76_1a0d851ffaa0203ce6d7a593e22d95bd76" compoundref="rectangle_8cpp" startline="259" endline="262">getHeight</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classRectangleI_a7f469fac661a902a16af35d2c98ee8ba_1a7f469fac661a902a16af35d2c98ee8ba" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classRectangleI" kindref="compound">RectangleI</ref></type>
+        <definition>RectangleI RectangleI::makeGivenCenter</definition>
+        <argsstring>(const DirectX::XMFLOAT2 &amp;center, const int halfWidth, const int halfHeight)</argsstring>
+        <name>makeGivenCenter</name>
+        <qualifiedname>RectangleI::makeGivenCenter</qualifiedname>
+        <param>
+          <type>const DirectX::XMFLOAT2 &amp;</type>
+          <declname>center</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>halfWidth</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>halfHeight</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/rectangle.h" line="69" column="19" bodyfile="src/rectangle.cpp" bodystart="163" bodyend="174"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classRectangleI_a7ece7ff818fd63feaa83419f783ba7c2_1a7ece7ff818fd63feaa83419f783ba7c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RectangleI::RectangleI</definition>
+        <argsstring>()=default</argsstring>
+        <name>RectangleI</name>
+        <qualifiedname>RectangleI::RectangleI</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/rectangle.h" line="71" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classRectangleI_ac90078d5104ca706b6347f9d85a83d34_1ac90078d5104ca706b6347f9d85a83d34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RectangleI::RectangleI</definition>
+        <argsstring>(const int x, const int y, const int width, const int height)</argsstring>
+        <name>RectangleI</name>
+        <qualifiedname>RectangleI::RectangleI</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>height</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/rectangle.h" line="72" column="1" bodyfile="src/rectangle.cpp" bodystart="150" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="classRectangleI_a36d1a953b7892f2e0bb1bb0f57d73ce8_1a36d1a953b7892f2e0bb1bb0f57d73ce8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>RectangleI::operator RECT</definition>
+        <argsstring>()</argsstring>
+        <name>operator RECT</name>
+        <qualifiedname>RectangleI::operator RECT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/rectangle.h" line="74" column="1" bodyfile="inc/rectangle.h" bodystart="74" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="classRectangleI_a8e6bbc9d1988653281132656ab9fb2de_1a8e6bbc9d1988653281132656ab9fb2de" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RectangleI::isOverlappingWith</definition>
+        <argsstring>(const RectangleI &amp;other) const noexcept</argsstring>
+        <name>isOverlappingWith</name>
+        <qualifiedname>RectangleI::isOverlappingWith</qualifiedname>
+        <param>
+          <type>const <ref refid="classRectangleI" kindref="compound">RectangleI</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>2d rectangle collision detection formula </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/rectangle.h" line="80" column="6" bodyfile="src/rectangle.cpp" bodystart="176" bodyend="182"/>
+      </memberdef>
+      <memberdef kind="function" id="classRectangleI_a81a5045653f4339a6a24ec1839a4089c_1a81a5045653f4339a6a24ec1839a4089c" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classRectangleI" kindref="compound">RectangleI</ref></type>
+        <definition>RectangleI RectangleI::calcScaled</definition>
+        <argsstring>(const int offset) const noexcept</argsstring>
+        <name>calcScaled</name>
+        <qualifiedname>RectangleI::calcScaled</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>offset</declname>
+        </param>
+        <briefdescription>
+<para>gets an expanded (offset&gt;0) or minimized (offset&lt;0) form of the rectangle </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/rectangle.h" line="82" column="12" bodyfile="src/rectangle.cpp" bodystart="184" bodyend="187"/>
+      </memberdef>
+      <memberdef kind="function" id="classRectangleI_a95c27cc70d7c8bd579472775eaa6204c_1a95c27cc70d7c8bd579472775eaa6204c" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>DirectX::XMFLOAT2</type>
+        <definition>dx::XMFLOAT2 RectangleI::calcCenter</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>calcCenter</name>
+        <qualifiedname>RectangleI::calcCenter</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/rectangle.h" line="83" column="19" bodyfile="src/rectangle.cpp" bodystart="189" bodyend="192"/>
+      </memberdef>
+      <memberdef kind="function" id="classRectangleI_a9736eee10a368fd8f3ee58eca4f55265_1a9736eee10a368fd8f3ee58eca4f55265" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int RectangleI::getLeft</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getLeft</name>
+        <qualifiedname>RectangleI::getLeft</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/rectangle.h" line="84" column="5" bodyfile="src/rectangle.cpp" bodystart="194" bodyend="197"/>
+      </memberdef>
+      <memberdef kind="function" id="classRectangleI_af6f8235c6a2ba63a156b996ea918f5f6_1af6f8235c6a2ba63a156b996ea918f5f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int &amp;</type>
+        <definition>int &amp; RectangleI::getLeft</definition>
+        <argsstring>()</argsstring>
+        <name>getLeft</name>
+        <qualifiedname>RectangleI::getLeft</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/rectangle.h" line="85" column="5" bodyfile="src/rectangle.cpp" bodystart="199" bodyend="202"/>
+      </memberdef>
+      <memberdef kind="function" id="classRectangleI_ab1572b3cc33406bce8ba1ad6b77bdb97_1ab1572b3cc33406bce8ba1ad6b77bdb97" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int RectangleI::getX</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getX</name>
+        <qualifiedname>RectangleI::getX</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/rectangle.h" line="86" column="5" bodyfile="src/rectangle.cpp" bodystart="204" bodyend="207"/>
+      </memberdef>
+      <memberdef kind="function" id="classRectangleI_a546e6cc5419623b103b5c053b4d26a57_1a546e6cc5419623b103b5c053b4d26a57" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int &amp;</type>
+        <definition>int &amp; RectangleI::getX</definition>
+        <argsstring>()</argsstring>
+        <name>getX</name>
+        <qualifiedname>RectangleI::getX</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/rectangle.h" line="87" column="5" bodyfile="src/rectangle.cpp" bodystart="209" bodyend="212"/>
+      </memberdef>
+      <memberdef kind="function" id="classRectangleI_af6bfda731aac24f7d8aeea69797c6813_1af6bfda731aac24f7d8aeea69797c6813" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int RectangleI::getRight</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getRight</name>
+        <qualifiedname>RectangleI::getRight</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/rectangle.h" line="88" column="5" bodyfile="src/rectangle.cpp" bodystart="214" bodyend="217"/>
+      </memberdef>
+      <memberdef kind="function" id="classRectangleI_a3a06629adcd1be884320f446b4784dca_1a3a06629adcd1be884320f446b4784dca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int &amp;</type>
+        <definition>int &amp; RectangleI::getRight</definition>
+        <argsstring>()</argsstring>
+        <name>getRight</name>
+        <qualifiedname>RectangleI::getRight</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/rectangle.h" line="89" column="5" bodyfile="src/rectangle.cpp" bodystart="219" bodyend="222"/>
+      </memberdef>
+      <memberdef kind="function" id="classRectangleI_ab6d91cac2ed08f731610ab69fb483729_1ab6d91cac2ed08f731610ab69fb483729" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int RectangleI::getTop</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getTop</name>
+        <qualifiedname>RectangleI::getTop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/rectangle.h" line="90" column="5" bodyfile="src/rectangle.cpp" bodystart="224" bodyend="227"/>
+      </memberdef>
+      <memberdef kind="function" id="classRectangleI_a63e0994c27bce0fec2625811933a30b2_1a63e0994c27bce0fec2625811933a30b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int &amp;</type>
+        <definition>int &amp; RectangleI::getTop</definition>
+        <argsstring>()</argsstring>
+        <name>getTop</name>
+        <qualifiedname>RectangleI::getTop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/rectangle.h" line="91" column="5" bodyfile="src/rectangle.cpp" bodystart="229" bodyend="232"/>
+      </memberdef>
+      <memberdef kind="function" id="classRectangleI_ac0b538043e5837e5170f7da4a27bb90c_1ac0b538043e5837e5170f7da4a27bb90c" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int RectangleI::getY</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getY</name>
+        <qualifiedname>RectangleI::getY</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/rectangle.h" line="92" column="5" bodyfile="src/rectangle.cpp" bodystart="234" bodyend="237"/>
+      </memberdef>
+      <memberdef kind="function" id="classRectangleI_abda864f3e9da0389c082ccbf2b0a7b9b_1abda864f3e9da0389c082ccbf2b0a7b9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int &amp;</type>
+        <definition>int &amp; RectangleI::getY</definition>
+        <argsstring>()</argsstring>
+        <name>getY</name>
+        <qualifiedname>RectangleI::getY</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/rectangle.h" line="93" column="5" bodyfile="src/rectangle.cpp" bodystart="239" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="function" id="classRectangleI_abc7618243b6817455f144b25447b3e22_1abc7618243b6817455f144b25447b3e22" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int RectangleI::getBottom</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getBottom</name>
+        <qualifiedname>RectangleI::getBottom</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/rectangle.h" line="94" column="5" bodyfile="src/rectangle.cpp" bodystart="244" bodyend="247"/>
+      </memberdef>
+      <memberdef kind="function" id="classRectangleI_ac40a49fdec8270ef9b2b4ced8da96c92_1ac40a49fdec8270ef9b2b4ced8da96c92" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int &amp;</type>
+        <definition>int &amp; RectangleI::getBottom</definition>
+        <argsstring>()</argsstring>
+        <name>getBottom</name>
+        <qualifiedname>RectangleI::getBottom</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/rectangle.h" line="95" column="5" bodyfile="src/rectangle.cpp" bodystart="249" bodyend="252"/>
+      </memberdef>
+      <memberdef kind="function" id="classRectangleI_ab0132faf26c7359d886d6f98a615cbac_1ab0132faf26c7359d886d6f98a615cbac" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int RectangleI::getWidth</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getWidth</name>
+        <qualifiedname>RectangleI::getWidth</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/rectangle.h" line="96" column="5" bodyfile="src/rectangle.cpp" bodystart="254" bodyend="257"/>
+      </memberdef>
+      <memberdef kind="function" id="classRectangleI_a0d851ffaa0203ce6d7a593e22d95bd76_1a0d851ffaa0203ce6d7a593e22d95bd76" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int RectangleI::getHeight</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getHeight</name>
+        <qualifiedname>RectangleI::getHeight</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/rectangle.h" line="97" column="5" bodyfile="src/rectangle.cpp" bodystart="259" bodyend="262"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>a Rectangle class with ints </para>
+    </briefdescription>
+    <detaileddescription>
+<para>=============================================================</para>
+<para><simplesect kind="author"><para>KeyC0de </para>
+</simplesect>
+<simplesect kind="date"><para>2022/08/30 12:56 <heading level="1">don&apos;t rename it to Rectangle, or RECT, as it conflicts with Windows headers </heading>
+</para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="inc/rectangle.h" line="62" column="1" bodyfile="inc/rectangle.h" bodystart="63" bodyend="98"/>
+    <listofallmembers>
+      <member refid="classRectangleI_a95c27cc70d7c8bd579472775eaa6204c_1a95c27cc70d7c8bd579472775eaa6204c" prot="public" virt="non-virtual"><scope>RectangleI</scope><name>calcCenter</name></member>
+      <member refid="classRectangleI_a81a5045653f4339a6a24ec1839a4089c_1a81a5045653f4339a6a24ec1839a4089c" prot="public" virt="non-virtual"><scope>RectangleI</scope><name>calcScaled</name></member>
+      <member refid="classRectangleI_abc7618243b6817455f144b25447b3e22_1abc7618243b6817455f144b25447b3e22" prot="public" virt="non-virtual"><scope>RectangleI</scope><name>getBottom</name></member>
+      <member refid="classRectangleI_ac40a49fdec8270ef9b2b4ced8da96c92_1ac40a49fdec8270ef9b2b4ced8da96c92" prot="public" virt="non-virtual"><scope>RectangleI</scope><name>getBottom</name></member>
+      <member refid="classRectangleI_a0d851ffaa0203ce6d7a593e22d95bd76_1a0d851ffaa0203ce6d7a593e22d95bd76" prot="public" virt="non-virtual"><scope>RectangleI</scope><name>getHeight</name></member>
+      <member refid="classRectangleI_a9736eee10a368fd8f3ee58eca4f55265_1a9736eee10a368fd8f3ee58eca4f55265" prot="public" virt="non-virtual"><scope>RectangleI</scope><name>getLeft</name></member>
+      <member refid="classRectangleI_af6f8235c6a2ba63a156b996ea918f5f6_1af6f8235c6a2ba63a156b996ea918f5f6" prot="public" virt="non-virtual"><scope>RectangleI</scope><name>getLeft</name></member>
+      <member refid="classRectangleI_af6bfda731aac24f7d8aeea69797c6813_1af6bfda731aac24f7d8aeea69797c6813" prot="public" virt="non-virtual"><scope>RectangleI</scope><name>getRight</name></member>
+      <member refid="classRectangleI_a3a06629adcd1be884320f446b4784dca_1a3a06629adcd1be884320f446b4784dca" prot="public" virt="non-virtual"><scope>RectangleI</scope><name>getRight</name></member>
+      <member refid="classRectangleI_ab6d91cac2ed08f731610ab69fb483729_1ab6d91cac2ed08f731610ab69fb483729" prot="public" virt="non-virtual"><scope>RectangleI</scope><name>getTop</name></member>
+      <member refid="classRectangleI_a63e0994c27bce0fec2625811933a30b2_1a63e0994c27bce0fec2625811933a30b2" prot="public" virt="non-virtual"><scope>RectangleI</scope><name>getTop</name></member>
+      <member refid="classRectangleI_ab0132faf26c7359d886d6f98a615cbac_1ab0132faf26c7359d886d6f98a615cbac" prot="public" virt="non-virtual"><scope>RectangleI</scope><name>getWidth</name></member>
+      <member refid="classRectangleI_ab1572b3cc33406bce8ba1ad6b77bdb97_1ab1572b3cc33406bce8ba1ad6b77bdb97" prot="public" virt="non-virtual"><scope>RectangleI</scope><name>getX</name></member>
+      <member refid="classRectangleI_a546e6cc5419623b103b5c053b4d26a57_1a546e6cc5419623b103b5c053b4d26a57" prot="public" virt="non-virtual"><scope>RectangleI</scope><name>getX</name></member>
+      <member refid="classRectangleI_ac0b538043e5837e5170f7da4a27bb90c_1ac0b538043e5837e5170f7da4a27bb90c" prot="public" virt="non-virtual"><scope>RectangleI</scope><name>getY</name></member>
+      <member refid="classRectangleI_abda864f3e9da0389c082ccbf2b0a7b9b_1abda864f3e9da0389c082ccbf2b0a7b9b" prot="public" virt="non-virtual"><scope>RectangleI</scope><name>getY</name></member>
+      <member refid="classRectangleI_a8e6bbc9d1988653281132656ab9fb2de_1a8e6bbc9d1988653281132656ab9fb2de" prot="public" virt="non-virtual"><scope>RectangleI</scope><name>isOverlappingWith</name></member>
+      <member refid="classRectangleI_a7d1e062cb6aae2e374e7ff0e14f64d95_1a7d1e062cb6aae2e374e7ff0e14f64d95" prot="private" virt="non-virtual"><scope>RectangleI</scope><name>m_bottom</name></member>
+      <member refid="classRectangleI_af0482e2935aaca525dd746821604493f_1af0482e2935aaca525dd746821604493f" prot="private" virt="non-virtual"><scope>RectangleI</scope><name>m_left</name></member>
+      <member refid="classRectangleI_a22e1474e16c5c7757fb2ab281a2799e7_1a22e1474e16c5c7757fb2ab281a2799e7" prot="private" virt="non-virtual"><scope>RectangleI</scope><name>m_right</name></member>
+      <member refid="classRectangleI_a92016d68fa2dfb5c6e8371fd80910f5c_1a92016d68fa2dfb5c6e8371fd80910f5c" prot="private" virt="non-virtual"><scope>RectangleI</scope><name>m_top</name></member>
+      <member refid="classRectangleI_a7f469fac661a902a16af35d2c98ee8ba_1a7f469fac661a902a16af35d2c98ee8ba" prot="public" virt="non-virtual"><scope>RectangleI</scope><name>makeGivenCenter</name></member>
+      <member refid="classRectangleI_a36d1a953b7892f2e0bb1bb0f57d73ce8_1a36d1a953b7892f2e0bb1bb0f57d73ce8" prot="public" virt="non-virtual"><scope>RectangleI</scope><name>operator RECT</name></member>
+      <member refid="classRectangleI_a7ece7ff818fd63feaa83419f783ba7c2_1a7ece7ff818fd63feaa83419f783ba7c2" prot="public" virt="non-virtual"><scope>RectangleI</scope><name>RectangleI</name></member>
+      <member refid="classRectangleI_ac90078d5104ca706b6347f9d85a83d34_1ac90078d5104ca706b6347f9d85a83d34" prot="public" virt="non-virtual"><scope>RectangleI</scope><name>RectangleI</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

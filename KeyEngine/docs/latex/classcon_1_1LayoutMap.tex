@@ -1,0 +1,80 @@
+\doxysection{con\+::Layout\+Map Class Reference}
+\hypertarget{classcon_1_1LayoutMap}{}\label{classcon_1_1LayoutMap}\index{con::LayoutMap@{con::LayoutMap}}
+
+
+maps \doxylink{classcon_1_1CBElement}{CBElement} strings with their \doxylink{classcon_1_1CBElement}{CBElement} objects   
+
+
+
+
+{\ttfamily \#include $<$dynamic\+\_\+constant\+\_\+buffer.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classcon_1_1CookedLayout}{con\+::\+Cooked\+Layout}} \mbox{\hyperlink{classcon_1_1LayoutMap_a1c3854382a84e6b2f510aadd916d8ce4_a1c3854382a84e6b2f510aadd916d8ce4}{fetch}} (\mbox{\hyperlink{classcon_1_1RawLayout}{con\+::\+Raw\+Layout}} \&\&cb\+Layout) cond\+\_\+noex
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classcon_1_1LayoutMap}{Layout\+Map}} \& \mbox{\hyperlink{classcon_1_1LayoutMap_a205d110d9c3e159c3e79ac1bcb3532da_a205d110d9c3e159c3e79ac1bcb3532da}{get\+Instance}} () noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classcon_1_1CBElement}{con\+::\+CBElement}} $>$ $>$ \mbox{\hyperlink{classcon_1_1LayoutMap_a367ed73b79d7920e5368745583d4de57_a367ed73b79d7920e5368745583d4de57}{m\+\_\+map}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classcon_1_1LayoutMap}{Layout\+Map}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classcon_1_1LayoutMap_a3ba6c0b1c55363dd853ca93e826682c2_a3ba6c0b1c55363dd853ca93e826682c2}{s\+\_\+p\+Instance}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+maps \doxylink{classcon_1_1CBElement}{CBElement} strings with their \doxylink{classcon_1_1CBElement}{CBElement} objects  
+
+=============================================================
+
+\begin{DoxyAuthor}{Author}
+Key\+C0de 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/08/21 19\+:53 \doxysubsection*{}
+\end{DoxyDate}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcon_1_1LayoutMap_a1c3854382a84e6b2f510aadd916d8ce4_a1c3854382a84e6b2f510aadd916d8ce4}\index{con::LayoutMap@{con::LayoutMap}!fetch@{fetch}}
+\index{fetch@{fetch}!con::LayoutMap@{con::LayoutMap}}
+\doxysubsubsection{\texorpdfstring{fetch()}{fetch()}}
+{\footnotesize\ttfamily \label{classcon_1_1LayoutMap_a1c3854382a84e6b2f510aadd916d8ce4_a1c3854382a84e6b2f510aadd916d8ce4} 
+\mbox{\hyperlink{classcon_1_1CookedLayout}{con\+::\+Cooked\+Layout}} con\+::\+Layout\+Map\+::fetch (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcon_1_1RawLayout}{con\+::\+Raw\+Layout}} \&\&}]{cb\+Layout}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classcon_1_1LayoutMap_a205d110d9c3e159c3e79ac1bcb3532da_a205d110d9c3e159c3e79ac1bcb3532da}\index{con::LayoutMap@{con::LayoutMap}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!con::LayoutMap@{con::LayoutMap}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \label{classcon_1_1LayoutMap_a205d110d9c3e159c3e79ac1bcb3532da_a205d110d9c3e159c3e79ac1bcb3532da} 
+\mbox{\hyperlink{classcon_1_1LayoutMap}{Layout\+Map}} \& con\+::\+Layout\+Map\+::get\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classcon_1_1LayoutMap_a367ed73b79d7920e5368745583d4de57_a367ed73b79d7920e5368745583d4de57}\index{con::LayoutMap@{con::LayoutMap}!m\_map@{m\_map}}
+\index{m\_map@{m\_map}!con::LayoutMap@{con::LayoutMap}}
+\doxysubsubsection{\texorpdfstring{m\_map}{m\_map}}
+{\footnotesize\ttfamily \label{classcon_1_1LayoutMap_a367ed73b79d7920e5368745583d4de57_a367ed73b79d7920e5368745583d4de57} 
+std\+::unordered\+\_\+map$<$std\+::string, std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classcon_1_1CBElement}{con\+::\+CBElement}}$>$ $>$ con\+::\+Layout\+Map\+::m\+\_\+map\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcon_1_1LayoutMap_a3ba6c0b1c55363dd853ca93e826682c2_a3ba6c0b1c55363dd853ca93e826682c2}\index{con::LayoutMap@{con::LayoutMap}!s\_pInstance@{s\_pInstance}}
+\index{s\_pInstance@{s\_pInstance}!con::LayoutMap@{con::LayoutMap}}
+\doxysubsubsection{\texorpdfstring{s\_pInstance}{s\_pInstance}}
+{\footnotesize\ttfamily \label{classcon_1_1LayoutMap_a3ba6c0b1c55363dd853ca93e826682c2_a3ba6c0b1c55363dd853ca93e826682c2} 
+\mbox{\hyperlink{classcon_1_1LayoutMap}{Layout\+Map}}\texorpdfstring{$\ast$}{*} con\+::\+Layout\+Map\+::s\+\_\+p\+Instance\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{dynamic__constant__buffer_8h}{dynamic\+\_\+constant\+\_\+buffer.\+h}}\item 
+src/\mbox{\hyperlink{dynamic__constant__buffer_8cpp}{dynamic\+\_\+constant\+\_\+buffer.\+cpp}}\end{DoxyCompactItemize}

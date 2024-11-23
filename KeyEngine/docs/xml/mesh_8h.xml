@@ -1,0 +1,560 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="mesh_8h" kind="file" language="C++">
+    <compoundname>mesh.h</compoundname>
+    <includes local="no">DirectXMath.h</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">optional</includes>
+    <includes refid="material_8h" local="yes">material.h</includes>
+    <includes refid="rendering__channel_8h" local="yes">rendering_channel.h</includes>
+    <includes refid="transform__vscb_8h" local="yes">transform_vscb.h</includes>
+    <includedby refid="camera__frustum_8h" local="yes">inc/camera_frustum.h</includedby>
+    <includedby refid="camera__widget_8h" local="yes">inc/camera_widget.h</includedby>
+    <includedby refid="cube_8h" local="yes">inc/cube.h</includedby>
+    <includedby refid="line_8h" local="yes">inc/line.h</includedby>
+    <includedby refid="plane_8h" local="yes">inc/plane.h</includedby>
+    <includedby refid="sphere_8h" local="yes">inc/sphere.h</includedby>
+    <includedby refid="terrain_8h" local="yes">inc/terrain.h</includedby>
+    <includedby refid="MODEL_8CPP" local="yes">src/MODEL.CPP</includedby>
+    <includedby refid="game_8cpp" local="yes">src/game.cpp</includedby>
+    <includedby refid="imgui__visitors_8cpp" local="yes">src/imgui_visitors.cpp</includedby>
+    <includedby refid="job_8cpp" local="yes">src/job.cpp</includedby>
+    <includedby refid="material_8cpp" local="yes">src/material.cpp</includedby>
+    <includedby refid="mesh_8cpp" local="yes">src/mesh.cpp</includedby>
+    <includedby refid="node_8cpp" local="yes">src/node.cpp</includedby>
+    <includedby refid="testing_8cpp" local="yes">src/testing.cpp</includedby>
+    <includedby refid="transform__vscb_8cpp" local="yes">src/transform_vscb.cpp</includedby>
+    <includedby refid="ui__component_8cpp" local="yes">src/ui_component.cpp</includedby>
+    <incdepgraph>
+      <node id="10">
+        <label>assertions_console.h</label>
+        <link refid="assertions__console_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>bindable.h</label>
+        <link refid="bindable_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>dynamic_constant_buffer.h</label>
+        <link refid="dynamic__constant__buffer_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>graphics_friend.h</label>
+        <link refid="graphics__friend_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>key_type_traits.h</label>
+        <link refid="key__type__traits_8h"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>material.h</label>
+        <link refid="material_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/mesh.h</label>
+        <link refid="mesh_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>rendering_channel.h</label>
+        <link refid="rendering__channel_8h"/>
+      </node>
+      <node id="13">
+        <label>transform_vscb.h</label>
+        <link refid="transform__vscb_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>utils_global.h</label>
+        <link refid="utils__global_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>DirectXMath.h</label>
+      </node>
+      <node id="25">
+        <label>algorithm</label>
+      </node>
+      <node id="21">
+        <label>bitset</label>
+      </node>
+      <node id="15">
+        <label>cassert</label>
+      </node>
+      <node id="23">
+        <label>cinttypes</label>
+      </node>
+      <node id="22">
+        <label>cstddef</label>
+      </node>
+      <node id="9">
+        <label>d3d11.h</label>
+      </node>
+      <node id="29">
+        <label>execution</label>
+      </node>
+      <node id="24">
+        <label>future</label>
+      </node>
+      <node id="11">
+        <label>iostream</label>
+      </node>
+      <node id="27">
+        <label>iterator</label>
+      </node>
+      <node id="3">
+        <label>memory</label>
+      </node>
+      <node id="26">
+        <label>numeric</label>
+      </node>
+      <node id="4">
+        <label>optional</label>
+      </node>
+      <node id="28">
+        <label>regex</label>
+      </node>
+      <node id="20">
+        <label>set</label>
+      </node>
+      <node id="19">
+        <label>sstream</label>
+      </node>
+      <node id="16">
+        <label>string</label>
+      </node>
+      <node id="31">
+        <label>type_traits</label>
+      </node>
+      <node id="17">
+        <label>unordered_map</label>
+      </node>
+      <node id="6">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>inc/camera_frustum.h</label>
+        <link refid="camera__frustum_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>inc/camera_widget.h</label>
+        <link refid="camera__widget_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>inc/cube.h</label>
+        <link refid="cube_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>inc/game.h</label>
+        <link refid="game_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>inc/line.h</label>
+        <link refid="line_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/mesh.h</label>
+        <link refid="mesh_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>inc/plane.h</label>
+        <link refid="plane_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>inc/sphere.h</label>
+        <link refid="sphere_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>inc/terrain.h</label>
+        <link refid="terrain_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>src/MODEL.CPP</label>
+        <link refid="MODEL_8CPP"/>
+      </node>
+      <node id="3">
+        <label>src/camera.cpp</label>
+        <link refid="camera_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/camera_frustum.cpp</label>
+        <link refid="camera__frustum_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/camera_widget.cpp</label>
+        <link refid="camera__widget_8cpp"/>
+      </node>
+      <node id="8">
+        <label>src/cube.cpp</label>
+        <link refid="cube_8cpp"/>
+      </node>
+      <node id="9">
+        <label>src/game.cpp</label>
+        <link refid="game_8cpp"/>
+      </node>
+      <node id="22">
+        <label>src/imgui_visitors.cpp</label>
+        <link refid="imgui__visitors_8cpp"/>
+      </node>
+      <node id="23">
+        <label>src/job.cpp</label>
+        <link refid="job_8cpp"/>
+      </node>
+      <node id="15">
+        <label>src/light_source.cpp</label>
+        <link refid="light__source_8cpp"/>
+      </node>
+      <node id="11">
+        <label>src/line.cpp</label>
+        <link refid="line_8cpp"/>
+      </node>
+      <node id="19">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="24">
+        <label>src/material.cpp</label>
+        <link refid="material_8cpp"/>
+      </node>
+      <node id="25">
+        <label>src/mesh.cpp</label>
+        <link refid="mesh_8cpp"/>
+      </node>
+      <node id="26">
+        <label>src/node.cpp</label>
+        <link refid="node_8cpp"/>
+      </node>
+      <node id="13">
+        <label>src/plane.cpp</label>
+        <link refid="plane_8cpp"/>
+      </node>
+      <node id="16">
+        <label>src/sphere.cpp</label>
+        <link refid="sphere_8cpp"/>
+      </node>
+      <node id="20">
+        <label>src/terrain.cpp</label>
+        <link refid="terrain_8cpp"/>
+      </node>
+      <node id="27">
+        <label>src/testing.cpp</label>
+        <link refid="testing_8cpp"/>
+      </node>
+      <node id="28">
+        <label>src/transform_vscb.cpp</label>
+        <link refid="transform__vscb_8cpp"/>
+      </node>
+      <node id="29">
+        <label>src/ui_component.cpp</label>
+        <link refid="ui__component_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classMesh" prot="public">Mesh</innerclass>
+    <innerclass refid="structMesh_1_1ColorPSCB" prot="protected">Mesh::ColorPSCB</innerclass>
+    <innerclass refid="structMesh_1_1ColorPSCB2" prot="protected">Mesh::ColorPSCB2</innerclass>
+    <innerclass refid="structMesh_1_1ColorPSCB3" prot="protected">Mesh::ColorPSCB3</innerclass>
+    <innerclass refid="structMesh_1_1ColorPSCB4" prot="protected">Mesh::ColorPSCB4</innerclass>
+    <innernamespace refid="namespaceren">ren</innernamespace>
+    <innernamespace refid="namespacever">ver</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;DirectXMath.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="material_8h" kindref="compound">material.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="rendering__channel_8h" kindref="compound">rendering_channel.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="transform__vscb_8h" kindref="compound">transform_vscb.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classVertexBuffer" kindref="compound">VertexBuffer</ref>;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classIndexBuffer" kindref="compound">IndexBuffer</ref>;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPrimitiveTopology" kindref="compound">PrimitiveTopology</ref>;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classGraphics" kindref="compound">Graphics</ref>;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMaterialLoader" kindref="compound">MaterialLoader</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classIBindable" kindref="compound">IBindable</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classNode" kindref="compound">Node</ref>;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">aiMesh;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceren" kindref="compound">ren</ref></highlight></codeline>
+<codeline lineno="21"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Renderer;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacever" kindref="compound">ver</ref></highlight></codeline>
+<codeline lineno="26"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">VBuffer;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="classMesh" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMesh" kindref="compound">Mesh</ref></highlight></codeline>
+<codeline lineno="31"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="32" refid="classMesh_a1072334674042ddad806e28bdeaad983_1a1072334674042ddad806e28bdeaad983" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classMesh_a1072334674042ddad806e28bdeaad983_1a1072334674042ddad806e28bdeaad983" kindref="member">m_distanceFromActiveCamera</ref><sp/>=<sp/>0.0f;</highlight></codeline>
+<codeline lineno="33" refid="classMesh_a5a75c6d3a47632d15ff774245e878111_1a5a75c6d3a47632d15ff774245e878111" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMesh_a5a75c6d3a47632d15ff774245e878111_1a5a75c6d3a47632d15ff774245e878111" kindref="member">m_bRenderedThisFrame</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="35" refid="classMesh_a2be1d0d997a5ea723e79320cd5a360d2_1a2be1d0d997a5ea723e79320cd5a360d2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classMesh_a2be1d0d997a5ea723e79320cd5a360d2_1a2be1d0d997a5ea723e79320cd5a360d2" kindref="member">m_meshId</ref><sp/>=<sp/>0u;</highlight></codeline>
+<codeline lineno="36" refid="classMesh_af08edebaaa5ca60d67aa42c9f4f4d75f_1af08edebaaa5ca60d67aa42c9f4f4d75f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNode" kindref="compound">Node</ref><sp/>*<ref refid="classMesh_af08edebaaa5ca60d67aa42c9f4f4d75f_1af08edebaaa5ca60d67aa42c9f4f4d75f" kindref="member">m_pNode</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="37" refid="classMesh_a77337ee8b7114ef5311bcf27e0046e22_1a77337ee8b7114ef5311bcf27e0046e22" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;DirectX::XMFLOAT3,<sp/>DirectX::XMFLOAT3&gt;<sp/><ref refid="classMesh_a77337ee8b7114ef5311bcf27e0046e22_1a77337ee8b7114ef5311bcf27e0046e22" kindref="member">m_aabb</ref>{{0,<sp/>0,<sp/>0},{0,<sp/>0,<sp/>0}};<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>#TODO:<sp/>Collision<sp/>mesh<sp/>needs<sp/>to<sp/>be<sp/>recalculated<sp/>if<sp/>the<sp/>object<sp/>is<sp/>rotated,<sp/>scaled<sp/>or<sp/>animated</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classMesh_a05ef62d082e7a5c1fb49bded4e8c69ea_1a05ef62d082e7a5c1fb49bded4e8c69ea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;VertexBuffer&gt;<sp/><ref refid="classMesh_a05ef62d082e7a5c1fb49bded4e8c69ea_1a05ef62d082e7a5c1fb49bded4e8c69ea" kindref="member">m_pVertexBuffer</ref>;</highlight></codeline>
+<codeline lineno="39" refid="classMesh_aa5fc2902e90f9ccb60a85d79c2ee85f7_1aa5fc2902e90f9ccb60a85d79c2ee85f7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;IndexBuffer&gt;<sp/><ref refid="classMesh_aa5fc2902e90f9ccb60a85d79c2ee85f7_1aa5fc2902e90f9ccb60a85d79c2ee85f7" kindref="member">m_pIndexBuffer</ref>;</highlight></codeline>
+<codeline lineno="40" refid="classMesh_ae621e49b973b900a5247f661ee4d7f01_1ae621e49b973b900a5247f661ee4d7f01" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;PrimitiveTopology&gt;<sp/><ref refid="classMesh_ae621e49b973b900a5247f661ee4d7f01_1ae621e49b973b900a5247f661ee4d7f01" kindref="member">m_pPrimitiveTopology</ref>;</highlight></codeline>
+<codeline lineno="41" refid="classMesh_a20c8448dfbc8df1b7fa70a07b1d55470_1a20c8448dfbc8df1b7fa70a07b1d55470" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;TransformVSCB&gt;<sp/><ref refid="classMesh_a20c8448dfbc8df1b7fa70a07b1d55470_1a20c8448dfbc8df1b7fa70a07b1d55470" kindref="member">m_pTransformVscb</ref>;</highlight></codeline>
+<codeline lineno="42" refid="classMesh_a50eabba438bb2476103fa94c20521800_1a50eabba438bb2476103fa94c20521800" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Material&gt;<sp/><ref refid="classMesh_a50eabba438bb2476103fa94c20521800_1a50eabba438bb2476103fa94c20521800" kindref="member">m_materials</ref>;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="structMesh_1_1ColorPSCB" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structMesh_1_1ColorPSCB" kindref="compound">ColorPSCB</ref></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="46" refid="structMesh_1_1ColorPSCB_a4c204c7a4d996b78ada77fd3ef55434c_1a4c204c7a4d996b78ada77fd3ef55434c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DirectX::XMFLOAT4<sp/><ref refid="structMesh_1_1ColorPSCB_a4c204c7a4d996b78ada77fd3ef55434c_1a4c204c7a4d996b78ada77fd3ef55434c" kindref="member">materialColor</ref><sp/>=<sp/>{1.0f,<sp/>1.0f,<sp/>1.0f,<sp/>1.0f};</highlight></codeline>
+<codeline lineno="47" refid="classMesh_a39d8f1407340f362a62b55d583bcf940_1a39d8f1407340f362a62b55d583bcf940" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><ref refid="classMesh_a39d8f1407340f362a62b55d583bcf940_1a39d8f1407340f362a62b55d583bcf940" kindref="member">m_colorPscb</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="structMesh_1_1ColorPSCB2" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structMesh_1_1ColorPSCB2" kindref="compound">ColorPSCB2</ref></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="51" refid="structMesh_1_1ColorPSCB2_a000275e2763214dc89ac75713d5c999a_1a000275e2763214dc89ac75713d5c999a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DirectX::XMFLOAT4<sp/><ref refid="structMesh_1_1ColorPSCB2_a000275e2763214dc89ac75713d5c999a_1a000275e2763214dc89ac75713d5c999a" kindref="member">materialColor</ref><sp/>=<sp/>{0.8f,<sp/>0.2f,<sp/>0.15f,<sp/>1.0f};</highlight></codeline>
+<codeline lineno="52" refid="classMesh_aa46b1429ae3e0ab7ff10c1fea306d3cd_1aa46b1429ae3e0ab7ff10c1fea306d3cd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><ref refid="classMesh_aa46b1429ae3e0ab7ff10c1fea306d3cd_1aa46b1429ae3e0ab7ff10c1fea306d3cd" kindref="member">m_colorPscbOutline</ref>;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="structMesh_1_1ColorPSCB3" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structMesh_1_1ColorPSCB3" kindref="compound">ColorPSCB3</ref></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="56" refid="structMesh_1_1ColorPSCB3_ab5095acf2b5dbecc7bd888c244878f03_1ab5095acf2b5dbecc7bd888c244878f03" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DirectX::XMFLOAT4<sp/><ref refid="structMesh_1_1ColorPSCB3_ab5095acf2b5dbecc7bd888c244878f03_1ab5095acf2b5dbecc7bd888c244878f03" kindref="member">materialColor</ref><sp/>=<sp/>{0.1f,<sp/>0.8f,<sp/>0.05f,<sp/>1.0f};</highlight></codeline>
+<codeline lineno="57" refid="classMesh_a832c0d6e6367ecf9926c690678498c99_1a832c0d6e6367ecf9926c690678498c99" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><ref refid="classMesh_a832c0d6e6367ecf9926c690678498c99_1a832c0d6e6367ecf9926c690678498c99" kindref="member">m_colorPscbWireframe</ref>;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="structMesh_1_1ColorPSCB4" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structMesh_1_1ColorPSCB4" kindref="compound">ColorPSCB4</ref></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="61" refid="structMesh_1_1ColorPSCB4_aa5b39d3550754b2fc5af8b7e948f7c26_1aa5b39d3550754b2fc5af8b7e948f7c26" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DirectX::XMFLOAT4<sp/><ref refid="structMesh_1_1ColorPSCB4_aa5b39d3550754b2fc5af8b7e948f7c26_1aa5b39d3550754b2fc5af8b7e948f7c26" kindref="member">materialColor</ref><sp/>=<sp/>{0.3f,<sp/>0.2f,<sp/>0.15f,<sp/>1.0f};</highlight></codeline>
+<codeline lineno="62" refid="classMesh_a38b2f938403ca728ab9b7f64ccc74724_1a38b2f938403ca728ab9b7f64ccc74724" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><ref refid="classMesh_a38b2f938403ca728ab9b7f64ccc74724_1a38b2f938403ca728ab9b7f64ccc74724" kindref="member">m_colorPscbDepthReversed</ref>;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>warning(<sp/>disable<sp/>:<sp/>26495<sp/>)</highlight></codeline>
+<codeline lineno="66" refid="classMesh_ae6b6c56f0ebfa2f6b2b10d25a835c865_1ae6b6c56f0ebfa2f6b2b10d25a835c865" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMesh_ae6b6c56f0ebfa2f6b2b10d25a835c865_1ae6b6c56f0ebfa2f6b2b10d25a835c865" kindref="member">Mesh</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>warning(<sp/>default<sp/>:<sp/>26495<sp/>)</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMesh_ae6b6c56f0ebfa2f6b2b10d25a835c865_1ae6b6c56f0ebfa2f6b2b10d25a835c865" kindref="member">Mesh</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMaterialLoader" kindref="compound">MaterialLoader</ref><sp/>&amp;mat,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>aiMesh<sp/>&amp;aimesh,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>initialScale<sp/>=<sp/>1.0f<sp/>);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classMesh_a508b14c30f81bdc95a94ec112ff1d8e2_1a508b14c30f81bdc95a94ec112ff1d8e2" kindref="member">~Mesh</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="71" refid="classMesh_a092585e17e17fda4a97ed3ef55f7e6de_1a092585e17e17fda4a97ed3ef55f7e6de" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMesh" kindref="compound">Mesh</ref>(<sp/>const<sp/><ref refid="classMesh" kindref="compound">Mesh</ref><sp/>&amp;rhs<sp/>)<sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="72" refid="classMesh_ae40add8703d205cee7cd05df39a61152_1ae40add8703d205cee7cd05df39a61152" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMesh" kindref="compound">Mesh</ref>&amp;<sp/>operator=(<sp/>const<sp/><ref refid="classMesh" kindref="compound">Mesh</ref><sp/>&amp;rhs<sp/>)<sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMesh" kindref="compound">Mesh</ref>(<sp/><ref refid="classMesh" kindref="compound">Mesh</ref><sp/>&amp;&amp;rhs<sp/>)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="74" refid="classMesh_a5013b72eca2bd43b1853cd0b8c98498c_1a5013b72eca2bd43b1853cd0b8c98498c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMesh" kindref="compound">Mesh</ref>&amp;<sp/>operator=(<sp/><ref refid="classMesh" kindref="compound">Mesh</ref><sp/>&amp;&amp;rhs<sp/>)<sp/>noexcept<sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMesh_a501f7dc11f57390edcd9acaf5a1b07cd_1a501f7dc11f57390edcd9acaf5a1b07cd" kindref="member">setNode</ref>(<sp/><ref refid="classNode" kindref="compound">Node</ref><sp/>&amp;node<sp/>);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMesh_a31cc65adefd11990f5246435cedaaf1e_1a31cc65adefd11990f5246435cedaaf1e" kindref="member">update</ref>(<sp/>const<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>dt,<sp/>const<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>lerpBetweenFrames<sp/>)<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMesh_a582af69212023f64426c5f2fbd816e4c_1a582af69212023f64426c5f2fbd816e4c" kindref="member">render</ref>(<sp/>const<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>channels<sp/>=<sp/><ref refid="namespacerch" kindref="compound">rch</ref>::all<sp/>)<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMesh_a45a4b9d8490d23482ebef2e5138b7351_1a45a4b9d8490d23482ebef2e5138b7351" kindref="member">bind</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>const<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>template&lt;typename<sp/>T,<sp/>typename<sp/>=<sp/>std::enable_if_t&lt;std::is_base_of_v&lt;<ref refid="classIBindable" kindref="compound">IBindable</ref>,<sp/>T&gt;&gt;&gt;</highlight></codeline>
+<codeline lineno="82" refid="classMesh_a1599e16a5e4753ac3c28dbc493cbd0ec_1a1599e16a5e4753ac3c28dbc493cbd0ec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;T*&gt;<sp/><ref refid="classMesh_a1599e16a5e4753ac3c28dbc493cbd0ec_1a1599e16a5e4753ac3c28dbc493cbd0ec" kindref="member">findBindable</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;material<sp/>:<sp/><ref refid="classMesh_a50eabba438bb2476103fa94c20521800_1a50eabba438bb2476103fa94c20521800" kindref="member">m_materials</ref><sp/>)</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;bindable<sp/>:<sp/>material.getBindables()<sp/>)</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>*pB<sp/>=<sp/></highlight><highlight class="keyword">dynamic_cast&lt;</highlight><highlight class="normal">T*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/>bindable.get()<sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>pB;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>=<sp/>std::enable_if_t&lt;std::is_base_of_v&lt;IBindable,<sp/>T&gt;&gt;&gt;</highlight></codeline>
+<codeline lineno="98" refid="classMesh_ada9efb2af727b0ff2573bdac9bdd156d_1ada9efb2af727b0ff2573bdac9bdd156d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;const<sp/>T*&gt;<sp/><ref refid="classMesh_ada9efb2af727b0ff2573bdac9bdd156d_1ada9efb2af727b0ff2573bdac9bdd156d" kindref="member">findBindable</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;material<sp/>:<sp/><ref refid="classMesh_a50eabba438bb2476103fa94c20521800_1a50eabba438bb2476103fa94c20521800" kindref="member">m_materials</ref><sp/>)</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;bindable<sp/>:<sp/>material.getBindables()<sp/>)</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>*pB<sp/>=<sp/></highlight><highlight class="keyword">dynamic_cast&lt;</highlight><highlight class="normal">T*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/>bindable.get()<sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>pB;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMesh_a76bbd879b2115f72799c5d1676a8960b_1a76bbd879b2115f72799c5d1676a8960b" kindref="member">addMaterial</ref>(<sp/><ref refid="classMaterial" kindref="compound">Material</ref><sp/>material<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMesh_a258f981ef88fe2dc1b4095e089dd99f2_1a258f981ef88fe2dc1b4095e089dd99f2" kindref="member">setMaterialEnabled</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>channels,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bEnabled<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMesh_a513b4f9e4065d0b004474722f1ddd148_1a513b4f9e4065d0b004474722f1ddd148" kindref="member">accept</ref>(<sp/><ref refid="classIImGuiConstantBufferVisitor" kindref="compound">IImGuiConstantBufferVisitor</ref><sp/>&amp;ev<sp/>);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classMesh_ab13c2e773a18856f04a52c1d748c4be2_1ab13c2e773a18856f04a52c1d748c4be2" kindref="member">getIndicesCount</ref>()<sp/>const<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMesh_a0f3175b74632a675caad84b8f5defb8b_1a0f3175b74632a675caad84b8f5defb8b" kindref="member">connectMaterialsToRenderer</ref>(<sp/><ref refid="namespaceren" kindref="compound">ren</ref>::Renderer<sp/>&amp;r<sp/>);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classMesh_abde180d729a79a487bd6568d42771697_1abde180d729a79a487bd6568d42771697" kindref="member">getDistanceFromActiveCamera</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMesh_a1d18ad52515cfd7e2cca966cfb76dddd_1a1d18ad52515cfd7e2cca966cfb76dddd" kindref="member">isRenderedThisFrame</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;<ref refid="classVertexBuffer" kindref="compound">VertexBuffer</ref>&gt;&amp;<sp/><ref refid="classMesh_a8cb16fb21424f90eadf022d531d17d30_1a8cb16fb21424f90eadf022d531d17d30" kindref="member">getVertexBuffer</ref>();</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMesh_a2e47e473545615fcbffff761d8912ea1_1a2e47e473545615fcbffff761d8912ea1" kindref="member">createAabb</ref>(<sp/>const<sp/><ref refid="namespacever" kindref="compound">ver</ref>::VBuffer<sp/>&amp;verts<sp/>);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/><ref refid="classNode" kindref="compound">Node</ref>*<sp/><ref refid="classMesh_a425a3ab4960ac4a925aba7c6df2da63b_1a425a3ab4960ac4a925aba7c6df2da63b" kindref="member">getNode</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classMesh_a2e68eeb89cb2cb8b1caa45911f569ed4_1a2e68eeb89cb2cb8b1caa45911f569ed4" kindref="member">getName</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classMesh_a3d2f9912e0fa051f1a756a57bb225adb_1a3d2f9912e0fa051f1a756a57bb225adb" kindref="member">getMeshId</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal">protected:</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classMesh_abde180d729a79a487bd6568d42771697_1abde180d729a79a487bd6568d42771697" kindref="member">getDistanceFromActiveCamera</ref>(<sp/>const<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>::XMFLOAT3<sp/>&amp;pos<sp/>)<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMesh_add44446356aaf7c808a25562090cc556_1add44446356aaf7c808a25562090cc556" kindref="member">setMeshId</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal">private:</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMesh_a8aeff98bfd0c764a8917047c98f9962f_1a8aeff98bfd0c764a8917047c98f9962f" kindref="member">setDistanceFromActiveCamera</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMesh_a2e47e473545615fcbffff761d8912ea1_1a2e47e473545615fcbffff761d8912ea1" kindref="member">createAabb</ref>(<sp/>const<sp/>aiMesh<sp/>&amp;aiMesh<sp/>);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMesh_aab3b7f01c082616f9656d44d7f75fdec_1aab3b7f01c082616f9656d44d7f75fdec" kindref="member">isFrustumCulled</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/mesh.h"/>
+  </compounddef>
+</doxygen>

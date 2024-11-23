@@ -1,0 +1,292 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classSoundManager_1_1Channel" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>SoundManager::Channel</compoundname>
+    <basecompoundref refid="classNonCopyable" prot="public" virt="non-virtual">NonCopyable</basecompoundref>
+    <includes refid="key__sound_8h" local="no">key_sound.h</includes>
+    <sectiondef kind="friend">
+      <memberdef kind="friend" id="classSoundManager_1_1Channel_a50914f77c7cf4fb97616c898c5291f4b_1a50914f77c7cf4fb97616c898c5291f4b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class Sound</definition>
+        <argsstring></argsstring>
+        <name>Sound</name>
+        <qualifiedname>SoundManager::Channel::Sound</qualifiedname>
+        <param>
+          <type><ref refid="classSound" kindref="compound">Sound</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="45" column="14" bodyfile="inc/key_sound.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classSoundManager_1_1Channel_adc2592dd8f7f2ed3701a32baf12df372_1adc2592dd8f7f2ed3701a32baf12df372" prot="private" static="no" mutable="no">
+        <type>struct IXAudio2SourceVoice *</type>
+        <definition>struct IXAudio2SourceVoice* SoundManager::Channel::m_pSourceVoice</definition>
+        <argsstring></argsstring>
+        <name>m_pSourceVoice</name>
+        <qualifiedname>SoundManager::Channel::m_pSourceVoice</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="47" column="26" bodyfile="inc/key_sound.h" bodystart="47" bodyend="-1"/>
+        <referencedby refid="classSoundManager_1_1Channel_aadc3d5523ad54205848ae16d235c3b78_1aadc3d5523ad54205848ae16d235c3b78" compoundref="key__sound_8cpp" startline="67" endline="75">~Channel</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classSoundManager_1_1Channel_a7a4d36846e0e0fb4a1354c98c72359b0_1a7a4d36846e0e0fb4a1354c98c72359b0" prot="private" static="no" mutable="no">
+        <type><ref refid="classSound" kindref="compound">Sound</ref> *</type>
+        <definition>Sound* SoundManager::Channel::m_pSound</definition>
+        <argsstring></argsstring>
+        <name>m_pSound</name>
+        <qualifiedname>SoundManager::Channel::m_pSound</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="48" column="7" bodyfile="inc/key_sound.h" bodystart="48" bodyend="-1"/>
+        <referencedby refid="classSoundManager_1_1Channel_aadc3d5523ad54205848ae16d235c3b78_1aadc3d5523ad54205848ae16d235c3b78" compoundref="key__sound_8cpp" startline="67" endline="75">~Channel</referencedby>
+        <referencedby refid="classSoundManager_1_1Channel_ac96947ac0fe438b53be241d5b0f02a45_1ac96947ac0fe438b53be241d5b0f02a45" compoundref="key__sound_8cpp" startline="93" endline="207">setupChannel</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classSoundManager_1_1Channel_a04e2334276c6b3fb260569adf6a2dfd2_1a04e2334276c6b3fb260569adf6a2dfd2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SoundManager::Channel::Channel</definition>
+        <argsstring>()=default</argsstring>
+        <name>Channel</name>
+        <qualifiedname>SoundManager::Channel::Channel</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="50" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classSoundManager_1_1Channel_a2763d55d0132595bc75bd5023629c11b_1a2763d55d0132595bc75bd5023629c11b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SoundManager::Channel::Channel</definition>
+        <argsstring>(Channel &amp;&amp;rhs) cond_noex</argsstring>
+        <name>Channel</name>
+        <qualifiedname>SoundManager::Channel::Channel</qualifiedname>
+        <param>
+          <type><ref refid="classSoundManager_1_1Channel" kindref="compound">Channel</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="51" column="1" bodyfile="src/key_sound.cpp" bodystart="77" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classSoundManager_1_1Channel_a64d6f61f24fd7514322dbc2193c63f49_1a64d6f61f24fd7514322dbc2193c63f49" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classSoundManager_1_1Channel" kindref="compound">Channel</ref> &amp;</type>
+        <definition>auto SoundManager::Channel::operator=</definition>
+        <argsstring>(Channel &amp;&amp;rhs) cond_noex</argsstring>
+        <name>operator=</name>
+        <qualifiedname>SoundManager::Channel::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classSoundManager_1_1Channel" kindref="compound">Channel</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="52" column="9" bodyfile="src/key_sound.cpp" bodystart="86" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classSoundManager_1_1Channel_aadc3d5523ad54205848ae16d235c3b78_1aadc3d5523ad54205848ae16d235c3b78" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>SoundManager::Channel::~Channel</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>~Channel</name>
+        <qualifiedname>SoundManager::Channel::~Channel</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="53" column="1" bodyfile="src/key_sound.cpp" bodystart="67" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classSoundManager_1_1Channel_ac96947ac0fe438b53be241d5b0f02a45_1ac96947ac0fe438b53be241d5b0f02a45" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SoundManager::Channel::setupChannel</definition>
+        <argsstring>(SoundManager &amp;soundManager, Sound &amp;sound)</argsstring>
+        <name>setupChannel</name>
+        <qualifiedname>SoundManager::Channel::setupChannel</qualifiedname>
+        <param>
+          <type><ref refid="classSoundManager" kindref="compound">SoundManager</ref> &amp;</type>
+          <declname>soundManager</declname>
+        </param>
+        <param>
+          <type><ref refid="classSound" kindref="compound">Sound</ref> &amp;</type>
+          <declname>sound</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="55" column="6" bodyfile="src/key_sound.cpp" bodystart="93" bodyend="207"/>
+      </memberdef>
+      <memberdef kind="function" id="classSoundManager_1_1Channel_add92a4f1a98fc8ee81732f3ff04bc51e_1add92a4f1a98fc8ee81732f3ff04bc51e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SoundManager::Channel::playSound</definition>
+        <argsstring>(Sound *sound, const float volume)</argsstring>
+        <name>playSound</name>
+        <qualifiedname>SoundManager::Channel::playSound</qualifiedname>
+        <param>
+          <type><ref refid="classSound" kindref="compound">Sound</ref> *</type>
+          <declname>sound</declname>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>volume</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="56" column="6" bodyfile="src/key_sound.cpp" bodystart="209" bodyend="221"/>
+      </memberdef>
+      <memberdef kind="function" id="classSoundManager_1_1Channel_a6849d436e409966424b6c6ed899cc8a6_1a6849d436e409966424b6c6ed899cc8a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SoundManager::Channel::stopSound</definition>
+        <argsstring>() cond_noex</argsstring>
+        <name>stopSound</name>
+        <qualifiedname>SoundManager::Channel::stopSound</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="57" column="6" bodyfile="src/key_sound.cpp" bodystart="223" bodyend="229"/>
+        <referencedby refid="classSoundManager_1_1Channel_ac96947ac0fe438b53be241d5b0f02a45_1ac96947ac0fe438b53be241d5b0f02a45" compoundref="key__sound_8cpp" startline="93" endline="207">setupChannel</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classSoundManager_1_1Channel_a6ffecb785dc031c585f2058fa62435e5_1a6ffecb785dc031c585f2058fa62435e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SoundManager::Channel::rechannel</definition>
+        <argsstring>(const Sound *pOldSound, Sound *pNewSound)</argsstring>
+        <name>rechannel</name>
+        <qualifiedname>SoundManager::Channel::rechannel</qualifiedname>
+        <param>
+          <type>const <ref refid="classSound" kindref="compound">Sound</ref> *</type>
+          <declname>pOldSound</declname>
+        </param>
+        <param>
+          <type><ref refid="classSound" kindref="compound">Sound</ref> *</type>
+          <declname>pNewSound</declname>
+        </param>
+        <briefdescription>
+<para>finds new channel for the existing <ref refid="classSound" kindref="compound">Sound</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="59" column="6" bodyfile="src/key_sound.cpp" bodystart="231" bodyend="236"/>
+      </memberdef>
+      <memberdef kind="function" id="classSoundManager_1_1Channel_a12172872c5d842ec03398e6438564ea6_1a12172872c5d842ec03398e6438564ea6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classSound" kindref="compound">Sound</ref> *</type>
+        <definition>Sound * SoundManager::Channel::getSound</definition>
+        <argsstring>() const cond_noex</argsstring>
+        <name>getSound</name>
+        <qualifiedname>SoundManager::Channel::getSound</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="60" column="7" bodyfile="src/key_sound.cpp" bodystart="238" bodyend="242"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>back-end </para>
+    </briefdescription>
+    <detaileddescription>
+<para>============================================================</para>
+<para><simplesect kind="author"><para>KeyC0de </para>
+</simplesect>
+<simplesect kind="date"><para>2020/10/25 14:01</para>
+</simplesect>
+each <ref refid="classSound" kindref="compound">Sound</ref> sticks to a single <ref refid="classSoundManager_1_1Channel" kindref="compound">Channel</ref> <heading level="1">at most s_nMaxAudioChannels can play at a certain time </heading>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>NonCopyable</label>
+        <link refid="classNonCopyable"/>
+      </node>
+      <node id="1">
+        <label>SoundManager::Channel</label>
+        <link refid="classSoundManager_1_1Channel"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>NonCopyable</label>
+        <link refid="classNonCopyable"/>
+      </node>
+      <node id="3">
+        <label>Sound</label>
+        <link refid="classSound"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>SoundManager::Channel</label>
+        <link refid="classSoundManager_1_1Channel"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>m_pSound</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/key_sound.h" line="42" column="1" bodyfile="inc/key_sound.h" bodystart="44" bodyend="61"/>
+    <listofallmembers>
+      <member refid="classSoundManager_1_1Channel_a04e2334276c6b3fb260569adf6a2dfd2_1a04e2334276c6b3fb260569adf6a2dfd2" prot="public" virt="non-virtual"><scope>SoundManager::Channel</scope><name>Channel</name></member>
+      <member refid="classSoundManager_1_1Channel_a2763d55d0132595bc75bd5023629c11b_1a2763d55d0132595bc75bd5023629c11b" prot="public" virt="non-virtual"><scope>SoundManager::Channel</scope><name>Channel</name></member>
+      <member refid="classSoundManager_1_1Channel_a12172872c5d842ec03398e6438564ea6_1a12172872c5d842ec03398e6438564ea6" prot="public" virt="non-virtual"><scope>SoundManager::Channel</scope><name>getSound</name></member>
+      <member refid="classSoundManager_1_1Channel_a7a4d36846e0e0fb4a1354c98c72359b0_1a7a4d36846e0e0fb4a1354c98c72359b0" prot="private" virt="non-virtual"><scope>SoundManager::Channel</scope><name>m_pSound</name></member>
+      <member refid="classSoundManager_1_1Channel_adc2592dd8f7f2ed3701a32baf12df372_1adc2592dd8f7f2ed3701a32baf12df372" prot="private" virt="non-virtual"><scope>SoundManager::Channel</scope><name>m_pSourceVoice</name></member>
+      <member refid="classNonCopyable_a809b6e4ade7ae32f6d248f2a3b783d45_1a809b6e4ade7ae32f6d248f2a3b783d45" prot="public" virt="non-virtual"><scope>SoundManager::Channel</scope><name>NonCopyable</name></member>
+      <member refid="classNonCopyable_a15aa3015488bb26c47ded914cb630cf5_1a15aa3015488bb26c47ded914cb630cf5" prot="public" virt="non-virtual"><scope>SoundManager::Channel</scope><name>NonCopyable</name></member>
+      <member refid="classNonCopyable_a487646562ae30ece23d7638f2aed1dde_1a487646562ae30ece23d7638f2aed1dde" prot="public" virt="non-virtual"><scope>SoundManager::Channel</scope><name>NonCopyable</name></member>
+      <member refid="classNonCopyable_af716e4cfb79381710ef4490414939ae9_1af716e4cfb79381710ef4490414939ae9" prot="public" virt="non-virtual"><scope>SoundManager::Channel</scope><name>NonCopyable</name></member>
+      <member refid="classSoundManager_1_1Channel_a64d6f61f24fd7514322dbc2193c63f49_1a64d6f61f24fd7514322dbc2193c63f49" prot="public" virt="non-virtual"><scope>SoundManager::Channel</scope><name>operator=</name></member>
+      <member refid="classNonCopyable_af4788b57da9a9faa570c754c22c724f5_1af4788b57da9a9faa570c754c22c724f5" prot="public" virt="non-virtual" ambiguityscope="NonCopyable::"><scope>SoundManager::Channel</scope><name>operator=</name></member>
+      <member refid="classNonCopyable_ae032ca32cda9c836c27b28eb6a087d18_1ae032ca32cda9c836c27b28eb6a087d18" prot="public" virt="non-virtual" ambiguityscope="NonCopyable::"><scope>SoundManager::Channel</scope><name>operator=</name></member>
+      <member refid="classNonCopyable_af81816bd4c2c4421a6eab98843ead6e4_1af81816bd4c2c4421a6eab98843ead6e4" prot="public" virt="non-virtual" ambiguityscope="NonCopyable::"><scope>SoundManager::Channel</scope><name>operator=</name></member>
+      <member refid="classSoundManager_1_1Channel_add92a4f1a98fc8ee81732f3ff04bc51e_1add92a4f1a98fc8ee81732f3ff04bc51e" prot="public" virt="non-virtual"><scope>SoundManager::Channel</scope><name>playSound</name></member>
+      <member refid="classSoundManager_1_1Channel_a6ffecb785dc031c585f2058fa62435e5_1a6ffecb785dc031c585f2058fa62435e5" prot="public" virt="non-virtual"><scope>SoundManager::Channel</scope><name>rechannel</name></member>
+      <member refid="classSoundManager_1_1Channel_ac96947ac0fe438b53be241d5b0f02a45_1ac96947ac0fe438b53be241d5b0f02a45" prot="public" virt="non-virtual"><scope>SoundManager::Channel</scope><name>setupChannel</name></member>
+      <member refid="classSoundManager_1_1Channel_a50914f77c7cf4fb97616c898c5291f4b_1a50914f77c7cf4fb97616c898c5291f4b" prot="private" virt="non-virtual"><scope>SoundManager::Channel</scope><name>Sound</name></member>
+      <member refid="classSoundManager_1_1Channel_a6849d436e409966424b6c6ed899cc8a6_1a6849d436e409966424b6c6ed899cc8a6" prot="public" virt="non-virtual"><scope>SoundManager::Channel</scope><name>stopSound</name></member>
+      <member refid="classSoundManager_1_1Channel_aadc3d5523ad54205848ae16d235c3b78_1aadc3d5523ad54205848ae16d235c3b78" prot="public" virt="non-virtual"><scope>SoundManager::Channel</scope><name>~Channel</name></member>
+      <member refid="classNonCopyable_a3e461fb46c72b9a5af7df7e74dbd899e_1a3e461fb46c72b9a5af7df7e74dbd899e" prot="protected" virt="non-virtual"><scope>SoundManager::Channel</scope><name>~NonCopyable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

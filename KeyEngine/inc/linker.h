@@ -24,13 +24,13 @@ public:
 	virtual std::shared_ptr<IRenderSurface> getRenderSurface();
 };
 
-//=============================================================
-//	\class	BindableLinker
-//	\author	KeyC0de
-//	\date	2022/10/02 21:08
-//	\brief	This T will mostly be RTV of an offscreen surface, but it can also be a PSCB
-//			resource T will be bound as input to the graphics pipeline in the next Pass
-//=============================================================
+///=============================================================
+/// \class	BindableLinker
+/// \author	KeyC0de
+/// \date	2022/10/02 21:08
+/// \brief	This T will mostly be RTV of an offscreen surface, but it can also be a PSCB
+/// \brief	resource T will be bound as input to the graphics pipeline in the next Pass
+///=============================================================
 template<class T>
 class BindableLinker final
 	: public ILinker
@@ -60,13 +60,13 @@ public:
 	}
 };
 
-//=============================================================
-//	\class	RenderSurfaceLinker
-//	\author	KeyC0de
-//	\date	2022/10/07 21:30
-//	\brief	T should be a RTV or a DSV
-//			resource T will be bound as output to the graphics pipeline in the next Pass
-//=============================================================
+///=============================================================
+/// \class	RenderSurfaceLinker
+/// \author	KeyC0de
+/// \date	2022/10/07 21:30
+/// \brief	T should be a RTV or a DSV
+/// \brief	resource T will be bound as output to the graphics pipeline in the next Pass
+///=============================================================
 template<class T>
 class RenderSurfaceLinker final
 	: public ILinker

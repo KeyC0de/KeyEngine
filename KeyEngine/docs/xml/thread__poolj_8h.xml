@@ -1,0 +1,183 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="thread__poolj_8h" kind="file" language="C++">
+    <compoundname>thread_poolj.h</compoundname>
+    <includes local="no">vector</includes>
+    <includes local="no">queue</includes>
+    <includes local="no">mutex</includes>
+    <includes local="no">condition_variable</includes>
+    <includes local="yes">jthread/jthread.h</includes>
+    <includes local="yes">jthread/stop_token.h</includes>
+    <includes refid="non__copyable_8h" local="yes">non_copyable.h</includes>
+    <includes refid="key__exception_8h" local="yes">key_exception.h</includes>
+    <includedby refid="key__sound_8cpp" local="yes">src/key_sound.cpp</includedby>
+    <includedby refid="main_8cpp" local="yes">src/main.cpp</includedby>
+    <includedby refid="thread__poolj_8cpp" local="yes">src/thread_poolj.cpp</includedby>
+    <incdepgraph>
+      <node id="9">
+        <label>key_exception.h</label>
+        <link refid="key__exception_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="1">
+        <label>inc/thread_poolj.h</label>
+        <link refid="thread__poolj_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>condition_variable</label>
+      </node>
+      <node id="6">
+        <label>jthread/jthread.h</label>
+      </node>
+      <node id="7">
+        <label>jthread/stop_token.h</label>
+      </node>
+      <node id="4">
+        <label>mutex</label>
+      </node>
+      <node id="3">
+        <label>queue</label>
+      </node>
+      <node id="11">
+        <label>stdexcept</label>
+      </node>
+      <node id="10">
+        <label>string</label>
+      </node>
+      <node id="2">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>inc/thread_poolj.h</label>
+        <link refid="thread__poolj_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/key_sound.cpp</label>
+        <link refid="key__sound_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/thread_poolj.cpp</label>
+        <link refid="thread__poolj_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classThreadPoolJ" prot="public">ThreadPoolJ</innerclass>
+    <innernamespace refid="namespacefunc__async">func_async</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;queue&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mutex&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;condition_variable&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;jthread/jthread.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;jthread/stop_token.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="non__copyable_8h" kindref="compound">non_copyable.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="key__exception_8h" kindref="compound">key_exception.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classThreadPoolJ" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classThreadPoolJ" kindref="compound">ThreadPoolJ</ref><sp/>final</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classNonCopyable" kindref="compound">NonCopyable</ref></highlight></codeline>
+<codeline lineno="33"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="34" refid="classThreadPoolJ_a8340923fea4d70543e295304b154689f_1a8340923fea4d70543e295304b154689f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="classThreadPoolJ_a8340923fea4d70543e295304b154689f_1a8340923fea4d70543e295304b154689f" kindref="member">Task</ref><sp/>=<sp/>std::function&lt;void(nonstd::stop_token)&gt;;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="classThreadPoolJ_a77837e4adf53b67bef9e8ee176975eb3_1a77837e4adf53b67bef9e8ee176975eb3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classThreadPoolJ" kindref="compound">ThreadPoolJ</ref><sp/>*<ref refid="classThreadPoolJ_a77837e4adf53b67bef9e8ee176975eb3_1a77837e4adf53b67bef9e8ee176975eb3" kindref="member">s_pInstance</ref>;</highlight></codeline>
+<codeline lineno="37" refid="classThreadPoolJ_a481df3da83614d4f7a4e0a95963bbeff_1a481df3da83614d4f7a4e0a95963bbeff" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::recursive_mutex<sp/><ref refid="classThreadPoolJ_a481df3da83614d4f7a4e0a95963bbeff_1a481df3da83614d4f7a4e0a95963bbeff" kindref="member">s_mu</ref>;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classThreadPoolJ_a1456022600a4ea8b213f5d883ddca031_1a1456022600a4ea8b213f5d883ddca031" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classThreadPoolJ_a1456022600a4ea8b213f5d883ddca031_1a1456022600a4ea8b213f5d883ddca031" kindref="member">m_bEnabled</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="40" refid="classThreadPoolJ_a1b7cefb6988f2cf5c9eb395f54172a94_1a1b7cefb6988f2cf5c9eb395f54172a94" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;nonstd::jthread&gt;<sp/><ref refid="classThreadPoolJ_a1b7cefb6988f2cf5c9eb395f54172a94_1a1b7cefb6988f2cf5c9eb395f54172a94" kindref="member">m_pool</ref>;</highlight></codeline>
+<codeline lineno="41" refid="classThreadPoolJ_a7002faf8e57fa5b0d17e673a04de60e3_1a7002faf8e57fa5b0d17e673a04de60e3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::queue&lt;Task&gt;<sp/><ref refid="classThreadPoolJ_a7002faf8e57fa5b0d17e673a04de60e3_1a7002faf8e57fa5b0d17e673a04de60e3" kindref="member">m_tasks</ref>;</highlight></codeline>
+<codeline lineno="42" refid="classThreadPoolJ_aef4dca2090783fa0b169fb574ea3e8d2_1aef4dca2090783fa0b169fb574ea3e8d2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::condition_variable<sp/><ref refid="classThreadPoolJ_aef4dca2090783fa0b169fb574ea3e8d2_1aef4dca2090783fa0b169fb574ea3e8d2" kindref="member">m_cond</ref>;</highlight></codeline>
+<codeline lineno="43" refid="classThreadPoolJ_a4146b8e2ffbee3f47258434d757ba944_1a4146b8e2ffbee3f47258434d757ba944" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::mutex<sp/><ref refid="classThreadPoolJ_a4146b8e2ffbee3f47258434d757ba944_1a4146b8e2ffbee3f47258434d757ba944" kindref="member">m_mu</ref>;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classThreadPoolJ_a45e02b36197bf6c1ed3baa2ea4ee7924_1a45e02b36197bf6c1ed3baa2ea4ee7924" kindref="member">ThreadPoolJ</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::size_t<sp/>nthreads,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bStart<sp/>);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classThreadPoolJ_acd20215772d41c1709c3d0403524189d_1acd20215772d41c1709c3d0403524189d" kindref="member">~ThreadPoolJ</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="48" refid="classThreadPoolJ_a794b881dc31840d2a6b9b9dff07b747c_1a794b881dc31840d2a6b9b9dff07b747c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classThreadPoolJ" kindref="compound">ThreadPoolJ</ref>(<sp/>const<sp/><ref refid="classThreadPoolJ" kindref="compound">ThreadPoolJ</ref><sp/>&amp;rhs<sp/>)<sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="49" refid="classThreadPoolJ_a8759bc70c7373545ead803142c195b43_1a8759bc70c7373545ead803142c195b43" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classThreadPoolJ" kindref="compound">ThreadPoolJ</ref>&amp;<sp/>operator=(<sp/>const<sp/><ref refid="classThreadPoolJ" kindref="compound">ThreadPoolJ</ref><sp/>&amp;rhs<sp/>)<sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classThreadPoolJ" kindref="compound">ThreadPoolJ</ref>(<sp/><ref refid="classThreadPoolJ" kindref="compound">ThreadPoolJ</ref><sp/>&amp;&amp;rhs<sp/>)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classThreadPoolJ" kindref="compound">ThreadPoolJ</ref>&amp;<sp/>operator=(<sp/><ref refid="classThreadPoolJ" kindref="compound">ThreadPoolJ</ref><sp/>&amp;&amp;rhs<sp/>)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/><ref refid="classThreadPoolJ" kindref="compound">ThreadPoolJ</ref>&amp;<sp/><ref refid="classThreadPoolJ_a0c0e12a8c7197ac7954aaae0a10a4809_1a0c0e12a8c7197ac7954aaae0a10a4809" kindref="member">getInstance</ref>(<sp/>const<sp/>std::</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>nThreads<sp/>=<sp/>4u,<sp/>const<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bEnabled<sp/>=<sp/>true<sp/>);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classThreadPoolJ_a900b4ee770a970d62cfdb78805dce633_1a900b4ee770a970d62cfdb78805dce633" kindref="member">resetInstance</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classThreadPoolJ_a4eed8445982bec0c3530502424a813a4_1a4eed8445982bec0c3530502424a813a4" kindref="member">start</ref>();</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classThreadPoolJ_a3cfc8aad20e8b95f97f7891651b3b9a4_1a3cfc8aad20e8b95f97f7891651b3b9a4" kindref="member">stop</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classThreadPoolJ_a5b29093e3f530a39ff112af3ccf9ce49_1a5b29093e3f530a39ff112af3ccf9ce49" kindref="member">isEnabled</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>template&lt;typename<sp/>TCallable,<sp/>typename...<sp/>TArgs&gt;</highlight></codeline>
+<codeline lineno="62" refid="classThreadPoolJ_a8d1fb8a147b9e4799a4e5b9c694f9e39_1a8d1fb8a147b9e4799a4e5b9c694f9e39" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classThreadPoolJ_a8d1fb8a147b9e4799a4e5b9c694f9e39_1a8d1fb8a147b9e4799a4e5b9c694f9e39" kindref="member">enqueue</ref>(<sp/>TCallable<sp/>&amp;&amp;f,</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TArgs<sp/>&amp;&amp;...args<sp/>)</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="classThreadPoolJ_a1456022600a4ea8b213f5d883ddca031_1a1456022600a4ea8b213f5d883ddca031" kindref="member">m_bEnabled</ref><sp/>)</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>task<sp/>=<sp/>std::bind(<sp/>std::move(<sp/>f<sp/>),<sp/>std::placeholders::_1,<sp/>std::forward&lt;TArgs&gt;(<sp/>args<sp/>)...<sp/>);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::unique_lock&lt;std::mutex&gt;<sp/>ul{<ref refid="classThreadPoolJ_a4146b8e2ffbee3f47258434d757ba944_1a4146b8e2ffbee3f47258434d757ba944" kindref="member">m_mu</ref>};</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classThreadPoolJ_a7002faf8e57fa5b0d17e673a04de60e3_1a7002faf8e57fa5b0d17e673a04de60e3" kindref="member">m_tasks</ref>.emplace(<sp/>std::move(<sp/>task<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classThreadPoolJ_aef4dca2090783fa0b169fb574ea3e8d2_1aef4dca2090783fa0b169fb574ea3e8d2" kindref="member">m_cond</ref>.notify_one();</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="bindable__exception_8h_ad3b2ea7a349e411ed47fba062fe034f2_1ad3b2ea7a349e411ed47fba062fe034f2" kindref="member">THROW_KEY_EXCEPTION</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>enqueue<sp/>tasks<sp/>in<sp/>an<sp/>inactive<sp/>Thread<sp/>Pool!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classThreadPoolJ_acff3f687fabbf39480d9a4209a67904e_1acff3f687fabbf39480d9a4209a67904e" kindref="member">enable</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classThreadPoolJ_a60154491a2f3080b64bafa4482325a3a_1a60154491a2f3080b64bafa4482325a3a" kindref="member">disable</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classThreadPoolJ_a88b07ec3d369564de821d10986091426_1a88b07ec3d369564de821d10986091426" kindref="member">run</ref>();</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="namespacefunc__async" refkind="compound"><highlight class="normal">namespace<sp/><ref refid="namespacefunc__async" kindref="compound">func_async</ref></highlight></codeline>
+<codeline lineno="88"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacefunc__async_a224c931f9dead8e231b14ceb26da3617_1a224c931f9dead8e231b14ceb26da3617" kindref="member">doPeriodically</ref>(<sp/>nonstd::stop_token<sp/>st,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)&gt;<sp/>&amp;f,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>intervalMs,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>now<sp/>);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespacefunc__async_a5f3e4ca374f7de72954d29184be8f06d_1a5f3e4ca374f7de72954d29184be8f06d" kindref="member">doLater</ref>(<sp/>nonstd::stop_token<sp/>st,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)&gt;<sp/>&amp;f,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>intervalMs<sp/>);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal">}</highlight><highlight class="comment">//<sp/>namespace<sp/>func_async</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="inc/thread_poolj.h"/>
+  </compounddef>
+</doxygen>

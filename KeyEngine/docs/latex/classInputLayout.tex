@@ -1,0 +1,157 @@
+\doxysection{Input\+Layout Class Reference}
+\hypertarget{classInputLayout}{}\label{classInputLayout}\index{InputLayout@{InputLayout}}
+
+
+Vertex Input Layout bindable   
+
+
+
+
+{\ttfamily \#include $<$input\+\_\+layout.\+h$>$}
+
+Inheritance diagram for Input\+Layout\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classInputLayout}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classInputLayout_a96527abda8afcf0a2218c39082183f1d_a96527abda8afcf0a2218c39082183f1d}{Input\+Layout}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const \mbox{\hyperlink{classver_1_1VertexInputLayout}{ver\+::\+Vertex\+Input\+Layout}} \&layout, const \mbox{\hyperlink{classVertexShader}{Vertex\+Shader}} \&vs)
+\item 
+void \mbox{\hyperlink{classInputLayout_a5de9afbd3d6d1324ac4a26f04365b69e_a5de9afbd3d6d1324ac4a26f04365b69e}{bind}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) cond\+\_\+noex override
+\begin{DoxyCompactList}\small\item\em bind graphics resource to a certain stage of the graphics pipeline \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classver_1_1VertexInputLayout}{ver\+::\+Vertex\+Input\+Layout}} \mbox{\hyperlink{classInputLayout_a34ece7c7bfe8599be3768c1ee67a2928_a34ece7c7bfe8599be3768c1ee67a2928}{get\+Layout}} () const noexcept
+\item 
+std\+::string \mbox{\hyperlink{classInputLayout_a23d0b5c4a3a9442ef38e5473a33f7adf_a23d0b5c4a3a9442ef38e5473a33f7adf}{get\+Uid}} () const noexcept override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classIBindable}{IBindable}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classIBindable_a7f68262ff85e25e9f826eae7c01bbfa1_a7f68262ff85e25e9f826eae7c01bbfa1}{\texorpdfstring{$\sim$}{\string~}\+IBindable}} () noexcept
+\item 
+virtual void \mbox{\hyperlink{classIBindable_a12fe8725cb3f4836f22d1592b07e2c91_a12fe8725cb3f4836f22d1592b07e2c91}{set\+Mesh}} (const \mbox{\hyperlink{classMesh}{Mesh}} \&mesh) noexcept
+\item 
+virtual void \mbox{\hyperlink{classIBindable_a608c5066b829febbd49cd82d1d1fa353_a608c5066b829febbd49cd82d1d1fa353}{accept}} (\mbox{\hyperlink{classIImGuiConstantBufferVisitor}{IIm\+Gui\+Constant\+Buffer\+Visitor}} \&ev)
+\item 
+virtual void \mbox{\hyperlink{classIBindable_a4d590eebe80fa4e0aa865a875ff86c02_a4d590eebe80fa4e0aa865a875ff86c02}{set\+Debug\+Object\+Name}} (const char \texorpdfstring{$\ast$}{*}name) noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classInputLayout}{Input\+Layout}} $>$ \mbox{\hyperlink{classInputLayout_a28404524310f3bdf8ba2537206e1e109_a28404524310f3bdf8ba2537206e1e109}{fetch}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const \mbox{\hyperlink{classver_1_1VertexInputLayout}{ver\+::\+Vertex\+Input\+Layout}} \&layout, const \mbox{\hyperlink{classVertexShader}{Vertex\+Shader}} \&vs)
+\item 
+static std\+::string \mbox{\hyperlink{classInputLayout_a981d8d9efb96d0988b78a67b6cda4a4d_a981d8d9efb96d0988b78a67b6cda4a4d}{calc\+Uid}} (const \mbox{\hyperlink{classver_1_1VertexInputLayout}{ver\+::\+Vertex\+Input\+Layout}} \&layout, const \mbox{\hyperlink{classVertexShader}{Vertex\+Shader}} \&vs)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ ID3\+D11\+Input\+Layout $>$ \mbox{\hyperlink{classInputLayout_a923d341c31524d238aa9f192b1f2cb42_a923d341c31524d238aa9f192b1f2cb42}{m\+\_\+p\+Input\+Layout}}
+\item 
+std\+::string \mbox{\hyperlink{classInputLayout_ad1821ab7b708cb82b1b85d3f1674fb62_ad1821ab7b708cb82b1b85d3f1674fb62}{m\+\_\+vertex\+Shader\+UID}}
+\item 
+\mbox{\hyperlink{classver_1_1VertexInputLayout}{ver\+::\+Vertex\+Input\+Layout}} \mbox{\hyperlink{classInputLayout_adbe37eef4d1512444f90b6da44b79088_adbe37eef4d1512444f90b6da44b79088}{m\+\_\+vertex\+Layout}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classGraphicsFriend}{Graphics\+Friend}}}
+\begin{DoxyCompactItemize}
+\item 
+static ID3\+D11\+Device\+Context \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGraphicsFriend_a619e32893ab49ea6c5200e7c2d52e2f2_a619e32893ab49ea6c5200e7c2d52e2f2}{get\+Device\+Context}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) noexcept
+\item 
+static ID3\+D11\+Device \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_a175df79f82ab5a6dad1df24b5a242ef7}{get\+Device}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) noexcept
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Vertex Input Layout bindable  
+
+=============================================================
+
+\begin{DoxyAuthor}{Author}
+Key\+C0de 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/08/30 1\+:16 \doxysubsection*{}
+\end{DoxyDate}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classInputLayout_a96527abda8afcf0a2218c39082183f1d_a96527abda8afcf0a2218c39082183f1d}\index{InputLayout@{InputLayout}!InputLayout@{InputLayout}}
+\index{InputLayout@{InputLayout}!InputLayout@{InputLayout}}
+\doxysubsubsection{\texorpdfstring{InputLayout()}{InputLayout()}}
+{\footnotesize\ttfamily \label{classInputLayout_a96527abda8afcf0a2218c39082183f1d_a96527abda8afcf0a2218c39082183f1d} 
+Input\+Layout\+::\+Input\+Layout (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const \mbox{\hyperlink{classver_1_1VertexInputLayout}{ver\+::\+Vertex\+Input\+Layout}} \&}]{layout}{, }\item[{const \mbox{\hyperlink{classVertexShader}{Vertex\+Shader}} \&}]{vs}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classInputLayout_a5de9afbd3d6d1324ac4a26f04365b69e_a5de9afbd3d6d1324ac4a26f04365b69e}\index{InputLayout@{InputLayout}!bind@{bind}}
+\index{bind@{bind}!InputLayout@{InputLayout}}
+\doxysubsubsection{\texorpdfstring{bind()}{bind()}}
+{\footnotesize\ttfamily \label{classInputLayout_a5de9afbd3d6d1324ac4a26f04365b69e_a5de9afbd3d6d1324ac4a26f04365b69e} 
+void Input\+Layout\+::bind (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+bind graphics resource to a certain stage of the graphics pipeline 
+
+
+
+Implements \mbox{\hyperlink{classIBindable_add4560f78e76629ee81ba701ba1052e1_add4560f78e76629ee81ba701ba1052e1}{IBindable}}.
+
+\Hypertarget{classInputLayout_a981d8d9efb96d0988b78a67b6cda4a4d_a981d8d9efb96d0988b78a67b6cda4a4d}\index{InputLayout@{InputLayout}!calcUid@{calcUid}}
+\index{calcUid@{calcUid}!InputLayout@{InputLayout}}
+\doxysubsubsection{\texorpdfstring{calcUid()}{calcUid()}}
+{\footnotesize\ttfamily \label{classInputLayout_a981d8d9efb96d0988b78a67b6cda4a4d_a981d8d9efb96d0988b78a67b6cda4a4d} 
+std\+::string Input\+Layout\+::calc\+Uid (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classver_1_1VertexInputLayout}{ver\+::\+Vertex\+Input\+Layout}} \&}]{layout}{, }\item[{const \mbox{\hyperlink{classVertexShader}{Vertex\+Shader}} \&}]{vs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classInputLayout_a28404524310f3bdf8ba2537206e1e109_a28404524310f3bdf8ba2537206e1e109}\index{InputLayout@{InputLayout}!fetch@{fetch}}
+\index{fetch@{fetch}!InputLayout@{InputLayout}}
+\doxysubsubsection{\texorpdfstring{fetch()}{fetch()}}
+{\footnotesize\ttfamily \label{classInputLayout_a28404524310f3bdf8ba2537206e1e109_a28404524310f3bdf8ba2537206e1e109} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classInputLayout}{Input\+Layout}} $>$ Input\+Layout\+::fetch (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const \mbox{\hyperlink{classver_1_1VertexInputLayout}{ver\+::\+Vertex\+Input\+Layout}} \&}]{layout}{, }\item[{const \mbox{\hyperlink{classVertexShader}{Vertex\+Shader}} \&}]{vs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classInputLayout_a34ece7c7bfe8599be3768c1ee67a2928_a34ece7c7bfe8599be3768c1ee67a2928}\index{InputLayout@{InputLayout}!getLayout@{getLayout}}
+\index{getLayout@{getLayout}!InputLayout@{InputLayout}}
+\doxysubsubsection{\texorpdfstring{getLayout()}{getLayout()}}
+{\footnotesize\ttfamily \label{classInputLayout_a34ece7c7bfe8599be3768c1ee67a2928_a34ece7c7bfe8599be3768c1ee67a2928} 
+const \mbox{\hyperlink{classver_1_1VertexInputLayout}{ver\+::\+Vertex\+Input\+Layout}} Input\+Layout\+::get\+Layout (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classInputLayout_a23d0b5c4a3a9442ef38e5473a33f7adf_a23d0b5c4a3a9442ef38e5473a33f7adf}\index{InputLayout@{InputLayout}!getUid@{getUid}}
+\index{getUid@{getUid}!InputLayout@{InputLayout}}
+\doxysubsubsection{\texorpdfstring{getUid()}{getUid()}}
+{\footnotesize\ttfamily \label{classInputLayout_a23d0b5c4a3a9442ef38e5473a33f7adf_a23d0b5c4a3a9442ef38e5473a33f7adf} 
+std\+::string Input\+Layout\+::get\+Uid (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classIBindable_a7d88cdbd5d500d6d7f1bfabe16927855_a7d88cdbd5d500d6d7f1bfabe16927855}{IBindable}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classInputLayout_a923d341c31524d238aa9f192b1f2cb42_a923d341c31524d238aa9f192b1f2cb42}\index{InputLayout@{InputLayout}!m\_pInputLayout@{m\_pInputLayout}}
+\index{m\_pInputLayout@{m\_pInputLayout}!InputLayout@{InputLayout}}
+\doxysubsubsection{\texorpdfstring{m\_pInputLayout}{m\_pInputLayout}}
+{\footnotesize\ttfamily \label{classInputLayout_a923d341c31524d238aa9f192b1f2cb42_a923d341c31524d238aa9f192b1f2cb42} 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ID3\+D11\+Input\+Layout$>$ Input\+Layout\+::m\+\_\+p\+Input\+Layout\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classInputLayout_adbe37eef4d1512444f90b6da44b79088_adbe37eef4d1512444f90b6da44b79088}\index{InputLayout@{InputLayout}!m\_vertexLayout@{m\_vertexLayout}}
+\index{m\_vertexLayout@{m\_vertexLayout}!InputLayout@{InputLayout}}
+\doxysubsubsection{\texorpdfstring{m\_vertexLayout}{m\_vertexLayout}}
+{\footnotesize\ttfamily \label{classInputLayout_adbe37eef4d1512444f90b6da44b79088_adbe37eef4d1512444f90b6da44b79088} 
+\mbox{\hyperlink{classver_1_1VertexInputLayout}{ver\+::\+Vertex\+Input\+Layout}} Input\+Layout\+::m\+\_\+vertex\+Layout\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classInputLayout_ad1821ab7b708cb82b1b85d3f1674fb62_ad1821ab7b708cb82b1b85d3f1674fb62}\index{InputLayout@{InputLayout}!m\_vertexShaderUID@{m\_vertexShaderUID}}
+\index{m\_vertexShaderUID@{m\_vertexShaderUID}!InputLayout@{InputLayout}}
+\doxysubsubsection{\texorpdfstring{m\_vertexShaderUID}{m\_vertexShaderUID}}
+{\footnotesize\ttfamily \label{classInputLayout_ad1821ab7b708cb82b1b85d3f1674fb62_ad1821ab7b708cb82b1b85d3f1674fb62} 
+std\+::string Input\+Layout\+::m\+\_\+vertex\+Shader\+UID\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{input__layout_8h}{input\+\_\+layout.\+h}}\item 
+src/\mbox{\hyperlink{input__layout_8cpp}{input\+\_\+layout.\+cpp}}\end{DoxyCompactItemize}

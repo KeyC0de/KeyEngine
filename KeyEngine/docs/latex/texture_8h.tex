@@ -1,0 +1,33 @@
+\doxysection{inc/texture.h File Reference}
+\hypertarget{texture_8h}{}\label{texture_8h}\index{inc/texture.h@{inc/texture.h}}
+{\ttfamily \#include "{}key\+\_\+wrl.\+h"{}}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include "{}bindable.\+h"{}}\newline
+{\ttfamily \#include "{}bitmap.\+h"{}}\newline
+{\ttfamily \#include "{}render\+\_\+target.\+h"{}}\newline
+{\ttfamily \#include "{}depth\+\_\+stencil\+\_\+view.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classTexture}{Texture}}
+\item 
+class \mbox{\hyperlink{classTextureOffscreenRT}{Texture\+Offscreen\+RT}}
+\begin{DoxyCompactList}\small\item\em Flexible Render Target View Wrapper that will be used EITHER for input OR for output (offscreen/\+RTT/back buffer rendering)  \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classTextureOffscreenDS}{Texture\+Offscreen\+DS}}
+\begin{DoxyCompactList}\small\item\em A flexible Texture2D, SRV for HLSL access \& Depth Stencil View Wrapper; can be used either for input OR for output (offscreen/\+RTT rendering)  \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classTextureArrayOffscreenDS}{Texture\+Array\+Offscreen\+DS}}
+\begin{DoxyCompactList}\small\item\em A Texture\+Cube (HLSL), SRV for HLSL access \& Depth Stencil View all wrapped up; can be used either for input OR for output  \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{texture_8h_a48efc2b83d04747965ce26c7eb8d406c_a48efc2b83d04747965ce26c7eb8d406c}{Texture\+Op}} = Direct\+X\+::\+XMVECTOR(\texorpdfstring{$\ast$}{*})(\mbox{\hyperlink{classBitmap_a83b763f52f32144764bf50ba22c3c080_a83b763f52f32144764bf50ba22c3c080}{Bitmap\+::\+Texel}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{texture_8h_a48efc2b83d04747965ce26c7eb8d406c_a48efc2b83d04747965ce26c7eb8d406c}\index{texture.h@{texture.h}!TextureOp@{TextureOp}}
+\index{TextureOp@{TextureOp}!texture.h@{texture.h}}
+\doxysubsubsection{\texorpdfstring{TextureOp}{TextureOp}}
+{\footnotesize\ttfamily \label{texture_8h_a48efc2b83d04747965ce26c7eb8d406c_a48efc2b83d04747965ce26c7eb8d406c} 
+typedef Direct\+X\+::\+XMVECTOR(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{texture_8h_a48efc2b83d04747965ce26c7eb8d406c_a48efc2b83d04747965ce26c7eb8d406c}{Texture\+Op}})(\mbox{\hyperlink{classBitmap_a83b763f52f32144764bf50ba22c3c080_a83b763f52f32144764bf50ba22c3c080}{Bitmap\+::\+Texel}}) = Direct\+X\+::\+XMVECTOR(\texorpdfstring{$\ast$}{*})(\mbox{\hyperlink{classBitmap_a83b763f52f32144764bf50ba22c3c080_a83b763f52f32144764bf50ba22c3c080}{Bitmap\+::\+Texel}})}
+

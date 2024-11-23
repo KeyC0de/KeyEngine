@@ -1,0 +1,610 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="render__target_8h" kind="file" language="C++">
+    <compoundname>render_target.h</compoundname>
+    <includes local="no">optional</includes>
+    <includes refid="key__wrl_8h" local="yes">key_wrl.h</includes>
+    <includes refid="bindable_8h" local="yes">bindable.h</includes>
+    <includes refid="render__surface_8h" local="yes">render_surface.h</includes>
+    <includes refid="texture__desc_8h" local="yes">texture_desc.h</includes>
+    <includedby refid="binder_8h" local="yes">inc/binder.h</includedby>
+    <includedby refid="texture_8h" local="yes">inc/texture.h</includedby>
+    <includedby refid="bindable__pass_8cpp" local="yes">src/bindable_pass.cpp</includedby>
+    <includedby refid="blur__outline__draw__pass_8cpp" local="yes">src/blur_outline_draw_pass.cpp</includedby>
+    <includedby refid="cube__texture_8cpp" local="yes">src/cube_texture.cpp</includedby>
+    <includedby refid="depth__reversed__pass_8cpp" local="yes">src/depth_reversed_pass.cpp</includedby>
+    <includedby refid="depth__stencil__view_8cpp" local="yes">src/depth_stencil_view.cpp</includedby>
+    <includedby refid="graphics_8cpp" local="yes">src/graphics.cpp</includedby>
+    <includedby refid="opaque__pass_8cpp" local="yes">src/opaque_pass.cpp</includedby>
+    <includedby refid="pass__2d_8cpp" local="yes">src/pass_2d.cpp</includedby>
+    <includedby refid="render__target_8cpp" local="yes">src/render_target.cpp</includedby>
+    <includedby refid="renderer_8cpp" local="yes">src/renderer.cpp</includedby>
+    <includedby refid="sky__pass_8cpp" local="yes">src/sky_pass.cpp</includedby>
+    <includedby refid="testing_8cpp" local="yes">src/testing.cpp</includedby>
+    <includedby refid="transparent__pass_8cpp" local="yes">src/transparent_pass.cpp</includedby>
+    <includedby refid="wireframe__pass_8cpp" local="yes">src/wireframe_pass.cpp</includedby>
+    <incdepgraph>
+      <node id="9">
+        <label>assertions_console.h</label>
+        <link refid="assertions__console_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>bindable.h</label>
+        <link refid="bindable_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>graphics_friend.h</label>
+        <link refid="graphics__friend_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>key_wrl.h</label>
+        <link refid="key__wrl_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>render_surface.h</label>
+        <link refid="render__surface_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/render_target.h</label>
+        <link refid="render__target_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>texture_desc.h</label>
+        <link refid="texture__desc_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>array</label>
+      </node>
+      <node id="8">
+        <label>d3d11.h</label>
+      </node>
+      <node id="10">
+        <label>iostream</label>
+      </node>
+      <node id="6">
+        <label>memory</label>
+      </node>
+      <node id="2">
+        <label>optional</label>
+      </node>
+      <node id="4">
+        <label>wrl.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>inc/bindable_pass.h</label>
+        <link refid="bindable__pass_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>inc/binder.h</label>
+        <link refid="binder_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>inc/blur_outline_draw_pass.h</label>
+        <link refid="blur__outline__draw__pass_8h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>inc/blur_outline_mask_pass.h</label>
+        <link refid="blur__outline__mask__pass_8h"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>inc/blur_pass.h</label>
+        <link refid="blur__pass_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>inc/depth_reversed_pass.h</label>
+        <link refid="depth__reversed__pass_8h"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>inc/fullscreen_pass.h</label>
+        <link refid="fullscreen__pass_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>inc/horizontal_blur_pass.h</label>
+        <link refid="horizontal__blur__pass_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>inc/negative_pass.h</label>
+        <link refid="negative__pass_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>inc/opaque_pass.h</label>
+        <link refid="opaque__pass_8h"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>inc/pass_2d.h</label>
+        <link refid="pass__2d_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>inc/pass_through.h</label>
+        <link refid="pass__through_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>inc/render_queue_pass.h</label>
+        <link refid="render__queue__pass_8h"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/render_target.h</label>
+        <link refid="render__target_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>inc/shadow_pass.h</label>
+        <link refid="shadow__pass_8h"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>inc/sky_pass.h</label>
+        <link refid="sky__pass_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>inc/solid_outline_draw_pass.h</label>
+        <link refid="solid__outline__draw__pass_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>inc/solid_outline_mask_pass.h</label>
+        <link refid="solid__outline__mask__pass_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>inc/texture.h</label>
+        <link refid="texture_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>inc/transparent_pass.h</label>
+        <link refid="transparent__pass_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>inc/vertical_blur_pass.h</label>
+        <link refid="vertical__blur__pass_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>inc/wireframe_pass.h</label>
+        <link refid="wireframe__pass_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>src/SHADOW_PASS.CPP</label>
+        <link refid="SHADOW__PASS_8CPP"/>
+      </node>
+      <node id="43">
+        <label>src/bindable_pass.cpp</label>
+        <link refid="bindable__pass_8cpp"/>
+      </node>
+      <node id="44">
+        <label>src/binder.cpp</label>
+        <link refid="binder_8cpp"/>
+      </node>
+      <node id="21">
+        <label>src/blur_outline_draw_pass.cpp</label>
+        <link refid="blur__outline__draw__pass_8cpp"/>
+      </node>
+      <node id="23">
+        <label>src/blur_outline_mask_pass.cpp</label>
+        <link refid="blur__outline__mask__pass_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/blur_pass.cpp</label>
+        <link refid="blur__pass_8cpp"/>
+      </node>
+      <node id="48">
+        <label>src/cube.cpp</label>
+        <link refid="cube_8cpp"/>
+      </node>
+      <node id="57">
+        <label>src/cube_texture.cpp</label>
+        <link refid="cube__texture_8cpp"/>
+      </node>
+      <node id="25">
+        <label>src/depth_reversed_pass.cpp</label>
+        <link refid="depth__reversed__pass_8cpp"/>
+      </node>
+      <node id="58">
+        <label>src/depth_stencil_view.cpp</label>
+        <link refid="depth__stencil__view_8cpp"/>
+      </node>
+      <node id="16">
+        <label>src/fullscreen_pass.cpp</label>
+        <link refid="fullscreen__pass_8cpp"/>
+      </node>
+      <node id="49">
+        <label>src/graphics.cpp</label>
+        <link refid="graphics_8cpp"/>
+      </node>
+      <node id="9">
+        <label>src/horizontal_blur_pass.cpp</label>
+        <link refid="horizontal__blur__pass_8cpp"/>
+      </node>
+      <node id="30">
+        <label>src/light_source.cpp</label>
+        <link refid="light__source_8cpp"/>
+      </node>
+      <node id="39">
+        <label>src/material.cpp</label>
+        <link refid="material_8cpp"/>
+      </node>
+      <node id="50">
+        <label>src/material_loader.cpp</label>
+        <link refid="material__loader_8cpp"/>
+      </node>
+      <node id="11">
+        <label>src/negative_pass.cpp</label>
+        <link refid="negative__pass_8cpp"/>
+      </node>
+      <node id="27">
+        <label>src/opaque_pass.cpp</label>
+        <link refid="opaque__pass_8cpp"/>
+      </node>
+      <node id="45">
+        <label>src/pass.cpp</label>
+        <link refid="pass_8cpp"/>
+      </node>
+      <node id="18">
+        <label>src/pass_2d.cpp</label>
+        <link refid="pass__2d_8cpp"/>
+      </node>
+      <node id="13">
+        <label>src/pass_through.cpp</label>
+        <link refid="pass__through_8cpp"/>
+      </node>
+      <node id="51">
+        <label>src/plane.cpp</label>
+        <link refid="plane_8cpp"/>
+      </node>
+      <node id="40">
+        <label>src/render_queue_pass.cpp</label>
+        <link refid="render__queue__pass_8cpp"/>
+      </node>
+      <node id="46">
+        <label>src/render_surface_clear_pass.cpp</label>
+        <link refid="render__surface__clear__pass_8cpp"/>
+      </node>
+      <node id="59">
+        <label>src/render_target.cpp</label>
+        <link refid="render__target_8cpp"/>
+      </node>
+      <node id="7">
+        <label>src/renderer.cpp</label>
+        <link refid="renderer_8cpp"/>
+      </node>
+      <node id="42">
+        <label>src/sky_pass.cpp</label>
+        <link refid="sky__pass_8cpp"/>
+      </node>
+      <node id="32">
+        <label>src/solid_outline_draw_pass.cpp</label>
+        <link refid="solid__outline__draw__pass_8cpp"/>
+      </node>
+      <node id="34">
+        <label>src/solid_outline_mask_pass.cpp</label>
+        <link refid="solid__outline__mask__pass_8cpp"/>
+      </node>
+      <node id="52">
+        <label>src/terrain.cpp</label>
+        <link refid="terrain_8cpp"/>
+      </node>
+      <node id="60">
+        <label>src/testing.cpp</label>
+        <link refid="testing_8cpp"/>
+      </node>
+      <node id="53">
+        <label>src/texture.cpp</label>
+        <link refid="texture_8cpp"/>
+      </node>
+      <node id="54">
+        <label>src/texture_processor.cpp</label>
+        <link refid="texture__processor_8cpp"/>
+      </node>
+      <node id="36">
+        <label>src/transparent_pass.cpp</label>
+        <link refid="transparent__pass_8cpp"/>
+      </node>
+      <node id="55">
+        <label>src/ui_component.cpp</label>
+        <link refid="ui__component_8cpp"/>
+      </node>
+      <node id="56">
+        <label>src/ui_pass.cpp</label>
+        <link refid="ui__pass_8cpp"/>
+      </node>
+      <node id="15">
+        <label>src/vertical_blur_pass.cpp</label>
+        <link refid="vertical__blur__pass_8cpp"/>
+      </node>
+      <node id="38">
+        <label>src/wireframe_pass.cpp</label>
+        <link refid="wireframe__pass_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classIRenderTargetView" prot="public">IRenderTargetView</innerclass>
+    <innerclass refid="classRenderTargetShaderInput" prot="public">RenderTargetShaderInput</innerclass>
+    <innerclass refid="classRenderTargetOutput" prot="public">RenderTargetOutput</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="key__wrl_8h" kindref="compound">key_wrl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="bindable_8h" kindref="compound">bindable.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="render__surface_8h" kindref="compound">render_surface.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="texture__desc_8h" kindref="compound">texture_desc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classGraphics" kindref="compound">Graphics</ref>;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classBitmap" kindref="compound">Bitmap</ref>;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classIDepthStencilView" kindref="compound">IDepthStencilView</ref>;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classIRenderTargetView" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classIRenderTargetView" kindref="compound">IRenderTargetView</ref></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classIBindable" kindref="compound">IBindable</ref>,</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classIRenderSurface" kindref="compound">IRenderSurface</ref></highlight></codeline>
+<codeline lineno="17"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="19" refid="classIRenderTargetView_aa6160c1f8961cc50af9b9fd1825cb4f0_1aa6160c1f8961cc50af9b9fd1825cb4f0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classIRenderTargetView_aa6160c1f8961cc50af9b9fd1825cb4f0_1aa6160c1f8961cc50af9b9fd1825cb4f0" kindref="member">m_width</ref>;</highlight></codeline>
+<codeline lineno="20" refid="classIRenderTargetView_a0232167f2e6c778a6fd58d4590ba3964_1a0232167f2e6c778a6fd58d4590ba3964" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classIRenderTargetView_a0232167f2e6c778a6fd58d4590ba3964_1a0232167f2e6c778a6fd58d4590ba3964" kindref="member">m_height</ref>;</highlight></codeline>
+<codeline lineno="21" refid="classIRenderTargetView_a23ae718efaec7e0df3ce815198534988_1a23ae718efaec7e0df3ce815198534988" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Microsoft::WRL::ComPtr&lt;ID3D11RenderTargetView&gt;<sp/><ref refid="classIRenderTargetView_a23ae718efaec7e0df3ce815198534988_1a23ae718efaec7e0df3ce815198534988" kindref="member">m_pD3dRtv</ref>;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classIRenderTargetView_abf9cae9989cf526dfbd79ff788435a3d_1abf9cae9989cf526dfbd79ff788435a3d" kindref="member">IRenderTargetView</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/>ID3D11Texture2D<sp/>*pTexture,<sp/>std::optional&lt;unsigned&gt;<sp/>face<sp/>);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classIRenderTargetView_abf9cae9989cf526dfbd79ff788435a3d_1abf9cae9989cf526dfbd79ff788435a3d" kindref="member">IRenderTargetView</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>width,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>height<sp/>);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classIRenderTargetView_aa14b454e81f88129fc8737b6c7ba3c39_1aa14b454e81f88129fc8737b6c7ba3c39" kindref="member">unbind</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classIRenderTargetView_abae0c43c9146df2e170c56fb15b7970f_1abae0c43c9146df2e170c56fb15b7970f" kindref="member">bindRenderSurface</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classIRenderTargetView_abae0c43c9146df2e170c56fb15b7970f_1abae0c43c9146df2e170c56fb15b7970f" kindref="member">bindRenderSurface</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/><ref refid="classIRenderSurface" kindref="compound">IRenderSurface</ref><sp/>*pRs<sp/>)<sp/>cond_noex<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classIRenderTargetView_abae0c43c9146df2e170c56fb15b7970f_1abae0c43c9146df2e170c56fb15b7970f" kindref="member">bindRenderSurface</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/><ref refid="classIDepthStencilView" kindref="compound">IDepthStencilView</ref><sp/>*pDepthStencilView<sp/>)<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classIRenderTargetView_ae56a818f2dcc997ac2c45699f03dacbe_1ae56a818f2dcc997ac2c45699f03dacbe" kindref="member">clear</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::array&lt;float,<sp/>4&gt;<sp/>&amp;color<sp/>=<sp/>{0.0f,<sp/>0.0f,<sp/>0.0f,<sp/>0.0f}<sp/>)<sp/>cond_noex<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classIRenderTargetView_ab327c87afa940b91d8676b264dedc376_1ab327c87afa940b91d8676b264dedc376" kindref="member">clean</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classBitmap" kindref="compound">Bitmap</ref><sp/><ref refid="classIRenderTargetView_a60fc375522630853ea8f69b2f0c653ed_1a60fc375522630853ea8f69b2f0c653ed" kindref="member">convertToBitmap</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>textureWidth,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>textureHeight<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classIRenderTargetView_ab40eedff033f10cbe645455d8d2855cd_1ab40eedff033f10cbe645455d8d2855cd" kindref="member">getWidth</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classIRenderTargetView_aaedea70a2db05bafc4a8a444fc465212_1aaedea70a2db05bafc4a8a444fc465212" kindref="member">getHeight</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>Microsoft::WRL::ComPtr&lt;ID3D11RenderTargetView&gt;&amp;<sp/><ref refid="classIRenderTargetView_a83fef9a15fb28966bc9b492e1e54e677_1a83fef9a15fb28966bc9b492e1e54e677" kindref="member">d3dResourceCom</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>ID3D11RenderTargetView*<sp/><ref refid="classIRenderTargetView_a9e5ac7e5704e9debd3c721000152eb18_1a9e5ac7e5704e9debd3c721000152eb18" kindref="member">d3dResource</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>virtual<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classIRenderTargetView_a131bf2e6185274b924084de659fa82fc_1a131bf2e6185274b924084de659fa82fc" kindref="member">setDebugObjectName</ref>(<sp/>const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>name<sp/>)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">private:</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;Microsoft::WRL::ComPtr&lt;ID3D11Texture2D&gt;,<sp/>D3D11_TEXTURE2D_DESC&gt;<sp/><ref refid="classIRenderTargetView_a1399fd548f196216820ac8d19dd87621_1a1399fd548f196216820ac8d19dd87621" kindref="member">createStagingTexture</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>const;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classIRenderTargetView_abae0c43c9146df2e170c56fb15b7970f_1abae0c43c9146df2e170c56fb15b7970f" kindref="member">bindRenderSurface</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/>ID3D11DepthStencilView<sp/>*pD3dDsv<sp/>)<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="classRenderTargetShaderInput" refkind="compound"><highlight class="normal">class<sp/><ref refid="classRenderTargetShaderInput" kindref="compound">RenderTargetShaderInput</ref></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>public<sp/><ref refid="classIRenderTargetView" kindref="compound">IRenderTargetView</ref></highlight></codeline>
+<codeline lineno="56"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="57" refid="classRenderTargetShaderInput_ade6d5840869c1f97aac0c46859372de7_1ade6d5840869c1f97aac0c46859372de7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classRenderTargetShaderInput_ade6d5840869c1f97aac0c46859372de7_1ade6d5840869c1f97aac0c46859372de7" kindref="member">m_slot</ref>;</highlight></codeline>
+<codeline lineno="58" refid="classRenderTargetShaderInput_a9104ecd9f459533d69420b8d08cb3af6_1a9104ecd9f459533d69420b8d08cb3af6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Microsoft::WRL::ComPtr&lt;ID3D11ShaderResourceView&gt;<sp/><ref refid="classRenderTargetShaderInput_a9104ecd9f459533d69420b8d08cb3af6_1a9104ecd9f459533d69420b8d08cb3af6" kindref="member">m_pD3dSrv</ref>;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classRenderTargetShaderInput" kindref="compound">RenderTargetShaderInput</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>width,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>height,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>slot,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="texture__desc_8h_a6b4948cc0d12c93e6396540e02e2df58_1a6b4948cc0d12c93e6396540e02e2df58" kindref="member">RenderTargetViewMode</ref><sp/>rtvMode<sp/>=<sp/><ref refid="texture__desc_8h_a6b4948cc0d12c93e6396540e02e2df58_1a6b4948cc0d12c93e6396540e02e2df58adf32226797485bb0becd7063638f54c5" kindref="member">DefaultRT</ref><sp/>);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classIBindable_add4560f78e76629ee81ba701ba1052e1_1add4560f78e76629ee81ba701ba1052e1" kindref="member">bind</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>getSlot()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="classRenderTargetOutput" refkind="compound"><highlight class="normal">class<sp/><ref refid="classRenderTargetOutput" kindref="compound">RenderTargetOutput</ref></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>public<sp/><ref refid="classIRenderTargetView" kindref="compound">IRenderTargetView</ref></highlight></codeline>
+<codeline lineno="74"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classRenderTargetOutput" kindref="compound">RenderTargetOutput</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/>ID3D11Texture2D<sp/>*pTexture,<sp/>std::optional&lt;unsigned&gt;<sp/>face<sp/>=<sp/>{}<sp/>);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classIBindable_add4560f78e76629ee81ba701ba1052e1_1add4560f78e76629ee81ba701ba1052e1" kindref="member">bind</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/render_target.h"/>
+  </compounddef>
+</doxygen>

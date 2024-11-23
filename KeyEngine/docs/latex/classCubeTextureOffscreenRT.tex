@@ -1,0 +1,121 @@
+\doxysection{Cube\+Texture\+Offscreen\+RT Class Reference}
+\hypertarget{classCubeTextureOffscreenRT}{}\label{classCubeTextureOffscreenRT}\index{CubeTextureOffscreenRT@{CubeTextureOffscreenRT}}
+
+
+{\ttfamily \#include $<$cube\+\_\+texture.\+h$>$}
+
+Inheritance diagram for Cube\+Texture\+Offscreen\+RT\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classCubeTextureOffscreenRT}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCubeTextureOffscreenRT_a3443a4a46383409c079a83b6eb8cd11d_a3443a4a46383409c079a83b6eb8cd11d}{Cube\+Texture\+Offscreen\+RT}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const unsigned width, const unsigned height, const unsigned slot, const DXGI\+\_\+\+FORMAT format)
+\item 
+void \mbox{\hyperlink{classCubeTextureOffscreenRT_a86463c3c6cca882c031fcc24ab95c1ff_a86463c3c6cca882c031fcc24ab95c1ff}{bind}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) cond\+\_\+noex override
+\begin{DoxyCompactList}\small\item\em bind graphics resource to a certain stage of the graphics pipeline \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRenderTargetOutput}{Render\+Target\+Output}} $>$ \mbox{\hyperlink{classCubeTextureOffscreenRT_abebcddc65e85f6937180a84f1bdd86e0_abebcddc65e85f6937180a84f1bdd86e0}{share\+Render\+Target}} (const size\+\_\+t index) const
+\item 
+\mbox{\hyperlink{classRenderTargetOutput}{Render\+Target\+Output}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classCubeTextureOffscreenRT_aa10d493216e222e276c3318e1937a4ee_aa10d493216e222e276c3318e1937a4ee}{access\+Render\+Target}} (const size\+\_\+t index)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classIBindable}{IBindable}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classIBindable_a7f68262ff85e25e9f826eae7c01bbfa1_a7f68262ff85e25e9f826eae7c01bbfa1}{\texorpdfstring{$\sim$}{\string~}\+IBindable}} () noexcept
+\item 
+virtual void \mbox{\hyperlink{classIBindable_a12fe8725cb3f4836f22d1592b07e2c91_a12fe8725cb3f4836f22d1592b07e2c91}{set\+Mesh}} (const \mbox{\hyperlink{classMesh}{Mesh}} \&mesh) noexcept
+\item 
+virtual void \mbox{\hyperlink{classIBindable_a608c5066b829febbd49cd82d1d1fa353_a608c5066b829febbd49cd82d1d1fa353}{accept}} (\mbox{\hyperlink{classIImGuiConstantBufferVisitor}{IIm\+Gui\+Constant\+Buffer\+Visitor}} \&ev)
+\item 
+virtual std\+::string \mbox{\hyperlink{classIBindable_a7d88cdbd5d500d6d7f1bfabe16927855_a7d88cdbd5d500d6d7f1bfabe16927855}{get\+Uid}} () const noexcept
+\item 
+virtual void \mbox{\hyperlink{classIBindable_a4d590eebe80fa4e0aa865a875ff86c02_a4d590eebe80fa4e0aa865a875ff86c02}{set\+Debug\+Object\+Name}} (const char \texorpdfstring{$\ast$}{*}name) noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ ID3\+D11\+Shader\+Resource\+View $>$ \mbox{\hyperlink{classCubeTextureOffscreenRT_a8016dcfd405ea4374bc30961d84d339a_a8016dcfd405ea4374bc30961d84d339a}{m\+\_\+p\+D3d\+Srv}}
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRenderTargetOutput}{Render\+Target\+Output}} $>$ $>$ \mbox{\hyperlink{classCubeTextureOffscreenRT_ab112729a7663fb3f5c9650f5eb8852d5_ab112729a7663fb3f5c9650f5eb8852d5}{m\+\_\+render\+Target\+Views}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \mbox{\hyperlink{classCubeTextureOffscreenRT_a5776455690d8a3e5a15fc50d8dfa6550_a5776455690d8a3e5a15fc50d8dfa6550}{m\+\_\+slot}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classGraphicsFriend}{Graphics\+Friend}}}
+\begin{DoxyCompactItemize}
+\item 
+static ID3\+D11\+Device\+Context \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGraphicsFriend_a619e32893ab49ea6c5200e7c2d52e2f2_a619e32893ab49ea6c5200e7c2d52e2f2}{get\+Device\+Context}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) noexcept
+\item 
+static ID3\+D11\+Device \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_a175df79f82ab5a6dad1df24b5a242ef7}{get\+Device}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) noexcept
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classCubeTextureOffscreenRT_a3443a4a46383409c079a83b6eb8cd11d_a3443a4a46383409c079a83b6eb8cd11d}\index{CubeTextureOffscreenRT@{CubeTextureOffscreenRT}!CubeTextureOffscreenRT@{CubeTextureOffscreenRT}}
+\index{CubeTextureOffscreenRT@{CubeTextureOffscreenRT}!CubeTextureOffscreenRT@{CubeTextureOffscreenRT}}
+\doxysubsubsection{\texorpdfstring{CubeTextureOffscreenRT()}{CubeTextureOffscreenRT()}}
+{\footnotesize\ttfamily \label{classCubeTextureOffscreenRT_a3443a4a46383409c079a83b6eb8cd11d_a3443a4a46383409c079a83b6eb8cd11d} 
+Cube\+Texture\+Offscreen\+RT\+::\+Cube\+Texture\+Offscreen\+RT (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const unsigned}]{width}{, }\item[{const unsigned}]{height}{, }\item[{const unsigned}]{slot}{, }\item[{const DXGI\+\_\+\+FORMAT}]{format}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classCubeTextureOffscreenRT_aa10d493216e222e276c3318e1937a4ee_aa10d493216e222e276c3318e1937a4ee}\index{CubeTextureOffscreenRT@{CubeTextureOffscreenRT}!accessRenderTarget@{accessRenderTarget}}
+\index{accessRenderTarget@{accessRenderTarget}!CubeTextureOffscreenRT@{CubeTextureOffscreenRT}}
+\doxysubsubsection{\texorpdfstring{accessRenderTarget()}{accessRenderTarget()}}
+{\footnotesize\ttfamily \label{classCubeTextureOffscreenRT_aa10d493216e222e276c3318e1937a4ee_aa10d493216e222e276c3318e1937a4ee} 
+\mbox{\hyperlink{classRenderTargetOutput}{Render\+Target\+Output}} \texorpdfstring{$\ast$}{*} Cube\+Texture\+Offscreen\+RT\+::access\+Render\+Target (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{index}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classCubeTextureOffscreenRT_a86463c3c6cca882c031fcc24ab95c1ff_a86463c3c6cca882c031fcc24ab95c1ff}\index{CubeTextureOffscreenRT@{CubeTextureOffscreenRT}!bind@{bind}}
+\index{bind@{bind}!CubeTextureOffscreenRT@{CubeTextureOffscreenRT}}
+\doxysubsubsection{\texorpdfstring{bind()}{bind()}}
+{\footnotesize\ttfamily \label{classCubeTextureOffscreenRT_a86463c3c6cca882c031fcc24ab95c1ff_a86463c3c6cca882c031fcc24ab95c1ff} 
+void Cube\+Texture\+Offscreen\+RT\+::bind (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+bind graphics resource to a certain stage of the graphics pipeline 
+
+
+
+Implements \mbox{\hyperlink{classIBindable_add4560f78e76629ee81ba701ba1052e1_add4560f78e76629ee81ba701ba1052e1}{IBindable}}.
+
+\Hypertarget{classCubeTextureOffscreenRT_abebcddc65e85f6937180a84f1bdd86e0_abebcddc65e85f6937180a84f1bdd86e0}\index{CubeTextureOffscreenRT@{CubeTextureOffscreenRT}!shareRenderTarget@{shareRenderTarget}}
+\index{shareRenderTarget@{shareRenderTarget}!CubeTextureOffscreenRT@{CubeTextureOffscreenRT}}
+\doxysubsubsection{\texorpdfstring{shareRenderTarget()}{shareRenderTarget()}}
+{\footnotesize\ttfamily \label{classCubeTextureOffscreenRT_abebcddc65e85f6937180a84f1bdd86e0_abebcddc65e85f6937180a84f1bdd86e0} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRenderTargetOutput}{Render\+Target\+Output}} $>$ Cube\+Texture\+Offscreen\+RT\+::share\+Render\+Target (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{index}{}\end{DoxyParamCaption}) const}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classCubeTextureOffscreenRT_a8016dcfd405ea4374bc30961d84d339a_a8016dcfd405ea4374bc30961d84d339a}\index{CubeTextureOffscreenRT@{CubeTextureOffscreenRT}!m\_pD3dSrv@{m\_pD3dSrv}}
+\index{m\_pD3dSrv@{m\_pD3dSrv}!CubeTextureOffscreenRT@{CubeTextureOffscreenRT}}
+\doxysubsubsection{\texorpdfstring{m\_pD3dSrv}{m\_pD3dSrv}}
+{\footnotesize\ttfamily \label{classCubeTextureOffscreenRT_a8016dcfd405ea4374bc30961d84d339a_a8016dcfd405ea4374bc30961d84d339a} 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ID3\+D11\+Shader\+Resource\+View$>$ Cube\+Texture\+Offscreen\+RT\+::m\+\_\+p\+D3d\+Srv\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classCubeTextureOffscreenRT_ab112729a7663fb3f5c9650f5eb8852d5_ab112729a7663fb3f5c9650f5eb8852d5}\index{CubeTextureOffscreenRT@{CubeTextureOffscreenRT}!m\_renderTargetViews@{m\_renderTargetViews}}
+\index{m\_renderTargetViews@{m\_renderTargetViews}!CubeTextureOffscreenRT@{CubeTextureOffscreenRT}}
+\doxysubsubsection{\texorpdfstring{m\_renderTargetViews}{m\_renderTargetViews}}
+{\footnotesize\ttfamily \label{classCubeTextureOffscreenRT_ab112729a7663fb3f5c9650f5eb8852d5_ab112729a7663fb3f5c9650f5eb8852d5} 
+std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classRenderTargetOutput}{Render\+Target\+Output}}$>$ $>$ Cube\+Texture\+Offscreen\+RT\+::m\+\_\+render\+Target\+Views\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classCubeTextureOffscreenRT_a5776455690d8a3e5a15fc50d8dfa6550_a5776455690d8a3e5a15fc50d8dfa6550}\index{CubeTextureOffscreenRT@{CubeTextureOffscreenRT}!m\_slot@{m\_slot}}
+\index{m\_slot@{m\_slot}!CubeTextureOffscreenRT@{CubeTextureOffscreenRT}}
+\doxysubsubsection{\texorpdfstring{m\_slot}{m\_slot}}
+{\footnotesize\ttfamily \label{classCubeTextureOffscreenRT_a5776455690d8a3e5a15fc50d8dfa6550_a5776455690d8a3e5a15fc50d8dfa6550} 
+unsigned int Cube\+Texture\+Offscreen\+RT\+::m\+\_\+slot\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{cube__texture_8h}{cube\+\_\+texture.\+h}}\item 
+src/\mbox{\hyperlink{cube__texture_8cpp}{cube\+\_\+texture.\+cpp}}\end{DoxyCompactItemize}

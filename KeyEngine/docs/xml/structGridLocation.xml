@@ -1,0 +1,295 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="structGridLocation" kind="struct" language="C++" prot="public">
+    <compoundname>GridLocation</compoundname>
+    <derivedcompoundref refid="structGrid3dLocation" prot="public" virt="non-virtual">Grid3dLocation</derivedcompoundref>
+    <includes refid="grid__location_8h" local="no">grid_location.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structGridLocation_aeb63882b21b183e7335258a58c8a40e8_1aeb63882b21b183e7335258a58c8a40e8" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int GridLocation::x</definition>
+        <argsstring></argsstring>
+        <name>x</name>
+        <qualifiedname>GridLocation::x</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/grid_location.h" line="8" column="5" bodyfile="inc/grid_location.h" bodystart="8" bodyend="-1"/>
+        <referencedby refid="structGridLocation_a00b4d0fbdf62552498096f576c786747_1a00b4d0fbdf62552498096f576c786747" compoundref="grid__location_8cpp" startline="20" endline="25">operator++</referencedby>
+        <referencedby refid="structGridLocation_ade93bb39118632a7428f06135c3dc7f9_1ade93bb39118632a7428f06135c3dc7f9" compoundref="grid__location_8cpp" startline="41" endline="46">operator--</referencedby>
+        <referencedby refid="structGridLocation_a7e29edf4532d90b9a7d7598fcd37b0ec_1a7e29edf4532d90b9a7d7598fcd37b0ec" compoundref="grid__location_8cpp" startline="12" endline="18">operator=</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structGridLocation_aa73f11982d6425de33e1cd4a5a4c7ac6_1aa73f11982d6425de33e1cd4a5a4c7ac6" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int GridLocation::y</definition>
+        <argsstring></argsstring>
+        <name>y</name>
+        <qualifiedname>GridLocation::y</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/grid_location.h" line="9" column="5" bodyfile="inc/grid_location.h" bodystart="9" bodyend="-1"/>
+        <referencedby refid="structGridLocation_a00b4d0fbdf62552498096f576c786747_1a00b4d0fbdf62552498096f576c786747" compoundref="grid__location_8cpp" startline="20" endline="25">operator++</referencedby>
+        <referencedby refid="structGridLocation_ade93bb39118632a7428f06135c3dc7f9_1ade93bb39118632a7428f06135c3dc7f9" compoundref="grid__location_8cpp" startline="41" endline="46">operator--</referencedby>
+        <referencedby refid="structGridLocation_a7e29edf4532d90b9a7d7598fcd37b0ec_1a7e29edf4532d90b9a7d7598fcd37b0ec" compoundref="grid__location_8cpp" startline="12" endline="18">operator=</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="friend">
+      <memberdef kind="friend" id="structGridLocation_aae60c793bb02a0b6b23676e74d5407f0_1aae60c793bb02a0b6b23676e74d5407f0" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="structGridLocation" kindref="compound">GridLocation</ref></type>
+        <definition>GridLocation operator+</definition>
+        <argsstring>(GridLocation &amp;lhs, const GridLocation &amp;rhs)</argsstring>
+        <name>operator+</name>
+        <qualifiedname>GridLocation::operator+</qualifiedname>
+        <param>
+          <type><ref refid="structGridLocation" kindref="compound">GridLocation</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structGridLocation" kindref="compound">GridLocation</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/grid_location.h" line="11" column="21" bodyfile="src/grid_location.cpp" bodystart="73" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="friend" id="structGridLocation_a2c9bf0dcb1049edce8093751e9e58885_1a2c9bf0dcb1049edce8093751e9e58885" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="structGridLocation" kindref="compound">GridLocation</ref></type>
+        <definition>GridLocation operator-</definition>
+        <argsstring>(GridLocation &amp;lhs, const GridLocation &amp;rhs)</argsstring>
+        <name>operator-</name>
+        <qualifiedname>GridLocation::operator-</qualifiedname>
+        <param>
+          <type><ref refid="structGridLocation" kindref="compound">GridLocation</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structGridLocation" kindref="compound">GridLocation</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/grid_location.h" line="12" column="21" bodyfile="src/grid_location.cpp" bodystart="80" bodyend="85"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structGridLocation_a19480ec677eb86a3442d1d9e3cc28a0b_1a19480ec677eb86a3442d1d9e3cc28a0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>GridLocation::GridLocation</definition>
+        <argsstring>(const GridLocation &amp;rhs)</argsstring>
+        <name>GridLocation</name>
+        <qualifiedname>GridLocation::GridLocation</qualifiedname>
+        <param>
+          <type>const <ref refid="structGridLocation" kindref="compound">GridLocation</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/grid_location.h" line="14" column="1" bodyfile="src/grid_location.cpp" bodystart="4" bodyend="10"/>
+      </memberdef>
+      <memberdef kind="function" id="structGridLocation_a7e29edf4532d90b9a7d7598fcd37b0ec_1a7e29edf4532d90b9a7d7598fcd37b0ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structGridLocation" kindref="compound">GridLocation</ref> &amp;</type>
+        <definition>GridLocation &amp; GridLocation::operator=</definition>
+        <argsstring>(const GridLocation &amp;rhs)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>GridLocation::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="structGridLocation" kindref="compound">GridLocation</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/grid_location.h" line="15" column="14" bodyfile="src/grid_location.cpp" bodystart="12" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="structGridLocation_a00b4d0fbdf62552498096f576c786747_1a00b4d0fbdf62552498096f576c786747" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="structGridLocation" kindref="compound">GridLocation</ref> &amp;</type>
+        <definition>GridLocation &amp; GridLocation::operator++</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>operator++</name>
+        <qualifiedname>GridLocation::operator++</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/grid_location.h" line="17" column="14" bodyfile="src/grid_location.cpp" bodystart="20" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="structGridLocation_aa9472345e1e73386c1412aecb8376d3a_1aa9472345e1e73386c1412aecb8376d3a" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="structGridLocation" kindref="compound">GridLocation</ref></type>
+        <definition>GridLocation GridLocation::operator++</definition>
+        <argsstring>(int) noexcept</argsstring>
+        <name>operator++</name>
+        <qualifiedname>GridLocation::operator++</qualifiedname>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/grid_location.h" line="18" column="14" bodyfile="src/grid_location.cpp" bodystart="27" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="structGridLocation_afefddd6ac8f7a44b2b0788a945dc007f_1afefddd6ac8f7a44b2b0788a945dc007f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="structGridLocation" kindref="compound">GridLocation</ref> &amp;</type>
+        <definition>GridLocation &amp; GridLocation::operator+=</definition>
+        <argsstring>(const GridLocation &amp;rhs) noexcept</argsstring>
+        <name>operator+=</name>
+        <qualifiedname>GridLocation::operator+=</qualifiedname>
+        <param>
+          <type>const <ref refid="structGridLocation" kindref="compound">GridLocation</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/grid_location.h" line="19" column="14" bodyfile="src/grid_location.cpp" bodystart="34" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="structGridLocation_ade93bb39118632a7428f06135c3dc7f9_1ade93bb39118632a7428f06135c3dc7f9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="structGridLocation" kindref="compound">GridLocation</ref> &amp;</type>
+        <definition>GridLocation &amp; GridLocation::operator--</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>operator--</name>
+        <qualifiedname>GridLocation::operator--</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/grid_location.h" line="20" column="14" bodyfile="src/grid_location.cpp" bodystart="41" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="structGridLocation_a3bbf3ec6ab9e2ae292006c3be7831ba2_1a3bbf3ec6ab9e2ae292006c3be7831ba2" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="structGridLocation" kindref="compound">GridLocation</ref></type>
+        <definition>GridLocation GridLocation::operator--</definition>
+        <argsstring>(int) noexcept</argsstring>
+        <name>operator--</name>
+        <qualifiedname>GridLocation::operator--</qualifiedname>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/grid_location.h" line="21" column="14" bodyfile="src/grid_location.cpp" bodystart="48" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="structGridLocation_a1c25ceaa4cdca5ecd4b07ba1554da748_1a1c25ceaa4cdca5ecd4b07ba1554da748" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="structGridLocation" kindref="compound">GridLocation</ref> &amp;</type>
+        <definition>GridLocation &amp; GridLocation::operator-=</definition>
+        <argsstring>(const GridLocation &amp;rhs) noexcept</argsstring>
+        <name>operator-=</name>
+        <qualifiedname>GridLocation::operator-=</qualifiedname>
+        <param>
+          <type>const <ref refid="structGridLocation" kindref="compound">GridLocation</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/grid_location.h" line="22" column="14" bodyfile="src/grid_location.cpp" bodystart="55" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="structGridLocation_a2fc5835004d9e9c2f53d098d233591a0_1a2fc5835004d9e9c2f53d098d233591a0" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool GridLocation::operator==</definition>
+        <argsstring>(const GridLocation &amp;rhs) const noexcept</argsstring>
+        <name>operator==</name>
+        <qualifiedname>GridLocation::operator==</qualifiedname>
+        <param>
+          <type>const <ref refid="structGridLocation" kindref="compound">GridLocation</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/grid_location.h" line="23" column="6" bodyfile="src/grid_location.cpp" bodystart="62" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="structGridLocation_ac2251c47b580d5787ce2cda4557e5b27_1ac2251c47b580d5787ce2cda4557e5b27" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool GridLocation::operator!=</definition>
+        <argsstring>(const GridLocation &amp;rhs) const noexcept</argsstring>
+        <name>operator!=</name>
+        <qualifiedname>GridLocation::operator!=</qualifiedname>
+        <param>
+          <type>const <ref refid="structGridLocation" kindref="compound">GridLocation</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/grid_location.h" line="24" column="6" bodyfile="src/grid_location.cpp" bodystart="67" bodyend="70"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Grid3dLocation</label>
+        <link refid="structGrid3dLocation"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>GridLocation</label>
+        <link refid="structGridLocation"/>
+      </node>
+    </inheritancegraph>
+    <location file="inc/grid_location.h" line="6" column="1" bodyfile="inc/grid_location.h" bodystart="7" bodyend="25"/>
+    <listofallmembers>
+      <member refid="structGridLocation_a19480ec677eb86a3442d1d9e3cc28a0b_1a19480ec677eb86a3442d1d9e3cc28a0b" prot="public" virt="non-virtual"><scope>GridLocation</scope><name>GridLocation</name></member>
+      <member refid="structGridLocation_ac2251c47b580d5787ce2cda4557e5b27_1ac2251c47b580d5787ce2cda4557e5b27" prot="public" virt="non-virtual"><scope>GridLocation</scope><name>operator!=</name></member>
+      <member refid="structGridLocation_aae60c793bb02a0b6b23676e74d5407f0_1aae60c793bb02a0b6b23676e74d5407f0" prot="public" virt="non-virtual"><scope>GridLocation</scope><name>operator+</name></member>
+      <member refid="structGridLocation_a00b4d0fbdf62552498096f576c786747_1a00b4d0fbdf62552498096f576c786747" prot="public" virt="non-virtual"><scope>GridLocation</scope><name>operator++</name></member>
+      <member refid="structGridLocation_aa9472345e1e73386c1412aecb8376d3a_1aa9472345e1e73386c1412aecb8376d3a" prot="public" virt="non-virtual"><scope>GridLocation</scope><name>operator++</name></member>
+      <member refid="structGridLocation_afefddd6ac8f7a44b2b0788a945dc007f_1afefddd6ac8f7a44b2b0788a945dc007f" prot="public" virt="non-virtual"><scope>GridLocation</scope><name>operator+=</name></member>
+      <member refid="structGridLocation_a2c9bf0dcb1049edce8093751e9e58885_1a2c9bf0dcb1049edce8093751e9e58885" prot="public" virt="non-virtual"><scope>GridLocation</scope><name>operator-</name></member>
+      <member refid="structGridLocation_ade93bb39118632a7428f06135c3dc7f9_1ade93bb39118632a7428f06135c3dc7f9" prot="public" virt="non-virtual"><scope>GridLocation</scope><name>operator--</name></member>
+      <member refid="structGridLocation_a3bbf3ec6ab9e2ae292006c3be7831ba2_1a3bbf3ec6ab9e2ae292006c3be7831ba2" prot="public" virt="non-virtual"><scope>GridLocation</scope><name>operator--</name></member>
+      <member refid="structGridLocation_a1c25ceaa4cdca5ecd4b07ba1554da748_1a1c25ceaa4cdca5ecd4b07ba1554da748" prot="public" virt="non-virtual"><scope>GridLocation</scope><name>operator-=</name></member>
+      <member refid="structGridLocation_a7e29edf4532d90b9a7d7598fcd37b0ec_1a7e29edf4532d90b9a7d7598fcd37b0ec" prot="public" virt="non-virtual"><scope>GridLocation</scope><name>operator=</name></member>
+      <member refid="structGridLocation_a2fc5835004d9e9c2f53d098d233591a0_1a2fc5835004d9e9c2f53d098d233591a0" prot="public" virt="non-virtual"><scope>GridLocation</scope><name>operator==</name></member>
+      <member refid="structGridLocation_aeb63882b21b183e7335258a58c8a40e8_1aeb63882b21b183e7335258a58c8a40e8" prot="public" virt="non-virtual"><scope>GridLocation</scope><name>x</name></member>
+      <member refid="structGridLocation_aa73f11982d6425de33e1cd4a5a4c7ac6_1aa73f11982d6425de33e1cd4a5a4c7ac6" prot="public" virt="non-virtual"><scope>GridLocation</scope><name>y</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

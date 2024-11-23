@@ -1,0 +1,649 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="console_8cpp" kind="file" language="C++">
+    <compoundname>console.cpp</compoundname>
+    <includes local="no">iostream</includes>
+    <includes refid="console_8h" local="yes">console.h</includes>
+    <includes refid="key__timer_8h" local="yes">key_timer.h</includes>
+    <includes refid="os__utils_8h" local="yes">os_utils.h</includes>
+    <includes refid="utils_8h" local="yes">utils.h</includes>
+    <includes local="yes">magic_enum/magic_enum.h</includes>
+    <incdepgraph>
+      <node id="19">
+        <label>assertions_console.h</label>
+        <link refid="assertions__console_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>console.h</label>
+        <link refid="console_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>key_timer.h</label>
+        <link refid="key__timer_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>key_type_traits.h</label>
+        <link refid="key__type__traits_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>math_utils.h</label>
+        <link refid="math__utils_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="34">
+        <label>os_utils.h</label>
+        <link refid="os__utils_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>utils_global.h</label>
+        <link refid="utils__global_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>winner.h</label>
+        <link refid="winner_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/console.cpp</label>
+        <link refid="console_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>ShlObj.h</label>
+      </node>
+      <node id="7">
+        <label>Windows.h</label>
+      </node>
+      <node id="27">
+        <label>algorithm</label>
+      </node>
+      <node id="23">
+        <label>bitset</label>
+      </node>
+      <node id="11">
+        <label>chrono</label>
+      </node>
+      <node id="25">
+        <label>cinttypes</label>
+      </node>
+      <node id="13">
+        <label>cmath</label>
+      </node>
+      <node id="36">
+        <label>comdef.h</label>
+      </node>
+      <node id="24">
+        <label>cstddef</label>
+      </node>
+      <node id="14">
+        <label>cstdint</label>
+      </node>
+      <node id="31">
+        <label>execution</label>
+      </node>
+      <node id="38">
+        <label>functional</label>
+      </node>
+      <node id="26">
+        <label>future</label>
+      </node>
+      <node id="17">
+        <label>iomanip</label>
+      </node>
+      <node id="2">
+        <label>iostream</label>
+      </node>
+      <node id="29">
+        <label>iterator</label>
+      </node>
+      <node id="18">
+        <label>limits</label>
+      </node>
+      <node id="42">
+        <label>magic_enum/magic_enum.h</label>
+      </node>
+      <node id="28">
+        <label>numeric</label>
+      </node>
+      <node id="39">
+        <label>optional</label>
+      </node>
+      <node id="30">
+        <label>regex</label>
+      </node>
+      <node id="6">
+        <label>sdkddkver.h</label>
+      </node>
+      <node id="22">
+        <label>set</label>
+      </node>
+      <node id="16">
+        <label>sstream</label>
+      </node>
+      <node id="4">
+        <label>string</label>
+      </node>
+      <node id="10">
+        <label>thread</label>
+      </node>
+      <node id="37">
+        <label>tlhelp32.h</label>
+      </node>
+      <node id="15">
+        <label>type_traits</label>
+      </node>
+      <node id="21">
+        <label>vector</label>
+      </node>
+      <node id="41">
+        <label>wincred.h</label>
+      </node>
+      <node id="35">
+        <label>winternl.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="console_8cpp_a5f005f8976082489a8424dae701a3ca4_1a5f005f8976082489a8424dae701a3ca4" prot="public" static="no">
+        <name>MAKE_CONSOLE_DEFAULT_TITLE</name>
+        <initializer>std::string{s_defaultConsoleTitle} + std::string{&quot; &quot;} + std::string{s_currentVersion}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/console.cpp" line="31" column="9" bodyfile="src/console.cpp" bodystart="31" bodyend="-1"/>
+        <referencedby refid="classKeyConsole_aa6bd64862829ab2d730a3550cbe6f4d2_1aa6bd64862829ab2d730a3550cbe6f4d2" compoundref="console_8cpp" startline="52" endline="97">KeyConsole::KeyConsole</referencedby>
+        <referencedby refid="classKeyConsole_a7276b2615dd1194e8890036b67399740_1a7276b2615dd1194e8890036b67399740" compoundref="console_8cpp" startline="185" endline="199">KeyConsole::getWindowHandle</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="console_8cpp_a7988976644f53e8293aa252214f89cfb_1a7988976644f53e8293aa252214f89cfb" prot="public" static="no">
+        <name>MAX_CONSOLE_TITLE_LEN</name>
+        <initializer>128</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/console.cpp" line="32" column="9" bodyfile="src/console.cpp" bodystart="32" bodyend="-1"/>
+        <referencedby refid="classKeyConsole_aa28378b6ec6d05deba73ecc4118ba9e1_1aa28378b6ec6d05deba73ecc4118ba9e1" compoundref="console_8cpp" startline="243" endline="249">KeyConsole::getTitle</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="console_8h" kindref="compound">console.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="key__timer_8h" kindref="compound">key_timer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="os__utils_8h" kindref="compound">os_utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="utils_8h" kindref="compound">utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;magic_enum/magic_enum.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>NOGDI</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>define<sp/>LF_FACESIZE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FF_DONTCARE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0&lt;&lt;4)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FW_NORMAL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>400</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">_CONSOLE_FONT_INFOEX</highlight></codeline>
+<codeline lineno="13"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>ULONG<sp/>cbSize;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>DWORD<sp/>nFont;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>COORD<sp/>dwFontSize;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT<sp/><sp/>FontFamily;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT<sp/><sp/>FontWeight;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>WCHAR<sp/>FaceName[LF_FACESIZE];</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">}<sp/>CONSOLE_FONT_INFOEX,<sp/>*PCONSOLE_FONT_INFOEX;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal">BOOL<sp/>WINAPI<sp/>SetCurrentConsoleFontEx(<sp/>HANDLE<sp/>hConsoleOutput,<sp/>BOOL<sp/>bMaximumWindow,<sp/>PCONSOLE_FONT_INFOEX<sp/>lpConsoleCurrentFontEx<sp/>);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>NOGDI</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="console_8cpp_a5f005f8976082489a8424dae701a3ca4_1a5f005f8976082489a8424dae701a3ca4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAKE_CONSOLE_DEFAULT_TITLE<sp/><sp/>std::string{s_defaultConsoleTitle}<sp/>+<sp/>std::string{&quot;<sp/>&quot;}<sp/>+<sp/>std::string{s_currentVersion}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="console_8cpp_a7988976644f53e8293aa252214f89cfb_1a7988976644f53e8293aa252214f89cfb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_CONSOLE_TITLE_LEN<sp/><sp/><sp/>128</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classKeyConsole_a31cfe6a77156baf79a0a74ea338c6e18_1a31cfe6a77156baf79a0a74ea338c6e18" refkind="member"><highlight class="normal"><ref refid="classKeyConsole" kindref="compound">KeyConsole</ref>&amp;<sp/><ref refid="classKeyConsole_a31cfe6a77156baf79a0a74ea338c6e18_1a31cfe6a77156baf79a0a74ea338c6e18" kindref="member">KeyConsole::getInstance</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="classKeyConsole_aba6fe3235773e96b3968d2bae15577eb_1aba6fe3235773e96b3968d2bae15577eb" kindref="member">s_pInstance</ref><sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classKeyConsole_aba6fe3235773e96b3968d2bae15577eb_1aba6fe3235773e96b3968d2bae15577eb" kindref="member">s_pInstance</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classKeyConsole_aa6bd64862829ab2d730a3550cbe6f4d2_1aa6bd64862829ab2d730a3550cbe6f4d2" kindref="member">KeyConsole</ref>;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*<ref refid="classKeyConsole_aba6fe3235773e96b3968d2bae15577eb_1aba6fe3235773e96b3968d2bae15577eb" kindref="member">s_pInstance</ref>;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="classKeyConsole_a8031d881b6ee80cd36fb5ab4fb0ff2b9_1a8031d881b6ee80cd36fb5ab4fb0ff2b9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classKeyConsole_a8031d881b6ee80cd36fb5ab4fb0ff2b9_1a8031d881b6ee80cd36fb5ab4fb0ff2b9" kindref="member">KeyConsole::resetInstance</ref>()</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="classKeyConsole_aba6fe3235773e96b3968d2bae15577eb_1aba6fe3235773e96b3968d2bae15577eb" kindref="member">s_pInstance</ref><sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/><ref refid="classKeyConsole_aba6fe3235773e96b3968d2bae15577eb_1aba6fe3235773e96b3968d2bae15577eb" kindref="member">s_pInstance</ref>;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="classKeyConsole_aa6bd64862829ab2d730a3550cbe6f4d2_1aa6bd64862829ab2d730a3550cbe6f4d2" refkind="member"><highlight class="normal"><ref refid="classKeyConsole_aa6bd64862829ab2d730a3550cbe6f4d2_1aa6bd64862829ab2d730a3550cbe6f4d2" kindref="member">KeyConsole::KeyConsole</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;fontName<sp/>)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>m_fp{nullptr},</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>m_stdDevice{STD_OUTPUT_HANDLE},</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>m_hMode{stdout},</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>m_hConsole{GetStdHandle(<sp/>m_stdDevice<sp/>)}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>fflush(<sp/>stdout<sp/>);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>1.<sp/>Allocate<sp/>console</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!AllocConsole()<sp/>)</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MessageBoxW(<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/><ref refid="namespaceutil_a6f14f660ccbdb1435f227700fa1dfd94_1a6f14f660ccbdb1435f227700fa1dfd94" kindref="member">util::s2ws</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Unable<sp/>to<sp/>create<sp/>Debug<sp/>Console.&quot;</highlight><highlight class="normal"><sp/>).data(),<sp/><ref refid="namespaceutil_a6f14f660ccbdb1435f227700fa1dfd94_1a6f14f660ccbdb1435f227700fa1dfd94" kindref="member">util::s2ws</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Notice&quot;</highlight><highlight class="normal"><sp/>).data(),<sp/>MB_ICONEXCLAMATION<sp/>);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>2.<sp/>set<sp/>console<sp/>title</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>title<sp/>=<sp/><ref refid="console_8cpp_a5f005f8976082489a8424dae701a3ca4_1a5f005f8976082489a8424dae701a3ca4" kindref="member">MAKE_CONSOLE_DEFAULT_TITLE</ref>;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>SetConsoleTitleW(<sp/><ref refid="namespaceutil_a6f14f660ccbdb1435f227700fa1dfd94_1a6f14f660ccbdb1435f227700fa1dfd94" kindref="member">util::s2ws</ref>(<sp/>title<sp/>).data()<sp/>);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>3.<sp/>set<sp/>the<sp/>console<sp/>codepage<sp/>to<sp/>UTF-8<sp/>UNICODE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!IsValidCodePage(<sp/>CP_UTF8<sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OutputDebugStringW(<sp/><ref refid="namespaceutil_a742e4cf7eec6ab440f6a51fa98cdb42b_1a742e4cf7eec6ab440f6a51fa98cdb42b" kindref="member">util::printHresultErrorDescriptionW</ref>(<sp/>HRESULT_FROM_WIN32(<sp/>GetLastError()<sp/>)<sp/>).data()<sp/>);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!SetConsoleCP(<sp/>CP_UTF8<sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OutputDebugStringW(<sp/><ref refid="namespaceutil_a742e4cf7eec6ab440f6a51fa98cdb42b_1a742e4cf7eec6ab440f6a51fa98cdb42b" kindref="member">util::printHresultErrorDescriptionW</ref>(<sp/>HRESULT_FROM_WIN32(<sp/>GetLastError()<sp/>)<sp/>).data()<sp/>);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!SetConsoleOutputCP(<sp/>CP_UTF8<sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OutputDebugStringW(<sp/><ref refid="namespaceutil_a742e4cf7eec6ab440f6a51fa98cdb42b_1a742e4cf7eec6ab440f6a51fa98cdb42b" kindref="member">util::printHresultErrorDescriptionW</ref>(<sp/>HRESULT_FROM_WIN32(<sp/>GetLastError()<sp/>)<sp/>).data()<sp/>);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>4.<sp/>use<sp/>a<sp/>suitable<sp/>(console)<sp/>font<sp/>that<sp/>supports<sp/>our<sp/>desired<sp/>glyphs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>-<sp/>post<sp/>Windows<sp/>Vista<sp/>only</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyConsole_a6b7b65eadae9f29b29e89d13b888d326_1a6b7b65eadae9f29b29e89d13b888d326" kindref="member">setFont</ref>(<sp/>fontName<sp/>);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>5.<sp/>set<sp/>file<sp/>stream<sp/>translation<sp/>mode</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>std::ios_base::sync_with_stdio(<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyConsole_a07362c63c978e15bb23d2a43ab697e3a_1a07362c63c978e15bb23d2a43ab697e3a" kindref="member">print</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Console<sp/>attributes<sp/>set.\n&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyConsole_a07362c63c978e15bb23d2a43ab697e3a_1a07362c63c978e15bb23d2a43ab697e3a" kindref="member">print</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Console<sp/>mode<sp/>set<sp/>to<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::string{<ref refid="classKeyConsole_a846a4df33b84c4a56e9d7518a5c510b7_1a846a4df33b84c4a56e9d7518a5c510b7" kindref="member">getConsoleModeStr</ref>()}<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyConsole_a07362c63c978e15bb23d2a43ab697e3a_1a07362c63c978e15bb23d2a43ab697e3a" kindref="member">print</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Console<sp/>ready.\n\n&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyConsole_ad425f5f4cad73ac80f7a6d004b3ede87_1ad425f5f4cad73ac80f7a6d004b3ede87" kindref="member">setDefaultColor</ref>();</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout.clear();<sp/><sp/></highlight><highlight class="comment">//<sp/>after<sp/>this<sp/>one<sp/>we<sp/>are<sp/>ready<sp/>to<sp/>print</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99" refid="classKeyConsole_a0de1a5cca5ea2432be7a44d3582a61cd_1a0de1a5cca5ea2432be7a44d3582a61cd" refkind="member"><highlight class="normal"><ref refid="classKeyConsole_a0de1a5cca5ea2432be7a44d3582a61cd_1a0de1a5cca5ea2432be7a44d3582a61cd" kindref="member">KeyConsole::~KeyConsole</ref>()</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyConsole_a72ce2cd83bd93fca1aeb0339ba451f02_1a72ce2cd83bd93fca1aeb0339ba451f02" kindref="member">closeConsole</ref>();</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="classKeyConsole_a07362c63c978e15bb23d2a43ab697e3a_1a07362c63c978e15bb23d2a43ab697e3a" refkind="member"><highlight class="normal">DWORD<sp/><ref refid="classKeyConsole_a07362c63c978e15bb23d2a43ab697e3a_1a07362c63c978e15bb23d2a43ab697e3a" kindref="member">KeyConsole::print</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;msg<sp/>)</highlight></codeline>
+<codeline lineno="105"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyConsole_a92d6c89bf91a779b8c262d36da97c5ff_1a92d6c89bf91a779b8c262d36da97c5ff" kindref="member">m_hMode</ref><sp/>=<sp/>stdout;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyConsole_a9e73a32fbcca916b045bc6a7e69b91f9_1a9e73a32fbcca916b045bc6a7e69b91f9" kindref="member">m_fp</ref><sp/>=<sp/>freopen(<sp/></highlight><highlight class="stringliteral">&quot;CONOUT$&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;w&quot;</highlight><highlight class="normal">,<sp/><ref refid="classKeyConsole_a92d6c89bf91a779b8c262d36da97c5ff_1a92d6c89bf91a779b8c262d36da97c5ff" kindref="member">m_hMode</ref><sp/>);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyConsole_a595cfccf2ccae1660afb88bbcb016ef9_1a595cfccf2ccae1660afb88bbcb016ef9" kindref="member">m_stdDevice</ref><sp/>=<sp/>STD_OUTPUT_HANDLE;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyConsole_a97c14586b56cd2debf3ee194b38bc26a_1a97c14586b56cd2debf3ee194b38bc26a" kindref="member">m_hConsole</ref><sp/>=<sp/>GetStdHandle(<sp/><ref refid="classKeyConsole_a595cfccf2ccae1660afb88bbcb016ef9_1a595cfccf2ccae1660afb88bbcb016ef9" kindref="member">m_stdDevice</ref><sp/>);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>DWORD<sp/>nWritten<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>WriteConsoleA(<sp/><ref refid="classKeyConsole_a97c14586b56cd2debf3ee194b38bc26a_1a97c14586b56cd2debf3ee194b38bc26a" kindref="member">m_hConsole</ref>,<sp/>msg.c_str(),<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">DWORD</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/>msg.length()<sp/>),<sp/>&amp;nWritten,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="os__utils_8h_a5d073df04e4d5048059e9a110173b9f0_1a5d073df04e4d5048059e9a110173b9f0" kindref="member">ASSERT_HRES_WIN32_IF_FAILED</ref>;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>nWritten;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="classKeyConsole_a453538c0c27b7fb4311391485e3c3788_1a453538c0c27b7fb4311391485e3c3788" refkind="member"><highlight class="normal">DWORD<sp/><ref refid="classKeyConsole_a453538c0c27b7fb4311391485e3c3788_1a453538c0c27b7fb4311391485e3c3788" kindref="member">KeyConsole::log</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;msg,<sp/><ref refid="classKeyConsole_ae450e2a9d580375ea3c22e702a1ac3f5_1ae450e2a9d580375ea3c22e702a1ac3f5" kindref="member">LogCategory</ref><sp/>cat<sp/></highlight><highlight class="comment">/*=<sp/>None*/</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="118"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyConsole_a92d6c89bf91a779b8c262d36da97c5ff_1a92d6c89bf91a779b8c262d36da97c5ff" kindref="member">m_hMode</ref><sp/>=<sp/>stdout;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyConsole_a9e73a32fbcca916b045bc6a7e69b91f9_1a9e73a32fbcca916b045bc6a7e69b91f9" kindref="member">m_fp</ref><sp/>=<sp/>freopen(<sp/></highlight><highlight class="stringliteral">&quot;CONOUT$&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;w&quot;</highlight><highlight class="normal">,<sp/><ref refid="classKeyConsole_a92d6c89bf91a779b8c262d36da97c5ff_1a92d6c89bf91a779b8c262d36da97c5ff" kindref="member">m_hMode</ref><sp/>);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyConsole_a595cfccf2ccae1660afb88bbcb016ef9_1a595cfccf2ccae1660afb88bbcb016ef9" kindref="member">m_stdDevice</ref><sp/>=<sp/>STD_OUTPUT_HANDLE;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyConsole_a97c14586b56cd2debf3ee194b38bc26a_1a97c14586b56cd2debf3ee194b38bc26a" kindref="member">m_hConsole</ref><sp/>=<sp/>GetStdHandle(<sp/><ref refid="classKeyConsole_a595cfccf2ccae1660afb88bbcb016ef9_1a595cfccf2ccae1660afb88bbcb016ef9" kindref="member">m_stdDevice</ref><sp/>);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>categoryStr;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>cat<sp/>!=<sp/><ref refid="classKeyConsole_ae450e2a9d580375ea3c22e702a1ac3f5_1ae450e2a9d580375ea3c22e702a1ac3f5a163155f312033a88fe83c0c839607a45" kindref="member">LogCategory::None</ref><sp/>)</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">std::string_literals;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>categoryStr<sp/>=<sp/>std::string{magic_enum::enum_name(cat)}<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;:<sp/>&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>logStr<sp/>=<sp/>categoryStr<sp/>+<sp/>msg;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>DWORD<sp/>nWritten<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>WriteConsoleA(<sp/><ref refid="classKeyConsole_a97c14586b56cd2debf3ee194b38bc26a_1a97c14586b56cd2debf3ee194b38bc26a" kindref="member">m_hConsole</ref>,<sp/>logStr.c_str(),<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">DWORD</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/>logStr.length()<sp/>),<sp/>&amp;nWritten,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="os__utils_8h_a5d073df04e4d5048059e9a110173b9f0_1a5d073df04e4d5048059e9a110173b9f0" kindref="member">ASSERT_HRES_WIN32_IF_FAILED</ref>;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>nWritten;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138" refid="classKeyConsole_ad542a50bb4ed037c9ecd994e322a70ee_1ad542a50bb4ed037c9ecd994e322a70ee" refkind="member"><highlight class="normal">DWORD<sp/><ref refid="classKeyConsole_ad542a50bb4ed037c9ecd994e322a70ee_1ad542a50bb4ed037c9ecd994e322a70ee" kindref="member">KeyConsole::error</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;msg<sp/>)</highlight></codeline>
+<codeline lineno="139"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyConsole_a92d6c89bf91a779b8c262d36da97c5ff_1a92d6c89bf91a779b8c262d36da97c5ff" kindref="member">m_hMode</ref><sp/>=<sp/>stderr;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyConsole_a9e73a32fbcca916b045bc6a7e69b91f9_1a9e73a32fbcca916b045bc6a7e69b91f9" kindref="member">m_fp</ref><sp/>=<sp/>freopen(<sp/></highlight><highlight class="stringliteral">&quot;CONERR$&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;w&quot;</highlight><highlight class="normal">,<sp/><ref refid="classKeyConsole_a92d6c89bf91a779b8c262d36da97c5ff_1a92d6c89bf91a779b8c262d36da97c5ff" kindref="member">m_hMode</ref><sp/>);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyConsole_a595cfccf2ccae1660afb88bbcb016ef9_1a595cfccf2ccae1660afb88bbcb016ef9" kindref="member">m_stdDevice</ref><sp/>=<sp/>STD_ERROR_HANDLE;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyConsole_a97c14586b56cd2debf3ee194b38bc26a_1a97c14586b56cd2debf3ee194b38bc26a" kindref="member">m_hConsole</ref><sp/>=<sp/>GetStdHandle(<sp/><ref refid="classKeyConsole_a595cfccf2ccae1660afb88bbcb016ef9_1a595cfccf2ccae1660afb88bbcb016ef9" kindref="member">m_stdDevice</ref><sp/>);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>DWORD<sp/>nWritten<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>WriteConsoleA(<sp/><ref refid="classKeyConsole_a97c14586b56cd2debf3ee194b38bc26a_1a97c14586b56cd2debf3ee194b38bc26a" kindref="member">m_hConsole</ref>,<sp/>msg.c_str(),<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">DWORD</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/>msg.length()<sp/>),<sp/>&amp;nWritten,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="os__utils_8h_a5d073df04e4d5048059e9a110173b9f0_1a5d073df04e4d5048059e9a110173b9f0" kindref="member">ASSERT_HRES_WIN32_IF_FAILED</ref>;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>nWritten;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151" refid="classKeyConsole_a826e1281aad70d0648cea4ab95a57d8d_1a826e1281aad70d0648cea4ab95a57d8d" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classKeyConsole_a826e1281aad70d0648cea4ab95a57d8d_1a826e1281aad70d0648cea4ab95a57d8d" kindref="member">KeyConsole::read</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/>maxChars<sp/>)</highlight></codeline>
+<codeline lineno="152"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyConsole_a92d6c89bf91a779b8c262d36da97c5ff_1a92d6c89bf91a779b8c262d36da97c5ff" kindref="member">m_hMode</ref><sp/>=<sp/>stdin;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyConsole_a9e73a32fbcca916b045bc6a7e69b91f9_1a9e73a32fbcca916b045bc6a7e69b91f9" kindref="member">m_fp</ref><sp/>=<sp/>freopen(<sp/></highlight><highlight class="stringliteral">&quot;CONIN$&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;w&quot;</highlight><highlight class="normal">,<sp/><ref refid="classKeyConsole_a92d6c89bf91a779b8c262d36da97c5ff_1a92d6c89bf91a779b8c262d36da97c5ff" kindref="member">m_hMode</ref><sp/>);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyConsole_a595cfccf2ccae1660afb88bbcb016ef9_1a595cfccf2ccae1660afb88bbcb016ef9" kindref="member">m_stdDevice</ref><sp/>=<sp/>STD_INPUT_HANDLE;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyConsole_a97c14586b56cd2debf3ee194b38bc26a_1a97c14586b56cd2debf3ee194b38bc26a" kindref="member">m_hConsole</ref><sp/>=<sp/>GetStdHandle(<sp/><ref refid="classKeyConsole_a595cfccf2ccae1660afb88bbcb016ef9_1a595cfccf2ccae1660afb88bbcb016ef9" kindref="member">m_stdDevice</ref><sp/>);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>DWORD<sp/>nRead<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>buff;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>buff.reserve(<sp/>maxChars<sp/>);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>buff.resize(<sp/>maxChars<sp/>);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>ReadConsoleA(<sp/><ref refid="classKeyConsole_a97c14586b56cd2debf3ee194b38bc26a_1a97c14586b56cd2debf3ee194b38bc26a" kindref="member">m_hConsole</ref>,<sp/>buff.data(),<sp/>maxChars,<sp/>&amp;nRead,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>buff.resize(<sp/>nRead<sp/>-<sp/>2<sp/>);<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>removing<sp/>superfluous<sp/>size<sp/>including<sp/>the<sp/>size<sp/>needed<sp/>for<sp/>\r\n</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="os__utils_8h_a5d073df04e4d5048059e9a110173b9f0_1a5d073df04e4d5048059e9a110173b9f0" kindref="member">ASSERT_HRES_WIN32_IF_FAILED</ref>;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>buff;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168" refid="classKeyConsole_a358d2be06a04f716b9832999243c83a9_1a358d2be06a04f716b9832999243c83a9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classKeyConsole_a358d2be06a04f716b9832999243c83a9_1a358d2be06a04f716b9832999243c83a9" kindref="member">KeyConsole::setTitle</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>title<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="169"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>SetConsoleTitleW(<sp/><ref refid="namespaceutil_a6f14f660ccbdb1435f227700fa1dfd94_1a6f14f660ccbdb1435f227700fa1dfd94" kindref="member">util::s2ws</ref>(<sp/>title<sp/>).c_str()<sp/>);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173" refid="classKeyConsole_a72ce2cd83bd93fca1aeb0339ba451f02_1a72ce2cd83bd93fca1aeb0339ba451f02" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classKeyConsole_a72ce2cd83bd93fca1aeb0339ba451f02_1a72ce2cd83bd93fca1aeb0339ba451f02" kindref="member">KeyConsole::closeConsole</ref>()</highlight></codeline>
+<codeline lineno="174"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!FreeConsole()<sp/>)</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MessageBoxW(<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>L</highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>close<sp/>the<sp/>console!&quot;</highlight><highlight class="normal">,<sp/>L</highlight><highlight class="stringliteral">&quot;Console<sp/>Error&quot;</highlight><highlight class="normal">,<sp/>MB_ICONERROR<sp/>);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>fclose(<sp/><ref refid="classKeyConsole_a9e73a32fbcca916b045bc6a7e69b91f9_1a9e73a32fbcca916b045bc6a7e69b91f9" kindref="member">m_fp</ref><sp/>);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>fclose(<sp/><ref refid="classKeyConsole_a92d6c89bf91a779b8c262d36da97c5ff_1a92d6c89bf91a779b8c262d36da97c5ff" kindref="member">m_hMode</ref><sp/>);</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185" refid="classKeyConsole_a7276b2615dd1194e8890036b67399740_1a7276b2615dd1194e8890036b67399740" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>HWND<sp/><ref refid="classKeyConsole_a7276b2615dd1194e8890036b67399740_1a7276b2615dd1194e8890036b67399740" kindref="member">KeyConsole::getWindowHandle</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="186"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>phTitle<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;console<sp/>placeholder<sp/>title&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyConsole_a358d2be06a04f716b9832999243c83a9_1a358d2be06a04f716b9832999243c83a9" kindref="member">setTitle</ref>(<sp/>phTitle<sp/>);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyTimer_a36bdadbd57baf7541c0b7c01ed688599_1a36bdadbd57baf7541c0b7c01ed688599" kindref="member">SleepTimer::sleepFor</ref>(<sp/>10<sp/>);<sp/></highlight><highlight class="comment">//<sp/>ensure<sp/>window<sp/>title<sp/>has<sp/>been<sp/>updated</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>HWND<sp/>consoleHWnd<sp/>=<sp/>FindWindowW(<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/><ref refid="namespaceutil_a6f14f660ccbdb1435f227700fa1dfd94_1a6f14f660ccbdb1435f227700fa1dfd94" kindref="member">util::s2ws</ref>(<sp/>phTitle<sp/>).c_str()<sp/>);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="os__utils_8h_a5d073df04e4d5048059e9a110173b9f0_1a5d073df04e4d5048059e9a110173b9f0" kindref="member">ASSERT_HRES_WIN32_IF_FAILED</ref>;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>restore<sp/>original<sp/>title</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyConsole_a358d2be06a04f716b9832999243c83a9_1a358d2be06a04f716b9832999243c83a9" kindref="member">setTitle</ref>(<sp/><ref refid="console_8cpp_a5f005f8976082489a8424dae701a3ca4_1a5f005f8976082489a8424dae701a3ca4" kindref="member">MAKE_CONSOLE_DEFAULT_TITLE</ref><sp/>);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>consoleHWnd;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201" refid="classKeyConsole_a9cfd47daafd431cd4238f71446cfc1d6_1a9cfd47daafd431cd4238f71446cfc1d6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classKeyConsole_a9cfd47daafd431cd4238f71446cfc1d6_1a9cfd47daafd431cd4238f71446cfc1d6" kindref="member">KeyConsole::getConsoleMode</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="202"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="classKeyConsole_a92d6c89bf91a779b8c262d36da97c5ff_1a92d6c89bf91a779b8c262d36da97c5ff" kindref="member">m_hMode</ref><sp/>==<sp/>stdout<sp/>)</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="classKeyConsole_a92d6c89bf91a779b8c262d36da97c5ff_1a92d6c89bf91a779b8c262d36da97c5ff" kindref="member">m_hMode</ref><sp/>==<sp/>stdin<sp/>)</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="classKeyConsole_a92d6c89bf91a779b8c262d36da97c5ff_1a92d6c89bf91a779b8c262d36da97c5ff" kindref="member">m_hMode</ref><sp/>==<sp/>stderr<sp/>)</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>2;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218" refid="classKeyConsole_a846a4df33b84c4a56e9d7518a5c510b7_1a846a4df33b84c4a56e9d7518a5c510b7" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classKeyConsole_a846a4df33b84c4a56e9d7518a5c510b7_1a846a4df33b84c4a56e9d7518a5c510b7" kindref="member">KeyConsole::getConsoleModeStr</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="219"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>strMode;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(<sp/><ref refid="classKeyConsole_a595cfccf2ccae1660afb88bbcb016ef9_1a595cfccf2ccae1660afb88bbcb016ef9" kindref="member">m_stdDevice</ref><sp/>)</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>STD_OUTPUT_HANDLE:</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strMode<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;out&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>STD_ERROR_HANDLE:</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strMode<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;err&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>STD_INPUT_HANDLE:</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strMode<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;in&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>strMode;</highlight></codeline>
+<codeline lineno="236"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238" refid="classKeyConsole_a05a1f1745d5439dd0e8eec9295b582f7_1a05a1f1745d5439dd0e8eec9295b582f7" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>HANDLE<sp/><ref refid="classKeyConsole_a05a1f1745d5439dd0e8eec9295b582f7_1a05a1f1745d5439dd0e8eec9295b582f7" kindref="member">KeyConsole::getHandle</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="239"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classKeyConsole_a97c14586b56cd2debf3ee194b38bc26a_1a97c14586b56cd2debf3ee194b38bc26a" kindref="member">m_hConsole</ref>;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="243" refid="classKeyConsole_aa28378b6ec6d05deba73ecc4118ba9e1_1aa28378b6ec6d05deba73ecc4118ba9e1" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classKeyConsole_aa28378b6ec6d05deba73ecc4118ba9e1_1aa28378b6ec6d05deba73ecc4118ba9e1" kindref="member">KeyConsole::getTitle</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="244"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">wchar_t</highlight><highlight class="normal"><sp/>consoleTitle[<ref refid="console_8cpp_a7988976644f53e8293aa252214f89cfb_1a7988976644f53e8293aa252214f89cfb" kindref="member">MAX_CONSOLE_TITLE_LEN</ref>];</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/>GetConsoleTitleW(<sp/>consoleTitle,<sp/><ref refid="console_8cpp_a7988976644f53e8293aa252214f89cfb_1a7988976644f53e8293aa252214f89cfb" kindref="member">MAX_CONSOLE_TITLE_LEN</ref><sp/>);</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="os__utils_8h_a5d073df04e4d5048059e9a110173b9f0_1a5d073df04e4d5048059e9a110173b9f0" kindref="member">ASSERT_HRES_WIN32_IF_FAILED</ref>;</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceutil_a81e6fd9c125b3f26fb70d1847f6ff517_1a81e6fd9c125b3f26fb70d1847f6ff517" kindref="member">util::ws2s</ref>(<sp/>consoleTitle<sp/>);</highlight></codeline>
+<codeline lineno="249"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="251" refid="classKeyConsole_a1aac85afa7d60eff0cc3b897141a12f3_1a1aac85afa7d60eff0cc3b897141a12f3" refkind="member"><highlight class="normal">uint32_t<sp/><ref refid="classKeyConsole_a1aac85afa7d60eff0cc3b897141a12f3_1a1aac85afa7d60eff0cc3b897141a12f3" kindref="member">KeyConsole::getConsoleCodePage</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="252"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>GetConsoleCP();</highlight></codeline>
+<codeline lineno="254"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="256" refid="classKeyConsole_a554f49e8a84af6317cbe0ba9a8fbc39a_1a554f49e8a84af6317cbe0ba9a8fbc39a" refkind="member"><highlight class="normal">int32_t<sp/><ref refid="classKeyConsole_a554f49e8a84af6317cbe0ba9a8fbc39a_1a554f49e8a84af6317cbe0ba9a8fbc39a" kindref="member">KeyConsole::setConsoleCodePage</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/>cp<sp/>)</highlight></codeline>
+<codeline lineno="257"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>SetConsoleCP(<sp/>cp<sp/>);</highlight></codeline>
+<codeline lineno="259"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261" refid="classKeyConsole_a6b7b65eadae9f29b29e89d13b888d326_1a6b7b65eadae9f29b29e89d13b888d326" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classKeyConsole_a6b7b65eadae9f29b29e89d13b888d326_1a6b7b65eadae9f29b29e89d13b888d326" kindref="member">KeyConsole::setFont</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;fontName<sp/>)</highlight></codeline>
+<codeline lineno="262"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/>CONSOLE_FONT_INFOEX<sp/>cfie;</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>sz<sp/>=<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<sp/>CONSOLE_FONT_INFOEX<sp/>);</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/>ZeroMemory(<sp/>&amp;cfie,<sp/>sz<sp/>);</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/>cfie.cbSize<sp/>=<sp/>sz;</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/>cfie.dwFontSize.X<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/>cfie.dwFontSize.Y<sp/>=<sp/>14;</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/>cfie.FontFamily<sp/>=<sp/>FF_DONTCARE;</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/>cfie.FontWeight<sp/>=<sp/>FW_NORMAL;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/>wcscpy(<sp/>cfie.FaceName,<sp/><ref refid="namespaceutil_a6f14f660ccbdb1435f227700fa1dfd94_1a6f14f660ccbdb1435f227700fa1dfd94" kindref="member">util::s2ws</ref>(<sp/>fontName<sp/>).data()<sp/>);</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/>SetCurrentConsoleFontEx(<sp/><ref refid="classKeyConsole_a97c14586b56cd2debf3ee194b38bc26a_1a97c14586b56cd2debf3ee194b38bc26a" kindref="member">m_hConsole</ref>,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/>&amp;cfie<sp/>);</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyConsole_ac6d2cd506622ddd496bf88708fe0b4fe_1ac6d2cd506622ddd496bf88708fe0b4fe" kindref="member">getConsoleInfo</ref>(<sp/><ref refid="classKeyConsole_a97c14586b56cd2debf3ee194b38bc26a_1a97c14586b56cd2debf3ee194b38bc26a" kindref="member">m_hConsole</ref><sp/>);</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//using<sp/>SETCONSOLEFONT<sp/>=<sp/>BOOL<sp/>(WINAPI*)(<sp/>HANDLE<sp/>hConOut,<sp/>DWORD<sp/>nFont<sp/>);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//auto<sp/>SetConsoleFont<sp/>=<sp/>(SETCONSOLEFONT)<sp/>GetProcAddress(<sp/>LoadLibraryW(<sp/>L&quot;KERNEL32&quot;<sp/>),<sp/>&quot;SetConsoleFont&quot;<sp/>);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279" refid="classKeyConsole_afec0f05d9586694b68980603fe5d5a67_1afec0f05d9586694b68980603fe5d5a67" refkind="member"><highlight class="normal">int32_t<sp/><ref refid="classKeyConsole_afec0f05d9586694b68980603fe5d5a67_1afec0f05d9586694b68980603fe5d5a67" kindref="member">KeyConsole::setCurcorPos</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>_COORD<sp/>xy<sp/></highlight><highlight class="comment">/*<sp/>=<sp/>{<sp/>0,0<sp/>}<sp/>*/</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="280"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>SetConsoleCursorPosition(<sp/><ref refid="classKeyConsole_a97c14586b56cd2debf3ee194b38bc26a_1a97c14586b56cd2debf3ee194b38bc26a" kindref="member">m_hConsole</ref>,<sp/>xy<sp/>);</highlight></codeline>
+<codeline lineno="282"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight></codeline>
+<codeline lineno="284" refid="classKeyConsole_af7772005e337dd86efe5b99b13965534_1af7772005e337dd86efe5b99b13965534" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classKeyConsole_af7772005e337dd86efe5b99b13965534_1af7772005e337dd86efe5b99b13965534" kindref="member">KeyConsole::setColor</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>WORD<sp/>attributes<sp/>)</highlight></codeline>
+<codeline lineno="285"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/>BOOL<sp/>ret<sp/>=<sp/>SetConsoleTextAttribute(<sp/><ref refid="classKeyConsole_a97c14586b56cd2debf3ee194b38bc26a_1a97c14586b56cd2debf3ee194b38bc26a" kindref="member">m_hConsole</ref>,<sp/>attributes<sp/>);</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!ret<sp/>)</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OutputDebugStringW(<sp/><ref refid="namespaceutil_a742e4cf7eec6ab440f6a51fa98cdb42b_1a742e4cf7eec6ab440f6a51fa98cdb42b" kindref="member">util::printHresultErrorDescriptionW</ref>(<sp/>HRESULT_FROM_WIN32(<sp/>GetLastError()<sp/>)<sp/>).data()<sp/>);</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/>CONSOLE_SCREEN_BUFFER_INFO<sp/>csbi;</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>GetConsoleScreenBufferInfo(<sp/><ref refid="classKeyConsole_a97c14586b56cd2debf3ee194b38bc26a_1a97c14586b56cd2debf3ee194b38bc26a" kindref="member">m_hConsole</ref>,<sp/>&amp;csbi<sp/>);</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!ret<sp/>)</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OutputDebugStringW(<sp/><ref refid="namespaceutil_a742e4cf7eec6ab440f6a51fa98cdb42b_1a742e4cf7eec6ab440f6a51fa98cdb42b" kindref="member">util::printHresultErrorDescriptionW</ref>(<sp/>HRESULT_FROM_WIN32(<sp/>GetLastError()<sp/>)<sp/>).data()<sp/>);</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyConsole_ade37210f76648221c27ac6f444cd326f_1ade37210f76648221c27ac6f444cd326f" kindref="member">m_consoleAttributes</ref><sp/>=<sp/>csbi.wAttributes;</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="301"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight></codeline>
+<codeline lineno="303" refid="classKeyConsole_ab8c3fff33fcf3a581d6aa124d606d679_1ab8c3fff33fcf3a581d6aa124d606d679" refkind="member"><highlight class="normal">WORD<sp/><ref refid="classKeyConsole_ab8c3fff33fcf3a581d6aa124d606d679_1ab8c3fff33fcf3a581d6aa124d606d679" kindref="member">KeyConsole::getConsoleTextAttributes</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="304"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classKeyConsole_a31cd8e6f1748d68d3c29118ce4c5d0d3_1a31cd8e6f1748d68d3c29118ce4c5d0d3" kindref="member">m_consoleAttributesDefault</ref>;</highlight></codeline>
+<codeline lineno="306"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"></highlight></codeline>
+<codeline lineno="308" refid="classKeyConsole_ad9d6a4f5b6854a52c5c1bd58cef9d12f_1ad9d6a4f5b6854a52c5c1bd58cef9d12f" refkind="member"><highlight class="normal">WORD<sp/><ref refid="classKeyConsole_ad9d6a4f5b6854a52c5c1bd58cef9d12f_1ad9d6a4f5b6854a52c5c1bd58cef9d12f" kindref="member">KeyConsole::getConsoleDefaultTextAttributes</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="309"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classKeyConsole_a31cd8e6f1748d68d3c29118ce4c5d0d3_1a31cd8e6f1748d68d3c29118ce4c5d0d3" kindref="member">m_consoleAttributesDefault</ref>;</highlight></codeline>
+<codeline lineno="311"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"></highlight></codeline>
+<codeline lineno="313" refid="classKeyConsole_ab38fc777f8bfd1e45907ea4d08ec15b6_1ab38fc777f8bfd1e45907ea4d08ec15b6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classKeyConsole_ab38fc777f8bfd1e45907ea4d08ec15b6_1ab38fc777f8bfd1e45907ea4d08ec15b6" kindref="member">KeyConsole::show</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="314"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/>ShowWindow(<sp/>GetConsoleWindow(),<sp/>SW_SHOW<sp/>);</highlight></codeline>
+<codeline lineno="316"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight></codeline>
+<codeline lineno="318" refid="classKeyConsole_ad0b0824d81b063d02d4a2523ed69eefe_1ad0b0824d81b063d02d4a2523ed69eefe" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classKeyConsole_ad0b0824d81b063d02d4a2523ed69eefe_1ad0b0824d81b063d02d4a2523ed69eefe" kindref="member">KeyConsole::hide</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="319"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/>ShowWindow(<sp/>GetConsoleWindow(),<sp/>SW_HIDE<sp/>);</highlight></codeline>
+<codeline lineno="321"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"></highlight></codeline>
+<codeline lineno="323" refid="classKeyConsole_a6ea775aaa5d324886d8a254eb7327cc3_1a6ea775aaa5d324886d8a254eb7327cc3" refkind="member"><highlight class="normal">DWORD<sp/><ref refid="classKeyConsole_a6ea775aaa5d324886d8a254eb7327cc3_1a6ea775aaa5d324886d8a254eb7327cc3" kindref="member">KeyConsole::getFontFamily</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>HANDLE<sp/>h<sp/>)</highlight></codeline>
+<codeline lineno="324"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/>CONSOLE_FONT_INFO<sp/>cfi;</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/>BOOL<sp/>conFont<sp/>=<sp/>GetCurrentConsoleFont(<sp/>h,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/>&amp;cfi<sp/>);</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>conFont<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\nnFont=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>cfi.nFont<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;fontSize=(&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>cfi.dwFontSize.X<sp/>&lt;&lt;<sp/></highlight><highlight class="charliteral">&apos;,&apos;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>cfi.dwFontSize.Y<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;)\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>conFont<sp/>?<sp/>cfi.nFont<sp/>:<sp/>-1;</highlight></codeline>
+<codeline lineno="329"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"></highlight></codeline>
+<codeline lineno="331"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>warning(<sp/>disable<sp/>:<sp/>6387<sp/>)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="332" refid="classKeyConsole_ac6d2cd506622ddd496bf88708fe0b4fe_1ac6d2cd506622ddd496bf88708fe0b4fe" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classKeyConsole_ac6d2cd506622ddd496bf88708fe0b4fe_1ac6d2cd506622ddd496bf88708fe0b4fe" kindref="member">KeyConsole::getConsoleInfo</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>HANDLE<sp/>h<sp/>)</highlight></codeline>
+<codeline lineno="333"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">GETNUMBEROFCONSOLEFONTS<sp/>=<sp/>DWORD<sp/>(WINAPI*<sp/>)();</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>GetNumberOfConsoleFonts<sp/>=<sp/>(GETNUMBEROFCONSOLEFONTS)<sp/>GetProcAddress(<sp/>LoadLibraryW(<sp/>L</highlight><highlight class="stringliteral">&quot;KERNEL32&quot;</highlight><highlight class="normal"><sp/>),<sp/></highlight><highlight class="stringliteral">&quot;GetNumberOfConsoleFonts&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>font<sp/>=<sp/><ref refid="classKeyConsole_a6ea775aaa5d324886d8a254eb7327cc3_1a6ea775aaa5d324886d8a254eb7327cc3" kindref="member">getFontFamily</ref>(<sp/>h<sp/>);</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;nConsoleFonts=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>GetNumberOfConsoleFonts()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;fontName=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>font<sp/>&lt;&lt;<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="338"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>warning(<sp/>default<sp/>:<sp/>6387<sp/>)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="340"><highlight class="normal"></highlight></codeline>
+<codeline lineno="341" refid="classKeyConsole_ad425f5f4cad73ac80f7a6d004b3ede87_1ad425f5f4cad73ac80f7a6d004b3ede87" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classKeyConsole_ad425f5f4cad73ac80f7a6d004b3ede87_1ad425f5f4cad73ac80f7a6d004b3ede87" kindref="member">KeyConsole::setDefaultColor</ref>()</highlight></codeline>
+<codeline lineno="342"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/>CONSOLE_SCREEN_BUFFER_INFO<sp/>csbi;</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/>BOOL<sp/>ret<sp/>=<sp/>GetConsoleScreenBufferInfo(<sp/><ref refid="classKeyConsole_a97c14586b56cd2debf3ee194b38bc26a_1a97c14586b56cd2debf3ee194b38bc26a" kindref="member">m_hConsole</ref>,<sp/>&amp;csbi<sp/>);</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!ret<sp/>)</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OutputDebugStringW(<sp/><ref refid="namespaceutil_a742e4cf7eec6ab440f6a51fa98cdb42b_1a742e4cf7eec6ab440f6a51fa98cdb42b" kindref="member">util::printHresultErrorDescriptionW</ref>(<sp/>HRESULT_FROM_WIN32(<sp/>GetLastError()<sp/>)<sp/>).data()<sp/>);</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyConsole_a31cd8e6f1748d68d3c29118ce4c5d0d3_1a31cd8e6f1748d68d3c29118ce4c5d0d3" kindref="member">m_consoleAttributesDefault</ref><sp/>=<sp/>csbi.wAttributes;</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="352"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/console.cpp"/>
+  </compounddef>
+</doxygen>

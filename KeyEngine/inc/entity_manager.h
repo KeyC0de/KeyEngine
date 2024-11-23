@@ -9,12 +9,12 @@
 
 class Entity;
 
-//============================================================
-//	\class	EntityManager
-//	\author	KeyC0de
-//	\date	2019/12/09 16:06
-//	\brief	EntityManager owns all the Entities
-//=============================================================
+///============================================================
+/// \class	EntityManager
+/// \author	KeyC0de
+/// \date	2019/12/09 16:06
+/// \brief	EntityManager owns all the Entities
+///=============================================================
 class EntityManager final
 	: public NonCopyable
 {
@@ -24,8 +24,13 @@ class EntityManager final
 	std::vector<EntityIndex> m_freelist;
 	std::vector<size_t> m_worldEntitiesIndices;
 
-	// Organize (Categorized) Entities of the same type into `Bucket`s
-	// useful for various gameplay operations
+	///=============================================================
+	/// \class	Bucket
+	/// \author	KeyC0de
+	/// \date	2024/11/21 14:27
+	/// \brief	Organize (Categorized) Entities of the same type into `Bucket`s
+	/// \brief	useful for various gameplay operations
+	///=============================================================
 	class Bucket final
 	{
 		int m_categoryId;
@@ -47,20 +52,16 @@ class EntityManager final
 public:
 	static EntityManager& getInstance();
 	static void resetInstance();
-	//	\function	spawnEntity	||	\date	2020/12/09 14:14
-	//	\brief		factory function for entities
+	/// \brief	factory function for entities
 	EntityId spawnEntity( const std::string &name, int categoryId, Entity *pParent = nullptr );
 	EntityIndex getAliveEntityCount();
-	//	\function	getEntityById	||	\date	2019/12/09 14:04
-	//	\brief		also checks if the entity is valid if its not valid (has died) returns nullptr
+	/// \brief	also checks if the entity is valid if its not valid (has died) returns nullptr
 	Entity* getEntityById( EntityId entId );
-	//	\function	recycleEntityId	||	\date	2019/12/09 13:43
-	//	\brief		recycle the entity's index/id st the slot can be used DOain
-	//			#TODO: NOT WORKING ATM
+	/// \brief	recycle the entity's index/id st the slot can be used DOain
+	/// \brief	#TODO: NOT WORKING ATM
 	void recycleEntityId( EntityId entId );
 	Bucket& getBucket( int categoryId );
-	//	\function	world	||	\date	2022/08/28 13:06
-	//	\brief		gets the current world
+	/// \brief	gets the current world
 	Entity* world();
 private:
 	EntityManager();

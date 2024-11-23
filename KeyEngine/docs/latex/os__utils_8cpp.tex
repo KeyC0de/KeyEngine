@@ -1,0 +1,75 @@
+\doxysection{src/os\+\_\+utils.cpp File Reference}
+\hypertarget{os__utils_8cpp}{}\label{os__utils_8cpp}\index{src/os\_utils.cpp@{src/os\_utils.cpp}}
+{\ttfamily \#include "{}os\+\_\+utils.\+h"{}}\newline
+{\ttfamily \#include "{}utils.\+h"{}}\newline
+{\ttfamily \#include "{}assertions\+\_\+console.\+h"{}}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include "{}util\+\_\+exception.\+h"{}}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceutil}{util}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{os__utils_8cpp_a361e7567f78e4a1f8b85cde320b32705_a361e7567f78e4a1f8b85cde320b32705}{THROW\+\_\+\+UTIL\+\_\+\+EXCEPTION}}(msg)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{namespaceutil_a3cb6f8f22822b4670fa970bce585e52a_a3cb6f8f22822b4670fa970bce585e52a}{util\+::print\+Hresult\+Error\+Description}} (const HRESULT hres)
+\begin{DoxyCompactList}\small\item\em print HRESULT errors in understandable English \end{DoxyCompactList}\item 
+std\+::wstring \mbox{\hyperlink{namespaceutil_a742e4cf7eec6ab440f6a51fa98cdb42b_a742e4cf7eec6ab440f6a51fa98cdb42b}{util\+::print\+Hresult\+Error\+DescriptionW}} (const HRESULT hres)
+\item 
+std\+::string \mbox{\hyperlink{namespaceutil_a566f2bbc4b5cafc9971186f0d707bf3e_a566f2bbc4b5cafc9971186f0d707bf3e}{util\+::get\+Last\+Error\+As\+String}} ()
+\begin{DoxyCompactList}\small\item\em Returns the last Win32 error, in string format. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespaceutil_a9a0b0bfad82a59556195c73d4d2cda5e_a9a0b0bfad82a59556195c73d4d2cda5e}{util\+::get\+Last\+Nt\+Error\+As\+String}} (const DWORD nt\+Status\+Code)
+\item 
+std\+::wstring \mbox{\hyperlink{namespaceutil_a35e258ec68cdc2634e69fad1574f982b_a35e258ec68cdc2634e69fad1574f982b}{util\+::bstr\+To\+Str}} (const BSTR \&bstr)
+\item 
+BSTR \mbox{\hyperlink{namespaceutil_a525e6245d3b2156e2d85aaedb8f7bb2e_a525e6245d3b2156e2d85aaedb8f7bb2e}{util\+::str\+To\+Bstr}} (const std\+::wstring \&str)
+\item 
+\+\_\+\+\_\+int64 \mbox{\hyperlink{namespaceutil_a3e3c5eab6a6d57d880fd94d44f599cb4_a3e3c5eab6a6d57d880fd94d44f599cb4}{util\+::filetime\+To\+Int64}} (const FILETIME \&file\+Time)
+\item 
+DWORD\+\_\+\+PTR \mbox{\hyperlink{namespaceutil_a12eed248853b800635a584152eda83a5_a12eed248853b800635a584152eda83a5}{util\+::pin\+Thread\+To\+Core}} (const HANDLE h\+Thread, const DWORD core)
+\begin{DoxyCompactList}\small\item\em returns the thread\textquotesingle{}s previous affinity mask \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceutil_a26eb5943c9263e29706bf7ea9817bd26_a26eb5943c9263e29706bf7ea9817bd26}{util\+::set\+Current\+Thread\+Name}} (const std\+::string \&name)
+\item 
+std\+::string \mbox{\hyperlink{namespaceutil_a08c4e4a29b0a0e5157b152b140bc094e_a08c4e4a29b0a0e5157b152b140bc094e}{util\+::get\+Known\+Folder\+Path}} (const int id=CSIDL\+\_\+\+PERSONAL)
+\item 
+void \mbox{\hyperlink{namespaceutil_a79a4c5df290b7c3f50617ad7ffa131b2_a79a4c5df290b7c3f50617ad7ffa131b2}{util\+::setup\+Detached\+Threads\+Vector}} (const unsigned n\+Threads)
+\item 
+void \mbox{\hyperlink{namespaceutil_a3a780a09a3dffe65ca6df0ff68298fa9_a3a780a09a3dffe65ca6df0ff68298fa9}{util\+::terminate\+Detached\+Threads}} ()
+\item 
+std\+::optional$<$ DWORD $>$ \mbox{\hyperlink{namespaceutil_a2e444da6f9f3edb24cbdfdd3acd8eef5_a2e444da6f9f3edb24cbdfdd3acd8eef5}{util\+::registry\+Get\+Dword}} (const HKEY h\+Key, const std\+::wstring \&reg\+Name)
+\item 
+std\+::optional$<$ std\+::wstring $>$ \mbox{\hyperlink{namespaceutil_a461bbc2dfa40d2dae1639cce3f6db772_a461bbc2dfa40d2dae1639cce3f6db772}{util\+::registry\+Get\+String}} (const HKEY h\+Key, const std\+::wstring \&reg\+Name)
+\item 
+static void \mbox{\hyperlink{namespaceutil_a833373d99efbf126ccbb44456500085f_a833373d99efbf126ccbb44456500085f}{util\+::suspend\+All\+Threads}} ()
+\item 
+void \mbox{\hyperlink{namespaceutil_a49087246809a040488fc33d84239de83_a49087246809a040488fc33d84239de83}{util\+::launch\+Process}} (const std\+::string \&path)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static HANDLE \mbox{\hyperlink{namespaceutil_a37a4ec65ea5148dae314ac426bc89591_a37a4ec65ea5148dae314ac426bc89591}{util\+::g\+\_\+h\+Thread\+Quitc\+Event}}
+\item 
+static std\+::vector$<$ HANDLE $>$ \mbox{\hyperlink{namespaceutil_a3b9250df90bbf173c6e8ccca985f8162_a3b9250df90bbf173c6e8ccca985f8162}{util\+::g\+\_\+detached\+Threads}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{os__utils_8cpp_a361e7567f78e4a1f8b85cde320b32705_a361e7567f78e4a1f8b85cde320b32705}\index{os\_utils.cpp@{os\_utils.cpp}!THROW\_UTIL\_EXCEPTION@{THROW\_UTIL\_EXCEPTION}}
+\index{THROW\_UTIL\_EXCEPTION@{THROW\_UTIL\_EXCEPTION}!os\_utils.cpp@{os\_utils.cpp}}
+\doxysubsubsection{\texorpdfstring{THROW\_UTIL\_EXCEPTION}{THROW\_UTIL\_EXCEPTION}}
+{\footnotesize\ttfamily \label{os__utils_8cpp_a361e7567f78e4a1f8b85cde320b32705_a361e7567f78e4a1f8b85cde320b32705} 
+\#define THROW\+\_\+\+UTIL\+\_\+\+EXCEPTION(\begin{DoxyParamCaption}\item[{}]{msg}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \_\_debugbreak();\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classUtilException}{UtilException}}(\ \_\_LINE\_\_,\ \_\_FILE\_\_,\ \_\_FUNCTION\_\_,\ msg\ );}
+
+\end{DoxyCode}

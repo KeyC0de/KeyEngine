@@ -1,0 +1,675 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="namespacecol" kind="namespace" language="C++">
+    <compoundname>col</compoundname>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespacecol_ab2dc7238aa0e7ca81d388343a36d357c_1ab2dc7238aa0e7ca81d388343a36d357c" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::White</definition>
+        <argsstring></argsstring>
+        <name>White</name>
+        <qualifiedname>col::White</qualifiedname>
+        <initializer>= <ref refid="namespacecol_aa060b56ac0d2f7ae6e4e4933212d5e72_1aa060b56ac0d2f7ae6e4e4933212d5e72" kindref="member">toBgra</ref>( 255u, 255u, 255u, 255u )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="259" column="24" bodyfile="inc/color.h" bodystart="259" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_a98e7825792b34e65a7aa0800e1283d71_1a98e7825792b34e65a7aa0800e1283d71" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::Black</definition>
+        <argsstring></argsstring>
+        <name>Black</name>
+        <qualifiedname>col::Black</qualifiedname>
+        <initializer>= <ref refid="namespacecol_aa060b56ac0d2f7ae6e4e4933212d5e72_1aa060b56ac0d2f7ae6e4e4933212d5e72" kindref="member">toBgra</ref>( 0u, 0u, 0u, 255u )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="260" column="24" bodyfile="inc/color.h" bodystart="260" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_aa6f49cb96bfd9589c60c794d69e84113_1aa6f49cb96bfd9589c60c794d69e84113" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::Gray</definition>
+        <argsstring></argsstring>
+        <name>Gray</name>
+        <qualifiedname>col::Gray</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 0x80u, 0x80u, 0x80u )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="261" column="24" bodyfile="inc/color.h" bodystart="261" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_a8d0b2bd2e9ae5f89fddcefc71ef6851a_1a8d0b2bd2e9ae5f89fddcefc71ef6851a" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::LightGray</definition>
+        <argsstring></argsstring>
+        <name>LightGray</name>
+        <qualifiedname>col::LightGray</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 0xD3u, 0xD3u, 0xD3u )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="262" column="24" bodyfile="inc/color.h" bodystart="262" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_ae3fdad4cb1fa3b2277b0198deb74e4a6_1ae3fdad4cb1fa3b2277b0198deb74e4a6" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::Red</definition>
+        <argsstring></argsstring>
+        <name>Red</name>
+        <qualifiedname>col::Red</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 255u, 0u, 0u )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="263" column="24" bodyfile="inc/color.h" bodystart="263" bodyend="-1"/>
+        <referencedby refid="classArkanoid_ac5e6e6e2c99b5e0f56fd002a872cbb9b_1ac5e6e6e2c99b5e0f56fd002a872cbb9b" compoundref="game_8cpp" startline="575" endline="601">Arkanoid::Arkanoid</referencedby>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">Window::windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_aa6804fd0ed17a6f54b378590bbe51fee_1aa6804fd0ed17a6f54b378590bbe51fee" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::Green</definition>
+        <argsstring></argsstring>
+        <name>Green</name>
+        <qualifiedname>col::Green</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 0u, 255u, 0u )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="264" column="24" bodyfile="inc/color.h" bodystart="264" bodyend="-1"/>
+        <referencedby refid="classArkanoid_ac5e6e6e2c99b5e0f56fd002a872cbb9b_1ac5e6e6e2c99b5e0f56fd002a872cbb9b" compoundref="game_8cpp" startline="575" endline="601">Arkanoid::Arkanoid</referencedby>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">Window::windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_a26cd33015e25add5c657e13b25bcf997_1a26cd33015e25add5c657e13b25bcf997" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::DarkGreen</definition>
+        <argsstring></argsstring>
+        <name>DarkGreen</name>
+        <qualifiedname>col::DarkGreen</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 0u, 170u, 0u )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="265" column="24" bodyfile="inc/color.h" bodystart="265" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_a089867e8885138220fd686f036354c3e_1a089867e8885138220fd686f036354c3e" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::Blue</definition>
+        <argsstring></argsstring>
+        <name>Blue</name>
+        <qualifiedname>col::Blue</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 0u, 0u, 255u )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="266" column="24" bodyfile="inc/color.h" bodystart="266" bodyend="-1"/>
+        <referencedby refid="classArkanoid_ac5e6e6e2c99b5e0f56fd002a872cbb9b_1ac5e6e6e2c99b5e0f56fd002a872cbb9b" compoundref="game_8cpp" startline="575" endline="601">Arkanoid::Arkanoid</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_a972f9c5690e19fce14cfe69e24774ca7_1a972f9c5690e19fce14cfe69e24774ca7" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::Yellow</definition>
+        <argsstring></argsstring>
+        <name>Yellow</name>
+        <qualifiedname>col::Yellow</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 255u, 255u, 0u )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="267" column="24" bodyfile="inc/color.h" bodystart="267" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_afbe5a2eeab351269f9af968b44b42f05_1afbe5a2eeab351269f9af968b44b42f05" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::Cyan</definition>
+        <argsstring></argsstring>
+        <name>Cyan</name>
+        <qualifiedname>col::Cyan</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 0u, 255u, 255u )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="268" column="24" bodyfile="inc/color.h" bodystart="268" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_a3f0568a9241a68201f3b3c8ac7e7a9d9_1a3f0568a9241a68201f3b3c8ac7e7a9d9" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::Magenta</definition>
+        <argsstring></argsstring>
+        <name>Magenta</name>
+        <qualifiedname>col::Magenta</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 255u, 0u, 255u )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="269" column="24" bodyfile="inc/color.h" bodystart="269" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_a13db6fc3366b9363efb7c319b2743b5d_1a13db6fc3366b9363efb7c319b2743b5d" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::PinkHot</definition>
+        <argsstring></argsstring>
+        <name>PinkHot</name>
+        <qualifiedname>col::PinkHot</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 0xFFu, 0x69u, 0xB4u )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="270" column="24" bodyfile="inc/color.h" bodystart="270" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_a644a77066e099c99c6fd4b125b3ab9a4_1a644a77066e099c99c6fd4b125b3ab9a4" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::Orange</definition>
+        <argsstring></argsstring>
+        <name>Orange</name>
+        <qualifiedname>col::Orange</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 0xFFu, 0x8Cu, 0x00u )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="271" column="24" bodyfile="inc/color.h" bodystart="271" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_a76e85dc4d139270c4e9044464f54d150_1a76e85dc4d139270c4e9044464f54d150" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::Gold</definition>
+        <argsstring></argsstring>
+        <name>Gold</name>
+        <qualifiedname>col::Gold</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 255u, 215u, 0u )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="272" column="24" bodyfile="inc/color.h" bodystart="272" bodyend="-1"/>
+        <referencedby refid="classArkanoid_ac5e6e6e2c99b5e0f56fd002a872cbb9b_1ac5e6e6e2c99b5e0f56fd002a872cbb9b" compoundref="game_8cpp" startline="575" endline="601">Arkanoid::Arkanoid</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_acbdd64b0f79dc01d0f7bbd66b686c2dc_1acbdd64b0f79dc01d0f7bbd66b686c2dc" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::Silver</definition>
+        <argsstring></argsstring>
+        <name>Silver</name>
+        <qualifiedname>col::Silver</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 0xc0u, 0xc0u, 0xc0u )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="273" column="24" bodyfile="inc/color.h" bodystart="273" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_a0166d2e05156de96cf1e87eb0c2df5a0_1a0166d2e05156de96cf1e87eb0c2df5a0" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::SaddleBrown</definition>
+        <argsstring></argsstring>
+        <name>SaddleBrown</name>
+        <qualifiedname>col::SaddleBrown</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 0x8bu, 0x45u, 0x13u )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="274" column="24" bodyfile="inc/color.h" bodystart="274" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_a9ffa7e5a07d5b2e9183128096a4b6c9b_1a9ffa7e5a07d5b2e9183128096a4b6c9b" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::Sienna</definition>
+        <argsstring></argsstring>
+        <name>Sienna</name>
+        <qualifiedname>col::Sienna</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 0xa0u, 0x52u, 0x2du )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="275" column="24" bodyfile="inc/color.h" bodystart="275" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_ad199b0d831ce831cc0fe4da86963861e_1ad199b0d831ce831cc0fe4da86963861e" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::YellowGreen</definition>
+        <argsstring></argsstring>
+        <name>YellowGreen</name>
+        <qualifiedname>col::YellowGreen</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 0x9au, 0xcdu, 0x32u )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="276" column="24" bodyfile="inc/color.h" bodystart="276" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_ad46ca4c0d88d4af7c2f1910dd933d6c9_1ad46ca4c0d88d4af7c2f1910dd933d6c9" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::DeepPink</definition>
+        <argsstring></argsstring>
+        <name>DeepPink</name>
+        <qualifiedname>col::DeepPink</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 0xFFu, 0x14u, 0x93u )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="277" column="24" bodyfile="inc/color.h" bodystart="277" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_a5d4050ad6aac5b1d762bc122cb33f33d_1a5d4050ad6aac5b1d762bc122cb33f33d" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::Ivory</definition>
+        <argsstring></argsstring>
+        <name>Ivory</name>
+        <qualifiedname>col::Ivory</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 0xFFu, 0xffu, 0xf0u )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="278" column="24" bodyfile="inc/color.h" bodystart="278" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_aa05876302a3c4b83107eacef1103638f_1aa05876302a3c4b83107eacef1103638f" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::Beige</definition>
+        <argsstring></argsstring>
+        <name>Beige</name>
+        <qualifiedname>col::Beige</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 0xF5u, 0xf5u, 0xdcu )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="279" column="24" bodyfile="inc/color.h" bodystart="279" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_a52316563f7e11df371c46d49a1c622fe_1a52316563f7e11df371c46d49a1c622fe" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::MistyRose</definition>
+        <argsstring></argsstring>
+        <name>MistyRose</name>
+        <qualifiedname>col::MistyRose</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 0xFFu, 0xe4u, 0xe1u )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="280" column="24" bodyfile="inc/color.h" bodystart="280" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_a0317084edb0337577b585c2633292905_1a0317084edb0337577b585c2633292905" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::Olive</definition>
+        <argsstring></argsstring>
+        <name>Olive</name>
+        <qualifiedname>col::Olive</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 0x80u, 0x80u, 0x00u )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="281" column="24" bodyfile="inc/color.h" bodystart="281" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_a02f4b248933f0f82e40cd3516c0223b5_1a02f4b248933f0f82e40cd3516c0223b5" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::Chocolate</definition>
+        <argsstring></argsstring>
+        <name>Chocolate</name>
+        <qualifiedname>col::Chocolate</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 0xd2u, 0x69u, 0x1eu )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="282" column="24" bodyfile="inc/color.h" bodystart="282" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_aaab22f6c89d324dd6d83f5c68cdddf08_1aaab22f6c89d324dd6d83f5c68cdddf08" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::RosyBrown</definition>
+        <argsstring></argsstring>
+        <name>RosyBrown</name>
+        <qualifiedname>col::RosyBrown</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 0xbcu, 0x8fu, 0x8fu )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="283" column="24" bodyfile="inc/color.h" bodystart="283" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_ab69a232b2f2c1471d94a4a080f99a818_1ab69a232b2f2c1471d94a4a080f99a818" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::Brown</definition>
+        <argsstring></argsstring>
+        <name>Brown</name>
+        <qualifiedname>col::Brown</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 0xa5u, 0x2au, 0x2au )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="284" column="24" bodyfile="inc/color.h" bodystart="284" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_ae26c05dc5b78088407a47cbc1b55cced_1ae26c05dc5b78088407a47cbc1b55cced" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::Maroon</definition>
+        <argsstring></argsstring>
+        <name>Maroon</name>
+        <qualifiedname>col::Maroon</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 0x80u, 0x00u, 0x00u )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="285" column="24" bodyfile="inc/color.h" bodystart="285" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_a96ec0eff33dba4eb1dea7e52aa9cb817_1a96ec0eff33dba4eb1dea7e52aa9cb817" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::MediumBlue</definition>
+        <argsstring></argsstring>
+        <name>MediumBlue</name>
+        <qualifiedname>col::MediumBlue</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 0x00u, 0x00u, 0xcdu )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="286" column="24" bodyfile="inc/color.h" bodystart="286" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_a1ab9d8b9479d6c7f1e83fe33c447dc80_1a1ab9d8b9479d6c7f1e83fe33c447dc80" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::DarkBlue</definition>
+        <argsstring></argsstring>
+        <name>DarkBlue</name>
+        <qualifiedname>col::DarkBlue</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 0x00u, 0x00u, 0x8bu )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="287" column="24" bodyfile="inc/color.h" bodystart="287" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_aa2878436ed178076e2377c636e5b7241_1aa2878436ed178076e2377c636e5b7241" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::IndianRed</definition>
+        <argsstring></argsstring>
+        <name>IndianRed</name>
+        <qualifiedname>col::IndianRed</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 0xcdu, 0x5cu, 0x5cu )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="288" column="24" bodyfile="inc/color.h" bodystart="288" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_ab0906fdd7c88f7dbbbe0899f6c1d1173_1ab0906fdd7c88f7dbbbe0899f6c1d1173" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::Fuchsia</definition>
+        <argsstring></argsstring>
+        <name>Fuchsia</name>
+        <qualifiedname>col::Fuchsia</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 0xFFu, 0x00u, 0xffu )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="289" column="24" bodyfile="inc/color.h" bodystart="289" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_a67a2ec6499cf71b111809f049605eb1d_1a67a2ec6499cf71b111809f049605eb1d" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::Pink</definition>
+        <argsstring></argsstring>
+        <name>Pink</name>
+        <qualifiedname>col::Pink</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 0xFFu, 0xc0u, 0xcbu )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="290" column="24" bodyfile="inc/color.h" bodystart="290" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_ab3519c10ac133bc0b339b91b07a6441c_1ab3519c10ac133bc0b339b91b07a6441c" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::LightSkyBlue</definition>
+        <argsstring></argsstring>
+        <name>LightSkyBlue</name>
+        <qualifiedname>col::LightSkyBlue</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 0x87u, 0xceu, 0xfau )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="291" column="24" bodyfile="inc/color.h" bodystart="291" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_a972d96d0449d48885658263b533e00d1_1a972d96d0449d48885658263b533e00d1" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::SkyBlue</definition>
+        <argsstring></argsstring>
+        <name>SkyBlue</name>
+        <qualifiedname>col::SkyBlue</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 0x87u, 0xceu, 0xebu )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="292" column="24" bodyfile="inc/color.h" bodystart="292" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacecol_aff579f5d1df5735417f6551ce908ae8e_1aff579f5d1df5735417f6551ce908ae8e" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>const ColorBGRA col::LavenderBlush</definition>
+        <argsstring></argsstring>
+        <name>LavenderBlush</name>
+        <qualifiedname>col::LavenderBlush</qualifiedname>
+        <initializer>= <ref refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" kindref="member">toBgr</ref>( 0xffu, 0xf0u, 0xf5u )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="293" column="24" bodyfile="inc/color.h" bodystart="293" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespacecol_a14e446280fcf7a794aadce1276fbd05e_1a14e446280fcf7a794aadce1276fbd05e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>static unsigned col::rgbaToAbgr</definition>
+        <argsstring>(const unsigned col)</argsstring>
+        <name>rgbaToAbgr</name>
+        <qualifiedname>col::rgbaToAbgr</qualifiedname>
+        <param>
+          <type>const unsigned</type>
+          <declname>col</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="175" column="17" bodyfile="inc/color.h" bodystart="175" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacecol_ad73b79158a9cb31c115a7e2cfed6512c_1ad73b79158a9cb31c115a7e2cfed6512c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>static unsigned col::bgraToArgb</definition>
+        <argsstring>(const ColorBGRA col)</argsstring>
+        <name>bgraToArgb</name>
+        <qualifiedname>col::bgraToArgb</qualifiedname>
+        <param>
+          <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+          <declname>col</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="187" column="17" bodyfile="inc/color.h" bodystart="187" bodyend="193"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacecol_ad40624756791a06de364cd43aeaea637_1ad40624756791a06de364cd43aeaea637" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>static unsigned col::bgraToRgba</definition>
+        <argsstring>(const ColorBGRA col)</argsstring>
+        <name>bgraToRgba</name>
+        <qualifiedname>col::bgraToRgba</qualifiedname>
+        <param>
+          <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+          <declname>col</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="196" column="17" bodyfile="inc/color.h" bodystart="196" bodyend="207"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacecol_a5ebee9607427cf27f05cce89b5713d24_1a5ebee9607427cf27f05cce89b5713d24" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>static ColorBGRA col::rgbaToBgra</definition>
+        <argsstring>(const unsigned col)</argsstring>
+        <name>rgbaToBgra</name>
+        <qualifiedname>col::rgbaToBgra</qualifiedname>
+        <param>
+          <type>const unsigned</type>
+          <declname>col</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="209" column="18" bodyfile="inc/color.h" bodystart="209" bodyend="220"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacecol_aa060b56ac0d2f7ae6e4e4933212d5e72_1aa060b56ac0d2f7ae6e4e4933212d5e72" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>static ColorBGRA col::toBgra</definition>
+        <argsstring>(const Byte r, const Byte g, const Byte b, const Byte a) noexcept</argsstring>
+        <name>toBgra</name>
+        <qualifiedname>col::toBgra</qualifiedname>
+        <param>
+          <type>const Byte</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>const Byte</type>
+          <declname>g</declname>
+        </param>
+        <param>
+          <type>const Byte</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>const Byte</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="243" column="18" bodyfile="inc/color.h" bodystart="243" bodyend="249"/>
+        <referencedby refid="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" compoundref="color_8h" startline="251" endline="256">toBgr</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespacecol_ad9ea7816cf72b7057a41a8cb7da12601_1ad9ea7816cf72b7057a41a8cb7da12601" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+        <definition>static ColorBGRA col::toBgr</definition>
+        <argsstring>(const Byte r, const Byte g, const Byte b) noexcept</argsstring>
+        <name>toBgr</name>
+        <qualifiedname>col::toBgr</qualifiedname>
+        <param>
+          <type>const Byte</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>const Byte</type>
+          <declname>g</declname>
+        </param>
+        <param>
+          <type>const Byte</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="251" column="18" bodyfile="inc/color.h" bodystart="251" bodyend="256"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/color.h" line="172" column="1"/>
+  </compounddef>
+</doxygen>

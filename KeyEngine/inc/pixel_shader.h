@@ -23,12 +23,12 @@ public:
 	std::string getUid() const noexcept override;
 };
 
-//=============================================================
-//	\class	PixelShaderNull
-//	\author	KeyC0de
-//	\date	2021/06/25 20:21
-//	\brief	Use it to prevent writing any pixels ---- written as a separate class to avoid a runtime branch in PixelShader::bind()
-//=============================================================
+///=============================================================
+/// \class	PixelShaderNull
+/// \author	KeyC0de
+/// \date	2021/06/25 20:21
+/// \brief	Use it to prevent writing any pixels ---- written as a separate class to avoid a runtime branch in PixelShader::bind()
+///=============================================================
 class PixelShaderNull
 	: public IBindable
 {

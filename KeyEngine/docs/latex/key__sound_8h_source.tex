@@ -1,0 +1,137 @@
+\doxysection{key\+\_\+sound.\+h}
+\hypertarget{key__sound_8h_source}{}\label{key__sound_8h_source}\index{inc/key\_sound.h@{inc/key\_sound.h}}
+\mbox{\hyperlink{key__sound_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <condition\_variable>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <wrl\(\backslash\)client.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <xaudio2.h>}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\#include\ <xaudio2fx.h>}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\#include\ <xapofx.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <x3daudio.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{non__copyable_8h}{non\_copyable.h}}"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{reporter__listener_8h}{reporter\_listener.h}}"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSound}{Sound}};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSoundManager}{SoundManager}}\ final}
+\DoxyCodeLine{00031\ \ \ \ \ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classNonCopyableAndNonMovable}{NonCopyableAndNonMovable}}}
+\DoxyCodeLine{00032\ \{}
+\DoxyCodeLine{00033\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSoundManager_1_1Channel}{Channel}}\ final}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classNonCopyable}{NonCopyable}}}
+\DoxyCodeLine{00044\ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSound}{Sound}};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }IXAudio2SourceVoice\ *\mbox{\hyperlink{classSoundManager_1_1Channel_adc2592dd8f7f2ed3701a32baf12df372_adc2592dd8f7f2ed3701a32baf12df372}{m\_pSourceVoice}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSound}{Sound}}\ *\mbox{\hyperlink{classSoundManager_1_1Channel_a7a4d36846e0e0fb4a1354c98c72359b0_a7a4d36846e0e0fb4a1354c98c72359b0}{m\_pSound}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSoundManager_1_1Channel_a04e2334276c6b3fb260569adf6a2dfd2_a04e2334276c6b3fb260569adf6a2dfd2}{Channel}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSoundManager_1_1Channel_a04e2334276c6b3fb260569adf6a2dfd2_a04e2334276c6b3fb260569adf6a2dfd2}{Channel}}(\ \mbox{\hyperlink{classSoundManager_1_1Channel}{Channel}}\ \&\&rhs\ )\ cond\_noex;}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSoundManager_1_1Channel}{Channel}}\&\ \mbox{\hyperlink{classSoundManager_1_1Channel_a64d6f61f24fd7514322dbc2193c63f49_a64d6f61f24fd7514322dbc2193c63f49}{operator=}}(\ \mbox{\hyperlink{classSoundManager_1_1Channel}{Channel}}\ \&\&rhs\ )\ cond\_noex;}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSoundManager_1_1Channel_aadc3d5523ad54205848ae16d235c3b78_aadc3d5523ad54205848ae16d235c3b78}{\string~Channel}}()\ noexcept;}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classSoundManager_1_1Channel_ac96947ac0fe438b53be241d5b0f02a45_ac96947ac0fe438b53be241d5b0f02a45}{setupChannel}}(\ \mbox{\hyperlink{classSoundManager}{SoundManager}}\ \&soundManager,\ \mbox{\hyperlink{classSound}{Sound}}\ \&sound\ );}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSoundManager_1_1Channel_add92a4f1a98fc8ee81732f3ff04bc51e_add92a4f1a98fc8ee81732f3ff04bc51e}{playSound}}(\ \mbox{\hyperlink{classSound}{Sound}}\ *sound,\ const\ \textcolor{keywordtype}{float}\ volume\ );}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSoundManager_1_1Channel_a6849d436e409966424b6c6ed899cc8a6_a6849d436e409966424b6c6ed899cc8a6}{stopSound}}()\ cond\_noex;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSoundManager_1_1Channel_a6ffecb785dc031c585f2058fa62435e5_a6ffecb785dc031c585f2058fa62435e5}{rechannel}}(\ const\ \mbox{\hyperlink{classSound}{Sound}}\ *pOldSound,\ \mbox{\hyperlink{classSound}{Sound}}\ *pNewSound\ );}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSound}{Sound}}*\ \mbox{\hyperlink{classSoundManager_1_1Channel_a12172872c5d842ec03398e6438564ea6_a12172872c5d842ec03398e6438564ea6}{getSound}}()\ const\ cond\_noex;}
+\DoxyCodeLine{00061\ \ \ \ \ \};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ class\ \mbox{\hyperlink{classSoundManager_1_1Submix}{Submix}}\ final}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ :\ public\ \mbox{\hyperlink{classNonCopyable}{NonCopyable}}}
+\DoxyCodeLine{00065\ \ \ \ \ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSoundManager_1_1Channel}{Channel}};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classSoundManager_1_1Submix_abc991e483b130dc00ddae3e8022c2306_abc991e483b130dc00ddae3e8022c2306}{m\_name}};}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ XAUDIO2\_SEND\_DESCRIPTOR\ \mbox{\hyperlink{classSoundManager_1_1Submix_adde7894c87985a42e8351391124c80a7_adde7894c87985a42e8351391124c80a7}{m\_outputVoiceSendDesc}};}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ XAUDIO2\_VOICE\_SENDS\ \mbox{\hyperlink{classSoundManager_1_1Submix_a6f371ff726b20e56d18572aec8e44b9e_a6f371ff726b20e56d18572aec8e44b9e}{m\_outputVoiceSends}};}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }IXAudio2SubmixVoice\ *m\_pSubmixVoice\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSoundManager_1_1Submix}{Submix}}(\ \textcolor{keyword}{const}\ std::string\ \&name\ =\ \textcolor{stringliteral}{"{}"{}}\ );}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSoundManager_1_1Submix}{\string~Submix}}()\ noexcept;}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSoundManager_1_1Submix}{Submix}}(\ \mbox{\hyperlink{classSoundManager_1_1Submix}{Submix}}\ \&\&rhs\ )\ cond\_noex;}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSoundManager_1_1Submix}{Submix}}\&\ operator=(\ \mbox{\hyperlink{classSoundManager_1_1Submix}{Submix}}\ \&\&rhs\ )\ cond\_noex;}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ const\ std::\textcolor{keywordtype}{string}\&\ getName()\ const\ cond\_noex;}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setName(\ const\ std::\textcolor{keywordtype}{string}\ \&name\ )\ cond\_noex;}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setVolume(\ const\ \textcolor{keywordtype}{float}\ volume\ =\ 1.0f\ )\ cond\_noex;}
+\DoxyCodeLine{00081\ \ \ \ \ \};}
+\DoxyCodeLine{00082\ private:}
+\DoxyCodeLine{00083\ \ \ \ \ WAVEFORMATEXTENSIBLE\ *\mbox{\hyperlink{classSoundManager_a62632566d029de664c5e8869f0a36341_a62632566d029de664c5e8869f0a36341}{m\_pFormat}};}
+\DoxyCodeLine{00084\ \ \ \ \ Microsoft::WRL::ComPtr<struct\ IXAudio2>\ \mbox{\hyperlink{classSoundManager_adcd65dcf480bcf28875ac4710b9fd31e_adcd65dcf480bcf28875ac4710b9fd31e}{m\_pXAudio2}};}
+\DoxyCodeLine{00085\ \ \ \ \ struct\ IXAudio2MasteringVoice\ *\mbox{\hyperlink{classSoundManager_a0155befc758a62ccfef8293bd1e1c63d_a0155befc758a62ccfef8293bd1e1c63d}{m\_pMasterVoice}}\ =\ \textcolor{keywordtype}{nullptr};}
+\DoxyCodeLine{00086\ \ \ \ \ std::mutex\ \mbox{\hyperlink{classSoundManager_aec659fd70f9fc75d73ecff371a81cc30_aec659fd70f9fc75d73ecff371a81cc30}{m\_mu}};}
+\DoxyCodeLine{00087\ \ \ \ \ std::vector<std::unique\_ptr<\mbox{\hyperlink{classSoundManager_1_1Channel}{Channel}}>>\ \mbox{\hyperlink{classSoundManager_af0a4bbdc43edf627464c153cc8d84b25_af0a4bbdc43edf627464c153cc8d84b25}{m\_occupiedChannels}};}
+\DoxyCodeLine{00088\ \ \ \ \ std::vector<std::unique\_ptr<\mbox{\hyperlink{classSoundManager_1_1Channel}{Channel}}>>\ \mbox{\hyperlink{classSoundManager_af209e8e9233afa44d535db66dd2f921e_af209e8e9233afa44d535db66dd2f921e}{m\_idleChannels}};}
+\DoxyCodeLine{00089\ \ \ \ \ std::vector<std::unique\_ptr<\mbox{\hyperlink{classSoundManager_1_1Submix}{Submix}}>>\ \mbox{\hyperlink{classSoundManager_a96893224e08b96e5d32e790d0952b9d6_a96893224e08b96e5d32e790d0952b9d6}{m\_submixes}};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ static\ inline\ constexpr\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classSoundManager_ad1372049f59b9ad5359e39b4c3b00b83_ad1372049f59b9ad5359e39b4c3b00b83}{s\_nMaxAudioChannels}}\ =\ 16u;}
+\DoxyCodeLine{00092\ \ \ \ \ static\ inline\ constexpr\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classSoundManager_abcba73213c4974b765badc66bef132d9_abcba73213c4974b765badc66bef132d9}{s\_nMaxSubmixes}}\ =\ 8u;}
+\DoxyCodeLine{00093\ private:}
+\DoxyCodeLine{00094\ \ \ \ \ \mbox{\hyperlink{classSoundManager}{SoundManager}}(\ WAVEFORMATEXTENSIBLE\ *format\ );}
+\DoxyCodeLine{00095\ public:}
+\DoxyCodeLine{00097\ \ \ \ \ static\ \mbox{\hyperlink{classSoundManager}{SoundManager}}\&\ \mbox{\hyperlink{classSoundManager_af3dcc32423f79c6fd4b05c99fcb38c62_af3dcc32423f79c6fd4b05c99fcb38c62}{getInstance}}(\ WAVEFORMATEXTENSIBLE\ *format\ =\ \textcolor{keywordtype}{nullptr}\ );}
+\DoxyCodeLine{00098\ public:}
+\DoxyCodeLine{00099\ \ \ \ \ \string~\mbox{\hyperlink{classSoundManager}{SoundManager}}()\ noexcept;}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSoundManager_a5d5efe92a99635caca3823a1cabc8428_a5d5efe92a99635caca3823a1cabc8428}{setMasterVolume}}(\ const\ \textcolor{keywordtype}{float}\ volume\ =\ 1.0f\ );}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSoundManager_a5c103e799ebc0e13ae4e8c461bb956d0_a5c103e799ebc0e13ae4e8c461bb956d0}{setSubmixVolume}}(\ const\ \mbox{\hyperlink{classSoundManager_1_1Submix}{Submix}}\ \&submix,\ const\ \textcolor{keywordtype}{float}\ volume\ =\ 1.0f\ )\ cond\_noex;}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSoundManager_a7ea6ac9903120a5875a63863387210af_a7ea6ac9903120a5875a63863387210af}{playChannelSound}}(\ class\ \mbox{\hyperlink{classSound}{Sound}}\ *sound,\ const\ \textcolor{keywordtype}{float}\ volume\ );}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSoundManager_a76471ec78202494756e392fd848a03d5_a76471ec78202494756e392fd848a03d5}{deactivateChannel}}(\ \mbox{\hyperlink{classSoundManager_1_1Channel}{Channel}}\ \&channel\ );}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{comment}{//void\ disableSubmixVoice(\ const\ Submix\ \&submix\ );}}
+\DoxyCodeLine{00107\ \};}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00119\ class\ \mbox{\hyperlink{classSound}{Sound}}\ final}
+\DoxyCodeLine{00120\ \ \ \ \ :\ public\ \mbox{\hyperlink{classNonCopyable}{NonCopyable}}}
+\DoxyCodeLine{00121\ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSoundManager_1_1Channel}{SoundManager::Channel}};}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ std::string\ \mbox{\hyperlink{classSound_afa7a8ee25ff90df31a64249c3fb11699_afa7a8ee25ff90df31a64249c3fb11699}{m\_name}};}
+\DoxyCodeLine{00125\ \ \ \ \ std::string\ \mbox{\hyperlink{classSound_ae77349e3740f83530cedcc45d6133d03_ae77349e3740f83530cedcc45d6133d03}{m\_submixName}};}
+\DoxyCodeLine{00126\ \ \ \ \ std::unique\_ptr<BYTE[]>\ \mbox{\hyperlink{classSound_a69f0d170fc046263c8310e7faa395e74_a69f0d170fc046263c8310e7faa395e74}{m\_pAudioData}};}
+\DoxyCodeLine{00127\ \ \ \ \ std::unique\_ptr<WAVEFORMATEXTENSIBLE>\ \mbox{\hyperlink{classSound_ad0471d12fe02f7b968fdf088f64dd285_ad0471d12fe02f7b968fdf088f64dd285}{m\_pWaveFormat}};}
+\DoxyCodeLine{00128\ \ \ \ \ std::unique\_ptr<struct\ XAUDIO2\_BUFFER>\ \mbox{\hyperlink{classSound_a683cc91ae131910996217112a025b084_a683cc91ae131910996217112a025b084}{m\_pXaudioBuffer}};}
+\DoxyCodeLine{00129\ \ \ \ \ std::mutex\ \mbox{\hyperlink{classSound_a13942758c6ccf762d830daf2e5db2fc6_a13942758c6ccf762d830daf2e5db2fc6}{m\_mu}};}
+\DoxyCodeLine{00130\ \ \ \ \ std::condition\_variable\ \mbox{\hyperlink{classSound_a48edb3fd85b64943a27420d56c516c4c_a48edb3fd85b64943a27420d56c516c4c}{m\_condVar}};}
+\DoxyCodeLine{00131\ \ \ \ \ std::vector<SoundManager::Channel*>\ \mbox{\hyperlink{classSound_ad09685bdd580fcef12897080e6e0219c_ad09685bdd580fcef12897080e6e0219c}{m\_busyChannels}};\ \ \ \textcolor{comment}{//\ those\ are\ currently\ playing}}
+\DoxyCodeLine{00132\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00134\ \ \ \ \ HRESULT\ findChunk(\ HANDLE\ file,\ DWORD\ fourcc,\ DWORD\ \&chunkSize,\ DWORD\ \&chunkDataPosition\ );}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \ \ \ \ HRESULT\ readChunkData(\ HANDLE\ file,\ \textcolor{keywordtype}{void}\ *buffer,\ DWORD\ buffersize,\ DWORD\ bufferoffset\ );}
+\DoxyCodeLine{00138\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{comment}{//\ \#TODO:\ Sound\ Looping}}
+\DoxyCodeLine{00141\ \ \ \ \ \mbox{\hyperlink{classSoundManager_1_1Channel_a50914f77c7cf4fb97616c898c5291f4b_a50914f77c7cf4fb97616c898c5291f4b}{Sound}}(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *zsFilename,\ \textcolor{keyword}{const}\ std::string\ \&name\ =\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{const}\ std::string\ \&submixName\ =\ \textcolor{stringliteral}{"{}"{}}\ );}
+\DoxyCodeLine{00142\ \ \ \ \ \mbox{\hyperlink{classSoundManager_1_1Channel_a50914f77c7cf4fb97616c898c5291f4b_a50914f77c7cf4fb97616c898c5291f4b}{Sound}}(\ \mbox{\hyperlink{classSound}{Sound}}\ \&\&rhs\ )\ cond\_noex;}
+\DoxyCodeLine{00143\ \ \ \ \ \mbox{\hyperlink{classSound}{Sound}}\&\ \mbox{\hyperlink{classSoundManager_1_1Channel_a64d6f61f24fd7514322dbc2193c63f49_a64d6f61f24fd7514322dbc2193c63f49}{operator=}}(\ \mbox{\hyperlink{classSound}{Sound}}\ \&\&rhs\ )\ cond\_noex;}
+\DoxyCodeLine{00144\ \ \ \ \ \mbox{\hyperlink{classSound}{\string~Sound}}()\ noexcept;}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keywordtype}{float}\ getDuration()\ const\ noexcept;}
+\DoxyCodeLine{00148\ \ \ \ \ const\ std::\textcolor{keywordtype}{string}\&\ getName()\ const\ cond\_noex;}
+\DoxyCodeLine{00150\ \ \ \ \ const\ std::\textcolor{keywordtype}{string}\&\ getSubmixName()\ const\ cond\_noex;}
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keywordtype}{void}\ play(\ const\ \textcolor{keywordtype}{float}\ volume\ =\ 1.0f\ );}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordtype}{void}\ stop();}
+\DoxyCodeLine{00154\ \};}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ struct\ \mbox{\hyperlink{structUISoundEvent}{UISoundEvent}};}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ class\ \mbox{\hyperlink{classSoundPlayer}{SoundPlayer}}}
+\DoxyCodeLine{00160\ \ \ \ \ :\ public\ \mbox{\hyperlink{classIListener}{IListener}}<\mbox{\hyperlink{structUISoundEvent}{UISoundEvent}}>}
+\DoxyCodeLine{00161\ \{}
+\DoxyCodeLine{00162\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00163\ \ \ \ \ \mbox{\hyperlink{classSoundPlayer}{SoundPlayer}}();}
+\DoxyCodeLine{00164\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classSoundPlayer}{SoundPlayer}}\&\ \mbox{\hyperlink{classSoundManager_af3dcc32423f79c6fd4b05c99fcb38c62_af3dcc32423f79c6fd4b05c99fcb38c62}{getInstance}}();}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keywordtype}{void}\ notify(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structUISoundEvent}{UISoundEvent}}\ \&event\ )\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00168\ \};}
+
+\end{DoxyCode}

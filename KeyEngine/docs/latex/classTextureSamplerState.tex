@@ -1,0 +1,278 @@
+\doxysection{Texture\+Sampler\+State Class Reference}
+\hypertarget{classTextureSamplerState}{}\label{classTextureSamplerState}\index{TextureSamplerState@{TextureSamplerState}}
+
+
+\doxylink{classTexture}{Texture} sampler state class.  
+
+
+
+
+{\ttfamily \#include $<$texture\+\_\+sampler\+\_\+state.\+h$>$}
+
+Inheritance diagram for Texture\+Sampler\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classTextureSamplerState}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classTextureSamplerState_a09f125be8b09c0e4562055300b70c101_a09f125be8b09c0e4562055300b70c101}{Texture\+Sampler\+Mode}} \{ \mbox{\hyperlink{classTextureSamplerState_a09f125be8b09c0e4562055300b70c101_a09f125be8b09c0e4562055300b70c101af2841c64c9a21504b070f374c6f9172d}{Default\+TS}}
+, \mbox{\hyperlink{classTextureSamplerState_a09f125be8b09c0e4562055300b70c101_a09f125be8b09c0e4562055300b70c101adb49d15ec9d8117b4164b0e3b6aebfe4}{Shadow\+TS}}
+ \}
+\item 
+enum \mbox{\hyperlink{classTextureSamplerState_a522727e53ff60ae76a59306e75441049_a522727e53ff60ae76a59306e75441049}{Filter\+Mode}} \{ \mbox{\hyperlink{classTextureSamplerState_a522727e53ff60ae76a59306e75441049_a522727e53ff60ae76a59306e75441049a7343d64712a2927f43203c3404ff5599}{Anisotropic}}
+, \mbox{\hyperlink{classTextureSamplerState_a522727e53ff60ae76a59306e75441049_a522727e53ff60ae76a59306e75441049a87e03bb7d10734c035ea9a09709114e1}{Point}}
+, \mbox{\hyperlink{classTextureSamplerState_a522727e53ff60ae76a59306e75441049_a522727e53ff60ae76a59306e75441049a7cf5be036ecf30aec9db6ee2ceff6cba}{Bilinear}}
+, \mbox{\hyperlink{classTextureSamplerState_a522727e53ff60ae76a59306e75441049_a522727e53ff60ae76a59306e75441049a39340849752ada4c8bf6d6e20470759b}{Trilinear}}
+ \}
+\item 
+enum \mbox{\hyperlink{classTextureSamplerState_a04b3655d1fd4f84a73017e3f3fb17ba9_a04b3655d1fd4f84a73017e3f3fb17ba9}{Address\+Mode}} \{ \mbox{\hyperlink{classTextureSamplerState_a04b3655d1fd4f84a73017e3f3fb17ba9_a04b3655d1fd4f84a73017e3f3fb17ba9a73d65b0f10657603b41077ed5f4514d5}{Wrap}}
+, \mbox{\hyperlink{classTextureSamplerState_a04b3655d1fd4f84a73017e3f3fb17ba9_a04b3655d1fd4f84a73017e3f3fb17ba9ae29403ed5bc0ab8794f823264cd4eaa4}{Mirror}}
+, \mbox{\hyperlink{classTextureSamplerState_a04b3655d1fd4f84a73017e3f3fb17ba9_a04b3655d1fd4f84a73017e3f3fb17ba9ae63518eac3013dc79f5b3cbc676627fb}{Clamp}}
+, \mbox{\hyperlink{classTextureSamplerState_a04b3655d1fd4f84a73017e3f3fb17ba9_a04b3655d1fd4f84a73017e3f3fb17ba9ac65b84de2c7efb43ce1457d5d5c2e18a}{Border}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTextureSamplerState_ad1aed26564ecd85cb57eec7841a8e634_ad1aed26564ecd85cb57eec7841a8e634}{Texture\+Sampler\+State}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const \mbox{\hyperlink{classTextureSamplerState_a09f125be8b09c0e4562055300b70c101_a09f125be8b09c0e4562055300b70c101}{Texture\+Sampler\+Mode}} sampling\+Mode, const \mbox{\hyperlink{classTextureSamplerState_a522727e53ff60ae76a59306e75441049_a522727e53ff60ae76a59306e75441049}{Filter\+Mode}} filter\+Mode, const \mbox{\hyperlink{classTextureSamplerState_a04b3655d1fd4f84a73017e3f3fb17ba9_a04b3655d1fd4f84a73017e3f3fb17ba9}{Address\+Mode}} address\+Mode)
+\item 
+void \mbox{\hyperlink{classTextureSamplerState_aea9aa478070bee5081762a09b8e6fac1_aea9aa478070bee5081762a09b8e6fac1}{bind}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) cond\+\_\+noex override
+\begin{DoxyCompactList}\small\item\em bind graphics resource to a certain stage of the graphics pipeline \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classTextureSamplerState_a4174f341022cac486bfab2671d710542_a4174f341022cac486bfab2671d710542}{get\+Uid}} () const noexcept override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classIBindable}{IBindable}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classIBindable_a7f68262ff85e25e9f826eae7c01bbfa1_a7f68262ff85e25e9f826eae7c01bbfa1}{\texorpdfstring{$\sim$}{\string~}\+IBindable}} () noexcept
+\item 
+virtual void \mbox{\hyperlink{classIBindable_a12fe8725cb3f4836f22d1592b07e2c91_a12fe8725cb3f4836f22d1592b07e2c91}{set\+Mesh}} (const \mbox{\hyperlink{classMesh}{Mesh}} \&mesh) noexcept
+\item 
+virtual void \mbox{\hyperlink{classIBindable_a608c5066b829febbd49cd82d1d1fa353_a608c5066b829febbd49cd82d1d1fa353}{accept}} (\mbox{\hyperlink{classIImGuiConstantBufferVisitor}{IIm\+Gui\+Constant\+Buffer\+Visitor}} \&ev)
+\item 
+virtual void \mbox{\hyperlink{classIBindable_a4d590eebe80fa4e0aa865a875ff86c02_a4d590eebe80fa4e0aa865a875ff86c02}{set\+Debug\+Object\+Name}} (const char \texorpdfstring{$\ast$}{*}name) noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTextureSamplerState}{Texture\+Sampler\+State}} $>$ \mbox{\hyperlink{classTextureSamplerState_a6377e3c13f22788c7df198a89776f233_a6377e3c13f22788c7df198a89776f233}{fetch}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const \mbox{\hyperlink{classTextureSamplerState_a09f125be8b09c0e4562055300b70c101_a09f125be8b09c0e4562055300b70c101}{Texture\+Sampler\+Mode}} sampling\+Mode, const \mbox{\hyperlink{classTextureSamplerState_a522727e53ff60ae76a59306e75441049_a522727e53ff60ae76a59306e75441049}{Filter\+Mode}} filter\+Mode, const \mbox{\hyperlink{classTextureSamplerState_a04b3655d1fd4f84a73017e3f3fb17ba9_a04b3655d1fd4f84a73017e3f3fb17ba9}{Address\+Mode}} address\+Mode)
+\item 
+static std\+::string \mbox{\hyperlink{classTextureSamplerState_abe01341f699e279d337648fe34e09e65_abe01341f699e279d337648fe34e09e65}{calc\+Uid}} (const \mbox{\hyperlink{classTextureSamplerState_a09f125be8b09c0e4562055300b70c101_a09f125be8b09c0e4562055300b70c101}{Texture\+Sampler\+Mode}} sampling\+Mode, const \mbox{\hyperlink{classTextureSamplerState_a522727e53ff60ae76a59306e75441049_a522727e53ff60ae76a59306e75441049}{Filter\+Mode}} filter\+Mode, const \mbox{\hyperlink{classTextureSamplerState_a04b3655d1fd4f84a73017e3f3fb17ba9_a04b3655d1fd4f84a73017e3f3fb17ba9}{Address\+Mode}} address\+Mode)
+\item 
+static unsigned \mbox{\hyperlink{classTextureSamplerState_a40c105676bbf9a108c002ea72b72cfc3_a40c105676bbf9a108c002ea72b72cfc3}{calc\+Slot}} (const \mbox{\hyperlink{classTextureSamplerState_a09f125be8b09c0e4562055300b70c101_a09f125be8b09c0e4562055300b70c101}{Texture\+Sampler\+Mode}} sampling\+Mode) noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ ID3\+D11\+Sampler\+State $>$ \mbox{\hyperlink{classTextureSamplerState_a852ae0dbb0a2320f1e1a70078c2d6952_a852ae0dbb0a2320f1e1a70078c2d6952}{m\+\_\+p\+Sampler\+State}}
+\item 
+unsigned \mbox{\hyperlink{classTextureSamplerState_ac2a25bf06fd9270d0d46a4d692d48bc4_ac2a25bf06fd9270d0d46a4d692d48bc4}{m\+\_\+slot}}
+\item 
+\mbox{\hyperlink{classTextureSamplerState_a09f125be8b09c0e4562055300b70c101_a09f125be8b09c0e4562055300b70c101}{Texture\+Sampler\+Mode}} \mbox{\hyperlink{classTextureSamplerState_ac2f338a721fbf3174cbefe2455a1c8ac_ac2f338a721fbf3174cbefe2455a1c8ac}{m\+\_\+mode}}
+\item 
+\mbox{\hyperlink{classTextureSamplerState_a522727e53ff60ae76a59306e75441049_a522727e53ff60ae76a59306e75441049}{Filter\+Mode}} \mbox{\hyperlink{classTextureSamplerState_a97d309ab07272e33dcfcef917c3a9962_a97d309ab07272e33dcfcef917c3a9962}{m\+\_\+filtering\+Mode}}
+\item 
+\mbox{\hyperlink{classTextureSamplerState_a04b3655d1fd4f84a73017e3f3fb17ba9_a04b3655d1fd4f84a73017e3f3fb17ba9}{Address\+Mode}} \mbox{\hyperlink{classTextureSamplerState_a5104766ee39e3edbad71f067803a6982_a5104766ee39e3edbad71f067803a6982}{m\+\_\+addressing\+Mode}}
+\item 
+bool \mbox{\hyperlink{classTextureSamplerState_a3518afd0f848af97a3e90b931964c2ae_a3518afd0f848af97a3e90b931964c2ae}{m\+\_\+b\+Hw\+Pcf}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned \mbox{\hyperlink{classTextureSamplerState_a2f0276c5ba25d916f5abedd6e28998c2_a2f0276c5ba25d916f5abedd6e28998c2}{get\+Slot}} () const noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classGraphicsFriend}{Graphics\+Friend}}}
+\begin{DoxyCompactItemize}
+\item 
+static ID3\+D11\+Device\+Context \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGraphicsFriend_a619e32893ab49ea6c5200e7c2d52e2f2_a619e32893ab49ea6c5200e7c2d52e2f2}{get\+Device\+Context}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) noexcept
+\item 
+static ID3\+D11\+Device \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_a175df79f82ab5a6dad1df24b5a242ef7}{get\+Device}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) noexcept
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classTexture}{Texture} sampler state class. 
+
+=============================================================
+
+\begin{DoxyAuthor}{Author}
+Key\+C0de 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2024/04/28 18\+:00
+\end{DoxyDate}
+the bound slot is equal to 0 for default TS operation, yet it\textquotesingle{}s \texorpdfstring{$>$}{>} 0 for Shadow operations (automatically set to 1 if b\+Hw\+Pcf, otherwise equal to 2) \doxysubsection*{Currently for a Shadow\+TS HW-\/\+PCF is automatically used }
+
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{classTextureSamplerState_a04b3655d1fd4f84a73017e3f3fb17ba9_a04b3655d1fd4f84a73017e3f3fb17ba9}\index{TextureSamplerState@{TextureSamplerState}!AddressMode@{AddressMode}}
+\index{AddressMode@{AddressMode}!TextureSamplerState@{TextureSamplerState}}
+\doxysubsubsection{\texorpdfstring{AddressMode}{AddressMode}}
+{\footnotesize\ttfamily \label{classTextureSamplerState_a04b3655d1fd4f84a73017e3f3fb17ba9_a04b3655d1fd4f84a73017e3f3fb17ba9} 
+enum \mbox{\hyperlink{classTextureSamplerState_a04b3655d1fd4f84a73017e3f3fb17ba9_a04b3655d1fd4f84a73017e3f3fb17ba9}{Texture\+Sampler\+State\+::\+Address\+Mode}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Wrap@{Wrap}!TextureSamplerState@{TextureSamplerState}}\index{TextureSamplerState@{TextureSamplerState}!Wrap@{Wrap}}}\Hypertarget{classTextureSamplerState_a04b3655d1fd4f84a73017e3f3fb17ba9_a04b3655d1fd4f84a73017e3f3fb17ba9a73d65b0f10657603b41077ed5f4514d5}\label{classTextureSamplerState_a04b3655d1fd4f84a73017e3f3fb17ba9_a04b3655d1fd4f84a73017e3f3fb17ba9} 
+Wrap&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Mirror@{Mirror}!TextureSamplerState@{TextureSamplerState}}\index{TextureSamplerState@{TextureSamplerState}!Mirror@{Mirror}}}\Hypertarget{classTextureSamplerState_a04b3655d1fd4f84a73017e3f3fb17ba9_a04b3655d1fd4f84a73017e3f3fb17ba9ae29403ed5bc0ab8794f823264cd4eaa4}\label{classTextureSamplerState_a04b3655d1fd4f84a73017e3f3fb17ba9_a04b3655d1fd4f84a73017e3f3fb17ba9} 
+Mirror&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Clamp@{Clamp}!TextureSamplerState@{TextureSamplerState}}\index{TextureSamplerState@{TextureSamplerState}!Clamp@{Clamp}}}\Hypertarget{classTextureSamplerState_a04b3655d1fd4f84a73017e3f3fb17ba9_a04b3655d1fd4f84a73017e3f3fb17ba9ae63518eac3013dc79f5b3cbc676627fb}\label{classTextureSamplerState_a04b3655d1fd4f84a73017e3f3fb17ba9_a04b3655d1fd4f84a73017e3f3fb17ba9} 
+Clamp&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Border@{Border}!TextureSamplerState@{TextureSamplerState}}\index{TextureSamplerState@{TextureSamplerState}!Border@{Border}}}\Hypertarget{classTextureSamplerState_a04b3655d1fd4f84a73017e3f3fb17ba9_a04b3655d1fd4f84a73017e3f3fb17ba9ac65b84de2c7efb43ce1457d5d5c2e18a}\label{classTextureSamplerState_a04b3655d1fd4f84a73017e3f3fb17ba9_a04b3655d1fd4f84a73017e3f3fb17ba9} 
+Border&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{classTextureSamplerState_a522727e53ff60ae76a59306e75441049_a522727e53ff60ae76a59306e75441049}\index{TextureSamplerState@{TextureSamplerState}!FilterMode@{FilterMode}}
+\index{FilterMode@{FilterMode}!TextureSamplerState@{TextureSamplerState}}
+\doxysubsubsection{\texorpdfstring{FilterMode}{FilterMode}}
+{\footnotesize\ttfamily \label{classTextureSamplerState_a522727e53ff60ae76a59306e75441049_a522727e53ff60ae76a59306e75441049} 
+enum \mbox{\hyperlink{classTextureSamplerState_a522727e53ff60ae76a59306e75441049_a522727e53ff60ae76a59306e75441049}{Texture\+Sampler\+State\+::\+Filter\+Mode}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Anisotropic@{Anisotropic}!TextureSamplerState@{TextureSamplerState}}\index{TextureSamplerState@{TextureSamplerState}!Anisotropic@{Anisotropic}}}\Hypertarget{classTextureSamplerState_a522727e53ff60ae76a59306e75441049_a522727e53ff60ae76a59306e75441049a7343d64712a2927f43203c3404ff5599}\label{classTextureSamplerState_a522727e53ff60ae76a59306e75441049_a522727e53ff60ae76a59306e75441049} 
+Anisotropic&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Point@{Point}!TextureSamplerState@{TextureSamplerState}}\index{TextureSamplerState@{TextureSamplerState}!Point@{Point}}}\Hypertarget{classTextureSamplerState_a522727e53ff60ae76a59306e75441049_a522727e53ff60ae76a59306e75441049a87e03bb7d10734c035ea9a09709114e1}\label{classTextureSamplerState_a522727e53ff60ae76a59306e75441049_a522727e53ff60ae76a59306e75441049} 
+Point&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Bilinear@{Bilinear}!TextureSamplerState@{TextureSamplerState}}\index{TextureSamplerState@{TextureSamplerState}!Bilinear@{Bilinear}}}\Hypertarget{classTextureSamplerState_a522727e53ff60ae76a59306e75441049_a522727e53ff60ae76a59306e75441049a7cf5be036ecf30aec9db6ee2ceff6cba}\label{classTextureSamplerState_a522727e53ff60ae76a59306e75441049_a522727e53ff60ae76a59306e75441049} 
+Bilinear&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Trilinear@{Trilinear}!TextureSamplerState@{TextureSamplerState}}\index{TextureSamplerState@{TextureSamplerState}!Trilinear@{Trilinear}}}\Hypertarget{classTextureSamplerState_a522727e53ff60ae76a59306e75441049_a522727e53ff60ae76a59306e75441049a39340849752ada4c8bf6d6e20470759b}\label{classTextureSamplerState_a522727e53ff60ae76a59306e75441049_a522727e53ff60ae76a59306e75441049} 
+Trilinear&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{classTextureSamplerState_a09f125be8b09c0e4562055300b70c101_a09f125be8b09c0e4562055300b70c101}\index{TextureSamplerState@{TextureSamplerState}!TextureSamplerMode@{TextureSamplerMode}}
+\index{TextureSamplerMode@{TextureSamplerMode}!TextureSamplerState@{TextureSamplerState}}
+\doxysubsubsection{\texorpdfstring{TextureSamplerMode}{TextureSamplerMode}}
+{\footnotesize\ttfamily \label{classTextureSamplerState_a09f125be8b09c0e4562055300b70c101_a09f125be8b09c0e4562055300b70c101} 
+enum \mbox{\hyperlink{classTextureSamplerState_a09f125be8b09c0e4562055300b70c101_a09f125be8b09c0e4562055300b70c101}{Texture\+Sampler\+State\+::\+Texture\+Sampler\+Mode}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DefaultTS@{DefaultTS}!TextureSamplerState@{TextureSamplerState}}\index{TextureSamplerState@{TextureSamplerState}!DefaultTS@{DefaultTS}}}\Hypertarget{classTextureSamplerState_a09f125be8b09c0e4562055300b70c101_a09f125be8b09c0e4562055300b70c101af2841c64c9a21504b070f374c6f9172d}\label{classTextureSamplerState_a09f125be8b09c0e4562055300b70c101_a09f125be8b09c0e4562055300b70c101} 
+Default\+TS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ShadowTS@{ShadowTS}!TextureSamplerState@{TextureSamplerState}}\index{TextureSamplerState@{TextureSamplerState}!ShadowTS@{ShadowTS}}}\Hypertarget{classTextureSamplerState_a09f125be8b09c0e4562055300b70c101_a09f125be8b09c0e4562055300b70c101adb49d15ec9d8117b4164b0e3b6aebfe4}\label{classTextureSamplerState_a09f125be8b09c0e4562055300b70c101_a09f125be8b09c0e4562055300b70c101} 
+Shadow\+TS&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classTextureSamplerState_ad1aed26564ecd85cb57eec7841a8e634_ad1aed26564ecd85cb57eec7841a8e634}\index{TextureSamplerState@{TextureSamplerState}!TextureSamplerState@{TextureSamplerState}}
+\index{TextureSamplerState@{TextureSamplerState}!TextureSamplerState@{TextureSamplerState}}
+\doxysubsubsection{\texorpdfstring{TextureSamplerState()}{TextureSamplerState()}}
+{\footnotesize\ttfamily \label{classTextureSamplerState_ad1aed26564ecd85cb57eec7841a8e634_ad1aed26564ecd85cb57eec7841a8e634} 
+Texture\+Sampler\+State\+::\+Texture\+Sampler\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const \mbox{\hyperlink{classTextureSamplerState_a09f125be8b09c0e4562055300b70c101_a09f125be8b09c0e4562055300b70c101}{Texture\+Sampler\+Mode}}}]{sampling\+Mode}{, }\item[{const \mbox{\hyperlink{classTextureSamplerState_a522727e53ff60ae76a59306e75441049_a522727e53ff60ae76a59306e75441049}{Filter\+Mode}}}]{filter\+Mode}{, }\item[{const \mbox{\hyperlink{classTextureSamplerState_a04b3655d1fd4f84a73017e3f3fb17ba9_a04b3655d1fd4f84a73017e3f3fb17ba9}{Address\+Mode}}}]{address\+Mode}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classTextureSamplerState_aea9aa478070bee5081762a09b8e6fac1_aea9aa478070bee5081762a09b8e6fac1}\index{TextureSamplerState@{TextureSamplerState}!bind@{bind}}
+\index{bind@{bind}!TextureSamplerState@{TextureSamplerState}}
+\doxysubsubsection{\texorpdfstring{bind()}{bind()}}
+{\footnotesize\ttfamily \label{classTextureSamplerState_aea9aa478070bee5081762a09b8e6fac1_aea9aa478070bee5081762a09b8e6fac1} 
+void Texture\+Sampler\+State\+::bind (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+bind graphics resource to a certain stage of the graphics pipeline 
+
+
+
+Implements \mbox{\hyperlink{classIBindable_add4560f78e76629ee81ba701ba1052e1_add4560f78e76629ee81ba701ba1052e1}{IBindable}}.
+
+\Hypertarget{classTextureSamplerState_a40c105676bbf9a108c002ea72b72cfc3_a40c105676bbf9a108c002ea72b72cfc3}\index{TextureSamplerState@{TextureSamplerState}!calcSlot@{calcSlot}}
+\index{calcSlot@{calcSlot}!TextureSamplerState@{TextureSamplerState}}
+\doxysubsubsection{\texorpdfstring{calcSlot()}{calcSlot()}}
+{\footnotesize\ttfamily \label{classTextureSamplerState_a40c105676bbf9a108c002ea72b72cfc3_a40c105676bbf9a108c002ea72b72cfc3} 
+unsigned Texture\+Sampler\+State\+::calc\+Slot (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classTextureSamplerState_a09f125be8b09c0e4562055300b70c101_a09f125be8b09c0e4562055300b70c101}{Texture\+Sampler\+Mode}}}]{sampling\+Mode}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classTextureSamplerState_abe01341f699e279d337648fe34e09e65_abe01341f699e279d337648fe34e09e65}\index{TextureSamplerState@{TextureSamplerState}!calcUid@{calcUid}}
+\index{calcUid@{calcUid}!TextureSamplerState@{TextureSamplerState}}
+\doxysubsubsection{\texorpdfstring{calcUid()}{calcUid()}}
+{\footnotesize\ttfamily \label{classTextureSamplerState_abe01341f699e279d337648fe34e09e65_abe01341f699e279d337648fe34e09e65} 
+std\+::string Texture\+Sampler\+State\+::calc\+Uid (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classTextureSamplerState_a09f125be8b09c0e4562055300b70c101_a09f125be8b09c0e4562055300b70c101}{Texture\+Sampler\+Mode}}}]{sampling\+Mode}{, }\item[{const \mbox{\hyperlink{classTextureSamplerState_a522727e53ff60ae76a59306e75441049_a522727e53ff60ae76a59306e75441049}{Filter\+Mode}}}]{filter\+Mode}{, }\item[{const \mbox{\hyperlink{classTextureSamplerState_a04b3655d1fd4f84a73017e3f3fb17ba9_a04b3655d1fd4f84a73017e3f3fb17ba9}{Address\+Mode}}}]{address\+Mode}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classTextureSamplerState_a6377e3c13f22788c7df198a89776f233_a6377e3c13f22788c7df198a89776f233}\index{TextureSamplerState@{TextureSamplerState}!fetch@{fetch}}
+\index{fetch@{fetch}!TextureSamplerState@{TextureSamplerState}}
+\doxysubsubsection{\texorpdfstring{fetch()}{fetch()}}
+{\footnotesize\ttfamily \label{classTextureSamplerState_a6377e3c13f22788c7df198a89776f233_a6377e3c13f22788c7df198a89776f233} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTextureSamplerState}{Texture\+Sampler\+State}} $>$ Texture\+Sampler\+State\+::fetch (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const \mbox{\hyperlink{classTextureSamplerState_a09f125be8b09c0e4562055300b70c101_a09f125be8b09c0e4562055300b70c101}{Texture\+Sampler\+Mode}}}]{sampling\+Mode}{, }\item[{const \mbox{\hyperlink{classTextureSamplerState_a522727e53ff60ae76a59306e75441049_a522727e53ff60ae76a59306e75441049}{Filter\+Mode}}}]{filter\+Mode}{, }\item[{const \mbox{\hyperlink{classTextureSamplerState_a04b3655d1fd4f84a73017e3f3fb17ba9_a04b3655d1fd4f84a73017e3f3fb17ba9}{Address\+Mode}}}]{address\+Mode}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classTextureSamplerState_a2f0276c5ba25d916f5abedd6e28998c2_a2f0276c5ba25d916f5abedd6e28998c2}\index{TextureSamplerState@{TextureSamplerState}!getSlot@{getSlot}}
+\index{getSlot@{getSlot}!TextureSamplerState@{TextureSamplerState}}
+\doxysubsubsection{\texorpdfstring{getSlot()}{getSlot()}}
+{\footnotesize\ttfamily \label{classTextureSamplerState_a2f0276c5ba25d916f5abedd6e28998c2_a2f0276c5ba25d916f5abedd6e28998c2} 
+unsigned Texture\+Sampler\+State\+::get\+Slot (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classTextureSamplerState_a4174f341022cac486bfab2671d710542_a4174f341022cac486bfab2671d710542}\index{TextureSamplerState@{TextureSamplerState}!getUid@{getUid}}
+\index{getUid@{getUid}!TextureSamplerState@{TextureSamplerState}}
+\doxysubsubsection{\texorpdfstring{getUid()}{getUid()}}
+{\footnotesize\ttfamily \label{classTextureSamplerState_a4174f341022cac486bfab2671d710542_a4174f341022cac486bfab2671d710542} 
+std\+::string Texture\+Sampler\+State\+::get\+Uid (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classIBindable_a7d88cdbd5d500d6d7f1bfabe16927855_a7d88cdbd5d500d6d7f1bfabe16927855}{IBindable}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classTextureSamplerState_a5104766ee39e3edbad71f067803a6982_a5104766ee39e3edbad71f067803a6982}\index{TextureSamplerState@{TextureSamplerState}!m\_addressingMode@{m\_addressingMode}}
+\index{m\_addressingMode@{m\_addressingMode}!TextureSamplerState@{TextureSamplerState}}
+\doxysubsubsection{\texorpdfstring{m\_addressingMode}{m\_addressingMode}}
+{\footnotesize\ttfamily \label{classTextureSamplerState_a5104766ee39e3edbad71f067803a6982_a5104766ee39e3edbad71f067803a6982} 
+\mbox{\hyperlink{classTextureSamplerState_a04b3655d1fd4f84a73017e3f3fb17ba9_a04b3655d1fd4f84a73017e3f3fb17ba9}{Address\+Mode}} Texture\+Sampler\+State\+::m\+\_\+addressing\+Mode\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classTextureSamplerState_a3518afd0f848af97a3e90b931964c2ae_a3518afd0f848af97a3e90b931964c2ae}\index{TextureSamplerState@{TextureSamplerState}!m\_bHwPcf@{m\_bHwPcf}}
+\index{m\_bHwPcf@{m\_bHwPcf}!TextureSamplerState@{TextureSamplerState}}
+\doxysubsubsection{\texorpdfstring{m\_bHwPcf}{m\_bHwPcf}}
+{\footnotesize\ttfamily \label{classTextureSamplerState_a3518afd0f848af97a3e90b931964c2ae_a3518afd0f848af97a3e90b931964c2ae} 
+bool Texture\+Sampler\+State\+::m\+\_\+b\+Hw\+Pcf\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classTextureSamplerState_a97d309ab07272e33dcfcef917c3a9962_a97d309ab07272e33dcfcef917c3a9962}\index{TextureSamplerState@{TextureSamplerState}!m\_filteringMode@{m\_filteringMode}}
+\index{m\_filteringMode@{m\_filteringMode}!TextureSamplerState@{TextureSamplerState}}
+\doxysubsubsection{\texorpdfstring{m\_filteringMode}{m\_filteringMode}}
+{\footnotesize\ttfamily \label{classTextureSamplerState_a97d309ab07272e33dcfcef917c3a9962_a97d309ab07272e33dcfcef917c3a9962} 
+\mbox{\hyperlink{classTextureSamplerState_a522727e53ff60ae76a59306e75441049_a522727e53ff60ae76a59306e75441049}{Filter\+Mode}} Texture\+Sampler\+State\+::m\+\_\+filtering\+Mode\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classTextureSamplerState_ac2f338a721fbf3174cbefe2455a1c8ac_ac2f338a721fbf3174cbefe2455a1c8ac}\index{TextureSamplerState@{TextureSamplerState}!m\_mode@{m\_mode}}
+\index{m\_mode@{m\_mode}!TextureSamplerState@{TextureSamplerState}}
+\doxysubsubsection{\texorpdfstring{m\_mode}{m\_mode}}
+{\footnotesize\ttfamily \label{classTextureSamplerState_ac2f338a721fbf3174cbefe2455a1c8ac_ac2f338a721fbf3174cbefe2455a1c8ac} 
+\mbox{\hyperlink{classTextureSamplerState_a09f125be8b09c0e4562055300b70c101_a09f125be8b09c0e4562055300b70c101}{Texture\+Sampler\+Mode}} Texture\+Sampler\+State\+::m\+\_\+mode\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classTextureSamplerState_a852ae0dbb0a2320f1e1a70078c2d6952_a852ae0dbb0a2320f1e1a70078c2d6952}\index{TextureSamplerState@{TextureSamplerState}!m\_pSamplerState@{m\_pSamplerState}}
+\index{m\_pSamplerState@{m\_pSamplerState}!TextureSamplerState@{TextureSamplerState}}
+\doxysubsubsection{\texorpdfstring{m\_pSamplerState}{m\_pSamplerState}}
+{\footnotesize\ttfamily \label{classTextureSamplerState_a852ae0dbb0a2320f1e1a70078c2d6952_a852ae0dbb0a2320f1e1a70078c2d6952} 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ID3\+D11\+Sampler\+State$>$ Texture\+Sampler\+State\+::m\+\_\+p\+Sampler\+State\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classTextureSamplerState_ac2a25bf06fd9270d0d46a4d692d48bc4_ac2a25bf06fd9270d0d46a4d692d48bc4}\index{TextureSamplerState@{TextureSamplerState}!m\_slot@{m\_slot}}
+\index{m\_slot@{m\_slot}!TextureSamplerState@{TextureSamplerState}}
+\doxysubsubsection{\texorpdfstring{m\_slot}{m\_slot}}
+{\footnotesize\ttfamily \label{classTextureSamplerState_ac2a25bf06fd9270d0d46a4d692d48bc4_ac2a25bf06fd9270d0d46a4d692d48bc4} 
+unsigned Texture\+Sampler\+State\+::m\+\_\+slot\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{texture__sampler__state_8h}{texture\+\_\+sampler\+\_\+state.\+h}}\item 
+src/\mbox{\hyperlink{texture__sampler__state_8cpp}{texture\+\_\+sampler\+\_\+state.\+cpp}}\end{DoxyCompactItemize}

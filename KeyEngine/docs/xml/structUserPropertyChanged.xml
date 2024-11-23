@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="structUserPropertyChanged" kind="struct" language="C++" prot="public">
+    <compoundname>UserPropertyChanged</compoundname>
+    <includes refid="reporter__listener__events_8h" local="no">reporter_listener_events.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structUserPropertyChanged_a2d3015520bc250b949676f85e22440a4_1a2d3015520bc250b949676f85e22440a4" prot="public" static="no" mutable="no">
+        <type><ref refid="classgui_1_1Component" kindref="compound">gui::Component</ref> *</type>
+        <definition>gui::Component* UserPropertyChanged::comp</definition>
+        <argsstring></argsstring>
+        <name>comp</name>
+        <qualifiedname>UserPropertyChanged::comp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/reporter_listener_events.h" line="46" column="16" bodyfile="inc/reporter_listener_events.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structUserPropertyChanged_a781bf493e13748580a7c0f0d4ac21aa6_1a781bf493e13748580a7c0f0d4ac21aa6" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string UserPropertyChanged::propertyName</definition>
+        <argsstring></argsstring>
+        <name>propertyName</name>
+        <qualifiedname>UserPropertyChanged::propertyName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/reporter_listener_events.h" line="47" column="13" bodyfile="inc/reporter_listener_events.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>IListener&lt; SwapChainResizedEvent &gt;</label>
+        <link refid="classIListener"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>IListener&lt; UiMsg &gt;</label>
+        <link refid="classIListener"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>IListener&lt; UserPropertyChanged &gt;</label>
+        <link refid="classIListener"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>Mesh</label>
+        <link refid="classMesh"/>
+        <childnode refid="9" relation="usage">
+          <edgelabel>m_pNode</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>m_colorPscb</edgelabel>
+        </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>m_colorPscbOutline</edgelabel>
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>m_colorPscbWireframe</edgelabel>
+        </childnode>
+        <childnode refid="13" relation="usage">
+          <edgelabel>m_colorPscbDepthReversed</edgelabel>
+        </childnode>
+      </node>
+      <node id="10">
+        <label>Mesh::ColorPSCB</label>
+        <link refid="structMesh_1_1ColorPSCB"/>
+      </node>
+      <node id="11">
+        <label>Mesh::ColorPSCB2</label>
+        <link refid="structMesh_1_1ColorPSCB2"/>
+      </node>
+      <node id="12">
+        <label>Mesh::ColorPSCB3</label>
+        <link refid="structMesh_1_1ColorPSCB3"/>
+      </node>
+      <node id="13">
+        <label>Mesh::ColorPSCB4</label>
+        <link refid="structMesh_1_1ColorPSCB4"/>
+      </node>
+      <node id="9">
+        <label>Node</label>
+        <link refid="classNode"/>
+        <childnode refid="9" relation="usage">
+          <edgelabel>m_pParent</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>NonCopyableAndNonMovable</label>
+        <link refid="classNonCopyableAndNonMovable"/>
+      </node>
+      <node id="1">
+        <label>UserPropertyChanged</label>
+        <link refid="structUserPropertyChanged"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>comp</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>gui::Component</label>
+        <link refid="classgui_1_1Component"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2" relation="usage">
+          <edgelabel>m_parent</edgelabel>
+          <edgelabel>s_current_hover</edgelabel>
+          <edgelabel>s_last_hover</edgelabel>
+          <edgelabel>s_root</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>s_last_input_pos</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>m_mesh</edgelabel>
+        </childnode>
+      </node>
+      <node id="7">
+        <label>gui::Point</label>
+        <link refid="structgui_1_1Point"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/reporter_listener_events.h" line="44" column="1" bodyfile="inc/reporter_listener_events.h" bodystart="45" bodyend="48"/>
+    <listofallmembers>
+      <member refid="structUserPropertyChanged_a2d3015520bc250b949676f85e22440a4_1a2d3015520bc250b949676f85e22440a4" prot="public" virt="non-virtual"><scope>UserPropertyChanged</scope><name>comp</name></member>
+      <member refid="structUserPropertyChanged_a781bf493e13748580a7c0f0d4ac21aa6_1a781bf493e13748580a7c0f0d4ac21aa6" prot="public" virt="non-virtual"><scope>UserPropertyChanged</scope><name>propertyName</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

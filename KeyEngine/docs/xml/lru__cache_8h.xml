@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="lru__cache_8h" kind="file" language="C++">
+    <compoundname>lru_cache.h</compoundname>
+    <includes local="no">list</includes>
+    <includes local="no">unordered_map</includes>
+    <includes local="no">iostream</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>inc/lru_cache.h</label>
+        <link refid="lru__cache_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>iostream</label>
+      </node>
+      <node id="2">
+        <label>list</label>
+      </node>
+      <node id="3">
+        <label>unordered_map</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="classLRUCache" prot="public">LRUCache</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;list&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//=============================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>\class<sp/><sp/>LRUCache</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>\author<sp/>KeyC0de</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>\date<sp/><sp/><sp/>2022/02/22<sp/>23:34</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>\brief<sp/><sp/>A<sp/>data<sp/>structure<sp/>which<sp/>can<sp/>store<sp/>a<sp/>max<sp/>amount<sp/>of<sp/>key-value<sp/>pairs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>list<sp/>stores<sp/>the<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>to<sp/>find<sp/>them<sp/>fast<sp/>a<sp/>hash<sp/>table<sp/>stores<sp/>references<sp/>to<sp/>each<sp/>value<sp/>in<sp/>the<sp/>cache</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//=============================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="17" refid="classLRUCache" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classLRUCache" kindref="compound">LRUCache</ref></highlight></codeline>
+<codeline lineno="18"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="19" refid="classLRUCache_a3ccd2c2550a8e99e24409e9e41f97b40_1a3ccd2c2550a8e99e24409e9e41f97b40" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::list&lt;T&gt;<sp/><ref refid="classLRUCache_a3ccd2c2550a8e99e24409e9e41f97b40_1a3ccd2c2550a8e99e24409e9e41f97b40" kindref="member">m_list</ref>;</highlight></codeline>
+<codeline lineno="20" refid="classLRUCache_a9d6a0dc0f63cfa035ec23f9fdb7c13ba_1a9d6a0dc0f63cfa035ec23f9fdb7c13ba" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unordered_map&lt;T,<sp/>typename<sp/>std::list&lt;T&gt;::const_iterator&gt;<sp/><ref refid="classLRUCache_a9d6a0dc0f63cfa035ec23f9fdb7c13ba_1a9d6a0dc0f63cfa035ec23f9fdb7c13ba" kindref="member">m_map</ref>;</highlight></codeline>
+<codeline lineno="21" refid="classLRUCache_ae8fdd866a0a93dcc741fdea58be0abec_1ae8fdd866a0a93dcc741fdea58be0abec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classLRUCache_ae8fdd866a0a93dcc741fdea58be0abec_1ae8fdd866a0a93dcc741fdea58be0abec" kindref="member">m_maxSize</ref>;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="23" refid="classLRUCache_a2d658ad308b7ddd3930fad756fa9a44b_1a2d658ad308b7ddd3930fad756fa9a44b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classLRUCache_a2d658ad308b7ddd3930fad756fa9a44b_1a2d658ad308b7ddd3930fad756fa9a44b" kindref="member">LRUCache</ref>(<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>maxSize<sp/>)</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classLRUCache_ae8fdd866a0a93dcc741fdea58be0abec_1ae8fdd866a0a93dcc741fdea58be0abec" kindref="member">m_maxSize</ref>{maxSize}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//===================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>\function<sp/><sp/><sp/>find</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>\brief<sp/><sp/>refers<sp/>element<sp/>x<sp/>with<sp/>in<sp/>the<sp/>LRU<sp/>cache</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>\date<sp/><sp/><sp/>2022/07/30<sp/>21:08</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classLRUCache_a950b676d0cb865c887f3901f218f2a0e_1a950b676d0cb865c887f3901f218f2a0e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLRUCache_a950b676d0cb865c887f3901f218f2a0e_1a950b676d0cb865c887f3901f218f2a0e" kindref="member">find</ref>(<sp/>T<sp/>x<sp/>)</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="classLRUCache_a9d6a0dc0f63cfa035ec23f9fdb7c13ba_1a9d6a0dc0f63cfa035ec23f9fdb7c13ba" kindref="member">m_map</ref>.find(<sp/>x<sp/>)<sp/>==<sp/><ref refid="classLRUCache_a9d6a0dc0f63cfa035ec23f9fdb7c13ba_1a9d6a0dc0f63cfa035ec23f9fdb7c13ba" kindref="member">m_map</ref>.end()<sp/>)</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>not<sp/>present<sp/>in<sp/>cache</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="classLRUCache_a3ccd2c2550a8e99e24409e9e41f97b40_1a3ccd2c2550a8e99e24409e9e41f97b40" kindref="member">m_list</ref>.size()<sp/>==<sp/><ref refid="classLRUCache_ae8fdd866a0a93dcc741fdea58be0abec_1ae8fdd866a0a93dcc741fdea58be0abec" kindref="member">m_maxSize</ref><sp/>)</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>cache<sp/>is<sp/>full<sp/>so<sp/>delete<sp/>least<sp/>recently<sp/>used<sp/>element</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>T<sp/>last<sp/>=<sp/><ref refid="classLRUCache_a3ccd2c2550a8e99e24409e9e41f97b40_1a3ccd2c2550a8e99e24409e9e41f97b40" kindref="member">m_list</ref>.back();</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classLRUCache_a3ccd2c2550a8e99e24409e9e41f97b40_1a3ccd2c2550a8e99e24409e9e41f97b40" kindref="member">m_list</ref>.pop_back();</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classLRUCache_a9d6a0dc0f63cfa035ec23f9fdb7c13ba_1a9d6a0dc0f63cfa035ec23f9fdb7c13ba" kindref="member">m_map</ref>.erase(<sp/>last<sp/>);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classLRUCache_a3ccd2c2550a8e99e24409e9e41f97b40_1a3ccd2c2550a8e99e24409e9e41f97b40" kindref="member">m_list</ref>.erase(<sp/><ref refid="classLRUCache_a9d6a0dc0f63cfa035ec23f9fdb7c13ba_1a9d6a0dc0f63cfa035ec23f9fdb7c13ba" kindref="member">m_map</ref>[x]<sp/>);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>update<sp/>reference</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classLRUCache_a3ccd2c2550a8e99e24409e9e41f97b40_1a3ccd2c2550a8e99e24409e9e41f97b40" kindref="member">m_list</ref>.push_front(<sp/>x<sp/>);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classLRUCache_a9d6a0dc0f63cfa035ec23f9fdb7c13ba_1a9d6a0dc0f63cfa035ec23f9fdb7c13ba" kindref="member">m_map</ref>[x]<sp/>=<sp/><ref refid="classLRUCache_a3ccd2c2550a8e99e24409e9e41f97b40_1a3ccd2c2550a8e99e24409e9e41f97b40" kindref="member">m_list</ref>.cbegin();</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="classLRUCache_af93af58bad8c06c7a48a56ef89a3272e_1af93af58bad8c06c7a48a56ef89a3272e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLRUCache_af93af58bad8c06c7a48a56ef89a3272e_1af93af58bad8c06c7a48a56ef89a3272e" kindref="member">display</ref>()</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/><ref refid="classLRUCache_a3ccd2c2550a8e99e24409e9e41f97b40_1a3ccd2c2550a8e99e24409e9e41f97b40" kindref="member">m_list</ref>.cbegin();<sp/>it<sp/>!=<sp/><ref refid="classLRUCache_a3ccd2c2550a8e99e24409e9e41f97b40_1a3ccd2c2550a8e99e24409e9e41f97b40" kindref="member">m_list</ref>.cend();<sp/>++it<sp/>)</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>(<sp/>*it<sp/>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/lru_cache.h"/>
+  </compounddef>
+</doxygen>

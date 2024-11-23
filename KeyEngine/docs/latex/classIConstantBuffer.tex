@@ -1,0 +1,186 @@
+\doxysection{IConstant\+Buffer\texorpdfstring{$<$}{<} CB \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classIConstantBuffer}{}\label{classIConstantBuffer}\index{IConstantBuffer$<$ CB $>$@{IConstantBuffer$<$ CB $>$}}
+
+
+CB is the Constant Buffer struct we abstract away   
+
+
+
+
+{\ttfamily \#include $<$constant\+\_\+buffer.\+h$>$}
+
+Inheritance diagram for IConstant\+Buffer\texorpdfstring{$<$}{<} CB \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classIConstantBuffer}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classIConstantBuffer_aaf8166466c78ea1d4a6895a311f1b35c_aaf8166466c78ea1d4a6895a311f1b35c}{IConstant\+Buffer}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const unsigned slot)
+\begin{DoxyCompactList}\small\item\em initially empty d3dcb -\/ supply the data on update \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classIConstantBuffer_a2d580772f74b4ea190687b3f0284607e_a2d580772f74b4ea190687b3f0284607e}{IConstant\+Buffer}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const CB \&cb, const unsigned slot)
+\begin{DoxyCompactList}\small\item\em ctor with the data supplied \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classIConstantBuffer_a6205d2c03344895735375508cc215983_a6205d2c03344895735375508cc215983}{IConstant\+Buffer}} (Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ ID3\+D11\+Buffer $>$ \&d3d\+Buf, const unsigned slot)
+\begin{DoxyCompactList}\small\item\em cheating constructor -\/ the D3d resource has already been created (eg copied from another) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classIConstantBuffer_a01fb34eedba302e40cc4a4ad9889bcf3_a01fb34eedba302e40cc4a4ad9889bcf3}{update}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const CB \&cb)
+\begin{DoxyCompactList}\small\item\em Map, paste to msr, Unmap. \end{DoxyCompactList}\item 
+ID3\+D11\+Buffer \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classIConstantBuffer_a234c7460e626f1659945d4aace6783af_a234c7460e626f1659945d4aace6783af}{get\+Cb}} () const noexcept
+\item 
+unsigned \mbox{\hyperlink{classIConstantBuffer_a01dc2ed3fe56e398466da0eac8476086_a01dc2ed3fe56e398466da0eac8476086}{get\+Slot}} () const noexcept
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classIBindable}{IBindable}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classIBindable_a7f68262ff85e25e9f826eae7c01bbfa1_a7f68262ff85e25e9f826eae7c01bbfa1}{\texorpdfstring{$\sim$}{\string~}\+IBindable}} () noexcept
+\item 
+virtual void \mbox{\hyperlink{classIBindable_add4560f78e76629ee81ba701ba1052e1_add4560f78e76629ee81ba701ba1052e1}{bind}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) cond\+\_\+noex=0
+\begin{DoxyCompactList}\small\item\em bind graphics resource to a certain stage of the graphics pipeline \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classIBindable_a12fe8725cb3f4836f22d1592b07e2c91_a12fe8725cb3f4836f22d1592b07e2c91}{set\+Mesh}} (const \mbox{\hyperlink{classMesh}{Mesh}} \&mesh) noexcept
+\item 
+virtual void \mbox{\hyperlink{classIBindable_a608c5066b829febbd49cd82d1d1fa353_a608c5066b829febbd49cd82d1d1fa353}{accept}} (\mbox{\hyperlink{classIImGuiConstantBufferVisitor}{IIm\+Gui\+Constant\+Buffer\+Visitor}} \&ev)
+\item 
+virtual std\+::string \mbox{\hyperlink{classIBindable_a7d88cdbd5d500d6d7f1bfabe16927855_a7d88cdbd5d500d6d7f1bfabe16927855}{get\+Uid}} () const noexcept
+\item 
+virtual void \mbox{\hyperlink{classIBindable_a4d590eebe80fa4e0aa865a875ff86c02_a4d590eebe80fa4e0aa865a875ff86c02}{set\+Debug\+Object\+Name}} (const char \texorpdfstring{$\ast$}{*}name) noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classIConstantBuffer_a6ad5e0bb4786aa200f8f99d91b1e8f60_a6ad5e0bb4786aa200f8f99d91b1e8f60}{set\+Buffer\+Desc}} (D3\+D11\+\_\+\+BUFFER\+\_\+\+DESC \&d3d\+Buf\+Desc)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classGraphicsFriend}{Graphics\+Friend}}}
+\begin{DoxyCompactItemize}
+\item 
+static ID3\+D11\+Device\+Context \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGraphicsFriend_a619e32893ab49ea6c5200e7c2d52e2f2_a619e32893ab49ea6c5200e7c2d52e2f2}{get\+Device\+Context}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) noexcept
+\item 
+static ID3\+D11\+Device \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_a175df79f82ab5a6dad1df24b5a242ef7}{get\+Device}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ ID3\+D11\+Buffer $>$ \mbox{\hyperlink{classIConstantBuffer_af9cbf846b484e990f92dcbf2f8c36ad0_af9cbf846b484e990f92dcbf2f8c36ad0}{m\+\_\+p\+D3d\+Cb}}
+\item 
+unsigned \mbox{\hyperlink{classIConstantBuffer_a82ee09da1156dbb8d18d6fe580af6448_a82ee09da1156dbb8d18d6fe580af6448}{m\+\_\+slot}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classGraphics}{Graphics}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classIConstantBuffer_a7de4ee448a807aa113186ff83757a425_a7de4ee448a807aa113186ff83757a425}{s\+\_\+gph}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename CB$>$\newline
+class IConstant\+Buffer$<$ CB $>$}
+CB is the Constant Buffer struct we abstract away  
+
+=============================================================
+
+\begin{DoxyAuthor}{Author}
+Key\+C0de 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/02/19 18\+:52 \doxysubsection*{}
+\end{DoxyDate}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classIConstantBuffer_aaf8166466c78ea1d4a6895a311f1b35c_aaf8166466c78ea1d4a6895a311f1b35c}\index{IConstantBuffer$<$ CB $>$@{IConstantBuffer$<$ CB $>$}!IConstantBuffer@{IConstantBuffer}}
+\index{IConstantBuffer@{IConstantBuffer}!IConstantBuffer$<$ CB $>$@{IConstantBuffer$<$ CB $>$}}
+\doxysubsubsection{\texorpdfstring{IConstantBuffer()}{IConstantBuffer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classIConstantBuffer_aaf8166466c78ea1d4a6895a311f1b35c_aaf8166466c78ea1d4a6895a311f1b35c} 
+template$<$typename CB $>$ \\
+\mbox{\hyperlink{classIConstantBuffer}{IConstant\+Buffer}}$<$ CB $>$\mbox{\hyperlink{classIConstantBuffer}{\+::\+IConstant\+Buffer}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const unsigned}]{slot}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+initially empty d3dcb -\/ supply the data on update 
+
+\Hypertarget{classIConstantBuffer_a2d580772f74b4ea190687b3f0284607e_a2d580772f74b4ea190687b3f0284607e}\index{IConstantBuffer$<$ CB $>$@{IConstantBuffer$<$ CB $>$}!IConstantBuffer@{IConstantBuffer}}
+\index{IConstantBuffer@{IConstantBuffer}!IConstantBuffer$<$ CB $>$@{IConstantBuffer$<$ CB $>$}}
+\doxysubsubsection{\texorpdfstring{IConstantBuffer()}{IConstantBuffer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classIConstantBuffer_a2d580772f74b4ea190687b3f0284607e_a2d580772f74b4ea190687b3f0284607e} 
+template$<$typename CB $>$ \\
+\mbox{\hyperlink{classIConstantBuffer}{IConstant\+Buffer}}$<$ CB $>$\mbox{\hyperlink{classIConstantBuffer}{\+::\+IConstant\+Buffer}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const CB \&}]{cb}{, }\item[{const unsigned}]{slot}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ctor with the data supplied 
+
+\Hypertarget{classIConstantBuffer_a6205d2c03344895735375508cc215983_a6205d2c03344895735375508cc215983}\index{IConstantBuffer$<$ CB $>$@{IConstantBuffer$<$ CB $>$}!IConstantBuffer@{IConstantBuffer}}
+\index{IConstantBuffer@{IConstantBuffer}!IConstantBuffer$<$ CB $>$@{IConstantBuffer$<$ CB $>$}}
+\doxysubsubsection{\texorpdfstring{IConstantBuffer()}{IConstantBuffer()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classIConstantBuffer_a6205d2c03344895735375508cc215983_a6205d2c03344895735375508cc215983} 
+template$<$typename CB $>$ \\
+\mbox{\hyperlink{classIConstantBuffer}{IConstant\+Buffer}}$<$ CB $>$\mbox{\hyperlink{classIConstantBuffer}{\+::\+IConstant\+Buffer}} (\begin{DoxyParamCaption}\item[{Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ ID3\+D11\+Buffer $>$ \&}]{d3d\+Buf}{, }\item[{const unsigned}]{slot}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+cheating constructor -\/ the D3d resource has already been created (eg copied from another) 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classIConstantBuffer_a234c7460e626f1659945d4aace6783af_a234c7460e626f1659945d4aace6783af}\index{IConstantBuffer$<$ CB $>$@{IConstantBuffer$<$ CB $>$}!getCb@{getCb}}
+\index{getCb@{getCb}!IConstantBuffer$<$ CB $>$@{IConstantBuffer$<$ CB $>$}}
+\doxysubsubsection{\texorpdfstring{getCb()}{getCb()}}
+{\footnotesize\ttfamily \label{classIConstantBuffer_a234c7460e626f1659945d4aace6783af_a234c7460e626f1659945d4aace6783af} 
+template$<$typename CB $>$ \\
+ID3\+D11\+Buffer \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classIConstantBuffer}{IConstant\+Buffer}}$<$ CB $>$\+::get\+Cb (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classIConstantBuffer_a01dc2ed3fe56e398466da0eac8476086_a01dc2ed3fe56e398466da0eac8476086}\index{IConstantBuffer$<$ CB $>$@{IConstantBuffer$<$ CB $>$}!getSlot@{getSlot}}
+\index{getSlot@{getSlot}!IConstantBuffer$<$ CB $>$@{IConstantBuffer$<$ CB $>$}}
+\doxysubsubsection{\texorpdfstring{getSlot()}{getSlot()}}
+{\footnotesize\ttfamily \label{classIConstantBuffer_a01dc2ed3fe56e398466da0eac8476086_a01dc2ed3fe56e398466da0eac8476086} 
+template$<$typename CB $>$ \\
+unsigned \mbox{\hyperlink{classIConstantBuffer}{IConstant\+Buffer}}$<$ CB $>$\+::get\+Slot (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classIConstantBuffer_a6ad5e0bb4786aa200f8f99d91b1e8f60_a6ad5e0bb4786aa200f8f99d91b1e8f60}\index{IConstantBuffer$<$ CB $>$@{IConstantBuffer$<$ CB $>$}!setBufferDesc@{setBufferDesc}}
+\index{setBufferDesc@{setBufferDesc}!IConstantBuffer$<$ CB $>$@{IConstantBuffer$<$ CB $>$}}
+\doxysubsubsection{\texorpdfstring{setBufferDesc()}{setBufferDesc()}}
+{\footnotesize\ttfamily \label{classIConstantBuffer_a6ad5e0bb4786aa200f8f99d91b1e8f60_a6ad5e0bb4786aa200f8f99d91b1e8f60} 
+template$<$typename CB $>$ \\
+static void \mbox{\hyperlink{classIConstantBuffer}{IConstant\+Buffer}}$<$ CB $>$\+::set\+Buffer\+Desc (\begin{DoxyParamCaption}\item[{D3\+D11\+\_\+\+BUFFER\+\_\+\+DESC \&}]{d3d\+Buf\+Desc}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [protected]}}
+
+\Hypertarget{classIConstantBuffer_a01fb34eedba302e40cc4a4ad9889bcf3_a01fb34eedba302e40cc4a4ad9889bcf3}\index{IConstantBuffer$<$ CB $>$@{IConstantBuffer$<$ CB $>$}!update@{update}}
+\index{update@{update}!IConstantBuffer$<$ CB $>$@{IConstantBuffer$<$ CB $>$}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{classIConstantBuffer_a01fb34eedba302e40cc4a4ad9889bcf3_a01fb34eedba302e40cc4a4ad9889bcf3} 
+template$<$typename CB $>$ \\
+void \mbox{\hyperlink{classIConstantBuffer}{IConstant\+Buffer}}$<$ CB $>$\+::update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const CB \&}]{cb}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Map, paste to msr, Unmap. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classIConstantBuffer_af9cbf846b484e990f92dcbf2f8c36ad0_af9cbf846b484e990f92dcbf2f8c36ad0}\index{IConstantBuffer$<$ CB $>$@{IConstantBuffer$<$ CB $>$}!m\_pD3dCb@{m\_pD3dCb}}
+\index{m\_pD3dCb@{m\_pD3dCb}!IConstantBuffer$<$ CB $>$@{IConstantBuffer$<$ CB $>$}}
+\doxysubsubsection{\texorpdfstring{m\_pD3dCb}{m\_pD3dCb}}
+{\footnotesize\ttfamily \label{classIConstantBuffer_af9cbf846b484e990f92dcbf2f8c36ad0_af9cbf846b484e990f92dcbf2f8c36ad0} 
+template$<$typename CB $>$ \\
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ID3\+D11\+Buffer$>$ \mbox{\hyperlink{classIConstantBuffer}{IConstant\+Buffer}}$<$ CB $>$\+::m\+\_\+p\+D3d\+Cb\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classIConstantBuffer_a82ee09da1156dbb8d18d6fe580af6448_a82ee09da1156dbb8d18d6fe580af6448}\index{IConstantBuffer$<$ CB $>$@{IConstantBuffer$<$ CB $>$}!m\_slot@{m\_slot}}
+\index{m\_slot@{m\_slot}!IConstantBuffer$<$ CB $>$@{IConstantBuffer$<$ CB $>$}}
+\doxysubsubsection{\texorpdfstring{m\_slot}{m\_slot}}
+{\footnotesize\ttfamily \label{classIConstantBuffer_a82ee09da1156dbb8d18d6fe580af6448_a82ee09da1156dbb8d18d6fe580af6448} 
+template$<$typename CB $>$ \\
+unsigned \mbox{\hyperlink{classIConstantBuffer}{IConstant\+Buffer}}$<$ CB $>$\+::m\+\_\+slot\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classIConstantBuffer_a7de4ee448a807aa113186ff83757a425_a7de4ee448a807aa113186ff83757a425}\index{IConstantBuffer$<$ CB $>$@{IConstantBuffer$<$ CB $>$}!s\_gph@{s\_gph}}
+\index{s\_gph@{s\_gph}!IConstantBuffer$<$ CB $>$@{IConstantBuffer$<$ CB $>$}}
+\doxysubsubsection{\texorpdfstring{s\_gph}{s\_gph}}
+{\footnotesize\ttfamily \label{classIConstantBuffer_a7de4ee448a807aa113186ff83757a425_a7de4ee448a807aa113186ff83757a425} 
+template$<$typename CB $>$ \\
+\mbox{\hyperlink{classGraphics}{Graphics}}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classIConstantBuffer}{IConstant\+Buffer}}$<$ CB $>$\+::s\+\_\+gph\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{constant__buffer_8h}{constant\+\_\+buffer.\+h}}\end{DoxyCompactItemize}

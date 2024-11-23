@@ -1,0 +1,57 @@
+\doxysection{bindable.\+h}
+\hypertarget{bindable_8h_source}{}\label{bindable_8h_source}\index{inc/bindable.h@{inc/bindable.h}}
+\mbox{\hyperlink{bindable_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{graphics__friend_8h}{graphics\_friend.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{assertions__console_8h}{assertions\_console.h}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMesh}{Mesh}};}
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIImGuiConstantBufferVisitor}{IImGuiConstantBufferVisitor}};}
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGraphics}{Graphics}};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIBindable}{IBindable}}}
+\DoxyCodeLine{00019\ \ \ \ \ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classGraphicsFriend}{GraphicsFriend}}}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classIBindable_a7f68262ff85e25e9f826eae7c01bbfa1_a7f68262ff85e25e9f826eae7c01bbfa1}{\string~IBindable}}()\ noexcept}
+\DoxyCodeLine{00023\ \ \ \ \ \{}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIBindable_add4560f78e76629ee81ba701ba1052e1_add4560f78e76629ee81ba701ba1052e1}{bind}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx\ )\ cond\_noex\ =\ 0;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIBindable_a12fe8725cb3f4836f22d1592b07e2c91_a12fe8725cb3f4836f22d1592b07e2c91}{setMesh}}(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMesh}{Mesh}}\ \&\mbox{\hyperlink{namespacemesh}{mesh}}\ )\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00031\ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ pass\_;}
+\DoxyCodeLine{00033\ \ \ \ \ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIBindable_a608c5066b829febbd49cd82d1d1fa353_a608c5066b829febbd49cd82d1d1fa353}{accept}}(\ \mbox{\hyperlink{classIImGuiConstantBufferVisitor}{IImGuiConstantBufferVisitor}}\ \&ev\ )}
+\DoxyCodeLine{00036\ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ pass\_;}
+\DoxyCodeLine{00038\ \ \ \ \ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ \mbox{\hyperlink{classIBindable_a7d88cdbd5d500d6d7f1bfabe16927855_a7d88cdbd5d500d6d7f1bfabe16927855}{getUid}}()\ const\ noexcept}
+\DoxyCodeLine{00041\ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{assertions__console_8h_af3e11288cb5021b91949be5058816137_af3e11288cb5021b91949be5058816137}{ASSERT}}(\ \textcolor{keyword}{false},\ \textcolor{stringliteral}{"{}Base\ Bindable\ has\ no\ UID."{}}\ );}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00044\ \ \ \ \ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIBindable_a4d590eebe80fa4e0aa865a875ff86c02_a4d590eebe80fa4e0aa865a875ff86c02}{setDebugObjectName}}(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ name\ )\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00047\ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ pass\_;}
+\DoxyCodeLine{00049\ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIBindableCloning}{IBindableCloning}}}
+\DoxyCodeLine{00053\ \ \ \ \ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classIBindable}{IBindable}}}
+\DoxyCodeLine{00054\ \{}
+\DoxyCodeLine{00055\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{virtual}\ std::unique\_ptr<IBindableCloning>\ \mbox{\hyperlink{classIBindableCloning_a122ec73671857ed90469e0124e5b85db_a122ec73671857ed90469e0124e5b85db}{clone}}()\ const\ noexcept\ =\ 0;}
+\DoxyCodeLine{00057\ \ \ \ \ virtual\ std::unique\_ptr<\mbox{\hyperlink{classIBindableCloning}{IBindableCloning}}>\ \mbox{\hyperlink{classIBindableCloning_a122ec73671857ed90469e0124e5b85db_a122ec73671857ed90469e0124e5b85db}{clone}}()\ noexcept\ =\ 0;}
+\DoxyCodeLine{00058\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,252 @@
+\doxysection{IDepth\+Stencil\+View Class Reference}
+\hypertarget{classIDepthStencilView}{}\label{classIDepthStencilView}\index{IDepthStencilView@{IDepthStencilView}}
+
+
+{\ttfamily \#include $<$depth\+\_\+stencil\+\_\+view.\+h$>$}
+
+Inheritance diagram for IDepth\+Stencil\+View\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classIDepthStencilView}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classIDepthStencilView_a75916f855423f1737747566b136e1208_a75916f855423f1737747566b136e1208}{bind\+Render\+Surface}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) cond\+\_\+noex override
+\item 
+void \mbox{\hyperlink{classIDepthStencilView_aabbb45b15b9db4ac1db93a8fae7b48b3_aabbb45b15b9db4ac1db93a8fae7b48b3}{bind\+Render\+Surface}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, \mbox{\hyperlink{classIRenderSurface}{IRender\+Surface}} \texorpdfstring{$\ast$}{*}rt) cond\+\_\+noex override
+\item 
+void \mbox{\hyperlink{classIDepthStencilView_a690af44ba0b174d334547fb31648cd7b_a690af44ba0b174d334547fb31648cd7b}{bind\+Render\+Surface}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, \mbox{\hyperlink{classIRenderTargetView}{IRender\+Target\+View}} \texorpdfstring{$\ast$}{*}rt) cond\+\_\+noex
+\item 
+void \mbox{\hyperlink{classIDepthStencilView_a6ca65a2cd33a548c011ea479c6a3ae1d_a6ca65a2cd33a548c011ea479c6a3ae1d}{clear}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const std\+::array$<$ float, 4 $>$ \&unused=\{\}) cond\+\_\+noex override
+\item 
+void \mbox{\hyperlink{classIDepthStencilView_ac702b43307640c51399dde368e1b9809_ac702b43307640c51399dde368e1b9809}{clean}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) cond\+\_\+noex
+\item 
+const \mbox{\hyperlink{classBitmap}{Bitmap}} \mbox{\hyperlink{classIDepthStencilView_a1662957998b0c724568daf3ac739bc27_a1662957998b0c724568daf3ac739bc27}{convert\+To\+Bitmap}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const unsigned texture\+Width, const unsigned texture\+Height, const bool b\+Linearize=true) const
+\begin{DoxyCompactList}\small\item\em copy from resource to staging --- linearize \& normalize depth values by default \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{classIDepthStencilView_aec747cf5dbd4fb40bc46de500143d42f_aec747cf5dbd4fb40bc46de500143d42f}{get\+Width}} () const noexcept
+\item 
+unsigned int \mbox{\hyperlink{classIDepthStencilView_a3d74e596cc9d164d50946d746e475c6e_a3d74e596cc9d164d50946d746e475c6e}{get\+Height}} () const noexcept
+\item 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ ID3\+D11\+Depth\+Stencil\+View $>$ \& \mbox{\hyperlink{classIDepthStencilView_a9113581f39ad84b4c49cb0afa27a7016_a9113581f39ad84b4c49cb0afa27a7016}{d3d\+Resource\+Com}} () noexcept
+\item 
+ID3\+D11\+Depth\+Stencil\+View \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classIDepthStencilView_acffcf6d1015ae08263c14ce78a71c514_acffcf6d1015ae08263c14ce78a71c514}{d3d\+Resource}} () const noexcept
+\item 
+virtual void \mbox{\hyperlink{classIDepthStencilView_a37ea21d058018da8f23c574e502f5581_a37ea21d058018da8f23c574e502f5581}{set\+Debug\+Object\+Name}} (const char \texorpdfstring{$\ast$}{*}name) noexcept override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classIBindable}{IBindable}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classIBindable_a7f68262ff85e25e9f826eae7c01bbfa1_a7f68262ff85e25e9f826eae7c01bbfa1}{\texorpdfstring{$\sim$}{\string~}\+IBindable}} () noexcept
+\item 
+virtual void \mbox{\hyperlink{classIBindable_add4560f78e76629ee81ba701ba1052e1_add4560f78e76629ee81ba701ba1052e1}{bind}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) cond\+\_\+noex=0
+\begin{DoxyCompactList}\small\item\em bind graphics resource to a certain stage of the graphics pipeline \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classIBindable_a12fe8725cb3f4836f22d1592b07e2c91_a12fe8725cb3f4836f22d1592b07e2c91}{set\+Mesh}} (const \mbox{\hyperlink{classMesh}{Mesh}} \&mesh) noexcept
+\item 
+virtual void \mbox{\hyperlink{classIBindable_a608c5066b829febbd49cd82d1d1fa353_a608c5066b829febbd49cd82d1d1fa353}{accept}} (\mbox{\hyperlink{classIImGuiConstantBufferVisitor}{IIm\+Gui\+Constant\+Buffer\+Visitor}} \&ev)
+\item 
+virtual std\+::string \mbox{\hyperlink{classIBindable_a7d88cdbd5d500d6d7f1bfabe16927855_a7d88cdbd5d500d6d7f1bfabe16927855}{get\+Uid}} () const noexcept
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classIRenderSurface}{IRender\+Surface}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classIRenderSurface_a3a4155d7f15be1043769cb22a6d4d449_a3a4155d7f15be1043769cb22a6d4d449}{\texorpdfstring{$\sim$}{\string~}\+IRender\+Surface}} ()=default
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classIDepthStencilView_a2d41ae84140c62fafde60b52a884831e_a2d41ae84140c62fafde60b52a884831e}{IDepth\+Stencil\+View}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, ID3\+D11\+Texture2D \texorpdfstring{$\ast$}{*}p\+Texture, const \mbox{\hyperlink{texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_a5aacc2000fea78d975de8fe06e3698f2}{Depth\+Stencil\+View\+Mode}} dsv\+Mode, std\+::optional$<$ unsigned $>$ face)
+\begin{DoxyCompactList}\small\item\em For creating an output DS only. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classIDepthStencilView_a40482838c8e1421a622521a2ec8aae40_a40482838c8e1421a622521a2ec8aae40}{IDepth\+Stencil\+View}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, ID3\+D11\+Texture2D \texorpdfstring{$\ast$}{*}p\+Texture\+Rsc, const \mbox{\hyperlink{texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_a5aacc2000fea78d975de8fe06e3698f2}{Depth\+Stencil\+View\+Mode}} dsv\+Mode, const int texture\+Array\+Index, std\+::optional$<$ unsigned $>$ face)
+\begin{DoxyCompactList}\small\item\em for creating an output DS only but with Texture\texorpdfstring{$\ast$}{*}\+Array semantics \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classIDepthStencilView_aec7a25978c04ff1bcb0a047882c8836d_aec7a25978c04ff1bcb0a047882c8836d}{IDepth\+Stencil\+View}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const unsigned width, const unsigned height, const bool b\+Bind\+As\+Shader\+Input, const \mbox{\hyperlink{texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_a5aacc2000fea78d975de8fe06e3698f2}{Depth\+Stencil\+View\+Mode}} dsv\+Mode)
+\begin{DoxyCompactList}\small\item\em for binding depth stencil as input \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ ID3\+D11\+Depth\+Stencil\+View $>$ \mbox{\hyperlink{classIDepthStencilView_a1101dd9a388839f785ef9e69dd389684_a1101dd9a388839f785ef9e69dd389684}{m\+\_\+p\+D3d\+Dsv}}
+\item 
+unsigned int \mbox{\hyperlink{classIDepthStencilView_a77e7a6639ca4a086a64470f0a22e8a58_a77e7a6639ca4a086a64470f0a22e8a58}{m\+\_\+width}}
+\item 
+unsigned int \mbox{\hyperlink{classIDepthStencilView_a5b67794aed2406ff0f17b9a76d8a5bc5_a5b67794aed2406ff0f17b9a76d8a5bc5}{m\+\_\+height}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::pair$<$ Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ ID3\+D11\+Texture2D $>$, D3\+D11\+\_\+\+TEXTURE2\+D\+\_\+\+DESC $>$ \mbox{\hyperlink{classIDepthStencilView_a59c87083dbbb991cc621dedcb4cbd58d_a59c87083dbbb991cc621dedcb4cbd58d}{create\+Staging\+Texture}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+friend \mbox{\hyperlink{classIDepthStencilView_a95a05cf6868ffcebcab2fd0f63fe4aaa_a95a05cf6868ffcebcab2fd0f63fe4aaa}{IRender\+Target\+View}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classGraphicsFriend}{Graphics\+Friend}}}
+\begin{DoxyCompactItemize}
+\item 
+static ID3\+D11\+Device\+Context \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGraphicsFriend_a619e32893ab49ea6c5200e7c2d52e2f2_a619e32893ab49ea6c5200e7c2d52e2f2}{get\+Device\+Context}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) noexcept
+\item 
+static ID3\+D11\+Device \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_a175df79f82ab5a6dad1df24b5a242ef7}{get\+Device}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) noexcept
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classIDepthStencilView_a2d41ae84140c62fafde60b52a884831e_a2d41ae84140c62fafde60b52a884831e}\index{IDepthStencilView@{IDepthStencilView}!IDepthStencilView@{IDepthStencilView}}
+\index{IDepthStencilView@{IDepthStencilView}!IDepthStencilView@{IDepthStencilView}}
+\doxysubsubsection{\texorpdfstring{IDepthStencilView()}{IDepthStencilView()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classIDepthStencilView_a2d41ae84140c62fafde60b52a884831e_a2d41ae84140c62fafde60b52a884831e} 
+IDepth\+Stencil\+View\+::\+IDepth\+Stencil\+View (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{ID3\+D11\+Texture2D \texorpdfstring{$\ast$}{*}}]{p\+Texture}{, }\item[{const \mbox{\hyperlink{texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_a5aacc2000fea78d975de8fe06e3698f2}{Depth\+Stencil\+View\+Mode}}}]{dsv\+Mode}{, }\item[{std\+::optional$<$ unsigned $>$}]{face}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+For creating an output DS only. 
+
+\Hypertarget{classIDepthStencilView_a40482838c8e1421a622521a2ec8aae40_a40482838c8e1421a622521a2ec8aae40}\index{IDepthStencilView@{IDepthStencilView}!IDepthStencilView@{IDepthStencilView}}
+\index{IDepthStencilView@{IDepthStencilView}!IDepthStencilView@{IDepthStencilView}}
+\doxysubsubsection{\texorpdfstring{IDepthStencilView()}{IDepthStencilView()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classIDepthStencilView_a40482838c8e1421a622521a2ec8aae40_a40482838c8e1421a622521a2ec8aae40} 
+IDepth\+Stencil\+View\+::\+IDepth\+Stencil\+View (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{ID3\+D11\+Texture2D \texorpdfstring{$\ast$}{*}}]{p\+Texture\+Rsc}{, }\item[{const \mbox{\hyperlink{texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_a5aacc2000fea78d975de8fe06e3698f2}{Depth\+Stencil\+View\+Mode}}}]{dsv\+Mode}{, }\item[{const int}]{texture\+Array\+Index}{, }\item[{std\+::optional$<$ unsigned $>$}]{face}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+for creating an output DS only but with Texture\texorpdfstring{$\ast$}{*}\+Array semantics 
+
+\Hypertarget{classIDepthStencilView_aec7a25978c04ff1bcb0a047882c8836d_aec7a25978c04ff1bcb0a047882c8836d}\index{IDepthStencilView@{IDepthStencilView}!IDepthStencilView@{IDepthStencilView}}
+\index{IDepthStencilView@{IDepthStencilView}!IDepthStencilView@{IDepthStencilView}}
+\doxysubsubsection{\texorpdfstring{IDepthStencilView()}{IDepthStencilView()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classIDepthStencilView_aec7a25978c04ff1bcb0a047882c8836d_aec7a25978c04ff1bcb0a047882c8836d} 
+IDepth\+Stencil\+View\+::\+IDepth\+Stencil\+View (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const unsigned}]{width}{, }\item[{const unsigned}]{height}{, }\item[{const bool}]{b\+Bind\+As\+Shader\+Input}{, }\item[{const \mbox{\hyperlink{texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_a5aacc2000fea78d975de8fe06e3698f2}{Depth\+Stencil\+View\+Mode}}}]{dsv\+Mode}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+for binding depth stencil as input 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classIDepthStencilView_a75916f855423f1737747566b136e1208_a75916f855423f1737747566b136e1208}\index{IDepthStencilView@{IDepthStencilView}!bindRenderSurface@{bindRenderSurface}}
+\index{bindRenderSurface@{bindRenderSurface}!IDepthStencilView@{IDepthStencilView}}
+\doxysubsubsection{\texorpdfstring{bindRenderSurface()}{bindRenderSurface()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classIDepthStencilView_a75916f855423f1737747566b136e1208_a75916f855423f1737747566b136e1208} 
+void IDepth\+Stencil\+View\+::bind\+Render\+Surface (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIRenderSurface_aff43ffe568993e14fcb25c9323aaa34c_aff43ffe568993e14fcb25c9323aaa34c}{IRender\+Surface}}.
+
+\Hypertarget{classIDepthStencilView_aabbb45b15b9db4ac1db93a8fae7b48b3_aabbb45b15b9db4ac1db93a8fae7b48b3}\index{IDepthStencilView@{IDepthStencilView}!bindRenderSurface@{bindRenderSurface}}
+\index{bindRenderSurface@{bindRenderSurface}!IDepthStencilView@{IDepthStencilView}}
+\doxysubsubsection{\texorpdfstring{bindRenderSurface()}{bindRenderSurface()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classIDepthStencilView_aabbb45b15b9db4ac1db93a8fae7b48b3_aabbb45b15b9db4ac1db93a8fae7b48b3} 
+void IDepth\+Stencil\+View\+::bind\+Render\+Surface (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{\mbox{\hyperlink{classIRenderSurface}{IRender\+Surface}} \texorpdfstring{$\ast$}{*}}]{rt}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIRenderSurface_adf10aef07125e8741a05f7d07c238613_adf10aef07125e8741a05f7d07c238613}{IRender\+Surface}}.
+
+\Hypertarget{classIDepthStencilView_a690af44ba0b174d334547fb31648cd7b_a690af44ba0b174d334547fb31648cd7b}\index{IDepthStencilView@{IDepthStencilView}!bindRenderSurface@{bindRenderSurface}}
+\index{bindRenderSurface@{bindRenderSurface}!IDepthStencilView@{IDepthStencilView}}
+\doxysubsubsection{\texorpdfstring{bindRenderSurface()}{bindRenderSurface()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classIDepthStencilView_a690af44ba0b174d334547fb31648cd7b_a690af44ba0b174d334547fb31648cd7b} 
+void IDepth\+Stencil\+View\+::bind\+Render\+Surface (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{\mbox{\hyperlink{classIRenderTargetView}{IRender\+Target\+View}} \texorpdfstring{$\ast$}{*}}]{rt}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classIDepthStencilView_ac702b43307640c51399dde368e1b9809_ac702b43307640c51399dde368e1b9809}\index{IDepthStencilView@{IDepthStencilView}!clean@{clean}}
+\index{clean@{clean}!IDepthStencilView@{IDepthStencilView}}
+\doxysubsubsection{\texorpdfstring{clean()}{clean()}}
+{\footnotesize\ttfamily \label{classIDepthStencilView_ac702b43307640c51399dde368e1b9809_ac702b43307640c51399dde368e1b9809} 
+void IDepth\+Stencil\+View\+::clean (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classIDepthStencilView_a6ca65a2cd33a548c011ea479c6a3ae1d_a6ca65a2cd33a548c011ea479c6a3ae1d}\index{IDepthStencilView@{IDepthStencilView}!clear@{clear}}
+\index{clear@{clear}!IDepthStencilView@{IDepthStencilView}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily \label{classIDepthStencilView_a6ca65a2cd33a548c011ea479c6a3ae1d_a6ca65a2cd33a548c011ea479c6a3ae1d} 
+void IDepth\+Stencil\+View\+::clear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const std\+::array$<$ float, 4 $>$ \&}]{unused}{ = {\ttfamily \{\}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIRenderSurface_a5cbaea1a8f309787e5e22d51ff3c2251_a5cbaea1a8f309787e5e22d51ff3c2251}{IRender\+Surface}}.
+
+\Hypertarget{classIDepthStencilView_a1662957998b0c724568daf3ac739bc27_a1662957998b0c724568daf3ac739bc27}\index{IDepthStencilView@{IDepthStencilView}!convertToBitmap@{convertToBitmap}}
+\index{convertToBitmap@{convertToBitmap}!IDepthStencilView@{IDepthStencilView}}
+\doxysubsubsection{\texorpdfstring{convertToBitmap()}{convertToBitmap()}}
+{\footnotesize\ttfamily \label{classIDepthStencilView_a1662957998b0c724568daf3ac739bc27_a1662957998b0c724568daf3ac739bc27} 
+const \mbox{\hyperlink{classBitmap}{Bitmap}} IDepth\+Stencil\+View\+::convert\+To\+Bitmap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const unsigned}]{texture\+Width}{, }\item[{const unsigned}]{texture\+Height}{, }\item[{const bool}]{b\+Linearize}{ = {\ttfamily true}}\end{DoxyParamCaption}) const}
+
+
+
+copy from resource to staging --- linearize \& normalize depth values by default 
+
+\Hypertarget{classIDepthStencilView_a59c87083dbbb991cc621dedcb4cbd58d_a59c87083dbbb991cc621dedcb4cbd58d}\index{IDepthStencilView@{IDepthStencilView}!createStagingTexture@{createStagingTexture}}
+\index{createStagingTexture@{createStagingTexture}!IDepthStencilView@{IDepthStencilView}}
+\doxysubsubsection{\texorpdfstring{createStagingTexture()}{createStagingTexture()}}
+{\footnotesize\ttfamily \label{classIDepthStencilView_a59c87083dbbb991cc621dedcb4cbd58d_a59c87083dbbb991cc621dedcb4cbd58d} 
+std\+::pair$<$ Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ ID3\+D11\+Texture2D $>$, D3\+D11\+\_\+\+TEXTURE2\+D\+\_\+\+DESC $>$ IDepth\+Stencil\+View\+::create\+Staging\+Texture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classIDepthStencilView_acffcf6d1015ae08263c14ce78a71c514_acffcf6d1015ae08263c14ce78a71c514}\index{IDepthStencilView@{IDepthStencilView}!d3dResource@{d3dResource}}
+\index{d3dResource@{d3dResource}!IDepthStencilView@{IDepthStencilView}}
+\doxysubsubsection{\texorpdfstring{d3dResource()}{d3dResource()}}
+{\footnotesize\ttfamily \label{classIDepthStencilView_acffcf6d1015ae08263c14ce78a71c514_acffcf6d1015ae08263c14ce78a71c514} 
+ID3\+D11\+Depth\+Stencil\+View \texorpdfstring{$\ast$}{*} IDepth\+Stencil\+View\+::d3d\+Resource (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classIDepthStencilView_a9113581f39ad84b4c49cb0afa27a7016_a9113581f39ad84b4c49cb0afa27a7016}\index{IDepthStencilView@{IDepthStencilView}!d3dResourceCom@{d3dResourceCom}}
+\index{d3dResourceCom@{d3dResourceCom}!IDepthStencilView@{IDepthStencilView}}
+\doxysubsubsection{\texorpdfstring{d3dResourceCom()}{d3dResourceCom()}}
+{\footnotesize\ttfamily \label{classIDepthStencilView_a9113581f39ad84b4c49cb0afa27a7016_a9113581f39ad84b4c49cb0afa27a7016} 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ ID3\+D11\+Depth\+Stencil\+View $>$ \& IDepth\+Stencil\+View\+::d3d\+Resource\+Com (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classIDepthStencilView_a3d74e596cc9d164d50946d746e475c6e_a3d74e596cc9d164d50946d746e475c6e}\index{IDepthStencilView@{IDepthStencilView}!getHeight@{getHeight}}
+\index{getHeight@{getHeight}!IDepthStencilView@{IDepthStencilView}}
+\doxysubsubsection{\texorpdfstring{getHeight()}{getHeight()}}
+{\footnotesize\ttfamily \label{classIDepthStencilView_a3d74e596cc9d164d50946d746e475c6e_a3d74e596cc9d164d50946d746e475c6e} 
+unsigned int IDepth\+Stencil\+View\+::get\+Height (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classIDepthStencilView_aec747cf5dbd4fb40bc46de500143d42f_aec747cf5dbd4fb40bc46de500143d42f}\index{IDepthStencilView@{IDepthStencilView}!getWidth@{getWidth}}
+\index{getWidth@{getWidth}!IDepthStencilView@{IDepthStencilView}}
+\doxysubsubsection{\texorpdfstring{getWidth()}{getWidth()}}
+{\footnotesize\ttfamily \label{classIDepthStencilView_aec747cf5dbd4fb40bc46de500143d42f_aec747cf5dbd4fb40bc46de500143d42f} 
+unsigned int IDepth\+Stencil\+View\+::get\+Width (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classIDepthStencilView_a37ea21d058018da8f23c574e502f5581_a37ea21d058018da8f23c574e502f5581}\index{IDepthStencilView@{IDepthStencilView}!setDebugObjectName@{setDebugObjectName}}
+\index{setDebugObjectName@{setDebugObjectName}!IDepthStencilView@{IDepthStencilView}}
+\doxysubsubsection{\texorpdfstring{setDebugObjectName()}{setDebugObjectName()}}
+{\footnotesize\ttfamily \label{classIDepthStencilView_a37ea21d058018da8f23c574e502f5581_a37ea21d058018da8f23c574e502f5581} 
+void IDepth\+Stencil\+View\+::set\+Debug\+Object\+Name (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classIBindable_a4d590eebe80fa4e0aa865a875ff86c02_a4d590eebe80fa4e0aa865a875ff86c02}{IBindable}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classIDepthStencilView_a95a05cf6868ffcebcab2fd0f63fe4aaa_a95a05cf6868ffcebcab2fd0f63fe4aaa}\index{IDepthStencilView@{IDepthStencilView}!IRenderTargetView@{IRenderTargetView}}
+\index{IRenderTargetView@{IRenderTargetView}!IDepthStencilView@{IDepthStencilView}}
+\doxysubsubsection{\texorpdfstring{IRenderTargetView}{IRenderTargetView}}
+{\footnotesize\ttfamily \label{classIDepthStencilView_a95a05cf6868ffcebcab2fd0f63fe4aaa_a95a05cf6868ffcebcab2fd0f63fe4aaa} 
+friend IDepth\+Stencil\+View\+::\+IRender\+Target\+View\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classIDepthStencilView_a5b67794aed2406ff0f17b9a76d8a5bc5_a5b67794aed2406ff0f17b9a76d8a5bc5}\index{IDepthStencilView@{IDepthStencilView}!m\_height@{m\_height}}
+\index{m\_height@{m\_height}!IDepthStencilView@{IDepthStencilView}}
+\doxysubsubsection{\texorpdfstring{m\_height}{m\_height}}
+{\footnotesize\ttfamily \label{classIDepthStencilView_a5b67794aed2406ff0f17b9a76d8a5bc5_a5b67794aed2406ff0f17b9a76d8a5bc5} 
+unsigned int IDepth\+Stencil\+View\+::m\+\_\+height\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classIDepthStencilView_a1101dd9a388839f785ef9e69dd389684_a1101dd9a388839f785ef9e69dd389684}\index{IDepthStencilView@{IDepthStencilView}!m\_pD3dDsv@{m\_pD3dDsv}}
+\index{m\_pD3dDsv@{m\_pD3dDsv}!IDepthStencilView@{IDepthStencilView}}
+\doxysubsubsection{\texorpdfstring{m\_pD3dDsv}{m\_pD3dDsv}}
+{\footnotesize\ttfamily \label{classIDepthStencilView_a1101dd9a388839f785ef9e69dd389684_a1101dd9a388839f785ef9e69dd389684} 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ID3\+D11\+Depth\+Stencil\+View$>$ IDepth\+Stencil\+View\+::m\+\_\+p\+D3d\+Dsv\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classIDepthStencilView_a77e7a6639ca4a086a64470f0a22e8a58_a77e7a6639ca4a086a64470f0a22e8a58}\index{IDepthStencilView@{IDepthStencilView}!m\_width@{m\_width}}
+\index{m\_width@{m\_width}!IDepthStencilView@{IDepthStencilView}}
+\doxysubsubsection{\texorpdfstring{m\_width}{m\_width}}
+{\footnotesize\ttfamily \label{classIDepthStencilView_a77e7a6639ca4a086a64470f0a22e8a58_a77e7a6639ca4a086a64470f0a22e8a58} 
+unsigned int IDepth\+Stencil\+View\+::m\+\_\+width\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{depth__stencil__view_8h}{depth\+\_\+stencil\+\_\+view.\+h}}\item 
+src/\mbox{\hyperlink{depth__stencil__view_8cpp}{depth\+\_\+stencil\+\_\+view.\+cpp}}\end{DoxyCompactItemize}

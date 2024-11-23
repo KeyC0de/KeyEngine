@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="camera__manager_8h" kind="file" language="C++">
+    <compoundname>camera_manager.h</compoundname>
+    <includes local="no">vector</includes>
+    <includes local="no">memory</includes>
+    <includes refid="non__copyable_8h" local="yes">non_copyable.h</includes>
+    <includes refid="rendering__channel_8h" local="yes">rendering_channel.h</includes>
+    <includedby refid="game_8h" local="yes">inc/game.h</includedby>
+    <includedby refid="camera__manager_8cpp" local="yes">src/camera_manager.cpp</includedby>
+    <includedby refid="graphics_8cpp" local="yes">src/graphics.cpp</includedby>
+    <includedby refid="light__source_8cpp" local="yes">src/light_source.cpp</includedby>
+    <includedby refid="mesh_8cpp" local="yes">src/mesh.cpp</includedby>
+    <includedby refid="mouse__picker_8cpp" local="yes">src/mouse_picker.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>inc/camera_manager.h</label>
+        <link refid="camera__manager_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="5">
+        <label>rendering_channel.h</label>
+        <link refid="rendering__channel_8h"/>
+      </node>
+      <node id="3">
+        <label>memory</label>
+      </node>
+      <node id="2">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>inc/camera_manager.h</label>
+        <link refid="camera__manager_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>inc/game.h</label>
+        <link refid="game_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>src/camera_manager.cpp</label>
+        <link refid="camera__manager_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/game.cpp</label>
+        <link refid="game_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/graphics.cpp</label>
+        <link refid="graphics_8cpp"/>
+      </node>
+      <node id="7">
+        <label>src/light_source.cpp</label>
+        <link refid="light__source_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="8">
+        <label>src/mesh.cpp</label>
+        <link refid="mesh_8cpp"/>
+      </node>
+      <node id="9">
+        <label>src/mouse_picker.cpp</label>
+        <link refid="mouse__picker_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classCameraManager" prot="public">CameraManager</innerclass>
+    <innernamespace refid="namespaceren">ren</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="non__copyable_8h" kindref="compound">non_copyable.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="rendering__channel_8h" kindref="compound">rendering_channel.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classCamera" kindref="compound">Camera</ref>;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classGraphics" kindref="compound">Graphics</ref>;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceren" kindref="compound">ren</ref></highlight></codeline>
+<codeline lineno="13"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Renderer;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classCameraManager" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classCameraManager" kindref="compound">CameraManager</ref><sp/>final</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classNonCopyable" kindref="compound">NonCopyable</ref></highlight></codeline>
+<codeline lineno="25"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="26" refid="classCameraManager_a2d404308eaffbbee0630a22e1318ad1d_1a2d404308eaffbbee0630a22e1318ad1d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classCameraManager" kindref="compound">CameraManager</ref><sp/>*<ref refid="classCameraManager_a2d404308eaffbbee0630a22e1318ad1d_1a2d404308eaffbbee0630a22e1318ad1d" kindref="member">s_pInstance</ref>;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classCameraManager_a688f373f7162d92e2f17934bcf941317_1a688f373f7162d92e2f17934bcf941317" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classCameraManager_a688f373f7162d92e2f17934bcf941317_1a688f373f7162d92e2f17934bcf941317" kindref="member">m_activeCameraIndex</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="29" refid="classCameraManager_accac5104526f70019911393072806f72_1accac5104526f70019911393072806f72" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classCameraManager_accac5104526f70019911393072806f72_1accac5104526f70019911393072806f72" kindref="member">m_controlledCameraIndex</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="30" refid="classCameraManager_a4c221f7117b26ad11d83522b36707870_1a4c221f7117b26ad11d83522b36707870" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::shared_ptr&lt;Camera&gt;&gt;<sp/><ref refid="classCameraManager_a4c221f7117b26ad11d83522b36707870_1a4c221f7117b26ad11d83522b36707870" kindref="member">m_cameras</ref>;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="32" refid="classCameraManager_af1976881cb3c38701dd487f4ff19bc19_1af1976881cb3c38701dd487f4ff19bc19" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classCameraManager_af1976881cb3c38701dd487f4ff19bc19_1af1976881cb3c38701dd487f4ff19bc19" kindref="member">CameraManager</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classCameraManager" kindref="compound">CameraManager</ref>&amp;<sp/><ref refid="classCameraManager_ac7e6b0996395dcaaa889d17d5a8a639e_1ac7e6b0996395dcaaa889d17d5a8a639e" kindref="member">getInstance</ref>();</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classCameraManager_a41a699cd43fdb81d7a8b93ca8b9867ee_1a41a699cd43fdb81d7a8b93ca8b9867ee" kindref="member">displayImguiWidgets</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classCameraManager_a434536c5857da84fbb3a93e7071cdfca_1a434536c5857da84fbb3a93e7071cdfca" kindref="member">add</ref>(<sp/>std::shared_ptr&lt;Camera&gt;<sp/>pCam<sp/>);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classCameraManager_ad457347093fe6fae1d65b1a3d6324fd5_1ad457347093fe6fae1d65b1a3d6324fd5" kindref="member">connectMaterialsToRenderer</ref>(<sp/><ref refid="classren_1_1Renderer" kindref="compound">ren::Renderer</ref><sp/>&amp;r<sp/>);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classCameraManager_ab38254a7e009c21fdb7577c1e9b090e7_1ab38254a7e009c21fdb7577c1e9b090e7" kindref="member">render</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>channels<sp/>=<sp/><ref refid="namespacerch_a7bda900872e1367b3434b6b548e17d2c_1a7bda900872e1367b3434b6b548e17d2c" kindref="member">rch::all</ref><sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classCameraManager_a549ef1d47bd5fd7294c6213c7e4e8dd1_1a549ef1d47bd5fd7294c6213c7e4e8dd1" kindref="member">onWindowResize</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classCamera" kindref="compound">Camera</ref>&amp;<sp/><ref refid="classCameraManager_abdf764797cf31edf23ae92496b6dfcf1_1abdf764797cf31edf23ae92496b6dfcf1" kindref="member">getActiveCamera</ref>()<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/><ref refid="classCamera" kindref="compound">Camera</ref>&amp;<sp/><ref refid="classCameraManager_abdf764797cf31edf23ae92496b6dfcf1_1abdf764797cf31edf23ae92496b6dfcf1" kindref="member">getActiveCamera</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;<ref refid="classCamera" kindref="compound">Camera</ref>&gt;<sp/><ref refid="classCameraManager_a51f0f22d423edcbd14d305705d680aaa_1a51f0f22d423edcbd14d305705d680aaa" kindref="member">shareActiveCamera</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classCamera" kindref="compound">Camera</ref>&amp;<sp/><ref refid="classCameraManager_a4947ac4aaea7190d58f2e5ac1795fd34_1a4947ac4aaea7190d58f2e5ac1795fd34" kindref="member">getControlledCamera</ref>()<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/><ref refid="classCamera" kindref="compound">Camera</ref>&amp;<sp/><ref refid="classCameraManager_a4947ac4aaea7190d58f2e5ac1795fd34_1a4947ac4aaea7190d58f2e5ac1795fd34" kindref="member">getControlledCamera</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;<ref refid="classCamera" kindref="compound">Camera</ref>&gt;<sp/><ref refid="classCameraManager_a3449fa52852d18549a3ee5948bc43405_1a3449fa52852d18549a3ee5948bc43405" kindref="member">shareControlledCamera</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/camera_manager.h"/>
+  </compounddef>
+</doxygen>

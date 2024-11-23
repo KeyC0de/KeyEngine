@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="structver_1_1lookups_1_1AiMeshElementLookup" kind="struct" language="C++" prot="public" final="yes">
+    <compoundname>ver::lookups::AiMeshElementLookup</compoundname>
+    <templateparamlist>
+      <param>
+        <type><ref refid="classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_1a7582c10f2c7a3ac24f95015bcbeb8c1a" kindref="member">VertexInputLayout::ILEementType</ref></type>
+        <declname>type</declname>
+        <defname>type</defname>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structver_1_1lookups_1_1AiMeshElementLookup_a794f8a6e4f91a4f304d4489fa6c230c5_1a794f8a6e4f91a4f304d4489fa6c230c5" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static constexpr void ver::lookups::AiMeshElementLookup&lt; type &gt;::exec</definition>
+        <argsstring>(VBuffer *pBuf, const aiMesh &amp;aimesh) cond_noex</argsstring>
+        <name>exec</name>
+        <qualifiedname>ver::lookups::AiMeshElementLookup::exec</qualifiedname>
+        <param>
+          <type><ref refid="classver_1_1VBuffer" kindref="compound">VBuffer</ref> *</type>
+          <declname>pBuf</declname>
+        </param>
+        <param>
+          <type>const aiMesh &amp;</type>
+          <declname>aimesh</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dynamic_vertex_buffer.cpp" line="99" column="23" bodyfile="src/dynamic_vertex_buffer.cpp" bodystart="99" bodyend="106"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/dynamic_vertex_buffer.cpp" line="97" column="1" bodyfile="src/dynamic_vertex_buffer.cpp" bodystart="98" bodyend="107"/>
+    <listofallmembers>
+      <member refid="structver_1_1lookups_1_1AiMeshElementLookup_a794f8a6e4f91a4f304d4489fa6c230c5_1a794f8a6e4f91a4f304d4489fa6c230c5" prot="public" virt="non-virtual"><scope>ver::lookups::AiMeshElementLookup</scope><name>exec</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

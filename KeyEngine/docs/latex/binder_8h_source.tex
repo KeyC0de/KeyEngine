@@ -1,0 +1,182 @@
+\doxysection{binder.\+h}
+\hypertarget{binder_8h_source}{}\label{binder_8h_source}\index{inc/binder.h@{inc/binder.h}}
+\mbox{\hyperlink{binder_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <typeinfo>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <type\_traits>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{linker_8h}{linker.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{bindable_8h}{bindable.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{render__surface_8h}{render\_surface.h}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{render__target_8h}{render\_target.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{depth__stencil__view_8h}{depth\_stencil\_view.h}}"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIBindable}{IBindable}};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceren}{ren}}}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }IPass;}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classren_1_1IBinder}{IBinder}}}
+\DoxyCodeLine{00032\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ std::string\ \mbox{\hyperlink{classren_1_1IBinder_a35c782b42674b69887f03fc038ccf6a8_a35c782b42674b69887f03fc038ccf6a8}{m\_name}};}
+\DoxyCodeLine{00034\ \ \ \ \ std::string\ \mbox{\hyperlink{classren_1_1IBinder_a94cccb29d98a504bfa532559a059cf69_a94cccb29d98a504bfa532559a059cf69}{m\_passName}};}
+\DoxyCodeLine{00035\ \ \ \ \ std::string\ \mbox{\hyperlink{classren_1_1IBinder_a08396c56db98c2a56856889425faf612_a08396c56db98c2a56856889425faf612}{m\_linkerName}};}
+\DoxyCodeLine{00036\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{classren_1_1IBinder_ac1030ca1e3d499a26546667741065bf6_ac1030ca1e3d499a26546667741065bf6}{IBinder}}(\ \textcolor{keyword}{const}\ std::string\ \&name\ );}
+\DoxyCodeLine{00038\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classren_1_1IBinder_ae2550445c774f45b664719684187c341_ae2550445c774f45b664719684187c341}{\string~IBinder}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1IBinder_addedf6dfc3d0ed6066b26fc04705d349_addedf6dfc3d0ed6066b26fc04705d349}{setPassAndLinkerNames}}(\ \textcolor{keyword}{const}\ std::string\ \&passName,\ \textcolor{keyword}{const}\ std::string\ \&linkerName\ );}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1IBinder_ab0e3027bb1ad6a632befb4d502fe0d70_ab0e3027bb1ad6a632befb4d502fe0d70}{link}}(\ \mbox{\hyperlink{classren_1_1ILinker}{ILinker}}\ \&linker\ )\ =\ 0;}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1IBinder_abe560e5bd14aa61bf28d99dba88eceec_abe560e5bd14aa61bf28d99dba88eceec}{validateLinkage}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ \mbox{\hyperlink{classren_1_1IBinder_ae172f9fbccaa1892ec815db67f65eb91_ae172f9fbccaa1892ec815db67f65eb91}{getName}}()\ const\ noexcept;}
+\DoxyCodeLine{00046\ \ \ \ \ const\ std::\textcolor{keywordtype}{string}\&\ \mbox{\hyperlink{classren_1_1IBinder_a64585dc2d047254637335f70083a67b6_a64585dc2d047254637335f70083a67b6}{getPassName}}()\ const\ noexcept;}
+\DoxyCodeLine{00047\ \ \ \ \ const\ std::\textcolor{keywordtype}{string}\&\ \mbox{\hyperlink{classren_1_1IBinder_ac109d2e346a1ab633d0e41d096227b2f_ac109d2e346a1ab633d0e41d096227b2f}{getLinkerName}}()\ const\ noexcept;}
+\DoxyCodeLine{00048\ \};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ template<class\ T>}
+\DoxyCodeLine{00051\ class\ \mbox{\hyperlink{classren_1_1BindableBinder}{BindableBinder}}\ final}
+\DoxyCodeLine{00052\ \ \ \ \ :\ public\ \mbox{\hyperlink{classren_1_1IBinder}{IBinder}}}
+\DoxyCodeLine{00053\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{static\_assert}(\ std::is\_base\_of\_v<IBindable,\ T>,\ \textcolor{stringliteral}{"{}BindableBinder\ target\ T\ must\ be\ IBindable."{}}\ );}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ std::shared\_ptr<T>\ \&\mbox{\hyperlink{classren_1_1BindableBinder_a1e5ac4b0d2ac215ad8f89f9eff01568f_a1e5ac4b0d2ac215ad8f89f9eff01568f}{m\_target}};\ \ \ \textcolor{comment}{//\ target\ Linker\ resource\ Bindable}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_bLinked\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00058\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{classren_1_1BindableBinder_a16c7a43568a41ede04204aaf527f2e77_a16c7a43568a41ede04204aaf527f2e77}{BindableBinder}}(\ \textcolor{keyword}{const}\ std::string\ \&name,}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ std::shared\_ptr<T>\ \&target\ )}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classren_1_1IBinder}{IBinder}}\{name\},}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ m\_target\{target\}}
+\DoxyCodeLine{00064\ \ \ \ \ \{}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{static}\ std::unique\_ptr<IBinder>\ \mbox{\hyperlink{classren_1_1BindableBinder_a3af09cbd00f6502d3039b7652d51058c_a3af09cbd00f6502d3039b7652d51058c}{make}}(\ \textcolor{keyword}{const}\ std::string\ \&name,}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ std::shared\_ptr<T>\ \&target\ )}
+\DoxyCodeLine{00070\ \ \ \ \ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::make\_unique<BindableBinder>(\ name,\ target\ );}
+\DoxyCodeLine{00072\ \ \ \ \ \}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1BindableBinder_ad67acc8ef7f72cefc8849eed44e044a3_ad67acc8ef7f72cefc8849eed44e044a3}{validateLinkage}}()\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00075\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !m\_bLinked\ )}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{renderer__exception_8h_aa44af0d97aee41f6d2d530c50166b864_aa44af0d97aee41f6d2d530c50166b864}{THROW\_RENDERER\_EXCEPTION}}(\ \textcolor{stringliteral}{"{}binder\ "{}}\ +\ \mbox{\hyperlink{classren_1_1IBinder_ae172f9fbccaa1892ec815db67f65eb91_ae172f9fbccaa1892ec815db67f65eb91}{getName}}()\ +\ \textcolor{stringliteral}{"{}\ unliked!\ Target\ hasn't\ been\ set!"{}}\ );}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00080\ \ \ \ \ \}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1BindableBinder_a9956cd019281cc69d6fd7c3e7c2a7e5a_a9956cd019281cc69d6fd7c3e7c2a7e5a}{link}}(\ \mbox{\hyperlink{classren_1_1ILinker}{ILinker}}\ \&linker\ )\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00083\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ bindable\ =\ std::dynamic\_pointer\_cast<T>(\ linker.\mbox{\hyperlink{classren_1_1ILinker_a931d059b56fdbc42f198bff4c9056e87_a931d059b56fdbc42f198bff4c9056e87}{getBindable}}()\ );}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !bindable\ )}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ std::ostringstream\ oss;}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ oss\ <<\ \textcolor{stringliteral}{"{}Linking\ binder\ ["{}}\ <<\ \mbox{\hyperlink{classren_1_1IBinder_ae172f9fbccaa1892ec815db67f65eb91_ae172f9fbccaa1892ec815db67f65eb91}{getName}}()\ <<\ \textcolor{stringliteral}{"{}]\ with\ linker\ ["{}}\ <<\ \mbox{\hyperlink{classren_1_1IBinder_a64585dc2d047254637335f70083a67b6_a64585dc2d047254637335f70083a67b6}{getPassName}}()\ <<\ \textcolor{stringliteral}{"{}."{}}\ <<\ \mbox{\hyperlink{classren_1_1IBinder_ac109d2e346a1ab633d0e41d096227b2f_ac109d2e346a1ab633d0e41d096227b2f}{getLinkerName}}()\ <<\ \textcolor{stringliteral}{"{}]\ "{}}\ <<\ \textcolor{stringliteral}{"{}\ \{\ "{}}\ <<\ \textcolor{keyword}{typeid}(\ T\ ).name()\ <<\ \textcolor{stringliteral}{"{}\ \}\ does\ not\ match\ \{\ "{}}\ <<\ \textcolor{keyword}{typeid}(\ *linker.\mbox{\hyperlink{classren_1_1ILinker_a931d059b56fdbc42f198bff4c9056e87_a931d059b56fdbc42f198bff4c9056e87}{getBindable}}().get()\ ).name()\ <<\ \textcolor{stringliteral}{"{}\ \}"{}};}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{renderer__exception_8h_aa44af0d97aee41f6d2d530c50166b864_aa44af0d97aee41f6d2d530c50166b864}{THROW\_RENDERER\_EXCEPTION}}(\ oss.str()\ );}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ m\_target\ =\ std::move(\ bindable\ );}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ m\_bLinked\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00093\ \ \ \ \ \}}
+\DoxyCodeLine{00094\ \};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00102\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00103\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classren_1_1ContainerBindableBinder}{ContainerBindableBinder}}\ final}
+\DoxyCodeLine{00104\ \ \ \ \ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classren_1_1IBinder}{IBinder}}}
+\DoxyCodeLine{00105\ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keyword}{static\_assert}(\ std::is\_array\_v<T>\ ||\ std::is\_base\_of\_v<IBindable,\ T>,\ \textcolor{stringliteral}{"{}ContainerBindableBinder\ target\ T\ must\ be\ IBindable."{}}\ );}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ std::vector<std::shared\_ptr<IBindable>>\ \&\mbox{\hyperlink{classren_1_1ContainerBindableBinder_afbb18c5c209ec2a964977237efa5b10d_afbb18c5c209ec2a964977237efa5b10d}{m\_bindablesContainer}};\ \ \textcolor{comment}{//\ points\ to\ a\ Pass'\ bindables\ container}}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classren_1_1ContainerBindableBinder_a0f650b39d97369fdd5f1e36f9591372f_a0f650b39d97369fdd5f1e36f9591372f}{m\_index}};}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_bLinked\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00111\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00112\ \ \ \ \ \mbox{\hyperlink{classren_1_1ContainerBindableBinder_a2ef5d51a451744e4d6eb7ecc5f29c292_a2ef5d51a451744e4d6eb7ecc5f29c292}{ContainerBindableBinder}}(\ \textcolor{keyword}{const}\ std::string\ \&name,}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<IBindable>>\ \&bindablesContainer,}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ index\ )}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classren_1_1IBinder}{IBinder}}\{name\},}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ m\_bindablesContainer\{bindablesContainer\},}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ m\_index(index)}
+\DoxyCodeLine{00119\ \ \ \ \ \{}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1ContainerBindableBinder_aa2f8f6b21247ed4a8c7b9262bbd59e23_aa2f8f6b21247ed4a8c7b9262bbd59e23}{validateLinkage}}()\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00124\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !m\_bLinked\ )}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{renderer__exception_8h_aa44af0d97aee41f6d2d530c50166b864_aa44af0d97aee41f6d2d530c50166b864}{THROW\_RENDERER\_EXCEPTION}}(\ \textcolor{stringliteral}{"{}BindableBinder\ "{}}\ +\ getName()\ +\ \textcolor{stringliteral}{"{}\ unliked!\ Target\ hasn't\ been\ set!"{}}\ );}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00129\ \ \ \ \ \}}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1ContainerBindableBinder_a676ce1c15a0dcf4f602b179c55ff0bae_a676ce1c15a0dcf4f602b179c55ff0bae}{link}}(\ \mbox{\hyperlink{classren_1_1ILinker}{ILinker}}\ \&linker\ )\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00132\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ bindable\ =\ std::dynamic\_pointer\_cast<T>(\ linker.\mbox{\hyperlink{classren_1_1ILinker_a931d059b56fdbc42f198bff4c9056e87_a931d059b56fdbc42f198bff4c9056e87}{getBindable}}()\ );}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !bindable\ )}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ std::ostringstream\ oss;}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ oss\ <<\ \textcolor{stringliteral}{"{}Linking\ binder\ ["{}}\ <<\ getName()\ <<\ \textcolor{stringliteral}{"{}]\ with\ linker\ ["{}}\ <<\ getPassName()\ <<\ \textcolor{stringliteral}{"{}."{}}\ <<\ getLinkerName()\ <<\ \textcolor{stringliteral}{"{}]\ "{}}\ <<\ \textcolor{stringliteral}{"{}\ \{\ "{}}\ <<\ \textcolor{keyword}{typeid}(\ T\ ).name()\ <<\ \textcolor{stringliteral}{"{}\ \}\ does\ not\ match\ \{\ "{}}\ <<\ \textcolor{keyword}{typeid}(\ *linker.\mbox{\hyperlink{classren_1_1ILinker_a931d059b56fdbc42f198bff4c9056e87_a931d059b56fdbc42f198bff4c9056e87}{getBindable}}().get()\ ).name()\ <<\ \textcolor{stringliteral}{"{}\ \}"{}};}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{renderer__exception_8h_aa44af0d97aee41f6d2d530c50166b864_aa44af0d97aee41f6d2d530c50166b864}{THROW\_RENDERER\_EXCEPTION}}(\ oss.str()\ );}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ m\_bindablesContainer[m\_index]\ =\ std::move(\ bindable\ );}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ m\_bLinked\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00142\ \ \ \ \ \}}
+\DoxyCodeLine{00143\ \};}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00146\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classren_1_1RenderSurfaceBinder}{RenderSurfaceBinder}}\ final}
+\DoxyCodeLine{00147\ \ \ \ \ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classren_1_1IBinder}{IBinder}}}
+\DoxyCodeLine{00148\ \{}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keyword}{static\_assert}(\ std::is\_base\_of\_v<IRenderSurface,\ T>,\ \textcolor{stringliteral}{"{}RenderSurfaceBinder\ target\ T\ is\ not\ IRenderSurface!"{}}\ );}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \ \ \ \ std::shared\_ptr<T>\ \&\mbox{\hyperlink{classren_1_1RenderSurfaceBinder_af84fdb3f890ea1ee9ae129992fa064fa_af84fdb3f890ea1ee9ae129992fa064fa}{m\_target}};}
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_bLinked\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00153\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00154\ \ \ \ \ \mbox{\hyperlink{classren_1_1RenderSurfaceBinder_added7fa094fb029884abdaf88d2c2e15_added7fa094fb029884abdaf88d2c2e15}{RenderSurfaceBinder}}(\ \textcolor{keyword}{const}\ std::string\ \&name,}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ std::shared\_ptr<T>\ \&target\ )}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classren_1_1IBinder}{IBinder}}\{name\},}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ m\_target\{target\}}
+\DoxyCodeLine{00159\ \ \ \ \ \{}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ \ \ \ \ \}}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keyword}{static}\ std::unique\_ptr<IBinder>\ \mbox{\hyperlink{classren_1_1RenderSurfaceBinder_afc6e745ef1fe7983a0a706f7f79792bd_afc6e745ef1fe7983a0a706f7f79792bd}{make}}(\ \textcolor{keyword}{const}\ std::string\ \&name,}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ std::shared\_ptr<T>\ \&target\ )}
+\DoxyCodeLine{00165\ \ \ \ \ \{}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::make\_unique<RenderSurfaceBinder>(\ name,\ target\ );}
+\DoxyCodeLine{00167\ \ \ \ \ \}}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1RenderSurfaceBinder_ae93d14c9a9c04c69a1464066a2a470ae_ae93d14c9a9c04c69a1464066a2a470ae}{validateLinkage}}()\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00170\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !m\_bLinked\ )}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{renderer__exception_8h_aa44af0d97aee41f6d2d530c50166b864_aa44af0d97aee41f6d2d530c50166b864}{THROW\_RENDERER\_EXCEPTION}}(\ \textcolor{stringliteral}{"{}BindableBinder\ "{}}\ +\ getName()\ +\ \textcolor{stringliteral}{"{}\ unliked!\ Target\ hasn't\ been\ set!"{}}\ );}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00175\ \ \ \ \ \}}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1RenderSurfaceBinder_ade9ca47a6a9efb126dd1232a253356e9_ade9ca47a6a9efb126dd1232a253356e9}{link}}(\ \mbox{\hyperlink{classren_1_1ILinker}{ILinker}}\ \&linker\ )\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00178\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ buff\ =\ std::dynamic\_pointer\_cast<T>(\ linker.\mbox{\hyperlink{classren_1_1ILinker_a9a44001279f58f2071f8a21becaa50c1_a9a44001279f58f2071f8a21becaa50c1}{getRenderSurface}}()\ );}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !buff\ )}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ std::ostringstream\ oss;}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ oss\ <<\ \textcolor{stringliteral}{"{}Linking\ binder\ ["{}}\ <<\ getName()\ <<\ \textcolor{stringliteral}{"{}]\ with\ linker\ ["{}}\ <<\ getPassName()\ <<\ \textcolor{stringliteral}{"{}."{}}\ <<\ getLinkerName()\ <<\ \textcolor{stringliteral}{"{}]\ "{}}\ <<\ \textcolor{stringliteral}{"{}\ \{\ "{}}\ <<\ \textcolor{keyword}{typeid}(\ T\ ).name()\ <<\ \textcolor{stringliteral}{"{}\ \}\ not\ compatible\ with\ \{\ "{}}\ <<\ \textcolor{keyword}{typeid}(\ *linker.\mbox{\hyperlink{classren_1_1ILinker_a9a44001279f58f2071f8a21becaa50c1_a9a44001279f58f2071f8a21becaa50c1}{getRenderSurface}}().get()\ ).name()\ <<\ \textcolor{stringliteral}{"{}\ \}"{}};}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{renderer__exception_8h_aa44af0d97aee41f6d2d530c50166b864_aa44af0d97aee41f6d2d530c50166b864}{THROW\_RENDERER\_EXCEPTION}}(\ oss.str()\ );}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ m\_target\ =\ std::move(\ buff\ );}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ m\_bLinked\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00188\ \ \ \ \ \}}
+\DoxyCodeLine{00189\ \};}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \}\textcolor{comment}{//ren}}
+
+\end{DoxyCode}

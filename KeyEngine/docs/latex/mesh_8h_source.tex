@@ -1,0 +1,136 @@
+\doxysection{mesh.\+h}
+\hypertarget{mesh_8h_source}{}\label{mesh_8h_source}\index{inc/mesh.h@{inc/mesh.h}}
+\mbox{\hyperlink{mesh_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <DirectXMath.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <optional>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{material_8h}{material.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{rendering__channel_8h}{rendering\_channel.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{transform__vscb_8h}{transform\_vscb.h}}"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVertexBuffer}{VertexBuffer}};}
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIndexBuffer}{IndexBuffer}};}
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classPrimitiveTopology}{PrimitiveTopology}};}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGraphics}{Graphics}};}
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMaterialLoader}{MaterialLoader}};}
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIBindable}{IBindable}};}
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classNode}{Node}};}
+\DoxyCodeLine{00018\ \textcolor{keyword}{struct\ }aiMesh;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceren}{ren}}}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }Renderer;}
+\DoxyCodeLine{00023\ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacever}{ver}}}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }VBuffer;}
+\DoxyCodeLine{00028\ \}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMesh}{Mesh}}}
+\DoxyCodeLine{00031\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classMesh_a1072334674042ddad806e28bdeaad983_a1072334674042ddad806e28bdeaad983}{m\_distanceFromActiveCamera}}\ =\ 0.0f;}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{mutable}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classMesh_a5a75c6d3a47632d15ff774245e878111_a5a75c6d3a47632d15ff774245e878111}{m\_bRenderedThisFrame}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00034\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classMesh_a2be1d0d997a5ea723e79320cd5a360d2_a2be1d0d997a5ea723e79320cd5a360d2}{m\_meshId}}\ =\ 0u;}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{classNode}{Node}}\ *\mbox{\hyperlink{classMesh_af08edebaaa5ca60d67aa42c9f4f4d75f_af08edebaaa5ca60d67aa42c9f4f4d75f}{m\_pNode}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00037\ \ \ \ \ std::pair<DirectX::XMFLOAT3,\ DirectX::XMFLOAT3>\ \mbox{\hyperlink{classMesh_a77337ee8b7114ef5311bcf27e0046e22_a77337ee8b7114ef5311bcf27e0046e22}{m\_aabb}}\{\{0,\ 0,\ 0\},\{0,\ 0,\ 0\}\};\ \ \textcolor{comment}{//\ \#TODO:\ Collision\ mesh\ needs\ to\ be\ recalculated\ if\ the\ object\ is\ rotated,\ scaled\ or\ animated}}
+\DoxyCodeLine{00038\ \ \ \ \ std::shared\_ptr<VertexBuffer>\ \mbox{\hyperlink{classMesh_a05ef62d082e7a5c1fb49bded4e8c69ea_a05ef62d082e7a5c1fb49bded4e8c69ea}{m\_pVertexBuffer}};}
+\DoxyCodeLine{00039\ \ \ \ \ std::shared\_ptr<IndexBuffer>\ \mbox{\hyperlink{classMesh_aa5fc2902e90f9ccb60a85d79c2ee85f7_aa5fc2902e90f9ccb60a85d79c2ee85f7}{m\_pIndexBuffer}};}
+\DoxyCodeLine{00040\ \ \ \ \ std::shared\_ptr<PrimitiveTopology>\ \mbox{\hyperlink{classMesh_ae621e49b973b900a5247f661ee4d7f01_ae621e49b973b900a5247f661ee4d7f01}{m\_pPrimitiveTopology}};}
+\DoxyCodeLine{00041\ \ \ \ \ std::unique\_ptr<TransformVSCB>\ \mbox{\hyperlink{classMesh_a20c8448dfbc8df1b7fa70a07b1d55470_a20c8448dfbc8df1b7fa70a07b1d55470}{m\_pTransformVscb}};}
+\DoxyCodeLine{00042\ \ \ \ \ std::vector<Material>\ \mbox{\hyperlink{classMesh_a50eabba438bb2476103fa94c20521800_a50eabba438bb2476103fa94c20521800}{m\_materials}};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structMesh_1_1ColorPSCB}{ColorPSCB}}}
+\DoxyCodeLine{00045\ \ \ \ \ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ DirectX::XMFLOAT4\ \mbox{\hyperlink{structMesh_1_1ColorPSCB_a4c204c7a4d996b78ada77fd3ef55434c_a4c204c7a4d996b78ada77fd3ef55434c}{materialColor}}\ =\ \{1.0f,\ 1.0f,\ 1.0f,\ 1.0f\};}
+\DoxyCodeLine{00047\ \ \ \ \ \}\ \mbox{\hyperlink{classMesh_a39d8f1407340f362a62b55d583bcf940_a39d8f1407340f362a62b55d583bcf940}{m\_colorPscb}};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structMesh_1_1ColorPSCB2}{ColorPSCB2}}}
+\DoxyCodeLine{00050\ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ DirectX::XMFLOAT4\ \mbox{\hyperlink{structMesh_1_1ColorPSCB2_a000275e2763214dc89ac75713d5c999a_a000275e2763214dc89ac75713d5c999a}{materialColor}}\ =\ \{0.8f,\ 0.2f,\ 0.15f,\ 1.0f\};}
+\DoxyCodeLine{00052\ \ \ \ \ \}\ \mbox{\hyperlink{classMesh_aa46b1429ae3e0ab7ff10c1fea306d3cd_aa46b1429ae3e0ab7ff10c1fea306d3cd}{m\_colorPscbOutline}};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structMesh_1_1ColorPSCB3}{ColorPSCB3}}}
+\DoxyCodeLine{00055\ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ DirectX::XMFLOAT4\ \mbox{\hyperlink{structMesh_1_1ColorPSCB3_ab5095acf2b5dbecc7bd888c244878f03_ab5095acf2b5dbecc7bd888c244878f03}{materialColor}}\ =\ \{0.1f,\ 0.8f,\ 0.05f,\ 1.0f\};}
+\DoxyCodeLine{00057\ \ \ \ \ \}\ \mbox{\hyperlink{classMesh_a832c0d6e6367ecf9926c690678498c99_a832c0d6e6367ecf9926c690678498c99}{m\_colorPscbWireframe}};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structMesh_1_1ColorPSCB4}{ColorPSCB4}}}
+\DoxyCodeLine{00060\ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ DirectX::XMFLOAT4\ \mbox{\hyperlink{structMesh_1_1ColorPSCB4_aa5b39d3550754b2fc5af8b7e948f7c26_aa5b39d3550754b2fc5af8b7e948f7c26}{materialColor}}\ =\ \{0.3f,\ 0.2f,\ 0.15f,\ 1.0f\};}
+\DoxyCodeLine{00062\ \ \ \ \ \}\ \mbox{\hyperlink{classMesh_a38b2f938403ca728ab9b7f64ccc74724_a38b2f938403ca728ab9b7f64ccc74724}{m\_colorPscbDepthReversed}};}
+\DoxyCodeLine{00063\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#pragma\ warning(\ disable\ :\ 26495\ )}}
+\DoxyCodeLine{00066\ \ \ \ \ \mbox{\hyperlink{classMesh_ae6b6c56f0ebfa2f6b2b10d25a835c865_ae6b6c56f0ebfa2f6b2b10d25a835c865}{Mesh}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#pragma\ warning(\ default\ :\ 26495\ )}}
+\DoxyCodeLine{00069\ \ \ \ \ \mbox{\hyperlink{classMesh_ae6b6c56f0ebfa2f6b2b10d25a835c865_ae6b6c56f0ebfa2f6b2b10d25a835c865}{Mesh}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMaterialLoader}{MaterialLoader}}\ \&mat,\ \textcolor{keyword}{const}\ aiMesh\ \&aimesh,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ initialScale\ =\ 1.0f\ );}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classMesh_a508b14c30f81bdc95a94ec112ff1d8e2_a508b14c30f81bdc95a94ec112ff1d8e2}{\string~Mesh}}()\ noexcept;}
+\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{classMesh}{Mesh}}(\ const\ \mbox{\hyperlink{classMesh}{Mesh}}\ \&rhs\ )\ =\ delete;}
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{classMesh}{Mesh}}\&\ operator=(\ const\ \mbox{\hyperlink{classMesh}{Mesh}}\ \&rhs\ )\ =\ delete;}
+\DoxyCodeLine{00073\ \ \ \ \ \mbox{\hyperlink{classMesh}{Mesh}}(\ \mbox{\hyperlink{classMesh}{Mesh}}\ \&\&rhs\ )\ noexcept;}
+\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{classMesh}{Mesh}}\&\ operator=(\ \mbox{\hyperlink{classMesh}{Mesh}}\ \&\&rhs\ )\ noexcept\ =\ delete;}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMesh_a501f7dc11f57390edcd9acaf5a1b07cd_a501f7dc11f57390edcd9acaf5a1b07cd}{setNode}}(\ \mbox{\hyperlink{classNode}{Node}}\ \&node\ );}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMesh_a31cc65adefd11990f5246435cedaaf1e_a31cc65adefd11990f5246435cedaaf1e}{update}}(\ const\ \textcolor{keywordtype}{float}\ dt,\ const\ \textcolor{keywordtype}{float}\ lerpBetweenFrames\ )\ cond\_noex;}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMesh_a582af69212023f64426c5f2fbd816e4c_a582af69212023f64426c5f2fbd816e4c}{render}}(\ const\ \textcolor{keywordtype}{size\_t}\ channels\ =\ \mbox{\hyperlink{namespacerch}{rch}}::all\ )\ const\ noexcept;}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMesh_a45a4b9d8490d23482ebef2e5138b7351_a45a4b9d8490d23482ebef2e5138b7351}{bind}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx\ )\ const\ cond\_noex;}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ template<typename\ T,\ typename\ =\ std::enable\_if\_t<std::is\_base\_of\_v<\mbox{\hyperlink{classIBindable}{IBindable}},\ T>>>}
+\DoxyCodeLine{00082\ \ \ \ \ std::optional<T*>\ \mbox{\hyperlink{classMesh_a1599e16a5e4753ac3c28dbc493cbd0ec_a1599e16a5e4753ac3c28dbc493cbd0ec}{findBindable}}()\ noexcept}
+\DoxyCodeLine{00083\ \ \ \ \ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{auto}\ \&material\ :\ \mbox{\hyperlink{classMesh_a50eabba438bb2476103fa94c20521800_a50eabba438bb2476103fa94c20521800}{m\_materials}}\ )}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{auto}\ \&bindable\ :\ material.getBindables()\ )}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \textcolor{keyword}{auto}\ *pB\ =\ \textcolor{keyword}{dynamic\_cast<}T*\textcolor{keyword}{>}(\ bindable.get()\ )\ )}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ pB;}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::nullopt;}
+\DoxyCodeLine{00095\ \ \ \ \ \}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ =\ std::enable\_if\_t<std::is\_base\_of\_v<IBindable,\ T>>>}
+\DoxyCodeLine{00098\ \ \ \ \ std::optional<const\ T*>\ \mbox{\hyperlink{classMesh_ada9efb2af727b0ff2573bdac9bdd156d_ada9efb2af727b0ff2573bdac9bdd156d}{findBindable}}()\ const\ noexcept}
+\DoxyCodeLine{00099\ \ \ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&material\ :\ \mbox{\hyperlink{classMesh_a50eabba438bb2476103fa94c20521800_a50eabba438bb2476103fa94c20521800}{m\_materials}}\ )}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&bindable\ :\ material.getBindables()\ )}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ *pB\ =\ \textcolor{keyword}{dynamic\_cast<}T*\textcolor{keyword}{>}(\ bindable.get()\ )\ )}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ pB;}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::nullopt;}
+\DoxyCodeLine{00111\ \ \ \ \ \}}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMesh_a76bbd879b2115f72799c5d1676a8960b_a76bbd879b2115f72799c5d1676a8960b}{addMaterial}}(\ \mbox{\hyperlink{classMaterial}{Material}}\ material\ )\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMesh_a258f981ef88fe2dc1b4095e089dd99f2_a258f981ef88fe2dc1b4095e089dd99f2}{setMaterialEnabled}}(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ channels,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ bEnabled\ )\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMesh_a513b4f9e4065d0b004474722f1ddd148_a513b4f9e4065d0b004474722f1ddd148}{accept}}(\ \mbox{\hyperlink{classIImGuiConstantBufferVisitor}{IImGuiConstantBufferVisitor}}\ \&ev\ );}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classMesh_ab13c2e773a18856f04a52c1d748c4be2_ab13c2e773a18856f04a52c1d748c4be2}{getIndicesCount}}()\ const\ cond\_noex;}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMesh_a0f3175b74632a675caad84b8f5defb8b_a0f3175b74632a675caad84b8f5defb8b}{connectMaterialsToRenderer}}(\ \mbox{\hyperlink{namespaceren}{ren}}::Renderer\ \&r\ );}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classMesh_abde180d729a79a487bd6568d42771697_abde180d729a79a487bd6568d42771697}{getDistanceFromActiveCamera}}()\ const\ noexcept;}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classMesh_a1d18ad52515cfd7e2cca966cfb76dddd_a1d18ad52515cfd7e2cca966cfb76dddd}{isRenderedThisFrame}}()\ const\ noexcept;}
+\DoxyCodeLine{00120\ \ \ \ \ std::shared\_ptr<\mbox{\hyperlink{classVertexBuffer}{VertexBuffer}}>\&\ \mbox{\hyperlink{classMesh_a8cb16fb21424f90eadf022d531d17d30_a8cb16fb21424f90eadf022d531d17d30}{getVertexBuffer}}();}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMesh_a2e47e473545615fcbffff761d8912ea1_a2e47e473545615fcbffff761d8912ea1}{createAabb}}(\ const\ \mbox{\hyperlink{namespacever}{ver}}::VBuffer\ \&verts\ );}
+\DoxyCodeLine{00122\ \ \ \ \ const\ \mbox{\hyperlink{classNode}{Node}}*\ \mbox{\hyperlink{classMesh_a425a3ab4960ac4a925aba7c6df2da63b_a425a3ab4960ac4a925aba7c6df2da63b}{getNode}}()\ const\ noexcept;}
+\DoxyCodeLine{00123\ \ \ \ \ std::\textcolor{keywordtype}{string}\ \mbox{\hyperlink{classMesh_a2e68eeb89cb2cb8b1caa45911f569ed4_a2e68eeb89cb2cb8b1caa45911f569ed4}{getName}}()\ const\ noexcept;}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classMesh_a3d2f9912e0fa051f1a756a57bb225adb_a3d2f9912e0fa051f1a756a57bb225adb}{getMeshId}}()\ const\ noexcept;}
+\DoxyCodeLine{00125\ protected:}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classMesh_abde180d729a79a487bd6568d42771697_abde180d729a79a487bd6568d42771697}{getDistanceFromActiveCamera}}(\ const\ \mbox{\hyperlink{namespaceDirectX}{DirectX}}::XMFLOAT3\ \&pos\ )\ const\ noexcept;}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMesh_add44446356aaf7c808a25562090cc556_add44446356aaf7c808a25562090cc556}{setMeshId}}()\ noexcept;}
+\DoxyCodeLine{00128\ private:}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMesh_a8aeff98bfd0c764a8917047c98f9962f_a8aeff98bfd0c764a8917047c98f9962f}{setDistanceFromActiveCamera}}()\ noexcept;}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMesh_a2e47e473545615fcbffff761d8912ea1_a2e47e473545615fcbffff761d8912ea1}{createAabb}}(\ const\ aiMesh\ \&aiMesh\ );}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classMesh_aab3b7f01c082616f9656d44d7f75fdec_aab3b7f01c082616f9656d44d7f75fdec}{isFrustumCulled}}()\ const\ noexcept;}
+\DoxyCodeLine{00133\ \};}
+
+\end{DoxyCode}

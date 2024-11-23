@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="structren_1_1ShadowPass_1_1GlobalsPSCB" kind="struct" language="C++" prot="private">
+    <compoundname>ren::ShadowPass::GlobalsPSCB</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structren_1_1ShadowPass_1_1GlobalsPSCB_adb7855033f5756368a7f043889998af8_1adb7855033f5756368a7f043889998af8" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float ren::ShadowPass::GlobalsPSCB::cb_time</definition>
+        <argsstring></argsstring>
+        <name>cb_time</name>
+        <qualifiedname>ren::ShadowPass::GlobalsPSCB::cb_time</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/shadow_pass.h" line="50" column="7" bodyfile="inc/shadow_pass.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structren_1_1ShadowPass_1_1GlobalsPSCB_ac4eb5064194e0726eb4273998c3da59f_1ac4eb5064194e0726eb4273998c3da59f" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ren::ShadowPass::GlobalsPSCB::cb_nLights</definition>
+        <argsstring></argsstring>
+        <name>cb_nLights</name>
+        <qualifiedname>ren::ShadowPass::GlobalsPSCB::cb_nLights</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/shadow_pass.h" line="51" column="5" bodyfile="inc/shadow_pass.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structren_1_1ShadowPass_1_1GlobalsPSCB_afe8db2dd5dd176d7496ee6232d4a771b_1afe8db2dd5dd176d7496ee6232d4a771b" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ren::ShadowPass::GlobalsPSCB::cb_nPointLights</definition>
+        <argsstring></argsstring>
+        <name>cb_nPointLights</name>
+        <qualifiedname>ren::ShadowPass::GlobalsPSCB::cb_nPointLights</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/shadow_pass.h" line="52" column="5" bodyfile="inc/shadow_pass.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structren_1_1ShadowPass_1_1GlobalsPSCB_a2d10e7dbc77b799328a7dfa4876bd33b_1a2d10e7dbc77b799328a7dfa4876bd33b" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float ren::ShadowPass::GlobalsPSCB::cb_globalsPadding</definition>
+        <argsstring></argsstring>
+        <name>cb_globalsPadding</name>
+        <qualifiedname>ren::ShadowPass::GlobalsPSCB::cb_globalsPadding</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/shadow_pass.h" line="53" column="7" bodyfile="inc/shadow_pass.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/shadow_pass.h" line="48" column="1" bodyfile="inc/shadow_pass.h" bodystart="49" bodyend="54"/>
+    <listofallmembers>
+      <member refid="structren_1_1ShadowPass_1_1GlobalsPSCB_a2d10e7dbc77b799328a7dfa4876bd33b_1a2d10e7dbc77b799328a7dfa4876bd33b" prot="public" virt="non-virtual"><scope>ren::ShadowPass::GlobalsPSCB</scope><name>cb_globalsPadding</name></member>
+      <member refid="structren_1_1ShadowPass_1_1GlobalsPSCB_ac4eb5064194e0726eb4273998c3da59f_1ac4eb5064194e0726eb4273998c3da59f" prot="public" virt="non-virtual"><scope>ren::ShadowPass::GlobalsPSCB</scope><name>cb_nLights</name></member>
+      <member refid="structren_1_1ShadowPass_1_1GlobalsPSCB_afe8db2dd5dd176d7496ee6232d4a771b_1afe8db2dd5dd176d7496ee6232d4a771b" prot="public" virt="non-virtual"><scope>ren::ShadowPass::GlobalsPSCB</scope><name>cb_nPointLights</name></member>
+      <member refid="structren_1_1ShadowPass_1_1GlobalsPSCB_adb7855033f5756368a7f043889998af8_1adb7855033f5756368a7f043889998af8" prot="public" virt="non-virtual"><scope>ren::ShadowPass::GlobalsPSCB</scope><name>cb_time</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

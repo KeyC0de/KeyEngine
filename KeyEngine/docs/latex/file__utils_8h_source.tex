@@ -1,0 +1,37 @@
+\doxysection{file\+\_\+utils.\+h}
+\hypertarget{file__utils_8h_source}{}\label{file__utils_8h_source}\index{inc/file\_utils.h@{inc/file\_utils.h}}
+\mbox{\hyperlink{file__utils_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <filesystem>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceutil}{util}}}
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespaceutil_a2f35e9a833ee6296ceb09a39c5e17e37_a2f35e9a833ee6296ceb09a39c5e17e37}{displayFileInfo}}(\ \textcolor{keyword}{const}\ std::filesystem::path\ \&targetPath\ );}
+\DoxyCodeLine{00011\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceutil_aadda6b25733b82d6cb7805055f1dbfd6_aadda6b25733b82d6cb7805055f1dbfd6}{displayDirTree}}(\ \textcolor{keyword}{const}\ std::filesystem::path\ \&targetPath,\ \textcolor{keywordtype}{int}\ level\ );}
+\DoxyCodeLine{00012\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespaceutil_a6aae50169362536df4f83073c785d903_a6aae50169362536df4f83073c785d903}{getFileSize}}(\ \textcolor{keyword}{const}\ std::filesystem::path\ \&pathToCheck\ );}
+\DoxyCodeLine{00013\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespaceutil_a45960dd1ee1d95202239a543b6e2b411_a45960dd1ee1d95202239a543b6e2b411}{displayTextFile}}(\ \textcolor{keyword}{const}\ std::filesystem::path\ \&targetPath\ );}
+\DoxyCodeLine{00014\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespaceutil_a9d0e06121107c707f017d559ecf5fb93_a9d0e06121107c707f017d559ecf5fb93}{displayBinaryFile}}(\ \textcolor{keyword}{const}\ std::filesystem::path\ \&targetPath\ );}
+\DoxyCodeLine{00015\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceutil_acf61f9dce593faa0b436d3a71a636f1e_acf61f9dce593faa0b436d3a71a636f1e}{writeFile}}(\ \textcolor{keyword}{const}\ std::filesystem::path\ \&path,\ \textcolor{keyword}{const}\ std::string\ \&data\ );}
+\DoxyCodeLine{00016\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceutil_a7ede06505f05eae600a2aafd36b9a7a0_a7ede06505f05eae600a2aafd36b9a7a0}{deleteFile}}(\ \textcolor{keyword}{const}\ std::string\ \&filename\ );}
+\DoxyCodeLine{00017\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceutil_a409210e412a728f055b1a4d0242c09ea_a409210e412a728f055b1a4d0242c09ea}{searchFile}}(\ \textcolor{keyword}{const}\ std::filesystem::path\ \&directory,\ \textcolor{keyword}{const}\ std::filesystem::path\ \&filename\ );}
+\DoxyCodeLine{00018\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespaceutil_ad838668768b75674823d8ecd246eba62_ad838668768b75674823d8ecd246eba62}{createDirectory}}(\ \textcolor{keyword}{const}\ std::string\ \&str\ );}
+\DoxyCodeLine{00019\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceutil_a2d2910be5640d89c43c3f053f85a05c6_a2d2910be5640d89c43c3f053f85a05c6}{setFilePermissions}}(\ \textcolor{keyword}{const}\ std::string\ \&path,\ std::filesystem::perms\ permsToSet,\ std::filesystem::perm\_options\ permsAction\ );}
+\DoxyCodeLine{00020\ std::string\ \mbox{\hyperlink{namespaceutil_a09750278284c9976b57d7ac45f3d625d_a09750278284c9976b57d7ac45f3d625d}{getFilename}}(\ \textcolor{keyword}{const}\ std::string\ \&path\ );}
+\DoxyCodeLine{00021\ std::string\ \mbox{\hyperlink{namespaceutil_a07e1161f3092d4c7a113c7cb8d9ad58d_a07e1161f3092d4c7a113c7cb8d9ad58d}{getFileExtension}}(\ \textcolor{keyword}{const}\ std::string\ \&filename\ );}
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespaceutil_ac18caaab1a0105409de01e8a21792922_ac18caaab1a0105409de01e8a21792922}{isFileBinary}}(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *fname\ );}
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespaceutil_a46531fa60115067ae7c1afdb2e7222e6_a46531fa60115067ae7c1afdb2e7222e6}{countLinesOfFile}}(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *fileName\ );}
+\DoxyCodeLine{00027\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespaceutil_aba57a5c93aea6fb1eb297fbdde976fac_aba57a5c93aea6fb1eb297fbdde976fac}{countColumnsOfFile}}(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *fileName\ );}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#if\ defined\ \_DEBUG\ \&\&\ !defined\ NDEBUG}}
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{bool}\ printFile(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *fname\ );}
+\DoxyCodeLine{00031\ \textcolor{keywordtype}{void}\ countLetterOccurences(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filename\ );}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \}\textcolor{comment}{//\ util}}
+
+\end{DoxyCode}

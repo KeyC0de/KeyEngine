@@ -1,0 +1,169 @@
+\doxysection{ren\+::Render\+Queue\+Pass Class Reference}
+\hypertarget{classren_1_1RenderQueuePass}{}\label{classren_1_1RenderQueuePass}\index{ren::RenderQueuePass@{ren::RenderQueuePass}}
+
+
+{\ttfamily \#include $<$render\+\_\+queue\+\_\+pass.\+h$>$}
+
+Inheritance diagram for ren\+::Render\+Queue\+Pass\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=12.000000cm]{classren_1_1RenderQueuePass}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classren_1_1RenderQueuePass_a3087e6d681a46755bfe9397cabd5e0c3_a3087e6d681a46755bfe9397cabd5e0c3}{Render\+Queue\+Pass}} (const std\+::string \&name, const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIBindable}{IBindable}} $>$ $>$ \&bindables=\{\}, const bool b\+Transparent\+Mesh\+Pass=false)
+\item 
+void \mbox{\hyperlink{classren_1_1RenderQueuePass_a9e30ba0fcf0e1f184445ba918438687b_a9e30ba0fcf0e1f184445ba918438687b}{add\+Job}} (\mbox{\hyperlink{classren_1_1Job}{Job}} job, const float mesh\+Distance\+From\+Active\+Camera) noexcept
+\item 
+void \mbox{\hyperlink{classren_1_1RenderQueuePass_a8c01bb14c9e11b7e9c328ddf6cc39af2_a8c01bb14c9e11b7e9c328ddf6cc39af2}{run}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) const cond\+\_\+noex override
+\begin{DoxyCompactList}\small\item\em call \doxylink{classren_1_1RenderQueuePass_a8c01bb14c9e11b7e9c328ddf6cc39af2_a8c01bb14c9e11b7e9c328ddf6cc39af2}{Render\+Queue\+Pass\+::run} from derived\+Pass\+Class\+::run as a final task \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classren_1_1RenderQueuePass_a23b96814aa56f5c6a2b6806ad848e4fe_a23b96814aa56f5c6a2b6806ad848e4fe}{reset}} () cond\+\_\+noex override
+\item 
+size\+\_\+t \mbox{\hyperlink{classren_1_1RenderQueuePass_a0343fd2e2aaad7b646381a9713c7202c_a0343fd2e2aaad7b646381a9713c7202c}{get\+Num\+Meshes}} () const noexcept
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classren_1_1IPass}{ren\+::\+IPass}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classren_1_1IPass_a72360515966748b13f592095c12f58fa_a72360515966748b13f592095c12f58fa}{IPass}} (const std\+::string \&name, bool b\+Active=true) noexcept
+\item 
+virtual \mbox{\hyperlink{classren_1_1IPass_ac0132ac18bad1d6379a9d27e3d25bc18_ac0132ac18bad1d6379a9d27e3d25bc18}{\texorpdfstring{$\sim$}{\string~}\+IPass}} () noexcept
+\item 
+const std\+::string \& \mbox{\hyperlink{classren_1_1IPass_a3c9f7768f492d9a50371acec9b61f12b_a3c9f7768f492d9a50371acec9b61f12b}{get\+Name}} () const noexcept
+\item 
+const std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classren_1_1IBinder}{IBinder}} $>$ $>$ \& \mbox{\hyperlink{classren_1_1IPass_aebd5aa69455727600d0e979906a0a111_aebd5aa69455727600d0e979906a0a111}{get\+Binders}} () const
+\item 
+const std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classren_1_1ILinker}{ILinker}} $>$ $>$ \& \mbox{\hyperlink{classren_1_1IPass_ae0910189678e800c86f665bca8c88a03_ae0910189678e800c86f665bca8c88a03}{get\+Linkers}} () const
+\item 
+\mbox{\hyperlink{classren_1_1IBinder}{IBinder}} \& \mbox{\hyperlink{classren_1_1IPass_a6cffed1b315846ece319e4ce5f508843_a6cffed1b315846ece319e4ce5f508843}{get\+Binder}} (const std\+::string \&name) const
+\item 
+\mbox{\hyperlink{classren_1_1ILinker}{ILinker}} \& \mbox{\hyperlink{classren_1_1IPass_a171eeb96584abbbbe1f158fbca5628f0_a171eeb96584abbbbe1f158fbca5628f0}{get\+Linker}} (const std\+::string \&name) const
+\item 
+void \mbox{\hyperlink{classren_1_1IPass_a261403c4ce33bc13fe3b5e0487c79664_a261403c4ce33bc13fe3b5e0487c79664}{setup\+Binder\+Target}} (const std\+::string \&binder\+Name, const std\+::string \&target\+Pass\+Name, const std\+::string \&target\+Pass\+Linker\+Name)
+\begin{DoxyCompactList}\small\item\em link a \doxylink{classren_1_1BindableBinder}{Bindable\+Binder} from this Pass to a Linker of another target\+Pass \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classren_1_1IPass_ae8d7a067929cabbe900ec89643cbcdba_ae8d7a067929cabbe900ec89643cbcdba}{set\+Active}} (const bool b\+Active) noexcept
+\item 
+const bool \mbox{\hyperlink{classren_1_1IPass_a7ef6e9979f151480bc34dca08b19bec1_a7ef6e9979f151480bc34dca08b19bec1}{is\+Active}} () const noexcept
+\item 
+virtual void \mbox{\hyperlink{classren_1_1IPass_a589910e72e67f1d1ec37faea4d840074_a589910e72e67f1d1ec37faea4d840074}{recreate\+Rtvs\+And\+Dsvs}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classren_1_1RenderQueuePass_a9a69abd9935067ce6fe41ad4f7416698_a9a69abd9935067ce6fe41ad4f7416698}{sort\+Jobs}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classren_1_1RenderQueuePass_a14113fdd48b1a8a356301dd4dba18ad2_a14113fdd48b1a8a356301dd4dba18ad2}{m\+\_\+b\+Transparent}}
+\item 
+std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{classren_1_1Job}{Job}}, float $>$ $>$ \mbox{\hyperlink{classren_1_1RenderQueuePass_afb355596e38f45d9a054bf679d1e8b5d_afb355596e38f45d9a054bf679d1e8b5d}{m\+\_\+meshes}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classren_1_1IBindablePass}{ren\+::\+IBindable\+Pass}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classren_1_1IBindablePass_a3e5e7d5dbe096d11031a8d23050c12b6_a3e5e7d5dbe096d11031a8d23050c12b6}{IBindable\+Pass}} (const std\+::string \&name, const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIBindable}{IBindable}} $>$ $>$ \&bindables=\{\})
+\item 
+void \mbox{\hyperlink{classren_1_1IBindablePass_af7205f7049013c5d02ec74952f5a0d05_af7205f7049013c5d02ec74952f5a0d05}{add\+Bindable}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIBindable}{IBindable}} $>$ bindable) noexcept
+\begin{DoxyCompactList}\small\item\em add Bindables that will be shared by all meshes in this Pass \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classren_1_1IBindablePass_ab47b1d5abffbf0aaeb44ae3968942503_ab47b1d5abffbf0aaeb44ae3968942503}{bind}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) const cond\+\_\+noex
+\begin{DoxyCompactList}\small\item\em bind RTV or DSV and other bindables shared by all Pass objects \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classren_1_1IBindablePass_ae2b3e270005268576afb65f16a9545a7_ae2b3e270005268576afb65f16a9545a7}{validate}} () override
+\begin{DoxyCompactList}\small\item\em validate binders are linked to their linkers \end{DoxyCompactList}\item 
+{\footnotesize template$<$class T $>$ }\\void \mbox{\hyperlink{classren_1_1IBindablePass_a5d189176a206854e34a9c168a0aad74a_a5d189176a206854e34a9c168a0aad74a}{add\+Bindable\+Binder\+Using\+Container\+Index}} (const std\+::string \&binder\+Name)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classren_1_1IPass}{ren\+::\+IPass}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classren_1_1IPass_ab8c6a6dae673214dccd302aea9ce6e72_ab8c6a6dae673214dccd302aea9ce6e72}{add\+Binder}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classren_1_1IBinder}{IBinder}} $>$ p\+Binder)
+\item 
+void \mbox{\hyperlink{classren_1_1IPass_aa9c50563c1bd98e1c377d819d9e2dc09_aa9c50563c1bd98e1c377d819d9e2dc09}{add\+Linker}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classren_1_1ILinker}{ILinker}} $>$ p\+Linker)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classren_1_1IBindablePass}{ren\+::\+IBindable\+Pass}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIRenderTargetView}{IRender\+Target\+View}} $>$ \mbox{\hyperlink{classren_1_1IBindablePass_a3994a46ac4e6f7d96c7ebe8b2d9630cb_a3994a46ac4e6f7d96c7ebe8b2d9630cb}{m\+\_\+p\+Rtv}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIDepthStencilView}{IDepth\+Stencil\+View}} $>$ \mbox{\hyperlink{classren_1_1IBindablePass_a8c5f88422771fc4b7ceb1dca77219cfe_a8c5f88422771fc4b7ceb1dca77219cfe}{m\+\_\+p\+Dsv}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classren_1_1RenderQueuePass_a3087e6d681a46755bfe9397cabd5e0c3_a3087e6d681a46755bfe9397cabd5e0c3}\index{ren::RenderQueuePass@{ren::RenderQueuePass}!RenderQueuePass@{RenderQueuePass}}
+\index{RenderQueuePass@{RenderQueuePass}!ren::RenderQueuePass@{ren::RenderQueuePass}}
+\doxysubsubsection{\texorpdfstring{RenderQueuePass()}{RenderQueuePass()}}
+{\footnotesize\ttfamily \label{classren_1_1RenderQueuePass_a3087e6d681a46755bfe9397cabd5e0c3_a3087e6d681a46755bfe9397cabd5e0c3} 
+ren\+::\+Render\+Queue\+Pass\+::\+Render\+Queue\+Pass (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name}{, }\item[{const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIBindable}{IBindable}} $>$ $>$ \&}]{bindables}{ = {\ttfamily \{\}}, }\item[{const bool}]{b\+Transparent\+Mesh\+Pass}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classren_1_1RenderQueuePass_a9e30ba0fcf0e1f184445ba918438687b_a9e30ba0fcf0e1f184445ba918438687b}\index{ren::RenderQueuePass@{ren::RenderQueuePass}!addJob@{addJob}}
+\index{addJob@{addJob}!ren::RenderQueuePass@{ren::RenderQueuePass}}
+\doxysubsubsection{\texorpdfstring{addJob()}{addJob()}}
+{\footnotesize\ttfamily \label{classren_1_1RenderQueuePass_a9e30ba0fcf0e1f184445ba918438687b_a9e30ba0fcf0e1f184445ba918438687b} 
+void ren\+::\+Render\+Queue\+Pass\+::add\+Job (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classren_1_1Job}{Job}}}]{job}{, }\item[{const float}]{mesh\+Distance\+From\+Active\+Camera}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classren_1_1RenderQueuePass_a0343fd2e2aaad7b646381a9713c7202c_a0343fd2e2aaad7b646381a9713c7202c}\index{ren::RenderQueuePass@{ren::RenderQueuePass}!getNumMeshes@{getNumMeshes}}
+\index{getNumMeshes@{getNumMeshes}!ren::RenderQueuePass@{ren::RenderQueuePass}}
+\doxysubsubsection{\texorpdfstring{getNumMeshes()}{getNumMeshes()}}
+{\footnotesize\ttfamily \label{classren_1_1RenderQueuePass_a0343fd2e2aaad7b646381a9713c7202c_a0343fd2e2aaad7b646381a9713c7202c} 
+size\+\_\+t ren\+::\+Render\+Queue\+Pass\+::get\+Num\+Meshes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classren_1_1RenderQueuePass_a23b96814aa56f5c6a2b6806ad848e4fe_a23b96814aa56f5c6a2b6806ad848e4fe}\index{ren::RenderQueuePass@{ren::RenderQueuePass}!reset@{reset}}
+\index{reset@{reset}!ren::RenderQueuePass@{ren::RenderQueuePass}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{classren_1_1RenderQueuePass_a23b96814aa56f5c6a2b6806ad848e4fe_a23b96814aa56f5c6a2b6806ad848e4fe} 
+void ren\+::\+Render\+Queue\+Pass\+::reset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classren_1_1IPass_af001419157ed67f6123fb9f311e96064_af001419157ed67f6123fb9f311e96064}{ren\+::\+IPass}}.
+
+\Hypertarget{classren_1_1RenderQueuePass_a8c01bb14c9e11b7e9c328ddf6cc39af2_a8c01bb14c9e11b7e9c328ddf6cc39af2}\index{ren::RenderQueuePass@{ren::RenderQueuePass}!run@{run}}
+\index{run@{run}!ren::RenderQueuePass@{ren::RenderQueuePass}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily \label{classren_1_1RenderQueuePass_a8c01bb14c9e11b7e9c328ddf6cc39af2_a8c01bb14c9e11b7e9c328ddf6cc39af2} 
+void ren\+::\+Render\+Queue\+Pass\+::run (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+call \doxylink{classren_1_1RenderQueuePass_a8c01bb14c9e11b7e9c328ddf6cc39af2_a8c01bb14c9e11b7e9c328ddf6cc39af2}{Render\+Queue\+Pass\+::run} from derived\+Pass\+Class\+::run as a final task 
+
+first binds common/shared Pass bindables, then binds individual \doxylink{classMesh}{Mesh} bindables (\doxylink{classren_1_1Job}{Job}), then binds \doxylink{classMaterial}{Material} bindables (\doxylink{classren_1_1Job}{Job}), then executes draw call 
+
+Implements \mbox{\hyperlink{classren_1_1IPass_a80a6d3d531bee9f93371f342d32c89a1_a80a6d3d531bee9f93371f342d32c89a1}{ren\+::\+IPass}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classren_1_1ShadowPass_a31a85426ffac3f700c0b3c187b0567af_a31a85426ffac3f700c0b3c187b0567af}{ren\+::\+Shadow\+Pass}}, and \mbox{\hyperlink{classren_1_1TransparentPass_a3ecab6b62211decc0c08c92c0dd634c4_a3ecab6b62211decc0c08c92c0dd634c4}{ren\+::\+Transparent\+Pass}}.
+
+\Hypertarget{classren_1_1RenderQueuePass_a9a69abd9935067ce6fe41ad4f7416698_a9a69abd9935067ce6fe41ad4f7416698}\index{ren::RenderQueuePass@{ren::RenderQueuePass}!sortJobs@{sortJobs}}
+\index{sortJobs@{sortJobs}!ren::RenderQueuePass@{ren::RenderQueuePass}}
+\doxysubsubsection{\texorpdfstring{sortJobs()}{sortJobs()}}
+{\footnotesize\ttfamily \label{classren_1_1RenderQueuePass_a9a69abd9935067ce6fe41ad4f7416698_a9a69abd9935067ce6fe41ad4f7416698} 
+void ren\+::\+Render\+Queue\+Pass\+::sort\+Jobs (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classren_1_1RenderQueuePass_a14113fdd48b1a8a356301dd4dba18ad2_a14113fdd48b1a8a356301dd4dba18ad2}\index{ren::RenderQueuePass@{ren::RenderQueuePass}!m\_bTransparent@{m\_bTransparent}}
+\index{m\_bTransparent@{m\_bTransparent}!ren::RenderQueuePass@{ren::RenderQueuePass}}
+\doxysubsubsection{\texorpdfstring{m\_bTransparent}{m\_bTransparent}}
+{\footnotesize\ttfamily \label{classren_1_1RenderQueuePass_a14113fdd48b1a8a356301dd4dba18ad2_a14113fdd48b1a8a356301dd4dba18ad2} 
+bool ren\+::\+Render\+Queue\+Pass\+::m\+\_\+b\+Transparent\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classren_1_1RenderQueuePass_afb355596e38f45d9a054bf679d1e8b5d_afb355596e38f45d9a054bf679d1e8b5d}\index{ren::RenderQueuePass@{ren::RenderQueuePass}!m\_meshes@{m\_meshes}}
+\index{m\_meshes@{m\_meshes}!ren::RenderQueuePass@{ren::RenderQueuePass}}
+\doxysubsubsection{\texorpdfstring{m\_meshes}{m\_meshes}}
+{\footnotesize\ttfamily \label{classren_1_1RenderQueuePass_afb355596e38f45d9a054bf679d1e8b5d_afb355596e38f45d9a054bf679d1e8b5d} 
+std\+::vector$<$std\+::pair$<$\mbox{\hyperlink{classren_1_1Job}{Job}}, float$>$ $>$ ren\+::\+Render\+Queue\+Pass\+::m\+\_\+meshes\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{render__queue__pass_8h}{render\+\_\+queue\+\_\+pass.\+h}}\item 
+src/\mbox{\hyperlink{render__queue__pass_8cpp}{render\+\_\+queue\+\_\+pass.\+cpp}}\end{DoxyCompactItemize}

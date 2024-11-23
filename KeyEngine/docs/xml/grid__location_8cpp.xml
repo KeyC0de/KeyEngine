@@ -1,0 +1,160 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="grid__location_8cpp" kind="file" language="C++">
+    <compoundname>grid_location.cpp</compoundname>
+    <includes refid="grid__location_8h" local="yes">grid_location.h</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>grid_location.h</label>
+        <link refid="grid__location_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/grid_location.cpp</label>
+        <link refid="grid__location_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>type_traits</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="grid__location_8cpp_aae60c793bb02a0b6b23676e74d5407f0_1aae60c793bb02a0b6b23676e74d5407f0" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="structGridLocation" kindref="compound">GridLocation</ref></type>
+        <definition>GridLocation operator+</definition>
+        <argsstring>(GridLocation &amp;lhs, const GridLocation &amp;rhs)</argsstring>
+        <name>operator+</name>
+        <param>
+          <type><ref refid="structGridLocation" kindref="compound">GridLocation</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structGridLocation" kindref="compound">GridLocation</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/grid_location.cpp" line="73" column="14" bodyfile="src/grid_location.cpp" bodystart="73" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="grid__location_8cpp_a2c9bf0dcb1049edce8093751e9e58885_1a2c9bf0dcb1049edce8093751e9e58885" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="structGridLocation" kindref="compound">GridLocation</ref></type>
+        <definition>GridLocation operator-</definition>
+        <argsstring>(GridLocation &amp;lhs, const GridLocation &amp;rhs)</argsstring>
+        <name>operator-</name>
+        <param>
+          <type><ref refid="structGridLocation" kindref="compound">GridLocation</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structGridLocation" kindref="compound">GridLocation</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/grid_location.cpp" line="80" column="14" bodyfile="src/grid_location.cpp" bodystart="80" bodyend="85"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="grid__location_8h" kindref="compound">grid_location.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4" refid="structGridLocation_a19480ec677eb86a3442d1d9e3cc28a0b_1a19480ec677eb86a3442d1d9e3cc28a0b" refkind="member"><highlight class="normal"><ref refid="structGridLocation_a19480ec677eb86a3442d1d9e3cc28a0b_1a19480ec677eb86a3442d1d9e3cc28a0b" kindref="member">GridLocation::GridLocation</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structGridLocation" kindref="compound">GridLocation</ref><sp/>&amp;rhs<sp/>)</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/>x{rhs.x},</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/>y{rhs.y}</highlight></codeline>
+<codeline lineno="8"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="structGridLocation_a7e29edf4532d90b9a7d7598fcd37b0ec_1a7e29edf4532d90b9a7d7598fcd37b0ec" refkind="member"><highlight class="normal"><ref refid="structGridLocation" kindref="compound">GridLocation</ref>&amp;<sp/><ref refid="structGridLocation_a7e29edf4532d90b9a7d7598fcd37b0ec_1a7e29edf4532d90b9a7d7598fcd37b0ec" kindref="member">GridLocation::operator=</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structGridLocation" kindref="compound">GridLocation</ref><sp/>&amp;rhs<sp/>)</highlight></codeline>
+<codeline lineno="13"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structGridLocation" kindref="compound">GridLocation</ref><sp/>temp{rhs};</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>std::swap(<sp/>this-&gt;<ref refid="structGridLocation_aeb63882b21b183e7335258a58c8a40e8_1aeb63882b21b183e7335258a58c8a40e8" kindref="member">x</ref>,<sp/>temp.x<sp/>);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>std::swap(<sp/>this-&gt;<ref refid="structGridLocation_aa73f11982d6425de33e1cd4a5a4c7ac6_1aa73f11982d6425de33e1cd4a5a4c7ac6" kindref="member">y</ref>,<sp/>temp.y<sp/>);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="structGridLocation_a00b4d0fbdf62552498096f576c786747_1a00b4d0fbdf62552498096f576c786747" refkind="member"><highlight class="normal"><ref refid="structGridLocation" kindref="compound">GridLocation</ref>&amp;<sp/><ref refid="structGridLocation_a00b4d0fbdf62552498096f576c786747_1a00b4d0fbdf62552498096f576c786747" kindref="member">GridLocation::operator++</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>++<ref refid="structGridLocation_aeb63882b21b183e7335258a58c8a40e8_1aeb63882b21b183e7335258a58c8a40e8" kindref="member">x</ref>;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>++<ref refid="structGridLocation_aa73f11982d6425de33e1cd4a5a4c7ac6_1aa73f11982d6425de33e1cd4a5a4c7ac6" kindref="member">y</ref>;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="structGridLocation_aa9472345e1e73386c1412aecb8376d3a_1aa9472345e1e73386c1412aecb8376d3a" refkind="member"><highlight class="normal"><ref refid="structGridLocation" kindref="compound">GridLocation</ref><sp/><ref refid="structGridLocation_a00b4d0fbdf62552498096f576c786747_1a00b4d0fbdf62552498096f576c786747" kindref="member">GridLocation::operator++</ref>(<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structGridLocation" kindref="compound">GridLocation</ref><sp/>old{*</highlight><highlight class="keyword">this</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>operator++();</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>old;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="structGridLocation_afefddd6ac8f7a44b2b0788a945dc007f_1afefddd6ac8f7a44b2b0788a945dc007f" refkind="member"><highlight class="normal"><ref refid="structGridLocation" kindref="compound">GridLocation</ref>&amp;<sp/><ref refid="structGridLocation_afefddd6ac8f7a44b2b0788a945dc007f_1afefddd6ac8f7a44b2b0788a945dc007f" kindref="member">GridLocation::operator+=</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structGridLocation" kindref="compound">GridLocation</ref><sp/>&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>x<sp/>=<sp/>x<sp/>+<sp/>rhs.x;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>y<sp/>=<sp/>y<sp/>+<sp/>rhs.y;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="structGridLocation_ade93bb39118632a7428f06135c3dc7f9_1ade93bb39118632a7428f06135c3dc7f9" refkind="member"><highlight class="normal"><ref refid="structGridLocation" kindref="compound">GridLocation</ref>&amp;<sp/><ref refid="structGridLocation_ade93bb39118632a7428f06135c3dc7f9_1ade93bb39118632a7428f06135c3dc7f9" kindref="member">GridLocation::operator--</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>--<ref refid="structGridLocation_aeb63882b21b183e7335258a58c8a40e8_1aeb63882b21b183e7335258a58c8a40e8" kindref="member">x</ref>;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>--<ref refid="structGridLocation_aa73f11982d6425de33e1cd4a5a4c7ac6_1aa73f11982d6425de33e1cd4a5a4c7ac6" kindref="member">y</ref>;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="structGridLocation_a3bbf3ec6ab9e2ae292006c3be7831ba2_1a3bbf3ec6ab9e2ae292006c3be7831ba2" refkind="member"><highlight class="normal"><ref refid="structGridLocation" kindref="compound">GridLocation</ref><sp/><ref refid="structGridLocation_ade93bb39118632a7428f06135c3dc7f9_1ade93bb39118632a7428f06135c3dc7f9" kindref="member">GridLocation::operator--</ref>(<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structGridLocation" kindref="compound">GridLocation</ref><sp/>old{*</highlight><highlight class="keyword">this</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>operator--();</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>old;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="structGridLocation_a1c25ceaa4cdca5ecd4b07ba1554da748_1a1c25ceaa4cdca5ecd4b07ba1554da748" refkind="member"><highlight class="normal"><ref refid="structGridLocation" kindref="compound">GridLocation</ref>&amp;<sp/><ref refid="structGridLocation_a1c25ceaa4cdca5ecd4b07ba1554da748_1a1c25ceaa4cdca5ecd4b07ba1554da748" kindref="member">GridLocation::operator-=</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structGridLocation" kindref="compound">GridLocation</ref><sp/>&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>x<sp/>=<sp/>x<sp/>-<sp/>rhs.x;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>y<sp/>=<sp/>y<sp/>-<sp/>rhs.y;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="structGridLocation_a2fc5835004d9e9c2f53d098d233591a0_1a2fc5835004d9e9c2f53d098d233591a0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structGridLocation_a2fc5835004d9e9c2f53d098d233591a0_1a2fc5835004d9e9c2f53d098d233591a0" kindref="member">GridLocation::operator==</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structGridLocation" kindref="compound">GridLocation</ref><sp/>&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>x<sp/>==<sp/>rhs.x<sp/>&amp;&amp;<sp/>y<sp/>==<sp/>rhs.y;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="structGridLocation_ac2251c47b580d5787ce2cda4557e5b27_1ac2251c47b580d5787ce2cda4557e5b27" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structGridLocation_ac2251c47b580d5787ce2cda4557e5b27_1ac2251c47b580d5787ce2cda4557e5b27" kindref="member">GridLocation::operator!=</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structGridLocation" kindref="compound">GridLocation</ref><sp/>&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!(<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>==<sp/>rhs<sp/>);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="structGridLocation_aae60c793bb02a0b6b23676e74d5407f0_1aae60c793bb02a0b6b23676e74d5407f0" refkind="member"><highlight class="normal"><ref refid="structGridLocation" kindref="compound">GridLocation</ref><sp/><ref refid="grid__location_8cpp_aae60c793bb02a0b6b23676e74d5407f0_1aae60c793bb02a0b6b23676e74d5407f0" kindref="member">operator+</ref>(<sp/><ref refid="structGridLocation" kindref="compound">GridLocation</ref><sp/>&amp;lhs,</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structGridLocation" kindref="compound">GridLocation</ref><sp/>&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>lhs<sp/>+=<sp/>rhs;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>lhs;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="structGridLocation_a2c9bf0dcb1049edce8093751e9e58885_1a2c9bf0dcb1049edce8093751e9e58885" refkind="member"><highlight class="normal"><ref refid="structGridLocation" kindref="compound">GridLocation</ref><sp/><ref refid="grid__location_8cpp_a2c9bf0dcb1049edce8093751e9e58885_1a2c9bf0dcb1049edce8093751e9e58885" kindref="member">operator-</ref>(<sp/><ref refid="structGridLocation" kindref="compound">GridLocation</ref><sp/>&amp;lhs,</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structGridLocation" kindref="compound">GridLocation</ref><sp/>&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>lhs<sp/>-=<sp/>rhs;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>lhs;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/grid_location.cpp"/>
+  </compounddef>
+</doxygen>

@@ -45,12 +45,12 @@ public:
 	RenderTargetOutput* accessRenderTarget( const size_t index );
 };
 
-//=============================================================
-//	\class	TextureArrayOffscreenDS
-//	\author	KeyC0de
-//	\date	2024/09/03 22:46
-//	\brief	A TextureCube (HLSL), SRV for HLSL access & Depth Stencil View all wrapped up; can be used either for input OR for output
-//=============================================================
+///=============================================================
+/// \class	TextureArrayOffscreenDS
+/// \author	KeyC0de
+/// \date	2024/09/03 22:46
+/// \brief	A TextureCube (HLSL), SRV for HLSL access & Depth Stencil View all wrapped up; can be used either for input OR for output
+///=============================================================
 class CubeTextureOffscreenDS
 	: public IBindable
 {
@@ -67,12 +67,12 @@ public:
 	unsigned getSlot() const noexcept;
 };
 
-//=============================================================
-//	\class	CubeTextureArrayOffscreenDS
-//	\author	KeyC0de
-//	\date	2024/09/03 22:45
-//	\brief	A TextureCubeArray (HLSL), SRV for HLSL access and Depth Stencil View all wrapped up; can be used either for input OR for output
-//=============================================================
+///=============================================================
+/// \class	CubeTextureArrayOffscreenDS
+/// \author	KeyC0de
+/// \date	2024/09/03 22:45
+/// \brief	A TextureCubeArray (HLSL), SRV for HLSL access and Depth Stencil View all wrapped up; can be used either for input OR for output
+///=============================================================
 class CubeTextureArrayOffscreenDS
 	: public IBindable
 {
@@ -88,7 +88,6 @@ public:
 	std::shared_ptr<DepthStencilOutput> shareDepthBuffer( const size_t index, const size_t faceIndex ) const;
 	DepthStencilOutput* accessDepthBuffer( const size_t index, const size_t faceIndex );
 	unsigned getSlot() const noexcept;
-	//	\function	getTextureCount	||	\date	2024/09/06 17:01
-	//	\brief	returns amount of Cube Textures, which is in fact 6 times the total texture count
+	/// \brief	returns amount of Cube Textures, which is in fact 6 times the total texture count
 	unsigned getTextureCount() const noexcept;
 };

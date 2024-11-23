@@ -1,0 +1,194 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classPrimitiveTopology" kind="class" language="C++" prot="public">
+    <compoundname>PrimitiveTopology</compoundname>
+    <basecompoundref refid="classIBindable" prot="public" virt="non-virtual">IBindable</basecompoundref>
+    <includes refid="primitive__topology_8h" local="no">primitive_topology.h</includes>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classPrimitiveTopology_a4d517e5504a2f4fe63250b41ac815e7d_1a4d517e5504a2f4fe63250b41ac815e7d" prot="protected" static="no" mutable="no">
+        <type>D3D11_PRIMITIVE_TOPOLOGY</type>
+        <definition>D3D11_PRIMITIVE_TOPOLOGY PrimitiveTopology::m_d3dTopology</definition>
+        <argsstring></argsstring>
+        <name>m_d3dTopology</name>
+        <qualifiedname>PrimitiveTopology::m_d3dTopology</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/primitive_topology.h" line="13" column="26" bodyfile="inc/primitive_topology.h" bodystart="13" bodyend="-1"/>
+        <referencedby refid="classPrimitiveTopology_a922482223dbc3d0db3073eba1a9b6682_1a922482223dbc3d0db3073eba1a9b6682" compoundref="primitive__topology_8cpp" startline="36" endline="39">getUid</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classPrimitiveTopology_a9aa76f1ac1031c4dd917839921c908d9_1a9aa76f1ac1031c4dd917839921c908d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PrimitiveTopology::PrimitiveTopology</definition>
+        <argsstring>(Graphics &amp;gfx, const D3D11_PRIMITIVE_TOPOLOGY topology)</argsstring>
+        <name>PrimitiveTopology</name>
+        <qualifiedname>PrimitiveTopology::PrimitiveTopology</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const D3D11_PRIMITIVE_TOPOLOGY</type>
+          <declname>topology</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/primitive_topology.h" line="15" column="1" bodyfile="src/primitive_topology.cpp" bodystart="10" bodyend="16"/>
+        <referencedby refid="classPrimitiveTopology_a2dd402de2117afd83e03f02c618c0cd7_1a2dd402de2117afd83e03f02c618c0cd7" compoundref="primitive__topology_8cpp" startline="30" endline="34">calcUid</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classPrimitiveTopology_a9851a5da7d713bdc742f736437fc0ec6_1a9851a5da7d713bdc742f736437fc0ec6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void PrimitiveTopology::bind</definition>
+        <argsstring>(Graphics &amp;gfx) cond_noex override</argsstring>
+        <name>bind</name>
+        <qualifiedname>PrimitiveTopology::bind</qualifiedname>
+        <reimplements refid="classIBindable_add4560f78e76629ee81ba701ba1052e1_1add4560f78e76629ee81ba701ba1052e1">bind</reimplements>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+<para>bind graphics resource to a certain stage of the graphics pipeline </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/primitive_topology.h" line="17" column="6" bodyfile="src/primitive_topology.cpp" bodystart="18" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classPrimitiveTopology_a922482223dbc3d0db3073eba1a9b6682_1a922482223dbc3d0db3073eba1a9b6682" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string PrimitiveTopology::getUid</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>getUid</name>
+        <qualifiedname>PrimitiveTopology::getUid</qualifiedname>
+        <reimplements refid="classIBindable_a7d88cdbd5d500d6d7f1bfabe16927855_1a7d88cdbd5d500d6d7f1bfabe16927855">getUid</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/primitive_topology.h" line="20" column="13" bodyfile="src/primitive_topology.cpp" bodystart="36" bodyend="39"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classPrimitiveTopology_a1f65640090cc0f20dd4115f25ff24e09_1a1f65640090cc0f20dd4115f25ff24e09" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classPrimitiveTopology" kindref="compound">PrimitiveTopology</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; PrimitiveTopology &gt; PrimitiveTopology::fetch</definition>
+        <argsstring>(Graphics &amp;gfx, const D3D11_PRIMITIVE_TOPOLOGY topology)</argsstring>
+        <name>fetch</name>
+        <qualifiedname>PrimitiveTopology::fetch</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const D3D11_PRIMITIVE_TOPOLOGY</type>
+          <declname>topology</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/primitive_topology.h" line="18" column="24" bodyfile="src/primitive_topology.cpp" bodystart="24" bodyend="28"/>
+        <referencedby refid="classCameraFrustum_a73a48e8fbde4b02b50e32746b50e03b8_1a73a48e8fbde4b02b50e32746b50e03b8" compoundref="camera__frustum_8cpp" startline="17" endline="82">CameraFrustum::CameraFrustum</referencedby>
+        <referencedby refid="classCameraWidget_a0c41231fcab87a5a4aeb57d87aecb55e_1a0c41231fcab87a5a4aeb57d87aecb55e" compoundref="camera__widget_8cpp" startline="17" endline="63">CameraWidget::CameraWidget</referencedby>
+        <referencedby refid="classCube_af0fe61f07cbc70de782950bac056988b_1af0fe61f07cbc70de782950bac056988b" compoundref="cube_8cpp" startline="23" endline="194">Cube::Cube</referencedby>
+        <referencedby refid="classLine_ab4004be2273185c41037d4dd14e02990_1ab4004be2273185c41037d4dd14e02990" compoundref="line_8cpp" startline="22" endline="105">Line::Line</referencedby>
+        <referencedby refid="classMesh_a5a611a59702d1b70366c71bcbfbe90a9_1a5a611a59702d1b70366c71bcbfbe90a9" compoundref="mesh_8cpp" startline="23" endline="40">Mesh::Mesh</referencedby>
+        <referencedby refid="classren_1_1Pass2D_adc44db26e4e8dce5aa8450b875541109_1adc44db26e4e8dce5aa8450b875541109" compoundref="pass__2d_8cpp" startline="28" endline="84">ren::Pass2D::Pass2D</referencedby>
+        <referencedby refid="classPlane_a70e7a5971d34e1130740e843a6a18896_1a70e7a5971d34e1130740e843a6a18896" compoundref="plane_8cpp" startline="23" endline="193">Plane::Plane</referencedby>
+        <referencedby refid="classren_1_1SkyPass_a1b9881827b6ffe6063f3c40e3689da6d_1a1b9881827b6ffe6063f3c40e3689da6d" compoundref="sky__pass_8cpp" startline="31" endline="71">ren::SkyPass::SkyPass</referencedby>
+        <referencedby refid="classSphere_a80bdf896453fbb509c1e6170e0022c29_1a80bdf896453fbb509c1e6170e0022c29" compoundref="sphere_8cpp" startline="18" endline="72">Sphere::Sphere</referencedby>
+        <referencedby refid="classTerrain_af5a4ec6ff724b557052dd12be7f0de0c_1af5a4ec6ff724b557052dd12be7f0de0c" compoundref="terrain_8cpp" startline="24" endline="158">Terrain::Terrain</referencedby>
+        <referencedby refid="testing_8h_a6602bea1ca81d830dfee5423f7f48029_1a6602bea1ca81d830dfee5423f7f48029" compoundref="testing_8cpp" startline="346" endline="398">testDynamicVertex</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classPrimitiveTopology_a2dd402de2117afd83e03f02c618c0cd7_1a2dd402de2117afd83e03f02c618c0cd7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string PrimitiveTopology::calcUid</definition>
+        <argsstring>(const D3D11_PRIMITIVE_TOPOLOGY topology)</argsstring>
+        <name>calcUid</name>
+        <qualifiedname>PrimitiveTopology::calcUid</qualifiedname>
+        <param>
+          <type>const D3D11_PRIMITIVE_TOPOLOGY</type>
+          <declname>topology</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/primitive_topology.h" line="19" column="20" bodyfile="src/primitive_topology.cpp" bodystart="30" bodyend="34"/>
+        <referencedby refid="classPrimitiveTopology_a922482223dbc3d0db3073eba1a9b6682_1a922482223dbc3d0db3073eba1a9b6682" compoundref="primitive__topology_8cpp" startline="36" endline="39">getUid</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>GraphicsFriend</label>
+        <link refid="classGraphicsFriend"/>
+      </node>
+      <node id="2">
+        <label>IBindable</label>
+        <link refid="classIBindable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>PrimitiveTopology</label>
+        <link refid="classPrimitiveTopology"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>GraphicsFriend</label>
+        <link refid="classGraphicsFriend"/>
+      </node>
+      <node id="2">
+        <label>IBindable</label>
+        <link refid="classIBindable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>PrimitiveTopology</label>
+        <link refid="classPrimitiveTopology"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/primitive_topology.h" line="9" column="1" bodyfile="inc/primitive_topology.h" bodystart="11" bodyend="21"/>
+    <listofallmembers>
+      <member refid="classIBindable_a608c5066b829febbd49cd82d1d1fa353_1a608c5066b829febbd49cd82d1d1fa353" prot="public" virt="virtual"><scope>PrimitiveTopology</scope><name>accept</name></member>
+      <member refid="classPrimitiveTopology_a9851a5da7d713bdc742f736437fc0ec6_1a9851a5da7d713bdc742f736437fc0ec6" prot="public" virt="virtual"><scope>PrimitiveTopology</scope><name>bind</name></member>
+      <member refid="classPrimitiveTopology_a2dd402de2117afd83e03f02c618c0cd7_1a2dd402de2117afd83e03f02c618c0cd7" prot="public" virt="non-virtual"><scope>PrimitiveTopology</scope><name>calcUid</name></member>
+      <member refid="classPrimitiveTopology_a1f65640090cc0f20dd4115f25ff24e09_1a1f65640090cc0f20dd4115f25ff24e09" prot="public" virt="non-virtual"><scope>PrimitiveTopology</scope><name>fetch</name></member>
+      <member refid="classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_1a175df79f82ab5a6dad1df24b5a242ef7" prot="protected" virt="non-virtual"><scope>PrimitiveTopology</scope><name>getDevice</name></member>
+      <member refid="classGraphicsFriend_a619e32893ab49ea6c5200e7c2d52e2f2_1a619e32893ab49ea6c5200e7c2d52e2f2" prot="protected" virt="non-virtual"><scope>PrimitiveTopology</scope><name>getDeviceContext</name></member>
+      <member refid="classPrimitiveTopology_a922482223dbc3d0db3073eba1a9b6682_1a922482223dbc3d0db3073eba1a9b6682" prot="public" virt="virtual"><scope>PrimitiveTopology</scope><name>getUid</name></member>
+      <member refid="classPrimitiveTopology_a4d517e5504a2f4fe63250b41ac815e7d_1a4d517e5504a2f4fe63250b41ac815e7d" prot="protected" virt="non-virtual"><scope>PrimitiveTopology</scope><name>m_d3dTopology</name></member>
+      <member refid="classPrimitiveTopology_a9aa76f1ac1031c4dd917839921c908d9_1a9aa76f1ac1031c4dd917839921c908d9" prot="public" virt="non-virtual"><scope>PrimitiveTopology</scope><name>PrimitiveTopology</name></member>
+      <member refid="classIBindable_a4d590eebe80fa4e0aa865a875ff86c02_1a4d590eebe80fa4e0aa865a875ff86c02" prot="public" virt="virtual"><scope>PrimitiveTopology</scope><name>setDebugObjectName</name></member>
+      <member refid="classIBindable_a12fe8725cb3f4836f22d1592b07e2c91_1a12fe8725cb3f4836f22d1592b07e2c91" prot="public" virt="virtual"><scope>PrimitiveTopology</scope><name>setMesh</name></member>
+      <member refid="classIBindable_a7f68262ff85e25e9f826eae7c01bbfa1_1a7f68262ff85e25e9f826eae7c01bbfa1" prot="public" virt="virtual"><scope>PrimitiveTopology</scope><name>~IBindable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

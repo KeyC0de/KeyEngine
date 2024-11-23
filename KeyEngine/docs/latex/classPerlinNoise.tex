@@ -1,0 +1,78 @@
+\doxysection{Perlin\+Noise Class Reference}
+\hypertarget{classPerlinNoise}{}\label{classPerlinNoise}\index{PerlinNoise@{PerlinNoise}}
+
+
+{\ttfamily \#include $<$perlin\+\_\+noise.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPerlinNoise_af5eca66a372d3ff89584383685b729ce_af5eca66a372d3ff89584383685b729ce}{Perlin\+Noise}} (unsigned int seed=0)
+\begin{DoxyCompactList}\small\item\em generate a new permutation vector based on the value of seed \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classPerlinNoise_afdfbe32029dca3ef7f16e80e5cc29c48_afdfbe32029dca3ef7f16e80e5cc29c48}{noise}} (double x, double y, double z)
+\begin{DoxyCompactList}\small\item\em get a noise value, for 2D images z can have any value \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{classPerlinNoise_aa181e97bc2c0e0c1456c13194f9f4995_aa181e97bc2c0e0c1456c13194f9f4995}{fade}} (const double t)
+\item 
+double \mbox{\hyperlink{classPerlinNoise_a2113b401b3cdc24d567626461cbb5b7e_a2113b401b3cdc24d567626461cbb5b7e}{grad}} (const int hash, const double x, const double y, const double z)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{classPerlinNoise_a9071eaf9f8a14597c9fa17e12e6b2f6f_a9071eaf9f8a14597c9fa17e12e6b2f6f}{m\+\_\+permutation\+Vec}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classPerlinNoise_af5eca66a372d3ff89584383685b729ce_af5eca66a372d3ff89584383685b729ce}\index{PerlinNoise@{PerlinNoise}!PerlinNoise@{PerlinNoise}}
+\index{PerlinNoise@{PerlinNoise}!PerlinNoise@{PerlinNoise}}
+\doxysubsubsection{\texorpdfstring{PerlinNoise()}{PerlinNoise()}}
+{\footnotesize\ttfamily \label{classPerlinNoise_af5eca66a372d3ff89584383685b729ce_af5eca66a372d3ff89584383685b729ce} 
+Perlin\+Noise\+::\+Perlin\+Noise (\begin{DoxyParamCaption}\item[{unsigned int}]{seed}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+generate a new permutation vector based on the value of seed 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classPerlinNoise_aa181e97bc2c0e0c1456c13194f9f4995_aa181e97bc2c0e0c1456c13194f9f4995}\index{PerlinNoise@{PerlinNoise}!fade@{fade}}
+\index{fade@{fade}!PerlinNoise@{PerlinNoise}}
+\doxysubsubsection{\texorpdfstring{fade()}{fade()}}
+{\footnotesize\ttfamily \label{classPerlinNoise_aa181e97bc2c0e0c1456c13194f9f4995_aa181e97bc2c0e0c1456c13194f9f4995} 
+double Perlin\+Noise\+::fade (\begin{DoxyParamCaption}\item[{const double}]{t}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classPerlinNoise_a2113b401b3cdc24d567626461cbb5b7e_a2113b401b3cdc24d567626461cbb5b7e}\index{PerlinNoise@{PerlinNoise}!grad@{grad}}
+\index{grad@{grad}!PerlinNoise@{PerlinNoise}}
+\doxysubsubsection{\texorpdfstring{grad()}{grad()}}
+{\footnotesize\ttfamily \label{classPerlinNoise_a2113b401b3cdc24d567626461cbb5b7e_a2113b401b3cdc24d567626461cbb5b7e} 
+double Perlin\+Noise\+::grad (\begin{DoxyParamCaption}\item[{const int}]{hash}{, }\item[{const double}]{x}{, }\item[{const double}]{y}{, }\item[{const double}]{z}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classPerlinNoise_afdfbe32029dca3ef7f16e80e5cc29c48_afdfbe32029dca3ef7f16e80e5cc29c48}\index{PerlinNoise@{PerlinNoise}!noise@{noise}}
+\index{noise@{noise}!PerlinNoise@{PerlinNoise}}
+\doxysubsubsection{\texorpdfstring{noise()}{noise()}}
+{\footnotesize\ttfamily \label{classPerlinNoise_afdfbe32029dca3ef7f16e80e5cc29c48_afdfbe32029dca3ef7f16e80e5cc29c48} 
+double Perlin\+Noise\+::noise (\begin{DoxyParamCaption}\item[{double}]{x}{, }\item[{double}]{y}{, }\item[{double}]{z}{}\end{DoxyParamCaption})}
+
+
+
+get a noise value, for 2D images z can have any value 
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classPerlinNoise_a9071eaf9f8a14597c9fa17e12e6b2f6f_a9071eaf9f8a14597c9fa17e12e6b2f6f}\index{PerlinNoise@{PerlinNoise}!m\_permutationVec@{m\_permutationVec}}
+\index{m\_permutationVec@{m\_permutationVec}!PerlinNoise@{PerlinNoise}}
+\doxysubsubsection{\texorpdfstring{m\_permutationVec}{m\_permutationVec}}
+{\footnotesize\ttfamily \label{classPerlinNoise_a9071eaf9f8a14597c9fa17e12e6b2f6f_a9071eaf9f8a14597c9fa17e12e6b2f6f} 
+std\+::vector$<$int$>$ Perlin\+Noise\+::m\+\_\+permutation\+Vec\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{perlin__noise_8h}{perlin\+\_\+noise.\+h}}\item 
+src/\mbox{\hyperlink{perlin__noise_8cpp}{perlin\+\_\+noise.\+cpp}}\end{DoxyCompactItemize}

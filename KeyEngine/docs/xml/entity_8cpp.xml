@@ -1,0 +1,310 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="entity_8cpp" kind="file" language="C++">
+    <compoundname>entity.cpp</compoundname>
+    <includes local="no">iostream</includes>
+    <includes refid="entity_8h" local="yes">entity.h</includes>
+    <includes refid="message_8h" local="yes">message.h</includes>
+    <includes refid="operation_8h" local="yes">operation.h</includes>
+    <includes refid="message__queue__bus__dispatcher_8h" local="yes">message_queue_bus_dispatcher.h</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>entity.h</label>
+        <link refid="entity_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>entity_defines.h</label>
+        <link refid="entity__defines_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>message_queue_bus_dispatcher.h</label>
+        <link refid="message__queue__bus__dispatcher_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="11">
+        <label>operation.h</label>
+        <link refid="operation_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/entity.cpp</label>
+        <link refid="entity_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>condition_variable</label>
+      </node>
+      <node id="7">
+        <label>cstdint</label>
+      </node>
+      <node id="12">
+        <label>functional</label>
+      </node>
+      <node id="2">
+        <label>iostream</label>
+      </node>
+      <node id="9">
+        <label>memory</label>
+      </node>
+      <node id="14">
+        <label>mutex</label>
+      </node>
+      <node id="5">
+        <label>string</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="entity_8h" kindref="compound">entity.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//#include<sp/>&quot;entity_manager.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="message_8h" kindref="compound">message.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="operation_8h" kindref="compound">operation.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="message__queue__bus__dispatcher_8h" kindref="compound">message_queue_bus_dispatcher.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="classEntity_a03f8a6de4d0d1553a7ed08ffc151ef4d_1a03f8a6de4d0d1553a7ed08ffc151ef4d" refkind="member"><highlight class="normal"><ref refid="classEntity_a03f8a6de4d0d1553a7ed08ffc151ef4d_1a03f8a6de4d0d1553a7ed08ffc151ef4d" kindref="member">Entity::Entity</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>EntityIndex<sp/>version,</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>EntityIndex<sp/>index,</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;name,</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classEntity_aa5bd083313406553db2760407e59973f_1aa5bd083313406553db2760407e59973f" kindref="member">Category</ref><sp/>categoryId,</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEntity" kindref="compound">Entity</ref><sp/>*pParent<sp/>)</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>m_version(version),</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>m_index(index),</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>m_name(name),</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>m_category(categoryId),</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pParent(pParent)</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="classEntity_a3787180835364a80712e64af85019b2d_1a3787180835364a80712e64af85019b2d" refkind="member"><highlight class="normal"><ref refid="classEntity_a3787180835364a80712e64af85019b2d_1a3787180835364a80712e64af85019b2d" kindref="member">Entity::~Entity</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//EntityManager::getInstance().recycleEntityId(<sp/>getId()<sp/>);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classEntity_ab21855dddf8bbcc1f3ff0249bc2a28f7_1ab21855dddf8bbcc1f3ff0249bc2a28f7" refkind="member"><highlight class="normal"><ref refid="classEntity_a03f8a6de4d0d1553a7ed08ffc151ef4d_1a03f8a6de4d0d1553a7ed08ffc151ef4d" kindref="member">Entity::Entity</ref>(<sp/><ref refid="classEntity" kindref="compound">Entity</ref><sp/>&amp;&amp;rhs<sp/>)<sp/>noexcept</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>m_version{rhs.m_version},</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>m_index{rhs.m_index},</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>m_name{rhs.m_name},</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>m_category{rhs.m_category},</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pParent{rhs.m_pParent}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>rhs.hasChildren()<sp/>)</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nChildren<sp/>=<sp/>rhs.getChildrenCount();</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_children.reserve(<sp/>nChildren<sp/>);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>nChildren;<sp/>++i<sp/>)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_children[i]<sp/>=<sp/>rhs.m_children[i];</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="classEntity_a469f09ef1143c7056799f4d3d37777a7_1a469f09ef1143c7056799f4d3d37777a7" refkind="member"><highlight class="normal"><ref refid="classEntity" kindref="compound">Entity</ref>&amp;<sp/><ref refid="classEntity_a469f09ef1143c7056799f4d3d37777a7_1a469f09ef1143c7056799f4d3d37777a7" kindref="member">Entity::operator=</ref>(<sp/><ref refid="classEntity" kindref="compound">Entity</ref><sp/>&amp;&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEntity" kindref="compound">Entity</ref><sp/>tmp{std::move(<sp/>rhs<sp/>)};</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>std::swap(<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>tmp<sp/>);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="classEntity_a5765fd8dc1bddd032708829f30e912bc_1a5765fd8dc1bddd032708829f30e912bc" refkind="member"><highlight class="normal">EntityIndex<sp/><ref refid="classEntity_a5765fd8dc1bddd032708829f30e912bc_1a5765fd8dc1bddd032708829f30e912bc" kindref="member">Entity::getVersion</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEntity_a9c658c8567e2d9a11cc908736e0e8cb3_1a9c658c8567e2d9a11cc908736e0e8cb3" kindref="member">m_version</ref>;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classEntity_a838540fe0f02154b3fbb49e32d9d17e1_1a838540fe0f02154b3fbb49e32d9d17e1" refkind="member"><highlight class="normal">EntityIndex<sp/><ref refid="classEntity_a838540fe0f02154b3fbb49e32d9d17e1_1a838540fe0f02154b3fbb49e32d9d17e1" kindref="member">Entity::getIndex</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEntity_a897e956f708e5a03cf98818956b4796d_1a897e956f708e5a03cf98818956b4796d" kindref="member">m_index</ref>;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="classEntity_acccaa0ebd67fa150d2cf630fe7228bd5_1acccaa0ebd67fa150d2cf630fe7228bd5" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEntity_acccaa0ebd67fa150d2cf630fe7228bd5_1acccaa0ebd67fa150d2cf630fe7228bd5" kindref="member">Entity::printInfo</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;entity[index=&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/><ref refid="classEntity_a897e956f708e5a03cf98818956b4796d_1a897e956f708e5a03cf98818956b4796d" kindref="member">m_index</ref></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;]<sp/>stored<sp/>@&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>version=&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/><ref refid="classEntity_a9c658c8567e2d9a11cc908736e0e8cb3_1a9c658c8567e2d9a11cc908736e0e8cb3" kindref="member">m_version</ref></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>id=&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/><ref refid="classEntity_ae3867a592a90bf00bc0498aa57bc29ab_1ae3867a592a90bf00bc0498aa57bc29ab" kindref="member">getId</ref>()</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>category=&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/><ref refid="classEntity_a5cf4f31a69e1d97aa360a98328736c0f_1a5cf4f31a69e1d97aa360a98328736c0f" kindref="member">m_category</ref></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="classEntity_ae3867a592a90bf00bc0498aa57bc29ab_1ae3867a592a90bf00bc0498aa57bc29ab" refkind="member"><highlight class="normal">EntityId<sp/><ref refid="classEntity_ae3867a592a90bf00bc0498aa57bc29ab_1ae3867a592a90bf00bc0498aa57bc29ab" kindref="member">Entity::getId</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>_32_BIT_ENTITY</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<sp/><ref refid="classEntity_a9c658c8567e2d9a11cc908736e0e8cb3_1a9c658c8567e2d9a11cc908736e0e8cb3" kindref="member">m_version</ref><sp/>&lt;&lt;<sp/>16<sp/>)<sp/>|<sp/><ref refid="classEntity_a897e956f708e5a03cf98818956b4796d_1a897e956f708e5a03cf98818956b4796d" kindref="member">m_index</ref>;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>_64_BIT_ENTITY</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<sp/>(EntityId)<sp/><ref refid="classEntity_a9c658c8567e2d9a11cc908736e0e8cb3_1a9c658c8567e2d9a11cc908736e0e8cb3" kindref="member">m_version</ref><sp/>&lt;&lt;<sp/>32<sp/>)<sp/>|<sp/><ref refid="classEntity_a897e956f708e5a03cf98818956b4796d_1a897e956f708e5a03cf98818956b4796d" kindref="member">m_index</ref>;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="classEntity_ada54055d067c18807942fd3998d8f5ce_1ada54055d067c18807942fd3998d8f5ce" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/><ref refid="classEntity_ada54055d067c18807942fd3998d8f5ce_1ada54055d067c18807942fd3998d8f5ce" kindref="member">Entity::getName</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEntity_a4b945ebe36bda22cc9cc7c6620f43d51_1a4b945ebe36bda22cc9cc7c6620f43d51" kindref="member">m_name</ref>;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94" refid="classEntity_a8dd2828f319daab3fb76df00b412a2e5_1a8dd2828f319daab3fb76df00b412a2e5" refkind="member"><highlight class="normal"><ref refid="classEntity_aa5bd083313406553db2760407e59973f_1aa5bd083313406553db2760407e59973f" kindref="member">Entity::Category</ref><sp/><ref refid="classEntity_a8dd2828f319daab3fb76df00b412a2e5_1a8dd2828f319daab3fb76df00b412a2e5" kindref="member">Entity::getCategory</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="95"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEntity_a5cf4f31a69e1d97aa360a98328736c0f_1a5cf4f31a69e1d97aa360a98328736c0f" kindref="member">m_category</ref>;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99" refid="classEntity_a6485d6af764cf54bb6723fe57bec91fa_1a6485d6af764cf54bb6723fe57bec91fa" refkind="member"><highlight class="normal"><ref refid="classEntity" kindref="compound">Entity</ref>*<sp/><ref refid="classEntity_a6485d6af764cf54bb6723fe57bec91fa_1a6485d6af764cf54bb6723fe57bec91fa" kindref="member">Entity::getParent</ref>()</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEntity_acc863ae145d93895cfb62bc60d257350_1acc863ae145d93895cfb62bc60d257350" kindref="member">m_pParent</ref>;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="classEntity_a6cd10813c630cce9df7360af9efa3a79_1a6cd10813c630cce9df7360af9efa3a79" refkind="member"><highlight class="normal"><ref refid="classEntity" kindref="compound">Entity</ref>*<sp/><ref refid="classEntity_a6485d6af764cf54bb6723fe57bec91fa_1a6485d6af764cf54bb6723fe57bec91fa" kindref="member">Entity::getParent</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="105"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEntity_acc863ae145d93895cfb62bc60d257350_1acc863ae145d93895cfb62bc60d257350" kindref="member">m_pParent</ref>;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="classEntity_a5c97d95fa9655647ac868d5bc75ab9e8_1a5c97d95fa9655647ac868d5bc75ab9e8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEntity_a5c97d95fa9655647ac868d5bc75ab9e8_1a5c97d95fa9655647ac868d5bc75ab9e8" kindref="member">Entity::addChild</ref>(<sp/><ref refid="classEntity" kindref="compound">Entity</ref><sp/>*child<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>m_children.push_back(<sp/>child<sp/>);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114" refid="classEntity_aeece0ee08d799fdbd5e064f2dbb7011d_1aeece0ee08d799fdbd5e064f2dbb7011d" refkind="member"><highlight class="normal">std::vector&lt;Entity*&gt;&amp;<sp/><ref refid="classEntity_aeece0ee08d799fdbd5e064f2dbb7011d_1aeece0ee08d799fdbd5e064f2dbb7011d" kindref="member">Entity::getChildren</ref>()</highlight></codeline>
+<codeline lineno="115"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEntity_a49d3477ce70673c1ad80415a22d971c0_1a49d3477ce70673c1ad80415a22d971c0" kindref="member">m_children</ref>;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="classEntity_ac78ab1622e390ea319d45623dbd882fc_1ac78ab1622e390ea319d45623dbd882fc" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;Entity*&gt;&amp;<sp/><ref refid="classEntity_aeece0ee08d799fdbd5e064f2dbb7011d_1aeece0ee08d799fdbd5e064f2dbb7011d" kindref="member">Entity::getChildren</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="120"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEntity_a49d3477ce70673c1ad80415a22d971c0_1a49d3477ce70673c1ad80415a22d971c0" kindref="member">m_children</ref>;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124" refid="classEntity_a48c0be47235614296265c3e889e31eee_1a48c0be47235614296265c3e889e31eee" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEntity_a48c0be47235614296265c3e889e31eee_1a48c0be47235614296265c3e889e31eee" kindref="member">Entity::hasChildren</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="125"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!<ref refid="classEntity_a49d3477ce70673c1ad80415a22d971c0_1a49d3477ce70673c1ad80415a22d971c0" kindref="member">m_children</ref>.empty();</highlight></codeline>
+<codeline lineno="127"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129" refid="classEntity_a1102763f2d68d142753950244fa6a994_1a1102763f2d68d142753950244fa6a994" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classEntity_a1102763f2d68d142753950244fa6a994_1a1102763f2d68d142753950244fa6a994" kindref="member">Entity::getChildrenCount</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="130"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/><ref refid="classEntity_a49d3477ce70673c1ad80415a22d971c0_1a49d3477ce70673c1ad80415a22d971c0" kindref="member">m_children</ref>.size();</highlight></codeline>
+<codeline lineno="132"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134" refid="classEntity_a620b2e7ffbe15f254d58772df001134e_1a620b2e7ffbe15f254d58772df001134e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEntity_a620b2e7ffbe15f254d58772df001134e_1a620b2e7ffbe15f254d58772df001134e" kindref="member">Entity::onMessageReceived</ref>(<sp/>std::unique_ptr&lt;Message&gt;<sp/>msg<sp/>)</highlight></codeline>
+<codeline lineno="135"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>pDataMsg<sp/>=<sp/></highlight><highlight class="keyword">dynamic_cast&lt;</highlight><highlight class="normal"><ref refid="classMessageCall" kindref="compound">MessageCall</ref>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/>msg.get()<sp/>);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>callback<sp/>=<sp/>pDataMsg-&gt;<ref refid="classMessageCall_a19457c9c745c7298a6c9306d30c7659c_1a19457c9c745c7298a6c9306d30c7659c" kindref="member">getCallable</ref>();</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>(*callback)();</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(<sp/>pDataMsg-&gt;getType()<sp/>)</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_1a1c65ab3f02ba5b175f583f9d275ecf2ba0a6b82414cfc3aff979f9fdc6a4e42ad" kindref="member">Message::Type::Damage</ref>:</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//m_hp<sp/>-=<sp/>payload-&gt;m_damage;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Damage<sp/>message<sp/>received&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_1a1c65ab3f02ba5b175f583f9d275ecf2ba553d8a661eaafb91ffe6908243a40eff" kindref="member">Message::Type::Heal</ref>:</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//m_hp<sp/>+=<sp/>payload-&gt;m_heal;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Heal<sp/>message<sp/>received&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_1a1c65ab3f02ba5b175f583f9d275ecf2ba9a537a18982ba50a4352ede8fb744262" kindref="member">Message::Type::Greet</ref>:</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//greet(<sp/>payload-&gt;m_greeting<sp/>);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Greet<sp/>message<sp/>received&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_1a1c65ab3f02ba5b175f583f9d275ecf2badf66c83a17ebb8124f629a50e12fffd1" kindref="member">Message::Type::PhysicsCollision</ref>:</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Physics<sp/>collision<sp/>received&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/>pDataMsg-&gt;setHandled(<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174" refid="classEntity_a14ed30fc6bd75271d4d0ca80133079a7_1a14ed30fc6bd75271d4d0ca80133079a7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEntity_a14ed30fc6bd75271d4d0ca80133079a7_1a14ed30fc6bd75271d4d0ca80133079a7" kindref="member">Entity::sendMessage</ref>(<sp/><ref refid="classMessage" kindref="compound">Message</ref><sp/>*msg<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;md<sp/>=<sp/><ref refid="classMessageDispatcher_a0481f9fa137bdb67d0feedc6535a9c5b_1a0481f9fa137bdb67d0feedc6535a9c5b" kindref="member">MessageDispatcher::getInstance</ref>();</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>md.addMessage(<sp/>msg<sp/>);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180" refid="classEntity_a995940dda416bd46e600ba90dd3b2ac5_1a995940dda416bd46e600ba90dd3b2ac5" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEntity_a995940dda416bd46e600ba90dd3b2ac5_1a995940dda416bd46e600ba90dd3b2ac5" kindref="member">Entity::operator==</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classEntity" kindref="compound">Entity</ref><sp/>*rhs<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;getId()<sp/>==<sp/>rhs-&gt;getId();</highlight></codeline>
+<codeline lineno="183"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185" refid="classEntity_a9f9e50a5a98b287bbdf9f33a5a5c3927_1a9f9e50a5a98b287bbdf9f33a5a5c3927" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEntity_a9f9e50a5a98b287bbdf9f33a5a5c3927_1a9f9e50a5a98b287bbdf9f33a5a5c3927" kindref="member">Entity::operator!=</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classEntity" kindref="compound">Entity</ref><sp/>*rhs<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;getId()<sp/>!=<sp/>rhs-&gt;getId();</highlight></codeline>
+<codeline lineno="188"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190" refid="classEntity_aa2378a9f85ad81cd718685ac01f52875_1aa2378a9f85ad81cd718685ac01f52875" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEntity_a995940dda416bd46e600ba90dd3b2ac5_1a995940dda416bd46e600ba90dd3b2ac5" kindref="member">Entity::operator==</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classEntity" kindref="compound">Entity</ref><sp/>&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;getId()<sp/>==<sp/>rhs.getId();</highlight></codeline>
+<codeline lineno="193"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195" refid="classEntity_a9605329442c4507de6ee6c8190269d55_1a9605329442c4507de6ee6c8190269d55" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEntity_a9f9e50a5a98b287bbdf9f33a5a5c3927_1a9f9e50a5a98b287bbdf9f33a5a5c3927" kindref="member">Entity::operator!=</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classEntity" kindref="compound">Entity</ref><sp/>&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;getId()<sp/>!=<sp/>rhs.getId();</highlight></codeline>
+<codeline lineno="198"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/entity.cpp"/>
+  </compounddef>
+</doxygen>

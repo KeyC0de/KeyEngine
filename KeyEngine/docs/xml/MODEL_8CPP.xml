@@ -1,0 +1,886 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="MODEL_8CPP" kind="file" language="C++">
+    <compoundname>MODEL.CPP</compoundname>
+    <includes refid="model_8h" local="yes">model.h</includes>
+    <includes refid="node_8h" local="yes">node.h</includes>
+    <includes refid="graphics_8h" local="yes">graphics.h</includes>
+    <includes local="yes">assimp/Importer.hpp</includes>
+    <includes local="yes">assimp/postprocess.h</includes>
+    <includes refid="mesh_8h" local="yes">mesh.h</includes>
+    <includes refid="material__loader_8h" local="yes">material_loader.h</includes>
+    <includes refid="math__utils_8h" local="yes">math_utils.h</includes>
+    <includes refid="d3d__utils_8h" local="yes">d3d_utils.h</includes>
+    <includes refid="assertions__console_8h" local="yes">assertions_console.h</includes>
+    <includes refid="file__utils_8h" local="yes">file_utils.h</includes>
+    <incdepgraph>
+      <node id="37">
+        <label>assertions_console.h</label>
+        <link refid="assertions__console_8h"/>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="57">
+        <label>bindable.h</label>
+        <link refid="bindable_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>color.h</label>
+        <link refid="color_8h"/>
+      </node>
+      <node id="30">
+        <label>console.h</label>
+        <link refid="console_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="66">
+        <label>d3d_utils.h</label>
+        <link refid="d3d__utils_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+      </node>
+      <node id="60">
+        <label>dynamic_constant_buffer.h</label>
+        <link refid="dynamic__constant__buffer_8h"/>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>dynamic_vertex_buffer.h</label>
+        <link refid="dynamic__vertex__buffer_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+      <node id="75">
+        <label>file_utils.h</label>
+        <link refid="file__utils_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>graphics.h</label>
+        <link refid="graphics_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="58">
+        <label>graphics_friend.h</label>
+        <link refid="graphics__friend_8h"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>imgui_visitors.h</label>
+        <link refid="imgui__visitors_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>key_exception.h</label>
+        <link refid="key__exception_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>key_timer.h</label>
+        <link refid="key__timer_8h"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>key_type_traits.h</label>
+        <link refid="key__type__traits_8h"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>key_wrl.h</label>
+        <link refid="key__wrl_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="56">
+        <label>material.h</label>
+        <link refid="material_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+      </node>
+      <node id="62">
+        <label>material_loader.h</label>
+        <link refid="material__loader_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>math_utils.h</label>
+        <link refid="math__utils_8h"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+      </node>
+      <node id="54">
+        <label>mesh.h</label>
+        <link refid="mesh_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>model.h</label>
+        <link refid="model_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>node.h</label>
+        <link refid="node_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="68">
+        <label>os_utils.h</label>
+        <link refid="os__utils_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>rendering_channel.h</label>
+        <link refid="rendering__channel_8h"/>
+      </node>
+      <node id="26">
+        <label>texture_desc.h</label>
+        <link refid="texture__desc_8h"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="59">
+        <label>transform_vscb.h</label>
+        <link refid="transform__vscb_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>utils_global.h</label>
+        <link refid="utils__global_8h"/>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>winner.h</label>
+        <link refid="winner_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/MODEL.CPP</label>
+        <link refid="MODEL_8CPP"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>DirectXMath.h</label>
+      </node>
+      <node id="73">
+        <label>ShlObj.h</label>
+      </node>
+      <node id="16">
+        <label>Windows.h</label>
+      </node>
+      <node id="45">
+        <label>algorithm</label>
+      </node>
+      <node id="52">
+        <label>assimp/Importer.hpp</label>
+      </node>
+      <node id="53">
+        <label>assimp/postprocess.h</label>
+      </node>
+      <node id="65">
+        <label>assimp/scene.h</label>
+      </node>
+      <node id="41">
+        <label>bitset</label>
+      </node>
+      <node id="61">
+        <label>cassert</label>
+      </node>
+      <node id="29">
+        <label>chrono</label>
+      </node>
+      <node id="43">
+        <label>cinttypes</label>
+      </node>
+      <node id="32">
+        <label>cmath</label>
+      </node>
+      <node id="70">
+        <label>comdef.h</label>
+      </node>
+      <node id="42">
+        <label>cstddef</label>
+      </node>
+      <node id="33">
+        <label>cstdint</label>
+      </node>
+      <node id="20">
+        <label>d3d11.h</label>
+      </node>
+      <node id="21">
+        <label>d3dcompiler.h</label>
+      </node>
+      <node id="19">
+        <label>dxgi1_4.h</label>
+      </node>
+      <node id="49">
+        <label>execution</label>
+      </node>
+      <node id="4">
+        <label>filesystem</label>
+      </node>
+      <node id="76">
+        <label>fstream</label>
+      </node>
+      <node id="72">
+        <label>functional</label>
+      </node>
+      <node id="44">
+        <label>future</label>
+      </node>
+      <node id="36">
+        <label>iomanip</label>
+      </node>
+      <node id="38">
+        <label>iostream</label>
+      </node>
+      <node id="47">
+        <label>iterator</label>
+      </node>
+      <node id="10">
+        <label>limits</label>
+      </node>
+      <node id="3">
+        <label>memory</label>
+      </node>
+      <node id="46">
+        <label>numeric</label>
+      </node>
+      <node id="55">
+        <label>optional</label>
+      </node>
+      <node id="48">
+        <label>regex</label>
+      </node>
+      <node id="15">
+        <label>sdkddkver.h</label>
+      </node>
+      <node id="40">
+        <label>set</label>
+      </node>
+      <node id="35">
+        <label>sstream</label>
+      </node>
+      <node id="24">
+        <label>stdexcept</label>
+      </node>
+      <node id="5">
+        <label>string</label>
+      </node>
+      <node id="28">
+        <label>thread</label>
+      </node>
+      <node id="71">
+        <label>tlhelp32.h</label>
+      </node>
+      <node id="67">
+        <label>tuple</label>
+      </node>
+      <node id="34">
+        <label>type_traits</label>
+      </node>
+      <node id="9">
+        <label>unordered_map</label>
+      </node>
+      <node id="64">
+        <label>utility</label>
+      </node>
+      <node id="12">
+        <label>vector</label>
+      </node>
+      <node id="74">
+        <label>wincred.h</label>
+      </node>
+      <node id="69">
+        <label>winternl.h</label>
+      </node>
+      <node id="18">
+        <label>wrl.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="model_8h" kindref="compound">model.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="node_8h" kindref="compound">node.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="graphics_8h" kindref="compound">graphics.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;assimp/Importer.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;assimp/postprocess.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mesh_8h" kindref="compound">mesh.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="material__loader_8h" kindref="compound">material_loader.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="math__utils_8h" kindref="compound">math_utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d3d__utils_8h" kindref="compound">d3d_utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="assertions__console_8h" kindref="compound">assertions_console.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="file__utils_8h" kindref="compound">file_utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#TODO:<sp/>Model<sp/>LOD<sp/>automatic<sp/>switching</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceDirectX" kindref="compound">dx</ref><sp/>=<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="classModel_a0600c0c1f47a574ab81a6e0e73f3520e_1a0600c0c1f47a574ab81a6e0e73f3520e" refkind="member"><highlight class="normal"><ref refid="classModel_a0600c0c1f47a574ab81a6e0e73f3520e_1a0600c0c1f47a574ab81a6e0e73f3520e" kindref="member">Model::Model</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;path,</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>initialScale<sp/></highlight><highlight class="comment">/*=<sp/>1.0f*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;initialRotDeg<sp/></highlight><highlight class="comment">/*=<sp/>{0.0f,<sp/>0.0f,<sp/>0.0f}*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;initialPos<sp/></highlight><highlight class="comment">/*=<sp/>{0.0f,<sp/>0.0f,<sp/>0.0f}*/</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>FINAL_RELEASE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>m_imguiVisitor{<ref refid="namespaceutil_a09750278284c9976b57d7ac45f3d625d_1a09750278284c9976b57d7ac45f3d625d" kindref="member">util::getFilename</ref>(<sp/>path<sp/>)}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>Assimp::Importer<sp/>importer;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>paiScene<sp/>=<sp/>importer.ReadFile(<sp/>path.c_str(),<sp/>aiProcess_Triangulate<sp/>|<sp/>aiProcess_JoinIdenticalVertices<sp/>|<sp/>aiProcess_ConvertToLeftHanded<sp/>|<sp/>aiProcess_GenNormals<sp/>|<sp/>aiProcess_CalcTangentSpace<sp/>);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//aiAnimation**<sp/>mAnimations<sp/><sp/><sp/><sp/><sp/>//<sp/>The<sp/>array<sp/>of<sp/>animations.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//aiCamera**<sp/>mCameras<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>The<sp/>array<sp/>of<sp/>cameras.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//unsigned<sp/>int<sp/>mFlags<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Any<sp/>combination<sp/>of<sp/>the<sp/>AI_SCENE_FLAGS_XXX<sp/>flags.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//aiLight**<sp/>mLights<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>The<sp/>array<sp/>of<sp/>light<sp/>sources.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//aiMaterial**<sp/>mMaterials<sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>The<sp/>array<sp/>of<sp/>materials.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//aiMesh**<sp/>mMeshes<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>The<sp/>array<sp/>of<sp/>meshes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//unsigned<sp/>int<sp/>mNumAnimations<sp/><sp/><sp/>//<sp/>The<sp/>number<sp/>of<sp/>animations<sp/>in<sp/>the<sp/>scene.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//unsigned<sp/>int<sp/>mNumCameras<sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>The<sp/>number<sp/>of<sp/>cameras<sp/>in<sp/>the<sp/>scene.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//unsigned<sp/>int<sp/>mNumLights<sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>The<sp/>number<sp/>of<sp/>light<sp/>sources<sp/>in<sp/>the<sp/>scene.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//unsigned<sp/>int<sp/>mNumMaterials<sp/><sp/><sp/><sp/>//<sp/>The<sp/>number<sp/>of<sp/>materials<sp/>in<sp/>the<sp/>scene.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//unsigned<sp/>int<sp/>mNumMeshes<sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>The<sp/>number<sp/>of<sp/>meshes<sp/>in<sp/>the<sp/>scene.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//unsigned<sp/>int<sp/>mNumTextures<sp/><sp/><sp/><sp/><sp/>//<sp/>The<sp/>number<sp/>of<sp/>textures<sp/>embedded<sp/>into<sp/>the<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//void*<sp/>mPrivate<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Internal<sp/>data,<sp/>do<sp/>not<sp/>touch.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//aiNode*<sp/>mRootNode<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>The<sp/>root<sp/>node<sp/>of<sp/>the<sp/>hierarchy.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//aiTexture**<sp/>mTextures<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>The<sp/>array<sp/>of<sp/>embedded<sp/>textures.<sp/>-<sp/>only<sp/>useful<sp/>for<sp/>model<sp/>formals<sp/>that<sp/>contain<sp/>embedded<sp/>textures</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>paiScene,<sp/></highlight><highlight class="stringliteral">&quot;aiScene<sp/>is<sp/>null!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>materials</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;MaterialLoader&gt;<sp/>materials;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>materials.reserve(<sp/>paiScene-&gt;mNumMaterials<sp/>);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>paiScene-&gt;mNumMaterials;<sp/>++i<sp/>)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>materials.emplace_back(<sp/>gfx,<sp/>*paiScene-&gt;mMaterials[i],<sp/>path<sp/>);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>N<sp/>meshes<sp/>for<sp/>N<sp/>materials<sp/>in<sp/>the<sp/>model<sp/>file</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>paiScene-&gt;mNumMeshes;<sp/>++i<sp/>)</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;aiMesh<sp/>=<sp/>*paiScene-&gt;mMeshes[i];</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_meshes.emplace_back(<sp/>std::make_unique&lt;Mesh&gt;(<sp/>gfx,<sp/>materials[aiMesh.mMaterialIndex],<sp/>aiMesh,<sp/>initialScale<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>imguiNodeId<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pRoot<sp/>=<sp/>parseModelNodeGraph(<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>*paiScene-&gt;mRootNode,<sp/>imguiNodeId,<sp/>initialScale<sp/>);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>setTransform(<sp/>1,<sp/><ref refid="namespaceutil_a31143b15ea9106b8e368acaff73d2aba_1a31143b15ea9106b8e368acaff73d2aba" kindref="member">util::toRadians3</ref>(<sp/>initialRotDeg<sp/>),<sp/>initialPos<sp/>);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="classModel_a2bb58287e2762dd3fbd905929b7a4c9c_1a2bb58287e2762dd3fbd905929b7a4c9c" refkind="member"><highlight class="normal"><ref refid="classModel_a0600c0c1f47a574ab81a6e0e73f3520e_1a0600c0c1f47a574ab81a6e0e73f3520e" kindref="member">Model::Model</ref>(<sp/>std::unique_ptr&lt;Mesh&gt;<sp/>pMesh,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;initialRotDeg,</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;initialPos<sp/>)</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>m_nNodes{1},</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>m_nMeshNodes{1}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;meshName<sp/>=<sp/>pMesh-&gt;getName();</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>FINAL_RELEASE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classModel_ab4b4337502032a0d09a2be19f3939afe_1ab4b4337502032a0d09a2be19f3939afe" kindref="member">m_imguiVisitor</ref><sp/>=<sp/><ref refid="classImguiPerModelNodeVisitor" kindref="compound">ImguiPerModelNodeVisitor</ref>{meshName};</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classModel_aac9199ace6d820b21545f4a33c80abef_1aac9199ace6d820b21545f4a33c80abef" kindref="member">m_meshes</ref>.emplace_back(<sp/>std::move(<sp/>pMesh<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Mesh*&gt;<sp/>pMeshes;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>pMeshes.reserve(<sp/>1<sp/>);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>pMeshes.push_back(<sp/><ref refid="classModel_aac9199ace6d820b21545f4a33c80abef_1aac9199ace6d820b21545f4a33c80abef" kindref="member">m_meshes</ref>.at(<sp/>0<sp/>).get()<sp/>);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>localNodeTransform<sp/>=<sp/><ref refid="namespaceutil_a66c68478c4448bcbe2eeee0bd09b4bd9_1a66c68478c4448bcbe2eeee0bd09b4bd9" kindref="member">util::scaleTranslation</ref>(<sp/>dx::XMMatrixIdentity(),<sp/>1.0f<sp/>);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">std::string_literals;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;nodeName<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Node#&quot;</highlight><highlight class="normal">s<sp/>+<sp/>std::to_string(<sp/>0<sp/>)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;#&quot;</highlight><highlight class="normal">s<sp/>+<sp/>meshName<sp/></highlight><highlight class="comment">/*+<sp/>&quot;_&quot;s<sp/>+<sp/>std::to_string(<sp/>pMesh-&gt;getMeshId()<sp/>)*/</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classModel_aea1cd1a8e46e5b976f66047fdbd58add_1aea1cd1a8e46e5b976f66047fdbd58add" kindref="member">m_pRoot</ref><sp/>=<sp/>std::make_unique&lt;Node&gt;(<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>0,<sp/>nodeName,<sp/>localNodeTransform,<sp/>std::move(<sp/>pMeshes<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classModel_af45461230e9c72025a6ce6a7ba699bdc_1af45461230e9c72025a6ce6a7ba699bdc" kindref="member">setTransform</ref>(<sp/>1.0f,<sp/><ref refid="namespaceutil_a31143b15ea9106b8e368acaff73d2aba_1a31143b15ea9106b8e368acaff73d2aba" kindref="member">util::toRadians3</ref>(<sp/>initialRotDeg<sp/>),<sp/>initialPos<sp/>);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classModel_a459f3420c7e47200f15c946cb7702170_1a459f3420c7e47200f15c946cb7702170" kindref="member">m_name</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Model#&quot;</highlight><highlight class="normal">s<sp/>+<sp/>meshName;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98" refid="classModel_affb7503ef06f714be1de64e7df97664b_1affb7503ef06f714be1de64e7df97664b" refkind="member"><highlight class="normal"><ref refid="classModel_affb7503ef06f714be1de64e7df97664b_1affb7503ef06f714be1de64e7df97664b" kindref="member">Model::~Model</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classModel_aac9199ace6d820b21545f4a33c80abef_1aac9199ace6d820b21545f4a33c80abef" kindref="member">m_meshes</ref>.clear();</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103" refid="classModel_a65852929a8bbdcc448b9efa714185a9a_1a65852929a8bbdcc448b9efa714185a9a" refkind="member"><highlight class="normal"><ref refid="classModel_a0600c0c1f47a574ab81a6e0e73f3520e_1a0600c0c1f47a574ab81a6e0e73f3520e" kindref="member">Model::Model</ref>(<sp/><ref refid="classModel" kindref="compound">Model</ref><sp/>&amp;&amp;rhs<sp/>)<sp/>noexcept</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>m_nNodes{rhs.m_nNodes},</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>m_nMeshNodes{rhs.m_nMeshNodes},</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>m_name{std::move(<sp/>rhs.m_name<sp/>)},</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pRoot{std::move(<sp/>rhs.m_pRoot<sp/>)},</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>m_meshes{std::move(<sp/>rhs.m_meshes<sp/>)}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>FINAL_RELEASE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>m_imguiVisitor{rhs.m_imguiVisitor}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>rhs.m_pRoot<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="classModel_a87092d0e63f1ff00e92f155d1e3e9c42_1a87092d0e63f1ff00e92f155d1e3e9c42" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModel_a87092d0e63f1ff00e92f155d1e3e9c42_1a87092d0e63f1ff00e92f155d1e3e9c42" kindref="member">Model::update</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>dt,</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>lerpBetweenFrames,</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bEnableSmoothMovement<sp/></highlight><highlight class="comment">/*=<sp/>false*/</highlight><highlight class="normal"><sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="120"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pRoot-&gt;update(<sp/>dt,<sp/>dx::XMMatrixIdentity(),<sp/>lerpBetweenFrames,<sp/>bEnableSmoothMovement<sp/>);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124" refid="classModel_aa33a40fb50f074d5928c15c82074a0b6_1aa33a40fb50f074d5928c15c82074a0b6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModel_aa33a40fb50f074d5928c15c82074a0b6_1aa33a40fb50f074d5928c15c82074a0b6" kindref="member">Model::render</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>channels<sp/></highlight><highlight class="comment">/*=<sp/>rch::all*/</highlight><highlight class="normal"><sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>cond_noex</highlight></codeline>
+<codeline lineno="125"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;pMesh<sp/>:<sp/>m_meshes<sp/>)</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pMesh-&gt;render(<sp/>channels<sp/>);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132" refid="classModel_ad9673dfef4bf662ef742ea17b7704099_1ad9673dfef4bf662ef742ea17b7704099" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModel_ad9673dfef4bf662ef742ea17b7704099_1ad9673dfef4bf662ef742ea17b7704099" kindref="member">Model::setMaterialEnabled</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>channels,</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bEnabled<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;pMesh<sp/>:<sp/>m_meshes<sp/>)</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pMesh-&gt;setMaterialEnabled(<sp/>channels,<sp/>bEnabled<sp/>);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141" refid="classModel_a5c541a8bb0012d4cbb64f2cb809f1638_1a5c541a8bb0012d4cbb64f2cb809f1638" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModel_a5c541a8bb0012d4cbb64f2cb809f1638_1a5c541a8bb0012d4cbb64f2cb809f1638" kindref="member">Model::displayImguiWidgets</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>FINAL_RELEASE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>m_nNodes<sp/>&gt;<sp/>6<sp/>)</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>m_imguiVisitor.displayImguiWidgets(<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152" refid="classModel_af4731ff2dc420c06801f4f5281af04b8_1af4731ff2dc420c06801f4f5281af04b8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModel_af4731ff2dc420c06801f4f5281af04b8_1af4731ff2dc420c06801f4f5281af04b8" kindref="member">Model::accept</ref>(<sp/><ref refid="classIImguiNodeVisitor" kindref="compound">IImguiNodeVisitor</ref><sp/>&amp;v<sp/>)</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classModel_aea1cd1a8e46e5b976f66047fdbd58add_1aea1cd1a8e46e5b976f66047fdbd58add" kindref="member">m_pRoot</ref>-&gt;accept(<sp/>v<sp/>);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157" refid="classModel_a026f7d322b40a3488184d711962d92c2_1a026f7d322b40a3488184d711962d92c2" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModel_a026f7d322b40a3488184d711962d92c2_1a026f7d322b40a3488184d711962d92c2" kindref="member">Model::connectMaterialsToRenderer</ref>(<sp/><ref refid="classren_1_1Renderer" kindref="compound">ren::Renderer</ref><sp/>&amp;r<sp/>)</highlight></codeline>
+<codeline lineno="158"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>!<ref refid="classModel_aac9199ace6d820b21545f4a33c80abef_1aac9199ace6d820b21545f4a33c80abef" kindref="member">m_meshes</ref>.empty(),<sp/></highlight><highlight class="stringliteral">&quot;Model<sp/>has<sp/>no<sp/>meshes<sp/>to<sp/>render!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;pMesh<sp/>:<sp/><ref refid="classModel_aac9199ace6d820b21545f4a33c80abef_1aac9199ace6d820b21545f4a33c80abef" kindref="member">m_meshes</ref><sp/>)</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pMesh-&gt;connectMaterialsToRenderer(<sp/>r<sp/>);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166" refid="classModel_af45461230e9c72025a6ce6a7ba699bdc_1af45461230e9c72025a6ce6a7ba699bdc" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModel_af45461230e9c72025a6ce6a7ba699bdc_1af45461230e9c72025a6ce6a7ba699bdc" kindref="member">Model::setTransform</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMMATRIX<sp/>&amp;tr<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="167"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pRoot-&gt;setWorldTransform(<sp/>tr<sp/>);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171" refid="classModel_a2d9ea5f25b9ae643e92c21aa286dea9c_1a2d9ea5f25b9ae643e92c21aa286dea9c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModel_af45461230e9c72025a6ce6a7ba699bdc_1af45461230e9c72025a6ce6a7ba699bdc" kindref="member">Model::setTransform</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>scale,</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;rotAnglesRadians,</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;pos<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="174"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pRoot-&gt;setTransform(<sp/>scale,<sp/>rotAnglesRadians,<sp/>pos<sp/>);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178" refid="classModel_a82dfe0f182853642b5ccb9f3d33f24c3_1a82dfe0f182853642b5ccb9f3d33f24c3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModel_af45461230e9c72025a6ce6a7ba699bdc_1af45461230e9c72025a6ce6a7ba699bdc" kindref="member">Model::setTransform</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>scale,</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT4<sp/>&amp;rotQuat,</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;pos<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="181"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pRoot-&gt;setTransform(<sp/>scale,<sp/>rotQuat,<sp/>pos<sp/>);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185" refid="classModel_a216593e7d84051b6b883fbc2ddc4d75a_1a216593e7d84051b6b883fbc2ddc4d75a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModel_af45461230e9c72025a6ce6a7ba699bdc_1af45461230e9c72025a6ce6a7ba699bdc" kindref="member">Model::setTransform</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>scale,</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMVECTOR<sp/>&amp;rotQuat,</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;pos<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="188"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pRoot-&gt;setTransform(<sp/>scale,<sp/>rotQuat,<sp/>pos<sp/>);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192" refid="classModel_a907f793106a2fc7b955b945873c37ce2_1a907f793106a2fc7b955b945873c37ce2" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModel_a907f793106a2fc7b955b945873c37ce2_1a907f793106a2fc7b955b945873c37ce2" kindref="member">Model::setScale</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>scale<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="193"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pRoot-&gt;setScale(<sp/>scale<sp/>);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197" refid="classModel_a5df221b34d95f2db129a4b3cc564c403_1a5df221b34d95f2db129a4b3cc564c403" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModel_a907f793106a2fc7b955b945873c37ce2_1a907f793106a2fc7b955b945873c37ce2" kindref="member">Model::setScale</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;scale<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="198"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pRoot-&gt;setScale(<sp/>scale<sp/>);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202" refid="classModel_abdad4d48fa4a4ed0680bee4a3ef8c7a7_1abdad4d48fa4a4ed0680bee4a3ef8c7a7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModel_abdad4d48fa4a4ed0680bee4a3ef8c7a7_1abdad4d48fa4a4ed0680bee4a3ef8c7a7" kindref="member">Model::scaleRel</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;scale<sp/>)</highlight></codeline>
+<codeline lineno="203"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classModel_aea1cd1a8e46e5b976f66047fdbd58add_1aea1cd1a8e46e5b976f66047fdbd58add" kindref="member">m_pRoot</ref>-&gt;setScale(<sp/>scale<sp/>);</highlight></codeline>
+<codeline lineno="205"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207" refid="classModel_ae218f9aa7ff8225ecc9f250a057030af_1ae218f9aa7ff8225ecc9f250a057030af" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModel_ae218f9aa7ff8225ecc9f250a057030af_1ae218f9aa7ff8225ecc9f250a057030af" kindref="member">Model::setRotation</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;rotAnglesRadians<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="208"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pRoot-&gt;setRotation(<sp/>rotAnglesRadians<sp/>);</highlight></codeline>
+<codeline lineno="210"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212" refid="classModel_a4f4450d1d501356cbacf57992f8f32c2_1a4f4450d1d501356cbacf57992f8f32c2" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModel_a4f4450d1d501356cbacf57992f8f32c2_1a4f4450d1d501356cbacf57992f8f32c2" kindref="member">Model::rotateRel</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;rotAnglesRadians<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="213"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pRoot-&gt;rotateRel(<sp/>rotAnglesRadians<sp/>);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="217" refid="classModel_a2f34019f76af71a4b0f120e6c83fa734_1a2f34019f76af71a4b0f120e6c83fa734" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModel_a2f34019f76af71a4b0f120e6c83fa734_1a2f34019f76af71a4b0f120e6c83fa734" kindref="member">Model::setTranslation</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;pos<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="218"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pRoot-&gt;setTranslation(<sp/>pos<sp/>);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222" refid="classModel_a88c39a8c514b6abdf0bda067c7a0f326_1a88c39a8c514b6abdf0bda067c7a0f326" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModel_a88c39a8c514b6abdf0bda067c7a0f326_1a88c39a8c514b6abdf0bda067c7a0f326" kindref="member">Model::translateRel</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;pos<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="223"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pRoot-&gt;translateRel(<sp/>pos<sp/>);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227" refid="classModel_a5ebe7821b16ec75c882ad5c797980c9c_1a5ebe7821b16ec75c882ad5c797980c9c" refkind="member"><highlight class="normal">DirectX::XMMATRIX<sp/><ref refid="classModel_a5ebe7821b16ec75c882ad5c797980c9c_1a5ebe7821b16ec75c882ad5c797980c9c" kindref="member">Model::getTransform</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="228"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classModel_aea1cd1a8e46e5b976f66047fdbd58add_1aea1cd1a8e46e5b976f66047fdbd58add" kindref="member">m_pRoot</ref>-&gt;getWorldTransform();</highlight></codeline>
+<codeline lineno="230"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232" refid="classModel_a97c6fc1a512ac57979f0fc63c1d34085_1a97c6fc1a512ac57979f0fc63c1d34085" refkind="member"><highlight class="normal">DirectX::XMFLOAT4X4<sp/><ref refid="classModel_a97c6fc1a512ac57979f0fc63c1d34085_1a97c6fc1a512ac57979f0fc63c1d34085" kindref="member">Model::getTransform4x4</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="233"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classModel_aea1cd1a8e46e5b976f66047fdbd58add_1aea1cd1a8e46e5b976f66047fdbd58add" kindref="member">m_pRoot</ref>-&gt;getWorldTransform4x4();</highlight></codeline>
+<codeline lineno="235"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237" refid="classModel_ab52e612aed8183547ee0d58aab900631_1ab52e612aed8183547ee0d58aab900631" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classModel_ab52e612aed8183547ee0d58aab900631_1ab52e612aed8183547ee0d58aab900631" kindref="member">Model::getScale</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="238"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classModel_aea1cd1a8e46e5b976f66047fdbd58add_1aea1cd1a8e46e5b976f66047fdbd58add" kindref="member">m_pRoot</ref>-&gt;getScale();</highlight></codeline>
+<codeline lineno="240"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="242" refid="classModel_a713fb2d948d1e0b246edfaf100a96d13_1a713fb2d948d1e0b246edfaf100a96d13" refkind="member"><highlight class="normal">DirectX::XMFLOAT3<sp/><ref refid="classModel_a713fb2d948d1e0b246edfaf100a96d13_1a713fb2d948d1e0b246edfaf100a96d13" kindref="member">Model::getScale3</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="243"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classModel_aea1cd1a8e46e5b976f66047fdbd58add_1aea1cd1a8e46e5b976f66047fdbd58add" kindref="member">m_pRoot</ref>-&gt;getScale3();</highlight></codeline>
+<codeline lineno="245"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247" refid="classModel_a309132aa630a396fdb2c7626d5272bb1_1a309132aa630a396fdb2c7626d5272bb1" refkind="member"><highlight class="normal">DirectX::XMFLOAT3<sp/><ref refid="classModel_a309132aa630a396fdb2c7626d5272bb1_1a309132aa630a396fdb2c7626d5272bb1" kindref="member">Model::getRotation</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="248"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classModel_aea1cd1a8e46e5b976f66047fdbd58add_1aea1cd1a8e46e5b976f66047fdbd58add" kindref="member">m_pRoot</ref>-&gt;getRotation();</highlight></codeline>
+<codeline lineno="250"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252" refid="classModel_a581366c3323ea82fea0d599c1a053ad4_1a581366c3323ea82fea0d599c1a053ad4" refkind="member"><highlight class="normal">DirectX::XMVECTOR<sp/><ref refid="classModel_a581366c3323ea82fea0d599c1a053ad4_1a581366c3323ea82fea0d599c1a053ad4" kindref="member">Model::getRotationQuat</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="253"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classModel_aea1cd1a8e46e5b976f66047fdbd58add_1aea1cd1a8e46e5b976f66047fdbd58add" kindref="member">m_pRoot</ref>-&gt;getRotationQuat();</highlight></codeline>
+<codeline lineno="255"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="257" refid="classModel_a22cb995d5e3ddbf2c9cd303e90820aba_1a22cb995d5e3ddbf2c9cd303e90820aba" refkind="member"><highlight class="normal">DirectX::XMFLOAT3<sp/><ref refid="classModel_a22cb995d5e3ddbf2c9cd303e90820aba_1a22cb995d5e3ddbf2c9cd303e90820aba" kindref="member">Model::getPosition</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="258"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classModel_aea1cd1a8e46e5b976f66047fdbd58add_1aea1cd1a8e46e5b976f66047fdbd58add" kindref="member">m_pRoot</ref>-&gt;getPosition();</highlight></codeline>
+<codeline lineno="260"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="262" refid="classModel_a0cc7d6fa891126a1daa9237d89cd1693_1a0cc7d6fa891126a1daa9237d89cd1693" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classModel_a0cc7d6fa891126a1daa9237d89cd1693_1a0cc7d6fa891126a1daa9237d89cd1693" kindref="member">Model::getDistanceFromActiveCamera</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index<sp/></highlight><highlight class="comment">/*=<sp/>0*/</highlight><highlight class="normal"><sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<sp/>index<sp/>&gt;<sp/>-1<sp/>&amp;&amp;<sp/>index<sp/>&lt;<sp/>m_meshes.size()<sp/>)<sp/>?<sp/>m_meshes[index]-&gt;getDistanceFromActiveCamera()<sp/>:<sp/>-1;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267" refid="classModel_a0580611e0db6e9def73246c306c19a06_1a0580611e0db6e9def73246c306c19a06" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/><ref refid="classModel_a0580611e0db6e9def73246c306c19a06_1a0580611e0db6e9def73246c306c19a06" kindref="member">Model::getName</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="268"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classModel_a459f3420c7e47200f15c946cb7702170_1a459f3420c7e47200f15c946cb7702170" kindref="member">m_name</ref>;</highlight></codeline>
+<codeline lineno="270"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272" refid="classModel_aeaa2b630fba75a0b911db2f655301160_1aeaa2b630fba75a0b911db2f655301160" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMesh" kindref="compound">Mesh</ref>*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classModel_aeaa2b630fba75a0b911db2f655301160_1aeaa2b630fba75a0b911db2f655301160" kindref="member">Model::getMesh</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index<sp/></highlight><highlight class="comment">/*=<sp/>0*/</highlight><highlight class="normal"><sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<sp/>index<sp/>&gt;<sp/>-1<sp/>&amp;&amp;<sp/>index<sp/>&lt;<sp/>m_meshes.size()<sp/>)<sp/>?<sp/>m_meshes[index].get()<sp/>:<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="275"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277" refid="classModel_a66b94da2a771a7c6cc33af0a26ef045e_1a66b94da2a771a7c6cc33af0a26ef045e" refkind="member"><highlight class="normal"><ref refid="classMesh" kindref="compound">Mesh</ref>*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classModel_aeaa2b630fba75a0b911db2f655301160_1aeaa2b630fba75a0b911db2f655301160" kindref="member">Model::getMesh</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index<sp/></highlight><highlight class="comment">/*=<sp/>0*/</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="278"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<sp/>index<sp/>&gt;<sp/>-1<sp/>&amp;&amp;<sp/>index<sp/>&lt;<sp/><ref refid="classModel_aac9199ace6d820b21545f4a33c80abef_1aac9199ace6d820b21545f4a33c80abef" kindref="member">m_meshes</ref>.size()<sp/>)<sp/>?<sp/><ref refid="classModel_aac9199ace6d820b21545f4a33c80abef_1aac9199ace6d820b21545f4a33c80abef" kindref="member">m_meshes</ref>[index].get()<sp/>:<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="280"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight></codeline>
+<codeline lineno="282" refid="classModel_af3dcc0a8bac832b284c12f479d88903e_1af3dcc0a8bac832b284c12f479d88903e" refkind="member"><highlight class="normal">std::unique_ptr&lt;Node&gt;<sp/><ref refid="classModel_af3dcc0a8bac832b284c12f479d88903e_1af3dcc0a8bac832b284c12f479d88903e" kindref="member">Model::parseModelNodeGraph</ref>(<sp/><ref refid="classNode" kindref="compound">Node</ref><sp/>*pParent,</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>aiNode<sp/>&amp;ainode,</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>imguiNodeId,</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>initialScale<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="286"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceDirectX" kindref="compound">dx</ref><sp/>=<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>;</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Assimp<sp/>is<sp/>row<sp/>major</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>localNodeTransform<sp/>=<sp/><ref refid="namespaceutil_a66c68478c4448bcbe2eeee0bd09b4bd9_1a66c68478c4448bcbe2eeee0bd09b4bd9" kindref="member">util::scaleTranslation</ref>(<sp/>dx::XMLoadFloat4x4(<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal">dx::XMFLOAT4X4*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/>&amp;ainode.mTransformation<sp/>)<sp/>),<sp/>initialScale<sp/>);</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Mesh*&gt;<sp/>pMeshes;</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/>pMeshes.reserve(<sp/>ainode.mNumMeshes<sp/>);</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>ainode.mNumMeshes;<sp/>++i<sp/>)</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>meshId<sp/>=<sp/>ainode.mMeshes[i];</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pMeshes.push_back(<sp/>m_meshes.at(<sp/>meshId<sp/>).get()<sp/>);</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++m_nMeshNodes;</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_name<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Model#&quot;</highlight><highlight class="normal"><sp/>+<sp/>m_meshes.at(<sp/>meshId<sp/>)-&gt;getName();</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Only<sp/>child<sp/>Nodes<sp/>have<sp/>stuff<sp/>attached<sp/>to<sp/>them<sp/>(Meshes,<sp/>Cameras,<sp/>Lights,<sp/>Helpers,<sp/>Pivots<sp/>etc.)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Not<sp/>all<sp/>imported-file/fbx<sp/>`Node`s<sp/>are<sp/>Mesh<sp/>Nodes!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//ASSERT(<sp/>pMeshes.size()<sp/>&lt;=<sp/>1,<sp/>&quot;In<sp/>KeyEngine,<sp/>we<sp/>attach<sp/>up<sp/>to<sp/>1<sp/>single<sp/>Mesh<sp/>to<sp/>each<sp/>MeshNode<sp/>for<sp/>the<sp/>time<sp/>being!<sp/>The<sp/>root<sp/>Node<sp/>has<sp/>no<sp/>Meshes<sp/>or<sp/>anything<sp/>else<sp/>attached<sp/>to<sp/>it.&quot;<sp/>);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>pMeshes.size()<sp/>&lt;=<sp/>2,<sp/></highlight><highlight class="stringliteral">&quot;test&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>pNode<sp/>=<sp/>std::make_unique&lt;Node&gt;(<sp/>pParent,<sp/>imguiNodeId,<sp/>ainode.mName.C_Str(),<sp/>localNodeTransform,<sp/>std::move(<sp/>pMeshes<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/>++m_nNodes;</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>children<sp/>Nodes<sp/>and<sp/>attach<sp/>them<sp/>to<sp/>the<sp/>Model&apos;s<sp/>hierarchical<sp/>tree<sp/>structure</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/>++imguiNodeId;</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>ainode.mNumChildren;<sp/>++i<sp/>)</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pNode-&gt;addChild(<sp/>std::move(<sp/>parseModelNodeGraph(<sp/>pNode.get(),<sp/>*ainode.mChildren[i],<sp/>imguiNodeId,<sp/>initialScale<sp/>)<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>pNode;</highlight></codeline>
+<codeline lineno="318"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/MODEL.CPP"/>
+  </compounddef>
+</doxygen>

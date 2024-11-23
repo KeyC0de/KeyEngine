@@ -1,0 +1,71 @@
+\doxysection{Graphics\+::Adapter Class Reference}
+\hypertarget{classGraphics_1_1Adapter}{}\label{classGraphics_1_1Adapter}\index{Graphics::Adapter@{Graphics::Adapter}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGraphics_1_1Adapter_a075d6b4e89a60bf695d724379161751e_a075d6b4e89a60bf695d724379161751e}{Adapter}} (IDXGIAdapter \texorpdfstring{$\ast$}{*}p\+Adapter)
+\item 
+const DXGI\+\_\+\+ADAPTER\+\_\+\+DESC \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGraphics_1_1Adapter_ae672fea008e3fd6b33932f597470af18_ae672fea008e3fd6b33932f597470af18}{get\+Desc}} () const noexcept
+\item 
+IDXGIAdapter \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGraphics_1_1Adapter_a2cbe03324f6a33d65eb030144fda67f0_a2cbe03324f6a33d65eb030144fda67f0}{get\+Adapter}} () const noexcept
+\item 
+void \mbox{\hyperlink{classGraphics_1_1Adapter_ad40a2841488cf71cbee71eb9eeb12c72_ad40a2841488cf71cbee71eb9eeb12c72}{get\+VRam\+Details}} () const noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ IDXGIAdapter $>$ \mbox{\hyperlink{classGraphics_1_1Adapter_a6b5496c21afd87729babc3a5dffe7a1d_a6b5496c21afd87729babc3a5dffe7a1d}{m\+\_\+p\+Adapter}}
+\item 
+DXGI\+\_\+\+ADAPTER\+\_\+\+DESC \mbox{\hyperlink{classGraphics_1_1Adapter_a39682db9c01cedf9e9df01eae4509e7d_a39682db9c01cedf9e9df01eae4509e7d}{m\+\_\+desc}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classGraphics_1_1Adapter_a075d6b4e89a60bf695d724379161751e_a075d6b4e89a60bf695d724379161751e}\index{Graphics::Adapter@{Graphics::Adapter}!Adapter@{Adapter}}
+\index{Adapter@{Adapter}!Graphics::Adapter@{Graphics::Adapter}}
+\doxysubsubsection{\texorpdfstring{Adapter()}{Adapter()}}
+{\footnotesize\ttfamily \label{classGraphics_1_1Adapter_a075d6b4e89a60bf695d724379161751e_a075d6b4e89a60bf695d724379161751e} 
+Graphics\+::\+Adapter\+::\+Adapter (\begin{DoxyParamCaption}\item[{IDXGIAdapter \texorpdfstring{$\ast$}{*}}]{p\+Adapter}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classGraphics_1_1Adapter_a2cbe03324f6a33d65eb030144fda67f0_a2cbe03324f6a33d65eb030144fda67f0}\index{Graphics::Adapter@{Graphics::Adapter}!getAdapter@{getAdapter}}
+\index{getAdapter@{getAdapter}!Graphics::Adapter@{Graphics::Adapter}}
+\doxysubsubsection{\texorpdfstring{getAdapter()}{getAdapter()}}
+{\footnotesize\ttfamily \label{classGraphics_1_1Adapter_a2cbe03324f6a33d65eb030144fda67f0_a2cbe03324f6a33d65eb030144fda67f0} 
+IDXGIAdapter \texorpdfstring{$\ast$}{*} Graphics\+::\+Adapter\+::get\+Adapter (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classGraphics_1_1Adapter_ae672fea008e3fd6b33932f597470af18_ae672fea008e3fd6b33932f597470af18}\index{Graphics::Adapter@{Graphics::Adapter}!getDesc@{getDesc}}
+\index{getDesc@{getDesc}!Graphics::Adapter@{Graphics::Adapter}}
+\doxysubsubsection{\texorpdfstring{getDesc()}{getDesc()}}
+{\footnotesize\ttfamily \label{classGraphics_1_1Adapter_ae672fea008e3fd6b33932f597470af18_ae672fea008e3fd6b33932f597470af18} 
+const DXGI\+\_\+\+ADAPTER\+\_\+\+DESC \texorpdfstring{$\ast$}{*} Graphics\+::\+Adapter\+::get\+Desc (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classGraphics_1_1Adapter_ad40a2841488cf71cbee71eb9eeb12c72_ad40a2841488cf71cbee71eb9eeb12c72}\index{Graphics::Adapter@{Graphics::Adapter}!getVRamDetails@{getVRamDetails}}
+\index{getVRamDetails@{getVRamDetails}!Graphics::Adapter@{Graphics::Adapter}}
+\doxysubsubsection{\texorpdfstring{getVRamDetails()}{getVRamDetails()}}
+{\footnotesize\ttfamily \label{classGraphics_1_1Adapter_ad40a2841488cf71cbee71eb9eeb12c72_ad40a2841488cf71cbee71eb9eeb12c72} 
+void Graphics\+::\+Adapter\+::get\+VRam\+Details (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classGraphics_1_1Adapter_a39682db9c01cedf9e9df01eae4509e7d_a39682db9c01cedf9e9df01eae4509e7d}\index{Graphics::Adapter@{Graphics::Adapter}!m\_desc@{m\_desc}}
+\index{m\_desc@{m\_desc}!Graphics::Adapter@{Graphics::Adapter}}
+\doxysubsubsection{\texorpdfstring{m\_desc}{m\_desc}}
+{\footnotesize\ttfamily \label{classGraphics_1_1Adapter_a39682db9c01cedf9e9df01eae4509e7d_a39682db9c01cedf9e9df01eae4509e7d} 
+DXGI\+\_\+\+ADAPTER\+\_\+\+DESC Graphics\+::\+Adapter\+::m\+\_\+desc\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGraphics_1_1Adapter_a6b5496c21afd87729babc3a5dffe7a1d_a6b5496c21afd87729babc3a5dffe7a1d}\index{Graphics::Adapter@{Graphics::Adapter}!m\_pAdapter@{m\_pAdapter}}
+\index{m\_pAdapter@{m\_pAdapter}!Graphics::Adapter@{Graphics::Adapter}}
+\doxysubsubsection{\texorpdfstring{m\_pAdapter}{m\_pAdapter}}
+{\footnotesize\ttfamily \label{classGraphics_1_1Adapter_a6b5496c21afd87729babc3a5dffe7a1d_a6b5496c21afd87729babc3a5dffe7a1d} 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$IDXGIAdapter$>$ Graphics\+::\+Adapter\+::m\+\_\+p\+Adapter\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{graphics_8h}{graphics.\+h}}\item 
+src/\mbox{\hyperlink{graphics_8cpp}{graphics.\+cpp}}\end{DoxyCompactItemize}

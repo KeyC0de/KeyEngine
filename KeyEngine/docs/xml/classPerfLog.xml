@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classPerfLog" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>PerfLog</compoundname>
+    <basecompoundref refid="classNonCopyable" prot="public" virt="non-virtual">NonCopyable</basecompoundref>
+    <includes refid="performance__log_8h" local="no">performance_log.h</includes>
+    <innerclass refid="structPerfLog_1_1Entry" prot="private">PerfLog::Entry</innerclass>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classPerfLog_a568bef633794f1215d2047031423abdc_1a568bef633794f1215d2047031423abdc" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string PerfLog::m_outFileName</definition>
+        <argsstring></argsstring>
+        <name>m_outFileName</name>
+        <qualifiedname>PerfLog::m_outFileName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/performance_log.h" line="23" column="13" bodyfile="inc/performance_log.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPerfLog_a45f5e8e8e7df0c0491a65e78189290e9_1a45f5e8e8e7df0c0491a65e78189290e9" prot="private" static="no" mutable="no">
+        <type><ref refid="classKeyTimer" kindref="compound">KeyTimer</ref>&lt; std::chrono::milliseconds &gt;</type>
+        <definition>KeyTimer&lt;std::chrono::milliseconds&gt; PerfLog::m_timer</definition>
+        <argsstring></argsstring>
+        <name>m_timer</name>
+        <qualifiedname>PerfLog::m_timer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/performance_log.h" line="24" column="10" bodyfile="inc/performance_log.h" bodystart="24" bodyend="-1"/>
+        <referencedby refid="classPerfLog_aeb1bf27a3021af63de8a7e13cb641470_1aeb1bf27a3021af63de8a7e13cb641470" compoundref="performance__log_8cpp" startline="64" endline="68">lap</referencedby>
+        <referencedby refid="classPerfLog_aa026ecc1939d4325f1fbc7efd4f8d199_1aa026ecc1939d4325f1fbc7efd4f8d199" compoundref="performance__log_8cpp" startline="57" endline="62">start</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classPerfLog_a3ead950de0f92ad700021a70bc8d5a0f_1a3ead950de0f92ad700021a70bc8d5a0f" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structPerfLog_1_1Entry" kindref="compound">Entry</ref> &gt;</type>
+        <definition>std::vector&lt;Entry&gt; PerfLog::m_entries</definition>
+        <argsstring></argsstring>
+        <name>m_entries</name>
+        <qualifiedname>PerfLog::m_entries</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/performance_log.h" line="25" column="13" bodyfile="inc/performance_log.h" bodystart="25" bodyend="-1"/>
+        <referencedby refid="classPerfLog_a6fb5591e1f65a67f51b93f3044e7014a_1a6fb5591e1f65a67f51b93f3044e7014a" compoundref="performance__log_8cpp" startline="31" endline="55">flushToFile</referencedby>
+        <referencedby refid="classPerfLog_aeb1bf27a3021af63de8a7e13cb641470_1aeb1bf27a3021af63de8a7e13cb641470" compoundref="performance__log_8cpp" startline="64" endline="68">lap</referencedby>
+        <referencedby refid="classPerfLog_aa026ecc1939d4325f1fbc7efd4f8d199_1aa026ecc1939d4325f1fbc7efd4f8d199" compoundref="performance__log_8cpp" startline="57" endline="62">start</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classPerfLog_a90964caf389c5e5190f688919dfaed97_1a90964caf389c5e5190f688919dfaed97" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>PerfLog::PerfLog</definition>
+        <argsstring>(const std::string &amp;outFileName=&quot;perfTest.txt&quot;) noexcept</argsstring>
+        <name>PerfLog</name>
+        <qualifiedname>PerfLog::PerfLog</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>outFileName</declname>
+          <defval>&quot;perfTest.txt&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/performance_log.h" line="27" column="1" bodyfile="src/performance_log.cpp" bodystart="5" bodyend="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classPerfLog_aa7678503719df703eabb441b35e88642_1aa7678503719df703eabb441b35e88642" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PerfLog::~PerfLog</definition>
+        <argsstring>()</argsstring>
+        <name>~PerfLog</name>
+        <qualifiedname>PerfLog::~PerfLog</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/performance_log.h" line="28" column="1" bodyfile="src/performance_log.cpp" bodystart="12" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classPerfLog_aa026ecc1939d4325f1fbc7efd4f8d199_1aa026ecc1939d4325f1fbc7efd4f8d199" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PerfLog::start</definition>
+        <argsstring>(const std::string &amp;lbl=&quot;&quot;) noexcept</argsstring>
+        <name>start</name>
+        <qualifiedname>PerfLog::start</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>lbl</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/performance_log.h" line="30" column="6" bodyfile="src/performance_log.cpp" bodystart="57" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classPerfLog_aeb1bf27a3021af63de8a7e13cb641470_1aeb1bf27a3021af63de8a7e13cb641470" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PerfLog::lap</definition>
+        <argsstring>(const std::string &amp;lbl=&quot;&quot;) noexcept</argsstring>
+        <name>lap</name>
+        <qualifiedname>PerfLog::lap</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>lbl</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/performance_log.h" line="31" column="6" bodyfile="src/performance_log.cpp" bodystart="64" bodyend="68"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classPerfLog_a6fb5591e1f65a67f51b93f3044e7014a_1a6fb5591e1f65a67f51b93f3044e7014a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PerfLog::flushToFile</definition>
+        <argsstring>()</argsstring>
+        <name>flushToFile</name>
+        <qualifiedname>PerfLog::flushToFile</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/performance_log.h" line="33" column="6" bodyfile="src/performance_log.cpp" bodystart="31" bodyend="55"/>
+        <referencedby refid="classPerfLog_aa7678503719df703eabb441b35e88642_1aa7678503719df703eabb441b35e88642" compoundref="performance__log_8cpp" startline="12" endline="15">~PerfLog</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>NonCopyable</label>
+        <link refid="classNonCopyable"/>
+      </node>
+      <node id="1">
+        <label>PerfLog</label>
+        <link refid="classPerfLog"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>KeyTimer&lt; std::chrono::milliseconds &gt;</label>
+        <link refid="classKeyTimer"/>
+        <childnode refid="4" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>NonCopyable</label>
+        <link refid="classNonCopyable"/>
+      </node>
+      <node id="4">
+        <label>NonCopyableAndNonMovable</label>
+        <link refid="classNonCopyableAndNonMovable"/>
+      </node>
+      <node id="1">
+        <label>PerfLog</label>
+        <link refid="classPerfLog"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>m_timer</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/performance_log.h" line="10" column="1" bodyfile="inc/performance_log.h" bodystart="12" bodyend="34"/>
+    <listofallmembers>
+      <member refid="classPerfLog_a6fb5591e1f65a67f51b93f3044e7014a_1a6fb5591e1f65a67f51b93f3044e7014a" prot="private" virt="non-virtual"><scope>PerfLog</scope><name>flushToFile</name></member>
+      <member refid="classPerfLog_aeb1bf27a3021af63de8a7e13cb641470_1aeb1bf27a3021af63de8a7e13cb641470" prot="public" virt="non-virtual"><scope>PerfLog</scope><name>lap</name></member>
+      <member refid="classPerfLog_a3ead950de0f92ad700021a70bc8d5a0f_1a3ead950de0f92ad700021a70bc8d5a0f" prot="private" virt="non-virtual"><scope>PerfLog</scope><name>m_entries</name></member>
+      <member refid="classPerfLog_a568bef633794f1215d2047031423abdc_1a568bef633794f1215d2047031423abdc" prot="private" virt="non-virtual"><scope>PerfLog</scope><name>m_outFileName</name></member>
+      <member refid="classPerfLog_a45f5e8e8e7df0c0491a65e78189290e9_1a45f5e8e8e7df0c0491a65e78189290e9" prot="private" virt="non-virtual"><scope>PerfLog</scope><name>m_timer</name></member>
+      <member refid="classNonCopyable_a809b6e4ade7ae32f6d248f2a3b783d45_1a809b6e4ade7ae32f6d248f2a3b783d45" prot="public" virt="non-virtual"><scope>PerfLog</scope><name>NonCopyable</name></member>
+      <member refid="classNonCopyable_a15aa3015488bb26c47ded914cb630cf5_1a15aa3015488bb26c47ded914cb630cf5" prot="public" virt="non-virtual"><scope>PerfLog</scope><name>NonCopyable</name></member>
+      <member refid="classNonCopyable_a487646562ae30ece23d7638f2aed1dde_1a487646562ae30ece23d7638f2aed1dde" prot="public" virt="non-virtual"><scope>PerfLog</scope><name>NonCopyable</name></member>
+      <member refid="classNonCopyable_af716e4cfb79381710ef4490414939ae9_1af716e4cfb79381710ef4490414939ae9" prot="public" virt="non-virtual"><scope>PerfLog</scope><name>NonCopyable</name></member>
+      <member refid="classNonCopyable_af4788b57da9a9faa570c754c22c724f5_1af4788b57da9a9faa570c754c22c724f5" prot="public" virt="non-virtual"><scope>PerfLog</scope><name>operator=</name></member>
+      <member refid="classNonCopyable_ae032ca32cda9c836c27b28eb6a087d18_1ae032ca32cda9c836c27b28eb6a087d18" prot="public" virt="non-virtual"><scope>PerfLog</scope><name>operator=</name></member>
+      <member refid="classNonCopyable_af81816bd4c2c4421a6eab98843ead6e4_1af81816bd4c2c4421a6eab98843ead6e4" prot="public" virt="non-virtual"><scope>PerfLog</scope><name>operator=</name></member>
+      <member refid="classPerfLog_a90964caf389c5e5190f688919dfaed97_1a90964caf389c5e5190f688919dfaed97" prot="public" virt="non-virtual"><scope>PerfLog</scope><name>PerfLog</name></member>
+      <member refid="classPerfLog_aa026ecc1939d4325f1fbc7efd4f8d199_1aa026ecc1939d4325f1fbc7efd4f8d199" prot="public" virt="non-virtual"><scope>PerfLog</scope><name>start</name></member>
+      <member refid="classNonCopyable_a3e461fb46c72b9a5af7df7e74dbd899e_1a3e461fb46c72b9a5af7df7e74dbd899e" prot="protected" virt="non-virtual"><scope>PerfLog</scope><name>~NonCopyable</name></member>
+      <member refid="classPerfLog_aa7678503719df703eabb441b35e88642_1aa7678503719df703eabb441b35e88642" prot="public" virt="non-virtual"><scope>PerfLog</scope><name>~PerfLog</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,241 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classgui_1_1UIPass" kind="class" language="C++" prot="public">
+    <compoundname>gui::UIPass</compoundname>
+    <basecompoundref refid="classGraphicsFriend" prot="public" virt="non-virtual">GraphicsFriend</basecompoundref>
+    <includes refid="ui__pass_8h" local="no">ui_pass.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classgui_1_1UIPass_a0b0211f474ae7c90cc23eb3aa7e47cb4_1a0b0211f474ae7c90cc23eb3aa7e47cb4" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classgui_1_1Component" kindref="compound">Component</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;Component&gt; gui::UIPass::m_pRoot</definition>
+        <argsstring></argsstring>
+        <name>m_pRoot</name>
+        <qualifiedname>gui::UIPass::m_pRoot</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/ui_pass.h" line="27" column="17" bodyfile="inc/ui_pass.h" bodystart="27" bodyend="-1"/>
+        <referencedby refid="classgui_1_1UIPass_a31c2ddfaea8547324c2b2708ffb111b1_1a31c2ddfaea8547324c2b2708ffb111b1" compoundref="ui__pass_8cpp" startline="104" endline="107">getRoot</referencedby>
+        <referencedby refid="classgui_1_1UIPass_a0ae0211dcaa6b7289d14b062dc1ff8ea_1a0ae0211dcaa6b7289d14b062dc1ff8ea" compoundref="ui__pass_8cpp" startline="99" endline="102">getRoot</referencedby>
+        <referencedby refid="classgui_1_1UIPass_a020ffc12ad8cc707ffa8e427361831ae_1a020ffc12ad8cc707ffa8e427361831ae" compoundref="ui__pass_8cpp" startline="29" endline="85">recreate</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classgui_1_1UIPass_a729c5a16e681f696a5adbcc74e6a0f2f_1a729c5a16e681f696a5adbcc74e6a0f2f" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; DirectX::SpriteBatch &gt;</type>
+        <definition>std::unique_ptr&lt;DirectX::SpriteBatch&gt; gui::UIPass::m_pSpriteBatch</definition>
+        <argsstring></argsstring>
+        <name>m_pSpriteBatch</name>
+        <qualifiedname>gui::UIPass::m_pSpriteBatch</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/ui_pass.h" line="28" column="17" bodyfile="inc/ui_pass.h" bodystart="28" bodyend="-1"/>
+        <referencedby refid="classgui_1_1UIPass_a020ffc12ad8cc707ffa8e427361831ae_1a020ffc12ad8cc707ffa8e427361831ae" compoundref="ui__pass_8cpp" startline="29" endline="85">recreate</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classgui_1_1UIPass_aaaa613b46c210567ab1849fde72cd737_1aaaa613b46c210567ab1849fde72cd737" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; DirectX::SpriteFont &gt;</type>
+        <definition>std::unique_ptr&lt;DirectX::SpriteFont&gt; gui::UIPass::m_pSpriteFont</definition>
+        <argsstring></argsstring>
+        <name>m_pSpriteFont</name>
+        <qualifiedname>gui::UIPass::m_pSpriteFont</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/ui_pass.h" line="29" column="17" bodyfile="inc/ui_pass.h" bodystart="29" bodyend="-1"/>
+        <referencedby refid="classgui_1_1UIPass_a020ffc12ad8cc707ffa8e427361831ae_1a020ffc12ad8cc707ffa8e427361831ae" compoundref="ui__pass_8cpp" startline="29" endline="85">recreate</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classgui_1_1UIPass_a4233726966cf31e5ccb392234fb53616_1a4233726966cf31e5ccb392234fb53616" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classRasterizerState" kindref="compound">RasterizerState</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;RasterizerState&gt; gui::UIPass::m_pRasterizerState</definition>
+        <argsstring></argsstring>
+        <name>m_pRasterizerState</name>
+        <qualifiedname>gui::UIPass::m_pRasterizerState</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/ui_pass.h" line="30" column="17" bodyfile="inc/ui_pass.h" bodystart="30" bodyend="-1"/>
+        <referencedby refid="classgui_1_1UIPass_a020ffc12ad8cc707ffa8e427361831ae_1a020ffc12ad8cc707ffa8e427361831ae" compoundref="ui__pass_8cpp" startline="29" endline="85">recreate</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classgui_1_1UIPass_adf242a98de9ca144f16b77fa7f4714f8_1adf242a98de9ca144f16b77fa7f4714f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>gui::UIPass::UIPass</definition>
+        <argsstring>(Graphics &amp;gfx)</argsstring>
+        <name>UIPass</name>
+        <qualifiedname>gui::UIPass::UIPass</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/ui_pass.h" line="32" column="1" bodyfile="src/ui_pass.cpp" bodystart="20" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classgui_1_1UIPass_a3381a5aaacd06f25dc83043e8dfa2296_1a3381a5aaacd06f25dc83043e8dfa2296" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>gui::UIPass::~UIPass</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>~UIPass</name>
+        <qualifiedname>gui::UIPass::~UIPass</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/ui_pass.h" line="34" column="1" bodyfile="src/ui_pass.cpp" bodystart="25" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classgui_1_1UIPass_a020ffc12ad8cc707ffa8e427361831ae_1a020ffc12ad8cc707ffa8e427361831ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void gui::UIPass::recreate</definition>
+        <argsstring>(Graphics &amp;gfx)</argsstring>
+        <name>recreate</name>
+        <qualifiedname>gui::UIPass::recreate</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/ui_pass.h" line="36" column="6" bodyfile="src/ui_pass.cpp" bodystart="29" bodyend="85"/>
+        <referencedby refid="classgui_1_1UIPass_adf242a98de9ca144f16b77fa7f4714f8_1adf242a98de9ca144f16b77fa7f4714f8" compoundref="ui__pass_8cpp" startline="20" endline="23">UIPass</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classgui_1_1UIPass_ab34b6f0aba97ebace64355b7a0b701e9_1ab34b6f0aba97ebace64355b7a0b701e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void gui::UIPass::update</definition>
+        <argsstring>(const float dt, const std::pair&lt; int, int &gt; inputXandY, const float lerpBetweenFrames) cond_noex</argsstring>
+        <name>update</name>
+        <qualifiedname>gui::UIPass::update</qualifiedname>
+        <param>
+          <type>const float</type>
+          <declname>dt</declname>
+        </param>
+        <param>
+          <type>const std::pair&lt; int, int &gt;</type>
+          <declname>inputXandY</declname>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>lerpBetweenFrames</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/ui_pass.h" line="37" column="6" bodyfile="src/ui_pass.cpp" bodystart="87" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classgui_1_1UIPass_af36b0efb0e82c0b8ea32a3a8da8c53b0_1af36b0efb0e82c0b8ea32a3a8da8c53b0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void gui::UIPass::render</definition>
+        <argsstring>(Graphics &amp;gfx) const cond_noex</argsstring>
+        <name>render</name>
+        <qualifiedname>gui::UIPass::render</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/ui_pass.h" line="38" column="6" bodyfile="src/ui_pass.cpp" bodystart="94" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="classgui_1_1UIPass_a0ae0211dcaa6b7289d14b062dc1ff8ea_1a0ae0211dcaa6b7289d14b062dc1ff8ea" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const std::unique_ptr&lt; <ref refid="classgui_1_1Component" kindref="compound">Component</ref> &gt; &amp;</type>
+        <definition>const std::unique_ptr&lt; Component &gt; &amp; gui::UIPass::getRoot</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getRoot</name>
+        <qualifiedname>gui::UIPass::getRoot</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/ui_pass.h" line="39" column="23" bodyfile="src/ui_pass.cpp" bodystart="99" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="classgui_1_1UIPass_a31c2ddfaea8547324c2b2708ffb111b1_1a31c2ddfaea8547324c2b2708ffb111b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classgui_1_1Component" kindref="compound">Component</ref> &gt; &amp;</type>
+        <definition>std::unique_ptr&lt; Component &gt; &amp; gui::UIPass::getRoot</definition>
+        <argsstring>()</argsstring>
+        <name>getRoot</name>
+        <qualifiedname>gui::UIPass::getRoot</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/ui_pass.h" line="40" column="17" bodyfile="src/ui_pass.cpp" bodystart="104" bodyend="107"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>GraphicsFriend</label>
+        <link refid="classGraphicsFriend"/>
+      </node>
+      <node id="1">
+        <label>gui::UIPass</label>
+        <link refid="classgui_1_1UIPass"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>GraphicsFriend</label>
+        <link refid="classGraphicsFriend"/>
+      </node>
+      <node id="1">
+        <label>gui::UIPass</label>
+        <link refid="classgui_1_1UIPass"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/ui_pass.h" line="24" column="1" bodyfile="inc/ui_pass.h" bodystart="26" bodyend="41"/>
+    <listofallmembers>
+      <member refid="classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_1a175df79f82ab5a6dad1df24b5a242ef7" prot="protected" virt="non-virtual"><scope>gui::UIPass</scope><name>getDevice</name></member>
+      <member refid="classGraphicsFriend_a619e32893ab49ea6c5200e7c2d52e2f2_1a619e32893ab49ea6c5200e7c2d52e2f2" prot="protected" virt="non-virtual"><scope>gui::UIPass</scope><name>getDeviceContext</name></member>
+      <member refid="classgui_1_1UIPass_a0ae0211dcaa6b7289d14b062dc1ff8ea_1a0ae0211dcaa6b7289d14b062dc1ff8ea" prot="public" virt="non-virtual"><scope>gui::UIPass</scope><name>getRoot</name></member>
+      <member refid="classgui_1_1UIPass_a31c2ddfaea8547324c2b2708ffb111b1_1a31c2ddfaea8547324c2b2708ffb111b1" prot="public" virt="non-virtual"><scope>gui::UIPass</scope><name>getRoot</name></member>
+      <member refid="classgui_1_1UIPass_a4233726966cf31e5ccb392234fb53616_1a4233726966cf31e5ccb392234fb53616" prot="private" virt="non-virtual"><scope>gui::UIPass</scope><name>m_pRasterizerState</name></member>
+      <member refid="classgui_1_1UIPass_a0b0211f474ae7c90cc23eb3aa7e47cb4_1a0b0211f474ae7c90cc23eb3aa7e47cb4" prot="private" virt="non-virtual"><scope>gui::UIPass</scope><name>m_pRoot</name></member>
+      <member refid="classgui_1_1UIPass_a729c5a16e681f696a5adbcc74e6a0f2f_1a729c5a16e681f696a5adbcc74e6a0f2f" prot="private" virt="non-virtual"><scope>gui::UIPass</scope><name>m_pSpriteBatch</name></member>
+      <member refid="classgui_1_1UIPass_aaaa613b46c210567ab1849fde72cd737_1aaaa613b46c210567ab1849fde72cd737" prot="private" virt="non-virtual"><scope>gui::UIPass</scope><name>m_pSpriteFont</name></member>
+      <member refid="classgui_1_1UIPass_a020ffc12ad8cc707ffa8e427361831ae_1a020ffc12ad8cc707ffa8e427361831ae" prot="public" virt="non-virtual"><scope>gui::UIPass</scope><name>recreate</name></member>
+      <member refid="classgui_1_1UIPass_af36b0efb0e82c0b8ea32a3a8da8c53b0_1af36b0efb0e82c0b8ea32a3a8da8c53b0" prot="public" virt="non-virtual"><scope>gui::UIPass</scope><name>render</name></member>
+      <member refid="classgui_1_1UIPass_adf242a98de9ca144f16b77fa7f4714f8_1adf242a98de9ca144f16b77fa7f4714f8" prot="public" virt="non-virtual"><scope>gui::UIPass</scope><name>UIPass</name></member>
+      <member refid="classgui_1_1UIPass_ab34b6f0aba97ebace64355b7a0b701e9_1ab34b6f0aba97ebace64355b7a0b701e9" prot="public" virt="non-virtual"><scope>gui::UIPass</scope><name>update</name></member>
+      <member refid="classgui_1_1UIPass_a3381a5aaacd06f25dc83043e8dfa2296_1a3381a5aaacd06f25dc83043e8dfa2296" prot="public" virt="non-virtual"><scope>gui::UIPass</scope><name>~UIPass</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

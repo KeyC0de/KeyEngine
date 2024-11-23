@@ -1,0 +1,323 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classKeyException" kind="class" language="C++" prot="public">
+    <compoundname>KeyException</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::exception</basecompoundref>
+    <derivedcompoundref refid="classBindableException" prot="public" virt="non-virtual">BindableException</derivedcompoundref>
+    <derivedcompoundref refid="classBitmap_1_1BitmapException" prot="public" virt="non-virtual">Bitmap::BitmapException</derivedcompoundref>
+    <derivedcompoundref refid="classGame_1_1GameException" prot="public" virt="non-virtual">Game&lt; T &gt;::GameException</derivedcompoundref>
+    <derivedcompoundref refid="classGameplayException" prot="public" virt="non-virtual">GameplayException</derivedcompoundref>
+    <derivedcompoundref refid="classGraphics_1_1GraphicsException" prot="public" virt="non-virtual">Graphics::GraphicsException</derivedcompoundref>
+    <derivedcompoundref refid="classUtilException" prot="public" virt="non-virtual">UtilException</derivedcompoundref>
+    <derivedcompoundref refid="classWindow_1_1WindowException" prot="public" virt="non-virtual">Window::WindowException</derivedcompoundref>
+    <derivedcompoundref refid="classren_1_1RendererException" prot="public" virt="non-virtual">ren::RendererException</derivedcompoundref>
+    <includes refid="key__exception_8h" local="no">key_exception.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classKeyException_a2a49256c37903e810c301b035cf65837_1a2a49256c37903e810c301b035cf65837" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int KeyException::m_line</definition>
+        <argsstring></argsstring>
+        <name>m_line</name>
+        <qualifiedname>KeyException::m_line</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_exception.h" line="17" column="5" bodyfile="inc/key_exception.h" bodystart="17" bodyend="-1"/>
+        <referencedby refid="classKeyException_a72f4af19d1ab0e9cce5eb6d45fca7729_1a72f4af19d1ab0e9cce5eb6d45fca7729" compoundref="key__exception_8cpp" startline="46" endline="49">getLine</referencedby>
+        <referencedby refid="classKeyException_a9956fdc871308553eec7b047f756690a_1a9956fdc871308553eec7b047f756690a" compoundref="key__exception_8cpp" startline="19" endline="38">what</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classKeyException_a62f1ed04b6e0c843f3ea1e338dc426d8_1a62f1ed04b6e0c843f3ea1e338dc426d8" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string KeyException::m_file</definition>
+        <argsstring></argsstring>
+        <name>m_file</name>
+        <qualifiedname>KeyException::m_file</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_exception.h" line="18" column="13" bodyfile="inc/key_exception.h" bodystart="18" bodyend="-1"/>
+        <referencedby refid="classKeyException_acf42841e4d4ececba96628e677b4cf41_1acf42841e4d4ececba96628e677b4cf41" compoundref="key__exception_8cpp" startline="51" endline="54">getFile</referencedby>
+        <referencedby refid="classKeyException_a9956fdc871308553eec7b047f756690a_1a9956fdc871308553eec7b047f756690a" compoundref="key__exception_8cpp" startline="19" endline="38">what</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classKeyException_ac11062a919dcfe52321e9f948ce60958_1ac11062a919dcfe52321e9f948ce60958" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string KeyException::m_function</definition>
+        <argsstring></argsstring>
+        <name>m_function</name>
+        <qualifiedname>KeyException::m_function</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_exception.h" line="19" column="13" bodyfile="inc/key_exception.h" bodystart="19" bodyend="-1"/>
+        <referencedby refid="classKeyException_ad75c6511759e522f2b3bcf13b0d23f30_1ad75c6511759e522f2b3bcf13b0d23f30" compoundref="key__exception_8cpp" startline="56" endline="59">getFunction</referencedby>
+        <referencedby refid="classKeyException_a9956fdc871308553eec7b047f756690a_1a9956fdc871308553eec7b047f756690a" compoundref="key__exception_8cpp" startline="19" endline="38">what</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classKeyException_ae11b160d146427ad3887a1af3e2dc2ac_1ae11b160d146427ad3887a1af3e2dc2ac" prot="protected" static="no" mutable="yes">
+        <type>std::string</type>
+        <definition>std::string KeyException::m_description</definition>
+        <argsstring></argsstring>
+        <name>m_description</name>
+        <qualifiedname>KeyException::m_description</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_exception.h" line="21" column="21" bodyfile="inc/key_exception.h" bodystart="21" bodyend="-1"/>
+        <referencedby refid="classKeyException_a9956fdc871308553eec7b047f756690a_1a9956fdc871308553eec7b047f756690a" compoundref="key__exception_8cpp" startline="19" endline="38">what</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classKeyException_a53c95253098f0cc672876c35d4b1911d_1a53c95253098f0cc672876c35d4b1911d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>KeyException::KeyException</definition>
+        <argsstring>(const int line, const char *file, const char *function, const std::string &amp;msg) noexcept</argsstring>
+        <name>KeyException</name>
+        <qualifiedname>KeyException::KeyException</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>file</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>function</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_exception.h" line="23" column="1" bodyfile="src/key_exception.cpp" bodystart="5" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classKeyException_a954cd46c9cc2dd054fd680bb70aef678_1a954cd46c9cc2dd054fd680bb70aef678" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type></type>
+        <definition>virtual KeyException::~KeyException</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>~KeyException</name>
+        <qualifiedname>KeyException::~KeyException</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_exception.h" line="24" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classKeyException_a9956fdc871308553eec7b047f756690a_1a9956fdc871308553eec7b047f756690a" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>const char *</type>
+        <definition>const char * KeyException::what</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>what</name>
+        <qualifiedname>KeyException::what</qualifiedname>
+        <reimplementedby refid="classBindableException_a7bc81c9702e594b4e8f51f78d846da3b_1a7bc81c9702e594b4e8f51f78d846da3b">what</reimplementedby>
+        <reimplementedby refid="classBitmap_1_1BitmapException_ae3a114051b1ccd6270778d5b64bb6e9a_1ae3a114051b1ccd6270778d5b64bb6e9a">what</reimplementedby>
+        <reimplementedby refid="classGame_1_1GameException_afb9e4db94a5338c84bc2957edd0fee93_1afb9e4db94a5338c84bc2957edd0fee93">what</reimplementedby>
+        <reimplementedby refid="classGameplayException_aad769d448640333a2dd4902bac7ae62b_1aad769d448640333a2dd4902bac7ae62b">what</reimplementedby>
+        <reimplementedby refid="classGraphics_1_1GraphicsException_a0b6d2d087b97cb0d7cadf25299909e90_1a0b6d2d087b97cb0d7cadf25299909e90">what</reimplementedby>
+        <reimplementedby refid="classren_1_1RendererException_aa379f4876899140ed5129cdca48c316a_1aa379f4876899140ed5129cdca48c316a">what</reimplementedby>
+        <reimplementedby refid="classUtilException_ae0e75ef62cc274b85e19d850ac0dbc5a_1ae0e75ef62cc274b85e19d850ac0dbc5a">what</reimplementedby>
+        <reimplementedby refid="classWindow_1_1WindowException_a8b6ed4413bb89753ed13bbaea38b942c_1a8b6ed4413bb89753ed13bbaea38b942c">what</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_exception.h" line="26" column="20" bodyfile="src/key_exception.cpp" bodystart="19" bodyend="38"/>
+        <referencedby refid="classBindableException_a7bc81c9702e594b4e8f51f78d846da3b_1a7bc81c9702e594b4e8f51f78d846da3b" compoundref="bindable__exception_8cpp" startline="20" endline="23">BindableException::what</referencedby>
+        <referencedby refid="classBitmap_1_1BitmapException_ae3a114051b1ccd6270778d5b64bb6e9a_1ae3a114051b1ccd6270778d5b64bb6e9a" compoundref="bitmap_8cpp" startline="187" endline="190">Bitmap::BitmapException::what</referencedby>
+        <referencedby refid="classGame_1_1GameException_afb9e4db94a5338c84bc2957edd0fee93_1afb9e4db94a5338c84bc2957edd0fee93" compoundref="game_8cpp" startline="151" endline="154">Game&lt; T &gt;::GameException::what</referencedby>
+        <referencedby refid="classGameplayException_aad769d448640333a2dd4902bac7ae62b_1aad769d448640333a2dd4902bac7ae62b" compoundref="gameplay__exception_8cpp" startline="20" endline="23">GameplayException::what</referencedby>
+        <referencedby refid="classGraphics_1_1GraphicsException_a0b6d2d087b97cb0d7cadf25299909e90_1a0b6d2d087b97cb0d7cadf25299909e90" compoundref="graphics_8cpp" startline="1341" endline="1344">Graphics::GraphicsException::what</referencedby>
+        <referencedby refid="classren_1_1RendererException_aa379f4876899140ed5129cdca48c316a_1aa379f4876899140ed5129cdca48c316a" compoundref="renderer__exception_8cpp" startline="19" endline="22">ren::RendererException::what</referencedby>
+        <referencedby refid="classUtilException_ae0e75ef62cc274b85e19d850ac0dbc5a_1ae0e75ef62cc274b85e19d850ac0dbc5a" compoundref="util__exception_8cpp" startline="20" endline="23">UtilException::what</referencedby>
+        <referencedby refid="classWindow_1_1WindowException_a8b6ed4413bb89753ed13bbaea38b942c_1a8b6ed4413bb89753ed13bbaea38b942c" compoundref="window_8cpp" startline="1721" endline="1724">Window::WindowException::what</referencedby>
+        <referencedby refid="main_8cpp_afe0d6866f7c067e4b3768107caa40799_1afe0d6866f7c067e4b3768107caa40799" compoundref="main_8cpp" startline="54" endline="131">wWinMain</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classKeyException_ab841f80e919082619f30053ae78c56c2_1ab841f80e919082619f30053ae78c56c2" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string KeyException::getType</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getType</name>
+        <qualifiedname>KeyException::getType</qualifiedname>
+        <reimplementedby refid="classBindableException_a0d6405405ceff6545de3db76a73a3a71_1a0d6405405ceff6545de3db76a73a3a71">getType</reimplementedby>
+        <reimplementedby refid="classBitmap_1_1BitmapException_a8f57f54af91bdb5eb1f65fe8942cd63f_1a8f57f54af91bdb5eb1f65fe8942cd63f">getType</reimplementedby>
+        <reimplementedby refid="classGame_1_1GameException_a8811f86168cd263e14af0fcffa927ec0_1a8811f86168cd263e14af0fcffa927ec0">getType</reimplementedby>
+        <reimplementedby refid="classGameplayException_a1c6b4a9ac77996f1eea1d1e41a3ba520_1a1c6b4a9ac77996f1eea1d1e41a3ba520">getType</reimplementedby>
+        <reimplementedby refid="classGraphics_1_1GraphicsException_aaab3179bfd3ebd5a2c312593ad9cd10b_1aaab3179bfd3ebd5a2c312593ad9cd10b">getType</reimplementedby>
+        <reimplementedby refid="classren_1_1RendererException_ab62af4f0e850098dd75c03f4ecf8cfb8_1ab62af4f0e850098dd75c03f4ecf8cfb8">getType</reimplementedby>
+        <reimplementedby refid="classUtilException_a2752efa8887758cb0d3ed094cbc45738_1a2752efa8887758cb0d3ed094cbc45738">getType</reimplementedby>
+        <reimplementedby refid="classWindow_1_1WindowException_ad90e3938364bfe58024e3c28b0e639d6_1ad90e3938364bfe58024e3c28b0e639d6">getType</reimplementedby>
+        <briefdescription>
+<para>=================================================== </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_exception.h" line="30" column="21" bodyfile="src/key_exception.cpp" bodystart="41" bodyend="44"/>
+        <referencedby refid="classKeyException_a9956fdc871308553eec7b047f756690a_1a9956fdc871308553eec7b047f756690a" compoundref="key__exception_8cpp" startline="19" endline="38">what</referencedby>
+        <referencedby refid="main_8cpp_afe0d6866f7c067e4b3768107caa40799_1afe0d6866f7c067e4b3768107caa40799" compoundref="main_8cpp" startline="54" endline="131">wWinMain</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classKeyException_a72f4af19d1ab0e9cce5eb6d45fca7729_1a72f4af19d1ab0e9cce5eb6d45fca7729" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned KeyException::getLine</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getLine</name>
+        <qualifiedname>KeyException::getLine</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_exception.h" line="31" column="17" bodyfile="src/key_exception.cpp" bodystart="46" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classKeyException_acf42841e4d4ececba96628e677b4cf41_1acf42841e4d4ececba96628e677b4cf41" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; KeyException::getFile</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getFile</name>
+        <qualifiedname>KeyException::getFile</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_exception.h" line="32" column="26" bodyfile="src/key_exception.cpp" bodystart="51" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="classKeyException_ad75c6511759e522f2b3bcf13b0d23f30_1ad75c6511759e522f2b3bcf13b0d23f30" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; KeyException::getFunction</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getFunction</name>
+        <qualifiedname>KeyException::getFunction</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_exception.h" line="33" column="26" bodyfile="src/key_exception.cpp" bodystart="56" bodyend="59"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Custom exception hierarchy. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>=============================================================</para>
+<para><simplesect kind="author"><para>KeyC0de </para>
+</simplesect>
+<simplesect kind="date"><para>2019/09/11 19:38 <heading level="1">child/specific exception classes are nested in other classes &amp; specify the concrete exception description </heading>
+</para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>BindableException</label>
+        <link refid="classBindableException"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Bitmap::BitmapException</label>
+        <link refid="classBitmap_1_1BitmapException"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Game&lt; T &gt;::GameException</label>
+        <link refid="classGame_1_1GameException"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>GameplayException</label>
+        <link refid="classGameplayException"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>Graphics::GraphicsException</label>
+        <link refid="classGraphics_1_1GraphicsException"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>KeyException</label>
+        <link refid="classKeyException"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>UtilException</label>
+        <link refid="classUtilException"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>Window::WindowException</label>
+        <link refid="classWindow_1_1WindowException"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>ren::RendererException</label>
+        <link refid="classren_1_1RendererException"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::exception</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KeyException</label>
+        <link refid="classKeyException"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::exception</label>
+      </node>
+    </collaborationgraph>
+    <location file="inc/key_exception.h" line="14" column="1" bodyfile="inc/key_exception.h" bodystart="16" bodyend="34"/>
+    <listofallmembers>
+      <member refid="classKeyException_acf42841e4d4ececba96628e677b4cf41_1acf42841e4d4ececba96628e677b4cf41" prot="public" virt="non-virtual"><scope>KeyException</scope><name>getFile</name></member>
+      <member refid="classKeyException_ad75c6511759e522f2b3bcf13b0d23f30_1ad75c6511759e522f2b3bcf13b0d23f30" prot="public" virt="non-virtual"><scope>KeyException</scope><name>getFunction</name></member>
+      <member refid="classKeyException_a72f4af19d1ab0e9cce5eb6d45fca7729_1a72f4af19d1ab0e9cce5eb6d45fca7729" prot="public" virt="non-virtual"><scope>KeyException</scope><name>getLine</name></member>
+      <member refid="classKeyException_ab841f80e919082619f30053ae78c56c2_1ab841f80e919082619f30053ae78c56c2" prot="public" virt="virtual"><scope>KeyException</scope><name>getType</name></member>
+      <member refid="classKeyException_a53c95253098f0cc672876c35d4b1911d_1a53c95253098f0cc672876c35d4b1911d" prot="public" virt="non-virtual"><scope>KeyException</scope><name>KeyException</name></member>
+      <member refid="classKeyException_ae11b160d146427ad3887a1af3e2dc2ac_1ae11b160d146427ad3887a1af3e2dc2ac" prot="protected" virt="non-virtual"><scope>KeyException</scope><name>m_description</name></member>
+      <member refid="classKeyException_a62f1ed04b6e0c843f3ea1e338dc426d8_1a62f1ed04b6e0c843f3ea1e338dc426d8" prot="private" virt="non-virtual"><scope>KeyException</scope><name>m_file</name></member>
+      <member refid="classKeyException_ac11062a919dcfe52321e9f948ce60958_1ac11062a919dcfe52321e9f948ce60958" prot="private" virt="non-virtual"><scope>KeyException</scope><name>m_function</name></member>
+      <member refid="classKeyException_a2a49256c37903e810c301b035cf65837_1a2a49256c37903e810c301b035cf65837" prot="private" virt="non-virtual"><scope>KeyException</scope><name>m_line</name></member>
+      <member refid="classKeyException_a9956fdc871308553eec7b047f756690a_1a9956fdc871308553eec7b047f756690a" prot="public" virt="virtual"><scope>KeyException</scope><name>what</name></member>
+      <member refid="classKeyException_a954cd46c9cc2dd054fd680bb70aef678_1a954cd46c9cc2dd054fd680bb70aef678" prot="public" virt="virtual"><scope>KeyException</scope><name>~KeyException</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

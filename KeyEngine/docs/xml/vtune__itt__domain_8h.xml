@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="vtune__itt__domain_8h" kind="file" language="C++">
+    <compoundname>vtune_itt_domain.h</compoundname>
+    <includedby refid="graphics_8cpp" local="yes">src/graphics.cpp</includedby>
+    <invincdepgraph>
+      <node id="1">
+        <label>inc/vtune_itt_domain.h</label>
+        <link refid="vtune__itt__domain_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/graphics.cpp</label>
+        <link refid="graphics_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="vtune__itt__domain_8h_a2b4564605f44731f2a1a713ad63e54d0_1a2b4564605f44731f2a1a713ad63e54d0" prot="public" static="no">
+        <name>PROFILE_VTUNE_ITT_TASK_BEGIN</name>
+        <param><defname>strHandle</defname></param>
+        <initializer>(void) 0;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/vtune_itt_domain.h" line="30" column="10" bodyfile="inc/vtune_itt_domain.h" bodystart="30" bodyend="-1"/>
+        <referencedby refid="classGraphics_ac25c31fbc763dc6970ae9c730b441129_1ac25c31fbc763dc6970ae9c730b441129" compoundref="graphics_8cpp" startline="504" endline="527">Graphics::beginFrame</referencedby>
+        <referencedby refid="classGraphics_a29fa45ba5e44f5e574e4d0c0298bd02b_1a29fa45ba5e44f5e574e4d0c0298bd02b" compoundref="graphics_8cpp" startline="594" endline="608">Graphics::drawIndexed</referencedby>
+        <referencedby refid="classGraphics_a1e53b789df983b36aedcc1357eae4bf8_1a1e53b789df983b36aedcc1357eae4bf8" compoundref="graphics_8cpp" startline="610" endline="625">Graphics::drawIndexedInstanced</referencedby>
+        <referencedby refid="classGraphics_a3db48982641ea1fb21947e1524af9648_1a3db48982641ea1fb21947e1524af9648" compoundref="graphics_8cpp" startline="529" endline="546">Graphics::endFrame</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="vtune__itt__domain_8h_acb6ddf8e1531447abcfe95738dd78b97_1acb6ddf8e1531447abcfe95738dd78b97" prot="public" static="no">
+        <name>PROFILE_VTUNE_ITT_TASK_END</name>
+        <initializer>(void) 0;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/vtune_itt_domain.h" line="31" column="10" bodyfile="inc/vtune_itt_domain.h" bodystart="31" bodyend="-1"/>
+        <referencedby refid="classGraphics_ac25c31fbc763dc6970ae9c730b441129_1ac25c31fbc763dc6970ae9c730b441129" compoundref="graphics_8cpp" startline="504" endline="527">Graphics::beginFrame</referencedby>
+        <referencedby refid="classGraphics_a29fa45ba5e44f5e574e4d0c0298bd02b_1a29fa45ba5e44f5e574e4d0c0298bd02b" compoundref="graphics_8cpp" startline="594" endline="608">Graphics::drawIndexed</referencedby>
+        <referencedby refid="classGraphics_a1e53b789df983b36aedcc1357eae4bf8_1a1e53b789df983b36aedcc1357eae4bf8" compoundref="graphics_8cpp" startline="610" endline="625">Graphics::drawIndexedInstanced</referencedby>
+        <referencedby refid="classGraphics_a3db48982641ea1fb21947e1524af9648_1a3db48982641ea1fb21947e1524af9648" compoundref="graphics_8cpp" startline="529" endline="546">Graphics::endFrame</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="vtune__itt__domain_8h_a3e18d4a7da3d00beb1c42f2529924298_1a3e18d4a7da3d00beb1c42f2529924298" prot="public" static="no">
+        <name>PROFILE_VTUNE_ITT_SET_THREAD_NAME</name>
+        <param><defname>threadName</defname></param>
+        <initializer>(void) 0;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/vtune_itt_domain.h" line="32" column="10" bodyfile="inc/vtune_itt_domain.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="vtune__itt__domain_8h_aeba08dbe349e1697c42776a32e09cfb2_1aeba08dbe349e1697c42776a32e09cfb2" prot="public" static="no">
+        <name>PROFILE_VTUNE_ITT_PAUSE</name>
+        <initializer>(void) 0;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/vtune_itt_domain.h" line="33" column="10" bodyfile="inc/vtune_itt_domain.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="vtune__itt__domain_8h_a64ee68675e0f03e5191d587cada83f12_1a64ee68675e0f03e5191d587cada83f12" prot="public" static="no">
+        <name>PROFILE_VTUNE_ITT_RESUME</name>
+        <initializer>(void) 0;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/vtune_itt_domain.h" line="34" column="10" bodyfile="inc/vtune_itt_domain.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>_PROFILE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Intel<sp/>Instrumentation<sp/>&amp;<sp/>Tracing<sp/>Technology</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>include<sp/>&lt;ittnotify.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>pragma<sp/>comment(<sp/>lib,<sp/>&quot;libittnotify.lib&quot;<sp/>)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal">__itt_domain<sp/>*ittDomain<sp/>=<sp/>__itt_domain_create(<sp/>L</highlight><highlight class="stringliteral">&quot;KeyEngine.Domain.Global&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ITT<sp/>task<sp/>begin</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>PROFILE_VTUNE_ITT_TASK_BEGIN(<sp/>strHandle<sp/>)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__itt_task_begin(<sp/>ittDomain,<sp/>__itt_null,<sp/>__itt_null,<sp/>strHandle<sp/>);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Tasks<sp/>can<sp/>be<sp/>nested<sp/>to<sp/>your<sp/>heart&apos;s<sp/>content.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ITT<sp/>task<sp/>end</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>PROFILE_VTUNE_ITT_TASK_END<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__itt_task_end(<sp/>ittDomain<sp/>);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Set<sp/>a<sp/>thread&apos;s<sp/>name<sp/>so<sp/>it<sp/>shows<sp/>up<sp/>in<sp/>the<sp/>UI<sp/>as<sp/>something<sp/>meaningful</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>PROFILE_VTUNE_ITT_SET_THREAD_NAME(<sp/>threadName<sp/>)<sp/><sp/><sp/><sp/><sp/><sp/>__itt_thread_set_name(<sp/>threadName<sp/>);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ITT<sp/>VTUNE<sp/>Pause<sp/>Profiler</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>PROFILE_VTUNE_ITT_PAUSE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__itt_pause()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ITT<sp/>VTUNE<sp/>Resume<sp/>Profiler</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>PROFILE_VTUNE_ITT_RESUME<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__itt_resume()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="vtune__itt__domain_8h_a2b4564605f44731f2a1a713ad63e54d0_1a2b4564605f44731f2a1a713ad63e54d0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>PROFILE_VTUNE_ITT_TASK_BEGIN(<sp/>strHandle<sp/>)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(void)<sp/>0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="vtune__itt__domain_8h_acb6ddf8e1531447abcfe95738dd78b97_1acb6ddf8e1531447abcfe95738dd78b97" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>PROFILE_VTUNE_ITT_TASK_END<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(void)<sp/>0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="vtune__itt__domain_8h_a3e18d4a7da3d00beb1c42f2529924298_1a3e18d4a7da3d00beb1c42f2529924298" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>PROFILE_VTUNE_ITT_SET_THREAD_NAME(<sp/>threadName<sp/>)<sp/><sp/><sp/><sp/><sp/><sp/>(void)<sp/>0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="vtune__itt__domain_8h_aeba08dbe349e1697c42776a32e09cfb2_1aeba08dbe349e1697c42776a32e09cfb2" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>PROFILE_VTUNE_ITT_PAUSE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(void)<sp/>0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="vtune__itt__domain_8h_a64ee68675e0f03e5191d587cada83f12_1a64ee68675e0f03e5191d587cada83f12" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>PROFILE_VTUNE_ITT_RESUME<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(void)<sp/>0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="inc/vtune_itt_domain.h"/>
+  </compounddef>
+</doxygen>

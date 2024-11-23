@@ -47,13 +47,13 @@ struct UserPropertyChanged
 	std::string propertyName;
 };
 
-//=============================================================
-//	\class	UiMsg
-//	\author	KeyC0de
-//	\date	2024/05/16 19:58
-//	\brief	This event is used to make the UI event-driven, rather than having to constantly update to keep information up to date. Use it in classes that want to listen for a UI update.
-//			For example we might want a Component to play an animation when there's a level-up, which this allows us to do without any additional code.
-//=============================================================
+///=============================================================
+/// \class	UiMsg
+/// \author	KeyC0de
+/// \date	2024/05/16 19:58
+/// \brief	This event is used to make the UI event-driven, rather than having to constantly update to keep information up to date. Use it in classes that want to listen for a UI update.
+/// \brief	For example we might want a Component to play an animation when there's a level-up, which this allows us to do without any additional code.
+///=============================================================
 struct UiMsg
 {
 private:

@@ -1,0 +1,364 @@
+\doxysection{ILight\+Source Class Reference}
+\hypertarget{classILightSource}{}\label{classILightSource}\index{ILightSource@{ILightSource}}
+
+
+{\ttfamily \#include $<$light\+\_\+source.\+h$>$}
+
+Inheritance diagram for ILight\+Source\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classILightSource}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structILightSource_1_1LightPSCB}{Light\+PSCB}}
+\item 
+struct \mbox{\hyperlink{structILightSource_1_1LightVSCB}{Light\+VSCB}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classILightSource_a85ecc5940c66f9ef21277e3bab54276b_a85ecc5940c66f9ef21277e3bab54276b}{ILight\+Source}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const \mbox{\hyperlink{light__source_8h_a621d578de257cbce447d8aaada5b8332_a621d578de257cbce447d8aaada5b8332}{Light\+Source\+Type}} type, \mbox{\hyperlink{classModel}{Model}} model, const std\+::variant$<$ Direct\+X\+::\+XMFLOAT4, std\+::string $>$ \&color\+Or\+Texture\+Path=Direct\+X\+::\+XMFLOAT4\{1.\+0f, 1.\+0f, 1.\+0f, 1.\+0f\}, const bool b\+Shadow\+Casting=true, const bool b\+Show\+Mesh=true, const Direct\+X\+::\+XMFLOAT3 \&rot\+Deg\+Or\+Direction\+Vector=\{0.\+0f, 0.\+0f, 0.\+0f\}, const Direct\+X\+::\+XMFLOAT3 \&pos=Direct\+X\+::\+XMFLOAT3\{8.\+0f, 8.\+0f, 2.f\}, const float intensity=1.\+0f, const float fov\+Deg=0.\+0f, const float shadow\+Cam\+FarZ=100.\+0f)
+\item 
+virtual \mbox{\hyperlink{classILightSource_a8d7a68032533f71c832110c76cd6ed3b_a8d7a68032533f71c832110c76cd6ed3b}{\texorpdfstring{$\sim$}{\string~}\+ILight\+Source}} () noexcept=default
+\item 
+void \mbox{\hyperlink{classILightSource_a2c46182157ae66e5a900af43928c3d51_a2c46182157ae66e5a900af43928c3d51}{update}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const float dt, const float lerp\+Between\+Frames, const bool b\+Enable\+Smooth\+Movement=false) cond\+\_\+noex
+\begin{DoxyCompactList}\small\item\em update the "{}model"{} side part of the light \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classILightSource_a43e7bb71c7b8db34e21cf7889b5eae95_a43e7bb71c7b8db34e21cf7889b5eae95}{render}} (const size\+\_\+t channels) const cond\+\_\+noex
+\begin{DoxyCompactList}\small\item\em render the "{}model"{} side part of the light \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classILightSource_a5e1c8d090c141ea94a06046be5b15df8_a5e1c8d090c141ea94a06046be5b15df8}{connect\+Materials\+To\+Renderer}} (\mbox{\hyperlink{classren_1_1Renderer}{ren\+::\+Renderer}} \&r)
+\item 
+virtual void \mbox{\hyperlink{classILightSource_af79180aa4e70f55e10471ccd515391a5_af79180aa4e70f55e10471ccd515391a5}{display\+Imgui\+Widgets}} () noexcept=0
+\item 
+virtual void \mbox{\hyperlink{classILightSource_a388781b70e7569ac4be432b1e60cde96_a388781b70e7569ac4be432b1e60cde96}{set\+Intensity}} (const float new\+Intensity) noexcept=0
+\item 
+virtual void \mbox{\hyperlink{classILightSource_a70f8690fb45b8758cf974eab1c06d2ce_a70f8690fb45b8758cf974eab1c06d2ce}{set\+Color}} (const Direct\+X\+::\+XMFLOAT3 \&diffuse\+Color) noexcept=0
+\item 
+void \mbox{\hyperlink{classILightSource_a3fccfe57c1781b3f43a0cb4a41f67035_a3fccfe57c1781b3f43a0cb4a41f67035}{set\+Rotation}} (const Direct\+X\+::\+XMFLOAT3 \&rot)
+\item 
+void \mbox{\hyperlink{classILightSource_af4c3edc00a2603c76e0ec39955f23113_af4c3edc00a2603c76e0ec39955f23113}{set\+Translation}} (const Direct\+X\+::\+XMFLOAT3 \&pos)
+\item 
+\mbox{\hyperlink{light__source_8h_a621d578de257cbce447d8aaada5b8332_a621d578de257cbce447d8aaada5b8332}{Light\+Source\+Type}} \mbox{\hyperlink{classILightSource_a7c9863add04adffa68a99aacc239a64d_a7c9863add04adffa68a99aacc239a64d}{get\+Type}} () const noexcept
+\item 
+unsigned \mbox{\hyperlink{classILightSource_ab45b60356a4883b2d10456115692ee60_ab45b60356a4883b2d10456115692ee60}{get\+Slot}} () const noexcept
+\item 
+std\+::string \mbox{\hyperlink{classILightSource_a0faa0df2c36a9590f2d04ddd4b24f70b_a0faa0df2c36a9590f2d04ddd4b24f70b}{get\+Name}} () const noexcept
+\item 
+bool \mbox{\hyperlink{classILightSource_a020b616fe1ebb5185b8120f9a41c256e_a020b616fe1ebb5185b8120f9a41c256e}{is\+Casting\+Shadows}} () const noexcept
+\item 
+bool \mbox{\hyperlink{classILightSource_a605491c2905837716a32ce930afe6c92_a605491c2905837716a32ce930afe6c92}{is\+Frustum\+Culled}} () const noexcept
+\item 
+Direct\+X\+::\+XMFLOAT3 \mbox{\hyperlink{classILightSource_a29ff5d5e121d058b68954725e3489076_a29ff5d5e121d058b68954725e3489076}{get\+Rotation}} () const noexcept
+\item 
+virtual Direct\+X\+::\+XMFLOAT3 \mbox{\hyperlink{classILightSource_a39174369af77a807c727dd8b8b41afec_a39174369af77a807c727dd8b8b41afec}{get\+Position}} () const noexcept=0
+\item 
+\mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classILightSource_a10dcb51eb6c7dc15ff6b7ffe442a8245_a10dcb51eb6c7dc15ff6b7ffe442a8245}{get\+Shadow\+Camera}} () const
+\item 
+float \mbox{\hyperlink{classILightSource_af0b903d97d07f2bcc7faf90d51749bdd_af0b903d97d07f2bcc7faf90d51749bdd}{get\+Shadow\+Camera\+FarZ}} () const noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{classILightSource_af0a72727cb5a6ee05dde5ea17c222b81_af0a72727cb5a6ee05dde5ea17c222b81}{m\+\_\+shadow\+Cam\+FarZ}}
+\item 
+std\+::string \mbox{\hyperlink{classILightSource_a9a50fe9607772fecb1ea1c82e84b1cb1_a9a50fe9607772fecb1ea1c82e84b1cb1}{m\+\_\+name}}
+\item 
+bool \mbox{\hyperlink{classILightSource_aba12f3ad60d45ee69a6cc9560a1d1e4d_aba12f3ad60d45ee69a6cc9560a1d1e4d}{m\+\_\+b\+Show\+Mesh}}
+\item 
+bool \mbox{\hyperlink{classILightSource_a162034eae6dabb27c763325d94b5050e_a162034eae6dabb27c763325d94b5050e}{m\+\_\+b\+Casting\+Shadows}}
+\item 
+\mbox{\hyperlink{classModel}{Model}} \mbox{\hyperlink{classILightSource_a2836fa2a9437563c3f7d1b3b5e5e6b83_a2836fa2a9437563c3f7d1b3b5e5e6b83}{m\+\_\+light\+Mesh}}
+\item 
+\mbox{\hyperlink{structILightSource_1_1LightVSCB}{Light\+VSCB}} \mbox{\hyperlink{classILightSource_a94603c5e37a72aca471ef9d2a37a072e_a94603c5e37a72aca471ef9d2a37a072e}{m\+\_\+vscb\+Data}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCamera}{Camera}} $>$ \mbox{\hyperlink{classILightSource_a2293407d62d1d81b80e920e6ed350ad6_a2293407d62d1d81b80e920e6ed350ad6}{m\+\_\+p\+Camera\+For\+Shadowing}}
+\item 
+\mbox{\hyperlink{structILightSource_1_1LightPSCB}{Light\+PSCB}} \mbox{\hyperlink{classILightSource_a91c54598d0a1805c4a2f694be7c863ca_a91c54598d0a1805c4a2f694be7c863ca}{m\+\_\+pscb\+Data}}
+\item 
+\mbox{\hyperlink{structILightSource_1_1LightPSCB}{Light\+PSCB}} \mbox{\hyperlink{classILightSource_a63c850a5695ff1411e12e73450a84c40_a63c850a5695ff1411e12e73450a84c40}{m\+\_\+pscb\+Data\+To\+Bind}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structILightSource_1_1LightVSCB}{Light\+VSCB}} \mbox{\hyperlink{classILightSource_ae74ea4b3c8c575ecbac3156d4a9ee699_ae74ea4b3c8c575ecbac3156d4a9ee699}{get\+Vscb\+Data}} () noexcept
+\item 
+\mbox{\hyperlink{structILightSource_1_1LightPSCB}{Light\+PSCB}} \mbox{\hyperlink{classILightSource_a17577069622792755b3aa3e1867dd77e_a17577069622792755b3aa3e1867dd77e}{get\+Pscb\+Data}} () noexcept
+\item 
+void \mbox{\hyperlink{classILightSource_a52f8aa3d9b871f416990e363bd9c09e3_a52f8aa3d9b871f416990e363bd9c09e3}{populate\+CBData}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) cond\+\_\+noex
+\item 
+virtual void \mbox{\hyperlink{classILightSource_a3c48dc5f8c722ff8d6d3fc986861db4b_a3c48dc5f8c722ff8d6d3fc986861db4b}{populate\+Vscb\+Data}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) cond\+\_\+noex=0
+\item 
+virtual void \mbox{\hyperlink{classILightSource_ae057f7544b9173eb9031c250948b4a8c_ae057f7544b9173eb9031c250948b4a8c}{populate\+Pscb\+Data}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) cond\+\_\+noex=0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{light__source_8h_a621d578de257cbce447d8aaada5b8332_a621d578de257cbce447d8aaada5b8332}{Light\+Source\+Type}} \mbox{\hyperlink{classILightSource_a8a9f0f14ec9fdad34f6893029360ea98_a8a9f0f14ec9fdad34f6893029360ea98}{m\+\_\+type}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classILightSource_ad085cd6998fadc4d7bbecd56a0dcb1eb_ad085cd6998fadc4d7bbecd56a0dcb1eb}{ren\+::\+Shadow\+Pass}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classILightSource_a85ecc5940c66f9ef21277e3bab54276b_a85ecc5940c66f9ef21277e3bab54276b}\index{ILightSource@{ILightSource}!ILightSource@{ILightSource}}
+\index{ILightSource@{ILightSource}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{ILightSource()}{ILightSource()}}
+{\footnotesize\ttfamily \label{classILightSource_a85ecc5940c66f9ef21277e3bab54276b_a85ecc5940c66f9ef21277e3bab54276b} 
+ILight\+Source\+::\+ILight\+Source (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const \mbox{\hyperlink{light__source_8h_a621d578de257cbce447d8aaada5b8332_a621d578de257cbce447d8aaada5b8332}{Light\+Source\+Type}}}]{type}{, }\item[{\mbox{\hyperlink{classModel}{Model}}}]{model}{, }\item[{const std\+::variant$<$ Direct\+X\+::\+XMFLOAT4, std\+::string $>$ \&}]{color\+Or\+Texture\+Path}{ = {\ttfamily DirectX\+:\+:XMFLOAT4\{1.0f,~1.0f,~1.0f,~1.0f\}}, }\item[{const bool}]{b\+Shadow\+Casting}{ = {\ttfamily true}, }\item[{const bool}]{b\+Show\+Mesh}{ = {\ttfamily true}, }\item[{const Direct\+X\+::\+XMFLOAT3 \&}]{rot\+Deg\+Or\+Direction\+Vector}{ = {\ttfamily \{0.0f,~0.0f,~0.0f\}}, }\item[{const Direct\+X\+::\+XMFLOAT3 \&}]{pos}{ = {\ttfamily DirectX\+:\+:XMFLOAT3\{8.0f,~8.0f,~2.f\}}, }\item[{const float}]{intensity}{ = {\ttfamily 1.0f}, }\item[{const float}]{fov\+Deg}{ = {\ttfamily 0.0f}, }\item[{const float}]{shadow\+Cam\+FarZ}{ = {\ttfamily 100.0f}}\end{DoxyParamCaption})}
+
+\Hypertarget{classILightSource_a8d7a68032533f71c832110c76cd6ed3b_a8d7a68032533f71c832110c76cd6ed3b}\index{ILightSource@{ILightSource}!````~ILightSource@{\texorpdfstring{$\sim$}{\string~}ILightSource}}
+\index{````~ILightSource@{\texorpdfstring{$\sim$}{\string~}ILightSource}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ILightSource()}{\string~ILightSource()}}
+{\footnotesize\ttfamily \label{classILightSource_a8d7a68032533f71c832110c76cd6ed3b_a8d7a68032533f71c832110c76cd6ed3b} 
+virtual ILight\+Source\+::\texorpdfstring{$\sim$}{\string~}\+ILight\+Source (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}, {\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classILightSource_a5e1c8d090c141ea94a06046be5b15df8_a5e1c8d090c141ea94a06046be5b15df8}\index{ILightSource@{ILightSource}!connectMaterialsToRenderer@{connectMaterialsToRenderer}}
+\index{connectMaterialsToRenderer@{connectMaterialsToRenderer}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{connectMaterialsToRenderer()}{connectMaterialsToRenderer()}}
+{\footnotesize\ttfamily \label{classILightSource_a5e1c8d090c141ea94a06046be5b15df8_a5e1c8d090c141ea94a06046be5b15df8} 
+void ILight\+Source\+::connect\+Materials\+To\+Renderer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classren_1_1Renderer}{ren\+::\+Renderer}} \&}]{r}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classILightSource_af79180aa4e70f55e10471ccd515391a5_af79180aa4e70f55e10471ccd515391a5}\index{ILightSource@{ILightSource}!displayImguiWidgets@{displayImguiWidgets}}
+\index{displayImguiWidgets@{displayImguiWidgets}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{displayImguiWidgets()}{displayImguiWidgets()}}
+{\footnotesize\ttfamily \label{classILightSource_af79180aa4e70f55e10471ccd515391a5_af79180aa4e70f55e10471ccd515391a5} 
+virtual void ILight\+Source\+::display\+Imgui\+Widgets (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Implemented in \mbox{\hyperlink{classDirectionalLight_a58dfb8b06a26a8f85d398b998c86ac24_a58dfb8b06a26a8f85d398b998c86ac24}{Directional\+Light}}, \mbox{\hyperlink{classPointLight_a34563baa74887d3936fe91ac411c02df_a34563baa74887d3936fe91ac411c02df}{Point\+Light}}, and \mbox{\hyperlink{classSpotLight_a4ca72bdbc6e490cad12e27aa84be2937_a4ca72bdbc6e490cad12e27aa84be2937}{Spot\+Light}}.
+
+\Hypertarget{classILightSource_a0faa0df2c36a9590f2d04ddd4b24f70b_a0faa0df2c36a9590f2d04ddd4b24f70b}\index{ILightSource@{ILightSource}!getName@{getName}}
+\index{getName@{getName}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily \label{classILightSource_a0faa0df2c36a9590f2d04ddd4b24f70b_a0faa0df2c36a9590f2d04ddd4b24f70b} 
+std\+::string ILight\+Source\+::get\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classILightSource_a39174369af77a807c727dd8b8b41afec_a39174369af77a807c727dd8b8b41afec}\index{ILightSource@{ILightSource}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily \label{classILightSource_a39174369af77a807c727dd8b8b41afec_a39174369af77a807c727dd8b8b41afec} 
+virtual Direct\+X\+::\+XMFLOAT3 ILight\+Source\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Implemented in \mbox{\hyperlink{classDirectionalLight_a3d29f34ed75ac7ff2ed73e5ff5b29760_a3d29f34ed75ac7ff2ed73e5ff5b29760}{Directional\+Light}}, \mbox{\hyperlink{classPointLight_aebd941617d77bb5877e571e6b99f904a_aebd941617d77bb5877e571e6b99f904a}{Point\+Light}}, and \mbox{\hyperlink{classSpotLight_ac7863b1f73129f026f03aabe4d4ce6cf_ac7863b1f73129f026f03aabe4d4ce6cf}{Spot\+Light}}.
+
+\Hypertarget{classILightSource_a17577069622792755b3aa3e1867dd77e_a17577069622792755b3aa3e1867dd77e}\index{ILightSource@{ILightSource}!getPscbData@{getPscbData}}
+\index{getPscbData@{getPscbData}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{getPscbData()}{getPscbData()}}
+{\footnotesize\ttfamily \label{classILightSource_a17577069622792755b3aa3e1867dd77e_a17577069622792755b3aa3e1867dd77e} 
+\mbox{\hyperlink{structILightSource_1_1LightPSCB}{ILight\+Source\+::\+Light\+PSCB}} ILight\+Source\+::get\+Pscb\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classILightSource_a29ff5d5e121d058b68954725e3489076_a29ff5d5e121d058b68954725e3489076}\index{ILightSource@{ILightSource}!getRotation@{getRotation}}
+\index{getRotation@{getRotation}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{getRotation()}{getRotation()}}
+{\footnotesize\ttfamily \label{classILightSource_a29ff5d5e121d058b68954725e3489076_a29ff5d5e121d058b68954725e3489076} 
+Direct\+X\+::\+XMFLOAT3 ILight\+Source\+::get\+Rotation (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classILightSource_a10dcb51eb6c7dc15ff6b7ffe442a8245_a10dcb51eb6c7dc15ff6b7ffe442a8245}\index{ILightSource@{ILightSource}!getShadowCamera@{getShadowCamera}}
+\index{getShadowCamera@{getShadowCamera}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{getShadowCamera()}{getShadowCamera()}}
+{\footnotesize\ttfamily \label{classILightSource_a10dcb51eb6c7dc15ff6b7ffe442a8245_a10dcb51eb6c7dc15ff6b7ffe442a8245} 
+\mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*} ILight\+Source\+::get\+Shadow\+Camera (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classILightSource_af0b903d97d07f2bcc7faf90d51749bdd_af0b903d97d07f2bcc7faf90d51749bdd}\index{ILightSource@{ILightSource}!getShadowCameraFarZ@{getShadowCameraFarZ}}
+\index{getShadowCameraFarZ@{getShadowCameraFarZ}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{getShadowCameraFarZ()}{getShadowCameraFarZ()}}
+{\footnotesize\ttfamily \label{classILightSource_af0b903d97d07f2bcc7faf90d51749bdd_af0b903d97d07f2bcc7faf90d51749bdd} 
+float ILight\+Source\+::get\+Shadow\+Camera\+FarZ (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classILightSource_ab45b60356a4883b2d10456115692ee60_ab45b60356a4883b2d10456115692ee60}\index{ILightSource@{ILightSource}!getSlot@{getSlot}}
+\index{getSlot@{getSlot}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{getSlot()}{getSlot()}}
+{\footnotesize\ttfamily \label{classILightSource_ab45b60356a4883b2d10456115692ee60_ab45b60356a4883b2d10456115692ee60} 
+unsigned ILight\+Source\+::get\+Slot (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classILightSource_a7c9863add04adffa68a99aacc239a64d_a7c9863add04adffa68a99aacc239a64d}\index{ILightSource@{ILightSource}!getType@{getType}}
+\index{getType@{getType}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \label{classILightSource_a7c9863add04adffa68a99aacc239a64d_a7c9863add04adffa68a99aacc239a64d} 
+\mbox{\hyperlink{light__source_8h_a621d578de257cbce447d8aaada5b8332_a621d578de257cbce447d8aaada5b8332}{Light\+Source\+Type}} ILight\+Source\+::get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classILightSource_ae74ea4b3c8c575ecbac3156d4a9ee699_ae74ea4b3c8c575ecbac3156d4a9ee699}\index{ILightSource@{ILightSource}!getVscbData@{getVscbData}}
+\index{getVscbData@{getVscbData}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{getVscbData()}{getVscbData()}}
+{\footnotesize\ttfamily \label{classILightSource_ae74ea4b3c8c575ecbac3156d4a9ee699_ae74ea4b3c8c575ecbac3156d4a9ee699} 
+\mbox{\hyperlink{structILightSource_1_1LightVSCB}{ILight\+Source\+::\+Light\+VSCB}} ILight\+Source\+::get\+Vscb\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classILightSource_a020b616fe1ebb5185b8120f9a41c256e_a020b616fe1ebb5185b8120f9a41c256e}\index{ILightSource@{ILightSource}!isCastingShadows@{isCastingShadows}}
+\index{isCastingShadows@{isCastingShadows}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{isCastingShadows()}{isCastingShadows()}}
+{\footnotesize\ttfamily \label{classILightSource_a020b616fe1ebb5185b8120f9a41c256e_a020b616fe1ebb5185b8120f9a41c256e} 
+bool ILight\+Source\+::is\+Casting\+Shadows (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classILightSource_a605491c2905837716a32ce930afe6c92_a605491c2905837716a32ce930afe6c92}\index{ILightSource@{ILightSource}!isFrustumCulled@{isFrustumCulled}}
+\index{isFrustumCulled@{isFrustumCulled}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{isFrustumCulled()}{isFrustumCulled()}}
+{\footnotesize\ttfamily \label{classILightSource_a605491c2905837716a32ce930afe6c92_a605491c2905837716a32ce930afe6c92} 
+bool ILight\+Source\+::is\+Frustum\+Culled (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classILightSource_a52f8aa3d9b871f416990e363bd9c09e3_a52f8aa3d9b871f416990e363bd9c09e3}\index{ILightSource@{ILightSource}!populateCBData@{populateCBData}}
+\index{populateCBData@{populateCBData}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{populateCBData()}{populateCBData()}}
+{\footnotesize\ttfamily \label{classILightSource_a52f8aa3d9b871f416990e363bd9c09e3_a52f8aa3d9b871f416990e363bd9c09e3} 
+void ILight\+Source\+::populate\+CBData (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classILightSource_ae057f7544b9173eb9031c250948b4a8c_ae057f7544b9173eb9031c250948b4a8c}\index{ILightSource@{ILightSource}!populatePscbData@{populatePscbData}}
+\index{populatePscbData@{populatePscbData}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{populatePscbData()}{populatePscbData()}}
+{\footnotesize\ttfamily \label{classILightSource_ae057f7544b9173eb9031c250948b4a8c_ae057f7544b9173eb9031c250948b4a8c} 
+virtual void ILight\+Source\+::populate\+Pscb\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classDirectionalLight_aeeb09b18bf90a68ec390b88fffaf6916_aeeb09b18bf90a68ec390b88fffaf6916}{Directional\+Light}}, \mbox{\hyperlink{classPointLight_a1a2533dcd6eab3a1da900b88c1622ea9_a1a2533dcd6eab3a1da900b88c1622ea9}{Point\+Light}}, and \mbox{\hyperlink{classSpotLight_adb7659a2f4bebff21059bbb3b048fafe_adb7659a2f4bebff21059bbb3b048fafe}{Spot\+Light}}.
+
+\Hypertarget{classILightSource_a3c48dc5f8c722ff8d6d3fc986861db4b_a3c48dc5f8c722ff8d6d3fc986861db4b}\index{ILightSource@{ILightSource}!populateVscbData@{populateVscbData}}
+\index{populateVscbData@{populateVscbData}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{populateVscbData()}{populateVscbData()}}
+{\footnotesize\ttfamily \label{classILightSource_a3c48dc5f8c722ff8d6d3fc986861db4b_a3c48dc5f8c722ff8d6d3fc986861db4b} 
+virtual void ILight\+Source\+::populate\+Vscb\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classDirectionalLight_a20ba391194b84dd5aa56b834bba5221d_a20ba391194b84dd5aa56b834bba5221d}{Directional\+Light}}, \mbox{\hyperlink{classPointLight_a3c46d3cc5554ae183800bc71ba3e63fa_a3c46d3cc5554ae183800bc71ba3e63fa}{Point\+Light}}, and \mbox{\hyperlink{classSpotLight_a8a74d922c2bedf297ca66f9b18b4ba73_a8a74d922c2bedf297ca66f9b18b4ba73}{Spot\+Light}}.
+
+\Hypertarget{classILightSource_a43e7bb71c7b8db34e21cf7889b5eae95_a43e7bb71c7b8db34e21cf7889b5eae95}\index{ILightSource@{ILightSource}!render@{render}}
+\index{render@{render}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily \label{classILightSource_a43e7bb71c7b8db34e21cf7889b5eae95_a43e7bb71c7b8db34e21cf7889b5eae95} 
+void ILight\+Source\+::render (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{channels}{}\end{DoxyParamCaption}) const}
+
+
+
+render the "{}model"{} side part of the light 
+
+\Hypertarget{classILightSource_a70f8690fb45b8758cf974eab1c06d2ce_a70f8690fb45b8758cf974eab1c06d2ce}\index{ILightSource@{ILightSource}!setColor@{setColor}}
+\index{setColor@{setColor}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{setColor()}{setColor()}}
+{\footnotesize\ttfamily \label{classILightSource_a70f8690fb45b8758cf974eab1c06d2ce_a70f8690fb45b8758cf974eab1c06d2ce} 
+virtual void ILight\+Source\+::set\+Color (\begin{DoxyParamCaption}\item[{const Direct\+X\+::\+XMFLOAT3 \&}]{diffuse\+Color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Implemented in \mbox{\hyperlink{classDirectionalLight_a46f65b58d0bd65436b4da77c174ba979_a46f65b58d0bd65436b4da77c174ba979}{Directional\+Light}}, \mbox{\hyperlink{classPointLight_ac63c2d0109a19bfb49af489644442257_ac63c2d0109a19bfb49af489644442257}{Point\+Light}}, and \mbox{\hyperlink{classSpotLight_af93629535d543f94fc6d853084dd7eaf_af93629535d543f94fc6d853084dd7eaf}{Spot\+Light}}.
+
+\Hypertarget{classILightSource_a388781b70e7569ac4be432b1e60cde96_a388781b70e7569ac4be432b1e60cde96}\index{ILightSource@{ILightSource}!setIntensity@{setIntensity}}
+\index{setIntensity@{setIntensity}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{setIntensity()}{setIntensity()}}
+{\footnotesize\ttfamily \label{classILightSource_a388781b70e7569ac4be432b1e60cde96_a388781b70e7569ac4be432b1e60cde96} 
+virtual void ILight\+Source\+::set\+Intensity (\begin{DoxyParamCaption}\item[{const float}]{new\+Intensity}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Implemented in \mbox{\hyperlink{classDirectionalLight_ab072bab59fb1748d5cf4eb666615c468_ab072bab59fb1748d5cf4eb666615c468}{Directional\+Light}}, \mbox{\hyperlink{classPointLight_aca44be7f057d519a43e8f16847932024_aca44be7f057d519a43e8f16847932024}{Point\+Light}}, and \mbox{\hyperlink{classSpotLight_a82847f8607ad02a492e767ae66a2e21a_a82847f8607ad02a492e767ae66a2e21a}{Spot\+Light}}.
+
+\Hypertarget{classILightSource_a3fccfe57c1781b3f43a0cb4a41f67035_a3fccfe57c1781b3f43a0cb4a41f67035}\index{ILightSource@{ILightSource}!setRotation@{setRotation}}
+\index{setRotation@{setRotation}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{setRotation()}{setRotation()}}
+{\footnotesize\ttfamily \label{classILightSource_a3fccfe57c1781b3f43a0cb4a41f67035_a3fccfe57c1781b3f43a0cb4a41f67035} 
+void ILight\+Source\+::set\+Rotation (\begin{DoxyParamCaption}\item[{const Direct\+X\+::\+XMFLOAT3 \&}]{rot}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classILightSource_af4c3edc00a2603c76e0ec39955f23113_af4c3edc00a2603c76e0ec39955f23113}\index{ILightSource@{ILightSource}!setTranslation@{setTranslation}}
+\index{setTranslation@{setTranslation}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{setTranslation()}{setTranslation()}}
+{\footnotesize\ttfamily \label{classILightSource_af4c3edc00a2603c76e0ec39955f23113_af4c3edc00a2603c76e0ec39955f23113} 
+void ILight\+Source\+::set\+Translation (\begin{DoxyParamCaption}\item[{const Direct\+X\+::\+XMFLOAT3 \&}]{pos}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classILightSource_a2c46182157ae66e5a900af43928c3d51_a2c46182157ae66e5a900af43928c3d51}\index{ILightSource@{ILightSource}!update@{update}}
+\index{update@{update}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{classILightSource_a2c46182157ae66e5a900af43928c3d51_a2c46182157ae66e5a900af43928c3d51} 
+void ILight\+Source\+::update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const float}]{dt}{, }\item[{const float}]{lerp\+Between\+Frames}{, }\item[{const bool}]{b\+Enable\+Smooth\+Movement}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+update the "{}model"{} side part of the light 
+
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{classILightSource_ad085cd6998fadc4d7bbecd56a0dcb1eb_ad085cd6998fadc4d7bbecd56a0dcb1eb}\index{ILightSource@{ILightSource}!ren::ShadowPass@{ren::ShadowPass}}
+\index{ren::ShadowPass@{ren::ShadowPass}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{ren::ShadowPass}{ren::ShadowPass}}
+{\footnotesize\ttfamily \label{classILightSource_ad085cd6998fadc4d7bbecd56a0dcb1eb_ad085cd6998fadc4d7bbecd56a0dcb1eb} 
+friend class \mbox{\hyperlink{classren_1_1ShadowPass}{ren\+::\+Shadow\+Pass}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classILightSource_a162034eae6dabb27c763325d94b5050e_a162034eae6dabb27c763325d94b5050e}\index{ILightSource@{ILightSource}!m\_bCastingShadows@{m\_bCastingShadows}}
+\index{m\_bCastingShadows@{m\_bCastingShadows}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{m\_bCastingShadows}{m\_bCastingShadows}}
+{\footnotesize\ttfamily \label{classILightSource_a162034eae6dabb27c763325d94b5050e_a162034eae6dabb27c763325d94b5050e} 
+bool ILight\+Source\+::m\+\_\+b\+Casting\+Shadows\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classILightSource_aba12f3ad60d45ee69a6cc9560a1d1e4d_aba12f3ad60d45ee69a6cc9560a1d1e4d}\index{ILightSource@{ILightSource}!m\_bShowMesh@{m\_bShowMesh}}
+\index{m\_bShowMesh@{m\_bShowMesh}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{m\_bShowMesh}{m\_bShowMesh}}
+{\footnotesize\ttfamily \label{classILightSource_aba12f3ad60d45ee69a6cc9560a1d1e4d_aba12f3ad60d45ee69a6cc9560a1d1e4d} 
+bool ILight\+Source\+::m\+\_\+b\+Show\+Mesh\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classILightSource_a2836fa2a9437563c3f7d1b3b5e5e6b83_a2836fa2a9437563c3f7d1b3b5e5e6b83}\index{ILightSource@{ILightSource}!m\_lightMesh@{m\_lightMesh}}
+\index{m\_lightMesh@{m\_lightMesh}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{m\_lightMesh}{m\_lightMesh}}
+{\footnotesize\ttfamily \label{classILightSource_a2836fa2a9437563c3f7d1b3b5e5e6b83_a2836fa2a9437563c3f7d1b3b5e5e6b83} 
+\mbox{\hyperlink{classModel}{Model}} ILight\+Source\+::m\+\_\+light\+Mesh\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classILightSource_a9a50fe9607772fecb1ea1c82e84b1cb1_a9a50fe9607772fecb1ea1c82e84b1cb1}\index{ILightSource@{ILightSource}!m\_name@{m\_name}}
+\index{m\_name@{m\_name}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{m\_name}{m\_name}}
+{\footnotesize\ttfamily \label{classILightSource_a9a50fe9607772fecb1ea1c82e84b1cb1_a9a50fe9607772fecb1ea1c82e84b1cb1} 
+std\+::string ILight\+Source\+::m\+\_\+name\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classILightSource_a2293407d62d1d81b80e920e6ed350ad6_a2293407d62d1d81b80e920e6ed350ad6}\index{ILightSource@{ILightSource}!m\_pCameraForShadowing@{m\_pCameraForShadowing}}
+\index{m\_pCameraForShadowing@{m\_pCameraForShadowing}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{m\_pCameraForShadowing}{m\_pCameraForShadowing}}
+{\footnotesize\ttfamily \label{classILightSource_a2293407d62d1d81b80e920e6ed350ad6_a2293407d62d1d81b80e920e6ed350ad6} 
+std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classCamera}{Camera}}$>$ ILight\+Source\+::m\+\_\+p\+Camera\+For\+Shadowing\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classILightSource_a91c54598d0a1805c4a2f694be7c863ca_a91c54598d0a1805c4a2f694be7c863ca}\index{ILightSource@{ILightSource}!m\_pscbData@{m\_pscbData}}
+\index{m\_pscbData@{m\_pscbData}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{m\_pscbData}{m\_pscbData}}
+{\footnotesize\ttfamily \label{classILightSource_a91c54598d0a1805c4a2f694be7c863ca_a91c54598d0a1805c4a2f694be7c863ca} 
+\mbox{\hyperlink{structILightSource_1_1LightPSCB}{Light\+PSCB}} ILight\+Source\+::m\+\_\+pscb\+Data\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classILightSource_a63c850a5695ff1411e12e73450a84c40_a63c850a5695ff1411e12e73450a84c40}\index{ILightSource@{ILightSource}!m\_pscbDataToBind@{m\_pscbDataToBind}}
+\index{m\_pscbDataToBind@{m\_pscbDataToBind}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{m\_pscbDataToBind}{m\_pscbDataToBind}}
+{\footnotesize\ttfamily \label{classILightSource_a63c850a5695ff1411e12e73450a84c40_a63c850a5695ff1411e12e73450a84c40} 
+\mbox{\hyperlink{structILightSource_1_1LightPSCB}{Light\+PSCB}} ILight\+Source\+::m\+\_\+pscb\+Data\+To\+Bind\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classILightSource_af0a72727cb5a6ee05dde5ea17c222b81_af0a72727cb5a6ee05dde5ea17c222b81}\index{ILightSource@{ILightSource}!m\_shadowCamFarZ@{m\_shadowCamFarZ}}
+\index{m\_shadowCamFarZ@{m\_shadowCamFarZ}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{m\_shadowCamFarZ}{m\_shadowCamFarZ}}
+{\footnotesize\ttfamily \label{classILightSource_af0a72727cb5a6ee05dde5ea17c222b81_af0a72727cb5a6ee05dde5ea17c222b81} 
+float ILight\+Source\+::m\+\_\+shadow\+Cam\+FarZ\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classILightSource_a8a9f0f14ec9fdad34f6893029360ea98_a8a9f0f14ec9fdad34f6893029360ea98}\index{ILightSource@{ILightSource}!m\_type@{m\_type}}
+\index{m\_type@{m\_type}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{m\_type}{m\_type}}
+{\footnotesize\ttfamily \label{classILightSource_a8a9f0f14ec9fdad34f6893029360ea98_a8a9f0f14ec9fdad34f6893029360ea98} 
+\mbox{\hyperlink{light__source_8h_a621d578de257cbce447d8aaada5b8332_a621d578de257cbce447d8aaada5b8332}{Light\+Source\+Type}} ILight\+Source\+::m\+\_\+type\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classILightSource_a94603c5e37a72aca471ef9d2a37a072e_a94603c5e37a72aca471ef9d2a37a072e}\index{ILightSource@{ILightSource}!m\_vscbData@{m\_vscbData}}
+\index{m\_vscbData@{m\_vscbData}!ILightSource@{ILightSource}}
+\doxysubsubsection{\texorpdfstring{m\_vscbData}{m\_vscbData}}
+{\footnotesize\ttfamily \label{classILightSource_a94603c5e37a72aca471ef9d2a37a072e_a94603c5e37a72aca471ef9d2a37a072e} 
+\mbox{\hyperlink{structILightSource_1_1LightVSCB}{Light\+VSCB}} ILight\+Source\+::m\+\_\+vscb\+Data\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{light__source_8h}{light\+\_\+source.\+h}}\item 
+src/\mbox{\hyperlink{light__source_8cpp}{light\+\_\+source.\+cpp}}\end{DoxyCompactItemize}

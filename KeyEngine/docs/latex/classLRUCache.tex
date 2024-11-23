@@ -1,0 +1,80 @@
+\doxysection{LRUCache\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classLRUCache}{}\label{classLRUCache}\index{LRUCache$<$ T $>$@{LRUCache$<$ T $>$}}
+
+
+{\ttfamily \#include $<$lru\+\_\+cache.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLRUCache_a2d658ad308b7ddd3930fad756fa9a44b_a2d658ad308b7ddd3930fad756fa9a44b}{LRUCache}} (int max\+Size)
+\item 
+void \mbox{\hyperlink{classLRUCache_a950b676d0cb865c887f3901f218f2a0e_a950b676d0cb865c887f3901f218f2a0e}{find}} (T x)
+\item 
+void \mbox{\hyperlink{classLRUCache_af93af58bad8c06c7a48a56ef89a3272e_af93af58bad8c06c7a48a56ef89a3272e}{display}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::list$<$ T $>$ \mbox{\hyperlink{classLRUCache_a3ccd2c2550a8e99e24409e9e41f97b40_a3ccd2c2550a8e99e24409e9e41f97b40}{m\+\_\+list}}
+\item 
+std\+::unordered\+\_\+map$<$ T, typename std\+::list$<$ T $>$\+::const\+\_\+iterator $>$ \mbox{\hyperlink{classLRUCache_a9d6a0dc0f63cfa035ec23f9fdb7c13ba_a9d6a0dc0f63cfa035ec23f9fdb7c13ba}{m\+\_\+map}}
+\item 
+int \mbox{\hyperlink{classLRUCache_ae8fdd866a0a93dcc741fdea58be0abec_ae8fdd866a0a93dcc741fdea58be0abec}{m\+\_\+max\+Size}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classLRUCache_a2d658ad308b7ddd3930fad756fa9a44b_a2d658ad308b7ddd3930fad756fa9a44b}\index{LRUCache$<$ T $>$@{LRUCache$<$ T $>$}!LRUCache@{LRUCache}}
+\index{LRUCache@{LRUCache}!LRUCache$<$ T $>$@{LRUCache$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{LRUCache()}{LRUCache()}}
+{\footnotesize\ttfamily \label{classLRUCache_a2d658ad308b7ddd3930fad756fa9a44b_a2d658ad308b7ddd3930fad756fa9a44b} 
+template$<$typename T $>$ \\
+\mbox{\hyperlink{classLRUCache}{LRUCache}}$<$ T $>$\mbox{\hyperlink{classLRUCache}{\+::\+LRUCache}} (\begin{DoxyParamCaption}\item[{int}]{max\+Size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLRUCache_af93af58bad8c06c7a48a56ef89a3272e_af93af58bad8c06c7a48a56ef89a3272e}\index{LRUCache$<$ T $>$@{LRUCache$<$ T $>$}!display@{display}}
+\index{display@{display}!LRUCache$<$ T $>$@{LRUCache$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily \label{classLRUCache_af93af58bad8c06c7a48a56ef89a3272e_af93af58bad8c06c7a48a56ef89a3272e} 
+template$<$typename T $>$ \\
+void \mbox{\hyperlink{classLRUCache}{LRUCache}}$<$ T $>$\+::display (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classLRUCache_a950b676d0cb865c887f3901f218f2a0e_a950b676d0cb865c887f3901f218f2a0e}\index{LRUCache$<$ T $>$@{LRUCache$<$ T $>$}!find@{find}}
+\index{find@{find}!LRUCache$<$ T $>$@{LRUCache$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{find()}{find()}}
+{\footnotesize\ttfamily \label{classLRUCache_a950b676d0cb865c887f3901f218f2a0e_a950b676d0cb865c887f3901f218f2a0e} 
+template$<$typename T $>$ \\
+void \mbox{\hyperlink{classLRUCache}{LRUCache}}$<$ T $>$\+::find (\begin{DoxyParamCaption}\item[{T}]{x}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classLRUCache_a3ccd2c2550a8e99e24409e9e41f97b40_a3ccd2c2550a8e99e24409e9e41f97b40}\index{LRUCache$<$ T $>$@{LRUCache$<$ T $>$}!m\_list@{m\_list}}
+\index{m\_list@{m\_list}!LRUCache$<$ T $>$@{LRUCache$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{m\_list}{m\_list}}
+{\footnotesize\ttfamily \label{classLRUCache_a3ccd2c2550a8e99e24409e9e41f97b40_a3ccd2c2550a8e99e24409e9e41f97b40} 
+template$<$typename T $>$ \\
+std\+::list$<$T$>$ \mbox{\hyperlink{classLRUCache}{LRUCache}}$<$ T $>$\+::m\+\_\+list\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classLRUCache_a9d6a0dc0f63cfa035ec23f9fdb7c13ba_a9d6a0dc0f63cfa035ec23f9fdb7c13ba}\index{LRUCache$<$ T $>$@{LRUCache$<$ T $>$}!m\_map@{m\_map}}
+\index{m\_map@{m\_map}!LRUCache$<$ T $>$@{LRUCache$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{m\_map}{m\_map}}
+{\footnotesize\ttfamily \label{classLRUCache_a9d6a0dc0f63cfa035ec23f9fdb7c13ba_a9d6a0dc0f63cfa035ec23f9fdb7c13ba} 
+template$<$typename T $>$ \\
+std\+::unordered\+\_\+map$<$T, typename std\+::list$<$T$>$\+::const\+\_\+iterator$>$ \mbox{\hyperlink{classLRUCache}{LRUCache}}$<$ T $>$\+::m\+\_\+map\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classLRUCache_ae8fdd866a0a93dcc741fdea58be0abec_ae8fdd866a0a93dcc741fdea58be0abec}\index{LRUCache$<$ T $>$@{LRUCache$<$ T $>$}!m\_maxSize@{m\_maxSize}}
+\index{m\_maxSize@{m\_maxSize}!LRUCache$<$ T $>$@{LRUCache$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{m\_maxSize}{m\_maxSize}}
+{\footnotesize\ttfamily \label{classLRUCache_ae8fdd866a0a93dcc741fdea58be0abec_ae8fdd866a0a93dcc741fdea58be0abec} 
+template$<$typename T $>$ \\
+int \mbox{\hyperlink{classLRUCache}{LRUCache}}$<$ T $>$\+::m\+\_\+max\+Size\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{lru__cache_8h}{lru\+\_\+cache.\+h}}\end{DoxyCompactItemize}

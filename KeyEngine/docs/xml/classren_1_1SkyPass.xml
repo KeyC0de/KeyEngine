@@ -1,0 +1,307 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classren_1_1SkyPass" kind="class" language="C++" prot="public">
+    <compoundname>ren::SkyPass</compoundname>
+    <basecompoundref refid="classren_1_1IBindablePass" prot="public" virt="non-virtual">ren::IBindablePass</basecompoundref>
+    <includes refid="sky__pass_8h" local="no">sky_pass.h</includes>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classren_1_1SkyPass_a2f80c3a9df4533f75804fc0f165dad38_1a2f80c3a9df4533f75804fc0f165dad38" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>const char *</type>
+        <definition>const char* ren::SkyPass::s_cubeGeometryTag</definition>
+        <argsstring></argsstring>
+        <name>s_cubeGeometryTag</name>
+        <qualifiedname>ren::SkyPass::s_cubeGeometryTag</qualifiedname>
+        <initializer>= &quot;$cube_skybox&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sky_pass.h" line="16" column="36" bodyfile="inc/sky_pass.h" bodystart="16" bodyend="-1"/>
+        <referencedby refid="classren_1_1SkyPass_a1b9881827b6ffe6063f3c40e3689da6d_1a1b9881827b6ffe6063f3c40e3689da6d" compoundref="sky__pass_8cpp" startline="31" endline="71">SkyPass</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1SkyPass_ae27c35877852e187d2f565674299886f_1ae27c35877852e187d2f565674299886f" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>const char *</type>
+        <definition>const char* ren::SkyPass::s_sphereGeometryTag</definition>
+        <argsstring></argsstring>
+        <name>s_sphereGeometryTag</name>
+        <qualifiedname>ren::SkyPass::s_sphereGeometryTag</qualifiedname>
+        <initializer>= &quot;$sphere_skybox&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sky_pass.h" line="17" column="36" bodyfile="inc/sky_pass.h" bodystart="17" bodyend="-1"/>
+        <referencedby refid="classren_1_1SkyPass_a1b9881827b6ffe6063f3c40e3689da6d_1a1b9881827b6ffe6063f3c40e3689da6d" compoundref="sky__pass_8cpp" startline="31" endline="71">SkyPass</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classren_1_1SkyPass_a373bb65157ab289c6465dd5eb0573ee6_1a373bb65157ab289c6465dd5eb0573ee6" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned ren::SkyPass::m_nCubeIndices</definition>
+        <argsstring></argsstring>
+        <name>m_nCubeIndices</name>
+        <qualifiedname>ren::SkyPass::m_nCubeIndices</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sky_pass.h" line="19" column="10" bodyfile="inc/sky_pass.h" bodystart="19" bodyend="-1"/>
+        <referencedby refid="classren_1_1SkyPass_a1b9881827b6ffe6063f3c40e3689da6d_1a1b9881827b6ffe6063f3c40e3689da6d" compoundref="sky__pass_8cpp" startline="31" endline="71">SkyPass</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1SkyPass_a81b2d08bcc6604ee021c9dbf7a25982b_1a81b2d08bcc6604ee021c9dbf7a25982b" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned ren::SkyPass::m_nSphereIndices</definition>
+        <argsstring></argsstring>
+        <name>m_nSphereIndices</name>
+        <qualifiedname>ren::SkyPass::m_nSphereIndices</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sky_pass.h" line="20" column="10" bodyfile="inc/sky_pass.h" bodystart="20" bodyend="-1"/>
+        <referencedby refid="classren_1_1SkyPass_a1b9881827b6ffe6063f3c40e3689da6d_1a1b9881827b6ffe6063f3c40e3689da6d" compoundref="sky__pass_8cpp" startline="31" endline="71">SkyPass</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1SkyPass_a7181c04b46b849c690bc037d8da06f8e_1a7181c04b46b849c690bc037d8da06f8e" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classVertexBuffer" kindref="compound">VertexBuffer</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;VertexBuffer&gt; ren::SkyPass::m_pCubeVb</definition>
+        <argsstring></argsstring>
+        <name>m_pCubeVb</name>
+        <qualifiedname>ren::SkyPass::m_pCubeVb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sky_pass.h" line="21" column="17" bodyfile="inc/sky_pass.h" bodystart="21" bodyend="-1"/>
+        <referencedby refid="classren_1_1SkyPass_a1b9881827b6ffe6063f3c40e3689da6d_1a1b9881827b6ffe6063f3c40e3689da6d" compoundref="sky__pass_8cpp" startline="31" endline="71">SkyPass</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1SkyPass_ad4f10fa0e000b473004099da1eeb69e2_1ad4f10fa0e000b473004099da1eeb69e2" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classIndexBuffer" kindref="compound">IndexBuffer</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;IndexBuffer&gt; ren::SkyPass::m_pCubeIb</definition>
+        <argsstring></argsstring>
+        <name>m_pCubeIb</name>
+        <qualifiedname>ren::SkyPass::m_pCubeIb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sky_pass.h" line="22" column="17" bodyfile="inc/sky_pass.h" bodystart="22" bodyend="-1"/>
+        <referencedby refid="classren_1_1SkyPass_a1b9881827b6ffe6063f3c40e3689da6d_1a1b9881827b6ffe6063f3c40e3689da6d" compoundref="sky__pass_8cpp" startline="31" endline="71">SkyPass</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1SkyPass_a4007c091541f21ec46dfdaffb223481e_1a4007c091541f21ec46dfdaffb223481e" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classVertexBuffer" kindref="compound">VertexBuffer</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;VertexBuffer&gt; ren::SkyPass::m_pSphereVb</definition>
+        <argsstring></argsstring>
+        <name>m_pSphereVb</name>
+        <qualifiedname>ren::SkyPass::m_pSphereVb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sky_pass.h" line="23" column="17" bodyfile="inc/sky_pass.h" bodystart="23" bodyend="-1"/>
+        <referencedby refid="classren_1_1SkyPass_a1b9881827b6ffe6063f3c40e3689da6d_1a1b9881827b6ffe6063f3c40e3689da6d" compoundref="sky__pass_8cpp" startline="31" endline="71">SkyPass</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1SkyPass_aa4878e4ba4c24b795259a30453164c11_1aa4878e4ba4c24b795259a30453164c11" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classIndexBuffer" kindref="compound">IndexBuffer</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;IndexBuffer&gt; ren::SkyPass::m_pSphereIb</definition>
+        <argsstring></argsstring>
+        <name>m_pSphereIb</name>
+        <qualifiedname>ren::SkyPass::m_pSphereIb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sky_pass.h" line="24" column="17" bodyfile="inc/sky_pass.h" bodystart="24" bodyend="-1"/>
+        <referencedby refid="classren_1_1SkyPass_a1b9881827b6ffe6063f3c40e3689da6d_1a1b9881827b6ffe6063f3c40e3689da6d" compoundref="sky__pass_8cpp" startline="31" endline="71">SkyPass</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1SkyPass_ab9215c446c8362ea06dee9b0113ec265_1ab9215c446c8362ea06dee9b0113ec265" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool ren::SkyPass::m_bUseSphere</definition>
+        <argsstring></argsstring>
+        <name>m_bUseSphere</name>
+        <qualifiedname>ren::SkyPass::m_bUseSphere</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sky_pass.h" line="25" column="6" bodyfile="inc/sky_pass.h" bodystart="25" bodyend="-1"/>
+        <referencedby refid="classren_1_1SkyPass_a9525a44d610a38f05c99bfa17328657f_1a9525a44d610a38f05c99bfa17328657f" compoundref="sky__pass_8cpp" startline="98" endline="107">displayImguiWidgets</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classren_1_1SkyPass_a1b9881827b6ffe6063f3c40e3689da6d_1a1b9881827b6ffe6063f3c40e3689da6d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ren::SkyPass::SkyPass</definition>
+        <argsstring>(Graphics &amp;gfx, const std::string &amp;name, const bool useSphere)</argsstring>
+        <name>SkyPass</name>
+        <qualifiedname>ren::SkyPass::SkyPass</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>useSphere</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sky_pass.h" line="27" column="1" bodyfile="src/sky_pass.cpp" bodystart="31" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1SkyPass_aac9adbd77652549277584937a5a44f42_1aac9adbd77652549277584937a5a44f42" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ren::SkyPass::run</definition>
+        <argsstring>(Graphics &amp;gfx) const cond_noex override</argsstring>
+        <name>run</name>
+        <qualifiedname>ren::SkyPass::run</qualifiedname>
+        <reimplements refid="classren_1_1IPass_a80a6d3d531bee9f93371f342d32c89a1_1a80a6d3d531bee9f93371f342d32c89a1">run</reimplements>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+<para>binds bindables &amp; executes draw calls </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sky_pass.h" line="29" column="6" bodyfile="src/sky_pass.cpp" bodystart="73" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1SkyPass_a3b0174cb8ca42abb25ef46f419efe2b7_1a3b0174cb8ca42abb25ef46f419efe2b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ren::SkyPass::reset</definition>
+        <argsstring>() cond_noex override</argsstring>
+        <name>reset</name>
+        <qualifiedname>ren::SkyPass::reset</qualifiedname>
+        <reimplements refid="classren_1_1IPass_af001419157ed67f6123fb9f311e96064_1af001419157ed67f6123fb9f311e96064">reset</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sky_pass.h" line="30" column="6" bodyfile="src/sky_pass.cpp" bodystart="93" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1SkyPass_a9525a44d610a38f05c99bfa17328657f_1a9525a44d610a38f05c99bfa17328657f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ren::SkyPass::displayImguiWidgets</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>displayImguiWidgets</name>
+        <qualifiedname>ren::SkyPass::displayImguiWidgets</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sky_pass.h" line="31" column="6" bodyfile="src/sky_pass.cpp" bodystart="98" bodyend="107"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>ren::IBindablePass</label>
+        <link refid="classren_1_1IBindablePass"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>ren::IPass</label>
+        <link refid="classren_1_1IPass"/>
+      </node>
+      <node id="1">
+        <label>ren::SkyPass</label>
+        <link refid="classren_1_1SkyPass"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>ren::IBindablePass</label>
+        <link refid="classren_1_1IBindablePass"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>ren::IPass</label>
+        <link refid="classren_1_1IPass"/>
+      </node>
+      <node id="1">
+        <label>ren::SkyPass</label>
+        <link refid="classren_1_1SkyPass"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/sky_pass.h" line="13" column="1" bodyfile="inc/sky_pass.h" bodystart="15" bodyend="32"/>
+    <listofallmembers>
+      <member refid="classren_1_1IBindablePass_af7205f7049013c5d02ec74952f5a0d05_1af7205f7049013c5d02ec74952f5a0d05" prot="protected" virt="non-virtual"><scope>ren::SkyPass</scope><name>addBindable</name></member>
+      <member refid="classren_1_1IBindablePass_a5d189176a206854e34a9c168a0aad74a_1a5d189176a206854e34a9c168a0aad74a" prot="protected" virt="non-virtual"><scope>ren::SkyPass</scope><name>addBindableBinderUsingContainerIndex</name></member>
+      <member refid="classren_1_1IPass_ab8c6a6dae673214dccd302aea9ce6e72_1ab8c6a6dae673214dccd302aea9ce6e72" prot="protected" virt="non-virtual"><scope>ren::SkyPass</scope><name>addBinder</name></member>
+      <member refid="classren_1_1IPass_aa9c50563c1bd98e1c377d819d9e2dc09_1aa9c50563c1bd98e1c377d819d9e2dc09" prot="protected" virt="non-virtual"><scope>ren::SkyPass</scope><name>addLinker</name></member>
+      <member refid="classren_1_1IBindablePass_ab47b1d5abffbf0aaeb44ae3968942503_1ab47b1d5abffbf0aaeb44ae3968942503" prot="protected" virt="non-virtual"><scope>ren::SkyPass</scope><name>bind</name></member>
+      <member refid="classren_1_1SkyPass_a9525a44d610a38f05c99bfa17328657f_1a9525a44d610a38f05c99bfa17328657f" prot="public" virt="non-virtual"><scope>ren::SkyPass</scope><name>displayImguiWidgets</name></member>
+      <member refid="classren_1_1IPass_a6cffed1b315846ece319e4ce5f508843_1a6cffed1b315846ece319e4ce5f508843" prot="public" virt="non-virtual"><scope>ren::SkyPass</scope><name>getBinder</name></member>
+      <member refid="classren_1_1IPass_aebd5aa69455727600d0e979906a0a111_1aebd5aa69455727600d0e979906a0a111" prot="public" virt="non-virtual"><scope>ren::SkyPass</scope><name>getBinders</name></member>
+      <member refid="classren_1_1IPass_a171eeb96584abbbbe1f158fbca5628f0_1a171eeb96584abbbbe1f158fbca5628f0" prot="public" virt="non-virtual"><scope>ren::SkyPass</scope><name>getLinker</name></member>
+      <member refid="classren_1_1IPass_ae0910189678e800c86f665bca8c88a03_1ae0910189678e800c86f665bca8c88a03" prot="public" virt="non-virtual"><scope>ren::SkyPass</scope><name>getLinkers</name></member>
+      <member refid="classren_1_1IPass_a3c9f7768f492d9a50371acec9b61f12b_1a3c9f7768f492d9a50371acec9b61f12b" prot="public" virt="non-virtual"><scope>ren::SkyPass</scope><name>getName</name></member>
+      <member refid="classren_1_1IBindablePass_a3e5e7d5dbe096d11031a8d23050c12b6_1a3e5e7d5dbe096d11031a8d23050c12b6" prot="protected" virt="non-virtual"><scope>ren::SkyPass</scope><name>IBindablePass</name></member>
+      <member refid="classren_1_1IPass_a72360515966748b13f592095c12f58fa_1a72360515966748b13f592095c12f58fa" prot="public" virt="non-virtual"><scope>ren::SkyPass</scope><name>IPass</name></member>
+      <member refid="classren_1_1IPass_a7ef6e9979f151480bc34dca08b19bec1_1a7ef6e9979f151480bc34dca08b19bec1" prot="public" virt="non-virtual"><scope>ren::SkyPass</scope><name>isActive</name></member>
+      <member refid="classren_1_1IPass_ab8ff53f070bce5debcf6bb3ce26206eb_1ab8ff53f070bce5debcf6bb3ce26206eb" prot="private" virt="non-virtual"><scope>ren::SkyPass</scope><name>m_bActive</name></member>
+      <member refid="classren_1_1IBindablePass_a2202ffe84f3d1ceb3c38ba8e1d9761b4_1a2202ffe84f3d1ceb3c38ba8e1d9761b4" prot="private" virt="non-virtual"><scope>ren::SkyPass</scope><name>m_bindables</name></member>
+      <member refid="classren_1_1IPass_aea2aeb943b24bd538b91487dbbee1349_1aea2aeb943b24bd538b91487dbbee1349" prot="private" virt="non-virtual"><scope>ren::SkyPass</scope><name>m_binders</name></member>
+      <member refid="classren_1_1SkyPass_ab9215c446c8362ea06dee9b0113ec265_1ab9215c446c8362ea06dee9b0113ec265" prot="private" virt="non-virtual"><scope>ren::SkyPass</scope><name>m_bUseSphere</name></member>
+      <member refid="classren_1_1IPass_a44af75ecb642c6c1f47d316bf129daa8_1a44af75ecb642c6c1f47d316bf129daa8" prot="private" virt="non-virtual"><scope>ren::SkyPass</scope><name>m_linkers</name></member>
+      <member refid="classren_1_1IPass_aa3a178f92cb6197605a486211a90367a_1aa3a178f92cb6197605a486211a90367a" prot="private" virt="non-virtual"><scope>ren::SkyPass</scope><name>m_name</name></member>
+      <member refid="classren_1_1SkyPass_a373bb65157ab289c6465dd5eb0573ee6_1a373bb65157ab289c6465dd5eb0573ee6" prot="private" virt="non-virtual"><scope>ren::SkyPass</scope><name>m_nCubeIndices</name></member>
+      <member refid="classren_1_1SkyPass_a81b2d08bcc6604ee021c9dbf7a25982b_1a81b2d08bcc6604ee021c9dbf7a25982b" prot="private" virt="non-virtual"><scope>ren::SkyPass</scope><name>m_nSphereIndices</name></member>
+      <member refid="classren_1_1SkyPass_ad4f10fa0e000b473004099da1eeb69e2_1ad4f10fa0e000b473004099da1eeb69e2" prot="private" virt="non-virtual"><scope>ren::SkyPass</scope><name>m_pCubeIb</name></member>
+      <member refid="classren_1_1SkyPass_a7181c04b46b849c690bc037d8da06f8e_1a7181c04b46b849c690bc037d8da06f8e" prot="private" virt="non-virtual"><scope>ren::SkyPass</scope><name>m_pCubeVb</name></member>
+      <member refid="classren_1_1IBindablePass_a8c5f88422771fc4b7ceb1dca77219cfe_1a8c5f88422771fc4b7ceb1dca77219cfe" prot="protected" virt="non-virtual"><scope>ren::SkyPass</scope><name>m_pDsv</name></member>
+      <member refid="classren_1_1IBindablePass_a3994a46ac4e6f7d96c7ebe8b2d9630cb_1a3994a46ac4e6f7d96c7ebe8b2d9630cb" prot="protected" virt="non-virtual"><scope>ren::SkyPass</scope><name>m_pRtv</name></member>
+      <member refid="classren_1_1SkyPass_aa4878e4ba4c24b795259a30453164c11_1aa4878e4ba4c24b795259a30453164c11" prot="private" virt="non-virtual"><scope>ren::SkyPass</scope><name>m_pSphereIb</name></member>
+      <member refid="classren_1_1SkyPass_a4007c091541f21ec46dfdaffb223481e_1a4007c091541f21ec46dfdaffb223481e" prot="private" virt="non-virtual"><scope>ren::SkyPass</scope><name>m_pSphereVb</name></member>
+      <member refid="classren_1_1IPass_a589910e72e67f1d1ec37faea4d840074_1a589910e72e67f1d1ec37faea4d840074" prot="public" virt="virtual"><scope>ren::SkyPass</scope><name>recreateRtvsAndDsvs</name></member>
+      <member refid="classren_1_1SkyPass_a3b0174cb8ca42abb25ef46f419efe2b7_1a3b0174cb8ca42abb25ef46f419efe2b7" prot="public" virt="virtual"><scope>ren::SkyPass</scope><name>reset</name></member>
+      <member refid="classren_1_1SkyPass_aac9adbd77652549277584937a5a44f42_1aac9adbd77652549277584937a5a44f42" prot="public" virt="virtual"><scope>ren::SkyPass</scope><name>run</name></member>
+      <member refid="classren_1_1SkyPass_a2f80c3a9df4533f75804fc0f165dad38_1a2f80c3a9df4533f75804fc0f165dad38" prot="private" virt="non-virtual"><scope>ren::SkyPass</scope><name>s_cubeGeometryTag</name></member>
+      <member refid="classren_1_1SkyPass_ae27c35877852e187d2f565674299886f_1ae27c35877852e187d2f565674299886f" prot="private" virt="non-virtual"><scope>ren::SkyPass</scope><name>s_sphereGeometryTag</name></member>
+      <member refid="classren_1_1IPass_ae8d7a067929cabbe900ec89643cbcdba_1ae8d7a067929cabbe900ec89643cbcdba" prot="public" virt="non-virtual"><scope>ren::SkyPass</scope><name>setActive</name></member>
+      <member refid="classren_1_1IPass_a261403c4ce33bc13fe3b5e0487c79664_1a261403c4ce33bc13fe3b5e0487c79664" prot="public" virt="non-virtual"><scope>ren::SkyPass</scope><name>setupBinderTarget</name></member>
+      <member refid="classren_1_1SkyPass_a1b9881827b6ffe6063f3c40e3689da6d_1a1b9881827b6ffe6063f3c40e3689da6d" prot="public" virt="non-virtual"><scope>ren::SkyPass</scope><name>SkyPass</name></member>
+      <member refid="classren_1_1IBindablePass_ae2b3e270005268576afb65f16a9545a7_1ae2b3e270005268576afb65f16a9545a7" prot="protected" virt="virtual"><scope>ren::SkyPass</scope><name>validate</name></member>
+      <member refid="classren_1_1IPass_ac0132ac18bad1d6379a9d27e3d25bc18_1ac0132ac18bad1d6379a9d27e3d25bc18" prot="public" virt="virtual"><scope>ren::SkyPass</scope><name>~IPass</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

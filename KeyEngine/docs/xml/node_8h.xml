@@ -1,0 +1,180 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="node_8h" kind="file" language="C++">
+    <compoundname>node.h</compoundname>
+    <includes local="no">DirectXMath.h</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">string</includes>
+    <includedby refid="MODEL_8CPP" local="yes">src/MODEL.CPP</includedby>
+    <includedby refid="cube_8cpp" local="yes">src/cube.cpp</includedby>
+    <includedby refid="imgui__visitors_8cpp" local="yes">src/imgui_visitors.cpp</includedby>
+    <includedby refid="line_8cpp" local="yes">src/line.cpp</includedby>
+    <includedby refid="mesh_8cpp" local="yes">src/mesh.cpp</includedby>
+    <includedby refid="node_8cpp" local="yes">src/node.cpp</includedby>
+    <includedby refid="plane_8cpp" local="yes">src/plane.cpp</includedby>
+    <includedby refid="transform__vscb_8cpp" local="yes">src/transform_vscb.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>inc/node.h</label>
+        <link refid="node_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>DirectXMath.h</label>
+      </node>
+      <node id="4">
+        <label>memory</label>
+      </node>
+      <node id="5">
+        <label>string</label>
+      </node>
+      <node id="3">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>inc/node.h</label>
+        <link refid="node_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/MODEL.CPP</label>
+        <link refid="MODEL_8CPP"/>
+      </node>
+      <node id="3">
+        <label>src/cube.cpp</label>
+        <link refid="cube_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/imgui_visitors.cpp</label>
+        <link refid="imgui__visitors_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/line.cpp</label>
+        <link refid="line_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/mesh.cpp</label>
+        <link refid="mesh_8cpp"/>
+      </node>
+      <node id="7">
+        <label>src/node.cpp</label>
+        <link refid="node_8cpp"/>
+      </node>
+      <node id="8">
+        <label>src/plane.cpp</label>
+        <link refid="plane_8cpp"/>
+      </node>
+      <node id="9">
+        <label>src/transform_vscb.cpp</label>
+        <link refid="transform__vscb_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classNode" prot="public">Node</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;DirectXMath.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classModel" kindref="compound">Model</ref>;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMesh" kindref="compound">Mesh</ref>;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classIImGuiConstantBufferVisitor" kindref="compound">IImGuiConstantBufferVisitor</ref>;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classIImguiNodeVisitor" kindref="compound">IImguiNodeVisitor</ref>;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classNode" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classNode" kindref="compound">Node</ref></highlight></codeline>
+<codeline lineno="15"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="16" refid="classNode_a2bf2a0e9b454c55aa5dcb5aa4698697b_1a2bf2a0e9b454c55aa5dcb5aa4698697b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classModel" kindref="compound">Model</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//friend<sp/>std::unique_ptr&lt;Node&gt;<sp/>std::make_unique&lt;Node&gt;();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classNode_a4673b20c008a3c356038b50004322d8b_1a4673b20c008a3c356038b50004322d8b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classNode_a4673b20c008a3c356038b50004322d8b_1a4673b20c008a3c356038b50004322d8b" kindref="member">m_bTransformNeedsUpdate</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="20" refid="classNode_adcaca1c8286daf7c8168939407a45d21_1adcaca1c8286daf7c8168939407a45d21" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classNode_adcaca1c8286daf7c8168939407a45d21_1adcaca1c8286daf7c8168939407a45d21" kindref="member">m_imguiId</ref>;</highlight></codeline>
+<codeline lineno="21" refid="classNode_ac1c15ca33da3a3c9eaa09c43e94f6404_1ac1c15ca33da3a3c9eaa09c43e94f6404" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classNode_ac1c15ca33da3a3c9eaa09c43e94f6404_1ac1c15ca33da3a3c9eaa09c43e94f6404" kindref="member">m_name</ref>;</highlight></codeline>
+<codeline lineno="22" refid="classNode_a20db0fe1c3f41388e1787f5c50f13e03_1a20db0fe1c3f41388e1787f5c50f13e03" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>DirectX::XMFLOAT3<sp/><ref refid="classNode_a20db0fe1c3f41388e1787f5c50f13e03_1a20db0fe1c3f41388e1787f5c50f13e03" kindref="member">m_scale</ref>;</highlight></codeline>
+<codeline lineno="23" refid="classNode_a85016078ebbef63b1f473cb440ebcaf5_1a85016078ebbef63b1f473cb440ebcaf5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>DirectX::XMFLOAT3<sp/><ref refid="classNode_a85016078ebbef63b1f473cb440ebcaf5_1a85016078ebbef63b1f473cb440ebcaf5" kindref="member">m_rot</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>{x<sp/>=<sp/>pitch,<sp/>y<sp/>=<sp/>yaw,<sp/>y<sp/>=<sp/>roll}<sp/>(in<sp/>radians)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="classNode_ac130bb9d04a120c890b5908df58e2814_1ac130bb9d04a120c890b5908df58e2814" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>DirectX::XMFLOAT3<sp/><ref refid="classNode_ac130bb9d04a120c890b5908df58e2814_1ac130bb9d04a120c890b5908df58e2814" kindref="member">m_pos</ref>;</highlight></codeline>
+<codeline lineno="25" refid="classNode_ae9db78eb26f3ab20b4d1dbebfdd89aa6_1ae9db78eb26f3ab20b4d1dbebfdd89aa6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>DirectX::XMFLOAT3<sp/><ref refid="classNode_ae9db78eb26f3ab20b4d1dbebfdd89aa6_1ae9db78eb26f3ab20b4d1dbebfdd89aa6" kindref="member">m_scalePrev</ref>;</highlight></codeline>
+<codeline lineno="26" refid="classNode_ac1647faf191b8e44f65572df021d9dff_1ac1647faf191b8e44f65572df021d9dff" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>DirectX::XMFLOAT3<sp/><ref refid="classNode_ac1647faf191b8e44f65572df021d9dff_1ac1647faf191b8e44f65572df021d9dff" kindref="member">m_rotPrev</ref>;</highlight></codeline>
+<codeline lineno="27" refid="classNode_ac3433e243642beabe381192163b729be_1ac3433e243642beabe381192163b729be" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>DirectX::XMFLOAT3<sp/><ref refid="classNode_ac3433e243642beabe381192163b729be_1ac3433e243642beabe381192163b729be" kindref="member">m_posPrev</ref>;</highlight></codeline>
+<codeline lineno="28" refid="classNode_a087367a284aa72681e670b708100b2ab_1a087367a284aa72681e670b708100b2ab" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>DirectX::XMFLOAT4X4<sp/><ref refid="classNode_a087367a284aa72681e670b708100b2ab_1a087367a284aa72681e670b708100b2ab" kindref="member">m_localTransform</ref>;</highlight></codeline>
+<codeline lineno="29" refid="classNode_ae0a32bf0a1332abc261a5f2124dbcfe8_1ae0a32bf0a1332abc261a5f2124dbcfe8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>DirectX::XMFLOAT4X4<sp/><ref refid="classNode_ae0a32bf0a1332abc261a5f2124dbcfe8_1ae0a32bf0a1332abc261a5f2124dbcfe8" kindref="member">m_worldTransform</ref>;</highlight></codeline>
+<codeline lineno="30" refid="classNode_a62217e5625c118036a0c8bc2170b1c36_1a62217e5625c118036a0c8bc2170b1c36" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNode" kindref="compound">Node</ref>*<sp/><ref refid="classNode_a62217e5625c118036a0c8bc2170b1c36_1a62217e5625c118036a0c8bc2170b1c36" kindref="member">m_pParent</ref>;</highlight></codeline>
+<codeline lineno="31" refid="classNode_a303c3095973f876cee6709d5b33bce2e_1a303c3095973f876cee6709d5b33bce2e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::unique_ptr&lt;Node&gt;&gt;<sp/><ref refid="classNode_a303c3095973f876cee6709d5b33bce2e_1a303c3095973f876cee6709d5b33bce2e" kindref="member">m_children</ref>;</highlight></codeline>
+<codeline lineno="32" refid="classNode_a0ebf1ae732e341e11fc4b86ea8a94f5d_1a0ebf1ae732e341e11fc4b86ea8a94f5d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Mesh*&gt;<sp/><ref refid="classNode_a0ebf1ae732e341e11fc4b86ea8a94f5d_1a0ebf1ae732e341e11fc4b86ea8a94f5d" kindref="member">m_meshes</ref>;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_ac813be287eef4d0672a08487ab0d35b0_1ac813be287eef4d0672a08487ab0d35b0" kindref="member">update</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>dt,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMMATRIX<sp/>&amp;parentWorldTransform,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>lerpBetweenFrames,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bEnableSmoothMovement<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal"><sp/>)<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_a80616842a9027c391581175686991599_1a80616842a9027c391581175686991599" kindref="member">addChild</ref>(<sp/>std::unique_ptr&lt;<ref refid="classNode" kindref="compound">Node</ref>&gt;<sp/>pChild<sp/>)<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_a7eb3bd9d15572570aacde0f582eb374a_1a7eb3bd9d15572570aacde0f582eb374a" kindref="member">invalidateChildrenTransform</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_acea3ab87949fd8fbbfa7524371f5ee80_1acea3ab87949fd8fbbfa7524371f5ee80" kindref="member">setWorldTransform</ref>(<sp/>const<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>::XMMATRIX<sp/>&amp;worldTransform<sp/>)<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">public:</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNode" kindref="compound">Node</ref>(<sp/><ref refid="classNode" kindref="compound">Node</ref><sp/>*pParent,<sp/>const<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>imguiId,<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>&amp;name,<sp/>const<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>::XMMATRIX<sp/>&amp;localTransform,<sp/>std::vector&lt;<ref refid="classMesh" kindref="compound">Mesh</ref>*&gt;<sp/>meshes<sp/>);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>~<ref refid="classNode" kindref="compound">Node</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="41" refid="classNode_ae879c06fe4c952dd8f790ac51ad80f17_1ae879c06fe4c952dd8f790ac51ad80f17" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNode" kindref="compound">Node</ref>(<sp/>const<sp/><ref refid="classNode" kindref="compound">Node</ref><sp/>&amp;rhs<sp/>)<sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="42" refid="classNode_a4a5a3d9fb02f38a659afe2875c23f067_1a4a5a3d9fb02f38a659afe2875c23f067" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNode" kindref="compound">Node</ref>&amp;<sp/>operator=(<sp/>const<sp/><ref refid="classNode" kindref="compound">Node</ref><sp/>&amp;rhs<sp/>)<sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNode" kindref="compound">Node</ref>(<sp/><ref refid="classNode" kindref="compound">Node</ref><sp/>&amp;&amp;rhs<sp/>)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNode" kindref="compound">Node</ref>&amp;<sp/>operator=(<sp/><ref refid="classNode" kindref="compound">Node</ref><sp/>&amp;&amp;rhs<sp/>)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>friend<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_a7033474dc4dd44415f17c4db50e49143_1a7033474dc4dd44415f17c4db50e49143" kindref="member">swap</ref>(<sp/><ref refid="classNode" kindref="compound">Node</ref><sp/>&amp;lhs,<sp/><ref refid="classNode" kindref="compound">Node</ref><sp/>&amp;rhs<sp/>);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>transformation<sp/>functions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_a2a69d3d37f1a4f37110f6bab1e9db440_1a2a69d3d37f1a4f37110f6bab1e9db440" kindref="member">setTransform</ref>(<sp/>const<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>scale,<sp/>const<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>::XMFLOAT3<sp/>&amp;rotAnglesRadians,<sp/>const<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>::XMFLOAT3<sp/>&amp;pos<sp/>)<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_a2a69d3d37f1a4f37110f6bab1e9db440_1a2a69d3d37f1a4f37110f6bab1e9db440" kindref="member">setTransform</ref>(<sp/>const<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>scale,<sp/>const<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>::XMFLOAT4<sp/>&amp;rotQuat,<sp/>const<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>::XMFLOAT3<sp/>&amp;pos<sp/>)<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_a2a69d3d37f1a4f37110f6bab1e9db440_1a2a69d3d37f1a4f37110f6bab1e9db440" kindref="member">setTransform</ref>(<sp/>const<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>scale,<sp/>const<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>::XMVECTOR<sp/>&amp;rotQuat,<sp/>const<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>::XMFLOAT3<sp/>&amp;pos<sp/>)<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_ad4567bfce5a93e58b598475c9a4decc9_1ad4567bfce5a93e58b598475c9a4decc9" kindref="member">setScale</ref>(<sp/>const<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>scale<sp/>)<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_ad4567bfce5a93e58b598475c9a4decc9_1ad4567bfce5a93e58b598475c9a4decc9" kindref="member">setScale</ref>(<sp/>const<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>::XMFLOAT3<sp/>&amp;scale<sp/>)<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_a285a6160e0f168657c41bdaa796f4f90_1a285a6160e0f168657c41bdaa796f4f90" kindref="member">scaleRel</ref>(<sp/>const<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>::XMFLOAT3<sp/>&amp;scale<sp/>)<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_aec1598a16c459b61cb837c7d937f9596_1aec1598a16c459b61cb837c7d937f9596" kindref="member">setRotation</ref>(<sp/>const<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>::XMFLOAT3<sp/>&amp;rotAnglesRadians<sp/>)<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_a0d2d32c7c6f8ae40c1120285da062eb1_1a0d2d32c7c6f8ae40c1120285da062eb1" kindref="member">rotateRel</ref>(<sp/>const<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>::XMFLOAT3<sp/>&amp;rotAnglesRadians<sp/>)<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_a9e1c557f08a393ba879fba874129be60_1a9e1c557f08a393ba879fba874129be60" kindref="member">setTranslation</ref>(<sp/>const<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>::XMFLOAT3<sp/>&amp;pos<sp/>)<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_ac29f7a250f3edfb8de121396a13a9d07_1ac29f7a250f3edfb8de121396a13a9d07" kindref="member">translateRel</ref>(<sp/>const<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>::XMFLOAT3<sp/>&amp;pos<sp/>)<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_a80faf48b135a1702a1811d40aec96e47_1a80faf48b135a1702a1811d40aec96e47" kindref="member">updateLocalTransform</ref>(<sp/>const<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>dt,<sp/>const<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>lerpBetweenFrames,<sp/>const<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bEnableSmoothMovement<sp/>=<sp/>false<sp/>)<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>::XMMATRIX<sp/><ref refid="classNode_aa13d41a9bd40f5109f49929838af0e56_1aa13d41a9bd40f5109f49929838af0e56" kindref="member">getWorldTransform</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>::XMFLOAT4X4<sp/><ref refid="classNode_a21a501aca121414cf5fb85a3649d6ddb_1a21a501aca121414cf5fb85a3649d6ddb" kindref="member">getWorldTransform4x4</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classNode_a5414597b9851bd398548999e3565aea1_1a5414597b9851bd398548999e3565aea1" kindref="member">getScale</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>::XMFLOAT3<sp/><ref refid="classNode_a1c7b6dca6b31ea7e6564fc5c8517a5af_1a1c7b6dca6b31ea7e6564fc5c8517a5af" kindref="member">getScale3</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>::XMFLOAT3<sp/><ref refid="classNode_ab61123bd9fcbad0b02f8363e7df24e7d_1ab61123bd9fcbad0b02f8363e7df24e7d" kindref="member">getRotation</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>::XMVECTOR<sp/><ref refid="classNode_a22dfd767bbb91e603baf265377b2a888_1a22dfd767bbb91e603baf265377b2a888" kindref="member">getRotationQuat</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>::XMFLOAT3<sp/><ref refid="classNode_aa38921aea0a3a3473512631daf05ebd8_1aa38921aea0a3a3473512631daf05ebd8" kindref="member">getPosition</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_a54b3bd58295e8a1dee6b8a8acfced8ea_1a54b3bd58295e8a1dee6b8a8acfced8ea" kindref="member">accept</ref>(<sp/><ref refid="classIImguiNodeVisitor" kindref="compound">IImguiNodeVisitor</ref><sp/>&amp;mv<sp/>);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_a54b3bd58295e8a1dee6b8a8acfced8ea_1a54b3bd58295e8a1dee6b8a8acfced8ea" kindref="member">accept</ref>(<sp/><ref refid="classIImGuiConstantBufferVisitor" kindref="compound">IImGuiConstantBufferVisitor</ref><sp/>&amp;ev<sp/>);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classNode_a0374f189312791b63f5a85a5b6dc2b04_1a0374f189312791b63f5a85a5b6dc2b04" kindref="member">getImguiId</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classNode_a2378c8d52ee672fdd22a480fa6cc83e5_1a2378c8d52ee672fdd22a480fa6cc83e5" kindref="member">hasChildren</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">&amp;<sp/><ref refid="classNode_a7c70be855427bd60746b450074640816_1a7c70be855427bd60746b450074640816" kindref="member">getName</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classNode_a707a17c5abadbfe7a9db1fd45b0e0e8d_1a707a17c5abadbfe7a9db1fd45b0e0e8d" kindref="member">isRoot</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/node.h"/>
+  </compounddef>
+</doxygen>

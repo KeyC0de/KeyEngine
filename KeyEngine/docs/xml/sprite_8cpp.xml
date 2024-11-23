@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="sprite_8cpp" kind="file" language="C++">
+    <compoundname>sprite.cpp</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifdef<sp/>D2D_ONLY</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="sprite_8h" kindref="compound">sprite.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="os__utils_8h" kindref="compound">os_utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="graphics_8h" kindref="compound">graphics.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>comment(<sp/>lib,<sp/>&quot;windowscodecs.lib&quot;<sp/>)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mwrl<sp/>=<sp/>Microsoft::WRL;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><ref refid="classSprite_a9b366efc8c486932e9d93dd99f4334e3_1a9b366efc8c486932e9d93dd99f4334e3" kindref="member">Sprite::Sprite</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::wstring&amp;<sp/>filename,</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)</highlight></codeline>
+<codeline lineno="13"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>the<sp/>wic<sp/>factory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>HRESULT<sp/>hres<sp/>=<sp/>CoCreateInstance(<sp/>CLSID_WICImagingFactory,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>CLSCTX_INPROC_SERVER,<sp/>IID_PPV_ARGS(<sp/>&amp;<ref refid="classSprite_a3dbe733528fa98914c69bd28daf4a0d7_1a3dbe733528fa98914c69bd28daf4a0d7" kindref="member">m_pWicFactory</ref><sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="os__utils_8h_a7027472bc9b182c0fea900713e4541e3_1a7027472bc9b182c0fea900713e4541e3" kindref="member">ASSERT_HRES_IF_FAILED</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>the<sp/>decoder<sp/>to<sp/>decode<sp/>the<sp/>image<sp/>files</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>hres<sp/>=<sp/><ref refid="classSprite_a3dbe733528fa98914c69bd28daf4a0d7_1a3dbe733528fa98914c69bd28daf4a0d7" kindref="member">m_pWicFactory</ref>-&gt;CreateDecoderFromFilename(<sp/>filename.c_str(),<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>GENERIC_READ,<sp/>WICDecodeMetadataCacheOnLoad,<sp/>&amp;<ref refid="classSprite_a9c6d51fd94758772cd56c11a77258632_1a9c6d51fd94758772cd56c11a77258632" kindref="member">m_pWicDecoder</ref><sp/>);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="os__utils_8h_a7027472bc9b182c0fea900713e4541e3_1a7027472bc9b182c0fea900713e4541e3" kindref="member">ASSERT_HRES_IF_FAILED</ref>;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>get<sp/>frame<sp/>from<sp/>image</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>hres<sp/>=<sp/><ref refid="classSprite_a9c6d51fd94758772cd56c11a77258632_1a9c6d51fd94758772cd56c11a77258632" kindref="member">m_pWicDecoder</ref>-&gt;GetFrame(<sp/>0,<sp/>&amp;<ref refid="classSprite_a70937b7742f455409a65c9ba0291cad0_1a70937b7742f455409a65c9ba0291cad0" kindref="member">m_pBitmapFrame</ref><sp/>);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="os__utils_8h_a7027472bc9b182c0fea900713e4541e3_1a7027472bc9b182c0fea900713e4541e3" kindref="member">ASSERT_HRES_IF_FAILED</ref>;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>wic<sp/>format<sp/>converter</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>hres<sp/>=<sp/><ref refid="classSprite_a3dbe733528fa98914c69bd28daf4a0d7_1a3dbe733528fa98914c69bd28daf4a0d7" kindref="member">m_pWicFactory</ref>-&gt;CreateFormatConverter(<sp/>&amp;<ref refid="classSprite_aef826d0df94614600d606692ba16ef3b_1aef826d0df94614600d606692ba16ef3b" kindref="member">m_pWicConverter</ref><sp/>);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="os__utils_8h_a7027472bc9b182c0fea900713e4541e3_1a7027472bc9b182c0fea900713e4541e3" kindref="member">ASSERT_HRES_IF_FAILED</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>setup<sp/>the<sp/>converter<sp/>to<sp/>create<sp/>32bpp<sp/>BGRA<sp/>bitmaps</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>hres<sp/>=<sp/><ref refid="classSprite_aef826d0df94614600d606692ba16ef3b_1aef826d0df94614600d606692ba16ef3b" kindref="member">m_pWicConverter</ref>-&gt;Initialize(<sp/><ref refid="classSprite_a70937b7742f455409a65c9ba0291cad0_1a70937b7742f455409a65c9ba0291cad0" kindref="member">m_pBitmapFrame</ref>.Get(),<sp/>GUID_WICPixelFormat32bppPBGRA,<sp/>WICBitmapDitherTypeNone,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>0.0,<sp/>WICBitmapPaletteTypeCustom<sp/>);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="os__utils_8h_a7027472bc9b182c0fea900713e4541e3_1a7027472bc9b182c0fea900713e4541e3" kindref="member">ASSERT_HRES_IF_FAILED</ref>;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>the<sp/>D2D1<sp/>bitmap</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>hres<sp/>=<sp/>gfx.renderTarget2d()-&gt;CreateBitmapFromWicBitmap(<sp/><ref refid="classSprite_aef826d0df94614600d606692ba16ef3b_1aef826d0df94614600d606692ba16ef3b" kindref="member">m_pWicConverter</ref>.Get(),<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classSprite_a90981aba92daf4a67769cd2dbba71df3_1a90981aba92daf4a67769cd2dbba71df3" kindref="member">m_pBitmap</ref><sp/>);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="os__utils_8h_a7027472bc9b182c0fea900713e4541e3_1a7027472bc9b182c0fea900713e4541e3" kindref="member">ASSERT_HRES_IF_FAILED</ref>;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSprite_a6588f564b921aad761c3ed67f2efcba9_1a6588f564b921aad761c3ed67f2efcba9" kindref="member">Sprite::render</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>D2D1_RECT_F&amp;<sp/>srcRect,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>D2D1_RECT_F&amp;<sp/>destRect,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>alpha<sp/>)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>gfx.renderTarget2d()-&gt;DrawBitmap(<sp/><ref refid="classSprite_a90981aba92daf4a67769cd2dbba71df3_1a90981aba92daf4a67769cd2dbba71df3" kindref="member">m_pBitmap</ref>.Get(),<sp/>destRect,<sp/>alpha,<sp/>D2D1_BITMAP_INTERPOLATION_MODE::D2D1_BITMAP_INTERPOLATION_MODE_NEAREST_NEIGHBOR,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>srcRect<sp/>);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classSprite_a131be40bb93d9e5daba29db542a83e75_1a131be40bb93d9e5daba29db542a83e75" kindref="member">Sprite::getWidth</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSprite_a90981aba92daf4a67769cd2dbba71df3_1a90981aba92daf4a67769cd2dbba71df3" kindref="member">m_pBitmap</ref>-&gt;GetSize().width;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classSprite_a887f3dba52d6ca4ccd3daaf2e0cf2b6a_1a887f3dba52d6ca4ccd3daaf2e0cf2b6a" kindref="member">Sprite::getHeight</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSprite_a90981aba92daf4a67769cd2dbba71df3_1a90981aba92daf4a67769cd2dbba71df3" kindref="member">m_pBitmap</ref>-&gt;GetSize().height;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><ref refid="classSpriteSheet_a5b1f2658e7f7946ef4a4cced2bf5945d_1a5b1f2658e7f7946ef4a4cced2bf5945d" kindref="member">SpriteSheet::SpriteSheet</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::wstring&amp;<sp/>filename,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>spriteWidth,</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>spriteHeight<sp/>)</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSprite" kindref="compound">Sprite</ref>{filename,<sp/>gfx}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>m_spriteWidth<sp/>=<sp/>spriteWidth;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>m_spriteHeight<sp/>=<sp/>spriteHeight;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>m_nSpritesAcross<sp/>=<sp/>(int)getWidth()<sp/>/<sp/>spriteWidth;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSpriteSheet_af8c4a8772b7febaa235249662fd22e6a_1af8c4a8772b7febaa235249662fd22e6a" kindref="member">SpriteSheet::render</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index,</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y,</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>alpha<sp/>)</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>srcRectX<sp/>=<sp/>(float)(<sp/>index<sp/>%<sp/><ref refid="classSpriteSheet_a6ab705e124b172192eab92a4aac87d51_1a6ab705e124b172192eab92a4aac87d51" kindref="member">m_nSpritesAcross</ref><sp/>)<sp/>*<sp/><ref refid="classSpriteSheet_ac6203ad7f0502e2f28bd4098d6d82eb7_1ac6203ad7f0502e2f28bd4098d6d82eb7" kindref="member">m_spriteWidth</ref>;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>srcRectY<sp/>=<sp/>(float)(<sp/>index<sp/>/<sp/><ref refid="classSpriteSheet_a6ab705e124b172192eab92a4aac87d51_1a6ab705e124b172192eab92a4aac87d51" kindref="member">m_nSpritesAcross</ref><sp/>)<sp/>*<sp/><ref refid="classSpriteSheet_a8bd9f94a60cb9083afa06164be191180_1a8bd9f94a60cb9083afa06164be191180" kindref="member">m_spriteHeight</ref>;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>D2D1_RECT_F<sp/>srcRect<sp/>=<sp/>D2D1::RectF(<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)<sp/>srcRectX,<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)<sp/>srcRectY,<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)<sp/>srcRectX<sp/>+<sp/><ref refid="classSpriteSheet_ac6203ad7f0502e2f28bd4098d6d82eb7_1ac6203ad7f0502e2f28bd4098d6d82eb7" kindref="member">m_spriteWidth</ref>,<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)<sp/>srcRectY<sp/>+<sp/><ref refid="classSpriteSheet_a8bd9f94a60cb9083afa06164be191180_1a8bd9f94a60cb9083afa06164be191180" kindref="member">m_spriteHeight</ref><sp/>);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>D2D1_RECT_F<sp/>destRect<sp/>=<sp/>D2D1::RectF(<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)<sp/>x,<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)<sp/>y,<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)<sp/>x<sp/>+<sp/><ref refid="classSpriteSheet_ac6203ad7f0502e2f28bd4098d6d82eb7_1ac6203ad7f0502e2f28bd4098d6d82eb7" kindref="member">m_spriteWidth</ref>,<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)<sp/>y<sp/>+<sp/><ref refid="classSpriteSheet_a8bd9f94a60cb9083afa06164be191180_1a8bd9f94a60cb9083afa06164be191180" kindref="member">m_spriteHeight</ref><sp/>);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSprite_a6588f564b921aad761c3ed67f2efcba9_1a6588f564b921aad761c3ed67f2efcba9" kindref="member">Sprite::render</ref>(<sp/>gfx,<sp/>srcRect,<sp/>destRect,<sp/>alpha<sp/>);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="src/sprite.cpp"/>
+  </compounddef>
+</doxygen>

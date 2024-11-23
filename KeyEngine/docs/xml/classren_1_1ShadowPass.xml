@@ -1,0 +1,741 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classren_1_1ShadowPass" kind="class" language="C++" prot="public">
+    <compoundname>ren::ShadowPass</compoundname>
+    <basecompoundref refid="classren_1_1RenderQueuePass" prot="public" virt="non-virtual">ren::RenderQueuePass</basecompoundref>
+    <includes refid="shadow__pass_8h" local="no">shadow_pass.h</includes>
+    <innerclass refid="structren_1_1ShadowPass_1_1GlobalsPSCB" prot="private">ren::ShadowPass::GlobalsPSCB</innerclass>
+    <innerclass refid="structren_1_1ShadowPass_1_1GlobalsVSCB" prot="private">ren::ShadowPass::GlobalsVSCB</innerclass>
+    <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="classren_1_1ShadowPass_a09354ae41187122545fb29cf0d7794fd_1a09354ae41187122545fb29cf0d7794fd" prot="private" static="no">
+        <type><ref refid="structILightSource_1_1LightVSCB" kindref="compound">ILightSource::LightVSCB</ref>[<ref refid="classren_1_1ShadowPass_a78befc9467180544b3e1b7ea9c6db0c1_1a78befc9467180544b3e1b7ea9c6db0c1" kindref="member">s_maxShadowCastingLights</ref>]</type>
+        <definition>using ren::ShadowPass::LightsVSCB =  ILightSource::LightVSCB[s_maxShadowCastingLights]</definition>
+        <argsstring></argsstring>
+        <name>LightsVSCB</name>
+        <qualifiedname>ren::ShadowPass::LightsVSCB</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/shadow_pass.h" line="57" column="1" bodyfile="inc/shadow_pass.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classren_1_1ShadowPass_afd94955d277d6d9df9571863056cbe55_1afd94955d277d6d9df9571863056cbe55" prot="private" static="no">
+        <type><ref refid="structILightSource_1_1LightPSCB" kindref="compound">ILightSource::LightPSCB</ref>[<ref refid="classren_1_1ShadowPass_a78befc9467180544b3e1b7ea9c6db0c1_1a78befc9467180544b3e1b7ea9c6db0c1" kindref="member">s_maxShadowCastingLights</ref>]</type>
+        <definition>using ren::ShadowPass::LightsPSCB =  ILightSource::LightPSCB[s_maxShadowCastingLights]</definition>
+        <argsstring></argsstring>
+        <name>LightsPSCB</name>
+        <qualifiedname>ren::ShadowPass::LightsPSCB</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/shadow_pass.h" line="59" column="1" bodyfile="inc/shadow_pass.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classren_1_1ShadowPass_a78befc9467180544b3e1b7ea9c6db0c1_1a78befc9467180544b3e1b7ea9c6db0c1" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned ren::ShadowPass::s_maxShadowCastingLights</definition>
+        <argsstring></argsstring>
+        <name>s_maxShadowCastingLights</name>
+        <qualifiedname>ren::ShadowPass::s_maxShadowCastingLights</qualifiedname>
+        <initializer>= 16u</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/shadow_pass.h" line="30" column="34" bodyfile="inc/shadow_pass.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1ShadowPass_a0a9da504ea83b9478583b9fc996a56be_1a0a9da504ea83b9478583b9fc996a56be" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned ren::ShadowPass::s_globalsVscbSlot</definition>
+        <argsstring></argsstring>
+        <name>s_globalsVscbSlot</name>
+        <qualifiedname>ren::ShadowPass::s_globalsVscbSlot</qualifiedname>
+        <initializer>= 1u</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/shadow_pass.h" line="31" column="34" bodyfile="inc/shadow_pass.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1ShadowPass_a0f684ab6eadd250671eeff37319d7ac1_1a0f684ab6eadd250671eeff37319d7ac1" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned ren::ShadowPass::s_globalsPscbSlot</definition>
+        <argsstring></argsstring>
+        <name>s_globalsPscbSlot</name>
+        <qualifiedname>ren::ShadowPass::s_globalsPscbSlot</qualifiedname>
+        <initializer>= 1u</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/shadow_pass.h" line="32" column="34" bodyfile="inc/shadow_pass.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1ShadowPass_ab2d17ab137ff24dfd2e7f219b1da5bfd_1ab2d17ab137ff24dfd2e7f219b1da5bfd" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned ren::ShadowPass::s_lightArrayVertexShaderCBSlot</definition>
+        <argsstring></argsstring>
+        <name>s_lightArrayVertexShaderCBSlot</name>
+        <qualifiedname>ren::ShadowPass::s_lightArrayVertexShaderCBSlot</qualifiedname>
+        <initializer>= 2u</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/shadow_pass.h" line="33" column="34" bodyfile="inc/shadow_pass.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1ShadowPass_aabd9a71155ac410aa5a12a732b48a762_1aabd9a71155ac410aa5a12a732b48a762" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned ren::ShadowPass::s_lightArrayPixelShaderCBSlot</definition>
+        <argsstring></argsstring>
+        <name>s_lightArrayPixelShaderCBSlot</name>
+        <qualifiedname>ren::ShadowPass::s_lightArrayPixelShaderCBSlot</qualifiedname>
+        <initializer>= 2u</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/shadow_pass.h" line="34" column="34" bodyfile="inc/shadow_pass.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1ShadowPass_affb066b0b62365f2371369da5e7b164f_1affb066b0b62365f2371369da5e7b164f" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned ren::ShadowPass::s_shadowMapArraySlot</definition>
+        <argsstring></argsstring>
+        <name>s_shadowMapArraySlot</name>
+        <qualifiedname>ren::ShadowPass::s_shadowMapArraySlot</qualifiedname>
+        <initializer>= 3u</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/shadow_pass.h" line="35" column="34" bodyfile="inc/shadow_pass.h" bodystart="35" bodyend="-1"/>
+        <referencedby refid="classren_1_1ShadowPass_a89e7feb05baff9858c8b91edcb5a5d51_1a89e7feb05baff9858c8b91edcb5a5d51" compoundref="SHADOW__PASS_8CPP" startline="31" endline="92">ShadowPass</referencedby>
+        <referencedby refid="classren_1_1ShadowPass_a90d4ac05ba7d7f2cb3ae06ce0ffae448_1a90d4ac05ba7d7f2cb3ae06ce0ffae448" compoundref="SHADOW__PASS_8CPP" startline="143" endline="194">bindShadowCastingLights</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1ShadowPass_a57668a13b79c7b97a93535fc9f328e0e_1a57668a13b79c7b97a93535fc9f328e0e" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned ren::ShadowPass::s_shadowCubeMapArraySlot</definition>
+        <argsstring></argsstring>
+        <name>s_shadowCubeMapArraySlot</name>
+        <qualifiedname>ren::ShadowPass::s_shadowCubeMapArraySlot</qualifiedname>
+        <initializer>= 4u</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/shadow_pass.h" line="36" column="34" bodyfile="inc/shadow_pass.h" bodystart="36" bodyend="-1"/>
+        <referencedby refid="classren_1_1ShadowPass_a89e7feb05baff9858c8b91edcb5a5d51_1a89e7feb05baff9858c8b91edcb5a5d51" compoundref="SHADOW__PASS_8CPP" startline="31" endline="92">ShadowPass</referencedby>
+        <referencedby refid="classren_1_1ShadowPass_a90d4ac05ba7d7f2cb3ae06ce0ffae448_1a90d4ac05ba7d7f2cb3ae06ce0ffae448" compoundref="SHADOW__PASS_8CPP" startline="143" endline="194">bindShadowCastingLights</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1ShadowPass_a7f7b6d1fa45f819dd55562fc55886bdc_1a7f7b6d1fa45f819dd55562fc55886bdc" prot="private" static="yes" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned ren::ShadowPass::s_shadowMapResolution</definition>
+        <argsstring></argsstring>
+        <name>s_shadowMapResolution</name>
+        <qualifiedname>ren::ShadowPass::s_shadowMapResolution</qualifiedname>
+        <initializer>= 1024u</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/shadow_pass.h" line="37" column="24" bodyfile="inc/shadow_pass.h" bodystart="37" bodyend="-1"/>
+        <referencedby refid="classren_1_1ShadowPass_a89e7feb05baff9858c8b91edcb5a5d51_1a89e7feb05baff9858c8b91edcb5a5d51" compoundref="SHADOW__PASS_8CPP" startline="31" endline="92">ShadowPass</referencedby>
+        <referencedby refid="classren_1_1ShadowPass_a90d4ac05ba7d7f2cb3ae06ce0ffae448_1a90d4ac05ba7d7f2cb3ae06ce0ffae448" compoundref="SHADOW__PASS_8CPP" startline="143" endline="194">bindShadowCastingLights</referencedby>
+        <referencedby refid="classren_1_1ShadowPass_a88f8d3b07f57c1d6a98a78fec2e68b5f_1a88f8d3b07f57c1d6a98a78fec2e68b5f" compoundref="SHADOW__PASS_8CPP" startline="203" endline="211">dumpShadowCubeMap</referencedby>
+        <referencedby refid="classren_1_1ShadowPass_abfd441eaa17f14d2f82fea433806a4f4_1abfd441eaa17f14d2f82fea433806a4f4" compoundref="SHADOW__PASS_8CPP" startline="196" endline="201">dumpShadowMap</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classren_1_1ShadowPass_a0c0dd1bd05256ed899612d08eea83e25_1a0c0dd1bd05256ed899612d08eea83e25" prot="private" static="no" mutable="no">
+        <type><ref refid="classVertexShaderConstantBuffer" kindref="compound">VertexShaderConstantBuffer</ref>&lt; <ref refid="structren_1_1ShadowPass_1_1GlobalsVSCB" kindref="compound">GlobalsVSCB</ref> &gt;</type>
+        <definition>VertexShaderConstantBuffer&lt;GlobalsVSCB&gt; ren::ShadowPass::m_globalsVscb</definition>
+        <argsstring></argsstring>
+        <name>m_globalsVscb</name>
+        <qualifiedname>ren::ShadowPass::m_globalsVscb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/shadow_pass.h" line="46" column="28" bodyfile="inc/shadow_pass.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1ShadowPass_a5166c73b0a29b04d5e50dfd998c48628_1a5166c73b0a29b04d5e50dfd998c48628" prot="private" static="no" mutable="no">
+        <type><ref refid="classPixelShaderConstantBuffer" kindref="compound">PixelShaderConstantBuffer</ref>&lt; <ref refid="structren_1_1ShadowPass_1_1GlobalsPSCB" kindref="compound">GlobalsPSCB</ref> &gt;</type>
+        <definition>PixelShaderConstantBuffer&lt;GlobalsPSCB&gt; ren::ShadowPass::m_globalsPscb</definition>
+        <argsstring></argsstring>
+        <name>m_globalsPscb</name>
+        <qualifiedname>ren::ShadowPass::m_globalsPscb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/shadow_pass.h" line="55" column="27" bodyfile="inc/shadow_pass.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1ShadowPass_aed4d50a7bfde597dc4247ce3ecaa6ada_1aed4d50a7bfde597dc4247ce3ecaa6ada" prot="private" static="no" mutable="no">
+        <type><ref refid="classVertexShaderConstantBuffer" kindref="compound">VertexShaderConstantBuffer</ref>&lt; <ref refid="classren_1_1ShadowPass_a09354ae41187122545fb29cf0d7794fd_1a09354ae41187122545fb29cf0d7794fd" kindref="member">LightsVSCB</ref> &gt;</type>
+        <definition>VertexShaderConstantBuffer&lt;LightsVSCB&gt; ren::ShadowPass::m_vscb</definition>
+        <argsstring></argsstring>
+        <name>m_vscb</name>
+        <qualifiedname>ren::ShadowPass::m_vscb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/shadow_pass.h" line="58" column="28" bodyfile="inc/shadow_pass.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1ShadowPass_adccb30c5bb3a2e7ade417c7157b83ca4_1adccb30c5bb3a2e7ade417c7157b83ca4" prot="private" static="no" mutable="no">
+        <type><ref refid="classPixelShaderConstantBuffer" kindref="compound">PixelShaderConstantBuffer</ref>&lt; <ref refid="classren_1_1ShadowPass_afd94955d277d6d9df9571863056cbe55_1afd94955d277d6d9df9571863056cbe55" kindref="member">LightsPSCB</ref> &gt;</type>
+        <definition>PixelShaderConstantBuffer&lt;LightsPSCB&gt; ren::ShadowPass::m_pscb</definition>
+        <argsstring></argsstring>
+        <name>m_pscb</name>
+        <qualifiedname>ren::ShadowPass::m_pscb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/shadow_pass.h" line="60" column="27" bodyfile="inc/shadow_pass.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1ShadowPass_a9352a3d27813950414fbed5a9ea476c7_1a9352a3d27813950414fbed5a9ea476c7" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; DirectX::XMVECTOR &gt;</type>
+        <definition>std::vector&lt;DirectX::XMVECTOR&gt; ren::ShadowPass::m_cameraDirections</definition>
+        <argsstring></argsstring>
+        <name>m_cameraDirections</name>
+        <qualifiedname>ren::ShadowPass::m_cameraDirections</qualifiedname>
+        <initializer>{6}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/shadow_pass.h" line="62" column="13" bodyfile="inc/shadow_pass.h" bodystart="62" bodyend="62"/>
+        <referencedby refid="classren_1_1ShadowPass_a89e7feb05baff9858c8b91edcb5a5d51_1a89e7feb05baff9858c8b91edcb5a5d51" compoundref="SHADOW__PASS_8CPP" startline="31" endline="92">ShadowPass</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1ShadowPass_a892a877625b3f74424b05cfe66c84603_1a892a877625b3f74424b05cfe66c84603" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; DirectX::XMVECTOR &gt;</type>
+        <definition>std::vector&lt;DirectX::XMVECTOR&gt; ren::ShadowPass::m_cameraUps</definition>
+        <argsstring></argsstring>
+        <name>m_cameraUps</name>
+        <qualifiedname>ren::ShadowPass::m_cameraUps</qualifiedname>
+        <initializer>{6}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/shadow_pass.h" line="63" column="13" bodyfile="inc/shadow_pass.h" bodystart="63" bodyend="63"/>
+        <referencedby refid="classren_1_1ShadowPass_a89e7feb05baff9858c8b91edcb5a5d51_1a89e7feb05baff9858c8b91edcb5a5d51" compoundref="SHADOW__PASS_8CPP" startline="31" endline="92">ShadowPass</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1ShadowPass_ad8703170561e0605426d5e43ecc96324_1ad8703170561e0605426d5e43ecc96324" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classILightSource" kindref="compound">ILightSource</ref> * &gt;</type>
+        <definition>std::vector&lt;ILightSource*&gt; ren::ShadowPass::m_shadowCastingLights</definition>
+        <argsstring></argsstring>
+        <name>m_shadowCastingLights</name>
+        <qualifiedname>ren::ShadowPass::m_shadowCastingLights</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/shadow_pass.h" line="64" column="13" bodyfile="inc/shadow_pass.h" bodystart="64" bodyend="-1"/>
+        <referencedby refid="classren_1_1ShadowPass_a90d4ac05ba7d7f2cb3ae06ce0ffae448_1a90d4ac05ba7d7f2cb3ae06ce0ffae448" compoundref="SHADOW__PASS_8CPP" startline="143" endline="194">bindShadowCastingLights</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1ShadowPass_af4f3a07a55a116c015e4d5cf7b704343_1af4f3a07a55a116c015e4d5cf7b704343" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classTextureArrayOffscreenDS" kindref="compound">TextureArrayOffscreenDS</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;TextureArrayOffscreenDS&gt; ren::ShadowPass::m_pOffscreenDsvMapArray</definition>
+        <argsstring></argsstring>
+        <name>m_pOffscreenDsvMapArray</name>
+        <qualifiedname>ren::ShadowPass::m_pOffscreenDsvMapArray</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/shadow_pass.h" line="65" column="17" bodyfile="inc/shadow_pass.h" bodystart="65" bodyend="-1"/>
+        <referencedby refid="classren_1_1ShadowPass_a89e7feb05baff9858c8b91edcb5a5d51_1a89e7feb05baff9858c8b91edcb5a5d51" compoundref="SHADOW__PASS_8CPP" startline="31" endline="92">ShadowPass</referencedby>
+        <referencedby refid="classren_1_1ShadowPass_a90d4ac05ba7d7f2cb3ae06ce0ffae448_1a90d4ac05ba7d7f2cb3ae06ce0ffae448" compoundref="SHADOW__PASS_8CPP" startline="143" endline="194">bindShadowCastingLights</referencedby>
+        <referencedby refid="classren_1_1ShadowPass_abfd441eaa17f14d2f82fea433806a4f4_1abfd441eaa17f14d2f82fea433806a4f4" compoundref="SHADOW__PASS_8CPP" startline="196" endline="201">dumpShadowMap</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1ShadowPass_a385c01dc0ae5345d932f14e54846a515_1a385c01dc0ae5345d932f14e54846a515" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classCubeTextureArrayOffscreenDS" kindref="compound">CubeTextureArrayOffscreenDS</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;CubeTextureArrayOffscreenDS&gt; ren::ShadowPass::m_pOffscreenDsvCubemapArray</definition>
+        <argsstring></argsstring>
+        <name>m_pOffscreenDsvCubemapArray</name>
+        <qualifiedname>ren::ShadowPass::m_pOffscreenDsvCubemapArray</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/shadow_pass.h" line="66" column="17" bodyfile="inc/shadow_pass.h" bodystart="66" bodyend="-1"/>
+        <referencedby refid="classren_1_1ShadowPass_a89e7feb05baff9858c8b91edcb5a5d51_1a89e7feb05baff9858c8b91edcb5a5d51" compoundref="SHADOW__PASS_8CPP" startline="31" endline="92">ShadowPass</referencedby>
+        <referencedby refid="classren_1_1ShadowPass_a90d4ac05ba7d7f2cb3ae06ce0ffae448_1a90d4ac05ba7d7f2cb3ae06ce0ffae448" compoundref="SHADOW__PASS_8CPP" startline="143" endline="194">bindShadowCastingLights</referencedby>
+        <referencedby refid="classren_1_1ShadowPass_a88f8d3b07f57c1d6a98a78fec2e68b5f_1a88f8d3b07f57c1d6a98a78fec2e68b5f" compoundref="SHADOW__PASS_8CPP" startline="203" endline="211">dumpShadowCubeMap</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classren_1_1ShadowPass_abe2e960e1ee7226dc547ac67616aecc1_1abe2e960e1ee7226dc547ac67616aecc1" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned ren::ShadowPass::getResolution</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>getResolution</name>
+        <qualifiedname>ren::ShadowPass::getResolution</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/shadow_pass.h" line="68" column="17" bodyfile="src/SHADOW_PASS.CPP" bodystart="26" bodyend="29"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classren_1_1ShadowPass_a89e7feb05baff9858c8b91edcb5a5d51_1a89e7feb05baff9858c8b91edcb5a5d51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ren::ShadowPass::ShadowPass</definition>
+        <argsstring>(Graphics &amp;gfx, const std::string &amp;name, const unsigned shadowMapRez=s_shadowMapResolution)</argsstring>
+        <name>ShadowPass</name>
+        <qualifiedname>ren::ShadowPass::ShadowPass</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>shadowMapRez</declname>
+          <defval><ref refid="classren_1_1ShadowPass_a7f7b6d1fa45f819dd55562fc55886bdc_1a7f7b6d1fa45f819dd55562fc55886bdc" kindref="member">s_shadowMapResolution</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/shadow_pass.h" line="70" column="1" bodyfile="src/SHADOW_PASS.CPP" bodystart="31" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1ShadowPass_a31a85426ffac3f700c0b3c187b0567af_1a31a85426ffac3f700c0b3c187b0567af" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ren::ShadowPass::run</definition>
+        <argsstring>(Graphics &amp;gfx) const cond_noex override</argsstring>
+        <name>run</name>
+        <qualifiedname>ren::ShadowPass::run</qualifiedname>
+        <reimplements refid="classren_1_1RenderQueuePass_a8c01bb14c9e11b7e9c328ddf6cc39af2_1a8c01bb14c9e11b7e9c328ddf6cc39af2">run</reimplements>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+<para>update the light&apos;s -camera- view Proj Matrix for projective texture shadow cube mapping </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/shadow_pass.h" line="74" column="6" bodyfile="src/SHADOW_PASS.CPP" bodystart="94" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1ShadowPass_a90d4ac05ba7d7f2cb3ae06ce0ffae448_1a90d4ac05ba7d7f2cb3ae06ce0ffae448" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ren::ShadowPass::bindShadowCastingLights</definition>
+        <argsstring>(Graphics &amp;gfx, const std::vector&lt; ILightSource * &gt; &amp;shadowCastingLights)</argsstring>
+        <name>bindShadowCastingLights</name>
+        <qualifiedname>ren::ShadowPass::bindShadowCastingLights</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="classILightSource" kindref="compound">ILightSource</ref> * &gt; &amp;</type>
+          <declname>shadowCastingLights</declname>
+        </param>
+        <briefdescription>
+<para>populate shadow casting lights for this frame and setup their offscreen shadow maps for rendering into </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/shadow_pass.h" line="76" column="6" bodyfile="src/SHADOW_PASS.CPP" bodystart="143" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1ShadowPass_abfd441eaa17f14d2f82fea433806a4f4_1abfd441eaa17f14d2f82fea433806a4f4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ren::ShadowPass::dumpShadowMap</definition>
+        <argsstring>(Graphics &amp;gfx, const std::string &amp;path) const</argsstring>
+        <name>dumpShadowMap</name>
+        <qualifiedname>ren::ShadowPass::dumpShadowMap</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+<para>currently only dumping shadow map of the first registered shadow casting light </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/shadow_pass.h" line="78" column="6" bodyfile="src/SHADOW_PASS.CPP" bodystart="196" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1ShadowPass_a88f8d3b07f57c1d6a98a78fec2e68b5f_1a88f8d3b07f57c1d6a98a78fec2e68b5f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ren::ShadowPass::dumpShadowCubeMap</definition>
+        <argsstring>(Graphics &amp;gfx, const std::string &amp;path) const</argsstring>
+        <name>dumpShadowCubeMap</name>
+        <qualifiedname>ren::ShadowPass::dumpShadowCubeMap</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/shadow_pass.h" line="79" column="6" bodyfile="src/SHADOW_PASS.CPP" bodystart="203" bodyend="211"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classren_1_1ShadowPass_a2dcba5ef918addeb7a105cce0fe45fe0_1a2dcba5ef918addeb7a105cce0fe45fe0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ren::ShadowPass::bindGlobalCBs</definition>
+        <argsstring>(Graphics &amp;gfx) cond_noex</argsstring>
+        <name>bindGlobalCBs</name>
+        <qualifiedname>ren::ShadowPass::bindGlobalCBs</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/shadow_pass.h" line="81" column="6" bodyfile="src/SHADOW_PASS.CPP" bodystart="213" bodyend="226"/>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1ShadowPass_a3dfc4bceb738b9e479457502373f6b38_1a3dfc4bceb738b9e479457502373f6b38" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ren::ShadowPass::bindLightCBs</definition>
+        <argsstring>(Graphics &amp;gfx) cond_noex</argsstring>
+        <name>bindLightCBs</name>
+        <qualifiedname>ren::ShadowPass::bindLightCBs</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/shadow_pass.h" line="82" column="6" bodyfile="src/SHADOW_PASS.CPP" bodystart="228" bodyend="248"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>An offscreen Pass - output only pass DSV  </para>
+    </briefdescription>
+    <detaileddescription>
+<para>=============================================================</para>
+<para><simplesect kind="author"><para>KeyC0de </para>
+</simplesect>
+<simplesect kind="date"><para>2022/10/03 10:30 <heading level="1"></heading>
+</para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>ren::IBindablePass</label>
+        <link refid="classren_1_1IBindablePass"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>ren::IPass</label>
+        <link refid="classren_1_1IPass"/>
+      </node>
+      <node id="2">
+        <label>ren::RenderQueuePass</label>
+        <link refid="classren_1_1RenderQueuePass"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>ren::ShadowPass</label>
+        <link refid="classren_1_1ShadowPass"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="16">
+        <label>ColorBGRA</label>
+        <link refid="structColorBGRA"/>
+      </node>
+      <node id="9">
+        <label>Graphics</label>
+        <link refid="classGraphics"/>
+        <childnode refid="10" relation="private-inheritance">
+        </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>m_pRenderer3d</edgelabel>
+        </childnode>
+        <childnode refid="13" relation="usage">
+          <edgelabel>m_pRenderer2d</edgelabel>
+        </childnode>
+        <childnode refid="14" relation="usage">
+          <edgelabel>m_fpsTimer</edgelabel>
+        </childnode>
+        <childnode refid="15" relation="usage">
+          <edgelabel>m_realTimer</edgelabel>
+        </childnode>
+        <childnode refid="16" relation="usage">
+          <edgelabel>m_pCpuBuffer</edgelabel>
+        </childnode>
+      </node>
+      <node id="8">
+        <label>GraphicsFriend</label>
+        <link refid="classGraphicsFriend"/>
+      </node>
+      <node id="7">
+        <label>IBindable</label>
+        <link refid="classIBindable"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>IConstantBuffer&lt; LightsPSCB &gt;</label>
+        <link refid="classIConstantBuffer"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>s_gph</edgelabel>
+        </childnode>
+      </node>
+      <node id="20">
+        <label>IConstantBuffer&lt; LightsVSCB &gt;</label>
+        <link refid="classIConstantBuffer"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>s_gph</edgelabel>
+        </childnode>
+      </node>
+      <node id="18">
+        <label>IConstantBuffer&lt; ren::ShadowPass::GlobalsPSCB &gt;</label>
+        <link refid="classIConstantBuffer"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>s_gph</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>IConstantBuffer&lt; ren::ShadowPass::GlobalsVSCB &gt;</label>
+        <link refid="classIConstantBuffer"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>s_gph</edgelabel>
+        </childnode>
+      </node>
+      <node id="14">
+        <label>KeyTimer&lt; std::chrono::microseconds &gt;</label>
+        <link refid="classKeyTimer"/>
+        <childnode refid="10" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>KeyTimer&lt; std::chrono::seconds &gt;</label>
+        <link refid="classKeyTimer"/>
+        <childnode refid="10" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>NonCopyableAndNonMovable</label>
+        <link refid="classNonCopyableAndNonMovable"/>
+      </node>
+      <node id="21">
+        <label>PixelShaderConstantBuffer&lt; LightsPSCB &gt;</label>
+        <link refid="classPixelShaderConstantBuffer"/>
+        <childnode refid="22" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>PixelShaderConstantBuffer&lt; ren::ShadowPass::GlobalsPSCB &gt;</label>
+        <link refid="classPixelShaderConstantBuffer"/>
+        <childnode refid="18" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>VertexShaderConstantBuffer&lt; LightsVSCB &gt;</label>
+        <link refid="classVertexShaderConstantBuffer"/>
+        <childnode refid="20" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>VertexShaderConstantBuffer&lt; ren::ShadowPass::GlobalsVSCB &gt;</label>
+        <link refid="classVertexShaderConstantBuffer"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>ren::IBindablePass</label>
+        <link refid="classren_1_1IBindablePass"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>ren::IPass</label>
+        <link refid="classren_1_1IPass"/>
+      </node>
+      <node id="2">
+        <label>ren::RenderQueuePass</label>
+        <link refid="classren_1_1RenderQueuePass"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>ren::Renderer</label>
+        <link refid="classren_1_1Renderer"/>
+      </node>
+      <node id="13">
+        <label>ren::Renderer2d</label>
+        <link refid="classren_1_1Renderer2d"/>
+        <childnode refid="12" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>ren::Renderer3d</label>
+        <link refid="classren_1_1Renderer3d"/>
+        <childnode refid="12" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>ren::ShadowPass</label>
+        <link refid="classren_1_1ShadowPass"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>m_globalsVscb</edgelabel>
+        </childnode>
+        <childnode refid="17" relation="usage">
+          <edgelabel>m_globalsPscb</edgelabel>
+        </childnode>
+        <childnode refid="19" relation="usage">
+          <edgelabel>m_vscb</edgelabel>
+        </childnode>
+        <childnode refid="21" relation="usage">
+          <edgelabel>m_pscb</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/shadow_pass.h" line="27" column="1" bodyfile="inc/shadow_pass.h" bodystart="29" bodyend="83"/>
+    <listofallmembers>
+      <member refid="classren_1_1IBindablePass_af7205f7049013c5d02ec74952f5a0d05_1af7205f7049013c5d02ec74952f5a0d05" prot="protected" virt="non-virtual"><scope>ren::ShadowPass</scope><name>addBindable</name></member>
+      <member refid="classren_1_1IBindablePass_a5d189176a206854e34a9c168a0aad74a_1a5d189176a206854e34a9c168a0aad74a" prot="protected" virt="non-virtual"><scope>ren::ShadowPass</scope><name>addBindableBinderUsingContainerIndex</name></member>
+      <member refid="classren_1_1IPass_ab8c6a6dae673214dccd302aea9ce6e72_1ab8c6a6dae673214dccd302aea9ce6e72" prot="protected" virt="non-virtual"><scope>ren::ShadowPass</scope><name>addBinder</name></member>
+      <member refid="classren_1_1RenderQueuePass_a9e30ba0fcf0e1f184445ba918438687b_1a9e30ba0fcf0e1f184445ba918438687b" prot="public" virt="non-virtual"><scope>ren::ShadowPass</scope><name>addJob</name></member>
+      <member refid="classren_1_1IPass_aa9c50563c1bd98e1c377d819d9e2dc09_1aa9c50563c1bd98e1c377d819d9e2dc09" prot="protected" virt="non-virtual"><scope>ren::ShadowPass</scope><name>addLinker</name></member>
+      <member refid="classren_1_1IBindablePass_ab47b1d5abffbf0aaeb44ae3968942503_1ab47b1d5abffbf0aaeb44ae3968942503" prot="protected" virt="non-virtual"><scope>ren::ShadowPass</scope><name>bind</name></member>
+      <member refid="classren_1_1ShadowPass_a2dcba5ef918addeb7a105cce0fe45fe0_1a2dcba5ef918addeb7a105cce0fe45fe0" prot="private" virt="non-virtual"><scope>ren::ShadowPass</scope><name>bindGlobalCBs</name></member>
+      <member refid="classren_1_1ShadowPass_a3dfc4bceb738b9e479457502373f6b38_1a3dfc4bceb738b9e479457502373f6b38" prot="private" virt="non-virtual"><scope>ren::ShadowPass</scope><name>bindLightCBs</name></member>
+      <member refid="classren_1_1ShadowPass_a90d4ac05ba7d7f2cb3ae06ce0ffae448_1a90d4ac05ba7d7f2cb3ae06ce0ffae448" prot="public" virt="non-virtual"><scope>ren::ShadowPass</scope><name>bindShadowCastingLights</name></member>
+      <member refid="classren_1_1ShadowPass_a88f8d3b07f57c1d6a98a78fec2e68b5f_1a88f8d3b07f57c1d6a98a78fec2e68b5f" prot="public" virt="non-virtual"><scope>ren::ShadowPass</scope><name>dumpShadowCubeMap</name></member>
+      <member refid="classren_1_1ShadowPass_abfd441eaa17f14d2f82fea433806a4f4_1abfd441eaa17f14d2f82fea433806a4f4" prot="public" virt="non-virtual"><scope>ren::ShadowPass</scope><name>dumpShadowMap</name></member>
+      <member refid="classren_1_1IPass_a6cffed1b315846ece319e4ce5f508843_1a6cffed1b315846ece319e4ce5f508843" prot="public" virt="non-virtual"><scope>ren::ShadowPass</scope><name>getBinder</name></member>
+      <member refid="classren_1_1IPass_aebd5aa69455727600d0e979906a0a111_1aebd5aa69455727600d0e979906a0a111" prot="public" virt="non-virtual"><scope>ren::ShadowPass</scope><name>getBinders</name></member>
+      <member refid="classren_1_1IPass_a171eeb96584abbbbe1f158fbca5628f0_1a171eeb96584abbbbe1f158fbca5628f0" prot="public" virt="non-virtual"><scope>ren::ShadowPass</scope><name>getLinker</name></member>
+      <member refid="classren_1_1IPass_ae0910189678e800c86f665bca8c88a03_1ae0910189678e800c86f665bca8c88a03" prot="public" virt="non-virtual"><scope>ren::ShadowPass</scope><name>getLinkers</name></member>
+      <member refid="classren_1_1IPass_a3c9f7768f492d9a50371acec9b61f12b_1a3c9f7768f492d9a50371acec9b61f12b" prot="public" virt="non-virtual"><scope>ren::ShadowPass</scope><name>getName</name></member>
+      <member refid="classren_1_1RenderQueuePass_a0343fd2e2aaad7b646381a9713c7202c_1a0343fd2e2aaad7b646381a9713c7202c" prot="public" virt="non-virtual"><scope>ren::ShadowPass</scope><name>getNumMeshes</name></member>
+      <member refid="classren_1_1ShadowPass_abe2e960e1ee7226dc547ac67616aecc1_1abe2e960e1ee7226dc547ac67616aecc1" prot="public" virt="non-virtual"><scope>ren::ShadowPass</scope><name>getResolution</name></member>
+      <member refid="classren_1_1IBindablePass_a3e5e7d5dbe096d11031a8d23050c12b6_1a3e5e7d5dbe096d11031a8d23050c12b6" prot="protected" virt="non-virtual"><scope>ren::ShadowPass</scope><name>IBindablePass</name></member>
+      <member refid="classren_1_1IPass_a72360515966748b13f592095c12f58fa_1a72360515966748b13f592095c12f58fa" prot="public" virt="non-virtual"><scope>ren::ShadowPass</scope><name>IPass</name></member>
+      <member refid="classren_1_1IPass_a7ef6e9979f151480bc34dca08b19bec1_1a7ef6e9979f151480bc34dca08b19bec1" prot="public" virt="non-virtual"><scope>ren::ShadowPass</scope><name>isActive</name></member>
+      <member refid="classren_1_1ShadowPass_afd94955d277d6d9df9571863056cbe55_1afd94955d277d6d9df9571863056cbe55" prot="private" virt="non-virtual"><scope>ren::ShadowPass</scope><name>LightsPSCB</name></member>
+      <member refid="classren_1_1ShadowPass_a09354ae41187122545fb29cf0d7794fd_1a09354ae41187122545fb29cf0d7794fd" prot="private" virt="non-virtual"><scope>ren::ShadowPass</scope><name>LightsVSCB</name></member>
+      <member refid="classren_1_1IPass_ab8ff53f070bce5debcf6bb3ce26206eb_1ab8ff53f070bce5debcf6bb3ce26206eb" prot="private" virt="non-virtual"><scope>ren::ShadowPass</scope><name>m_bActive</name></member>
+      <member refid="classren_1_1IBindablePass_a2202ffe84f3d1ceb3c38ba8e1d9761b4_1a2202ffe84f3d1ceb3c38ba8e1d9761b4" prot="private" virt="non-virtual"><scope>ren::ShadowPass</scope><name>m_bindables</name></member>
+      <member refid="classren_1_1IPass_aea2aeb943b24bd538b91487dbbee1349_1aea2aeb943b24bd538b91487dbbee1349" prot="private" virt="non-virtual"><scope>ren::ShadowPass</scope><name>m_binders</name></member>
+      <member refid="classren_1_1RenderQueuePass_a14113fdd48b1a8a356301dd4dba18ad2_1a14113fdd48b1a8a356301dd4dba18ad2" prot="private" virt="non-virtual"><scope>ren::ShadowPass</scope><name>m_bTransparent</name></member>
+      <member refid="classren_1_1ShadowPass_a9352a3d27813950414fbed5a9ea476c7_1a9352a3d27813950414fbed5a9ea476c7" prot="private" virt="non-virtual"><scope>ren::ShadowPass</scope><name>m_cameraDirections</name></member>
+      <member refid="classren_1_1ShadowPass_a892a877625b3f74424b05cfe66c84603_1a892a877625b3f74424b05cfe66c84603" prot="private" virt="non-virtual"><scope>ren::ShadowPass</scope><name>m_cameraUps</name></member>
+      <member refid="classren_1_1ShadowPass_a5166c73b0a29b04d5e50dfd998c48628_1a5166c73b0a29b04d5e50dfd998c48628" prot="private" virt="non-virtual"><scope>ren::ShadowPass</scope><name>m_globalsPscb</name></member>
+      <member refid="classren_1_1ShadowPass_a0c0dd1bd05256ed899612d08eea83e25_1a0c0dd1bd05256ed899612d08eea83e25" prot="private" virt="non-virtual"><scope>ren::ShadowPass</scope><name>m_globalsVscb</name></member>
+      <member refid="classren_1_1IPass_a44af75ecb642c6c1f47d316bf129daa8_1a44af75ecb642c6c1f47d316bf129daa8" prot="private" virt="non-virtual"><scope>ren::ShadowPass</scope><name>m_linkers</name></member>
+      <member refid="classren_1_1RenderQueuePass_afb355596e38f45d9a054bf679d1e8b5d_1afb355596e38f45d9a054bf679d1e8b5d" prot="private" virt="non-virtual"><scope>ren::ShadowPass</scope><name>m_meshes</name></member>
+      <member refid="classren_1_1IPass_aa3a178f92cb6197605a486211a90367a_1aa3a178f92cb6197605a486211a90367a" prot="private" virt="non-virtual"><scope>ren::ShadowPass</scope><name>m_name</name></member>
+      <member refid="classren_1_1IBindablePass_a8c5f88422771fc4b7ceb1dca77219cfe_1a8c5f88422771fc4b7ceb1dca77219cfe" prot="protected" virt="non-virtual"><scope>ren::ShadowPass</scope><name>m_pDsv</name></member>
+      <member refid="classren_1_1ShadowPass_a385c01dc0ae5345d932f14e54846a515_1a385c01dc0ae5345d932f14e54846a515" prot="private" virt="non-virtual"><scope>ren::ShadowPass</scope><name>m_pOffscreenDsvCubemapArray</name></member>
+      <member refid="classren_1_1ShadowPass_af4f3a07a55a116c015e4d5cf7b704343_1af4f3a07a55a116c015e4d5cf7b704343" prot="private" virt="non-virtual"><scope>ren::ShadowPass</scope><name>m_pOffscreenDsvMapArray</name></member>
+      <member refid="classren_1_1IBindablePass_a3994a46ac4e6f7d96c7ebe8b2d9630cb_1a3994a46ac4e6f7d96c7ebe8b2d9630cb" prot="protected" virt="non-virtual"><scope>ren::ShadowPass</scope><name>m_pRtv</name></member>
+      <member refid="classren_1_1ShadowPass_adccb30c5bb3a2e7ade417c7157b83ca4_1adccb30c5bb3a2e7ade417c7157b83ca4" prot="private" virt="non-virtual"><scope>ren::ShadowPass</scope><name>m_pscb</name></member>
+      <member refid="classren_1_1ShadowPass_ad8703170561e0605426d5e43ecc96324_1ad8703170561e0605426d5e43ecc96324" prot="private" virt="non-virtual"><scope>ren::ShadowPass</scope><name>m_shadowCastingLights</name></member>
+      <member refid="classren_1_1ShadowPass_aed4d50a7bfde597dc4247ce3ecaa6ada_1aed4d50a7bfde597dc4247ce3ecaa6ada" prot="private" virt="non-virtual"><scope>ren::ShadowPass</scope><name>m_vscb</name></member>
+      <member refid="classren_1_1IPass_a589910e72e67f1d1ec37faea4d840074_1a589910e72e67f1d1ec37faea4d840074" prot="public" virt="virtual"><scope>ren::ShadowPass</scope><name>recreateRtvsAndDsvs</name></member>
+      <member refid="classren_1_1RenderQueuePass_a3087e6d681a46755bfe9397cabd5e0c3_1a3087e6d681a46755bfe9397cabd5e0c3" prot="public" virt="non-virtual"><scope>ren::ShadowPass</scope><name>RenderQueuePass</name></member>
+      <member refid="classren_1_1RenderQueuePass_a23b96814aa56f5c6a2b6806ad848e4fe_1a23b96814aa56f5c6a2b6806ad848e4fe" prot="public" virt="virtual"><scope>ren::ShadowPass</scope><name>reset</name></member>
+      <member refid="classren_1_1ShadowPass_a31a85426ffac3f700c0b3c187b0567af_1a31a85426ffac3f700c0b3c187b0567af" prot="public" virt="virtual"><scope>ren::ShadowPass</scope><name>run</name></member>
+      <member refid="classren_1_1ShadowPass_a0f684ab6eadd250671eeff37319d7ac1_1a0f684ab6eadd250671eeff37319d7ac1" prot="private" virt="non-virtual"><scope>ren::ShadowPass</scope><name>s_globalsPscbSlot</name></member>
+      <member refid="classren_1_1ShadowPass_a0a9da504ea83b9478583b9fc996a56be_1a0a9da504ea83b9478583b9fc996a56be" prot="private" virt="non-virtual"><scope>ren::ShadowPass</scope><name>s_globalsVscbSlot</name></member>
+      <member refid="classren_1_1ShadowPass_aabd9a71155ac410aa5a12a732b48a762_1aabd9a71155ac410aa5a12a732b48a762" prot="private" virt="non-virtual"><scope>ren::ShadowPass</scope><name>s_lightArrayPixelShaderCBSlot</name></member>
+      <member refid="classren_1_1ShadowPass_ab2d17ab137ff24dfd2e7f219b1da5bfd_1ab2d17ab137ff24dfd2e7f219b1da5bfd" prot="private" virt="non-virtual"><scope>ren::ShadowPass</scope><name>s_lightArrayVertexShaderCBSlot</name></member>
+      <member refid="classren_1_1ShadowPass_a78befc9467180544b3e1b7ea9c6db0c1_1a78befc9467180544b3e1b7ea9c6db0c1" prot="private" virt="non-virtual"><scope>ren::ShadowPass</scope><name>s_maxShadowCastingLights</name></member>
+      <member refid="classren_1_1ShadowPass_a57668a13b79c7b97a93535fc9f328e0e_1a57668a13b79c7b97a93535fc9f328e0e" prot="private" virt="non-virtual"><scope>ren::ShadowPass</scope><name>s_shadowCubeMapArraySlot</name></member>
+      <member refid="classren_1_1ShadowPass_affb066b0b62365f2371369da5e7b164f_1affb066b0b62365f2371369da5e7b164f" prot="private" virt="non-virtual"><scope>ren::ShadowPass</scope><name>s_shadowMapArraySlot</name></member>
+      <member refid="classren_1_1ShadowPass_a7f7b6d1fa45f819dd55562fc55886bdc_1a7f7b6d1fa45f819dd55562fc55886bdc" prot="private" virt="non-virtual"><scope>ren::ShadowPass</scope><name>s_shadowMapResolution</name></member>
+      <member refid="classren_1_1IPass_ae8d7a067929cabbe900ec89643cbcdba_1ae8d7a067929cabbe900ec89643cbcdba" prot="public" virt="non-virtual"><scope>ren::ShadowPass</scope><name>setActive</name></member>
+      <member refid="classren_1_1IPass_a261403c4ce33bc13fe3b5e0487c79664_1a261403c4ce33bc13fe3b5e0487c79664" prot="public" virt="non-virtual"><scope>ren::ShadowPass</scope><name>setupBinderTarget</name></member>
+      <member refid="classren_1_1ShadowPass_a89e7feb05baff9858c8b91edcb5a5d51_1a89e7feb05baff9858c8b91edcb5a5d51" prot="public" virt="non-virtual"><scope>ren::ShadowPass</scope><name>ShadowPass</name></member>
+      <member refid="classren_1_1RenderQueuePass_a9a69abd9935067ce6fe41ad4f7416698_1a9a69abd9935067ce6fe41ad4f7416698" prot="private" virt="non-virtual"><scope>ren::ShadowPass</scope><name>sortJobs</name></member>
+      <member refid="classren_1_1IBindablePass_ae2b3e270005268576afb65f16a9545a7_1ae2b3e270005268576afb65f16a9545a7" prot="protected" virt="virtual"><scope>ren::ShadowPass</scope><name>validate</name></member>
+      <member refid="classren_1_1IPass_ac0132ac18bad1d6379a9d27e3d25bc18_1ac0132ac18bad1d6379a9d27e3d25bc18" prot="public" virt="virtual"><scope>ren::ShadowPass</scope><name>~IPass</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

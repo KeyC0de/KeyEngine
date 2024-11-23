@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classren_1_1ILinker" kind="class" language="C++" prot="public">
+    <compoundname>ren::ILinker</compoundname>
+    <derivedcompoundref refid="classren_1_1BindableLinker" prot="public" virt="non-virtual">ren::BindableLinker&lt; T &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classren_1_1RenderSurfaceLinker" prot="public" virt="non-virtual">ren::RenderSurfaceLinker&lt; T &gt;</derivedcompoundref>
+    <includes refid="linker_8h" local="no">linker.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classren_1_1ILinker_a90402bb7d4c9078d4d7f153809d30aaf_1a90402bb7d4c9078d4d7f153809d30aaf" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string ren::ILinker::m_name</definition>
+        <argsstring></argsstring>
+        <name>m_name</name>
+        <qualifiedname>ren::ILinker::m_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/linker.h" line="16" column="13" bodyfile="inc/linker.h" bodystart="16" bodyend="-1"/>
+        <referencedby refid="classren_1_1ILinker_a4192feae9df332056a8487b6d1e08f1b_1a4192feae9df332056a8487b6d1e08f1b" compoundref="linker_8cpp" startline="37" endline="40">getName</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classren_1_1ILinker_ad259b0ea4d66752335fa4f57817af71f_1ad259b0ea4d66752335fa4f57817af71f" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ren::ILinker::ILinker</definition>
+        <argsstring>(const std::string &amp;name)</argsstring>
+        <name>ILinker</name>
+        <qualifiedname>ren::ILinker::ILinker</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/linker.h" line="18" column="1" bodyfile="src/linker.cpp" bodystart="10" bodyend="24"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classren_1_1ILinker_a680f4cce41b6e5e540ea758e2790eb1a_1a680f4cce41b6e5e540ea758e2790eb1a" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ren::ILinker::~ILinker</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>~ILinker</name>
+        <qualifiedname>ren::ILinker::~ILinker</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/linker.h" line="20" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1ILinker_a4192feae9df332056a8487b6d1e08f1b_1a4192feae9df332056a8487b6d1e08f1b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; ren::ILinker::getName</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getName</name>
+        <qualifiedname>ren::ILinker::getName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/linker.h" line="22" column="19" bodyfile="src/linker.cpp" bodystart="37" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1ILinker_a931d059b56fdbc42f198bff4c9056e87_1a931d059b56fdbc42f198bff4c9056e87" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::shared_ptr&lt; <ref refid="classIBindable" kindref="compound">IBindable</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; IBindable &gt; ren::ILinker::getBindable</definition>
+        <argsstring>()</argsstring>
+        <name>getBindable</name>
+        <qualifiedname>ren::ILinker::getBindable</qualifiedname>
+        <reimplementedby refid="classren_1_1BindableLinker_a44609872588cc627c55ba427b43f1316_1a44609872588cc627c55ba427b43f1316">getBindable</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/linker.h" line="23" column="25" bodyfile="src/linker.cpp" bodystart="26" bodyend="29"/>
+        <referencedby refid="classren_1_1BindableBinder_a9956cd019281cc69d6fd7c3e7c2a7e5a_1a9956cd019281cc69d6fd7c3e7c2a7e5a" compoundref="binder_8h" startline="82" endline="93">ren::BindableBinder&lt; T &gt;::link</referencedby>
+        <referencedby refid="classren_1_1ContainerBindableBinder_a676ce1c15a0dcf4f602b179c55ff0bae_1a676ce1c15a0dcf4f602b179c55ff0bae" compoundref="binder_8h" startline="131" endline="142">ren::ContainerBindableBinder&lt; T &gt;::link</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1ILinker_a9a44001279f58f2071f8a21becaa50c1_1a9a44001279f58f2071f8a21becaa50c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::shared_ptr&lt; <ref refid="classIRenderSurface" kindref="compound">IRenderSurface</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; IRenderSurface &gt; ren::ILinker::getRenderSurface</definition>
+        <argsstring>()</argsstring>
+        <name>getRenderSurface</name>
+        <qualifiedname>ren::ILinker::getRenderSurface</qualifiedname>
+        <reimplementedby refid="classren_1_1RenderSurfaceLinker_af597b7c04be623fb8790843390974ded_1af597b7c04be623fb8790843390974ded">getRenderSurface</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/linker.h" line="24" column="25" bodyfile="src/linker.cpp" bodystart="31" bodyend="35"/>
+        <referencedby refid="classren_1_1RenderSurfaceBinder_ade9ca47a6a9efb126dd1232a253356e9_1ade9ca47a6a9efb126dd1232a253356e9" compoundref="binder_8h" startline="177" endline="188">ren::RenderSurfaceBinder&lt; T &gt;::link</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>ren::BindableLinker&lt; T &gt;</label>
+        <link refid="classren_1_1BindableLinker"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>ren::ILinker</label>
+        <link refid="classren_1_1ILinker"/>
+      </node>
+      <node id="3">
+        <label>ren::RenderSurfaceLinker&lt; T &gt;</label>
+        <link refid="classren_1_1RenderSurfaceLinker"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="inc/linker.h" line="14" column="1" bodyfile="inc/linker.h" bodystart="15" bodyend="25"/>
+    <listofallmembers>
+      <member refid="classren_1_1ILinker_a931d059b56fdbc42f198bff4c9056e87_1a931d059b56fdbc42f198bff4c9056e87" prot="public" virt="virtual"><scope>ren::ILinker</scope><name>getBindable</name></member>
+      <member refid="classren_1_1ILinker_a4192feae9df332056a8487b6d1e08f1b_1a4192feae9df332056a8487b6d1e08f1b" prot="public" virt="non-virtual"><scope>ren::ILinker</scope><name>getName</name></member>
+      <member refid="classren_1_1ILinker_a9a44001279f58f2071f8a21becaa50c1_1a9a44001279f58f2071f8a21becaa50c1" prot="public" virt="virtual"><scope>ren::ILinker</scope><name>getRenderSurface</name></member>
+      <member refid="classren_1_1ILinker_ad259b0ea4d66752335fa4f57817af71f_1ad259b0ea4d66752335fa4f57817af71f" prot="protected" virt="non-virtual"><scope>ren::ILinker</scope><name>ILinker</name></member>
+      <member refid="classren_1_1ILinker_a90402bb7d4c9078d4d7f153809d30aaf_1a90402bb7d4c9078d4d7f153809d30aaf" prot="private" virt="non-virtual"><scope>ren::ILinker</scope><name>m_name</name></member>
+      <member refid="classren_1_1ILinker_a680f4cce41b6e5e540ea758e2790eb1a_1a680f4cce41b6e5e540ea758e2790eb1a" prot="public" virt="virtual"><scope>ren::ILinker</scope><name>~ILinker</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,37 @@
+\doxysection{inc/constant\+\_\+buffer.h File Reference}
+\hypertarget{constant__buffer_8h}{}\label{constant__buffer_8h}\index{inc/constant\_buffer.h@{inc/constant\_buffer.h}}
+{\ttfamily \#include "{}graphics.\+h"{}}\newline
+{\ttfamily \#include "{}bindable.\+h"{}}\newline
+{\ttfamily \#include "{}bindable\+\_\+registry.\+h"{}}\newline
+{\ttfamily \#include "{}os\+\_\+utils.\+h"{}}\newline
+{\ttfamily \#include "{}assertions\+\_\+console.\+h"{}}\newline
+{\ttfamily \#include "{}dxgi\+\_\+info\+\_\+queue.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classIConstantBuffer}{IConstant\+Buffer$<$ CB $>$}}
+\begin{DoxyCompactList}\small\item\em CB is the Constant Buffer struct we abstract away  \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classVertexShaderConstantBuffer}{Vertex\+Shader\+Constant\+Buffer$<$ CB $>$}}
+\item 
+class \mbox{\hyperlink{classPixelShaderConstantBuffer}{Pixel\+Shader\+Constant\+Buffer$<$ CB $>$}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{constant__buffer_8h_a93ba40510117bb29955d8a89703f449b_a93ba40510117bb29955d8a89703f449b}{THROW\+\_\+\+GRAPHICS\+\_\+\+EXCEPTION}}(msg)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{constant__buffer_8h_a93ba40510117bb29955d8a89703f449b_a93ba40510117bb29955d8a89703f449b}\index{constant\_buffer.h@{constant\_buffer.h}!THROW\_GRAPHICS\_EXCEPTION@{THROW\_GRAPHICS\_EXCEPTION}}
+\index{THROW\_GRAPHICS\_EXCEPTION@{THROW\_GRAPHICS\_EXCEPTION}!constant\_buffer.h@{constant\_buffer.h}}
+\doxysubsubsection{\texorpdfstring{THROW\_GRAPHICS\_EXCEPTION}{THROW\_GRAPHICS\_EXCEPTION}}
+{\footnotesize\ttfamily \label{constant__buffer_8h_a93ba40510117bb29955d8a89703f449b_a93ba40510117bb29955d8a89703f449b} 
+\#define THROW\+\_\+\+GRAPHICS\+\_\+\+EXCEPTION(\begin{DoxyParamCaption}\item[{}]{msg}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \_\_debugbreak();\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{throw}\ GraphicsException(\ \_\_LINE\_\_,\ \_\_FILE\_\_,\ \_\_FUNCTION\_\_,\ msg\ );}
+
+\end{DoxyCode}

@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="string__buffer_8cpp" kind="file" language="C++">
+    <compoundname>string_buffer.cpp</compoundname>
+    <includes refid="string__buffer_8h" local="yes">string_buffer.h</includes>
+    <incdepgraph>
+      <node id="7">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="2">
+        <label>string_buffer.h</label>
+        <link refid="string__buffer_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/string_buffer.cpp</label>
+        <link refid="string__buffer_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>iostream</label>
+      </node>
+      <node id="6">
+        <label>mutex</label>
+      </node>
+      <node id="4">
+        <label>sstream</label>
+      </node>
+      <node id="5">
+        <label>string</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="string__buffer_8h" kindref="compound">string_buffer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4" refid="classStringBuffer_aa9948a5b307ee4bc239025c6506b5659_1aa9948a5b307ee4bc239025c6506b5659" refkind="member"><highlight class="normal"><ref refid="classStringBuffer_aa9948a5b307ee4bc239025c6506b5659_1aa9948a5b307ee4bc239025c6506b5659" kindref="member">StringBuffer::StringBuffer</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;str,</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"><sp/><sp/><sp/><sp/>std::ostream<sp/>&amp;stream<sp/>)</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/>m_stream{stream}</highlight></codeline>
+<codeline lineno="8"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStringBuffer_ae1216e5dcbd95440fd9045c7fd7f9439_1ae1216e5dcbd95440fd9045c7fd7f9439" kindref="member">m_ss</ref><sp/>&lt;&lt;<sp/>str;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="classStringBuffer_a9e1cf1edafe3482250c2825bc2f9c842_1a9e1cf1edafe3482250c2825bc2f9c842" refkind="member"><highlight class="normal"><ref refid="classStringBuffer_aa9948a5b307ee4bc239025c6506b5659_1aa9948a5b307ee4bc239025c6506b5659" kindref="member">StringBuffer::StringBuffer</ref>(<sp/><ref refid="classStringBuffer" kindref="compound">StringBuffer</ref><sp/>&amp;&amp;rhs<sp/>)<sp/>noexcept</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>m_stream{rhs.m_stream}</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>*(<sp/>this<sp/>)<sp/>=<sp/>std::move(<sp/>rhs<sp/>);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classStringBuffer_a84c5d34f25d66d608242cba3f39bac67_1a84c5d34f25d66d608242cba3f39bac67" refkind="member"><highlight class="normal"><ref refid="classStringBuffer" kindref="compound">StringBuffer</ref>&amp;<sp/><ref refid="classStringBuffer_a84c5d34f25d66d608242cba3f39bac67_1a84c5d34f25d66d608242cba3f39bac67" kindref="member">StringBuffer::operator=</ref>(<sp/><ref refid="classStringBuffer" kindref="compound">StringBuffer</ref><sp/>&amp;&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lg{s_mu};</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>m_ss<sp/>&lt;&lt;<sp/>rhs.m_ss.str();</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classStringBuffer_a8fe95ea8f477059bd868a326b26ce28e_1a8fe95ea8f477059bd868a326b26ce28e" refkind="member"><highlight class="normal"><ref refid="classStringBuffer_a8fe95ea8f477059bd868a326b26ce28e_1a8fe95ea8f477059bd868a326b26ce28e" kindref="member">StringBuffer::~StringBuffer</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStringBuffer_a322859237dae6bbdf3c65c67875dc9ba_1a322859237dae6bbdf3c65c67875dc9ba" kindref="member">reset</ref>();</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classStringBuffer_a322859237dae6bbdf3c65c67875dc9ba_1a322859237dae6bbdf3c65c67875dc9ba" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classStringBuffer_a322859237dae6bbdf3c65c67875dc9ba_1a322859237dae6bbdf3c65c67875dc9ba" kindref="member">StringBuffer::reset</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStringBuffer_ae1216e5dcbd95440fd9045c7fd7f9439_1ae1216e5dcbd95440fd9045c7fd7f9439" kindref="member">m_ss</ref>.str(<sp/>std::string{}<sp/>);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStringBuffer_ae1216e5dcbd95440fd9045c7fd7f9439_1ae1216e5dcbd95440fd9045c7fd7f9439" kindref="member">m_ss</ref>.clear();</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="classStringBuffer_aa9e68db3764bd9a90fdfc91fe1cf2a30_1aa9e68db3764bd9a90fdfc91fe1cf2a30" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classStringBuffer_aa9e68db3764bd9a90fdfc91fe1cf2a30_1aa9e68db3764bd9a90fdfc91fe1cf2a30" kindref="member">StringBuffer::get</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classStringBuffer_ae1216e5dcbd95440fd9045c7fd7f9439_1ae1216e5dcbd95440fd9045c7fd7f9439" kindref="member">m_ss</ref>.str();</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="classStringBuffer_a5266f680334a0302edca7ecd7037611a_1a5266f680334a0302edca7ecd7037611a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classStringBuffer_a5266f680334a0302edca7ecd7037611a_1a5266f680334a0302edca7ecd7037611a" kindref="member">StringBuffer::print</ref>()</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lg{<ref refid="classStringBuffer_a23d440d76e000b0bb80f441788fe7d11_1a23d440d76e000b0bb80f441788fe7d11" kindref="member">s_mu</ref>};</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStringBuffer_a00ca48cab58188f1d94ad19d6bec8718_1a00ca48cab58188f1d94ad19d6bec8718" kindref="member">m_stream</ref><sp/>&lt;&lt;<sp/><ref refid="classStringBuffer_ae1216e5dcbd95440fd9045c7fd7f9439_1ae1216e5dcbd95440fd9045c7fd7f9439" kindref="member">m_ss</ref>.str();</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/string_buffer.cpp"/>
+  </compounddef>
+</doxygen>

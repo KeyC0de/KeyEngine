@@ -22,8 +22,8 @@ class Material
 	ren::RenderQueuePass *m_pTargetPass = nullptr;
 	std::vector<std::shared_ptr<IBindable>> m_bindables;
 public:
-	//	\function	Material	||	\date	2024/04/25 13:55
-	//	\brief	the channels is a bitwise mask (rendering_channel.h) which corresponds to the Rendering channel(s) used for this Material
+	/// \function	Material	||	\date	2024/04/25 13:55
+	/// \brief	the channels is a bitwise mask (rendering_channel.h) which corresponds to the Rendering channel(s) used for this Material
 	//			the rendering channel can cross multiple `Pass`es to render, but a single `Material` targets a single `Pass`
 	//			so channels are used to group similar materials
 	//			bStartActive refers to whether this Material is enabled (not the Pass or the channel(s)), if the Material is not enabled at a specific frame it will not pass its bindables to the renderer and as such the Mesh won't render the material

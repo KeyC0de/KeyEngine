@@ -1,0 +1,113 @@
+\doxysection{IListener\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classIListener}{}\label{classIListener}\index{IListener$<$ T $>$@{IListener$<$ T $>$}}
+
+
+{\ttfamily \#include $<$reporter\+\_\+listener.\+h$>$}
+
+Inheritance diagram for IListener\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classIListener}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classIListener_aae587719e1e793840bb501ba2f91d43c_aae587719e1e793840bb501ba2f91d43c}{\texorpdfstring{$\sim$}{\string~}\+IListener}} ()
+\item 
+virtual void \mbox{\hyperlink{classIListener_a75b1652418e98a4d0f6db2c61addae8d_a75b1652418e98a4d0f6db2c61addae8d}{notify}} (const T \&event)=0
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classNonCopyableAndNonMovable}{Non\+Copyable\+And\+Non\+Movable}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNonCopyableAndNonMovable_a0f3fc95f2c582514d58832b7c14d2965_a0f3fc95f2c582514d58832b7c14d2965}{Non\+Copyable\+And\+Non\+Movable}} ()=default
+\item 
+\mbox{\hyperlink{classNonCopyableAndNonMovable_a3502311a2435129e171eb36ba05f0b2f_a3502311a2435129e171eb36ba05f0b2f}{Non\+Copyable\+And\+Non\+Movable}} (const \mbox{\hyperlink{classNonCopyableAndNonMovable}{Non\+Copyable\+And\+Non\+Movable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyableAndNonMovable}{Non\+Copyable\+And\+Non\+Movable}} \& \mbox{\hyperlink{classNonCopyableAndNonMovable_a6541862f56b2fcaa89155f08b8adaf11_a6541862f56b2fcaa89155f08b8adaf11}{operator=}} (const \mbox{\hyperlink{classNonCopyableAndNonMovable}{Non\+Copyable\+And\+Non\+Movable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyableAndNonMovable_a259655d15f1887d015c6d77a0f09f4ff_a259655d15f1887d015c6d77a0f09f4ff}{Non\+Copyable\+And\+Non\+Movable}} (\mbox{\hyperlink{classNonCopyableAndNonMovable}{Non\+Copyable\+And\+Non\+Movable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyableAndNonMovable}{Non\+Copyable\+And\+Non\+Movable}} \& \mbox{\hyperlink{classNonCopyableAndNonMovable_aa3af41edbd14c886cdec335b22254829_aa3af41edbd14c886cdec335b22254829}{operator=}} (\mbox{\hyperlink{classNonCopyableAndNonMovable}{Non\+Copyable\+And\+Non\+Movable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyableAndNonMovable_acadc47621b689b1b95bef13a35f18572_acadc47621b689b1b95bef13a35f18572}{Non\+Copyable\+And\+Non\+Movable}} (\mbox{\hyperlink{classNonCopyableAndNonMovable}{Non\+Copyable\+And\+Non\+Movable}} \&\&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyableAndNonMovable}{Non\+Copyable\+And\+Non\+Movable}} \& \mbox{\hyperlink{classNonCopyableAndNonMovable_a972632a389e0f2370de9604df60ea9d6_a972632a389e0f2370de9604df60ea9d6}{operator=}} (\mbox{\hyperlink{classNonCopyableAndNonMovable}{Non\+Copyable\+And\+Non\+Movable}} \&\&rhs)=delete
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classIListener_a6b5c32b4da4ac2a5c5145bc573bb22a7_a6b5c32b4da4ac2a5c5145bc573bb22a7}{add\+Reporter}} (const \mbox{\hyperlink{classIReporter}{IReporter}}$<$ T $>$ \texorpdfstring{$\ast$}{*}reporter)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ const void \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classIListener_aaaf1ddfe2afeedab8a70c935b1626488_aaaf1ddfe2afeedab8a70c935b1626488}{m\+\_\+reporters}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classIListener_a310f5483d09a78ef32fe91feb3f87ad3_a310f5483d09a78ef32fe91feb3f87ad3}{IReporter$<$ T $>$}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classNonCopyableAndNonMovable}{Non\+Copyable\+And\+Non\+Movable}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNonCopyableAndNonMovable_aa6874bb9a99fe151e8c2eda429fe5867_aa6874bb9a99fe151e8c2eda429fe5867}{\texorpdfstring{$\sim$}{\string~}\+Non\+Copyable\+And\+Non\+Movable}} () noexcept=default
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classIListener_aae587719e1e793840bb501ba2f91d43c_aae587719e1e793840bb501ba2f91d43c}\index{IListener$<$ T $>$@{IListener$<$ T $>$}!````~IListener@{\texorpdfstring{$\sim$}{\string~}IListener}}
+\index{````~IListener@{\texorpdfstring{$\sim$}{\string~}IListener}!IListener$<$ T $>$@{IListener$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}IListener()}{\string~IListener()}}
+{\footnotesize\ttfamily \label{classIListener_aae587719e1e793840bb501ba2f91d43c_aae587719e1e793840bb501ba2f91d43c} 
+template$<$typename T $>$ \\
+virtual \mbox{\hyperlink{classIListener}{IListener}}$<$ T $>$\+::\texorpdfstring{$\sim$}{\string~}\mbox{\hyperlink{classIListener}{IListener}} (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classIListener_a6b5c32b4da4ac2a5c5145bc573bb22a7_a6b5c32b4da4ac2a5c5145bc573bb22a7}\index{IListener$<$ T $>$@{IListener$<$ T $>$}!addReporter@{addReporter}}
+\index{addReporter@{addReporter}!IListener$<$ T $>$@{IListener$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{addReporter()}{addReporter()}}
+{\footnotesize\ttfamily \label{classIListener_a6b5c32b4da4ac2a5c5145bc573bb22a7_a6b5c32b4da4ac2a5c5145bc573bb22a7} 
+template$<$typename T $>$ \\
+void \mbox{\hyperlink{classIListener}{IListener}}$<$ T $>$\+::add\+Reporter (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classIReporter}{IReporter}}$<$ T $>$ \texorpdfstring{$\ast$}{*}}]{reporter}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{classIListener_a75b1652418e98a4d0f6db2c61addae8d_a75b1652418e98a4d0f6db2c61addae8d}\index{IListener$<$ T $>$@{IListener$<$ T $>$}!notify@{notify}}
+\index{notify@{notify}!IListener$<$ T $>$@{IListener$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{notify()}{notify()}}
+{\footnotesize\ttfamily \label{classIListener_a75b1652418e98a4d0f6db2c61addae8d_a75b1652418e98a4d0f6db2c61addae8d} 
+template$<$typename T $>$ \\
+virtual void \mbox{\hyperlink{classIListener}{IListener}}$<$ T $>$\+::notify (\begin{DoxyParamCaption}\item[{const T \&}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classgui_1_1Component_aeb8cdab8db99b4a5e89c4d0d13a44536_aeb8cdab8db99b4a5e89c4d0d13a44536}{gui\+::\+Component}}, \mbox{\hyperlink{classgui_1_1Component_a5b5e0728096d8e7c542dd95c0bd29bb2_a5b5e0728096d8e7c542dd95c0bd29bb2}{gui\+::\+Component}}, \mbox{\hyperlink{classgui_1_1Component_ac5ce0fca9b31dc53d8726465d6077b5c_ac5ce0fca9b31dc53d8726465d6077b5c}{gui\+::\+Component}}, \mbox{\hyperlink{classSandbox3d_a5c82a667c7d9a33df3d05f2c2c1bd930_a5c82a667c7d9a33df3d05f2c2c1bd930}{Sandbox3d}}, and \mbox{\hyperlink{classSoundPlayer_a29bf19ba13cb2e0f237f46e300d02d89_a29bf19ba13cb2e0f237f46e300d02d89}{Sound\+Player}}.
+
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{classIListener_a310f5483d09a78ef32fe91feb3f87ad3_a310f5483d09a78ef32fe91feb3f87ad3}\index{IListener$<$ T $>$@{IListener$<$ T $>$}!IReporter$<$ T $>$@{IReporter$<$ T $>$}}
+\index{IReporter$<$ T $>$@{IReporter$<$ T $>$}!IListener$<$ T $>$@{IListener$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{IReporter$<$ T $>$}{IReporter< T >}}
+{\footnotesize\ttfamily \label{classIListener_a310f5483d09a78ef32fe91feb3f87ad3_a310f5483d09a78ef32fe91feb3f87ad3} 
+template$<$typename T $>$ \\
+friend class \mbox{\hyperlink{classIReporter}{IReporter}}$<$ T $>$\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classIListener_aaaf1ddfe2afeedab8a70c935b1626488_aaaf1ddfe2afeedab8a70c935b1626488}\index{IListener$<$ T $>$@{IListener$<$ T $>$}!m\_reporters@{m\_reporters}}
+\index{m\_reporters@{m\_reporters}!IListener$<$ T $>$@{IListener$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{m\_reporters}{m\_reporters}}
+{\footnotesize\ttfamily \label{classIListener_aaaf1ddfe2afeedab8a70c935b1626488_aaaf1ddfe2afeedab8a70c935b1626488} 
+template$<$typename T $>$ \\
+std\+::vector$<$const void\texorpdfstring{$\ast$}{*}$>$ \mbox{\hyperlink{classIListener}{IListener}}$<$ T $>$\+::m\+\_\+reporters\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{reporter__listener_8h}{reporter\+\_\+listener.\+h}}\end{DoxyCompactItemize}

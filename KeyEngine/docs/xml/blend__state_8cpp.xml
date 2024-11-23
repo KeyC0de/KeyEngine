@@ -1,0 +1,645 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="blend__state_8cpp" kind="file" language="C++">
+    <compoundname>blend_state.cpp</compoundname>
+    <includes refid="blend__state_8h" local="yes">blend_state.h</includes>
+    <includes refid="graphics_8h" local="yes">graphics.h</includes>
+    <includes refid="bindable__registry_8h" local="yes">bindable_registry.h</includes>
+    <includes refid="os__utils_8h" local="yes">os_utils.h</includes>
+    <includes refid="dxgi__info__queue_8h" local="yes">dxgi_info_queue.h</includes>
+    <includes refid="assertions__console_8h" local="yes">assertions_console.h</includes>
+    <incdepgraph>
+      <node id="11">
+        <label>assertions_console.h</label>
+        <link refid="assertions__console_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>bindable.h</label>
+        <link refid="bindable_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>bindable_registry.h</label>
+        <link refid="bindable__registry_8h"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>blend_state.h</label>
+        <link refid="blend__state_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>color.h</label>
+        <link refid="color_8h"/>
+      </node>
+      <node id="30">
+        <label>console.h</label>
+        <link refid="console_8h"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="60">
+        <label>dxgi_info_queue.h</label>
+        <link refid="dxgi__info__queue_8h"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>graphics.h</label>
+        <link refid="graphics_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>graphics_friend.h</label>
+        <link refid="graphics__friend_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>key_exception.h</label>
+        <link refid="key__exception_8h"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>key_timer.h</label>
+        <link refid="key__timer_8h"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>key_type_traits.h</label>
+        <link refid="key__type__traits_8h"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>key_wrl.h</label>
+        <link refid="key__wrl_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>math_utils.h</label>
+        <link refid="math__utils_8h"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="53">
+        <label>os_utils.h</label>
+        <link refid="os__utils_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>texture_desc.h</label>
+        <link refid="texture__desc_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>utils_global.h</label>
+        <link refid="utils__global_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>winner.h</label>
+        <link refid="winner_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/blend_state.cpp</label>
+        <link refid="blend__state_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>DirectXMath.h</label>
+      </node>
+      <node id="58">
+        <label>ShlObj.h</label>
+      </node>
+      <node id="16">
+        <label>Windows.h</label>
+      </node>
+      <node id="44">
+        <label>algorithm</label>
+      </node>
+      <node id="3">
+        <label>array</label>
+      </node>
+      <node id="40">
+        <label>bitset</label>
+      </node>
+      <node id="29">
+        <label>chrono</label>
+      </node>
+      <node id="42">
+        <label>cinttypes</label>
+      </node>
+      <node id="32">
+        <label>cmath</label>
+      </node>
+      <node id="55">
+        <label>comdef.h</label>
+      </node>
+      <node id="41">
+        <label>cstddef</label>
+      </node>
+      <node id="33">
+        <label>cstdint</label>
+      </node>
+      <node id="10">
+        <label>d3d11.h</label>
+      </node>
+      <node id="18">
+        <label>d3dcompiler.h</label>
+      </node>
+      <node id="17">
+        <label>dxgi1_4.h</label>
+      </node>
+      <node id="61">
+        <label>dxgidebug.h</label>
+      </node>
+      <node id="48">
+        <label>execution</label>
+      </node>
+      <node id="57">
+        <label>functional</label>
+      </node>
+      <node id="43">
+        <label>future</label>
+      </node>
+      <node id="36">
+        <label>iomanip</label>
+      </node>
+      <node id="12">
+        <label>iostream</label>
+      </node>
+      <node id="46">
+        <label>iterator</label>
+      </node>
+      <node id="37">
+        <label>limits</label>
+      </node>
+      <node id="8">
+        <label>memory</label>
+      </node>
+      <node id="45">
+        <label>numeric</label>
+      </node>
+      <node id="4">
+        <label>optional</label>
+      </node>
+      <node id="47">
+        <label>regex</label>
+      </node>
+      <node id="15">
+        <label>sdkddkver.h</label>
+      </node>
+      <node id="39">
+        <label>set</label>
+      </node>
+      <node id="35">
+        <label>sstream</label>
+      </node>
+      <node id="24">
+        <label>stdexcept</label>
+      </node>
+      <node id="23">
+        <label>string</label>
+      </node>
+      <node id="28">
+        <label>thread</label>
+      </node>
+      <node id="56">
+        <label>tlhelp32.h</label>
+      </node>
+      <node id="34">
+        <label>type_traits</label>
+      </node>
+      <node id="52">
+        <label>unordered_map</label>
+      </node>
+      <node id="20">
+        <label>vector</label>
+      </node>
+      <node id="59">
+        <label>wincred.h</label>
+      </node>
+      <node id="54">
+        <label>winternl.h</label>
+      </node>
+      <node id="6">
+        <label>wrl.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="blend__state_8cpp_af3c36f2bdba87e423931f50f6934a462_1af3c36f2bdba87e423931f50f6934a462" prot="public" static="no">
+        <name>blendStateDescRTSlot</name>
+        <initializer>blendStateDesc.RenderTarget[renderTargetSlot]</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/blend_state.cpp" line="8" column="9" bodyfile="src/blend_state.cpp" bodystart="8" bodyend="-1"/>
+        <referencedby refid="classBlendState_aa3065367e75ee165cbeac58483aa19fc_1aa3065367e75ee165cbeac58483aa19fc" compoundref="blend__state_8cpp" startline="11" endline="90">BlendState::BlendState</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="blend__state_8h" kindref="compound">blend_state.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="graphics_8h" kindref="compound">graphics.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="bindable__registry_8h" kindref="compound">bindable_registry.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="os__utils_8h" kindref="compound">os_utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dxgi__info__queue_8h" kindref="compound">dxgi_info_queue.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="assertions__console_8h" kindref="compound">assertions_console.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="blend__state_8cpp_af3c36f2bdba87e423931f50f6934a462_1af3c36f2bdba87e423931f50f6934a462" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>blendStateDescRTSlot<sp/>blendStateDesc.RenderTarget[renderTargetSlot]</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="classBlendState_aa3065367e75ee165cbeac58483aa19fc_1aa3065367e75ee165cbeac58483aa19fc" refkind="member"><highlight class="normal"><ref refid="classBlendState_aa3065367e75ee165cbeac58483aa19fc_1aa3065367e75ee165cbeac58483aa19fc" kindref="member">BlendState::BlendState</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classBlendState_a97c6194868baa55cdcf8e6440357936e_1a97c6194868baa55cdcf8e6440357936e" kindref="member">Mode</ref><sp/>mode,</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>renderTargetSlot,</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;float&gt;<sp/>blendFactors<sp/></highlight><highlight class="comment">/*=<sp/>{}*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>multisampleMask<sp/></highlight><highlight class="comment">/*=<sp/>0xFFFFFFFFu*/</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>m_mode{mode},</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>m_renderTargetSlot{renderTargetSlot},</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>m_multisampleMask{multisampleMask}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>D3D11_BLEND_DESC<sp/>blendStateDesc{CD3D11_BLEND_DESC{CD3D11_DEFAULT{}}};</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//default<sp/>case<sp/>NoBlend:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//blendStateDesc.AlphaToCoverageEnable<sp/>=<sp/>FALSE;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//blendStateDesc.IndependentBlendEnable<sp/>=<sp/>FALSE;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//blendStateDescRTSlot.BlendEnable<sp/>=<sp/>False;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//blendStateDescRTSlot.SrcBlend<sp/>=<sp/>D3D11_BLEND_ONE;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//blendStateDescRTSlot.DestBlend<sp/>=<sp/>D3D11_BLEND_ZERO;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//blendStateDescRTSlot.BlendOp<sp/>=<sp/>D3D11_BLEND_OP_ADD;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//blendStateDescRTSlot.SrcBlendAlpha<sp/>=<sp/>D3D11_BLEND_ONE;<sp/><sp/><sp/><sp/><sp/>//<sp/>whether<sp/>to<sp/>blend<sp/>the<sp/>alpha<sp/>channel<sp/>values<sp/>as<sp/>well</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//blendStateDescRTSlot.DestBlendAlpha<sp/>=<sp/>D3D11_BLEND_ZERO;<sp/><sp/><sp/>//<sp/>otherwise<sp/>only<sp/>blend<sp/>the<sp/>RGB<sp/>channel<sp/>values</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//blendStateDescRTSlot.BlendOpAlpha<sp/>=<sp/>D3D11_BLEND_OP_ADD;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//blendStateDescRTSlot.RenderTargetWriteMask<sp/>=<sp/>D3D11_COLOR_WRITE_ENABLE_ALL;<sp/>/*(0x0f)*/<sp/>//<sp/>per-bit<sp/>targeting<sp/>of<sp/>specific<sp/>channels<sp/>to<sp/>blend</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="classBlendState_a03ad465f2b071208e008af7842f5335b_1a03ad465f2b071208e008af7842f5335b" kindref="member">blendFactors</ref><sp/>)</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBlendState_a2fa89574ea511e403205f884e221a7df_1a2fa89574ea511e403205f884e221a7df" kindref="member">m_blendFactors</ref>.emplace();</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBlendState_a2fa89574ea511e403205f884e221a7df_1a2fa89574ea511e403205f884e221a7df" kindref="member">m_blendFactors</ref>-&gt;fill(<sp/>*<ref refid="classBlendState_a03ad465f2b071208e008af7842f5335b_1a03ad465f2b071208e008af7842f5335b" kindref="member">blendFactors</ref><sp/>);<sp/><sp/></highlight><highlight class="comment">//<sp/>set<sp/>all<sp/>channels<sp/>with<sp/>the<sp/>same<sp/>value<sp/>for<sp/>now</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="blend__state_8cpp_af3c36f2bdba87e423931f50f6934a462_1af3c36f2bdba87e423931f50f6934a462" kindref="member">blendStateDescRTSlot</ref>.BlendEnable<sp/>=<sp/>TRUE;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="blend__state_8cpp_af3c36f2bdba87e423931f50f6934a462_1af3c36f2bdba87e423931f50f6934a462" kindref="member">blendStateDescRTSlot</ref>.SrcBlend<sp/>=<sp/>D3D11_BLEND_BLEND_FACTOR;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="blend__state_8cpp_af3c36f2bdba87e423931f50f6934a462_1af3c36f2bdba87e423931f50f6934a462" kindref="member">blendStateDescRTSlot</ref>.DestBlend<sp/>=<sp/>D3D11_BLEND_INV_BLEND_FACTOR;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::array&lt;float,<sp/>4&gt;<sp/>emptyArray{0};</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>emptyArray.fill(<sp/>1.0f<sp/>);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBlendState_a2fa89574ea511e403205f884e221a7df_1a2fa89574ea511e403205f884e221a7df" kindref="member">m_blendFactors</ref><sp/>=<sp/>std::make_optional&lt;std::array&lt;float,<sp/>4&gt;&gt;(<sp/>emptyArray<sp/>);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(<sp/>mode<sp/>)</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classBlendState_a97c6194868baa55cdcf8e6440357936e_1a97c6194868baa55cdcf8e6440357936ea51ee57fb900686d7df5c44536ef5dd30" kindref="member">Additive</ref>:</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="blend__state_8cpp_af3c36f2bdba87e423931f50f6934a462_1af3c36f2bdba87e423931f50f6934a462" kindref="member">blendStateDescRTSlot</ref>.BlendEnable<sp/>=<sp/>TRUE;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="blend__state_8cpp_af3c36f2bdba87e423931f50f6934a462_1af3c36f2bdba87e423931f50f6934a462" kindref="member">blendStateDescRTSlot</ref>.SrcBlend<sp/>=<sp/>D3D11_BLEND_ONE;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="blend__state_8cpp_af3c36f2bdba87e423931f50f6934a462_1af3c36f2bdba87e423931f50f6934a462" kindref="member">blendStateDescRTSlot</ref>.DestBlend<sp/>=<sp/>D3D11_BLEND_ONE;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classBlendState_a97c6194868baa55cdcf8e6440357936e_1a97c6194868baa55cdcf8e6440357936ea13d941d78111e944f66303026b5aa0a6" kindref="member">Multiplicative</ref>:</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="blend__state_8cpp_af3c36f2bdba87e423931f50f6934a462_1af3c36f2bdba87e423931f50f6934a462" kindref="member">blendStateDescRTSlot</ref>.BlendEnable<sp/>=<sp/>TRUE;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="blend__state_8cpp_af3c36f2bdba87e423931f50f6934a462_1af3c36f2bdba87e423931f50f6934a462" kindref="member">blendStateDescRTSlot</ref>.SrcBlend<sp/>=<sp/>D3D11_BLEND_DEST_COLOR;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="blend__state_8cpp_af3c36f2bdba87e423931f50f6934a462_1af3c36f2bdba87e423931f50f6934a462" kindref="member">blendStateDescRTSlot</ref>.DestBlend<sp/>=<sp/>D3D11_BLEND_ZERO;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classBlendState_a97c6194868baa55cdcf8e6440357936e_1a97c6194868baa55cdcf8e6440357936ea7fb6dd3e3861c00b85cdd7ca10e22705" kindref="member">DoubleMultiplicative</ref>:</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="blend__state_8cpp_af3c36f2bdba87e423931f50f6934a462_1af3c36f2bdba87e423931f50f6934a462" kindref="member">blendStateDescRTSlot</ref>.BlendEnable<sp/>=<sp/>TRUE;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="blend__state_8cpp_af3c36f2bdba87e423931f50f6934a462_1af3c36f2bdba87e423931f50f6934a462" kindref="member">blendStateDescRTSlot</ref>.SrcBlend<sp/>=<sp/>D3D11_BLEND_DEST_COLOR;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="blend__state_8cpp_af3c36f2bdba87e423931f50f6934a462_1af3c36f2bdba87e423931f50f6934a462" kindref="member">blendStateDescRTSlot</ref>.DestBlend<sp/>=<sp/>D3D11_BLEND_SRC_COLOR;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classBlendState_a97c6194868baa55cdcf8e6440357936e_1a97c6194868baa55cdcf8e6440357936eac4db6edab9e8acb7e065a2202d738ec2" kindref="member">Alpha</ref>:</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="blend__state_8cpp_af3c36f2bdba87e423931f50f6934a462_1af3c36f2bdba87e423931f50f6934a462" kindref="member">blendStateDescRTSlot</ref>.BlendEnable<sp/>=<sp/>TRUE;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="blend__state_8cpp_af3c36f2bdba87e423931f50f6934a462_1af3c36f2bdba87e423931f50f6934a462" kindref="member">blendStateDescRTSlot</ref>.SrcBlend<sp/>=<sp/>D3D11_BLEND_SRC_ALPHA;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="blend__state_8cpp_af3c36f2bdba87e423931f50f6934a462_1af3c36f2bdba87e423931f50f6934a462" kindref="member">blendStateDescRTSlot</ref>.DestBlend<sp/>=<sp/>D3D11_BLEND_INV_SRC_ALPHA;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="blend__state_8cpp_af3c36f2bdba87e423931f50f6934a462_1af3c36f2bdba87e423931f50f6934a462" kindref="member">blendStateDescRTSlot</ref>.SrcBlendAlpha<sp/>=<sp/>D3D11_BLEND_ZERO;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classBlendState_a97c6194868baa55cdcf8e6440357936e_1a97c6194868baa55cdcf8e6440357936eae9aa96aa9fa1073f4a8ea331394472ab" kindref="member">AlphaToCoverage</ref>:</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>blendStateDesc.AlphaToCoverageEnable<sp/>=<sp/>TRUE;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>HRESULT<sp/>hres<sp/>=<sp/><ref refid="classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_1a175df79f82ab5a6dad1df24b5a242ef7" kindref="member">getDevice</ref>(<sp/>gfx<sp/>)-&gt;CreateBlendState(<sp/>&amp;blendStateDesc,<sp/>&amp;<ref refid="classBlendState_aebac6c50cb7654c15583717e8d1f7541_1aebac6c50cb7654c15583717e8d1f7541" kindref="member">m_pD3dBlendState</ref><sp/>);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="os__utils_8h_a7027472bc9b182c0fea900713e4541e3_1a7027472bc9b182c0fea900713e4541e3" kindref="member">ASSERT_HRES_IF_FAILED</ref>;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="classBlendState_a40b232bc0e513ab020aa07a29a66558a_1a40b232bc0e513ab020aa07a29a66558a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classBlendState_a40b232bc0e513ab020aa07a29a66558a_1a40b232bc0e513ab020aa07a29a66558a" kindref="member">BlendState::bind</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="93"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>getDeviceContext(<sp/>gfx<sp/>)-&gt;OMSetBlendState(<sp/>m_pD3dBlendState.Get(),<sp/>m_blendFactors-&gt;data(),<sp/>m_multisampleMask<sp/>);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dxgi__info__queue_8h_accf41747d77929c5a185f1f7d5c72263_1accf41747d77929c5a185f1f7d5c72263" kindref="member">DXGI_GET_QUEUE_INFO</ref>(<sp/>gfx<sp/>);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98" refid="classBlendState_aa27898f671e468ccc0c397dc297f6891_1aa27898f671e468ccc0c397dc297f6891" refkind="member"><highlight class="normal">std::shared_ptr&lt;BlendState&gt;<sp/><ref refid="classBlendState_aa27898f671e468ccc0c397dc297f6891_1aa27898f671e468ccc0c397dc297f6891" kindref="member">BlendState::fetch</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classBlendState_a97c6194868baa55cdcf8e6440357936e_1a97c6194868baa55cdcf8e6440357936e" kindref="member">Mode</ref><sp/>mode,</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>renderTargetSlot,</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;float&gt;<sp/>blendFactors<sp/></highlight><highlight class="comment">/*=<sp/>{}*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>multisampleMask<sp/></highlight><highlight class="comment">/*=<sp/>0xFFFFFFFFu*/</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBindableRegistry_a034568929d2dbcda2bf619e90d9fc68e_1a034568929d2dbcda2bf619e90d9fc68e" kindref="member">BindableRegistry::fetch&lt;BlendState&gt;</ref>(<sp/>gfx,<sp/>mode,<sp/>renderTargetSlot,<sp/><ref refid="classBlendState_a03ad465f2b071208e008af7842f5335b_1a03ad465f2b071208e008af7842f5335b" kindref="member">blendFactors</ref><sp/>);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107" refid="classBlendState_a0fb024a3ef2865d6a01b52c8a8fe3d8f_1a0fb024a3ef2865d6a01b52c8a8fe3d8f" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classBlendState_a0fb024a3ef2865d6a01b52c8a8fe3d8f_1a0fb024a3ef2865d6a01b52c8a8fe3d8f" kindref="member">BlendState::calcUid</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classBlendState_a97c6194868baa55cdcf8e6440357936e_1a97c6194868baa55cdcf8e6440357936e" kindref="member">Mode</ref><sp/>mode,</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>renderTargetSlot,</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;float&gt;<sp/>blendFactors<sp/></highlight><highlight class="comment">/*=<sp/>{}*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>multisampleMask<sp/></highlight><highlight class="comment">/*=<sp/>0xFFFFFFFFu*/</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="111"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">std::string_literals;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>modeId;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(<sp/>mode<sp/>)</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classBlendState_a97c6194868baa55cdcf8e6440357936e_1a97c6194868baa55cdcf8e6440357936ea51ee57fb900686d7df5c44536ef5dd30" kindref="member">Additive</ref>:</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>modeId<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Add&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classBlendState_a97c6194868baa55cdcf8e6440357936e_1a97c6194868baa55cdcf8e6440357936ea13d941d78111e944f66303026b5aa0a6" kindref="member">Multiplicative</ref>:</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>modeId<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Mul&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classBlendState_a97c6194868baa55cdcf8e6440357936e_1a97c6194868baa55cdcf8e6440357936ea7fb6dd3e3861c00b85cdd7ca10e22705" kindref="member">DoubleMultiplicative</ref>:</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>modeId<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Dmu&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classBlendState_a97c6194868baa55cdcf8e6440357936e_1a97c6194868baa55cdcf8e6440357936eac4db6edab9e8acb7e065a2202d738ec2" kindref="member">Alpha</ref>:</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>modeId<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Alp&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classBlendState_a97c6194868baa55cdcf8e6440357936e_1a97c6194868baa55cdcf8e6440357936eae9aa96aa9fa1073f4a8ea331394472ab" kindref="member">AlphaToCoverage</ref>:</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>modeId<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Alc&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classBlendState_a97c6194868baa55cdcf8e6440357936e_1a97c6194868baa55cdcf8e6440357936ea88d24e12f11fcf30e7645cd90307ae76" kindref="member">NoBlend</ref>:</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>modeId<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Non&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(<sp/><ref refid="classBlendState_aa3065367e75ee165cbeac58483aa19fc_1aa3065367e75ee165cbeac58483aa19fc" kindref="member">BlendState</ref><sp/>).name()<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;#&quot;</highlight><highlight class="normal">s<sp/>+<sp/>std::to_string(<sp/>renderTargetSlot<sp/>)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;:&quot;</highlight><highlight class="normal">s<sp/>+<sp/>modeId<sp/>+<sp/>(<sp/><ref refid="classBlendState_a03ad465f2b071208e008af7842f5335b_1a03ad465f2b071208e008af7842f5335b" kindref="member">blendFactors</ref><sp/>?<sp/></highlight><highlight class="stringliteral">&quot;#f&quot;</highlight><highlight class="normal">s<sp/>+<sp/>std::to_string(<sp/>*<ref refid="classBlendState_a03ad465f2b071208e008af7842f5335b_1a03ad465f2b071208e008af7842f5335b" kindref="member">blendFactors</ref><sp/>)<sp/>:<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">s<sp/>);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139" refid="classBlendState_aa6b960f91dea5183e301313830bd162f_1aa6b960f91dea5183e301313830bd162f" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classBlendState_aa6b960f91dea5183e301313830bd162f_1aa6b960f91dea5183e301313830bd162f" kindref="member">BlendState::getUid</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="140"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBlendState_a0fb024a3ef2865d6a01b52c8a8fe3d8f_1a0fb024a3ef2865d6a01b52c8a8fe3d8f" kindref="member">calcUid</ref>(<sp/><ref refid="classBlendState_aaef013e94e297fb5be8b230eff905d05_1aaef013e94e297fb5be8b230eff905d05" kindref="member">m_mode</ref>,<sp/><ref refid="classBlendState_ac7b44a7f4cc9e0bf8146a0440c5d5053_1ac7b44a7f4cc9e0bf8146a0440c5d5053" kindref="member">m_renderTargetSlot</ref>,<sp/><ref refid="classBlendState_a2fa89574ea511e403205f884e221a7df_1a2fa89574ea511e403205f884e221a7df" kindref="member">m_blendFactors</ref><sp/>?<sp/><ref refid="classBlendState_a2fa89574ea511e403205f884e221a7df_1a2fa89574ea511e403205f884e221a7df" kindref="member">m_blendFactors</ref>-&gt;front()<sp/>:<sp/>std::optional&lt;float&gt;{}<sp/>);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144" refid="classBlendState_a17a6b675b9df1a037279bd09857d020d_1a17a6b675b9df1a037279bd09857d020d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classBlendState_a17a6b675b9df1a037279bd09857d020d_1a17a6b675b9df1a037279bd09857d020d" kindref="member">BlendState::fillBlendFactors</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>sameBlendFactor<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>m_blendFactors,<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>blend<sp/>factors<sp/>set!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>m_blendFactors-&gt;fill(<sp/>sameBlendFactor<sp/>);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150" refid="classBlendState_af1d7b126eac3ac613d65acc22c1f39f0_1af1d7b126eac3ac613d65acc22c1f39f0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classBlendState_af1d7b126eac3ac613d65acc22c1f39f0_1af1d7b126eac3ac613d65acc22c1f39f0" kindref="member">BlendState::setBlendFactors</ref>(<sp/>std::array&lt;float,<sp/>4&gt;<sp/>blendFactors<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="151"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>m_blendFactors,<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>blend<sp/>factors<sp/>set!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>m_blendFactors-&gt;swap(<sp/>blendFactors<sp/>);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156" refid="classBlendState_a601807fc7b470ddf241094a8857a6d11_1a601807fc7b470ddf241094a8857a6d11" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classBlendState_a601807fc7b470ddf241094a8857a6d11_1a601807fc7b470ddf241094a8857a6d11" kindref="member">BlendState::setBlendFactorRed</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>blendFactorRed<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="157"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>m_blendFactors,<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>blend<sp/>factors<sp/>set!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>(<sp/>*m_blendFactors<sp/>)[0]<sp/>=<sp/>blendFactorRed;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162" refid="classBlendState_aa01ebb731ef55fba7e9d2b6928c60e64_1aa01ebb731ef55fba7e9d2b6928c60e64" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classBlendState_aa01ebb731ef55fba7e9d2b6928c60e64_1aa01ebb731ef55fba7e9d2b6928c60e64" kindref="member">BlendState::setBlendFactorGreen</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>blendFactorGreen<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="163"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>m_blendFactors,<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>blend<sp/>factors<sp/>set!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>(<sp/>*m_blendFactors<sp/>)[1]<sp/>=<sp/>blendFactorGreen;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168" refid="classBlendState_ae74c15a0ef48f209a4a46a9cbe78c496_1ae74c15a0ef48f209a4a46a9cbe78c496" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classBlendState_ae74c15a0ef48f209a4a46a9cbe78c496_1ae74c15a0ef48f209a4a46a9cbe78c496" kindref="member">BlendState::setBlendFactorBlue</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>blendFactorBlue<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="169"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>m_blendFactors,<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>blend<sp/>factors<sp/>set!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/>(<sp/>*m_blendFactors<sp/>)[2]<sp/>=<sp/>blendFactorBlue;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174" refid="classBlendState_a0ef99680704ad33b5370cc39d5a5c4df_1a0ef99680704ad33b5370cc39d5a5c4df" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classBlendState_a0ef99680704ad33b5370cc39d5a5c4df_1a0ef99680704ad33b5370cc39d5a5c4df" kindref="member">BlendState::setBlendFactorAlpha</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>blendFactorAlpha<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="175"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>m_blendFactors,<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>blend<sp/>factors<sp/>set!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>(<sp/>*m_blendFactors<sp/>)[3]<sp/>=<sp/>blendFactorAlpha;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180" refid="classBlendState_a58f01f80e13f9aaf7bb529f140b86bd6_1a58f01f80e13f9aaf7bb529f140b86bd6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classBlendState_a58f01f80e13f9aaf7bb529f140b86bd6_1a58f01f80e13f9aaf7bb529f140b86bd6" kindref="member">BlendState::getBlendFactorRed</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="181"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/><ref refid="classBlendState_a2fa89574ea511e403205f884e221a7df_1a2fa89574ea511e403205f884e221a7df" kindref="member">m_blendFactors</ref>,<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>blend<sp/>factors<sp/>set!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBlendState_a2fa89574ea511e403205f884e221a7df_1a2fa89574ea511e403205f884e221a7df" kindref="member">m_blendFactors</ref>.value()[0];</highlight></codeline>
+<codeline lineno="184"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186" refid="classBlendState_a4420126a1c3fadfe8435f575c6130e72_1a4420126a1c3fadfe8435f575c6130e72" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classBlendState_a4420126a1c3fadfe8435f575c6130e72_1a4420126a1c3fadfe8435f575c6130e72" kindref="member">BlendState::getBlendFactorGreen</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="187"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/><ref refid="classBlendState_a2fa89574ea511e403205f884e221a7df_1a2fa89574ea511e403205f884e221a7df" kindref="member">m_blendFactors</ref>,<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>blend<sp/>factors<sp/>set!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBlendState_a2fa89574ea511e403205f884e221a7df_1a2fa89574ea511e403205f884e221a7df" kindref="member">m_blendFactors</ref>.value()[1];</highlight></codeline>
+<codeline lineno="190"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192" refid="classBlendState_a3fcd66aa1fcde4353ad604aeefbb51fd_1a3fcd66aa1fcde4353ad604aeefbb51fd" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classBlendState_a3fcd66aa1fcde4353ad604aeefbb51fd_1a3fcd66aa1fcde4353ad604aeefbb51fd" kindref="member">BlendState::getBlendFactorBlue</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="193"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/><ref refid="classBlendState_a2fa89574ea511e403205f884e221a7df_1a2fa89574ea511e403205f884e221a7df" kindref="member">m_blendFactors</ref>,<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>blend<sp/>factors<sp/>set!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBlendState_a2fa89574ea511e403205f884e221a7df_1a2fa89574ea511e403205f884e221a7df" kindref="member">m_blendFactors</ref>.value()[2];</highlight></codeline>
+<codeline lineno="196"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198" refid="classBlendState_a1094dbecb76242f5ec740222a2ef14ba_1a1094dbecb76242f5ec740222a2ef14ba" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classBlendState_a1094dbecb76242f5ec740222a2ef14ba_1a1094dbecb76242f5ec740222a2ef14ba" kindref="member">BlendState::getBlendFactorAlpha</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="199"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/><ref refid="classBlendState_a2fa89574ea511e403205f884e221a7df_1a2fa89574ea511e403205f884e221a7df" kindref="member">m_blendFactors</ref>,<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>blend<sp/>factors<sp/>set!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBlendState_a2fa89574ea511e403205f884e221a7df_1a2fa89574ea511e403205f884e221a7df" kindref="member">m_blendFactors</ref>.value()[3];</highlight></codeline>
+<codeline lineno="202"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204" refid="classBlendState_a8f07f9b08fc1bbede5bd92211476f363_1a8f07f9b08fc1bbede5bd92211476f363" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::array&lt;float,<sp/>4&gt;&amp;<sp/><ref refid="classBlendState_a8f07f9b08fc1bbede5bd92211476f363_1a8f07f9b08fc1bbede5bd92211476f363" kindref="member">BlendState::getBlendFactors</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="205"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/><ref refid="classBlendState_a2fa89574ea511e403205f884e221a7df_1a2fa89574ea511e403205f884e221a7df" kindref="member">m_blendFactors</ref>,<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>blend<sp/>factors<sp/>set!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*<ref refid="classBlendState_a2fa89574ea511e403205f884e221a7df_1a2fa89574ea511e403205f884e221a7df" kindref="member">m_blendFactors</ref>;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210" refid="classBlendState_a03ad465f2b071208e008af7842f5335b_1a03ad465f2b071208e008af7842f5335b" refkind="member"><highlight class="normal">std::array&lt;float,<sp/>4&gt;&amp;<sp/><ref refid="classBlendState_a03ad465f2b071208e008af7842f5335b_1a03ad465f2b071208e008af7842f5335b" kindref="member">BlendState::blendFactors</ref>()</highlight></codeline>
+<codeline lineno="211"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/><ref refid="classBlendState_a2fa89574ea511e403205f884e221a7df_1a2fa89574ea511e403205f884e221a7df" kindref="member">m_blendFactors</ref>,<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>blend<sp/>factors<sp/>set!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*<ref refid="classBlendState_a2fa89574ea511e403205f884e221a7df_1a2fa89574ea511e403205f884e221a7df" kindref="member">m_blendFactors</ref>;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216" refid="classBlendState_ad1d598669c960e2542c8526f7145e92e_1ad1d598669c960e2542c8526f7145e92e" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classBlendState_a97c6194868baa55cdcf8e6440357936e_1a97c6194868baa55cdcf8e6440357936e" kindref="member">BlendState::Mode</ref>&amp;<sp/><ref refid="classBlendState_ad1d598669c960e2542c8526f7145e92e_1ad1d598669c960e2542c8526f7145e92e" kindref="member">BlendState::getBlendMode</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="217"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBlendState_aaef013e94e297fb5be8b230eff905d05_1aaef013e94e297fb5be8b230eff905d05" kindref="member">m_mode</ref>;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221" refid="classBlendState_a246f8b7d930fd91ccf4586e19f789347_1a246f8b7d930fd91ccf4586e19f789347" refkind="member"><highlight class="normal">Microsoft::WRL::ComPtr&lt;ID3D11BlendState&gt;&amp;<sp/><ref refid="classBlendState_a246f8b7d930fd91ccf4586e19f789347_1a246f8b7d930fd91ccf4586e19f789347" kindref="member">BlendState::getD3dBlendState</ref>()</highlight></codeline>
+<codeline lineno="222"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBlendState_aebac6c50cb7654c15583717e8d1f7541_1aebac6c50cb7654c15583717e8d1f7541" kindref="member">m_pD3dBlendState</ref>;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/blend_state.cpp"/>
+  </compounddef>
+</doxygen>

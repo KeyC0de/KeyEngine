@@ -840,12 +840,12 @@ void Graphics::interrogateDirectxFeatures()
 	ASSERT_HRES_IF_FAILED;
 
 	using namespace std::string_literals;
-	auto &con = KeyConsole::getInstance();
-	con.log( threadingInfo.DriverConcurrentCreates ?
+	auto &console = KeyConsole::getInstance();
+	console.log( threadingInfo.DriverConcurrentCreates ?
 		"Resources can be created concurrently on multiple threads.\n"s :
 		"No DirectX concurrency possible\n"s );
 
-	con.log( threadingInfo.DriverCommandLists ?
+	console.log( threadingInfo.DriverCommandLists ?
 		"Command lists are supported by the current driver.\n"s :
 		"Commands lists will be emulated in software.\n"s );
 
@@ -855,11 +855,11 @@ void Graphics::interrogateDirectxFeatures()
 
 	if ( !d3d11HwOptions.MapNoOverwriteOnDynamicConstantBuffer )
 	{
-		con.log( "Constant Buffer D3D11_MAP_WRITE_NO_OVERWRITE unsupported!\n"s );
+		console.log( "Constant Buffer D3D11_MAP_WRITE_NO_OVERWRITE unsupported!\n"s );
 	}
 	if ( !d3d11HwOptions.MapNoOverwriteOnDynamicBufferSRV )
 	{
-		con.log( "Shader Resource View D3D11_MAP_WRITE_NO_OVERWRITE unsupported!\n"s );
+		console.log( "Shader Resource View D3D11_MAP_WRITE_NO_OVERWRITE unsupported!\n"s );
 	}
 
 	unsigned formatSupport;

@@ -10,16 +10,16 @@
 class Message;
 class MessageDispatcher;
 
-//============================================================
-//	\class	MessageBus
-//	\author	KeyC0de
-//	\date	2019/12/09 4:51
-//	\brief	thread safe event queue built from a Vector
-//			enqueue or dequeue whenever, wherever, we'll be together
-//			it pa-owns its contents (Messages)
-//			move only
-//			accessible only from the MessageDispatcher friend class
-//=============================================================
+///============================================================
+/// \class	MessageBus
+/// \author	KeyC0de
+/// \date	2019/12/09 4:51
+/// \brief	thread safe event queue built from a Vector
+/// \brief	enqueue or dequeue whenever, wherever, we'll be together
+/// \brief	it pa-owns its contents (Messages)
+/// \brief	move only
+/// \brief	accessible only from the MessageDispatcher friend class
+///=============================================================
 class MessageBus final
 	: public NonCopyable
 {
@@ -39,11 +39,9 @@ public:
 	MessageBus( MessageBus &&rhs ) noexcept;
 	MessageBus& operator=( MessageBus &&rhs ) noexcept;
 
-	//	\function	enqueue	||	\date	2019/12/09 4:50
-	//	\brief	push_back() : enqueue at the back
+	/// \brief	push_back() : enqueue at the back
 	void enqueue( Message *msg );
-	//	\function	dequeue	||	\date	2019/12/09 4:51
-	//	\brief	pop_front() : dequeue messages from the front
+	/// \brief	pop_front() : dequeue messages from the front
 	std::unique_ptr<Message> dequeue();
 	const Message* peekFront() const noexcept;
 	const Message* peekBack() const noexcept;
@@ -57,13 +55,13 @@ public:
 };
 
 
-//============================================================
-//	\class	MessageDispatcher
-//	\author	KeyC0de
-//	\date	2019/12/09 17:15
-//	\brief	Meyer's singleton class
-//			owns & manages the MessageBus/Queue
-//=============================================================
+///============================================================
+/// \class	MessageDispatcher
+/// \author	KeyC0de
+/// \date	2019/12/09 17:15
+/// \brief	Meyer's singleton class
+/// \brief	owns & manages the MessageBus/Queue
+///=============================================================
 class MessageDispatcher final
 	: public NonCopyable
 {
@@ -76,11 +74,9 @@ public:
 	MessageDispatcher& operator=( MessageDispatcher &&rhs ) noexcept;
 
 	static MessageDispatcher& getInstance( const int initialCapacity = 100 );
-	//	\function	addMessage	||	\date	2020/12/10 4:47
-	//	\brief	add new message to the MessageBus
+	/// \brief	add new message to the MessageBus
 	void addMessage( Message *msg );
-	//	\function	dispatchAll	||	\date	2019/12/10 4:47
-	//	\brief	dispatch all pending messages
+	/// \brief	dispatch all pending messages
 	void dispatchAll();
 	// #TODO: dispatchByEventType
 	// #TODO: dispatchEventsTargetedTo( specific actor )

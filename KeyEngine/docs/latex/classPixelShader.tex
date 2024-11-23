@@ -1,0 +1,139 @@
+\doxysection{Pixel\+Shader Class Reference}
+\hypertarget{classPixelShader}{}\label{classPixelShader}\index{PixelShader@{PixelShader}}
+
+
+{\ttfamily \#include $<$pixel\+\_\+shader.\+h$>$}
+
+Inheritance diagram for Pixel\+Shader\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classPixelShader}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPixelShader_ac750a7663474f02dcd624648faec9c49_ac750a7663474f02dcd624648faec9c49}{Pixel\+Shader}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const std\+::string \&filepath)
+\item 
+void \mbox{\hyperlink{classPixelShader_a141efa3b56ed6b9b0337a03feada0835_a141efa3b56ed6b9b0337a03feada0835}{bind}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) cond\+\_\+noex override
+\begin{DoxyCompactList}\small\item\em bind graphics resource to a certain stage of the graphics pipeline \end{DoxyCompactList}\item 
+ID3\+DBlob \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classPixelShader_a61a71e9c6562004b14146386342326c1_a61a71e9c6562004b14146386342326c1}{get\+Bytecode}} () const noexcept
+\item 
+std\+::string \mbox{\hyperlink{classPixelShader_a70fd83afb22b3163bd756ef0840684ed_a70fd83afb22b3163bd756ef0840684ed}{get\+Uid}} () const noexcept override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classIBindable}{IBindable}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classIBindable_a7f68262ff85e25e9f826eae7c01bbfa1_a7f68262ff85e25e9f826eae7c01bbfa1}{\texorpdfstring{$\sim$}{\string~}\+IBindable}} () noexcept
+\item 
+virtual void \mbox{\hyperlink{classIBindable_a12fe8725cb3f4836f22d1592b07e2c91_a12fe8725cb3f4836f22d1592b07e2c91}{set\+Mesh}} (const \mbox{\hyperlink{classMesh}{Mesh}} \&mesh) noexcept
+\item 
+virtual void \mbox{\hyperlink{classIBindable_a608c5066b829febbd49cd82d1d1fa353_a608c5066b829febbd49cd82d1d1fa353}{accept}} (\mbox{\hyperlink{classIImGuiConstantBufferVisitor}{IIm\+Gui\+Constant\+Buffer\+Visitor}} \&ev)
+\item 
+virtual void \mbox{\hyperlink{classIBindable_a4d590eebe80fa4e0aa865a875ff86c02_a4d590eebe80fa4e0aa865a875ff86c02}{set\+Debug\+Object\+Name}} (const char \texorpdfstring{$\ast$}{*}name) noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classPixelShader}{Pixel\+Shader}} $>$ \mbox{\hyperlink{classPixelShader_a308b5792652bde2a8fe1df25b297c381_a308b5792652bde2a8fe1df25b297c381}{fetch}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const std\+::string \&filepath)
+\item 
+static std\+::string \mbox{\hyperlink{classPixelShader_a2413a4b17e9ddad9fe0c591f369c0793_a2413a4b17e9ddad9fe0c591f369c0793}{calc\+Uid}} (const std\+::string \&filepath)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classPixelShader_a9b8462cdaf964d06d4cb147e23fa7f9f_a9b8462cdaf964d06d4cb147e23fa7f9f}{m\+\_\+path}}
+\item 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ ID3\+DBlob $>$ \mbox{\hyperlink{classPixelShader_a636bc606f520069ef0a774cf8656ff24_a636bc606f520069ef0a774cf8656ff24}{m\+\_\+p\+Ps\+Blob}}
+\item 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ ID3\+D11\+Pixel\+Shader $>$ \mbox{\hyperlink{classPixelShader_a5f5658bb56f659b74d27cebb77f3037e_a5f5658bb56f659b74d27cebb77f3037e}{m\+\_\+p\+Pixel\+Shader}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classGraphicsFriend}{Graphics\+Friend}}}
+\begin{DoxyCompactItemize}
+\item 
+static ID3\+D11\+Device\+Context \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGraphicsFriend_a619e32893ab49ea6c5200e7c2d52e2f2_a619e32893ab49ea6c5200e7c2d52e2f2}{get\+Device\+Context}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) noexcept
+\item 
+static ID3\+D11\+Device \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_a175df79f82ab5a6dad1df24b5a242ef7}{get\+Device}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) noexcept
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classPixelShader_ac750a7663474f02dcd624648faec9c49_ac750a7663474f02dcd624648faec9c49}\index{PixelShader@{PixelShader}!PixelShader@{PixelShader}}
+\index{PixelShader@{PixelShader}!PixelShader@{PixelShader}}
+\doxysubsubsection{\texorpdfstring{PixelShader()}{PixelShader()}}
+{\footnotesize\ttfamily \label{classPixelShader_ac750a7663474f02dcd624648faec9c49_ac750a7663474f02dcd624648faec9c49} 
+Pixel\+Shader\+::\+Pixel\+Shader (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const std\+::string \&}]{filepath}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classPixelShader_a141efa3b56ed6b9b0337a03feada0835_a141efa3b56ed6b9b0337a03feada0835}\index{PixelShader@{PixelShader}!bind@{bind}}
+\index{bind@{bind}!PixelShader@{PixelShader}}
+\doxysubsubsection{\texorpdfstring{bind()}{bind()}}
+{\footnotesize\ttfamily \label{classPixelShader_a141efa3b56ed6b9b0337a03feada0835_a141efa3b56ed6b9b0337a03feada0835} 
+void Pixel\+Shader\+::bind (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+bind graphics resource to a certain stage of the graphics pipeline 
+
+
+
+Implements \mbox{\hyperlink{classIBindable_add4560f78e76629ee81ba701ba1052e1_add4560f78e76629ee81ba701ba1052e1}{IBindable}}.
+
+\Hypertarget{classPixelShader_a2413a4b17e9ddad9fe0c591f369c0793_a2413a4b17e9ddad9fe0c591f369c0793}\index{PixelShader@{PixelShader}!calcUid@{calcUid}}
+\index{calcUid@{calcUid}!PixelShader@{PixelShader}}
+\doxysubsubsection{\texorpdfstring{calcUid()}{calcUid()}}
+{\footnotesize\ttfamily \label{classPixelShader_a2413a4b17e9ddad9fe0c591f369c0793_a2413a4b17e9ddad9fe0c591f369c0793} 
+std\+::string Pixel\+Shader\+::calc\+Uid (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filepath}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classPixelShader_a308b5792652bde2a8fe1df25b297c381_a308b5792652bde2a8fe1df25b297c381}\index{PixelShader@{PixelShader}!fetch@{fetch}}
+\index{fetch@{fetch}!PixelShader@{PixelShader}}
+\doxysubsubsection{\texorpdfstring{fetch()}{fetch()}}
+{\footnotesize\ttfamily \label{classPixelShader_a308b5792652bde2a8fe1df25b297c381_a308b5792652bde2a8fe1df25b297c381} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classPixelShader}{Pixel\+Shader}} $>$ Pixel\+Shader\+::fetch (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const std\+::string \&}]{filepath}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classPixelShader_a61a71e9c6562004b14146386342326c1_a61a71e9c6562004b14146386342326c1}\index{PixelShader@{PixelShader}!getBytecode@{getBytecode}}
+\index{getBytecode@{getBytecode}!PixelShader@{PixelShader}}
+\doxysubsubsection{\texorpdfstring{getBytecode()}{getBytecode()}}
+{\footnotesize\ttfamily \label{classPixelShader_a61a71e9c6562004b14146386342326c1_a61a71e9c6562004b14146386342326c1} 
+ID3\+DBlob \texorpdfstring{$\ast$}{*} Pixel\+Shader\+::get\+Bytecode (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classPixelShader_a70fd83afb22b3163bd756ef0840684ed_a70fd83afb22b3163bd756ef0840684ed}\index{PixelShader@{PixelShader}!getUid@{getUid}}
+\index{getUid@{getUid}!PixelShader@{PixelShader}}
+\doxysubsubsection{\texorpdfstring{getUid()}{getUid()}}
+{\footnotesize\ttfamily \label{classPixelShader_a70fd83afb22b3163bd756ef0840684ed_a70fd83afb22b3163bd756ef0840684ed} 
+std\+::string Pixel\+Shader\+::get\+Uid (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classIBindable_a7d88cdbd5d500d6d7f1bfabe16927855_a7d88cdbd5d500d6d7f1bfabe16927855}{IBindable}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classPixelShader_a9b8462cdaf964d06d4cb147e23fa7f9f_a9b8462cdaf964d06d4cb147e23fa7f9f}\index{PixelShader@{PixelShader}!m\_path@{m\_path}}
+\index{m\_path@{m\_path}!PixelShader@{PixelShader}}
+\doxysubsubsection{\texorpdfstring{m\_path}{m\_path}}
+{\footnotesize\ttfamily \label{classPixelShader_a9b8462cdaf964d06d4cb147e23fa7f9f_a9b8462cdaf964d06d4cb147e23fa7f9f} 
+std\+::string Pixel\+Shader\+::m\+\_\+path\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classPixelShader_a5f5658bb56f659b74d27cebb77f3037e_a5f5658bb56f659b74d27cebb77f3037e}\index{PixelShader@{PixelShader}!m\_pPixelShader@{m\_pPixelShader}}
+\index{m\_pPixelShader@{m\_pPixelShader}!PixelShader@{PixelShader}}
+\doxysubsubsection{\texorpdfstring{m\_pPixelShader}{m\_pPixelShader}}
+{\footnotesize\ttfamily \label{classPixelShader_a5f5658bb56f659b74d27cebb77f3037e_a5f5658bb56f659b74d27cebb77f3037e} 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ID3\+D11\+Pixel\+Shader$>$ Pixel\+Shader\+::m\+\_\+p\+Pixel\+Shader\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classPixelShader_a636bc606f520069ef0a774cf8656ff24_a636bc606f520069ef0a774cf8656ff24}\index{PixelShader@{PixelShader}!m\_pPsBlob@{m\_pPsBlob}}
+\index{m\_pPsBlob@{m\_pPsBlob}!PixelShader@{PixelShader}}
+\doxysubsubsection{\texorpdfstring{m\_pPsBlob}{m\_pPsBlob}}
+{\footnotesize\ttfamily \label{classPixelShader_a636bc606f520069ef0a774cf8656ff24_a636bc606f520069ef0a774cf8656ff24} 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ID3\+DBlob$>$ Pixel\+Shader\+::m\+\_\+p\+Ps\+Blob\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{pixel__shader_8h}{pixel\+\_\+shader.\+h}}\item 
+src/\mbox{\hyperlink{pixel__shader_8cpp}{pixel\+\_\+shader.\+cpp}}\end{DoxyCompactItemize}

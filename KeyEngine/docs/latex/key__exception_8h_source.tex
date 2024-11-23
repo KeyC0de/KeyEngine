@@ -1,0 +1,36 @@
+\doxysection{key\+\_\+exception.\+h}
+\hypertarget{key__exception_8h_source}{}\label{key__exception_8h_source}\index{inc/key\_exception.h@{inc/key\_exception.h}}
+\mbox{\hyperlink{key__exception_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classKeyException}{KeyException}}}
+\DoxyCodeLine{00015\ \ \ \ \ :\ \textcolor{keyword}{public}\ std::exception}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classKeyException_a2a49256c37903e810c301b035cf65837_a2a49256c37903e810c301b035cf65837}{m\_line}};}
+\DoxyCodeLine{00018\ \ \ \ \ std::string\ \mbox{\hyperlink{classKeyException_a62f1ed04b6e0c843f3ea1e338dc426d8_a62f1ed04b6e0c843f3ea1e338dc426d8}{m\_file}};}
+\DoxyCodeLine{00019\ \ \ \ \ std::string\ \mbox{\hyperlink{classKeyException_ac11062a919dcfe52321e9f948ce60958_ac11062a919dcfe52321e9f948ce60958}{m\_function}};}
+\DoxyCodeLine{00020\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{mutable}\ std::string\ \mbox{\hyperlink{classKeyException_ae11b160d146427ad3887a1af3e2dc2ac_ae11b160d146427ad3887a1af3e2dc2ac}{m\_description}};}
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{classKeyException_a53c95253098f0cc672876c35d4b1911d_a53c95253098f0cc672876c35d4b1911d}{KeyException}}(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ line,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *file,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *function,\ \textcolor{keyword}{const}\ std::string\ \&msg\ )\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classKeyException_a954cd46c9cc2dd054fd680bb70aef678_a954cd46c9cc2dd054fd680bb70aef678}{\string~KeyException}}()\ noexcept\ =\ default;}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ virtual\ const\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{classKeyException_a9956fdc871308553eec7b047f756690a_a9956fdc871308553eec7b047f756690a}{what}}()\ const\ noexcept\ override;}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ \(\backslash\)brief\ returns\ the\ type\ of\ the\ exception\ -\/\ name\ of\ child\ exception\ class}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ \(\backslash\)date\ 2019/09/11\ 20:18}}
+\DoxyCodeLine{00030\ \ \ \ \ virtual\ std::\textcolor{keywordtype}{string}\ \mbox{\hyperlink{classKeyException_ab841f80e919082619f30053ae78c56c2_ab841f80e919082619f30053ae78c56c2}{getType}}()\ const\ noexcept;}
+\DoxyCodeLine{00031\ \ \ \ \ inline\ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classKeyException_a72f4af19d1ab0e9cce5eb6d45fca7729_a72f4af19d1ab0e9cce5eb6d45fca7729}{getLine}}()\ const\ noexcept;}
+\DoxyCodeLine{00032\ \ \ \ \ inline\ const\ std::\textcolor{keywordtype}{string}\&\ \mbox{\hyperlink{classKeyException_acf42841e4d4ececba96628e677b4cf41_acf42841e4d4ececba96628e677b4cf41}{getFile}}()\ const\ noexcept;}
+\DoxyCodeLine{00033\ \ \ \ \ inline\ const\ std::\textcolor{keywordtype}{string}\&\ \mbox{\hyperlink{classKeyException_ad75c6511759e522f2b3bcf13b0d23f30_ad75c6511759e522f2b3bcf13b0d23f30}{getFunction}}()\ const\ noexcept;}
+\DoxyCodeLine{00034\ \};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ THROW\_KEY\_EXCEPTION(\ msg\ )\ \_\_debugbreak();\(\backslash\)}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\ \ \ \ throw\ KeyException(\ \_\_LINE\_\_,\ \_\_FILE\_\_,\ \_\_FUNCTION\_\_,\ msg\ );}}
+
+\end{DoxyCode}

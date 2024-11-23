@@ -1,0 +1,511 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classren_1_1Renderer" kind="class" language="C++" prot="public">
+    <compoundname>ren::Renderer</compoundname>
+    <derivedcompoundref refid="classren_1_1Renderer2d" prot="public" virt="non-virtual">ren::Renderer2d</derivedcompoundref>
+    <derivedcompoundref refid="classren_1_1Renderer3d" prot="public" virt="non-virtual">ren::Renderer3d</derivedcompoundref>
+    <includes refid="renderer_8h" local="no">renderer.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classren_1_1Renderer_aa06e4a5dce3c714d10c78b5034215c65_1aa06e4a5dce3c714d10c78b5034215c65" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool ren::Renderer::m_bValidatedPasses</definition>
+        <argsstring></argsstring>
+        <name>m_bValidatedPasses</name>
+        <qualifiedname>ren::Renderer::m_bValidatedPasses</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/renderer.h" line="29" column="6" bodyfile="inc/renderer.h" bodystart="29" bodyend="-1"/>
+        <referencedby refid="classren_1_1Renderer_a5a6320465c595b0b1bddd2c330678d88_1a5a6320465c595b0b1bddd2c330678d88" compoundref="renderer_8cpp" startline="144" endline="159">addPass</referencedby>
+        <referencedby refid="classren_1_1Renderer_ae20ba92f5c1d98a6bcb0a04e258991f4_1ae20ba92f5c1d98a6bcb0a04e258991f4" compoundref="renderer_8cpp" startline="50" endline="78">recreate</referencedby>
+        <referencedby refid="classren_1_1Renderer_ab6665daa173077d48680689f6c1d3ecf_1ab6665daa173077d48680689f6c1d3ecf" compoundref="renderer_8cpp" startline="123" endline="136">reset</referencedby>
+        <referencedby refid="classren_1_1Renderer_ac05409fe49000fe8f9a2eabed45b4757_1ac05409fe49000fe8f9a2eabed45b4757" compoundref="renderer_8cpp" startline="177" endline="185">validateBindersLinkage</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1Renderer_af737ba7e14287ff34496ae7c9ba2cc3e_1af737ba7e14287ff34496ae7c9ba2cc3e" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::unique_ptr&lt; <ref refid="classren_1_1IPass" kindref="compound">IPass</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::unique_ptr&lt;IPass&gt; &gt; ren::Renderer::m_passes</definition>
+        <argsstring></argsstring>
+        <name>m_passes</name>
+        <qualifiedname>ren::Renderer::m_passes</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/renderer.h" line="30" column="13" bodyfile="inc/renderer.h" bodystart="30" bodyend="-1"/>
+        <referencedby refid="classren_1_1Renderer_a5a6320465c595b0b1bddd2c330678d88_1a5a6320465c595b0b1bddd2c330678d88" compoundref="renderer_8cpp" startline="144" endline="159">addPass</referencedby>
+        <referencedby refid="classren_1_1Renderer_a9cb92496179a0e4d85037ce03ee07475_1a9cb92496179a0e4d85037ce03ee07475" compoundref="renderer_8cpp" startline="275" endline="293">getRenderQueuePass</referencedby>
+        <referencedby refid="classren_1_1Renderer_a007187fada4994fb8912be70dcc4aa1f_1a007187fada4994fb8912be70dcc4aa1f" compoundref="renderer_8cpp" startline="242" endline="259">linkGlobalBinders</referencedby>
+        <referencedby refid="classren_1_1Renderer_a9ae7a8a655f01eb7bf44e63c27448f99_1a9ae7a8a655f01eb7bf44e63c27448f99" compoundref="renderer_8cpp" startline="187" endline="240">linkPassBinders</referencedby>
+        <referencedby refid="classren_1_1Renderer_ae20ba92f5c1d98a6bcb0a04e258991f4_1ae20ba92f5c1d98a6bcb0a04e258991f4" compoundref="renderer_8cpp" startline="50" endline="78">recreate</referencedby>
+        <referencedby refid="classren_1_1Renderer_ab6665daa173077d48680689f6c1d3ecf_1ab6665daa173077d48680689f6c1d3ecf" compoundref="renderer_8cpp" startline="123" endline="136">reset</referencedby>
+        <referencedby refid="classren_1_1Renderer_ac05409fe49000fe8f9a2eabed45b4757_1ac05409fe49000fe8f9a2eabed45b4757" compoundref="renderer_8cpp" startline="177" endline="185">validateBindersLinkage</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1Renderer_a36dec28555a118fb8fda6da31b48f763_1a36dec28555a118fb8fda6da31b48f763" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::unique_ptr&lt; <ref refid="classren_1_1IBinder" kindref="compound">IBinder</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::unique_ptr&lt;IBinder&gt; &gt; ren::Renderer::m_globalBinders</definition>
+        <argsstring></argsstring>
+        <name>m_globalBinders</name>
+        <qualifiedname>ren::Renderer::m_globalBinders</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/renderer.h" line="31" column="13" bodyfile="inc/renderer.h" bodystart="31" bodyend="-1"/>
+        <referencedby refid="classren_1_1Renderer_afefad320dd9bae3f7d22b382bfd1d5bc_1afefad320dd9bae3f7d22b382bfd1d5bc" compoundref="renderer_8cpp" startline="85" endline="88">addGlobalBinder</referencedby>
+        <referencedby refid="classren_1_1Renderer_a007187fada4994fb8912be70dcc4aa1f_1a007187fada4994fb8912be70dcc4aa1f" compoundref="renderer_8cpp" startline="242" endline="259">linkGlobalBinders</referencedby>
+        <referencedby refid="classren_1_1Renderer_ae20ba92f5c1d98a6bcb0a04e258991f4_1ae20ba92f5c1d98a6bcb0a04e258991f4" compoundref="renderer_8cpp" startline="50" endline="78">recreate</referencedby>
+        <referencedby refid="classren_1_1Renderer_ac7031cf5bbcadcf0c7ce0cfe450a9711_1ac7031cf5bbcadcf0c7ce0cfe450a9711" compoundref="renderer_8cpp" startline="161" endline="175">setupGlobalBinderTarget</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1Renderer_ac111bc3886db540e5304924719e06fea_1ac111bc3886db540e5304924719e06fea" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::unique_ptr&lt; <ref refid="classren_1_1ILinker" kindref="compound">ILinker</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::unique_ptr&lt;ILinker&gt; &gt; ren::Renderer::m_globalLinkers</definition>
+        <argsstring></argsstring>
+        <name>m_globalLinkers</name>
+        <qualifiedname>ren::Renderer::m_globalLinkers</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/renderer.h" line="32" column="13" bodyfile="inc/renderer.h" bodystart="32" bodyend="-1"/>
+        <referencedby refid="classren_1_1Renderer_ac15c40de52d25e712c8f95b0b758114e_1ac15c40de52d25e712c8f95b0b758114e" compoundref="renderer_8cpp" startline="80" endline="83">addGlobalLinker</referencedby>
+        <referencedby refid="classren_1_1Renderer_a9ae7a8a655f01eb7bf44e63c27448f99_1a9ae7a8a655f01eb7bf44e63c27448f99" compoundref="renderer_8cpp" startline="187" endline="240">linkPassBinders</referencedby>
+        <referencedby refid="classren_1_1Renderer_ae20ba92f5c1d98a6bcb0a04e258991f4_1ae20ba92f5c1d98a6bcb0a04e258991f4" compoundref="renderer_8cpp" startline="50" endline="78">recreate</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classren_1_1Renderer_af0aa20f264507605ced6ae4385799d8e_1af0aa20f264507605ced6ae4385799d8e" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool ren::Renderer::m_bUsesOffscreen</definition>
+        <argsstring></argsstring>
+        <name>m_bUsesOffscreen</name>
+        <qualifiedname>ren::Renderer::m_bUsesOffscreen</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/renderer.h" line="34" column="6" bodyfile="inc/renderer.h" bodystart="34" bodyend="-1"/>
+        <referencedby refid="classren_1_1Renderer_a810fc6594a4b225e51e54aed0b28dcf6_1a810fc6594a4b225e51e54aed0b28dcf6" compoundref="renderer_8cpp" startline="295" endline="298">isUsingOffscreenRendering</referencedby>
+        <referencedby refid="classren_1_1Renderer3d_afd4dabebdfcf0485228c750bbb227372_1afd4dabebdfcf0485228c750bbb227372" compoundref="renderer_8cpp" startline="315" endline="424">ren::Renderer3d::recreate</referencedby>
+        <referencedby refid="classren_1_1Renderer_ae20ba92f5c1d98a6bcb0a04e258991f4_1ae20ba92f5c1d98a6bcb0a04e258991f4" compoundref="renderer_8cpp" startline="50" endline="78">recreate</referencedby>
+        <referencedby refid="classren_1_1Renderer_ab6665daa173077d48680689f6c1d3ecf_1ab6665daa173077d48680689f6c1d3ecf" compoundref="renderer_8cpp" startline="123" endline="136">reset</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1Renderer_abbbe922d48fe9c2f02cb2cf454bb3c96_1abbbe922d48fe9c2f02cb2cf454bb3c96" prot="protected" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classren_1_1IPass" kindref="compound">IPass</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;IPass&gt; ren::Renderer::m_pFinalPostProcessPass</definition>
+        <argsstring></argsstring>
+        <name>m_pFinalPostProcessPass</name>
+        <qualifiedname>ren::Renderer::m_pFinalPostProcessPass</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/renderer.h" line="35" column="17" bodyfile="inc/renderer.h" bodystart="35" bodyend="-1"/>
+        <referencedby refid="classren_1_1Renderer3d_afd4dabebdfcf0485228c750bbb227372_1afd4dabebdfcf0485228c750bbb227372" compoundref="renderer_8cpp" startline="315" endline="424">ren::Renderer3d::recreate</referencedby>
+        <referencedby refid="classren_1_1Renderer_ae20ba92f5c1d98a6bcb0a04e258991f4_1ae20ba92f5c1d98a6bcb0a04e258991f4" compoundref="renderer_8cpp" startline="50" endline="78">recreate</referencedby>
+        <referencedby refid="classren_1_1Renderer_ab6665daa173077d48680689f6c1d3ecf_1ab6665daa173077d48680689f6c1d3ecf" compoundref="renderer_8cpp" startline="123" endline="136">reset</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1Renderer_a7b79ebe1dd8b11bb7f762152f8f57720_1a7b79ebe1dd8b11bb7f762152f8f57720" prot="protected" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classIRenderTargetView" kindref="compound">IRenderTargetView</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;IRenderTargetView&gt; ren::Renderer::m_pRtv</definition>
+        <argsstring></argsstring>
+        <name>m_pRtv</name>
+        <qualifiedname>ren::Renderer::m_pRtv</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/renderer.h" line="36" column="17" bodyfile="inc/renderer.h" bodystart="36" bodyend="-1"/>
+        <referencedby refid="classren_1_1Renderer_ae20ba92f5c1d98a6bcb0a04e258991f4_1ae20ba92f5c1d98a6bcb0a04e258991f4" compoundref="renderer_8cpp" startline="50" endline="78">recreate</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1Renderer_a97b542b21987b7df6560c3327f89e2aa_1a97b542b21987b7df6560c3327f89e2aa" prot="protected" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classIDepthStencilView" kindref="compound">IDepthStencilView</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;IDepthStencilView&gt; ren::Renderer::m_pDsv</definition>
+        <argsstring></argsstring>
+        <name>m_pDsv</name>
+        <qualifiedname>ren::Renderer::m_pDsv</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/renderer.h" line="37" column="17" bodyfile="inc/renderer.h" bodystart="37" bodyend="-1"/>
+        <referencedby refid="classren_1_1Renderer_ae20ba92f5c1d98a6bcb0a04e258991f4_1ae20ba92f5c1d98a6bcb0a04e258991f4" compoundref="renderer_8cpp" startline="50" endline="78">recreate</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classren_1_1Renderer_a0b75fa1102c3a19fa22f0ee847f85e49_1a0b75fa1102c3a19fa22f0ee847f85e49" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ren::Renderer::Renderer</definition>
+        <argsstring>(Graphics &amp;gfx, const bool drawToOffscreen)</argsstring>
+        <name>Renderer</name>
+        <qualifiedname>ren::Renderer::Renderer</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>drawToOffscreen</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/renderer.h" line="39" column="1" bodyfile="src/renderer.cpp" bodystart="37" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1Renderer_ac73a62446f1263fb388eb41f0b739ddf_1ac73a62446f1263fb388eb41f0b739ddf" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type></type>
+        <definition>ren::Renderer::~Renderer</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>~Renderer</name>
+        <qualifiedname>ren::Renderer::~Renderer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/renderer.h" line="40" column="9" bodyfile="src/renderer.cpp" bodystart="45" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1Renderer_a2d83d7207a80302f16ae4e8e082a572a_1a2d83d7207a80302f16ae4e8e082a572a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ren::Renderer::run</definition>
+        <argsstring>(Graphics &amp;gfx) cond_noex</argsstring>
+        <name>run</name>
+        <qualifiedname>ren::Renderer::run</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/renderer.h" line="42" column="6" bodyfile="src/renderer.cpp" bodystart="90" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1Renderer_ae20ba92f5c1d98a6bcb0a04e258991f4_1ae20ba92f5c1d98a6bcb0a04e258991f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ren::Renderer::recreate</definition>
+        <argsstring>(Graphics &amp;gfx)</argsstring>
+        <name>recreate</name>
+        <qualifiedname>ren::Renderer::recreate</qualifiedname>
+        <reimplementedby refid="classren_1_1Renderer2d_a910d5e8a5d26cdc2c4eaf7a30dd304af_1a910d5e8a5d26cdc2c4eaf7a30dd304af">recreate</reimplementedby>
+        <reimplementedby refid="classren_1_1Renderer3d_afd4dabebdfcf0485228c750bbb227372_1afd4dabebdfcf0485228c750bbb227372">recreate</reimplementedby>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/renderer.h" line="43" column="14" bodyfile="src/renderer.cpp" bodystart="50" bodyend="78"/>
+        <referencedby refid="classren_1_1Renderer_a0b75fa1102c3a19fa22f0ee847f85e49_1a0b75fa1102c3a19fa22f0ee847f85e49" compoundref="renderer_8cpp" startline="37" endline="43">Renderer</referencedby>
+        <referencedby refid="classren_1_1Renderer2d_a910d5e8a5d26cdc2c4eaf7a30dd304af_1a910d5e8a5d26cdc2c4eaf7a30dd304af" compoundref="renderer_8cpp" startline="616" endline="629">ren::Renderer2d::recreate</referencedby>
+        <referencedby refid="classren_1_1Renderer3d_afd4dabebdfcf0485228c750bbb227372_1afd4dabebdfcf0485228c750bbb227372" compoundref="renderer_8cpp" startline="315" endline="424">ren::Renderer3d::recreate</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1Renderer_ab6665daa173077d48680689f6c1d3ecf_1ab6665daa173077d48680689f6c1d3ecf" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>void</type>
+        <definition>void ren::Renderer::reset</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>reset</name>
+        <qualifiedname>ren::Renderer::reset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/renderer.h" line="44" column="14" bodyfile="src/renderer.cpp" bodystart="123" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1Renderer_a9cb92496179a0e4d85037ce03ee07475_1a9cb92496179a0e4d85037ce03ee07475" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classren_1_1RenderQueuePass" kindref="compound">RenderQueuePass</ref> &amp;</type>
+        <definition>RenderQueuePass &amp; ren::Renderer::getRenderQueuePass</definition>
+        <argsstring>(const std::string &amp;name)</argsstring>
+        <name>getRenderQueuePass</name>
+        <qualifiedname>ren::Renderer::getRenderQueuePass</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/renderer.h" line="45" column="17" bodyfile="src/renderer.cpp" bodystart="275" bodyend="293"/>
+        <referencedby refid="classMaterial_af5eaf5e510637aa5358f90221237096c_1af5eaf5e510637aa5358f90221237096c" compoundref="material_8cpp" startline="122" endline="125">Material::connectPass</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1Renderer_a810fc6594a4b225e51e54aed0b28dcf6_1a810fc6594a4b225e51e54aed0b28dcf6" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ren::Renderer::isUsingOffscreenRendering</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>isUsingOffscreenRendering</name>
+        <qualifiedname>ren::Renderer::isUsingOffscreenRendering</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/renderer.h" line="46" column="6" bodyfile="src/renderer.cpp" bodystart="295" bodyend="298"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classren_1_1Renderer_ac15c40de52d25e712c8f95b0b758114e_1ac15c40de52d25e712c8f95b0b758114e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ren::Renderer::addGlobalLinker</definition>
+        <argsstring>(std::unique_ptr&lt; ILinker &gt; pLinker)</argsstring>
+        <name>addGlobalLinker</name>
+        <qualifiedname>ren::Renderer::addGlobalLinker</qualifiedname>
+        <param>
+          <type>std::unique_ptr&lt; <ref refid="classren_1_1ILinker" kindref="compound">ILinker</ref> &gt;</type>
+          <declname>pLinker</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/renderer.h" line="48" column="6" bodyfile="src/renderer.cpp" bodystart="80" bodyend="83"/>
+        <referencedby refid="classren_1_1Renderer3d_afd4dabebdfcf0485228c750bbb227372_1afd4dabebdfcf0485228c750bbb227372" compoundref="renderer_8cpp" startline="315" endline="424">ren::Renderer3d::recreate</referencedby>
+        <referencedby refid="classren_1_1Renderer_ae20ba92f5c1d98a6bcb0a04e258991f4_1ae20ba92f5c1d98a6bcb0a04e258991f4" compoundref="renderer_8cpp" startline="50" endline="78">recreate</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1Renderer_afefad320dd9bae3f7d22b382bfd1d5bc_1afefad320dd9bae3f7d22b382bfd1d5bc" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ren::Renderer::addGlobalBinder</definition>
+        <argsstring>(std::unique_ptr&lt; IBinder &gt; pBinder)</argsstring>
+        <name>addGlobalBinder</name>
+        <qualifiedname>ren::Renderer::addGlobalBinder</qualifiedname>
+        <param>
+          <type>std::unique_ptr&lt; <ref refid="classren_1_1IBinder" kindref="compound">IBinder</ref> &gt;</type>
+          <declname>pBinder</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/renderer.h" line="49" column="6" bodyfile="src/renderer.cpp" bodystart="85" bodyend="88"/>
+        <referencedby refid="classren_1_1Renderer_ae20ba92f5c1d98a6bcb0a04e258991f4_1ae20ba92f5c1d98a6bcb0a04e258991f4" compoundref="renderer_8cpp" startline="50" endline="78">recreate</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1Renderer_a5a6320465c595b0b1bddd2c330678d88_1a5a6320465c595b0b1bddd2c330678d88" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ren::Renderer::addPass</definition>
+        <argsstring>(std::unique_ptr&lt; IPass &gt; pPass)</argsstring>
+        <name>addPass</name>
+        <qualifiedname>ren::Renderer::addPass</qualifiedname>
+        <param>
+          <type>std::unique_ptr&lt; <ref refid="classren_1_1IPass" kindref="compound">IPass</ref> &gt;</type>
+          <declname>pPass</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/renderer.h" line="50" column="6" bodyfile="src/renderer.cpp" bodystart="144" bodyend="159"/>
+        <referencedby refid="classren_1_1Renderer2d_a910d5e8a5d26cdc2c4eaf7a30dd304af_1a910d5e8a5d26cdc2c4eaf7a30dd304af" compoundref="renderer_8cpp" startline="616" endline="629">ren::Renderer2d::recreate</referencedby>
+        <referencedby refid="classren_1_1Renderer3d_afd4dabebdfcf0485228c750bbb227372_1afd4dabebdfcf0485228c750bbb227372" compoundref="renderer_8cpp" startline="315" endline="424">ren::Renderer3d::recreate</referencedby>
+        <referencedby refid="classren_1_1Renderer_ae20ba92f5c1d98a6bcb0a04e258991f4_1ae20ba92f5c1d98a6bcb0a04e258991f4" compoundref="renderer_8cpp" startline="50" endline="78">recreate</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1Renderer_ac7031cf5bbcadcf0c7ce0cfe450a9711_1ac7031cf5bbcadcf0c7ce0cfe450a9711" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ren::Renderer::setupGlobalBinderTarget</definition>
+        <argsstring>(const std::string &amp;globalBinderName, const std::string &amp;passName, const std::string &amp;linkerName)</argsstring>
+        <name>setupGlobalBinderTarget</name>
+        <qualifiedname>ren::Renderer::setupGlobalBinderTarget</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>globalBinderName</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>passName</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>linkerName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/renderer.h" line="51" column="6" bodyfile="src/renderer.cpp" bodystart="161" bodyend="175"/>
+        <referencedby refid="classren_1_1Renderer2d_a910d5e8a5d26cdc2c4eaf7a30dd304af_1a910d5e8a5d26cdc2c4eaf7a30dd304af" compoundref="renderer_8cpp" startline="616" endline="629">ren::Renderer2d::recreate</referencedby>
+        <referencedby refid="classren_1_1Renderer3d_afd4dabebdfcf0485228c750bbb227372_1afd4dabebdfcf0485228c750bbb227372" compoundref="renderer_8cpp" startline="315" endline="424">ren::Renderer3d::recreate</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1Renderer_a007187fada4994fb8912be70dcc4aa1f_1a007187fada4994fb8912be70dcc4aa1f" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ren::Renderer::linkGlobalBinders</definition>
+        <argsstring>()</argsstring>
+        <name>linkGlobalBinders</name>
+        <qualifiedname>ren::Renderer::linkGlobalBinders</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/renderer.h" line="52" column="6" bodyfile="src/renderer.cpp" bodystart="242" bodyend="259"/>
+        <referencedby refid="classren_1_1Renderer2d_a910d5e8a5d26cdc2c4eaf7a30dd304af_1a910d5e8a5d26cdc2c4eaf7a30dd304af" compoundref="renderer_8cpp" startline="616" endline="629">ren::Renderer2d::recreate</referencedby>
+        <referencedby refid="classren_1_1Renderer3d_afd4dabebdfcf0485228c750bbb227372_1afd4dabebdfcf0485228c750bbb227372" compoundref="renderer_8cpp" startline="315" endline="424">ren::Renderer3d::recreate</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1Renderer_a12d7d108754fc228d0c157b350f965d7_1a12d7d108754fc228d0c157b350f965d7" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classren_1_1IPass" kindref="compound">IPass</ref> &amp;</type>
+        <definition>IPass &amp; ren::Renderer::getPass</definition>
+        <argsstring>(const std::string &amp;name)</argsstring>
+        <name>getPass</name>
+        <qualifiedname>ren::Renderer::getPass</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/renderer.h" line="53" column="7" bodyfile="src/renderer.cpp" bodystart="261" bodyend="273"/>
+        <referencedby refid="classren_1_1Renderer3d_abb77f1f6e2ab72d9c834f30443b4ee9b_1abb77f1f6e2ab72d9c834f30443b4ee9b" compoundref="renderer_8cpp" startline="561" endline="565">ren::Renderer3d::dumpShadowCubeMap</referencedby>
+        <referencedby refid="classren_1_1Renderer3d_a90523c608900e18480728a104a04a88d_1a90523c608900e18480728a104a04a88d" compoundref="renderer_8cpp" startline="555" endline="559">ren::Renderer3d::dumpShadowMap</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classren_1_1Renderer_ac05409fe49000fe8f9a2eabed45b4757_1ac05409fe49000fe8f9a2eabed45b4757" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ren::Renderer::validateBindersLinkage</definition>
+        <argsstring>()</argsstring>
+        <name>validateBindersLinkage</name>
+        <qualifiedname>ren::Renderer::validateBindersLinkage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/renderer.h" line="55" column="6" bodyfile="src/renderer.cpp" bodystart="177" bodyend="185"/>
+        <referencedby refid="classren_1_1Renderer_a007187fada4994fb8912be70dcc4aa1f_1a007187fada4994fb8912be70dcc4aa1f" compoundref="renderer_8cpp" startline="242" endline="259">linkGlobalBinders</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1Renderer_a9ae7a8a655f01eb7bf44e63c27448f99_1a9ae7a8a655f01eb7bf44e63c27448f99" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ren::Renderer::linkPassBinders</definition>
+        <argsstring>(IPass &amp;pass)</argsstring>
+        <name>linkPassBinders</name>
+        <qualifiedname>ren::Renderer::linkPassBinders</qualifiedname>
+        <param>
+          <type><ref refid="classren_1_1IPass" kindref="compound">IPass</ref> &amp;</type>
+          <declname>pass</declname>
+        </param>
+        <briefdescription>
+<para>links pass&apos;s binders to their linkers </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/renderer.h" line="57" column="6" bodyfile="src/renderer.cpp" bodystart="187" bodyend="240"/>
+        <referencedby refid="classren_1_1Renderer_a5a6320465c595b0b1bddd2c330678d88_1a5a6320465c595b0b1bddd2c330678d88" compoundref="renderer_8cpp" startline="144" endline="159">addPass</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1Renderer_adcff6686a1d6685acee17ebc9b9677d3_1adcff6686a1d6685acee17ebc9b9677d3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ren::Renderer::offscreenToBackBufferSwap</definition>
+        <argsstring>(Graphics &amp;gfx)</argsstring>
+        <name>offscreenToBackBufferSwap</name>
+        <qualifiedname>ren::Renderer::offscreenToBackBufferSwap</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+<para>If there&apos;s a final post process pass (Pass that renders directly to the Back Buffer) then swap the render targets, ie. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>bind 1. Back Buffer RTV as output and 2. Offscreen RTV as input </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/renderer.h" line="60" column="6" bodyfile="src/renderer.cpp" bodystart="138" bodyend="142"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>ren::Renderer</label>
+        <link refid="classren_1_1Renderer"/>
+      </node>
+      <node id="2">
+        <label>ren::Renderer2d</label>
+        <link refid="classren_1_1Renderer2d"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>ren::Renderer3d</label>
+        <link refid="classren_1_1Renderer3d"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="inc/renderer.h" line="27" column="1" bodyfile="inc/renderer.h" bodystart="28" bodyend="61"/>
+    <listofallmembers>
+      <member refid="classren_1_1Renderer_afefad320dd9bae3f7d22b382bfd1d5bc_1afefad320dd9bae3f7d22b382bfd1d5bc" prot="protected" virt="non-virtual"><scope>ren::Renderer</scope><name>addGlobalBinder</name></member>
+      <member refid="classren_1_1Renderer_ac15c40de52d25e712c8f95b0b758114e_1ac15c40de52d25e712c8f95b0b758114e" prot="protected" virt="non-virtual"><scope>ren::Renderer</scope><name>addGlobalLinker</name></member>
+      <member refid="classren_1_1Renderer_a5a6320465c595b0b1bddd2c330678d88_1a5a6320465c595b0b1bddd2c330678d88" prot="protected" virt="non-virtual"><scope>ren::Renderer</scope><name>addPass</name></member>
+      <member refid="classren_1_1Renderer_a12d7d108754fc228d0c157b350f965d7_1a12d7d108754fc228d0c157b350f965d7" prot="protected" virt="non-virtual"><scope>ren::Renderer</scope><name>getPass</name></member>
+      <member refid="classren_1_1Renderer_a9cb92496179a0e4d85037ce03ee07475_1a9cb92496179a0e4d85037ce03ee07475" prot="public" virt="non-virtual"><scope>ren::Renderer</scope><name>getRenderQueuePass</name></member>
+      <member refid="classren_1_1Renderer_a810fc6594a4b225e51e54aed0b28dcf6_1a810fc6594a4b225e51e54aed0b28dcf6" prot="public" virt="non-virtual"><scope>ren::Renderer</scope><name>isUsingOffscreenRendering</name></member>
+      <member refid="classren_1_1Renderer_a007187fada4994fb8912be70dcc4aa1f_1a007187fada4994fb8912be70dcc4aa1f" prot="protected" virt="non-virtual"><scope>ren::Renderer</scope><name>linkGlobalBinders</name></member>
+      <member refid="classren_1_1Renderer_a9ae7a8a655f01eb7bf44e63c27448f99_1a9ae7a8a655f01eb7bf44e63c27448f99" prot="private" virt="non-virtual"><scope>ren::Renderer</scope><name>linkPassBinders</name></member>
+      <member refid="classren_1_1Renderer_af0aa20f264507605ced6ae4385799d8e_1af0aa20f264507605ced6ae4385799d8e" prot="protected" virt="non-virtual"><scope>ren::Renderer</scope><name>m_bUsesOffscreen</name></member>
+      <member refid="classren_1_1Renderer_aa06e4a5dce3c714d10c78b5034215c65_1aa06e4a5dce3c714d10c78b5034215c65" prot="private" virt="non-virtual"><scope>ren::Renderer</scope><name>m_bValidatedPasses</name></member>
+      <member refid="classren_1_1Renderer_a36dec28555a118fb8fda6da31b48f763_1a36dec28555a118fb8fda6da31b48f763" prot="private" virt="non-virtual"><scope>ren::Renderer</scope><name>m_globalBinders</name></member>
+      <member refid="classren_1_1Renderer_ac111bc3886db540e5304924719e06fea_1ac111bc3886db540e5304924719e06fea" prot="private" virt="non-virtual"><scope>ren::Renderer</scope><name>m_globalLinkers</name></member>
+      <member refid="classren_1_1Renderer_af737ba7e14287ff34496ae7c9ba2cc3e_1af737ba7e14287ff34496ae7c9ba2cc3e" prot="private" virt="non-virtual"><scope>ren::Renderer</scope><name>m_passes</name></member>
+      <member refid="classren_1_1Renderer_a97b542b21987b7df6560c3327f89e2aa_1a97b542b21987b7df6560c3327f89e2aa" prot="protected" virt="non-virtual"><scope>ren::Renderer</scope><name>m_pDsv</name></member>
+      <member refid="classren_1_1Renderer_abbbe922d48fe9c2f02cb2cf454bb3c96_1abbbe922d48fe9c2f02cb2cf454bb3c96" prot="protected" virt="non-virtual"><scope>ren::Renderer</scope><name>m_pFinalPostProcessPass</name></member>
+      <member refid="classren_1_1Renderer_a7b79ebe1dd8b11bb7f762152f8f57720_1a7b79ebe1dd8b11bb7f762152f8f57720" prot="protected" virt="non-virtual"><scope>ren::Renderer</scope><name>m_pRtv</name></member>
+      <member refid="classren_1_1Renderer_adcff6686a1d6685acee17ebc9b9677d3_1adcff6686a1d6685acee17ebc9b9677d3" prot="private" virt="non-virtual"><scope>ren::Renderer</scope><name>offscreenToBackBufferSwap</name></member>
+      <member refid="classren_1_1Renderer_ae20ba92f5c1d98a6bcb0a04e258991f4_1ae20ba92f5c1d98a6bcb0a04e258991f4" prot="public" virt="virtual"><scope>ren::Renderer</scope><name>recreate</name></member>
+      <member refid="classren_1_1Renderer_a0b75fa1102c3a19fa22f0ee847f85e49_1a0b75fa1102c3a19fa22f0ee847f85e49" prot="public" virt="non-virtual"><scope>ren::Renderer</scope><name>Renderer</name></member>
+      <member refid="classren_1_1Renderer_ab6665daa173077d48680689f6c1d3ecf_1ab6665daa173077d48680689f6c1d3ecf" prot="public" virt="virtual"><scope>ren::Renderer</scope><name>reset</name></member>
+      <member refid="classren_1_1Renderer_a2d83d7207a80302f16ae4e8e082a572a_1a2d83d7207a80302f16ae4e8e082a572a" prot="public" virt="non-virtual"><scope>ren::Renderer</scope><name>run</name></member>
+      <member refid="classren_1_1Renderer_ac7031cf5bbcadcf0c7ce0cfe450a9711_1ac7031cf5bbcadcf0c7ce0cfe450a9711" prot="protected" virt="non-virtual"><scope>ren::Renderer</scope><name>setupGlobalBinderTarget</name></member>
+      <member refid="classren_1_1Renderer_ac05409fe49000fe8f9a2eabed45b4757_1ac05409fe49000fe8f9a2eabed45b4757" prot="private" virt="non-virtual"><scope>ren::Renderer</scope><name>validateBindersLinkage</name></member>
+      <member refid="classren_1_1Renderer_ac73a62446f1263fb388eb41f0b739ddf_1ac73a62446f1263fb388eb41f0b739ddf" prot="public" virt="virtual"><scope>ren::Renderer</scope><name>~Renderer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

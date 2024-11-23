@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="structMesh_1_1ColorPSCB" kind="struct" language="C++" prot="protected">
+    <compoundname>Mesh::ColorPSCB</compoundname>
+    <includes refid="mesh_8h" local="no">mesh.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structMesh_1_1ColorPSCB_a4c204c7a4d996b78ada77fd3ef55434c_1a4c204c7a4d996b78ada77fd3ef55434c" prot="public" static="no" mutable="no">
+        <type>DirectX::XMFLOAT4</type>
+        <definition>DirectX::XMFLOAT4 Mesh::ColorPSCB::materialColor</definition>
+        <argsstring></argsstring>
+        <name>materialColor</name>
+        <qualifiedname>Mesh::ColorPSCB::materialColor</qualifiedname>
+        <initializer>= {1.0f, 1.0f, 1.0f, 1.0f}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="46" column="19" bodyfile="inc/mesh.h" bodystart="46" bodyend="46"/>
+        <referencedby refid="classCameraFrustum_a73a48e8fbde4b02b50e32746b50e03b8_1a73a48e8fbde4b02b50e32746b50e03b8" compoundref="camera__frustum_8cpp" startline="17" endline="82">CameraFrustum::CameraFrustum</referencedby>
+        <referencedby refid="classCameraWidget_a0c41231fcab87a5a4aeb57d87aecb55e_1a0c41231fcab87a5a4aeb57d87aecb55e" compoundref="camera__widget_8cpp" startline="17" endline="63">CameraWidget::CameraWidget</referencedby>
+        <referencedby refid="classCube_af0fe61f07cbc70de782950bac056988b_1af0fe61f07cbc70de782950bac056988b" compoundref="cube_8cpp" startline="23" endline="194">Cube::Cube</referencedby>
+        <referencedby refid="classLine_ab4004be2273185c41037d4dd14e02990_1ab4004be2273185c41037d4dd14e02990" compoundref="line_8cpp" startline="22" endline="105">Line::Line</referencedby>
+        <referencedby refid="classPlane_a70e7a5971d34e1130740e843a6a18896_1a70e7a5971d34e1130740e843a6a18896" compoundref="plane_8cpp" startline="23" endline="193">Plane::Plane</referencedby>
+        <referencedby refid="classSphere_a80bdf896453fbb509c1e6170e0022c29_1a80bdf896453fbb509c1e6170e0022c29" compoundref="sphere_8cpp" startline="18" endline="72">Sphere::Sphere</referencedby>
+        <referencedby refid="classTerrain_af5a4ec6ff724b557052dd12be7f0de0c_1af5a4ec6ff724b557052dd12be7f0de0c" compoundref="terrain_8cpp" startline="24" endline="158">Terrain::Terrain</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mesh.h" line="44" column="1" bodyfile="inc/mesh.h" bodystart="45" bodyend="47"/>
+    <listofallmembers>
+      <member refid="structMesh_1_1ColorPSCB_a4c204c7a4d996b78ada77fd3ef55434c_1a4c204c7a4d996b78ada77fd3ef55434c" prot="public" virt="non-virtual"><scope>Mesh::ColorPSCB</scope><name>materialColor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

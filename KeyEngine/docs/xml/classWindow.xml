@@ -1,0 +1,1985 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classWindow" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>Window</compoundname>
+    <basecompoundref refid="classNonCopyable" prot="public" virt="non-virtual">NonCopyable</basecompoundref>
+    <includes refid="window_8h" local="no">window.h</includes>
+    <innerclass refid="classWindow_1_1WindowClass" prot="private">Window::WindowClass</innerclass>
+    <innerclass refid="classWindow_1_1WindowException" prot="private">Window::WindowException</innerclass>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classWindow_adad72e93053ae81a048b11b80a886ca4_1adad72e93053ae81a048b11b80a886ca4" prot="private" static="yes" mutable="no">
+        <type><ref refid="classKeyboard" kindref="compound">Keyboard</ref></type>
+        <definition>Keyboard Window::s_keyboard</definition>
+        <argsstring></argsstring>
+        <name>s_keyboard</name>
+        <qualifiedname>Window::s_keyboard</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="59" column="24" bodyfile="inc/window.h" bodystart="59" bodyend="-1"/>
+        <referencedby refid="classWindow_af51b384330835f7ee8d0c3cb1254c4f8_1af51b384330835f7ee8d0c3cb1254c4f8" compoundref="window_8cpp" startline="552" endline="555">getKeyboard</referencedby>
+        <referencedby refid="classWindow_afcc33d5d00fe7a117049c347a7c800d4_1afcc33d5d00fe7a117049c347a7c800d4" compoundref="window_8cpp" startline="794" endline="994">windowProc_impl2d</referencedby>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classWindow_a346ad68a7a25b4faa0d7b99bf6a20a13_1a346ad68a7a25b4faa0d7b99bf6a20a13" prot="private" static="yes" mutable="no">
+        <type><ref refid="classMouse" kindref="compound">Mouse</ref></type>
+        <definition>Mouse Window::s_mouse</definition>
+        <argsstring></argsstring>
+        <name>s_mouse</name>
+        <qualifiedname>Window::s_mouse</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="60" column="21" bodyfile="inc/window.h" bodystart="60" bodyend="-1"/>
+        <referencedby refid="classWindow_a89e829c66c387dfca31d10b9806da751_1a89e829c66c387dfca31d10b9806da751" compoundref="window_8cpp" startline="557" endline="560">getMouse</referencedby>
+        <referencedby refid="classWindow_afcc33d5d00fe7a117049c347a7c800d4_1afcc33d5d00fe7a117049c347a7c800d4" compoundref="window_8cpp" startline="794" endline="994">windowProc_impl2d</referencedby>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classWindow_a34b7a782124f9a212b5e42a75d90ce35_1a34b7a782124f9a212b5e42a75d90ce35" prot="private" static="yes" mutable="no">
+        <type>std::vector&lt; BYTE &gt;</type>
+        <definition>std::vector&lt;BYTE&gt; Window::s_rawInputBuffer</definition>
+        <argsstring></argsstring>
+        <name>s_rawInputBuffer</name>
+        <qualifiedname>Window::s_rawInputBuffer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="61" column="27" bodyfile="inc/window.h" bodystart="61" bodyend="-1"/>
+        <referencedby refid="classWindow_afcc33d5d00fe7a117049c347a7c800d4_1afcc33d5d00fe7a117049c347a7c800d4" compoundref="window_8cpp" startline="794" endline="994">windowProc_impl2d</referencedby>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classWindow_adb2d358327f22c4df6f01ea4e92db80b_1adb2d358327f22c4df6f01ea4e92db80b" prot="private" static="yes" mutable="no">
+        <type>HACCEL</type>
+        <definition>HACCEL Window::s_hAcceleratorTable</definition>
+        <argsstring></argsstring>
+        <name>s_hAcceleratorTable</name>
+        <qualifiedname>Window::s_hAcceleratorTable</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="62" column="22" bodyfile="inc/window.h" bodystart="62" bodyend="-1"/>
+        <referencedby refid="classWindow_a69f83cc5dc2d4f9807e4d11d2b2623e1_1a69f83cc5dc2d4f9807e4d11d2b2623e1" compoundref="window_8cpp" startline="118" endline="270">Window</referencedby>
+        <referencedby refid="classWindow_a1b5d1120e6ad1f4e078e2942dffd0041_1a1b5d1120e6ad1f4e078e2942dffd0041" compoundref="window_8cpp" startline="507" endline="535">messageLoop</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classWindow_a9cc5ee14371f126378a31c305189611a_1a9cc5ee14371f126378a31c305189611a" prot="private" static="yes" mutable="no">
+        <type><ref refid="windows__hidden__defs_8h_adea6dcaa9f8bf0e79413c0b1a1f501e2_1adea6dcaa9f8bf0e79413c0b1a1f501e2" kindref="member">PLABELBOX</ref></type>
+        <definition>PLABELBOX Window::s_pBoxLocalClip</definition>
+        <argsstring></argsstring>
+        <name>s_pBoxLocalClip</name>
+        <qualifiedname>Window::s_pBoxLocalClip</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="63" column="25" bodyfile="inc/window.h" bodystart="63" bodyend="-1"/>
+        <referencedby refid="classWindow_ac3feef02bfeadc708b8b6e9b093b4368_1ac3feef02bfeadc708b8b6e9b093b4368" compoundref="window_8cpp" startline="1917" endline="2030">editCopy</referencedby>
+        <referencedby refid="classWindow_a2ac13cf3243000d5b30ff1a29547e407_1a2ac13cf3243000d5b30ff1a29547e407" compoundref="window_8cpp" startline="2093" endline="2143">renderClipboardFormat</referencedby>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classWindow_a489a152d80bb5ee013d485e0c92e6064_1a489a152d80bb5ee013d485e0c92e6064" prot="private" static="yes" mutable="no">
+        <type>UINT_PTR</type>
+        <definition>UINT_PTR Window::s_timerEvent</definition>
+        <argsstring></argsstring>
+        <name>s_timerEvent</name>
+        <qualifiedname>Window::s_timerEvent</qualifiedname>
+        <initializer>= 0ui64</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="64" column="24" bodyfile="inc/window.h" bodystart="64" bodyend="-1"/>
+        <referencedby refid="classWindow_a1b5d1120e6ad1f4e078e2942dffd0041_1a1b5d1120e6ad1f4e078e2942dffd0041" compoundref="window_8cpp" startline="507" endline="535">messageLoop</referencedby>
+        <referencedby refid="classWindow_acf8285de3092f3452349ee4591627b11_1acf8285de3092f3452349ee4591627b11" compoundref="window_8cpp" startline="1666" endline="1685">splashWindowTimerProc</referencedby>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classWindow_ae3edc49affe0c51784741be3fb19ada9_1ae3edc49affe0c51784741be3fb19ada9" prot="private" static="no" mutable="no">
+        <type><ref refid="classWindow_1_1WindowClass" kindref="compound">WindowClass</ref></type>
+        <definition>WindowClass Window::m_windowClass</definition>
+        <argsstring></argsstring>
+        <name>m_windowClass</name>
+        <qualifiedname>Window::m_windowClass</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="66" column="13" bodyfile="inc/window.h" bodystart="66" bodyend="-1"/>
+        <referencedby refid="classWindow_a245d821e6016fa1f6970ccbbedd635f6_1a245d821e6016fa1f6970ccbbedd635f6" compoundref="window_8cpp" startline="298" endline="330">~Window</referencedby>
+        <referencedby refid="classWindow_a752e47d52453c84ebf8c3f42a6343e66_1a752e47d52453c84ebf8c3f42a6343e66" compoundref="window_8cpp" startline="1846" endline="1849">getWindowClass</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classWindow_a588f1844e2f5098b7a75f8703efde18e_1a588f1844e2f5098b7a75f8703efde18e" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Window::m_bCursorEnabled</definition>
+        <argsstring></argsstring>
+        <name>m_bCursorEnabled</name>
+        <qualifiedname>Window::m_bCursorEnabled</qualifiedname>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="67" column="6" bodyfile="inc/window.h" bodystart="67" bodyend="-1"/>
+        <referencedby refid="classWindow_a0a62a86c1134a2579afff3bfc2487d0b_1a0a62a86c1134a2579afff3bfc2487d0b" compoundref="window_8cpp" startline="388" endline="397">disableCursor</referencedby>
+        <referencedby refid="classWindow_a03a5e37c7d4e07b4e77c08776f82e476_1a03a5e37c7d4e07b4e77c08776f82e476" compoundref="window_8cpp" startline="377" endline="386">enableCursor</referencedby>
+        <referencedby refid="classWindow_ae75c970afd77b9812f1fa3fc96549844_1ae75c970afd77b9812f1fa3fc96549844" compoundref="window_8cpp" startline="399" endline="402">isCursorEnabled</referencedby>
+        <referencedby refid="classWindow_afcc33d5d00fe7a117049c347a7c800d4_1afcc33d5d00fe7a117049c347a7c800d4" compoundref="window_8cpp" startline="794" endline="994">windowProc_impl2d</referencedby>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classWindow_ae2e5678a2d1737dd39ff66cbb7565e15_1ae2e5678a2d1737dd39ff66cbb7565e15" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Window::m_name</definition>
+        <argsstring></argsstring>
+        <name>m_name</name>
+        <qualifiedname>Window::m_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="68" column="13" bodyfile="inc/window.h" bodystart="68" bodyend="-1"/>
+        <referencedby refid="classWindow_1_1WindowClass_a4c052246d032ab5956e6fa027f1cd9e5_1a4c052246d032ab5956e6fa027f1cd9e5" compoundref="window_8cpp" startline="93" endline="96">Window::WindowClass::~WindowClass</referencedby>
+        <referencedby refid="classWindow_a07cb1a0df450bf04c6def6fefa588963_1a07cb1a0df450bf04c6def6fefa588963" compoundref="window_8cpp" startline="432" endline="435">getName</referencedby>
+        <referencedby refid="classWindow_1_1WindowClass_a1fe165faa5f62cda6d4140da40167d9c_1a1fe165faa5f62cda6d4140da40167d9c" compoundref="window_8cpp" startline="113" endline="116">Window::WindowClass::getName</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classWindow_ae9ced8207aab8f5717efd6610340e62d_1ae9ced8207aab8f5717efd6610340e62d" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Window::m_title</definition>
+        <argsstring></argsstring>
+        <name>m_title</name>
+        <qualifiedname>Window::m_title</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="69" column="13" bodyfile="inc/window.h" bodystart="69" bodyend="-1"/>
+        <referencedby refid="classWindow_a69f83cc5dc2d4f9807e4d11d2b2623e1_1a69f83cc5dc2d4f9807e4d11d2b2623e1" compoundref="window_8cpp" startline="118" endline="270">Window</referencedby>
+        <referencedby refid="classWindow_a4dbcd17685dba50912a2989c2782ec0d_1a4dbcd17685dba50912a2989c2782ec0d" compoundref="window_8cpp" startline="372" endline="375">getTitle</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classWindow_ab39b5ba6b3adea40aa19ffa50e306dbb_1ab39b5ba6b3adea40aa19ffa50e306dbb" prot="private" static="no" mutable="no">
+        <type>HWND</type>
+        <definition>HWND Window::m_hWnd</definition>
+        <argsstring></argsstring>
+        <name>m_hWnd</name>
+        <qualifiedname>Window::m_hWnd</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="70" column="6" bodyfile="inc/window.h" bodystart="70" bodyend="-1"/>
+        <referencedby refid="classWindow_a69f83cc5dc2d4f9807e4d11d2b2623e1_1a69f83cc5dc2d4f9807e4d11d2b2623e1" compoundref="window_8cpp" startline="118" endline="270">Window</referencedby>
+        <referencedby refid="classWindow_a245d821e6016fa1f6970ccbbedd635f6_1a245d821e6016fa1f6970ccbbedd635f6" compoundref="window_8cpp" startline="298" endline="330">~Window</referencedby>
+        <referencedby refid="classWindow_afa1a733e26aa19e79c461139ecdb536e_1afa1a733e26aa19e79c461139ecdb536e" compoundref="window_8cpp" startline="693" endline="699">confineCursor</referencedby>
+        <referencedby refid="classWindow_a466dc023c98b22fdc026c2d70bca1fb9_1a466dc023c98b22fdc026c2d70bca1fb9" compoundref="window_8cpp" startline="418" endline="425">displayMessageBoxOkCancel</referencedby>
+        <referencedby refid="classWindow_ab8b32cdcbc931c83c777887df83c5a13_1ab8b32cdcbc931c83c777887df83c5a13" compoundref="window_8cpp" startline="409" endline="416">displayMessageBoxYesNo</referencedby>
+        <referencedby refid="classWindow_ac3feef02bfeadc708b8b6e9b093b4368_1ac3feef02bfeadc708b8b6e9b093b4368" compoundref="window_8cpp" startline="1917" endline="2030">editCopy</referencedby>
+        <referencedby refid="classWindow_a017c50359cd4f4884d06347bd97623fb_1a017c50359cd4f4884d06347bd97623fb" compoundref="window_8cpp" startline="2034" endline="2089">editPaste</referencedby>
+        <referencedby refid="classWindow_a2005a212933dd5d754ac219ca1a59ea6_1a2005a212933dd5d754ac219ca1a59ea6" compoundref="window_8cpp" startline="404" endline="407">getDc</referencedby>
+        <referencedby refid="classWindow_a5cccd0b4ac2a4b1e5fa40cc270342101_1a5cccd0b4ac2a4b1e5fa40cc270342101" compoundref="window_8cpp" startline="542" endline="545">getHandle</referencedby>
+        <referencedby refid="classWindow_a26083d8f85d6d29f84cac1d246cbb62b_1a26083d8f85d6d29f84cac1d246cbb62b" compoundref="window_8cpp" startline="1822" endline="1827">getHeight</referencedby>
+        <referencedby refid="classWindow_abba393eef111b17a568f3913afb9993b_1abba393eef111b17a568f3913afb9993b" compoundref="window_8cpp" startline="1829" endline="1834">getHeightClientArea</referencedby>
+        <referencedby refid="classWindow_ad9c087919d3f2b8bf0b5685795389a83_1ad9c087919d3f2b8bf0b5685795389a83" compoundref="window_8cpp" startline="361" endline="364">getParent</referencedby>
+        <referencedby refid="classWindow_ae1da2df411ae2d3b1b9ea0ac8ce36286_1ae1da2df411ae2d3b1b9ea0ac8ce36286" compoundref="window_8cpp" startline="1782" endline="1785">getTopMenu</referencedby>
+        <referencedby refid="classWindow_a04ce42e257b20bc0ed80a7e5e5249c3b_1a04ce42e257b20bc0ed80a7e5e5249c3b" compoundref="window_8cpp" startline="1808" endline="1813">getWidth</referencedby>
+        <referencedby refid="classWindow_ae3f3f96cddd3362dcf7bd82a5f7788c4_1ae3f3f96cddd3362dcf7bd82a5f7788c4" compoundref="window_8cpp" startline="1815" endline="1820">getWidthClientArea</referencedby>
+        <referencedby refid="classWindow_a963c689b550db092425a27d653375953_1a963c689b550db092425a27d653375953" compoundref="window_8cpp" startline="1726" endline="1729">getWindowStyles</referencedby>
+        <referencedby refid="classWindow_af3729cddcc53edb24dcf9379fd17bf1f_1af3729cddcc53edb24dcf9379fd17bf1f" compoundref="window_8cpp" startline="1731" endline="1734">getWindowStylesEx</referencedby>
+        <referencedby refid="classWindow_a5532ddffbaa83268e3f62315d0da6540_1a5532ddffbaa83268e3f62315d0da6540" compoundref="window_8cpp" startline="1793" endline="1799">getX</referencedby>
+        <referencedby refid="classWindow_ad68c496df5b556d8dd4abd632c0b8878_1ad68c496df5b556d8dd4abd632c0b8878" compoundref="window_8cpp" startline="1801" endline="1806">getY</referencedby>
+        <referencedby refid="classWindow_a3c40c067671e1a563ffdc0a22846a4f1_1a3c40c067671e1a563ffdc0a22846a4f1" compoundref="window_8cpp" startline="1772" endline="1780">hideMenu</referencedby>
+        <referencedby refid="classWindow_afc527296ebd4d19ca2fdfba50c1aa19c_1afc527296ebd4d19ca2fdfba50c1aa19c" compoundref="window_8cpp" startline="427" endline="430">isActive</referencedby>
+        <referencedby refid="classWindow_a1bc18114b16d26fcc7e776802a1c33ce_1a1bc18114b16d26fcc7e776802a1c33ce" compoundref="window_8cpp" startline="487" endline="490">isHidden</referencedby>
+        <referencedby refid="classWindow_ad68904fd77fc0139d48741cb770c7dff_1ad68904fd77fc0139d48741cb770c7dff" compoundref="window_8cpp" startline="497" endline="500">isMaximized</referencedby>
+        <referencedby refid="classWindow_a9dbbf71fa232f1014678ae05d9bf1572_1a9dbbf71fa232f1014678ae05d9bf1572" compoundref="window_8cpp" startline="492" endline="495">isMinimized</referencedby>
+        <referencedby refid="classWindow_a1b5d1120e6ad1f4e078e2942dffd0041_1a1b5d1120e6ad1f4e078e2942dffd0041" compoundref="window_8cpp" startline="507" endline="535">messageLoop</referencedby>
+        <referencedby refid="classWindow_a97078387be519b16401c3bb0f299aa01_1a97078387be519b16401c3bb0f299aa01" compoundref="window_8cpp" startline="437" endline="441">minimize</referencedby>
+        <referencedby refid="classWindow_a40ba1a2d6d8ec7cd381ef0f20b423acb_1a40ba1a2d6d8ec7cd381ef0f20b423acb" compoundref="window_8cpp" startline="1852" endline="1913">processMenu</referencedby>
+        <referencedby refid="classWindow_a2ac13cf3243000d5b30ff1a29547e407_1a2ac13cf3243000d5b30ff1a29547e407" compoundref="window_8cpp" startline="2093" endline="2143">renderClipboardFormat</referencedby>
+        <referencedby refid="classWindow_ac12065a404bba4aaca510c33a8a338d1_1ac12065a404bba4aaca510c33a8a338d1" compoundref="window_8cpp" startline="443" endline="448">restore</referencedby>
+        <referencedby refid="classWindow_a9cd314e68c41dc086d9de29c5d5b0658_1a9cd314e68c41dc086d9de29c5d5b0658" compoundref="window_8cpp" startline="1746" endline="1753">setBorderless</referencedby>
+        <referencedby refid="classWindow_a5a4f28721b04c0047afb8881f68e359d_1a5a4f28721b04c0047afb8881f68e359d" compoundref="window_8cpp" startline="332" endline="335">setEnable</referencedby>
+        <referencedby refid="classWindow_a9d12dc09ac60627ee8192096b45fc129_1a9d12dc09ac60627ee8192096b45fc129" compoundref="window_8cpp" startline="344" endline="348">setFocus</referencedby>
+        <referencedby refid="classWindow_ace4b47e72c96be743531236e6c632fa6_1ace4b47e72c96be743531236e6c632fa6" compoundref="window_8cpp" startline="1687" endline="1695">setFont</referencedby>
+        <referencedby refid="classWindow_a9278ce486f1bedf76b70b44180ad57f7_1a9278ce486f1bedf76b70b44180ad57f7" compoundref="window_8cpp" startline="337" endline="342">setOnTop</referencedby>
+        <referencedby refid="classWindow_a6f835d03f53872fb1a84f142a037977e_1a6f835d03f53872fb1a84f142a037977e" compoundref="window_8cpp" startline="1755" endline="1759">setRedrawing</referencedby>
+        <referencedby refid="classWindow_a6d03fd6c9fbfcaf4aba92e6b4d08123e_1a6d03fd6c9fbfcaf4aba92e6b4d08123e" compoundref="window_8cpp" startline="366" endline="370">setTitle</referencedby>
+        <referencedby refid="classWindow_a4e66e4896e552265193a794ae82a1b2d_1a4e66e4896e552265193a794ae82a1b2d" compoundref="window_8cpp" startline="614" endline="691">setupSplashWindow</referencedby>
+        <referencedby refid="classWindow_a3086e4a7cdae4cf5af32c9971bd9d34e_1a3086e4a7cdae4cf5af32c9971bd9d34e" compoundref="window_8cpp" startline="450" endline="472">setupTrayIcon</referencedby>
+        <referencedby refid="classWindow_ac96ebcab2a11b85fbbb9f361e4fec14d_1ac96ebcab2a11b85fbbb9f361e4fec14d" compoundref="window_8cpp" startline="1736" endline="1739">setWindowStyles</referencedby>
+        <referencedby refid="classWindow_a84c9316e2abef10f3c1fbe3ebcb3bad6_1a84c9316e2abef10f3c1fbe3ebcb3bad6" compoundref="window_8cpp" startline="1741" endline="1744">setWindowStylesEx</referencedby>
+        <referencedby refid="classWindow_a23bdfd4da0ed787aef0d99862fc5298b_1a23bdfd4da0ed787aef0d99862fc5298b" compoundref="window_8cpp" startline="1761" endline="1770">showMenu</referencedby>
+        <referencedby refid="classWindow_a63b33789bf23618f116c8b97b2010f58_1a63b33789bf23618f116c8b97b2010f58" compoundref="window_8cpp" startline="745" endline="772">windowProc</referencedby>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classWindow_a9801c1522a675647f8e2cbfa6d10c7dc_1a9801c1522a675647f8e2cbfa6d10c7dc" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classGraphics" kindref="compound">Graphics</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;Graphics&gt; Window::m_pGraphics</definition>
+        <argsstring></argsstring>
+        <name>m_pGraphics</name>
+        <qualifiedname>Window::m_pGraphics</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="71" column="17" bodyfile="inc/window.h" bodystart="71" bodyend="-1"/>
+        <referencedby refid="classWindow_a69f83cc5dc2d4f9807e4d11d2b2623e1_1a69f83cc5dc2d4f9807e4d11d2b2623e1" compoundref="window_8cpp" startline="118" endline="270">Window</referencedby>
+        <referencedby refid="classWindow_a7bfce0a1441d9a824b5469ae7de8c862_1a7bfce0a1441d9a824b5469ae7de8c862" compoundref="window_8cpp" startline="537" endline="540">getGraphics</referencedby>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classWindow_a0cd7fb10e78040422ad35827fd9d1554_1a0cd7fb10e78040422ad35827fd9d1554" prot="private" static="no" mutable="no">
+        <type>WINDOWINFO</type>
+        <definition>WINDOWINFO Window::m_info</definition>
+        <argsstring></argsstring>
+        <name>m_info</name>
+        <qualifiedname>Window::m_info</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="72" column="12" bodyfile="inc/window.h" bodystart="72" bodyend="72"/>
+        <referencedby refid="classWindow_a69f83cc5dc2d4f9807e4d11d2b2623e1_1a69f83cc5dc2d4f9807e4d11d2b2623e1" compoundref="window_8cpp" startline="118" endline="270">Window</referencedby>
+        <referencedby refid="classWindow_a9e348a5db42ae8467ef4c1beff84a966_1a9e348a5db42ae8467ef4c1beff84a966" compoundref="window_8cpp" startline="547" endline="550">getInfo</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classWindow_aa1e61281cd037023b477dcb843b5b573_1aa1e61281cd037023b477dcb843b5b573" prot="private" static="no" mutable="no">
+        <type>std::array&lt; unsigned, 8 &gt;</type>
+        <definition>std::array&lt;unsigned, 8&gt; Window::m_clipboardFormats</definition>
+        <argsstring></argsstring>
+        <name>m_clipboardFormats</name>
+        <qualifiedname>Window::m_clipboardFormats</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="73" column="12" bodyfile="inc/window.h" bodystart="73" bodyend="-1"/>
+        <referencedby refid="classWindow_a69f83cc5dc2d4f9807e4d11d2b2623e1_1a69f83cc5dc2d4f9807e4d11d2b2623e1" compoundref="window_8cpp" startline="118" endline="270">Window</referencedby>
+        <referencedby refid="classWindow_a40ba1a2d6d8ec7cd381ef0f20b423acb_1a40ba1a2d6d8ec7cd381ef0f20b423acb" compoundref="window_8cpp" startline="1852" endline="1913">processMenu</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classWindow_a1fa9417ebe0ef97a982efb0dadcf8a5d_1a1fa9417ebe0ef97a982efb0dadcf8a5d" prot="private" static="no" mutable="no">
+        <type>HMENU</type>
+        <definition>HMENU Window::m_hTrayIconPopupMenu</definition>
+        <argsstring></argsstring>
+        <name>m_hTrayIconPopupMenu</name>
+        <qualifiedname>Window::m_hTrayIconPopupMenu</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="74" column="7" bodyfile="inc/window.h" bodystart="74" bodyend="-1"/>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classWindow_a3129bb2ec0c28df7e02041c6d74fb5cd_1a3129bb2ec0c28df7e02041c6d74fb5cd" prot="private" static="no" mutable="no">
+        <type>NOTIFYICONDATA</type>
+        <definition>NOTIFYICONDATA Window::m_trayIconData</definition>
+        <argsstring></argsstring>
+        <name>m_trayIconData</name>
+        <qualifiedname>Window::m_trayIconData</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="75" column="16" bodyfile="inc/window.h" bodystart="75" bodyend="75"/>
+        <referencedby refid="classWindow_a25be60f78bde0afcfa73224c5ea7b333_1a25be60f78bde0afcfa73224c5ea7b333" compoundref="window_8cpp" startline="480" endline="485">deleteTrayIcon</referencedby>
+        <referencedby refid="classWindow_a3086e4a7cdae4cf5af32c9971bd9d34e_1a3086e4a7cdae4cf5af32c9971bd9d34e" compoundref="window_8cpp" startline="450" endline="472">setupTrayIcon</referencedby>
+        <referencedby refid="classWindow_a0c807d8500dd6611e32c02c583dbd655_1a0c807d8500dd6611e32c02c583dbd655" compoundref="window_8cpp" startline="474" endline="478">showTrayIcon</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classWindow_a4a330c87fd1258d1846f147a9a188bd0_1a4a330c87fd1258d1846f147a9a188bd0" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classWindow" kindref="compound">Window</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;Window&gt; Window::m_pModalDialog</definition>
+        <argsstring></argsstring>
+        <name>m_pModalDialog</name>
+        <qualifiedname>Window::m_pModalDialog</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="76" column="17" bodyfile="inc/window.h" bodystart="76" bodyend="-1"/>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classWindow_a8eb3ec06d02253d7102350bd9533a17c_1a8eb3ec06d02253d7102350bd9533a17c" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classWindow" kindref="compound">Window</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;Window&gt; Window::m_pSplash</definition>
+        <argsstring></argsstring>
+        <name>m_pSplash</name>
+        <qualifiedname>Window::m_pSplash</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="77" column="17" bodyfile="inc/window.h" bodystart="77" bodyend="-1"/>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classWindow_a73049005d1b7e248e423374b50ec1915_1a73049005d1b7e248e423374b50ec1915" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>LRESULT CALLBACK</type>
+        <definition>LRESULT CALLBACK Window::windowProcDelegate</definition>
+        <argsstring>(_In_ const HWND pWndHandle, _In_ const unsigned uMsg, _In_ const WPARAM wParam, _In_ const LPARAM lParam)</argsstring>
+        <name>windowProcDelegate</name>
+        <qualifiedname>Window::windowProcDelegate</qualifiedname>
+        <param>
+          <type>_In_ const HWND</type>
+          <declname>pWndHandle</declname>
+        </param>
+        <param>
+          <type>_In_ const unsigned</type>
+          <declname>uMsg</declname>
+        </param>
+        <param>
+          <type>_In_ const WPARAM</type>
+          <declname>wParam</declname>
+        </param>
+        <param>
+          <type>_In_ const LPARAM</type>
+          <declname>lParam</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="79" column="25" bodyfile="src/window.cpp" bodystart="774" bodyend="792"/>
+        <referencedby refid="classWindow_a63b33789bf23618f116c8b97b2010f58_1a63b33789bf23618f116c8b97b2010f58" compoundref="window_8cpp" startline="745" endline="772">windowProc</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classWindow_acc3b6797295659d5ed747dd64aae767d_1acc3b6797295659d5ed747dd64aae767d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Window::messageBoxPrintf</definition>
+        <argsstring>(const HWND window, const TCHAR *caption, const TCHAR *format,...)</argsstring>
+        <name>messageBoxPrintf</name>
+        <qualifiedname>Window::messageBoxPrintf</qualifiedname>
+        <param>
+          <type>const HWND</type>
+          <declname>window</declname>
+        </param>
+        <param>
+          <type>const TCHAR *</type>
+          <declname>caption</declname>
+        </param>
+        <param>
+          <type>const TCHAR *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+<para>a wrapper over Windows MessageBox function, first argument <computeroutput>window</computeroutput> can be nullptr </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="82" column="12" bodyfile="src/window.cpp" bodystart="732" bodyend="743"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a63b33789bf23618f116c8b97b2010f58_1a63b33789bf23618f116c8b97b2010f58" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>LRESULT CALLBACK</type>
+        <definition>LRESULT CALLBACK Window::windowProc</definition>
+        <argsstring>(_In_ const HWND pWnd, _In_ const unsigned uMsg, _In_ const WPARAM wParam, _In_ const LPARAM lParam)</argsstring>
+        <name>windowProc</name>
+        <qualifiedname>Window::windowProc</qualifiedname>
+        <param>
+          <type>_In_ const HWND</type>
+          <declname>pWnd</declname>
+        </param>
+        <param>
+          <type>_In_ const unsigned</type>
+          <declname>uMsg</declname>
+        </param>
+        <param>
+          <type>_In_ const WPARAM</type>
+          <declname>wParam</declname>
+        </param>
+        <param>
+          <type>_In_ const LPARAM</type>
+          <declname>lParam</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="83" column="25" bodyfile="src/window.cpp" bodystart="745" bodyend="772"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a043951d406f11adc6a7320fcc40de5ff_1a043951d406f11adc6a7320fcc40de5ff" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>LRESULT CALLBACK</type>
+        <definition>LRESULT CALLBACK Window::dialogProc</definition>
+        <argsstring>(_In_ const HWND hWnd, _In_ const unsigned uMsg, _In_ const WPARAM wParam, _In_ const LPARAM lParam)</argsstring>
+        <name>dialogProc</name>
+        <qualifiedname>Window::dialogProc</qualifiedname>
+        <param>
+          <type>_In_ const HWND</type>
+          <declname>hWnd</declname>
+        </param>
+        <param>
+          <type>_In_ const unsigned</type>
+          <declname>uMsg</declname>
+        </param>
+        <param>
+          <type>_In_ const WPARAM</type>
+          <declname>wParam</declname>
+        </param>
+        <param>
+          <type>_In_ const LPARAM</type>
+          <declname>lParam</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="84" column="25" bodyfile="src/window.cpp" bodystart="1571" bodyend="1631"/>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_adc6e743324b3b804df5b2fa86ced2a6f_1adc6e743324b3b804df5b2fa86ced2a6f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>LRESULT CALLBACK</type>
+        <definition>LRESULT CALLBACK Window::splashWindowProc</definition>
+        <argsstring>(_In_ const HWND hWnd, _In_ const unsigned uMsg, _In_ const WPARAM wParam, _In_ const LPARAM lParam)</argsstring>
+        <name>splashWindowProc</name>
+        <qualifiedname>Window::splashWindowProc</qualifiedname>
+        <param>
+          <type>_In_ const HWND</type>
+          <declname>hWnd</declname>
+        </param>
+        <param>
+          <type>_In_ const unsigned</type>
+          <declname>uMsg</declname>
+        </param>
+        <param>
+          <type>_In_ const WPARAM</type>
+          <declname>wParam</declname>
+        </param>
+        <param>
+          <type>_In_ const LPARAM</type>
+          <declname>lParam</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="85" column="25" bodyfile="src/window.cpp" bodystart="1633" bodyend="1664"/>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_acf8285de3092f3452349ee4591627b11_1acf8285de3092f3452349ee4591627b11" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void CALLBACK</type>
+        <definition>void CALLBACK Window::splashWindowTimerProc</definition>
+        <argsstring>(_In_ const HWND hWnd, _In_ const unsigned uMsg, _In_ const unsigned idEvent, _In_ const DWORD time)</argsstring>
+        <name>splashWindowTimerProc</name>
+        <qualifiedname>Window::splashWindowTimerProc</qualifiedname>
+        <param>
+          <type>_In_ const HWND</type>
+          <declname>hWnd</declname>
+        </param>
+        <param>
+          <type>_In_ const unsigned</type>
+          <declname>uMsg</declname>
+        </param>
+        <param>
+          <type>_In_ const unsigned</type>
+          <declname>idEvent</declname>
+        </param>
+        <param>
+          <type>_In_ const DWORD</type>
+          <declname>time</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="86" column="22" bodyfile="src/window.cpp" bodystart="1666" bodyend="1685"/>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_af51b384330835f7ee8d0c3cb1254c4f8_1af51b384330835f7ee8d0c3cb1254c4f8" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classKeyboard" kindref="compound">Keyboard</ref> &amp;</type>
+        <definition>Keyboard &amp; Window::getKeyboard</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>getKeyboard</name>
+        <qualifiedname>Window::getKeyboard</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="87" column="17" bodyfile="src/window.cpp" bodystart="552" bodyend="555"/>
+        <referencedby refid="classArkanoid_a4379be977be5c4dd083be67438cf70ab_1a4379be977be5c4dd083be67438cf70ab" compoundref="game_8cpp" startline="643" endline="686">Arkanoid::checkInput</referencedby>
+        <referencedby refid="classSandbox3d_a7ac896c9f33a49a24ae47cdf6007f5a1_1a7ac896c9f33a49a24ae47cdf6007f5a1" compoundref="game_8cpp" startline="289" endline="407">Sandbox3d::checkInput</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a89e829c66c387dfca31d10b9806da751_1a89e829c66c387dfca31d10b9806da751" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classMouse" kindref="compound">Mouse</ref> &amp;</type>
+        <definition>Mouse &amp; Window::getMouse</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>getMouse</name>
+        <qualifiedname>Window::getMouse</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="88" column="14" bodyfile="src/window.cpp" bodystart="557" bodyend="560"/>
+        <referencedby refid="classSandbox3d_a60fad847bf17eed5f75b7b270173c6dd_1a60fad847bf17eed5f75b7b270173c6dd" compoundref="game_8cpp" startline="157" endline="202">Sandbox3d::Sandbox3d</referencedby>
+        <referencedby refid="classArkanoid_a4379be977be5c4dd083be67438cf70ab_1a4379be977be5c4dd083be67438cf70ab" compoundref="game_8cpp" startline="643" endline="686">Arkanoid::checkInput</referencedby>
+        <referencedby refid="classSandbox3d_a7ac896c9f33a49a24ae47cdf6007f5a1_1a7ac896c9f33a49a24ae47cdf6007f5a1" compoundref="game_8cpp" startline="289" endline="407">Sandbox3d::checkInput</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_aad814dbb72db34012be61839a21ea004_1aad814dbb72db34012be61839a21ea004" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Window::isDescendantOf</definition>
+        <argsstring>(const HWND targethWnd, const HWND parent) noexcept</argsstring>
+        <name>isDescendantOf</name>
+        <qualifiedname>Window::isDescendantOf</qualifiedname>
+        <param>
+          <type>const HWND</type>
+          <declname>targethWnd</declname>
+        </param>
+        <param>
+          <type>const HWND</type>
+          <declname>parent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="89" column="13" bodyfile="src/window.cpp" bodystart="562" bodyend="568"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a989ce4fa31d0caf58d4f238b9c094d31_1a989ce4fa31d0caf58d4f238b9c094d31" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Window::saveClipboardTextAsVar</definition>
+        <argsstring>()</argsstring>
+        <name>saveClipboardTextAsVar</name>
+        <qualifiedname>Window::saveClipboardTextAsVar</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="90" column="13" bodyfile="src/window.cpp" bodystart="597" bodyend="612"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_ab9660b523de7bdc93b8048a12edd1b6e_1ab9660b523de7bdc93b8048a12edd1b6e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>HBITMAP</type>
+        <definition>HBITMAP Window::convertHiconToHbitmap</definition>
+        <argsstring>(HICON hIcon)</argsstring>
+        <name>convertHiconToHbitmap</name>
+        <qualifiedname>Window::convertHiconToHbitmap</qualifiedname>
+        <param>
+          <type>HICON</type>
+          <declname>hIcon</declname>
+        </param>
+        <briefdescription>
+<para>hIcon vs hBitmap </para>
+        </briefdescription>
+        <detaileddescription>
+<para>hIcon is a handle to one of the system resources that Windows OS requires for providing a graphical USER interface.</para>
+<para>SHELL applications like Windows Explorer, Desktop etc, use this system resource extensively.</para>
+<para>hBITMAP is a graphical object which can be manipulated with GDI. hBitmaps can be altered with GDI either by selecting it to a DC or by manipulating the bits directly. GDI cannot handle an hICON. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="95" column="16" bodyfile="src/window.cpp" bodystart="570" bodyend="575"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a8399c68d7ae5f5cc253512d42674e049_1a8399c68d7ae5f5cc253512d42674e049" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>HICON</type>
+        <definition>HICON Window::convertHbitmapToHicon</definition>
+        <argsstring>(HBITMAP bitmap)</argsstring>
+        <name>convertHbitmapToHicon</name>
+        <qualifiedname>Window::convertHbitmapToHicon</qualifiedname>
+        <param>
+          <type>HBITMAP</type>
+          <declname>bitmap</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="96" column="14" bodyfile="src/window.cpp" bodystart="577" bodyend="595"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classWindow_a69f83cc5dc2d4f9807e4d11d2b2623e1_1a69f83cc5dc2d4f9807e4d11d2b2623e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Window::Window</definition>
+        <argsstring>(const int width, const int height, const char *name, const char *className, const WNDPROC windowProcedure, const int x, const int y, const ColorBGRA bgColor={255, 255, 255}, const HMENU hMenu=nullptr, const Window *parent=nullptr)</argsstring>
+        <name>Window</name>
+        <qualifiedname>Window::Window</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>height</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>className</declname>
+        </param>
+        <param>
+          <type>const WNDPROC</type>
+          <declname>windowProcedure</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref></type>
+          <declname>bgColor</declname>
+          <defval>{255, 255, 255}</defval>
+        </param>
+        <param>
+          <type>const HMENU</type>
+          <declname>hMenu</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const <ref refid="classWindow" kindref="compound">Window</ref> *</type>
+          <declname>parent</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="98" column="1" bodyfile="src/window.cpp" bodystart="118" bodyend="270"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a10df09e61d4dcb181c381f2745e0e4e1_1a10df09e61d4dcb181c381f2745e0e4e1" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Window::Window</definition>
+        <argsstring>(Window &amp;&amp;rhs) noexcept</argsstring>
+        <name>Window</name>
+        <qualifiedname>Window::Window</qualifiedname>
+        <param>
+          <type><ref refid="classWindow" kindref="compound">Window</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="99" column="1" bodyfile="src/window.cpp" bodystart="272" bodyend="290"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_ab337075b991c72d66625f6ca13ae78f8_1ab337075b991c72d66625f6ca13ae78f8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classWindow" kindref="compound">Window</ref> &amp;</type>
+        <definition>Window &amp; Window::operator=</definition>
+        <argsstring>(Window &amp;&amp;rhs) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Window::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classWindow" kindref="compound">Window</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="100" column="8" bodyfile="src/window.cpp" bodystart="292" bodyend="296"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a245d821e6016fa1f6970ccbbedd635f6_1a245d821e6016fa1f6970ccbbedd635f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Window::~Window</definition>
+        <argsstring>()</argsstring>
+        <name>~Window</name>
+        <qualifiedname>Window::~Window</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="101" column="1" bodyfile="src/window.cpp" bodystart="298" bodyend="330"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a1b5d1120e6ad1f4e078e2942dffd0041_1a1b5d1120e6ad1f4e078e2942dffd0041" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>std::optional&lt; int &gt;</type>
+        <definition>std::optional&lt; int &gt; Window::messageLoop</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>messageLoop</name>
+        <qualifiedname>Window::messageLoop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="103" column="15" bodyfile="src/window.cpp" bodystart="507" bodyend="535"/>
+        <referencedby refid="classArkanoid_a9a1f1afe82238ca3c10bf890a977a436_1a9a1f1afe82238ca3c10bf890a977a436" compoundref="game_8cpp" startline="603" endline="634">Arkanoid::loop</referencedby>
+        <referencedby refid="classSandbox3d_a22ca94841fcff1809793a061a7825155_1a22ca94841fcff1809793a061a7825155" compoundref="game_8cpp" startline="213" endline="287">Sandbox3d::loop</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a5a4f28721b04c0047afb8881f68e359d_1a5a4f28721b04c0047afb8881f68e359d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Window::setEnable</definition>
+        <argsstring>(const bool b)</argsstring>
+        <name>setEnable</name>
+        <qualifiedname>Window::setEnable</qualifiedname>
+        <param>
+          <type>const bool</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="104" column="6" bodyfile="src/window.cpp" bodystart="332" bodyend="335"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a9278ce486f1bedf76b70b44180ad57f7_1a9278ce486f1bedf76b70b44180ad57f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Window::setOnTop</definition>
+        <argsstring>()</argsstring>
+        <name>setOnTop</name>
+        <qualifiedname>Window::setOnTop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="105" column="6" bodyfile="src/window.cpp" bodystart="337" bodyend="342"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a9d12dc09ac60627ee8192096b45fc129_1a9d12dc09ac60627ee8192096b45fc129" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const HWND</type>
+        <definition>const HWND Window::setFocus</definition>
+        <argsstring>()</argsstring>
+        <name>setFocus</name>
+        <qualifiedname>Window::setFocus</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="106" column="12" bodyfile="src/window.cpp" bodystart="344" bodyend="348"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a7a22b0c74d1615879b93e69d7a0370ab_1a7a22b0c74d1615879b93e69d7a0370ab" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Window::hasParent</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>hasParent</name>
+        <qualifiedname>Window::hasParent</qualifiedname>
+        <briefdescription>
+<para>returns true if this <ref refid="classWindow" kindref="compound">Window</ref> has a parent that is not the Desktop window </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="108" column="6" bodyfile="src/window.cpp" bodystart="350" bodyend="359"/>
+        <referencedby refid="classWindow_a4e66e4896e552265193a794ae82a1b2d_1a4e66e4896e552265193a794ae82a1b2d" compoundref="window_8cpp" startline="614" endline="691">setupSplashWindow</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_ad9c087919d3f2b8bf0b5685795389a83_1ad9c087919d3f2b8bf0b5685795389a83" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const HWND</type>
+        <definition>const HWND Window::getParent</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getParent</name>
+        <qualifiedname>Window::getParent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="109" column="12" bodyfile="src/window.cpp" bodystart="361" bodyend="364"/>
+        <referencedby refid="classWindow_a7a22b0c74d1615879b93e69d7a0370ab_1a7a22b0c74d1615879b93e69d7a0370ab" compoundref="window_8cpp" startline="350" endline="359">hasParent</referencedby>
+        <referencedby refid="classWindow_a4e66e4896e552265193a794ae82a1b2d_1a4e66e4896e552265193a794ae82a1b2d" compoundref="window_8cpp" startline="614" endline="691">setupSplashWindow</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a6d03fd6c9fbfcaf4aba92e6b4d08123e_1a6d03fd6c9fbfcaf4aba92e6b4d08123e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Window::setTitle</definition>
+        <argsstring>(const std::string &amp;title)</argsstring>
+        <name>setTitle</name>
+        <qualifiedname>Window::setTitle</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>title</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="110" column="6" bodyfile="src/window.cpp" bodystart="366" bodyend="370"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a4dbcd17685dba50912a2989c2782ec0d_1a4dbcd17685dba50912a2989c2782ec0d" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; Window::getTitle</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getTitle</name>
+        <qualifiedname>Window::getTitle</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="111" column="19" bodyfile="src/window.cpp" bodystart="372" bodyend="375"/>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a03a5e37c7d4e07b4e77c08776f82e476_1a03a5e37c7d4e07b4e77c08776f82e476" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Window::enableCursor</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>enableCursor</name>
+        <qualifiedname>Window::enableCursor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="112" column="6" bodyfile="src/window.cpp" bodystart="377" bodyend="386"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a0a62a86c1134a2579afff3bfc2487d0b_1a0a62a86c1134a2579afff3bfc2487d0b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Window::disableCursor</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>disableCursor</name>
+        <qualifiedname>Window::disableCursor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="113" column="6" bodyfile="src/window.cpp" bodystart="388" bodyend="397"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_ae75c970afd77b9812f1fa3fc96549844_1ae75c970afd77b9812f1fa3fc96549844" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Window::isCursorEnabled</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>isCursorEnabled</name>
+        <qualifiedname>Window::isCursorEnabled</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="114" column="6" bodyfile="src/window.cpp" bodystart="399" bodyend="402"/>
+        <referencedby refid="classArkanoid_a4379be977be5c4dd083be67438cf70ab_1a4379be977be5c4dd083be67438cf70ab" compoundref="game_8cpp" startline="643" endline="686">Arkanoid::checkInput</referencedby>
+        <referencedby refid="classSandbox3d_a7ac896c9f33a49a24ae47cdf6007f5a1_1a7ac896c9f33a49a24ae47cdf6007f5a1" compoundref="game_8cpp" startline="289" endline="407">Sandbox3d::checkInput</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_ab8b32cdcbc931c83c777887df83c5a13_1ab8b32cdcbc931c83c777887df83c5a13" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Window::displayMessageBoxYesNo</definition>
+        <argsstring>(const std::string &amp;title, const std::string &amp;message) const</argsstring>
+        <name>displayMessageBoxYesNo</name>
+        <qualifiedname>Window::displayMessageBoxYesNo</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>title</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="115" column="5" bodyfile="src/window.cpp" bodystart="409" bodyend="416"/>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a466dc023c98b22fdc026c2d70bca1fb9_1a466dc023c98b22fdc026c2d70bca1fb9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Window::displayMessageBoxOkCancel</definition>
+        <argsstring>(const std::string &amp;title, const std::string &amp;message) const</argsstring>
+        <name>displayMessageBoxOkCancel</name>
+        <qualifiedname>Window::displayMessageBoxOkCancel</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>title</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="116" column="5" bodyfile="src/window.cpp" bodystart="418" bodyend="425"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_afc527296ebd4d19ca2fdfba50c1aa19c_1afc527296ebd4d19ca2fdfba50c1aa19c" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Window::isActive</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>isActive</name>
+        <qualifiedname>Window::isActive</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="117" column="6" bodyfile="src/window.cpp" bodystart="427" bodyend="430"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a07cb1a0df450bf04c6def6fefa588963_1a07cb1a0df450bf04c6def6fefa588963" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; Window::getName</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getName</name>
+        <qualifiedname>Window::getName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="118" column="19" bodyfile="src/window.cpp" bodystart="432" bodyend="435"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a97078387be519b16401c3bb0f299aa01_1a97078387be519b16401c3bb0f299aa01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Window::minimize</definition>
+        <argsstring>()</argsstring>
+        <name>minimize</name>
+        <qualifiedname>Window::minimize</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="119" column="6" bodyfile="src/window.cpp" bodystart="437" bodyend="441"/>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_ac12065a404bba4aaca510c33a8a338d1_1ac12065a404bba4aaca510c33a8a338d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Window::restore</definition>
+        <argsstring>()</argsstring>
+        <name>restore</name>
+        <qualifiedname>Window::restore</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="120" column="6" bodyfile="src/window.cpp" bodystart="443" bodyend="448"/>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a1bc18114b16d26fcc7e776802a1c33ce_1a1bc18114b16d26fcc7e776802a1c33ce" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Window::isHidden</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>isHidden</name>
+        <qualifiedname>Window::isHidden</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="121" column="6" bodyfile="src/window.cpp" bodystart="487" bodyend="490"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a9dbbf71fa232f1014678ae05d9bf1572_1a9dbbf71fa232f1014678ae05d9bf1572" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Window::isMinimized</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>isMinimized</name>
+        <qualifiedname>Window::isMinimized</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="122" column="6" bodyfile="src/window.cpp" bodystart="492" bodyend="495"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_ad68904fd77fc0139d48741cb770c7dff_1ad68904fd77fc0139d48741cb770c7dff" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Window::isMaximized</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>isMaximized</name>
+        <qualifiedname>Window::isMaximized</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="123" column="6" bodyfile="src/window.cpp" bodystart="497" bodyend="500"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a7568bb745290d9eb85cc4dcae8a45bca_1a7568bb745290d9eb85cc4dcae8a45bca" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Window::operator bool</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>Window::operator bool</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="124" column="1" bodyfile="src/window.cpp" bodystart="502" bodyend="505"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a7bfce0a1441d9a824b5469ae7de8c862_1a7bfce0a1441d9a824b5469ae7de8c862" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+        <definition>Graphics &amp; Window::getGraphics</definition>
+        <argsstring>()</argsstring>
+        <name>getGraphics</name>
+        <qualifiedname>Window::getGraphics</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="125" column="10" bodyfile="src/window.cpp" bodystart="537" bodyend="540"/>
+        <referencedby refid="classSandbox3d_a60fad847bf17eed5f75b7b270173c6dd_1a60fad847bf17eed5f75b7b270173c6dd" compoundref="game_8cpp" startline="157" endline="202">Sandbox3d::Sandbox3d</referencedby>
+        <referencedby refid="classSandbox3d_a7ac896c9f33a49a24ae47cdf6007f5a1_1a7ac896c9f33a49a24ae47cdf6007f5a1" compoundref="game_8cpp" startline="289" endline="407">Sandbox3d::checkInput</referencedby>
+        <referencedby refid="classArkanoid_a9a1f1afe82238ca3c10bf890a977a436_1a9a1f1afe82238ca3c10bf890a977a436" compoundref="game_8cpp" startline="603" endline="634">Arkanoid::loop</referencedby>
+        <referencedby refid="classSandbox3d_a22ca94841fcff1809793a061a7825155_1a22ca94841fcff1809793a061a7825155" compoundref="game_8cpp" startline="213" endline="287">Sandbox3d::loop</referencedby>
+        <referencedby refid="testing_8h_a6602bea1ca81d830dfee5423f7f48029_1a6602bea1ca81d830dfee5423f7f48029" compoundref="testing_8cpp" startline="346" endline="398">testDynamicVertex</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a5cccd0b4ac2a4b1e5fa40cc270342101_1a5cccd0b4ac2a4b1e5fa40cc270342101" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const HWND</type>
+        <definition>const HWND Window::getHandle</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getHandle</name>
+        <qualifiedname>Window::getHandle</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="126" column="12" bodyfile="src/window.cpp" bodystart="542" bodyend="545"/>
+        <referencedby refid="classWindow_a69f83cc5dc2d4f9807e4d11d2b2623e1_1a69f83cc5dc2d4f9807e4d11d2b2623e1" compoundref="window_8cpp" startline="118" endline="270">Window</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a2005a212933dd5d754ac219ca1a59ea6_1a2005a212933dd5d754ac219ca1a59ea6" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>HDC</type>
+        <definition>HDC Window::getDc</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getDc</name>
+        <qualifiedname>Window::getDc</qualifiedname>
+        <briefdescription>
+<para>get <ref refid="classWindow" kindref="compound">Window</ref>&apos;s Device Context (DC) - a &quot;device context&quot; contains information about the drawing attributes of a device such as a display or a printer, so if you have two different DC&apos;s, you&apos;re drawing in two different places; like a file handle for drawing </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="128" column="5" bodyfile="src/window.cpp" bodystart="404" bodyend="407"/>
+        <referencedby refid="classWindow_a245d821e6016fa1f6970ccbbedd635f6_1a245d821e6016fa1f6970ccbbedd635f6" compoundref="window_8cpp" startline="298" endline="330">~Window</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a9e348a5db42ae8467ef4c1beff84a966_1a9e348a5db42ae8467ef4c1beff84a966" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>WINDOWINFO</type>
+        <definition>WINDOWINFO Window::getInfo</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getInfo</name>
+        <qualifiedname>Window::getInfo</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="129" column="12" bodyfile="src/window.cpp" bodystart="547" bodyend="550"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a963c689b550db092425a27d653375953_1a963c689b550db092425a27d653375953" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned Window::getWindowStyles</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getWindowStyles</name>
+        <qualifiedname>Window::getWindowStyles</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="130" column="10" bodyfile="src/window.cpp" bodystart="1726" bodyend="1729"/>
+        <referencedby refid="classWindow_a9cd314e68c41dc086d9de29c5d5b0658_1a9cd314e68c41dc086d9de29c5d5b0658" compoundref="window_8cpp" startline="1746" endline="1753">setBorderless</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_af3729cddcc53edb24dcf9379fd17bf1f_1af3729cddcc53edb24dcf9379fd17bf1f" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned Window::getWindowStylesEx</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getWindowStylesEx</name>
+        <qualifiedname>Window::getWindowStylesEx</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="131" column="10" bodyfile="src/window.cpp" bodystart="1731" bodyend="1734"/>
+        <referencedby refid="classWindow_a9cd314e68c41dc086d9de29c5d5b0658_1a9cd314e68c41dc086d9de29c5d5b0658" compoundref="window_8cpp" startline="1746" endline="1753">setBorderless</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_ac96ebcab2a11b85fbbb9f361e4fec14d_1ac96ebcab2a11b85fbbb9f361e4fec14d" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Window::setWindowStyles</definition>
+        <argsstring>(const unsigned windowStyles) const noexcept</argsstring>
+        <name>setWindowStyles</name>
+        <qualifiedname>Window::setWindowStyles</qualifiedname>
+        <param>
+          <type>const unsigned</type>
+          <declname>windowStyles</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="132" column="6" bodyfile="src/window.cpp" bodystart="1736" bodyend="1739"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a84c9316e2abef10f3c1fbe3ebcb3bad6_1a84c9316e2abef10f3c1fbe3ebcb3bad6" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Window::setWindowStylesEx</definition>
+        <argsstring>(const unsigned windowStylesEx) const noexcept</argsstring>
+        <name>setWindowStylesEx</name>
+        <qualifiedname>Window::setWindowStylesEx</qualifiedname>
+        <param>
+          <type>const unsigned</type>
+          <declname>windowStylesEx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="133" column="6" bodyfile="src/window.cpp" bodystart="1741" bodyend="1744"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a9cd314e68c41dc086d9de29c5d5b0658_1a9cd314e68c41dc086d9de29c5d5b0658" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Window::setBorderless</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>setBorderless</name>
+        <qualifiedname>Window::setBorderless</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="134" column="6" bodyfile="src/window.cpp" bodystart="1746" bodyend="1753"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a6f835d03f53872fb1a84f142a037977e_1a6f835d03f53872fb1a84f142a037977e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Window::setRedrawing</definition>
+        <argsstring>(const bool bRedraw)</argsstring>
+        <name>setRedrawing</name>
+        <qualifiedname>Window::setRedrawing</qualifiedname>
+        <param>
+          <type>const bool</type>
+          <declname>bRedraw</declname>
+        </param>
+        <briefdescription>
+<para>prevent intermediate redrawing </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="136" column="6" bodyfile="src/window.cpp" bodystart="1755" bodyend="1759"/>
+        <referencedby refid="classWindow_a3c40c067671e1a563ffdc0a22846a4f1_1a3c40c067671e1a563ffdc0a22846a4f1" compoundref="window_8cpp" startline="1772" endline="1780">hideMenu</referencedby>
+        <referencedby refid="classWindow_a23bdfd4da0ed787aef0d99862fc5298b_1a23bdfd4da0ed787aef0d99862fc5298b" compoundref="window_8cpp" startline="1761" endline="1770">showMenu</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a23bdfd4da0ed787aef0d99862fc5298b_1a23bdfd4da0ed787aef0d99862fc5298b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Window::showMenu</definition>
+        <argsstring>(const HMENU hMenu)</argsstring>
+        <name>showMenu</name>
+        <qualifiedname>Window::showMenu</qualifiedname>
+        <param>
+          <type>const HMENU</type>
+          <declname>hMenu</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="137" column="6" bodyfile="src/window.cpp" bodystart="1761" bodyend="1770"/>
+        <referencedby refid="classWindow_a69f83cc5dc2d4f9807e4d11d2b2623e1_1a69f83cc5dc2d4f9807e4d11d2b2623e1" compoundref="window_8cpp" startline="118" endline="270">Window</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a3c40c067671e1a563ffdc0a22846a4f1_1a3c40c067671e1a563ffdc0a22846a4f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Window::hideMenu</definition>
+        <argsstring>()</argsstring>
+        <name>hideMenu</name>
+        <qualifiedname>Window::hideMenu</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="138" column="6" bodyfile="src/window.cpp" bodystart="1772" bodyend="1780"/>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_ae1da2df411ae2d3b1b9ea0ac8ce36286_1ae1da2df411ae2d3b1b9ea0ac8ce36286" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const HMENU</type>
+        <definition>const HMENU Window::getTopMenu</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getTopMenu</name>
+        <qualifiedname>Window::getTopMenu</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="139" column="13" bodyfile="src/window.cpp" bodystart="1782" bodyend="1785"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a639d79c96a98f0462aaae8642d4a371f_1a639d79c96a98f0462aaae8642d4a371f" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>HWND</type>
+        <definition>HWND Window::getDesktop</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getDesktop</name>
+        <qualifiedname>Window::getDesktop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="140" column="6" bodyfile="src/window.cpp" bodystart="1787" bodyend="1791"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a5532ddffbaa83268e3f62315d0da6540_1a5532ddffbaa83268e3f62315d0da6540" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int Window::getX</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getX</name>
+        <qualifiedname>Window::getX</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="141" column="5" bodyfile="src/window.cpp" bodystart="1793" bodyend="1799"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_ad68c496df5b556d8dd4abd632c0b8878_1ad68c496df5b556d8dd4abd632c0b8878" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int Window::getY</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getY</name>
+        <qualifiedname>Window::getY</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="142" column="5" bodyfile="src/window.cpp" bodystart="1801" bodyend="1806"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a04ce42e257b20bc0ed80a7e5e5249c3b_1a04ce42e257b20bc0ed80a7e5e5249c3b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int Window::getWidth</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getWidth</name>
+        <qualifiedname>Window::getWidth</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="143" column="5" bodyfile="src/window.cpp" bodystart="1808" bodyend="1813"/>
+        <referencedby refid="classWindow_afcc33d5d00fe7a117049c347a7c800d4_1afcc33d5d00fe7a117049c347a7c800d4" compoundref="window_8cpp" startline="794" endline="994">windowProc_impl2d</referencedby>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_ae3f3f96cddd3362dcf7bd82a5f7788c4_1ae3f3f96cddd3362dcf7bd82a5f7788c4" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int Window::getWidthClientArea</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getWidthClientArea</name>
+        <qualifiedname>Window::getWidthClientArea</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="144" column="5" bodyfile="src/window.cpp" bodystart="1815" bodyend="1820"/>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a26083d8f85d6d29f84cac1d246cbb62b_1a26083d8f85d6d29f84cac1d246cbb62b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int Window::getHeight</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getHeight</name>
+        <qualifiedname>Window::getHeight</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="145" column="5" bodyfile="src/window.cpp" bodystart="1822" bodyend="1827"/>
+        <referencedby refid="classWindow_afcc33d5d00fe7a117049c347a7c800d4_1afcc33d5d00fe7a117049c347a7c800d4" compoundref="window_8cpp" startline="794" endline="994">windowProc_impl2d</referencedby>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_abba393eef111b17a568f3913afb9993b_1abba393eef111b17a568f3913afb9993b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int Window::getHeightClientArea</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getHeightClientArea</name>
+        <qualifiedname>Window::getHeightClientArea</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="146" column="5" bodyfile="src/window.cpp" bodystart="1829" bodyend="1834"/>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_aa60fa73c7502fab7465b9aca117f577f_1aa60fa73c7502fab7465b9aca117f577f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>HWND</type>
+        <definition>HWND Window::getConsoleHandle</definition>
+        <argsstring>() const</argsstring>
+        <name>getConsoleHandle</name>
+        <qualifiedname>Window::getConsoleHandle</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="147" column="6" bodyfile="src/window.cpp" bodystart="1836" bodyend="1844"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a752e47d52453c84ebf8c3f42a6343e66_1a752e47d52453c84ebf8c3f42a6343e66" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const <ref refid="classWindow_1_1WindowClass" kindref="compound">WindowClass</ref> &amp;</type>
+        <definition>const Window::WindowClass &amp; Window::getWindowClass</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>getWindowClass</name>
+        <qualifiedname>Window::getWindowClass</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="148" column="19" bodyfile="src/window.cpp" bodystart="1846" bodyend="1849"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a4e66e4896e552265193a794ae82a1b2d_1a4e66e4896e552265193a794ae82a1b2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Window::setupSplashWindow</definition>
+        <argsstring>(HBITMAP hSplashBitmap)</argsstring>
+        <name>setupSplashWindow</name>
+        <qualifiedname>Window::setupSplashWindow</qualifiedname>
+        <param>
+          <type>HBITMAP</type>
+          <declname>hSplashBitmap</declname>
+        </param>
+        <briefdescription>
+<para>create an Alpha enabled Splash window for the main application window </para>
+        </briefdescription>
+        <detaileddescription>
+<para>We&apos;ll use a layered window to do it (recommended method for Windows 2000+).</para>
+<para>The beauty of layered windows and the UpdateLayeredWindow function is that the splash window doesn&apos;t have to respond to WM_PAINT messages; Windows will paint it (and blend it correctly with the windows below it) by default.</para>
+<para>#WARNING: load the BMP with black color for the transparent places </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="153" column="6" bodyfile="src/window.cpp" bodystart="614" bodyend="691"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classWindow_afa1a733e26aa19e79c461139ecdb536e_1afa1a733e26aa19e79c461139ecdb536e" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Window::confineCursor</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>confineCursor</name>
+        <qualifiedname>Window::confineCursor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="155" column="6" bodyfile="src/window.cpp" bodystart="693" bodyend="699"/>
+        <referencedby refid="classWindow_a0a62a86c1134a2579afff3bfc2487d0b_1a0a62a86c1134a2579afff3bfc2487d0b" compoundref="window_8cpp" startline="388" endline="397">disableCursor</referencedby>
+        <referencedby refid="classWindow_afcc33d5d00fe7a117049c347a7c800d4_1afcc33d5d00fe7a117049c347a7c800d4" compoundref="window_8cpp" startline="794" endline="994">windowProc_impl2d</referencedby>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a4a4ac4dd9c15b4e2a555334befddf7a9_1a4a4ac4dd9c15b4e2a555334befddf7a9" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Window::freeCursor</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>freeCursor</name>
+        <qualifiedname>Window::freeCursor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="156" column="6" bodyfile="src/window.cpp" bodystart="701" bodyend="704"/>
+        <referencedby refid="classWindow_a03a5e37c7d4e07b4e77c08776f82e476_1a03a5e37c7d4e07b4e77c08776f82e476" compoundref="window_8cpp" startline="377" endline="386">enableCursor</referencedby>
+        <referencedby refid="classWindow_afcc33d5d00fe7a117049c347a7c800d4_1afcc33d5d00fe7a117049c347a7c800d4" compoundref="window_8cpp" startline="794" endline="994">windowProc_impl2d</referencedby>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a0aed96a4d37d339964c343b729b214f2_1a0aed96a4d37d339964c343b729b214f2" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Window::showCursor</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>showCursor</name>
+        <qualifiedname>Window::showCursor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="157" column="6" bodyfile="src/window.cpp" bodystart="712" bodyend="716"/>
+        <referencedby refid="classWindow_a03a5e37c7d4e07b4e77c08776f82e476_1a03a5e37c7d4e07b4e77c08776f82e476" compoundref="window_8cpp" startline="377" endline="386">enableCursor</referencedby>
+        <referencedby refid="classWindow_afcc33d5d00fe7a117049c347a7c800d4_1afcc33d5d00fe7a117049c347a7c800d4" compoundref="window_8cpp" startline="794" endline="994">windowProc_impl2d</referencedby>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a8e1a697f5c01400e49c3263d2afd4686_1a8e1a697f5c01400e49c3263d2afd4686" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Window::hideCursor</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hideCursor</name>
+        <qualifiedname>Window::hideCursor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="158" column="6" bodyfile="src/window.cpp" bodystart="706" bodyend="710"/>
+        <referencedby refid="classWindow_a0a62a86c1134a2579afff3bfc2487d0b_1a0a62a86c1134a2579afff3bfc2487d0b" compoundref="window_8cpp" startline="388" endline="397">disableCursor</referencedby>
+        <referencedby refid="classWindow_afcc33d5d00fe7a117049c347a7c800d4_1afcc33d5d00fe7a117049c347a7c800d4" compoundref="window_8cpp" startline="794" endline="994">windowProc_impl2d</referencedby>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a566918cfdad3ca7954923043dc8ecaf8_1a566918cfdad3ca7954923043dc8ecaf8" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Window::enableImGuiMouse</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>enableImGuiMouse</name>
+        <qualifiedname>Window::enableImGuiMouse</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="159" column="6" bodyfile="src/window.cpp" bodystart="718" bodyend="723"/>
+        <referencedby refid="classWindow_a03a5e37c7d4e07b4e77c08776f82e476_1a03a5e37c7d4e07b4e77c08776f82e476" compoundref="window_8cpp" startline="377" endline="386">enableCursor</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a2de00afd8696721e9b26d797d1c5baab_1a2de00afd8696721e9b26d797d1c5baab" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Window::disableImGuiMouse</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>disableImGuiMouse</name>
+        <qualifiedname>Window::disableImGuiMouse</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="160" column="6" bodyfile="src/window.cpp" bodystart="725" bodyend="730"/>
+        <referencedby refid="classWindow_a0a62a86c1134a2579afff3bfc2487d0b_1a0a62a86c1134a2579afff3bfc2487d0b" compoundref="window_8cpp" startline="388" endline="397">disableCursor</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>LRESULT</type>
+        <definition>LRESULT Window::windowProc_impl3d</definition>
+        <argsstring>(_In_ const HWND pWndHandle, _In_ const unsigned msg, _In_ const WPARAM wparam, _In_ const LPARAM lparam)</argsstring>
+        <name>windowProc_impl3d</name>
+        <qualifiedname>Window::windowProc_impl3d</qualifiedname>
+        <param>
+          <type>_In_ const HWND</type>
+          <declname>pWndHandle</declname>
+        </param>
+        <param>
+          <type>_In_ const unsigned</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>_In_ const WPARAM</type>
+          <declname>wparam</declname>
+        </param>
+        <param>
+          <type>_In_ const LPARAM</type>
+          <declname>lparam</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para>Resizing messages</para>
+<para>Menu messages</para>
+<para>clipboard messages</para>
+<para><ref refid="classKeyboard" kindref="compound">Keyboard</ref> messages</para>
+<para><ref refid="classMouse" kindref="compound">Mouse</ref> Messages</para>
+        </inbodydescription>
+        <location file="inc/window.h" line="161" column="9" bodyfile="src/window.cpp" bodystart="996" bodyend="1569"/>
+        <referencedby refid="classWindow_a73049005d1b7e248e423374b50ec1915_1a73049005d1b7e248e423374b50ec1915" compoundref="window_8cpp" startline="774" endline="792">windowProcDelegate</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_afcc33d5d00fe7a117049c347a7c800d4_1afcc33d5d00fe7a117049c347a7c800d4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>LRESULT</type>
+        <definition>LRESULT Window::windowProc_impl2d</definition>
+        <argsstring>(_In_ const HWND pWndHandle, _In_ const unsigned msg, _In_ const WPARAM wparam, _In_ const LPARAM lparam)</argsstring>
+        <name>windowProc_impl2d</name>
+        <qualifiedname>Window::windowProc_impl2d</qualifiedname>
+        <param>
+          <type>_In_ const HWND</type>
+          <declname>pWndHandle</declname>
+        </param>
+        <param>
+          <type>_In_ const unsigned</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>_In_ const WPARAM</type>
+          <declname>wparam</declname>
+        </param>
+        <param>
+          <type>_In_ const LPARAM</type>
+          <declname>lparam</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para><ref refid="classKeyboard" kindref="compound">Keyboard</ref> Messages</para>
+<para><ref refid="classMouse" kindref="compound">Mouse</ref> Messages</para>
+<para>Raw Input Messages</para>
+        </inbodydescription>
+        <location file="inc/window.h" line="162" column="9" bodyfile="src/window.cpp" bodystart="794" bodyend="994"/>
+        <referencedby refid="classWindow_a73049005d1b7e248e423374b50ec1915_1a73049005d1b7e248e423374b50ec1915" compoundref="window_8cpp" startline="774" endline="792">windowProcDelegate</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_ace4b47e72c96be743531236e6c632fa6_1ace4b47e72c96be743531236e6c632fa6" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Window::setFont</definition>
+        <argsstring>(const std::string &amp;fontName)</argsstring>
+        <name>setFont</name>
+        <qualifiedname>Window::setFont</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>fontName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="163" column="6" bodyfile="src/window.cpp" bodystart="1687" bodyend="1695"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a5dc819c56369c625f93cb8131b795d16_1a5dc819c56369c625f93cb8131b795d16" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Window::setWindowProperties</definition>
+        <argsstring>(const int width, const int height, const unsigned flags=SWP_NOZORDER|SWP_NOMOVE|SWP_NOACTIVATE) cond_noex</argsstring>
+        <name>setWindowProperties</name>
+        <qualifiedname>Window::setWindowProperties</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>height</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>flags</declname>
+          <defval>SWP_NOZORDER|SWP_NOMOVE|SWP_NOACTIVATE</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="164" column="6" bodyfile="src/window.cpp" bodystart="1697" bodyend="1703"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a40ba1a2d6d8ec7cd381ef0f20b423acb_1a40ba1a2d6d8ec7cd381ef0f20b423acb" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void WINAPI</type>
+        <definition>void WINAPI Window::processMenu</definition>
+        <argsstring>(HMENU hMenu)</argsstring>
+        <name>processMenu</name>
+        <qualifiedname>Window::processMenu</qualifiedname>
+        <param>
+          <type>HMENU</type>
+          <declname>hMenu</declname>
+        </param>
+        <briefdescription>
+<para>Menu related functions. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="166" column="13" bodyfile="src/window.cpp" bodystart="1852" bodyend="1913"/>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_ac3feef02bfeadc708b8b6e9b093b4368_1ac3feef02bfeadc708b8b6e9b093b4368" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Window::editCopy</definition>
+        <argsstring>(const unsigned format=CLIPBOARD_TEXT_FORMAT)</argsstring>
+        <name>editCopy</name>
+        <qualifiedname>Window::editCopy</qualifiedname>
+        <param>
+          <type>const unsigned</type>
+          <declname>format</declname>
+          <defval><ref refid="window_8h_a02c6467dd339058026d2c844b856e060_1a02c6467dd339058026d2c844b856e060" kindref="member">CLIPBOARD_TEXT_FORMAT</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="167" column="6" bodyfile="src/window.cpp" bodystart="1917" bodyend="2030"/>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a017c50359cd4f4884d06347bd97623fb_1a017c50359cd4f4884d06347bd97623fb" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Window::editPaste</definition>
+        <argsstring>(const unsigned format=CLIPBOARD_TEXT_FORMAT)</argsstring>
+        <name>editPaste</name>
+        <qualifiedname>Window::editPaste</qualifiedname>
+        <param>
+          <type>const unsigned</type>
+          <declname>format</declname>
+          <defval><ref refid="window_8h_a02c6467dd339058026d2c844b856e060_1a02c6467dd339058026d2c844b856e060" kindref="member">CLIPBOARD_TEXT_FORMAT</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="168" column="6" bodyfile="src/window.cpp" bodystart="2034" bodyend="2089"/>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a2ac13cf3243000d5b30ff1a29547e407_1a2ac13cf3243000d5b30ff1a29547e407" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Window::renderClipboardFormat</definition>
+        <argsstring>(unsigned format=CLIPBOARD_TEXT_FORMAT)</argsstring>
+        <name>renderClipboardFormat</name>
+        <qualifiedname>Window::renderClipboardFormat</qualifiedname>
+        <param>
+          <type>unsigned</type>
+          <declname>format</declname>
+          <defval><ref refid="window_8h_a02c6467dd339058026d2c844b856e060_1a02c6467dd339058026d2c844b856e060" kindref="member">CLIPBOARD_TEXT_FORMAT</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="169" column="6" bodyfile="src/window.cpp" bodystart="2093" bodyend="2143"/>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_aa804b1d347f57a8325510921285b8669_1aa804b1d347f57a8325510921285b8669" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Window::editDelete</definition>
+        <argsstring>()</argsstring>
+        <name>editDelete</name>
+        <qualifiedname>Window::editDelete</qualifiedname>
+        <briefdescription>
+<para>delete selected text, eg as if you pressed &quot;cut&quot; or the &quot;delete&quot; key </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="171" column="6" bodyfile="src/window.cpp" bodystart="2146" bodyend="2149"/>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a3086e4a7cdae4cf5af32c9971bd9d34e_1a3086e4a7cdae4cf5af32c9971bd9d34e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Window::setupTrayIcon</definition>
+        <argsstring>()</argsstring>
+        <name>setupTrayIcon</name>
+        <qualifiedname>Window::setupTrayIcon</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="172" column="6" bodyfile="src/window.cpp" bodystart="450" bodyend="472"/>
+        <referencedby refid="classWindow_a69f83cc5dc2d4f9807e4d11d2b2623e1_1a69f83cc5dc2d4f9807e4d11d2b2623e1" compoundref="window_8cpp" startline="118" endline="270">Window</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a0c807d8500dd6611e32c02c583dbd655_1a0c807d8500dd6611e32c02c583dbd655" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Window::showTrayIcon</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>showTrayIcon</name>
+        <qualifiedname>Window::showTrayIcon</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="173" column="6" bodyfile="src/window.cpp" bodystart="474" bodyend="478"/>
+        <referencedby refid="classWindow_afcc33d5d00fe7a117049c347a7c800d4_1afcc33d5d00fe7a117049c347a7c800d4" compoundref="window_8cpp" startline="794" endline="994">windowProc_impl2d</referencedby>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_a25be60f78bde0afcfa73224c5ea7b333_1a25be60f78bde0afcfa73224c5ea7b333" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Window::deleteTrayIcon</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>deleteTrayIcon</name>
+        <qualifiedname>Window::deleteTrayIcon</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="174" column="6" bodyfile="src/window.cpp" bodystart="480" bodyend="485"/>
+        <referencedby refid="classWindow_a245d821e6016fa1f6970ccbbedd635f6_1a245d821e6016fa1f6970ccbbedd635f6" compoundref="window_8cpp" startline="298" endline="330">~Window</referencedby>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">windowProc_impl3d</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>NonCopyable</label>
+        <link refid="classNonCopyable"/>
+      </node>
+      <node id="1">
+        <label>Window</label>
+        <link refid="classWindow"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>Keyboard</label>
+        <link refid="classKeyboard"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Mouse</label>
+        <link refid="classMouse"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>NonCopyable</label>
+        <link refid="classNonCopyable"/>
+      </node>
+      <node id="1">
+        <label>Window</label>
+        <link refid="classWindow"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>s_keyboard</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>s_mouse</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>s_pBoxLocalClip</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>m_windowClass</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>Window::WindowClass</label>
+        <link refid="classWindow_1_1WindowClass"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>tagLABELBOX</label>
+        <link refid="structtagLABELBOX"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/window.h" line="32" column="1" bodyfile="inc/window.h" bodystart="34" bodyend="175"/>
+    <listofallmembers>
+      <member refid="classWindow_afa1a733e26aa19e79c461139ecdb536e_1afa1a733e26aa19e79c461139ecdb536e" prot="private" virt="non-virtual"><scope>Window</scope><name>confineCursor</name></member>
+      <member refid="classWindow_a8399c68d7ae5f5cc253512d42674e049_1a8399c68d7ae5f5cc253512d42674e049" prot="public" virt="non-virtual"><scope>Window</scope><name>convertHbitmapToHicon</name></member>
+      <member refid="classWindow_ab9660b523de7bdc93b8048a12edd1b6e_1ab9660b523de7bdc93b8048a12edd1b6e" prot="public" virt="non-virtual"><scope>Window</scope><name>convertHiconToHbitmap</name></member>
+      <member refid="classWindow_a25be60f78bde0afcfa73224c5ea7b333_1a25be60f78bde0afcfa73224c5ea7b333" prot="private" virt="non-virtual"><scope>Window</scope><name>deleteTrayIcon</name></member>
+      <member refid="classWindow_a043951d406f11adc6a7320fcc40de5ff_1a043951d406f11adc6a7320fcc40de5ff" prot="public" virt="non-virtual"><scope>Window</scope><name>dialogProc</name></member>
+      <member refid="classWindow_a0a62a86c1134a2579afff3bfc2487d0b_1a0a62a86c1134a2579afff3bfc2487d0b" prot="public" virt="non-virtual"><scope>Window</scope><name>disableCursor</name></member>
+      <member refid="classWindow_a2de00afd8696721e9b26d797d1c5baab_1a2de00afd8696721e9b26d797d1c5baab" prot="private" virt="non-virtual"><scope>Window</scope><name>disableImGuiMouse</name></member>
+      <member refid="classWindow_a466dc023c98b22fdc026c2d70bca1fb9_1a466dc023c98b22fdc026c2d70bca1fb9" prot="public" virt="non-virtual"><scope>Window</scope><name>displayMessageBoxOkCancel</name></member>
+      <member refid="classWindow_ab8b32cdcbc931c83c777887df83c5a13_1ab8b32cdcbc931c83c777887df83c5a13" prot="public" virt="non-virtual"><scope>Window</scope><name>displayMessageBoxYesNo</name></member>
+      <member refid="classWindow_ac3feef02bfeadc708b8b6e9b093b4368_1ac3feef02bfeadc708b8b6e9b093b4368" prot="private" virt="non-virtual"><scope>Window</scope><name>editCopy</name></member>
+      <member refid="classWindow_aa804b1d347f57a8325510921285b8669_1aa804b1d347f57a8325510921285b8669" prot="private" virt="non-virtual"><scope>Window</scope><name>editDelete</name></member>
+      <member refid="classWindow_a017c50359cd4f4884d06347bd97623fb_1a017c50359cd4f4884d06347bd97623fb" prot="private" virt="non-virtual"><scope>Window</scope><name>editPaste</name></member>
+      <member refid="classWindow_a03a5e37c7d4e07b4e77c08776f82e476_1a03a5e37c7d4e07b4e77c08776f82e476" prot="public" virt="non-virtual"><scope>Window</scope><name>enableCursor</name></member>
+      <member refid="classWindow_a566918cfdad3ca7954923043dc8ecaf8_1a566918cfdad3ca7954923043dc8ecaf8" prot="private" virt="non-virtual"><scope>Window</scope><name>enableImGuiMouse</name></member>
+      <member refid="classWindow_a4a4ac4dd9c15b4e2a555334befddf7a9_1a4a4ac4dd9c15b4e2a555334befddf7a9" prot="private" virt="non-virtual"><scope>Window</scope><name>freeCursor</name></member>
+      <member refid="classWindow_aa60fa73c7502fab7465b9aca117f577f_1aa60fa73c7502fab7465b9aca117f577f" prot="public" virt="non-virtual"><scope>Window</scope><name>getConsoleHandle</name></member>
+      <member refid="classWindow_a2005a212933dd5d754ac219ca1a59ea6_1a2005a212933dd5d754ac219ca1a59ea6" prot="public" virt="non-virtual"><scope>Window</scope><name>getDc</name></member>
+      <member refid="classWindow_a639d79c96a98f0462aaae8642d4a371f_1a639d79c96a98f0462aaae8642d4a371f" prot="public" virt="non-virtual"><scope>Window</scope><name>getDesktop</name></member>
+      <member refid="classWindow_a7bfce0a1441d9a824b5469ae7de8c862_1a7bfce0a1441d9a824b5469ae7de8c862" prot="public" virt="non-virtual"><scope>Window</scope><name>getGraphics</name></member>
+      <member refid="classWindow_a5cccd0b4ac2a4b1e5fa40cc270342101_1a5cccd0b4ac2a4b1e5fa40cc270342101" prot="public" virt="non-virtual"><scope>Window</scope><name>getHandle</name></member>
+      <member refid="classWindow_a26083d8f85d6d29f84cac1d246cbb62b_1a26083d8f85d6d29f84cac1d246cbb62b" prot="public" virt="non-virtual"><scope>Window</scope><name>getHeight</name></member>
+      <member refid="classWindow_abba393eef111b17a568f3913afb9993b_1abba393eef111b17a568f3913afb9993b" prot="public" virt="non-virtual"><scope>Window</scope><name>getHeightClientArea</name></member>
+      <member refid="classWindow_a9e348a5db42ae8467ef4c1beff84a966_1a9e348a5db42ae8467ef4c1beff84a966" prot="public" virt="non-virtual"><scope>Window</scope><name>getInfo</name></member>
+      <member refid="classWindow_af51b384330835f7ee8d0c3cb1254c4f8_1af51b384330835f7ee8d0c3cb1254c4f8" prot="public" virt="non-virtual"><scope>Window</scope><name>getKeyboard</name></member>
+      <member refid="classWindow_a89e829c66c387dfca31d10b9806da751_1a89e829c66c387dfca31d10b9806da751" prot="public" virt="non-virtual"><scope>Window</scope><name>getMouse</name></member>
+      <member refid="classWindow_a07cb1a0df450bf04c6def6fefa588963_1a07cb1a0df450bf04c6def6fefa588963" prot="public" virt="non-virtual"><scope>Window</scope><name>getName</name></member>
+      <member refid="classWindow_ad9c087919d3f2b8bf0b5685795389a83_1ad9c087919d3f2b8bf0b5685795389a83" prot="public" virt="non-virtual"><scope>Window</scope><name>getParent</name></member>
+      <member refid="classWindow_a4dbcd17685dba50912a2989c2782ec0d_1a4dbcd17685dba50912a2989c2782ec0d" prot="public" virt="non-virtual"><scope>Window</scope><name>getTitle</name></member>
+      <member refid="classWindow_ae1da2df411ae2d3b1b9ea0ac8ce36286_1ae1da2df411ae2d3b1b9ea0ac8ce36286" prot="public" virt="non-virtual"><scope>Window</scope><name>getTopMenu</name></member>
+      <member refid="classWindow_a04ce42e257b20bc0ed80a7e5e5249c3b_1a04ce42e257b20bc0ed80a7e5e5249c3b" prot="public" virt="non-virtual"><scope>Window</scope><name>getWidth</name></member>
+      <member refid="classWindow_ae3f3f96cddd3362dcf7bd82a5f7788c4_1ae3f3f96cddd3362dcf7bd82a5f7788c4" prot="public" virt="non-virtual"><scope>Window</scope><name>getWidthClientArea</name></member>
+      <member refid="classWindow_a752e47d52453c84ebf8c3f42a6343e66_1a752e47d52453c84ebf8c3f42a6343e66" prot="public" virt="non-virtual"><scope>Window</scope><name>getWindowClass</name></member>
+      <member refid="classWindow_a963c689b550db092425a27d653375953_1a963c689b550db092425a27d653375953" prot="public" virt="non-virtual"><scope>Window</scope><name>getWindowStyles</name></member>
+      <member refid="classWindow_af3729cddcc53edb24dcf9379fd17bf1f_1af3729cddcc53edb24dcf9379fd17bf1f" prot="public" virt="non-virtual"><scope>Window</scope><name>getWindowStylesEx</name></member>
+      <member refid="classWindow_a5532ddffbaa83268e3f62315d0da6540_1a5532ddffbaa83268e3f62315d0da6540" prot="public" virt="non-virtual"><scope>Window</scope><name>getX</name></member>
+      <member refid="classWindow_ad68c496df5b556d8dd4abd632c0b8878_1ad68c496df5b556d8dd4abd632c0b8878" prot="public" virt="non-virtual"><scope>Window</scope><name>getY</name></member>
+      <member refid="classWindow_a7a22b0c74d1615879b93e69d7a0370ab_1a7a22b0c74d1615879b93e69d7a0370ab" prot="public" virt="non-virtual"><scope>Window</scope><name>hasParent</name></member>
+      <member refid="classWindow_a8e1a697f5c01400e49c3263d2afd4686_1a8e1a697f5c01400e49c3263d2afd4686" prot="private" virt="non-virtual"><scope>Window</scope><name>hideCursor</name></member>
+      <member refid="classWindow_a3c40c067671e1a563ffdc0a22846a4f1_1a3c40c067671e1a563ffdc0a22846a4f1" prot="public" virt="non-virtual"><scope>Window</scope><name>hideMenu</name></member>
+      <member refid="classWindow_afc527296ebd4d19ca2fdfba50c1aa19c_1afc527296ebd4d19ca2fdfba50c1aa19c" prot="public" virt="non-virtual"><scope>Window</scope><name>isActive</name></member>
+      <member refid="classWindow_ae75c970afd77b9812f1fa3fc96549844_1ae75c970afd77b9812f1fa3fc96549844" prot="public" virt="non-virtual"><scope>Window</scope><name>isCursorEnabled</name></member>
+      <member refid="classWindow_aad814dbb72db34012be61839a21ea004_1aad814dbb72db34012be61839a21ea004" prot="public" virt="non-virtual"><scope>Window</scope><name>isDescendantOf</name></member>
+      <member refid="classWindow_a1bc18114b16d26fcc7e776802a1c33ce_1a1bc18114b16d26fcc7e776802a1c33ce" prot="public" virt="non-virtual"><scope>Window</scope><name>isHidden</name></member>
+      <member refid="classWindow_ad68904fd77fc0139d48741cb770c7dff_1ad68904fd77fc0139d48741cb770c7dff" prot="public" virt="non-virtual"><scope>Window</scope><name>isMaximized</name></member>
+      <member refid="classWindow_a9dbbf71fa232f1014678ae05d9bf1572_1a9dbbf71fa232f1014678ae05d9bf1572" prot="public" virt="non-virtual"><scope>Window</scope><name>isMinimized</name></member>
+      <member refid="classWindow_a588f1844e2f5098b7a75f8703efde18e_1a588f1844e2f5098b7a75f8703efde18e" prot="private" virt="non-virtual"><scope>Window</scope><name>m_bCursorEnabled</name></member>
+      <member refid="classWindow_aa1e61281cd037023b477dcb843b5b573_1aa1e61281cd037023b477dcb843b5b573" prot="private" virt="non-virtual"><scope>Window</scope><name>m_clipboardFormats</name></member>
+      <member refid="classWindow_a1fa9417ebe0ef97a982efb0dadcf8a5d_1a1fa9417ebe0ef97a982efb0dadcf8a5d" prot="private" virt="non-virtual"><scope>Window</scope><name>m_hTrayIconPopupMenu</name></member>
+      <member refid="classWindow_ab39b5ba6b3adea40aa19ffa50e306dbb_1ab39b5ba6b3adea40aa19ffa50e306dbb" prot="private" virt="non-virtual"><scope>Window</scope><name>m_hWnd</name></member>
+      <member refid="classWindow_a0cd7fb10e78040422ad35827fd9d1554_1a0cd7fb10e78040422ad35827fd9d1554" prot="private" virt="non-virtual"><scope>Window</scope><name>m_info</name></member>
+      <member refid="classWindow_ae2e5678a2d1737dd39ff66cbb7565e15_1ae2e5678a2d1737dd39ff66cbb7565e15" prot="private" virt="non-virtual"><scope>Window</scope><name>m_name</name></member>
+      <member refid="classWindow_a9801c1522a675647f8e2cbfa6d10c7dc_1a9801c1522a675647f8e2cbfa6d10c7dc" prot="private" virt="non-virtual"><scope>Window</scope><name>m_pGraphics</name></member>
+      <member refid="classWindow_a4a330c87fd1258d1846f147a9a188bd0_1a4a330c87fd1258d1846f147a9a188bd0" prot="private" virt="non-virtual"><scope>Window</scope><name>m_pModalDialog</name></member>
+      <member refid="classWindow_a8eb3ec06d02253d7102350bd9533a17c_1a8eb3ec06d02253d7102350bd9533a17c" prot="private" virt="non-virtual"><scope>Window</scope><name>m_pSplash</name></member>
+      <member refid="classWindow_ae9ced8207aab8f5717efd6610340e62d_1ae9ced8207aab8f5717efd6610340e62d" prot="private" virt="non-virtual"><scope>Window</scope><name>m_title</name></member>
+      <member refid="classWindow_a3129bb2ec0c28df7e02041c6d74fb5cd_1a3129bb2ec0c28df7e02041c6d74fb5cd" prot="private" virt="non-virtual"><scope>Window</scope><name>m_trayIconData</name></member>
+      <member refid="classWindow_ae3edc49affe0c51784741be3fb19ada9_1ae3edc49affe0c51784741be3fb19ada9" prot="private" virt="non-virtual"><scope>Window</scope><name>m_windowClass</name></member>
+      <member refid="classWindow_acc3b6797295659d5ed747dd64aae767d_1acc3b6797295659d5ed747dd64aae767d" prot="public" virt="non-virtual"><scope>Window</scope><name>messageBoxPrintf</name></member>
+      <member refid="classWindow_a1b5d1120e6ad1f4e078e2942dffd0041_1a1b5d1120e6ad1f4e078e2942dffd0041" prot="public" virt="non-virtual"><scope>Window</scope><name>messageLoop</name></member>
+      <member refid="classWindow_a97078387be519b16401c3bb0f299aa01_1a97078387be519b16401c3bb0f299aa01" prot="public" virt="non-virtual"><scope>Window</scope><name>minimize</name></member>
+      <member refid="classNonCopyable_a809b6e4ade7ae32f6d248f2a3b783d45_1a809b6e4ade7ae32f6d248f2a3b783d45" prot="public" virt="non-virtual"><scope>Window</scope><name>NonCopyable</name></member>
+      <member refid="classNonCopyable_a15aa3015488bb26c47ded914cb630cf5_1a15aa3015488bb26c47ded914cb630cf5" prot="public" virt="non-virtual"><scope>Window</scope><name>NonCopyable</name></member>
+      <member refid="classNonCopyable_a487646562ae30ece23d7638f2aed1dde_1a487646562ae30ece23d7638f2aed1dde" prot="public" virt="non-virtual"><scope>Window</scope><name>NonCopyable</name></member>
+      <member refid="classNonCopyable_af716e4cfb79381710ef4490414939ae9_1af716e4cfb79381710ef4490414939ae9" prot="public" virt="non-virtual"><scope>Window</scope><name>NonCopyable</name></member>
+      <member refid="classWindow_a7568bb745290d9eb85cc4dcae8a45bca_1a7568bb745290d9eb85cc4dcae8a45bca" prot="public" virt="non-virtual"><scope>Window</scope><name>operator bool</name></member>
+      <member refid="classWindow_ab337075b991c72d66625f6ca13ae78f8_1ab337075b991c72d66625f6ca13ae78f8" prot="public" virt="non-virtual"><scope>Window</scope><name>operator=</name></member>
+      <member refid="classNonCopyable_af4788b57da9a9faa570c754c22c724f5_1af4788b57da9a9faa570c754c22c724f5" prot="public" virt="non-virtual" ambiguityscope="NonCopyable::"><scope>Window</scope><name>operator=</name></member>
+      <member refid="classNonCopyable_ae032ca32cda9c836c27b28eb6a087d18_1ae032ca32cda9c836c27b28eb6a087d18" prot="public" virt="non-virtual" ambiguityscope="NonCopyable::"><scope>Window</scope><name>operator=</name></member>
+      <member refid="classNonCopyable_af81816bd4c2c4421a6eab98843ead6e4_1af81816bd4c2c4421a6eab98843ead6e4" prot="public" virt="non-virtual" ambiguityscope="NonCopyable::"><scope>Window</scope><name>operator=</name></member>
+      <member refid="classWindow_a40ba1a2d6d8ec7cd381ef0f20b423acb_1a40ba1a2d6d8ec7cd381ef0f20b423acb" prot="private" virt="non-virtual"><scope>Window</scope><name>processMenu</name></member>
+      <member refid="classWindow_a2ac13cf3243000d5b30ff1a29547e407_1a2ac13cf3243000d5b30ff1a29547e407" prot="private" virt="non-virtual"><scope>Window</scope><name>renderClipboardFormat</name></member>
+      <member refid="classWindow_ac12065a404bba4aaca510c33a8a338d1_1ac12065a404bba4aaca510c33a8a338d1" prot="public" virt="non-virtual"><scope>Window</scope><name>restore</name></member>
+      <member refid="classWindow_adb2d358327f22c4df6f01ea4e92db80b_1adb2d358327f22c4df6f01ea4e92db80b" prot="private" virt="non-virtual"><scope>Window</scope><name>s_hAcceleratorTable</name></member>
+      <member refid="classWindow_adad72e93053ae81a048b11b80a886ca4_1adad72e93053ae81a048b11b80a886ca4" prot="private" virt="non-virtual"><scope>Window</scope><name>s_keyboard</name></member>
+      <member refid="classWindow_a346ad68a7a25b4faa0d7b99bf6a20a13_1a346ad68a7a25b4faa0d7b99bf6a20a13" prot="private" virt="non-virtual"><scope>Window</scope><name>s_mouse</name></member>
+      <member refid="classWindow_a9cc5ee14371f126378a31c305189611a_1a9cc5ee14371f126378a31c305189611a" prot="private" virt="non-virtual"><scope>Window</scope><name>s_pBoxLocalClip</name></member>
+      <member refid="classWindow_a34b7a782124f9a212b5e42a75d90ce35_1a34b7a782124f9a212b5e42a75d90ce35" prot="private" virt="non-virtual"><scope>Window</scope><name>s_rawInputBuffer</name></member>
+      <member refid="classWindow_a489a152d80bb5ee013d485e0c92e6064_1a489a152d80bb5ee013d485e0c92e6064" prot="private" virt="non-virtual"><scope>Window</scope><name>s_timerEvent</name></member>
+      <member refid="classWindow_a989ce4fa31d0caf58d4f238b9c094d31_1a989ce4fa31d0caf58d4f238b9c094d31" prot="public" virt="non-virtual"><scope>Window</scope><name>saveClipboardTextAsVar</name></member>
+      <member refid="classWindow_a9cd314e68c41dc086d9de29c5d5b0658_1a9cd314e68c41dc086d9de29c5d5b0658" prot="public" virt="non-virtual"><scope>Window</scope><name>setBorderless</name></member>
+      <member refid="classWindow_a5a4f28721b04c0047afb8881f68e359d_1a5a4f28721b04c0047afb8881f68e359d" prot="public" virt="non-virtual"><scope>Window</scope><name>setEnable</name></member>
+      <member refid="classWindow_a9d12dc09ac60627ee8192096b45fc129_1a9d12dc09ac60627ee8192096b45fc129" prot="public" virt="non-virtual"><scope>Window</scope><name>setFocus</name></member>
+      <member refid="classWindow_ace4b47e72c96be743531236e6c632fa6_1ace4b47e72c96be743531236e6c632fa6" prot="private" virt="non-virtual"><scope>Window</scope><name>setFont</name></member>
+      <member refid="classWindow_a9278ce486f1bedf76b70b44180ad57f7_1a9278ce486f1bedf76b70b44180ad57f7" prot="public" virt="non-virtual"><scope>Window</scope><name>setOnTop</name></member>
+      <member refid="classWindow_a6f835d03f53872fb1a84f142a037977e_1a6f835d03f53872fb1a84f142a037977e" prot="public" virt="non-virtual"><scope>Window</scope><name>setRedrawing</name></member>
+      <member refid="classWindow_a6d03fd6c9fbfcaf4aba92e6b4d08123e_1a6d03fd6c9fbfcaf4aba92e6b4d08123e" prot="public" virt="non-virtual"><scope>Window</scope><name>setTitle</name></member>
+      <member refid="classWindow_a4e66e4896e552265193a794ae82a1b2d_1a4e66e4896e552265193a794ae82a1b2d" prot="public" virt="non-virtual"><scope>Window</scope><name>setupSplashWindow</name></member>
+      <member refid="classWindow_a3086e4a7cdae4cf5af32c9971bd9d34e_1a3086e4a7cdae4cf5af32c9971bd9d34e" prot="private" virt="non-virtual"><scope>Window</scope><name>setupTrayIcon</name></member>
+      <member refid="classWindow_a5dc819c56369c625f93cb8131b795d16_1a5dc819c56369c625f93cb8131b795d16" prot="private" virt="non-virtual"><scope>Window</scope><name>setWindowProperties</name></member>
+      <member refid="classWindow_ac96ebcab2a11b85fbbb9f361e4fec14d_1ac96ebcab2a11b85fbbb9f361e4fec14d" prot="public" virt="non-virtual"><scope>Window</scope><name>setWindowStyles</name></member>
+      <member refid="classWindow_a84c9316e2abef10f3c1fbe3ebcb3bad6_1a84c9316e2abef10f3c1fbe3ebcb3bad6" prot="public" virt="non-virtual"><scope>Window</scope><name>setWindowStylesEx</name></member>
+      <member refid="classWindow_a0aed96a4d37d339964c343b729b214f2_1a0aed96a4d37d339964c343b729b214f2" prot="private" virt="non-virtual"><scope>Window</scope><name>showCursor</name></member>
+      <member refid="classWindow_a23bdfd4da0ed787aef0d99862fc5298b_1a23bdfd4da0ed787aef0d99862fc5298b" prot="public" virt="non-virtual"><scope>Window</scope><name>showMenu</name></member>
+      <member refid="classWindow_a0c807d8500dd6611e32c02c583dbd655_1a0c807d8500dd6611e32c02c583dbd655" prot="private" virt="non-virtual"><scope>Window</scope><name>showTrayIcon</name></member>
+      <member refid="classWindow_adc6e743324b3b804df5b2fa86ced2a6f_1adc6e743324b3b804df5b2fa86ced2a6f" prot="public" virt="non-virtual"><scope>Window</scope><name>splashWindowProc</name></member>
+      <member refid="classWindow_acf8285de3092f3452349ee4591627b11_1acf8285de3092f3452349ee4591627b11" prot="public" virt="non-virtual"><scope>Window</scope><name>splashWindowTimerProc</name></member>
+      <member refid="classWindow_a69f83cc5dc2d4f9807e4d11d2b2623e1_1a69f83cc5dc2d4f9807e4d11d2b2623e1" prot="public" virt="non-virtual"><scope>Window</scope><name>Window</name></member>
+      <member refid="classWindow_a10df09e61d4dcb181c381f2745e0e4e1_1a10df09e61d4dcb181c381f2745e0e4e1" prot="public" virt="non-virtual"><scope>Window</scope><name>Window</name></member>
+      <member refid="classWindow_a63b33789bf23618f116c8b97b2010f58_1a63b33789bf23618f116c8b97b2010f58" prot="public" virt="non-virtual"><scope>Window</scope><name>windowProc</name></member>
+      <member refid="classWindow_afcc33d5d00fe7a117049c347a7c800d4_1afcc33d5d00fe7a117049c347a7c800d4" prot="private" virt="non-virtual"><scope>Window</scope><name>windowProc_impl2d</name></member>
+      <member refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" prot="private" virt="non-virtual"><scope>Window</scope><name>windowProc_impl3d</name></member>
+      <member refid="classWindow_a73049005d1b7e248e423374b50ec1915_1a73049005d1b7e248e423374b50ec1915" prot="private" virt="non-virtual"><scope>Window</scope><name>windowProcDelegate</name></member>
+      <member refid="classNonCopyable_a3e461fb46c72b9a5af7df7e74dbd899e_1a3e461fb46c72b9a5af7df7e74dbd899e" prot="protected" virt="non-virtual"><scope>Window</scope><name>~NonCopyable</name></member>
+      <member refid="classWindow_a245d821e6016fa1f6970ccbbedd635f6_1a245d821e6016fa1f6970ccbbedd635f6" prot="public" virt="non-virtual"><scope>Window</scope><name>~Window</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

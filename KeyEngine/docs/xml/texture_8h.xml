@@ -1,0 +1,440 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="texture_8h" kind="file" language="C++">
+    <compoundname>texture.h</compoundname>
+    <includes refid="key__wrl_8h" local="yes">key_wrl.h</includes>
+    <includes local="no">vector</includes>
+    <includes refid="bindable_8h" local="yes">bindable.h</includes>
+    <includes refid="bitmap_8h" local="yes">bitmap.h</includes>
+    <includes refid="render__target_8h" local="yes">render_target.h</includes>
+    <includes refid="depth__stencil__view_8h" local="yes">depth_stencil_view.h</includes>
+    <includedby refid="blur__pass_8h" local="yes">inc/blur_pass.h</includedby>
+    <includedby refid="negative__pass_8h" local="yes">inc/negative_pass.h</includedby>
+    <includedby refid="pass__through_8h" local="yes">inc/pass_through.h</includedby>
+    <includedby refid="SHADOW__PASS_8CPP" local="yes">src/SHADOW_PASS.CPP</includedby>
+    <includedby refid="cube_8cpp" local="yes">src/cube.cpp</includedby>
+    <includedby refid="graphics_8cpp" local="yes">src/graphics.cpp</includedby>
+    <includedby refid="material__loader_8cpp" local="yes">src/material_loader.cpp</includedby>
+    <includedby refid="opaque__pass_8cpp" local="yes">src/opaque_pass.cpp</includedby>
+    <includedby refid="pass__2d_8cpp" local="yes">src/pass_2d.cpp</includedby>
+    <includedby refid="plane_8cpp" local="yes">src/plane.cpp</includedby>
+    <includedby refid="terrain_8cpp" local="yes">src/terrain.cpp</includedby>
+    <includedby refid="texture_8cpp" local="yes">src/texture.cpp</includedby>
+    <includedby refid="texture__processor_8cpp" local="yes">src/texture_processor.cpp</includedby>
+    <includedby refid="ui__component_8cpp" local="yes">src/ui_component.cpp</includedby>
+    <includedby refid="ui__pass_8cpp" local="yes">src/ui_pass.cpp</includedby>
+    <incdepgraph>
+      <node id="9">
+        <label>assertions_console.h</label>
+        <link refid="assertions__console_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>bindable.h</label>
+        <link refid="bindable_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>bitmap.h</label>
+        <link refid="bitmap_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>color.h</label>
+        <link refid="color_8h"/>
+      </node>
+      <node id="27">
+        <label>depth_stencil_view.h</label>
+        <link refid="depth__stencil__view_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>graphics_friend.h</label>
+        <link refid="graphics__friend_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>key_exception.h</label>
+        <link refid="key__exception_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>key_wrl.h</label>
+        <link refid="key__wrl_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="24">
+        <label>render_surface.h</label>
+        <link refid="render__surface_8h"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>render_target.h</label>
+        <link refid="render__target_8h"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/texture.h</label>
+        <link refid="texture_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>texture_desc.h</label>
+        <link refid="texture__desc_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>winner.h</label>
+        <link refid="winner_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>DirectxMath.h</label>
+      </node>
+      <node id="14">
+        <label>Windows.h</label>
+      </node>
+      <node id="25">
+        <label>array</label>
+      </node>
+      <node id="8">
+        <label>d3d11.h</label>
+      </node>
+      <node id="17">
+        <label>dxtex/DirectXTex.h</label>
+      </node>
+      <node id="10">
+        <label>iostream</label>
+      </node>
+      <node id="6">
+        <label>memory</label>
+      </node>
+      <node id="23">
+        <label>optional</label>
+      </node>
+      <node id="13">
+        <label>sdkddkver.h</label>
+      </node>
+      <node id="19">
+        <label>stdexcept</label>
+      </node>
+      <node id="15">
+        <label>string</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
+      </node>
+      <node id="3">
+        <label>wrl.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>inc/blur_pass.h</label>
+        <link refid="blur__pass_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>inc/negative_pass.h</label>
+        <link refid="negative__pass_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>inc/pass_through.h</label>
+        <link refid="pass__through_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/texture.h</label>
+        <link refid="texture_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>src/SHADOW_PASS.CPP</label>
+        <link refid="SHADOW__PASS_8CPP"/>
+      </node>
+      <node id="3">
+        <label>src/blur_pass.cpp</label>
+        <link refid="blur__pass_8cpp"/>
+      </node>
+      <node id="10">
+        <label>src/cube.cpp</label>
+        <link refid="cube_8cpp"/>
+      </node>
+      <node id="11">
+        <label>src/graphics.cpp</label>
+        <link refid="graphics_8cpp"/>
+      </node>
+      <node id="12">
+        <label>src/material_loader.cpp</label>
+        <link refid="material__loader_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/negative_pass.cpp</label>
+        <link refid="negative__pass_8cpp"/>
+      </node>
+      <node id="13">
+        <label>src/opaque_pass.cpp</label>
+        <link refid="opaque__pass_8cpp"/>
+      </node>
+      <node id="14">
+        <label>src/pass_2d.cpp</label>
+        <link refid="pass__2d_8cpp"/>
+      </node>
+      <node id="8">
+        <label>src/pass_through.cpp</label>
+        <link refid="pass__through_8cpp"/>
+      </node>
+      <node id="15">
+        <label>src/plane.cpp</label>
+        <link refid="plane_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/renderer.cpp</label>
+        <link refid="renderer_8cpp"/>
+      </node>
+      <node id="16">
+        <label>src/terrain.cpp</label>
+        <link refid="terrain_8cpp"/>
+      </node>
+      <node id="17">
+        <label>src/texture.cpp</label>
+        <link refid="texture_8cpp"/>
+      </node>
+      <node id="18">
+        <label>src/texture_processor.cpp</label>
+        <link refid="texture__processor_8cpp"/>
+      </node>
+      <node id="19">
+        <label>src/ui_component.cpp</label>
+        <link refid="ui__component_8cpp"/>
+      </node>
+      <node id="20">
+        <label>src/ui_pass.cpp</label>
+        <link refid="ui__pass_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classTexture" prot="public">Texture</innerclass>
+    <innerclass refid="classTextureOffscreenRT" prot="public">TextureOffscreenRT</innerclass>
+    <innerclass refid="classTextureOffscreenDS" prot="public">TextureOffscreenDS</innerclass>
+    <innerclass refid="classTextureArrayOffscreenDS" prot="public">TextureArrayOffscreenDS</innerclass>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="texture_8h_a48efc2b83d04747965ce26c7eb8d406c_1a48efc2b83d04747965ce26c7eb8d406c" prot="public" static="no">
+        <type>DirectX::XMVECTOR(*)(<ref refid="classBitmap_a83b763f52f32144764bf50ba22c3c080_1a83b763f52f32144764bf50ba22c3c080" kindref="member">Bitmap::Texel</ref>)</type>
+        <definition>typedef DirectX::XMVECTOR(* TextureOp)(Bitmap::Texel) =  DirectX::XMVECTOR(*)(Bitmap::Texel)</definition>
+        <argsstring></argsstring>
+        <name>TextureOp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="13" column="1" bodyfile="inc/texture.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="key__wrl_8h" kindref="compound">key_wrl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="bindable_8h" kindref="compound">bindable.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="bitmap_8h" kindref="compound">bitmap.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="render__target_8h" kindref="compound">render_target.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="depth__stencil__view_8h" kindref="compound">depth_stencil_view.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classGraphics" kindref="compound">Graphics</ref>;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="texture_8h_a48efc2b83d04747965ce26c7eb8d406c_1a48efc2b83d04747965ce26c7eb8d406c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="texture_8h_a48efc2b83d04747965ce26c7eb8d406c_1a48efc2b83d04747965ce26c7eb8d406c" kindref="member">TextureOp</ref><sp/>=<sp/>DirectX::XMVECTOR(*)(<ref refid="classBitmap_a83b763f52f32144764bf50ba22c3c080_1a83b763f52f32144764bf50ba22c3c080" kindref="member">Bitmap::Texel</ref>);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="classTexture" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classTexture" kindref="compound">Texture</ref></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classIBindable" kindref="compound">IBindable</ref></highlight></codeline>
+<codeline lineno="17"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="18" refid="classTexture_a891a27933cfc6deafcc3597ee9cfe07f_1a891a27933cfc6deafcc3597ee9cfe07f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classTexture_a891a27933cfc6deafcc3597ee9cfe07f_1a891a27933cfc6deafcc3597ee9cfe07f" kindref="member">m_bAlpha</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="19" refid="classTexture_a938db0f8e54d3817b1ffaecd5370ef1d_1a938db0f8e54d3817b1ffaecd5370ef1d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classTexture_a938db0f8e54d3817b1ffaecd5370ef1d_1a938db0f8e54d3817b1ffaecd5370ef1d" kindref="member">m_bDynamic</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="20" refid="classTexture_a3dd6dde05fca6bd7f4ab08b3a6307959_1a3dd6dde05fca6bd7f4ab08b3a6307959" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classTexture_a3dd6dde05fca6bd7f4ab08b3a6307959_1a3dd6dde05fca6bd7f4ab08b3a6307959" kindref="member">m_path</ref>;</highlight></codeline>
+<codeline lineno="21" refid="classTexture_ac243c2a4552bc0af19b5b1ea812ce9ee_1ac243c2a4552bc0af19b5b1ea812ce9ee" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classTexture_ac243c2a4552bc0af19b5b1ea812ce9ee_1ac243c2a4552bc0af19b5b1ea812ce9ee" kindref="member">m_width</ref>;</highlight></codeline>
+<codeline lineno="22" refid="classTexture_ae8f4dc92aa7350d5e5805c520834604f_1ae8f4dc92aa7350d5e5805c520834604f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classTexture_ae8f4dc92aa7350d5e5805c520834604f_1ae8f4dc92aa7350d5e5805c520834604f" kindref="member">m_height</ref>;</highlight></codeline>
+<codeline lineno="23" refid="classTexture_a80f9298671ae47c264992268f659287c_1a80f9298671ae47c264992268f659287c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classTexture_a80f9298671ae47c264992268f659287c_1a80f9298671ae47c264992268f659287c" kindref="member">m_slot</ref>;</highlight></codeline>
+<codeline lineno="24" refid="classTexture_abbf21618c668cdaeba940ca5e4c203a8_1abbf21618c668cdaeba940ca5e4c203a8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="texture_8h_a48efc2b83d04747965ce26c7eb8d406c_1a48efc2b83d04747965ce26c7eb8d406c" kindref="member">TextureOp</ref><sp/><ref refid="classTexture_abbf21618c668cdaeba940ca5e4c203a8_1abbf21618c668cdaeba940ca5e4c203a8" kindref="member">m_op</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="25" refid="classTexture_a88b470c8fc311e910af1627fa44b51eb_1a88b470c8fc311e910af1627fa44b51eb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Microsoft::WRL::ComPtr&lt;ID3D11Texture2D&gt;<sp/><ref refid="classTexture_a88b470c8fc311e910af1627fa44b51eb_1a88b470c8fc311e910af1627fa44b51eb" kindref="member">m_pTex</ref>;</highlight></codeline>
+<codeline lineno="26" refid="classTexture_a6e38a7b24e9a8eb8714b8ce86e8305c8_1a6e38a7b24e9a8eb8714b8ce86e8305c8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Microsoft::WRL::ComPtr&lt;ID3D11ShaderResourceView&gt;<sp/><ref refid="classTexture_a6e38a7b24e9a8eb8714b8ce86e8305c8_1a6e38a7b24e9a8eb8714b8ce86e8305c8" kindref="member">m_pD3dSrv</ref>;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classTexture_a0331ea0fa1111565a77e34930527aa9f_1a0331ea0fa1111565a77e34930527aa9f" kindref="member">Texture</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;filepath,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>slot,<sp/><ref refid="texture_8h_a48efc2b83d04747965ce26c7eb8d406c_1a48efc2b83d04747965ce26c7eb8d406c" kindref="member">TextureOp</ref><sp/>op<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classTexture_a0331ea0fa1111565a77e34930527aa9f_1a0331ea0fa1111565a77e34930527aa9f" kindref="member">Texture</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>width,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>height,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>slot,<sp/><ref refid="texture_8h_a48efc2b83d04747965ce26c7eb8d406c_1a48efc2b83d04747965ce26c7eb8d406c" kindref="member">TextureOp</ref><sp/>op<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTexture_a9f0969925008410870590127fdf960ce_1a9f0969925008410870590127fdf960ce" kindref="member">paintTextureWithBitmap</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/>ID3D11Texture2D<sp/>*tex,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classBitmap" kindref="compound">Bitmap</ref><sp/>&amp;bitmap,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>D3D11_BOX<sp/>*destPortion<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTexture_a352000d68cf402ecbc94f2c802a80c48_1a352000d68cf402ecbc94f2c802a80c48" kindref="member">bind</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTexture_ae3518498a4665623f5af7c8468552041_1ae3518498a4665623f5af7c8468552041" kindref="member">update</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classTexture_a715fd642d50db2d070999d5f4cc3879b_1a715fd642d50db2d070999d5f4cc3879b" kindref="member">hasAlpha</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">&amp;<sp/><ref refid="classTexture_aff8d7e3c74f035ccd2161ee662fdd615_1aff8d7e3c74f035ccd2161ee662fdd615" kindref="member">getPath</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classTexture_a052fba7fdc48d8ab6aa3dd7b0733685e_1a052fba7fdc48d8ab6aa3dd7b0733685e" kindref="member">getWidth</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classTexture_ab783ec34f0deb747df517619c86942ba_1ab783ec34f0deb747df517619c86942ba" kindref="member">getHeight</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>Microsoft::WRL::ComPtr&lt;ID3D11ShaderResourceView&gt;&amp;<sp/><ref refid="classTexture_afdb1a6d1c899f3619d19fefeeea0de40_1afdb1a6d1c899f3619d19fefeeea0de40" kindref="member">getD3dSrv</ref>();</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/>std::shared_ptr&lt;<ref refid="classTexture" kindref="compound">Texture</ref>&gt;<sp/><ref refid="classTexture_a9a7654906f9ca05ca82c96f1f2da576e_1a9a7654906f9ca05ca82c96f1f2da576e" kindref="member">fetch</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>&amp;filepath,<sp/>const<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>slot,<sp/><ref refid="texture_8h_a48efc2b83d04747965ce26c7eb8d406c_1a48efc2b83d04747965ce26c7eb8d406c" kindref="member">TextureOp</ref><sp/>op<sp/>=<sp/></highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classTexture_a72e33b3324d9429f293e843b517ac357_1a72e33b3324d9429f293e843b517ac357" kindref="member">calcUid</ref>(<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>&amp;filepath,<sp/>const<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>slot,<sp/><ref refid="texture_8h_a48efc2b83d04747965ce26c7eb8d406c_1a48efc2b83d04747965ce26c7eb8d406c" kindref="member">TextureOp</ref><sp/>op<sp/>=<sp/></highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classTexture_a628d855d2087b4a03c00f781290b26fa_1a628d855d2087b4a03c00f781290b26fa" kindref="member">getUid</ref>()<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classTexture_a9637f3b195ad4156f4c35dc6b6c7633c_1a9637f3b195ad4156f4c35dc6b6c7633c" kindref="member">getSlot</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="classTextureOffscreenRT" refkind="compound"><highlight class="normal">class<sp/><ref refid="classTextureOffscreenRT" kindref="compound">TextureOffscreenRT</ref></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>public<sp/><ref refid="classIBindable" kindref="compound">IBindable</ref></highlight></codeline>
+<codeline lineno="54"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="55" refid="classTextureOffscreenRT_aaedecd2208f87ce77b6e87e5c03ee19d_1aaedecd2208f87ce77b6e87e5c03ee19d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classTextureOffscreenRT_aaedecd2208f87ce77b6e87e5c03ee19d_1aaedecd2208f87ce77b6e87e5c03ee19d" kindref="member">m_slot</ref>;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="57" refid="classTextureOffscreenRT_afc1033b02b280efdf51050f586c98ddf_1afc1033b02b280efdf51050f586c98ddf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Microsoft::WRL::ComPtr&lt;ID3D11ShaderResourceView&gt;<sp/><ref refid="classTextureOffscreenRT_afc1033b02b280efdf51050f586c98ddf_1afc1033b02b280efdf51050f586c98ddf" kindref="member">m_pD3dSrv</ref>;</highlight></codeline>
+<codeline lineno="58" refid="classTextureOffscreenRT_ac30cfccbdba1046d26d3c4c3af5e379e_1ac30cfccbdba1046d26d3c4c3af5e379e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;RenderTargetOutput&gt;<sp/><ref refid="classTextureOffscreenRT_ac30cfccbdba1046d26d3c4c3af5e379e_1ac30cfccbdba1046d26d3c4c3af5e379e" kindref="member">m_pRtv</ref>;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classTextureOffscreenRT" kindref="compound">TextureOffscreenRT</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>width,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>height,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>slot,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="texture__desc_8h_a6b4948cc0d12c93e6396540e02e2df58_1a6b4948cc0d12c93e6396540e02e2df58" kindref="member">RenderTargetViewMode</ref><sp/>rtvMode<sp/>);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTexture_a352000d68cf402ecbc94f2c802a80c48_1a352000d68cf402ecbc94f2c802a80c48" kindref="member">bind</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;RenderTargetOutput&gt;<sp/>shareRenderTarget()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;RenderTargetOutput&gt;&amp;<sp/>accessRtv()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classTexture_a9637f3b195ad4156f4c35dc6b6c7633c_1a9637f3b195ad4156f4c35dc6b6c7633c" kindref="member">getSlot</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="classTextureOffscreenDS" refkind="compound"><highlight class="normal">class<sp/><ref refid="classTextureOffscreenDS" kindref="compound">TextureOffscreenDS</ref></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>public<sp/><ref refid="classIBindable" kindref="compound">IBindable</ref></highlight></codeline>
+<codeline lineno="76"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="77" refid="classTextureOffscreenDS_a33e4b2416a7631cf81b49426783f5e3d_1a33e4b2416a7631cf81b49426783f5e3d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classTextureOffscreenDS_a33e4b2416a7631cf81b49426783f5e3d_1a33e4b2416a7631cf81b49426783f5e3d" kindref="member">m_slot</ref>;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="79" refid="classTextureOffscreenDS_abb356b8ca3037bc0983219b434ea7161_1abb356b8ca3037bc0983219b434ea7161" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Microsoft::WRL::ComPtr&lt;ID3D11ShaderResourceView&gt;<sp/><ref refid="classTextureOffscreenDS_abb356b8ca3037bc0983219b434ea7161_1abb356b8ca3037bc0983219b434ea7161" kindref="member">m_pD3dSrv</ref>;</highlight></codeline>
+<codeline lineno="80" refid="classTextureOffscreenDS_a9b26bfd254720792283511dd457cf329_1a9b26bfd254720792283511dd457cf329" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;DepthStencilOutput&gt;<sp/><ref refid="classTextureOffscreenDS_a9b26bfd254720792283511dd457cf329_1a9b26bfd254720792283511dd457cf329" kindref="member">m_pDsv</ref>;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classTextureOffscreenDS" kindref="compound">TextureOffscreenDS</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>width,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>height,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>slot,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_1a5aacc2000fea78d975de8fe06e3698f2" kindref="member">DepthStencilViewMode</ref><sp/>dsvMode<sp/>);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTexture_a352000d68cf402ecbc94f2c802a80c48_1a352000d68cf402ecbc94f2c802a80c48" kindref="member">bind</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;DepthStencilOutput&gt;<sp/>shareDepthBuffer()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;DepthStencilOutput&gt;&amp;<sp/>accessDsv()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classTexture_a9637f3b195ad4156f4c35dc6b6c7633c_1a9637f3b195ad4156f4c35dc6b6c7633c" kindref="member">getSlot</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="classTextureArrayOffscreenDS" refkind="compound"><highlight class="normal">class<sp/><ref refid="classTextureArrayOffscreenDS" kindref="compound">TextureArrayOffscreenDS</ref></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>public<sp/><ref refid="classIBindable" kindref="compound">IBindable</ref></highlight></codeline>
+<codeline lineno="98"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="99" refid="classTextureArrayOffscreenDS_adb096dc72605cdfa1149b7aeee29280a_1adb096dc72605cdfa1149b7aeee29280a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classTextureArrayOffscreenDS_adb096dc72605cdfa1149b7aeee29280a_1adb096dc72605cdfa1149b7aeee29280a" kindref="member">m_slot</ref>;</highlight></codeline>
+<codeline lineno="100" refid="classTextureArrayOffscreenDS_acea5bcca953d4cbc105b2d70dbd96ffb_1acea5bcca953d4cbc105b2d70dbd96ffb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classTextureArrayOffscreenDS_acea5bcca953d4cbc105b2d70dbd96ffb_1acea5bcca953d4cbc105b2d70dbd96ffb" kindref="member">m_nTextures</ref>;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="102" refid="classTextureArrayOffscreenDS_ad08db3511334d0865080e7632adde30f_1ad08db3511334d0865080e7632adde30f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Microsoft::WRL::ComPtr&lt;ID3D11ShaderResourceView&gt;<sp/><ref refid="classTextureArrayOffscreenDS_ad08db3511334d0865080e7632adde30f_1ad08db3511334d0865080e7632adde30f" kindref="member">m_pD3dSrv</ref>;</highlight></codeline>
+<codeline lineno="103" refid="classTextureArrayOffscreenDS_a603b9d6edd6532ed43c30aafa56baa1b_1a603b9d6edd6532ed43c30aafa56baa1b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::shared_ptr&lt;DepthStencilOutput&gt;&gt;<sp/><ref refid="classTextureArrayOffscreenDS_a603b9d6edd6532ed43c30aafa56baa1b_1a603b9d6edd6532ed43c30aafa56baa1b" kindref="member">m_depthStencilViews</ref>;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classTextureArrayOffscreenDS" kindref="compound">TextureArrayOffscreenDS</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>width,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>height,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>slot,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_1a5aacc2000fea78d975de8fe06e3698f2" kindref="member">DepthStencilViewMode</ref><sp/>dsvMode,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>nTextures<sp/>);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTexture_a352000d68cf402ecbc94f2c802a80c48_1a352000d68cf402ecbc94f2c802a80c48" kindref="member">bind</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;DepthStencilOutput&gt;<sp/>shareDepthBuffer(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>index<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDepthStencilOutput" kindref="compound">DepthStencilOutput</ref>*<sp/>accessDepthBuffer(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>index<sp/>);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDepthStencilOutput" kindref="compound">DepthStencilOutput</ref>*<sp/>accessDsv(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>index<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classTexture_a9637f3b195ad4156f4c35dc6b6c7633c_1a9637f3b195ad4156f4c35dc6b6c7633c" kindref="member">getSlot</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>getTextureCount()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/texture.h"/>
+  </compounddef>
+</doxygen>

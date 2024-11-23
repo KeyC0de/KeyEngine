@@ -1,0 +1,30 @@
+\doxysection{windows\+\_\+hidden\+\_\+defs.\+h}
+\hypertarget{windows__hidden__defs_8h_source}{}\label{windows__hidden__defs_8h_source}\index{inc/windows\_hidden\_defs.h@{inc/windows\_hidden\_defs.h}}
+\mbox{\hyperlink{windows__hidden__defs_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{winner_8h}{winner.h}}"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ BOX\_ELLIPSE\ \ 0}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ BOX\_RECT\ \ \ \ \ 1}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ CCH\_MAXLABEL\ 80}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ CX\_MARGIN\ \ \ 12}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ Used\ for\ Windows\ clipboard\ operations}}
+\DoxyCodeLine{00012\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtagLABELBOX}{tagLABELBOX}}}
+\DoxyCodeLine{00013\ \{\textcolor{comment}{//\ box}}
+\DoxyCodeLine{00014\ \ \ \ \ RECT\ \mbox{\hyperlink{structtagLABELBOX_adaf4c442f1fc14371be1b313d65a96a2_adaf4c442f1fc14371be1b313d65a96a2}{rcText}};\ \ \textcolor{comment}{//\ coordinates\ of\ rectangle\ containing\ text}}
+\DoxyCodeLine{00015\ \ \ \ \ BOOL\ \mbox{\hyperlink{structtagLABELBOX_a09f4e6f302fcd10121297d8bded043b4_a09f4e6f302fcd10121297d8bded043b4}{fSelected}};\ \ \ \ \textcolor{comment}{//\ TRUE\ if\ the\ label\ is\ selected}}
+\DoxyCodeLine{00016\ \ \ \ \ BOOL\ \mbox{\hyperlink{structtagLABELBOX_ada7421caa93dfcc707850c0426aa7ee1_ada7421caa93dfcc707850c0426aa7ee1}{fEdit}};\ \ \ \ \ \ \ \ \textcolor{comment}{//\ TRUE\ if\ text\ is\ selected}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structtagLABELBOX_a6fd48d232580d81141c3f38278d9cbdb_a6fd48d232580d81141c3f38278d9cbdb}{nType}};\ \ \ \ \ \textcolor{comment}{//\ rectangular\ or\ elliptical}}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structtagLABELBOX_ad1cec1e6ebf23e3888256af09df6a67f_ad1cec1e6ebf23e3888256af09df6a67f}{ichCaret}};\ \ \ \textcolor{comment}{//\ caret\ position}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structtagLABELBOX_ab669abb822e7eb0c02d82f18a188083a_ab669abb822e7eb0c02d82f18a188083a}{ichSel}};\ \ \ \ \ \ \ \textcolor{comment}{//\ with\ ichCaret,\ delimits\ selection}}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structtagLABELBOX_a54637ba3b9dfaaae7645ab53300f3494_a54637ba3b9dfaaae7645ab53300f3494}{nXCaret}};\ \textcolor{comment}{//\ window\ position\ corresponding\ to\ ichCaret}}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structtagLABELBOX_a88904e7462f4f4de73183fa2aced2e09_a88904e7462f4f4de73183fa2aced2e09}{nXSel}};\ \ \ \ \ \textcolor{comment}{//\ window\ position\ corresponding\ to\ ichSel}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structtagLABELBOX_ad545b201c46149a5e6a39864bf909c8e_ad545b201c46149a5e6a39864bf909c8e}{cchLabel}};\ \ \ \textcolor{comment}{//\ length\ of\ text\ in\ atchLabel}}
+\DoxyCodeLine{00023\ \ \ \ \ TCHAR\ \mbox{\hyperlink{structtagLABELBOX_aff24b7449d18eff2b551eb306d4e927f_aff24b7449d18eff2b551eb306d4e927f}{atchLabel}}[\mbox{\hyperlink{windows__hidden__defs_8h_a487a12f7bcef93f0f2345380b5c6cf0f_a487a12f7bcef93f0f2345380b5c6cf0f}{CCH\_MAXLABEL}}];}
+\DoxyCodeLine{00024\ \}\ \mbox{\hyperlink{windows__hidden__defs_8h_a2687438141fcb549734f5979a3181ffb_a2687438141fcb549734f5979a3181ffb}{LABELBOX}},\ *\mbox{\hyperlink{windows__hidden__defs_8h_adea6dcaa9f8bf0e79413c0b1a1f501e2_adea6dcaa9f8bf0e79413c0b1a1f501e2}{PLABELBOX}};}
+
+\end{DoxyCode}

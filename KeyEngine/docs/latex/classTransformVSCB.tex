@@ -1,0 +1,194 @@
+\doxysection{Transform\+VSCB Class Reference}
+\hypertarget{classTransformVSCB}{}\label{classTransformVSCB}\index{TransformVSCB@{TransformVSCB}}
+
+
+{\ttfamily \#include $<$transform\+\_\+vscb.\+h$>$}
+
+Inheritance diagram for Transform\+VSCB\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{classTransformVSCB}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structTransformVSCB_1_1Transforms}{Transforms}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTransformVSCB_ae12027ae7f589e1e52fc50b37e609a57_ae12027ae7f589e1e52fc50b37e609a57}{Transform\+VSCB}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const unsigned slot, const \mbox{\hyperlink{classMesh}{Mesh}} \&mesh)
+\item 
+\mbox{\hyperlink{classTransformVSCB_aa732f8fe295849feb6f068fc036d0035_aa732f8fe295849feb6f068fc036d0035}{Transform\+VSCB}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const unsigned slot)
+\item 
+\mbox{\hyperlink{classTransformVSCB_aebd2c428362577bb3bb4a6333355af03_aebd2c428362577bb3bb4a6333355af03}{Transform\+VSCB}} (const \mbox{\hyperlink{classTransformVSCB}{Transform\+VSCB}} \&rhs)
+\item 
+\mbox{\hyperlink{classTransformVSCB}{Transform\+VSCB}} \& \mbox{\hyperlink{classTransformVSCB_a28c94c3e6379fd5a4e860fdc3c2055e0_a28c94c3e6379fd5a4e860fdc3c2055e0}{operator=}} (const \mbox{\hyperlink{classTransformVSCB}{Transform\+VSCB}} \&rhs)
+\item 
+\mbox{\hyperlink{classTransformVSCB_af6a9017a35d200febb3cea0cb5f12ddd_af6a9017a35d200febb3cea0cb5f12ddd}{Transform\+VSCB}} (\mbox{\hyperlink{classTransformVSCB}{Transform\+VSCB}} \&\&rhs) noexcept
+\item 
+\mbox{\hyperlink{classTransformVSCB}{Transform\+VSCB}} \& \mbox{\hyperlink{classTransformVSCB_a496528231ece937d75ed7bfc547d113d_a496528231ece937d75ed7bfc547d113d}{operator=}} (\mbox{\hyperlink{classTransformVSCB}{Transform\+VSCB}} \&\&rhs) noexcept
+\item 
+void \mbox{\hyperlink{classTransformVSCB_a4785fd8ba7b9a6c5c6627267e19341ac_a4785fd8ba7b9a6c5c6627267e19341ac}{bind}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) cond\+\_\+noex override
+\begin{DoxyCompactList}\small\item\em bind graphics resource to a certain stage of the graphics pipeline \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classIBindableCloning}{IBindable\+Cloning}} $>$ \mbox{\hyperlink{classTransformVSCB_a1d99b55bc8ca072f29a8bee783040392_a1d99b55bc8ca072f29a8bee783040392}{clone}} () const noexcept override
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classIBindableCloning}{IBindable\+Cloning}} $>$ \mbox{\hyperlink{classTransformVSCB_a2fb299bdaacb488981a5fd33ba862188_a2fb299bdaacb488981a5fd33ba862188}{clone}} () noexcept override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classIBindableCloning}{IBindable\+Cloning}}}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classIBindable}{IBindable}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classIBindable_a7f68262ff85e25e9f826eae7c01bbfa1_a7f68262ff85e25e9f826eae7c01bbfa1}{\texorpdfstring{$\sim$}{\string~}\+IBindable}} () noexcept
+\item 
+virtual void \mbox{\hyperlink{classIBindable_a12fe8725cb3f4836f22d1592b07e2c91_a12fe8725cb3f4836f22d1592b07e2c91}{set\+Mesh}} (const \mbox{\hyperlink{classMesh}{Mesh}} \&mesh) noexcept
+\item 
+virtual void \mbox{\hyperlink{classIBindable_a608c5066b829febbd49cd82d1d1fa353_a608c5066b829febbd49cd82d1d1fa353}{accept}} (\mbox{\hyperlink{classIImGuiConstantBufferVisitor}{IIm\+Gui\+Constant\+Buffer\+Visitor}} \&ev)
+\item 
+virtual std\+::string \mbox{\hyperlink{classIBindable_a7d88cdbd5d500d6d7f1bfabe16927855_a7d88cdbd5d500d6d7f1bfabe16927855}{get\+Uid}} () const noexcept
+\item 
+virtual void \mbox{\hyperlink{classIBindable_a4d590eebe80fa4e0aa865a875ff86c02_a4d590eebe80fa4e0aa865a875ff86c02}{set\+Debug\+Object\+Name}} (const char \texorpdfstring{$\ast$}{*}name) noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classTransformVSCB_a26b662b13d2b6dd03a60fe27f88a5006_a26b662b13d2b6dd03a60fe27f88a5006}{update}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const \mbox{\hyperlink{structTransformVSCB_1_1Transforms}{Transforms}} \&tfs) cond\+\_\+noex
+\item 
+void \mbox{\hyperlink{classTransformVSCB_a015977e99491a38b2167ab546aaa80b3_a015977e99491a38b2167ab546aaa80b3}{bind\+Cb}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) cond\+\_\+noex
+\item 
+\mbox{\hyperlink{structTransformVSCB_1_1Transforms}{Transforms}} \mbox{\hyperlink{classTransformVSCB_a06c7c77c6969a8955f01456384f44a9e_a06c7c77c6969a8955f01456384f44a9e}{get\+Transforms}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) cond\+\_\+noex
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{classMesh}{Mesh}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classTransformVSCB_ab8a6b854e3023779655128dc9aaaa78f_ab8a6b854e3023779655128dc9aaaa78f}{m\+\_\+p\+Mesh}} = nullptr
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVertexShaderConstantBuffer}{Vertex\+Shader\+Constant\+Buffer}}$<$ \mbox{\hyperlink{structTransformVSCB_1_1Transforms}{Transforms}} $>$ $>$ \mbox{\hyperlink{classTransformVSCB_a04de76f246508b0d6c065b0e695957f2_a04de76f246508b0d6c065b0e695957f2}{m\+\_\+p\+Vscb}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classGraphicsFriend}{Graphics\+Friend}}}
+\begin{DoxyCompactItemize}
+\item 
+static ID3\+D11\+Device\+Context \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGraphicsFriend_a619e32893ab49ea6c5200e7c2d52e2f2_a619e32893ab49ea6c5200e7c2d52e2f2}{get\+Device\+Context}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) noexcept
+\item 
+static ID3\+D11\+Device \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_a175df79f82ab5a6dad1df24b5a242ef7}{get\+Device}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) noexcept
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classTransformVSCB_ae12027ae7f589e1e52fc50b37e609a57_ae12027ae7f589e1e52fc50b37e609a57}\index{TransformVSCB@{TransformVSCB}!TransformVSCB@{TransformVSCB}}
+\index{TransformVSCB@{TransformVSCB}!TransformVSCB@{TransformVSCB}}
+\doxysubsubsection{\texorpdfstring{TransformVSCB()}{TransformVSCB()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classTransformVSCB_ae12027ae7f589e1e52fc50b37e609a57_ae12027ae7f589e1e52fc50b37e609a57} 
+Transform\+VSCB\+::\+Transform\+VSCB (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const unsigned}]{slot}{, }\item[{const \mbox{\hyperlink{classMesh}{Mesh}} \&}]{mesh}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classTransformVSCB_aa732f8fe295849feb6f068fc036d0035_aa732f8fe295849feb6f068fc036d0035}\index{TransformVSCB@{TransformVSCB}!TransformVSCB@{TransformVSCB}}
+\index{TransformVSCB@{TransformVSCB}!TransformVSCB@{TransformVSCB}}
+\doxysubsubsection{\texorpdfstring{TransformVSCB()}{TransformVSCB()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classTransformVSCB_aa732f8fe295849feb6f068fc036d0035_aa732f8fe295849feb6f068fc036d0035} 
+Transform\+VSCB\+::\+Transform\+VSCB (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const unsigned}]{slot}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classTransformVSCB_aebd2c428362577bb3bb4a6333355af03_aebd2c428362577bb3bb4a6333355af03}\index{TransformVSCB@{TransformVSCB}!TransformVSCB@{TransformVSCB}}
+\index{TransformVSCB@{TransformVSCB}!TransformVSCB@{TransformVSCB}}
+\doxysubsubsection{\texorpdfstring{TransformVSCB()}{TransformVSCB()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classTransformVSCB_aebd2c428362577bb3bb4a6333355af03_aebd2c428362577bb3bb4a6333355af03} 
+Transform\+VSCB\+::\+Transform\+VSCB (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classTransformVSCB}{Transform\+VSCB}} \&}]{rhs}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classTransformVSCB_af6a9017a35d200febb3cea0cb5f12ddd_af6a9017a35d200febb3cea0cb5f12ddd}\index{TransformVSCB@{TransformVSCB}!TransformVSCB@{TransformVSCB}}
+\index{TransformVSCB@{TransformVSCB}!TransformVSCB@{TransformVSCB}}
+\doxysubsubsection{\texorpdfstring{TransformVSCB()}{TransformVSCB()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classTransformVSCB_af6a9017a35d200febb3cea0cb5f12ddd_af6a9017a35d200febb3cea0cb5f12ddd} 
+Transform\+VSCB\+::\+Transform\+VSCB (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTransformVSCB}{Transform\+VSCB}} \&\&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classTransformVSCB_a4785fd8ba7b9a6c5c6627267e19341ac_a4785fd8ba7b9a6c5c6627267e19341ac}\index{TransformVSCB@{TransformVSCB}!bind@{bind}}
+\index{bind@{bind}!TransformVSCB@{TransformVSCB}}
+\doxysubsubsection{\texorpdfstring{bind()}{bind()}}
+{\footnotesize\ttfamily \label{classTransformVSCB_a4785fd8ba7b9a6c5c6627267e19341ac_a4785fd8ba7b9a6c5c6627267e19341ac} 
+void Transform\+VSCB\+::bind (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+bind graphics resource to a certain stage of the graphics pipeline 
+
+
+
+Implements \mbox{\hyperlink{classIBindable_add4560f78e76629ee81ba701ba1052e1_add4560f78e76629ee81ba701ba1052e1}{IBindable}}.
+
+\Hypertarget{classTransformVSCB_a015977e99491a38b2167ab546aaa80b3_a015977e99491a38b2167ab546aaa80b3}\index{TransformVSCB@{TransformVSCB}!bindCb@{bindCb}}
+\index{bindCb@{bindCb}!TransformVSCB@{TransformVSCB}}
+\doxysubsubsection{\texorpdfstring{bindCb()}{bindCb()}}
+{\footnotesize\ttfamily \label{classTransformVSCB_a015977e99491a38b2167ab546aaa80b3_a015977e99491a38b2167ab546aaa80b3} 
+void Transform\+VSCB\+::bind\+Cb (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classTransformVSCB_a1d99b55bc8ca072f29a8bee783040392_a1d99b55bc8ca072f29a8bee783040392}\index{TransformVSCB@{TransformVSCB}!clone@{clone}}
+\index{clone@{clone}!TransformVSCB@{TransformVSCB}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classTransformVSCB_a1d99b55bc8ca072f29a8bee783040392_a1d99b55bc8ca072f29a8bee783040392} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classIBindableCloning}{IBindable\+Cloning}} $>$ Transform\+VSCB\+::clone (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Implements \mbox{\hyperlink{classIBindableCloning_a122ec73671857ed90469e0124e5b85db_a122ec73671857ed90469e0124e5b85db}{IBindable\+Cloning}}.
+
+\Hypertarget{classTransformVSCB_a2fb299bdaacb488981a5fd33ba862188_a2fb299bdaacb488981a5fd33ba862188}\index{TransformVSCB@{TransformVSCB}!clone@{clone}}
+\index{clone@{clone}!TransformVSCB@{TransformVSCB}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classTransformVSCB_a2fb299bdaacb488981a5fd33ba862188_a2fb299bdaacb488981a5fd33ba862188} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classIBindableCloning}{IBindable\+Cloning}} $>$ Transform\+VSCB\+::clone (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Implements \mbox{\hyperlink{classIBindableCloning_ad246ee7dad674d81661d0520b6968475_ad246ee7dad674d81661d0520b6968475}{IBindable\+Cloning}}.
+
+\Hypertarget{classTransformVSCB_a06c7c77c6969a8955f01456384f44a9e_a06c7c77c6969a8955f01456384f44a9e}\index{TransformVSCB@{TransformVSCB}!getTransforms@{getTransforms}}
+\index{getTransforms@{getTransforms}!TransformVSCB@{TransformVSCB}}
+\doxysubsubsection{\texorpdfstring{getTransforms()}{getTransforms()}}
+{\footnotesize\ttfamily \label{classTransformVSCB_a06c7c77c6969a8955f01456384f44a9e_a06c7c77c6969a8955f01456384f44a9e} 
+\mbox{\hyperlink{structTransformVSCB_1_1Transforms}{Transform\+VSCB\+::\+Transforms}} Transform\+VSCB\+::get\+Transforms (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classTransformVSCB_a28c94c3e6379fd5a4e860fdc3c2055e0_a28c94c3e6379fd5a4e860fdc3c2055e0}\index{TransformVSCB@{TransformVSCB}!operator=@{operator=}}
+\index{operator=@{operator=}!TransformVSCB@{TransformVSCB}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classTransformVSCB_a28c94c3e6379fd5a4e860fdc3c2055e0_a28c94c3e6379fd5a4e860fdc3c2055e0} 
+\mbox{\hyperlink{classTransformVSCB}{Transform\+VSCB}} \& Transform\+VSCB\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classTransformVSCB}{Transform\+VSCB}} \&}]{rhs}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classTransformVSCB_a496528231ece937d75ed7bfc547d113d_a496528231ece937d75ed7bfc547d113d}\index{TransformVSCB@{TransformVSCB}!operator=@{operator=}}
+\index{operator=@{operator=}!TransformVSCB@{TransformVSCB}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classTransformVSCB_a496528231ece937d75ed7bfc547d113d_a496528231ece937d75ed7bfc547d113d} 
+\mbox{\hyperlink{classTransformVSCB}{Transform\+VSCB}} \& Transform\+VSCB\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTransformVSCB}{Transform\+VSCB}} \&\&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classTransformVSCB_a26b662b13d2b6dd03a60fe27f88a5006_a26b662b13d2b6dd03a60fe27f88a5006}\index{TransformVSCB@{TransformVSCB}!update@{update}}
+\index{update@{update}!TransformVSCB@{TransformVSCB}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{classTransformVSCB_a26b662b13d2b6dd03a60fe27f88a5006_a26b662b13d2b6dd03a60fe27f88a5006} 
+void Transform\+VSCB\+::update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const \mbox{\hyperlink{structTransformVSCB_1_1Transforms}{Transforms}} \&}]{tfs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classTransformVSCB_ab8a6b854e3023779655128dc9aaaa78f_ab8a6b854e3023779655128dc9aaaa78f}\index{TransformVSCB@{TransformVSCB}!m\_pMesh@{m\_pMesh}}
+\index{m\_pMesh@{m\_pMesh}!TransformVSCB@{TransformVSCB}}
+\doxysubsubsection{\texorpdfstring{m\_pMesh}{m\_pMesh}}
+{\footnotesize\ttfamily \label{classTransformVSCB_ab8a6b854e3023779655128dc9aaaa78f_ab8a6b854e3023779655128dc9aaaa78f} 
+const \mbox{\hyperlink{classMesh}{Mesh}}\texorpdfstring{$\ast$}{*} Transform\+VSCB\+::m\+\_\+p\+Mesh = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classTransformVSCB_a04de76f246508b0d6c065b0e695957f2_a04de76f246508b0d6c065b0e695957f2}\index{TransformVSCB@{TransformVSCB}!m\_pVscb@{m\_pVscb}}
+\index{m\_pVscb@{m\_pVscb}!TransformVSCB@{TransformVSCB}}
+\doxysubsubsection{\texorpdfstring{m\_pVscb}{m\_pVscb}}
+{\footnotesize\ttfamily \label{classTransformVSCB_a04de76f246508b0d6c065b0e695957f2_a04de76f246508b0d6c065b0e695957f2} 
+std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classVertexShaderConstantBuffer}{Vertex\+Shader\+Constant\+Buffer}}$<$\mbox{\hyperlink{structTransformVSCB_1_1Transforms}{Transforms}}$>$ $>$ Transform\+VSCB\+::m\+\_\+p\+Vscb\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{transform__vscb_8h}{transform\+\_\+vscb.\+h}}\item 
+src/\mbox{\hyperlink{transform__vscb_8cpp}{transform\+\_\+vscb.\+cpp}}\end{DoxyCompactItemize}

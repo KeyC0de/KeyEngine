@@ -1,0 +1,36 @@
+\doxysection{inc/bitmap.h File Reference}
+\hypertarget{bitmap_8h}{}\label{bitmap_8h}\index{inc/bitmap.h@{inc/bitmap.h}}
+{\ttfamily \#include "{}winner.\+h"{}}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$Directx\+Math.\+h$>$}\newline
+{\ttfamily \#include $<$dxtex/\+Direct\+XTex.\+h$>$}\newline
+{\ttfamily \#include "{}key\+\_\+exception.\+h"{}}\newline
+{\ttfamily \#include "{}color.\+h"{}}\newline
+{\ttfamily \#include "{}non\+\_\+copyable.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classBitmap}{Bitmap}}
+\begin{DoxyCompactList}\small\item\em uses \doxylink{namespaceDirectX}{DirectX} Tex to load images into \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classBitmap_1_1BitmapException}{Bitmap\+::\+Bitmap\+Exception}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{bitmap_8h_a9b52131518252e19ec20adcab175bed7_a9b52131518252e19ec20adcab175bed7}{THROW\+\_\+\+BITMAP\+\_\+\+EXCEPTION}}(msg)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{bitmap_8h_a9b52131518252e19ec20adcab175bed7_a9b52131518252e19ec20adcab175bed7}\index{bitmap.h@{bitmap.h}!THROW\_BITMAP\_EXCEPTION@{THROW\_BITMAP\_EXCEPTION}}
+\index{THROW\_BITMAP\_EXCEPTION@{THROW\_BITMAP\_EXCEPTION}!bitmap.h@{bitmap.h}}
+\doxysubsubsection{\texorpdfstring{THROW\_BITMAP\_EXCEPTION}{THROW\_BITMAP\_EXCEPTION}}
+{\footnotesize\ttfamily \label{bitmap_8h_a9b52131518252e19ec20adcab175bed7_a9b52131518252e19ec20adcab175bed7} 
+\#define THROW\+\_\+\+BITMAP\+\_\+\+EXCEPTION(\begin{DoxyParamCaption}\item[{}]{msg}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \_\_debugbreak();\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{throw}\ BitmapException(\ \_\_LINE\_\_,\ \_\_FILE\_\_,\ \_\_FUNCTION\_\_,\ msg\ );}
+
+\end{DoxyCode}

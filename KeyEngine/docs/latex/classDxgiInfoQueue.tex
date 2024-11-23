@@ -1,0 +1,133 @@
+\doxysection{Dxgi\+Info\+Queue Class Reference}
+\hypertarget{classDxgiInfoQueue}{}\label{classDxgiInfoQueue}\index{DxgiInfoQueue@{DxgiInfoQueue}}
+
+
+ref\+: \href{https://walbourn.github.io/dxgi-debug-device/}{\texttt{ https\+://walbourn.\+github.\+io/dxgi-\/debug-\/device/}}  
+
+
+
+
+{\ttfamily \#include $<$dxgi\+\_\+info\+\_\+queue.\+h$>$}
+
+Inheritance diagram for Dxgi\+Info\+Queue\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classDxgiInfoQueue}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDxgiInfoQueue_a7644b9ea0418efcb1589f4c05e243c48_a7644b9ea0418efcb1589f4c05e243c48}{Dxgi\+Info\+Queue}} ()
+\item 
+void \mbox{\hyperlink{classDxgiInfoQueue_ace09aa82678fd24ebe87df6b4f8f160d_ace09aa82678fd24ebe87df6b4f8f160d}{mark\+Queue\+Index}} () noexcept
+\begin{DoxyCompactList}\small\item\em call this on frame end right before Present()ation \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classDxgiInfoQueue_a62e99064151930158243a23579849967_a62e99064151930158243a23579849967}{get\+Info\+Messages}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNonCopyable_a809b6e4ade7ae32f6d248f2a3b783d45_a809b6e4ade7ae32f6d248f2a3b783d45}{Non\+Copyable}} ()=default
+\item 
+\mbox{\hyperlink{classNonCopyable_a15aa3015488bb26c47ded914cb630cf5_a15aa3015488bb26c47ded914cb630cf5}{Non\+Copyable}} (const \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_af4788b57da9a9faa570c754c22c724f5_af4788b57da9a9faa570c754c22c724f5}{operator=}} (const \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable_a487646562ae30ece23d7638f2aed1dde_a487646562ae30ece23d7638f2aed1dde}{Non\+Copyable}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_ae032ca32cda9c836c27b28eb6a087d18_ae032ca32cda9c836c27b28eb6a087d18}{operator=}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable_af716e4cfb79381710ef4490414939ae9_af716e4cfb79381710ef4490414939ae9}{Non\+Copyable}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&\&rhs)=default
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_af81816bd4c2c4421a6eab98843ead6e4_af81816bd4c2c4421a6eab98843ead6e4}{operator=}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&\&rhs)=default
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{classDxgiInfoQueue_a938cd2d3102fcdf2d019c03aaf871cbc_a938cd2d3102fcdf2d019c03aaf871cbc}{m\+\_\+index}} = 0u
+\item 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ IDXGIInfo\+Queue $>$ \mbox{\hyperlink{classDxgiInfoQueue_af1c7a98bd242b5efdad64a2f0d11f952_af1c7a98bd242b5efdad64a2f0d11f952}{m\+\_\+p\+Dxgi\+Info\+Queue}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const DXGI\+\_\+\+DEBUG\+\_\+\+ID \mbox{\hyperlink{classDxgiInfoQueue_af4c8c1e80e3cae76b219754e5a0414a5_af4c8c1e80e3cae76b219754e5a0414a5}{s\+\_\+msg\+Producer}} = DXGI\+\_\+\+DEBUG\+\_\+\+ALL
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNonCopyable_a3e461fb46c72b9a5af7df7e74dbd899e_a3e461fb46c72b9a5af7df7e74dbd899e}{\texorpdfstring{$\sim$}{\string~}\+Non\+Copyable}} () noexcept=default
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+ref\+: \href{https://walbourn.github.io/dxgi-debug-device/}{\texttt{ https\+://walbourn.\+github.\+io/dxgi-\/debug-\/device/}} 
+
+=============================================================
+
+\begin{DoxyAuthor}{Author}
+Key\+C0de 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2021/01/14 13\+:46
+\end{DoxyDate}
+In \doxylink{namespaceDirectX}{DirectX} 11.\+1+ you can get helpful information from DX Device Context using the DXGIGet\+Debug\+Interface given we have the device debug layer enabled
+
+The confusing part is that the function you need, DXGIGet\+Debug\+Interface is not defined in any header and is not present in any import library. \doxysubsection*{So we have to load it dynamically }
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classDxgiInfoQueue_a7644b9ea0418efcb1589f4c05e243c48_a7644b9ea0418efcb1589f4c05e243c48}\index{DxgiInfoQueue@{DxgiInfoQueue}!DxgiInfoQueue@{DxgiInfoQueue}}
+\index{DxgiInfoQueue@{DxgiInfoQueue}!DxgiInfoQueue@{DxgiInfoQueue}}
+\doxysubsubsection{\texorpdfstring{DxgiInfoQueue()}{DxgiInfoQueue()}}
+{\footnotesize\ttfamily \label{classDxgiInfoQueue_a7644b9ea0418efcb1589f4c05e243c48_a7644b9ea0418efcb1589f4c05e243c48} 
+Dxgi\+Info\+Queue\+::\+Dxgi\+Info\+Queue (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classDxgiInfoQueue_a62e99064151930158243a23579849967_a62e99064151930158243a23579849967}\index{DxgiInfoQueue@{DxgiInfoQueue}!getInfoMessages@{getInfoMessages}}
+\index{getInfoMessages@{getInfoMessages}!DxgiInfoQueue@{DxgiInfoQueue}}
+\doxysubsubsection{\texorpdfstring{getInfoMessages()}{getInfoMessages()}}
+{\footnotesize\ttfamily \label{classDxgiInfoQueue_a62e99064151930158243a23579849967_a62e99064151930158243a23579849967} 
+std\+::vector$<$ std\+::string $>$ Dxgi\+Info\+Queue\+::get\+Info\+Messages (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classDxgiInfoQueue_ace09aa82678fd24ebe87df6b4f8f160d_ace09aa82678fd24ebe87df6b4f8f160d}\index{DxgiInfoQueue@{DxgiInfoQueue}!markQueueIndex@{markQueueIndex}}
+\index{markQueueIndex@{markQueueIndex}!DxgiInfoQueue@{DxgiInfoQueue}}
+\doxysubsubsection{\texorpdfstring{markQueueIndex()}{markQueueIndex()}}
+{\footnotesize\ttfamily \label{classDxgiInfoQueue_ace09aa82678fd24ebe87df6b4f8f160d_ace09aa82678fd24ebe87df6b4f8f160d} 
+void Dxgi\+Info\+Queue\+::mark\+Queue\+Index (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+call this on frame end right before Present()ation 
+
+it sets the message queue index so that with the next call to get\+Info we
+
+will get info messages generated after the last call to \doxylink{classDxgiInfoQueue_ace09aa82678fd24ebe87df6b4f8f160d_ace09aa82678fd24ebe87df6b4f8f160d}{mark\+Queue\+Index()} 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classDxgiInfoQueue_a938cd2d3102fcdf2d019c03aaf871cbc_a938cd2d3102fcdf2d019c03aaf871cbc}\index{DxgiInfoQueue@{DxgiInfoQueue}!m\_index@{m\_index}}
+\index{m\_index@{m\_index}!DxgiInfoQueue@{DxgiInfoQueue}}
+\doxysubsubsection{\texorpdfstring{m\_index}{m\_index}}
+{\footnotesize\ttfamily \label{classDxgiInfoQueue_a938cd2d3102fcdf2d019c03aaf871cbc_a938cd2d3102fcdf2d019c03aaf871cbc} 
+size\+\_\+t Dxgi\+Info\+Queue\+::m\+\_\+index = 0u\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classDxgiInfoQueue_af1c7a98bd242b5efdad64a2f0d11f952_af1c7a98bd242b5efdad64a2f0d11f952}\index{DxgiInfoQueue@{DxgiInfoQueue}!m\_pDxgiInfoQueue@{m\_pDxgiInfoQueue}}
+\index{m\_pDxgiInfoQueue@{m\_pDxgiInfoQueue}!DxgiInfoQueue@{DxgiInfoQueue}}
+\doxysubsubsection{\texorpdfstring{m\_pDxgiInfoQueue}{m\_pDxgiInfoQueue}}
+{\footnotesize\ttfamily \label{classDxgiInfoQueue_af1c7a98bd242b5efdad64a2f0d11f952_af1c7a98bd242b5efdad64a2f0d11f952} 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$IDXGIInfo\+Queue$>$ Dxgi\+Info\+Queue\+::m\+\_\+p\+Dxgi\+Info\+Queue\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classDxgiInfoQueue_af4c8c1e80e3cae76b219754e5a0414a5_af4c8c1e80e3cae76b219754e5a0414a5}\index{DxgiInfoQueue@{DxgiInfoQueue}!s\_msgProducer@{s\_msgProducer}}
+\index{s\_msgProducer@{s\_msgProducer}!DxgiInfoQueue@{DxgiInfoQueue}}
+\doxysubsubsection{\texorpdfstring{s\_msgProducer}{s\_msgProducer}}
+{\footnotesize\ttfamily \label{classDxgiInfoQueue_af4c8c1e80e3cae76b219754e5a0414a5_af4c8c1e80e3cae76b219754e5a0414a5} 
+const DXGI\+\_\+\+DEBUG\+\_\+\+ID Dxgi\+Info\+Queue\+::s\+\_\+msg\+Producer = DXGI\+\_\+\+DEBUG\+\_\+\+ALL\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{dxgi__info__queue_8h}{dxgi\+\_\+info\+\_\+queue.\+h}}\item 
+src/\mbox{\hyperlink{dxgi__info__queue_8cpp}{dxgi\+\_\+info\+\_\+queue.\+cpp}}\end{DoxyCompactItemize}

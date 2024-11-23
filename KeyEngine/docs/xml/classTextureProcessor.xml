@@ -1,0 +1,227 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classTextureProcessor" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>TextureProcessor</compoundname>
+    <includes refid="texture__processor_8h" local="no">texture_processor.h</includes>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classTextureProcessor_a53ce5cb452ed9f3de57818dd153d7501_1a53ce5cb452ed9f3de57818dd153d7501" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename F</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void TextureProcessor::transformFile</definition>
+        <argsstring>(const std::string &amp;pathIn, const std::string &amp;pathOut, F &amp;&amp;f)</argsstring>
+        <name>transformFile</name>
+        <qualifiedname>TextureProcessor::transformFile</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>pathIn</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>pathOut</declname>
+        </param>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture_processor.h" line="12" column="13" bodyfile="inc/texture_processor.h" bodystart="12" bodyend="19"/>
+        <referencedby refid="classTextureProcessor_a6f40014bf51081226164f27f1dea675b_1a6f40014bf51081226164f27f1dea675b" compoundref="texture__processor_8cpp" startline="45" endline="54">flipNormalMapGreenChannel</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classTextureProcessor_a538e567e3ef03332e9f7e1b240bef944_1a538e567e3ef03332e9f7e1b240bef944" prot="private" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const unsigned</type>
+        <definition>const unsigned TextureProcessor::calculateNumberOfMipMaps</definition>
+        <argsstring>(const unsigned width, const unsigned height) noexcept</argsstring>
+        <name>calculateNumberOfMipMaps</name>
+        <qualifiedname>TextureProcessor::calculateNumberOfMipMaps</qualifiedname>
+        <param>
+          <type>const unsigned</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>height</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture_processor.h" line="21" column="23" bodyfile="src/texture_processor.cpp" bodystart="13" bodyend="19"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classTextureProcessor_a9f728161057ae7aa759bec966e8f75c4_1a9f728161057ae7aa759bec966e8f75c4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TextureProcessor::flipModelNormalMapsGreenChannel</definition>
+        <argsstring>(const std::string &amp;objPath)</argsstring>
+        <name>flipModelNormalMapsGreenChannel</name>
+        <qualifiedname>TextureProcessor::flipModelNormalMapsGreenChannel</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>objPath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture_processor.h" line="23" column="13" bodyfile="src/texture_processor.cpp" bodystart="22" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classTextureProcessor_a6f40014bf51081226164f27f1dea675b_1a6f40014bf51081226164f27f1dea675b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TextureProcessor::flipNormalMapGreenChannel</definition>
+        <argsstring>(const std::string &amp;pathIn, const std::string &amp;pathOut)</argsstring>
+        <name>flipNormalMapGreenChannel</name>
+        <qualifiedname>TextureProcessor::flipNormalMapGreenChannel</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>pathIn</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>pathOut</declname>
+        </param>
+        <briefdescription>
+<para>flips the normal map green channel of given texture </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture_processor.h" line="25" column="13" bodyfile="src/texture_processor.cpp" bodystart="45" bodyend="54"/>
+        <referencedby refid="classTextureProcessor_a9f728161057ae7aa759bec966e8f75c4_1a9f728161057ae7aa759bec966e8f75c4" compoundref="texture__processor_8cpp" startline="22" endline="42">flipModelNormalMapsGreenChannel</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classTextureProcessor_a46767ffa63ec6315abbd399d16ee1328_1a46767ffa63ec6315abbd399d16ee1328" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TextureProcessor::validateNormalMap</definition>
+        <argsstring>(const std::string &amp;pathIn, const float thresholdMin, const float thresholdMax)</argsstring>
+        <name>validateNormalMap</name>
+        <qualifiedname>TextureProcessor::validateNormalMap</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>pathIn</declname>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>thresholdMin</declname>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>thresholdMax</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture_processor.h" line="26" column="13" bodyfile="src/texture_processor.cpp" bodystart="56" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="classTextureProcessor_afe57fa7233ced0bf86bc2a7ee1cdc81e_1afe57fa7233ced0bf86bc2a7ee1cdc81e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TextureProcessor::makeStripes</definition>
+        <argsstring>(const std::string &amp;pathOut, const int size, const int stripeWidth)</argsstring>
+        <name>makeStripes</name>
+        <qualifiedname>TextureProcessor::makeStripes</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>pathOut</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>stripeWidth</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture_processor.h" line="27" column="13" bodyfile="src/texture_processor.cpp" bodystart="112" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="classTextureProcessor_a1ea179c15897e25858f4e2a4ee67f339_1a1ea179c15897e25858f4e2a4ee67f339" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TextureProcessor::transformBitmap</definition>
+        <argsstring>(Bitmap &amp;bitmap, TextureOp f)</argsstring>
+        <name>transformBitmap</name>
+        <qualifiedname>TextureProcessor::transformBitmap</qualifiedname>
+        <param>
+          <type><ref refid="classBitmap" kindref="compound">Bitmap</ref> &amp;</type>
+          <declname>bitmap</declname>
+        </param>
+        <param>
+          <type><ref refid="texture_8h_a48efc2b83d04747965ce26c7eb8d406c_1a48efc2b83d04747965ce26c7eb8d406c" kindref="member">TextureOp</ref></type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+<para>apply function f at every Texel in the <ref refid="classBitmap" kindref="compound">Bitmap</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture_processor.h" line="29" column="13" bodyfile="src/texture_processor.cpp" bodystart="136" bodyend="149"/>
+        <referencedby refid="classTexture_a0331ea0fa1111565a77e34930527aa9f_1a0331ea0fa1111565a77e34930527aa9f" compoundref="texture_8cpp" startline="14" endline="62">Texture::Texture</referencedby>
+        <referencedby refid="classTextureProcessor_a53ce5cb452ed9f3de57818dd153d7501_1a53ce5cb452ed9f3de57818dd153d7501" compoundref="texture__processor_8h" startline="12" endline="19">transformFile</referencedby>
+        <referencedby refid="classTextureProcessor_a46767ffa63ec6315abbd399d16ee1328_1a46767ffa63ec6315abbd399d16ee1328" compoundref="texture__processor_8cpp" startline="56" endline="110">validateNormalMap</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classTextureProcessor_a3c6c41ce9a3433e958176851f7265e24_1a3c6c41ce9a3433e958176851f7265e24" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename F</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void TextureProcessor::transformBitmap</definition>
+        <argsstring>(Bitmap &amp;bitmap, F &amp;&amp;f)</argsstring>
+        <name>transformBitmap</name>
+        <qualifiedname>TextureProcessor::transformBitmap</qualifiedname>
+        <param>
+          <type><ref refid="classBitmap" kindref="compound">Bitmap</ref> &amp;</type>
+          <declname>bitmap</declname>
+        </param>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture_processor.h" line="31" column="13" bodyfile="inc/texture_processor.h" bodystart="31" bodyend="44"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/texture_processor.h" line="9" column="1" bodyfile="inc/texture_processor.h" bodystart="10" bodyend="45"/>
+    <listofallmembers>
+      <member refid="classTextureProcessor_a538e567e3ef03332e9f7e1b240bef944_1a538e567e3ef03332e9f7e1b240bef944" prot="private" virt="non-virtual"><scope>TextureProcessor</scope><name>calculateNumberOfMipMaps</name></member>
+      <member refid="classTextureProcessor_a9f728161057ae7aa759bec966e8f75c4_1a9f728161057ae7aa759bec966e8f75c4" prot="public" virt="non-virtual"><scope>TextureProcessor</scope><name>flipModelNormalMapsGreenChannel</name></member>
+      <member refid="classTextureProcessor_a6f40014bf51081226164f27f1dea675b_1a6f40014bf51081226164f27f1dea675b" prot="public" virt="non-virtual"><scope>TextureProcessor</scope><name>flipNormalMapGreenChannel</name></member>
+      <member refid="classTextureProcessor_afe57fa7233ced0bf86bc2a7ee1cdc81e_1afe57fa7233ced0bf86bc2a7ee1cdc81e" prot="public" virt="non-virtual"><scope>TextureProcessor</scope><name>makeStripes</name></member>
+      <member refid="classTextureProcessor_a1ea179c15897e25858f4e2a4ee67f339_1a1ea179c15897e25858f4e2a4ee67f339" prot="public" virt="non-virtual"><scope>TextureProcessor</scope><name>transformBitmap</name></member>
+      <member refid="classTextureProcessor_a3c6c41ce9a3433e958176851f7265e24_1a3c6c41ce9a3433e958176851f7265e24" prot="public" virt="non-virtual"><scope>TextureProcessor</scope><name>transformBitmap</name></member>
+      <member refid="classTextureProcessor_a53ce5cb452ed9f3de57818dd153d7501_1a53ce5cb452ed9f3de57818dd153d7501" prot="private" virt="non-virtual"><scope>TextureProcessor</scope><name>transformFile</name></member>
+      <member refid="classTextureProcessor_a46767ffa63ec6315abbd399d16ee1328_1a46767ffa63ec6315abbd399d16ee1328" prot="public" virt="non-virtual"><scope>TextureProcessor</scope><name>validateNormalMap</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="triangle__mesh_8cpp" kind="file" language="C++">
+    <compoundname>triangle_mesh.cpp</compoundname>
+    <includes refid="triangle__mesh_8h" local="yes">triangle_mesh.h</includes>
+    <incdepgraph>
+      <node id="14">
+        <label>assertions_console.h</label>
+        <link refid="assertions__console_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>color.h</label>
+        <link refid="color_8h"/>
+      </node>
+      <node id="4">
+        <label>dynamic_vertex_buffer.h</label>
+        <link refid="dynamic__vertex__buffer_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>triangle_mesh.h</label>
+        <link refid="triangle__mesh_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>winner.h</label>
+        <link refid="winner_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/triangle_mesh.cpp</label>
+        <link refid="triangle__mesh_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>DirectXMath.h</label>
+      </node>
+      <node id="7">
+        <label>Windows.h</label>
+      </node>
+      <node id="13">
+        <label>assimp/scene.h</label>
+      </node>
+      <node id="9">
+        <label>d3d11.h</label>
+      </node>
+      <node id="15">
+        <label>iostream</label>
+      </node>
+      <node id="6">
+        <label>sdkddkver.h</label>
+      </node>
+      <node id="10">
+        <label>type_traits</label>
+      </node>
+      <node id="11">
+        <label>utility</label>
+      </node>
+      <node id="3">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="triangle__mesh_8h" kindref="compound">triangle_mesh.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceDirectX" kindref="compound">dx</ref><sp/>=<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>;</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="structTriangleMesh_ab3998697fd76892f1f226f76484eda13_1ab3998697fd76892f1f226f76484eda13" refkind="member"><highlight class="normal"><ref refid="structTriangleMesh_aabd3741e2a547fb34c206069ebfd4b6c_1aabd3741e2a547fb34c206069ebfd4b6c" kindref="member">TriangleMesh::TriangleMesh</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classver_1_1VBuffer" kindref="compound">ver::VBuffer</ref><sp/>&amp;vertices,</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;unsigned&gt;<sp/>&amp;indices,</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bMultimesh<sp/></highlight><highlight class="comment">/*=<sp/>false*/</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>m_vb{vertices},</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>m_indices(indices)</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/><ref refid="structTriangleMesh_ad2c351e592766008f10cd37c3b71350b_1ad2c351e592766008f10cd37c3b71350b" kindref="member">m_vb</ref>.<ref refid="classver_1_1VBuffer_a55a75ab98d36aa175186b19231626219_1a55a75ab98d36aa175186b19231626219" kindref="member">getVertexCount</ref>()<sp/>&gt;<sp/>2<sp/>||<sp/>(<sp/><ref refid="structTriangleMesh_ad2c351e592766008f10cd37c3b71350b_1ad2c351e592766008f10cd37c3b71350b" kindref="member">m_vb</ref>.<ref refid="classver_1_1VBuffer_a55a75ab98d36aa175186b19231626219_1a55a75ab98d36aa175186b19231626219" kindref="member">getVertexCount</ref>()<sp/>&gt;<sp/>1<sp/>&amp;&amp;<sp/><ref refid="structTriangleMesh_a6eb90d0e6a6a925013922f6182dc1a5e_1a6eb90d0e6a6a925013922f6182dc1a5e" kindref="member">m_indices</ref>.size()<sp/>==<sp/>3<sp/></highlight><highlight class="comment">/*for<sp/>line<sp/>rendering*/</highlight><highlight class="normal">),<sp/></highlight><highlight class="stringliteral">&quot;Insufficient<sp/>vertices!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>!bMultimesh<sp/>?<sp/><ref refid="structTriangleMesh_a6eb90d0e6a6a925013922f6182dc1a5e_1a6eb90d0e6a6a925013922f6182dc1a5e" kindref="member">m_indices</ref>.size()<sp/>%<sp/>3<sp/>==<sp/>0<sp/>:<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;indices<sp/>not<sp/>a<sp/>multiple<sp/>of<sp/>3!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="structTriangleMesh_ad6f2bd41d5ff9a09d7ac19366ab20604_1ad6f2bd41d5ff9a09d7ac19366ab20604" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structTriangleMesh_ad6f2bd41d5ff9a09d7ac19366ab20604_1ad6f2bd41d5ff9a09d7ac19366ab20604" kindref="member">TriangleMesh::transform</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>dx::XMMATRIX<sp/>&amp;matrix<sp/>)</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="structTriangleMesh_ad2c351e592766008f10cd37c3b71350b_1ad2c351e592766008f10cd37c3b71350b" kindref="member">m_vb</ref>.<ref refid="classver_1_1VBuffer_a55a75ab98d36aa175186b19231626219_1a55a75ab98d36aa175186b19231626219" kindref="member">getVertexCount</ref>();<sp/>++i<sp/>)</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;pos<sp/>=<sp/><ref refid="structTriangleMesh_ad2c351e592766008f10cd37c3b71350b_1ad2c351e592766008f10cd37c3b71350b" kindref="member">m_vb</ref>[i].getElement&lt;ver::VertexInputLayout::ILEementType::Position3D&gt;();</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dx::XMStoreFloat3(<sp/>&amp;pos,<sp/>dx::XMVector3Transform(<sp/>dx::XMLoadFloat3(<sp/>&amp;pos<sp/>),<sp/>matrix<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="structTriangleMesh_af284c2748d511589f18788bf245ca998_1af284c2748d511589f18788bf245ca998" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structTriangleMesh_af284c2748d511589f18788bf245ca998_1af284c2748d511589f18788bf245ca998" kindref="member">TriangleMesh::setFlatShadedIndependentNormals</ref>()<sp/>cond_noex</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">ILEementType<sp/>=<sp/><ref refid="classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_1a7582c10f2c7a3ac24f95015bcbeb8c1a" kindref="member">ver::VertexInputLayout::ILEementType</ref>;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="structTriangleMesh_a6eb90d0e6a6a925013922f6182dc1a5e_1a6eb90d0e6a6a925013922f6182dc1a5e" kindref="member">m_indices</ref>.size();<sp/>i<sp/>+=<sp/>3<sp/>)</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>v0<sp/>=<sp/><ref refid="structTriangleMesh_ad2c351e592766008f10cd37c3b71350b_1ad2c351e592766008f10cd37c3b71350b" kindref="member">m_vb</ref>[<ref refid="structTriangleMesh_a6eb90d0e6a6a925013922f6182dc1a5e_1a6eb90d0e6a6a925013922f6182dc1a5e" kindref="member">m_indices</ref>[i]];</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>v1<sp/>=<sp/><ref refid="structTriangleMesh_ad2c351e592766008f10cd37c3b71350b_1ad2c351e592766008f10cd37c3b71350b" kindref="member">m_vb</ref>[<ref refid="structTriangleMesh_a6eb90d0e6a6a925013922f6182dc1a5e_1a6eb90d0e6a6a925013922f6182dc1a5e" kindref="member">m_indices</ref>[i<sp/>+<sp/>1]];</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>v2<sp/>=<sp/><ref refid="structTriangleMesh_ad2c351e592766008f10cd37c3b71350b_1ad2c351e592766008f10cd37c3b71350b" kindref="member">m_vb</ref>[<ref refid="structTriangleMesh_a6eb90d0e6a6a925013922f6182dc1a5e_1a6eb90d0e6a6a925013922f6182dc1a5e" kindref="member">m_indices</ref>[i<sp/>+<sp/>2]];</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>p0<sp/>=<sp/>XMLoadFloat3(<sp/>&amp;v0.getElement&lt;ILEementType::Position3D&gt;()<sp/>);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>p1<sp/>=<sp/>XMLoadFloat3(<sp/>&amp;v1.getElement&lt;ILEementType::Position3D&gt;()<sp/>);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>p2<sp/>=<sp/>XMLoadFloat3(<sp/>&amp;v2.getElement&lt;ILEementType::Position3D&gt;()<sp/>);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>XMVector3Normalize(<sp/>XMVector3Cross(<sp/>p1<sp/>-<sp/>p0,<sp/>p2<sp/>-<sp/>p0<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>XMStoreFloat3(<sp/>&amp;v0.getElement&lt;ILEementType::Normal&gt;(),<sp/>n<sp/>);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>XMStoreFloat3(<sp/>&amp;v1.getElement&lt;ILEementType::Normal&gt;(),<sp/>n<sp/>);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>XMStoreFloat3(<sp/>&amp;v2.getElement&lt;ILEementType::Normal&gt;(),<sp/>n<sp/>);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/triangle_mesh.cpp"/>
+  </compounddef>
+</doxygen>

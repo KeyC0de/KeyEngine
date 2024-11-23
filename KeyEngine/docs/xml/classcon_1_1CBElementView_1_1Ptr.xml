@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classcon_1_1CBElementView_1_1Ptr" kind="class" language="C++" prot="public">
+    <compoundname>con::CBElementView::Ptr</compoundname>
+    <includes refid="dynamic__constant__buffer_8h" local="no">dynamic_constant_buffer.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classcon_1_1CBElementView_1_1Ptr_a35b55b48c907345510690ba8e5a7d212_1a35b55b48c907345510690ba8e5a7d212" prot="private" static="no" mutable="no">
+        <type>friend</type>
+        <definition>friend con::CBElementView::Ptr::CBElementView</definition>
+        <argsstring></argsstring>
+        <name>CBElementView</name>
+        <qualifiedname>con::CBElementView::Ptr::CBElementView</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="416" column="8" bodyfile="inc/dynamic_constant_buffer.h" bodystart="416" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcon_1_1CBElementView_1_1Ptr_a6c86866df9bd40d18ddcd8c8f6454043_1a6c86866df9bd40d18ddcd8c8f6454043" prot="private" static="no" mutable="no">
+        <type><ref refid="classcon_1_1CBElementView" kindref="compound">CBElementView</ref> *</type>
+        <definition>CBElementView* con::CBElementView::Ptr::p</definition>
+        <argsstring></argsstring>
+        <name>p</name>
+        <qualifiedname>con::CBElementView::Ptr::p</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="418" column="15" bodyfile="inc/dynamic_constant_buffer.h" bodystart="418" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classcon_1_1CBElementView_1_1Ptr_a38ef1ffd415fd8983bf28d8b63686707_1a38ef1ffd415fd8983bf28d8b63686707" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>con::CBElementView::Ptr::operator T*</definition>
+        <argsstring>() const cond_noex</argsstring>
+        <name>operator T*</name>
+        <qualifiedname>con::CBElementView::Ptr::operator T*</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="422" column="1" bodyfile="inc/dynamic_constant_buffer.h" bodystart="422" bodyend="426"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classcon_1_1CBElementView_1_1Ptr_acc4f1e96f0cedbe584900d5e5f98a5c8_1acc4f1e96f0cedbe584900d5e5f98a5c8" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>con::CBElementView::Ptr::Ptr</definition>
+        <argsstring>(CBElementView *ref) noexcept</argsstring>
+        <name>Ptr</name>
+        <qualifiedname>con::CBElementView::Ptr::Ptr</qualifiedname>
+        <param>
+          <type><ref refid="classcon_1_1CBElementView" kindref="compound">CBElementView</ref> *</type>
+          <declname>ref</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="428" column="1" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="417" bodyend="422"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>con::CBElement</label>
+        <link refid="classcon_1_1CBElement"/>
+      </node>
+      <node id="2">
+        <label>con::CBElementView</label>
+        <link refid="classcon_1_1CBElementView"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>m_pLayout</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>con::CBElementView::Ptr</label>
+        <link refid="classcon_1_1CBElementView_1_1Ptr"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>p</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/dynamic_constant_buffer.h" line="414" column="1" bodyfile="inc/dynamic_constant_buffer.h" bodystart="415" bodyend="429"/>
+    <listofallmembers>
+      <member refid="classcon_1_1CBElementView_1_1Ptr_a35b55b48c907345510690ba8e5a7d212_1a35b55b48c907345510690ba8e5a7d212" prot="private" virt="non-virtual"><scope>con::CBElementView::Ptr</scope><name>CBElementView</name></member>
+      <member refid="classcon_1_1CBElementView_1_1Ptr_a38ef1ffd415fd8983bf28d8b63686707_1a38ef1ffd415fd8983bf28d8b63686707" prot="public" virt="non-virtual"><scope>con::CBElementView::Ptr</scope><name>operator T*</name></member>
+      <member refid="classcon_1_1CBElementView_1_1Ptr_a6c86866df9bd40d18ddcd8c8f6454043_1a6c86866df9bd40d18ddcd8c8f6454043" prot="private" virt="non-virtual"><scope>con::CBElementView::Ptr</scope><name>p</name></member>
+      <member refid="classcon_1_1CBElementView_1_1Ptr_acc4f1e96f0cedbe584900d5e5f98a5c8_1acc4f1e96f0cedbe584900d5e5f98a5c8" prot="private" virt="non-virtual"><scope>con::CBElementView::Ptr</scope><name>Ptr</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

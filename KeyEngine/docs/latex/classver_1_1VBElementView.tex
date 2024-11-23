@@ -1,0 +1,128 @@
+\doxysection{ver\+::VBElement\+View Class Reference}
+\hypertarget{classver_1_1VBElementView}{}\label{classver_1_1VBElementView}\index{ver::VBElementView@{ver::VBElementView}}
+
+
+{\ttfamily \#include $<$dynamic\+\_\+vertex\+\_\+buffer.\+h$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structver_1_1VBElementView_1_1ElementSetter}{Element\+Setter}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$\mbox{\hyperlink{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1a}{Vertex\+Input\+Layout\+::\+ILEement\+Type}} layout\+Type$>$ }\\auto \& \mbox{\hyperlink{classver_1_1VBElementView_ac9e037ac6b0fd340869a0f26e88ab3a3_ac9e037ac6b0fd340869a0f26e88ab3a3}{get\+Element}} () cond\+\_\+noex
+\begin{DoxyCompactList}\small\item\em get reference to ILElement \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classver_1_1VBElementView_a432cff5085260e9b169f412e300433b0_a432cff5085260e9b169f412e300433b0}{VBElement\+View}} (char \texorpdfstring{$\ast$}{*}p\+Data, const \mbox{\hyperlink{classver_1_1VertexInputLayout}{Vertex\+Input\+Layout}} \&layout) cond\+\_\+noex
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classver_1_1VBElementView_a0985e157553a8dfe4fdd37443295f5f7_a0985e157553a8dfe4fdd37443295f5f7}{set\+Element\+By\+Index}} (const size\+\_\+t i, T \&\&val) cond\+\_\+noex
+\begin{DoxyCompactList}\small\item\em terminal case for set\+Element\+By\+Index \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename First , typename ... Rest$>$ }\\void \mbox{\hyperlink{classver_1_1VBElementView_a8e75c1b364fa38cbbcb51c0837bed523_a8e75c1b364fa38cbbcb51c0837bed523}{set\+Element\+By\+Index}} (const size\+\_\+t i, First \&\&first, Rest \&\&... rest) cond\+\_\+noex
+\begin{DoxyCompactList}\small\item\em set Vertex data by its Byte index in the buffer \end{DoxyCompactList}\item 
+{\footnotesize template$<$\mbox{\hyperlink{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1a}{Vertex\+Input\+Layout\+::\+ILEement\+Type}} layout\+Type, typename Src\+Type $>$ }\\void \mbox{\hyperlink{classver_1_1VBElementView_aee66ecea0394f7d0e5244ad70223abef_aee66ecea0394f7d0e5244ad70223abef}{set\+Element}} (char \texorpdfstring{$\ast$}{*}p\+Element, Src\+Type \&\&val) cond\+\_\+noex
+\begin{DoxyCompactList}\small\item\em helper to reduce tag duplication in set\+Element\+By\+Index \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classver_1_1VBElementView_aaf18fa2f15edbc27b0513e28db4ff8d2_aaf18fa2f15edbc27b0513e28db4ff8d2}{m\+\_\+p}} = nullptr
+\item 
+const \mbox{\hyperlink{classver_1_1VertexInputLayout}{Vertex\+Input\+Layout}} \& \mbox{\hyperlink{classver_1_1VBElementView_a6b6f42e976f3918c4a7e08ff97bf930f_a6b6f42e976f3918c4a7e08ff97bf930f}{m\+\_\+layout}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classver_1_1VBElementView_a25191be4c1e30f41d17897205b27ff4d_a25191be4c1e30f41d17897205b27ff4d}{VBuffer}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classver_1_1VBElementView_a432cff5085260e9b169f412e300433b0_a432cff5085260e9b169f412e300433b0}\index{ver::VBElementView@{ver::VBElementView}!VBElementView@{VBElementView}}
+\index{VBElementView@{VBElementView}!ver::VBElementView@{ver::VBElementView}}
+\doxysubsubsection{\texorpdfstring{VBElementView()}{VBElementView()}}
+{\footnotesize\ttfamily \label{classver_1_1VBElementView_a432cff5085260e9b169f412e300433b0_a432cff5085260e9b169f412e300433b0} 
+ver\+::\+VBElement\+View\+::\+VBElement\+View (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{p\+Data}{, }\item[{const \mbox{\hyperlink{classver_1_1VertexInputLayout}{Vertex\+Input\+Layout}} \&}]{layout}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classver_1_1VBElementView_ac9e037ac6b0fd340869a0f26e88ab3a3_ac9e037ac6b0fd340869a0f26e88ab3a3}\index{ver::VBElementView@{ver::VBElementView}!getElement@{getElement}}
+\index{getElement@{getElement}!ver::VBElementView@{ver::VBElementView}}
+\doxysubsubsection{\texorpdfstring{getElement()}{getElement()}}
+{\footnotesize\ttfamily \label{classver_1_1VBElementView_ac9e037ac6b0fd340869a0f26e88ab3a3_ac9e037ac6b0fd340869a0f26e88ab3a3} 
+template$<$\mbox{\hyperlink{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1a}{Vertex\+Input\+Layout\+::\+ILEement\+Type}} layout\+Type$>$ \\
+auto \& ver\+::\+VBElement\+View\+::get\+Element (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+get reference to ILElement 
+
+\Hypertarget{classver_1_1VBElementView_aee66ecea0394f7d0e5244ad70223abef_aee66ecea0394f7d0e5244ad70223abef}\index{ver::VBElementView@{ver::VBElementView}!setElement@{setElement}}
+\index{setElement@{setElement}!ver::VBElementView@{ver::VBElementView}}
+\doxysubsubsection{\texorpdfstring{setElement()}{setElement()}}
+{\footnotesize\ttfamily \label{classver_1_1VBElementView_aee66ecea0394f7d0e5244ad70223abef_aee66ecea0394f7d0e5244ad70223abef} 
+template$<$\mbox{\hyperlink{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1a}{Vertex\+Input\+Layout\+::\+ILEement\+Type}} layout\+Type, typename Src\+Type $>$ \\
+void ver\+::\+VBElement\+View\+::set\+Element (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{p\+Element}{, }\item[{Src\+Type \&\&}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+helper to reduce tag duplication in set\+Element\+By\+Index 
+
+\Hypertarget{classver_1_1VBElementView_a8e75c1b364fa38cbbcb51c0837bed523_a8e75c1b364fa38cbbcb51c0837bed523}\index{ver::VBElementView@{ver::VBElementView}!setElementByIndex@{setElementByIndex}}
+\index{setElementByIndex@{setElementByIndex}!ver::VBElementView@{ver::VBElementView}}
+\doxysubsubsection{\texorpdfstring{setElementByIndex()}{setElementByIndex()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classver_1_1VBElementView_a8e75c1b364fa38cbbcb51c0837bed523_a8e75c1b364fa38cbbcb51c0837bed523} 
+template$<$typename First , typename ... Rest$>$ \\
+void ver\+::\+VBElement\+View\+::set\+Element\+By\+Index (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{i}{, }\item[{First \&\&}]{first}{, }\item[{Rest \&\&...}]{rest}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+set Vertex data by its Byte index in the buffer 
+
+\Hypertarget{classver_1_1VBElementView_a0985e157553a8dfe4fdd37443295f5f7_a0985e157553a8dfe4fdd37443295f5f7}\index{ver::VBElementView@{ver::VBElementView}!setElementByIndex@{setElementByIndex}}
+\index{setElementByIndex@{setElementByIndex}!ver::VBElementView@{ver::VBElementView}}
+\doxysubsubsection{\texorpdfstring{setElementByIndex()}{setElementByIndex()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classver_1_1VBElementView_a0985e157553a8dfe4fdd37443295f5f7_a0985e157553a8dfe4fdd37443295f5f7} 
+template$<$typename T $>$ \\
+void ver\+::\+VBElement\+View\+::set\+Element\+By\+Index (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{i}{, }\item[{T \&\&}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+terminal case for set\+Element\+By\+Index 
+
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{classver_1_1VBElementView_a25191be4c1e30f41d17897205b27ff4d_a25191be4c1e30f41d17897205b27ff4d}\index{ver::VBElementView@{ver::VBElementView}!VBuffer@{VBuffer}}
+\index{VBuffer@{VBuffer}!ver::VBElementView@{ver::VBElementView}}
+\doxysubsubsection{\texorpdfstring{VBuffer}{VBuffer}}
+{\footnotesize\ttfamily \label{classver_1_1VBElementView_a25191be4c1e30f41d17897205b27ff4d_a25191be4c1e30f41d17897205b27ff4d} 
+friend class \mbox{\hyperlink{classver_1_1VBuffer}{VBuffer}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classver_1_1VBElementView_a6b6f42e976f3918c4a7e08ff97bf930f_a6b6f42e976f3918c4a7e08ff97bf930f}\index{ver::VBElementView@{ver::VBElementView}!m\_layout@{m\_layout}}
+\index{m\_layout@{m\_layout}!ver::VBElementView@{ver::VBElementView}}
+\doxysubsubsection{\texorpdfstring{m\_layout}{m\_layout}}
+{\footnotesize\ttfamily \label{classver_1_1VBElementView_a6b6f42e976f3918c4a7e08ff97bf930f_a6b6f42e976f3918c4a7e08ff97bf930f} 
+const \mbox{\hyperlink{classver_1_1VertexInputLayout}{Vertex\+Input\+Layout}}\& ver\+::\+VBElement\+View\+::m\+\_\+layout\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classver_1_1VBElementView_aaf18fa2f15edbc27b0513e28db4ff8d2_aaf18fa2f15edbc27b0513e28db4ff8d2}\index{ver::VBElementView@{ver::VBElementView}!m\_p@{m\_p}}
+\index{m\_p@{m\_p}!ver::VBElementView@{ver::VBElementView}}
+\doxysubsubsection{\texorpdfstring{m\_p}{m\_p}}
+{\footnotesize\ttfamily \label{classver_1_1VBElementView_aaf18fa2f15edbc27b0513e28db4ff8d2_aaf18fa2f15edbc27b0513e28db4ff8d2} 
+char\texorpdfstring{$\ast$}{*} ver\+::\+VBElement\+View\+::m\+\_\+p = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{dynamic__vertex__buffer_8h}{dynamic\+\_\+vertex\+\_\+buffer.\+h}}\item 
+src/\mbox{\hyperlink{dynamic__vertex__buffer_8cpp}{dynamic\+\_\+vertex\+\_\+buffer.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,195 @@
+\doxysection{Operation Class Reference}
+\hypertarget{classOperation}{}\label{classOperation}\index{Operation@{Operation}}
+
+
+returns a ready-\/made callable with its arguments, packaged in a std\+::unique\+\_\+ptr  
+
+
+
+
+{\ttfamily \#include $<$operation.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classOperation_a9608233a9ffb59244f68cd9ce0072ef5_a9608233a9ffb59244f68cd9ce0072ef5}{\texorpdfstring{$\sim$}{\string~}\+Operation}} () noexcept
+\item 
+\mbox{\hyperlink{classOperation_a0879bce8215e86a23802d5171c04a4ab_a0879bce8215e86a23802d5171c04a4ab}{Operation}} (\mbox{\hyperlink{classOperation}{Operation}} \&\&rhs) noexcept
+\item 
+\mbox{\hyperlink{classOperation}{Operation}} \& \mbox{\hyperlink{classOperation_acab0d4a120ffe69b45112a02e630dcdc_acab0d4a120ffe69b45112a02e630dcdc}{operator=}} (\mbox{\hyperlink{classOperation}{Operation}} \&\&rhs) noexcept
+\item 
+void \mbox{\hyperlink{classOperation_a7d006b5788e6f0f6a818ad478e43f9d8_a7d006b5788e6f0f6a818ad478e43f9d8}{operator()}} () const
+\item 
+void \mbox{\hyperlink{classOperation_a1a6693e431a3b4a6a2acd6b77df6203e_a1a6693e431a3b4a6a2acd6b77df6203e}{swap}} (\mbox{\hyperlink{classOperation}{Operation}} \&rhs) noexcept
+\item 
+void \mbox{\hyperlink{classOperation_a251f901c6cd9f7aa88d88af641d9b10d_a251f901c6cd9f7aa88d88af641d9b10d}{reset}} () noexcept
+\item 
+\mbox{\hyperlink{classOperation_ab3dbd0f8650d51af9e9ea7e6993e84b5_ab3dbd0f8650d51af9e9ea7e6993e84b5}{operator bool}} () const noexcept
+\item 
+constexpr bool \mbox{\hyperlink{classOperation_a4d34cac8f04a582091200f2376c9c612_a4d34cac8f04a582091200f2376c9c612}{operator==}} (const \mbox{\hyperlink{classOperation}{Operation}} \&rhs) const noexcept
+\item 
+constexpr bool \mbox{\hyperlink{classOperation_a60f40ceb41f507e00fd9fe5e167e3cb1_a60f40ceb41f507e00fd9fe5e167e3cb1}{operator!=}} (const \mbox{\hyperlink{classOperation}{Operation}} \&rhs) const noexcept
+\item 
+constexpr bool \mbox{\hyperlink{classOperation_ada2e435d3b303594c614642f16f376e7_ada2e435d3b303594c614642f16f376e7}{operator==}} (const \mbox{\hyperlink{classOperation}{Operation}} \texorpdfstring{$\ast$}{*}rhs) const noexcept
+\item 
+constexpr bool \mbox{\hyperlink{classOperation_a19b50cf24cc8d10b5dba9dee2127de9f_a19b50cf24cc8d10b5dba9dee2127de9f}{operator!=}} (const \mbox{\hyperlink{classOperation}{Operation}} \texorpdfstring{$\ast$}{*}rhs) const noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename TFunction , typename... TArgs$>$ }\\static std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classOperation}{Operation}} $>$ \mbox{\hyperlink{classOperation_ac186837829eb564b07a4eb233f3bc1a1_ac186837829eb564b07a4eb233f3bc1a1}{setup}} (TFunction \&\&f, TArgs \&\&...args)
+\begin{DoxyCompactList}\small\item\em setup function pointers \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename TMethod , typename T , typename ... TArgs$>$ }\\static std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classOperation}{Operation}} $>$ \mbox{\hyperlink{classOperation_a07f03d11f9e1a4e4a8aa9aee00bdeb7c_a07f03d11f9e1a4e4a8aa9aee00bdeb7c}{setup}} (TMethod \&\&mf, T \&\&obj, TArgs \&\&...args)
+\begin{DoxyCompactList}\small\item\em setup member function pointers \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classOperation_aa3d6c997112b92e3f69a41212e70518e_aa3d6c997112b92e3f69a41212e70518e}{TF}} = std\+::function$<$void()$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classOperation_a969d86df18a051bd684baf0bbda533c2_a969d86df18a051bd684baf0bbda533c2}{Operation}} (\mbox{\hyperlink{classOperation_aa3d6c997112b92e3f69a41212e70518e_aa3d6c997112b92e3f69a41212e70518e}{TF}} \&\&f)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classOperation_aa3d6c997112b92e3f69a41212e70518e_aa3d6c997112b92e3f69a41212e70518e}{TF}} \mbox{\hyperlink{classOperation_a1d65aa6390838c774e7032221d8e12bb_a1d65aa6390838c774e7032221d8e12bb}{m\+\_\+f}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+returns a ready-\/made callable with its arguments, packaged in a std\+::unique\+\_\+ptr 
+
+=============================================================
+
+\begin{DoxyAuthor}{Author}
+Key\+C0de 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2020/11/05 3\+:17
+\end{DoxyDate}
+It can be inserted in any container or used for whatever purpose \doxysubsection*{utilizes std\+::function for type erasure and std\+::bind for argument packing }
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classOperation_aa3d6c997112b92e3f69a41212e70518e_aa3d6c997112b92e3f69a41212e70518e}\index{Operation@{Operation}!TF@{TF}}
+\index{TF@{TF}!Operation@{Operation}}
+\doxysubsubsection{\texorpdfstring{TF}{TF}}
+{\footnotesize\ttfamily \label{classOperation_aa3d6c997112b92e3f69a41212e70518e_aa3d6c997112b92e3f69a41212e70518e} 
+using \mbox{\hyperlink{classOperation_aa3d6c997112b92e3f69a41212e70518e_aa3d6c997112b92e3f69a41212e70518e}{Operation\+::\+TF}} = std\+::function$<$void()$>$\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classOperation_a969d86df18a051bd684baf0bbda533c2_a969d86df18a051bd684baf0bbda533c2}\index{Operation@{Operation}!Operation@{Operation}}
+\index{Operation@{Operation}!Operation@{Operation}}
+\doxysubsubsection{\texorpdfstring{Operation()}{Operation()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classOperation_a969d86df18a051bd684baf0bbda533c2_a969d86df18a051bd684baf0bbda533c2} 
+Operation\+::\+Operation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classOperation_aa3d6c997112b92e3f69a41212e70518e_aa3d6c997112b92e3f69a41212e70518e}{TF}} \&\&}]{f}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classOperation_a9608233a9ffb59244f68cd9ce0072ef5_a9608233a9ffb59244f68cd9ce0072ef5}\index{Operation@{Operation}!````~Operation@{\texorpdfstring{$\sim$}{\string~}Operation}}
+\index{````~Operation@{\texorpdfstring{$\sim$}{\string~}Operation}!Operation@{Operation}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Operation()}{\string~Operation()}}
+{\footnotesize\ttfamily \label{classOperation_a9608233a9ffb59244f68cd9ce0072ef5_a9608233a9ffb59244f68cd9ce0072ef5} 
+Operation\+::\texorpdfstring{$\sim$}{\string~}\+Operation (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classOperation_a0879bce8215e86a23802d5171c04a4ab_a0879bce8215e86a23802d5171c04a4ab}\index{Operation@{Operation}!Operation@{Operation}}
+\index{Operation@{Operation}!Operation@{Operation}}
+\doxysubsubsection{\texorpdfstring{Operation()}{Operation()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classOperation_a0879bce8215e86a23802d5171c04a4ab_a0879bce8215e86a23802d5171c04a4ab} 
+Operation\+::\+Operation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classOperation}{Operation}} \&\&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classOperation_ab3dbd0f8650d51af9e9ea7e6993e84b5_ab3dbd0f8650d51af9e9ea7e6993e84b5}\index{Operation@{Operation}!operator bool@{operator bool}}
+\index{operator bool@{operator bool}!Operation@{Operation}}
+\doxysubsubsection{\texorpdfstring{operator bool()}{operator bool()}}
+{\footnotesize\ttfamily \label{classOperation_ab3dbd0f8650d51af9e9ea7e6993e84b5_ab3dbd0f8650d51af9e9ea7e6993e84b5} 
+Operation\+::operator bool (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classOperation_a60f40ceb41f507e00fd9fe5e167e3cb1_a60f40ceb41f507e00fd9fe5e167e3cb1}\index{Operation@{Operation}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!Operation@{Operation}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classOperation_a60f40ceb41f507e00fd9fe5e167e3cb1_a60f40ceb41f507e00fd9fe5e167e3cb1} 
+bool Operation\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classOperation}{Operation}} \&}]{rhs}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classOperation_a19b50cf24cc8d10b5dba9dee2127de9f_a19b50cf24cc8d10b5dba9dee2127de9f}\index{Operation@{Operation}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!Operation@{Operation}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classOperation_a19b50cf24cc8d10b5dba9dee2127de9f_a19b50cf24cc8d10b5dba9dee2127de9f} 
+bool Operation\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classOperation}{Operation}} \texorpdfstring{$\ast$}{*}}]{rhs}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classOperation_a7d006b5788e6f0f6a818ad478e43f9d8_a7d006b5788e6f0f6a818ad478e43f9d8}\index{Operation@{Operation}!operator()@{operator()}}
+\index{operator()@{operator()}!Operation@{Operation}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily \label{classOperation_a7d006b5788e6f0f6a818ad478e43f9d8_a7d006b5788e6f0f6a818ad478e43f9d8} 
+void Operation\+::operator() (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classOperation_acab0d4a120ffe69b45112a02e630dcdc_acab0d4a120ffe69b45112a02e630dcdc}\index{Operation@{Operation}!operator=@{operator=}}
+\index{operator=@{operator=}!Operation@{Operation}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{classOperation_acab0d4a120ffe69b45112a02e630dcdc_acab0d4a120ffe69b45112a02e630dcdc} 
+\mbox{\hyperlink{classOperation}{Operation}} \& Operation\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classOperation}{Operation}} \&\&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classOperation_a4d34cac8f04a582091200f2376c9c612_a4d34cac8f04a582091200f2376c9c612}\index{Operation@{Operation}!operator==@{operator==}}
+\index{operator==@{operator==}!Operation@{Operation}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classOperation_a4d34cac8f04a582091200f2376c9c612_a4d34cac8f04a582091200f2376c9c612} 
+bool Operation\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classOperation}{Operation}} \&}]{rhs}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classOperation_ada2e435d3b303594c614642f16f376e7_ada2e435d3b303594c614642f16f376e7}\index{Operation@{Operation}!operator==@{operator==}}
+\index{operator==@{operator==}!Operation@{Operation}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classOperation_ada2e435d3b303594c614642f16f376e7_ada2e435d3b303594c614642f16f376e7} 
+bool Operation\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classOperation}{Operation}} \texorpdfstring{$\ast$}{*}}]{rhs}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classOperation_a251f901c6cd9f7aa88d88af641d9b10d_a251f901c6cd9f7aa88d88af641d9b10d}\index{Operation@{Operation}!reset@{reset}}
+\index{reset@{reset}!Operation@{Operation}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{classOperation_a251f901c6cd9f7aa88d88af641d9b10d_a251f901c6cd9f7aa88d88af641d9b10d} 
+void Operation\+::reset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classOperation_ac186837829eb564b07a4eb233f3bc1a1_ac186837829eb564b07a4eb233f3bc1a1}\index{Operation@{Operation}!setup@{setup}}
+\index{setup@{setup}!Operation@{Operation}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classOperation_ac186837829eb564b07a4eb233f3bc1a1_ac186837829eb564b07a4eb233f3bc1a1} 
+template$<$typename TFunction , typename... TArgs$>$ \\
+static std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classOperation}{Operation}} $>$ Operation\+::setup (\begin{DoxyParamCaption}\item[{TFunction \&\&}]{f}{, }\item[{TArgs \&\&...}]{args}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+setup function pointers 
+
+\Hypertarget{classOperation_a07f03d11f9e1a4e4a8aa9aee00bdeb7c_a07f03d11f9e1a4e4a8aa9aee00bdeb7c}\index{Operation@{Operation}!setup@{setup}}
+\index{setup@{setup}!Operation@{Operation}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classOperation_a07f03d11f9e1a4e4a8aa9aee00bdeb7c_a07f03d11f9e1a4e4a8aa9aee00bdeb7c} 
+template$<$typename TMethod , typename T , typename ... TArgs$>$ \\
+static std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classOperation}{Operation}} $>$ Operation\+::setup (\begin{DoxyParamCaption}\item[{TMethod \&\&}]{mf}{, }\item[{T \&\&}]{obj}{, }\item[{TArgs \&\&...}]{args}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+setup member function pointers 
+
+\Hypertarget{classOperation_a1a6693e431a3b4a6a2acd6b77df6203e_a1a6693e431a3b4a6a2acd6b77df6203e}\index{Operation@{Operation}!swap@{swap}}
+\index{swap@{swap}!Operation@{Operation}}
+\doxysubsubsection{\texorpdfstring{swap()}{swap()}}
+{\footnotesize\ttfamily \label{classOperation_a1a6693e431a3b4a6a2acd6b77df6203e_a1a6693e431a3b4a6a2acd6b77df6203e} 
+void Operation\+::swap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classOperation}{Operation}} \&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classOperation_a1d65aa6390838c774e7032221d8e12bb_a1d65aa6390838c774e7032221d8e12bb}\index{Operation@{Operation}!m\_f@{m\_f}}
+\index{m\_f@{m\_f}!Operation@{Operation}}
+\doxysubsubsection{\texorpdfstring{m\_f}{m\_f}}
+{\footnotesize\ttfamily \label{classOperation_a1d65aa6390838c774e7032221d8e12bb_a1d65aa6390838c774e7032221d8e12bb} 
+\mbox{\hyperlink{classOperation_aa3d6c997112b92e3f69a41212e70518e_aa3d6c997112b92e3f69a41212e70518e}{TF}} Operation\+::m\+\_\+f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{operation_8h}{operation.\+h}}\item 
+src/\mbox{\hyperlink{operation_8cpp}{operation.\+cpp}}\end{DoxyCompactItemize}

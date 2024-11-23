@@ -20,15 +20,12 @@ protected:
 	unsigned m_height;
 	Microsoft::WRL::ComPtr<ID3D11RenderTargetView> m_pD3dRtv;
 protected:
-	//	\function	IrenderTargetView	||	\date	2021/10/25 17:00
-	//	\brief	For creating an output RT only
+	/// \brief	For creating an output RT only
 	IRenderTargetView( Graphics &gfx, ID3D11Texture2D *pTexture, std::optional<unsigned> face );
-	//	\function	IrenderTargetView	||	\date	2021/10/25 17:00
-	//	\brief	Render to Texture constructor
+	/// \brief	Render to Texture constructor
 	IRenderTargetView( Graphics &gfx, const unsigned width, const unsigned height );
 public:
-	//	\function	unbind	||	\date	2022/10/29 21:56
-	//	\brief	unbind targets from Output - currently UNUSED
+	/// \brief	unbind targets from Output - currently UNUSED
 	static void unbind( Graphics &gfx ) noexcept;
 public:
 	void bindRenderSurface( Graphics &gfx ) cond_noex override;
@@ -43,18 +40,17 @@ public:
 	ID3D11RenderTargetView* d3dResource() const noexcept;
 	virtual void setDebugObjectName( const char* name ) noexcept override;
 private:
-	//	\function	createStagingTexture	||	\date	2021/10/27 21:59
-	//	\brief	create a texture resource compatible with our RTV, but with Staging usage (CPU read access, no GPU access)
+	/// \brief	create a texture resource compatible with our RTV, but with Staging usage (CPU read access, no GPU access)
 	std::pair<Microsoft::WRL::ComPtr<ID3D11Texture2D>, D3D11_TEXTURE2D_DESC> createStagingTexture( Graphics &gfx ) const;
 	void bindRenderSurface( Graphics &gfx, ID3D11DepthStencilView *pD3dDsv ) cond_noex;
 };
 
-//=============================================================
-//	\class	RenderTargetShaderInput
-//	\author	KeyC0de
-//	\date	2022/10/13 11:09
-//	\brief	RTV wrapper that will be used for Input from the Back Buffer only
-//=============================================================
+///=============================================================
+/// \class	RenderTargetShaderInput
+/// \author	KeyC0de
+/// \date	2022/10/13 11:09
+/// \brief	RTV wrapper that will be used for Input from the Back Buffer only
+///=============================================================
 class RenderTargetShaderInput
 	: public IRenderTargetView
 {
@@ -67,12 +63,12 @@ public:
 	unsigned getSlot() const noexcept;
 };
 
-//=============================================================
-//	\class	RenderTargetOutput
-//	\author	KeyC0de
-//	\date	2021/10/19 0:47
-//	\brief	RTV wrapper that will be used for Output only
-//=============================================================
+///=============================================================
+/// \class	RenderTargetOutput
+/// \author	KeyC0de
+/// \date	2021/10/19 0:47
+/// \brief	RTV wrapper that will be used for Output only
+///=============================================================
 class RenderTargetOutput
 	: public IRenderTargetView
 {

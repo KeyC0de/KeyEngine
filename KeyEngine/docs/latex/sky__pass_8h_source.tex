@@ -1,0 +1,41 @@
+\doxysection{sky\+\_\+pass.\+h}
+\hypertarget{sky__pass_8h_source}{}\label{sky__pass_8h_source}\index{inc/sky\_pass.h@{inc/sky\_pass.h}}
+\mbox{\hyperlink{sky__pass_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{bindable__pass_8h}{bindable\_pass.h}}"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGraphics}{Graphics}};}
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVertexBuffer}{VertexBuffer}};}
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIndexBuffer}{IndexBuffer}};}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceren}{ren}}}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classren_1_1SkyPass}{SkyPass}}}
+\DoxyCodeLine{00014\ \ \ \ \ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classren_1_1IBindablePass}{IBindablePass}}}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{classren_1_1SkyPass_a2f80c3a9df4533f75804fc0f165dad38_a2f80c3a9df4533f75804fc0f165dad38}{s\_cubeGeometryTag}}\ =\ \textcolor{stringliteral}{"{}\$cube\_skybox"{}};}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{classren_1_1SkyPass_ae27c35877852e187d2f565674299886f_ae27c35877852e187d2f565674299886f}{s\_sphereGeometryTag}}\ =\ \textcolor{stringliteral}{"{}\$sphere\_skybox"{}};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classren_1_1SkyPass_a373bb65157ab289c6465dd5eb0573ee6_a373bb65157ab289c6465dd5eb0573ee6}{m\_nCubeIndices}};}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classren_1_1SkyPass_a81b2d08bcc6604ee021c9dbf7a25982b_a81b2d08bcc6604ee021c9dbf7a25982b}{m\_nSphereIndices}};}
+\DoxyCodeLine{00021\ \ \ \ \ std::shared\_ptr<VertexBuffer>\ \mbox{\hyperlink{classren_1_1SkyPass_a7181c04b46b849c690bc037d8da06f8e_a7181c04b46b849c690bc037d8da06f8e}{m\_pCubeVb}};}
+\DoxyCodeLine{00022\ \ \ \ \ std::shared\_ptr<IndexBuffer>\ \mbox{\hyperlink{classren_1_1SkyPass_ad4f10fa0e000b473004099da1eeb69e2_ad4f10fa0e000b473004099da1eeb69e2}{m\_pCubeIb}};}
+\DoxyCodeLine{00023\ \ \ \ \ std::shared\_ptr<VertexBuffer>\ \mbox{\hyperlink{classren_1_1SkyPass_a4007c091541f21ec46dfdaffb223481e_a4007c091541f21ec46dfdaffb223481e}{m\_pSphereVb}};}
+\DoxyCodeLine{00024\ \ \ \ \ std::shared\_ptr<IndexBuffer>\ \mbox{\hyperlink{classren_1_1SkyPass_aa4878e4ba4c24b795259a30453164c11_aa4878e4ba4c24b795259a30453164c11}{m\_pSphereIb}};}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classren_1_1SkyPass_ab9215c446c8362ea06dee9b0113ec265_ab9215c446c8362ea06dee9b0113ec265}{m\_bUseSphere}};}
+\DoxyCodeLine{00026\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{classren_1_1SkyPass_a1b9881827b6ffe6063f3c40e3689da6d_a1b9881827b6ffe6063f3c40e3689da6d}{SkyPass}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx,\ \textcolor{keyword}{const}\ std::string\ \&name,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ useSphere\ );}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1SkyPass_aac9adbd77652549277584937a5a44f42_aac9adbd77652549277584937a5a44f42}{run}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx\ )\ \textcolor{keyword}{const}\ cond\_noex\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1SkyPass_a3b0174cb8ca42abb25ef46f419efe2b7_a3b0174cb8ca42abb25ef46f419efe2b7}{reset}}()\ cond\_noex\ override;}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1SkyPass_a9525a44d610a38f05c99bfa17328657f_a9525a44d610a38f05c99bfa17328657f}{displayImguiWidgets}}()\ noexcept;}
+\DoxyCodeLine{00032\ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \}\textcolor{comment}{//namespace\ ren}}
+
+\end{DoxyCode}

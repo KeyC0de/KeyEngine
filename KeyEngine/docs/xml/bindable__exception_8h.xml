@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="bindable__exception_8h" kind="file" language="C++">
+    <compoundname>bindable_exception.h</compoundname>
+    <includes refid="key__exception_8h" local="yes">key_exception.h</includes>
+    <includedby refid="bindable__exception_8cpp" local="yes">src/bindable_exception.cpp</includedby>
+    <includedby refid="depth__stencil__state_8cpp" local="yes">src/depth_stencil_state.cpp</includedby>
+    <includedby refid="rasterizer__state_8cpp" local="yes">src/rasterizer_state.cpp</includedby>
+    <includedby refid="render__target_8cpp" local="yes">src/render_target.cpp</includedby>
+    <includedby refid="texture__desc_8cpp" local="yes">src/texture_desc.cpp</includedby>
+    <includedby refid="texture__sampler__state_8cpp" local="yes">src/texture_sampler_state.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>inc/bindable_exception.h</label>
+        <link refid="bindable__exception_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>key_exception.h</label>
+        <link refid="key__exception_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>stdexcept</label>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>inc/bindable_exception.h</label>
+        <link refid="bindable__exception_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/bindable_exception.cpp</label>
+        <link refid="bindable__exception_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/depth_stencil_state.cpp</label>
+        <link refid="depth__stencil__state_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/rasterizer_state.cpp</label>
+        <link refid="rasterizer__state_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/render_target.cpp</label>
+        <link refid="render__target_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/texture_desc.cpp</label>
+        <link refid="texture__desc_8cpp"/>
+      </node>
+      <node id="7">
+        <label>src/texture_sampler_state.cpp</label>
+        <link refid="texture__sampler__state_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classBindableException" prot="public">BindableException</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="bindable__exception_8h_ad3b2ea7a349e411ed47fba062fe034f2_1ad3b2ea7a349e411ed47fba062fe034f2" prot="public" static="no">
+        <name>THROW_KEY_EXCEPTION</name>
+        <param><defname>msg</defname></param>
+        <initializer>	__debugbreak();\
+	throw <ref refid="classKeyException" kindref="compound">KeyException</ref>( __LINE__, __FILE__, __FUNCTION__, msg );</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/bindable_exception.h" line="2" column="9"/>
+        <referencedby refid="classThreadPoolJ_a8d1fb8a147b9e4799a4e5b9c694f9e39_1a8d1fb8a147b9e4799a4e5b9c694f9e39" compoundref="thread__poolj_8h" startline="62" endline="79">ThreadPoolJ::enqueue</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="bindable__exception_8h_a49daaad773d173079645f4c159841e69_1a49daaad773d173079645f4c159841e69" prot="public" static="no">
+        <name>THROW_BINDABLE_EXCEPTION</name>
+        <param><defname>msg</defname></param>
+        <initializer>	__debugbreak();\
+	throw <ref refid="classBindableException" kindref="compound">BindableException</ref>( __LINE__, __FILE__, __FUNCTION__, msg );</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/bindable_exception.h" line="17" column="9" bodyfile="inc/bindable_exception.h" bodystart="17" bodyend="18"/>
+        <referencedby refid="classDepthStencilState_a7b1f40fb3710fadada68414103730488_1a7b1f40fb3710fadada68414103730488" compoundref="depth__stencil__state_8cpp" startline="9" endline="114">DepthStencilState::DepthStencilState</referencedby>
+        <referencedby refid="classRasterizerState_a804a50b2960604725f103b927f9d052f_1a804a50b2960604725f103b927f9d052f" compoundref="rasterizer__state_8cpp" startline="9" endline="58">RasterizerState::RasterizerState</referencedby>
+        <referencedby refid="classTextureSamplerState_ad1aed26564ecd85cb57eec7841a8e634_1ad1aed26564ecd85cb57eec7841a8e634" compoundref="texture__sampler__state_8cpp" startline="9" endline="116">TextureSamplerState::TextureSamplerState</referencedby>
+        <referencedby refid="classIRenderTargetView_a60fc375522630853ea8f69b2f0c653ed_1a60fc375522630853ea8f69b2f0c653ed" compoundref="render__target_8cpp" startline="158" endline="190">IRenderTargetView::convertToBitmap</referencedby>
+        <referencedby refid="texture__desc_8h_a42d18799df978a38e809f8588cbd5f7b_1a42d18799df978a38e809f8588cbd5f7b" compoundref="texture__desc_8cpp" startline="41" endline="49">getFormatRtv</referencedby>
+        <referencedby refid="texture__desc_8h_a735b8903be34d33b390feb6524fffcb7_1a735b8903be34d33b390feb6524fffcb7" compoundref="texture__desc_8cpp" startline="75" endline="85">getShaderInputFormatDsv</referencedby>
+        <referencedby refid="texture__desc_8h_ada981af37c5ea1a0d8713e52ca9e28ea_1ada981af37c5ea1a0d8713e52ca9e28ea" compoundref="texture__desc_8cpp" startline="63" endline="73">getTypedFormatDsv</referencedby>
+        <referencedby refid="texture__desc_8h_a70ee284a2074507d586cded00e2e8617_1a70ee284a2074507d586cded00e2e8617" compoundref="texture__desc_8cpp" startline="51" endline="61">getTypelessFormatDsv</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="key__exception_8h" kindref="compound">key_exception.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="classBindableException" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classBindableException" kindref="compound">BindableException</ref><sp/>final</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classKeyException" kindref="compound">KeyException</ref></highlight></codeline>
+<codeline lineno="8"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBindableException_ad4bfa0236db94d553f0b6f837d45656e_1ad4bfa0236db94d553f0b6f837d45656e" kindref="member">BindableException</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>line,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*file,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*function,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;msg<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classBindableException_a0d6405405ceff6545de3db76a73a3a71_1a0d6405405ceff6545de3db76a73a3a71" kindref="member">getType</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classBindableException_a7bc81c9702e594b4e8f51f78d846da3b_1a7bc81c9702e594b4e8f51f78d846da3b" kindref="member">what</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="bindable__exception_8h_a49daaad773d173079645f4c159841e69_1a49daaad773d173079645f4c159841e69" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>THROW_BINDABLE_EXCEPTION(<sp/>msg<sp/>)<sp/>__debugbreak();\</highlight></codeline>
+<codeline lineno="18"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>throw<sp/>BindableException(<sp/>__LINE__,<sp/>__FILE__,<sp/>__FUNCTION__,<sp/>msg<sp/>);</highlight></codeline>
+    </programlisting>
+    <location file="inc/bindable_exception.h"/>
+  </compounddef>
+</doxygen>

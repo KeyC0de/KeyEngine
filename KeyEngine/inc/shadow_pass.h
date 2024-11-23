@@ -18,12 +18,12 @@ class IDepthStencilView;
 namespace ren
 {
 
-//=============================================================
-//	\class	ShadowPass
-//	\author	KeyC0de
-//	\date	2022/10/03 10:30
-//	\brief	An offscreen Pass - output only pass DSV
-//=============================================================
+///=============================================================
+/// \class	ShadowPass
+/// \author	KeyC0de
+/// \date	2022/10/03 10:30
+/// \brief	An offscreen Pass - output only pass DSV
+///=============================================================
 class ShadowPass
 	: public RenderQueuePass
 {
@@ -69,14 +69,12 @@ public:
 public:
 	ShadowPass( Graphics &gfx, const std::string &name, const unsigned shadowMapRez = s_shadowMapResolution );
 
-	//	\function	update	||	\date	2021/10/18 23:55
-	//	\brief	update the light's -camera- view Proj Matrix for projective texture shadow cube mapping
+	/// \brief	update the light's -camera- view Proj Matrix for projective texture shadow cube mapping
 	//				then render the depth buffer to texture 6 times
 	void run( Graphics &gfx ) const cond_noex override;
-	//	\function	bindShadowCastingLights	||	\date	2024/09/07 9:38
-	//	\brief	populate shadow casting lights for this frame and setup their offscreen shadow maps for rendering into
+	/// \brief	populate shadow casting lights for this frame and setup their offscreen shadow maps for rendering into
 	void bindShadowCastingLights( Graphics &gfx, const std::vector<ILightSource*> &shadowCastingLights );
-	// currently only dumping shadow map of the first registered shadow casting light
+	/// \brief	currently only dumping shadow map of the first registered shadow casting light
 	void dumpShadowMap( Graphics &gfx, const std::string &path ) const;
 	void dumpShadowCubeMap( Graphics &gfx, const std::string &path ) const;
 private:

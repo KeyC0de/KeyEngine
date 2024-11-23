@@ -1,0 +1,508 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classThreadPoolJ" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>ThreadPoolJ</compoundname>
+    <basecompoundref refid="classNonCopyable" prot="public" virt="non-virtual">NonCopyable</basecompoundref>
+    <includes refid="thread__poolj_8h" local="no">thread_poolj.h</includes>
+    <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="classThreadPoolJ_a8340923fea4d70543e295304b154689f_1a8340923fea4d70543e295304b154689f" prot="private" static="no">
+        <type>std::function&lt; void(nonstd::stop_token)&gt;</type>
+        <definition>using ThreadPoolJ::Task =  std::function&lt;void(nonstd::stop_token)&gt;</definition>
+        <argsstring></argsstring>
+        <name>Task</name>
+        <qualifiedname>ThreadPoolJ::Task</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/thread_poolj.h" line="34" column="1" bodyfile="inc/thread_poolj.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classThreadPoolJ_a77837e4adf53b67bef9e8ee176975eb3_1a77837e4adf53b67bef9e8ee176975eb3" prot="private" static="yes" mutable="no">
+        <type><ref refid="classThreadPoolJ" kindref="compound">ThreadPoolJ</ref> *</type>
+        <definition>ThreadPoolJ* ThreadPoolJ::s_pInstance</definition>
+        <argsstring></argsstring>
+        <name>s_pInstance</name>
+        <qualifiedname>ThreadPoolJ::s_pInstance</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/thread_poolj.h" line="36" column="27" bodyfile="inc/thread_poolj.h" bodystart="36" bodyend="-1"/>
+        <referencedby refid="classThreadPoolJ_a0c0e12a8c7197ac7954aaae0a10a4809_1a0c0e12a8c7197ac7954aaae0a10a4809" compoundref="thread__poolj_8cpp" startline="15" endline="24">getInstance</referencedby>
+        <referencedby refid="classThreadPoolJ_a900b4ee770a970d62cfdb78805dce633_1a900b4ee770a970d62cfdb78805dce633" compoundref="thread__poolj_8cpp" startline="26" endline="34">resetInstance</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classThreadPoolJ_a481df3da83614d4f7a4e0a95963bbeff_1a481df3da83614d4f7a4e0a95963bbeff" prot="private" static="yes" mutable="no">
+        <type>std::recursive_mutex</type>
+        <definition>std::recursive_mutex ThreadPoolJ::s_mu</definition>
+        <argsstring></argsstring>
+        <name>s_mu</name>
+        <qualifiedname>ThreadPoolJ::s_mu</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/thread_poolj.h" line="37" column="36" bodyfile="inc/thread_poolj.h" bodystart="37" bodyend="-1"/>
+        <referencedby refid="classThreadPoolJ_a0c0e12a8c7197ac7954aaae0a10a4809_1a0c0e12a8c7197ac7954aaae0a10a4809" compoundref="thread__poolj_8cpp" startline="15" endline="24">getInstance</referencedby>
+        <referencedby refid="classThreadPoolJ_a900b4ee770a970d62cfdb78805dce633_1a900b4ee770a970d62cfdb78805dce633" compoundref="thread__poolj_8cpp" startline="26" endline="34">resetInstance</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classThreadPoolJ_a1456022600a4ea8b213f5d883ddca031_1a1456022600a4ea8b213f5d883ddca031" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool ThreadPoolJ::m_bEnabled</definition>
+        <argsstring></argsstring>
+        <name>m_bEnabled</name>
+        <qualifiedname>ThreadPoolJ::m_bEnabled</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/thread_poolj.h" line="39" column="6" bodyfile="inc/thread_poolj.h" bodystart="39" bodyend="-1"/>
+        <referencedby refid="classThreadPoolJ_a60154491a2f3080b64bafa4482325a3a_1a60154491a2f3080b64bafa4482325a3a" compoundref="thread__poolj_8cpp" startline="92" endline="95">disable</referencedby>
+        <referencedby refid="classThreadPoolJ_acff3f687fabbf39480d9a4209a67904e_1acff3f687fabbf39480d9a4209a67904e" compoundref="thread__poolj_8cpp" startline="87" endline="90">enable</referencedby>
+        <referencedby refid="classThreadPoolJ_a8d1fb8a147b9e4799a4e5b9c694f9e39_1a8d1fb8a147b9e4799a4e5b9c694f9e39" compoundref="thread__poolj_8h" startline="62" endline="79">enqueue</referencedby>
+        <referencedby refid="classThreadPoolJ_a5b29093e3f530a39ff112af3ccf9ce49_1a5b29093e3f530a39ff112af3ccf9ce49" compoundref="thread__poolj_8cpp" startline="97" endline="100">isEnabled</referencedby>
+        <referencedby refid="classThreadPoolJ_a88b07ec3d369564de821d10986091426_1a88b07ec3d369564de821d10986091426" compoundref="thread__poolj_8cpp" startline="102" endline="137">run</referencedby>
+        <referencedby refid="classThreadPoolJ_a4eed8445982bec0c3530502424a813a4_1a4eed8445982bec0c3530502424a813a4" compoundref="thread__poolj_8cpp" startline="58" endline="66">start</referencedby>
+        <referencedby refid="classThreadPoolJ_a3cfc8aad20e8b95f97f7891651b3b9a4_1a3cfc8aad20e8b95f97f7891651b3b9a4" compoundref="thread__poolj_8cpp" startline="68" endline="85">stop</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classThreadPoolJ_a1b7cefb6988f2cf5c9eb395f54172a94_1a1b7cefb6988f2cf5c9eb395f54172a94" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; nonstd::jthread &gt;</type>
+        <definition>std::vector&lt;nonstd::jthread&gt; ThreadPoolJ::m_pool</definition>
+        <argsstring></argsstring>
+        <name>m_pool</name>
+        <qualifiedname>ThreadPoolJ::m_pool</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/thread_poolj.h" line="40" column="13" bodyfile="inc/thread_poolj.h" bodystart="40" bodyend="-1"/>
+        <referencedby refid="classThreadPoolJ_a45e02b36197bf6c1ed3baa2ea4ee7924_1a45e02b36197bf6c1ed3baa2ea4ee7924" compoundref="thread__poolj_8cpp" startline="5" endline="13">ThreadPoolJ</referencedby>
+        <referencedby refid="classThreadPoolJ_acd20215772d41c1709c3d0403524189d_1acd20215772d41c1709c3d0403524189d" compoundref="thread__poolj_8cpp" startline="36" endline="40">~ThreadPoolJ</referencedby>
+        <referencedby refid="classThreadPoolJ_a88b07ec3d369564de821d10986091426_1a88b07ec3d369564de821d10986091426" compoundref="thread__poolj_8cpp" startline="102" endline="137">run</referencedby>
+        <referencedby refid="classThreadPoolJ_a3cfc8aad20e8b95f97f7891651b3b9a4_1a3cfc8aad20e8b95f97f7891651b3b9a4" compoundref="thread__poolj_8cpp" startline="68" endline="85">stop</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classThreadPoolJ_a7002faf8e57fa5b0d17e673a04de60e3_1a7002faf8e57fa5b0d17e673a04de60e3" prot="private" static="no" mutable="no">
+        <type>std::queue&lt; <ref refid="classThreadPoolJ_a8340923fea4d70543e295304b154689f_1a8340923fea4d70543e295304b154689f" kindref="member">Task</ref> &gt;</type>
+        <definition>std::queue&lt;Task&gt; ThreadPoolJ::m_tasks</definition>
+        <argsstring></argsstring>
+        <name>m_tasks</name>
+        <qualifiedname>ThreadPoolJ::m_tasks</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/thread_poolj.h" line="41" column="12" bodyfile="inc/thread_poolj.h" bodystart="41" bodyend="-1"/>
+        <referencedby refid="classThreadPoolJ_a8d1fb8a147b9e4799a4e5b9c694f9e39_1a8d1fb8a147b9e4799a4e5b9c694f9e39" compoundref="thread__poolj_8h" startline="62" endline="79">enqueue</referencedby>
+        <referencedby refid="classThreadPoolJ_a88b07ec3d369564de821d10986091426_1a88b07ec3d369564de821d10986091426" compoundref="thread__poolj_8cpp" startline="102" endline="137">run</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classThreadPoolJ_aef4dca2090783fa0b169fb574ea3e8d2_1aef4dca2090783fa0b169fb574ea3e8d2" prot="private" static="no" mutable="no">
+        <type>std::condition_variable</type>
+        <definition>std::condition_variable ThreadPoolJ::m_cond</definition>
+        <argsstring></argsstring>
+        <name>m_cond</name>
+        <qualifiedname>ThreadPoolJ::m_cond</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/thread_poolj.h" line="42" column="25" bodyfile="inc/thread_poolj.h" bodystart="42" bodyend="-1"/>
+        <referencedby refid="classThreadPoolJ_a8d1fb8a147b9e4799a4e5b9c694f9e39_1a8d1fb8a147b9e4799a4e5b9c694f9e39" compoundref="thread__poolj_8h" startline="62" endline="79">enqueue</referencedby>
+        <referencedby refid="classThreadPoolJ_a88b07ec3d369564de821d10986091426_1a88b07ec3d369564de821d10986091426" compoundref="thread__poolj_8cpp" startline="102" endline="137">run</referencedby>
+        <referencedby refid="classThreadPoolJ_a3cfc8aad20e8b95f97f7891651b3b9a4_1a3cfc8aad20e8b95f97f7891651b3b9a4" compoundref="thread__poolj_8cpp" startline="68" endline="85">stop</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classThreadPoolJ_a4146b8e2ffbee3f47258434d757ba944_1a4146b8e2ffbee3f47258434d757ba944" prot="private" static="no" mutable="no">
+        <type>std::mutex</type>
+        <definition>std::mutex ThreadPoolJ::m_mu</definition>
+        <argsstring></argsstring>
+        <name>m_mu</name>
+        <qualifiedname>ThreadPoolJ::m_mu</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/thread_poolj.h" line="43" column="12" bodyfile="inc/thread_poolj.h" bodystart="43" bodyend="-1"/>
+        <referencedby refid="classThreadPoolJ_a8d1fb8a147b9e4799a4e5b9c694f9e39_1a8d1fb8a147b9e4799a4e5b9c694f9e39" compoundref="thread__poolj_8h" startline="62" endline="79">enqueue</referencedby>
+        <referencedby refid="classThreadPoolJ_a88b07ec3d369564de821d10986091426_1a88b07ec3d369564de821d10986091426" compoundref="thread__poolj_8cpp" startline="102" endline="137">run</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classThreadPoolJ_a45e02b36197bf6c1ed3baa2ea4ee7924_1a45e02b36197bf6c1ed3baa2ea4ee7924" prot="private" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ThreadPoolJ::ThreadPoolJ</definition>
+        <argsstring>(const std::size_t nthreads, const bool bStart)</argsstring>
+        <name>ThreadPoolJ</name>
+        <qualifiedname>ThreadPoolJ::ThreadPoolJ</qualifiedname>
+        <param>
+          <type>const std::size_t</type>
+          <declname>nthreads</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>bStart</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/thread_poolj.h" line="45" column="10" bodyfile="src/thread_poolj.cpp" bodystart="5" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classThreadPoolJ_acff3f687fabbf39480d9a4209a67904e_1acff3f687fabbf39480d9a4209a67904e" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ThreadPoolJ::enable</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>enable</name>
+        <qualifiedname>ThreadPoolJ::enable</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/thread_poolj.h" line="81" column="6" bodyfile="src/thread_poolj.cpp" bodystart="87" bodyend="90"/>
+        <referencedby refid="classThreadPoolJ_a4eed8445982bec0c3530502424a813a4_1a4eed8445982bec0c3530502424a813a4" compoundref="thread__poolj_8cpp" startline="58" endline="66">start</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classThreadPoolJ_a60154491a2f3080b64bafa4482325a3a_1a60154491a2f3080b64bafa4482325a3a" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ThreadPoolJ::disable</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>disable</name>
+        <qualifiedname>ThreadPoolJ::disable</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/thread_poolj.h" line="82" column="6" bodyfile="src/thread_poolj.cpp" bodystart="92" bodyend="95"/>
+        <referencedby refid="classThreadPoolJ_a3cfc8aad20e8b95f97f7891651b3b9a4_1a3cfc8aad20e8b95f97f7891651b3b9a4" compoundref="thread__poolj_8cpp" startline="68" endline="85">stop</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classThreadPoolJ_a88b07ec3d369564de821d10986091426_1a88b07ec3d369564de821d10986091426" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ThreadPoolJ::run</definition>
+        <argsstring>()</argsstring>
+        <name>run</name>
+        <qualifiedname>ThreadPoolJ::run</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/thread_poolj.h" line="83" column="6" bodyfile="src/thread_poolj.cpp" bodystart="102" bodyend="137"/>
+        <referencedby refid="classThreadPoolJ_a4eed8445982bec0c3530502424a813a4_1a4eed8445982bec0c3530502424a813a4" compoundref="thread__poolj_8cpp" startline="58" endline="66">start</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classThreadPoolJ_acd20215772d41c1709c3d0403524189d_1acd20215772d41c1709c3d0403524189d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>ThreadPoolJ::~ThreadPoolJ</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>~ThreadPoolJ</name>
+        <qualifiedname>ThreadPoolJ::~ThreadPoolJ</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/thread_poolj.h" line="47" column="1" bodyfile="src/thread_poolj.cpp" bodystart="36" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classThreadPoolJ_a794b881dc31840d2a6b9b9dff07b747c_1a794b881dc31840d2a6b9b9dff07b747c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ThreadPoolJ::ThreadPoolJ</definition>
+        <argsstring>(const ThreadPoolJ &amp;rhs)=delete</argsstring>
+        <name>ThreadPoolJ</name>
+        <qualifiedname>ThreadPoolJ::ThreadPoolJ</qualifiedname>
+        <param>
+          <type>const <ref refid="classThreadPoolJ" kindref="compound">ThreadPoolJ</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/thread_poolj.h" line="48" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classThreadPoolJ_a8759bc70c7373545ead803142c195b43_1a8759bc70c7373545ead803142c195b43" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classThreadPoolJ" kindref="compound">ThreadPoolJ</ref> &amp;</type>
+        <definition>ThreadPoolJ &amp; ThreadPoolJ::operator=</definition>
+        <argsstring>(const ThreadPoolJ &amp;rhs)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>ThreadPoolJ::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classThreadPoolJ" kindref="compound">ThreadPoolJ</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/thread_poolj.h" line="49" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classThreadPoolJ_af7a7289bd16577d221707d44a56d65aa_1af7a7289bd16577d221707d44a56d65aa" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>ThreadPoolJ::ThreadPoolJ</definition>
+        <argsstring>(ThreadPoolJ &amp;&amp;rhs) noexcept</argsstring>
+        <name>ThreadPoolJ</name>
+        <qualifiedname>ThreadPoolJ::ThreadPoolJ</qualifiedname>
+        <param>
+          <type><ref refid="classThreadPoolJ" kindref="compound">ThreadPoolJ</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/thread_poolj.h" line="50" column="1" bodyfile="src/thread_poolj.cpp" bodystart="42" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classThreadPoolJ_a17bcacc17bd62cb63b28eb7c8a261f51_1a17bcacc17bd62cb63b28eb7c8a261f51" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classThreadPoolJ" kindref="compound">ThreadPoolJ</ref> &amp;</type>
+        <definition>ThreadPoolJ &amp; ThreadPoolJ::operator=</definition>
+        <argsstring>(ThreadPoolJ &amp;&amp;rhs) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>ThreadPoolJ::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classThreadPoolJ" kindref="compound">ThreadPoolJ</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/thread_poolj.h" line="51" column="13" bodyfile="src/thread_poolj.cpp" bodystart="51" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="classThreadPoolJ_a4eed8445982bec0c3530502424a813a4_1a4eed8445982bec0c3530502424a813a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ThreadPoolJ::start</definition>
+        <argsstring>()</argsstring>
+        <name>start</name>
+        <qualifiedname>ThreadPoolJ::start</qualifiedname>
+        <briefdescription>
+<para>calls run </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/thread_poolj.h" line="57" column="6" bodyfile="src/thread_poolj.cpp" bodystart="58" bodyend="66"/>
+        <referencedby refid="classThreadPoolJ_a45e02b36197bf6c1ed3baa2ea4ee7924_1a45e02b36197bf6c1ed3baa2ea4ee7924" compoundref="thread__poolj_8cpp" startline="5" endline="13">ThreadPoolJ</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classThreadPoolJ_a3cfc8aad20e8b95f97f7891651b3b9a4_1a3cfc8aad20e8b95f97f7891651b3b9a4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ThreadPoolJ::stop</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>stop</name>
+        <qualifiedname>ThreadPoolJ::stop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/thread_poolj.h" line="58" column="6" bodyfile="src/thread_poolj.cpp" bodystart="68" bodyend="85"/>
+        <referencedby refid="classThreadPoolJ_acd20215772d41c1709c3d0403524189d_1acd20215772d41c1709c3d0403524189d" compoundref="thread__poolj_8cpp" startline="36" endline="40">~ThreadPoolJ</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classThreadPoolJ_a5b29093e3f530a39ff112af3ccf9ce49_1a5b29093e3f530a39ff112af3ccf9ce49" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ThreadPoolJ::isEnabled</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>isEnabled</name>
+        <qualifiedname>ThreadPoolJ::isEnabled</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/thread_poolj.h" line="59" column="6" bodyfile="src/thread_poolj.cpp" bodystart="97" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="classThreadPoolJ_a8d1fb8a147b9e4799a4e5b9c694f9e39_1a8d1fb8a147b9e4799a4e5b9c694f9e39" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename TCallable</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>TArgs</declname>
+            <defname>TArgs</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void ThreadPoolJ::enqueue</definition>
+        <argsstring>(TCallable &amp;&amp;f, TArgs &amp;&amp;...args)</argsstring>
+        <name>enqueue</name>
+        <qualifiedname>ThreadPoolJ::enqueue</qualifiedname>
+        <param>
+          <type>TCallable &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>TArgs &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/thread_poolj.h" line="62" column="6" bodyfile="inc/thread_poolj.h" bodystart="62" bodyend="79"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classThreadPoolJ_a0c0e12a8c7197ac7954aaae0a10a4809_1a0c0e12a8c7197ac7954aaae0a10a4809" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classThreadPoolJ" kindref="compound">ThreadPoolJ</ref> &amp;</type>
+        <definition>ThreadPoolJ &amp; ThreadPoolJ::getInstance</definition>
+        <argsstring>(const std::size_t nThreads=4u, const bool bEnabled=true)</argsstring>
+        <name>getInstance</name>
+        <qualifiedname>ThreadPoolJ::getInstance</qualifiedname>
+        <param>
+          <type>const std::size_t</type>
+          <declname>nThreads</declname>
+          <defval>4u</defval>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>bEnabled</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/thread_poolj.h" line="53" column="20" bodyfile="src/thread_poolj.cpp" bodystart="15" bodyend="24"/>
+        <referencedby refid="main_8cpp_a98c407042201e01212d3b66d0ec4740c_1a98c407042201e01212d3b66d0ec4740c" compoundref="main_8cpp" startline="135" endline="163">firstly</referencedby>
+        <referencedby refid="classSoundPlayer_a29bf19ba13cb2e0f237f46e300d02d89_1a29bf19ba13cb2e0f237f46e300d02d89" compoundref="key__sound_8cpp" startline="622" endline="643">SoundPlayer::notify</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classThreadPoolJ_a900b4ee770a970d62cfdb78805dce633_1a900b4ee770a970d62cfdb78805dce633" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ThreadPoolJ::resetInstance</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>resetInstance</name>
+        <qualifiedname>ThreadPoolJ::resetInstance</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/thread_poolj.h" line="54" column="13" bodyfile="src/thread_poolj.cpp" bodystart="26" bodyend="34"/>
+        <referencedby refid="main_8cpp_a8da9a292561783f58a4971af8e3e6c2d_1a8da9a292561783f58a4971af8e3e6c2d" compoundref="main_8cpp" startline="166" endline="200">finally</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>A class which encapsulates a Queue of Tasks &amp; a Pool of threads and dispatches work on demand. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>============================================================</para>
+<para><simplesect kind="author"><para>KeyC0de </para>
+</simplesect>
+<simplesect kind="date"><para>25/9/2019 3:55</para>
+</simplesect>
+ie. upon an incoming Task - callable object - a thread is dispatched to execute it</para>
+<para>singleton class</para>
+<para>move only</para>
+<para>Leverages jthread facilities - interruptibility.</para>
+<para>The functions you enqueue to <ref refid="classThreadPoolJ" kindref="compound">ThreadPoolJ</ref> must have a first argument of <computeroutput>stop_token</computeroutput></para>
+<para>WARNING: Remember to call resetInstance before you terminate your program</para>
+<para>example usage:</para>
+<para>threadPool.enqueue( &amp;doNothing );</para>
+<para>threadPool.enqueue( &amp;func_async::doNothingForEverUntilStoppedProperly );</para>
+<para>threadPool.enqueue( &amp;func1 ); <heading level="1">threadPool.enqueue( &amp;func_async::doPeriodically, &amp;func2, 1000, false ); </heading>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>NonCopyable</label>
+        <link refid="classNonCopyable"/>
+      </node>
+      <node id="1">
+        <label>ThreadPoolJ</label>
+        <link refid="classThreadPoolJ"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>NonCopyable</label>
+        <link refid="classNonCopyable"/>
+      </node>
+      <node id="1">
+        <label>ThreadPoolJ</label>
+        <link refid="classThreadPoolJ"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1" relation="usage">
+          <edgelabel>s_pInstance</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/thread_poolj.h" line="31" column="1" bodyfile="inc/thread_poolj.h" bodystart="33" bodyend="84"/>
+    <listofallmembers>
+      <member refid="classThreadPoolJ_a60154491a2f3080b64bafa4482325a3a_1a60154491a2f3080b64bafa4482325a3a" prot="private" virt="non-virtual"><scope>ThreadPoolJ</scope><name>disable</name></member>
+      <member refid="classThreadPoolJ_acff3f687fabbf39480d9a4209a67904e_1acff3f687fabbf39480d9a4209a67904e" prot="private" virt="non-virtual"><scope>ThreadPoolJ</scope><name>enable</name></member>
+      <member refid="classThreadPoolJ_a8d1fb8a147b9e4799a4e5b9c694f9e39_1a8d1fb8a147b9e4799a4e5b9c694f9e39" prot="public" virt="non-virtual"><scope>ThreadPoolJ</scope><name>enqueue</name></member>
+      <member refid="classThreadPoolJ_a0c0e12a8c7197ac7954aaae0a10a4809_1a0c0e12a8c7197ac7954aaae0a10a4809" prot="public" virt="non-virtual"><scope>ThreadPoolJ</scope><name>getInstance</name></member>
+      <member refid="classThreadPoolJ_a5b29093e3f530a39ff112af3ccf9ce49_1a5b29093e3f530a39ff112af3ccf9ce49" prot="public" virt="non-virtual"><scope>ThreadPoolJ</scope><name>isEnabled</name></member>
+      <member refid="classThreadPoolJ_a1456022600a4ea8b213f5d883ddca031_1a1456022600a4ea8b213f5d883ddca031" prot="private" virt="non-virtual"><scope>ThreadPoolJ</scope><name>m_bEnabled</name></member>
+      <member refid="classThreadPoolJ_aef4dca2090783fa0b169fb574ea3e8d2_1aef4dca2090783fa0b169fb574ea3e8d2" prot="private" virt="non-virtual"><scope>ThreadPoolJ</scope><name>m_cond</name></member>
+      <member refid="classThreadPoolJ_a4146b8e2ffbee3f47258434d757ba944_1a4146b8e2ffbee3f47258434d757ba944" prot="private" virt="non-virtual"><scope>ThreadPoolJ</scope><name>m_mu</name></member>
+      <member refid="classThreadPoolJ_a1b7cefb6988f2cf5c9eb395f54172a94_1a1b7cefb6988f2cf5c9eb395f54172a94" prot="private" virt="non-virtual"><scope>ThreadPoolJ</scope><name>m_pool</name></member>
+      <member refid="classThreadPoolJ_a7002faf8e57fa5b0d17e673a04de60e3_1a7002faf8e57fa5b0d17e673a04de60e3" prot="private" virt="non-virtual"><scope>ThreadPoolJ</scope><name>m_tasks</name></member>
+      <member refid="classNonCopyable_a809b6e4ade7ae32f6d248f2a3b783d45_1a809b6e4ade7ae32f6d248f2a3b783d45" prot="public" virt="non-virtual"><scope>ThreadPoolJ</scope><name>NonCopyable</name></member>
+      <member refid="classNonCopyable_a15aa3015488bb26c47ded914cb630cf5_1a15aa3015488bb26c47ded914cb630cf5" prot="public" virt="non-virtual"><scope>ThreadPoolJ</scope><name>NonCopyable</name></member>
+      <member refid="classNonCopyable_a487646562ae30ece23d7638f2aed1dde_1a487646562ae30ece23d7638f2aed1dde" prot="public" virt="non-virtual"><scope>ThreadPoolJ</scope><name>NonCopyable</name></member>
+      <member refid="classNonCopyable_af716e4cfb79381710ef4490414939ae9_1af716e4cfb79381710ef4490414939ae9" prot="public" virt="non-virtual"><scope>ThreadPoolJ</scope><name>NonCopyable</name></member>
+      <member refid="classThreadPoolJ_a8759bc70c7373545ead803142c195b43_1a8759bc70c7373545ead803142c195b43" prot="public" virt="non-virtual"><scope>ThreadPoolJ</scope><name>operator=</name></member>
+      <member refid="classThreadPoolJ_a17bcacc17bd62cb63b28eb7c8a261f51_1a17bcacc17bd62cb63b28eb7c8a261f51" prot="public" virt="non-virtual"><scope>ThreadPoolJ</scope><name>operator=</name></member>
+      <member refid="classNonCopyable_af4788b57da9a9faa570c754c22c724f5_1af4788b57da9a9faa570c754c22c724f5" prot="public" virt="non-virtual" ambiguityscope="NonCopyable::"><scope>ThreadPoolJ</scope><name>operator=</name></member>
+      <member refid="classNonCopyable_ae032ca32cda9c836c27b28eb6a087d18_1ae032ca32cda9c836c27b28eb6a087d18" prot="public" virt="non-virtual" ambiguityscope="NonCopyable::"><scope>ThreadPoolJ</scope><name>operator=</name></member>
+      <member refid="classNonCopyable_af81816bd4c2c4421a6eab98843ead6e4_1af81816bd4c2c4421a6eab98843ead6e4" prot="public" virt="non-virtual" ambiguityscope="NonCopyable::"><scope>ThreadPoolJ</scope><name>operator=</name></member>
+      <member refid="classThreadPoolJ_a900b4ee770a970d62cfdb78805dce633_1a900b4ee770a970d62cfdb78805dce633" prot="public" virt="non-virtual"><scope>ThreadPoolJ</scope><name>resetInstance</name></member>
+      <member refid="classThreadPoolJ_a88b07ec3d369564de821d10986091426_1a88b07ec3d369564de821d10986091426" prot="private" virt="non-virtual"><scope>ThreadPoolJ</scope><name>run</name></member>
+      <member refid="classThreadPoolJ_a481df3da83614d4f7a4e0a95963bbeff_1a481df3da83614d4f7a4e0a95963bbeff" prot="private" virt="non-virtual"><scope>ThreadPoolJ</scope><name>s_mu</name></member>
+      <member refid="classThreadPoolJ_a77837e4adf53b67bef9e8ee176975eb3_1a77837e4adf53b67bef9e8ee176975eb3" prot="private" virt="non-virtual"><scope>ThreadPoolJ</scope><name>s_pInstance</name></member>
+      <member refid="classThreadPoolJ_a4eed8445982bec0c3530502424a813a4_1a4eed8445982bec0c3530502424a813a4" prot="public" virt="non-virtual"><scope>ThreadPoolJ</scope><name>start</name></member>
+      <member refid="classThreadPoolJ_a3cfc8aad20e8b95f97f7891651b3b9a4_1a3cfc8aad20e8b95f97f7891651b3b9a4" prot="public" virt="non-virtual"><scope>ThreadPoolJ</scope><name>stop</name></member>
+      <member refid="classThreadPoolJ_a8340923fea4d70543e295304b154689f_1a8340923fea4d70543e295304b154689f" prot="private" virt="non-virtual"><scope>ThreadPoolJ</scope><name>Task</name></member>
+      <member refid="classThreadPoolJ_a45e02b36197bf6c1ed3baa2ea4ee7924_1a45e02b36197bf6c1ed3baa2ea4ee7924" prot="private" virt="non-virtual"><scope>ThreadPoolJ</scope><name>ThreadPoolJ</name></member>
+      <member refid="classThreadPoolJ_a794b881dc31840d2a6b9b9dff07b747c_1a794b881dc31840d2a6b9b9dff07b747c" prot="public" virt="non-virtual"><scope>ThreadPoolJ</scope><name>ThreadPoolJ</name></member>
+      <member refid="classThreadPoolJ_af7a7289bd16577d221707d44a56d65aa_1af7a7289bd16577d221707d44a56d65aa" prot="public" virt="non-virtual"><scope>ThreadPoolJ</scope><name>ThreadPoolJ</name></member>
+      <member refid="classNonCopyable_a3e461fb46c72b9a5af7df7e74dbd899e_1a3e461fb46c72b9a5af7df7e74dbd899e" prot="protected" virt="non-virtual"><scope>ThreadPoolJ</scope><name>~NonCopyable</name></member>
+      <member refid="classThreadPoolJ_acd20215772d41c1709c3d0403524189d_1acd20215772d41c1709c3d0403524189d" prot="public" virt="non-virtual"><scope>ThreadPoolJ</scope><name>~ThreadPoolJ</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

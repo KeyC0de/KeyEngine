@@ -1,0 +1,119 @@
+\doxysection{ren\+::Render\+Surface\+Linker\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classren_1_1RenderSurfaceLinker}{}\label{classren_1_1RenderSurfaceLinker}\index{ren::RenderSurfaceLinker$<$ T $>$@{ren::RenderSurfaceLinker$<$ T $>$}}
+
+
+T should be a RTV or a DSV.  
+
+
+
+
+{\ttfamily \#include $<$linker.\+h$>$}
+
+Inheritance diagram for ren\+::Render\+Surface\+Linker\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classren_1_1RenderSurfaceLinker}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classren_1_1RenderSurfaceLinker_aff7516765756902ec0a08b638c4ddd24_aff7516765756902ec0a08b638c4ddd24}{Render\+Surface\+Linker}} (const std\+::string \&name, std\+::shared\+\_\+ptr$<$ T $>$ \&target)
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIRenderSurface}{IRender\+Surface}} $>$ \mbox{\hyperlink{classren_1_1RenderSurfaceLinker_af597b7c04be623fb8790843390974ded_af597b7c04be623fb8790843390974ded}{get\+Render\+Surface}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classren_1_1ILinker}{ren\+::\+ILinker}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classren_1_1ILinker_a680f4cce41b6e5e540ea758e2790eb1a_a680f4cce41b6e5e540ea758e2790eb1a}{\texorpdfstring{$\sim$}{\string~}\+ILinker}} () noexcept=default
+\item 
+const std\+::string \& \mbox{\hyperlink{classren_1_1ILinker_a4192feae9df332056a8487b6d1e08f1b_a4192feae9df332056a8487b6d1e08f1b}{get\+Name}} () const noexcept
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIBindable}{IBindable}} $>$ \mbox{\hyperlink{classren_1_1ILinker_a931d059b56fdbc42f198bff4c9056e87_a931d059b56fdbc42f198bff4c9056e87}{get\+Bindable}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classren_1_1RenderSurfaceLinker}{Render\+Surface\+Linker}} $>$ \mbox{\hyperlink{classren_1_1RenderSurfaceLinker_a3dfb5c23039f780789d65690a295e434_a3dfb5c23039f780789d65690a295e434}{make}} (const std\+::string \&name, std\+::shared\+\_\+ptr$<$ T $>$ \&target)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ T $>$ \& \mbox{\hyperlink{classren_1_1RenderSurfaceLinker_a954e362c0e1c90e5ce70325a7da0ea73_a954e362c0e1c90e5ce70325a7da0ea73}{m\+\_\+target}}
+\item 
+bool \mbox{\hyperlink{classren_1_1RenderSurfaceLinker_a04ad5ef5504f5bf7e71434bcd75744bb_a04ad5ef5504f5bf7e71434bcd75744bb}{m\+\_\+b\+Linked}} = false
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classren_1_1ILinker}{ren\+::\+ILinker}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classren_1_1ILinker_ad259b0ea4d66752335fa4f57817af71f_ad259b0ea4d66752335fa4f57817af71f}{ILinker}} (const std\+::string \&name)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class ren\+::\+Render\+Surface\+Linker$<$ T $>$}
+T should be a RTV or a DSV. 
+
+=============================================================
+
+\begin{DoxyAuthor}{Author}
+Key\+C0de 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/10/07 21\+:30 \doxysubsection*{resource T will be bound as output to the graphics pipeline in the next Pass }
+\end{DoxyDate}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classren_1_1RenderSurfaceLinker_aff7516765756902ec0a08b638c4ddd24_aff7516765756902ec0a08b638c4ddd24}\index{ren::RenderSurfaceLinker$<$ T $>$@{ren::RenderSurfaceLinker$<$ T $>$}!RenderSurfaceLinker@{RenderSurfaceLinker}}
+\index{RenderSurfaceLinker@{RenderSurfaceLinker}!ren::RenderSurfaceLinker$<$ T $>$@{ren::RenderSurfaceLinker$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{RenderSurfaceLinker()}{RenderSurfaceLinker()}}
+{\footnotesize\ttfamily \label{classren_1_1RenderSurfaceLinker_aff7516765756902ec0a08b638c4ddd24_aff7516765756902ec0a08b638c4ddd24} 
+template$<$class T $>$ \\
+\mbox{\hyperlink{classren_1_1RenderSurfaceLinker}{ren\+::\+Render\+Surface\+Linker}}$<$ T $>$\+::\+Render\+Surface\+Linker (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name}{, }\item[{std\+::shared\+\_\+ptr$<$ T $>$ \&}]{target}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classren_1_1RenderSurfaceLinker_af597b7c04be623fb8790843390974ded_af597b7c04be623fb8790843390974ded}\index{ren::RenderSurfaceLinker$<$ T $>$@{ren::RenderSurfaceLinker$<$ T $>$}!getRenderSurface@{getRenderSurface}}
+\index{getRenderSurface@{getRenderSurface}!ren::RenderSurfaceLinker$<$ T $>$@{ren::RenderSurfaceLinker$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getRenderSurface()}{getRenderSurface()}}
+{\footnotesize\ttfamily \label{classren_1_1RenderSurfaceLinker_af597b7c04be623fb8790843390974ded_af597b7c04be623fb8790843390974ded} 
+template$<$class T $>$ \\
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIRenderSurface}{IRender\+Surface}} $>$ \mbox{\hyperlink{classren_1_1RenderSurfaceLinker}{ren\+::\+Render\+Surface\+Linker}}$<$ T $>$\+::get\+Render\+Surface (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classren_1_1ILinker_a9a44001279f58f2071f8a21becaa50c1_a9a44001279f58f2071f8a21becaa50c1}{ren\+::\+ILinker}}.
+
+\Hypertarget{classren_1_1RenderSurfaceLinker_a3dfb5c23039f780789d65690a295e434_a3dfb5c23039f780789d65690a295e434}\index{ren::RenderSurfaceLinker$<$ T $>$@{ren::RenderSurfaceLinker$<$ T $>$}!make@{make}}
+\index{make@{make}!ren::RenderSurfaceLinker$<$ T $>$@{ren::RenderSurfaceLinker$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{make()}{make()}}
+{\footnotesize\ttfamily \label{classren_1_1RenderSurfaceLinker_a3dfb5c23039f780789d65690a295e434_a3dfb5c23039f780789d65690a295e434} 
+template$<$class T $>$ \\
+static std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classren_1_1RenderSurfaceLinker}{Render\+Surface\+Linker}} $>$ \mbox{\hyperlink{classren_1_1RenderSurfaceLinker}{ren\+::\+Render\+Surface\+Linker}}$<$ T $>$\+::make (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name}{, }\item[{std\+::shared\+\_\+ptr$<$ T $>$ \&}]{target}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classren_1_1RenderSurfaceLinker_a04ad5ef5504f5bf7e71434bcd75744bb_a04ad5ef5504f5bf7e71434bcd75744bb}\index{ren::RenderSurfaceLinker$<$ T $>$@{ren::RenderSurfaceLinker$<$ T $>$}!m\_bLinked@{m\_bLinked}}
+\index{m\_bLinked@{m\_bLinked}!ren::RenderSurfaceLinker$<$ T $>$@{ren::RenderSurfaceLinker$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{m\_bLinked}{m\_bLinked}}
+{\footnotesize\ttfamily \label{classren_1_1RenderSurfaceLinker_a04ad5ef5504f5bf7e71434bcd75744bb_a04ad5ef5504f5bf7e71434bcd75744bb} 
+template$<$class T $>$ \\
+bool \mbox{\hyperlink{classren_1_1RenderSurfaceLinker}{ren\+::\+Render\+Surface\+Linker}}$<$ T $>$\+::m\+\_\+b\+Linked = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classren_1_1RenderSurfaceLinker_a954e362c0e1c90e5ce70325a7da0ea73_a954e362c0e1c90e5ce70325a7da0ea73}\index{ren::RenderSurfaceLinker$<$ T $>$@{ren::RenderSurfaceLinker$<$ T $>$}!m\_target@{m\_target}}
+\index{m\_target@{m\_target}!ren::RenderSurfaceLinker$<$ T $>$@{ren::RenderSurfaceLinker$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{m\_target}{m\_target}}
+{\footnotesize\ttfamily \label{classren_1_1RenderSurfaceLinker_a954e362c0e1c90e5ce70325a7da0ea73_a954e362c0e1c90e5ce70325a7da0ea73} 
+template$<$class T $>$ \\
+std\+::shared\+\_\+ptr$<$T$>$\& \mbox{\hyperlink{classren_1_1RenderSurfaceLinker}{ren\+::\+Render\+Surface\+Linker}}$<$ T $>$\+::m\+\_\+target\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{linker_8h}{linker.\+h}}\end{DoxyCompactItemize}

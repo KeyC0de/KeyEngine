@@ -6,14 +6,14 @@
 
 class Graphics;
 
-//=============================================================
-//	\class	TextureSamplerState
-//	\author	KeyC0de
-//	\date	2024/04/28 18:00
-//	\brief	Texture sampler state class
-//			the bound slot is equal to 0 for default TS operation, yet it's > 0 for Shadow operations (automatically set to 1 if bHwPcf, otherwise equal to 2)
-//			Currently for a ShadowTS HW-PCF is automatically used
-//=============================================================
+///=============================================================
+/// \class	TextureSamplerState
+/// \author	KeyC0de
+/// \date	2024/04/28 18:00
+/// \brief	Texture sampler state class
+/// \brief	the bound slot is equal to 0 for default TS operation, yet it's > 0 for Shadow operations (automatically set to 1 if bHwPcf, otherwise equal to 2)
+/// \brief	Currently for a ShadowTS HW-PCF is automatically used
+///=============================================================
 class TextureSamplerState
 	: public IBindable
 {

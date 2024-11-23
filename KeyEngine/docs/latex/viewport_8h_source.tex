@@ -1,0 +1,29 @@
+\doxysection{viewport.\+h}
+\hypertarget{viewport_8h_source}{}\label{viewport_8h_source}\index{inc/viewport.h@{inc/viewport.h}}
+\mbox{\hyperlink{viewport_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{bindable_8h}{bindable.h}}"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGraphics}{Graphics}};}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classViewport}{Viewport}}}
+\DoxyCodeLine{00009\ \ \ \ \ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classIBindable}{IBindable}}}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ D3D11\_VIEWPORT\ \mbox{\hyperlink{classViewport_a52cc9d4a0d56083a2d55391c2e8f6aeb_a52cc9d4a0d56083a2d55391c2e8f6aeb}{m\_viewport}}\{\};}
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{classViewport_a474a87491be9dec1321c62c3ea286c3f_a474a87491be9dec1321c62c3ea286c3f}{Viewport}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx\ );}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{classViewport_a474a87491be9dec1321c62c3ea286c3f_a474a87491be9dec1321c62c3ea286c3f}{Viewport}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ width,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ height\ );}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classViewport_a93ebffad455c130aa536d25d660f00c9_a93ebffad455c130aa536d25d660f00c9}{bind}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx\ )\ cond\_noex\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00017\ \ \ \ \ D3D11\_VIEWPORT\ \mbox{\hyperlink{classViewport_a91bae7ee43b3c23480e8ab28c37d5c00_a91bae7ee43b3c23480e8ab28c37d5c00}{getViewport}}()\ const\ noexcept;}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classViewport_a5fc1b8745016d0e37de7d5991a31c771_a5fc1b8745016d0e37de7d5991a31c771}{getWidth}}()\ const\ noexcept;}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classViewport_a9581fd0fb1754c82ca6bccecc30434db_a9581fd0fb1754c82ca6bccecc30434db}{getHeight}}()\ const\ noexcept;}
+\DoxyCodeLine{00020\ \ \ \ \ static\ std::shared\_ptr<\mbox{\hyperlink{classViewport}{Viewport}}>\ \mbox{\hyperlink{classViewport_a1256dfd86a85d8bf84da6a0fec8b0ad6_a1256dfd86a85d8bf84da6a0fec8b0ad6}{fetch}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx,\ const\ \textcolor{keywordtype}{float}\ width,\ const\ \textcolor{keywordtype}{float}\ height\ );}
+\DoxyCodeLine{00021\ \ \ \ \ static\ std::\textcolor{keywordtype}{string}\ \mbox{\hyperlink{classViewport_a2f5826de45294e7db25bad7fdac2d37f_a2f5826de45294e7db25bad7fdac2d37f}{calcUid}}(\ const\ \textcolor{keywordtype}{float}\ width,\ const\ \textcolor{keywordtype}{float}\ height\ );}
+\DoxyCodeLine{00022\ \ \ \ \ std::\textcolor{keywordtype}{string}\ \mbox{\hyperlink{classViewport_a4faf5c207d0070d7a73e970d78179f69_a4faf5c207d0070d7a73e970d78179f69}{getUid}}()\ const\ noexcept\ override;}
+\DoxyCodeLine{00023\ \};}
+
+\end{DoxyCode}

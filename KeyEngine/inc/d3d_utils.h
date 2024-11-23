@@ -17,8 +17,7 @@
 namespace util
 {
 
-//	\function	comSafeRelease	||	\date	2018/12/30 17:35
-//	\brief	safely release a COM object	---	deprecated
+/// \brief	safely release a COM object	---	deprecated
 template<typename T>
 inline void comSafeRelease( T &p )
 {
@@ -33,8 +32,7 @@ static auto s_XMZero = DirectX::XMVectorZero();
 
 bool isNormalized( const DirectX::XMFLOAT3 &vec );
 DirectX::XMMATRIX XM_CALLCONV computeTransform( const DirectX::XMFLOAT3 &scale, const DirectX::XMFLOAT3 &pos, const DirectX::XMFLOAT3 &rot );
-//	\function	extractRotation	||	\date	2022/09/03 14:37
-//	\brief	builds a FLOAT3 of {x=pitch,y=yaw,z=roll}
+/// \brief	builds a FLOAT3 of {x=pitch,y=yaw,z=roll}
 DirectX::XMFLOAT3 extractRotation( const DirectX::XMFLOAT4X4 &mat );
 ALIAS_FUNCTION( extractRotation, extractEulerAngles );
 float getPitch( const DirectX::XMFLOAT4X4 &mat );
@@ -64,8 +62,7 @@ DirectX::XMFLOAT3 toDegrees3( const DirectX::XMFLOAT3 &rotAngles );
 void toRadians3InPlace( DirectX::XMFLOAT3 &rotAngles );
 DirectX::XMFLOAT3 toRadians3( const DirectX::XMFLOAT3 &rotAngles );
 
-//	\function	quaternionToPitchYawRoll	||	\date	2022/09/03 14:48
-//	\brief	same as quaternionToEulerAngles except this version returns the euler angles in a float3 vector
+/// \brief	same as quaternionToEulerAngles except this version returns the euler angles in a float3 vector
 DirectX::XMFLOAT3 quaternionToPitchYawRoll( DirectX::XMFLOAT4 &quat );
 DirectX::XMVECTOR XM_CALLCONV pitchYawRollToVector( const float pitch, const float yaw, const float roll );
 float distance( const DirectX::XMFLOAT3& v1, const DirectX::XMFLOAT3& v2 ) noexcept;
@@ -78,9 +75,8 @@ DirectX::XMVECTOR XM_CALLCONV multiplyVectorWithScalar( const DirectX::XMVECTOR 
 DirectX::XMVECTOR XM_CALLCONV divideVectorWithScalar( const DirectX::XMVECTOR &v, const float scalar ) noexcept;
 DirectX::XMFLOAT3 getMidpointOfTriangle( const DirectX::XMFLOAT3 &v0, const DirectX::XMFLOAT3 &v1, const DirectX::XMFLOAT3 &v2 ) noexcept;
 
-//	\function	rotateVectorAroundAxisAngle	||	\date	2024/04/18 13:39
-//	\brief	rotate a vector around an axis and an angle (in degrees) using Rodrigues' rotation formula:
-//			axis * cos( theta ) + ( axis.Dot( v ) * v * ( 1 -cos( theta ) ) + ( v.Cross( axis ) * sin( theta ) );
+/// \brief	rotate a vector around an axis and an angle (in degrees) using Rodrigues' rotation formula:
+/// \brief	axis * cos( theta ) + ( axis.Dot( v ) * v * ( 1 -cos( theta ) ) + ( v.Cross( axis ) * sin( theta ) );
 DirectX::XMVECTOR rotateVectorAroundAxisAngle( const DirectX::XMVECTOR &v, const DirectX::XMVECTOR &axis, const float theta ) noexcept;
 
 DXGI_RATIONAL queryRefreshRate( const unsigned screenWidth, const unsigned screenHeight, const bool bVsync );
@@ -118,8 +114,7 @@ static ID3D11PixelShader* createShaderObject<ID3D11PixelShader>( ID3D11Device *p
 	return pPixelShader;
 }
 
-//	\function	loadShaderDynamically	||	\date	2019/12/30 17:28
-//	\brief	will be used to load and compile a shader at runtime
+/// \brief	will be used to load and compile a shader at runtime
 template<class TShader>
 TShader* loadShaderDynamically( ID3D11Device *pD3dDevice,
 	const std::wstring &fileName,

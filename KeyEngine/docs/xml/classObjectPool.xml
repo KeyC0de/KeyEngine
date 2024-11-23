@@ -1,0 +1,364 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classObjectPool" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>ObjectPool</compoundname>
+    <basecompoundref refid="classNonCopyable" prot="public" virt="non-virtual">NonCopyable</basecompoundref>
+    <includes refid="object__pool_8h" local="no">object_pool.h</includes>
+    <innerclass refid="unionObjectPool_1_1Object" prot="private">ObjectPool::Object</innerclass>
+    <innerclass refid="structObjectPool_1_1rebind" prot="public">ObjectPool::rebind</innerclass>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classObjectPool_a3e774e7272b0a82d646ffac444289db6_1a3e774e7272b0a82d646ffac444289db6" prot="public" static="no">
+        <type>T</type>
+        <definition>using ObjectPool&lt; T &gt;::value_type =  T</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>ObjectPool::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/object_pool.h" line="27" column="1" bodyfile="inc/object_pool.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classObjectPool_a8c28e441fbf200b22110784d2d22ab36_1a8c28e441fbf200b22110784d2d22ab36" prot="public" static="no">
+        <type>T *</type>
+        <definition>using ObjectPool&lt; T &gt;::pointer =  T*</definition>
+        <argsstring></argsstring>
+        <name>pointer</name>
+        <qualifiedname>ObjectPool::pointer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/object_pool.h" line="28" column="1" bodyfile="inc/object_pool.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classObjectPool_a9f4f64b95a30f89419809ee8f30fc92f_1a9f4f64b95a30f89419809ee8f30fc92f" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="unionObjectPool_1_1Object" kindref="compound">Object</ref>[]&gt;</type>
+        <definition>std::unique_ptr&lt;Object[]&gt; ObjectPool&lt; T &gt;::m_pool</definition>
+        <argsstring></argsstring>
+        <name>m_pool</name>
+        <qualifiedname>ObjectPool::m_pool</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/object_pool.h" line="23" column="17" bodyfile="inc/object_pool.h" bodystart="23" bodyend="-1"/>
+        <referencedby refid="classObjectPool_ae3b6a071a40dec3b4acc5a873c416b01_1ae3b6a071a40dec3b4acc5a873c416b01" compoundref="object__pool_8h" startline="31" endline="43">ObjectPool&lt; T &gt;::ObjectPool</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classObjectPool_aaa415b3cb968dcb61ef6711f4d3c4c03_1aaa415b3cb968dcb61ef6711f4d3c4c03" prot="private" static="no" mutable="no">
+        <type><ref refid="unionObjectPool_1_1Object" kindref="compound">Object</ref> *</type>
+        <definition>Object* ObjectPool&lt; T &gt;::m_pNextFree</definition>
+        <argsstring></argsstring>
+        <name>m_pNextFree</name>
+        <qualifiedname>ObjectPool::m_pNextFree</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/object_pool.h" line="24" column="8" bodyfile="inc/object_pool.h" bodystart="24" bodyend="-1"/>
+        <referencedby refid="classObjectPool_ae3b6a071a40dec3b4acc5a873c416b01_1ae3b6a071a40dec3b4acc5a873c416b01" compoundref="object__pool_8h" startline="31" endline="43">ObjectPool&lt; T &gt;::ObjectPool</referencedby>
+        <referencedby refid="classObjectPool_aade24458eccdfddc0ec175a5cec8d1ea_1aade24458eccdfddc0ec175a5cec8d1ea" compoundref="object__pool_8h" startline="81" endline="92">ObjectPool&lt; T &gt;::allocate</referencedby>
+        <referencedby refid="classObjectPool_a9a0046c3811cd3b22b45c7c730d85915_1a9a0046c3811cd3b22b45c7c730d85915" compoundref="object__pool_8h" startline="95" endline="101">ObjectPool&lt; T &gt;::deallocate</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classObjectPool_ac393625c067bea5325dd1978084e6b47_1ac393625c067bea5325dd1978084e6b47" prot="private" static="no" mutable="no">
+        <type>std::size_t</type>
+        <definition>std::size_t ObjectPool&lt; T &gt;::m_nObjs</definition>
+        <argsstring></argsstring>
+        <name>m_nObjs</name>
+        <qualifiedname>ObjectPool::m_nObjs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/object_pool.h" line="25" column="13" bodyfile="inc/object_pool.h" bodystart="25" bodyend="-1"/>
+        <referencedby refid="classObjectPool_a422f245c28eb4070c9ca3a5d479e3012_1a422f245c28eb4070c9ca3a5d479e3012" compoundref="object__pool_8h" startline="122" endline="125">ObjectPool&lt; T &gt;::getSize</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classObjectPool_ae3b6a071a40dec3b4acc5a873c416b01_1ae3b6a071a40dec3b4acc5a873c416b01" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ObjectPool&lt; T &gt;::ObjectPool</definition>
+        <argsstring>(const std::size_t nObjs)</argsstring>
+        <name>ObjectPool</name>
+        <qualifiedname>ObjectPool::ObjectPool</qualifiedname>
+        <param>
+          <type>const std::size_t</type>
+          <declname>nObjs</declname>
+        </param>
+        <briefdescription>
+<para>ctor creates the pool given the amount of objects it will hold </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/object_pool.h" line="31" column="10" bodyfile="inc/object_pool.h" bodystart="31" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classObjectPool_a93dd6b1dbb1f87e2e25cceb13d76e0ab_1a93dd6b1dbb1f87e2e25cceb13d76e0ab" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>ObjectPool&lt; T &gt;::~ObjectPool</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>~ObjectPool</name>
+        <qualifiedname>ObjectPool::~ObjectPool</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/object_pool.h" line="45" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classObjectPool_af33673fed86d55a5f05fc99ceb49fc22_1af33673fed86d55a5f05fc99ceb49fc22" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>ObjectPool&lt; T &gt;::ObjectPool</definition>
+        <argsstring>(ObjectPool &amp;&amp;rhs) noexcept</argsstring>
+        <name>ObjectPool</name>
+        <qualifiedname>ObjectPool::ObjectPool</qualifiedname>
+        <param>
+          <type><ref refid="classObjectPool" kindref="compound">ObjectPool</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/object_pool.h" line="47" column="1" bodyfile="inc/object_pool.h" bodystart="47" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="classObjectPool_aef644afca4b172a0826e7597ecb4e1a5_1aef644afca4b172a0826e7597ecb4e1a5" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classObjectPool" kindref="compound">ObjectPool</ref> &amp;</type>
+        <definition>ObjectPool &amp; ObjectPool&lt; T &gt;::operator=</definition>
+        <argsstring>(ObjectPool &amp;&amp;rhs) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>ObjectPool::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classObjectPool" kindref="compound">ObjectPool</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/object_pool.h" line="56" column="12" bodyfile="inc/object_pool.h" bodystart="56" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classObjectPool_a2730a24e7e924ddcf0cee57d35866528_1a2730a24e7e924ddcf0cee57d35866528" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>T *</type>
+        <definition>T * ObjectPool&lt; T &gt;::address</definition>
+        <argsstring>(T &amp;r) const noexcept</argsstring>
+        <name>address</name>
+        <qualifiedname>ObjectPool::address</qualifiedname>
+        <param>
+          <type>T &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/object_pool.h" line="69" column="3" bodyfile="inc/object_pool.h" bodystart="69" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="classObjectPool_a26818f2614771d79e113207b54f6ca31_1a26818f2614771d79e113207b54f6ca31" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const T *</type>
+        <definition>const T * ObjectPool&lt; T &gt;::address</definition>
+        <argsstring>(const T &amp;r) const noexcept</argsstring>
+        <name>address</name>
+        <qualifiedname>ObjectPool::address</qualifiedname>
+        <param>
+          <type>const T &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/object_pool.h" line="74" column="9" bodyfile="inc/object_pool.h" bodystart="74" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="classObjectPool_aade24458eccdfddc0ec175a5cec8d1ea_1aade24458eccdfddc0ec175a5cec8d1ea" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>T *</type>
+        <definition>T * ObjectPool&lt; T &gt;::allocate</definition>
+        <argsstring>()</argsstring>
+        <name>allocate</name>
+        <qualifiedname>ObjectPool::allocate</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/object_pool.h" line="81" column="3" bodyfile="inc/object_pool.h" bodystart="81" bodyend="92"/>
+        <referencedby refid="classObjectPool_a00b06a510030de58a1cea2ca9cc3c8fa_1a00b06a510030de58a1cea2ca9cc3c8fa" compoundref="object__pool_8h" startline="106" endline="109">ObjectPool&lt; T &gt;::construct</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classObjectPool_a9a0046c3811cd3b22b45c7c730d85915_1a9a0046c3811cd3b22b45c7c730d85915" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ObjectPool&lt; T &gt;::deallocate</definition>
+        <argsstring>(T *p, std::size_t count=0) noexcept</argsstring>
+        <name>deallocate</name>
+        <qualifiedname>ObjectPool::deallocate</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+          <declname>count</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/object_pool.h" line="95" column="6" bodyfile="inc/object_pool.h" bodystart="95" bodyend="101"/>
+        <referencedby refid="classObjectPool_a874712d8c259e45121f90be4a2542cc3_1a874712d8c259e45121f90be4a2542cc3" compoundref="object__pool_8h" startline="111" endline="120">ObjectPool&lt; T &gt;::destroy</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classObjectPool_a00b06a510030de58a1cea2ca9cc3c8fa_1a00b06a510030de58a1cea2ca9cc3c8fa" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>TArgs</declname>
+            <defname>TArgs</defname>
+          </param>
+        </templateparamlist>
+        <type>T *</type>
+        <definition>T * ObjectPool&lt; T &gt;::construct</definition>
+        <argsstring>(TArgs... args)</argsstring>
+        <name>construct</name>
+        <qualifiedname>ObjectPool::construct</qualifiedname>
+        <param>
+          <type>TArgs...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/object_pool.h" line="106" column="3" bodyfile="inc/object_pool.h" bodystart="106" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classObjectPool_a874712d8c259e45121f90be4a2542cc3_1a874712d8c259e45121f90be4a2542cc3" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ObjectPool&lt; T &gt;::destroy</definition>
+        <argsstring>(T *p) noexcept</argsstring>
+        <name>destroy</name>
+        <qualifiedname>ObjectPool::destroy</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/object_pool.h" line="111" column="6" bodyfile="inc/object_pool.h" bodystart="111" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="classObjectPool_a422f245c28eb4070c9ca3a5d479e3012_1a422f245c28eb4070c9ca3a5d479e3012" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>std::size_t</type>
+        <definition>std::size_t ObjectPool&lt; T &gt;::getSize</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>getSize</name>
+        <qualifiedname>ObjectPool::getSize</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/object_pool.h" line="122" column="13" bodyfile="inc/object_pool.h" bodystart="122" bodyend="125"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>============================================================= </para>
+    </briefdescription>
+    <detaileddescription>
+<para>============================================================= </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>NonCopyable</label>
+        <link refid="classNonCopyable"/>
+      </node>
+      <node id="1">
+        <label>ObjectPool&lt; T &gt;</label>
+        <link refid="classObjectPool"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>NonCopyable</label>
+        <link refid="classNonCopyable"/>
+      </node>
+      <node id="3">
+        <label>ObjectPool&lt; T &gt;::Object</label>
+        <link refid="unionObjectPool_1_1Object"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>m_pNext</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>ObjectPool&lt; T &gt;</label>
+        <link refid="classObjectPool"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>m_pNextFree</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/object_pool.h" line="14" column="1" bodyfile="inc/object_pool.h" bodystart="16" bodyend="126"/>
+    <listofallmembers>
+      <member refid="classObjectPool_a2730a24e7e924ddcf0cee57d35866528_1a2730a24e7e924ddcf0cee57d35866528" prot="public" virt="non-virtual"><scope>ObjectPool</scope><name>address</name></member>
+      <member refid="classObjectPool_a26818f2614771d79e113207b54f6ca31_1a26818f2614771d79e113207b54f6ca31" prot="public" virt="non-virtual"><scope>ObjectPool</scope><name>address</name></member>
+      <member refid="classObjectPool_aade24458eccdfddc0ec175a5cec8d1ea_1aade24458eccdfddc0ec175a5cec8d1ea" prot="public" virt="non-virtual"><scope>ObjectPool</scope><name>allocate</name></member>
+      <member refid="classObjectPool_a00b06a510030de58a1cea2ca9cc3c8fa_1a00b06a510030de58a1cea2ca9cc3c8fa" prot="public" virt="non-virtual"><scope>ObjectPool</scope><name>construct</name></member>
+      <member refid="classObjectPool_a9a0046c3811cd3b22b45c7c730d85915_1a9a0046c3811cd3b22b45c7c730d85915" prot="public" virt="non-virtual"><scope>ObjectPool</scope><name>deallocate</name></member>
+      <member refid="classObjectPool_a874712d8c259e45121f90be4a2542cc3_1a874712d8c259e45121f90be4a2542cc3" prot="public" virt="non-virtual"><scope>ObjectPool</scope><name>destroy</name></member>
+      <member refid="classObjectPool_a422f245c28eb4070c9ca3a5d479e3012_1a422f245c28eb4070c9ca3a5d479e3012" prot="public" virt="non-virtual"><scope>ObjectPool</scope><name>getSize</name></member>
+      <member refid="classObjectPool_ac393625c067bea5325dd1978084e6b47_1ac393625c067bea5325dd1978084e6b47" prot="private" virt="non-virtual"><scope>ObjectPool</scope><name>m_nObjs</name></member>
+      <member refid="classObjectPool_aaa415b3cb968dcb61ef6711f4d3c4c03_1aaa415b3cb968dcb61ef6711f4d3c4c03" prot="private" virt="non-virtual"><scope>ObjectPool</scope><name>m_pNextFree</name></member>
+      <member refid="classObjectPool_a9f4f64b95a30f89419809ee8f30fc92f_1a9f4f64b95a30f89419809ee8f30fc92f" prot="private" virt="non-virtual"><scope>ObjectPool</scope><name>m_pool</name></member>
+      <member refid="classNonCopyable_a809b6e4ade7ae32f6d248f2a3b783d45_1a809b6e4ade7ae32f6d248f2a3b783d45" prot="public" virt="non-virtual"><scope>ObjectPool</scope><name>NonCopyable</name></member>
+      <member refid="classNonCopyable_a15aa3015488bb26c47ded914cb630cf5_1a15aa3015488bb26c47ded914cb630cf5" prot="public" virt="non-virtual"><scope>ObjectPool</scope><name>NonCopyable</name></member>
+      <member refid="classNonCopyable_a487646562ae30ece23d7638f2aed1dde_1a487646562ae30ece23d7638f2aed1dde" prot="public" virt="non-virtual"><scope>ObjectPool</scope><name>NonCopyable</name></member>
+      <member refid="classNonCopyable_af716e4cfb79381710ef4490414939ae9_1af716e4cfb79381710ef4490414939ae9" prot="public" virt="non-virtual"><scope>ObjectPool</scope><name>NonCopyable</name></member>
+      <member refid="classObjectPool_ae3b6a071a40dec3b4acc5a873c416b01_1ae3b6a071a40dec3b4acc5a873c416b01" prot="public" virt="non-virtual"><scope>ObjectPool</scope><name>ObjectPool</name></member>
+      <member refid="classObjectPool_af33673fed86d55a5f05fc99ceb49fc22_1af33673fed86d55a5f05fc99ceb49fc22" prot="public" virt="non-virtual"><scope>ObjectPool</scope><name>ObjectPool</name></member>
+      <member refid="classObjectPool_aef644afca4b172a0826e7597ecb4e1a5_1aef644afca4b172a0826e7597ecb4e1a5" prot="public" virt="non-virtual"><scope>ObjectPool</scope><name>operator=</name></member>
+      <member refid="classNonCopyable_af4788b57da9a9faa570c754c22c724f5_1af4788b57da9a9faa570c754c22c724f5" prot="public" virt="non-virtual" ambiguityscope="NonCopyable::"><scope>ObjectPool</scope><name>operator=</name></member>
+      <member refid="classNonCopyable_ae032ca32cda9c836c27b28eb6a087d18_1ae032ca32cda9c836c27b28eb6a087d18" prot="public" virt="non-virtual" ambiguityscope="NonCopyable::"><scope>ObjectPool</scope><name>operator=</name></member>
+      <member refid="classNonCopyable_af81816bd4c2c4421a6eab98843ead6e4_1af81816bd4c2c4421a6eab98843ead6e4" prot="public" virt="non-virtual" ambiguityscope="NonCopyable::"><scope>ObjectPool</scope><name>operator=</name></member>
+      <member refid="classObjectPool_a8c28e441fbf200b22110784d2d22ab36_1a8c28e441fbf200b22110784d2d22ab36" prot="public" virt="non-virtual"><scope>ObjectPool</scope><name>pointer</name></member>
+      <member refid="classObjectPool_a3e774e7272b0a82d646ffac444289db6_1a3e774e7272b0a82d646ffac444289db6" prot="public" virt="non-virtual"><scope>ObjectPool</scope><name>value_type</name></member>
+      <member refid="classNonCopyable_a3e461fb46c72b9a5af7df7e74dbd899e_1a3e461fb46c72b9a5af7df7e74dbd899e" prot="protected" virt="non-virtual"><scope>ObjectPool</scope><name>~NonCopyable</name></member>
+      <member refid="classObjectPool_a93dd6b1dbb1f87e2e25cceb13d76e0ab_1a93dd6b1dbb1f87e2e25cceb13d76e0ab" prot="public" virt="non-virtual"><scope>ObjectPool</scope><name>~ObjectPool</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

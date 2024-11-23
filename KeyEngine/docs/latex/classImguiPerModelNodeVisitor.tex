@@ -1,0 +1,117 @@
+\doxysection{Imgui\+Per\+Model\+Node\+Visitor Class Reference}
+\hypertarget{classImguiPerModelNodeVisitor}{}\label{classImguiPerModelNodeVisitor}\index{ImguiPerModelNodeVisitor@{ImguiPerModelNodeVisitor}}
+
+
+{\ttfamily \#include $<$imgui\+\_\+visitors.\+h$>$}
+
+Inheritance diagram for Imgui\+Per\+Model\+Node\+Visitor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classImguiPerModelNodeVisitor}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structImguiPerModelNodeVisitor_1_1TransformData}{Transform\+Data}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classImguiPerModelNodeVisitor_a19cfd2a6096fbef06e548e4b9592c7d2_a19cfd2a6096fbef06e548e4b9592c7d2}{Imgui\+Per\+Model\+Node\+Visitor}} ()=default
+\item 
+\mbox{\hyperlink{classImguiPerModelNodeVisitor_af2839cac298d4faafa5401b027be7826_af2839cac298d4faafa5401b027be7826}{Imgui\+Per\+Model\+Node\+Visitor}} (const std\+::string \&name)
+\item 
+void \mbox{\hyperlink{classImguiPerModelNodeVisitor_a05eb0479acfea8f99900419c4c496faa_a05eb0479acfea8f99900419c4c496faa}{on\+Visit}} (\mbox{\hyperlink{classNode}{Node}} \&node) override
+\begin{DoxyCompactList}\small\item\em if \doxylink{classIImguiNodeVisitor_a3ffe58aedb22d53f18611cd112b25bbd_a3ffe58aedb22d53f18611cd112b25bbd}{visit()} returns true, "{}close"{} the node \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classImguiPerModelNodeVisitor_a720016f02e40ac6be1351265fda6ebd0_a720016f02e40ac6be1351265fda6ebd0}{display\+Imgui\+Widgets}} (\mbox{\hyperlink{classModel}{Model}} \&model) noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structImguiPerModelNodeVisitor_1_1TransformData}{Transform\+Data}} \& \mbox{\hyperlink{classImguiPerModelNodeVisitor_afa4104c926e409f0dbdd385aa4db5d7c_afa4104c926e409f0dbdd385aa4db5d7c}{get\+Node\+Transform}} () noexcept
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions inherited from \mbox{\hyperlink{classIImguiNodeVisitor}{IImgui\+Node\+Visitor}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classIImguiNodeVisitor_a25aeeef4c80941c72871ab60cac528f1_a25aeeef4c80941c72871ab60cac528f1}{\texorpdfstring{$\sim$}{\string~}\+IImgui\+Node\+Visitor}} () noexcept=default
+\item 
+bool \mbox{\hyperlink{classIImguiNodeVisitor_a3ffe58aedb22d53f18611cd112b25bbd_a3ffe58aedb22d53f18611cd112b25bbd}{visit}} (\mbox{\hyperlink{classNode}{Node}} \&node)
+\begin{DoxyCompactList}\small\item\em returns true if we want to "{}open"{} the \doxylink{classNode}{Node} in the Im\+Gui tree hierarchy for processing of its children \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classImguiPerModelNodeVisitor_a8dd53c6d6e95624ca1664cc5b5855a64_a8dd53c6d6e95624ca1664cc5b5855a64}{m\+\_\+name}}
+\item 
+std\+::unordered\+\_\+map$<$ int, \mbox{\hyperlink{structImguiPerModelNodeVisitor_1_1TransformData}{Transform\+Data}} $>$ \mbox{\hyperlink{classImguiPerModelNodeVisitor_ab13f445a001207d663c550d05af25a28_ab13f445a001207d663c550d05af25a28}{m\+\_\+node\+Map\+Transforms}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes inherited from \mbox{\hyperlink{classIImguiNodeVisitor}{IImgui\+Node\+Visitor}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classIImguiNodeVisitor_afdf913a5e0086ef6f44a9bf46d1e7ffa_afdf913a5e0086ef6f44a9bf46d1e7ffa}{m\+\_\+p\+Selected\+Node}} = nullptr
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classImguiPerModelNodeVisitor_a19cfd2a6096fbef06e548e4b9592c7d2_a19cfd2a6096fbef06e548e4b9592c7d2}\index{ImguiPerModelNodeVisitor@{ImguiPerModelNodeVisitor}!ImguiPerModelNodeVisitor@{ImguiPerModelNodeVisitor}}
+\index{ImguiPerModelNodeVisitor@{ImguiPerModelNodeVisitor}!ImguiPerModelNodeVisitor@{ImguiPerModelNodeVisitor}}
+\doxysubsubsection{\texorpdfstring{ImguiPerModelNodeVisitor()}{ImguiPerModelNodeVisitor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classImguiPerModelNodeVisitor_a19cfd2a6096fbef06e548e4b9592c7d2_a19cfd2a6096fbef06e548e4b9592c7d2} 
+Imgui\+Per\+Model\+Node\+Visitor\+::\+Imgui\+Per\+Model\+Node\+Visitor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\Hypertarget{classImguiPerModelNodeVisitor_af2839cac298d4faafa5401b027be7826_af2839cac298d4faafa5401b027be7826}\index{ImguiPerModelNodeVisitor@{ImguiPerModelNodeVisitor}!ImguiPerModelNodeVisitor@{ImguiPerModelNodeVisitor}}
+\index{ImguiPerModelNodeVisitor@{ImguiPerModelNodeVisitor}!ImguiPerModelNodeVisitor@{ImguiPerModelNodeVisitor}}
+\doxysubsubsection{\texorpdfstring{ImguiPerModelNodeVisitor()}{ImguiPerModelNodeVisitor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classImguiPerModelNodeVisitor_af2839cac298d4faafa5401b027be7826_af2839cac298d4faafa5401b027be7826} 
+Imgui\+Per\+Model\+Node\+Visitor\+::\+Imgui\+Per\+Model\+Node\+Visitor (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classImguiPerModelNodeVisitor_a720016f02e40ac6be1351265fda6ebd0_a720016f02e40ac6be1351265fda6ebd0}\index{ImguiPerModelNodeVisitor@{ImguiPerModelNodeVisitor}!displayImguiWidgets@{displayImguiWidgets}}
+\index{displayImguiWidgets@{displayImguiWidgets}!ImguiPerModelNodeVisitor@{ImguiPerModelNodeVisitor}}
+\doxysubsubsection{\texorpdfstring{displayImguiWidgets()}{displayImguiWidgets()}}
+{\footnotesize\ttfamily \label{classImguiPerModelNodeVisitor_a720016f02e40ac6be1351265fda6ebd0_a720016f02e40ac6be1351265fda6ebd0} 
+void Imgui\+Per\+Model\+Node\+Visitor\+::display\+Imgui\+Widgets (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classModel}{Model}} \&}]{model}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classImguiPerModelNodeVisitor_afa4104c926e409f0dbdd385aa4db5d7c_afa4104c926e409f0dbdd385aa4db5d7c}\index{ImguiPerModelNodeVisitor@{ImguiPerModelNodeVisitor}!getNodeTransform@{getNodeTransform}}
+\index{getNodeTransform@{getNodeTransform}!ImguiPerModelNodeVisitor@{ImguiPerModelNodeVisitor}}
+\doxysubsubsection{\texorpdfstring{getNodeTransform()}{getNodeTransform()}}
+{\footnotesize\ttfamily \label{classImguiPerModelNodeVisitor_afa4104c926e409f0dbdd385aa4db5d7c_afa4104c926e409f0dbdd385aa4db5d7c} 
+\mbox{\hyperlink{structImguiPerModelNodeVisitor_1_1TransformData}{Imgui\+Per\+Model\+Node\+Visitor\+::\+Transform\+Data}} \& Imgui\+Per\+Model\+Node\+Visitor\+::get\+Node\+Transform (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classImguiPerModelNodeVisitor_a05eb0479acfea8f99900419c4c496faa_a05eb0479acfea8f99900419c4c496faa}\index{ImguiPerModelNodeVisitor@{ImguiPerModelNodeVisitor}!onVisit@{onVisit}}
+\index{onVisit@{onVisit}!ImguiPerModelNodeVisitor@{ImguiPerModelNodeVisitor}}
+\doxysubsubsection{\texorpdfstring{onVisit()}{onVisit()}}
+{\footnotesize\ttfamily \label{classImguiPerModelNodeVisitor_a05eb0479acfea8f99900419c4c496faa_a05eb0479acfea8f99900419c4c496faa} 
+void Imgui\+Per\+Model\+Node\+Visitor\+::on\+Visit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}} \&}]{node}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+if \doxylink{classIImguiNodeVisitor_a3ffe58aedb22d53f18611cd112b25bbd_a3ffe58aedb22d53f18611cd112b25bbd}{visit()} returns true, "{}close"{} the node 
+
+
+
+Implements \mbox{\hyperlink{classIImguiNodeVisitor_a7b479f0e4cee70568f86148dd7848c27_a7b479f0e4cee70568f86148dd7848c27}{IImgui\+Node\+Visitor}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classImguiPerModelNodeVisitor_a8dd53c6d6e95624ca1664cc5b5855a64_a8dd53c6d6e95624ca1664cc5b5855a64}\index{ImguiPerModelNodeVisitor@{ImguiPerModelNodeVisitor}!m\_name@{m\_name}}
+\index{m\_name@{m\_name}!ImguiPerModelNodeVisitor@{ImguiPerModelNodeVisitor}}
+\doxysubsubsection{\texorpdfstring{m\_name}{m\_name}}
+{\footnotesize\ttfamily \label{classImguiPerModelNodeVisitor_a8dd53c6d6e95624ca1664cc5b5855a64_a8dd53c6d6e95624ca1664cc5b5855a64} 
+std\+::string Imgui\+Per\+Model\+Node\+Visitor\+::m\+\_\+name\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classImguiPerModelNodeVisitor_ab13f445a001207d663c550d05af25a28_ab13f445a001207d663c550d05af25a28}\index{ImguiPerModelNodeVisitor@{ImguiPerModelNodeVisitor}!m\_nodeMapTransforms@{m\_nodeMapTransforms}}
+\index{m\_nodeMapTransforms@{m\_nodeMapTransforms}!ImguiPerModelNodeVisitor@{ImguiPerModelNodeVisitor}}
+\doxysubsubsection{\texorpdfstring{m\_nodeMapTransforms}{m\_nodeMapTransforms}}
+{\footnotesize\ttfamily \label{classImguiPerModelNodeVisitor_ab13f445a001207d663c550d05af25a28_ab13f445a001207d663c550d05af25a28} 
+std\+::unordered\+\_\+map$<$int, \mbox{\hyperlink{structImguiPerModelNodeVisitor_1_1TransformData}{Transform\+Data}}$>$ Imgui\+Per\+Model\+Node\+Visitor\+::m\+\_\+node\+Map\+Transforms\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{imgui__visitors_8h}{imgui\+\_\+visitors.\+h}}\item 
+src/\mbox{\hyperlink{imgui__visitors_8cpp}{imgui\+\_\+visitors.\+cpp}}\end{DoxyCompactItemize}

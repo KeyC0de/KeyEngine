@@ -9,12 +9,12 @@ class Graphics;
 namespace ren
 {
 
-//=============================================================
-//	\class	BlurPass
-//	\author	KeyC0de
-//	\date	2022/10/29 23:54
-//	\brief	A Post Processing Pass, reads texture and applies a digital negative material
-//=============================================================
+///=============================================================
+/// \class	BlurPass
+/// \author	KeyC0de
+/// \date	2022/10/29 23:54
+/// \brief	A Post Processing Pass, reads texture and applies a digital negative material
+///=============================================================
 class NegativePass
 	: public IFullscreenPass
 {

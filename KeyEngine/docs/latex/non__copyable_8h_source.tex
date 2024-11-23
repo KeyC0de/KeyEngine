@@ -1,0 +1,50 @@
+\doxysection{non\+\_\+copyable.\+h}
+\hypertarget{non__copyable_8h_source}{}\label{non__copyable_8h_source}\index{inc/non\_copyable.h@{inc/non\_copyable.h}}
+\mbox{\hyperlink{non__copyable_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classNonCopyable}{NonCopyable}}}
+\DoxyCodeLine{00005\ \{}
+\DoxyCodeLine{00006\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00007\ \ \ \ \ \mbox{\hyperlink{classNonCopyable_a809b6e4ade7ae32f6d248f2a3b783d45_a809b6e4ade7ae32f6d248f2a3b783d45}{NonCopyable}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00008\ \ \ \ \ \mbox{\hyperlink{classNonCopyable_a15aa3015488bb26c47ded914cb630cf5_a15aa3015488bb26c47ded914cb630cf5}{NonCopyable}}(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classNonCopyable}{NonCopyable}}\ \&rhs\ )\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00009\ \ \ \ \ \mbox{\hyperlink{classNonCopyable}{NonCopyable}}\&\ \mbox{\hyperlink{classNonCopyable_af4788b57da9a9faa570c754c22c724f5_af4788b57da9a9faa570c754c22c724f5}{operator=}}(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classNonCopyable}{NonCopyable}}\ \&rhs\ )\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{classNonCopyable_a487646562ae30ece23d7638f2aed1dde_a487646562ae30ece23d7638f2aed1dde}{NonCopyable}}(\ \mbox{\hyperlink{classNonCopyable}{NonCopyable}}\ \&rhs\ )\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{classNonCopyable}{NonCopyable}}\&\ \mbox{\hyperlink{classNonCopyable_ae032ca32cda9c836c27b28eb6a087d18_ae032ca32cda9c836c27b28eb6a087d18}{operator=}}(\ \mbox{\hyperlink{classNonCopyable}{NonCopyable}}\ \&rhs\ )\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{classNonCopyable_af716e4cfb79381710ef4490414939ae9_af716e4cfb79381710ef4490414939ae9}{NonCopyable}}(\ \mbox{\hyperlink{classNonCopyable}{NonCopyable}}\ \&\&rhs\ )\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{classNonCopyable}{NonCopyable}}\&\ \mbox{\hyperlink{classNonCopyable_af81816bd4c2c4421a6eab98843ead6e4_af81816bd4c2c4421a6eab98843ead6e4}{operator=}}(\ \mbox{\hyperlink{classNonCopyable}{NonCopyable}}\ \&\&rhs\ )\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00014\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{classNonCopyable_a3e461fb46c72b9a5af7df7e74dbd899e_a3e461fb46c72b9a5af7df7e74dbd899e}{\string~NonCopyable}}()\ noexcept\ =\ default;\ \ \textcolor{comment}{//\ remember\ an\ explicitly\ defaulted\ dtor\ suppresses\ movers}}
+\DoxyCodeLine{00016\ \};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ class\ \mbox{\hyperlink{classNonCopyableAndNonMovable}{NonCopyableAndNonMovable}}}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{classNonCopyableAndNonMovable_a0f3fc95f2c582514d58832b7c14d2965_a0f3fc95f2c582514d58832b7c14d2965}{NonCopyableAndNonMovable}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{classNonCopyableAndNonMovable_a3502311a2435129e171eb36ba05f0b2f_a3502311a2435129e171eb36ba05f0b2f}{NonCopyableAndNonMovable}}(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classNonCopyableAndNonMovable}{NonCopyableAndNonMovable}}\ \&rhs\ )\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{classNonCopyableAndNonMovable}{NonCopyableAndNonMovable}}\&\ \mbox{\hyperlink{classNonCopyableAndNonMovable_a6541862f56b2fcaa89155f08b8adaf11_a6541862f56b2fcaa89155f08b8adaf11}{operator=}}(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classNonCopyableAndNonMovable}{NonCopyableAndNonMovable}}\ \&rhs\ )\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{classNonCopyableAndNonMovable_a259655d15f1887d015c6d77a0f09f4ff_a259655d15f1887d015c6d77a0f09f4ff}{NonCopyableAndNonMovable}}(\ \mbox{\hyperlink{classNonCopyableAndNonMovable}{NonCopyableAndNonMovable}}\ \&rhs\ )\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{classNonCopyableAndNonMovable}{NonCopyableAndNonMovable}}\&\ \mbox{\hyperlink{classNonCopyableAndNonMovable_aa3af41edbd14c886cdec335b22254829_aa3af41edbd14c886cdec335b22254829}{operator=}}(\ \mbox{\hyperlink{classNonCopyableAndNonMovable}{NonCopyableAndNonMovable}}\ \&rhs\ )\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{classNonCopyableAndNonMovable_acadc47621b689b1b95bef13a35f18572_acadc47621b689b1b95bef13a35f18572}{NonCopyableAndNonMovable}}(\ \mbox{\hyperlink{classNonCopyableAndNonMovable}{NonCopyableAndNonMovable}}\ \&\&rhs\ )\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{classNonCopyableAndNonMovable}{NonCopyableAndNonMovable}}\&\ \mbox{\hyperlink{classNonCopyableAndNonMovable_a972632a389e0f2370de9604df60ea9d6_a972632a389e0f2370de9604df60ea9d6}{operator=}}(\ \mbox{\hyperlink{classNonCopyableAndNonMovable}{NonCopyableAndNonMovable}}\ \&\&rhs\ )\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00028\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{classNonCopyableAndNonMovable_aa6874bb9a99fe151e8c2eda429fe5867_aa6874bb9a99fe151e8c2eda429fe5867}{\string~NonCopyableAndNonMovable}}()\ noexcept\ =\ default;}
+\DoxyCodeLine{00030\ \};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ class\ \mbox{\hyperlink{classNonAssignable}{NonAssignable}}}
+\DoxyCodeLine{00033\ \{}
+\DoxyCodeLine{00034\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{classNonAssignable_a7e74521669e0eb4b4de284cef74e5ece_a7e74521669e0eb4b4de284cef74e5ece}{NonAssignable}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{classNonAssignable_a4a8d37fc9697cf1841d0f857d3951829_a4a8d37fc9697cf1841d0f857d3951829}{NonAssignable}}(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classNonAssignable}{NonAssignable}}\ \&rhs\ )\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//NonAssignable(\ NonAssignable\ \&rhs\ )\ =\ default;\ \ \ \ //\ multiple\ versions\ of\ a\ defaulted\ special\ member\ are\ not\ allowed}}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{classNonAssignable}{NonAssignable}}\&\ \mbox{\hyperlink{classNonAssignable_a203fd5bec7c9367a0a2873d1950eaace_a203fd5bec7c9367a0a2873d1950eaace}{operator=}}(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classNonAssignable}{NonAssignable}}\ \&rhs\ )\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{classNonAssignable}{NonAssignable}}\&\ \mbox{\hyperlink{classNonAssignable_ab64cbabfeea05c9c628a79f8792cbce6_ab64cbabfeea05c9c628a79f8792cbce6}{operator=}}(\ \mbox{\hyperlink{classNonAssignable}{NonAssignable}}\ \&rhs\ )\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{classNonAssignable_a6a7e74b85940a32bbb1a772e3b5347f2_a6a7e74b85940a32bbb1a772e3b5347f2}{NonAssignable}}(\ \mbox{\hyperlink{classNonAssignable}{NonAssignable}}\ \&\&rhs\ )\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{classNonAssignable}{NonAssignable}}\&\ \mbox{\hyperlink{classNonAssignable_af015afab26199d8b8fb97fb3ba8f5a64_af015afab26199d8b8fb97fb3ba8f5a64}{operator=}}(\ \mbox{\hyperlink{classNonAssignable}{NonAssignable}}\ \&\&rhs\ )\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00042\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{classNonAssignable_a505b71e803c930314cacc61244c0edf4_a505b71e803c930314cacc61244c0edf4}{\string~NonAssignable}}()\ noexcept\ =\ default;}
+\DoxyCodeLine{00044\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,301 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="mouse_8cpp" kind="file" language="C++">
+    <compoundname>mouse.cpp</compoundname>
+    <includes refid="winner_8h" local="yes">winner.h</includes>
+    <includes refid="mouse_8h" local="yes">mouse.h</includes>
+    <includes local="no">utility</includes>
+    <incdepgraph>
+      <node id="5">
+        <label>mouse.h</label>
+        <link refid="mouse_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="2">
+        <label>winner.h</label>
+        <link refid="winner_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/mouse.cpp</label>
+        <link refid="mouse_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Windows.h</label>
+      </node>
+      <node id="7">
+        <label>optional</label>
+      </node>
+      <node id="6">
+        <label>queue</label>
+      </node>
+      <node id="3">
+        <label>sdkddkver.h</label>
+      </node>
+      <node id="9">
+        <label>utility</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="winner_8h" kindref="compound">winner.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mouse_8h" kindref="compound">mouse.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="classMouse_ae6e6f5b11d5cff4418781a35274d2a31_1ae6e6f5b11d5cff4418781a35274d2a31" refkind="member"><highlight class="normal"><ref refid="classMouse_a53384c0941547398386755904770b1dd_1a53384c0941547398386755904770b1dd" kindref="member">Mouse::Mouse</ref>(<sp/><ref refid="classMouse" kindref="compound">Mouse</ref><sp/>&amp;&amp;rhs<sp/>)<sp/>noexcept</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/>m_x{std::move(<sp/>rhs.m_x<sp/>)},</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>m_y{std::move(<sp/>rhs.m_y<sp/>)},</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>m_bLmbPressed{std::move(<sp/>rhs.m_bLmbPressed<sp/>)},</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>m_bRmbPressed{std::move(<sp/>rhs.m_bRmbPressed<sp/>)},</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>m_bMmbPressed{std::move(<sp/>rhs.m_bMmbPressed<sp/>)},</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>m_bInWindow{std::move(<sp/>rhs.m_bInWindow<sp/>)},</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>m_wheelDelta{std::move(<sp/>rhs.m_wheelDelta<sp/>)},</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>m_bRawEnabled{std::move(<sp/>rhs.m_bRawEnabled<sp/>)},</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>m_eventQueue{std::move(<sp/>rhs.m_eventQueue<sp/>)},</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>m_rawDeltaBuffer{std::move(<sp/>rhs.m_rawDeltaBuffer<sp/>)}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>rhs.m_eventQueue<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>rhs.m_rawDeltaBuffer<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classMouse_a6773c4ea5038c3cfe1e6c87735cf1d30_1a6773c4ea5038c3cfe1e6c87735cf1d30" refkind="member"><highlight class="normal"><ref refid="classMouse" kindref="compound">Mouse</ref>&amp;<sp/><ref refid="classMouse_a6773c4ea5038c3cfe1e6c87735cf1d30_1a6773c4ea5038c3cfe1e6c87735cf1d30" kindref="member">Mouse::operator=</ref>(<sp/><ref refid="classMouse" kindref="compound">Mouse</ref><sp/>&amp;&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMouse" kindref="compound">Mouse</ref><sp/>tmp{std::move(<sp/>rhs<sp/>)};</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>std::swap(<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>tmp<sp/>);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="classMouse_a0bcde5b8100df8a06a87cf395968cf9c_1a0bcde5b8100df8a06a87cf395968cf9c" refkind="member"><highlight class="normal">std::pair&lt;int,<sp/>int&gt;<sp/><ref refid="classMouse_a0bcde5b8100df8a06a87cf395968cf9c_1a0bcde5b8100df8a06a87cf395968cf9c" kindref="member">Mouse::getPosition</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{<ref refid="classMouse_aa3dfe1210637818de498912922295f45_1aa3dfe1210637818de498912922295f45" kindref="member">m_x</ref>,<sp/><ref refid="classMouse_ac5c920c5398bf820f518e581f108f112_1ac5c920c5398bf820f518e581f108f112" kindref="member">m_y</ref>};</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classMouse_ae4ffa354adeae6c1c1ed3d1704145fde_1ae4ffa354adeae6c1c1ed3d1704145fde" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classMouse_ae4ffa354adeae6c1c1ed3d1704145fde_1ae4ffa354adeae6c1c1ed3d1704145fde" kindref="member">Mouse::getX</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMouse_aa3dfe1210637818de498912922295f45_1aa3dfe1210637818de498912922295f45" kindref="member">m_x</ref>;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="classMouse_aa380d1f192b6fadf35b4a6bce755128f_1aa380d1f192b6fadf35b4a6bce755128f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classMouse_aa380d1f192b6fadf35b4a6bce755128f_1aa380d1f192b6fadf35b4a6bce755128f" kindref="member">Mouse::getY</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMouse_ac5c920c5398bf820f518e581f108f112_1ac5c920c5398bf820f518e581f108f112" kindref="member">m_y</ref>;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="classMouse_a0a257dace056c2d4d810ef8553e2e0e5_1a0a257dace056c2d4d810ef8553e2e0e5" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMouse_a0a257dace056c2d4d810ef8553e2e0e5_1a0a257dace056c2d4d810ef8553e2e0e5" kindref="member">Mouse::isInWindow</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMouse_a2a336cee27d6352786b62ae6a30f0fab_1a2a336cee27d6352786b62ae6a30f0fab" kindref="member">m_bInWindow</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="classMouse_a6722501a93750a1f2e630db725d3f319_1a6722501a93750a1f2e630db725d3f319" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMouse_a6722501a93750a1f2e630db725d3f319_1a6722501a93750a1f2e630db725d3f319" kindref="member">Mouse::isLmbPressed</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMouse_a611aeafa7e788e821b894b5c4860459a_1a611aeafa7e788e821b894b5c4860459a" kindref="member">m_bLmbPressed</ref>;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="classMouse_a716e7b40c6b09974c284c491946e3318_1a716e7b40c6b09974c284c491946e3318" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMouse_a716e7b40c6b09974c284c491946e3318_1a716e7b40c6b09974c284c491946e3318" kindref="member">Mouse::isRmbPressed</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMouse_a2040a18846284ef0323b0e2104e90216_1a2040a18846284ef0323b0e2104e90216" kindref="member">m_bRmbPressed</ref>;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classMouse_a5b50516d040e64c579d05f693d12c2d7_1a5b50516d040e64c579d05f693d12c2d7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMouse_a5b50516d040e64c579d05f693d12c2d7_1a5b50516d040e64c579d05f693d12c2d7" kindref="member">Mouse::isMmbPressed</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMouse_a94e261735cdabca56e31efbedc951efd_1a94e261735cdabca56e31efbedc951efd" kindref="member">m_bMmbPressed</ref>;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="classMouse_aba812584ff2d5940028963c0a2164e7b_1aba812584ff2d5940028963c0a2164e7b" refkind="member"><highlight class="normal">std::optional&lt;Mouse::RawDelta&gt;<sp/><ref refid="classMouse_aba812584ff2d5940028963c0a2164e7b_1aba812584ff2d5940028963c0a2164e7b" kindref="member">Mouse::readRawDeltaBuffer</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="classMouse_af1d74d183b27862add0c44f04c9d2ba7_1af1d74d183b27862add0c44f04c9d2ba7" kindref="member">m_rawDeltaBuffer</ref>.empty()<sp/>)</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structMouse_1_1RawDelta" kindref="compound">RawDelta</ref><sp/>d<sp/>=<sp/><ref refid="classMouse_af1d74d183b27862add0c44f04c9d2ba7_1af1d74d183b27862add0c44f04c9d2ba7" kindref="member">m_rawDeltaBuffer</ref>.front();</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMouse_af1d74d183b27862add0c44f04c9d2ba7_1af1d74d183b27862add0c44f04c9d2ba7" kindref="member">m_rawDeltaBuffer</ref>.pop();</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>d;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="classMouse_ac7380345893dac97253b2c4f7ad8d340_1ac7380345893dac97253b2c4f7ad8d340" refkind="member"><highlight class="normal">std::optional&lt;Mouse::Event&gt;<sp/><ref refid="classMouse_ac7380345893dac97253b2c4f7ad8d340_1ac7380345893dac97253b2c4f7ad8d340" kindref="member">Mouse::readEventQueue</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!<ref refid="classMouse_a82c1524449d3a101f37b8c6622c869a2_1a82c1524449d3a101f37b8c6622c869a2" kindref="member">m_eventQueue</ref>.empty()<sp/>)</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMouse_1_1Event" kindref="compound">Mouse::Event</ref><sp/>e<sp/>=<sp/><ref refid="classMouse_a82c1524449d3a101f37b8c6622c869a2_1a82c1524449d3a101f37b8c6622c869a2" kindref="member">m_eventQueue</ref>.front();</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMouse_a82c1524449d3a101f37b8c6622c869a2_1a82c1524449d3a101f37b8c6622c869a2" kindref="member">m_eventQueue</ref>.pop();</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>e;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="classMouse_a245c850ebd48c2f9b980daa32307ffa4_1a245c850ebd48c2f9b980daa32307ffa4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMouse_a245c850ebd48c2f9b980daa32307ffa4_1a245c850ebd48c2f9b980daa32307ffa4" kindref="member">Mouse::isQueueEmpty</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMouse_a82c1524449d3a101f37b8c6622c869a2_1a82c1524449d3a101f37b8c6622c869a2" kindref="member">m_eventQueue</ref>.empty();</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="classMouse_a63d7d8ee3d422229ad23a45313737b19_1a63d7d8ee3d422229ad23a45313737b19" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMouse_a63d7d8ee3d422229ad23a45313737b19_1a63d7d8ee3d422229ad23a45313737b19" kindref="member">Mouse::flushEvents</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="93"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMouse_a82c1524449d3a101f37b8c6622c869a2_1a82c1524449d3a101f37b8c6622c869a2" kindref="member">m_eventQueue</ref><sp/>=<sp/>std::queue&lt;Event&gt;{};</highlight></codeline>
+<codeline lineno="95"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="classMouse_ab206a26545760a16a3cae7b633cb6368_1ab206a26545760a16a3cae7b633cb6368" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMouse_ab206a26545760a16a3cae7b633cb6368_1ab206a26545760a16a3cae7b633cb6368" kindref="member">Mouse::enableRawInput</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMouse_ace803410672223ec7d8f9afd15d46f27_1ace803410672223ec7d8f9afd15d46f27" kindref="member">m_bRawEnabled</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102" refid="classMouse_aa58120c264deab6fd47be62fd24a34d8_1aa58120c264deab6fd47be62fd24a34d8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMouse_aa58120c264deab6fd47be62fd24a34d8_1aa58120c264deab6fd47be62fd24a34d8" kindref="member">Mouse::disableRawInput</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMouse_ace803410672223ec7d8f9afd15d46f27_1ace803410672223ec7d8f9afd15d46f27" kindref="member">m_bRawEnabled</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107" refid="classMouse_adefe6928e3b039720ca69bf447b4eaac_1adefe6928e3b039720ca69bf447b4eaac" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMouse_adefe6928e3b039720ca69bf447b4eaac_1adefe6928e3b039720ca69bf447b4eaac" kindref="member">Mouse::isRawInputEnabled</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="108"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMouse_ace803410672223ec7d8f9afd15d46f27_1ace803410672223ec7d8f9afd15d46f27" kindref="member">m_bRawEnabled</ref>;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112" refid="classMouse_a8dc3ea0895821a90ce9a77d715920f0d_1a8dc3ea0895821a90ce9a77d715920f0d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMouse_a8dc3ea0895821a90ce9a77d715920f0d_1a8dc3ea0895821a90ce9a77d715920f0d" kindref="member">Mouse::onMouseMove</ref>(<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>newx,</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>newy<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>m_x<sp/>=<sp/>newx;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>m_y<sp/>=<sp/>newy;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>m_eventQueue.push(<sp/><ref refid="classMouse_1_1Event" kindref="compound">Event</ref>{Event::Type::Move,<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">}<sp/>);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>trimEventQueue();</highlight></codeline>
+<codeline lineno="119"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121" refid="classMouse_ad6986653680cdb79c0629ce3e335c81f_1ad6986653680cdb79c0629ce3e335c81f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMouse_ad6986653680cdb79c0629ce3e335c81f_1ad6986653680cdb79c0629ce3e335c81f" kindref="member">Mouse::onMouseEnterWindow</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="122"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMouse_a2a336cee27d6352786b62ae6a30f0fab_1a2a336cee27d6352786b62ae6a30f0fab" kindref="member">m_bInWindow</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMouse_a82c1524449d3a101f37b8c6622c869a2_1a82c1524449d3a101f37b8c6622c869a2" kindref="member">m_eventQueue</ref>.push(<sp/><ref refid="classMouse_1_1Event" kindref="compound">Event</ref>{<ref refid="classMouse_1_1Event_a32491602b4d05d2c0602db8e1e01686f_1a32491602b4d05d2c0602db8e1e01686fae7b2ae308e29c35143b2a77d01c47896" kindref="member">Event::Type::WindowEnter</ref>,<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">}<sp/>);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMouse_a0c32b2a94351545fa0f07180a8fa4d2f_1a0c32b2a94351545fa0f07180a8fa4d2f" kindref="member">trimEventQueue</ref>();</highlight></codeline>
+<codeline lineno="126"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128" refid="classMouse_ac254620ccad068ca6380376d87ca3cbd_1ac254620ccad068ca6380376d87ca3cbd" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMouse_ac254620ccad068ca6380376d87ca3cbd_1ac254620ccad068ca6380376d87ca3cbd" kindref="member">Mouse::onMouseLeaveWindow</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="129"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMouse_a2a336cee27d6352786b62ae6a30f0fab_1a2a336cee27d6352786b62ae6a30f0fab" kindref="member">m_bInWindow</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMouse_a82c1524449d3a101f37b8c6622c869a2_1a82c1524449d3a101f37b8c6622c869a2" kindref="member">m_eventQueue</ref>.push(<sp/><ref refid="classMouse_1_1Event" kindref="compound">Event</ref>{<ref refid="classMouse_1_1Event_a32491602b4d05d2c0602db8e1e01686f_1a32491602b4d05d2c0602db8e1e01686fad9bce95afeb195be33286dab1e1ca50f" kindref="member">Event::Type::WindowLeave</ref>,<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">}<sp/>);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMouse_a0c32b2a94351545fa0f07180a8fa4d2f_1a0c32b2a94351545fa0f07180a8fa4d2f" kindref="member">trimEventQueue</ref>();</highlight></codeline>
+<codeline lineno="133"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135" refid="classMouse_a280e66c7c99c3ece46fe81acad6b2887_1a280e66c7c99c3ece46fe81acad6b2887" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMouse_a280e66c7c99c3ece46fe81acad6b2887_1a280e66c7c99c3ece46fe81acad6b2887" kindref="member">Mouse::onLmbPressed</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>m_bLmbPressed<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>m_eventQueue.push(<sp/><ref refid="classMouse_1_1Event" kindref="compound">Event</ref>{Event::Type::LMBPress,<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">}<sp/>);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>trimEventQueue();</highlight></codeline>
+<codeline lineno="141"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143" refid="classMouse_a2e81ebee61475e3301d825e4e8438867_1a2e81ebee61475e3301d825e4e8438867" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMouse_a2e81ebee61475e3301d825e4e8438867_1a2e81ebee61475e3301d825e4e8438867" kindref="member">Mouse::onLmbReleased</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>m_bLmbPressed<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>m_eventQueue.push(<sp/><ref refid="classMouse_1_1Event" kindref="compound">Event</ref>{Event::Type::LMBRelease,<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">}<sp/>);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>trimEventQueue();</highlight></codeline>
+<codeline lineno="149"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151" refid="classMouse_ab3350cba70a91653d28851806bb84544_1ab3350cba70a91653d28851806bb84544" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMouse_ab3350cba70a91653d28851806bb84544_1ab3350cba70a91653d28851806bb84544" kindref="member">Mouse::onRmbPressed</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>m_bRmbPressed<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>m_eventQueue.push(<sp/><ref refid="classMouse_1_1Event" kindref="compound">Event</ref>{Event::Type::RMBPress,<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">}<sp/>);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>trimEventQueue();</highlight></codeline>
+<codeline lineno="157"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159" refid="classMouse_a81c5c1c48abdcb6e07004381c797dfc9_1a81c5c1c48abdcb6e07004381c797dfc9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMouse_a81c5c1c48abdcb6e07004381c797dfc9_1a81c5c1c48abdcb6e07004381c797dfc9" kindref="member">Mouse::onRmbReleased</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>m_bRmbPressed<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>m_eventQueue.push(<sp/><ref refid="classMouse_1_1Event" kindref="compound">Event</ref>{Event::Type::RMBRelease,<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">}<sp/>);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>trimEventQueue();</highlight></codeline>
+<codeline lineno="165"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167" refid="classMouse_a490d0b6605d94fc2fc5d7126fb426c73_1a490d0b6605d94fc2fc5d7126fb426c73" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMouse_a490d0b6605d94fc2fc5d7126fb426c73_1a490d0b6605d94fc2fc5d7126fb426c73" kindref="member">Mouse::onMmbPressed</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>m_bMmbPressed<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/>m_eventQueue.push(<sp/><ref refid="classMouse_1_1Event" kindref="compound">Event</ref>{Event::Type::MMBPress,<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">}<sp/>);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>trimEventQueue();</highlight></codeline>
+<codeline lineno="173"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175" refid="classMouse_a44818564515345b808f956fc0581ffd4_1a44818564515345b808f956fc0581ffd4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMouse_a44818564515345b808f956fc0581ffd4_1a44818564515345b808f956fc0581ffd4" kindref="member">Mouse::onMmbReleased</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>m_bMmbPressed<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>m_eventQueue.push(<sp/><ref refid="classMouse_1_1Event" kindref="compound">Event</ref>{Event::Type::MMBRelease,<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">}<sp/>);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>trimEventQueue();</highlight></codeline>
+<codeline lineno="181"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183" refid="classMouse_a25295dfe35277e1d0d4c1054b95593a4_1a25295dfe35277e1d0d4c1054b95593a4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMouse_a25295dfe35277e1d0d4c1054b95593a4_1a25295dfe35277e1d0d4c1054b95593a4" kindref="member">Mouse::onWheelDelta</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y,</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>delta<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>m_wheelDelta<sp/>+=<sp/>delta;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>generate<sp/>events<sp/>per<sp/>mouse<sp/>wheel<sp/>notch<sp/>-<sp/>120<sp/>units</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<sp/>m_wheelDelta<sp/>&gt;=<sp/>WHEEL_DELTA<sp/>)</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_wheelDelta<sp/>-=<sp/>WHEEL_DELTA;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>onWheelUp(<sp/>x,<sp/>y<sp/>);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<sp/>m_wheelDelta<sp/>&lt;=<sp/>-WHEEL_DELTA<sp/>)</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_wheelDelta<sp/>+=<sp/>WHEEL_DELTA;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>onWheelDown(<sp/>x,<sp/>y<sp/>);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201" refid="classMouse_a274c153384adeb3c177097692ad7c43b_1a274c153384adeb3c177097692ad7c43b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMouse_a274c153384adeb3c177097692ad7c43b_1a274c153384adeb3c177097692ad7c43b" kindref="member">Mouse::onWheelUp</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/>m_eventQueue.push(<sp/><ref refid="classMouse_1_1Event" kindref="compound">Event</ref>{Event::Type::WheelUp,<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">}<sp/>);</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/>trimEventQueue();</highlight></codeline>
+<codeline lineno="206"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208" refid="classMouse_ac9a04456e623b7ec8a8e4ba1a0f2789b_1ac9a04456e623b7ec8a8e4ba1a0f2789b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMouse_ac9a04456e623b7ec8a8e4ba1a0f2789b_1ac9a04456e623b7ec8a8e4ba1a0f2789b" kindref="member">Mouse::onWheelDown</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/>m_eventQueue.push(<sp/><ref refid="classMouse_1_1Event" kindref="compound">Event</ref>{Event::Type::WheelDown,<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">}<sp/>);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/>trimEventQueue();</highlight></codeline>
+<codeline lineno="213"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215" refid="classMouse_ad18d5e096bf94b8e182e1254975f6284_1ad18d5e096bf94b8e182e1254975f6284" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMouse_ad18d5e096bf94b8e182e1254975f6284_1ad18d5e096bf94b8e182e1254975f6284" kindref="member">Mouse::onRawDelta</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="namespaceDirectX" kindref="compound">dx</ref>,</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dy<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>m_rawDeltaBuffer.push(<sp/>{<ref refid="namespaceDirectX" kindref="compound">dx</ref>,<sp/>dy}<sp/>);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/>trimRawInputBuffer();</highlight></codeline>
+<codeline lineno="220"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222" refid="classMouse_a0c32b2a94351545fa0f07180a8fa4d2f_1a0c32b2a94351545fa0f07180a8fa4d2f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMouse_a0c32b2a94351545fa0f07180a8fa4d2f_1a0c32b2a94351545fa0f07180a8fa4d2f" kindref="member">Mouse::trimEventQueue</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="223"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<sp/><ref refid="classMouse_a82c1524449d3a101f37b8c6622c869a2_1a82c1524449d3a101f37b8c6622c869a2" kindref="member">m_eventQueue</ref>.size()<sp/>&gt;<sp/><ref refid="classMouse_a234d3e0d9a605dc2ddbc96e530b58b3f_1a234d3e0d9a605dc2ddbc96e530b58b3f" kindref="member">s_maxBufferSize</ref><sp/>)</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMouse_a82c1524449d3a101f37b8c6622c869a2_1a82c1524449d3a101f37b8c6622c869a2" kindref="member">m_eventQueue</ref>.pop();</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="228"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230" refid="classMouse_a25e59968a7cd75928ee93533d9988203_1a25e59968a7cd75928ee93533d9988203" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMouse_a25e59968a7cd75928ee93533d9988203_1a25e59968a7cd75928ee93533d9988203" kindref="member">Mouse::trimRawInputBuffer</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="231"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<sp/><ref refid="classMouse_af1d74d183b27862add0c44f04c9d2ba7_1af1d74d183b27862add0c44f04c9d2ba7" kindref="member">m_rawDeltaBuffer</ref>.size()<sp/>&gt;<sp/><ref refid="classMouse_a234d3e0d9a605dc2ddbc96e530b58b3f_1a234d3e0d9a605dc2ddbc96e530b58b3f" kindref="member">s_maxBufferSize</ref><sp/>)</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMouse_af1d74d183b27862add0c44f04c9d2ba7_1af1d74d183b27862add0c44f04c9d2ba7" kindref="member">m_rawDeltaBuffer</ref>.pop();</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="236"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/mouse.cpp"/>
+  </compounddef>
+</doxygen>

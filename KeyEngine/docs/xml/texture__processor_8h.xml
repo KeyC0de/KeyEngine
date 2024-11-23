@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="texture__processor_8h" kind="file" language="C++">
+    <compoundname>texture_processor.h</compoundname>
+    <includes local="no">string</includes>
+    <includes refid="bitmap_8h" local="yes">bitmap.h</includes>
+    <includedby refid="texture_8cpp" local="yes">src/texture.cpp</includedby>
+    <includedby refid="texture__processor_8cpp" local="yes">src/texture_processor.cpp</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>bitmap.h</label>
+        <link refid="bitmap_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>color.h</label>
+        <link refid="color_8h"/>
+      </node>
+      <node id="9">
+        <label>key_exception.h</label>
+        <link refid="key__exception_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="1">
+        <label>inc/texture_processor.h</label>
+        <link refid="texture__processor_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>winner.h</label>
+        <link refid="winner_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>DirectxMath.h</label>
+      </node>
+      <node id="6">
+        <label>Windows.h</label>
+      </node>
+      <node id="8">
+        <label>dxtex/DirectXTex.h</label>
+      </node>
+      <node id="5">
+        <label>sdkddkver.h</label>
+      </node>
+      <node id="10">
+        <label>stdexcept</label>
+      </node>
+      <node id="2">
+        <label>string</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>inc/texture_processor.h</label>
+        <link refid="texture__processor_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/texture.cpp</label>
+        <link refid="texture_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/texture_processor.cpp</label>
+        <link refid="texture__processor_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classTextureProcessor" prot="public">TextureProcessor</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="bitmap_8h" kindref="compound">bitmap.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="texture_8h_a48efc2b83d04747965ce26c7eb8d406c_1a48efc2b83d04747965ce26c7eb8d406c" kindref="member">TextureOp</ref><sp/>=<sp/>DirectX::XMVECTOR(*)(<ref refid="classBitmap_a83b763f52f32144764bf50ba22c3c080_1a83b763f52f32144764bf50ba22c3c080" kindref="member">Bitmap::Texel</ref>);</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="classTextureProcessor" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classTextureProcessor" kindref="compound">TextureProcessor</ref><sp/>final</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>F&gt;</highlight></codeline>
+<codeline lineno="12" refid="classTextureProcessor_a53ce5cb452ed9f3de57818dd153d7501_1a53ce5cb452ed9f3de57818dd153d7501" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTextureProcessor_a53ce5cb452ed9f3de57818dd153d7501_1a53ce5cb452ed9f3de57818dd153d7501" kindref="member">transformFile</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;pathIn,</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;pathOut,</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>F<sp/>&amp;&amp;f<sp/>)</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>bitmap<sp/>=<sp/><ref refid="classBitmap_a6e287dc135d2267f1ec28766b54f58ac_1a6e287dc135d2267f1ec28766b54f58ac" kindref="member">Bitmap::loadFromFile</ref>(<sp/>pathIn<sp/>);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classTextureProcessor_a1ea179c15897e25858f4e2a4ee67f339_1a1ea179c15897e25858f4e2a4ee67f339" kindref="member">TextureProcessor::transformBitmap</ref>(<sp/>bitmap,<sp/>f<sp/>);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bitmap.save(<sp/>pathOut<sp/>);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classTextureProcessor_a538e567e3ef03332e9f7e1b240bef944_1a538e567e3ef03332e9f7e1b240bef944" kindref="member">calculateNumberOfMipMaps</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>width,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>height<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTextureProcessor_a9f728161057ae7aa759bec966e8f75c4_1a9f728161057ae7aa759bec966e8f75c4" kindref="member">flipModelNormalMapsGreenChannel</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;objPath<sp/>);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTextureProcessor_a6f40014bf51081226164f27f1dea675b_1a6f40014bf51081226164f27f1dea675b" kindref="member">flipNormalMapGreenChannel</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;pathIn,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;pathOut<sp/>);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTextureProcessor_a46767ffa63ec6315abbd399d16ee1328_1a46767ffa63ec6315abbd399d16ee1328" kindref="member">validateNormalMap</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;pathIn,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>thresholdMin,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>thresholdMax<sp/>);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTextureProcessor_afe57fa7233ced0bf86bc2a7ee1cdc81e_1afe57fa7233ced0bf86bc2a7ee1cdc81e" kindref="member">makeStripes</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;pathOut,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>size,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>stripeWidth<sp/>);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTextureProcessor_a1ea179c15897e25858f4e2a4ee67f339_1a1ea179c15897e25858f4e2a4ee67f339" kindref="member">transformBitmap</ref>(<sp/><ref refid="classBitmap" kindref="compound">Bitmap</ref><sp/>&amp;bitmap,<sp/><ref refid="texture_8h_a48efc2b83d04747965ce26c7eb8d406c_1a48efc2b83d04747965ce26c7eb8d406c" kindref="member">TextureOp</ref><sp/>f<sp/>);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>F&gt;</highlight></codeline>
+<codeline lineno="31" refid="classTextureProcessor_a3c6c41ce9a3433e958176851f7265e24_1a3c6c41ce9a3433e958176851f7265e24" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTextureProcessor_a3c6c41ce9a3433e958176851f7265e24_1a3c6c41ce9a3433e958176851f7265e24" kindref="member">transformBitmap</ref>(<sp/><ref refid="classBitmap" kindref="compound">Bitmap</ref><sp/>&amp;bitmap,</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>F<sp/>&amp;&amp;f<sp/>)</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>width<sp/>=<sp/>bitmap.<ref refid="classBitmap_a202f7fe815d1cfa32f243d2037c5cb0b_1a202f7fe815d1cfa32f243d2037c5cb0b" kindref="member">getWidth</ref>();</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>height<sp/>=<sp/>bitmap.<ref refid="classBitmap_a690ad3010a52d955d017c7f5003e2c12_1a690ad3010a52d955d017c7f5003e2c12" kindref="member">getHeight</ref>();</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>y<sp/>=<sp/>0;<sp/>y<sp/>&lt;<sp/>height;<sp/>++y<sp/>)</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>width;<sp/>++x<sp/>)</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>v<sp/>=<sp/><ref refid="classBitmap_ad54deb3c80e50da488b3ebc109a35c46_1ad54deb3c80e50da488b3ebc109a35c46" kindref="member">Bitmap::colorToVector</ref>(<sp/>bitmap.<ref refid="classBitmap_a533369def9843f9412f1621c0b6142d5_1a533369def9843f9412f1621c0b6142d5" kindref="member">getTexel</ref>(<sp/>x,<sp/>y<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bitmap.<ref refid="classBitmap_a84a99a827a407f53aa2415122c64ff2c_1a84a99a827a407f53aa2415122c64ff2c" kindref="member">setTexel</ref>(<sp/>x,<sp/>y,<sp/><ref refid="classBitmap_a8c616d78d019253dd00223f34f7b0735_1a8c616d78d019253dd00223f34f7b0735" kindref="member">Bitmap::vectorToColor</ref>(<sp/>f(<sp/>v,<sp/>x,<sp/>y<sp/>)<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/texture_processor.h"/>
+  </compounddef>
+</doxygen>

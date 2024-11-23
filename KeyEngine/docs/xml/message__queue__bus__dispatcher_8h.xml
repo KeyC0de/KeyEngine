@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="message__queue__bus__dispatcher_8h" kind="file" language="C++">
+    <compoundname>message_queue_bus_dispatcher.h</compoundname>
+    <includes local="no">vector</includes>
+    <includes local="no">mutex</includes>
+    <includes local="no">condition_variable</includes>
+    <includes local="no">memory</includes>
+    <includes refid="non__copyable_8h" local="yes">non_copyable.h</includes>
+    <includedby refid="entity_8cpp" local="yes">src/entity.cpp</includedby>
+    <includedby refid="message__queue__bus__dispatcher_8cpp" local="yes">src/message_queue_bus_dispatcher.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>inc/message_queue_bus_dispatcher.h</label>
+        <link refid="message__queue__bus__dispatcher_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="4">
+        <label>condition_variable</label>
+      </node>
+      <node id="5">
+        <label>memory</label>
+      </node>
+      <node id="3">
+        <label>mutex</label>
+      </node>
+      <node id="2">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>inc/message_queue_bus_dispatcher.h</label>
+        <link refid="message__queue__bus__dispatcher_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/entity.cpp</label>
+        <link refid="entity_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/message_queue_bus_dispatcher.cpp</label>
+        <link refid="message__queue__bus__dispatcher_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classMessageBus" prot="public">MessageBus</innerclass>
+    <innerclass refid="classMessageDispatcher" prot="public">MessageDispatcher</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mutex&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;condition_variable&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="non__copyable_8h" kindref="compound">non_copyable.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMessage" kindref="compound">Message</ref>;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMessageDispatcher" kindref="compound">MessageDispatcher</ref>;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classMessageBus" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMessageBus" kindref="compound">MessageBus</ref><sp/>final</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classNonCopyable" kindref="compound">NonCopyable</ref></highlight></codeline>
+<codeline lineno="25"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="26" refid="classMessageBus_afc22d6e21b1632fdf70629d396fe89cc_1afc22d6e21b1632fdf70629d396fe89cc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMessageDispatcher" kindref="compound">MessageDispatcher</ref>;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>#TODO:<sp/>Change<sp/>vector<sp/>of<sp/>unique_ptr<sp/>to<sp/>Message<sp/>to<sp/>vector<sp/>of<sp/>objects<sp/>of<sp/>type<sp/>Message</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classMessageBus_aaccb0101733d16ef1ed5156633fc081b_1aaccb0101733d16ef1ed5156633fc081b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::unique_ptr&lt;Message&gt;&gt;<sp/><ref refid="classMessageBus_aaccb0101733d16ef1ed5156633fc081b_1aaccb0101733d16ef1ed5156633fc081b" kindref="member">m_vec</ref>;</highlight></codeline>
+<codeline lineno="30" refid="classMessageBus_ab8ac0e1b645ed452eef6669f538afd84_1ab8ac0e1b645ed452eef6669f538afd84" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::size_t<sp/><ref refid="classMessageBus_ab8ac0e1b645ed452eef6669f538afd84_1ab8ac0e1b645ed452eef6669f538afd84" kindref="member">m_size</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="31" refid="classMessageBus_a3ae7f433af1e96050f2afaeca274b153_1a3ae7f433af1e96050f2afaeca274b153" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/>std::mutex<sp/><ref refid="classMessageBus_a3ae7f433af1e96050f2afaeca274b153_1a3ae7f433af1e96050f2afaeca274b153" kindref="member">m_mu</ref>;</highlight></codeline>
+<codeline lineno="32" refid="classMessageBus_a9d24d8cdd4d668c5556967696c65fba8_1a9d24d8cdd4d668c5556967696c65fba8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::condition_variable<sp/><ref refid="classMessageBus_a9d24d8cdd4d668c5556967696c65fba8_1a9d24d8cdd4d668c5556967696c65fba8" kindref="member">m_cond</ref>;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="34" refid="classMessageBus_a7598f2a15c66346f853d6d13de21757b_1a7598f2a15c66346f853d6d13de21757b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessageBus_a7598f2a15c66346f853d6d13de21757b_1a7598f2a15c66346f853d6d13de21757b" kindref="member">MessageBus</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessageBus_a7598f2a15c66346f853d6d13de21757b_1a7598f2a15c66346f853d6d13de21757b" kindref="member">MessageBus</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>initialCapacity<sp/>);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMessageBus_a5e132536c9b32703ec842128d480b258_1a5e132536c9b32703ec842128d480b258" kindref="member">removeFrontByBackSwap</ref>();</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessageBus_a7598f2a15c66346f853d6d13de21757b_1a7598f2a15c66346f853d6d13de21757b" kindref="member">MessageBus</ref>(<sp/><ref refid="classMessageBus" kindref="compound">MessageBus</ref><sp/>&amp;&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessageBus" kindref="compound">MessageBus</ref>&amp;<sp/><ref refid="classMessageBus_a6e4a6e5d8018423429802e821f1d5a03_1a6e4a6e5d8018423429802e821f1d5a03" kindref="member">operator=</ref>(<sp/><ref refid="classMessageBus" kindref="compound">MessageBus</ref><sp/>&amp;&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMessageBus_a06b68b60b6903a39140224548c788c37_1a06b68b60b6903a39140224548c788c37" kindref="member">enqueue</ref>(<sp/><ref refid="classMessage" kindref="compound">Message</ref><sp/>*msg<sp/>);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;Message&gt;<sp/><ref refid="classMessageBus_a85ea7c0044a40d0e09434362eb140b7f_1a85ea7c0044a40d0e09434362eb140b7f" kindref="member">dequeue</ref>();</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMessage" kindref="compound">Message</ref>*<sp/><ref refid="classMessageBus_aba00023c9551dace685517015c1b3d7e_1aba00023c9551dace685517015c1b3d7e" kindref="member">peekFront</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/><ref refid="classMessage" kindref="compound">Message</ref>*<sp/><ref refid="classMessageBus_ae2711865f5568dfb9b0fc4ea350177c4_1ae2711865f5568dfb9b0fc4ea350177c4" kindref="member">peekBack</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>explicit<sp/>operator<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">();</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage" kindref="compound">Message</ref>*<sp/>operator[](<sp/>const<sp/>std::</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>index<sp/>);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/><ref refid="classMessage" kindref="compound">Message</ref>*<sp/>operator[](<sp/>const<sp/>std::</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>index<sp/>)<sp/>const;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>std::</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classMessageBus_aa63b58f3d2cd308379f806d5b7d08704_1aa63b58f3d2cd308379f806d5b7d08704" kindref="member">getSize</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>std::</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classMessageBus_af3dbede58c7524be2f9d8906aa1db674_1af3dbede58c7524be2f9d8906aa1db674" kindref="member">getCapacity</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMessageBus_a21ffcf18ee493140fdab6019ded3e8fc_1a21ffcf18ee493140fdab6019ded3e8fc" kindref="member">isEmpty</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMessageBus_a6936bf9408c97f408fe3c1b340e87f23_1a6936bf9408c97f408fe3c1b340e87f23" kindref="member">clear</ref>();</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="classMessageDispatcher" refkind="compound"><highlight class="normal">class<sp/><ref refid="classMessageDispatcher" kindref="compound">MessageDispatcher</ref><sp/>final</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>public<sp/><ref refid="classNonCopyable" kindref="compound">NonCopyable</ref></highlight></codeline>
+<codeline lineno="67"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="68" refid="classMessageDispatcher_addbf4f6ed8cd98fea50341827ac8476b_1addbf4f6ed8cd98fea50341827ac8476b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessageBus" kindref="compound">MessageBus</ref><sp/><ref refid="classMessageDispatcher_addbf4f6ed8cd98fea50341827ac8476b_1addbf4f6ed8cd98fea50341827ac8476b" kindref="member">m_mb</ref>;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessageBus_afc22d6e21b1632fdf70629d396fe89cc_1afc22d6e21b1632fdf70629d396fe89cc" kindref="member">MessageDispatcher</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>initialCapacity<sp/>);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="72" refid="classMessageDispatcher_aae7761b005e409403fae393855c11db6_1aae7761b005e409403fae393855c11db6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessageDispatcher_aae7761b005e409403fae393855c11db6_1aae7761b005e409403fae393855c11db6" kindref="member">~MessageDispatcher</ref>()<sp/>noexcept<sp/>=<sp/>default;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessageDispatcher" kindref="compound">MessageDispatcher</ref>(<sp/><ref refid="classMessageDispatcher" kindref="compound">MessageDispatcher</ref><sp/>&amp;&amp;rhs<sp/>)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessageDispatcher" kindref="compound">MessageDispatcher</ref>&amp;<sp/>operator=(<sp/><ref refid="classMessageDispatcher" kindref="compound">MessageDispatcher</ref><sp/>&amp;&amp;rhs<sp/>)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/><ref refid="classMessageDispatcher" kindref="compound">MessageDispatcher</ref>&amp;<sp/>getInstance(<sp/>const<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>initialCapacity<sp/>=<sp/>100<sp/>);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>addMessage(<sp/><ref refid="classMessage" kindref="compound">Message</ref><sp/>*msg<sp/>);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>dispatchAll();</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>#TODO:<sp/>dispatchByEventType</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>#TODO:<sp/>dispatchEventsTargetedTo(<sp/>specific<sp/>actor<sp/>)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMessageBus_a6936bf9408c97f408fe3c1b340e87f23_1a6936bf9408c97f408fe3c1b340e87f23" kindref="member">clear</ref>();</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>std::</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classMessageBus_aa63b58f3d2cd308379f806d5b7d08704_1aa63b58f3d2cd308379f806d5b7d08704" kindref="member">getSize</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>std::</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classMessageBus_af3dbede58c7524be2f9d8906aa1db674_1af3dbede58c7524be2f9d8906aa1db674" kindref="member">getCapacity</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/message_queue_bus_dispatcher.h"/>
+  </compounddef>
+</doxygen>

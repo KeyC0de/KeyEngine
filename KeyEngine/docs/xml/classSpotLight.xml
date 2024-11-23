@@ -1,0 +1,297 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classSpotLight" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>SpotLight</compoundname>
+    <basecompoundref refid="classILightSource" prot="public" virt="non-virtual">ILightSource</basecompoundref>
+    <includes refid="light__source_8h" local="no">light_source.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classSpotLight_aa972a1f97ba572d1a73c3561f9c7834d_1aa972a1f97ba572d1a73c3561f9c7834d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SpotLight::SpotLight</definition>
+        <argsstring>(Graphics &amp;gfx, const float radiusScale=1.0f, const DirectX::XMFLOAT3 &amp;directionVector={0.0f, 0.0f, 1.0f}, const DirectX::XMFLOAT3 &amp;pos={8.0f, 8.0f, 2.f}, const std::variant&lt; DirectX::XMFLOAT4, std::string &gt; &amp;colorOrTexturePath=DirectX::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f}, const bool bShadowCasting=true, const bool bShowMesh=true, const float intensity=1.0f, const float fovConeAngle=60.0f, const float shadowCamNearZ=0.5f, const float shadowCamFarZ=80.0f)</argsstring>
+        <name>SpotLight</name>
+        <qualifiedname>SpotLight::SpotLight</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>radiusScale</declname>
+          <defval>1.0f</defval>
+        </param>
+        <param>
+          <type>const DirectX::XMFLOAT3 &amp;</type>
+          <declname>directionVector</declname>
+          <defval>{0.0f, 0.0f, 1.0f}</defval>
+        </param>
+        <param>
+          <type>const DirectX::XMFLOAT3 &amp;</type>
+          <declname>pos</declname>
+          <defval>{8.0f, 8.0f, 2.f}</defval>
+        </param>
+        <param>
+          <type>const std::variant&lt; DirectX::XMFLOAT4, std::string &gt; &amp;</type>
+          <declname>colorOrTexturePath</declname>
+          <defval>DirectX::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f}</defval>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>bShadowCasting</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>bShowMesh</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>intensity</declname>
+          <defval>1.0f</defval>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>fovConeAngle</declname>
+          <defval>60.0f</defval>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>shadowCamNearZ</declname>
+          <defval>0.5f</defval>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>shadowCamFarZ</declname>
+          <defval>80.0f</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="112" column="1" bodyfile="src/light_source.cpp" bodystart="265" bodyend="286"/>
+      </memberdef>
+      <memberdef kind="function" id="classSpotLight_a4ca72bdbc6e490cad12e27aa84be2937_1a4ca72bdbc6e490cad12e27aa84be2937" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>void</type>
+        <definition>void SpotLight::displayImguiWidgets</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>displayImguiWidgets</name>
+        <qualifiedname>SpotLight::displayImguiWidgets</qualifiedname>
+        <reimplements refid="classILightSource_af79180aa4e70f55e10471ccd515391a5_1af79180aa4e70f55e10471ccd515391a5">displayImguiWidgets</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="114" column="6" bodyfile="src/light_source.cpp" bodystart="288" bodyend="291"/>
+      </memberdef>
+      <memberdef kind="function" id="classSpotLight_a82847f8607ad02a492e767ae66a2e21a_1a82847f8607ad02a492e767ae66a2e21a" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>void</type>
+        <definition>void SpotLight::setIntensity</definition>
+        <argsstring>(const float newIntensity) noexcept override</argsstring>
+        <name>setIntensity</name>
+        <qualifiedname>SpotLight::setIntensity</qualifiedname>
+        <reimplements refid="classILightSource_a388781b70e7569ac4be432b1e60cde96_1a388781b70e7569ac4be432b1e60cde96">setIntensity</reimplements>
+        <param>
+          <type>const float</type>
+          <declname>newIntensity</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="115" column="6" bodyfile="src/light_source.cpp" bodystart="293" bodyend="296"/>
+      </memberdef>
+      <memberdef kind="function" id="classSpotLight_af93629535d543f94fc6d853084dd7eaf_1af93629535d543f94fc6d853084dd7eaf" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>void</type>
+        <definition>void SpotLight::setColor</definition>
+        <argsstring>(const DirectX::XMFLOAT3 &amp;diffuseColor) noexcept override</argsstring>
+        <name>setColor</name>
+        <qualifiedname>SpotLight::setColor</qualifiedname>
+        <reimplements refid="classILightSource_a70f8690fb45b8758cf974eab1c06d2ce_1a70f8690fb45b8758cf974eab1c06d2ce">setColor</reimplements>
+        <param>
+          <type>const DirectX::XMFLOAT3 &amp;</type>
+          <declname>diffuseColor</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="116" column="6" bodyfile="src/light_source.cpp" bodystart="298" bodyend="301"/>
+      </memberdef>
+      <memberdef kind="function" id="classSpotLight_ac7863b1f73129f026f03aabe4d4ce6cf_1ac7863b1f73129f026f03aabe4d4ce6cf" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>DirectX::XMFLOAT3</type>
+        <definition>DirectX::XMFLOAT3 SpotLight::getPosition</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>getPosition</name>
+        <qualifiedname>SpotLight::getPosition</qualifiedname>
+        <reimplements refid="classILightSource_a39174369af77a807c727dd8b8b41afec_1a39174369af77a807c727dd8b8b41afec">getPosition</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="117" column="27" bodyfile="src/light_source.cpp" bodystart="303" bodyend="306"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classSpotLight_a8a74d922c2bedf297ca66f9b18b4ba73_1a8a74d922c2bedf297ca66f9b18b4ba73" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SpotLight::populateVscbData</definition>
+        <argsstring>(Graphics &amp;gfx) cond_noex override</argsstring>
+        <name>populateVscbData</name>
+        <qualifiedname>SpotLight::populateVscbData</qualifiedname>
+        <reimplements refid="classILightSource_a3c48dc5f8c722ff8d6d3fc986861db4b_1a3c48dc5f8c722ff8d6d3fc986861db4b">populateVscbData</reimplements>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="119" column="14" bodyfile="src/light_source.cpp" bodystart="308" bodyend="312"/>
+      </memberdef>
+      <memberdef kind="function" id="classSpotLight_adb7659a2f4bebff21059bbb3b048fafe_1adb7659a2f4bebff21059bbb3b048fafe" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SpotLight::populatePscbData</definition>
+        <argsstring>(Graphics &amp;gfx) cond_noex override</argsstring>
+        <name>populatePscbData</name>
+        <qualifiedname>SpotLight::populatePscbData</qualifiedname>
+        <reimplements refid="classILightSource_ae057f7544b9173eb9031c250948b4a8c_1ae057f7544b9173eb9031c250948b4a8c">populatePscbData</reimplements>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="120" column="14" bodyfile="src/light_source.cpp" bodystart="314" bodyend="317"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>ILightSource</label>
+        <link refid="classILightSource"/>
+      </node>
+      <node id="1">
+        <label>SpotLight</label>
+        <link refid="classSpotLight"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5">
+        <label>IImguiNodeVisitor</label>
+        <link refid="classIImguiNodeVisitor"/>
+        <childnode refid="6" relation="usage">
+          <edgelabel>m_pSelectedNode</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ILightSource</label>
+        <link refid="classILightSource"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>m_lightMesh</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>m_vscbData</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>m_pscbData</edgelabel>
+          <edgelabel>m_pscbDataToBind</edgelabel>
+        </childnode>
+      </node>
+      <node id="8">
+        <label>ILightSource::LightPSCB</label>
+        <link refid="structILightSource_1_1LightPSCB"/>
+      </node>
+      <node id="7">
+        <label>ILightSource::LightVSCB</label>
+        <link refid="structILightSource_1_1LightVSCB"/>
+      </node>
+      <node id="4">
+        <label>ImguiPerModelNodeVisitor</label>
+        <link refid="classImguiPerModelNodeVisitor"/>
+        <childnode refid="5" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Model</label>
+        <link refid="classModel"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>m_imguiVisitor</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>Node</label>
+        <link refid="classNode"/>
+        <childnode refid="6" relation="usage">
+          <edgelabel>m_pParent</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>SpotLight</label>
+        <link refid="classSpotLight"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/light_source.h" line="108" column="1" bodyfile="inc/light_source.h" bodystart="110" bodyend="121"/>
+    <listofallmembers>
+      <member refid="classILightSource_a5e1c8d090c141ea94a06046be5b15df8_1a5e1c8d090c141ea94a06046be5b15df8" prot="public" virt="non-virtual"><scope>SpotLight</scope><name>connectMaterialsToRenderer</name></member>
+      <member refid="classSpotLight_a4ca72bdbc6e490cad12e27aa84be2937_1a4ca72bdbc6e490cad12e27aa84be2937" prot="public" virt="virtual"><scope>SpotLight</scope><name>displayImguiWidgets</name></member>
+      <member refid="classILightSource_a0faa0df2c36a9590f2d04ddd4b24f70b_1a0faa0df2c36a9590f2d04ddd4b24f70b" prot="public" virt="non-virtual"><scope>SpotLight</scope><name>getName</name></member>
+      <member refid="classSpotLight_ac7863b1f73129f026f03aabe4d4ce6cf_1ac7863b1f73129f026f03aabe4d4ce6cf" prot="public" virt="virtual"><scope>SpotLight</scope><name>getPosition</name></member>
+      <member refid="classILightSource_a17577069622792755b3aa3e1867dd77e_1a17577069622792755b3aa3e1867dd77e" prot="private" virt="non-virtual"><scope>SpotLight</scope><name>getPscbData</name></member>
+      <member refid="classILightSource_a29ff5d5e121d058b68954725e3489076_1a29ff5d5e121d058b68954725e3489076" prot="public" virt="non-virtual"><scope>SpotLight</scope><name>getRotation</name></member>
+      <member refid="classILightSource_a10dcb51eb6c7dc15ff6b7ffe442a8245_1a10dcb51eb6c7dc15ff6b7ffe442a8245" prot="public" virt="non-virtual"><scope>SpotLight</scope><name>getShadowCamera</name></member>
+      <member refid="classILightSource_af0b903d97d07f2bcc7faf90d51749bdd_1af0b903d97d07f2bcc7faf90d51749bdd" prot="public" virt="non-virtual"><scope>SpotLight</scope><name>getShadowCameraFarZ</name></member>
+      <member refid="classILightSource_ab45b60356a4883b2d10456115692ee60_1ab45b60356a4883b2d10456115692ee60" prot="public" virt="non-virtual"><scope>SpotLight</scope><name>getSlot</name></member>
+      <member refid="classILightSource_a7c9863add04adffa68a99aacc239a64d_1a7c9863add04adffa68a99aacc239a64d" prot="public" virt="non-virtual"><scope>SpotLight</scope><name>getType</name></member>
+      <member refid="classILightSource_ae74ea4b3c8c575ecbac3156d4a9ee699_1ae74ea4b3c8c575ecbac3156d4a9ee699" prot="private" virt="non-virtual"><scope>SpotLight</scope><name>getVscbData</name></member>
+      <member refid="classILightSource_a85ecc5940c66f9ef21277e3bab54276b_1a85ecc5940c66f9ef21277e3bab54276b" prot="public" virt="non-virtual"><scope>SpotLight</scope><name>ILightSource</name></member>
+      <member refid="classILightSource_a020b616fe1ebb5185b8120f9a41c256e_1a020b616fe1ebb5185b8120f9a41c256e" prot="public" virt="non-virtual"><scope>SpotLight</scope><name>isCastingShadows</name></member>
+      <member refid="classILightSource_a605491c2905837716a32ce930afe6c92_1a605491c2905837716a32ce930afe6c92" prot="public" virt="non-virtual"><scope>SpotLight</scope><name>isFrustumCulled</name></member>
+      <member refid="classILightSource_a162034eae6dabb27c763325d94b5050e_1a162034eae6dabb27c763325d94b5050e" prot="protected" virt="non-virtual"><scope>SpotLight</scope><name>m_bCastingShadows</name></member>
+      <member refid="classILightSource_aba12f3ad60d45ee69a6cc9560a1d1e4d_1aba12f3ad60d45ee69a6cc9560a1d1e4d" prot="protected" virt="non-virtual"><scope>SpotLight</scope><name>m_bShowMesh</name></member>
+      <member refid="classILightSource_a2836fa2a9437563c3f7d1b3b5e5e6b83_1a2836fa2a9437563c3f7d1b3b5e5e6b83" prot="protected" virt="non-virtual"><scope>SpotLight</scope><name>m_lightMesh</name></member>
+      <member refid="classILightSource_a9a50fe9607772fecb1ea1c82e84b1cb1_1a9a50fe9607772fecb1ea1c82e84b1cb1" prot="protected" virt="non-virtual"><scope>SpotLight</scope><name>m_name</name></member>
+      <member refid="classILightSource_a2293407d62d1d81b80e920e6ed350ad6_1a2293407d62d1d81b80e920e6ed350ad6" prot="protected" virt="non-virtual"><scope>SpotLight</scope><name>m_pCameraForShadowing</name></member>
+      <member refid="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" prot="protected" virt="non-virtual"><scope>SpotLight</scope><name>m_pscbData</name></member>
+      <member refid="classILightSource_a63c850a5695ff1411e12e73450a84c40_1a63c850a5695ff1411e12e73450a84c40" prot="protected" virt="non-virtual"><scope>SpotLight</scope><name>m_pscbDataToBind</name></member>
+      <member refid="classILightSource_af0a72727cb5a6ee05dde5ea17c222b81_1af0a72727cb5a6ee05dde5ea17c222b81" prot="protected" virt="non-virtual"><scope>SpotLight</scope><name>m_shadowCamFarZ</name></member>
+      <member refid="classILightSource_a8a9f0f14ec9fdad34f6893029360ea98_1a8a9f0f14ec9fdad34f6893029360ea98" prot="private" virt="non-virtual"><scope>SpotLight</scope><name>m_type</name></member>
+      <member refid="classILightSource_a94603c5e37a72aca471ef9d2a37a072e_1a94603c5e37a72aca471ef9d2a37a072e" prot="protected" virt="non-virtual"><scope>SpotLight</scope><name>m_vscbData</name></member>
+      <member refid="classILightSource_a52f8aa3d9b871f416990e363bd9c09e3_1a52f8aa3d9b871f416990e363bd9c09e3" prot="private" virt="non-virtual"><scope>SpotLight</scope><name>populateCBData</name></member>
+      <member refid="classSpotLight_adb7659a2f4bebff21059bbb3b048fafe_1adb7659a2f4bebff21059bbb3b048fafe" prot="private" virt="virtual"><scope>SpotLight</scope><name>populatePscbData</name></member>
+      <member refid="classSpotLight_a8a74d922c2bedf297ca66f9b18b4ba73_1a8a74d922c2bedf297ca66f9b18b4ba73" prot="private" virt="virtual"><scope>SpotLight</scope><name>populateVscbData</name></member>
+      <member refid="classILightSource_a43e7bb71c7b8db34e21cf7889b5eae95_1a43e7bb71c7b8db34e21cf7889b5eae95" prot="public" virt="non-virtual"><scope>SpotLight</scope><name>render</name></member>
+      <member refid="classSpotLight_af93629535d543f94fc6d853084dd7eaf_1af93629535d543f94fc6d853084dd7eaf" prot="public" virt="virtual"><scope>SpotLight</scope><name>setColor</name></member>
+      <member refid="classSpotLight_a82847f8607ad02a492e767ae66a2e21a_1a82847f8607ad02a492e767ae66a2e21a" prot="public" virt="virtual"><scope>SpotLight</scope><name>setIntensity</name></member>
+      <member refid="classILightSource_a3fccfe57c1781b3f43a0cb4a41f67035_1a3fccfe57c1781b3f43a0cb4a41f67035" prot="public" virt="non-virtual"><scope>SpotLight</scope><name>setRotation</name></member>
+      <member refid="classILightSource_af4c3edc00a2603c76e0ec39955f23113_1af4c3edc00a2603c76e0ec39955f23113" prot="public" virt="non-virtual"><scope>SpotLight</scope><name>setTranslation</name></member>
+      <member refid="classSpotLight_aa972a1f97ba572d1a73c3561f9c7834d_1aa972a1f97ba572d1a73c3561f9c7834d" prot="public" virt="non-virtual"><scope>SpotLight</scope><name>SpotLight</name></member>
+      <member refid="classILightSource_a2c46182157ae66e5a900af43928c3d51_1a2c46182157ae66e5a900af43928c3d51" prot="public" virt="non-virtual"><scope>SpotLight</scope><name>update</name></member>
+      <member refid="classILightSource_a8d7a68032533f71c832110c76cd6ed3b_1a8d7a68032533f71c832110c76cd6ed3b" prot="public" virt="virtual"><scope>SpotLight</scope><name>~ILightSource</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

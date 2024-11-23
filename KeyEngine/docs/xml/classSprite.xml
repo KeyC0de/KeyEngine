@@ -1,0 +1,207 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classSprite" kind="class" language="C++" prot="public">
+    <compoundname>Sprite</compoundname>
+    <derivedcompoundref refid="classSpriteSheet" prot="public" virt="non-virtual">SpriteSheet</derivedcompoundref>
+    <includes refid="sprite_8h" local="no">sprite.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classSprite_a3dbe733528fa98914c69bd28daf4a0d7_1a3dbe733528fa98914c69bd28daf4a0d7" prot="private" static="no" mutable="no">
+        <type>Microsoft::WRL::ComPtr&lt; IWICImagingFactory &gt;</type>
+        <definition>Microsoft::WRL::ComPtr&lt;IWICImagingFactory&gt; Sprite::m_pWicFactory</definition>
+        <argsstring></argsstring>
+        <name>m_pWicFactory</name>
+        <qualifiedname>Sprite::m_pWicFactory</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sprite.h" line="12" column="24" bodyfile="inc/sprite.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSprite_a9c6d51fd94758772cd56c11a77258632_1a9c6d51fd94758772cd56c11a77258632" prot="private" static="no" mutable="no">
+        <type>Microsoft::WRL::ComPtr&lt; IWICBitmapDecoder &gt;</type>
+        <definition>Microsoft::WRL::ComPtr&lt;IWICBitmapDecoder&gt; Sprite::m_pWicDecoder</definition>
+        <argsstring></argsstring>
+        <name>m_pWicDecoder</name>
+        <qualifiedname>Sprite::m_pWicDecoder</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sprite.h" line="13" column="24" bodyfile="inc/sprite.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSprite_a70937b7742f455409a65c9ba0291cad0_1a70937b7742f455409a65c9ba0291cad0" prot="private" static="no" mutable="no">
+        <type>Microsoft::WRL::ComPtr&lt; IWICBitmapFrameDecode &gt;</type>
+        <definition>Microsoft::WRL::ComPtr&lt;IWICBitmapFrameDecode&gt; Sprite::m_pBitmapFrame</definition>
+        <argsstring></argsstring>
+        <name>m_pBitmapFrame</name>
+        <qualifiedname>Sprite::m_pBitmapFrame</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sprite.h" line="14" column="24" bodyfile="inc/sprite.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSprite_aef826d0df94614600d606692ba16ef3b_1aef826d0df94614600d606692ba16ef3b" prot="private" static="no" mutable="no">
+        <type>Microsoft::WRL::ComPtr&lt; IWICFormatConverter &gt;</type>
+        <definition>Microsoft::WRL::ComPtr&lt;IWICFormatConverter&gt; Sprite::m_pWicConverter</definition>
+        <argsstring></argsstring>
+        <name>m_pWicConverter</name>
+        <qualifiedname>Sprite::m_pWicConverter</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sprite.h" line="15" column="24" bodyfile="inc/sprite.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSprite_a90981aba92daf4a67769cd2dbba71df3_1a90981aba92daf4a67769cd2dbba71df3" prot="private" static="no" mutable="no">
+        <type>Microsoft::WRL::ComPtr&lt; ID2D1Bitmap &gt;</type>
+        <definition>Microsoft::WRL::ComPtr&lt;ID2D1Bitmap&gt; Sprite::m_pBitmap</definition>
+        <argsstring></argsstring>
+        <name>m_pBitmap</name>
+        <qualifiedname>Sprite::m_pBitmap</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sprite.h" line="16" column="24" bodyfile="inc/sprite.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classSprite_a9b366efc8c486932e9d93dd99f4334e3_1a9b366efc8c486932e9d93dd99f4334e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Sprite::Sprite</definition>
+        <argsstring>(const std::wstring &amp;filename, Graphics &amp;gfx)</argsstring>
+        <name>Sprite</name>
+        <qualifiedname>Sprite::Sprite</qualifiedname>
+        <param>
+          <type>const std::wstring &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sprite.h" line="18" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classSprite_ac82b8f8bcd32c57032e739ce956c455b_1ac82b8f8bcd32c57032e739ce956c455b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type></type>
+        <definition>virtual Sprite::~Sprite</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>~Sprite</name>
+        <qualifiedname>Sprite::~Sprite</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sprite.h" line="19" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classSprite_a6588f564b921aad761c3ed67f2efcba9_1a6588f564b921aad761c3ed67f2efcba9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Sprite::render</definition>
+        <argsstring>(Graphics &amp;gfx, const D2D1_RECT_F &amp;srcRect, const D2D1_RECT_F &amp;destRect, const float alpha=1.0f)</argsstring>
+        <name>render</name>
+        <qualifiedname>Sprite::render</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const D2D1_RECT_F &amp;</type>
+          <declname>srcRect</declname>
+        </param>
+        <param>
+          <type>const D2D1_RECT_F &amp;</type>
+          <declname>destRect</declname>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>alpha</declname>
+          <defval>1.0f</defval>
+        </param>
+        <briefdescription>
+<para>draw the <ref refid="classSprite" kindref="compound">Sprite</ref> bitmap to the render target </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sprite.h" line="22" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classSprite_a131be40bb93d9e5daba29db542a83e75_1a131be40bb93d9e5daba29db542a83e75" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float Sprite::getWidth</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getWidth</name>
+        <qualifiedname>Sprite::getWidth</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sprite.h" line="24" column="7"/>
+      </memberdef>
+      <memberdef kind="function" id="classSprite_a887f3dba52d6ca4ccd3daaf2e0cf2b6a_1a887f3dba52d6ca4ccd3daaf2e0cf2b6a" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float Sprite::getHeight</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getHeight</name>
+        <qualifiedname>Sprite::getHeight</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sprite.h" line="25" column="7"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Sprite</label>
+        <link refid="classSprite"/>
+      </node>
+      <node id="2">
+        <label>SpriteSheet</label>
+        <link refid="classSpriteSheet"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="inc/sprite.h" line="10" column="1" bodyfile="inc/sprite.h" bodystart="11" bodyend="26"/>
+    <listofallmembers>
+      <member refid="classSprite_a887f3dba52d6ca4ccd3daaf2e0cf2b6a_1a887f3dba52d6ca4ccd3daaf2e0cf2b6a" prot="public" virt="non-virtual"><scope>Sprite</scope><name>getHeight</name></member>
+      <member refid="classSprite_a131be40bb93d9e5daba29db542a83e75_1a131be40bb93d9e5daba29db542a83e75" prot="public" virt="non-virtual"><scope>Sprite</scope><name>getWidth</name></member>
+      <member refid="classSprite_a90981aba92daf4a67769cd2dbba71df3_1a90981aba92daf4a67769cd2dbba71df3" prot="private" virt="non-virtual"><scope>Sprite</scope><name>m_pBitmap</name></member>
+      <member refid="classSprite_a70937b7742f455409a65c9ba0291cad0_1a70937b7742f455409a65c9ba0291cad0" prot="private" virt="non-virtual"><scope>Sprite</scope><name>m_pBitmapFrame</name></member>
+      <member refid="classSprite_aef826d0df94614600d606692ba16ef3b_1aef826d0df94614600d606692ba16ef3b" prot="private" virt="non-virtual"><scope>Sprite</scope><name>m_pWicConverter</name></member>
+      <member refid="classSprite_a9c6d51fd94758772cd56c11a77258632_1a9c6d51fd94758772cd56c11a77258632" prot="private" virt="non-virtual"><scope>Sprite</scope><name>m_pWicDecoder</name></member>
+      <member refid="classSprite_a3dbe733528fa98914c69bd28daf4a0d7_1a3dbe733528fa98914c69bd28daf4a0d7" prot="private" virt="non-virtual"><scope>Sprite</scope><name>m_pWicFactory</name></member>
+      <member refid="classSprite_a6588f564b921aad761c3ed67f2efcba9_1a6588f564b921aad761c3ed67f2efcba9" prot="public" virt="non-virtual"><scope>Sprite</scope><name>render</name></member>
+      <member refid="classSprite_a9b366efc8c486932e9d93dd99f4334e3_1a9b366efc8c486932e9d93dd99f4334e3" prot="public" virt="non-virtual"><scope>Sprite</scope><name>Sprite</name></member>
+      <member refid="classSprite_ac82b8f8bcd32c57032e739ce956c455b_1ac82b8f8bcd32c57032e739ce956c455b" prot="public" virt="virtual"><scope>Sprite</scope><name>~Sprite</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

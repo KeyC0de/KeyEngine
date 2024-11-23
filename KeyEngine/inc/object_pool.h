@@ -4,12 +4,12 @@
 #include "non_copyable.h"
 
 
-//=============================================================
+///=============================================================
 // \class	ObjectPool
 // \author	Nikos Lazaridis (KeyC0de)
 // \date	3-Oct-19
 // \brief	Pool Allocator
-//=============================================================
+///=============================================================
 template<typename T>
 class ObjectPool final
 	: public NonCopyable
@@ -27,8 +27,7 @@ public:
 	using value_type = T;
 	using pointer = T*;
 
-	//	\function	ctor	||	\date	2022/08/28 19:12
-	//	\brief	ctor creates the pool given the amount of objects it will hold
+	/// \brief	ctor creates the pool given the amount of objects it will hold
 	explicit ObjectPool( const std::size_t nObjs )
 		:
 		m_pool{std::make_unique<Object[]>( nObjs )},

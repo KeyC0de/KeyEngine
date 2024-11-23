@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="namespacever" kind="namespace" language="C++">
+    <compoundname>ver</compoundname>
+    <innerclass refid="classver_1_1VBElementConstView" prot="public">ver::VBElementConstView</innerclass>
+    <innerclass refid="classver_1_1VBElementView" prot="public">ver::VBElementView</innerclass>
+    <innerclass refid="classver_1_1VBuffer" prot="public">ver::VBuffer</innerclass>
+    <innerclass refid="classver_1_1VertexInputLayout" prot="public">ver::VertexInputLayout</innerclass>
+    <innernamespace refid="namespacever_1_1lookups">ver::lookups</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/bmp_loader.h" line="11" column="1"/>
+  </compounddef>
+</doxygen>

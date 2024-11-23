@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Float3Color_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>ver::VertexInputLayout::ElementProperties&lt; Float3Color &gt;</compoundname>
+    <includes refid="dynamic__vertex__buffer_8h" local="no">dynamic_vertex_buffer.h</includes>
+    <templateparamlist>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Float3Color_01_4_a13f8d53bc2c2c9cfe5c986b672692d4e_1a13f8d53bc2c2c9cfe5c986b672692d4e" prot="public" static="no">
+        <type>DirectX::XMFLOAT3</type>
+        <definition>using ver::VertexInputLayout::ElementProperties&lt; Float3Color &gt;::CPUType =  DirectX::XMFLOAT3</definition>
+        <argsstring></argsstring>
+        <name>CPUType</name>
+        <qualifiedname>ver::VertexInputLayout::ElementProperties&lt; Float3Color &gt;::CPUType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="121" column="1" bodyfile="inc/dynamic_vertex_buffer.h" bodystart="121" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Float3Color_01_4_a8871a0ad2b7ce00ba6159c2d79dbbb5a_1a8871a0ad2b7ce00ba6159c2d79dbbb5a" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>DXGI_FORMAT</type>
+        <definition>DXGI_FORMAT ver::VertexInputLayout::ElementProperties&lt; Float3Color &gt;::dxgiFormat</definition>
+        <argsstring></argsstring>
+        <name>dxgiFormat</name>
+        <qualifiedname>ver::VertexInputLayout::ElementProperties&lt; Float3Color &gt;::dxgiFormat</qualifiedname>
+        <initializer>= DXGI_FORMAT_R32G32B32_FLOAT</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="122" column="30" bodyfile="inc/dynamic_vertex_buffer.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Float3Color_01_4_a808a7988f6d91819ddec927ffa0620ee_1a808a7988f6d91819ddec927ffa0620ee" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>const char *</type>
+        <definition>const char* ver::VertexInputLayout::ElementProperties&lt; Float3Color &gt;::hlslSemantic</definition>
+        <argsstring></argsstring>
+        <name>hlslSemantic</name>
+        <qualifiedname>ver::VertexInputLayout::ElementProperties&lt; Float3Color &gt;::hlslSemantic</qualifiedname>
+        <initializer>= &quot;Color&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="123" column="29" bodyfile="inc/dynamic_vertex_buffer.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Float3Color_01_4_a76b994e782fb6fd6e0a1431cdc11d096_1a76b994e782fb6fd6e0a1431cdc11d096" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>const char *</type>
+        <definition>const char* ver::VertexInputLayout::ElementProperties&lt; Float3Color &gt;::tag</definition>
+        <argsstring></argsstring>
+        <name>tag</name>
+        <qualifiedname>ver::VertexInputLayout::ElementProperties&lt; Float3Color &gt;::tag</qualifiedname>
+        <initializer>= &quot;C3&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="124" column="29" bodyfile="inc/dynamic_vertex_buffer.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/dynamic_vertex_buffer.h" line="119" column="1" bodyfile="inc/dynamic_vertex_buffer.h" bodystart="120" bodyend="126"/>
+    <listofallmembers>
+      <member refid="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Float3Color_01_4_a13f8d53bc2c2c9cfe5c986b672692d4e_1a13f8d53bc2c2c9cfe5c986b672692d4e" prot="public" virt="non-virtual"><scope>ver::VertexInputLayout::ElementProperties&lt; Float3Color &gt;</scope><name>CPUType</name></member>
+      <member refid="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Float3Color_01_4_a8871a0ad2b7ce00ba6159c2d79dbbb5a_1a8871a0ad2b7ce00ba6159c2d79dbbb5a" prot="public" virt="non-virtual"><scope>ver::VertexInputLayout::ElementProperties&lt; Float3Color &gt;</scope><name>dxgiFormat</name></member>
+      <member refid="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Float3Color_01_4_a808a7988f6d91819ddec927ffa0620ee_1a808a7988f6d91819ddec927ffa0620ee" prot="public" virt="non-virtual"><scope>ver::VertexInputLayout::ElementProperties&lt; Float3Color &gt;</scope><name>hlslSemantic</name></member>
+      <member refid="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Float3Color_01_4_a76b994e782fb6fd6e0a1431cdc11d096_1a76b994e782fb6fd6e0a1431cdc11d096" prot="public" virt="non-virtual"><scope>ver::VertexInputLayout::ElementProperties&lt; Float3Color &gt;</scope><name>tag</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

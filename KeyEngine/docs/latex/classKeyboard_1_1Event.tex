@@ -1,0 +1,105 @@
+\doxysection{Keyboard\+::Event Class Reference}
+\hypertarget{classKeyboard_1_1Event}{}\label{classKeyboard_1_1Event}\index{Keyboard::Event@{Keyboard::Event}}
+
+
+{\ttfamily \#include $<$keyboard.\+h$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classKeyboard_1_1Event_aaa12f942b71b42761c3bec96f3a67075_aaa12f942b71b42761c3bec96f3a67075}{Type}} \{ \mbox{\hyperlink{classKeyboard_1_1Event_aaa12f942b71b42761c3bec96f3a67075_aaa12f942b71b42761c3bec96f3a67075a69a8f334bc2b154058b16d7ba580eb12}{Press}}
+, \mbox{\hyperlink{classKeyboard_1_1Event_aaa12f942b71b42761c3bec96f3a67075_aaa12f942b71b42761c3bec96f3a67075aff890020ba76a1cbf675d2573a5d70c4}{Release}}
+, \mbox{\hyperlink{classKeyboard_1_1Event_aaa12f942b71b42761c3bec96f3a67075_aaa12f942b71b42761c3bec96f3a67075af31756bbc2e27e5730a4894824f1280e}{Invalid}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classKeyboard_1_1Event_ad422ee145c6d274ccc522fae1002cf94_ad422ee145c6d274ccc522fae1002cf94}{Event}} (const \mbox{\hyperlink{classKeyboard_1_1Event_aaa12f942b71b42761c3bec96f3a67075_aaa12f942b71b42761c3bec96f3a67075}{Type}} type, unsigned char keyc0de) noexcept
+\item 
+constexpr bool \mbox{\hyperlink{classKeyboard_1_1Event_a4178e2b526679bba478c22fcfb724670_a4178e2b526679bba478c22fcfb724670}{is\+Press\+Event}} () const noexcept
+\item 
+constexpr bool \mbox{\hyperlink{classKeyboard_1_1Event_affea73685d59a001ce89950ec4eb6c94_affea73685d59a001ce89950ec4eb6c94}{is\+Release\+Event}} () const noexcept
+\item 
+constexpr unsigned char \mbox{\hyperlink{classKeyboard_1_1Event_a48dabf65c18921c5a0a48fc627d638eb_a48dabf65c18921c5a0a48fc627d638eb}{get\+Keycode}} () const noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classKeyboard_1_1Event_aaa12f942b71b42761c3bec96f3a67075_aaa12f942b71b42761c3bec96f3a67075}{Type}} \mbox{\hyperlink{classKeyboard_1_1Event_a8ab4248f38128f90a6d3db6032abfc18_a8ab4248f38128f90a6d3db6032abfc18}{m\+\_\+type}}
+\item 
+unsigned char \mbox{\hyperlink{classKeyboard_1_1Event_ab3c7b39e079bc2dc7628dc70bc7a9304_ab3c7b39e079bc2dc7628dc70bc7a9304}{m\+\_\+keyc0de}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{classKeyboard_1_1Event_aaa12f942b71b42761c3bec96f3a67075_aaa12f942b71b42761c3bec96f3a67075}\index{Keyboard::Event@{Keyboard::Event}!Type@{Type}}
+\index{Type@{Type}!Keyboard::Event@{Keyboard::Event}}
+\doxysubsubsection{\texorpdfstring{Type}{Type}}
+{\footnotesize\ttfamily \label{classKeyboard_1_1Event_aaa12f942b71b42761c3bec96f3a67075_aaa12f942b71b42761c3bec96f3a67075} 
+enum \mbox{\hyperlink{classKeyboard_1_1Event_aaa12f942b71b42761c3bec96f3a67075_aaa12f942b71b42761c3bec96f3a67075}{Keyboard\+::\+Event\+::\+Type}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Press@{Press}!Keyboard::Event@{Keyboard::Event}}\index{Keyboard::Event@{Keyboard::Event}!Press@{Press}}}\Hypertarget{classKeyboard_1_1Event_aaa12f942b71b42761c3bec96f3a67075_aaa12f942b71b42761c3bec96f3a67075a69a8f334bc2b154058b16d7ba580eb12}\label{classKeyboard_1_1Event_aaa12f942b71b42761c3bec96f3a67075_aaa12f942b71b42761c3bec96f3a67075} 
+Press&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Release@{Release}!Keyboard::Event@{Keyboard::Event}}\index{Keyboard::Event@{Keyboard::Event}!Release@{Release}}}\Hypertarget{classKeyboard_1_1Event_aaa12f942b71b42761c3bec96f3a67075_aaa12f942b71b42761c3bec96f3a67075aff890020ba76a1cbf675d2573a5d70c4}\label{classKeyboard_1_1Event_aaa12f942b71b42761c3bec96f3a67075_aaa12f942b71b42761c3bec96f3a67075} 
+Release&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Invalid@{Invalid}!Keyboard::Event@{Keyboard::Event}}\index{Keyboard::Event@{Keyboard::Event}!Invalid@{Invalid}}}\Hypertarget{classKeyboard_1_1Event_aaa12f942b71b42761c3bec96f3a67075_aaa12f942b71b42761c3bec96f3a67075af31756bbc2e27e5730a4894824f1280e}\label{classKeyboard_1_1Event_aaa12f942b71b42761c3bec96f3a67075_aaa12f942b71b42761c3bec96f3a67075} 
+Invalid&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classKeyboard_1_1Event_ad422ee145c6d274ccc522fae1002cf94_ad422ee145c6d274ccc522fae1002cf94}\index{Keyboard::Event@{Keyboard::Event}!Event@{Event}}
+\index{Event@{Event}!Keyboard::Event@{Keyboard::Event}}
+\doxysubsubsection{\texorpdfstring{Event()}{Event()}}
+{\footnotesize\ttfamily \label{classKeyboard_1_1Event_ad422ee145c6d274ccc522fae1002cf94_ad422ee145c6d274ccc522fae1002cf94} 
+Keyboard\+::\+Event\+::\+Event (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classKeyboard_1_1Event_aaa12f942b71b42761c3bec96f3a67075_aaa12f942b71b42761c3bec96f3a67075}{Type}}}]{type}{, }\item[{unsigned char}]{keyc0de}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classKeyboard_1_1Event_a48dabf65c18921c5a0a48fc627d638eb_a48dabf65c18921c5a0a48fc627d638eb}\index{Keyboard::Event@{Keyboard::Event}!getKeycode@{getKeycode}}
+\index{getKeycode@{getKeycode}!Keyboard::Event@{Keyboard::Event}}
+\doxysubsubsection{\texorpdfstring{getKeycode()}{getKeycode()}}
+{\footnotesize\ttfamily \label{classKeyboard_1_1Event_a48dabf65c18921c5a0a48fc627d638eb_a48dabf65c18921c5a0a48fc627d638eb} 
+unsigned char Keyboard\+::\+Event\+::get\+Keycode (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classKeyboard_1_1Event_a4178e2b526679bba478c22fcfb724670_a4178e2b526679bba478c22fcfb724670}\index{Keyboard::Event@{Keyboard::Event}!isPressEvent@{isPressEvent}}
+\index{isPressEvent@{isPressEvent}!Keyboard::Event@{Keyboard::Event}}
+\doxysubsubsection{\texorpdfstring{isPressEvent()}{isPressEvent()}}
+{\footnotesize\ttfamily \label{classKeyboard_1_1Event_a4178e2b526679bba478c22fcfb724670_a4178e2b526679bba478c22fcfb724670} 
+bool Keyboard\+::\+Event\+::is\+Press\+Event (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classKeyboard_1_1Event_affea73685d59a001ce89950ec4eb6c94_affea73685d59a001ce89950ec4eb6c94}\index{Keyboard::Event@{Keyboard::Event}!isReleaseEvent@{isReleaseEvent}}
+\index{isReleaseEvent@{isReleaseEvent}!Keyboard::Event@{Keyboard::Event}}
+\doxysubsubsection{\texorpdfstring{isReleaseEvent()}{isReleaseEvent()}}
+{\footnotesize\ttfamily \label{classKeyboard_1_1Event_affea73685d59a001ce89950ec4eb6c94_affea73685d59a001ce89950ec4eb6c94} 
+bool Keyboard\+::\+Event\+::is\+Release\+Event (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classKeyboard_1_1Event_ab3c7b39e079bc2dc7628dc70bc7a9304_ab3c7b39e079bc2dc7628dc70bc7a9304}\index{Keyboard::Event@{Keyboard::Event}!m\_keyc0de@{m\_keyc0de}}
+\index{m\_keyc0de@{m\_keyc0de}!Keyboard::Event@{Keyboard::Event}}
+\doxysubsubsection{\texorpdfstring{m\_keyc0de}{m\_keyc0de}}
+{\footnotesize\ttfamily \label{classKeyboard_1_1Event_ab3c7b39e079bc2dc7628dc70bc7a9304_ab3c7b39e079bc2dc7628dc70bc7a9304} 
+unsigned char Keyboard\+::\+Event\+::m\+\_\+keyc0de\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classKeyboard_1_1Event_a8ab4248f38128f90a6d3db6032abfc18_a8ab4248f38128f90a6d3db6032abfc18}\index{Keyboard::Event@{Keyboard::Event}!m\_type@{m\_type}}
+\index{m\_type@{m\_type}!Keyboard::Event@{Keyboard::Event}}
+\doxysubsubsection{\texorpdfstring{m\_type}{m\_type}}
+{\footnotesize\ttfamily \label{classKeyboard_1_1Event_a8ab4248f38128f90a6d3db6032abfc18_a8ab4248f38128f90a6d3db6032abfc18} 
+\mbox{\hyperlink{classKeyboard_1_1Event_aaa12f942b71b42761c3bec96f3a67075_aaa12f942b71b42761c3bec96f3a67075}{Type}} Keyboard\+::\+Event\+::m\+\_\+type\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{keyboard_8h}{keyboard.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,570 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classren_1_1IPass" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>ren::IPass</compoundname>
+    <derivedcompoundref refid="classren_1_1IBindablePass" prot="public" virt="non-virtual">ren::IBindablePass</derivedcompoundref>
+    <derivedcompoundref refid="classren_1_1RenderSurfaceClearPass" prot="public" virt="non-virtual">ren::RenderSurfaceClearPass</derivedcompoundref>
+    <includes refid="pass_8h" local="no">pass.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classren_1_1IPass_aa3a178f92cb6197605a486211a90367a_1aa3a178f92cb6197605a486211a90367a" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string ren::IPass::m_name</definition>
+        <argsstring></argsstring>
+        <name>m_name</name>
+        <qualifiedname>ren::IPass::m_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/pass.h" line="25" column="13" bodyfile="inc/pass.h" bodystart="25" bodyend="-1"/>
+        <referencedby refid="classren_1_1IPass_a3c9f7768f492d9a50371acec9b61f12b_1a3c9f7768f492d9a50371acec9b61f12b" compoundref="pass_8cpp" startline="22" endline="25">getName</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1IPass_ab8ff53f070bce5debcf6bb3ce26206eb_1ab8ff53f070bce5debcf6bb3ce26206eb" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool ren::IPass::m_bActive</definition>
+        <argsstring></argsstring>
+        <name>m_bActive</name>
+        <qualifiedname>ren::IPass::m_bActive</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/pass.h" line="26" column="6" bodyfile="inc/pass.h" bodystart="26" bodyend="-1"/>
+        <referencedby refid="classren_1_1IPass_a7ef6e9979f151480bc34dca08b19bec1_1a7ef6e9979f151480bc34dca08b19bec1" compoundref="pass_8cpp" startline="40" endline="43">isActive</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1IPass_aea2aeb943b24bd538b91487dbbee1349_1aea2aeb943b24bd538b91487dbbee1349" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::unique_ptr&lt; <ref refid="classren_1_1IBinder" kindref="compound">IBinder</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::unique_ptr&lt;IBinder&gt; &gt; ren::IPass::m_binders</definition>
+        <argsstring></argsstring>
+        <name>m_binders</name>
+        <qualifiedname>ren::IPass::m_binders</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/pass.h" line="27" column="13" bodyfile="inc/pass.h" bodystart="27" bodyend="-1"/>
+        <referencedby refid="classren_1_1IPass_ab8c6a6dae673214dccd302aea9ce6e72_1ab8c6a6dae673214dccd302aea9ce6e72" compoundref="pass_8cpp" startline="90" endline="101">addBinder</referencedby>
+        <referencedby refid="classren_1_1IPass_a6cffed1b315846ece319e4ce5f508843_1a6cffed1b315846ece319e4ce5f508843" compoundref="pass_8cpp" startline="60" endline="73">getBinder</referencedby>
+        <referencedby refid="classren_1_1IPass_aebd5aa69455727600d0e979906a0a111_1aebd5aa69455727600d0e979906a0a111" compoundref="pass_8cpp" startline="50" endline="53">getBinders</referencedby>
+        <referencedby refid="classren_1_1IPass_a80971a3d1212629cd1ba61033df55f84_1a80971a3d1212629cd1ba61033df55f84" compoundref="pass_8cpp" startline="27" endline="33">validate</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1IPass_a44af75ecb642c6c1f47d316bf129daa8_1a44af75ecb642c6c1f47d316bf129daa8" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::unique_ptr&lt; <ref refid="classren_1_1ILinker" kindref="compound">ILinker</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::unique_ptr&lt;ILinker&gt; &gt; ren::IPass::m_linkers</definition>
+        <argsstring></argsstring>
+        <name>m_linkers</name>
+        <qualifiedname>ren::IPass::m_linkers</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/pass.h" line="28" column="13" bodyfile="inc/pass.h" bodystart="28" bodyend="-1"/>
+        <referencedby refid="classren_1_1IPass_aa9c50563c1bd98e1c377d819d9e2dc09_1aa9c50563c1bd98e1c377d819d9e2dc09" compoundref="pass_8cpp" startline="103" endline="114">addLinker</referencedby>
+        <referencedby refid="classren_1_1IPass_a171eeb96584abbbbe1f158fbca5628f0_1a171eeb96584abbbbe1f158fbca5628f0" compoundref="pass_8cpp" startline="75" endline="88">getLinker</referencedby>
+        <referencedby refid="classren_1_1IPass_ae0910189678e800c86f665bca8c88a03_1ae0910189678e800c86f665bca8c88a03" compoundref="pass_8cpp" startline="55" endline="58">getLinkers</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classren_1_1IPass_a72360515966748b13f592095c12f58fa_1a72360515966748b13f592095c12f58fa" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>ren::IPass::IPass</definition>
+        <argsstring>(const std::string &amp;name, bool bActive=true) noexcept</argsstring>
+        <name>IPass</name>
+        <qualifiedname>ren::IPass::IPass</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>bActive</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/pass.h" line="30" column="1" bodyfile="src/pass.cpp" bodystart="8" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1IPass_ac0132ac18bad1d6379a9d27e3d25bc18_1ac0132ac18bad1d6379a9d27e3d25bc18" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type></type>
+        <definition>ren::IPass::~IPass</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>~IPass</name>
+        <qualifiedname>ren::IPass::~IPass</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/pass.h" line="31" column="9" bodyfile="src/pass.cpp" bodystart="17" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1IPass_a80a6d3d531bee9f93371f342d32c89a1_1a80a6d3d531bee9f93371f342d32c89a1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ren::IPass::run</definition>
+        <argsstring>(Graphics &amp;gfx) const cond_noex=0</argsstring>
+        <name>run</name>
+        <qualifiedname>ren::IPass::run</qualifiedname>
+        <reimplementedby refid="classren_1_1BlurOutlineDrawPass_a0a84f16b21cf64de72de1f259b4c6b65_1a0a84f16b21cf64de72de1f259b4c6b65">run</reimplementedby>
+        <reimplementedby refid="classren_1_1HorizontalBlurPass_a5bab184713ed765432106808d491c784_1a5bab184713ed765432106808d491c784">run</reimplementedby>
+        <reimplementedby refid="classren_1_1IFullscreenPass_a9c7f7f30f493b1c0618276a211753e9f_1a9c7f7f30f493b1c0618276a211753e9f">run</reimplementedby>
+        <reimplementedby refid="classren_1_1OpaquePass_a82b547d48bdfbed195d908dd625c039c_1a82b547d48bdfbed195d908dd625c039c">run</reimplementedby>
+        <reimplementedby refid="classren_1_1Pass2D_acffaab0d52679ed3da4861d5ae256113_1acffaab0d52679ed3da4861d5ae256113">run</reimplementedby>
+        <reimplementedby refid="classren_1_1RenderQueuePass_a8c01bb14c9e11b7e9c328ddf6cc39af2_1a8c01bb14c9e11b7e9c328ddf6cc39af2">run</reimplementedby>
+        <reimplementedby refid="classren_1_1RenderSurfaceClearPass_a5afeba3836c9923966caaf2f8a0f5b9e_1a5afeba3836c9923966caaf2f8a0f5b9e">run</reimplementedby>
+        <reimplementedby refid="classren_1_1ShadowPass_a31a85426ffac3f700c0b3c187b0567af_1a31a85426ffac3f700c0b3c187b0567af">run</reimplementedby>
+        <reimplementedby refid="classren_1_1SkyPass_aac9adbd77652549277584937a5a44f42_1aac9adbd77652549277584937a5a44f42">run</reimplementedby>
+        <reimplementedby refid="classren_1_1TransparentPass_a3ecab6b62211decc0c08c92c0dd634c4_1a3ecab6b62211decc0c08c92c0dd634c4">run</reimplementedby>
+        <reimplementedby refid="classren_1_1VerticalBlurPass_a6e8ef490107e5b9b7872b24183b37dae_1a6e8ef490107e5b9b7872b24183b37dae">run</reimplementedby>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+<para>binds bindables &amp; executes draw calls </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/pass.h" line="34" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1IPass_af001419157ed67f6123fb9f311e96064_1af001419157ed67f6123fb9f311e96064" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ren::IPass::reset</definition>
+        <argsstring>() cond_noex=0</argsstring>
+        <name>reset</name>
+        <qualifiedname>ren::IPass::reset</qualifiedname>
+        <reimplementedby refid="classren_1_1BlurPass_a36641a9f42a641a46d6c8a2e7591d730_1a36641a9f42a641a46d6c8a2e7591d730">reset</reimplementedby>
+        <reimplementedby refid="classren_1_1HorizontalBlurPass_ad46793c777d74dbf11c104fd50552248_1ad46793c777d74dbf11c104fd50552248">reset</reimplementedby>
+        <reimplementedby refid="classren_1_1NegativePass_abf0eeadf7710ad7419e354b70dddde0b_1abf0eeadf7710ad7419e354b70dddde0b">reset</reimplementedby>
+        <reimplementedby refid="classren_1_1Pass2D_a02f8b7d60c50b8bdd7c86ff09359a207_1a02f8b7d60c50b8bdd7c86ff09359a207">reset</reimplementedby>
+        <reimplementedby refid="classren_1_1PassThrough_a9a8ee826bf2c171fed669523c5ca5713_1a9a8ee826bf2c171fed669523c5ca5713">reset</reimplementedby>
+        <reimplementedby refid="classren_1_1RenderQueuePass_a23b96814aa56f5c6a2b6806ad848e4fe_1a23b96814aa56f5c6a2b6806ad848e4fe">reset</reimplementedby>
+        <reimplementedby refid="classren_1_1RenderSurfaceClearPass_a2c87156fb526fa12e67d90dbea4687c4_1a2c87156fb526fa12e67d90dbea4687c4">reset</reimplementedby>
+        <reimplementedby refid="classren_1_1SkyPass_a3b0174cb8ca42abb25ef46f419efe2b7_1a3b0174cb8ca42abb25ef46f419efe2b7">reset</reimplementedby>
+        <reimplementedby refid="classren_1_1VerticalBlurPass_ad224bfb4e138397eeddd69c037527787_1ad224bfb4e138397eeddd69c037527787">reset</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/pass.h" line="35" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1IPass_a3c9f7768f492d9a50371acec9b61f12b_1a3c9f7768f492d9a50371acec9b61f12b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; ren::IPass::getName</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getName</name>
+        <qualifiedname>ren::IPass::getName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/pass.h" line="36" column="19" bodyfile="src/pass.cpp" bodystart="22" bodyend="25"/>
+        <referencedby refid="classren_1_1IPass_a6cffed1b315846ece319e4ce5f508843_1a6cffed1b315846ece319e4ce5f508843" compoundref="pass_8cpp" startline="60" endline="73">getBinder</referencedby>
+        <referencedby refid="classren_1_1IPass_a171eeb96584abbbbe1f158fbca5628f0_1a171eeb96584abbbbe1f158fbca5628f0" compoundref="pass_8cpp" startline="75" endline="88">getLinker</referencedby>
+        <referencedby refid="classren_1_1Renderer_a9ae7a8a655f01eb7bf44e63c27448f99_1a9ae7a8a655f01eb7bf44e63c27448f99" compoundref="renderer_8cpp" startline="187" endline="240">ren::Renderer::linkPassBinders</referencedby>
+        <referencedby refid="classren_1_1IBindablePass_ae2b3e270005268576afb65f16a9545a7_1ae2b3e270005268576afb65f16a9545a7" compoundref="bindable__pass_8cpp" startline="40" endline="47">ren::IBindablePass::validate</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1IPass_aebd5aa69455727600d0e979906a0a111_1aebd5aa69455727600d0e979906a0a111" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::vector&lt; std::unique_ptr&lt; <ref refid="classren_1_1IBinder" kindref="compound">IBinder</ref> &gt; &gt; &amp;</type>
+        <definition>const std::vector&lt; std::unique_ptr&lt; IBinder &gt; &gt; &amp; ren::IPass::getBinders</definition>
+        <argsstring>() const</argsstring>
+        <name>getBinders</name>
+        <qualifiedname>ren::IPass::getBinders</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/pass.h" line="37" column="19" bodyfile="src/pass.cpp" bodystart="50" bodyend="53"/>
+        <referencedby refid="classren_1_1Renderer_a9ae7a8a655f01eb7bf44e63c27448f99_1a9ae7a8a655f01eb7bf44e63c27448f99" compoundref="renderer_8cpp" startline="187" endline="240">ren::Renderer::linkPassBinders</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1IPass_ae0910189678e800c86f665bca8c88a03_1ae0910189678e800c86f665bca8c88a03" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::vector&lt; std::unique_ptr&lt; <ref refid="classren_1_1ILinker" kindref="compound">ILinker</ref> &gt; &gt; &amp;</type>
+        <definition>const std::vector&lt; std::unique_ptr&lt; ILinker &gt; &gt; &amp; ren::IPass::getLinkers</definition>
+        <argsstring>() const</argsstring>
+        <name>getLinkers</name>
+        <qualifiedname>ren::IPass::getLinkers</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/pass.h" line="38" column="19" bodyfile="src/pass.cpp" bodystart="55" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1IPass_a6cffed1b315846ece319e4ce5f508843_1a6cffed1b315846ece319e4ce5f508843" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classren_1_1IBinder" kindref="compound">IBinder</ref> &amp;</type>
+        <definition>IBinder &amp; ren::IPass::getBinder</definition>
+        <argsstring>(const std::string &amp;name) const</argsstring>
+        <name>getBinder</name>
+        <qualifiedname>ren::IPass::getBinder</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/pass.h" line="39" column="9" bodyfile="src/pass.cpp" bodystart="60" bodyend="73"/>
+        <referencedby refid="classren_1_1IPass_a261403c4ce33bc13fe3b5e0487c79664_1a261403c4ce33bc13fe3b5e0487c79664" compoundref="pass_8cpp" startline="116" endline="122">setupBinderTarget</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1IPass_a171eeb96584abbbbe1f158fbca5628f0_1a171eeb96584abbbbe1f158fbca5628f0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classren_1_1ILinker" kindref="compound">ILinker</ref> &amp;</type>
+        <definition>ILinker &amp; ren::IPass::getLinker</definition>
+        <argsstring>(const std::string &amp;name) const</argsstring>
+        <name>getLinker</name>
+        <qualifiedname>ren::IPass::getLinker</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/pass.h" line="40" column="9" bodyfile="src/pass.cpp" bodystart="75" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1IPass_a261403c4ce33bc13fe3b5e0487c79664_1a261403c4ce33bc13fe3b5e0487c79664" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ren::IPass::setupBinderTarget</definition>
+        <argsstring>(const std::string &amp;binderName, const std::string &amp;targetPassName, const std::string &amp;targetPassLinkerName)</argsstring>
+        <name>setupBinderTarget</name>
+        <qualifiedname>ren::IPass::setupBinderTarget</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>binderName</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>targetPassName</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>targetPassLinkerName</declname>
+        </param>
+        <briefdescription>
+<para>link a <ref refid="classren_1_1BindableBinder" kindref="compound">BindableBinder</ref> from this Pass to a Linker of another targetPass </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/pass.h" line="42" column="6" bodyfile="src/pass.cpp" bodystart="116" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1IPass_a80971a3d1212629cd1ba61033df55f84_1a80971a3d1212629cd1ba61033df55f84" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ren::IPass::validate</definition>
+        <argsstring>()</argsstring>
+        <name>validate</name>
+        <qualifiedname>ren::IPass::validate</qualifiedname>
+        <reimplementedby refid="classren_1_1IBindablePass_ae2b3e270005268576afb65f16a9545a7_1ae2b3e270005268576afb65f16a9545a7">validate</reimplementedby>
+        <briefdescription>
+<para>validate binders are linked to their linkers </para>
+        </briefdescription>
+        <detaileddescription>
+<para>validation occurs only once (ctor) for every Pass </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/pass.h" line="45" column="14" bodyfile="src/pass.cpp" bodystart="27" bodyend="33"/>
+        <referencedby refid="classren_1_1IBindablePass_ae2b3e270005268576afb65f16a9545a7_1ae2b3e270005268576afb65f16a9545a7" compoundref="bindable__pass_8cpp" startline="40" endline="47">ren::IBindablePass::validate</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1IPass_ae8d7a067929cabbe900ec89643cbcdba_1ae8d7a067929cabbe900ec89643cbcdba" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ren::IPass::setActive</definition>
+        <argsstring>(const bool bActive) noexcept</argsstring>
+        <name>setActive</name>
+        <qualifiedname>ren::IPass::setActive</qualifiedname>
+        <param>
+          <type>const bool</type>
+          <declname>bActive</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/pass.h" line="46" column="6" bodyfile="src/pass.cpp" bodystart="35" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1IPass_a7ef6e9979f151480bc34dca08b19bec1_1a7ef6e9979f151480bc34dca08b19bec1" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const bool</type>
+        <definition>const bool ren::IPass::isActive</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>isActive</name>
+        <qualifiedname>ren::IPass::isActive</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/pass.h" line="47" column="12" bodyfile="src/pass.cpp" bodystart="40" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1IPass_a589910e72e67f1d1ec37faea4d840074_1a589910e72e67f1d1ec37faea4d840074" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ren::IPass::recreateRtvsAndDsvs</definition>
+        <argsstring>(Graphics &amp;gfx)</argsstring>
+        <name>recreateRtvsAndDsvs</name>
+        <qualifiedname>ren::IPass::recreateRtvsAndDsvs</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/pass.h" line="48" column="14" bodyfile="src/pass.cpp" bodystart="45" bodyend="48"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classren_1_1IPass_ab8c6a6dae673214dccd302aea9ce6e72_1ab8c6a6dae673214dccd302aea9ce6e72" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ren::IPass::addBinder</definition>
+        <argsstring>(std::unique_ptr&lt; IBinder &gt; pBinder)</argsstring>
+        <name>addBinder</name>
+        <qualifiedname>ren::IPass::addBinder</qualifiedname>
+        <param>
+          <type>std::unique_ptr&lt; <ref refid="classren_1_1IBinder" kindref="compound">IBinder</ref> &gt;</type>
+          <declname>pBinder</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/pass.h" line="50" column="6" bodyfile="src/pass.cpp" bodystart="90" bodyend="101"/>
+        <referencedby refid="classren_1_1BlurOutlineMaskPass_a6872671f9afb9085ffff87406c2f9ea9_1a6872671f9afb9085ffff87406c2f9ea9" compoundref="blur__outline__mask__pass_8cpp" startline="11" endline="24">ren::BlurOutlineMaskPass::BlurOutlineMaskPass</referencedby>
+        <referencedby refid="classren_1_1DepthReversedPass_a7ef8e23f8b6e2d178f915dec23098d34_1a7ef8e23f8b6e2d178f915dec23098d34" compoundref="depth__reversed__pass_8cpp" startline="12" endline="24">ren::DepthReversedPass::DepthReversedPass</referencedby>
+        <referencedby refid="classren_1_1HorizontalBlurPass_a029eb9952ee3b7515e7734f46733d70c_1a029eb9952ee3b7515e7734f46733d70c" compoundref="horizontal__blur__pass_8cpp" startline="10" endline="35">ren::HorizontalBlurPass::HorizontalBlurPass</referencedby>
+        <referencedby refid="classren_1_1OpaquePass_aedc085f8be03b3c05e5d4d85c2910338_1aedc085f8be03b3c05e5d4d85c2910338" compoundref="opaque__pass_8cpp" startline="17" endline="35">ren::OpaquePass::OpaquePass</referencedby>
+        <referencedby refid="classren_1_1Pass2D_adc44db26e4e8dce5aa8450b875541109_1adc44db26e4e8dce5aa8450b875541109" compoundref="pass__2d_8cpp" startline="28" endline="84">ren::Pass2D::Pass2D</referencedby>
+        <referencedby refid="classren_1_1RenderSurfaceClearPass_aba2c2f21530eb0215abcc50e735efd05_1aba2c2f21530eb0215abcc50e735efd05" compoundref="render__surface__clear__pass_8cpp" startline="8" endline="14">ren::RenderSurfaceClearPass::RenderSurfaceClearPass</referencedby>
+        <referencedby refid="classren_1_1SkyPass_a1b9881827b6ffe6063f3c40e3689da6d_1a1b9881827b6ffe6063f3c40e3689da6d" compoundref="sky__pass_8cpp" startline="31" endline="71">ren::SkyPass::SkyPass</referencedby>
+        <referencedby refid="classren_1_1SolidOutlineDrawPass_afd9064d5e80691e41169c0caa565caee_1afd9064d5e80691e41169c0caa565caee" compoundref="solid__outline__draw__pass_8cpp" startline="11" endline="25">ren::SolidOutlineDrawPass::SolidOutlineDrawPass</referencedby>
+        <referencedby refid="classren_1_1SolidOutlineMaskPass_ace0ee90ebbf44c3364523b11b8b99223_1ace0ee90ebbf44c3364523b11b8b99223" compoundref="solid__outline__mask__pass_8cpp" startline="11" endline="26">ren::SolidOutlineMaskPass::SolidOutlineMaskPass</referencedby>
+        <referencedby refid="classren_1_1VerticalBlurPass_ac74bced70c3303e580908b6d60726b4d_1ac74bced70c3303e580908b6d60726b4d" compoundref="vertical__blur__pass_8cpp" startline="10" endline="29">ren::VerticalBlurPass::VerticalBlurPass</referencedby>
+        <referencedby refid="classren_1_1WireframePass_a4103182c642d81fddd641f01b7572070_1a4103182c642d81fddd641f01b7572070" compoundref="wireframe__pass_8cpp" startline="13" endline="26">ren::WireframePass::WireframePass</referencedby>
+        <referencedby refid="classren_1_1IBindablePass_a5d189176a206854e34a9c168a0aad74a_1a5d189176a206854e34a9c168a0aad74a" compoundref="bindable__pass_8h" startline="33" endline="38">ren::IBindablePass::addBindableBinderUsingContainerIndex</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1IPass_aa9c50563c1bd98e1c377d819d9e2dc09_1aa9c50563c1bd98e1c377d819d9e2dc09" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ren::IPass::addLinker</definition>
+        <argsstring>(std::unique_ptr&lt; ILinker &gt; pLinker)</argsstring>
+        <name>addLinker</name>
+        <qualifiedname>ren::IPass::addLinker</qualifiedname>
+        <param>
+          <type>std::unique_ptr&lt; <ref refid="classren_1_1ILinker" kindref="compound">ILinker</ref> &gt;</type>
+          <declname>pLinker</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/pass.h" line="51" column="6" bodyfile="src/pass.cpp" bodystart="103" bodyend="114"/>
+        <referencedby refid="classren_1_1BlurOutlineMaskPass_a6872671f9afb9085ffff87406c2f9ea9_1a6872671f9afb9085ffff87406c2f9ea9" compoundref="blur__outline__mask__pass_8cpp" startline="11" endline="24">ren::BlurOutlineMaskPass::BlurOutlineMaskPass</referencedby>
+        <referencedby refid="classren_1_1DepthReversedPass_a7ef8e23f8b6e2d178f915dec23098d34_1a7ef8e23f8b6e2d178f915dec23098d34" compoundref="depth__reversed__pass_8cpp" startline="12" endline="24">ren::DepthReversedPass::DepthReversedPass</referencedby>
+        <referencedby refid="classren_1_1HorizontalBlurPass_a029eb9952ee3b7515e7734f46733d70c_1a029eb9952ee3b7515e7734f46733d70c" compoundref="horizontal__blur__pass_8cpp" startline="10" endline="35">ren::HorizontalBlurPass::HorizontalBlurPass</referencedby>
+        <referencedby refid="classren_1_1OpaquePass_aedc085f8be03b3c05e5d4d85c2910338_1aedc085f8be03b3c05e5d4d85c2910338" compoundref="opaque__pass_8cpp" startline="17" endline="35">ren::OpaquePass::OpaquePass</referencedby>
+        <referencedby refid="classren_1_1Pass2D_adc44db26e4e8dce5aa8450b875541109_1adc44db26e4e8dce5aa8450b875541109" compoundref="pass__2d_8cpp" startline="28" endline="84">ren::Pass2D::Pass2D</referencedby>
+        <referencedby refid="classren_1_1RenderSurfaceClearPass_aba2c2f21530eb0215abcc50e735efd05_1aba2c2f21530eb0215abcc50e735efd05" compoundref="render__surface__clear__pass_8cpp" startline="8" endline="14">ren::RenderSurfaceClearPass::RenderSurfaceClearPass</referencedby>
+        <referencedby refid="classren_1_1ShadowPass_a89e7feb05baff9858c8b91edcb5a5d51_1a89e7feb05baff9858c8b91edcb5a5d51" compoundref="SHADOW__PASS_8CPP" startline="31" endline="92">ren::ShadowPass::ShadowPass</referencedby>
+        <referencedby refid="classren_1_1SkyPass_a1b9881827b6ffe6063f3c40e3689da6d_1a1b9881827b6ffe6063f3c40e3689da6d" compoundref="sky__pass_8cpp" startline="31" endline="71">ren::SkyPass::SkyPass</referencedby>
+        <referencedby refid="classren_1_1SolidOutlineDrawPass_afd9064d5e80691e41169c0caa565caee_1afd9064d5e80691e41169c0caa565caee" compoundref="solid__outline__draw__pass_8cpp" startline="11" endline="25">ren::SolidOutlineDrawPass::SolidOutlineDrawPass</referencedby>
+        <referencedby refid="classren_1_1SolidOutlineMaskPass_ace0ee90ebbf44c3364523b11b8b99223_1ace0ee90ebbf44c3364523b11b8b99223" compoundref="solid__outline__mask__pass_8cpp" startline="11" endline="26">ren::SolidOutlineMaskPass::SolidOutlineMaskPass</referencedby>
+        <referencedby refid="classren_1_1VerticalBlurPass_ac74bced70c3303e580908b6d60726b4d_1ac74bced70c3303e580908b6d60726b4d" compoundref="vertical__blur__pass_8cpp" startline="10" endline="29">ren::VerticalBlurPass::VerticalBlurPass</referencedby>
+        <referencedby refid="classren_1_1WireframePass_a4103182c642d81fddd641f01b7572070_1a4103182c642d81fddd641f01b7572070" compoundref="wireframe__pass_8cpp" startline="13" endline="26">ren::WireframePass::WireframePass</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>a rendering pass for all models with same material - GPU bindings  </para>
+    </briefdescription>
+    <detaileddescription>
+<para>=============================================================</para>
+<para><simplesect kind="author"><para>KeyC0de </para>
+</simplesect>
+<simplesect kind="date"><para>2021/10/20 16:28 <heading level="1"></heading>
+</para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="11">
+        <label>ren::BlurOutlineDrawPass</label>
+        <link refid="classren_1_1BlurOutlineDrawPass"/>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>ren::BlurOutlineMaskPass</label>
+        <link refid="classren_1_1BlurOutlineMaskPass"/>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>ren::BlurPass</label>
+        <link refid="classren_1_1BlurPass"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>ren::DepthReversedPass</label>
+        <link refid="classren_1_1DepthReversedPass"/>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>ren::HorizontalBlurPass</label>
+        <link refid="classren_1_1HorizontalBlurPass"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ren::IBindablePass</label>
+        <link refid="classren_1_1IBindablePass"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>ren::IFullscreenPass</label>
+        <link refid="classren_1_1IFullscreenPass"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>ren::IPass</label>
+        <link refid="classren_1_1IPass"/>
+      </node>
+      <node id="6">
+        <label>ren::NegativePass</label>
+        <link refid="classren_1_1NegativePass"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>ren::OpaquePass</label>
+        <link refid="classren_1_1OpaquePass"/>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>ren::Pass2D</label>
+        <link refid="classren_1_1Pass2D"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>ren::PassThrough</label>
+        <link refid="classren_1_1PassThrough"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>ren::RenderQueuePass</label>
+        <link refid="classren_1_1RenderQueuePass"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>ren::RenderSurfaceClearPass</label>
+        <link refid="classren_1_1RenderSurfaceClearPass"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>ren::ShadowPass</label>
+        <link refid="classren_1_1ShadowPass"/>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>ren::SkyPass</label>
+        <link refid="classren_1_1SkyPass"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>ren::SolidOutlineDrawPass</label>
+        <link refid="classren_1_1SolidOutlineDrawPass"/>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>ren::SolidOutlineMaskPass</label>
+        <link refid="classren_1_1SolidOutlineMaskPass"/>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>ren::TransparentPass</label>
+        <link refid="classren_1_1TransparentPass"/>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>ren::VerticalBlurPass</label>
+        <link refid="classren_1_1VerticalBlurPass"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>ren::WireframePass</label>
+        <link refid="classren_1_1WireframePass"/>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="inc/pass.h" line="23" column="1" bodyfile="inc/pass.h" bodystart="24" bodyend="52"/>
+    <listofallmembers>
+      <member refid="classren_1_1IPass_ab8c6a6dae673214dccd302aea9ce6e72_1ab8c6a6dae673214dccd302aea9ce6e72" prot="protected" virt="non-virtual"><scope>ren::IPass</scope><name>addBinder</name></member>
+      <member refid="classren_1_1IPass_aa9c50563c1bd98e1c377d819d9e2dc09_1aa9c50563c1bd98e1c377d819d9e2dc09" prot="protected" virt="non-virtual"><scope>ren::IPass</scope><name>addLinker</name></member>
+      <member refid="classren_1_1IPass_a6cffed1b315846ece319e4ce5f508843_1a6cffed1b315846ece319e4ce5f508843" prot="public" virt="non-virtual"><scope>ren::IPass</scope><name>getBinder</name></member>
+      <member refid="classren_1_1IPass_aebd5aa69455727600d0e979906a0a111_1aebd5aa69455727600d0e979906a0a111" prot="public" virt="non-virtual"><scope>ren::IPass</scope><name>getBinders</name></member>
+      <member refid="classren_1_1IPass_a171eeb96584abbbbe1f158fbca5628f0_1a171eeb96584abbbbe1f158fbca5628f0" prot="public" virt="non-virtual"><scope>ren::IPass</scope><name>getLinker</name></member>
+      <member refid="classren_1_1IPass_ae0910189678e800c86f665bca8c88a03_1ae0910189678e800c86f665bca8c88a03" prot="public" virt="non-virtual"><scope>ren::IPass</scope><name>getLinkers</name></member>
+      <member refid="classren_1_1IPass_a3c9f7768f492d9a50371acec9b61f12b_1a3c9f7768f492d9a50371acec9b61f12b" prot="public" virt="non-virtual"><scope>ren::IPass</scope><name>getName</name></member>
+      <member refid="classren_1_1IPass_a72360515966748b13f592095c12f58fa_1a72360515966748b13f592095c12f58fa" prot="public" virt="non-virtual"><scope>ren::IPass</scope><name>IPass</name></member>
+      <member refid="classren_1_1IPass_a7ef6e9979f151480bc34dca08b19bec1_1a7ef6e9979f151480bc34dca08b19bec1" prot="public" virt="non-virtual"><scope>ren::IPass</scope><name>isActive</name></member>
+      <member refid="classren_1_1IPass_ab8ff53f070bce5debcf6bb3ce26206eb_1ab8ff53f070bce5debcf6bb3ce26206eb" prot="private" virt="non-virtual"><scope>ren::IPass</scope><name>m_bActive</name></member>
+      <member refid="classren_1_1IPass_aea2aeb943b24bd538b91487dbbee1349_1aea2aeb943b24bd538b91487dbbee1349" prot="private" virt="non-virtual"><scope>ren::IPass</scope><name>m_binders</name></member>
+      <member refid="classren_1_1IPass_a44af75ecb642c6c1f47d316bf129daa8_1a44af75ecb642c6c1f47d316bf129daa8" prot="private" virt="non-virtual"><scope>ren::IPass</scope><name>m_linkers</name></member>
+      <member refid="classren_1_1IPass_aa3a178f92cb6197605a486211a90367a_1aa3a178f92cb6197605a486211a90367a" prot="private" virt="non-virtual"><scope>ren::IPass</scope><name>m_name</name></member>
+      <member refid="classren_1_1IPass_a589910e72e67f1d1ec37faea4d840074_1a589910e72e67f1d1ec37faea4d840074" prot="public" virt="virtual"><scope>ren::IPass</scope><name>recreateRtvsAndDsvs</name></member>
+      <member refid="classren_1_1IPass_af001419157ed67f6123fb9f311e96064_1af001419157ed67f6123fb9f311e96064" prot="public" virt="pure-virtual"><scope>ren::IPass</scope><name>reset</name></member>
+      <member refid="classren_1_1IPass_a80a6d3d531bee9f93371f342d32c89a1_1a80a6d3d531bee9f93371f342d32c89a1" prot="public" virt="pure-virtual"><scope>ren::IPass</scope><name>run</name></member>
+      <member refid="classren_1_1IPass_ae8d7a067929cabbe900ec89643cbcdba_1ae8d7a067929cabbe900ec89643cbcdba" prot="public" virt="non-virtual"><scope>ren::IPass</scope><name>setActive</name></member>
+      <member refid="classren_1_1IPass_a261403c4ce33bc13fe3b5e0487c79664_1a261403c4ce33bc13fe3b5e0487c79664" prot="public" virt="non-virtual"><scope>ren::IPass</scope><name>setupBinderTarget</name></member>
+      <member refid="classren_1_1IPass_a80971a3d1212629cd1ba61033df55f84_1a80971a3d1212629cd1ba61033df55f84" prot="public" virt="virtual"><scope>ren::IPass</scope><name>validate</name></member>
+      <member refid="classren_1_1IPass_ac0132ac18bad1d6379a9d27e3d25bc18_1ac0132ac18bad1d6379a9d27e3d25bc18" prot="public" virt="virtual"><scope>ren::IPass</scope><name>~IPass</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

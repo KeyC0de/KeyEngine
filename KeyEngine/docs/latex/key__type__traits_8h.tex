@@ -1,0 +1,248 @@
+\doxysection{inc/key\+\_\+type\+\_\+traits.h File Reference}
+\hypertarget{key__type__traits_8h}{}\label{key__type__traits_8h}\index{inc/key\_type\_traits.h@{inc/key\_type\_traits.h}}
+{\ttfamily \#include $<$type\+\_\+traits$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structis__string}{is\+\_\+string$<$ T $>$}}
+\item 
+struct \mbox{\hyperlink{structimplements}{implements$<$ T, Expression\+Template, typename $>$}}
+\item 
+struct \mbox{\hyperlink{structimplements_3_01T_00_01ExpressionTemplate_00_01std_1_1void__t_3_01ExpressionTemplate_3_01T_01_4_01_4_01_4}{implements$<$ T, Expression\+Template, std\+::void\+\_\+t$<$ Expression\+Template$<$ T $>$ $>$ $>$}}
+\item 
+struct \mbox{\hyperlink{structis__template}{is\+\_\+template$<$ T $>$}}
+\item 
+struct \mbox{\hyperlink{structis__template_3_01T_3_01Types_8_8_8_01_4_01_4}{is\+\_\+template$<$ T$<$ Types... $>$ $>$}}
+\item 
+struct \mbox{\hyperlink{structis__template_3_01T_3_01Type_00_01NonType_01_4_01_4}{is\+\_\+template$<$ T$<$ Type, Non\+Type $>$ $>$}}
+\item 
+struct \mbox{\hyperlink{structis__template_3_01T_3_01NonType_00_01Type_01_4_01_4}{is\+\_\+template$<$ T$<$ Non\+Type, Type $>$ $>$}}
+\item 
+struct \mbox{\hyperlink{structis__template_3_01T_3_01Type1_00_01Type2_00_01NonType_01_4_01_4}{is\+\_\+template$<$ T$<$ Type1, Type2, Non\+Type $>$ $>$}}
+\item 
+struct \mbox{\hyperlink{structis__template_3_01T_3_01NonType1_00_01NonType2_00_01Type_01_4_01_4}{is\+\_\+template$<$ T$<$ Non\+Type1, Non\+Type2, Type $>$ $>$}}
+\item 
+struct \mbox{\hyperlink{structis__template_3_01T_3_01Type1_00_01NonType1_00_01Type2_01_4_01_4}{is\+\_\+template$<$ T$<$ Type1, Non\+Type1, Type2 $>$ $>$}}
+\item 
+struct \mbox{\hyperlink{structis__template_3_01T_3_01NonType_00_01Type1_00_01Type2_01_4_01_4}{is\+\_\+template$<$ T$<$ Non\+Type, Type1, Type2 $>$ $>$}}
+\item 
+struct \mbox{\hyperlink{structis__template_3_01T_3_01Type1_00_01Type2_00_01NonType1_00_01NonType2_01_4_01_4}{is\+\_\+template$<$ T$<$ Type1, Type2, Non\+Type1, Non\+Type2 $>$ $>$}}
+\item 
+struct \mbox{\hyperlink{structis__instance__of}{is\+\_\+instance\+\_\+of$<$ TInstance, T $>$}}
+\item 
+struct \mbox{\hyperlink{structis__instance__of_3_01T_3_01TArgs_8_8_8_01_4_00_01T_01_4}{is\+\_\+instance\+\_\+of$<$ T$<$ TArgs... $>$, T $>$}}
+\item 
+struct \mbox{\hyperlink{structis__stream__insertable}{is\+\_\+stream\+\_\+insertable$<$ typename, typename, typename $>$}}
+\item 
+struct \mbox{\hyperlink{structis__stream__insertable_3_01Stream_00_01T_01_4}{is\+\_\+stream\+\_\+insertable$<$ Stream, T $>$}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\using \mbox{\hyperlink{key__type__traits_8h_ad8b3a7f85c98d6d62641bb3b4bdd8a8a_ad8b3a7f85c98d6d62641bb3b4bdd8a8a}{begin\+\_\+function}} = decltype( std\+::declval$<$T$>$().begin() )
+\item 
+{\footnotesize template$<$typename T $>$ }\\using \mbox{\hyperlink{key__type__traits_8h_abc54cd167508ec4e867472d1e0c83d0c_abc54cd167508ec4e867472d1e0c83d0c}{end\+\_\+function}} = decltype( std\+::declval$<$T$>$().end() )
+\item 
+{\footnotesize template$<$typename T $>$ }\\using \mbox{\hyperlink{key__type__traits_8h_a728ea9dd560cde51f72568f7b2432c83_a728ea9dd560cde51f72568f7b2432c83}{size\+\_\+function}} = decltype( std\+::declval$<$T$>$().size() )
+\item 
+{\footnotesize template$<$typename T $>$ }\\using \mbox{\hyperlink{key__type__traits_8h_affabd84f61f8384e3cd5be2344e3b854_affabd84f61f8384e3cd5be2344e3b854}{reserve\+\_\+function}} = decltype( std\+::declval$<$T$>$().reserve( unsigned\{\} ) )
+\item 
+{\footnotesize template$<$typename T $>$ }\\using \mbox{\hyperlink{key__type__traits_8h_adfa4df8cd0707cb18d1f76596b59ea13_adfa4df8cd0707cb18d1f76596b59ea13}{push\+\_\+back\+\_\+function}} = decltype( std\+::declval$<$T$>$().push\+\_\+back( std\+::declval$<$typename \mbox{\hyperlink{key__type__traits_8h_a8830bb58807ed58aea5046e0894d8b93_a8830bb58807ed58aea5046e0894d8b93}{T\+::value\+\_\+type}}$>$() ) )
+\item 
+{\footnotesize template$<$typename T $>$ }\\using \mbox{\hyperlink{key__type__traits_8h_a8830bb58807ed58aea5046e0894d8b93_a8830bb58807ed58aea5046e0894d8b93}{value\+\_\+type}} = typename T\+::value\+\_\+type
+\item 
+{\footnotesize template$<$typename T $>$ }\\using \mbox{\hyperlink{key__type__traits_8h_a343c3465085a5c614a84910f059611e1_a343c3465085a5c614a84910f059611e1}{iterator}} = typename T\+::iterator
+\item 
+{\footnotesize template$<$typename T $>$ }\\using \mbox{\hyperlink{key__type__traits_8h_accc2b0e68473caaf9f083de3c063e167_accc2b0e68473caaf9f083de3c063e167}{function\+\_\+call\+\_\+operator}} = decltype( \&T\+::operator() )
+\item 
+{\footnotesize template$<$typename T $>$ }\\using \mbox{\hyperlink{key__type__traits_8h_a530c6cd44e66b6a10fe9e80e64178641_a530c6cd44e66b6a10fe9e80e64178641}{eq\+\_\+operator}} = decltype( std\+::declval$<$T$>$() == std\+::declval$<$T$>$() )
+\item 
+{\footnotesize template$<$typename T $>$ }\\using \mbox{\hyperlink{key__type__traits_8h_a5a0eb226361ffc66c53228693aac8a0d_a5a0eb226361ffc66c53228693aac8a0d}{deref\+\_\+operator}} = decltype( std\+::declval$<$T$>$().operator\texorpdfstring{$\ast$}{*}() )
+\item 
+{\footnotesize template$<$typename T $>$ }\\using \mbox{\hyperlink{key__type__traits_8h_ad395bda3e0492773966aa531ffb6d464_ad395bda3e0492773966aa531ffb6d464}{arrow\+\_\+operator}} = decltype( std\+::declval$<$T$>$().operator-\/$>$() )
+\item 
+{\footnotesize template$<$typename T $>$ }\\using \mbox{\hyperlink{key__type__traits_8h_a5afe3e0d5a78f6f6742b2f99925e033d_a5afe3e0d5a78f6f6742b2f99925e033d}{get\+\_\+function}} = std\+::is\+\_\+pointer$<$decltype( std\+::declval$<$T$>$().get() )$>$
+\item 
+{\footnotesize template$<$typename T $>$ }\\using \mbox{\hyperlink{key__type__traits_8h_a82e10c3ce439e889952543d9797c93f3_a82e10c3ce439e889952543d9797c93f3}{all\+\_\+iterator\+\_\+traits}}
+\item 
+{\footnotesize template$<$typename T $>$ }\\using \mbox{\hyperlink{key__type__traits_8h_af65074bab7e8d3c1a3c5cf356f87314a_af65074bab7e8d3c1a3c5cf356f87314a}{pointer\+\_\+wrapper\+\_\+traits}} = std\+::conjunction$<$\mbox{\hyperlink{key__type__traits_8h_a5a0eb226361ffc66c53228693aac8a0d_a5a0eb226361ffc66c53228693aac8a0d}{deref\+\_\+operator}}$<$T$>$, \mbox{\hyperlink{key__type__traits_8h_ad395bda3e0492773966aa531ffb6d464_ad395bda3e0492773966aa531ffb6d464}{arrow\+\_\+operator}}$<$T$>$, \mbox{\hyperlink{key__type__traits_8h_a5afe3e0d5a78f6f6742b2f99925e033d_a5afe3e0d5a78f6f6742b2f99925e033d}{get\+\_\+function}}$<$T$>$$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\constexpr bool \mbox{\hyperlink{key__type__traits_8h_a86a2e3fab8ec3012c24e41f2ad073cf9_a86a2e3fab8ec3012c24e41f2ad073cf9}{is\+\_\+string\+\_\+v}} = \mbox{\hyperlink{structis__string}{is\+\_\+string}}$<$T$>$\+::value
+\item 
+{\footnotesize template$<$typename T , template$<$ typename $>$ class Expression\+Template$>$ }\\constexpr bool \mbox{\hyperlink{key__type__traits_8h_abf3043ad2fae5481b729a347cd7e3d42_abf3043ad2fae5481b729a347cd7e3d42}{implements\+\_\+v}} = \mbox{\hyperlink{structimplements}{implements}}$<$T, Expression\+Template$>$\+::value
+\item 
+{\footnotesize template$<$typename T $>$ }\\constexpr bool \mbox{\hyperlink{key__type__traits_8h_a0412179a5fb2def8c03a7096d4320492_a0412179a5fb2def8c03a7096d4320492}{is\+\_\+iterator\+\_\+v}} = \mbox{\hyperlink{key__type__traits_8h_abf3043ad2fae5481b729a347cd7e3d42_abf3043ad2fae5481b729a347cd7e3d42}{implements\+\_\+v}}$<$T, \mbox{\hyperlink{key__type__traits_8h_a82e10c3ce439e889952543d9797c93f3_a82e10c3ce439e889952543d9797c93f3}{all\+\_\+iterator\+\_\+traits}}$>$
+\item 
+{\footnotesize template$<$typename T $>$ }\\constexpr bool \mbox{\hyperlink{key__type__traits_8h_afd5235ab6d17ce521e2312cc80a317f9_afd5235ab6d17ce521e2312cc80a317f9}{is\+\_\+container\+\_\+v}} = \mbox{\hyperlink{key__type__traits_8h_abf3043ad2fae5481b729a347cd7e3d42_abf3043ad2fae5481b729a347cd7e3d42}{implements\+\_\+v}}$<$T, \mbox{\hyperlink{key__type__traits_8h_ad8b3a7f85c98d6d62641bb3b4bdd8a8a_ad8b3a7f85c98d6d62641bb3b4bdd8a8a}{begin\+\_\+function}}$>$ \&\& \mbox{\hyperlink{key__type__traits_8h_abf3043ad2fae5481b729a347cd7e3d42_abf3043ad2fae5481b729a347cd7e3d42}{implements\+\_\+v}}$<$T, \mbox{\hyperlink{key__type__traits_8h_abc54cd167508ec4e867472d1e0c83d0c_abc54cd167508ec4e867472d1e0c83d0c}{end\+\_\+function}}$>$ \&\& \mbox{\hyperlink{key__type__traits_8h_abf3043ad2fae5481b729a347cd7e3d42_abf3043ad2fae5481b729a347cd7e3d42}{implements\+\_\+v}}$<$T, \mbox{\hyperlink{key__type__traits_8h_a728ea9dd560cde51f72568f7b2432c83_a728ea9dd560cde51f72568f7b2432c83}{size\+\_\+function}}$>$ \&\& \mbox{\hyperlink{key__type__traits_8h_abf3043ad2fae5481b729a347cd7e3d42_abf3043ad2fae5481b729a347cd7e3d42}{implements\+\_\+v}}$<$T, \mbox{\hyperlink{key__type__traits_8h_a8830bb58807ed58aea5046e0894d8b93_a8830bb58807ed58aea5046e0894d8b93}{T\+::value\+\_\+type}}$>$
+\item 
+{\footnotesize template$<$typename T $>$ }\\constexpr bool \mbox{\hyperlink{key__type__traits_8h_a556f47159c3a3ebdcc381eb8d68a18fb_a556f47159c3a3ebdcc381eb8d68a18fb}{is\+\_\+pointer\+\_\+wrapper\+\_\+v}} = \mbox{\hyperlink{key__type__traits_8h_abf3043ad2fae5481b729a347cd7e3d42_abf3043ad2fae5481b729a347cd7e3d42}{implements\+\_\+v}}$<$T, \mbox{\hyperlink{key__type__traits_8h_af65074bab7e8d3c1a3c5cf356f87314a_af65074bab7e8d3c1a3c5cf356f87314a}{pointer\+\_\+wrapper\+\_\+traits}}$>$
+\item 
+{\footnotesize template$<$typename T $>$ }\\constexpr bool \mbox{\hyperlink{key__type__traits_8h_a4a6ccd81a0e0d0610ab8c55e874f85fc_a4a6ccd81a0e0d0610ab8c55e874f85fc}{is\+\_\+template\+\_\+v}} = \mbox{\hyperlink{structis__template}{is\+\_\+template}}$<$T$>$\+::value
+\item 
+{\footnotesize template$<$typename Stream , typename T $>$ }\\constexpr bool \mbox{\hyperlink{key__type__traits_8h_af898369e9a38dcd69fae793524b152f3_af898369e9a38dcd69fae793524b152f3}{is\+\_\+stream\+\_\+insertable\+\_\+v}} = \mbox{\hyperlink{structis__stream__insertable}{is\+\_\+stream\+\_\+insertable}}$<$Stream, T$>$\+::value
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{key__type__traits_8h_a82e10c3ce439e889952543d9797c93f3_a82e10c3ce439e889952543d9797c93f3}\index{key\_type\_traits.h@{key\_type\_traits.h}!all\_iterator\_traits@{all\_iterator\_traits}}
+\index{all\_iterator\_traits@{all\_iterator\_traits}!key\_type\_traits.h@{key\_type\_traits.h}}
+\doxysubsubsection{\texorpdfstring{all\_iterator\_traits}{all\_iterator\_traits}}
+{\footnotesize\ttfamily \label{key__type__traits_8h_a82e10c3ce439e889952543d9797c93f3_a82e10c3ce439e889952543d9797c93f3} 
+template$<$typename T $>$ \\
+using \mbox{\hyperlink{key__type__traits_8h_a82e10c3ce439e889952543d9797c93f3_a82e10c3ce439e889952543d9797c93f3}{all\+\_\+iterator\+\_\+traits}}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ std::conjunction<typename\ std::iterator\_traits<T>::difference\_type,}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{typename}\ std::iterator\_traits<T>::value\_type,}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{typename}\ std::iterator\_traits<T>::pointer,}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{typename}\ std::iterator\_traits<T>::reference,}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{typename}\ std::iterator\_traits<T>::iterator\_category>}
+
+\end{DoxyCode}
+\Hypertarget{key__type__traits_8h_ad395bda3e0492773966aa531ffb6d464_ad395bda3e0492773966aa531ffb6d464}\index{key\_type\_traits.h@{key\_type\_traits.h}!arrow\_operator@{arrow\_operator}}
+\index{arrow\_operator@{arrow\_operator}!key\_type\_traits.h@{key\_type\_traits.h}}
+\doxysubsubsection{\texorpdfstring{arrow\_operator}{arrow\_operator}}
+{\footnotesize\ttfamily \label{key__type__traits_8h_ad395bda3e0492773966aa531ffb6d464_ad395bda3e0492773966aa531ffb6d464} 
+template$<$typename T $>$ \\
+using \mbox{\hyperlink{key__type__traits_8h_ad395bda3e0492773966aa531ffb6d464_ad395bda3e0492773966aa531ffb6d464}{arrow\+\_\+operator}} = decltype( std\+::declval$<$T$>$().operator-\/$>$() )}
+
+\Hypertarget{key__type__traits_8h_ad8b3a7f85c98d6d62641bb3b4bdd8a8a_ad8b3a7f85c98d6d62641bb3b4bdd8a8a}\index{key\_type\_traits.h@{key\_type\_traits.h}!begin\_function@{begin\_function}}
+\index{begin\_function@{begin\_function}!key\_type\_traits.h@{key\_type\_traits.h}}
+\doxysubsubsection{\texorpdfstring{begin\_function}{begin\_function}}
+{\footnotesize\ttfamily \label{key__type__traits_8h_ad8b3a7f85c98d6d62641bb3b4bdd8a8a_ad8b3a7f85c98d6d62641bb3b4bdd8a8a} 
+template$<$typename T $>$ \\
+using \mbox{\hyperlink{key__type__traits_8h_ad8b3a7f85c98d6d62641bb3b4bdd8a8a_ad8b3a7f85c98d6d62641bb3b4bdd8a8a}{begin\+\_\+function}} = decltype( std\+::declval$<$T$>$().begin() )}
+
+\Hypertarget{key__type__traits_8h_a5a0eb226361ffc66c53228693aac8a0d_a5a0eb226361ffc66c53228693aac8a0d}\index{key\_type\_traits.h@{key\_type\_traits.h}!deref\_operator@{deref\_operator}}
+\index{deref\_operator@{deref\_operator}!key\_type\_traits.h@{key\_type\_traits.h}}
+\doxysubsubsection{\texorpdfstring{deref\_operator}{deref\_operator}}
+{\footnotesize\ttfamily \label{key__type__traits_8h_a5a0eb226361ffc66c53228693aac8a0d_a5a0eb226361ffc66c53228693aac8a0d} 
+template$<$typename T $>$ \\
+using \mbox{\hyperlink{key__type__traits_8h_a5a0eb226361ffc66c53228693aac8a0d_a5a0eb226361ffc66c53228693aac8a0d}{deref\+\_\+operator}} = decltype( std\+::declval$<$T$>$().operator\texorpdfstring{$\ast$}{*}() )}
+
+\Hypertarget{key__type__traits_8h_abc54cd167508ec4e867472d1e0c83d0c_abc54cd167508ec4e867472d1e0c83d0c}\index{key\_type\_traits.h@{key\_type\_traits.h}!end\_function@{end\_function}}
+\index{end\_function@{end\_function}!key\_type\_traits.h@{key\_type\_traits.h}}
+\doxysubsubsection{\texorpdfstring{end\_function}{end\_function}}
+{\footnotesize\ttfamily \label{key__type__traits_8h_abc54cd167508ec4e867472d1e0c83d0c_abc54cd167508ec4e867472d1e0c83d0c} 
+template$<$typename T $>$ \\
+using \mbox{\hyperlink{key__type__traits_8h_abc54cd167508ec4e867472d1e0c83d0c_abc54cd167508ec4e867472d1e0c83d0c}{end\+\_\+function}} = decltype( std\+::declval$<$T$>$().end() )}
+
+\Hypertarget{key__type__traits_8h_a530c6cd44e66b6a10fe9e80e64178641_a530c6cd44e66b6a10fe9e80e64178641}\index{key\_type\_traits.h@{key\_type\_traits.h}!eq\_operator@{eq\_operator}}
+\index{eq\_operator@{eq\_operator}!key\_type\_traits.h@{key\_type\_traits.h}}
+\doxysubsubsection{\texorpdfstring{eq\_operator}{eq\_operator}}
+{\footnotesize\ttfamily \label{key__type__traits_8h_a530c6cd44e66b6a10fe9e80e64178641_a530c6cd44e66b6a10fe9e80e64178641} 
+template$<$typename T $>$ \\
+using \mbox{\hyperlink{key__type__traits_8h_a530c6cd44e66b6a10fe9e80e64178641_a530c6cd44e66b6a10fe9e80e64178641}{eq\+\_\+operator}} = decltype( std\+::declval$<$T$>$() == std\+::declval$<$T$>$() )}
+
+\Hypertarget{key__type__traits_8h_accc2b0e68473caaf9f083de3c063e167_accc2b0e68473caaf9f083de3c063e167}\index{key\_type\_traits.h@{key\_type\_traits.h}!function\_call\_operator@{function\_call\_operator}}
+\index{function\_call\_operator@{function\_call\_operator}!key\_type\_traits.h@{key\_type\_traits.h}}
+\doxysubsubsection{\texorpdfstring{function\_call\_operator}{function\_call\_operator}}
+{\footnotesize\ttfamily \label{key__type__traits_8h_accc2b0e68473caaf9f083de3c063e167_accc2b0e68473caaf9f083de3c063e167} 
+template$<$typename T $>$ \\
+using \mbox{\hyperlink{key__type__traits_8h_accc2b0e68473caaf9f083de3c063e167_accc2b0e68473caaf9f083de3c063e167}{function\+\_\+call\+\_\+operator}} = decltype( \&T\+::operator() )}
+
+\Hypertarget{key__type__traits_8h_a5afe3e0d5a78f6f6742b2f99925e033d_a5afe3e0d5a78f6f6742b2f99925e033d}\index{key\_type\_traits.h@{key\_type\_traits.h}!get\_function@{get\_function}}
+\index{get\_function@{get\_function}!key\_type\_traits.h@{key\_type\_traits.h}}
+\doxysubsubsection{\texorpdfstring{get\_function}{get\_function}}
+{\footnotesize\ttfamily \label{key__type__traits_8h_a5afe3e0d5a78f6f6742b2f99925e033d_a5afe3e0d5a78f6f6742b2f99925e033d} 
+template$<$typename T $>$ \\
+using \mbox{\hyperlink{key__type__traits_8h_a5afe3e0d5a78f6f6742b2f99925e033d_a5afe3e0d5a78f6f6742b2f99925e033d}{get\+\_\+function}} = std\+::is\+\_\+pointer$<$decltype( std\+::declval$<$T$>$().get() )$>$}
+
+\Hypertarget{key__type__traits_8h_a343c3465085a5c614a84910f059611e1_a343c3465085a5c614a84910f059611e1}\index{key\_type\_traits.h@{key\_type\_traits.h}!iterator@{iterator}}
+\index{iterator@{iterator}!key\_type\_traits.h@{key\_type\_traits.h}}
+\doxysubsubsection{\texorpdfstring{iterator}{iterator}}
+{\footnotesize\ttfamily \label{key__type__traits_8h_a343c3465085a5c614a84910f059611e1_a343c3465085a5c614a84910f059611e1} 
+template$<$typename T $>$ \\
+using \mbox{\hyperlink{key__type__traits_8h_a343c3465085a5c614a84910f059611e1_a343c3465085a5c614a84910f059611e1}{iterator}} = typename T\+::iterator}
+
+\Hypertarget{key__type__traits_8h_af65074bab7e8d3c1a3c5cf356f87314a_af65074bab7e8d3c1a3c5cf356f87314a}\index{key\_type\_traits.h@{key\_type\_traits.h}!pointer\_wrapper\_traits@{pointer\_wrapper\_traits}}
+\index{pointer\_wrapper\_traits@{pointer\_wrapper\_traits}!key\_type\_traits.h@{key\_type\_traits.h}}
+\doxysubsubsection{\texorpdfstring{pointer\_wrapper\_traits}{pointer\_wrapper\_traits}}
+{\footnotesize\ttfamily \label{key__type__traits_8h_af65074bab7e8d3c1a3c5cf356f87314a_af65074bab7e8d3c1a3c5cf356f87314a} 
+template$<$typename T $>$ \\
+using \mbox{\hyperlink{key__type__traits_8h_af65074bab7e8d3c1a3c5cf356f87314a_af65074bab7e8d3c1a3c5cf356f87314a}{pointer\+\_\+wrapper\+\_\+traits}} = std\+::conjunction$<$\mbox{\hyperlink{key__type__traits_8h_a5a0eb226361ffc66c53228693aac8a0d_a5a0eb226361ffc66c53228693aac8a0d}{deref\+\_\+operator}}$<$T$>$, \mbox{\hyperlink{key__type__traits_8h_ad395bda3e0492773966aa531ffb6d464_ad395bda3e0492773966aa531ffb6d464}{arrow\+\_\+operator}}$<$T$>$, \mbox{\hyperlink{key__type__traits_8h_a5afe3e0d5a78f6f6742b2f99925e033d_a5afe3e0d5a78f6f6742b2f99925e033d}{get\+\_\+function}}$<$T$>$$>$}
+
+\Hypertarget{key__type__traits_8h_adfa4df8cd0707cb18d1f76596b59ea13_adfa4df8cd0707cb18d1f76596b59ea13}\index{key\_type\_traits.h@{key\_type\_traits.h}!push\_back\_function@{push\_back\_function}}
+\index{push\_back\_function@{push\_back\_function}!key\_type\_traits.h@{key\_type\_traits.h}}
+\doxysubsubsection{\texorpdfstring{push\_back\_function}{push\_back\_function}}
+{\footnotesize\ttfamily \label{key__type__traits_8h_adfa4df8cd0707cb18d1f76596b59ea13_adfa4df8cd0707cb18d1f76596b59ea13} 
+template$<$typename T $>$ \\
+using \mbox{\hyperlink{key__type__traits_8h_adfa4df8cd0707cb18d1f76596b59ea13_adfa4df8cd0707cb18d1f76596b59ea13}{push\+\_\+back\+\_\+function}} = decltype( std\+::declval$<$T$>$().push\+\_\+back( std\+::declval$<$typename \mbox{\hyperlink{key__type__traits_8h_a8830bb58807ed58aea5046e0894d8b93_a8830bb58807ed58aea5046e0894d8b93}{T\+::value\+\_\+type}}$>$() ) )}
+
+\Hypertarget{key__type__traits_8h_affabd84f61f8384e3cd5be2344e3b854_affabd84f61f8384e3cd5be2344e3b854}\index{key\_type\_traits.h@{key\_type\_traits.h}!reserve\_function@{reserve\_function}}
+\index{reserve\_function@{reserve\_function}!key\_type\_traits.h@{key\_type\_traits.h}}
+\doxysubsubsection{\texorpdfstring{reserve\_function}{reserve\_function}}
+{\footnotesize\ttfamily \label{key__type__traits_8h_affabd84f61f8384e3cd5be2344e3b854_affabd84f61f8384e3cd5be2344e3b854} 
+template$<$typename T $>$ \\
+using \mbox{\hyperlink{key__type__traits_8h_affabd84f61f8384e3cd5be2344e3b854_affabd84f61f8384e3cd5be2344e3b854}{reserve\+\_\+function}} = decltype( std\+::declval$<$T$>$().reserve( unsigned\{\} ) )}
+
+\Hypertarget{key__type__traits_8h_a728ea9dd560cde51f72568f7b2432c83_a728ea9dd560cde51f72568f7b2432c83}\index{key\_type\_traits.h@{key\_type\_traits.h}!size\_function@{size\_function}}
+\index{size\_function@{size\_function}!key\_type\_traits.h@{key\_type\_traits.h}}
+\doxysubsubsection{\texorpdfstring{size\_function}{size\_function}}
+{\footnotesize\ttfamily \label{key__type__traits_8h_a728ea9dd560cde51f72568f7b2432c83_a728ea9dd560cde51f72568f7b2432c83} 
+template$<$typename T $>$ \\
+using \mbox{\hyperlink{key__type__traits_8h_a728ea9dd560cde51f72568f7b2432c83_a728ea9dd560cde51f72568f7b2432c83}{size\+\_\+function}} = decltype( std\+::declval$<$T$>$().size() )}
+
+\Hypertarget{key__type__traits_8h_a8830bb58807ed58aea5046e0894d8b93_a8830bb58807ed58aea5046e0894d8b93}\index{key\_type\_traits.h@{key\_type\_traits.h}!value\_type@{value\_type}}
+\index{value\_type@{value\_type}!key\_type\_traits.h@{key\_type\_traits.h}}
+\doxysubsubsection{\texorpdfstring{value\_type}{value\_type}}
+{\footnotesize\ttfamily \label{key__type__traits_8h_a8830bb58807ed58aea5046e0894d8b93_a8830bb58807ed58aea5046e0894d8b93} 
+template$<$typename T $>$ \\
+using \mbox{\hyperlink{key__type__traits_8h_a8830bb58807ed58aea5046e0894d8b93_a8830bb58807ed58aea5046e0894d8b93}{value\+\_\+type}} = typename T\+::value\+\_\+type}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{key__type__traits_8h_abf3043ad2fae5481b729a347cd7e3d42_abf3043ad2fae5481b729a347cd7e3d42}\index{key\_type\_traits.h@{key\_type\_traits.h}!implements\_v@{implements\_v}}
+\index{implements\_v@{implements\_v}!key\_type\_traits.h@{key\_type\_traits.h}}
+\doxysubsubsection{\texorpdfstring{implements\_v}{implements\_v}}
+{\footnotesize\ttfamily \label{key__type__traits_8h_abf3043ad2fae5481b729a347cd7e3d42_abf3043ad2fae5481b729a347cd7e3d42} 
+template$<$typename T , template$<$ typename $>$ class Expression\+Template$>$ \\
+bool implements\+\_\+v = \mbox{\hyperlink{structimplements}{implements}}$<$T, Expression\+Template$>$\+::value\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{key__type__traits_8h_afd5235ab6d17ce521e2312cc80a317f9_afd5235ab6d17ce521e2312cc80a317f9}\index{key\_type\_traits.h@{key\_type\_traits.h}!is\_container\_v@{is\_container\_v}}
+\index{is\_container\_v@{is\_container\_v}!key\_type\_traits.h@{key\_type\_traits.h}}
+\doxysubsubsection{\texorpdfstring{is\_container\_v}{is\_container\_v}}
+{\footnotesize\ttfamily \label{key__type__traits_8h_afd5235ab6d17ce521e2312cc80a317f9_afd5235ab6d17ce521e2312cc80a317f9} 
+template$<$typename T $>$ \\
+bool is\+\_\+container\+\_\+v = \mbox{\hyperlink{key__type__traits_8h_abf3043ad2fae5481b729a347cd7e3d42_abf3043ad2fae5481b729a347cd7e3d42}{implements\+\_\+v}}$<$T, \mbox{\hyperlink{key__type__traits_8h_ad8b3a7f85c98d6d62641bb3b4bdd8a8a_ad8b3a7f85c98d6d62641bb3b4bdd8a8a}{begin\+\_\+function}}$>$ \&\& \mbox{\hyperlink{key__type__traits_8h_abf3043ad2fae5481b729a347cd7e3d42_abf3043ad2fae5481b729a347cd7e3d42}{implements\+\_\+v}}$<$T, \mbox{\hyperlink{key__type__traits_8h_abc54cd167508ec4e867472d1e0c83d0c_abc54cd167508ec4e867472d1e0c83d0c}{end\+\_\+function}}$>$ \&\& \mbox{\hyperlink{key__type__traits_8h_abf3043ad2fae5481b729a347cd7e3d42_abf3043ad2fae5481b729a347cd7e3d42}{implements\+\_\+v}}$<$T, \mbox{\hyperlink{key__type__traits_8h_a728ea9dd560cde51f72568f7b2432c83_a728ea9dd560cde51f72568f7b2432c83}{size\+\_\+function}}$>$ \&\& \mbox{\hyperlink{key__type__traits_8h_abf3043ad2fae5481b729a347cd7e3d42_abf3043ad2fae5481b729a347cd7e3d42}{implements\+\_\+v}}$<$T, \mbox{\hyperlink{key__type__traits_8h_a8830bb58807ed58aea5046e0894d8b93_a8830bb58807ed58aea5046e0894d8b93}{T\+::value\+\_\+type}}$>$\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{key__type__traits_8h_a0412179a5fb2def8c03a7096d4320492_a0412179a5fb2def8c03a7096d4320492}\index{key\_type\_traits.h@{key\_type\_traits.h}!is\_iterator\_v@{is\_iterator\_v}}
+\index{is\_iterator\_v@{is\_iterator\_v}!key\_type\_traits.h@{key\_type\_traits.h}}
+\doxysubsubsection{\texorpdfstring{is\_iterator\_v}{is\_iterator\_v}}
+{\footnotesize\ttfamily \label{key__type__traits_8h_a0412179a5fb2def8c03a7096d4320492_a0412179a5fb2def8c03a7096d4320492} 
+template$<$typename T $>$ \\
+bool is\+\_\+iterator\+\_\+v = \mbox{\hyperlink{key__type__traits_8h_abf3043ad2fae5481b729a347cd7e3d42_abf3043ad2fae5481b729a347cd7e3d42}{implements\+\_\+v}}$<$T, \mbox{\hyperlink{key__type__traits_8h_a82e10c3ce439e889952543d9797c93f3_a82e10c3ce439e889952543d9797c93f3}{all\+\_\+iterator\+\_\+traits}}$>$\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{key__type__traits_8h_a556f47159c3a3ebdcc381eb8d68a18fb_a556f47159c3a3ebdcc381eb8d68a18fb}\index{key\_type\_traits.h@{key\_type\_traits.h}!is\_pointer\_wrapper\_v@{is\_pointer\_wrapper\_v}}
+\index{is\_pointer\_wrapper\_v@{is\_pointer\_wrapper\_v}!key\_type\_traits.h@{key\_type\_traits.h}}
+\doxysubsubsection{\texorpdfstring{is\_pointer\_wrapper\_v}{is\_pointer\_wrapper\_v}}
+{\footnotesize\ttfamily \label{key__type__traits_8h_a556f47159c3a3ebdcc381eb8d68a18fb_a556f47159c3a3ebdcc381eb8d68a18fb} 
+template$<$typename T $>$ \\
+bool is\+\_\+pointer\+\_\+wrapper\+\_\+v = \mbox{\hyperlink{key__type__traits_8h_abf3043ad2fae5481b729a347cd7e3d42_abf3043ad2fae5481b729a347cd7e3d42}{implements\+\_\+v}}$<$T, \mbox{\hyperlink{key__type__traits_8h_af65074bab7e8d3c1a3c5cf356f87314a_af65074bab7e8d3c1a3c5cf356f87314a}{pointer\+\_\+wrapper\+\_\+traits}}$>$\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{key__type__traits_8h_af898369e9a38dcd69fae793524b152f3_af898369e9a38dcd69fae793524b152f3}\index{key\_type\_traits.h@{key\_type\_traits.h}!is\_stream\_insertable\_v@{is\_stream\_insertable\_v}}
+\index{is\_stream\_insertable\_v@{is\_stream\_insertable\_v}!key\_type\_traits.h@{key\_type\_traits.h}}
+\doxysubsubsection{\texorpdfstring{is\_stream\_insertable\_v}{is\_stream\_insertable\_v}}
+{\footnotesize\ttfamily \label{key__type__traits_8h_af898369e9a38dcd69fae793524b152f3_af898369e9a38dcd69fae793524b152f3} 
+template$<$typename Stream , typename T $>$ \\
+bool is\+\_\+stream\+\_\+insertable\+\_\+v = \mbox{\hyperlink{structis__stream__insertable}{is\+\_\+stream\+\_\+insertable}}$<$Stream, T$>$\+::value\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{key__type__traits_8h_a86a2e3fab8ec3012c24e41f2ad073cf9_a86a2e3fab8ec3012c24e41f2ad073cf9}\index{key\_type\_traits.h@{key\_type\_traits.h}!is\_string\_v@{is\_string\_v}}
+\index{is\_string\_v@{is\_string\_v}!key\_type\_traits.h@{key\_type\_traits.h}}
+\doxysubsubsection{\texorpdfstring{is\_string\_v}{is\_string\_v}}
+{\footnotesize\ttfamily \label{key__type__traits_8h_a86a2e3fab8ec3012c24e41f2ad073cf9_a86a2e3fab8ec3012c24e41f2ad073cf9} 
+template$<$typename T $>$ \\
+bool is\+\_\+string\+\_\+v = \mbox{\hyperlink{structis__string}{is\+\_\+string}}$<$T$>$\+::value\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{key__type__traits_8h_a4a6ccd81a0e0d0610ab8c55e874f85fc_a4a6ccd81a0e0d0610ab8c55e874f85fc}\index{key\_type\_traits.h@{key\_type\_traits.h}!is\_template\_v@{is\_template\_v}}
+\index{is\_template\_v@{is\_template\_v}!key\_type\_traits.h@{key\_type\_traits.h}}
+\doxysubsubsection{\texorpdfstring{is\_template\_v}{is\_template\_v}}
+{\footnotesize\ttfamily \label{key__type__traits_8h_a4a6ccd81a0e0d0610ab8c55e874f85fc_a4a6ccd81a0e0d0610ab8c55e874f85fc} 
+template$<$typename T $>$ \\
+bool is\+\_\+template\+\_\+v = \mbox{\hyperlink{structis__template}{is\+\_\+template}}$<$T$>$\+::value\hspace{0.3cm}{\ttfamily [constexpr]}}
+

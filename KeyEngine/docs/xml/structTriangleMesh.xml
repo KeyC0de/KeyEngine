@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="structTriangleMesh" kind="struct" language="C++" prot="public" final="yes">
+    <compoundname>TriangleMesh</compoundname>
+    <includes refid="triangle__mesh_8h" local="no">triangle_mesh.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTriangleMesh_ad2c351e592766008f10cd37c3b71350b_1ad2c351e592766008f10cd37c3b71350b" prot="public" static="no" mutable="no">
+        <type><ref refid="classver_1_1VBuffer" kindref="compound">ver::VBuffer</ref></type>
+        <definition>ver::VBuffer TriangleMesh::m_vb</definition>
+        <argsstring></argsstring>
+        <name>m_vb</name>
+        <qualifiedname>TriangleMesh::m_vb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/triangle_mesh.h" line="9" column="14" bodyfile="inc/triangle_mesh.h" bodystart="9" bodyend="-1"/>
+        <referencedby refid="classren_1_1SkyPass_a1b9881827b6ffe6063f3c40e3689da6d_1a1b9881827b6ffe6063f3c40e3689da6d" compoundref="sky__pass_8cpp" startline="31" endline="71">ren::SkyPass::SkyPass</referencedby>
+        <referencedby refid="structTriangleMesh_ab3998697fd76892f1f226f76484eda13_1ab3998697fd76892f1f226f76484eda13" compoundref="triangle__mesh_8cpp" startline="6" endline="15">TriangleMesh</referencedby>
+        <referencedby refid="structTriangleMesh_af284c2748d511589f18788bf245ca998_1af284c2748d511589f18788bf245ca998" compoundref="triangle__mesh_8cpp" startline="26" endline="46">setFlatShadedIndependentNormals</referencedby>
+        <referencedby refid="structTriangleMesh_ad6f2bd41d5ff9a09d7ac19366ab20604_1ad6f2bd41d5ff9a09d7ac19366ab20604" compoundref="triangle__mesh_8cpp" startline="17" endline="24">transform</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structTriangleMesh_a6eb90d0e6a6a925013922f6182dc1a5e_1a6eb90d0e6a6a925013922f6182dc1a5e" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; unsigned &gt;</type>
+        <definition>std::vector&lt;unsigned&gt; TriangleMesh::m_indices</definition>
+        <argsstring></argsstring>
+        <name>m_indices</name>
+        <qualifiedname>TriangleMesh::m_indices</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/triangle_mesh.h" line="10" column="13" bodyfile="inc/triangle_mesh.h" bodystart="10" bodyend="-1"/>
+        <referencedby refid="classren_1_1SkyPass_a1b9881827b6ffe6063f3c40e3689da6d_1a1b9881827b6ffe6063f3c40e3689da6d" compoundref="sky__pass_8cpp" startline="31" endline="71">ren::SkyPass::SkyPass</referencedby>
+        <referencedby refid="structTriangleMesh_ab3998697fd76892f1f226f76484eda13_1ab3998697fd76892f1f226f76484eda13" compoundref="triangle__mesh_8cpp" startline="6" endline="15">TriangleMesh</referencedby>
+        <referencedby refid="structTriangleMesh_af284c2748d511589f18788bf245ca998_1af284c2748d511589f18788bf245ca998" compoundref="triangle__mesh_8cpp" startline="26" endline="46">setFlatShadedIndependentNormals</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structTriangleMesh_aabd3741e2a547fb34c206069ebfd4b6c_1aabd3741e2a547fb34c206069ebfd4b6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TriangleMesh::TriangleMesh</definition>
+        <argsstring>()=default</argsstring>
+        <name>TriangleMesh</name>
+        <qualifiedname>TriangleMesh::TriangleMesh</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/triangle_mesh.h" line="12" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="structTriangleMesh_ab3998697fd76892f1f226f76484eda13_1ab3998697fd76892f1f226f76484eda13" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TriangleMesh::TriangleMesh</definition>
+        <argsstring>(const ver::VBuffer &amp;vertices, const std::vector&lt; unsigned &gt; &amp;indices, const bool bMultimesh=false)</argsstring>
+        <name>TriangleMesh</name>
+        <qualifiedname>TriangleMesh::TriangleMesh</qualifiedname>
+        <param>
+          <type>const <ref refid="classver_1_1VBuffer" kindref="compound">ver::VBuffer</ref> &amp;</type>
+          <declname>vertices</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; unsigned &gt; &amp;</type>
+          <declname>indices</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>bMultimesh</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/triangle_mesh.h" line="13" column="1" bodyfile="src/triangle_mesh.cpp" bodystart="6" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="structTriangleMesh_ad6f2bd41d5ff9a09d7ac19366ab20604_1ad6f2bd41d5ff9a09d7ac19366ab20604" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TriangleMesh::transform</definition>
+        <argsstring>(const DirectX::XMMATRIX &amp;matrix)</argsstring>
+        <name>transform</name>
+        <qualifiedname>TriangleMesh::transform</qualifiedname>
+        <param>
+          <type>const DirectX::XMMATRIX &amp;</type>
+          <declname>matrix</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/triangle_mesh.h" line="15" column="6" bodyfile="src/triangle_mesh.cpp" bodystart="17" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="structTriangleMesh_af284c2748d511589f18788bf245ca998_1af284c2748d511589f18788bf245ca998" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TriangleMesh::setFlatShadedIndependentNormals</definition>
+        <argsstring>() cond_noex</argsstring>
+        <name>setFlatShadedIndependentNormals</name>
+        <qualifiedname>TriangleMesh::setFlatShadedIndependentNormals</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/triangle_mesh.h" line="16" column="6" bodyfile="src/triangle_mesh.cpp" bodystart="26" bodyend="46"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TriangleMesh</label>
+        <link refid="structTriangleMesh"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>m_vb</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ver::VBuffer</label>
+        <link refid="classver_1_1VBuffer"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>m_vertexLayout</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>ver::VertexInputLayout</label>
+        <link refid="classver_1_1VertexInputLayout"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/triangle_mesh.h" line="7" column="1" bodyfile="inc/triangle_mesh.h" bodystart="8" bodyend="17"/>
+    <listofallmembers>
+      <member refid="structTriangleMesh_a6eb90d0e6a6a925013922f6182dc1a5e_1a6eb90d0e6a6a925013922f6182dc1a5e" prot="public" virt="non-virtual"><scope>TriangleMesh</scope><name>m_indices</name></member>
+      <member refid="structTriangleMesh_ad2c351e592766008f10cd37c3b71350b_1ad2c351e592766008f10cd37c3b71350b" prot="public" virt="non-virtual"><scope>TriangleMesh</scope><name>m_vb</name></member>
+      <member refid="structTriangleMesh_af284c2748d511589f18788bf245ca998_1af284c2748d511589f18788bf245ca998" prot="public" virt="non-virtual"><scope>TriangleMesh</scope><name>setFlatShadedIndependentNormals</name></member>
+      <member refid="structTriangleMesh_ad6f2bd41d5ff9a09d7ac19366ab20604_1ad6f2bd41d5ff9a09d7ac19366ab20604" prot="public" virt="non-virtual"><scope>TriangleMesh</scope><name>transform</name></member>
+      <member refid="structTriangleMesh_aabd3741e2a547fb34c206069ebfd4b6c_1aabd3741e2a547fb34c206069ebfd4b6c" prot="public" virt="non-virtual"><scope>TriangleMesh</scope><name>TriangleMesh</name></member>
+      <member refid="structTriangleMesh_ab3998697fd76892f1f226f76484eda13_1ab3998697fd76892f1f226f76484eda13" prot="public" virt="non-virtual"><scope>TriangleMesh</scope><name>TriangleMesh</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

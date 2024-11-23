@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classren_1_1RendererException" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>ren::RendererException</compoundname>
+    <basecompoundref refid="classKeyException" prot="public" virt="non-virtual">KeyException</basecompoundref>
+    <includes refid="renderer__exception_8h" local="no">renderer_exception.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classren_1_1RendererException_a39d09c7d87f0cae7f1d092a2ba56196b_1a39d09c7d87f0cae7f1d092a2ba56196b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>ren::RendererException::RendererException</definition>
+        <argsstring>(const int line, const char *file, const char *function, const std::string &amp;msg) noexcept</argsstring>
+        <name>RendererException</name>
+        <qualifiedname>ren::RendererException::RendererException</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>file</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>function</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/renderer_exception.h" line="13" column="1" bodyfile="src/renderer_exception.cpp" bodystart="9" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1RendererException_ab62af4f0e850098dd75c03f4ecf8cfb8_1ab62af4f0e850098dd75c03f4ecf8cfb8" prot="public" static="no" const="yes" explicit="no" inline="no" final="yes" noexcept="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string ren::RendererException::getType</definition>
+        <argsstring>() const noexcept override final</argsstring>
+        <name>getType</name>
+        <qualifiedname>ren::RendererException::getType</qualifiedname>
+        <reimplements refid="classKeyException_ab841f80e919082619f30053ae78c56c2_1ab841f80e919082619f30053ae78c56c2">getType</reimplements>
+        <briefdescription>
+<para>=================================================== </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/renderer_exception.h" line="15" column="13" bodyfile="src/renderer_exception.cpp" bodystart="24" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1RendererException_aa379f4876899140ed5129cdca48c316a_1aa379f4876899140ed5129cdca48c316a" prot="public" static="no" const="yes" explicit="no" inline="no" final="yes" noexcept="yes" virt="virtual">
+        <type>const char *</type>
+        <definition>const char * ren::RendererException::what</definition>
+        <argsstring>() const noexcept override final</argsstring>
+        <name>what</name>
+        <qualifiedname>ren::RendererException::what</qualifiedname>
+        <reimplements refid="classKeyException_a9956fdc871308553eec7b047f756690a_1a9956fdc871308553eec7b047f756690a">what</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/renderer_exception.h" line="16" column="20" bodyfile="src/renderer_exception.cpp" bodystart="19" bodyend="22"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>KeyException</label>
+        <link refid="classKeyException"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>ren::RendererException</label>
+        <link refid="classren_1_1RendererException"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::exception</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>KeyException</label>
+        <link refid="classKeyException"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>ren::RendererException</label>
+        <link refid="classren_1_1RendererException"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::exception</label>
+      </node>
+    </collaborationgraph>
+    <location file="inc/renderer_exception.h" line="9" column="1" bodyfile="inc/renderer_exception.h" bodystart="11" bodyend="17"/>
+    <listofallmembers>
+      <member refid="classKeyException_acf42841e4d4ececba96628e677b4cf41_1acf42841e4d4ececba96628e677b4cf41" prot="public" virt="non-virtual"><scope>ren::RendererException</scope><name>getFile</name></member>
+      <member refid="classKeyException_ad75c6511759e522f2b3bcf13b0d23f30_1ad75c6511759e522f2b3bcf13b0d23f30" prot="public" virt="non-virtual"><scope>ren::RendererException</scope><name>getFunction</name></member>
+      <member refid="classKeyException_a72f4af19d1ab0e9cce5eb6d45fca7729_1a72f4af19d1ab0e9cce5eb6d45fca7729" prot="public" virt="non-virtual"><scope>ren::RendererException</scope><name>getLine</name></member>
+      <member refid="classren_1_1RendererException_ab62af4f0e850098dd75c03f4ecf8cfb8_1ab62af4f0e850098dd75c03f4ecf8cfb8" prot="public" virt="virtual"><scope>ren::RendererException</scope><name>getType</name></member>
+      <member refid="classKeyException_a53c95253098f0cc672876c35d4b1911d_1a53c95253098f0cc672876c35d4b1911d" prot="public" virt="non-virtual"><scope>ren::RendererException</scope><name>KeyException</name></member>
+      <member refid="classKeyException_ae11b160d146427ad3887a1af3e2dc2ac_1ae11b160d146427ad3887a1af3e2dc2ac" prot="protected" virt="non-virtual"><scope>ren::RendererException</scope><name>m_description</name></member>
+      <member refid="classKeyException_a62f1ed04b6e0c843f3ea1e338dc426d8_1a62f1ed04b6e0c843f3ea1e338dc426d8" prot="private" virt="non-virtual"><scope>ren::RendererException</scope><name>m_file</name></member>
+      <member refid="classKeyException_ac11062a919dcfe52321e9f948ce60958_1ac11062a919dcfe52321e9f948ce60958" prot="private" virt="non-virtual"><scope>ren::RendererException</scope><name>m_function</name></member>
+      <member refid="classKeyException_a2a49256c37903e810c301b035cf65837_1a2a49256c37903e810c301b035cf65837" prot="private" virt="non-virtual"><scope>ren::RendererException</scope><name>m_line</name></member>
+      <member refid="classren_1_1RendererException_a39d09c7d87f0cae7f1d092a2ba56196b_1a39d09c7d87f0cae7f1d092a2ba56196b" prot="public" virt="non-virtual"><scope>ren::RendererException</scope><name>RendererException</name></member>
+      <member refid="classren_1_1RendererException_aa379f4876899140ed5129cdca48c316a_1aa379f4876899140ed5129cdca48c316a" prot="public" virt="virtual"><scope>ren::RendererException</scope><name>what</name></member>
+      <member refid="classKeyException_a954cd46c9cc2dd054fd680bb70aef678_1a954cd46c9cc2dd054fd680bb70aef678" prot="public" virt="virtual"><scope>ren::RendererException</scope><name>~KeyException</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

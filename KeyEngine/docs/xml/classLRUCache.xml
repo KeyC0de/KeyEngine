@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classLRUCache" kind="class" language="C++" prot="public">
+    <compoundname>LRUCache</compoundname>
+    <includes refid="lru__cache_8h" local="no">lru_cache.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classLRUCache_a3ccd2c2550a8e99e24409e9e41f97b40_1a3ccd2c2550a8e99e24409e9e41f97b40" prot="private" static="no" mutable="no">
+        <type>std::list&lt; T &gt;</type>
+        <definition>std::list&lt;T&gt; LRUCache&lt; T &gt;::m_list</definition>
+        <argsstring></argsstring>
+        <name>m_list</name>
+        <qualifiedname>LRUCache::m_list</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/lru_cache.h" line="19" column="11" bodyfile="inc/lru_cache.h" bodystart="19" bodyend="-1"/>
+        <referencedby refid="classLRUCache_af93af58bad8c06c7a48a56ef89a3272e_1af93af58bad8c06c7a48a56ef89a3272e" compoundref="lru__cache_8h" startline="57" endline="64">LRUCache&lt; T &gt;::display</referencedby>
+        <referencedby refid="classLRUCache_a950b676d0cb865c887f3901f218f2a0e_1a950b676d0cb865c887f3901f218f2a0e" compoundref="lru__cache_8h" startline="34" endline="55">LRUCache&lt; T &gt;::find</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classLRUCache_a9d6a0dc0f63cfa035ec23f9fdb7c13ba_1a9d6a0dc0f63cfa035ec23f9fdb7c13ba" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; T, typename std::list&lt; T &gt;::const_iterator &gt;</type>
+        <definition>std::unordered_map&lt;T, typename std::list&lt;T&gt;::const_iterator&gt; LRUCache&lt; T &gt;::m_map</definition>
+        <argsstring></argsstring>
+        <name>m_map</name>
+        <qualifiedname>LRUCache::m_map</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/lru_cache.h" line="20" column="21" bodyfile="inc/lru_cache.h" bodystart="20" bodyend="-1"/>
+        <referencedby refid="classLRUCache_a950b676d0cb865c887f3901f218f2a0e_1a950b676d0cb865c887f3901f218f2a0e" compoundref="lru__cache_8h" startline="34" endline="55">LRUCache&lt; T &gt;::find</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classLRUCache_ae8fdd866a0a93dcc741fdea58be0abec_1ae8fdd866a0a93dcc741fdea58be0abec" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int LRUCache&lt; T &gt;::m_maxSize</definition>
+        <argsstring></argsstring>
+        <name>m_maxSize</name>
+        <qualifiedname>LRUCache::m_maxSize</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/lru_cache.h" line="21" column="5" bodyfile="inc/lru_cache.h" bodystart="21" bodyend="-1"/>
+        <referencedby refid="classLRUCache_a950b676d0cb865c887f3901f218f2a0e_1a950b676d0cb865c887f3901f218f2a0e" compoundref="lru__cache_8h" startline="34" endline="55">LRUCache&lt; T &gt;::find</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classLRUCache_a2d658ad308b7ddd3930fad756fa9a44b_1a2d658ad308b7ddd3930fad756fa9a44b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>LRUCache&lt; T &gt;::LRUCache</definition>
+        <argsstring>(int maxSize)</argsstring>
+        <name>LRUCache</name>
+        <qualifiedname>LRUCache::LRUCache</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>maxSize</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/lru_cache.h" line="23" column="1" bodyfile="inc/lru_cache.h" bodystart="23" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classLRUCache_a950b676d0cb865c887f3901f218f2a0e_1a950b676d0cb865c887f3901f218f2a0e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void LRUCache&lt; T &gt;::find</definition>
+        <argsstring>(T x)</argsstring>
+        <name>find</name>
+        <qualifiedname>LRUCache::find</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/lru_cache.h" line="34" column="6" bodyfile="inc/lru_cache.h" bodystart="34" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classLRUCache_af93af58bad8c06c7a48a56ef89a3272e_1af93af58bad8c06c7a48a56ef89a3272e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void LRUCache&lt; T &gt;::display</definition>
+        <argsstring>()</argsstring>
+        <name>display</name>
+        <qualifiedname>LRUCache::display</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/lru_cache.h" line="57" column="6" bodyfile="inc/lru_cache.h" bodystart="57" bodyend="64"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/lru_cache.h" line="17" column="1" bodyfile="inc/lru_cache.h" bodystart="18" bodyend="65"/>
+    <listofallmembers>
+      <member refid="classLRUCache_af93af58bad8c06c7a48a56ef89a3272e_1af93af58bad8c06c7a48a56ef89a3272e" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>display</name></member>
+      <member refid="classLRUCache_a950b676d0cb865c887f3901f218f2a0e_1a950b676d0cb865c887f3901f218f2a0e" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>find</name></member>
+      <member refid="classLRUCache_a2d658ad308b7ddd3930fad756fa9a44b_1a2d658ad308b7ddd3930fad756fa9a44b" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>LRUCache</name></member>
+      <member refid="classLRUCache_a3ccd2c2550a8e99e24409e9e41f97b40_1a3ccd2c2550a8e99e24409e9e41f97b40" prot="private" virt="non-virtual"><scope>LRUCache</scope><name>m_list</name></member>
+      <member refid="classLRUCache_a9d6a0dc0f63cfa035ec23f9fdb7c13ba_1a9d6a0dc0f63cfa035ec23f9fdb7c13ba" prot="private" virt="non-virtual"><scope>LRUCache</scope><name>m_map</name></member>
+      <member refid="classLRUCache_ae8fdd866a0a93dcc741fdea58be0abec_1ae8fdd866a0a93dcc741fdea58be0abec" prot="private" virt="non-virtual"><scope>LRUCache</scope><name>m_maxSize</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

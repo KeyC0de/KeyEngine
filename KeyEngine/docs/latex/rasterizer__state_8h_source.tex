@@ -1,0 +1,54 @@
+\doxysection{rasterizer\+\_\+state.\+h}
+\hypertarget{rasterizer__state_8h_source}{}\label{rasterizer__state_8h_source}\index{inc/rasterizer\_state.h@{inc/rasterizer\_state.h}}
+\mbox{\hyperlink{rasterizer__state_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{key__wrl_8h}{key\_wrl.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{bindable_8h}{bindable.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{texture__desc_8h}{texture\_desc.h}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGraphics}{Graphics}};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRasterizerState}{RasterizerState}}}
+\DoxyCodeLine{00012\ \ \ \ \ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classIBindable}{IBindable}}}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{classRasterizerState_a3151107239aadcbe3426db7cce10f08e_a3151107239aadcbe3426db7cce10f08e}{RasterizerMode}}}
+\DoxyCodeLine{00016\ \ \ \ \ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRasterizerState_a3151107239aadcbe3426db7cce10f08e_a3151107239aadcbe3426db7cce10f08eae2d59bb2d8146bb29d1722df1efc72e1}{DefaultRS}},}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRasterizerState_a3151107239aadcbe3426db7cce10f08e_a3151107239aadcbe3426db7cce10f08ea5a676c4d329ae5a58522a88367522633}{ShadowRS}},}
+\DoxyCodeLine{00019\ \ \ \ \ \};}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{classRasterizerState_ab64eb708d2b58194806f2bee4f93dd65_ab64eb708d2b58194806f2bee4f93dd65}{FillMode}}}
+\DoxyCodeLine{00021\ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRasterizerState_ab64eb708d2b58194806f2bee4f93dd65_ab64eb708d2b58194806f2bee4f93dd65a816d9b64ac288103c37d263f3b2113cf}{Solid}},}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRasterizerState_ab64eb708d2b58194806f2bee4f93dd65_ab64eb708d2b58194806f2bee4f93dd65aeaff0006267477f6d60b928802555e77}{Wireframe}},}
+\DoxyCodeLine{00024\ \ \ \ \ \};}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{classRasterizerState_aeaf96eb61bdc4f7e17fe5c351a090891_aeaf96eb61bdc4f7e17fe5c351a090891}{FaceMode}}}
+\DoxyCodeLine{00026\ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRasterizerState_aeaf96eb61bdc4f7e17fe5c351a090891_aeaf96eb61bdc4f7e17fe5c351a090891ac3b808e9b6b703082096f4da97d5d401}{Front}},\ \textcolor{comment}{//\ cull\ backsided\ faces\ (default)}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRasterizerState_aeaf96eb61bdc4f7e17fe5c351a090891_aeaf96eb61bdc4f7e17fe5c351a090891aa9ada81ba2f8b6a73eb2a0e988570680}{Back}},\ \ \ \textcolor{comment}{//\ cull\ frontsided\ faces}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRasterizerState_aeaf96eb61bdc4f7e17fe5c351a090891_aeaf96eb61bdc4f7e17fe5c351a090891a7d450507cfc5245a2704fbfbbfb1c1e3}{Both}},\ \ \ \textcolor{comment}{//\ don't\ cull\ any\ faces}}
+\DoxyCodeLine{00030\ \ \ \ \ \};}
+\DoxyCodeLine{00031\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00032\ \ \ \ \ Microsoft::WRL::ComPtr<ID3D11RasterizerState>\ \mbox{\hyperlink{classRasterizerState_a53cd9a1c5e19b4fb0fbf54cd8eacb637_a53cd9a1c5e19b4fb0fbf54cd8eacb637}{m\_pRasterizerState}};}
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{classRasterizerState_a3151107239aadcbe3426db7cce10f08e_a3151107239aadcbe3426db7cce10f08e}{RasterizerMode}}\ \mbox{\hyperlink{classRasterizerState_a211ea886ad01df73c6e7d9b1436929df_a211ea886ad01df73c6e7d9b1436929df}{m\_mode}};}
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{classRasterizerState_ab64eb708d2b58194806f2bee4f93dd65_ab64eb708d2b58194806f2bee4f93dd65}{FillMode}}\ \mbox{\hyperlink{classRasterizerState_a2ac08060b17ce8ab0130d35c1203b858_a2ac08060b17ce8ab0130d35c1203b858}{m\_fillMode}};}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{classRasterizerState_aeaf96eb61bdc4f7e17fe5c351a090891_aeaf96eb61bdc4f7e17fe5c351a090891}{FaceMode}}\ \mbox{\hyperlink{classRasterizerState_a52fe56ba43efe92badbdf57eb3327a1c_a52fe56ba43efe92badbdf57eb3327a1c}{m\_faceMode}};}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classRasterizerState_a2cce8db1fc6c4e797c0ed37376c6ac27_a2cce8db1fc6c4e797c0ed37376c6ac27}{m\_depthBias}};}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classRasterizerState_afd95bfc70c82ee75eb8b9d451b534416_afd95bfc70c82ee75eb8b9d451b534416}{m\_slopeBias}};}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classRasterizerState_aa9d01ba8688f920da2ea31e3a0f80d1f_aa9d01ba8688f920da2ea31e3a0f80d1f}{m\_biasClamp}};}
+\DoxyCodeLine{00039\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{classRasterizerState_a804a50b2960604725f103b927f9d052f_a804a50b2960604725f103b927f9d052f}{RasterizerState}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classRasterizerState_a3151107239aadcbe3426db7cce10f08e_a3151107239aadcbe3426db7cce10f08e}{RasterizerMode}}\ mode,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classRasterizerState_ab64eb708d2b58194806f2bee4f93dd65_ab64eb708d2b58194806f2bee4f93dd65}{FillMode}}\ fillMode,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classRasterizerState_aeaf96eb61bdc4f7e17fe5c351a090891_aeaf96eb61bdc4f7e17fe5c351a090891}{FaceMode}}\ faceMode,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ depthBias\ =\ D3D11\_DEFAULT\_DEPTH\_BIAS,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ slopeBias\ =\ D3D11\_DEFAULT\_SLOPE\_SCALED\_DEPTH\_BIAS,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ biasClamp\ =\ D3D11\_DEFAULT\_DEPTH\_BIAS\_CLAMP\ );}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRasterizerState_a5c99858a872079af1812b79e9b196b51_a5c99858a872079af1812b79e9b196b51}{bind}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx\ )\ cond\_noex\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<RasterizerState>\ \mbox{\hyperlink{classRasterizerState_ae33cba5eb6c008f927cb16e8c3c226f1_ae33cba5eb6c008f927cb16e8c3c226f1}{fetch}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classRasterizerState_a3151107239aadcbe3426db7cce10f08e_a3151107239aadcbe3426db7cce10f08e}{RasterizerMode}}\ mode,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classRasterizerState_ab64eb708d2b58194806f2bee4f93dd65_ab64eb708d2b58194806f2bee4f93dd65}{FillMode}}\ fillMode,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classRasterizerState_aeaf96eb61bdc4f7e17fe5c351a090891_aeaf96eb61bdc4f7e17fe5c351a090891}{FaceMode}}\ faceMode,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ depthBias\ =\ D3D11\_DEFAULT\_DEPTH\_BIAS,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ slopeBias\ =\ D3D11\_DEFAULT\_SLOPE\_SCALED\_DEPTH\_BIAS,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ biasClamp\ =\ D3D11\_DEFAULT\_DEPTH\_BIAS\_CLAMP\ );}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ \mbox{\hyperlink{classRasterizerState_afc8283abcf48e749942cb4ee650784b0_afc8283abcf48e749942cb4ee650784b0}{calcUid}}(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classRasterizerState_a3151107239aadcbe3426db7cce10f08e_a3151107239aadcbe3426db7cce10f08e}{RasterizerMode}}\ mode,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classRasterizerState_ab64eb708d2b58194806f2bee4f93dd65_ab64eb708d2b58194806f2bee4f93dd65}{FillMode}}\ fillMode,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classRasterizerState_aeaf96eb61bdc4f7e17fe5c351a090891_aeaf96eb61bdc4f7e17fe5c351a090891}{FaceMode}}\ faceMode,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ depthBias\ =\ D3D11\_DEFAULT\_DEPTH\_BIAS,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ slopeBias\ =\ D3D11\_DEFAULT\_SLOPE\_SCALED\_DEPTH\_BIAS,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ biasClamp\ =\ D3D11\_DEFAULT\_DEPTH\_BIAS\_CLAMP\ );}
+\DoxyCodeLine{00047\ \ \ \ \ std::string\ \mbox{\hyperlink{classRasterizerState_a15d53a48554a11028388734468940786_a15d53a48554a11028388734468940786}{getUid}}()\ const\ noexcept\ override;}
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{classRasterizerState_a3151107239aadcbe3426db7cce10f08e_a3151107239aadcbe3426db7cce10f08e}{RasterizerMode}}\ \mbox{\hyperlink{classRasterizerState_a96c78548d9c4412e185643787e5c28d2_a96c78548d9c4412e185643787e5c28d2}{getMode}}()\ const\ noexcept;}
+\DoxyCodeLine{00049\ \ \ \ \ Microsoft::WRL::ComPtr<ID3D11RasterizerState>\&\ \mbox{\hyperlink{classRasterizerState_a820f2227da815a3ce625d7b63c7fc9a0_a820f2227da815a3ce625d7b63c7fc9a0}{getD3dRasterizerState}}();}
+\DoxyCodeLine{00050\ \};}
+
+\end{DoxyCode}

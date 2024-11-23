@@ -1,0 +1,34 @@
+\doxysection{octree.\+h}
+\hypertarget{octree_8h_source}{}\label{octree_8h_source}\index{inc/octree.h@{inc/octree.h}}
+\mbox{\hyperlink{octree_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <cstddef>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <DirectXMath.h>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{using\ }\mbox{\hyperlink{octree_8h_aaf5b531b30e1cf3570c4ac47b057e0b4_aaf5b531b30e1cf3570c4ac47b057e0b4}{OctreeData}}\ =\ DirectX::XMFLOAT3;}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classOctree}{Octree}}\ final}
+\DoxyCodeLine{00024\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ DirectX::XMFLOAT3\ \mbox{\hyperlink{classOctree_a2522baa7f50932f82eeaedc2c426952f_a2522baa7f50932f82eeaedc2c426952f}{m\_center}};\ \textcolor{comment}{//\ the\ physical\ spatial\ center\ of\ this\ octree\ octant}}
+\DoxyCodeLine{00026\ \ \ \ \ DirectX::XMFLOAT3\ \mbox{\hyperlink{classOctree_ada75fb425d41149b5328e5db3c3be938_ada75fb425d41149b5328e5db3c3be938}{m\_half}};\ \textcolor{comment}{//\ half\ the\ width,height,depth\ of\ this\ octant}}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{classOctree}{Octree}}\ *\mbox{\hyperlink{classOctree_a7ea759b535af4b7a6d23cacda2d62765_a7ea759b535af4b7a6d23cacda2d62765}{m\_children}}[8];}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{octree_8h_aaf5b531b30e1cf3570c4ac47b057e0b4_aaf5b531b30e1cf3570c4ac47b057e0b4}{OctreeData}}\ *\mbox{\hyperlink{classOctree_a4110f6074692c9f49b4546f00a439432_a4110f6074692c9f49b4546f00a439432}{m\_data}};}
+\DoxyCodeLine{00029\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ determine\ which\ octant\ of\ the\ tree\ contains\ point}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classOctree_a4edd2af2d4cedc9a01f76ce525adbca1_a4edd2af2d4cedc9a01f76ce525adbca1}{getOctantContainingPoint}}(\ \textcolor{keyword}{const}\ DirectX::XMFLOAT3\ \&point\ )\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classOctree_ae1ab7d4beee257afbca9a1975137e32b_ae1ab7d4beee257afbca9a1975137e32b}{isLeafNode}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00033\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{classOctree_a288e573ccc46fee7b0f77bfd5f6478e3_a288e573ccc46fee7b0f77bfd5f6478e3}{Octree}}(\ \textcolor{keyword}{const}\ DirectX::XMFLOAT3\ \&center,\ \textcolor{keyword}{const}\ DirectX::XMFLOAT3\ \&halfDim\ );}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{classOctree_a288e573ccc46fee7b0f77bfd5f6478e3_a288e573ccc46fee7b0f77bfd5f6478e3}{Octree}}(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classOctree}{Octree}}\ \&rhs\ );}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{classOctree_a6705a6ae06fab5a0dfdd79f45576020d_a6705a6ae06fab5a0dfdd79f45576020d}{\string~Octree}}();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classOctree_ab6706e538ad4d06dd1dc8d7e0dbc4f85_ab6706e538ad4d06dd1dc8d7e0dbc4f85}{insert}}(\ \mbox{\hyperlink{octree_8h_aaf5b531b30e1cf3570c4ac47b057e0b4_aaf5b531b30e1cf3570c4ac47b057e0b4}{OctreeData}}\ *node\ );}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//\ recursively\ query\ the\ tree\ for\ Entities\ within\ a\ bounding\ box\ \{bmin,bmax\}}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classOctree_a9ca58e8b8198c3953833a69b82b35bda_a9ca58e8b8198c3953833a69b82b35bda}{getEntitiesWithinBBox}}(\ \textcolor{keyword}{const}\ DirectX::XMFLOAT3\ \&bmin,\ \textcolor{keyword}{const}\ DirectX::XMFLOAT3\ \&bmax,\ std::vector<OctreeData*>\&\ resultsOut\ );}
+\DoxyCodeLine{00041\ \};}
+
+\end{DoxyCode}

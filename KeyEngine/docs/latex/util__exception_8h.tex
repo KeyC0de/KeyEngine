@@ -1,0 +1,28 @@
+\doxysection{inc/util\+\_\+exception.h File Reference}
+\hypertarget{util__exception_8h}{}\label{util__exception_8h}\index{inc/util\_exception.h@{inc/util\_exception.h}}
+{\ttfamily \#include "{}key\+\_\+exception.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classUtilException}{Util\+Exception}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{util__exception_8h_a361e7567f78e4a1f8b85cde320b32705_a361e7567f78e4a1f8b85cde320b32705}{THROW\+\_\+\+UTIL\+\_\+\+EXCEPTION}}(msg)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{util__exception_8h_a361e7567f78e4a1f8b85cde320b32705_a361e7567f78e4a1f8b85cde320b32705}\index{util\_exception.h@{util\_exception.h}!THROW\_UTIL\_EXCEPTION@{THROW\_UTIL\_EXCEPTION}}
+\index{THROW\_UTIL\_EXCEPTION@{THROW\_UTIL\_EXCEPTION}!util\_exception.h@{util\_exception.h}}
+\doxysubsubsection{\texorpdfstring{THROW\_UTIL\_EXCEPTION}{THROW\_UTIL\_EXCEPTION}}
+{\footnotesize\ttfamily \label{util__exception_8h_a361e7567f78e4a1f8b85cde320b32705_a361e7567f78e4a1f8b85cde320b32705} 
+\#define THROW\+\_\+\+UTIL\+\_\+\+EXCEPTION(\begin{DoxyParamCaption}\item[{}]{msg}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \_\_debugbreak();\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classUtilException}{UtilException}}(\ \_\_LINE\_\_,\ \_\_FILE\_\_,\ \_\_FUNCTION\_\_,\ msg\ );}
+
+\end{DoxyCode}

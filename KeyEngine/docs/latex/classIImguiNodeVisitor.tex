@@ -1,0 +1,73 @@
+\doxysection{IImgui\+Node\+Visitor Class Reference}
+\hypertarget{classIImguiNodeVisitor}{}\label{classIImguiNodeVisitor}\index{IImguiNodeVisitor@{IImguiNodeVisitor}}
+
+
+{\ttfamily \#include $<$imgui\+\_\+visitors.\+h$>$}
+
+Inheritance diagram for IImgui\+Node\+Visitor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classIImguiNodeVisitor}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classIImguiNodeVisitor_a25aeeef4c80941c72871ab60cac528f1_a25aeeef4c80941c72871ab60cac528f1}{\texorpdfstring{$\sim$}{\string~}\+IImgui\+Node\+Visitor}} () noexcept=default
+\item 
+bool \mbox{\hyperlink{classIImguiNodeVisitor_a3ffe58aedb22d53f18611cd112b25bbd_a3ffe58aedb22d53f18611cd112b25bbd}{visit}} (\mbox{\hyperlink{classNode}{Node}} \&node)
+\begin{DoxyCompactList}\small\item\em returns true if we want to "{}open"{} the \doxylink{classNode}{Node} in the Im\+Gui tree hierarchy for processing of its children \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classIImguiNodeVisitor_a7b479f0e4cee70568f86148dd7848c27_a7b479f0e4cee70568f86148dd7848c27}{on\+Visit}} (class \mbox{\hyperlink{classNode}{Node}} \&node)=0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classIImguiNodeVisitor_afdf913a5e0086ef6f44a9bf46d1e7ffa_afdf913a5e0086ef6f44a9bf46d1e7ffa}{m\+\_\+p\+Selected\+Node}} = nullptr
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classIImguiNodeVisitor_a25aeeef4c80941c72871ab60cac528f1_a25aeeef4c80941c72871ab60cac528f1}\index{IImguiNodeVisitor@{IImguiNodeVisitor}!````~IImguiNodeVisitor@{\texorpdfstring{$\sim$}{\string~}IImguiNodeVisitor}}
+\index{````~IImguiNodeVisitor@{\texorpdfstring{$\sim$}{\string~}IImguiNodeVisitor}!IImguiNodeVisitor@{IImguiNodeVisitor}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}IImguiNodeVisitor()}{\string~IImguiNodeVisitor()}}
+{\footnotesize\ttfamily \label{classIImguiNodeVisitor_a25aeeef4c80941c72871ab60cac528f1_a25aeeef4c80941c72871ab60cac528f1} 
+virtual IImgui\+Node\+Visitor\+::\texorpdfstring{$\sim$}{\string~}\+IImgui\+Node\+Visitor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}, {\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classIImguiNodeVisitor_a7b479f0e4cee70568f86148dd7848c27_a7b479f0e4cee70568f86148dd7848c27}\index{IImguiNodeVisitor@{IImguiNodeVisitor}!onVisit@{onVisit}}
+\index{onVisit@{onVisit}!IImguiNodeVisitor@{IImguiNodeVisitor}}
+\doxysubsubsection{\texorpdfstring{onVisit()}{onVisit()}}
+{\footnotesize\ttfamily \label{classIImguiNodeVisitor_a7b479f0e4cee70568f86148dd7848c27_a7b479f0e4cee70568f86148dd7848c27} 
+virtual void IImgui\+Node\+Visitor\+::on\+Visit (\begin{DoxyParamCaption}\item[{class \mbox{\hyperlink{classNode}{Node}} \&}]{node}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classImguiPerModelNodeVisitor_a05eb0479acfea8f99900419c4c496faa_a05eb0479acfea8f99900419c4c496faa}{Imgui\+Per\+Model\+Node\+Visitor}}.
+
+\Hypertarget{classIImguiNodeVisitor_a3ffe58aedb22d53f18611cd112b25bbd_a3ffe58aedb22d53f18611cd112b25bbd}\index{IImguiNodeVisitor@{IImguiNodeVisitor}!visit@{visit}}
+\index{visit@{visit}!IImguiNodeVisitor@{IImguiNodeVisitor}}
+\doxysubsubsection{\texorpdfstring{visit()}{visit()}}
+{\footnotesize\ttfamily \label{classIImguiNodeVisitor_a3ffe58aedb22d53f18611cd112b25bbd_a3ffe58aedb22d53f18611cd112b25bbd} 
+bool IImgui\+Node\+Visitor\+::visit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}} \&}]{node}{}\end{DoxyParamCaption})}
+
+
+
+returns true if we want to "{}open"{} the \doxylink{classNode}{Node} in the Im\+Gui tree hierarchy for processing of its children 
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classIImguiNodeVisitor_afdf913a5e0086ef6f44a9bf46d1e7ffa_afdf913a5e0086ef6f44a9bf46d1e7ffa}\index{IImguiNodeVisitor@{IImguiNodeVisitor}!m\_pSelectedNode@{m\_pSelectedNode}}
+\index{m\_pSelectedNode@{m\_pSelectedNode}!IImguiNodeVisitor@{IImguiNodeVisitor}}
+\doxysubsubsection{\texorpdfstring{m\_pSelectedNode}{m\_pSelectedNode}}
+{\footnotesize\ttfamily \label{classIImguiNodeVisitor_afdf913a5e0086ef6f44a9bf46d1e7ffa_afdf913a5e0086ef6f44a9bf46d1e7ffa} 
+\mbox{\hyperlink{classNode}{Node}}\texorpdfstring{$\ast$}{*} IImgui\+Node\+Visitor\+::m\+\_\+p\+Selected\+Node = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{imgui__visitors_8h}{imgui\+\_\+visitors.\+h}}\item 
+src/\mbox{\hyperlink{imgui__visitors_8cpp}{imgui\+\_\+visitors.\+cpp}}\end{DoxyCompactItemize}

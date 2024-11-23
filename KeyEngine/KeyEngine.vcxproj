@@ -64,7 +64,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LibraryPath>$(ProjectDir)third_party\dxtex\bin\$(Configuration);$(ProjectDir)third_party\DirectXTK\bin\$(Configuration);$(ProjectDir)third_party\assimp\bin\$(Configuration);$(ProjectDir)third_party\lua\bin\$(Configuration);$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(ProjectDir)third_party\dxtex\bin\$(Configuration);$(ProjectDir)third_party\DirectXTK\bin\$(Configuration);$(ProjectDir)third_party\assimp\bin\$(Configuration);$(ProjectDir)third_party\lua\bin\$(Configuration);$(ProjectDir)third_party\OpenXLSX\bin\$(Configuration);$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)\int\$(Platform)\$(Configuration)\</IntDir>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CodeAnalysisRuleSet>..\keyc0de_microsoft_modified_static_analysis_ruleset.ruleset</CodeAnalysisRuleSet>
@@ -72,12 +72,12 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)inc;$(ProjectDir)third_party;C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include;$(ProjectDir)games</IncludePath>
-    <LibraryPath>$(ProjectDir)third_party\dxtex\bin\$(Configuration);$(ProjectDir)third_party\DirectXTK\bin\$(Configuration);$(ProjectDir)third_party\assimp\bin\$(Configuration);$(ProjectDir)third_party\lua\bin\$(Configuration);$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(ProjectDir)third_party\dxtex\bin\$(Configuration);$(ProjectDir)third_party\DirectXTK\bin\$(Configuration);$(ProjectDir)third_party\assimp\bin\$(Configuration);$(ProjectDir)third_party\lua\bin\$(Configuration);$(ProjectDir)third_party\OpenXLSX\bin\$(Configuration);$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)\int\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)inc;$(ProjectDir)third_party;C:\Program Files (x86)\Intel\oneAPI\vtune\latest\sdk\include;$(ProjectDir)games</IncludePath>
-    <LibraryPath>$(ProjectDir)third_party\dxtex\bin\$(Configuration);$(ProjectDir)third_party\DirectXTK\bin\$(Configuration);$(ProjectDir)third_party\assimp\bin\$(Configuration);$(ProjectDir)third_party\lua\bin\$(Configuration);$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(ProjectDir)third_party\dxtex\bin\$(Configuration);$(ProjectDir)third_party\DirectXTK\bin\$(Configuration);$(ProjectDir)third_party\assimp\bin\$(Configuration);$(ProjectDir)third_party\lua\bin\$(Configuration);$(ProjectDir)third_party\OpenXLSX\bin\$(Configuration);$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)\int\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -89,7 +89,7 @@
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PreprocessorDefinitions>SOLUTION_CONFIGURATION_STR="$(ConfigurationName)";FLIP_PRESENT;_DEBUG;NO_DUMPS;UNICODE;_UNICODE;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;%(PreprocessorDefinitions);BDEBUG=true;cond_noex=noexcept( !BDEBUG );pass_=(void)0;_CRT_SECURE_NO_WARNINGS;_32_BIT_ENTITY</PreprocessorDefinitions>
-      <AdditionalOptions>/we4239 /we4265 /we4715 /we4172 /we4189 /Zc:__cplusplus /utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/we4456 /we4239 /we4265 /we4715 /we4172 /we4189 /Zc:__cplusplus /utf-8 %(AdditionalOptions)</AdditionalOptions>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
       <SuppressStartupBanner>false</SuppressStartupBanner>
       <EnablePREfast>true</EnablePREfast>
@@ -124,7 +124,7 @@
       <PreprocessorDefinitions>SOLUTION_CONFIGURATION_STR="$(ConfigurationName)";_PROFILE;FLIP_PRESENT;NDEBUG;NO_DUMPS;UNICODE;_UNICODE;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;%(PreprocessorDefinitions);BDEBUG=false;cond_noex=noexcept( !BDEBUG );pass_=(void)0;_CRT_SECURE_NO_WARNINGS;_32_BIT_ENTITY</PreprocessorDefinitions>
       <FloatingPointModel>Fast</FloatingPointModel>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalOptions>/we4239 /we4265 /we4715 /we4172 /we4189 /Zc:__cplusplus /utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/we4456 /we4239 /we4265 /we4715 /we4172 /we4189 /Zc:__cplusplus /utf-8 %(AdditionalOptions)</AdditionalOptions>
       <SDLCheck />
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
       <SuppressStartupBanner>false</SuppressStartupBanner>
@@ -162,7 +162,7 @@
       <PreprocessorDefinitions>SOLUTION_CONFIGURATION_STR="$(ConfigurationName)";FLIP_PRESENT;FINAL_RELEASE;NDEBUG;NO_DUMPS;UNICODE;_UNICODE;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;%(PreprocessorDefinitions);BDEBUG=false;cond_noex=noexcept( !BDEBUG );pass_=(void)0;_CRT_SECURE_NO_WARNINGS;_32_BIT_ENTITY</PreprocessorDefinitions>
       <FloatingPointModel>Fast</FloatingPointModel>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalOptions>/we4239 /we4265 /we4715 /we4172 /we4189 /Zc:__cplusplus /utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/we4456 /we4239 /we4265 /we4715 /we4172 /we4189 /Zc:__cplusplus /utf-8 %(AdditionalOptions)</AdditionalOptions>
       <SDLCheck>
       </SDLCheck>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
@@ -367,6 +367,8 @@
     <None Include="assimp-vc143-mt.dll" />
     <None Include="assimp-vc143-mt.pdb" />
     <None Include="ClassDiagram.cd" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="config\config.ini" />
     <None Include="cpp.hint">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -501,6 +503,7 @@
     <ClInclude Include="inc\triangle_mesh.h" />
     <ClInclude Include="inc\types.h" />
     <ClInclude Include="inc\ui_component.h" />
+    <ClInclude Include="inc\utils_global.h" />
     <ClInclude Include="inc\util_exception.h" />
     <ClInclude Include="inc\vertex_buffer.h" />
     <ClInclude Include="inc\vertex_shader.h" />

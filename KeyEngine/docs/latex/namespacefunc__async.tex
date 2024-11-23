@@ -1,0 +1,30 @@
+\doxysection{func\+\_\+async Namespace Reference}
+\hypertarget{namespacefunc__async}{}\label{namespacefunc__async}\index{func\_async@{func\_async}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespacefunc__async_a224c931f9dead8e231b14ceb26da3617_a224c931f9dead8e231b14ceb26da3617}{do\+Periodically}} (nonstd\+::stop\+\_\+token st, const std\+::function$<$ void(void)$>$ \&f, const size\+\_\+t interval\+Ms, const bool now)
+\begin{DoxyCompactList}\small\item\em like a timer event --- executes void(\texorpdfstring{$\ast$}{*}f)() function at periodic (ms) intervals \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacefunc__async_a5f3e4ca374f7de72954d29184be8f06d_a5f3e4ca374f7de72954d29184be8f06d}{do\+Later}} (nonstd\+::stop\+\_\+token st, const std\+::function$<$ void(void)$>$ \&f, const size\+\_\+t interval\+Ms)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacefunc__async_a5f3e4ca374f7de72954d29184be8f06d_a5f3e4ca374f7de72954d29184be8f06d}\index{func\_async@{func\_async}!doLater@{doLater}}
+\index{doLater@{doLater}!func\_async@{func\_async}}
+\doxysubsubsection{\texorpdfstring{doLater()}{doLater()}}
+{\footnotesize\ttfamily \label{namespacefunc__async_a5f3e4ca374f7de72954d29184be8f06d_a5f3e4ca374f7de72954d29184be8f06d} 
+void func\+\_\+async\+::do\+Later (\begin{DoxyParamCaption}\item[{nonstd\+::stop\+\_\+token}]{st}{, }\item[{const std\+::function$<$ void(void)$>$ \&}]{f}{, }\item[{const size\+\_\+t}]{interval\+Ms}{}\end{DoxyParamCaption})}
+
+\Hypertarget{namespacefunc__async_a224c931f9dead8e231b14ceb26da3617_a224c931f9dead8e231b14ceb26da3617}\index{func\_async@{func\_async}!doPeriodically@{doPeriodically}}
+\index{doPeriodically@{doPeriodically}!func\_async@{func\_async}}
+\doxysubsubsection{\texorpdfstring{doPeriodically()}{doPeriodically()}}
+{\footnotesize\ttfamily \label{namespacefunc__async_a224c931f9dead8e231b14ceb26da3617_a224c931f9dead8e231b14ceb26da3617} 
+void func\+\_\+async\+::do\+Periodically (\begin{DoxyParamCaption}\item[{nonstd\+::stop\+\_\+token}]{st}{, }\item[{const std\+::function$<$ void(void)$>$ \&}]{f}{, }\item[{const size\+\_\+t}]{interval\+Ms}{, }\item[{const bool}]{now}{}\end{DoxyParamCaption})}
+
+
+
+like a timer event --- executes void(\texorpdfstring{$\ast$}{*}f)() function at periodic (ms) intervals 
+
+\begin{DoxyItemize}
+\item now \+: if you want to execute first up now \end{DoxyItemize}

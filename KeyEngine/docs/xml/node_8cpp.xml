@@ -1,0 +1,757 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="node_8cpp" kind="file" language="C++">
+    <compoundname>node.cpp</compoundname>
+    <includes refid="node_8h" local="yes">node.h</includes>
+    <includes refid="mesh_8h" local="yes">mesh.h</includes>
+    <includes refid="d3d__utils_8h" local="yes">d3d_utils.h</includes>
+    <includes refid="assertions__console_8h" local="yes">assertions_console.h</includes>
+    <includes refid="imgui__visitors_8h" local="yes">imgui_visitors.h</includes>
+    <incdepgraph>
+      <node id="13">
+        <label>assertions_console.h</label>
+        <link refid="assertions__console_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>bindable.h</label>
+        <link refid="bindable_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>console.h</label>
+        <link refid="console_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>d3d_utils.h</label>
+        <link refid="d3d__utils_8h"/>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>dynamic_constant_buffer.h</label>
+        <link refid="dynamic__constant__buffer_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>graphics_friend.h</label>
+        <link refid="graphics__friend_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="52">
+        <label>imgui_visitors.h</label>
+        <link refid="imgui__visitors_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>key_type_traits.h</label>
+        <link refid="key__type__traits_8h"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>key_wrl.h</label>
+        <link refid="key__wrl_8h"/>
+        <childnode refid="51" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>material.h</label>
+        <link refid="material_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>mesh.h</label>
+        <link refid="mesh_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>node.h</label>
+        <link refid="node_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="46">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="41">
+        <label>os_utils.h</label>
+        <link refid="os__utils_8h"/>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>rendering_channel.h</label>
+        <link refid="rendering__channel_8h"/>
+      </node>
+      <node id="16">
+        <label>transform_vscb.h</label>
+        <link refid="transform__vscb_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>utils_global.h</label>
+        <link refid="utils__global_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>winner.h</label>
+        <link refid="winner_8h"/>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/node.cpp</label>
+        <link refid="node_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>DirectXMath.h</label>
+      </node>
+      <node id="48">
+        <label>ShlObj.h</label>
+      </node>
+      <node id="38">
+        <label>Windows.h</label>
+      </node>
+      <node id="27">
+        <label>algorithm</label>
+      </node>
+      <node id="23">
+        <label>bitset</label>
+      </node>
+      <node id="18">
+        <label>cassert</label>
+      </node>
+      <node id="25">
+        <label>cinttypes</label>
+      </node>
+      <node id="43">
+        <label>comdef.h</label>
+      </node>
+      <node id="24">
+        <label>cstddef</label>
+      </node>
+      <node id="12">
+        <label>d3d11.h</label>
+      </node>
+      <node id="40">
+        <label>d3dcompiler.h</label>
+      </node>
+      <node id="31">
+        <label>execution</label>
+      </node>
+      <node id="47">
+        <label>functional</label>
+      </node>
+      <node id="26">
+        <label>future</label>
+      </node>
+      <node id="14">
+        <label>iostream</label>
+      </node>
+      <node id="29">
+        <label>iterator</label>
+      </node>
+      <node id="53">
+        <label>limits</label>
+      </node>
+      <node id="5">
+        <label>memory</label>
+      </node>
+      <node id="28">
+        <label>numeric</label>
+      </node>
+      <node id="8">
+        <label>optional</label>
+      </node>
+      <node id="30">
+        <label>regex</label>
+      </node>
+      <node id="37">
+        <label>sdkddkver.h</label>
+      </node>
+      <node id="22">
+        <label>set</label>
+      </node>
+      <node id="21">
+        <label>sstream</label>
+      </node>
+      <node id="6">
+        <label>string</label>
+      </node>
+      <node id="44">
+        <label>tlhelp32.h</label>
+      </node>
+      <node id="39">
+        <label>tuple</label>
+      </node>
+      <node id="33">
+        <label>type_traits</label>
+      </node>
+      <node id="19">
+        <label>unordered_map</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
+      </node>
+      <node id="49">
+        <label>wincred.h</label>
+      </node>
+      <node id="42">
+        <label>winternl.h</label>
+      </node>
+      <node id="51">
+        <label>wrl.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="node_8cpp_a7033474dc4dd44415f17c4db50e49143_1a7033474dc4dd44415f17c4db50e49143" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void swap</definition>
+        <argsstring>(Node &amp;lhs, Node &amp;rhs)</argsstring>
+        <name>swap</name>
+        <param>
+          <type><ref refid="classNode" kindref="compound">Node</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="classNode" kindref="compound">Node</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/node.cpp" line="77" column="6" bodyfile="src/node.cpp" bodystart="77" bodyend="94"/>
+        <referencedby refid="classNode_a3bf02421192799b0e21d4d2f4bb0d748_1a3bf02421192799b0e21d4d2f4bb0d748" compoundref="node_8cpp" startline="70" endline="75">Node::operator=</referencedby>
+        <referencedby refid="classOperation_acab0d4a120ffe69b45112a02e630dcdc_1acab0d4a120ffe69b45112a02e630dcdc" compoundref="operation_8cpp" startline="23" endline="27">Operation::operator=</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="node_8h" kindref="compound">node.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mesh_8h" kindref="compound">mesh.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d3d__utils_8h" kindref="compound">d3d_utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="assertions__console_8h" kindref="compound">assertions_console.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>FINAL_RELEASE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>include<sp/>&quot;<ref refid="imgui__visitors_8h" kindref="compound">imgui_visitors.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceDirectX" kindref="compound">dx</ref><sp/>=<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="classNode_a05f9d16dc2cfba19c76ca22e9b39b817_1a05f9d16dc2cfba19c76ca22e9b39b817" refkind="member"><highlight class="normal"><ref refid="classNode_a05f9d16dc2cfba19c76ca22e9b39b817_1a05f9d16dc2cfba19c76ca22e9b39b817" kindref="member">Node::Node</ref>(<sp/><ref refid="classNode" kindref="compound">Node</ref><sp/>*pParent,</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>imguiId,</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;name,</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMMATRIX<sp/>&amp;localTransform,</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Mesh*&gt;<sp/>meshes<sp/>)</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>m_imguiId(imguiId),</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>m_meshes{std::move(<sp/>meshes<sp/>)},</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>m_name{name},</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pParent{pParent}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>dx::XMStoreFloat4x4(<sp/>&amp;<ref refid="classNode_a087367a284aa72681e670b708100b2ab_1a087367a284aa72681e670b708100b2ab" kindref="member">m_localTransform</ref>,<sp/>localTransform<sp/>);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>dx::XMStoreFloat4x4(<sp/>&amp;<ref refid="classNode_ae0a32bf0a1332abc261a5f2124dbcfe8_1ae0a32bf0a1332abc261a5f2124dbcfe8" kindref="member">m_worldTransform</ref>,<sp/>dx::XMMatrixIdentity()<sp/>);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//using<sp/>namespace<sp/>util;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;[scale,<sp/>rot,<sp/>pos]<sp/>=<sp/><ref refid="namespaceutil_a0daed1a190b150f308e07625e5e2774b_1a0daed1a190b150f308e07625e5e2774b" kindref="member">util::decomposeAffineMatrix</ref>(<sp/><ref refid="classNode_a087367a284aa72681e670b708100b2ab_1a087367a284aa72681e670b708100b2ab" kindref="member">m_localTransform</ref><sp/>);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNode_ae9db78eb26f3ab20b4d1dbebfdd89aa6_1ae9db78eb26f3ab20b4d1dbebfdd89aa6" kindref="member">m_scalePrev</ref><sp/>=<sp/><ref refid="classNode_a20db0fe1c3f41388e1787f5c50f13e03_1a20db0fe1c3f41388e1787f5c50f13e03" kindref="member">m_scale</ref><sp/>=<sp/>scale;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNode_ac1647faf191b8e44f65572df021d9dff_1ac1647faf191b8e44f65572df021d9dff" kindref="member">m_rotPrev</ref><sp/>=<sp/><ref refid="classNode_a85016078ebbef63b1f473cb440ebcaf5_1a85016078ebbef63b1f473cb440ebcaf5" kindref="member">m_rot</ref><sp/>=<sp/>rot;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNode_ac3433e243642beabe381192163b729be_1ac3433e243642beabe381192163b729be" kindref="member">m_posPrev</ref><sp/>=<sp/><ref refid="classNode_ac130bb9d04a120c890b5908df58e2814_1ac130bb9d04a120c890b5908df58e2814" kindref="member">m_pos</ref><sp/>=<sp/>pos;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>pMesh<sp/>:<sp/><ref refid="classNode_a0ebf1ae732e341e11fc4b86ea8a94f5d_1a0ebf1ae732e341e11fc4b86ea8a94f5d" kindref="member">m_meshes</ref><sp/>)</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pMesh-&gt;setNode(<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="classNode_a19615e680e25e3e4f5d3c583cbb041ed_1a19615e680e25e3e4f5d3c583cbb041ed" refkind="member"><highlight class="normal"><ref refid="classNode_a19615e680e25e3e4f5d3c583cbb041ed_1a19615e680e25e3e4f5d3c583cbb041ed" kindref="member">Node::~Node</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNode_a303c3095973f876cee6709d5b33bce2e_1a303c3095973f876cee6709d5b33bce2e" kindref="member">m_children</ref>.clear();</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNode_a0ebf1ae732e341e11fc4b86ea8a94f5d_1a0ebf1ae732e341e11fc4b86ea8a94f5d" kindref="member">m_meshes</ref>.clear();</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="classNode_ac5c19f66ccd0def92cf50d9b49007ea4_1ac5c19f66ccd0def92cf50d9b49007ea4" refkind="member"><highlight class="normal"><ref refid="classNode_a05f9d16dc2cfba19c76ca22e9b39b817_1a05f9d16dc2cfba19c76ca22e9b39b817" kindref="member">Node::Node</ref>(<sp/><ref refid="classNode" kindref="compound">Node</ref><sp/>&amp;&amp;rhs<sp/>)<sp/>noexcept</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>m_bTransformNeedsUpdate{rhs.m_bTransformNeedsUpdate},</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>m_imguiId{rhs.m_imguiId},</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>m_name{std::move(<sp/>rhs.m_name<sp/>)},</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>m_scale{rhs.m_scale},</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>m_rot{rhs.m_rot},</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pos{rhs.m_pos},</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>m_scalePrev{rhs.m_scalePrev},</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>m_rotPrev{rhs.m_rotPrev},</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>m_posPrev{rhs.m_posPrev},</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>m_localTransform{rhs.m_localTransform},</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>m_worldTransform{rhs.m_worldTransform},</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pParent{rhs.m_pParent},</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>m_children{std::move(<sp/>rhs.m_children<sp/>)},</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>m_meshes{std::move(<sp/>rhs.m_meshes<sp/>)}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>*<ref refid="namespacemesh" kindref="compound">mesh</ref><sp/>:<sp/>rhs.m_meshes<sp/>)</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacemesh" kindref="compound">mesh</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>rhs.m_pParent<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="classNode_a3bf02421192799b0e21d4d2f4bb0d748_1a3bf02421192799b0e21d4d2f4bb0d748" refkind="member"><highlight class="normal"><ref refid="classNode" kindref="compound">Node</ref>&amp;<sp/><ref refid="classNode_a4a5a3d9fb02f38a659afe2875c23f067_1a4a5a3d9fb02f38a659afe2875c23f067" kindref="member">Node::operator=</ref>(<sp/><ref refid="classNode" kindref="compound">Node</ref><sp/>&amp;&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNode" kindref="compound">Node</ref><sp/>tmp{std::move(<sp/>rhs<sp/>)};</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="node_8cpp_a7033474dc4dd44415f17c4db50e49143_1a7033474dc4dd44415f17c4db50e49143" kindref="member">swap</ref>(<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>tmp<sp/>);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="classNode_a7033474dc4dd44415f17c4db50e49143_1a7033474dc4dd44415f17c4db50e49143" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="node_8cpp_a7033474dc4dd44415f17c4db50e49143_1a7033474dc4dd44415f17c4db50e49143" kindref="member">swap</ref>(<sp/><ref refid="classNode" kindref="compound">Node</ref><sp/>&amp;lhs,</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNode" kindref="compound">Node</ref><sp/>&amp;rhs<sp/>)</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>lhs.<ref refid="classNode_a4673b20c008a3c356038b50004322d8b_1a4673b20c008a3c356038b50004322d8b" kindref="member">m_bTransformNeedsUpdate</ref><sp/>=<sp/>rhs.<ref refid="classNode_a4673b20c008a3c356038b50004322d8b_1a4673b20c008a3c356038b50004322d8b" kindref="member">m_bTransformNeedsUpdate</ref>;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>lhs.<ref refid="classNode_adcaca1c8286daf7c8168939407a45d21_1adcaca1c8286daf7c8168939407a45d21" kindref="member">m_imguiId</ref><sp/>=<sp/>rhs.<ref refid="classNode_adcaca1c8286daf7c8168939407a45d21_1adcaca1c8286daf7c8168939407a45d21" kindref="member">m_imguiId</ref>;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>std::swap(lhs.<ref refid="classNode_ac1c15ca33da3a3c9eaa09c43e94f6404_1ac1c15ca33da3a3c9eaa09c43e94f6404" kindref="member">m_name</ref>,<sp/>rhs.<sp/>m_name<sp/>);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>lhs.<ref refid="classNode_a20db0fe1c3f41388e1787f5c50f13e03_1a20db0fe1c3f41388e1787f5c50f13e03" kindref="member">m_scale</ref><sp/>=<sp/>rhs.<ref refid="classNode_a20db0fe1c3f41388e1787f5c50f13e03_1a20db0fe1c3f41388e1787f5c50f13e03" kindref="member">m_scale</ref>;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>lhs.<ref refid="classNode_a85016078ebbef63b1f473cb440ebcaf5_1a85016078ebbef63b1f473cb440ebcaf5" kindref="member">m_rot</ref><sp/>=<sp/>rhs.<ref refid="classNode_a85016078ebbef63b1f473cb440ebcaf5_1a85016078ebbef63b1f473cb440ebcaf5" kindref="member">m_rot</ref>;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>lhs.<ref refid="classNode_ac130bb9d04a120c890b5908df58e2814_1ac130bb9d04a120c890b5908df58e2814" kindref="member">m_pos</ref><sp/>=<sp/>rhs.<ref refid="classNode_ac130bb9d04a120c890b5908df58e2814_1ac130bb9d04a120c890b5908df58e2814" kindref="member">m_pos</ref>;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>lhs.<ref refid="classNode_ae9db78eb26f3ab20b4d1dbebfdd89aa6_1ae9db78eb26f3ab20b4d1dbebfdd89aa6" kindref="member">m_scalePrev</ref><sp/>=<sp/>rhs.<ref refid="classNode_ae9db78eb26f3ab20b4d1dbebfdd89aa6_1ae9db78eb26f3ab20b4d1dbebfdd89aa6" kindref="member">m_scalePrev</ref>;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>lhs.<ref refid="classNode_ac1647faf191b8e44f65572df021d9dff_1ac1647faf191b8e44f65572df021d9dff" kindref="member">m_rotPrev</ref><sp/>=<sp/>rhs.<ref refid="classNode_ac1647faf191b8e44f65572df021d9dff_1ac1647faf191b8e44f65572df021d9dff" kindref="member">m_rotPrev</ref>;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>lhs.<ref refid="classNode_ac3433e243642beabe381192163b729be_1ac3433e243642beabe381192163b729be" kindref="member">m_posPrev</ref><sp/>=<sp/>rhs.<ref refid="classNode_ac3433e243642beabe381192163b729be_1ac3433e243642beabe381192163b729be" kindref="member">m_posPrev</ref>;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>lhs.<ref refid="classNode_a087367a284aa72681e670b708100b2ab_1a087367a284aa72681e670b708100b2ab" kindref="member">m_localTransform</ref><sp/>=<sp/>rhs.<ref refid="classNode_a087367a284aa72681e670b708100b2ab_1a087367a284aa72681e670b708100b2ab" kindref="member">m_localTransform</ref>;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>lhs.<ref refid="classNode_ae0a32bf0a1332abc261a5f2124dbcfe8_1ae0a32bf0a1332abc261a5f2124dbcfe8" kindref="member">m_worldTransform</ref><sp/>=<sp/>rhs.<ref refid="classNode_ae0a32bf0a1332abc261a5f2124dbcfe8_1ae0a32bf0a1332abc261a5f2124dbcfe8" kindref="member">m_worldTransform</ref>;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>std::swap(<sp/>lhs.<ref refid="classNode_a62217e5625c118036a0c8bc2170b1c36_1a62217e5625c118036a0c8bc2170b1c36" kindref="member">m_pParent</ref>,<sp/>rhs.<ref refid="classNode_a62217e5625c118036a0c8bc2170b1c36_1a62217e5625c118036a0c8bc2170b1c36" kindref="member">m_pParent</ref><sp/>);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>std::swap(lhs.<ref refid="classNode_a303c3095973f876cee6709d5b33bce2e_1a303c3095973f876cee6709d5b33bce2e" kindref="member">m_children</ref>,<sp/>rhs.<sp/>m_children<sp/>);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>std::swap(<sp/>lhs.<ref refid="classNode_a0ebf1ae732e341e11fc4b86ea8a94f5d_1a0ebf1ae732e341e11fc4b86ea8a94f5d" kindref="member">m_meshes</ref>,<sp/>rhs.<ref refid="classNode_a0ebf1ae732e341e11fc4b86ea8a94f5d_1a0ebf1ae732e341e11fc4b86ea8a94f5d" kindref="member">m_meshes</ref><sp/>);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="classNode_ac813be287eef4d0672a08487ab0d35b0_1ac813be287eef4d0672a08487ab0d35b0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_ac813be287eef4d0672a08487ab0d35b0_1ac813be287eef4d0672a08487ab0d35b0" kindref="member">Node::update</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>dt,</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>dx::XMMATRIX<sp/>&amp;parentWorldTransform,</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>lerpBetweenFrames,</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bEnableSmoothMovement<sp/></highlight><highlight class="comment">/*=<sp/>false*/</highlight><highlight class="normal"><sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>dx::XMMATRIX<sp/>worldTransform;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>m_bTransformNeedsUpdate<sp/>)</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>updateLocalTransform(<sp/>dt,<sp/>lerpBetweenFrames,<sp/>bEnableSmoothMovement<sp/>);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>worldTransform<sp/>=<sp/>dx::XMLoadFloat4x4(<sp/>&amp;m_localTransform<sp/>)<sp/>*<sp/>parentWorldTransform;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>setWorldTransform(<sp/>worldTransform<sp/>);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>pMesh<sp/>:<sp/>m_meshes<sp/>)</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pMesh-&gt;update(<sp/>dt,<sp/>lerpBetweenFrames<sp/>);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;pNode<sp/>:<sp/>m_children<sp/>)</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pNode-&gt;update(<sp/>dt,<sp/>worldTransform,<sp/>lerpBetweenFrames,<sp/>bEnableSmoothMovement<sp/>);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121" refid="classNode_a80616842a9027c391581175686991599_1a80616842a9027c391581175686991599" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_a80616842a9027c391581175686991599_1a80616842a9027c391581175686991599" kindref="member">Node::addChild</ref>(<sp/>std::unique_ptr&lt;Node&gt;<sp/>pChild<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="122"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>pChild,<sp/></highlight><highlight class="stringliteral">&quot;Invalid<sp/>Node!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>m_children.emplace_back(<sp/>std::move(<sp/>pChild<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127" refid="classNode_a7eb3bd9d15572570aacde0f582eb374a_1a7eb3bd9d15572570aacde0f582eb374a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_a7eb3bd9d15572570aacde0f582eb374a_1a7eb3bd9d15572570aacde0f582eb374a" kindref="member">Node::invalidateChildrenTransform</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="128"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classNode_a4673b20c008a3c356038b50004322d8b_1a4673b20c008a3c356038b50004322d8b" kindref="member">m_bTransformNeedsUpdate</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;pNode<sp/>:<sp/><ref refid="classNode_a303c3095973f876cee6709d5b33bce2e_1a303c3095973f876cee6709d5b33bce2e" kindref="member">m_children</ref><sp/>)</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pNode-&gt;invalidateChildrenTransform();</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136" refid="classNode_acea3ab87949fd8fbbfa7524371f5ee80_1acea3ab87949fd8fbbfa7524371f5ee80" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_acea3ab87949fd8fbbfa7524371f5ee80_1acea3ab87949fd8fbbfa7524371f5ee80" kindref="member">Node::setWorldTransform</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>dx::XMMATRIX<sp/>&amp;worldTransform<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="137"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>dx::XMStoreFloat4x4(<sp/>&amp;m_worldTransform,<sp/>worldTransform<sp/>);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>m_bTransformNeedsUpdate<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142" refid="classNode_a2a69d3d37f1a4f37110f6bab1e9db440_1a2a69d3d37f1a4f37110f6bab1e9db440" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_a2a69d3d37f1a4f37110f6bab1e9db440_1a2a69d3d37f1a4f37110f6bab1e9db440" kindref="member">Node::setTransform</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>scale,</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;rotAnglesRadians,</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;pos<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>setScale(<sp/>scale<sp/>);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>setRotation(<sp/>rotAnglesRadians<sp/>);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>setTranslation(<sp/>pos<sp/>);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151" refid="classNode_afe80a694754e96b529d59e9c8ea72c07_1afe80a694754e96b529d59e9c8ea72c07" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_a2a69d3d37f1a4f37110f6bab1e9db440_1a2a69d3d37f1a4f37110f6bab1e9db440" kindref="member">Node::setTransform</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>scale,</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT4<sp/>&amp;rotQuat,</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;pos<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="154"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>eulerAngles<sp/>=<sp/><ref refid="namespaceutil_a7dc0d9d7815903082f6007d6fed534ac_1a7dc0d9d7815903082f6007d6fed534ac" kindref="member">util::quaternionToEulerAngles</ref>(<sp/>rotQuat<sp/>);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>setScale(<sp/>scale<sp/>);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>setRotation(<sp/>eulerAngles<sp/>);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>setTranslation(<sp/>pos<sp/>);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162" refid="classNode_a7521f7c7b62ae35229b89cae6f10d461_1a7521f7c7b62ae35229b89cae6f10d461" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_a2a69d3d37f1a4f37110f6bab1e9db440_1a2a69d3d37f1a4f37110f6bab1e9db440" kindref="member">Node::setTransform</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>scale,</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMVECTOR<sp/>&amp;rotQuat,</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;pos<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="165"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>dx::XMFLOAT4<sp/>rotQuat4{};</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>dx::XMStoreFloat4(<sp/>&amp;rotQuat4,<sp/>rotQuat<sp/>);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>eulerAngles<sp/>=<sp/><ref refid="namespaceutil_a7dc0d9d7815903082f6007d6fed534ac_1a7dc0d9d7815903082f6007d6fed534ac" kindref="member">util::quaternionToEulerAngles</ref>(<sp/>rotQuat4<sp/>);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>setScale(<sp/>scale<sp/>);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/>setRotation(<sp/>eulerAngles<sp/>);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>setTranslation(<sp/>pos<sp/>);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175" refid="classNode_ad4567bfce5a93e58b598475c9a4decc9_1ad4567bfce5a93e58b598475c9a4decc9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_ad4567bfce5a93e58b598475c9a4decc9_1ad4567bfce5a93e58b598475c9a4decc9" kindref="member">Node::setScale</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>scale<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="176"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>m_scale.x<sp/>!=<sp/>scale<sp/>)</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dx::XMVectorReplicate(<sp/>scale<sp/>);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>invalidateChildrenTransform();</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="182"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184" refid="classNode_a91a4cba0b740b43b17823efe14c9ca4e_1a91a4cba0b740b43b17823efe14c9ca4e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_ad4567bfce5a93e58b598475c9a4decc9_1ad4567bfce5a93e58b598475c9a4decc9" kindref="member">Node::setScale</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;scale<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="185"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceutil" kindref="compound">util</ref>;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>m_scale<sp/>!=<sp/>scale<sp/>)</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_scale<sp/>=<sp/>scale;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>invalidateChildrenTransform();</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="192"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194" refid="classNode_a285a6160e0f168657c41bdaa796f4f90_1a285a6160e0f168657c41bdaa796f4f90" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_a285a6160e0f168657c41bdaa796f4f90_1a285a6160e0f168657c41bdaa796f4f90" kindref="member">Node::scaleRel</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;scale<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="195"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>!(scale.x<sp/>==<sp/>0<sp/>&amp;&amp;<sp/>scale.y<sp/>==<sp/>0<sp/>&amp;&amp;<sp/>scale.z<sp/>==<sp/>0),<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>reason<sp/>for<sp/>relative<sp/>scale!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>m_scale.x<sp/>+=<sp/>scale.x;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>m_scale.y<sp/>+=<sp/>scale.y;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>m_scale.z<sp/>+=<sp/>scale.z;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>invalidateChildrenTransform();</highlight></codeline>
+<codeline lineno="201"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203" refid="classNode_aec1598a16c459b61cb837c7d937f9596_1aec1598a16c459b61cb837c7d937f9596" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_aec1598a16c459b61cb837c7d937f9596_1aec1598a16c459b61cb837c7d937f9596" kindref="member">Node::setRotation</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;rotAnglesRadians<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="204"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceutil" kindref="compound">util</ref>;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>m_rot<sp/>!=<sp/>rotAnglesRadians<sp/>)</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_rot<sp/>=<sp/>rotAnglesRadians;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>invalidateChildrenTransform();</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="211"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213" refid="classNode_a0d2d32c7c6f8ae40c1120285da062eb1_1a0d2d32c7c6f8ae40c1120285da062eb1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_a0d2d32c7c6f8ae40c1120285da062eb1_1a0d2d32c7c6f8ae40c1120285da062eb1" kindref="member">Node::rotateRel</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;rotAnglesRadians<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="214"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>!(rotAnglesRadians.x<sp/>==<sp/>0<sp/>&amp;&amp;<sp/>rotAnglesRadians.y<sp/>==<sp/>0<sp/>&amp;&amp;<sp/>rotAnglesRadians.z<sp/>==<sp/>0),<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>reason<sp/>for<sp/>relative<sp/>rotation!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/>m_rot.x<sp/>+=<sp/>rotAnglesRadians.x;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/>m_rot.y<sp/>+=<sp/>rotAnglesRadians.y;</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>m_rot.z<sp/>+=<sp/>rotAnglesRadians.z;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/>invalidateChildrenTransform();</highlight></codeline>
+<codeline lineno="220"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222" refid="classNode_a9e1c557f08a393ba879fba874129be60_1a9e1c557f08a393ba879fba874129be60" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_a9e1c557f08a393ba879fba874129be60_1a9e1c557f08a393ba879fba874129be60" kindref="member">Node::setTranslation</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;pos<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="223"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceutil" kindref="compound">util</ref>;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>m_pos<sp/>!=<sp/>pos<sp/>)</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_pos.x<sp/>=<sp/>pos.x;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_pos.y<sp/>=<sp/>pos.y;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_pos.z<sp/>=<sp/>pos.z;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>invalidateChildrenTransform();</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="232"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234" refid="classNode_ac29f7a250f3edfb8de121396a13a9d07_1ac29f7a250f3edfb8de121396a13a9d07" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_ac29f7a250f3edfb8de121396a13a9d07_1ac29f7a250f3edfb8de121396a13a9d07" kindref="member">Node::translateRel</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;pos<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="235"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>!(pos.x<sp/>==<sp/>0<sp/>&amp;&amp;<sp/>pos.y<sp/>==<sp/>0<sp/>&amp;&amp;<sp/>pos.z<sp/>==<sp/>0),<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>reason<sp/>for<sp/>relative<sp/>translation!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pos.x<sp/>+=<sp/>pos.x;</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pos.y<sp/>+=<sp/>pos.y;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pos.z<sp/>+=<sp/>pos.z;</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>invalidateChildrenTransform();</highlight></codeline>
+<codeline lineno="241"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="243" refid="classNode_a80faf48b135a1702a1811d40aec96e47_1a80faf48b135a1702a1811d40aec96e47" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_a80faf48b135a1702a1811d40aec96e47_1a80faf48b135a1702a1811d40aec96e47" kindref="member">Node::updateLocalTransform</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>dt,</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>lerpBetweenFrames,</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bEnableSmoothMovement<sp/></highlight><highlight class="comment">/*=<sp/>false*/</highlight><highlight class="normal"><sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="246"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/>dx::XMVECTOR<sp/>scaleVec{};</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/>dx::XMVECTOR<sp/>rotQuatVec{};</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/>dx::XMVECTOR<sp/>posVec{};</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>bEnableSmoothMovement<sp/>)</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>alpha<sp/>=<sp/>3<sp/>*<sp/>dt<sp/>;</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>dx::XMVECTOR<sp/>scaleVecPrev<sp/>=<sp/>dx::XMLoadFloat3(<sp/>&amp;m_scalePrev<sp/>);</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>dx::XMVECTOR<sp/>rotQuatVecPrev<sp/>=<sp/><ref refid="namespaceutil_acac5bfddefb43e62a0a5ea6e8fa6d0e2_1acac5bfddefb43e62a0a5ea6e8fa6d0e2" kindref="member">util::pitchYawRollToQuaternion</ref>(<sp/>m_rotPrev<sp/>);</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>dx::XMVECTOR<sp/>posVecPrev<sp/>=<sp/>dx::XMLoadFloat3(<sp/>&amp;m_posPrev<sp/>);</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>scaleVec<sp/>=<sp/>dx::XMLoadFloat3(<sp/>&amp;m_scale<sp/>);</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rotQuatVec<sp/>=<sp/><ref refid="namespaceutil_acac5bfddefb43e62a0a5ea6e8fa6d0e2_1acac5bfddefb43e62a0a5ea6e8fa6d0e2" kindref="member">util::pitchYawRollToQuaternion</ref>(<sp/>m_rot<sp/>);</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>posVec<sp/>=<sp/>dx::XMLoadFloat3(<sp/>&amp;m_pos<sp/>);</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>scaleVec<sp/>=<sp/>dx::XMVectorLerp(<sp/>scaleVecPrev,<sp/>scaleVec,<sp/>alpha<sp/>);</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rotQuatVec<sp/>=<sp/>dx::XMQuaternionSlerp(<sp/>rotQuatVecPrev,<sp/>rotQuatVec,<sp/>alpha<sp/>);</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>posVec<sp/>=<sp/>dx::XMVectorLerp(<sp/>posVecPrev,<sp/>posVec,<sp/>alpha<sp/>);</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_scalePrev<sp/>=<sp/>m_scale;</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_rotPrev<sp/>=<sp/>m_rot;</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_posPrev<sp/>=<sp/>m_pos;</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>scaleVec<sp/>=<sp/>dx::XMLoadFloat3(<sp/>&amp;m_scale<sp/>);</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rotQuatVec<sp/>=<sp/><ref refid="namespaceutil_acac5bfddefb43e62a0a5ea6e8fa6d0e2_1acac5bfddefb43e62a0a5ea6e8fa6d0e2" kindref="member">util::pitchYawRollToQuaternion</ref>(<sp/>m_rot<sp/>);</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>posVec<sp/>=<sp/>dx::XMLoadFloat3(<sp/>&amp;m_pos<sp/>);</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>dx::XMMATRIX<sp/>scaleMat<sp/>=<sp/>dx::XMMatrixScalingFromVector(<sp/>scaleVec<sp/>);</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>dx::XMMATRIX<sp/>rotMat<sp/>=<sp/>dx::XMMatrixRotationQuaternion(<sp/>rotQuatVec<sp/>);</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>dx::XMMATRIX<sp/>posMat<sp/>=<sp/>dx::XMMatrixTranslationFromVector(<sp/>posVec<sp/>);</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/>dx::XMStoreFloat4x4(<sp/>&amp;m_localTransform,<sp/>scaleMat<sp/>*<sp/>rotMat<sp/>*<sp/>posMat<sp/>);</highlight></codeline>
+<codeline lineno="283"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"></highlight></codeline>
+<codeline lineno="285" refid="classNode_aa13d41a9bd40f5109f49929838af0e56_1aa13d41a9bd40f5109f49929838af0e56" refkind="member"><highlight class="normal">DirectX::XMMATRIX<sp/><ref refid="classNode_aa13d41a9bd40f5109f49929838af0e56_1aa13d41a9bd40f5109f49929838af0e56" kindref="member">Node::getWorldTransform</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="286"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>dx::XMLoadFloat4x4(<sp/>&amp;<ref refid="classNode_ae0a32bf0a1332abc261a5f2124dbcfe8_1ae0a32bf0a1332abc261a5f2124dbcfe8" kindref="member">m_worldTransform</ref><sp/>);</highlight></codeline>
+<codeline lineno="288"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight></codeline>
+<codeline lineno="290" refid="classNode_a21a501aca121414cf5fb85a3649d6ddb_1a21a501aca121414cf5fb85a3649d6ddb" refkind="member"><highlight class="normal">DirectX::XMFLOAT4X4<sp/><ref refid="classNode_a21a501aca121414cf5fb85a3649d6ddb_1a21a501aca121414cf5fb85a3649d6ddb" kindref="member">Node::getWorldTransform4x4</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="291"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classNode_ae0a32bf0a1332abc261a5f2124dbcfe8_1ae0a32bf0a1332abc261a5f2124dbcfe8" kindref="member">m_worldTransform</ref>;</highlight></codeline>
+<codeline lineno="293"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight></codeline>
+<codeline lineno="295" refid="classNode_a5414597b9851bd398548999e3565aea1_1a5414597b9851bd398548999e3565aea1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classNode_a5414597b9851bd398548999e3565aea1_1a5414597b9851bd398548999e3565aea1" kindref="member">Node::getScale</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="296"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classNode_a20db0fe1c3f41388e1787f5c50f13e03_1a20db0fe1c3f41388e1787f5c50f13e03" kindref="member">m_scale</ref>.x;</highlight></codeline>
+<codeline lineno="298"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight></codeline>
+<codeline lineno="300" refid="classNode_a1c7b6dca6b31ea7e6564fc5c8517a5af_1a1c7b6dca6b31ea7e6564fc5c8517a5af" refkind="member"><highlight class="normal">DirectX::XMFLOAT3<sp/><ref refid="classNode_a1c7b6dca6b31ea7e6564fc5c8517a5af_1a1c7b6dca6b31ea7e6564fc5c8517a5af" kindref="member">Node::getScale3</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="301"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classNode_a20db0fe1c3f41388e1787f5c50f13e03_1a20db0fe1c3f41388e1787f5c50f13e03" kindref="member">m_scale</ref>;</highlight></codeline>
+<codeline lineno="303"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"></highlight></codeline>
+<codeline lineno="305" refid="classNode_ab61123bd9fcbad0b02f8363e7df24e7d_1ab61123bd9fcbad0b02f8363e7df24e7d" refkind="member"><highlight class="normal">DirectX::XMFLOAT3<sp/><ref refid="classNode_ab61123bd9fcbad0b02f8363e7df24e7d_1ab61123bd9fcbad0b02f8363e7df24e7d" kindref="member">Node::getRotation</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="306"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classNode_a85016078ebbef63b1f473cb440ebcaf5_1a85016078ebbef63b1f473cb440ebcaf5" kindref="member">m_rot</ref>;</highlight></codeline>
+<codeline lineno="308"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight></codeline>
+<codeline lineno="310" refid="classNode_a22dfd767bbb91e603baf265377b2a888_1a22dfd767bbb91e603baf265377b2a888" refkind="member"><highlight class="normal">DirectX::XMVECTOR<sp/><ref refid="classNode_a22dfd767bbb91e603baf265377b2a888_1a22dfd767bbb91e603baf265377b2a888" kindref="member">Node::getRotationQuat</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="311"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceutil_acac5bfddefb43e62a0a5ea6e8fa6d0e2_1acac5bfddefb43e62a0a5ea6e8fa6d0e2" kindref="member">util::pitchYawRollToQuaternion</ref>(<sp/><ref refid="classNode_a85016078ebbef63b1f473cb440ebcaf5_1a85016078ebbef63b1f473cb440ebcaf5" kindref="member">m_rot</ref><sp/>);</highlight></codeline>
+<codeline lineno="313"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"></highlight></codeline>
+<codeline lineno="315" refid="classNode_aa38921aea0a3a3473512631daf05ebd8_1aa38921aea0a3a3473512631daf05ebd8" refkind="member"><highlight class="normal">DirectX::XMFLOAT3<sp/><ref refid="classNode_aa38921aea0a3a3473512631daf05ebd8_1aa38921aea0a3a3473512631daf05ebd8" kindref="member">Node::getPosition</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="316"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classNode_ac130bb9d04a120c890b5908df58e2814_1ac130bb9d04a120c890b5908df58e2814" kindref="member">m_pos</ref>;</highlight></codeline>
+<codeline lineno="318"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"></highlight></codeline>
+<codeline lineno="320" refid="classNode_a54b3bd58295e8a1dee6b8a8acfced8ea_1a54b3bd58295e8a1dee6b8a8acfced8ea" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_a54b3bd58295e8a1dee6b8a8acfced8ea_1a54b3bd58295e8a1dee6b8a8acfced8ea" kindref="member">Node::accept</ref>(<sp/><ref refid="classIImguiNodeVisitor" kindref="compound">IImguiNodeVisitor</ref><sp/>&amp;mv<sp/>)</highlight></codeline>
+<codeline lineno="321"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bImguiNodeOpen<sp/>=<sp/>mv.<ref refid="classIImguiNodeVisitor_a3ffe58aedb22d53f18611cd112b25bbd_1a3ffe58aedb22d53f18611cd112b25bbd" kindref="member">visit</ref>(<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>bImguiNodeOpen<sp/>)</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;node<sp/>:<sp/><ref refid="classNode_a303c3095973f876cee6709d5b33bce2e_1a303c3095973f876cee6709d5b33bce2e" kindref="member">m_children</ref><sp/>)</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>node-&gt;accept(<sp/>mv<sp/>);</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mv.<ref refid="classIImguiNodeVisitor_a7b479f0e4cee70568f86148dd7848c27_1a7b479f0e4cee70568f86148dd7848c27" kindref="member">onVisit</ref>(<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="331"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"></highlight></codeline>
+<codeline lineno="333" refid="classNode_a1bc2242ba461172b0ad628f131d8dc3c_1a1bc2242ba461172b0ad628f131d8dc3c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNode_a54b3bd58295e8a1dee6b8a8acfced8ea_1a54b3bd58295e8a1dee6b8a8acfced8ea" kindref="member">Node::accept</ref>(<sp/><ref refid="classIImGuiConstantBufferVisitor" kindref="compound">IImGuiConstantBufferVisitor</ref><sp/>&amp;ev<sp/>)</highlight></codeline>
+<codeline lineno="334"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;<ref refid="namespacemesh" kindref="compound">mesh</ref><sp/>:<sp/><ref refid="classNode_a0ebf1ae732e341e11fc4b86ea8a94f5d_1a0ebf1ae732e341e11fc4b86ea8a94f5d" kindref="member">m_meshes</ref><sp/>)</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacemesh" kindref="compound">mesh</ref>-&gt;accept(<sp/>ev<sp/>);</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="339"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"></highlight></codeline>
+<codeline lineno="341" refid="classNode_a0374f189312791b63f5a85a5b6dc2b04_1a0374f189312791b63f5a85a5b6dc2b04" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classNode_a0374f189312791b63f5a85a5b6dc2b04_1a0374f189312791b63f5a85a5b6dc2b04" kindref="member">Node::getImguiId</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="342"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classNode_adcaca1c8286daf7c8168939407a45d21_1adcaca1c8286daf7c8168939407a45d21" kindref="member">m_imguiId</ref>;</highlight></codeline>
+<codeline lineno="344"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"></highlight></codeline>
+<codeline lineno="346" refid="classNode_a2378c8d52ee672fdd22a480fa6cc83e5_1a2378c8d52ee672fdd22a480fa6cc83e5" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classNode_a2378c8d52ee672fdd22a480fa6cc83e5_1a2378c8d52ee672fdd22a480fa6cc83e5" kindref="member">Node::hasChildren</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="347"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!<ref refid="classNode_a303c3095973f876cee6709d5b33bce2e_1a303c3095973f876cee6709d5b33bce2e" kindref="member">m_children</ref>.empty();</highlight></codeline>
+<codeline lineno="349"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"></highlight></codeline>
+<codeline lineno="351" refid="classNode_a7c70be855427bd60746b450074640816_1a7c70be855427bd60746b450074640816" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/><ref refid="classNode_a7c70be855427bd60746b450074640816_1a7c70be855427bd60746b450074640816" kindref="member">Node::getName</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="352"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classNode_ac1c15ca33da3a3c9eaa09c43e94f6404_1ac1c15ca33da3a3c9eaa09c43e94f6404" kindref="member">m_name</ref>;</highlight></codeline>
+<codeline lineno="354"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"></highlight></codeline>
+<codeline lineno="356" refid="classNode_a707a17c5abadbfe7a9db1fd45b0e0e8d_1a707a17c5abadbfe7a9db1fd45b0e0e8d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classNode_a707a17c5abadbfe7a9db1fd45b0e0e8d_1a707a17c5abadbfe7a9db1fd45b0e0e8d" kindref="member">Node::isRoot</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="357"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classNode_a62217e5625c118036a0c8bc2170b1c36_1a62217e5625c118036a0c8bc2170b1c36" kindref="member">m_pParent</ref><sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="359"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/node.cpp"/>
+  </compounddef>
+</doxygen>

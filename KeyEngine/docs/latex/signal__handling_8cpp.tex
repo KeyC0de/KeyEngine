@@ -1,0 +1,60 @@
+\doxysection{src/signal\+\_\+handling.cpp File Reference}
+\hypertarget{signal__handling_8cpp}{}\label{signal__handling_8cpp}\index{src/signal\_handling.cpp@{src/signal\_handling.cpp}}
+{\ttfamily \#include $<$cstdlib$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include "{}signal\+\_\+handling.\+h"{}}\newline
+{\ttfamily \#include "{}console.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{signal__handling_8cpp_aa6237f3c9c15f05717539ebc32edf231_aa6237f3c9c15f05717539ebc32edf231}{install\+Sigint\+Handler}} (const int signum)
+\item 
+void \mbox{\hyperlink{signal__handling_8cpp_aedd0c09f22c2ef20f82ec8076be856f9_aedd0c09f22c2ef20f82ec8076be856f9}{install\+Sigsegv\+Handler}} (const int signum)
+\item 
+void \mbox{\hyperlink{signal__handling_8cpp_a1db5db5387ccc85ab796262cedfc6d37_a1db5db5387ccc85ab796262cedfc6d37}{install\+Sigterm\+Handler}} (const int signum)
+\item 
+void \mbox{\hyperlink{signal__handling_8cpp_ad232e405444187f3740e7ff9e6fa1af7_ad232e405444187f3740e7ff9e6fa1af7}{install\+Sigill\+Handler}} (const int signum)
+\item 
+void \mbox{\hyperlink{signal__handling_8cpp_afffe10ce85b207eef069b1ef1082db10_afffe10ce85b207eef069b1ef1082db10}{install\+Sigabrt\+Handler}} (const int signum)
+\item 
+void \mbox{\hyperlink{signal__handling_8cpp_af0199c0ec5133273e0d44c8a7e6cfa5f_af0199c0ec5133273e0d44c8a7e6cfa5f}{install\+Sigfpe\+Handler}} (const int signum)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{signal__handling_8cpp_afffe10ce85b207eef069b1ef1082db10_afffe10ce85b207eef069b1ef1082db10}\index{signal\_handling.cpp@{signal\_handling.cpp}!installSigabrtHandler@{installSigabrtHandler}}
+\index{installSigabrtHandler@{installSigabrtHandler}!signal\_handling.cpp@{signal\_handling.cpp}}
+\doxysubsubsection{\texorpdfstring{installSigabrtHandler()}{installSigabrtHandler()}}
+{\footnotesize\ttfamily \label{signal__handling_8cpp_afffe10ce85b207eef069b1ef1082db10_afffe10ce85b207eef069b1ef1082db10} 
+void install\+Sigabrt\+Handler (\begin{DoxyParamCaption}\item[{const int}]{signum}{}\end{DoxyParamCaption})}
+
+\Hypertarget{signal__handling_8cpp_af0199c0ec5133273e0d44c8a7e6cfa5f_af0199c0ec5133273e0d44c8a7e6cfa5f}\index{signal\_handling.cpp@{signal\_handling.cpp}!installSigfpeHandler@{installSigfpeHandler}}
+\index{installSigfpeHandler@{installSigfpeHandler}!signal\_handling.cpp@{signal\_handling.cpp}}
+\doxysubsubsection{\texorpdfstring{installSigfpeHandler()}{installSigfpeHandler()}}
+{\footnotesize\ttfamily \label{signal__handling_8cpp_af0199c0ec5133273e0d44c8a7e6cfa5f_af0199c0ec5133273e0d44c8a7e6cfa5f} 
+void install\+Sigfpe\+Handler (\begin{DoxyParamCaption}\item[{const int}]{signum}{}\end{DoxyParamCaption})}
+
+\Hypertarget{signal__handling_8cpp_ad232e405444187f3740e7ff9e6fa1af7_ad232e405444187f3740e7ff9e6fa1af7}\index{signal\_handling.cpp@{signal\_handling.cpp}!installSigillHandler@{installSigillHandler}}
+\index{installSigillHandler@{installSigillHandler}!signal\_handling.cpp@{signal\_handling.cpp}}
+\doxysubsubsection{\texorpdfstring{installSigillHandler()}{installSigillHandler()}}
+{\footnotesize\ttfamily \label{signal__handling_8cpp_ad232e405444187f3740e7ff9e6fa1af7_ad232e405444187f3740e7ff9e6fa1af7} 
+void install\+Sigill\+Handler (\begin{DoxyParamCaption}\item[{const int}]{signum}{}\end{DoxyParamCaption})}
+
+\Hypertarget{signal__handling_8cpp_aa6237f3c9c15f05717539ebc32edf231_aa6237f3c9c15f05717539ebc32edf231}\index{signal\_handling.cpp@{signal\_handling.cpp}!installSigintHandler@{installSigintHandler}}
+\index{installSigintHandler@{installSigintHandler}!signal\_handling.cpp@{signal\_handling.cpp}}
+\doxysubsubsection{\texorpdfstring{installSigintHandler()}{installSigintHandler()}}
+{\footnotesize\ttfamily \label{signal__handling_8cpp_aa6237f3c9c15f05717539ebc32edf231_aa6237f3c9c15f05717539ebc32edf231} 
+void install\+Sigint\+Handler (\begin{DoxyParamCaption}\item[{const int}]{signum}{}\end{DoxyParamCaption})}
+
+\Hypertarget{signal__handling_8cpp_aedd0c09f22c2ef20f82ec8076be856f9_aedd0c09f22c2ef20f82ec8076be856f9}\index{signal\_handling.cpp@{signal\_handling.cpp}!installSigsegvHandler@{installSigsegvHandler}}
+\index{installSigsegvHandler@{installSigsegvHandler}!signal\_handling.cpp@{signal\_handling.cpp}}
+\doxysubsubsection{\texorpdfstring{installSigsegvHandler()}{installSigsegvHandler()}}
+{\footnotesize\ttfamily \label{signal__handling_8cpp_aedd0c09f22c2ef20f82ec8076be856f9_aedd0c09f22c2ef20f82ec8076be856f9} 
+void install\+Sigsegv\+Handler (\begin{DoxyParamCaption}\item[{const int}]{signum}{}\end{DoxyParamCaption})}
+
+\Hypertarget{signal__handling_8cpp_a1db5db5387ccc85ab796262cedfc6d37_a1db5db5387ccc85ab796262cedfc6d37}\index{signal\_handling.cpp@{signal\_handling.cpp}!installSigtermHandler@{installSigtermHandler}}
+\index{installSigtermHandler@{installSigtermHandler}!signal\_handling.cpp@{signal\_handling.cpp}}
+\doxysubsubsection{\texorpdfstring{installSigtermHandler()}{installSigtermHandler()}}
+{\footnotesize\ttfamily \label{signal__handling_8cpp_a1db5db5387ccc85ab796262cedfc6d37_a1db5db5387ccc85ab796262cedfc6d37} 
+void install\+Sigterm\+Handler (\begin{DoxyParamCaption}\item[{const int}]{signum}{}\end{DoxyParamCaption})}
+

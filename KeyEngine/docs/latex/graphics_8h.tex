@@ -1,0 +1,49 @@
+\doxysection{inc/graphics.h File Reference}
+\hypertarget{graphics_8h}{}\label{graphics_8h}\index{inc/graphics.h@{inc/graphics.h}}
+{\ttfamily \#include "{}winner.\+h"{}}\newline
+{\ttfamily \#include "{}key\+\_\+wrl.\+h"{}}\newline
+{\ttfamily \#include "{}dxgi1\+\_\+4.\+h"{}}\newline
+{\ttfamily \#include $<$d3d11.\+h$>$}\newline
+{\ttfamily \#include $<$d3dcompiler.\+h$>$}\newline
+{\ttfamily \#include $<$Direct\+XMath.\+h$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include "{}non\+\_\+copyable.\+h"{}}\newline
+{\ttfamily \#include "{}key\+\_\+exception.\+h"{}}\newline
+{\ttfamily \#include "{}color.\+h"{}}\newline
+{\ttfamily \#include "{}texture\+\_\+desc.\+h"{}}\newline
+{\ttfamily \#include "{}key\+\_\+timer.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classGraphics}{Graphics}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classGraphics}{Graphics} API (d3d11) encapsulator. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classGraphics_1_1GraphicsException}{Graphics\+::\+Graphics\+Exception}}
+\item 
+class \mbox{\hyperlink{classGraphics_1_1Adapter}{Graphics\+::\+Adapter}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceren}{ren}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{graphics_8h_a93ba40510117bb29955d8a89703f449b_a93ba40510117bb29955d8a89703f449b}{THROW\+\_\+\+GRAPHICS\+\_\+\+EXCEPTION}}(msg)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{graphics_8h_a93ba40510117bb29955d8a89703f449b_a93ba40510117bb29955d8a89703f449b}\index{graphics.h@{graphics.h}!THROW\_GRAPHICS\_EXCEPTION@{THROW\_GRAPHICS\_EXCEPTION}}
+\index{THROW\_GRAPHICS\_EXCEPTION@{THROW\_GRAPHICS\_EXCEPTION}!graphics.h@{graphics.h}}
+\doxysubsubsection{\texorpdfstring{THROW\_GRAPHICS\_EXCEPTION}{THROW\_GRAPHICS\_EXCEPTION}}
+{\footnotesize\ttfamily \label{graphics_8h_a93ba40510117bb29955d8a89703f449b_a93ba40510117bb29955d8a89703f449b} 
+\#define THROW\+\_\+\+GRAPHICS\+\_\+\+EXCEPTION(\begin{DoxyParamCaption}\item[{}]{msg}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \_\_debugbreak();\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{throw}\ GraphicsException(\ \_\_LINE\_\_,\ \_\_FILE\_\_,\ \_\_FUNCTION\_\_,\ msg\ );}
+
+\end{DoxyCode}

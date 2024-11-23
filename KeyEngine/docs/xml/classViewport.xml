@@ -1,0 +1,266 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classViewport" kind="class" language="C++" prot="public">
+    <compoundname>Viewport</compoundname>
+    <basecompoundref refid="classIBindable" prot="public" virt="non-virtual">IBindable</basecompoundref>
+    <includes refid="viewport_8h" local="no">viewport.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classViewport_a52cc9d4a0d56083a2d55391c2e8f6aeb_1a52cc9d4a0d56083a2d55391c2e8f6aeb" prot="private" static="no" mutable="no">
+        <type>D3D11_VIEWPORT</type>
+        <definition>D3D11_VIEWPORT Viewport::m_viewport</definition>
+        <argsstring></argsstring>
+        <name>m_viewport</name>
+        <qualifiedname>Viewport::m_viewport</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/viewport.h" line="11" column="16" bodyfile="inc/viewport.h" bodystart="11" bodyend="11"/>
+        <referencedby refid="classViewport_a499ea4194cd984db265cd3092495d0a0_1a499ea4194cd984db265cd3092495d0a0" compoundref="viewport_8cpp" startline="15" endline="25">Viewport</referencedby>
+        <referencedby refid="classViewport_a9581fd0fb1754c82ca6bccecc30434db_1a9581fd0fb1754c82ca6bccecc30434db" compoundref="viewport_8cpp" startline="43" endline="46">getHeight</referencedby>
+        <referencedby refid="classViewport_a4faf5c207d0070d7a73e970d78179f69_1a4faf5c207d0070d7a73e970d78179f69" compoundref="viewport_8cpp" startline="63" endline="66">getUid</referencedby>
+        <referencedby refid="classViewport_a91bae7ee43b3c23480e8ab28c37d5c00_1a91bae7ee43b3c23480e8ab28c37d5c00" compoundref="viewport_8cpp" startline="33" endline="36">getViewport</referencedby>
+        <referencedby refid="classViewport_a5fc1b8745016d0e37de7d5991a31c771_1a5fc1b8745016d0e37de7d5991a31c771" compoundref="viewport_8cpp" startline="38" endline="41">getWidth</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classViewport_a474a87491be9dec1321c62c3ea286c3f_1a474a87491be9dec1321c62c3ea286c3f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Viewport::Viewport</definition>
+        <argsstring>(Graphics &amp;gfx)</argsstring>
+        <name>Viewport</name>
+        <qualifiedname>Viewport::Viewport</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/viewport.h" line="13" column="1" bodyfile="src/viewport.cpp" bodystart="8" bodyend="13"/>
+        <referencedby refid="classViewport_a2f5826de45294e7db25bad7fdac2d37f_1a2f5826de45294e7db25bad7fdac2d37f" compoundref="viewport_8cpp" startline="56" endline="61">calcUid</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classViewport_a499ea4194cd984db265cd3092495d0a0_1a499ea4194cd984db265cd3092495d0a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Viewport::Viewport</definition>
+        <argsstring>(Graphics &amp;gfx, const float width, const float height)</argsstring>
+        <name>Viewport</name>
+        <qualifiedname>Viewport::Viewport</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>height</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/viewport.h" line="14" column="1" bodyfile="src/viewport.cpp" bodystart="15" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classViewport_a93ebffad455c130aa536d25d660f00c9_1a93ebffad455c130aa536d25d660f00c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void Viewport::bind</definition>
+        <argsstring>(Graphics &amp;gfx) cond_noex override</argsstring>
+        <name>bind</name>
+        <qualifiedname>Viewport::bind</qualifiedname>
+        <reimplements refid="classIBindable_add4560f78e76629ee81ba701ba1052e1_1add4560f78e76629ee81ba701ba1052e1">bind</reimplements>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+<para>bind graphics resource to a certain stage of the graphics pipeline </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/viewport.h" line="16" column="6" bodyfile="src/viewport.cpp" bodystart="27" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classViewport_a91bae7ee43b3c23480e8ab28c37d5c00_1a91bae7ee43b3c23480e8ab28c37d5c00" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>D3D11_VIEWPORT</type>
+        <definition>D3D11_VIEWPORT Viewport::getViewport</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getViewport</name>
+        <qualifiedname>Viewport::getViewport</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/viewport.h" line="17" column="16" bodyfile="src/viewport.cpp" bodystart="33" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classViewport_a5fc1b8745016d0e37de7d5991a31c771_1a5fc1b8745016d0e37de7d5991a31c771" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float Viewport::getWidth</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getWidth</name>
+        <qualifiedname>Viewport::getWidth</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/viewport.h" line="18" column="7" bodyfile="src/viewport.cpp" bodystart="38" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classViewport_a9581fd0fb1754c82ca6bccecc30434db_1a9581fd0fb1754c82ca6bccecc30434db" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float Viewport::getHeight</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getHeight</name>
+        <qualifiedname>Viewport::getHeight</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/viewport.h" line="19" column="7" bodyfile="src/viewport.cpp" bodystart="43" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classViewport_a4faf5c207d0070d7a73e970d78179f69_1a4faf5c207d0070d7a73e970d78179f69" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string Viewport::getUid</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>getUid</name>
+        <qualifiedname>Viewport::getUid</qualifiedname>
+        <reimplements refid="classIBindable_a7d88cdbd5d500d6d7f1bfabe16927855_1a7d88cdbd5d500d6d7f1bfabe16927855">getUid</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/viewport.h" line="22" column="13" bodyfile="src/viewport.cpp" bodystart="63" bodyend="66"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classViewport_a1256dfd86a85d8bf84da6a0fec8b0ad6_1a1256dfd86a85d8bf84da6a0fec8b0ad6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classViewport" kindref="compound">Viewport</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; Viewport &gt; Viewport::fetch</definition>
+        <argsstring>(Graphics &amp;gfx, const float width, const float height)</argsstring>
+        <name>fetch</name>
+        <qualifiedname>Viewport::fetch</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>height</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/viewport.h" line="20" column="24" bodyfile="src/viewport.cpp" bodystart="48" bodyend="54"/>
+        <referencedby refid="classIDepthStencilView_a75916f855423f1737747566b136e1208_1a75916f855423f1737747566b136e1208" compoundref="depth__stencil__view_8cpp" startline="103" endline="110">IDepthStencilView::bindRenderSurface</referencedby>
+        <referencedby refid="classIRenderTargetView_a8b54221abc49585f6508352e3ba587f3_1a8b54221abc49585f6508352e3ba587f3" compoundref="render__target_8cpp" startline="90" endline="98">IRenderTargetView::bindRenderSurface</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classViewport_a2f5826de45294e7db25bad7fdac2d37f_1a2f5826de45294e7db25bad7fdac2d37f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string Viewport::calcUid</definition>
+        <argsstring>(const float width, const float height)</argsstring>
+        <name>calcUid</name>
+        <qualifiedname>Viewport::calcUid</qualifiedname>
+        <param>
+          <type>const float</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>height</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/viewport.h" line="21" column="20" bodyfile="src/viewport.cpp" bodystart="56" bodyend="61"/>
+        <referencedby refid="classViewport_a4faf5c207d0070d7a73e970d78179f69_1a4faf5c207d0070d7a73e970d78179f69" compoundref="viewport_8cpp" startline="63" endline="66">getUid</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>GraphicsFriend</label>
+        <link refid="classGraphicsFriend"/>
+      </node>
+      <node id="2">
+        <label>IBindable</label>
+        <link refid="classIBindable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Viewport</label>
+        <link refid="classViewport"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>GraphicsFriend</label>
+        <link refid="classGraphicsFriend"/>
+      </node>
+      <node id="2">
+        <label>IBindable</label>
+        <link refid="classIBindable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Viewport</label>
+        <link refid="classViewport"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/viewport.h" line="8" column="1" bodyfile="inc/viewport.h" bodystart="10" bodyend="23"/>
+    <listofallmembers>
+      <member refid="classIBindable_a608c5066b829febbd49cd82d1d1fa353_1a608c5066b829febbd49cd82d1d1fa353" prot="public" virt="virtual"><scope>Viewport</scope><name>accept</name></member>
+      <member refid="classViewport_a93ebffad455c130aa536d25d660f00c9_1a93ebffad455c130aa536d25d660f00c9" prot="public" virt="virtual"><scope>Viewport</scope><name>bind</name></member>
+      <member refid="classViewport_a2f5826de45294e7db25bad7fdac2d37f_1a2f5826de45294e7db25bad7fdac2d37f" prot="public" virt="non-virtual"><scope>Viewport</scope><name>calcUid</name></member>
+      <member refid="classViewport_a1256dfd86a85d8bf84da6a0fec8b0ad6_1a1256dfd86a85d8bf84da6a0fec8b0ad6" prot="public" virt="non-virtual"><scope>Viewport</scope><name>fetch</name></member>
+      <member refid="classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_1a175df79f82ab5a6dad1df24b5a242ef7" prot="protected" virt="non-virtual"><scope>Viewport</scope><name>getDevice</name></member>
+      <member refid="classGraphicsFriend_a619e32893ab49ea6c5200e7c2d52e2f2_1a619e32893ab49ea6c5200e7c2d52e2f2" prot="protected" virt="non-virtual"><scope>Viewport</scope><name>getDeviceContext</name></member>
+      <member refid="classViewport_a9581fd0fb1754c82ca6bccecc30434db_1a9581fd0fb1754c82ca6bccecc30434db" prot="public" virt="non-virtual"><scope>Viewport</scope><name>getHeight</name></member>
+      <member refid="classViewport_a4faf5c207d0070d7a73e970d78179f69_1a4faf5c207d0070d7a73e970d78179f69" prot="public" virt="virtual"><scope>Viewport</scope><name>getUid</name></member>
+      <member refid="classViewport_a91bae7ee43b3c23480e8ab28c37d5c00_1a91bae7ee43b3c23480e8ab28c37d5c00" prot="public" virt="non-virtual"><scope>Viewport</scope><name>getViewport</name></member>
+      <member refid="classViewport_a5fc1b8745016d0e37de7d5991a31c771_1a5fc1b8745016d0e37de7d5991a31c771" prot="public" virt="non-virtual"><scope>Viewport</scope><name>getWidth</name></member>
+      <member refid="classViewport_a52cc9d4a0d56083a2d55391c2e8f6aeb_1a52cc9d4a0d56083a2d55391c2e8f6aeb" prot="private" virt="non-virtual"><scope>Viewport</scope><name>m_viewport</name></member>
+      <member refid="classIBindable_a4d590eebe80fa4e0aa865a875ff86c02_1a4d590eebe80fa4e0aa865a875ff86c02" prot="public" virt="virtual"><scope>Viewport</scope><name>setDebugObjectName</name></member>
+      <member refid="classIBindable_a12fe8725cb3f4836f22d1592b07e2c91_1a12fe8725cb3f4836f22d1592b07e2c91" prot="public" virt="virtual"><scope>Viewport</scope><name>setMesh</name></member>
+      <member refid="classViewport_a474a87491be9dec1321c62c3ea286c3f_1a474a87491be9dec1321c62c3ea286c3f" prot="public" virt="non-virtual"><scope>Viewport</scope><name>Viewport</name></member>
+      <member refid="classViewport_a499ea4194cd984db265cd3092495d0a0_1a499ea4194cd984db265cd3092495d0a0" prot="public" virt="non-virtual"><scope>Viewport</scope><name>Viewport</name></member>
+      <member refid="classIBindable_a7f68262ff85e25e9f826eae7c01bbfa1_1a7f68262ff85e25e9f826eae7c01bbfa1" prot="public" virt="virtual"><scope>Viewport</scope><name>~IBindable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

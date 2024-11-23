@@ -62,12 +62,10 @@ protected:
 	} m_colorPscbDepthReversed;
 public:
 #pragma warning( disable : 26495 )
-	//	\function	Mesh	||	\date	2022/11/06 14:46
-	//	\brief	defctor to be called by subclasses
+	/// \brief	defctor to be called by subclasses
 	Mesh() = default;
 #pragma warning( default : 26495 )
-	//	\function	Mesh	||	\date	2024/04/21 12:11
-	//	\brief	ctor for imported models, creates bounding box & meshId
+	/// \brief	ctor for imported models, creates bounding box & meshId
 	Mesh( Graphics &gfx, const MaterialLoader &mat, const aiMesh &aimesh, const float initialScale = 1.0f );
 	virtual ~Mesh() noexcept;
 	Mesh( const Mesh &rhs ) = delete;
@@ -130,7 +128,6 @@ protected:
 private:
 	void setDistanceFromActiveCamera() noexcept;
 	void createAabb( const aiMesh &aiMesh );
-	//	\function	isFrustumCulled	||	\date	2024/05/05 11:55
-	//	\brief	returns true if the Mesh is culled this frame by the active camera and false otherwise
+	/// \brief	returns true if the Mesh is culled this frame by the active camera and false otherwise
 	bool isFrustumCulled() const noexcept;
 };

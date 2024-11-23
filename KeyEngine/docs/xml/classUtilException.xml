@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classUtilException" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>UtilException</compoundname>
+    <basecompoundref refid="classKeyException" prot="public" virt="non-virtual">KeyException</basecompoundref>
+    <includes refid="util__exception_8h" local="no">util_exception.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classUtilException_a6aab5d0114e7eea39c9e668bea66ab37_1a6aab5d0114e7eea39c9e668bea66ab37" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>UtilException::UtilException</definition>
+        <argsstring>(const int line, const char *file, const char *function, const std::string &amp;msg) noexcept</argsstring>
+        <name>UtilException</name>
+        <qualifiedname>UtilException::UtilException</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>file</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>function</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/util_exception.h" line="10" column="1" bodyfile="src/util_exception.cpp" bodystart="5" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classUtilException_a2752efa8887758cb0d3ed094cbc45738_1a2752efa8887758cb0d3ed094cbc45738" prot="public" static="no" const="yes" explicit="no" inline="no" final="yes" noexcept="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string UtilException::getType</definition>
+        <argsstring>() const noexcept override final</argsstring>
+        <name>getType</name>
+        <qualifiedname>UtilException::getType</qualifiedname>
+        <reimplements refid="classKeyException_ab841f80e919082619f30053ae78c56c2_1ab841f80e919082619f30053ae78c56c2">getType</reimplements>
+        <briefdescription>
+<para>=================================================== </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/util_exception.h" line="12" column="13" bodyfile="src/util_exception.cpp" bodystart="15" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classUtilException_ae0e75ef62cc274b85e19d850ac0dbc5a_1ae0e75ef62cc274b85e19d850ac0dbc5a" prot="public" static="no" const="yes" explicit="no" inline="no" final="yes" noexcept="yes" virt="virtual">
+        <type>const char *</type>
+        <definition>const char * UtilException::what</definition>
+        <argsstring>() const noexcept override final</argsstring>
+        <name>what</name>
+        <qualifiedname>UtilException::what</qualifiedname>
+        <reimplements refid="classKeyException_a9956fdc871308553eec7b047f756690a_1a9956fdc871308553eec7b047f756690a">what</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/util_exception.h" line="13" column="20" bodyfile="src/util_exception.cpp" bodystart="20" bodyend="23"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>KeyException</label>
+        <link refid="classKeyException"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>UtilException</label>
+        <link refid="classUtilException"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::exception</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>KeyException</label>
+        <link refid="classKeyException"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>UtilException</label>
+        <link refid="classUtilException"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::exception</label>
+      </node>
+    </collaborationgraph>
+    <location file="inc/util_exception.h" line="6" column="1" bodyfile="inc/util_exception.h" bodystart="8" bodyend="14"/>
+    <listofallmembers>
+      <member refid="classKeyException_acf42841e4d4ececba96628e677b4cf41_1acf42841e4d4ececba96628e677b4cf41" prot="public" virt="non-virtual"><scope>UtilException</scope><name>getFile</name></member>
+      <member refid="classKeyException_ad75c6511759e522f2b3bcf13b0d23f30_1ad75c6511759e522f2b3bcf13b0d23f30" prot="public" virt="non-virtual"><scope>UtilException</scope><name>getFunction</name></member>
+      <member refid="classKeyException_a72f4af19d1ab0e9cce5eb6d45fca7729_1a72f4af19d1ab0e9cce5eb6d45fca7729" prot="public" virt="non-virtual"><scope>UtilException</scope><name>getLine</name></member>
+      <member refid="classUtilException_a2752efa8887758cb0d3ed094cbc45738_1a2752efa8887758cb0d3ed094cbc45738" prot="public" virt="virtual"><scope>UtilException</scope><name>getType</name></member>
+      <member refid="classKeyException_a53c95253098f0cc672876c35d4b1911d_1a53c95253098f0cc672876c35d4b1911d" prot="public" virt="non-virtual"><scope>UtilException</scope><name>KeyException</name></member>
+      <member refid="classKeyException_ae11b160d146427ad3887a1af3e2dc2ac_1ae11b160d146427ad3887a1af3e2dc2ac" prot="protected" virt="non-virtual"><scope>UtilException</scope><name>m_description</name></member>
+      <member refid="classKeyException_a62f1ed04b6e0c843f3ea1e338dc426d8_1a62f1ed04b6e0c843f3ea1e338dc426d8" prot="private" virt="non-virtual"><scope>UtilException</scope><name>m_file</name></member>
+      <member refid="classKeyException_ac11062a919dcfe52321e9f948ce60958_1ac11062a919dcfe52321e9f948ce60958" prot="private" virt="non-virtual"><scope>UtilException</scope><name>m_function</name></member>
+      <member refid="classKeyException_a2a49256c37903e810c301b035cf65837_1a2a49256c37903e810c301b035cf65837" prot="private" virt="non-virtual"><scope>UtilException</scope><name>m_line</name></member>
+      <member refid="classUtilException_a6aab5d0114e7eea39c9e668bea66ab37_1a6aab5d0114e7eea39c9e668bea66ab37" prot="public" virt="non-virtual"><scope>UtilException</scope><name>UtilException</name></member>
+      <member refid="classUtilException_ae0e75ef62cc274b85e19d850ac0dbc5a_1ae0e75ef62cc274b85e19d850ac0dbc5a" prot="public" virt="virtual"><scope>UtilException</scope><name>what</name></member>
+      <member refid="classKeyException_a954cd46c9cc2dd054fd680bb70aef678_1a954cd46c9cc2dd054fd680bb70aef678" prot="public" virt="virtual"><scope>UtilException</scope><name>~KeyException</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

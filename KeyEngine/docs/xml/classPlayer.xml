@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classPlayer" kind="class" language="C++" prot="public">
+    <compoundname>Player</compoundname>
+    <includes refid="player_8h" local="no">player.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classPlayer_a4c0ca7ea9be647a12af5de89e66dd576_1a4c0ca7ea9be647a12af5de89e66dd576" prot="private" static="no" mutable="no">
+        <type><ref refid="classCamera" kindref="compound">Camera</ref> *</type>
+        <definition>Camera* Player::m_cam</definition>
+        <argsstring></argsstring>
+        <name>m_cam</name>
+        <qualifiedname>Player::m_cam</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/player.h" line="8" column="8" bodyfile="inc/player.h" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPlayer_a64a8cc3e5eaffa8d79ccd3150e835095_1a64a8cc3e5eaffa8d79ccd3150e835095" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Player::m_3dPersonCamDistance</definition>
+        <argsstring></argsstring>
+        <name>m_3dPersonCamDistance</name>
+        <qualifiedname>Player::m_3dPersonCamDistance</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/player.h" line="9" column="7" bodyfile="inc/player.h" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPlayer_a721d109947248589b967566a62ea5a94_1a721d109947248589b967566a62ea5a94" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Player::m_3dPersonCamDistancePrev</definition>
+        <argsstring></argsstring>
+        <name>m_3dPersonCamDistancePrev</name>
+        <qualifiedname>Player::m_3dPersonCamDistancePrev</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/player.h" line="10" column="7" bodyfile="inc/player.h" bodystart="10" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>Camera</label>
+        <link refid="classCamera"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>m_cameraFrustum</edgelabel>
+          <edgelabel>m_cameraWidget</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>IImguiNodeVisitor</label>
+        <link refid="classIImguiNodeVisitor"/>
+        <childnode refid="6" relation="usage">
+          <edgelabel>m_pSelectedNode</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>ImguiPerModelNodeVisitor</label>
+        <link refid="classImguiPerModelNodeVisitor"/>
+        <childnode refid="5" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Model</label>
+        <link refid="classModel"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>m_imguiVisitor</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>Node</label>
+        <link refid="classNode"/>
+        <childnode refid="6" relation="usage">
+          <edgelabel>m_pParent</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Player</label>
+        <link refid="classPlayer"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>m_cam</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/player.h" line="6" column="1" bodyfile="inc/player.h" bodystart="7" bodyend="13"/>
+    <listofallmembers>
+      <member refid="classPlayer_a64a8cc3e5eaffa8d79ccd3150e835095_1a64a8cc3e5eaffa8d79ccd3150e835095" prot="private" virt="non-virtual"><scope>Player</scope><name>m_3dPersonCamDistance</name></member>
+      <member refid="classPlayer_a721d109947248589b967566a62ea5a94_1a721d109947248589b967566a62ea5a94" prot="private" virt="non-virtual"><scope>Player</scope><name>m_3dPersonCamDistancePrev</name></member>
+      <member refid="classPlayer_a4c0ca7ea9be647a12af5de89e66dd576_1a4c0ca7ea9be647a12af5de89e66dd576" prot="private" virt="non-virtual"><scope>Player</scope><name>m_cam</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

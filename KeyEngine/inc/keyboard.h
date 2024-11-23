@@ -60,10 +60,7 @@ public:
 private:
 	Keyboard() = default;
 
-	//===================================================
-	//	\function	trimBuffer
-	//	\brief	check whether the provided buffer needs trimming
-	//	\date	2022/08/26 23:19
+	/// \brief	check whether the provided buffer needs trimming
 	template<typename T>
 	static void trimBuffer( std::queue<T>& buf ) noexcept;
 public:
@@ -73,14 +70,11 @@ public:
 
 	// key events
 	bool isKeyPressed( unsigned char keycode ) const noexcept;
-	//===================================================
-	//	\function	readEventQueue
-	//	\brief	read event from the queue if any
-	//	\date	2022/08/26 23:19
+	/// \brief	read event from the queue if any
 	std::optional<Keyboard::Event> readEventQueue() noexcept;
 	bool isEventQueueEmpty() const noexcept;
+	/// \brief	clear events
 	void flushEventQueue() noexcept;
-	// char events
 	std::optional<char> readCharBuffer() noexcept;
 	bool isCharBufferEmpty() const noexcept;
 	void flushCharBuffer() noexcept;

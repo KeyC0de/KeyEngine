@@ -1,0 +1,95 @@
+\doxysection{Texture\+Processor Class Reference}
+\hypertarget{classTextureProcessor}{}\label{classTextureProcessor}\index{TextureProcessor@{TextureProcessor}}
+
+
+{\ttfamily \#include $<$texture\+\_\+processor.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classTextureProcessor_a9f728161057ae7aa759bec966e8f75c4_a9f728161057ae7aa759bec966e8f75c4}{flip\+Model\+Normal\+Maps\+Green\+Channel}} (const std\+::string \&obj\+Path)
+\item 
+static void \mbox{\hyperlink{classTextureProcessor_a6f40014bf51081226164f27f1dea675b_a6f40014bf51081226164f27f1dea675b}{flip\+Normal\+Map\+Green\+Channel}} (const std\+::string \&path\+In, const std\+::string \&path\+Out)
+\begin{DoxyCompactList}\small\item\em flips the normal map green channel of given texture \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classTextureProcessor_a46767ffa63ec6315abbd399d16ee1328_a46767ffa63ec6315abbd399d16ee1328}{validate\+Normal\+Map}} (const std\+::string \&path\+In, const float threshold\+Min, const float threshold\+Max)
+\item 
+static void \mbox{\hyperlink{classTextureProcessor_afe57fa7233ced0bf86bc2a7ee1cdc81e_afe57fa7233ced0bf86bc2a7ee1cdc81e}{make\+Stripes}} (const std\+::string \&path\+Out, const int size, const int stripe\+Width)
+\item 
+static void \mbox{\hyperlink{classTextureProcessor_a1ea179c15897e25858f4e2a4ee67f339_a1ea179c15897e25858f4e2a4ee67f339}{transform\+Bitmap}} (\mbox{\hyperlink{classBitmap}{Bitmap}} \&bitmap, \mbox{\hyperlink{texture_8h_a48efc2b83d04747965ce26c7eb8d406c_a48efc2b83d04747965ce26c7eb8d406c}{Texture\+Op}} f)
+\begin{DoxyCompactList}\small\item\em apply function f at every Texel in the \doxylink{classBitmap}{Bitmap} \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename F $>$ }\\static void \mbox{\hyperlink{classTextureProcessor_a3c6c41ce9a3433e958176851f7265e24_a3c6c41ce9a3433e958176851f7265e24}{transform\+Bitmap}} (\mbox{\hyperlink{classBitmap}{Bitmap}} \&bitmap, F \&\&f)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename F $>$ }\\static void \mbox{\hyperlink{classTextureProcessor_a53ce5cb452ed9f3de57818dd153d7501_a53ce5cb452ed9f3de57818dd153d7501}{transform\+File}} (const std\+::string \&path\+In, const std\+::string \&path\+Out, F \&\&f)
+\item 
+static const unsigned \mbox{\hyperlink{classTextureProcessor_a538e567e3ef03332e9f7e1b240bef944_a538e567e3ef03332e9f7e1b240bef944}{calculate\+Number\+Of\+Mip\+Maps}} (const unsigned width, const unsigned height) noexcept
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classTextureProcessor_a538e567e3ef03332e9f7e1b240bef944_a538e567e3ef03332e9f7e1b240bef944}\index{TextureProcessor@{TextureProcessor}!calculateNumberOfMipMaps@{calculateNumberOfMipMaps}}
+\index{calculateNumberOfMipMaps@{calculateNumberOfMipMaps}!TextureProcessor@{TextureProcessor}}
+\doxysubsubsection{\texorpdfstring{calculateNumberOfMipMaps()}{calculateNumberOfMipMaps()}}
+{\footnotesize\ttfamily \label{classTextureProcessor_a538e567e3ef03332e9f7e1b240bef944_a538e567e3ef03332e9f7e1b240bef944} 
+const unsigned Texture\+Processor\+::calculate\+Number\+Of\+Mip\+Maps (\begin{DoxyParamCaption}\item[{const unsigned}]{width}{, }\item[{const unsigned}]{height}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classTextureProcessor_a9f728161057ae7aa759bec966e8f75c4_a9f728161057ae7aa759bec966e8f75c4}\index{TextureProcessor@{TextureProcessor}!flipModelNormalMapsGreenChannel@{flipModelNormalMapsGreenChannel}}
+\index{flipModelNormalMapsGreenChannel@{flipModelNormalMapsGreenChannel}!TextureProcessor@{TextureProcessor}}
+\doxysubsubsection{\texorpdfstring{flipModelNormalMapsGreenChannel()}{flipModelNormalMapsGreenChannel()}}
+{\footnotesize\ttfamily \label{classTextureProcessor_a9f728161057ae7aa759bec966e8f75c4_a9f728161057ae7aa759bec966e8f75c4} 
+void Texture\+Processor\+::flip\+Model\+Normal\+Maps\+Green\+Channel (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{obj\+Path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classTextureProcessor_a6f40014bf51081226164f27f1dea675b_a6f40014bf51081226164f27f1dea675b}\index{TextureProcessor@{TextureProcessor}!flipNormalMapGreenChannel@{flipNormalMapGreenChannel}}
+\index{flipNormalMapGreenChannel@{flipNormalMapGreenChannel}!TextureProcessor@{TextureProcessor}}
+\doxysubsubsection{\texorpdfstring{flipNormalMapGreenChannel()}{flipNormalMapGreenChannel()}}
+{\footnotesize\ttfamily \label{classTextureProcessor_a6f40014bf51081226164f27f1dea675b_a6f40014bf51081226164f27f1dea675b} 
+void Texture\+Processor\+::flip\+Normal\+Map\+Green\+Channel (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path\+In}{, }\item[{const std\+::string \&}]{path\+Out}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+flips the normal map green channel of given texture 
+
+\Hypertarget{classTextureProcessor_afe57fa7233ced0bf86bc2a7ee1cdc81e_afe57fa7233ced0bf86bc2a7ee1cdc81e}\index{TextureProcessor@{TextureProcessor}!makeStripes@{makeStripes}}
+\index{makeStripes@{makeStripes}!TextureProcessor@{TextureProcessor}}
+\doxysubsubsection{\texorpdfstring{makeStripes()}{makeStripes()}}
+{\footnotesize\ttfamily \label{classTextureProcessor_afe57fa7233ced0bf86bc2a7ee1cdc81e_afe57fa7233ced0bf86bc2a7ee1cdc81e} 
+void Texture\+Processor\+::make\+Stripes (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path\+Out}{, }\item[{const int}]{size}{, }\item[{const int}]{stripe\+Width}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classTextureProcessor_a3c6c41ce9a3433e958176851f7265e24_a3c6c41ce9a3433e958176851f7265e24}\index{TextureProcessor@{TextureProcessor}!transformBitmap@{transformBitmap}}
+\index{transformBitmap@{transformBitmap}!TextureProcessor@{TextureProcessor}}
+\doxysubsubsection{\texorpdfstring{transformBitmap()}{transformBitmap()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classTextureProcessor_a3c6c41ce9a3433e958176851f7265e24_a3c6c41ce9a3433e958176851f7265e24} 
+template$<$typename F $>$ \\
+static void Texture\+Processor\+::transform\+Bitmap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBitmap}{Bitmap}} \&}]{bitmap}{, }\item[{F \&\&}]{f}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\Hypertarget{classTextureProcessor_a1ea179c15897e25858f4e2a4ee67f339_a1ea179c15897e25858f4e2a4ee67f339}\index{TextureProcessor@{TextureProcessor}!transformBitmap@{transformBitmap}}
+\index{transformBitmap@{transformBitmap}!TextureProcessor@{TextureProcessor}}
+\doxysubsubsection{\texorpdfstring{transformBitmap()}{transformBitmap()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classTextureProcessor_a1ea179c15897e25858f4e2a4ee67f339_a1ea179c15897e25858f4e2a4ee67f339} 
+void Texture\+Processor\+::transform\+Bitmap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBitmap}{Bitmap}} \&}]{bitmap}{, }\item[{\mbox{\hyperlink{texture_8h_a48efc2b83d04747965ce26c7eb8d406c_a48efc2b83d04747965ce26c7eb8d406c}{Texture\+Op}}}]{f}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+apply function f at every Texel in the \doxylink{classBitmap}{Bitmap} 
+
+\Hypertarget{classTextureProcessor_a53ce5cb452ed9f3de57818dd153d7501_a53ce5cb452ed9f3de57818dd153d7501}\index{TextureProcessor@{TextureProcessor}!transformFile@{transformFile}}
+\index{transformFile@{transformFile}!TextureProcessor@{TextureProcessor}}
+\doxysubsubsection{\texorpdfstring{transformFile()}{transformFile()}}
+{\footnotesize\ttfamily \label{classTextureProcessor_a53ce5cb452ed9f3de57818dd153d7501_a53ce5cb452ed9f3de57818dd153d7501} 
+template$<$typename F $>$ \\
+static void Texture\+Processor\+::transform\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path\+In}{, }\item[{const std\+::string \&}]{path\+Out}{, }\item[{F \&\&}]{f}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{classTextureProcessor_a46767ffa63ec6315abbd399d16ee1328_a46767ffa63ec6315abbd399d16ee1328}\index{TextureProcessor@{TextureProcessor}!validateNormalMap@{validateNormalMap}}
+\index{validateNormalMap@{validateNormalMap}!TextureProcessor@{TextureProcessor}}
+\doxysubsubsection{\texorpdfstring{validateNormalMap()}{validateNormalMap()}}
+{\footnotesize\ttfamily \label{classTextureProcessor_a46767ffa63ec6315abbd399d16ee1328_a46767ffa63ec6315abbd399d16ee1328} 
+void Texture\+Processor\+::validate\+Normal\+Map (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path\+In}{, }\item[{const float}]{threshold\+Min}{, }\item[{const float}]{threshold\+Max}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{texture__processor_8h}{texture\+\_\+processor.\+h}}\item 
+src/\mbox{\hyperlink{texture__processor_8cpp}{texture\+\_\+processor.\+cpp}}\end{DoxyCompactItemize}

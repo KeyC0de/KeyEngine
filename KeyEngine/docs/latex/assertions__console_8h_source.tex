@@ -1,0 +1,39 @@
+\doxysection{assertions\+\_\+console.\+h}
+\hypertarget{assertions__console_8h_source}{}\label{assertions__console_8h_source}\index{inc/assertions\_console.h@{inc/assertions\_console.h}}
+\mbox{\hyperlink{assertions__console_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ LSTR(\ expr\ )\ L\ \#\#\ expr}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ STRINGIFYW(\ expr\ )\ LSTR(\ \#expr\ )}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ STRINGIFY(\ expr\ )\ \#expr}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00010\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00012\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{assertions__console_8h_a5e1a81d1d834536ffd32ab7b4cae40b7_a5e1a81d1d834536ffd32ab7b4cae40b7}{assertPrint}}(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *expr,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *file,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ line,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *function,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *msg\ =\ \textcolor{stringliteral}{"{}"{}}\ );}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00014\ \}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#if\ defined\ \_DEBUG\ \&\&\ !defined\ NDEBUG}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ assert\ that\ arg\ is\ true,\ if\ not\ print\ error}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#\ \ \ define\ ASSERT(\ arg,\ msg\ )\ if\ (\ !(arg)\ \&\&\ assertPrint(\ STRINGIFY(\ arg\ ),\ \_\_FILE\_\_,\ \_\_LINE\_\_,\ \_\_FUNCTION\_\_,\ msg\ )\ )\(\backslash\)}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\(\backslash\)}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_debugbreak();\(\backslash\)}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::exit(\ -\/1\ );\(\backslash\)}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ assert\ with\ the\ optional\ argument\ not\ supplied}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#\ \ \ define\ ASSERTO(\ arg\ )\ if\ (\ !(arg)\ \&\&\ assertPrint(\ STRINGIFY(\ arg\ ),\ \_\_FILE\_\_,\ \_\_LINE\_\_,\ \_\_FUNCTION\_\_\ )\ )\(\backslash\)}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\(\backslash\)}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_debugbreak();\(\backslash\)}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::exit(\ -\/1\ );\(\backslash\)}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#\ \ \ define\ ASSERT(\ arg,\ msg\ )\ void(0);}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_DEBUG}}
+
+\end{DoxyCode}

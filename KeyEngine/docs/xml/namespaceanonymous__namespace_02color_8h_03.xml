@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="namespaceanonymous__namespace_02color_8h_03" kind="namespace" language="C++">
+    <compoundname>anonymous_namespace{color.h}</compoundname>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceanonymous__namespace_02color_8h_03_a3f30039b65fb6d5f17bbd8d789f47f05_1a3f30039b65fb6d5f17bbd8d789f47f05" prot="public" static="no">
+        <type>uint8_t</type>
+        <definition>using anonymous_namespace{color.h}::Byte =  uint8_t</definition>
+        <argsstring></argsstring>
+        <name>Byte</name>
+        <qualifiedname>anonymous_namespace{color.h}::Byte</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/color.h" line="6" column="1" bodyfile="inc/color.h" bodystart="6" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/color.h" line="4" column="1"/>
+  </compounddef>
+</doxygen>

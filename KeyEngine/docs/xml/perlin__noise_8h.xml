@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="perlin__noise_8h" kind="file" language="C++">
+    <compoundname>perlin_noise.h</compoundname>
+    <includes local="no">vector</includes>
+    <includedby refid="bmp__loader_8cpp" local="yes">src/bmp_loader.cpp</includedby>
+    <includedby refid="perlin__noise_8cpp" local="yes">src/perlin_noise.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>inc/perlin_noise.h</label>
+        <link refid="perlin__noise_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>inc/perlin_noise.h</label>
+        <link refid="perlin__noise_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/bmp_loader.cpp</label>
+        <link refid="bmp__loader_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/perlin_noise.cpp</label>
+        <link refid="perlin__noise_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classPerlinNoise" prot="public">PerlinNoise</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="classPerlinNoise" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPerlinNoise" kindref="compound">PerlinNoise</ref><sp/>final</highlight></codeline>
+<codeline lineno="7"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="8" refid="classPerlinNoise_a9071eaf9f8a14597c9fa17e12e6b2f6f_1a9071eaf9f8a14597c9fa17e12e6b2f6f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;int&gt;<sp/><ref refid="classPerlinNoise_a9071eaf9f8a14597c9fa17e12e6b2f6f_1a9071eaf9f8a14597c9fa17e12e6b2f6f" kindref="member">m_permutationVec</ref>;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPerlinNoise_af5eca66a372d3ff89584383685b729ce_1af5eca66a372d3ff89584383685b729ce" kindref="member">PerlinNoise</ref>(<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>seed<sp/>=<sp/>0<sp/>);</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classPerlinNoise_afdfbe32029dca3ef7f16e80e5cc29c48_1afdfbe32029dca3ef7f16e80e5cc29c48" kindref="member">noise</ref>(<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>z<sp/>);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classPerlinNoise_aa181e97bc2c0e0c1456c13194f9f4995_1aa181e97bc2c0e0c1456c13194f9f4995" kindref="member">fade</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>t<sp/>);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classPerlinNoise_a2113b401b3cdc24d567626461cbb5b7e_1a2113b401b3cdc24d567626461cbb5b7e" kindref="member">grad</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>hash,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>z<sp/>);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/perlin_noise.h"/>
+  </compounddef>
+</doxygen>

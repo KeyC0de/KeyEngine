@@ -1,0 +1,435 @@
+\doxysection{Mouse Class Reference}
+\hypertarget{classMouse}{}\label{classMouse}\index{Mouse@{Mouse}}
+
+
+{\ttfamily \#include $<$mouse.\+h$>$}
+
+Inheritance diagram for Mouse\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classMouse}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classMouse_1_1Event}{Event}}
+\item 
+struct \mbox{\hyperlink{structMouse_1_1RawDelta}{Raw\+Delta}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMouse_a165d9ed0dcfd4607ce27a63fbd0430af_a165d9ed0dcfd4607ce27a63fbd0430af}{\texorpdfstring{$\sim$}{\string~}\+Mouse}} () noexcept=default
+\item 
+\mbox{\hyperlink{classMouse_ae6e6f5b11d5cff4418781a35274d2a31_ae6e6f5b11d5cff4418781a35274d2a31}{Mouse}} (\mbox{\hyperlink{classMouse}{Mouse}} \&\&rhs) noexcept
+\item 
+\mbox{\hyperlink{classMouse}{Mouse}} \& \mbox{\hyperlink{classMouse_a6773c4ea5038c3cfe1e6c87735cf1d30_a6773c4ea5038c3cfe1e6c87735cf1d30}{operator=}} (\mbox{\hyperlink{classMouse}{Mouse}} \&\&rhs) noexcept
+\item 
+std\+::pair$<$ int, int $>$ \mbox{\hyperlink{classMouse_a0bcde5b8100df8a06a87cf395968cf9c_a0bcde5b8100df8a06a87cf395968cf9c}{get\+Position}} () const noexcept
+\item 
+int \mbox{\hyperlink{classMouse_ae4ffa354adeae6c1c1ed3d1704145fde_ae4ffa354adeae6c1c1ed3d1704145fde}{getX}} () const noexcept
+\item 
+int \mbox{\hyperlink{classMouse_aa380d1f192b6fadf35b4a6bce755128f_aa380d1f192b6fadf35b4a6bce755128f}{getY}} () const noexcept
+\item 
+bool \mbox{\hyperlink{classMouse_a0a257dace056c2d4d810ef8553e2e0e5_a0a257dace056c2d4d810ef8553e2e0e5}{is\+In\+Window}} () const noexcept
+\item 
+bool \mbox{\hyperlink{classMouse_a6722501a93750a1f2e630db725d3f319_a6722501a93750a1f2e630db725d3f319}{is\+Lmb\+Pressed}} () const noexcept
+\item 
+bool \mbox{\hyperlink{classMouse_a716e7b40c6b09974c284c491946e3318_a716e7b40c6b09974c284c491946e3318}{is\+Rmb\+Pressed}} () const noexcept
+\item 
+bool \mbox{\hyperlink{classMouse_a5b50516d040e64c579d05f693d12c2d7_a5b50516d040e64c579d05f693d12c2d7}{is\+Mmb\+Pressed}} () const noexcept
+\item 
+std\+::optional$<$ \mbox{\hyperlink{structMouse_1_1RawDelta}{Raw\+Delta}} $>$ \mbox{\hyperlink{classMouse_aba812584ff2d5940028963c0a2164e7b_aba812584ff2d5940028963c0a2164e7b}{read\+Raw\+Delta\+Buffer}} () noexcept
+\item 
+std\+::optional$<$ \mbox{\hyperlink{classMouse_1_1Event}{Event}} $>$ \mbox{\hyperlink{classMouse_ac7380345893dac97253b2c4f7ad8d340_ac7380345893dac97253b2c4f7ad8d340}{read\+Event\+Queue}} () noexcept
+\item 
+bool \mbox{\hyperlink{classMouse_a245c850ebd48c2f9b980daa32307ffa4_a245c850ebd48c2f9b980daa32307ffa4}{is\+Queue\+Empty}} () const noexcept
+\item 
+void \mbox{\hyperlink{classMouse_a63d7d8ee3d422229ad23a45313737b19_a63d7d8ee3d422229ad23a45313737b19}{flush\+Events}} () noexcept
+\item 
+void \mbox{\hyperlink{classMouse_ab206a26545760a16a3cae7b633cb6368_ab206a26545760a16a3cae7b633cb6368}{enable\+Raw\+Input}} () noexcept
+\item 
+void \mbox{\hyperlink{classMouse_aa58120c264deab6fd47be62fd24a34d8_aa58120c264deab6fd47be62fd24a34d8}{disable\+Raw\+Input}} () noexcept
+\item 
+bool \mbox{\hyperlink{classMouse_adefe6928e3b039720ca69bf447b4eaac_adefe6928e3b039720ca69bf447b4eaac}{is\+Raw\+Input\+Enabled}} () const noexcept
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNonCopyable_a809b6e4ade7ae32f6d248f2a3b783d45_a809b6e4ade7ae32f6d248f2a3b783d45}{Non\+Copyable}} ()=default
+\item 
+\mbox{\hyperlink{classNonCopyable_a15aa3015488bb26c47ded914cb630cf5_a15aa3015488bb26c47ded914cb630cf5}{Non\+Copyable}} (const \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_af4788b57da9a9faa570c754c22c724f5_af4788b57da9a9faa570c754c22c724f5}{operator=}} (const \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable_a487646562ae30ece23d7638f2aed1dde_a487646562ae30ece23d7638f2aed1dde}{Non\+Copyable}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_ae032ca32cda9c836c27b28eb6a087d18_ae032ca32cda9c836c27b28eb6a087d18}{operator=}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable_af716e4cfb79381710ef4490414939ae9_af716e4cfb79381710ef4490414939ae9}{Non\+Copyable}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&\&rhs)=default
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_af81816bd4c2c4421a6eab98843ead6e4_af81816bd4c2c4421a6eab98843ead6e4}{operator=}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&\&rhs)=default
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMouse_a53384c0941547398386755904770b1dd_a53384c0941547398386755904770b1dd}{Mouse}} ()=default
+\item 
+void \mbox{\hyperlink{classMouse_a8dc3ea0895821a90ce9a77d715920f0d_a8dc3ea0895821a90ce9a77d715920f0d}{on\+Mouse\+Move}} (const int newx, const int newy) noexcept
+\item 
+void \mbox{\hyperlink{classMouse_ad6986653680cdb79c0629ce3e335c81f_ad6986653680cdb79c0629ce3e335c81f}{on\+Mouse\+Enter\+Window}} () noexcept
+\item 
+void \mbox{\hyperlink{classMouse_ac254620ccad068ca6380376d87ca3cbd_ac254620ccad068ca6380376d87ca3cbd}{on\+Mouse\+Leave\+Window}} () noexcept
+\item 
+void \mbox{\hyperlink{classMouse_a280e66c7c99c3ece46fe81acad6b2887_a280e66c7c99c3ece46fe81acad6b2887}{on\+Lmb\+Pressed}} (const int x, const int y) noexcept
+\item 
+void \mbox{\hyperlink{classMouse_a2e81ebee61475e3301d825e4e8438867_a2e81ebee61475e3301d825e4e8438867}{on\+Lmb\+Released}} (const int x, const int y) noexcept
+\item 
+void \mbox{\hyperlink{classMouse_ab3350cba70a91653d28851806bb84544_ab3350cba70a91653d28851806bb84544}{on\+Rmb\+Pressed}} (const int x, const int y) noexcept
+\item 
+void \mbox{\hyperlink{classMouse_a81c5c1c48abdcb6e07004381c797dfc9_a81c5c1c48abdcb6e07004381c797dfc9}{on\+Rmb\+Released}} (const int x, const int y) noexcept
+\item 
+void \mbox{\hyperlink{classMouse_a490d0b6605d94fc2fc5d7126fb426c73_a490d0b6605d94fc2fc5d7126fb426c73}{on\+Mmb\+Pressed}} (const int x, const int y) noexcept
+\item 
+void \mbox{\hyperlink{classMouse_a44818564515345b808f956fc0581ffd4_a44818564515345b808f956fc0581ffd4}{on\+Mmb\+Released}} (const int x, const int y) noexcept
+\item 
+void \mbox{\hyperlink{classMouse_a25295dfe35277e1d0d4c1054b95593a4_a25295dfe35277e1d0d4c1054b95593a4}{on\+Wheel\+Delta}} (const int x, const int y, const int delta) noexcept
+\item 
+void \mbox{\hyperlink{classMouse_a274c153384adeb3c177097692ad7c43b_a274c153384adeb3c177097692ad7c43b}{on\+Wheel\+Up}} (const int x, const int y) noexcept
+\item 
+void \mbox{\hyperlink{classMouse_ac9a04456e623b7ec8a8e4ba1a0f2789b_ac9a04456e623b7ec8a8e4ba1a0f2789b}{on\+Wheel\+Down}} (const int x, const int y) noexcept
+\item 
+void \mbox{\hyperlink{classMouse_ad18d5e096bf94b8e182e1254975f6284_ad18d5e096bf94b8e182e1254975f6284}{on\+Raw\+Delta}} (const int dx, const int dy) noexcept
+\item 
+void \mbox{\hyperlink{classMouse_a0c32b2a94351545fa0f07180a8fa4d2f_a0c32b2a94351545fa0f07180a8fa4d2f}{trim\+Event\+Queue}} () noexcept
+\item 
+void \mbox{\hyperlink{classMouse_a25e59968a7cd75928ee93533d9988203_a25e59968a7cd75928ee93533d9988203}{trim\+Raw\+Input\+Buffer}} () noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classMouse_aa3dfe1210637818de498912922295f45_aa3dfe1210637818de498912922295f45}{m\+\_\+x}} = -\/1
+\item 
+int \mbox{\hyperlink{classMouse_ac5c920c5398bf820f518e581f108f112_ac5c920c5398bf820f518e581f108f112}{m\+\_\+y}} = -\/1
+\item 
+bool \mbox{\hyperlink{classMouse_a611aeafa7e788e821b894b5c4860459a_a611aeafa7e788e821b894b5c4860459a}{m\+\_\+b\+Lmb\+Pressed}} = false
+\item 
+bool \mbox{\hyperlink{classMouse_a2040a18846284ef0323b0e2104e90216_a2040a18846284ef0323b0e2104e90216}{m\+\_\+b\+Rmb\+Pressed}} = false
+\item 
+bool \mbox{\hyperlink{classMouse_a94e261735cdabca56e31efbedc951efd_a94e261735cdabca56e31efbedc951efd}{m\+\_\+b\+Mmb\+Pressed}} = false
+\item 
+bool \mbox{\hyperlink{classMouse_a2a336cee27d6352786b62ae6a30f0fab_a2a336cee27d6352786b62ae6a30f0fab}{m\+\_\+b\+In\+Window}} = false
+\item 
+int \mbox{\hyperlink{classMouse_a7ebcb3249cdbde4e8846bf24b75e6d53_a7ebcb3249cdbde4e8846bf24b75e6d53}{m\+\_\+wheel\+Delta}} = 0
+\item 
+bool \mbox{\hyperlink{classMouse_ace803410672223ec7d8f9afd15d46f27_ace803410672223ec7d8f9afd15d46f27}{m\+\_\+b\+Raw\+Enabled}} = false
+\item 
+std\+::queue$<$ \mbox{\hyperlink{classMouse_1_1Event}{Event}} $>$ \mbox{\hyperlink{classMouse_a82c1524449d3a101f37b8c6622c869a2_a82c1524449d3a101f37b8c6622c869a2}{m\+\_\+event\+Queue}}
+\item 
+std\+::queue$<$ \mbox{\hyperlink{structMouse_1_1RawDelta}{Raw\+Delta}} $>$ \mbox{\hyperlink{classMouse_af1d74d183b27862add0c44f04c9d2ba7_af1d74d183b27862add0c44f04c9d2ba7}{m\+\_\+raw\+Delta\+Buffer}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr unsigned int \mbox{\hyperlink{classMouse_a234d3e0d9a605dc2ddbc96e530b58b3f_a234d3e0d9a605dc2ddbc96e530b58b3f}{s\+\_\+max\+Buffer\+Size}} = 16u
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classMouse_a553f958a25683445088050a69d3de8e9_a553f958a25683445088050a69d3de8e9}{Window}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNonCopyable_a3e461fb46c72b9a5af7df7e74dbd899e_a3e461fb46c72b9a5af7df7e74dbd899e}{\texorpdfstring{$\sim$}{\string~}\+Non\+Copyable}} () noexcept=default
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classMouse_a53384c0941547398386755904770b1dd_a53384c0941547398386755904770b1dd}\index{Mouse@{Mouse}!Mouse@{Mouse}}
+\index{Mouse@{Mouse}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{Mouse()}{Mouse()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classMouse_a53384c0941547398386755904770b1dd_a53384c0941547398386755904770b1dd} 
+Mouse\+::\+Mouse (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [default]}}
+
+\Hypertarget{classMouse_a165d9ed0dcfd4607ce27a63fbd0430af_a165d9ed0dcfd4607ce27a63fbd0430af}\index{Mouse@{Mouse}!````~Mouse@{\texorpdfstring{$\sim$}{\string~}Mouse}}
+\index{````~Mouse@{\texorpdfstring{$\sim$}{\string~}Mouse}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Mouse()}{\string~Mouse()}}
+{\footnotesize\ttfamily \label{classMouse_a165d9ed0dcfd4607ce27a63fbd0430af_a165d9ed0dcfd4607ce27a63fbd0430af} 
+Mouse\+::\texorpdfstring{$\sim$}{\string~}\+Mouse (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classMouse_ae6e6f5b11d5cff4418781a35274d2a31_ae6e6f5b11d5cff4418781a35274d2a31}\index{Mouse@{Mouse}!Mouse@{Mouse}}
+\index{Mouse@{Mouse}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{Mouse()}{Mouse()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classMouse_ae6e6f5b11d5cff4418781a35274d2a31_ae6e6f5b11d5cff4418781a35274d2a31} 
+Mouse\+::\+Mouse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMouse}{Mouse}} \&\&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classMouse_aa58120c264deab6fd47be62fd24a34d8_aa58120c264deab6fd47be62fd24a34d8}\index{Mouse@{Mouse}!disableRawInput@{disableRawInput}}
+\index{disableRawInput@{disableRawInput}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{disableRawInput()}{disableRawInput()}}
+{\footnotesize\ttfamily \label{classMouse_aa58120c264deab6fd47be62fd24a34d8_aa58120c264deab6fd47be62fd24a34d8} 
+void Mouse\+::disable\+Raw\+Input (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classMouse_ab206a26545760a16a3cae7b633cb6368_ab206a26545760a16a3cae7b633cb6368}\index{Mouse@{Mouse}!enableRawInput@{enableRawInput}}
+\index{enableRawInput@{enableRawInput}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{enableRawInput()}{enableRawInput()}}
+{\footnotesize\ttfamily \label{classMouse_ab206a26545760a16a3cae7b633cb6368_ab206a26545760a16a3cae7b633cb6368} 
+void Mouse\+::enable\+Raw\+Input (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classMouse_a63d7d8ee3d422229ad23a45313737b19_a63d7d8ee3d422229ad23a45313737b19}\index{Mouse@{Mouse}!flushEvents@{flushEvents}}
+\index{flushEvents@{flushEvents}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{flushEvents()}{flushEvents()}}
+{\footnotesize\ttfamily \label{classMouse_a63d7d8ee3d422229ad23a45313737b19_a63d7d8ee3d422229ad23a45313737b19} 
+void Mouse\+::flush\+Events (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classMouse_a0bcde5b8100df8a06a87cf395968cf9c_a0bcde5b8100df8a06a87cf395968cf9c}\index{Mouse@{Mouse}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily \label{classMouse_a0bcde5b8100df8a06a87cf395968cf9c_a0bcde5b8100df8a06a87cf395968cf9c} 
+std\+::pair$<$ int, int $>$ Mouse\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classMouse_ae4ffa354adeae6c1c1ed3d1704145fde_ae4ffa354adeae6c1c1ed3d1704145fde}\index{Mouse@{Mouse}!getX@{getX}}
+\index{getX@{getX}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{getX()}{getX()}}
+{\footnotesize\ttfamily \label{classMouse_ae4ffa354adeae6c1c1ed3d1704145fde_ae4ffa354adeae6c1c1ed3d1704145fde} 
+int Mouse\+::getX (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classMouse_aa380d1f192b6fadf35b4a6bce755128f_aa380d1f192b6fadf35b4a6bce755128f}\index{Mouse@{Mouse}!getY@{getY}}
+\index{getY@{getY}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{getY()}{getY()}}
+{\footnotesize\ttfamily \label{classMouse_aa380d1f192b6fadf35b4a6bce755128f_aa380d1f192b6fadf35b4a6bce755128f} 
+int Mouse\+::getY (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classMouse_a0a257dace056c2d4d810ef8553e2e0e5_a0a257dace056c2d4d810ef8553e2e0e5}\index{Mouse@{Mouse}!isInWindow@{isInWindow}}
+\index{isInWindow@{isInWindow}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{isInWindow()}{isInWindow()}}
+{\footnotesize\ttfamily \label{classMouse_a0a257dace056c2d4d810ef8553e2e0e5_a0a257dace056c2d4d810ef8553e2e0e5} 
+bool Mouse\+::is\+In\+Window (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classMouse_a6722501a93750a1f2e630db725d3f319_a6722501a93750a1f2e630db725d3f319}\index{Mouse@{Mouse}!isLmbPressed@{isLmbPressed}}
+\index{isLmbPressed@{isLmbPressed}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{isLmbPressed()}{isLmbPressed()}}
+{\footnotesize\ttfamily \label{classMouse_a6722501a93750a1f2e630db725d3f319_a6722501a93750a1f2e630db725d3f319} 
+bool Mouse\+::is\+Lmb\+Pressed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classMouse_a5b50516d040e64c579d05f693d12c2d7_a5b50516d040e64c579d05f693d12c2d7}\index{Mouse@{Mouse}!isMmbPressed@{isMmbPressed}}
+\index{isMmbPressed@{isMmbPressed}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{isMmbPressed()}{isMmbPressed()}}
+{\footnotesize\ttfamily \label{classMouse_a5b50516d040e64c579d05f693d12c2d7_a5b50516d040e64c579d05f693d12c2d7} 
+bool Mouse\+::is\+Mmb\+Pressed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classMouse_a245c850ebd48c2f9b980daa32307ffa4_a245c850ebd48c2f9b980daa32307ffa4}\index{Mouse@{Mouse}!isQueueEmpty@{isQueueEmpty}}
+\index{isQueueEmpty@{isQueueEmpty}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{isQueueEmpty()}{isQueueEmpty()}}
+{\footnotesize\ttfamily \label{classMouse_a245c850ebd48c2f9b980daa32307ffa4_a245c850ebd48c2f9b980daa32307ffa4} 
+bool Mouse\+::is\+Queue\+Empty (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classMouse_adefe6928e3b039720ca69bf447b4eaac_adefe6928e3b039720ca69bf447b4eaac}\index{Mouse@{Mouse}!isRawInputEnabled@{isRawInputEnabled}}
+\index{isRawInputEnabled@{isRawInputEnabled}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{isRawInputEnabled()}{isRawInputEnabled()}}
+{\footnotesize\ttfamily \label{classMouse_adefe6928e3b039720ca69bf447b4eaac_adefe6928e3b039720ca69bf447b4eaac} 
+bool Mouse\+::is\+Raw\+Input\+Enabled (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classMouse_a716e7b40c6b09974c284c491946e3318_a716e7b40c6b09974c284c491946e3318}\index{Mouse@{Mouse}!isRmbPressed@{isRmbPressed}}
+\index{isRmbPressed@{isRmbPressed}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{isRmbPressed()}{isRmbPressed()}}
+{\footnotesize\ttfamily \label{classMouse_a716e7b40c6b09974c284c491946e3318_a716e7b40c6b09974c284c491946e3318} 
+bool Mouse\+::is\+Rmb\+Pressed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classMouse_a280e66c7c99c3ece46fe81acad6b2887_a280e66c7c99c3ece46fe81acad6b2887}\index{Mouse@{Mouse}!onLmbPressed@{onLmbPressed}}
+\index{onLmbPressed@{onLmbPressed}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{onLmbPressed()}{onLmbPressed()}}
+{\footnotesize\ttfamily \label{classMouse_a280e66c7c99c3ece46fe81acad6b2887_a280e66c7c99c3ece46fe81acad6b2887} 
+void Mouse\+::on\+Lmb\+Pressed (\begin{DoxyParamCaption}\item[{const int}]{x}{, }\item[{const int}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classMouse_a2e81ebee61475e3301d825e4e8438867_a2e81ebee61475e3301d825e4e8438867}\index{Mouse@{Mouse}!onLmbReleased@{onLmbReleased}}
+\index{onLmbReleased@{onLmbReleased}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{onLmbReleased()}{onLmbReleased()}}
+{\footnotesize\ttfamily \label{classMouse_a2e81ebee61475e3301d825e4e8438867_a2e81ebee61475e3301d825e4e8438867} 
+void Mouse\+::on\+Lmb\+Released (\begin{DoxyParamCaption}\item[{const int}]{x}{, }\item[{const int}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classMouse_a490d0b6605d94fc2fc5d7126fb426c73_a490d0b6605d94fc2fc5d7126fb426c73}\index{Mouse@{Mouse}!onMmbPressed@{onMmbPressed}}
+\index{onMmbPressed@{onMmbPressed}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{onMmbPressed()}{onMmbPressed()}}
+{\footnotesize\ttfamily \label{classMouse_a490d0b6605d94fc2fc5d7126fb426c73_a490d0b6605d94fc2fc5d7126fb426c73} 
+void Mouse\+::on\+Mmb\+Pressed (\begin{DoxyParamCaption}\item[{const int}]{x}{, }\item[{const int}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classMouse_a44818564515345b808f956fc0581ffd4_a44818564515345b808f956fc0581ffd4}\index{Mouse@{Mouse}!onMmbReleased@{onMmbReleased}}
+\index{onMmbReleased@{onMmbReleased}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{onMmbReleased()}{onMmbReleased()}}
+{\footnotesize\ttfamily \label{classMouse_a44818564515345b808f956fc0581ffd4_a44818564515345b808f956fc0581ffd4} 
+void Mouse\+::on\+Mmb\+Released (\begin{DoxyParamCaption}\item[{const int}]{x}{, }\item[{const int}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classMouse_ad6986653680cdb79c0629ce3e335c81f_ad6986653680cdb79c0629ce3e335c81f}\index{Mouse@{Mouse}!onMouseEnterWindow@{onMouseEnterWindow}}
+\index{onMouseEnterWindow@{onMouseEnterWindow}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{onMouseEnterWindow()}{onMouseEnterWindow()}}
+{\footnotesize\ttfamily \label{classMouse_ad6986653680cdb79c0629ce3e335c81f_ad6986653680cdb79c0629ce3e335c81f} 
+void Mouse\+::on\+Mouse\+Enter\+Window (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classMouse_ac254620ccad068ca6380376d87ca3cbd_ac254620ccad068ca6380376d87ca3cbd}\index{Mouse@{Mouse}!onMouseLeaveWindow@{onMouseLeaveWindow}}
+\index{onMouseLeaveWindow@{onMouseLeaveWindow}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{onMouseLeaveWindow()}{onMouseLeaveWindow()}}
+{\footnotesize\ttfamily \label{classMouse_ac254620ccad068ca6380376d87ca3cbd_ac254620ccad068ca6380376d87ca3cbd} 
+void Mouse\+::on\+Mouse\+Leave\+Window (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classMouse_a8dc3ea0895821a90ce9a77d715920f0d_a8dc3ea0895821a90ce9a77d715920f0d}\index{Mouse@{Mouse}!onMouseMove@{onMouseMove}}
+\index{onMouseMove@{onMouseMove}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{onMouseMove()}{onMouseMove()}}
+{\footnotesize\ttfamily \label{classMouse_a8dc3ea0895821a90ce9a77d715920f0d_a8dc3ea0895821a90ce9a77d715920f0d} 
+void Mouse\+::on\+Mouse\+Move (\begin{DoxyParamCaption}\item[{const int}]{newx}{, }\item[{const int}]{newy}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classMouse_ad18d5e096bf94b8e182e1254975f6284_ad18d5e096bf94b8e182e1254975f6284}\index{Mouse@{Mouse}!onRawDelta@{onRawDelta}}
+\index{onRawDelta@{onRawDelta}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{onRawDelta()}{onRawDelta()}}
+{\footnotesize\ttfamily \label{classMouse_ad18d5e096bf94b8e182e1254975f6284_ad18d5e096bf94b8e182e1254975f6284} 
+void Mouse\+::on\+Raw\+Delta (\begin{DoxyParamCaption}\item[{const int}]{dx}{, }\item[{const int}]{dy}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classMouse_ab3350cba70a91653d28851806bb84544_ab3350cba70a91653d28851806bb84544}\index{Mouse@{Mouse}!onRmbPressed@{onRmbPressed}}
+\index{onRmbPressed@{onRmbPressed}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{onRmbPressed()}{onRmbPressed()}}
+{\footnotesize\ttfamily \label{classMouse_ab3350cba70a91653d28851806bb84544_ab3350cba70a91653d28851806bb84544} 
+void Mouse\+::on\+Rmb\+Pressed (\begin{DoxyParamCaption}\item[{const int}]{x}{, }\item[{const int}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classMouse_a81c5c1c48abdcb6e07004381c797dfc9_a81c5c1c48abdcb6e07004381c797dfc9}\index{Mouse@{Mouse}!onRmbReleased@{onRmbReleased}}
+\index{onRmbReleased@{onRmbReleased}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{onRmbReleased()}{onRmbReleased()}}
+{\footnotesize\ttfamily \label{classMouse_a81c5c1c48abdcb6e07004381c797dfc9_a81c5c1c48abdcb6e07004381c797dfc9} 
+void Mouse\+::on\+Rmb\+Released (\begin{DoxyParamCaption}\item[{const int}]{x}{, }\item[{const int}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classMouse_a25295dfe35277e1d0d4c1054b95593a4_a25295dfe35277e1d0d4c1054b95593a4}\index{Mouse@{Mouse}!onWheelDelta@{onWheelDelta}}
+\index{onWheelDelta@{onWheelDelta}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{onWheelDelta()}{onWheelDelta()}}
+{\footnotesize\ttfamily \label{classMouse_a25295dfe35277e1d0d4c1054b95593a4_a25295dfe35277e1d0d4c1054b95593a4} 
+void Mouse\+::on\+Wheel\+Delta (\begin{DoxyParamCaption}\item[{const int}]{x}{, }\item[{const int}]{y}{, }\item[{const int}]{delta}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classMouse_ac9a04456e623b7ec8a8e4ba1a0f2789b_ac9a04456e623b7ec8a8e4ba1a0f2789b}\index{Mouse@{Mouse}!onWheelDown@{onWheelDown}}
+\index{onWheelDown@{onWheelDown}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{onWheelDown()}{onWheelDown()}}
+{\footnotesize\ttfamily \label{classMouse_ac9a04456e623b7ec8a8e4ba1a0f2789b_ac9a04456e623b7ec8a8e4ba1a0f2789b} 
+void Mouse\+::on\+Wheel\+Down (\begin{DoxyParamCaption}\item[{const int}]{x}{, }\item[{const int}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classMouse_a274c153384adeb3c177097692ad7c43b_a274c153384adeb3c177097692ad7c43b}\index{Mouse@{Mouse}!onWheelUp@{onWheelUp}}
+\index{onWheelUp@{onWheelUp}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{onWheelUp()}{onWheelUp()}}
+{\footnotesize\ttfamily \label{classMouse_a274c153384adeb3c177097692ad7c43b_a274c153384adeb3c177097692ad7c43b} 
+void Mouse\+::on\+Wheel\+Up (\begin{DoxyParamCaption}\item[{const int}]{x}{, }\item[{const int}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classMouse_a6773c4ea5038c3cfe1e6c87735cf1d30_a6773c4ea5038c3cfe1e6c87735cf1d30}\index{Mouse@{Mouse}!operator=@{operator=}}
+\index{operator=@{operator=}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{classMouse_a6773c4ea5038c3cfe1e6c87735cf1d30_a6773c4ea5038c3cfe1e6c87735cf1d30} 
+\mbox{\hyperlink{classMouse}{Mouse}} \& Mouse\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMouse}{Mouse}} \&\&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classMouse_ac7380345893dac97253b2c4f7ad8d340_ac7380345893dac97253b2c4f7ad8d340}\index{Mouse@{Mouse}!readEventQueue@{readEventQueue}}
+\index{readEventQueue@{readEventQueue}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{readEventQueue()}{readEventQueue()}}
+{\footnotesize\ttfamily \label{classMouse_ac7380345893dac97253b2c4f7ad8d340_ac7380345893dac97253b2c4f7ad8d340} 
+std\+::optional$<$ \mbox{\hyperlink{classMouse_1_1Event}{Mouse\+::\+Event}} $>$ Mouse\+::read\+Event\+Queue (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classMouse_aba812584ff2d5940028963c0a2164e7b_aba812584ff2d5940028963c0a2164e7b}\index{Mouse@{Mouse}!readRawDeltaBuffer@{readRawDeltaBuffer}}
+\index{readRawDeltaBuffer@{readRawDeltaBuffer}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{readRawDeltaBuffer()}{readRawDeltaBuffer()}}
+{\footnotesize\ttfamily \label{classMouse_aba812584ff2d5940028963c0a2164e7b_aba812584ff2d5940028963c0a2164e7b} 
+std\+::optional$<$ \mbox{\hyperlink{structMouse_1_1RawDelta}{Mouse\+::\+Raw\+Delta}} $>$ Mouse\+::read\+Raw\+Delta\+Buffer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classMouse_a0c32b2a94351545fa0f07180a8fa4d2f_a0c32b2a94351545fa0f07180a8fa4d2f}\index{Mouse@{Mouse}!trimEventQueue@{trimEventQueue}}
+\index{trimEventQueue@{trimEventQueue}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{trimEventQueue()}{trimEventQueue()}}
+{\footnotesize\ttfamily \label{classMouse_a0c32b2a94351545fa0f07180a8fa4d2f_a0c32b2a94351545fa0f07180a8fa4d2f} 
+void Mouse\+::trim\+Event\+Queue (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classMouse_a25e59968a7cd75928ee93533d9988203_a25e59968a7cd75928ee93533d9988203}\index{Mouse@{Mouse}!trimRawInputBuffer@{trimRawInputBuffer}}
+\index{trimRawInputBuffer@{trimRawInputBuffer}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{trimRawInputBuffer()}{trimRawInputBuffer()}}
+{\footnotesize\ttfamily \label{classMouse_a25e59968a7cd75928ee93533d9988203_a25e59968a7cd75928ee93533d9988203} 
+void Mouse\+::trim\+Raw\+Input\+Buffer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{classMouse_a553f958a25683445088050a69d3de8e9_a553f958a25683445088050a69d3de8e9}\index{Mouse@{Mouse}!Window@{Window}}
+\index{Window@{Window}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{Window}{Window}}
+{\footnotesize\ttfamily \label{classMouse_a553f958a25683445088050a69d3de8e9_a553f958a25683445088050a69d3de8e9} 
+friend class \mbox{\hyperlink{classWindow}{Window}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classMouse_a2a336cee27d6352786b62ae6a30f0fab_a2a336cee27d6352786b62ae6a30f0fab}\index{Mouse@{Mouse}!m\_bInWindow@{m\_bInWindow}}
+\index{m\_bInWindow@{m\_bInWindow}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{m\_bInWindow}{m\_bInWindow}}
+{\footnotesize\ttfamily \label{classMouse_a2a336cee27d6352786b62ae6a30f0fab_a2a336cee27d6352786b62ae6a30f0fab} 
+bool Mouse\+::m\+\_\+b\+In\+Window = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classMouse_a611aeafa7e788e821b894b5c4860459a_a611aeafa7e788e821b894b5c4860459a}\index{Mouse@{Mouse}!m\_bLmbPressed@{m\_bLmbPressed}}
+\index{m\_bLmbPressed@{m\_bLmbPressed}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{m\_bLmbPressed}{m\_bLmbPressed}}
+{\footnotesize\ttfamily \label{classMouse_a611aeafa7e788e821b894b5c4860459a_a611aeafa7e788e821b894b5c4860459a} 
+bool Mouse\+::m\+\_\+b\+Lmb\+Pressed = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classMouse_a94e261735cdabca56e31efbedc951efd_a94e261735cdabca56e31efbedc951efd}\index{Mouse@{Mouse}!m\_bMmbPressed@{m\_bMmbPressed}}
+\index{m\_bMmbPressed@{m\_bMmbPressed}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{m\_bMmbPressed}{m\_bMmbPressed}}
+{\footnotesize\ttfamily \label{classMouse_a94e261735cdabca56e31efbedc951efd_a94e261735cdabca56e31efbedc951efd} 
+bool Mouse\+::m\+\_\+b\+Mmb\+Pressed = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classMouse_ace803410672223ec7d8f9afd15d46f27_ace803410672223ec7d8f9afd15d46f27}\index{Mouse@{Mouse}!m\_bRawEnabled@{m\_bRawEnabled}}
+\index{m\_bRawEnabled@{m\_bRawEnabled}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{m\_bRawEnabled}{m\_bRawEnabled}}
+{\footnotesize\ttfamily \label{classMouse_ace803410672223ec7d8f9afd15d46f27_ace803410672223ec7d8f9afd15d46f27} 
+bool Mouse\+::m\+\_\+b\+Raw\+Enabled = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classMouse_a2040a18846284ef0323b0e2104e90216_a2040a18846284ef0323b0e2104e90216}\index{Mouse@{Mouse}!m\_bRmbPressed@{m\_bRmbPressed}}
+\index{m\_bRmbPressed@{m\_bRmbPressed}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{m\_bRmbPressed}{m\_bRmbPressed}}
+{\footnotesize\ttfamily \label{classMouse_a2040a18846284ef0323b0e2104e90216_a2040a18846284ef0323b0e2104e90216} 
+bool Mouse\+::m\+\_\+b\+Rmb\+Pressed = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classMouse_a82c1524449d3a101f37b8c6622c869a2_a82c1524449d3a101f37b8c6622c869a2}\index{Mouse@{Mouse}!m\_eventQueue@{m\_eventQueue}}
+\index{m\_eventQueue@{m\_eventQueue}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{m\_eventQueue}{m\_eventQueue}}
+{\footnotesize\ttfamily \label{classMouse_a82c1524449d3a101f37b8c6622c869a2_a82c1524449d3a101f37b8c6622c869a2} 
+std\+::queue$<$\mbox{\hyperlink{classMouse_1_1Event}{Event}}$>$ Mouse\+::m\+\_\+event\+Queue\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classMouse_af1d74d183b27862add0c44f04c9d2ba7_af1d74d183b27862add0c44f04c9d2ba7}\index{Mouse@{Mouse}!m\_rawDeltaBuffer@{m\_rawDeltaBuffer}}
+\index{m\_rawDeltaBuffer@{m\_rawDeltaBuffer}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{m\_rawDeltaBuffer}{m\_rawDeltaBuffer}}
+{\footnotesize\ttfamily \label{classMouse_af1d74d183b27862add0c44f04c9d2ba7_af1d74d183b27862add0c44f04c9d2ba7} 
+std\+::queue$<$\mbox{\hyperlink{structMouse_1_1RawDelta}{Raw\+Delta}}$>$ Mouse\+::m\+\_\+raw\+Delta\+Buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classMouse_a7ebcb3249cdbde4e8846bf24b75e6d53_a7ebcb3249cdbde4e8846bf24b75e6d53}\index{Mouse@{Mouse}!m\_wheelDelta@{m\_wheelDelta}}
+\index{m\_wheelDelta@{m\_wheelDelta}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{m\_wheelDelta}{m\_wheelDelta}}
+{\footnotesize\ttfamily \label{classMouse_a7ebcb3249cdbde4e8846bf24b75e6d53_a7ebcb3249cdbde4e8846bf24b75e6d53} 
+int Mouse\+::m\+\_\+wheel\+Delta = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classMouse_aa3dfe1210637818de498912922295f45_aa3dfe1210637818de498912922295f45}\index{Mouse@{Mouse}!m\_x@{m\_x}}
+\index{m\_x@{m\_x}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{m\_x}{m\_x}}
+{\footnotesize\ttfamily \label{classMouse_aa3dfe1210637818de498912922295f45_aa3dfe1210637818de498912922295f45} 
+int Mouse\+::m\+\_\+x = -\/1\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classMouse_ac5c920c5398bf820f518e581f108f112_ac5c920c5398bf820f518e581f108f112}\index{Mouse@{Mouse}!m\_y@{m\_y}}
+\index{m\_y@{m\_y}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{m\_y}{m\_y}}
+{\footnotesize\ttfamily \label{classMouse_ac5c920c5398bf820f518e581f108f112_ac5c920c5398bf820f518e581f108f112} 
+int Mouse\+::m\+\_\+y = -\/1\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classMouse_a234d3e0d9a605dc2ddbc96e530b58b3f_a234d3e0d9a605dc2ddbc96e530b58b3f}\index{Mouse@{Mouse}!s\_maxBufferSize@{s\_maxBufferSize}}
+\index{s\_maxBufferSize@{s\_maxBufferSize}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{s\_maxBufferSize}{s\_maxBufferSize}}
+{\footnotesize\ttfamily \label{classMouse_a234d3e0d9a605dc2ddbc96e530b58b3f_a234d3e0d9a605dc2ddbc96e530b58b3f} 
+unsigned int Mouse\+::s\+\_\+max\+Buffer\+Size = 16u\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{mouse_8h}{mouse.\+h}}\item 
+src/\mbox{\hyperlink{mouse_8cpp}{mouse.\+cpp}}\end{DoxyCompactItemize}

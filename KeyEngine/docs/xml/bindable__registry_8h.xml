@@ -1,0 +1,324 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="bindable__registry_8h" kind="file" language="C++">
+    <compoundname>bindable_registry.h</compoundname>
+    <includes local="no">type_traits</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">unordered_map</includes>
+    <includes refid="bindable_8h" local="yes">bindable.h</includes>
+    <includedby refid="constant__buffer_8h" local="yes">inc/constant_buffer.h</includedby>
+    <includedby refid="blend__state_8cpp" local="yes">src/blend_state.cpp</includedby>
+    <includedby refid="cube__texture_8cpp" local="yes">src/cube_texture.cpp</includedby>
+    <includedby refid="depth__stencil__state_8cpp" local="yes">src/depth_stencil_state.cpp</includedby>
+    <includedby refid="index__buffer_8cpp" local="yes">src/index_buffer.cpp</includedby>
+    <includedby refid="input__layout_8cpp" local="yes">src/input_layout.cpp</includedby>
+    <includedby refid="pixel__shader_8cpp" local="yes">src/pixel_shader.cpp</includedby>
+    <includedby refid="primitive__topology_8cpp" local="yes">src/primitive_topology.cpp</includedby>
+    <includedby refid="rasterizer__state_8cpp" local="yes">src/rasterizer_state.cpp</includedby>
+    <includedby refid="texture_8cpp" local="yes">src/texture.cpp</includedby>
+    <includedby refid="texture__sampler__state_8cpp" local="yes">src/texture_sampler_state.cpp</includedby>
+    <includedby refid="vertex__buffer_8cpp" local="yes">src/vertex_buffer.cpp</includedby>
+    <includedby refid="vertex__shader_8cpp" local="yes">src/vertex_shader.cpp</includedby>
+    <includedby refid="viewport_8cpp" local="yes">src/viewport.cpp</includedby>
+    <incdepgraph>
+      <node id="8">
+        <label>assertions_console.h</label>
+        <link refid="assertions__console_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>bindable.h</label>
+        <link refid="bindable_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/bindable_registry.h</label>
+        <link refid="bindable__registry_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>graphics_friend.h</label>
+        <link refid="graphics__friend_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>d3d11.h</label>
+      </node>
+      <node id="9">
+        <label>iostream</label>
+      </node>
+      <node id="3">
+        <label>memory</label>
+      </node>
+      <node id="2">
+        <label>type_traits</label>
+      </node>
+      <node id="4">
+        <label>unordered_map</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>inc/bindable_registry.h</label>
+        <link refid="bindable__registry_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>inc/constant_buffer.h</label>
+        <link refid="constant__buffer_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>inc/shadow_pass.h</label>
+        <link refid="shadow__pass_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>inc/sky_vscb.h</label>
+        <link refid="sky__vscb_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/SHADOW_PASS.CPP</label>
+        <link refid="SHADOW__PASS_8CPP"/>
+      </node>
+      <node id="14">
+        <label>src/blend_state.cpp</label>
+        <link refid="blend__state_8cpp"/>
+      </node>
+      <node id="10">
+        <label>src/camera_frustum.cpp</label>
+        <link refid="camera__frustum_8cpp"/>
+      </node>
+      <node id="11">
+        <label>src/camera_widget.cpp</label>
+        <link refid="camera__widget_8cpp"/>
+      </node>
+      <node id="15">
+        <label>src/cube_texture.cpp</label>
+        <link refid="cube__texture_8cpp"/>
+      </node>
+      <node id="16">
+        <label>src/depth_stencil_state.cpp</label>
+        <link refid="depth__stencil__state_8cpp"/>
+      </node>
+      <node id="17">
+        <label>src/index_buffer.cpp</label>
+        <link refid="index__buffer_8cpp"/>
+      </node>
+      <node id="18">
+        <label>src/input_layout.cpp</label>
+        <link refid="input__layout_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/light_source.cpp</label>
+        <link refid="light__source_8cpp"/>
+      </node>
+      <node id="19">
+        <label>src/pixel_shader.cpp</label>
+        <link refid="pixel__shader_8cpp"/>
+      </node>
+      <node id="20">
+        <label>src/primitive_topology.cpp</label>
+        <link refid="primitive__topology_8cpp"/>
+      </node>
+      <node id="21">
+        <label>src/rasterizer_state.cpp</label>
+        <link refid="rasterizer__state_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/renderer.cpp</label>
+        <link refid="renderer_8cpp"/>
+      </node>
+      <node id="8">
+        <label>src/sky_pass.cpp</label>
+        <link refid="sky__pass_8cpp"/>
+      </node>
+      <node id="9">
+        <label>src/sky_vscb.cpp</label>
+        <link refid="sky__vscb_8cpp"/>
+      </node>
+      <node id="12">
+        <label>src/terrain.cpp</label>
+        <link refid="terrain_8cpp"/>
+      </node>
+      <node id="22">
+        <label>src/texture.cpp</label>
+        <link refid="texture_8cpp"/>
+      </node>
+      <node id="23">
+        <label>src/texture_sampler_state.cpp</label>
+        <link refid="texture__sampler__state_8cpp"/>
+      </node>
+      <node id="13">
+        <label>src/transform_vscb.cpp</label>
+        <link refid="transform__vscb_8cpp"/>
+      </node>
+      <node id="24">
+        <label>src/vertex_buffer.cpp</label>
+        <link refid="vertex__buffer_8cpp"/>
+      </node>
+      <node id="25">
+        <label>src/vertex_shader.cpp</label>
+        <link refid="vertex__shader_8cpp"/>
+      </node>
+      <node id="26">
+        <label>src/viewport.cpp</label>
+        <link refid="viewport_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classBindableRegistry" prot="public">BindableRegistry</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;type_traits&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="bindable_8h" kindref="compound">bindable.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="classBindableRegistry" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classBindableRegistry" kindref="compound">BindableRegistry</ref><sp/>final</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="11" refid="classBindableRegistry_abac5d57c6ef58123deace9cf884006db_1abac5d57c6ef58123deace9cf884006db" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unordered_map&lt;std::string,<sp/>std::shared_ptr&lt;IBindable&gt;&gt;<sp/><ref refid="classBindableRegistry_abac5d57c6ef58123deace9cf884006db_1abac5d57c6ef58123deace9cf884006db" kindref="member">m_bindableMap</ref>;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">T,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>TArgs&gt;</highlight></codeline>
+<codeline lineno="14" refid="classBindableRegistry_a034568929d2dbcda2bf619e90d9fc68e_1a034568929d2dbcda2bf619e90d9fc68e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;T&gt;<sp/><ref refid="classBindableRegistry_a034568929d2dbcda2bf619e90d9fc68e_1a034568929d2dbcda2bf619e90d9fc68e" kindref="member">fetch</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TArgs&amp;&amp;...<sp/>args<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static_assert</highlight><highlight class="normal">(<sp/>std::is_base_of&lt;IBindable,<sp/>T&gt;::value,<sp/></highlight><highlight class="stringliteral">&quot;T<sp/>must<sp/>be<sp/>a<sp/>IBindable!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBindableRegistry_a12812e70bfd7c7dbb8b5b5e08de8b35f_1a12812e70bfd7c7dbb8b5b5e08de8b35f" kindref="member">getInstance</ref>().<ref refid="classBindableRegistry_ae6618c61af11ec9f42cfef1f28425730_1ae6618c61af11ec9f42cfef1f28425730" kindref="member">fetch_impl</ref>&lt;T&gt;(<sp/>gfx,<sp/>std::forward&lt;TArgs&gt;(<sp/>args<sp/>)...<sp/>);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="classBindableRegistry_a5bb56ad44ea4ff8f141cb0aa4a9fff30_1a5bb56ad44ea4ff8f141cb0aa4a9fff30" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::size_t<sp/><ref refid="classBindableRegistry_a5bb56ad44ea4ff8f141cb0aa4a9fff30_1a5bb56ad44ea4ff8f141cb0aa4a9fff30" kindref="member">getInstanceCount</ref>()</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>_DEBUG<sp/>&amp;&amp;<sp/>!defined<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;instance<sp/>=<sp/><ref refid="classBindableRegistry_a12812e70bfd7c7dbb8b5b5e08de8b35f_1a12812e70bfd7c7dbb8b5b5e08de8b35f" kindref="member">getInstance</ref>();</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>instance.m_bindableMap.size();</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0ull;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classBindableRegistry_a1c490d4252f0c309f890fb82b1a7eb05_1a1c490d4252f0c309f890fb82b1a7eb05" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::size_t<sp/><ref refid="classBindableRegistry_a1c490d4252f0c309f890fb82b1a7eb05_1a1c490d4252f0c309f890fb82b1a7eb05" kindref="member">getGarbageCount</ref>()</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>_DEBUG<sp/>&amp;&amp;<sp/>!defined<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;instance<sp/>=<sp/><ref refid="classBindableRegistry_a12812e70bfd7c7dbb8b5b5e08de8b35f_1a12812e70bfd7c7dbb8b5b5e08de8b35f" kindref="member">getInstance</ref>();</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>nGarbagePtrs<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;elem<sp/>:<sp/>instance.m_bindableMap<sp/>)</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>elem.second.use_count()<sp/>&lt;=<sp/>1<sp/>)</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++nGarbagePtrs;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>nGarbagePtrs;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0ull;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="classBindableRegistry_a81a8ab3080a572657b03ebdf7742f38f_1a81a8ab3080a572657b03ebdf7742f38f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classBindableRegistry_a81a8ab3080a572657b03ebdf7742f38f_1a81a8ab3080a572657b03ebdf7742f38f" kindref="member">garbageCollect</ref>()</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;instance<sp/>=<sp/><ref refid="classBindableRegistry_a12812e70bfd7c7dbb8b5b5e08de8b35f_1a12812e70bfd7c7dbb8b5b5e08de8b35f" kindref="member">BindableRegistry::getInstance</ref>();</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/>std::unordered_map&lt;std::string,<sp/>std::shared_ptr&lt;IBindable&gt;&gt;<ref refid="key__type__traits_8h_a343c3465085a5c614a84910f059611e1_1a343c3465085a5c614a84910f059611e1" kindref="member">::iterator</ref><sp/>it<sp/>=<sp/>instance.m_bindableMap.begin();<sp/>it<sp/>!=<sp/>instance.m_bindableMap.end();<sp/>++it<sp/>)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>it-&gt;second.use_count()<sp/>&lt;=<sp/>1<sp/>)</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>instance.m_bindableMap.erase(<sp/>it<sp/>);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it<sp/>=<sp/>instance.m_bindableMap.begin();</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">T,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>TArgs&gt;</highlight></codeline>
+<codeline lineno="63" refid="classBindableRegistry_ae6618c61af11ec9f42cfef1f28425730_1ae6618c61af11ec9f42cfef1f28425730" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;T&gt;<sp/><ref refid="classBindableRegistry_ae6618c61af11ec9f42cfef1f28425730_1ae6618c61af11ec9f42cfef1f28425730" kindref="member">fetch_impl</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TArgs&amp;&amp;...<sp/>args<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>bindableId<sp/>=<sp/>T::calcUid(<sp/>std::forward&lt;TArgs&gt;(<sp/>args<sp/>)...<sp/>);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">/*std::unordered_map&lt;std::string,<sp/>std::shared_ptr&lt;IBindable&gt;&gt;::const_iterator*/</highlight><highlight class="normal"><sp/>elem<sp/>=<sp/><ref refid="classBindableRegistry_abac5d57c6ef58123deace9cf884006db_1abac5d57c6ef58123deace9cf884006db" kindref="member">m_bindableMap</ref>.find(<sp/>bindableId<sp/>);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>elem<sp/>==<sp/><ref refid="classBindableRegistry_abac5d57c6ef58123deace9cf884006db_1abac5d57c6ef58123deace9cf884006db" kindref="member">m_bindableMap</ref>.cend()<sp/>)</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;T&gt;<sp/>bindable<sp/>=<sp/>std::make_shared&lt;T&gt;(<sp/>gfx,<sp/>std::forward&lt;TArgs&gt;(<sp/>args<sp/>)...<sp/>);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBindableRegistry_abac5d57c6ef58123deace9cf884006db_1abac5d57c6ef58123deace9cf884006db" kindref="member">m_bindableMap</ref>[bindableId]<sp/>=<sp/>bindable;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>bindable;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::dynamic_pointer_cast&lt;T&gt;(<sp/>elem-&gt;second<sp/>);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="classBindableRegistry_a12812e70bfd7c7dbb8b5b5e08de8b35f_1a12812e70bfd7c7dbb8b5b5e08de8b35f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classBindableRegistry" kindref="compound">BindableRegistry</ref>&amp;<sp/><ref refid="classBindableRegistry_a12812e70bfd7c7dbb8b5b5e08de8b35f_1a12812e70bfd7c7dbb8b5b5e08de8b35f" kindref="member">getInstance</ref>()</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classBindableRegistry" kindref="compound">BindableRegistry</ref><sp/>instance;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>instance;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/bindable_registry.h"/>
+  </compounddef>
+</doxygen>

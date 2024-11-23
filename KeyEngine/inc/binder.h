@@ -19,15 +19,15 @@ namespace ren
 
 class IPass;
 
-//=============================================================
-//	\class	IBinder
-//	\author	KeyC0de
-//	\date	2022/09/29 20:48
-//	\brief	BindableBinder have a dependency: their target gfx resource; they must acquire it from the Linker of the target pass
-//			this link()ing will be done in Renderer::linkPassBinders
-//			BindableBinder names are not required, but just in case, I currently store their names, in case the system is expanded in the future.
-//			IBinder has a protected ctor; create child objects using the maker pattern
-//=============================================================
+///=============================================================
+/// \class	IBinder
+/// \author	KeyC0de
+/// \date	2022/09/29 20:48
+/// \brief	BindableBinder have a dependency: their target gfx resource; they must acquire it from the Linker of the target pass
+/// \brief	this link()ing will be done in Renderer::linkPassBinders
+/// \brief	BindableBinder names are not required, but just in case, I currently store their names, in case the system is expanded in the future.
+/// \brief	IBinder has a protected ctor; create child objects using the maker pattern
+///=============================================================
 class IBinder
 {
 	std::string m_name;
@@ -40,8 +40,7 @@ public:
 
 	void setPassAndLinkerNames( const std::string &passName, const std::string &linkerName );
 	virtual void link( ILinker &linker ) = 0;
-	//	\function	validateLinkage	||	\date	2021/06/26 23:57
-	//	\brief	assert validate after link()ing
+	/// \brief	assert validate after link()ing
 	virtual void validateLinkage() const = 0;
 	const std::string& getName() const noexcept;
 	const std::string& getPassName() const noexcept;
@@ -94,12 +93,12 @@ public:
 	}
 };
 
-//=============================================================
-//	\class	ContainerBindableBinder
-//	\author	KeyC0de
-//	\date	2022/08/21 0:17
-//	\brief	Used to make a BindableBinder 
-//=============================================================
+///=============================================================
+/// \class	ContainerBindableBinder
+/// \author	KeyC0de
+/// \date	2022/08/21 0:17
+/// \brief	Used to make a BindableBinder 
+///=============================================================
 template<class T>
 class ContainerBindableBinder final
 	: public IBinder

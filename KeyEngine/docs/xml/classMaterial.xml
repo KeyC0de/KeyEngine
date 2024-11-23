@@ -1,0 +1,481 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classMaterial" kind="class" language="C++" prot="public">
+    <compoundname>Material</compoundname>
+    <includes refid="material_8h" local="no">material.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classMaterial_acf719bf082469efcdfd379cc723742a0_1acf719bf082469efcdfd379cc723742a0" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t Material::m_renderingChannels</definition>
+        <argsstring></argsstring>
+        <name>m_renderingChannels</name>
+        <qualifiedname>Material::m_renderingChannels</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material.h" line="19" column="8" bodyfile="inc/material.h" bodystart="19" bodyend="-1"/>
+        <referencedby refid="classMaterial_a8f848d8ef3f5b762ccf1c321baac58f7_1a8f848d8ef3f5b762ccf1c321baac58f7" compoundref="material_8cpp" startline="137" endline="140">getChannelMask</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classMaterial_ae43cf17ac1ce6555e74be2b2d9807988_1ae43cf17ac1ce6555e74be2b2d9807988" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Material::m_bActive</definition>
+        <argsstring></argsstring>
+        <name>m_bActive</name>
+        <qualifiedname>Material::m_bActive</qualifiedname>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material.h" line="20" column="6" bodyfile="inc/material.h" bodystart="20" bodyend="-1"/>
+        <referencedby refid="classMaterial_a59ff37d29a111a4f2759e500cd70984f_1a59ff37d29a111a4f2759e500cd70984f" compoundref="material_8cpp" startline="81" endline="84">isEnabled</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classMaterial_af887ff0d6b50f72111ac8162e8bac616_1af887ff0d6b50f72111ac8162e8bac616" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Material::m_targetPassName</definition>
+        <argsstring></argsstring>
+        <name>m_targetPassName</name>
+        <qualifiedname>Material::m_targetPassName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material.h" line="21" column="13" bodyfile="inc/material.h" bodystart="21" bodyend="-1"/>
+        <referencedby refid="classMaterial_af5eaf5e510637aa5358f90221237096c_1af5eaf5e510637aa5358f90221237096c" compoundref="material_8cpp" startline="122" endline="125">connectPass</referencedby>
+        <referencedby refid="classMaterial_a671a93cd2a001254d233f5749f8a06e9_1a671a93cd2a001254d233f5749f8a06e9" compoundref="material_8cpp" startline="100" endline="103">getTargetPassName</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classMaterial_a1fb216d85c5d7810b48c9076ad1e2cfd_1a1fb216d85c5d7810b48c9076ad1e2cfd" prot="private" static="no" mutable="no">
+        <type><ref refid="classren_1_1RenderQueuePass" kindref="compound">ren::RenderQueuePass</ref> *</type>
+        <definition>ren::RenderQueuePass* Material::m_pTargetPass</definition>
+        <argsstring></argsstring>
+        <name>m_pTargetPass</name>
+        <qualifiedname>Material::m_pTargetPass</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material.h" line="22" column="22" bodyfile="inc/material.h" bodystart="22" bodyend="-1"/>
+        <referencedby refid="classMaterial_af5eaf5e510637aa5358f90221237096c_1af5eaf5e510637aa5358f90221237096c" compoundref="material_8cpp" startline="122" endline="125">connectPass</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classMaterial_a551c6e4b9335d2503971c96cd7c38c54_1a551c6e4b9335d2503971c96cd7c38c54" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classIBindable" kindref="compound">IBindable</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::shared_ptr&lt;IBindable&gt; &gt; Material::m_bindables</definition>
+        <argsstring></argsstring>
+        <name>m_bindables</name>
+        <qualifiedname>Material::m_bindables</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material.h" line="23" column="13" bodyfile="inc/material.h" bodystart="23" bodyend="-1"/>
+        <referencedby refid="classMaterial_a6adeef74f52e8b4b5525315bf08a4b44_1a6adeef74f52e8b4b5525315bf08a4b44" compoundref="material_8cpp" startline="23" endline="42">Material</referencedby>
+        <referencedby refid="classMaterial_abb7343425607a403026f8eb75482ef44_1abb7343425607a403026f8eb75482ef44" compoundref="material_8cpp" startline="113" endline="120">accept</referencedby>
+        <referencedby refid="classMaterial_a26439a35d8e06713070ccf0f8daaacb9_1a26439a35d8e06713070ccf0f8daaacb9" compoundref="material_8cpp" startline="127" endline="130">getBindables</referencedby>
+        <referencedby refid="classMaterial_ac0e1540239b83280b5c6f28a931f8bcf_1ac0e1540239b83280b5c6f28a931f8bcf" compoundref="material_8cpp" startline="132" endline="135">getBindables</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classMaterial_a695ba662915edc954454f49d5ae51b7b_1a695ba662915edc954454f49d5ae51b7b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Material::Material</definition>
+        <argsstring>(const size_t channels, const std::string &amp;targetPassName, const bool bStartActive) noexcept</argsstring>
+        <name>Material</name>
+        <qualifiedname>Material::Material</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>channels</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>targetPassName</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>bStartActive</declname>
+        </param>
+        <briefdescription>
+<para>the channels is a bitwise mask (<ref refid="rendering__channel_8h" kindref="compound">rendering_channel.h</ref>) which corresponds to the Rendering channel(s) used for this <ref refid="classMaterial" kindref="compound">Material</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+<para>\function <ref refid="classMaterial" kindref="compound">Material</ref> || <simplesect kind="date"><para>2024/04/25 13:55 </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material.h" line="30" column="1" bodyfile="src/material.cpp" bodystart="12" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classMaterial_a6adeef74f52e8b4b5525315bf08a4b44_1a6adeef74f52e8b4b5525315bf08a4b44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Material::Material</definition>
+        <argsstring>(const Material &amp;rhs)</argsstring>
+        <name>Material</name>
+        <qualifiedname>Material::Material</qualifiedname>
+        <param>
+          <type>const <ref refid="classMaterial" kindref="compound">Material</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material.h" line="31" column="1" bodyfile="src/material.cpp" bodystart="23" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classMaterial_a2ec3bfb068bc21a32e80ad431d5fc5db_1a2ec3bfb068bc21a32e80ad431d5fc5db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classMaterial" kindref="compound">Material</ref> &amp;</type>
+        <definition>Material &amp; Material::operator=</definition>
+        <argsstring>(const Material &amp;rhs)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Material::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classMaterial" kindref="compound">Material</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material.h" line="32" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classMaterial_a5466cc7addc7ca0da7a68ed6f61f7a28_1a5466cc7addc7ca0da7a68ed6f61f7a28" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Material::Material</definition>
+        <argsstring>(Material &amp;&amp;rhs) noexcept</argsstring>
+        <name>Material</name>
+        <qualifiedname>Material::Material</qualifiedname>
+        <param>
+          <type><ref refid="classMaterial" kindref="compound">Material</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material.h" line="33" column="1" bodyfile="src/material.cpp" bodystart="44" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="classMaterial_a179ee1b56868ef28f063b75d4f620341_1a179ee1b56868ef28f063b75d4f620341" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classMaterial" kindref="compound">Material</ref> &amp;</type>
+        <definition>Material &amp; Material::operator=</definition>
+        <argsstring>(Material &amp;&amp;rhs)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Material::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classMaterial" kindref="compound">Material</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material.h" line="34" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classMaterial_afe5fc1c1346a8d176afbb312d4a11915_1afe5fc1c1346a8d176afbb312d4a11915" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Material::addBindable</definition>
+        <argsstring>(std::shared_ptr&lt; IBindable &gt; pBindable) noexcept</argsstring>
+        <name>addBindable</name>
+        <qualifiedname>Material::addBindable</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classIBindable" kindref="compound">IBindable</ref> &gt;</type>
+          <declname>pBindable</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material.h" line="36" column="6" bodyfile="src/material.cpp" bodystart="58" bodyend="61"/>
+        <referencedby refid="classCameraFrustum_a73a48e8fbde4b02b50e32746b50e03b8_1a73a48e8fbde4b02b50e32746b50e03b8" compoundref="camera__frustum_8cpp" startline="17" endline="82">CameraFrustum::CameraFrustum</referencedby>
+        <referencedby refid="classCameraWidget_a0c41231fcab87a5a4aeb57d87aecb55e_1a0c41231fcab87a5a4aeb57d87aecb55e" compoundref="camera__widget_8cpp" startline="17" endline="63">CameraWidget::CameraWidget</referencedby>
+        <referencedby refid="classCube_af0fe61f07cbc70de782950bac056988b_1af0fe61f07cbc70de782950bac056988b" compoundref="cube_8cpp" startline="23" endline="194">Cube::Cube</referencedby>
+        <referencedby refid="classLine_ab4004be2273185c41037d4dd14e02990_1ab4004be2273185c41037d4dd14e02990" compoundref="line_8cpp" startline="22" endline="105">Line::Line</referencedby>
+        <referencedby refid="classPlane_a70e7a5971d34e1130740e843a6a18896_1a70e7a5971d34e1130740e843a6a18896" compoundref="plane_8cpp" startline="23" endline="193">Plane::Plane</referencedby>
+        <referencedby refid="classSphere_a80bdf896453fbb509c1e6170e0022c29_1a80bdf896453fbb509c1e6170e0022c29" compoundref="sphere_8cpp" startline="18" endline="72">Sphere::Sphere</referencedby>
+        <referencedby refid="classTerrain_af5a4ec6ff724b557052dd12be7f0de0c_1af5a4ec6ff724b557052dd12be7f0de0c" compoundref="terrain_8cpp" startline="24" endline="158">Terrain::Terrain</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classMaterial_af4be8a4c8e20bd1515cbf4fff634c370_1af4be8a4c8e20bd1515cbf4fff634c370" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Material::render</definition>
+        <argsstring>(const Mesh &amp;mesh, const size_t channels) const noexcept</argsstring>
+        <name>render</name>
+        <qualifiedname>Material::render</qualifiedname>
+        <param>
+          <type>const <ref refid="classMesh" kindref="compound">Mesh</ref> &amp;</type>
+          <declname>mesh</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>channels</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material.h" line="37" column="6" bodyfile="src/material.cpp" bodystart="64" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classMaterial_a930c8a15c68c7fb236208f9888a5b5dd_1a930c8a15c68c7fb236208f9888a5b5dd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Material::bind</definition>
+        <argsstring>(Graphics &amp;gfx) const cond_noex</argsstring>
+        <name>bind</name>
+        <qualifiedname>Material::bind</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material.h" line="38" column="6" bodyfile="src/material.cpp" bodystart="73" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="classMaterial_a59ff37d29a111a4f2759e500cd70984f_1a59ff37d29a111a4f2759e500cd70984f" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Material::isEnabled</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>isEnabled</name>
+        <qualifiedname>Material::isEnabled</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material.h" line="39" column="6" bodyfile="src/material.cpp" bodystart="81" bodyend="84"/>
+        <referencedby refid="classImguiConstantBufferVisitorShowcase_a5527d99456f1106040fdfdd737953e12_1a5527d99456f1106040fdfdd737953e12" compoundref="imgui__visitors_8cpp" startline="250" endline="258">ImguiConstantBufferVisitorShowcase::onSetMaterial</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classMaterial_ad1024f913a5eb06a9c15f6fd341dcc6f_1ad1024f913a5eb06a9c15f6fd341dcc6f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Material::setEnabled</definition>
+        <argsstring>(const bool b) noexcept</argsstring>
+        <name>setEnabled</name>
+        <qualifiedname>Material::setEnabled</qualifiedname>
+        <param>
+          <type>const bool</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material.h" line="40" column="6" bodyfile="src/material.cpp" bodystart="86" bodyend="89"/>
+        <referencedby refid="classImguiConstantBufferVisitorShowcase_a5527d99456f1106040fdfdd737953e12_1a5527d99456f1106040fdfdd737953e12" compoundref="imgui__visitors_8cpp" startline="250" endline="258">ImguiConstantBufferVisitorShowcase::onSetMaterial</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classMaterial_a29d85b114d4ccfb5846f6322f9f0e6d9_1a29d85b114d4ccfb5846f6322f9f0e6d9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Material::setEnabled</definition>
+        <argsstring>(const size_t channels, const bool bEnabled) noexcept</argsstring>
+        <name>setEnabled</name>
+        <qualifiedname>Material::setEnabled</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>channels</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>bEnabled</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material.h" line="41" column="6" bodyfile="src/material.cpp" bodystart="91" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="classMaterial_a671a93cd2a001254d233f5749f8a06e9_1a671a93cd2a001254d233f5749f8a06e9" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; Material::getTargetPassName</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getTargetPassName</name>
+        <qualifiedname>Material::getTargetPassName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material.h" line="42" column="19" bodyfile="src/material.cpp" bodystart="100" bodyend="103"/>
+        <referencedby refid="classImguiConstantBufferVisitorShowcase_a5527d99456f1106040fdfdd737953e12_1a5527d99456f1106040fdfdd737953e12" compoundref="imgui__visitors_8cpp" startline="250" endline="258">ImguiConstantBufferVisitorShowcase::onSetMaterial</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classMaterial_a9843a8a17b2cd1d706a6bbb6a1cef59c_1a9843a8a17b2cd1d706a6bbb6a1cef59c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Material::setMesh</definition>
+        <argsstring>(const Mesh &amp;parent) noexcept</argsstring>
+        <name>setMesh</name>
+        <qualifiedname>Material::setMesh</qualifiedname>
+        <param>
+          <type>const <ref refid="classMesh" kindref="compound">Mesh</ref> &amp;</type>
+          <declname>parent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material.h" line="43" column="6" bodyfile="src/material.cpp" bodystart="105" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="classMaterial_abb7343425607a403026f8eb75482ef44_1abb7343425607a403026f8eb75482ef44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Material::accept</definition>
+        <argsstring>(IImGuiConstantBufferVisitor &amp;ev)</argsstring>
+        <name>accept</name>
+        <qualifiedname>Material::accept</qualifiedname>
+        <param>
+          <type><ref refid="classIImGuiConstantBufferVisitor" kindref="compound">IImGuiConstantBufferVisitor</ref> &amp;</type>
+          <declname>ev</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material.h" line="44" column="6" bodyfile="src/material.cpp" bodystart="113" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="classMaterial_af5eaf5e510637aa5358f90221237096c_1af5eaf5e510637aa5358f90221237096c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Material::connectPass</definition>
+        <argsstring>(ren::Renderer &amp;r)</argsstring>
+        <name>connectPass</name>
+        <qualifiedname>Material::connectPass</qualifiedname>
+        <param>
+          <type><ref refid="classren_1_1Renderer" kindref="compound">ren::Renderer</ref> &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material.h" line="45" column="6" bodyfile="src/material.cpp" bodystart="122" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="classMaterial_a26439a35d8e06713070ccf0f8daaacb9_1a26439a35d8e06713070ccf0f8daaacb9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classIBindable" kindref="compound">IBindable</ref> &gt; &gt; &amp;</type>
+        <definition>std::vector&lt; std::shared_ptr&lt; IBindable &gt; &gt; &amp; Material::getBindables</definition>
+        <argsstring>()</argsstring>
+        <name>getBindables</name>
+        <qualifiedname>Material::getBindables</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material.h" line="46" column="13" bodyfile="src/material.cpp" bodystart="127" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="classMaterial_ac0e1540239b83280b5c6f28a931f8bcf_1ac0e1540239b83280b5c6f28a931f8bcf" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const std::vector&lt; std::shared_ptr&lt; <ref refid="classIBindable" kindref="compound">IBindable</ref> &gt; &gt; &amp;</type>
+        <definition>const std::vector&lt; std::shared_ptr&lt; IBindable &gt; &gt; &amp; Material::getBindables</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getBindables</name>
+        <qualifiedname>Material::getBindables</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material.h" line="47" column="19" bodyfile="src/material.cpp" bodystart="132" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="classMaterial_a8f848d8ef3f5b762ccf1c321baac58f7_1a8f848d8ef3f5b762ccf1c321baac58f7" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t Material::getChannelMask</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getChannelMask</name>
+        <qualifiedname>Material::getChannelMask</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material.h" line="48" column="8" bodyfile="src/material.cpp" bodystart="137" bodyend="140"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Material</label>
+        <link refid="classMaterial"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>m_pTargetPass</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>ren::IBindablePass</label>
+        <link refid="classren_1_1IBindablePass"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>ren::IPass</label>
+        <link refid="classren_1_1IPass"/>
+      </node>
+      <node id="2">
+        <label>ren::RenderQueuePass</label>
+        <link refid="classren_1_1RenderQueuePass"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/material.h" line="17" column="1" bodyfile="inc/material.h" bodystart="18" bodyend="49"/>
+    <listofallmembers>
+      <member refid="classMaterial_abb7343425607a403026f8eb75482ef44_1abb7343425607a403026f8eb75482ef44" prot="public" virt="non-virtual"><scope>Material</scope><name>accept</name></member>
+      <member refid="classMaterial_afe5fc1c1346a8d176afbb312d4a11915_1afe5fc1c1346a8d176afbb312d4a11915" prot="public" virt="non-virtual"><scope>Material</scope><name>addBindable</name></member>
+      <member refid="classMaterial_a930c8a15c68c7fb236208f9888a5b5dd_1a930c8a15c68c7fb236208f9888a5b5dd" prot="public" virt="non-virtual"><scope>Material</scope><name>bind</name></member>
+      <member refid="classMaterial_af5eaf5e510637aa5358f90221237096c_1af5eaf5e510637aa5358f90221237096c" prot="public" virt="non-virtual"><scope>Material</scope><name>connectPass</name></member>
+      <member refid="classMaterial_a26439a35d8e06713070ccf0f8daaacb9_1a26439a35d8e06713070ccf0f8daaacb9" prot="public" virt="non-virtual"><scope>Material</scope><name>getBindables</name></member>
+      <member refid="classMaterial_ac0e1540239b83280b5c6f28a931f8bcf_1ac0e1540239b83280b5c6f28a931f8bcf" prot="public" virt="non-virtual"><scope>Material</scope><name>getBindables</name></member>
+      <member refid="classMaterial_a8f848d8ef3f5b762ccf1c321baac58f7_1a8f848d8ef3f5b762ccf1c321baac58f7" prot="public" virt="non-virtual"><scope>Material</scope><name>getChannelMask</name></member>
+      <member refid="classMaterial_a671a93cd2a001254d233f5749f8a06e9_1a671a93cd2a001254d233f5749f8a06e9" prot="public" virt="non-virtual"><scope>Material</scope><name>getTargetPassName</name></member>
+      <member refid="classMaterial_a59ff37d29a111a4f2759e500cd70984f_1a59ff37d29a111a4f2759e500cd70984f" prot="public" virt="non-virtual"><scope>Material</scope><name>isEnabled</name></member>
+      <member refid="classMaterial_ae43cf17ac1ce6555e74be2b2d9807988_1ae43cf17ac1ce6555e74be2b2d9807988" prot="private" virt="non-virtual"><scope>Material</scope><name>m_bActive</name></member>
+      <member refid="classMaterial_a551c6e4b9335d2503971c96cd7c38c54_1a551c6e4b9335d2503971c96cd7c38c54" prot="private" virt="non-virtual"><scope>Material</scope><name>m_bindables</name></member>
+      <member refid="classMaterial_a1fb216d85c5d7810b48c9076ad1e2cfd_1a1fb216d85c5d7810b48c9076ad1e2cfd" prot="private" virt="non-virtual"><scope>Material</scope><name>m_pTargetPass</name></member>
+      <member refid="classMaterial_acf719bf082469efcdfd379cc723742a0_1acf719bf082469efcdfd379cc723742a0" prot="private" virt="non-virtual"><scope>Material</scope><name>m_renderingChannels</name></member>
+      <member refid="classMaterial_af887ff0d6b50f72111ac8162e8bac616_1af887ff0d6b50f72111ac8162e8bac616" prot="private" virt="non-virtual"><scope>Material</scope><name>m_targetPassName</name></member>
+      <member refid="classMaterial_a695ba662915edc954454f49d5ae51b7b_1a695ba662915edc954454f49d5ae51b7b" prot="public" virt="non-virtual"><scope>Material</scope><name>Material</name></member>
+      <member refid="classMaterial_a6adeef74f52e8b4b5525315bf08a4b44_1a6adeef74f52e8b4b5525315bf08a4b44" prot="public" virt="non-virtual"><scope>Material</scope><name>Material</name></member>
+      <member refid="classMaterial_a5466cc7addc7ca0da7a68ed6f61f7a28_1a5466cc7addc7ca0da7a68ed6f61f7a28" prot="public" virt="non-virtual"><scope>Material</scope><name>Material</name></member>
+      <member refid="classMaterial_a2ec3bfb068bc21a32e80ad431d5fc5db_1a2ec3bfb068bc21a32e80ad431d5fc5db" prot="public" virt="non-virtual"><scope>Material</scope><name>operator=</name></member>
+      <member refid="classMaterial_a179ee1b56868ef28f063b75d4f620341_1a179ee1b56868ef28f063b75d4f620341" prot="public" virt="non-virtual"><scope>Material</scope><name>operator=</name></member>
+      <member refid="classMaterial_af4be8a4c8e20bd1515cbf4fff634c370_1af4be8a4c8e20bd1515cbf4fff634c370" prot="public" virt="non-virtual"><scope>Material</scope><name>render</name></member>
+      <member refid="classMaterial_ad1024f913a5eb06a9c15f6fd341dcc6f_1ad1024f913a5eb06a9c15f6fd341dcc6f" prot="public" virt="non-virtual"><scope>Material</scope><name>setEnabled</name></member>
+      <member refid="classMaterial_a29d85b114d4ccfb5846f6322f9f0e6d9_1a29d85b114d4ccfb5846f6322f9f0e6d9" prot="public" virt="non-virtual"><scope>Material</scope><name>setEnabled</name></member>
+      <member refid="classMaterial_a9843a8a17b2cd1d706a6bbb6a1cef59c_1a9843a8a17b2cd1d706a6bbb6a1cef59c" prot="public" virt="non-virtual"><scope>Material</scope><name>setMesh</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

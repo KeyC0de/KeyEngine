@@ -1,0 +1,176 @@
+\doxysection{Message\+Dispatcher Class Reference}
+\hypertarget{classMessageDispatcher}{}\label{classMessageDispatcher}\index{MessageDispatcher@{MessageDispatcher}}
+
+
+Meyer\textquotesingle{}s singleton class.  
+
+
+
+
+{\ttfamily \#include $<$message\+\_\+queue\+\_\+bus\+\_\+dispatcher.\+h$>$}
+
+Inheritance diagram for Message\+Dispatcher\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classMessageDispatcher}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMessageDispatcher_aae7761b005e409403fae393855c11db6_aae7761b005e409403fae393855c11db6}{\texorpdfstring{$\sim$}{\string~}\+Message\+Dispatcher}} () noexcept=default
+\item 
+\mbox{\hyperlink{classMessageDispatcher_a54c87d777197854caa4235edcca7434a_a54c87d777197854caa4235edcca7434a}{Message\+Dispatcher}} (\mbox{\hyperlink{classMessageDispatcher}{Message\+Dispatcher}} \&\&rhs) noexcept
+\item 
+\mbox{\hyperlink{classMessageDispatcher}{Message\+Dispatcher}} \& \mbox{\hyperlink{classMessageDispatcher_a99ddac95e38f4656990aee38b55270bc_a99ddac95e38f4656990aee38b55270bc}{operator=}} (\mbox{\hyperlink{classMessageDispatcher}{Message\+Dispatcher}} \&\&rhs) noexcept
+\item 
+void \mbox{\hyperlink{classMessageDispatcher_a1965dca63a394952ac2d0c4845b5ce61_a1965dca63a394952ac2d0c4845b5ce61}{add\+Message}} (\mbox{\hyperlink{classMessage}{Message}} \texorpdfstring{$\ast$}{*}msg)
+\begin{DoxyCompactList}\small\item\em add new message to the \doxylink{classMessageBus}{Message\+Bus} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMessageDispatcher_adf8ef455119ea22ff7ab9bfad3ffffd6_adf8ef455119ea22ff7ab9bfad3ffffd6}{dispatch\+All}} ()
+\begin{DoxyCompactList}\small\item\em dispatch all pending messages \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMessageDispatcher_a567945bff2a283bd5143036743c0c8c1_a567945bff2a283bd5143036743c0c8c1}{clear}} ()
+\item 
+std\+::size\+\_\+t \mbox{\hyperlink{classMessageDispatcher_a987a81db38368b17ad63a4a0bcffac06_a987a81db38368b17ad63a4a0bcffac06}{get\+Size}} () const noexcept
+\item 
+std\+::size\+\_\+t \mbox{\hyperlink{classMessageDispatcher_a14b3a48e0102f1431e5c98acb420883f_a14b3a48e0102f1431e5c98acb420883f}{get\+Capacity}} () const noexcept
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNonCopyable_a809b6e4ade7ae32f6d248f2a3b783d45_a809b6e4ade7ae32f6d248f2a3b783d45}{Non\+Copyable}} ()=default
+\item 
+\mbox{\hyperlink{classNonCopyable_a15aa3015488bb26c47ded914cb630cf5_a15aa3015488bb26c47ded914cb630cf5}{Non\+Copyable}} (const \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_af4788b57da9a9faa570c754c22c724f5_af4788b57da9a9faa570c754c22c724f5}{operator=}} (const \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable_a487646562ae30ece23d7638f2aed1dde_a487646562ae30ece23d7638f2aed1dde}{Non\+Copyable}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_ae032ca32cda9c836c27b28eb6a087d18_ae032ca32cda9c836c27b28eb6a087d18}{operator=}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable_af716e4cfb79381710ef4490414939ae9_af716e4cfb79381710ef4490414939ae9}{Non\+Copyable}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&\&rhs)=default
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_af81816bd4c2c4421a6eab98843ead6e4_af81816bd4c2c4421a6eab98843ead6e4}{operator=}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&\&rhs)=default
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classMessageDispatcher}{Message\+Dispatcher}} \& \mbox{\hyperlink{classMessageDispatcher_a0481f9fa137bdb67d0feedc6535a9c5b_a0481f9fa137bdb67d0feedc6535a9c5b}{get\+Instance}} (const int initial\+Capacity=100)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMessageDispatcher_afb9b280725d98139078d0ff70d9184d7_afb9b280725d98139078d0ff70d9184d7}{Message\+Dispatcher}} (const int initial\+Capacity)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMessageBus}{Message\+Bus}} \mbox{\hyperlink{classMessageDispatcher_addbf4f6ed8cd98fea50341827ac8476b_addbf4f6ed8cd98fea50341827ac8476b}{m\+\_\+mb}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNonCopyable_a3e461fb46c72b9a5af7df7e74dbd899e_a3e461fb46c72b9a5af7df7e74dbd899e}{\texorpdfstring{$\sim$}{\string~}\+Non\+Copyable}} () noexcept=default
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Meyer\textquotesingle{}s singleton class. 
+
+============================================================
+
+\begin{DoxyAuthor}{Author}
+Key\+C0de 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019/12/09 17\+:15 \doxysubsection*{owns \& manages the Message\+Bus/\+Queue }
+\end{DoxyDate}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classMessageDispatcher_afb9b280725d98139078d0ff70d9184d7_afb9b280725d98139078d0ff70d9184d7}\index{MessageDispatcher@{MessageDispatcher}!MessageDispatcher@{MessageDispatcher}}
+\index{MessageDispatcher@{MessageDispatcher}!MessageDispatcher@{MessageDispatcher}}
+\doxysubsubsection{\texorpdfstring{MessageDispatcher()}{MessageDispatcher()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classMessageDispatcher_afb9b280725d98139078d0ff70d9184d7_afb9b280725d98139078d0ff70d9184d7} 
+Message\+Dispatcher\+::\+Message\+Dispatcher (\begin{DoxyParamCaption}\item[{const int}]{initial\+Capacity}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classMessageDispatcher_aae7761b005e409403fae393855c11db6_aae7761b005e409403fae393855c11db6}\index{MessageDispatcher@{MessageDispatcher}!````~MessageDispatcher@{\texorpdfstring{$\sim$}{\string~}MessageDispatcher}}
+\index{````~MessageDispatcher@{\texorpdfstring{$\sim$}{\string~}MessageDispatcher}!MessageDispatcher@{MessageDispatcher}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}MessageDispatcher()}{\string~MessageDispatcher()}}
+{\footnotesize\ttfamily \label{classMessageDispatcher_aae7761b005e409403fae393855c11db6_aae7761b005e409403fae393855c11db6} 
+Message\+Dispatcher\+::\texorpdfstring{$\sim$}{\string~}\+Message\+Dispatcher (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classMessageDispatcher_a54c87d777197854caa4235edcca7434a_a54c87d777197854caa4235edcca7434a}\index{MessageDispatcher@{MessageDispatcher}!MessageDispatcher@{MessageDispatcher}}
+\index{MessageDispatcher@{MessageDispatcher}!MessageDispatcher@{MessageDispatcher}}
+\doxysubsubsection{\texorpdfstring{MessageDispatcher()}{MessageDispatcher()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classMessageDispatcher_a54c87d777197854caa4235edcca7434a_a54c87d777197854caa4235edcca7434a} 
+Message\+Dispatcher\+::\+Message\+Dispatcher (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMessageDispatcher}{Message\+Dispatcher}} \&\&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classMessageDispatcher_a1965dca63a394952ac2d0c4845b5ce61_a1965dca63a394952ac2d0c4845b5ce61}\index{MessageDispatcher@{MessageDispatcher}!addMessage@{addMessage}}
+\index{addMessage@{addMessage}!MessageDispatcher@{MessageDispatcher}}
+\doxysubsubsection{\texorpdfstring{addMessage()}{addMessage()}}
+{\footnotesize\ttfamily \label{classMessageDispatcher_a1965dca63a394952ac2d0c4845b5ce61_a1965dca63a394952ac2d0c4845b5ce61} 
+void Message\+Dispatcher\+::add\+Message (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMessage}{Message}} \texorpdfstring{$\ast$}{*}}]{msg}{}\end{DoxyParamCaption})}
+
+
+
+add new message to the \doxylink{classMessageBus}{Message\+Bus} 
+
+\Hypertarget{classMessageDispatcher_a567945bff2a283bd5143036743c0c8c1_a567945bff2a283bd5143036743c0c8c1}\index{MessageDispatcher@{MessageDispatcher}!clear@{clear}}
+\index{clear@{clear}!MessageDispatcher@{MessageDispatcher}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily \label{classMessageDispatcher_a567945bff2a283bd5143036743c0c8c1_a567945bff2a283bd5143036743c0c8c1} 
+void Message\+Dispatcher\+::clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classMessageDispatcher_adf8ef455119ea22ff7ab9bfad3ffffd6_adf8ef455119ea22ff7ab9bfad3ffffd6}\index{MessageDispatcher@{MessageDispatcher}!dispatchAll@{dispatchAll}}
+\index{dispatchAll@{dispatchAll}!MessageDispatcher@{MessageDispatcher}}
+\doxysubsubsection{\texorpdfstring{dispatchAll()}{dispatchAll()}}
+{\footnotesize\ttfamily \label{classMessageDispatcher_adf8ef455119ea22ff7ab9bfad3ffffd6_adf8ef455119ea22ff7ab9bfad3ffffd6} 
+void Message\+Dispatcher\+::dispatch\+All (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+dispatch all pending messages 
+
+\Hypertarget{classMessageDispatcher_a14b3a48e0102f1431e5c98acb420883f_a14b3a48e0102f1431e5c98acb420883f}\index{MessageDispatcher@{MessageDispatcher}!getCapacity@{getCapacity}}
+\index{getCapacity@{getCapacity}!MessageDispatcher@{MessageDispatcher}}
+\doxysubsubsection{\texorpdfstring{getCapacity()}{getCapacity()}}
+{\footnotesize\ttfamily \label{classMessageDispatcher_a14b3a48e0102f1431e5c98acb420883f_a14b3a48e0102f1431e5c98acb420883f} 
+std\+::size\+\_\+t Message\+Dispatcher\+::get\+Capacity (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classMessageDispatcher_a0481f9fa137bdb67d0feedc6535a9c5b_a0481f9fa137bdb67d0feedc6535a9c5b}\index{MessageDispatcher@{MessageDispatcher}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!MessageDispatcher@{MessageDispatcher}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \label{classMessageDispatcher_a0481f9fa137bdb67d0feedc6535a9c5b_a0481f9fa137bdb67d0feedc6535a9c5b} 
+\mbox{\hyperlink{classMessageDispatcher}{Message\+Dispatcher}} \& Message\+Dispatcher\+::get\+Instance (\begin{DoxyParamCaption}\item[{const int}]{initial\+Capacity}{ = {\ttfamily 100}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classMessageDispatcher_a987a81db38368b17ad63a4a0bcffac06_a987a81db38368b17ad63a4a0bcffac06}\index{MessageDispatcher@{MessageDispatcher}!getSize@{getSize}}
+\index{getSize@{getSize}!MessageDispatcher@{MessageDispatcher}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily \label{classMessageDispatcher_a987a81db38368b17ad63a4a0bcffac06_a987a81db38368b17ad63a4a0bcffac06} 
+std\+::size\+\_\+t Message\+Dispatcher\+::get\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classMessageDispatcher_a99ddac95e38f4656990aee38b55270bc_a99ddac95e38f4656990aee38b55270bc}\index{MessageDispatcher@{MessageDispatcher}!operator=@{operator=}}
+\index{operator=@{operator=}!MessageDispatcher@{MessageDispatcher}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{classMessageDispatcher_a99ddac95e38f4656990aee38b55270bc_a99ddac95e38f4656990aee38b55270bc} 
+\mbox{\hyperlink{classMessageDispatcher}{Message\+Dispatcher}} \& Message\+Dispatcher\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMessageDispatcher}{Message\+Dispatcher}} \&\&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classMessageDispatcher_addbf4f6ed8cd98fea50341827ac8476b_addbf4f6ed8cd98fea50341827ac8476b}\index{MessageDispatcher@{MessageDispatcher}!m\_mb@{m\_mb}}
+\index{m\_mb@{m\_mb}!MessageDispatcher@{MessageDispatcher}}
+\doxysubsubsection{\texorpdfstring{m\_mb}{m\_mb}}
+{\footnotesize\ttfamily \label{classMessageDispatcher_addbf4f6ed8cd98fea50341827ac8476b_addbf4f6ed8cd98fea50341827ac8476b} 
+\mbox{\hyperlink{classMessageBus}{Message\+Bus}} Message\+Dispatcher\+::m\+\_\+mb\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{message__queue__bus__dispatcher_8h}{message\+\_\+queue\+\_\+bus\+\_\+dispatcher.\+h}}\item 
+src/\mbox{\hyperlink{message__queue__bus__dispatcher_8cpp}{message\+\_\+queue\+\_\+bus\+\_\+dispatcher.\+cpp}}\end{DoxyCompactItemize}

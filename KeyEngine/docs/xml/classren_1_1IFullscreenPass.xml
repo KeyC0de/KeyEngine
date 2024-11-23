@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classren_1_1IFullscreenPass" kind="class" language="C++" prot="public">
+    <compoundname>ren::IFullscreenPass</compoundname>
+    <basecompoundref refid="classren_1_1IBindablePass" prot="public" virt="non-virtual">ren::IBindablePass</basecompoundref>
+    <derivedcompoundref refid="classren_1_1BlurPass" prot="public" virt="non-virtual">ren::BlurPass</derivedcompoundref>
+    <derivedcompoundref refid="classren_1_1HorizontalBlurPass" prot="public" virt="non-virtual">ren::HorizontalBlurPass</derivedcompoundref>
+    <derivedcompoundref refid="classren_1_1NegativePass" prot="public" virt="non-virtual">ren::NegativePass</derivedcompoundref>
+    <derivedcompoundref refid="classren_1_1PassThrough" prot="public" virt="non-virtual">ren::PassThrough</derivedcompoundref>
+    <derivedcompoundref refid="classren_1_1VerticalBlurPass" prot="public" virt="non-virtual">ren::VerticalBlurPass</derivedcompoundref>
+    <includes refid="fullscreen__pass_8h" local="no">fullscreen_pass.h</includes>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classren_1_1IFullscreenPass_a811b6a0166f7e04048bac71ff971a0c5_1a811b6a0166f7e04048bac71ff971a0c5" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>const char *</type>
+        <definition>const char* ren::IFullscreenPass::s_fullscreenTag</definition>
+        <argsstring></argsstring>
+        <name>s_fullscreenTag</name>
+        <qualifiedname>ren::IFullscreenPass::s_fullscreenTag</qualifiedname>
+        <initializer>= &quot;$fullscreen&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/fullscreen_pass.h" line="15" column="29" bodyfile="inc/fullscreen_pass.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classren_1_1IFullscreenPass_a62e96861f46b97aea00c81e2573390f3_1a62e96861f46b97aea00c81e2573390f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ren::IFullscreenPass::IFullscreenPass</definition>
+        <argsstring>(Graphics &amp;gfx, const std::string &amp;name) cond_noex</argsstring>
+        <name>IFullscreenPass</name>
+        <qualifiedname>ren::IFullscreenPass::IFullscreenPass</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/fullscreen_pass.h" line="17" column="1" bodyfile="src/fullscreen_pass.cpp" bodystart="19" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1IFullscreenPass_a9c7f7f30f493b1c0618276a211753e9f_1a9c7f7f30f493b1c0618276a211753e9f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ren::IFullscreenPass::run</definition>
+        <argsstring>(Graphics &amp;gfx) const cond_noex override</argsstring>
+        <name>run</name>
+        <qualifiedname>ren::IFullscreenPass::run</qualifiedname>
+        <reimplements refid="classren_1_1IPass_a80a6d3d531bee9f93371f342d32c89a1_1a80a6d3d531bee9f93371f342d32c89a1">run</reimplements>
+        <reimplementedby refid="classren_1_1VerticalBlurPass_a6e8ef490107e5b9b7872b24183b37dae_1a6e8ef490107e5b9b7872b24183b37dae">run</reimplementedby>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+<para>binds bindables &amp; executes draw calls </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/fullscreen_pass.h" line="19" column="6" bodyfile="src/fullscreen_pass.cpp" bodystart="46" bodyend="50"/>
+        <referencedby refid="classren_1_1HorizontalBlurPass_a5bab184713ed765432106808d491c784_1a5bab184713ed765432106808d491c784" compoundref="horizontal__blur__pass_8cpp" startline="37" endline="45">ren::HorizontalBlurPass::run</referencedby>
+        <referencedby refid="classren_1_1VerticalBlurPass_a6e8ef490107e5b9b7872b24183b37dae_1a6e8ef490107e5b9b7872b24183b37dae" compoundref="vertical__blur__pass_8cpp" startline="31" endline="38">ren::VerticalBlurPass::run</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4">
+        <label>ren::BlurPass</label>
+        <link refid="classren_1_1BlurPass"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>ren::HorizontalBlurPass</label>
+        <link refid="classren_1_1HorizontalBlurPass"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ren::IBindablePass</label>
+        <link refid="classren_1_1IBindablePass"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>ren::IFullscreenPass</label>
+        <link refid="classren_1_1IFullscreenPass"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>ren::IPass</label>
+        <link refid="classren_1_1IPass"/>
+      </node>
+      <node id="6">
+        <label>ren::NegativePass</label>
+        <link refid="classren_1_1NegativePass"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>ren::PassThrough</label>
+        <link refid="classren_1_1PassThrough"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>ren::VerticalBlurPass</label>
+        <link refid="classren_1_1VerticalBlurPass"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>ren::IBindablePass</label>
+        <link refid="classren_1_1IBindablePass"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>ren::IFullscreenPass</label>
+        <link refid="classren_1_1IFullscreenPass"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>ren::IPass</label>
+        <link refid="classren_1_1IPass"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/fullscreen_pass.h" line="12" column="1" bodyfile="inc/fullscreen_pass.h" bodystart="14" bodyend="20"/>
+    <listofallmembers>
+      <member refid="classren_1_1IBindablePass_af7205f7049013c5d02ec74952f5a0d05_1af7205f7049013c5d02ec74952f5a0d05" prot="protected" virt="non-virtual"><scope>ren::IFullscreenPass</scope><name>addBindable</name></member>
+      <member refid="classren_1_1IBindablePass_a5d189176a206854e34a9c168a0aad74a_1a5d189176a206854e34a9c168a0aad74a" prot="protected" virt="non-virtual"><scope>ren::IFullscreenPass</scope><name>addBindableBinderUsingContainerIndex</name></member>
+      <member refid="classren_1_1IPass_ab8c6a6dae673214dccd302aea9ce6e72_1ab8c6a6dae673214dccd302aea9ce6e72" prot="protected" virt="non-virtual"><scope>ren::IFullscreenPass</scope><name>addBinder</name></member>
+      <member refid="classren_1_1IPass_aa9c50563c1bd98e1c377d819d9e2dc09_1aa9c50563c1bd98e1c377d819d9e2dc09" prot="protected" virt="non-virtual"><scope>ren::IFullscreenPass</scope><name>addLinker</name></member>
+      <member refid="classren_1_1IBindablePass_ab47b1d5abffbf0aaeb44ae3968942503_1ab47b1d5abffbf0aaeb44ae3968942503" prot="protected" virt="non-virtual"><scope>ren::IFullscreenPass</scope><name>bind</name></member>
+      <member refid="classren_1_1IPass_a6cffed1b315846ece319e4ce5f508843_1a6cffed1b315846ece319e4ce5f508843" prot="public" virt="non-virtual"><scope>ren::IFullscreenPass</scope><name>getBinder</name></member>
+      <member refid="classren_1_1IPass_aebd5aa69455727600d0e979906a0a111_1aebd5aa69455727600d0e979906a0a111" prot="public" virt="non-virtual"><scope>ren::IFullscreenPass</scope><name>getBinders</name></member>
+      <member refid="classren_1_1IPass_a171eeb96584abbbbe1f158fbca5628f0_1a171eeb96584abbbbe1f158fbca5628f0" prot="public" virt="non-virtual"><scope>ren::IFullscreenPass</scope><name>getLinker</name></member>
+      <member refid="classren_1_1IPass_ae0910189678e800c86f665bca8c88a03_1ae0910189678e800c86f665bca8c88a03" prot="public" virt="non-virtual"><scope>ren::IFullscreenPass</scope><name>getLinkers</name></member>
+      <member refid="classren_1_1IPass_a3c9f7768f492d9a50371acec9b61f12b_1a3c9f7768f492d9a50371acec9b61f12b" prot="public" virt="non-virtual"><scope>ren::IFullscreenPass</scope><name>getName</name></member>
+      <member refid="classren_1_1IBindablePass_a3e5e7d5dbe096d11031a8d23050c12b6_1a3e5e7d5dbe096d11031a8d23050c12b6" prot="protected" virt="non-virtual"><scope>ren::IFullscreenPass</scope><name>IBindablePass</name></member>
+      <member refid="classren_1_1IFullscreenPass_a62e96861f46b97aea00c81e2573390f3_1a62e96861f46b97aea00c81e2573390f3" prot="public" virt="non-virtual"><scope>ren::IFullscreenPass</scope><name>IFullscreenPass</name></member>
+      <member refid="classren_1_1IPass_a72360515966748b13f592095c12f58fa_1a72360515966748b13f592095c12f58fa" prot="public" virt="non-virtual"><scope>ren::IFullscreenPass</scope><name>IPass</name></member>
+      <member refid="classren_1_1IPass_a7ef6e9979f151480bc34dca08b19bec1_1a7ef6e9979f151480bc34dca08b19bec1" prot="public" virt="non-virtual"><scope>ren::IFullscreenPass</scope><name>isActive</name></member>
+      <member refid="classren_1_1IPass_ab8ff53f070bce5debcf6bb3ce26206eb_1ab8ff53f070bce5debcf6bb3ce26206eb" prot="private" virt="non-virtual"><scope>ren::IFullscreenPass</scope><name>m_bActive</name></member>
+      <member refid="classren_1_1IBindablePass_a2202ffe84f3d1ceb3c38ba8e1d9761b4_1a2202ffe84f3d1ceb3c38ba8e1d9761b4" prot="private" virt="non-virtual"><scope>ren::IFullscreenPass</scope><name>m_bindables</name></member>
+      <member refid="classren_1_1IPass_aea2aeb943b24bd538b91487dbbee1349_1aea2aeb943b24bd538b91487dbbee1349" prot="private" virt="non-virtual"><scope>ren::IFullscreenPass</scope><name>m_binders</name></member>
+      <member refid="classren_1_1IPass_a44af75ecb642c6c1f47d316bf129daa8_1a44af75ecb642c6c1f47d316bf129daa8" prot="private" virt="non-virtual"><scope>ren::IFullscreenPass</scope><name>m_linkers</name></member>
+      <member refid="classren_1_1IPass_aa3a178f92cb6197605a486211a90367a_1aa3a178f92cb6197605a486211a90367a" prot="private" virt="non-virtual"><scope>ren::IFullscreenPass</scope><name>m_name</name></member>
+      <member refid="classren_1_1IBindablePass_a8c5f88422771fc4b7ceb1dca77219cfe_1a8c5f88422771fc4b7ceb1dca77219cfe" prot="protected" virt="non-virtual"><scope>ren::IFullscreenPass</scope><name>m_pDsv</name></member>
+      <member refid="classren_1_1IBindablePass_a3994a46ac4e6f7d96c7ebe8b2d9630cb_1a3994a46ac4e6f7d96c7ebe8b2d9630cb" prot="protected" virt="non-virtual"><scope>ren::IFullscreenPass</scope><name>m_pRtv</name></member>
+      <member refid="classren_1_1IPass_a589910e72e67f1d1ec37faea4d840074_1a589910e72e67f1d1ec37faea4d840074" prot="public" virt="virtual"><scope>ren::IFullscreenPass</scope><name>recreateRtvsAndDsvs</name></member>
+      <member refid="classren_1_1IPass_af001419157ed67f6123fb9f311e96064_1af001419157ed67f6123fb9f311e96064" prot="public" virt="pure-virtual"><scope>ren::IFullscreenPass</scope><name>reset</name></member>
+      <member refid="classren_1_1IFullscreenPass_a9c7f7f30f493b1c0618276a211753e9f_1a9c7f7f30f493b1c0618276a211753e9f" prot="public" virt="virtual"><scope>ren::IFullscreenPass</scope><name>run</name></member>
+      <member refid="classren_1_1IFullscreenPass_a811b6a0166f7e04048bac71ff971a0c5_1a811b6a0166f7e04048bac71ff971a0c5" prot="private" virt="non-virtual"><scope>ren::IFullscreenPass</scope><name>s_fullscreenTag</name></member>
+      <member refid="classren_1_1IPass_ae8d7a067929cabbe900ec89643cbcdba_1ae8d7a067929cabbe900ec89643cbcdba" prot="public" virt="non-virtual"><scope>ren::IFullscreenPass</scope><name>setActive</name></member>
+      <member refid="classren_1_1IPass_a261403c4ce33bc13fe3b5e0487c79664_1a261403c4ce33bc13fe3b5e0487c79664" prot="public" virt="non-virtual"><scope>ren::IFullscreenPass</scope><name>setupBinderTarget</name></member>
+      <member refid="classren_1_1IBindablePass_ae2b3e270005268576afb65f16a9545a7_1ae2b3e270005268576afb65f16a9545a7" prot="protected" virt="virtual"><scope>ren::IFullscreenPass</scope><name>validate</name></member>
+      <member refid="classren_1_1IPass_ac0132ac18bad1d6379a9d27e3d25bc18_1ac0132ac18bad1d6379a9d27e3d25bc18" prot="public" virt="virtual"><scope>ren::IFullscreenPass</scope><name>~IPass</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

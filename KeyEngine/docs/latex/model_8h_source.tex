@@ -1,0 +1,82 @@
+\doxysection{model.\+h}
+\hypertarget{model_8h_source}{}\label{model_8h_source}\index{inc/model.h@{inc/model.h}}
+\mbox{\hyperlink{model_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <filesystem>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <DirectXMath.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{rendering__channel_8h}{rendering\_channel.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ FINAL\_RELEASE}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#\ \ \ include\ "{}\mbox{\hyperlink{imgui__visitors_8h}{imgui\_visitors.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGraphics}{Graphics}};}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMesh}{Mesh}};}
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }ModelWindow;}
+\DoxyCodeLine{00016\ \textcolor{keyword}{struct\ }aiMesh;}
+\DoxyCodeLine{00017\ \textcolor{keyword}{struct\ }aiMaterial;}
+\DoxyCodeLine{00018\ \textcolor{keyword}{struct\ }aiNode;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceren}{ren}}}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }Renderer;}
+\DoxyCodeLine{00023\ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classModel}{Model}}}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classModel_a3b47d3369a4091b6e9a31a8a909b6d12_a3b47d3369a4091b6e9a31a8a909b6d12}{m\_nNodes}}\ =\ 0;}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classModel_af8ef6c44138a7d35a0cfda35af5f1958_af8ef6c44138a7d35a0cfda35af5f1958}{m\_nMeshNodes}}\ =\ 0;}
+\DoxyCodeLine{00029\ \ \ \ \ std::string\ \mbox{\hyperlink{classModel_a459f3420c7e47200f15c946cb7702170_a459f3420c7e47200f15c946cb7702170}{m\_name}};}
+\DoxyCodeLine{00030\ \ \ \ \ std::unique\_ptr<Node>\ \mbox{\hyperlink{classModel_aea1cd1a8e46e5b976f66047fdbd58add_aea1cd1a8e46e5b976f66047fdbd58add}{m\_pRoot}};}
+\DoxyCodeLine{00031\ \ \ \ \ std::vector<std::unique\_ptr<Mesh>>\ \mbox{\hyperlink{classModel_aac9199ace6d820b21545f4a33c80abef_aac9199ace6d820b21545f4a33c80abef}{m\_meshes}};\ \ \ \ \textcolor{comment}{//\ m\_meshes[0]\ is\ the\ Mesh\ attached\ to\ m\_pRoot\ Node}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#ifndef\ FINAL\_RELEASE}}
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{classImguiPerModelNodeVisitor}{ImguiPerModelNodeVisitor}}\ \mbox{\hyperlink{classModel_ab4b4337502032a0d09a2be19f3939afe_ab4b4337502032a0d09a2be19f3939afe}{m\_imguiVisitor}};}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00035\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{classModel_a0600c0c1f47a574ab81a6e0e73f3520e_a0600c0c1f47a574ab81a6e0e73f3520e}{Model}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx,\ \textcolor{keyword}{const}\ std::string\ \&path,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ initialScale\ =\ 1.0f,\ \textcolor{keyword}{const}\ DirectX::XMFLOAT3\ \&initialRotDeg\ =\ \{0.0f,\ 0.0f,\ 0.0f\},\ \textcolor{keyword}{const}\ DirectX::XMFLOAT3\ \&initialPos\ =\ \{0.0f,\ 0.0f,\ 0.0f\}\ );}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{classModel_a0600c0c1f47a574ab81a6e0e73f3520e_a0600c0c1f47a574ab81a6e0e73f3520e}{Model}}(\ std::unique\_ptr<Mesh>\ pMesh,\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx,\ \textcolor{keyword}{const}\ DirectX::XMFLOAT3\ \&initialRotDeg,\ \textcolor{keyword}{const}\ DirectX::XMFLOAT3\ \&initialPos\ );}
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{classModel_affb7503ef06f714be1de64e7df97664b_affb7503ef06f714be1de64e7df97664b}{\string~Model}}()\ noexcept;}
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{classModel}{Model}}(\ const\ \mbox{\hyperlink{classModel}{Model}}\ \&rhs\ )\ =\ delete;}
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{classModel}{Model}}\&\ operator=(\ const\ \mbox{\hyperlink{classModel}{Model}}\ \&rhs\ )\ =\ delete;}
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{classModel}{Model}}(\ \mbox{\hyperlink{classModel}{Model}}\ \&\&rhs\ )\ noexcept;}
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{classModel}{Model}}\&\ operator=(\ \mbox{\hyperlink{classModel}{Model}}\ \&\&rhs\ )\ noexcept\ =\ delete;}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModel_a87092d0e63f1ff00e92f155d1e3e9c42_a87092d0e63f1ff00e92f155d1e3e9c42}{update}}(\ const\ \textcolor{keywordtype}{float}\ dt,\ const\ \textcolor{keywordtype}{float}\ lerpBetweenFrames,\ const\ \textcolor{keywordtype}{bool}\ bEnableSmoothMovemenzzt\ =\ false\ )\ cond\_noex;}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModel_aa33a40fb50f074d5928c15c82074a0b6_aa33a40fb50f074d5928c15c82074a0b6}{render}}(\ const\ \textcolor{keywordtype}{size\_t}\ channels\ =\ \mbox{\hyperlink{namespacerch}{rch}}::all\ )\ const\ cond\_noex;}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModel_ad9673dfef4bf662ef742ea17b7704099_ad9673dfef4bf662ef742ea17b7704099}{setMaterialEnabled}}(\ const\ \textcolor{keywordtype}{size\_t}\ channels,\ const\ \textcolor{keywordtype}{bool}\ bEnabled\ )\ noexcept;}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModel_a5c541a8bb0012d4cbb64f2cb809f1638_a5c541a8bb0012d4cbb64f2cb809f1638}{displayImguiWidgets}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx\ )\ noexcept;}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModel_af4731ff2dc420c06801f4f5281af04b8_af4731ff2dc420c06801f4f5281af04b8}{accept}}(\ \mbox{\hyperlink{classIImguiNodeVisitor}{IImguiNodeVisitor}}\ \&v\ );}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModel_a026f7d322b40a3488184d711962d92c2_a026f7d322b40a3488184d711962d92c2}{connectMaterialsToRenderer}}(\ \mbox{\hyperlink{namespaceren}{ren}}::Renderer\ \&r\ );}
+\DoxyCodeLine{00054\ private:}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModel_af45461230e9c72025a6ce6a7ba699bdc_af45461230e9c72025a6ce6a7ba699bdc}{setTransform}}(\ const\ \mbox{\hyperlink{namespaceDirectX}{DirectX}}::XMMATRIX\ \&tr\ )\ cond\_noex;}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModel_af45461230e9c72025a6ce6a7ba699bdc_af45461230e9c72025a6ce6a7ba699bdc}{setTransform}}(\ const\ \textcolor{keywordtype}{float}\ scale,\ const\ \mbox{\hyperlink{namespaceDirectX}{DirectX}}::XMFLOAT3\ \&rotAnglesRadians,\ const\ \mbox{\hyperlink{namespaceDirectX}{DirectX}}::XMFLOAT3\ \&pos\ )\ cond\_noex;}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModel_af45461230e9c72025a6ce6a7ba699bdc_af45461230e9c72025a6ce6a7ba699bdc}{setTransform}}(\ const\ \textcolor{keywordtype}{float}\ scale,\ const\ \mbox{\hyperlink{namespaceDirectX}{DirectX}}::XMFLOAT4\ \&rotQuat,\ const\ \mbox{\hyperlink{namespaceDirectX}{DirectX}}::XMFLOAT3\ \&pos\ )\ cond\_noex;}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModel_af45461230e9c72025a6ce6a7ba699bdc_af45461230e9c72025a6ce6a7ba699bdc}{setTransform}}(\ const\ \textcolor{keywordtype}{float}\ scale,\ const\ \mbox{\hyperlink{namespaceDirectX}{DirectX}}::XMVECTOR\ \&rotQuat,\ const\ \mbox{\hyperlink{namespaceDirectX}{DirectX}}::XMFLOAT3\ \&pos\ )\ cond\_noex;}
+\DoxyCodeLine{00061\ public:}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModel_a907f793106a2fc7b955b945873c37ce2_a907f793106a2fc7b955b945873c37ce2}{setScale}}(\ const\ \textcolor{keywordtype}{float}\ scale\ )\ cond\_noex;}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModel_a907f793106a2fc7b955b945873c37ce2_a907f793106a2fc7b955b945873c37ce2}{setScale}}(\ const\ \mbox{\hyperlink{namespaceDirectX}{DirectX}}::XMFLOAT3\ \&scale\ )\ cond\_noex;}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModel_abdad4d48fa4a4ed0680bee4a3ef8c7a7_abdad4d48fa4a4ed0680bee4a3ef8c7a7}{scaleRel}}(\ const\ \mbox{\hyperlink{namespaceDirectX}{DirectX}}::XMFLOAT3\ \&scale\ )\ cond\_noex;}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModel_ae218f9aa7ff8225ecc9f250a057030af_ae218f9aa7ff8225ecc9f250a057030af}{setRotation}}(\ const\ \mbox{\hyperlink{namespaceDirectX}{DirectX}}::XMFLOAT3\ \&rotAnglesRadians\ )\ cond\_noex;}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModel_a4f4450d1d501356cbacf57992f8f32c2_a4f4450d1d501356cbacf57992f8f32c2}{rotateRel}}(\ const\ \mbox{\hyperlink{namespaceDirectX}{DirectX}}::XMFLOAT3\ \&rotAnglesRadians\ )\ cond\_noex;}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModel_a2f34019f76af71a4b0f120e6c83fa734_a2f34019f76af71a4b0f120e6c83fa734}{setTranslation}}(\ const\ \mbox{\hyperlink{namespaceDirectX}{DirectX}}::XMFLOAT3\ \&pos\ )\ cond\_noex;}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModel_a88c39a8c514b6abdf0bda067c7a0f326_a88c39a8c514b6abdf0bda067c7a0f326}{translateRel}}(\ const\ \mbox{\hyperlink{namespaceDirectX}{DirectX}}::XMFLOAT3\ \&pos\ )\ cond\_noex;}
+\DoxyCodeLine{00069\ \ \ \ \ \mbox{\hyperlink{namespaceDirectX}{DirectX}}::XMMATRIX\ \mbox{\hyperlink{classModel_a5ebe7821b16ec75c882ad5c797980c9c_a5ebe7821b16ec75c882ad5c797980c9c}{getTransform}}()\ const\ noexcept;}
+\DoxyCodeLine{00070\ \ \ \ \ \mbox{\hyperlink{namespaceDirectX}{DirectX}}::XMFLOAT4X4\ \mbox{\hyperlink{classModel_a97c6fc1a512ac57979f0fc63c1d34085_a97c6fc1a512ac57979f0fc63c1d34085}{getTransform4x4}}()\ const\ noexcept;}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classModel_ab52e612aed8183547ee0d58aab900631_ab52e612aed8183547ee0d58aab900631}{getScale}}()\ const\ noexcept;}
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{namespaceDirectX}{DirectX}}::XMFLOAT3\ \mbox{\hyperlink{classModel_a713fb2d948d1e0b246edfaf100a96d13_a713fb2d948d1e0b246edfaf100a96d13}{getScale3}}()\ const\ noexcept;}
+\DoxyCodeLine{00073\ \ \ \ \ \mbox{\hyperlink{namespaceDirectX}{DirectX}}::XMFLOAT3\ \mbox{\hyperlink{classModel_a309132aa630a396fdb2c7626d5272bb1_a309132aa630a396fdb2c7626d5272bb1}{getRotation}}()\ const\ noexcept;}
+\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{namespaceDirectX}{DirectX}}::XMVECTOR\ \mbox{\hyperlink{classModel_a581366c3323ea82fea0d599c1a053ad4_a581366c3323ea82fea0d599c1a053ad4}{getRotationQuat}}()\ const\ noexcept;}
+\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{namespaceDirectX}{DirectX}}::XMFLOAT3\ \mbox{\hyperlink{classModel_a22cb995d5e3ddbf2c9cd303e90820aba_a22cb995d5e3ddbf2c9cd303e90820aba}{getPosition}}()\ const\ noexcept;}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classModel_a0cc7d6fa891126a1daa9237d89cd1693_a0cc7d6fa891126a1daa9237d89cd1693}{getDistanceFromActiveCamera}}(\ const\ \textcolor{keywordtype}{int}\ index\ =\ 0\ )\ const\ noexcept;}
+\DoxyCodeLine{00080\ \ \ \ \ const\ std::\textcolor{keywordtype}{string}\&\ \mbox{\hyperlink{classModel_a0580611e0db6e9def73246c306c19a06_a0580611e0db6e9def73246c306c19a06}{getName}}()\ const\ noexcept;}
+\DoxyCodeLine{00081\ \ \ \ \ const\ \mbox{\hyperlink{classMesh}{Mesh}}*\ const\ \mbox{\hyperlink{classModel_aeaa2b630fba75a0b911db2f655301160_aeaa2b630fba75a0b911db2f655301160}{getMesh}}(\ const\ \textcolor{keywordtype}{int}\ index\ =\ 0\ )\ const\ noexcept;}
+\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{classMesh}{Mesh}}*\ const\ \mbox{\hyperlink{classModel_aeaa2b630fba75a0b911db2f655301160_aeaa2b630fba75a0b911db2f655301160}{getMesh}}(\ const\ \textcolor{keywordtype}{int}\ index\ =\ 0\ );}
+\DoxyCodeLine{00083\ private:}
+\DoxyCodeLine{00084\ \ \ \ \ std::unique\_ptr<\mbox{\hyperlink{classNode}{Node}}>\ \mbox{\hyperlink{classModel_af3dcc0a8bac832b284c12f479d88903e_af3dcc0a8bac832b284c12f479d88903e}{parseModelNodeGraph}}(\ \mbox{\hyperlink{classNode}{Node}}\ *pParent,\ const\ aiNode\ \&node,\ \textcolor{keywordtype}{int}\ imguiNodeId,\ const\ \textcolor{keywordtype}{float}\ initialScale\ )\ cond\_noex;}
+\DoxyCodeLine{00085\ \};}
+
+\end{DoxyCode}

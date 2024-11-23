@@ -1,0 +1,45 @@
+\doxysection{bindable\+\_\+pass.\+h}
+\hypertarget{bindable__pass_8h_source}{}\label{bindable__pass_8h_source}\index{inc/bindable\_pass.h@{inc/bindable\_pass.h}}
+\mbox{\hyperlink{bindable__pass_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{pass_8h}{pass.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{binder_8h}{binder.h}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIBindable}{IBindable}};}
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIRenderTargetView}{IRenderTargetView}};}
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIDepthStencilView}{IDepthStencilView}};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceren}{ren}}}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classren_1_1IBindablePass}{IBindablePass}}}
+\DoxyCodeLine{00016\ \ \ \ \ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classren_1_1IPass}{IPass}}}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ std::vector<std::shared\_ptr<IBindable>>\ \mbox{\hyperlink{classren_1_1IBindablePass_a2202ffe84f3d1ceb3c38ba8e1d9761b4_a2202ffe84f3d1ceb3c38ba8e1d9761b4}{m\_bindables}};}
+\DoxyCodeLine{00019\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00020\ \ \ \ \ std::shared\_ptr<IRenderTargetView>\ \mbox{\hyperlink{classren_1_1IBindablePass_a3994a46ac4e6f7d96c7ebe8b2d9630cb_a3994a46ac4e6f7d96c7ebe8b2d9630cb}{m\_pRtv}};}
+\DoxyCodeLine{00021\ \ \ \ \ std::shared\_ptr<IDepthStencilView>\ \mbox{\hyperlink{classren_1_1IBindablePass_a8c5f88422771fc4b7ceb1dca77219cfe_a8c5f88422771fc4b7ceb1dca77219cfe}{m\_pDsv}};}
+\DoxyCodeLine{00022\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{classren_1_1IBindablePass_a3e5e7d5dbe096d11031a8d23050c12b6_a3e5e7d5dbe096d11031a8d23050c12b6}{IBindablePass}}(\ \textcolor{keyword}{const}\ std::string\ \&name,\ \textcolor{keyword}{const}\ std::vector<std::shared\_ptr<IBindable>>\ \&bindables\ =\ \{\}\ );}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1IBindablePass_af7205f7049013c5d02ec74952f5a0d05_af7205f7049013c5d02ec74952f5a0d05}{addBindable}}(\ std::shared\_ptr<IBindable>\ bindable\ )\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1IBindablePass_ab47b1d5abffbf0aaeb44ae3968942503_ab47b1d5abffbf0aaeb44ae3968942503}{bind}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx\ )\ \textcolor{keyword}{const}\ cond\_noex;}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1IBindablePass_ae2b3e270005268576afb65f16a9545a7_ae2b3e270005268576afb65f16a9545a7}{validate}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1IBindablePass_a5d189176a206854e34a9c168a0aad74a_a5d189176a206854e34a9c168a0aad74a}{addBindableBinderUsingContainerIndex}}(\ \textcolor{keyword}{const}\ std::string\ \&binderName\ )}
+\DoxyCodeLine{00034\ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classren_1_1IBindablePass_a2202ffe84f3d1ceb3c38ba8e1d9761b4_a2202ffe84f3d1ceb3c38ba8e1d9761b4}{m\_bindables}}.emplace\_back();}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ index\ =\ \mbox{\hyperlink{classren_1_1IBindablePass_a2202ffe84f3d1ceb3c38ba8e1d9761b4_a2202ffe84f3d1ceb3c38ba8e1d9761b4}{m\_bindables}}.size()\ -\/\ 1;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classren_1_1IPass_ab8c6a6dae673214dccd302aea9ce6e72_ab8c6a6dae673214dccd302aea9ce6e72}{addBinder}}(\ std::make\_unique<\mbox{\hyperlink{classren_1_1ContainerBindableBinder}{ContainerBindableBinder<T>}}>(\ binderName,\ \mbox{\hyperlink{classren_1_1IBindablePass_a2202ffe84f3d1ceb3c38ba8e1d9761b4_a2202ffe84f3d1ceb3c38ba8e1d9761b4}{m\_bindables}},\ index\ )\ );}
+\DoxyCodeLine{00038\ \ \ \ \ \}}
+\DoxyCodeLine{00039\ \};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \}\textcolor{comment}{//ren}}
+
+\end{DoxyCode}

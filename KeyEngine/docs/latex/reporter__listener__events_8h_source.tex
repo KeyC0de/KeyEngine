@@ -1,0 +1,79 @@
+\doxysection{reporter\+\_\+listener\+\_\+events.\+h}
+\hypertarget{reporter__listener__events_8h_source}{}\label{reporter__listener__events_8h_source}\index{inc/reporter\_listener\_events.h@{inc/reporter\_listener\_events.h}}
+\mbox{\hyperlink{reporter__listener__events_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGraphics}{Graphics}};}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacegui}{gui}}}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }Component;}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structSwapChainResizedEvent}{SwapChainResizedEvent}}}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&\mbox{\hyperlink{structSwapChainResizedEvent_afd16eb6b0ce40fec5c0293984162f5bf_afd16eb6b0ce40fec5c0293984162f5bf}{gfx}};}
+\DoxyCodeLine{00019\ \};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structUISoundEvent}{UISoundEvent}}}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{structUISoundEvent_a324aa5866f6d08effd4864d11796047f_a324aa5866f6d08effd4864d11796047f}{SoundType}}}
+\DoxyCodeLine{00024\ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structUISoundEvent_a324aa5866f6d08effd4864d11796047f_a324aa5866f6d08effd4864d11796047faed4436f06acc902b7713999999d95d8d}{Component\_Hovered}},}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structUISoundEvent_a324aa5866f6d08effd4864d11796047f_a324aa5866f6d08effd4864d11796047fafbf07ec633d0aa76e7cd7378c97a1fc4}{Component\_Unhovered}},}
+\DoxyCodeLine{00027\ \ \ \ \ \};}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{structUISoundEvent_a324aa5866f6d08effd4864d11796047f_a324aa5866f6d08effd4864d11796047f}{SoundType}}\ \mbox{\hyperlink{structUISoundEvent_a964bfc8559ea04e0ad9c6eb38eb02224_a964bfc8559ea04e0ad9c6eb38eb02224}{m\_soundType}};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{structUISoundEvent_ac72d4f677eeed4b461cc1345533b8832_ac72d4f677eeed4b461cc1345533b8832}{getSoundPath}}(\ \mbox{\hyperlink{structUISoundEvent_a324aa5866f6d08effd4864d11796047f_a324aa5866f6d08effd4864d11796047f}{SoundType}}\ soundType\ )\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00031\ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (\ soundType\ )}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{structUISoundEvent_a324aa5866f6d08effd4864d11796047f_a324aa5866f6d08effd4864d11796047faed4436f06acc902b7713999999d95d8d}{Component\_Hovered}}:}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}assets/sfx/611451\_\_eminyildirim\_\_ui-\/click-\/menu-\/hover\_16\_bit.wav"{}};}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{structUISoundEvent_a324aa5866f6d08effd4864d11796047f_a324aa5866f6d08effd4864d11796047fafbf07ec633d0aa76e7cd7378c97a1fc4}{Component\_Unhovered}}:}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00041\ \ \ \ \ \}}
+\DoxyCodeLine{00042\ \};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structUserPropertyChanged}{UserPropertyChanged}}}
+\DoxyCodeLine{00045\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{classgui_1_1Component}{gui::Component}}*\ \mbox{\hyperlink{structUserPropertyChanged_a2d3015520bc250b949676f85e22440a4_a2d3015520bc250b949676f85e22440a4}{comp}};}
+\DoxyCodeLine{00047\ \ \ \ \ std::string\ \mbox{\hyperlink{structUserPropertyChanged_a781bf493e13748580a7c0f0d4ac21aa6_a781bf493e13748580a7c0f0d4ac21aa6}{propertyName}};}
+\DoxyCodeLine{00048\ \};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00057\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structUiMsg}{UiMsg}}}
+\DoxyCodeLine{00058\ \{}
+\DoxyCodeLine{00059\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00060\ \ \ \ \ std::string\ \mbox{\hyperlink{structUiMsg_ad68dc035df4cedcc37efa64b4d7b7ab4_ad68dc035df4cedcc37efa64b4d7b7ab4}{m\_msgId}};\ \textcolor{comment}{//\ id\ of\ ui\ message}}
+\DoxyCodeLine{00061\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{structUiMsg_adfad73b3c73f93418e80a4e02b81aba0_adfad73b3c73f93418e80a4e02b81aba0}{UiMsg}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00063\ \ }
+\DoxyCodeLine{00064\ \ \ \ \ \mbox{\hyperlink{structUiMsg_aea744f632449e9fbc54d8ce9ac3430cb_aea744f632449e9fbc54d8ce9ac3430cb}{UiMsg}}(\ \textcolor{keyword}{const}\ std::string\ \&msg\_id\ )}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structUiMsg_ad68dc035df4cedcc37efa64b4d7b7ab4_ad68dc035df4cedcc37efa64b4d7b7ab4}{m\_msgId}}(msg\_id)}
+\DoxyCodeLine{00067\ \ \ \ \ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \}}
+\DoxyCodeLine{00069\ \ }
+\DoxyCodeLine{00070\ \ \ \ \ \mbox{\hyperlink{structUiMsg_a607596242f828531fd00e07f892d411a_a607596242f828531fd00e07f892d411a}{UiMsg}}(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *msg\_id\ )}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structUiMsg_ad68dc035df4cedcc37efa64b4d7b7ab4_ad68dc035df4cedcc37efa64b4d7b7ab4}{m\_msgId}}(msg\_id)}
+\DoxyCodeLine{00073\ \ \ \ \ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \}}
+\DoxyCodeLine{00075\ \ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ \mbox{\hyperlink{structUiMsg_a6530da64ee51ba5c88ea4acbe74d015f_a6530da64ee51ba5c88ea4acbe74d015f}{id}}()\ const\ noexcept}
+\DoxyCodeLine{00077\ \ \ \ \ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structUiMsg_ad68dc035df4cedcc37efa64b4d7b7ab4_ad68dc035df4cedcc37efa64b4d7b7ab4}{m\_msgId}};}
+\DoxyCodeLine{00079\ \ \ \ \ \}}
+\DoxyCodeLine{00080\ \};}
+
+\end{DoxyCode}

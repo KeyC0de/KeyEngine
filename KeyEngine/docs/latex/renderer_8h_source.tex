@@ -1,0 +1,110 @@
+\doxysection{renderer.\+h}
+\hypertarget{renderer_8h_source}{}\label{renderer_8h_source}\index{inc/renderer.h@{inc/renderer.h}}
+\mbox{\hyperlink{renderer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGraphics}{Graphics}};}
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIRenderTargetView}{IRenderTargetView}};}
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIDepthStencilView}{IDepthStencilView}};}
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCamera}{Camera}};}
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classILightSource}{ILightSource}};}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIPixelShaderConstantBufferEx}{IPixelShaderConstantBufferEx}};}
+\DoxyCodeLine{00015\ \textcolor{keyword}{template}<\textcolor{keyword}{class}>}
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classConstantBufferEx}{ConstantBufferEx}};}
+\DoxyCodeLine{00017\ \textcolor{keyword}{using\ }\mbox{\hyperlink{classConstantBufferEx}{PixelShaderConstantBufferEx}}\ =\ \mbox{\hyperlink{classConstantBufferEx}{ConstantBufferEx<IPixelShaderConstantBufferEx>}};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceren}{ren}}}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }IPass;}
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }RenderQueuePass;}
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }ILinker;}
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }IBinder;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classren_1_1Renderer}{Renderer}}}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classren_1_1Renderer_aa06e4a5dce3c714d10c78b5034215c65_aa06e4a5dce3c714d10c78b5034215c65}{m\_bValidatedPasses}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00030\ \ \ \ \ std::vector<std::unique\_ptr<IPass>>\ \mbox{\hyperlink{classren_1_1Renderer_af737ba7e14287ff34496ae7c9ba2cc3e_af737ba7e14287ff34496ae7c9ba2cc3e}{m\_passes}};}
+\DoxyCodeLine{00031\ \ \ \ \ std::vector<std::unique\_ptr<IBinder>>\ \mbox{\hyperlink{classren_1_1Renderer_a36dec28555a118fb8fda6da31b48f763_a36dec28555a118fb8fda6da31b48f763}{m\_globalBinders}};}
+\DoxyCodeLine{00032\ \ \ \ \ std::vector<std::unique\_ptr<ILinker>>\ \mbox{\hyperlink{classren_1_1Renderer_ac111bc3886db540e5304924719e06fea_ac111bc3886db540e5304924719e06fea}{m\_globalLinkers}};}
+\DoxyCodeLine{00033\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classren_1_1Renderer_af0aa20f264507605ced6ae4385799d8e_af0aa20f264507605ced6ae4385799d8e}{m\_bUsesOffscreen}};}
+\DoxyCodeLine{00035\ \ \ \ \ std::unique\_ptr<IPass>\ \mbox{\hyperlink{classren_1_1Renderer_abbbe922d48fe9c2f02cb2cf454bb3c96_abbbe922d48fe9c2f02cb2cf454bb3c96}{m\_pFinalPostProcessPass}};}
+\DoxyCodeLine{00036\ \ \ \ \ std::shared\_ptr<IRenderTargetView>\ \mbox{\hyperlink{classren_1_1Renderer_a7b79ebe1dd8b11bb7f762152f8f57720_a7b79ebe1dd8b11bb7f762152f8f57720}{m\_pRtv}};}
+\DoxyCodeLine{00037\ \ \ \ \ std::shared\_ptr<IDepthStencilView>\ \mbox{\hyperlink{classren_1_1Renderer_a97b542b21987b7df6560c3327f89e2aa_a97b542b21987b7df6560c3327f89e2aa}{m\_pDsv}};}
+\DoxyCodeLine{00038\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{classren_1_1Renderer_a0b75fa1102c3a19fa22f0ee847f85e49_a0b75fa1102c3a19fa22f0ee847f85e49}{Renderer}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ drawToOffscreen\ );}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classren_1_1Renderer_ac73a62446f1263fb388eb41f0b739ddf_ac73a62446f1263fb388eb41f0b739ddf}{\string~Renderer}}()\ noexcept;}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1Renderer_a2d83d7207a80302f16ae4e8e082a572a_a2d83d7207a80302f16ae4e8e082a572a}{run}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx\ )\ cond\_noex;}
+\DoxyCodeLine{00043\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1Renderer_ae20ba92f5c1d98a6bcb0a04e258991f4_ae20ba92f5c1d98a6bcb0a04e258991f4}{recreate}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx\ );}
+\DoxyCodeLine{00044\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1Renderer_ab6665daa173077d48680689f6c1d3ecf_ab6665daa173077d48680689f6c1d3ecf}{reset}}()\ noexcept;}
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{classren_1_1RenderQueuePass}{RenderQueuePass}}\&\ \mbox{\hyperlink{classren_1_1Renderer_a9cb92496179a0e4d85037ce03ee07475_a9cb92496179a0e4d85037ce03ee07475}{getRenderQueuePass}}(\ const\ std::\textcolor{keywordtype}{string}\ \&name\ );}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classren_1_1Renderer_a810fc6594a4b225e51e54aed0b28dcf6_a810fc6594a4b225e51e54aed0b28dcf6}{isUsingOffscreenRendering}}()\ const\ noexcept;}
+\DoxyCodeLine{00047\ protected:}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1Renderer_ac15c40de52d25e712c8f95b0b758114e_ac15c40de52d25e712c8f95b0b758114e}{addGlobalLinker}}(\ std::unique\_ptr<\mbox{\hyperlink{classren_1_1ILinker}{ILinker}}>\ pLinker\ );}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1Renderer_afefad320dd9bae3f7d22b382bfd1d5bc_afefad320dd9bae3f7d22b382bfd1d5bc}{addGlobalBinder}}(\ std::unique\_ptr<\mbox{\hyperlink{classren_1_1IBinder}{IBinder}}>\ pBinder\ );}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1Renderer_a5a6320465c595b0b1bddd2c330678d88_a5a6320465c595b0b1bddd2c330678d88}{addPass}}(\ std::unique\_ptr<\mbox{\hyperlink{classren_1_1IPass}{IPass}}>\ pPass\ );}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1Renderer_ac7031cf5bbcadcf0c7ce0cfe450a9711_ac7031cf5bbcadcf0c7ce0cfe450a9711}{setupGlobalBinderTarget}}(\ const\ std::\textcolor{keywordtype}{string}\ \&globalBinderName,\ const\ std::\textcolor{keywordtype}{string}\ \&passName,\ const\ std::\textcolor{keywordtype}{string}\ \&linkerName\ );}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1Renderer_a007187fada4994fb8912be70dcc4aa1f_a007187fada4994fb8912be70dcc4aa1f}{linkGlobalBinders}}();}
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{classren_1_1IPass}{IPass}}\&\ \mbox{\hyperlink{classren_1_1Renderer_a12d7d108754fc228d0c157b350f965d7_a12d7d108754fc228d0c157b350f965d7}{getPass}}(\ const\ std::\textcolor{keywordtype}{string}\ \&name\ );}
+\DoxyCodeLine{00054\ private:}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1Renderer_ac05409fe49000fe8f9a2eabed45b4757_ac05409fe49000fe8f9a2eabed45b4757}{validateBindersLinkage}}();}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1Renderer_a9ae7a8a655f01eb7bf44e63c27448f99_a9ae7a8a655f01eb7bf44e63c27448f99}{linkPassBinders}}(\ \mbox{\hyperlink{classren_1_1IPass}{IPass}}\ \&pass\ );}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1Renderer_adcff6686a1d6685acee17ebc9b9677d3_adcff6686a1d6685acee17ebc9b9677d3}{offscreenToBackBufferSwap}}(\ \ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx\ );}
+\DoxyCodeLine{00061\ \};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ class\ \mbox{\hyperlink{classren_1_1Renderer3d}{Renderer3d}}}
+\DoxyCodeLine{00064\ \ \ \ \ :\ public\ \mbox{\hyperlink{classren_1_1Renderer}{Renderer}}}
+\DoxyCodeLine{00065\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ s\_maxRadius\ =\ 13;}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{float}\ s\_maxSigma\ =\ 7.0f;}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{unsigned}\ s\_fullscreenRezReductFactor\ =\ 4u;}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classren_1_1Renderer3d_acd91a9d5e15585a1241a09f85226b432_acd91a9d5e15585a1241a09f85226b432}{m\_radius}};}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classren_1_1Renderer3d_a73a21fa8372ab12e1c4b435eaa3ef837_a73a21fa8372ab12e1c4b435eaa3ef837}{m\_sigma}};}
+\DoxyCodeLine{00071\ \ \ \ \ std::shared\_ptr<PixelShaderConstantBufferEx>\ \mbox{\hyperlink{classren_1_1Renderer3d_a8769e329ec9485bc66776daa73c1048d_a8769e329ec9485bc66776daa73c1048d}{m\_blurKernel}};}
+\DoxyCodeLine{00072\ \ \ \ \ std::shared\_ptr<PixelShaderConstantBufferEx>\ \mbox{\hyperlink{classren_1_1Renderer3d_a2d026c77a600dbd1b3ddfebdcfaf2e15_a2d026c77a600dbd1b3ddfebdcfaf2e15}{m\_blurDirection}};}
+\DoxyCodeLine{00073\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{classren_1_1Renderer3d_ae2c39885efb402209cdb881c6b78c9ab_ae2c39885efb402209cdb881c6b78c9ab}{KernelType}}}
+\DoxyCodeLine{00075\ \ \ \ \ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classren_1_1Renderer3d_ae2c39885efb402209cdb881c6b78c9ab_ae2c39885efb402209cdb881c6b78c9aba9373cda46e2de7b9557de2d82a922e9f}{Gauss}},}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classren_1_1Renderer3d_ae2c39885efb402209cdb881c6b78c9ab_ae2c39885efb402209cdb881c6b78c9abaae91b03c506ff8036834c9f18e64a5a7}{Box}},}
+\DoxyCodeLine{00078\ \ \ \ \ \};}
+\DoxyCodeLine{00079\ \ \ \ \ \mbox{\hyperlink{classren_1_1Renderer3d_ae2c39885efb402209cdb881c6b78c9ab_ae2c39885efb402209cdb881c6b78c9ab}{KernelType}}\ \mbox{\hyperlink{classren_1_1Renderer3d_a81b8610180aba7fb323e012e8f8d7b1e_a81b8610180aba7fb323e012e8f8d7b1e}{m\_kernelType}};}
+\DoxyCodeLine{00080\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00081\ \ \ \ \ \mbox{\hyperlink{classren_1_1Renderer3d}{Renderer3d}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ bDrawToOffscreen,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ radius,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ sigma,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classren_1_1Renderer3d_ae2c39885efb402209cdb881c6b78c9ab_ae2c39885efb402209cdb881c6b78c9ab}{KernelType}}\ kernelType\ =\ Gauss\ );}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1Renderer_ae20ba92f5c1d98a6bcb0a04e258991f4_ae20ba92f5c1d98a6bcb0a04e258991f4}{recreate}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx\ )\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{void}\ displayImguiWidgets(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx\ )\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{void}\ dumpShadowMap(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx,\ \textcolor{keyword}{const}\ std::string\ \&path\ );}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{void}\ dumpShadowCubeMap(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx,\ \textcolor{keyword}{const}\ std::string\ \&path\ );}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{void}\ setActiveCamera(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classCamera}{Camera}}\ \&cam\ );}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{void}\ bindShadowCastingLights(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx,\ \textcolor{keyword}{const}\ std::vector<ILightSource*>\ \&shadowCastingLights\ );}
+\DoxyCodeLine{00090\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{void}\ showShadowDumpImguiWindow(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx\ )\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{void}\ showGaussianBlurImguiWindow(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx\ )\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{void}\ showDisplayMode(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx\ )\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{void}\ setKernelGauss(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ radius,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ sigma\ )\ cond\_noex;}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{void}\ setKernelBox(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ radius\ )\ cond\_noex;}
+\DoxyCodeLine{00096\ \};}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classren_1_1Renderer2d}{Renderer2d}}}
+\DoxyCodeLine{00099\ \ \ \ \ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classren_1_1Renderer}{Renderer}}}
+\DoxyCodeLine{00100\ \{}
+\DoxyCodeLine{00101\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00102\ \ \ \ \ \mbox{\hyperlink{classren_1_1Renderer2d}{Renderer2d}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx\ );}
+\DoxyCodeLine{00103\ \ \ \ \ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{void}\ recreate(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx\ )\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00105\ \};}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \}\textcolor{comment}{//namespace\ ren}}
+
+\end{DoxyCode}

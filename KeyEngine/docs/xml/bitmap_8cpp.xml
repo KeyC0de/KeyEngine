@@ -1,0 +1,398 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="bitmap_8cpp" kind="file" language="C++">
+    <compoundname>bitmap.cpp</compoundname>
+    <includes local="no">sstream</includes>
+    <includes refid="bitmap_8h" local="yes">bitmap.h</includes>
+    <includes refid="utils_8h" local="yes">utils.h</includes>
+    <includes refid="file__utils_8h" local="yes">file_utils.h</includes>
+    <includes refid="assertions__console_8h" local="yes">assertions_console.h</includes>
+    <incdepgraph>
+      <node id="27">
+        <label>assertions_console.h</label>
+        <link refid="assertions__console_8h"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>bitmap.h</label>
+        <link refid="bitmap_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>color.h</label>
+        <link refid="color_8h"/>
+      </node>
+      <node id="31">
+        <label>file_utils.h</label>
+        <link refid="file__utils_8h"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>key_exception.h</label>
+        <link refid="key__exception_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>key_type_traits.h</label>
+        <link refid="key__type__traits_8h"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="14">
+        <label>utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>utils_global.h</label>
+        <link refid="utils__global_8h"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>winner.h</label>
+        <link refid="winner_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/bitmap.cpp</label>
+        <link refid="bitmap_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>DirectxMath.h</label>
+      </node>
+      <node id="6">
+        <label>Windows.h</label>
+      </node>
+      <node id="22">
+        <label>algorithm</label>
+      </node>
+      <node id="18">
+        <label>bitset</label>
+      </node>
+      <node id="20">
+        <label>cinttypes</label>
+      </node>
+      <node id="19">
+        <label>cstddef</label>
+      </node>
+      <node id="9">
+        <label>dxtex/DirectXTex.h</label>
+      </node>
+      <node id="26">
+        <label>execution</label>
+      </node>
+      <node id="32">
+        <label>filesystem</label>
+      </node>
+      <node id="33">
+        <label>fstream</label>
+      </node>
+      <node id="21">
+        <label>future</label>
+      </node>
+      <node id="16">
+        <label>iostream</label>
+      </node>
+      <node id="24">
+        <label>iterator</label>
+      </node>
+      <node id="23">
+        <label>numeric</label>
+      </node>
+      <node id="25">
+        <label>regex</label>
+      </node>
+      <node id="5">
+        <label>sdkddkver.h</label>
+      </node>
+      <node id="17">
+        <label>set</label>
+      </node>
+      <node id="2">
+        <label>sstream</label>
+      </node>
+      <node id="11">
+        <label>stdexcept</label>
+      </node>
+      <node id="7">
+        <label>string</label>
+      </node>
+      <node id="29">
+        <label>type_traits</label>
+      </node>
+      <node id="15">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&lt;sstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="bitmap_8h" kindref="compound">bitmap.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="utils_8h" kindref="compound">utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="file__utils_8h" kindref="compound">file_utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="assertions__console_8h" kindref="compound">assertions_console.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceDirectX" kindref="compound">dx</ref><sp/>=<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="classBitmap_ab6e8f8dd32a68a28c12aee9d0b6838fa_1ab6e8f8dd32a68a28c12aee9d0b6838fa" refkind="member"><highlight class="normal"><ref refid="classBitmap_a15eff666964a36f6dad26d31183346f0_1a15eff666964a36f6dad26d31183346f0" kindref="member">Bitmap::Bitmap</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>width,</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>height<sp/>)</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>HRESULT<sp/>hres<sp/>=<sp/><ref refid="classBitmap_a0b8cb0045f1f373cd41d2c6c53589a5a_1a0b8cb0045f1f373cd41d2c6c53589a5a" kindref="member">m_scratchImg</ref>.Initialize2D(<sp/><ref refid="classBitmap_a768217e6da0d65bed9bdc270159d0d16_1a768217e6da0d65bed9bdc270159d0d16" kindref="member">s_format</ref>,<sp/>width,<sp/>height,<sp/>1u,<sp/>1u<sp/>);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>FAILED(<sp/>hres<sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="bitmap_8h_a9b52131518252e19ec20adcab175bed7_1a9b52131518252e19ec20adcab175bed7" kindref="member">THROW_BITMAP_EXCEPTION</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>construct<sp/>ScratchImage!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><ref refid="classBitmap_a15eff666964a36f6dad26d31183346f0_1a15eff666964a36f6dad26d31183346f0" kindref="member">Bitmap::Bitmap</ref>(<sp/>dx::ScratchImage<sp/>rhs<sp/>)<sp/>noexcept</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>m_scratchImg{std::move(<sp/>rhs<sp/>)}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classBitmap_a6da8f036b61df856831b4307b3d583a2_1a6da8f036b61df856831b4307b3d583a2" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classBitmap_a6da8f036b61df856831b4307b3d583a2_1a6da8f036b61df856831b4307b3d583a2" kindref="member">Bitmap::getSize</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBitmap_a0b8cb0045f1f373cd41d2c6c53589a5a_1a0b8cb0045f1f373cd41d2c6c53589a5a" kindref="member">m_scratchImg</ref>.GetPixelsSize();</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classBitmap_a972095607f9943d271588c0d425cb665_1a972095607f9943d271588c0d425cb665" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classBitmap_a972095607f9943d271588c0d425cb665_1a972095607f9943d271588c0d425cb665" kindref="member">Bitmap::clear</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structColorBGRA" kindref="compound">Texel</ref><sp/>fillValue<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>height<sp/>=<sp/>getHeight();</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;imgData<sp/>=<sp/>*m_scratchImg.GetImage(<sp/>0,<sp/>0,<sp/>0<sp/>);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal">)<sp/>getWidth()<sp/>==<sp/>imgData.width,<sp/></highlight><highlight class="stringliteral">&quot;Inconsistent<sp/>bitmap<sp/>width!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>y<sp/>=<sp/>0u;<sp/>y<sp/>&lt;<sp/>height;<sp/>++y<sp/>)</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>rowStart<sp/>=<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal"><ref refid="structColorBGRA" kindref="compound">Texel</ref>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/>imgData.pixels<sp/>+<sp/>imgData.rowPitch<sp/>*<sp/>y<sp/>);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::fill(<sp/>rowStart,<sp/>rowStart<sp/>+<sp/>imgData.width,<sp/>fillValue<sp/>);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="classBitmap_a84a99a827a407f53aa2415122c64ff2c_1a84a99a827a407f53aa2415122c64ff2c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classBitmap_a84a99a827a407f53aa2415122c64ff2c_1a84a99a827a407f53aa2415122c64ff2c" kindref="member">Bitmap::setTexel</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structColorBGRA" kindref="compound">Texel</ref><sp/><ref refid="namespacecol" kindref="compound">col</ref><sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>x<sp/>&gt;=<sp/>0,<sp/></highlight><highlight class="stringliteral">&quot;x<sp/>less<sp/>than<sp/>0!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>y<sp/>&gt;=<sp/>0,<sp/></highlight><highlight class="stringliteral">&quot;y<sp/>less<sp/>than<sp/>0!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>x<sp/>&lt;<sp/>getWidth(),<sp/></highlight><highlight class="stringliteral">&quot;x<sp/>greater<sp/>than<sp/>width!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>y<sp/>&lt;<sp/>getHeight(),<sp/></highlight><highlight class="stringliteral">&quot;y<sp/>greater<sp/>than<sp/>height!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;imgData<sp/>=<sp/>*m_scratchImg.GetImage(<sp/>0,<sp/>0,<sp/>0<sp/>);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal"><ref refid="structColorBGRA" kindref="compound">Texel</ref>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/>&amp;imgData.pixels[y<sp/>*<sp/>imgData.rowPitch]<sp/>)[x]<sp/>=<sp/><ref refid="namespacecol" kindref="compound">col</ref>;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="classBitmap_a533369def9843f9412f1621c0b6142d5_1a533369def9843f9412f1621c0b6142d5" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structColorBGRA" kindref="compound">Bitmap::Texel</ref><sp/><ref refid="classBitmap_a533369def9843f9412f1621c0b6142d5_1a533369def9843f9412f1621c0b6142d5" kindref="member">Bitmap::getTexel</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>cond_noex</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>x<sp/>&gt;=<sp/>0,<sp/></highlight><highlight class="stringliteral">&quot;x<sp/>less<sp/>than<sp/>0!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>y<sp/>&gt;=<sp/>0,<sp/></highlight><highlight class="stringliteral">&quot;y<sp/>less<sp/>than<sp/>0!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>x<sp/>&lt;<sp/>getWidth(),<sp/></highlight><highlight class="stringliteral">&quot;x<sp/>greater<sp/>than<sp/>width!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>y<sp/>&lt;<sp/>getHeight(),<sp/></highlight><highlight class="stringliteral">&quot;y<sp/>greater<sp/>than<sp/>height!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;imgData<sp/>=<sp/>*m_scratchImg.GetImage(<sp/>0,<sp/>0,<sp/>0<sp/>);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal"><ref refid="structColorBGRA" kindref="compound">Texel</ref>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/>&amp;imgData.pixels[y<sp/>*<sp/>imgData.rowPitch]<sp/>)[x];</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="classBitmap_a202f7fe815d1cfa32f243d2037c5cb0b_1a202f7fe815d1cfa32f243d2037c5cb0b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classBitmap_a202f7fe815d1cfa32f243d2037c5cb0b_1a202f7fe815d1cfa32f243d2037c5cb0b" kindref="member">Bitmap::getWidth</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/><ref refid="classBitmap_a0b8cb0045f1f373cd41d2c6c53589a5a_1a0b8cb0045f1f373cd41d2c6c53589a5a" kindref="member">m_scratchImg</ref>.GetMetadata().width<sp/>);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="classBitmap_a690ad3010a52d955d017c7f5003e2c12_1a690ad3010a52d955d017c7f5003e2c12" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classBitmap_a690ad3010a52d955d017c7f5003e2c12_1a690ad3010a52d955d017c7f5003e2c12" kindref="member">Bitmap::getHeight</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/><ref refid="classBitmap_a0b8cb0045f1f373cd41d2c6c53589a5a_1a0b8cb0045f1f373cd41d2c6c53589a5a" kindref="member">m_scratchImg</ref>.GetMetadata().height<sp/>);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="classBitmap_a55f7f5472b895c5eed369cf9b9c685da_1a55f7f5472b895c5eed369cf9b9c685da" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classBitmap_a55f7f5472b895c5eed369cf9b9c685da_1a55f7f5472b895c5eed369cf9b9c685da" kindref="member">Bitmap::getPitch</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/><ref refid="classBitmap_a0b8cb0045f1f373cd41d2c6c53589a5a_1a0b8cb0045f1f373cd41d2c6c53589a5a" kindref="member">m_scratchImg</ref>.GetImage(<sp/>0u,<sp/>0u,<sp/>0u<sp/>)-&gt;rowPitch<sp/>);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="classBitmap_a373fc15124cd8efc77c01edb142d55af_1a373fc15124cd8efc77c01edb142d55af" refkind="member"><highlight class="normal"><ref refid="structColorBGRA" kindref="compound">Bitmap::Texel</ref>*<sp/><ref refid="classBitmap_a373fc15124cd8efc77c01edb142d55af_1a373fc15124cd8efc77c01edb142d55af" kindref="member">Bitmap::data</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal"><ref refid="structColorBGRA" kindref="compound">Texel</ref>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/><ref refid="classBitmap_a0b8cb0045f1f373cd41d2c6c53589a5a_1a0b8cb0045f1f373cd41d2c6c53589a5a" kindref="member">m_scratchImg</ref>.GetPixels()<sp/>);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="classBitmap_a405a23fbca1232ebd8e2bbbc05cd6fae_1a405a23fbca1232ebd8e2bbbc05cd6fae" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structColorBGRA" kindref="compound">Bitmap::Texel</ref>*<sp/><ref refid="classBitmap_a405a23fbca1232ebd8e2bbbc05cd6fae_1a405a23fbca1232ebd8e2bbbc05cd6fae" kindref="member">Bitmap::getData</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const_cast&lt;</highlight><highlight class="normal"><ref refid="classBitmap" kindref="compound">Bitmap</ref>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/>this<sp/>)-&gt;<ref refid="classBitmap_a373fc15124cd8efc77c01edb142d55af_1a373fc15124cd8efc77c01edb142d55af" kindref="member">data</ref>();</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="classBitmap_a6e287dc135d2267f1ec28766b54f58ac_1a6e287dc135d2267f1ec28766b54f58ac" refkind="member"><highlight class="normal"><ref refid="classBitmap" kindref="compound">Bitmap</ref><sp/><ref refid="classBitmap_a6e287dc135d2267f1ec28766b54f58ac_1a6e287dc135d2267f1ec28766b54f58ac" kindref="member">Bitmap::loadFromFile</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;name,</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>wicFlags<sp/>)</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>dx::ScratchImage<sp/>scratchImg;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>HRESULT<sp/>hres<sp/>=<sp/>dx::LoadFromWICFile(<sp/><ref refid="namespaceutil_a6f14f660ccbdb1435f227700fa1dfd94_1a6f14f660ccbdb1435f227700fa1dfd94" kindref="member">util::s2ws</ref>(<sp/>name<sp/>).c_str(),<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">dx::WIC_FLAGS</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/>wicFlags<sp/>),<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>scratchImg<sp/>);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>FAILED(<sp/>hres<sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="bitmap_8h_a9b52131518252e19ec20adcab175bed7_1a9b52131518252e19ec20adcab175bed7" kindref="member">THROW_BITMAP_EXCEPTION</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>load<sp/>image<sp/>from<sp/>file&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>get<sp/>first<sp/>image</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>scratchImg.GetImage(<sp/>0,<sp/>0,<sp/>0<sp/>)-&gt;format<sp/>!=<sp/><ref refid="classBitmap_a768217e6da0d65bed9bdc270159d0d16_1a768217e6da0d65bed9bdc270159d0d16" kindref="member">s_format</ref><sp/>)</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dx::ScratchImage<sp/>convertedImg;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hres<sp/>=<sp/>dx::Convert(<sp/>*scratchImg.GetImage(<sp/>0,<sp/>0,<sp/>0<sp/>),<sp/><ref refid="classBitmap_a768217e6da0d65bed9bdc270159d0d16_1a768217e6da0d65bed9bdc270159d0d16" kindref="member">s_format</ref>,<sp/>dx::TEX_FILTER_DEFAULT,<sp/>dx::TEX_THRESHOLD_DEFAULT,<sp/>convertedImg<sp/>);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>FAILED(<sp/>hres<sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="bitmap_8h_a9b52131518252e19ec20adcab175bed7_1a9b52131518252e19ec20adcab175bed7" kindref="member">THROW_BITMAP_EXCEPTION</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>convert<sp/>image&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBitmap" kindref="compound">Bitmap</ref>{std::move(<sp/>convertedImg<sp/>)};</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBitmap" kindref="compound">Bitmap</ref>{std::move(<sp/>scratchImg<sp/>)};</highlight></codeline>
+<codeline lineno="116"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118" refid="classBitmap_ad54deb3c80e50da488b3ebc109a35c46_1ad54deb3c80e50da488b3ebc109a35c46" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>dx::XMVECTOR<sp/><ref refid="classBitmap_ad54deb3c80e50da488b3ebc109a35c46_1ad54deb3c80e50da488b3ebc109a35c46" kindref="member">Bitmap::colorToVector</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structColorBGRA" kindref="compound">Bitmap::Texel</ref><sp/><ref refid="namespacecol" kindref="compound">col</ref><sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>v<sp/>=<sp/>dx::XMVectorSet(<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)<ref refid="namespacecol" kindref="compound">col</ref>.getRed(),<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)<ref refid="namespacecol" kindref="compound">col</ref>.getGreen(),<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)<ref refid="namespacecol" kindref="compound">col</ref>.getBlue(),<sp/>0.0f<sp/>);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>all255<sp/>=<sp/>dx::XMVectorReplicate(<sp/>2.0f<sp/>/<sp/>255.0f<sp/>);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>v<sp/>=<sp/>dx::XMVectorMultiply(<sp/>v,<sp/>all255<sp/>);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>all1<sp/>=<sp/>dx::XMVectorReplicate(<sp/>1.0f<sp/>);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>v<sp/>=<sp/>dx::XMVectorSubtract(<sp/>v,<sp/>all1<sp/>);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>v;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128" refid="classBitmap_a8c616d78d019253dd00223f34f7b0735_1a8c616d78d019253dd00223f34f7b0735" refkind="member"><highlight class="normal"><ref refid="structColorBGRA" kindref="compound">Bitmap::Texel</ref><sp/><ref refid="classBitmap_a8c616d78d019253dd00223f34f7b0735_1a8c616d78d019253dd00223f34f7b0735" kindref="member">Bitmap::vectorToColor</ref>(<sp/>dx::XMVECTOR<sp/>v<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>all1<sp/>=<sp/>dx::XMVectorReplicate(<sp/>1.0f<sp/>);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>dx::XMVECTOR<sp/>nOut<sp/>=<sp/>dx::XMVectorAdd(<sp/>v,<sp/>all1<sp/>);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>all255<sp/>=<sp/>dx::XMVectorReplicate(<sp/>255.0f<sp/>/<sp/>2.0f<sp/>);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>nOut<sp/>=<sp/>dx::XMVectorMultiply(<sp/>nOut,<sp/>all255<sp/>);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>dx::XMFLOAT3<sp/>floats{};</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>dx::XMStoreFloat3(<sp/>&amp;floats,<sp/>nOut<sp/>);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>char)round(<sp/>floats.x<sp/>),<sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>char)round(<sp/>floats.y<sp/>),<sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>char)round(<sp/>floats.z<sp/>)};</highlight></codeline>
+<codeline lineno="137"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139" refid="classBitmap_ada5bff46e6270af0cbed7f8252af7956_1ada5bff46e6270af0cbed7f8252af7956" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classBitmap_ada5bff46e6270af0cbed7f8252af7956_1ada5bff46e6270af0cbed7f8252af7956" kindref="member">Bitmap::save</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;filename,</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>wicFlags<sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="141"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>getCodec<sp/>=<sp/>[](<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;filename<sp/>)</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ext<sp/>=<sp/><ref refid="namespaceutil_a07e1161f3092d4c7a113c7cb8d9ad58d_1a07e1161f3092d4c7a113c7cb8d9ad58d" kindref="member">util::getFileExtension</ref>(<sp/>filename<sp/>);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>ext<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;.png&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>dx::WIC_CODEC_PNG;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>ext<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;.jpg&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>dx::WIC_CODEC_JPEG;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>ext<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;.bmp&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>dx::WIC_CODEC_BMP;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="bitmap_8h_a9b52131518252e19ec20adcab175bed7_1a9b52131518252e19ec20adcab175bed7" kindref="member">THROW_BITMAP_EXCEPTION</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Image<sp/>format<sp/>is<sp/>not<sp/>supported&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>HRESULT<sp/>hres<sp/>=<sp/>dx::SaveToWICFile(<sp/>*<ref refid="classBitmap_a0b8cb0045f1f373cd41d2c6c53589a5a_1a0b8cb0045f1f373cd41d2c6c53589a5a" kindref="member">m_scratchImg</ref>.GetImage(<sp/>0,<sp/>0,<sp/>0<sp/>),<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">dx::WIC_FLAGS</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/>wicFlags<sp/>),<sp/>GetWICCodec(<sp/>getCodec(<sp/>filename<sp/>)<sp/>),<sp/><ref refid="namespaceutil_a6f14f660ccbdb1435f227700fa1dfd94_1a6f14f660ccbdb1435f227700fa1dfd94" kindref="member">util::s2ws</ref>(<sp/>filename<sp/>).c_str()<sp/>);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>FAILED(<sp/>hres<sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="bitmap_8h_a9b52131518252e19ec20adcab175bed7_1a9b52131518252e19ec20adcab175bed7" kindref="member">THROW_BITMAP_EXCEPTION</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>save<sp/>image<sp/>to<sp/>file&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="165"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167" refid="classBitmap_aec31e1d65a346963947e83e29aa00d34_1aec31e1d65a346963947e83e29aa00d34" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBitmap_aec31e1d65a346963947e83e29aa00d34_1aec31e1d65a346963947e83e29aa00d34" kindref="member">Bitmap::hasAlpha</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="168"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!<ref refid="classBitmap_a0b8cb0045f1f373cd41d2c6c53589a5a_1a0b8cb0045f1f373cd41d2c6c53589a5a" kindref="member">m_scratchImg</ref>.IsAlphaAllOpaque();</highlight></codeline>
+<codeline lineno="170"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172" refid="classBitmap_1_1BitmapException_a2653cbaefdc8f1b6d6724d8b74ef409a_1a2653cbaefdc8f1b6d6724d8b74ef409a" refkind="member"><highlight class="normal"><ref refid="classBitmap_1_1BitmapException_a2653cbaefdc8f1b6d6724d8b74ef409a_1a2653cbaefdc8f1b6d6724d8b74ef409a" kindref="member">Bitmap::BitmapException::BitmapException</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>line,</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*file,</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*function,</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;msg<sp/>)<sp/>noexcept</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyException" kindref="compound">KeyException</ref>(line,<sp/>file,<sp/>function,<sp/>msg)</highlight></codeline>
+<codeline lineno="178"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182" refid="classBitmap_1_1BitmapException_a8f57f54af91bdb5eb1f65fe8942cd63f_1a8f57f54af91bdb5eb1f65fe8942cd63f" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classBitmap_1_1BitmapException_a8f57f54af91bdb5eb1f65fe8942cd63f_1a8f57f54af91bdb5eb1f65fe8942cd63f" kindref="member">Bitmap::BitmapException::getType</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="183"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(<sp/>this<sp/>).name();</highlight></codeline>
+<codeline lineno="185"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187" refid="classBitmap_1_1BitmapException_ae3a114051b1ccd6270778d5b64bb6e9a_1ae3a114051b1ccd6270778d5b64bb6e9a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classBitmap_1_1BitmapException_ae3a114051b1ccd6270778d5b64bb6e9a_1ae3a114051b1ccd6270778d5b64bb6e9a" kindref="member">Bitmap::BitmapException::what</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="188"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classKeyException_a9956fdc871308553eec7b047f756690a_1a9956fdc871308553eec7b047f756690a" kindref="member">KeyException::what</ref>();</highlight></codeline>
+<codeline lineno="190"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/bitmap.cpp"/>
+  </compounddef>
+</doxygen>

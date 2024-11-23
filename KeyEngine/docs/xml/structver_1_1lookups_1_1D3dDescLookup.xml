@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="structver_1_1lookups_1_1D3dDescLookup" kind="struct" language="C++" prot="public" final="yes">
+    <compoundname>ver::lookups::D3dDescLookup</compoundname>
+    <templateparamlist>
+      <param>
+        <type><ref refid="classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_1a7582c10f2c7a3ac24f95015bcbeb8c1a" kindref="member">VertexInputLayout::ILEementType</ref></type>
+        <declname>type</declname>
+        <defname>type</defname>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structver_1_1lookups_1_1D3dDescLookup_a65166670d2d756e9fd6c26a58b373807_1a65166670d2d756e9fd6c26a58b373807" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>D3D11_INPUT_ELEMENT_DESC</type>
+        <definition>static constexpr D3D11_INPUT_ELEMENT_DESC ver::lookups::D3dDescLookup&lt; type &gt;::exec</definition>
+        <argsstring>(const size_t offset) noexcept</argsstring>
+        <name>exec</name>
+        <qualifiedname>ver::lookups::D3dDescLookup::exec</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>offset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dynamic_vertex_buffer.cpp" line="81" column="43" bodyfile="src/dynamic_vertex_buffer.cpp" bodystart="81" bodyend="84"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/dynamic_vertex_buffer.cpp" line="79" column="1" bodyfile="src/dynamic_vertex_buffer.cpp" bodystart="80" bodyend="85"/>
+    <listofallmembers>
+      <member refid="structver_1_1lookups_1_1D3dDescLookup_a65166670d2d756e9fd6c26a58b373807_1a65166670d2d756e9fd6c26a58b373807" prot="public" virt="non-virtual"><scope>ver::lookups::D3dDescLookup</scope><name>exec</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

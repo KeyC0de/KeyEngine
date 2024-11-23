@@ -16,79 +16,7 @@
 #include <execution>	// algorithms
 #include "assertions_console.h"
 #include "key_type_traits.h"
-
-#define FORCE_CRASH		int *var = nullptr;\
-						*var = 0xDEADBEEF;
-
-#if defined _MSC_VER || defined _WIN32 || defined _WIN64
-#	define restricted __declspec( restrict )	// indicates that a symbol is not aliased in the current scope, this semantic is propagated by the compiler
-#	define noaliasing __declspec( noalias )		// declares that the function does not modify memory outside the first level of indirection from the function's parameters. That is, the parameters are the only reference to the outside world the function has.
-#elif defined __unix__ || defined __unix || defined __APPLE__ && defined __MACH__
-#	define restricted __restrict__
-#	define noaliasing __restrict__
-#endif
-
-#define isOfType( obj, T ) ( dynamic_cast<T*>( obj ) != nullptr ) ? true : false
-#define SAFE_CALL( obj, function )			{ if ( obj ) { obj.function; } }
-#define SAFE_CALL_POINTER( obj, function )	{ if ( obj ) { obj->function; } }
-
-//===================================================
-//	\macro	ALIAS_FUNCTION
-//	\brief	optimal way of renaming/aliasing a function to another - can be inline & no unnecessary copies
-//	\date	2022/08/29 13:33
-#define ALIAS_FUNCTION( originalFunctionName, aliasedFunctionName ) \
-	template <typename... TArgs>\
-	inline auto aliasedFunctionName( TArgs&&... args ) -> decltype( originalFunctionName( std::forward<TArgs>( args )... ) )\
-	{\
-		return  originalFunctionName( std::forward<TArgs>( args )... );\
-	}
-
-#define ENUM_STR( e )				(#e)
-#define ENUM_WSTR( e )				( L ## (#e) )
-#define PRINT_ENUM( e )				std::printf( "'%s'", (#e) );
-#define PRINTW_ENUM( e )			std::wprintf( L"'%s'", (#e) );
-
-#define CLASS_NAMER( className ) private:\
-		static inline constexpr const char *s_className = #className ;\
-	public:\
-		static constexpr const char* getClassName() noexcept\
-		{\
-			return s_className;\
-		}\
-	private:\
-// use it like so: `CLASS_NAMER( MyClassName );` as the first statement of your class
-
-
-template<typename T>
-constexpr typename std::remove_reference<T>::type makePrValue( T &&val )
-{
-	return val;
-}
-
-// checks whether an expression e can be evaluated at compile-time as a constant expression
-#define IS_CONSTEXPR(e)	noexcept( makePrValue(e) )
-// eg.
-// constexpr int a = 10;
-// int b = 20;
-// constexpr int constexprFunc(int x) { return x * 2; }
-// static_assert(IS_CONSTEXPR(a), "a is not constexpr!");					// This will pass
-// static_assert(!IS_CONSTEXPR(b), "b is not constexpr!");					// This will pass because b is not constexpr
-// static_assert(constexprFunc(5) == 10, "constexprFunc is not constexpr");	// This will pass
-
-
-template<typename T, typename TDeleter>
-bool operator==( const std::unique_ptr<T, TDeleter> &lhs,
-	const T *rhs )
-{
-	return lhs.get() == rhs;
-}
-
-template<typename T, typename TDeleter>
-bool operator!=( const std::unique_ptr<T, TDeleter> &lhs,
-	const T *rhs )
-{
-	return !( lhs == rhs );
-}
+#include "utils_global.h"
 
 
 namespace util
@@ -132,48 +60,42 @@ bool isFutureReady( const std::future<T> &fu )
 	return fu.wait_for( std::chrono::seconds( 0 ) ) == std::future_status::ready;
 }
 
-//	\function	tokenizeQuotedString	||	\date	2021/01/12 12:54
-//	\brief	converts a string input into a vector of strings
-//			separation into vector element "tokens" is based on spaces or quotes '
+/// \brief	converts a string input into a vector of strings
+/// \brief	separation into vector element "tokens" is based on spaces or quotes '
 std::vector<std::string> tokenizeQuotedString( const std::string &input );
-//	\function	s2ws	||	\date	2020/12/30 20:38
-//	\brief	convert from strings/chars to wide strings/wchar_ts, or std::wstring( s.begin(), s.end() );
+/// \brief	convert from strings/chars to wide strings/wchar_ts, or std::wstring( s.begin(), s.end() );
 std::wstring s2ws( const std::string &narrow );
-//	\function	ws2s	||	\date	2020/12/30 20:38
-//	\brief	convert wide strings/wchar_ts to strings/chars
+/// \brief	convert wide strings/wchar_ts to strings/chars
 std::string ws2s( const std::wstring &wide );
 
-//	\function	trimStringFromStart	||	\date	2024/05/31 23:53
-//	\brief	trim nChars from the start of the string
+void removeSubstring( std::string &str, const std::string &substring );
+/// \brief	trim nChars from the start of the string
 std::string trimStringFromStart( const std::string &str, const int nChars );
 std::string trimStringFromEnd( const std::string &str, const int nChars );
+void trimStringFromStartInPlace( std ::string &str, const int nChars );
 void trimStringFromEndInPlace( std::string &str, const int nChars );
-//	\function	splitString	||	\date	2024/10/18 23:22
-//	\example	split( sea_horde_faction_keys, *serialized_string_shared_state_pointer, "," );
-std::vector<std::string> splitString( const std::string &s, const std::string &delim );
+/// \brief	example:	splitDelimitedString( sea_horde_faction_keys, ";" );
+std::vector<std::string> splitDelimitedString( const std::string& str, const char delimiter );
+std::string assembleDelimitedString( const std::vector<std::string>& delimitedString, const char delimiter );
+/// \brief	removes all occurrences of str from delimited_string
+void removeFromDelimitedString( std::vector<std::string> &delimitedString, const char delimiter, const std::string& str );
 bool stringContains( std::string_view haystack, std::string_view needle );
 std::string& capitalizeFirstLetter( std::string &str );
 std::string capitalizeFirstLetter( const std::string &str );
 std::string intToStr( int integer ) noexcept;
 int stringToInt( const std::string &str ) noexcept;
 
-//	\function	trimSpacesLeft	||	\date	2022/07/29 21:12
-//	\brief	trimSpaces from start (in place)
+/// \brief	trimSpaces from start (in place)
 void trimSpacesLeft( std::string &s );
-//	\function	trimSpacesRight	||	\date	2022/07/29 21:13
-//	\brief	trimSpaces from end (in place)
+/// \brief	trimSpaces from end (in place)
 void trimSpacesRight( std::string &s );
-//	\function	trimSpaces	||	\date	2022/07/29 21:13
-//	\brief	trimSpaces from both ends (in place)
+/// \brief	trimSpaces from both ends (in place)
 void trimSpaces( std::string &s );
-//	\function	trimSpacesCopy	||	\date	2022/07/29 21:13
-//	\brief	trimSpaces from both ends (copying)
+/// \brief	trimSpaces from both ends (copying)
 std::string trimSpacesCopy( std::string s );
-//	\function	trimSpacesLCopy	||	\date	2022/07/29 21:13
-//	\brief	trimSpaces from start (copying)
+/// \brief	trimSpaces from start (copying)
 std::string trimSpacesLCopy( std::string s );
-//	\function	trimSpacesRightCopy	||	\date	2022/07/29 21:14
-//	\brief	trimSpaces from end (copying)
+/// \brief	trimSpaces from end (copying)
 std::string trimSpacesRightCopy( std::string s );
 
 template<typename T>
@@ -194,12 +116,10 @@ void printBinary( const T val )
 std::tuple<int, int, int> timeToHms( const float time );
 std::tuple<int, int, int> secondsToHms( const int totalSecs );
 
-//	\function	secondsToTimeT	||	\date	2022/07/28 22:35
-//	\brief	convert seconds to time_t
-//			Although not defined, time_t is implementation defined, it is almost always an integral value holding the number of seconds (not counting leap seconds) since 00:00, Jan 1 1970 UTC, corresponding to POSIX time.
+/// \brief	convert seconds to time_t
+/// \brief	Although not defined, time_t is implementation defined, it is almost always an integral value holding the number of seconds (not counting leap seconds) since 00:00, Jan 1 1970 UTC, corresponding to POSIX time.
 time_t secondsToTimeT( const int s );
-//	\function	timeTtoSeconds	||	\date	2022/07/28 22:32
-//	\brief	convert time_t to seconds --- time_t can be acquired as if by means of time(nullptr)
+/// \brief	convert time_t to seconds --- time_t can be acquired as if by means of time(nullptr)
 long int timeTtoSeconds( const time_t t );
 
 std::uintptr_t pointerToInt( const void *p );
@@ -208,7 +128,7 @@ void* addPointers( const void *p1, const void *p2 );
 
 std::string operator+( const std::string_view &sv1, const std::string_view &sv2 );
 
-// print a comma every 3 decimal places
+/// \brief	print a comma every 3 decimal places
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
 std::string getNumberString( const T num )
 {
@@ -224,14 +144,12 @@ std::string generateCaptcha( int len );
 unsigned char mapToByte( const float value );
 unsigned char mapToByte( const double value );
 
-//	\function	isAligned	||	\date	2022/08/30 9:40
-//	\brief	check whether the address is aligned to `alignment` boundary
+/// \brief	check whether the address is aligned to `alignment` boundary
 bool isAligned( const volatile void *p, const std::size_t alignment ) noexcept;
 bool isAligned( const std::uintptr_t pi, const std::size_t alignment ) noexcept;
 constexpr const int is4ByteAligned( const intptr_t *addr );
 
-//	\function	alignForward	||	\date	2022/02/20 20:34
-//	\brief	align pointer forward with given alignment
+/// \brief	align pointer forward with given alignment
 template<typename T>
 T* alignForward( const T *p,
 	const std::size_t alignment ) noexcept
@@ -250,11 +168,9 @@ T* alignForward( const T *p,
 }
 
 std::uintptr_t alignForward( const std::uintptr_t ip, const std::size_t alignment ) noexcept;
-//	\function	calcAlignedSize	||	\date	2022/08/30 9:39
-//	\brief	calculates alignment in bits supposedly
+/// \brief	calculates alignment in bits supposedly
 std::size_t calcAlignedSize( const std::size_t size, const std::size_t alignment );
-//	\function	getForwardPadding	||	\date	2022/08/30 9:40
-//	\brief	calculate padding bytes needed to align address p forward given the alignment
+/// \brief	calculate padding bytes needed to align address p forward given the alignment
 std::size_t getForwardPadding( const std::size_t p, const std::size_t alignment );
 std::size_t getForwardPaddingWithHeader( const std::size_t p, const std::size_t alignment, const std::size_t headerSize );
 
@@ -287,7 +203,7 @@ inline unsigned long long int volatile& readMEM( unsigned long long int memoryAd
 }
 #pragma warning( default : 4312 )
 
-// if you allocate an object on the heap, it will be given a unique address within that process; nothing else will be assigned that address until you free the object
+/// \brief	if you allocate an object on the heap, it will be given a unique address within that process; nothing else will be assigned that address until you free the object
 [[nodiscard]] inline restricted noaliasing void* getUniqueMemory( const std::size_t bytes )
 {
 	return std::malloc(bytes);
@@ -358,15 +274,14 @@ void removeByBackSwap( TContainer &c,
 	c.erase( newEnd, c.end() );
 }
 
-//	\function	shrinkCapacity	||	\date	2022/04/01 20:51
-//	\brief	shrink vector's capacity to its size
+/// \brief	shrink vector's capacity to its size
 template<typename T, class Alloc = std::allocator<T>>
 void shrinkCapacity( std::vector<T, Alloc>& v )
 {
 	std::vector<T, Alloc>( v.begin(), v.end() ).swap( v );
 }
 
-// note that there is std::move(inIt1, inIt2, outIt);
+/// \brief	note that there is std::move(inIt1, inIt2, outIt);
 template<class InputIt, class OutputIt, class TPredicate>
 void moveIf( InputIt srcFirst,
 	InputIt srcLast,
@@ -376,8 +291,7 @@ void moveIf( InputIt srcFirst,
 	std::copy_if( std::move_iterator( srcFirst ), std::move_iterator( srcLast ), std::back_inserter( *destFirst ), predicate );
 }
 
-//	\function	splitMovePartition	||	\date	2022/07/29 21:03
-//	\brief	like partition_move - puts the second group of an std::partition to another container removing them from the source container
+/// \brief	like partition_move - puts the second group of an std::partition to another container removing them from the source container
 template<class Container, class TPredicate>
 void splitMovePartition( Container &src,
 	Container &dest,
@@ -441,9 +355,8 @@ bool containerContains( const TContainer& container,
 	return std::find( std::cbegin( container ), cend, val ) != cend;
 }
 
-//	\function	atLeastNOfRange	\date	2022/08/28 23:30
-//	\brief	test if at least N elements of an iterator range match a predicate
-//			earlies out and returns once the required amount of elements have been matched
+/// \brief	test if at least N elements of an iterator range match a predicate
+/// \brief	earlies out and returns once the required amount of elements have been matched
 template<typename TIt, typename TPredicate>
 bool atLeastNOfRange( TIt begin,
 	TIt end,

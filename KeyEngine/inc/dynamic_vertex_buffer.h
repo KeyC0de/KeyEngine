@@ -165,8 +165,7 @@ public:
 		ASSIMP_EXTRACT_AIMESH( mFaces )
 	};
 
-	//	\function	bridge	||	\date	2022/08/30 12:50
-	//	\brief		use bridge() at runtime to get information about an element's properties
+	/// \brief		use bridge() at runtime to get information about an element's properties
 	//				`template<VertexInputLayout::ILEementType> class T; ` is a pimpl with an exec() method queyring one of those elements
 	template<template<VertexInputLayout::ILEementType> class T, typename... Args>
 	static constexpr auto bridge( const VertexInputLayout::ILEementType type,
@@ -186,12 +185,12 @@ public:
 		return T<VertexInputLayout::Count>::exec( std::forward<Args>( args )... );
 	}
 
-	//=============================================================
-	//	\class	ILElement
-	//	\author	KeyC0de
-	//	\date	2022/09/11 16:16
-	//	\brief	Vertex Buffer Input Layout Element
-	//=============================================================
+	///=============================================================
+	/// \class	ILElement
+	/// \author	KeyC0de
+	/// \date	2022/09/11 16:16
+	/// \brief	Vertex Buffer Input Layout Element
+	///=============================================================
 	class ILElement final
 	{
 		ILEementType m_type;
@@ -205,8 +204,7 @@ public:
 		size_t getOffset() const;
 		const ILEementType getType() const noexcept;
 		const D3D11_INPUT_ELEMENT_DESC getD3dDesc() const cond_noex;
-		//	\function	getTag	||	\date	2022/08/30 12:49
-		//	\brief	return a tag identifying this ILElement
+		/// \brief	return a tag identifying this ILElement
 		const char* getTag() const noexcept;
 	};
 public:
@@ -243,8 +241,7 @@ class VBElementView final
 	template<VertexInputLayout::ILEementType layoutType>
 	struct ElementSetter final
 	{
-		//	\function	exec	||	\date	2022/08/30 12:49
-		//	\brief	returns the D3D11 DESC of INPUT_ELEMENT_LAYOUT
+		/// \brief	returns the D3D11 DESC of INPUT_ELEMENT_LAYOUT
 		template<typename T>
 		static constexpr auto exec( VBElementView *pVertex,
 			char *pElement,
@@ -254,8 +251,7 @@ class VBElementView final
 		}
 	};
 
-	//	\function	setElementByIndex	||	\date	2022/08/30 12:45
-	//	\brief	terminal case for setElementByIndex
+	/// \brief	terminal case for setElementByIndex
 	template<typename T>
 	void setElementByIndex( const size_t i,
 		T &&val ) cond_noex
@@ -265,8 +261,7 @@ class VBElementView final
 		VertexInputLayout::bridge<ElementSetter>( element.getType(), this, pElement, std::forward<T>( val ) );
 	}
 
-	//	\function	setElementByIndex	||	\date	2022/08/30 12:45
-	//	\brief	set Vertex data by its Byte index in the buffer
+	/// \brief	set Vertex data by its Byte index in the buffer
 	template<typename First, typename ...Rest>
 	void setElementByIndex( const size_t i,
 		First &&first,
@@ -276,8 +271,7 @@ class VBElementView final
 		setElementByIndex( i + 1, std::forward<Rest>( rest )... );	// recursive case
 	}
 
-	//	\function	setElement	||	\date	2022/08/30 12:46
-	//	\brief	helper to reduce tag duplication in setElementByIndex
+	/// \brief	helper to reduce tag duplication in setElementByIndex
 	template<VertexInputLayout::ILEementType layoutType, typename SrcType>
 	void setElement( char *pElement,
 		SrcType &&val ) cond_noex
@@ -292,8 +286,7 @@ class VBElementView final
 protected:
 	VBElementView( char *pData, const VertexInputLayout &layout ) cond_noex;
 public:
-	//	\function	element	||	\date	2022/08/30 12:45
-	//	\brief	get reference to ILElement
+	/// \brief	get reference to ILElement
 	template<VertexInputLayout::ILEementType layoutType>
 	auto& getElement() cond_noex
 	{

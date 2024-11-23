@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="structObjectPool_1_1rebind" kind="struct" language="C++" prot="public">
+    <compoundname>ObjectPool::rebind</compoundname>
+    <includes refid="object__pool_8h" local="no">object_pool.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename U</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structObjectPool_1_1rebind_a77247220b9bea867f57ece1715519c76_1a77247220b9bea867f57ece1715519c76" prot="public" static="no">
+        <type><ref refid="classObjectPool" kindref="compound">ObjectPool</ref>&lt; U &gt;</type>
+        <definition>using ObjectPool&lt; T &gt;::rebind&lt; U &gt;::otherAllocator =  ObjectPool&lt;U&gt;</definition>
+        <argsstring></argsstring>
+        <name>otherAllocator</name>
+        <qualifiedname>ObjectPool::rebind::otherAllocator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/object_pool.h" line="66" column="1" bodyfile="inc/object_pool.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/object_pool.h" line="64" column="1" bodyfile="inc/object_pool.h" bodystart="65" bodyend="67"/>
+    <listofallmembers>
+      <member refid="structObjectPool_1_1rebind_a77247220b9bea867f57ece1715519c76_1a77247220b9bea867f57ece1715519c76" prot="public" virt="non-virtual"><scope>ObjectPool::rebind</scope><name>otherAllocator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

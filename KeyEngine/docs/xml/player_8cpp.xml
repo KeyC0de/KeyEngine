@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="player_8cpp" kind="file" language="C++">
+    <compoundname>player.cpp</compoundname>
+    <includes refid="player_8h" local="yes">player.h</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>player.h</label>
+        <link refid="player_8h"/>
+      </node>
+      <node id="1">
+        <label>src/player.cpp</label>
+        <link refid="player_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="player_8h" kindref="compound">player.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/player.cpp"/>
+  </compounddef>
+</doxygen>

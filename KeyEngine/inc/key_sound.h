@@ -15,29 +15,30 @@
 
 
 class Sound;
-//============================================================
-//	\class	SoundManager
-//	\author	KeyC0de
-//	\date	2020/10/23 21:33
-//	\brief	singleton class
-//			back-end
-//			non-copyable & non-movable
-//			stores the Sounds in vector of Channel<Sound>
-//			encapsulates a Mastering voice which works with a single wave format
-//			thus all Sounds contained in a SoundManager object must have the same format
-//=============================================================
+
+///============================================================
+/// \class	SoundManager
+/// \author	KeyC0de
+/// \date	2020/10/23 21:33
+/// \brief	singleton class
+/// \brief	back-end
+/// \brief	non-copyable & non-movable
+/// \brief	stores the Sounds in vector of Channel<Sound>
+/// \brief	encapsulates a Mastering voice which works with a single wave format
+/// \brief	thus all Sounds contained in a SoundManager object must have the same format
+///=============================================================
 class SoundManager final
 	: public NonCopyableAndNonMovable
 {
 public:
-	//============================================================
-	//	\class	Channel
-	//	\author	KeyC0de
-	//	\date	2020/10/25 14:01
-	//	\brief	back-end
-	//			each Sound sticks to a single Channel
-	//			at most s_nMaxAudioChannels can play at a certain time
-	//=============================================================
+	///============================================================
+	/// \class	Channel
+	/// \author	KeyC0de
+	/// \date	2020/10/25 14:01
+	/// \brief	back-end
+	/// \brief	each Sound sticks to a single Channel
+	/// \brief	at most s_nMaxAudioChannels can play at a certain time
+	///=============================================================
 	class Channel final
 		: public NonCopyable
 	{
@@ -54,8 +55,7 @@ public:
 		bool setupChannel( SoundManager &soundManager, Sound &sound );
 		void playSound( Sound *sound, const float volume );
 		void stopSound() cond_noex;
-		//	\function	rechannel	||	\date	2020/10/25 19:18
-		//	\brief	finds new channel for the existing Sound
+		/// \brief	finds new channel for the existing Sound
 		void rechannel( const Sound *pOldSound, Sound *pNewSound );
 		Sound* getSound() const cond_noex;
 	};
@@ -93,8 +93,7 @@ private:
 private:
 	SoundManager( WAVEFORMATEXTENSIBLE *format );
 public:
-	//	\function	getInstance	||	\date	2020/10/25 21:38
-	//	\brief	return the single instance of the class
+	/// \brief	return the single instance of the class
 	static SoundManager& getInstance( WAVEFORMATEXTENSIBLE *format = nullptr );
 public:
 	~SoundManager() noexcept;
@@ -102,22 +101,21 @@ public:
 	void setMasterVolume( const float volume = 1.0f );
 	void setSubmixVolume( const Submix &submix, const float volume = 1.0f ) cond_noex;
 	void playChannelSound( class Sound *sound, const float volume );
-	//	\function	deactivateChannel	||	\date	2020/10/25 20:18
-	//	\brief	removes occupied Channel & places it in the idle list
+	/// \brief	removes occupied Channel & places it in the idle list
 	void deactivateChannel( Channel &channel );
 	//void disableSubmixVoice( const Submix &submix );
 };
 
 
-//============================================================
-//	\class	Sound
-//	\author	KeyC0de
-//	\date	2020/10/24 1:51
-//	\brief	move only
-//			front-end
-//			encapsulates a sound
-//			ctor creates the sound properties
-//=============================================================
+///============================================================
+/// \class	Sound
+/// \author	KeyC0de
+/// \date	2020/10/24 1:51
+/// \brief	move only
+/// \brief	front-end
+/// \brief	encapsulates a sound
+/// \brief	ctor creates the sound properties
+///=============================================================
 class Sound final
 	: public NonCopyable
 {
@@ -132,31 +130,25 @@ class Sound final
 	std::condition_variable m_condVar;
 	std::vector<SoundManager::Channel*> m_busyChannels;	// those are currently playing
 public:
-	//	\function	findChunk	||	\date	2020/10/25 15:09
-	//	\brief	locates chunks in RIFF files
+	/// \brief	locates chunks in RIFF files
 	HRESULT findChunk( HANDLE file, DWORD fourcc, DWORD &chunkSize, DWORD &chunkDataPosition );
-	//	\function	readChunkData
-	//	\brief	read chunk's data (after the chunk has been located)
+	/// \brief	read chunk's data (after the chunk has been located)
 
 	HRESULT readChunkData( HANDLE file, void *buffer, DWORD buffersize, DWORD bufferoffset );
 public:
 	// #TODO: Sound Looping
-	//	\function	Sound	||	\date	2020/10/25 15:04
-	//	\brief	constructor loads sound file and configures all its properties
+	/// \brief	constructor loads sound file and configures all its properties
 	Sound( const char *zsFilename, const std::string &name = "", const std::string &submixName = "" );
 	Sound( Sound &&rhs ) cond_noex;
 	Sound& operator=( Sound &&rhs ) cond_noex;
 	~Sound() noexcept;
 
-	//	\function	getDuration	||	\date	2024/05/25 23:06
-	//	\brief	return PCM audio's duration in milliseconds
+	/// \brief	return PCM audio's duration in milliseconds
 	float getDuration() const noexcept;
 	const std::string& getName() const cond_noex;
-	//	\function	getTypeName	\date	2020/10/25 14:05
-	//	\brief	get sound type eg effects, music, dialogue etc. --- each sound type corresponds to a Submix voice
+	/// \brief	get sound type eg effects, music, dialogue etc. --- each sound type corresponds to a Submix voice
 	const std::string& getSubmixName() const cond_noex;
-	//	\function	play	||	\date	2020/10/25 13:05
-	//	\brief	instructs the sound manager to play the sound on free channel(s)
+	/// \brief	instructs the sound manager to play the sound on free channel(s)
 	void play( const float volume = 1.0f );
 	void stop();
 };

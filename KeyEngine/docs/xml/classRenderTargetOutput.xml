@@ -1,0 +1,160 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classRenderTargetOutput" kind="class" language="C++" prot="public">
+    <compoundname>RenderTargetOutput</compoundname>
+    <basecompoundref refid="classIRenderTargetView" prot="public" virt="non-virtual">IRenderTargetView</basecompoundref>
+    <includes refid="render__target_8h" local="no">render_target.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classRenderTargetOutput_abbf2e7295dd9e64b7ebc9f6cf195baa6_1abbf2e7295dd9e64b7ebc9f6cf195baa6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RenderTargetOutput::RenderTargetOutput</definition>
+        <argsstring>(Graphics &amp;gfx, ID3D11Texture2D *pTexture, std::optional&lt; unsigned &gt; face={})</argsstring>
+        <name>RenderTargetOutput</name>
+        <qualifiedname>RenderTargetOutput::RenderTargetOutput</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>ID3D11Texture2D *</type>
+          <declname>pTexture</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; unsigned &gt;</type>
+          <declname>face</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/render_target.h" line="76" column="1" bodyfile="src/render_target.cpp" bodystart="256" bodyend="263"/>
+      </memberdef>
+      <memberdef kind="function" id="classRenderTargetOutput_a537909d0e637e4bb76ade7297d2653c5_1a537909d0e637e4bb76ade7297d2653c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void RenderTargetOutput::bind</definition>
+        <argsstring>(Graphics &amp;gfx) cond_noex override</argsstring>
+        <name>bind</name>
+        <qualifiedname>RenderTargetOutput::bind</qualifiedname>
+        <reimplements refid="classIBindable_add4560f78e76629ee81ba701ba1052e1_1add4560f78e76629ee81ba701ba1052e1">bind</reimplements>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+<para>bind graphics resource to a certain stage of the graphics pipeline </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/render_target.h" line="78" column="6" bodyfile="src/render_target.cpp" bodystart="265" bodyend="268"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>RTV wrapper that will be used for Output only  </para>
+    </briefdescription>
+    <detaileddescription>
+<para>=============================================================</para>
+<para><simplesect kind="author"><para>KeyC0de </para>
+</simplesect>
+<simplesect kind="date"><para>2021/10/19 0:47 <heading level="1"></heading>
+</para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4">
+        <label>GraphicsFriend</label>
+        <link refid="classGraphicsFriend"/>
+      </node>
+      <node id="3">
+        <label>IBindable</label>
+        <link refid="classIBindable"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>IRenderSurface</label>
+        <link refid="classIRenderSurface"/>
+      </node>
+      <node id="2">
+        <label>IRenderTargetView</label>
+        <link refid="classIRenderTargetView"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>RenderTargetOutput</label>
+        <link refid="classRenderTargetOutput"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4">
+        <label>GraphicsFriend</label>
+        <link refid="classGraphicsFriend"/>
+      </node>
+      <node id="3">
+        <label>IBindable</label>
+        <link refid="classIBindable"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>IRenderSurface</label>
+        <link refid="classIRenderSurface"/>
+      </node>
+      <node id="2">
+        <label>IRenderTargetView</label>
+        <link refid="classIRenderTargetView"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>RenderTargetOutput</label>
+        <link refid="classRenderTargetOutput"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/render_target.h" line="72" column="1" bodyfile="inc/render_target.h" bodystart="74" bodyend="79"/>
+    <listofallmembers>
+      <member refid="classIBindable_a608c5066b829febbd49cd82d1d1fa353_1a608c5066b829febbd49cd82d1d1fa353" prot="public" virt="virtual"><scope>RenderTargetOutput</scope><name>accept</name></member>
+      <member refid="classRenderTargetOutput_a537909d0e637e4bb76ade7297d2653c5_1a537909d0e637e4bb76ade7297d2653c5" prot="public" virt="virtual"><scope>RenderTargetOutput</scope><name>bind</name></member>
+      <member refid="classIRenderTargetView_abae0c43c9146df2e170c56fb15b7970f_1abae0c43c9146df2e170c56fb15b7970f" prot="public" virt="virtual"><scope>RenderTargetOutput</scope><name>bindRenderSurface</name></member>
+      <member refid="classIRenderTargetView_a0c318803e044d5eae72976aeae14be85_1a0c318803e044d5eae72976aeae14be85" prot="public" virt="virtual"><scope>RenderTargetOutput</scope><name>bindRenderSurface</name></member>
+      <member refid="classIRenderTargetView_aa6029e9356c88586c6e4e2d0a0305238_1aa6029e9356c88586c6e4e2d0a0305238" prot="public" virt="non-virtual"><scope>RenderTargetOutput</scope><name>bindRenderSurface</name></member>
+      <member refid="classIRenderTargetView_a8b54221abc49585f6508352e3ba587f3_1a8b54221abc49585f6508352e3ba587f3" prot="private" virt="non-virtual"><scope>RenderTargetOutput</scope><name>bindRenderSurface</name></member>
+      <member refid="classIRenderTargetView_ab327c87afa940b91d8676b264dedc376_1ab327c87afa940b91d8676b264dedc376" prot="public" virt="non-virtual"><scope>RenderTargetOutput</scope><name>clean</name></member>
+      <member refid="classIRenderTargetView_ae56a818f2dcc997ac2c45699f03dacbe_1ae56a818f2dcc997ac2c45699f03dacbe" prot="public" virt="virtual"><scope>RenderTargetOutput</scope><name>clear</name></member>
+      <member refid="classIRenderTargetView_a60fc375522630853ea8f69b2f0c653ed_1a60fc375522630853ea8f69b2f0c653ed" prot="public" virt="non-virtual"><scope>RenderTargetOutput</scope><name>convertToBitmap</name></member>
+      <member refid="classIRenderTargetView_a1399fd548f196216820ac8d19dd87621_1a1399fd548f196216820ac8d19dd87621" prot="private" virt="non-virtual"><scope>RenderTargetOutput</scope><name>createStagingTexture</name></member>
+      <member refid="classIRenderTargetView_a9e5ac7e5704e9debd3c721000152eb18_1a9e5ac7e5704e9debd3c721000152eb18" prot="public" virt="non-virtual"><scope>RenderTargetOutput</scope><name>d3dResource</name></member>
+      <member refid="classIRenderTargetView_a83fef9a15fb28966bc9b492e1e54e677_1a83fef9a15fb28966bc9b492e1e54e677" prot="public" virt="non-virtual"><scope>RenderTargetOutput</scope><name>d3dResourceCom</name></member>
+      <member refid="classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_1a175df79f82ab5a6dad1df24b5a242ef7" prot="protected" virt="non-virtual"><scope>RenderTargetOutput</scope><name>getDevice</name></member>
+      <member refid="classGraphicsFriend_a619e32893ab49ea6c5200e7c2d52e2f2_1a619e32893ab49ea6c5200e7c2d52e2f2" prot="protected" virt="non-virtual"><scope>RenderTargetOutput</scope><name>getDeviceContext</name></member>
+      <member refid="classIRenderTargetView_aaedea70a2db05bafc4a8a444fc465212_1aaedea70a2db05bafc4a8a444fc465212" prot="public" virt="non-virtual"><scope>RenderTargetOutput</scope><name>getHeight</name></member>
+      <member refid="classIBindable_a7d88cdbd5d500d6d7f1bfabe16927855_1a7d88cdbd5d500d6d7f1bfabe16927855" prot="public" virt="virtual"><scope>RenderTargetOutput</scope><name>getUid</name></member>
+      <member refid="classIRenderTargetView_ab40eedff033f10cbe645455d8d2855cd_1ab40eedff033f10cbe645455d8d2855cd" prot="public" virt="non-virtual"><scope>RenderTargetOutput</scope><name>getWidth</name></member>
+      <member refid="classIRenderTargetView_abf9cae9989cf526dfbd79ff788435a3d_1abf9cae9989cf526dfbd79ff788435a3d" prot="protected" virt="non-virtual"><scope>RenderTargetOutput</scope><name>IRenderTargetView</name></member>
+      <member refid="classIRenderTargetView_aeb1ecdc0e7dad9ee0927ea4f028d7a5e_1aeb1ecdc0e7dad9ee0927ea4f028d7a5e" prot="protected" virt="non-virtual"><scope>RenderTargetOutput</scope><name>IRenderTargetView</name></member>
+      <member refid="classIRenderTargetView_a0232167f2e6c778a6fd58d4590ba3964_1a0232167f2e6c778a6fd58d4590ba3964" prot="protected" virt="non-virtual"><scope>RenderTargetOutput</scope><name>m_height</name></member>
+      <member refid="classIRenderTargetView_a23ae718efaec7e0df3ce815198534988_1a23ae718efaec7e0df3ce815198534988" prot="protected" virt="non-virtual"><scope>RenderTargetOutput</scope><name>m_pD3dRtv</name></member>
+      <member refid="classIRenderTargetView_aa6160c1f8961cc50af9b9fd1825cb4f0_1aa6160c1f8961cc50af9b9fd1825cb4f0" prot="protected" virt="non-virtual"><scope>RenderTargetOutput</scope><name>m_width</name></member>
+      <member refid="classRenderTargetOutput_abbf2e7295dd9e64b7ebc9f6cf195baa6_1abbf2e7295dd9e64b7ebc9f6cf195baa6" prot="public" virt="non-virtual"><scope>RenderTargetOutput</scope><name>RenderTargetOutput</name></member>
+      <member refid="classIRenderTargetView_a131bf2e6185274b924084de659fa82fc_1a131bf2e6185274b924084de659fa82fc" prot="public" virt="virtual"><scope>RenderTargetOutput</scope><name>setDebugObjectName</name></member>
+      <member refid="classIBindable_a12fe8725cb3f4836f22d1592b07e2c91_1a12fe8725cb3f4836f22d1592b07e2c91" prot="public" virt="virtual"><scope>RenderTargetOutput</scope><name>setMesh</name></member>
+      <member refid="classIRenderTargetView_aa14b454e81f88129fc8737b6c7ba3c39_1aa14b454e81f88129fc8737b6c7ba3c39" prot="public" virt="non-virtual"><scope>RenderTargetOutput</scope><name>unbind</name></member>
+      <member refid="classIBindable_a7f68262ff85e25e9f826eae7c01bbfa1_1a7f68262ff85e25e9f826eae7c01bbfa1" prot="public" virt="virtual"><scope>RenderTargetOutput</scope><name>~IBindable</name></member>
+      <member refid="classIRenderSurface_a3a4155d7f15be1043769cb22a6d4d449_1a3a4155d7f15be1043769cb22a6d4d449" prot="public" virt="virtual"><scope>RenderTargetOutput</scope><name>~IRenderSurface</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

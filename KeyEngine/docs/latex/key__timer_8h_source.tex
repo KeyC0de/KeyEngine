@@ -1,0 +1,196 @@
+\doxysection{key\+\_\+timer.\+h}
+\hypertarget{key__timer_8h_source}{}\label{key__timer_8h_source}\index{inc/key\_timer.h@{inc/key\_timer.h}}
+\mbox{\hyperlink{key__timer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{console_8h}{console.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{non__copyable_8h}{non\_copyable.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{math__utils_8h}{math\_utils.h}}"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Resolution\ =\ std::chrono::milliseconds>}
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classKeyTimer}{KeyTimer}}\ final}
+\DoxyCodeLine{00021\ \ \ \ \ :\ \mbox{\hyperlink{classNonCopyableAndNonMovable}{NonCopyableAndNonMovable}}}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classKeyTimer_a354b5d5a956267a691bf92e8954e41b5_a354b5d5a956267a691bf92e8954e41b5}{TClock}}\ =\ std::conditional\_t<std::chrono::high\_resolution\_clock::is\_steady,}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ std::chrono::high\_resolution\_clock,}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ std::chrono::steady\_clock>;}
+\DoxyCodeLine{00027\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00028\ \ \ \ \ TClock::time\_point\ \mbox{\hyperlink{classKeyTimer_acae5e24195e3e4a060ef9fdb5fda0a84_acae5e24195e3e4a060ef9fdb5fda0a84}{m\_start}}\{\};\ \ \ \ \textcolor{comment}{//\ records\ starting\ time}}
+\DoxyCodeLine{00029\ \ \ \ \ TClock::time\_point\ \mbox{\hyperlink{classKeyTimer_a14125899e463ee1c0ab55bc60070aee9_a14125899e463ee1c0ab55bc60070aee9}{m\_last}}\{\};\ \ \textcolor{comment}{//\ counts\ duration\ between\ successive\ calls\ of\ getTime}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classKeyTimer_a60db4cc912ab30b862ec3fd08e42bfd5_a60db4cc912ab30b862ec3fd08e42bfd5}{m\_duration}}\{\};\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ counts\ duration\ from\ starting\ time}}
+\DoxyCodeLine{00031\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classKeyTimer_a2914a899d867c7310f37343b3a706456_a2914a899d867c7310f37343b3a706456}{KeyTimer}}(\ \textcolor{keywordtype}{bool}\ bStart\ =\ \textcolor{keyword}{false}\ )\ noexcept}
+\DoxyCodeLine{00033\ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ bStart\ )}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classKeyTimer_ab8ce8e8658a0ea7c9b5ab4028bc7b777_ab8ce8e8658a0ea7c9b5ab4028bc7b777}{start}}();}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \ \ \ \ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{classKeyTimer_a2a8566ddc99413d5132e58ac268671d6_a2a8566ddc99413d5132e58ac268671d6}{\string~KeyTimer}}()\ noexcept}
+\DoxyCodeLine{00041\ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ dur\ =\ \mbox{\hyperlink{classKeyTimer_ad70fae950b4e47856a2c9e774fc60410_ad70fae950b4e47856a2c9e774fc60410}{getMilliSecondsFromStart}}();}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#if\ defined\ \_DEBUG\ \&\&\ !defined\ NDEBUG}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classKeyConsole}{KeyConsole}}\ \&console\ =\ \mbox{\hyperlink{classKeyConsole_a31cfe6a77156baf79a0a74ea338c6e18_a31cfe6a77156baf79a0a74ea338c6e18}{KeyConsole::getInstance}}();}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ namespace\ }std::string\_literals;}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ console.\mbox{\hyperlink{classKeyConsole_a453538c0c27b7fb4311391485e3c3788_a453538c0c27b7fb4311391485e3c3788}{log}}(\ std::to\_string(\ dur\ )\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}}s\ );}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00048\ \ \ \ \ \}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classKeyTimer_ab8ce8e8658a0ea7c9b5ab4028bc7b777_ab8ce8e8658a0ea7c9b5ab4028bc7b777}{start}}()\ noexcept}
+\DoxyCodeLine{00051\ \ \ \ \ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classKeyTimer_acae5e24195e3e4a060ef9fdb5fda0a84_acae5e24195e3e4a060ef9fdb5fda0a84}{m\_start}}\ =\ TClock::now();}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classKeyTimer_a14125899e463ee1c0ab55bc60070aee9_a14125899e463ee1c0ab55bc60070aee9}{m\_last}}\ =\ TClock::now();}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classKeyTimer_a60db4cc912ab30b862ec3fd08e42bfd5_a60db4cc912ab30b862ec3fd08e42bfd5}{m\_duration}}\ =\ 0;}
+\DoxyCodeLine{00055\ \ \ \ \ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classKeyTimer_adc8d991f669445558eb8fbebd6d35d9e_adc8d991f669445558eb8fbebd6d35d9e}{restart}}()\ noexcept}
+\DoxyCodeLine{00058\ \ \ \ \ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classKeyTimer_acae5e24195e3e4a060ef9fdb5fda0a84_acae5e24195e3e4a060ef9fdb5fda0a84}{m\_start}}\ =\ TClock::now();}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classKeyTimer_a60db4cc912ab30b862ec3fd08e42bfd5_a60db4cc912ab30b862ec3fd08e42bfd5}{m\_duration}}\ =\ 0;}
+\DoxyCodeLine{00061\ \ \ \ \ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classKeyTimer_a8b1d7eb8755dd8c5512216c667183071_a8b1d7eb8755dd8c5512216c667183071}{reset}}()\ noexcept}
+\DoxyCodeLine{00064\ \ \ \ \ \{}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#if\ defined\ min}}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#\ \ \ undef\ min}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classKeyTimer_acae5e24195e3e4a060ef9fdb5fda0a84_acae5e24195e3e4a060ef9fdb5fda0a84}{m\_start}}\ =\ std::chrono::time\_point\_cast<Resolution>(\ TClock::time\_point::min()\ );}
+\DoxyCodeLine{00069\ \ \ \ \ \}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classKeyTimer_ad70fae950b4e47856a2c9e774fc60410_ad70fae950b4e47856a2c9e774fc60410}{getMilliSecondsFromStart}}()\ noexcept}
+\DoxyCodeLine{00073\ \ \ \ \ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}(\ std::is\_same\_v<Resolution,\ std::chrono::nanoseconds>\ )}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classKeyTimer_a60db4cc912ab30b862ec3fd08e42bfd5_a60db4cc912ab30b862ec3fd08e42bfd5}{m\_duration}}\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(\ std::chrono::duration\_cast<Resolution>(\ TClock::now()\ -\/\ \mbox{\hyperlink{classKeyTimer_acae5e24195e3e4a060ef9fdb5fda0a84_acae5e24195e3e4a060ef9fdb5fda0a84}{m\_start}}\ ).count()\ /\ 1000000\ );}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}(\ std::is\_same\_v<Resolution,\ std::chrono::microseconds>\ )}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classKeyTimer_a60db4cc912ab30b862ec3fd08e42bfd5_a60db4cc912ab30b862ec3fd08e42bfd5}{m\_duration}}\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(\ std::chrono::duration\_cast<Resolution>(\ TClock::now()\ -\/\ \mbox{\hyperlink{classKeyTimer_acae5e24195e3e4a060ef9fdb5fda0a84_acae5e24195e3e4a060ef9fdb5fda0a84}{m\_start}}\ ).count()\ /\ 1000\ );}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}(\ std::is\_same\_v<Resolution,\ std::chrono::milliseconds>\ )}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classKeyTimer_a60db4cc912ab30b862ec3fd08e42bfd5_a60db4cc912ab30b862ec3fd08e42bfd5}{m\_duration}}\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(\ std::chrono::duration\_cast<Resolution>(\ TClock::now()\ -\/\ \mbox{\hyperlink{classKeyTimer_acae5e24195e3e4a060ef9fdb5fda0a84_acae5e24195e3e4a060ef9fdb5fda0a84}{m\_start}}\ ).count()\ );}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}(\ std::is\_same\_v<Resolution,\ std::chrono::seconds>\ )}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classKeyTimer_a60db4cc912ab30b862ec3fd08e42bfd5_a60db4cc912ab30b862ec3fd08e42bfd5}{m\_duration}}\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(\ std::chrono::duration\_cast<Resolution>(\ TClock::now()\ -\/\ \mbox{\hyperlink{classKeyTimer_acae5e24195e3e4a060ef9fdb5fda0a84_acae5e24195e3e4a060ef9fdb5fda0a84}{m\_start}}\ ).count()\ *\ 1000\ );}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#if\ defined\ \_DEBUG\ \&\&\ !defined\ NDEBUG}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classKeyConsole}{KeyConsole}}\ \&console\ =\ \mbox{\hyperlink{classKeyConsole_a31cfe6a77156baf79a0a74ea338c6e18_a31cfe6a77156baf79a0a74ea338c6e18}{KeyConsole::getInstance}}();}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ namespace\ }std::string\_literals;}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ console.\mbox{\hyperlink{classKeyConsole_a453538c0c27b7fb4311391485e3c3788_a453538c0c27b7fb4311391485e3c3788}{log}}(\ \textcolor{stringliteral}{"{}Duration\ from\ start\ (ms):\ "{}}s\ +\ std::to\_string(\ \mbox{\hyperlink{classKeyTimer_a60db4cc912ab30b862ec3fd08e42bfd5_a60db4cc912ab30b862ec3fd08e42bfd5}{m\_duration}}\ )\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}}\ );}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classKeyTimer_a60db4cc912ab30b862ec3fd08e42bfd5_a60db4cc912ab30b862ec3fd08e42bfd5}{m\_duration}};}
+\DoxyCodeLine{00098\ \ \ \ \ \}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classKeyTimer_a3ef6f86f264d4a46cacfb27f5632c3fa_a3ef6f86f264d4a46cacfb27f5632c3fa}{getSecondsFromStart}}()\ noexcept}
+\DoxyCodeLine{00102\ \ \ \ \ \{}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ ret;}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}(\ std::is\_same\_v<Resolution,\ std::chrono::nanoseconds>\ )}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ ret\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\ std::chrono::duration\_cast<Resolution>(\ TClock::now()\ -\/\ \mbox{\hyperlink{classKeyTimer_acae5e24195e3e4a060ef9fdb5fda0a84_acae5e24195e3e4a060ef9fdb5fda0a84}{m\_start}}\ ).count()\ /\ 1000000000.0f\ );}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}(\ std::is\_same\_v<Resolution,\ std::chrono::microseconds>\ )}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ ret\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\ std::chrono::duration\_cast<Resolution>(\ TClock::now()\ -\/\ \mbox{\hyperlink{classKeyTimer_acae5e24195e3e4a060ef9fdb5fda0a84_acae5e24195e3e4a060ef9fdb5fda0a84}{m\_start}}\ ).count()\ /\ 1000000.0f\ );}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}(\ std::is\_same\_v<Resolution,\ std::chrono::milliseconds>\ )}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ ret\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\ std::chrono::duration\_cast<Resolution>(\ TClock::now()\ -\/\ \mbox{\hyperlink{classKeyTimer_acae5e24195e3e4a060ef9fdb5fda0a84_acae5e24195e3e4a060ef9fdb5fda0a84}{m\_start}}\ ).count()\ /\ 1000.0f\ );}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}(\ std::is\_same\_v<Resolution,\ std::chrono::seconds>\ )}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ ret\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\ std::chrono::duration\_cast<Resolution>(\ TClock::now()\ -\/\ \mbox{\hyperlink{classKeyTimer_acae5e24195e3e4a060ef9fdb5fda0a84_acae5e24195e3e4a060ef9fdb5fda0a84}{m\_start}}\ ).count()\ );}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#if\ defined\ \_DEBUG\ \&\&\ !defined\ NDEBUG}}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classKeyConsole}{KeyConsole}}\ \&console\ =\ \mbox{\hyperlink{classKeyConsole_a31cfe6a77156baf79a0a74ea338c6e18_a31cfe6a77156baf79a0a74ea338c6e18}{KeyConsole::getInstance}}();}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ namespace\ }std::string\_literals;}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ console.\mbox{\hyperlink{classKeyConsole_a453538c0c27b7fb4311391485e3c3788_a453538c0c27b7fb4311391485e3c3788}{log}}(\ \textcolor{stringliteral}{"{}Duration\ from\ start\ (sec):\ "{}}s\ +\ std::to\_string(\ ret\ )\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}}\ );}
+\DoxyCodeLine{00125\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
+\DoxyCodeLine{00128\ \ \ \ \ \}}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classKeyTimer_ae18173dcedbcc9715ba123d065a2cc4f_ae18173dcedbcc9715ba123d065a2cc4f}{getTimeElapsed}}()\ noexcept}
+\DoxyCodeLine{00133\ \ \ \ \ \{}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ old\ =\ \mbox{\hyperlink{classKeyTimer_a14125899e463ee1c0ab55bc60070aee9_a14125899e463ee1c0ab55bc60070aee9}{m\_last}};}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classKeyTimer_a14125899e463ee1c0ab55bc60070aee9_a14125899e463ee1c0ab55bc60070aee9}{m\_last}}\ =\ TClock::now();}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\ std::chrono::duration\_cast<Resolution>(\ \mbox{\hyperlink{classKeyTimer_a14125899e463ee1c0ab55bc60070aee9_a14125899e463ee1c0ab55bc60070aee9}{m\_last}}\ -\/\ old\ ).count()\ );}
+\DoxyCodeLine{00137\ \ \ \ \ \}}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classKeyTimer_a8fb4f49cfe264bdc7f009cd04f47f2c3_a8fb4f49cfe264bdc7f009cd04f47f2c3}{getTimeElapsedSecs}}()\ noexcept}
+\DoxyCodeLine{00142\ \ \ \ \ \{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ old\ =\ \mbox{\hyperlink{classKeyTimer_a14125899e463ee1c0ab55bc60070aee9_a14125899e463ee1c0ab55bc60070aee9}{m\_last}};}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classKeyTimer_a14125899e463ee1c0ab55bc60070aee9_a14125899e463ee1c0ab55bc60070aee9}{m\_last}}\ =\ TClock::now();}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ ret;}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}(\ std::is\_same\_v<Resolution,\ std::chrono::nanoseconds>\ )}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ ret\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\ std::chrono::duration\_cast<Resolution>(\ \mbox{\hyperlink{classKeyTimer_a14125899e463ee1c0ab55bc60070aee9_a14125899e463ee1c0ab55bc60070aee9}{m\_last}}\ -\/\ old\ ).count()\ /\ 1000000000.0f\ );}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}(\ std::is\_same\_v<Resolution,\ std::chrono::microseconds>\ )}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ ret\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\ std::chrono::duration\_cast<Resolution>(\ \mbox{\hyperlink{classKeyTimer_a14125899e463ee1c0ab55bc60070aee9_a14125899e463ee1c0ab55bc60070aee9}{m\_last}}\ -\/\ old\ ).count()\ /\ 1000000.0f);}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}(\ std::is\_same\_v<Resolution,\ std::chrono::milliseconds>\ )}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ ret\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\ std::chrono::duration\_cast<Resolution>(\ \mbox{\hyperlink{classKeyTimer_a14125899e463ee1c0ab55bc60070aee9_a14125899e463ee1c0ab55bc60070aee9}{m\_last}}\ -\/\ old\ ).count()\ /\ 1000.0f);}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}(\ std::is\_same\_v<Resolution,\ std::chrono::seconds>\ )}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ ret\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\ std::chrono::duration\_cast<Resolution>(\ \mbox{\hyperlink{classKeyTimer_a14125899e463ee1c0ab55bc60070aee9_a14125899e463ee1c0ab55bc60070aee9}{m\_last}}\ -\/\ old\ ).count()\ );}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
+\DoxyCodeLine{00163\ \ \ \ \ \}}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classKeyTimer_a6d4a328eafcbc3e8964e4720ddfb01aa_a6d4a328eafcbc3e8964e4720ddfb01aa}{peekTimeElapsed}}()\ const\ noexcept}
+\DoxyCodeLine{00167\ \ \ \ \ \{}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\ std::chrono::duration\_cast<Resolution>(\ TClock::now()\ -\/\ \mbox{\hyperlink{classKeyTimer_a14125899e463ee1c0ab55bc60070aee9_a14125899e463ee1c0ab55bc60070aee9}{m\_last}}\ ).count()\ );}
+\DoxyCodeLine{00169\ \ \ \ \ \}}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classKeyTimer_a8b4f14a4f7aa852923450db4885eff3e_a8b4f14a4f7aa852923450db4885eff3e}{lap}}()\ noexcept}
+\DoxyCodeLine{00173\ \ \ \ \ \{}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ old\ =\ \mbox{\hyperlink{classKeyTimer_a14125899e463ee1c0ab55bc60070aee9_a14125899e463ee1c0ab55bc60070aee9}{m\_last}};}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classKeyTimer_a14125899e463ee1c0ab55bc60070aee9_a14125899e463ee1c0ab55bc60070aee9}{m\_last}}\ =\ TClock::now();}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::chrono::duration<float>\ dur\ =\ \mbox{\hyperlink{classKeyTimer_a14125899e463ee1c0ab55bc60070aee9_a14125899e463ee1c0ab55bc60070aee9}{m\_last}}\ -\/\ old;}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dur.count();}
+\DoxyCodeLine{00178\ \ \ \ \ \}}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ \textcolor{preprocessor}{\#pragma\ region\ sleepFor}}
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classKeyTimer_a36bdadbd57baf7541c0b7c01ed688599_a36bdadbd57baf7541c0b7c01ed688599}{sleepFor}}(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ t\ )}
+\DoxyCodeLine{00183\ \ \ \ \ \{}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ ms\ =\ \textcolor{keyword}{static\_cast<}std::uint64\_t\textcolor{keyword}{>}(\ t\ );}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classKeyTimer_a36bdadbd57baf7541c0b7c01ed688599_a36bdadbd57baf7541c0b7c01ed688599}{sleepFor}}(\ std::chrono::milliseconds\{ms\}\ );}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \textcolor{comment}{//const\ auto\ us\ =\ util::getFractionalPartAsInt(\ t,\ 3\ );}}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \textcolor{comment}{//sleepFor(\ std::chrono::microseconds\{us\}\ );}}
+\DoxyCodeLine{00188\ \ \ \ \ \}}
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classKeyTimer_ac7d3d30e328d2beb9bf3adaf7709257b_ac7d3d30e328d2beb9bf3adaf7709257b}{sleepFor}}(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ t\ )}
+\DoxyCodeLine{00190\ \ \ \ \ \{}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classKeyTimer_a36bdadbd57baf7541c0b7c01ed688599_a36bdadbd57baf7541c0b7c01ed688599}{sleepFor}}(\ std::chrono::milliseconds\{\textcolor{keyword}{static\_cast<}uint64\_t\textcolor{keyword}{>}(\ t\ )\}\ );}
+\DoxyCodeLine{00192\ \ \ \ \ \}}
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classKeyTimer_ad599ad25448f723e7ca60f1a27633fb8_ad599ad25448f723e7ca60f1a27633fb8}{sleepFor}}(\ \textcolor{keyword}{const}\ uint64\_t\ t\ )}
+\DoxyCodeLine{00194\ \ \ \ \ \{}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classKeyTimer_a36bdadbd57baf7541c0b7c01ed688599_a36bdadbd57baf7541c0b7c01ed688599}{sleepFor}}(\ std::chrono::milliseconds\{t\}\ );}
+\DoxyCodeLine{00196\ \ \ \ \ \}}
+\DoxyCodeLine{00197\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classKeyTimer_a4872b515a594cb40e044f73224a26dbb_a4872b515a594cb40e044f73224a26dbb}{sleepFor}}(\ \textcolor{keyword}{const}\ std::chrono::milliseconds\ \&t\ )}
+\DoxyCodeLine{00198\ \ \ \ \ \{}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ std::this\_thread::sleep\_for(\ t\ );}
+\DoxyCodeLine{00200\ \ \ \ \ \}}
+\DoxyCodeLine{00201\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classKeyTimer_a44678e0ae6fde0998b509c41ccaa70df_a44678e0ae6fde0998b509c41ccaa70df}{sleepFor}}(\ \textcolor{keyword}{const}\ std::chrono::microseconds\ \&t\ )}
+\DoxyCodeLine{00202\ \ \ \ \ \{}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ std::this\_thread::sleep\_for(\ t\ );}
+\DoxyCodeLine{00204\ \ \ \ \ \}}
+\DoxyCodeLine{00205\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{00206\ \};}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00208\ \textcolor{keyword}{using\ }\mbox{\hyperlink{classKeyTimer}{SleepTimer}}\ =\ \mbox{\hyperlink{classKeyTimer}{KeyTimer<std::chrono::milliseconds>}};}
+
+\end{DoxyCode}

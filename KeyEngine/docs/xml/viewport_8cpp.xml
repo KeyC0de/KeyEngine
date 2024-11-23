@@ -1,0 +1,417 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="viewport_8cpp" kind="file" language="C++">
+    <compoundname>viewport.cpp</compoundname>
+    <includes refid="viewport_8h" local="yes">viewport.h</includes>
+    <includes local="no">typeinfo</includes>
+    <includes refid="graphics_8h" local="yes">graphics.h</includes>
+    <includes refid="bindable__registry_8h" local="yes">bindable_registry.h</includes>
+    <includes refid="dxgi__info__queue_8h" local="yes">dxgi_info_queue.h</includes>
+    <incdepgraph>
+      <node id="7">
+        <label>assertions_console.h</label>
+        <link refid="assertions__console_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>bindable.h</label>
+        <link refid="bindable_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>bindable_registry.h</label>
+        <link refid="bindable__registry_8h"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>color.h</label>
+        <link refid="color_8h"/>
+      </node>
+      <node id="29">
+        <label>console.h</label>
+        <link refid="console_8h"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="52">
+        <label>dxgi_info_queue.h</label>
+        <link refid="dxgi__info__queue_8h"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>graphics.h</label>
+        <link refid="graphics_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>graphics_friend.h</label>
+        <link refid="graphics__friend_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>key_exception.h</label>
+        <link refid="key__exception_8h"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>key_timer.h</label>
+        <link refid="key__timer_8h"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>key_type_traits.h</label>
+        <link refid="key__type__traits_8h"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>key_wrl.h</label>
+        <link refid="key__wrl_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>math_utils.h</label>
+        <link refid="math__utils_8h"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="25">
+        <label>texture_desc.h</label>
+        <link refid="texture__desc_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>utils_global.h</label>
+        <link refid="utils__global_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>viewport.h</label>
+        <link refid="viewport_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>winner.h</label>
+        <link refid="winner_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/viewport.cpp</label>
+        <link refid="viewport_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>DirectXMath.h</label>
+      </node>
+      <node id="13">
+        <label>Windows.h</label>
+      </node>
+      <node id="43">
+        <label>algorithm</label>
+      </node>
+      <node id="39">
+        <label>bitset</label>
+      </node>
+      <node id="28">
+        <label>chrono</label>
+      </node>
+      <node id="41">
+        <label>cinttypes</label>
+      </node>
+      <node id="31">
+        <label>cmath</label>
+      </node>
+      <node id="40">
+        <label>cstddef</label>
+      </node>
+      <node id="32">
+        <label>cstdint</label>
+      </node>
+      <node id="6">
+        <label>d3d11.h</label>
+      </node>
+      <node id="17">
+        <label>d3dcompiler.h</label>
+      </node>
+      <node id="16">
+        <label>dxgi1_4.h</label>
+      </node>
+      <node id="53">
+        <label>dxgidebug.h</label>
+      </node>
+      <node id="47">
+        <label>execution</label>
+      </node>
+      <node id="42">
+        <label>future</label>
+      </node>
+      <node id="35">
+        <label>iomanip</label>
+      </node>
+      <node id="8">
+        <label>iostream</label>
+      </node>
+      <node id="45">
+        <label>iterator</label>
+      </node>
+      <node id="36">
+        <label>limits</label>
+      </node>
+      <node id="4">
+        <label>memory</label>
+      </node>
+      <node id="44">
+        <label>numeric</label>
+      </node>
+      <node id="46">
+        <label>regex</label>
+      </node>
+      <node id="12">
+        <label>sdkddkver.h</label>
+      </node>
+      <node id="38">
+        <label>set</label>
+      </node>
+      <node id="34">
+        <label>sstream</label>
+      </node>
+      <node id="23">
+        <label>stdexcept</label>
+      </node>
+      <node id="22">
+        <label>string</label>
+      </node>
+      <node id="27">
+        <label>thread</label>
+      </node>
+      <node id="33">
+        <label>type_traits</label>
+      </node>
+      <node id="9">
+        <label>typeinfo</label>
+      </node>
+      <node id="51">
+        <label>unordered_map</label>
+      </node>
+      <node id="19">
+        <label>vector</label>
+      </node>
+      <node id="15">
+        <label>wrl.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="viewport_8h" kindref="compound">viewport.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;typeinfo&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="graphics_8h" kindref="compound">graphics.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="bindable__registry_8h" kindref="compound">bindable_registry.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dxgi__info__queue_8h" kindref="compound">dxgi_info_queue.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="classViewport_a474a87491be9dec1321c62c3ea286c3f_1a474a87491be9dec1321c62c3ea286c3f" refkind="member"><highlight class="normal"><ref refid="classViewport_a474a87491be9dec1321c62c3ea286c3f_1a474a87491be9dec1321c62c3ea286c3f" kindref="member">Viewport::Viewport</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classViewport" kindref="compound">Viewport</ref>{gfx,<sp/>static_cast&lt;const<sp/>float&gt;(gfx.getClientWidth()),<sp/>static_cast&lt;const<sp/>float&gt;(gfx.getClientHeight())}</highlight></codeline>
+<codeline lineno="11"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="classViewport_a499ea4194cd984db265cd3092495d0a0_1a499ea4194cd984db265cd3092495d0a0" refkind="member"><highlight class="normal"><ref refid="classViewport_a474a87491be9dec1321c62c3ea286c3f_1a474a87491be9dec1321c62c3ea286c3f" kindref="member">Viewport::Viewport</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>width,</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>height<sp/>)</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classViewport_a52cc9d4a0d56083a2d55391c2e8f6aeb_1a52cc9d4a0d56083a2d55391c2e8f6aeb" kindref="member">m_viewport</ref>.Width<sp/>=<sp/>width;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classViewport_a52cc9d4a0d56083a2d55391c2e8f6aeb_1a52cc9d4a0d56083a2d55391c2e8f6aeb" kindref="member">m_viewport</ref>.Height<sp/>=<sp/>height;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classViewport_a52cc9d4a0d56083a2d55391c2e8f6aeb_1a52cc9d4a0d56083a2d55391c2e8f6aeb" kindref="member">m_viewport</ref>.MinDepth<sp/>=<sp/>0.0f;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classViewport_a52cc9d4a0d56083a2d55391c2e8f6aeb_1a52cc9d4a0d56083a2d55391c2e8f6aeb" kindref="member">m_viewport</ref>.MaxDepth<sp/>=<sp/>1.0f;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classViewport_a52cc9d4a0d56083a2d55391c2e8f6aeb_1a52cc9d4a0d56083a2d55391c2e8f6aeb" kindref="member">m_viewport</ref>.TopLeftX<sp/>=<sp/>0.0f;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classViewport_a52cc9d4a0d56083a2d55391c2e8f6aeb_1a52cc9d4a0d56083a2d55391c2e8f6aeb" kindref="member">m_viewport</ref>.TopLeftY<sp/>=<sp/>0.0f;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classViewport_a93ebffad455c130aa536d25d660f00c9_1a93ebffad455c130aa536d25d660f00c9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classViewport_a93ebffad455c130aa536d25d660f00c9_1a93ebffad455c130aa536d25d660f00c9" kindref="member">Viewport::bind</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>getDeviceContext(<sp/>gfx<sp/>)-&gt;RSSetViewports(<sp/>1u,<sp/>&amp;m_viewport<sp/>);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dxgi__info__queue_8h_accf41747d77929c5a185f1f7d5c72263_1accf41747d77929c5a185f1f7d5c72263" kindref="member">DXGI_GET_QUEUE_INFO</ref>(<sp/>gfx<sp/>);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classViewport_a91bae7ee43b3c23480e8ab28c37d5c00_1a91bae7ee43b3c23480e8ab28c37d5c00" refkind="member"><highlight class="normal">D3D11_VIEWPORT<sp/><ref refid="classViewport_a91bae7ee43b3c23480e8ab28c37d5c00_1a91bae7ee43b3c23480e8ab28c37d5c00" kindref="member">Viewport::getViewport</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classViewport_a52cc9d4a0d56083a2d55391c2e8f6aeb_1a52cc9d4a0d56083a2d55391c2e8f6aeb" kindref="member">m_viewport</ref>;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classViewport_a5fc1b8745016d0e37de7d5991a31c771_1a5fc1b8745016d0e37de7d5991a31c771" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classViewport_a5fc1b8745016d0e37de7d5991a31c771_1a5fc1b8745016d0e37de7d5991a31c771" kindref="member">Viewport::getWidth</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classViewport_a52cc9d4a0d56083a2d55391c2e8f6aeb_1a52cc9d4a0d56083a2d55391c2e8f6aeb" kindref="member">m_viewport</ref>.Width;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="classViewport_a9581fd0fb1754c82ca6bccecc30434db_1a9581fd0fb1754c82ca6bccecc30434db" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classViewport_a9581fd0fb1754c82ca6bccecc30434db_1a9581fd0fb1754c82ca6bccecc30434db" kindref="member">Viewport::getHeight</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classViewport_a52cc9d4a0d56083a2d55391c2e8f6aeb_1a52cc9d4a0d56083a2d55391c2e8f6aeb" kindref="member">m_viewport</ref>.Height;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="classViewport_a1256dfd86a85d8bf84da6a0fec8b0ad6_1a1256dfd86a85d8bf84da6a0fec8b0ad6" refkind="member"><highlight class="normal">std::shared_ptr&lt;Viewport&gt;<sp/><ref refid="classViewport_a1256dfd86a85d8bf84da6a0fec8b0ad6_1a1256dfd86a85d8bf84da6a0fec8b0ad6" kindref="member">Viewport::fetch</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>width,</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>height<sp/>)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">std::string_literals;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBindableRegistry_a034568929d2dbcda2bf619e90d9fc68e_1a034568929d2dbcda2bf619e90d9fc68e" kindref="member">BindableRegistry::fetch&lt;Viewport&gt;</ref>(<sp/>gfx,<sp/>width,<sp/>height<sp/>);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="classViewport_a2f5826de45294e7db25bad7fdac2d37f_1a2f5826de45294e7db25bad7fdac2d37f" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classViewport_a2f5826de45294e7db25bad7fdac2d37f_1a2f5826de45294e7db25bad7fdac2d37f" kindref="member">Viewport::calcUid</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>width,</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>height<sp/>)</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">std::string_literals;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(<sp/><ref refid="classViewport_a474a87491be9dec1321c62c3ea286c3f_1a474a87491be9dec1321c62c3ea286c3f" kindref="member">Viewport</ref><sp/>).name()<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;#&quot;</highlight><highlight class="normal">s<sp/>+<sp/>std::to_string(<sp/>width<sp/>)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;x&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(<sp/>height<sp/>);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="classViewport_a4faf5c207d0070d7a73e970d78179f69_1a4faf5c207d0070d7a73e970d78179f69" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classViewport_a4faf5c207d0070d7a73e970d78179f69_1a4faf5c207d0070d7a73e970d78179f69" kindref="member">Viewport::getUid</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classViewport_a2f5826de45294e7db25bad7fdac2d37f_1a2f5826de45294e7db25bad7fdac2d37f" kindref="member">calcUid</ref>(<sp/><ref refid="classViewport_a52cc9d4a0d56083a2d55391c2e8f6aeb_1a52cc9d4a0d56083a2d55391c2e8f6aeb" kindref="member">m_viewport</ref>.Width,<sp/><ref refid="classViewport_a52cc9d4a0d56083a2d55391c2e8f6aeb_1a52cc9d4a0d56083a2d55391c2e8f6aeb" kindref="member">m_viewport</ref>.Height<sp/>);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/viewport.cpp"/>
+  </compounddef>
+</doxygen>

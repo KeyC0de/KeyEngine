@@ -1,0 +1,162 @@
+\doxysection{con\+::CBElement\+Const\+View Class Reference}
+\hypertarget{classcon_1_1CBElementConstView}{}\label{classcon_1_1CBElementConstView}\index{con::CBElementConstView@{con::CBElementConstView}}
+
+
+proxy class that is emitted when keying/indexing into a Buffer  
+
+
+
+
+{\ttfamily \#include $<$dynamic\+\_\+constant\+\_\+buffer.\+h$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classcon_1_1CBElementConstView_1_1Ptr}{Ptr}}
+\begin{DoxyCompactList}\small\item\em emitted when you use addressof on the Ref \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classcon_1_1CBElementConstView_a6ec6cf0ae7f6da181f4ccf2a58d0357a_a6ec6cf0ae7f6da181f4ccf2a58d0357a}{is\+Valid}} () const noexcept
+\begin{DoxyCompactList}\small\item\em check if the indexed element actually exists \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcon_1_1CBElementConstView}{CBElement\+Const\+View}} \mbox{\hyperlink{classcon_1_1CBElementConstView_a844290d59280911760030eaa2cfec0e1_a844290d59280911760030eaa2cfec0e1}{operator\mbox{[}$\,$\mbox{]}}} (const std\+::string \&key) const cond\+\_\+noex
+\begin{DoxyCompactList}\small\item\em key into the current element as a struct \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcon_1_1CBElementConstView}{CBElement\+Const\+View}} \mbox{\hyperlink{classcon_1_1CBElementConstView_a912de1ed3762cb7953a0e8e8a89efd4d_a912de1ed3762cb7953a0e8e8a89efd4d}{operator\mbox{[}$\,$\mbox{]}}} (size\+\_\+t index) const cond\+\_\+noex
+\item 
+\mbox{\hyperlink{classcon_1_1CBElementConstView_1_1Ptr}{Ptr}} \mbox{\hyperlink{classcon_1_1CBElementConstView_aab1438cf73e4b125b7102b84ffad2655_aab1438cf73e4b125b7102b84ffad2655}{operator\&}} () const cond\+\_\+noex
+\item 
+{\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{classcon_1_1CBElementConstView_a6f91bfd0a80d8bab26f29ed77d24a5e4_a6f91bfd0a80d8bab26f29ed77d24a5e4}{operator const T \&}} () const cond\+\_\+noex
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcon_1_1CBElementConstView_a16746e814709c72b7f9c1038f912dc2c_a16746e814709c72b7f9c1038f912dc2c}{CBElement\+Const\+View}} (const \mbox{\hyperlink{classcon_1_1CBElement}{CBElement}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classcon_1_1CBElementConstView_a6da4bed7fd7719d277e8bad9b8951268_a6da4bed7fd7719d277e8bad9b8951268}{p\+Layout}}, const char \texorpdfstring{$\ast$}{*}p\+Bytes, size\+\_\+t offset) noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{classcon_1_1CBElementConstView_a1e0952b5880027af67784d3e179e361f_a1e0952b5880027af67784d3e179e361f}{m\+\_\+array\+Offset}}
+\item 
+const \mbox{\hyperlink{classcon_1_1CBElement}{CBElement}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classcon_1_1CBElementConstView_a6da4bed7fd7719d277e8bad9b8951268_a6da4bed7fd7719d277e8bad9b8951268}{p\+Layout}}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classcon_1_1CBElementConstView_adb1503bdb941d7b733d1d3a6c2617540_adb1503bdb941d7b733d1d3a6c2617540}{m\+\_\+p}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classcon_1_1CBElementConstView_a7c5d2ec80c60f2e00fb000cbb6889351_a7c5d2ec80c60f2e00fb000cbb6889351}{CBuffer}}
+\item 
+class \mbox{\hyperlink{classcon_1_1CBElementConstView_a83e370b5ab0016fc84e62fa0b5553261_a83e370b5ab0016fc84e62fa0b5553261}{CBElement\+View}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+proxy class that is emitted when keying/indexing into a Buffer 
+
+=============================================================
+
+\begin{DoxyAuthor}{Author}
+Key\+C0de 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/08/21 19\+:51
+\end{DoxyDate}
+implement conversions/assignment that allows manipulation of the raw bytes of the Buffer.
+
+This version is const, only supports reading
+
+Refs can be further keyed/indexed to traverse the layout structure \doxysubsection*{m\+\_\+array\+Offset is the offset that is built up by indexing into arrays; it accumulates as you nest inside arrays deeper into the structure -\/ give it another name }
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classcon_1_1CBElementConstView_a16746e814709c72b7f9c1038f912dc2c_a16746e814709c72b7f9c1038f912dc2c}\index{con::CBElementConstView@{con::CBElementConstView}!CBElementConstView@{CBElementConstView}}
+\index{CBElementConstView@{CBElementConstView}!con::CBElementConstView@{con::CBElementConstView}}
+\doxysubsubsection{\texorpdfstring{CBElementConstView()}{CBElementConstView()}}
+{\footnotesize\ttfamily \label{classcon_1_1CBElementConstView_a16746e814709c72b7f9c1038f912dc2c_a16746e814709c72b7f9c1038f912dc2c} 
+con\+::\+CBElement\+Const\+View\+::\+CBElement\+Const\+View (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classcon_1_1CBElement}{CBElement}} \texorpdfstring{$\ast$}{*}}]{p\+Layout}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{p\+Bytes}{, }\item[{size\+\_\+t}]{offset}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcon_1_1CBElementConstView_a6ec6cf0ae7f6da181f4ccf2a58d0357a_a6ec6cf0ae7f6da181f4ccf2a58d0357a}\index{con::CBElementConstView@{con::CBElementConstView}!isValid@{isValid}}
+\index{isValid@{isValid}!con::CBElementConstView@{con::CBElementConstView}}
+\doxysubsubsection{\texorpdfstring{isValid()}{isValid()}}
+{\footnotesize\ttfamily \label{classcon_1_1CBElementConstView_a6ec6cf0ae7f6da181f4ccf2a58d0357a_a6ec6cf0ae7f6da181f4ccf2a58d0357a} 
+bool con\+::\+CBElement\+Const\+View\+::is\+Valid (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+check if the indexed element actually exists 
+
+this is possible because if you key into a Struct with a nonexistent key
+
+it will still return an Empty \doxylink{classcon_1_1CBElement}{CBElement} that will enable this test, but will not enable any other kind of access \Hypertarget{classcon_1_1CBElementConstView_a6f91bfd0a80d8bab26f29ed77d24a5e4_a6f91bfd0a80d8bab26f29ed77d24a5e4}\index{con::CBElementConstView@{con::CBElementConstView}!operator const T \&@{operator const T \&}}
+\index{operator const T \&@{operator const T \&}!con::CBElementConstView@{con::CBElementConstView}}
+\doxysubsubsection{\texorpdfstring{operator const T \&()}{operator const T \&()}}
+{\footnotesize\ttfamily \label{classcon_1_1CBElementConstView_a6f91bfd0a80d8bab26f29ed77d24a5e4_a6f91bfd0a80d8bab26f29ed77d24a5e4} 
+template$<$typename T $>$ \\
+con\+::\+CBElement\+Const\+View\+::operator const T \& (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classcon_1_1CBElementConstView_aab1438cf73e4b125b7102b84ffad2655_aab1438cf73e4b125b7102b84ffad2655}\index{con::CBElementConstView@{con::CBElementConstView}!operator\&@{operator\&}}
+\index{operator\&@{operator\&}!con::CBElementConstView@{con::CBElementConstView}}
+\doxysubsubsection{\texorpdfstring{operator\&()}{operator\&()}}
+{\footnotesize\ttfamily \label{classcon_1_1CBElementConstView_aab1438cf73e4b125b7102b84ffad2655_aab1438cf73e4b125b7102b84ffad2655} 
+\mbox{\hyperlink{classcon_1_1CBElementConstView_1_1Ptr}{CBElement\+Const\+View\+::\+Ptr}} con\+::\+CBElement\+Const\+View\+::operator\& (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classcon_1_1CBElementConstView_a844290d59280911760030eaa2cfec0e1_a844290d59280911760030eaa2cfec0e1}\index{con::CBElementConstView@{con::CBElementConstView}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!con::CBElementConstView@{con::CBElementConstView}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classcon_1_1CBElementConstView_a844290d59280911760030eaa2cfec0e1_a844290d59280911760030eaa2cfec0e1} 
+\mbox{\hyperlink{classcon_1_1CBElementConstView}{CBElement\+Const\+View}} con\+::\+CBElement\+Const\+View\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key}{}\end{DoxyParamCaption}) const}
+
+
+
+key into the current element as a struct 
+
+\Hypertarget{classcon_1_1CBElementConstView_a912de1ed3762cb7953a0e8e8a89efd4d_a912de1ed3762cb7953a0e8e8a89efd4d}\index{con::CBElementConstView@{con::CBElementConstView}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!con::CBElementConstView@{con::CBElementConstView}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classcon_1_1CBElementConstView_a912de1ed3762cb7953a0e8e8a89efd4d_a912de1ed3762cb7953a0e8e8a89efd4d} 
+\mbox{\hyperlink{classcon_1_1CBElementConstView}{CBElement\+Const\+View}} con\+::\+CBElement\+Const\+View\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index}{}\end{DoxyParamCaption}) const}
+
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{classcon_1_1CBElementConstView_a83e370b5ab0016fc84e62fa0b5553261_a83e370b5ab0016fc84e62fa0b5553261}\index{con::CBElementConstView@{con::CBElementConstView}!CBElementView@{CBElementView}}
+\index{CBElementView@{CBElementView}!con::CBElementConstView@{con::CBElementConstView}}
+\doxysubsubsection{\texorpdfstring{CBElementView}{CBElementView}}
+{\footnotesize\ttfamily \label{classcon_1_1CBElementConstView_a83e370b5ab0016fc84e62fa0b5553261_a83e370b5ab0016fc84e62fa0b5553261} 
+friend class \mbox{\hyperlink{classcon_1_1CBElementView}{CBElement\+View}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+\Hypertarget{classcon_1_1CBElementConstView_a7c5d2ec80c60f2e00fb000cbb6889351_a7c5d2ec80c60f2e00fb000cbb6889351}\index{con::CBElementConstView@{con::CBElementConstView}!CBuffer@{CBuffer}}
+\index{CBuffer@{CBuffer}!con::CBElementConstView@{con::CBElementConstView}}
+\doxysubsubsection{\texorpdfstring{CBuffer}{CBuffer}}
+{\footnotesize\ttfamily \label{classcon_1_1CBElementConstView_a7c5d2ec80c60f2e00fb000cbb6889351_a7c5d2ec80c60f2e00fb000cbb6889351} 
+friend class \mbox{\hyperlink{classcon_1_1CBuffer}{CBuffer}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classcon_1_1CBElementConstView_a1e0952b5880027af67784d3e179e361f_a1e0952b5880027af67784d3e179e361f}\index{con::CBElementConstView@{con::CBElementConstView}!m\_arrayOffset@{m\_arrayOffset}}
+\index{m\_arrayOffset@{m\_arrayOffset}!con::CBElementConstView@{con::CBElementConstView}}
+\doxysubsubsection{\texorpdfstring{m\_arrayOffset}{m\_arrayOffset}}
+{\footnotesize\ttfamily \label{classcon_1_1CBElementConstView_a1e0952b5880027af67784d3e179e361f_a1e0952b5880027af67784d3e179e361f} 
+size\+\_\+t con\+::\+CBElement\+Const\+View\+::m\+\_\+array\+Offset\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcon_1_1CBElementConstView_adb1503bdb941d7b733d1d3a6c2617540_adb1503bdb941d7b733d1d3a6c2617540}\index{con::CBElementConstView@{con::CBElementConstView}!m\_p@{m\_p}}
+\index{m\_p@{m\_p}!con::CBElementConstView@{con::CBElementConstView}}
+\doxysubsubsection{\texorpdfstring{m\_p}{m\_p}}
+{\footnotesize\ttfamily \label{classcon_1_1CBElementConstView_adb1503bdb941d7b733d1d3a6c2617540_adb1503bdb941d7b733d1d3a6c2617540} 
+const char\texorpdfstring{$\ast$}{*} con\+::\+CBElement\+Const\+View\+::m\+\_\+p\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcon_1_1CBElementConstView_a6da4bed7fd7719d277e8bad9b8951268_a6da4bed7fd7719d277e8bad9b8951268}\index{con::CBElementConstView@{con::CBElementConstView}!pLayout@{pLayout}}
+\index{pLayout@{pLayout}!con::CBElementConstView@{con::CBElementConstView}}
+\doxysubsubsection{\texorpdfstring{pLayout}{pLayout}}
+{\footnotesize\ttfamily \label{classcon_1_1CBElementConstView_a6da4bed7fd7719d277e8bad9b8951268_a6da4bed7fd7719d277e8bad9b8951268} 
+const \mbox{\hyperlink{classcon_1_1CBElement}{CBElement}}\texorpdfstring{$\ast$}{*} con\+::\+CBElement\+Const\+View\+::p\+Layout\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{dynamic__constant__buffer_8h}{dynamic\+\_\+constant\+\_\+buffer.\+h}}\item 
+src/\mbox{\hyperlink{dynamic__constant__buffer_8cpp}{dynamic\+\_\+constant\+\_\+buffer.\+cpp}}\end{DoxyCompactItemize}

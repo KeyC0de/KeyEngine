@@ -1,0 +1,516 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="dxgi__info__queue_8h" kind="file" language="C++">
+    <compoundname>dxgi_info_queue.h</compoundname>
+    <includes local="no">vector</includes>
+    <includes local="no">string</includes>
+    <includes local="no">dxgidebug.h</includes>
+    <includes local="no">algorithm</includes>
+    <includes refid="console_8h" local="yes">console.h</includes>
+    <includes refid="key__wrl_8h" local="yes">key_wrl.h</includes>
+    <includedby refid="constant__buffer_8h" local="yes">inc/constant_buffer.h</includedby>
+    <includedby refid="blend__state_8cpp" local="yes">src/blend_state.cpp</includedby>
+    <includedby refid="constant__buffer__ex_8cpp" local="yes">src/constant_buffer_ex.cpp</includedby>
+    <includedby refid="cube__texture_8cpp" local="yes">src/cube_texture.cpp</includedby>
+    <includedby refid="depth__stencil__state_8cpp" local="yes">src/depth_stencil_state.cpp</includedby>
+    <includedby refid="depth__stencil__view_8cpp" local="yes">src/depth_stencil_view.cpp</includedby>
+    <includedby refid="dxgi__info__queue_8cpp" local="yes">src/dxgi_info_queue.cpp</includedby>
+    <includedby refid="index__buffer_8cpp" local="yes">src/index_buffer.cpp</includedby>
+    <includedby refid="input__layout_8cpp" local="yes">src/input_layout.cpp</includedby>
+    <includedby refid="job_8cpp" local="yes">src/job.cpp</includedby>
+    <includedby refid="pixel__shader_8cpp" local="yes">src/pixel_shader.cpp</includedby>
+    <includedby refid="primitive__topology_8cpp" local="yes">src/primitive_topology.cpp</includedby>
+    <includedby refid="rasterizer__state_8cpp" local="yes">src/rasterizer_state.cpp</includedby>
+    <includedby refid="render__target_8cpp" local="yes">src/render_target.cpp</includedby>
+    <includedby refid="texture_8cpp" local="yes">src/texture.cpp</includedby>
+    <includedby refid="texture__sampler__state_8cpp" local="yes">src/texture_sampler_state.cpp</includedby>
+    <includedby refid="transform__vscb_8cpp" local="yes">src/transform_vscb.cpp</includedby>
+    <includedby refid="vertex__buffer_8cpp" local="yes">src/vertex_buffer.cpp</includedby>
+    <includedby refid="vertex__shader_8cpp" local="yes">src/vertex_shader.cpp</includedby>
+    <includedby refid="viewport_8cpp" local="yes">src/viewport.cpp</includedby>
+    <incdepgraph>
+      <node id="6">
+        <label>console.h</label>
+        <link refid="console_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/dxgi_info_queue.h</label>
+        <link refid="dxgi__info__queue_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>key_wrl.h</label>
+        <link refid="key__wrl_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="7">
+        <label>winner.h</label>
+        <link refid="winner_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>Windows.h</label>
+      </node>
+      <node id="5">
+        <label>algorithm</label>
+      </node>
+      <node id="4">
+        <label>dxgidebug.h</label>
+      </node>
+      <node id="8">
+        <label>sdkddkver.h</label>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+      <node id="2">
+        <label>vector</label>
+      </node>
+      <node id="12">
+        <label>wrl.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>inc/constant_buffer.h</label>
+        <link refid="constant__buffer_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/dxgi_info_queue.h</label>
+        <link refid="dxgi__info__queue_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>inc/shadow_pass.h</label>
+        <link refid="shadow__pass_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>inc/sky_vscb.h</label>
+        <link refid="sky__vscb_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/SHADOW_PASS.CPP</label>
+        <link refid="SHADOW__PASS_8CPP"/>
+      </node>
+      <node id="14">
+        <label>src/blend_state.cpp</label>
+        <link refid="blend__state_8cpp"/>
+      </node>
+      <node id="10">
+        <label>src/camera_frustum.cpp</label>
+        <link refid="camera__frustum_8cpp"/>
+      </node>
+      <node id="11">
+        <label>src/camera_widget.cpp</label>
+        <link refid="camera__widget_8cpp"/>
+      </node>
+      <node id="15">
+        <label>src/constant_buffer_ex.cpp</label>
+        <link refid="constant__buffer__ex_8cpp"/>
+      </node>
+      <node id="16">
+        <label>src/cube_texture.cpp</label>
+        <link refid="cube__texture_8cpp"/>
+      </node>
+      <node id="17">
+        <label>src/depth_stencil_state.cpp</label>
+        <link refid="depth__stencil__state_8cpp"/>
+      </node>
+      <node id="18">
+        <label>src/depth_stencil_view.cpp</label>
+        <link refid="depth__stencil__view_8cpp"/>
+      </node>
+      <node id="19">
+        <label>src/dxgi_info_queue.cpp</label>
+        <link refid="dxgi__info__queue_8cpp"/>
+      </node>
+      <node id="20">
+        <label>src/index_buffer.cpp</label>
+        <link refid="index__buffer_8cpp"/>
+      </node>
+      <node id="21">
+        <label>src/input_layout.cpp</label>
+        <link refid="input__layout_8cpp"/>
+      </node>
+      <node id="22">
+        <label>src/job.cpp</label>
+        <link refid="job_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/light_source.cpp</label>
+        <link refid="light__source_8cpp"/>
+      </node>
+      <node id="23">
+        <label>src/pixel_shader.cpp</label>
+        <link refid="pixel__shader_8cpp"/>
+      </node>
+      <node id="24">
+        <label>src/primitive_topology.cpp</label>
+        <link refid="primitive__topology_8cpp"/>
+      </node>
+      <node id="25">
+        <label>src/rasterizer_state.cpp</label>
+        <link refid="rasterizer__state_8cpp"/>
+      </node>
+      <node id="26">
+        <label>src/render_target.cpp</label>
+        <link refid="render__target_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/renderer.cpp</label>
+        <link refid="renderer_8cpp"/>
+      </node>
+      <node id="8">
+        <label>src/sky_pass.cpp</label>
+        <link refid="sky__pass_8cpp"/>
+      </node>
+      <node id="9">
+        <label>src/sky_vscb.cpp</label>
+        <link refid="sky__vscb_8cpp"/>
+      </node>
+      <node id="12">
+        <label>src/terrain.cpp</label>
+        <link refid="terrain_8cpp"/>
+      </node>
+      <node id="27">
+        <label>src/texture.cpp</label>
+        <link refid="texture_8cpp"/>
+      </node>
+      <node id="28">
+        <label>src/texture_sampler_state.cpp</label>
+        <link refid="texture__sampler__state_8cpp"/>
+      </node>
+      <node id="13">
+        <label>src/transform_vscb.cpp</label>
+        <link refid="transform__vscb_8cpp"/>
+      </node>
+      <node id="29">
+        <label>src/vertex_buffer.cpp</label>
+        <link refid="vertex__buffer_8cpp"/>
+      </node>
+      <node id="30">
+        <label>src/vertex_shader.cpp</label>
+        <link refid="vertex__shader_8cpp"/>
+      </node>
+      <node id="31">
+        <label>src/viewport.cpp</label>
+        <link refid="viewport_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classDxgiInfoQueue" prot="public">DxgiInfoQueue</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="dxgi__info__queue_8h_accf41747d77929c5a185f1f7d5c72263_1accf41747d77929c5a185f1f7d5c72263" prot="public" static="no">
+        <name>DXGI_GET_QUEUE_INFO</name>
+        <initializer>(void)0;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dxgi_info_queue.h" line="72" column="11" bodyfile="inc/dxgi_info_queue.h" bodystart="72" bodyend="-1"/>
+        <referencedby refid="classTexture_a0331ea0fa1111565a77e34930527aa9f_1a0331ea0fa1111565a77e34930527aa9f" compoundref="texture_8cpp" startline="14" endline="62">Texture::Texture</referencedby>
+        <referencedby refid="classBlendState_a40b232bc0e513ab020aa07a29a66558a_1a40b232bc0e513ab020aa07a29a66558a" compoundref="blend__state_8cpp" startline="92" endline="96">BlendState::bind</referencedby>
+        <referencedby refid="classCubeTexture_ae6e0e78b260faa09a6425a582a10139a_1ae6e0e78b260faa09a6425a582a10139a" compoundref="cube__texture_8cpp" startline="62" endline="66">CubeTexture::bind</referencedby>
+        <referencedby refid="classCubeTextureArrayOffscreenDS_a92834d4494000e3e497f9579e0aee683_1a92834d4494000e3e497f9579e0aee683" compoundref="cube__texture_8cpp" startline="234" endline="238">CubeTextureArrayOffscreenDS::bind</referencedby>
+        <referencedby refid="classCubeTextureOffscreenDS_a4a7f66df5a6a92537d31aa462a17343a_1a4a7f66df5a6a92537d31aa462a17343a" compoundref="cube__texture_8cpp" startline="173" endline="177">CubeTextureOffscreenDS::bind</referencedby>
+        <referencedby refid="classCubeTextureOffscreenRT_a86463c3c6cca882c031fcc24ab95c1ff_1a86463c3c6cca882c031fcc24ab95c1ff" compoundref="cube__texture_8cpp" startline="127" endline="131">CubeTextureOffscreenRT::bind</referencedby>
+        <referencedby refid="classDepthStencilShaderInput_acd00dc6db5f67213bc2337c9d94deadc_1acd00dc6db5f67213bc2337c9d94deadc" compoundref="depth__stencil__view_8cpp" startline="322" endline="326">DepthStencilShaderInput::bind</referencedby>
+        <referencedby refid="classDepthStencilState_a3484137e582f9cc5a3e76103f39b5086_1a3484137e582f9cc5a3e76103f39b5086" compoundref="depth__stencil__state_8cpp" startline="116" endline="120">DepthStencilState::bind</referencedby>
+        <referencedby refid="classIndexBuffer_a4ae75057513853f7444a8e37a3af2bb0_1a4ae75057513853f7444a8e37a3af2bb0" compoundref="index__buffer_8cpp" startline="37" endline="41">IndexBuffer::bind</referencedby>
+        <referencedby refid="classInputLayout_a5de9afbd3d6d1324ac4a26f04365b69e_1a5de9afbd3d6d1324ac4a26f04365b69e" compoundref="input__layout_8cpp" startline="27" endline="31">InputLayout::bind</referencedby>
+        <referencedby refid="classIPixelShaderConstantBufferEx_afbeb8c06fb6e939ea570cf694c0e65e4_1afbeb8c06fb6e939ea570cf694c0e65e4" compoundref="constant__buffer__ex_8cpp" startline="64" endline="68">IPixelShaderConstantBufferEx::bind</referencedby>
+        <referencedby refid="classIVertexShaderConstantBufferEx_aa013256c6bc586819dcec2f0faec8222_1aa013256c6bc586819dcec2f0faec8222" compoundref="constant__buffer__ex_8cpp" startline="57" endline="61">IVertexShaderConstantBufferEx::bind</referencedby>
+        <referencedby refid="classPixelShader_a141efa3b56ed6b9b0337a03feada0835_1a141efa3b56ed6b9b0337a03feada0835" compoundref="pixel__shader_8cpp" startline="22" endline="26">PixelShader::bind</referencedby>
+        <referencedby refid="classPixelShaderConstantBuffer_ae2388f80f75a3a53b53c92d906b992d0_1ae2388f80f75a3a53b53c92d906b992d0" compoundref="constant__buffer_8h" startline="192" endline="196">PixelShaderConstantBuffer&lt; CB &gt;::bind</referencedby>
+        <referencedby refid="classPixelShaderNull_a0ee1bc0e3d0781b00140dfc48d990e39_1a0ee1bc0e3d0781b00140dfc48d990e39" compoundref="pixel__shader_8cpp" startline="56" endline="60">PixelShaderNull::bind</referencedby>
+        <referencedby refid="classPrimitiveTopology_a9851a5da7d713bdc742f736437fc0ec6_1a9851a5da7d713bdc742f736437fc0ec6" compoundref="primitive__topology_8cpp" startline="18" endline="22">PrimitiveTopology::bind</referencedby>
+        <referencedby refid="classRasterizerState_a5c99858a872079af1812b79e9b196b51_1a5c99858a872079af1812b79e9b196b51" compoundref="rasterizer__state_8cpp" startline="60" endline="64">RasterizerState::bind</referencedby>
+        <referencedby refid="classRenderTargetShaderInput_a14b6d1f595c10bb27325f061953250c7_1a14b6d1f595c10bb27325f061953250c7" compoundref="render__target_8cpp" startline="249" endline="253">RenderTargetShaderInput::bind</referencedby>
+        <referencedby refid="classTexture_a352000d68cf402ecbc94f2c802a80c48_1a352000d68cf402ecbc94f2c802a80c48" compoundref="texture_8cpp" startline="125" endline="133">Texture::bind</referencedby>
+        <referencedby refid="classTextureArrayOffscreenDS_a1f30c7f8c810f401124ff8a9d9326b7f_1a1f30c7f8c810f401124ff8a9d9326b7f" compoundref="texture_8cpp" startline="319" endline="323">TextureArrayOffscreenDS::bind</referencedby>
+        <referencedby refid="classTextureOffscreenDS_a7d8959140611d45c7178cd42c6e524ba_1a7d8959140611d45c7178cd42c6e524ba" compoundref="texture_8cpp" startline="260" endline="264">TextureOffscreenDS::bind</referencedby>
+        <referencedby refid="classTextureOffscreenRT_a49c465d1bd478ec9f0341828caf99caf_1a49c465d1bd478ec9f0341828caf99caf" compoundref="texture_8cpp" startline="212" endline="216">TextureOffscreenRT::bind</referencedby>
+        <referencedby refid="classTextureSamplerState_aea9aa478070bee5081762a09b8e6fac1_1aea9aa478070bee5081762a09b8e6fac1" compoundref="texture__sampler__state_8cpp" startline="118" endline="122">TextureSamplerState::bind</referencedby>
+        <referencedby refid="classVertexBuffer_a7d0b03a75e756fa8c632d31dcc2f81ab_1a7d0b03a75e756fa8c632d31dcc2f81ab" compoundref="vertex__buffer_8cpp" startline="44" endline="49">VertexBuffer::bind</referencedby>
+        <referencedby refid="classVertexShader_a733ad39c1c6e22054e04b6d01c2cb82b_1a733ad39c1c6e22054e04b6d01c2cb82b" compoundref="vertex__shader_8cpp" startline="22" endline="26">VertexShader::bind</referencedby>
+        <referencedby refid="classVertexShaderConstantBuffer_a8fd934cdf536ab8de284fb5ce1850a20_1a8fd934cdf536ab8de284fb5ce1850a20" compoundref="constant__buffer_8h" startline="122" endline="126">VertexShaderConstantBuffer&lt; CB &gt;::bind</referencedby>
+        <referencedby refid="classViewport_a93ebffad455c130aa536d25d660f00c9_1a93ebffad455c130aa536d25d660f00c9" compoundref="viewport_8cpp" startline="27" endline="31">Viewport::bind</referencedby>
+        <referencedby refid="classIDepthStencilView_a75916f855423f1737747566b136e1208_1a75916f855423f1737747566b136e1208" compoundref="depth__stencil__view_8cpp" startline="103" endline="110">IDepthStencilView::bindRenderSurface</referencedby>
+        <referencedby refid="classIRenderTargetView_a8b54221abc49585f6508352e3ba587f3_1a8b54221abc49585f6508352e3ba587f3" compoundref="render__target_8cpp" startline="90" endline="98">IRenderTargetView::bindRenderSurface</referencedby>
+        <referencedby refid="classIDepthStencilView_a6ca65a2cd33a548c011ea479c6a3ae1d_1a6ca65a2cd33a548c011ea479c6a3ae1d" compoundref="depth__stencil__view_8cpp" startline="125" endline="130">IDepthStencilView::clear</referencedby>
+        <referencedby refid="classIRenderTargetView_ae56a818f2dcc997ac2c45699f03dacbe_1ae56a818f2dcc997ac2c45699f03dacbe" compoundref="render__target_8cpp" startline="100" endline="105">IRenderTargetView::clear</referencedby>
+        <referencedby refid="classIDepthStencilView_a1662957998b0c724568daf3ac739bc27_1a1662957998b0c724568daf3ac739bc27" compoundref="depth__stencil__view_8cpp" startline="184" endline="255">IDepthStencilView::convertToBitmap</referencedby>
+        <referencedby refid="classIRenderTargetView_a60fc375522630853ea8f69b2f0c653ed_1a60fc375522630853ea8f69b2f0c653ed" compoundref="render__target_8cpp" startline="158" endline="190">IRenderTargetView::convertToBitmap</referencedby>
+        <referencedby refid="classIDepthStencilView_a59c87083dbbb991cc621dedcb4cbd58d_1a59c87083dbbb991cc621dedcb4cbd58d" compoundref="depth__stencil__view_8cpp" startline="150" endline="182">IDepthStencilView::createStagingTexture</referencedby>
+        <referencedby refid="classIRenderTargetView_a1399fd548f196216820ac8d19dd87621_1a1399fd548f196216820ac8d19dd87621" compoundref="render__target_8cpp" startline="122" endline="156">IRenderTargetView::createStagingTexture</referencedby>
+        <referencedby refid="classTexture_a9f0969925008410870590127fdf960ce_1a9f0969925008410870590127fdf960ce" compoundref="texture_8cpp" startline="96" endline="103">Texture::paintTextureWithBitmap</referencedby>
+        <referencedby refid="classren_1_1Job_a7904359dc487cfe80118ce58c7442381_1a7904359dc487cfe80118ce58c7442381" compoundref="job_8cpp" startline="19" endline="25">ren::Job::run</referencedby>
+        <referencedby refid="classIRenderTargetView_aa14b454e81f88129fc8737b6c7ba3c39_1aa14b454e81f88129fc8737b6c7ba3c39" compoundref="render__target_8cpp" startline="66" endline="70">IRenderTargetView::unbind</referencedby>
+        <referencedby refid="classIConstantBuffer_a01fb34eedba302e40cc4a4ad9889bcf3_1a01fb34eedba302e40cc4a4ad9889bcf3" compoundref="constant__buffer_8h" startline="71" endline="82">IConstantBuffer&lt; CB &gt;::update</referencedby>
+        <referencedby refid="classIConstantBufferEx_a6b89a10f5e7371ddf568346bdf980bbe_1a6b89a10f5e7371ddf568346bdf980bbe" compoundref="constant__buffer__ex_8cpp" startline="41" endline="54">IConstantBufferEx::update</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="dxgi__info__queue_8h_a2e9e35ee25f5be4f5b41b48b9d9b8b23_1a2e9e35ee25f5be4f5b41b48b9d9b8b23" prot="public" static="no">
+        <name>DXGI_GET_QUEUE_INFO_P</name>
+        <initializer>(void)0;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dxgi_info_queue.h" line="110" column="11" bodyfile="inc/dxgi_info_queue.h" bodystart="110" bodyend="-1"/>
+        <referencedby refid="classPixelShaderConstantBuffer_a1df01eba25d87e22ad771c2ade2ff6c5_1a1df01eba25d87e22ad771c2ade2ff6c5" compoundref="constant__buffer_8h" startline="228" endline="243">PixelShaderConstantBuffer&lt; CB &gt;::makeCopy</referencedby>
+        <referencedby refid="classVertexShaderConstantBuffer_a1ea067e61588936bf6140ad036683f6b_1a1ea067e61588936bf6140ad036683f6b" compoundref="constant__buffer_8h" startline="158" endline="173">VertexShaderConstantBuffer&lt; CB &gt;::makeCopy</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="dxgi__info__queue_8h_adc614cf54b03c9652582d9a16f387aff_1adc614cf54b03c9652582d9a16f387aff" prot="public" static="no">
+        <name>DXGI_GET_QUEUE_INFO_GFX</name>
+        <initializer>(void)0;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dxgi_info_queue.h" line="149" column="11" bodyfile="inc/dxgi_info_queue.h" bodystart="149" bodyend="-1"/>
+        <referencedby refid="classGraphics_a9a6ad2b28b7f765c6c7ed63b664754d8_1a9a6ad2b28b7f765c6c7ed63b664754d8" compoundref="graphics_8cpp" startline="719" endline="746">Graphics::bindBackBufferAsInput</referencedby>
+        <referencedby refid="classGraphics_a658256d93cbb6e78b8b0ecb319e38ad5_1a658256d93cbb6e78b8b0ecb319e38ad5" compoundref="graphics_8cpp" startline="454" endline="478">Graphics::clearShaderSlots</referencedby>
+        <referencedby refid="classGraphics_a3c4a1c6f6675b97cedf9a0f45901212d_1a3c4a1c6f6675b97cedf9a0f45901212d" compoundref="graphics_8cpp" startline="588" endline="592">Graphics::draw</referencedby>
+        <referencedby refid="classGraphics_a29fa45ba5e44f5e574e4d0c0298bd02b_1a29fa45ba5e44f5e574e4d0c0298bd02b" compoundref="graphics_8cpp" startline="594" endline="608">Graphics::drawIndexed</referencedby>
+        <referencedby refid="classGraphics_a1e53b789df983b36aedcc1357eae4bf8_1a1e53b789df983b36aedcc1357eae4bf8" compoundref="graphics_8cpp" startline="610" endline="625">Graphics::drawIndexedInstanced</referencedby>
+        <referencedby refid="classGraphics_aefe40c94ce078f84342864b959543c99_1aefe40c94ce078f84342864b959543c99" compoundref="graphics_8cpp" startline="548" endline="586">Graphics::present</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;dxgidebug.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="console_8h" kindref="compound">console.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="key__wrl_8h" kindref="compound">key_wrl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="classDxgiInfoQueue" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classDxgiInfoQueue" kindref="compound">DxgiInfoQueue</ref><sp/>final</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classNonCopyable" kindref="compound">NonCopyable</ref></highlight></codeline>
+<codeline lineno="22"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="23" refid="classDxgiInfoQueue_af4c8c1e80e3cae76b219754e5a0414a5_1af4c8c1e80e3cae76b219754e5a0414a5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DXGI_DEBUG_ID<sp/><ref refid="classDxgiInfoQueue_af4c8c1e80e3cae76b219754e5a0414a5_1af4c8c1e80e3cae76b219754e5a0414a5" kindref="member">s_msgProducer</ref><sp/>=<sp/>DXGI_DEBUG_ALL;</highlight></codeline>
+<codeline lineno="24" refid="classDxgiInfoQueue_a938cd2d3102fcdf2d019c03aaf871cbc_1a938cd2d3102fcdf2d019c03aaf871cbc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classDxgiInfoQueue_a938cd2d3102fcdf2d019c03aaf871cbc_1a938cd2d3102fcdf2d019c03aaf871cbc" kindref="member">m_index</ref><sp/>=<sp/>0u;</highlight></codeline>
+<codeline lineno="25" refid="classDxgiInfoQueue_af1c7a98bd242b5efdad64a2f0d11f952_1af1c7a98bd242b5efdad64a2f0d11f952" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Microsoft::WRL::ComPtr&lt;IDXGIInfoQueue&gt;<sp/><ref refid="classDxgiInfoQueue_af1c7a98bd242b5efdad64a2f0d11f952_1af1c7a98bd242b5efdad64a2f0d11f952" kindref="member">m_pDxgiInfoQueue</ref>;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDxgiInfoQueue_a7644b9ea0418efcb1589f4c05e243c48_1a7644b9ea0418efcb1589f4c05e243c48" kindref="member">DxgiInfoQueue</ref>();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classDxgiInfoQueue_ace09aa82678fd24ebe87df6b4f8f160d_1ace09aa82678fd24ebe87df6b4f8f160d" kindref="member">markQueueIndex</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">&gt;<sp/><ref refid="classDxgiInfoQueue_a62e99064151930158243a23579849967_1a62e99064151930158243a23579849967" kindref="member">getInfoMessages</ref>();</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>_DEBUG<sp/>&amp;&amp;<sp/>!defined<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>DXGI_GET_QUEUE_INFO(<sp/>gfx<sp/>)<sp/>\</highlight></codeline>
+<codeline lineno="39"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{\</highlight></codeline>
+<codeline lineno="40"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>KeyConsole<sp/>&amp;console<sp/>=<sp/>KeyConsole::getInstance();\</highlight></codeline>
+<codeline lineno="41"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>auto<sp/>&amp;messages<sp/>=<sp/>gfx.getInfoQueue().getInfoMessages();\</highlight></codeline>
+<codeline lineno="42"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(<sp/>!messages.empty()<sp/>)\</highlight></codeline>
+<codeline lineno="43"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{\</highlight></codeline>
+<codeline lineno="44"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>std::string<sp/>ignored_warnings[]<sp/>=\</highlight></codeline>
+<codeline lineno="45"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{\</highlight></codeline>
+<codeline lineno="46"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;ID3D11DeviceContext::DrawIndexed:<sp/>The<sp/>size<sp/>of<sp/>the<sp/>Constant<sp/>Buffer<sp/>at<sp/>slot<sp/>2<sp/>of<sp/>the<sp/>Vertex<sp/>Shader<sp/>unit<sp/>is<sp/>too<sp/>small&quot;,\</highlight></codeline>
+<codeline lineno="47"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;ID3D11DeviceContext::DrawIndexed:<sp/>The<sp/>size<sp/>of<sp/>the<sp/>Constant<sp/>Buffer<sp/>at<sp/>slot<sp/>2<sp/>of<sp/>the<sp/>Pixel<sp/>Shader<sp/>unit<sp/>is<sp/>too<sp/>small&quot;\</highlight></codeline>
+<codeline lineno="48"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};\</highlight></codeline>
+<codeline lineno="49"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>found_non_ignored_warnings<sp/>=<sp/>std::none_of(<sp/>messages.begin(),<sp/>messages.end(),<sp/>[&amp;ignored_warnings](const<sp/>std::string&amp;<sp/>message)\</highlight></codeline>
+<codeline lineno="50"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{\</highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(<sp/>const<sp/>std::string<sp/>&amp;ignored_warning<sp/>:<sp/>ignored_warnings<sp/>)\</highlight></codeline>
+<codeline lineno="52"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{\</highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(<sp/>message.find(ignored_warning)<sp/>!=<sp/>std::string::npos<sp/>)\</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{\</highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>true;\</highlight></codeline>
+<codeline lineno="56"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}\</highlight></codeline>
+<codeline lineno="57"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}\</highlight></codeline>
+<codeline lineno="58"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>false;\</highlight></codeline>
+<codeline lineno="59"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>);\</highlight></codeline>
+<codeline lineno="60"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(<sp/>found_non_ignored_warnings<sp/>)\</highlight></codeline>
+<codeline lineno="61"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{\</highlight></codeline>
+<codeline lineno="62"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(<sp/>const<sp/>auto<sp/>&amp;msg<sp/>:<sp/>messages<sp/>)\</highlight></codeline>
+<codeline lineno="63"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{\</highlight></codeline>
+<codeline lineno="64"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>console.log(<sp/>msg<sp/>+<sp/>&quot;\n&quot;<sp/>);\</highlight></codeline>
+<codeline lineno="65"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}\</highlight></codeline>
+<codeline lineno="66"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__debugbreak();\</highlight></codeline>
+<codeline lineno="67"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}\</highlight></codeline>
+<codeline lineno="68"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}\</highlight></codeline>
+<codeline lineno="69"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gfx.getInfoQueue().markQueueIndex();\</highlight></codeline>
+<codeline lineno="70"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="dxgi__info__queue_8h_accf41747d77929c5a185f1f7d5c72263_1accf41747d77929c5a185f1f7d5c72263" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>DXGI_GET_QUEUE_INFO<sp/>(void)0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>_DEBUG<sp/>&amp;&amp;<sp/>!defined<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>DXGI_GET_QUEUE_INFO_P(<sp/>gfx<sp/>)<sp/>\</highlight></codeline>
+<codeline lineno="77"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{\</highlight></codeline>
+<codeline lineno="78"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>KeyConsole<sp/>&amp;console<sp/>=<sp/>KeyConsole::getInstance();\</highlight></codeline>
+<codeline lineno="79"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>auto<sp/>&amp;messages<sp/>=<sp/>gfx-&gt;getInfoQueue().getInfoMessages();\</highlight></codeline>
+<codeline lineno="80"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(<sp/>!messages.empty()<sp/>)\</highlight></codeline>
+<codeline lineno="81"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{\</highlight></codeline>
+<codeline lineno="82"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>std::string<sp/>ignored_warnings[]<sp/>=\</highlight></codeline>
+<codeline lineno="83"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{\</highlight></codeline>
+<codeline lineno="84"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;ID3D11DeviceContext::DrawIndexed:<sp/>The<sp/>size<sp/>of<sp/>the<sp/>Constant<sp/>Buffer<sp/>at<sp/>slot<sp/>2<sp/>of<sp/>the<sp/>Vertex<sp/>Shader<sp/>unit<sp/>is<sp/>too<sp/>small&quot;,\</highlight></codeline>
+<codeline lineno="85"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;ID3D11DeviceContext::DrawIndexed:<sp/>The<sp/>size<sp/>of<sp/>the<sp/>Constant<sp/>Buffer<sp/>at<sp/>slot<sp/>2<sp/>of<sp/>the<sp/>Pixel<sp/>Shader<sp/>unit<sp/>is<sp/>too<sp/>small&quot;\</highlight></codeline>
+<codeline lineno="86"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};\</highlight></codeline>
+<codeline lineno="87"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>found_non_ignored_warnings<sp/>=<sp/>std::none_of(<sp/>messages.begin(),<sp/>messages.end(),<sp/>[&amp;ignored_warnings](const<sp/>std::string&amp;<sp/>message)\</highlight></codeline>
+<codeline lineno="88"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{\</highlight></codeline>
+<codeline lineno="89"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(<sp/>const<sp/>std::string<sp/>&amp;ignored_warning<sp/>:<sp/>ignored_warnings<sp/>)\</highlight></codeline>
+<codeline lineno="90"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{\</highlight></codeline>
+<codeline lineno="91"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(<sp/>message.find(ignored_warning)<sp/>!=<sp/>std::string::npos<sp/>)\</highlight></codeline>
+<codeline lineno="92"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{\</highlight></codeline>
+<codeline lineno="93"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>true;\</highlight></codeline>
+<codeline lineno="94"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}\</highlight></codeline>
+<codeline lineno="95"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}\</highlight></codeline>
+<codeline lineno="96"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>false;\</highlight></codeline>
+<codeline lineno="97"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>);\</highlight></codeline>
+<codeline lineno="98"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(<sp/>found_non_ignored_warnings<sp/>)\</highlight></codeline>
+<codeline lineno="99"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{\</highlight></codeline>
+<codeline lineno="100"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(<sp/>const<sp/>auto<sp/>&amp;msg<sp/>:<sp/>messages<sp/>)\</highlight></codeline>
+<codeline lineno="101"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{\</highlight></codeline>
+<codeline lineno="102"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>console.log(<sp/>msg<sp/>+<sp/>&quot;\n&quot;<sp/>);\</highlight></codeline>
+<codeline lineno="103"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}\</highlight></codeline>
+<codeline lineno="104"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}\</highlight></codeline>
+<codeline lineno="105"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__debugbreak();\</highlight></codeline>
+<codeline lineno="106"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}\</highlight></codeline>
+<codeline lineno="107"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gfx-&gt;getInfoQueue().markQueueIndex();\</highlight></codeline>
+<codeline lineno="108"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110" refid="dxgi__info__queue_8h_a2e9e35ee25f5be4f5b41b48b9d9b8b23_1a2e9e35ee25f5be4f5b41b48b9d9b8b23" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>DXGI_GET_QUEUE_INFO_P<sp/>(void)0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="comment">//<sp/>this<sp/>define<sp/>is<sp/>only<sp/>to<sp/>be<sp/>used<sp/>by<sp/>the<sp/>graphics<sp/>class</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>_DEBUG<sp/>&amp;&amp;<sp/>!defined<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>DXGI_GET_QUEUE_INFO_GFX<sp/>\</highlight></codeline>
+<codeline lineno="116"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{\</highlight></codeline>
+<codeline lineno="117"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>KeyConsole<sp/>&amp;console<sp/>=<sp/>KeyConsole::getInstance();\</highlight></codeline>
+<codeline lineno="118"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>auto<sp/>&amp;messages<sp/>=<sp/>m_infoQueue.getInfoMessages();\</highlight></codeline>
+<codeline lineno="119"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(<sp/>!messages.empty()<sp/>)\</highlight></codeline>
+<codeline lineno="120"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{\</highlight></codeline>
+<codeline lineno="121"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>std::string<sp/>ignored_warnings[]<sp/>=\</highlight></codeline>
+<codeline lineno="122"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{\</highlight></codeline>
+<codeline lineno="123"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;ID3D11DeviceContext::DrawIndexed:<sp/>The<sp/>size<sp/>of<sp/>the<sp/>Constant<sp/>Buffer<sp/>at<sp/>slot<sp/>2<sp/>of<sp/>the<sp/>Vertex<sp/>Shader<sp/>unit<sp/>is<sp/>too<sp/>small&quot;,\</highlight></codeline>
+<codeline lineno="124"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;ID3D11DeviceContext::DrawIndexed:<sp/>The<sp/>size<sp/>of<sp/>the<sp/>Constant<sp/>Buffer<sp/>at<sp/>slot<sp/>2<sp/>of<sp/>the<sp/>Pixel<sp/>Shader<sp/>unit<sp/>is<sp/>too<sp/>small&quot;\</highlight></codeline>
+<codeline lineno="125"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};\</highlight></codeline>
+<codeline lineno="126"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>found_non_ignored_warnings<sp/>=<sp/>std::none_of(<sp/>messages.begin(),<sp/>messages.end(),<sp/>[&amp;ignored_warnings](const<sp/>std::string&amp;<sp/>message)\</highlight></codeline>
+<codeline lineno="127"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{\</highlight></codeline>
+<codeline lineno="128"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(<sp/>const<sp/>std::string<sp/>&amp;ignored_warning<sp/>:<sp/>ignored_warnings<sp/>)\</highlight></codeline>
+<codeline lineno="129"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{\</highlight></codeline>
+<codeline lineno="130"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(<sp/>message.find(ignored_warning)<sp/>!=<sp/>std::string::npos<sp/>)\</highlight></codeline>
+<codeline lineno="131"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{\</highlight></codeline>
+<codeline lineno="132"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>true;\</highlight></codeline>
+<codeline lineno="133"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}\</highlight></codeline>
+<codeline lineno="134"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}\</highlight></codeline>
+<codeline lineno="135"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>false;\</highlight></codeline>
+<codeline lineno="136"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>);\</highlight></codeline>
+<codeline lineno="137"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(<sp/>found_non_ignored_warnings<sp/>)\</highlight></codeline>
+<codeline lineno="138"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{\</highlight></codeline>
+<codeline lineno="139"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(<sp/>const<sp/>auto<sp/>&amp;msg<sp/>:<sp/>messages<sp/>)\</highlight></codeline>
+<codeline lineno="140"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{\</highlight></codeline>
+<codeline lineno="141"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>console.log(<sp/>msg<sp/>+<sp/>&quot;\n&quot;<sp/>);\</highlight></codeline>
+<codeline lineno="142"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}\</highlight></codeline>
+<codeline lineno="143"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__debugbreak();\</highlight></codeline>
+<codeline lineno="144"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}\</highlight></codeline>
+<codeline lineno="145"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}\</highlight></codeline>
+<codeline lineno="146"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_infoQueue.markQueueIndex();\</highlight></codeline>
+<codeline lineno="147"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149" refid="dxgi__info__queue_8h_adc614cf54b03c9652582d9a16f387aff_1adc614cf54b03c9652582d9a16f387aff" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>DXGI_GET_QUEUE_INFO_GFX<sp/>(void)0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="inc/dxgi_info_queue.h"/>
+  </compounddef>
+</doxygen>

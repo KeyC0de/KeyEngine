@@ -1,0 +1,244 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classDepthStencilOutput" kind="class" language="C++" prot="public">
+    <compoundname>DepthStencilOutput</compoundname>
+    <basecompoundref refid="classIDepthStencilView" prot="public" virt="non-virtual">IDepthStencilView</basecompoundref>
+    <includes refid="depth__stencil__view_8h" local="no">depth_stencil_view.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classDepthStencilOutput_acfaa4e7f29e110fc44197165be0a2807_1acfaa4e7f29e110fc44197165be0a2807" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DepthStencilOutput::DepthStencilOutput</definition>
+        <argsstring>(Graphics &amp;gfx)</argsstring>
+        <name>DepthStencilOutput</name>
+        <qualifiedname>DepthStencilOutput::DepthStencilOutput</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/depth_stencil_view.h" line="71" column="1" bodyfile="src/depth_stencil_view.cpp" bodystart="329" bodyend="334"/>
+      </memberdef>
+      <memberdef kind="function" id="classDepthStencilOutput_ad228332c899ddde9b850356dab0d95f3_1ad228332c899ddde9b850356dab0d95f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DepthStencilOutput::DepthStencilOutput</definition>
+        <argsstring>(Graphics &amp;gfx, const unsigned width, const unsigned height)</argsstring>
+        <name>DepthStencilOutput</name>
+        <qualifiedname>DepthStencilOutput::DepthStencilOutput</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>height</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/depth_stencil_view.h" line="72" column="1" bodyfile="src/depth_stencil_view.cpp" bodystart="336" bodyend="343"/>
+      </memberdef>
+      <memberdef kind="function" id="classDepthStencilOutput_aa22068e5cedb9f09ee4a4b9108b772b6_1aa22068e5cedb9f09ee4a4b9108b772b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DepthStencilOutput::DepthStencilOutput</definition>
+        <argsstring>(Graphics &amp;gfx, ID3D11Texture2D *pTexture, const DepthStencilViewMode dsvMode, std::optional&lt; unsigned &gt; face)</argsstring>
+        <name>DepthStencilOutput</name>
+        <qualifiedname>DepthStencilOutput::DepthStencilOutput</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>ID3D11Texture2D *</type>
+          <declname>pTexture</declname>
+        </param>
+        <param>
+          <type>const <ref refid="texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_1a5aacc2000fea78d975de8fe06e3698f2" kindref="member">DepthStencilViewMode</ref></type>
+          <declname>dsvMode</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; unsigned &gt;</type>
+          <declname>face</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/depth_stencil_view.h" line="73" column="1" bodyfile="src/depth_stencil_view.cpp" bodystart="345" bodyend="353"/>
+      </memberdef>
+      <memberdef kind="function" id="classDepthStencilOutput_a41da368966c376688966c50b61871dd6_1a41da368966c376688966c50b61871dd6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DepthStencilOutput::DepthStencilOutput</definition>
+        <argsstring>(Graphics &amp;gfx, ID3D11Texture2D *pTexture, const DepthStencilViewMode dsvMode, const int textureArrayIndex, std::optional&lt; unsigned &gt; face)</argsstring>
+        <name>DepthStencilOutput</name>
+        <qualifiedname>DepthStencilOutput::DepthStencilOutput</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>ID3D11Texture2D *</type>
+          <declname>pTexture</declname>
+        </param>
+        <param>
+          <type>const <ref refid="texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_1a5aacc2000fea78d975de8fe06e3698f2" kindref="member">DepthStencilViewMode</ref></type>
+          <declname>dsvMode</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>textureArrayIndex</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; unsigned &gt;</type>
+          <declname>face</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/depth_stencil_view.h" line="74" column="1" bodyfile="src/depth_stencil_view.cpp" bodystart="355" bodyend="364"/>
+      </memberdef>
+      <memberdef kind="function" id="classDepthStencilOutput_a5bd0b7547e6cd08adfae998cca034d8a_1a5bd0b7547e6cd08adfae998cca034d8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void DepthStencilOutput::bind</definition>
+        <argsstring>(Graphics &amp;gfx) cond_noex override</argsstring>
+        <name>bind</name>
+        <qualifiedname>DepthStencilOutput::bind</qualifiedname>
+        <reimplements refid="classIBindable_add4560f78e76629ee81ba701ba1052e1_1add4560f78e76629ee81ba701ba1052e1">bind</reimplements>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+<para>bind graphics resource to a certain stage of the graphics pipeline </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/depth_stencil_view.h" line="76" column="6" bodyfile="src/depth_stencil_view.cpp" bodystart="366" bodyend="369"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>depth stencil view used for Output only (offscreen/RTT/back buffer rendering)  </para>
+    </briefdescription>
+    <detaileddescription>
+<para>=============================================================</para>
+<para><simplesect kind="author"><para>KeyC0de </para>
+</simplesect>
+<simplesect kind="date"><para>2021/10/19 0:47 <heading level="1"></heading>
+</para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>DepthStencilOutput</label>
+        <link refid="classDepthStencilOutput"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>GraphicsFriend</label>
+        <link refid="classGraphicsFriend"/>
+      </node>
+      <node id="3">
+        <label>IBindable</label>
+        <link refid="classIBindable"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>IDepthStencilView</label>
+        <link refid="classIDepthStencilView"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>IRenderSurface</label>
+        <link refid="classIRenderSurface"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>DepthStencilOutput</label>
+        <link refid="classDepthStencilOutput"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>GraphicsFriend</label>
+        <link refid="classGraphicsFriend"/>
+      </node>
+      <node id="3">
+        <label>IBindable</label>
+        <link refid="classIBindable"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>IDepthStencilView</label>
+        <link refid="classIDepthStencilView"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>IRenderSurface</label>
+        <link refid="classIRenderSurface"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/depth_stencil_view.h" line="67" column="1" bodyfile="inc/depth_stencil_view.h" bodystart="69" bodyend="77"/>
+    <listofallmembers>
+      <member refid="classIBindable_a608c5066b829febbd49cd82d1d1fa353_1a608c5066b829febbd49cd82d1d1fa353" prot="public" virt="virtual"><scope>DepthStencilOutput</scope><name>accept</name></member>
+      <member refid="classDepthStencilOutput_a5bd0b7547e6cd08adfae998cca034d8a_1a5bd0b7547e6cd08adfae998cca034d8a" prot="public" virt="virtual"><scope>DepthStencilOutput</scope><name>bind</name></member>
+      <member refid="classIDepthStencilView_a75916f855423f1737747566b136e1208_1a75916f855423f1737747566b136e1208" prot="public" virt="virtual"><scope>DepthStencilOutput</scope><name>bindRenderSurface</name></member>
+      <member refid="classIDepthStencilView_aabbb45b15b9db4ac1db93a8fae7b48b3_1aabbb45b15b9db4ac1db93a8fae7b48b3" prot="public" virt="virtual"><scope>DepthStencilOutput</scope><name>bindRenderSurface</name></member>
+      <member refid="classIDepthStencilView_a690af44ba0b174d334547fb31648cd7b_1a690af44ba0b174d334547fb31648cd7b" prot="public" virt="non-virtual"><scope>DepthStencilOutput</scope><name>bindRenderSurface</name></member>
+      <member refid="classIDepthStencilView_ac702b43307640c51399dde368e1b9809_1ac702b43307640c51399dde368e1b9809" prot="public" virt="non-virtual"><scope>DepthStencilOutput</scope><name>clean</name></member>
+      <member refid="classIDepthStencilView_a6ca65a2cd33a548c011ea479c6a3ae1d_1a6ca65a2cd33a548c011ea479c6a3ae1d" prot="public" virt="virtual"><scope>DepthStencilOutput</scope><name>clear</name></member>
+      <member refid="classIDepthStencilView_a1662957998b0c724568daf3ac739bc27_1a1662957998b0c724568daf3ac739bc27" prot="public" virt="non-virtual"><scope>DepthStencilOutput</scope><name>convertToBitmap</name></member>
+      <member refid="classIDepthStencilView_a59c87083dbbb991cc621dedcb4cbd58d_1a59c87083dbbb991cc621dedcb4cbd58d" prot="private" virt="non-virtual"><scope>DepthStencilOutput</scope><name>createStagingTexture</name></member>
+      <member refid="classIDepthStencilView_acffcf6d1015ae08263c14ce78a71c514_1acffcf6d1015ae08263c14ce78a71c514" prot="public" virt="non-virtual"><scope>DepthStencilOutput</scope><name>d3dResource</name></member>
+      <member refid="classIDepthStencilView_a9113581f39ad84b4c49cb0afa27a7016_1a9113581f39ad84b4c49cb0afa27a7016" prot="public" virt="non-virtual"><scope>DepthStencilOutput</scope><name>d3dResourceCom</name></member>
+      <member refid="classDepthStencilOutput_acfaa4e7f29e110fc44197165be0a2807_1acfaa4e7f29e110fc44197165be0a2807" prot="public" virt="non-virtual"><scope>DepthStencilOutput</scope><name>DepthStencilOutput</name></member>
+      <member refid="classDepthStencilOutput_ad228332c899ddde9b850356dab0d95f3_1ad228332c899ddde9b850356dab0d95f3" prot="public" virt="non-virtual"><scope>DepthStencilOutput</scope><name>DepthStencilOutput</name></member>
+      <member refid="classDepthStencilOutput_aa22068e5cedb9f09ee4a4b9108b772b6_1aa22068e5cedb9f09ee4a4b9108b772b6" prot="public" virt="non-virtual"><scope>DepthStencilOutput</scope><name>DepthStencilOutput</name></member>
+      <member refid="classDepthStencilOutput_a41da368966c376688966c50b61871dd6_1a41da368966c376688966c50b61871dd6" prot="public" virt="non-virtual"><scope>DepthStencilOutput</scope><name>DepthStencilOutput</name></member>
+      <member refid="classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_1a175df79f82ab5a6dad1df24b5a242ef7" prot="protected" virt="non-virtual"><scope>DepthStencilOutput</scope><name>getDevice</name></member>
+      <member refid="classGraphicsFriend_a619e32893ab49ea6c5200e7c2d52e2f2_1a619e32893ab49ea6c5200e7c2d52e2f2" prot="protected" virt="non-virtual"><scope>DepthStencilOutput</scope><name>getDeviceContext</name></member>
+      <member refid="classIDepthStencilView_a3d74e596cc9d164d50946d746e475c6e_1a3d74e596cc9d164d50946d746e475c6e" prot="public" virt="non-virtual"><scope>DepthStencilOutput</scope><name>getHeight</name></member>
+      <member refid="classIBindable_a7d88cdbd5d500d6d7f1bfabe16927855_1a7d88cdbd5d500d6d7f1bfabe16927855" prot="public" virt="virtual"><scope>DepthStencilOutput</scope><name>getUid</name></member>
+      <member refid="classIDepthStencilView_aec747cf5dbd4fb40bc46de500143d42f_1aec747cf5dbd4fb40bc46de500143d42f" prot="public" virt="non-virtual"><scope>DepthStencilOutput</scope><name>getWidth</name></member>
+      <member refid="classIDepthStencilView_a2d41ae84140c62fafde60b52a884831e_1a2d41ae84140c62fafde60b52a884831e" prot="protected" virt="non-virtual"><scope>DepthStencilOutput</scope><name>IDepthStencilView</name></member>
+      <member refid="classIDepthStencilView_a40482838c8e1421a622521a2ec8aae40_1a40482838c8e1421a622521a2ec8aae40" prot="protected" virt="non-virtual"><scope>DepthStencilOutput</scope><name>IDepthStencilView</name></member>
+      <member refid="classIDepthStencilView_aec7a25978c04ff1bcb0a047882c8836d_1aec7a25978c04ff1bcb0a047882c8836d" prot="protected" virt="non-virtual"><scope>DepthStencilOutput</scope><name>IDepthStencilView</name></member>
+      <member refid="classIDepthStencilView_a95a05cf6868ffcebcab2fd0f63fe4aaa_1a95a05cf6868ffcebcab2fd0f63fe4aaa" prot="private" virt="non-virtual"><scope>DepthStencilOutput</scope><name>IRenderTargetView</name></member>
+      <member refid="classIDepthStencilView_a5b67794aed2406ff0f17b9a76d8a5bc5_1a5b67794aed2406ff0f17b9a76d8a5bc5" prot="protected" virt="non-virtual"><scope>DepthStencilOutput</scope><name>m_height</name></member>
+      <member refid="classIDepthStencilView_a1101dd9a388839f785ef9e69dd389684_1a1101dd9a388839f785ef9e69dd389684" prot="protected" virt="non-virtual"><scope>DepthStencilOutput</scope><name>m_pD3dDsv</name></member>
+      <member refid="classIDepthStencilView_a77e7a6639ca4a086a64470f0a22e8a58_1a77e7a6639ca4a086a64470f0a22e8a58" prot="protected" virt="non-virtual"><scope>DepthStencilOutput</scope><name>m_width</name></member>
+      <member refid="classIDepthStencilView_a37ea21d058018da8f23c574e502f5581_1a37ea21d058018da8f23c574e502f5581" prot="public" virt="virtual"><scope>DepthStencilOutput</scope><name>setDebugObjectName</name></member>
+      <member refid="classIBindable_a12fe8725cb3f4836f22d1592b07e2c91_1a12fe8725cb3f4836f22d1592b07e2c91" prot="public" virt="virtual"><scope>DepthStencilOutput</scope><name>setMesh</name></member>
+      <member refid="classIBindable_a7f68262ff85e25e9f826eae7c01bbfa1_1a7f68262ff85e25e9f826eae7c01bbfa1" prot="public" virt="virtual"><scope>DepthStencilOutput</scope><name>~IBindable</name></member>
+      <member refid="classIRenderSurface_a3a4155d7f15be1043769cb22a6d4d449_1a3a4155d7f15be1043769cb22a6d4d449" prot="public" virt="virtual"><scope>DepthStencilOutput</scope><name>~IRenderSurface</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

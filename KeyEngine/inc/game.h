@@ -37,6 +37,12 @@ class UIPass;
 
 class State;
 
+///=============================================================
+/// \class	Game
+/// \author	KeyC0de
+/// \date	2020/01/21 14:25
+/// \brief	contains the main game loop, the Window and the #TODO: Worlds - each World is a graphical scene/map to be loaded at a time
+///=============================================================
 template<typename T>
 class Game
 	: public NonCopyableAndNonMovable
@@ -65,8 +71,7 @@ public:
 protected:
 	Game( const int width, const int height, const std::string &title, const int x, const int y, const unsigned nWindows = 1 );
 
-	//	\function	present	||	\date	2022/11/05 16:33
-	//	\brief	all child Games must run this function as the very last statement in their render function
+	/// \brief	all child Games must run this function as the very last statement in their render function
 	void present( Graphics &gfx );
 	std::optional<Window*> getForegroundWindow() const noexcept;
 	void setState( std::unique_ptr<State> pNewState, Mouse &mouse );

@@ -1,0 +1,378 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classSoundManager" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>SoundManager</compoundname>
+    <basecompoundref refid="classNonCopyableAndNonMovable" prot="public" virt="non-virtual">NonCopyableAndNonMovable</basecompoundref>
+    <includes refid="key__sound_8h" local="no">key_sound.h</includes>
+    <innerclass refid="classSoundManager_1_1Channel" prot="public">SoundManager::Channel</innerclass>
+    <innerclass refid="classSoundManager_1_1Submix" prot="public">SoundManager::Submix</innerclass>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classSoundManager_a62632566d029de664c5e8869f0a36341_1a62632566d029de664c5e8869f0a36341" prot="private" static="no" mutable="no">
+        <type>WAVEFORMATEXTENSIBLE *</type>
+        <definition>WAVEFORMATEXTENSIBLE* SoundManager::m_pFormat</definition>
+        <argsstring></argsstring>
+        <name>m_pFormat</name>
+        <qualifiedname>SoundManager::m_pFormat</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="83" column="22" bodyfile="inc/key_sound.h" bodystart="83" bodyend="-1"/>
+        <referencedby refid="classSoundManager_a19632df55e5cb35000159716a0937fbe_1a19632df55e5cb35000159716a0937fbe" compoundref="key__sound_8cpp" startline="29" endline="55">SoundManager</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classSoundManager_adcd65dcf480bcf28875ac4710b9fd31e_1adcd65dcf480bcf28875ac4710b9fd31e" prot="private" static="no" mutable="no">
+        <type>Microsoft::WRL::ComPtr&lt; struct IXAudio2 &gt;</type>
+        <definition>Microsoft::WRL::ComPtr&lt;struct IXAudio2&gt; SoundManager::m_pXAudio2</definition>
+        <argsstring></argsstring>
+        <name>m_pXAudio2</name>
+        <qualifiedname>SoundManager::m_pXAudio2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="84" column="24" bodyfile="inc/key_sound.h" bodystart="84" bodyend="-1"/>
+        <referencedby refid="classSoundManager_a19632df55e5cb35000159716a0937fbe_1a19632df55e5cb35000159716a0937fbe" compoundref="key__sound_8cpp" startline="29" endline="55">SoundManager</referencedby>
+        <referencedby refid="classSoundManager_1_1Channel_ac96947ac0fe438b53be241d5b0f02a45_1ac96947ac0fe438b53be241d5b0f02a45" compoundref="key__sound_8cpp" startline="93" endline="207">SoundManager::Channel::setupChannel</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classSoundManager_a0155befc758a62ccfef8293bd1e1c63d_1a0155befc758a62ccfef8293bd1e1c63d" prot="private" static="no" mutable="no">
+        <type>struct IXAudio2MasteringVoice *</type>
+        <definition>struct IXAudio2MasteringVoice* SoundManager::m_pMasterVoice</definition>
+        <argsstring></argsstring>
+        <name>m_pMasterVoice</name>
+        <qualifiedname>SoundManager::m_pMasterVoice</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="85" column="29" bodyfile="inc/key_sound.h" bodystart="85" bodyend="-1"/>
+        <referencedby refid="classSoundManager_a19632df55e5cb35000159716a0937fbe_1a19632df55e5cb35000159716a0937fbe" compoundref="key__sound_8cpp" startline="29" endline="55">SoundManager</referencedby>
+        <referencedby refid="classSoundManager_aaecdaa9f10a6dd44795cb6ae0885c38a_1aaecdaa9f10a6dd44795cb6ae0885c38a" compoundref="key__sound_8cpp" startline="57" endline="65">~SoundManager</referencedby>
+        <referencedby refid="classSoundManager_a5d5efe92a99635caca3823a1cabc8428_1a5d5efe92a99635caca3823a1cabc8428" compoundref="key__sound_8cpp" startline="250" endline="253">setMasterVolume</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classSoundManager_aec659fd70f9fc75d73ecff371a81cc30_1aec659fd70f9fc75d73ecff371a81cc30" prot="private" static="no" mutable="no">
+        <type>std::mutex</type>
+        <definition>std::mutex SoundManager::m_mu</definition>
+        <argsstring></argsstring>
+        <name>m_mu</name>
+        <qualifiedname>SoundManager::m_mu</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="86" column="12" bodyfile="inc/key_sound.h" bodystart="86" bodyend="-1"/>
+        <referencedby refid="classSoundManager_aaecdaa9f10a6dd44795cb6ae0885c38a_1aaecdaa9f10a6dd44795cb6ae0885c38a" compoundref="key__sound_8cpp" startline="57" endline="65">~SoundManager</referencedby>
+        <referencedby refid="classSoundManager_a76471ec78202494756e392fd848a03d5_1a76471ec78202494756e392fd848a03d5" compoundref="key__sound_8cpp" startline="269" endline="282">deactivateChannel</referencedby>
+        <referencedby refid="classSoundManager_a7ea6ac9903120a5875a63863387210af_1a7ea6ac9903120a5875a63863387210af" compoundref="key__sound_8cpp" startline="255" endline="267">playChannelSound</referencedby>
+        <referencedby refid="classSoundManager_a5c103e799ebc0e13ae4e8c461bb956d0_1a5c103e799ebc0e13ae4e8c461bb956d0" compoundref="key__sound_8cpp" startline="571" endline="582">setSubmixVolume</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classSoundManager_af0a4bbdc43edf627464c153cc8d84b25_1af0a4bbdc43edf627464c153cc8d84b25" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::unique_ptr&lt; <ref refid="classSoundManager_1_1Channel" kindref="compound">Channel</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::unique_ptr&lt;Channel&gt; &gt; SoundManager::m_occupiedChannels</definition>
+        <argsstring></argsstring>
+        <name>m_occupiedChannels</name>
+        <qualifiedname>SoundManager::m_occupiedChannels</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="87" column="13" bodyfile="inc/key_sound.h" bodystart="87" bodyend="-1"/>
+        <referencedby refid="classSoundManager_aaecdaa9f10a6dd44795cb6ae0885c38a_1aaecdaa9f10a6dd44795cb6ae0885c38a" compoundref="key__sound_8cpp" startline="57" endline="65">~SoundManager</referencedby>
+        <referencedby refid="classSoundManager_a76471ec78202494756e392fd848a03d5_1a76471ec78202494756e392fd848a03d5" compoundref="key__sound_8cpp" startline="269" endline="282">deactivateChannel</referencedby>
+        <referencedby refid="classSoundManager_a7ea6ac9903120a5875a63863387210af_1a7ea6ac9903120a5875a63863387210af" compoundref="key__sound_8cpp" startline="255" endline="267">playChannelSound</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classSoundManager_af209e8e9233afa44d535db66dd2f921e_1af209e8e9233afa44d535db66dd2f921e" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::unique_ptr&lt; <ref refid="classSoundManager_1_1Channel" kindref="compound">Channel</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::unique_ptr&lt;Channel&gt; &gt; SoundManager::m_idleChannels</definition>
+        <argsstring></argsstring>
+        <name>m_idleChannels</name>
+        <qualifiedname>SoundManager::m_idleChannels</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="88" column="13" bodyfile="inc/key_sound.h" bodystart="88" bodyend="-1"/>
+        <referencedby refid="classSoundManager_a19632df55e5cb35000159716a0937fbe_1a19632df55e5cb35000159716a0937fbe" compoundref="key__sound_8cpp" startline="29" endline="55">SoundManager</referencedby>
+        <referencedby refid="classSoundManager_aaecdaa9f10a6dd44795cb6ae0885c38a_1aaecdaa9f10a6dd44795cb6ae0885c38a" compoundref="key__sound_8cpp" startline="57" endline="65">~SoundManager</referencedby>
+        <referencedby refid="classSoundManager_a76471ec78202494756e392fd848a03d5_1a76471ec78202494756e392fd848a03d5" compoundref="key__sound_8cpp" startline="269" endline="282">deactivateChannel</referencedby>
+        <referencedby refid="classSoundManager_a7ea6ac9903120a5875a63863387210af_1a7ea6ac9903120a5875a63863387210af" compoundref="key__sound_8cpp" startline="255" endline="267">playChannelSound</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classSoundManager_a96893224e08b96e5d32e790d0952b9d6_1a96893224e08b96e5d32e790d0952b9d6" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::unique_ptr&lt; <ref refid="classSoundManager_1_1Submix" kindref="compound">Submix</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::unique_ptr&lt;Submix&gt; &gt; SoundManager::m_submixes</definition>
+        <argsstring></argsstring>
+        <name>m_submixes</name>
+        <qualifiedname>SoundManager::m_submixes</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="89" column="13" bodyfile="inc/key_sound.h" bodystart="89" bodyend="-1"/>
+        <referencedby refid="classSoundManager_a19632df55e5cb35000159716a0937fbe_1a19632df55e5cb35000159716a0937fbe" compoundref="key__sound_8cpp" startline="29" endline="55">SoundManager</referencedby>
+        <referencedby refid="classSoundManager_aaecdaa9f10a6dd44795cb6ae0885c38a_1aaecdaa9f10a6dd44795cb6ae0885c38a" compoundref="key__sound_8cpp" startline="57" endline="65">~SoundManager</referencedby>
+        <referencedby refid="classSoundManager_a5c103e799ebc0e13ae4e8c461bb956d0_1a5c103e799ebc0e13ae4e8c461bb956d0" compoundref="key__sound_8cpp" startline="571" endline="582">setSubmixVolume</referencedby>
+        <referencedby refid="classSoundManager_1_1Channel_ac96947ac0fe438b53be241d5b0f02a45_1ac96947ac0fe438b53be241d5b0f02a45" compoundref="key__sound_8cpp" startline="93" endline="207">SoundManager::Channel::setupChannel</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classSoundManager_ad1372049f59b9ad5359e39b4c3b00b83_1ad1372049f59b9ad5359e39b4c3b00b83" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>size_t</type>
+        <definition>size_t SoundManager::s_nMaxAudioChannels</definition>
+        <argsstring></argsstring>
+        <name>s_nMaxAudioChannels</name>
+        <qualifiedname>SoundManager::s_nMaxAudioChannels</qualifiedname>
+        <initializer>= 16u</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="91" column="32" bodyfile="inc/key_sound.h" bodystart="91" bodyend="-1"/>
+        <referencedby refid="classSoundManager_a19632df55e5cb35000159716a0937fbe_1a19632df55e5cb35000159716a0937fbe" compoundref="key__sound_8cpp" startline="29" endline="55">SoundManager</referencedby>
+        <referencedby refid="classSoundManager_a7ea6ac9903120a5875a63863387210af_1a7ea6ac9903120a5875a63863387210af" compoundref="key__sound_8cpp" startline="255" endline="267">playChannelSound</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classSoundManager_abcba73213c4974b765badc66bef132d9_1abcba73213c4974b765badc66bef132d9" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>size_t</type>
+        <definition>size_t SoundManager::s_nMaxSubmixes</definition>
+        <argsstring></argsstring>
+        <name>s_nMaxSubmixes</name>
+        <qualifiedname>SoundManager::s_nMaxSubmixes</qualifiedname>
+        <initializer>= 8u</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="92" column="32" bodyfile="inc/key_sound.h" bodystart="92" bodyend="-1"/>
+        <referencedby refid="classSoundManager_a19632df55e5cb35000159716a0937fbe_1a19632df55e5cb35000159716a0937fbe" compoundref="key__sound_8cpp" startline="29" endline="55">SoundManager</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classSoundManager_a19632df55e5cb35000159716a0937fbe_1a19632df55e5cb35000159716a0937fbe" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SoundManager::SoundManager</definition>
+        <argsstring>(WAVEFORMATEXTENSIBLE *format)</argsstring>
+        <name>SoundManager</name>
+        <qualifiedname>SoundManager::SoundManager</qualifiedname>
+        <param>
+          <type>WAVEFORMATEXTENSIBLE *</type>
+          <declname>format</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="94" column="1" bodyfile="src/key_sound.cpp" bodystart="29" bodyend="55"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classSoundManager_af3dcc32423f79c6fd4b05c99fcb38c62_1af3dcc32423f79c6fd4b05c99fcb38c62" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classSoundManager" kindref="compound">SoundManager</ref> &amp;</type>
+        <definition>SoundManager &amp; SoundManager::getInstance</definition>
+        <argsstring>(WAVEFORMATEXTENSIBLE *format=nullptr)</argsstring>
+        <name>getInstance</name>
+        <qualifiedname>SoundManager::getInstance</qualifiedname>
+        <param>
+          <type>WAVEFORMATEXTENSIBLE *</type>
+          <declname>format</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>return the single instance of the class </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="97" column="21" bodyfile="src/key_sound.cpp" bodystart="244" bodyend="248"/>
+        <referencedby refid="classSound_a5f01178c19bf0948cfba57b3692d1808_1a5f01178c19bf0948cfba57b3692d1808" compoundref="key__sound_8cpp" startline="522" endline="525">Sound::play</referencedby>
+        <referencedby refid="classSoundManager_1_1Channel_ac96947ac0fe438b53be241d5b0f02a45_1ac96947ac0fe438b53be241d5b0f02a45" compoundref="key__sound_8cpp" startline="93" endline="207">SoundManager::Channel::setupChannel</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classSoundManager_aaecdaa9f10a6dd44795cb6ae0885c38a_1aaecdaa9f10a6dd44795cb6ae0885c38a" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>SoundManager::~SoundManager</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>~SoundManager</name>
+        <qualifiedname>SoundManager::~SoundManager</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="99" column="1" bodyfile="src/key_sound.cpp" bodystart="57" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="classSoundManager_a5d5efe92a99635caca3823a1cabc8428_1a5d5efe92a99635caca3823a1cabc8428" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SoundManager::setMasterVolume</definition>
+        <argsstring>(const float volume=1.0f)</argsstring>
+        <name>setMasterVolume</name>
+        <qualifiedname>SoundManager::setMasterVolume</qualifiedname>
+        <param>
+          <type>const float</type>
+          <declname>volume</declname>
+          <defval>1.0f</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="101" column="6" bodyfile="src/key_sound.cpp" bodystart="250" bodyend="253"/>
+      </memberdef>
+      <memberdef kind="function" id="classSoundManager_a5c103e799ebc0e13ae4e8c461bb956d0_1a5c103e799ebc0e13ae4e8c461bb956d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SoundManager::setSubmixVolume</definition>
+        <argsstring>(const Submix &amp;submix, const float volume=1.0f) cond_noex</argsstring>
+        <name>setSubmixVolume</name>
+        <qualifiedname>SoundManager::setSubmixVolume</qualifiedname>
+        <param>
+          <type>const <ref refid="classSoundManager_1_1Submix" kindref="compound">Submix</ref> &amp;</type>
+          <declname>submix</declname>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>volume</declname>
+          <defval>1.0f</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="102" column="6" bodyfile="src/key_sound.cpp" bodystart="571" bodyend="582"/>
+      </memberdef>
+      <memberdef kind="function" id="classSoundManager_a7ea6ac9903120a5875a63863387210af_1a7ea6ac9903120a5875a63863387210af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SoundManager::playChannelSound</definition>
+        <argsstring>(class Sound *sound, const float volume)</argsstring>
+        <name>playChannelSound</name>
+        <qualifiedname>SoundManager::playChannelSound</qualifiedname>
+        <param>
+          <type>class <ref refid="classSound" kindref="compound">Sound</ref> *</type>
+          <declname>sound</declname>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>volume</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="103" column="6" bodyfile="src/key_sound.cpp" bodystart="255" bodyend="267"/>
+        <referencedby refid="classSound_a5f01178c19bf0948cfba57b3692d1808_1a5f01178c19bf0948cfba57b3692d1808" compoundref="key__sound_8cpp" startline="522" endline="525">Sound::play</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classSoundManager_a76471ec78202494756e392fd848a03d5_1a76471ec78202494756e392fd848a03d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SoundManager::deactivateChannel</definition>
+        <argsstring>(Channel &amp;channel)</argsstring>
+        <name>deactivateChannel</name>
+        <qualifiedname>SoundManager::deactivateChannel</qualifiedname>
+        <param>
+          <type><ref refid="classSoundManager_1_1Channel" kindref="compound">Channel</ref> &amp;</type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+<para>removes occupied <ref refid="classSoundManager_1_1Channel" kindref="compound">Channel</ref> &amp; places it in the idle list </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="105" column="6" bodyfile="src/key_sound.cpp" bodystart="269" bodyend="282"/>
+        <referencedby refid="classSoundManager_1_1Channel_ac96947ac0fe438b53be241d5b0f02a45_1ac96947ac0fe438b53be241d5b0f02a45" compoundref="key__sound_8cpp" startline="93" endline="207">SoundManager::Channel::setupChannel</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>singleton class </para>
+    </briefdescription>
+    <detaileddescription>
+<para>============================================================</para>
+<para><simplesect kind="author"><para>KeyC0de </para>
+</simplesect>
+<simplesect kind="date"><para>2020/10/23 21:33</para>
+</simplesect>
+back-end</para>
+<para>non-copyable &amp; non-movable</para>
+<para>stores the Sounds in vector of Channel&lt;Sound&gt;</para>
+<para>encapsulates a Mastering voice which works with a single wave format <heading level="1">thus all Sounds contained in a <ref refid="classSoundManager" kindref="compound">SoundManager</ref> object must have the same format </heading>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>NonCopyableAndNonMovable</label>
+        <link refid="classNonCopyableAndNonMovable"/>
+      </node>
+      <node id="1">
+        <label>SoundManager</label>
+        <link refid="classSoundManager"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>NonCopyableAndNonMovable</label>
+        <link refid="classNonCopyableAndNonMovable"/>
+      </node>
+      <node id="1">
+        <label>SoundManager</label>
+        <link refid="classSoundManager"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/key_sound.h" line="30" column="1" bodyfile="inc/key_sound.h" bodystart="32" bodyend="107"/>
+    <listofallmembers>
+      <member refid="classSoundManager_a76471ec78202494756e392fd848a03d5_1a76471ec78202494756e392fd848a03d5" prot="public" virt="non-virtual"><scope>SoundManager</scope><name>deactivateChannel</name></member>
+      <member refid="classSoundManager_af3dcc32423f79c6fd4b05c99fcb38c62_1af3dcc32423f79c6fd4b05c99fcb38c62" prot="public" virt="non-virtual"><scope>SoundManager</scope><name>getInstance</name></member>
+      <member refid="classSoundManager_af209e8e9233afa44d535db66dd2f921e_1af209e8e9233afa44d535db66dd2f921e" prot="private" virt="non-virtual"><scope>SoundManager</scope><name>m_idleChannels</name></member>
+      <member refid="classSoundManager_aec659fd70f9fc75d73ecff371a81cc30_1aec659fd70f9fc75d73ecff371a81cc30" prot="private" virt="non-virtual"><scope>SoundManager</scope><name>m_mu</name></member>
+      <member refid="classSoundManager_af0a4bbdc43edf627464c153cc8d84b25_1af0a4bbdc43edf627464c153cc8d84b25" prot="private" virt="non-virtual"><scope>SoundManager</scope><name>m_occupiedChannels</name></member>
+      <member refid="classSoundManager_a62632566d029de664c5e8869f0a36341_1a62632566d029de664c5e8869f0a36341" prot="private" virt="non-virtual"><scope>SoundManager</scope><name>m_pFormat</name></member>
+      <member refid="classSoundManager_a0155befc758a62ccfef8293bd1e1c63d_1a0155befc758a62ccfef8293bd1e1c63d" prot="private" virt="non-virtual"><scope>SoundManager</scope><name>m_pMasterVoice</name></member>
+      <member refid="classSoundManager_adcd65dcf480bcf28875ac4710b9fd31e_1adcd65dcf480bcf28875ac4710b9fd31e" prot="private" virt="non-virtual"><scope>SoundManager</scope><name>m_pXAudio2</name></member>
+      <member refid="classSoundManager_a96893224e08b96e5d32e790d0952b9d6_1a96893224e08b96e5d32e790d0952b9d6" prot="private" virt="non-virtual"><scope>SoundManager</scope><name>m_submixes</name></member>
+      <member refid="classNonCopyableAndNonMovable_a0f3fc95f2c582514d58832b7c14d2965_1a0f3fc95f2c582514d58832b7c14d2965" prot="public" virt="non-virtual"><scope>SoundManager</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_a3502311a2435129e171eb36ba05f0b2f_1a3502311a2435129e171eb36ba05f0b2f" prot="public" virt="non-virtual"><scope>SoundManager</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_a259655d15f1887d015c6d77a0f09f4ff_1a259655d15f1887d015c6d77a0f09f4ff" prot="public" virt="non-virtual"><scope>SoundManager</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_acadc47621b689b1b95bef13a35f18572_1acadc47621b689b1b95bef13a35f18572" prot="public" virt="non-virtual"><scope>SoundManager</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_a6541862f56b2fcaa89155f08b8adaf11_1a6541862f56b2fcaa89155f08b8adaf11" prot="public" virt="non-virtual"><scope>SoundManager</scope><name>operator=</name></member>
+      <member refid="classNonCopyableAndNonMovable_aa3af41edbd14c886cdec335b22254829_1aa3af41edbd14c886cdec335b22254829" prot="public" virt="non-virtual"><scope>SoundManager</scope><name>operator=</name></member>
+      <member refid="classNonCopyableAndNonMovable_a972632a389e0f2370de9604df60ea9d6_1a972632a389e0f2370de9604df60ea9d6" prot="public" virt="non-virtual"><scope>SoundManager</scope><name>operator=</name></member>
+      <member refid="classSoundManager_a7ea6ac9903120a5875a63863387210af_1a7ea6ac9903120a5875a63863387210af" prot="public" virt="non-virtual"><scope>SoundManager</scope><name>playChannelSound</name></member>
+      <member refid="classSoundManager_ad1372049f59b9ad5359e39b4c3b00b83_1ad1372049f59b9ad5359e39b4c3b00b83" prot="private" virt="non-virtual"><scope>SoundManager</scope><name>s_nMaxAudioChannels</name></member>
+      <member refid="classSoundManager_abcba73213c4974b765badc66bef132d9_1abcba73213c4974b765badc66bef132d9" prot="private" virt="non-virtual"><scope>SoundManager</scope><name>s_nMaxSubmixes</name></member>
+      <member refid="classSoundManager_a5d5efe92a99635caca3823a1cabc8428_1a5d5efe92a99635caca3823a1cabc8428" prot="public" virt="non-virtual"><scope>SoundManager</scope><name>setMasterVolume</name></member>
+      <member refid="classSoundManager_a5c103e799ebc0e13ae4e8c461bb956d0_1a5c103e799ebc0e13ae4e8c461bb956d0" prot="public" virt="non-virtual"><scope>SoundManager</scope><name>setSubmixVolume</name></member>
+      <member refid="classSoundManager_a19632df55e5cb35000159716a0937fbe_1a19632df55e5cb35000159716a0937fbe" prot="private" virt="non-virtual"><scope>SoundManager</scope><name>SoundManager</name></member>
+      <member refid="classNonCopyableAndNonMovable_aa6874bb9a99fe151e8c2eda429fe5867_1aa6874bb9a99fe151e8c2eda429fe5867" prot="protected" virt="non-virtual"><scope>SoundManager</scope><name>~NonCopyableAndNonMovable</name></member>
+      <member refid="classSoundManager_aaecdaa9f10a6dd44795cb6ae0885c38a_1aaecdaa9f10a6dd44795cb6ae0885c38a" prot="public" virt="non-virtual"><scope>SoundManager</scope><name>~SoundManager</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

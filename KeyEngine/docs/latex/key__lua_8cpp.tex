@@ -1,0 +1,69 @@
+\doxysection{src/key\+\_\+lua.cpp File Reference}
+\hypertarget{key__lua_8cpp}{}\label{key__lua_8cpp}\index{src/key\_lua.cpp@{src/key\_lua.cpp}}
+{\ttfamily \#include "{}key\+\_\+lua.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{key__lua_8cpp_a169ba3c8f52adabd940ce47e0ee586f7_a169ba3c8f52adabd940ce47e0ee586f7}{lua\+Check}} (lua\+\_\+\+State \texorpdfstring{$\ast$}{*}lua\+Vm, const int ret)
+\item 
+void \mbox{\hyperlink{key__lua_8cpp_a2168990b58602bd64dc1ea30895b2f67_a2168990b58602bd64dc1ea30895b2f67}{execute\+Lua\+Get\+Number}} (lua\+\_\+\+State \texorpdfstring{$\ast$}{*}lua\+Vm, const std\+::string \&str\+Var)
+\item 
+void \mbox{\hyperlink{key__lua_8cpp_a6b8c25239871bd970d2e9e32c41d38f0_a6b8c25239871bd970d2e9e32c41d38f0}{execute\+Lua\+Get\+String}} (lua\+\_\+\+State \texorpdfstring{$\ast$}{*}lua\+Vm, const std\+::string \&str\+Var)
+\item 
+void \mbox{\hyperlink{key__lua_8cpp_ab8b6c22163bde5d322ccaf0eb5e0dbef_ab8b6c22163bde5d322ccaf0eb5e0dbef}{execute\+Lua\+File\+Get\+Number}} (lua\+\_\+\+State \texorpdfstring{$\ast$}{*}lua\+Vm, const std\+::string \&filename)
+\item 
+void \mbox{\hyperlink{key__lua_8cpp_a01e737dd70f18856bd8f5b529dbbdcbc_a01e737dd70f18856bd8f5b529dbbdcbc}{execute\+Lua\+File\+Get\+Table}} (lua\+\_\+\+State \texorpdfstring{$\ast$}{*}lua\+Vm, const std\+::string \&filename, const std\+::string \&table\+Name)
+\item 
+void \mbox{\hyperlink{key__lua_8cpp_a4585437b5d2a3962599b401c11ac49eb_a4585437b5d2a3962599b401c11ac49eb}{execute\+Lua\+Function\+From\+File}} (lua\+\_\+\+State \texorpdfstring{$\ast$}{*}lua\+Vm, const std\+::string \&filename, const std\+::string \&function\+Name)
+\item 
+int \mbox{\hyperlink{key__lua_8cpp_a94bac6ec9430904b22c125178cbe4b9b_a94bac6ec9430904b22c125178cbe4b9b}{callable\+From\+Lua\+\_\+my\+Sum}} (lua\+\_\+\+State \texorpdfstring{$\ast$}{*}lua\+Vm)
+\begin{DoxyCompactList}\small\item\em C++ functions callable from Lua\+: \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{key__lua_8cpp_a94bac6ec9430904b22c125178cbe4b9b_a94bac6ec9430904b22c125178cbe4b9b}\index{key\_lua.cpp@{key\_lua.cpp}!callableFromLua\_mySum@{callableFromLua\_mySum}}
+\index{callableFromLua\_mySum@{callableFromLua\_mySum}!key\_lua.cpp@{key\_lua.cpp}}
+\doxysubsubsection{\texorpdfstring{callableFromLua\_mySum()}{callableFromLua\_mySum()}}
+{\footnotesize\ttfamily \label{key__lua_8cpp_a94bac6ec9430904b22c125178cbe4b9b_a94bac6ec9430904b22c125178cbe4b9b} 
+int callable\+From\+Lua\+\_\+my\+Sum (\begin{DoxyParamCaption}\item[{lua\+\_\+\+State \texorpdfstring{$\ast$}{*}}]{lua\+Vm}{}\end{DoxyParamCaption})}
+
+
+
+C++ functions callable from Lua\+: 
+
+\Hypertarget{key__lua_8cpp_ab8b6c22163bde5d322ccaf0eb5e0dbef_ab8b6c22163bde5d322ccaf0eb5e0dbef}\index{key\_lua.cpp@{key\_lua.cpp}!executeLuaFileGetNumber@{executeLuaFileGetNumber}}
+\index{executeLuaFileGetNumber@{executeLuaFileGetNumber}!key\_lua.cpp@{key\_lua.cpp}}
+\doxysubsubsection{\texorpdfstring{executeLuaFileGetNumber()}{executeLuaFileGetNumber()}}
+{\footnotesize\ttfamily \label{key__lua_8cpp_ab8b6c22163bde5d322ccaf0eb5e0dbef_ab8b6c22163bde5d322ccaf0eb5e0dbef} 
+void execute\+Lua\+File\+Get\+Number (\begin{DoxyParamCaption}\item[{lua\+\_\+\+State \texorpdfstring{$\ast$}{*}}]{lua\+Vm}{, }\item[{const std\+::string \&}]{filename}{}\end{DoxyParamCaption})}
+
+\Hypertarget{key__lua_8cpp_a01e737dd70f18856bd8f5b529dbbdcbc_a01e737dd70f18856bd8f5b529dbbdcbc}\index{key\_lua.cpp@{key\_lua.cpp}!executeLuaFileGetTable@{executeLuaFileGetTable}}
+\index{executeLuaFileGetTable@{executeLuaFileGetTable}!key\_lua.cpp@{key\_lua.cpp}}
+\doxysubsubsection{\texorpdfstring{executeLuaFileGetTable()}{executeLuaFileGetTable()}}
+{\footnotesize\ttfamily \label{key__lua_8cpp_a01e737dd70f18856bd8f5b529dbbdcbc_a01e737dd70f18856bd8f5b529dbbdcbc} 
+void execute\+Lua\+File\+Get\+Table (\begin{DoxyParamCaption}\item[{lua\+\_\+\+State \texorpdfstring{$\ast$}{*}}]{lua\+Vm}{, }\item[{const std\+::string \&}]{filename}{, }\item[{const std\+::string \&}]{table\+Name}{}\end{DoxyParamCaption})}
+
+\Hypertarget{key__lua_8cpp_a4585437b5d2a3962599b401c11ac49eb_a4585437b5d2a3962599b401c11ac49eb}\index{key\_lua.cpp@{key\_lua.cpp}!executeLuaFunctionFromFile@{executeLuaFunctionFromFile}}
+\index{executeLuaFunctionFromFile@{executeLuaFunctionFromFile}!key\_lua.cpp@{key\_lua.cpp}}
+\doxysubsubsection{\texorpdfstring{executeLuaFunctionFromFile()}{executeLuaFunctionFromFile()}}
+{\footnotesize\ttfamily \label{key__lua_8cpp_a4585437b5d2a3962599b401c11ac49eb_a4585437b5d2a3962599b401c11ac49eb} 
+void execute\+Lua\+Function\+From\+File (\begin{DoxyParamCaption}\item[{lua\+\_\+\+State \texorpdfstring{$\ast$}{*}}]{lua\+Vm}{, }\item[{const std\+::string \&}]{filename}{, }\item[{const std\+::string \&}]{function\+Name}{}\end{DoxyParamCaption})}
+
+\Hypertarget{key__lua_8cpp_a2168990b58602bd64dc1ea30895b2f67_a2168990b58602bd64dc1ea30895b2f67}\index{key\_lua.cpp@{key\_lua.cpp}!executeLuaGetNumber@{executeLuaGetNumber}}
+\index{executeLuaGetNumber@{executeLuaGetNumber}!key\_lua.cpp@{key\_lua.cpp}}
+\doxysubsubsection{\texorpdfstring{executeLuaGetNumber()}{executeLuaGetNumber()}}
+{\footnotesize\ttfamily \label{key__lua_8cpp_a2168990b58602bd64dc1ea30895b2f67_a2168990b58602bd64dc1ea30895b2f67} 
+void execute\+Lua\+Get\+Number (\begin{DoxyParamCaption}\item[{lua\+\_\+\+State \texorpdfstring{$\ast$}{*}}]{lua\+Vm}{, }\item[{const std\+::string \&}]{str\+Var}{}\end{DoxyParamCaption})}
+
+\Hypertarget{key__lua_8cpp_a6b8c25239871bd970d2e9e32c41d38f0_a6b8c25239871bd970d2e9e32c41d38f0}\index{key\_lua.cpp@{key\_lua.cpp}!executeLuaGetString@{executeLuaGetString}}
+\index{executeLuaGetString@{executeLuaGetString}!key\_lua.cpp@{key\_lua.cpp}}
+\doxysubsubsection{\texorpdfstring{executeLuaGetString()}{executeLuaGetString()}}
+{\footnotesize\ttfamily \label{key__lua_8cpp_a6b8c25239871bd970d2e9e32c41d38f0_a6b8c25239871bd970d2e9e32c41d38f0} 
+void execute\+Lua\+Get\+String (\begin{DoxyParamCaption}\item[{lua\+\_\+\+State \texorpdfstring{$\ast$}{*}}]{lua\+Vm}{, }\item[{const std\+::string \&}]{str\+Var}{}\end{DoxyParamCaption})}
+
+\Hypertarget{key__lua_8cpp_a169ba3c8f52adabd940ce47e0ee586f7_a169ba3c8f52adabd940ce47e0ee586f7}\index{key\_lua.cpp@{key\_lua.cpp}!luaCheck@{luaCheck}}
+\index{luaCheck@{luaCheck}!key\_lua.cpp@{key\_lua.cpp}}
+\doxysubsubsection{\texorpdfstring{luaCheck()}{luaCheck()}}
+{\footnotesize\ttfamily \label{key__lua_8cpp_a169ba3c8f52adabd940ce47e0ee586f7_a169ba3c8f52adabd940ce47e0ee586f7} 
+bool lua\+Check (\begin{DoxyParamCaption}\item[{lua\+\_\+\+State \texorpdfstring{$\ast$}{*}}]{lua\+Vm}{, }\item[{const int}]{ret}{}\end{DoxyParamCaption})}
+

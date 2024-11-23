@@ -1,0 +1,21 @@
+\doxysection{camera\+\_\+widget.\+h}
+\hypertarget{camera__widget_8h_source}{}\label{camera__widget_8h_source}\index{inc/camera\_widget.h@{inc/camera\_widget.h}}
+\mbox{\hyperlink{camera__widget_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{mesh_8h}{mesh.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <variant>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGraphics}{Graphics}};}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCameraWidget}{CameraWidget}}}
+\DoxyCodeLine{00010\ \ \ \ \ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classMesh}{Mesh}}}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{classCameraWidget_a49b89a69b3009d5da95c11cd558bcca7_a49b89a69b3009d5da95c11cd558bcca7}{s\_geometryTag}}\ =\ \textcolor{stringliteral}{"{}\$cam\_widget"{}};}
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{classCameraWidget_a0c41231fcab87a5a4aeb57d87aecb55e_a0c41231fcab87a5a4aeb57d87aecb55e}{CameraWidget}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ initialScale\ =\ 1.0f,\ \textcolor{keyword}{const}\ std::variant<DirectX::XMFLOAT4,\ std::string>\ \&colorOrTexturePath\ =\ DirectX::XMFLOAT4\{0.2f,\ 0.2f,\ 0.6f,\ 1.0f\}\ );}
+\DoxyCodeLine{00015\ \};}
+
+\end{DoxyCode}

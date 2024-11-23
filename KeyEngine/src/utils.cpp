@@ -72,6 +72,16 @@ std::string ws2s( const std::wstring &ws )
 	}
 }
 
+void removeSubstring( std::string &str,
+	const std::string &substring )
+{
+	size_t pos;
+	while ((pos = str.find(substring)) != std::string::npos)
+	{
+		str.erase(pos, substring.length());
+	}
+}
+
 std::string trimStringFromStart( const std::string &str,
 	const int nChars )
 {
@@ -86,41 +96,63 @@ std::string trimStringFromEnd( const std::string &str,
 	return trimmed;
 }
 
+void trimStringFromStartInPlace( std ::string &str,
+	const int nChars )
+{
+	if ( nChars >= 0 && static_cast<std::size_t>(nChars) <= str.length() )
+	{
+		str.erase( 0, nChars );
+	}
+}
+
 void trimStringFromEndInPlace( std::string &str,
 	const int nChars )
 {
 	str.erase( str.length() - nChars );
 }
 
-template<class Iter>
-void splitString_impl( const std::string &s,
-	const std::string &delim,
-	Iter out )
+std::vector<std::string> splitDelimitedString( const std::string& str,
+	const char delimiter )
 {
-	if ( delim.empty() )
+	std::vector<std::string> subStrings;
+	std::size_t start = 0;
+	for ( std::size_t pos = 0; pos < str.size(); ++pos )
 	{
-		*out = s;
-	}
-	else
-	{
-		size_t a = 0;
-		size_t b = s.find( delim );
-		for ( ; b != std::string::npos;
-			a = b + delim.length(), b = s.find( delim, a ) )
+		if (str[pos] == delimiter)
 		{
-			*out = std::move( s.substr( a, b - a ) );
+			if (pos - start > 1)
+			{
+				subStrings.push_back( str.substr( start, pos - start ) );
+			}
+			start = pos + 1;
 		}
-		*out = std::move( s.substr( a, s.length() - a ) );
 	}
-	++out;
+ 
+	if ( start < str.size() )
+	{
+		subStrings.push_back( str.substr( start, str.size() - start ) );
+	}
+	return subStrings;
 }
 
-std::vector<std::string> splitString( const std::string &s,
-	const std::string &delim )
+std::string assembleDelimitedString( const std::vector<std::string>& delimitedString,
+	const char delimiter )
 {
-	std::vector<std::string> strings;
-	splitString_impl( s, delim, std::back_inserter( strings ) );
-	return strings;
+	std::string str;
+	for (const auto& elem : delimitedString)
+	{
+		str += elem;
+		str += delimiter;	// always add the delimiter, even after the last element
+	}
+	return str;
+}
+
+void removeFromDelimitedString( std::vector<std::string>& delimitedString,
+	const char delimiter,
+	const std::string& str )
+{
+	delimitedString.erase( std::remove(delimitedString.begin(), delimitedString.end(), str),
+		delimitedString.end() );
 }
 
 bool stringContains( std::string_view haystack,

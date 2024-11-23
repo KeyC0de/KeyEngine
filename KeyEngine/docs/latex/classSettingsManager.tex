@@ -1,0 +1,133 @@
+\doxysection{Settings\+Manager Class Reference}
+\hypertarget{classSettingsManager}{}\label{classSettingsManager}\index{SettingsManager@{SettingsManager}}
+
+
+singleton class   
+
+
+
+
+{\ttfamily \#include $<$settings\+\_\+manager.\+h$>$}
+
+Inheritance diagram for Settings\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classSettingsManager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structSettingsManager_1_1Settings}{Settings}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structSettingsManager_1_1Settings}{Settings}} \& \mbox{\hyperlink{classSettingsManager_a2634a5f2822112f9bf7cd42dcf440288_a2634a5f2822112f9bf7cd42dcf440288}{get\+Settings}} ()
+\item 
+const \mbox{\hyperlink{structSettingsManager_1_1Settings}{Settings}} \& \mbox{\hyperlink{classSettingsManager_a814a879cd8737e7f95a2974061648331_a814a879cd8737e7f95a2974061648331}{get\+Settings}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNonCopyable_a809b6e4ade7ae32f6d248f2a3b783d45_a809b6e4ade7ae32f6d248f2a3b783d45}{Non\+Copyable}} ()=default
+\item 
+\mbox{\hyperlink{classNonCopyable_a15aa3015488bb26c47ded914cb630cf5_a15aa3015488bb26c47ded914cb630cf5}{Non\+Copyable}} (const \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_af4788b57da9a9faa570c754c22c724f5_af4788b57da9a9faa570c754c22c724f5}{operator=}} (const \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable_a487646562ae30ece23d7638f2aed1dde_a487646562ae30ece23d7638f2aed1dde}{Non\+Copyable}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_ae032ca32cda9c836c27b28eb6a087d18_ae032ca32cda9c836c27b28eb6a087d18}{operator=}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable_af716e4cfb79381710ef4490414939ae9_af716e4cfb79381710ef4490414939ae9}{Non\+Copyable}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&\&rhs)=default
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_af81816bd4c2c4421a6eab98843ead6e4_af81816bd4c2c4421a6eab98843ead6e4}{operator=}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&\&rhs)=default
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classSettingsManager}{Settings\+Manager}} \& \mbox{\hyperlink{classSettingsManager_a92617e378ef941b075dd8343d283bd00_a92617e378ef941b075dd8343d283bd00}{get\+Instance}} (const std\+::string \&file\+Path="{}config.\+ini"{})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSettingsManager_a3c61f6afcf474f6cc1143216262848b8_a3c61f6afcf474f6cc1143216262848b8}{Settings\+Manager}} (const std\+::string \&file\+Path)
+\item 
+void \mbox{\hyperlink{classSettingsManager_a5e4c7dd1554609fe8ac4fac171e3c4a5_a5e4c7dd1554609fe8ac4fac171e3c4a5}{load\+From\+File}} (const std\+::string \&file\+Path)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structSettingsManager_1_1Settings}{Settings\+Manager\+::\+Settings}} \mbox{\hyperlink{classSettingsManager_ae233137553f2cd2c32a71856f1a76130_ae233137553f2cd2c32a71856f1a76130}{m\+\_\+settings}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNonCopyable_a3e461fb46c72b9a5af7df7e74dbd899e_a3e461fb46c72b9a5af7df7e74dbd899e}{\texorpdfstring{$\sim$}{\string~}\+Non\+Copyable}} () noexcept=default
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+singleton class  
+
+=============================================================
+
+\begin{DoxyAuthor}{Author}
+Key\+C0de 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/05/03 12\+:07 \doxysubsection*{}
+\end{DoxyDate}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classSettingsManager_a3c61f6afcf474f6cc1143216262848b8_a3c61f6afcf474f6cc1143216262848b8}\index{SettingsManager@{SettingsManager}!SettingsManager@{SettingsManager}}
+\index{SettingsManager@{SettingsManager}!SettingsManager@{SettingsManager}}
+\doxysubsubsection{\texorpdfstring{SettingsManager()}{SettingsManager()}}
+{\footnotesize\ttfamily \label{classSettingsManager_a3c61f6afcf474f6cc1143216262848b8_a3c61f6afcf474f6cc1143216262848b8} 
+Settings\+Manager\+::\+Settings\+Manager (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classSettingsManager_a92617e378ef941b075dd8343d283bd00_a92617e378ef941b075dd8343d283bd00}\index{SettingsManager@{SettingsManager}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!SettingsManager@{SettingsManager}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \label{classSettingsManager_a92617e378ef941b075dd8343d283bd00_a92617e378ef941b075dd8343d283bd00} 
+\mbox{\hyperlink{classSettingsManager}{Settings\+Manager}} \& Settings\+Manager\+::get\+Instance (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Path}{ = {\ttfamily "{}config.ini"{}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classSettingsManager_a2634a5f2822112f9bf7cd42dcf440288_a2634a5f2822112f9bf7cd42dcf440288}\index{SettingsManager@{SettingsManager}!getSettings@{getSettings}}
+\index{getSettings@{getSettings}!SettingsManager@{SettingsManager}}
+\doxysubsubsection{\texorpdfstring{getSettings()}{getSettings()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classSettingsManager_a2634a5f2822112f9bf7cd42dcf440288_a2634a5f2822112f9bf7cd42dcf440288} 
+\mbox{\hyperlink{structSettingsManager_1_1Settings}{Settings\+Manager\+::\+Settings}} \& Settings\+Manager\+::get\+Settings (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classSettingsManager_a814a879cd8737e7f95a2974061648331_a814a879cd8737e7f95a2974061648331}\index{SettingsManager@{SettingsManager}!getSettings@{getSettings}}
+\index{getSettings@{getSettings}!SettingsManager@{SettingsManager}}
+\doxysubsubsection{\texorpdfstring{getSettings()}{getSettings()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classSettingsManager_a814a879cd8737e7f95a2974061648331_a814a879cd8737e7f95a2974061648331} 
+const \mbox{\hyperlink{structSettingsManager_1_1Settings}{Settings\+Manager\+::\+Settings}} \& Settings\+Manager\+::get\+Settings (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classSettingsManager_a5e4c7dd1554609fe8ac4fac171e3c4a5_a5e4c7dd1554609fe8ac4fac171e3c4a5}\index{SettingsManager@{SettingsManager}!loadFromFile@{loadFromFile}}
+\index{loadFromFile@{loadFromFile}!SettingsManager@{SettingsManager}}
+\doxysubsubsection{\texorpdfstring{loadFromFile()}{loadFromFile()}}
+{\footnotesize\ttfamily \label{classSettingsManager_a5e4c7dd1554609fe8ac4fac171e3c4a5_a5e4c7dd1554609fe8ac4fac171e3c4a5} 
+void Settings\+Manager\+::load\+From\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classSettingsManager_ae233137553f2cd2c32a71856f1a76130_ae233137553f2cd2c32a71856f1a76130}\index{SettingsManager@{SettingsManager}!m\_settings@{m\_settings}}
+\index{m\_settings@{m\_settings}!SettingsManager@{SettingsManager}}
+\doxysubsubsection{\texorpdfstring{m\_settings}{m\_settings}}
+{\footnotesize\ttfamily \label{classSettingsManager_ae233137553f2cd2c32a71856f1a76130_ae233137553f2cd2c32a71856f1a76130} 
+struct \mbox{\hyperlink{structSettingsManager_1_1Settings}{Settings\+Manager\+::\+Settings}} Settings\+Manager\+::m\+\_\+settings\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{settings__manager_8h}{settings\+\_\+manager.\+h}}\item 
+src/\mbox{\hyperlink{settings__manager_8cpp}{settings\+\_\+manager.\+cpp}}\end{DoxyCompactItemize}

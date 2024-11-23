@@ -1,0 +1,254 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="rasterizer__state_8h" kind="file" language="C++">
+    <compoundname>rasterizer_state.h</compoundname>
+    <includes refid="key__wrl_8h" local="yes">key_wrl.h</includes>
+    <includes local="no">array</includes>
+    <includes refid="bindable_8h" local="yes">bindable.h</includes>
+    <includes refid="texture__desc_8h" local="yes">texture_desc.h</includes>
+    <includedby refid="SHADOW__PASS_8CPP" local="yes">src/SHADOW_PASS.CPP</includedby>
+    <includedby refid="blur__outline__draw__pass_8cpp" local="yes">src/blur_outline_draw_pass.cpp</includedby>
+    <includedby refid="blur__outline__mask__pass_8cpp" local="yes">src/blur_outline_mask_pass.cpp</includedby>
+    <includedby refid="cube_8cpp" local="yes">src/cube.cpp</includedby>
+    <includedby refid="fullscreen__pass_8cpp" local="yes">src/fullscreen_pass.cpp</includedby>
+    <includedby refid="line_8cpp" local="yes">src/line.cpp</includedby>
+    <includedby refid="material__loader_8cpp" local="yes">src/material_loader.cpp</includedby>
+    <includedby refid="pass__2d_8cpp" local="yes">src/pass_2d.cpp</includedby>
+    <includedby refid="plane_8cpp" local="yes">src/plane.cpp</includedby>
+    <includedby refid="rasterizer__state_8cpp" local="yes">src/rasterizer_state.cpp</includedby>
+    <includedby refid="sky__pass_8cpp" local="yes">src/sky_pass.cpp</includedby>
+    <includedby refid="solid__outline__mask__pass_8cpp" local="yes">src/solid_outline_mask_pass.cpp</includedby>
+    <includedby refid="sphere_8cpp" local="yes">src/sphere.cpp</includedby>
+    <includedby refid="terrain_8cpp" local="yes">src/terrain.cpp</includedby>
+    <includedby refid="ui__component_8cpp" local="yes">src/ui_component.cpp</includedby>
+    <includedby refid="ui__pass_8cpp" local="yes">src/ui_pass.cpp</includedby>
+    <includedby refid="wireframe__pass_8cpp" local="yes">src/wireframe_pass.cpp</includedby>
+    <incdepgraph>
+      <node id="9">
+        <label>assertions_console.h</label>
+        <link refid="assertions__console_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>bindable.h</label>
+        <link refid="bindable_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>graphics_friend.h</label>
+        <link refid="graphics__friend_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>key_wrl.h</label>
+        <link refid="key__wrl_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/rasterizer_state.h</label>
+        <link refid="rasterizer__state_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>texture_desc.h</label>
+        <link refid="texture__desc_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>array</label>
+      </node>
+      <node id="8">
+        <label>d3d11.h</label>
+      </node>
+      <node id="10">
+        <label>iostream</label>
+      </node>
+      <node id="6">
+        <label>memory</label>
+      </node>
+      <node id="3">
+        <label>wrl.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>inc/rasterizer_state.h</label>
+        <link refid="rasterizer__state_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/SHADOW_PASS.CPP</label>
+        <link refid="SHADOW__PASS_8CPP"/>
+      </node>
+      <node id="3">
+        <label>src/blur_outline_draw_pass.cpp</label>
+        <link refid="blur__outline__draw__pass_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/blur_outline_mask_pass.cpp</label>
+        <link refid="blur__outline__mask__pass_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/cube.cpp</label>
+        <link refid="cube_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/fullscreen_pass.cpp</label>
+        <link refid="fullscreen__pass_8cpp"/>
+      </node>
+      <node id="7">
+        <label>src/line.cpp</label>
+        <link refid="line_8cpp"/>
+      </node>
+      <node id="8">
+        <label>src/material_loader.cpp</label>
+        <link refid="material__loader_8cpp"/>
+      </node>
+      <node id="9">
+        <label>src/pass_2d.cpp</label>
+        <link refid="pass__2d_8cpp"/>
+      </node>
+      <node id="10">
+        <label>src/plane.cpp</label>
+        <link refid="plane_8cpp"/>
+      </node>
+      <node id="11">
+        <label>src/rasterizer_state.cpp</label>
+        <link refid="rasterizer__state_8cpp"/>
+      </node>
+      <node id="12">
+        <label>src/sky_pass.cpp</label>
+        <link refid="sky__pass_8cpp"/>
+      </node>
+      <node id="13">
+        <label>src/solid_outline_mask_pass.cpp</label>
+        <link refid="solid__outline__mask__pass_8cpp"/>
+      </node>
+      <node id="14">
+        <label>src/sphere.cpp</label>
+        <link refid="sphere_8cpp"/>
+      </node>
+      <node id="15">
+        <label>src/terrain.cpp</label>
+        <link refid="terrain_8cpp"/>
+      </node>
+      <node id="16">
+        <label>src/ui_component.cpp</label>
+        <link refid="ui__component_8cpp"/>
+      </node>
+      <node id="17">
+        <label>src/ui_pass.cpp</label>
+        <link refid="ui__pass_8cpp"/>
+      </node>
+      <node id="18">
+        <label>src/wireframe_pass.cpp</label>
+        <link refid="wireframe__pass_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classRasterizerState" prot="public">RasterizerState</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="key__wrl_8h" kindref="compound">key_wrl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;array&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="bindable_8h" kindref="compound">bindable.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="texture__desc_8h" kindref="compound">texture_desc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classGraphics" kindref="compound">Graphics</ref>;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="classRasterizerState" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classRasterizerState" kindref="compound">RasterizerState</ref></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classIBindable" kindref="compound">IBindable</ref></highlight></codeline>
+<codeline lineno="13"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="15" refid="classRasterizerState_a3151107239aadcbe3426db7cce10f08e_1a3151107239aadcbe3426db7cce10f08e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="classRasterizerState_a3151107239aadcbe3426db7cce10f08e_1a3151107239aadcbe3426db7cce10f08e" kindref="member">RasterizerMode</ref></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="17" refid="classRasterizerState_a3151107239aadcbe3426db7cce10f08e_1a3151107239aadcbe3426db7cce10f08eae2d59bb2d8146bb29d1722df1efc72e1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classRasterizerState_a3151107239aadcbe3426db7cce10f08e_1a3151107239aadcbe3426db7cce10f08eae2d59bb2d8146bb29d1722df1efc72e1" kindref="member">DefaultRS</ref>,</highlight></codeline>
+<codeline lineno="18" refid="classRasterizerState_a3151107239aadcbe3426db7cce10f08e_1a3151107239aadcbe3426db7cce10f08ea5a676c4d329ae5a58522a88367522633" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classRasterizerState_a3151107239aadcbe3426db7cce10f08e_1a3151107239aadcbe3426db7cce10f08ea5a676c4d329ae5a58522a88367522633" kindref="member">ShadowRS</ref>,</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="20" refid="classRasterizerState_ab64eb708d2b58194806f2bee4f93dd65_1ab64eb708d2b58194806f2bee4f93dd65" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="classRasterizerState_ab64eb708d2b58194806f2bee4f93dd65_1ab64eb708d2b58194806f2bee4f93dd65" kindref="member">FillMode</ref></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="22" refid="classRasterizerState_ab64eb708d2b58194806f2bee4f93dd65_1ab64eb708d2b58194806f2bee4f93dd65a816d9b64ac288103c37d263f3b2113cf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classRasterizerState_ab64eb708d2b58194806f2bee4f93dd65_1ab64eb708d2b58194806f2bee4f93dd65a816d9b64ac288103c37d263f3b2113cf" kindref="member">Solid</ref>,</highlight></codeline>
+<codeline lineno="23" refid="classRasterizerState_ab64eb708d2b58194806f2bee4f93dd65_1ab64eb708d2b58194806f2bee4f93dd65aeaff0006267477f6d60b928802555e77" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classRasterizerState_ab64eb708d2b58194806f2bee4f93dd65_1ab64eb708d2b58194806f2bee4f93dd65aeaff0006267477f6d60b928802555e77" kindref="member">Wireframe</ref>,</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="25" refid="classRasterizerState_aeaf96eb61bdc4f7e17fe5c351a090891_1aeaf96eb61bdc4f7e17fe5c351a090891" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="classRasterizerState_aeaf96eb61bdc4f7e17fe5c351a090891_1aeaf96eb61bdc4f7e17fe5c351a090891" kindref="member">FaceMode</ref></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="27" refid="classRasterizerState_aeaf96eb61bdc4f7e17fe5c351a090891_1aeaf96eb61bdc4f7e17fe5c351a090891ac3b808e9b6b703082096f4da97d5d401" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classRasterizerState_aeaf96eb61bdc4f7e17fe5c351a090891_1aeaf96eb61bdc4f7e17fe5c351a090891ac3b808e9b6b703082096f4da97d5d401" kindref="member">Front</ref>,<sp/><sp/></highlight><highlight class="comment">//<sp/>cull<sp/>backsided<sp/>faces<sp/>(default)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classRasterizerState_aeaf96eb61bdc4f7e17fe5c351a090891_1aeaf96eb61bdc4f7e17fe5c351a090891aa9ada81ba2f8b6a73eb2a0e988570680" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classRasterizerState_aeaf96eb61bdc4f7e17fe5c351a090891_1aeaf96eb61bdc4f7e17fe5c351a090891aa9ada81ba2f8b6a73eb2a0e988570680" kindref="member">Back</ref>,<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>cull<sp/>frontsided<sp/>faces</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classRasterizerState_aeaf96eb61bdc4f7e17fe5c351a090891_1aeaf96eb61bdc4f7e17fe5c351a090891a7d450507cfc5245a2704fbfbbfb1c1e3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classRasterizerState_aeaf96eb61bdc4f7e17fe5c351a090891_1aeaf96eb61bdc4f7e17fe5c351a090891a7d450507cfc5245a2704fbfbbfb1c1e3" kindref="member">Both</ref>,<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>don&apos;t<sp/>cull<sp/>any<sp/>faces</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="32" refid="classRasterizerState_a53cd9a1c5e19b4fb0fbf54cd8eacb637_1a53cd9a1c5e19b4fb0fbf54cd8eacb637" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Microsoft::WRL::ComPtr&lt;ID3D11RasterizerState&gt;<sp/><ref refid="classRasterizerState_a53cd9a1c5e19b4fb0fbf54cd8eacb637_1a53cd9a1c5e19b4fb0fbf54cd8eacb637" kindref="member">m_pRasterizerState</ref>;</highlight></codeline>
+<codeline lineno="33" refid="classRasterizerState_a211ea886ad01df73c6e7d9b1436929df_1a211ea886ad01df73c6e7d9b1436929df" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classRasterizerState_a3151107239aadcbe3426db7cce10f08e_1a3151107239aadcbe3426db7cce10f08e" kindref="member">RasterizerMode</ref><sp/><ref refid="classRasterizerState_a211ea886ad01df73c6e7d9b1436929df_1a211ea886ad01df73c6e7d9b1436929df" kindref="member">m_mode</ref>;</highlight></codeline>
+<codeline lineno="34" refid="classRasterizerState_a2ac08060b17ce8ab0130d35c1203b858_1a2ac08060b17ce8ab0130d35c1203b858" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classRasterizerState_ab64eb708d2b58194806f2bee4f93dd65_1ab64eb708d2b58194806f2bee4f93dd65" kindref="member">FillMode</ref><sp/><ref refid="classRasterizerState_a2ac08060b17ce8ab0130d35c1203b858_1a2ac08060b17ce8ab0130d35c1203b858" kindref="member">m_fillMode</ref>;</highlight></codeline>
+<codeline lineno="35" refid="classRasterizerState_a52fe56ba43efe92badbdf57eb3327a1c_1a52fe56ba43efe92badbdf57eb3327a1c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classRasterizerState_aeaf96eb61bdc4f7e17fe5c351a090891_1aeaf96eb61bdc4f7e17fe5c351a090891" kindref="member">FaceMode</ref><sp/><ref refid="classRasterizerState_a52fe56ba43efe92badbdf57eb3327a1c_1a52fe56ba43efe92badbdf57eb3327a1c" kindref="member">m_faceMode</ref>;</highlight></codeline>
+<codeline lineno="36" refid="classRasterizerState_a2cce8db1fc6c4e797c0ed37376c6ac27_1a2cce8db1fc6c4e797c0ed37376c6ac27" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRasterizerState_a2cce8db1fc6c4e797c0ed37376c6ac27_1a2cce8db1fc6c4e797c0ed37376c6ac27" kindref="member">m_depthBias</ref>;</highlight></codeline>
+<codeline lineno="37" refid="classRasterizerState_afd95bfc70c82ee75eb8b9d451b534416_1afd95bfc70c82ee75eb8b9d451b534416" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classRasterizerState_afd95bfc70c82ee75eb8b9d451b534416_1afd95bfc70c82ee75eb8b9d451b534416" kindref="member">m_slopeBias</ref>;</highlight></codeline>
+<codeline lineno="38" refid="classRasterizerState_aa9d01ba8688f920da2ea31e3a0f80d1f_1aa9d01ba8688f920da2ea31e3a0f80d1f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classRasterizerState_aa9d01ba8688f920da2ea31e3a0f80d1f_1aa9d01ba8688f920da2ea31e3a0f80d1f" kindref="member">m_biasClamp</ref>;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classRasterizerState_a804a50b2960604725f103b927f9d052f_1a804a50b2960604725f103b927f9d052f" kindref="member">RasterizerState</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classRasterizerState_a3151107239aadcbe3426db7cce10f08e_1a3151107239aadcbe3426db7cce10f08e" kindref="member">RasterizerMode</ref><sp/>mode,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classRasterizerState_ab64eb708d2b58194806f2bee4f93dd65_1ab64eb708d2b58194806f2bee4f93dd65" kindref="member">FillMode</ref><sp/>fillMode,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classRasterizerState_aeaf96eb61bdc4f7e17fe5c351a090891_1aeaf96eb61bdc4f7e17fe5c351a090891" kindref="member">FaceMode</ref><sp/>faceMode,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>depthBias<sp/>=<sp/>D3D11_DEFAULT_DEPTH_BIAS,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>slopeBias<sp/>=<sp/>D3D11_DEFAULT_SLOPE_SCALED_DEPTH_BIAS,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>biasClamp<sp/>=<sp/>D3D11_DEFAULT_DEPTH_BIAS_CLAMP<sp/>);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classRasterizerState_a5c99858a872079af1812b79e9b196b51_1a5c99858a872079af1812b79e9b196b51" kindref="member">bind</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;RasterizerState&gt;<sp/><ref refid="classRasterizerState_ae33cba5eb6c008f927cb16e8c3c226f1_1ae33cba5eb6c008f927cb16e8c3c226f1" kindref="member">fetch</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classRasterizerState_a3151107239aadcbe3426db7cce10f08e_1a3151107239aadcbe3426db7cce10f08e" kindref="member">RasterizerMode</ref><sp/>mode,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classRasterizerState_ab64eb708d2b58194806f2bee4f93dd65_1ab64eb708d2b58194806f2bee4f93dd65" kindref="member">FillMode</ref><sp/>fillMode,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classRasterizerState_aeaf96eb61bdc4f7e17fe5c351a090891_1aeaf96eb61bdc4f7e17fe5c351a090891" kindref="member">FaceMode</ref><sp/>faceMode,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>depthBias<sp/>=<sp/>D3D11_DEFAULT_DEPTH_BIAS,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>slopeBias<sp/>=<sp/>D3D11_DEFAULT_SLOPE_SCALED_DEPTH_BIAS,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>biasClamp<sp/>=<sp/>D3D11_DEFAULT_DEPTH_BIAS_CLAMP<sp/>);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classRasterizerState_afc8283abcf48e749942cb4ee650784b0_1afc8283abcf48e749942cb4ee650784b0" kindref="member">calcUid</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classRasterizerState_a3151107239aadcbe3426db7cce10f08e_1a3151107239aadcbe3426db7cce10f08e" kindref="member">RasterizerMode</ref><sp/>mode,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classRasterizerState_ab64eb708d2b58194806f2bee4f93dd65_1ab64eb708d2b58194806f2bee4f93dd65" kindref="member">FillMode</ref><sp/>fillMode,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classRasterizerState_aeaf96eb61bdc4f7e17fe5c351a090891_1aeaf96eb61bdc4f7e17fe5c351a090891" kindref="member">FaceMode</ref><sp/>faceMode,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>depthBias<sp/>=<sp/>D3D11_DEFAULT_DEPTH_BIAS,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>slopeBias<sp/>=<sp/>D3D11_DEFAULT_SLOPE_SCALED_DEPTH_BIAS,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>biasClamp<sp/>=<sp/>D3D11_DEFAULT_DEPTH_BIAS_CLAMP<sp/>);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classRasterizerState_a15d53a48554a11028388734468940786_1a15d53a48554a11028388734468940786" kindref="member">getUid</ref>()<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classRasterizerState_a3151107239aadcbe3426db7cce10f08e_1a3151107239aadcbe3426db7cce10f08e" kindref="member">RasterizerMode</ref><sp/><ref refid="classRasterizerState_a96c78548d9c4412e185643787e5c28d2_1a96c78548d9c4412e185643787e5c28d2" kindref="member">getMode</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>Microsoft::WRL::ComPtr&lt;ID3D11RasterizerState&gt;&amp;<sp/><ref refid="classRasterizerState_a820f2227da815a3ce625d7b63c7fc9a0_1a820f2227da815a3ce625d7b63c7fc9a0" kindref="member">getD3dRasterizerState</ref>();</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/rasterizer_state.h"/>
+  </compounddef>
+</doxygen>

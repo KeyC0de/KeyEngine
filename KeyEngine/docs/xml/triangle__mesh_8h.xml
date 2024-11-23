@@ -1,0 +1,193 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="triangle__mesh_8h" kind="file" language="C++">
+    <compoundname>triangle_mesh.h</compoundname>
+    <includes local="no">vector</includes>
+    <includes refid="dynamic__vertex__buffer_8h" local="yes">dynamic_vertex_buffer.h</includes>
+    <includedby refid="geometry_8h" local="yes">inc/geometry.h</includedby>
+    <includedby refid="sky__pass_8cpp" local="yes">src/sky_pass.cpp</includedby>
+    <includedby refid="triangle__mesh_8cpp" local="yes">src/triangle_mesh.cpp</includedby>
+    <incdepgraph>
+      <node id="13">
+        <label>assertions_console.h</label>
+        <link refid="assertions__console_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>color.h</label>
+        <link refid="color_8h"/>
+      </node>
+      <node id="3">
+        <label>dynamic_vertex_buffer.h</label>
+        <link refid="dynamic__vertex__buffer_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/triangle_mesh.h</label>
+        <link refid="triangle__mesh_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>winner.h</label>
+        <link refid="winner_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>DirectXMath.h</label>
+      </node>
+      <node id="6">
+        <label>Windows.h</label>
+      </node>
+      <node id="12">
+        <label>assimp/scene.h</label>
+      </node>
+      <node id="8">
+        <label>d3d11.h</label>
+      </node>
+      <node id="14">
+        <label>iostream</label>
+      </node>
+      <node id="5">
+        <label>sdkddkver.h</label>
+      </node>
+      <node id="9">
+        <label>type_traits</label>
+      </node>
+      <node id="10">
+        <label>utility</label>
+      </node>
+      <node id="2">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>inc/geometry.h</label>
+        <link refid="geometry_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/triangle_mesh.h</label>
+        <link refid="triangle__mesh_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>src/camera.cpp</label>
+        <link refid="camera_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/camera_frustum.cpp</label>
+        <link refid="camera__frustum_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/camera_widget.cpp</label>
+        <link refid="camera__widget_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/cube.cpp</label>
+        <link refid="cube_8cpp"/>
+      </node>
+      <node id="7">
+        <label>src/geometry.cpp</label>
+        <link refid="geometry_8cpp"/>
+      </node>
+      <node id="8">
+        <label>src/line.cpp</label>
+        <link refid="line_8cpp"/>
+      </node>
+      <node id="9">
+        <label>src/plane.cpp</label>
+        <link refid="plane_8cpp"/>
+      </node>
+      <node id="10">
+        <label>src/sky_pass.cpp</label>
+        <link refid="sky__pass_8cpp"/>
+      </node>
+      <node id="11">
+        <label>src/sphere.cpp</label>
+        <link refid="sphere_8cpp"/>
+      </node>
+      <node id="12">
+        <label>src/terrain.cpp</label>
+        <link refid="terrain_8cpp"/>
+      </node>
+      <node id="13">
+        <label>src/triangle_mesh.cpp</label>
+        <link refid="triangle__mesh_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structTriangleMesh" prot="public">TriangleMesh</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dynamic__vertex__buffer_8h" kindref="compound">dynamic_vertex_buffer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="structTriangleMesh" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structTriangleMesh" kindref="compound">TriangleMesh</ref><sp/>final</highlight></codeline>
+<codeline lineno="8"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="9" refid="structTriangleMesh_ad2c351e592766008f10cd37c3b71350b_1ad2c351e592766008f10cd37c3b71350b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classver_1_1VBuffer" kindref="compound">ver::VBuffer</ref><sp/><ref refid="structTriangleMesh_ad2c351e592766008f10cd37c3b71350b_1ad2c351e592766008f10cd37c3b71350b" kindref="member">m_vb</ref>;</highlight></codeline>
+<codeline lineno="10" refid="structTriangleMesh_a6eb90d0e6a6a925013922f6182dc1a5e_1a6eb90d0e6a6a925013922f6182dc1a5e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;unsigned&gt;<sp/><ref refid="structTriangleMesh_a6eb90d0e6a6a925013922f6182dc1a5e_1a6eb90d0e6a6a925013922f6182dc1a5e" kindref="member">m_indices</ref>;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="structTriangleMesh_aabd3741e2a547fb34c206069ebfd4b6c_1aabd3741e2a547fb34c206069ebfd4b6c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTriangleMesh_aabd3741e2a547fb34c206069ebfd4b6c_1aabd3741e2a547fb34c206069ebfd4b6c" kindref="member">TriangleMesh</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTriangleMesh_aabd3741e2a547fb34c206069ebfd4b6c_1aabd3741e2a547fb34c206069ebfd4b6c" kindref="member">TriangleMesh</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classver_1_1VBuffer" kindref="compound">ver::VBuffer</ref><sp/>&amp;vertices,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;unsigned&gt;<sp/>&amp;indices,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bMultimesh<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structTriangleMesh_ad6f2bd41d5ff9a09d7ac19366ab20604_1ad6f2bd41d5ff9a09d7ac19366ab20604" kindref="member">transform</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMMATRIX<sp/>&amp;matrix<sp/>);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structTriangleMesh_af284c2748d511589f18788bf245ca998_1af284c2748d511589f18788bf245ca998" kindref="member">setFlatShadedIndependentNormals</ref>()<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/triangle_mesh.h"/>
+  </compounddef>
+</doxygen>

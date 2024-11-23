@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classren_1_1Job" kind="class" language="C++" prot="public">
+    <compoundname>ren::Job</compoundname>
+    <includes refid="job_8h" local="no">job.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classren_1_1Job_aad2242ac2e134720361b8f11341baf99_1aad2242ac2e134720361b8f11341baf99" prot="private" static="no" mutable="no">
+        <type>const <ref refid="classMesh" kindref="compound">Mesh</ref> *</type>
+        <definition>const Mesh* ren::Job::m_pMesh</definition>
+        <argsstring></argsstring>
+        <name>m_pMesh</name>
+        <qualifiedname>ren::Job::m_pMesh</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/job.h" line="13" column="12" bodyfile="inc/job.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1Job_a67972ae793801883a97e9d2e9a6af8d0_1a67972ae793801883a97e9d2e9a6af8d0" prot="private" static="no" mutable="no">
+        <type>const <ref refid="classMaterial" kindref="compound">Material</ref> *</type>
+        <definition>const Material* ren::Job::m_pMaterial</definition>
+        <argsstring></argsstring>
+        <name>m_pMaterial</name>
+        <qualifiedname>ren::Job::m_pMaterial</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/job.h" line="14" column="16" bodyfile="inc/job.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classren_1_1Job_a4c0738020f77ca43bdcd78d8f8c2949e_1a4c0738020f77ca43bdcd78d8f8c2949e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ren::Job::Job</definition>
+        <argsstring>(const Mesh *pMesh, const Material *pMaterial)</argsstring>
+        <name>Job</name>
+        <qualifiedname>ren::Job::Job</qualifiedname>
+        <param>
+          <type>const <ref refid="classMesh" kindref="compound">Mesh</ref> *</type>
+          <declname>pMesh</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classMaterial" kindref="compound">Material</ref> *</type>
+          <declname>pMaterial</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/job.h" line="16" column="1" bodyfile="src/job.cpp" bodystart="11" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1Job_a7904359dc487cfe80118ce58c7442381_1a7904359dc487cfe80118ce58c7442381" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ren::Job::run</definition>
+        <argsstring>(Graphics &amp;gfx) const cond_noex</argsstring>
+        <name>run</name>
+        <qualifiedname>ren::Job::run</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+<para><orderedlist>
+<listitem><para>binds mesh </para>
+</listitem></orderedlist>
+</para>
+        </briefdescription>
+        <detaileddescription>
+<para><orderedlist>
+<listitem><para>executes draw call </para>
+</listitem></orderedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/job.h" line="20" column="6" bodyfile="src/job.cpp" bodystart="19" bodyend="25"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="8">
+        <label>Material</label>
+        <link refid="classMaterial"/>
+        <childnode refid="9" relation="usage">
+          <edgelabel>m_pTargetPass</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Mesh</label>
+        <link refid="classMesh"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>m_pNode</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>m_colorPscb</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>m_colorPscbOutline</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>m_colorPscbWireframe</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>m_colorPscbDepthReversed</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Mesh::ColorPSCB</label>
+        <link refid="structMesh_1_1ColorPSCB"/>
+      </node>
+      <node id="5">
+        <label>Mesh::ColorPSCB2</label>
+        <link refid="structMesh_1_1ColorPSCB2"/>
+      </node>
+      <node id="6">
+        <label>Mesh::ColorPSCB3</label>
+        <link refid="structMesh_1_1ColorPSCB3"/>
+      </node>
+      <node id="7">
+        <label>Mesh::ColorPSCB4</label>
+        <link refid="structMesh_1_1ColorPSCB4"/>
+      </node>
+      <node id="3">
+        <label>Node</label>
+        <link refid="classNode"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>m_pParent</edgelabel>
+        </childnode>
+      </node>
+      <node id="10">
+        <label>ren::IBindablePass</label>
+        <link refid="classren_1_1IBindablePass"/>
+        <childnode refid="11" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>ren::IPass</label>
+        <link refid="classren_1_1IPass"/>
+      </node>
+      <node id="1">
+        <label>ren::Job</label>
+        <link refid="classren_1_1Job"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>m_pMesh</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>m_pMaterial</edgelabel>
+        </childnode>
+      </node>
+      <node id="9">
+        <label>ren::RenderQueuePass</label>
+        <link refid="classren_1_1RenderQueuePass"/>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/job.h" line="11" column="1" bodyfile="inc/job.h" bodystart="12" bodyend="21"/>
+    <listofallmembers>
+      <member refid="classren_1_1Job_a4c0738020f77ca43bdcd78d8f8c2949e_1a4c0738020f77ca43bdcd78d8f8c2949e" prot="public" virt="non-virtual"><scope>ren::Job</scope><name>Job</name></member>
+      <member refid="classren_1_1Job_a67972ae793801883a97e9d2e9a6af8d0_1a67972ae793801883a97e9d2e9a6af8d0" prot="private" virt="non-virtual"><scope>ren::Job</scope><name>m_pMaterial</name></member>
+      <member refid="classren_1_1Job_aad2242ac2e134720361b8f11341baf99_1aad2242ac2e134720361b8f11341baf99" prot="private" virt="non-virtual"><scope>ren::Job</scope><name>m_pMesh</name></member>
+      <member refid="classren_1_1Job_a7904359dc487cfe80118ce58c7442381_1a7904359dc487cfe80118ce58c7442381" prot="public" virt="non-virtual"><scope>ren::Job</scope><name>run</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -4,15 +4,13 @@
 #include <stdexcept>
 
 
-//=============================================================
-// \class	KeyException
-//
-// \author	KeyC0de
-// \date	2019/09/11 19:38
-//
-// \brief	Custom exception hierarchy
-//			child/specific exception classes are nested in other classes & specify the concrete exception description
-//=============================================================
+///=============================================================
+/// \class	KeyException
+/// \author	KeyC0de
+/// \date	2019/09/11 19:38
+/// \brief	Custom exception hierarchy
+/// \brief	child/specific exception classes are nested in other classes & specify the concrete exception description
+///=============================================================
 class KeyException
 	: public std::exception
 {
@@ -26,7 +24,7 @@ public:
 	virtual ~KeyException() noexcept = default;
 
 	virtual const char* what() const noexcept override;
-	//===================================================
+	///===================================================
 	// \brief returns the type of the exception - name of child exception class
 	// \date 2019/09/11 20:18
 	virtual std::string getType() const noexcept;

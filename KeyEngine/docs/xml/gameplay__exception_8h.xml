@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="gameplay__exception_8h" kind="file" language="C++">
+    <compoundname>gameplay_exception.h</compoundname>
+    <includes refid="key__exception_8h" local="yes">key_exception.h</includes>
+    <includedby refid="entity__manager_8cpp" local="yes">src/entity_manager.cpp</includedby>
+    <includedby refid="gameplay__exception_8cpp" local="yes">src/gameplay_exception.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>inc/gameplay_exception.h</label>
+        <link refid="gameplay__exception_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>key_exception.h</label>
+        <link refid="key__exception_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>stdexcept</label>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>inc/gameplay_exception.h</label>
+        <link refid="gameplay__exception_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/entity_manager.cpp</label>
+        <link refid="entity__manager_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/gameplay_exception.cpp</label>
+        <link refid="gameplay__exception_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classGameplayException" prot="public">GameplayException</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="gameplay__exception_8h_a7e7f8c8434b9545ae37b6973764f75d7_1a7e7f8c8434b9545ae37b6973764f75d7" prot="public" static="no">
+        <name>THROW_GAMEPLAY_EXCEPTION</name>
+        <param><defname>msg</defname></param>
+        <initializer>	__debugbreak();\
+	throw <ref refid="classGameplayException" kindref="compound">GameplayException</ref>( __LINE__, __FILE__, __FUNCTION__, msg );</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/gameplay_exception.h" line="17" column="9" bodyfile="inc/gameplay_exception.h" bodystart="17" bodyend="18"/>
+        <referencedby refid="classEntityManager_af046dce25901cf3cd28805eeee6b3100_1af046dce25901cf3cd28805eeee6b3100" compoundref="entity__manager_8cpp" startline="130" endline="164">EntityManager::getBucket</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="key__exception_8h" kindref="compound">key_exception.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="classGameplayException" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classGameplayException" kindref="compound">GameplayException</ref><sp/>final</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classKeyException" kindref="compound">KeyException</ref></highlight></codeline>
+<codeline lineno="8"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGameplayException_a241439670b2cfe6a8514d3b912a9fd67_1a241439670b2cfe6a8514d3b912a9fd67" kindref="member">GameplayException</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>line,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*file,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*function,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;msg<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classGameplayException_a1c6b4a9ac77996f1eea1d1e41a3ba520_1a1c6b4a9ac77996f1eea1d1e41a3ba520" kindref="member">getType</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classGameplayException_aad769d448640333a2dd4902bac7ae62b_1aad769d448640333a2dd4902bac7ae62b" kindref="member">what</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="gameplay__exception_8h_a7e7f8c8434b9545ae37b6973764f75d7_1a7e7f8c8434b9545ae37b6973764f75d7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>THROW_GAMEPLAY_EXCEPTION(<sp/>msg<sp/>)<sp/>__debugbreak();\</highlight></codeline>
+<codeline lineno="18"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>throw<sp/>GameplayException(<sp/>__LINE__,<sp/>__FILE__,<sp/>__FUNCTION__,<sp/>msg<sp/>);</highlight></codeline>
+    </programlisting>
+    <location file="inc/gameplay_exception.h"/>
+  </compounddef>
+</doxygen>

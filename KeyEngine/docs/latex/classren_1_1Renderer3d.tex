@@ -1,0 +1,278 @@
+\doxysection{ren\+::Renderer3d Class Reference}
+\hypertarget{classren_1_1Renderer3d}{}\label{classren_1_1Renderer3d}\index{ren::Renderer3d@{ren::Renderer3d}}
+
+
+{\ttfamily \#include $<$renderer.\+h$>$}
+
+Inheritance diagram for ren\+::Renderer3d\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classren_1_1Renderer3d}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classren_1_1Renderer3d_ae2c39885efb402209cdb881c6b78c9ab_ae2c39885efb402209cdb881c6b78c9ab}{Kernel\+Type}} \{ \mbox{\hyperlink{classren_1_1Renderer3d_ae2c39885efb402209cdb881c6b78c9ab_ae2c39885efb402209cdb881c6b78c9aba9373cda46e2de7b9557de2d82a922e9f}{Gauss}}
+, \mbox{\hyperlink{classren_1_1Renderer3d_ae2c39885efb402209cdb881c6b78c9ab_ae2c39885efb402209cdb881c6b78c9abaae91b03c506ff8036834c9f18e64a5a7}{Box}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classren_1_1Renderer3d_a95bf42dec813b7c1791f14c6202a5b91_a95bf42dec813b7c1791f14c6202a5b91}{Renderer3d}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const bool b\+Draw\+To\+Offscreen, const int radius, const float sigma, const \mbox{\hyperlink{classren_1_1Renderer3d_ae2c39885efb402209cdb881c6b78c9ab_ae2c39885efb402209cdb881c6b78c9ab}{Kernel\+Type}} kernel\+Type=\mbox{\hyperlink{classren_1_1Renderer3d_ae2c39885efb402209cdb881c6b78c9ab_ae2c39885efb402209cdb881c6b78c9aba9373cda46e2de7b9557de2d82a922e9f}{Gauss}})
+\item 
+void \mbox{\hyperlink{classren_1_1Renderer3d_afd4dabebdfcf0485228c750bbb227372_afd4dabebdfcf0485228c750bbb227372}{recreate}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) override
+\item 
+void \mbox{\hyperlink{classren_1_1Renderer3d_a20dbdf95b09beca6a94150c8f4f7466f_a20dbdf95b09beca6a94150c8f4f7466f}{display\+Imgui\+Widgets}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) noexcept
+\item 
+void \mbox{\hyperlink{classren_1_1Renderer3d_a90523c608900e18480728a104a04a88d_a90523c608900e18480728a104a04a88d}{dump\+Shadow\+Map}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const std\+::string \&path)
+\item 
+void \mbox{\hyperlink{classren_1_1Renderer3d_abb77f1f6e2ab72d9c834f30443b4ee9b_abb77f1f6e2ab72d9c834f30443b4ee9b}{dump\+Shadow\+Cube\+Map}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const std\+::string \&path)
+\item 
+void \mbox{\hyperlink{classren_1_1Renderer3d_acddc17f633ab9b1ff8e10b44fe564c49_acddc17f633ab9b1ff8e10b44fe564c49}{set\+Active\+Camera}} (const \mbox{\hyperlink{classCamera}{Camera}} \&cam)
+\begin{DoxyCompactList}\small\item\em binds active camera to all Passes that need it \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classren_1_1Renderer3d_a659726953a58885d70e1f74a5da7b278_a659726953a58885d70e1f74a5da7b278}{bind\+Shadow\+Casting\+Lights}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const std\+::vector$<$ \mbox{\hyperlink{classILightSource}{ILight\+Source}} \texorpdfstring{$\ast$}{*} $>$ \&shadow\+Casting\+Lights)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classren_1_1Renderer}{ren\+::\+Renderer}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classren_1_1Renderer_a0b75fa1102c3a19fa22f0ee847f85e49_a0b75fa1102c3a19fa22f0ee847f85e49}{Renderer}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const bool draw\+To\+Offscreen)
+\item 
+virtual \mbox{\hyperlink{classren_1_1Renderer_ac73a62446f1263fb388eb41f0b739ddf_ac73a62446f1263fb388eb41f0b739ddf}{\texorpdfstring{$\sim$}{\string~}\+Renderer}} () noexcept
+\item 
+void \mbox{\hyperlink{classren_1_1Renderer_a2d83d7207a80302f16ae4e8e082a572a_a2d83d7207a80302f16ae4e8e082a572a}{run}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) cond\+\_\+noex
+\item 
+virtual void \mbox{\hyperlink{classren_1_1Renderer_ab6665daa173077d48680689f6c1d3ecf_ab6665daa173077d48680689f6c1d3ecf}{reset}} () noexcept
+\item 
+\mbox{\hyperlink{classren_1_1RenderQueuePass}{Render\+Queue\+Pass}} \& \mbox{\hyperlink{classren_1_1Renderer_a9cb92496179a0e4d85037ce03ee07475_a9cb92496179a0e4d85037ce03ee07475}{get\+Render\+Queue\+Pass}} (const std\+::string \&name)
+\item 
+bool \mbox{\hyperlink{classren_1_1Renderer_a810fc6594a4b225e51e54aed0b28dcf6_a810fc6594a4b225e51e54aed0b28dcf6}{is\+Using\+Offscreen\+Rendering}} () const noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classren_1_1Renderer3d_ae2c39885efb402209cdb881c6b78c9ab_ae2c39885efb402209cdb881c6b78c9ab}{Kernel\+Type}} \mbox{\hyperlink{classren_1_1Renderer3d_a81b8610180aba7fb323e012e8f8d7b1e_a81b8610180aba7fb323e012e8f8d7b1e}{m\+\_\+kernel\+Type}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classren_1_1Renderer3d_ab1e547948ad21a54ae83a79bf57b9e3c_ab1e547948ad21a54ae83a79bf57b9e3c}{show\+Shadow\+Dump\+Imgui\+Window}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) noexcept
+\item 
+void \mbox{\hyperlink{classren_1_1Renderer3d_af82d74185f3ce6de94ab42ac468c9ee8_af82d74185f3ce6de94ab42ac468c9ee8}{show\+Gaussian\+Blur\+Imgui\+Window}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) noexcept
+\item 
+void \mbox{\hyperlink{classren_1_1Renderer3d_aebbd99d61a4bd8e7412fb7e9048e1892_aebbd99d61a4bd8e7412fb7e9048e1892}{show\+Display\+Mode}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) noexcept
+\item 
+void \mbox{\hyperlink{classren_1_1Renderer3d_a4fdb00f4231e140956203b65b13555f2_a4fdb00f4231e140956203b65b13555f2}{set\+Kernel\+Gauss}} (const int radius, const float sigma) cond\+\_\+noex
+\item 
+void \mbox{\hyperlink{classren_1_1Renderer3d_ae87044036a711bc316181e99b116170c_ae87044036a711bc316181e99b116170c}{set\+Kernel\+Box}} (const int radius) cond\+\_\+noex
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classren_1_1Renderer3d_acd91a9d5e15585a1241a09f85226b432_acd91a9d5e15585a1241a09f85226b432}{m\+\_\+radius}}
+\item 
+float \mbox{\hyperlink{classren_1_1Renderer3d_a73a21fa8372ab12e1c4b435eaa3ef837_a73a21fa8372ab12e1c4b435eaa3ef837}{m\+\_\+sigma}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{constant__buffer__ex_8h_a40b2387135b18453c8f82b1552a96747_a40b2387135b18453c8f82b1552a96747}{Pixel\+Shader\+Constant\+Buffer\+Ex}} $>$ \mbox{\hyperlink{classren_1_1Renderer3d_a8769e329ec9485bc66776daa73c1048d_a8769e329ec9485bc66776daa73c1048d}{m\+\_\+blur\+Kernel}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{constant__buffer__ex_8h_a40b2387135b18453c8f82b1552a96747_a40b2387135b18453c8f82b1552a96747}{Pixel\+Shader\+Constant\+Buffer\+Ex}} $>$ \mbox{\hyperlink{classren_1_1Renderer3d_a2d026c77a600dbd1b3ddfebdcfaf2e15_a2d026c77a600dbd1b3ddfebdcfaf2e15}{m\+\_\+blur\+Direction}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr int \mbox{\hyperlink{classren_1_1Renderer3d_ab7542e4e9db4924e29660e6d86145458_ab7542e4e9db4924e29660e6d86145458}{s\+\_\+max\+Radius}} = 13
+\item 
+static constexpr float \mbox{\hyperlink{classren_1_1Renderer3d_a5a709e2e312d000f57591e8c550dc3ca_a5a709e2e312d000f57591e8c550dc3ca}{s\+\_\+max\+Sigma}} = 7.\+0f
+\item 
+static constexpr unsigned \mbox{\hyperlink{classren_1_1Renderer3d_aab6dcc7e7d45fe5eb6402db705906f75_aab6dcc7e7d45fe5eb6402db705906f75}{s\+\_\+fullscreen\+Rez\+Reduct\+Factor}} = 4u
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classren_1_1Renderer}{ren\+::\+Renderer}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classren_1_1Renderer_ac15c40de52d25e712c8f95b0b758114e_ac15c40de52d25e712c8f95b0b758114e}{add\+Global\+Linker}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classren_1_1ILinker}{ILinker}} $>$ p\+Linker)
+\item 
+void \mbox{\hyperlink{classren_1_1Renderer_afefad320dd9bae3f7d22b382bfd1d5bc_afefad320dd9bae3f7d22b382bfd1d5bc}{add\+Global\+Binder}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classren_1_1IBinder}{IBinder}} $>$ p\+Binder)
+\item 
+void \mbox{\hyperlink{classren_1_1Renderer_a5a6320465c595b0b1bddd2c330678d88_a5a6320465c595b0b1bddd2c330678d88}{add\+Pass}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classren_1_1IPass}{IPass}} $>$ p\+Pass)
+\item 
+void \mbox{\hyperlink{classren_1_1Renderer_ac7031cf5bbcadcf0c7ce0cfe450a9711_ac7031cf5bbcadcf0c7ce0cfe450a9711}{setup\+Global\+Binder\+Target}} (const std\+::string \&global\+Binder\+Name, const std\+::string \&pass\+Name, const std\+::string \&linker\+Name)
+\item 
+void \mbox{\hyperlink{classren_1_1Renderer_a007187fada4994fb8912be70dcc4aa1f_a007187fada4994fb8912be70dcc4aa1f}{link\+Global\+Binders}} ()
+\item 
+\mbox{\hyperlink{classren_1_1IPass}{IPass}} \& \mbox{\hyperlink{classren_1_1Renderer_a12d7d108754fc228d0c157b350f965d7_a12d7d108754fc228d0c157b350f965d7}{get\+Pass}} (const std\+::string \&name)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classren_1_1Renderer}{ren\+::\+Renderer}}}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classren_1_1Renderer_af0aa20f264507605ced6ae4385799d8e_af0aa20f264507605ced6ae4385799d8e}{m\+\_\+b\+Uses\+Offscreen}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classren_1_1IPass}{IPass}} $>$ \mbox{\hyperlink{classren_1_1Renderer_abbbe922d48fe9c2f02cb2cf454bb3c96_abbbe922d48fe9c2f02cb2cf454bb3c96}{m\+\_\+p\+Final\+Post\+Process\+Pass}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIRenderTargetView}{IRender\+Target\+View}} $>$ \mbox{\hyperlink{classren_1_1Renderer_a7b79ebe1dd8b11bb7f762152f8f57720_a7b79ebe1dd8b11bb7f762152f8f57720}{m\+\_\+p\+Rtv}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIDepthStencilView}{IDepth\+Stencil\+View}} $>$ \mbox{\hyperlink{classren_1_1Renderer_a97b542b21987b7df6560c3327f89e2aa_a97b542b21987b7df6560c3327f89e2aa}{m\+\_\+p\+Dsv}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{classren_1_1Renderer3d_ae2c39885efb402209cdb881c6b78c9ab_ae2c39885efb402209cdb881c6b78c9ab}\index{ren::Renderer3d@{ren::Renderer3d}!KernelType@{KernelType}}
+\index{KernelType@{KernelType}!ren::Renderer3d@{ren::Renderer3d}}
+\doxysubsubsection{\texorpdfstring{KernelType}{KernelType}}
+{\footnotesize\ttfamily \label{classren_1_1Renderer3d_ae2c39885efb402209cdb881c6b78c9ab_ae2c39885efb402209cdb881c6b78c9ab} 
+enum \mbox{\hyperlink{classren_1_1Renderer3d_ae2c39885efb402209cdb881c6b78c9ab_ae2c39885efb402209cdb881c6b78c9ab}{ren\+::\+Renderer3d\+::\+Kernel\+Type}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Gauss@{Gauss}!ren::Renderer3d@{ren::Renderer3d}}\index{ren::Renderer3d@{ren::Renderer3d}!Gauss@{Gauss}}}\Hypertarget{classren_1_1Renderer3d_ae2c39885efb402209cdb881c6b78c9ab_ae2c39885efb402209cdb881c6b78c9aba9373cda46e2de7b9557de2d82a922e9f}\label{classren_1_1Renderer3d_ae2c39885efb402209cdb881c6b78c9ab_ae2c39885efb402209cdb881c6b78c9ab} 
+Gauss&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Box@{Box}!ren::Renderer3d@{ren::Renderer3d}}\index{ren::Renderer3d@{ren::Renderer3d}!Box@{Box}}}\Hypertarget{classren_1_1Renderer3d_ae2c39885efb402209cdb881c6b78c9ab_ae2c39885efb402209cdb881c6b78c9abaae91b03c506ff8036834c9f18e64a5a7}\label{classren_1_1Renderer3d_ae2c39885efb402209cdb881c6b78c9ab_ae2c39885efb402209cdb881c6b78c9ab} 
+Box&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classren_1_1Renderer3d_a95bf42dec813b7c1791f14c6202a5b91_a95bf42dec813b7c1791f14c6202a5b91}\index{ren::Renderer3d@{ren::Renderer3d}!Renderer3d@{Renderer3d}}
+\index{Renderer3d@{Renderer3d}!ren::Renderer3d@{ren::Renderer3d}}
+\doxysubsubsection{\texorpdfstring{Renderer3d()}{Renderer3d()}}
+{\footnotesize\ttfamily \label{classren_1_1Renderer3d_a95bf42dec813b7c1791f14c6202a5b91_a95bf42dec813b7c1791f14c6202a5b91} 
+ren\+::\+Renderer3d\+::\+Renderer3d (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const bool}]{b\+Draw\+To\+Offscreen}{, }\item[{const int}]{radius}{, }\item[{const float}]{sigma}{, }\item[{const \mbox{\hyperlink{classren_1_1Renderer3d_ae2c39885efb402209cdb881c6b78c9ab_ae2c39885efb402209cdb881c6b78c9ab}{Kernel\+Type}}}]{kernel\+Type}{ = {\ttfamily \mbox{\hyperlink{classren_1_1Renderer3d_ae2c39885efb402209cdb881c6b78c9ab_ae2c39885efb402209cdb881c6b78c9aba9373cda46e2de7b9557de2d82a922e9f}{Gauss}}}}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classren_1_1Renderer3d_a659726953a58885d70e1f74a5da7b278_a659726953a58885d70e1f74a5da7b278}\index{ren::Renderer3d@{ren::Renderer3d}!bindShadowCastingLights@{bindShadowCastingLights}}
+\index{bindShadowCastingLights@{bindShadowCastingLights}!ren::Renderer3d@{ren::Renderer3d}}
+\doxysubsubsection{\texorpdfstring{bindShadowCastingLights()}{bindShadowCastingLights()}}
+{\footnotesize\ttfamily \label{classren_1_1Renderer3d_a659726953a58885d70e1f74a5da7b278_a659726953a58885d70e1f74a5da7b278} 
+void ren\+::\+Renderer3d\+::bind\+Shadow\+Casting\+Lights (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const std\+::vector$<$ \mbox{\hyperlink{classILightSource}{ILight\+Source}} \texorpdfstring{$\ast$}{*} $>$ \&}]{shadow\+Casting\+Lights}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classren_1_1Renderer3d_a20dbdf95b09beca6a94150c8f4f7466f_a20dbdf95b09beca6a94150c8f4f7466f}\index{ren::Renderer3d@{ren::Renderer3d}!displayImguiWidgets@{displayImguiWidgets}}
+\index{displayImguiWidgets@{displayImguiWidgets}!ren::Renderer3d@{ren::Renderer3d}}
+\doxysubsubsection{\texorpdfstring{displayImguiWidgets()}{displayImguiWidgets()}}
+{\footnotesize\ttfamily \label{classren_1_1Renderer3d_a20dbdf95b09beca6a94150c8f4f7466f_a20dbdf95b09beca6a94150c8f4f7466f} 
+void ren\+::\+Renderer3d\+::display\+Imgui\+Widgets (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classren_1_1Renderer3d_abb77f1f6e2ab72d9c834f30443b4ee9b_abb77f1f6e2ab72d9c834f30443b4ee9b}\index{ren::Renderer3d@{ren::Renderer3d}!dumpShadowCubeMap@{dumpShadowCubeMap}}
+\index{dumpShadowCubeMap@{dumpShadowCubeMap}!ren::Renderer3d@{ren::Renderer3d}}
+\doxysubsubsection{\texorpdfstring{dumpShadowCubeMap()}{dumpShadowCubeMap()}}
+{\footnotesize\ttfamily \label{classren_1_1Renderer3d_abb77f1f6e2ab72d9c834f30443b4ee9b_abb77f1f6e2ab72d9c834f30443b4ee9b} 
+void ren\+::\+Renderer3d\+::dump\+Shadow\+Cube\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const std\+::string \&}]{path}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classren_1_1Renderer3d_a90523c608900e18480728a104a04a88d_a90523c608900e18480728a104a04a88d}\index{ren::Renderer3d@{ren::Renderer3d}!dumpShadowMap@{dumpShadowMap}}
+\index{dumpShadowMap@{dumpShadowMap}!ren::Renderer3d@{ren::Renderer3d}}
+\doxysubsubsection{\texorpdfstring{dumpShadowMap()}{dumpShadowMap()}}
+{\footnotesize\ttfamily \label{classren_1_1Renderer3d_a90523c608900e18480728a104a04a88d_a90523c608900e18480728a104a04a88d} 
+void ren\+::\+Renderer3d\+::dump\+Shadow\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const std\+::string \&}]{path}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classren_1_1Renderer3d_afd4dabebdfcf0485228c750bbb227372_afd4dabebdfcf0485228c750bbb227372}\index{ren::Renderer3d@{ren::Renderer3d}!recreate@{recreate}}
+\index{recreate@{recreate}!ren::Renderer3d@{ren::Renderer3d}}
+\doxysubsubsection{\texorpdfstring{recreate()}{recreate()}}
+{\footnotesize\ttfamily \label{classren_1_1Renderer3d_afd4dabebdfcf0485228c750bbb227372_afd4dabebdfcf0485228c750bbb227372} 
+void ren\+::\+Renderer3d\+::recreate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classren_1_1Renderer_ae20ba92f5c1d98a6bcb0a04e258991f4_ae20ba92f5c1d98a6bcb0a04e258991f4}{ren\+::\+Renderer}}.
+
+\Hypertarget{classren_1_1Renderer3d_acddc17f633ab9b1ff8e10b44fe564c49_acddc17f633ab9b1ff8e10b44fe564c49}\index{ren::Renderer3d@{ren::Renderer3d}!setActiveCamera@{setActiveCamera}}
+\index{setActiveCamera@{setActiveCamera}!ren::Renderer3d@{ren::Renderer3d}}
+\doxysubsubsection{\texorpdfstring{setActiveCamera()}{setActiveCamera()}}
+{\footnotesize\ttfamily \label{classren_1_1Renderer3d_acddc17f633ab9b1ff8e10b44fe564c49_acddc17f633ab9b1ff8e10b44fe564c49} 
+void ren\+::\+Renderer3d\+::set\+Active\+Camera (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCamera}{Camera}} \&}]{cam}{}\end{DoxyParamCaption})}
+
+
+
+binds active camera to all Passes that need it 
+
+\Hypertarget{classren_1_1Renderer3d_ae87044036a711bc316181e99b116170c_ae87044036a711bc316181e99b116170c}\index{ren::Renderer3d@{ren::Renderer3d}!setKernelBox@{setKernelBox}}
+\index{setKernelBox@{setKernelBox}!ren::Renderer3d@{ren::Renderer3d}}
+\doxysubsubsection{\texorpdfstring{setKernelBox()}{setKernelBox()}}
+{\footnotesize\ttfamily \label{classren_1_1Renderer3d_ae87044036a711bc316181e99b116170c_ae87044036a711bc316181e99b116170c} 
+void ren\+::\+Renderer3d\+::set\+Kernel\+Box (\begin{DoxyParamCaption}\item[{const int}]{radius}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classren_1_1Renderer3d_a4fdb00f4231e140956203b65b13555f2_a4fdb00f4231e140956203b65b13555f2}\index{ren::Renderer3d@{ren::Renderer3d}!setKernelGauss@{setKernelGauss}}
+\index{setKernelGauss@{setKernelGauss}!ren::Renderer3d@{ren::Renderer3d}}
+\doxysubsubsection{\texorpdfstring{setKernelGauss()}{setKernelGauss()}}
+{\footnotesize\ttfamily \label{classren_1_1Renderer3d_a4fdb00f4231e140956203b65b13555f2_a4fdb00f4231e140956203b65b13555f2} 
+void ren\+::\+Renderer3d\+::set\+Kernel\+Gauss (\begin{DoxyParamCaption}\item[{const int}]{radius}{, }\item[{const float}]{sigma}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classren_1_1Renderer3d_aebbd99d61a4bd8e7412fb7e9048e1892_aebbd99d61a4bd8e7412fb7e9048e1892}\index{ren::Renderer3d@{ren::Renderer3d}!showDisplayMode@{showDisplayMode}}
+\index{showDisplayMode@{showDisplayMode}!ren::Renderer3d@{ren::Renderer3d}}
+\doxysubsubsection{\texorpdfstring{showDisplayMode()}{showDisplayMode()}}
+{\footnotesize\ttfamily \label{classren_1_1Renderer3d_aebbd99d61a4bd8e7412fb7e9048e1892_aebbd99d61a4bd8e7412fb7e9048e1892} 
+void ren\+::\+Renderer3d\+::show\+Display\+Mode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classren_1_1Renderer3d_af82d74185f3ce6de94ab42ac468c9ee8_af82d74185f3ce6de94ab42ac468c9ee8}\index{ren::Renderer3d@{ren::Renderer3d}!showGaussianBlurImguiWindow@{showGaussianBlurImguiWindow}}
+\index{showGaussianBlurImguiWindow@{showGaussianBlurImguiWindow}!ren::Renderer3d@{ren::Renderer3d}}
+\doxysubsubsection{\texorpdfstring{showGaussianBlurImguiWindow()}{showGaussianBlurImguiWindow()}}
+{\footnotesize\ttfamily \label{classren_1_1Renderer3d_af82d74185f3ce6de94ab42ac468c9ee8_af82d74185f3ce6de94ab42ac468c9ee8} 
+void ren\+::\+Renderer3d\+::show\+Gaussian\+Blur\+Imgui\+Window (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classren_1_1Renderer3d_ab1e547948ad21a54ae83a79bf57b9e3c_ab1e547948ad21a54ae83a79bf57b9e3c}\index{ren::Renderer3d@{ren::Renderer3d}!showShadowDumpImguiWindow@{showShadowDumpImguiWindow}}
+\index{showShadowDumpImguiWindow@{showShadowDumpImguiWindow}!ren::Renderer3d@{ren::Renderer3d}}
+\doxysubsubsection{\texorpdfstring{showShadowDumpImguiWindow()}{showShadowDumpImguiWindow()}}
+{\footnotesize\ttfamily \label{classren_1_1Renderer3d_ab1e547948ad21a54ae83a79bf57b9e3c_ab1e547948ad21a54ae83a79bf57b9e3c} 
+void ren\+::\+Renderer3d\+::show\+Shadow\+Dump\+Imgui\+Window (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classren_1_1Renderer3d_a2d026c77a600dbd1b3ddfebdcfaf2e15_a2d026c77a600dbd1b3ddfebdcfaf2e15}\index{ren::Renderer3d@{ren::Renderer3d}!m\_blurDirection@{m\_blurDirection}}
+\index{m\_blurDirection@{m\_blurDirection}!ren::Renderer3d@{ren::Renderer3d}}
+\doxysubsubsection{\texorpdfstring{m\_blurDirection}{m\_blurDirection}}
+{\footnotesize\ttfamily \label{classren_1_1Renderer3d_a2d026c77a600dbd1b3ddfebdcfaf2e15_a2d026c77a600dbd1b3ddfebdcfaf2e15} 
+std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{constant__buffer__ex_8h_a40b2387135b18453c8f82b1552a96747_a40b2387135b18453c8f82b1552a96747}{Pixel\+Shader\+Constant\+Buffer\+Ex}}$>$ ren\+::\+Renderer3d\+::m\+\_\+blur\+Direction\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classren_1_1Renderer3d_a8769e329ec9485bc66776daa73c1048d_a8769e329ec9485bc66776daa73c1048d}\index{ren::Renderer3d@{ren::Renderer3d}!m\_blurKernel@{m\_blurKernel}}
+\index{m\_blurKernel@{m\_blurKernel}!ren::Renderer3d@{ren::Renderer3d}}
+\doxysubsubsection{\texorpdfstring{m\_blurKernel}{m\_blurKernel}}
+{\footnotesize\ttfamily \label{classren_1_1Renderer3d_a8769e329ec9485bc66776daa73c1048d_a8769e329ec9485bc66776daa73c1048d} 
+std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{constant__buffer__ex_8h_a40b2387135b18453c8f82b1552a96747_a40b2387135b18453c8f82b1552a96747}{Pixel\+Shader\+Constant\+Buffer\+Ex}}$>$ ren\+::\+Renderer3d\+::m\+\_\+blur\+Kernel\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classren_1_1Renderer3d_a81b8610180aba7fb323e012e8f8d7b1e_a81b8610180aba7fb323e012e8f8d7b1e}\index{ren::Renderer3d@{ren::Renderer3d}!m\_kernelType@{m\_kernelType}}
+\index{m\_kernelType@{m\_kernelType}!ren::Renderer3d@{ren::Renderer3d}}
+\doxysubsubsection{\texorpdfstring{m\_kernelType}{m\_kernelType}}
+{\footnotesize\ttfamily \label{classren_1_1Renderer3d_a81b8610180aba7fb323e012e8f8d7b1e_a81b8610180aba7fb323e012e8f8d7b1e} 
+\mbox{\hyperlink{classren_1_1Renderer3d_ae2c39885efb402209cdb881c6b78c9ab_ae2c39885efb402209cdb881c6b78c9ab}{Kernel\+Type}} ren\+::\+Renderer3d\+::m\+\_\+kernel\+Type}
+
+\Hypertarget{classren_1_1Renderer3d_acd91a9d5e15585a1241a09f85226b432_acd91a9d5e15585a1241a09f85226b432}\index{ren::Renderer3d@{ren::Renderer3d}!m\_radius@{m\_radius}}
+\index{m\_radius@{m\_radius}!ren::Renderer3d@{ren::Renderer3d}}
+\doxysubsubsection{\texorpdfstring{m\_radius}{m\_radius}}
+{\footnotesize\ttfamily \label{classren_1_1Renderer3d_acd91a9d5e15585a1241a09f85226b432_acd91a9d5e15585a1241a09f85226b432} 
+int ren\+::\+Renderer3d\+::m\+\_\+radius\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classren_1_1Renderer3d_a73a21fa8372ab12e1c4b435eaa3ef837_a73a21fa8372ab12e1c4b435eaa3ef837}\index{ren::Renderer3d@{ren::Renderer3d}!m\_sigma@{m\_sigma}}
+\index{m\_sigma@{m\_sigma}!ren::Renderer3d@{ren::Renderer3d}}
+\doxysubsubsection{\texorpdfstring{m\_sigma}{m\_sigma}}
+{\footnotesize\ttfamily \label{classren_1_1Renderer3d_a73a21fa8372ab12e1c4b435eaa3ef837_a73a21fa8372ab12e1c4b435eaa3ef837} 
+float ren\+::\+Renderer3d\+::m\+\_\+sigma\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classren_1_1Renderer3d_aab6dcc7e7d45fe5eb6402db705906f75_aab6dcc7e7d45fe5eb6402db705906f75}\index{ren::Renderer3d@{ren::Renderer3d}!s\_fullscreenRezReductFactor@{s\_fullscreenRezReductFactor}}
+\index{s\_fullscreenRezReductFactor@{s\_fullscreenRezReductFactor}!ren::Renderer3d@{ren::Renderer3d}}
+\doxysubsubsection{\texorpdfstring{s\_fullscreenRezReductFactor}{s\_fullscreenRezReductFactor}}
+{\footnotesize\ttfamily \label{classren_1_1Renderer3d_aab6dcc7e7d45fe5eb6402db705906f75_aab6dcc7e7d45fe5eb6402db705906f75} 
+unsigned ren\+::\+Renderer3d\+::s\+\_\+fullscreen\+Rez\+Reduct\+Factor = 4u\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+\Hypertarget{classren_1_1Renderer3d_ab7542e4e9db4924e29660e6d86145458_ab7542e4e9db4924e29660e6d86145458}\index{ren::Renderer3d@{ren::Renderer3d}!s\_maxRadius@{s\_maxRadius}}
+\index{s\_maxRadius@{s\_maxRadius}!ren::Renderer3d@{ren::Renderer3d}}
+\doxysubsubsection{\texorpdfstring{s\_maxRadius}{s\_maxRadius}}
+{\footnotesize\ttfamily \label{classren_1_1Renderer3d_ab7542e4e9db4924e29660e6d86145458_ab7542e4e9db4924e29660e6d86145458} 
+int ren\+::\+Renderer3d\+::s\+\_\+max\+Radius = 13\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+\Hypertarget{classren_1_1Renderer3d_a5a709e2e312d000f57591e8c550dc3ca_a5a709e2e312d000f57591e8c550dc3ca}\index{ren::Renderer3d@{ren::Renderer3d}!s\_maxSigma@{s\_maxSigma}}
+\index{s\_maxSigma@{s\_maxSigma}!ren::Renderer3d@{ren::Renderer3d}}
+\doxysubsubsection{\texorpdfstring{s\_maxSigma}{s\_maxSigma}}
+{\footnotesize\ttfamily \label{classren_1_1Renderer3d_a5a709e2e312d000f57591e8c550dc3ca_a5a709e2e312d000f57591e8c550dc3ca} 
+float ren\+::\+Renderer3d\+::s\+\_\+max\+Sigma = 7.\+0f\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{renderer_8h}{renderer.\+h}}\item 
+src/\mbox{\hyperlink{renderer_8cpp}{renderer.\+cpp}}\end{DoxyCompactItemize}

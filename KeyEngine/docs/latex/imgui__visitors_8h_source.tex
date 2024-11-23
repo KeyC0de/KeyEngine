@@ -1,0 +1,83 @@
+\doxysection{imgui\+\_\+visitors.\+h}
+\hypertarget{imgui__visitors_8h_source}{}\label{imgui__visitors_8h_source}\index{inc/imgui\_visitors.h@{inc/imgui\_visitors.h}}
+\mbox{\hyperlink{imgui__visitors_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <limits>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classModel}{Model}};}
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classNode}{Node}};}
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMaterial}{Material}};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacecon}{con}}}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{class\ }CBuffer;}
+\DoxyCodeLine{00015\ \}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIImguiNodeVisitor}{IImguiNodeVisitor}}}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{classNode}{Node}}\ *\mbox{\hyperlink{classIImguiNodeVisitor_afdf913a5e0086ef6f44a9bf46d1e7ffa_afdf913a5e0086ef6f44a9bf46d1e7ffa}{m\_pSelectedNode}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classIImguiNodeVisitor_a25aeeef4c80941c72871ab60cac528f1_a25aeeef4c80941c72871ab60cac528f1}{\string~IImguiNodeVisitor}}()\ noexcept\ =\ default;}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIImguiNodeVisitor_a3ffe58aedb22d53f18611cd112b25bbd_a3ffe58aedb22d53f18611cd112b25bbd}{visit}}(\ \mbox{\hyperlink{classNode}{Node}}\ \&node\ );}
+\DoxyCodeLine{00026\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIImguiNodeVisitor_a7b479f0e4cee70568f86148dd7848c27_a7b479f0e4cee70568f86148dd7848c27}{onVisit}}(\ class\ \mbox{\hyperlink{classNode}{Node}}\ \&node\ )\ =\ 0;}
+\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ class\ \mbox{\hyperlink{classImguiPerModelNodeVisitor}{ImguiPerModelNodeVisitor}}\ final}
+\DoxyCodeLine{00030\ \ \ \ \ :\ \mbox{\hyperlink{classIImguiNodeVisitor}{IImguiNodeVisitor}}}
+\DoxyCodeLine{00031\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ std::string\ \mbox{\hyperlink{classImguiPerModelNodeVisitor_a8dd53c6d6e95624ca1664cc5b5855a64_a8dd53c6d6e95624ca1664cc5b5855a64}{m\_name}};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structImguiPerModelNodeVisitor_1_1TransformData}{TransformData}}}
+\DoxyCodeLine{00034\ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ pitch\ =\ 0.0f;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ yaw\ =\ 0.0f;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ roll\ =\ 0.0f;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ x\ =\ 0.0f;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ y\ =\ 0.0f;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ z\ =\ 0.0f;}
+\DoxyCodeLine{00041\ \ \ \ \ \};}
+\DoxyCodeLine{00042\ \ \ \ \ std::unordered\_map<int,\ TransformData>\ \mbox{\hyperlink{classImguiPerModelNodeVisitor_ab13f445a001207d663c550d05af25a28_ab13f445a001207d663c550d05af25a28}{m\_nodeMapTransforms}};}
+\DoxyCodeLine{00043\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{classImguiPerModelNodeVisitor_a19cfd2a6096fbef06e548e4b9592c7d2_a19cfd2a6096fbef06e548e4b9592c7d2}{ImguiPerModelNodeVisitor}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{classImguiPerModelNodeVisitor}{ImguiPerModelNodeVisitor}}(\ \textcolor{keyword}{const}\ std::string\ \&name\ );}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIImguiNodeVisitor_a7b479f0e4cee70568f86148dd7848c27_a7b479f0e4cee70568f86148dd7848c27}{onVisit}}(\ \mbox{\hyperlink{classNode}{Node}}\ \&node\ )\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ displayImguiWidgets(\ \mbox{\hyperlink{classModel}{Model}}\ \&model\ )\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00050\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{structImguiPerModelNodeVisitor_1_1TransformData}{TransformData}}\&\ getNodeTransform()\ noexcept;}
+\DoxyCodeLine{00052\ \};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#ifdef\ max}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#\ \ \ undef\ max}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00066\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIImGuiConstantBufferVisitor}{IImGuiConstantBufferVisitor}}}
+\DoxyCodeLine{00067\ \{}
+\DoxyCodeLine{00068\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00069\ \ \ \ \ \mbox{\hyperlink{classMaterial}{Material}}\ *m\_pMaterial\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ m\_materialId\ =\ std::numeric\_limits<size\_t>::max();}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ m\_imguiId\ =\ std::numeric\_limits<size\_t>::max();}
+\DoxyCodeLine{00072\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classIImGuiConstantBufferVisitor_a3302c8485b1af264050ed017ad251166_a3302c8485b1af264050ed017ad251166}{\string~IImGuiConstantBufferVisitor}}()\ noexcept\ =\ default;}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}\ setMaterial(\ \mbox{\hyperlink{classMaterial}{Material}}\ *ef\ );}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{bool}\ visit(\ \mbox{\hyperlink{namespacecon}{con}}::CBuffer\ \&cb\ );}
+\DoxyCodeLine{00078\ \ \ \ \ virtual\ \textcolor{keywordtype}{bool}\ onVisit(\ \mbox{\hyperlink{namespacecon}{con}}::CBuffer\ \&cb\ )\ =\ 0;}
+\DoxyCodeLine{00079\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ onSetMaterial()\ =\ 0;}
+\DoxyCodeLine{00080\ \};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ class\ \mbox{\hyperlink{classImguiConstantBufferVisitorShowcase}{ImguiConstantBufferVisitorShowcase}}\ final}
+\DoxyCodeLine{00083\ \ \ \ \ :\ public\ \mbox{\hyperlink{classIImGuiConstantBufferVisitor}{IImGuiConstantBufferVisitor}}}
+\DoxyCodeLine{00084\ \{}
+\DoxyCodeLine{00085\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{bool}\ onVisit(\ \mbox{\hyperlink{classcon_1_1CBuffer}{con::CBuffer}}\ \&cb\ )\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{void}\ onSetMaterial()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00088\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classWindow_1_1WindowException" kind="class" language="C++" prot="private" final="yes">
+    <compoundname>Window::WindowException</compoundname>
+    <basecompoundref refid="classKeyException" prot="public" virt="non-virtual">KeyException</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classWindow_1_1WindowException_ad67a648b27df5170dc350a86025d02f2_1ad67a648b27df5170dc350a86025d02f2" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Window::WindowException::WindowException</definition>
+        <argsstring>(const int line, const char *file, const char *function, const std::string &amp;msg) noexcept</argsstring>
+        <name>WindowException</name>
+        <qualifiedname>Window::WindowException::WindowException</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>file</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>function</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="39" column="1" bodyfile="src/window.cpp" bodystart="1706" bodyend="1714"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_1_1WindowException_ad90e3938364bfe58024e3c28b0e639d6_1ad90e3938364bfe58024e3c28b0e639d6" prot="public" static="no" const="yes" explicit="no" inline="no" final="yes" noexcept="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string Window::WindowException::getType</definition>
+        <argsstring>() const noexcept override final</argsstring>
+        <name>getType</name>
+        <qualifiedname>Window::WindowException::getType</qualifiedname>
+        <reimplements refid="classKeyException_ab841f80e919082619f30053ae78c56c2_1ab841f80e919082619f30053ae78c56c2">getType</reimplements>
+        <briefdescription>
+<para>=================================================== </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="41" column="21" bodyfile="src/window.cpp" bodystart="1716" bodyend="1719"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindow_1_1WindowException_a8b6ed4413bb89753ed13bbaea38b942c_1a8b6ed4413bb89753ed13bbaea38b942c" prot="public" static="no" const="yes" explicit="no" inline="no" final="yes" noexcept="yes" virt="virtual">
+        <type>const char *</type>
+        <definition>const char * Window::WindowException::what</definition>
+        <argsstring>() const noexcept override final</argsstring>
+        <name>what</name>
+        <qualifiedname>Window::WindowException::what</qualifiedname>
+        <reimplements refid="classKeyException_a9956fdc871308553eec7b047f756690a_1a9956fdc871308553eec7b047f756690a">what</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="42" column="20" bodyfile="src/window.cpp" bodystart="1721" bodyend="1724"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>KeyException</label>
+        <link refid="classKeyException"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Window::WindowException</label>
+        <link refid="classWindow_1_1WindowException"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::exception</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>KeyException</label>
+        <link refid="classKeyException"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Window::WindowException</label>
+        <link refid="classWindow_1_1WindowException"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::exception</label>
+      </node>
+    </collaborationgraph>
+    <location file="inc/window.h" line="35" column="1" bodyfile="inc/window.h" bodystart="37" bodyend="43"/>
+    <listofallmembers>
+      <member refid="classKeyException_acf42841e4d4ececba96628e677b4cf41_1acf42841e4d4ececba96628e677b4cf41" prot="public" virt="non-virtual"><scope>Window::WindowException</scope><name>getFile</name></member>
+      <member refid="classKeyException_ad75c6511759e522f2b3bcf13b0d23f30_1ad75c6511759e522f2b3bcf13b0d23f30" prot="public" virt="non-virtual"><scope>Window::WindowException</scope><name>getFunction</name></member>
+      <member refid="classKeyException_a72f4af19d1ab0e9cce5eb6d45fca7729_1a72f4af19d1ab0e9cce5eb6d45fca7729" prot="public" virt="non-virtual"><scope>Window::WindowException</scope><name>getLine</name></member>
+      <member refid="classWindow_1_1WindowException_ad90e3938364bfe58024e3c28b0e639d6_1ad90e3938364bfe58024e3c28b0e639d6" prot="public" virt="virtual"><scope>Window::WindowException</scope><name>getType</name></member>
+      <member refid="classKeyException_a53c95253098f0cc672876c35d4b1911d_1a53c95253098f0cc672876c35d4b1911d" prot="public" virt="non-virtual"><scope>Window::WindowException</scope><name>KeyException</name></member>
+      <member refid="classKeyException_ae11b160d146427ad3887a1af3e2dc2ac_1ae11b160d146427ad3887a1af3e2dc2ac" prot="protected" virt="non-virtual"><scope>Window::WindowException</scope><name>m_description</name></member>
+      <member refid="classKeyException_a62f1ed04b6e0c843f3ea1e338dc426d8_1a62f1ed04b6e0c843f3ea1e338dc426d8" prot="private" virt="non-virtual"><scope>Window::WindowException</scope><name>m_file</name></member>
+      <member refid="classKeyException_ac11062a919dcfe52321e9f948ce60958_1ac11062a919dcfe52321e9f948ce60958" prot="private" virt="non-virtual"><scope>Window::WindowException</scope><name>m_function</name></member>
+      <member refid="classKeyException_a2a49256c37903e810c301b035cf65837_1a2a49256c37903e810c301b035cf65837" prot="private" virt="non-virtual"><scope>Window::WindowException</scope><name>m_line</name></member>
+      <member refid="classWindow_1_1WindowException_a8b6ed4413bb89753ed13bbaea38b942c_1a8b6ed4413bb89753ed13bbaea38b942c" prot="public" virt="virtual"><scope>Window::WindowException</scope><name>what</name></member>
+      <member refid="classWindow_1_1WindowException_ad67a648b27df5170dc350a86025d02f2_1ad67a648b27df5170dc350a86025d02f2" prot="public" virt="non-virtual"><scope>Window::WindowException</scope><name>WindowException</name></member>
+      <member refid="classKeyException_a954cd46c9cc2dd054fd680bb70aef678_1a954cd46c9cc2dd054fd680bb70aef678" prot="public" virt="virtual"><scope>Window::WindowException</scope><name>~KeyException</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

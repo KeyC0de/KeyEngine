@@ -1,0 +1,220 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classIImGuiConstantBufferVisitor" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>IImGuiConstantBufferVisitor</compoundname>
+    <derivedcompoundref refid="classImguiConstantBufferVisitorShowcase" prot="public" virt="non-virtual">ImguiConstantBufferVisitorShowcase</derivedcompoundref>
+    <includes refid="imgui__visitors_8h" local="no">imgui_visitors.h</includes>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classIImGuiConstantBufferVisitor_a4fee37fe08c11418ceca1a6bdb367788_1a4fee37fe08c11418ceca1a6bdb367788" prot="protected" static="no" mutable="no">
+        <type><ref refid="classMaterial" kindref="compound">Material</ref> *</type>
+        <definition>Material* IImGuiConstantBufferVisitor::m_pMaterial</definition>
+        <argsstring></argsstring>
+        <name>m_pMaterial</name>
+        <qualifiedname>IImGuiConstantBufferVisitor::m_pMaterial</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/imgui_visitors.h" line="69" column="10" bodyfile="inc/imgui_visitors.h" bodystart="69" bodyend="-1"/>
+        <referencedby refid="classImguiConstantBufferVisitorShowcase_a5527d99456f1106040fdfdd737953e12_1a5527d99456f1106040fdfdd737953e12" compoundref="imgui__visitors_8cpp" startline="250" endline="258">ImguiConstantBufferVisitorShowcase::onSetMaterial</referencedby>
+        <referencedby refid="classIImGuiConstantBufferVisitor_a7bdc512111781579a0d0701c6a040fac_1a7bdc512111781579a0d0701c6a040fac" compoundref="imgui__visitors_8cpp" startline="176" endline="181">setMaterial</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classIImGuiConstantBufferVisitor_acc45e30237d340dfe1b62041233efdc9_1acc45e30237d340dfe1b62041233efdc9" prot="protected" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t IImGuiConstantBufferVisitor::m_materialId</definition>
+        <argsstring></argsstring>
+        <name>m_materialId</name>
+        <qualifiedname>IImGuiConstantBufferVisitor::m_materialId</qualifiedname>
+        <initializer>= std::numeric_limits&lt;size_t&gt;::max()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/imgui_visitors.h" line="70" column="8" bodyfile="inc/imgui_visitors.h" bodystart="70" bodyend="-1"/>
+        <referencedby refid="classImguiConstantBufferVisitorShowcase_a5527d99456f1106040fdfdd737953e12_1a5527d99456f1106040fdfdd737953e12" compoundref="imgui__visitors_8cpp" startline="250" endline="258">ImguiConstantBufferVisitorShowcase::onSetMaterial</referencedby>
+        <referencedby refid="classIImGuiConstantBufferVisitor_a7bdc512111781579a0d0701c6a040fac_1a7bdc512111781579a0d0701c6a040fac" compoundref="imgui__visitors_8cpp" startline="176" endline="181">setMaterial</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classIImGuiConstantBufferVisitor_a9ce95c32cd3c9715383315d393c12edd_1a9ce95c32cd3c9715383315d393c12edd" prot="protected" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t IImGuiConstantBufferVisitor::m_imguiId</definition>
+        <argsstring></argsstring>
+        <name>m_imguiId</name>
+        <qualifiedname>IImGuiConstantBufferVisitor::m_imguiId</qualifiedname>
+        <initializer>= std::numeric_limits&lt;size_t&gt;::max()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/imgui_visitors.h" line="71" column="8" bodyfile="inc/imgui_visitors.h" bodystart="71" bodyend="-1"/>
+        <referencedby refid="classImguiConstantBufferVisitorShowcase_abeb49147681d12eb12a7559f144c3177_1abeb49147681d12eb12a7559f144c3177" compoundref="imgui__visitors_8cpp" startline="190" endline="248">ImguiConstantBufferVisitorShowcase::onVisit</referencedby>
+        <referencedby refid="classIImGuiConstantBufferVisitor_ab4925bd7f0cadefc621eb971cfa0d2b2_1ab4925bd7f0cadefc621eb971cfa0d2b2" compoundref="imgui__visitors_8cpp" startline="183" endline="187">visit</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classIImGuiConstantBufferVisitor_a3302c8485b1af264050ed017ad251166_1a3302c8485b1af264050ed017ad251166" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type></type>
+        <definition>virtual IImGuiConstantBufferVisitor::~IImGuiConstantBufferVisitor</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>~IImGuiConstantBufferVisitor</name>
+        <qualifiedname>IImGuiConstantBufferVisitor::~IImGuiConstantBufferVisitor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/imgui_visitors.h" line="73" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classIImGuiConstantBufferVisitor_a7bdc512111781579a0d0701c6a040fac_1a7bdc512111781579a0d0701c6a040fac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void IImGuiConstantBufferVisitor::setMaterial</definition>
+        <argsstring>(Material *ef)</argsstring>
+        <name>setMaterial</name>
+        <qualifiedname>IImGuiConstantBufferVisitor::setMaterial</qualifiedname>
+        <param>
+          <type><ref refid="classMaterial" kindref="compound">Material</ref> *</type>
+          <declname>ef</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/imgui_visitors.h" line="75" column="6" bodyfile="src/imgui_visitors.cpp" bodystart="176" bodyend="181"/>
+        <referencedby refid="classMaterial_abb7343425607a403026f8eb75482ef44_1abb7343425607a403026f8eb75482ef44" compoundref="material_8cpp" startline="113" endline="120">Material::accept</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classIImGuiConstantBufferVisitor_ab4925bd7f0cadefc621eb971cfa0d2b2_1ab4925bd7f0cadefc621eb971cfa0d2b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool IImGuiConstantBufferVisitor::visit</definition>
+        <argsstring>(con::CBuffer &amp;cb)</argsstring>
+        <name>visit</name>
+        <qualifiedname>IImGuiConstantBufferVisitor::visit</qualifiedname>
+        <param>
+          <type><ref refid="classcon_1_1CBuffer" kindref="compound">con::CBuffer</ref> &amp;</type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+<para>returns true if concrete bindable (with a <ref refid="classcon_1_1CBuffer" kindref="compound">con::CBuffer</ref>) requires an update </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/imgui_visitors.h" line="77" column="6" bodyfile="src/imgui_visitors.cpp" bodystart="183" bodyend="187"/>
+        <referencedby refid="classConstantBufferEx_a4d5333c31ccf89e3fbd83ddaa3793b9c_1a4d5333c31ccf89e3fbd83ddaa3793b9c" compoundref="constant__buffer__ex_8h" startline="108" endline="114">ConstantBufferEx&lt; T &gt;::accept</referencedby>
+        <referencedby refid="classTransformScaleVSCB_ae62fda43b34487d423892174ff58d78f_1ae62fda43b34487d423892174ff58d78f" compoundref="transform__vscb_8cpp" startline="141" endline="144">TransformScaleVSCB::accept</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classIImGuiConstantBufferVisitor_a8efe889764e6bfd605b37d27581dc35a_1a8efe889764e6bfd605b37d27581dc35a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool IImGuiConstantBufferVisitor::onVisit</definition>
+        <argsstring>(con::CBuffer &amp;cb)=0</argsstring>
+        <name>onVisit</name>
+        <qualifiedname>IImGuiConstantBufferVisitor::onVisit</qualifiedname>
+        <reimplementedby refid="classImguiConstantBufferVisitorShowcase_abeb49147681d12eb12a7559f144c3177_1abeb49147681d12eb12a7559f144c3177">onVisit</reimplementedby>
+        <param>
+          <type><ref refid="classcon_1_1CBuffer" kindref="compound">con::CBuffer</ref> &amp;</type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/imgui_visitors.h" line="78" column="14"/>
+        <referencedby refid="classIImGuiConstantBufferVisitor_ab4925bd7f0cadefc621eb971cfa0d2b2_1ab4925bd7f0cadefc621eb971cfa0d2b2" compoundref="imgui__visitors_8cpp" startline="183" endline="187">visit</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classIImGuiConstantBufferVisitor_a806f42448e8052c41dd58b44670da987_1a806f42448e8052c41dd58b44670da987" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void IImGuiConstantBufferVisitor::onSetMaterial</definition>
+        <argsstring>()=0</argsstring>
+        <name>onSetMaterial</name>
+        <qualifiedname>IImGuiConstantBufferVisitor::onSetMaterial</qualifiedname>
+        <reimplementedby refid="classImguiConstantBufferVisitorShowcase_a5527d99456f1106040fdfdd737953e12_1a5527d99456f1106040fdfdd737953e12">onSetMaterial</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/imgui_visitors.h" line="79" column="14"/>
+        <referencedby refid="classIImGuiConstantBufferVisitor_a7bdc512111781579a0d0701c6a040fac_1a7bdc512111781579a0d0701c6a040fac" compoundref="imgui__visitors_8cpp" startline="176" endline="181">setMaterial</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Visitor that operates on a material that contains a <ref refid="classcon_1_1CBuffer" kindref="compound">con::CBuffer</ref> and its Bindable(s) override Bindable::accept() which ultimately call IImGuiConstantBufferVisitor::visit( cb ) </para>
+    </briefdescription>
+    <detaileddescription>
+<para>============================================================</para>
+<para><simplesect kind="author"><para>KeyC0de </para>
+</simplesect>
+<simplesect kind="date"><para>2020/01/09 15:53</para>
+</simplesect>
+targets a <ref refid="classModel" kindref="compound">Model</ref> with a specific material <heading level="1">the IDs are for tagging ImGui widgets/controls </heading>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>IImGuiConstantBufferVisitor</label>
+        <link refid="classIImGuiConstantBufferVisitor"/>
+      </node>
+      <node id="2">
+        <label>ImguiConstantBufferVisitorShowcase</label>
+        <link refid="classImguiConstantBufferVisitorShowcase"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>IImGuiConstantBufferVisitor</label>
+        <link refid="classIImGuiConstantBufferVisitor"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>m_pMaterial</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Material</label>
+        <link refid="classMaterial"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>m_pTargetPass</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>ren::IBindablePass</label>
+        <link refid="classren_1_1IBindablePass"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>ren::IPass</label>
+        <link refid="classren_1_1IPass"/>
+      </node>
+      <node id="3">
+        <label>ren::RenderQueuePass</label>
+        <link refid="classren_1_1RenderQueuePass"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/imgui_visitors.h" line="66" column="1" bodyfile="inc/imgui_visitors.h" bodystart="67" bodyend="80"/>
+    <listofallmembers>
+      <member refid="classIImGuiConstantBufferVisitor_a9ce95c32cd3c9715383315d393c12edd_1a9ce95c32cd3c9715383315d393c12edd" prot="protected" virt="non-virtual"><scope>IImGuiConstantBufferVisitor</scope><name>m_imguiId</name></member>
+      <member refid="classIImGuiConstantBufferVisitor_acc45e30237d340dfe1b62041233efdc9_1acc45e30237d340dfe1b62041233efdc9" prot="protected" virt="non-virtual"><scope>IImGuiConstantBufferVisitor</scope><name>m_materialId</name></member>
+      <member refid="classIImGuiConstantBufferVisitor_a4fee37fe08c11418ceca1a6bdb367788_1a4fee37fe08c11418ceca1a6bdb367788" prot="protected" virt="non-virtual"><scope>IImGuiConstantBufferVisitor</scope><name>m_pMaterial</name></member>
+      <member refid="classIImGuiConstantBufferVisitor_a806f42448e8052c41dd58b44670da987_1a806f42448e8052c41dd58b44670da987" prot="public" virt="pure-virtual"><scope>IImGuiConstantBufferVisitor</scope><name>onSetMaterial</name></member>
+      <member refid="classIImGuiConstantBufferVisitor_a8efe889764e6bfd605b37d27581dc35a_1a8efe889764e6bfd605b37d27581dc35a" prot="public" virt="pure-virtual"><scope>IImGuiConstantBufferVisitor</scope><name>onVisit</name></member>
+      <member refid="classIImGuiConstantBufferVisitor_a7bdc512111781579a0d0701c6a040fac_1a7bdc512111781579a0d0701c6a040fac" prot="public" virt="non-virtual"><scope>IImGuiConstantBufferVisitor</scope><name>setMaterial</name></member>
+      <member refid="classIImGuiConstantBufferVisitor_ab4925bd7f0cadefc621eb971cfa0d2b2_1ab4925bd7f0cadefc621eb971cfa0d2b2" prot="public" virt="non-virtual"><scope>IImGuiConstantBufferVisitor</scope><name>visit</name></member>
+      <member refid="classIImGuiConstantBufferVisitor_a3302c8485b1af264050ed017ad251166_1a3302c8485b1af264050ed017ad251166" prot="public" virt="virtual"><scope>IImGuiConstantBufferVisitor</scope><name>~IImGuiConstantBufferVisitor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

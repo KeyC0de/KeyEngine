@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classGraphics_1_1Adapter" kind="class" language="C++" prot="private" final="yes">
+    <compoundname>Graphics::Adapter</compoundname>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classGraphics_1_1Adapter_a6b5496c21afd87729babc3a5dffe7a1d_1a6b5496c21afd87729babc3a5dffe7a1d" prot="private" static="no" mutable="no">
+        <type>Microsoft::WRL::ComPtr&lt; IDXGIAdapter &gt;</type>
+        <definition>Microsoft::WRL::ComPtr&lt;IDXGIAdapter&gt; Graphics::Adapter::m_pAdapter</definition>
+        <argsstring></argsstring>
+        <name>m_pAdapter</name>
+        <qualifiedname>Graphics::Adapter::m_pAdapter</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/graphics.h" line="72" column="24" bodyfile="inc/graphics.h" bodystart="72" bodyend="-1"/>
+        <referencedby refid="classGraphics_1_1Adapter_a075d6b4e89a60bf695d724379161751e_1a075d6b4e89a60bf695d724379161751e" compoundref="graphics_8cpp" startline="48" endline="57">Adapter</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classGraphics_1_1Adapter_a39682db9c01cedf9e9df01eae4509e7d_1a39682db9c01cedf9e9df01eae4509e7d" prot="private" static="no" mutable="no">
+        <type>DXGI_ADAPTER_DESC</type>
+        <definition>DXGI_ADAPTER_DESC Graphics::Adapter::m_desc</definition>
+        <argsstring></argsstring>
+        <name>m_desc</name>
+        <qualifiedname>Graphics::Adapter::m_desc</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/graphics.h" line="73" column="19" bodyfile="inc/graphics.h" bodystart="73" bodyend="-1"/>
+        <referencedby refid="classGraphics_1_1Adapter_a075d6b4e89a60bf695d724379161751e_1a075d6b4e89a60bf695d724379161751e" compoundref="graphics_8cpp" startline="48" endline="57">Adapter</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classGraphics_1_1Adapter_a075d6b4e89a60bf695d724379161751e_1a075d6b4e89a60bf695d724379161751e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Graphics::Adapter::Adapter</definition>
+        <argsstring>(IDXGIAdapter *pAdapter)</argsstring>
+        <name>Adapter</name>
+        <qualifiedname>Graphics::Adapter::Adapter</qualifiedname>
+        <param>
+          <type>IDXGIAdapter *</type>
+          <declname>pAdapter</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/graphics.h" line="75" column="1" bodyfile="src/graphics.cpp" bodystart="48" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classGraphics_1_1Adapter_ae672fea008e3fd6b33932f597470af18_1ae672fea008e3fd6b33932f597470af18" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const DXGI_ADAPTER_DESC *</type>
+        <definition>const DXGI_ADAPTER_DESC * Graphics::Adapter::getDesc</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getDesc</name>
+        <qualifiedname>Graphics::Adapter::getDesc</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/graphics.h" line="76" column="25" bodyfile="src/graphics.cpp" bodystart="59" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classGraphics_1_1Adapter_a2cbe03324f6a33d65eb030144fda67f0_1a2cbe03324f6a33d65eb030144fda67f0" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>IDXGIAdapter *</type>
+        <definition>IDXGIAdapter * Graphics::Adapter::getAdapter</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getAdapter</name>
+        <qualifiedname>Graphics::Adapter::getAdapter</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/graphics.h" line="77" column="14" bodyfile="src/graphics.cpp" bodystart="64" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classGraphics_1_1Adapter_ad40a2841488cf71cbee71eb9eeb12c72_1ad40a2841488cf71cbee71eb9eeb12c72" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graphics::Adapter::getVRamDetails</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getVRamDetails</name>
+        <qualifiedname>Graphics::Adapter::getVRamDetails</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/graphics.h" line="78" column="6" bodyfile="src/graphics.cpp" bodystart="69" bodyend="88"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/graphics.h" line="70" column="1" bodyfile="inc/graphics.h" bodystart="71" bodyend="79"/>
+    <listofallmembers>
+      <member refid="classGraphics_1_1Adapter_a075d6b4e89a60bf695d724379161751e_1a075d6b4e89a60bf695d724379161751e" prot="public" virt="non-virtual"><scope>Graphics::Adapter</scope><name>Adapter</name></member>
+      <member refid="classGraphics_1_1Adapter_a2cbe03324f6a33d65eb030144fda67f0_1a2cbe03324f6a33d65eb030144fda67f0" prot="public" virt="non-virtual"><scope>Graphics::Adapter</scope><name>getAdapter</name></member>
+      <member refid="classGraphics_1_1Adapter_ae672fea008e3fd6b33932f597470af18_1ae672fea008e3fd6b33932f597470af18" prot="public" virt="non-virtual"><scope>Graphics::Adapter</scope><name>getDesc</name></member>
+      <member refid="classGraphics_1_1Adapter_ad40a2841488cf71cbee71eb9eeb12c72_1ad40a2841488cf71cbee71eb9eeb12c72" prot="public" virt="non-virtual"><scope>Graphics::Adapter</scope><name>getVRamDetails</name></member>
+      <member refid="classGraphics_1_1Adapter_a39682db9c01cedf9e9df01eae4509e7d_1a39682db9c01cedf9e9df01eae4509e7d" prot="private" virt="non-virtual"><scope>Graphics::Adapter</scope><name>m_desc</name></member>
+      <member refid="classGraphics_1_1Adapter_a6b5496c21afd87729babc3a5dffe7a1d_1a6b5496c21afd87729babc3a5dffe7a1d" prot="private" virt="non-virtual"><scope>Graphics::Adapter</scope><name>m_pAdapter</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -172,7 +172,7 @@ Sandbox3d::Sandbox3d( const int width,
 
 
 	m_lights.reserve( settings.iMaxShadowCastingDynamicLights );
-	//m_lights.push_back( std::make_unique<DirectionalLight>( gfx, 0.5f, DirectX::XMFLOAT3{0.0f, 0.0f, 0.0f}, DirectX::XMFLOAT3{10.0f, 5.0f, -1.4f}, DirectX::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f}, true, true, 1.0f ) );
+	//m_lights.push_back( std::make_unique<DirectionalLight>( gfx, 0.5f, DirectX::XMFLOAT3{0.0f, 0.0f, 0.0f}, DirectX::XMFLOAT3{6.0f, 6.0f, -1.0f}, DirectX::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f}, true, true, 1.0f ) );
 	m_lights.push_back( std::make_unique<PointLight>( gfx, 0.5f, DirectX::XMFLOAT3{0.0f, 0.0f, 0.0f}, DirectX::XMFLOAT3{10.0f, 5.0f, -1.4f}, DirectX::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f}, true, true, 1.0f ) );
 	m_lights.push_back( std::make_unique<PointLight>( gfx, 1.0f, DirectX::XMFLOAT3{0.0f, 1.0f, 0.f}, DirectX::XMFLOAT3{5.0f, 15.0f, 0.0f}, DirectX::XMFLOAT4{1.0f, 1.0f, 0.2f, 0.25f}, true, true, 0.5f ) );
 
@@ -413,7 +413,7 @@ void Sandbox3d::update( Graphics &gfx,
 	static const auto &settings = s_settingsMan.getSettings();
 
 	const auto &activeCamera = s_cameraMan.getActiveCamera();
-	activeCamera.makeActive( gfx, false );
+	activeCamera.makeActive( gfx );
 	gfx.getRenderer3d().setActiveCamera( activeCamera );
 
 	//if ( util::modulus( gfx.getFrameNum(), g_nFramesPerShadowUpdate ) == 0 )	// #optimization: no need to update shadows every frame

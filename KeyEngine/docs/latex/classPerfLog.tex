@@ -1,0 +1,128 @@
+\doxysection{Perf\+Log Class Reference}
+\hypertarget{classPerfLog}{}\label{classPerfLog}\index{PerfLog@{PerfLog}}
+
+
+{\ttfamily \#include $<$performance\+\_\+log.\+h$>$}
+
+Inheritance diagram for Perf\+Log\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classPerfLog}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structPerfLog_1_1Entry}{Entry}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPerfLog_a90964caf389c5e5190f688919dfaed97_a90964caf389c5e5190f688919dfaed97}{Perf\+Log}} (const std\+::string \&out\+File\+Name="{}perf\+Test.\+txt"{}) noexcept
+\item 
+\mbox{\hyperlink{classPerfLog_aa7678503719df703eabb441b35e88642_aa7678503719df703eabb441b35e88642}{\texorpdfstring{$\sim$}{\string~}\+Perf\+Log}} ()
+\item 
+void \mbox{\hyperlink{classPerfLog_aa026ecc1939d4325f1fbc7efd4f8d199_aa026ecc1939d4325f1fbc7efd4f8d199}{start}} (const std\+::string \&lbl="{}"{}) noexcept
+\item 
+void \mbox{\hyperlink{classPerfLog_aeb1bf27a3021af63de8a7e13cb641470_aeb1bf27a3021af63de8a7e13cb641470}{lap}} (const std\+::string \&lbl="{}"{}) noexcept
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNonCopyable_a809b6e4ade7ae32f6d248f2a3b783d45_a809b6e4ade7ae32f6d248f2a3b783d45}{Non\+Copyable}} ()=default
+\item 
+\mbox{\hyperlink{classNonCopyable_a15aa3015488bb26c47ded914cb630cf5_a15aa3015488bb26c47ded914cb630cf5}{Non\+Copyable}} (const \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_af4788b57da9a9faa570c754c22c724f5_af4788b57da9a9faa570c754c22c724f5}{operator=}} (const \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable_a487646562ae30ece23d7638f2aed1dde_a487646562ae30ece23d7638f2aed1dde}{Non\+Copyable}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_ae032ca32cda9c836c27b28eb6a087d18_ae032ca32cda9c836c27b28eb6a087d18}{operator=}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable_af716e4cfb79381710ef4490414939ae9_af716e4cfb79381710ef4490414939ae9}{Non\+Copyable}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&\&rhs)=default
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_af81816bd4c2c4421a6eab98843ead6e4_af81816bd4c2c4421a6eab98843ead6e4}{operator=}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&\&rhs)=default
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classPerfLog_a6fb5591e1f65a67f51b93f3044e7014a_a6fb5591e1f65a67f51b93f3044e7014a}{flush\+To\+File}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classPerfLog_a568bef633794f1215d2047031423abdc_a568bef633794f1215d2047031423abdc}{m\+\_\+out\+File\+Name}}
+\item 
+\mbox{\hyperlink{classKeyTimer}{Key\+Timer}}$<$ std\+::chrono\+::milliseconds $>$ \mbox{\hyperlink{classPerfLog_a45f5e8e8e7df0c0491a65e78189290e9_a45f5e8e8e7df0c0491a65e78189290e9}{m\+\_\+timer}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structPerfLog_1_1Entry}{Entry}} $>$ \mbox{\hyperlink{classPerfLog_a3ead950de0f92ad700021a70bc8d5a0f_a3ead950de0f92ad700021a70bc8d5a0f}{m\+\_\+entries}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNonCopyable_a3e461fb46c72b9a5af7df7e74dbd899e_a3e461fb46c72b9a5af7df7e74dbd899e}{\texorpdfstring{$\sim$}{\string~}\+Non\+Copyable}} () noexcept=default
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classPerfLog_a90964caf389c5e5190f688919dfaed97_a90964caf389c5e5190f688919dfaed97}\index{PerfLog@{PerfLog}!PerfLog@{PerfLog}}
+\index{PerfLog@{PerfLog}!PerfLog@{PerfLog}}
+\doxysubsubsection{\texorpdfstring{PerfLog()}{PerfLog()}}
+{\footnotesize\ttfamily \label{classPerfLog_a90964caf389c5e5190f688919dfaed97_a90964caf389c5e5190f688919dfaed97} 
+Perf\+Log\+::\+Perf\+Log (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{out\+File\+Name}{ = {\ttfamily "{}perfTest.txt"{}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classPerfLog_aa7678503719df703eabb441b35e88642_aa7678503719df703eabb441b35e88642}\index{PerfLog@{PerfLog}!````~PerfLog@{\texorpdfstring{$\sim$}{\string~}PerfLog}}
+\index{````~PerfLog@{\texorpdfstring{$\sim$}{\string~}PerfLog}!PerfLog@{PerfLog}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}PerfLog()}{\string~PerfLog()}}
+{\footnotesize\ttfamily \label{classPerfLog_aa7678503719df703eabb441b35e88642_aa7678503719df703eabb441b35e88642} 
+Perf\+Log\+::\texorpdfstring{$\sim$}{\string~}\+Perf\+Log (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classPerfLog_a6fb5591e1f65a67f51b93f3044e7014a_a6fb5591e1f65a67f51b93f3044e7014a}\index{PerfLog@{PerfLog}!flushToFile@{flushToFile}}
+\index{flushToFile@{flushToFile}!PerfLog@{PerfLog}}
+\doxysubsubsection{\texorpdfstring{flushToFile()}{flushToFile()}}
+{\footnotesize\ttfamily \label{classPerfLog_a6fb5591e1f65a67f51b93f3044e7014a_a6fb5591e1f65a67f51b93f3044e7014a} 
+void Perf\+Log\+::flush\+To\+File (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classPerfLog_aeb1bf27a3021af63de8a7e13cb641470_aeb1bf27a3021af63de8a7e13cb641470}\index{PerfLog@{PerfLog}!lap@{lap}}
+\index{lap@{lap}!PerfLog@{PerfLog}}
+\doxysubsubsection{\texorpdfstring{lap()}{lap()}}
+{\footnotesize\ttfamily \label{classPerfLog_aeb1bf27a3021af63de8a7e13cb641470_aeb1bf27a3021af63de8a7e13cb641470} 
+void Perf\+Log\+::lap (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{lbl}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classPerfLog_aa026ecc1939d4325f1fbc7efd4f8d199_aa026ecc1939d4325f1fbc7efd4f8d199}\index{PerfLog@{PerfLog}!start@{start}}
+\index{start@{start}!PerfLog@{PerfLog}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily \label{classPerfLog_aa026ecc1939d4325f1fbc7efd4f8d199_aa026ecc1939d4325f1fbc7efd4f8d199} 
+void Perf\+Log\+::start (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{lbl}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classPerfLog_a3ead950de0f92ad700021a70bc8d5a0f_a3ead950de0f92ad700021a70bc8d5a0f}\index{PerfLog@{PerfLog}!m\_entries@{m\_entries}}
+\index{m\_entries@{m\_entries}!PerfLog@{PerfLog}}
+\doxysubsubsection{\texorpdfstring{m\_entries}{m\_entries}}
+{\footnotesize\ttfamily \label{classPerfLog_a3ead950de0f92ad700021a70bc8d5a0f_a3ead950de0f92ad700021a70bc8d5a0f} 
+std\+::vector$<$\mbox{\hyperlink{structPerfLog_1_1Entry}{Entry}}$>$ Perf\+Log\+::m\+\_\+entries\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classPerfLog_a568bef633794f1215d2047031423abdc_a568bef633794f1215d2047031423abdc}\index{PerfLog@{PerfLog}!m\_outFileName@{m\_outFileName}}
+\index{m\_outFileName@{m\_outFileName}!PerfLog@{PerfLog}}
+\doxysubsubsection{\texorpdfstring{m\_outFileName}{m\_outFileName}}
+{\footnotesize\ttfamily \label{classPerfLog_a568bef633794f1215d2047031423abdc_a568bef633794f1215d2047031423abdc} 
+std\+::string Perf\+Log\+::m\+\_\+out\+File\+Name\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classPerfLog_a45f5e8e8e7df0c0491a65e78189290e9_a45f5e8e8e7df0c0491a65e78189290e9}\index{PerfLog@{PerfLog}!m\_timer@{m\_timer}}
+\index{m\_timer@{m\_timer}!PerfLog@{PerfLog}}
+\doxysubsubsection{\texorpdfstring{m\_timer}{m\_timer}}
+{\footnotesize\ttfamily \label{classPerfLog_a45f5e8e8e7df0c0491a65e78189290e9_a45f5e8e8e7df0c0491a65e78189290e9} 
+\mbox{\hyperlink{classKeyTimer}{Key\+Timer}}$<$std\+::chrono\+::milliseconds$>$ Perf\+Log\+::m\+\_\+timer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{performance__log_8h}{performance\+\_\+log.\+h}}\item 
+src/\mbox{\hyperlink{performance__log_8cpp}{performance\+\_\+log.\+cpp}}\end{DoxyCompactItemize}

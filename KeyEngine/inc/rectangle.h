@@ -4,13 +4,13 @@
 #include "winner.h"
 
 
-//=============================================================
-//	\class	RectangleF
-//	\author	KeyC0de
-//	\date	2022/08/30 12:56
-//	\brief	a Rectangle class with floats
-//			don't rename it to Rectangle, or RECT, as it conflicts with Windows headers
-//=============================================================
+///=============================================================
+/// \class	RectangleF
+/// \author	KeyC0de
+/// \date	2022/08/30 12:56
+/// \brief	a Rectangle class with floats
+/// \brief	don't rename it to Rectangle, or RECT, as it conflicts with Windows headers
+///=============================================================
 class RectangleF
 {
 	float m_left;	// x
@@ -31,11 +31,9 @@ public:
 		return {static_cast<long>( m_left ), static_cast<long>( m_top ), static_cast<long>( m_right ), static_cast<long>( m_bottom )};
 	}
 
-	//	\function	isOverlappingWith	||	\date	2021/10/17 2:27
-	//	\brief	2d rectangle collision detection formula
+	/// \brief	2d rectangle collision detection formula
 	bool isOverlappingWith( const RectangleF &other ) const noexcept;
-	//	\function	calcScaled	||	\date	2021/10/17 2:21
-	//	\brief	gets an expanded (offset>0) or minimized (offset<0) form of the rectangle
+	/// \brief	gets an expanded (offset>0) or minimized (offset<0) form of the rectangle
 	RectangleF calcScaled( const float offset ) const noexcept;
 	DirectX::XMFLOAT2 calcCenter() const noexcept;
 	float getLeft() const noexcept;
@@ -54,13 +52,13 @@ public:
 	float getHeight() const noexcept;
 };
 
-//=============================================================
-//	\class	RectangleI
-//	\author	KeyC0de
-//	\date	2022/08/30 12:56
-//	\brief	a Rectangle class with ints
-//			don't rename it to Rectangle, or RECT, as it conflicts with Windows headers
-//=============================================================
+///=============================================================
+/// \class	RectangleI
+/// \author	KeyC0de
+/// \date	2022/08/30 12:56
+/// \brief	a Rectangle class with ints
+/// \brief	don't rename it to Rectangle, or RECT, as it conflicts with Windows headers
+///=============================================================
 class RectangleI
 {
 	int m_left;	// x
@@ -78,11 +76,9 @@ public:
 		return {static_cast<long>( m_left ), static_cast<long>( m_top ), static_cast<long>( m_right ), static_cast<long>( m_bottom )};
 	}
 
-	//	\function	isOverlappingWith	||	\date	2021/10/17 2:27
-	//	\brief	2d rectangle collision detection formula
+	/// \brief	2d rectangle collision detection formula
 	bool isOverlappingWith( const RectangleI &other ) const noexcept;
-	//	\function	calcScaled	||	\date	2021/10/17 2:21
-	//	\brief	gets an expanded (offset>0) or minimized (offset<0) form of the rectangle
+	/// \brief	gets an expanded (offset>0) or minimized (offset<0) form of the rectangle
 	RectangleI calcScaled( const int offset ) const noexcept;
 	DirectX::XMFLOAT2 calcCenter() const noexcept;
 	int getLeft() const noexcept;

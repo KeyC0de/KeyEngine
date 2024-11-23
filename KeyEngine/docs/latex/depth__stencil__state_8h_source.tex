@@ -1,0 +1,46 @@
+\doxysection{depth\+\_\+stencil\+\_\+state.\+h}
+\hypertarget{depth__stencil__state_8h_source}{}\label{depth__stencil__state_8h_source}\index{inc/depth\_stencil\_state.h@{inc/depth\_stencil\_state.h}}
+\mbox{\hyperlink{depth__stencil__state_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{key__wrl_8h}{key\_wrl.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{bindable_8h}{bindable.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGraphics}{Graphics}};}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classDepthStencilState}{DepthStencilState}}}
+\DoxyCodeLine{00010\ \ \ \ \ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classIBindable}{IBindable}}}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_ae3acfd2942753b3352070caacb8a4bb6}{Mode}}}
+\DoxyCodeLine{00014\ \ \ \ \ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_ae3acfd2942753b3352070caacb8a4bb6ac906ea2d19d25943d1b57f18b35f6e11}{Default}},\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ DepthOnStencilOff}}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_ae3acfd2942753b3352070caacb8a4bb6ac36f5fe5b3f27ae69ceb3466395ea72a}{DepthOffStencilOff}},}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_ae3acfd2942753b3352070caacb8a4bb6afad06cf797d3125ff2783e900228fa96}{DepthOnStencilWriteFF}},\ \textcolor{comment}{//\ FF:\ Front\ Face}}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_ae3acfd2942753b3352070caacb8a4bb6ae917fe64c3cb192dea52fb2c037f9dc6}{DepthOnStencilReadFF}},}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_ae3acfd2942753b3352070caacb8a4bb6a5812e15f0f709a06f04affad25fa0ce9}{DepthOffStencilWriteFF}},}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_ae3acfd2942753b3352070caacb8a4bb6a7d251e81fb6c60cb4d068d886b726bb9}{DepthOffStencilReadFF}},}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_ae3acfd2942753b3352070caacb8a4bb6a105a131cf0013946131b524c95153aef}{DepthOnStencilWriteBF}},\ \textcolor{comment}{//\ BF:\ Back\ Face}}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_ae3acfd2942753b3352070caacb8a4bb6a020f215d3faade3d0ca0b7e4e69096a7}{DepthOnStencilReadBF}},}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_ae3acfd2942753b3352070caacb8a4bb6af4dc7baf27d1cfe9eaa10901f6971e19}{DepthOffStencilWriteBF}},}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_ae3acfd2942753b3352070caacb8a4bb6ac225d417353202d87de09383efa8f303}{DepthOffStencilReadBF}},}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_ae3acfd2942753b3352070caacb8a4bb6a57fffd599d2846aa34610315b00c45a8}{DepthReversedStencilOff}},\textcolor{comment}{//\ only\ things\ that\ are\ occluded\ should\ be\ drawn}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_ae3acfd2942753b3352070caacb8a4bb6a9fc99e3fdc23b5fdc853c497414fc129}{DepthReadOnlyStencilOff}},\ \ \ \ \ \textcolor{comment}{//\ useful\ for\ Transparency}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_ae3acfd2942753b3352070caacb8a4bb6a498b019b74ee2359eab77f5fa1e88bfd}{DepthReadOnlyEquals1StencilOff}},\ \ \ \ \ \ \ \textcolor{comment}{//\ useful\ for\ Skybox}}
+\DoxyCodeLine{00028\ \ \ \ \ \};}
+\DoxyCodeLine{00029\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_ae3acfd2942753b3352070caacb8a4bb6}{Mode}}\ \mbox{\hyperlink{classDepthStencilState_a25adc9858f12b56b3cd7fb31c8044302_a25adc9858f12b56b3cd7fb31c8044302}{m\_mode}};}
+\DoxyCodeLine{00031\ \ \ \ \ Microsoft::WRL::ComPtr<ID3D11DepthStencilState>\ \mbox{\hyperlink{classDepthStencilState_a8e12f80754b4582f45875d8ff505dd02_a8e12f80754b4582f45875d8ff505dd02}{m\_pDepthStencilState}};}
+\DoxyCodeLine{00032\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{classDepthStencilState_a7b1f40fb3710fadada68414103730488_a7b1f40fb3710fadada68414103730488}{DepthStencilState}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_ae3acfd2942753b3352070caacb8a4bb6}{Mode}}\ mode\ );}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDepthStencilState_a3484137e582f9cc5a3e76103f39b5086_a3484137e582f9cc5a3e76103f39b5086}{bind}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx\ )\ cond\_noex\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00036\ \ \ \ \ Microsoft::WRL::ComPtr<ID3D11DepthStencilState>\&\ \mbox{\hyperlink{classDepthStencilState_aadd8440e95fe9fc8f2b0c66eb93ac9b1_aadd8440e95fe9fc8f2b0c66eb93ac9b1}{getD3dDepthStencilState}}();}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<DepthStencilState>\ \mbox{\hyperlink{classDepthStencilState_af67a7f1edf6b2e62b08f5459347ecbda_af67a7f1edf6b2e62b08f5459347ecbda}{fetch}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_ae3acfd2942753b3352070caacb8a4bb6}{Mode}}\ mode\ );}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ \mbox{\hyperlink{classDepthStencilState_a4db6e0f0ad0dca77d2e88db28a9a4bc6_a4db6e0f0ad0dca77d2e88db28a9a4bc6}{calcUid}}(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_ae3acfd2942753b3352070caacb8a4bb6}{Mode}}\ mode\ );}
+\DoxyCodeLine{00039\ \ \ \ \ std::string\ \mbox{\hyperlink{classDepthStencilState_a98ace32eca708cfdaeb8e033d9f64c0f_a98ace32eca708cfdaeb8e033d9f64c0f}{getUid}}()\ const\ noexcept\ override;}
+\DoxyCodeLine{00040\ \};}
+
+\end{DoxyCode}

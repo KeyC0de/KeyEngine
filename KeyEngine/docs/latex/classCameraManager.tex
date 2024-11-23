@@ -1,0 +1,219 @@
+\doxysection{Camera\+Manager Class Reference}
+\hypertarget{classCameraManager}{}\label{classCameraManager}\index{CameraManager@{CameraManager}}
+
+
+singleton class   
+
+
+
+
+{\ttfamily \#include $<$camera\+\_\+manager.\+h$>$}
+
+Inheritance diagram for Camera\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classCameraManager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classCameraManager_a41a699cd43fdb81d7a8b93ca8b9867ee_a41a699cd43fdb81d7a8b93ca8b9867ee}{display\+Imgui\+Widgets}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) noexcept
+\item 
+void \mbox{\hyperlink{classCameraManager_a434536c5857da84fbb3a93e7071cdfca_a434536c5857da84fbb3a93e7071cdfca}{add}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCamera}{Camera}} $>$ p\+Cam)
+\item 
+void \mbox{\hyperlink{classCameraManager_ad457347093fe6fae1d65b1a3d6324fd5_ad457347093fe6fae1d65b1a3d6324fd5}{connect\+Materials\+To\+Renderer}} (\mbox{\hyperlink{classren_1_1Renderer}{ren\+::\+Renderer}} \&r)
+\item 
+void \mbox{\hyperlink{classCameraManager_ab38254a7e009c21fdb7577c1e9b090e7_ab38254a7e009c21fdb7577c1e9b090e7}{render}} (const size\+\_\+t channels=\mbox{\hyperlink{namespacerch_a7bda900872e1367b3434b6b548e17d2c_a7bda900872e1367b3434b6b548e17d2c}{rch\+::all}}) const
+\item 
+void \mbox{\hyperlink{classCameraManager_a549ef1d47bd5fd7294c6213c7e4e8dd1_a549ef1d47bd5fd7294c6213c7e4e8dd1}{on\+Window\+Resize}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx)
+\item 
+\mbox{\hyperlink{classCamera}{Camera}} \& \mbox{\hyperlink{classCameraManager_abdf764797cf31edf23ae92496b6dfcf1_abdf764797cf31edf23ae92496b6dfcf1}{get\+Active\+Camera}} () cond\+\_\+noex
+\item 
+const \mbox{\hyperlink{classCamera}{Camera}} \& \mbox{\hyperlink{classCameraManager_a302759de47a267d74a7f1432d3c5b232_a302759de47a267d74a7f1432d3c5b232}{get\+Active\+Camera}} () const noexcept
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCamera}{Camera}} $>$ \mbox{\hyperlink{classCameraManager_a51f0f22d423edcbd14d305705d680aaa_a51f0f22d423edcbd14d305705d680aaa}{share\+Active\+Camera}} () const noexcept
+\item 
+\mbox{\hyperlink{classCamera}{Camera}} \& \mbox{\hyperlink{classCameraManager_a4947ac4aaea7190d58f2e5ac1795fd34_a4947ac4aaea7190d58f2e5ac1795fd34}{get\+Controlled\+Camera}} () cond\+\_\+noex
+\item 
+const \mbox{\hyperlink{classCamera}{Camera}} \& \mbox{\hyperlink{classCameraManager_a9f378f29fdbe4772e4b1e1d918711518_a9f378f29fdbe4772e4b1e1d918711518}{get\+Controlled\+Camera}} () const noexcept
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCamera}{Camera}} $>$ \mbox{\hyperlink{classCameraManager_a3449fa52852d18549a3ee5948bc43405_a3449fa52852d18549a3ee5948bc43405}{share\+Controlled\+Camera}} () const noexcept
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNonCopyable_a809b6e4ade7ae32f6d248f2a3b783d45_a809b6e4ade7ae32f6d248f2a3b783d45}{Non\+Copyable}} ()=default
+\item 
+\mbox{\hyperlink{classNonCopyable_a15aa3015488bb26c47ded914cb630cf5_a15aa3015488bb26c47ded914cb630cf5}{Non\+Copyable}} (const \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_af4788b57da9a9faa570c754c22c724f5_af4788b57da9a9faa570c754c22c724f5}{operator=}} (const \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable_a487646562ae30ece23d7638f2aed1dde_a487646562ae30ece23d7638f2aed1dde}{Non\+Copyable}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_ae032ca32cda9c836c27b28eb6a087d18_ae032ca32cda9c836c27b28eb6a087d18}{operator=}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable_af716e4cfb79381710ef4490414939ae9_af716e4cfb79381710ef4490414939ae9}{Non\+Copyable}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&\&rhs)=default
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_af81816bd4c2c4421a6eab98843ead6e4_af81816bd4c2c4421a6eab98843ead6e4}{operator=}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&\&rhs)=default
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classCameraManager}{Camera\+Manager}} \& \mbox{\hyperlink{classCameraManager_ac7e6b0996395dcaaa889d17d5a8a639e_ac7e6b0996395dcaaa889d17d5a8a639e}{get\+Instance}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCameraManager_af1976881cb3c38701dd487f4ff19bc19_af1976881cb3c38701dd487f4ff19bc19}{Camera\+Manager}} ()=default
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classCameraManager_a688f373f7162d92e2f17934bcf941317_a688f373f7162d92e2f17934bcf941317}{m\+\_\+active\+Camera\+Index}} = 0
+\item 
+int \mbox{\hyperlink{classCameraManager_accac5104526f70019911393072806f72_accac5104526f70019911393072806f72}{m\+\_\+controlled\+Camera\+Index}} = 0
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCamera}{Camera}} $>$ $>$ \mbox{\hyperlink{classCameraManager_a4c221f7117b26ad11d83522b36707870_a4c221f7117b26ad11d83522b36707870}{m\+\_\+cameras}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classCameraManager}{Camera\+Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classCameraManager_a2d404308eaffbbee0630a22e1318ad1d_a2d404308eaffbbee0630a22e1318ad1d}{s\+\_\+p\+Instance}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNonCopyable_a3e461fb46c72b9a5af7df7e74dbd899e_a3e461fb46c72b9a5af7df7e74dbd899e}{\texorpdfstring{$\sim$}{\string~}\+Non\+Copyable}} () noexcept=default
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+singleton class  
+
+=============================================================
+
+\begin{DoxyAuthor}{Author}
+Key\+C0de 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/05/03 12\+:08 \doxysubsection*{}
+\end{DoxyDate}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classCameraManager_af1976881cb3c38701dd487f4ff19bc19_af1976881cb3c38701dd487f4ff19bc19}\index{CameraManager@{CameraManager}!CameraManager@{CameraManager}}
+\index{CameraManager@{CameraManager}!CameraManager@{CameraManager}}
+\doxysubsubsection{\texorpdfstring{CameraManager()}{CameraManager()}}
+{\footnotesize\ttfamily \label{classCameraManager_af1976881cb3c38701dd487f4ff19bc19_af1976881cb3c38701dd487f4ff19bc19} 
+Camera\+Manager\+::\+Camera\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classCameraManager_a434536c5857da84fbb3a93e7071cdfca_a434536c5857da84fbb3a93e7071cdfca}\index{CameraManager@{CameraManager}!add@{add}}
+\index{add@{add}!CameraManager@{CameraManager}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily \label{classCameraManager_a434536c5857da84fbb3a93e7071cdfca_a434536c5857da84fbb3a93e7071cdfca} 
+void Camera\+Manager\+::add (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCamera}{Camera}} $>$}]{p\+Cam}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classCameraManager_ad457347093fe6fae1d65b1a3d6324fd5_ad457347093fe6fae1d65b1a3d6324fd5}\index{CameraManager@{CameraManager}!connectMaterialsToRenderer@{connectMaterialsToRenderer}}
+\index{connectMaterialsToRenderer@{connectMaterialsToRenderer}!CameraManager@{CameraManager}}
+\doxysubsubsection{\texorpdfstring{connectMaterialsToRenderer()}{connectMaterialsToRenderer()}}
+{\footnotesize\ttfamily \label{classCameraManager_ad457347093fe6fae1d65b1a3d6324fd5_ad457347093fe6fae1d65b1a3d6324fd5} 
+void Camera\+Manager\+::connect\+Materials\+To\+Renderer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classren_1_1Renderer}{ren\+::\+Renderer}} \&}]{r}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classCameraManager_a41a699cd43fdb81d7a8b93ca8b9867ee_a41a699cd43fdb81d7a8b93ca8b9867ee}\index{CameraManager@{CameraManager}!displayImguiWidgets@{displayImguiWidgets}}
+\index{displayImguiWidgets@{displayImguiWidgets}!CameraManager@{CameraManager}}
+\doxysubsubsection{\texorpdfstring{displayImguiWidgets()}{displayImguiWidgets()}}
+{\footnotesize\ttfamily \label{classCameraManager_a41a699cd43fdb81d7a8b93ca8b9867ee_a41a699cd43fdb81d7a8b93ca8b9867ee} 
+void Camera\+Manager\+::display\+Imgui\+Widgets (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classCameraManager_abdf764797cf31edf23ae92496b6dfcf1_abdf764797cf31edf23ae92496b6dfcf1}\index{CameraManager@{CameraManager}!getActiveCamera@{getActiveCamera}}
+\index{getActiveCamera@{getActiveCamera}!CameraManager@{CameraManager}}
+\doxysubsubsection{\texorpdfstring{getActiveCamera()}{getActiveCamera()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classCameraManager_abdf764797cf31edf23ae92496b6dfcf1_abdf764797cf31edf23ae92496b6dfcf1} 
+\mbox{\hyperlink{classCamera}{Camera}} \& Camera\+Manager\+::get\+Active\+Camera (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classCameraManager_a302759de47a267d74a7f1432d3c5b232_a302759de47a267d74a7f1432d3c5b232}\index{CameraManager@{CameraManager}!getActiveCamera@{getActiveCamera}}
+\index{getActiveCamera@{getActiveCamera}!CameraManager@{CameraManager}}
+\doxysubsubsection{\texorpdfstring{getActiveCamera()}{getActiveCamera()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classCameraManager_a302759de47a267d74a7f1432d3c5b232_a302759de47a267d74a7f1432d3c5b232} 
+const \mbox{\hyperlink{classCamera}{Camera}} \& Camera\+Manager\+::get\+Active\+Camera (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classCameraManager_a4947ac4aaea7190d58f2e5ac1795fd34_a4947ac4aaea7190d58f2e5ac1795fd34}\index{CameraManager@{CameraManager}!getControlledCamera@{getControlledCamera}}
+\index{getControlledCamera@{getControlledCamera}!CameraManager@{CameraManager}}
+\doxysubsubsection{\texorpdfstring{getControlledCamera()}{getControlledCamera()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classCameraManager_a4947ac4aaea7190d58f2e5ac1795fd34_a4947ac4aaea7190d58f2e5ac1795fd34} 
+\mbox{\hyperlink{classCamera}{Camera}} \& Camera\+Manager\+::get\+Controlled\+Camera (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classCameraManager_a9f378f29fdbe4772e4b1e1d918711518_a9f378f29fdbe4772e4b1e1d918711518}\index{CameraManager@{CameraManager}!getControlledCamera@{getControlledCamera}}
+\index{getControlledCamera@{getControlledCamera}!CameraManager@{CameraManager}}
+\doxysubsubsection{\texorpdfstring{getControlledCamera()}{getControlledCamera()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classCameraManager_a9f378f29fdbe4772e4b1e1d918711518_a9f378f29fdbe4772e4b1e1d918711518} 
+const \mbox{\hyperlink{classCamera}{Camera}} \& Camera\+Manager\+::get\+Controlled\+Camera (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classCameraManager_ac7e6b0996395dcaaa889d17d5a8a639e_ac7e6b0996395dcaaa889d17d5a8a639e}\index{CameraManager@{CameraManager}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!CameraManager@{CameraManager}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \label{classCameraManager_ac7e6b0996395dcaaa889d17d5a8a639e_ac7e6b0996395dcaaa889d17d5a8a639e} 
+\mbox{\hyperlink{classCameraManager}{Camera\+Manager}} \& Camera\+Manager\+::get\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classCameraManager_a549ef1d47bd5fd7294c6213c7e4e8dd1_a549ef1d47bd5fd7294c6213c7e4e8dd1}\index{CameraManager@{CameraManager}!onWindowResize@{onWindowResize}}
+\index{onWindowResize@{onWindowResize}!CameraManager@{CameraManager}}
+\doxysubsubsection{\texorpdfstring{onWindowResize()}{onWindowResize()}}
+{\footnotesize\ttfamily \label{classCameraManager_a549ef1d47bd5fd7294c6213c7e4e8dd1_a549ef1d47bd5fd7294c6213c7e4e8dd1} 
+void Camera\+Manager\+::on\+Window\+Resize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classCameraManager_ab38254a7e009c21fdb7577c1e9b090e7_ab38254a7e009c21fdb7577c1e9b090e7}\index{CameraManager@{CameraManager}!render@{render}}
+\index{render@{render}!CameraManager@{CameraManager}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily \label{classCameraManager_ab38254a7e009c21fdb7577c1e9b090e7_ab38254a7e009c21fdb7577c1e9b090e7} 
+void Camera\+Manager\+::render (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{channels}{ = {\ttfamily \mbox{\hyperlink{namespacerch_a7bda900872e1367b3434b6b548e17d2c_a7bda900872e1367b3434b6b548e17d2c}{rch\+::all}}}}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classCameraManager_a51f0f22d423edcbd14d305705d680aaa_a51f0f22d423edcbd14d305705d680aaa}\index{CameraManager@{CameraManager}!shareActiveCamera@{shareActiveCamera}}
+\index{shareActiveCamera@{shareActiveCamera}!CameraManager@{CameraManager}}
+\doxysubsubsection{\texorpdfstring{shareActiveCamera()}{shareActiveCamera()}}
+{\footnotesize\ttfamily \label{classCameraManager_a51f0f22d423edcbd14d305705d680aaa_a51f0f22d423edcbd14d305705d680aaa} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCamera}{Camera}} $>$ Camera\+Manager\+::share\+Active\+Camera (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classCameraManager_a3449fa52852d18549a3ee5948bc43405_a3449fa52852d18549a3ee5948bc43405}\index{CameraManager@{CameraManager}!shareControlledCamera@{shareControlledCamera}}
+\index{shareControlledCamera@{shareControlledCamera}!CameraManager@{CameraManager}}
+\doxysubsubsection{\texorpdfstring{shareControlledCamera()}{shareControlledCamera()}}
+{\footnotesize\ttfamily \label{classCameraManager_a3449fa52852d18549a3ee5948bc43405_a3449fa52852d18549a3ee5948bc43405} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCamera}{Camera}} $>$ Camera\+Manager\+::share\+Controlled\+Camera (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classCameraManager_a688f373f7162d92e2f17934bcf941317_a688f373f7162d92e2f17934bcf941317}\index{CameraManager@{CameraManager}!m\_activeCameraIndex@{m\_activeCameraIndex}}
+\index{m\_activeCameraIndex@{m\_activeCameraIndex}!CameraManager@{CameraManager}}
+\doxysubsubsection{\texorpdfstring{m\_activeCameraIndex}{m\_activeCameraIndex}}
+{\footnotesize\ttfamily \label{classCameraManager_a688f373f7162d92e2f17934bcf941317_a688f373f7162d92e2f17934bcf941317} 
+int Camera\+Manager\+::m\+\_\+active\+Camera\+Index = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classCameraManager_a4c221f7117b26ad11d83522b36707870_a4c221f7117b26ad11d83522b36707870}\index{CameraManager@{CameraManager}!m\_cameras@{m\_cameras}}
+\index{m\_cameras@{m\_cameras}!CameraManager@{CameraManager}}
+\doxysubsubsection{\texorpdfstring{m\_cameras}{m\_cameras}}
+{\footnotesize\ttfamily \label{classCameraManager_a4c221f7117b26ad11d83522b36707870_a4c221f7117b26ad11d83522b36707870} 
+std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classCamera}{Camera}}$>$ $>$ Camera\+Manager\+::m\+\_\+cameras\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classCameraManager_accac5104526f70019911393072806f72_accac5104526f70019911393072806f72}\index{CameraManager@{CameraManager}!m\_controlledCameraIndex@{m\_controlledCameraIndex}}
+\index{m\_controlledCameraIndex@{m\_controlledCameraIndex}!CameraManager@{CameraManager}}
+\doxysubsubsection{\texorpdfstring{m\_controlledCameraIndex}{m\_controlledCameraIndex}}
+{\footnotesize\ttfamily \label{classCameraManager_accac5104526f70019911393072806f72_accac5104526f70019911393072806f72} 
+int Camera\+Manager\+::m\+\_\+controlled\+Camera\+Index = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classCameraManager_a2d404308eaffbbee0630a22e1318ad1d_a2d404308eaffbbee0630a22e1318ad1d}\index{CameraManager@{CameraManager}!s\_pInstance@{s\_pInstance}}
+\index{s\_pInstance@{s\_pInstance}!CameraManager@{CameraManager}}
+\doxysubsubsection{\texorpdfstring{s\_pInstance}{s\_pInstance}}
+{\footnotesize\ttfamily \label{classCameraManager_a2d404308eaffbbee0630a22e1318ad1d_a2d404308eaffbbee0630a22e1318ad1d} 
+\mbox{\hyperlink{classCameraManager}{Camera\+Manager}}\texorpdfstring{$\ast$}{*} Camera\+Manager\+::s\+\_\+p\+Instance\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{camera__manager_8h}{camera\+\_\+manager.\+h}}\item 
+src/\mbox{\hyperlink{camera__manager_8cpp}{camera\+\_\+manager.\+cpp}}\end{DoxyCompactItemize}

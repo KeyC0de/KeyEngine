@@ -1,0 +1,292 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classcon_1_1CBElementView" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>con::CBElementView</compoundname>
+    <includes refid="dynamic__constant__buffer_8h" local="no">dynamic_constant_buffer.h</includes>
+    <innerclass refid="classcon_1_1CBElementView_1_1Ptr" prot="public">con::CBElementView::Ptr</innerclass>
+    <sectiondef kind="friend">
+      <memberdef kind="friend" id="classcon_1_1CBElementView_a7c5d2ec80c60f2e00fb000cbb6889351_1a7c5d2ec80c60f2e00fb000cbb6889351" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class CBuffer</definition>
+        <argsstring></argsstring>
+        <name>CBuffer</name>
+        <qualifiedname>con::CBElementView::CBuffer</qualifiedname>
+        <param>
+          <type><ref refid="classcon_1_1CBuffer" kindref="compound">CBuffer</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="405" column="14" bodyfile="inc/dynamic_constant_buffer.h" bodystart="405" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classcon_1_1CBElementView_a6a0b01094fc87bf3766a4402ad0c47d5_1a6a0b01094fc87bf3766a4402ad0c47d5" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t con::CBElementView::m_arrayOffset</definition>
+        <argsstring></argsstring>
+        <name>m_arrayOffset</name>
+        <qualifiedname>con::CBElementView::m_arrayOffset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="407" column="8" bodyfile="inc/dynamic_constant_buffer.h" bodystart="407" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcon_1_1CBElementView_a155c48db0b2b347ee066305db3131c19_1a155c48db0b2b347ee066305db3131c19" prot="private" static="no" mutable="no">
+        <type>const <ref refid="classcon_1_1CBElement" kindref="compound">CBElement</ref> *</type>
+        <definition>const CBElement* con::CBElementView::m_pLayout</definition>
+        <argsstring></argsstring>
+        <name>m_pLayout</name>
+        <qualifiedname>con::CBElementView::m_pLayout</qualifiedname>
+        <briefdescription>
+<para>m_arrayOffset has to do with array indexing, it&apos;s an extra offset that accumulates as you nest inside arrays deeper into the structure </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="408" column="17" bodyfile="inc/dynamic_constant_buffer.h" bodystart="408" bodyend="-1"/>
+        <referencedby refid="classcon_1_1CBElementView_ae9e73eaac96101a36682721aa5e6be15_1ae9e73eaac96101a36682721aa5e6be15" compoundref="dynamic__constant__buffer_8cpp" startline="385" endline="388">isValid</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classcon_1_1CBElementView_a3b3033f8e1aa9bec99f3e53c3b89acda_1a3b3033f8e1aa9bec99f3e53c3b89acda" prot="private" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* con::CBElementView::m_p</definition>
+        <argsstring></argsstring>
+        <name>m_p</name>
+        <qualifiedname>con::CBElementView::m_p</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="409" column="6" bodyfile="inc/dynamic_constant_buffer.h" bodystart="409" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classcon_1_1CBElementView_ad94aab709fbcb4082280d4011c6825dd_1ad94aab709fbcb4082280d4011c6825dd" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>con::CBElementView::CBElementView</definition>
+        <argsstring>(const CBElement *pLayout, char *pBytes, const size_t offset) noexcept</argsstring>
+        <name>CBElementView</name>
+        <qualifiedname>con::CBElementView::CBElementView</qualifiedname>
+        <param>
+          <type>const <ref refid="classcon_1_1CBElement" kindref="compound">CBElement</ref> *</type>
+          <declname>pLayout</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>pBytes</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>offset</declname>
+        </param>
+        <briefdescription>
+<para>CBElementViews should only be constructable by other refs or by the buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="412" column="1" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="406" bodyend="415"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classcon_1_1CBElementView_adeaaf1ba2c9990ca83eb435be49d5033_1adeaaf1ba2c9990ca83eb435be49d5033" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>con::CBElementView::operator CBElementConstView</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>operator CBElementConstView</name>
+        <qualifiedname>con::CBElementView::operator CBElementConstView</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="431" column="1" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="380" bodyend="383"/>
+      </memberdef>
+      <memberdef kind="function" id="classcon_1_1CBElementView_ae9e73eaac96101a36682721aa5e6be15_1ae9e73eaac96101a36682721aa5e6be15" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool con::CBElementView::isValid</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>isValid</name>
+        <qualifiedname>con::CBElementView::isValid</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="432" column="6" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="385" bodyend="388"/>
+      </memberdef>
+      <memberdef kind="function" id="classcon_1_1CBElementView_ad961e7a602ba84e38e3894afd9a28653_1ad961e7a602ba84e38e3894afd9a28653" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcon_1_1CBElementView" kindref="compound">CBElementView</ref></type>
+        <definition>CBElementView con::CBElementView::operator[]</definition>
+        <argsstring>(const std::string &amp;key) const cond_noex</argsstring>
+        <name>operator[]</name>
+        <qualifiedname>con::CBElementView::operator[]</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="433" column="15" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="390" bodyend="393"/>
+      </memberdef>
+      <memberdef kind="function" id="classcon_1_1CBElementView_a5c7c3611fe5322bb03d282929d8d0ca9_1a5c7c3611fe5322bb03d282929d8d0ca9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcon_1_1CBElementView" kindref="compound">CBElementView</ref></type>
+        <definition>CBElementView con::CBElementView::operator[]</definition>
+        <argsstring>(const size_t index) const cond_noex</argsstring>
+        <name>operator[]</name>
+        <qualifiedname>con::CBElementView::operator[]</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="434" column="15" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="395" bodyend="399"/>
+      </memberdef>
+      <memberdef kind="function" id="classcon_1_1CBElementView_a284b1e7efce3ea119b68be0085cfe01b_1a284b1e7efce3ea119b68be0085cfe01b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename S</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool con::CBElementView::setIfValid</definition>
+        <argsstring>(const S &amp;val) cond_noex</argsstring>
+        <name>setIfValid</name>
+        <qualifiedname>con::CBElementView::setIfValid</qualifiedname>
+        <param>
+          <type>const S &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>optionally set value if not an empty Ref </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="437" column="6" bodyfile="inc/dynamic_constant_buffer.h" bodystart="437" bodyend="445"/>
+      </memberdef>
+      <memberdef kind="function" id="classcon_1_1CBElementView_a81c656fe54afc1aacab0f55c98df80fa_1a81c656fe54afc1aacab0f55c98df80fa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcon_1_1CBElementView_1_1Ptr" kindref="compound">Ptr</ref></type>
+        <definition>CBElementView::Ptr con::CBElementView::operator&amp;</definition>
+        <argsstring>() const cond_noex</argsstring>
+        <name>operator&amp;</name>
+        <qualifiedname>con::CBElementView::operator&amp;</qualifiedname>
+        <briefdescription>
+<para>get pointer to the layout element </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="447" column="5" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="401" bodyend="404"/>
+      </memberdef>
+      <memberdef kind="function" id="classcon_1_1CBElementView_a63649e2ff6f113b4a1a872032386f22a_1a63649e2ff6f113b4a1a872032386f22a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>con::CBElementView::operator T&amp;</definition>
+        <argsstring>() const cond_noex</argsstring>
+        <name>operator T&amp;</name>
+        <qualifiedname>con::CBElementView::operator T&amp;</qualifiedname>
+        <briefdescription>
+<para>conversion for reading/writing as a supported CPUType </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="450" column="1" bodyfile="inc/dynamic_constant_buffer.h" bodystart="450" bodyend="454"/>
+      </memberdef>
+      <memberdef kind="function" id="classcon_1_1CBElementView_a6d544792727126d69bff68ffcb7b717a_1a6d544792727126d69bff68ffcb7b717a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T &amp;</type>
+        <definition>T &amp; con::CBElementView::operator=</definition>
+        <argsstring>(const T &amp;rhs) const cond_noex</argsstring>
+        <name>operator=</name>
+        <qualifiedname>con::CBElementView::operator=</qualifiedname>
+        <param>
+          <type>const T &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>assignment for writing to as a supported CPUType </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="457" column="3" bodyfile="inc/dynamic_constant_buffer.h" bodystart="457" bodyend="461"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>version of <ref refid="classcon_1_1CBElementConstView" kindref="compound">CBElementConstView</ref> that also allows writing to the bytes of Buffer </para>
+    </briefdescription>
+    <detaileddescription>
+<para>=============================================================</para>
+<para><simplesect kind="author"><para>KeyC0de </para>
+</simplesect>
+<simplesect kind="date"><para>2022/08/21 19:52</para>
+</simplesect>
+see above in <ref refid="classcon_1_1CBElementConstView" kindref="compound">CBElementConstView</ref> for detailed description <heading level="1">maintains a pointer to the byte vector of the Buffer </heading>
+</para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>con::CBElement</label>
+        <link refid="classcon_1_1CBElement"/>
+      </node>
+      <node id="1">
+        <label>con::CBElementView</label>
+        <link refid="classcon_1_1CBElementView"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>m_pLayout</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/dynamic_constant_buffer.h" line="403" column="1" bodyfile="inc/dynamic_constant_buffer.h" bodystart="404" bodyend="462"/>
+    <listofallmembers>
+      <member refid="classcon_1_1CBElementView_ad94aab709fbcb4082280d4011c6825dd_1ad94aab709fbcb4082280d4011c6825dd" prot="private" virt="non-virtual"><scope>con::CBElementView</scope><name>CBElementView</name></member>
+      <member refid="classcon_1_1CBElementView_a7c5d2ec80c60f2e00fb000cbb6889351_1a7c5d2ec80c60f2e00fb000cbb6889351" prot="private" virt="non-virtual"><scope>con::CBElementView</scope><name>CBuffer</name></member>
+      <member refid="classcon_1_1CBElementView_ae9e73eaac96101a36682721aa5e6be15_1ae9e73eaac96101a36682721aa5e6be15" prot="public" virt="non-virtual"><scope>con::CBElementView</scope><name>isValid</name></member>
+      <member refid="classcon_1_1CBElementView_a6a0b01094fc87bf3766a4402ad0c47d5_1a6a0b01094fc87bf3766a4402ad0c47d5" prot="private" virt="non-virtual"><scope>con::CBElementView</scope><name>m_arrayOffset</name></member>
+      <member refid="classcon_1_1CBElementView_a3b3033f8e1aa9bec99f3e53c3b89acda_1a3b3033f8e1aa9bec99f3e53c3b89acda" prot="private" virt="non-virtual"><scope>con::CBElementView</scope><name>m_p</name></member>
+      <member refid="classcon_1_1CBElementView_a155c48db0b2b347ee066305db3131c19_1a155c48db0b2b347ee066305db3131c19" prot="private" virt="non-virtual"><scope>con::CBElementView</scope><name>m_pLayout</name></member>
+      <member refid="classcon_1_1CBElementView_adeaaf1ba2c9990ca83eb435be49d5033_1adeaaf1ba2c9990ca83eb435be49d5033" prot="public" virt="non-virtual"><scope>con::CBElementView</scope><name>operator CBElementConstView</name></member>
+      <member refid="classcon_1_1CBElementView_a63649e2ff6f113b4a1a872032386f22a_1a63649e2ff6f113b4a1a872032386f22a" prot="public" virt="non-virtual"><scope>con::CBElementView</scope><name>operator T&amp;</name></member>
+      <member refid="classcon_1_1CBElementView_a81c656fe54afc1aacab0f55c98df80fa_1a81c656fe54afc1aacab0f55c98df80fa" prot="public" virt="non-virtual"><scope>con::CBElementView</scope><name>operator&amp;</name></member>
+      <member refid="classcon_1_1CBElementView_a6d544792727126d69bff68ffcb7b717a_1a6d544792727126d69bff68ffcb7b717a" prot="public" virt="non-virtual"><scope>con::CBElementView</scope><name>operator=</name></member>
+      <member refid="classcon_1_1CBElementView_ad961e7a602ba84e38e3894afd9a28653_1ad961e7a602ba84e38e3894afd9a28653" prot="public" virt="non-virtual"><scope>con::CBElementView</scope><name>operator[]</name></member>
+      <member refid="classcon_1_1CBElementView_a5c7c3611fe5322bb03d282929d8d0ca9_1a5c7c3611fe5322bb03d282929d8d0ca9" prot="public" virt="non-virtual"><scope>con::CBElementView</scope><name>operator[]</name></member>
+      <member refid="classcon_1_1CBElementView_a284b1e7efce3ea119b68be0085cfe01b_1a284b1e7efce3ea119b68be0085cfe01b" prot="public" virt="non-virtual"><scope>con::CBElementView</scope><name>setIfValid</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

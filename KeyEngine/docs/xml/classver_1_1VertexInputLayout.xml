@@ -1,0 +1,280 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classver_1_1VertexInputLayout" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>ver::VertexInputLayout</compoundname>
+    <includes refid="dynamic__vertex__buffer_8h" local="no">dynamic_vertex_buffer.h</includes>
+    <innerclass refid="structver_1_1VertexInputLayout_1_1ElementProperties" prot="public">ver::VertexInputLayout::ElementProperties</innerclass>
+    <innerclass refid="structver_1_1VertexInputLayout_1_1ElementProperties_3_01BGRAColor_01_4" prot="public">ver::VertexInputLayout::ElementProperties&lt; BGRAColor &gt;</innerclass>
+    <innerclass refid="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Bitangent_01_4" prot="public">ver::VertexInputLayout::ElementProperties&lt; Bitangent &gt;</innerclass>
+    <innerclass refid="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Count_01_4" prot="public">ver::VertexInputLayout::ElementProperties&lt; Count &gt;</innerclass>
+    <innerclass refid="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Float3Color_01_4" prot="public">ver::VertexInputLayout::ElementProperties&lt; Float3Color &gt;</innerclass>
+    <innerclass refid="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Float4Color_01_4" prot="public">ver::VertexInputLayout::ElementProperties&lt; Float4Color &gt;</innerclass>
+    <innerclass refid="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Normal_01_4" prot="public">ver::VertexInputLayout::ElementProperties&lt; Normal &gt;</innerclass>
+    <innerclass refid="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Position2D_01_4" prot="public">ver::VertexInputLayout::ElementProperties&lt; Position2D &gt;</innerclass>
+    <innerclass refid="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Position3D_01_4" prot="public">ver::VertexInputLayout::ElementProperties&lt; Position3D &gt;</innerclass>
+    <innerclass refid="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Tangent_01_4" prot="public">ver::VertexInputLayout::ElementProperties&lt; Tangent &gt;</innerclass>
+    <innerclass refid="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Texture2D_01_4" prot="public">ver::VertexInputLayout::ElementProperties&lt; Texture2D &gt;</innerclass>
+    <innerclass refid="classver_1_1VertexInputLayout_1_1ILElement" prot="public">ver::VertexInputLayout::ILElement</innerclass>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_1a7582c10f2c7a3ac24f95015bcbeb8c1a" prot="public" static="no" strong="no">
+        <type></type>
+        <name>ILEementType</name>
+        <qualifiedname>ver::VertexInputLayout::ILEementType</qualifiedname>
+        <enumvalue id="classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_1a7582c10f2c7a3ac24f95015bcbeb8c1aa1e76919a8e9feb0228ed99dd30683544" prot="public">
+          <name>VERTEX_INPUT_LAYOUT_ELEMENT_TYPES</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="48" column="1" bodyfile="inc/dynamic_vertex_buffer.h" bodystart="49" bodyend="53"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classver_1_1VertexInputLayout_a3e560d20053a7a9a8b9696170b8e7e71_1a3e560d20053a7a9a8b9696170b8e7e71" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classver_1_1VertexInputLayout_1_1ILElement" kindref="compound">ILElement</ref> &gt;</type>
+        <definition>std::vector&lt;ILElement&gt; ver::VertexInputLayout::m_vertexLayoutElements</definition>
+        <argsstring></argsstring>
+        <name>m_vertexLayoutElements</name>
+        <qualifiedname>ver::VertexInputLayout::m_vertexLayoutElements</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="46" column="13" bodyfile="inc/dynamic_vertex_buffer.h" bodystart="46" bodyend="-1"/>
+        <referencedby refid="classver_1_1VertexInputLayout_aad3d42fc8e63ce215f8b9965bc0bb699_1aad3d42fc8e63ce215f8b9965bc0bb699" compoundref="dynamic__vertex__buffer_8cpp" startline="56" endline="64">calcSignature</referencedby>
+        <referencedby refid="classver_1_1VertexInputLayout_ac7399fc698252e90645b4afc155c284b_1ac7399fc698252e90645b4afc155c284b" compoundref="dynamic__vertex__buffer_8h" startline="212" endline="223">fetch</referencedby>
+        <referencedby refid="classver_1_1VertexInputLayout_a7e6126ae398fd20640edf6a42c2b744b_1a7e6126ae398fd20640edf6a42c2b744b" compoundref="dynamic__vertex__buffer_8cpp" startline="45" endline="54">getD3DInputElementDescs</referencedby>
+        <referencedby refid="classver_1_1VertexInputLayout_a0864ab48170f7826b431314283b20ab9_1a0864ab48170f7826b431314283b20ab9" compoundref="dynamic__vertex__buffer_8cpp" startline="40" endline="43">getElementCount</referencedby>
+        <referencedby refid="classver_1_1VertexInputLayout_aa4d03e06b3df44cd4b80095f57f01aa2_1aa4d03e06b3df44cd4b80095f57f01aa2" compoundref="dynamic__vertex__buffer_8cpp" startline="33" endline="38">getSizeInBytes</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classver_1_1VertexInputLayout_a452fe701708b2ce80a4b957de00b5640_1a452fe701708b2ce80a4b957de00b5640" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>template&lt; <ref refid="classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_1a7582c10f2c7a3ac24f95015bcbeb8c1a" kindref="member">VertexInputLayout::ILEementType</ref> &gt; class</type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>static constexpr auto ver::VertexInputLayout::bridge</definition>
+        <argsstring>(const VertexInputLayout::ILEementType type, Args &amp;&amp;... args) cond_noex</argsstring>
+        <name>bridge</name>
+        <qualifiedname>ver::VertexInputLayout::bridge</qualifiedname>
+        <param>
+          <type>const <ref refid="classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_1a7582c10f2c7a3ac24f95015bcbeb8c1a" kindref="member">VertexInputLayout::ILEementType</ref></type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>use <ref refid="classver_1_1VertexInputLayout_a452fe701708b2ce80a4b957de00b5640_1a452fe701708b2ce80a4b957de00b5640" kindref="member">bridge()</ref> at runtime to get information about an element&apos;s properties </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="171" column="23" bodyfile="inc/dynamic_vertex_buffer.h" bodystart="171" bodyend="186"/>
+        <referencedby refid="classver_1_1VBuffer_ad7f7cf56612462254808173841a75576_1ad7f7cf56612462254808173841a75576" compoundref="dynamic__vertex__buffer_8cpp" startline="191" endline="201">ver::VBuffer::VBuffer</referencedby>
+        <referencedby refid="classver_1_1VertexInputLayout_1_1ILElement_a70dd3eb7bd8279a8171b33b2213f5491_1a70dd3eb7bd8279a8171b33b2213f5491" compoundref="dynamic__vertex__buffer_8cpp" startline="141" endline="144">ver::VertexInputLayout::ILElement::getD3dDesc</referencedby>
+        <referencedby refid="classver_1_1VertexInputLayout_1_1ILElement_a0f6e5ba8edb16bab19476ca9af242e03_1a0f6e5ba8edb16bab19476ca9af242e03" compoundref="dynamic__vertex__buffer_8cpp" startline="121" endline="124">ver::VertexInputLayout::ILElement::getElementTypeSize</referencedby>
+        <referencedby refid="classver_1_1VertexInputLayout_1_1ILElement_ab12096f4ca21416fbdcc3bbb4e521504_1ab12096f4ca21416fbdcc3bbb4e521504" compoundref="dynamic__vertex__buffer_8cpp" startline="146" endline="149">ver::VertexInputLayout::ILElement::getTag</referencedby>
+        <referencedby refid="classver_1_1VBElementView_a0985e157553a8dfe4fdd37443295f5f7_1a0985e157553a8dfe4fdd37443295f5f7" compoundref="dynamic__vertex__buffer_8h" startline="256" endline="262">ver::VBElementView::setElementByIndex</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classver_1_1VertexInputLayout_ac7399fc698252e90645b4afc155c284b_1ac7399fc698252e90645b4afc155c284b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_1a7582c10f2c7a3ac24f95015bcbeb8c1a" kindref="member">ILEementType</ref></type>
+            <declname>layoutType</declname>
+            <defname>layoutType</defname>
+          </param>
+        </templateparamlist>
+        <type>const <ref refid="classver_1_1VertexInputLayout_1_1ILElement" kindref="compound">ILElement</ref> &amp;</type>
+        <definition>const ILElement &amp; ver::VertexInputLayout::fetch</definition>
+        <argsstring>() const cond_noex</argsstring>
+        <name>fetch</name>
+        <qualifiedname>ver::VertexInputLayout::fetch</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="212" column="17" bodyfile="inc/dynamic_vertex_buffer.h" bodystart="212" bodyend="223"/>
+        <referencedby refid="classver_1_1VBElementView_ac9e037ac6b0fd340869a0f26e88ab3a3_1ac9e037ac6b0fd340869a0f26e88ab3a3" compoundref="dynamic__vertex__buffer_8h" startline="291" endline="296">ver::VBElementView::getElement</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classver_1_1VertexInputLayout_a08e18188f08b7631be3e7901b8b5ee3b_1a08e18188f08b7631be3e7901b8b5ee3b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classver_1_1VertexInputLayout_1_1ILElement" kindref="compound">ILElement</ref> &amp;</type>
+        <definition>const VertexInputLayout::ILElement &amp; ver::VertexInputLayout::getElementByIndex</definition>
+        <argsstring>(const size_t i) const cond_noex</argsstring>
+        <name>getElementByIndex</name>
+        <qualifiedname>ver::VertexInputLayout::getElementByIndex</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="224" column="17" bodyfile="src/dynamic_vertex_buffer.cpp" bodystart="7" bodyend="10"/>
+        <referencedby refid="classver_1_1VBuffer_ad7f7cf56612462254808173841a75576_1ad7f7cf56612462254808173841a75576" compoundref="dynamic__vertex__buffer_8cpp" startline="191" endline="201">ver::VBuffer::VBuffer</referencedby>
+        <referencedby refid="classver_1_1VBElementView_a0985e157553a8dfe4fdd37443295f5f7_1a0985e157553a8dfe4fdd37443295f5f7" compoundref="dynamic__vertex__buffer_8h" startline="256" endline="262">ver::VBElementView::setElementByIndex</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classver_1_1VertexInputLayout_a7adfb63eeb82ed86d1144d70fddc0dee_1a7adfb63eeb82ed86d1144d70fddc0dee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classver_1_1VertexInputLayout" kindref="compound">VertexInputLayout</ref> &amp;</type>
+        <definition>VertexInputLayout &amp; ver::VertexInputLayout::add</definition>
+        <argsstring>(const ILEementType type) cond_noex</argsstring>
+        <name>add</name>
+        <qualifiedname>ver::VertexInputLayout::add</qualifiedname>
+        <param>
+          <type>const <ref refid="classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_1a7582c10f2c7a3ac24f95015bcbeb8c1a" kindref="member">ILEementType</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="225" column="19" bodyfile="src/dynamic_vertex_buffer.cpp" bodystart="12" bodyend="19"/>
+        <referencedby refid="classren_1_1Pass2D_adc44db26e4e8dce5aa8450b875541109_1adc44db26e4e8dce5aa8450b875541109" compoundref="pass__2d_8cpp" startline="28" endline="84">ren::Pass2D::Pass2D</referencedby>
+        <referencedby refid="structGeometry_a026f26f5b340b8ded93d710b9ae82f47_1a026f26f5b340b8ded93d710b9ae82f47" compoundref="geometry_8cpp" startline="559" endline="611">Geometry::makeCameraFrustum</referencedby>
+        <referencedby refid="structGeometry_a26b5674a1de8475cb8735a0a622cfe45_1a26b5674a1de8475cb8735a0a622cfe45" compoundref="geometry_8cpp" startline="512" endline="557">Geometry::makeCameraWidget</referencedby>
+        <referencedby refid="structGeometry_ad6a2e76395426ee4014b46795ea25eea_1ad6a2e76395426ee4014b46795ea25eea" compoundref="geometry_8cpp" startline="37" endline="70">Geometry::makeCube</referencedby>
+        <referencedby refid="structGeometry_a86cd2ba34214c359643cfb2009b60acd_1a86cd2ba34214c359643cfb2009b60acd" compoundref="geometry_8cpp" startline="117" endline="154">Geometry::makeCubeIndependentFacesTextured</referencedby>
+        <referencedby refid="structGeometry_a3442ce56732507eed4e375c3d0fbf269_1a3442ce56732507eed4e375c3d0fbf269" compoundref="geometry_8cpp" startline="13" endline="35">Geometry::makeLine</referencedby>
+        <referencedby refid="structGeometry_a90c5449438c31aae13d7cdfbaa678c74_1a90c5449438c31aae13d7cdfbaa678c74" compoundref="geometry_8cpp" startline="254" endline="322">Geometry::makePlanarGrid</referencedby>
+        <referencedby refid="structGeometry_a18d0b1f6bcbc3f36c2dec3315a04c220_1a18d0b1f6bcbc3f36c2dec3315a04c220" compoundref="geometry_8cpp" startline="324" endline="402">Geometry::makePlanarGridTextured</referencedby>
+        <referencedby refid="structGeometry_a79e26ca18bc0353a8c700025cde4fb73_1a79e26ca18bc0353a8c700025cde4fb73" compoundref="geometry_8cpp" startline="404" endline="510">Geometry::makePlanarGridTexturedFromHeighmap</referencedby>
+        <referencedby refid="structGeometry_afafcbc076c42fa8fc3fa44592e755385_1afafcbc076c42fa8fc3fa44592e755385" compoundref="geometry_8cpp" startline="156" endline="252">Geometry::makeSphereTesselated</referencedby>
+        <referencedby refid="testing_8h_ad37a13097027655233f9bdbad37ae2e6_1ad37a13097027655233f9bdbad37ae2e6" compoundref="testing_8cpp" startline="30" endline="54">testDynamicMeshLoading</referencedby>
+        <referencedby refid="testing_8h_a6602bea1ca81d830dfee5423f7f48029_1a6602bea1ca81d830dfee5423f7f48029" compoundref="testing_8cpp" startline="346" endline="398">testDynamicVertex</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classver_1_1VertexInputLayout_aa4d03e06b3df44cd4b80095f57f01aa2_1aa4d03e06b3df44cd4b80095f57f01aa2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t ver::VertexInputLayout::getSizeInBytes</definition>
+        <argsstring>() const cond_noex</argsstring>
+        <name>getSizeInBytes</name>
+        <qualifiedname>ver::VertexInputLayout::getSizeInBytes</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="226" column="8" bodyfile="src/dynamic_vertex_buffer.cpp" bodystart="33" bodyend="38"/>
+        <referencedby refid="classver_1_1VBuffer_aaae48c4f23f77bb394551d2422f6f7de_1aaae48c4f23f77bb394551d2422f6f7de" compoundref="dynamic__vertex__buffer_8cpp" startline="218" endline="222">ver::VBuffer::back</referencedby>
+        <referencedby refid="classver_1_1VBuffer_a72b7cf6963ccaa7dc23de132233b3c15_1a72b7cf6963ccaa7dc23de132233b3c15" compoundref="dynamic__vertex__buffer_8h" startline="327" endline="332">ver::VBuffer::emplaceVertex</referencedby>
+        <referencedby refid="classver_1_1VBuffer_a55a75ab98d36aa175186b19231626219_1a55a75ab98d36aa175186b19231626219" compoundref="dynamic__vertex__buffer_8cpp" startline="208" endline="211">ver::VBuffer::getVertexCount</referencedby>
+        <referencedby refid="classver_1_1VBuffer_a15ad1af94cfa99dbab21409df8d85cf6_1a15ad1af94cfa99dbab21409df8d85cf6" compoundref="dynamic__vertex__buffer_8cpp" startline="176" endline="183">ver::VBuffer::resize</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classver_1_1VertexInputLayout_a0864ab48170f7826b431314283b20ab9_1a0864ab48170f7826b431314283b20ab9" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t ver::VertexInputLayout::getElementCount</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getElementCount</name>
+        <qualifiedname>ver::VertexInputLayout::getElementCount</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="227" column="8" bodyfile="src/dynamic_vertex_buffer.cpp" bodystart="40" bodyend="43"/>
+        <referencedby refid="classver_1_1VBuffer_ad7f7cf56612462254808173841a75576_1ad7f7cf56612462254808173841a75576" compoundref="dynamic__vertex__buffer_8cpp" startline="191" endline="201">ver::VBuffer::VBuffer</referencedby>
+        <referencedby refid="classver_1_1VBuffer_a72b7cf6963ccaa7dc23de132233b3c15_1a72b7cf6963ccaa7dc23de132233b3c15" compoundref="dynamic__vertex__buffer_8h" startline="327" endline="332">ver::VBuffer::emplaceVertex</referencedby>
+        <referencedby refid="classver_1_1VertexInputLayout_a7e6126ae398fd20640edf6a42c2b744b_1a7e6126ae398fd20640edf6a42c2b744b" compoundref="dynamic__vertex__buffer_8cpp" startline="45" endline="54">getD3DInputElementDescs</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classver_1_1VertexInputLayout_a7e6126ae398fd20640edf6a42c2b744b_1a7e6126ae398fd20640edf6a42c2b744b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; D3D11_INPUT_ELEMENT_DESC &gt;</type>
+        <definition>std::vector&lt; D3D11_INPUT_ELEMENT_DESC &gt; ver::VertexInputLayout::getD3DInputElementDescs</definition>
+        <argsstring>() const cond_noex</argsstring>
+        <name>getD3DInputElementDescs</name>
+        <qualifiedname>ver::VertexInputLayout::getD3DInputElementDescs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="228" column="13" bodyfile="src/dynamic_vertex_buffer.cpp" bodystart="45" bodyend="54"/>
+        <referencedby refid="classInputLayout_a96527abda8afcf0a2218c39082183f1d_1a96527abda8afcf0a2218c39082183f1d" compoundref="input__layout_8cpp" startline="9" endline="20">InputLayout::InputLayout</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classver_1_1VertexInputLayout_aad3d42fc8e63ce215f8b9965bc0bb699_1aad3d42fc8e63ce215f8b9965bc0bb699" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string ver::VertexInputLayout::calcSignature</definition>
+        <argsstring>() const cond_noex</argsstring>
+        <name>calcSignature</name>
+        <qualifiedname>ver::VertexInputLayout::calcSignature</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="229" column="13" bodyfile="src/dynamic_vertex_buffer.cpp" bodystart="56" bodyend="64"/>
+        <referencedby refid="classInputLayout_a981d8d9efb96d0988b78a67b6cda4a4d_1a981d8d9efb96d0988b78a67b6cda4a4d" compoundref="input__layout_8cpp" startline="40" endline="45">InputLayout::calcUid</referencedby>
+        <referencedby refid="classInputLayout_a23d0b5c4a3a9442ef38e5473a33f7adf_1a23d0b5c4a3a9442ef38e5473a33f7adf" compoundref="input__layout_8cpp" startline="47" endline="51">InputLayout::getUid</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classver_1_1VertexInputLayout_a2185ef30b26586b87f40fa3905c37c38_1a2185ef30b26586b87f40fa3905c37c38" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ver::VertexInputLayout::hasType</definition>
+        <argsstring>(const ILEementType &amp;type) const noexcept</argsstring>
+        <name>hasType</name>
+        <qualifiedname>ver::VertexInputLayout::hasType</qualifiedname>
+        <param>
+          <type>const <ref refid="classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_1a7582c10f2c7a3ac24f95015bcbeb8c1a" kindref="member">ILEementType</ref> &amp;</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="230" column="6" bodyfile="src/dynamic_vertex_buffer.cpp" bodystart="21" bodyend="31"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/dynamic_vertex_buffer.h" line="41" column="1" bodyfile="inc/dynamic_vertex_buffer.h" bodystart="42" bodyend="231"/>
+    <listofallmembers>
+      <member refid="classver_1_1VertexInputLayout_a7adfb63eeb82ed86d1144d70fddc0dee_1a7adfb63eeb82ed86d1144d70fddc0dee" prot="public" virt="non-virtual"><scope>ver::VertexInputLayout</scope><name>add</name></member>
+      <member refid="classver_1_1VertexInputLayout_a452fe701708b2ce80a4b957de00b5640_1a452fe701708b2ce80a4b957de00b5640" prot="public" virt="non-virtual"><scope>ver::VertexInputLayout</scope><name>bridge</name></member>
+      <member refid="classver_1_1VertexInputLayout_aad3d42fc8e63ce215f8b9965bc0bb699_1aad3d42fc8e63ce215f8b9965bc0bb699" prot="public" virt="non-virtual"><scope>ver::VertexInputLayout</scope><name>calcSignature</name></member>
+      <member refid="classver_1_1VertexInputLayout_ac7399fc698252e90645b4afc155c284b_1ac7399fc698252e90645b4afc155c284b" prot="public" virt="non-virtual"><scope>ver::VertexInputLayout</scope><name>fetch</name></member>
+      <member refid="classver_1_1VertexInputLayout_a7e6126ae398fd20640edf6a42c2b744b_1a7e6126ae398fd20640edf6a42c2b744b" prot="public" virt="non-virtual"><scope>ver::VertexInputLayout</scope><name>getD3DInputElementDescs</name></member>
+      <member refid="classver_1_1VertexInputLayout_a08e18188f08b7631be3e7901b8b5ee3b_1a08e18188f08b7631be3e7901b8b5ee3b" prot="public" virt="non-virtual"><scope>ver::VertexInputLayout</scope><name>getElementByIndex</name></member>
+      <member refid="classver_1_1VertexInputLayout_a0864ab48170f7826b431314283b20ab9_1a0864ab48170f7826b431314283b20ab9" prot="public" virt="non-virtual"><scope>ver::VertexInputLayout</scope><name>getElementCount</name></member>
+      <member refid="classver_1_1VertexInputLayout_aa4d03e06b3df44cd4b80095f57f01aa2_1aa4d03e06b3df44cd4b80095f57f01aa2" prot="public" virt="non-virtual"><scope>ver::VertexInputLayout</scope><name>getSizeInBytes</name></member>
+      <member refid="classver_1_1VertexInputLayout_a2185ef30b26586b87f40fa3905c37c38_1a2185ef30b26586b87f40fa3905c37c38" prot="public" virt="non-virtual"><scope>ver::VertexInputLayout</scope><name>hasType</name></member>
+      <member refid="classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_1a7582c10f2c7a3ac24f95015bcbeb8c1a" prot="public" virt="non-virtual"><scope>ver::VertexInputLayout</scope><name>ILEementType</name></member>
+      <member refid="classver_1_1VertexInputLayout_a3e560d20053a7a9a8b9696170b8e7e71_1a3e560d20053a7a9a8b9696170b8e7e71" prot="private" virt="non-virtual"><scope>ver::VertexInputLayout</scope><name>m_vertexLayoutElements</name></member>
+      <member refid="classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_1a7582c10f2c7a3ac24f95015bcbeb8c1aa1e76919a8e9feb0228ed99dd30683544" prot="public" virt="non-virtual"><scope>ver::VertexInputLayout</scope><name>VERTEX_INPUT_LAYOUT_ELEMENT_TYPES</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

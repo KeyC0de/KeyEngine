@@ -7,19 +7,19 @@
 
 using OctreeData = DirectX::XMFLOAT3;
 
-//============================================================
-//	\class	Octree
-//	\link	https://github.com/brandonpelfrey/SimpleOctree
-//	\author	brandonpelfrey
-//	\brief	Octree
-//		The tree has up to 8 children and can additionally store data (m_data),
-//			Children follow a predictable pattern to make accesses simple.
-//			- means less than 'm_center' in that dimension, + means greater than.
-//		child:	0 1 2 3 4 5 6 7
-//		x:      - - - - + + + +
-//		y:      - - + + - - + +
-//		z:      - + - + - + - +
-//=============================================================
+///============================================================
+/// \class	Octree
+/// \link	https://github.com/brandonpelfrey/SimpleOctree
+/// \author	brandonpelfrey
+/// \brief	Octree
+/// \brief	The tree has up to 8 children and can additionally store data (m_data),
+/// \brief		Children follow a predictable pattern to make accesses simple.
+/// \brief		- means less than 'm_center' in that dimension, + means greater than.
+/// \brief	child:	0 1 2 3 4 5 6 7
+/// \brief	x:      - - - - + + + +
+/// \brief	y:      - - + + - - + +
+/// \brief	z:      - + - + - + - +
+///=============================================================
 class Octree final
 {
 	DirectX::XMFLOAT3 m_center;	// the physical spatial center of this octree octant

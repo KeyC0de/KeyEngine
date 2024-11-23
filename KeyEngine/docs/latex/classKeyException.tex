@@ -1,0 +1,154 @@
+\doxysection{Key\+Exception Class Reference}
+\hypertarget{classKeyException}{}\label{classKeyException}\index{KeyException@{KeyException}}
+
+
+Custom exception hierarchy.  
+
+
+
+
+{\ttfamily \#include $<$key\+\_\+exception.\+h$>$}
+
+Inheritance diagram for Key\+Exception\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=10.000000cm]{classKeyException}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classKeyException_a53c95253098f0cc672876c35d4b1911d_a53c95253098f0cc672876c35d4b1911d}{Key\+Exception}} (const int line, const char \texorpdfstring{$\ast$}{*}file, const char \texorpdfstring{$\ast$}{*}function, const std\+::string \&msg) noexcept
+\item 
+virtual \mbox{\hyperlink{classKeyException_a954cd46c9cc2dd054fd680bb70aef678_a954cd46c9cc2dd054fd680bb70aef678}{\texorpdfstring{$\sim$}{\string~}\+Key\+Exception}} () noexcept=default
+\item 
+virtual const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classKeyException_a9956fdc871308553eec7b047f756690a_a9956fdc871308553eec7b047f756690a}{what}} () const noexcept override
+\item 
+virtual std\+::string \mbox{\hyperlink{classKeyException_ab841f80e919082619f30053ae78c56c2_ab841f80e919082619f30053ae78c56c2}{get\+Type}} () const noexcept
+\begin{DoxyCompactList}\small\item\em =================================================== \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classKeyException_a72f4af19d1ab0e9cce5eb6d45fca7729_a72f4af19d1ab0e9cce5eb6d45fca7729}{get\+Line}} () const noexcept
+\item 
+const std\+::string \& \mbox{\hyperlink{classKeyException_acf42841e4d4ececba96628e677b4cf41_acf42841e4d4ececba96628e677b4cf41}{get\+File}} () const noexcept
+\item 
+const std\+::string \& \mbox{\hyperlink{classKeyException_ad75c6511759e522f2b3bcf13b0d23f30_ad75c6511759e522f2b3bcf13b0d23f30}{get\+Function}} () const noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classKeyException_ae11b160d146427ad3887a1af3e2dc2ac_ae11b160d146427ad3887a1af3e2dc2ac}{m\+\_\+description}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classKeyException_a2a49256c37903e810c301b035cf65837_a2a49256c37903e810c301b035cf65837}{m\+\_\+line}}
+\item 
+std\+::string \mbox{\hyperlink{classKeyException_a62f1ed04b6e0c843f3ea1e338dc426d8_a62f1ed04b6e0c843f3ea1e338dc426d8}{m\+\_\+file}}
+\item 
+std\+::string \mbox{\hyperlink{classKeyException_ac11062a919dcfe52321e9f948ce60958_ac11062a919dcfe52321e9f948ce60958}{m\+\_\+function}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Custom exception hierarchy. 
+
+=============================================================
+
+\begin{DoxyAuthor}{Author}
+Key\+C0de 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019/09/11 19\+:38 \doxysubsection*{child/specific exception classes are nested in other classes \& specify the concrete exception description }
+\end{DoxyDate}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classKeyException_a53c95253098f0cc672876c35d4b1911d_a53c95253098f0cc672876c35d4b1911d}\index{KeyException@{KeyException}!KeyException@{KeyException}}
+\index{KeyException@{KeyException}!KeyException@{KeyException}}
+\doxysubsubsection{\texorpdfstring{KeyException()}{KeyException()}}
+{\footnotesize\ttfamily \label{classKeyException_a53c95253098f0cc672876c35d4b1911d_a53c95253098f0cc672876c35d4b1911d} 
+Key\+Exception\+::\+Key\+Exception (\begin{DoxyParamCaption}\item[{const int}]{line}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{file}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{function}{, }\item[{const std\+::string \&}]{msg}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classKeyException_a954cd46c9cc2dd054fd680bb70aef678_a954cd46c9cc2dd054fd680bb70aef678}\index{KeyException@{KeyException}!````~KeyException@{\texorpdfstring{$\sim$}{\string~}KeyException}}
+\index{````~KeyException@{\texorpdfstring{$\sim$}{\string~}KeyException}!KeyException@{KeyException}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}KeyException()}{\string~KeyException()}}
+{\footnotesize\ttfamily \label{classKeyException_a954cd46c9cc2dd054fd680bb70aef678_a954cd46c9cc2dd054fd680bb70aef678} 
+virtual Key\+Exception\+::\texorpdfstring{$\sim$}{\string~}\+Key\+Exception (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}, {\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classKeyException_acf42841e4d4ececba96628e677b4cf41_acf42841e4d4ececba96628e677b4cf41}\index{KeyException@{KeyException}!getFile@{getFile}}
+\index{getFile@{getFile}!KeyException@{KeyException}}
+\doxysubsubsection{\texorpdfstring{getFile()}{getFile()}}
+{\footnotesize\ttfamily \label{classKeyException_acf42841e4d4ececba96628e677b4cf41_acf42841e4d4ececba96628e677b4cf41} 
+const std\+::string \& Key\+Exception\+::get\+File (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classKeyException_ad75c6511759e522f2b3bcf13b0d23f30_ad75c6511759e522f2b3bcf13b0d23f30}\index{KeyException@{KeyException}!getFunction@{getFunction}}
+\index{getFunction@{getFunction}!KeyException@{KeyException}}
+\doxysubsubsection{\texorpdfstring{getFunction()}{getFunction()}}
+{\footnotesize\ttfamily \label{classKeyException_ad75c6511759e522f2b3bcf13b0d23f30_ad75c6511759e522f2b3bcf13b0d23f30} 
+const std\+::string \& Key\+Exception\+::get\+Function (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classKeyException_a72f4af19d1ab0e9cce5eb6d45fca7729_a72f4af19d1ab0e9cce5eb6d45fca7729}\index{KeyException@{KeyException}!getLine@{getLine}}
+\index{getLine@{getLine}!KeyException@{KeyException}}
+\doxysubsubsection{\texorpdfstring{getLine()}{getLine()}}
+{\footnotesize\ttfamily \label{classKeyException_a72f4af19d1ab0e9cce5eb6d45fca7729_a72f4af19d1ab0e9cce5eb6d45fca7729} 
+unsigned Key\+Exception\+::get\+Line (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classKeyException_ab841f80e919082619f30053ae78c56c2_ab841f80e919082619f30053ae78c56c2}\index{KeyException@{KeyException}!getType@{getType}}
+\index{getType@{getType}!KeyException@{KeyException}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \label{classKeyException_ab841f80e919082619f30053ae78c56c2_ab841f80e919082619f30053ae78c56c2} 
+std\+::string Key\+Exception\+::get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+=================================================== 
+
+
+
+Reimplemented in \mbox{\hyperlink{classBindableException_a0d6405405ceff6545de3db76a73a3a71_a0d6405405ceff6545de3db76a73a3a71}{Bindable\+Exception}}, \mbox{\hyperlink{classBitmap_1_1BitmapException_a8f57f54af91bdb5eb1f65fe8942cd63f_a8f57f54af91bdb5eb1f65fe8942cd63f}{Bitmap\+::\+Bitmap\+Exception}}, \mbox{\hyperlink{classGame_1_1GameException_a8811f86168cd263e14af0fcffa927ec0_a8811f86168cd263e14af0fcffa927ec0}{Game$<$ T $>$\+::\+Game\+Exception}}, \mbox{\hyperlink{classGameplayException_a1c6b4a9ac77996f1eea1d1e41a3ba520_a1c6b4a9ac77996f1eea1d1e41a3ba520}{Gameplay\+Exception}}, \mbox{\hyperlink{classGraphics_1_1GraphicsException_aaab3179bfd3ebd5a2c312593ad9cd10b_aaab3179bfd3ebd5a2c312593ad9cd10b}{Graphics\+::\+Graphics\+Exception}}, \mbox{\hyperlink{classren_1_1RendererException_ab62af4f0e850098dd75c03f4ecf8cfb8_ab62af4f0e850098dd75c03f4ecf8cfb8}{ren\+::\+Renderer\+Exception}}, \mbox{\hyperlink{classUtilException_a2752efa8887758cb0d3ed094cbc45738_a2752efa8887758cb0d3ed094cbc45738}{Util\+Exception}}, and \mbox{\hyperlink{classWindow_1_1WindowException_ad90e3938364bfe58024e3c28b0e639d6_ad90e3938364bfe58024e3c28b0e639d6}{Window\+::\+Window\+Exception}}.
+
+\Hypertarget{classKeyException_a9956fdc871308553eec7b047f756690a_a9956fdc871308553eec7b047f756690a}\index{KeyException@{KeyException}!what@{what}}
+\index{what@{what}!KeyException@{KeyException}}
+\doxysubsubsection{\texorpdfstring{what()}{what()}}
+{\footnotesize\ttfamily \label{classKeyException_a9956fdc871308553eec7b047f756690a_a9956fdc871308553eec7b047f756690a} 
+const char \texorpdfstring{$\ast$}{*} Key\+Exception\+::what (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classBindableException_a7bc81c9702e594b4e8f51f78d846da3b_a7bc81c9702e594b4e8f51f78d846da3b}{Bindable\+Exception}}, \mbox{\hyperlink{classBitmap_1_1BitmapException_ae3a114051b1ccd6270778d5b64bb6e9a_ae3a114051b1ccd6270778d5b64bb6e9a}{Bitmap\+::\+Bitmap\+Exception}}, \mbox{\hyperlink{classGame_1_1GameException_afb9e4db94a5338c84bc2957edd0fee93_afb9e4db94a5338c84bc2957edd0fee93}{Game$<$ T $>$\+::\+Game\+Exception}}, \mbox{\hyperlink{classGameplayException_aad769d448640333a2dd4902bac7ae62b_aad769d448640333a2dd4902bac7ae62b}{Gameplay\+Exception}}, \mbox{\hyperlink{classGraphics_1_1GraphicsException_a0b6d2d087b97cb0d7cadf25299909e90_a0b6d2d087b97cb0d7cadf25299909e90}{Graphics\+::\+Graphics\+Exception}}, \mbox{\hyperlink{classren_1_1RendererException_aa379f4876899140ed5129cdca48c316a_aa379f4876899140ed5129cdca48c316a}{ren\+::\+Renderer\+Exception}}, \mbox{\hyperlink{classUtilException_ae0e75ef62cc274b85e19d850ac0dbc5a_ae0e75ef62cc274b85e19d850ac0dbc5a}{Util\+Exception}}, and \mbox{\hyperlink{classWindow_1_1WindowException_a8b6ed4413bb89753ed13bbaea38b942c_a8b6ed4413bb89753ed13bbaea38b942c}{Window\+::\+Window\+Exception}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classKeyException_ae11b160d146427ad3887a1af3e2dc2ac_ae11b160d146427ad3887a1af3e2dc2ac}\index{KeyException@{KeyException}!m\_description@{m\_description}}
+\index{m\_description@{m\_description}!KeyException@{KeyException}}
+\doxysubsubsection{\texorpdfstring{m\_description}{m\_description}}
+{\footnotesize\ttfamily \label{classKeyException_ae11b160d146427ad3887a1af3e2dc2ac_ae11b160d146427ad3887a1af3e2dc2ac} 
+std\+::string Key\+Exception\+::m\+\_\+description\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [protected]}}
+
+\Hypertarget{classKeyException_a62f1ed04b6e0c843f3ea1e338dc426d8_a62f1ed04b6e0c843f3ea1e338dc426d8}\index{KeyException@{KeyException}!m\_file@{m\_file}}
+\index{m\_file@{m\_file}!KeyException@{KeyException}}
+\doxysubsubsection{\texorpdfstring{m\_file}{m\_file}}
+{\footnotesize\ttfamily \label{classKeyException_a62f1ed04b6e0c843f3ea1e338dc426d8_a62f1ed04b6e0c843f3ea1e338dc426d8} 
+std\+::string Key\+Exception\+::m\+\_\+file\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classKeyException_ac11062a919dcfe52321e9f948ce60958_ac11062a919dcfe52321e9f948ce60958}\index{KeyException@{KeyException}!m\_function@{m\_function}}
+\index{m\_function@{m\_function}!KeyException@{KeyException}}
+\doxysubsubsection{\texorpdfstring{m\_function}{m\_function}}
+{\footnotesize\ttfamily \label{classKeyException_ac11062a919dcfe52321e9f948ce60958_ac11062a919dcfe52321e9f948ce60958} 
+std\+::string Key\+Exception\+::m\+\_\+function\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classKeyException_a2a49256c37903e810c301b035cf65837_a2a49256c37903e810c301b035cf65837}\index{KeyException@{KeyException}!m\_line@{m\_line}}
+\index{m\_line@{m\_line}!KeyException@{KeyException}}
+\doxysubsubsection{\texorpdfstring{m\_line}{m\_line}}
+{\footnotesize\ttfamily \label{classKeyException_a2a49256c37903e810c301b035cf65837_a2a49256c37903e810c301b035cf65837} 
+int Key\+Exception\+::m\+\_\+line\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{key__exception_8h}{key\+\_\+exception.\+h}}\item 
+src/\mbox{\hyperlink{key__exception_8cpp}{key\+\_\+exception.\+cpp}}\end{DoxyCompactItemize}

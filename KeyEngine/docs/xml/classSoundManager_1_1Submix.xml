@@ -1,0 +1,259 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classSoundManager_1_1Submix" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>SoundManager::Submix</compoundname>
+    <basecompoundref refid="classNonCopyable" prot="public" virt="non-virtual">NonCopyable</basecompoundref>
+    <includes refid="key__sound_8h" local="no">key_sound.h</includes>
+    <sectiondef kind="friend">
+      <memberdef kind="friend" id="classSoundManager_1_1Submix_ac47342240f21ce36f47485e4ab41a10d_1ac47342240f21ce36f47485e4ab41a10d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class Channel</definition>
+        <argsstring></argsstring>
+        <name>Channel</name>
+        <qualifiedname>SoundManager::Submix::Channel</qualifiedname>
+        <param>
+          <type><ref refid="classSoundManager_1_1Channel" kindref="compound">Channel</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="66" column="14" bodyfile="inc/key_sound.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classSoundManager_1_1Submix_abc991e483b130dc00ddae3e8022c2306_1abc991e483b130dc00ddae3e8022c2306" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string SoundManager::Submix::m_name</definition>
+        <argsstring></argsstring>
+        <name>m_name</name>
+        <qualifiedname>SoundManager::Submix::m_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="68" column="13" bodyfile="inc/key_sound.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSoundManager_1_1Submix_adde7894c87985a42e8351391124c80a7_1adde7894c87985a42e8351391124c80a7" prot="private" static="no" mutable="no">
+        <type>XAUDIO2_SEND_DESCRIPTOR</type>
+        <definition>XAUDIO2_SEND_DESCRIPTOR SoundManager::Submix::m_outputVoiceSendDesc</definition>
+        <argsstring></argsstring>
+        <name>m_outputVoiceSendDesc</name>
+        <qualifiedname>SoundManager::Submix::m_outputVoiceSendDesc</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="69" column="25" bodyfile="inc/key_sound.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSoundManager_1_1Submix_a6f371ff726b20e56d18572aec8e44b9e_1a6f371ff726b20e56d18572aec8e44b9e" prot="private" static="no" mutable="no">
+        <type>XAUDIO2_VOICE_SENDS</type>
+        <definition>XAUDIO2_VOICE_SENDS SoundManager::Submix::m_outputVoiceSends</definition>
+        <argsstring></argsstring>
+        <name>m_outputVoiceSends</name>
+        <qualifiedname>SoundManager::Submix::m_outputVoiceSends</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="70" column="21" bodyfile="inc/key_sound.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSoundManager_1_1Submix_abbeaca08940af523143c7405537257a1_1abbeaca08940af523143c7405537257a1" prot="private" static="no" mutable="no">
+        <type>struct IXAudio2SubmixVoice *</type>
+        <definition>struct IXAudio2SubmixVoice* SoundManager::Submix::m_pSubmixVoice</definition>
+        <argsstring></argsstring>
+        <name>m_pSubmixVoice</name>
+        <qualifiedname>SoundManager::Submix::m_pSubmixVoice</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="71" column="26" bodyfile="inc/key_sound.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classSoundManager_1_1Submix_ae4c7cb208375b6c2f7ac2611df851e44_1ae4c7cb208375b6c2f7ac2611df851e44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SoundManager::Submix::Submix</definition>
+        <argsstring>(const std::string &amp;name=&quot;&quot;)</argsstring>
+        <name>Submix</name>
+        <qualifiedname>SoundManager::Submix::Submix</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="73" column="1" bodyfile="src/key_sound.cpp" bodystart="543" bodyend="550"/>
+      </memberdef>
+      <memberdef kind="function" id="classSoundManager_1_1Submix_a38e1ecc9f28325b9fb651de7fc620059_1a38e1ecc9f28325b9fb651de7fc620059" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>SoundManager::Submix::~Submix</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>~Submix</name>
+        <qualifiedname>SoundManager::Submix::~Submix</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="74" column="1" bodyfile="src/key_sound.cpp" bodystart="552" bodyend="559"/>
+      </memberdef>
+      <memberdef kind="function" id="classSoundManager_1_1Submix_afc2778a8bfe2367403a5c49f5cfa18ef_1afc2778a8bfe2367403a5c49f5cfa18ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SoundManager::Submix::Submix</definition>
+        <argsstring>(Submix &amp;&amp;rhs) cond_noex</argsstring>
+        <name>Submix</name>
+        <qualifiedname>SoundManager::Submix::Submix</qualifiedname>
+        <param>
+          <type><ref refid="classSoundManager_1_1Submix" kindref="compound">Submix</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="75" column="1" bodyfile="src/key_sound.cpp" bodystart="589" bodyend="598"/>
+      </memberdef>
+      <memberdef kind="function" id="classSoundManager_1_1Submix_a5e2bbc328f21ea543eae3601cfb1afa3_1a5e2bbc328f21ea543eae3601cfb1afa3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classSoundManager_1_1Submix" kindref="compound">Submix</ref> &amp;</type>
+        <definition>SoundManager::Submix &amp; SoundManager::Submix::operator=</definition>
+        <argsstring>(Submix &amp;&amp;rhs) cond_noex</argsstring>
+        <name>operator=</name>
+        <qualifiedname>SoundManager::Submix::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classSoundManager_1_1Submix" kindref="compound">Submix</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="76" column="8" bodyfile="src/key_sound.cpp" bodystart="600" bodyend="605"/>
+      </memberdef>
+      <memberdef kind="function" id="classSoundManager_1_1Submix_a5b6a3783d0d9a6f778dabd7dbb106452_1a5b6a3783d0d9a6f778dabd7dbb106452" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; SoundManager::Submix::getName</definition>
+        <argsstring>() const cond_noex</argsstring>
+        <name>getName</name>
+        <qualifiedname>SoundManager::Submix::getName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="78" column="19" bodyfile="src/key_sound.cpp" bodystart="561" bodyend="564"/>
+      </memberdef>
+      <memberdef kind="function" id="classSoundManager_1_1Submix_a283167e84b415a1b784de6986e5f6c56_1a283167e84b415a1b784de6986e5f6c56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SoundManager::Submix::setName</definition>
+        <argsstring>(const std::string &amp;name) cond_noex</argsstring>
+        <name>setName</name>
+        <qualifiedname>SoundManager::Submix::setName</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="79" column="6" bodyfile="src/key_sound.cpp" bodystart="566" bodyend="569"/>
+      </memberdef>
+      <memberdef kind="function" id="classSoundManager_1_1Submix_a408d8937c046c185e9a78057f38df784_1a408d8937c046c185e9a78057f38df784" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SoundManager::Submix::setVolume</definition>
+        <argsstring>(const float volume=1.0f) cond_noex</argsstring>
+        <name>setVolume</name>
+        <qualifiedname>SoundManager::Submix::setVolume</qualifiedname>
+        <param>
+          <type>const float</type>
+          <declname>volume</declname>
+          <defval>1.0f</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="80" column="6" bodyfile="src/key_sound.cpp" bodystart="584" bodyend="587"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>NonCopyable</label>
+        <link refid="classNonCopyable"/>
+      </node>
+      <node id="1">
+        <label>SoundManager::Submix</label>
+        <link refid="classSoundManager_1_1Submix"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>NonCopyable</label>
+        <link refid="classNonCopyable"/>
+      </node>
+      <node id="1">
+        <label>SoundManager::Submix</label>
+        <link refid="classSoundManager_1_1Submix"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/key_sound.h" line="63" column="1" bodyfile="inc/key_sound.h" bodystart="65" bodyend="81"/>
+    <listofallmembers>
+      <member refid="classSoundManager_1_1Submix_ac47342240f21ce36f47485e4ab41a10d_1ac47342240f21ce36f47485e4ab41a10d" prot="private" virt="non-virtual"><scope>SoundManager::Submix</scope><name>Channel</name></member>
+      <member refid="classSoundManager_1_1Submix_a5b6a3783d0d9a6f778dabd7dbb106452_1a5b6a3783d0d9a6f778dabd7dbb106452" prot="public" virt="non-virtual"><scope>SoundManager::Submix</scope><name>getName</name></member>
+      <member refid="classSoundManager_1_1Submix_abc991e483b130dc00ddae3e8022c2306_1abc991e483b130dc00ddae3e8022c2306" prot="private" virt="non-virtual"><scope>SoundManager::Submix</scope><name>m_name</name></member>
+      <member refid="classSoundManager_1_1Submix_adde7894c87985a42e8351391124c80a7_1adde7894c87985a42e8351391124c80a7" prot="private" virt="non-virtual"><scope>SoundManager::Submix</scope><name>m_outputVoiceSendDesc</name></member>
+      <member refid="classSoundManager_1_1Submix_a6f371ff726b20e56d18572aec8e44b9e_1a6f371ff726b20e56d18572aec8e44b9e" prot="private" virt="non-virtual"><scope>SoundManager::Submix</scope><name>m_outputVoiceSends</name></member>
+      <member refid="classSoundManager_1_1Submix_abbeaca08940af523143c7405537257a1_1abbeaca08940af523143c7405537257a1" prot="private" virt="non-virtual"><scope>SoundManager::Submix</scope><name>m_pSubmixVoice</name></member>
+      <member refid="classNonCopyable_a809b6e4ade7ae32f6d248f2a3b783d45_1a809b6e4ade7ae32f6d248f2a3b783d45" prot="public" virt="non-virtual"><scope>SoundManager::Submix</scope><name>NonCopyable</name></member>
+      <member refid="classNonCopyable_a15aa3015488bb26c47ded914cb630cf5_1a15aa3015488bb26c47ded914cb630cf5" prot="public" virt="non-virtual"><scope>SoundManager::Submix</scope><name>NonCopyable</name></member>
+      <member refid="classNonCopyable_a487646562ae30ece23d7638f2aed1dde_1a487646562ae30ece23d7638f2aed1dde" prot="public" virt="non-virtual"><scope>SoundManager::Submix</scope><name>NonCopyable</name></member>
+      <member refid="classNonCopyable_af716e4cfb79381710ef4490414939ae9_1af716e4cfb79381710ef4490414939ae9" prot="public" virt="non-virtual"><scope>SoundManager::Submix</scope><name>NonCopyable</name></member>
+      <member refid="classSoundManager_1_1Submix_a5e2bbc328f21ea543eae3601cfb1afa3_1a5e2bbc328f21ea543eae3601cfb1afa3" prot="public" virt="non-virtual"><scope>SoundManager::Submix</scope><name>operator=</name></member>
+      <member refid="classNonCopyable_af4788b57da9a9faa570c754c22c724f5_1af4788b57da9a9faa570c754c22c724f5" prot="public" virt="non-virtual" ambiguityscope="NonCopyable::"><scope>SoundManager::Submix</scope><name>operator=</name></member>
+      <member refid="classNonCopyable_ae032ca32cda9c836c27b28eb6a087d18_1ae032ca32cda9c836c27b28eb6a087d18" prot="public" virt="non-virtual" ambiguityscope="NonCopyable::"><scope>SoundManager::Submix</scope><name>operator=</name></member>
+      <member refid="classNonCopyable_af81816bd4c2c4421a6eab98843ead6e4_1af81816bd4c2c4421a6eab98843ead6e4" prot="public" virt="non-virtual" ambiguityscope="NonCopyable::"><scope>SoundManager::Submix</scope><name>operator=</name></member>
+      <member refid="classSoundManager_1_1Submix_a283167e84b415a1b784de6986e5f6c56_1a283167e84b415a1b784de6986e5f6c56" prot="public" virt="non-virtual"><scope>SoundManager::Submix</scope><name>setName</name></member>
+      <member refid="classSoundManager_1_1Submix_a408d8937c046c185e9a78057f38df784_1a408d8937c046c185e9a78057f38df784" prot="public" virt="non-virtual"><scope>SoundManager::Submix</scope><name>setVolume</name></member>
+      <member refid="classSoundManager_1_1Submix_ae4c7cb208375b6c2f7ac2611df851e44_1ae4c7cb208375b6c2f7ac2611df851e44" prot="public" virt="non-virtual"><scope>SoundManager::Submix</scope><name>Submix</name></member>
+      <member refid="classSoundManager_1_1Submix_afc2778a8bfe2367403a5c49f5cfa18ef_1afc2778a8bfe2367403a5c49f5cfa18ef" prot="public" virt="non-virtual"><scope>SoundManager::Submix</scope><name>Submix</name></member>
+      <member refid="classNonCopyable_a3e461fb46c72b9a5af7df7e74dbd899e_1a3e461fb46c72b9a5af7df7e74dbd899e" prot="protected" virt="non-virtual"><scope>SoundManager::Submix</scope><name>~NonCopyable</name></member>
+      <member refid="classSoundManager_1_1Submix_a38e1ecc9f28325b9fb651de7fc620059_1a38e1ecc9f28325b9fb651de7fc620059" prot="public" virt="non-virtual"><scope>SoundManager::Submix</scope><name>~Submix</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

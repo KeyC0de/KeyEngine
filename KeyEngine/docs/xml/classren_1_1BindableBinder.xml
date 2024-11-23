@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classren_1_1BindableBinder" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>ren::BindableBinder</compoundname>
+    <basecompoundref refid="classren_1_1IBinder" prot="public" virt="non-virtual">ren::IBinder</basecompoundref>
+    <includes refid="binder_8h" local="no">binder.h</includes>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classren_1_1BindableBinder_a1e5ac4b0d2ac215ad8f89f9eff01568f_1a1e5ac4b0d2ac215ad8f89f9eff01568f" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; T &gt; &amp;</type>
+        <definition>std::shared_ptr&lt;T&gt;&amp; ren::BindableBinder&lt; T &gt;::m_target</definition>
+        <argsstring></argsstring>
+        <name>m_target</name>
+        <qualifiedname>ren::BindableBinder::m_target</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/binder.h" line="56" column="17" bodyfile="inc/binder.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classren_1_1BindableBinder_aa1280d0a5a9f943dacdfad9d067e2dec_1aa1280d0a5a9f943dacdfad9d067e2dec" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool ren::BindableBinder&lt; T &gt;::m_bLinked</definition>
+        <argsstring></argsstring>
+        <name>m_bLinked</name>
+        <qualifiedname>ren::BindableBinder::m_bLinked</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/binder.h" line="57" column="6" bodyfile="inc/binder.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classren_1_1BindableBinder_a16c7a43568a41ede04204aaf527f2e77_1a16c7a43568a41ede04204aaf527f2e77" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ren::BindableBinder&lt; T &gt;::BindableBinder</definition>
+        <argsstring>(const std::string &amp;name, std::shared_ptr&lt; T &gt; &amp;target)</argsstring>
+        <name>BindableBinder</name>
+        <qualifiedname>ren::BindableBinder::BindableBinder</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; T &gt; &amp;</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/binder.h" line="59" column="1" bodyfile="inc/binder.h" bodystart="59" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1BindableBinder_ad67acc8ef7f72cefc8849eed44e044a3_1ad67acc8ef7f72cefc8849eed44e044a3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void ren::BindableBinder&lt; T &gt;::validateLinkage</definition>
+        <argsstring>() const override</argsstring>
+        <name>validateLinkage</name>
+        <qualifiedname>ren::BindableBinder::validateLinkage</qualifiedname>
+        <reimplements refid="classren_1_1IBinder_abe560e5bd14aa61bf28d99dba88eceec_1abe560e5bd14aa61bf28d99dba88eceec">validateLinkage</reimplements>
+        <briefdescription>
+<para>assert validate after <ref refid="classren_1_1BindableBinder_a9956cd019281cc69d6fd7c3e7c2a7e5a_1a9956cd019281cc69d6fd7c3e7c2a7e5a" kindref="member">link()</ref>ing </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/binder.h" line="74" column="6" bodyfile="inc/binder.h" bodystart="74" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classren_1_1BindableBinder_a9956cd019281cc69d6fd7c3e7c2a7e5a_1a9956cd019281cc69d6fd7c3e7c2a7e5a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void ren::BindableBinder&lt; T &gt;::link</definition>
+        <argsstring>(ILinker &amp;linker) override</argsstring>
+        <name>link</name>
+        <qualifiedname>ren::BindableBinder::link</qualifiedname>
+        <reimplements refid="classren_1_1IBinder_ab0e3027bb1ad6a632befb4d502fe0d70_1ab0e3027bb1ad6a632befb4d502fe0d70">link</reimplements>
+        <param>
+          <type><ref refid="classren_1_1ILinker" kindref="compound">ILinker</ref> &amp;</type>
+          <declname>linker</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/binder.h" line="82" column="6" bodyfile="inc/binder.h" bodystart="82" bodyend="93"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classren_1_1BindableBinder_a3af09cbd00f6502d3039b7652d51058c_1a3af09cbd00f6502d3039b7652d51058c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classren_1_1IBinder" kindref="compound">IBinder</ref> &gt;</type>
+        <definition>static std::unique_ptr&lt; IBinder &gt; ren::BindableBinder&lt; T &gt;::make</definition>
+        <argsstring>(const std::string &amp;name, std::shared_ptr&lt; T &gt; &amp;target)</argsstring>
+        <name>make</name>
+        <qualifiedname>ren::BindableBinder::make</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; T &gt; &amp;</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/binder.h" line="68" column="24" bodyfile="inc/binder.h" bodystart="68" bodyend="72"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>ren::BindableBinder&lt; T &gt;</label>
+        <link refid="classren_1_1BindableBinder"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ren::IBinder</label>
+        <link refid="classren_1_1IBinder"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>ren::BindableBinder&lt; T &gt;</label>
+        <link refid="classren_1_1BindableBinder"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ren::IBinder</label>
+        <link refid="classren_1_1IBinder"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/binder.h" line="51" column="1" bodyfile="inc/binder.h" bodystart="53" bodyend="94"/>
+    <listofallmembers>
+      <member refid="classren_1_1BindableBinder_a16c7a43568a41ede04204aaf527f2e77_1a16c7a43568a41ede04204aaf527f2e77" prot="public" virt="non-virtual"><scope>ren::BindableBinder</scope><name>BindableBinder</name></member>
+      <member refid="classren_1_1IBinder_ac109d2e346a1ab633d0e41d096227b2f_1ac109d2e346a1ab633d0e41d096227b2f" prot="public" virt="non-virtual"><scope>ren::BindableBinder</scope><name>getLinkerName</name></member>
+      <member refid="classren_1_1IBinder_ae172f9fbccaa1892ec815db67f65eb91_1ae172f9fbccaa1892ec815db67f65eb91" prot="public" virt="non-virtual"><scope>ren::BindableBinder</scope><name>getName</name></member>
+      <member refid="classren_1_1IBinder_a64585dc2d047254637335f70083a67b6_1a64585dc2d047254637335f70083a67b6" prot="public" virt="non-virtual"><scope>ren::BindableBinder</scope><name>getPassName</name></member>
+      <member refid="classren_1_1IBinder_ac1030ca1e3d499a26546667741065bf6_1ac1030ca1e3d499a26546667741065bf6" prot="protected" virt="non-virtual"><scope>ren::BindableBinder</scope><name>IBinder</name></member>
+      <member refid="classren_1_1BindableBinder_a9956cd019281cc69d6fd7c3e7c2a7e5a_1a9956cd019281cc69d6fd7c3e7c2a7e5a" prot="public" virt="virtual"><scope>ren::BindableBinder</scope><name>link</name></member>
+      <member refid="classren_1_1BindableBinder_aa1280d0a5a9f943dacdfad9d067e2dec_1aa1280d0a5a9f943dacdfad9d067e2dec" prot="private" virt="non-virtual"><scope>ren::BindableBinder</scope><name>m_bLinked</name></member>
+      <member refid="classren_1_1IBinder_a08396c56db98c2a56856889425faf612_1a08396c56db98c2a56856889425faf612" prot="private" virt="non-virtual"><scope>ren::BindableBinder</scope><name>m_linkerName</name></member>
+      <member refid="classren_1_1IBinder_a35c782b42674b69887f03fc038ccf6a8_1a35c782b42674b69887f03fc038ccf6a8" prot="private" virt="non-virtual"><scope>ren::BindableBinder</scope><name>m_name</name></member>
+      <member refid="classren_1_1IBinder_a94cccb29d98a504bfa532559a059cf69_1a94cccb29d98a504bfa532559a059cf69" prot="private" virt="non-virtual"><scope>ren::BindableBinder</scope><name>m_passName</name></member>
+      <member refid="classren_1_1BindableBinder_a1e5ac4b0d2ac215ad8f89f9eff01568f_1a1e5ac4b0d2ac215ad8f89f9eff01568f" prot="private" virt="non-virtual"><scope>ren::BindableBinder</scope><name>m_target</name></member>
+      <member refid="classren_1_1BindableBinder_a3af09cbd00f6502d3039b7652d51058c_1a3af09cbd00f6502d3039b7652d51058c" prot="public" virt="non-virtual"><scope>ren::BindableBinder</scope><name>make</name></member>
+      <member refid="classren_1_1IBinder_addedf6dfc3d0ed6066b26fc04705d349_1addedf6dfc3d0ed6066b26fc04705d349" prot="public" virt="non-virtual"><scope>ren::BindableBinder</scope><name>setPassAndLinkerNames</name></member>
+      <member refid="classren_1_1BindableBinder_ad67acc8ef7f72cefc8849eed44e044a3_1ad67acc8ef7f72cefc8849eed44e044a3" prot="public" virt="virtual"><scope>ren::BindableBinder</scope><name>validateLinkage</name></member>
+      <member refid="classren_1_1IBinder_ae2550445c774f45b664719684187c341_1ae2550445c774f45b664719684187c341" prot="public" virt="virtual"><scope>ren::BindableBinder</scope><name>~IBinder</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

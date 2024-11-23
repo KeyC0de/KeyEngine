@@ -37,9 +37,8 @@ protected:
 	float m_slopeBias;
 	float m_biasClamp;
 public:
-	//	\function	RasterizerState	||	\date	2024/04/27 14:28
-	//	\brief	if mode is RasterizerMode::ShadowRS then fillMode and faceMode values will be defaulted
-	//			if mode is RasterizerMode::DefaultRS then depthBias, slopeBias and biasClamp will be defaulted
+	/// \brief	if mode is RasterizerMode::ShadowRS then fillMode and faceMode values will be defaulted
+	/// \brief	if mode is RasterizerMode::DefaultRS then depthBias, slopeBias and biasClamp will be defaulted
 	RasterizerState( Graphics &gfx, const RasterizerMode mode, const FillMode fillMode, const FaceMode faceMode, const int depthBias = D3D11_DEFAULT_DEPTH_BIAS, const float slopeBias = D3D11_DEFAULT_SLOPE_SCALED_DEPTH_BIAS, const float biasClamp = D3D11_DEFAULT_DEPTH_BIAS_CLAMP );
 
 	void bind( Graphics &gfx ) cond_noex override;

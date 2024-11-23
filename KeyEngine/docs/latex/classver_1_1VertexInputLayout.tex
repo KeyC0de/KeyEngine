@@ -1,0 +1,161 @@
+\doxysection{ver\+::Vertex\+Input\+Layout Class Reference}
+\hypertarget{classver_1_1VertexInputLayout}{}\label{classver_1_1VertexInputLayout}\index{ver::VertexInputLayout@{ver::VertexInputLayout}}
+
+
+{\ttfamily \#include $<$dynamic\+\_\+vertex\+\_\+buffer.\+h$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties}{Element\+Properties}}
+\item 
+struct \mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties_3_01BGRAColor_01_4}{Element\+Properties$<$ BGRAColor $>$}}
+\item 
+struct \mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties_3_01Bitangent_01_4}{Element\+Properties$<$ Bitangent $>$}}
+\item 
+struct \mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties_3_01Count_01_4}{Element\+Properties$<$ Count $>$}}
+\item 
+struct \mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties_3_01Float3Color_01_4}{Element\+Properties$<$ Float3\+Color $>$}}
+\item 
+struct \mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties_3_01Float4Color_01_4}{Element\+Properties$<$ Float4\+Color $>$}}
+\item 
+struct \mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties_3_01Normal_01_4}{Element\+Properties$<$ Normal $>$}}
+\item 
+struct \mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties_3_01Position2D_01_4}{Element\+Properties$<$ Position2\+D $>$}}
+\item 
+struct \mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties_3_01Position3D_01_4}{Element\+Properties$<$ Position3\+D $>$}}
+\item 
+struct \mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties_3_01Tangent_01_4}{Element\+Properties$<$ Tangent $>$}}
+\item 
+struct \mbox{\hyperlink{structver_1_1VertexInputLayout_1_1ElementProperties_3_01Texture2D_01_4}{Element\+Properties$<$ Texture2\+D $>$}}
+\item 
+class \mbox{\hyperlink{classver_1_1VertexInputLayout_1_1ILElement}{ILElement}}
+\begin{DoxyCompactList}\small\item\em Vertex Buffer Input Layout Element  \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1a}{ILEement\+Type}} \{ \mbox{\hyperlink{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1aa1e76919a8e9feb0228ed99dd30683544}{VERTEX\+\_\+\+INPUT\+\_\+\+LAYOUT\+\_\+\+ELEMENT\+\_\+\+TYPES}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$\mbox{\hyperlink{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1a}{ILEement\+Type}} layout\+Type$>$ }\\const \mbox{\hyperlink{classver_1_1VertexInputLayout_1_1ILElement}{ILElement}} \& \mbox{\hyperlink{classver_1_1VertexInputLayout_ac7399fc698252e90645b4afc155c284b_ac7399fc698252e90645b4afc155c284b}{fetch}} () const cond\+\_\+noex
+\item 
+const \mbox{\hyperlink{classver_1_1VertexInputLayout_1_1ILElement}{ILElement}} \& \mbox{\hyperlink{classver_1_1VertexInputLayout_a08e18188f08b7631be3e7901b8b5ee3b_a08e18188f08b7631be3e7901b8b5ee3b}{get\+Element\+By\+Index}} (const size\+\_\+t i) const cond\+\_\+noex
+\item 
+\mbox{\hyperlink{classver_1_1VertexInputLayout}{Vertex\+Input\+Layout}} \& \mbox{\hyperlink{classver_1_1VertexInputLayout_a7adfb63eeb82ed86d1144d70fddc0dee_a7adfb63eeb82ed86d1144d70fddc0dee}{add}} (const \mbox{\hyperlink{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1a}{ILEement\+Type}} type) cond\+\_\+noex
+\item 
+size\+\_\+t \mbox{\hyperlink{classver_1_1VertexInputLayout_aa4d03e06b3df44cd4b80095f57f01aa2_aa4d03e06b3df44cd4b80095f57f01aa2}{get\+Size\+In\+Bytes}} () const cond\+\_\+noex
+\item 
+size\+\_\+t \mbox{\hyperlink{classver_1_1VertexInputLayout_a0864ab48170f7826b431314283b20ab9_a0864ab48170f7826b431314283b20ab9}{get\+Element\+Count}} () const noexcept
+\item 
+std\+::vector$<$ D3\+D11\+\_\+\+INPUT\+\_\+\+ELEMENT\+\_\+\+DESC $>$ \mbox{\hyperlink{classver_1_1VertexInputLayout_a7e6126ae398fd20640edf6a42c2b744b_a7e6126ae398fd20640edf6a42c2b744b}{get\+D3\+DInput\+Element\+Descs}} () const cond\+\_\+noex
+\item 
+std\+::string \mbox{\hyperlink{classver_1_1VertexInputLayout_aad3d42fc8e63ce215f8b9965bc0bb699_aad3d42fc8e63ce215f8b9965bc0bb699}{calc\+Signature}} () const cond\+\_\+noex
+\item 
+bool \mbox{\hyperlink{classver_1_1VertexInputLayout_a2185ef30b26586b87f40fa3905c37c38_a2185ef30b26586b87f40fa3905c37c38}{has\+Type}} (const \mbox{\hyperlink{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1a}{ILEement\+Type}} \&type) const noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$template$<$ \mbox{\hyperlink{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1a}{Vertex\+Input\+Layout\+::\+ILEement\+Type}} $>$ class T, typename... Args$>$ }\\static constexpr auto \mbox{\hyperlink{classver_1_1VertexInputLayout_a452fe701708b2ce80a4b957de00b5640_a452fe701708b2ce80a4b957de00b5640}{bridge}} (const \mbox{\hyperlink{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1a}{Vertex\+Input\+Layout\+::\+ILEement\+Type}} type, Args \&\&... args) cond\+\_\+noex
+\begin{DoxyCompactList}\small\item\em use \doxylink{classver_1_1VertexInputLayout_a452fe701708b2ce80a4b957de00b5640_a452fe701708b2ce80a4b957de00b5640}{bridge()} at runtime to get information about an element\textquotesingle{}s properties \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classver_1_1VertexInputLayout_1_1ILElement}{ILElement}} $>$ \mbox{\hyperlink{classver_1_1VertexInputLayout_a3e560d20053a7a9a8b9696170b8e7e71_a3e560d20053a7a9a8b9696170b8e7e71}{m\+\_\+vertex\+Layout\+Elements}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1a}\index{ver::VertexInputLayout@{ver::VertexInputLayout}!ILEementType@{ILEementType}}
+\index{ILEementType@{ILEementType}!ver::VertexInputLayout@{ver::VertexInputLayout}}
+\doxysubsubsection{\texorpdfstring{ILEementType}{ILEementType}}
+{\footnotesize\ttfamily \label{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1a} 
+enum \mbox{\hyperlink{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1a}{ver\+::\+Vertex\+Input\+Layout\+::\+ILEement\+Type}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_INPUT\_LAYOUT\_ELEMENT\_TYPES@{VERTEX\_INPUT\_LAYOUT\_ELEMENT\_TYPES}!ver::VertexInputLayout@{ver::VertexInputLayout}}\index{ver::VertexInputLayout@{ver::VertexInputLayout}!VERTEX\_INPUT\_LAYOUT\_ELEMENT\_TYPES@{VERTEX\_INPUT\_LAYOUT\_ELEMENT\_TYPES}}}\Hypertarget{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1aa1e76919a8e9feb0228ed99dd30683544}\label{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1a} 
+VERTEX\+\_\+\+INPUT\+\_\+\+LAYOUT\+\_\+\+ELEMENT\+\_\+\+TYPES&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classver_1_1VertexInputLayout_a7adfb63eeb82ed86d1144d70fddc0dee_a7adfb63eeb82ed86d1144d70fddc0dee}\index{ver::VertexInputLayout@{ver::VertexInputLayout}!add@{add}}
+\index{add@{add}!ver::VertexInputLayout@{ver::VertexInputLayout}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily \label{classver_1_1VertexInputLayout_a7adfb63eeb82ed86d1144d70fddc0dee_a7adfb63eeb82ed86d1144d70fddc0dee} 
+\mbox{\hyperlink{classver_1_1VertexInputLayout}{Vertex\+Input\+Layout}} \& ver\+::\+Vertex\+Input\+Layout\+::add (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1a}{ILEement\+Type}}}]{type}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classver_1_1VertexInputLayout_a452fe701708b2ce80a4b957de00b5640_a452fe701708b2ce80a4b957de00b5640}\index{ver::VertexInputLayout@{ver::VertexInputLayout}!bridge@{bridge}}
+\index{bridge@{bridge}!ver::VertexInputLayout@{ver::VertexInputLayout}}
+\doxysubsubsection{\texorpdfstring{bridge()}{bridge()}}
+{\footnotesize\ttfamily \label{classver_1_1VertexInputLayout_a452fe701708b2ce80a4b957de00b5640_a452fe701708b2ce80a4b957de00b5640} 
+template$<$template$<$ \mbox{\hyperlink{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1a}{Vertex\+Input\+Layout\+::\+ILEement\+Type}} $>$ class T, typename... Args$>$ \\
+static constexpr auto ver\+::\+Vertex\+Input\+Layout\+::bridge (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1a}{Vertex\+Input\+Layout\+::\+ILEement\+Type}}}]{type}{, }\item[{Args \&\&...}]{args}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+use \doxylink{classver_1_1VertexInputLayout_a452fe701708b2ce80a4b957de00b5640_a452fe701708b2ce80a4b957de00b5640}{bridge()} at runtime to get information about an element\textquotesingle{}s properties 
+
+\Hypertarget{classver_1_1VertexInputLayout_aad3d42fc8e63ce215f8b9965bc0bb699_aad3d42fc8e63ce215f8b9965bc0bb699}\index{ver::VertexInputLayout@{ver::VertexInputLayout}!calcSignature@{calcSignature}}
+\index{calcSignature@{calcSignature}!ver::VertexInputLayout@{ver::VertexInputLayout}}
+\doxysubsubsection{\texorpdfstring{calcSignature()}{calcSignature()}}
+{\footnotesize\ttfamily \label{classver_1_1VertexInputLayout_aad3d42fc8e63ce215f8b9965bc0bb699_aad3d42fc8e63ce215f8b9965bc0bb699} 
+std\+::string ver\+::\+Vertex\+Input\+Layout\+::calc\+Signature (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classver_1_1VertexInputLayout_ac7399fc698252e90645b4afc155c284b_ac7399fc698252e90645b4afc155c284b}\index{ver::VertexInputLayout@{ver::VertexInputLayout}!fetch@{fetch}}
+\index{fetch@{fetch}!ver::VertexInputLayout@{ver::VertexInputLayout}}
+\doxysubsubsection{\texorpdfstring{fetch()}{fetch()}}
+{\footnotesize\ttfamily \label{classver_1_1VertexInputLayout_ac7399fc698252e90645b4afc155c284b_ac7399fc698252e90645b4afc155c284b} 
+template$<$\mbox{\hyperlink{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1a}{ILEement\+Type}} layout\+Type$>$ \\
+const \mbox{\hyperlink{classver_1_1VertexInputLayout_1_1ILElement}{ILElement}} \& ver\+::\+Vertex\+Input\+Layout\+::fetch (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classver_1_1VertexInputLayout_a7e6126ae398fd20640edf6a42c2b744b_a7e6126ae398fd20640edf6a42c2b744b}\index{ver::VertexInputLayout@{ver::VertexInputLayout}!getD3DInputElementDescs@{getD3DInputElementDescs}}
+\index{getD3DInputElementDescs@{getD3DInputElementDescs}!ver::VertexInputLayout@{ver::VertexInputLayout}}
+\doxysubsubsection{\texorpdfstring{getD3DInputElementDescs()}{getD3DInputElementDescs()}}
+{\footnotesize\ttfamily \label{classver_1_1VertexInputLayout_a7e6126ae398fd20640edf6a42c2b744b_a7e6126ae398fd20640edf6a42c2b744b} 
+std\+::vector$<$ D3\+D11\+\_\+\+INPUT\+\_\+\+ELEMENT\+\_\+\+DESC $>$ ver\+::\+Vertex\+Input\+Layout\+::get\+D3\+DInput\+Element\+Descs (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classver_1_1VertexInputLayout_a08e18188f08b7631be3e7901b8b5ee3b_a08e18188f08b7631be3e7901b8b5ee3b}\index{ver::VertexInputLayout@{ver::VertexInputLayout}!getElementByIndex@{getElementByIndex}}
+\index{getElementByIndex@{getElementByIndex}!ver::VertexInputLayout@{ver::VertexInputLayout}}
+\doxysubsubsection{\texorpdfstring{getElementByIndex()}{getElementByIndex()}}
+{\footnotesize\ttfamily \label{classver_1_1VertexInputLayout_a08e18188f08b7631be3e7901b8b5ee3b_a08e18188f08b7631be3e7901b8b5ee3b} 
+const \mbox{\hyperlink{classver_1_1VertexInputLayout_1_1ILElement}{Vertex\+Input\+Layout\+::\+ILElement}} \& ver\+::\+Vertex\+Input\+Layout\+::get\+Element\+By\+Index (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{i}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classver_1_1VertexInputLayout_a0864ab48170f7826b431314283b20ab9_a0864ab48170f7826b431314283b20ab9}\index{ver::VertexInputLayout@{ver::VertexInputLayout}!getElementCount@{getElementCount}}
+\index{getElementCount@{getElementCount}!ver::VertexInputLayout@{ver::VertexInputLayout}}
+\doxysubsubsection{\texorpdfstring{getElementCount()}{getElementCount()}}
+{\footnotesize\ttfamily \label{classver_1_1VertexInputLayout_a0864ab48170f7826b431314283b20ab9_a0864ab48170f7826b431314283b20ab9} 
+size\+\_\+t ver\+::\+Vertex\+Input\+Layout\+::get\+Element\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classver_1_1VertexInputLayout_aa4d03e06b3df44cd4b80095f57f01aa2_aa4d03e06b3df44cd4b80095f57f01aa2}\index{ver::VertexInputLayout@{ver::VertexInputLayout}!getSizeInBytes@{getSizeInBytes}}
+\index{getSizeInBytes@{getSizeInBytes}!ver::VertexInputLayout@{ver::VertexInputLayout}}
+\doxysubsubsection{\texorpdfstring{getSizeInBytes()}{getSizeInBytes()}}
+{\footnotesize\ttfamily \label{classver_1_1VertexInputLayout_aa4d03e06b3df44cd4b80095f57f01aa2_aa4d03e06b3df44cd4b80095f57f01aa2} 
+size\+\_\+t ver\+::\+Vertex\+Input\+Layout\+::get\+Size\+In\+Bytes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classver_1_1VertexInputLayout_a2185ef30b26586b87f40fa3905c37c38_a2185ef30b26586b87f40fa3905c37c38}\index{ver::VertexInputLayout@{ver::VertexInputLayout}!hasType@{hasType}}
+\index{hasType@{hasType}!ver::VertexInputLayout@{ver::VertexInputLayout}}
+\doxysubsubsection{\texorpdfstring{hasType()}{hasType()}}
+{\footnotesize\ttfamily \label{classver_1_1VertexInputLayout_a2185ef30b26586b87f40fa3905c37c38_a2185ef30b26586b87f40fa3905c37c38} 
+bool ver\+::\+Vertex\+Input\+Layout\+::has\+Type (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_a7582c10f2c7a3ac24f95015bcbeb8c1a}{ILEement\+Type}} \&}]{type}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classver_1_1VertexInputLayout_a3e560d20053a7a9a8b9696170b8e7e71_a3e560d20053a7a9a8b9696170b8e7e71}\index{ver::VertexInputLayout@{ver::VertexInputLayout}!m\_vertexLayoutElements@{m\_vertexLayoutElements}}
+\index{m\_vertexLayoutElements@{m\_vertexLayoutElements}!ver::VertexInputLayout@{ver::VertexInputLayout}}
+\doxysubsubsection{\texorpdfstring{m\_vertexLayoutElements}{m\_vertexLayoutElements}}
+{\footnotesize\ttfamily \label{classver_1_1VertexInputLayout_a3e560d20053a7a9a8b9696170b8e7e71_a3e560d20053a7a9a8b9696170b8e7e71} 
+std\+::vector$<$\mbox{\hyperlink{classver_1_1VertexInputLayout_1_1ILElement}{ILElement}}$>$ ver\+::\+Vertex\+Input\+Layout\+::m\+\_\+vertex\+Layout\+Elements\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{dynamic__vertex__buffer_8h}{dynamic\+\_\+vertex\+\_\+buffer.\+h}}\item 
+src/\mbox{\hyperlink{dynamic__vertex__buffer_8cpp}{dynamic\+\_\+vertex\+\_\+buffer.\+cpp}}\end{DoxyCompactItemize}

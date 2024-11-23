@@ -51,9 +51,15 @@ std::pair<float,float> Camera::computePitchYawInDegFromDirectionVector( const Di
 {
 	ASSERT( util::isNormalized( directionNormalized ), "Provided direction vector is not normalized!" );
 
-	const float yawRadians = std::atan2f( directionNormalized.z, directionNormalized.x );		// yaw /in [-pi, pi] radians
-	const float pitchRadians = std::asin( directionNormalized.y );								// pitch /in [-pi/2, pi/2] radians
-	return {util::toDegrees( yawRadians ), util::toDegrees( pitchRadians )};
+	const float pitchRadians = std::atan2f( directionNormalized.y, std::sqrt(directionNormalized.x * directionNormalized.x + directionNormalized.z * directionNormalized.z ) );								// pitch /in [-pi/2, pi/2] radians
+	const float yawRadians = std::atan2f( directionNormalized.x, directionNormalized.z );		// yaw /in [-pi, pi] radians
+	return {util::toDegrees( pitchRadians ), util::toDegrees( yawRadians )};
+}
+
+DirectX::XMFLOAT3 Camera::computePitchYawRollInDegFromDirectionVector( const DirectX::XMFLOAT3 &directionNormalized )
+{
+	const auto pitchAndYawDeg = computePitchYawInDegFromDirectionVector( directionNormalized );
+	return {pitchAndYawDeg.first, pitchAndYawDeg.second, 0.0f};
 }
 
 Camera::Camera( Graphics &gfx,
@@ -86,8 +92,8 @@ Camera::Camera( Graphics &gfx,
 	m_aspectRatio(static_cast<float>(width) / height),
 	m_fovRadians{dx::XMConvertToRadians( fovDegrees )},
 	m_posDefault(posDefault),
-	m_pitchDefault(util::toRadians( pitchDegDefault)),
-	m_yawDefault(util::toRadians( yawDegDefault)),
+	m_pitchDefault(util::toRadians( pitchDegDefault )),
+	m_yawDefault(util::toRadians( yawDegDefault )),
 	m_bTethered(bTethered),
 	m_bPespectiveProjection(bPerspectiveProjection),
 	m_cameraWidget(std::make_unique<CameraWidget>(gfx, 1.0f, camWidgetColor), gfx, {pitchDegDefault, yawDegDefault, 0.0f}, posDefault),
@@ -131,13 +137,13 @@ void Camera::connectMaterialsToRenderer( ren::Renderer &ren )
 	m_cameraFrustum.connectMaterialsToRenderer( ren );
 }
 
-void Camera::makeActive( Graphics &gfx,
-	const bool bOrthographic ) const
+void Camera::makeActive( Graphics &gfx ) const
 {
 	gfx.setViewMatrix( getViewMatrix() );
-	gfx.setProjectionMatrix( bOrthographic ?
-		getOrthographicProjectionMatrix( m_width, m_height ) :
-		getPerspectiveProjectionMatrix() );
+	gfx.setProjectionMatrix( m_bPespectiveProjection ?
+		getPerspectiveProjectionMatrix() :
+		getOrthographicProjectionMatrix( m_width, m_height ) );
+		
 }
 
 void Camera::resetToDefault( Graphics &gfx ) noexcept

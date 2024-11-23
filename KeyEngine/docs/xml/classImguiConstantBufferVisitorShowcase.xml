@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classImguiConstantBufferVisitorShowcase" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>ImguiConstantBufferVisitorShowcase</compoundname>
+    <basecompoundref refid="classIImGuiConstantBufferVisitor" prot="public" virt="non-virtual">IImGuiConstantBufferVisitor</basecompoundref>
+    <includes refid="imgui__visitors_8h" local="no">imgui_visitors.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classImguiConstantBufferVisitorShowcase_abeb49147681d12eb12a7559f144c3177_1abeb49147681d12eb12a7559f144c3177" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool ImguiConstantBufferVisitorShowcase::onVisit</definition>
+        <argsstring>(con::CBuffer &amp;cb) override</argsstring>
+        <name>onVisit</name>
+        <qualifiedname>ImguiConstantBufferVisitorShowcase::onVisit</qualifiedname>
+        <reimplements refid="classIImGuiConstantBufferVisitor_a8efe889764e6bfd605b37d27581dc35a_1a8efe889764e6bfd605b37d27581dc35a">onVisit</reimplements>
+        <param>
+          <type><ref refid="classcon_1_1CBuffer" kindref="compound">con::CBuffer</ref> &amp;</type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/imgui_visitors.h" line="86" column="6" bodyfile="src/imgui_visitors.cpp" bodystart="190" bodyend="248"/>
+      </memberdef>
+      <memberdef kind="function" id="classImguiConstantBufferVisitorShowcase_a5527d99456f1106040fdfdd737953e12_1a5527d99456f1106040fdfdd737953e12" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ImguiConstantBufferVisitorShowcase::onSetMaterial</definition>
+        <argsstring>() override</argsstring>
+        <name>onSetMaterial</name>
+        <qualifiedname>ImguiConstantBufferVisitorShowcase::onSetMaterial</qualifiedname>
+        <reimplements refid="classIImGuiConstantBufferVisitor_a806f42448e8052c41dd58b44670da987_1a806f42448e8052c41dd58b44670da987">onSetMaterial</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/imgui_visitors.h" line="87" column="6" bodyfile="src/imgui_visitors.cpp" bodystart="250" bodyend="258"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>IImGuiConstantBufferVisitor</label>
+        <link refid="classIImGuiConstantBufferVisitor"/>
+      </node>
+      <node id="1">
+        <label>ImguiConstantBufferVisitorShowcase</label>
+        <link refid="classImguiConstantBufferVisitorShowcase"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>IImGuiConstantBufferVisitor</label>
+        <link refid="classIImGuiConstantBufferVisitor"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>m_pMaterial</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>ImguiConstantBufferVisitorShowcase</label>
+        <link refid="classImguiConstantBufferVisitorShowcase"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Material</label>
+        <link refid="classMaterial"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>m_pTargetPass</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>ren::IBindablePass</label>
+        <link refid="classren_1_1IBindablePass"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>ren::IPass</label>
+        <link refid="classren_1_1IPass"/>
+      </node>
+      <node id="4">
+        <label>ren::RenderQueuePass</label>
+        <link refid="classren_1_1RenderQueuePass"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/imgui_visitors.h" line="82" column="1" bodyfile="inc/imgui_visitors.h" bodystart="84" bodyend="88"/>
+    <listofallmembers>
+      <member refid="classIImGuiConstantBufferVisitor_a9ce95c32cd3c9715383315d393c12edd_1a9ce95c32cd3c9715383315d393c12edd" prot="protected" virt="non-virtual"><scope>ImguiConstantBufferVisitorShowcase</scope><name>m_imguiId</name></member>
+      <member refid="classIImGuiConstantBufferVisitor_acc45e30237d340dfe1b62041233efdc9_1acc45e30237d340dfe1b62041233efdc9" prot="protected" virt="non-virtual"><scope>ImguiConstantBufferVisitorShowcase</scope><name>m_materialId</name></member>
+      <member refid="classIImGuiConstantBufferVisitor_a4fee37fe08c11418ceca1a6bdb367788_1a4fee37fe08c11418ceca1a6bdb367788" prot="protected" virt="non-virtual"><scope>ImguiConstantBufferVisitorShowcase</scope><name>m_pMaterial</name></member>
+      <member refid="classImguiConstantBufferVisitorShowcase_a5527d99456f1106040fdfdd737953e12_1a5527d99456f1106040fdfdd737953e12" prot="public" virt="virtual"><scope>ImguiConstantBufferVisitorShowcase</scope><name>onSetMaterial</name></member>
+      <member refid="classImguiConstantBufferVisitorShowcase_abeb49147681d12eb12a7559f144c3177_1abeb49147681d12eb12a7559f144c3177" prot="public" virt="virtual"><scope>ImguiConstantBufferVisitorShowcase</scope><name>onVisit</name></member>
+      <member refid="classIImGuiConstantBufferVisitor_a7bdc512111781579a0d0701c6a040fac_1a7bdc512111781579a0d0701c6a040fac" prot="public" virt="non-virtual"><scope>ImguiConstantBufferVisitorShowcase</scope><name>setMaterial</name></member>
+      <member refid="classIImGuiConstantBufferVisitor_ab4925bd7f0cadefc621eb971cfa0d2b2_1ab4925bd7f0cadefc621eb971cfa0d2b2" prot="public" virt="non-virtual"><scope>ImguiConstantBufferVisitorShowcase</scope><name>visit</name></member>
+      <member refid="classIImGuiConstantBufferVisitor_a3302c8485b1af264050ed017ad251166_1a3302c8485b1af264050ed017ad251166" prot="public" virt="virtual"><scope>ImguiConstantBufferVisitorShowcase</scope><name>~IImGuiConstantBufferVisitor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

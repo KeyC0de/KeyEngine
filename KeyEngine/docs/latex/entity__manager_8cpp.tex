@@ -1,0 +1,25 @@
+\doxysection{src/entity\+\_\+manager.cpp File Reference}
+\hypertarget{entity__manager_8cpp}{}\label{entity__manager_8cpp}\index{src/entity\_manager.cpp@{src/entity\_manager.cpp}}
+{\ttfamily \#include "{}entity\+\_\+manager.\+h"{}}\newline
+{\ttfamily \#include "{}entity.\+h"{}}\newline
+{\ttfamily \#include "{}gameplay\+\_\+exception.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{entity__manager_8cpp_a7e7f8c8434b9545ae37b6973764f75d7_a7e7f8c8434b9545ae37b6973764f75d7}{THROW\+\_\+\+GAMEPLAY\+\_\+\+EXCEPTION}}(msg)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{entity__manager_8cpp_a7e7f8c8434b9545ae37b6973764f75d7_a7e7f8c8434b9545ae37b6973764f75d7}\index{entity\_manager.cpp@{entity\_manager.cpp}!THROW\_GAMEPLAY\_EXCEPTION@{THROW\_GAMEPLAY\_EXCEPTION}}
+\index{THROW\_GAMEPLAY\_EXCEPTION@{THROW\_GAMEPLAY\_EXCEPTION}!entity\_manager.cpp@{entity\_manager.cpp}}
+\doxysubsubsection{\texorpdfstring{THROW\_GAMEPLAY\_EXCEPTION}{THROW\_GAMEPLAY\_EXCEPTION}}
+{\footnotesize\ttfamily \label{entity__manager_8cpp_a7e7f8c8434b9545ae37b6973764f75d7_a7e7f8c8434b9545ae37b6973764f75d7} 
+\#define THROW\+\_\+\+GAMEPLAY\+\_\+\+EXCEPTION(\begin{DoxyParamCaption}\item[{}]{msg}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \_\_debugbreak();\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classGameplayException}{GameplayException}}(\ \_\_LINE\_\_,\ \_\_FILE\_\_,\ \_\_FUNCTION\_\_,\ msg\ );}
+
+\end{DoxyCode}

@@ -1,0 +1,134 @@
+\doxysection{Camera\+Frustum Class Reference}
+\hypertarget{classCameraFrustum}{}\label{classCameraFrustum}\index{CameraFrustum@{CameraFrustum}}
+
+
+{\ttfamily \#include $<$camera\+\_\+frustum.\+h$>$}
+
+Inheritance diagram for Camera\+Frustum\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classCameraFrustum}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCameraFrustum_a73a48e8fbde4b02b50e32746b50e03b8_a73a48e8fbde4b02b50e32746b50e03b8}{Camera\+Frustum}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const float initial\+Scale=1.\+0f, const std\+::variant$<$ Direct\+X\+::\+XMFLOAT4, std\+::string $>$ \&color\+Or\+Texture\+Path=Direct\+X\+::\+XMFLOAT4\{0.\+6f, 0.\+2f, 0.\+2f, 1.\+0f\}, const float width=1.\+0f, const float height=1.\+0f, const float nearZ=0.\+5f, const float farZ=200.\+0f)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classMesh}{Mesh}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMesh_ae6b6c56f0ebfa2f6b2b10d25a835c865_ae6b6c56f0ebfa2f6b2b10d25a835c865}{Mesh}} ()=default
+\begin{DoxyCompactList}\small\item\em defctor to be called by subclasses \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMesh_a5a611a59702d1b70366c71bcbfbe90a9_a5a611a59702d1b70366c71bcbfbe90a9}{Mesh}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const \mbox{\hyperlink{classMaterialLoader}{Material\+Loader}} \&mat, const ai\+Mesh \&aimesh, const float initial\+Scale=1.\+0f)
+\begin{DoxyCompactList}\small\item\em ctor for imported models, creates bounding box \& mesh\+Id \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classMesh_a508b14c30f81bdc95a94ec112ff1d8e2_a508b14c30f81bdc95a94ec112ff1d8e2}{\texorpdfstring{$\sim$}{\string~}\+Mesh}} () noexcept
+\item 
+\mbox{\hyperlink{classMesh_a092585e17e17fda4a97ed3ef55f7e6de_a092585e17e17fda4a97ed3ef55f7e6de}{Mesh}} (const \mbox{\hyperlink{classMesh}{Mesh}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classMesh}{Mesh}} \& \mbox{\hyperlink{classMesh_ae40add8703d205cee7cd05df39a61152_ae40add8703d205cee7cd05df39a61152}{operator=}} (const \mbox{\hyperlink{classMesh}{Mesh}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classMesh_a207b46f564a431b6b3a5a5f3da7638e3_a207b46f564a431b6b3a5a5f3da7638e3}{Mesh}} (\mbox{\hyperlink{classMesh}{Mesh}} \&\&rhs) noexcept
+\item 
+\mbox{\hyperlink{classMesh}{Mesh}} \& \mbox{\hyperlink{classMesh_a5013b72eca2bd43b1853cd0b8c98498c_a5013b72eca2bd43b1853cd0b8c98498c}{operator=}} (\mbox{\hyperlink{classMesh}{Mesh}} \&\&rhs) noexcept=delete
+\item 
+void \mbox{\hyperlink{classMesh_a501f7dc11f57390edcd9acaf5a1b07cd_a501f7dc11f57390edcd9acaf5a1b07cd}{set\+Node}} (\mbox{\hyperlink{classNode}{Node}} \&node)
+\item 
+void \mbox{\hyperlink{classMesh_a31cc65adefd11990f5246435cedaaf1e_a31cc65adefd11990f5246435cedaaf1e}{update}} (const float dt, const float lerp\+Between\+Frames) cond\+\_\+noex
+\item 
+void \mbox{\hyperlink{classMesh_a582af69212023f64426c5f2fbd816e4c_a582af69212023f64426c5f2fbd816e4c}{render}} (const size\+\_\+t channels=\mbox{\hyperlink{namespacerch_a7bda900872e1367b3434b6b548e17d2c_a7bda900872e1367b3434b6b548e17d2c}{rch\+::all}}) const noexcept
+\item 
+void \mbox{\hyperlink{classMesh_a45a4b9d8490d23482ebef2e5138b7351_a45a4b9d8490d23482ebef2e5138b7351}{bind}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) const cond\+\_\+noex
+\item 
+{\footnotesize template$<$typename T , typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+base\+\_\+of\+\_\+v$<$\+IBindable, T$>$$>$$>$ }\\std\+::optional$<$ T \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classMesh_a1599e16a5e4753ac3c28dbc493cbd0ec_a1599e16a5e4753ac3c28dbc493cbd0ec}{find\+Bindable}} () noexcept
+\item 
+{\footnotesize template$<$typename T , typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+base\+\_\+of\+\_\+v$<$\+IBindable, T$>$$>$$>$ }\\std\+::optional$<$ const T \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classMesh_ada9efb2af727b0ff2573bdac9bdd156d_ada9efb2af727b0ff2573bdac9bdd156d}{find\+Bindable}} () const noexcept
+\item 
+void \mbox{\hyperlink{classMesh_a76bbd879b2115f72799c5d1676a8960b_a76bbd879b2115f72799c5d1676a8960b}{add\+Material}} (\mbox{\hyperlink{classMaterial}{Material}} material) noexcept
+\item 
+void \mbox{\hyperlink{classMesh_a258f981ef88fe2dc1b4095e089dd99f2_a258f981ef88fe2dc1b4095e089dd99f2}{set\+Material\+Enabled}} (const size\+\_\+t channels, const bool b\+Enabled) noexcept
+\item 
+void \mbox{\hyperlink{classMesh_a513b4f9e4065d0b004474722f1ddd148_a513b4f9e4065d0b004474722f1ddd148}{accept}} (\mbox{\hyperlink{classIImGuiConstantBufferVisitor}{IIm\+Gui\+Constant\+Buffer\+Visitor}} \&ev)
+\item 
+unsigned \mbox{\hyperlink{classMesh_ab13c2e773a18856f04a52c1d748c4be2_ab13c2e773a18856f04a52c1d748c4be2}{get\+Indices\+Count}} () const cond\+\_\+noex
+\item 
+void \mbox{\hyperlink{classMesh_a0f3175b74632a675caad84b8f5defb8b_a0f3175b74632a675caad84b8f5defb8b}{connect\+Materials\+To\+Renderer}} (\mbox{\hyperlink{classren_1_1Renderer}{ren\+::\+Renderer}} \&r)
+\item 
+float \mbox{\hyperlink{classMesh_abde180d729a79a487bd6568d42771697_abde180d729a79a487bd6568d42771697}{get\+Distance\+From\+Active\+Camera}} () const noexcept
+\item 
+bool \mbox{\hyperlink{classMesh_a1d18ad52515cfd7e2cca966cfb76dddd_a1d18ad52515cfd7e2cca966cfb76dddd}{is\+Rendered\+This\+Frame}} () const noexcept
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVertexBuffer}{Vertex\+Buffer}} $>$ \& \mbox{\hyperlink{classMesh_a8cb16fb21424f90eadf022d531d17d30_a8cb16fb21424f90eadf022d531d17d30}{get\+Vertex\+Buffer}} ()
+\item 
+void \mbox{\hyperlink{classMesh_a2e47e473545615fcbffff761d8912ea1_a2e47e473545615fcbffff761d8912ea1}{create\+Aabb}} (const \mbox{\hyperlink{classver_1_1VBuffer}{ver\+::\+VBuffer}} \&verts)
+\item 
+const \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classMesh_a425a3ab4960ac4a925aba7c6df2da63b_a425a3ab4960ac4a925aba7c6df2da63b}{get\+Node}} () const noexcept
+\item 
+std\+::string \mbox{\hyperlink{classMesh_a2e68eeb89cb2cb8b1caa45911f569ed4_a2e68eeb89cb2cb8b1caa45911f569ed4}{get\+Name}} () const noexcept
+\item 
+unsigned \mbox{\hyperlink{classMesh_a3d2f9912e0fa051f1a756a57bb225adb_a3d2f9912e0fa051f1a756a57bb225adb}{get\+Mesh\+Id}} () const noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classCameraFrustum_ad8dade710f5795d09862263306f92abe_ad8dade710f5795d09862263306f92abe}{s\+\_\+geometry\+Tag}} = "{}\$cam\+\_\+frustum"{}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classMesh}{Mesh}}}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{classMesh_ac1a06f67124e572821e7fc985711c8dd_ac1a06f67124e572821e7fc985711c8dd}{get\+Distance\+From\+Active\+Camera}} (const Direct\+X\+::\+XMFLOAT3 \&pos) const noexcept
+\item 
+void \mbox{\hyperlink{classMesh_add44446356aaf7c808a25562090cc556_add44446356aaf7c808a25562090cc556}{set\+Mesh\+Id}} () noexcept
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classMesh}{Mesh}}}
+\begin{DoxyCompactItemize}
+\item 
+unsigned \mbox{\hyperlink{classMesh_a2be1d0d997a5ea723e79320cd5a360d2_a2be1d0d997a5ea723e79320cd5a360d2}{m\+\_\+mesh\+Id}} = 0u
+\item 
+\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classMesh_af08edebaaa5ca60d67aa42c9f4f4d75f_af08edebaaa5ca60d67aa42c9f4f4d75f}{m\+\_\+p\+Node}} = nullptr
+\item 
+std\+::pair$<$ Direct\+X\+::\+XMFLOAT3, Direct\+X\+::\+XMFLOAT3 $>$ \mbox{\hyperlink{classMesh_a77337ee8b7114ef5311bcf27e0046e22_a77337ee8b7114ef5311bcf27e0046e22}{m\+\_\+aabb}} \{\{0, 0, 0\},\{0, 0, 0\}\}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVertexBuffer}{Vertex\+Buffer}} $>$ \mbox{\hyperlink{classMesh_a05ef62d082e7a5c1fb49bded4e8c69ea_a05ef62d082e7a5c1fb49bded4e8c69ea}{m\+\_\+p\+Vertex\+Buffer}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIndexBuffer}{Index\+Buffer}} $>$ \mbox{\hyperlink{classMesh_aa5fc2902e90f9ccb60a85d79c2ee85f7_aa5fc2902e90f9ccb60a85d79c2ee85f7}{m\+\_\+p\+Index\+Buffer}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classPrimitiveTopology}{Primitive\+Topology}} $>$ \mbox{\hyperlink{classMesh_ae621e49b973b900a5247f661ee4d7f01_ae621e49b973b900a5247f661ee4d7f01}{m\+\_\+p\+Primitive\+Topology}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classTransformVSCB}{Transform\+VSCB}} $>$ \mbox{\hyperlink{classMesh_a20c8448dfbc8df1b7fa70a07b1d55470_a20c8448dfbc8df1b7fa70a07b1d55470}{m\+\_\+p\+Transform\+Vscb}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classMaterial}{Material}} $>$ \mbox{\hyperlink{classMesh_a50eabba438bb2476103fa94c20521800_a50eabba438bb2476103fa94c20521800}{m\+\_\+materials}}
+\item 
+struct \mbox{\hyperlink{structMesh_1_1ColorPSCB}{Mesh\+::\+Color\+PSCB}} \mbox{\hyperlink{classMesh_a39d8f1407340f362a62b55d583bcf940_a39d8f1407340f362a62b55d583bcf940}{m\+\_\+color\+Pscb}}
+\item 
+struct \mbox{\hyperlink{structMesh_1_1ColorPSCB2}{Mesh\+::\+Color\+PSCB2}} \mbox{\hyperlink{classMesh_aa46b1429ae3e0ab7ff10c1fea306d3cd_aa46b1429ae3e0ab7ff10c1fea306d3cd}{m\+\_\+color\+Pscb\+Outline}}
+\item 
+struct \mbox{\hyperlink{structMesh_1_1ColorPSCB3}{Mesh\+::\+Color\+PSCB3}} \mbox{\hyperlink{classMesh_a832c0d6e6367ecf9926c690678498c99_a832c0d6e6367ecf9926c690678498c99}{m\+\_\+color\+Pscb\+Wireframe}}
+\item 
+struct \mbox{\hyperlink{structMesh_1_1ColorPSCB4}{Mesh\+::\+Color\+PSCB4}} \mbox{\hyperlink{classMesh_a38b2f938403ca728ab9b7f64ccc74724_a38b2f938403ca728ab9b7f64ccc74724}{m\+\_\+color\+Pscb\+Depth\+Reversed}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classCameraFrustum_a73a48e8fbde4b02b50e32746b50e03b8_a73a48e8fbde4b02b50e32746b50e03b8}\index{CameraFrustum@{CameraFrustum}!CameraFrustum@{CameraFrustum}}
+\index{CameraFrustum@{CameraFrustum}!CameraFrustum@{CameraFrustum}}
+\doxysubsubsection{\texorpdfstring{CameraFrustum()}{CameraFrustum()}}
+{\footnotesize\ttfamily \label{classCameraFrustum_a73a48e8fbde4b02b50e32746b50e03b8_a73a48e8fbde4b02b50e32746b50e03b8} 
+Camera\+Frustum\+::\+Camera\+Frustum (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const float}]{initial\+Scale}{ = {\ttfamily 1.0f}, }\item[{const std\+::variant$<$ Direct\+X\+::\+XMFLOAT4, std\+::string $>$ \&}]{color\+Or\+Texture\+Path}{ = {\ttfamily DirectX\+:\+:XMFLOAT4\{0.6f,~0.2f,~0.2f,~1.0f\}}, }\item[{const float}]{width}{ = {\ttfamily 1.0f}, }\item[{const float}]{height}{ = {\ttfamily 1.0f}, }\item[{const float}]{nearZ}{ = {\ttfamily 0.5f}, }\item[{const float}]{farZ}{ = {\ttfamily 200.0f}}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classCameraFrustum_ad8dade710f5795d09862263306f92abe_ad8dade710f5795d09862263306f92abe}\index{CameraFrustum@{CameraFrustum}!s\_geometryTag@{s\_geometryTag}}
+\index{s\_geometryTag@{s\_geometryTag}!CameraFrustum@{CameraFrustum}}
+\doxysubsubsection{\texorpdfstring{s\_geometryTag}{s\_geometryTag}}
+{\footnotesize\ttfamily \label{classCameraFrustum_ad8dade710f5795d09862263306f92abe_ad8dade710f5795d09862263306f92abe} 
+const char\texorpdfstring{$\ast$}{*} Camera\+Frustum\+::s\+\_\+geometry\+Tag = "{}\$cam\+\_\+frustum"{}\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{camera__frustum_8h}{camera\+\_\+frustum.\+h}}\item 
+src/\mbox{\hyperlink{camera__frustum_8cpp}{camera\+\_\+frustum.\+cpp}}\end{DoxyCompactItemize}

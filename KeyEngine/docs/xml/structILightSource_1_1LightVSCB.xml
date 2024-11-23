@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="structILightSource_1_1LightVSCB" kind="struct" language="C++" prot="protected">
+    <compoundname>ILightSource::LightVSCB</compoundname>
+    <includes refid="light__source_8h" local="no">light_source.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structILightSource_1_1LightVSCB_a7ccc71c16e97484dc64961bef3127a4b_1a7ccc71c16e97484dc64961bef3127a4b" prot="public" static="no" mutable="no">
+        <type>DirectX::XMMATRIX</type>
+        <definition>DirectX::XMMATRIX ILightSource::LightVSCB::cb_lightMatrix</definition>
+        <argsstring></argsstring>
+        <name>cb_lightMatrix</name>
+        <qualifiedname>ILightSource::LightVSCB::cb_lightMatrix</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="40" column="19" bodyfile="inc/light_source.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/light_source.h" line="38" column="1" bodyfile="inc/light_source.h" bodystart="39" bodyend="41"/>
+    <listofallmembers>
+      <member refid="structILightSource_1_1LightVSCB_a7ccc71c16e97484dc64961bef3127a4b_1a7ccc71c16e97484dc64961bef3127a4b" prot="public" virt="non-virtual"><scope>ILightSource::LightVSCB</scope><name>cb_lightMatrix</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

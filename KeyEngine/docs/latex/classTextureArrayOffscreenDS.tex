@@ -1,0 +1,173 @@
+\doxysection{Texture\+Array\+Offscreen\+DS Class Reference}
+\hypertarget{classTextureArrayOffscreenDS}{}\label{classTextureArrayOffscreenDS}\index{TextureArrayOffscreenDS@{TextureArrayOffscreenDS}}
+
+
+A Texture\+Cube (HLSL), SRV for HLSL access \& Depth Stencil View all wrapped up; can be used either for input OR for output   
+
+
+
+
+{\ttfamily \#include $<$texture.\+h$>$}
+
+Inheritance diagram for Texture\+Array\+Offscreen\+DS\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classTextureArrayOffscreenDS}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTextureArrayOffscreenDS_aca6d6cb9a7b1e8449149ba3937dd7c6e_aca6d6cb9a7b1e8449149ba3937dd7c6e}{Texture\+Array\+Offscreen\+DS}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const unsigned width, const unsigned height, const unsigned slot, const \mbox{\hyperlink{texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_a5aacc2000fea78d975de8fe06e3698f2}{Depth\+Stencil\+View\+Mode}} dsv\+Mode, const unsigned n\+Textures)
+\item 
+void \mbox{\hyperlink{classTextureArrayOffscreenDS_a1f30c7f8c810f401124ff8a9d9326b7f_a1f30c7f8c810f401124ff8a9d9326b7f}{bind}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) cond\+\_\+noex override
+\begin{DoxyCompactList}\small\item\em bind graphics resource to a certain stage of the graphics pipeline \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classDepthStencilOutput}{Depth\+Stencil\+Output}} $>$ \mbox{\hyperlink{classTextureArrayOffscreenDS_a9362397b1cbc6100f0d1515a2e2ed133_a9362397b1cbc6100f0d1515a2e2ed133}{share\+Depth\+Buffer}} (const size\+\_\+t index) const
+\item 
+\mbox{\hyperlink{classDepthStencilOutput}{Depth\+Stencil\+Output}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classTextureArrayOffscreenDS_a1795859f96e382635a686da09cb06d23_a1795859f96e382635a686da09cb06d23}{access\+Depth\+Buffer}} (const size\+\_\+t index)
+\item 
+\mbox{\hyperlink{classDepthStencilOutput}{Depth\+Stencil\+Output}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classTextureArrayOffscreenDS_ae27472df75146ab560daec476b161a67_ae27472df75146ab560daec476b161a67}{access\+Dsv}} (const size\+\_\+t index) noexcept
+\item 
+unsigned \mbox{\hyperlink{classTextureArrayOffscreenDS_ad3f23e7ca676306ce21bd084e22ea6fe_ad3f23e7ca676306ce21bd084e22ea6fe}{get\+Slot}} () const noexcept
+\item 
+int \mbox{\hyperlink{classTextureArrayOffscreenDS_a394552e6dae0290bfe23965f040b1748_a394552e6dae0290bfe23965f040b1748}{get\+Texture\+Count}} () const noexcept
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classIBindable}{IBindable}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classIBindable_a7f68262ff85e25e9f826eae7c01bbfa1_a7f68262ff85e25e9f826eae7c01bbfa1}{\texorpdfstring{$\sim$}{\string~}\+IBindable}} () noexcept
+\item 
+virtual void \mbox{\hyperlink{classIBindable_a12fe8725cb3f4836f22d1592b07e2c91_a12fe8725cb3f4836f22d1592b07e2c91}{set\+Mesh}} (const \mbox{\hyperlink{classMesh}{Mesh}} \&mesh) noexcept
+\item 
+virtual void \mbox{\hyperlink{classIBindable_a608c5066b829febbd49cd82d1d1fa353_a608c5066b829febbd49cd82d1d1fa353}{accept}} (\mbox{\hyperlink{classIImGuiConstantBufferVisitor}{IIm\+Gui\+Constant\+Buffer\+Visitor}} \&ev)
+\item 
+virtual std\+::string \mbox{\hyperlink{classIBindable_a7d88cdbd5d500d6d7f1bfabe16927855_a7d88cdbd5d500d6d7f1bfabe16927855}{get\+Uid}} () const noexcept
+\item 
+virtual void \mbox{\hyperlink{classIBindable_a4d590eebe80fa4e0aa865a875ff86c02_a4d590eebe80fa4e0aa865a875ff86c02}{set\+Debug\+Object\+Name}} (const char \texorpdfstring{$\ast$}{*}name) noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ ID3\+D11\+Shader\+Resource\+View $>$ \mbox{\hyperlink{classTextureArrayOffscreenDS_ad08db3511334d0865080e7632adde30f_ad08db3511334d0865080e7632adde30f}{m\+\_\+p\+D3d\+Srv}}
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classDepthStencilOutput}{Depth\+Stencil\+Output}} $>$ $>$ \mbox{\hyperlink{classTextureArrayOffscreenDS_a603b9d6edd6532ed43c30aafa56baa1b_a603b9d6edd6532ed43c30aafa56baa1b}{m\+\_\+depth\+Stencil\+Views}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \mbox{\hyperlink{classTextureArrayOffscreenDS_adb096dc72605cdfa1149b7aeee29280a_adb096dc72605cdfa1149b7aeee29280a}{m\+\_\+slot}}
+\item 
+unsigned int \mbox{\hyperlink{classTextureArrayOffscreenDS_acea5bcca953d4cbc105b2d70dbd96ffb_acea5bcca953d4cbc105b2d70dbd96ffb}{m\+\_\+n\+Textures}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classGraphicsFriend}{Graphics\+Friend}}}
+\begin{DoxyCompactItemize}
+\item 
+static ID3\+D11\+Device\+Context \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGraphicsFriend_a619e32893ab49ea6c5200e7c2d52e2f2_a619e32893ab49ea6c5200e7c2d52e2f2}{get\+Device\+Context}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) noexcept
+\item 
+static ID3\+D11\+Device \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_a175df79f82ab5a6dad1df24b5a242ef7}{get\+Device}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) noexcept
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A Texture\+Cube (HLSL), SRV for HLSL access \& Depth Stencil View all wrapped up; can be used either for input OR for output  
+
+A Texture2d\+Array (HLSL), SRV for HLSL access \& Depth Stencil View all wrapped up; can be used either for input OR for output 
+
+=============================================================
+
+\begin{DoxyAuthor}{Author}
+Key\+C0de 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2024/09/03 22\+:46 \doxysubsection*{=============================================================  \textbackslash{}author Key\+C0de \textbackslash{}date 2024/09/03 21\+:33  }
+\end{DoxyDate}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classTextureArrayOffscreenDS_aca6d6cb9a7b1e8449149ba3937dd7c6e_aca6d6cb9a7b1e8449149ba3937dd7c6e}\index{TextureArrayOffscreenDS@{TextureArrayOffscreenDS}!TextureArrayOffscreenDS@{TextureArrayOffscreenDS}}
+\index{TextureArrayOffscreenDS@{TextureArrayOffscreenDS}!TextureArrayOffscreenDS@{TextureArrayOffscreenDS}}
+\doxysubsubsection{\texorpdfstring{TextureArrayOffscreenDS()}{TextureArrayOffscreenDS()}}
+{\footnotesize\ttfamily \label{classTextureArrayOffscreenDS_aca6d6cb9a7b1e8449149ba3937dd7c6e_aca6d6cb9a7b1e8449149ba3937dd7c6e} 
+Texture\+Array\+Offscreen\+DS\+::\+Texture\+Array\+Offscreen\+DS (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const unsigned}]{width}{, }\item[{const unsigned}]{height}{, }\item[{const unsigned}]{slot}{, }\item[{const \mbox{\hyperlink{texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_a5aacc2000fea78d975de8fe06e3698f2}{Depth\+Stencil\+View\+Mode}}}]{dsv\+Mode}{, }\item[{const unsigned}]{n\+Textures}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classTextureArrayOffscreenDS_a1795859f96e382635a686da09cb06d23_a1795859f96e382635a686da09cb06d23}\index{TextureArrayOffscreenDS@{TextureArrayOffscreenDS}!accessDepthBuffer@{accessDepthBuffer}}
+\index{accessDepthBuffer@{accessDepthBuffer}!TextureArrayOffscreenDS@{TextureArrayOffscreenDS}}
+\doxysubsubsection{\texorpdfstring{accessDepthBuffer()}{accessDepthBuffer()}}
+{\footnotesize\ttfamily \label{classTextureArrayOffscreenDS_a1795859f96e382635a686da09cb06d23_a1795859f96e382635a686da09cb06d23} 
+\mbox{\hyperlink{classDepthStencilOutput}{Depth\+Stencil\+Output}} \texorpdfstring{$\ast$}{*} Texture\+Array\+Offscreen\+DS\+::access\+Depth\+Buffer (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{index}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classTextureArrayOffscreenDS_ae27472df75146ab560daec476b161a67_ae27472df75146ab560daec476b161a67}\index{TextureArrayOffscreenDS@{TextureArrayOffscreenDS}!accessDsv@{accessDsv}}
+\index{accessDsv@{accessDsv}!TextureArrayOffscreenDS@{TextureArrayOffscreenDS}}
+\doxysubsubsection{\texorpdfstring{accessDsv()}{accessDsv()}}
+{\footnotesize\ttfamily \label{classTextureArrayOffscreenDS_ae27472df75146ab560daec476b161a67_ae27472df75146ab560daec476b161a67} 
+\mbox{\hyperlink{classDepthStencilOutput}{Depth\+Stencil\+Output}} \texorpdfstring{$\ast$}{*} Texture\+Array\+Offscreen\+DS\+::access\+Dsv (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{index}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classTextureArrayOffscreenDS_a1f30c7f8c810f401124ff8a9d9326b7f_a1f30c7f8c810f401124ff8a9d9326b7f}\index{TextureArrayOffscreenDS@{TextureArrayOffscreenDS}!bind@{bind}}
+\index{bind@{bind}!TextureArrayOffscreenDS@{TextureArrayOffscreenDS}}
+\doxysubsubsection{\texorpdfstring{bind()}{bind()}}
+{\footnotesize\ttfamily \label{classTextureArrayOffscreenDS_a1f30c7f8c810f401124ff8a9d9326b7f_a1f30c7f8c810f401124ff8a9d9326b7f} 
+void Texture\+Array\+Offscreen\+DS\+::bind (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+bind graphics resource to a certain stage of the graphics pipeline 
+
+
+
+Implements \mbox{\hyperlink{classIBindable_add4560f78e76629ee81ba701ba1052e1_add4560f78e76629ee81ba701ba1052e1}{IBindable}}.
+
+\Hypertarget{classTextureArrayOffscreenDS_ad3f23e7ca676306ce21bd084e22ea6fe_ad3f23e7ca676306ce21bd084e22ea6fe}\index{TextureArrayOffscreenDS@{TextureArrayOffscreenDS}!getSlot@{getSlot}}
+\index{getSlot@{getSlot}!TextureArrayOffscreenDS@{TextureArrayOffscreenDS}}
+\doxysubsubsection{\texorpdfstring{getSlot()}{getSlot()}}
+{\footnotesize\ttfamily \label{classTextureArrayOffscreenDS_ad3f23e7ca676306ce21bd084e22ea6fe_ad3f23e7ca676306ce21bd084e22ea6fe} 
+unsigned Texture\+Array\+Offscreen\+DS\+::get\+Slot (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classTextureArrayOffscreenDS_a394552e6dae0290bfe23965f040b1748_a394552e6dae0290bfe23965f040b1748}\index{TextureArrayOffscreenDS@{TextureArrayOffscreenDS}!getTextureCount@{getTextureCount}}
+\index{getTextureCount@{getTextureCount}!TextureArrayOffscreenDS@{TextureArrayOffscreenDS}}
+\doxysubsubsection{\texorpdfstring{getTextureCount()}{getTextureCount()}}
+{\footnotesize\ttfamily \label{classTextureArrayOffscreenDS_a394552e6dae0290bfe23965f040b1748_a394552e6dae0290bfe23965f040b1748} 
+int Texture\+Array\+Offscreen\+DS\+::get\+Texture\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classTextureArrayOffscreenDS_a9362397b1cbc6100f0d1515a2e2ed133_a9362397b1cbc6100f0d1515a2e2ed133}\index{TextureArrayOffscreenDS@{TextureArrayOffscreenDS}!shareDepthBuffer@{shareDepthBuffer}}
+\index{shareDepthBuffer@{shareDepthBuffer}!TextureArrayOffscreenDS@{TextureArrayOffscreenDS}}
+\doxysubsubsection{\texorpdfstring{shareDepthBuffer()}{shareDepthBuffer()}}
+{\footnotesize\ttfamily \label{classTextureArrayOffscreenDS_a9362397b1cbc6100f0d1515a2e2ed133_a9362397b1cbc6100f0d1515a2e2ed133} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classDepthStencilOutput}{Depth\+Stencil\+Output}} $>$ Texture\+Array\+Offscreen\+DS\+::share\+Depth\+Buffer (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{index}{}\end{DoxyParamCaption}) const}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classTextureArrayOffscreenDS_a603b9d6edd6532ed43c30aafa56baa1b_a603b9d6edd6532ed43c30aafa56baa1b}\index{TextureArrayOffscreenDS@{TextureArrayOffscreenDS}!m\_depthStencilViews@{m\_depthStencilViews}}
+\index{m\_depthStencilViews@{m\_depthStencilViews}!TextureArrayOffscreenDS@{TextureArrayOffscreenDS}}
+\doxysubsubsection{\texorpdfstring{m\_depthStencilViews}{m\_depthStencilViews}}
+{\footnotesize\ttfamily \label{classTextureArrayOffscreenDS_a603b9d6edd6532ed43c30aafa56baa1b_a603b9d6edd6532ed43c30aafa56baa1b} 
+std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classDepthStencilOutput}{Depth\+Stencil\+Output}}$>$ $>$ Texture\+Array\+Offscreen\+DS\+::m\+\_\+depth\+Stencil\+Views\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classTextureArrayOffscreenDS_acea5bcca953d4cbc105b2d70dbd96ffb_acea5bcca953d4cbc105b2d70dbd96ffb}\index{TextureArrayOffscreenDS@{TextureArrayOffscreenDS}!m\_nTextures@{m\_nTextures}}
+\index{m\_nTextures@{m\_nTextures}!TextureArrayOffscreenDS@{TextureArrayOffscreenDS}}
+\doxysubsubsection{\texorpdfstring{m\_nTextures}{m\_nTextures}}
+{\footnotesize\ttfamily \label{classTextureArrayOffscreenDS_acea5bcca953d4cbc105b2d70dbd96ffb_acea5bcca953d4cbc105b2d70dbd96ffb} 
+unsigned int Texture\+Array\+Offscreen\+DS\+::m\+\_\+n\+Textures\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classTextureArrayOffscreenDS_ad08db3511334d0865080e7632adde30f_ad08db3511334d0865080e7632adde30f}\index{TextureArrayOffscreenDS@{TextureArrayOffscreenDS}!m\_pD3dSrv@{m\_pD3dSrv}}
+\index{m\_pD3dSrv@{m\_pD3dSrv}!TextureArrayOffscreenDS@{TextureArrayOffscreenDS}}
+\doxysubsubsection{\texorpdfstring{m\_pD3dSrv}{m\_pD3dSrv}}
+{\footnotesize\ttfamily \label{classTextureArrayOffscreenDS_ad08db3511334d0865080e7632adde30f_ad08db3511334d0865080e7632adde30f} 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ID3\+D11\+Shader\+Resource\+View$>$ Texture\+Array\+Offscreen\+DS\+::m\+\_\+p\+D3d\+Srv\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classTextureArrayOffscreenDS_adb096dc72605cdfa1149b7aeee29280a_adb096dc72605cdfa1149b7aeee29280a}\index{TextureArrayOffscreenDS@{TextureArrayOffscreenDS}!m\_slot@{m\_slot}}
+\index{m\_slot@{m\_slot}!TextureArrayOffscreenDS@{TextureArrayOffscreenDS}}
+\doxysubsubsection{\texorpdfstring{m\_slot}{m\_slot}}
+{\footnotesize\ttfamily \label{classTextureArrayOffscreenDS_adb096dc72605cdfa1149b7aeee29280a_adb096dc72605cdfa1149b7aeee29280a} 
+unsigned int Texture\+Array\+Offscreen\+DS\+::m\+\_\+slot\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{texture_8h}{texture.\+h}}\item 
+src/\mbox{\hyperlink{texture_8cpp}{texture.\+cpp}}\end{DoxyCompactItemize}

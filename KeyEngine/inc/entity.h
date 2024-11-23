@@ -7,13 +7,13 @@
 
 class EntityManager;
 
-//============================================================
-//	\class	Entity
-//	\author	KeyC0de
-//	\date	2019/12/09 13:50
-//	\brief	a Game Object base class
-//			Transformation: ConcreteEntity <- Entity <- Model <- Node <- ConcreteMesh <- Mesh
-//=============================================================
+///============================================================
+/// \class	Entity
+/// \author	KeyC0de
+/// \date	2019/12/09 13:50
+/// \brief	a Game Object base class
+/// \brief	Transformation: ConcreteEntity <- Entity <- Model <- Node <- ConcreteMesh <- Mesh
+///=============================================================
 class Entity
 {
 	friend class EntityManager;
@@ -48,8 +48,7 @@ public:
 	Entity& operator=( Entity &&rhs ) noexcept;
 
 	void printInfo() const noexcept;
-	//	\function	id	||	\date	2019/12/09 14:05
-	//	\brief	get entity id
+	/// \brief	get entity id
 	EntityId getId() const noexcept;
 	const std::string& getName() const noexcept;
 	Category getCategory() const noexcept;

@@ -1,0 +1,125 @@
+\doxysection{ren\+::Pass\+Through Class Reference}
+\hypertarget{classren_1_1PassThrough}{}\label{classren_1_1PassThrough}\index{ren::PassThrough@{ren::PassThrough}}
+
+
+A Post Processing Pass, reads texture and simply outputs its values   
+
+
+
+
+{\ttfamily \#include $<$pass\+\_\+through.\+h$>$}
+
+Inheritance diagram for ren\+::Pass\+Through\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classren_1_1PassThrough}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classren_1_1PassThrough_a53963d7415f67b51c10fd38d1f222f9b_a53963d7415f67b51c10fd38d1f222f9b}{Pass\+Through}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const std\+::string \&name)
+\item 
+void \mbox{\hyperlink{classren_1_1PassThrough_a9a8ee826bf2c171fed669523c5ca5713_a9a8ee826bf2c171fed669523c5ca5713}{reset}} () cond\+\_\+noex override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classren_1_1IFullscreenPass}{ren\+::\+IFullscreen\+Pass}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classren_1_1IFullscreenPass_a62e96861f46b97aea00c81e2573390f3_a62e96861f46b97aea00c81e2573390f3}{IFullscreen\+Pass}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const std\+::string \&name) cond\+\_\+noex
+\item 
+void \mbox{\hyperlink{classren_1_1IFullscreenPass_a9c7f7f30f493b1c0618276a211753e9f_a9c7f7f30f493b1c0618276a211753e9f}{run}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) const cond\+\_\+noex override
+\begin{DoxyCompactList}\small\item\em binds bindables \& executes draw calls \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classren_1_1IPass}{ren\+::\+IPass}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classren_1_1IPass_a72360515966748b13f592095c12f58fa_a72360515966748b13f592095c12f58fa}{IPass}} (const std\+::string \&name, bool b\+Active=true) noexcept
+\item 
+virtual \mbox{\hyperlink{classren_1_1IPass_ac0132ac18bad1d6379a9d27e3d25bc18_ac0132ac18bad1d6379a9d27e3d25bc18}{\texorpdfstring{$\sim$}{\string~}\+IPass}} () noexcept
+\item 
+const std\+::string \& \mbox{\hyperlink{classren_1_1IPass_a3c9f7768f492d9a50371acec9b61f12b_a3c9f7768f492d9a50371acec9b61f12b}{get\+Name}} () const noexcept
+\item 
+const std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classren_1_1IBinder}{IBinder}} $>$ $>$ \& \mbox{\hyperlink{classren_1_1IPass_aebd5aa69455727600d0e979906a0a111_aebd5aa69455727600d0e979906a0a111}{get\+Binders}} () const
+\item 
+const std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classren_1_1ILinker}{ILinker}} $>$ $>$ \& \mbox{\hyperlink{classren_1_1IPass_ae0910189678e800c86f665bca8c88a03_ae0910189678e800c86f665bca8c88a03}{get\+Linkers}} () const
+\item 
+\mbox{\hyperlink{classren_1_1IBinder}{IBinder}} \& \mbox{\hyperlink{classren_1_1IPass_a6cffed1b315846ece319e4ce5f508843_a6cffed1b315846ece319e4ce5f508843}{get\+Binder}} (const std\+::string \&name) const
+\item 
+\mbox{\hyperlink{classren_1_1ILinker}{ILinker}} \& \mbox{\hyperlink{classren_1_1IPass_a171eeb96584abbbbe1f158fbca5628f0_a171eeb96584abbbbe1f158fbca5628f0}{get\+Linker}} (const std\+::string \&name) const
+\item 
+void \mbox{\hyperlink{classren_1_1IPass_a261403c4ce33bc13fe3b5e0487c79664_a261403c4ce33bc13fe3b5e0487c79664}{setup\+Binder\+Target}} (const std\+::string \&binder\+Name, const std\+::string \&target\+Pass\+Name, const std\+::string \&target\+Pass\+Linker\+Name)
+\begin{DoxyCompactList}\small\item\em link a \doxylink{classren_1_1BindableBinder}{Bindable\+Binder} from this Pass to a Linker of another target\+Pass \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classren_1_1IPass_ae8d7a067929cabbe900ec89643cbcdba_ae8d7a067929cabbe900ec89643cbcdba}{set\+Active}} (const bool b\+Active) noexcept
+\item 
+const bool \mbox{\hyperlink{classren_1_1IPass_a7ef6e9979f151480bc34dca08b19bec1_a7ef6e9979f151480bc34dca08b19bec1}{is\+Active}} () const noexcept
+\item 
+virtual void \mbox{\hyperlink{classren_1_1IPass_a589910e72e67f1d1ec37faea4d840074_a589910e72e67f1d1ec37faea4d840074}{recreate\+Rtvs\+And\+Dsvs}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classren_1_1IBindablePass}{ren\+::\+IBindable\+Pass}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classren_1_1IBindablePass_a3e5e7d5dbe096d11031a8d23050c12b6_a3e5e7d5dbe096d11031a8d23050c12b6}{IBindable\+Pass}} (const std\+::string \&name, const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIBindable}{IBindable}} $>$ $>$ \&bindables=\{\})
+\item 
+void \mbox{\hyperlink{classren_1_1IBindablePass_af7205f7049013c5d02ec74952f5a0d05_af7205f7049013c5d02ec74952f5a0d05}{add\+Bindable}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIBindable}{IBindable}} $>$ bindable) noexcept
+\begin{DoxyCompactList}\small\item\em add Bindables that will be shared by all meshes in this Pass \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classren_1_1IBindablePass_ab47b1d5abffbf0aaeb44ae3968942503_ab47b1d5abffbf0aaeb44ae3968942503}{bind}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) const cond\+\_\+noex
+\begin{DoxyCompactList}\small\item\em bind RTV or DSV and other bindables shared by all Pass objects \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classren_1_1IBindablePass_ae2b3e270005268576afb65f16a9545a7_ae2b3e270005268576afb65f16a9545a7}{validate}} () override
+\begin{DoxyCompactList}\small\item\em validate binders are linked to their linkers \end{DoxyCompactList}\item 
+{\footnotesize template$<$class T $>$ }\\void \mbox{\hyperlink{classren_1_1IBindablePass_a5d189176a206854e34a9c168a0aad74a_a5d189176a206854e34a9c168a0aad74a}{add\+Bindable\+Binder\+Using\+Container\+Index}} (const std\+::string \&binder\+Name)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classren_1_1IPass}{ren\+::\+IPass}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classren_1_1IPass_ab8c6a6dae673214dccd302aea9ce6e72_ab8c6a6dae673214dccd302aea9ce6e72}{add\+Binder}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classren_1_1IBinder}{IBinder}} $>$ p\+Binder)
+\item 
+void \mbox{\hyperlink{classren_1_1IPass_aa9c50563c1bd98e1c377d819d9e2dc09_aa9c50563c1bd98e1c377d819d9e2dc09}{add\+Linker}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classren_1_1ILinker}{ILinker}} $>$ p\+Linker)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classren_1_1IBindablePass}{ren\+::\+IBindable\+Pass}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIRenderTargetView}{IRender\+Target\+View}} $>$ \mbox{\hyperlink{classren_1_1IBindablePass_a3994a46ac4e6f7d96c7ebe8b2d9630cb_a3994a46ac4e6f7d96c7ebe8b2d9630cb}{m\+\_\+p\+Rtv}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIDepthStencilView}{IDepth\+Stencil\+View}} $>$ \mbox{\hyperlink{classren_1_1IBindablePass_a8c5f88422771fc4b7ceb1dca77219cfe_a8c5f88422771fc4b7ceb1dca77219cfe}{m\+\_\+p\+Dsv}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A Post Processing Pass, reads texture and simply outputs its values  
+
+=============================================================
+
+\begin{DoxyAuthor}{Author}
+Key\+C0de 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/10/29 23\+:57 \doxysubsection*{}
+\end{DoxyDate}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classren_1_1PassThrough_a53963d7415f67b51c10fd38d1f222f9b_a53963d7415f67b51c10fd38d1f222f9b}\index{ren::PassThrough@{ren::PassThrough}!PassThrough@{PassThrough}}
+\index{PassThrough@{PassThrough}!ren::PassThrough@{ren::PassThrough}}
+\doxysubsubsection{\texorpdfstring{PassThrough()}{PassThrough()}}
+{\footnotesize\ttfamily \label{classren_1_1PassThrough_a53963d7415f67b51c10fd38d1f222f9b_a53963d7415f67b51c10fd38d1f222f9b} 
+ren\+::\+Pass\+Through\+::\+Pass\+Through (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const std\+::string \&}]{name}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classren_1_1PassThrough_a9a8ee826bf2c171fed669523c5ca5713_a9a8ee826bf2c171fed669523c5ca5713}\index{ren::PassThrough@{ren::PassThrough}!reset@{reset}}
+\index{reset@{reset}!ren::PassThrough@{ren::PassThrough}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{classren_1_1PassThrough_a9a8ee826bf2c171fed669523c5ca5713_a9a8ee826bf2c171fed669523c5ca5713} 
+void ren\+::\+Pass\+Through\+::reset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classren_1_1IPass_af001419157ed67f6123fb9f311e96064_af001419157ed67f6123fb9f311e96064}{ren\+::\+IPass}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{pass__through_8h}{pass\+\_\+through.\+h}}\item 
+src/\mbox{\hyperlink{pass__through_8cpp}{pass\+\_\+through.\+cpp}}\end{DoxyCompactItemize}

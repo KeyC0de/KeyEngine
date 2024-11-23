@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classBindableRegistry" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>BindableRegistry</compoundname>
+    <includes refid="bindable__registry_8h" local="no">bindable_registry.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classBindableRegistry_abac5d57c6ef58123deace9cf884006db_1abac5d57c6ef58123deace9cf884006db" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, std::shared_ptr&lt; <ref refid="classIBindable" kindref="compound">IBindable</ref> &gt; &gt;</type>
+        <definition>std::unordered_map&lt;std::string, std::shared_ptr&lt;IBindable&gt; &gt; BindableRegistry::m_bindableMap</definition>
+        <argsstring></argsstring>
+        <name>m_bindableMap</name>
+        <qualifiedname>BindableRegistry::m_bindableMap</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/bindable_registry.h" line="11" column="20" bodyfile="inc/bindable_registry.h" bodystart="11" bodyend="-1"/>
+        <referencedby refid="classBindableRegistry_ae6618c61af11ec9f42cfef1f28425730_1ae6618c61af11ec9f42cfef1f28425730" compoundref="bindable__registry_8h" startline="63" endline="78">fetch_impl</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classBindableRegistry_a034568929d2dbcda2bf619e90d9fc68e_1a034568929d2dbcda2bf619e90d9fc68e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>TArgs</declname>
+            <defname>TArgs</defname>
+          </param>
+        </templateparamlist>
+        <type>std::shared_ptr&lt; T &gt;</type>
+        <definition>static std::shared_ptr&lt; T &gt; BindableRegistry::fetch</definition>
+        <argsstring>(Graphics &amp;gfx, TArgs &amp;&amp;... args) cond_noex</argsstring>
+        <name>fetch</name>
+        <qualifiedname>BindableRegistry::fetch</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>TArgs &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/bindable_registry.h" line="14" column="24" bodyfile="inc/bindable_registry.h" bodystart="14" bodyend="19"/>
+        <referencedby refid="classBlendState_aa27898f671e468ccc0c397dc297f6891_1aa27898f671e468ccc0c397dc297f6891" compoundref="blend__state_8cpp" startline="98" endline="105">BlendState::fetch</referencedby>
+        <referencedby refid="classCubeTexture_a6d898aa029dbc08e82e68bc04fef0ce7_1a6d898aa029dbc08e82e68bc04fef0ce7" compoundref="cube__texture_8cpp" startline="73" endline="78">CubeTexture::fetch</referencedby>
+        <referencedby refid="classDepthStencilState_af67a7f1edf6b2e62b08f5459347ecbda_1af67a7f1edf6b2e62b08f5459347ecbda" compoundref="depth__stencil__state_8cpp" startline="127" endline="131">DepthStencilState::fetch</referencedby>
+        <referencedby refid="classIndexBuffer_abcbdeb2e6ecd7a5dd93c4c397e8ae368_1abcbdeb2e6ecd7a5dd93c4c397e8ae368" compoundref="index__buffer_8cpp" startline="48" endline="54">IndexBuffer::fetch</referencedby>
+        <referencedby refid="classInputLayout_a28404524310f3bdf8ba2537206e1e109_1a28404524310f3bdf8ba2537206e1e109" compoundref="input__layout_8cpp" startline="33" endline="38">InputLayout::fetch</referencedby>
+        <referencedby refid="classPixelShader_a308b5792652bde2a8fe1df25b297c381_1a308b5792652bde2a8fe1df25b297c381" compoundref="pixel__shader_8cpp" startline="28" endline="32">PixelShader::fetch</referencedby>
+        <referencedby refid="classPixelShaderConstantBuffer_a21c55aef0616ba6a0650afe1bcc7c281_1a21c55aef0616ba6a0650afe1bcc7c281" compoundref="constant__buffer_8h" startline="198" endline="203">PixelShaderConstantBuffer&lt; CB &gt;::fetch</referencedby>
+        <referencedby refid="classPixelShaderConstantBuffer_adfd449e0f9d04cb957a9bf81b665b49a_1adfd449e0f9d04cb957a9bf81b665b49a" compoundref="constant__buffer_8h" startline="205" endline="209">PixelShaderConstantBuffer&lt; CB &gt;::fetch</referencedby>
+        <referencedby refid="classPixelShaderNull_a650873d59b5c1949727cd74e80c152ad_1a650873d59b5c1949727cd74e80c152ad" compoundref="pixel__shader_8cpp" startline="62" endline="65">PixelShaderNull::fetch</referencedby>
+        <referencedby refid="classPrimitiveTopology_a1f65640090cc0f20dd4115f25ff24e09_1a1f65640090cc0f20dd4115f25ff24e09" compoundref="primitive__topology_8cpp" startline="24" endline="28">PrimitiveTopology::fetch</referencedby>
+        <referencedby refid="classRasterizerState_ae33cba5eb6c008f927cb16e8c3c226f1_1ae33cba5eb6c008f927cb16e8c3c226f1" compoundref="rasterizer__state_8cpp" startline="66" endline="75">RasterizerState::fetch</referencedby>
+        <referencedby refid="classTexture_a9a7654906f9ca05ca82c96f1f2da576e_1a9a7654906f9ca05ca82c96f1f2da576e" compoundref="texture_8cpp" startline="160" endline="166">Texture::fetch</referencedby>
+        <referencedby refid="classTextureSamplerState_a6377e3c13f22788c7df198a89776f233_1a6377e3c13f22788c7df198a89776f233" compoundref="texture__sampler__state_8cpp" startline="124" endline="130">TextureSamplerState::fetch</referencedby>
+        <referencedby refid="classVertexBuffer_a2d44b7aade969e7f5f748eb2cbb5bd30_1a2d44b7aade969e7f5f748eb2cbb5bd30" compoundref="vertex__buffer_8cpp" startline="51" endline="57">VertexBuffer::fetch</referencedby>
+        <referencedby refid="classVertexShader_ad90bf6654d053a4fe7a3c699acf6f4ff_1ad90bf6654d053a4fe7a3c699acf6f4ff" compoundref="vertex__shader_8cpp" startline="33" endline="37">VertexShader::fetch</referencedby>
+        <referencedby refid="classVertexShaderConstantBuffer_af6a9b7538d1904ff2bf05aa1b4ec7cbd_1af6a9b7538d1904ff2bf05aa1b4ec7cbd" compoundref="constant__buffer_8h" startline="128" endline="133">VertexShaderConstantBuffer&lt; CB &gt;::fetch</referencedby>
+        <referencedby refid="classVertexShaderConstantBuffer_a065880d910fae01cf5cd996379b2a846_1a065880d910fae01cf5cd996379b2a846" compoundref="constant__buffer_8h" startline="135" endline="139">VertexShaderConstantBuffer&lt; CB &gt;::fetch</referencedby>
+        <referencedby refid="classViewport_a1256dfd86a85d8bf84da6a0fec8b0ad6_1a1256dfd86a85d8bf84da6a0fec8b0ad6" compoundref="viewport_8cpp" startline="48" endline="54">Viewport::fetch</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classBindableRegistry_a5bb56ad44ea4ff8f141cb0aa4a9fff30_1a5bb56ad44ea4ff8f141cb0aa4a9fff30" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::size_t</type>
+        <definition>static std::size_t BindableRegistry::getInstanceCount</definition>
+        <argsstring>()</argsstring>
+        <name>getInstanceCount</name>
+        <qualifiedname>BindableRegistry::getInstanceCount</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/bindable_registry.h" line="21" column="20" bodyfile="inc/bindable_registry.h" bodystart="21" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classBindableRegistry_a1c490d4252f0c309f890fb82b1a7eb05_1a1c490d4252f0c309f890fb82b1a7eb05" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::size_t</type>
+        <definition>static std::size_t BindableRegistry::getGarbageCount</definition>
+        <argsstring>()</argsstring>
+        <name>getGarbageCount</name>
+        <qualifiedname>BindableRegistry::getGarbageCount</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/bindable_registry.h" line="31" column="20" bodyfile="inc/bindable_registry.h" bodystart="31" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classBindableRegistry_a81a8ab3080a572657b03ebdf7742f38f_1a81a8ab3080a572657b03ebdf7742f38f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void BindableRegistry::garbageCollect</definition>
+        <argsstring>()</argsstring>
+        <name>garbageCollect</name>
+        <qualifiedname>BindableRegistry::garbageCollect</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/bindable_registry.h" line="49" column="13" bodyfile="inc/bindable_registry.h" bodystart="49" bodyend="60"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classBindableRegistry_ae6618c61af11ec9f42cfef1f28425730_1ae6618c61af11ec9f42cfef1f28425730" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>TArgs</declname>
+            <defname>TArgs</defname>
+          </param>
+        </templateparamlist>
+        <type>std::shared_ptr&lt; T &gt;</type>
+        <definition>std::shared_ptr&lt; T &gt; BindableRegistry::fetch_impl</definition>
+        <argsstring>(Graphics &amp;gfx, TArgs &amp;&amp;... args) cond_noex</argsstring>
+        <name>fetch_impl</name>
+        <qualifiedname>BindableRegistry::fetch_impl</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>TArgs &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/bindable_registry.h" line="63" column="17" bodyfile="inc/bindable_registry.h" bodystart="63" bodyend="78"/>
+        <referencedby refid="classBindableRegistry_a034568929d2dbcda2bf619e90d9fc68e_1a034568929d2dbcda2bf619e90d9fc68e" compoundref="bindable__registry_8h" startline="14" endline="19">fetch</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classBindableRegistry_a12812e70bfd7c7dbb8b5b5e08de8b35f_1a12812e70bfd7c7dbb8b5b5e08de8b35f" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classBindableRegistry" kindref="compound">BindableRegistry</ref> &amp;</type>
+        <definition>static BindableRegistry &amp; BindableRegistry::getInstance</definition>
+        <argsstring>()</argsstring>
+        <name>getInstance</name>
+        <qualifiedname>BindableRegistry::getInstance</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/bindable_registry.h" line="80" column="25" bodyfile="inc/bindable_registry.h" bodystart="80" bodyend="84"/>
+        <referencedby refid="classBindableRegistry_a034568929d2dbcda2bf619e90d9fc68e_1a034568929d2dbcda2bf619e90d9fc68e" compoundref="bindable__registry_8h" startline="14" endline="19">fetch</referencedby>
+        <referencedby refid="classBindableRegistry_a81a8ab3080a572657b03ebdf7742f38f_1a81a8ab3080a572657b03ebdf7742f38f" compoundref="bindable__registry_8h" startline="49" endline="60">garbageCollect</referencedby>
+        <referencedby refid="classBindableRegistry_a1c490d4252f0c309f890fb82b1a7eb05_1a1c490d4252f0c309f890fb82b1a7eb05" compoundref="bindable__registry_8h" startline="31" endline="47">getGarbageCount</referencedby>
+        <referencedby refid="classBindableRegistry_a5bb56ad44ea4ff8f141cb0aa4a9fff30_1a5bb56ad44ea4ff8f141cb0aa4a9fff30" compoundref="bindable__registry_8h" startline="21" endline="29">getInstanceCount</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/bindable_registry.h" line="9" column="1" bodyfile="inc/bindable_registry.h" bodystart="10" bodyend="85"/>
+    <listofallmembers>
+      <member refid="classBindableRegistry_a034568929d2dbcda2bf619e90d9fc68e_1a034568929d2dbcda2bf619e90d9fc68e" prot="public" virt="non-virtual"><scope>BindableRegistry</scope><name>fetch</name></member>
+      <member refid="classBindableRegistry_ae6618c61af11ec9f42cfef1f28425730_1ae6618c61af11ec9f42cfef1f28425730" prot="private" virt="non-virtual"><scope>BindableRegistry</scope><name>fetch_impl</name></member>
+      <member refid="classBindableRegistry_a81a8ab3080a572657b03ebdf7742f38f_1a81a8ab3080a572657b03ebdf7742f38f" prot="public" virt="non-virtual"><scope>BindableRegistry</scope><name>garbageCollect</name></member>
+      <member refid="classBindableRegistry_a1c490d4252f0c309f890fb82b1a7eb05_1a1c490d4252f0c309f890fb82b1a7eb05" prot="public" virt="non-virtual"><scope>BindableRegistry</scope><name>getGarbageCount</name></member>
+      <member refid="classBindableRegistry_a12812e70bfd7c7dbb8b5b5e08de8b35f_1a12812e70bfd7c7dbb8b5b5e08de8b35f" prot="private" virt="non-virtual"><scope>BindableRegistry</scope><name>getInstance</name></member>
+      <member refid="classBindableRegistry_a5bb56ad44ea4ff8f141cb0aa4a9fff30_1a5bb56ad44ea4ff8f141cb0aa4a9fff30" prot="public" virt="non-virtual"><scope>BindableRegistry</scope><name>getInstanceCount</name></member>
+      <member refid="classBindableRegistry_abac5d57c6ef58123deace9cf884006db_1abac5d57c6ef58123deace9cf884006db" prot="private" virt="non-virtual"><scope>BindableRegistry</scope><name>m_bindableMap</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

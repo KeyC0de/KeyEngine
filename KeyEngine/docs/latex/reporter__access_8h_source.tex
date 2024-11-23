@@ -1,0 +1,40 @@
+\doxysection{reporter\+\_\+access.\+h}
+\hypertarget{reporter__access_8h_source}{}\label{reporter__access_8h_source}\index{inc/reporter\_access.h@{inc/reporter\_access.h}}
+\mbox{\hyperlink{reporter__access_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{reporter__listener_8h}{reporter\_listener.h}}"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structSwapChainResizedEvent}{SwapChainResizedEvent}};}
+\DoxyCodeLine{00008\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structUISoundEvent}{UISoundEvent}};}
+\DoxyCodeLine{00009\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structUserPropertyChanged}{UserPropertyChanged}};}
+\DoxyCodeLine{00010\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structUiMsg}{UiMsg}};}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classReportingNexus}{ReportingNexus}};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classReporterAccess}{ReporterAccess}}}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classReportingNexus}{ReportingNexus}};}
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{classReporterAccess_ad4959ff20643effcef31efebfc5093b4_ad4959ff20643effcef31efebfc5093b4}{ReporterAccess}}();}
+\DoxyCodeLine{00020\ \};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classReportingNexus}{ReportingNexus}}}
+\DoxyCodeLine{00023\ \ \ \ \ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classIReporter}{IReporter}}<SwapChainResizedEvent>}
+\DoxyCodeLine{00024\ \ \ \ \ ,\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classIReporter}{IReporter}}<UISoundEvent>}
+\DoxyCodeLine{00025\ \ \ \ \ ,\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classIReporter}{IReporter}}<UserPropertyChanged>}
+\DoxyCodeLine{00026\ \ \ \ \ ,\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classIReporter}{IReporter}}<UiMsg>}
+\DoxyCodeLine{00027\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classReporterAccess}{ReporterAccess}}\ \mbox{\hyperlink{classReportingNexus_a7e24b604477f1a59fbe8e9df1ad7ef7f_a7e24b604477f1a59fbe8e9df1ad7ef7f}{s\_accessKey}}\{\};}
+\DoxyCodeLine{00029\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{classReportingNexus_ad1c92ce66fcd12b24d7a3021b4d4631b_ad1c92ce66fcd12b24d7a3021b4d4631b}{ReportingNexus}}(\ \mbox{\hyperlink{classReporterAccess}{ReporterAccess}}\ \&access\ );}
+\DoxyCodeLine{00031\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{classReportingNexus_a7b1c65220d0e3d88c28f3cbfd005e103_a7b1c65220d0e3d88c28f3cbfd005e103}{\string~ReportingNexus}}()\ noexcept;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ static\ \mbox{\hyperlink{classReportingNexus}{ReportingNexus}}\&\ \mbox{\hyperlink{classReportingNexus_a56fd3891e87dd3c034b8cfd7c84cfe16_a56fd3891e87dd3c034b8cfd7c84cfe16}{getInstance}}();}
+\DoxyCodeLine{00035\ \ \ \ \ static\ \mbox{\hyperlink{classReporterAccess}{ReporterAccess}}\&\ \mbox{\hyperlink{classReportingNexus_afe287dd4254b46f0ff514e2aebb1104b_afe287dd4254b46f0ff514e2aebb1104b}{getReporterAccess}}();}
+\DoxyCodeLine{00036\ \};}
+
+\end{DoxyCode}

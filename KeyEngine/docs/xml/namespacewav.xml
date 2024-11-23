@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="namespacewav" kind="namespace" language="C++">
+    <compoundname>wav</compoundname>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespacewav_abe188c42be0b0e76e1ceda2650ee9b3a_1abe188c42be0b0e76e1ceda2650ee9b3a" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>WORD</type>
+        <definition>WORD wav::nChannelsPerSound</definition>
+        <argsstring></argsstring>
+        <name>nChannelsPerSound</name>
+        <qualifiedname>wav::nChannelsPerSound</qualifiedname>
+        <initializer>= 2u</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/key_sound.cpp" line="23" column="23" bodyfile="src/key_sound.cpp" bodystart="23" bodyend="-1"/>
+        <referencedby refid="classSound_a14ac6aede2a2992054c848975f8062b5_1a14ac6aede2a2992054c848975f8062b5" compoundref="key__sound_8cpp" startline="390" endline="465">Sound::Sound</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="namespacewav_a2bb40914c2953ad0ff6333af159be8e9_1a2bb40914c2953ad0ff6333af159be8e9" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>DWORD</type>
+        <definition>DWORD wav::nSamplesPerSec</definition>
+        <argsstring></argsstring>
+        <name>nSamplesPerSec</name>
+        <qualifiedname>wav::nSamplesPerSec</qualifiedname>
+        <initializer>= 48000u</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/key_sound.cpp" line="24" column="24" bodyfile="src/key_sound.cpp" bodystart="24" bodyend="-1"/>
+        <referencedby refid="classSound_a14ac6aede2a2992054c848975f8062b5_1a14ac6aede2a2992054c848975f8062b5" compoundref="key__sound_8cpp" startline="390" endline="465">Sound::Sound</referencedby>
+        <referencedby refid="classSoundManager_1_1Channel_ac96947ac0fe438b53be241d5b0f02a45_1ac96947ac0fe438b53be241d5b0f02a45" compoundref="key__sound_8cpp" startline="93" endline="207">SoundManager::Channel::setupChannel</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="namespacewav_aef183314fb60d9b60c7b5e8859b08c61_1aef183314fb60d9b60c7b5e8859b08c61" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>WORD</type>
+        <definition>WORD wav::nBitsPerSample</definition>
+        <argsstring></argsstring>
+        <name>nBitsPerSample</name>
+        <qualifiedname>wav::nBitsPerSample</qualifiedname>
+        <initializer>= 16u</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/key_sound.cpp" line="25" column="23" bodyfile="src/key_sound.cpp" bodystart="25" bodyend="-1"/>
+        <referencedby refid="classSound_a14ac6aede2a2992054c848975f8062b5_1a14ac6aede2a2992054c848975f8062b5" compoundref="key__sound_8cpp" startline="390" endline="465">Sound::Sound</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/key_sound.cpp" line="20" column="1"/>
+  </compounddef>
+</doxygen>

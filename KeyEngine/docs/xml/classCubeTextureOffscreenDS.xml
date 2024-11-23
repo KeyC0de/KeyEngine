@@ -1,0 +1,223 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classCubeTextureOffscreenDS" kind="class" language="C++" prot="public">
+    <compoundname>CubeTextureOffscreenDS</compoundname>
+    <basecompoundref refid="classIBindable" prot="public" virt="non-virtual">IBindable</basecompoundref>
+    <includes refid="cube__texture_8h" local="no">cube_texture.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classCubeTextureOffscreenDS_a7dc3756ae8b193974cc1d167182abacb_1a7dc3756ae8b193974cc1d167182abacb" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int CubeTextureOffscreenDS::m_slot</definition>
+        <argsstring></argsstring>
+        <name>m_slot</name>
+        <qualifiedname>CubeTextureOffscreenDS::m_slot</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/cube_texture.h" line="57" column="14" bodyfile="inc/cube_texture.h" bodystart="57" bodyend="-1"/>
+        <referencedby refid="classCubeTextureOffscreenDS_a0a4478c303b63392a221f29bed79b026_1a0a4478c303b63392a221f29bed79b026" compoundref="cube__texture_8cpp" startline="189" endline="192">getSlot</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classCubeTextureOffscreenDS_a33143600105f56694544434ba62ebcac_1a33143600105f56694544434ba62ebcac" prot="protected" static="no" mutable="no">
+        <type>Microsoft::WRL::ComPtr&lt; ID3D11ShaderResourceView &gt;</type>
+        <definition>Microsoft::WRL::ComPtr&lt;ID3D11ShaderResourceView&gt; CubeTextureOffscreenDS::m_pD3dSrv</definition>
+        <argsstring></argsstring>
+        <name>m_pD3dSrv</name>
+        <qualifiedname>CubeTextureOffscreenDS::m_pD3dSrv</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/cube_texture.h" line="59" column="24" bodyfile="inc/cube_texture.h" bodystart="59" bodyend="-1"/>
+        <referencedby refid="classCubeTextureOffscreenDS_acf33325ed70eae54244224c65f65bc3a_1acf33325ed70eae54244224c65f65bc3a" compoundref="cube__texture_8cpp" startline="144" endline="171">CubeTextureOffscreenDS</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classCubeTextureOffscreenDS_ab616efdd854e02f886bdb196214a1743_1ab616efdd854e02f886bdb196214a1743" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classDepthStencilOutput" kindref="compound">DepthStencilOutput</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::shared_ptr&lt;DepthStencilOutput&gt; &gt; CubeTextureOffscreenDS::m_depthStencilViews</definition>
+        <argsstring></argsstring>
+        <name>m_depthStencilViews</name>
+        <qualifiedname>CubeTextureOffscreenDS::m_depthStencilViews</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/cube_texture.h" line="60" column="13" bodyfile="inc/cube_texture.h" bodystart="60" bodyend="-1"/>
+        <referencedby refid="classCubeTextureOffscreenDS_acf33325ed70eae54244224c65f65bc3a_1acf33325ed70eae54244224c65f65bc3a" compoundref="cube__texture_8cpp" startline="144" endline="171">CubeTextureOffscreenDS</referencedby>
+        <referencedby refid="classCubeTextureOffscreenDS_ac440e402df05289bf63230106191de1f_1ac440e402df05289bf63230106191de1f" compoundref="cube__texture_8cpp" startline="184" endline="187">accessDepthBuffer</referencedby>
+        <referencedby refid="classCubeTextureOffscreenDS_aa7eac8423c7de40ed10687b5cd334d78_1aa7eac8423c7de40ed10687b5cd334d78" compoundref="cube__texture_8cpp" startline="179" endline="182">shareDepthBuffer</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classCubeTextureOffscreenDS_acf33325ed70eae54244224c65f65bc3a_1acf33325ed70eae54244224c65f65bc3a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CubeTextureOffscreenDS::CubeTextureOffscreenDS</definition>
+        <argsstring>(Graphics &amp;gfx, const unsigned width, const unsigned height, const unsigned slot, const DepthStencilViewMode dsvMode)</argsstring>
+        <name>CubeTextureOffscreenDS</name>
+        <qualifiedname>CubeTextureOffscreenDS::CubeTextureOffscreenDS</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>height</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>slot</declname>
+        </param>
+        <param>
+          <type>const <ref refid="texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_1a5aacc2000fea78d975de8fe06e3698f2" kindref="member">DepthStencilViewMode</ref></type>
+          <declname>dsvMode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/cube_texture.h" line="62" column="1" bodyfile="src/cube_texture.cpp" bodystart="144" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="classCubeTextureOffscreenDS_a4a7f66df5a6a92537d31aa462a17343a_1a4a7f66df5a6a92537d31aa462a17343a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void CubeTextureOffscreenDS::bind</definition>
+        <argsstring>(Graphics &amp;gfx) cond_noex override</argsstring>
+        <name>bind</name>
+        <qualifiedname>CubeTextureOffscreenDS::bind</qualifiedname>
+        <reimplements refid="classIBindable_add4560f78e76629ee81ba701ba1052e1_1add4560f78e76629ee81ba701ba1052e1">bind</reimplements>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+<para>bind graphics resource to a certain stage of the graphics pipeline </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/cube_texture.h" line="64" column="6" bodyfile="src/cube_texture.cpp" bodystart="173" bodyend="177"/>
+      </memberdef>
+      <memberdef kind="function" id="classCubeTextureOffscreenDS_aa7eac8423c7de40ed10687b5cd334d78_1aa7eac8423c7de40ed10687b5cd334d78" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classDepthStencilOutput" kindref="compound">DepthStencilOutput</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; DepthStencilOutput &gt; CubeTextureOffscreenDS::shareDepthBuffer</definition>
+        <argsstring>(const size_t faceIndex) const</argsstring>
+        <name>shareDepthBuffer</name>
+        <qualifiedname>CubeTextureOffscreenDS::shareDepthBuffer</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>faceIndex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/cube_texture.h" line="65" column="17" bodyfile="src/cube_texture.cpp" bodystart="179" bodyend="182"/>
+      </memberdef>
+      <memberdef kind="function" id="classCubeTextureOffscreenDS_ac440e402df05289bf63230106191de1f_1ac440e402df05289bf63230106191de1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classDepthStencilOutput" kindref="compound">DepthStencilOutput</ref> *</type>
+        <definition>DepthStencilOutput * CubeTextureOffscreenDS::accessDepthBuffer</definition>
+        <argsstring>(const size_t faceIndex)</argsstring>
+        <name>accessDepthBuffer</name>
+        <qualifiedname>CubeTextureOffscreenDS::accessDepthBuffer</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>faceIndex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/cube_texture.h" line="66" column="20" bodyfile="src/cube_texture.cpp" bodystart="184" bodyend="187"/>
+      </memberdef>
+      <memberdef kind="function" id="classCubeTextureOffscreenDS_a0a4478c303b63392a221f29bed79b026_1a0a4478c303b63392a221f29bed79b026" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned CubeTextureOffscreenDS::getSlot</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getSlot</name>
+        <qualifiedname>CubeTextureOffscreenDS::getSlot</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/cube_texture.h" line="67" column="10" bodyfile="src/cube_texture.cpp" bodystart="189" bodyend="192"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>CubeTextureOffscreenDS</label>
+        <link refid="classCubeTextureOffscreenDS"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>GraphicsFriend</label>
+        <link refid="classGraphicsFriend"/>
+      </node>
+      <node id="2">
+        <label>IBindable</label>
+        <link refid="classIBindable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>CubeTextureOffscreenDS</label>
+        <link refid="classCubeTextureOffscreenDS"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>GraphicsFriend</label>
+        <link refid="classGraphicsFriend"/>
+      </node>
+      <node id="2">
+        <label>IBindable</label>
+        <link refid="classIBindable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/cube_texture.h" line="54" column="1" bodyfile="inc/cube_texture.h" bodystart="56" bodyend="68"/>
+    <listofallmembers>
+      <member refid="classIBindable_a608c5066b829febbd49cd82d1d1fa353_1a608c5066b829febbd49cd82d1d1fa353" prot="public" virt="virtual"><scope>CubeTextureOffscreenDS</scope><name>accept</name></member>
+      <member refid="classCubeTextureOffscreenDS_ac440e402df05289bf63230106191de1f_1ac440e402df05289bf63230106191de1f" prot="public" virt="non-virtual"><scope>CubeTextureOffscreenDS</scope><name>accessDepthBuffer</name></member>
+      <member refid="classCubeTextureOffscreenDS_a4a7f66df5a6a92537d31aa462a17343a_1a4a7f66df5a6a92537d31aa462a17343a" prot="public" virt="virtual"><scope>CubeTextureOffscreenDS</scope><name>bind</name></member>
+      <member refid="classCubeTextureOffscreenDS_acf33325ed70eae54244224c65f65bc3a_1acf33325ed70eae54244224c65f65bc3a" prot="public" virt="non-virtual"><scope>CubeTextureOffscreenDS</scope><name>CubeTextureOffscreenDS</name></member>
+      <member refid="classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_1a175df79f82ab5a6dad1df24b5a242ef7" prot="protected" virt="non-virtual"><scope>CubeTextureOffscreenDS</scope><name>getDevice</name></member>
+      <member refid="classGraphicsFriend_a619e32893ab49ea6c5200e7c2d52e2f2_1a619e32893ab49ea6c5200e7c2d52e2f2" prot="protected" virt="non-virtual"><scope>CubeTextureOffscreenDS</scope><name>getDeviceContext</name></member>
+      <member refid="classCubeTextureOffscreenDS_a0a4478c303b63392a221f29bed79b026_1a0a4478c303b63392a221f29bed79b026" prot="public" virt="non-virtual"><scope>CubeTextureOffscreenDS</scope><name>getSlot</name></member>
+      <member refid="classIBindable_a7d88cdbd5d500d6d7f1bfabe16927855_1a7d88cdbd5d500d6d7f1bfabe16927855" prot="public" virt="virtual"><scope>CubeTextureOffscreenDS</scope><name>getUid</name></member>
+      <member refid="classCubeTextureOffscreenDS_ab616efdd854e02f886bdb196214a1743_1ab616efdd854e02f886bdb196214a1743" prot="protected" virt="non-virtual"><scope>CubeTextureOffscreenDS</scope><name>m_depthStencilViews</name></member>
+      <member refid="classCubeTextureOffscreenDS_a33143600105f56694544434ba62ebcac_1a33143600105f56694544434ba62ebcac" prot="protected" virt="non-virtual"><scope>CubeTextureOffscreenDS</scope><name>m_pD3dSrv</name></member>
+      <member refid="classCubeTextureOffscreenDS_a7dc3756ae8b193974cc1d167182abacb_1a7dc3756ae8b193974cc1d167182abacb" prot="private" virt="non-virtual"><scope>CubeTextureOffscreenDS</scope><name>m_slot</name></member>
+      <member refid="classIBindable_a4d590eebe80fa4e0aa865a875ff86c02_1a4d590eebe80fa4e0aa865a875ff86c02" prot="public" virt="virtual"><scope>CubeTextureOffscreenDS</scope><name>setDebugObjectName</name></member>
+      <member refid="classIBindable_a12fe8725cb3f4836f22d1592b07e2c91_1a12fe8725cb3f4836f22d1592b07e2c91" prot="public" virt="virtual"><scope>CubeTextureOffscreenDS</scope><name>setMesh</name></member>
+      <member refid="classCubeTextureOffscreenDS_aa7eac8423c7de40ed10687b5cd334d78_1aa7eac8423c7de40ed10687b5cd334d78" prot="public" virt="non-virtual"><scope>CubeTextureOffscreenDS</scope><name>shareDepthBuffer</name></member>
+      <member refid="classIBindable_a7f68262ff85e25e9f826eae7c01bbfa1_1a7f68262ff85e25e9f826eae7c01bbfa1" prot="public" virt="virtual"><scope>CubeTextureOffscreenDS</scope><name>~IBindable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

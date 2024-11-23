@@ -1,0 +1,782 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="os__utils_8h" kind="file" language="C++">
+    <compoundname>os_utils.h</compoundname>
+    <includes refid="winner_8h" local="yes">winner.h</includes>
+    <includes local="no">winternl.h</includes>
+    <includes local="no">comdef.h</includes>
+    <includes local="no">tlhelp32.h</includes>
+    <includes local="no">string</includes>
+    <includes local="no">sstream</includes>
+    <includes refid="console_8h" local="yes">console.h</includes>
+    <includes local="no">functional</includes>
+    <includes local="no">optional</includes>
+    <includes local="no">ShlObj.h</includes>
+    <includes local="no">wincred.h</includes>
+    <includedby refid="constant__buffer_8h" local="yes">inc/constant_buffer.h</includedby>
+    <includedby refid="d3d__utils_8h" local="yes">inc/d3d_utils.h</includedby>
+    <includedby refid="blend__state_8cpp" local="yes">src/blend_state.cpp</includedby>
+    <includedby refid="console_8cpp" local="yes">src/console.cpp</includedby>
+    <includedby refid="constant__buffer__ex_8cpp" local="yes">src/constant_buffer_ex.cpp</includedby>
+    <includedby refid="cube__texture_8cpp" local="yes">src/cube_texture.cpp</includedby>
+    <includedby refid="depth__stencil__state_8cpp" local="yes">src/depth_stencil_state.cpp</includedby>
+    <includedby refid="depth__stencil__view_8cpp" local="yes">src/depth_stencil_view.cpp</includedby>
+    <includedby refid="dxgi__info__queue_8cpp" local="yes">src/dxgi_info_queue.cpp</includedby>
+    <includedby refid="game_8cpp" local="yes">src/game.cpp</includedby>
+    <includedby refid="graphics_8cpp" local="yes">src/graphics.cpp</includedby>
+    <includedby refid="index__buffer_8cpp" local="yes">src/index_buffer.cpp</includedby>
+    <includedby refid="input__layout_8cpp" local="yes">src/input_layout.cpp</includedby>
+    <includedby refid="key__sound_8cpp" local="yes">src/key_sound.cpp</includedby>
+    <includedby refid="main_8cpp" local="yes">src/main.cpp</includedby>
+    <includedby refid="os__utils_8cpp" local="yes">src/os_utils.cpp</includedby>
+    <includedby refid="pass__2d_8cpp" local="yes">src/pass_2d.cpp</includedby>
+    <includedby refid="pixel__shader_8cpp" local="yes">src/pixel_shader.cpp</includedby>
+    <includedby refid="rasterizer__state_8cpp" local="yes">src/rasterizer_state.cpp</includedby>
+    <includedby refid="render__target_8cpp" local="yes">src/render_target.cpp</includedby>
+    <includedby refid="texture_8cpp" local="yes">src/texture.cpp</includedby>
+    <includedby refid="texture__sampler__state_8cpp" local="yes">src/texture_sampler_state.cpp</includedby>
+    <includedby refid="vertex__buffer_8cpp" local="yes">src/vertex_buffer.cpp</includedby>
+    <includedby refid="vertex__shader_8cpp" local="yes">src/vertex_shader.cpp</includedby>
+    <includedby refid="window_8cpp" local="yes">src/window.cpp</includedby>
+    <incdepgraph>
+      <node id="10">
+        <label>console.h</label>
+        <link refid="console_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="1">
+        <label>inc/os_utils.h</label>
+        <link refid="os__utils_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>winner.h</label>
+        <link refid="winner_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>ShlObj.h</label>
+      </node>
+      <node id="4">
+        <label>Windows.h</label>
+      </node>
+      <node id="6">
+        <label>comdef.h</label>
+      </node>
+      <node id="12">
+        <label>functional</label>
+      </node>
+      <node id="13">
+        <label>optional</label>
+      </node>
+      <node id="3">
+        <label>sdkddkver.h</label>
+      </node>
+      <node id="9">
+        <label>sstream</label>
+      </node>
+      <node id="8">
+        <label>string</label>
+      </node>
+      <node id="7">
+        <label>tlhelp32.h</label>
+      </node>
+      <node id="15">
+        <label>wincred.h</label>
+      </node>
+      <node id="5">
+        <label>winternl.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>inc/constant_buffer.h</label>
+        <link refid="constant__buffer_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>inc/d3d_utils.h</label>
+        <link refid="d3d__utils_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/os_utils.h</label>
+        <link refid="os__utils_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>inc/shadow_pass.h</label>
+        <link refid="shadow__pass_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>inc/sky_vscb.h</label>
+        <link refid="sky__vscb_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>src/MODEL.CPP</label>
+        <link refid="MODEL_8CPP"/>
+      </node>
+      <node id="4">
+        <label>src/SHADOW_PASS.CPP</label>
+        <link refid="SHADOW__PASS_8CPP"/>
+      </node>
+      <node id="23">
+        <label>src/blend_state.cpp</label>
+        <link refid="blend__state_8cpp"/>
+      </node>
+      <node id="16">
+        <label>src/camera.cpp</label>
+        <link refid="camera_8cpp"/>
+      </node>
+      <node id="10">
+        <label>src/camera_frustum.cpp</label>
+        <link refid="camera__frustum_8cpp"/>
+      </node>
+      <node id="11">
+        <label>src/camera_widget.cpp</label>
+        <link refid="camera__widget_8cpp"/>
+      </node>
+      <node id="24">
+        <label>src/console.cpp</label>
+        <link refid="console_8cpp"/>
+      </node>
+      <node id="25">
+        <label>src/constant_buffer_ex.cpp</label>
+        <link refid="constant__buffer__ex_8cpp"/>
+      </node>
+      <node id="26">
+        <label>src/cube_texture.cpp</label>
+        <link refid="cube__texture_8cpp"/>
+      </node>
+      <node id="17">
+        <label>src/d3d_utils.cpp</label>
+        <link refid="d3d__utils_8cpp"/>
+      </node>
+      <node id="27">
+        <label>src/depth_stencil_state.cpp</label>
+        <link refid="depth__stencil__state_8cpp"/>
+      </node>
+      <node id="28">
+        <label>src/depth_stencil_view.cpp</label>
+        <link refid="depth__stencil__view_8cpp"/>
+      </node>
+      <node id="29">
+        <label>src/dxgi_info_queue.cpp</label>
+        <link refid="dxgi__info__queue_8cpp"/>
+      </node>
+      <node id="30">
+        <label>src/game.cpp</label>
+        <link refid="game_8cpp"/>
+      </node>
+      <node id="31">
+        <label>src/graphics.cpp</label>
+        <link refid="graphics_8cpp"/>
+      </node>
+      <node id="18">
+        <label>src/imgui_visitors.cpp</label>
+        <link refid="imgui__visitors_8cpp"/>
+      </node>
+      <node id="32">
+        <label>src/index_buffer.cpp</label>
+        <link refid="index__buffer_8cpp"/>
+      </node>
+      <node id="33">
+        <label>src/input_layout.cpp</label>
+        <link refid="input__layout_8cpp"/>
+      </node>
+      <node id="34">
+        <label>src/key_sound.cpp</label>
+        <link refid="key__sound_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/light_source.cpp</label>
+        <link refid="light__source_8cpp"/>
+      </node>
+      <node id="35">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="19">
+        <label>src/mesh.cpp</label>
+        <link refid="mesh_8cpp"/>
+      </node>
+      <node id="20">
+        <label>src/node.cpp</label>
+        <link refid="node_8cpp"/>
+      </node>
+      <node id="36">
+        <label>src/os_utils.cpp</label>
+        <link refid="os__utils_8cpp"/>
+      </node>
+      <node id="37">
+        <label>src/pass_2d.cpp</label>
+        <link refid="pass__2d_8cpp"/>
+      </node>
+      <node id="38">
+        <label>src/pixel_shader.cpp</label>
+        <link refid="pixel__shader_8cpp"/>
+      </node>
+      <node id="39">
+        <label>src/rasterizer_state.cpp</label>
+        <link refid="rasterizer__state_8cpp"/>
+      </node>
+      <node id="40">
+        <label>src/render_target.cpp</label>
+        <link refid="render__target_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/renderer.cpp</label>
+        <link refid="renderer_8cpp"/>
+      </node>
+      <node id="8">
+        <label>src/sky_pass.cpp</label>
+        <link refid="sky__pass_8cpp"/>
+      </node>
+      <node id="9">
+        <label>src/sky_vscb.cpp</label>
+        <link refid="sky__vscb_8cpp"/>
+      </node>
+      <node id="12">
+        <label>src/terrain.cpp</label>
+        <link refid="terrain_8cpp"/>
+      </node>
+      <node id="21">
+        <label>src/testing.cpp</label>
+        <link refid="testing_8cpp"/>
+      </node>
+      <node id="41">
+        <label>src/texture.cpp</label>
+        <link refid="texture_8cpp"/>
+      </node>
+      <node id="42">
+        <label>src/texture_sampler_state.cpp</label>
+        <link refid="texture__sampler__state_8cpp"/>
+      </node>
+      <node id="13">
+        <label>src/transform_vscb.cpp</label>
+        <link refid="transform__vscb_8cpp"/>
+      </node>
+      <node id="22">
+        <label>src/ui_component.cpp</label>
+        <link refid="ui__component_8cpp"/>
+      </node>
+      <node id="43">
+        <label>src/vertex_buffer.cpp</label>
+        <link refid="vertex__buffer_8cpp"/>
+      </node>
+      <node id="44">
+        <label>src/vertex_shader.cpp</label>
+        <link refid="vertex__shader_8cpp"/>
+      </node>
+      <node id="45">
+        <label>src/window.cpp</label>
+        <link refid="window_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceutil">util</innernamespace>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="os__utils_8h_a796263d2d6b5e79e1fd4029fb6ebf58d_1a796263d2d6b5e79e1fd4029fb6ebf58d" prot="public" static="no">
+        <name>POD_ZERO</name>
+        <param><defname>arg</defname></param>
+        <initializer>ZeroMemory( &amp;arg, sizeof( arg ) );</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/os_utils.h" line="15" column="9" bodyfile="inc/os_utils.h" bodystart="15" bodyend="-1"/>
+        <referencedby refid="classGraphics_aefe40c94ce078f84342864b959543c99_1aefe40c94ce078f84342864b959543c99" compoundref="graphics_8cpp" startline="548" endline="586">Graphics::present</referencedby>
+        <referencedby refid="classGraphics_a02c044c5edb7ba86edb3b480ae2b2938_1a02c044c5edb7ba86edb3b480ae2b2938" compoundref="graphics_8cpp" startline="273" endline="361">Graphics::resize</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="os__utils_8h_a25e84d8771362a5139c04067d39d8446_1a25e84d8771362a5139c04067d39d8446" prot="public" static="no">
+        <name>ASSERT_RETURN_HRES_IF_FAILED</name>
+        <param><defname>hres</defname></param>
+        <initializer>(void)0;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/os_utils.h" line="108" column="11" bodyfile="inc/os_utils.h" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="os__utils_8h_a06ad2606426e941f7509aeb2e14a3eaf_1a06ad2606426e941f7509aeb2e14a3eaf" prot="public" static="no">
+        <name>ASSERT_IF_FAILED</name>
+        <param><defname>hres</defname></param>
+        <initializer>(void)0;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/os_utils.h" line="123" column="11" bodyfile="inc/os_utils.h" bodystart="123" bodyend="-1"/>
+        <referencedby refid="classSound_a14ac6aede2a2992054c848975f8062b5_1a14ac6aede2a2992054c848975f8062b5" compoundref="key__sound_8cpp" startline="390" endline="465">Sound::Sound</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="os__utils_8h_a7027472bc9b182c0fea900713e4541e3_1a7027472bc9b182c0fea900713e4541e3" prot="public" static="no">
+        <name>ASSERT_HRES_IF_FAILED</name>
+        <initializer>(void)0;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/os_utils.h" line="138" column="11" bodyfile="inc/os_utils.h" bodystart="138" bodyend="-1"/>
+        <referencedby refid="classBlendState_aa3065367e75ee165cbeac58483aa19fc_1aa3065367e75ee165cbeac58483aa19fc" compoundref="blend__state_8cpp" startline="11" endline="90">BlendState::BlendState</referencedby>
+        <referencedby refid="classCubeTexture_ac47739d4264634c91ed909bbf8500493_1ac47739d4264634c91ed909bbf8500493" compoundref="cube__texture_8cpp" startline="15" endline="60">CubeTexture::CubeTexture</referencedby>
+        <referencedby refid="classCubeTextureArrayOffscreenDS_ac422df6b364d82f12a2cae8ed9ba746b_1ac422df6b364d82f12a2cae8ed9ba746b" compoundref="cube__texture_8cpp" startline="195" endline="232">CubeTextureArrayOffscreenDS::CubeTextureArrayOffscreenDS</referencedby>
+        <referencedby refid="classCubeTextureOffscreenDS_acf33325ed70eae54244224c65f65bc3a_1acf33325ed70eae54244224c65f65bc3a" compoundref="cube__texture_8cpp" startline="144" endline="171">CubeTextureOffscreenDS::CubeTextureOffscreenDS</referencedby>
+        <referencedby refid="classCubeTextureOffscreenRT_a3443a4a46383409c079a83b6eb8cd11d_1a3443a4a46383409c079a83b6eb8cd11d" compoundref="cube__texture_8cpp" startline="98" endline="125">CubeTextureOffscreenRT::CubeTextureOffscreenRT</referencedby>
+        <referencedby refid="classDepthStencilShaderInput_a1c9e5ca399f351e0d92057aabebe5850_1a1c9e5ca399f351e0d92057aabebe5850" compoundref="depth__stencil__view_8cpp" startline="296" endline="315">DepthStencilShaderInput::DepthStencilShaderInput</referencedby>
+        <referencedby refid="classDepthStencilState_a7b1f40fb3710fadada68414103730488_1a7b1f40fb3710fadada68414103730488" compoundref="depth__stencil__state_8cpp" startline="9" endline="114">DepthStencilState::DepthStencilState</referencedby>
+        <referencedby refid="classDxgiInfoQueue_a7644b9ea0418efcb1589f4c05e243c48_1a7644b9ea0418efcb1589f4c05e243c48" compoundref="dxgi__info__queue_8cpp" startline="8" endline="44">DxgiInfoQueue::DxgiInfoQueue</referencedby>
+        <referencedby refid="classGraphics_ad5811b30333f3f4918b4d8d52fe19002_1ad5811b30333f3f4918b4d8d52fe19002" compoundref="graphics_8cpp" startline="99" endline="252">Graphics::Graphics</referencedby>
+        <referencedby refid="classIConstantBuffer_a2d580772f74b4ea190687b3f0284607e_1a2d580772f74b4ea190687b3f0284607e" compoundref="constant__buffer_8h" startline="42" endline="58">IConstantBuffer&lt; CB &gt;::IConstantBuffer</referencedby>
+        <referencedby refid="classIConstantBuffer_aaf8166466c78ea1d4a6895a311f1b35c_1aaf8166466c78ea1d4a6895a311f1b35c" compoundref="constant__buffer_8h" startline="27" endline="39">IConstantBuffer&lt; CB &gt;::IConstantBuffer</referencedby>
+        <referencedby refid="classIConstantBufferEx_adcce676e6fdded705b765915736adf6d_1adcce676e6fdded705b765915736adf6d" compoundref="constant__buffer__ex_8cpp" startline="7" endline="28">IConstantBufferEx::IConstantBufferEx</referencedby>
+        <referencedby refid="classIDepthStencilView_aec7a25978c04ff1bcb0a047882c8836d_1aec7a25978c04ff1bcb0a047882c8836d" compoundref="depth__stencil__view_8cpp" startline="77" endline="101">IDepthStencilView::IDepthStencilView</referencedby>
+        <referencedby refid="classIDepthStencilView_a2d41ae84140c62fafde60b52a884831e_1a2d41ae84140c62fafde60b52a884831e" compoundref="depth__stencil__view_8cpp" startline="12" endline="41">IDepthStencilView::IDepthStencilView</referencedby>
+        <referencedby refid="classIDepthStencilView_a40482838c8e1421a622521a2ec8aae40_1a40482838c8e1421a622521a2ec8aae40" compoundref="depth__stencil__view_8cpp" startline="43" endline="75">IDepthStencilView::IDepthStencilView</referencedby>
+        <referencedby refid="classIndexBuffer_a9732cf38477425d90690d13c3508ce24_1a9732cf38477425d90690d13c3508ce24" compoundref="index__buffer_8cpp" startline="16" endline="35">IndexBuffer::IndexBuffer</referencedby>
+        <referencedby refid="classInputLayout_a96527abda8afcf0a2218c39082183f1d_1a96527abda8afcf0a2218c39082183f1d" compoundref="input__layout_8cpp" startline="9" endline="20">InputLayout::InputLayout</referencedby>
+        <referencedby refid="classIRenderTargetView_aeb1ecdc0e7dad9ee0927ea4f028d7a5e_1aeb1ecdc0e7dad9ee0927ea4f028d7a5e" compoundref="render__target_8cpp" startline="44" endline="64">IRenderTargetView::IRenderTargetView</referencedby>
+        <referencedby refid="classIRenderTargetView_abf9cae9989cf526dfbd79ff788435a3d_1abf9cae9989cf526dfbd79ff788435a3d" compoundref="render__target_8cpp" startline="15" endline="42">IRenderTargetView::IRenderTargetView</referencedby>
+        <referencedby refid="classPixelShader_ac750a7663474f02dcd624648faec9c49_1ac750a7663474f02dcd624648faec9c49" compoundref="pixel__shader_8cpp" startline="9" endline="20">PixelShader::PixelShader</referencedby>
+        <referencedby refid="classRasterizerState_a804a50b2960604725f103b927f9d052f_1a804a50b2960604725f103b927f9d052f" compoundref="rasterizer__state_8cpp" startline="9" endline="58">RasterizerState::RasterizerState</referencedby>
+        <referencedby refid="classRenderTargetShaderInput_a21e6a2b15ca1fb99618b200fcbe0c3a8_1a21e6a2b15ca1fb99618b200fcbe0c3a8" compoundref="render__target_8cpp" startline="222" endline="242">RenderTargetShaderInput::RenderTargetShaderInput</referencedby>
+        <referencedby refid="classSound_a14ac6aede2a2992054c848975f8062b5_1a14ac6aede2a2992054c848975f8062b5" compoundref="key__sound_8cpp" startline="390" endline="465">Sound::Sound</referencedby>
+        <referencedby refid="classSoundManager_a19632df55e5cb35000159716a0937fbe_1a19632df55e5cb35000159716a0937fbe" compoundref="key__sound_8cpp" startline="29" endline="55">SoundManager::SoundManager</referencedby>
+        <referencedby refid="classTexture_a0331ea0fa1111565a77e34930527aa9f_1a0331ea0fa1111565a77e34930527aa9f" compoundref="texture_8cpp" startline="14" endline="62">Texture::Texture</referencedby>
+        <referencedby refid="classTexture_a8077b6ae80650f4901ed7f77e014e25b_1a8077b6ae80650f4901ed7f77e014e25b" compoundref="texture_8cpp" startline="64" endline="94">Texture::Texture</referencedby>
+        <referencedby refid="classTextureArrayOffscreenDS_aca6d6cb9a7b1e8449149ba3937dd7c6e_1aca6d6cb9a7b1e8449149ba3937dd7c6e" compoundref="texture_8cpp" startline="282" endline="317">TextureArrayOffscreenDS::TextureArrayOffscreenDS</referencedby>
+        <referencedby refid="classTextureOffscreenDS_a945e26603caa6d94b95e1852faa6438e_1a945e26603caa6d94b95e1852faa6438e" compoundref="texture_8cpp" startline="234" endline="258">TextureOffscreenDS::TextureOffscreenDS</referencedby>
+        <referencedby refid="classTextureOffscreenRT_a20c9af6ea2487abb5c34158ee58c072f_1a20c9af6ea2487abb5c34158ee58c072f" compoundref="texture_8cpp" startline="187" endline="210">TextureOffscreenRT::TextureOffscreenRT</referencedby>
+        <referencedby refid="classTextureSamplerState_ad1aed26564ecd85cb57eec7841a8e634_1ad1aed26564ecd85cb57eec7841a8e634" compoundref="texture__sampler__state_8cpp" startline="9" endline="116">TextureSamplerState::TextureSamplerState</referencedby>
+        <referencedby refid="classVertexBuffer_a3ca1682d7b431645eaca745349a4898b_1a3ca1682d7b431645eaca745349a4898b" compoundref="vertex__buffer_8cpp" startline="17" endline="37">VertexBuffer::VertexBuffer</referencedby>
+        <referencedby refid="classVertexShader_a81c5a569be4260566322efdbcc28f58e_1a81c5a569be4260566322efdbcc28f58e" compoundref="vertex__shader_8cpp" startline="9" endline="20">VertexShader::VertexShader</referencedby>
+        <referencedby refid="classGraphics_a9a6ad2b28b7f765c6c7ed63b664754d8_1a9a6ad2b28b7f765c6c7ed63b664754d8" compoundref="graphics_8cpp" startline="719" endline="746">Graphics::bindBackBufferAsInput</referencedby>
+        <referencedby refid="classGraphics_a4d2ce74d9116c803e4f5514fa9a8e51f_1a4d2ce74d9116c803e4f5514fa9a8e51f" compoundref="graphics_8cpp" startline="870" endline="885">Graphics::checkTearingSupport</referencedby>
+        <referencedby refid="classIDepthStencilView_a1662957998b0c724568daf3ac739bc27_1a1662957998b0c724568daf3ac739bc27" compoundref="depth__stencil__view_8cpp" startline="184" endline="255">IDepthStencilView::convertToBitmap</referencedby>
+        <referencedby refid="classIRenderTargetView_a60fc375522630853ea8f69b2f0c653ed_1a60fc375522630853ea8f69b2f0c653ed" compoundref="render__target_8cpp" startline="158" endline="190">IRenderTargetView::convertToBitmap</referencedby>
+        <referencedby refid="classGraphics_a355c17321d44862d7ef0f93416492d6a_1a355c17321d44862d7ef0f93416492d6a" compoundref="graphics_8cpp" startline="795" endline="814">Graphics::createFactory</referencedby>
+        <referencedby refid="namespaceutil_a2b15332a5aad569c0613bd1879441696_1a2b15332a5aad569c0613bd1879441696" compoundref="d3d__utils_8h" startline="103" endline="115">util::createShaderObject&lt; ID3D11PixelShader &gt;</referencedby>
+        <referencedby refid="namespaceutil_a7143dd1c73f1ce2a66400bb09f35cc25_1a7143dd1c73f1ce2a66400bb09f35cc25" compoundref="d3d__utils_8h" startline="88" endline="100">util::createShaderObject&lt; ID3D11VertexShader &gt;</referencedby>
+        <referencedby refid="classIDepthStencilView_a59c87083dbbb991cc621dedcb4cbd58d_1a59c87083dbbb991cc621dedcb4cbd58d" compoundref="depth__stencil__view_8cpp" startline="150" endline="182">IDepthStencilView::createStagingTexture</referencedby>
+        <referencedby refid="classIRenderTargetView_a1399fd548f196216820ac8d19dd87621_1a1399fd548f196216820ac8d19dd87621" compoundref="render__target_8cpp" startline="122" endline="156">IRenderTargetView::createStagingTexture</referencedby>
+        <referencedby refid="classDxgiInfoQueue_a62e99064151930158243a23579849967_1a62e99064151930158243a23579849967" compoundref="dxgi__info__queue_8cpp" startline="51" endline="78">DxgiInfoQueue::getInfoMessages</referencedby>
+        <referencedby refid="classGraphics_ac24292486c6316265844e447ecf3fe6d_1ac24292486c6316265844e447ecf3fe6d" compoundref="graphics_8cpp" startline="396" endline="405">Graphics::getRefreshRate</referencedby>
+        <referencedby refid="classGraphics_a937fe925bd73dc37c24c0b728fabacee_1a937fe925bd73dc37c24c0b728fabacee" compoundref="graphics_8cpp" startline="663" endline="677">Graphics::getRenderTargetFromBackBuffer</referencedby>
+        <referencedby refid="classGraphics_a5cc0d3b4dd8e0c60c55a67c31b3b64f9_1a5cc0d3b4dd8e0c60c55a67c31b3b64f9" compoundref="graphics_8cpp" startline="828" endline="868">Graphics::interrogateDirectxFeatures</referencedby>
+        <referencedby refid="classPixelShaderConstantBuffer_a1df01eba25d87e22ad771c2ade2ff6c5_1a1df01eba25d87e22ad771c2ade2ff6c5" compoundref="constant__buffer_8h" startline="228" endline="243">PixelShaderConstantBuffer&lt; CB &gt;::makeCopy</referencedby>
+        <referencedby refid="classVertexShaderConstantBuffer_a1ea067e61588936bf6140ad036683f6b_1a1ea067e61588936bf6140ad036683f6b" compoundref="constant__buffer_8h" startline="158" endline="173">VertexShaderConstantBuffer&lt; CB &gt;::makeCopy</referencedby>
+        <referencedby refid="classGraphics_a9901788d977a1cb176ffc589bc7a9488_1a9901788d977a1cb176ffc589bc7a9488" compoundref="graphics_8cpp" startline="90" endline="97">Graphics::makeWindowAssociationWithFactory</referencedby>
+        <referencedby refid="classSoundManager_1_1Channel_add92a4f1a98fc8ee81732f3ff04bc51e_1add92a4f1a98fc8ee81732f3ff04bc51e" compoundref="key__sound_8cpp" startline="209" endline="221">SoundManager::Channel::playSound</referencedby>
+        <referencedby refid="classGraphics_aefe40c94ce078f84342864b959543c99_1aefe40c94ce078f84342864b959543c99" compoundref="graphics_8cpp" startline="548" endline="586">Graphics::present</referencedby>
+        <referencedby refid="classGraphics_a9c3fa6f796b990c8d62a77bb2146740c_1a9c3fa6f796b990c8d62a77bb2146740c" compoundref="graphics_8cpp" startline="434" endline="452">Graphics::profile</referencedby>
+        <referencedby refid="namespaceutil_a8a4f9d906caa424fa6ccc4e13c90a211_1a8a4f9d906caa424fa6ccc4e13c90a211" compoundref="d3d__utils_8cpp" startline="349" endline="399">util::queryRefreshRate</referencedby>
+        <referencedby refid="classGraphics_a02c044c5edb7ba86edb3b480ae2b2938_1a02c044c5edb7ba86edb3b480ae2b2938" compoundref="graphics_8cpp" startline="273" endline="361">Graphics::resize</referencedby>
+        <referencedby refid="namespaceutil_a26eb5943c9263e29706bf7ea9817bd26_1a26eb5943c9263e29706bf7ea9817bd26" compoundref="os__utils_8cpp" startline="95" endline="102">util::setCurrentThreadName</referencedby>
+        <referencedby refid="classSoundManager_1_1Channel_ac96947ac0fe438b53be241d5b0f02a45_1ac96947ac0fe438b53be241d5b0f02a45" compoundref="key__sound_8cpp" startline="93" endline="207">SoundManager::Channel::setupChannel</referencedby>
+        <referencedby refid="classGraphics_a7dce5b31ab15931acd9812956a118ab2_1a7dce5b31ab15931acd9812956a118ab2" compoundref="graphics_8cpp" startline="363" endline="394">Graphics::setupMonitors</referencedby>
+        <referencedby refid="classIConstantBuffer_a01fb34eedba302e40cc4a4ad9889bcf3_1a01fb34eedba302e40cc4a4ad9889bcf3" compoundref="constant__buffer_8h" startline="71" endline="82">IConstantBuffer&lt; CB &gt;::update</referencedby>
+        <referencedby refid="classIConstantBufferEx_a6b89a10f5e7371ddf568346bdf980bbe_1a6b89a10f5e7371ddf568346bdf980bbe" compoundref="constant__buffer__ex_8cpp" startline="41" endline="54">IConstantBufferEx::update</referencedby>
+        <referencedby refid="classTexture_ae3518498a4665623f5af7c8468552041_1ae3518498a4665623f5af7c8468552041" compoundref="texture_8cpp" startline="105" endline="123">Texture::update</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="os__utils_8h_a8b751108e3b0b41a0ea1d5dd4d440b1b_1a8b751108e3b0b41a0ea1d5dd4d440b1b" prot="public" static="no">
+        <name>ASSERT_HRES_IF_FAILED_MSG</name>
+        <initializer>(void)0;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/os_utils.h" line="153" column="11" bodyfile="inc/os_utils.h" bodystart="153" bodyend="-1"/>
+        <referencedby refid="classVertexShader_a81c5a569be4260566322efdbcc28f58e_1a81c5a569be4260566322efdbcc28f58e" compoundref="vertex__shader_8cpp" startline="9" endline="20">VertexShader::VertexShader</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="os__utils_8h_a5d073df04e4d5048059e9a110173b9f0_1a5d073df04e4d5048059e9a110173b9f0" prot="public" static="no">
+        <name>ASSERT_HRES_WIN32_IF_FAILED</name>
+        <initializer>(void)0;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/os_utils.h" line="165" column="11" bodyfile="inc/os_utils.h" bodystart="165" bodyend="-1"/>
+        <referencedby refid="classWindow_a69f83cc5dc2d4f9807e4d11d2b2623e1_1a69f83cc5dc2d4f9807e4d11d2b2623e1" compoundref="window_8cpp" startline="118" endline="270">Window::Window</referencedby>
+        <referencedby refid="classWindow_1_1WindowClass_aa826fd2bfebc907f2ae0d3226b919480_1aa826fd2bfebc907f2ae0d3226b919480" compoundref="window_8cpp" startline="32" endline="91">Window::WindowClass::WindowClass</referencedby>
+        <referencedby refid="classWindow_a245d821e6016fa1f6970ccbbedd635f6_1a245d821e6016fa1f6970ccbbedd635f6" compoundref="window_8cpp" startline="298" endline="330">Window::~Window</referencedby>
+        <referencedby refid="classWindow_ac3feef02bfeadc708b8b6e9b093b4368_1ac3feef02bfeadc708b8b6e9b093b4368" compoundref="window_8cpp" startline="1917" endline="2030">Window::editCopy</referencedby>
+        <referencedby refid="classWindow_a017c50359cd4f4884d06347bd97623fb_1a017c50359cd4f4884d06347bd97623fb" compoundref="window_8cpp" startline="2034" endline="2089">Window::editPaste</referencedby>
+        <referencedby refid="classKeyConsole_ad542a50bb4ed037c9ecd994e322a70ee_1ad542a50bb4ed037c9ecd994e322a70ee" compoundref="console_8cpp" startline="138" endline="149">KeyConsole::error</referencedby>
+        <referencedby refid="classKeyConsole_aa28378b6ec6d05deba73ecc4118ba9e1_1aa28378b6ec6d05deba73ecc4118ba9e1" compoundref="console_8cpp" startline="243" endline="249">KeyConsole::getTitle</referencedby>
+        <referencedby refid="classKeyConsole_a7276b2615dd1194e8890036b67399740_1a7276b2615dd1194e8890036b67399740" compoundref="console_8cpp" startline="185" endline="199">KeyConsole::getWindowHandle</referencedby>
+        <referencedby refid="classWindow_a3c40c067671e1a563ffdc0a22846a4f1_1a3c40c067671e1a563ffdc0a22846a4f1" compoundref="window_8cpp" startline="1772" endline="1780">Window::hideMenu</referencedby>
+        <referencedby refid="namespaceutil_a49087246809a040488fc33d84239de83_1a49087246809a040488fc33d84239de83" compoundref="os__utils_8cpp" startline="221" endline="250">util::launchProcess</referencedby>
+        <referencedby refid="classKeyConsole_a453538c0c27b7fb4311391485e3c3788_1a453538c0c27b7fb4311391485e3c3788" compoundref="console_8cpp" startline="117" endline="136">KeyConsole::log</referencedby>
+        <referencedby refid="main_8cpp_aa0bc3024a3a3a86f59bcc8c75a15f98c_1aa0bc3024a3a3a86f59bcc8c75a15f98c" compoundref="main_8cpp" startline="34" endline="51">parseCommandLineArguments</referencedby>
+        <referencedby refid="namespaceutil_a12eed248853b800635a584152eda83a5_1a12eed248853b800635a584152eda83a5" compoundref="os__utils_8cpp" startline="85" endline="93">util::pinThreadToCore</referencedby>
+        <referencedby refid="classKeyConsole_a07362c63c978e15bb23d2a43ab697e3a_1a07362c63c978e15bb23d2a43ab697e3a" compoundref="console_8cpp" startline="104" endline="115">KeyConsole::print</referencedby>
+        <referencedby refid="classKeyConsole_a826e1281aad70d0648cea4ab95a57d8d_1a826e1281aad70d0648cea4ab95a57d8d" compoundref="console_8cpp" startline="151" endline="166">KeyConsole::read</referencedby>
+        <referencedby refid="classWindow_a2ac13cf3243000d5b30ff1a29547e407_1a2ac13cf3243000d5b30ff1a29547e407" compoundref="window_8cpp" startline="2093" endline="2143">Window::renderClipboardFormat</referencedby>
+        <referencedby refid="classWindow_a9cd314e68c41dc086d9de29c5d5b0658_1a9cd314e68c41dc086d9de29c5d5b0658" compoundref="window_8cpp" startline="1746" endline="1753">Window::setBorderless</referencedby>
+        <referencedby refid="classWindow_a6d03fd6c9fbfcaf4aba92e6b4d08123e_1a6d03fd6c9fbfcaf4aba92e6b4d08123e" compoundref="window_8cpp" startline="366" endline="370">Window::setTitle</referencedby>
+        <referencedby refid="namespaceutil_a79a4c5df290b7c3f50617ad7ffa131b2_1a79a4c5df290b7c3f50617ad7ffa131b2" compoundref="os__utils_8cpp" startline="123" endline="128">util::setupDetachedThreadsVector</referencedby>
+        <referencedby refid="classWindow_a4e66e4896e552265193a794ae82a1b2d_1a4e66e4896e552265193a794ae82a1b2d" compoundref="window_8cpp" startline="614" endline="691">Window::setupSplashWindow</referencedby>
+        <referencedby refid="classWindow_a5dc819c56369c625f93cb8131b795d16_1a5dc819c56369c625f93cb8131b795d16" compoundref="window_8cpp" startline="1697" endline="1703">Window::setWindowProperties</referencedby>
+        <referencedby refid="classWindow_a23bdfd4da0ed787aef0d99862fc5298b_1a23bdfd4da0ed787aef0d99862fc5298b" compoundref="window_8cpp" startline="1761" endline="1770">Window::showMenu</referencedby>
+        <referencedby refid="namespaceutil_a3a780a09a3dffe65ca6df0ff68298fa9_1a3a780a09a3dffe65ca6df0ff68298fa9" compoundref="os__utils_8cpp" startline="131" endline="160">util::terminateDetachedThreads</referencedby>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">Window::windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="os__utils_8h_af662511c5dd990965f3c067711f6ef62_1af662511c5dd990965f3c067711f6ef62" prot="public" static="no">
+        <name>ASSERT_NTSTATUS_IF_FAILED</name>
+        <initializer>(void)0;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/os_utils.h" line="180" column="11" bodyfile="inc/os_utils.h" bodystart="180" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="os__utils_8h_abc339680801477d89bc65c0a978bd85f_1abc339680801477d89bc65c0a978bd85f" prot="public" static="no">
+        <name>ASSERT_HRES_REGISTRY_IF_FAILED</name>
+        <initializer>(void)0;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/os_utils.h" line="197" column="11" bodyfile="inc/os_utils.h" bodystart="197" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="winner_8h" kindref="compound">winner.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;winternl.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;comdef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tlhelp32.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="console_8h" kindref="compound">console.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ShlObj.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;wincred.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="os__utils_8h_a796263d2d6b5e79e1fd4029fb6ebf58d_1a796263d2d6b5e79e1fd4029fb6ebf58d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POD_ZERO(<sp/>arg<sp/>)<sp/><sp/><sp/><sp/><sp/>ZeroMemory(<sp/>&amp;arg,<sp/>sizeof(<sp/>arg<sp/>)<sp/>);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceutil" kindref="compound">util</ref></highlight></codeline>
+<codeline lineno="19"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal">std::string<sp/><ref refid="namespaceutil_a3cb6f8f22822b4670fa970bce585e52a_1a3cb6f8f22822b4670fa970bce585e52a" kindref="member">printHresultErrorDescription</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>HRESULT<sp/>hres<sp/>);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">std::wstring<sp/><ref refid="namespaceutil_a742e4cf7eec6ab440f6a51fa98cdb42b_1a742e4cf7eec6ab440f6a51fa98cdb42b" kindref="member">printHresultErrorDescriptionW</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>HRESULT<sp/>hres<sp/>);</highlight></codeline>
+<codeline lineno="25"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns<sp/>an<sp/>empty<sp/>string<sp/>if<sp/>there<sp/>is<sp/>no<sp/>error.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal">std::string<sp/><ref refid="namespaceutil_a566f2bbc4b5cafc9971186f0d707bf3e_1a566f2bbc4b5cafc9971186f0d707bf3e" kindref="member">getLastErrorAsString</ref>();</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">std::string<sp/><ref refid="namespaceutil_a9a0b0bfad82a59556195c73d4d2cda5e_1a9a0b0bfad82a59556195c73d4d2cda5e" kindref="member">getLastNtErrorAsString</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DWORD<sp/>ntStatusCode<sp/>);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal">std::wstring<sp/><ref refid="namespaceutil_a35e258ec68cdc2634e69fad1574f982b_1a35e258ec68cdc2634e69fad1574f982b" kindref="member">bstrToStr</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>BSTR<sp/>&amp;bstr<sp/>);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">BSTR<sp/><ref refid="namespaceutil_a525e6245d3b2156e2d85aaedb8f7bb2e_1a525e6245d3b2156e2d85aaedb8f7bb2e" kindref="member">strToBstr</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::wstring<sp/>&amp;str<sp/>);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal">__int64<sp/><ref refid="namespaceutil_a3e3c5eab6a6d57d880fd94d44f599cb4_1a3e3c5eab6a6d57d880fd94d44f599cb4" kindref="member">filetimeToInt64</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>FILETIME<sp/>&amp;fileTime<sp/>);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">[[maybe_unused]]<sp/>DWORD_PTR<sp/><ref refid="namespaceutil_a12eed248853b800635a584152eda83a5_1a12eed248853b800635a584152eda83a5" kindref="member">pinThreadToCore</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>HANDLE<sp/>hThread,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DWORD<sp/>core<sp/>);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceutil_a26eb5943c9263e29706bf7ea9817bd26_1a26eb5943c9263e29706bf7ea9817bd26" kindref="member">setCurrentThreadName</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;name<sp/>);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal">std::string<sp/><ref refid="namespaceutil_a08c4e4a29b0a0e5157b152b140bc094e_1a08c4e4a29b0a0e5157b152b140bc094e" kindref="member">getKnownFolderPath</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>=<sp/>CSIDL_PERSONAL<sp/>);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>region<sp/>DetachedThreadsH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceutil_a79a4c5df290b7c3f50617ad7ffa131b2_1a79a4c5df290b7c3f50617ad7ffa131b2" kindref="member">setupDetachedThreadsVector</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>nThreads<sp/>);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceutil_a3a780a09a3dffe65ca6df0ff68298fa9_1a3a780a09a3dffe65ca6df0ff68298fa9" kindref="member">terminateDetachedThreads</ref>();</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>endregion<sp/>DetachedThreadsH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal">std::optional&lt;DWORD&gt;<sp/><ref refid="namespaceutil_a2e444da6f9f3edb24cbdfdd3acd8eef5_1a2e444da6f9f3edb24cbdfdd3acd8eef5" kindref="member">registryGetDword</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>HKEY<sp/>hKey,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::wstring<sp/>&amp;regName<sp/>);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">std::optional&lt;std::wstring&gt;<sp/><ref refid="namespaceutil_a461bbc2dfa40d2dae1639cce3f6db772_1a461bbc2dfa40d2dae1639cce3f6db772" kindref="member">registryGetString</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>HKEY<sp/>hKey,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::wstring<sp/>&amp;regName<sp/>);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="namespaceutil_a833373d99efbf126ccbb44456500085f_1a833373d99efbf126ccbb44456500085f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceutil_a833373d99efbf126ccbb44456500085f_1a833373d99efbf126ccbb44456500085f" kindref="member">suspendAllThreads</ref>();</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceutil_a49087246809a040488fc33d84239de83_1a49087246809a040488fc33d84239de83" kindref="member">launchProcess</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;path<sp/>);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TCallback,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>TArgs&gt;</highlight></codeline>
+<codeline lineno="52" refid="namespaceutil_ad7c794e52973c3fe00e125e69d29a011_1ad7c794e52973c3fe00e125e69d29a011" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">decltype</highlight><highlight class="normal">(<sp/>auto<sp/>)<sp/><ref refid="namespaceutil_ad7c794e52973c3fe00e125e69d29a011_1ad7c794e52973c3fe00e125e69d29a011" kindref="member">askForCredentials</ref>(<sp/>TCallback<sp/>&amp;&amp;f,</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>TArgs<sp/>&amp;&amp;...<sp/>args<sp/>)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>CREDUI_INFO<sp/>cui;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">wchar_t</highlight><highlight class="normal"><sp/>pszName[CREDUI_MAX_USERNAME_LENGTH<sp/>+<sp/>1];</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">wchar_t</highlight><highlight class="normal"><sp/>pszPwd[CREDUI_MAX_PASSWORD_LENGTH<sp/>+<sp/>1];</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>cui.cbSize<sp/>=<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<sp/>CREDUI_INFO<sp/>);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>cui.hwndParent<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>ensure<sp/>that<sp/>MessageText<sp/>and<sp/>CaptionText<sp/>identify<sp/>what<sp/>credentials<sp/>to<sp/>use<sp/>and<sp/>which<sp/>application<sp/>requires<sp/>them</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>cui.pszMessageText<sp/>=<sp/>L</highlight><highlight class="stringliteral">&quot;Enter<sp/>administrator<sp/>account<sp/>information&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>cui.pszCaptionText<sp/>=<sp/>L</highlight><highlight class="stringliteral">&quot;CredUITest&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>cui.hbmBanner<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>BOOL<sp/>fSave<sp/>=<sp/>FALSE;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>SecureZeroMemory(<sp/>pszName,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<sp/>pszName<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>SecureZeroMemory(<sp/>pszPwd,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<sp/>pszPwd<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>dwErr<sp/>=<sp/>CredUIPromptForCredentialsW(<sp/>&amp;cui,<sp/></highlight><highlight class="comment">//<sp/>CREDUI_INFO<sp/>structure</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TEXT(</highlight><highlight class="stringliteral">&quot;TheServer&quot;</highlight><highlight class="normal">),<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>target<sp/>for<sp/>credentials<sp/>(usually<sp/>a<sp/>server)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>reserved</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>reason</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pszName,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>user<sp/>name</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CREDUI_MAX_USERNAME_LENGTH<sp/>+<sp/>1,<sp/></highlight><highlight class="comment">//<sp/>max<sp/>number<sp/>of<sp/>chars<sp/>for<sp/>user<sp/>name</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pszPwd,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>password</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CREDUI_MAX_PASSWORD_LENGTH<sp/>+<sp/>1,<sp/></highlight><highlight class="comment">//<sp/>max<sp/>number<sp/>of<sp/>chars<sp/>for<sp/>password</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;fSave,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>state<sp/>of<sp/>save<sp/>check<sp/>box</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CREDUI_FLAGS_GENERIC_CREDENTIALS<sp/>|<sp/>CREDUI_FLAGS_ALWAYS_SHOW_UI<sp/>|<sp/>CREDUI_FLAGS_DO_NOT_PERSIST<sp/>);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!dwErr<sp/>)</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Put<sp/>code<sp/>that<sp/>uses<sp/>the<sp/>credentials<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>std::invoke(<sp/>std::forward&lt;TCallback&gt;(<sp/>f<sp/>),<sp/>std::forward&lt;TArgs&gt;(<sp/>args<sp/>)<sp/>...<sp/>);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>when<sp/>you<sp/>have<sp/>finished<sp/>using<sp/>the<sp/>credentials,<sp/>erase<sp/>them<sp/>from<sp/>memory.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SecureZeroMemory(<sp/>pszName,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<sp/>pszName<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SecureZeroMemory(<sp/>pszPwd,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<sp/>pszPwd<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal">}</highlight><highlight class="comment">//<sp/>namespace<sp/>util</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>_DEBUG<sp/>&amp;&amp;<sp/>!defined<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>ASSERT_RETURN_HRES_IF_FAILED(<sp/>hres<sp/>)<sp/>if<sp/>(<sp/>FAILED(<sp/>hres<sp/>)<sp/>)\</highlight></codeline>
+<codeline lineno="98"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{\</highlight></codeline>
+<codeline lineno="99"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::ostringstream<sp/>oss;\</highlight></codeline>
+<codeline lineno="100"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>using<sp/>namespace<sp/>std::string_literals;\</highlight></codeline>
+<codeline lineno="101"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>oss<sp/>&lt;&lt;<sp/>&quot;\n&quot;s<sp/>&lt;&lt;<sp/>__FUNCTION__<sp/>&lt;&lt;<sp/>&quot;<sp/>@<sp/>line:<sp/>&quot;s<sp/>&lt;&lt;<sp/>__LINE__<sp/>&lt;&lt;<sp/>&quot;\n&quot;s<sp/>&lt;&lt;<sp/>util::printHresultErrorDescription(<sp/>hres<sp/>)<sp/>&lt;&lt;<sp/>&quot;\n\n&quot;s;\</highlight></codeline>
+<codeline lineno="102"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>KeyConsole<sp/>&amp;console<sp/>=<sp/>KeyConsole::getInstance();\</highlight></codeline>
+<codeline lineno="103"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>console.log(<sp/>oss.str()<sp/>);\</highlight></codeline>
+<codeline lineno="104"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__debugbreak();\</highlight></codeline>
+<codeline lineno="105"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>hres;\</highlight></codeline>
+<codeline lineno="106"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="os__utils_8h_a25e84d8771362a5139c04067d39d8446_1a25e84d8771362a5139c04067d39d8446" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>ASSERT_RETURN_HRES_IF_FAILED(<sp/>hres<sp/>)<sp/>(void)0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>_DEBUG<sp/>&amp;&amp;<sp/>!defined<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>ASSERT_IF_FAILED(<sp/>hres<sp/>)<sp/>if<sp/>(<sp/>FAILED(<sp/>hres<sp/>)<sp/>)\</highlight></codeline>
+<codeline lineno="113"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{\</highlight></codeline>
+<codeline lineno="114"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::ostringstream<sp/>oss;\</highlight></codeline>
+<codeline lineno="115"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>using<sp/>namespace<sp/>std::string_literals;\</highlight></codeline>
+<codeline lineno="116"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>oss<sp/>&lt;&lt;<sp/>&quot;\n&quot;s<sp/>&lt;&lt;<sp/>__FUNCTION__<sp/>&lt;&lt;<sp/>&quot;<sp/>@<sp/>line:<sp/>&quot;s<sp/>&lt;&lt;<sp/>__LINE__<sp/>&lt;&lt;<sp/>&quot;\n&quot;s<sp/>&lt;&lt;<sp/>util::printHresultErrorDescription(<sp/>hres<sp/>)<sp/>&lt;&lt;<sp/>&quot;\n\n&quot;s;\</highlight></codeline>
+<codeline lineno="117"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>KeyConsole<sp/>&amp;console<sp/>=<sp/>KeyConsole::getInstance();\</highlight></codeline>
+<codeline lineno="118"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>console.log(<sp/>oss.str()<sp/>);\</highlight></codeline>
+<codeline lineno="119"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__debugbreak();\</highlight></codeline>
+<codeline lineno="120"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::exit(<sp/>hres<sp/>);\</highlight></codeline>
+<codeline lineno="121"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123" refid="os__utils_8h_a06ad2606426e941f7509aeb2e14a3eaf_1a06ad2606426e941f7509aeb2e14a3eaf" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>ASSERT_IF_FAILED(<sp/>hres<sp/>)<sp/>(void)0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>_DEBUG<sp/>&amp;&amp;<sp/>!defined<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>ASSERT_HRES_IF_FAILED<sp/>if<sp/>(<sp/>FAILED(<sp/>hres<sp/>)<sp/>)\</highlight></codeline>
+<codeline lineno="128"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{\</highlight></codeline>
+<codeline lineno="129"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::ostringstream<sp/>oss;\</highlight></codeline>
+<codeline lineno="130"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>using<sp/>namespace<sp/>std::string_literals;\</highlight></codeline>
+<codeline lineno="131"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>oss<sp/>&lt;&lt;<sp/>&quot;\n&quot;s<sp/>&lt;&lt;<sp/>__FUNCTION__<sp/>&lt;&lt;<sp/>&quot;<sp/>@<sp/>line:<sp/>&quot;s<sp/>&lt;&lt;<sp/>__LINE__<sp/>&lt;&lt;<sp/>&quot;\n&quot;s<sp/>&lt;&lt;<sp/>util::printHresultErrorDescription(<sp/>hres<sp/>)<sp/>&lt;&lt;<sp/>&quot;\n\n&quot;s;\</highlight></codeline>
+<codeline lineno="132"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>KeyConsole<sp/>&amp;console<sp/>=<sp/>KeyConsole::getInstance();\</highlight></codeline>
+<codeline lineno="133"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>console.log(<sp/>oss.str()<sp/>);\</highlight></codeline>
+<codeline lineno="134"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__debugbreak();\</highlight></codeline>
+<codeline lineno="135"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::exit(<sp/>hres<sp/>);\</highlight></codeline>
+<codeline lineno="136"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138" refid="os__utils_8h_a7027472bc9b182c0fea900713e4541e3_1a7027472bc9b182c0fea900713e4541e3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>ASSERT_HRES_IF_FAILED<sp/>(void)0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>_DEBUG<sp/>&amp;&amp;<sp/>!defined<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>ASSERT_HRES_IF_FAILED_MSG(<sp/>msg<sp/>)<sp/>if<sp/>(<sp/>FAILED(<sp/>hres<sp/>)<sp/>)\</highlight></codeline>
+<codeline lineno="143"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{\</highlight></codeline>
+<codeline lineno="144"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::ostringstream<sp/>oss;\</highlight></codeline>
+<codeline lineno="145"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>using<sp/>namespace<sp/>std::string_literals;\</highlight></codeline>
+<codeline lineno="146"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>oss<sp/>&lt;&lt;<sp/>&quot;\n&quot;s<sp/>&lt;&lt;<sp/>__FUNCTION__<sp/>&lt;&lt;<sp/>&quot;<sp/>@<sp/>line:<sp/>&quot;s<sp/>&lt;&lt;<sp/>__LINE__<sp/>&lt;&lt;<sp/>&quot;\n&quot;s<sp/>&lt;&lt;<sp/>util::printHresultErrorDescription(<sp/>hres<sp/>)<sp/>&lt;&lt;<sp/>&quot;\n&quot;<sp/>&lt;&lt;<sp/>&quot;msg:<sp/>&quot;<sp/>&lt;&lt;<sp/>msg<sp/>&lt;&lt;<sp/>&quot;\n\n&quot;s;\</highlight></codeline>
+<codeline lineno="147"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>KeyConsole<sp/>&amp;console<sp/>=<sp/>KeyConsole::getInstance();\</highlight></codeline>
+<codeline lineno="148"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>console.log(<sp/>oss.str()<sp/>);\</highlight></codeline>
+<codeline lineno="149"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__debugbreak();\</highlight></codeline>
+<codeline lineno="150"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::exit(<sp/>hres<sp/>);\</highlight></codeline>
+<codeline lineno="151"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153" refid="os__utils_8h_a8b751108e3b0b41a0ea1d5dd4d440b1b_1a8b751108e3b0b41a0ea1d5dd4d440b1b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>ASSERT_HRES_IF_FAILED_MSG<sp/>(void)0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>_DEBUG<sp/>&amp;&amp;<sp/>!defined<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight><highlight class="comment">//<sp/>or<sp/>call<sp/>getLastErrorAsString()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>ASSERT_HRES_WIN32_IF_FAILED<sp/>\</highlight></codeline>
+<codeline lineno="160"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="161"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HRESULT<sp/>hres<sp/>=<sp/>HRESULT_FROM_WIN32(<sp/>GetLastError()<sp/>);<sp/>\</highlight></codeline>
+<codeline lineno="162"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ASSERT_HRES_IF_FAILED;<sp/>\</highlight></codeline>
+<codeline lineno="163"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165" refid="os__utils_8h_a5d073df04e4d5048059e9a110173b9f0_1a5d073df04e4d5048059e9a110173b9f0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>ASSERT_HRES_WIN32_IF_FAILED<sp/>(void)0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>_DEBUG<sp/>&amp;&amp;<sp/>!defined<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>ASSERT_NTSTATUS_IF_FAILED(<sp/>ntErrorCode<sp/>)<sp/>\</highlight></codeline>
+<codeline lineno="170"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{\</highlight></codeline>
+<codeline lineno="171"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::ostringstream<sp/>oss;\</highlight></codeline>
+<codeline lineno="172"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>using<sp/>namespace<sp/>std::string_literals;\</highlight></codeline>
+<codeline lineno="173"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>oss<sp/>&lt;&lt;<sp/>&quot;\n&quot;s<sp/>&lt;&lt;<sp/>__FUNCTION__<sp/>&lt;&lt;<sp/>&quot;<sp/>@<sp/>line:<sp/>&quot;s<sp/>&lt;&lt;<sp/>__LINE__<sp/>&lt;&lt;<sp/>&quot;\n&quot;s<sp/>&lt;&lt;<sp/>util::getLastNtErrorAsString(<sp/>ntErrorCode<sp/>)<sp/>&lt;&lt;<sp/>&quot;\n\n&quot;s;\</highlight></codeline>
+<codeline lineno="174"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>KeyConsole<sp/>&amp;console<sp/>=<sp/>KeyConsole::getInstance();\</highlight></codeline>
+<codeline lineno="175"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>console.log(<sp/>oss.str()<sp/>);\</highlight></codeline>
+<codeline lineno="176"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__debugbreak();\</highlight></codeline>
+<codeline lineno="177"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::exit(<sp/>hres<sp/>);\</highlight></codeline>
+<codeline lineno="178"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180" refid="os__utils_8h_af662511c5dd990965f3c067711f6ef62_1af662511c5dd990965f3c067711f6ef62" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>ASSERT_NTSTATUS_IF_FAILED<sp/>(void)0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>_DEBUG<sp/>&amp;&amp;<sp/>!defined<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight><highlight class="comment">//<sp/>or<sp/>call<sp/>getLastErrorAsString()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>ASSERT_HRES_REGISTRY_IF_FAILED(<sp/>ret<sp/>)<sp/>\</highlight></codeline>
+<codeline lineno="187"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>if<sp/>(<sp/>ret<sp/>!=<sp/>ERROR_SUCCESS<sp/>)\</highlight></codeline>
+<codeline lineno="188"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{\</highlight></codeline>
+<codeline lineno="189"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wchar_t<sp/>buffer[MAX_PATH];\</highlight></codeline>
+<codeline lineno="190"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FormatMessageW(<sp/>FORMAT_MESSAGE_FROM_SYSTEM,<sp/>nullptr,<sp/>ret,<sp/>0,<sp/>buffer,<sp/>MAX_PATH,<sp/>nullptr<sp/>);\</highlight></codeline>
+<codeline lineno="191"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>KeyConsole<sp/>&amp;console<sp/>=<sp/>KeyConsole::getInstance();\</highlight></codeline>
+<codeline lineno="192"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>console.print(<sp/>util::ws2s(<sp/>buffer<sp/>)<sp/>);\</highlight></codeline>
+<codeline lineno="193"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__debugbreak();\</highlight></codeline>
+<codeline lineno="194"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::exit(<sp/>ret<sp/>);\</highlight></codeline>
+<codeline lineno="195"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197" refid="os__utils_8h_abc339680801477d89bc65c0a978bd85f_1abc339680801477d89bc65c0a978bd85f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>ASSERT_HRES_REGISTRY_IF_FAILED<sp/>(void)0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="inc/os_utils.h"/>
+  </compounddef>
+</doxygen>

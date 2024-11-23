@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classBitmap_1_1BitmapException" kind="class" language="C++" prot="private" final="yes">
+    <compoundname>Bitmap::BitmapException</compoundname>
+    <basecompoundref refid="classKeyException" prot="public" virt="non-virtual">KeyException</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classBitmap_1_1BitmapException_a2653cbaefdc8f1b6d6724d8b74ef409a_1a2653cbaefdc8f1b6d6724d8b74ef409a" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Bitmap::BitmapException::BitmapException</definition>
+        <argsstring>(const int line, const char *file, const char *function, const std::string &amp;msg) noexcept</argsstring>
+        <name>BitmapException</name>
+        <qualifiedname>Bitmap::BitmapException::BitmapException</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>file</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>function</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/bitmap.h" line="29" column="1" bodyfile="src/bitmap.cpp" bodystart="172" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="classBitmap_1_1BitmapException_a8f57f54af91bdb5eb1f65fe8942cd63f_1a8f57f54af91bdb5eb1f65fe8942cd63f" prot="public" static="no" const="yes" explicit="no" inline="no" final="yes" noexcept="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string Bitmap::BitmapException::getType</definition>
+        <argsstring>() const noexcept override final</argsstring>
+        <name>getType</name>
+        <qualifiedname>Bitmap::BitmapException::getType</qualifiedname>
+        <reimplements refid="classKeyException_ab841f80e919082619f30053ae78c56c2_1ab841f80e919082619f30053ae78c56c2">getType</reimplements>
+        <briefdescription>
+<para>=================================================== </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/bitmap.h" line="31" column="13" bodyfile="src/bitmap.cpp" bodystart="182" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="classBitmap_1_1BitmapException_ae3a114051b1ccd6270778d5b64bb6e9a_1ae3a114051b1ccd6270778d5b64bb6e9a" prot="public" static="no" const="yes" explicit="no" inline="no" final="yes" noexcept="yes" virt="virtual">
+        <type>const char *</type>
+        <definition>const char * Bitmap::BitmapException::what</definition>
+        <argsstring>() const noexcept override final</argsstring>
+        <name>what</name>
+        <qualifiedname>Bitmap::BitmapException::what</qualifiedname>
+        <reimplements refid="classKeyException_a9956fdc871308553eec7b047f756690a_1a9956fdc871308553eec7b047f756690a">what</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/bitmap.h" line="32" column="20" bodyfile="src/bitmap.cpp" bodystart="187" bodyend="190"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Bitmap::BitmapException</label>
+        <link refid="classBitmap_1_1BitmapException"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>KeyException</label>
+        <link refid="classKeyException"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::exception</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Bitmap::BitmapException</label>
+        <link refid="classBitmap_1_1BitmapException"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>KeyException</label>
+        <link refid="classKeyException"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::exception</label>
+      </node>
+    </collaborationgraph>
+    <location file="inc/bitmap.h" line="25" column="1" bodyfile="inc/bitmap.h" bodystart="27" bodyend="33"/>
+    <listofallmembers>
+      <member refid="classBitmap_1_1BitmapException_a2653cbaefdc8f1b6d6724d8b74ef409a_1a2653cbaefdc8f1b6d6724d8b74ef409a" prot="public" virt="non-virtual"><scope>Bitmap::BitmapException</scope><name>BitmapException</name></member>
+      <member refid="classKeyException_acf42841e4d4ececba96628e677b4cf41_1acf42841e4d4ececba96628e677b4cf41" prot="public" virt="non-virtual"><scope>Bitmap::BitmapException</scope><name>getFile</name></member>
+      <member refid="classKeyException_ad75c6511759e522f2b3bcf13b0d23f30_1ad75c6511759e522f2b3bcf13b0d23f30" prot="public" virt="non-virtual"><scope>Bitmap::BitmapException</scope><name>getFunction</name></member>
+      <member refid="classKeyException_a72f4af19d1ab0e9cce5eb6d45fca7729_1a72f4af19d1ab0e9cce5eb6d45fca7729" prot="public" virt="non-virtual"><scope>Bitmap::BitmapException</scope><name>getLine</name></member>
+      <member refid="classBitmap_1_1BitmapException_a8f57f54af91bdb5eb1f65fe8942cd63f_1a8f57f54af91bdb5eb1f65fe8942cd63f" prot="public" virt="virtual"><scope>Bitmap::BitmapException</scope><name>getType</name></member>
+      <member refid="classKeyException_a53c95253098f0cc672876c35d4b1911d_1a53c95253098f0cc672876c35d4b1911d" prot="public" virt="non-virtual"><scope>Bitmap::BitmapException</scope><name>KeyException</name></member>
+      <member refid="classKeyException_ae11b160d146427ad3887a1af3e2dc2ac_1ae11b160d146427ad3887a1af3e2dc2ac" prot="protected" virt="non-virtual"><scope>Bitmap::BitmapException</scope><name>m_description</name></member>
+      <member refid="classKeyException_a62f1ed04b6e0c843f3ea1e338dc426d8_1a62f1ed04b6e0c843f3ea1e338dc426d8" prot="private" virt="non-virtual"><scope>Bitmap::BitmapException</scope><name>m_file</name></member>
+      <member refid="classKeyException_ac11062a919dcfe52321e9f948ce60958_1ac11062a919dcfe52321e9f948ce60958" prot="private" virt="non-virtual"><scope>Bitmap::BitmapException</scope><name>m_function</name></member>
+      <member refid="classKeyException_a2a49256c37903e810c301b035cf65837_1a2a49256c37903e810c301b035cf65837" prot="private" virt="non-virtual"><scope>Bitmap::BitmapException</scope><name>m_line</name></member>
+      <member refid="classBitmap_1_1BitmapException_ae3a114051b1ccd6270778d5b64bb6e9a_1ae3a114051b1ccd6270778d5b64bb6e9a" prot="public" virt="virtual"><scope>Bitmap::BitmapException</scope><name>what</name></member>
+      <member refid="classKeyException_a954cd46c9cc2dd054fd680bb70aef678_1a954cd46c9cc2dd054fd680bb70aef678" prot="public" virt="virtual"><scope>Bitmap::BitmapException</scope><name>~KeyException</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

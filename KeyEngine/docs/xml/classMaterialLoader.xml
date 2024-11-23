@@ -1,0 +1,255 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classMaterialLoader" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>MaterialLoader</compoundname>
+    <includes refid="material__loader_8h" local="no">material_loader.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classMaterialLoader_abae8a033b424e276c3925167b64236be_1abae8a033b424e276c3925167b64236be" prot="private" static="no" mutable="no">
+        <type><ref refid="classver_1_1VertexInputLayout" kindref="compound">ver::VertexInputLayout</ref></type>
+        <definition>ver::VertexInputLayout MaterialLoader::m_vertexLayout</definition>
+        <argsstring></argsstring>
+        <name>m_vertexLayout</name>
+        <qualifiedname>MaterialLoader::m_vertexLayout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material_loader.h" line="24" column="24" bodyfile="inc/material_loader.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMaterialLoader_a39374bd14557d49a8cbde68faee7ea74_1a39374bd14557d49a8cbde68faee7ea74" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string MaterialLoader::m_modelPath</definition>
+        <argsstring></argsstring>
+        <name>m_modelPath</name>
+        <qualifiedname>MaterialLoader::m_modelPath</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material_loader.h" line="25" column="13" bodyfile="inc/material_loader.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMaterialLoader_a763c503d50e75716babc6f5fe705ac99_1a763c503d50e75716babc6f5fe705ac99" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string MaterialLoader::m_name</definition>
+        <argsstring></argsstring>
+        <name>m_name</name>
+        <qualifiedname>MaterialLoader::m_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material_loader.h" line="26" column="13" bodyfile="inc/material_loader.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMaterialLoader_a301221dd2d8fefbf78dda135baa3b63a_1a301221dd2d8fefbf78dda135baa3b63a" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classMaterial" kindref="compound">Material</ref> &gt;</type>
+        <definition>std::vector&lt;Material&gt; MaterialLoader::m_materials</definition>
+        <argsstring></argsstring>
+        <name>m_materials</name>
+        <qualifiedname>MaterialLoader::m_materials</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material_loader.h" line="27" column="13" bodyfile="inc/material_loader.h" bodystart="27" bodyend="-1"/>
+        <referencedby refid="classMaterialLoader_a0163720457b84671424d5e36cac4763e_1a0163720457b84671424d5e36cac4763e" compoundref="material__loader_8cpp" startline="253" endline="256">getMaterial</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classMaterialLoader_a1416b536d4e7913c309f50fbda7945ab_1a1416b536d4e7913c309f50fbda7945ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MaterialLoader::MaterialLoader</definition>
+        <argsstring>(Graphics &amp;gfx, const aiMaterial &amp;aimaterial, const std::filesystem::path &amp;modelPath) cond_noex</argsstring>
+        <name>MaterialLoader</name>
+        <qualifiedname>MaterialLoader::MaterialLoader</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const aiMaterial &amp;</type>
+          <declname>aimaterial</declname>
+        </param>
+        <param>
+          <type>const std::filesystem::path &amp;</type>
+          <declname>modelPath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material_loader.h" line="29" column="1" bodyfile="src/material_loader.cpp" bodystart="23" bodyend="202"/>
+      </memberdef>
+      <memberdef kind="function" id="classMaterialLoader_a1014105d2a8d4a0cbe81ab367185eef9_1a1014105d2a8d4a0cbe81ab367185eef9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classVertexBuffer" kindref="compound">VertexBuffer</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; VertexBuffer &gt; MaterialLoader::makeVertexBuffer</definition>
+        <argsstring>(Graphics &amp;gfx, const aiMesh &amp;aimesh, float scale=1.0f) const cond_noex</argsstring>
+        <name>makeVertexBuffer</name>
+        <qualifiedname>MaterialLoader::makeVertexBuffer</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const aiMesh &amp;</type>
+          <declname>aimesh</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>scale</declname>
+          <defval>1.0f</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material_loader.h" line="31" column="17" bodyfile="src/material_loader.cpp" bodystart="204" bodyend="220"/>
+        <referencedby refid="classMesh_a5a611a59702d1b70366c71bcbfbe90a9_1a5a611a59702d1b70366c71bcbfbe90a9" compoundref="mesh_8cpp" startline="23" endline="40">Mesh::Mesh</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classMaterialLoader_acfd3864b8b7d374a8f70c0be06ddb2dc_1acfd3864b8b7d374a8f70c0be06ddb2dc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classIndexBuffer" kindref="compound">IndexBuffer</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; IndexBuffer &gt; MaterialLoader::makeIndexBuffer</definition>
+        <argsstring>(Graphics &amp;gfx, const aiMesh &amp;aimesh) const cond_noex</argsstring>
+        <name>makeIndexBuffer</name>
+        <qualifiedname>MaterialLoader::makeIndexBuffer</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const aiMesh &amp;</type>
+          <declname>aimesh</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material_loader.h" line="32" column="17" bodyfile="src/material_loader.cpp" bodystart="222" bodyend="226"/>
+        <referencedby refid="classMesh_a5a611a59702d1b70366c71bcbfbe90a9_1a5a611a59702d1b70366c71bcbfbe90a9" compoundref="mesh_8cpp" startline="23" endline="40">Mesh::Mesh</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classMaterialLoader_a0163720457b84671424d5e36cac4763e_1a0163720457b84671424d5e36cac4763e" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="classMaterial" kindref="compound">Material</ref> &gt;</type>
+        <definition>std::vector&lt; Material &gt; MaterialLoader::getMaterial</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getMaterial</name>
+        <qualifiedname>MaterialLoader::getMaterial</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material_loader.h" line="33" column="13" bodyfile="src/material_loader.cpp" bodystart="253" bodyend="256"/>
+        <referencedby refid="classMesh_a5a611a59702d1b70366c71bcbfbe90a9_1a5a611a59702d1b70366c71bcbfbe90a9" compoundref="mesh_8cpp" startline="23" endline="40">Mesh::Mesh</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classMaterialLoader_a37ae0b3a40ee290880edcb797ff126d1_1a37ae0b3a40ee290880edcb797ff126d1" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string MaterialLoader::calcMeshTag</definition>
+        <argsstring>(const aiMesh &amp;mesh) const noexcept</argsstring>
+        <name>calcMeshTag</name>
+        <qualifiedname>MaterialLoader::calcMeshTag</qualifiedname>
+        <param>
+          <type>const aiMesh &amp;</type>
+          <declname>mesh</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material_loader.h" line="35" column="13" bodyfile="src/material_loader.cpp" bodystart="248" bodyend="251"/>
+      </memberdef>
+      <memberdef kind="function" id="classMaterialLoader_a9b9ae1a8001257bc0d3514670b9b26b6_1a9b9ae1a8001257bc0d3514670b9b26b6" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classver_1_1VBuffer" kindref="compound">ver::VBuffer</ref></type>
+        <definition>ver::VBuffer MaterialLoader::makeVertexBuffer_impl</definition>
+        <argsstring>(const aiMesh &amp;aimesh) const noexcept</argsstring>
+        <name>makeVertexBuffer_impl</name>
+        <qualifiedname>MaterialLoader::makeVertexBuffer_impl</qualifiedname>
+        <param>
+          <type>const aiMesh &amp;</type>
+          <declname>aimesh</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material_loader.h" line="36" column="14" bodyfile="src/material_loader.cpp" bodystart="228" bodyend="231"/>
+      </memberdef>
+      <memberdef kind="function" id="classMaterialLoader_a39cf30ab56dc88368a28c939766e18e0_1a39cf30ab56dc88368a28c939766e18e0" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>std::vector&lt; unsigned &gt;</type>
+        <definition>std::vector&lt; unsigned &gt; MaterialLoader::makeIndexBuffer_impl</definition>
+        <argsstring>(const aiMesh &amp;aimesh) const noexcept</argsstring>
+        <name>makeIndexBuffer_impl</name>
+        <qualifiedname>MaterialLoader::makeIndexBuffer_impl</qualifiedname>
+        <param>
+          <type>const aiMesh &amp;</type>
+          <declname>aimesh</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/material_loader.h" line="37" column="13" bodyfile="src/material_loader.cpp" bodystart="233" bodyend="246"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>dynamically populate model Bindables &amp; attributes given </para>
+    </briefdescription>
+    <detaileddescription>
+<para>=============================================================</para>
+<para><simplesect kind="author"><para>KeyC0de </para>
+</simplesect>
+<simplesect kind="date"><para>2021/10/29 21:04 <heading level="1">Assimp::aiMaterial attributes </heading>
+</para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>MaterialLoader</label>
+        <link refid="classMaterialLoader"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>m_vertexLayout</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ver::VertexInputLayout</label>
+        <link refid="classver_1_1VertexInputLayout"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/material_loader.h" line="22" column="1" bodyfile="inc/material_loader.h" bodystart="23" bodyend="38"/>
+    <listofallmembers>
+      <member refid="classMaterialLoader_a37ae0b3a40ee290880edcb797ff126d1_1a37ae0b3a40ee290880edcb797ff126d1" prot="private" virt="non-virtual"><scope>MaterialLoader</scope><name>calcMeshTag</name></member>
+      <member refid="classMaterialLoader_a0163720457b84671424d5e36cac4763e_1a0163720457b84671424d5e36cac4763e" prot="public" virt="non-virtual"><scope>MaterialLoader</scope><name>getMaterial</name></member>
+      <member refid="classMaterialLoader_a301221dd2d8fefbf78dda135baa3b63a_1a301221dd2d8fefbf78dda135baa3b63a" prot="private" virt="non-virtual"><scope>MaterialLoader</scope><name>m_materials</name></member>
+      <member refid="classMaterialLoader_a39374bd14557d49a8cbde68faee7ea74_1a39374bd14557d49a8cbde68faee7ea74" prot="private" virt="non-virtual"><scope>MaterialLoader</scope><name>m_modelPath</name></member>
+      <member refid="classMaterialLoader_a763c503d50e75716babc6f5fe705ac99_1a763c503d50e75716babc6f5fe705ac99" prot="private" virt="non-virtual"><scope>MaterialLoader</scope><name>m_name</name></member>
+      <member refid="classMaterialLoader_abae8a033b424e276c3925167b64236be_1abae8a033b424e276c3925167b64236be" prot="private" virt="non-virtual"><scope>MaterialLoader</scope><name>m_vertexLayout</name></member>
+      <member refid="classMaterialLoader_acfd3864b8b7d374a8f70c0be06ddb2dc_1acfd3864b8b7d374a8f70c0be06ddb2dc" prot="public" virt="non-virtual"><scope>MaterialLoader</scope><name>makeIndexBuffer</name></member>
+      <member refid="classMaterialLoader_a39cf30ab56dc88368a28c939766e18e0_1a39cf30ab56dc88368a28c939766e18e0" prot="private" virt="non-virtual"><scope>MaterialLoader</scope><name>makeIndexBuffer_impl</name></member>
+      <member refid="classMaterialLoader_a1014105d2a8d4a0cbe81ab367185eef9_1a1014105d2a8d4a0cbe81ab367185eef9" prot="public" virt="non-virtual"><scope>MaterialLoader</scope><name>makeVertexBuffer</name></member>
+      <member refid="classMaterialLoader_a9b9ae1a8001257bc0d3514670b9b26b6_1a9b9ae1a8001257bc0d3514670b9b26b6" prot="private" virt="non-virtual"><scope>MaterialLoader</scope><name>makeVertexBuffer_impl</name></member>
+      <member refid="classMaterialLoader_a1416b536d4e7913c309f50fbda7945ab_1a1416b536d4e7913c309f50fbda7945ab" prot="public" virt="non-virtual"><scope>MaterialLoader</scope><name>MaterialLoader</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

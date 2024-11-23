@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="key__random_8h" kind="file" language="C++">
+    <compoundname>key_random.h</compoundname>
+    <includes local="no">random</includes>
+    <includes local="no">limits</includes>
+    <includedby refid="pass__2d_8h" local="yes">inc/pass_2d.h</includedby>
+    <includedby refid="bmp__loader_8cpp" local="yes">src/bmp_loader.cpp</includedby>
+    <includedby refid="key__random_8cpp" local="yes">src/key_random.cpp</includedby>
+    <includedby refid="pass__2d_8cpp" local="yes">src/pass_2d.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>inc/key_random.h</label>
+        <link refid="key__random_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>limits</label>
+      </node>
+      <node id="2">
+        <label>random</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>inc/key_random.h</label>
+        <link refid="key__random_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>inc/pass_2d.h</label>
+        <link refid="pass__2d_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>src/bmp_loader.cpp</label>
+        <link refid="bmp__loader_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/key_random.cpp</label>
+        <link refid="key__random_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/pass_2d.cpp</label>
+        <link refid="pass__2d_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/renderer.cpp</label>
+        <link refid="renderer_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classKeyRandom" prot="public">KeyRandom</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;random&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;limits&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="classKeyRandom" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classKeyRandom" kindref="compound">KeyRandom</ref><sp/>final</highlight></codeline>
+<codeline lineno="8"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="9" refid="classKeyRandom_ad69c267e8b0d6e9648b082eb27b52cfb_1ad69c267e8b0d6e9648b082eb27b52cfb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::mt19937<sp/><ref refid="classKeyRandom_ad69c267e8b0d6e9648b082eb27b52cfb_1ad69c267e8b0d6e9648b082eb27b52cfb" kindref="member">m_device</ref>;</highlight></codeline>
+<codeline lineno="10" refid="classKeyRandom_a17c6edd9dd7bf9f48bf53414e6bb8c3a_1a17c6edd9dd7bf9f48bf53414e6bb8c3a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classKeyRandom_a17c6edd9dd7bf9f48bf53414e6bb8c3a_1a17c6edd9dd7bf9f48bf53414e6bb8c3a" kindref="member">m_bStarted</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="11" refid="classKeyRandom_a14617b22802ec2b3ffb825a5d44853a7_1a14617b22802ec2b3ffb825a5d44853a7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::uniform_int_distribution&lt;std::mt19937::result_type&gt;<sp/><ref refid="classKeyRandom_a14617b22802ec2b3ffb825a5d44853a7_1a14617b22802ec2b3ffb825a5d44853a7" kindref="member">m_distr</ref>;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyRandom_ac220b9e31d2bebf5a392343777615c62_1ac220b9e31d2bebf5a392343777615c62" kindref="member">KeyRandom</ref>(<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>started<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classKeyRandom_af77e8974f4a8f86e4bfca8f883a493cf_1af77e8974f4a8f86e4bfca8f883a493cf" kindref="member">start</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>explicit<sp/>operator<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>like<sp/>c<sp/>rand()<sp/>function</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classKeyRandom_afd6f965cc40ba00aebb5abfbe7b87edd_1afd6f965cc40ba00aebb5abfbe7b87edd" kindref="member">rand</ref>();</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>0<sp/>-<sp/>1<sp/>int</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classKeyRandom_a43adda5b2928d7bf3d42fde02e1aa3d2_1a43adda5b2928d7bf3d42fde02e1aa3d2" kindref="member">getRandomInt</ref>();</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>0.0f<sp/>-<sp/>1.0f<sp/>float</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classKeyRandom_ae4a57a8361faf2b3d9710470395d3433_1ae4a57a8361faf2b3d9710470395d3433" kindref="member">getRandomFloat</ref>();</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>0.0<sp/>-<sp/>1.0<sp/>double</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classKeyRandom_a2be85d488cdb2380fc02bfe77cafe0a8_1a2be85d488cdb2380fc02bfe77cafe0a8" kindref="member">getRandomDouble</ref>();</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classKeyRandom_a18445a55faeecb68c06335b7df36b4f7_1a18445a55faeecb68c06335b7df36b4f7" kindref="member">getRandomIntInRange</ref>(<sp/>const<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classKeyRandom_af77e8974f4a8f86e4bfca8f883a493cf_1af77e8974f4a8f86e4bfca8f883a493cf" kindref="member">start</ref>,<sp/>const<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>end<sp/>);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classKeyRandom_ab5157649dbef846b678c6238bfbca70a_1ab5157649dbef846b678c6238bfbca70a" kindref="member">getRandomFloatInRange</ref>(<sp/>const<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classKeyRandom_af77e8974f4a8f86e4bfca8f883a493cf_1af77e8974f4a8f86e4bfca8f883a493cf" kindref="member">start</ref><sp/>=<sp/>0,<sp/>const<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>end<sp/>=<sp/>1<sp/>);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classKeyRandom_acca815327d6a3ce9c9fd678071524800_1acca815327d6a3ce9c9fd678071524800" kindref="member">getRandomDoubleInRange</ref>(<sp/>const<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classKeyRandom_af77e8974f4a8f86e4bfca8f883a493cf_1af77e8974f4a8f86e4bfca8f883a493cf" kindref="member">start</ref><sp/>=<sp/>0,<sp/>const<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>end<sp/>=<sp/>1<sp/>);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/key_random.h"/>
+  </compounddef>
+</doxygen>

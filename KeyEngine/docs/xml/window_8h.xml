@@ -1,0 +1,434 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="window_8h" kind="file" language="C++">
+    <compoundname>window.h</compoundname>
+    <includes local="no">optional</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">string</includes>
+    <includes local="no">array</includes>
+    <includes refid="winner_8h" local="yes">winner.h</includes>
+    <includes refid="color_8h" local="yes">color.h</includes>
+    <includes refid="key__exception_8h" local="yes">key_exception.h</includes>
+    <includes refid="keyboard_8h" local="yes">keyboard.h</includes>
+    <includes refid="mouse_8h" local="yes">mouse.h</includes>
+    <includes refid="non__copyable_8h" local="yes">non_copyable.h</includes>
+    <includes refid="windows__hidden__defs_8h" local="yes">windows_hidden_defs.h</includes>
+    <includedby refid="game_8h" local="yes">inc/game.h</includedby>
+    <includedby refid="testing_8cpp" local="yes">src/testing.cpp</includedby>
+    <includedby refid="window_8cpp" local="yes">src/window.cpp</includedby>
+    <incdepgraph>
+      <node id="9">
+        <label>color.h</label>
+        <link refid="color_8h"/>
+      </node>
+      <node id="10">
+        <label>key_exception.h</label>
+        <link refid="key__exception_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>keyboard.h</label>
+        <link refid="keyboard_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>mouse.h</label>
+        <link refid="mouse_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="1">
+        <label>inc/window.h</label>
+        <link refid="window_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>windows_hidden_defs.h</label>
+        <link refid="windows__hidden__defs_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>winner.h</label>
+        <link refid="winner_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>Windows.h</label>
+      </node>
+      <node id="5">
+        <label>array</label>
+      </node>
+      <node id="14">
+        <label>bitset</label>
+      </node>
+      <node id="3">
+        <label>memory</label>
+      </node>
+      <node id="2">
+        <label>optional</label>
+      </node>
+      <node id="13">
+        <label>queue</label>
+      </node>
+      <node id="7">
+        <label>sdkddkver.h</label>
+      </node>
+      <node id="11">
+        <label>stdexcept</label>
+      </node>
+      <node id="4">
+        <label>string</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>inc/game.h</label>
+        <link refid="game_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/window.h</label>
+        <link refid="window_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>src/game.cpp</label>
+        <link refid="game_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/testing.cpp</label>
+        <link refid="testing_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/window.cpp</label>
+        <link refid="window_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classWindow" prot="public">Window</innerclass>
+    <innerclass refid="classWindow_1_1WindowException" prot="private">Window::WindowException</innerclass>
+    <innerclass refid="classWindow_1_1WindowClass" prot="private">Window::WindowClass</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="window_8h_a02c6467dd339058026d2c844b856e060_1a02c6467dd339058026d2c844b856e060" prot="public" static="no">
+        <name>CLIPBOARD_TEXT_FORMAT</name>
+        <initializer>CF_TEXT</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="18" column="11" bodyfile="inc/window.h" bodystart="18" bodyend="-1"/>
+        <referencedby refid="classWindow_a40ba1a2d6d8ec7cd381ef0f20b423acb_1a40ba1a2d6d8ec7cd381ef0f20b423acb" compoundref="window_8cpp" startline="1852" endline="1913">Window::processMenu</referencedby>
+        <referencedby refid="classWindow_a989ce4fa31d0caf58d4f238b9c094d31_1a989ce4fa31d0caf58d4f238b9c094d31" compoundref="window_8cpp" startline="597" endline="612">Window::saveClipboardTextAsVar</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="window_8h_a21f24486fd8c4be082345cc50d58daf3_1a21f24486fd8c4be082345cc50d58daf3" prot="public" static="no">
+        <name>BUTTON_TEXT_MAX_LENGTH</name>
+        <initializer>80</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="21" column="9" bodyfile="inc/window.h" bodystart="21" bodyend="-1"/>
+        <referencedby refid="classWindow_a043951d406f11adc6a7320fcc40de5ff_1a043951d406f11adc6a7320fcc40de5ff" compoundref="window_8cpp" startline="1571" endline="1631">Window::dialogProc</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="window_8h_a20fc6f5b3b83853aa494acbb2acd8c6d_1a20fc6f5b3b83853aa494acbb2acd8c6d" prot="public" static="no">
+        <name>MAIN_WINDOW_CLASS_NAME</name>
+        <initializer>&quot;KeyEngine_Main_Window_Class&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="24" column="9" bodyfile="inc/window.h" bodystart="24" bodyend="-1"/>
+        <referencedby refid="classWindow_a69f83cc5dc2d4f9807e4d11d2b2623e1_1a69f83cc5dc2d4f9807e4d11d2b2623e1" compoundref="window_8cpp" startline="118" endline="270">Window::Window</referencedby>
+        <referencedby refid="classWindow_1_1WindowClass_aa826fd2bfebc907f2ae0d3226b919480_1aa826fd2bfebc907f2ae0d3226b919480" compoundref="window_8cpp" startline="32" endline="91">Window::WindowClass::WindowClass</referencedby>
+        <referencedby refid="classWindow_a245d821e6016fa1f6970ccbbedd635f6_1a245d821e6016fa1f6970ccbbedd635f6" compoundref="window_8cpp" startline="298" endline="330">Window::~Window</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="window_8h_acbdec3261d9d52db78e431757783e7fe_1acbdec3261d9d52db78e431757783e7fe" prot="public" static="no">
+        <name>MODAL_DIALOG_CLASS_NAME</name>
+        <initializer>&quot;KeyEngine_Modal_Dialog_Class&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="25" column="9" bodyfile="inc/window.h" bodystart="25" bodyend="-1"/>
+        <referencedby refid="classWindow_a69f83cc5dc2d4f9807e4d11d2b2623e1_1a69f83cc5dc2d4f9807e4d11d2b2623e1" compoundref="window_8cpp" startline="118" endline="270">Window::Window</referencedby>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">Window::windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="window_8h_a92c0685bebb98e74482bf33de1a4cb4b_1a92c0685bebb98e74482bf33de1a4cb4b" prot="public" static="no">
+        <name>MODELESS_DIALOG_CLASS_NAME</name>
+        <initializer>&quot;KeyEngine_Modeless_Dialog_Class&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="26" column="9" bodyfile="inc/window.h" bodystart="26" bodyend="-1"/>
+        <referencedby refid="classWindow_a69f83cc5dc2d4f9807e4d11d2b2623e1_1a69f83cc5dc2d4f9807e4d11d2b2623e1" compoundref="window_8cpp" startline="118" endline="270">Window::Window</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="window_8h_a8ad6bc6b10920ededc415faf85febef8_1a8ad6bc6b10920ededc415faf85febef8" prot="public" static="no">
+        <name>SPLASH_WINDOW_CLASS_NAME</name>
+        <initializer>&quot;KeyEngine_Splash_Window_Class&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="27" column="9" bodyfile="inc/window.h" bodystart="27" bodyend="-1"/>
+        <referencedby refid="classWindow_a69f83cc5dc2d4f9807e4d11d2b2623e1_1a69f83cc5dc2d4f9807e4d11d2b2623e1" compoundref="window_8cpp" startline="118" endline="270">Window::Window</referencedby>
+        <referencedby refid="classWindow_1_1WindowClass_aa826fd2bfebc907f2ae0d3226b919480_1aa826fd2bfebc907f2ae0d3226b919480" compoundref="window_8cpp" startline="32" endline="91">Window::WindowClass::WindowClass</referencedby>
+        <referencedby refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" compoundref="window_8cpp" startline="996" endline="1569">Window::windowProc_impl3d</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="window_8h_aef72bf74c6c9348295b48a2f564747b1_1aef72bf74c6c9348295b48a2f564747b1" prot="public" static="no">
+        <name>THROW_WINDOW_EXCEPTION</name>
+        <param><defname>msg</defname></param>
+        <initializer>	__debugbreak();\
+	throw WindowException( __LINE__, __FILE__, __FUNCTION__, msg );</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/window.h" line="178" column="9" bodyfile="inc/window.h" bodystart="178" bodyend="179"/>
+        <referencedby refid="classWindow_a69f83cc5dc2d4f9807e4d11d2b2623e1_1a69f83cc5dc2d4f9807e4d11d2b2623e1" compoundref="window_8cpp" startline="118" endline="270">Window::Window</referencedby>
+        <referencedby refid="classWindow_aa60fa73c7502fab7465b9aca117f577f_1aa60fa73c7502fab7465b9aca117f577f" compoundref="window_8cpp" startline="1836" endline="1844">Window::getConsoleHandle</referencedby>
+        <referencedby refid="classWindow_a4e66e4896e552265193a794ae82a1b2d_1a4e66e4896e552265193a794ae82a1b2d" compoundref="window_8cpp" startline="614" endline="691">Window::setupSplashWindow</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;array&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="winner_8h" kindref="compound">winner.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="color_8h" kindref="compound">color.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="key__exception_8h" kindref="compound">key_exception.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="keyboard_8h" kindref="compound">keyboard.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mouse_8h" kindref="compound">mouse.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="non__copyable_8h" kindref="compound">non_copyable.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="windows__hidden__defs_8h" kindref="compound">windows_hidden_defs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>UNICODE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>CLIPBOARD_TEXT_FORMAT<sp/><sp/><sp/><sp/>CF_UNICODETEXT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="window_8h_a02c6467dd339058026d2c844b856e060_1a02c6467dd339058026d2c844b856e060" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>CLIPBOARD_TEXT_FORMAT<sp/><sp/><sp/><sp/>CF_TEXT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="window_8h_a21f24486fd8c4be082345cc50d58daf3_1a21f24486fd8c4be082345cc50d58daf3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BUTTON_TEXT_MAX_LENGTH<sp/><sp/><sp/><sp/><sp/><sp/>80</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#WARNING!<sp/>These<sp/>identifiers<sp/>must<sp/>be<sp/>unique<sp/>among<sp/>all<sp/>window<sp/>classes<sp/>currently<sp/>present<sp/>in<sp/>the<sp/>OS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="window_8h_a20fc6f5b3b83853aa494acbb2acd8c6d_1a20fc6f5b3b83853aa494acbb2acd8c6d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAIN_WINDOW_CLASS_NAME<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;KeyEngine_Main_Window_Class&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="window_8h_acbdec3261d9d52db78e431757783e7fe_1acbdec3261d9d52db78e431757783e7fe" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MODAL_DIALOG_CLASS_NAME<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;KeyEngine_Modal_Dialog_Class&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="window_8h_a92c0685bebb98e74482bf33de1a4cb4b_1a92c0685bebb98e74482bf33de1a4cb4b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MODELESS_DIALOG_CLASS_NAME<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;KeyEngine_Modeless_Dialog_Class&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="window_8h_a8ad6bc6b10920ededc415faf85febef8_1a8ad6bc6b10920ededc415faf85febef8" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SPLASH_WINDOW_CLASS_NAME<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;KeyEngine_Splash_Window_Class&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classGraphics" kindref="compound">Graphics</ref>;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classWindow" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classWindow" kindref="compound">Window</ref><sp/>final</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classNonCopyable" kindref="compound">NonCopyable</ref></highlight></codeline>
+<codeline lineno="34"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35" refid="classWindow_1_1WindowException" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classWindow_1_1WindowException" kindref="compound">WindowException</ref><sp/>final</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classKeyException" kindref="compound">KeyException</ref></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWindow_1_1WindowException_ad67a648b27df5170dc350a86025d02f2_1ad67a648b27df5170dc350a86025d02f2" kindref="member">WindowException</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>line,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*file,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*function,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;msg<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classWindow_1_1WindowException_ad90e3938364bfe58024e3c28b0e639d6_1ad90e3938364bfe58024e3c28b0e639d6" kindref="member">getType</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classWindow_1_1WindowException_a8b6ed4413bb89753ed13bbaea38b942c_1a8b6ed4413bb89753ed13bbaea38b942c" kindref="member">what</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="classWindow_1_1WindowClass" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classWindow_1_1WindowClass" kindref="compound">WindowClass</ref><sp/>final</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classNonCopyable" kindref="compound">NonCopyable</ref></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="48" refid="classWindow_1_1WindowClass_a853d93c9b3a8146d1ff4d32af0e5daee_1a853d93c9b3a8146d1ff4d32af0e5daee" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classWindow_1_1WindowClass_a853d93c9b3a8146d1ff4d32af0e5daee_1a853d93c9b3a8146d1ff4d32af0e5daee" kindref="member">m_name</ref>;</highlight></codeline>
+<codeline lineno="49" refid="classWindow_1_1WindowClass_a9de2bc5dce0d50fcd956a40e7959a8cc_1a9de2bc5dce0d50fcd956a40e7959a8cc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ATOM<sp/><ref refid="classWindow_1_1WindowClass_a9de2bc5dce0d50fcd956a40e7959a8cc_1a9de2bc5dce0d50fcd956a40e7959a8cc" kindref="member">m_classAtom</ref>;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWindow_1_1WindowClass_aa826fd2bfebc907f2ae0d3226b919480_1aa826fd2bfebc907f2ae0d3226b919480" kindref="member">WindowClass</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>WNDPROC<sp/>windowProcedure,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref><sp/>bgColor<sp/>);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWindow_1_1WindowClass_aa826fd2bfebc907f2ae0d3226b919480_1aa826fd2bfebc907f2ae0d3226b919480" kindref="member">WindowClass</ref>(<sp/><ref refid="classWindow_1_1WindowClass" kindref="compound">WindowClass</ref><sp/>&amp;&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWindow_1_1WindowClass" kindref="compound">WindowClass</ref>&amp;<sp/><ref refid="classWindow_1_1WindowClass_a8dde35b917e1ff3d216d531076127936_1a8dde35b917e1ff3d216d531076127936" kindref="member">operator=</ref>(<sp/><ref refid="classWindow_1_1WindowClass" kindref="compound">WindowClass</ref><sp/>&amp;&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWindow_1_1WindowClass_a4c052246d032ab5956e6fa027f1cd9e5_1a4c052246d032ab5956e6fa027f1cd9e5" kindref="member">~WindowClass</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">&amp;<sp/><ref refid="classWindow_1_1WindowClass_a1fe165faa5f62cda6d4140da40167d9c_1a1fe165faa5f62cda6d4140da40167d9c" kindref="member">getName</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">private:</highlight></codeline>
+<codeline lineno="59" refid="classWindow_adad72e93053ae81a048b11b80a886ca4_1adad72e93053ae81a048b11b80a886ca4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/>inline<sp/><ref refid="classKeyboard" kindref="compound">Keyboard</ref><sp/><ref refid="classWindow_adad72e93053ae81a048b11b80a886ca4_1adad72e93053ae81a048b11b80a886ca4" kindref="member">s_keyboard</ref>;</highlight></codeline>
+<codeline lineno="60" refid="classWindow_a346ad68a7a25b4faa0d7b99bf6a20a13_1a346ad68a7a25b4faa0d7b99bf6a20a13" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/>inline<sp/><ref refid="classMouse" kindref="compound">Mouse</ref><sp/><ref refid="classWindow_a346ad68a7a25b4faa0d7b99bf6a20a13_1a346ad68a7a25b4faa0d7b99bf6a20a13" kindref="member">s_mouse</ref>;</highlight></codeline>
+<codeline lineno="61" refid="classWindow_a34b7a782124f9a212b5e42a75d90ce35_1a34b7a782124f9a212b5e42a75d90ce35" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/>inline<sp/>std::vector&lt;BYTE&gt;<sp/><ref refid="classWindow_a34b7a782124f9a212b5e42a75d90ce35_1a34b7a782124f9a212b5e42a75d90ce35" kindref="member">s_rawInputBuffer</ref>;</highlight></codeline>
+<codeline lineno="62" refid="classWindow_adb2d358327f22c4df6f01ea4e92db80b_1adb2d358327f22c4df6f01ea4e92db80b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/>inline<sp/>HACCEL<sp/><ref refid="classWindow_adb2d358327f22c4df6f01ea4e92db80b_1adb2d358327f22c4df6f01ea4e92db80b" kindref="member">s_hAcceleratorTable</ref>;</highlight></codeline>
+<codeline lineno="63" refid="classWindow_a9cc5ee14371f126378a31c305189611a_1a9cc5ee14371f126378a31c305189611a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/>inline<sp/><ref refid="structtagLABELBOX" kindref="compound">PLABELBOX</ref><sp/><ref refid="classWindow_a9cc5ee14371f126378a31c305189611a_1a9cc5ee14371f126378a31c305189611a" kindref="member">s_pBoxLocalClip</ref>;</highlight></codeline>
+<codeline lineno="64" refid="classWindow_a489a152d80bb5ee013d485e0c92e6064_1a489a152d80bb5ee013d485e0c92e6064" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/>inline<sp/>UINT_PTR<sp/><ref refid="classWindow_a489a152d80bb5ee013d485e0c92e6064_1a489a152d80bb5ee013d485e0c92e6064" kindref="member">s_timerEvent</ref><sp/>=<sp/>0ui64;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">private:</highlight></codeline>
+<codeline lineno="66" refid="classWindow_ae3edc49affe0c51784741be3fb19ada9_1ae3edc49affe0c51784741be3fb19ada9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWindow_1_1WindowClass" kindref="compound">WindowClass</ref><sp/><ref refid="classWindow_ae3edc49affe0c51784741be3fb19ada9_1ae3edc49affe0c51784741be3fb19ada9" kindref="member">m_windowClass</ref>;</highlight></codeline>
+<codeline lineno="67" refid="classWindow_a588f1844e2f5098b7a75f8703efde18e_1a588f1844e2f5098b7a75f8703efde18e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classWindow_a588f1844e2f5098b7a75f8703efde18e_1a588f1844e2f5098b7a75f8703efde18e" kindref="member">m_bCursorEnabled</ref><sp/>=<sp/>true;</highlight></codeline>
+<codeline lineno="68" refid="classWindow_ae2e5678a2d1737dd39ff66cbb7565e15_1ae2e5678a2d1737dd39ff66cbb7565e15" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classWindow_1_1WindowClass_a853d93c9b3a8146d1ff4d32af0e5daee_1a853d93c9b3a8146d1ff4d32af0e5daee" kindref="member">m_name</ref>;</highlight></codeline>
+<codeline lineno="69" refid="classWindow_ae9ced8207aab8f5717efd6610340e62d_1ae9ced8207aab8f5717efd6610340e62d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classWindow_ae9ced8207aab8f5717efd6610340e62d_1ae9ced8207aab8f5717efd6610340e62d" kindref="member">m_title</ref>;</highlight></codeline>
+<codeline lineno="70" refid="classWindow_ab39b5ba6b3adea40aa19ffa50e306dbb_1ab39b5ba6b3adea40aa19ffa50e306dbb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>HWND<sp/><ref refid="classWindow_ab39b5ba6b3adea40aa19ffa50e306dbb_1ab39b5ba6b3adea40aa19ffa50e306dbb" kindref="member">m_hWnd</ref>;</highlight></codeline>
+<codeline lineno="71" refid="classWindow_a9801c1522a675647f8e2cbfa6d10c7dc_1a9801c1522a675647f8e2cbfa6d10c7dc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;<ref refid="classGraphics" kindref="compound">Graphics</ref>&gt;<sp/><ref refid="classWindow_a9801c1522a675647f8e2cbfa6d10c7dc_1a9801c1522a675647f8e2cbfa6d10c7dc" kindref="member">m_pGraphics</ref>;</highlight></codeline>
+<codeline lineno="72" refid="classWindow_a0cd7fb10e78040422ad35827fd9d1554_1a0cd7fb10e78040422ad35827fd9d1554" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>WINDOWINFO<sp/><ref refid="classWindow_a0cd7fb10e78040422ad35827fd9d1554_1a0cd7fb10e78040422ad35827fd9d1554" kindref="member">m_info</ref>{};</highlight></codeline>
+<codeline lineno="73" refid="classWindow_aa1e61281cd037023b477dcb843b5b573_1aa1e61281cd037023b477dcb843b5b573" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::array&lt;unsigned,<sp/>8&gt;<sp/><ref refid="classWindow_aa1e61281cd037023b477dcb843b5b573_1aa1e61281cd037023b477dcb843b5b573" kindref="member">m_clipboardFormats</ref>;<sp/></highlight><highlight class="comment">//<sp/>{0:<sp/>unicode<sp/>format,...}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="classWindow_a1fa9417ebe0ef97a982efb0dadcf8a5d_1a1fa9417ebe0ef97a982efb0dadcf8a5d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>HMENU<sp/><ref refid="classWindow_a1fa9417ebe0ef97a982efb0dadcf8a5d_1a1fa9417ebe0ef97a982efb0dadcf8a5d" kindref="member">m_hTrayIconPopupMenu</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="75" refid="classWindow_a3129bb2ec0c28df7e02041c6d74fb5cd_1a3129bb2ec0c28df7e02041c6d74fb5cd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTIFYICONDATA<sp/><ref refid="classWindow_a3129bb2ec0c28df7e02041c6d74fb5cd_1a3129bb2ec0c28df7e02041c6d74fb5cd" kindref="member">m_trayIconData</ref>{};</highlight></codeline>
+<codeline lineno="76" refid="classWindow_a4a330c87fd1258d1846f147a9a188bd0_1a4a330c87fd1258d1846f147a9a188bd0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;Window&gt;<sp/><ref refid="classWindow_a4a330c87fd1258d1846f147a9a188bd0_1a4a330c87fd1258d1846f147a9a188bd0" kindref="member">m_pModalDialog</ref>;</highlight></codeline>
+<codeline lineno="77" refid="classWindow_a8eb3ec06d02253d7102350bd9533a17c_1a8eb3ec06d02253d7102350bd9533a17c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;Window&gt;<sp/><ref refid="classWindow_a8eb3ec06d02253d7102350bd9533a17c_1a8eb3ec06d02253d7102350bd9533a17c" kindref="member">m_pSplash</ref>;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>LRESULT<sp/>CALLBACK<sp/><ref refid="classWindow_a73049005d1b7e248e423374b50ec1915_1a73049005d1b7e248e423374b50ec1915" kindref="member">windowProcDelegate</ref>(<sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>HWND<sp/>pWndHandle,<sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>uMsg,<sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>WPARAM<sp/>wParam,<sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>LPARAM<sp/>lParam<sp/>);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classWindow_acc3b6797295659d5ed747dd64aae767d_1acc3b6797295659d5ed747dd64aae767d" kindref="member">messageBoxPrintf</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>HWND<sp/>window,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TCHAR<sp/>*caption,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TCHAR<sp/>*format,<sp/>...<sp/>);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>LRESULT<sp/>CALLBACK<sp/><ref refid="classWindow_a63b33789bf23618f116c8b97b2010f58_1a63b33789bf23618f116c8b97b2010f58" kindref="member">windowProc</ref>(<sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>HWND<sp/>pWnd,<sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>uMsg,<sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>WPARAM<sp/>wParam,<sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>LPARAM<sp/>lParam<sp/>);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>LRESULT<sp/>CALLBACK<sp/><ref refid="classWindow_a043951d406f11adc6a7320fcc40de5ff_1a043951d406f11adc6a7320fcc40de5ff" kindref="member">dialogProc</ref>(<sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>HWND<sp/>hWnd,<sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>uMsg,<sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>WPARAM<sp/>wParam,<sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>LPARAM<sp/>lParam<sp/>);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>LRESULT<sp/>CALLBACK<sp/><ref refid="classWindow_adc6e743324b3b804df5b2fa86ced2a6f_1adc6e743324b3b804df5b2fa86ced2a6f" kindref="member">splashWindowProc</ref>(<sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>HWND<sp/>hWnd,<sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>uMsg,<sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>WPARAM<sp/>wParam,<sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>LPARAM<sp/>lParam<sp/>);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>CALLBACK<sp/><ref refid="classWindow_acf8285de3092f3452349ee4591627b11_1acf8285de3092f3452349ee4591627b11" kindref="member">splashWindowTimerProc</ref>(<sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>HWND<sp/>hWnd,<sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>uMsg,<sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>idEvent,<sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DWORD<sp/>time<sp/>);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classKeyboard" kindref="compound">Keyboard</ref>&amp;<sp/><ref refid="classWindow_af51b384330835f7ee8d0c3cb1254c4f8_1af51b384330835f7ee8d0c3cb1254c4f8" kindref="member">getKeyboard</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/><ref refid="classMouse" kindref="compound">Mouse</ref>&amp;<sp/><ref refid="classWindow_a89e829c66c387dfca31d10b9806da751_1a89e829c66c387dfca31d10b9806da751" kindref="member">getMouse</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classWindow_aad814dbb72db34012be61839a21ea004_1aad814dbb72db34012be61839a21ea004" kindref="member">isDescendantOf</ref>(<sp/>const<sp/>HWND<sp/>targethWnd,<sp/>const<sp/>HWND<sp/>parent<sp/>)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classWindow_a989ce4fa31d0caf58d4f238b9c094d31_1a989ce4fa31d0caf58d4f238b9c094d31" kindref="member">saveClipboardTextAsVar</ref>();</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/>HBITMAP<sp/><ref refid="classWindow_ab9660b523de7bdc93b8048a12edd1b6e_1ab9660b523de7bdc93b8048a12edd1b6e" kindref="member">convertHiconToHbitmap</ref>(<sp/>HICON<sp/>hIcon<sp/>);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/>HICON<sp/><ref refid="classWindow_a8399c68d7ae5f5cc253512d42674e049_1a8399c68d7ae5f5cc253512d42674e049" kindref="member">convertHbitmapToHicon</ref>(<sp/>HBITMAP<sp/>bitmap<sp/>);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal">public:</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWindow" kindref="compound">Window</ref>(<sp/>const<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>width,<sp/>const<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>height,<sp/>const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name,<sp/>const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*className,<sp/>const<sp/>WNDPROC<sp/>windowProcedure,<sp/>const<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/>const<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y,<sp/>const<sp/><ref refid="structColorBGRA" kindref="compound">ColorBGRA</ref><sp/>bgColor<sp/>=<sp/>{255,<sp/>255,<sp/>255},<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>HMENU<sp/>hMenu<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classWindow" kindref="compound">Window</ref><sp/>*parent<sp/>=<sp/>nullptr<sp/>);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWindow_a69f83cc5dc2d4f9807e4d11d2b2623e1_1a69f83cc5dc2d4f9807e4d11d2b2623e1" kindref="member">Window</ref>(<sp/><ref refid="classWindow" kindref="compound">Window</ref><sp/>&amp;&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWindow" kindref="compound">Window</ref>&amp;<sp/><ref refid="classWindow_1_1WindowClass_a8dde35b917e1ff3d216d531076127936_1a8dde35b917e1ff3d216d531076127936" kindref="member">operator=</ref>(<sp/><ref refid="classWindow" kindref="compound">Window</ref><sp/>&amp;&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWindow_a245d821e6016fa1f6970ccbbedd635f6_1a245d821e6016fa1f6970ccbbedd635f6" kindref="member">~Window</ref>();</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;int&gt;<sp/><ref refid="classWindow_a1b5d1120e6ad1f4e078e2942dffd0041_1a1b5d1120e6ad1f4e078e2942dffd0041" kindref="member">messageLoop</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classWindow_a5a4f28721b04c0047afb8881f68e359d_1a5a4f28721b04c0047afb8881f68e359d" kindref="member">setEnable</ref>(<sp/>const<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>b<sp/>);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classWindow_a9278ce486f1bedf76b70b44180ad57f7_1a9278ce486f1bedf76b70b44180ad57f7" kindref="member">setOnTop</ref>();</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>HWND<sp/><ref refid="classWindow_a9d12dc09ac60627ee8192096b45fc129_1a9d12dc09ac60627ee8192096b45fc129" kindref="member">setFocus</ref>();</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classWindow_a7a22b0c74d1615879b93e69d7a0370ab_1a7a22b0c74d1615879b93e69d7a0370ab" kindref="member">hasParent</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>HWND<sp/><ref refid="classWindow_ad9c087919d3f2b8bf0b5685795389a83_1ad9c087919d3f2b8bf0b5685795389a83" kindref="member">getParent</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classWindow_a6d03fd6c9fbfcaf4aba92e6b4d08123e_1a6d03fd6c9fbfcaf4aba92e6b4d08123e" kindref="member">setTitle</ref>(<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>&amp;title<sp/>);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">&amp;<sp/><ref refid="classWindow_a4dbcd17685dba50912a2989c2782ec0d_1a4dbcd17685dba50912a2989c2782ec0d" kindref="member">getTitle</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classWindow_a03a5e37c7d4e07b4e77c08776f82e476_1a03a5e37c7d4e07b4e77c08776f82e476" kindref="member">enableCursor</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classWindow_a0a62a86c1134a2579afff3bfc2487d0b_1a0a62a86c1134a2579afff3bfc2487d0b" kindref="member">disableCursor</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classWindow_ae75c970afd77b9812f1fa3fc96549844_1ae75c970afd77b9812f1fa3fc96549844" kindref="member">isCursorEnabled</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classWindow_ab8b32cdcbc931c83c777887df83c5a13_1ab8b32cdcbc931c83c777887df83c5a13" kindref="member">displayMessageBoxYesNo</ref>(<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>&amp;title,<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>&amp;message<sp/>)<sp/>const;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classWindow_a466dc023c98b22fdc026c2d70bca1fb9_1a466dc023c98b22fdc026c2d70bca1fb9" kindref="member">displayMessageBoxOkCancel</ref>(<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>&amp;title,<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>&amp;message<sp/>)<sp/>const;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classWindow_afc527296ebd4d19ca2fdfba50c1aa19c_1afc527296ebd4d19ca2fdfba50c1aa19c" kindref="member">isActive</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">&amp;<sp/><ref refid="classWindow_1_1WindowClass_a1fe165faa5f62cda6d4140da40167d9c_1a1fe165faa5f62cda6d4140da40167d9c" kindref="member">getName</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classWindow_a97078387be519b16401c3bb0f299aa01_1a97078387be519b16401c3bb0f299aa01" kindref="member">minimize</ref>();</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classWindow_ac12065a404bba4aaca510c33a8a338d1_1ac12065a404bba4aaca510c33a8a338d1" kindref="member">restore</ref>();</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classWindow_a1bc18114b16d26fcc7e776802a1c33ce_1a1bc18114b16d26fcc7e776802a1c33ce" kindref="member">isHidden</ref>()<sp/>const<sp/>noexcept;<sp/></highlight><highlight class="comment">//<sp/>isVisible(),<sp/>or<sp/>isMinimized()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classWindow_a9dbbf71fa232f1014678ae05d9bf1572_1a9dbbf71fa232f1014678ae05d9bf1572" kindref="member">isMinimized</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classWindow_ad68904fd77fc0139d48741cb770c7dff_1ad68904fd77fc0139d48741cb770c7dff" kindref="member">isMaximized</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>operator<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGraphics" kindref="compound">Graphics</ref>&amp;<sp/><ref refid="classWindow_a7bfce0a1441d9a824b5469ae7de8c862_1a7bfce0a1441d9a824b5469ae7de8c862" kindref="member">getGraphics</ref>();</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>HWND<sp/><ref refid="classWindow_a5cccd0b4ac2a4b1e5fa40cc270342101_1a5cccd0b4ac2a4b1e5fa40cc270342101" kindref="member">getHandle</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>HDC<sp/><ref refid="classWindow_a2005a212933dd5d754ac219ca1a59ea6_1a2005a212933dd5d754ac219ca1a59ea6" kindref="member">getDc</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>WINDOWINFO<sp/><ref refid="classWindow_a9e348a5db42ae8467ef4c1beff84a966_1a9e348a5db42ae8467ef4c1beff84a966" kindref="member">getInfo</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classWindow_a963c689b550db092425a27d653375953_1a963c689b550db092425a27d653375953" kindref="member">getWindowStyles</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classWindow_af3729cddcc53edb24dcf9379fd17bf1f_1af3729cddcc53edb24dcf9379fd17bf1f" kindref="member">getWindowStylesEx</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classWindow_ac96ebcab2a11b85fbbb9f361e4fec14d_1ac96ebcab2a11b85fbbb9f361e4fec14d" kindref="member">setWindowStyles</ref>(<sp/>const<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>windowStyles<sp/>)<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classWindow_a84c9316e2abef10f3c1fbe3ebcb3bad6_1a84c9316e2abef10f3c1fbe3ebcb3bad6" kindref="member">setWindowStylesEx</ref>(<sp/>const<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>windowStylesEx<sp/>)<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classWindow_a9cd314e68c41dc086d9de29c5d5b0658_1a9cd314e68c41dc086d9de29c5d5b0658" kindref="member">setBorderless</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classWindow_a6f835d03f53872fb1a84f142a037977e_1a6f835d03f53872fb1a84f142a037977e" kindref="member">setRedrawing</ref>(<sp/>const<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bRedraw<sp/>);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classWindow_a23bdfd4da0ed787aef0d99862fc5298b_1a23bdfd4da0ed787aef0d99862fc5298b" kindref="member">showMenu</ref>(<sp/>const<sp/>HMENU<sp/>hMenu<sp/>);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classWindow_a3c40c067671e1a563ffdc0a22846a4f1_1a3c40c067671e1a563ffdc0a22846a4f1" kindref="member">hideMenu</ref>();</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>HMENU<sp/><ref refid="classWindow_ae1da2df411ae2d3b1b9ea0ac8ce36286_1ae1da2df411ae2d3b1b9ea0ac8ce36286" kindref="member">getTopMenu</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>HWND<sp/><ref refid="classWindow_a639d79c96a98f0462aaae8642d4a371f_1a639d79c96a98f0462aaae8642d4a371f" kindref="member">getDesktop</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classWindow_a5532ddffbaa83268e3f62315d0da6540_1a5532ddffbaa83268e3f62315d0da6540" kindref="member">getX</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classWindow_ad68c496df5b556d8dd4abd632c0b8878_1ad68c496df5b556d8dd4abd632c0b8878" kindref="member">getY</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classWindow_a04ce42e257b20bc0ed80a7e5e5249c3b_1a04ce42e257b20bc0ed80a7e5e5249c3b" kindref="member">getWidth</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classWindow_ae3f3f96cddd3362dcf7bd82a5f7788c4_1ae3f3f96cddd3362dcf7bd82a5f7788c4" kindref="member">getWidthClientArea</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classWindow_a26083d8f85d6d29f84cac1d246cbb62b_1a26083d8f85d6d29f84cac1d246cbb62b" kindref="member">getHeight</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classWindow_abba393eef111b17a568f3913afb9993b_1abba393eef111b17a568f3913afb9993b" kindref="member">getHeightClientArea</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>HWND<sp/><ref refid="classWindow_aa60fa73c7502fab7465b9aca117f577f_1aa60fa73c7502fab7465b9aca117f577f" kindref="member">getConsoleHandle</ref>()<sp/>const;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/><ref refid="classWindow_1_1WindowClass_aa826fd2bfebc907f2ae0d3226b919480_1aa826fd2bfebc907f2ae0d3226b919480" kindref="member">WindowClass</ref>&amp;<sp/><ref refid="classWindow_a752e47d52453c84ebf8c3f42a6343e66_1a752e47d52453c84ebf8c3f42a6343e66" kindref="member">getWindowClass</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classWindow_a4e66e4896e552265193a794ae82a1b2d_1a4e66e4896e552265193a794ae82a1b2d" kindref="member">setupSplashWindow</ref>(<sp/>HBITMAP<sp/>hSplashBitmap<sp/>);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal">private:</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classWindow_afa1a733e26aa19e79c461139ecdb536e_1afa1a733e26aa19e79c461139ecdb536e" kindref="member">confineCursor</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classWindow_a4a4ac4dd9c15b4e2a555334befddf7a9_1a4a4ac4dd9c15b4e2a555334befddf7a9" kindref="member">freeCursor</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classWindow_a0aed96a4d37d339964c343b729b214f2_1a0aed96a4d37d339964c343b729b214f2" kindref="member">showCursor</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classWindow_a8e1a697f5c01400e49c3263d2afd4686_1a8e1a697f5c01400e49c3263d2afd4686" kindref="member">hideCursor</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classWindow_a566918cfdad3ca7954923043dc8ecaf8_1a566918cfdad3ca7954923043dc8ecaf8" kindref="member">enableImGuiMouse</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classWindow_a2de00afd8696721e9b26d797d1c5baab_1a2de00afd8696721e9b26d797d1c5baab" kindref="member">disableImGuiMouse</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>LRESULT<sp/><ref refid="classWindow_a2821cd9dba5a27e88f90808281444e93_1a2821cd9dba5a27e88f90808281444e93" kindref="member">windowProc_impl3d</ref>(<sp/>_In_<sp/>const<sp/>HWND<sp/>pWndHandle,<sp/>_In_<sp/>const<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>msg,<sp/>_In_<sp/>const<sp/>WPARAM<sp/>wparam,<sp/>_In_<sp/>const<sp/>LPARAM<sp/>lparam<sp/>);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>LRESULT<sp/><ref refid="classWindow_afcc33d5d00fe7a117049c347a7c800d4_1afcc33d5d00fe7a117049c347a7c800d4" kindref="member">windowProc_impl2d</ref>(<sp/>_In_<sp/>const<sp/>HWND<sp/>pWndHandle,<sp/>_In_<sp/>const<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>msg,<sp/>_In_<sp/>const<sp/>WPARAM<sp/>wparam,<sp/>_In_<sp/>const<sp/>LPARAM<sp/>lparam<sp/>);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classWindow_ace4b47e72c96be743531236e6c632fa6_1ace4b47e72c96be743531236e6c632fa6" kindref="member">setFont</ref>(<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>&amp;fontName<sp/>);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classWindow_a5dc819c56369c625f93cb8131b795d16_1a5dc819c56369c625f93cb8131b795d16" kindref="member">setWindowProperties</ref>(<sp/>const<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>width,<sp/>const<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>height,<sp/>const<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>flags<sp/>=<sp/>SWP_NOZORDER<sp/>|<sp/>SWP_NOMOVE<sp/>|<sp/>SWP_NOACTIVATE<sp/>)<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>WINAPI<sp/><ref refid="classWindow_a40ba1a2d6d8ec7cd381ef0f20b423acb_1a40ba1a2d6d8ec7cd381ef0f20b423acb" kindref="member">processMenu</ref>(<sp/>HMENU<sp/>hMenu<sp/>);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classWindow_ac3feef02bfeadc708b8b6e9b093b4368_1ac3feef02bfeadc708b8b6e9b093b4368" kindref="member">editCopy</ref>(<sp/>const<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>format<sp/>=<sp/><ref refid="window_8h_a02c6467dd339058026d2c844b856e060_1a02c6467dd339058026d2c844b856e060" kindref="member">CLIPBOARD_TEXT_FORMAT</ref><sp/>);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classWindow_a017c50359cd4f4884d06347bd97623fb_1a017c50359cd4f4884d06347bd97623fb" kindref="member">editPaste</ref>(<sp/>const<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>format<sp/>=<sp/><ref refid="window_8h_a02c6467dd339058026d2c844b856e060_1a02c6467dd339058026d2c844b856e060" kindref="member">CLIPBOARD_TEXT_FORMAT</ref><sp/>);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classWindow_a2ac13cf3243000d5b30ff1a29547e407_1a2ac13cf3243000d5b30ff1a29547e407" kindref="member">renderClipboardFormat</ref>(<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>format<sp/>=<sp/><ref refid="window_8h_a02c6467dd339058026d2c844b856e060_1a02c6467dd339058026d2c844b856e060" kindref="member">CLIPBOARD_TEXT_FORMAT</ref><sp/>);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classWindow_aa804b1d347f57a8325510921285b8669_1aa804b1d347f57a8325510921285b8669" kindref="member">editDelete</ref>();</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classWindow_a3086e4a7cdae4cf5af32c9971bd9d34e_1a3086e4a7cdae4cf5af32c9971bd9d34e" kindref="member">setupTrayIcon</ref>();</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classWindow_a0c807d8500dd6611e32c02c583dbd655_1a0c807d8500dd6611e32c02c583dbd655" kindref="member">showTrayIcon</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classWindow_a25be60f78bde0afcfa73224c5ea7b333_1a25be60f78bde0afcfa73224c5ea7b333" kindref="member">deleteTrayIcon</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178" refid="window_8h_aef72bf74c6c9348295b48a2f564747b1_1aef72bf74c6c9348295b48a2f564747b1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>THROW_WINDOW_EXCEPTION(<sp/>msg<sp/>)<sp/>__debugbreak();\</highlight></codeline>
+<codeline lineno="179"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>throw<sp/>WindowException(<sp/>__LINE__,<sp/>__FILE__,<sp/>__FUNCTION__,<sp/>msg<sp/>);</highlight></codeline>
+    </programlisting>
+    <location file="inc/window.h"/>
+  </compounddef>
+</doxygen>

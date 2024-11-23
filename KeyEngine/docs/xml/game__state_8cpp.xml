@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="game__state_8cpp" kind="file" language="C++">
+    <compoundname>game_state.cpp</compoundname>
+    <includes refid="game__state_8h" local="yes">game_state.h</includes>
+    <includes refid="assertions__console_8h" local="yes">assertions_console.h</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>assertions_console.h</label>
+        <link refid="assertions__console_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>game_state.h</label>
+        <link refid="game__state_8h"/>
+      </node>
+      <node id="1">
+        <label>src/game_state.cpp</label>
+        <link refid="game__state_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>iostream</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="game__state_8h" kindref="compound">game_state.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="assertions__console_8h" kindref="compound">assertions_console.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="classState_a4f6d32fc5b1d9ee732c6f621416cdadd_1a4f6d32fc5b1d9ee732c6f621416cdadd" refkind="member"><highlight class="normal"><ref refid="classState_a4f6d32fc5b1d9ee732c6f621416cdadd_1a4f6d32fc5b1d9ee732c6f621416cdadd" kindref="member">State::State</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>stateId<sp/>)</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/>m_stateId(stateId)</highlight></codeline>
+<codeline lineno="8"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="classState_a9a15c39f3cb60944a2a9d8690d2f03e0_1a9a15c39f3cb60944a2a9d8690d2f03e0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classState_a9a15c39f3cb60944a2a9d8690d2f03e0_1a9a15c39f3cb60944a2a9d8690d2f03e0" kindref="member">State::getStateId</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="13"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/><ref refid="classState_a288109061cc4a6688cc8d47b144ac276_1a288109061cc4a6688cc8d47b144ac276" kindref="member">m_stateId</ref><sp/>!=<sp/>-1,<sp/></highlight><highlight class="stringliteral">&quot;Invalid<sp/>State.<sp/>Must<sp/>subclass<sp/>&apos;State&apos;&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classState_a288109061cc4a6688cc8d47b144ac276_1a288109061cc4a6688cc8d47b144ac276" kindref="member">m_stateId</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classMenuState_a586fc669f2e1bbe5d0fffb68ae2b6477_1a586fc669f2e1bbe5d0fffb68ae2b6477" refkind="member"><highlight class="normal"><ref refid="classMenuState_a586fc669f2e1bbe5d0fffb68ae2b6477_1a586fc669f2e1bbe5d0fffb68ae2b6477" kindref="member">MenuState::MenuState</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>stateId<sp/>)</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classState" kindref="compound">State</ref>(stateId)</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classGameState_af1eacff4f2dab25f96d8613571dc5669_1af1eacff4f2dab25f96d8613571dc5669" refkind="member"><highlight class="normal"><ref refid="classGameState_af1eacff4f2dab25f96d8613571dc5669_1af1eacff4f2dab25f96d8613571dc5669" kindref="member">GameState::GameState</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>stateId<sp/>)</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classState" kindref="compound">State</ref>(stateId)</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/game_state.cpp"/>
+  </compounddef>
+</doxygen>

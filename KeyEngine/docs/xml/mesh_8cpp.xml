@@ -1,0 +1,834 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="mesh_8cpp" kind="file" language="C++">
+    <compoundname>mesh.cpp</compoundname>
+    <includes refid="mesh_8h" local="yes">mesh.h</includes>
+    <includes refid="node_8h" local="yes">node.h</includes>
+    <includes refid="vertex__buffer_8h" local="yes">vertex_buffer.h</includes>
+    <includes refid="index__buffer_8h" local="yes">index_buffer.h</includes>
+    <includes refid="primitive__topology_8h" local="yes">primitive_topology.h</includes>
+    <includes refid="material__loader_8h" local="yes">material_loader.h</includes>
+    <includes refid="camera__manager_8h" local="yes">camera_manager.h</includes>
+    <includes refid="camera_8h" local="yes">camera.h</includes>
+    <includes refid="settings__manager_8h" local="yes">settings_manager.h</includes>
+    <includes refid="utils_8h" local="yes">utils.h</includes>
+    <includes refid="d3d__utils_8h" local="yes">d3d_utils.h</includes>
+    <incdepgraph>
+      <node id="11">
+        <label>assertions_console.h</label>
+        <link refid="assertions__console_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>bindable.h</label>
+        <link refid="bindable_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>camera.h</label>
+        <link refid="camera_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>camera_manager.h</label>
+        <link refid="camera__manager_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>color.h</label>
+        <link refid="color_8h"/>
+      </node>
+      <node id="64">
+        <label>console.h</label>
+        <link refid="console_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+      </node>
+      <node id="57">
+        <label>d3d_utils.h</label>
+        <link refid="d3d__utils_8h"/>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>dynamic_constant_buffer.h</label>
+        <link refid="dynamic__constant__buffer_8h"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>dynamic_vertex_buffer.h</label>
+        <link refid="dynamic__vertex__buffer_8h"/>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>graphics_friend.h</label>
+        <link refid="graphics__friend_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="53">
+        <label>imgui_visitors.h</label>
+        <link refid="imgui__visitors_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>index_buffer.h</label>
+        <link refid="index__buffer_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>key_type_traits.h</label>
+        <link refid="key__type__traits_8h"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>key_wrl.h</label>
+        <link refid="key__wrl_8h"/>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>material.h</label>
+        <link refid="material_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>material_loader.h</label>
+        <link refid="material__loader_8h"/>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>mesh.h</label>
+        <link refid="mesh_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="52">
+        <label>model.h</label>
+        <link refid="model_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>node.h</label>
+        <link refid="node_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="60">
+        <label>os_utils.h</label>
+        <link refid="os__utils_8h"/>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+      </node>
+      <node id="46">
+        <label>primitive_topology.h</label>
+        <link refid="primitive__topology_8h"/>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>rendering_channel.h</label>
+        <link refid="rendering__channel_8h"/>
+      </node>
+      <node id="55">
+        <label>settings_manager.h</label>
+        <link refid="settings__manager_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>transform_vscb.h</label>
+        <link refid="transform__vscb_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>utils_global.h</label>
+        <link refid="utils__global_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>vertex_buffer.h</label>
+        <link refid="vertex__buffer_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>winner.h</label>
+        <link refid="winner_8h"/>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/mesh.cpp</label>
+        <link refid="mesh_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>DirectXMath.h</label>
+      </node>
+      <node id="66">
+        <label>ShlObj.h</label>
+      </node>
+      <node id="41">
+        <label>Windows.h</label>
+      </node>
+      <node id="26">
+        <label>algorithm</label>
+      </node>
+      <node id="44">
+        <label>assimp/scene.h</label>
+      </node>
+      <node id="22">
+        <label>bitset</label>
+      </node>
+      <node id="16">
+        <label>cassert</label>
+      </node>
+      <node id="24">
+        <label>cinttypes</label>
+      </node>
+      <node id="62">
+        <label>comdef.h</label>
+      </node>
+      <node id="23">
+        <label>cstddef</label>
+      </node>
+      <node id="10">
+        <label>d3d11.h</label>
+      </node>
+      <node id="59">
+        <label>d3dcompiler.h</label>
+      </node>
+      <node id="30">
+        <label>execution</label>
+      </node>
+      <node id="48">
+        <label>filesystem</label>
+      </node>
+      <node id="65">
+        <label>functional</label>
+      </node>
+      <node id="25">
+        <label>future</label>
+      </node>
+      <node id="12">
+        <label>iostream</label>
+      </node>
+      <node id="28">
+        <label>iterator</label>
+      </node>
+      <node id="54">
+        <label>limits</label>
+      </node>
+      <node id="4">
+        <label>memory</label>
+      </node>
+      <node id="27">
+        <label>numeric</label>
+      </node>
+      <node id="5">
+        <label>optional</label>
+      </node>
+      <node id="29">
+        <label>regex</label>
+      </node>
+      <node id="40">
+        <label>sdkddkver.h</label>
+      </node>
+      <node id="21">
+        <label>set</label>
+      </node>
+      <node id="20">
+        <label>sstream</label>
+      </node>
+      <node id="17">
+        <label>string</label>
+      </node>
+      <node id="56">
+        <label>string_view</label>
+      </node>
+      <node id="63">
+        <label>tlhelp32.h</label>
+      </node>
+      <node id="58">
+        <label>tuple</label>
+      </node>
+      <node id="32">
+        <label>type_traits</label>
+      </node>
+      <node id="18">
+        <label>unordered_map</label>
+      </node>
+      <node id="42">
+        <label>utility</label>
+      </node>
+      <node id="7">
+        <label>vector</label>
+      </node>
+      <node id="67">
+        <label>wincred.h</label>
+      </node>
+      <node id="61">
+        <label>winternl.h</label>
+      </node>
+      <node id="37">
+        <label>wrl.h</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacemesh">mesh</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mesh_8h" kindref="compound">mesh.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="node_8h" kindref="compound">node.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="vertex__buffer_8h" kindref="compound">vertex_buffer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="index__buffer_8h" kindref="compound">index_buffer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="primitive__topology_8h" kindref="compound">primitive_topology.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="material__loader_8h" kindref="compound">material_loader.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="camera__manager_8h" kindref="compound">camera_manager.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="camera_8h" kindref="compound">camera.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="settings__manager_8h" kindref="compound">settings_manager.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="utils_8h" kindref="compound">utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d3d__utils_8h" kindref="compound">d3d_utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="namespacemesh" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacemesh" kindref="compound">mesh</ref></highlight></codeline>
+<codeline lineno="15"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="namespacemesh_a41efc78979f37979fcdd8716b943e883_1a41efc78979f37979fcdd8716b943e883" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="namespacemesh_a41efc78979f37979fcdd8716b943e883_1a41efc78979f37979fcdd8716b943e883" kindref="member">g_numMeshes</ref><sp/>=<sp/>0u;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceDirectX" kindref="compound">dx</ref><sp/>=<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classMesh_a5a611a59702d1b70366c71bcbfbe90a9_1a5a611a59702d1b70366c71bcbfbe90a9" refkind="member"><highlight class="normal"><ref refid="classMesh_ae6b6c56f0ebfa2f6b2b10d25a835c865_1ae6b6c56f0ebfa2f6b2b10d25a835c865" kindref="member">Mesh::Mesh</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMaterialLoader" kindref="compound">MaterialLoader</ref><sp/>&amp;mat,</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>aiMesh<sp/>&amp;aimesh,</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>initialScale<sp/></highlight><highlight class="comment">/*=<sp/>1.0f*/</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMesh_a05ef62d082e7a5c1fb49bded4e8c69ea_1a05ef62d082e7a5c1fb49bded4e8c69ea" kindref="member">m_pVertexBuffer</ref><sp/>=<sp/>mat.<ref refid="classMaterialLoader_a1014105d2a8d4a0cbe81ab367185eef9_1a1014105d2a8d4a0cbe81ab367185eef9" kindref="member">makeVertexBuffer</ref>(<sp/>gfx,<sp/>aimesh,<sp/>initialScale<sp/>);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMesh_aa5fc2902e90f9ccb60a85d79c2ee85f7_1aa5fc2902e90f9ccb60a85d79c2ee85f7" kindref="member">m_pIndexBuffer</ref><sp/>=<sp/>mat.<ref refid="classMaterialLoader_acfd3864b8b7d374a8f70c0be06ddb2dc_1acfd3864b8b7d374a8f70c0be06ddb2dc" kindref="member">makeIndexBuffer</ref>(<sp/>gfx,<sp/>aimesh<sp/>);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMesh_ae621e49b973b900a5247f661ee4d7f01_1ae621e49b973b900a5247f661ee4d7f01" kindref="member">m_pPrimitiveTopology</ref><sp/>=<sp/><ref refid="classPrimitiveTopology_a1f65640090cc0f20dd4115f25ff24e09_1a1f65640090cc0f20dd4115f25ff24e09" kindref="member">PrimitiveTopology::fetch</ref>(<sp/>gfx,<sp/>D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST<sp/>);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMesh_a20c8448dfbc8df1b7fa70a07b1d55470_1a20c8448dfbc8df1b7fa70a07b1d55470" kindref="member">m_pTransformVscb</ref><sp/>=<sp/>std::make_unique&lt;TransformVSCB&gt;(<sp/>gfx,<sp/>0u,<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;material<sp/>:<sp/>mat.<ref refid="classMaterialLoader_a0163720457b84671424d5e36cac4763e_1a0163720457b84671424d5e36cac4763e" kindref="member">getMaterial</ref>()<sp/>)</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMesh_a76bbd879b2115f72799c5d1676a8960b_1a76bbd879b2115f72799c5d1676a8960b" kindref="member">addMaterial</ref>(<sp/>std::move(<sp/>material<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMesh_a2e47e473545615fcbffff761d8912ea1_1a2e47e473545615fcbffff761d8912ea1" kindref="member">createAabb</ref>(<sp/>aimesh<sp/>);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMesh_add44446356aaf7c808a25562090cc556_1add44446356aaf7c808a25562090cc556" kindref="member">setMeshId</ref>();</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="classMesh_a508b14c30f81bdc95a94ec112ff1d8e2_1a508b14c30f81bdc95a94ec112ff1d8e2" refkind="member"><highlight class="normal"><ref refid="classMesh_a508b14c30f81bdc95a94ec112ff1d8e2_1a508b14c30f81bdc95a94ec112ff1d8e2" kindref="member">Mesh::~Mesh</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMesh_a50eabba438bb2476103fa94c20521800_1a50eabba438bb2476103fa94c20521800" kindref="member">m_materials</ref>.clear();</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMesh_a20c8448dfbc8df1b7fa70a07b1d55470_1a20c8448dfbc8df1b7fa70a07b1d55470" kindref="member">m_pTransformVscb</ref>.reset();</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMesh_ae621e49b973b900a5247f661ee4d7f01_1ae621e49b973b900a5247f661ee4d7f01" kindref="member">m_pPrimitiveTopology</ref>.reset();</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMesh_aa5fc2902e90f9ccb60a85d79c2ee85f7_1aa5fc2902e90f9ccb60a85d79c2ee85f7" kindref="member">m_pIndexBuffer</ref>.reset();</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMesh_a05ef62d082e7a5c1fb49bded4e8c69ea_1a05ef62d082e7a5c1fb49bded4e8c69ea" kindref="member">m_pVertexBuffer</ref>.reset();</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMesh_af08edebaaa5ca60d67aa42c9f4f4d75f_1af08edebaaa5ca60d67aa42c9f4f4d75f" kindref="member">m_pNode</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMesh_a2be1d0d997a5ea723e79320cd5a360d2_1a2be1d0d997a5ea723e79320cd5a360d2" kindref="member">m_meshId</ref><sp/>=<sp/>0u;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMesh_a5a75c6d3a47632d15ff774245e878111_1a5a75c6d3a47632d15ff774245e878111" kindref="member">m_bRenderedThisFrame</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMesh_a1072334674042ddad806e28bdeaad983_1a1072334674042ddad806e28bdeaad983" kindref="member">m_distanceFromActiveCamera</ref><sp/>=<sp/>-1.0f;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="classMesh_a207b46f564a431b6b3a5a5f3da7638e3_1a207b46f564a431b6b3a5a5f3da7638e3" refkind="member"><highlight class="normal"><ref refid="classMesh_ae6b6c56f0ebfa2f6b2b10d25a835c865_1ae6b6c56f0ebfa2f6b2b10d25a835c865" kindref="member">Mesh::Mesh</ref>(<sp/><ref refid="classMesh" kindref="compound">Mesh</ref><sp/>&amp;&amp;rhs<sp/>)<sp/>noexcept</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>m_distanceFromActiveCamera{rhs.m_distanceFromActiveCamera},</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>m_bRenderedThisFrame{rhs.m_bRenderedThisFrame},</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>m_meshId{rhs.m_meshId},</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pNode{rhs.m_pNode},</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>m_aabb{rhs.m_aabb},</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pVertexBuffer{std::move(<sp/>rhs.m_pVertexBuffer<sp/>)},<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>#TODO:<sp/>???</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pIndexBuffer{std::move(<sp/>rhs.m_pIndexBuffer<sp/>)},</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pPrimitiveTopology{std::move(<sp/>rhs.m_pPrimitiveTopology<sp/>)},</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pTransformVscb{std::move(<sp/>rhs.m_pTransformVscb<sp/>)},</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>m_materials{std::move(<sp/>rhs.m_materials<sp/>)}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>rhs.m_pNode<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>rhs.m_pVertexBuffer<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>rhs.m_pIndexBuffer<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>rhs.m_pPrimitiveTopology<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="classMesh_a501f7dc11f57390edcd9acaf5a1b07cd_1a501f7dc11f57390edcd9acaf5a1b07cd" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMesh_a501f7dc11f57390edcd9acaf5a1b07cd_1a501f7dc11f57390edcd9acaf5a1b07cd" kindref="member">Mesh::setNode</ref>(<sp/><ref refid="classNode" kindref="compound">Node</ref><sp/>&amp;node<sp/>)</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMesh_af08edebaaa5ca60d67aa42c9f4f4d75f_1af08edebaaa5ca60d67aa42c9f4f4d75f" kindref="member">m_pNode</ref><sp/>=<sp/>&amp;node;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="classMesh_a31cc65adefd11990f5246435cedaaf1e_1a31cc65adefd11990f5246435cedaaf1e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMesh_a31cc65adefd11990f5246435cedaaf1e_1a31cc65adefd11990f5246435cedaaf1e" kindref="member">Mesh::update</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>dt,</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>lerpBetweenFrames<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>setDistanceFromActiveCamera();</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="classMesh_a582af69212023f64426c5f2fbd816e4c_1a582af69212023f64426c5f2fbd816e4c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMesh_a582af69212023f64426c5f2fbd816e4c_1a582af69212023f64426c5f2fbd816e4c" kindref="member">Mesh::render</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>channels<sp/></highlight><highlight class="comment">/*<sp/>=<sp/>rch::all*/</highlight><highlight class="normal"><sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>!m_materials.empty(),<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>Materials<sp/>to<sp/>submit<sp/>to<sp/>the<sp/>Renderer!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>m_meshId<sp/>!=<sp/>0,<sp/></highlight><highlight class="stringliteral">&quot;Mesh<sp/>not<sp/>initialized<sp/>properly!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>m_bRenderedThisFrame<sp/>=<sp/>!isFrustumCulled();</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>m_bRenderedThisFrame<sp/>)</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;material<sp/>:<sp/>m_materials<sp/>)</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>material.render(<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>channels<sp/>);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100" refid="classMesh_a45a4b9d8490d23482ebef2e5138b7351_1a45a4b9d8490d23482ebef2e5138b7351" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMesh_a45a4b9d8490d23482ebef2e5138b7351_1a45a4b9d8490d23482ebef2e5138b7351" kindref="member">Mesh::bind</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>cond_noex</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pVertexBuffer-&gt;bind(<sp/>gfx<sp/>);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pIndexBuffer-&gt;bind(<sp/>gfx<sp/>);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pPrimitiveTopology-&gt;bind(<sp/>gfx<sp/>);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pTransformVscb-&gt;bind(<sp/>gfx<sp/>);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="classMesh_a76bbd879b2115f72799c5d1676a8960b_1a76bbd879b2115f72799c5d1676a8960b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMesh_a76bbd879b2115f72799c5d1676a8960b_1a76bbd879b2115f72799c5d1676a8960b" kindref="member">Mesh::addMaterial</ref>(<sp/><ref refid="classMaterial" kindref="compound">Material</ref><sp/>material<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>material.setMesh(<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>m_materials.emplace_back(<sp/>std::move(<sp/>material<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114" refid="classMesh_a258f981ef88fe2dc1b4095e089dd99f2_1a258f981ef88fe2dc1b4095e089dd99f2" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMesh_a258f981ef88fe2dc1b4095e089dd99f2_1a258f981ef88fe2dc1b4095e089dd99f2" kindref="member">Mesh::setMaterialEnabled</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>channels,</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bEnabled<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>!m_materials.empty(),<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>Materials<sp/>to<sp/>submit<sp/>to<sp/>the<sp/>Renderer!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;material<sp/>:<sp/>m_materials<sp/>)</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>material.setEnabled(<sp/>channels,<sp/>bEnabled<sp/>);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124" refid="classMesh_a513b4f9e4065d0b004474722f1ddd148_1a513b4f9e4065d0b004474722f1ddd148" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMesh_a513b4f9e4065d0b004474722f1ddd148_1a513b4f9e4065d0b004474722f1ddd148" kindref="member">Mesh::accept</ref>(<sp/><ref refid="classIImGuiConstantBufferVisitor" kindref="compound">IImGuiConstantBufferVisitor</ref><sp/>&amp;ev<sp/>)</highlight></codeline>
+<codeline lineno="125"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;material<sp/>:<sp/><ref refid="classMesh_a50eabba438bb2476103fa94c20521800_1a50eabba438bb2476103fa94c20521800" kindref="member">m_materials</ref><sp/>)</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>material.accept(<sp/>ev<sp/>);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132" refid="classMesh_ab13c2e773a18856f04a52c1d748c4be2_1ab13c2e773a18856f04a52c1d748c4be2" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classMesh_ab13c2e773a18856f04a52c1d748c4be2_1ab13c2e773a18856f04a52c1d748c4be2" kindref="member">Mesh::getIndicesCount</ref>()<sp/>const<sp/>cond_noex</highlight></codeline>
+<codeline lineno="133"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMesh_aa5fc2902e90f9ccb60a85d79c2ee85f7_1aa5fc2902e90f9ccb60a85d79c2ee85f7" kindref="member">m_pIndexBuffer</ref>-&gt;getIndexCount();</highlight></codeline>
+<codeline lineno="135"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137" refid="classMesh_a0f3175b74632a675caad84b8f5defb8b_1a0f3175b74632a675caad84b8f5defb8b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMesh_a0f3175b74632a675caad84b8f5defb8b_1a0f3175b74632a675caad84b8f5defb8b" kindref="member">Mesh::connectMaterialsToRenderer</ref>(<sp/><ref refid="classren_1_1Renderer" kindref="compound">ren::Renderer</ref><sp/>&amp;r<sp/>)</highlight></codeline>
+<codeline lineno="138"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>!<ref refid="classMesh_a50eabba438bb2476103fa94c20521800_1a50eabba438bb2476103fa94c20521800" kindref="member">m_materials</ref>.empty(),<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>Materials<sp/>to<sp/>submit<sp/>to<sp/>the<sp/>Renderer!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;material<sp/>:<sp/><ref refid="classMesh_a50eabba438bb2476103fa94c20521800_1a50eabba438bb2476103fa94c20521800" kindref="member">m_materials</ref><sp/>)</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>material.connectPass(<sp/>r<sp/>);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146" refid="classMesh_abde180d729a79a487bd6568d42771697_1abde180d729a79a487bd6568d42771697" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classMesh_abde180d729a79a487bd6568d42771697_1abde180d729a79a487bd6568d42771697" kindref="member">Mesh::getDistanceFromActiveCamera</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="147"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMesh_a1072334674042ddad806e28bdeaad983_1a1072334674042ddad806e28bdeaad983" kindref="member">m_distanceFromActiveCamera</ref>;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151" refid="classMesh_a1d18ad52515cfd7e2cca966cfb76dddd_1a1d18ad52515cfd7e2cca966cfb76dddd" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMesh_a1d18ad52515cfd7e2cca966cfb76dddd_1a1d18ad52515cfd7e2cca966cfb76dddd" kindref="member">Mesh::isRenderedThisFrame</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="152"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMesh_a5a75c6d3a47632d15ff774245e878111_1a5a75c6d3a47632d15ff774245e878111" kindref="member">m_bRenderedThisFrame</ref>;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156" refid="classMesh_a8cb16fb21424f90eadf022d531d17d30_1a8cb16fb21424f90eadf022d531d17d30" refkind="member"><highlight class="normal">std::shared_ptr&lt;VertexBuffer&gt;&amp;<sp/><ref refid="classMesh_a8cb16fb21424f90eadf022d531d17d30_1a8cb16fb21424f90eadf022d531d17d30" kindref="member">Mesh::getVertexBuffer</ref>()</highlight></codeline>
+<codeline lineno="157"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMesh_a05ef62d082e7a5c1fb49bded4e8c69ea_1a05ef62d082e7a5c1fb49bded4e8c69ea" kindref="member">m_pVertexBuffer</ref>;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161" refid="classMesh_a2e47e473545615fcbffff761d8912ea1_1a2e47e473545615fcbffff761d8912ea1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMesh_a2e47e473545615fcbffff761d8912ea1_1a2e47e473545615fcbffff761d8912ea1" kindref="member">Mesh::createAabb</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classver_1_1VBuffer" kindref="compound">ver::VBuffer</ref><sp/>&amp;verts<sp/>)</highlight></codeline>
+<codeline lineno="162"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>dx::XMFLOAT3<sp/>minVertex{FLT_MAX,<sp/>FLT_MAX,<sp/>FLT_MAX};</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>dx::XMFLOAT3<sp/>maxVertex{-FLT_MAX,<sp/>-FLT_MAX,<sp/>-FLT_MAX};</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>verts.<ref refid="classver_1_1VBuffer_a55a75ab98d36aa175186b19231626219_1a55a75ab98d36aa175186b19231626219" kindref="member">getVertexCount</ref>();</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">Type<sp/>=<sp/><ref refid="classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_1a7582c10f2c7a3ac24f95015bcbeb8c1a" kindref="member">ver::VertexInputLayout::ILEementType</ref>;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>n;<sp/>++i<sp/>)</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>vertex<sp/>=<sp/>verts[i].getElement&lt;Type::Position3D&gt;();</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>minVertex.x<sp/>=<sp/>std::min(<sp/>minVertex.x,<sp/>vertex.x<sp/>);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>minVertex.y<sp/>=<sp/>std::min(<sp/>minVertex.y,<sp/>vertex.y<sp/>);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>minVertex.z<sp/>=<sp/>std::min(<sp/>minVertex.z,<sp/>vertex.z<sp/>);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>maxVertex.x<sp/>=<sp/>std::max(<sp/>maxVertex.x,<sp/>vertex.x<sp/>);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>maxVertex.y<sp/>=<sp/>std::max(<sp/>maxVertex.y,<sp/>vertex.y<sp/>);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>maxVertex.z<sp/>=<sp/>std::max(<sp/>maxVertex.z,<sp/>vertex.z<sp/>);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMesh_a77337ee8b7114ef5311bcf27e0046e22_1a77337ee8b7114ef5311bcf27e0046e22" kindref="member">m_aabb</ref><sp/>=<sp/>std::make_pair(<sp/>minVertex,<sp/>maxVertex<sp/>);</highlight></codeline>
+<codeline lineno="182"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184" refid="classMesh_a425a3ab4960ac4a925aba7c6df2da63b_1a425a3ab4960ac4a925aba7c6df2da63b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classNode" kindref="compound">Node</ref>*<sp/><ref refid="classMesh_a425a3ab4960ac4a925aba7c6df2da63b_1a425a3ab4960ac4a925aba7c6df2da63b" kindref="member">Mesh::getNode</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="185"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMesh_af08edebaaa5ca60d67aa42c9f4f4d75f_1af08edebaaa5ca60d67aa42c9f4f4d75f" kindref="member">m_pNode</ref>;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189" refid="classMesh_a2e68eeb89cb2cb8b1caa45911f569ed4_1a2e68eeb89cb2cb8b1caa45911f569ed4" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classMesh_a2e68eeb89cb2cb8b1caa45911f569ed4_1a2e68eeb89cb2cb8b1caa45911f569ed4" kindref="member">Mesh::getName</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="190"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">std::string_literals;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>even<sp/>though<sp/>the<sp/>function<sp/>is<sp/>not<sp/>virtual<sp/>*this<sp/>will<sp/>take<sp/>into<sp/>account<sp/>the<sp/>&quot;virtuality&quot;<sp/>of<sp/>the<sp/>class</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>str<sp/>=<sp/>std::string{</highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(<sp/>*this<sp/>).name()}<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;#&quot;</highlight><highlight class="normal">s<sp/>+<sp/>std::to_string(<sp/><ref refid="classMesh_a2be1d0d997a5ea723e79320cd5a360d2_1a2be1d0d997a5ea723e79320cd5a360d2" kindref="member">m_meshId</ref><sp/>);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>str<sp/>=<sp/>&quot;class<sp/>whatever#34&quot;<sp/>or<sp/>&quot;struct<sp/>whatever#34&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceutil_ad0a21d01322ceda52938b313f3cc6aaa_1ad0a21d01322ceda52938b313f3cc6aaa" kindref="member">util::trimStringFromStart</ref>(<sp/>str,<sp/>6<sp/>);</highlight></codeline>
+<codeline lineno="196"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198" refid="classMesh_a3d2f9912e0fa051f1a756a57bb225adb_1a3d2f9912e0fa051f1a756a57bb225adb" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classMesh_a3d2f9912e0fa051f1a756a57bb225adb_1a3d2f9912e0fa051f1a756a57bb225adb" kindref="member">Mesh::getMeshId</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="199"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMesh_a2be1d0d997a5ea723e79320cd5a360d2_1a2be1d0d997a5ea723e79320cd5a360d2" kindref="member">m_meshId</ref>;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203" refid="classMesh_ac1a06f67124e572821e7fc985711c8dd_1ac1a06f67124e572821e7fc985711c8dd" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classMesh_abde180d729a79a487bd6568d42771697_1abde180d729a79a487bd6568d42771697" kindref="member">Mesh::getDistanceFromActiveCamera</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;pos<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;cameraPos<sp/>=<sp/><ref refid="classCameraManager_ac7e6b0996395dcaaa889d17d5a8a639e_1ac7e6b0996395dcaaa889d17d5a8a639e" kindref="member">CameraManager::getInstance</ref>().<ref refid="classCameraManager_abdf764797cf31edf23ae92496b6dfcf1_1abdf764797cf31edf23ae92496b6dfcf1" kindref="member">getActiveCamera</ref>().<ref refid="classCamera_a5433d9b545d22abeecb3693cc832b99a_1a5433d9b545d22abeecb3693cc832b99a" kindref="member">getPosition</ref>();</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceutil_a0e4b0d4b9f7d33bc40dc66b3e918ec01_1a0e4b0d4b9f7d33bc40dc66b3e918ec01" kindref="member">util::distance</ref>(<sp/>pos,<sp/>cameraPos<sp/>);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209" refid="classMesh_add44446356aaf7c808a25562090cc556_1add44446356aaf7c808a25562090cc556" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMesh_add44446356aaf7c808a25562090cc556_1add44446356aaf7c808a25562090cc556" kindref="member">Mesh::setMeshId</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="210"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/>++<ref refid="namespacemesh_a41efc78979f37979fcdd8716b943e883_1a41efc78979f37979fcdd8716b943e883" kindref="member">mesh::g_numMeshes</ref>;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMesh_a2be1d0d997a5ea723e79320cd5a360d2_1a2be1d0d997a5ea723e79320cd5a360d2" kindref="member">m_meshId</ref><sp/>=<sp/><ref refid="namespacemesh_a41efc78979f37979fcdd8716b943e883_1a41efc78979f37979fcdd8716b943e883" kindref="member">mesh::g_numMeshes</ref>;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215" refid="classMesh_a8aeff98bfd0c764a8917047c98f9962f_1a8aeff98bfd0c764a8917047c98f9962f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMesh_a8aeff98bfd0c764a8917047c98f9962f_1a8aeff98bfd0c764a8917047c98f9962f" kindref="member">Mesh::setDistanceFromActiveCamera</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="216"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>pos<sp/>=<sp/><ref refid="classMesh_af08edebaaa5ca60d67aa42c9f4f4d75f_1af08edebaaa5ca60d67aa42c9f4f4d75f" kindref="member">m_pNode</ref>-&gt;<ref refid="classNode_aa38921aea0a3a3473512631daf05ebd8_1aa38921aea0a3a3473512631daf05ebd8" kindref="member">getPosition</ref>();</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;cameraPos<sp/>=<sp/><ref refid="classCameraManager_ac7e6b0996395dcaaa889d17d5a8a639e_1ac7e6b0996395dcaaa889d17d5a8a639e" kindref="member">CameraManager::getInstance</ref>().<ref refid="classCameraManager_abdf764797cf31edf23ae92496b6dfcf1_1abdf764797cf31edf23ae92496b6dfcf1" kindref="member">getActiveCamera</ref>().<ref refid="classCamera_a5433d9b545d22abeecb3693cc832b99a_1a5433d9b545d22abeecb3693cc832b99a" kindref="member">getPosition</ref>();</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMesh_a1072334674042ddad806e28bdeaad983_1a1072334674042ddad806e28bdeaad983" kindref="member">m_distanceFromActiveCamera</ref><sp/>=<sp/><ref refid="namespaceutil_a0e4b0d4b9f7d33bc40dc66b3e918ec01_1a0e4b0d4b9f7d33bc40dc66b3e918ec01" kindref="member">util::distance</ref>(<sp/>pos,<sp/>cameraPos<sp/>);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222" refid="classMesh_aa5d30468013b994c7eb1897d2544a480_1aa5d30468013b994c7eb1897d2544a480" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMesh_a2e47e473545615fcbffff761d8912ea1_1a2e47e473545615fcbffff761d8912ea1" kindref="member">Mesh::createAabb</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>aiMesh<sp/>&amp;aiMesh<sp/>)</highlight></codeline>
+<codeline lineno="223"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/>dx::XMFLOAT3<sp/>minVertex{FLT_MAX,<sp/>FLT_MAX,<sp/>FLT_MAX};</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>dx::XMFLOAT3<sp/>maxVertex{-FLT_MAX,<sp/>-FLT_MAX,<sp/>-FLT_MAX};</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>aiMesh.mNumVertices;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>n;<sp/>++i<sp/>)</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>minVertex<sp/>and<sp/>maxVertex<sp/>will<sp/>most<sp/>likely<sp/>not<sp/>be<sp/>actual<sp/>vertices<sp/>in<sp/>the<sp/>model,<sp/>but<sp/>vertices<sp/>that<sp/>use<sp/>the<sp/>smallest<sp/>and<sp/>largest<sp/>x,<sp/>y,<sp/>z<sp/>coords</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>from<sp/>the<sp/>model<sp/>to<sp/>make<sp/>sure<sp/>ALL<sp/>vertices<sp/>are<sp/>covered<sp/>by<sp/>the<sp/>bounding<sp/>volume</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>get<sp/>the<sp/>smallest<sp/>vertex</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>minVertex.x<sp/>=<sp/>std::min(minVertex.x,<sp/>aiMesh.mVertices[i].x);</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>minVertex.y<sp/>=<sp/>std::min(minVertex.y,<sp/>aiMesh.mVertices[i].y);</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>minVertex.z<sp/>=<sp/>std::min(minVertex.z,<sp/>aiMesh.mVertices[i].z);</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>get<sp/>the<sp/>largest<sp/>vertex</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>maxVertex.x<sp/>=<sp/>std::max(maxVertex.x,<sp/>aiMesh.mVertices[i].x);</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>maxVertex.y<sp/>=<sp/>std::max(maxVertex.y,<sp/>aiMesh.mVertices[i].y);</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>maxVertex.z<sp/>=<sp/>std::max(maxVertex.z,<sp/>aiMesh.mVertices[i].z);</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMesh_a77337ee8b7114ef5311bcf27e0046e22_1a77337ee8b7114ef5311bcf27e0046e22" kindref="member">m_aabb</ref><sp/>=<sp/>std::make_pair(<sp/>minVertex,<sp/>maxVertex<sp/>);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247" refid="classMesh_aab3b7f01c082616f9656d44d7f75fdec_1aab3b7f01c082616f9656d44d7f75fdec" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMesh_aab3b7f01c082616f9656d44d7f75fdec_1aab3b7f01c082616f9656d44d7f75fdec" kindref="member">Mesh::isFrustumCulled</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="248"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;s<sp/>=<sp/><ref refid="classSettingsManager_a92617e378ef941b075dd8343d283bd00_1a92617e378ef941b075dd8343d283bd00" kindref="member">SettingsManager::getInstance</ref>();</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!s.getSettings().bEnableFrustumCuling<sp/>)</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;DirectX::XMFLOAT4&gt;<sp/>&amp;frustumPlanes<sp/>=<sp/><ref refid="classCameraManager_ac7e6b0996395dcaaa889d17d5a8a639e_1ac7e6b0996395dcaaa889d17d5a8a639e" kindref="member">CameraManager::getInstance</ref>().<ref refid="classCameraManager_abdf764797cf31edf23ae92496b6dfcf1_1abdf764797cf31edf23ae92496b6dfcf1" kindref="member">getActiveCamera</ref>().<ref refid="classCamera_abb32e44fc006cdd7f0c999e27e8b2dee_1abb32e44fc006cdd7f0c999e27e8b2dee" kindref="member">getFrustumPlanes</ref>();</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>numPlanes<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/>frustumPlanes.size()<sp/>);</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>numPlanes<sp/>==<sp/>6,<sp/></highlight><highlight class="stringliteral">&quot;Invalid<sp/>number<sp/>of<sp/>planes!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;minVertex<sp/>=<sp/><ref refid="classMesh_a77337ee8b7114ef5311bcf27e0046e22_1a77337ee8b7114ef5311bcf27e0046e22" kindref="member">m_aabb</ref>.first;</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;maxVertex<sp/>=<sp/><ref refid="classMesh_a77337ee8b7114ef5311bcf27e0046e22_1a77337ee8b7114ef5311bcf27e0046e22" kindref="member">m_aabb</ref>.second;</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>pos<sp/>=<sp/><ref refid="classMesh_af08edebaaa5ca60d67aa42c9f4f4d75f_1af08edebaaa5ca60d67aa42c9f4f4d75f" kindref="member">m_pNode</ref>-&gt;<ref refid="classNode_aa38921aea0a3a3473512631daf05ebd8_1aa38921aea0a3a3473512631daf05ebd8" kindref="member">getPosition</ref>();</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>numPlanes;<sp/>++i<sp/>)</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>AABB<sp/>vertex<sp/>furthest<sp/>away<sp/>from<sp/>the<sp/>direction<sp/>the<sp/>plane<sp/>normal<sp/>is<sp/>facing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dx::XMFLOAT3<sp/>axisVert{};</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>along<sp/>the<sp/>...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>...<sp/>x-axis</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>frustumPlanes[i].x<sp/>&lt;<sp/>0.0f<sp/>)</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>axisVert.x<sp/>=<sp/>minVertex.x<sp/>+<sp/>pos.x;</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>axisVert.x<sp/>=<sp/>maxVertex.x<sp/>+<sp/>pos.x;</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>...<sp/>y-axis</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>frustumPlanes[i].y<sp/>&lt;<sp/>0.0f<sp/>)</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>axisVert.y<sp/>=<sp/>minVertex.y<sp/>+<sp/>pos.y;</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>axisVert.y<sp/>=<sp/>maxVertex.y<sp/>+<sp/>pos.y;</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>...<sp/>z-axis</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>frustumPlanes[i].z<sp/>&lt;<sp/>0.0f<sp/>)</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>axisVert.z<sp/>=<sp/>minVertex.z<sp/>+<sp/>pos.z;</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>axisVert.z<sp/>=<sp/>maxVertex.z<sp/>+<sp/>pos.z;</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>dx::XMVECTOR<sp/>planeNormal{dx::XMVectorSet(<sp/>frustumPlanes[i].x,<sp/>frustumPlanes[i].y,<sp/>frustumPlanes[i].z,<sp/>0.0f<sp/>)};</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>planeConstant<sp/>=<sp/>frustumPlanes[i].w;</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>get<sp/>the<sp/>signed<sp/>distance<sp/>from<sp/>the<sp/>AABB<sp/>vertex<sp/>that&apos;s<sp/>furthest<sp/>down<sp/>the<sp/>frustum<sp/>planes<sp/>normal,<sp/>and<sp/>if<sp/>the<sp/>signed<sp/>distance<sp/>is<sp/>negative</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>then<sp/>the<sp/>entire<sp/>bounding<sp/>box<sp/>is<sp/>behind<sp/>the<sp/>frustum<sp/>plane,<sp/>which<sp/>means<sp/>that<sp/>it<sp/>should<sp/>be<sp/>culled</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>dx::XMVectorGetX(<sp/>dx::XMVector3Dot(<sp/>planeNormal,<sp/>dx::XMLoadFloat3(<sp/>&amp;axisVert<sp/>)<sp/>)<sp/>)<sp/>+<sp/>planeConstant<sp/>&lt;<sp/>0.0f<sp/>)</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="312"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/mesh.cpp"/>
+  </compounddef>
+</doxygen>

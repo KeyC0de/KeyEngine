@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="structMesh_1_1ColorPSCB2" kind="struct" language="C++" prot="protected">
+    <compoundname>Mesh::ColorPSCB2</compoundname>
+    <includes refid="mesh_8h" local="no">mesh.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structMesh_1_1ColorPSCB2_a000275e2763214dc89ac75713d5c999a_1a000275e2763214dc89ac75713d5c999a" prot="public" static="no" mutable="no">
+        <type>DirectX::XMFLOAT4</type>
+        <definition>DirectX::XMFLOAT4 Mesh::ColorPSCB2::materialColor</definition>
+        <argsstring></argsstring>
+        <name>materialColor</name>
+        <qualifiedname>Mesh::ColorPSCB2::materialColor</qualifiedname>
+        <initializer>= {0.8f, 0.2f, 0.15f, 1.0f}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="51" column="19" bodyfile="inc/mesh.h" bodystart="51" bodyend="51"/>
+        <referencedby refid="classCube_af0fe61f07cbc70de782950bac056988b_1af0fe61f07cbc70de782950bac056988b" compoundref="cube_8cpp" startline="23" endline="194">Cube::Cube</referencedby>
+        <referencedby refid="classPlane_a70e7a5971d34e1130740e843a6a18896_1a70e7a5971d34e1130740e843a6a18896" compoundref="plane_8cpp" startline="23" endline="193">Plane::Plane</referencedby>
+        <referencedby refid="classTerrain_af5a4ec6ff724b557052dd12be7f0de0c_1af5a4ec6ff724b557052dd12be7f0de0c" compoundref="terrain_8cpp" startline="24" endline="158">Terrain::Terrain</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mesh.h" line="49" column="1" bodyfile="inc/mesh.h" bodystart="50" bodyend="52"/>
+    <listofallmembers>
+      <member refid="structMesh_1_1ColorPSCB2_a000275e2763214dc89ac75713d5c999a_1a000275e2763214dc89ac75713d5c999a" prot="public" virt="non-virtual"><scope>Mesh::ColorPSCB2</scope><name>materialColor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

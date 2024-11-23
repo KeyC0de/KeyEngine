@@ -1,0 +1,103 @@
+\doxysection{message.\+h}
+\hypertarget{message_8h_source}{}\label{message_8h_source}\index{inc/message.h@{inc/message.h}}
+\mbox{\hyperlink{message_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{non__copyable_8h}{non\_copyable.h}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classEntity}{Entity}};}
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classOperation}{Operation}};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMessage}{Message}}}
+\DoxyCodeLine{00018\ \ \ \ \ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classNonCopyable}{NonCopyable}}}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_a1c65ab3f02ba5b175f583f9d275ecf2b}{Type}}}
+\DoxyCodeLine{00022\ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_a1c65ab3f02ba5b175f583f9d275ecf2baea3a964e490ef1b7386b3f4e5335a4e9}{Idle}}\ =\ 0,}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_a1c65ab3f02ba5b175f583f9d275ecf2ba0a6b82414cfc3aff979f9fdc6a4e42ad}{Damage}},}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_a1c65ab3f02ba5b175f583f9d275ecf2ba553d8a661eaafb91ffe6908243a40eff}{Heal}},}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_a1c65ab3f02ba5b175f583f9d275ecf2ba9a537a18982ba50a4352ede8fb744262}{Greet}},}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_a1c65ab3f02ba5b175f583f9d275ecf2badf66c83a17ebb8124f629a50e12fffd1}{PhysicsCollision}}}
+\DoxyCodeLine{00028\ \ \ \ \ \};}
+\DoxyCodeLine{00029\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classMessage_af011f97019a4f01798685fcf7f722083_af011f97019a4f01798685fcf7f722083}{m\_bHandled}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{classEntity}{Entity}}\ *\mbox{\hyperlink{classMessage_a38a89c52c76f0101314001449fedf756_a38a89c52c76f0101314001449fedf756}{m\_pSender}};}
+\DoxyCodeLine{00032\ \ \ \ \ std::vector<Entity*>\ \mbox{\hyperlink{classMessage_a728af9544d443fbedda21ae6d6811178_a728af9544d443fbedda21ae6d6811178}{m\_recipients}};}
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_a1c65ab3f02ba5b175f583f9d275ecf2b}{Message::Type}}\ \mbox{\hyperlink{classMessage_a731f6269cb7c4b3ef3cc9413920e8c90_a731f6269cb7c4b3ef3cc9413920e8c90}{m\_type}};}
+\DoxyCodeLine{00034\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{classMessage_a219e57a060b856d7833e4e515554bdf7_a219e57a060b856d7833e4e515554bdf7}{Message}}(\ \mbox{\hyperlink{classEntity}{Entity}}\ *srcId,\ \textcolor{keyword}{const}\ std::vector<Entity*>\ \&destId,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_a1c65ab3f02ba5b175f583f9d275ecf2b}{Message::Type}}\ type\ );}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{classMessage_a219e57a060b856d7833e4e515554bdf7_a219e57a060b856d7833e4e515554bdf7}{Message}}(\ \mbox{\hyperlink{classMessage}{Message}}\ \&\&rhs\ )\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{classMessage}{Message}}\&\ \mbox{\hyperlink{classMessage_abfee673e583d1a7ed4779b9d7474a7ac_abfee673e583d1a7ed4779b9d7474a7ac}{operator=}}(\ \mbox{\hyperlink{classMessage}{Message}}\ \&\&rhs\ )\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classMessage_a08d7eaea217280c72b8306c65ce3abb7_a08d7eaea217280c72b8306c65ce3abb7}{\string~Message}}()\ noexcept;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ const\ \mbox{\hyperlink{classMessage}{Message}}::\mbox{\hyperlink{classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_a1c65ab3f02ba5b175f583f9d275ecf2b}{Type}}\ \mbox{\hyperlink{classMessage_aa5bdf441eeab24a8d7f33fbadc5b5e78_aa5bdf441eeab24a8d7f33fbadc5b5e78}{getType}}()\ const\ noexcept;}
+\DoxyCodeLine{00041\ \ \ \ \ const\ \mbox{\hyperlink{classEntity}{Entity}}*\ \mbox{\hyperlink{classMessage_a0185ebea724dd090e25a0342bec4a411_a0185ebea724dd090e25a0342bec4a411}{getSender}}()\ noexcept;}
+\DoxyCodeLine{00042\ \ \ \ \ const\ std::vector<\mbox{\hyperlink{classEntity}{Entity}}*>\&\ \mbox{\hyperlink{classMessage_a2bb193b1289d2b72207c1ba9dbcf2683_a2bb193b1289d2b72207c1ba9dbcf2683}{getRecipients}}()\ noexcept;}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classMessage_a7e1b4800230dd0fc7415f8ccdc288c13_a7e1b4800230dd0fc7415f8ccdc288c13}{isHandled}}()\ const\ noexcept;}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMessage_ae57959dd9f150e9933f6dbeb20a4150a_ae57959dd9f150e9933f6dbeb20a4150a}{setHandled}}(\ const\ \textcolor{keywordtype}{bool}\ b\ )\ noexcept;}
+\DoxyCodeLine{00045\ \};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00054\ class\ \mbox{\hyperlink{classMessageCall}{MessageCall}}}
+\DoxyCodeLine{00055\ \ \ \ \ :}
+\DoxyCodeLine{00056\ \ \ \ \ public\ \mbox{\hyperlink{classMessage}{Message}}}
+\DoxyCodeLine{00057\ \{}
+\DoxyCodeLine{00058\ \ \ \ \ std::unique\_ptr<Operation>\ \mbox{\hyperlink{classMessageCall_a6502a214dfdec2ec7f1da9e2f43e36f2_a6502a214dfdec2ec7f1da9e2f43e36f2}{m\_pFunc}};}
+\DoxyCodeLine{00059\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{classMessageCall}{MessageCall}}(\ \mbox{\hyperlink{classEntity}{Entity}}\ *psrc,\ \textcolor{keyword}{const}\ std::vector<Entity*>\ \&pDests,\ \mbox{\hyperlink{classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_a1c65ab3f02ba5b175f583f9d275ecf2b}{Message::Type}}\ type,\ std::unique\_ptr<Operation>\ df\ );}
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{classMessageCall}{MessageCall}}(\ \mbox{\hyperlink{classMessageCall}{MessageCall}}\ \&\&rhs\ )\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{classMessageCall}{MessageCall}}\&\ \mbox{\hyperlink{classMessage_abfee673e583d1a7ed4779b9d7474a7ac_abfee673e583d1a7ed4779b9d7474a7ac}{operator=}}(\ \mbox{\hyperlink{classMessageCall}{MessageCall}}\ \&\&rhs\ )\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classMessageCall_a9a2fdcbf5db679760a1dba2233d9486b_a9a2fdcbf5db679760a1dba2233d9486b}{\string~MessageCall}}()\ noexcept\ =\ default;}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \mbox{\hyperlink{classOperation}{Operation}}*\ getCallable()\ const\ noexcept;}
+\DoxyCodeLine{00066\ \};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00075\ template<class\ T>}
+\DoxyCodeLine{00076\ class\ \mbox{\hyperlink{classMessageData}{MessageData}}}
+\DoxyCodeLine{00077\ \ \ \ \ :}
+\DoxyCodeLine{00078\ \ \ \ \ public\ \mbox{\hyperlink{classMessage}{Message}}}
+\DoxyCodeLine{00079\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ std::unique\_ptr<T>\ \mbox{\hyperlink{classMessageData_a6fadeb02b510f4a80d6437013c66911e_a6fadeb02b510f4a80d6437013c66911e}{m\_pPayload}};}
+\DoxyCodeLine{00081\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ...\ TParams>}
+\DoxyCodeLine{00083\ \ \ \ \ \mbox{\hyperlink{classMessageData_a8e216ff6cc67d98b61d46dc33de503b4_a8e216ff6cc67d98b61d46dc33de503b4}{MessageData}}(\ \mbox{\hyperlink{classEntity}{Entity}}\ *src,}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Entity*>\ \&pDests,}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMessage_a1c65ab3f02ba5b175f583f9d275ecf2b_a1c65ab3f02ba5b175f583f9d275ecf2b}{Message::Type}}\ type,}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ TParams\&\&...\ args\ )}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMessage}{Message}}\{src,\ pDests,\ type\},}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ m\_pPayload\{std::make\_unique<T>(\ std::forward<TParams>(\ args\ )...\ )\}}
+\DoxyCodeLine{00090\ \ \ \ \ \{}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classMessageData_a0c664a4e4203a47bbc75fae9cc15e47f_a0c664a4e4203a47bbc75fae9cc15e47f}{\string~MessageData}}()\ noexcept\ =\ default;}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \mbox{\hyperlink{classMessageData}{MessageData}}(\ \mbox{\hyperlink{classMessageData}{MessageData}}\ \&\&rhs\ )\ noexcept}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMessage}{Message}}\{std::move(\ rhs\ )\},}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ m\_pPayload\{std::move(\ rhs.m\_pPayload\ )\}}
+\DoxyCodeLine{00100\ \ \ \ \ \{}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \}}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \mbox{\hyperlink{classMessageData}{MessageData}}\&\ \mbox{\hyperlink{classMessageData_ae04bed58599d30745ccb62bf9685433d_ae04bed58599d30745ccb62bf9685433d}{operator=}}(\ \mbox{\hyperlink{classMessageData}{MessageData}}\ \&\&rhs\ )\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00105\ \ \ \ \ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMessage_abfee673e583d1a7ed4779b9d7474a7ac_abfee673e583d1a7ed4779b9d7474a7ac}{Message::operator=}}(\ std::move(\ rhs\ )\ );}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ std::swap(\ m\_pPayload,\ rhs.m\_pPayload\ );}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00109\ \ \ \ \ \}}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ T*\ \mbox{\hyperlink{classMessageData_afa9026e3b1778a18bdaaa8a0d41218a0_afa9026e3b1778a18bdaaa8a0d41218a0}{getPayload}}()\ const\ noexcept}
+\DoxyCodeLine{00112\ \ \ \ \ \{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_pPayload.get();}
+\DoxyCodeLine{00114\ \ \ \ \ \}}
+\DoxyCodeLine{00115\ \};}
+
+\end{DoxyCode}

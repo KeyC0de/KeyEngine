@@ -1,0 +1,277 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="pixel__shader_8h" kind="file" language="C++">
+    <compoundname>pixel_shader.h</compoundname>
+    <includes refid="key__wrl_8h" local="yes">key_wrl.h</includes>
+    <includes refid="bindable_8h" local="yes">bindable.h</includes>
+    <includedby refid="SHADOW__PASS_8CPP" local="yes">src/SHADOW_PASS.CPP</includedby>
+    <includedby refid="blur__outline__draw__pass_8cpp" local="yes">src/blur_outline_draw_pass.cpp</includedby>
+    <includedby refid="blur__outline__mask__pass_8cpp" local="yes">src/blur_outline_mask_pass.cpp</includedby>
+    <includedby refid="blur__pass_8cpp" local="yes">src/blur_pass.cpp</includedby>
+    <includedby refid="camera__frustum_8cpp" local="yes">src/camera_frustum.cpp</includedby>
+    <includedby refid="camera__widget_8cpp" local="yes">src/camera_widget.cpp</includedby>
+    <includedby refid="cube_8cpp" local="yes">src/cube.cpp</includedby>
+    <includedby refid="fullscreen__pass_8cpp" local="yes">src/fullscreen_pass.cpp</includedby>
+    <includedby refid="horizontal__blur__pass_8cpp" local="yes">src/horizontal_blur_pass.cpp</includedby>
+    <includedby refid="line_8cpp" local="yes">src/line.cpp</includedby>
+    <includedby refid="material__loader_8cpp" local="yes">src/material_loader.cpp</includedby>
+    <includedby refid="negative__pass_8cpp" local="yes">src/negative_pass.cpp</includedby>
+    <includedby refid="pass__2d_8cpp" local="yes">src/pass_2d.cpp</includedby>
+    <includedby refid="pass__through_8cpp" local="yes">src/pass_through.cpp</includedby>
+    <includedby refid="pixel__shader_8cpp" local="yes">src/pixel_shader.cpp</includedby>
+    <includedby refid="plane_8cpp" local="yes">src/plane.cpp</includedby>
+    <includedby refid="sky__pass_8cpp" local="yes">src/sky_pass.cpp</includedby>
+    <includedby refid="solid__outline__draw__pass_8cpp" local="yes">src/solid_outline_draw_pass.cpp</includedby>
+    <includedby refid="solid__outline__mask__pass_8cpp" local="yes">src/solid_outline_mask_pass.cpp</includedby>
+    <includedby refid="sphere_8cpp" local="yes">src/sphere.cpp</includedby>
+    <includedby refid="terrain_8cpp" local="yes">src/terrain.cpp</includedby>
+    <includedby refid="testing_8cpp" local="yes">src/testing.cpp</includedby>
+    <includedby refid="transparent__pass_8cpp" local="yes">src/transparent_pass.cpp</includedby>
+    <includedby refid="vertical__blur__pass_8cpp" local="yes">src/vertical_blur_pass.cpp</includedby>
+    <incdepgraph>
+      <node id="8">
+        <label>assertions_console.h</label>
+        <link refid="assertions__console_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>bindable.h</label>
+        <link refid="bindable_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>graphics_friend.h</label>
+        <link refid="graphics__friend_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>key_wrl.h</label>
+        <link refid="key__wrl_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/pixel_shader.h</label>
+        <link refid="pixel__shader_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>d3d11.h</label>
+      </node>
+      <node id="9">
+        <label>iostream</label>
+      </node>
+      <node id="5">
+        <label>memory</label>
+      </node>
+      <node id="3">
+        <label>wrl.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>inc/pixel_shader.h</label>
+        <link refid="pixel__shader_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/SHADOW_PASS.CPP</label>
+        <link refid="SHADOW__PASS_8CPP"/>
+      </node>
+      <node id="3">
+        <label>src/blur_outline_draw_pass.cpp</label>
+        <link refid="blur__outline__draw__pass_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/blur_outline_mask_pass.cpp</label>
+        <link refid="blur__outline__mask__pass_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/blur_pass.cpp</label>
+        <link refid="blur__pass_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/camera_frustum.cpp</label>
+        <link refid="camera__frustum_8cpp"/>
+      </node>
+      <node id="7">
+        <label>src/camera_widget.cpp</label>
+        <link refid="camera__widget_8cpp"/>
+      </node>
+      <node id="8">
+        <label>src/cube.cpp</label>
+        <link refid="cube_8cpp"/>
+      </node>
+      <node id="9">
+        <label>src/fullscreen_pass.cpp</label>
+        <link refid="fullscreen__pass_8cpp"/>
+      </node>
+      <node id="10">
+        <label>src/horizontal_blur_pass.cpp</label>
+        <link refid="horizontal__blur__pass_8cpp"/>
+      </node>
+      <node id="11">
+        <label>src/line.cpp</label>
+        <link refid="line_8cpp"/>
+      </node>
+      <node id="12">
+        <label>src/material_loader.cpp</label>
+        <link refid="material__loader_8cpp"/>
+      </node>
+      <node id="13">
+        <label>src/negative_pass.cpp</label>
+        <link refid="negative__pass_8cpp"/>
+      </node>
+      <node id="14">
+        <label>src/pass_2d.cpp</label>
+        <link refid="pass__2d_8cpp"/>
+      </node>
+      <node id="15">
+        <label>src/pass_through.cpp</label>
+        <link refid="pass__through_8cpp"/>
+      </node>
+      <node id="16">
+        <label>src/pixel_shader.cpp</label>
+        <link refid="pixel__shader_8cpp"/>
+      </node>
+      <node id="17">
+        <label>src/plane.cpp</label>
+        <link refid="plane_8cpp"/>
+      </node>
+      <node id="18">
+        <label>src/sky_pass.cpp</label>
+        <link refid="sky__pass_8cpp"/>
+      </node>
+      <node id="19">
+        <label>src/solid_outline_draw_pass.cpp</label>
+        <link refid="solid__outline__draw__pass_8cpp"/>
+      </node>
+      <node id="20">
+        <label>src/solid_outline_mask_pass.cpp</label>
+        <link refid="solid__outline__mask__pass_8cpp"/>
+      </node>
+      <node id="21">
+        <label>src/sphere.cpp</label>
+        <link refid="sphere_8cpp"/>
+      </node>
+      <node id="22">
+        <label>src/terrain.cpp</label>
+        <link refid="terrain_8cpp"/>
+      </node>
+      <node id="23">
+        <label>src/testing.cpp</label>
+        <link refid="testing_8cpp"/>
+      </node>
+      <node id="24">
+        <label>src/transparent_pass.cpp</label>
+        <link refid="transparent__pass_8cpp"/>
+      </node>
+      <node id="25">
+        <label>src/vertical_blur_pass.cpp</label>
+        <link refid="vertical__blur__pass_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classPixelShader" prot="public">PixelShader</innerclass>
+    <innerclass refid="classPixelShaderNull" prot="public">PixelShaderNull</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="key__wrl_8h" kindref="compound">key_wrl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="bindable_8h" kindref="compound">bindable.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classGraphics" kindref="compound">Graphics</ref>;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="classPixelShader" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPixelShader" kindref="compound">PixelShader</ref></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classIBindable" kindref="compound">IBindable</ref></highlight></codeline>
+<codeline lineno="11"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="13" refid="classPixelShader_a9b8462cdaf964d06d4cb147e23fa7f9f_1a9b8462cdaf964d06d4cb147e23fa7f9f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classPixelShader_a9b8462cdaf964d06d4cb147e23fa7f9f_1a9b8462cdaf964d06d4cb147e23fa7f9f" kindref="member">m_path</ref>;</highlight></codeline>
+<codeline lineno="14" refid="classPixelShader_a636bc606f520069ef0a774cf8656ff24_1a636bc606f520069ef0a774cf8656ff24" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Microsoft::WRL::ComPtr&lt;ID3DBlob&gt;<sp/><ref refid="classPixelShader_a636bc606f520069ef0a774cf8656ff24_1a636bc606f520069ef0a774cf8656ff24" kindref="member">m_pPsBlob</ref>;</highlight></codeline>
+<codeline lineno="15" refid="classPixelShader_a5f5658bb56f659b74d27cebb77f3037e_1a5f5658bb56f659b74d27cebb77f3037e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Microsoft::WRL::ComPtr&lt;ID3D11PixelShader&gt;<sp/><ref refid="classPixelShader_a5f5658bb56f659b74d27cebb77f3037e_1a5f5658bb56f659b74d27cebb77f3037e" kindref="member">m_pPixelShader</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPixelShader_ac750a7663474f02dcd624648faec9c49_1ac750a7663474f02dcd624648faec9c49" kindref="member">PixelShader</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;filepath<sp/>);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPixelShader_a141efa3b56ed6b9b0337a03feada0835_1a141efa3b56ed6b9b0337a03feada0835" kindref="member">bind</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;PixelShader&gt;<sp/><ref refid="classPixelShader_a308b5792652bde2a8fe1df25b297c381_1a308b5792652bde2a8fe1df25b297c381" kindref="member">fetch</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;filepath<sp/>);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>ID3DBlob*<sp/><ref refid="classPixelShader_a61a71e9c6562004b14146386342326c1_1a61a71e9c6562004b14146386342326c1" kindref="member">getBytecode</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classPixelShader_a2413a4b17e9ddad9fe0c591f369c0793_1a2413a4b17e9ddad9fe0c591f369c0793" kindref="member">calcUid</ref>(<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>&amp;filepath<sp/>);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classPixelShader_a70fd83afb22b3163bd756ef0840684ed_1a70fd83afb22b3163bd756ef0840684ed" kindref="member">getUid</ref>()<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classPixelShaderNull" refkind="compound"><highlight class="normal">class<sp/><ref refid="classPixelShaderNull" kindref="compound">PixelShaderNull</ref></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>public<sp/><ref refid="classIBindable" kindref="compound">IBindable</ref></highlight></codeline>
+<codeline lineno="34"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPixelShaderNull" kindref="compound">PixelShaderNull</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPixelShader_a141efa3b56ed6b9b0337a03feada0835_1a141efa3b56ed6b9b0337a03feada0835" kindref="member">bind</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;PixelShaderNull&gt;<sp/><ref refid="classPixelShader_a308b5792652bde2a8fe1df25b297c381_1a308b5792652bde2a8fe1df25b297c381" kindref="member">fetch</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classPixelShader_a2413a4b17e9ddad9fe0c591f369c0793_1a2413a4b17e9ddad9fe0c591f369c0793" kindref="member">calcUid</ref>();</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classPixelShader_a70fd83afb22b3163bd756ef0840684ed_1a70fd83afb22b3163bd756ef0840684ed" kindref="member">getUid</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/pixel_shader.h"/>
+  </compounddef>
+</doxygen>

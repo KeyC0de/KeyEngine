@@ -28,16 +28,14 @@ constexpr T abs( const T val )
 		-val;
 }
 
-//	\function	truncate	||	\date	2023/05/09 18:37
-//	\brief	truncate the supplied number val; handles negative numbers as well
+/// \brief	truncate the supplied number val; handles negative numbers as well
 template<typename T, typename>
 constexpr int truncate( const T val )
 {
 	return static_cast<int>( util::abs( val ) );
 }
 
-//	\function	modulus	||	\date	2023/05/09 19:16
-//	\brief	'fmod()' === '%' : returns the signed floating point remainder of a division (divident / divisor)
+/// \brief	'fmod()' === '%' : returns the signed floating point remainder of a division (divident / divisor)
 //	#WARNING: Innacurate, just use std::fmod
 //template<typename T, typename = std::enable_if_t<std::is_floating_point_v<T>>>
 //constexpr T modulusFloat( const T divident,
@@ -82,8 +80,7 @@ constexpr int round( const T val ) noexcept
 	return util::floor( val + (T)0.5 );
 }
 
-//	\function	powerOf	||	/date	2021/10/25 19:40
-//	\brief	calculate x^n, n > 1
+/// \brief	calculate x^n, n > 1
 template<typename T, typename J, typename = std::enable_if_t<std::is_arithmetic_v<T>>, typename = std::enable_if_t<std::is_arithmetic_v<J>>>
 constexpr T powerOf( T x,
 	J n )
@@ -101,8 +98,7 @@ constexpr T powerOf( T x,
 	return x;
 }
 
-//	\function	getFractionalPart	||	\date	2024/05/01 0:13
-//	\brief	works like std::modf which decomposes given floating point value num into integral and fractional parts
+/// \brief	works like std::modf which decomposes given floating point value num into integral and fractional parts
 template<typename T, typename = std::enable_if_t<std::is_floating_point_v<T>>>
 constexpr T getFractionalPart( T val )
 {
@@ -135,8 +131,7 @@ constexpr T clamp( T number,
 	return number;
 }
 
-//	\function	numberToCoord	||	\date	2023/05/09 12:33
-//	\brief	transformation of a scalar (1D) to a Cartesian coordinate
+/// \brief	transformation of a scalar (1D) to a Cartesian coordinate
 //		use this instead of mapRange when you don't want to scale the values of the range
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
 int numberToCoord( T number,
@@ -182,8 +177,7 @@ constexpr T mapRange( const T val,
 	return static_cast<T>( outFirst + slope * (val - inFirst) );
 }
 
-//	\function	isApproximatelyEqual	||	\date	2024/06/03 17:54
-//	\brief	checks for approximate equality between floating point numbers
+/// \brief	checks for approximate equality between floating point numbers
 // examples:
 //		util::isApproximatelyEqual( 8.74227766e-08f, 0.0f );	// true
 //		util::isApproximatelyEqual( -0.999999940f, -1.0f );		// true
@@ -210,9 +204,7 @@ constexpr T div10( const T dividend )
 	return static_cast<T>( ( invDivisor * dividend ) >> 32 );
 }
 
-//===================================================
-//	\function	squareRoot	||	\date	2022/08/28 23:46
-//	\brief	calculates the square root of a number
+/// \brief	calculates the square root of a number
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
 constexpr T squareRoot( const T x ) noexcept
 {
@@ -316,8 +308,7 @@ constexpr T convertRange( const T valueInRange,
 	return newValueInRange;
 }
 
-//	\function	wrapAngle	||	/date	2020/07/15 5:10
-//	\brief wrap angle (in radians) in the range -pi to pi
+/// \brief wrap angle (in radians) in the range -pi to pi
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
 constexpr T wrapAngle( const T angleRad )
 {
@@ -327,16 +318,14 @@ constexpr T wrapAngle( const T angleRad )
 		val;
 }
 
-//	\function	toRadians	||	/date	2020/07/15 5:13
-//	\brief convert angle in degrees to radians
+/// \brief convert angle in degrees to radians
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
 constexpr T toRadians( const T deg )
 {
 	return ( deg * PI ) / (T)180.0;
 }
 
-//	\function	toDegrees	||	/date	2020/07/15 5:13
-//	\brief convert angle in radians to degrees
+/// \brief convert angle in radians to degrees
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
 constexpr T toDegrees( const T rad )
 {
@@ -346,8 +335,7 @@ constexpr T toDegrees( const T rad )
 void normalizeAngleDeg( float& angleDeg );
 bool isAngleDegWithinRange( float angleDeg, float a, float b );
 
-//	\function	interpolate	||	/date	2020/08/02 17:56
-//	\brief linear interpolation from src to dst value using alpha provided, interpolates any two Types that support the operations +, -, *
+/// \brief linear interpolation from src to dst value using alpha provided, interpolates any two Types that support the operations +, -, *
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
 constexpr T interpolate( const T &src,
 	const T &dst,
@@ -359,8 +347,7 @@ ALIAS_FUNCTION( interpolate, lerp );
 
 
 /// <image url="C:/Users/nikla/pictures/gaussian function distribution.png" scale=".4" />
-//	\function	gaussian1d	||	\date	2022/11/20 12:40
-//	\brief	1d Gaussian distribution
+/// \brief	1d Gaussian distribution
 //			x is distance from center of Kernel/curve
 //			sigma is the standard deviation of the distribution
 template<typename T>
@@ -372,8 +359,7 @@ constexpr T gaussian1d( const T x,
 	return ( (T)1 / sqrt( (T)2 * (T)PI_D * ss ) ) * exp( -util::square( x - mean ) / ((T)2 * ss) );
 }
 
-//	\function	gaussian2d	||	\date	2022/11/20 12:41
-//	\brief	Isotropic (mean = 0) 2d Gaussian distribution
+/// \brief	Isotropic (mean = 0) 2d Gaussian distribution
 template<typename T>
 constexpr T gaussian2d( const T x,
 	const T y,
@@ -383,8 +369,7 @@ constexpr T gaussian2d( const T x,
 	return ( (T)1 / sqrt( (T)2 * (T)PI_D * ss ) ) * exp( -( ( util::square( x ) + util::square( y ) ) / ( (T)2 * util::square( ss ) ) ) );
 }
 
-//	\function	gaussian2d	||	\date	2022/11/20 12:41
-//	\brief	Isotropic (mean = 0) 2d Gaussian distribution
+/// \brief	Isotropic (mean = 0) 2d Gaussian distribution
 //			as an image filter it can be used to smoothen/blur
 // #TODO:
 template<typename T>
@@ -431,21 +416,16 @@ constexpr T nthMultipleOf( const T number,
 	return multiple;
 }
 
-//	\function	nextPowerOf2	||	\date	2022/04/06 12:52
-//	\brief	find smallest power of 2 greater than or equal to n
+/// \brief	find smallest power of 2 greater than or equal to n
 constexpr int nextPowerOf2( int n );
-//	\function	gcd	||	\date	2022/08/29 0:04
-//	\brief	prints Greatest Common Divisor of numbers
+/// \brief	prints Greatest Common Divisor of numbers
 //			Complexity: O(log_n(m))
 int gcd( int divident, int divisor );
 constexpr int factorialOf( int n ) noexcept;
-//===================================================
-//	\function	isPrime	||	\date	2022/08/28 23:45
-//	\brief	trial division method
+/// \brief	trial division method
 constexpr bool isPrime( const int number ) noexcept;
 
-//	\function	computeTriangularNumber	||	\date	2024/08/29 1:33
-//	\brief	Triangular numbers represent the number of dots that can form an equilateral triangle.
+/// \brief	Triangular numbers represent the number of dots that can form an equilateral triangle.
 constexpr size_t computeTriangularNumber( const int number ) noexcept;
 
 constexpr bool isPowerOfTwo( const std::size_t value ) noexcept;
@@ -459,45 +439,29 @@ int toDecimal( const int hex );
 int toHex( const int dec );
 
 /// bitwise ops
-//	\function	printDec2Bin	||	\date	2022/08/29 0:03
-//	\brief	prints given datatype to binary
+/// \brief	prints given datatype to binary
 void printDec2Bin( const size_t size, void const *const ptr ) noexcept;
-//===================================================
-//	\function	printDecToBin	||	\date	2022/08/29 0:04
-//	\brief	print binary conversion of supplied decimal number
+/// \brief	print binary conversion of supplied decimal number
 void printDecToBin( const int num ) noexcept;
 constexpr bool haveOppositeSigns( int x, int y ) noexcept;
-//===================================================
-//	\function	msbIndexOfDec	||	\date	2022/08/29 0:04
-//	\brief	finds MSB index in decimal number (counting from 0)
+/// \brief	finds MSB index in decimal number (counting from 0)
 constexpr int msbIndexOfDec( int num ) noexcept;
-//===================================================
-//	\function	countSetBits	||	\date	2022/08/29 0:02
-//	\brief	count number of Ones in a given number
+/// \brief	count number of Ones in a given number
 constexpr int countSetBits( int num ) noexcept;
-//===================================================
-//	\function	isPowerOf2	||	\date	2022/08/29 0:02
-//	\brief	checks whether a number is a power of 2
+/// \brief	checks whether a number is a power of 2
 constexpr int isPowerOf2( const int num ) noexcept;
 constexpr void convertToBase( int number, const int base ) noexcept;
 constexpr bool isNthBitSet( const int value, const int posOfTestBit );
-//===================================================
-//	\function	swapBits	||	\date	2022/08/29 0:02
-//	\brief	swap the bits at position i and j of given number iff they are different
+/// \brief	swap the bits at position i and j of given number iff they are different
 constexpr int swapBits( int num, const int i, const int j ) noexcept;
 constexpr int setNthBit( int num, const unsigned n ) noexcept;
 constexpr int clearNthBit( int num, const unsigned n ) noexcept;
 constexpr int toggleNthBit( int num, const unsigned n ) noexcept;
-//===================================================
-//	\function	isSet	||	\date	2022/08/29 0:02
-//	\brief	check num's bitPos state and return the value (0 or 1)
+/// \brief	check num's bitPos state and return the value (0 or 1)
 constexpr int isSet( int num, const unsigned bitPos ) noexcept;
-//	\function	isNumberSet	||	\date	2022/10/29 13:44
-//	\brief	check if num has bit indicated by bitFlag set. bitFlag must be a power of 2.
+/// \brief	check if num has bit indicated by bitFlag set. bitFlag must be a power of 2.
 bool isSetByNumber( int num, int bitFlag ) noexcept;
-//===================================================
-//	\function	changeNthBit	||	\date	2022/08/29 0:02
-//	\brief	change nth bit to bitVal
+/// \brief	change nth bit to bitVal
 constexpr int changeNthBit( int num, const unsigned n, const bool bitVal ) noexcept;
 
 template<int b>

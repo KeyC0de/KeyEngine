@@ -1,0 +1,122 @@
+\doxysection{Constant\+Buffer\+Ex\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classConstantBufferEx}{}\label{classConstantBufferEx}\index{ConstantBufferEx$<$ T $>$@{ConstantBufferEx$<$ T $>$}}
+
+
+{\ttfamily \#include $<$constant\+\_\+buffer\+\_\+ex.\+h$>$}
+
+Inheritance diagram for Constant\+Buffer\+Ex\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classConstantBufferEx}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classConstantBufferEx_af6f3be800ce1a21916faee4e0f481050_af6f3be800ce1a21916faee4e0f481050}{Constant\+Buffer\+Ex}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const unsigned slot, const \mbox{\hyperlink{classcon_1_1CookedLayout}{con\+::\+Cooked\+Layout}} \&layout)
+\item 
+\mbox{\hyperlink{classConstantBufferEx_a0fa730ecce97deba00448b85178e49f8_a0fa730ecce97deba00448b85178e49f8}{Constant\+Buffer\+Ex}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const unsigned slot, const \mbox{\hyperlink{classcon_1_1CBuffer}{con\+::\+CBuffer}} \&cb)
+\item 
+const \mbox{\hyperlink{classcon_1_1CBElement}{con\+::\+CBElement}} \& \mbox{\hyperlink{classConstantBufferEx_ad6302ddec2ecc314a39220e2fc5e42ee_ad6302ddec2ecc314a39220e2fc5e42ee}{get\+Cb\+Root\+Element}} () const noexcept override
+\item 
+\mbox{\hyperlink{classcon_1_1CBuffer}{con\+::\+CBuffer}} \mbox{\hyperlink{classConstantBufferEx_a8e8b0a7169b991f78fd93db8503c7d9f_a8e8b0a7169b991f78fd93db8503c7d9f}{get\+Buffer\+Copy}} () const noexcept
+\item 
+const \mbox{\hyperlink{classcon_1_1CBuffer}{con\+::\+CBuffer}} \& \mbox{\hyperlink{classConstantBufferEx_a277ddbd6d0c832fb60be636501f47125_a277ddbd6d0c832fb60be636501f47125}{get\+Buffer}} () const noexcept
+\item 
+void \mbox{\hyperlink{classConstantBufferEx_aa2a12472fc3c3cde1452421fd907cdcb_aa2a12472fc3c3cde1452421fd907cdcb}{set\+Buffer}} (const \mbox{\hyperlink{classcon_1_1CBuffer}{con\+::\+CBuffer}} \&cb)
+\item 
+void \mbox{\hyperlink{classConstantBufferEx_a9a54fd78ded9d12ae51e4ceba4f208f2_a9a54fd78ded9d12ae51e4ceba4f208f2}{bind}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) cond\+\_\+noex override
+\item 
+void \mbox{\hyperlink{classConstantBufferEx_a4d5333c31ccf89e3fbd83ddaa3793b9c_a4d5333c31ccf89e3fbd83ddaa3793b9c}{accept}} (\mbox{\hyperlink{classIImGuiConstantBufferVisitor}{IIm\+Gui\+Constant\+Buffer\+Visitor}} \&ev) override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classConstantBufferEx_ae3030b454d653edf95c8562c2c37af6b_ae3030b454d653edf95c8562c2c37af6b}{m\+\_\+b\+Dirty}} = false
+\item 
+\mbox{\hyperlink{classcon_1_1CBuffer}{con\+::\+CBuffer}} \mbox{\hyperlink{classConstantBufferEx_aaf977739746cefc16a91006ba35ffef4_aaf977739746cefc16a91006ba35ffef4}{m\+\_\+cb}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classConstantBufferEx_af6f3be800ce1a21916faee4e0f481050_af6f3be800ce1a21916faee4e0f481050}\index{ConstantBufferEx$<$ T $>$@{ConstantBufferEx$<$ T $>$}!ConstantBufferEx@{ConstantBufferEx}}
+\index{ConstantBufferEx@{ConstantBufferEx}!ConstantBufferEx$<$ T $>$@{ConstantBufferEx$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{ConstantBufferEx()}{ConstantBufferEx()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classConstantBufferEx_af6f3be800ce1a21916faee4e0f481050_af6f3be800ce1a21916faee4e0f481050} 
+template$<$class T $>$ \\
+\mbox{\hyperlink{classConstantBufferEx}{Constant\+Buffer\+Ex}}$<$ T $>$\mbox{\hyperlink{classConstantBufferEx}{\+::\+Constant\+Buffer\+Ex}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const unsigned}]{slot}{, }\item[{const \mbox{\hyperlink{classcon_1_1CookedLayout}{con\+::\+Cooked\+Layout}} \&}]{layout}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classConstantBufferEx_a0fa730ecce97deba00448b85178e49f8_a0fa730ecce97deba00448b85178e49f8}\index{ConstantBufferEx$<$ T $>$@{ConstantBufferEx$<$ T $>$}!ConstantBufferEx@{ConstantBufferEx}}
+\index{ConstantBufferEx@{ConstantBufferEx}!ConstantBufferEx$<$ T $>$@{ConstantBufferEx$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{ConstantBufferEx()}{ConstantBufferEx()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classConstantBufferEx_a0fa730ecce97deba00448b85178e49f8_a0fa730ecce97deba00448b85178e49f8} 
+template$<$class T $>$ \\
+\mbox{\hyperlink{classConstantBufferEx}{Constant\+Buffer\+Ex}}$<$ T $>$\mbox{\hyperlink{classConstantBufferEx}{\+::\+Constant\+Buffer\+Ex}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const unsigned}]{slot}{, }\item[{const \mbox{\hyperlink{classcon_1_1CBuffer}{con\+::\+CBuffer}} \&}]{cb}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classConstantBufferEx_a4d5333c31ccf89e3fbd83ddaa3793b9c_a4d5333c31ccf89e3fbd83ddaa3793b9c}\index{ConstantBufferEx$<$ T $>$@{ConstantBufferEx$<$ T $>$}!accept@{accept}}
+\index{accept@{accept}!ConstantBufferEx$<$ T $>$@{ConstantBufferEx$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{accept()}{accept()}}
+{\footnotesize\ttfamily \label{classConstantBufferEx_a4d5333c31ccf89e3fbd83ddaa3793b9c_a4d5333c31ccf89e3fbd83ddaa3793b9c} 
+template$<$class T $>$ \\
+void \mbox{\hyperlink{classConstantBufferEx}{Constant\+Buffer\+Ex}}$<$ T $>$\+::accept (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIImGuiConstantBufferVisitor}{IIm\+Gui\+Constant\+Buffer\+Visitor}} \&}]{ev}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}}
+
+\Hypertarget{classConstantBufferEx_a9a54fd78ded9d12ae51e4ceba4f208f2_a9a54fd78ded9d12ae51e4ceba4f208f2}\index{ConstantBufferEx$<$ T $>$@{ConstantBufferEx$<$ T $>$}!bind@{bind}}
+\index{bind@{bind}!ConstantBufferEx$<$ T $>$@{ConstantBufferEx$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{bind()}{bind()}}
+{\footnotesize\ttfamily \label{classConstantBufferEx_a9a54fd78ded9d12ae51e4ceba4f208f2_a9a54fd78ded9d12ae51e4ceba4f208f2} 
+template$<$class T $>$ \\
+void \mbox{\hyperlink{classConstantBufferEx}{Constant\+Buffer\+Ex}}$<$ T $>$\+::bind (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}}
+
+\Hypertarget{classConstantBufferEx_a277ddbd6d0c832fb60be636501f47125_a277ddbd6d0c832fb60be636501f47125}\index{ConstantBufferEx$<$ T $>$@{ConstantBufferEx$<$ T $>$}!getBuffer@{getBuffer}}
+\index{getBuffer@{getBuffer}!ConstantBufferEx$<$ T $>$@{ConstantBufferEx$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getBuffer()}{getBuffer()}}
+{\footnotesize\ttfamily \label{classConstantBufferEx_a277ddbd6d0c832fb60be636501f47125_a277ddbd6d0c832fb60be636501f47125} 
+template$<$class T $>$ \\
+const \mbox{\hyperlink{classcon_1_1CBuffer}{con\+::\+CBuffer}} \& \mbox{\hyperlink{classConstantBufferEx}{Constant\+Buffer\+Ex}}$<$ T $>$\+::get\+Buffer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classConstantBufferEx_a8e8b0a7169b991f78fd93db8503c7d9f_a8e8b0a7169b991f78fd93db8503c7d9f}\index{ConstantBufferEx$<$ T $>$@{ConstantBufferEx$<$ T $>$}!getBufferCopy@{getBufferCopy}}
+\index{getBufferCopy@{getBufferCopy}!ConstantBufferEx$<$ T $>$@{ConstantBufferEx$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getBufferCopy()}{getBufferCopy()}}
+{\footnotesize\ttfamily \label{classConstantBufferEx_a8e8b0a7169b991f78fd93db8503c7d9f_a8e8b0a7169b991f78fd93db8503c7d9f} 
+template$<$class T $>$ \\
+\mbox{\hyperlink{classcon_1_1CBuffer}{con\+::\+CBuffer}} \mbox{\hyperlink{classConstantBufferEx}{Constant\+Buffer\+Ex}}$<$ T $>$\+::get\+Buffer\+Copy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classConstantBufferEx_ad6302ddec2ecc314a39220e2fc5e42ee_ad6302ddec2ecc314a39220e2fc5e42ee}\index{ConstantBufferEx$<$ T $>$@{ConstantBufferEx$<$ T $>$}!getCbRootElement@{getCbRootElement}}
+\index{getCbRootElement@{getCbRootElement}!ConstantBufferEx$<$ T $>$@{ConstantBufferEx$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getCbRootElement()}{getCbRootElement()}}
+{\footnotesize\ttfamily \label{classConstantBufferEx_ad6302ddec2ecc314a39220e2fc5e42ee_ad6302ddec2ecc314a39220e2fc5e42ee} 
+template$<$class T $>$ \\
+const \mbox{\hyperlink{classcon_1_1CBElement}{con\+::\+CBElement}} \& \mbox{\hyperlink{classConstantBufferEx}{Constant\+Buffer\+Ex}}$<$ T $>$\+::get\+Cb\+Root\+Element (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classConstantBufferEx_aa2a12472fc3c3cde1452421fd907cdcb_aa2a12472fc3c3cde1452421fd907cdcb}\index{ConstantBufferEx$<$ T $>$@{ConstantBufferEx$<$ T $>$}!setBuffer@{setBuffer}}
+\index{setBuffer@{setBuffer}!ConstantBufferEx$<$ T $>$@{ConstantBufferEx$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{setBuffer()}{setBuffer()}}
+{\footnotesize\ttfamily \label{classConstantBufferEx_aa2a12472fc3c3cde1452421fd907cdcb_aa2a12472fc3c3cde1452421fd907cdcb} 
+template$<$class T $>$ \\
+void \mbox{\hyperlink{classConstantBufferEx}{Constant\+Buffer\+Ex}}$<$ T $>$\+::set\+Buffer (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classcon_1_1CBuffer}{con\+::\+CBuffer}} \&}]{cb}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classConstantBufferEx_ae3030b454d653edf95c8562c2c37af6b_ae3030b454d653edf95c8562c2c37af6b}\index{ConstantBufferEx$<$ T $>$@{ConstantBufferEx$<$ T $>$}!m\_bDirty@{m\_bDirty}}
+\index{m\_bDirty@{m\_bDirty}!ConstantBufferEx$<$ T $>$@{ConstantBufferEx$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{m\_bDirty}{m\_bDirty}}
+{\footnotesize\ttfamily \label{classConstantBufferEx_ae3030b454d653edf95c8562c2c37af6b_ae3030b454d653edf95c8562c2c37af6b} 
+template$<$class T $>$ \\
+bool \mbox{\hyperlink{classConstantBufferEx}{Constant\+Buffer\+Ex}}$<$ T $>$\+::m\+\_\+b\+Dirty = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classConstantBufferEx_aaf977739746cefc16a91006ba35ffef4_aaf977739746cefc16a91006ba35ffef4}\index{ConstantBufferEx$<$ T $>$@{ConstantBufferEx$<$ T $>$}!m\_cb@{m\_cb}}
+\index{m\_cb@{m\_cb}!ConstantBufferEx$<$ T $>$@{ConstantBufferEx$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{m\_cb}{m\_cb}}
+{\footnotesize\ttfamily \label{classConstantBufferEx_aaf977739746cefc16a91006ba35ffef4_aaf977739746cefc16a91006ba35ffef4} 
+template$<$class T $>$ \\
+\mbox{\hyperlink{classcon_1_1CBuffer}{con\+::\+CBuffer}} \mbox{\hyperlink{classConstantBufferEx}{Constant\+Buffer\+Ex}}$<$ T $>$\+::m\+\_\+cb\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{constant__buffer__ex_8h}{constant\+\_\+buffer\+\_\+ex.\+h}}\end{DoxyCompactItemize}

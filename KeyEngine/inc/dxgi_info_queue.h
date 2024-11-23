@@ -8,12 +8,15 @@
 #include "key_wrl.h"
 
 
-// ref: https://walbourn.github.io/dxgi-debug-device/
-// In DirectX 11.1 + you can get helpful information from DX Device Context functions
-// using the DXGIGetDebugInterface given we have the debug layer of our device enabled
-// The confusing part is that the function you need, DXGIGetDebugInterface is not defined
-//		in any header and is not present in anyimport library.
-// So we have to load it dynamically
+///=============================================================
+/// \class	DxgiInfoQueue
+/// \author	KeyC0de
+/// \date	2021/01/14 13:46
+/// \brief	ref: https://walbourn.github.io/dxgi-debug-device/
+/// \brief	In DirectX 11.1+ you can get helpful information from DX Device Context using the DXGIGetDebugInterface given we have the device debug layer enabled
+/// \brief	The confusing part is that the function you need, DXGIGetDebugInterface is not defined in any header and is not present in any import library.
+/// \brief	So we have to load it dynamically
+///=============================================================
 class DxgiInfoQueue final
 	: public NonCopyable
 {
@@ -23,10 +26,9 @@ class DxgiInfoQueue final
 public:
 	DxgiInfoQueue();
 
-	//	\function	markQueueIndex	||	\date	2021/01/14 21:47
-	//	\brief	call this on frame end right before Present()ation
-	//			it sets the message queue index so that with the next call to getInfo we
-	//			will get info messages generated after the last call to markQueueIndex()
+	/// \brief	call this on frame end right before Present()ation
+	/// \brief	it sets the message queue index so that with the next call to getInfo we
+	/// \brief	will get info messages generated after the last call to markQueueIndex()
 	void markQueueIndex() noexcept;
 	std::vector<std::string> getInfoMessages();
 };

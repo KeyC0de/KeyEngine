@@ -51,19 +51,19 @@ private:
 public:
 	static DirectX::XMVECTOR computeTargetVector( const DirectX::XMFLOAT3 &pos, const float pitchDeg, const float yawDeg ) noexcept;
 	static std::pair<float, float> computePitchYawInDegFromDirectionVector( const DirectX::XMFLOAT3 &directionNormalized );
+	static DirectX::XMFLOAT3 computePitchYawRollInDegFromDirectionVector( const DirectX::XMFLOAT3 &directionNormalized );
 public:
 	Camera( Graphics &gfx, const float width, const float height, const float fovDegrees = 90.0f, const DirectX::XMFLOAT3 &posDefault = {0.0f, 0.0f, 0.0f}, const float pitchDegDefault = 0.0f, const float yawDegDefault = 0.0f, const bool bTethered = false, const bool bPerspectiveProjection = true, const float nearZ = 0.5f, const float farZ = 200.0f, const DirectX::XMFLOAT4 camWidgetColor = {0.2f, 0.2f, 0.6f, 1.0f}, const DirectX::XMFLOAT4 camFrustumColor = {0.6f, 0.2f, 0.2f, 1.0f}, const float translationSpeed = 16.0f, const float rotationSpeed = 0.096f, const bool bShowDebugMeshes = false ) noexcept;
 
 	void update( const float dt, const float lerpBetweenFrames, const bool bEnableSmoothMovement = false ) cond_noex;
 	void render( const size_t channel = rch::all ) const cond_noex;
 	void connectMaterialsToRenderer( ren::Renderer &ren );
-	void makeActive( Graphics &gfx, const bool bOrthographic ) const;
+	void makeActive( Graphics &gfx ) const;
 	void resetToDefault( Graphics &gfx ) noexcept;
 	DirectX::XMMATRIX getViewMatrix() const noexcept;
 	DirectX::XMMATRIX getReflectionViewMatrix( const DirectX::XMVECTOR &mirrorPlane ) const noexcept;
 	DirectX::XMMATRIX getProjectionMatrix( Graphics &gfx, const bool bForShadows, const float shadowCamFarZ ) const noexcept;
-	//	\function	getDirection	||	\date	2022/08/30 23:11
-	//	\brief	returns the vector describing the camera's direction - ie the direction the light is pointining - aka "lookVector"
+	/// \brief	returns the vector describing the camera's direction - ie the direction the light is pointining - aka "lookVector"
 	DirectX::XMVECTOR getDirection() const noexcept;
 	DirectX::XMVECTOR getRight() const noexcept;
 	DirectX::XMVECTOR getUp() const noexcept;
@@ -76,22 +76,19 @@ public:
 	void setRotationSpeed( const float rotationSpeed ) noexcept;
 	float getRotationSpeed() const noexcept;
 	// transformation functions
-	// rotate arguments is mouse dx, dy delta values
 	void setRotation( const DirectX::XMFLOAT3 &rot ) noexcept;
 	void rotateRel( const float dx, const float dy ) noexcept;
 	void translateRel( DirectX::XMFLOAT3 translation ) noexcept;
 	void setTranslation( const DirectX::XMFLOAT3 &pos ) noexcept;
-	//	\function	getTransform	||	\date	2024/04/28 13:10
-	//	\brief	gets the camera matrix
+	/// \brief	gets the camera matrix
 	const DirectX::XMFLOAT3& getPosition() const noexcept;
 	DirectX::XMFLOAT3& getPosition();
 	DirectX::XMFLOAT3 getRotation() const noexcept;
 private:
 	DirectX::XMMATRIX getPositionMatrix() const noexcept;
 	DirectX::XMMATRIX getRotationMatrix() const noexcept;
-	//	\function	getTarget	||	\date	2024/04/28 13:19
-	//	\brief	target is the position of the camera's focus/focal point
-	//			ofc the camera doesn't look at a position, it looks along a direction; any points along that direction will do to compute the view-matrix
+	/// \brief	target is the position of the camera's focus/focal point
+	/// \brief	ofc the camera doesn't look at a position, it looks along a direction; any points along that direction will do to compute the view-matrix
 	DirectX::XMVECTOR getTarget() const noexcept;
 	void updateCameraFrustum( Graphics &gfx );
 	DirectX::XMMATRIX getOrthographicProjectionMatrix( const unsigned width, const unsigned height ) const noexcept;

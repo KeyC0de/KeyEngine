@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="structMesh_1_1ColorPSCB3" kind="struct" language="C++" prot="protected">
+    <compoundname>Mesh::ColorPSCB3</compoundname>
+    <includes refid="mesh_8h" local="no">mesh.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structMesh_1_1ColorPSCB3_ab5095acf2b5dbecc7bd888c244878f03_1ab5095acf2b5dbecc7bd888c244878f03" prot="public" static="no" mutable="no">
+        <type>DirectX::XMFLOAT4</type>
+        <definition>DirectX::XMFLOAT4 Mesh::ColorPSCB3::materialColor</definition>
+        <argsstring></argsstring>
+        <name>materialColor</name>
+        <qualifiedname>Mesh::ColorPSCB3::materialColor</qualifiedname>
+        <initializer>= {0.1f, 0.8f, 0.05f, 1.0f}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mesh.h" line="56" column="19" bodyfile="inc/mesh.h" bodystart="56" bodyend="56"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mesh.h" line="54" column="1" bodyfile="inc/mesh.h" bodystart="55" bodyend="57"/>
+    <listofallmembers>
+      <member refid="structMesh_1_1ColorPSCB3_ab5095acf2b5dbecc7bd888c244878f03_1ab5095acf2b5dbecc7bd888c244878f03" prot="public" virt="non-virtual"><scope>Mesh::ColorPSCB3</scope><name>materialColor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

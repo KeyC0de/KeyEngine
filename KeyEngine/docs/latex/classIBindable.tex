@@ -1,0 +1,124 @@
+\doxysection{IBindable Class Reference}
+\hypertarget{classIBindable}{}\label{classIBindable}\index{IBindable@{IBindable}}
+
+
+a class encapsulating a GPU -\/ \doxylink{classGraphics}{Graphics} Pipeline -\/ resource   
+
+
+
+
+{\ttfamily \#include $<$bindable.\+h$>$}
+
+Inheritance diagram for IBindable\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=12.000000cm]{classIBindable}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classIBindable_a7f68262ff85e25e9f826eae7c01bbfa1_a7f68262ff85e25e9f826eae7c01bbfa1}{\texorpdfstring{$\sim$}{\string~}\+IBindable}} () noexcept
+\item 
+virtual void \mbox{\hyperlink{classIBindable_add4560f78e76629ee81ba701ba1052e1_add4560f78e76629ee81ba701ba1052e1}{bind}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) cond\+\_\+noex=0
+\begin{DoxyCompactList}\small\item\em bind graphics resource to a certain stage of the graphics pipeline \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classIBindable_a12fe8725cb3f4836f22d1592b07e2c91_a12fe8725cb3f4836f22d1592b07e2c91}{set\+Mesh}} (const \mbox{\hyperlink{classMesh}{Mesh}} \&mesh) noexcept
+\item 
+virtual void \mbox{\hyperlink{classIBindable_a608c5066b829febbd49cd82d1d1fa353_a608c5066b829febbd49cd82d1d1fa353}{accept}} (\mbox{\hyperlink{classIImGuiConstantBufferVisitor}{IIm\+Gui\+Constant\+Buffer\+Visitor}} \&ev)
+\item 
+virtual std\+::string \mbox{\hyperlink{classIBindable_a7d88cdbd5d500d6d7f1bfabe16927855_a7d88cdbd5d500d6d7f1bfabe16927855}{get\+Uid}} () const noexcept
+\item 
+virtual void \mbox{\hyperlink{classIBindable_a4d590eebe80fa4e0aa865a875ff86c02_a4d590eebe80fa4e0aa865a875ff86c02}{set\+Debug\+Object\+Name}} (const char \texorpdfstring{$\ast$}{*}name) noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classGraphicsFriend}{Graphics\+Friend}}}
+\begin{DoxyCompactItemize}
+\item 
+static ID3\+D11\+Device\+Context \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGraphicsFriend_a619e32893ab49ea6c5200e7c2d52e2f2_a619e32893ab49ea6c5200e7c2d52e2f2}{get\+Device\+Context}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) noexcept
+\item 
+static ID3\+D11\+Device \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_a175df79f82ab5a6dad1df24b5a242ef7}{get\+Device}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) noexcept
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+a class encapsulating a GPU -\/ \doxylink{classGraphics}{Graphics} Pipeline -\/ resource  
+
+=============================================================
+
+\begin{DoxyAuthor}{Author}
+Key\+C0de 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/08/30 19\+:27 \doxysubsection*{}
+\end{DoxyDate}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classIBindable_a7f68262ff85e25e9f826eae7c01bbfa1_a7f68262ff85e25e9f826eae7c01bbfa1}\index{IBindable@{IBindable}!````~IBindable@{\texorpdfstring{$\sim$}{\string~}IBindable}}
+\index{````~IBindable@{\texorpdfstring{$\sim$}{\string~}IBindable}!IBindable@{IBindable}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}IBindable()}{\string~IBindable()}}
+{\footnotesize\ttfamily \label{classIBindable_a7f68262ff85e25e9f826eae7c01bbfa1_a7f68262ff85e25e9f826eae7c01bbfa1} 
+virtual IBindable\+::\texorpdfstring{$\sim$}{\string~}\+IBindable (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classIBindable_a608c5066b829febbd49cd82d1d1fa353_a608c5066b829febbd49cd82d1d1fa353}\index{IBindable@{IBindable}!accept@{accept}}
+\index{accept@{accept}!IBindable@{IBindable}}
+\doxysubsubsection{\texorpdfstring{accept()}{accept()}}
+{\footnotesize\ttfamily \label{classIBindable_a608c5066b829febbd49cd82d1d1fa353_a608c5066b829febbd49cd82d1d1fa353} 
+virtual void IBindable\+::accept (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIImGuiConstantBufferVisitor}{IIm\+Gui\+Constant\+Buffer\+Visitor}} \&}]{ev}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classTransformScaleVSCB_ae62fda43b34487d423892174ff58d78f_ae62fda43b34487d423892174ff58d78f}{Transform\+Scale\+VSCB}}.
+
+\Hypertarget{classIBindable_add4560f78e76629ee81ba701ba1052e1_add4560f78e76629ee81ba701ba1052e1}\index{IBindable@{IBindable}!bind@{bind}}
+\index{bind@{bind}!IBindable@{IBindable}}
+\doxysubsubsection{\texorpdfstring{bind()}{bind()}}
+{\footnotesize\ttfamily \label{classIBindable_add4560f78e76629ee81ba701ba1052e1_add4560f78e76629ee81ba701ba1052e1} 
+virtual void IBindable\+::bind (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+bind graphics resource to a certain stage of the graphics pipeline 
+
+
+
+Implemented in \mbox{\hyperlink{classBlendState_a40b232bc0e513ab020aa07a29a66558a_a40b232bc0e513ab020aa07a29a66558a}{Blend\+State}}, \mbox{\hyperlink{classCubeTexture_ae6e0e78b260faa09a6425a582a10139a_ae6e0e78b260faa09a6425a582a10139a}{Cube\+Texture}}, \mbox{\hyperlink{classCubeTextureArrayOffscreenDS_a92834d4494000e3e497f9579e0aee683_a92834d4494000e3e497f9579e0aee683}{Cube\+Texture\+Array\+Offscreen\+DS}}, \mbox{\hyperlink{classCubeTextureOffscreenDS_a4a7f66df5a6a92537d31aa462a17343a_a4a7f66df5a6a92537d31aa462a17343a}{Cube\+Texture\+Offscreen\+DS}}, \mbox{\hyperlink{classCubeTextureOffscreenRT_a86463c3c6cca882c031fcc24ab95c1ff_a86463c3c6cca882c031fcc24ab95c1ff}{Cube\+Texture\+Offscreen\+RT}}, \mbox{\hyperlink{classDepthStencilOutput_a5bd0b7547e6cd08adfae998cca034d8a_a5bd0b7547e6cd08adfae998cca034d8a}{Depth\+Stencil\+Output}}, \mbox{\hyperlink{classDepthStencilShaderInput_acd00dc6db5f67213bc2337c9d94deadc_acd00dc6db5f67213bc2337c9d94deadc}{Depth\+Stencil\+Shader\+Input}}, \mbox{\hyperlink{classDepthStencilState_a3484137e582f9cc5a3e76103f39b5086_a3484137e582f9cc5a3e76103f39b5086}{Depth\+Stencil\+State}}, \mbox{\hyperlink{classIndexBuffer_a4ae75057513853f7444a8e37a3af2bb0_a4ae75057513853f7444a8e37a3af2bb0}{Index\+Buffer}}, \mbox{\hyperlink{classInputLayout_a5de9afbd3d6d1324ac4a26f04365b69e_a5de9afbd3d6d1324ac4a26f04365b69e}{Input\+Layout}}, \mbox{\hyperlink{classIPixelShaderConstantBufferEx_afbeb8c06fb6e939ea570cf694c0e65e4_afbeb8c06fb6e939ea570cf694c0e65e4}{IPixel\+Shader\+Constant\+Buffer\+Ex}}, \mbox{\hyperlink{classIVertexShaderConstantBufferEx_aa013256c6bc586819dcec2f0faec8222_aa013256c6bc586819dcec2f0faec8222}{IVertex\+Shader\+Constant\+Buffer\+Ex}}, \mbox{\hyperlink{classPixelShader_a141efa3b56ed6b9b0337a03feada0835_a141efa3b56ed6b9b0337a03feada0835}{Pixel\+Shader}}, \mbox{\hyperlink{classPixelShaderConstantBuffer_ae2388f80f75a3a53b53c92d906b992d0_ae2388f80f75a3a53b53c92d906b992d0}{Pixel\+Shader\+Constant\+Buffer$<$ CB $>$}}, \mbox{\hyperlink{classPixelShaderConstantBuffer_ae2388f80f75a3a53b53c92d906b992d0_ae2388f80f75a3a53b53c92d906b992d0}{Pixel\+Shader\+Constant\+Buffer$<$ Lights\+PSCB $>$}}, \mbox{\hyperlink{classPixelShaderConstantBuffer_ae2388f80f75a3a53b53c92d906b992d0_ae2388f80f75a3a53b53c92d906b992d0}{Pixel\+Shader\+Constant\+Buffer$<$ ren\+::\+Shadow\+Pass\+::\+Globals\+PSCB $>$}}, \mbox{\hyperlink{classPixelShaderNull_a0ee1bc0e3d0781b00140dfc48d990e39_a0ee1bc0e3d0781b00140dfc48d990e39}{Pixel\+Shader\+Null}}, \mbox{\hyperlink{classPrimitiveTopology_a9851a5da7d713bdc742f736437fc0ec6_a9851a5da7d713bdc742f736437fc0ec6}{Primitive\+Topology}}, \mbox{\hyperlink{classRasterizerState_a5c99858a872079af1812b79e9b196b51_a5c99858a872079af1812b79e9b196b51}{Rasterizer\+State}}, \mbox{\hyperlink{classRenderTargetOutput_a537909d0e637e4bb76ade7297d2653c5_a537909d0e637e4bb76ade7297d2653c5}{Render\+Target\+Output}}, \mbox{\hyperlink{classRenderTargetShaderInput_a14b6d1f595c10bb27325f061953250c7_a14b6d1f595c10bb27325f061953250c7}{Render\+Target\+Shader\+Input}}, \mbox{\hyperlink{classSkyVSCB_a6449e8f0f6d0e07654a3b41869c350a5_a6449e8f0f6d0e07654a3b41869c350a5}{Sky\+VSCB}}, \mbox{\hyperlink{classTexture_a352000d68cf402ecbc94f2c802a80c48_a352000d68cf402ecbc94f2c802a80c48}{Texture}}, \mbox{\hyperlink{classTextureArrayOffscreenDS_a1f30c7f8c810f401124ff8a9d9326b7f_a1f30c7f8c810f401124ff8a9d9326b7f}{Texture\+Array\+Offscreen\+DS}}, \mbox{\hyperlink{classTextureOffscreenDS_a7d8959140611d45c7178cd42c6e524ba_a7d8959140611d45c7178cd42c6e524ba}{Texture\+Offscreen\+DS}}, \mbox{\hyperlink{classTextureOffscreenRT_a49c465d1bd478ec9f0341828caf99caf_a49c465d1bd478ec9f0341828caf99caf}{Texture\+Offscreen\+RT}}, \mbox{\hyperlink{classTextureSamplerState_aea9aa478070bee5081762a09b8e6fac1_aea9aa478070bee5081762a09b8e6fac1}{Texture\+Sampler\+State}}, \mbox{\hyperlink{classTransformScaleVSCB_a85f709efad673da2165e172d07199b38_a85f709efad673da2165e172d07199b38}{Transform\+Scale\+VSCB}}, \mbox{\hyperlink{classTransformVSCB_a4785fd8ba7b9a6c5c6627267e19341ac_a4785fd8ba7b9a6c5c6627267e19341ac}{Transform\+VSCB}}, \mbox{\hyperlink{classVertexBuffer_a7d0b03a75e756fa8c632d31dcc2f81ab_a7d0b03a75e756fa8c632d31dcc2f81ab}{Vertex\+Buffer}}, \mbox{\hyperlink{classVertexShader_a733ad39c1c6e22054e04b6d01c2cb82b_a733ad39c1c6e22054e04b6d01c2cb82b}{Vertex\+Shader}}, \mbox{\hyperlink{classVertexShaderConstantBuffer_a8fd934cdf536ab8de284fb5ce1850a20_a8fd934cdf536ab8de284fb5ce1850a20}{Vertex\+Shader\+Constant\+Buffer$<$ CB $>$}}, \mbox{\hyperlink{classVertexShaderConstantBuffer_a8fd934cdf536ab8de284fb5ce1850a20_a8fd934cdf536ab8de284fb5ce1850a20}{Vertex\+Shader\+Constant\+Buffer$<$ Lights\+VSCB $>$}}, \mbox{\hyperlink{classVertexShaderConstantBuffer_a8fd934cdf536ab8de284fb5ce1850a20_a8fd934cdf536ab8de284fb5ce1850a20}{Vertex\+Shader\+Constant\+Buffer$<$ ren\+::\+Shadow\+Pass\+::\+Globals\+VSCB $>$}}, and \mbox{\hyperlink{classViewport_a93ebffad455c130aa536d25d660f00c9_a93ebffad455c130aa536d25d660f00c9}{Viewport}}.
+
+\Hypertarget{classIBindable_a7d88cdbd5d500d6d7f1bfabe16927855_a7d88cdbd5d500d6d7f1bfabe16927855}\index{IBindable@{IBindable}!getUid@{getUid}}
+\index{getUid@{getUid}!IBindable@{IBindable}}
+\doxysubsubsection{\texorpdfstring{getUid()}{getUid()}}
+{\footnotesize\ttfamily \label{classIBindable_a7d88cdbd5d500d6d7f1bfabe16927855_a7d88cdbd5d500d6d7f1bfabe16927855} 
+virtual std\+::string IBindable\+::get\+Uid (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classBlendState_aa6b960f91dea5183e301313830bd162f_aa6b960f91dea5183e301313830bd162f}{Blend\+State}}, \mbox{\hyperlink{classCubeTexture_ae432c95096dee9d2a19c063f320f2018_ae432c95096dee9d2a19c063f320f2018}{Cube\+Texture}}, \mbox{\hyperlink{classDepthStencilState_a98ace32eca708cfdaeb8e033d9f64c0f_a98ace32eca708cfdaeb8e033d9f64c0f}{Depth\+Stencil\+State}}, \mbox{\hyperlink{classIndexBuffer_a2825f0d8a8c2d2a46a905b82ea970883_a2825f0d8a8c2d2a46a905b82ea970883}{Index\+Buffer}}, \mbox{\hyperlink{classInputLayout_a23d0b5c4a3a9442ef38e5473a33f7adf_a23d0b5c4a3a9442ef38e5473a33f7adf}{Input\+Layout}}, \mbox{\hyperlink{classPixelShader_a70fd83afb22b3163bd756ef0840684ed_a70fd83afb22b3163bd756ef0840684ed}{Pixel\+Shader}}, \mbox{\hyperlink{classPixelShaderConstantBuffer_a9de5d16e68493d7600bcf6bb683f4cbc_a9de5d16e68493d7600bcf6bb683f4cbc}{Pixel\+Shader\+Constant\+Buffer$<$ CB $>$}}, \mbox{\hyperlink{classPixelShaderConstantBuffer_a9de5d16e68493d7600bcf6bb683f4cbc_a9de5d16e68493d7600bcf6bb683f4cbc}{Pixel\+Shader\+Constant\+Buffer$<$ Lights\+PSCB $>$}}, \mbox{\hyperlink{classPixelShaderConstantBuffer_a9de5d16e68493d7600bcf6bb683f4cbc_a9de5d16e68493d7600bcf6bb683f4cbc}{Pixel\+Shader\+Constant\+Buffer$<$ ren\+::\+Shadow\+Pass\+::\+Globals\+PSCB $>$}}, \mbox{\hyperlink{classPixelShaderNull_a5bc506cc49ed3fdff1a67159f110d0b7_a5bc506cc49ed3fdff1a67159f110d0b7}{Pixel\+Shader\+Null}}, \mbox{\hyperlink{classPrimitiveTopology_a922482223dbc3d0db3073eba1a9b6682_a922482223dbc3d0db3073eba1a9b6682}{Primitive\+Topology}}, \mbox{\hyperlink{classRasterizerState_a15d53a48554a11028388734468940786_a15d53a48554a11028388734468940786}{Rasterizer\+State}}, \mbox{\hyperlink{classTexture_a628d855d2087b4a03c00f781290b26fa_a628d855d2087b4a03c00f781290b26fa}{Texture}}, \mbox{\hyperlink{classTextureSamplerState_a4174f341022cac486bfab2671d710542_a4174f341022cac486bfab2671d710542}{Texture\+Sampler\+State}}, \mbox{\hyperlink{classVertexBuffer_a431ae06771496feb4d5df686144f6b20_a431ae06771496feb4d5df686144f6b20}{Vertex\+Buffer}}, \mbox{\hyperlink{classVertexShader_ac14212dbb1411c277b429c63c8ec7270_ac14212dbb1411c277b429c63c8ec7270}{Vertex\+Shader}}, \mbox{\hyperlink{classVertexShaderConstantBuffer_a0ce115989b6228614b3cfe00cdc14140_a0ce115989b6228614b3cfe00cdc14140}{Vertex\+Shader\+Constant\+Buffer$<$ CB $>$}}, \mbox{\hyperlink{classVertexShaderConstantBuffer_a0ce115989b6228614b3cfe00cdc14140_a0ce115989b6228614b3cfe00cdc14140}{Vertex\+Shader\+Constant\+Buffer$<$ Lights\+VSCB $>$}}, \mbox{\hyperlink{classVertexShaderConstantBuffer_a0ce115989b6228614b3cfe00cdc14140_a0ce115989b6228614b3cfe00cdc14140}{Vertex\+Shader\+Constant\+Buffer$<$ ren\+::\+Shadow\+Pass\+::\+Globals\+VSCB $>$}}, and \mbox{\hyperlink{classViewport_a4faf5c207d0070d7a73e970d78179f69_a4faf5c207d0070d7a73e970d78179f69}{Viewport}}.
+
+\Hypertarget{classIBindable_a4d590eebe80fa4e0aa865a875ff86c02_a4d590eebe80fa4e0aa865a875ff86c02}\index{IBindable@{IBindable}!setDebugObjectName@{setDebugObjectName}}
+\index{setDebugObjectName@{setDebugObjectName}!IBindable@{IBindable}}
+\doxysubsubsection{\texorpdfstring{setDebugObjectName()}{setDebugObjectName()}}
+{\footnotesize\ttfamily \label{classIBindable_a4d590eebe80fa4e0aa865a875ff86c02_a4d590eebe80fa4e0aa865a875ff86c02} 
+virtual void IBindable\+::set\+Debug\+Object\+Name (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classIDepthStencilView_a37ea21d058018da8f23c574e502f5581_a37ea21d058018da8f23c574e502f5581}{IDepth\+Stencil\+View}}, and \mbox{\hyperlink{classIRenderTargetView_a131bf2e6185274b924084de659fa82fc_a131bf2e6185274b924084de659fa82fc}{IRender\+Target\+View}}.
+
+\Hypertarget{classIBindable_a12fe8725cb3f4836f22d1592b07e2c91_a12fe8725cb3f4836f22d1592b07e2c91}\index{IBindable@{IBindable}!setMesh@{setMesh}}
+\index{setMesh@{setMesh}!IBindable@{IBindable}}
+\doxysubsubsection{\texorpdfstring{setMesh()}{setMesh()}}
+{\footnotesize\ttfamily \label{classIBindable_a12fe8725cb3f4836f22d1592b07e2c91_a12fe8725cb3f4836f22d1592b07e2c91} 
+virtual void IBindable\+::set\+Mesh (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classMesh}{Mesh}} \&}]{mesh}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classTransformScaleVSCB_af1cda8d0f3e88d9428a26f0a1c285537_af1cda8d0f3e88d9428a26f0a1c285537}{Transform\+Scale\+VSCB}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{bindable_8h}{bindable.\+h}}\end{DoxyCompactItemize}

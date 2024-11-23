@@ -1,0 +1,580 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="depth__stencil__state_8cpp" kind="file" language="C++">
+    <compoundname>depth_stencil_state.cpp</compoundname>
+    <includes refid="depth__stencil__state_8h" local="yes">depth_stencil_state.h</includes>
+    <includes refid="graphics_8h" local="yes">graphics.h</includes>
+    <includes refid="bindable__registry_8h" local="yes">bindable_registry.h</includes>
+    <includes refid="os__utils_8h" local="yes">os_utils.h</includes>
+    <includes refid="dxgi__info__queue_8h" local="yes">dxgi_info_queue.h</includes>
+    <includes refid="bindable__exception_8h" local="yes">bindable_exception.h</includes>
+    <incdepgraph>
+      <node id="9">
+        <label>assertions_console.h</label>
+        <link refid="assertions__console_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>bindable.h</label>
+        <link refid="bindable_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="61">
+        <label>bindable_exception.h</label>
+        <link refid="bindable__exception_8h"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>bindable_registry.h</label>
+        <link refid="bindable__registry_8h"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>color.h</label>
+        <link refid="color_8h"/>
+      </node>
+      <node id="28">
+        <label>console.h</label>
+        <link refid="console_8h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>depth_stencil_state.h</label>
+        <link refid="depth__stencil__state_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="59">
+        <label>dxgi_info_queue.h</label>
+        <link refid="dxgi__info__queue_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>graphics.h</label>
+        <link refid="graphics_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>graphics_friend.h</label>
+        <link refid="graphics__friend_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>key_exception.h</label>
+        <link refid="key__exception_8h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>key_timer.h</label>
+        <link refid="key__timer_8h"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>key_type_traits.h</label>
+        <link refid="key__type__traits_8h"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>key_wrl.h</label>
+        <link refid="key__wrl_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>math_utils.h</label>
+        <link refid="math__utils_8h"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="51">
+        <label>os_utils.h</label>
+        <link refid="os__utils_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>texture_desc.h</label>
+        <link refid="texture__desc_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>utils_global.h</label>
+        <link refid="utils__global_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>winner.h</label>
+        <link refid="winner_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/depth_stencil_state.cpp</label>
+        <link refid="depth__stencil__state_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>DirectXMath.h</label>
+      </node>
+      <node id="57">
+        <label>ShlObj.h</label>
+      </node>
+      <node id="14">
+        <label>Windows.h</label>
+      </node>
+      <node id="42">
+        <label>algorithm</label>
+      </node>
+      <node id="38">
+        <label>bitset</label>
+      </node>
+      <node id="27">
+        <label>chrono</label>
+      </node>
+      <node id="40">
+        <label>cinttypes</label>
+      </node>
+      <node id="30">
+        <label>cmath</label>
+      </node>
+      <node id="53">
+        <label>comdef.h</label>
+      </node>
+      <node id="39">
+        <label>cstddef</label>
+      </node>
+      <node id="31">
+        <label>cstdint</label>
+      </node>
+      <node id="8">
+        <label>d3d11.h</label>
+      </node>
+      <node id="16">
+        <label>d3dcompiler.h</label>
+      </node>
+      <node id="15">
+        <label>dxgi1_4.h</label>
+      </node>
+      <node id="60">
+        <label>dxgidebug.h</label>
+      </node>
+      <node id="46">
+        <label>execution</label>
+      </node>
+      <node id="55">
+        <label>functional</label>
+      </node>
+      <node id="41">
+        <label>future</label>
+      </node>
+      <node id="34">
+        <label>iomanip</label>
+      </node>
+      <node id="10">
+        <label>iostream</label>
+      </node>
+      <node id="44">
+        <label>iterator</label>
+      </node>
+      <node id="35">
+        <label>limits</label>
+      </node>
+      <node id="6">
+        <label>memory</label>
+      </node>
+      <node id="43">
+        <label>numeric</label>
+      </node>
+      <node id="56">
+        <label>optional</label>
+      </node>
+      <node id="45">
+        <label>regex</label>
+      </node>
+      <node id="13">
+        <label>sdkddkver.h</label>
+      </node>
+      <node id="37">
+        <label>set</label>
+      </node>
+      <node id="33">
+        <label>sstream</label>
+      </node>
+      <node id="22">
+        <label>stdexcept</label>
+      </node>
+      <node id="21">
+        <label>string</label>
+      </node>
+      <node id="26">
+        <label>thread</label>
+      </node>
+      <node id="54">
+        <label>tlhelp32.h</label>
+      </node>
+      <node id="32">
+        <label>type_traits</label>
+      </node>
+      <node id="50">
+        <label>unordered_map</label>
+      </node>
+      <node id="18">
+        <label>vector</label>
+      </node>
+      <node id="58">
+        <label>wincred.h</label>
+      </node>
+      <node id="52">
+        <label>winternl.h</label>
+      </node>
+      <node id="4">
+        <label>wrl.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="depth__stencil__state_8h" kindref="compound">depth_stencil_state.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="graphics_8h" kindref="compound">graphics.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="bindable__registry_8h" kindref="compound">bindable_registry.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="os__utils_8h" kindref="compound">os_utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dxgi__info__queue_8h" kindref="compound">dxgi_info_queue.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="bindable__exception_8h" kindref="compound">bindable_exception.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="classDepthStencilState_a7b1f40fb3710fadada68414103730488_1a7b1f40fb3710fadada68414103730488" refkind="member"><highlight class="normal"><ref refid="classDepthStencilState_a7b1f40fb3710fadada68414103730488_1a7b1f40fb3710fadada68414103730488" kindref="member">DepthStencilState::DepthStencilState</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_1ae3acfd2942753b3352070caacb8a4bb6" kindref="member">Mode</ref><sp/>mode<sp/>)</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>m_mode(mode)</highlight></codeline>
+<codeline lineno="13"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>D3D11_DEPTH_STENCIL_DESC<sp/>dsDesc{CD3D11_DEPTH_STENCIL_DESC{CD3D11_DEFAULT{}}};</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>(<sp/>mode<sp/>==<sp/>Default<sp/>)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//.DepthEnable<sp/>=<sp/>TRUE;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>enable<sp/>depth<sp/>testing<sp/>by<sp/>default</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//.DepthWriteMask<sp/>=<sp/>D3D11_DEPTH_WRITE_MASK_ALL;<sp/>//<sp/>identify<sp/>the<sp/>portion<sp/>of<sp/>a<sp/>depth-stencil<sp/>buffer<sp/>for<sp/>writing<sp/>depth<sp/>data,<sp/>basically<sp/>whether<sp/>to<sp/>enable<sp/>depth-stencil<sp/>buffer;<sp/>D3D11_DEPTH_WRITE_MASK_ALL<sp/>turns<sp/>on<sp/>writes<sp/>to<sp/>the<sp/>D.S.B,<sp/>D3D11_DEPTH_WRITE_MASK_ZERO<sp/>turns<sp/>off<sp/>writes<sp/>to<sp/>the<sp/>D.S.B.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//.DepthFunc<sp/>=<sp/>D3D11_COMPARISON_LESS;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>a<sp/>function<sp/>that<sp/>compares<sp/>depth<sp/>data<sp/>against<sp/>existing<sp/>depth<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//.StencilEnable<sp/>=<sp/>FALSE;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>disable<sp/>stencil<sp/>testing<sp/>by<sp/>default</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//.StencilWriteMask<sp/>=<sp/>D3D11_DEFAULT_STENCIL_WRITE_MASK;<sp/>//<sp/>identify<sp/>a<sp/>portion<sp/>of<sp/>the<sp/>depth-stencil<sp/>buffer<sp/>for<sp/>writing<sp/>stencil<sp/>data<sp/>(up<sp/>to<sp/>0xFF)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//.StencilReadMask<sp/>=<sp/>D3D11_DEFAULT_STENCIL_READ_MASK;<sp/><sp/><sp/>//<sp/>identify<sp/>a<sp/>portion<sp/>of<sp/>the<sp/>depth-stencil<sp/>buffer<sp/>for<sp/>reading<sp/>stencil<sp/>data<sp/>(up<sp/>to<sp/>0xFF)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//.FrontFace<sp/>=<sp/>defaultStencilOp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>identify<sp/>how<sp/>to<sp/>use<sp/>the<sp/>results<sp/>of<sp/>the<sp/>depth<sp/>test<sp/>and<sp/>the<sp/>stencil<sp/>test<sp/>for<sp/>pixels<sp/>whose<sp/>surface<sp/>normal<sp/>is<sp/>facing<sp/>towards<sp/>the<sp/>camera</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//.BackFace<sp/>=<sp/>defaultStencilOp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>identify<sp/>how<sp/>to<sp/>use<sp/>the<sp/>results<sp/>of<sp/>the<sp/>depth<sp/>test<sp/>and<sp/>the<sp/>stencil<sp/>test<sp/>for<sp/>pixels<sp/>whose<sp/>surface<sp/>normal<sp/>is<sp/>facing<sp/>away<sp/>from<sp/>the<sp/>camera</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Front|BackFace.StencilFunc<sp/>=<sp/>D3D11_COMPARISON_ALWAYS;<sp/><sp/><sp/><sp/><sp/>//<sp/>a<sp/>function<sp/>that<sp/>compares<sp/>stencil<sp/>data<sp/>against<sp/>existing<sp/>stencil<sp/>data;<sp/>D3D11_COMPARISON_ALWAYS<sp/>always<sp/>passes<sp/>the<sp/>comparison</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>with<sp/>D3D11_COMPARISON_NOT_EQUAL<sp/>the<sp/>comparison<sp/>passes<sp/>if<sp/>the<sp/>source<sp/>data<sp/>is<sp/>not<sp/>equal<sp/>to<sp/>the<sp/>destination<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Front|BackFace.StencilPassOp<sp/>=<sp/>D3D11_STENCIL_OP_KEEP;<sp/><sp/><sp/><sp/><sp/>//<sp/>set<sp/>the<sp/>stencil<sp/>operation<sp/>to<sp/>be<sp/>performed<sp/>when<sp/>both<sp/>depth<sp/>&amp;<sp/>stencil<sp/>tests<sp/>pass<sp/>(if<sp/>ZB<sp/>is<sp/>disabled<sp/>while<sp/>SB<sp/>is<sp/>enabled<sp/>and<sp/>S.T.<sp/>passes<sp/>then<sp/>this<sp/>operation<sp/>is<sp/>also<sp/>considered<sp/>a<sp/>pass);<sp/>D3D11_STENCIL_OP_KEEP<sp/>keeps<sp/>the<sp/>existing<sp/>stencil<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Front|BackFace.StencilFailOp<sp/>=<sp/>D3D11_STENCIL_OP_KEEP;<sp/><sp/><sp/><sp/><sp/>//<sp/>the<sp/>stencil<sp/>operation<sp/>to<sp/>perform<sp/>when<sp/>stencil<sp/>testing<sp/>fails</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Front|BackFace.StencilDepthFailOp<sp/>=<sp/>D3D11_STENCIL_OP_KEEP;//<sp/>the<sp/>stencil<sp/>operation<sp/>to<sp/>perform<sp/>when<sp/>stencil<sp/>testing<sp/>passes<sp/>and<sp/>depth<sp/>testing<sp/>fails</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>mode<sp/>==<sp/><ref refid="classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_1ae3acfd2942753b3352070caacb8a4bb6ac36f5fe5b3f27ae69ceb3466395ea72a" kindref="member">DepthOffStencilOff</ref><sp/>)</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.DepthEnable<sp/>=<sp/>FALSE;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.DepthWriteMask<sp/>=<sp/>D3D11_DEPTH_WRITE_MASK_ZERO;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>mode<sp/>==<sp/><ref refid="classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_1ae3acfd2942753b3352070caacb8a4bb6afad06cf797d3125ff2783e900228fa96" kindref="member">DepthOnStencilWriteFF</ref><sp/>)</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.StencilEnable<sp/>=<sp/>TRUE;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.StencilWriteMask<sp/>=<sp/>0xFFui8;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.FrontFace.StencilFunc<sp/>=<sp/>D3D11_COMPARISON_ALWAYS;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.FrontFace.StencilPassOp<sp/>=<sp/>D3D11_STENCIL_OP_REPLACE;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>mode<sp/>==<sp/><ref refid="classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_1ae3acfd2942753b3352070caacb8a4bb6ae917fe64c3cb192dea52fb2c037f9dc6" kindref="member">DepthOnStencilReadFF</ref><sp/>)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.StencilEnable<sp/>=<sp/>TRUE;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.StencilReadMask<sp/>=<sp/>0xFFui8;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.FrontFace.StencilFunc<sp/>=<sp/>D3D11_COMPARISON_NOT_EQUAL;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>mode<sp/>==<sp/><ref refid="classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_1ae3acfd2942753b3352070caacb8a4bb6a5812e15f0f709a06f04affad25fa0ce9" kindref="member">DepthOffStencilWriteFF</ref><sp/>)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.DepthEnable<sp/>=<sp/>FALSE;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.DepthWriteMask<sp/>=<sp/>D3D11_DEPTH_WRITE_MASK_ZERO;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.StencilEnable<sp/>=<sp/>TRUE;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.StencilWriteMask<sp/>=<sp/>0xFFui8;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.FrontFace.StencilFunc<sp/>=<sp/>D3D11_COMPARISON_ALWAYS;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.FrontFace.StencilPassOp<sp/>=<sp/>D3D11_STENCIL_OP_REPLACE;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>mode<sp/>==<sp/><ref refid="classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_1ae3acfd2942753b3352070caacb8a4bb6a7d251e81fb6c60cb4d068d886b726bb9" kindref="member">DepthOffStencilReadFF</ref><sp/>)</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.DepthEnable<sp/>=<sp/>FALSE;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.DepthWriteMask<sp/>=<sp/>D3D11_DEPTH_WRITE_MASK_ZERO;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.StencilEnable<sp/>=<sp/>TRUE;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.StencilReadMask<sp/>=<sp/>0xFFui8;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.FrontFace.StencilFunc<sp/>=<sp/>D3D11_COMPARISON_NOT_EQUAL;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>mode<sp/>==<sp/><ref refid="classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_1ae3acfd2942753b3352070caacb8a4bb6a105a131cf0013946131b524c95153aef" kindref="member">DepthOnStencilWriteBF</ref><sp/>)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.StencilEnable<sp/>=<sp/>TRUE;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.StencilWriteMask<sp/>=<sp/>0xFFui8;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.BackFace.StencilFunc<sp/>=<sp/>D3D11_COMPARISON_ALWAYS;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.BackFace.StencilPassOp<sp/>=<sp/>D3D11_STENCIL_OP_REPLACE;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>mode<sp/>==<sp/><ref refid="classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_1ae3acfd2942753b3352070caacb8a4bb6a020f215d3faade3d0ca0b7e4e69096a7" kindref="member">DepthOnStencilReadBF</ref><sp/>)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.StencilEnable<sp/>=<sp/>TRUE;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.StencilReadMask<sp/>=<sp/>0xFFui8;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.BackFace.StencilFunc<sp/>=<sp/>D3D11_COMPARISON_NOT_EQUAL;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>mode<sp/>==<sp/><ref refid="classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_1ae3acfd2942753b3352070caacb8a4bb6af4dc7baf27d1cfe9eaa10901f6971e19" kindref="member">DepthOffStencilWriteBF</ref><sp/>)</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.DepthEnable<sp/>=<sp/>FALSE;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.DepthWriteMask<sp/>=<sp/>D3D11_DEPTH_WRITE_MASK_ZERO;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.StencilEnable<sp/>=<sp/>TRUE;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.StencilWriteMask<sp/>=<sp/>0xFFui8;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.BackFace.StencilFunc<sp/>=<sp/>D3D11_COMPARISON_ALWAYS;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.BackFace.StencilPassOp<sp/>=<sp/>D3D11_STENCIL_OP_REPLACE;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>mode<sp/>==<sp/><ref refid="classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_1ae3acfd2942753b3352070caacb8a4bb6ac225d417353202d87de09383efa8f303" kindref="member">DepthOffStencilReadBF</ref><sp/>)</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.DepthEnable<sp/>=<sp/>FALSE;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.DepthWriteMask<sp/>=<sp/>D3D11_DEPTH_WRITE_MASK_ZERO;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.StencilEnable<sp/>=<sp/>TRUE;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.StencilReadMask<sp/>=<sp/>0xFFui8;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.BackFace.StencilFunc<sp/>=<sp/>D3D11_COMPARISON_NOT_EQUAL;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>mode<sp/>==<sp/><ref refid="classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_1ae3acfd2942753b3352070caacb8a4bb6a57fffd599d2846aa34610315b00c45a8" kindref="member">DepthReversedStencilOff</ref><sp/>)</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.DepthFunc<sp/>=<sp/>D3D11_COMPARISON_GREATER;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>mode<sp/>==<sp/><ref refid="classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_1ae3acfd2942753b3352070caacb8a4bb6a9fc99e3fdc23b5fdc853c497414fc129" kindref="member">DepthReadOnlyStencilOff</ref><sp/>)</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.DepthWriteMask<sp/>=<sp/>D3D11_DEPTH_WRITE_MASK_ZERO;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>mode<sp/>==<sp/><ref refid="classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_1ae3acfd2942753b3352070caacb8a4bb6a498b019b74ee2359eab77f5fa1e88bfd" kindref="member">DepthReadOnlyEquals1StencilOff</ref><sp/>)</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.DepthFunc<sp/>=<sp/>D3D11_COMPARISON_EQUAL;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dsDesc.DepthWriteMask<sp/>=<sp/>D3D11_DEPTH_WRITE_MASK_ZERO;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>mode<sp/>!=<sp/><ref refid="classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_1ae3acfd2942753b3352070caacb8a4bb6ac906ea2d19d25943d1b57f18b35f6e11" kindref="member">Default</ref><sp/>)</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="bindable__exception_8h_a49daaad773d173079645f4c159841e69_1a49daaad773d173079645f4c159841e69" kindref="member">THROW_BINDABLE_EXCEPTION</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Invalid<sp/>Depth<sp/>Stencil<sp/>mode.&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>HRESULT<sp/>hres<sp/>=<sp/><ref refid="classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_1a175df79f82ab5a6dad1df24b5a242ef7" kindref="member">getDevice</ref>(<sp/>gfx<sp/>)-&gt;CreateDepthStencilState(<sp/>&amp;dsDesc,<sp/>&amp;<ref refid="classDepthStencilState_a8e12f80754b4582f45875d8ff505dd02_1a8e12f80754b4582f45875d8ff505dd02" kindref="member">m_pDepthStencilState</ref><sp/>);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="os__utils_8h_a7027472bc9b182c0fea900713e4541e3_1a7027472bc9b182c0fea900713e4541e3" kindref="member">ASSERT_HRES_IF_FAILED</ref>;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116" refid="classDepthStencilState_a3484137e582f9cc5a3e76103f39b5086_1a3484137e582f9cc5a3e76103f39b5086" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classDepthStencilState_a3484137e582f9cc5a3e76103f39b5086_1a3484137e582f9cc5a3e76103f39b5086" kindref="member">DepthStencilState::bind</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="117"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>getDeviceContext(<sp/>gfx<sp/>)-&gt;OMSetDepthStencilState(<sp/>m_pDepthStencilState.Get(),<sp/>0xFF<sp/>);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dxgi__info__queue_8h_accf41747d77929c5a185f1f7d5c72263_1accf41747d77929c5a185f1f7d5c72263" kindref="member">DXGI_GET_QUEUE_INFO</ref>(<sp/>gfx<sp/>);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="classDepthStencilState_aadd8440e95fe9fc8f2b0c66eb93ac9b1_1aadd8440e95fe9fc8f2b0c66eb93ac9b1" refkind="member"><highlight class="normal">Microsoft::WRL::ComPtr&lt;ID3D11DepthStencilState&gt;&amp;<sp/><ref refid="classDepthStencilState_aadd8440e95fe9fc8f2b0c66eb93ac9b1_1aadd8440e95fe9fc8f2b0c66eb93ac9b1" kindref="member">DepthStencilState::getD3dDepthStencilState</ref>()</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classDepthStencilState_a8e12f80754b4582f45875d8ff505dd02_1a8e12f80754b4582f45875d8ff505dd02" kindref="member">m_pDepthStencilState</ref>;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127" refid="classDepthStencilState_af67a7f1edf6b2e62b08f5459347ecbda_1af67a7f1edf6b2e62b08f5459347ecbda" refkind="member"><highlight class="normal">std::shared_ptr&lt;DepthStencilState&gt;<sp/><ref refid="classDepthStencilState_af67a7f1edf6b2e62b08f5459347ecbda_1af67a7f1edf6b2e62b08f5459347ecbda" kindref="member">DepthStencilState::fetch</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_1ae3acfd2942753b3352070caacb8a4bb6" kindref="member">Mode</ref><sp/>mode<sp/>)</highlight></codeline>
+<codeline lineno="129"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBindableRegistry_a034568929d2dbcda2bf619e90d9fc68e_1a034568929d2dbcda2bf619e90d9fc68e" kindref="member">BindableRegistry::fetch&lt;DepthStencilState&gt;</ref>(<sp/>gfx,<sp/>mode<sp/>);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133" refid="classDepthStencilState_a4db6e0f0ad0dca77d2e88db28a9a4bc6_1a4db6e0f0ad0dca77d2e88db28a9a4bc6" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classDepthStencilState_a4db6e0f0ad0dca77d2e88db28a9a4bc6_1a4db6e0f0ad0dca77d2e88db28a9a4bc6" kindref="member">DepthStencilState::calcUid</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_1ae3acfd2942753b3352070caacb8a4bb6" kindref="member">Mode</ref><sp/>mode<sp/>)</highlight></codeline>
+<codeline lineno="134"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">std::string_literals;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>getModeStr<sp/>=<sp/>[mode]()</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(<sp/>mode<sp/>)</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_1ae3acfd2942753b3352070caacb8a4bb6ac906ea2d19d25943d1b57f18b35f6e11" kindref="member">Default</ref>:</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Default&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_1ae3acfd2942753b3352070caacb8a4bb6ac36f5fe5b3f27ae69ceb3466395ea72a" kindref="member">DepthOffStencilOff</ref>:</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;DepthOffStencilOff&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_1ae3acfd2942753b3352070caacb8a4bb6afad06cf797d3125ff2783e900228fa96" kindref="member">DepthOnStencilWriteFF</ref>:</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;DepthOnStencilWriteFF&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_1ae3acfd2942753b3352070caacb8a4bb6a5812e15f0f709a06f04affad25fa0ce9" kindref="member">DepthOffStencilWriteFF</ref>:</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;DepthOffStencilWriteFF&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_1ae3acfd2942753b3352070caacb8a4bb6ae917fe64c3cb192dea52fb2c037f9dc6" kindref="member">DepthOnStencilReadFF</ref>:</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;DepthOnStencilReadFF&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_1ae3acfd2942753b3352070caacb8a4bb6a7d251e81fb6c60cb4d068d886b726bb9" kindref="member">DepthOffStencilReadFF</ref>:</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;DepthOffStencilReadFF&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_1ae3acfd2942753b3352070caacb8a4bb6a105a131cf0013946131b524c95153aef" kindref="member">DepthOnStencilWriteBF</ref>:</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;DepthOnStencilWriteBF&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_1ae3acfd2942753b3352070caacb8a4bb6af4dc7baf27d1cfe9eaa10901f6971e19" kindref="member">DepthOffStencilWriteBF</ref>:</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;DepthOffStencilWriteBF&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_1ae3acfd2942753b3352070caacb8a4bb6a020f215d3faade3d0ca0b7e4e69096a7" kindref="member">DepthOnStencilReadBF</ref>:</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;DepthOnStencilReadBF&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_1ae3acfd2942753b3352070caacb8a4bb6ac225d417353202d87de09383efa8f303" kindref="member">DepthOffStencilReadBF</ref>:</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;DepthOffStencilReadBF&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_1ae3acfd2942753b3352070caacb8a4bb6a57fffd599d2846aa34610315b00c45a8" kindref="member">DepthReversedStencilOff</ref>:</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;DepthReversedStencilOff&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classDepthStencilState_ae3acfd2942753b3352070caacb8a4bb6_1ae3acfd2942753b3352070caacb8a4bb6a498b019b74ee2359eab77f5fa1e88bfd" kindref="member">DepthReadOnlyEquals1StencilOff</ref>:</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;DepthReadOnlyEquals1StencilOff&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;!INV!&quot;</highlight><highlight class="normal">s;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(<sp/><ref refid="classDepthStencilState_a7b1f40fb3710fadada68414103730488_1a7b1f40fb3710fadada68414103730488" kindref="member">DepthStencilState</ref><sp/>).name()<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;#&quot;</highlight><highlight class="normal">s<sp/>+<sp/>getModeStr();</highlight></codeline>
+<codeline lineno="169"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171" refid="classDepthStencilState_a98ace32eca708cfdaeb8e033d9f64c0f_1a98ace32eca708cfdaeb8e033d9f64c0f" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classDepthStencilState_a98ace32eca708cfdaeb8e033d9f64c0f_1a98ace32eca708cfdaeb8e033d9f64c0f" kindref="member">DepthStencilState::getUid</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="172"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classDepthStencilState_a4db6e0f0ad0dca77d2e88db28a9a4bc6_1a4db6e0f0ad0dca77d2e88db28a9a4bc6" kindref="member">calcUid</ref>(<sp/><ref refid="classDepthStencilState_a25adc9858f12b56b3cd7fb31c8044302_1a25adc9858f12b56b3cd7fb31c8044302" kindref="member">m_mode</ref><sp/>);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/depth_stencil_state.cpp"/>
+  </compounddef>
+</doxygen>

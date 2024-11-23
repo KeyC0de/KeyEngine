@@ -1,0 +1,42 @@
+\doxysection{vtune\+\_\+itt\+\_\+domain.\+h}
+\hypertarget{vtune__itt__domain_8h_source}{}\label{vtune__itt__domain_8h_source}\index{inc/vtune\_itt\_domain.h@{inc/vtune\_itt\_domain.h}}
+\mbox{\hyperlink{vtune__itt__domain_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifdef\ \_PROFILE}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ Intel\ Instrumentation\ \&\ Tracing\ Technology}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#\ \ \ include\ <ittnotify.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#\ \ \ pragma\ comment(\ lib,\ "{}libittnotify.lib"{}\ )}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \_\_itt\_domain\ *ittDomain\ =\ \_\_itt\_domain\_create(\ L\textcolor{stringliteral}{"{}KeyEngine.Domain.Global"{}}\ );}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ ITT\ task\ begin}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#\ \ \ define\ PROFILE\_VTUNE\_ITT\_TASK\_BEGIN(\ strHandle\ )\ \ \ \ \ \ \ \ \ \ \ \ \_\_itt\_task\_begin(\ ittDomain,\ \_\_itt\_null,\ \_\_itt\_null,\ strHandle\ );}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ Tasks\ can\ be\ nested\ to\ your\ heart's\ content.}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ ITT\ task\ end}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#\ \ \ define\ PROFILE\_VTUNE\_ITT\_TASK\_END\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_itt\_task\_end(\ ittDomain\ );}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ Set\ a\ thread's\ name\ so\ it\ shows\ up\ in\ the\ UI\ as\ something\ meaningful}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#\ \ \ define\ PROFILE\_VTUNE\_ITT\_SET\_THREAD\_NAME(\ threadName\ )\ \ \ \ \ \ \_\_itt\_thread\_set\_name(\ threadName\ );}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ ITT\ VTUNE\ Pause\ Profiler}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#\ \ \ define\ PROFILE\_VTUNE\_ITT\_PAUSE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_itt\_pause()}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ ITT\ VTUNE\ Resume\ Profiler}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#\ \ \ define\ PROFILE\_VTUNE\_ITT\_RESUME\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_itt\_resume()}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#\ \ \ define\ PROFILE\_VTUNE\_ITT\_TASK\_BEGIN(\ strHandle\ )\ \ \ \ \ \ \ \ \ \ \ \ (void)\ 0;}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#\ \ \ define\ PROFILE\_VTUNE\_ITT\_TASK\_END\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (void)\ 0;}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#\ \ \ define\ PROFILE\_VTUNE\_ITT\_SET\_THREAD\_NAME(\ threadName\ )\ \ \ \ \ \ (void)\ 0;}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#\ \ \ define\ PROFILE\_VTUNE\_ITT\_PAUSE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (void)\ 0;}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#\ \ \ define\ PROFILE\_VTUNE\_ITT\_RESUME\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (void)\ 0;}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

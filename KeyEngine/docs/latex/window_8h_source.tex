@@ -1,0 +1,171 @@
+\doxysection{window.\+h}
+\hypertarget{window_8h_source}{}\label{window_8h_source}\index{inc/window.h@{inc/window.h}}
+\mbox{\hyperlink{window_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <optional>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{winner_8h}{winner.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{color_8h}{color.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{key__exception_8h}{key\_exception.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{keyboard_8h}{keyboard.h}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{mouse_8h}{mouse.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{non__copyable_8h}{non\_copyable.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{windows__hidden__defs_8h}{windows\_hidden\_defs.h}}"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#if\ UNICODE}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#\ \ \ define\ CLIPBOARD\_TEXT\_FORMAT\ \ \ \ CF\_UNICODETEXT}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#\ \ \ define\ CLIPBOARD\_TEXT\_FORMAT\ \ \ \ CF\_TEXT}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ BUTTON\_TEXT\_MAX\_LENGTH\ \ \ \ \ \ 80}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ \#WARNING!\ These\ identifiers\ must\ be\ unique\ among\ all\ window\ classes\ currently\ present\ in\ the\ OS}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ MAIN\_WINDOW\_CLASS\_NAME\ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}KeyEngine\_Main\_Window\_Class"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ MODAL\_DIALOG\_CLASS\_NAME\ \ \ \ \ \ \ \ \ \ \ \ \ "{}KeyEngine\_Modal\_Dialog\_Class"{}}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ MODELESS\_DIALOG\_CLASS\_NAME\ \ \ \ \ \ \ \ \ \ "{}KeyEngine\_Modeless\_Dialog\_Class"{}}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ SPLASH\_WINDOW\_CLASS\_NAME\ \ \ \ \ \ \ \ \ \ \ \ "{}KeyEngine\_Splash\_Window\_Class"{}}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGraphics}{Graphics}};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classWindow}{Window}}\ final}
+\DoxyCodeLine{00033\ \ \ \ \ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classNonCopyable}{NonCopyable}}}
+\DoxyCodeLine{00034\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classWindow_1_1WindowException}{WindowException}}\ final}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classKeyException}{KeyException}}}
+\DoxyCodeLine{00037\ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classWindow_1_1WindowException_ad67a648b27df5170dc350a86025d02f2_ad67a648b27df5170dc350a86025d02f2}{WindowException}}(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ line,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *file,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *function,\ \textcolor{keyword}{const}\ std::string\ \&msg\ )\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ \mbox{\hyperlink{classWindow_1_1WindowException_ad90e3938364bfe58024e3c28b0e639d6_ad90e3938364bfe58024e3c28b0e639d6}{getType}}()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \textcolor{keyword}{override}\ \textcolor{keyword}{final};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{classWindow_1_1WindowException_a8b6ed4413bb89753ed13bbaea38b942c_a8b6ed4413bb89753ed13bbaea38b942c}{what}}()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \textcolor{keyword}{override}\ \textcolor{keyword}{final};}
+\DoxyCodeLine{00043\ \ \ \ \ \};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classWindow_1_1WindowClass}{WindowClass}}\ final}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classNonCopyable}{NonCopyable}}}
+\DoxyCodeLine{00047\ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classWindow_1_1WindowClass_a853d93c9b3a8146d1ff4d32af0e5daee_a853d93c9b3a8146d1ff4d32af0e5daee}{m\_name}};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ ATOM\ \mbox{\hyperlink{classWindow_1_1WindowClass_a9de2bc5dce0d50fcd956a40e7959a8cc_a9de2bc5dce0d50fcd956a40e7959a8cc}{m\_classAtom}};}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classWindow_1_1WindowClass_aa826fd2bfebc907f2ae0d3226b919480_aa826fd2bfebc907f2ae0d3226b919480}{WindowClass}}(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name,\ \textcolor{keyword}{const}\ WNDPROC\ windowProcedure,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structColorBGRA}{ColorBGRA}}\ bgColor\ );}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classWindow_1_1WindowClass_aa826fd2bfebc907f2ae0d3226b919480_aa826fd2bfebc907f2ae0d3226b919480}{WindowClass}}(\ \mbox{\hyperlink{classWindow_1_1WindowClass}{WindowClass}}\ \&\&rhs\ )\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classWindow_1_1WindowClass}{WindowClass}}\&\ \mbox{\hyperlink{classWindow_1_1WindowClass_a8dde35b917e1ff3d216d531076127936_a8dde35b917e1ff3d216d531076127936}{operator=}}(\ \mbox{\hyperlink{classWindow_1_1WindowClass}{WindowClass}}\ \&\&rhs\ )\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classWindow_1_1WindowClass_a4c052246d032ab5956e6fa027f1cd9e5_a4c052246d032ab5956e6fa027f1cd9e5}{\string~WindowClass}}()\ noexcept;}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ const\ std::\textcolor{keywordtype}{string}\&\ \mbox{\hyperlink{classWindow_1_1WindowClass_a1fe165faa5f62cda6d4140da40167d9c_a1fe165faa5f62cda6d4140da40167d9c}{getName}}()\ noexcept;}
+\DoxyCodeLine{00057\ \ \ \ \ \};}
+\DoxyCodeLine{00058\ private:}
+\DoxyCodeLine{00059\ \ \ \ \ static\ inline\ \mbox{\hyperlink{classKeyboard}{Keyboard}}\ \mbox{\hyperlink{classWindow_adad72e93053ae81a048b11b80a886ca4_adad72e93053ae81a048b11b80a886ca4}{s\_keyboard}};}
+\DoxyCodeLine{00060\ \ \ \ \ static\ inline\ \mbox{\hyperlink{classMouse}{Mouse}}\ \mbox{\hyperlink{classWindow_a346ad68a7a25b4faa0d7b99bf6a20a13_a346ad68a7a25b4faa0d7b99bf6a20a13}{s\_mouse}};}
+\DoxyCodeLine{00061\ \ \ \ \ static\ inline\ std::vector<BYTE>\ \mbox{\hyperlink{classWindow_a34b7a782124f9a212b5e42a75d90ce35_a34b7a782124f9a212b5e42a75d90ce35}{s\_rawInputBuffer}};}
+\DoxyCodeLine{00062\ \ \ \ \ static\ inline\ HACCEL\ \mbox{\hyperlink{classWindow_adb2d358327f22c4df6f01ea4e92db80b_adb2d358327f22c4df6f01ea4e92db80b}{s\_hAcceleratorTable}};}
+\DoxyCodeLine{00063\ \ \ \ \ static\ inline\ \mbox{\hyperlink{structtagLABELBOX}{PLABELBOX}}\ \mbox{\hyperlink{classWindow_a9cc5ee14371f126378a31c305189611a_a9cc5ee14371f126378a31c305189611a}{s\_pBoxLocalClip}};}
+\DoxyCodeLine{00064\ \ \ \ \ static\ inline\ UINT\_PTR\ \mbox{\hyperlink{classWindow_a489a152d80bb5ee013d485e0c92e6064_a489a152d80bb5ee013d485e0c92e6064}{s\_timerEvent}}\ =\ 0ui64;}
+\DoxyCodeLine{00065\ private:}
+\DoxyCodeLine{00066\ \ \ \ \ \mbox{\hyperlink{classWindow_1_1WindowClass}{WindowClass}}\ \mbox{\hyperlink{classWindow_ae3edc49affe0c51784741be3fb19ada9_ae3edc49affe0c51784741be3fb19ada9}{m\_windowClass}};}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classWindow_a588f1844e2f5098b7a75f8703efde18e_a588f1844e2f5098b7a75f8703efde18e}{m\_bCursorEnabled}}\ =\ true;}
+\DoxyCodeLine{00068\ \ \ \ \ std::\textcolor{keywordtype}{string}\ \mbox{\hyperlink{classWindow_1_1WindowClass_a853d93c9b3a8146d1ff4d32af0e5daee_a853d93c9b3a8146d1ff4d32af0e5daee}{m\_name}};}
+\DoxyCodeLine{00069\ \ \ \ \ std::\textcolor{keywordtype}{string}\ \mbox{\hyperlink{classWindow_ae9ced8207aab8f5717efd6610340e62d_ae9ced8207aab8f5717efd6610340e62d}{m\_title}};}
+\DoxyCodeLine{00070\ \ \ \ \ HWND\ \mbox{\hyperlink{classWindow_ab39b5ba6b3adea40aa19ffa50e306dbb_ab39b5ba6b3adea40aa19ffa50e306dbb}{m\_hWnd}};}
+\DoxyCodeLine{00071\ \ \ \ \ std::unique\_ptr<\mbox{\hyperlink{classGraphics}{Graphics}}>\ \mbox{\hyperlink{classWindow_a9801c1522a675647f8e2cbfa6d10c7dc_a9801c1522a675647f8e2cbfa6d10c7dc}{m\_pGraphics}};}
+\DoxyCodeLine{00072\ \ \ \ \ WINDOWINFO\ \mbox{\hyperlink{classWindow_a0cd7fb10e78040422ad35827fd9d1554_a0cd7fb10e78040422ad35827fd9d1554}{m\_info}}\{\};}
+\DoxyCodeLine{00073\ \ \ \ \ std::array<unsigned,\ 8>\ \mbox{\hyperlink{classWindow_aa1e61281cd037023b477dcb843b5b573_aa1e61281cd037023b477dcb843b5b573}{m\_clipboardFormats}};\ \ \ \textcolor{comment}{//\ \{0:\ unicode\ format,...\}}}
+\DoxyCodeLine{00074\ \ \ \ \ HMENU\ \mbox{\hyperlink{classWindow_a1fa9417ebe0ef97a982efb0dadcf8a5d_a1fa9417ebe0ef97a982efb0dadcf8a5d}{m\_hTrayIconPopupMenu}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00075\ \ \ \ \ NOTIFYICONDATA\ \mbox{\hyperlink{classWindow_a3129bb2ec0c28df7e02041c6d74fb5cd_a3129bb2ec0c28df7e02041c6d74fb5cd}{m\_trayIconData}}\{\};}
+\DoxyCodeLine{00076\ \ \ \ \ std::unique\_ptr<Window>\ \mbox{\hyperlink{classWindow_a4a330c87fd1258d1846f147a9a188bd0_a4a330c87fd1258d1846f147a9a188bd0}{m\_pModalDialog}};}
+\DoxyCodeLine{00077\ \ \ \ \ std::unique\_ptr<Window>\ \mbox{\hyperlink{classWindow_a8eb3ec06d02253d7102350bd9533a17c_a8eb3ec06d02253d7102350bd9533a17c}{m\_pSplash}};}
+\DoxyCodeLine{00078\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{static}\ LRESULT\ CALLBACK\ \mbox{\hyperlink{classWindow_a73049005d1b7e248e423374b50ec1915_a73049005d1b7e248e423374b50ec1915}{windowProcDelegate}}(\ \_In\_\ \textcolor{keyword}{const}\ HWND\ pWndHandle,\ \_In\_\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ uMsg,\ \_In\_\ \textcolor{keyword}{const}\ WPARAM\ wParam,\ \_In\_\ \textcolor{keyword}{const}\ LPARAM\ lParam\ );}
+\DoxyCodeLine{00080\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classWindow_acc3b6797295659d5ed747dd64aae767d_acc3b6797295659d5ed747dd64aae767d}{messageBoxPrintf}}(\ \textcolor{keyword}{const}\ HWND\ window,\ \textcolor{keyword}{const}\ TCHAR\ *caption,\ \textcolor{keyword}{const}\ TCHAR\ *format,\ ...\ );}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{static}\ LRESULT\ CALLBACK\ \mbox{\hyperlink{classWindow_a63b33789bf23618f116c8b97b2010f58_a63b33789bf23618f116c8b97b2010f58}{windowProc}}(\ \_In\_\ \textcolor{keyword}{const}\ HWND\ pWnd,\ \_In\_\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ uMsg,\ \_In\_\ \textcolor{keyword}{const}\ WPARAM\ wParam,\ \_In\_\ \textcolor{keyword}{const}\ LPARAM\ lParam\ );}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{static}\ LRESULT\ CALLBACK\ \mbox{\hyperlink{classWindow_a043951d406f11adc6a7320fcc40de5ff_a043951d406f11adc6a7320fcc40de5ff}{dialogProc}}(\ \_In\_\ \textcolor{keyword}{const}\ HWND\ hWnd,\ \_In\_\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ uMsg,\ \_In\_\ \textcolor{keyword}{const}\ WPARAM\ wParam,\ \_In\_\ \textcolor{keyword}{const}\ LPARAM\ lParam\ );}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{static}\ LRESULT\ CALLBACK\ \mbox{\hyperlink{classWindow_adc6e743324b3b804df5b2fa86ced2a6f_adc6e743324b3b804df5b2fa86ced2a6f}{splashWindowProc}}(\ \_In\_\ \textcolor{keyword}{const}\ HWND\ hWnd,\ \_In\_\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ uMsg,\ \_In\_\ \textcolor{keyword}{const}\ WPARAM\ wParam,\ \_In\_\ \textcolor{keyword}{const}\ LPARAM\ lParam\ );}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ CALLBACK\ \mbox{\hyperlink{classWindow_acf8285de3092f3452349ee4591627b11_acf8285de3092f3452349ee4591627b11}{splashWindowTimerProc}}(\ \_In\_\ \textcolor{keyword}{const}\ HWND\ hWnd,\ \_In\_\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ uMsg,\ \_In\_\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ idEvent,\ \_In\_\ \textcolor{keyword}{const}\ DWORD\ time\ );}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classKeyboard}{Keyboard}}\&\ \mbox{\hyperlink{classWindow_af51b384330835f7ee8d0c3cb1254c4f8_af51b384330835f7ee8d0c3cb1254c4f8}{getKeyboard}}()\ noexcept;}
+\DoxyCodeLine{00088\ \ \ \ \ static\ \mbox{\hyperlink{classMouse}{Mouse}}\&\ \mbox{\hyperlink{classWindow_a89e829c66c387dfca31d10b9806da751_a89e829c66c387dfca31d10b9806da751}{getMouse}}()\ noexcept;}
+\DoxyCodeLine{00089\ \ \ \ \ static\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classWindow_aad814dbb72db34012be61839a21ea004_aad814dbb72db34012be61839a21ea004}{isDescendantOf}}(\ const\ HWND\ targethWnd,\ const\ HWND\ parent\ )\ noexcept;}
+\DoxyCodeLine{00090\ \ \ \ \ static\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWindow_a989ce4fa31d0caf58d4f238b9c094d31_a989ce4fa31d0caf58d4f238b9c094d31}{saveClipboardTextAsVar}}();}
+\DoxyCodeLine{00095\ \ \ \ \ static\ HBITMAP\ \mbox{\hyperlink{classWindow_ab9660b523de7bdc93b8048a12edd1b6e_ab9660b523de7bdc93b8048a12edd1b6e}{convertHiconToHbitmap}}(\ HICON\ hIcon\ );}
+\DoxyCodeLine{00096\ \ \ \ \ static\ HICON\ \mbox{\hyperlink{classWindow_a8399c68d7ae5f5cc253512d42674e049_a8399c68d7ae5f5cc253512d42674e049}{convertHbitmapToHicon}}(\ HBITMAP\ bitmap\ );}
+\DoxyCodeLine{00097\ public:}
+\DoxyCodeLine{00098\ \ \ \ \ \mbox{\hyperlink{classWindow}{Window}}(\ const\ \textcolor{keywordtype}{int}\ width,\ const\ \textcolor{keywordtype}{int}\ height,\ const\ \textcolor{keywordtype}{char}\ *name,\ const\ \textcolor{keywordtype}{char}\ *className,\ const\ WNDPROC\ windowProcedure,\ const\ \textcolor{keywordtype}{int}\ x,\ const\ \textcolor{keywordtype}{int}\ y,\ const\ \mbox{\hyperlink{structColorBGRA}{ColorBGRA}}\ bgColor\ =\ \{255,\ 255,\ 255\},\ \textcolor{keyword}{const}\ HMENU\ hMenu\ =\ \textcolor{keyword}{nullptr},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classWindow}{Window}}\ *parent\ =\ nullptr\ );}
+\DoxyCodeLine{00099\ \ \ \ \ \mbox{\hyperlink{classWindow_a69f83cc5dc2d4f9807e4d11d2b2623e1_a69f83cc5dc2d4f9807e4d11d2b2623e1}{Window}}(\ \mbox{\hyperlink{classWindow}{Window}}\ \&\&rhs\ )\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00100\ \ \ \ \ \mbox{\hyperlink{classWindow}{Window}}\&\ \mbox{\hyperlink{classWindow_1_1WindowClass_a8dde35b917e1ff3d216d531076127936_a8dde35b917e1ff3d216d531076127936}{operator=}}(\ \mbox{\hyperlink{classWindow}{Window}}\ \&\&rhs\ )\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00101\ \ \ \ \ \mbox{\hyperlink{classWindow_a245d821e6016fa1f6970ccbbedd635f6_a245d821e6016fa1f6970ccbbedd635f6}{\string~Window}}();}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ std::optional<int>\ \mbox{\hyperlink{classWindow_a1b5d1120e6ad1f4e078e2942dffd0041_a1b5d1120e6ad1f4e078e2942dffd0041}{messageLoop}}()\ noexcept;}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWindow_a5a4f28721b04c0047afb8881f68e359d_a5a4f28721b04c0047afb8881f68e359d}{setEnable}}(\ const\ \textcolor{keywordtype}{bool}\ b\ );}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWindow_a9278ce486f1bedf76b70b44180ad57f7_a9278ce486f1bedf76b70b44180ad57f7}{setOnTop}}();}
+\DoxyCodeLine{00106\ \ \ \ \ const\ HWND\ \mbox{\hyperlink{classWindow_a9d12dc09ac60627ee8192096b45fc129_a9d12dc09ac60627ee8192096b45fc129}{setFocus}}();}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classWindow_a7a22b0c74d1615879b93e69d7a0370ab_a7a22b0c74d1615879b93e69d7a0370ab}{hasParent}}()\ const\ noexcept;}
+\DoxyCodeLine{00109\ \ \ \ \ const\ HWND\ \mbox{\hyperlink{classWindow_ad9c087919d3f2b8bf0b5685795389a83_ad9c087919d3f2b8bf0b5685795389a83}{getParent}}()\ const\ noexcept;}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWindow_a6d03fd6c9fbfcaf4aba92e6b4d08123e_a6d03fd6c9fbfcaf4aba92e6b4d08123e}{setTitle}}(\ const\ std::\textcolor{keywordtype}{string}\ \&title\ );}
+\DoxyCodeLine{00111\ \ \ \ \ const\ std::\textcolor{keywordtype}{string}\&\ \mbox{\hyperlink{classWindow_a4dbcd17685dba50912a2989c2782ec0d_a4dbcd17685dba50912a2989c2782ec0d}{getTitle}}()\ const\ noexcept;}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWindow_a03a5e37c7d4e07b4e77c08776f82e476_a03a5e37c7d4e07b4e77c08776f82e476}{enableCursor}}()\ noexcept;}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWindow_a0a62a86c1134a2579afff3bfc2487d0b_a0a62a86c1134a2579afff3bfc2487d0b}{disableCursor}}()\ noexcept;}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classWindow_ae75c970afd77b9812f1fa3fc96549844_ae75c970afd77b9812f1fa3fc96549844}{isCursorEnabled}}()\ const\ noexcept;}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classWindow_ab8b32cdcbc931c83c777887df83c5a13_ab8b32cdcbc931c83c777887df83c5a13}{displayMessageBoxYesNo}}(\ const\ std::\textcolor{keywordtype}{string}\ \&title,\ const\ std::\textcolor{keywordtype}{string}\ \&message\ )\ const;}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classWindow_a466dc023c98b22fdc026c2d70bca1fb9_a466dc023c98b22fdc026c2d70bca1fb9}{displayMessageBoxOkCancel}}(\ const\ std::\textcolor{keywordtype}{string}\ \&title,\ const\ std::\textcolor{keywordtype}{string}\ \&message\ )\ const;}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classWindow_afc527296ebd4d19ca2fdfba50c1aa19c_afc527296ebd4d19ca2fdfba50c1aa19c}{isActive}}()\ const\ noexcept;}
+\DoxyCodeLine{00118\ \ \ \ \ const\ std::\textcolor{keywordtype}{string}\&\ \mbox{\hyperlink{classWindow_1_1WindowClass_a1fe165faa5f62cda6d4140da40167d9c_a1fe165faa5f62cda6d4140da40167d9c}{getName}}()\ const\ noexcept;}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWindow_a97078387be519b16401c3bb0f299aa01_a97078387be519b16401c3bb0f299aa01}{minimize}}();}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWindow_ac12065a404bba4aaca510c33a8a338d1_ac12065a404bba4aaca510c33a8a338d1}{restore}}();}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classWindow_a1bc18114b16d26fcc7e776802a1c33ce_a1bc18114b16d26fcc7e776802a1c33ce}{isHidden}}()\ const\ noexcept;\ \textcolor{comment}{//\ isVisible(),\ or\ isMinimized()}}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classWindow_a9dbbf71fa232f1014678ae05d9bf1572_a9dbbf71fa232f1014678ae05d9bf1572}{isMinimized}}()\ const\ noexcept;}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classWindow_ad68904fd77fc0139d48741cb770c7dff_ad68904fd77fc0139d48741cb770c7dff}{isMaximized}}()\ const\ noexcept;}
+\DoxyCodeLine{00124\ \ \ \ \ operator\ \textcolor{keywordtype}{bool}()\ const\ noexcept;}
+\DoxyCodeLine{00125\ \ \ \ \ \mbox{\hyperlink{classGraphics}{Graphics}}\&\ \mbox{\hyperlink{classWindow_a7bfce0a1441d9a824b5469ae7de8c862_a7bfce0a1441d9a824b5469ae7de8c862}{getGraphics}}();}
+\DoxyCodeLine{00126\ \ \ \ \ const\ HWND\ \mbox{\hyperlink{classWindow_a5cccd0b4ac2a4b1e5fa40cc270342101_a5cccd0b4ac2a4b1e5fa40cc270342101}{getHandle}}()\ const\ noexcept;}
+\DoxyCodeLine{00128\ \ \ \ \ HDC\ \mbox{\hyperlink{classWindow_a2005a212933dd5d754ac219ca1a59ea6_a2005a212933dd5d754ac219ca1a59ea6}{getDc}}()\ const\ noexcept;}
+\DoxyCodeLine{00129\ \ \ \ \ WINDOWINFO\ \mbox{\hyperlink{classWindow_a9e348a5db42ae8467ef4c1beff84a966_a9e348a5db42ae8467ef4c1beff84a966}{getInfo}}()\ const\ noexcept;}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classWindow_a963c689b550db092425a27d653375953_a963c689b550db092425a27d653375953}{getWindowStyles}}()\ const\ noexcept;}
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classWindow_af3729cddcc53edb24dcf9379fd17bf1f_af3729cddcc53edb24dcf9379fd17bf1f}{getWindowStylesEx}}()\ const\ noexcept;}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWindow_ac96ebcab2a11b85fbbb9f361e4fec14d_ac96ebcab2a11b85fbbb9f361e4fec14d}{setWindowStyles}}(\ const\ \textcolor{keywordtype}{unsigned}\ windowStyles\ )\ const\ noexcept;}
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWindow_a84c9316e2abef10f3c1fbe3ebcb3bad6_a84c9316e2abef10f3c1fbe3ebcb3bad6}{setWindowStylesEx}}(\ const\ \textcolor{keywordtype}{unsigned}\ windowStylesEx\ )\ const\ noexcept;}
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWindow_a9cd314e68c41dc086d9de29c5d5b0658_a9cd314e68c41dc086d9de29c5d5b0658}{setBorderless}}()\ const\ noexcept;}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWindow_a6f835d03f53872fb1a84f142a037977e_a6f835d03f53872fb1a84f142a037977e}{setRedrawing}}(\ const\ \textcolor{keywordtype}{bool}\ bRedraw\ );}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWindow_a23bdfd4da0ed787aef0d99862fc5298b_a23bdfd4da0ed787aef0d99862fc5298b}{showMenu}}(\ const\ HMENU\ hMenu\ );}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWindow_a3c40c067671e1a563ffdc0a22846a4f1_a3c40c067671e1a563ffdc0a22846a4f1}{hideMenu}}();}
+\DoxyCodeLine{00139\ \ \ \ \ const\ HMENU\ \mbox{\hyperlink{classWindow_ae1da2df411ae2d3b1b9ea0ac8ce36286_ae1da2df411ae2d3b1b9ea0ac8ce36286}{getTopMenu}}()\ const\ noexcept;}
+\DoxyCodeLine{00140\ \ \ \ \ HWND\ \mbox{\hyperlink{classWindow_a639d79c96a98f0462aaae8642d4a371f_a639d79c96a98f0462aaae8642d4a371f}{getDesktop}}()\ const\ noexcept;}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classWindow_a5532ddffbaa83268e3f62315d0da6540_a5532ddffbaa83268e3f62315d0da6540}{getX}}()\ const\ noexcept;}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classWindow_ad68c496df5b556d8dd4abd632c0b8878_ad68c496df5b556d8dd4abd632c0b8878}{getY}}()\ const\ noexcept;}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classWindow_a04ce42e257b20bc0ed80a7e5e5249c3b_a04ce42e257b20bc0ed80a7e5e5249c3b}{getWidth}}()\ const\ noexcept;}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classWindow_ae3f3f96cddd3362dcf7bd82a5f7788c4_ae3f3f96cddd3362dcf7bd82a5f7788c4}{getWidthClientArea}}()\ const\ noexcept;}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classWindow_a26083d8f85d6d29f84cac1d246cbb62b_a26083d8f85d6d29f84cac1d246cbb62b}{getHeight}}()\ const\ noexcept;}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classWindow_abba393eef111b17a568f3913afb9993b_abba393eef111b17a568f3913afb9993b}{getHeightClientArea}}()\ const\ noexcept;}
+\DoxyCodeLine{00147\ \ \ \ \ HWND\ \mbox{\hyperlink{classWindow_aa60fa73c7502fab7465b9aca117f577f_aa60fa73c7502fab7465b9aca117f577f}{getConsoleHandle}}()\ const;}
+\DoxyCodeLine{00148\ \ \ \ \ const\ \mbox{\hyperlink{classWindow_1_1WindowClass_aa826fd2bfebc907f2ae0d3226b919480_aa826fd2bfebc907f2ae0d3226b919480}{WindowClass}}\&\ \mbox{\hyperlink{classWindow_a752e47d52453c84ebf8c3f42a6343e66_a752e47d52453c84ebf8c3f42a6343e66}{getWindowClass}}()\ noexcept;}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWindow_a4e66e4896e552265193a794ae82a1b2d_a4e66e4896e552265193a794ae82a1b2d}{setupSplashWindow}}(\ HBITMAP\ hSplashBitmap\ );}
+\DoxyCodeLine{00154\ private:}
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWindow_afa1a733e26aa19e79c461139ecdb536e_afa1a733e26aa19e79c461139ecdb536e}{confineCursor}}()\ noexcept;}
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWindow_a4a4ac4dd9c15b4e2a555334befddf7a9_a4a4ac4dd9c15b4e2a555334befddf7a9}{freeCursor}}()\ noexcept;}
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWindow_a0aed96a4d37d339964c343b729b214f2_a0aed96a4d37d339964c343b729b214f2}{showCursor}}()\ noexcept;}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWindow_a8e1a697f5c01400e49c3263d2afd4686_a8e1a697f5c01400e49c3263d2afd4686}{hideCursor}}()\ noexcept;}
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWindow_a566918cfdad3ca7954923043dc8ecaf8_a566918cfdad3ca7954923043dc8ecaf8}{enableImGuiMouse}}()\ noexcept;}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWindow_a2de00afd8696721e9b26d797d1c5baab_a2de00afd8696721e9b26d797d1c5baab}{disableImGuiMouse}}()\ noexcept;}
+\DoxyCodeLine{00161\ \ \ \ \ LRESULT\ \mbox{\hyperlink{classWindow_a2821cd9dba5a27e88f90808281444e93_a2821cd9dba5a27e88f90808281444e93}{windowProc\_impl3d}}(\ \_In\_\ const\ HWND\ pWndHandle,\ \_In\_\ const\ \textcolor{keywordtype}{unsigned}\ msg,\ \_In\_\ const\ WPARAM\ wparam,\ \_In\_\ const\ LPARAM\ lparam\ );}
+\DoxyCodeLine{00162\ \ \ \ \ LRESULT\ \mbox{\hyperlink{classWindow_afcc33d5d00fe7a117049c347a7c800d4_afcc33d5d00fe7a117049c347a7c800d4}{windowProc\_impl2d}}(\ \_In\_\ const\ HWND\ pWndHandle,\ \_In\_\ const\ \textcolor{keywordtype}{unsigned}\ msg,\ \_In\_\ const\ WPARAM\ wparam,\ \_In\_\ const\ LPARAM\ lparam\ );}
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWindow_ace4b47e72c96be743531236e6c632fa6_ace4b47e72c96be743531236e6c632fa6}{setFont}}(\ const\ std::\textcolor{keywordtype}{string}\ \&fontName\ );}
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWindow_a5dc819c56369c625f93cb8131b795d16_a5dc819c56369c625f93cb8131b795d16}{setWindowProperties}}(\ const\ \textcolor{keywordtype}{int}\ width,\ const\ \textcolor{keywordtype}{int}\ height,\ const\ \textcolor{keywordtype}{unsigned}\ flags\ =\ SWP\_NOZORDER\ |\ SWP\_NOMOVE\ |\ SWP\_NOACTIVATE\ )\ cond\_noex;}
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keywordtype}{void}\ WINAPI\ \mbox{\hyperlink{classWindow_a40ba1a2d6d8ec7cd381ef0f20b423acb_a40ba1a2d6d8ec7cd381ef0f20b423acb}{processMenu}}(\ HMENU\ hMenu\ );}
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classWindow_ac3feef02bfeadc708b8b6e9b093b4368_ac3feef02bfeadc708b8b6e9b093b4368}{editCopy}}(\ const\ \textcolor{keywordtype}{unsigned}\ format\ =\ \mbox{\hyperlink{window_8h_a02c6467dd339058026d2c844b856e060_a02c6467dd339058026d2c844b856e060}{CLIPBOARD\_TEXT\_FORMAT}}\ );}
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classWindow_a017c50359cd4f4884d06347bd97623fb_a017c50359cd4f4884d06347bd97623fb}{editPaste}}(\ const\ \textcolor{keywordtype}{unsigned}\ format\ =\ \mbox{\hyperlink{window_8h_a02c6467dd339058026d2c844b856e060_a02c6467dd339058026d2c844b856e060}{CLIPBOARD\_TEXT\_FORMAT}}\ );}
+\DoxyCodeLine{00169\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWindow_a2ac13cf3243000d5b30ff1a29547e407_a2ac13cf3243000d5b30ff1a29547e407}{renderClipboardFormat}}(\ \textcolor{keywordtype}{unsigned}\ format\ =\ \mbox{\hyperlink{window_8h_a02c6467dd339058026d2c844b856e060_a02c6467dd339058026d2c844b856e060}{CLIPBOARD\_TEXT\_FORMAT}}\ );}
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWindow_aa804b1d347f57a8325510921285b8669_aa804b1d347f57a8325510921285b8669}{editDelete}}();}
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWindow_a3086e4a7cdae4cf5af32c9971bd9d34e_a3086e4a7cdae4cf5af32c9971bd9d34e}{setupTrayIcon}}();}
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWindow_a0c807d8500dd6611e32c02c583dbd655_a0c807d8500dd6611e32c02c583dbd655}{showTrayIcon}}()\ noexcept;}
+\DoxyCodeLine{00174\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWindow_a25be60f78bde0afcfa73224c5ea7b333_a25be60f78bde0afcfa73224c5ea7b333}{deleteTrayIcon}}()\ noexcept;}
+\DoxyCodeLine{00175\ \};}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00178\ \textcolor{preprocessor}{\#define\ THROW\_WINDOW\_EXCEPTION(\ msg\ )\ \_\_debugbreak();\(\backslash\)}}
+\DoxyCodeLine{00179\ \textcolor{preprocessor}{\ \ \ \ throw\ WindowException(\ \_\_LINE\_\_,\ \_\_FILE\_\_,\ \_\_FUNCTION\_\_,\ msg\ );}}
+
+\end{DoxyCode}

@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classIListener_3_01T_01_4" kind="class" language="C++" prot="public">
+    <compoundname>IListener&lt; T &gt;</compoundname>
+    <includes refid="reporter__listener_8h" local="no">reporter_listener.h</includes>
+    <briefdescription>
+<para>Templated Observer design pattern (Class Template 1 of 2) </para>
+    </briefdescription>
+    <detaileddescription>
+<para>=============================================================</para>
+<para><simplesect kind="author"><para>KeyC0de </para>
+</simplesect>
+<simplesect kind="date"><para>2024/05/07 22:04</para>
+</simplesect>
+To become a listener of 1 or more events T, U, V etc. a class (&quot;MyClass&quot;) must do the following:</para>
+<para><orderedlist>
+<listitem><para>Inherit from <ref refid="classIListener" kindref="compound">IListener</ref>:</para>
+</listitem></orderedlist>
+</para>
+<para>class MyClass</para>
+<para>: public MyOtherClass,</para>
+<para>public <ref refid="classIListener_3_01T_01_4" kindref="compound">IListener&lt;T&gt;</ref>, // eg. T = StartedTemperatureMeasurements</para>
+<para>public <ref refid="classIListener" kindref="compound">IListener</ref><underline>, // eg. U = ObjectDestroyed&lt;Instrumentation&gt;</underline></para>
+<para><underline>...</underline></para>
+<para><underline><orderedlist>
+<listitem><para>add a <computeroutput>void notify( const T &amp;event ) override</computeroutput> method for every single event listener <ref refid="classIListener_3_01T_01_4" kindref="compound">IListener&lt;T&gt;</ref>, <ref refid="classIListener" kindref="compound">IListener</ref><underline>, ... you inherit from</underline></para>
+</listitem></orderedlist>
+</underline></para>
+<para><underline><underline>The purpose of the nofify method is for MyClass to respond to the event appropriately.</underline></underline></para>
+<para><underline><underline>eg. notify( const StartedTemperatureMeasurements &amp;event )</underline></underline></para>
+<para><underline><underline><orderedlist>
+<listitem><para>the event types T, U, V etc. themselves can be created as simple structs.</para>
+</listitem></orderedlist>
+</underline></underline></para>
+<para><underline><underline>eg.</underline></underline></para>
+<para><underline><underline>struct StartedTemperatureMeasurements</underline></underline></para>
+<para><underline><underline>{</underline></underline></para>
+<para><underline><underline>StartedTemperatureMeasurements( const float time, const bool hasStarted, const std::string &amp;temperatureType = &quot;Celsius&quot;)</underline></underline></para>
+<para><underline><underline>:</underline></underline></para>
+<para><underline><underline>m_time{time},</underline></underline></para>
+<para><underline><underline>m_temperatureType{temperatureType},</underline></underline></para>
+<para><underline><underline>m_hasStarted{hasStarted}</underline></underline></para>
+<para><underline><underline>{}</underline></underline></para>
+<para><underline><underline>float m_time;</underline></underline></para>
+<para><underline><underline>std::string m_temperatureType;</underline></underline></para>
+<para><underline><underline>bool m_hasStarted;</underline></underline></para>
+<para><underline><underline>};</underline></underline></para>
+<para><underline><underline>or</underline></underline></para>
+<para><underline><underline>template&lt;typename T&gt;</underline></underline></para>
+<para><underline><underline>struct ObjectDestroyed</underline></underline></para>
+<para><underline><underline>{</underline></underline></para>
+<para><underline><underline>ObjectDestroyed( const T&amp; object )</underline></underline></para>
+<para><underline><underline>: m_object{object}</underline></underline></para>
+<para><underline><underline>{}</underline></underline></para>
+<para><underline><underline>const T&amp; m_object;</underline></underline></para>
+<para><underline><underline>};</underline></underline></para>
+<para><underline><underline><orderedlist>
+<listitem><para>to attach the listener you must get a hold of a <ref refid="classReportingNexus" kindref="compound">ReportingNexus</ref>, which is a class that inherits from all IReporters.</para>
+</listitem></orderedlist>
+</underline></underline></para>
+<para><underline><underline>You can even group IReporters into different <ref refid="classReportingNexus" kindref="compound">ReportingNexus</ref> classes.</underline></underline></para>
+<para><underline><underline>Once you have a <ref refid="classReportingNexus" kindref="compound">ReportingNexus</ref> object cast it to the proper <ref refid="classIReporter" kindref="compound">IReporter</ref> sub-class and .addListener for every <ref refid="classIListener" kindref="compound">IListener</ref> your class is listening to:</underline></underline></para>
+<para><underline><underline>static_cast&lt;const <ref refid="classIReporter_3_01T_01_4" kindref="compound">IReporter&lt;T&gt;</ref>&amp;&gt;( reportingNexus ).addListener( this );</underline></underline></para>
+<para><underline><underline>eg.</underline></underline></para>
+<para><underline><underline>MyClass::MyClass( ... )</underline></underline></para>
+<para><underline><underline>: ...</underline></underline></para>
+<para><underline><underline>{</underline></underline></para>
+<para><underline><underline>...</underline></underline></para>
+<para><underline><underline>static_cast&lt;const IReporter&lt;StartedTemperatureMeasurements&gt;&amp;&gt;( reportingNexus ).addListener( this );</underline></underline></para>
+<para><underline><underline>static_cast&lt;const IReporter&lt;ObjectDestroyed&lt;Instrumentation&gt;&gt;&amp;&gt;( reportingNexus ).addListener( this );</underline></underline></para>
+<para><underline><underline>... <heading level="1">} </heading>
+</underline></underline></para>
+<para><underline><underline> </underline></underline></para>
+    </detaileddescription>
+    <location file="inc/reporter_listener.h" line="14" column="1"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

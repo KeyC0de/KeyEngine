@@ -1,0 +1,378 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classTransformScaleVSCB" kind="class" language="C++" prot="public">
+    <compoundname>TransformScaleVSCB</compoundname>
+    <basecompoundref refid="classTransformVSCB" prot="public" virt="non-virtual">TransformVSCB</basecompoundref>
+    <includes refid="transform__vscb_8h" local="no">transform_vscb.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classTransformScaleVSCB_ac0bc2e42329655a2b8aedf93a3b5680d_1ac0bc2e42329655a2b8aedf93a3b5680d" prot="private" static="no" mutable="no">
+        <type><ref refid="classcon_1_1CBuffer" kindref="compound">con::CBuffer</ref></type>
+        <definition>con::CBuffer TransformScaleVSCB::m_cbScale</definition>
+        <argsstring></argsstring>
+        <name>m_cbScale</name>
+        <qualifiedname>TransformScaleVSCB::m_cbScale</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/transform_vscb.h" line="48" column="14" bodyfile="inc/transform_vscb.h" bodystart="48" bodyend="-1"/>
+        <referencedby refid="classTransformScaleVSCB_aab1859320eaddda91fe864433096fbe3_1aab1859320eaddda91fe864433096fbe3" compoundref="transform__vscb_8cpp" startline="101" endline="109">TransformScaleVSCB</referencedby>
+        <referencedby refid="classTransformScaleVSCB_ae62fda43b34487d423892174ff58d78f_1ae62fda43b34487d423892174ff58d78f" compoundref="transform__vscb_8cpp" startline="141" endline="144">accept</referencedby>
+        <referencedby refid="classTransformScaleVSCB_af30654378cc9097227e684f792e0b770_1af30654378cc9097227e684f792e0b770" compoundref="transform__vscb_8cpp" startline="119" endline="124">operator=</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTransformScaleVSCB_aab1859320eaddda91fe864433096fbe3_1aab1859320eaddda91fe864433096fbe3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TransformScaleVSCB::TransformScaleVSCB</definition>
+        <argsstring>(Graphics &amp;gfx, const unsigned slot, const float scale)</argsstring>
+        <name>TransformScaleVSCB</name>
+        <qualifiedname>TransformScaleVSCB::TransformScaleVSCB</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>slot</declname>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>scale</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/transform_vscb.h" line="50" column="1" bodyfile="src/transform_vscb.cpp" bodystart="101" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classTransformScaleVSCB_a3f7b273efb6dd9003c69b1bad7ff231a_1a3f7b273efb6dd9003c69b1bad7ff231a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TransformScaleVSCB::TransformScaleVSCB</definition>
+        <argsstring>(const TransformScaleVSCB &amp;rhs)</argsstring>
+        <name>TransformScaleVSCB</name>
+        <qualifiedname>TransformScaleVSCB::TransformScaleVSCB</qualifiedname>
+        <param>
+          <type>const <ref refid="classTransformScaleVSCB" kindref="compound">TransformScaleVSCB</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/transform_vscb.h" line="51" column="1" bodyfile="src/transform_vscb.cpp" bodystart="111" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="classTransformScaleVSCB_af30654378cc9097227e684f792e0b770_1af30654378cc9097227e684f792e0b770" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classTransformScaleVSCB" kindref="compound">TransformScaleVSCB</ref> &amp;</type>
+        <definition>TransformScaleVSCB &amp; TransformScaleVSCB::operator=</definition>
+        <argsstring>(const TransformScaleVSCB &amp;rhs)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>TransformScaleVSCB::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classTransformScaleVSCB" kindref="compound">TransformScaleVSCB</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/transform_vscb.h" line="52" column="20" bodyfile="src/transform_vscb.cpp" bodystart="119" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="classTransformScaleVSCB_a8df849d6979a1b17a2790fc8e3929b2d_1a8df849d6979a1b17a2790fc8e3929b2d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>TransformScaleVSCB::TransformScaleVSCB</definition>
+        <argsstring>(TransformScaleVSCB &amp;&amp;rhs) noexcept</argsstring>
+        <name>TransformScaleVSCB</name>
+        <qualifiedname>TransformScaleVSCB::TransformScaleVSCB</qualifiedname>
+        <param>
+          <type><ref refid="classTransformScaleVSCB" kindref="compound">TransformScaleVSCB</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/transform_vscb.h" line="53" column="1" bodyfile="src/transform_vscb.cpp" bodystart="126" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="classTransformScaleVSCB_ad02af82459ca4d832bacd5813ede0b1f_1ad02af82459ca4d832bacd5813ede0b1f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classTransformScaleVSCB" kindref="compound">TransformScaleVSCB</ref> &amp;</type>
+        <definition>TransformScaleVSCB &amp; TransformScaleVSCB::operator=</definition>
+        <argsstring>(TransformScaleVSCB &amp;&amp;rhs) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>TransformScaleVSCB::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classTransformScaleVSCB" kindref="compound">TransformScaleVSCB</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/transform_vscb.h" line="54" column="20" bodyfile="src/transform_vscb.cpp" bodystart="134" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="classTransformScaleVSCB_ae62fda43b34487d423892174ff58d78f_1ae62fda43b34487d423892174ff58d78f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TransformScaleVSCB::accept</definition>
+        <argsstring>(IImGuiConstantBufferVisitor &amp;ev) override</argsstring>
+        <name>accept</name>
+        <qualifiedname>TransformScaleVSCB::accept</qualifiedname>
+        <reimplements refid="classIBindable_a608c5066b829febbd49cd82d1d1fa353_1a608c5066b829febbd49cd82d1d1fa353">accept</reimplements>
+        <param>
+          <type><ref refid="classIImGuiConstantBufferVisitor" kindref="compound">IImGuiConstantBufferVisitor</ref> &amp;</type>
+          <declname>ev</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/transform_vscb.h" line="56" column="6" bodyfile="src/transform_vscb.cpp" bodystart="141" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="classTransformScaleVSCB_a85f709efad673da2165e172d07199b38_1a85f709efad673da2165e172d07199b38" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TransformScaleVSCB::bind</definition>
+        <argsstring>(Graphics &amp;gfx) cond_noex override</argsstring>
+        <name>bind</name>
+        <qualifiedname>TransformScaleVSCB::bind</qualifiedname>
+        <reimplements refid="classIBindable_add4560f78e76629ee81ba701ba1052e1_1add4560f78e76629ee81ba701ba1052e1">bind</reimplements>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+<para>bind graphics resource to a certain stage of the graphics pipeline </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/transform_vscb.h" line="57" column="6" bodyfile="src/transform_vscb.cpp" bodystart="146" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="classTransformScaleVSCB_af1cda8d0f3e88d9428a26f0a1c285537_1af1cda8d0f3e88d9428a26f0a1c285537" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>void</type>
+        <definition>void TransformScaleVSCB::setMesh</definition>
+        <argsstring>(const Mesh &amp;mesh) noexcept override</argsstring>
+        <name>setMesh</name>
+        <qualifiedname>TransformScaleVSCB::setMesh</qualifiedname>
+        <reimplements refid="classIBindable_a12fe8725cb3f4836f22d1592b07e2c91_1a12fe8725cb3f4836f22d1592b07e2c91">setMesh</reimplements>
+        <param>
+          <type>const <ref refid="classMesh" kindref="compound">Mesh</ref> &amp;</type>
+          <declname>mesh</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/transform_vscb.h" line="58" column="6" bodyfile="src/transform_vscb.cpp" bodystart="157" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="classTransformScaleVSCB_a94fd021a5ab277d302181ddac83b6358_1a94fd021a5ab277d302181ddac83b6358" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>std::unique_ptr&lt; <ref refid="classIBindableCloning" kindref="compound">IBindableCloning</ref> &gt;</type>
+        <definition>std::unique_ptr&lt; IBindableCloning &gt; TransformScaleVSCB::clone</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>clone</name>
+        <qualifiedname>TransformScaleVSCB::clone</qualifiedname>
+        <reimplements refid="classIBindableCloning_a122ec73671857ed90469e0124e5b85db_1a122ec73671857ed90469e0124e5b85db">clone</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/transform_vscb.h" line="59" column="17" bodyfile="src/transform_vscb.cpp" bodystart="162" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="classTransformScaleVSCB_aace8a498e04c8feef5e2fba488622689_1aace8a498e04c8feef5e2fba488622689" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>std::unique_ptr&lt; <ref refid="classIBindableCloning" kindref="compound">IBindableCloning</ref> &gt;</type>
+        <definition>std::unique_ptr&lt; IBindableCloning &gt; TransformScaleVSCB::clone</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>clone</name>
+        <qualifiedname>TransformScaleVSCB::clone</qualifiedname>
+        <reimplements refid="classIBindableCloning_ad246ee7dad674d81661d0520b6968475_1ad246ee7dad674d81661d0520b6968475">clone</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/transform_vscb.h" line="60" column="17" bodyfile="src/transform_vscb.cpp" bodystart="167" bodyend="170"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classTransformScaleVSCB_ae0239c9d66ef99f89bc1c1e89962f5a2_1ae0239c9d66ef99f89bc1c1e89962f5a2" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcon_1_1RawLayout" kindref="compound">con::RawLayout</ref></type>
+        <definition>con::RawLayout TransformScaleVSCB::calcCbLayout</definition>
+        <argsstring>()</argsstring>
+        <name>calcCbLayout</name>
+        <qualifiedname>TransformScaleVSCB::calcCbLayout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/transform_vscb.h" line="62" column="23" bodyfile="src/transform_vscb.cpp" bodystart="172" bodyend="177"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5">
+        <label>GraphicsFriend</label>
+        <link refid="classGraphicsFriend"/>
+      </node>
+      <node id="4">
+        <label>IBindable</label>
+        <link refid="classIBindable"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>IBindableCloning</label>
+        <link refid="classIBindableCloning"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>TransformScaleVSCB</label>
+        <link refid="classTransformScaleVSCB"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>TransformVSCB</label>
+        <link refid="classTransformVSCB"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5">
+        <label>GraphicsFriend</label>
+        <link refid="classGraphicsFriend"/>
+      </node>
+      <node id="4">
+        <label>IBindable</label>
+        <link refid="classIBindable"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>IBindableCloning</label>
+        <link refid="classIBindableCloning"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>Mesh</label>
+        <link refid="classMesh"/>
+        <childnode refid="7" relation="usage">
+          <edgelabel>m_pNode</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>m_colorPscb</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>m_colorPscbOutline</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>m_colorPscbWireframe</edgelabel>
+        </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>m_colorPscbDepthReversed</edgelabel>
+        </childnode>
+      </node>
+      <node id="8">
+        <label>Mesh::ColorPSCB</label>
+        <link refid="structMesh_1_1ColorPSCB"/>
+      </node>
+      <node id="9">
+        <label>Mesh::ColorPSCB2</label>
+        <link refid="structMesh_1_1ColorPSCB2"/>
+      </node>
+      <node id="10">
+        <label>Mesh::ColorPSCB3</label>
+        <link refid="structMesh_1_1ColorPSCB3"/>
+      </node>
+      <node id="11">
+        <label>Mesh::ColorPSCB4</label>
+        <link refid="structMesh_1_1ColorPSCB4"/>
+      </node>
+      <node id="7">
+        <label>Node</label>
+        <link refid="classNode"/>
+        <childnode refid="7" relation="usage">
+          <edgelabel>m_pParent</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>TransformScaleVSCB</label>
+        <link refid="classTransformScaleVSCB"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>m_cbScale</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>TransformVSCB</label>
+        <link refid="classTransformVSCB"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>m_pMesh</edgelabel>
+        </childnode>
+      </node>
+      <node id="12">
+        <label>con::CBuffer</label>
+        <link refid="classcon_1_1CBuffer"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/transform_vscb.h" line="45" column="1" bodyfile="inc/transform_vscb.h" bodystart="47" bodyend="63"/>
+    <listofallmembers>
+      <member refid="classTransformScaleVSCB_ae62fda43b34487d423892174ff58d78f_1ae62fda43b34487d423892174ff58d78f" prot="public" virt="virtual"><scope>TransformScaleVSCB</scope><name>accept</name></member>
+      <member refid="classTransformScaleVSCB_a85f709efad673da2165e172d07199b38_1a85f709efad673da2165e172d07199b38" prot="public" virt="virtual"><scope>TransformScaleVSCB</scope><name>bind</name></member>
+      <member refid="classTransformVSCB_a015977e99491a38b2167ab546aaa80b3_1a015977e99491a38b2167ab546aaa80b3" prot="protected" virt="non-virtual"><scope>TransformScaleVSCB</scope><name>bindCb</name></member>
+      <member refid="classTransformScaleVSCB_ae0239c9d66ef99f89bc1c1e89962f5a2_1ae0239c9d66ef99f89bc1c1e89962f5a2" prot="private" virt="non-virtual"><scope>TransformScaleVSCB</scope><name>calcCbLayout</name></member>
+      <member refid="classTransformScaleVSCB_a94fd021a5ab277d302181ddac83b6358_1a94fd021a5ab277d302181ddac83b6358" prot="public" virt="virtual"><scope>TransformScaleVSCB</scope><name>clone</name></member>
+      <member refid="classTransformScaleVSCB_aace8a498e04c8feef5e2fba488622689_1aace8a498e04c8feef5e2fba488622689" prot="public" virt="virtual"><scope>TransformScaleVSCB</scope><name>clone</name></member>
+      <member refid="classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_1a175df79f82ab5a6dad1df24b5a242ef7" prot="protected" virt="non-virtual"><scope>TransformScaleVSCB</scope><name>getDevice</name></member>
+      <member refid="classGraphicsFriend_a619e32893ab49ea6c5200e7c2d52e2f2_1a619e32893ab49ea6c5200e7c2d52e2f2" prot="protected" virt="non-virtual"><scope>TransformScaleVSCB</scope><name>getDeviceContext</name></member>
+      <member refid="classTransformVSCB_a06c7c77c6969a8955f01456384f44a9e_1a06c7c77c6969a8955f01456384f44a9e" prot="protected" virt="non-virtual"><scope>TransformScaleVSCB</scope><name>getTransforms</name></member>
+      <member refid="classIBindable_a7d88cdbd5d500d6d7f1bfabe16927855_1a7d88cdbd5d500d6d7f1bfabe16927855" prot="public" virt="virtual"><scope>TransformScaleVSCB</scope><name>getUid</name></member>
+      <member refid="classTransformScaleVSCB_ac0bc2e42329655a2b8aedf93a3b5680d_1ac0bc2e42329655a2b8aedf93a3b5680d" prot="private" virt="non-virtual"><scope>TransformScaleVSCB</scope><name>m_cbScale</name></member>
+      <member refid="classTransformVSCB_ab8a6b854e3023779655128dc9aaaa78f_1ab8a6b854e3023779655128dc9aaaa78f" prot="protected" virt="non-virtual"><scope>TransformScaleVSCB</scope><name>m_pMesh</name></member>
+      <member refid="classTransformVSCB_a04de76f246508b0d6c065b0e695957f2_1a04de76f246508b0d6c065b0e695957f2" prot="private" virt="non-virtual"><scope>TransformScaleVSCB</scope><name>m_pVscb</name></member>
+      <member refid="classTransformScaleVSCB_af30654378cc9097227e684f792e0b770_1af30654378cc9097227e684f792e0b770" prot="public" virt="non-virtual"><scope>TransformScaleVSCB</scope><name>operator=</name></member>
+      <member refid="classTransformScaleVSCB_ad02af82459ca4d832bacd5813ede0b1f_1ad02af82459ca4d832bacd5813ede0b1f" prot="public" virt="non-virtual"><scope>TransformScaleVSCB</scope><name>operator=</name></member>
+      <member refid="classTransformVSCB_a28c94c3e6379fd5a4e860fdc3c2055e0_1a28c94c3e6379fd5a4e860fdc3c2055e0" prot="public" virt="non-virtual" ambiguityscope="TransformVSCB::"><scope>TransformScaleVSCB</scope><name>operator=</name></member>
+      <member refid="classTransformVSCB_a496528231ece937d75ed7bfc547d113d_1a496528231ece937d75ed7bfc547d113d" prot="public" virt="non-virtual" ambiguityscope="TransformVSCB::"><scope>TransformScaleVSCB</scope><name>operator=</name></member>
+      <member refid="classIBindable_a4d590eebe80fa4e0aa865a875ff86c02_1a4d590eebe80fa4e0aa865a875ff86c02" prot="public" virt="virtual"><scope>TransformScaleVSCB</scope><name>setDebugObjectName</name></member>
+      <member refid="classTransformScaleVSCB_af1cda8d0f3e88d9428a26f0a1c285537_1af1cda8d0f3e88d9428a26f0a1c285537" prot="public" virt="virtual"><scope>TransformScaleVSCB</scope><name>setMesh</name></member>
+      <member refid="classTransformScaleVSCB_aab1859320eaddda91fe864433096fbe3_1aab1859320eaddda91fe864433096fbe3" prot="public" virt="non-virtual"><scope>TransformScaleVSCB</scope><name>TransformScaleVSCB</name></member>
+      <member refid="classTransformScaleVSCB_a3f7b273efb6dd9003c69b1bad7ff231a_1a3f7b273efb6dd9003c69b1bad7ff231a" prot="public" virt="non-virtual"><scope>TransformScaleVSCB</scope><name>TransformScaleVSCB</name></member>
+      <member refid="classTransformScaleVSCB_a8df849d6979a1b17a2790fc8e3929b2d_1a8df849d6979a1b17a2790fc8e3929b2d" prot="public" virt="non-virtual"><scope>TransformScaleVSCB</scope><name>TransformScaleVSCB</name></member>
+      <member refid="classTransformVSCB_ae12027ae7f589e1e52fc50b37e609a57_1ae12027ae7f589e1e52fc50b37e609a57" prot="public" virt="non-virtual"><scope>TransformScaleVSCB</scope><name>TransformVSCB</name></member>
+      <member refid="classTransformVSCB_aa732f8fe295849feb6f068fc036d0035_1aa732f8fe295849feb6f068fc036d0035" prot="public" virt="non-virtual"><scope>TransformScaleVSCB</scope><name>TransformVSCB</name></member>
+      <member refid="classTransformVSCB_aebd2c428362577bb3bb4a6333355af03_1aebd2c428362577bb3bb4a6333355af03" prot="public" virt="non-virtual"><scope>TransformScaleVSCB</scope><name>TransformVSCB</name></member>
+      <member refid="classTransformVSCB_af6a9017a35d200febb3cea0cb5f12ddd_1af6a9017a35d200febb3cea0cb5f12ddd" prot="public" virt="non-virtual"><scope>TransformScaleVSCB</scope><name>TransformVSCB</name></member>
+      <member refid="classTransformVSCB_a26b662b13d2b6dd03a60fe27f88a5006_1a26b662b13d2b6dd03a60fe27f88a5006" prot="protected" virt="non-virtual"><scope>TransformScaleVSCB</scope><name>update</name></member>
+      <member refid="classIBindable_a7f68262ff85e25e9f826eae7c01bbfa1_1a7f68262ff85e25e9f826eae7c01bbfa1" prot="public" virt="virtual"><scope>TransformScaleVSCB</scope><name>~IBindable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

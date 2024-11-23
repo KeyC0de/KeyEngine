@@ -1,0 +1,129 @@
+\doxysection{winner.\+h}
+\hypertarget{winner_8h_source}{}\label{winner_8h_source}\index{inc/winner.h@{inc/winner.h}}
+\mbox{\hyperlink{winner_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ AMD64\ only}}
+\DoxyCodeLine{00004\ \textcolor{keyword}{static\_assert}(\ \textcolor{keyword}{sizeof}(\ \textcolor{keywordtype}{void}*\ )\ ==\ 8\ );}
+\DoxyCodeLine{00005\ \textcolor{keyword}{static\_assert}(\ \textcolor{keyword}{sizeof}(\ size\_t\ )\ ==\ 8\ );}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ \_MSC\_VER}}
+\DoxyCodeLine{00008\ \textcolor{keyword}{static\_assert}(\ \textcolor{keyword}{false},\ \textcolor{stringliteral}{"{}Non\ Windows\ Platform\ -\/\ Nah\ huh\(\backslash\)n"{}}\ );}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ !\_MSC\_VER}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{static\_assert}(\ \_MSC\_VER\ >=\ 1900,\ \textcolor{stringliteral}{"{}Microsoft\ Visual\ Studio\ 2015\ or\ later\ compiler\ required."{}}\ );}
+\DoxyCodeLine{00012\ \textcolor{keyword}{static\_assert}(\ \_\_cplusplus\ >=\ 201703L,\ \textcolor{stringliteral}{"{}C++17\ language\ conformance\ or\ later\ required.\ Use\ /Zc:\_\_cplusplus\ compile\ option."{}}\ );}
+\DoxyCodeLine{00013\ \textcolor{keyword}{static\_assert}(\ \_MSVC\_LANG\ >=\ 201703L,\ \textcolor{stringliteral}{"{}C++17\ language\ conformance\ or\ later\ required."{}}\ );}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#undef\ \_WIN32\_WINNT}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#undef\ NTDDI\_VERSION}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ \_WIN32\_WINNT\ \_WIN32\_WINNT\_WINBLUE}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ NTDDI\_VERSION\ NTDDI\_WINBLUE}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <sdkddkver.h>}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#if\ defined\ \_\_cpp\_exceptions\ ||\ defined\ \_\_EXCEPTIONS}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#\ \ \ pragma\ message(\ "{}Exceptions\ are\ enabled."{}\ )}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#\ \ \ pragma\ message(\ "{}Exceptions\ are\ disabled."{}\ )}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#ifndef\ USE\_GDIPLUS}}
+\DoxyCodeLine{00028\ \textcolor{comment}{//\ defines\ to\ get\ rid\ of\ superfluous\ Windows\ functionality}}
+\DoxyCodeLine{00029\ \textcolor{comment}{//\ However\ GDI+\ requires\ all\ the\ functionality\ that\ is\ disabled\ by\ these\ switches}}
+\DoxyCodeLine{00030\ \textcolor{comment}{//\#\ define\ WIN32\_LEAN\_AND\_MEAN\ \ \ \ \ \ //\ Cryptography,\ DDE,\ RPC,\ Shell,\ MCI,\ Windows\ Sockets}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#\ \ \ define\ NOGDICAPMASKS\ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ CC\_*,\ LC\_*,\ PC\_*,\ CP\_*,\ TC\_*,\ RC\_}}
+\DoxyCodeLine{00032\ \textcolor{comment}{//\#\ define\ NOMENUS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ MF\_*}}
+\DoxyCodeLine{00033\ \textcolor{comment}{//\#\ define\ NOSYSCOMMANDS\ \ \ \ \ \ \ \ \ \ \ \ //\ SC\_*}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#\ \ \ define\ NORASTEROPS\ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ Binary\ and\ Tertiary\ raster\ ops}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#\ \ \ define\ OEMRESOURCE\ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ OEM\ Resource\ values}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#\ \ \ define\ NOATOM\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ Atom\ manager\ routines}}
+\DoxyCodeLine{00037\ \textcolor{comment}{//\#\ define\ NOCLIPBOARD\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ Clipboard\ routines}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#\ \ \ define\ NOCOLOR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ Screen\ colors,\ GetSysColor}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#ifndef\ NO\_DUMPS}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#\ \ \ define\ NOCTLMGR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ Control\ and\ Dialog\ routines,\ generating\ dumps}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ !TAKING\_DUMPS}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#\ \ \ define\ NODRAWTEXT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ DrawText()\ and\ DT\_*}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#\ \ \ define\ NOKERNEL\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ KERNEL\ macros\ and\ routines}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#\ \ \ define\ NOMEMMGR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ GMEM\_*,\ LMEM\_*,\ GHND,\ LHND,\ associated\ routines}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#\ \ \ define\ NOMETAFILE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ typedef\ METAFILEPICT}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#\ \ \ define\ NOOPENFILE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ OpenFile(),\ OemToAnsi,\ AnsiToOem,\ and\ OF\_*}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#\ \ \ define\ NOSCROLL\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ SB\_\ *and\ scrolling\ routines}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#\ \ \ define\ NOSERVICE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ All\ SERVICE\_\ Controller\ routines}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#\ \ \ define\ NOIMAGE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#\ \ \ define\ NOWH\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ SetWindowsHook\ and\ WH\_*}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#\ \ \ define\ NOCOMM\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ No\ serial\ communication\ API\ \&\ driver\ routines}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#\ \ \ define\ NOKANJI\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ Kanji\ support}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#\ \ \ define\ NOHELP\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ Help\ engine\ interface}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#\ \ \ define\ NODEFERWINDOWPOS\ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ DeferWindowPos\ routines\ \ -\/\ used\ to\ move\ multiple\ child\ windows\ at\ one\ go}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#\ \ \ define\ NOMCX\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ Modem\ Configuration\ Extensions}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#\ \ \ define\ NORPC\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ no\ Remote\ Procedure\ Call\ Routines}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#\ \ \ define\ NOPROXYSTUB\ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ not\ use\ Proxies,\ nor\ Stubs\ (for\ DLLs)}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#\ \ \ define\ NOMCX\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ no\ Media\ Center\ Extender\ (for\ xBox)}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#\ \ \ define\ NOTAPE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ no\ Tape}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#\ \ \ if\ defined\ NDEBUG\ ||\ !defined\ \_DEBUG}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ define\ NOPROFILER\ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ Profiler\ interface}}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#\ \ \ endif\ }\textcolor{comment}{//\ NDEBUG}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{comment}{//\#\ define\ NOVIRTUALKEYCODES\ \ \ \ \ \ \ \ //\ VK\_*}}
+\DoxyCodeLine{00066\ \textcolor{comment}{//\#\ define\ NOWINMESSAGES\ \ \ \ \ \ \ \ \ \ \ \ //\ WM\_*,\ EM\_*,\ LB\_*,\ CB\_*}}
+\DoxyCodeLine{00067\ \textcolor{comment}{//\#\ define\ NOWINSTYLES\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ WS\_*,\ CS\_*,\ ES\_*,\ LBS\_*,\ SBS\_*,\ CBS\_*}}
+\DoxyCodeLine{00068\ \textcolor{comment}{//\#\ define\ NOSYSMETRICS\ \ \ \ \ \ \ \ \ \ \ \ \ //\ SM\_*}}
+\DoxyCodeLine{00069\ \textcolor{comment}{//\#\ define\ NOGDI\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ All\ GDI\ defines\ and\ routines}}
+\DoxyCodeLine{00070\ \textcolor{comment}{//\#\ define\ NOUSER\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ All\ USER\ defines\ and\ routines}}
+\DoxyCodeLine{00071\ \textcolor{comment}{//\#\ define\ NOICONS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ IDI\_*}}
+\DoxyCodeLine{00072\ \textcolor{comment}{//\#\ define\ NOKEYSTATES\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ MK\_*}}
+\DoxyCodeLine{00073\ \textcolor{comment}{//\#\ define\ NOSHOWWINDOW\ \ \ \ \ \ \ \ \ \ \ \ \ //\ SW\_*}}
+\DoxyCodeLine{00074\ \textcolor{comment}{//\#\ define\ NONLS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ NLS\ (Native\ Language\ Support)\ macros\ and\ routines}}
+\DoxyCodeLine{00075\ \textcolor{comment}{//\#\ define\ NOMB\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ MB\_\ *and\ MessageBox()}}
+\DoxyCodeLine{00076\ \textcolor{comment}{//\#\ define\ NOSOUND\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ Sound\ driver\ routines}}
+\DoxyCodeLine{00077\ \textcolor{comment}{//\#\ define\ NOTEXTMETRIC\ \ \ \ \ \ \ \ \ \ \ \ \ //\ typedef\ TEXTMETRIC\ and\ associated\ routines}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ required\ by\ atlbase.h}}
+\DoxyCodeLine{00079\ \textcolor{comment}{//\#\ define\ NOWINOFFSETS\ \ \ \ \ \ \ \ \ \ \ \ \ //\ GWL\_*,\ GCL\_*,\ associated\ routines}}
+\DoxyCodeLine{00080\ \textcolor{comment}{//\#\ define\ ANSI\_ONLY\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ no\ unicode\ support}}
+\DoxyCodeLine{00081\ \textcolor{comment}{//\#\ define\ NOIMM\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ no\ Input\ Method\ Manager}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#if\ defined(\ \_MFC\_VER\ )\ ||\ defined(\ \_AFX\ )}}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#\ \ \ define\ \_AFX\_ALL\_WARNINGS\ \ \ \ }\textcolor{comment}{//\ turns\ off\ MFC's\ hiding\ of\ some\ common\ and\ often\ safely\ ignored\ warning\ message}}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#\ \ \ define\ VC\_EXTRALEAN\ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ more\ trimming\ of\ windows\ headers\ for\ MFC\ only\ projects}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#ifndef\ NOMINMAX}}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#\ \ \ define\ NOMINMAX\ \ \ \ \ }\textcolor{comment}{//\ no\ windows\ min-\/max\ functions,\ we\ want\ the\ std::\ mins\ \&\ maxes}}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ !NOMINMAX}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#ifndef\ STRICT}}
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#\ \ \ define\ STRICT\ \ \ \ \ \ \ }\textcolor{comment}{//\ enables\ Strict\ pointer\ checking\ for\ windows\ types}}
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ !STRICT}}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#if\ defined\ NDEBUG\ ||\ !defined\ \_DEBUG}}
+\DoxyCodeLine{00096\ \textcolor{comment}{//\#\ define\ \_ITERATOR\_DEBUG\_LEVEL\ \ \ \ \ \ \ \ 0\ \ \ //\ disables\ checked\ iterators\ -\/\ no\ checking\ on\ container\ bounds\ for\ overwrites}}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ equivalent\ to\ \#define\ \_SECURE\_SCL\ 0}}
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ NDEBUG}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#define\ \_CRT\_SECURE\_NO\_DEPRECATE\ \ \ \ \ \ \ \ 1\ \ \ }\textcolor{comment}{//\ non-\/secure\ c/winapi\ functions\ are\ not\ deprecated}}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#define\ \_CRT\_SECURE\_NO\_WARNINGS\ \ \ \ \ \ \ \ \ 1\ \ \ }\textcolor{comment}{//\ don't\ emit\ warnings\ for\ non-\/secure\ winapi\ functions}}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#define\ \_WINSOCK\_DEPRECATED\_NO\_WARNINGS\ 1}}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#ifdef\ \_ALLOW\_KEYWORD\_MACROS}}
+\DoxyCodeLine{00105\ \textcolor{comment}{//\ prevent\ replacing\ c/c++\ keywords\ with\ macros}}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#\ \ \ undef\ \_ALLOW\_KEYWORD\_MACROS}}
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_ALLOW\_KEYWORD\_MACROS}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#if\ defined\ \_DEBUG\ \&\&\ !defined\ NDEBUG}}
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#\ \ \ define\ \ \_CRTDBG\_MAP\_ALLOC}}
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\#\ \ \ define\ \ \_CRTDBG\_MAP\_ALLOC\_NEW}}
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#\ \ \ include\ <stdlib.h>}}
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#pragma\ warning(\ disable\ :\ 4005\ )}}
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\#\ \ \ include\ <crtdbg.h>}}
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\#pragma\ warning(\ default\ :\ 4005\ )}}
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ \_DEBUG}}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#include\ <Windows.h>}}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \textcolor{comment}{//\ provides\ relocatable\ process\ base\ address\ at\ RVA\ =\ 0}}
+\DoxyCodeLine{00122\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ IMAGE\_DOS\_HEADER\ \mbox{\hyperlink{winner_8h_a983773bd0fac8b545d479971ff56db4d_a983773bd0fac8b545d479971ff56db4d}{\_\_ImageBase}};}
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\#define\ THIS\_INSTANCE\ (\ (HINSTANCE)\&\_\_ImageBase\ )}}
+
+\end{DoxyCode}

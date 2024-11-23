@@ -1,0 +1,269 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classInputLayout" kind="class" language="C++" prot="public">
+    <compoundname>InputLayout</compoundname>
+    <basecompoundref refid="classIBindable" prot="public" virt="non-virtual">IBindable</basecompoundref>
+    <includes refid="input__layout_8h" local="no">input_layout.h</includes>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classInputLayout_a923d341c31524d238aa9f192b1f2cb42_1a923d341c31524d238aa9f192b1f2cb42" prot="protected" static="no" mutable="no">
+        <type>Microsoft::WRL::ComPtr&lt; ID3D11InputLayout &gt;</type>
+        <definition>Microsoft::WRL::ComPtr&lt;ID3D11InputLayout&gt; InputLayout::m_pInputLayout</definition>
+        <argsstring></argsstring>
+        <name>m_pInputLayout</name>
+        <qualifiedname>InputLayout::m_pInputLayout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/input_layout.h" line="21" column="24" bodyfile="inc/input_layout.h" bodystart="21" bodyend="-1"/>
+        <referencedby refid="classInputLayout_a96527abda8afcf0a2218c39082183f1d_1a96527abda8afcf0a2218c39082183f1d" compoundref="input__layout_8cpp" startline="9" endline="20">InputLayout</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classInputLayout_ad1821ab7b708cb82b1b85d3f1674fb62_1ad1821ab7b708cb82b1b85d3f1674fb62" prot="protected" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string InputLayout::m_vertexShaderUID</definition>
+        <argsstring></argsstring>
+        <name>m_vertexShaderUID</name>
+        <qualifiedname>InputLayout::m_vertexShaderUID</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/input_layout.h" line="22" column="13" bodyfile="inc/input_layout.h" bodystart="22" bodyend="-1"/>
+        <referencedby refid="classInputLayout_a23d0b5c4a3a9442ef38e5473a33f7adf_1a23d0b5c4a3a9442ef38e5473a33f7adf" compoundref="input__layout_8cpp" startline="47" endline="51">getUid</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classInputLayout_adbe37eef4d1512444f90b6da44b79088_1adbe37eef4d1512444f90b6da44b79088" prot="protected" static="no" mutable="no">
+        <type><ref refid="classver_1_1VertexInputLayout" kindref="compound">ver::VertexInputLayout</ref></type>
+        <definition>ver::VertexInputLayout InputLayout::m_vertexLayout</definition>
+        <argsstring></argsstring>
+        <name>m_vertexLayout</name>
+        <qualifiedname>InputLayout::m_vertexLayout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/input_layout.h" line="23" column="24" bodyfile="inc/input_layout.h" bodystart="23" bodyend="-1"/>
+        <referencedby refid="classInputLayout_a96527abda8afcf0a2218c39082183f1d_1a96527abda8afcf0a2218c39082183f1d" compoundref="input__layout_8cpp" startline="9" endline="20">InputLayout</referencedby>
+        <referencedby refid="classInputLayout_a34ece7c7bfe8599be3768c1ee67a2928_1a34ece7c7bfe8599be3768c1ee67a2928" compoundref="input__layout_8cpp" startline="22" endline="25">getLayout</referencedby>
+        <referencedby refid="classInputLayout_a23d0b5c4a3a9442ef38e5473a33f7adf_1a23d0b5c4a3a9442ef38e5473a33f7adf" compoundref="input__layout_8cpp" startline="47" endline="51">getUid</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classInputLayout_a96527abda8afcf0a2218c39082183f1d_1a96527abda8afcf0a2218c39082183f1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>InputLayout::InputLayout</definition>
+        <argsstring>(Graphics &amp;gfx, const ver::VertexInputLayout &amp;layout, const VertexShader &amp;vs)</argsstring>
+        <name>InputLayout</name>
+        <qualifiedname>InputLayout::InputLayout</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classver_1_1VertexInputLayout" kindref="compound">ver::VertexInputLayout</ref> &amp;</type>
+          <declname>layout</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classVertexShader" kindref="compound">VertexShader</ref> &amp;</type>
+          <declname>vs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/input_layout.h" line="25" column="1" bodyfile="src/input_layout.cpp" bodystart="9" bodyend="20"/>
+        <referencedby refid="classInputLayout_a981d8d9efb96d0988b78a67b6cda4a4d_1a981d8d9efb96d0988b78a67b6cda4a4d" compoundref="input__layout_8cpp" startline="40" endline="45">calcUid</referencedby>
+        <referencedby refid="classInputLayout_a23d0b5c4a3a9442ef38e5473a33f7adf_1a23d0b5c4a3a9442ef38e5473a33f7adf" compoundref="input__layout_8cpp" startline="47" endline="51">getUid</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classInputLayout_a5de9afbd3d6d1324ac4a26f04365b69e_1a5de9afbd3d6d1324ac4a26f04365b69e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void InputLayout::bind</definition>
+        <argsstring>(Graphics &amp;gfx) cond_noex override</argsstring>
+        <name>bind</name>
+        <qualifiedname>InputLayout::bind</qualifiedname>
+        <reimplements refid="classIBindable_add4560f78e76629ee81ba701ba1052e1_1add4560f78e76629ee81ba701ba1052e1">bind</reimplements>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+<para>bind graphics resource to a certain stage of the graphics pipeline </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/input_layout.h" line="27" column="6" bodyfile="src/input_layout.cpp" bodystart="27" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classInputLayout_a34ece7c7bfe8599be3768c1ee67a2928_1a34ece7c7bfe8599be3768c1ee67a2928" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const <ref refid="classver_1_1VertexInputLayout" kindref="compound">ver::VertexInputLayout</ref></type>
+        <definition>const ver::VertexInputLayout InputLayout::getLayout</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getLayout</name>
+        <qualifiedname>InputLayout::getLayout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/input_layout.h" line="28" column="30" bodyfile="src/input_layout.cpp" bodystart="22" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classInputLayout_a23d0b5c4a3a9442ef38e5473a33f7adf_1a23d0b5c4a3a9442ef38e5473a33f7adf" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string InputLayout::getUid</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>getUid</name>
+        <qualifiedname>InputLayout::getUid</qualifiedname>
+        <reimplements refid="classIBindable_a7d88cdbd5d500d6d7f1bfabe16927855_1a7d88cdbd5d500d6d7f1bfabe16927855">getUid</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/input_layout.h" line="31" column="13" bodyfile="src/input_layout.cpp" bodystart="47" bodyend="51"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classInputLayout_a28404524310f3bdf8ba2537206e1e109_1a28404524310f3bdf8ba2537206e1e109" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classInputLayout" kindref="compound">InputLayout</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; InputLayout &gt; InputLayout::fetch</definition>
+        <argsstring>(Graphics &amp;gfx, const ver::VertexInputLayout &amp;layout, const VertexShader &amp;vs)</argsstring>
+        <name>fetch</name>
+        <qualifiedname>InputLayout::fetch</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classver_1_1VertexInputLayout" kindref="compound">ver::VertexInputLayout</ref> &amp;</type>
+          <declname>layout</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classVertexShader" kindref="compound">VertexShader</ref> &amp;</type>
+          <declname>vs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/input_layout.h" line="29" column="24" bodyfile="src/input_layout.cpp" bodystart="33" bodyend="38"/>
+        <referencedby refid="classCameraFrustum_a73a48e8fbde4b02b50e32746b50e03b8_1a73a48e8fbde4b02b50e32746b50e03b8" compoundref="camera__frustum_8cpp" startline="17" endline="82">CameraFrustum::CameraFrustum</referencedby>
+        <referencedby refid="classCameraWidget_a0c41231fcab87a5a4aeb57d87aecb55e_1a0c41231fcab87a5a4aeb57d87aecb55e" compoundref="camera__widget_8cpp" startline="17" endline="63">CameraWidget::CameraWidget</referencedby>
+        <referencedby refid="classCube_af0fe61f07cbc70de782950bac056988b_1af0fe61f07cbc70de782950bac056988b" compoundref="cube_8cpp" startline="23" endline="194">Cube::Cube</referencedby>
+        <referencedby refid="classLine_ab4004be2273185c41037d4dd14e02990_1ab4004be2273185c41037d4dd14e02990" compoundref="line_8cpp" startline="22" endline="105">Line::Line</referencedby>
+        <referencedby refid="classren_1_1Pass2D_adc44db26e4e8dce5aa8450b875541109_1adc44db26e4e8dce5aa8450b875541109" compoundref="pass__2d_8cpp" startline="28" endline="84">ren::Pass2D::Pass2D</referencedby>
+        <referencedby refid="classPlane_a70e7a5971d34e1130740e843a6a18896_1a70e7a5971d34e1130740e843a6a18896" compoundref="plane_8cpp" startline="23" endline="193">Plane::Plane</referencedby>
+        <referencedby refid="classren_1_1SkyPass_a1b9881827b6ffe6063f3c40e3689da6d_1a1b9881827b6ffe6063f3c40e3689da6d" compoundref="sky__pass_8cpp" startline="31" endline="71">ren::SkyPass::SkyPass</referencedby>
+        <referencedby refid="classSphere_a80bdf896453fbb509c1e6170e0022c29_1a80bdf896453fbb509c1e6170e0022c29" compoundref="sphere_8cpp" startline="18" endline="72">Sphere::Sphere</referencedby>
+        <referencedby refid="classTerrain_af5a4ec6ff724b557052dd12be7f0de0c_1af5a4ec6ff724b557052dd12be7f0de0c" compoundref="terrain_8cpp" startline="24" endline="158">Terrain::Terrain</referencedby>
+        <referencedby refid="testing_8h_a6602bea1ca81d830dfee5423f7f48029_1a6602bea1ca81d830dfee5423f7f48029" compoundref="testing_8cpp" startline="346" endline="398">testDynamicVertex</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classInputLayout_a981d8d9efb96d0988b78a67b6cda4a4d_1a981d8d9efb96d0988b78a67b6cda4a4d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string InputLayout::calcUid</definition>
+        <argsstring>(const ver::VertexInputLayout &amp;layout, const VertexShader &amp;vs)</argsstring>
+        <name>calcUid</name>
+        <qualifiedname>InputLayout::calcUid</qualifiedname>
+        <param>
+          <type>const <ref refid="classver_1_1VertexInputLayout" kindref="compound">ver::VertexInputLayout</ref> &amp;</type>
+          <declname>layout</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classVertexShader" kindref="compound">VertexShader</ref> &amp;</type>
+          <declname>vs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/input_layout.h" line="30" column="20" bodyfile="src/input_layout.cpp" bodystart="40" bodyend="45"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Vertex Input Layout bindable  </para>
+    </briefdescription>
+    <detaileddescription>
+<para>=============================================================</para>
+<para><simplesect kind="author"><para>KeyC0de </para>
+</simplesect>
+<simplesect kind="date"><para>2022/08/30 1:16 <heading level="1"></heading>
+</para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>GraphicsFriend</label>
+        <link refid="classGraphicsFriend"/>
+      </node>
+      <node id="2">
+        <label>IBindable</label>
+        <link refid="classIBindable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>InputLayout</label>
+        <link refid="classInputLayout"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>GraphicsFriend</label>
+        <link refid="classGraphicsFriend"/>
+      </node>
+      <node id="2">
+        <label>IBindable</label>
+        <link refid="classIBindable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>InputLayout</label>
+        <link refid="classInputLayout"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>m_vertexLayout</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>ver::VertexInputLayout</label>
+        <link refid="classver_1_1VertexInputLayout"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/input_layout.h" line="17" column="1" bodyfile="inc/input_layout.h" bodystart="19" bodyend="32"/>
+    <listofallmembers>
+      <member refid="classIBindable_a608c5066b829febbd49cd82d1d1fa353_1a608c5066b829febbd49cd82d1d1fa353" prot="public" virt="virtual"><scope>InputLayout</scope><name>accept</name></member>
+      <member refid="classInputLayout_a5de9afbd3d6d1324ac4a26f04365b69e_1a5de9afbd3d6d1324ac4a26f04365b69e" prot="public" virt="virtual"><scope>InputLayout</scope><name>bind</name></member>
+      <member refid="classInputLayout_a981d8d9efb96d0988b78a67b6cda4a4d_1a981d8d9efb96d0988b78a67b6cda4a4d" prot="public" virt="non-virtual"><scope>InputLayout</scope><name>calcUid</name></member>
+      <member refid="classInputLayout_a28404524310f3bdf8ba2537206e1e109_1a28404524310f3bdf8ba2537206e1e109" prot="public" virt="non-virtual"><scope>InputLayout</scope><name>fetch</name></member>
+      <member refid="classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_1a175df79f82ab5a6dad1df24b5a242ef7" prot="protected" virt="non-virtual"><scope>InputLayout</scope><name>getDevice</name></member>
+      <member refid="classGraphicsFriend_a619e32893ab49ea6c5200e7c2d52e2f2_1a619e32893ab49ea6c5200e7c2d52e2f2" prot="protected" virt="non-virtual"><scope>InputLayout</scope><name>getDeviceContext</name></member>
+      <member refid="classInputLayout_a34ece7c7bfe8599be3768c1ee67a2928_1a34ece7c7bfe8599be3768c1ee67a2928" prot="public" virt="non-virtual"><scope>InputLayout</scope><name>getLayout</name></member>
+      <member refid="classInputLayout_a23d0b5c4a3a9442ef38e5473a33f7adf_1a23d0b5c4a3a9442ef38e5473a33f7adf" prot="public" virt="virtual"><scope>InputLayout</scope><name>getUid</name></member>
+      <member refid="classInputLayout_a96527abda8afcf0a2218c39082183f1d_1a96527abda8afcf0a2218c39082183f1d" prot="public" virt="non-virtual"><scope>InputLayout</scope><name>InputLayout</name></member>
+      <member refid="classInputLayout_a923d341c31524d238aa9f192b1f2cb42_1a923d341c31524d238aa9f192b1f2cb42" prot="protected" virt="non-virtual"><scope>InputLayout</scope><name>m_pInputLayout</name></member>
+      <member refid="classInputLayout_adbe37eef4d1512444f90b6da44b79088_1adbe37eef4d1512444f90b6da44b79088" prot="protected" virt="non-virtual"><scope>InputLayout</scope><name>m_vertexLayout</name></member>
+      <member refid="classInputLayout_ad1821ab7b708cb82b1b85d3f1674fb62_1ad1821ab7b708cb82b1b85d3f1674fb62" prot="protected" virt="non-virtual"><scope>InputLayout</scope><name>m_vertexShaderUID</name></member>
+      <member refid="classIBindable_a4d590eebe80fa4e0aa865a875ff86c02_1a4d590eebe80fa4e0aa865a875ff86c02" prot="public" virt="virtual"><scope>InputLayout</scope><name>setDebugObjectName</name></member>
+      <member refid="classIBindable_a12fe8725cb3f4836f22d1592b07e2c91_1a12fe8725cb3f4836f22d1592b07e2c91" prot="public" virt="virtual"><scope>InputLayout</scope><name>setMesh</name></member>
+      <member refid="classIBindable_a7f68262ff85e25e9f826eae7c01bbfa1_1a7f68262ff85e25e9f826eae7c01bbfa1" prot="public" virt="virtual"><scope>InputLayout</scope><name>~IBindable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

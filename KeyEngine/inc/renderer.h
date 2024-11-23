@@ -53,12 +53,10 @@ protected:
 	IPass& getPass( const std::string &name );
 private:
 	void validateBindersLinkage();
-	//	\function	linkPassBinders	||	\date	2021/10/27 18:00
-	//	\brief	links pass's binders to their linkers
+	/// \brief	links pass's binders to their linkers
 	void linkPassBinders( IPass &pass );
-	//	\function	offscreenToBackBufferSwap	||	\date	2022/11/05 15:42
-	//	\brief	If there's a final post process pass (Pass that renders directly to the Back Buffer) then swap the render targets, ie.
-	//			bind a. Back Buffer RTV as output and b. Offscreen RTV as input
+	/// \brief	If there's a final post process pass (Pass that renders directly to the Back Buffer) then swap the render targets, ie.
+	/// \brief	bind 1. Back Buffer RTV as output and 2. Offscreen RTV as input
 	void offscreenToBackBufferSwap(  Graphics &gfx );
 };
 
@@ -86,8 +84,7 @@ public:
 	void displayImguiWidgets( Graphics &gfx ) noexcept;
 	void dumpShadowMap( Graphics &gfx, const std::string &path );
 	void dumpShadowCubeMap( Graphics &gfx, const std::string &path );
-	//	\function	setActiveCamera	||	\date	2022/05/24 17:10
-	//	\brief	binds active camera to all Passes that need it
+	/// \brief	binds active camera to all Passes that need it
 	void setActiveCamera( const Camera &cam );
 	void bindShadowCastingLights( Graphics &gfx, const std::vector<ILightSource*> &shadowCastingLights );
 private:

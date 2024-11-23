@@ -44,14 +44,14 @@ class Renderer2d;
 
 }
 
-//=============================================================
-//	\class	Graphics
-//	\author	KeyC0de
-//	\date	2022/09/13 22:51
-//	\brief	Graphics API (d3d11) encapsulator
-//			provides classic blt presentation functionality
-//			as well as upgraded DXGI 1.2 API with Flip enhanced presentation model (aiming for Independent Flip)
-//=============================================================
+///=============================================================
+/// \class	Graphics
+/// \author	KeyC0de
+/// \date	2022/09/13 22:51
+/// \brief	Graphics API (d3d11) encapsulator
+/// \brief	provides classic blt presentation functionality
+/// \brief	as well as upgraded DXGI 1.2 API with Flip enhanced presentation model (aiming for Independent Flip)
+///=============================================================
 class Graphics final
 	: NonCopyableAndNonMovable
 {
@@ -142,11 +142,9 @@ public:
 	void bindBackBufferAsInput();
 	void createFactory();
 	void createAdapters();
-	//	\function	resize	||	\date	2022/09/17 19:44
-	//	\brief	sets windowed mode or Fullscreen, supply width & height of 0 to resize the buffers for fullscreen mode usage
+	/// \brief	sets windowed mode or Fullscreen, supply width & height of 0 to resize the buffers for fullscreen mode usage
 	void resize( unsigned newWidth, unsigned newHeight );
-	//	\function	setupMonitors	||	\date	2022/09/18 19:08
-	//	\brief	sets up the output monitor devices
+	/// \brief	sets up the output monitor devices
 	void setupMonitors();
 	double getRefreshRate() const noexcept;
 	size_t getFrameNum() const noexcept;
@@ -159,19 +157,15 @@ public:
 #endif
 	KeyTimer<std::chrono::microseconds>& getFpsTimer() noexcept;
 	KeyTimer<std::chrono::seconds>& getRealTimer() noexcept;
-	//	\function	getDisplayMode	||	\date	2024/05/03 18:18
-	//	\brief	returns true if fullscreen application, false otherwise
+	/// \brief	returns true if fullscreen application, false otherwise
 	bool getDisplayMode() const noexcept;
 	bool& getDisplayMode();
-	//	\function	recordDeferredCommandList	||	\date	2022/08/21 14:05
-	//	\brief	probably should call this when the Model is being loaded not when pass->run() -> Job->run()
+	/// \brief	probably should call this when the Model is being loaded not when pass->run() -> Job->run()
 	void recordDeferredCommandList();
-	//	\function	playbackDeferredCommandList	||	\date	2020/11/05 14:51
-	//	\brief		ExecuteCommandList must be executed on the immediate context for recorded commands to be run on the GPU
+	/// \brief		ExecuteCommandList must be executed on the immediate context for recorded commands to be run on the GPU
 	void playbackDeferredCommandList();
 private:
-	//	\function	present	||	\date	2022/09/13 22:12
-	//	\brief	present the frame to DWM
+	/// \brief	present the frame to DWM
 	void present();
 	void interrogateDirectxFeatures();
 	bool checkTearingSupport();
@@ -185,8 +179,7 @@ public:
 	ColorBGRA getPixel( const int x, const int y ) const noexcept;
 	void putPixel( const int x, const int y, const ColorBGRA color );
 	void putPixel( const int x, const int y, const int r, const int g, const int b );
-	//	\function	drawLine	||	\date	2021/04/26 21:27
-	//	\brief	uses the Bresenham algorithm to draw lines, ie. connect 2d positions together by drawing straight lines between them
+	/// \brief	uses the Bresenham algorithm to draw lines, ie. connect 2d positions together by drawing straight lines between them
 	//			this is one of the algorithms by D3D as well during rasterization
 	void drawLine( int x0, int x1, int y0, int y1, const ColorBGRA col );
 	void drawRectangle( int x0, int y0, int x1, int y1, const ColorBGRA col );

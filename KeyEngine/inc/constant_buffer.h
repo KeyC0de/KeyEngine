@@ -8,12 +8,12 @@
 #include "dxgi_info_queue.h"
 
 
-//=============================================================
-//	\class	IConstantBuffer
-//	\author	KeyC0de
-//	\date	2022/02/19 18:52
-//	\brief	CB is the Constant Buffer struct we abstract away
-//=============================================================
+///=============================================================
+/// \class	IConstantBuffer
+/// \author	KeyC0de
+/// \date	2022/02/19 18:52
+/// \brief	CB is the Constant Buffer struct we abstract away
+///=============================================================
 template<typename CB>
 class IConstantBuffer
 	: public IBindable
@@ -23,8 +23,7 @@ protected:
 	unsigned m_slot;
 	static inline Graphics *s_gph;
 public:
-	//	\function	ctor	||	\date	2022/08/14 23:44
-	//	\brief	initially empty d3dcb - supply the data on update
+	/// \brief	initially empty d3dcb - supply the data on update
 	IConstantBuffer( Graphics &gfx,
 		const unsigned slot )
 		:
@@ -39,8 +38,7 @@ public:
 		ASSERT_HRES_IF_FAILED;
 	}
 
-	//	\function	IConstantBuffer	||	\date	2022/08/14 23:44
-	//	\brief	ctor with the data supplied
+	/// \brief	ctor with the data supplied
 	IConstantBuffer( Graphics &gfx,
 		const CB &cb,
 		const unsigned slot )
@@ -59,8 +57,7 @@ public:
 		ASSERT_HRES_IF_FAILED;
 	}
 
-	//	\function	IConstantBuffer	||	\date	2022/08/14 19:45
-	//	\brief	cheating constructor - the D3d resource has already been created (eg copied from another)
+	/// \brief	cheating constructor - the D3d resource has already been created (eg copied from another)
 	IConstantBuffer( Microsoft::WRL::ComPtr<ID3D11Buffer> &d3dBuf,
 		const unsigned slot )
 		:
@@ -70,8 +67,7 @@ public:
 
 	}
 
-	//	\function	update	||	\date	2022/02/19 19:00
-	//	\brief	Map, paste to msr, Unmap
+	/// \brief	Map, paste to msr, Unmap
 	void update( Graphics &gfx,
 		const CB &cb )
 	{

@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="structImguiPerModelNodeVisitor_1_1TransformData" kind="struct" language="C++" prot="private">
+    <compoundname>ImguiPerModelNodeVisitor::TransformData</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structImguiPerModelNodeVisitor_1_1TransformData_a443f0cf12d6c7f2fbd847134b0526461_1a443f0cf12d6c7f2fbd847134b0526461" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float ImguiPerModelNodeVisitor::TransformData::pitch</definition>
+        <argsstring></argsstring>
+        <name>pitch</name>
+        <qualifiedname>ImguiPerModelNodeVisitor::TransformData::pitch</qualifiedname>
+        <initializer>= 0.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/imgui_visitors.h" line="35" column="7" bodyfile="inc/imgui_visitors.h" bodystart="35" bodyend="-1"/>
+        <referencedby refid="classImguiPerModelNodeVisitor_afa4104c926e409f0dbdd385aa4db5d7c_1afa4104c926e409f0dbdd385aa4db5d7c" compoundref="imgui__visitors_8cpp" startline="151" endline="173">ImguiPerModelNodeVisitor::getNodeTransform</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structImguiPerModelNodeVisitor_1_1TransformData_ad5fbaffa67e7ec10bc91b94474512478_1ad5fbaffa67e7ec10bc91b94474512478" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float ImguiPerModelNodeVisitor::TransformData::yaw</definition>
+        <argsstring></argsstring>
+        <name>yaw</name>
+        <qualifiedname>ImguiPerModelNodeVisitor::TransformData::yaw</qualifiedname>
+        <initializer>= 0.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/imgui_visitors.h" line="36" column="7" bodyfile="inc/imgui_visitors.h" bodystart="36" bodyend="-1"/>
+        <referencedby refid="classImguiPerModelNodeVisitor_afa4104c926e409f0dbdd385aa4db5d7c_1afa4104c926e409f0dbdd385aa4db5d7c" compoundref="imgui__visitors_8cpp" startline="151" endline="173">ImguiPerModelNodeVisitor::getNodeTransform</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structImguiPerModelNodeVisitor_1_1TransformData_aa51d93b9abff5bb8c9b94f6325efebfa_1aa51d93b9abff5bb8c9b94f6325efebfa" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float ImguiPerModelNodeVisitor::TransformData::roll</definition>
+        <argsstring></argsstring>
+        <name>roll</name>
+        <qualifiedname>ImguiPerModelNodeVisitor::TransformData::roll</qualifiedname>
+        <initializer>= 0.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/imgui_visitors.h" line="37" column="7" bodyfile="inc/imgui_visitors.h" bodystart="37" bodyend="-1"/>
+        <referencedby refid="classImguiPerModelNodeVisitor_afa4104c926e409f0dbdd385aa4db5d7c_1afa4104c926e409f0dbdd385aa4db5d7c" compoundref="imgui__visitors_8cpp" startline="151" endline="173">ImguiPerModelNodeVisitor::getNodeTransform</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structImguiPerModelNodeVisitor_1_1TransformData_aa34741396cc9d9031e99f60df39b8f61_1aa34741396cc9d9031e99f60df39b8f61" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float ImguiPerModelNodeVisitor::TransformData::x</definition>
+        <argsstring></argsstring>
+        <name>x</name>
+        <qualifiedname>ImguiPerModelNodeVisitor::TransformData::x</qualifiedname>
+        <initializer>= 0.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/imgui_visitors.h" line="38" column="7" bodyfile="inc/imgui_visitors.h" bodystart="38" bodyend="-1"/>
+        <referencedby refid="classImguiPerModelNodeVisitor_afa4104c926e409f0dbdd385aa4db5d7c_1afa4104c926e409f0dbdd385aa4db5d7c" compoundref="imgui__visitors_8cpp" startline="151" endline="173">ImguiPerModelNodeVisitor::getNodeTransform</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structImguiPerModelNodeVisitor_1_1TransformData_af7122cce4b801f121032b6d713e4eee3_1af7122cce4b801f121032b6d713e4eee3" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float ImguiPerModelNodeVisitor::TransformData::y</definition>
+        <argsstring></argsstring>
+        <name>y</name>
+        <qualifiedname>ImguiPerModelNodeVisitor::TransformData::y</qualifiedname>
+        <initializer>= 0.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/imgui_visitors.h" line="39" column="7" bodyfile="inc/imgui_visitors.h" bodystart="39" bodyend="-1"/>
+        <referencedby refid="classImguiPerModelNodeVisitor_afa4104c926e409f0dbdd385aa4db5d7c_1afa4104c926e409f0dbdd385aa4db5d7c" compoundref="imgui__visitors_8cpp" startline="151" endline="173">ImguiPerModelNodeVisitor::getNodeTransform</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structImguiPerModelNodeVisitor_1_1TransformData_a19b8e5f17e94749cbb739359e418e695_1a19b8e5f17e94749cbb739359e418e695" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float ImguiPerModelNodeVisitor::TransformData::z</definition>
+        <argsstring></argsstring>
+        <name>z</name>
+        <qualifiedname>ImguiPerModelNodeVisitor::TransformData::z</qualifiedname>
+        <initializer>= 0.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/imgui_visitors.h" line="40" column="7" bodyfile="inc/imgui_visitors.h" bodystart="40" bodyend="-1"/>
+        <referencedby refid="classImguiPerModelNodeVisitor_afa4104c926e409f0dbdd385aa4db5d7c_1afa4104c926e409f0dbdd385aa4db5d7c" compoundref="imgui__visitors_8cpp" startline="151" endline="173">ImguiPerModelNodeVisitor::getNodeTransform</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/imgui_visitors.h" line="33" column="1" bodyfile="inc/imgui_visitors.h" bodystart="34" bodyend="41"/>
+    <listofallmembers>
+      <member refid="structImguiPerModelNodeVisitor_1_1TransformData_a443f0cf12d6c7f2fbd847134b0526461_1a443f0cf12d6c7f2fbd847134b0526461" prot="public" virt="non-virtual"><scope>ImguiPerModelNodeVisitor::TransformData</scope><name>pitch</name></member>
+      <member refid="structImguiPerModelNodeVisitor_1_1TransformData_aa51d93b9abff5bb8c9b94f6325efebfa_1aa51d93b9abff5bb8c9b94f6325efebfa" prot="public" virt="non-virtual"><scope>ImguiPerModelNodeVisitor::TransformData</scope><name>roll</name></member>
+      <member refid="structImguiPerModelNodeVisitor_1_1TransformData_aa34741396cc9d9031e99f60df39b8f61_1aa34741396cc9d9031e99f60df39b8f61" prot="public" virt="non-virtual"><scope>ImguiPerModelNodeVisitor::TransformData</scope><name>x</name></member>
+      <member refid="structImguiPerModelNodeVisitor_1_1TransformData_af7122cce4b801f121032b6d713e4eee3_1af7122cce4b801f121032b6d713e4eee3" prot="public" virt="non-virtual"><scope>ImguiPerModelNodeVisitor::TransformData</scope><name>y</name></member>
+      <member refid="structImguiPerModelNodeVisitor_1_1TransformData_ad5fbaffa67e7ec10bc91b94474512478_1ad5fbaffa67e7ec10bc91b94474512478" prot="public" virt="non-virtual"><scope>ImguiPerModelNodeVisitor::TransformData</scope><name>yaw</name></member>
+      <member refid="structImguiPerModelNodeVisitor_1_1TransformData_a19b8e5f17e94749cbb739359e418e695_1a19b8e5f17e94749cbb739359e418e695" prot="public" virt="non-virtual"><scope>ImguiPerModelNodeVisitor::TransformData</scope><name>z</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

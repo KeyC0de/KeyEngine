@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="keyboard_8cpp" kind="file" language="C++">
+    <compoundname>keyboard.cpp</compoundname>
+    <includes refid="keyboard_8h" local="yes">keyboard.h</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>keyboard.h</label>
+        <link refid="keyboard_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="1">
+        <label>src/keyboard.cpp</label>
+        <link refid="keyboard_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>bitset</label>
+      </node>
+      <node id="5">
+        <label>optional</label>
+      </node>
+      <node id="3">
+        <label>queue</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="keyboard_8h" kindref="compound">keyboard.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4" refid="classKeyboard_ae66e65cc1bbddc7ae3df2431eda69f87_1ae66e65cc1bbddc7ae3df2431eda69f87" refkind="member"><highlight class="normal"><ref refid="classKeyboard_a593b2dc485da39d18afdef3d38c4e22c_1a593b2dc485da39d18afdef3d38c4e22c" kindref="member">Keyboard::Keyboard</ref>(<sp/><ref refid="classKeyboard" kindref="compound">Keyboard</ref><sp/>&amp;&amp;rhs<sp/>)<sp/>noexcept</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/>m_bAutorepeat{rhs.m_bAutorepeat},</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/>m_keyStates{std::move(<sp/>rhs.m_keyStates<sp/>)},</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/>m_eventQueue{std::move(<sp/>rhs.m_eventQueue<sp/>)},</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>m_charBuffer{std::move(<sp/>rhs.m_charBuffer<sp/>)}</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>rhs.m_keyStates<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>rhs.m_eventQueue<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>rhs.m_charBuffer<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="classKeyboard_a07819d49bf27bbc7238ec2c1089809ff_1a07819d49bf27bbc7238ec2c1089809ff" refkind="member"><highlight class="normal"><ref refid="classKeyboard" kindref="compound">Keyboard</ref>&amp;<sp/><ref refid="classKeyboard_a07819d49bf27bbc7238ec2c1089809ff_1a07819d49bf27bbc7238ec2c1089809ff" kindref="member">Keyboard::operator=</ref>(<sp/><ref refid="classKeyboard" kindref="compound">Keyboard</ref><sp/>&amp;&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyboard" kindref="compound">Keyboard</ref><sp/>tmp{std::move(<sp/>rhs<sp/>)};</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>std::swap(<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>tmp<sp/>);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classKeyboard_af03d770546134b5a8c1857eae31cb83a_1af03d770546134b5a8c1857eae31cb83a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classKeyboard_af03d770546134b5a8c1857eae31cb83a_1af03d770546134b5a8c1857eae31cb83a" kindref="member">Keyboard::isKeyPressed</ref>(<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>keycode<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m_keyStates[keycode];</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classKeyboard_aa6b997459f8fd4754e8a0083cf7cbc75_1aa6b997459f8fd4754e8a0083cf7cbc75" refkind="member"><highlight class="normal">std::optional&lt;Keyboard::Event&gt;<sp/><ref refid="classKeyboard_aa6b997459f8fd4754e8a0083cf7cbc75_1aa6b997459f8fd4754e8a0083cf7cbc75" kindref="member">Keyboard::readEventQueue</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!<ref refid="classKeyboard_a421038ebec3114798c6b7a011d8e2727_1a421038ebec3114798c6b7a011d8e2727" kindref="member">m_eventQueue</ref>.empty()<sp/>)</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classKeyboard_1_1Event" kindref="compound">Event</ref><sp/>ev<sp/>=<sp/><ref refid="classKeyboard_a421038ebec3114798c6b7a011d8e2727_1a421038ebec3114798c6b7a011d8e2727" kindref="member">m_eventQueue</ref>.front();</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classKeyboard_a421038ebec3114798c6b7a011d8e2727_1a421038ebec3114798c6b7a011d8e2727" kindref="member">m_eventQueue</ref>.pop();</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ev;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classKeyboard_aa258f4f3c83b007b99fd183f515bb1c2_1aa258f4f3c83b007b99fd183f515bb1c2" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classKeyboard_aa258f4f3c83b007b99fd183f515bb1c2_1aa258f4f3c83b007b99fd183f515bb1c2" kindref="member">Keyboard::isEventQueueEmpty</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classKeyboard_a421038ebec3114798c6b7a011d8e2727_1a421038ebec3114798c6b7a011d8e2727" kindref="member">m_eventQueue</ref>.empty();</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="classKeyboard_a121d5336a3817d5cc24bb694b2135cdb_1a121d5336a3817d5cc24bb694b2135cdb" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classKeyboard_a121d5336a3817d5cc24bb694b2135cdb_1a121d5336a3817d5cc24bb694b2135cdb" kindref="member">Keyboard::flushEventQueue</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyboard_a421038ebec3114798c6b7a011d8e2727_1a421038ebec3114798c6b7a011d8e2727" kindref="member">m_eventQueue</ref><sp/>=<sp/>std::queue&lt;Event&gt;{};</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="classKeyboard_a10f09f893d2ee5de0382355051f87c46_1a10f09f893d2ee5de0382355051f87c46" refkind="member"><highlight class="normal">std::optional&lt;char&gt;<sp/><ref refid="classKeyboard_a10f09f893d2ee5de0382355051f87c46_1a10f09f893d2ee5de0382355051f87c46" kindref="member">Keyboard::readCharBuffer</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!<ref refid="classKeyboard_ad1ba69df5506a23db275e51301c19837_1ad1ba69df5506a23db275e51301c19837" kindref="member">m_charBuffer</ref>.empty()<sp/>)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>charcode<sp/>=<sp/><ref refid="classKeyboard_ad1ba69df5506a23db275e51301c19837_1ad1ba69df5506a23db275e51301c19837" kindref="member">m_charBuffer</ref>.front();</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classKeyboard_ad1ba69df5506a23db275e51301c19837_1ad1ba69df5506a23db275e51301c19837" kindref="member">m_charBuffer</ref>.pop();</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>charcode;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classKeyboard_a359bd32181bf710f448c5f72eeae1e01_1a359bd32181bf710f448c5f72eeae1e01" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classKeyboard_a359bd32181bf710f448c5f72eeae1e01_1a359bd32181bf710f448c5f72eeae1e01" kindref="member">Keyboard::isCharBufferEmpty</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classKeyboard_ad1ba69df5506a23db275e51301c19837_1ad1ba69df5506a23db275e51301c19837" kindref="member">m_charBuffer</ref>.empty();</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="classKeyboard_a936b9935e42566fbacb1fbd4e84dfcc6_1a936b9935e42566fbacb1fbd4e84dfcc6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classKeyboard_a936b9935e42566fbacb1fbd4e84dfcc6_1a936b9935e42566fbacb1fbd4e84dfcc6" kindref="member">Keyboard::flushCharBuffer</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyboard_ad1ba69df5506a23db275e51301c19837_1ad1ba69df5506a23db275e51301c19837" kindref="member">m_charBuffer</ref><sp/>=<sp/>std::queue&lt;char&gt;{};</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="classKeyboard_a03eac10756813832e693a071dc0fb8ca_1a03eac10756813832e693a071dc0fb8ca" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classKeyboard_a03eac10756813832e693a071dc0fb8ca_1a03eac10756813832e693a071dc0fb8ca" kindref="member">Keyboard::flushAll</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyboard_a121d5336a3817d5cc24bb694b2135cdb_1a121d5336a3817d5cc24bb694b2135cdb" kindref="member">flushEventQueue</ref>();</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyboard_a936b9935e42566fbacb1fbd4e84dfcc6_1a936b9935e42566fbacb1fbd4e84dfcc6" kindref="member">flushCharBuffer</ref>();</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="classKeyboard_aaa659e9faa6b0986b3ae4bf288d2b21c_1aaa659e9faa6b0986b3ae4bf288d2b21c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classKeyboard_aaa659e9faa6b0986b3ae4bf288d2b21c_1aaa659e9faa6b0986b3ae4bf288d2b21c" kindref="member">Keyboard::enableAutorepeat</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyboard_a807ad6015d42826612926d20bec1aa21_1a807ad6015d42826612926d20bec1aa21" kindref="member">m_bAutorepeat</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="classKeyboard_ab065f64c957e5073f2967a9c5100c895_1ab065f64c957e5073f2967a9c5100c895" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classKeyboard_ab065f64c957e5073f2967a9c5100c895_1ab065f64c957e5073f2967a9c5100c895" kindref="member">Keyboard::disableAutorepeat</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyboard_a807ad6015d42826612926d20bec1aa21_1a807ad6015d42826612926d20bec1aa21" kindref="member">m_bAutorepeat</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="classKeyboard_a6d8845aa292185a0513ee537b0c2fbc4_1a6d8845aa292185a0513ee537b0c2fbc4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classKeyboard_a6d8845aa292185a0513ee537b0c2fbc4_1a6d8845aa292185a0513ee537b0c2fbc4" kindref="member">Keyboard::isAutorepeatEnabled</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classKeyboard_a807ad6015d42826612926d20bec1aa21_1a807ad6015d42826612926d20bec1aa21" kindref="member">m_bAutorepeat</ref>;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="classKeyboard_a638ff76869499016bfa2a1334a3fe4d4_1a638ff76869499016bfa2a1334a3fe4d4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classKeyboard_a638ff76869499016bfa2a1334a3fe4d4_1a638ff76869499016bfa2a1334a3fe4d4" kindref="member">Keyboard::onKeyPressed</ref>(<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>keycode<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>m_keyStates[keycode]<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>m_eventQueue.push(<sp/><ref refid="classKeyboard_1_1Event" kindref="compound">Event</ref>{Event::Type::Press,<sp/>keycode}<sp/>);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>trimBuffer(<sp/>m_eventQueue<sp/>);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98" refid="classKeyboard_a7f0d6d231047aa54ee05011287422b53_1a7f0d6d231047aa54ee05011287422b53" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classKeyboard_a7f0d6d231047aa54ee05011287422b53_1a7f0d6d231047aa54ee05011287422b53" kindref="member">Keyboard::onKeyReleased</ref>(<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>keycode<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>m_keyStates[keycode]<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>m_eventQueue.push(<sp/><ref refid="classKeyboard_1_1Event" kindref="compound">Event</ref>{Event::Type::Release,<sp/>keycode}<sp/>);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>trimBuffer(<sp/>m_eventQueue<sp/>);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="classKeyboard_a2cee5c3d01ae16d6e4ce2fc59c13cbc7_1a2cee5c3d01ae16d6e4ce2fc59c13cbc7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classKeyboard_a2cee5c3d01ae16d6e4ce2fc59c13cbc7_1a2cee5c3d01ae16d6e4ce2fc59c13cbc7" kindref="member">Keyboard::onChar</ref>(<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>c<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>m_charBuffer.push(<sp/>c<sp/>);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>trimBuffer(<sp/>m_charBuffer<sp/>);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="classKeyboard_a9ae942086b451980d60cfc9167ca42f0_1a9ae942086b451980d60cfc9167ca42f0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classKeyboard_a9ae942086b451980d60cfc9167ca42f0_1a9ae942086b451980d60cfc9167ca42f0" kindref="member">Keyboard::clearKeyStates</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="112"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classKeyboard_ac2996c1f7e6699c6dd39a255081e97bc_1ac2996c1f7e6699c6dd39a255081e97bc" kindref="member">m_keyStates</ref>.reset();</highlight></codeline>
+<codeline lineno="114"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="117" refid="classKeyboard_ad2361f937a9e6372893721b67b0e4371_1ad2361f937a9e6372893721b67b0e4371" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classKeyboard_ad2361f937a9e6372893721b67b0e4371_1ad2361f937a9e6372893721b67b0e4371" kindref="member">Keyboard::trimBuffer</ref>(<sp/>std::queue&lt;T&gt;&amp;<sp/>buf<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<sp/>buf.size()<sp/>&gt;<sp/>s_maxBufferSize<sp/>)</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>buf.pop();</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/keyboard.cpp"/>
+  </compounddef>
+</doxygen>

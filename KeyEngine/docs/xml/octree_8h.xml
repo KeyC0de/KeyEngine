@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="octree_8h" kind="file" language="C++">
+    <compoundname>octree.h</compoundname>
+    <includes local="no">cstddef</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">DirectXMath.h</includes>
+    <includedby refid="octree_8cpp" local="yes">src/octree.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>inc/octree.h</label>
+        <link refid="octree_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>DirectXMath.h</label>
+      </node>
+      <node id="2">
+        <label>cstddef</label>
+      </node>
+      <node id="3">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>inc/octree.h</label>
+        <link refid="octree_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/octree.cpp</label>
+        <link refid="octree_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classOctree" prot="public">Octree</innerclass>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="octree_8h_aaf5b531b30e1cf3570c4ac47b057e0b4_1aaf5b531b30e1cf3570c4ac47b057e0b4" prot="public" static="no">
+        <type>DirectX::XMFLOAT3</type>
+        <definition>using OctreeData =  DirectX::XMFLOAT3</definition>
+        <argsstring></argsstring>
+        <name>OctreeData</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/octree.h" line="8" column="1" bodyfile="inc/octree.h" bodystart="8" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstddef&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;DirectXMath.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="octree_8h_aaf5b531b30e1cf3570c4ac47b057e0b4_1aaf5b531b30e1cf3570c4ac47b057e0b4" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="octree_8h_aaf5b531b30e1cf3570c4ac47b057e0b4_1aaf5b531b30e1cf3570c4ac47b057e0b4" kindref="member">OctreeData</ref><sp/>=<sp/>DirectX::XMFLOAT3;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classOctree" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classOctree" kindref="compound">Octree</ref><sp/>final</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25" refid="classOctree_a2522baa7f50932f82eeaedc2c426952f_1a2522baa7f50932f82eeaedc2c426952f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>DirectX::XMFLOAT3<sp/><ref refid="classOctree_a2522baa7f50932f82eeaedc2c426952f_1a2522baa7f50932f82eeaedc2c426952f" kindref="member">m_center</ref>;<sp/></highlight><highlight class="comment">//<sp/>the<sp/>physical<sp/>spatial<sp/>center<sp/>of<sp/>this<sp/>octree<sp/>octant</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classOctree_ada75fb425d41149b5328e5db3c3be938_1ada75fb425d41149b5328e5db3c3be938" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>DirectX::XMFLOAT3<sp/><ref refid="classOctree_ada75fb425d41149b5328e5db3c3be938_1ada75fb425d41149b5328e5db3c3be938" kindref="member">m_half</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>half<sp/>the<sp/>width,height,depth<sp/>of<sp/>this<sp/>octant</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classOctree_a7ea759b535af4b7a6d23cacda2d62765_1a7ea759b535af4b7a6d23cacda2d62765" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOctree" kindref="compound">Octree</ref><sp/>*<ref refid="classOctree_a7ea759b535af4b7a6d23cacda2d62765_1a7ea759b535af4b7a6d23cacda2d62765" kindref="member">m_children</ref>[8];</highlight></codeline>
+<codeline lineno="28" refid="classOctree_a4110f6074692c9f49b4546f00a439432_1a4110f6074692c9f49b4546f00a439432" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="octree_8h_aaf5b531b30e1cf3570c4ac47b057e0b4_1aaf5b531b30e1cf3570c4ac47b057e0b4" kindref="member">OctreeData</ref><sp/>*<ref refid="classOctree_a4110f6074692c9f49b4546f00a439432_1a4110f6074692c9f49b4546f00a439432" kindref="member">m_data</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>determine<sp/>which<sp/>octant<sp/>of<sp/>the<sp/>tree<sp/>contains<sp/>point</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classOctree_a4edd2af2d4cedc9a01f76ce525adbca1_1a4edd2af2d4cedc9a01f76ce525adbca1" kindref="member">getOctantContainingPoint</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;point<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classOctree_ae1ab7d4beee257afbca9a1975137e32b_1ae1ab7d4beee257afbca9a1975137e32b" kindref="member">isLeafNode</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="34" refid="classOctree_a288e573ccc46fee7b0f77bfd5f6478e3_1a288e573ccc46fee7b0f77bfd5f6478e3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOctree_a288e573ccc46fee7b0f77bfd5f6478e3_1a288e573ccc46fee7b0f77bfd5f6478e3" kindref="member">Octree</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;center,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;halfDim<sp/>);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOctree_a288e573ccc46fee7b0f77bfd5f6478e3_1a288e573ccc46fee7b0f77bfd5f6478e3" kindref="member">Octree</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classOctree" kindref="compound">Octree</ref><sp/>&amp;rhs<sp/>);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOctree_a6705a6ae06fab5a0dfdd79f45576020d_1a6705a6ae06fab5a0dfdd79f45576020d" kindref="member">~Octree</ref>();</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOctree_ab6706e538ad4d06dd1dc8d7e0dbc4f85_1ab6706e538ad4d06dd1dc8d7e0dbc4f85" kindref="member">insert</ref>(<sp/><ref refid="octree_8h_aaf5b531b30e1cf3570c4ac47b057e0b4_1aaf5b531b30e1cf3570c4ac47b057e0b4" kindref="member">OctreeData</ref><sp/>*node<sp/>);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>recursively<sp/>query<sp/>the<sp/>tree<sp/>for<sp/>Entities<sp/>within<sp/>a<sp/>bounding<sp/>box<sp/>{bmin,bmax}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOctree_a9ca58e8b8198c3953833a69b82b35bda_1a9ca58e8b8198c3953833a69b82b35bda" kindref="member">getEntitiesWithinBBox</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;bmin,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;bmax,<sp/>std::vector&lt;OctreeData*&gt;&amp;<sp/>resultsOut<sp/>);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/octree.h"/>
+  </compounddef>
+</doxygen>

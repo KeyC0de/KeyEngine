@@ -1,0 +1,803 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classILightSource" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>ILightSource</compoundname>
+    <derivedcompoundref refid="classDirectionalLight" prot="public" virt="non-virtual">DirectionalLight</derivedcompoundref>
+    <derivedcompoundref refid="classPointLight" prot="public" virt="non-virtual">PointLight</derivedcompoundref>
+    <derivedcompoundref refid="classSpotLight" prot="public" virt="non-virtual">SpotLight</derivedcompoundref>
+    <includes refid="light__source_8h" local="no">light_source.h</includes>
+    <innerclass refid="structILightSource_1_1LightPSCB" prot="protected">ILightSource::LightPSCB</innerclass>
+    <innerclass refid="structILightSource_1_1LightVSCB" prot="protected">ILightSource::LightVSCB</innerclass>
+    <sectiondef kind="friend">
+      <memberdef kind="friend" id="classILightSource_ad085cd6998fadc4d7bbecd56a0dcb1eb_1ad085cd6998fadc4d7bbecd56a0dcb1eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class ren::ShadowPass</definition>
+        <argsstring></argsstring>
+        <name>ren::ShadowPass</name>
+        <qualifiedname>ILightSource::ShadowPass</qualifiedname>
+        <param>
+          <type><ref refid="classren_1_1ShadowPass" kindref="compound">ren::ShadowPass</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="28" column="14" bodyfile="inc/light_source.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classILightSource_a8a9f0f14ec9fdad34f6893029360ea98_1a8a9f0f14ec9fdad34f6893029360ea98" prot="private" static="no" mutable="no">
+        <type><ref refid="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332" kindref="member">LightSourceType</ref></type>
+        <definition>LightSourceType ILightSource::m_type</definition>
+        <argsstring></argsstring>
+        <name>m_type</name>
+        <qualifiedname>ILightSource::m_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="30" column="17" bodyfile="inc/light_source.h" bodystart="30" bodyend="-1"/>
+        <referencedby refid="classILightSource_a7c9863add04adffa68a99aacc239a64d_1a7c9863add04adffa68a99aacc239a64d" compoundref="light__source_8cpp" startline="118" endline="121">getType</referencedby>
+        <referencedby refid="classILightSource_a3fccfe57c1781b3f43a0cb4a41f67035_1a3fccfe57c1781b3f43a0cb4a41f67035" compoundref="light__source_8cpp" startline="92" endline="103">setRotation</referencedby>
+        <referencedby refid="classILightSource_af4c3edc00a2603c76e0ec39955f23113_1af4c3edc00a2603c76e0ec39955f23113" compoundref="light__source_8cpp" startline="105" endline="116">setTranslation</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classILightSource_af0a72727cb5a6ee05dde5ea17c222b81_1af0a72727cb5a6ee05dde5ea17c222b81" prot="protected" static="no" mutable="no">
+        <type>float</type>
+        <definition>float ILightSource::m_shadowCamFarZ</definition>
+        <argsstring></argsstring>
+        <name>m_shadowCamFarZ</name>
+        <qualifiedname>ILightSource::m_shadowCamFarZ</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="32" column="7" bodyfile="inc/light_source.h" bodystart="32" bodyend="-1"/>
+        <referencedby refid="classILightSource_af0b903d97d07f2bcc7faf90d51749bdd_1af0b903d97d07f2bcc7faf90d51749bdd" compoundref="light__source_8cpp" startline="155" endline="158">getShadowCameraFarZ</referencedby>
+        <referencedby refid="classren_1_1ShadowPass_a31a85426ffac3f700c0b3c187b0567af_1a31a85426ffac3f700c0b3c187b0567af" compoundref="SHADOW__PASS_8CPP" startline="94" endline="141">ren::ShadowPass::run</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classILightSource_a9a50fe9607772fecb1ea1c82e84b1cb1_1a9a50fe9607772fecb1ea1c82e84b1cb1" prot="protected" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string ILightSource::m_name</definition>
+        <argsstring></argsstring>
+        <name>m_name</name>
+        <qualifiedname>ILightSource::m_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="33" column="13" bodyfile="inc/light_source.h" bodystart="33" bodyend="-1"/>
+        <referencedby refid="classILightSource_a85ecc5940c66f9ef21277e3bab54276b_1a85ecc5940c66f9ef21277e3bab54276b" compoundref="light__source_8cpp" startline="21" endline="60">ILightSource</referencedby>
+        <referencedby refid="classDirectionalLight_a58dfb8b06a26a8f85d398b998c86ac24_1a58dfb8b06a26a8f85d398b998c86ac24" compoundref="light__source_8cpp" startline="194" endline="232">DirectionalLight::displayImguiWidgets</referencedby>
+        <referencedby refid="classPointLight_a34563baa74887d3936fe91ac411c02df_1a34563baa74887d3936fe91ac411c02df" compoundref="light__source_8cpp" startline="339" endline="374">PointLight::displayImguiWidgets</referencedby>
+        <referencedby refid="classILightSource_a0faa0df2c36a9590f2d04ddd4b24f70b_1a0faa0df2c36a9590f2d04ddd4b24f70b" compoundref="light__source_8cpp" startline="128" endline="131">getName</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classILightSource_aba12f3ad60d45ee69a6cc9560a1d1e4d_1aba12f3ad60d45ee69a6cc9560a1d1e4d" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool ILightSource::m_bShowMesh</definition>
+        <argsstring></argsstring>
+        <name>m_bShowMesh</name>
+        <qualifiedname>ILightSource::m_bShowMesh</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="34" column="6" bodyfile="inc/light_source.h" bodystart="34" bodyend="-1"/>
+        <referencedby refid="classDirectionalLight_a58dfb8b06a26a8f85d398b998c86ac24_1a58dfb8b06a26a8f85d398b998c86ac24" compoundref="light__source_8cpp" startline="194" endline="232">DirectionalLight::displayImguiWidgets</referencedby>
+        <referencedby refid="classPointLight_a34563baa74887d3936fe91ac411c02df_1a34563baa74887d3936fe91ac411c02df" compoundref="light__source_8cpp" startline="339" endline="374">PointLight::displayImguiWidgets</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classILightSource_a162034eae6dabb27c763325d94b5050e_1a162034eae6dabb27c763325d94b5050e" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool ILightSource::m_bCastingShadows</definition>
+        <argsstring></argsstring>
+        <name>m_bCastingShadows</name>
+        <qualifiedname>ILightSource::m_bCastingShadows</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="35" column="6" bodyfile="inc/light_source.h" bodystart="35" bodyend="-1"/>
+        <referencedby refid="classILightSource_a10dcb51eb6c7dc15ff6b7ffe442a8245_1a10dcb51eb6c7dc15ff6b7ffe442a8245" compoundref="light__source_8cpp" startline="149" endline="153">getShadowCamera</referencedby>
+        <referencedby refid="classILightSource_a020b616fe1ebb5185b8120f9a41c256e_1a020b616fe1ebb5185b8120f9a41c256e" compoundref="light__source_8cpp" startline="133" endline="136">isCastingShadows</referencedby>
+        <referencedby refid="classILightSource_a3fccfe57c1781b3f43a0cb4a41f67035_1a3fccfe57c1781b3f43a0cb4a41f67035" compoundref="light__source_8cpp" startline="92" endline="103">setRotation</referencedby>
+        <referencedby refid="classILightSource_af4c3edc00a2603c76e0ec39955f23113_1af4c3edc00a2603c76e0ec39955f23113" compoundref="light__source_8cpp" startline="105" endline="116">setTranslation</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classILightSource_a2836fa2a9437563c3f7d1b3b5e5e6b83_1a2836fa2a9437563c3f7d1b3b5e5e6b83" prot="protected" static="no" mutable="no">
+        <type><ref refid="classModel" kindref="compound">Model</ref></type>
+        <definition>Model ILightSource::m_lightMesh</definition>
+        <argsstring></argsstring>
+        <name>m_lightMesh</name>
+        <qualifiedname>ILightSource::m_lightMesh</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="36" column="7" bodyfile="inc/light_source.h" bodystart="36" bodyend="-1"/>
+        <referencedby refid="classILightSource_a5e1c8d090c141ea94a06046be5b15df8_1a5e1c8d090c141ea94a06046be5b15df8" compoundref="light__source_8cpp" startline="87" endline="90">connectMaterialsToRenderer</referencedby>
+        <referencedby refid="classDirectionalLight_a3d29f34ed75ac7ff2ed73e5ff5b29760_1a3d29f34ed75ac7ff2ed73e5ff5b29760" compoundref="light__source_8cpp" startline="244" endline="247">DirectionalLight::getPosition</referencedby>
+        <referencedby refid="classILightSource_a29ff5d5e121d058b68954725e3489076_1a29ff5d5e121d058b68954725e3489076" compoundref="light__source_8cpp" startline="144" endline="147">getRotation</referencedby>
+        <referencedby refid="classILightSource_a3fccfe57c1781b3f43a0cb4a41f67035_1a3fccfe57c1781b3f43a0cb4a41f67035" compoundref="light__source_8cpp" startline="92" endline="103">setRotation</referencedby>
+        <referencedby refid="classILightSource_af4c3edc00a2603c76e0ec39955f23113_1af4c3edc00a2603c76e0ec39955f23113" compoundref="light__source_8cpp" startline="105" endline="116">setTranslation</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classILightSource_a94603c5e37a72aca471ef9d2a37a072e_1a94603c5e37a72aca471ef9d2a37a072e" prot="protected" static="no" mutable="no">
+        <type><ref refid="structILightSource_1_1LightVSCB" kindref="compound">LightVSCB</ref></type>
+        <definition>LightVSCB ILightSource::m_vscbData</definition>
+        <argsstring></argsstring>
+        <name>m_vscbData</name>
+        <qualifiedname>ILightSource::m_vscbData</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="42" column="11" bodyfile="inc/light_source.h" bodystart="42" bodyend="-1"/>
+        <referencedby refid="classILightSource_ae74ea4b3c8c575ecbac3156d4a9ee699_1ae74ea4b3c8c575ecbac3156d4a9ee699" compoundref="light__source_8cpp" startline="160" endline="163">getVscbData</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classILightSource_a2293407d62d1d81b80e920e6ed350ad6_1a2293407d62d1d81b80e920e6ed350ad6" prot="protected" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classCamera" kindref="compound">Camera</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;Camera&gt; ILightSource::m_pCameraForShadowing</definition>
+        <argsstring></argsstring>
+        <name>m_pCameraForShadowing</name>
+        <qualifiedname>ILightSource::m_pCameraForShadowing</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="43" column="17" bodyfile="inc/light_source.h" bodystart="43" bodyend="-1"/>
+        <referencedby refid="classDirectionalLight_a7ba55038fea019429f4d6833fba35eda_1a7ba55038fea019429f4d6833fba35eda" compoundref="light__source_8cpp" startline="171" endline="192">DirectionalLight::DirectionalLight</referencedby>
+        <referencedby refid="classPointLight_a3271b738b4de0a84538f382780aef19c_1a3271b738b4de0a84538f382780aef19c" compoundref="light__source_8cpp" startline="320" endline="337">PointLight::PointLight</referencedby>
+        <referencedby refid="classSpotLight_aa972a1f97ba572d1a73c3561f9c7834d_1aa972a1f97ba572d1a73c3561f9c7834d" compoundref="light__source_8cpp" startline="265" endline="286">SpotLight::SpotLight</referencedby>
+        <referencedby refid="classILightSource_a10dcb51eb6c7dc15ff6b7ffe442a8245_1a10dcb51eb6c7dc15ff6b7ffe442a8245" compoundref="light__source_8cpp" startline="149" endline="153">getShadowCamera</referencedby>
+        <referencedby refid="classILightSource_a3fccfe57c1781b3f43a0cb4a41f67035_1a3fccfe57c1781b3f43a0cb4a41f67035" compoundref="light__source_8cpp" startline="92" endline="103">setRotation</referencedby>
+        <referencedby refid="classILightSource_af4c3edc00a2603c76e0ec39955f23113_1af4c3edc00a2603c76e0ec39955f23113" compoundref="light__source_8cpp" startline="105" endline="116">setTranslation</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" prot="protected" static="no" mutable="no">
+        <type><ref refid="structILightSource_1_1LightPSCB" kindref="compound">LightPSCB</ref></type>
+        <definition>LightPSCB ILightSource::m_pscbData</definition>
+        <argsstring></argsstring>
+        <name>m_pscbData</name>
+        <qualifiedname>ILightSource::m_pscbData</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="60" column="11" bodyfile="inc/light_source.h" bodystart="60" bodyend="-1"/>
+        <referencedby refid="classDirectionalLight_a7ba55038fea019429f4d6833fba35eda_1a7ba55038fea019429f4d6833fba35eda" compoundref="light__source_8cpp" startline="171" endline="192">DirectionalLight::DirectionalLight</referencedby>
+        <referencedby refid="classILightSource_a85ecc5940c66f9ef21277e3bab54276b_1a85ecc5940c66f9ef21277e3bab54276b" compoundref="light__source_8cpp" startline="21" endline="60">ILightSource</referencedby>
+        <referencedby refid="classDirectionalLight_a58dfb8b06a26a8f85d398b998c86ac24_1a58dfb8b06a26a8f85d398b998c86ac24" compoundref="light__source_8cpp" startline="194" endline="232">DirectionalLight::displayImguiWidgets</referencedby>
+        <referencedby refid="classPointLight_a34563baa74887d3936fe91ac411c02df_1a34563baa74887d3936fe91ac411c02df" compoundref="light__source_8cpp" startline="339" endline="374">PointLight::displayImguiWidgets</referencedby>
+        <referencedby refid="classPointLight_aebd941617d77bb5877e571e6b99f904a_1aebd941617d77bb5877e571e6b99f904a" compoundref="light__source_8cpp" startline="386" endline="389">PointLight::getPosition</referencedby>
+        <referencedby refid="classSpotLight_ac7863b1f73129f026f03aabe4d4ce6cf_1ac7863b1f73129f026f03aabe4d4ce6cf" compoundref="light__source_8cpp" startline="303" endline="306">SpotLight::getPosition</referencedby>
+        <referencedby refid="classILightSource_ab45b60356a4883b2d10456115692ee60_1ab45b60356a4883b2d10456115692ee60" compoundref="light__source_8cpp" startline="123" endline="126">getSlot</referencedby>
+        <referencedby refid="classILightSource_a3fccfe57c1781b3f43a0cb4a41f67035_1a3fccfe57c1781b3f43a0cb4a41f67035" compoundref="light__source_8cpp" startline="92" endline="103">setRotation</referencedby>
+        <referencedby refid="classILightSource_af4c3edc00a2603c76e0ec39955f23113_1af4c3edc00a2603c76e0ec39955f23113" compoundref="light__source_8cpp" startline="105" endline="116">setTranslation</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classILightSource_a63c850a5695ff1411e12e73450a84c40_1a63c850a5695ff1411e12e73450a84c40" prot="protected" static="no" mutable="no">
+        <type><ref refid="structILightSource_1_1LightPSCB" kindref="compound">LightPSCB</ref></type>
+        <definition>LightPSCB ILightSource::m_pscbDataToBind</definition>
+        <argsstring></argsstring>
+        <name>m_pscbDataToBind</name>
+        <qualifiedname>ILightSource::m_pscbDataToBind</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="61" column="11" bodyfile="inc/light_source.h" bodystart="61" bodyend="-1"/>
+        <referencedby refid="classILightSource_a85ecc5940c66f9ef21277e3bab54276b_1a85ecc5940c66f9ef21277e3bab54276b" compoundref="light__source_8cpp" startline="21" endline="60">ILightSource</referencedby>
+        <referencedby refid="classILightSource_a17577069622792755b3aa3e1867dd77e_1a17577069622792755b3aa3e1867dd77e" compoundref="light__source_8cpp" startline="165" endline="168">getPscbData</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classILightSource_a85ecc5940c66f9ef21277e3bab54276b_1a85ecc5940c66f9ef21277e3bab54276b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ILightSource::ILightSource</definition>
+        <argsstring>(Graphics &amp;gfx, const LightSourceType type, Model model, const std::variant&lt; DirectX::XMFLOAT4, std::string &gt; &amp;colorOrTexturePath=DirectX::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f}, const bool bShadowCasting=true, const bool bShowMesh=true, const DirectX::XMFLOAT3 &amp;rotDegOrDirectionVector={0.0f, 0.0f, 0.0f}, const DirectX::XMFLOAT3 &amp;pos=DirectX::XMFLOAT3{8.0f, 8.0f, 2.f}, const float intensity=1.0f, const float fovDeg=0.0f, const float shadowCamFarZ=100.0f)</argsstring>
+        <name>ILightSource</name>
+        <qualifiedname>ILightSource::ILightSource</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const <ref refid="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332" kindref="member">LightSourceType</ref></type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type><ref refid="classModel" kindref="compound">Model</ref></type>
+          <declname>model</declname>
+        </param>
+        <param>
+          <type>const std::variant&lt; DirectX::XMFLOAT4, std::string &gt; &amp;</type>
+          <declname>colorOrTexturePath</declname>
+          <defval>DirectX::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f}</defval>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>bShadowCasting</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>bShowMesh</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>const DirectX::XMFLOAT3 &amp;</type>
+          <declname>rotDegOrDirectionVector</declname>
+          <defval>{0.0f, 0.0f, 0.0f}</defval>
+        </param>
+        <param>
+          <type>const DirectX::XMFLOAT3 &amp;</type>
+          <declname>pos</declname>
+          <defval>DirectX::XMFLOAT3{8.0f, 8.0f, 2.f}</defval>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>intensity</declname>
+          <defval>1.0f</defval>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>fovDeg</declname>
+          <defval>0.0f</defval>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>shadowCamFarZ</declname>
+          <defval>100.0f</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="63" column="1" bodyfile="src/light_source.cpp" bodystart="21" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="classILightSource_a8d7a68032533f71c832110c76cd6ed3b_1a8d7a68032533f71c832110c76cd6ed3b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ILightSource::~ILightSource</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>~ILightSource</name>
+        <qualifiedname>ILightSource::~ILightSource</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="64" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classILightSource_a2c46182157ae66e5a900af43928c3d51_1a2c46182157ae66e5a900af43928c3d51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ILightSource::update</definition>
+        <argsstring>(Graphics &amp;gfx, const float dt, const float lerpBetweenFrames, const bool bEnableSmoothMovement=false) cond_noex</argsstring>
+        <name>update</name>
+        <qualifiedname>ILightSource::update</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>dt</declname>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>lerpBetweenFrames</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>bEnableSmoothMovement</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>update the &quot;model&quot; side part of the light </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="67" column="6" bodyfile="src/light_source.cpp" bodystart="62" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classILightSource_a43e7bb71c7b8db34e21cf7889b5eae95_1a43e7bb71c7b8db34e21cf7889b5eae95" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ILightSource::render</definition>
+        <argsstring>(const size_t channels) const cond_noex</argsstring>
+        <name>render</name>
+        <qualifiedname>ILightSource::render</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>channels</declname>
+        </param>
+        <briefdescription>
+<para>render the &quot;model&quot; side part of the light </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="69" column="6" bodyfile="src/light_source.cpp" bodystart="73" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="classILightSource_a5e1c8d090c141ea94a06046be5b15df8_1a5e1c8d090c141ea94a06046be5b15df8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ILightSource::connectMaterialsToRenderer</definition>
+        <argsstring>(ren::Renderer &amp;r)</argsstring>
+        <name>connectMaterialsToRenderer</name>
+        <qualifiedname>ILightSource::connectMaterialsToRenderer</qualifiedname>
+        <param>
+          <type><ref refid="classren_1_1Renderer" kindref="compound">ren::Renderer</ref> &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="70" column="6" bodyfile="src/light_source.cpp" bodystart="87" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="classILightSource_af79180aa4e70f55e10471ccd515391a5_1af79180aa4e70f55e10471ccd515391a5" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ILightSource::displayImguiWidgets</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>displayImguiWidgets</name>
+        <qualifiedname>ILightSource::displayImguiWidgets</qualifiedname>
+        <reimplementedby refid="classDirectionalLight_a58dfb8b06a26a8f85d398b998c86ac24_1a58dfb8b06a26a8f85d398b998c86ac24">displayImguiWidgets</reimplementedby>
+        <reimplementedby refid="classPointLight_a34563baa74887d3936fe91ac411c02df_1a34563baa74887d3936fe91ac411c02df">displayImguiWidgets</reimplementedby>
+        <reimplementedby refid="classSpotLight_a4ca72bdbc6e490cad12e27aa84be2937_1a4ca72bdbc6e490cad12e27aa84be2937">displayImguiWidgets</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="71" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classILightSource_a388781b70e7569ac4be432b1e60cde96_1a388781b70e7569ac4be432b1e60cde96" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ILightSource::setIntensity</definition>
+        <argsstring>(const float newIntensity) noexcept=0</argsstring>
+        <name>setIntensity</name>
+        <qualifiedname>ILightSource::setIntensity</qualifiedname>
+        <reimplementedby refid="classDirectionalLight_ab072bab59fb1748d5cf4eb666615c468_1ab072bab59fb1748d5cf4eb666615c468">setIntensity</reimplementedby>
+        <reimplementedby refid="classPointLight_aca44be7f057d519a43e8f16847932024_1aca44be7f057d519a43e8f16847932024">setIntensity</reimplementedby>
+        <reimplementedby refid="classSpotLight_a82847f8607ad02a492e767ae66a2e21a_1a82847f8607ad02a492e767ae66a2e21a">setIntensity</reimplementedby>
+        <param>
+          <type>const float</type>
+          <declname>newIntensity</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="72" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classILightSource_a70f8690fb45b8758cf974eab1c06d2ce_1a70f8690fb45b8758cf974eab1c06d2ce" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ILightSource::setColor</definition>
+        <argsstring>(const DirectX::XMFLOAT3 &amp;diffuseColor) noexcept=0</argsstring>
+        <name>setColor</name>
+        <qualifiedname>ILightSource::setColor</qualifiedname>
+        <reimplementedby refid="classDirectionalLight_a46f65b58d0bd65436b4da77c174ba979_1a46f65b58d0bd65436b4da77c174ba979">setColor</reimplementedby>
+        <reimplementedby refid="classPointLight_ac63c2d0109a19bfb49af489644442257_1ac63c2d0109a19bfb49af489644442257">setColor</reimplementedby>
+        <reimplementedby refid="classSpotLight_af93629535d543f94fc6d853084dd7eaf_1af93629535d543f94fc6d853084dd7eaf">setColor</reimplementedby>
+        <param>
+          <type>const DirectX::XMFLOAT3 &amp;</type>
+          <declname>diffuseColor</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="73" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classILightSource_a3fccfe57c1781b3f43a0cb4a41f67035_1a3fccfe57c1781b3f43a0cb4a41f67035" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ILightSource::setRotation</definition>
+        <argsstring>(const DirectX::XMFLOAT3 &amp;rot)</argsstring>
+        <name>setRotation</name>
+        <qualifiedname>ILightSource::setRotation</qualifiedname>
+        <param>
+          <type>const DirectX::XMFLOAT3 &amp;</type>
+          <declname>rot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="74" column="6" bodyfile="src/light_source.cpp" bodystart="92" bodyend="103"/>
+        <referencedby refid="classDirectionalLight_a58dfb8b06a26a8f85d398b998c86ac24_1a58dfb8b06a26a8f85d398b998c86ac24" compoundref="light__source_8cpp" startline="194" endline="232">DirectionalLight::displayImguiWidgets</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classILightSource_af4c3edc00a2603c76e0ec39955f23113_1af4c3edc00a2603c76e0ec39955f23113" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ILightSource::setTranslation</definition>
+        <argsstring>(const DirectX::XMFLOAT3 &amp;pos)</argsstring>
+        <name>setTranslation</name>
+        <qualifiedname>ILightSource::setTranslation</qualifiedname>
+        <param>
+          <type>const DirectX::XMFLOAT3 &amp;</type>
+          <declname>pos</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="75" column="6" bodyfile="src/light_source.cpp" bodystart="105" bodyend="116"/>
+        <referencedby refid="classPointLight_a34563baa74887d3936fe91ac411c02df_1a34563baa74887d3936fe91ac411c02df" compoundref="light__source_8cpp" startline="339" endline="374">PointLight::displayImguiWidgets</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classILightSource_a7c9863add04adffa68a99aacc239a64d_1a7c9863add04adffa68a99aacc239a64d" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332" kindref="member">LightSourceType</ref></type>
+        <definition>LightSourceType ILightSource::getType</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getType</name>
+        <qualifiedname>ILightSource::getType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="76" column="17" bodyfile="src/light_source.cpp" bodystart="118" bodyend="121"/>
+        <referencedby refid="classren_1_1ShadowPass_a31a85426ffac3f700c0b3c187b0567af_1a31a85426ffac3f700c0b3c187b0567af" compoundref="SHADOW__PASS_8CPP" startline="94" endline="141">ren::ShadowPass::run</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classILightSource_ab45b60356a4883b2d10456115692ee60_1ab45b60356a4883b2d10456115692ee60" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned ILightSource::getSlot</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getSlot</name>
+        <qualifiedname>ILightSource::getSlot</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="77" column="10" bodyfile="src/light_source.cpp" bodystart="123" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="classILightSource_a0faa0df2c36a9590f2d04ddd4b24f70b_1a0faa0df2c36a9590f2d04ddd4b24f70b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string ILightSource::getName</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getName</name>
+        <qualifiedname>ILightSource::getName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="78" column="13" bodyfile="src/light_source.cpp" bodystart="128" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="classILightSource_a020b616fe1ebb5185b8120f9a41c256e_1a020b616fe1ebb5185b8120f9a41c256e" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ILightSource::isCastingShadows</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>isCastingShadows</name>
+        <qualifiedname>ILightSource::isCastingShadows</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="79" column="6" bodyfile="src/light_source.cpp" bodystart="133" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="classILightSource_a605491c2905837716a32ce930afe6c92_1a605491c2905837716a32ce930afe6c92" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ILightSource::isFrustumCulled</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>isFrustumCulled</name>
+        <qualifiedname>ILightSource::isFrustumCulled</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="80" column="6" bodyfile="src/light_source.cpp" bodystart="139" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="classILightSource_a29ff5d5e121d058b68954725e3489076_1a29ff5d5e121d058b68954725e3489076" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>DirectX::XMFLOAT3</type>
+        <definition>DirectX::XMFLOAT3 ILightSource::getRotation</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getRotation</name>
+        <qualifiedname>ILightSource::getRotation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="81" column="19" bodyfile="src/light_source.cpp" bodystart="144" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="classILightSource_a39174369af77a807c727dd8b8b41afec_1a39174369af77a807c727dd8b8b41afec" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>DirectX::XMFLOAT3</type>
+        <definition>virtual DirectX::XMFLOAT3 ILightSource::getPosition</definition>
+        <argsstring>() const noexcept=0</argsstring>
+        <name>getPosition</name>
+        <qualifiedname>ILightSource::getPosition</qualifiedname>
+        <reimplementedby refid="classDirectionalLight_a3d29f34ed75ac7ff2ed73e5ff5b29760_1a3d29f34ed75ac7ff2ed73e5ff5b29760">getPosition</reimplementedby>
+        <reimplementedby refid="classPointLight_aebd941617d77bb5877e571e6b99f904a_1aebd941617d77bb5877e571e6b99f904a">getPosition</reimplementedby>
+        <reimplementedby refid="classSpotLight_ac7863b1f73129f026f03aabe4d4ce6cf_1ac7863b1f73129f026f03aabe4d4ce6cf">getPosition</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="82" column="27"/>
+        <referencedby refid="classren_1_1ShadowPass_a31a85426ffac3f700c0b3c187b0567af_1a31a85426ffac3f700c0b3c187b0567af" compoundref="SHADOW__PASS_8CPP" startline="94" endline="141">ren::ShadowPass::run</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classILightSource_a10dcb51eb6c7dc15ff6b7ffe442a8245_1a10dcb51eb6c7dc15ff6b7ffe442a8245" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classCamera" kindref="compound">Camera</ref> *</type>
+        <definition>Camera * ILightSource::getShadowCamera</definition>
+        <argsstring>() const</argsstring>
+        <name>getShadowCamera</name>
+        <qualifiedname>ILightSource::getShadowCamera</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="83" column="8" bodyfile="src/light_source.cpp" bodystart="149" bodyend="153"/>
+        <referencedby refid="classren_1_1ShadowPass_a31a85426ffac3f700c0b3c187b0567af_1a31a85426ffac3f700c0b3c187b0567af" compoundref="SHADOW__PASS_8CPP" startline="94" endline="141">ren::ShadowPass::run</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classILightSource_af0b903d97d07f2bcc7faf90d51749bdd_1af0b903d97d07f2bcc7faf90d51749bdd" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float ILightSource::getShadowCameraFarZ</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getShadowCameraFarZ</name>
+        <qualifiedname>ILightSource::getShadowCameraFarZ</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="84" column="7" bodyfile="src/light_source.cpp" bodystart="155" bodyend="158"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classILightSource_ae74ea4b3c8c575ecbac3156d4a9ee699_1ae74ea4b3c8c575ecbac3156d4a9ee699" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="structILightSource_1_1LightVSCB" kindref="compound">LightVSCB</ref></type>
+        <definition>ILightSource::LightVSCB ILightSource::getVscbData</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>getVscbData</name>
+        <qualifiedname>ILightSource::getVscbData</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="86" column="11" bodyfile="src/light_source.cpp" bodystart="160" bodyend="163"/>
+        <referencedby refid="classren_1_1ShadowPass_a3dfc4bceb738b9e479457502373f6b38_1a3dfc4bceb738b9e479457502373f6b38" compoundref="SHADOW__PASS_8CPP" startline="228" endline="248">ren::ShadowPass::bindLightCBs</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classILightSource_a17577069622792755b3aa3e1867dd77e_1a17577069622792755b3aa3e1867dd77e" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="structILightSource_1_1LightPSCB" kindref="compound">LightPSCB</ref></type>
+        <definition>ILightSource::LightPSCB ILightSource::getPscbData</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>getPscbData</name>
+        <qualifiedname>ILightSource::getPscbData</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="87" column="11" bodyfile="src/light_source.cpp" bodystart="165" bodyend="168"/>
+        <referencedby refid="classren_1_1ShadowPass_a3dfc4bceb738b9e479457502373f6b38_1a3dfc4bceb738b9e479457502373f6b38" compoundref="SHADOW__PASS_8CPP" startline="228" endline="248">ren::ShadowPass::bindLightCBs</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classILightSource_a52f8aa3d9b871f416990e363bd9c09e3_1a52f8aa3d9b871f416990e363bd9c09e3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ILightSource::populateCBData</definition>
+        <argsstring>(Graphics &amp;gfx) cond_noex</argsstring>
+        <name>populateCBData</name>
+        <qualifiedname>ILightSource::populateCBData</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="88" column="6" bodyfile="src/light_source.cpp" bodystart="81" bodyend="85"/>
+        <referencedby refid="classren_1_1ShadowPass_a3dfc4bceb738b9e479457502373f6b38_1a3dfc4bceb738b9e479457502373f6b38" compoundref="SHADOW__PASS_8CPP" startline="228" endline="248">ren::ShadowPass::bindLightCBs</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classILightSource_a3c48dc5f8c722ff8d6d3fc986861db4b_1a3c48dc5f8c722ff8d6d3fc986861db4b" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ILightSource::populateVscbData</definition>
+        <argsstring>(Graphics &amp;gfx) cond_noex=0</argsstring>
+        <name>populateVscbData</name>
+        <qualifiedname>ILightSource::populateVscbData</qualifiedname>
+        <reimplementedby refid="classDirectionalLight_a20ba391194b84dd5aa56b834bba5221d_1a20ba391194b84dd5aa56b834bba5221d">populateVscbData</reimplementedby>
+        <reimplementedby refid="classPointLight_a3c46d3cc5554ae183800bc71ba3e63fa_1a3c46d3cc5554ae183800bc71ba3e63fa">populateVscbData</reimplementedby>
+        <reimplementedby refid="classSpotLight_a8a74d922c2bedf297ca66f9b18b4ba73_1a8a74d922c2bedf297ca66f9b18b4ba73">populateVscbData</reimplementedby>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="89" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classILightSource_ae057f7544b9173eb9031c250948b4a8c_1ae057f7544b9173eb9031c250948b4a8c" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ILightSource::populatePscbData</definition>
+        <argsstring>(Graphics &amp;gfx) cond_noex=0</argsstring>
+        <name>populatePscbData</name>
+        <qualifiedname>ILightSource::populatePscbData</qualifiedname>
+        <reimplementedby refid="classDirectionalLight_aeeb09b18bf90a68ec390b88fffaf6916_1aeeb09b18bf90a68ec390b88fffaf6916">populatePscbData</reimplementedby>
+        <reimplementedby refid="classPointLight_a1a2533dcd6eab3a1da900b88c1622ea9_1a1a2533dcd6eab3a1da900b88c1622ea9">populatePscbData</reimplementedby>
+        <reimplementedby refid="classSpotLight_adb7659a2f4bebff21059bbb3b048fafe_1adb7659a2f4bebff21059bbb3b048fafe">populatePscbData</reimplementedby>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="90" column="14"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>DirectionalLight</label>
+        <link refid="classDirectionalLight"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>ILightSource</label>
+        <link refid="classILightSource"/>
+      </node>
+      <node id="3">
+        <label>PointLight</label>
+        <link refid="classPointLight"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>SpotLight</label>
+        <link refid="classSpotLight"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4">
+        <label>IImguiNodeVisitor</label>
+        <link refid="classIImguiNodeVisitor"/>
+        <childnode refid="5" relation="usage">
+          <edgelabel>m_pSelectedNode</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>ILightSource</label>
+        <link refid="classILightSource"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>m_lightMesh</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>m_vscbData</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>m_pscbData</edgelabel>
+          <edgelabel>m_pscbDataToBind</edgelabel>
+        </childnode>
+      </node>
+      <node id="7">
+        <label>ILightSource::LightPSCB</label>
+        <link refid="structILightSource_1_1LightPSCB"/>
+      </node>
+      <node id="6">
+        <label>ILightSource::LightVSCB</label>
+        <link refid="structILightSource_1_1LightVSCB"/>
+      </node>
+      <node id="3">
+        <label>ImguiPerModelNodeVisitor</label>
+        <link refid="classImguiPerModelNodeVisitor"/>
+        <childnode refid="4" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Model</label>
+        <link refid="classModel"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>m_imguiVisitor</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Node</label>
+        <link refid="classNode"/>
+        <childnode refid="5" relation="usage">
+          <edgelabel>m_pParent</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/light_source.h" line="26" column="1" bodyfile="inc/light_source.h" bodystart="27" bodyend="91"/>
+    <listofallmembers>
+      <member refid="classILightSource_a5e1c8d090c141ea94a06046be5b15df8_1a5e1c8d090c141ea94a06046be5b15df8" prot="public" virt="non-virtual"><scope>ILightSource</scope><name>connectMaterialsToRenderer</name></member>
+      <member refid="classILightSource_af79180aa4e70f55e10471ccd515391a5_1af79180aa4e70f55e10471ccd515391a5" prot="public" virt="pure-virtual"><scope>ILightSource</scope><name>displayImguiWidgets</name></member>
+      <member refid="classILightSource_a0faa0df2c36a9590f2d04ddd4b24f70b_1a0faa0df2c36a9590f2d04ddd4b24f70b" prot="public" virt="non-virtual"><scope>ILightSource</scope><name>getName</name></member>
+      <member refid="classILightSource_a39174369af77a807c727dd8b8b41afec_1a39174369af77a807c727dd8b8b41afec" prot="public" virt="pure-virtual"><scope>ILightSource</scope><name>getPosition</name></member>
+      <member refid="classILightSource_a17577069622792755b3aa3e1867dd77e_1a17577069622792755b3aa3e1867dd77e" prot="private" virt="non-virtual"><scope>ILightSource</scope><name>getPscbData</name></member>
+      <member refid="classILightSource_a29ff5d5e121d058b68954725e3489076_1a29ff5d5e121d058b68954725e3489076" prot="public" virt="non-virtual"><scope>ILightSource</scope><name>getRotation</name></member>
+      <member refid="classILightSource_a10dcb51eb6c7dc15ff6b7ffe442a8245_1a10dcb51eb6c7dc15ff6b7ffe442a8245" prot="public" virt="non-virtual"><scope>ILightSource</scope><name>getShadowCamera</name></member>
+      <member refid="classILightSource_af0b903d97d07f2bcc7faf90d51749bdd_1af0b903d97d07f2bcc7faf90d51749bdd" prot="public" virt="non-virtual"><scope>ILightSource</scope><name>getShadowCameraFarZ</name></member>
+      <member refid="classILightSource_ab45b60356a4883b2d10456115692ee60_1ab45b60356a4883b2d10456115692ee60" prot="public" virt="non-virtual"><scope>ILightSource</scope><name>getSlot</name></member>
+      <member refid="classILightSource_a7c9863add04adffa68a99aacc239a64d_1a7c9863add04adffa68a99aacc239a64d" prot="public" virt="non-virtual"><scope>ILightSource</scope><name>getType</name></member>
+      <member refid="classILightSource_ae74ea4b3c8c575ecbac3156d4a9ee699_1ae74ea4b3c8c575ecbac3156d4a9ee699" prot="private" virt="non-virtual"><scope>ILightSource</scope><name>getVscbData</name></member>
+      <member refid="classILightSource_a85ecc5940c66f9ef21277e3bab54276b_1a85ecc5940c66f9ef21277e3bab54276b" prot="public" virt="non-virtual"><scope>ILightSource</scope><name>ILightSource</name></member>
+      <member refid="classILightSource_a020b616fe1ebb5185b8120f9a41c256e_1a020b616fe1ebb5185b8120f9a41c256e" prot="public" virt="non-virtual"><scope>ILightSource</scope><name>isCastingShadows</name></member>
+      <member refid="classILightSource_a605491c2905837716a32ce930afe6c92_1a605491c2905837716a32ce930afe6c92" prot="public" virt="non-virtual"><scope>ILightSource</scope><name>isFrustumCulled</name></member>
+      <member refid="classILightSource_a162034eae6dabb27c763325d94b5050e_1a162034eae6dabb27c763325d94b5050e" prot="protected" virt="non-virtual"><scope>ILightSource</scope><name>m_bCastingShadows</name></member>
+      <member refid="classILightSource_aba12f3ad60d45ee69a6cc9560a1d1e4d_1aba12f3ad60d45ee69a6cc9560a1d1e4d" prot="protected" virt="non-virtual"><scope>ILightSource</scope><name>m_bShowMesh</name></member>
+      <member refid="classILightSource_a2836fa2a9437563c3f7d1b3b5e5e6b83_1a2836fa2a9437563c3f7d1b3b5e5e6b83" prot="protected" virt="non-virtual"><scope>ILightSource</scope><name>m_lightMesh</name></member>
+      <member refid="classILightSource_a9a50fe9607772fecb1ea1c82e84b1cb1_1a9a50fe9607772fecb1ea1c82e84b1cb1" prot="protected" virt="non-virtual"><scope>ILightSource</scope><name>m_name</name></member>
+      <member refid="classILightSource_a2293407d62d1d81b80e920e6ed350ad6_1a2293407d62d1d81b80e920e6ed350ad6" prot="protected" virt="non-virtual"><scope>ILightSource</scope><name>m_pCameraForShadowing</name></member>
+      <member refid="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" prot="protected" virt="non-virtual"><scope>ILightSource</scope><name>m_pscbData</name></member>
+      <member refid="classILightSource_a63c850a5695ff1411e12e73450a84c40_1a63c850a5695ff1411e12e73450a84c40" prot="protected" virt="non-virtual"><scope>ILightSource</scope><name>m_pscbDataToBind</name></member>
+      <member refid="classILightSource_af0a72727cb5a6ee05dde5ea17c222b81_1af0a72727cb5a6ee05dde5ea17c222b81" prot="protected" virt="non-virtual"><scope>ILightSource</scope><name>m_shadowCamFarZ</name></member>
+      <member refid="classILightSource_a8a9f0f14ec9fdad34f6893029360ea98_1a8a9f0f14ec9fdad34f6893029360ea98" prot="private" virt="non-virtual"><scope>ILightSource</scope><name>m_type</name></member>
+      <member refid="classILightSource_a94603c5e37a72aca471ef9d2a37a072e_1a94603c5e37a72aca471ef9d2a37a072e" prot="protected" virt="non-virtual"><scope>ILightSource</scope><name>m_vscbData</name></member>
+      <member refid="classILightSource_a52f8aa3d9b871f416990e363bd9c09e3_1a52f8aa3d9b871f416990e363bd9c09e3" prot="private" virt="non-virtual"><scope>ILightSource</scope><name>populateCBData</name></member>
+      <member refid="classILightSource_ae057f7544b9173eb9031c250948b4a8c_1ae057f7544b9173eb9031c250948b4a8c" prot="private" virt="pure-virtual"><scope>ILightSource</scope><name>populatePscbData</name></member>
+      <member refid="classILightSource_a3c48dc5f8c722ff8d6d3fc986861db4b_1a3c48dc5f8c722ff8d6d3fc986861db4b" prot="private" virt="pure-virtual"><scope>ILightSource</scope><name>populateVscbData</name></member>
+      <member refid="classILightSource_ad085cd6998fadc4d7bbecd56a0dcb1eb_1ad085cd6998fadc4d7bbecd56a0dcb1eb" prot="public" virt="non-virtual"><scope>ILightSource</scope><name>ren::ShadowPass</name></member>
+      <member refid="classILightSource_a43e7bb71c7b8db34e21cf7889b5eae95_1a43e7bb71c7b8db34e21cf7889b5eae95" prot="public" virt="non-virtual"><scope>ILightSource</scope><name>render</name></member>
+      <member refid="classILightSource_a70f8690fb45b8758cf974eab1c06d2ce_1a70f8690fb45b8758cf974eab1c06d2ce" prot="public" virt="pure-virtual"><scope>ILightSource</scope><name>setColor</name></member>
+      <member refid="classILightSource_a388781b70e7569ac4be432b1e60cde96_1a388781b70e7569ac4be432b1e60cde96" prot="public" virt="pure-virtual"><scope>ILightSource</scope><name>setIntensity</name></member>
+      <member refid="classILightSource_a3fccfe57c1781b3f43a0cb4a41f67035_1a3fccfe57c1781b3f43a0cb4a41f67035" prot="public" virt="non-virtual"><scope>ILightSource</scope><name>setRotation</name></member>
+      <member refid="classILightSource_af4c3edc00a2603c76e0ec39955f23113_1af4c3edc00a2603c76e0ec39955f23113" prot="public" virt="non-virtual"><scope>ILightSource</scope><name>setTranslation</name></member>
+      <member refid="classILightSource_a2c46182157ae66e5a900af43928c3d51_1a2c46182157ae66e5a900af43928c3d51" prot="public" virt="non-virtual"><scope>ILightSource</scope><name>update</name></member>
+      <member refid="classILightSource_a8d7a68032533f71c832110c76cd6ed3b_1a8d7a68032533f71c832110c76cd6ed3b" prot="public" virt="virtual"><scope>ILightSource</scope><name>~ILightSource</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

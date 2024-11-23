@@ -1,0 +1,148 @@
+\doxysection{Index\+Buffer Class Reference}
+\hypertarget{classIndexBuffer}{}\label{classIndexBuffer}\index{IndexBuffer@{IndexBuffer}}
+
+
+{\ttfamily \#include $<$index\+\_\+buffer.\+h$>$}
+
+Inheritance diagram for Index\+Buffer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classIndexBuffer}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classIndexBuffer_a6e7ee681a84990c09517e975922250f1_a6e7ee681a84990c09517e975922250f1}{Index\+Buffer}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const std\+::vector$<$ unsigned $>$ \&indices)
+\item 
+\mbox{\hyperlink{classIndexBuffer_a9732cf38477425d90690d13c3508ce24_a9732cf38477425d90690d13c3508ce24}{Index\+Buffer}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const std\+::string \&tag, const std\+::vector$<$ unsigned $>$ \&indices)
+\item 
+void \mbox{\hyperlink{classIndexBuffer_a4ae75057513853f7444a8e37a3af2bb0_a4ae75057513853f7444a8e37a3af2bb0}{bind}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) cond\+\_\+noex override
+\begin{DoxyCompactList}\small\item\em bind graphics resource to a certain stage of the graphics pipeline \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classIndexBuffer_aed4b047aa69041d5099d6d8a431b0deb_aed4b047aa69041d5099d6d8a431b0deb}{get\+Index\+Count}} () const noexcept
+\item 
+std\+::string \mbox{\hyperlink{classIndexBuffer_a2825f0d8a8c2d2a46a905b82ea970883_a2825f0d8a8c2d2a46a905b82ea970883}{get\+Uid}} () const noexcept override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classIBindable}{IBindable}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classIBindable_a7f68262ff85e25e9f826eae7c01bbfa1_a7f68262ff85e25e9f826eae7c01bbfa1}{\texorpdfstring{$\sim$}{\string~}\+IBindable}} () noexcept
+\item 
+virtual void \mbox{\hyperlink{classIBindable_a12fe8725cb3f4836f22d1592b07e2c91_a12fe8725cb3f4836f22d1592b07e2c91}{set\+Mesh}} (const \mbox{\hyperlink{classMesh}{Mesh}} \&mesh) noexcept
+\item 
+virtual void \mbox{\hyperlink{classIBindable_a608c5066b829febbd49cd82d1d1fa353_a608c5066b829febbd49cd82d1d1fa353}{accept}} (\mbox{\hyperlink{classIImGuiConstantBufferVisitor}{IIm\+Gui\+Constant\+Buffer\+Visitor}} \&ev)
+\item 
+virtual void \mbox{\hyperlink{classIBindable_a4d590eebe80fa4e0aa865a875ff86c02_a4d590eebe80fa4e0aa865a875ff86c02}{set\+Debug\+Object\+Name}} (const char \texorpdfstring{$\ast$}{*}name) noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIndexBuffer}{Index\+Buffer}} $>$ \mbox{\hyperlink{classIndexBuffer_abcbdeb2e6ecd7a5dd93c4c397e8ae368_abcbdeb2e6ecd7a5dd93c4c397e8ae368}{fetch}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const std\+::string \&tag, const std\+::vector$<$ unsigned $>$ \&indices)
+\item 
+{\footnotesize template$<$typename ... TArgs\+Ignored$>$ }\\static std\+::string \mbox{\hyperlink{classIndexBuffer_a49028986457927eba89c5142d75744f0_a49028986457927eba89c5142d75744f0}{calc\+Uid}} (const std\+::string \&tag, TArgs\+Ignored \&\&...)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classIndexBuffer_ae7ced91c435d35629c0d5cf4672e9775_ae7ced91c435d35629c0d5cf4672e9775}{m\+\_\+tag}}
+\item 
+unsigned \mbox{\hyperlink{classIndexBuffer_a9fc893844d7f8709f03216924115a885_a9fc893844d7f8709f03216924115a885}{m\+\_\+count}}
+\item 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ ID3\+D11\+Buffer $>$ \mbox{\hyperlink{classIndexBuffer_a4837cf49c5bf95560e3ded853c7bfc2c_a4837cf49c5bf95560e3ded853c7bfc2c}{m\+\_\+p\+Index\+Buffer}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classGraphicsFriend}{Graphics\+Friend}}}
+\begin{DoxyCompactItemize}
+\item 
+static ID3\+D11\+Device\+Context \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGraphicsFriend_a619e32893ab49ea6c5200e7c2d52e2f2_a619e32893ab49ea6c5200e7c2d52e2f2}{get\+Device\+Context}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) noexcept
+\item 
+static ID3\+D11\+Device \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_a175df79f82ab5a6dad1df24b5a242ef7}{get\+Device}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) noexcept
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classIndexBuffer_a6e7ee681a84990c09517e975922250f1_a6e7ee681a84990c09517e975922250f1}\index{IndexBuffer@{IndexBuffer}!IndexBuffer@{IndexBuffer}}
+\index{IndexBuffer@{IndexBuffer}!IndexBuffer@{IndexBuffer}}
+\doxysubsubsection{\texorpdfstring{IndexBuffer()}{IndexBuffer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classIndexBuffer_a6e7ee681a84990c09517e975922250f1_a6e7ee681a84990c09517e975922250f1} 
+Index\+Buffer\+::\+Index\+Buffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const std\+::vector$<$ unsigned $>$ \&}]{indices}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classIndexBuffer_a9732cf38477425d90690d13c3508ce24_a9732cf38477425d90690d13c3508ce24}\index{IndexBuffer@{IndexBuffer}!IndexBuffer@{IndexBuffer}}
+\index{IndexBuffer@{IndexBuffer}!IndexBuffer@{IndexBuffer}}
+\doxysubsubsection{\texorpdfstring{IndexBuffer()}{IndexBuffer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classIndexBuffer_a9732cf38477425d90690d13c3508ce24_a9732cf38477425d90690d13c3508ce24} 
+Index\+Buffer\+::\+Index\+Buffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const std\+::string \&}]{tag}{, }\item[{const std\+::vector$<$ unsigned $>$ \&}]{indices}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classIndexBuffer_a4ae75057513853f7444a8e37a3af2bb0_a4ae75057513853f7444a8e37a3af2bb0}\index{IndexBuffer@{IndexBuffer}!bind@{bind}}
+\index{bind@{bind}!IndexBuffer@{IndexBuffer}}
+\doxysubsubsection{\texorpdfstring{bind()}{bind()}}
+{\footnotesize\ttfamily \label{classIndexBuffer_a4ae75057513853f7444a8e37a3af2bb0_a4ae75057513853f7444a8e37a3af2bb0} 
+void Index\+Buffer\+::bind (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+bind graphics resource to a certain stage of the graphics pipeline 
+
+
+
+Implements \mbox{\hyperlink{classIBindable_add4560f78e76629ee81ba701ba1052e1_add4560f78e76629ee81ba701ba1052e1}{IBindable}}.
+
+\Hypertarget{classIndexBuffer_a49028986457927eba89c5142d75744f0_a49028986457927eba89c5142d75744f0}\index{IndexBuffer@{IndexBuffer}!calcUid@{calcUid}}
+\index{calcUid@{calcUid}!IndexBuffer@{IndexBuffer}}
+\doxysubsubsection{\texorpdfstring{calcUid()}{calcUid()}}
+{\footnotesize\ttfamily \label{classIndexBuffer_a49028986457927eba89c5142d75744f0_a49028986457927eba89c5142d75744f0} 
+template$<$typename ... TArgs\+Ignored$>$ \\
+static std\+::string Index\+Buffer\+::calc\+Uid (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{tag}{, }\item[{TArgs\+Ignored \&\&}]{...}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\Hypertarget{classIndexBuffer_abcbdeb2e6ecd7a5dd93c4c397e8ae368_abcbdeb2e6ecd7a5dd93c4c397e8ae368}\index{IndexBuffer@{IndexBuffer}!fetch@{fetch}}
+\index{fetch@{fetch}!IndexBuffer@{IndexBuffer}}
+\doxysubsubsection{\texorpdfstring{fetch()}{fetch()}}
+{\footnotesize\ttfamily \label{classIndexBuffer_abcbdeb2e6ecd7a5dd93c4c397e8ae368_abcbdeb2e6ecd7a5dd93c4c397e8ae368} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIndexBuffer}{Index\+Buffer}} $>$ Index\+Buffer\+::fetch (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const std\+::string \&}]{tag}{, }\item[{const std\+::vector$<$ unsigned $>$ \&}]{indices}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classIndexBuffer_aed4b047aa69041d5099d6d8a431b0deb_aed4b047aa69041d5099d6d8a431b0deb}\index{IndexBuffer@{IndexBuffer}!getIndexCount@{getIndexCount}}
+\index{getIndexCount@{getIndexCount}!IndexBuffer@{IndexBuffer}}
+\doxysubsubsection{\texorpdfstring{getIndexCount()}{getIndexCount()}}
+{\footnotesize\ttfamily \label{classIndexBuffer_aed4b047aa69041d5099d6d8a431b0deb_aed4b047aa69041d5099d6d8a431b0deb} 
+unsigned Index\+Buffer\+::get\+Index\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classIndexBuffer_a2825f0d8a8c2d2a46a905b82ea970883_a2825f0d8a8c2d2a46a905b82ea970883}\index{IndexBuffer@{IndexBuffer}!getUid@{getUid}}
+\index{getUid@{getUid}!IndexBuffer@{IndexBuffer}}
+\doxysubsubsection{\texorpdfstring{getUid()}{getUid()}}
+{\footnotesize\ttfamily \label{classIndexBuffer_a2825f0d8a8c2d2a46a905b82ea970883_a2825f0d8a8c2d2a46a905b82ea970883} 
+std\+::string Index\+Buffer\+::get\+Uid (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classIBindable_a7d88cdbd5d500d6d7f1bfabe16927855_a7d88cdbd5d500d6d7f1bfabe16927855}{IBindable}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classIndexBuffer_a9fc893844d7f8709f03216924115a885_a9fc893844d7f8709f03216924115a885}\index{IndexBuffer@{IndexBuffer}!m\_count@{m\_count}}
+\index{m\_count@{m\_count}!IndexBuffer@{IndexBuffer}}
+\doxysubsubsection{\texorpdfstring{m\_count}{m\_count}}
+{\footnotesize\ttfamily \label{classIndexBuffer_a9fc893844d7f8709f03216924115a885_a9fc893844d7f8709f03216924115a885} 
+unsigned Index\+Buffer\+::m\+\_\+count\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classIndexBuffer_a4837cf49c5bf95560e3ded853c7bfc2c_a4837cf49c5bf95560e3ded853c7bfc2c}\index{IndexBuffer@{IndexBuffer}!m\_pIndexBuffer@{m\_pIndexBuffer}}
+\index{m\_pIndexBuffer@{m\_pIndexBuffer}!IndexBuffer@{IndexBuffer}}
+\doxysubsubsection{\texorpdfstring{m\_pIndexBuffer}{m\_pIndexBuffer}}
+{\footnotesize\ttfamily \label{classIndexBuffer_a4837cf49c5bf95560e3ded853c7bfc2c_a4837cf49c5bf95560e3ded853c7bfc2c} 
+Microsoft\+::\+WRL\+::\+Com\+Ptr$<$ID3\+D11\+Buffer$>$ Index\+Buffer\+::m\+\_\+p\+Index\+Buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classIndexBuffer_ae7ced91c435d35629c0d5cf4672e9775_ae7ced91c435d35629c0d5cf4672e9775}\index{IndexBuffer@{IndexBuffer}!m\_tag@{m\_tag}}
+\index{m\_tag@{m\_tag}!IndexBuffer@{IndexBuffer}}
+\doxysubsubsection{\texorpdfstring{m\_tag}{m\_tag}}
+{\footnotesize\ttfamily \label{classIndexBuffer_ae7ced91c435d35629c0d5cf4672e9775_ae7ced91c435d35629c0d5cf4672e9775} 
+std\+::string Index\+Buffer\+::m\+\_\+tag\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{index__buffer_8h}{index\+\_\+buffer.\+h}}\item 
+src/\mbox{\hyperlink{index__buffer_8cpp}{index\+\_\+buffer.\+cpp}}\end{DoxyCompactItemize}

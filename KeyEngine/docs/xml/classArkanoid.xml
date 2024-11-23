@@ -1,0 +1,516 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classArkanoid" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>Arkanoid</compoundname>
+    <basecompoundref refid="classGame" prot="public" virt="non-virtual">Game&lt; Arkanoid &gt;</basecompoundref>
+    <includes refid="game_8h" local="no">game.h</includes>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classArkanoid_a74f9842d78b2faae8f2662d46c5eb08c_1a74f9842d78b2faae8f2662d46c5eb08c" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>float</type>
+        <definition>float Arkanoid::s_brickWidth</definition>
+        <argsstring></argsstring>
+        <name>s_brickWidth</name>
+        <qualifiedname>Arkanoid::s_brickWidth</qualifiedname>
+        <initializer>= 40.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="116" column="31" bodyfile="inc/game.h" bodystart="116" bodyend="-1"/>
+        <referencedby refid="classArkanoid_ac5e6e6e2c99b5e0f56fd002a872cbb9b_1ac5e6e6e2c99b5e0f56fd002a872cbb9b" compoundref="game_8cpp" startline="575" endline="601">Arkanoid</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classArkanoid_a6da861a7f56756c6f81e8260c03a37ee_1a6da861a7f56756c6f81e8260c03a37ee" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>float</type>
+        <definition>float Arkanoid::s_brickHeight</definition>
+        <argsstring></argsstring>
+        <name>s_brickHeight</name>
+        <qualifiedname>Arkanoid::s_brickHeight</qualifiedname>
+        <initializer>= 20.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="117" column="31" bodyfile="inc/game.h" bodystart="117" bodyend="-1"/>
+        <referencedby refid="classArkanoid_ac5e6e6e2c99b5e0f56fd002a872cbb9b_1ac5e6e6e2c99b5e0f56fd002a872cbb9b" compoundref="game_8cpp" startline="575" endline="601">Arkanoid</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classArkanoid_ac0a2975c8fcedc33bdad55ad71ff6cde_1ac0a2975c8fcedc33bdad55ad71ff6cde" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>int</type>
+        <definition>int Arkanoid::s_nBricksHorizontally</definition>
+        <argsstring></argsstring>
+        <name>s_nBricksHorizontally</name>
+        <qualifiedname>Arkanoid::s_nBricksHorizontally</qualifiedname>
+        <initializer>= 18</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="118" column="29" bodyfile="inc/game.h" bodystart="118" bodyend="-1"/>
+        <referencedby refid="classArkanoid_ac5e6e6e2c99b5e0f56fd002a872cbb9b_1ac5e6e6e2c99b5e0f56fd002a872cbb9b" compoundref="game_8cpp" startline="575" endline="601">Arkanoid</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classArkanoid_a2b1848153ec306cbf4e3e00cddfcaa91_1a2b1848153ec306cbf4e3e00cddfcaa91" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>int</type>
+        <definition>int Arkanoid::s_nBricksVertically</definition>
+        <argsstring></argsstring>
+        <name>s_nBricksVertically</name>
+        <qualifiedname>Arkanoid::s_nBricksVertically</qualifiedname>
+        <initializer>= 4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="119" column="29" bodyfile="inc/game.h" bodystart="119" bodyend="-1"/>
+        <referencedby refid="classArkanoid_ac5e6e6e2c99b5e0f56fd002a872cbb9b_1ac5e6e6e2c99b5e0f56fd002a872cbb9b" compoundref="game_8cpp" startline="575" endline="601">Arkanoid</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classArkanoid_a440786b314ca4ce573d8b442fbed623e_1a440786b314ca4ce573d8b442fbed623e" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>int</type>
+        <definition>int Arkanoid::s_nBricks</definition>
+        <argsstring></argsstring>
+        <name>s_nBricks</name>
+        <qualifiedname>Arkanoid::s_nBricks</qualifiedname>
+        <initializer>= <ref refid="classArkanoid_ac0a2975c8fcedc33bdad55ad71ff6cde_1ac0a2975c8fcedc33bdad55ad71ff6cde" kindref="member">s_nBricksHorizontally</ref> * <ref refid="classArkanoid_a2b1848153ec306cbf4e3e00cddfcaa91_1a2b1848153ec306cbf4e3e00cddfcaa91" kindref="member">s_nBricksVertically</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="120" column="29" bodyfile="inc/game.h" bodystart="120" bodyend="-1"/>
+        <referencedby refid="classArkanoid_a5aea992cd4e9a1d0fad1d5308c444b20_1a5aea992cd4e9a1d0fad1d5308c444b20" compoundref="game_8cpp" startline="688" endline="737">update</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classArkanoid_a8908c70d851b4d033a433f56fefd3cb9_1a8908c70d851b4d033a433f56fefd3cb9" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>float</type>
+        <definition>float Arkanoid::s_speed</definition>
+        <argsstring></argsstring>
+        <name>s_speed</name>
+        <qualifiedname>Arkanoid::s_speed</qualifiedname>
+        <initializer>= 300.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="121" column="31" bodyfile="inc/game.h" bodystart="121" bodyend="-1"/>
+        <referencedby refid="classArkanoid_a4379be977be5c4dd083be67438cf70ab_1a4379be977be5c4dd083be67438cf70ab" compoundref="game_8cpp" startline="643" endline="686">checkInput</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classArkanoid_a7958fd92736829e2948526a306d73c5b_1a7958fd92736829e2948526a306d73c5b" prot="private" static="no" mutable="no">
+        <type>Ball</type>
+        <definition>Ball Arkanoid::m_ball</definition>
+        <argsstring></argsstring>
+        <name>m_ball</name>
+        <qualifiedname>Arkanoid::m_ball</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="122" column="6" bodyfile="inc/game.h" bodystart="122" bodyend="-1"/>
+        <referencedby refid="classArkanoid_a8f5ce76dfb2c9b342004ecb6754d0af9_1a8f5ce76dfb2c9b342004ecb6754d0af9" compoundref="game_8cpp" startline="739" endline="751">render</referencedby>
+        <referencedby refid="classArkanoid_a5aea992cd4e9a1d0fad1d5308c444b20_1a5aea992cd4e9a1d0fad1d5308c444b20" compoundref="game_8cpp" startline="688" endline="737">update</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classArkanoid_af0b7086266974482c8c4004206e2e3ec_1af0b7086266974482c8c4004206e2e3ec" prot="private" static="no" mutable="no">
+        <type><ref refid="classRectangleF" kindref="compound">RectangleF</ref></type>
+        <definition>RectangleF Arkanoid::m_walls</definition>
+        <argsstring></argsstring>
+        <name>m_walls</name>
+        <qualifiedname>Arkanoid::m_walls</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="123" column="12" bodyfile="inc/game.h" bodystart="123" bodyend="-1"/>
+        <referencedby refid="classArkanoid_a5aea992cd4e9a1d0fad1d5308c444b20_1a5aea992cd4e9a1d0fad1d5308c444b20" compoundref="game_8cpp" startline="688" endline="737">update</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classArkanoid_a8362af3e3610991a5457d0d21764f21f_1a8362af3e3610991a5457d0d21764f21f" prot="private" static="no" mutable="no">
+        <type>Brick</type>
+        <definition>Brick Arkanoid::m_bricks[s_nBricks]</definition>
+        <argsstring>[s_nBricks]</argsstring>
+        <name>m_bricks</name>
+        <qualifiedname>Arkanoid::m_bricks</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="124" column="7" bodyfile="inc/game.h" bodystart="124" bodyend="-1"/>
+        <referencedby refid="classArkanoid_ac5e6e6e2c99b5e0f56fd002a872cbb9b_1ac5e6e6e2c99b5e0f56fd002a872cbb9b" compoundref="game_8cpp" startline="575" endline="601">Arkanoid</referencedby>
+        <referencedby refid="classArkanoid_a8f5ce76dfb2c9b342004ecb6754d0af9_1a8f5ce76dfb2c9b342004ecb6754d0af9" compoundref="game_8cpp" startline="739" endline="751">render</referencedby>
+        <referencedby refid="classArkanoid_a5aea992cd4e9a1d0fad1d5308c444b20_1a5aea992cd4e9a1d0fad1d5308c444b20" compoundref="game_8cpp" startline="688" endline="737">update</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classArkanoid_aa09befbdcf2694757c196ddddc9342f7_1aa09befbdcf2694757c196ddddc9342f7" prot="private" static="no" mutable="no">
+        <type>Paddle</type>
+        <definition>Paddle Arkanoid::m_paddle</definition>
+        <argsstring></argsstring>
+        <name>m_paddle</name>
+        <qualifiedname>Arkanoid::m_paddle</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="125" column="8" bodyfile="inc/game.h" bodystart="125" bodyend="-1"/>
+        <referencedby refid="classArkanoid_a4379be977be5c4dd083be67438cf70ab_1a4379be977be5c4dd083be67438cf70ab" compoundref="game_8cpp" startline="643" endline="686">checkInput</referencedby>
+        <referencedby refid="classArkanoid_a8f5ce76dfb2c9b342004ecb6754d0af9_1a8f5ce76dfb2c9b342004ecb6754d0af9" compoundref="game_8cpp" startline="739" endline="751">render</referencedby>
+        <referencedby refid="classArkanoid_a5aea992cd4e9a1d0fad1d5308c444b20_1a5aea992cd4e9a1d0fad1d5308c444b20" compoundref="game_8cpp" startline="688" endline="737">update</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classArkanoid_a3d031ce7e7b3e0b89f8df0c0d9610cf2_1a3d031ce7e7b3e0b89f8df0c0d9610cf2" prot="private" static="no" mutable="no">
+        <type><ref refid="classSound" kindref="compound">Sound</ref></type>
+        <definition>Sound Arkanoid::m_brickSound</definition>
+        <argsstring></argsstring>
+        <name>m_brickSound</name>
+        <qualifiedname>Arkanoid::m_brickSound</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="126" column="7" bodyfile="inc/game.h" bodystart="126" bodyend="-1"/>
+        <referencedby refid="classArkanoid_a5aea992cd4e9a1d0fad1d5308c444b20_1a5aea992cd4e9a1d0fad1d5308c444b20" compoundref="game_8cpp" startline="688" endline="737">update</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classArkanoid_a169e2497e7dddf0f4334d243778731b1_1a169e2497e7dddf0f4334d243778731b1" prot="private" static="no" mutable="no">
+        <type><ref refid="classSound" kindref="compound">Sound</ref></type>
+        <definition>Sound Arkanoid::m_padSound</definition>
+        <argsstring></argsstring>
+        <name>m_padSound</name>
+        <qualifiedname>Arkanoid::m_padSound</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="127" column="7" bodyfile="inc/game.h" bodystart="127" bodyend="-1"/>
+        <referencedby refid="classArkanoid_a5aea992cd4e9a1d0fad1d5308c444b20_1a5aea992cd4e9a1d0fad1d5308c444b20" compoundref="game_8cpp" startline="688" endline="737">update</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classArkanoid_ac5e6e6e2c99b5e0f56fd002a872cbb9b_1ac5e6e6e2c99b5e0f56fd002a872cbb9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Arkanoid::Arkanoid</definition>
+        <argsstring>(const int width, const int height, const int x, const int y)</argsstring>
+        <name>Arkanoid</name>
+        <qualifiedname>Arkanoid::Arkanoid</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>height</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="129" column="1" bodyfile="src/game.cpp" bodystart="575" bodyend="601"/>
+      </memberdef>
+      <memberdef kind="function" id="classArkanoid_a9a1f1afe82238ca3c10bf890a977a436_1a9a1f1afe82238ca3c10bf890a977a436" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Arkanoid::loop</definition>
+        <argsstring>()</argsstring>
+        <name>loop</name>
+        <qualifiedname>Arkanoid::loop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="131" column="5" bodyfile="src/game.cpp" bodystart="603" bodyend="634"/>
+        <referencedby refid="main_8cpp_afe0d6866f7c067e4b3768107caa40799_1afe0d6866f7c067e4b3768107caa40799" compoundref="main_8cpp" startline="54" endline="131">wWinMain</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classArkanoid_aed6248f1d49ee4d132d1b087c394b4a1_1aed6248f1d49ee4d132d1b087c394b4a1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float Arkanoid::calcDt</definition>
+        <argsstring>()</argsstring>
+        <name>calcDt</name>
+        <qualifiedname>Arkanoid::calcDt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="133" column="7" bodyfile="src/game.cpp" bodystart="636" bodyend="641"/>
+        <referencedby refid="classArkanoid_a9a1f1afe82238ca3c10bf890a977a436_1a9a1f1afe82238ca3c10bf890a977a436" compoundref="game_8cpp" startline="603" endline="634">loop</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classArkanoid_a4379be977be5c4dd083be67438cf70ab_1a4379be977be5c4dd083be67438cf70ab" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Arkanoid::checkInput</definition>
+        <argsstring>(const float dt)</argsstring>
+        <name>checkInput</name>
+        <qualifiedname>Arkanoid::checkInput</qualifiedname>
+        <param>
+          <type>const float</type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="134" column="5" bodyfile="src/game.cpp" bodystart="643" bodyend="686"/>
+        <referencedby refid="classArkanoid_a9a1f1afe82238ca3c10bf890a977a436_1a9a1f1afe82238ca3c10bf890a977a436" compoundref="game_8cpp" startline="603" endline="634">loop</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classArkanoid_a5aea992cd4e9a1d0fad1d5308c444b20_1a5aea992cd4e9a1d0fad1d5308c444b20" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Arkanoid::update</definition>
+        <argsstring>(Graphics &amp;gfx, const float dt)</argsstring>
+        <name>update</name>
+        <qualifiedname>Arkanoid::update</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="135" column="6" bodyfile="src/game.cpp" bodystart="688" bodyend="737"/>
+        <referencedby refid="classArkanoid_a9a1f1afe82238ca3c10bf890a977a436_1a9a1f1afe82238ca3c10bf890a977a436" compoundref="game_8cpp" startline="603" endline="634">loop</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classArkanoid_a8f5ce76dfb2c9b342004ecb6754d0af9_1a8f5ce76dfb2c9b342004ecb6754d0af9" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Arkanoid::render</definition>
+        <argsstring>(Graphics &amp;gfx)</argsstring>
+        <name>render</name>
+        <qualifiedname>Arkanoid::render</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="136" column="6" bodyfile="src/game.cpp" bodystart="739" bodyend="751"/>
+        <referencedby refid="classArkanoid_a9a1f1afe82238ca3c10bf890a977a436_1a9a1f1afe82238ca3c10bf890a977a436" compoundref="game_8cpp" startline="603" endline="634">loop</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classArkanoid_a9a0a31805757fe6af97b3d3ae2e5cd8f_1a9a0a31805757fe6af97b3d3ae2e5cd8f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Arkanoid::test</definition>
+        <argsstring>()</argsstring>
+        <name>test</name>
+        <qualifiedname>Arkanoid::test</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="137" column="6" bodyfile="src/game.cpp" bodystart="753" bodyend="758"/>
+        <referencedby refid="classArkanoid_a9a1f1afe82238ca3c10bf890a977a436_1a9a1f1afe82238ca3c10bf890a977a436" compoundref="game_8cpp" startline="603" endline="634">loop</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Arkanoid</label>
+        <link refid="classArkanoid"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Game&lt; Arkanoid &gt;</label>
+        <link refid="classGame"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>NonCopyableAndNonMovable</label>
+        <link refid="classNonCopyableAndNonMovable"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Arkanoid</label>
+        <link refid="classArkanoid"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="13" relation="usage">
+          <edgelabel>m_walls</edgelabel>
+        </childnode>
+        <childnode refid="14" relation="usage">
+          <edgelabel>m_brickSound</edgelabel>
+          <edgelabel>m_padSound</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Game&lt; Arkanoid &gt;</label>
+        <link refid="classGame"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>s_settingsMan</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>m_mainWindow</edgelabel>
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>m_gameTimer</edgelabel>
+        </childnode>
+      </node>
+      <node id="12">
+        <label>KeyTimer&lt; std::chrono::milliseconds &gt;</label>
+        <link refid="classKeyTimer"/>
+        <childnode refid="3" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>Keyboard</label>
+        <link refid="classKeyboard"/>
+        <childnode refid="5" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>Mouse</label>
+        <link refid="classMouse"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>NonCopyable</label>
+        <link refid="classNonCopyable"/>
+      </node>
+      <node id="3">
+        <label>NonCopyableAndNonMovable</label>
+        <link refid="classNonCopyableAndNonMovable"/>
+      </node>
+      <node id="13">
+        <label>RectangleF</label>
+        <link refid="classRectangleF"/>
+      </node>
+      <node id="4">
+        <label>SettingsManager</label>
+        <link refid="classSettingsManager"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>m_settings</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>SettingsManager::Settings</label>
+        <link refid="structSettingsManager_1_1Settings"/>
+      </node>
+      <node id="14">
+        <label>Sound</label>
+        <link refid="classSound"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>Window</label>
+        <link refid="classWindow"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>s_keyboard</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>s_mouse</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>s_pBoxLocalClip</edgelabel>
+        </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>m_windowClass</edgelabel>
+        </childnode>
+      </node>
+      <node id="11">
+        <label>Window::WindowClass</label>
+        <link refid="classWindow_1_1WindowClass"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>tagLABELBOX</label>
+        <link refid="structtagLABELBOX"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/game.h" line="113" column="1" bodyfile="inc/game.h" bodystart="115" bodyend="138"/>
+    <listofallmembers>
+      <member refid="classArkanoid_ac5e6e6e2c99b5e0f56fd002a872cbb9b_1ac5e6e6e2c99b5e0f56fd002a872cbb9b" prot="public" virt="non-virtual"><scope>Arkanoid</scope><name>Arkanoid</name></member>
+      <member refid="classArkanoid_aed6248f1d49ee4d132d1b087c394b4a1_1aed6248f1d49ee4d132d1b087c394b4a1" prot="private" virt="non-virtual"><scope>Arkanoid</scope><name>calcDt</name></member>
+      <member refid="classArkanoid_a4379be977be5c4dd083be67438cf70ab_1a4379be977be5c4dd083be67438cf70ab" prot="private" virt="non-virtual"><scope>Arkanoid</scope><name>checkInput</name></member>
+      <member refid="classGame_a9716d4a268c77574e00b289827b46d65_1a9716d4a268c77574e00b289827b46d65" prot="private" virt="non-virtual"><scope>Arkanoid</scope><name>createImguiManager</name></member>
+      <member refid="classGame_ab829358e04b5eb1b8937db2a8683c3a0_1ab829358e04b5eb1b8937db2a8683c3a0" prot="protected" virt="non-virtual"><scope>Arkanoid</scope><name>Game</name></member>
+      <member refid="classGame_ad133bee3b79c89041c99b31c0110e9cc_1ad133bee3b79c89041c99b31c0110e9cc" prot="protected" virt="non-virtual"><scope>Arkanoid</scope><name>getForegroundWindow</name></member>
+      <member refid="classGame_a497f6988307db84ef1445f662c0fb1cd_1a497f6988307db84ef1445f662c0fb1cd" prot="protected" virt="non-virtual"><scope>Arkanoid</scope><name>getState</name></member>
+      <member refid="classGame_aa09bb3f51206f2ef0f28453c43cd449a_1aa09bb3f51206f2ef0f28453c43cd449a" prot="protected" virt="non-virtual"><scope>Arkanoid</scope><name>getState</name></member>
+      <member refid="classArkanoid_a9a1f1afe82238ca3c10bf890a977a436_1a9a1f1afe82238ca3c10bf890a977a436" prot="public" virt="non-virtual"><scope>Arkanoid</scope><name>loop</name></member>
+      <member refid="classArkanoid_a7958fd92736829e2948526a306d73c5b_1a7958fd92736829e2948526a306d73c5b" prot="private" virt="non-virtual"><scope>Arkanoid</scope><name>m_ball</name></member>
+      <member refid="classArkanoid_a8362af3e3610991a5457d0d21764f21f_1a8362af3e3610991a5457d0d21764f21f" prot="private" virt="non-virtual"><scope>Arkanoid</scope><name>m_bricks</name></member>
+      <member refid="classArkanoid_a3d031ce7e7b3e0b89f8df0c0d9610cf2_1a3d031ce7e7b3e0b89f8df0c0d9610cf2" prot="private" virt="non-virtual"><scope>Arkanoid</scope><name>m_brickSound</name></member>
+      <member refid="classGame_a3953acd0d7eec863ee8f0cdda2e7a98d_1a3953acd0d7eec863ee8f0cdda2e7a98d" prot="protected" virt="non-virtual"><scope>Arkanoid</scope><name>m_gameTimer</name></member>
+      <member refid="classGame_ab87c228ca9edcbc171aed5b0ffb2591a_1ab87c228ca9edcbc171aed5b0ffb2591a" prot="protected" virt="non-virtual"><scope>Arkanoid</scope><name>m_mainWindow</name></member>
+      <member refid="classArkanoid_aa09befbdcf2694757c196ddddc9342f7_1aa09befbdcf2694757c196ddddc9342f7" prot="private" virt="non-virtual"><scope>Arkanoid</scope><name>m_paddle</name></member>
+      <member refid="classArkanoid_a169e2497e7dddf0f4334d243778731b1_1a169e2497e7dddf0f4334d243778731b1" prot="private" virt="non-virtual"><scope>Arkanoid</scope><name>m_padSound</name></member>
+      <member refid="classGame_aeaba4177ff106b819b2e02030a50a301_1aeaba4177ff106b819b2e02030a50a301" prot="protected" virt="non-virtual"><scope>Arkanoid</scope><name>m_pCurrentState</name></member>
+      <member refid="classGame_ac451f6e710b03424d58f2dba8cd4c74e_1ac451f6e710b03424d58f2dba8cd4c74e" prot="protected" virt="non-virtual"><scope>Arkanoid</scope><name>m_pImguiMan</name></member>
+      <member refid="classArkanoid_af0b7086266974482c8c4004206e2e3ec_1af0b7086266974482c8c4004206e2e3ec" prot="private" virt="non-virtual"><scope>Arkanoid</scope><name>m_walls</name></member>
+      <member refid="classNonCopyableAndNonMovable_a0f3fc95f2c582514d58832b7c14d2965_1a0f3fc95f2c582514d58832b7c14d2965" prot="public" virt="non-virtual"><scope>Arkanoid</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_a3502311a2435129e171eb36ba05f0b2f_1a3502311a2435129e171eb36ba05f0b2f" prot="public" virt="non-virtual"><scope>Arkanoid</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_a259655d15f1887d015c6d77a0f09f4ff_1a259655d15f1887d015c6d77a0f09f4ff" prot="public" virt="non-virtual"><scope>Arkanoid</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_acadc47621b689b1b95bef13a35f18572_1acadc47621b689b1b95bef13a35f18572" prot="public" virt="non-virtual"><scope>Arkanoid</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_a6541862f56b2fcaa89155f08b8adaf11_1a6541862f56b2fcaa89155f08b8adaf11" prot="public" virt="non-virtual"><scope>Arkanoid</scope><name>operator=</name></member>
+      <member refid="classNonCopyableAndNonMovable_aa3af41edbd14c886cdec335b22254829_1aa3af41edbd14c886cdec335b22254829" prot="public" virt="non-virtual"><scope>Arkanoid</scope><name>operator=</name></member>
+      <member refid="classNonCopyableAndNonMovable_a972632a389e0f2370de9604df60ea9d6_1a972632a389e0f2370de9604df60ea9d6" prot="public" virt="non-virtual"><scope>Arkanoid</scope><name>operator=</name></member>
+      <member refid="classGame_a5703dfb57ce49ecfc644b9be76a65fa2_1a5703dfb57ce49ecfc644b9be76a65fa2" prot="protected" virt="non-virtual"><scope>Arkanoid</scope><name>present</name></member>
+      <member refid="classArkanoid_a8f5ce76dfb2c9b342004ecb6754d0af9_1a8f5ce76dfb2c9b342004ecb6754d0af9" prot="private" virt="non-virtual"><scope>Arkanoid</scope><name>render</name></member>
+      <member refid="classArkanoid_a6da861a7f56756c6f81e8260c03a37ee_1a6da861a7f56756c6f81e8260c03a37ee" prot="private" virt="non-virtual"><scope>Arkanoid</scope><name>s_brickHeight</name></member>
+      <member refid="classArkanoid_a74f9842d78b2faae8f2662d46c5eb08c_1a74f9842d78b2faae8f2662d46c5eb08c" prot="private" virt="non-virtual"><scope>Arkanoid</scope><name>s_brickWidth</name></member>
+      <member refid="classArkanoid_a440786b314ca4ce573d8b442fbed623e_1a440786b314ca4ce573d8b442fbed623e" prot="private" virt="non-virtual"><scope>Arkanoid</scope><name>s_nBricks</name></member>
+      <member refid="classArkanoid_ac0a2975c8fcedc33bdad55ad71ff6cde_1ac0a2975c8fcedc33bdad55ad71ff6cde" prot="private" virt="non-virtual"><scope>Arkanoid</scope><name>s_nBricksHorizontally</name></member>
+      <member refid="classArkanoid_a2b1848153ec306cbf4e3e00cddfcaa91_1a2b1848153ec306cbf4e3e00cddfcaa91" prot="private" virt="non-virtual"><scope>Arkanoid</scope><name>s_nBricksVertically</name></member>
+      <member refid="classGame_aa2ff10aa0692ef22b70af2acebaa2888_1aa2ff10aa0692ef22b70af2acebaa2888" prot="protected" virt="non-virtual"><scope>Arkanoid</scope><name>s_nWindows</name></member>
+      <member refid="classGame_a1c1d1b4e98b065c0f48922219c1a84e1_1a1c1d1b4e98b065c0f48922219c1a84e1" prot="protected" virt="non-virtual"><scope>Arkanoid</scope><name>s_settingsMan</name></member>
+      <member refid="classArkanoid_a8908c70d851b4d033a433f56fefd3cb9_1a8908c70d851b4d033a433f56fefd3cb9" prot="private" virt="non-virtual"><scope>Arkanoid</scope><name>s_speed</name></member>
+      <member refid="classGame_a009cd108bf259503079139f647cec4d5_1a009cd108bf259503079139f647cec4d5" prot="protected" virt="non-virtual"><scope>Arkanoid</scope><name>setState</name></member>
+      <member refid="classArkanoid_a9a0a31805757fe6af97b3d3ae2e5cd8f_1a9a0a31805757fe6af97b3d3ae2e5cd8f" prot="private" virt="non-virtual"><scope>Arkanoid</scope><name>test</name></member>
+      <member refid="classArkanoid_a5aea992cd4e9a1d0fad1d5308c444b20_1a5aea992cd4e9a1d0fad1d5308c444b20" prot="private" virt="non-virtual"><scope>Arkanoid</scope><name>update</name></member>
+      <member refid="classGame_a547ff08a0fddf3db2a4ab881c2bc1915_1a547ff08a0fddf3db2a4ab881c2bc1915" prot="public" virt="non-virtual"><scope>Arkanoid</scope><name>~Game</name></member>
+      <member refid="classNonCopyableAndNonMovable_aa6874bb9a99fe151e8c2eda429fe5867_1aa6874bb9a99fe151e8c2eda429fe5867" prot="protected" virt="non-virtual"><scope>Arkanoid</scope><name>~NonCopyableAndNonMovable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

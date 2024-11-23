@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="structcon_1_1ExtraData_1_1Array" kind="struct" language="C++" prot="public" final="yes">
+    <compoundname>con::ExtraData::Array</compoundname>
+    <basecompoundref refid="structcon_1_1CBElement_1_1IExtraData" prot="public" virt="non-virtual">con::CBElement::IExtraData</basecompoundref>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structcon_1_1ExtraData_1_1Array_a3164eb088b343aeed0ad113b48d8789f_1a3164eb088b343aeed0ad113b48d8789f" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classcon_1_1CBElement" kindref="compound">CBElement</ref> &gt;</type>
+        <definition>std::optional&lt;CBElement&gt; con::ExtraData::Array::m_layoutElement</definition>
+        <argsstring></argsstring>
+        <name>m_layoutElement</name>
+        <qualifiedname>con::ExtraData::Array::m_layoutElement</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dynamic_constant_buffer.cpp" line="20" column="15" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="20" bodyend="-1"/>
+        <referencedby refid="classcon_1_1CBElement_aec507d5cedb307bae9264071d6637060_1aec507d5cedb307bae9264071d6637060" compoundref="dynamic__constant__buffer_8cpp" startline="198" endline="207">con::CBElement::calcSignatureForArray</referencedby>
+        <referencedby refid="classcon_1_1CBElement_a9706f2df6cef0aa0efccd615ef002334_1a9706f2df6cef0aa0efccd615ef002334" compoundref="dynamic__constant__buffer_8cpp" startline="140" endline="149">con::CBElement::set</referencedby>
+        <referencedby refid="classcon_1_1CBElement_a3dc600a60c844b48c3d4a24ff7783e78_1a3dc600a60c844b48c3d4a24ff7783e78" compoundref="dynamic__constant__buffer_8cpp" startline="77" endline="81">con::CBElement::T</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structcon_1_1ExtraData_1_1Array_a63b8c02472a78a764036256603bdbf95_1a63b8c02472a78a764036256603bdbf95" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t con::ExtraData::Array::m_elementSize</definition>
+        <argsstring></argsstring>
+        <name>m_elementSize</name>
+        <qualifiedname>con::ExtraData::Array::m_elementSize</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dynamic_constant_buffer.cpp" line="21" column="8" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structcon_1_1ExtraData_1_1Array_a915d7fc22e1a7bf76e566fcf1dcec01c_1a915d7fc22e1a7bf76e566fcf1dcec01c" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t con::ExtraData::Array::m_size</definition>
+        <argsstring></argsstring>
+        <name>m_size</name>
+        <qualifiedname>con::ExtraData::Array::m_size</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dynamic_constant_buffer.cpp" line="22" column="8" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="22" bodyend="-1"/>
+        <referencedby refid="classcon_1_1CBElement_a5f530e1452487417567ea1bbdb28c07e_1a5f530e1452487417567ea1bbdb28c07e" compoundref="dynamic__constant__buffer_8cpp" startline="93" endline="116">con::CBElement::getOffsetEnd</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>con::CBElement::IExtraData</label>
+        <link refid="structcon_1_1CBElement_1_1IExtraData"/>
+      </node>
+      <node id="1">
+        <label>con::ExtraData::Array</label>
+        <link refid="structcon_1_1ExtraData_1_1Array"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>con::CBElement::IExtraData</label>
+        <link refid="structcon_1_1CBElement_1_1IExtraData"/>
+      </node>
+      <node id="1">
+        <label>con::ExtraData::Array</label>
+        <link refid="structcon_1_1ExtraData_1_1Array"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/dynamic_constant_buffer.cpp" line="17" column="1" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="19" bodyend="23"/>
+    <listofallmembers>
+      <member refid="structcon_1_1ExtraData_1_1Array_a63b8c02472a78a764036256603bdbf95_1a63b8c02472a78a764036256603bdbf95" prot="public" virt="non-virtual"><scope>con::ExtraData::Array</scope><name>m_elementSize</name></member>
+      <member refid="structcon_1_1ExtraData_1_1Array_a3164eb088b343aeed0ad113b48d8789f_1a3164eb088b343aeed0ad113b48d8789f" prot="public" virt="non-virtual"><scope>con::ExtraData::Array</scope><name>m_layoutElement</name></member>
+      <member refid="structcon_1_1ExtraData_1_1Array_a915d7fc22e1a7bf76e566fcf1dcec01c_1a915d7fc22e1a7bf76e566fcf1dcec01c" prot="public" virt="non-virtual"><scope>con::ExtraData::Array</scope><name>m_size</name></member>
+      <member refid="structcon_1_1CBElement_1_1IExtraData_a741cbc7c7feb161aae64c7c9ddbc0d5b_1a741cbc7c7feb161aae64c7c9ddbc0d5b" prot="public" virt="virtual"><scope>con::ExtraData::Array</scope><name>~IExtraData</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

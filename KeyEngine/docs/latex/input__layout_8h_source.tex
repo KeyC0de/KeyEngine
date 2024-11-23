@@ -1,0 +1,32 @@
+\doxysection{input\+\_\+layout.\+h}
+\hypertarget{input__layout_8h_source}{}\label{input__layout_8h_source}\index{inc/input\_layout.h@{inc/input\_layout.h}}
+\mbox{\hyperlink{input__layout_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{key__wrl_8h}{key\_wrl.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{bindable_8h}{bindable.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{dynamic__vertex__buffer_8h}{dynamic\_vertex\_buffer.h}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVertexShader}{VertexShader}};}
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGraphics}{Graphics}};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classInputLayout}{InputLayout}}}
+\DoxyCodeLine{00018\ \ \ \ \ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classIBindable}{IBindable}}}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00021\ \ \ \ \ Microsoft::WRL::ComPtr<ID3D11InputLayout>\ \mbox{\hyperlink{classInputLayout_a923d341c31524d238aa9f192b1f2cb42_a923d341c31524d238aa9f192b1f2cb42}{m\_pInputLayout}};}
+\DoxyCodeLine{00022\ \ \ \ \ std::string\ \mbox{\hyperlink{classInputLayout_ad1821ab7b708cb82b1b85d3f1674fb62_ad1821ab7b708cb82b1b85d3f1674fb62}{m\_vertexShaderUID}};}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{classver_1_1VertexInputLayout}{ver::VertexInputLayout}}\ \mbox{\hyperlink{classInputLayout_adbe37eef4d1512444f90b6da44b79088_adbe37eef4d1512444f90b6da44b79088}{m\_vertexLayout}};}
+\DoxyCodeLine{00024\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{classInputLayout_a96527abda8afcf0a2218c39082183f1d_a96527abda8afcf0a2218c39082183f1d}{InputLayout}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classver_1_1VertexInputLayout}{ver::VertexInputLayout}}\ \&layout,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classVertexShader}{VertexShader}}\ \&vs\ );}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classInputLayout_a5de9afbd3d6d1324ac4a26f04365b69e_a5de9afbd3d6d1324ac4a26f04365b69e}{bind}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx\ )\ cond\_noex\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classver_1_1VertexInputLayout}{ver::VertexInputLayout}}\ \mbox{\hyperlink{classInputLayout_a34ece7c7bfe8599be3768c1ee67a2928_a34ece7c7bfe8599be3768c1ee67a2928}{getLayout}}()\ const\ noexcept;}
+\DoxyCodeLine{00029\ \ \ \ \ static\ std::shared\_ptr<\mbox{\hyperlink{classInputLayout}{InputLayout}}>\ \mbox{\hyperlink{classInputLayout_a28404524310f3bdf8ba2537206e1e109_a28404524310f3bdf8ba2537206e1e109}{fetch}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx,\ const\ \mbox{\hyperlink{namespacever}{ver}}::VertexInputLayout\ \&layout,\ const\ \mbox{\hyperlink{classVertexShader}{VertexShader}}\ \&vs\ );}
+\DoxyCodeLine{00030\ \ \ \ \ static\ std::\textcolor{keywordtype}{string}\ \mbox{\hyperlink{classInputLayout_a981d8d9efb96d0988b78a67b6cda4a4d_a981d8d9efb96d0988b78a67b6cda4a4d}{calcUid}}(\ const\ \mbox{\hyperlink{namespacever}{ver}}::VertexInputLayout\ \&layout,\ const\ \mbox{\hyperlink{classVertexShader}{VertexShader}}\ \&vs\ );}
+\DoxyCodeLine{00031\ \ \ \ \ std::\textcolor{keywordtype}{string}\ \mbox{\hyperlink{classInputLayout_a23d0b5c4a3a9442ef38e5473a33f7adf_a23d0b5c4a3a9442ef38e5473a33f7adf}{getUid}}()\ const\ noexcept\ override;}
+\DoxyCodeLine{00032\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Normal_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>ver::VertexInputLayout::ElementProperties&lt; Normal &gt;</compoundname>
+    <includes refid="dynamic__vertex__buffer_8h" local="no">dynamic_vertex_buffer.h</includes>
+    <templateparamlist>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Normal_01_4_abe0c9880c26e9f7a0bb5d3173102c86d_1abe0c9880c26e9f7a0bb5d3173102c86d" prot="public" static="no">
+        <type>DirectX::XMFLOAT3</type>
+        <definition>using ver::VertexInputLayout::ElementProperties&lt; Normal &gt;::CPUType =  DirectX::XMFLOAT3</definition>
+        <argsstring></argsstring>
+        <name>CPUType</name>
+        <qualifiedname>ver::VertexInputLayout::ElementProperties&lt; Normal &gt;::CPUType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="91" column="1" bodyfile="inc/dynamic_vertex_buffer.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Normal_01_4_a675181af0c126dbb1c7479e11ee5e9e7_1a675181af0c126dbb1c7479e11ee5e9e7" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>DXGI_FORMAT</type>
+        <definition>DXGI_FORMAT ver::VertexInputLayout::ElementProperties&lt; Normal &gt;::dxgiFormat</definition>
+        <argsstring></argsstring>
+        <name>dxgiFormat</name>
+        <qualifiedname>ver::VertexInputLayout::ElementProperties&lt; Normal &gt;::dxgiFormat</qualifiedname>
+        <initializer>= DXGI_FORMAT_R32G32B32_FLOAT</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="92" column="30" bodyfile="inc/dynamic_vertex_buffer.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Normal_01_4_ade760e0f547a65451d200225539f1e93_1ade760e0f547a65451d200225539f1e93" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>const char *</type>
+        <definition>const char* ver::VertexInputLayout::ElementProperties&lt; Normal &gt;::hlslSemantic</definition>
+        <argsstring></argsstring>
+        <name>hlslSemantic</name>
+        <qualifiedname>ver::VertexInputLayout::ElementProperties&lt; Normal &gt;::hlslSemantic</qualifiedname>
+        <initializer>= &quot;Normal&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="93" column="29" bodyfile="inc/dynamic_vertex_buffer.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Normal_01_4_a2348acaa071130e1372aa6bc84393262_1a2348acaa071130e1372aa6bc84393262" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>const char *</type>
+        <definition>const char* ver::VertexInputLayout::ElementProperties&lt; Normal &gt;::tag</definition>
+        <argsstring></argsstring>
+        <name>tag</name>
+        <qualifiedname>ver::VertexInputLayout::ElementProperties&lt; Normal &gt;::tag</qualifiedname>
+        <initializer>= &quot;N&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_vertex_buffer.h" line="94" column="29" bodyfile="inc/dynamic_vertex_buffer.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/dynamic_vertex_buffer.h" line="89" column="1" bodyfile="inc/dynamic_vertex_buffer.h" bodystart="90" bodyend="96"/>
+    <listofallmembers>
+      <member refid="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Normal_01_4_abe0c9880c26e9f7a0bb5d3173102c86d_1abe0c9880c26e9f7a0bb5d3173102c86d" prot="public" virt="non-virtual"><scope>ver::VertexInputLayout::ElementProperties&lt; Normal &gt;</scope><name>CPUType</name></member>
+      <member refid="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Normal_01_4_a675181af0c126dbb1c7479e11ee5e9e7_1a675181af0c126dbb1c7479e11ee5e9e7" prot="public" virt="non-virtual"><scope>ver::VertexInputLayout::ElementProperties&lt; Normal &gt;</scope><name>dxgiFormat</name></member>
+      <member refid="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Normal_01_4_ade760e0f547a65451d200225539f1e93_1ade760e0f547a65451d200225539f1e93" prot="public" virt="non-virtual"><scope>ver::VertexInputLayout::ElementProperties&lt; Normal &gt;</scope><name>hlslSemantic</name></member>
+      <member refid="structver_1_1VertexInputLayout_1_1ElementProperties_3_01Normal_01_4_a2348acaa071130e1372aa6bc84393262_1a2348acaa071130e1372aa6bc84393262" prot="public" virt="non-virtual"><scope>ver::VertexInputLayout::ElementProperties&lt; Normal &gt;</scope><name>tag</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

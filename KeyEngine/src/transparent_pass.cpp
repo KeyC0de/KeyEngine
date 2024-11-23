@@ -33,7 +33,7 @@ TransparentPass::TransparentPass( Graphics &gfx,
 void TransparentPass::run( Graphics &gfx ) const cond_noex
 {
 	ASSERT( m_pActiveCamera, "Main camera is absent!!!" );
-	m_pActiveCamera->makeActive( gfx, false );
+	m_pActiveCamera->makeActive( gfx );
 	RenderQueuePass::run( gfx );
 }
 

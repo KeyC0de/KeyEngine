@@ -1,0 +1,116 @@
+\doxysection{src/main.cpp File Reference}
+\hypertarget{main_8cpp}{}\label{main_8cpp}\index{src/main.cpp@{src/main.cpp}}
+{\ttfamily \#include "{}winner.\+h"{}}\newline
+{\ttfamily \#include "{}game.\+h"{}}\newline
+{\ttfamily \#include "{}utils.\+h"{}}\newline
+{\ttfamily \#include "{}os\+\_\+utils.\+h"{}}\newline
+{\ttfamily \#include "{}console.\+h"{}}\newline
+{\ttfamily \#include "{}graphics\+\_\+mode.\+h"{}}\newline
+{\ttfamily \#include "{}sysmetrics.\+h"{}}\newline
+{\ttfamily \#include $<$eh.\+h$>$}\newline
+{\ttfamily \#include $<$exception$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$tuple$>$}\newline
+{\ttfamily \#include "{}signal\+\_\+handling.\+h"{}}\newline
+{\ttfamily \#include "{}thread\+\_\+poolj.\+h"{}}\newline
+{\ttfamily \#include "{}testing.\+h"{}}\newline
+{\ttfamily \#include "{}key\+\_\+sound.\+h"{}}\newline
+{\ttfamily \#include "{}dumpling.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{main_8cpp_a54b5fb5aaf7d20b311a76c9a8feaae74_a54b5fb5aaf7d20b311a76c9a8feaae74}{KEY\+\_\+\+EXCEPTION\+\_\+\+EXIT}}~-\/1
+\item 
+\#define \mbox{\hyperlink{main_8cpp_a070ab93c97189f00236b17c950de45a1_a070ab93c97189f00236b17c950de45a1}{STD\+\_\+\+EXCEPTION\+\_\+\+EXIT}}~-\/2
+\item 
+\#define \mbox{\hyperlink{main_8cpp_ad5ad6dcc950a65f6804fed06db3d983a_ad5ad6dcc950a65f6804fed06db3d983a}{UNKNOWN\+\_\+\+EXCEPTION\+\_\+\+EXIT}}~-\/3
+\item 
+\#define \mbox{\hyperlink{main_8cpp_a3a196df1bf3f86f199a1d16227475493_a3a196df1bf3f86f199a1d16227475493}{SEH\+\_\+\+EXCEPTION\+\_\+\+EXIT}}~-\/4
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8cpp_a98c407042201e01212d3b66d0ec4740c_a98c407042201e01212d3b66d0ec4740c}{firstly}} ()
+\item 
+void \mbox{\hyperlink{main_8cpp_a8da9a292561783f58a4971af8e3e6c2d_a8da9a292561783f58a4971af8e3e6c2d}{finally}} (const std\+::exception\+\_\+ptr \&exception\+Ptr)
+\item 
+decltype(auto) \mbox{\hyperlink{main_8cpp_aa0bc3024a3a3a86f59bcc8c75a15f98c_aa0bc3024a3a3a86f59bcc8c75a15f98c}{parse\+Command\+Line\+Arguments}} ()
+\item 
+int WINAPI \mbox{\hyperlink{main_8cpp_afe0d6866f7c067e4b3768107caa40799_afe0d6866f7c067e4b3768107caa40799}{w\+Win\+Main}} (\+\_\+\+In\+\_\+ HINSTANCE hinstance, \+\_\+\+In\+\_\+opt\+\_\+ HINSTANCE hprev\+Instance, \+\_\+\+In\+\_\+ wchar\+\_\+t \texorpdfstring{$\ast$}{*}p\+Cmd\+Line, \+\_\+\+In\+\_\+ int n\+Show\+Cmd)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static wchar\+\_\+t \mbox{\hyperlink{main_8cpp_acc49a1e774e5a771b36b4c6af799426d_acc49a1e774e5a771b36b4c6af799426d}{g\+\_\+dump\+File}} \mbox{[}MAX\+\_\+\+PATH\mbox{]}
+\item 
+static bool \mbox{\hyperlink{main_8cpp_a21dde1b7c76374da78bd138ecb48cf94_a21dde1b7c76374da78bd138ecb48cf94}{g\+\_\+windows\+Exception\+Occurred}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{main_8cpp_a54b5fb5aaf7d20b311a76c9a8feaae74_a54b5fb5aaf7d20b311a76c9a8feaae74}\index{main.cpp@{main.cpp}!KEY\_EXCEPTION\_EXIT@{KEY\_EXCEPTION\_EXIT}}
+\index{KEY\_EXCEPTION\_EXIT@{KEY\_EXCEPTION\_EXIT}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{KEY\_EXCEPTION\_EXIT}{KEY\_EXCEPTION\_EXIT}}
+{\footnotesize\ttfamily \label{main_8cpp_a54b5fb5aaf7d20b311a76c9a8feaae74_a54b5fb5aaf7d20b311a76c9a8feaae74} 
+\#define KEY\+\_\+\+EXCEPTION\+\_\+\+EXIT~-\/1}
+
+\Hypertarget{main_8cpp_a3a196df1bf3f86f199a1d16227475493_a3a196df1bf3f86f199a1d16227475493}\index{main.cpp@{main.cpp}!SEH\_EXCEPTION\_EXIT@{SEH\_EXCEPTION\_EXIT}}
+\index{SEH\_EXCEPTION\_EXIT@{SEH\_EXCEPTION\_EXIT}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{SEH\_EXCEPTION\_EXIT}{SEH\_EXCEPTION\_EXIT}}
+{\footnotesize\ttfamily \label{main_8cpp_a3a196df1bf3f86f199a1d16227475493_a3a196df1bf3f86f199a1d16227475493} 
+\#define SEH\+\_\+\+EXCEPTION\+\_\+\+EXIT~-\/4}
+
+\Hypertarget{main_8cpp_a070ab93c97189f00236b17c950de45a1_a070ab93c97189f00236b17c950de45a1}\index{main.cpp@{main.cpp}!STD\_EXCEPTION\_EXIT@{STD\_EXCEPTION\_EXIT}}
+\index{STD\_EXCEPTION\_EXIT@{STD\_EXCEPTION\_EXIT}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{STD\_EXCEPTION\_EXIT}{STD\_EXCEPTION\_EXIT}}
+{\footnotesize\ttfamily \label{main_8cpp_a070ab93c97189f00236b17c950de45a1_a070ab93c97189f00236b17c950de45a1} 
+\#define STD\+\_\+\+EXCEPTION\+\_\+\+EXIT~-\/2}
+
+\Hypertarget{main_8cpp_ad5ad6dcc950a65f6804fed06db3d983a_ad5ad6dcc950a65f6804fed06db3d983a}\index{main.cpp@{main.cpp}!UNKNOWN\_EXCEPTION\_EXIT@{UNKNOWN\_EXCEPTION\_EXIT}}
+\index{UNKNOWN\_EXCEPTION\_EXIT@{UNKNOWN\_EXCEPTION\_EXIT}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{UNKNOWN\_EXCEPTION\_EXIT}{UNKNOWN\_EXCEPTION\_EXIT}}
+{\footnotesize\ttfamily \label{main_8cpp_ad5ad6dcc950a65f6804fed06db3d983a_ad5ad6dcc950a65f6804fed06db3d983a} 
+\#define UNKNOWN\+\_\+\+EXCEPTION\+\_\+\+EXIT~-\/3}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8cpp_a8da9a292561783f58a4971af8e3e6c2d_a8da9a292561783f58a4971af8e3e6c2d}\index{main.cpp@{main.cpp}!finally@{finally}}
+\index{finally@{finally}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{finally()}{finally()}}
+{\footnotesize\ttfamily \label{main_8cpp_a8da9a292561783f58a4971af8e3e6c2d_a8da9a292561783f58a4971af8e3e6c2d} 
+void finally (\begin{DoxyParamCaption}\item[{const std\+::exception\+\_\+ptr \&}]{exception\+Ptr}{}\end{DoxyParamCaption})}
+
+\Hypertarget{main_8cpp_a98c407042201e01212d3b66d0ec4740c_a98c407042201e01212d3b66d0ec4740c}\index{main.cpp@{main.cpp}!firstly@{firstly}}
+\index{firstly@{firstly}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{firstly()}{firstly()}}
+{\footnotesize\ttfamily \label{main_8cpp_a98c407042201e01212d3b66d0ec4740c_a98c407042201e01212d3b66d0ec4740c} 
+void firstly (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{main_8cpp_aa0bc3024a3a3a86f59bcc8c75a15f98c_aa0bc3024a3a3a86f59bcc8c75a15f98c}\index{main.cpp@{main.cpp}!parseCommandLineArguments@{parseCommandLineArguments}}
+\index{parseCommandLineArguments@{parseCommandLineArguments}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{parseCommandLineArguments()}{parseCommandLineArguments()}}
+{\footnotesize\ttfamily \label{main_8cpp_aa0bc3024a3a3a86f59bcc8c75a15f98c_aa0bc3024a3a3a86f59bcc8c75a15f98c} 
+decltype(auto) parse\+Command\+Line\+Arguments (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{main_8cpp_afe0d6866f7c067e4b3768107caa40799_afe0d6866f7c067e4b3768107caa40799}\index{main.cpp@{main.cpp}!wWinMain@{wWinMain}}
+\index{wWinMain@{wWinMain}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{wWinMain()}{wWinMain()}}
+{\footnotesize\ttfamily \label{main_8cpp_afe0d6866f7c067e4b3768107caa40799_afe0d6866f7c067e4b3768107caa40799} 
+int WINAPI w\+Win\+Main (\begin{DoxyParamCaption}\item[{\+\_\+\+In\+\_\+ HINSTANCE}]{hinstance}{, }\item[{\+\_\+\+In\+\_\+opt\+\_\+ HINSTANCE}]{hprev\+Instance}{, }\item[{\+\_\+\+In\+\_\+ wchar\+\_\+t \texorpdfstring{$\ast$}{*}}]{p\+Cmd\+Line}{, }\item[{\+\_\+\+In\+\_\+ int}]{n\+Show\+Cmd}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{main_8cpp_acc49a1e774e5a771b36b4c6af799426d_acc49a1e774e5a771b36b4c6af799426d}\index{main.cpp@{main.cpp}!g\_dumpFile@{g\_dumpFile}}
+\index{g\_dumpFile@{g\_dumpFile}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{g\_dumpFile}{g\_dumpFile}}
+{\footnotesize\ttfamily \label{main_8cpp_acc49a1e774e5a771b36b4c6af799426d_acc49a1e774e5a771b36b4c6af799426d} 
+wchar\+\_\+t g\+\_\+dump\+File\mbox{[}MAX\+\_\+\+PATH\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{main_8cpp_a21dde1b7c76374da78bd138ecb48cf94_a21dde1b7c76374da78bd138ecb48cf94}\index{main.cpp@{main.cpp}!g\_windowsExceptionOccurred@{g\_windowsExceptionOccurred}}
+\index{g\_windowsExceptionOccurred@{g\_windowsExceptionOccurred}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{g\_windowsExceptionOccurred}{g\_windowsExceptionOccurred}}
+{\footnotesize\ttfamily \label{main_8cpp_a21dde1b7c76374da78bd138ecb48cf94_a21dde1b7c76374da78bd138ecb48cf94} 
+bool g\+\_\+windows\+Exception\+Occurred = false\hspace{0.3cm}{\ttfamily [static]}}
+

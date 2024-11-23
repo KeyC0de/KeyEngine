@@ -1,0 +1,92 @@
+\doxysection{ren\+::ILinker Class Reference}
+\hypertarget{classren_1_1ILinker}{}\label{classren_1_1ILinker}\index{ren::ILinker@{ren::ILinker}}
+
+
+{\ttfamily \#include $<$linker.\+h$>$}
+
+Inheritance diagram for ren\+::ILinker\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classren_1_1ILinker}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classren_1_1ILinker_a680f4cce41b6e5e540ea758e2790eb1a_a680f4cce41b6e5e540ea758e2790eb1a}{\texorpdfstring{$\sim$}{\string~}\+ILinker}} () noexcept=default
+\item 
+const std\+::string \& \mbox{\hyperlink{classren_1_1ILinker_a4192feae9df332056a8487b6d1e08f1b_a4192feae9df332056a8487b6d1e08f1b}{get\+Name}} () const noexcept
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIBindable}{IBindable}} $>$ \mbox{\hyperlink{classren_1_1ILinker_a931d059b56fdbc42f198bff4c9056e87_a931d059b56fdbc42f198bff4c9056e87}{get\+Bindable}} ()
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIRenderSurface}{IRender\+Surface}} $>$ \mbox{\hyperlink{classren_1_1ILinker_a9a44001279f58f2071f8a21becaa50c1_a9a44001279f58f2071f8a21becaa50c1}{get\+Render\+Surface}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classren_1_1ILinker_ad259b0ea4d66752335fa4f57817af71f_ad259b0ea4d66752335fa4f57817af71f}{ILinker}} (const std\+::string \&name)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classren_1_1ILinker_a90402bb7d4c9078d4d7f153809d30aaf_a90402bb7d4c9078d4d7f153809d30aaf}{m\+\_\+name}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classren_1_1ILinker_ad259b0ea4d66752335fa4f57817af71f_ad259b0ea4d66752335fa4f57817af71f}\index{ren::ILinker@{ren::ILinker}!ILinker@{ILinker}}
+\index{ILinker@{ILinker}!ren::ILinker@{ren::ILinker}}
+\doxysubsubsection{\texorpdfstring{ILinker()}{ILinker()}}
+{\footnotesize\ttfamily \label{classren_1_1ILinker_ad259b0ea4d66752335fa4f57817af71f_ad259b0ea4d66752335fa4f57817af71f} 
+ren\+::\+ILinker\+::\+ILinker (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classren_1_1ILinker_a680f4cce41b6e5e540ea758e2790eb1a_a680f4cce41b6e5e540ea758e2790eb1a}\index{ren::ILinker@{ren::ILinker}!````~ILinker@{\texorpdfstring{$\sim$}{\string~}ILinker}}
+\index{````~ILinker@{\texorpdfstring{$\sim$}{\string~}ILinker}!ren::ILinker@{ren::ILinker}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ILinker()}{\string~ILinker()}}
+{\footnotesize\ttfamily \label{classren_1_1ILinker_a680f4cce41b6e5e540ea758e2790eb1a_a680f4cce41b6e5e540ea758e2790eb1a} 
+virtual ren\+::\+ILinker\+::\texorpdfstring{$\sim$}{\string~}\+ILinker (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}, {\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classren_1_1ILinker_a931d059b56fdbc42f198bff4c9056e87_a931d059b56fdbc42f198bff4c9056e87}\index{ren::ILinker@{ren::ILinker}!getBindable@{getBindable}}
+\index{getBindable@{getBindable}!ren::ILinker@{ren::ILinker}}
+\doxysubsubsection{\texorpdfstring{getBindable()}{getBindable()}}
+{\footnotesize\ttfamily \label{classren_1_1ILinker_a931d059b56fdbc42f198bff4c9056e87_a931d059b56fdbc42f198bff4c9056e87} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIBindable}{IBindable}} $>$ ren\+::\+ILinker\+::get\+Bindable (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classren_1_1BindableLinker_a44609872588cc627c55ba427b43f1316_a44609872588cc627c55ba427b43f1316}{ren\+::\+Bindable\+Linker$<$ T $>$}}.
+
+\Hypertarget{classren_1_1ILinker_a4192feae9df332056a8487b6d1e08f1b_a4192feae9df332056a8487b6d1e08f1b}\index{ren::ILinker@{ren::ILinker}!getName@{getName}}
+\index{getName@{getName}!ren::ILinker@{ren::ILinker}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily \label{classren_1_1ILinker_a4192feae9df332056a8487b6d1e08f1b_a4192feae9df332056a8487b6d1e08f1b} 
+const std\+::string \& ren\+::\+ILinker\+::get\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classren_1_1ILinker_a9a44001279f58f2071f8a21becaa50c1_a9a44001279f58f2071f8a21becaa50c1}\index{ren::ILinker@{ren::ILinker}!getRenderSurface@{getRenderSurface}}
+\index{getRenderSurface@{getRenderSurface}!ren::ILinker@{ren::ILinker}}
+\doxysubsubsection{\texorpdfstring{getRenderSurface()}{getRenderSurface()}}
+{\footnotesize\ttfamily \label{classren_1_1ILinker_a9a44001279f58f2071f8a21becaa50c1_a9a44001279f58f2071f8a21becaa50c1} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIRenderSurface}{IRender\+Surface}} $>$ ren\+::\+ILinker\+::get\+Render\+Surface (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classren_1_1RenderSurfaceLinker_af597b7c04be623fb8790843390974ded_af597b7c04be623fb8790843390974ded}{ren\+::\+Render\+Surface\+Linker$<$ T $>$}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classren_1_1ILinker_a90402bb7d4c9078d4d7f153809d30aaf_a90402bb7d4c9078d4d7f153809d30aaf}\index{ren::ILinker@{ren::ILinker}!m\_name@{m\_name}}
+\index{m\_name@{m\_name}!ren::ILinker@{ren::ILinker}}
+\doxysubsubsection{\texorpdfstring{m\_name}{m\_name}}
+{\footnotesize\ttfamily \label{classren_1_1ILinker_a90402bb7d4c9078d4d7f153809d30aaf_a90402bb7d4c9078d4d7f153809d30aaf} 
+std\+::string ren\+::\+ILinker\+::m\+\_\+name\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{linker_8h}{linker.\+h}}\item 
+src/\mbox{\hyperlink{linker_8cpp}{linker.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,477 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="transform__vscb_8h" kind="file" language="C++">
+    <compoundname>transform_vscb.h</compoundname>
+    <includes local="no">DirectXMath.h</includes>
+    <includes refid="bindable_8h" local="yes">bindable.h</includes>
+    <includes refid="dynamic__constant__buffer_8h" local="yes">dynamic_constant_buffer.h</includes>
+    <includedby refid="mesh_8h" local="yes">inc/mesh.h</includedby>
+    <includedby refid="camera__frustum_8cpp" local="yes">src/camera_frustum.cpp</includedby>
+    <includedby refid="camera__widget_8cpp" local="yes">src/camera_widget.cpp</includedby>
+    <includedby refid="cube_8cpp" local="yes">src/cube.cpp</includedby>
+    <includedby refid="line_8cpp" local="yes">src/line.cpp</includedby>
+    <includedby refid="material__loader_8cpp" local="yes">src/material_loader.cpp</includedby>
+    <includedby refid="plane_8cpp" local="yes">src/plane.cpp</includedby>
+    <includedby refid="sphere_8cpp" local="yes">src/sphere.cpp</includedby>
+    <includedby refid="terrain_8cpp" local="yes">src/terrain.cpp</includedby>
+    <includedby refid="transform__vscb_8cpp" local="yes">src/transform_vscb.cpp</includedby>
+    <incdepgraph>
+      <node id="7">
+        <label>assertions_console.h</label>
+        <link refid="assertions__console_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>bindable.h</label>
+        <link refid="bindable_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>dynamic_constant_buffer.h</label>
+        <link refid="dynamic__constant__buffer_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>graphics_friend.h</label>
+        <link refid="graphics__friend_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>key_type_traits.h</label>
+        <link refid="key__type__traits_8h"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/transform_vscb.h</label>
+        <link refid="transform__vscb_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>utils_global.h</label>
+        <link refid="utils__global_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>DirectXMath.h</label>
+      </node>
+      <node id="22">
+        <label>algorithm</label>
+      </node>
+      <node id="18">
+        <label>bitset</label>
+      </node>
+      <node id="10">
+        <label>cassert</label>
+      </node>
+      <node id="20">
+        <label>cinttypes</label>
+      </node>
+      <node id="19">
+        <label>cstddef</label>
+      </node>
+      <node id="6">
+        <label>d3d11.h</label>
+      </node>
+      <node id="26">
+        <label>execution</label>
+      </node>
+      <node id="21">
+        <label>future</label>
+      </node>
+      <node id="8">
+        <label>iostream</label>
+      </node>
+      <node id="24">
+        <label>iterator</label>
+      </node>
+      <node id="4">
+        <label>memory</label>
+      </node>
+      <node id="23">
+        <label>numeric</label>
+      </node>
+      <node id="12">
+        <label>optional</label>
+      </node>
+      <node id="25">
+        <label>regex</label>
+      </node>
+      <node id="17">
+        <label>set</label>
+      </node>
+      <node id="16">
+        <label>sstream</label>
+      </node>
+      <node id="13">
+        <label>string</label>
+      </node>
+      <node id="28">
+        <label>type_traits</label>
+      </node>
+      <node id="14">
+        <label>unordered_map</label>
+      </node>
+      <node id="11">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>inc/camera_frustum.h</label>
+        <link refid="camera__frustum_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>inc/camera_widget.h</label>
+        <link refid="camera__widget_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>inc/cube.h</label>
+        <link refid="cube_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>inc/game.h</label>
+        <link refid="game_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>inc/line.h</label>
+        <link refid="line_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>inc/mesh.h</label>
+        <link refid="mesh_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>inc/plane.h</label>
+        <link refid="plane_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>inc/sphere.h</label>
+        <link refid="sphere_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>inc/terrain.h</label>
+        <link refid="terrain_8h"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/transform_vscb.h</label>
+        <link refid="transform__vscb_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>src/MODEL.CPP</label>
+        <link refid="MODEL_8CPP"/>
+      </node>
+      <node id="4">
+        <label>src/camera.cpp</label>
+        <link refid="camera_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/camera_frustum.cpp</label>
+        <link refid="camera__frustum_8cpp"/>
+      </node>
+      <node id="7">
+        <label>src/camera_widget.cpp</label>
+        <link refid="camera__widget_8cpp"/>
+      </node>
+      <node id="9">
+        <label>src/cube.cpp</label>
+        <link refid="cube_8cpp"/>
+      </node>
+      <node id="10">
+        <label>src/game.cpp</label>
+        <link refid="game_8cpp"/>
+      </node>
+      <node id="23">
+        <label>src/imgui_visitors.cpp</label>
+        <link refid="imgui__visitors_8cpp"/>
+      </node>
+      <node id="24">
+        <label>src/job.cpp</label>
+        <link refid="job_8cpp"/>
+      </node>
+      <node id="16">
+        <label>src/light_source.cpp</label>
+        <link refid="light__source_8cpp"/>
+      </node>
+      <node id="12">
+        <label>src/line.cpp</label>
+        <link refid="line_8cpp"/>
+      </node>
+      <node id="20">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="25">
+        <label>src/material.cpp</label>
+        <link refid="material_8cpp"/>
+      </node>
+      <node id="31">
+        <label>src/material_loader.cpp</label>
+        <link refid="material__loader_8cpp"/>
+      </node>
+      <node id="26">
+        <label>src/mesh.cpp</label>
+        <link refid="mesh_8cpp"/>
+      </node>
+      <node id="27">
+        <label>src/node.cpp</label>
+        <link refid="node_8cpp"/>
+      </node>
+      <node id="14">
+        <label>src/plane.cpp</label>
+        <link refid="plane_8cpp"/>
+      </node>
+      <node id="17">
+        <label>src/sphere.cpp</label>
+        <link refid="sphere_8cpp"/>
+      </node>
+      <node id="21">
+        <label>src/terrain.cpp</label>
+        <link refid="terrain_8cpp"/>
+      </node>
+      <node id="28">
+        <label>src/testing.cpp</label>
+        <link refid="testing_8cpp"/>
+      </node>
+      <node id="29">
+        <label>src/transform_vscb.cpp</label>
+        <link refid="transform__vscb_8cpp"/>
+      </node>
+      <node id="30">
+        <label>src/ui_component.cpp</label>
+        <link refid="ui__component_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classTransformVSCB" prot="public">TransformVSCB</innerclass>
+    <innerclass refid="structTransformVSCB_1_1Transforms" prot="protected">TransformVSCB::Transforms</innerclass>
+    <innerclass refid="classTransformScaleVSCB" prot="public">TransformScaleVSCB</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;DirectXMath.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="bindable_8h" kindref="compound">bindable.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dynamic__constant__buffer_8h" kindref="compound">dynamic_constant_buffer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>CB&gt;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classVertexShaderConstantBuffer" kindref="compound">VertexShaderConstantBuffer</ref>;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classGraphics" kindref="compound">Graphics</ref>;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classIImGuiConstantBufferVisitor" kindref="compound">IImGuiConstantBufferVisitor</ref>;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMesh" kindref="compound">Mesh</ref>;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classTransformVSCB" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classTransformVSCB" kindref="compound">TransformVSCB</ref></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classIBindableCloning" kindref="compound">IBindableCloning</ref></highlight></codeline>
+<codeline lineno="16"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="18" refid="classTransformVSCB_ab8a6b854e3023779655128dc9aaaa78f_1ab8a6b854e3023779655128dc9aaaa78f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMesh" kindref="compound">Mesh</ref><sp/>*<ref refid="classTransformVSCB_ab8a6b854e3023779655128dc9aaaa78f_1ab8a6b854e3023779655128dc9aaaa78f" kindref="member">m_pMesh</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="19" refid="structTransformVSCB_1_1Transforms" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structTransformVSCB_1_1Transforms" kindref="compound">Transforms</ref></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="21" refid="structTransformVSCB_1_1Transforms_a3e979a25a12f1c055e93f9dce8add1d5_1a3e979a25a12f1c055e93f9dce8add1d5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DirectX::XMMATRIX<sp/><ref refid="structTransformVSCB_1_1Transforms_a3e979a25a12f1c055e93f9dce8add1d5_1a3e979a25a12f1c055e93f9dce8add1d5" kindref="member">world</ref>;</highlight></codeline>
+<codeline lineno="22" refid="structTransformVSCB_1_1Transforms_a19dc3c5042c2f17252cc343072176fd0_1a19dc3c5042c2f17252cc343072176fd0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DirectX::XMMATRIX<sp/><ref refid="structTransformVSCB_1_1Transforms_a19dc3c5042c2f17252cc343072176fd0_1a19dc3c5042c2f17252cc343072176fd0" kindref="member">worldView</ref>;</highlight></codeline>
+<codeline lineno="23" refid="structTransformVSCB_1_1Transforms_a68f82122a1c06c71f700783e57399a20_1a68f82122a1c06c71f700783e57399a20" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DirectX::XMMATRIX<sp/><ref refid="structTransformVSCB_1_1Transforms_a68f82122a1c06c71f700783e57399a20_1a68f82122a1c06c71f700783e57399a20" kindref="member">worldViewProjection</ref>;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="26" refid="classTransformVSCB_a04de76f246508b0d6c065b0e695957f2_1a04de76f246508b0d6c065b0e695957f2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;VertexShaderConstantBuffer&lt;Transforms&gt;&gt;<sp/><ref refid="classTransformVSCB_a04de76f246508b0d6c065b0e695957f2_1a04de76f246508b0d6c065b0e695957f2" kindref="member">m_pVscb</ref>;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classTransformVSCB_ae12027ae7f589e1e52fc50b37e609a57_1ae12027ae7f589e1e52fc50b37e609a57" kindref="member">TransformVSCB</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>slot,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMesh" kindref="compound">Mesh</ref><sp/>&amp;<ref refid="namespacemesh" kindref="compound">mesh</ref><sp/>);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classTransformVSCB_ae12027ae7f589e1e52fc50b37e609a57_1ae12027ae7f589e1e52fc50b37e609a57" kindref="member">TransformVSCB</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>slot<sp/>);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classTransformVSCB_ae12027ae7f589e1e52fc50b37e609a57_1ae12027ae7f589e1e52fc50b37e609a57" kindref="member">TransformVSCB</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTransformVSCB" kindref="compound">TransformVSCB</ref><sp/>&amp;rhs<sp/>);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classTransformVSCB" kindref="compound">TransformVSCB</ref>&amp;<sp/><ref refid="classTransformVSCB_a28c94c3e6379fd5a4e860fdc3c2055e0_1a28c94c3e6379fd5a4e860fdc3c2055e0" kindref="member">operator=</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTransformVSCB" kindref="compound">TransformVSCB</ref><sp/>&amp;rhs<sp/>);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classTransformVSCB_ae12027ae7f589e1e52fc50b37e609a57_1ae12027ae7f589e1e52fc50b37e609a57" kindref="member">TransformVSCB</ref>(<sp/><ref refid="classTransformVSCB" kindref="compound">TransformVSCB</ref><sp/>&amp;&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classTransformVSCB" kindref="compound">TransformVSCB</ref>&amp;<sp/><ref refid="classTransformVSCB_a28c94c3e6379fd5a4e860fdc3c2055e0_1a28c94c3e6379fd5a4e860fdc3c2055e0" kindref="member">operator=</ref>(<sp/><ref refid="classTransformVSCB" kindref="compound">TransformVSCB</ref><sp/>&amp;&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTransformVSCB_a4785fd8ba7b9a6c5c6627267e19341ac_1a4785fd8ba7b9a6c5c6627267e19341ac" kindref="member">bind</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;IBindableCloning&gt;<sp/><ref refid="classTransformVSCB_a1d99b55bc8ca072f29a8bee783040392_1a1d99b55bc8ca072f29a8bee783040392" kindref="member">clone</ref>()<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;<ref refid="classIBindableCloning" kindref="compound">IBindableCloning</ref>&gt;<sp/><ref refid="classTransformVSCB_a1d99b55bc8ca072f29a8bee783040392_1a1d99b55bc8ca072f29a8bee783040392" kindref="member">clone</ref>()<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">protected:</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTransformVSCB_a26b662b13d2b6dd03a60fe27f88a5006_1a26b662b13d2b6dd03a60fe27f88a5006" kindref="member">update</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/>const<sp/><ref refid="structTransformVSCB_1_1Transforms" kindref="compound">Transforms</ref><sp/>&amp;tfs<sp/>)<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTransformVSCB_a015977e99491a38b2167ab546aaa80b3_1a015977e99491a38b2167ab546aaa80b3" kindref="member">bindCb</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTransformVSCB_1_1Transforms" kindref="compound">Transforms</ref><sp/><ref refid="classTransformVSCB_a06c7c77c6969a8955f01456384f44a9e_1a06c7c77c6969a8955f01456384f44a9e" kindref="member">getTransforms</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="classTransformScaleVSCB" refkind="compound"><highlight class="normal">class<sp/><ref refid="classTransformScaleVSCB" kindref="compound">TransformScaleVSCB</ref></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>public<sp/><ref refid="classTransformVSCB" kindref="compound">TransformVSCB</ref></highlight></codeline>
+<codeline lineno="47"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="48" refid="classTransformScaleVSCB_ac0bc2e42329655a2b8aedf93a3b5680d_1ac0bc2e42329655a2b8aedf93a3b5680d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcon_1_1CBuffer" kindref="compound">con::CBuffer</ref><sp/><ref refid="classTransformScaleVSCB_ac0bc2e42329655a2b8aedf93a3b5680d_1ac0bc2e42329655a2b8aedf93a3b5680d" kindref="member">m_cbScale</ref>;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classTransformScaleVSCB" kindref="compound">TransformScaleVSCB</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>slot,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>scale<sp/>);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classTransformScaleVSCB" kindref="compound">TransformScaleVSCB</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTransformScaleVSCB" kindref="compound">TransformScaleVSCB</ref><sp/>&amp;rhs<sp/>);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classTransformScaleVSCB" kindref="compound">TransformScaleVSCB</ref>&amp;<sp/><ref refid="classTransformVSCB_a28c94c3e6379fd5a4e860fdc3c2055e0_1a28c94c3e6379fd5a4e860fdc3c2055e0" kindref="member">operator=</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTransformScaleVSCB" kindref="compound">TransformScaleVSCB</ref><sp/>&amp;rhs<sp/>);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classTransformScaleVSCB" kindref="compound">TransformScaleVSCB</ref>(<sp/><ref refid="classTransformScaleVSCB" kindref="compound">TransformScaleVSCB</ref><sp/>&amp;&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classTransformScaleVSCB" kindref="compound">TransformScaleVSCB</ref>&amp;<sp/><ref refid="classTransformVSCB_a28c94c3e6379fd5a4e860fdc3c2055e0_1a28c94c3e6379fd5a4e860fdc3c2055e0" kindref="member">operator=</ref>(<sp/><ref refid="classTransformScaleVSCB" kindref="compound">TransformScaleVSCB</ref><sp/>&amp;&amp;rhs<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classIBindable_a608c5066b829febbd49cd82d1d1fa353_1a608c5066b829febbd49cd82d1d1fa353" kindref="member">accept</ref>(<sp/><ref refid="classIImGuiConstantBufferVisitor" kindref="compound">IImGuiConstantBufferVisitor</ref><sp/>&amp;ev<sp/>)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTransformVSCB_a4785fd8ba7b9a6c5c6627267e19341ac_1a4785fd8ba7b9a6c5c6627267e19341ac" kindref="member">bind</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classIBindable_a12fe8725cb3f4836f22d1592b07e2c91_1a12fe8725cb3f4836f22d1592b07e2c91" kindref="member">setMesh</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMesh" kindref="compound">Mesh</ref><sp/>&amp;<ref refid="namespacemesh" kindref="compound">mesh</ref><sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;IBindableCloning&gt;<sp/><ref refid="classTransformVSCB_a1d99b55bc8ca072f29a8bee783040392_1a1d99b55bc8ca072f29a8bee783040392" kindref="member">clone</ref>()<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;<ref refid="classIBindableCloning" kindref="compound">IBindableCloning</ref>&gt;<sp/><ref refid="classTransformVSCB_a1d99b55bc8ca072f29a8bee783040392_1a1d99b55bc8ca072f29a8bee783040392" kindref="member">clone</ref>()<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">private:</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/><ref refid="namespacecon" kindref="compound">con</ref>::RawLayout<sp/>calcCbLayout();</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/transform_vscb.h"/>
+  </compounddef>
+</doxygen>

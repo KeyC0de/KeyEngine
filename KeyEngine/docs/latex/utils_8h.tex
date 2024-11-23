@@ -1,0 +1,187 @@
+\doxysection{inc/utils.h File Reference}
+\hypertarget{utils_8h}{}\label{utils_8h}\index{inc/utils.h@{inc/utils.h}}
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$set$>$}\newline
+{\ttfamily \#include $<$bitset$>$}\newline
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$cinttypes$>$}\newline
+{\ttfamily \#include $<$future$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$numeric$>$}\newline
+{\ttfamily \#include $<$iterator$>$}\newline
+{\ttfamily \#include $<$regex$>$}\newline
+{\ttfamily \#include $<$execution$>$}\newline
+{\ttfamily \#include "{}assertions\+\_\+console.\+h"{}}\newline
+{\ttfamily \#include "{}key\+\_\+type\+\_\+traits.\+h"{}}\newline
+{\ttfamily \#include "{}utils\+\_\+global.\+h"{}}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceutil}{util}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{namespaceutil_a49d694f983612063981f0a3f27c9ab9b_a49d694f983612063981f0a3f27c9ab9b}{util\+::combine\+Unsigned\+Int32to64}} (const unsigned int high32\+Bit, const unsigned int low32\+Bit)
+\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{namespaceutil_a16725a1ddd3cd0f473a0c915e9e7aa31_a16725a1ddd3cd0f473a0c915e9e7aa31}{util\+::safe\+Delete}} (T \texorpdfstring{$\ast$}{*}\&p)
+\item 
+{\footnotesize template$<$typename T , typename  = std\+::enable\+\_\+if\+\_\+t$<$is\+\_\+pointer\+\_\+wrapper\+\_\+v$<$\+T$>$$>$$>$ }\\void \mbox{\hyperlink{namespaceutil_aa985df3270c6bf1cbd444decbc648d23_aa985df3270c6bf1cbd444decbc648d23}{util\+::safe\+Delete}} (T \&p\+Sm)
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceutil_a109becba16ea1005edf128d5486b8608_a109becba16ea1005edf128d5486b8608}{util\+::sum}} (std\+::initializer\+\_\+list$<$ T $>$ lst)
+\item 
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{namespaceutil_a8b28c4afe12b8516b7e88d2c0162ab58_a8b28c4afe12b8516b7e88d2c0162ab58}{util\+::is\+Future\+Ready}} (const std\+::future$<$ T $>$ \&fu)
+\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{namespaceutil_ad5fc31a90c5660d5e200f2ced161da84_ad5fc31a90c5660d5e200f2ced161da84}{util\+::tokenize\+Quoted\+String}} (const std\+::string \&input)
+\begin{DoxyCompactList}\small\item\em converts a string input into a vector of strings \end{DoxyCompactList}\item 
+std\+::wstring \mbox{\hyperlink{namespaceutil_a6f14f660ccbdb1435f227700fa1dfd94_a6f14f660ccbdb1435f227700fa1dfd94}{util\+::s2ws}} (const std\+::string \&narrow)
+\begin{DoxyCompactList}\small\item\em convert from strings/chars to wide strings/wchar\+\_\+ts, or std\+::wstring( s.\+begin(), s.\+end() ); \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespaceutil_a81e6fd9c125b3f26fb70d1847f6ff517_a81e6fd9c125b3f26fb70d1847f6ff517}{util\+::ws2s}} (const std\+::wstring \&wide)
+\begin{DoxyCompactList}\small\item\em convert wide strings/wchar\+\_\+ts to strings/chars \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceutil_a25793b6d04ffa8c86a51f8f82338fba3_a25793b6d04ffa8c86a51f8f82338fba3}{util\+::remove\+Substring}} (std\+::string \&str, const std\+::string \&substring)
+\item 
+std\+::string \mbox{\hyperlink{namespaceutil_ad0a21d01322ceda52938b313f3cc6aaa_ad0a21d01322ceda52938b313f3cc6aaa}{util\+::trim\+String\+From\+Start}} (const std\+::string \&str, const int n\+Chars)
+\begin{DoxyCompactList}\small\item\em trim n\+Chars from the start of the string \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespaceutil_a15cfe5cd27162872c90d985d87d7333d_a15cfe5cd27162872c90d985d87d7333d}{util\+::trim\+String\+From\+End}} (const std\+::string \&str, const int n\+Chars)
+\item 
+void \mbox{\hyperlink{namespaceutil_a64cd915f6693db8debb42c8bb38448ad_a64cd915f6693db8debb42c8bb38448ad}{util\+::trim\+String\+From\+Start\+In\+Place}} (std \+::string \&str, const int n\+Chars)
+\item 
+void \mbox{\hyperlink{namespaceutil_a3118ce20ff29552b5ac2926733ff4217_a3118ce20ff29552b5ac2926733ff4217}{util\+::trim\+String\+From\+End\+In\+Place}} (std\+::string \&str, const int n\+Chars)
+\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{namespaceutil_a348a3ef87044b01682ceed43343b68f9_a348a3ef87044b01682ceed43343b68f9}{util\+::split\+Delimited\+String}} (const std\+::string \&str, const char delimiter)
+\begin{DoxyCompactList}\small\item\em example\+: split\+Delimited\+String( sea\+\_\+horde\+\_\+faction\+\_\+keys, "{};"{} ); \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespaceutil_a73e42b8129fee18fa3a3b5695fe73ea4_a73e42b8129fee18fa3a3b5695fe73ea4}{util\+::assemble\+Delimited\+String}} (const std\+::vector$<$ std\+::string $>$ \&delimited\+String, const char delimiter)
+\item 
+void \mbox{\hyperlink{namespaceutil_aa845e36a4114a586437cc5900b2c0025_aa845e36a4114a586437cc5900b2c0025}{util\+::remove\+From\+Delimited\+String}} (std\+::vector$<$ std\+::string $>$ \&delimited\+String, const char delimiter, const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em removes all occurrences of str from delimited\+\_\+string \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespaceutil_a0ab06e57f9acb28ffd209902e9226731_a0ab06e57f9acb28ffd209902e9226731}{util\+::string\+Contains}} (std\+::string\+\_\+view haystack, std\+::string\+\_\+view needle)
+\item 
+std\+::string \& \mbox{\hyperlink{namespaceutil_a8ea22a55ee940e9d5aab2b939875ba4a_a8ea22a55ee940e9d5aab2b939875ba4a}{util\+::capitalize\+First\+Letter}} (std\+::string \&str)
+\item 
+std\+::string \mbox{\hyperlink{namespaceutil_ae0282ca7ffdf3652129705fe58eb6e5f_ae0282ca7ffdf3652129705fe58eb6e5f}{util\+::capitalize\+First\+Letter}} (const std\+::string \&str)
+\item 
+std\+::string \mbox{\hyperlink{namespaceutil_ac8acfdbbacd733b86b68949387ba8ad8_ac8acfdbbacd733b86b68949387ba8ad8}{util\+::int\+To\+Str}} (int integer) noexcept
+\item 
+int \mbox{\hyperlink{namespaceutil_a77530f53a3b13566c5ac366f48ca3470_a77530f53a3b13566c5ac366f48ca3470}{util\+::string\+To\+Int}} (const std\+::string \&str) noexcept
+\item 
+void \mbox{\hyperlink{namespaceutil_ad8703794d925cf6667c7e524d2c0a1e1_ad8703794d925cf6667c7e524d2c0a1e1}{util\+::trim\+Spaces\+Left}} (std\+::string \&s)
+\begin{DoxyCompactList}\small\item\em trim\+Spaces from start (in place) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceutil_aeb3e149c28bc70655000566622273613_aeb3e149c28bc70655000566622273613}{util\+::trim\+Spaces\+Right}} (std\+::string \&s)
+\begin{DoxyCompactList}\small\item\em trim\+Spaces from end (in place) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceutil_aa45ff2feb5b66709c315b058656cd53a_aa45ff2feb5b66709c315b058656cd53a}{util\+::trim\+Spaces}} (std\+::string \&s)
+\begin{DoxyCompactList}\small\item\em trim\+Spaces from both ends (in place) \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespaceutil_a8d38081987502aa8d2c6fcd96ce808fe_a8d38081987502aa8d2c6fcd96ce808fe}{util\+::trim\+Spaces\+Copy}} (std\+::string s)
+\begin{DoxyCompactList}\small\item\em trim\+Spaces from both ends (copying) \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespaceutil_a24e5bc723978ad1a06075f9544c2ca9a_a24e5bc723978ad1a06075f9544c2ca9a}{util\+::trim\+Spaces\+LCopy}} (std\+::string s)
+\begin{DoxyCompactList}\small\item\em trim\+Spaces from start (copying) \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespaceutil_adab26c60ceda7aef0d2ed9c8a53ea024_adab26c60ceda7aef0d2ed9c8a53ea024}{util\+::trim\+Spaces\+Right\+Copy}} (std\+::string s)
+\begin{DoxyCompactList}\small\item\em trim\+Spaces from end (copying) \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\std\+::string \mbox{\hyperlink{namespaceutil_acc9930a5ac52bb184d7605a05a9a2ba2_acc9930a5ac52bb184d7605a05a9a2ba2}{util\+::to\+String}} (const T \&t)
+\item 
+{\footnotesize template$<$typename T , typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+integral\+\_\+v$<$\+T$>$$>$$>$ }\\void \mbox{\hyperlink{namespaceutil_a9f5c13636a731d3784dd09cb9a4e5d36_a9f5c13636a731d3784dd09cb9a4e5d36}{util\+::print\+Binary}} (const T val)
+\item 
+std\+::tuple$<$ int, int, int $>$ \mbox{\hyperlink{namespaceutil_aa6b8fb4c8d30e5b2f82e8b2aaceaa541_aa6b8fb4c8d30e5b2f82e8b2aaceaa541}{util\+::time\+To\+Hms}} (const float time)
+\item 
+std\+::tuple$<$ int, int, int $>$ \mbox{\hyperlink{namespaceutil_aa594e46f7f551ca6c16364ea1d1fda35_aa594e46f7f551ca6c16364ea1d1fda35}{util\+::seconds\+To\+Hms}} (const int total\+Secs)
+\item 
+time\+\_\+t \mbox{\hyperlink{namespaceutil_a5974fc1551b19ddb73b26a08a44d34c1_a5974fc1551b19ddb73b26a08a44d34c1}{util\+::seconds\+To\+TimeT}} (const int s)
+\begin{DoxyCompactList}\small\item\em convert seconds to time\+\_\+t \end{DoxyCompactList}\item 
+long int \mbox{\hyperlink{namespaceutil_ab7bc28dff3d367e7cf9c472f42112628_ab7bc28dff3d367e7cf9c472f42112628}{util\+::time\+Tto\+Seconds}} (const time\+\_\+t t)
+\begin{DoxyCompactList}\small\item\em convert time\+\_\+t to seconds --- time\+\_\+t can be acquired as if by means of time(nullptr) \end{DoxyCompactList}\item 
+std\+::uintptr\+\_\+t \mbox{\hyperlink{namespaceutil_a3d18d29fbb21273515e6b38ff2b47109_a3d18d29fbb21273515e6b38ff2b47109}{util\+::pointer\+To\+Int}} (const void \texorpdfstring{$\ast$}{*}p)
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespaceutil_a37236425a39502bc2364fe09e185d262_a37236425a39502bc2364fe09e185d262}{util\+::int\+To\+Pointer}} (const uintptr\+\_\+t i)
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespaceutil_af3e0fba53fdf2642e7e7b847f293c278_af3e0fba53fdf2642e7e7b847f293c278}{util\+::add\+Pointers}} (const void \texorpdfstring{$\ast$}{*}p1, const void \texorpdfstring{$\ast$}{*}p2)
+\item 
+std\+::string \mbox{\hyperlink{namespaceutil_a46c3e4ce9bbbdf7785ac019134080adb_a46c3e4ce9bbbdf7785ac019134080adb}{util\+::operator+}} (const std\+::string\+\_\+view \&sv1, const std\+::string\+\_\+view \&sv2)
+\item 
+{\footnotesize template$<$typename T , typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+arithmetic\+\_\+v$<$\+T$>$$>$$>$ }\\std\+::string \mbox{\hyperlink{namespaceutil_a03db4e23a89578616a42638fcae43646_a03db4e23a89578616a42638fcae43646}{util\+::get\+Number\+String}} (const T num)
+\begin{DoxyCompactList}\small\item\em print a comma every 3 decimal places \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespaceutil_aeb767cc44dedcd141e63a057cc250ca7_aeb767cc44dedcd141e63a057cc250ca7}{util\+::generate\+Captcha}} (int len)
+\item 
+unsigned char \mbox{\hyperlink{namespaceutil_a231ff37a555718ffa5cbaa39694b0025_a231ff37a555718ffa5cbaa39694b0025}{util\+::map\+To\+Byte}} (const float value)
+\item 
+unsigned char \mbox{\hyperlink{namespaceutil_a6069b6178e28e74632539744d6057427_a6069b6178e28e74632539744d6057427}{util\+::map\+To\+Byte}} (const double value)
+\item 
+bool \mbox{\hyperlink{namespaceutil_a58bf66e63af566389408f9b12cdb066f_a58bf66e63af566389408f9b12cdb066f}{util\+::is\+Aligned}} (const volatile void \texorpdfstring{$\ast$}{*}p, const std\+::size\+\_\+t alignment) noexcept
+\begin{DoxyCompactList}\small\item\em check whether the address is aligned to {\ttfamily alignment} boundary \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespaceutil_a4149475be88bee44ab63b28885c19981_a4149475be88bee44ab63b28885c19981}{util\+::is\+Aligned}} (const std\+::uintptr\+\_\+t pi, const std\+::size\+\_\+t alignment) noexcept
+\item 
+constexpr const int \mbox{\hyperlink{namespaceutil_a93f7209e8be0722fb528788aa9942b53_a93f7209e8be0722fb528788aa9942b53}{util\+::is4\+Byte\+Aligned}} (const intptr\+\_\+t \texorpdfstring{$\ast$}{*}addr)
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespaceutil_a9c9724666639b7f1c138eb0c4bddd75b_a9c9724666639b7f1c138eb0c4bddd75b}{util\+::align\+Forward}} (const T \texorpdfstring{$\ast$}{*}p, const std\+::size\+\_\+t alignment) noexcept
+\begin{DoxyCompactList}\small\item\em align pointer forward with given alignment \end{DoxyCompactList}\item 
+std\+::uintptr\+\_\+t \mbox{\hyperlink{namespaceutil_a105de072219f189de8e532bdae001f55_a105de072219f189de8e532bdae001f55}{util\+::align\+Forward}} (const std\+::uintptr\+\_\+t ip, const std\+::size\+\_\+t alignment) noexcept
+\item 
+std\+::size\+\_\+t \mbox{\hyperlink{namespaceutil_ad035326969b82db340b760d38f06b68f_ad035326969b82db340b760d38f06b68f}{util\+::calc\+Aligned\+Size}} (const std\+::size\+\_\+t size, const std\+::size\+\_\+t alignment)
+\begin{DoxyCompactList}\small\item\em calculates alignment in bits supposedly \end{DoxyCompactList}\item 
+std\+::size\+\_\+t \mbox{\hyperlink{namespaceutil_a61142bea7d10f60b833c4380abeba43e_a61142bea7d10f60b833c4380abeba43e}{util\+::get\+Forward\+Padding}} (const std\+::size\+\_\+t p, const std\+::size\+\_\+t alignment)
+\begin{DoxyCompactList}\small\item\em calculate padding bytes needed to align address p forward given the alignment \end{DoxyCompactList}\item 
+std\+::size\+\_\+t \mbox{\hyperlink{namespaceutil_add2671cb84bf5dbb46e11970804b154b_add2671cb84bf5dbb46e11970804b154b}{util\+::get\+Forward\+Padding\+With\+Header}} (const std\+::size\+\_\+t p, const std\+::size\+\_\+t alignment, const std\+::size\+\_\+t header\+Size)
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespaceutil_aee781f7c6f96423d9c888e1b1cc0e8e4_aee781f7c6f96423d9c888e1b1cc0e8e4}{util\+::align\+Ptr}} (const T \texorpdfstring{$\ast$}{*}ptr, const std\+::size\+\_\+t alignment)
+\item 
+unsigned int volatile \& \mbox{\hyperlink{namespaceutil_a6564cc9d8da8d8b046599547c73abdb5_a6564cc9d8da8d8b046599547c73abdb5}{util\+::read\+MEM}} (unsigned int memory\+Address)
+\item 
+unsigned long long int volatile \& \mbox{\hyperlink{namespaceutil_aef4aca946c9ba9c6f9a90078e2318ce0_aef4aca946c9ba9c6f9a90078e2318ce0}{util\+::read\+MEM}} (unsigned long long int memory\+Address)
+\item 
+restricted noaliasing void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespaceutil_ab67eedf6aa91b69039e0b9b670d83c6d_ab67eedf6aa91b69039e0b9b670d83c6d}{util\+::get\+Unique\+Memory}} (const std\+::size\+\_\+t bytes)
+\begin{DoxyCompactList}\small\item\em if you allocate an object on the heap, it will be given a unique address within that process; nothing else will be assigned that address until you free the object \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\T \& \mbox{\hyperlink{namespaceutil_ab305fd67d4668cd0e46468fe31accb20_ab305fd67d4668cd0e46468fe31accb20}{util\+::deconst}} (const T \&obj)
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespaceutil_a3f2b31d531a438ac0a59071a4d2cab20_a3f2b31d531a438ac0a59071a4d2cab20}{util\+::deconst}} (const T \texorpdfstring{$\ast$}{*}obj)
+\item 
+{\footnotesize template$<$typename TContainer , typename TP $>$ }\\decltype(auto) \mbox{\hyperlink{namespaceutil_af7a54da6af4a424b6d67d21d68ec09ec_af7a54da6af4a424b6d67d21d68ec09ec}{util\+::pointer\+To\+Iterator}} (TContainer \&c, TP p\+Elem)
+\item 
+{\footnotesize template$<$typename TContainer $>$ }\\void \mbox{\hyperlink{namespaceutil_a036a8b413dc66470ab317df5efe86e74_a036a8b413dc66470ab317df5efe86e74}{util\+::remove\+By\+Back\+Swap}} (TContainer \&container, typename TContainer\+::size\+\_\+type index)
+\item 
+{\footnotesize template$<$typename TContainer $>$ }\\void \mbox{\hyperlink{namespaceutil_a3ff21d733c678e940c5eb027bd98c06a_a3ff21d733c678e940c5eb027bd98c06a}{util\+::remove\+By\+Back\+Swap}} (TContainer \&container, typename TContainer\+::iterator iter)
+\item 
+{\footnotesize template$<$typename T , class Alloc  = std\+::allocator$<$\+T$>$, typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+pointer\+\_\+v$<$\+T$>$$>$$>$ }\\void \mbox{\hyperlink{namespaceutil_a9857a3a40e4aff93d01dcacf6a202224_a9857a3a40e4aff93d01dcacf6a202224}{util\+::remove\+By\+Back\+Swap}} (std\+::vector$<$ T, Alloc $>$ \&v, T p)
+\item 
+{\footnotesize template$<$typename TContainer , typename Predicate , typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+function\+\_\+v$<$\+Predicate$>$$>$$>$ }\\void \mbox{\hyperlink{namespaceutil_a5484eeb515a00225f06c63ddcdb789ed_a5484eeb515a00225f06c63ddcdb789ed}{util\+::remove\+By\+Back\+Swap}} (TContainer \&c, Predicate pred)
+\item 
+{\footnotesize template$<$typename T , class Alloc  = std\+::allocator$<$\+T$>$$>$ }\\void \mbox{\hyperlink{namespaceutil_a67fe6fa3794ebffb16979bb6dee51796_a67fe6fa3794ebffb16979bb6dee51796}{util\+::shrink\+Capacity}} (std\+::vector$<$ T, Alloc $>$ \&v)
+\begin{DoxyCompactList}\small\item\em shrink vector\textquotesingle{}s capacity to its size \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Input\+It , class Output\+It , class TPredicate $>$ }\\void \mbox{\hyperlink{namespaceutil_aed7f0709400954da58ff6957685bf016_aed7f0709400954da58ff6957685bf016}{util\+::move\+If}} (Input\+It src\+First, Input\+It src\+Last, Output\+It \texorpdfstring{$\ast$}{*}dest\+First, TPredicate predicate)
+\begin{DoxyCompactList}\small\item\em note that there is std\+::move(in\+It1, in\+It2, out\+It); \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Container , class TPredicate $>$ }\\void \mbox{\hyperlink{namespaceutil_a6b96830b7748a3066f44445b1924509e_a6b96830b7748a3066f44445b1924509e}{util\+::split\+Move\+Partition}} (Container \&src, Container \&dest, TPredicate p)
+\begin{DoxyCompactList}\small\item\em like partition\+\_\+move -\/ puts the second group of an std\+::partition to another container removing them from the source container \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename TContainer $>$ }\\void \mbox{\hyperlink{namespaceutil_a58dd24c8b09761efb10fc993c89bc05e_a58dd24c8b09761efb10fc993c89bc05e}{util\+::print\+Container}} (const TContainer \&cont, const char \texorpdfstring{$\ast$}{*}delimiter="{} "{})
+\item 
+void \mbox{\hyperlink{namespaceutil_ad3b133a1c662a66bf659eea11d75eb58_ad3b133a1c662a66bf659eea11d75eb58}{util\+::regex\+Search}} (const std\+::regex \&pattern)
+\item 
+{\footnotesize template$<$typename TContainer , typename Func $>$ }\\decltype(auto) \mbox{\hyperlink{namespaceutil_a877a49123c9b34454e4cc00bcf38656f_a877a49123c9b34454e4cc00bcf38656f}{util\+::do\+For\+All}} (TContainer \&c, Func f)
+\item 
+{\footnotesize template$<$class Container , class Filter\+Function $>$ }\\decltype(auto) \mbox{\hyperlink{namespaceutil_a6ac2760c082e6c54ba90f23a4eed04d0_a6ac2760c082e6c54ba90f23a4eed04d0}{util\+::filter\+Container}} (Container \&c, const Filter\+Function \&\&f)
+\item 
+{\footnotesize template$<$typename TContainer $>$ }\\TContainer\+::iterator \mbox{\hyperlink{namespaceutil_a2ef5892f48b68ba6b7bb511acb0f3d11_a2ef5892f48b68ba6b7bb511acb0f3d11}{util\+::erase}} (TContainer \&container, typename TContainer\+::const\+\_\+reference element\+\_\+to\+\_\+erase)
+\item 
+{\footnotesize template$<$typename TContainer , typename TPredicate $>$ }\\TContainer\+::iterator \mbox{\hyperlink{namespaceutil_a5b404ca0691f2398dc871913e83889b0_a5b404ca0691f2398dc871913e83889b0}{util\+::erase\+If}} (TContainer \&container, TPredicate \&\&predicate)
+\item 
+{\footnotesize template$<$typename TContainer , typename T $>$ }\\bool \mbox{\hyperlink{namespaceutil_ac80bfe48c9a68a400561a202412881b7_ac80bfe48c9a68a400561a202412881b7}{util\+::container\+Contains}} (const TContainer \&container, const T \&val)
+\item 
+{\footnotesize template$<$typename TIt , typename TPredicate $>$ }\\bool \mbox{\hyperlink{namespaceutil_a38fdd47f119e081602b54f1d0655495c_a38fdd47f119e081602b54f1d0655495c}{util\+::at\+Least\+NOf\+Range}} (TIt begin, TIt end, size\+\_\+t n, TPredicate \&\&predicate)
+\begin{DoxyCompactList}\small\item\em test if at least N elements of an iterator range match a predicate \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename TContainer , typename TPredicate $>$ }\\bool \mbox{\hyperlink{namespaceutil_adb3cafa314ce4c8b575ec76fe6fe18b2_adb3cafa314ce4c8b575ec76fe6fe18b2}{util\+::at\+Least\+NOf\+Range}} (const TContainer \&container, size\+\_\+t n, TPredicate \&\&predicate)
+\item 
+{\footnotesize template$<$typename TContainer , typename T $>$ }\\unsigned \mbox{\hyperlink{namespaceutil_a960806e3d8cd482b70e3e05c86029298_a960806e3d8cd482b70e3e05c86029298}{util\+::index\+Of}} (const TContainer \&container, const T \&val)
+\item 
+{\footnotesize template$<$typename TContainer , typename T , typename TInserter $>$ }\\bool \mbox{\hyperlink{namespaceutil_acbc2b82ea3979bb100d92ece91f7f3db_acbc2b82ea3979bb100d92ece91f7f3db}{util\+::insert\+Unique}} (const TContainer \&container, T \&\&val, TInserter \&\&inserter)
+\item 
+\mbox{\hyperlink{namespaceutil_a5de5007ffb79d6aee3610259de1d9f85_a5de5007ffb79d6aee3610259de1d9f85}{util\+::\+ALIAS\+\_\+\+FUNCTION}} (\mbox{\hyperlink{namespaceutil_acbc2b82ea3979bb100d92ece91f7f3db_acbc2b82ea3979bb100d92ece91f7f3db}{insert\+Unique}}, emplace\+Back\+Unique)
+\item 
+{\footnotesize template$<$typename TContainer , typename TPredicate , typename... TArgs$>$ }\\TContainer\+::iterator \mbox{\hyperlink{namespaceutil_af6c387c95398dd84b0b28bb6a249d8e1_af6c387c95398dd84b0b28bb6a249d8e1}{util\+::insert\+Unique\+And\+Return\+It}} (TContainer \&container, TPredicate \&\&predicate, TArgs \&\&... args)
+\item 
+\mbox{\hyperlink{namespaceutil_a9ba383f0a8a3a1bc98251bc9779a9447_a9ba383f0a8a3a1bc98251bc9779a9447}{util\+::\+ALIAS\+\_\+\+FUNCTION}} (\mbox{\hyperlink{namespaceutil_af6c387c95398dd84b0b28bb6a249d8e1_af6c387c95398dd84b0b28bb6a249d8e1}{insert\+Unique\+And\+Return\+It}}, emplace\+Back\+Unique\+And\+Return\+It)
+\item 
+{\footnotesize template$<$typename TContainer , typename TComparator $>$ }\\bool \mbox{\hyperlink{namespaceutil_a03de7de71598df04ee509baa662ca4bb_a03de7de71598df04ee509baa662ca4bb}{util\+::has\+Duplicates}} (const TContainer \&container, const TComparator \&comparator)
+\item 
+{\footnotesize template$<$typename TContainer $>$ }\\bool \mbox{\hyperlink{namespaceutil_a789527bc816c768125c4a0a27d17ecc5_a789527bc816c768125c4a0a27d17ecc5}{util\+::has\+Duplicates}} (const TContainer \&container)
+\item 
+{\footnotesize template$<$typename TContainer $>$ }\\std\+::set$<$ typename TContainer\+::value\+\_\+type $>$ \mbox{\hyperlink{namespaceutil_ae4e48cd44f98e109329f1cf1a165bc56_ae4e48cd44f98e109329f1cf1a165bc56}{util\+::uniquefy}} (const TContainer \&container)
+\end{DoxyCompactItemize}

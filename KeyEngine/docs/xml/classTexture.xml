@@ -1,0 +1,537 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classTexture" kind="class" language="C++" prot="public">
+    <compoundname>Texture</compoundname>
+    <basecompoundref refid="classIBindable" prot="public" virt="non-virtual">IBindable</basecompoundref>
+    <includes refid="texture_8h" local="no">texture.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classTexture_a891a27933cfc6deafcc3597ee9cfe07f_1a891a27933cfc6deafcc3597ee9cfe07f" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Texture::m_bAlpha</definition>
+        <argsstring></argsstring>
+        <name>m_bAlpha</name>
+        <qualifiedname>Texture::m_bAlpha</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="18" column="6" bodyfile="inc/texture.h" bodystart="18" bodyend="-1"/>
+        <referencedby refid="classTexture_a0331ea0fa1111565a77e34930527aa9f_1a0331ea0fa1111565a77e34930527aa9f" compoundref="texture_8cpp" startline="14" endline="62">Texture</referencedby>
+        <referencedby refid="classTexture_a715fd642d50db2d070999d5f4cc3879b_1a715fd642d50db2d070999d5f4cc3879b" compoundref="texture_8cpp" startline="135" endline="138">hasAlpha</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classTexture_a938db0f8e54d3817b1ffaecd5370ef1d_1a938db0f8e54d3817b1ffaecd5370ef1d" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Texture::m_bDynamic</definition>
+        <argsstring></argsstring>
+        <name>m_bDynamic</name>
+        <qualifiedname>Texture::m_bDynamic</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="19" column="6" bodyfile="inc/texture.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTexture_a3dd6dde05fca6bd7f4ab08b3a6307959_1a3dd6dde05fca6bd7f4ab08b3a6307959" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Texture::m_path</definition>
+        <argsstring></argsstring>
+        <name>m_path</name>
+        <qualifiedname>Texture::m_path</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="20" column="13" bodyfile="inc/texture.h" bodystart="20" bodyend="-1"/>
+        <referencedby refid="classTexture_aff8d7e3c74f035ccd2161ee662fdd615_1aff8d7e3c74f035ccd2161ee662fdd615" compoundref="texture_8cpp" startline="140" endline="143">getPath</referencedby>
+        <referencedby refid="classTexture_a628d855d2087b4a03c00f781290b26fa_1a628d855d2087b4a03c00f781290b26fa" compoundref="texture_8cpp" startline="176" endline="179">getUid</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classTexture_ac243c2a4552bc0af19b5b1ea812ce9ee_1ac243c2a4552bc0af19b5b1ea812ce9ee" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned Texture::m_width</definition>
+        <argsstring></argsstring>
+        <name>m_width</name>
+        <qualifiedname>Texture::m_width</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="21" column="10" bodyfile="inc/texture.h" bodystart="21" bodyend="-1"/>
+        <referencedby refid="classTexture_a0331ea0fa1111565a77e34930527aa9f_1a0331ea0fa1111565a77e34930527aa9f" compoundref="texture_8cpp" startline="14" endline="62">Texture</referencedby>
+        <referencedby refid="classTexture_a052fba7fdc48d8ab6aa3dd7b0733685e_1a052fba7fdc48d8ab6aa3dd7b0733685e" compoundref="texture_8cpp" startline="145" endline="148">getWidth</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classTexture_ae8f4dc92aa7350d5e5805c520834604f_1ae8f4dc92aa7350d5e5805c520834604f" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned Texture::m_height</definition>
+        <argsstring></argsstring>
+        <name>m_height</name>
+        <qualifiedname>Texture::m_height</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="22" column="10" bodyfile="inc/texture.h" bodystart="22" bodyend="-1"/>
+        <referencedby refid="classTexture_a0331ea0fa1111565a77e34930527aa9f_1a0331ea0fa1111565a77e34930527aa9f" compoundref="texture_8cpp" startline="14" endline="62">Texture</referencedby>
+        <referencedby refid="classTexture_ab783ec34f0deb747df517619c86942ba_1ab783ec34f0deb747df517619c86942ba" compoundref="texture_8cpp" startline="150" endline="153">getHeight</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classTexture_a80f9298671ae47c264992268f659287c_1a80f9298671ae47c264992268f659287c" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int Texture::m_slot</definition>
+        <argsstring></argsstring>
+        <name>m_slot</name>
+        <qualifiedname>Texture::m_slot</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="23" column="14" bodyfile="inc/texture.h" bodystart="23" bodyend="-1"/>
+        <referencedby refid="classTexture_a9637f3b195ad4156f4c35dc6b6c7633c_1a9637f3b195ad4156f4c35dc6b6c7633c" compoundref="texture_8cpp" startline="181" endline="184">getSlot</referencedby>
+        <referencedby refid="classTexture_a628d855d2087b4a03c00f781290b26fa_1a628d855d2087b4a03c00f781290b26fa" compoundref="texture_8cpp" startline="176" endline="179">getUid</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classTexture_abbf21618c668cdaeba940ca5e4c203a8_1abbf21618c668cdaeba940ca5e4c203a8" prot="private" static="no" mutable="no">
+        <type><ref refid="texture_8h_a48efc2b83d04747965ce26c7eb8d406c_1a48efc2b83d04747965ce26c7eb8d406c" kindref="member">TextureOp</ref></type>
+        <definition>TextureOp Texture::m_op</definition>
+        <argsstring></argsstring>
+        <name>m_op</name>
+        <qualifiedname>Texture::m_op</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="24" column="11" bodyfile="inc/texture.h" bodystart="24" bodyend="-1"/>
+        <referencedby refid="classTexture_a628d855d2087b4a03c00f781290b26fa_1a628d855d2087b4a03c00f781290b26fa" compoundref="texture_8cpp" startline="176" endline="179">getUid</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classTexture_a88b470c8fc311e910af1627fa44b51eb_1a88b470c8fc311e910af1627fa44b51eb" prot="private" static="no" mutable="no">
+        <type>Microsoft::WRL::ComPtr&lt; ID3D11Texture2D &gt;</type>
+        <definition>Microsoft::WRL::ComPtr&lt;ID3D11Texture2D&gt; Texture::m_pTex</definition>
+        <argsstring></argsstring>
+        <name>m_pTex</name>
+        <qualifiedname>Texture::m_pTex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="25" column="24" bodyfile="inc/texture.h" bodystart="25" bodyend="-1"/>
+        <referencedby refid="classTexture_a0331ea0fa1111565a77e34930527aa9f_1a0331ea0fa1111565a77e34930527aa9f" compoundref="texture_8cpp" startline="14" endline="62">Texture</referencedby>
+        <referencedby refid="classTexture_a8077b6ae80650f4901ed7f77e014e25b_1a8077b6ae80650f4901ed7f77e014e25b" compoundref="texture_8cpp" startline="64" endline="94">Texture</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classTexture_a6e38a7b24e9a8eb8714b8ce86e8305c8_1a6e38a7b24e9a8eb8714b8ce86e8305c8" prot="private" static="no" mutable="no">
+        <type>Microsoft::WRL::ComPtr&lt; ID3D11ShaderResourceView &gt;</type>
+        <definition>Microsoft::WRL::ComPtr&lt;ID3D11ShaderResourceView&gt; Texture::m_pD3dSrv</definition>
+        <argsstring></argsstring>
+        <name>m_pD3dSrv</name>
+        <qualifiedname>Texture::m_pD3dSrv</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="26" column="24" bodyfile="inc/texture.h" bodystart="26" bodyend="-1"/>
+        <referencedby refid="classTexture_a0331ea0fa1111565a77e34930527aa9f_1a0331ea0fa1111565a77e34930527aa9f" compoundref="texture_8cpp" startline="14" endline="62">Texture</referencedby>
+        <referencedby refid="classTexture_a8077b6ae80650f4901ed7f77e014e25b_1a8077b6ae80650f4901ed7f77e014e25b" compoundref="texture_8cpp" startline="64" endline="94">Texture</referencedby>
+        <referencedby refid="classTexture_afdb1a6d1c899f3619d19fefeeea0de40_1afdb1a6d1c899f3619d19fefeeea0de40" compoundref="texture_8cpp" startline="155" endline="158">getD3dSrv</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTexture_a0331ea0fa1111565a77e34930527aa9f_1a0331ea0fa1111565a77e34930527aa9f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Texture::Texture</definition>
+        <argsstring>(Graphics &amp;gfx, const std::string &amp;filepath, const unsigned slot, TextureOp op=nullptr)</argsstring>
+        <name>Texture</name>
+        <qualifiedname>Texture::Texture</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>filepath</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>slot</declname>
+        </param>
+        <param>
+          <type><ref refid="texture_8h_a48efc2b83d04747965ce26c7eb8d406c_1a48efc2b83d04747965ce26c7eb8d406c" kindref="member">TextureOp</ref></type>
+          <declname>op</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="28" column="1" bodyfile="src/texture.cpp" bodystart="14" bodyend="62"/>
+        <referencedby refid="classTexture_a72e33b3324d9429f293e843b517ac357_1a72e33b3324d9429f293e843b517ac357" compoundref="texture_8cpp" startline="168" endline="174">calcUid</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classTexture_a8077b6ae80650f4901ed7f77e014e25b_1a8077b6ae80650f4901ed7f77e014e25b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Texture::Texture</definition>
+        <argsstring>(Graphics &amp;gfx, const unsigned width, const unsigned height, const unsigned slot, TextureOp op=nullptr)</argsstring>
+        <name>Texture</name>
+        <qualifiedname>Texture::Texture</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>height</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>slot</declname>
+        </param>
+        <param>
+          <type><ref refid="texture_8h_a48efc2b83d04747965ce26c7eb8d406c_1a48efc2b83d04747965ce26c7eb8d406c" kindref="member">TextureOp</ref></type>
+          <declname>op</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para><ref refid="classTexture" kindref="compound">Texture</ref> constructor with dynamic CPU per frame update. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="30" column="1" bodyfile="src/texture.cpp" bodystart="64" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="classTexture_a9f0969925008410870590127fdf960ce_1a9f0969925008410870590127fdf960ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Texture::paintTextureWithBitmap</definition>
+        <argsstring>(Graphics &amp;gfx, ID3D11Texture2D *tex, const Bitmap &amp;bitmap, const D3D11_BOX *destPortion=nullptr)</argsstring>
+        <name>paintTextureWithBitmap</name>
+        <qualifiedname>Texture::paintTextureWithBitmap</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>ID3D11Texture2D *</type>
+          <declname>tex</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classBitmap" kindref="compound">Bitmap</ref> &amp;</type>
+          <declname>bitmap</declname>
+        </param>
+        <param>
+          <type>const D3D11_BOX *</type>
+          <declname>destPortion</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="32" column="6" bodyfile="src/texture.cpp" bodystart="96" bodyend="103"/>
+        <referencedby refid="classTexture_a0331ea0fa1111565a77e34930527aa9f_1a0331ea0fa1111565a77e34930527aa9f" compoundref="texture_8cpp" startline="14" endline="62">Texture</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classTexture_a352000d68cf402ecbc94f2c802a80c48_1a352000d68cf402ecbc94f2c802a80c48" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void Texture::bind</definition>
+        <argsstring>(Graphics &amp;gfx) cond_noex override</argsstring>
+        <name>bind</name>
+        <qualifiedname>Texture::bind</qualifiedname>
+        <reimplements refid="classIBindable_add4560f78e76629ee81ba701ba1052e1_1add4560f78e76629ee81ba701ba1052e1">bind</reimplements>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+<para>bind graphics resource to a certain stage of the graphics pipeline </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="33" column="6" bodyfile="src/texture.cpp" bodystart="125" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="classTexture_ae3518498a4665623f5af7c8468552041_1ae3518498a4665623f5af7c8468552041" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Texture::update</definition>
+        <argsstring>(Graphics &amp;gfx) cond_noex</argsstring>
+        <name>update</name>
+        <qualifiedname>Texture::update</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="34" column="6" bodyfile="src/texture.cpp" bodystart="105" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="classTexture_a715fd642d50db2d070999d5f4cc3879b_1a715fd642d50db2d070999d5f4cc3879b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Texture::hasAlpha</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>hasAlpha</name>
+        <qualifiedname>Texture::hasAlpha</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="35" column="6" bodyfile="src/texture.cpp" bodystart="135" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="classTexture_aff8d7e3c74f035ccd2161ee662fdd615_1aff8d7e3c74f035ccd2161ee662fdd615" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; Texture::getPath</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getPath</name>
+        <qualifiedname>Texture::getPath</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="36" column="19" bodyfile="src/texture.cpp" bodystart="140" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="classTexture_a052fba7fdc48d8ab6aa3dd7b0733685e_1a052fba7fdc48d8ab6aa3dd7b0733685e" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned Texture::getWidth</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getWidth</name>
+        <qualifiedname>Texture::getWidth</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="37" column="10" bodyfile="src/texture.cpp" bodystart="145" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="classTexture_ab783ec34f0deb747df517619c86942ba_1ab783ec34f0deb747df517619c86942ba" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned Texture::getHeight</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getHeight</name>
+        <qualifiedname>Texture::getHeight</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="38" column="10" bodyfile="src/texture.cpp" bodystart="150" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="classTexture_afdb1a6d1c899f3619d19fefeeea0de40_1afdb1a6d1c899f3619d19fefeeea0de40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Microsoft::WRL::ComPtr&lt; ID3D11ShaderResourceView &gt; &amp;</type>
+        <definition>Microsoft::WRL::ComPtr&lt; ID3D11ShaderResourceView &gt; &amp; Texture::getD3dSrv</definition>
+        <argsstring>()</argsstring>
+        <name>getD3dSrv</name>
+        <qualifiedname>Texture::getD3dSrv</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="39" column="24" bodyfile="src/texture.cpp" bodystart="155" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="function" id="classTexture_a628d855d2087b4a03c00f781290b26fa_1a628d855d2087b4a03c00f781290b26fa" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string Texture::getUid</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>getUid</name>
+        <qualifiedname>Texture::getUid</qualifiedname>
+        <reimplements refid="classIBindable_a7d88cdbd5d500d6d7f1bfabe16927855_1a7d88cdbd5d500d6d7f1bfabe16927855">getUid</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="42" column="13" bodyfile="src/texture.cpp" bodystart="176" bodyend="179"/>
+      </memberdef>
+      <memberdef kind="function" id="classTexture_a9637f3b195ad4156f4c35dc6b6c7633c_1a9637f3b195ad4156f4c35dc6b6c7633c" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned Texture::getSlot</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getSlot</name>
+        <qualifiedname>Texture::getSlot</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="43" column="10" bodyfile="src/texture.cpp" bodystart="181" bodyend="184"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classTexture_a9a7654906f9ca05ca82c96f1f2da576e_1a9a7654906f9ca05ca82c96f1f2da576e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classTexture" kindref="compound">Texture</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; Texture &gt; Texture::fetch</definition>
+        <argsstring>(Graphics &amp;gfx, const std::string &amp;filepath, const unsigned slot, TextureOp op=nullptr)</argsstring>
+        <name>fetch</name>
+        <qualifiedname>Texture::fetch</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>filepath</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>slot</declname>
+        </param>
+        <param>
+          <type><ref refid="texture_8h_a48efc2b83d04747965ce26c7eb8d406c_1a48efc2b83d04747965ce26c7eb8d406c" kindref="member">TextureOp</ref></type>
+          <declname>op</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="40" column="24" bodyfile="src/texture.cpp" bodystart="160" bodyend="166"/>
+        <referencedby refid="classCube_af0fe61f07cbc70de782950bac056988b_1af0fe61f07cbc70de782950bac056988b" compoundref="cube_8cpp" startline="23" endline="194">Cube::Cube</referencedby>
+        <referencedby refid="classPlane_a70e7a5971d34e1130740e843a6a18896_1a70e7a5971d34e1130740e843a6a18896" compoundref="plane_8cpp" startline="23" endline="193">Plane::Plane</referencedby>
+        <referencedby refid="classTerrain_af5a4ec6ff724b557052dd12be7f0de0c_1af5a4ec6ff724b557052dd12be7f0de0c" compoundref="terrain_8cpp" startline="24" endline="158">Terrain::Terrain</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classTexture_a72e33b3324d9429f293e843b517ac357_1a72e33b3324d9429f293e843b517ac357" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string Texture::calcUid</definition>
+        <argsstring>(const std::string &amp;filepath, const unsigned slot, TextureOp op=nullptr)</argsstring>
+        <name>calcUid</name>
+        <qualifiedname>Texture::calcUid</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>filepath</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>slot</declname>
+        </param>
+        <param>
+          <type><ref refid="texture_8h_a48efc2b83d04747965ce26c7eb8d406c_1a48efc2b83d04747965ce26c7eb8d406c" kindref="member">TextureOp</ref></type>
+          <declname>op</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="41" column="20" bodyfile="src/texture.cpp" bodystart="168" bodyend="174"/>
+        <referencedby refid="classTexture_a628d855d2087b4a03c00f781290b26fa_1a628d855d2087b4a03c00f781290b26fa" compoundref="texture_8cpp" startline="176" endline="179">getUid</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>GraphicsFriend</label>
+        <link refid="classGraphicsFriend"/>
+      </node>
+      <node id="2">
+        <label>IBindable</label>
+        <link refid="classIBindable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Texture</label>
+        <link refid="classTexture"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4">
+        <label>ColorBGRA</label>
+        <link refid="structColorBGRA"/>
+      </node>
+      <node id="3">
+        <label>GraphicsFriend</label>
+        <link refid="classGraphicsFriend"/>
+      </node>
+      <node id="2">
+        <label>IBindable</label>
+        <link refid="classIBindable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Texture</label>
+        <link refid="classTexture"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>m_op</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/texture.h" line="15" column="1" bodyfile="inc/texture.h" bodystart="17" bodyend="44"/>
+    <listofallmembers>
+      <member refid="classIBindable_a608c5066b829febbd49cd82d1d1fa353_1a608c5066b829febbd49cd82d1d1fa353" prot="public" virt="virtual"><scope>Texture</scope><name>accept</name></member>
+      <member refid="classTexture_a352000d68cf402ecbc94f2c802a80c48_1a352000d68cf402ecbc94f2c802a80c48" prot="public" virt="virtual"><scope>Texture</scope><name>bind</name></member>
+      <member refid="classTexture_a72e33b3324d9429f293e843b517ac357_1a72e33b3324d9429f293e843b517ac357" prot="public" virt="non-virtual"><scope>Texture</scope><name>calcUid</name></member>
+      <member refid="classTexture_a9a7654906f9ca05ca82c96f1f2da576e_1a9a7654906f9ca05ca82c96f1f2da576e" prot="public" virt="non-virtual"><scope>Texture</scope><name>fetch</name></member>
+      <member refid="classTexture_afdb1a6d1c899f3619d19fefeeea0de40_1afdb1a6d1c899f3619d19fefeeea0de40" prot="public" virt="non-virtual"><scope>Texture</scope><name>getD3dSrv</name></member>
+      <member refid="classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_1a175df79f82ab5a6dad1df24b5a242ef7" prot="protected" virt="non-virtual"><scope>Texture</scope><name>getDevice</name></member>
+      <member refid="classGraphicsFriend_a619e32893ab49ea6c5200e7c2d52e2f2_1a619e32893ab49ea6c5200e7c2d52e2f2" prot="protected" virt="non-virtual"><scope>Texture</scope><name>getDeviceContext</name></member>
+      <member refid="classTexture_ab783ec34f0deb747df517619c86942ba_1ab783ec34f0deb747df517619c86942ba" prot="public" virt="non-virtual"><scope>Texture</scope><name>getHeight</name></member>
+      <member refid="classTexture_aff8d7e3c74f035ccd2161ee662fdd615_1aff8d7e3c74f035ccd2161ee662fdd615" prot="public" virt="non-virtual"><scope>Texture</scope><name>getPath</name></member>
+      <member refid="classTexture_a9637f3b195ad4156f4c35dc6b6c7633c_1a9637f3b195ad4156f4c35dc6b6c7633c" prot="public" virt="non-virtual"><scope>Texture</scope><name>getSlot</name></member>
+      <member refid="classTexture_a628d855d2087b4a03c00f781290b26fa_1a628d855d2087b4a03c00f781290b26fa" prot="public" virt="virtual"><scope>Texture</scope><name>getUid</name></member>
+      <member refid="classTexture_a052fba7fdc48d8ab6aa3dd7b0733685e_1a052fba7fdc48d8ab6aa3dd7b0733685e" prot="public" virt="non-virtual"><scope>Texture</scope><name>getWidth</name></member>
+      <member refid="classTexture_a715fd642d50db2d070999d5f4cc3879b_1a715fd642d50db2d070999d5f4cc3879b" prot="public" virt="non-virtual"><scope>Texture</scope><name>hasAlpha</name></member>
+      <member refid="classTexture_a891a27933cfc6deafcc3597ee9cfe07f_1a891a27933cfc6deafcc3597ee9cfe07f" prot="private" virt="non-virtual"><scope>Texture</scope><name>m_bAlpha</name></member>
+      <member refid="classTexture_a938db0f8e54d3817b1ffaecd5370ef1d_1a938db0f8e54d3817b1ffaecd5370ef1d" prot="private" virt="non-virtual"><scope>Texture</scope><name>m_bDynamic</name></member>
+      <member refid="classTexture_ae8f4dc92aa7350d5e5805c520834604f_1ae8f4dc92aa7350d5e5805c520834604f" prot="private" virt="non-virtual"><scope>Texture</scope><name>m_height</name></member>
+      <member refid="classTexture_abbf21618c668cdaeba940ca5e4c203a8_1abbf21618c668cdaeba940ca5e4c203a8" prot="private" virt="non-virtual"><scope>Texture</scope><name>m_op</name></member>
+      <member refid="classTexture_a3dd6dde05fca6bd7f4ab08b3a6307959_1a3dd6dde05fca6bd7f4ab08b3a6307959" prot="private" virt="non-virtual"><scope>Texture</scope><name>m_path</name></member>
+      <member refid="classTexture_a6e38a7b24e9a8eb8714b8ce86e8305c8_1a6e38a7b24e9a8eb8714b8ce86e8305c8" prot="private" virt="non-virtual"><scope>Texture</scope><name>m_pD3dSrv</name></member>
+      <member refid="classTexture_a88b470c8fc311e910af1627fa44b51eb_1a88b470c8fc311e910af1627fa44b51eb" prot="private" virt="non-virtual"><scope>Texture</scope><name>m_pTex</name></member>
+      <member refid="classTexture_a80f9298671ae47c264992268f659287c_1a80f9298671ae47c264992268f659287c" prot="private" virt="non-virtual"><scope>Texture</scope><name>m_slot</name></member>
+      <member refid="classTexture_ac243c2a4552bc0af19b5b1ea812ce9ee_1ac243c2a4552bc0af19b5b1ea812ce9ee" prot="private" virt="non-virtual"><scope>Texture</scope><name>m_width</name></member>
+      <member refid="classTexture_a9f0969925008410870590127fdf960ce_1a9f0969925008410870590127fdf960ce" prot="public" virt="non-virtual"><scope>Texture</scope><name>paintTextureWithBitmap</name></member>
+      <member refid="classIBindable_a4d590eebe80fa4e0aa865a875ff86c02_1a4d590eebe80fa4e0aa865a875ff86c02" prot="public" virt="virtual"><scope>Texture</scope><name>setDebugObjectName</name></member>
+      <member refid="classIBindable_a12fe8725cb3f4836f22d1592b07e2c91_1a12fe8725cb3f4836f22d1592b07e2c91" prot="public" virt="virtual"><scope>Texture</scope><name>setMesh</name></member>
+      <member refid="classTexture_a0331ea0fa1111565a77e34930527aa9f_1a0331ea0fa1111565a77e34930527aa9f" prot="public" virt="non-virtual"><scope>Texture</scope><name>Texture</name></member>
+      <member refid="classTexture_a8077b6ae80650f4901ed7f77e014e25b_1a8077b6ae80650f4901ed7f77e014e25b" prot="public" virt="non-virtual"><scope>Texture</scope><name>Texture</name></member>
+      <member refid="classTexture_ae3518498a4665623f5af7c8468552041_1ae3518498a4665623f5af7c8468552041" prot="public" virt="non-virtual"><scope>Texture</scope><name>update</name></member>
+      <member refid="classIBindable_a7f68262ff85e25e9f826eae7c01bbfa1_1a7f68262ff85e25e9f826eae7c01bbfa1" prot="public" virt="virtual"><scope>Texture</scope><name>~IBindable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

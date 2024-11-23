@@ -1,0 +1,74 @@
+\doxysection{src/math\+\_\+utils.cpp File Reference}
+\hypertarget{math__utils_8cpp}{}\label{math__utils_8cpp}\index{src/math\_utils.cpp@{src/math\_utils.cpp}}
+{\ttfamily \#include $<$type\+\_\+traits$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include "{}math\+\_\+utils.\+h"{}}\newline
+{\ttfamily \#include "{}winner.\+h"{}}\newline
+{\ttfamily \#include "{}assertions\+\_\+console.\+h"{}}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceutil}{util}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespaceutil_a4333f2f85b482976f011e521728d23aa_a4333f2f85b482976f011e521728d23aa}{util\+::normalize\+Angle\+Deg}} (float \&angle\+Deg)
+\item 
+bool \mbox{\hyperlink{namespaceutil_a1c89c4b84e6c94896fd73ca1d3821faa_a1c89c4b84e6c94896fd73ca1d3821faa}{util\+::is\+Angle\+Deg\+Within\+Range}} (float angle\+Deg, float a, float b)
+\item 
+constexpr int \mbox{\hyperlink{namespaceutil_a1211fa8e894591a77f7486f478d77fc6_a1211fa8e894591a77f7486f478d77fc6}{util\+::next\+Power\+Of2}} (int n)
+\begin{DoxyCompactList}\small\item\em find smallest power of 2 greater than or equal to n \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespaceutil_a758a63b46e99a774a19e9ddd520bc65a_a758a63b46e99a774a19e9ddd520bc65a}{util\+::gcd}} (int divident, int divisor)
+\begin{DoxyCompactList}\small\item\em prints Greatest Common Divisor of numbers \end{DoxyCompactList}\item 
+constexpr int \mbox{\hyperlink{namespaceutil_aec3b656d9b57d19b7606c42a5fc867e2_aec3b656d9b57d19b7606c42a5fc867e2}{util\+::factorial\+Of}} (int n) noexcept
+\item 
+constexpr bool \mbox{\hyperlink{namespaceutil_a877f952aa1d6672af06e84ac66a6bfd1_a877f952aa1d6672af06e84ac66a6bfd1}{util\+::is\+Prime}} (const int number) noexcept
+\begin{DoxyCompactList}\small\item\em trial division method \end{DoxyCompactList}\item 
+constexpr size\+\_\+t \mbox{\hyperlink{namespaceutil_a7f606e49e4a62fef3cd258e61ed52b36_a7f606e49e4a62fef3cd258e61ed52b36}{util\+::compute\+Triangular\+Number}} (const int number) noexcept
+\begin{DoxyCompactList}\small\item\em Triangular numbers represent the number of dots that can form an equilateral triangle. \end{DoxyCompactList}\item 
+constexpr bool \mbox{\hyperlink{namespaceutil_a0e934fb844bf60cb5c0e211141162ede_a0e934fb844bf60cb5c0e211141162ede}{util\+::is\+Power\+Of\+Two}} (const std\+::size\+\_\+t value) noexcept
+\item 
+float \mbox{\hyperlink{namespaceutil_a65a18284a43416d037ebb1552998268c_a65a18284a43416d037ebb1552998268c}{util\+::cosine}} (float x) noexcept
+\item 
+float \mbox{\hyperlink{namespaceutil_a4f336975ca420f87d54fa60fcbcaa8ef_a4f336975ca420f87d54fa60fcbcaa8ef}{util\+::sine}} (float x) noexcept
+\item 
+constexpr int \mbox{\hyperlink{namespaceutil_af2b18232aad377b0f849e261c667b192_af2b18232aad377b0f849e261c667b192}{util\+::linear\+Search}} (const int \texorpdfstring{$\ast$}{*}A, const int n, const int x)
+\item 
+constexpr int \mbox{\hyperlink{namespaceutil_ac106a29bc8c2019999bac178dc1d4f9e_ac106a29bc8c2019999bac178dc1d4f9e}{util\+::binary\+Search}} (const int \texorpdfstring{$\ast$}{*}A, int low, int high, const int x)
+\item 
+int \mbox{\hyperlink{namespaceutil_a051e42270e861e705165662e98ef3a5f_a051e42270e861e705165662e98ef3a5f}{util\+::to\+Decimal}} (const int hex)
+\item 
+int \mbox{\hyperlink{namespaceutil_a383c13af9a1086f2f2e7925379644974_a383c13af9a1086f2f2e7925379644974}{util\+::to\+Hex}} (const int dec)
+\item 
+void \mbox{\hyperlink{namespaceutil_a70abed632e50f5ad83dc9a60ac0ffa3d_a70abed632e50f5ad83dc9a60ac0ffa3d}{util\+::print\+Dec2\+Bin}} (const size\+\_\+t size, void const \texorpdfstring{$\ast$}{*}const ptr) noexcept
+\begin{DoxyCompactList}\small\item\em prints given datatype to binary \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceutil_a46c4bb08aa780e556c6f79c7fa366366_a46c4bb08aa780e556c6f79c7fa366366}{util\+::print\+Dec\+To\+Bin}} (const int num) noexcept
+\begin{DoxyCompactList}\small\item\em print binary conversion of supplied decimal number \end{DoxyCompactList}\item 
+constexpr bool \mbox{\hyperlink{namespaceutil_ac6adf3c3c73d7fc30a415812897d8730_ac6adf3c3c73d7fc30a415812897d8730}{util\+::have\+Opposite\+Signs}} (int x, int y) noexcept
+\item 
+constexpr int \mbox{\hyperlink{namespaceutil_a9c07badeeb1f276700aa07d6f9c67e98_a9c07badeeb1f276700aa07d6f9c67e98}{util\+::msb\+Index\+Of\+Dec}} (int num) noexcept
+\begin{DoxyCompactList}\small\item\em finds MSB index in decimal number (counting from 0) \end{DoxyCompactList}\item 
+constexpr int \mbox{\hyperlink{namespaceutil_a7be47189cc4f7a85c57b999a1c27ec3a_a7be47189cc4f7a85c57b999a1c27ec3a}{util\+::count\+Set\+Bits}} (int num) noexcept
+\begin{DoxyCompactList}\small\item\em count number of Ones in a given number \end{DoxyCompactList}\item 
+constexpr int \mbox{\hyperlink{namespaceutil_ab1362dfa9d3fdb70aa9622ce7b25bc68_ab1362dfa9d3fdb70aa9622ce7b25bc68}{util\+::is\+Power\+Of2}} (const int num) noexcept
+\begin{DoxyCompactList}\small\item\em checks whether a number is a power of 2 \end{DoxyCompactList}\item 
+constexpr void \mbox{\hyperlink{namespaceutil_a4a013cbf3a9e8a69632005c8eb05f30c_a4a013cbf3a9e8a69632005c8eb05f30c}{util\+::convert\+To\+Base}} (int number, const int base) noexcept
+\item 
+constexpr bool \mbox{\hyperlink{namespaceutil_a3ff14b6402beee2193fd266c9dd38b4c_a3ff14b6402beee2193fd266c9dd38b4c}{util\+::is\+Nth\+Bit\+Set}} (const int value, const int pos\+Of\+Test\+Bit)
+\item 
+constexpr int \mbox{\hyperlink{namespaceutil_a3b5279060c8cf1e37d66efb1c5713827_a3b5279060c8cf1e37d66efb1c5713827}{util\+::swap\+Bits}} (int num, const int i, const int j) noexcept
+\begin{DoxyCompactList}\small\item\em swap the bits at position i and j of given number iff they are different \end{DoxyCompactList}\item 
+constexpr int \mbox{\hyperlink{namespaceutil_abe9d79bee6ce10a21eb1df3284e34739_abe9d79bee6ce10a21eb1df3284e34739}{util\+::set\+Nth\+Bit}} (int num, const unsigned n) noexcept
+\item 
+constexpr int \mbox{\hyperlink{namespaceutil_a8a10339f6981abedeca3d91e0417e3ee_a8a10339f6981abedeca3d91e0417e3ee}{util\+::clear\+Nth\+Bit}} (int num, const unsigned n) noexcept
+\item 
+constexpr int \mbox{\hyperlink{namespaceutil_a3ab679991f6532514ef070142d9b5e01_a3ab679991f6532514ef070142d9b5e01}{util\+::toggle\+Nth\+Bit}} (int num, const unsigned n) noexcept
+\item 
+constexpr int \mbox{\hyperlink{namespaceutil_acd548992752c40870a8ccbb50a155a8f_acd548992752c40870a8ccbb50a155a8f}{util\+::is\+Set}} (int num, const unsigned bit\+Pos) noexcept
+\begin{DoxyCompactList}\small\item\em check num\textquotesingle{}s bit\+Pos state and return the value (0 or 1) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespaceutil_a71f689b172e5d8012806cf3f9b652fa3_a71f689b172e5d8012806cf3f9b652fa3}{util\+::is\+Set\+By\+Number}} (int num, int bit\+Flag) noexcept
+\begin{DoxyCompactList}\small\item\em check if num has bit indicated by bit\+Flag set. bit\+Flag must be a power of 2. \end{DoxyCompactList}\item 
+constexpr int \mbox{\hyperlink{namespaceutil_a36c6964cf7808d1afb0909c42fe05d5c_a36c6964cf7808d1afb0909c42fe05d5c}{util\+::change\+Nth\+Bit}} (int num, const unsigned n, const bool bit\+Val) noexcept
+\begin{DoxyCompactList}\small\item\em change nth bit to bit\+Val \end{DoxyCompactList}\end{DoxyCompactItemize}

@@ -1,0 +1,28 @@
+var os__utils_8h =
+[
+    [ "ASSERT_HRES_IF_FAILED", "os__utils_8h_a7027472bc9b182c0fea900713e4541e3.html#a7027472bc9b182c0fea900713e4541e3", null ],
+    [ "ASSERT_HRES_IF_FAILED_MSG", "os__utils_8h_a8b751108e3b0b41a0ea1d5dd4d440b1b.html#a8b751108e3b0b41a0ea1d5dd4d440b1b", null ],
+    [ "ASSERT_HRES_REGISTRY_IF_FAILED", "os__utils_8h_abc339680801477d89bc65c0a978bd85f.html#abc339680801477d89bc65c0a978bd85f", null ],
+    [ "ASSERT_HRES_WIN32_IF_FAILED", "os__utils_8h_a5d073df04e4d5048059e9a110173b9f0.html#a5d073df04e4d5048059e9a110173b9f0", null ],
+    [ "ASSERT_IF_FAILED", "os__utils_8h_a06ad2606426e941f7509aeb2e14a3eaf.html#a06ad2606426e941f7509aeb2e14a3eaf", null ],
+    [ "ASSERT_NTSTATUS_IF_FAILED", "os__utils_8h_af662511c5dd990965f3c067711f6ef62.html#af662511c5dd990965f3c067711f6ef62", null ],
+    [ "ASSERT_RETURN_HRES_IF_FAILED", "os__utils_8h_a25e84d8771362a5139c04067d39d8446.html#a25e84d8771362a5139c04067d39d8446", null ],
+    [ "POD_ZERO", "os__utils_8h_a796263d2d6b5e79e1fd4029fb6ebf58d.html#a796263d2d6b5e79e1fd4029fb6ebf58d", null ],
+    [ "askForCredentials", "os__utils_8h.html#ad7c794e52973c3fe00e125e69d29a011", null ],
+    [ "bstrToStr", "os__utils_8h.html#a35e258ec68cdc2634e69fad1574f982b", null ],
+    [ "filetimeToInt64", "os__utils_8h.html#a3e3c5eab6a6d57d880fd94d44f599cb4", null ],
+    [ "getKnownFolderPath", "os__utils_8h.html#a08c4e4a29b0a0e5157b152b140bc094e", null ],
+    [ "getLastErrorAsString", "os__utils_8h.html#a566f2bbc4b5cafc9971186f0d707bf3e", null ],
+    [ "getLastNtErrorAsString", "os__utils_8h.html#a9a0b0bfad82a59556195c73d4d2cda5e", null ],
+    [ "launchProcess", "os__utils_8h.html#a49087246809a040488fc33d84239de83", null ],
+    [ "pinThreadToCore", "os__utils_8h.html#a12eed248853b800635a584152eda83a5", null ],
+    [ "printHresultErrorDescription", "os__utils_8h.html#a3cb6f8f22822b4670fa970bce585e52a", null ],
+    [ "printHresultErrorDescriptionW", "os__utils_8h.html#a742e4cf7eec6ab440f6a51fa98cdb42b", null ],
+    [ "registryGetDword", "os__utils_8h.html#a2e444da6f9f3edb24cbdfdd3acd8eef5", null ],
+    [ "registryGetString", "os__utils_8h.html#a461bbc2dfa40d2dae1639cce3f6db772", null ],
+    [ "setCurrentThreadName", "os__utils_8h.html#a26eb5943c9263e29706bf7ea9817bd26", null ],
+    [ "setupDetachedThreadsVector", "os__utils_8h.html#a79a4c5df290b7c3f50617ad7ffa131b2", null ],
+    [ "strToBstr", "os__utils_8h.html#a525e6245d3b2156e2d85aaedb8f7bb2e", null ],
+    [ "suspendAllThreads", "os__utils_8h.html#a833373d99efbf126ccbb44456500085f", null ],
+    [ "terminateDetachedThreads", "os__utils_8h.html#a3a780a09a3dffe65ca6df0ff68298fa9", null ]
+];

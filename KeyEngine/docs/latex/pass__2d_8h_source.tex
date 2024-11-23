@@ -1,0 +1,41 @@
+\doxysection{pass\+\_\+2d.\+h}
+\hypertarget{pass__2d_8h_source}{}\label{pass__2d_8h_source}\index{inc/pass\_2d.h@{inc/pass\_2d.h}}
+\mbox{\hyperlink{pass__2d_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{bindable__pass_8h}{bindable\_pass.h}}"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sprite_8h}{sprite.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{key__random_8h}{key\_random.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGraphics}{Graphics}};}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceren}{ren}}}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classren_1_1Pass2D}{Pass2D}}}
+\DoxyCodeLine{00013\ \ \ \ \ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classren_1_1IBindablePass}{IBindablePass}}}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{comment}{//\ All\ these\ should\ be\ in\ a\ Game\ class}}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ \ \ std::unique\_ptr<Sprite>\ m\_sprite;}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \ std::unique\_ptr<SpriteSheet>\ m\_player;}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ \ \ std::array<int,\ 5>\ m\_spriteOrder\ =\ \{2,\ 3,\ 0,\ 6,\ 7\};}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ \ \ \ int\ m\_currentSpriteIndex\ =\ 0;}}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ \ \ \ int\ g\_width;}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ \ \ \ int\ g\_height;}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ \ \ \ float\ y\ =\ 0.0f;}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ \ \ \ float\ ySpeed\ =\ 1.0f;}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ \ \ \ mutable\ KeyRandom\ m\_randomness;}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00027\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{classren_1_1Pass2D_adc44db26e4e8dce5aa8450b875541109_adc44db26e4e8dce5aa8450b875541109}{Pass2D}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx,\ \textcolor{keyword}{const}\ std::string\ \&name\ );}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1Pass2D_acffaab0d52679ed3da4861d5ae256113_acffaab0d52679ed3da4861d5ae256113}{run}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx\ )\ \textcolor{keyword}{const}\ cond\_noex\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1Pass2D_a02f8b7d60c50b8bdd7c86ff09359a207_a02f8b7d60c50b8bdd7c86ff09359a207}{reset}}()\ cond\_noex\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00032\ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \}\textcolor{comment}{//namespace\ ren}}
+
+\end{DoxyCode}

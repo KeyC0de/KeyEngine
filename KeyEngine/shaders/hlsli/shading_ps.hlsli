@@ -32,7 +32,7 @@ float3 calculateLightDiffuseContribution( uniform float3 diffuseColor,
 	return att * diffuseColor * intensity * max( 0.0f, dot( fragmentToLightDirViewSpaceNormalized, viewSpaceNormal ) );
 }
 
-float3 calculateLightSpecularContribution( const in float3 lightColor,
+float3 calculateLightSpecularContribution( const in float3 cb_lightColor,
 	const in float3 specularColor,
 	uniform float intensity,
 	const in float fragSpecularGloss,
@@ -45,7 +45,7 @@ float3 calculateLightSpecularContribution( const in float3 lightColor,
 	const float3 viewSpacePosNormalized = normalize( viewSpacePos );
 	// calculate specular component color based on angle between
 	// viewing vector and reflection vector - narrow with power function
-	return lightColor * specularColor * intensity * att * pow( max( 0.0f, dot( -specularReflection, viewSpacePosNormalized ) ), fragSpecularGloss );
+	return cb_lightColor * specularColor * intensity * att * pow( max( 0.0f, dot( -specularReflection, viewSpacePosNormalized ) ), fragSpecularGloss );
 }
 
 float3 calculateNormalMapNormal( const in float3 tangentViewSpace,

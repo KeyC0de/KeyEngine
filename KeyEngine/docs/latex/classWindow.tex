@@ -1,0 +1,895 @@
+\doxysection{Window Class Reference}
+\hypertarget{classWindow}{}\label{classWindow}\index{Window@{Window}}
+
+
+{\ttfamily \#include $<$window.\+h$>$}
+
+Inheritance diagram for Window\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classWindow}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classWindow_1_1WindowClass}{Window\+Class}}
+\item 
+class \mbox{\hyperlink{classWindow_1_1WindowException}{Window\+Exception}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWindow_a69f83cc5dc2d4f9807e4d11d2b2623e1_a69f83cc5dc2d4f9807e4d11d2b2623e1}{Window}} (const int width, const int height, const char \texorpdfstring{$\ast$}{*}name, const char \texorpdfstring{$\ast$}{*}class\+Name, const WNDPROC window\+Procedure, const int x, const int y, const \mbox{\hyperlink{structColorBGRA}{Color\+BGRA}} bg\+Color=\{255, 255, 255\}, const HMENU h\+Menu=nullptr, const \mbox{\hyperlink{classWindow}{Window}} \texorpdfstring{$\ast$}{*}parent=nullptr)
+\item 
+\mbox{\hyperlink{classWindow_a10df09e61d4dcb181c381f2745e0e4e1_a10df09e61d4dcb181c381f2745e0e4e1}{Window}} (\mbox{\hyperlink{classWindow}{Window}} \&\&rhs) noexcept
+\item 
+\mbox{\hyperlink{classWindow}{Window}} \& \mbox{\hyperlink{classWindow_ab337075b991c72d66625f6ca13ae78f8_ab337075b991c72d66625f6ca13ae78f8}{operator=}} (\mbox{\hyperlink{classWindow}{Window}} \&\&rhs) noexcept
+\item 
+\mbox{\hyperlink{classWindow_a245d821e6016fa1f6970ccbbedd635f6_a245d821e6016fa1f6970ccbbedd635f6}{\texorpdfstring{$\sim$}{\string~}\+Window}} ()
+\item 
+std\+::optional$<$ int $>$ \mbox{\hyperlink{classWindow_a1b5d1120e6ad1f4e078e2942dffd0041_a1b5d1120e6ad1f4e078e2942dffd0041}{message\+Loop}} () noexcept
+\item 
+void \mbox{\hyperlink{classWindow_a5a4f28721b04c0047afb8881f68e359d_a5a4f28721b04c0047afb8881f68e359d}{set\+Enable}} (const bool b)
+\item 
+void \mbox{\hyperlink{classWindow_a9278ce486f1bedf76b70b44180ad57f7_a9278ce486f1bedf76b70b44180ad57f7}{set\+On\+Top}} ()
+\item 
+const HWND \mbox{\hyperlink{classWindow_a9d12dc09ac60627ee8192096b45fc129_a9d12dc09ac60627ee8192096b45fc129}{set\+Focus}} ()
+\item 
+bool \mbox{\hyperlink{classWindow_a7a22b0c74d1615879b93e69d7a0370ab_a7a22b0c74d1615879b93e69d7a0370ab}{has\+Parent}} () const noexcept
+\begin{DoxyCompactList}\small\item\em returns true if this \doxylink{classWindow}{Window} has a parent that is not the Desktop window \end{DoxyCompactList}\item 
+const HWND \mbox{\hyperlink{classWindow_ad9c087919d3f2b8bf0b5685795389a83_ad9c087919d3f2b8bf0b5685795389a83}{get\+Parent}} () const noexcept
+\item 
+void \mbox{\hyperlink{classWindow_a6d03fd6c9fbfcaf4aba92e6b4d08123e_a6d03fd6c9fbfcaf4aba92e6b4d08123e}{set\+Title}} (const std\+::string \&title)
+\item 
+const std\+::string \& \mbox{\hyperlink{classWindow_a4dbcd17685dba50912a2989c2782ec0d_a4dbcd17685dba50912a2989c2782ec0d}{get\+Title}} () const noexcept
+\item 
+void \mbox{\hyperlink{classWindow_a03a5e37c7d4e07b4e77c08776f82e476_a03a5e37c7d4e07b4e77c08776f82e476}{enable\+Cursor}} () noexcept
+\item 
+void \mbox{\hyperlink{classWindow_a0a62a86c1134a2579afff3bfc2487d0b_a0a62a86c1134a2579afff3bfc2487d0b}{disable\+Cursor}} () noexcept
+\item 
+bool \mbox{\hyperlink{classWindow_ae75c970afd77b9812f1fa3fc96549844_ae75c970afd77b9812f1fa3fc96549844}{is\+Cursor\+Enabled}} () const noexcept
+\item 
+int \mbox{\hyperlink{classWindow_ab8b32cdcbc931c83c777887df83c5a13_ab8b32cdcbc931c83c777887df83c5a13}{display\+Message\+Box\+Yes\+No}} (const std\+::string \&title, const std\+::string \&message) const
+\item 
+int \mbox{\hyperlink{classWindow_a466dc023c98b22fdc026c2d70bca1fb9_a466dc023c98b22fdc026c2d70bca1fb9}{display\+Message\+Box\+Ok\+Cancel}} (const std\+::string \&title, const std\+::string \&message) const
+\item 
+bool \mbox{\hyperlink{classWindow_afc527296ebd4d19ca2fdfba50c1aa19c_afc527296ebd4d19ca2fdfba50c1aa19c}{is\+Active}} () const noexcept
+\item 
+const std\+::string \& \mbox{\hyperlink{classWindow_a07cb1a0df450bf04c6def6fefa588963_a07cb1a0df450bf04c6def6fefa588963}{get\+Name}} () const noexcept
+\item 
+void \mbox{\hyperlink{classWindow_a97078387be519b16401c3bb0f299aa01_a97078387be519b16401c3bb0f299aa01}{minimize}} ()
+\item 
+void \mbox{\hyperlink{classWindow_ac12065a404bba4aaca510c33a8a338d1_ac12065a404bba4aaca510c33a8a338d1}{restore}} ()
+\item 
+bool \mbox{\hyperlink{classWindow_a1bc18114b16d26fcc7e776802a1c33ce_a1bc18114b16d26fcc7e776802a1c33ce}{is\+Hidden}} () const noexcept
+\item 
+bool \mbox{\hyperlink{classWindow_a9dbbf71fa232f1014678ae05d9bf1572_a9dbbf71fa232f1014678ae05d9bf1572}{is\+Minimized}} () const noexcept
+\item 
+bool \mbox{\hyperlink{classWindow_ad68904fd77fc0139d48741cb770c7dff_ad68904fd77fc0139d48741cb770c7dff}{is\+Maximized}} () const noexcept
+\item 
+\mbox{\hyperlink{classWindow_a7568bb745290d9eb85cc4dcae8a45bca_a7568bb745290d9eb85cc4dcae8a45bca}{operator bool}} () const noexcept
+\item 
+\mbox{\hyperlink{classGraphics}{Graphics}} \& \mbox{\hyperlink{classWindow_a7bfce0a1441d9a824b5469ae7de8c862_a7bfce0a1441d9a824b5469ae7de8c862}{get\+Graphics}} ()
+\item 
+const HWND \mbox{\hyperlink{classWindow_a5cccd0b4ac2a4b1e5fa40cc270342101_a5cccd0b4ac2a4b1e5fa40cc270342101}{get\+Handle}} () const noexcept
+\item 
+HDC \mbox{\hyperlink{classWindow_a2005a212933dd5d754ac219ca1a59ea6_a2005a212933dd5d754ac219ca1a59ea6}{get\+Dc}} () const noexcept
+\begin{DoxyCompactList}\small\item\em get \doxylink{classWindow}{Window}\textquotesingle{}s Device Context (DC) -\/ a "{}device context"{} contains information about the drawing attributes of a device such as a display or a printer, so if you have two different DC\textquotesingle{}s, you\textquotesingle{}re drawing in two different places; like a file handle for drawing \end{DoxyCompactList}\item 
+WINDOWINFO \mbox{\hyperlink{classWindow_a9e348a5db42ae8467ef4c1beff84a966_a9e348a5db42ae8467ef4c1beff84a966}{get\+Info}} () const noexcept
+\item 
+unsigned \mbox{\hyperlink{classWindow_a963c689b550db092425a27d653375953_a963c689b550db092425a27d653375953}{get\+Window\+Styles}} () const noexcept
+\item 
+unsigned \mbox{\hyperlink{classWindow_af3729cddcc53edb24dcf9379fd17bf1f_af3729cddcc53edb24dcf9379fd17bf1f}{get\+Window\+Styles\+Ex}} () const noexcept
+\item 
+void \mbox{\hyperlink{classWindow_ac96ebcab2a11b85fbbb9f361e4fec14d_ac96ebcab2a11b85fbbb9f361e4fec14d}{set\+Window\+Styles}} (const unsigned window\+Styles) const noexcept
+\item 
+void \mbox{\hyperlink{classWindow_a84c9316e2abef10f3c1fbe3ebcb3bad6_a84c9316e2abef10f3c1fbe3ebcb3bad6}{set\+Window\+Styles\+Ex}} (const unsigned window\+Styles\+Ex) const noexcept
+\item 
+void \mbox{\hyperlink{classWindow_a9cd314e68c41dc086d9de29c5d5b0658_a9cd314e68c41dc086d9de29c5d5b0658}{set\+Borderless}} () const noexcept
+\item 
+void \mbox{\hyperlink{classWindow_a6f835d03f53872fb1a84f142a037977e_a6f835d03f53872fb1a84f142a037977e}{set\+Redrawing}} (const bool b\+Redraw)
+\begin{DoxyCompactList}\small\item\em prevent intermediate redrawing \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWindow_a23bdfd4da0ed787aef0d99862fc5298b_a23bdfd4da0ed787aef0d99862fc5298b}{show\+Menu}} (const HMENU h\+Menu)
+\item 
+void \mbox{\hyperlink{classWindow_a3c40c067671e1a563ffdc0a22846a4f1_a3c40c067671e1a563ffdc0a22846a4f1}{hide\+Menu}} ()
+\item 
+const HMENU \mbox{\hyperlink{classWindow_ae1da2df411ae2d3b1b9ea0ac8ce36286_ae1da2df411ae2d3b1b9ea0ac8ce36286}{get\+Top\+Menu}} () const noexcept
+\item 
+HWND \mbox{\hyperlink{classWindow_a639d79c96a98f0462aaae8642d4a371f_a639d79c96a98f0462aaae8642d4a371f}{get\+Desktop}} () const noexcept
+\item 
+int \mbox{\hyperlink{classWindow_a5532ddffbaa83268e3f62315d0da6540_a5532ddffbaa83268e3f62315d0da6540}{getX}} () const noexcept
+\item 
+int \mbox{\hyperlink{classWindow_ad68c496df5b556d8dd4abd632c0b8878_ad68c496df5b556d8dd4abd632c0b8878}{getY}} () const noexcept
+\item 
+int \mbox{\hyperlink{classWindow_a04ce42e257b20bc0ed80a7e5e5249c3b_a04ce42e257b20bc0ed80a7e5e5249c3b}{get\+Width}} () const noexcept
+\item 
+int \mbox{\hyperlink{classWindow_ae3f3f96cddd3362dcf7bd82a5f7788c4_ae3f3f96cddd3362dcf7bd82a5f7788c4}{get\+Width\+Client\+Area}} () const noexcept
+\item 
+int \mbox{\hyperlink{classWindow_a26083d8f85d6d29f84cac1d246cbb62b_a26083d8f85d6d29f84cac1d246cbb62b}{get\+Height}} () const noexcept
+\item 
+int \mbox{\hyperlink{classWindow_abba393eef111b17a568f3913afb9993b_abba393eef111b17a568f3913afb9993b}{get\+Height\+Client\+Area}} () const noexcept
+\item 
+HWND \mbox{\hyperlink{classWindow_aa60fa73c7502fab7465b9aca117f577f_aa60fa73c7502fab7465b9aca117f577f}{get\+Console\+Handle}} () const
+\item 
+const \mbox{\hyperlink{classWindow_1_1WindowClass}{Window\+Class}} \& \mbox{\hyperlink{classWindow_a752e47d52453c84ebf8c3f42a6343e66_a752e47d52453c84ebf8c3f42a6343e66}{get\+Window\+Class}} () noexcept
+\item 
+void \mbox{\hyperlink{classWindow_a4e66e4896e552265193a794ae82a1b2d_a4e66e4896e552265193a794ae82a1b2d}{setup\+Splash\+Window}} (HBITMAP h\+Splash\+Bitmap)
+\begin{DoxyCompactList}\small\item\em create an Alpha enabled Splash window for the main application window \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNonCopyable_a809b6e4ade7ae32f6d248f2a3b783d45_a809b6e4ade7ae32f6d248f2a3b783d45}{Non\+Copyable}} ()=default
+\item 
+\mbox{\hyperlink{classNonCopyable_a15aa3015488bb26c47ded914cb630cf5_a15aa3015488bb26c47ded914cb630cf5}{Non\+Copyable}} (const \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_af4788b57da9a9faa570c754c22c724f5_af4788b57da9a9faa570c754c22c724f5}{operator=}} (const \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable_a487646562ae30ece23d7638f2aed1dde_a487646562ae30ece23d7638f2aed1dde}{Non\+Copyable}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_ae032ca32cda9c836c27b28eb6a087d18_ae032ca32cda9c836c27b28eb6a087d18}{operator=}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&rhs)=delete
+\item 
+\mbox{\hyperlink{classNonCopyable_af716e4cfb79381710ef4490414939ae9_af716e4cfb79381710ef4490414939ae9}{Non\+Copyable}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&\&rhs)=default
+\item 
+\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \& \mbox{\hyperlink{classNonCopyable_af81816bd4c2c4421a6eab98843ead6e4_af81816bd4c2c4421a6eab98843ead6e4}{operator=}} (\mbox{\hyperlink{classNonCopyable}{Non\+Copyable}} \&\&rhs)=default
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{classWindow_acc3b6797295659d5ed747dd64aae767d_acc3b6797295659d5ed747dd64aae767d}{message\+Box\+Printf}} (const HWND window, const TCHAR \texorpdfstring{$\ast$}{*}caption, const TCHAR \texorpdfstring{$\ast$}{*}format,...)
+\begin{DoxyCompactList}\small\item\em a wrapper over Windows Message\+Box function, first argument {\ttfamily window} can be nullptr \end{DoxyCompactList}\item 
+static LRESULT CALLBACK \mbox{\hyperlink{classWindow_a63b33789bf23618f116c8b97b2010f58_a63b33789bf23618f116c8b97b2010f58}{window\+Proc}} (\+\_\+\+In\+\_\+ const HWND p\+Wnd, \+\_\+\+In\+\_\+ const unsigned u\+Msg, \+\_\+\+In\+\_\+ const WPARAM w\+Param, \+\_\+\+In\+\_\+ const LPARAM l\+Param)
+\item 
+static LRESULT CALLBACK \mbox{\hyperlink{classWindow_a043951d406f11adc6a7320fcc40de5ff_a043951d406f11adc6a7320fcc40de5ff}{dialog\+Proc}} (\+\_\+\+In\+\_\+ const HWND h\+Wnd, \+\_\+\+In\+\_\+ const unsigned u\+Msg, \+\_\+\+In\+\_\+ const WPARAM w\+Param, \+\_\+\+In\+\_\+ const LPARAM l\+Param)
+\item 
+static LRESULT CALLBACK \mbox{\hyperlink{classWindow_adc6e743324b3b804df5b2fa86ced2a6f_adc6e743324b3b804df5b2fa86ced2a6f}{splash\+Window\+Proc}} (\+\_\+\+In\+\_\+ const HWND h\+Wnd, \+\_\+\+In\+\_\+ const unsigned u\+Msg, \+\_\+\+In\+\_\+ const WPARAM w\+Param, \+\_\+\+In\+\_\+ const LPARAM l\+Param)
+\item 
+static void CALLBACK \mbox{\hyperlink{classWindow_acf8285de3092f3452349ee4591627b11_acf8285de3092f3452349ee4591627b11}{splash\+Window\+Timer\+Proc}} (\+\_\+\+In\+\_\+ const HWND h\+Wnd, \+\_\+\+In\+\_\+ const unsigned u\+Msg, \+\_\+\+In\+\_\+ const unsigned id\+Event, \+\_\+\+In\+\_\+ const DWORD time)
+\item 
+static \mbox{\hyperlink{classKeyboard}{Keyboard}} \& \mbox{\hyperlink{classWindow_af51b384330835f7ee8d0c3cb1254c4f8_af51b384330835f7ee8d0c3cb1254c4f8}{get\+Keyboard}} () noexcept
+\item 
+static \mbox{\hyperlink{classMouse}{Mouse}} \& \mbox{\hyperlink{classWindow_a89e829c66c387dfca31d10b9806da751_a89e829c66c387dfca31d10b9806da751}{get\+Mouse}} () noexcept
+\item 
+static bool \mbox{\hyperlink{classWindow_aad814dbb72db34012be61839a21ea004_aad814dbb72db34012be61839a21ea004}{is\+Descendant\+Of}} (const HWND targeth\+Wnd, const HWND parent) noexcept
+\item 
+static void \mbox{\hyperlink{classWindow_a989ce4fa31d0caf58d4f238b9c094d31_a989ce4fa31d0caf58d4f238b9c094d31}{save\+Clipboard\+Text\+As\+Var}} ()
+\item 
+static HBITMAP \mbox{\hyperlink{classWindow_ab9660b523de7bdc93b8048a12edd1b6e_ab9660b523de7bdc93b8048a12edd1b6e}{convert\+Hicon\+To\+Hbitmap}} (HICON h\+Icon)
+\begin{DoxyCompactList}\small\item\em h\+Icon vs h\+Bitmap \end{DoxyCompactList}\item 
+static HICON \mbox{\hyperlink{classWindow_a8399c68d7ae5f5cc253512d42674e049_a8399c68d7ae5f5cc253512d42674e049}{convert\+Hbitmap\+To\+Hicon}} (HBITMAP bitmap)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classWindow_afa1a733e26aa19e79c461139ecdb536e_afa1a733e26aa19e79c461139ecdb536e}{confine\+Cursor}} () noexcept
+\item 
+void \mbox{\hyperlink{classWindow_a4a4ac4dd9c15b4e2a555334befddf7a9_a4a4ac4dd9c15b4e2a555334befddf7a9}{free\+Cursor}} () noexcept
+\item 
+void \mbox{\hyperlink{classWindow_a0aed96a4d37d339964c343b729b214f2_a0aed96a4d37d339964c343b729b214f2}{show\+Cursor}} () noexcept
+\item 
+void \mbox{\hyperlink{classWindow_a8e1a697f5c01400e49c3263d2afd4686_a8e1a697f5c01400e49c3263d2afd4686}{hide\+Cursor}} () noexcept
+\item 
+void \mbox{\hyperlink{classWindow_a566918cfdad3ca7954923043dc8ecaf8_a566918cfdad3ca7954923043dc8ecaf8}{enable\+Im\+Gui\+Mouse}} () noexcept
+\item 
+void \mbox{\hyperlink{classWindow_a2de00afd8696721e9b26d797d1c5baab_a2de00afd8696721e9b26d797d1c5baab}{disable\+Im\+Gui\+Mouse}} () noexcept
+\item 
+LRESULT \mbox{\hyperlink{classWindow_a2821cd9dba5a27e88f90808281444e93_a2821cd9dba5a27e88f90808281444e93}{window\+Proc\+\_\+impl3d}} (\+\_\+\+In\+\_\+ const HWND p\+Wnd\+Handle, \+\_\+\+In\+\_\+ const unsigned msg, \+\_\+\+In\+\_\+ const WPARAM wparam, \+\_\+\+In\+\_\+ const LPARAM lparam)
+\item 
+LRESULT \mbox{\hyperlink{classWindow_afcc33d5d00fe7a117049c347a7c800d4_afcc33d5d00fe7a117049c347a7c800d4}{window\+Proc\+\_\+impl2d}} (\+\_\+\+In\+\_\+ const HWND p\+Wnd\+Handle, \+\_\+\+In\+\_\+ const unsigned msg, \+\_\+\+In\+\_\+ const WPARAM wparam, \+\_\+\+In\+\_\+ const LPARAM lparam)
+\item 
+void \mbox{\hyperlink{classWindow_ace4b47e72c96be743531236e6c632fa6_ace4b47e72c96be743531236e6c632fa6}{set\+Font}} (const std\+::string \&font\+Name)
+\item 
+void \mbox{\hyperlink{classWindow_a5dc819c56369c625f93cb8131b795d16_a5dc819c56369c625f93cb8131b795d16}{set\+Window\+Properties}} (const int width, const int height, const unsigned flags=SWP\+\_\+\+NOZORDER\texorpdfstring{$\vert$}{|}SWP\+\_\+\+NOMOVE\texorpdfstring{$\vert$}{|}SWP\+\_\+\+NOACTIVATE) cond\+\_\+noex
+\item 
+void WINAPI \mbox{\hyperlink{classWindow_a40ba1a2d6d8ec7cd381ef0f20b423acb_a40ba1a2d6d8ec7cd381ef0f20b423acb}{process\+Menu}} (HMENU h\+Menu)
+\begin{DoxyCompactList}\small\item\em Menu related functions. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classWindow_ac3feef02bfeadc708b8b6e9b093b4368_ac3feef02bfeadc708b8b6e9b093b4368}{edit\+Copy}} (const unsigned format=\mbox{\hyperlink{window_8h_a02c6467dd339058026d2c844b856e060_a02c6467dd339058026d2c844b856e060}{CLIPBOARD\+\_\+\+TEXT\+\_\+\+FORMAT}})
+\item 
+bool \mbox{\hyperlink{classWindow_a017c50359cd4f4884d06347bd97623fb_a017c50359cd4f4884d06347bd97623fb}{edit\+Paste}} (const unsigned format=\mbox{\hyperlink{window_8h_a02c6467dd339058026d2c844b856e060_a02c6467dd339058026d2c844b856e060}{CLIPBOARD\+\_\+\+TEXT\+\_\+\+FORMAT}})
+\item 
+void \mbox{\hyperlink{classWindow_a2ac13cf3243000d5b30ff1a29547e407_a2ac13cf3243000d5b30ff1a29547e407}{render\+Clipboard\+Format}} (unsigned format=\mbox{\hyperlink{window_8h_a02c6467dd339058026d2c844b856e060_a02c6467dd339058026d2c844b856e060}{CLIPBOARD\+\_\+\+TEXT\+\_\+\+FORMAT}})
+\item 
+void \mbox{\hyperlink{classWindow_aa804b1d347f57a8325510921285b8669_aa804b1d347f57a8325510921285b8669}{edit\+Delete}} ()
+\begin{DoxyCompactList}\small\item\em delete selected text, eg as if you pressed "{}cut"{} or the "{}delete"{} key \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWindow_a3086e4a7cdae4cf5af32c9971bd9d34e_a3086e4a7cdae4cf5af32c9971bd9d34e}{setup\+Tray\+Icon}} ()
+\item 
+void \mbox{\hyperlink{classWindow_a0c807d8500dd6611e32c02c583dbd655_a0c807d8500dd6611e32c02c583dbd655}{show\+Tray\+Icon}} () noexcept
+\item 
+void \mbox{\hyperlink{classWindow_a25be60f78bde0afcfa73224c5ea7b333_a25be60f78bde0afcfa73224c5ea7b333}{delete\+Tray\+Icon}} () noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static LRESULT CALLBACK \mbox{\hyperlink{classWindow_a73049005d1b7e248e423374b50ec1915_a73049005d1b7e248e423374b50ec1915}{window\+Proc\+Delegate}} (\+\_\+\+In\+\_\+ const HWND p\+Wnd\+Handle, \+\_\+\+In\+\_\+ const unsigned u\+Msg, \+\_\+\+In\+\_\+ const WPARAM w\+Param, \+\_\+\+In\+\_\+ const LPARAM l\+Param)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWindow_1_1WindowClass}{Window\+Class}} \mbox{\hyperlink{classWindow_ae3edc49affe0c51784741be3fb19ada9_ae3edc49affe0c51784741be3fb19ada9}{m\+\_\+window\+Class}}
+\item 
+bool \mbox{\hyperlink{classWindow_a588f1844e2f5098b7a75f8703efde18e_a588f1844e2f5098b7a75f8703efde18e}{m\+\_\+b\+Cursor\+Enabled}} = true
+\item 
+std\+::string \mbox{\hyperlink{classWindow_ae2e5678a2d1737dd39ff66cbb7565e15_ae2e5678a2d1737dd39ff66cbb7565e15}{m\+\_\+name}}
+\item 
+std\+::string \mbox{\hyperlink{classWindow_ae9ced8207aab8f5717efd6610340e62d_ae9ced8207aab8f5717efd6610340e62d}{m\+\_\+title}}
+\item 
+HWND \mbox{\hyperlink{classWindow_ab39b5ba6b3adea40aa19ffa50e306dbb_ab39b5ba6b3adea40aa19ffa50e306dbb}{m\+\_\+h\+Wnd}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classGraphics}{Graphics}} $>$ \mbox{\hyperlink{classWindow_a9801c1522a675647f8e2cbfa6d10c7dc_a9801c1522a675647f8e2cbfa6d10c7dc}{m\+\_\+p\+Graphics}}
+\item 
+WINDOWINFO \mbox{\hyperlink{classWindow_a0cd7fb10e78040422ad35827fd9d1554_a0cd7fb10e78040422ad35827fd9d1554}{m\+\_\+info}} \{\}
+\item 
+std\+::array$<$ unsigned, 8 $>$ \mbox{\hyperlink{classWindow_aa1e61281cd037023b477dcb843b5b573_aa1e61281cd037023b477dcb843b5b573}{m\+\_\+clipboard\+Formats}}
+\item 
+HMENU \mbox{\hyperlink{classWindow_a1fa9417ebe0ef97a982efb0dadcf8a5d_a1fa9417ebe0ef97a982efb0dadcf8a5d}{m\+\_\+h\+Tray\+Icon\+Popup\+Menu}} = nullptr
+\item 
+NOTIFYICONDATA \mbox{\hyperlink{classWindow_a3129bb2ec0c28df7e02041c6d74fb5cd_a3129bb2ec0c28df7e02041c6d74fb5cd}{m\+\_\+tray\+Icon\+Data}} \{\}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classWindow}{Window}} $>$ \mbox{\hyperlink{classWindow_a4a330c87fd1258d1846f147a9a188bd0_a4a330c87fd1258d1846f147a9a188bd0}{m\+\_\+p\+Modal\+Dialog}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classWindow}{Window}} $>$ \mbox{\hyperlink{classWindow_a8eb3ec06d02253d7102350bd9533a17c_a8eb3ec06d02253d7102350bd9533a17c}{m\+\_\+p\+Splash}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classKeyboard}{Keyboard}} \mbox{\hyperlink{classWindow_adad72e93053ae81a048b11b80a886ca4_adad72e93053ae81a048b11b80a886ca4}{s\+\_\+keyboard}}
+\item 
+static \mbox{\hyperlink{classMouse}{Mouse}} \mbox{\hyperlink{classWindow_a346ad68a7a25b4faa0d7b99bf6a20a13_a346ad68a7a25b4faa0d7b99bf6a20a13}{s\+\_\+mouse}}
+\item 
+static std\+::vector$<$ BYTE $>$ \mbox{\hyperlink{classWindow_a34b7a782124f9a212b5e42a75d90ce35_a34b7a782124f9a212b5e42a75d90ce35}{s\+\_\+raw\+Input\+Buffer}}
+\item 
+static HACCEL \mbox{\hyperlink{classWindow_adb2d358327f22c4df6f01ea4e92db80b_adb2d358327f22c4df6f01ea4e92db80b}{s\+\_\+h\+Accelerator\+Table}}
+\item 
+static \mbox{\hyperlink{windows__hidden__defs_8h_adea6dcaa9f8bf0e79413c0b1a1f501e2_adea6dcaa9f8bf0e79413c0b1a1f501e2}{PLABELBOX}} \mbox{\hyperlink{classWindow_a9cc5ee14371f126378a31c305189611a_a9cc5ee14371f126378a31c305189611a}{s\+\_\+p\+Box\+Local\+Clip}}
+\item 
+static UINT\+\_\+\+PTR \mbox{\hyperlink{classWindow_a489a152d80bb5ee013d485e0c92e6064_a489a152d80bb5ee013d485e0c92e6064}{s\+\_\+timer\+Event}} = 0ui64
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classNonCopyable}{Non\+Copyable}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNonCopyable_a3e461fb46c72b9a5af7df7e74dbd899e_a3e461fb46c72b9a5af7df7e74dbd899e}{\texorpdfstring{$\sim$}{\string~}\+Non\+Copyable}} () noexcept=default
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classWindow_a69f83cc5dc2d4f9807e4d11d2b2623e1_a69f83cc5dc2d4f9807e4d11d2b2623e1}\index{Window@{Window}!Window@{Window}}
+\index{Window@{Window}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{Window()}{Window()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classWindow_a69f83cc5dc2d4f9807e4d11d2b2623e1_a69f83cc5dc2d4f9807e4d11d2b2623e1} 
+Window\+::\+Window (\begin{DoxyParamCaption}\item[{const int}]{width}{, }\item[{const int}]{height}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{name}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{class\+Name}{, }\item[{const WNDPROC}]{window\+Procedure}{, }\item[{const int}]{x}{, }\item[{const int}]{y}{, }\item[{const \mbox{\hyperlink{structColorBGRA}{Color\+BGRA}}}]{bg\+Color}{ = {\ttfamily \{255,~255,~255\}}, }\item[{const HMENU}]{h\+Menu}{ = {\ttfamily nullptr}, }\item[{const \mbox{\hyperlink{classWindow}{Window}} \texorpdfstring{$\ast$}{*}}]{parent}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})}
+
+\Hypertarget{classWindow_a10df09e61d4dcb181c381f2745e0e4e1_a10df09e61d4dcb181c381f2745e0e4e1}\index{Window@{Window}!Window@{Window}}
+\index{Window@{Window}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{Window()}{Window()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classWindow_a10df09e61d4dcb181c381f2745e0e4e1_a10df09e61d4dcb181c381f2745e0e4e1} 
+Window\+::\+Window (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWindow}{Window}} \&\&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_a245d821e6016fa1f6970ccbbedd635f6_a245d821e6016fa1f6970ccbbedd635f6}\index{Window@{Window}!````~Window@{\texorpdfstring{$\sim$}{\string~}Window}}
+\index{````~Window@{\texorpdfstring{$\sim$}{\string~}Window}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Window()}{\string~Window()}}
+{\footnotesize\ttfamily \label{classWindow_a245d821e6016fa1f6970ccbbedd635f6_a245d821e6016fa1f6970ccbbedd635f6} 
+Window\+::\texorpdfstring{$\sim$}{\string~}\+Window (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classWindow_afa1a733e26aa19e79c461139ecdb536e_afa1a733e26aa19e79c461139ecdb536e}\index{Window@{Window}!confineCursor@{confineCursor}}
+\index{confineCursor@{confineCursor}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{confineCursor()}{confineCursor()}}
+{\footnotesize\ttfamily \label{classWindow_afa1a733e26aa19e79c461139ecdb536e_afa1a733e26aa19e79c461139ecdb536e} 
+void Window\+::confine\+Cursor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_a8399c68d7ae5f5cc253512d42674e049_a8399c68d7ae5f5cc253512d42674e049}\index{Window@{Window}!convertHbitmapToHicon@{convertHbitmapToHicon}}
+\index{convertHbitmapToHicon@{convertHbitmapToHicon}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{convertHbitmapToHicon()}{convertHbitmapToHicon()}}
+{\footnotesize\ttfamily \label{classWindow_a8399c68d7ae5f5cc253512d42674e049_a8399c68d7ae5f5cc253512d42674e049} 
+HICON Window\+::convert\+Hbitmap\+To\+Hicon (\begin{DoxyParamCaption}\item[{HBITMAP}]{bitmap}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classWindow_ab9660b523de7bdc93b8048a12edd1b6e_ab9660b523de7bdc93b8048a12edd1b6e}\index{Window@{Window}!convertHiconToHbitmap@{convertHiconToHbitmap}}
+\index{convertHiconToHbitmap@{convertHiconToHbitmap}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{convertHiconToHbitmap()}{convertHiconToHbitmap()}}
+{\footnotesize\ttfamily \label{classWindow_ab9660b523de7bdc93b8048a12edd1b6e_ab9660b523de7bdc93b8048a12edd1b6e} 
+HBITMAP Window\+::convert\+Hicon\+To\+Hbitmap (\begin{DoxyParamCaption}\item[{HICON}]{h\+Icon}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+h\+Icon vs h\+Bitmap 
+
+h\+Icon is a handle to one of the system resources that Windows OS requires for providing a graphical USER interface.
+
+SHELL applications like Windows Explorer, Desktop etc, use this system resource extensively.
+
+h\+BITMAP is a graphical object which can be manipulated with GDI. h\+Bitmaps can be altered with GDI either by selecting it to a DC or by manipulating the bits directly. GDI cannot handle an h\+ICON. \Hypertarget{classWindow_a25be60f78bde0afcfa73224c5ea7b333_a25be60f78bde0afcfa73224c5ea7b333}\index{Window@{Window}!deleteTrayIcon@{deleteTrayIcon}}
+\index{deleteTrayIcon@{deleteTrayIcon}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{deleteTrayIcon()}{deleteTrayIcon()}}
+{\footnotesize\ttfamily \label{classWindow_a25be60f78bde0afcfa73224c5ea7b333_a25be60f78bde0afcfa73224c5ea7b333} 
+void Window\+::delete\+Tray\+Icon (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_a043951d406f11adc6a7320fcc40de5ff_a043951d406f11adc6a7320fcc40de5ff}\index{Window@{Window}!dialogProc@{dialogProc}}
+\index{dialogProc@{dialogProc}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{dialogProc()}{dialogProc()}}
+{\footnotesize\ttfamily \label{classWindow_a043951d406f11adc6a7320fcc40de5ff_a043951d406f11adc6a7320fcc40de5ff} 
+LRESULT CALLBACK Window\+::dialog\+Proc (\begin{DoxyParamCaption}\item[{\+\_\+\+In\+\_\+ const HWND}]{h\+Wnd}{, }\item[{\+\_\+\+In\+\_\+ const unsigned}]{u\+Msg}{, }\item[{\+\_\+\+In\+\_\+ const WPARAM}]{w\+Param}{, }\item[{\+\_\+\+In\+\_\+ const LPARAM}]{l\+Param}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classWindow_a0a62a86c1134a2579afff3bfc2487d0b_a0a62a86c1134a2579afff3bfc2487d0b}\index{Window@{Window}!disableCursor@{disableCursor}}
+\index{disableCursor@{disableCursor}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{disableCursor()}{disableCursor()}}
+{\footnotesize\ttfamily \label{classWindow_a0a62a86c1134a2579afff3bfc2487d0b_a0a62a86c1134a2579afff3bfc2487d0b} 
+void Window\+::disable\+Cursor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_a2de00afd8696721e9b26d797d1c5baab_a2de00afd8696721e9b26d797d1c5baab}\index{Window@{Window}!disableImGuiMouse@{disableImGuiMouse}}
+\index{disableImGuiMouse@{disableImGuiMouse}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{disableImGuiMouse()}{disableImGuiMouse()}}
+{\footnotesize\ttfamily \label{classWindow_a2de00afd8696721e9b26d797d1c5baab_a2de00afd8696721e9b26d797d1c5baab} 
+void Window\+::disable\+Im\+Gui\+Mouse (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_a466dc023c98b22fdc026c2d70bca1fb9_a466dc023c98b22fdc026c2d70bca1fb9}\index{Window@{Window}!displayMessageBoxOkCancel@{displayMessageBoxOkCancel}}
+\index{displayMessageBoxOkCancel@{displayMessageBoxOkCancel}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{displayMessageBoxOkCancel()}{displayMessageBoxOkCancel()}}
+{\footnotesize\ttfamily \label{classWindow_a466dc023c98b22fdc026c2d70bca1fb9_a466dc023c98b22fdc026c2d70bca1fb9} 
+int Window\+::display\+Message\+Box\+Ok\+Cancel (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{title}{, }\item[{const std\+::string \&}]{message}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classWindow_ab8b32cdcbc931c83c777887df83c5a13_ab8b32cdcbc931c83c777887df83c5a13}\index{Window@{Window}!displayMessageBoxYesNo@{displayMessageBoxYesNo}}
+\index{displayMessageBoxYesNo@{displayMessageBoxYesNo}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{displayMessageBoxYesNo()}{displayMessageBoxYesNo()}}
+{\footnotesize\ttfamily \label{classWindow_ab8b32cdcbc931c83c777887df83c5a13_ab8b32cdcbc931c83c777887df83c5a13} 
+int Window\+::display\+Message\+Box\+Yes\+No (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{title}{, }\item[{const std\+::string \&}]{message}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classWindow_ac3feef02bfeadc708b8b6e9b093b4368_ac3feef02bfeadc708b8b6e9b093b4368}\index{Window@{Window}!editCopy@{editCopy}}
+\index{editCopy@{editCopy}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{editCopy()}{editCopy()}}
+{\footnotesize\ttfamily \label{classWindow_ac3feef02bfeadc708b8b6e9b093b4368_ac3feef02bfeadc708b8b6e9b093b4368} 
+bool Window\+::edit\+Copy (\begin{DoxyParamCaption}\item[{const unsigned}]{format}{ = {\ttfamily \mbox{\hyperlink{window_8h_a02c6467dd339058026d2c844b856e060_a02c6467dd339058026d2c844b856e060}{CLIPBOARD\+\_\+\+TEXT\+\_\+\+FORMAT}}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classWindow_aa804b1d347f57a8325510921285b8669_aa804b1d347f57a8325510921285b8669}\index{Window@{Window}!editDelete@{editDelete}}
+\index{editDelete@{editDelete}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{editDelete()}{editDelete()}}
+{\footnotesize\ttfamily \label{classWindow_aa804b1d347f57a8325510921285b8669_aa804b1d347f57a8325510921285b8669} 
+void Window\+::edit\+Delete (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+delete selected text, eg as if you pressed "{}cut"{} or the "{}delete"{} key 
+
+\Hypertarget{classWindow_a017c50359cd4f4884d06347bd97623fb_a017c50359cd4f4884d06347bd97623fb}\index{Window@{Window}!editPaste@{editPaste}}
+\index{editPaste@{editPaste}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{editPaste()}{editPaste()}}
+{\footnotesize\ttfamily \label{classWindow_a017c50359cd4f4884d06347bd97623fb_a017c50359cd4f4884d06347bd97623fb} 
+bool Window\+::edit\+Paste (\begin{DoxyParamCaption}\item[{const unsigned}]{format}{ = {\ttfamily \mbox{\hyperlink{window_8h_a02c6467dd339058026d2c844b856e060_a02c6467dd339058026d2c844b856e060}{CLIPBOARD\+\_\+\+TEXT\+\_\+\+FORMAT}}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classWindow_a03a5e37c7d4e07b4e77c08776f82e476_a03a5e37c7d4e07b4e77c08776f82e476}\index{Window@{Window}!enableCursor@{enableCursor}}
+\index{enableCursor@{enableCursor}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{enableCursor()}{enableCursor()}}
+{\footnotesize\ttfamily \label{classWindow_a03a5e37c7d4e07b4e77c08776f82e476_a03a5e37c7d4e07b4e77c08776f82e476} 
+void Window\+::enable\+Cursor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_a566918cfdad3ca7954923043dc8ecaf8_a566918cfdad3ca7954923043dc8ecaf8}\index{Window@{Window}!enableImGuiMouse@{enableImGuiMouse}}
+\index{enableImGuiMouse@{enableImGuiMouse}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{enableImGuiMouse()}{enableImGuiMouse()}}
+{\footnotesize\ttfamily \label{classWindow_a566918cfdad3ca7954923043dc8ecaf8_a566918cfdad3ca7954923043dc8ecaf8} 
+void Window\+::enable\+Im\+Gui\+Mouse (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_a4a4ac4dd9c15b4e2a555334befddf7a9_a4a4ac4dd9c15b4e2a555334befddf7a9}\index{Window@{Window}!freeCursor@{freeCursor}}
+\index{freeCursor@{freeCursor}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{freeCursor()}{freeCursor()}}
+{\footnotesize\ttfamily \label{classWindow_a4a4ac4dd9c15b4e2a555334befddf7a9_a4a4ac4dd9c15b4e2a555334befddf7a9} 
+void Window\+::free\+Cursor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_aa60fa73c7502fab7465b9aca117f577f_aa60fa73c7502fab7465b9aca117f577f}\index{Window@{Window}!getConsoleHandle@{getConsoleHandle}}
+\index{getConsoleHandle@{getConsoleHandle}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{getConsoleHandle()}{getConsoleHandle()}}
+{\footnotesize\ttfamily \label{classWindow_aa60fa73c7502fab7465b9aca117f577f_aa60fa73c7502fab7465b9aca117f577f} 
+HWND Window\+::get\+Console\+Handle (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classWindow_a2005a212933dd5d754ac219ca1a59ea6_a2005a212933dd5d754ac219ca1a59ea6}\index{Window@{Window}!getDc@{getDc}}
+\index{getDc@{getDc}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{getDc()}{getDc()}}
+{\footnotesize\ttfamily \label{classWindow_a2005a212933dd5d754ac219ca1a59ea6_a2005a212933dd5d754ac219ca1a59ea6} 
+HDC Window\+::get\+Dc (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+get \doxylink{classWindow}{Window}\textquotesingle{}s Device Context (DC) -\/ a "{}device context"{} contains information about the drawing attributes of a device such as a display or a printer, so if you have two different DC\textquotesingle{}s, you\textquotesingle{}re drawing in two different places; like a file handle for drawing 
+
+\Hypertarget{classWindow_a639d79c96a98f0462aaae8642d4a371f_a639d79c96a98f0462aaae8642d4a371f}\index{Window@{Window}!getDesktop@{getDesktop}}
+\index{getDesktop@{getDesktop}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{getDesktop()}{getDesktop()}}
+{\footnotesize\ttfamily \label{classWindow_a639d79c96a98f0462aaae8642d4a371f_a639d79c96a98f0462aaae8642d4a371f} 
+HWND Window\+::get\+Desktop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_a7bfce0a1441d9a824b5469ae7de8c862_a7bfce0a1441d9a824b5469ae7de8c862}\index{Window@{Window}!getGraphics@{getGraphics}}
+\index{getGraphics@{getGraphics}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{getGraphics()}{getGraphics()}}
+{\footnotesize\ttfamily \label{classWindow_a7bfce0a1441d9a824b5469ae7de8c862_a7bfce0a1441d9a824b5469ae7de8c862} 
+\mbox{\hyperlink{classGraphics}{Graphics}} \& Window\+::get\+Graphics (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classWindow_a5cccd0b4ac2a4b1e5fa40cc270342101_a5cccd0b4ac2a4b1e5fa40cc270342101}\index{Window@{Window}!getHandle@{getHandle}}
+\index{getHandle@{getHandle}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{getHandle()}{getHandle()}}
+{\footnotesize\ttfamily \label{classWindow_a5cccd0b4ac2a4b1e5fa40cc270342101_a5cccd0b4ac2a4b1e5fa40cc270342101} 
+const HWND Window\+::get\+Handle (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_a26083d8f85d6d29f84cac1d246cbb62b_a26083d8f85d6d29f84cac1d246cbb62b}\index{Window@{Window}!getHeight@{getHeight}}
+\index{getHeight@{getHeight}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{getHeight()}{getHeight()}}
+{\footnotesize\ttfamily \label{classWindow_a26083d8f85d6d29f84cac1d246cbb62b_a26083d8f85d6d29f84cac1d246cbb62b} 
+int Window\+::get\+Height (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_abba393eef111b17a568f3913afb9993b_abba393eef111b17a568f3913afb9993b}\index{Window@{Window}!getHeightClientArea@{getHeightClientArea}}
+\index{getHeightClientArea@{getHeightClientArea}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{getHeightClientArea()}{getHeightClientArea()}}
+{\footnotesize\ttfamily \label{classWindow_abba393eef111b17a568f3913afb9993b_abba393eef111b17a568f3913afb9993b} 
+int Window\+::get\+Height\+Client\+Area (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_a9e348a5db42ae8467ef4c1beff84a966_a9e348a5db42ae8467ef4c1beff84a966}\index{Window@{Window}!getInfo@{getInfo}}
+\index{getInfo@{getInfo}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{getInfo()}{getInfo()}}
+{\footnotesize\ttfamily \label{classWindow_a9e348a5db42ae8467ef4c1beff84a966_a9e348a5db42ae8467ef4c1beff84a966} 
+WINDOWINFO Window\+::get\+Info (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_af51b384330835f7ee8d0c3cb1254c4f8_af51b384330835f7ee8d0c3cb1254c4f8}\index{Window@{Window}!getKeyboard@{getKeyboard}}
+\index{getKeyboard@{getKeyboard}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{getKeyboard()}{getKeyboard()}}
+{\footnotesize\ttfamily \label{classWindow_af51b384330835f7ee8d0c3cb1254c4f8_af51b384330835f7ee8d0c3cb1254c4f8} 
+\mbox{\hyperlink{classKeyboard}{Keyboard}} \& Window\+::get\+Keyboard (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_a89e829c66c387dfca31d10b9806da751_a89e829c66c387dfca31d10b9806da751}\index{Window@{Window}!getMouse@{getMouse}}
+\index{getMouse@{getMouse}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{getMouse()}{getMouse()}}
+{\footnotesize\ttfamily \label{classWindow_a89e829c66c387dfca31d10b9806da751_a89e829c66c387dfca31d10b9806da751} 
+\mbox{\hyperlink{classMouse}{Mouse}} \& Window\+::get\+Mouse (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_a07cb1a0df450bf04c6def6fefa588963_a07cb1a0df450bf04c6def6fefa588963}\index{Window@{Window}!getName@{getName}}
+\index{getName@{getName}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily \label{classWindow_a07cb1a0df450bf04c6def6fefa588963_a07cb1a0df450bf04c6def6fefa588963} 
+const std\+::string \& Window\+::get\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_ad9c087919d3f2b8bf0b5685795389a83_ad9c087919d3f2b8bf0b5685795389a83}\index{Window@{Window}!getParent@{getParent}}
+\index{getParent@{getParent}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{getParent()}{getParent()}}
+{\footnotesize\ttfamily \label{classWindow_ad9c087919d3f2b8bf0b5685795389a83_ad9c087919d3f2b8bf0b5685795389a83} 
+const HWND Window\+::get\+Parent (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_a4dbcd17685dba50912a2989c2782ec0d_a4dbcd17685dba50912a2989c2782ec0d}\index{Window@{Window}!getTitle@{getTitle}}
+\index{getTitle@{getTitle}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{getTitle()}{getTitle()}}
+{\footnotesize\ttfamily \label{classWindow_a4dbcd17685dba50912a2989c2782ec0d_a4dbcd17685dba50912a2989c2782ec0d} 
+const std\+::string \& Window\+::get\+Title (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_ae1da2df411ae2d3b1b9ea0ac8ce36286_ae1da2df411ae2d3b1b9ea0ac8ce36286}\index{Window@{Window}!getTopMenu@{getTopMenu}}
+\index{getTopMenu@{getTopMenu}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{getTopMenu()}{getTopMenu()}}
+{\footnotesize\ttfamily \label{classWindow_ae1da2df411ae2d3b1b9ea0ac8ce36286_ae1da2df411ae2d3b1b9ea0ac8ce36286} 
+const HMENU Window\+::get\+Top\+Menu (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_a04ce42e257b20bc0ed80a7e5e5249c3b_a04ce42e257b20bc0ed80a7e5e5249c3b}\index{Window@{Window}!getWidth@{getWidth}}
+\index{getWidth@{getWidth}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{getWidth()}{getWidth()}}
+{\footnotesize\ttfamily \label{classWindow_a04ce42e257b20bc0ed80a7e5e5249c3b_a04ce42e257b20bc0ed80a7e5e5249c3b} 
+int Window\+::get\+Width (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_ae3f3f96cddd3362dcf7bd82a5f7788c4_ae3f3f96cddd3362dcf7bd82a5f7788c4}\index{Window@{Window}!getWidthClientArea@{getWidthClientArea}}
+\index{getWidthClientArea@{getWidthClientArea}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{getWidthClientArea()}{getWidthClientArea()}}
+{\footnotesize\ttfamily \label{classWindow_ae3f3f96cddd3362dcf7bd82a5f7788c4_ae3f3f96cddd3362dcf7bd82a5f7788c4} 
+int Window\+::get\+Width\+Client\+Area (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_a752e47d52453c84ebf8c3f42a6343e66_a752e47d52453c84ebf8c3f42a6343e66}\index{Window@{Window}!getWindowClass@{getWindowClass}}
+\index{getWindowClass@{getWindowClass}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{getWindowClass()}{getWindowClass()}}
+{\footnotesize\ttfamily \label{classWindow_a752e47d52453c84ebf8c3f42a6343e66_a752e47d52453c84ebf8c3f42a6343e66} 
+const \mbox{\hyperlink{classWindow_1_1WindowClass}{Window\+::\+Window\+Class}} \& Window\+::get\+Window\+Class (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_a963c689b550db092425a27d653375953_a963c689b550db092425a27d653375953}\index{Window@{Window}!getWindowStyles@{getWindowStyles}}
+\index{getWindowStyles@{getWindowStyles}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{getWindowStyles()}{getWindowStyles()}}
+{\footnotesize\ttfamily \label{classWindow_a963c689b550db092425a27d653375953_a963c689b550db092425a27d653375953} 
+unsigned Window\+::get\+Window\+Styles (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_af3729cddcc53edb24dcf9379fd17bf1f_af3729cddcc53edb24dcf9379fd17bf1f}\index{Window@{Window}!getWindowStylesEx@{getWindowStylesEx}}
+\index{getWindowStylesEx@{getWindowStylesEx}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{getWindowStylesEx()}{getWindowStylesEx()}}
+{\footnotesize\ttfamily \label{classWindow_af3729cddcc53edb24dcf9379fd17bf1f_af3729cddcc53edb24dcf9379fd17bf1f} 
+unsigned Window\+::get\+Window\+Styles\+Ex (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_a5532ddffbaa83268e3f62315d0da6540_a5532ddffbaa83268e3f62315d0da6540}\index{Window@{Window}!getX@{getX}}
+\index{getX@{getX}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{getX()}{getX()}}
+{\footnotesize\ttfamily \label{classWindow_a5532ddffbaa83268e3f62315d0da6540_a5532ddffbaa83268e3f62315d0da6540} 
+int Window\+::getX (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_ad68c496df5b556d8dd4abd632c0b8878_ad68c496df5b556d8dd4abd632c0b8878}\index{Window@{Window}!getY@{getY}}
+\index{getY@{getY}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{getY()}{getY()}}
+{\footnotesize\ttfamily \label{classWindow_ad68c496df5b556d8dd4abd632c0b8878_ad68c496df5b556d8dd4abd632c0b8878} 
+int Window\+::getY (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_a7a22b0c74d1615879b93e69d7a0370ab_a7a22b0c74d1615879b93e69d7a0370ab}\index{Window@{Window}!hasParent@{hasParent}}
+\index{hasParent@{hasParent}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{hasParent()}{hasParent()}}
+{\footnotesize\ttfamily \label{classWindow_a7a22b0c74d1615879b93e69d7a0370ab_a7a22b0c74d1615879b93e69d7a0370ab} 
+bool Window\+::has\+Parent (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+returns true if this \doxylink{classWindow}{Window} has a parent that is not the Desktop window 
+
+\Hypertarget{classWindow_a8e1a697f5c01400e49c3263d2afd4686_a8e1a697f5c01400e49c3263d2afd4686}\index{Window@{Window}!hideCursor@{hideCursor}}
+\index{hideCursor@{hideCursor}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{hideCursor()}{hideCursor()}}
+{\footnotesize\ttfamily \label{classWindow_a8e1a697f5c01400e49c3263d2afd4686_a8e1a697f5c01400e49c3263d2afd4686} 
+void Window\+::hide\+Cursor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_a3c40c067671e1a563ffdc0a22846a4f1_a3c40c067671e1a563ffdc0a22846a4f1}\index{Window@{Window}!hideMenu@{hideMenu}}
+\index{hideMenu@{hideMenu}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{hideMenu()}{hideMenu()}}
+{\footnotesize\ttfamily \label{classWindow_a3c40c067671e1a563ffdc0a22846a4f1_a3c40c067671e1a563ffdc0a22846a4f1} 
+void Window\+::hide\+Menu (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classWindow_afc527296ebd4d19ca2fdfba50c1aa19c_afc527296ebd4d19ca2fdfba50c1aa19c}\index{Window@{Window}!isActive@{isActive}}
+\index{isActive@{isActive}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{isActive()}{isActive()}}
+{\footnotesize\ttfamily \label{classWindow_afc527296ebd4d19ca2fdfba50c1aa19c_afc527296ebd4d19ca2fdfba50c1aa19c} 
+bool Window\+::is\+Active (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_ae75c970afd77b9812f1fa3fc96549844_ae75c970afd77b9812f1fa3fc96549844}\index{Window@{Window}!isCursorEnabled@{isCursorEnabled}}
+\index{isCursorEnabled@{isCursorEnabled}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{isCursorEnabled()}{isCursorEnabled()}}
+{\footnotesize\ttfamily \label{classWindow_ae75c970afd77b9812f1fa3fc96549844_ae75c970afd77b9812f1fa3fc96549844} 
+bool Window\+::is\+Cursor\+Enabled (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_aad814dbb72db34012be61839a21ea004_aad814dbb72db34012be61839a21ea004}\index{Window@{Window}!isDescendantOf@{isDescendantOf}}
+\index{isDescendantOf@{isDescendantOf}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{isDescendantOf()}{isDescendantOf()}}
+{\footnotesize\ttfamily \label{classWindow_aad814dbb72db34012be61839a21ea004_aad814dbb72db34012be61839a21ea004} 
+bool Window\+::is\+Descendant\+Of (\begin{DoxyParamCaption}\item[{const HWND}]{targeth\+Wnd}{, }\item[{const HWND}]{parent}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_a1bc18114b16d26fcc7e776802a1c33ce_a1bc18114b16d26fcc7e776802a1c33ce}\index{Window@{Window}!isHidden@{isHidden}}
+\index{isHidden@{isHidden}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{isHidden()}{isHidden()}}
+{\footnotesize\ttfamily \label{classWindow_a1bc18114b16d26fcc7e776802a1c33ce_a1bc18114b16d26fcc7e776802a1c33ce} 
+bool Window\+::is\+Hidden (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_ad68904fd77fc0139d48741cb770c7dff_ad68904fd77fc0139d48741cb770c7dff}\index{Window@{Window}!isMaximized@{isMaximized}}
+\index{isMaximized@{isMaximized}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{isMaximized()}{isMaximized()}}
+{\footnotesize\ttfamily \label{classWindow_ad68904fd77fc0139d48741cb770c7dff_ad68904fd77fc0139d48741cb770c7dff} 
+bool Window\+::is\+Maximized (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_a9dbbf71fa232f1014678ae05d9bf1572_a9dbbf71fa232f1014678ae05d9bf1572}\index{Window@{Window}!isMinimized@{isMinimized}}
+\index{isMinimized@{isMinimized}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{isMinimized()}{isMinimized()}}
+{\footnotesize\ttfamily \label{classWindow_a9dbbf71fa232f1014678ae05d9bf1572_a9dbbf71fa232f1014678ae05d9bf1572} 
+bool Window\+::is\+Minimized (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_acc3b6797295659d5ed747dd64aae767d_acc3b6797295659d5ed747dd64aae767d}\index{Window@{Window}!messageBoxPrintf@{messageBoxPrintf}}
+\index{messageBoxPrintf@{messageBoxPrintf}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{messageBoxPrintf()}{messageBoxPrintf()}}
+{\footnotesize\ttfamily \label{classWindow_acc3b6797295659d5ed747dd64aae767d_acc3b6797295659d5ed747dd64aae767d} 
+int Window\+::message\+Box\+Printf (\begin{DoxyParamCaption}\item[{const HWND}]{window}{, }\item[{const TCHAR \texorpdfstring{$\ast$}{*}}]{caption}{, }\item[{const TCHAR \texorpdfstring{$\ast$}{*}}]{format}{, }\item[{}]{...}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+a wrapper over Windows Message\+Box function, first argument {\ttfamily window} can be nullptr 
+
+\Hypertarget{classWindow_a1b5d1120e6ad1f4e078e2942dffd0041_a1b5d1120e6ad1f4e078e2942dffd0041}\index{Window@{Window}!messageLoop@{messageLoop}}
+\index{messageLoop@{messageLoop}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{messageLoop()}{messageLoop()}}
+{\footnotesize\ttfamily \label{classWindow_a1b5d1120e6ad1f4e078e2942dffd0041_a1b5d1120e6ad1f4e078e2942dffd0041} 
+std\+::optional$<$ int $>$ Window\+::message\+Loop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_a97078387be519b16401c3bb0f299aa01_a97078387be519b16401c3bb0f299aa01}\index{Window@{Window}!minimize@{minimize}}
+\index{minimize@{minimize}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{minimize()}{minimize()}}
+{\footnotesize\ttfamily \label{classWindow_a97078387be519b16401c3bb0f299aa01_a97078387be519b16401c3bb0f299aa01} 
+void Window\+::minimize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classWindow_a7568bb745290d9eb85cc4dcae8a45bca_a7568bb745290d9eb85cc4dcae8a45bca}\index{Window@{Window}!operator bool@{operator bool}}
+\index{operator bool@{operator bool}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{operator bool()}{operator bool()}}
+{\footnotesize\ttfamily \label{classWindow_a7568bb745290d9eb85cc4dcae8a45bca_a7568bb745290d9eb85cc4dcae8a45bca} 
+Window\+::operator bool (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_ab337075b991c72d66625f6ca13ae78f8_ab337075b991c72d66625f6ca13ae78f8}\index{Window@{Window}!operator=@{operator=}}
+\index{operator=@{operator=}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{classWindow_ab337075b991c72d66625f6ca13ae78f8_ab337075b991c72d66625f6ca13ae78f8} 
+\mbox{\hyperlink{classWindow}{Window}} \& Window\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWindow}{Window}} \&\&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_a40ba1a2d6d8ec7cd381ef0f20b423acb_a40ba1a2d6d8ec7cd381ef0f20b423acb}\index{Window@{Window}!processMenu@{processMenu}}
+\index{processMenu@{processMenu}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{processMenu()}{processMenu()}}
+{\footnotesize\ttfamily \label{classWindow_a40ba1a2d6d8ec7cd381ef0f20b423acb_a40ba1a2d6d8ec7cd381ef0f20b423acb} 
+void WINAPI Window\+::process\+Menu (\begin{DoxyParamCaption}\item[{HMENU}]{h\+Menu}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Menu related functions. 
+
+\Hypertarget{classWindow_a2ac13cf3243000d5b30ff1a29547e407_a2ac13cf3243000d5b30ff1a29547e407}\index{Window@{Window}!renderClipboardFormat@{renderClipboardFormat}}
+\index{renderClipboardFormat@{renderClipboardFormat}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{renderClipboardFormat()}{renderClipboardFormat()}}
+{\footnotesize\ttfamily \label{classWindow_a2ac13cf3243000d5b30ff1a29547e407_a2ac13cf3243000d5b30ff1a29547e407} 
+void Window\+::render\+Clipboard\+Format (\begin{DoxyParamCaption}\item[{unsigned}]{format}{ = {\ttfamily \mbox{\hyperlink{window_8h_a02c6467dd339058026d2c844b856e060_a02c6467dd339058026d2c844b856e060}{CLIPBOARD\+\_\+\+TEXT\+\_\+\+FORMAT}}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classWindow_ac12065a404bba4aaca510c33a8a338d1_ac12065a404bba4aaca510c33a8a338d1}\index{Window@{Window}!restore@{restore}}
+\index{restore@{restore}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{restore()}{restore()}}
+{\footnotesize\ttfamily \label{classWindow_ac12065a404bba4aaca510c33a8a338d1_ac12065a404bba4aaca510c33a8a338d1} 
+void Window\+::restore (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classWindow_a989ce4fa31d0caf58d4f238b9c094d31_a989ce4fa31d0caf58d4f238b9c094d31}\index{Window@{Window}!saveClipboardTextAsVar@{saveClipboardTextAsVar}}
+\index{saveClipboardTextAsVar@{saveClipboardTextAsVar}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{saveClipboardTextAsVar()}{saveClipboardTextAsVar()}}
+{\footnotesize\ttfamily \label{classWindow_a989ce4fa31d0caf58d4f238b9c094d31_a989ce4fa31d0caf58d4f238b9c094d31} 
+void Window\+::save\+Clipboard\+Text\+As\+Var (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classWindow_a9cd314e68c41dc086d9de29c5d5b0658_a9cd314e68c41dc086d9de29c5d5b0658}\index{Window@{Window}!setBorderless@{setBorderless}}
+\index{setBorderless@{setBorderless}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{setBorderless()}{setBorderless()}}
+{\footnotesize\ttfamily \label{classWindow_a9cd314e68c41dc086d9de29c5d5b0658_a9cd314e68c41dc086d9de29c5d5b0658} 
+void Window\+::set\+Borderless (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_a5a4f28721b04c0047afb8881f68e359d_a5a4f28721b04c0047afb8881f68e359d}\index{Window@{Window}!setEnable@{setEnable}}
+\index{setEnable@{setEnable}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{setEnable()}{setEnable()}}
+{\footnotesize\ttfamily \label{classWindow_a5a4f28721b04c0047afb8881f68e359d_a5a4f28721b04c0047afb8881f68e359d} 
+void Window\+::set\+Enable (\begin{DoxyParamCaption}\item[{const bool}]{b}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classWindow_a9d12dc09ac60627ee8192096b45fc129_a9d12dc09ac60627ee8192096b45fc129}\index{Window@{Window}!setFocus@{setFocus}}
+\index{setFocus@{setFocus}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{setFocus()}{setFocus()}}
+{\footnotesize\ttfamily \label{classWindow_a9d12dc09ac60627ee8192096b45fc129_a9d12dc09ac60627ee8192096b45fc129} 
+const HWND Window\+::set\+Focus (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classWindow_ace4b47e72c96be743531236e6c632fa6_ace4b47e72c96be743531236e6c632fa6}\index{Window@{Window}!setFont@{setFont}}
+\index{setFont@{setFont}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{setFont()}{setFont()}}
+{\footnotesize\ttfamily \label{classWindow_ace4b47e72c96be743531236e6c632fa6_ace4b47e72c96be743531236e6c632fa6} 
+void Window\+::set\+Font (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{font\+Name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classWindow_a9278ce486f1bedf76b70b44180ad57f7_a9278ce486f1bedf76b70b44180ad57f7}\index{Window@{Window}!setOnTop@{setOnTop}}
+\index{setOnTop@{setOnTop}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{setOnTop()}{setOnTop()}}
+{\footnotesize\ttfamily \label{classWindow_a9278ce486f1bedf76b70b44180ad57f7_a9278ce486f1bedf76b70b44180ad57f7} 
+void Window\+::set\+On\+Top (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classWindow_a6f835d03f53872fb1a84f142a037977e_a6f835d03f53872fb1a84f142a037977e}\index{Window@{Window}!setRedrawing@{setRedrawing}}
+\index{setRedrawing@{setRedrawing}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{setRedrawing()}{setRedrawing()}}
+{\footnotesize\ttfamily \label{classWindow_a6f835d03f53872fb1a84f142a037977e_a6f835d03f53872fb1a84f142a037977e} 
+void Window\+::set\+Redrawing (\begin{DoxyParamCaption}\item[{const bool}]{b\+Redraw}{}\end{DoxyParamCaption})}
+
+
+
+prevent intermediate redrawing 
+
+\Hypertarget{classWindow_a6d03fd6c9fbfcaf4aba92e6b4d08123e_a6d03fd6c9fbfcaf4aba92e6b4d08123e}\index{Window@{Window}!setTitle@{setTitle}}
+\index{setTitle@{setTitle}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{setTitle()}{setTitle()}}
+{\footnotesize\ttfamily \label{classWindow_a6d03fd6c9fbfcaf4aba92e6b4d08123e_a6d03fd6c9fbfcaf4aba92e6b4d08123e} 
+void Window\+::set\+Title (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{title}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classWindow_a4e66e4896e552265193a794ae82a1b2d_a4e66e4896e552265193a794ae82a1b2d}\index{Window@{Window}!setupSplashWindow@{setupSplashWindow}}
+\index{setupSplashWindow@{setupSplashWindow}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{setupSplashWindow()}{setupSplashWindow()}}
+{\footnotesize\ttfamily \label{classWindow_a4e66e4896e552265193a794ae82a1b2d_a4e66e4896e552265193a794ae82a1b2d} 
+void Window\+::setup\+Splash\+Window (\begin{DoxyParamCaption}\item[{HBITMAP}]{h\+Splash\+Bitmap}{}\end{DoxyParamCaption})}
+
+
+
+create an Alpha enabled Splash window for the main application window 
+
+We\textquotesingle{}ll use a layered window to do it (recommended method for Windows 2000+).
+
+The beauty of layered windows and the Update\+Layered\+Window function is that the splash window doesn\textquotesingle{}t have to respond to WM\+\_\+\+PAINT messages; Windows will paint it (and blend it correctly with the windows below it) by default.
+
+\#\+WARNING\+: load the BMP with black color for the transparent places \Hypertarget{classWindow_a3086e4a7cdae4cf5af32c9971bd9d34e_a3086e4a7cdae4cf5af32c9971bd9d34e}\index{Window@{Window}!setupTrayIcon@{setupTrayIcon}}
+\index{setupTrayIcon@{setupTrayIcon}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{setupTrayIcon()}{setupTrayIcon()}}
+{\footnotesize\ttfamily \label{classWindow_a3086e4a7cdae4cf5af32c9971bd9d34e_a3086e4a7cdae4cf5af32c9971bd9d34e} 
+void Window\+::setup\+Tray\+Icon (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classWindow_a5dc819c56369c625f93cb8131b795d16_a5dc819c56369c625f93cb8131b795d16}\index{Window@{Window}!setWindowProperties@{setWindowProperties}}
+\index{setWindowProperties@{setWindowProperties}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{setWindowProperties()}{setWindowProperties()}}
+{\footnotesize\ttfamily \label{classWindow_a5dc819c56369c625f93cb8131b795d16_a5dc819c56369c625f93cb8131b795d16} 
+void Window\+::set\+Window\+Properties (\begin{DoxyParamCaption}\item[{const int}]{width}{, }\item[{const int}]{height}{, }\item[{const unsigned}]{flags}{ = {\ttfamily SWP\+\_\+NOZORDER~\texorpdfstring{$\vert$}{|}~SWP\+\_\+NOMOVE~\texorpdfstring{$\vert$}{|}~SWP\+\_\+NOACTIVATE}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classWindow_ac96ebcab2a11b85fbbb9f361e4fec14d_ac96ebcab2a11b85fbbb9f361e4fec14d}\index{Window@{Window}!setWindowStyles@{setWindowStyles}}
+\index{setWindowStyles@{setWindowStyles}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{setWindowStyles()}{setWindowStyles()}}
+{\footnotesize\ttfamily \label{classWindow_ac96ebcab2a11b85fbbb9f361e4fec14d_ac96ebcab2a11b85fbbb9f361e4fec14d} 
+void Window\+::set\+Window\+Styles (\begin{DoxyParamCaption}\item[{const unsigned}]{window\+Styles}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_a84c9316e2abef10f3c1fbe3ebcb3bad6_a84c9316e2abef10f3c1fbe3ebcb3bad6}\index{Window@{Window}!setWindowStylesEx@{setWindowStylesEx}}
+\index{setWindowStylesEx@{setWindowStylesEx}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{setWindowStylesEx()}{setWindowStylesEx()}}
+{\footnotesize\ttfamily \label{classWindow_a84c9316e2abef10f3c1fbe3ebcb3bad6_a84c9316e2abef10f3c1fbe3ebcb3bad6} 
+void Window\+::set\+Window\+Styles\+Ex (\begin{DoxyParamCaption}\item[{const unsigned}]{window\+Styles\+Ex}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_a0aed96a4d37d339964c343b729b214f2_a0aed96a4d37d339964c343b729b214f2}\index{Window@{Window}!showCursor@{showCursor}}
+\index{showCursor@{showCursor}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{showCursor()}{showCursor()}}
+{\footnotesize\ttfamily \label{classWindow_a0aed96a4d37d339964c343b729b214f2_a0aed96a4d37d339964c343b729b214f2} 
+void Window\+::show\+Cursor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_a23bdfd4da0ed787aef0d99862fc5298b_a23bdfd4da0ed787aef0d99862fc5298b}\index{Window@{Window}!showMenu@{showMenu}}
+\index{showMenu@{showMenu}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{showMenu()}{showMenu()}}
+{\footnotesize\ttfamily \label{classWindow_a23bdfd4da0ed787aef0d99862fc5298b_a23bdfd4da0ed787aef0d99862fc5298b} 
+void Window\+::show\+Menu (\begin{DoxyParamCaption}\item[{const HMENU}]{h\+Menu}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classWindow_a0c807d8500dd6611e32c02c583dbd655_a0c807d8500dd6611e32c02c583dbd655}\index{Window@{Window}!showTrayIcon@{showTrayIcon}}
+\index{showTrayIcon@{showTrayIcon}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{showTrayIcon()}{showTrayIcon()}}
+{\footnotesize\ttfamily \label{classWindow_a0c807d8500dd6611e32c02c583dbd655_a0c807d8500dd6611e32c02c583dbd655} 
+void Window\+::show\+Tray\+Icon (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classWindow_adc6e743324b3b804df5b2fa86ced2a6f_adc6e743324b3b804df5b2fa86ced2a6f}\index{Window@{Window}!splashWindowProc@{splashWindowProc}}
+\index{splashWindowProc@{splashWindowProc}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{splashWindowProc()}{splashWindowProc()}}
+{\footnotesize\ttfamily \label{classWindow_adc6e743324b3b804df5b2fa86ced2a6f_adc6e743324b3b804df5b2fa86ced2a6f} 
+LRESULT CALLBACK Window\+::splash\+Window\+Proc (\begin{DoxyParamCaption}\item[{\+\_\+\+In\+\_\+ const HWND}]{h\+Wnd}{, }\item[{\+\_\+\+In\+\_\+ const unsigned}]{u\+Msg}{, }\item[{\+\_\+\+In\+\_\+ const WPARAM}]{w\+Param}{, }\item[{\+\_\+\+In\+\_\+ const LPARAM}]{l\+Param}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classWindow_acf8285de3092f3452349ee4591627b11_acf8285de3092f3452349ee4591627b11}\index{Window@{Window}!splashWindowTimerProc@{splashWindowTimerProc}}
+\index{splashWindowTimerProc@{splashWindowTimerProc}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{splashWindowTimerProc()}{splashWindowTimerProc()}}
+{\footnotesize\ttfamily \label{classWindow_acf8285de3092f3452349ee4591627b11_acf8285de3092f3452349ee4591627b11} 
+void CALLBACK Window\+::splash\+Window\+Timer\+Proc (\begin{DoxyParamCaption}\item[{\+\_\+\+In\+\_\+ const HWND}]{h\+Wnd}{, }\item[{\+\_\+\+In\+\_\+ const unsigned}]{u\+Msg}{, }\item[{\+\_\+\+In\+\_\+ const unsigned}]{id\+Event}{, }\item[{\+\_\+\+In\+\_\+ const DWORD}]{time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classWindow_a63b33789bf23618f116c8b97b2010f58_a63b33789bf23618f116c8b97b2010f58}\index{Window@{Window}!windowProc@{windowProc}}
+\index{windowProc@{windowProc}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{windowProc()}{windowProc()}}
+{\footnotesize\ttfamily \label{classWindow_a63b33789bf23618f116c8b97b2010f58_a63b33789bf23618f116c8b97b2010f58} 
+LRESULT CALLBACK Window\+::window\+Proc (\begin{DoxyParamCaption}\item[{\+\_\+\+In\+\_\+ const HWND}]{p\+Wnd}{, }\item[{\+\_\+\+In\+\_\+ const unsigned}]{u\+Msg}{, }\item[{\+\_\+\+In\+\_\+ const WPARAM}]{w\+Param}{, }\item[{\+\_\+\+In\+\_\+ const LPARAM}]{l\+Param}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classWindow_afcc33d5d00fe7a117049c347a7c800d4_afcc33d5d00fe7a117049c347a7c800d4}\index{Window@{Window}!windowProc\_impl2d@{windowProc\_impl2d}}
+\index{windowProc\_impl2d@{windowProc\_impl2d}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{windowProc\_impl2d()}{windowProc\_impl2d()}}
+{\footnotesize\ttfamily \label{classWindow_afcc33d5d00fe7a117049c347a7c800d4_afcc33d5d00fe7a117049c347a7c800d4} 
+LRESULT Window\+::window\+Proc\+\_\+impl2d (\begin{DoxyParamCaption}\item[{\+\_\+\+In\+\_\+ const HWND}]{p\+Wnd\+Handle}{, }\item[{\+\_\+\+In\+\_\+ const unsigned}]{msg}{, }\item[{\+\_\+\+In\+\_\+ const WPARAM}]{wparam}{, }\item[{\+\_\+\+In\+\_\+ const LPARAM}]{lparam}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\doxylink{classKeyboard}{Keyboard} Messages
+
+\doxylink{classMouse}{Mouse} Messages
+
+Raw Input Messages\Hypertarget{classWindow_a2821cd9dba5a27e88f90808281444e93_a2821cd9dba5a27e88f90808281444e93}\index{Window@{Window}!windowProc\_impl3d@{windowProc\_impl3d}}
+\index{windowProc\_impl3d@{windowProc\_impl3d}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{windowProc\_impl3d()}{windowProc\_impl3d()}}
+{\footnotesize\ttfamily \label{classWindow_a2821cd9dba5a27e88f90808281444e93_a2821cd9dba5a27e88f90808281444e93} 
+LRESULT Window\+::window\+Proc\+\_\+impl3d (\begin{DoxyParamCaption}\item[{\+\_\+\+In\+\_\+ const HWND}]{p\+Wnd\+Handle}{, }\item[{\+\_\+\+In\+\_\+ const unsigned}]{msg}{, }\item[{\+\_\+\+In\+\_\+ const WPARAM}]{wparam}{, }\item[{\+\_\+\+In\+\_\+ const LPARAM}]{lparam}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Resizing messages
+
+Menu messages
+
+clipboard messages
+
+\doxylink{classKeyboard}{Keyboard} messages
+
+\doxylink{classMouse}{Mouse} Messages\Hypertarget{classWindow_a73049005d1b7e248e423374b50ec1915_a73049005d1b7e248e423374b50ec1915}\index{Window@{Window}!windowProcDelegate@{windowProcDelegate}}
+\index{windowProcDelegate@{windowProcDelegate}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{windowProcDelegate()}{windowProcDelegate()}}
+{\footnotesize\ttfamily \label{classWindow_a73049005d1b7e248e423374b50ec1915_a73049005d1b7e248e423374b50ec1915} 
+LRESULT CALLBACK Window\+::window\+Proc\+Delegate (\begin{DoxyParamCaption}\item[{\+\_\+\+In\+\_\+ const HWND}]{p\+Wnd\+Handle}{, }\item[{\+\_\+\+In\+\_\+ const unsigned}]{u\+Msg}{, }\item[{\+\_\+\+In\+\_\+ const WPARAM}]{w\+Param}{, }\item[{\+\_\+\+In\+\_\+ const LPARAM}]{l\+Param}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classWindow_a588f1844e2f5098b7a75f8703efde18e_a588f1844e2f5098b7a75f8703efde18e}\index{Window@{Window}!m\_bCursorEnabled@{m\_bCursorEnabled}}
+\index{m\_bCursorEnabled@{m\_bCursorEnabled}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{m\_bCursorEnabled}{m\_bCursorEnabled}}
+{\footnotesize\ttfamily \label{classWindow_a588f1844e2f5098b7a75f8703efde18e_a588f1844e2f5098b7a75f8703efde18e} 
+bool Window\+::m\+\_\+b\+Cursor\+Enabled = true\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classWindow_aa1e61281cd037023b477dcb843b5b573_aa1e61281cd037023b477dcb843b5b573}\index{Window@{Window}!m\_clipboardFormats@{m\_clipboardFormats}}
+\index{m\_clipboardFormats@{m\_clipboardFormats}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{m\_clipboardFormats}{m\_clipboardFormats}}
+{\footnotesize\ttfamily \label{classWindow_aa1e61281cd037023b477dcb843b5b573_aa1e61281cd037023b477dcb843b5b573} 
+std\+::array$<$unsigned, 8$>$ Window\+::m\+\_\+clipboard\+Formats\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classWindow_a1fa9417ebe0ef97a982efb0dadcf8a5d_a1fa9417ebe0ef97a982efb0dadcf8a5d}\index{Window@{Window}!m\_hTrayIconPopupMenu@{m\_hTrayIconPopupMenu}}
+\index{m\_hTrayIconPopupMenu@{m\_hTrayIconPopupMenu}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{m\_hTrayIconPopupMenu}{m\_hTrayIconPopupMenu}}
+{\footnotesize\ttfamily \label{classWindow_a1fa9417ebe0ef97a982efb0dadcf8a5d_a1fa9417ebe0ef97a982efb0dadcf8a5d} 
+HMENU Window\+::m\+\_\+h\+Tray\+Icon\+Popup\+Menu = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classWindow_ab39b5ba6b3adea40aa19ffa50e306dbb_ab39b5ba6b3adea40aa19ffa50e306dbb}\index{Window@{Window}!m\_hWnd@{m\_hWnd}}
+\index{m\_hWnd@{m\_hWnd}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{m\_hWnd}{m\_hWnd}}
+{\footnotesize\ttfamily \label{classWindow_ab39b5ba6b3adea40aa19ffa50e306dbb_ab39b5ba6b3adea40aa19ffa50e306dbb} 
+HWND Window\+::m\+\_\+h\+Wnd\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classWindow_a0cd7fb10e78040422ad35827fd9d1554_a0cd7fb10e78040422ad35827fd9d1554}\index{Window@{Window}!m\_info@{m\_info}}
+\index{m\_info@{m\_info}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{m\_info}{m\_info}}
+{\footnotesize\ttfamily \label{classWindow_a0cd7fb10e78040422ad35827fd9d1554_a0cd7fb10e78040422ad35827fd9d1554} 
+WINDOWINFO Window\+::m\+\_\+info \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classWindow_ae2e5678a2d1737dd39ff66cbb7565e15_ae2e5678a2d1737dd39ff66cbb7565e15}\index{Window@{Window}!m\_name@{m\_name}}
+\index{m\_name@{m\_name}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{m\_name}{m\_name}}
+{\footnotesize\ttfamily \label{classWindow_ae2e5678a2d1737dd39ff66cbb7565e15_ae2e5678a2d1737dd39ff66cbb7565e15} 
+std\+::string Window\+::m\+\_\+name\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classWindow_a9801c1522a675647f8e2cbfa6d10c7dc_a9801c1522a675647f8e2cbfa6d10c7dc}\index{Window@{Window}!m\_pGraphics@{m\_pGraphics}}
+\index{m\_pGraphics@{m\_pGraphics}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{m\_pGraphics}{m\_pGraphics}}
+{\footnotesize\ttfamily \label{classWindow_a9801c1522a675647f8e2cbfa6d10c7dc_a9801c1522a675647f8e2cbfa6d10c7dc} 
+std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classGraphics}{Graphics}}$>$ Window\+::m\+\_\+p\+Graphics\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classWindow_a4a330c87fd1258d1846f147a9a188bd0_a4a330c87fd1258d1846f147a9a188bd0}\index{Window@{Window}!m\_pModalDialog@{m\_pModalDialog}}
+\index{m\_pModalDialog@{m\_pModalDialog}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{m\_pModalDialog}{m\_pModalDialog}}
+{\footnotesize\ttfamily \label{classWindow_a4a330c87fd1258d1846f147a9a188bd0_a4a330c87fd1258d1846f147a9a188bd0} 
+std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classWindow}{Window}}$>$ Window\+::m\+\_\+p\+Modal\+Dialog\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classWindow_a8eb3ec06d02253d7102350bd9533a17c_a8eb3ec06d02253d7102350bd9533a17c}\index{Window@{Window}!m\_pSplash@{m\_pSplash}}
+\index{m\_pSplash@{m\_pSplash}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{m\_pSplash}{m\_pSplash}}
+{\footnotesize\ttfamily \label{classWindow_a8eb3ec06d02253d7102350bd9533a17c_a8eb3ec06d02253d7102350bd9533a17c} 
+std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classWindow}{Window}}$>$ Window\+::m\+\_\+p\+Splash\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classWindow_ae9ced8207aab8f5717efd6610340e62d_ae9ced8207aab8f5717efd6610340e62d}\index{Window@{Window}!m\_title@{m\_title}}
+\index{m\_title@{m\_title}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{m\_title}{m\_title}}
+{\footnotesize\ttfamily \label{classWindow_ae9ced8207aab8f5717efd6610340e62d_ae9ced8207aab8f5717efd6610340e62d} 
+std\+::string Window\+::m\+\_\+title\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classWindow_a3129bb2ec0c28df7e02041c6d74fb5cd_a3129bb2ec0c28df7e02041c6d74fb5cd}\index{Window@{Window}!m\_trayIconData@{m\_trayIconData}}
+\index{m\_trayIconData@{m\_trayIconData}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{m\_trayIconData}{m\_trayIconData}}
+{\footnotesize\ttfamily \label{classWindow_a3129bb2ec0c28df7e02041c6d74fb5cd_a3129bb2ec0c28df7e02041c6d74fb5cd} 
+NOTIFYICONDATA Window\+::m\+\_\+tray\+Icon\+Data \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classWindow_ae3edc49affe0c51784741be3fb19ada9_ae3edc49affe0c51784741be3fb19ada9}\index{Window@{Window}!m\_windowClass@{m\_windowClass}}
+\index{m\_windowClass@{m\_windowClass}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{m\_windowClass}{m\_windowClass}}
+{\footnotesize\ttfamily \label{classWindow_ae3edc49affe0c51784741be3fb19ada9_ae3edc49affe0c51784741be3fb19ada9} 
+\mbox{\hyperlink{classWindow_1_1WindowClass}{Window\+Class}} Window\+::m\+\_\+window\+Class\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classWindow_adb2d358327f22c4df6f01ea4e92db80b_adb2d358327f22c4df6f01ea4e92db80b}\index{Window@{Window}!s\_hAcceleratorTable@{s\_hAcceleratorTable}}
+\index{s\_hAcceleratorTable@{s\_hAcceleratorTable}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{s\_hAcceleratorTable}{s\_hAcceleratorTable}}
+{\footnotesize\ttfamily \label{classWindow_adb2d358327f22c4df6f01ea4e92db80b_adb2d358327f22c4df6f01ea4e92db80b} 
+HACCEL Window\+::s\+\_\+h\+Accelerator\+Table\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{classWindow_adad72e93053ae81a048b11b80a886ca4_adad72e93053ae81a048b11b80a886ca4}\index{Window@{Window}!s\_keyboard@{s\_keyboard}}
+\index{s\_keyboard@{s\_keyboard}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{s\_keyboard}{s\_keyboard}}
+{\footnotesize\ttfamily \label{classWindow_adad72e93053ae81a048b11b80a886ca4_adad72e93053ae81a048b11b80a886ca4} 
+\mbox{\hyperlink{classKeyboard}{Keyboard}} Window\+::s\+\_\+keyboard\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{classWindow_a346ad68a7a25b4faa0d7b99bf6a20a13_a346ad68a7a25b4faa0d7b99bf6a20a13}\index{Window@{Window}!s\_mouse@{s\_mouse}}
+\index{s\_mouse@{s\_mouse}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{s\_mouse}{s\_mouse}}
+{\footnotesize\ttfamily \label{classWindow_a346ad68a7a25b4faa0d7b99bf6a20a13_a346ad68a7a25b4faa0d7b99bf6a20a13} 
+\mbox{\hyperlink{classMouse}{Mouse}} Window\+::s\+\_\+mouse\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{classWindow_a9cc5ee14371f126378a31c305189611a_a9cc5ee14371f126378a31c305189611a}\index{Window@{Window}!s\_pBoxLocalClip@{s\_pBoxLocalClip}}
+\index{s\_pBoxLocalClip@{s\_pBoxLocalClip}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{s\_pBoxLocalClip}{s\_pBoxLocalClip}}
+{\footnotesize\ttfamily \label{classWindow_a9cc5ee14371f126378a31c305189611a_a9cc5ee14371f126378a31c305189611a} 
+\mbox{\hyperlink{windows__hidden__defs_8h_adea6dcaa9f8bf0e79413c0b1a1f501e2_adea6dcaa9f8bf0e79413c0b1a1f501e2}{PLABELBOX}} Window\+::s\+\_\+p\+Box\+Local\+Clip\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{classWindow_a34b7a782124f9a212b5e42a75d90ce35_a34b7a782124f9a212b5e42a75d90ce35}\index{Window@{Window}!s\_rawInputBuffer@{s\_rawInputBuffer}}
+\index{s\_rawInputBuffer@{s\_rawInputBuffer}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{s\_rawInputBuffer}{s\_rawInputBuffer}}
+{\footnotesize\ttfamily \label{classWindow_a34b7a782124f9a212b5e42a75d90ce35_a34b7a782124f9a212b5e42a75d90ce35} 
+std\+::vector$<$BYTE$>$ Window\+::s\+\_\+raw\+Input\+Buffer\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{classWindow_a489a152d80bb5ee013d485e0c92e6064_a489a152d80bb5ee013d485e0c92e6064}\index{Window@{Window}!s\_timerEvent@{s\_timerEvent}}
+\index{s\_timerEvent@{s\_timerEvent}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{s\_timerEvent}{s\_timerEvent}}
+{\footnotesize\ttfamily \label{classWindow_a489a152d80bb5ee013d485e0c92e6064_a489a152d80bb5ee013d485e0c92e6064} 
+UINT\+\_\+\+PTR Window\+::s\+\_\+timer\+Event = 0ui64\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{window_8h}{window.\+h}}\item 
+src/\mbox{\hyperlink{window_8cpp}{window.\+cpp}}\end{DoxyCompactItemize}

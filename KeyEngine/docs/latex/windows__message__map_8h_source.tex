@@ -1,0 +1,29 @@
+\doxysection{windows\+\_\+message\+\_\+map.\+h}
+\hypertarget{windows__message__map_8h_source}{}\label{windows__message__map_8h_source}\index{inc/windows\_message\_map.h@{inc/windows\_message\_map.h}}
+\mbox{\hyperlink{windows__message__map_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{winner_8h}{winner.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classWindowsMessageMap}{WindowsMessageMap}}\ final}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ std::unordered\_map<DWORD,\ std::string>\ \mbox{\hyperlink{classWindowsMessageMap_a7c3c7e18f4c6b9c8e82c52b7509c2661_a7c3c7e18f4c6b9c8e82c52b7509c2661}{m\_map}};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{classWindowsMessageMap_adc2cb5838ee2d220cbd905737b404327_adc2cb5838ee2d220cbd905737b404327}{WindowsMessageMap}}()\ noexcept;}
+\DoxyCodeLine{00019\ public:}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{classWindowsMessageMap}{WindowsMessageMap}}(\ const\ \mbox{\hyperlink{classWindowsMessageMap}{WindowsMessageMap}}\ \&rhs\ )\ =\ delete;}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{classWindowsMessageMap}{WindowsMessageMap}}\&\ operator=(\ const\ \mbox{\hyperlink{classWindowsMessageMap}{WindowsMessageMap}}\ \&rhs\ )\ =\ delete;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ static\ \mbox{\hyperlink{classWindowsMessageMap}{WindowsMessageMap}}\&\ \mbox{\hyperlink{classWindowsMessageMap_a1295a2a61116d764067bc2b68ad3ee1d_a1295a2a61116d764067bc2b68ad3ee1d}{getInstance}}()}
+\DoxyCodeLine{00024\ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classWindowsMessageMap}{WindowsMessageMap}}\ inst\{\};}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ inst;}
+\DoxyCodeLine{00027\ \ \ \ \ \}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ std::string\ \mbox{\hyperlink{classWindowsMessageMap_a42878d073a5d20b5f98ef9491459d938_a42878d073a5d20b5f98ef9491459d938}{toString}}(\ \textcolor{keyword}{const}\ DWORD\ uMsg\ )\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00030\ \};}
+
+\end{DoxyCode}

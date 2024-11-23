@@ -9,13 +9,13 @@
 #include "non_copyable.h"
 
 
-//=============================================================
-//	\class	Bitmap
-//	\author	KeyC0de
-//	\date	2021/10/04 12:56
-//	\brief	uses DirectX Tex to load images into
-//			rule-of-0
-//=============================================================
+///=============================================================
+/// \class	Bitmap
+/// \author	KeyC0de
+/// \date	2021/10/04 12:56
+/// \brief	uses DirectX Tex to load images into
+/// \brief	rule-of-0
+///=============================================================
 class Bitmap final
 	: public NonCopyable
 {
@@ -37,8 +37,7 @@ public:
 	using Texel = ColorBGRA;
 
 	static Bitmap loadFromFile( const std::string &filename, unsigned wicFlags = DirectX::WIC_FLAGS_IGNORE_SRGB );
-	//	\function	colorToVector	||	\date	2022/02/18 17:49
-	//	\brief	convert from Color(0..255) to vector(-1..1)
+	/// \brief	convert from Color(0..255) to vector(-1..1)
 	static const DirectX::XMVECTOR colorToVector( const Bitmap::Texel col ) noexcept;
 	static Bitmap::Texel vectorToColor( DirectX::XMVECTOR v ) noexcept;
 public:
@@ -50,8 +49,7 @@ public:
 	const Texel getTexel( const unsigned int x, const unsigned int y ) const cond_noex;
 	unsigned int getWidth() const noexcept;
 	unsigned int getHeight() const noexcept;
-	//	\function	getPitch	||	\date	2022/02/19 19:27
-	//	\brief	=== getWidth() * sizeof Texel
+	/// \brief	=== getWidth() * sizeof Texel
 	unsigned int getPitch() const noexcept;
 	Texel* data() noexcept;
 	const Texel* getData() const noexcept;

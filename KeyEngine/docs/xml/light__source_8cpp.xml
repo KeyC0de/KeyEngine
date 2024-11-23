@@ -1,0 +1,1186 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="light__source_8cpp" kind="file" language="C++">
+    <compoundname>light_source.cpp</compoundname>
+    <includes refid="light__source_8h" local="yes">light_source.h</includes>
+    <includes refid="sphere_8h" local="yes">sphere.h</includes>
+    <includes refid="graphics_8h" local="yes">graphics.h</includes>
+    <includes refid="shadow__pass_8h" local="yes">shadow_pass.h</includes>
+    <includes refid="camera_8h" local="yes">camera.h</includes>
+    <includes refid="camera__manager_8h" local="yes">camera_manager.h</includes>
+    <includes refid="math__utils_8h" local="yes">math_utils.h</includes>
+    <includes refid="d3d__utils_8h" local="yes">d3d_utils.h</includes>
+    <includes refid="assertions__console_8h" local="yes">assertions_console.h</includes>
+    <includes local="yes">imgui/imgui.h</includes>
+    <incdepgraph>
+      <node id="21">
+        <label>assertions_console.h</label>
+        <link refid="assertions__console_8h"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>bindable.h</label>
+        <link refid="bindable_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="64">
+        <label>bindable_pass.h</label>
+        <link refid="bindable__pass_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+      </node>
+      <node id="79">
+        <label>bindable_registry.h</label>
+        <link refid="bindable__registry_8h"/>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="67">
+        <label>binder.h</label>
+        <link refid="binder_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+      </node>
+      <node id="74">
+        <label>bitmap.h</label>
+        <link refid="bitmap_8h"/>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+      </node>
+      <node id="89">
+        <label>camera.h</label>
+        <link refid="camera_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="90">
+        <label>camera_manager.h</label>
+        <link refid="camera__manager_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="52">
+        <label>color.h</label>
+        <link refid="color_8h"/>
+      </node>
+      <node id="57">
+        <label>console.h</label>
+        <link refid="console_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+      </node>
+      <node id="78">
+        <label>constant_buffer.h</label>
+        <link refid="constant__buffer_8h"/>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
+      </node>
+      <node id="91">
+        <label>d3d_utils.h</label>
+        <link refid="d3d__utils_8h"/>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="92" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="73">
+        <label>depth_stencil_view.h</label>
+        <link refid="depth__stencil__view_8h"/>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+      </node>
+      <node id="87">
+        <label>dxgi_info_queue.h</label>
+        <link refid="dxgi__info__queue_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>dynamic_constant_buffer.h</label>
+        <link refid="dynamic__constant__buffer_8h"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>graphics.h</label>
+        <link refid="graphics_8h"/>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>graphics_friend.h</label>
+        <link refid="graphics__friend_8h"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>imgui_visitors.h</label>
+        <link refid="imgui__visitors_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="77">
+        <label>job.h</label>
+        <link refid="job_8h"/>
+      </node>
+      <node id="50">
+        <label>key_exception.h</label>
+        <link refid="key__exception_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+      </node>
+      <node id="54">
+        <label>key_timer.h</label>
+        <link refid="key__timer_8h"/>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>key_type_traits.h</label>
+        <link refid="key__type__traits_8h"/>
+        <childnode refid="39" relation="include">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>key_wrl.h</label>
+        <link refid="key__wrl_8h"/>
+        <childnode refid="46" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>light_source.h</label>
+        <link refid="light__source_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="69">
+        <label>linker.h</label>
+        <link refid="linker_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>material.h</label>
+        <link refid="material_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="58">
+        <label>math_utils.h</label>
+        <link refid="math__utils_8h"/>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>mesh.h</label>
+        <link refid="mesh_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>model.h</label>
+        <link refid="model_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="80">
+        <label>os_utils.h</label>
+        <link refid="os__utils_8h"/>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="83" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="85" relation="include">
+        </childnode>
+        <childnode refid="86" relation="include">
+        </childnode>
+      </node>
+      <node id="65">
+        <label>pass.h</label>
+        <link refid="pass_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>render_queue_pass.h</label>
+        <link refid="render__queue__pass_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+      </node>
+      <node id="71">
+        <label>render_surface.h</label>
+        <link refid="render__surface_8h"/>
+        <childnode refid="66" relation="include">
+        </childnode>
+      </node>
+      <node id="72">
+        <label>render_target.h</label>
+        <link refid="render__target_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+      </node>
+      <node id="70">
+        <label>renderer_exception.h</label>
+        <link refid="renderer__exception_8h"/>
+        <childnode refid="50" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>rendering_channel.h</label>
+        <link refid="rendering__channel_8h"/>
+      </node>
+      <node id="62">
+        <label>shadow_pass.h</label>
+        <link refid="shadow__pass_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>sphere.h</label>
+        <link refid="sphere_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="53">
+        <label>texture_desc.h</label>
+        <link refid="texture__desc_8h"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>transform_vscb.h</label>
+        <link refid="transform__vscb_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>utils_global.h</label>
+        <link refid="utils__global_8h"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>winner.h</label>
+        <link refid="winner_8h"/>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/light_source.cpp</label>
+        <link refid="light__source_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+        <childnode refid="90" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="91" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="93" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>DirectXMath.h</label>
+      </node>
+      <node id="75">
+        <label>DirectxMath.h</label>
+      </node>
+      <node id="85">
+        <label>ShlObj.h</label>
+      </node>
+      <node id="44">
+        <label>Windows.h</label>
+      </node>
+      <node id="33">
+        <label>algorithm</label>
+      </node>
+      <node id="66">
+        <label>array</label>
+      </node>
+      <node id="29">
+        <label>bitset</label>
+      </node>
+      <node id="25">
+        <label>cassert</label>
+      </node>
+      <node id="56">
+        <label>chrono</label>
+      </node>
+      <node id="31">
+        <label>cinttypes</label>
+      </node>
+      <node id="59">
+        <label>cmath</label>
+      </node>
+      <node id="82">
+        <label>comdef.h</label>
+      </node>
+      <node id="30">
+        <label>cstddef</label>
+      </node>
+      <node id="60">
+        <label>cstdint</label>
+      </node>
+      <node id="20">
+        <label>d3d11.h</label>
+      </node>
+      <node id="48">
+        <label>d3dcompiler.h</label>
+      </node>
+      <node id="47">
+        <label>dxgi1_4.h</label>
+      </node>
+      <node id="88">
+        <label>dxgidebug.h</label>
+      </node>
+      <node id="76">
+        <label>dxtex/DirectXTex.h</label>
+      </node>
+      <node id="37">
+        <label>execution</label>
+      </node>
+      <node id="7">
+        <label>filesystem</label>
+      </node>
+      <node id="84">
+        <label>functional</label>
+      </node>
+      <node id="32">
+        <label>future</label>
+      </node>
+      <node id="93">
+        <label>imgui/imgui.h</label>
+      </node>
+      <node id="61">
+        <label>iomanip</label>
+      </node>
+      <node id="22">
+        <label>iostream</label>
+      </node>
+      <node id="35">
+        <label>iterator</label>
+      </node>
+      <node id="12">
+        <label>limits</label>
+      </node>
+      <node id="6">
+        <label>memory</label>
+      </node>
+      <node id="34">
+        <label>numeric</label>
+      </node>
+      <node id="15">
+        <label>optional</label>
+      </node>
+      <node id="36">
+        <label>regex</label>
+      </node>
+      <node id="43">
+        <label>sdkddkver.h</label>
+      </node>
+      <node id="28">
+        <label>set</label>
+      </node>
+      <node id="27">
+        <label>sstream</label>
+      </node>
+      <node id="51">
+        <label>stdexcept</label>
+      </node>
+      <node id="8">
+        <label>string</label>
+      </node>
+      <node id="55">
+        <label>thread</label>
+      </node>
+      <node id="83">
+        <label>tlhelp32.h</label>
+      </node>
+      <node id="92">
+        <label>tuple</label>
+      </node>
+      <node id="39">
+        <label>type_traits</label>
+      </node>
+      <node id="68">
+        <label>typeinfo</label>
+      </node>
+      <node id="11">
+        <label>unordered_map</label>
+      </node>
+      <node id="3">
+        <label>variant</label>
+      </node>
+      <node id="17">
+        <label>vector</label>
+      </node>
+      <node id="86">
+        <label>wincred.h</label>
+      </node>
+      <node id="81">
+        <label>winternl.h</label>
+      </node>
+      <node id="46">
+        <label>wrl.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="light__source_8cpp_a7e86073243f64d247eb298b909d2db65_1a7e86073243f64d247eb298b909d2db65" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>float</type>
+        <definition>float g_directionalLightFovDeg</definition>
+        <argsstring></argsstring>
+        <name>g_directionalLightFovDeg</name>
+        <initializer>= 0.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/light_source.cpp" line="17" column="17" bodyfile="src/light_source.cpp" bodystart="17" bodyend="-1"/>
+        <referencedby refid="classDirectionalLight_a7ba55038fea019429f4d6833fba35eda_1a7ba55038fea019429f4d6833fba35eda" compoundref="light__source_8cpp" startline="171" endline="192">DirectionalLight::DirectionalLight</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="light__source_8cpp_a7c9fc7d2740bdc9439f8c436afd1a075_1a7c9fc7d2740bdc9439f8c436afd1a075" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>float</type>
+        <definition>float g_pointLightFovDeg</definition>
+        <argsstring></argsstring>
+        <name>g_pointLightFovDeg</name>
+        <initializer>= 90.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/light_source.cpp" line="18" column="17" bodyfile="src/light_source.cpp" bodystart="18" bodyend="-1"/>
+        <referencedby refid="classPointLight_a3271b738b4de0a84538f382780aef19c_1a3271b738b4de0a84538f382780aef19c" compoundref="light__source_8cpp" startline="320" endline="337">PointLight::PointLight</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="light__source_8h" kindref="compound">light_source.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="sphere_8h" kindref="compound">sphere.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="graphics_8h" kindref="compound">graphics.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="shadow__pass_8h" kindref="compound">shadow_pass.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="camera_8h" kindref="compound">camera.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="camera__manager_8h" kindref="compound">camera_manager.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="math__utils_8h" kindref="compound">math_utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d3d__utils_8h" kindref="compound">d3d_utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="assertions__console_8h" kindref="compound">assertions_console.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>FINAL_RELEASE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>include<sp/>&quot;imgui/imgui.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceDirectX" kindref="compound">dx</ref><sp/>=<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="light__source_8cpp_a7e86073243f64d247eb298b909d2db65_1a7e86073243f64d247eb298b909d2db65" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="light__source_8cpp_a7e86073243f64d247eb298b909d2db65_1a7e86073243f64d247eb298b909d2db65" kindref="member">g_directionalLightFovDeg</ref><sp/>=<sp/>0.0f;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>irrelevant<sp/>for<sp/>directional<sp/>light<sp/>shadows<sp/>since<sp/>they<sp/>use<sp/>Orthographic<sp/>Projection,<sp/>so<sp/>we<sp/>pass<sp/>0.0f<sp/>(in<sp/>reality<sp/>the<sp/>fov<sp/>is<sp/>~<sp/>90.0f)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="light__source_8cpp_a7c9fc7d2740bdc9439f8c436afd1a075_1a7c9fc7d2740bdc9439f8c436afd1a075" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="light__source_8cpp_a7c9fc7d2740bdc9439f8c436afd1a075_1a7c9fc7d2740bdc9439f8c436afd1a075" kindref="member">g_pointLightFovDeg</ref><sp/>=<sp/>90.0f;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>must<sp/>be<sp/>90<sp/>for<sp/>Point<sp/>Light<sp/>Cube<sp/>mapping<sp/>to<sp/>work</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="classILightSource_a85ecc5940c66f9ef21277e3bab54276b_1a85ecc5940c66f9ef21277e3bab54276b" refkind="member"><highlight class="normal"><ref refid="classILightSource_a85ecc5940c66f9ef21277e3bab54276b_1a85ecc5940c66f9ef21277e3bab54276b" kindref="member">ILightSource::ILightSource</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332" kindref="member">LightSourceType</ref><sp/>type,</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classModel" kindref="compound">Model</ref><sp/>model,</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::variant&lt;DirectX::XMFLOAT4,std::string&gt;<sp/>&amp;colorOrTexturePath<sp/></highlight><highlight class="comment">/*=<sp/>DirectX::XMFLOAT4{1.0f,<sp/>1.0f,<sp/>1.0f,<sp/>1.0f}*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bShadowCasting<sp/></highlight><highlight class="comment">/*=<sp/>true*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bShowMesh<sp/></highlight><highlight class="comment">/*=<sp/>true*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;rotDegOrDirectionVector<sp/></highlight><highlight class="comment">/*=<sp/>{0.0f,<sp/>0.0f,<sp/>0.0f}*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;pos<sp/></highlight><highlight class="comment">/*=<sp/>{8.0f,<sp/>8.0f,<sp/>2.f}*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>intensity<sp/></highlight><highlight class="comment">/*=<sp/>1.0f*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>fovDeg<sp/></highlight><highlight class="comment">/*=<sp/>0.0f*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>shadowCamFarZ<sp/></highlight><highlight class="comment">/*=<sp/>100.0f*/</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>m_type{type},</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>m_bShowMesh{bShowMesh},</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>m_bCastingShadows{bShadowCasting},</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>m_lightMesh(std::move(<sp/>model)),</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>m_vscbData{},</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>m_shadowCamFarZ{shadowCamFarZ}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>s_id<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>++s_id;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classILightSource_a9a50fe9607772fecb1ea1c82e84b1cb1_1a9a50fe9607772fecb1ea1c82e84b1cb1" kindref="member">m_name</ref><sp/>=<sp/>std::string{</highlight><highlight class="stringliteral">&quot;Light#&quot;</highlight><highlight class="normal">}<sp/>+<sp/>std::to_string(<sp/>s_id<sp/>);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>directionVec<sp/>=<sp/><ref refid="namespaceutil_a31143b15ea9106b8e368acaff73d2aba_1a31143b15ea9106b8e368acaff73d2aba" kindref="member">util::toRadians3</ref>(<sp/>rotDegOrDirectionVector<sp/>);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>dx::XMFLOAT4<sp/>lightColor<sp/>=<sp/>std::holds_alternative&lt;dx::XMFLOAT4&gt;(<sp/>colorOrTexturePath<sp/>)<sp/>?<sp/>std::get&lt;dx::XMFLOAT4&gt;(<sp/>colorOrTexturePath<sp/>)<sp/>:<sp/>dx::XMFLOAT4{1.0f,<sp/>1.0f,<sp/>1.0f,<sp/>1.0f};</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" kindref="member">m_pscbData</ref><sp/>=<sp/>{</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/>type<sp/>),</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bShadowCasting<sp/>?<sp/>1<sp/>:<sp/>0,</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{-9.999,<sp/>-9.999},</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>type<sp/>==<sp/><ref refid="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332a5587f9acd040804638ac6fb1bc87bbd3" kindref="member">LightSourceType::Directional</ref><sp/>?<sp/>directionVec<sp/>:<sp/>pos,</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0.08f,<sp/>0.08f,<sp/>0.08f},</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{lightColor.x,<sp/>lightColor.y,<sp/>lightColor.z},</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>intensity,</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>type<sp/>==<sp/><ref refid="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332a5587f9acd040804638ac6fb1bc87bbd3" kindref="member">LightSourceType::Directional</ref><sp/>?<sp/>0.0f<sp/>:<sp/>1.0f,<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>no<sp/>attenuation<sp/>for<sp/>directional<sp/>lights</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>type<sp/>==<sp/><ref refid="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332a5587f9acd040804638ac6fb1bc87bbd3" kindref="member">LightSourceType::Directional</ref><sp/>?<sp/>0.0f<sp/>:<sp/>0.025f,</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>type<sp/>==<sp/><ref refid="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332a5587f9acd040804638ac6fb1bc87bbd3" kindref="member">LightSourceType::Directional</ref><sp/>?<sp/>0.0f<sp/>:<sp/>0.0030f,</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>type<sp/>==<sp/><ref refid="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332a395dea9a8704c1a1ed0224f6fb4e88b1" kindref="member">LightSourceType::Spot</ref><sp/>?<sp/>directionVec<sp/>:<sp/>dx::XMFLOAT3{0.0f,0.0f,0.0f},</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>type<sp/>==<sp/><ref refid="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332a395dea9a8704c1a1ed0224f6fb4e88b1" kindref="member">LightSourceType::Spot</ref><sp/>?<sp/>fovDeg<sp/>:<sp/>0.0f};</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classILightSource_a63c850a5695ff1411e12e73450a84c40_1a63c850a5695ff1411e12e73450a84c40" kindref="member">m_pscbDataToBind</ref><sp/>=<sp/><ref refid="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" kindref="member">m_pscbData</ref>;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="classILightSource_a2c46182157ae66e5a900af43928c3d51_1a2c46182157ae66e5a900af43928c3d51" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a2c46182157ae66e5a900af43928c3d51_1a2c46182157ae66e5a900af43928c3d51" kindref="member">ILightSource::update</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>dt,</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>lerpBetweenFrames,</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bEnableSmoothMovement<sp/></highlight><highlight class="comment">/*=<sp/>false*/</highlight><highlight class="normal"><sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>m_bShowMesh<sp/>)</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_lightMesh.update(<sp/>dt,<sp/>lerpBetweenFrames,<sp/>bEnableSmoothMovement<sp/>);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="classILightSource_a43e7bb71c7b8db34e21cf7889b5eae95_1a43e7bb71c7b8db34e21cf7889b5eae95" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a43e7bb71c7b8db34e21cf7889b5eae95_1a43e7bb71c7b8db34e21cf7889b5eae95" kindref="member">ILightSource::render</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>channels<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>cond_noex</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>m_bShowMesh<sp/>)</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_lightMesh.render(<sp/>channels<sp/>);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="classILightSource_a52f8aa3d9b871f416990e363bd9c09e3_1a52f8aa3d9b871f416990e363bd9c09e3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a52f8aa3d9b871f416990e363bd9c09e3_1a52f8aa3d9b871f416990e363bd9c09e3" kindref="member">ILightSource::populateCBData</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>populateVscbData(<sp/>gfx<sp/>);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>populatePscbData(<sp/>gfx<sp/>);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="classILightSource_a5e1c8d090c141ea94a06046be5b15df8_1a5e1c8d090c141ea94a06046be5b15df8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a5e1c8d090c141ea94a06046be5b15df8_1a5e1c8d090c141ea94a06046be5b15df8" kindref="member">ILightSource::connectMaterialsToRenderer</ref>(<sp/><ref refid="classren_1_1Renderer" kindref="compound">ren::Renderer</ref><sp/>&amp;r<sp/>)</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classILightSource_a2836fa2a9437563c3f7d1b3b5e5e6b83_1a2836fa2a9437563c3f7d1b3b5e5e6b83" kindref="member">m_lightMesh</ref>.<ref refid="classModel_a026f7d322b40a3488184d711962d92c2_1a026f7d322b40a3488184d711962d92c2" kindref="member">connectMaterialsToRenderer</ref>(<sp/>r<sp/>);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="classILightSource_a3fccfe57c1781b3f43a0cb4a41f67035_1a3fccfe57c1781b3f43a0cb4a41f67035" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a3fccfe57c1781b3f43a0cb4a41f67035_1a3fccfe57c1781b3f43a0cb4a41f67035" kindref="member">ILightSource::setRotation</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;rot<sp/>)</highlight></codeline>
+<codeline lineno="93"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/><ref refid="classILightSource_a8a9f0f14ec9fdad34f6893029360ea98_1a8a9f0f14ec9fdad34f6893029360ea98" kindref="member">m_type</ref><sp/>!=<sp/><ref refid="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332a5b577e188dc4657a3e573fb2dae1a924" kindref="member">LightSourceType::Point</ref>,<sp/></highlight><highlight class="stringliteral">&quot;You<sp/>shouldn&apos;t<sp/>need<sp/>to<sp/>change<sp/>the<sp/>rotation<sp/>of<sp/>Point<sp/>Lights&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" kindref="member">m_pscbData</ref>.<ref refid="structILightSource_1_1LightPSCB_a4d5f82171ea57f409914c8432bbe31f0_1a4d5f82171ea57f409914c8432bbe31f0" kindref="member">cb_lightPosViewSpace</ref><sp/>=<sp/>rot;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="classILightSource_a162034eae6dabb27c763325d94b5050e_1a162034eae6dabb27c763325d94b5050e" kindref="member">m_bCastingShadows</ref><sp/>)</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classILightSource_a2293407d62d1d81b80e920e6ed350ad6_1a2293407d62d1d81b80e920e6ed350ad6" kindref="member">m_pCameraForShadowing</ref>-&gt;setTethered(<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classILightSource_a2293407d62d1d81b80e920e6ed350ad6_1a2293407d62d1d81b80e920e6ed350ad6" kindref="member">m_pCameraForShadowing</ref>-&gt;setRotation(<sp/>rot<sp/>);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classILightSource_a2293407d62d1d81b80e920e6ed350ad6_1a2293407d62d1d81b80e920e6ed350ad6" kindref="member">m_pCameraForShadowing</ref>-&gt;setTethered(<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classILightSource_a2836fa2a9437563c3f7d1b3b5e5e6b83_1a2836fa2a9437563c3f7d1b3b5e5e6b83" kindref="member">m_lightMesh</ref>.<ref refid="classModel_ae218f9aa7ff8225ecc9f250a057030af_1ae218f9aa7ff8225ecc9f250a057030af" kindref="member">setRotation</ref>(<sp/>rot<sp/>);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="classILightSource_af4c3edc00a2603c76e0ec39955f23113_1af4c3edc00a2603c76e0ec39955f23113" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classILightSource_af4c3edc00a2603c76e0ec39955f23113_1af4c3edc00a2603c76e0ec39955f23113" kindref="member">ILightSource::setTranslation</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;pos<sp/>)</highlight></codeline>
+<codeline lineno="106"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/><ref refid="classILightSource_a8a9f0f14ec9fdad34f6893029360ea98_1a8a9f0f14ec9fdad34f6893029360ea98" kindref="member">m_type</ref><sp/>!=<sp/><ref refid="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332a5587f9acd040804638ac6fb1bc87bbd3" kindref="member">LightSourceType::Directional</ref>,<sp/></highlight><highlight class="stringliteral">&quot;You<sp/>shouldn&apos;t<sp/>need<sp/>to<sp/>change<sp/>the<sp/>position<sp/>of<sp/>Directional<sp/>Lights&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" kindref="member">m_pscbData</ref>.<ref refid="structILightSource_1_1LightPSCB_a4d5f82171ea57f409914c8432bbe31f0_1a4d5f82171ea57f409914c8432bbe31f0" kindref="member">cb_lightPosViewSpace</ref><sp/>=<sp/>pos;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="classILightSource_a162034eae6dabb27c763325d94b5050e_1a162034eae6dabb27c763325d94b5050e" kindref="member">m_bCastingShadows</ref><sp/>)</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classILightSource_a2293407d62d1d81b80e920e6ed350ad6_1a2293407d62d1d81b80e920e6ed350ad6" kindref="member">m_pCameraForShadowing</ref>-&gt;setTethered(<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classILightSource_a2293407d62d1d81b80e920e6ed350ad6_1a2293407d62d1d81b80e920e6ed350ad6" kindref="member">m_pCameraForShadowing</ref>-&gt;setTranslation(<sp/>pos<sp/>);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classILightSource_a2293407d62d1d81b80e920e6ed350ad6_1a2293407d62d1d81b80e920e6ed350ad6" kindref="member">m_pCameraForShadowing</ref>-&gt;setTethered(<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classILightSource_a2836fa2a9437563c3f7d1b3b5e5e6b83_1a2836fa2a9437563c3f7d1b3b5e5e6b83" kindref="member">m_lightMesh</ref>.<ref refid="classModel_a2f34019f76af71a4b0f120e6c83fa734_1a2f34019f76af71a4b0f120e6c83fa734" kindref="member">setTranslation</ref>(<sp/>pos<sp/>);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118" refid="classILightSource_a7c9863add04adffa68a99aacc239a64d_1a7c9863add04adffa68a99aacc239a64d" refkind="member"><highlight class="normal"><ref refid="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332" kindref="member">LightSourceType</ref><sp/><ref refid="classILightSource_a7c9863add04adffa68a99aacc239a64d_1a7c9863add04adffa68a99aacc239a64d" kindref="member">ILightSource::getType</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="119"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a8a9f0f14ec9fdad34f6893029360ea98_1a8a9f0f14ec9fdad34f6893029360ea98" kindref="member">m_type</ref>;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123" refid="classILightSource_ab45b60356a4883b2d10456115692ee60_1ab45b60356a4883b2d10456115692ee60" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classILightSource_ab45b60356a4883b2d10456115692ee60_1ab45b60356a4883b2d10456115692ee60" kindref="member">ILightSource::getSlot</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="124"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<sp/><ref refid="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" kindref="member">m_pscbData</ref>.<ref refid="structILightSource_1_1LightPSCB_a338eba34ba0d1e287e0c2fb893e011f5_1a338eba34ba0d1e287e0c2fb893e011f5" kindref="member">cb_lightType</ref><sp/>);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128" refid="classILightSource_a0faa0df2c36a9590f2d04ddd4b24f70b_1a0faa0df2c36a9590f2d04ddd4b24f70b" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classILightSource_a0faa0df2c36a9590f2d04ddd4b24f70b_1a0faa0df2c36a9590f2d04ddd4b24f70b" kindref="member">ILightSource::getName</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="129"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a9a50fe9607772fecb1ea1c82e84b1cb1_1a9a50fe9607772fecb1ea1c82e84b1cb1" kindref="member">m_name</ref>;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133" refid="classILightSource_a020b616fe1ebb5185b8120f9a41c256e_1a020b616fe1ebb5185b8120f9a41c256e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a020b616fe1ebb5185b8120f9a41c256e_1a020b616fe1ebb5185b8120f9a41c256e" kindref="member">ILightSource::isCastingShadows</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="134"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a162034eae6dabb27c763325d94b5050e_1a162034eae6dabb27c763325d94b5050e" kindref="member">m_bCastingShadows</ref>;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#TODO:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139" refid="classILightSource_a605491c2905837716a32ce930afe6c92_1a605491c2905837716a32ce930afe6c92" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a605491c2905837716a32ce930afe6c92_1a605491c2905837716a32ce930afe6c92" kindref="member">ILightSource::isFrustumCulled</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="140"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144" refid="classILightSource_a29ff5d5e121d058b68954725e3489076_1a29ff5d5e121d058b68954725e3489076" refkind="member"><highlight class="normal">DirectX::XMFLOAT3<sp/><ref refid="classILightSource_a29ff5d5e121d058b68954725e3489076_1a29ff5d5e121d058b68954725e3489076" kindref="member">ILightSource::getRotation</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a2836fa2a9437563c3f7d1b3b5e5e6b83_1a2836fa2a9437563c3f7d1b3b5e5e6b83" kindref="member">m_lightMesh</ref>.<ref refid="classModel_a309132aa630a396fdb2c7626d5272bb1_1a309132aa630a396fdb2c7626d5272bb1" kindref="member">getRotation</ref>();</highlight></codeline>
+<codeline lineno="147"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149" refid="classILightSource_a10dcb51eb6c7dc15ff6b7ffe442a8245_1a10dcb51eb6c7dc15ff6b7ffe442a8245" refkind="member"><highlight class="normal"><ref refid="classCamera" kindref="compound">Camera</ref>*<sp/><ref refid="classILightSource_a10dcb51eb6c7dc15ff6b7ffe442a8245_1a10dcb51eb6c7dc15ff6b7ffe442a8245" kindref="member">ILightSource::getShadowCamera</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="150"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/><ref refid="classILightSource_a162034eae6dabb27c763325d94b5050e_1a162034eae6dabb27c763325d94b5050e" kindref="member">m_bCastingShadows</ref>,<sp/></highlight><highlight class="stringliteral">&quot;There<sp/>is<sp/>no<sp/>shadow<sp/>camera!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a2293407d62d1d81b80e920e6ed350ad6_1a2293407d62d1d81b80e920e6ed350ad6" kindref="member">m_pCameraForShadowing</ref>.get();</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155" refid="classILightSource_af0b903d97d07f2bcc7faf90d51749bdd_1af0b903d97d07f2bcc7faf90d51749bdd" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classILightSource_af0b903d97d07f2bcc7faf90d51749bdd_1af0b903d97d07f2bcc7faf90d51749bdd" kindref="member">ILightSource::getShadowCameraFarZ</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="156"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classILightSource_af0a72727cb5a6ee05dde5ea17c222b81_1af0a72727cb5a6ee05dde5ea17c222b81" kindref="member">m_shadowCamFarZ</ref>;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160" refid="classILightSource_ae74ea4b3c8c575ecbac3156d4a9ee699_1ae74ea4b3c8c575ecbac3156d4a9ee699" refkind="member"><highlight class="normal"><ref refid="structILightSource_1_1LightVSCB" kindref="compound">ILightSource::LightVSCB</ref><sp/><ref refid="classILightSource_ae74ea4b3c8c575ecbac3156d4a9ee699_1ae74ea4b3c8c575ecbac3156d4a9ee699" kindref="member">ILightSource::getVscbData</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="161"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a94603c5e37a72aca471ef9d2a37a072e_1a94603c5e37a72aca471ef9d2a37a072e" kindref="member">m_vscbData</ref>;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165" refid="classILightSource_a17577069622792755b3aa3e1867dd77e_1a17577069622792755b3aa3e1867dd77e" refkind="member"><highlight class="normal"><ref refid="structILightSource_1_1LightPSCB" kindref="compound">ILightSource::LightPSCB</ref><sp/><ref refid="classILightSource_a17577069622792755b3aa3e1867dd77e_1a17577069622792755b3aa3e1867dd77e" kindref="member">ILightSource::getPscbData</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="166"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a63c850a5695ff1411e12e73450a84c40_1a63c850a5695ff1411e12e73450a84c40" kindref="member">m_pscbDataToBind</ref>;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171" refid="classDirectionalLight_a7ba55038fea019429f4d6833fba35eda_1a7ba55038fea019429f4d6833fba35eda" refkind="member"><highlight class="normal"><ref refid="classDirectionalLight_a7ba55038fea019429f4d6833fba35eda_1a7ba55038fea019429f4d6833fba35eda" kindref="member">DirectionalLight::DirectionalLight</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>radiusScale<sp/></highlight><highlight class="comment">/*=<sp/>1.0f*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;directionVector<sp/></highlight><highlight class="comment">/*=<sp/>{0.0f,<sp/>0.0f,<sp/>0.0f}*/</highlight><highlight class="normal">,<sp/><sp/></highlight><highlight class="comment">//<sp/>direction{0,0,0}<sp/>=<sp/>Directional<sp/>Light&apos;s<sp/>direction<sp/>vector<sp/>looks<sp/>at<sp/>the<sp/>center<sp/>of<sp/>the<sp/>scene</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;lightMeshPos<sp/></highlight><highlight class="comment">/*=<sp/>{8.0f,<sp/>8.0f,<sp/>2.f}*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::variant&lt;DirectX::XMFLOAT4,std::string&gt;<sp/>&amp;colorOrTexturePath<sp/></highlight><highlight class="comment">/*=<sp/>DirectX::XMFLOAT4{1.0f,<sp/>1.0f,<sp/>1.0f,<sp/>1.0f}*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bShadowCasting<sp/></highlight><highlight class="comment">/*=<sp/>true*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bShowMesh<sp/></highlight><highlight class="comment">/*=<sp/>true*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>intensity<sp/></highlight><highlight class="comment">/*=<sp/>1.0f*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>shadowCamNearZ<sp/></highlight><highlight class="comment">/*=<sp/>1.0f*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>shadowCamFarZ<sp/></highlight><highlight class="comment">/*=<sp/>2000.0f*/</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classILightSource" kindref="compound">ILightSource</ref>(gfx,<sp/><ref refid="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332" kindref="member">LightSourceType</ref>::<ref refid="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332a5587f9acd040804638ac6fb1bc87bbd3" kindref="member">Directional</ref>,<sp/><ref refid="classModel" kindref="compound">Model</ref>(std::make_unique&lt;<ref refid="classSphere" kindref="compound">Sphere</ref>&gt;(gfx,<sp/>radiusScale,<sp/>colorOrTexturePath),<sp/>gfx,<sp/><ref refid="classCamera" kindref="compound">Camera</ref>::computePitchYawRollInDegFromDirectionVector(directionVector),<sp/>lightMeshPos),<sp/>colorOrTexturePath,<sp/>bShadowCasting,<sp/>bShowMesh,<sp/>directionVector,<sp/>lightMeshPos,<sp/>intensity,<sp/>0.0f,<sp/>shadowCamFarZ)</highlight></codeline>
+<codeline lineno="183"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>bShadowCasting<sp/>)</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>util::operator==(<ref refid="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" kindref="member">m_pscbData</ref>.<ref refid="structILightSource_1_1LightPSCB_a4d5f82171ea57f409914c8432bbe31f0_1a4d5f82171ea57f409914c8432bbe31f0" kindref="member">cb_lightPosViewSpace</ref><sp/></highlight><highlight class="comment">/*===<sp/>directionVector,<sp/>!=<sp/>lightMeshPos*/</highlight><highlight class="normal">,<sp/>dx::XMFLOAT3{0.0f,<sp/>0.0f,<sp/>0.0f}),<sp/></highlight><highlight class="stringliteral">&quot;Directional<sp/>Light<sp/>direction<sp/>must<sp/>be<sp/>at<sp/>the<sp/>origin!<sp/>(.w<sp/>will<sp/>be<sp/>equal<sp/>to<sp/>1<sp/>in<sp/>shader)&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::pair&lt;float,<sp/>float&gt;<sp/>pitchAndYaw<sp/>=<sp/><ref refid="classCamera_acd1b1e7e17b69bdeb085b968e5793136_1acd1b1e7e17b69bdeb085b968e5793136" kindref="member">Camera::computePitchYawInDegFromDirectionVector</ref>(<sp/>directionVector<sp/>);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>ensure<sp/>orthographic<sp/>projection<sp/>matrix<sp/>is<sp/>used<sp/>to<sp/>capture<sp/>all<sp/>relevant<sp/>shadow<sp/>details<sp/>in<sp/>the<sp/>entire<sp/>scene<sp/>(with<sp/>appropriately<sp/>big<sp/>farZ)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>also<sp/>make<sp/>sure<sp/>width<sp/>and<sp/>height<sp/>are<sp/>equal<sp/>for<sp/>Orthographic<sp/>projection<sp/>and<sp/>big<sp/>enough<sp/>such<sp/>that<sp/>Directional/Star-light<sp/>shadows<sp/>cover<sp/>pretty<sp/>much<sp/>the<sp/>entire<sp/>scene</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classILightSource_a2293407d62d1d81b80e920e6ed350ad6_1a2293407d62d1d81b80e920e6ed350ad6" kindref="member">m_pCameraForShadowing</ref><sp/>=<sp/>std::make_unique&lt;Camera&gt;(<sp/>gfx,<sp/>shadowCamFarZ,<sp/>shadowCamFarZ,<sp/><ref refid="light__source_8cpp_a7e86073243f64d247eb298b909d2db65_1a7e86073243f64d247eb298b909d2db65" kindref="member">g_directionalLightFovDeg</ref>,<sp/>lightMeshPos,<sp/>pitchAndYaw.first,<sp/>pitchAndYaw.second,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/>shadowCamNearZ,<sp/>shadowCamFarZ<sp/>);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="192"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194" refid="classDirectionalLight_a58dfb8b06a26a8f85d398b998c86ac24_1a58dfb8b06a26a8f85d398b998c86ac24" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classDirectionalLight_a58dfb8b06a26a8f85d398b998c86ac24_1a58dfb8b06a26a8f85d398b998c86ac24" kindref="member">DirectionalLight::displayImguiWidgets</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="195"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>FINAL_RELEASE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>ImGui::Begin(<sp/><ref refid="classILightSource_a9a50fe9607772fecb1ea1c82e84b1cb1_1a9a50fe9607772fecb1ea1c82e84b1cb1" kindref="member">m_name</ref>.c_str()<sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bDirtyRot<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>dirtyCheckRot<sp/>=<sp/>[&amp;bDirtyRot](<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bChanged<sp/>)</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bDirtyRot<sp/>=<sp/>bDirtyRot<sp/>||<sp/>bChanged;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>lightDirViewSpaceDeg<sp/>=<sp/><ref refid="namespaceutil_acdd09a2c2e6a79bcf301f9a730d8940b_1acdd09a2c2e6a79bcf301f9a730d8940b" kindref="member">util::toDegrees3</ref>(<sp/><ref refid="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" kindref="member">m_pscbData</ref>.<ref refid="structILightSource_1_1LightPSCB_a4d5f82171ea57f409914c8432bbe31f0_1a4d5f82171ea57f409914c8432bbe31f0" kindref="member">cb_lightPosViewSpace</ref><sp/>);</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImGui::Text(<sp/></highlight><highlight class="stringliteral">&quot;Direction&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dirtyCheckRot(<sp/>ImGui::SliderFloat(<sp/></highlight><highlight class="stringliteral">&quot;x-Pitch&quot;</highlight><highlight class="normal">,<sp/>&amp;lightDirViewSpaceDeg.x,<sp/>-89.8f,<sp/>89.8f,<sp/></highlight><highlight class="stringliteral">&quot;%.1f&quot;</highlight><highlight class="normal"><sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dirtyCheckRot(<sp/>ImGui::SliderFloat(<sp/></highlight><highlight class="stringliteral">&quot;y-Yaw&quot;</highlight><highlight class="normal">,<sp/>&amp;lightDirViewSpaceDeg.y,<sp/>-89.8f,<sp/>89.8f,<sp/></highlight><highlight class="stringliteral">&quot;%.1f&quot;</highlight><highlight class="normal"><sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dirtyCheckRot(<sp/>ImGui::SliderFloat(<sp/></highlight><highlight class="stringliteral">&quot;z-Roll&quot;</highlight><highlight class="normal">,<sp/>&amp;lightDirViewSpaceDeg.z,<sp/>-89.8f,<sp/>89.8f,<sp/></highlight><highlight class="stringliteral">&quot;%.1f&quot;</highlight><highlight class="normal"><sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>bDirtyRot<sp/>)</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" kindref="member">m_pscbData</ref>.<ref refid="structILightSource_1_1LightPSCB_a4d5f82171ea57f409914c8432bbe31f0_1a4d5f82171ea57f409914c8432bbe31f0" kindref="member">cb_lightPosViewSpace</ref><sp/>=<sp/><ref refid="namespaceutil_a31143b15ea9106b8e368acaff73d2aba_1a31143b15ea9106b8e368acaff73d2aba" kindref="member">util::toRadians3</ref>(<sp/>lightDirViewSpaceDeg<sp/>);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classILightSource_a3fccfe57c1781b3f43a0cb4a41f67035_1a3fccfe57c1781b3f43a0cb4a41f67035" kindref="member">setRotation</ref>(<sp/><ref refid="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" kindref="member">m_pscbData</ref>.<ref refid="structILightSource_1_1LightPSCB_a4d5f82171ea57f409914c8432bbe31f0_1a4d5f82171ea57f409914c8432bbe31f0" kindref="member">cb_lightPosViewSpace</ref><sp/>);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImGui::Text(<sp/></highlight><highlight class="stringliteral">&quot;Intensity<sp/>&amp;<sp/>Color&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImGui::SliderFloat(<sp/></highlight><highlight class="stringliteral">&quot;Intensity&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" kindref="member">m_pscbData</ref>.<ref refid="structILightSource_1_1LightPSCB_af5251b90079492815b60ed641b449b17_1af5251b90079492815b60ed641b449b17" kindref="member">intensity</ref>,<sp/>0.01f,<sp/>4.0f,<sp/></highlight><highlight class="stringliteral">&quot;%.2f&quot;</highlight><highlight class="normal">,<sp/>2.0f<sp/>);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImGui::ColorEdit3(<sp/></highlight><highlight class="stringliteral">&quot;Diffuse&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" kindref="member">m_pscbData</ref>.<ref refid="structILightSource_1_1LightPSCB_ab887412e95208866cce554b595a36a01_1ab887412e95208866cce554b595a36a01" kindref="member">cb_lightColor</ref>.x<sp/>);<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>#TODO:<sp/>expose<sp/>model&apos;s<sp/>material<sp/>properties<sp/>cb<sp/>to<sp/>change<sp/>its<sp/>color<sp/>when<sp/>changing<sp/>the<sp/>light&apos;s<sp/>color<sp/>here</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImGui::ColorEdit3(<sp/></highlight><highlight class="stringliteral">&quot;Ambient&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" kindref="member">m_pscbData</ref>.<ref refid="structILightSource_1_1LightPSCB_a839eb8084ef88ef3f49b407d612bfd9f_1a839eb8084ef88ef3f49b407d612bfd9f" kindref="member">cb_ambientColor</ref>.x<sp/>);</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImGui::Text(<sp/></highlight><highlight class="stringliteral">&quot;Attenuation&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImGui::SliderFloat(<sp/></highlight><highlight class="stringliteral">&quot;Constant&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" kindref="member">m_pscbData</ref>.<ref refid="structILightSource_1_1LightPSCB_a6fe2068c77b6eb36c41822bd059e72b7_1a6fe2068c77b6eb36c41822bd059e72b7" kindref="member">cb_attConstant</ref>,<sp/>0.05f,<sp/>10.0f,<sp/></highlight><highlight class="stringliteral">&quot;%.2f&quot;</highlight><highlight class="normal">,<sp/>4.0f<sp/>);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImGui::SliderFloat(<sp/></highlight><highlight class="stringliteral">&quot;Linear&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" kindref="member">m_pscbData</ref>.<ref refid="structILightSource_1_1LightPSCB_a82b45f74852f51cf1a379b5c0378c009_1a82b45f74852f51cf1a379b5c0378c009" kindref="member">cb_attLinear</ref>,<sp/>0.0001f,<sp/>4.0f,<sp/></highlight><highlight class="stringliteral">&quot;%.4f&quot;</highlight><highlight class="normal">,<sp/>8.0f<sp/>);</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImGui::SliderFloat(<sp/></highlight><highlight class="stringliteral">&quot;Quadratic&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" kindref="member">m_pscbData</ref>.<ref refid="structILightSource_1_1LightPSCB_a138650936d9e7ddb83a7660dac435891_1a138650936d9e7ddb83a7660dac435891" kindref="member">cb_attQuadratic</ref>,<sp/>0.0000001f,<sp/>10.0f,<sp/></highlight><highlight class="stringliteral">&quot;%.7f&quot;</highlight><highlight class="normal">,<sp/>10.0f);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImGui::Checkbox(<sp/></highlight><highlight class="stringliteral">&quot;Show<sp/>Sphere<sp/>Mesh&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classILightSource_aba12f3ad60d45ee69a6cc9560a1d1e4d_1aba12f3ad60d45ee69a6cc9560a1d1e4d" kindref="member">m_bShowMesh</ref><sp/>);</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/>ImGui::End();</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234" refid="classDirectionalLight_ab072bab59fb1748d5cf4eb666615c468_1ab072bab59fb1748d5cf4eb666615c468" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classDirectionalLight_ab072bab59fb1748d5cf4eb666615c468_1ab072bab59fb1748d5cf4eb666615c468" kindref="member">DirectionalLight::setIntensity</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>newIntensity<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pscbData.intensity<sp/>=<sp/>newIntensity;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight></codeline>
+<codeline lineno="239" refid="classDirectionalLight_a46f65b58d0bd65436b4da77c174ba979_1a46f65b58d0bd65436b4da77c174ba979" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classDirectionalLight_a46f65b58d0bd65436b4da77c174ba979_1a46f65b58d0bd65436b4da77c174ba979" kindref="member">DirectionalLight::setColor</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;diffuseColor<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pscbData.cb_lightColor<sp/>=<sp/>diffuseColor;</highlight></codeline>
+<codeline lineno="242"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244" refid="classDirectionalLight_a3d29f34ed75ac7ff2ed73e5ff5b29760_1a3d29f34ed75ac7ff2ed73e5ff5b29760" refkind="member"><highlight class="normal">DirectX::XMFLOAT3<sp/><ref refid="classDirectionalLight_a3d29f34ed75ac7ff2ed73e5ff5b29760_1a3d29f34ed75ac7ff2ed73e5ff5b29760" kindref="member">DirectionalLight::getPosition</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="245"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a2836fa2a9437563c3f7d1b3b5e5e6b83_1a2836fa2a9437563c3f7d1b3b5e5e6b83" kindref="member">m_lightMesh</ref>.<ref refid="classModel_a22cb995d5e3ddbf2c9cd303e90820aba_1a22cb995d5e3ddbf2c9cd303e90820aba" kindref="member">getPosition</ref>();</highlight></codeline>
+<codeline lineno="247"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249" refid="classDirectionalLight_a20ba391194b84dd5aa56b834bba5221d_1a20ba391194b84dd5aa56b834bba5221d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classDirectionalLight_a20ba391194b84dd5aa56b834bba5221d_1a20ba391194b84dd5aa56b834bba5221d" kindref="member">DirectionalLight::populateVscbData</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="250"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>m_bCastingShadows<sp/>&amp;&amp;<sp/>m_pCameraForShadowing,<sp/></highlight><highlight class="stringliteral">&quot;Camera<sp/>not<sp/>specified<sp/>(null)!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/>m_vscbData<sp/>=<sp/>{dx::XMMatrixTranspose(<sp/>m_pCameraForShadowing-&gt;getViewMatrix()<sp/>*<sp/>m_pCameraForShadowing-&gt;getProjectionMatrix(<sp/>gfx,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/>m_shadowCamFarZ<sp/>)<sp/>)};</highlight></codeline>
+<codeline lineno="253"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255" refid="classDirectionalLight_aeeb09b18bf90a68ec390b88fffaf6916_1aeeb09b18bf90a68ec390b88fffaf6916" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classDirectionalLight_aeeb09b18bf90a68ec390b88fffaf6916_1aeeb09b18bf90a68ec390b88fffaf6916" kindref="member">DirectionalLight::populatePscbData</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="256"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classCameraManager" kindref="compound">CameraManager</ref><sp/>&amp;s_cameraMan<sp/>=<sp/><ref refid="classCameraManager_ac7e6b0996395dcaaa889d17d5a8a639e_1ac7e6b0996395dcaaa889d17d5a8a639e" kindref="member">CameraManager::getInstance</ref>();</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;activeCameraViewMat<sp/>=<sp/>s_cameraMan.<ref refid="classCameraManager_abdf764797cf31edf23ae92496b6dfcf1_1abdf764797cf31edf23ae92496b6dfcf1" kindref="member">getActiveCamera</ref>().<ref refid="classCamera_a69061c32d9aae3cba2237a0733649928_1a69061c32d9aae3cba2237a0733649928" kindref="member">getViewMatrix</ref>();</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pscbDataToBind<sp/>=<sp/>m_pscbData;</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>lightDirWorldSpace<sp/>=<sp/>DirectX::XMLoadFloat3(<sp/>&amp;m_pscbData.cb_lightPosViewSpace<sp/>);</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/>DirectX::XMStoreFloat3(<sp/>&amp;m_pscbDataToBind.cb_lightPosViewSpace,<sp/>DirectX::XMVector3Transform(<sp/>lightDirWorldSpace,<sp/>activeCameraViewMat<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="262"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265" refid="classSpotLight_aa972a1f97ba572d1a73c3561f9c7834d_1aa972a1f97ba572d1a73c3561f9c7834d" refkind="member"><highlight class="normal"><ref refid="classSpotLight_aa972a1f97ba572d1a73c3561f9c7834d_1aa972a1f97ba572d1a73c3561f9c7834d" kindref="member">SpotLight::SpotLight</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>radiusScale<sp/></highlight><highlight class="comment">/*=<sp/>1.0f*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;directionVector<sp/></highlight><highlight class="comment">/*=<sp/>{0.0f,<sp/>0.0f,<sp/>1.0f}*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;pos<sp/></highlight><highlight class="comment">/*=<sp/>{8.0f,<sp/>8.0f,<sp/>2.f}*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::variant&lt;DirectX::XMFLOAT4,std::string&gt;<sp/>&amp;colorOrTexturePath<sp/></highlight><highlight class="comment">/*=<sp/>DirectX::XMFLOAT4{1.0f,<sp/>1.0f,<sp/>1.0f,<sp/>1.0f}*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bShadowCasting<sp/></highlight><highlight class="comment">/*=<sp/>true*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bShowMesh<sp/></highlight><highlight class="comment">/*=<sp/>true*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>intensity<sp/></highlight><highlight class="comment">/*=<sp/>1.0f*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>fovConeAngle<sp/></highlight><highlight class="comment">/*=<sp/>60.0f*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>shadowCamNearZ<sp/></highlight><highlight class="comment">/*=<sp/>0.5f*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>shadowCamFarZ<sp/></highlight><highlight class="comment">/*=<sp/>80.0f*/</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classILightSource" kindref="compound">ILightSource</ref>(gfx,<sp/><ref refid="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332" kindref="member">LightSourceType</ref>::<ref refid="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332a395dea9a8704c1a1ed0224f6fb4e88b1" kindref="member">Spot</ref>,<sp/><ref refid="classModel" kindref="compound">Model</ref>(std::make_unique&lt;<ref refid="classSphere" kindref="compound">Sphere</ref>&gt;(gfx,<sp/>radiusScale,<sp/>colorOrTexturePath),<sp/>gfx,<sp/><ref refid="classCamera" kindref="compound">Camera</ref>::computePitchYawRollInDegFromDirectionVector(directionVector),<sp/>pos),<sp/>colorOrTexturePath,<sp/>bShadowCasting,<sp/>bShowMesh,<sp/>directionVector,<sp/>pos,<sp/>intensity,<sp/>fovConeAngle,<sp/>shadowCamFarZ)</highlight></codeline>
+<codeline lineno="278"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>bShadowCasting<sp/>)</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::pair&lt;float,<sp/>float&gt;<sp/>pitchAndYaw<sp/>=<sp/><ref refid="classCamera_acd1b1e7e17b69bdeb085b968e5793136_1acd1b1e7e17b69bdeb085b968e5793136" kindref="member">Camera::computePitchYawInDegFromDirectionVector</ref>(<sp/>directionVector<sp/>);</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>set<sp/>1.0<sp/>aspect<sp/>ratio<sp/>for<sp/>a<sp/>Spot<sp/>Light<sp/>to<sp/>have<sp/>a<sp/>square<sp/>frustum;<sp/>the<sp/>spotlight<sp/>is<sp/>typically<sp/>symmetric<sp/>(meaning<sp/>it<sp/>has<sp/>the<sp/>same<sp/>horizontal<sp/>and<sp/>vertical<sp/>FOV)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classILightSource_a2293407d62d1d81b80e920e6ed350ad6_1a2293407d62d1d81b80e920e6ed350ad6" kindref="member">m_pCameraForShadowing</ref><sp/>=<sp/>std::make_unique&lt;Camera&gt;(<sp/>gfx,<sp/>shadowCamFarZ,<sp/>shadowCamFarZ,<sp/>fovConeAngle,<sp/>pos,<sp/>pitchAndYaw.first,<sp/>pitchAndYaw.second,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/>shadowCamNearZ,<sp/>shadowCamFarZ<sp/>);</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="286"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight></codeline>
+<codeline lineno="288" refid="classSpotLight_a4ca72bdbc6e490cad12e27aa84be2937_1a4ca72bdbc6e490cad12e27aa84be2937" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSpotLight_a4ca72bdbc6e490cad12e27aa84be2937_1a4ca72bdbc6e490cad12e27aa84be2937" kindref="member">SpotLight::displayImguiWidgets</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="289"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/>pass_;</highlight></codeline>
+<codeline lineno="291"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight></codeline>
+<codeline lineno="293" refid="classSpotLight_a82847f8607ad02a492e767ae66a2e21a_1a82847f8607ad02a492e767ae66a2e21a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSpotLight_a82847f8607ad02a492e767ae66a2e21a_1a82847f8607ad02a492e767ae66a2e21a" kindref="member">SpotLight::setIntensity</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>newIntensity<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pscbData.intensity<sp/>=<sp/>newIntensity;</highlight></codeline>
+<codeline lineno="296"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight></codeline>
+<codeline lineno="298" refid="classSpotLight_af93629535d543f94fc6d853084dd7eaf_1af93629535d543f94fc6d853084dd7eaf" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSpotLight_af93629535d543f94fc6d853084dd7eaf_1af93629535d543f94fc6d853084dd7eaf" kindref="member">SpotLight::setColor</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;diffuseColor<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="299"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pscbData.cb_lightColor<sp/>=<sp/>diffuseColor;</highlight></codeline>
+<codeline lineno="301"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight></codeline>
+<codeline lineno="303" refid="classSpotLight_ac7863b1f73129f026f03aabe4d4ce6cf_1ac7863b1f73129f026f03aabe4d4ce6cf" refkind="member"><highlight class="normal">DirectX::XMFLOAT3<sp/><ref refid="classSpotLight_ac7863b1f73129f026f03aabe4d4ce6cf_1ac7863b1f73129f026f03aabe4d4ce6cf" kindref="member">SpotLight::getPosition</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="304"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" kindref="member">m_pscbData</ref>.<ref refid="structILightSource_1_1LightPSCB_a4d5f82171ea57f409914c8432bbe31f0_1a4d5f82171ea57f409914c8432bbe31f0" kindref="member">cb_lightPosViewSpace</ref>;</highlight></codeline>
+<codeline lineno="306"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"></highlight></codeline>
+<codeline lineno="308" refid="classSpotLight_a8a74d922c2bedf297ca66f9b18b4ba73_1a8a74d922c2bedf297ca66f9b18b4ba73" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSpotLight_a8a74d922c2bedf297ca66f9b18b4ba73_1a8a74d922c2bedf297ca66f9b18b4ba73" kindref="member">SpotLight::populateVscbData</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="309"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>m_bCastingShadows<sp/>&amp;&amp;<sp/>m_pCameraForShadowing,<sp/></highlight><highlight class="stringliteral">&quot;Camera<sp/>not<sp/>specified<sp/>(null)!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/>m_vscbData<sp/>=<sp/>{dx::XMMatrixTranspose(<sp/>m_pCameraForShadowing-&gt;getViewMatrix()<sp/>*<sp/>m_pCameraForShadowing-&gt;getProjectionMatrix(<sp/>gfx,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/>m_shadowCamFarZ<sp/>)<sp/>)};</highlight></codeline>
+<codeline lineno="312"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight></codeline>
+<codeline lineno="314" refid="classSpotLight_adb7659a2f4bebff21059bbb3b048fafe_1adb7659a2f4bebff21059bbb3b048fafe" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSpotLight_adb7659a2f4bebff21059bbb3b048fafe_1adb7659a2f4bebff21059bbb3b048fafe" kindref="member">SpotLight::populatePscbData</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="315"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/>pass_;</highlight></codeline>
+<codeline lineno="317"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"></highlight></codeline>
+<codeline lineno="320" refid="classPointLight_a3271b738b4de0a84538f382780aef19c_1a3271b738b4de0a84538f382780aef19c" refkind="member"><highlight class="normal"><ref refid="classPointLight_a3271b738b4de0a84538f382780aef19c_1a3271b738b4de0a84538f382780aef19c" kindref="member">PointLight::PointLight</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>radiusScale<sp/></highlight><highlight class="comment">/*=<sp/>0.5f*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;lightMeshRotationDeg<sp/></highlight><highlight class="comment">/*=<sp/>{0.0f,<sp/>0.0f,<sp/>0.f}*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;pos<sp/></highlight><highlight class="comment">/*=<sp/>{8.0f,<sp/>8.0f,<sp/>2.f}*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::variant&lt;DirectX::XMFLOAT4,<sp/>std::string&gt;<sp/>&amp;colorOrTexturePath<sp/></highlight><highlight class="comment">/*=<sp/>DirectX::XMFLOAT4{1.0f,<sp/>1.0f,<sp/>1.0f,<sp/>1.0f}*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bShadowCasting<sp/></highlight><highlight class="comment">/*=<sp/>true*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bShowMesh<sp/></highlight><highlight class="comment">/*=<sp/>true*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>intensity<sp/></highlight><highlight class="comment">/*=<sp/>1.0f*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>shadowCamNearZ<sp/></highlight><highlight class="comment">/*=<sp/>1.0f*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>shadowCamFarZ<sp/></highlight><highlight class="comment">/*=<sp/>100.0f*/</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classILightSource" kindref="compound">ILightSource</ref>(gfx,<sp/><ref refid="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332" kindref="member">LightSourceType</ref>::<ref refid="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332a5b577e188dc4657a3e573fb2dae1a924" kindref="member">Point</ref>,<sp/><ref refid="classModel" kindref="compound">Model</ref>(std::make_unique&lt;<ref refid="classSphere" kindref="compound">Sphere</ref>&gt;(gfx,<sp/>radiusScale,<sp/>colorOrTexturePath),<sp/>gfx,<sp/>lightMeshRotationDeg,<sp/>pos),<sp/>colorOrTexturePath,<sp/>bShadowCasting,<sp/>bShowMesh,<sp/>lightMeshRotationDeg,<sp/>pos,<sp/>intensity,<sp/>0.0f,<sp/>shadowCamFarZ)</highlight></codeline>
+<codeline lineno="332"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>bShadowCasting<sp/>)</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classILightSource_a2293407d62d1d81b80e920e6ed350ad6_1a2293407d62d1d81b80e920e6ed350ad6" kindref="member">m_pCameraForShadowing</ref><sp/>=<sp/>std::make_unique&lt;Camera&gt;(<sp/>gfx,<sp/>gfx.<ref refid="classGraphics_af1489a7a2f0b6cf0f94f31ccb03943fa_1af1489a7a2f0b6cf0f94f31ccb03943fa" kindref="member">getClientWidth</ref>(),<sp/>gfx.<ref refid="classGraphics_a6b1ed076f5063af9f5814d23df30dc24_1a6b1ed076f5063af9f5814d23df30dc24" kindref="member">getClientHeight</ref>(),<sp/><ref refid="light__source_8cpp_a7c9fc7d2740bdc9439f8c436afd1a075_1a7c9fc7d2740bdc9439f8c436afd1a075" kindref="member">g_pointLightFovDeg</ref>,<sp/>pos,<sp/>lightMeshRotationDeg.x,<sp/>lightMeshRotationDeg.y,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/>shadowCamNearZ,<sp/>shadowCamFarZ<sp/>);</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="337"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"></highlight></codeline>
+<codeline lineno="339" refid="classPointLight_a34563baa74887d3936fe91ac411c02df_1a34563baa74887d3936fe91ac411c02df" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPointLight_a34563baa74887d3936fe91ac411c02df_1a34563baa74887d3936fe91ac411c02df" kindref="member">PointLight::displayImguiWidgets</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="340"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>FINAL_RELEASE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>ImGui::Begin(<sp/><ref refid="classILightSource_a9a50fe9607772fecb1ea1c82e84b1cb1_1a9a50fe9607772fecb1ea1c82e84b1cb1" kindref="member">m_name</ref>.c_str()<sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bDirtyPos<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>dirtyCheckPos<sp/>=<sp/>[&amp;bDirtyPos](<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bChanged<sp/>)</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bDirtyPos<sp/>=<sp/>bDirtyPos<sp/>||<sp/>bChanged;</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"></highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImGui::Text(<sp/></highlight><highlight class="stringliteral">&quot;Position&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dirtyCheckPos(<sp/>ImGui::SliderFloat(<sp/></highlight><highlight class="stringliteral">&quot;X&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" kindref="member">m_pscbData</ref>.<ref refid="structILightSource_1_1LightPSCB_a4d5f82171ea57f409914c8432bbe31f0_1a4d5f82171ea57f409914c8432bbe31f0" kindref="member">cb_lightPosViewSpace</ref>.x,<sp/>-100.0f,<sp/>100.0f,<sp/></highlight><highlight class="stringliteral">&quot;%.1f&quot;</highlight><highlight class="normal"><sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dirtyCheckPos(<sp/>ImGui::SliderFloat(<sp/></highlight><highlight class="stringliteral">&quot;Y&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" kindref="member">m_pscbData</ref>.<ref refid="structILightSource_1_1LightPSCB_a4d5f82171ea57f409914c8432bbe31f0_1a4d5f82171ea57f409914c8432bbe31f0" kindref="member">cb_lightPosViewSpace</ref>.y,<sp/>-100.0f,<sp/>100.0f,<sp/></highlight><highlight class="stringliteral">&quot;%.1f&quot;</highlight><highlight class="normal"><sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dirtyCheckPos(<sp/>ImGui::SliderFloat(<sp/></highlight><highlight class="stringliteral">&quot;Z&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" kindref="member">m_pscbData</ref>.<ref refid="structILightSource_1_1LightPSCB_a4d5f82171ea57f409914c8432bbe31f0_1a4d5f82171ea57f409914c8432bbe31f0" kindref="member">cb_lightPosViewSpace</ref>.z,<sp/>-100.0f,<sp/>100.0f,<sp/></highlight><highlight class="stringliteral">&quot;%.1f&quot;</highlight><highlight class="normal"><sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"></highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>bDirtyPos<sp/>)</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classILightSource_af4c3edc00a2603c76e0ec39955f23113_1af4c3edc00a2603c76e0ec39955f23113" kindref="member">setTranslation</ref>(<sp/><ref refid="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" kindref="member">m_pscbData</ref>.<ref refid="structILightSource_1_1LightPSCB_a4d5f82171ea57f409914c8432bbe31f0_1a4d5f82171ea57f409914c8432bbe31f0" kindref="member">cb_lightPosViewSpace</ref><sp/>);</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"></highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImGui::Text(<sp/></highlight><highlight class="stringliteral">&quot;Intensity<sp/>&amp;<sp/>Color&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImGui::SliderFloat(<sp/></highlight><highlight class="stringliteral">&quot;Intensity&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" kindref="member">m_pscbData</ref>.<ref refid="structILightSource_1_1LightPSCB_af5251b90079492815b60ed641b449b17_1af5251b90079492815b60ed641b449b17" kindref="member">intensity</ref>,<sp/>0.01f,<sp/>4.0f,<sp/></highlight><highlight class="stringliteral">&quot;%.2f&quot;</highlight><highlight class="normal">,<sp/>2.0f<sp/>);</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImGui::ColorEdit3(<sp/></highlight><highlight class="stringliteral">&quot;Diffuse&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" kindref="member">m_pscbData</ref>.<ref refid="structILightSource_1_1LightPSCB_ab887412e95208866cce554b595a36a01_1ab887412e95208866cce554b595a36a01" kindref="member">cb_lightColor</ref>.x<sp/>);<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>#TODO:<sp/>expose<sp/>model&apos;s<sp/>material<sp/>properties<sp/>cb<sp/>to<sp/>change<sp/>its<sp/>color<sp/>when<sp/>changing<sp/>the<sp/>light&apos;s<sp/>color<sp/>here</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImGui::ColorEdit3(<sp/></highlight><highlight class="stringliteral">&quot;Ambient&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" kindref="member">m_pscbData</ref>.<ref refid="structILightSource_1_1LightPSCB_a839eb8084ef88ef3f49b407d612bfd9f_1a839eb8084ef88ef3f49b407d612bfd9f" kindref="member">cb_ambientColor</ref>.x<sp/>);</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"></highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImGui::Text(<sp/></highlight><highlight class="stringliteral">&quot;Attenuation&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImGui::SliderFloat(<sp/></highlight><highlight class="stringliteral">&quot;Constant&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" kindref="member">m_pscbData</ref>.<ref refid="structILightSource_1_1LightPSCB_a6fe2068c77b6eb36c41822bd059e72b7_1a6fe2068c77b6eb36c41822bd059e72b7" kindref="member">cb_attConstant</ref>,<sp/>0.05f,<sp/>10.0f,<sp/></highlight><highlight class="stringliteral">&quot;%.2f&quot;</highlight><highlight class="normal">,<sp/>4.0f<sp/>);</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImGui::SliderFloat(<sp/></highlight><highlight class="stringliteral">&quot;Linear&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" kindref="member">m_pscbData</ref>.<ref refid="structILightSource_1_1LightPSCB_a82b45f74852f51cf1a379b5c0378c009_1a82b45f74852f51cf1a379b5c0378c009" kindref="member">cb_attLinear</ref>,<sp/>0.0001f,<sp/>4.0f,<sp/></highlight><highlight class="stringliteral">&quot;%.4f&quot;</highlight><highlight class="normal">,<sp/>8.0f<sp/>);</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImGui::SliderFloat(<sp/></highlight><highlight class="stringliteral">&quot;Quadratic&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" kindref="member">m_pscbData</ref>.<ref refid="structILightSource_1_1LightPSCB_a138650936d9e7ddb83a7660dac435891_1a138650936d9e7ddb83a7660dac435891" kindref="member">cb_attQuadratic</ref>,<sp/>0.0000001f,<sp/>10.0f,<sp/></highlight><highlight class="stringliteral">&quot;%.7f&quot;</highlight><highlight class="normal">,<sp/>10.0f);</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"></highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ImGui::Checkbox(<sp/></highlight><highlight class="stringliteral">&quot;Show<sp/>Sphere<sp/>Mesh&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classILightSource_aba12f3ad60d45ee69a6cc9560a1d1e4d_1aba12f3ad60d45ee69a6cc9560a1d1e4d" kindref="member">m_bShowMesh</ref><sp/>);</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/>ImGui::End();</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="374"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"></highlight></codeline>
+<codeline lineno="376" refid="classPointLight_aca44be7f057d519a43e8f16847932024_1aca44be7f057d519a43e8f16847932024" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPointLight_aca44be7f057d519a43e8f16847932024_1aca44be7f057d519a43e8f16847932024" kindref="member">PointLight::setIntensity</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>newIntensity<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="377"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pscbData.intensity<sp/>=<sp/>newIntensity;</highlight></codeline>
+<codeline lineno="379"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"></highlight></codeline>
+<codeline lineno="381" refid="classPointLight_ac63c2d0109a19bfb49af489644442257_1ac63c2d0109a19bfb49af489644442257" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPointLight_ac63c2d0109a19bfb49af489644442257_1ac63c2d0109a19bfb49af489644442257" kindref="member">PointLight::setColor</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;diffuseColor<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="382"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pscbData.cb_lightColor<sp/>=<sp/>diffuseColor;</highlight></codeline>
+<codeline lineno="384"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"></highlight></codeline>
+<codeline lineno="386" refid="classPointLight_aebd941617d77bb5877e571e6b99f904a_1aebd941617d77bb5877e571e6b99f904a" refkind="member"><highlight class="normal">DirectX::XMFLOAT3<sp/><ref refid="classPointLight_aebd941617d77bb5877e571e6b99f904a_1aebd941617d77bb5877e571e6b99f904a" kindref="member">PointLight::getPosition</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="387"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" kindref="member">m_pscbData</ref>.<ref refid="structILightSource_1_1LightPSCB_a4d5f82171ea57f409914c8432bbe31f0_1a4d5f82171ea57f409914c8432bbe31f0" kindref="member">cb_lightPosViewSpace</ref>;</highlight></codeline>
+<codeline lineno="389"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"></highlight></codeline>
+<codeline lineno="391" refid="classPointLight_a3c46d3cc5554ae183800bc71ba3e63fa_1a3c46d3cc5554ae183800bc71ba3e63fa" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPointLight_a3c46d3cc5554ae183800bc71ba3e63fa_1a3c46d3cc5554ae183800bc71ba3e63fa" kindref="member">PointLight::populateVscbData</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="392"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="393"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="assertions__console_8h_af3e11288cb5021b91949be5058816137_1af3e11288cb5021b91949be5058816137" kindref="member">ASSERT</ref>(<sp/>m_bCastingShadows<sp/>&amp;&amp;<sp/>m_pCameraForShadowing,<sp/></highlight><highlight class="stringliteral">&quot;Camera<sp/>not<sp/>specified<sp/>(null)!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="394"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;pos<sp/>=<sp/>m_pCameraForShadowing-&gt;getPosition();</highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/><sp/><sp/>m_vscbData<sp/>=<sp/>{dx::XMMatrixTranspose(<sp/>dx::XMMatrixTranslation(<sp/>-pos.x,<sp/>-pos.y,<sp/>-pos.z<sp/>)<sp/>)};</highlight></codeline>
+<codeline lineno="396"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"></highlight></codeline>
+<codeline lineno="398" refid="classPointLight_a1a2533dcd6eab3a1da900b88c1622ea9_1a1a2533dcd6eab3a1da900b88c1622ea9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPointLight_a1a2533dcd6eab3a1da900b88c1622ea9_1a1a2533dcd6eab3a1da900b88c1622ea9" kindref="member">PointLight::populatePscbData</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex</highlight></codeline>
+<codeline lineno="399"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="400"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classCameraManager" kindref="compound">CameraManager</ref><sp/>&amp;s_cameraMan<sp/>=<sp/><ref refid="classCameraManager_ac7e6b0996395dcaaa889d17d5a8a639e_1ac7e6b0996395dcaaa889d17d5a8a639e" kindref="member">CameraManager::getInstance</ref>();</highlight></codeline>
+<codeline lineno="401"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;activeCameraViewMat<sp/>=<sp/>s_cameraMan.<ref refid="classCameraManager_abdf764797cf31edf23ae92496b6dfcf1_1abdf764797cf31edf23ae92496b6dfcf1" kindref="member">getActiveCamera</ref>().<ref refid="classCamera_a69061c32d9aae3cba2237a0733649928_1a69061c32d9aae3cba2237a0733649928" kindref="member">getViewMatrix</ref>();</highlight></codeline>
+<codeline lineno="402"><highlight class="normal"><sp/><sp/><sp/><sp/>m_pscbDataToBind<sp/>=<sp/>m_pscbData;</highlight></codeline>
+<codeline lineno="403"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>lightPosWorldSpace<sp/>=<sp/>DirectX::XMLoadFloat3(<sp/>&amp;m_pscbData.cb_lightPosViewSpace<sp/>);</highlight></codeline>
+<codeline lineno="404"><highlight class="normal"><sp/><sp/><sp/><sp/>DirectX::XMStoreFloat3(<sp/>&amp;m_pscbDataToBind.cb_lightPosViewSpace,<sp/>DirectX::XMVector3Transform(<sp/>lightPosWorldSpace,<sp/>activeCameraViewMat<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="405"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/light_source.cpp"/>
+  </compounddef>
+</doxygen>

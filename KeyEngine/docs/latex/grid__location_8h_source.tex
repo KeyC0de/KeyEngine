@@ -1,0 +1,43 @@
+\doxysection{grid\+\_\+location.\+h}
+\hypertarget{grid__location_8h_source}{}\label{grid__location_8h_source}\index{inc/grid\_location.h@{inc/grid\_location.h}}
+\mbox{\hyperlink{grid__location_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <type\_traits>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structGridLocation}{GridLocation}}}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structGridLocation_aeb63882b21b183e7335258a58c8a40e8_aeb63882b21b183e7335258a58c8a40e8}{x}};}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structGridLocation_aa73f11982d6425de33e1cd4a5a4c7ac6_aa73f11982d6425de33e1cd4a5a4c7ac6}{y}};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{structGridLocation}{GridLocation}}\ \mbox{\hyperlink{structGridLocation_aae60c793bb02a0b6b23676e74d5407f0_aae60c793bb02a0b6b23676e74d5407f0}{operator+}}(\ \mbox{\hyperlink{structGridLocation}{GridLocation}}\ \&lhs,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structGridLocation}{GridLocation}}\ \&rhs\ )\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{structGridLocation}{GridLocation}}\ \mbox{\hyperlink{structGridLocation_a2c9bf0dcb1049edce8093751e9e58885_a2c9bf0dcb1049edce8093751e9e58885}{operator-\/}}(\ \mbox{\hyperlink{structGridLocation}{GridLocation}}\ \&lhs,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structGridLocation}{GridLocation}}\ \&rhs\ )\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{structGridLocation_a19480ec677eb86a3442d1d9e3cc28a0b_a19480ec677eb86a3442d1d9e3cc28a0b}{GridLocation}}(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structGridLocation}{GridLocation}}\ \&rhs\ );}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{structGridLocation}{GridLocation}}\&\ \mbox{\hyperlink{structGridLocation_a7e29edf4532d90b9a7d7598fcd37b0ec_a7e29edf4532d90b9a7d7598fcd37b0ec}{operator=}}(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structGridLocation}{GridLocation}}\ \&rhs\ );}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{structGridLocation}{GridLocation}}\&\ \mbox{\hyperlink{structGridLocation_a00b4d0fbdf62552498096f576c786747_a00b4d0fbdf62552498096f576c786747}{operator++}}()\ noexcept;}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{structGridLocation}{GridLocation}}\ operator++(\ \textcolor{keywordtype}{int}\ )\ noexcept;}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{structGridLocation}{GridLocation}}\&\ operator+=(\ const\ \mbox{\hyperlink{structGridLocation}{GridLocation}}\ \&rhs\ )\ noexcept;}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{structGridLocation}{GridLocation}}\&\ operator-\/-\/()\ noexcept;}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{structGridLocation}{GridLocation}}\ operator-\/-\/(\ \textcolor{keywordtype}{int}\ )\ noexcept;}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{structGridLocation}{GridLocation}}\&\ operator-\/=(\ const\ \mbox{\hyperlink{structGridLocation}{GridLocation}}\ \&rhs\ )\ noexcept;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator==(\ const\ \mbox{\hyperlink{structGridLocation}{GridLocation}}\ \&rhs\ )\ const\ noexcept;}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator!=(\ const\ \mbox{\hyperlink{structGridLocation}{GridLocation}}\ \&rhs\ )\ const\ noexcept;}
+\DoxyCodeLine{00025\ \};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \mbox{\hyperlink{structGridLocation}{GridLocation}}\ operator+(\ \mbox{\hyperlink{structGridLocation}{GridLocation}}\ \&lhs,\ const\ \mbox{\hyperlink{structGridLocation}{GridLocation}}\ \&rhs\ )\ noexcept;}
+\DoxyCodeLine{00028\ \mbox{\hyperlink{structGridLocation}{GridLocation}}\ operator-\/(\ \mbox{\hyperlink{structGridLocation}{GridLocation}}\ \&lhs,\ const\ \mbox{\hyperlink{structGridLocation}{GridLocation}}\ \&rhs\ )\ noexcept;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ struct\ \mbox{\hyperlink{structGrid3dLocation}{Grid3dLocation}}\ final}
+\DoxyCodeLine{00032\ \ \ \ \ :\ public\ \mbox{\hyperlink{structGridLocation}{GridLocation}}}
+\DoxyCodeLine{00033\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structGrid3dLocation_a3e6d8b8ff9c65245422e3b99d30b591d_a3e6d8b8ff9c65245422e3b99d30b591d}{z}};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//\ \#TODO}}
+\DoxyCodeLine{00037\ \};}
+
+\end{DoxyCode}

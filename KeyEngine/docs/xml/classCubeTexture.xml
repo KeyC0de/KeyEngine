@@ -1,0 +1,261 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classCubeTexture" kind="class" language="C++" prot="public">
+    <compoundname>CubeTexture</compoundname>
+    <basecompoundref refid="classIBindable" prot="public" virt="non-virtual">IBindable</basecompoundref>
+    <includes refid="cube__texture_8h" local="no">cube_texture.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classCubeTexture_acdd926586c549dd6e716235949552a53_1acdd926586c549dd6e716235949552a53" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int CubeTexture::m_slot</definition>
+        <argsstring></argsstring>
+        <name>m_slot</name>
+        <qualifiedname>CubeTexture::m_slot</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/cube_texture.h" line="18" column="14" bodyfile="inc/cube_texture.h" bodystart="18" bodyend="-1"/>
+        <referencedby refid="classCubeTexture_a8315d2574fa58aa062e0c0acb7b06a0f_1a8315d2574fa58aa062e0c0acb7b06a0f" compoundref="cube__texture_8cpp" startline="92" endline="95">getSlot</referencedby>
+        <referencedby refid="classCubeTexture_ae432c95096dee9d2a19c063f320f2018_1ae432c95096dee9d2a19c063f320f2018" compoundref="cube__texture_8cpp" startline="87" endline="90">getUid</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classCubeTexture_abb915a8225149449cca154c0f65d1044_1abb915a8225149449cca154c0f65d1044" prot="protected" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string CubeTexture::m_path</definition>
+        <argsstring></argsstring>
+        <name>m_path</name>
+        <qualifiedname>CubeTexture::m_path</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/cube_texture.h" line="20" column="13" bodyfile="inc/cube_texture.h" bodystart="20" bodyend="-1"/>
+        <referencedby refid="classCubeTexture_a0a1c044be1bc494cafc09ad9f84eb93a_1a0a1c044be1bc494cafc09ad9f84eb93a" compoundref="cube__texture_8cpp" startline="68" endline="71">getPath</referencedby>
+        <referencedby refid="classCubeTexture_ae432c95096dee9d2a19c063f320f2018_1ae432c95096dee9d2a19c063f320f2018" compoundref="cube__texture_8cpp" startline="87" endline="90">getUid</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classCubeTexture_aad53ef72af4553c25a28968b7b02fe76_1aad53ef72af4553c25a28968b7b02fe76" prot="protected" static="no" mutable="no">
+        <type>Microsoft::WRL::ComPtr&lt; ID3D11ShaderResourceView &gt;</type>
+        <definition>Microsoft::WRL::ComPtr&lt;ID3D11ShaderResourceView&gt; CubeTexture::m_pD3dSrv</definition>
+        <argsstring></argsstring>
+        <name>m_pD3dSrv</name>
+        <qualifiedname>CubeTexture::m_pD3dSrv</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/cube_texture.h" line="21" column="24" bodyfile="inc/cube_texture.h" bodystart="21" bodyend="-1"/>
+        <referencedby refid="classCubeTexture_ac47739d4264634c91ed909bbf8500493_1ac47739d4264634c91ed909bbf8500493" compoundref="cube__texture_8cpp" startline="15" endline="60">CubeTexture</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classCubeTexture_ac47739d4264634c91ed909bbf8500493_1ac47739d4264634c91ed909bbf8500493" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CubeTexture::CubeTexture</definition>
+        <argsstring>(Graphics &amp;gfx, const std::string &amp;path, const unsigned slot)</argsstring>
+        <name>CubeTexture</name>
+        <qualifiedname>CubeTexture::CubeTexture</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>slot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/cube_texture.h" line="23" column="1" bodyfile="src/cube_texture.cpp" bodystart="15" bodyend="60"/>
+        <referencedby refid="classCubeTexture_a7b55e59de712e63140d721eeb0340782_1a7b55e59de712e63140d721eeb0340782" compoundref="cube__texture_8cpp" startline="80" endline="85">calcUid</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classCubeTexture_ae6e0e78b260faa09a6425a582a10139a_1ae6e0e78b260faa09a6425a582a10139a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void CubeTexture::bind</definition>
+        <argsstring>(Graphics &amp;gfx) cond_noex override</argsstring>
+        <name>bind</name>
+        <qualifiedname>CubeTexture::bind</qualifiedname>
+        <reimplements refid="classIBindable_add4560f78e76629ee81ba701ba1052e1_1add4560f78e76629ee81ba701ba1052e1">bind</reimplements>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+<para>bind graphics resource to a certain stage of the graphics pipeline </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/cube_texture.h" line="25" column="6" bodyfile="src/cube_texture.cpp" bodystart="62" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classCubeTexture_a0a1c044be1bc494cafc09ad9f84eb93a_1a0a1c044be1bc494cafc09ad9f84eb93a" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; CubeTexture::getPath</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getPath</name>
+        <qualifiedname>CubeTexture::getPath</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/cube_texture.h" line="26" column="19" bodyfile="src/cube_texture.cpp" bodystart="68" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classCubeTexture_ae432c95096dee9d2a19c063f320f2018_1ae432c95096dee9d2a19c063f320f2018" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string CubeTexture::getUid</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>getUid</name>
+        <qualifiedname>CubeTexture::getUid</qualifiedname>
+        <reimplements refid="classIBindable_a7d88cdbd5d500d6d7f1bfabe16927855_1a7d88cdbd5d500d6d7f1bfabe16927855">getUid</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/cube_texture.h" line="29" column="13" bodyfile="src/cube_texture.cpp" bodystart="87" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="classCubeTexture_a8315d2574fa58aa062e0c0acb7b06a0f_1a8315d2574fa58aa062e0c0acb7b06a0f" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned CubeTexture::getSlot</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getSlot</name>
+        <qualifiedname>CubeTexture::getSlot</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/cube_texture.h" line="30" column="10" bodyfile="src/cube_texture.cpp" bodystart="92" bodyend="95"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classCubeTexture_a6d898aa029dbc08e82e68bc04fef0ce7_1a6d898aa029dbc08e82e68bc04fef0ce7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classCubeTexture" kindref="compound">CubeTexture</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; CubeTexture &gt; CubeTexture::fetch</definition>
+        <argsstring>(Graphics &amp;gfx, const std::string &amp;filepath, const unsigned slot)</argsstring>
+        <name>fetch</name>
+        <qualifiedname>CubeTexture::fetch</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>filepath</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>slot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/cube_texture.h" line="27" column="24" bodyfile="src/cube_texture.cpp" bodystart="73" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classCubeTexture_a7b55e59de712e63140d721eeb0340782_1a7b55e59de712e63140d721eeb0340782" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string CubeTexture::calcUid</definition>
+        <argsstring>(const std::string &amp;filepath, const unsigned slot)</argsstring>
+        <name>calcUid</name>
+        <qualifiedname>CubeTexture::calcUid</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>filepath</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>slot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/cube_texture.h" line="28" column="20" bodyfile="src/cube_texture.cpp" bodystart="80" bodyend="85"/>
+        <referencedby refid="classCubeTexture_ae432c95096dee9d2a19c063f320f2018_1ae432c95096dee9d2a19c063f320f2018" compoundref="cube__texture_8cpp" startline="87" endline="90">getUid</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>CubeTexture</label>
+        <link refid="classCubeTexture"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>GraphicsFriend</label>
+        <link refid="classGraphicsFriend"/>
+      </node>
+      <node id="2">
+        <label>IBindable</label>
+        <link refid="classIBindable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>CubeTexture</label>
+        <link refid="classCubeTexture"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>GraphicsFriend</label>
+        <link refid="classGraphicsFriend"/>
+      </node>
+      <node id="2">
+        <label>IBindable</label>
+        <link refid="classIBindable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/cube_texture.h" line="15" column="1" bodyfile="inc/cube_texture.h" bodystart="17" bodyend="31"/>
+    <listofallmembers>
+      <member refid="classIBindable_a608c5066b829febbd49cd82d1d1fa353_1a608c5066b829febbd49cd82d1d1fa353" prot="public" virt="virtual"><scope>CubeTexture</scope><name>accept</name></member>
+      <member refid="classCubeTexture_ae6e0e78b260faa09a6425a582a10139a_1ae6e0e78b260faa09a6425a582a10139a" prot="public" virt="virtual"><scope>CubeTexture</scope><name>bind</name></member>
+      <member refid="classCubeTexture_a7b55e59de712e63140d721eeb0340782_1a7b55e59de712e63140d721eeb0340782" prot="public" virt="non-virtual"><scope>CubeTexture</scope><name>calcUid</name></member>
+      <member refid="classCubeTexture_ac47739d4264634c91ed909bbf8500493_1ac47739d4264634c91ed909bbf8500493" prot="public" virt="non-virtual"><scope>CubeTexture</scope><name>CubeTexture</name></member>
+      <member refid="classCubeTexture_a6d898aa029dbc08e82e68bc04fef0ce7_1a6d898aa029dbc08e82e68bc04fef0ce7" prot="public" virt="non-virtual"><scope>CubeTexture</scope><name>fetch</name></member>
+      <member refid="classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_1a175df79f82ab5a6dad1df24b5a242ef7" prot="protected" virt="non-virtual"><scope>CubeTexture</scope><name>getDevice</name></member>
+      <member refid="classGraphicsFriend_a619e32893ab49ea6c5200e7c2d52e2f2_1a619e32893ab49ea6c5200e7c2d52e2f2" prot="protected" virt="non-virtual"><scope>CubeTexture</scope><name>getDeviceContext</name></member>
+      <member refid="classCubeTexture_a0a1c044be1bc494cafc09ad9f84eb93a_1a0a1c044be1bc494cafc09ad9f84eb93a" prot="public" virt="non-virtual"><scope>CubeTexture</scope><name>getPath</name></member>
+      <member refid="classCubeTexture_a8315d2574fa58aa062e0c0acb7b06a0f_1a8315d2574fa58aa062e0c0acb7b06a0f" prot="public" virt="non-virtual"><scope>CubeTexture</scope><name>getSlot</name></member>
+      <member refid="classCubeTexture_ae432c95096dee9d2a19c063f320f2018_1ae432c95096dee9d2a19c063f320f2018" prot="public" virt="virtual"><scope>CubeTexture</scope><name>getUid</name></member>
+      <member refid="classCubeTexture_abb915a8225149449cca154c0f65d1044_1abb915a8225149449cca154c0f65d1044" prot="protected" virt="non-virtual"><scope>CubeTexture</scope><name>m_path</name></member>
+      <member refid="classCubeTexture_aad53ef72af4553c25a28968b7b02fe76_1aad53ef72af4553c25a28968b7b02fe76" prot="protected" virt="non-virtual"><scope>CubeTexture</scope><name>m_pD3dSrv</name></member>
+      <member refid="classCubeTexture_acdd926586c549dd6e716235949552a53_1acdd926586c549dd6e716235949552a53" prot="private" virt="non-virtual"><scope>CubeTexture</scope><name>m_slot</name></member>
+      <member refid="classIBindable_a4d590eebe80fa4e0aa865a875ff86c02_1a4d590eebe80fa4e0aa865a875ff86c02" prot="public" virt="virtual"><scope>CubeTexture</scope><name>setDebugObjectName</name></member>
+      <member refid="classIBindable_a12fe8725cb3f4836f22d1592b07e2c91_1a12fe8725cb3f4836f22d1592b07e2c91" prot="public" virt="virtual"><scope>CubeTexture</scope><name>setMesh</name></member>
+      <member refid="classIBindable_a7f68262ff85e25e9f826eae7c01bbfa1_1a7f68262ff85e25e9f826eae7c01bbfa1" prot="public" virt="virtual"><scope>CubeTexture</scope><name>~IBindable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

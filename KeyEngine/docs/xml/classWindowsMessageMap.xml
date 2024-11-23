@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classWindowsMessageMap" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>WindowsMessageMap</compoundname>
+    <includes refid="windows__message__map_8h" local="no">windows_message_map.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classWindowsMessageMap_a7c3c7e18f4c6b9c8e82c52b7509c2661_1a7c3c7e18f4c6b9c8e82c52b7509c2661" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; DWORD, std::string &gt;</type>
+        <definition>std::unordered_map&lt;DWORD, std::string&gt; WindowsMessageMap::m_map</definition>
+        <argsstring></argsstring>
+        <name>m_map</name>
+        <qualifiedname>WindowsMessageMap::m_map</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/windows_message_map.h" line="16" column="20" bodyfile="inc/windows_message_map.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classWindowsMessageMap_adc2cb5838ee2d220cbd905737b404327_1adc2cb5838ee2d220cbd905737b404327" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>WindowsMessageMap::WindowsMessageMap</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>WindowsMessageMap</name>
+        <qualifiedname>WindowsMessageMap::WindowsMessageMap</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/windows_message_map.h" line="18" column="1" bodyfile="src/windows_message_map.cpp" bodystart="1072" bodyend="1077"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classWindowsMessageMap_a0e27412ece973a1d69751f3d9cfcb867_1a0e27412ece973a1d69751f3d9cfcb867" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>WindowsMessageMap::WindowsMessageMap</definition>
+        <argsstring>(const WindowsMessageMap &amp;rhs)=delete</argsstring>
+        <name>WindowsMessageMap</name>
+        <qualifiedname>WindowsMessageMap::WindowsMessageMap</qualifiedname>
+        <param>
+          <type>const <ref refid="classWindowsMessageMap" kindref="compound">WindowsMessageMap</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/windows_message_map.h" line="20" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindowsMessageMap_ab4a7dd71b443f279364fa726c7bd8f0d_1ab4a7dd71b443f279364fa726c7bd8f0d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classWindowsMessageMap" kindref="compound">WindowsMessageMap</ref> &amp;</type>
+        <definition>WindowsMessageMap &amp; WindowsMessageMap::operator=</definition>
+        <argsstring>(const WindowsMessageMap &amp;rhs)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>WindowsMessageMap::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classWindowsMessageMap" kindref="compound">WindowsMessageMap</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/windows_message_map.h" line="21" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classWindowsMessageMap_a42878d073a5d20b5f98ef9491459d938_1a42878d073a5d20b5f98ef9491459d938" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string WindowsMessageMap::toString</definition>
+        <argsstring>(const DWORD uMsg) const noexcept</argsstring>
+        <name>toString</name>
+        <qualifiedname>WindowsMessageMap::toString</qualifiedname>
+        <param>
+          <type>const DWORD</type>
+          <declname>uMsg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/windows_message_map.h" line="29" column="13" bodyfile="src/windows_message_map.cpp" bodystart="1080" bodyend="1094"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classWindowsMessageMap_a1295a2a61116d764067bc2b68ad3ee1d_1a1295a2a61116d764067bc2b68ad3ee1d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classWindowsMessageMap" kindref="compound">WindowsMessageMap</ref> &amp;</type>
+        <definition>static WindowsMessageMap &amp; WindowsMessageMap::getInstance</definition>
+        <argsstring>()</argsstring>
+        <name>getInstance</name>
+        <qualifiedname>WindowsMessageMap::getInstance</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/windows_message_map.h" line="23" column="26" bodyfile="inc/windows_message_map.h" bodystart="23" bodyend="27"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>maps windows message ids to string ids </para>
+    </briefdescription>
+    <detaileddescription>
+<para>=============================================================</para>
+<para><simplesect kind="author"><para>KeyC0de </para>
+</simplesect>
+<simplesect kind="date"><para>2020/09/11 16:52 <heading level="1">list of all known windows messages, courtesy of: <ulink url="https://wiki.winehq.org/List_Of_Windows_Messages">https://wiki.winehq.org/List_Of_Windows_Messages</ulink> </heading>
+</para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="inc/windows_message_map.h" line="14" column="1" bodyfile="inc/windows_message_map.h" bodystart="15" bodyend="30"/>
+    <listofallmembers>
+      <member refid="classWindowsMessageMap_a1295a2a61116d764067bc2b68ad3ee1d_1a1295a2a61116d764067bc2b68ad3ee1d" prot="public" virt="non-virtual"><scope>WindowsMessageMap</scope><name>getInstance</name></member>
+      <member refid="classWindowsMessageMap_a7c3c7e18f4c6b9c8e82c52b7509c2661_1a7c3c7e18f4c6b9c8e82c52b7509c2661" prot="private" virt="non-virtual"><scope>WindowsMessageMap</scope><name>m_map</name></member>
+      <member refid="classWindowsMessageMap_ab4a7dd71b443f279364fa726c7bd8f0d_1ab4a7dd71b443f279364fa726c7bd8f0d" prot="public" virt="non-virtual"><scope>WindowsMessageMap</scope><name>operator=</name></member>
+      <member refid="classWindowsMessageMap_a42878d073a5d20b5f98ef9491459d938_1a42878d073a5d20b5f98ef9491459d938" prot="public" virt="non-virtual"><scope>WindowsMessageMap</scope><name>toString</name></member>
+      <member refid="classWindowsMessageMap_adc2cb5838ee2d220cbd905737b404327_1adc2cb5838ee2d220cbd905737b404327" prot="private" virt="non-virtual"><scope>WindowsMessageMap</scope><name>WindowsMessageMap</name></member>
+      <member refid="classWindowsMessageMap_a0e27412ece973a1d69751f3d9cfcb867_1a0e27412ece973a1d69751f3d9cfcb867" prot="public" virt="non-virtual"><scope>WindowsMessageMap</scope><name>WindowsMessageMap</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

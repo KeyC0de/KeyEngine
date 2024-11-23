@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="structcon_1_1ElementProperties_3_01Float3_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>con::ElementProperties&lt; Float3 &gt;</compoundname>
+    <includes refid="dynamic__constant__buffer_8h" local="no">dynamic_constant_buffer.h</includes>
+    <templateparamlist>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structcon_1_1ElementProperties_3_01Float3_01_4_a2fbd900f153db13235ba68f22804d8b4_1a2fbd900f153db13235ba68f22804d8b4" prot="public" static="no">
+        <type>dx::XMFLOAT3</type>
+        <definition>using con::ElementProperties&lt; Float3 &gt;::CPUType =  dx::XMFLOAT3</definition>
+        <argsstring></argsstring>
+        <name>CPUType</name>
+        <qualifiedname>con::ElementProperties&lt; Float3 &gt;::CPUType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="70" column="1" bodyfile="inc/dynamic_constant_buffer.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structcon_1_1ElementProperties_3_01Float3_01_4_a33c3fd7f1ca588ca2eb1cc93dc847c7a_1a33c3fd7f1ca588ca2eb1cc93dc847c7a" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>size_t</type>
+        <definition>size_t con::ElementProperties&lt; Float3 &gt;::hlslSize</definition>
+        <argsstring></argsstring>
+        <name>hlslSize</name>
+        <qualifiedname>con::ElementProperties&lt; Float3 &gt;::hlslSize</qualifiedname>
+        <initializer>= sizeof( <ref refid="structcon_1_1ElementProperties_3_01Float3_01_4_a2fbd900f153db13235ba68f22804d8b4_1a2fbd900f153db13235ba68f22804d8b4" kindref="member">CPUType</ref> )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="71" column="25" bodyfile="inc/dynamic_constant_buffer.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structcon_1_1ElementProperties_3_01Float3_01_4_abee99c7f9e4491604223df76a937ef81_1abee99c7f9e4491604223df76a937ef81" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>const char *</type>
+        <definition>const char* con::ElementProperties&lt; Float3 &gt;::tag</definition>
+        <argsstring></argsstring>
+        <name>tag</name>
+        <qualifiedname>con::ElementProperties&lt; Float3 &gt;::tag</qualifiedname>
+        <initializer>= &quot;F3&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="72" column="29" bodyfile="inc/dynamic_constant_buffer.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structcon_1_1ElementProperties_3_01Float3_01_4_a4bb99bcc6ac014460822f0b5ee17ab56_1a4bb99bcc6ac014460822f0b5ee17ab56" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool con::ElementProperties&lt; Float3 &gt;::valid</definition>
+        <argsstring></argsstring>
+        <name>valid</name>
+        <qualifiedname>con::ElementProperties&lt; Float3 &gt;::valid</qualifiedname>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="73" column="23" bodyfile="inc/dynamic_constant_buffer.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/dynamic_constant_buffer.h" line="68" column="1" bodyfile="inc/dynamic_constant_buffer.h" bodystart="69" bodyend="74"/>
+    <listofallmembers>
+      <member refid="structcon_1_1ElementProperties_3_01Float3_01_4_a2fbd900f153db13235ba68f22804d8b4_1a2fbd900f153db13235ba68f22804d8b4" prot="public" virt="non-virtual"><scope>con::ElementProperties&lt; Float3 &gt;</scope><name>CPUType</name></member>
+      <member refid="structcon_1_1ElementProperties_3_01Float3_01_4_a33c3fd7f1ca588ca2eb1cc93dc847c7a_1a33c3fd7f1ca588ca2eb1cc93dc847c7a" prot="public" virt="non-virtual"><scope>con::ElementProperties&lt; Float3 &gt;</scope><name>hlslSize</name></member>
+      <member refid="structcon_1_1ElementProperties_3_01Float3_01_4_abee99c7f9e4491604223df76a937ef81_1abee99c7f9e4491604223df76a937ef81" prot="public" virt="non-virtual"><scope>con::ElementProperties&lt; Float3 &gt;</scope><name>tag</name></member>
+      <member refid="structcon_1_1ElementProperties_3_01Float3_01_4_a4bb99bcc6ac014460822f0b5ee17ab56_1a4bb99bcc6ac014460822f0b5ee17ab56" prot="public" virt="non-virtual"><scope>con::ElementProperties&lt; Float3 &gt;</scope><name>valid</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

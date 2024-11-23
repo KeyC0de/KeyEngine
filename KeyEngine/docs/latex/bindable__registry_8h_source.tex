@@ -1,0 +1,91 @@
+\doxysection{bindable\+\_\+registry.\+h}
+\hypertarget{bindable__registry_8h_source}{}\label{bindable__registry_8h_source}\index{inc/bindable\_registry.h@{inc/bindable\_registry.h}}
+\mbox{\hyperlink{bindable__registry_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <type\_traits>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{bindable_8h}{bindable.h}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBindableRegistry}{BindableRegistry}}\ final}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ std::unordered\_map<std::string,\ std::shared\_ptr<IBindable>>\ \mbox{\hyperlink{classBindableRegistry_abac5d57c6ef58123deace9cf884006db_abac5d57c6ef58123deace9cf884006db}{m\_bindableMap}};}
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }T,\ \textcolor{keyword}{typename}...\ TArgs>}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<T>\ \mbox{\hyperlink{classBindableRegistry_a034568929d2dbcda2bf619e90d9fc68e_a034568929d2dbcda2bf619e90d9fc68e}{fetch}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx,}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ TArgs\&\&...\ args\ )\ cond\_noex}
+\DoxyCodeLine{00016\ \ \ \ \ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_assert}(\ std::is\_base\_of<IBindable,\ T>::value,\ \textcolor{stringliteral}{"{}T\ must\ be\ a\ IBindable!"{}}\ );}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classBindableRegistry_a12812e70bfd7c7dbb8b5b5e08de8b35f_a12812e70bfd7c7dbb8b5b5e08de8b35f}{getInstance}}().\mbox{\hyperlink{classBindableRegistry_ae6618c61af11ec9f42cfef1f28425730_ae6618c61af11ec9f42cfef1f28425730}{fetch\_impl}}<T>(\ gfx,\ std::forward<TArgs>(\ args\ )...\ );}
+\DoxyCodeLine{00019\ \ \ \ \ \}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{static}\ std::size\_t\ \mbox{\hyperlink{classBindableRegistry_a5bb56ad44ea4ff8f141cb0aa4a9fff30_a5bb56ad44ea4ff8f141cb0aa4a9fff30}{getInstanceCount}}()}
+\DoxyCodeLine{00022\ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#if\ defined\ \_DEBUG\ \&\&\ !defined\ NDEBUG}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&instance\ =\ \mbox{\hyperlink{classBindableRegistry_a12812e70bfd7c7dbb8b5b5e08de8b35f_a12812e70bfd7c7dbb8b5b5e08de8b35f}{getInstance}}();}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ instance.m\_bindableMap.size();}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0ull;}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00029\ \ \ \ \ \}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{static}\ std::size\_t\ \mbox{\hyperlink{classBindableRegistry_a1c490d4252f0c309f890fb82b1a7eb05_a1c490d4252f0c309f890fb82b1a7eb05}{getGarbageCount}}()}
+\DoxyCodeLine{00032\ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#if\ defined\ \_DEBUG\ \&\&\ !defined\ NDEBUG}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&instance\ =\ \mbox{\hyperlink{classBindableRegistry_a12812e70bfd7c7dbb8b5b5e08de8b35f_a12812e70bfd7c7dbb8b5b5e08de8b35f}{getInstance}}();}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ nGarbagePtrs\ =\ 0;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&elem\ :\ instance.m\_bindableMap\ )}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ elem.second.use\_count()\ <=\ 1\ )}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++nGarbagePtrs;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ nGarbagePtrs;}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0ull;}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00047\ \ \ \ \ \}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBindableRegistry_a81a8ab3080a572657b03ebdf7742f38f_a81a8ab3080a572657b03ebdf7742f38f}{garbageCollect}}()}
+\DoxyCodeLine{00050\ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \&instance\ =\ \mbox{\hyperlink{classBindableRegistry_a12812e70bfd7c7dbb8b5b5e08de8b35f_a12812e70bfd7c7dbb8b5b5e08de8b35f}{BindableRegistry::getInstance}}();}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ std::unordered\_map<std::string,\ std::shared\_ptr<IBindable>>\mbox{\hyperlink{key__type__traits_8h_a343c3465085a5c614a84910f059611e1_a343c3465085a5c614a84910f059611e1}{::iterator}}\ it\ =\ instance.m\_bindableMap.begin();\ it\ !=\ instance.m\_bindableMap.end();\ ++it\ )}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ it-\/>second.use\_count()\ <=\ 1\ )}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ instance.m\_bindableMap.erase(\ it\ );}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ it\ =\ instance.m\_bindableMap.begin();}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }T,\ \textcolor{keyword}{typename}...\ TArgs>}
+\DoxyCodeLine{00063\ \ \ \ \ std::shared\_ptr<T>\ \mbox{\hyperlink{classBindableRegistry_ae6618c61af11ec9f42cfef1f28425730_ae6618c61af11ec9f42cfef1f28425730}{fetch\_impl}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx,}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ TArgs\&\&...\ args\ )\ cond\_noex}
+\DoxyCodeLine{00065\ \ \ \ \ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ bindableId\ =\ T::calcUid(\ std::forward<TArgs>(\ args\ )...\ );}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \textcolor{comment}{/*std::unordered\_map<std::string,\ std::shared\_ptr<IBindable>>::const\_iterator*/}\ elem\ =\ \mbox{\hyperlink{classBindableRegistry_abac5d57c6ef58123deace9cf884006db_abac5d57c6ef58123deace9cf884006db}{m\_bindableMap}}.find(\ bindableId\ );}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ elem\ ==\ \mbox{\hyperlink{classBindableRegistry_abac5d57c6ef58123deace9cf884006db_abac5d57c6ef58123deace9cf884006db}{m\_bindableMap}}.cend()\ )}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<T>\ bindable\ =\ std::make\_shared<T>(\ gfx,\ std::forward<TArgs>(\ args\ )...\ );}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classBindableRegistry_abac5d57c6ef58123deace9cf884006db_abac5d57c6ef58123deace9cf884006db}{m\_bindableMap}}[bindableId]\ =\ bindable;}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ bindable;}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::dynamic\_pointer\_cast<T>(\ elem-\/>second\ );}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ \ \ \ \ \}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classBindableRegistry}{BindableRegistry}}\&\ \mbox{\hyperlink{classBindableRegistry_a12812e70bfd7c7dbb8b5b5e08de8b35f_a12812e70bfd7c7dbb8b5b5e08de8b35f}{getInstance}}()}
+\DoxyCodeLine{00081\ \ \ \ \ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classBindableRegistry}{BindableRegistry}}\ instance;}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ instance;}
+\DoxyCodeLine{00084\ \ \ \ \ \}}
+\DoxyCodeLine{00085\ \};}
+
+\end{DoxyCode}

@@ -8,13 +8,13 @@ class Graphics;
 namespace ren
 {
 
-//=============================================================
-//	\class	BlurOutlineDrawPass
-//	\author	KeyC0de
-//	\date	2022/10/03 10:30
-//	\brief	An offscreen Pass - Output only pass - RTV
-//			requires objects to use VertexShader flat_vs.cso Bindable
-//=============================================================
+///=============================================================
+/// \class	BlurOutlineDrawPass
+/// \author	KeyC0de
+/// \date	2022/10/03 10:30
+/// \brief	An offscreen Pass - Output only pass - RTV
+/// \brief	requires objects to use VertexShader flat_vs.cso Bindable
+///=============================================================
 class BlurOutlineDrawPass
 	: public RenderQueuePass
 {

@@ -1,0 +1,669 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="camera__widget_8cpp" kind="file" language="C++">
+    <compoundname>camera_widget.cpp</compoundname>
+    <includes refid="camera__widget_8h" local="yes">camera_widget.h</includes>
+    <includes refid="graphics_8h" local="yes">graphics.h</includes>
+    <includes refid="geometry_8h" local="yes">geometry.h</includes>
+    <includes refid="vertex__buffer_8h" local="yes">vertex_buffer.h</includes>
+    <includes refid="index__buffer_8h" local="yes">index_buffer.h</includes>
+    <includes refid="primitive__topology_8h" local="yes">primitive_topology.h</includes>
+    <includes refid="input__layout_8h" local="yes">input_layout.h</includes>
+    <includes refid="pixel__shader_8h" local="yes">pixel_shader.h</includes>
+    <includes refid="transform__vscb_8h" local="yes">transform_vscb.h</includes>
+    <includes refid="constant__buffer_8h" local="yes">constant_buffer.h</includes>
+    <includes refid="vertex__shader_8h" local="yes">vertex_shader.h</includes>
+    <includes refid="rendering__channel_8h" local="yes">rendering_channel.h</includes>
+    <incdepgraph>
+      <node id="12">
+        <label>assertions_console.h</label>
+        <link refid="assertions__console_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>bindable.h</label>
+        <link refid="bindable_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="69">
+        <label>bindable_registry.h</label>
+        <link refid="bindable__registry_8h"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>camera_widget.h</label>
+        <link refid="camera__widget_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>color.h</label>
+        <link refid="color_8h"/>
+      </node>
+      <node id="52">
+        <label>console.h</label>
+        <link refid="console_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+      </node>
+      <node id="68">
+        <label>constant_buffer.h</label>
+        <link refid="constant__buffer_8h"/>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+      </node>
+      <node id="77">
+        <label>dxgi_info_queue.h</label>
+        <link refid="dxgi__info__queue_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>dynamic_constant_buffer.h</label>
+        <link refid="dynamic__constant__buffer_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="59">
+        <label>dynamic_vertex_buffer.h</label>
+        <link refid="dynamic__vertex__buffer_8h"/>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="58">
+        <label>geometry.h</label>
+        <link refid="geometry_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>graphics.h</label>
+        <link refid="graphics_8h"/>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>graphics_friend.h</label>
+        <link refid="graphics__friend_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="64">
+        <label>index_buffer.h</label>
+        <link refid="index__buffer_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="66">
+        <label>input_layout.h</label>
+        <link refid="input__layout_8h"/>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>key_exception.h</label>
+        <link refid="key__exception_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>key_timer.h</label>
+        <link refid="key__timer_8h"/>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>key_type_traits.h</label>
+        <link refid="key__type__traits_8h"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>key_wrl.h</label>
+        <link refid="key__wrl_8h"/>
+        <childnode refid="41" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>material.h</label>
+        <link refid="material_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="53">
+        <label>math_utils.h</label>
+        <link refid="math__utils_8h"/>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>mesh.h</label>
+        <link refid="mesh_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="70">
+        <label>os_utils.h</label>
+        <link refid="os__utils_8h"/>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+      </node>
+      <node id="67">
+        <label>pixel_shader.h</label>
+        <link refid="pixel__shader_8h"/>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="65">
+        <label>primitive_topology.h</label>
+        <link refid="primitive__topology_8h"/>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>rendering_channel.h</label>
+        <link refid="rendering__channel_8h"/>
+      </node>
+      <node id="48">
+        <label>texture_desc.h</label>
+        <link refid="texture__desc_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>transform_vscb.h</label>
+        <link refid="transform__vscb_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="62">
+        <label>triangle_mesh.h</label>
+        <link refid="triangle__mesh_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>utils_global.h</label>
+        <link refid="utils__global_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>vertex_buffer.h</label>
+        <link refid="vertex__buffer_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+      </node>
+      <node id="79">
+        <label>vertex_shader.h</label>
+        <link refid="vertex__shader_8h"/>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>winner.h</label>
+        <link refid="winner_8h"/>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/camera_widget.cpp</label>
+        <link refid="camera__widget_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>DirectXMath.h</label>
+      </node>
+      <node id="75">
+        <label>ShlObj.h</label>
+      </node>
+      <node id="39">
+        <label>Windows.h</label>
+      </node>
+      <node id="27">
+        <label>algorithm</label>
+      </node>
+      <node id="61">
+        <label>assimp/scene.h</label>
+      </node>
+      <node id="23">
+        <label>bitset</label>
+      </node>
+      <node id="17">
+        <label>cassert</label>
+      </node>
+      <node id="51">
+        <label>chrono</label>
+      </node>
+      <node id="25">
+        <label>cinttypes</label>
+      </node>
+      <node id="54">
+        <label>cmath</label>
+      </node>
+      <node id="72">
+        <label>comdef.h</label>
+      </node>
+      <node id="24">
+        <label>cstddef</label>
+      </node>
+      <node id="55">
+        <label>cstdint</label>
+      </node>
+      <node id="11">
+        <label>d3d11.h</label>
+      </node>
+      <node id="43">
+        <label>d3dcompiler.h</label>
+      </node>
+      <node id="42">
+        <label>dxgi1_4.h</label>
+      </node>
+      <node id="78">
+        <label>dxgidebug.h</label>
+      </node>
+      <node id="31">
+        <label>execution</label>
+      </node>
+      <node id="74">
+        <label>functional</label>
+      </node>
+      <node id="26">
+        <label>future</label>
+      </node>
+      <node id="56">
+        <label>iomanip</label>
+      </node>
+      <node id="13">
+        <label>iostream</label>
+      </node>
+      <node id="29">
+        <label>iterator</label>
+      </node>
+      <node id="57">
+        <label>limits</label>
+      </node>
+      <node id="5">
+        <label>memory</label>
+      </node>
+      <node id="28">
+        <label>numeric</label>
+      </node>
+      <node id="6">
+        <label>optional</label>
+      </node>
+      <node id="30">
+        <label>regex</label>
+      </node>
+      <node id="38">
+        <label>sdkddkver.h</label>
+      </node>
+      <node id="22">
+        <label>set</label>
+      </node>
+      <node id="21">
+        <label>sstream</label>
+      </node>
+      <node id="46">
+        <label>stdexcept</label>
+      </node>
+      <node id="18">
+        <label>string</label>
+      </node>
+      <node id="50">
+        <label>thread</label>
+      </node>
+      <node id="73">
+        <label>tlhelp32.h</label>
+      </node>
+      <node id="33">
+        <label>type_traits</label>
+      </node>
+      <node id="19">
+        <label>unordered_map</label>
+      </node>
+      <node id="60">
+        <label>utility</label>
+      </node>
+      <node id="35">
+        <label>variant</label>
+      </node>
+      <node id="8">
+        <label>vector</label>
+      </node>
+      <node id="76">
+        <label>wincred.h</label>
+      </node>
+      <node id="71">
+        <label>winternl.h</label>
+      </node>
+      <node id="41">
+        <label>wrl.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="camera__widget_8h" kindref="compound">camera_widget.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="graphics_8h" kindref="compound">graphics.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="geometry_8h" kindref="compound">geometry.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="vertex__buffer_8h" kindref="compound">vertex_buffer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="index__buffer_8h" kindref="compound">index_buffer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="primitive__topology_8h" kindref="compound">primitive_topology.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="input__layout_8h" kindref="compound">input_layout.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="pixel__shader_8h" kindref="compound">pixel_shader.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="transform__vscb_8h" kindref="compound">transform_vscb.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="constant__buffer_8h" kindref="compound">constant_buffer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="vertex__shader_8h" kindref="compound">vertex_shader.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="rendering__channel_8h" kindref="compound">rendering_channel.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceDirectX" kindref="compound">dx</ref><sp/>=<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="classCameraWidget_a0c41231fcab87a5a4aeb57d87aecb55e_1a0c41231fcab87a5a4aeb57d87aecb55e" refkind="member"><highlight class="normal"><ref refid="classCameraWidget_a0c41231fcab87a5a4aeb57d87aecb55e_1a0c41231fcab87a5a4aeb57d87aecb55e" kindref="member">CameraWidget::CameraWidget</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>initialScale</highlight><highlight class="comment">/*<sp/>=<sp/>1.0f*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::variant&lt;DirectX::XMFLOAT4,<sp/>std::string&gt;<sp/>&amp;colorOrTexturePath<sp/></highlight><highlight class="comment">/*=<sp/>DirectX::XMFLOAT4{0.2f,<sp/>0.2f,<sp/>0.6f,<sp/>1.0f}*/</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>diffuseTexturePath;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>std::holds_alternative&lt;DirectX::XMFLOAT4&gt;(<sp/>colorOrTexturePath<sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMesh_a39d8f1407340f362a62b55d583bcf940_1a39d8f1407340f362a62b55d583bcf940" kindref="member">m_colorPscb</ref>.<ref refid="structMesh_1_1ColorPSCB_a4c204c7a4d996b78ada77fd3ef55434c_1a4c204c7a4d996b78ada77fd3ef55434c" kindref="member">materialColor</ref><sp/>=<sp/>std::get&lt;DirectX::XMFLOAT4&gt;(<sp/>colorOrTexturePath<sp/>);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>diffuseTexturePath<sp/>=<sp/>std::get&lt;std::string&gt;(<sp/>colorOrTexturePath<sp/>);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>g<sp/>=<sp/><ref refid="structGeometry_a26b5674a1de8475cb8735a0a622cfe45_1a26b5674a1de8475cb8735a0a622cfe45" kindref="member">Geometry::makeCameraWidget</ref>();</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>initialScale<sp/>!=<sp/>1.0f<sp/>)</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>g.transform(<sp/>dx::XMMatrixScaling(<sp/>initialScale,<sp/>initialScale,<sp/>initialScale<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>we<sp/>don&apos;t<sp/>have<sp/>to<sp/>duplicate<sp/>the<sp/>CameraWidget<sp/>buffers<sp/>-<sp/>they&apos;re<sp/>all<sp/>the<sp/>same</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMesh_a05ef62d082e7a5c1fb49bded4e8c69ea_1a05ef62d082e7a5c1fb49bded4e8c69ea" kindref="member">m_pVertexBuffer</ref><sp/>=<sp/><ref refid="classVertexBuffer_a2d44b7aade969e7f5f748eb2cbb5bd30_1a2d44b7aade969e7f5f748eb2cbb5bd30" kindref="member">VertexBuffer::fetch</ref>(<sp/>gfx,<sp/><ref refid="classCameraWidget_a49b89a69b3009d5da95c11cd558bcca7_1a49b89a69b3009d5da95c11cd558bcca7" kindref="member">s_geometryTag</ref>,<sp/>g.m_vb<sp/>);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMesh_aa5fc2902e90f9ccb60a85d79c2ee85f7_1aa5fc2902e90f9ccb60a85d79c2ee85f7" kindref="member">m_pIndexBuffer</ref><sp/>=<sp/><ref refid="classIndexBuffer_abcbdeb2e6ecd7a5dd93c4c397e8ae368_1abcbdeb2e6ecd7a5dd93c4c397e8ae368" kindref="member">IndexBuffer::fetch</ref>(<sp/>gfx,<sp/><ref refid="classCameraWidget_a49b89a69b3009d5da95c11cd558bcca7_1a49b89a69b3009d5da95c11cd558bcca7" kindref="member">s_geometryTag</ref>,<sp/>g.m_indices<sp/>);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMesh_ae621e49b973b900a5247f661ee4d7f01_1ae621e49b973b900a5247f661ee4d7f01" kindref="member">m_pPrimitiveTopology</ref><sp/>=<sp/><ref refid="classPrimitiveTopology_a1f65640090cc0f20dd4115f25ff24e09_1a1f65640090cc0f20dd4115f25ff24e09" kindref="member">PrimitiveTopology::fetch</ref>(<sp/>gfx,<sp/>D3D11_PRIMITIVE_TOPOLOGY_LINELIST<sp/>);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMesh_a20c8448dfbc8df1b7fa70a07b1d55470_1a20c8448dfbc8df1b7fa70a07b1d55470" kindref="member">m_pTransformVscb</ref><sp/>=<sp/>std::make_unique&lt;TransformVSCB&gt;(<sp/>gfx,<sp/>0u,<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMesh_a2e47e473545615fcbffff761d8912ea1_1a2e47e473545615fcbffff761d8912ea1" kindref="member">createAabb</ref>(<sp/>g.m_vb<sp/>);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMesh_add44446356aaf7c808a25562090cc556_1add44446356aaf7c808a25562090cc556" kindref="member">setMeshId</ref>();</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMaterial" kindref="compound">Material</ref><sp/>wireframe{<ref refid="namespacerch_ae9aab41aed08ca289f4ef687d97f8708_1ae9aab41aed08ca289f4ef687d97f8708" kindref="member">rch::wireframe</ref>,<sp/></highlight><highlight class="stringliteral">&quot;wireframe&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wireframe.<ref refid="classMaterial_afe5fc1c1346a8d176afbb312d4a11915_1afe5fc1c1346a8d176afbb312d4a11915" kindref="member">addBindable</ref>(<sp/><ref refid="classPrimitiveTopology_a1f65640090cc0f20dd4115f25ff24e09_1a1f65640090cc0f20dd4115f25ff24e09" kindref="member">PrimitiveTopology::fetch</ref>(<sp/>gfx,<sp/>D3D11_PRIMITIVE_TOPOLOGY_LINELIST<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>pVs<sp/>=<sp/><ref refid="classVertexShader_ad90bf6654d053a4fe7a3c699acf6f4ff_1ad90bf6654d053a4fe7a3c699acf6f4ff" kindref="member">VertexShader::fetch</ref>(<sp/>gfx,<sp/></highlight><highlight class="stringliteral">&quot;flat_vs.cso&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wireframe.addBindable(<sp/><ref refid="classInputLayout_a28404524310f3bdf8ba2537206e1e109_1a28404524310f3bdf8ba2537206e1e109" kindref="member">InputLayout::fetch</ref>(<sp/>gfx,<sp/><ref refid="classMesh_a05ef62d082e7a5c1fb49bded4e8c69ea_1a05ef62d082e7a5c1fb49bded4e8c69ea" kindref="member">m_pVertexBuffer</ref>-&gt;getLayout(),<sp/>*pVs<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wireframe.addBindable(<sp/>std::move(<sp/>pVs<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wireframe.addBindable(<sp/><ref refid="classPixelShader_a308b5792652bde2a8fe1df25b297c381_1a308b5792652bde2a8fe1df25b297c381" kindref="member">PixelShader::fetch</ref>(<sp/>gfx,<sp/></highlight><highlight class="stringliteral">&quot;flat_ps.cso&quot;</highlight><highlight class="normal"><sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wireframe.addBindable(<sp/><ref refid="classPixelShaderConstantBuffer" kindref="compound">PixelShaderConstantBuffer&lt;ColorPSCB3&gt;::fetch</ref>(<sp/>gfx,<sp/><ref refid="classMesh_a832c0d6e6367ecf9926c690678498c99_1a832c0d6e6367ecf9926c690678498c99" kindref="member">m_colorPscbWireframe</ref>,<sp/>0u<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMesh_a76bbd879b2115f72799c5d1676a8960b_1a76bbd879b2115f72799c5d1676a8960b" kindref="member">addMaterial</ref>(<sp/>std::move(<sp/>wireframe<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/camera_widget.cpp"/>
+  </compounddef>
+</doxygen>

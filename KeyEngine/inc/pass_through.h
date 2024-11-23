@@ -9,12 +9,12 @@ class Graphics;
 namespace ren
 {
 
-//=============================================================
-//	\class	PassThrough
-//	\author	KeyC0de
-//	\date	2022/10/29 23:57
-//	\brief	A Post Processing Pass, reads texture and simply outputs its values
-//=============================================================
+///=============================================================
+/// \class	PassThrough
+/// \author	KeyC0de
+/// \date	2022/10/29 23:57
+/// \brief	A Post Processing Pass, reads texture and simply outputs its values
+///=============================================================
 class PassThrough
 	: public IFullscreenPass
 {

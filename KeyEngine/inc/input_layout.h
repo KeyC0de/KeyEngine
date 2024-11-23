@@ -8,12 +8,12 @@
 class VertexShader;
 class Graphics;
 
-//=============================================================
-//	\class	InputLayout
-//	\author	KeyC0de
-//	\date	2022/08/30 1:16
-//	\brief	Vertex Input Layout bindable
-//=============================================================
+///=============================================================
+/// \class	InputLayout
+/// \author	KeyC0de
+/// \date	2022/08/30 1:16
+/// \brief	Vertex Input Layout bindable
+///=============================================================
 class InputLayout
 	: public IBindable
 {

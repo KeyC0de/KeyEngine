@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="structis__stream__insertable" kind="struct" language="C++" prot="public">
+    <compoundname>is_stream_insertable</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::false_type</basecompoundref>
+    <includes refid="key__type__traits_8h" local="no">key_type_traits.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+      </param>
+      <param>
+        <type>typename</type>
+      </param>
+      <param>
+        <type>typename</type>
+        <defval>std::void_t&lt;&gt;</defval>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>is_stream_insertable&lt; typename, typename, typename &gt;</label>
+        <link refid="structis__stream__insertable"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::false_type</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>is_stream_insertable&lt; typename, typename, typename &gt;</label>
+        <link refid="structis__stream__insertable"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::false_type</label>
+      </node>
+    </collaborationgraph>
+    <location file="inc/key_type_traits.h" line="153" column="1" bodyfile="inc/key_type_traits.h" bodystart="155" bodyend="155"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

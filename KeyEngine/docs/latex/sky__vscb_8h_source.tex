@@ -1,0 +1,28 @@
+\doxysection{sky\+\_\+vscb.\+h}
+\hypertarget{sky__vscb_8h_source}{}\label{sky__vscb_8h_source}\index{inc/sky\_vscb.h@{inc/sky\_vscb.h}}
+\mbox{\hyperlink{sky__vscb_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <DirectXMath.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{constant__buffer_8h}{constant\_buffer.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCamera}{Camera}};}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSkyVSCB}{SkyVSCB}}}
+\DoxyCodeLine{00010\ \ \ \ \ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classIBindable}{IBindable}}}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structSkyVSCB_1_1Transform}{Transform}}}
+\DoxyCodeLine{00013\ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ DirectX::XMMATRIX\ \mbox{\hyperlink{structSkyVSCB_1_1Transform_a6f8587cb57091a3cd4ff0a8d4cd03e98_a6f8587cb57091a3cd4ff0a8d4cd03e98}{viewProjection}};}
+\DoxyCodeLine{00015\ \ \ \ \ \};}
+\DoxyCodeLine{00016\ \ \ \ \ std::unique\_ptr<VertexShaderConstantBuffer<Transform>>\ \mbox{\hyperlink{classSkyVSCB_a7f086de79f0797e95b4a2700d010cd39_a7f086de79f0797e95b4a2700d010cd39}{m\_pVscb}};}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{classSkyVSCB_a170c434ecb6e3ce0ba40b811e613389b_a170c434ecb6e3ce0ba40b811e613389b}{SkyVSCB}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ slot\ =\ 0u\ );}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSkyVSCB_a6449e8f0f6d0e07654a3b41869c350a5_a6449e8f0f6d0e07654a3b41869c350a5}{bind}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx\ )\ cond\_noex\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{structSkyVSCB_1_1Transform}{Transform}}\ \mbox{\hyperlink{classSkyVSCB_a019dd3449a8da1d0b17f608d351a1ebf_a019dd3449a8da1d0b17f608d351a1ebf}{getTransform}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx\ )\ cond\_noex;}
+\DoxyCodeLine{00022\ \};}
+
+\end{DoxyCode}

@@ -9,12 +9,12 @@ class Camera;
 namespace ren
 {
 
-//=============================================================
-//	\class	TransparentPass
-//	\author	KeyC0de
-//	\date	2024/05/05 14:42
-//	\brief	A pass for transparent meshes
-//=============================================================
+///=============================================================
+/// \class	TransparentPass
+/// \author	KeyC0de
+/// \date	2024/05/05 14:42
+/// \brief	A pass for transparent meshes
+///=============================================================
 class TransparentPass
 	: public RenderQueuePass
 {

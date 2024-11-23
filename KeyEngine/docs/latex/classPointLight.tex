@@ -1,0 +1,165 @@
+\doxysection{Point\+Light Class Reference}
+\hypertarget{classPointLight}{}\label{classPointLight}\index{PointLight@{PointLight}}
+
+
+{\ttfamily \#include $<$light\+\_\+source.\+h$>$}
+
+Inheritance diagram for Point\+Light\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classPointLight}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPointLight_a3271b738b4de0a84538f382780aef19c_a3271b738b4de0a84538f382780aef19c}{Point\+Light}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const float radius\+Scale=0.\+5f, const Direct\+X\+::\+XMFLOAT3 \&light\+Mesh\+Rotation\+Deg=\{0.\+0f, 0.\+0f, 0.f\}, const Direct\+X\+::\+XMFLOAT3 \&pos=\{8.\+0f, 8.\+0f, 2.f\}, const std\+::variant$<$ Direct\+X\+::\+XMFLOAT4, std\+::string $>$ \&color\+Or\+Texture\+Path=Direct\+X\+::\+XMFLOAT4\{1.\+0f, 1.\+0f, 1.\+0f, 1.\+0f\}, const bool b\+Shadow\+Casting=true, const bool b\+Show\+Mesh=true, const float intensity=1.\+0f, const float shadow\+Cam\+NearZ=1.\+0f, const float shadow\+Cam\+FarZ=100.\+0f)
+\item 
+void \mbox{\hyperlink{classPointLight_a34563baa74887d3936fe91ac411c02df_a34563baa74887d3936fe91ac411c02df}{display\+Imgui\+Widgets}} () noexcept override
+\item 
+void \mbox{\hyperlink{classPointLight_aca44be7f057d519a43e8f16847932024_aca44be7f057d519a43e8f16847932024}{set\+Intensity}} (const float new\+Intensity) noexcept override
+\item 
+void \mbox{\hyperlink{classPointLight_ac63c2d0109a19bfb49af489644442257_ac63c2d0109a19bfb49af489644442257}{set\+Color}} (const Direct\+X\+::\+XMFLOAT3 \&diffuse\+Color) noexcept override
+\item 
+virtual Direct\+X\+::\+XMFLOAT3 \mbox{\hyperlink{classPointLight_aebd941617d77bb5877e571e6b99f904a_aebd941617d77bb5877e571e6b99f904a}{get\+Position}} () const noexcept override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classILightSource}{ILight\+Source}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classILightSource_a85ecc5940c66f9ef21277e3bab54276b_a85ecc5940c66f9ef21277e3bab54276b}{ILight\+Source}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const \mbox{\hyperlink{light__source_8h_a621d578de257cbce447d8aaada5b8332_a621d578de257cbce447d8aaada5b8332}{Light\+Source\+Type}} type, \mbox{\hyperlink{classModel}{Model}} model, const std\+::variant$<$ Direct\+X\+::\+XMFLOAT4, std\+::string $>$ \&color\+Or\+Texture\+Path=Direct\+X\+::\+XMFLOAT4\{1.\+0f, 1.\+0f, 1.\+0f, 1.\+0f\}, const bool b\+Shadow\+Casting=true, const bool b\+Show\+Mesh=true, const Direct\+X\+::\+XMFLOAT3 \&rot\+Deg\+Or\+Direction\+Vector=\{0.\+0f, 0.\+0f, 0.\+0f\}, const Direct\+X\+::\+XMFLOAT3 \&pos=Direct\+X\+::\+XMFLOAT3\{8.\+0f, 8.\+0f, 2.f\}, const float intensity=1.\+0f, const float fov\+Deg=0.\+0f, const float shadow\+Cam\+FarZ=100.\+0f)
+\item 
+virtual \mbox{\hyperlink{classILightSource_a8d7a68032533f71c832110c76cd6ed3b_a8d7a68032533f71c832110c76cd6ed3b}{\texorpdfstring{$\sim$}{\string~}\+ILight\+Source}} () noexcept=default
+\item 
+void \mbox{\hyperlink{classILightSource_a2c46182157ae66e5a900af43928c3d51_a2c46182157ae66e5a900af43928c3d51}{update}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const float dt, const float lerp\+Between\+Frames, const bool b\+Enable\+Smooth\+Movement=false) cond\+\_\+noex
+\begin{DoxyCompactList}\small\item\em update the "{}model"{} side part of the light \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classILightSource_a43e7bb71c7b8db34e21cf7889b5eae95_a43e7bb71c7b8db34e21cf7889b5eae95}{render}} (const size\+\_\+t channels) const cond\+\_\+noex
+\begin{DoxyCompactList}\small\item\em render the "{}model"{} side part of the light \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classILightSource_a5e1c8d090c141ea94a06046be5b15df8_a5e1c8d090c141ea94a06046be5b15df8}{connect\+Materials\+To\+Renderer}} (\mbox{\hyperlink{classren_1_1Renderer}{ren\+::\+Renderer}} \&r)
+\item 
+void \mbox{\hyperlink{classILightSource_a3fccfe57c1781b3f43a0cb4a41f67035_a3fccfe57c1781b3f43a0cb4a41f67035}{set\+Rotation}} (const Direct\+X\+::\+XMFLOAT3 \&rot)
+\item 
+void \mbox{\hyperlink{classILightSource_af4c3edc00a2603c76e0ec39955f23113_af4c3edc00a2603c76e0ec39955f23113}{set\+Translation}} (const Direct\+X\+::\+XMFLOAT3 \&pos)
+\item 
+\mbox{\hyperlink{light__source_8h_a621d578de257cbce447d8aaada5b8332_a621d578de257cbce447d8aaada5b8332}{Light\+Source\+Type}} \mbox{\hyperlink{classILightSource_a7c9863add04adffa68a99aacc239a64d_a7c9863add04adffa68a99aacc239a64d}{get\+Type}} () const noexcept
+\item 
+unsigned \mbox{\hyperlink{classILightSource_ab45b60356a4883b2d10456115692ee60_ab45b60356a4883b2d10456115692ee60}{get\+Slot}} () const noexcept
+\item 
+std\+::string \mbox{\hyperlink{classILightSource_a0faa0df2c36a9590f2d04ddd4b24f70b_a0faa0df2c36a9590f2d04ddd4b24f70b}{get\+Name}} () const noexcept
+\item 
+bool \mbox{\hyperlink{classILightSource_a020b616fe1ebb5185b8120f9a41c256e_a020b616fe1ebb5185b8120f9a41c256e}{is\+Casting\+Shadows}} () const noexcept
+\item 
+bool \mbox{\hyperlink{classILightSource_a605491c2905837716a32ce930afe6c92_a605491c2905837716a32ce930afe6c92}{is\+Frustum\+Culled}} () const noexcept
+\item 
+Direct\+X\+::\+XMFLOAT3 \mbox{\hyperlink{classILightSource_a29ff5d5e121d058b68954725e3489076_a29ff5d5e121d058b68954725e3489076}{get\+Rotation}} () const noexcept
+\item 
+\mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classILightSource_a10dcb51eb6c7dc15ff6b7ffe442a8245_a10dcb51eb6c7dc15ff6b7ffe442a8245}{get\+Shadow\+Camera}} () const
+\item 
+float \mbox{\hyperlink{classILightSource_af0b903d97d07f2bcc7faf90d51749bdd_af0b903d97d07f2bcc7faf90d51749bdd}{get\+Shadow\+Camera\+FarZ}} () const noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classPointLight_a3c46d3cc5554ae183800bc71ba3e63fa_a3c46d3cc5554ae183800bc71ba3e63fa}{populate\+Vscb\+Data}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) cond\+\_\+noex override
+\item 
+virtual void \mbox{\hyperlink{classPointLight_a1a2533dcd6eab3a1da900b88c1622ea9_a1a2533dcd6eab3a1da900b88c1622ea9}{populate\+Pscb\+Data}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx) cond\+\_\+noex override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classILightSource}{ILight\+Source}}}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{classILightSource_af0a72727cb5a6ee05dde5ea17c222b81_af0a72727cb5a6ee05dde5ea17c222b81}{m\+\_\+shadow\+Cam\+FarZ}}
+\item 
+std\+::string \mbox{\hyperlink{classILightSource_a9a50fe9607772fecb1ea1c82e84b1cb1_a9a50fe9607772fecb1ea1c82e84b1cb1}{m\+\_\+name}}
+\item 
+bool \mbox{\hyperlink{classILightSource_aba12f3ad60d45ee69a6cc9560a1d1e4d_aba12f3ad60d45ee69a6cc9560a1d1e4d}{m\+\_\+b\+Show\+Mesh}}
+\item 
+bool \mbox{\hyperlink{classILightSource_a162034eae6dabb27c763325d94b5050e_a162034eae6dabb27c763325d94b5050e}{m\+\_\+b\+Casting\+Shadows}}
+\item 
+\mbox{\hyperlink{classModel}{Model}} \mbox{\hyperlink{classILightSource_a2836fa2a9437563c3f7d1b3b5e5e6b83_a2836fa2a9437563c3f7d1b3b5e5e6b83}{m\+\_\+light\+Mesh}}
+\item 
+\mbox{\hyperlink{structILightSource_1_1LightVSCB}{Light\+VSCB}} \mbox{\hyperlink{classILightSource_a94603c5e37a72aca471ef9d2a37a072e_a94603c5e37a72aca471ef9d2a37a072e}{m\+\_\+vscb\+Data}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCamera}{Camera}} $>$ \mbox{\hyperlink{classILightSource_a2293407d62d1d81b80e920e6ed350ad6_a2293407d62d1d81b80e920e6ed350ad6}{m\+\_\+p\+Camera\+For\+Shadowing}}
+\item 
+\mbox{\hyperlink{structILightSource_1_1LightPSCB}{Light\+PSCB}} \mbox{\hyperlink{classILightSource_a91c54598d0a1805c4a2f694be7c863ca_a91c54598d0a1805c4a2f694be7c863ca}{m\+\_\+pscb\+Data}}
+\item 
+\mbox{\hyperlink{structILightSource_1_1LightPSCB}{Light\+PSCB}} \mbox{\hyperlink{classILightSource_a63c850a5695ff1411e12e73450a84c40_a63c850a5695ff1411e12e73450a84c40}{m\+\_\+pscb\+Data\+To\+Bind}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classPointLight_a3271b738b4de0a84538f382780aef19c_a3271b738b4de0a84538f382780aef19c}\index{PointLight@{PointLight}!PointLight@{PointLight}}
+\index{PointLight@{PointLight}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{PointLight()}{PointLight()}}
+{\footnotesize\ttfamily \label{classPointLight_a3271b738b4de0a84538f382780aef19c_a3271b738b4de0a84538f382780aef19c} 
+Point\+Light\+::\+Point\+Light (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const float}]{radius\+Scale}{ = {\ttfamily 0.5f}, }\item[{const Direct\+X\+::\+XMFLOAT3 \&}]{light\+Mesh\+Rotation\+Deg}{ = {\ttfamily \{0.0f,~0.0f,~0.f\}}, }\item[{const Direct\+X\+::\+XMFLOAT3 \&}]{pos}{ = {\ttfamily \{8.0f,~8.0f,~2.f\}}, }\item[{const std\+::variant$<$ Direct\+X\+::\+XMFLOAT4, std\+::string $>$ \&}]{color\+Or\+Texture\+Path}{ = {\ttfamily DirectX\+:\+:XMFLOAT4\{1.0f,~1.0f,~1.0f,~1.0f\}}, }\item[{const bool}]{b\+Shadow\+Casting}{ = {\ttfamily true}, }\item[{const bool}]{b\+Show\+Mesh}{ = {\ttfamily true}, }\item[{const float}]{intensity}{ = {\ttfamily 1.0f}, }\item[{const float}]{shadow\+Cam\+NearZ}{ = {\ttfamily 1.0f}, }\item[{const float}]{shadow\+Cam\+FarZ}{ = {\ttfamily 100.0f}}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classPointLight_a34563baa74887d3936fe91ac411c02df_a34563baa74887d3936fe91ac411c02df}\index{PointLight@{PointLight}!displayImguiWidgets@{displayImguiWidgets}}
+\index{displayImguiWidgets@{displayImguiWidgets}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{displayImguiWidgets()}{displayImguiWidgets()}}
+{\footnotesize\ttfamily \label{classPointLight_a34563baa74887d3936fe91ac411c02df_a34563baa74887d3936fe91ac411c02df} 
+void Point\+Light\+::display\+Imgui\+Widgets (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Implements \mbox{\hyperlink{classILightSource_af79180aa4e70f55e10471ccd515391a5_af79180aa4e70f55e10471ccd515391a5}{ILight\+Source}}.
+
+\Hypertarget{classPointLight_aebd941617d77bb5877e571e6b99f904a_aebd941617d77bb5877e571e6b99f904a}\index{PointLight@{PointLight}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily \label{classPointLight_aebd941617d77bb5877e571e6b99f904a_aebd941617d77bb5877e571e6b99f904a} 
+Direct\+X\+::\+XMFLOAT3 Point\+Light\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Implements \mbox{\hyperlink{classILightSource_a39174369af77a807c727dd8b8b41afec_a39174369af77a807c727dd8b8b41afec}{ILight\+Source}}.
+
+\Hypertarget{classPointLight_a1a2533dcd6eab3a1da900b88c1622ea9_a1a2533dcd6eab3a1da900b88c1622ea9}\index{PointLight@{PointLight}!populatePscbData@{populatePscbData}}
+\index{populatePscbData@{populatePscbData}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{populatePscbData()}{populatePscbData()}}
+{\footnotesize\ttfamily \label{classPointLight_a1a2533dcd6eab3a1da900b88c1622ea9_a1a2533dcd6eab3a1da900b88c1622ea9} 
+void Point\+Light\+::populate\+Pscb\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classILightSource_ae057f7544b9173eb9031c250948b4a8c_ae057f7544b9173eb9031c250948b4a8c}{ILight\+Source}}.
+
+\Hypertarget{classPointLight_a3c46d3cc5554ae183800bc71ba3e63fa_a3c46d3cc5554ae183800bc71ba3e63fa}\index{PointLight@{PointLight}!populateVscbData@{populateVscbData}}
+\index{populateVscbData@{populateVscbData}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{populateVscbData()}{populateVscbData()}}
+{\footnotesize\ttfamily \label{classPointLight_a3c46d3cc5554ae183800bc71ba3e63fa_a3c46d3cc5554ae183800bc71ba3e63fa} 
+void Point\+Light\+::populate\+Vscb\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classILightSource_a3c48dc5f8c722ff8d6d3fc986861db4b_a3c48dc5f8c722ff8d6d3fc986861db4b}{ILight\+Source}}.
+
+\Hypertarget{classPointLight_ac63c2d0109a19bfb49af489644442257_ac63c2d0109a19bfb49af489644442257}\index{PointLight@{PointLight}!setColor@{setColor}}
+\index{setColor@{setColor}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{setColor()}{setColor()}}
+{\footnotesize\ttfamily \label{classPointLight_ac63c2d0109a19bfb49af489644442257_ac63c2d0109a19bfb49af489644442257} 
+void Point\+Light\+::set\+Color (\begin{DoxyParamCaption}\item[{const Direct\+X\+::\+XMFLOAT3 \&}]{diffuse\+Color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Implements \mbox{\hyperlink{classILightSource_a70f8690fb45b8758cf974eab1c06d2ce_a70f8690fb45b8758cf974eab1c06d2ce}{ILight\+Source}}.
+
+\Hypertarget{classPointLight_aca44be7f057d519a43e8f16847932024_aca44be7f057d519a43e8f16847932024}\index{PointLight@{PointLight}!setIntensity@{setIntensity}}
+\index{setIntensity@{setIntensity}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{setIntensity()}{setIntensity()}}
+{\footnotesize\ttfamily \label{classPointLight_aca44be7f057d519a43e8f16847932024_aca44be7f057d519a43e8f16847932024} 
+void Point\+Light\+::set\+Intensity (\begin{DoxyParamCaption}\item[{const float}]{new\+Intensity}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Implements \mbox{\hyperlink{classILightSource_a388781b70e7569ac4be432b1e60cde96_a388781b70e7569ac4be432b1e60cde96}{ILight\+Source}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{light__source_8h}{light\+\_\+source.\+h}}\item 
+src/\mbox{\hyperlink{light__source_8cpp}{light\+\_\+source.\+cpp}}\end{DoxyCompactItemize}

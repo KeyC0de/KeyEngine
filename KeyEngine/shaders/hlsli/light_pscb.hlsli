@@ -3,16 +3,16 @@
 
 struct LightProperties
 {
-	int cb_lightType;		// 1 for directional lights, 2 for point lights, 3 for spot lights
+	int cb_lightType;				// 1 for directional lights, 2 for point lights, 3 for spot lights
 	int cb_bCastingShadows;
 	float2 padding;
-	float3 cb_lightPosViewSpace;
-	float3 ambient;
-	float3 lightColor;		// diffuse color
+	float3 cb_lightPosViewSpace;	// represents direction for Directional Lights
+	float3 cb_ambientColor;
+	float3 cb_lightColor;				// diffuse color
 	float intensity;
-	float attConstant;
-	float attLinear;
-	float attQuadratic;
+	float cb_attConstant;
+	float cb_attLinear;
+	float cb_attQuadratic;
 	float3 cb_spotLightDirViewSpace;
 	float cb_coneAngle;
 };

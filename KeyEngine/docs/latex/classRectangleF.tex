@@ -1,0 +1,280 @@
+\doxysection{RectangleF Class Reference}
+\hypertarget{classRectangleF}{}\label{classRectangleF}\index{RectangleF@{RectangleF}}
+
+
+a Rectangle class with floats  
+
+
+
+
+{\ttfamily \#include $<$rectangle.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRectangleF_a0760ed329718548b8f2bebd8bd2feff0_a0760ed329718548b8f2bebd8bd2feff0}{RectangleF}} ()=default
+\item 
+\mbox{\hyperlink{classRectangleF_a19c1f6a1001f5adb9978378cb9e28a3c_a19c1f6a1001f5adb9978378cb9e28a3c}{RectangleF}} (const int x, const int y, const int width, const int height)
+\item 
+\mbox{\hyperlink{classRectangleF_ab3c2f20382270fe87ed856019f410107_ab3c2f20382270fe87ed856019f410107}{RectangleF}} (const float left, const float right, const float top, const float bottom)
+\item 
+\mbox{\hyperlink{classRectangleF_a859dda86078b855cbac8e35157880b35_a859dda86078b855cbac8e35157880b35}{RectangleF}} (const Direct\+X\+::\+XMFLOAT2 \&x\+AndY, const Direct\+X\+::\+XMFLOAT2 \&bottom\+Right)
+\item 
+\mbox{\hyperlink{classRectangleF_a4867702be7369778e4df9ae813594692_a4867702be7369778e4df9ae813594692}{RectangleF}} (const Direct\+X\+::\+XMFLOAT2 \&x\+AndY, const float width, const float height)
+\item 
+\mbox{\hyperlink{classRectangleF_ab8679c14543126879423fc5bc85165ae_ab8679c14543126879423fc5bc85165ae}{operator RECT}} ()
+\item 
+bool \mbox{\hyperlink{classRectangleF_a4cb62cec37a52bde422a40e84ecff384_a4cb62cec37a52bde422a40e84ecff384}{is\+Overlapping\+With}} (const \mbox{\hyperlink{classRectangleF}{RectangleF}} \&other) const noexcept
+\begin{DoxyCompactList}\small\item\em 2d rectangle collision detection formula \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRectangleF}{RectangleF}} \mbox{\hyperlink{classRectangleF_a5a8ad09bf6f16dc3993d5b766c8cb09f_a5a8ad09bf6f16dc3993d5b766c8cb09f}{calc\+Scaled}} (const float offset) const noexcept
+\begin{DoxyCompactList}\small\item\em gets an expanded (offset\texorpdfstring{$>$}{>}0) or minimized (offset\texorpdfstring{$<$}{<}0) form of the rectangle \end{DoxyCompactList}\item 
+Direct\+X\+::\+XMFLOAT2 \mbox{\hyperlink{classRectangleF_ae3b81fd76d874a9d37b61d4bc6a6856d_ae3b81fd76d874a9d37b61d4bc6a6856d}{calc\+Center}} () const noexcept
+\item 
+float \mbox{\hyperlink{classRectangleF_a09492cfbebfe82c754b082855b3ce9fe_a09492cfbebfe82c754b082855b3ce9fe}{get\+Left}} () const noexcept
+\item 
+float \& \mbox{\hyperlink{classRectangleF_a29aa58f0f36d694ef29aede3e3c640ab_a29aa58f0f36d694ef29aede3e3c640ab}{get\+Left}} ()
+\item 
+float \mbox{\hyperlink{classRectangleF_a412ae0faac0ca35c19721d313d618282_a412ae0faac0ca35c19721d313d618282}{getX}} () const noexcept
+\item 
+float \& \mbox{\hyperlink{classRectangleF_ad0d1d976d5c92268942c1897db746392_ad0d1d976d5c92268942c1897db746392}{getX}} ()
+\item 
+float \mbox{\hyperlink{classRectangleF_ab39ca0e1a50194ca9498bb7cb2ef6058_ab39ca0e1a50194ca9498bb7cb2ef6058}{get\+Right}} () const noexcept
+\item 
+float \& \mbox{\hyperlink{classRectangleF_a7ab6c356ce6801192654fd9a288afd31_a7ab6c356ce6801192654fd9a288afd31}{get\+Right}} ()
+\item 
+float \mbox{\hyperlink{classRectangleF_acceeee60b657a7e1b2b497a7464e34cf_acceeee60b657a7e1b2b497a7464e34cf}{get\+Top}} () const noexcept
+\item 
+float \& \mbox{\hyperlink{classRectangleF_adf47f17bf92cfaa9424988aa2749a50f_adf47f17bf92cfaa9424988aa2749a50f}{get\+Top}} ()
+\item 
+float \mbox{\hyperlink{classRectangleF_a67abe9d8172db6b6e43f2626a24b3462_a67abe9d8172db6b6e43f2626a24b3462}{getY}} () const noexcept
+\item 
+float \& \mbox{\hyperlink{classRectangleF_a14b55eb7a224c1c9c043e422ddb502e5_a14b55eb7a224c1c9c043e422ddb502e5}{getY}} ()
+\item 
+float \mbox{\hyperlink{classRectangleF_aeb078bf096d69d726c8a13fe1ff4c9ce_aeb078bf096d69d726c8a13fe1ff4c9ce}{get\+Bottom}} () const noexcept
+\item 
+float \& \mbox{\hyperlink{classRectangleF_a0e71032f1aff78258e2bf7b42bd18395_a0e71032f1aff78258e2bf7b42bd18395}{get\+Bottom}} ()
+\item 
+float \mbox{\hyperlink{classRectangleF_a28553124a401e8de0a0b835fc189e2b8_a28553124a401e8de0a0b835fc189e2b8}{get\+Width}} () const noexcept
+\item 
+float \mbox{\hyperlink{classRectangleF_a5b69579939ff91f66eecb8a3b3576612_a5b69579939ff91f66eecb8a3b3576612}{get\+Height}} () const noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classRectangleF}{RectangleF}} \mbox{\hyperlink{classRectangleF_ac6eb61d9c00f0f6581c5214fb135bae3_ac6eb61d9c00f0f6581c5214fb135bae3}{make\+Given\+Center}} (const Direct\+X\+::\+XMFLOAT2 \&center, const float half\+Width, const float half\+Height)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{classRectangleF_ad5bcd466ecd4ed344ef2193f41f3f3bb_ad5bcd466ecd4ed344ef2193f41f3f3bb}{m\+\_\+left}}
+\item 
+float \mbox{\hyperlink{classRectangleF_a3b8cc8eeaf32b13a9f473778b36ea4d5_a3b8cc8eeaf32b13a9f473778b36ea4d5}{m\+\_\+right}}
+\item 
+float \mbox{\hyperlink{classRectangleF_aaa4aa8b81e64e12d4cec54624bef854c_aaa4aa8b81e64e12d4cec54624bef854c}{m\+\_\+top}}
+\item 
+float \mbox{\hyperlink{classRectangleF_ad7edf80a33ef62710a91a153d8521afe_ad7edf80a33ef62710a91a153d8521afe}{m\+\_\+bottom}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+a Rectangle class with floats 
+
+=============================================================
+
+\begin{DoxyAuthor}{Author}
+Key\+C0de 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/08/30 12\+:56 \doxysubsection*{don\textquotesingle{}t rename it to Rectangle, or RECT, as it conflicts with Windows headers }
+\end{DoxyDate}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classRectangleF_a0760ed329718548b8f2bebd8bd2feff0_a0760ed329718548b8f2bebd8bd2feff0}\index{RectangleF@{RectangleF}!RectangleF@{RectangleF}}
+\index{RectangleF@{RectangleF}!RectangleF@{RectangleF}}
+\doxysubsubsection{\texorpdfstring{RectangleF()}{RectangleF()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily \label{classRectangleF_a0760ed329718548b8f2bebd8bd2feff0_a0760ed329718548b8f2bebd8bd2feff0} 
+Rectangle\+F\+::\+RectangleF (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\Hypertarget{classRectangleF_a19c1f6a1001f5adb9978378cb9e28a3c_a19c1f6a1001f5adb9978378cb9e28a3c}\index{RectangleF@{RectangleF}!RectangleF@{RectangleF}}
+\index{RectangleF@{RectangleF}!RectangleF@{RectangleF}}
+\doxysubsubsection{\texorpdfstring{RectangleF()}{RectangleF()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily \label{classRectangleF_a19c1f6a1001f5adb9978378cb9e28a3c_a19c1f6a1001f5adb9978378cb9e28a3c} 
+Rectangle\+F\+::\+RectangleF (\begin{DoxyParamCaption}\item[{const int}]{x}{, }\item[{const int}]{y}{, }\item[{const int}]{width}{, }\item[{const int}]{height}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classRectangleF_ab3c2f20382270fe87ed856019f410107_ab3c2f20382270fe87ed856019f410107}\index{RectangleF@{RectangleF}!RectangleF@{RectangleF}}
+\index{RectangleF@{RectangleF}!RectangleF@{RectangleF}}
+\doxysubsubsection{\texorpdfstring{RectangleF()}{RectangleF()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily \label{classRectangleF_ab3c2f20382270fe87ed856019f410107_ab3c2f20382270fe87ed856019f410107} 
+Rectangle\+F\+::\+RectangleF (\begin{DoxyParamCaption}\item[{const float}]{left}{, }\item[{const float}]{right}{, }\item[{const float}]{top}{, }\item[{const float}]{bottom}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classRectangleF_a859dda86078b855cbac8e35157880b35_a859dda86078b855cbac8e35157880b35}\index{RectangleF@{RectangleF}!RectangleF@{RectangleF}}
+\index{RectangleF@{RectangleF}!RectangleF@{RectangleF}}
+\doxysubsubsection{\texorpdfstring{RectangleF()}{RectangleF()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily \label{classRectangleF_a859dda86078b855cbac8e35157880b35_a859dda86078b855cbac8e35157880b35} 
+Rectangle\+F\+::\+RectangleF (\begin{DoxyParamCaption}\item[{const Direct\+X\+::\+XMFLOAT2 \&}]{x\+AndY}{, }\item[{const Direct\+X\+::\+XMFLOAT2 \&}]{bottom\+Right}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classRectangleF_a4867702be7369778e4df9ae813594692_a4867702be7369778e4df9ae813594692}\index{RectangleF@{RectangleF}!RectangleF@{RectangleF}}
+\index{RectangleF@{RectangleF}!RectangleF@{RectangleF}}
+\doxysubsubsection{\texorpdfstring{RectangleF()}{RectangleF()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily \label{classRectangleF_a4867702be7369778e4df9ae813594692_a4867702be7369778e4df9ae813594692} 
+Rectangle\+F\+::\+RectangleF (\begin{DoxyParamCaption}\item[{const Direct\+X\+::\+XMFLOAT2 \&}]{x\+AndY}{, }\item[{const float}]{width}{, }\item[{const float}]{height}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classRectangleF_ae3b81fd76d874a9d37b61d4bc6a6856d_ae3b81fd76d874a9d37b61d4bc6a6856d}\index{RectangleF@{RectangleF}!calcCenter@{calcCenter}}
+\index{calcCenter@{calcCenter}!RectangleF@{RectangleF}}
+\doxysubsubsection{\texorpdfstring{calcCenter()}{calcCenter()}}
+{\footnotesize\ttfamily \label{classRectangleF_ae3b81fd76d874a9d37b61d4bc6a6856d_ae3b81fd76d874a9d37b61d4bc6a6856d} 
+dx\+::\+XMFLOAT2 Rectangle\+F\+::calc\+Center (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classRectangleF_a5a8ad09bf6f16dc3993d5b766c8cb09f_a5a8ad09bf6f16dc3993d5b766c8cb09f}\index{RectangleF@{RectangleF}!calcScaled@{calcScaled}}
+\index{calcScaled@{calcScaled}!RectangleF@{RectangleF}}
+\doxysubsubsection{\texorpdfstring{calcScaled()}{calcScaled()}}
+{\footnotesize\ttfamily \label{classRectangleF_a5a8ad09bf6f16dc3993d5b766c8cb09f_a5a8ad09bf6f16dc3993d5b766c8cb09f} 
+\mbox{\hyperlink{classRectangleF}{RectangleF}} Rectangle\+F\+::calc\+Scaled (\begin{DoxyParamCaption}\item[{const float}]{offset}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+gets an expanded (offset\texorpdfstring{$>$}{>}0) or minimized (offset\texorpdfstring{$<$}{<}0) form of the rectangle 
+
+\Hypertarget{classRectangleF_a0e71032f1aff78258e2bf7b42bd18395_a0e71032f1aff78258e2bf7b42bd18395}\index{RectangleF@{RectangleF}!getBottom@{getBottom}}
+\index{getBottom@{getBottom}!RectangleF@{RectangleF}}
+\doxysubsubsection{\texorpdfstring{getBottom()}{getBottom()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classRectangleF_a0e71032f1aff78258e2bf7b42bd18395_a0e71032f1aff78258e2bf7b42bd18395} 
+float \& Rectangle\+F\+::get\+Bottom (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classRectangleF_aeb078bf096d69d726c8a13fe1ff4c9ce_aeb078bf096d69d726c8a13fe1ff4c9ce}\index{RectangleF@{RectangleF}!getBottom@{getBottom}}
+\index{getBottom@{getBottom}!RectangleF@{RectangleF}}
+\doxysubsubsection{\texorpdfstring{getBottom()}{getBottom()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classRectangleF_aeb078bf096d69d726c8a13fe1ff4c9ce_aeb078bf096d69d726c8a13fe1ff4c9ce} 
+float Rectangle\+F\+::get\+Bottom (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classRectangleF_a5b69579939ff91f66eecb8a3b3576612_a5b69579939ff91f66eecb8a3b3576612}\index{RectangleF@{RectangleF}!getHeight@{getHeight}}
+\index{getHeight@{getHeight}!RectangleF@{RectangleF}}
+\doxysubsubsection{\texorpdfstring{getHeight()}{getHeight()}}
+{\footnotesize\ttfamily \label{classRectangleF_a5b69579939ff91f66eecb8a3b3576612_a5b69579939ff91f66eecb8a3b3576612} 
+float Rectangle\+F\+::get\+Height (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classRectangleF_a29aa58f0f36d694ef29aede3e3c640ab_a29aa58f0f36d694ef29aede3e3c640ab}\index{RectangleF@{RectangleF}!getLeft@{getLeft}}
+\index{getLeft@{getLeft}!RectangleF@{RectangleF}}
+\doxysubsubsection{\texorpdfstring{getLeft()}{getLeft()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classRectangleF_a29aa58f0f36d694ef29aede3e3c640ab_a29aa58f0f36d694ef29aede3e3c640ab} 
+float \& Rectangle\+F\+::get\+Left (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classRectangleF_a09492cfbebfe82c754b082855b3ce9fe_a09492cfbebfe82c754b082855b3ce9fe}\index{RectangleF@{RectangleF}!getLeft@{getLeft}}
+\index{getLeft@{getLeft}!RectangleF@{RectangleF}}
+\doxysubsubsection{\texorpdfstring{getLeft()}{getLeft()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classRectangleF_a09492cfbebfe82c754b082855b3ce9fe_a09492cfbebfe82c754b082855b3ce9fe} 
+float Rectangle\+F\+::get\+Left (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classRectangleF_a7ab6c356ce6801192654fd9a288afd31_a7ab6c356ce6801192654fd9a288afd31}\index{RectangleF@{RectangleF}!getRight@{getRight}}
+\index{getRight@{getRight}!RectangleF@{RectangleF}}
+\doxysubsubsection{\texorpdfstring{getRight()}{getRight()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classRectangleF_a7ab6c356ce6801192654fd9a288afd31_a7ab6c356ce6801192654fd9a288afd31} 
+float \& Rectangle\+F\+::get\+Right (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classRectangleF_ab39ca0e1a50194ca9498bb7cb2ef6058_ab39ca0e1a50194ca9498bb7cb2ef6058}\index{RectangleF@{RectangleF}!getRight@{getRight}}
+\index{getRight@{getRight}!RectangleF@{RectangleF}}
+\doxysubsubsection{\texorpdfstring{getRight()}{getRight()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classRectangleF_ab39ca0e1a50194ca9498bb7cb2ef6058_ab39ca0e1a50194ca9498bb7cb2ef6058} 
+float Rectangle\+F\+::get\+Right (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classRectangleF_adf47f17bf92cfaa9424988aa2749a50f_adf47f17bf92cfaa9424988aa2749a50f}\index{RectangleF@{RectangleF}!getTop@{getTop}}
+\index{getTop@{getTop}!RectangleF@{RectangleF}}
+\doxysubsubsection{\texorpdfstring{getTop()}{getTop()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classRectangleF_adf47f17bf92cfaa9424988aa2749a50f_adf47f17bf92cfaa9424988aa2749a50f} 
+float \& Rectangle\+F\+::get\+Top (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classRectangleF_acceeee60b657a7e1b2b497a7464e34cf_acceeee60b657a7e1b2b497a7464e34cf}\index{RectangleF@{RectangleF}!getTop@{getTop}}
+\index{getTop@{getTop}!RectangleF@{RectangleF}}
+\doxysubsubsection{\texorpdfstring{getTop()}{getTop()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classRectangleF_acceeee60b657a7e1b2b497a7464e34cf_acceeee60b657a7e1b2b497a7464e34cf} 
+float Rectangle\+F\+::get\+Top (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classRectangleF_a28553124a401e8de0a0b835fc189e2b8_a28553124a401e8de0a0b835fc189e2b8}\index{RectangleF@{RectangleF}!getWidth@{getWidth}}
+\index{getWidth@{getWidth}!RectangleF@{RectangleF}}
+\doxysubsubsection{\texorpdfstring{getWidth()}{getWidth()}}
+{\footnotesize\ttfamily \label{classRectangleF_a28553124a401e8de0a0b835fc189e2b8_a28553124a401e8de0a0b835fc189e2b8} 
+float Rectangle\+F\+::get\+Width (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classRectangleF_ad0d1d976d5c92268942c1897db746392_ad0d1d976d5c92268942c1897db746392}\index{RectangleF@{RectangleF}!getX@{getX}}
+\index{getX@{getX}!RectangleF@{RectangleF}}
+\doxysubsubsection{\texorpdfstring{getX()}{getX()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classRectangleF_ad0d1d976d5c92268942c1897db746392_ad0d1d976d5c92268942c1897db746392} 
+float \& Rectangle\+F\+::getX (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classRectangleF_a412ae0faac0ca35c19721d313d618282_a412ae0faac0ca35c19721d313d618282}\index{RectangleF@{RectangleF}!getX@{getX}}
+\index{getX@{getX}!RectangleF@{RectangleF}}
+\doxysubsubsection{\texorpdfstring{getX()}{getX()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classRectangleF_a412ae0faac0ca35c19721d313d618282_a412ae0faac0ca35c19721d313d618282} 
+float Rectangle\+F\+::getX (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classRectangleF_a14b55eb7a224c1c9c043e422ddb502e5_a14b55eb7a224c1c9c043e422ddb502e5}\index{RectangleF@{RectangleF}!getY@{getY}}
+\index{getY@{getY}!RectangleF@{RectangleF}}
+\doxysubsubsection{\texorpdfstring{getY()}{getY()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classRectangleF_a14b55eb7a224c1c9c043e422ddb502e5_a14b55eb7a224c1c9c043e422ddb502e5} 
+float \& Rectangle\+F\+::getY (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classRectangleF_a67abe9d8172db6b6e43f2626a24b3462_a67abe9d8172db6b6e43f2626a24b3462}\index{RectangleF@{RectangleF}!getY@{getY}}
+\index{getY@{getY}!RectangleF@{RectangleF}}
+\doxysubsubsection{\texorpdfstring{getY()}{getY()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classRectangleF_a67abe9d8172db6b6e43f2626a24b3462_a67abe9d8172db6b6e43f2626a24b3462} 
+float Rectangle\+F\+::getY (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\Hypertarget{classRectangleF_a4cb62cec37a52bde422a40e84ecff384_a4cb62cec37a52bde422a40e84ecff384}\index{RectangleF@{RectangleF}!isOverlappingWith@{isOverlappingWith}}
+\index{isOverlappingWith@{isOverlappingWith}!RectangleF@{RectangleF}}
+\doxysubsubsection{\texorpdfstring{isOverlappingWith()}{isOverlappingWith()}}
+{\footnotesize\ttfamily \label{classRectangleF_a4cb62cec37a52bde422a40e84ecff384_a4cb62cec37a52bde422a40e84ecff384} 
+bool Rectangle\+F\+::is\+Overlapping\+With (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRectangleF}{RectangleF}} \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+2d rectangle collision detection formula 
+
+\Hypertarget{classRectangleF_ac6eb61d9c00f0f6581c5214fb135bae3_ac6eb61d9c00f0f6581c5214fb135bae3}\index{RectangleF@{RectangleF}!makeGivenCenter@{makeGivenCenter}}
+\index{makeGivenCenter@{makeGivenCenter}!RectangleF@{RectangleF}}
+\doxysubsubsection{\texorpdfstring{makeGivenCenter()}{makeGivenCenter()}}
+{\footnotesize\ttfamily \label{classRectangleF_ac6eb61d9c00f0f6581c5214fb135bae3_ac6eb61d9c00f0f6581c5214fb135bae3} 
+\mbox{\hyperlink{classRectangleF}{RectangleF}} Rectangle\+F\+::make\+Given\+Center (\begin{DoxyParamCaption}\item[{const Direct\+X\+::\+XMFLOAT2 \&}]{center}{, }\item[{const float}]{half\+Width}{, }\item[{const float}]{half\+Height}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classRectangleF_ab8679c14543126879423fc5bc85165ae_ab8679c14543126879423fc5bc85165ae}\index{RectangleF@{RectangleF}!operator RECT@{operator RECT}}
+\index{operator RECT@{operator RECT}!RectangleF@{RectangleF}}
+\doxysubsubsection{\texorpdfstring{operator RECT()}{operator RECT()}}
+{\footnotesize\ttfamily \label{classRectangleF_ab8679c14543126879423fc5bc85165ae_ab8679c14543126879423fc5bc85165ae} 
+Rectangle\+F\+::operator RECT (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classRectangleF_ad7edf80a33ef62710a91a153d8521afe_ad7edf80a33ef62710a91a153d8521afe}\index{RectangleF@{RectangleF}!m\_bottom@{m\_bottom}}
+\index{m\_bottom@{m\_bottom}!RectangleF@{RectangleF}}
+\doxysubsubsection{\texorpdfstring{m\_bottom}{m\_bottom}}
+{\footnotesize\ttfamily \label{classRectangleF_ad7edf80a33ef62710a91a153d8521afe_ad7edf80a33ef62710a91a153d8521afe} 
+float Rectangle\+F\+::m\+\_\+bottom\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classRectangleF_ad5bcd466ecd4ed344ef2193f41f3f3bb_ad5bcd466ecd4ed344ef2193f41f3f3bb}\index{RectangleF@{RectangleF}!m\_left@{m\_left}}
+\index{m\_left@{m\_left}!RectangleF@{RectangleF}}
+\doxysubsubsection{\texorpdfstring{m\_left}{m\_left}}
+{\footnotesize\ttfamily \label{classRectangleF_ad5bcd466ecd4ed344ef2193f41f3f3bb_ad5bcd466ecd4ed344ef2193f41f3f3bb} 
+float Rectangle\+F\+::m\+\_\+left\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classRectangleF_a3b8cc8eeaf32b13a9f473778b36ea4d5_a3b8cc8eeaf32b13a9f473778b36ea4d5}\index{RectangleF@{RectangleF}!m\_right@{m\_right}}
+\index{m\_right@{m\_right}!RectangleF@{RectangleF}}
+\doxysubsubsection{\texorpdfstring{m\_right}{m\_right}}
+{\footnotesize\ttfamily \label{classRectangleF_a3b8cc8eeaf32b13a9f473778b36ea4d5_a3b8cc8eeaf32b13a9f473778b36ea4d5} 
+float Rectangle\+F\+::m\+\_\+right\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classRectangleF_aaa4aa8b81e64e12d4cec54624bef854c_aaa4aa8b81e64e12d4cec54624bef854c}\index{RectangleF@{RectangleF}!m\_top@{m\_top}}
+\index{m\_top@{m\_top}!RectangleF@{RectangleF}}
+\doxysubsubsection{\texorpdfstring{m\_top}{m\_top}}
+{\footnotesize\ttfamily \label{classRectangleF_aaa4aa8b81e64e12d4cec54624bef854c_aaa4aa8b81e64e12d4cec54624bef854c} 
+float Rectangle\+F\+::m\+\_\+top\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{rectangle_8h}{rectangle.\+h}}\item 
+src/\mbox{\hyperlink{rectangle_8cpp}{rectangle.\+cpp}}\end{DoxyCompactItemize}

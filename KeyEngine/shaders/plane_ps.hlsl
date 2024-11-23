@@ -66,16 +66,16 @@ PSOut main( PSIn input )
 			{
 				const PointLightVectors plv = calculatePointLightVectors(currentLight.cb_lightPosViewSpace, input.viewSpacePos);
 
-				const float attenuation = calculateLightAttenuation(plv.lengthOfL, currentLight.attConstant, currentLight.attLinear, currentLight.attQuadratic);
-				diffuseL = calculateLightDiffuseContribution(currentLight.lightColor, currentLight.intensity, attenuation, plv.vToL_normalized, input.viewSpaceNormal);
-				specularL = calculateLightSpecularContribution(currentLight.lightColor, modelSpecularColor, currentLight.intensity, modelSpecularGloss, input.viewSpaceNormal, plv.vToL, input.viewSpacePos, attenuation);
+				const float attenuation = calculateLightAttenuation(plv.lengthOfL, currentLight.cb_attConstant, currentLight.cb_attLinear, currentLight.cb_attQuadratic);
+				diffuseL = calculateLightDiffuseContribution(currentLight.cb_lightColor, currentLight.intensity, attenuation, plv.vToL_normalized, input.viewSpaceNormal);
+				specularL = calculateLightSpecularContribution(currentLight.cb_lightColor, modelSpecularColor, currentLight.intensity, modelSpecularGloss, input.viewSpaceNormal, plv.vToL, input.viewSpacePos, attenuation);
 			}
 
 			diffuseL *= shadowLevel;
 			specularL *= shadowLevel;
 		}
 
-		lightCombinedDiffuse += diffuseL + currentLight.ambient;
+		lightCombinedDiffuse += diffuseL + currentLight.cb_ambientColor;
 		lightCombinedSpecular += specularL;
 	}
 

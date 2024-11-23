@@ -1,0 +1,75 @@
+\doxysection{Mouse\+Picker Class Reference}
+\hypertarget{classMousePicker}{}\label{classMousePicker}\index{MousePicker@{MousePicker}}
+
+
+{\ttfamily \#include $<$mouse\+\_\+picker.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMousePicker_aa2ea4d74d8fa6f2fa114d69cb2ec349c_aa2ea4d74d8fa6f2fa114d69cb2ec349c}{Mouse\+Picker}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, int screenX, int screenY)
+\item 
+Direct\+X\+::\+XMFLOAT2 \mbox{\hyperlink{classMousePicker_abc6d3fb1003bc874fdfef2c18447fff3_abc6d3fb1003bc874fdfef2c18447fff3}{convert\+To\+Ndc}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const Direct\+X\+::\+XMFLOAT2 \&coords\+Screen\+Space)
+\item 
+Direct\+X\+::\+XMFLOAT2 \mbox{\hyperlink{classMousePicker_a2ff67bebeeb0eedb3bef5989f71b36c0_a2ff67bebeeb0eedb3bef5989f71b36c0}{convert\+To\+Clip}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const Direct\+X\+::\+XMFLOAT2 \&coords\+Ndc)
+\item 
+Direct\+X\+::\+XMVECTOR \mbox{\hyperlink{classMousePicker_aee007eaa1b3acb26ee10e14680ddaa18_aee007eaa1b3acb26ee10e14680ddaa18}{convert\+To\+View\+Space}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const Direct\+X\+::\+XMFLOAT2 \&coords\+Clip)
+\item 
+Direct\+X\+::\+XMVECTOR \mbox{\hyperlink{classMousePicker_a789aea5c9a3de530f39d04afa03c5aaf_a789aea5c9a3de530f39d04afa03c5aaf}{convert\+To\+World\+Space}} (\mbox{\hyperlink{classGraphics}{Graphics}} \&gfx, const Direct\+X\+::\+XMFLOAT4 \&coords\+View)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Direct\+X\+::\+XMFLOAT3 \mbox{\hyperlink{classMousePicker_a4f4eb63e47824b63c91e1646bc9b5944_a4f4eb63e47824b63c91e1646bc9b5944}{m\+\_\+ray\+Direction\+World\+Space}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classMousePicker_aa2ea4d74d8fa6f2fa114d69cb2ec349c_aa2ea4d74d8fa6f2fa114d69cb2ec349c}\index{MousePicker@{MousePicker}!MousePicker@{MousePicker}}
+\index{MousePicker@{MousePicker}!MousePicker@{MousePicker}}
+\doxysubsubsection{\texorpdfstring{MousePicker()}{MousePicker()}}
+{\footnotesize\ttfamily \label{classMousePicker_aa2ea4d74d8fa6f2fa114d69cb2ec349c_aa2ea4d74d8fa6f2fa114d69cb2ec349c} 
+Mouse\+Picker\+::\+Mouse\+Picker (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{int}]{screenX}{, }\item[{int}]{screenY}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classMousePicker_a2ff67bebeeb0eedb3bef5989f71b36c0_a2ff67bebeeb0eedb3bef5989f71b36c0}\index{MousePicker@{MousePicker}!convertToClip@{convertToClip}}
+\index{convertToClip@{convertToClip}!MousePicker@{MousePicker}}
+\doxysubsubsection{\texorpdfstring{convertToClip()}{convertToClip()}}
+{\footnotesize\ttfamily \label{classMousePicker_a2ff67bebeeb0eedb3bef5989f71b36c0_a2ff67bebeeb0eedb3bef5989f71b36c0} 
+Direct\+X\+::\+XMFLOAT2 Mouse\+Picker\+::convert\+To\+Clip (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const Direct\+X\+::\+XMFLOAT2 \&}]{coords\+Ndc}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classMousePicker_abc6d3fb1003bc874fdfef2c18447fff3_abc6d3fb1003bc874fdfef2c18447fff3}\index{MousePicker@{MousePicker}!convertToNdc@{convertToNdc}}
+\index{convertToNdc@{convertToNdc}!MousePicker@{MousePicker}}
+\doxysubsubsection{\texorpdfstring{convertToNdc()}{convertToNdc()}}
+{\footnotesize\ttfamily \label{classMousePicker_abc6d3fb1003bc874fdfef2c18447fff3_abc6d3fb1003bc874fdfef2c18447fff3} 
+Direct\+X\+::\+XMFLOAT2 Mouse\+Picker\+::convert\+To\+Ndc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const Direct\+X\+::\+XMFLOAT2 \&}]{coords\+Screen\+Space}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classMousePicker_aee007eaa1b3acb26ee10e14680ddaa18_aee007eaa1b3acb26ee10e14680ddaa18}\index{MousePicker@{MousePicker}!convertToViewSpace@{convertToViewSpace}}
+\index{convertToViewSpace@{convertToViewSpace}!MousePicker@{MousePicker}}
+\doxysubsubsection{\texorpdfstring{convertToViewSpace()}{convertToViewSpace()}}
+{\footnotesize\ttfamily \label{classMousePicker_aee007eaa1b3acb26ee10e14680ddaa18_aee007eaa1b3acb26ee10e14680ddaa18} 
+Direct\+X\+::\+XMVECTOR Mouse\+Picker\+::convert\+To\+View\+Space (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const Direct\+X\+::\+XMFLOAT2 \&}]{coords\+Clip}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classMousePicker_a789aea5c9a3de530f39d04afa03c5aaf_a789aea5c9a3de530f39d04afa03c5aaf}\index{MousePicker@{MousePicker}!convertToWorldSpace@{convertToWorldSpace}}
+\index{convertToWorldSpace@{convertToWorldSpace}!MousePicker@{MousePicker}}
+\doxysubsubsection{\texorpdfstring{convertToWorldSpace()}{convertToWorldSpace()}}
+{\footnotesize\ttfamily \label{classMousePicker_a789aea5c9a3de530f39d04afa03c5aaf_a789aea5c9a3de530f39d04afa03c5aaf} 
+Direct\+X\+::\+XMVECTOR Mouse\+Picker\+::convert\+To\+World\+Space (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraphics}{Graphics}} \&}]{gfx}{, }\item[{const Direct\+X\+::\+XMFLOAT4 \&}]{coords\+View}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classMousePicker_a4f4eb63e47824b63c91e1646bc9b5944_a4f4eb63e47824b63c91e1646bc9b5944}\index{MousePicker@{MousePicker}!m\_rayDirectionWorldSpace@{m\_rayDirectionWorldSpace}}
+\index{m\_rayDirectionWorldSpace@{m\_rayDirectionWorldSpace}!MousePicker@{MousePicker}}
+\doxysubsubsection{\texorpdfstring{m\_rayDirectionWorldSpace}{m\_rayDirectionWorldSpace}}
+{\footnotesize\ttfamily \label{classMousePicker_a4f4eb63e47824b63c91e1646bc9b5944_a4f4eb63e47824b63c91e1646bc9b5944} 
+Direct\+X\+::\+XMFLOAT3 Mouse\+Picker\+::m\+\_\+ray\+Direction\+World\+Space\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{mouse__picker_8h}{mouse\+\_\+picker.\+h}}\item 
+src/\mbox{\hyperlink{mouse__picker_8cpp}{mouse\+\_\+picker.\+cpp}}\end{DoxyCompactItemize}

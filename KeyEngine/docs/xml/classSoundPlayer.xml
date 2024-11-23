@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classSoundPlayer" kind="class" language="C++" prot="public">
+    <compoundname>SoundPlayer</compoundname>
+    <basecompoundref refid="classIListener" prot="public" virt="non-virtual">IListener&lt; UISoundEvent &gt;</basecompoundref>
+    <includes refid="key__sound_8h" local="no">key_sound.h</includes>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classSoundPlayer_ac7107aecd54bdcfac29486487768ebc6_1ac7107aecd54bdcfac29486487768ebc6" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SoundPlayer::SoundPlayer</definition>
+        <argsstring>()</argsstring>
+        <name>SoundPlayer</name>
+        <qualifiedname>SoundPlayer::SoundPlayer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="163" column="1" bodyfile="src/key_sound.cpp" bodystart="608" bodyend="614"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classSoundPlayer_afe1b6add5422094301d81d4f0d36c066_1afe1b6add5422094301d81d4f0d36c066" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classSoundPlayer" kindref="compound">SoundPlayer</ref> &amp;</type>
+        <definition>SoundPlayer &amp; SoundPlayer::getInstance</definition>
+        <argsstring>()</argsstring>
+        <name>getInstance</name>
+        <qualifiedname>SoundPlayer::getInstance</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="165" column="20" bodyfile="src/key_sound.cpp" bodystart="616" bodyend="620"/>
+        <referencedby refid="main_8cpp_a98c407042201e01212d3b66d0ec4740c_1a98c407042201e01212d3b66d0ec4740c" compoundref="main_8cpp" startline="135" endline="163">firstly</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classSoundPlayer_a29bf19ba13cb2e0f237f46e300d02d89_1a29bf19ba13cb2e0f237f46e300d02d89" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void SoundPlayer::notify</definition>
+        <argsstring>(const UISoundEvent &amp;event) override</argsstring>
+        <name>notify</name>
+        <qualifiedname>SoundPlayer::notify</qualifiedname>
+        <reimplements refid="classIListener_a75b1652418e98a4d0f6db2c61addae8d_1a75b1652418e98a4d0f6db2c61addae8d">notify</reimplements>
+        <param>
+          <type>const <ref refid="structUISoundEvent" kindref="compound">UISoundEvent</ref> &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/key_sound.h" line="167" column="6" bodyfile="src/key_sound.cpp" bodystart="622" bodyend="643"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>IListener&lt; UISoundEvent &gt;</label>
+        <link refid="classIListener"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>NonCopyableAndNonMovable</label>
+        <link refid="classNonCopyableAndNonMovable"/>
+      </node>
+      <node id="1">
+        <label>SoundPlayer</label>
+        <link refid="classSoundPlayer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>IListener&lt; UISoundEvent &gt;</label>
+        <link refid="classIListener"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>NonCopyableAndNonMovable</label>
+        <link refid="classNonCopyableAndNonMovable"/>
+      </node>
+      <node id="1">
+        <label>SoundPlayer</label>
+        <link refid="classSoundPlayer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/key_sound.h" line="159" column="1" bodyfile="inc/key_sound.h" bodystart="161" bodyend="168"/>
+    <listofallmembers>
+      <member refid="classIListener_a6b5c32b4da4ac2a5c5145bc573bb22a7_1a6b5c32b4da4ac2a5c5145bc573bb22a7" prot="private" virt="non-virtual"><scope>SoundPlayer</scope><name>addReporter</name></member>
+      <member refid="classSoundPlayer_afe1b6add5422094301d81d4f0d36c066_1afe1b6add5422094301d81d4f0d36c066" prot="public" virt="non-virtual"><scope>SoundPlayer</scope><name>getInstance</name></member>
+      <member refid="classIListener_aaaf1ddfe2afeedab8a70c935b1626488_1aaaf1ddfe2afeedab8a70c935b1626488" prot="private" virt="non-virtual"><scope>SoundPlayer</scope><name>m_reporters</name></member>
+      <member refid="classNonCopyableAndNonMovable_a0f3fc95f2c582514d58832b7c14d2965_1a0f3fc95f2c582514d58832b7c14d2965" prot="public" virt="non-virtual"><scope>SoundPlayer</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_a3502311a2435129e171eb36ba05f0b2f_1a3502311a2435129e171eb36ba05f0b2f" prot="public" virt="non-virtual"><scope>SoundPlayer</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_a259655d15f1887d015c6d77a0f09f4ff_1a259655d15f1887d015c6d77a0f09f4ff" prot="public" virt="non-virtual"><scope>SoundPlayer</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_acadc47621b689b1b95bef13a35f18572_1acadc47621b689b1b95bef13a35f18572" prot="public" virt="non-virtual"><scope>SoundPlayer</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classSoundPlayer_a29bf19ba13cb2e0f237f46e300d02d89_1a29bf19ba13cb2e0f237f46e300d02d89" prot="public" virt="virtual"><scope>SoundPlayer</scope><name>notify</name></member>
+      <member refid="classNonCopyableAndNonMovable_a6541862f56b2fcaa89155f08b8adaf11_1a6541862f56b2fcaa89155f08b8adaf11" prot="public" virt="non-virtual"><scope>SoundPlayer</scope><name>operator=</name></member>
+      <member refid="classNonCopyableAndNonMovable_aa3af41edbd14c886cdec335b22254829_1aa3af41edbd14c886cdec335b22254829" prot="public" virt="non-virtual"><scope>SoundPlayer</scope><name>operator=</name></member>
+      <member refid="classNonCopyableAndNonMovable_a972632a389e0f2370de9604df60ea9d6_1a972632a389e0f2370de9604df60ea9d6" prot="public" virt="non-virtual"><scope>SoundPlayer</scope><name>operator=</name></member>
+      <member refid="classSoundPlayer_ac7107aecd54bdcfac29486487768ebc6_1ac7107aecd54bdcfac29486487768ebc6" prot="private" virt="non-virtual"><scope>SoundPlayer</scope><name>SoundPlayer</name></member>
+      <member refid="classIListener_aae587719e1e793840bb501ba2f91d43c_1aae587719e1e793840bb501ba2f91d43c" prot="public" virt="virtual"><scope>SoundPlayer</scope><name>~IListener</name></member>
+      <member refid="classNonCopyableAndNonMovable_aa6874bb9a99fe151e8c2eda429fe5867_1aa6874bb9a99fe151e8c2eda429fe5867" prot="protected" virt="non-virtual"><scope>SoundPlayer</scope><name>~NonCopyableAndNonMovable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

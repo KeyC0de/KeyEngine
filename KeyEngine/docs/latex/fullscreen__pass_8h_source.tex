@@ -1,0 +1,29 @@
+\doxysection{fullscreen\+\_\+pass.\+h}
+\hypertarget{fullscreen__pass_8h_source}{}\label{fullscreen__pass_8h_source}\index{inc/fullscreen\_pass.h@{inc/fullscreen\_pass.h}}
+\mbox{\hyperlink{fullscreen__pass_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{bindable__pass_8h}{bindable\_pass.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{render__queue__pass_8h}{render\_queue\_pass.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGraphics}{Graphics}};}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceren}{ren}}}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classren_1_1IFullscreenPass}{IFullscreenPass}}}
+\DoxyCodeLine{00013\ \ \ \ \ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classren_1_1IBindablePass}{IBindablePass}}}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{classren_1_1IFullscreenPass_a811b6a0166f7e04048bac71ff971a0c5_a811b6a0166f7e04048bac71ff971a0c5}{s\_fullscreenTag}}\ =\ \textcolor{stringliteral}{"{}\$fullscreen"{}};}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{classren_1_1IFullscreenPass_a62e96861f46b97aea00c81e2573390f3_a62e96861f46b97aea00c81e2573390f3}{IFullscreenPass}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx,\ \textcolor{keyword}{const}\ std::string\ \&name\ )\ cond\_noex;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1IFullscreenPass_a9c7f7f30f493b1c0618276a211753e9f_a9c7f7f30f493b1c0618276a211753e9f}{run}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx\ )\ \textcolor{keyword}{const}\ cond\_noex\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00020\ \};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \}\textcolor{comment}{//namespace\ ren}}
+
+\end{DoxyCode}

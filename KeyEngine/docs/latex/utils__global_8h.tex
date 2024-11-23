@@ -1,0 +1,237 @@
+\doxysection{inc/utils\+\_\+global.h File Reference}
+\hypertarget{utils__global_8h}{}\label{utils__global_8h}\index{inc/utils\_global.h@{inc/utils\_global.h}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include "{}key\+\_\+type\+\_\+traits.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{utils__global_8h_a6d3e95005342f8d4b645ff65a7cbd0d9_a6d3e95005342f8d4b645ff65a7cbd0d9}{FORCE\+\_\+\+CRASH}}
+\item 
+\#define \mbox{\hyperlink{utils__global_8h_a5cfc9b42e6f9fc0afd1965612288679b_a5cfc9b42e6f9fc0afd1965612288679b}{IS\+\_\+\+OF\+\_\+\+TYPE}}(obj,  T)
+\item 
+\#define \mbox{\hyperlink{utils__global_8h_a70667465e66cb8a20e99736396e991f9_a70667465e66cb8a20e99736396e991f9}{SAFE\+\_\+\+CALL}}(obj,  function)
+\item 
+\#define \mbox{\hyperlink{utils__global_8h_a4574ec79f914e1bde3066ca8ce524926_a4574ec79f914e1bde3066ca8ce524926}{SAFE\+\_\+\+CALL\+\_\+\+POINTER}}(obj,  function)
+\item 
+\#define \mbox{\hyperlink{utils__global_8h_a7ca14f19bceddbf7f92d70e763f5e5b4_a7ca14f19bceddbf7f92d70e763f5e5b4}{ALIAS\+\_\+\+FUNCTION}}(original\+Function\+Name,  aliased\+Function\+Name)
+\begin{DoxyCompactList}\small\item\em optimal way of renaming/aliasing a function to another -\/ can be inline \& no unnecessary copies \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{utils__global_8h_ae523e66c2a1ec5e7283f878cfaf99d58_ae523e66c2a1ec5e7283f878cfaf99d58}{ENUM\+\_\+\+STR}}(e)
+\item 
+\#define \mbox{\hyperlink{utils__global_8h_a55fc5a1d923be1fdf910287adab23f7a_a55fc5a1d923be1fdf910287adab23f7a}{ENUM\+\_\+\+WSTR}}(e)
+\item 
+\#define \mbox{\hyperlink{utils__global_8h_aba2eb8c6ac485faf8ca2c0223dfd75af_aba2eb8c6ac485faf8ca2c0223dfd75af}{PRINT\+\_\+\+ENUM}}(e)
+\item 
+\#define \mbox{\hyperlink{utils__global_8h_a5b10e0153af0ecd5a87f4e4b12fbb74f_a5b10e0153af0ecd5a87f4e4b12fbb74f}{PRINTW\+\_\+\+ENUM}}(e)
+\item 
+\#define \mbox{\hyperlink{utils__global_8h_a5b6b96b4cd7568263a2c49d0fac8ad89_a5b6b96b4cd7568263a2c49d0fac8ad89}{CLASS\+\_\+\+NAMER}}(class\+Name)
+\item 
+\#define \mbox{\hyperlink{utils__global_8h_acf22f0211e3a88d5e47110b512bb95d6_acf22f0211e3a88d5e47110b512bb95d6}{ASSERT\+\_\+\+VALID\+\_\+\+OBJECT\+\_\+\+POINTER}}(ptr,  Expected\+Type)
+\item 
+\#define \mbox{\hyperlink{utils__global_8h_ad9b8f09e28db00ab3006a3b2d5c797cf_ad9b8f09e28db00ab3006a3b2d5c797cf}{ASSERT\+\_\+\+VALID\+\_\+\+OBJECT\+\_\+\+POINTER\+\_\+\+NEVER\+\_\+\+NULL}}(ptr,  Expected\+Type)
+\item 
+\#define \mbox{\hyperlink{utils__global_8h_a57566327fb21aa5daa4a7adbfd5d5efb_a57566327fb21aa5daa4a7adbfd5d5efb}{IS\+\_\+\+CONSTEXPR}}(e)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\constexpr std\+::remove\+\_\+reference$<$ T $>$\+::type \mbox{\hyperlink{utils__global_8h_ab9e97c7bf2a1e0bd67f012f657f4013e_ab9e97c7bf2a1e0bd67f012f657f4013e}{make\+Pr\+Value}} (T \&\&val)
+\item 
+{\footnotesize template$<$typename T , typename TDeleter $>$ }\\bool \mbox{\hyperlink{utils__global_8h_a52548a0b90de428391493d24d22995f7_a52548a0b90de428391493d24d22995f7}{operator==}} (const std\+::unique\+\_\+ptr$<$ T, TDeleter $>$ \&lhs, const T \texorpdfstring{$\ast$}{*}rhs)
+\item 
+{\footnotesize template$<$typename T , typename TDeleter $>$ }\\bool \mbox{\hyperlink{utils__global_8h_a8e3846356f92c0873d62c8ab338c95b8_a8e3846356f92c0873d62c8ab338c95b8}{operator!=}} (const std\+::unique\+\_\+ptr$<$ T, TDeleter $>$ \&lhs, const T \texorpdfstring{$\ast$}{*}rhs)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{utils__global_8h_a7ca14f19bceddbf7f92d70e763f5e5b4_a7ca14f19bceddbf7f92d70e763f5e5b4}\index{utils\_global.h@{utils\_global.h}!ALIAS\_FUNCTION@{ALIAS\_FUNCTION}}
+\index{ALIAS\_FUNCTION@{ALIAS\_FUNCTION}!utils\_global.h@{utils\_global.h}}
+\doxysubsubsection{\texorpdfstring{ALIAS\_FUNCTION}{ALIAS\_FUNCTION}}
+{\footnotesize\ttfamily \label{utils__global_8h_a7ca14f19bceddbf7f92d70e763f5e5b4_a7ca14f19bceddbf7f92d70e763f5e5b4} 
+\#define ALIAS\+\_\+\+FUNCTION(\begin{DoxyParamCaption}\item[{}]{original\+Function\+Name}{, }\item[{}]{aliased\+Function\+Name}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}...\ TArgs>\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keyword}{auto}\ aliasedFunctionName(\ TArgs\&\&...\ args\ )\ -\/>\ \textcolor{keyword}{decltype}(\ originalFunctionName(\ std::forward<TArgs>(\ args\ )...\ )\ )\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \{\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \ originalFunctionName(\ std::forward<TArgs>(\ args\ )...\ );\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+optimal way of renaming/aliasing a function to another -\/ can be inline \& no unnecessary copies 
+
+=================================================== \textbackslash{}macro ALIAS\+\_\+\+FUNCTION \begin{DoxyDate}{Date}
+2022/08/29 13\+:33 
+\end{DoxyDate}
+\Hypertarget{utils__global_8h_acf22f0211e3a88d5e47110b512bb95d6_acf22f0211e3a88d5e47110b512bb95d6}\index{utils\_global.h@{utils\_global.h}!ASSERT\_VALID\_OBJECT\_POINTER@{ASSERT\_VALID\_OBJECT\_POINTER}}
+\index{ASSERT\_VALID\_OBJECT\_POINTER@{ASSERT\_VALID\_OBJECT\_POINTER}!utils\_global.h@{utils\_global.h}}
+\doxysubsubsection{\texorpdfstring{ASSERT\_VALID\_OBJECT\_POINTER}{ASSERT\_VALID\_OBJECT\_POINTER}}
+{\footnotesize\ttfamily \label{utils__global_8h_acf22f0211e3a88d5e47110b512bb95d6_acf22f0211e3a88d5e47110b512bb95d6} 
+\#define ASSERT\+\_\+\+VALID\+\_\+\+OBJECT\+\_\+\+POINTER(\begin{DoxyParamCaption}\item[{}]{ptr}{, }\item[{}]{Expected\+Type}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (ptr\ !=\ \textcolor{keyword}{nullptr}\ \&\&\ \textcolor{keyword}{dynamic\_cast<}ExpectedType*\textcolor{keyword}{>}(ptr)\ ==\ \textcolor{keyword}{nullptr})\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \{\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \_\_debugbreak();\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{utils__global_8h_ad9b8f09e28db00ab3006a3b2d5c797cf_ad9b8f09e28db00ab3006a3b2d5c797cf}\index{utils\_global.h@{utils\_global.h}!ASSERT\_VALID\_OBJECT\_POINTER\_NEVER\_NULL@{ASSERT\_VALID\_OBJECT\_POINTER\_NEVER\_NULL}}
+\index{ASSERT\_VALID\_OBJECT\_POINTER\_NEVER\_NULL@{ASSERT\_VALID\_OBJECT\_POINTER\_NEVER\_NULL}!utils\_global.h@{utils\_global.h}}
+\doxysubsubsection{\texorpdfstring{ASSERT\_VALID\_OBJECT\_POINTER\_NEVER\_NULL}{ASSERT\_VALID\_OBJECT\_POINTER\_NEVER\_NULL}}
+{\footnotesize\ttfamily \label{utils__global_8h_ad9b8f09e28db00ab3006a3b2d5c797cf_ad9b8f09e28db00ab3006a3b2d5c797cf} 
+\#define ASSERT\+\_\+\+VALID\+\_\+\+OBJECT\+\_\+\+POINTER\+\_\+\+NEVER\+\_\+\+NULL(\begin{DoxyParamCaption}\item[{}]{ptr}{, }\item[{}]{Expected\+Type}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (ptr\ ==\ \textcolor{keyword}{nullptr}\ ||\ (ptr\ !=\ \textcolor{keyword}{nullptr}\ \&\&\ \textcolor{keyword}{dynamic\_cast<}ExpectedType*\textcolor{keyword}{>}(ptr)\ ==\ \textcolor{keyword}{nullptr}))\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \{\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \_\_debugbreak();\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{utils__global_8h_a5b6b96b4cd7568263a2c49d0fac8ad89_a5b6b96b4cd7568263a2c49d0fac8ad89}\index{utils\_global.h@{utils\_global.h}!CLASS\_NAMER@{CLASS\_NAMER}}
+\index{CLASS\_NAMER@{CLASS\_NAMER}!utils\_global.h@{utils\_global.h}}
+\doxysubsubsection{\texorpdfstring{CLASS\_NAMER}{CLASS\_NAMER}}
+{\footnotesize\ttfamily \label{utils__global_8h_a5b6b96b4cd7568263a2c49d0fac8ad89_a5b6b96b4cd7568263a2c49d0fac8ad89} 
+\#define CLASS\+\_\+\+NAMER(\begin{DoxyParamCaption}\item[{}]{class\+Name}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{private}:\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *s\_className\ =\ \#className\ ;\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}:\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ getClassName()\ noexcept\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ s\_className;\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{private}:}
+
+\end{DoxyCode}
+\Hypertarget{utils__global_8h_ae523e66c2a1ec5e7283f878cfaf99d58_ae523e66c2a1ec5e7283f878cfaf99d58}\index{utils\_global.h@{utils\_global.h}!ENUM\_STR@{ENUM\_STR}}
+\index{ENUM\_STR@{ENUM\_STR}!utils\_global.h@{utils\_global.h}}
+\doxysubsubsection{\texorpdfstring{ENUM\_STR}{ENUM\_STR}}
+{\footnotesize\ttfamily \label{utils__global_8h_ae523e66c2a1ec5e7283f878cfaf99d58_ae523e66c2a1ec5e7283f878cfaf99d58} 
+\#define ENUM\+\_\+\+STR(\begin{DoxyParamCaption}\item[{}]{e}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(\#e)}
+
+\end{DoxyCode}
+\Hypertarget{utils__global_8h_a55fc5a1d923be1fdf910287adab23f7a_a55fc5a1d923be1fdf910287adab23f7a}\index{utils\_global.h@{utils\_global.h}!ENUM\_WSTR@{ENUM\_WSTR}}
+\index{ENUM\_WSTR@{ENUM\_WSTR}!utils\_global.h@{utils\_global.h}}
+\doxysubsubsection{\texorpdfstring{ENUM\_WSTR}{ENUM\_WSTR}}
+{\footnotesize\ttfamily \label{utils__global_8h_a55fc5a1d923be1fdf910287adab23f7a_a55fc5a1d923be1fdf910287adab23f7a} 
+\#define ENUM\+\_\+\+WSTR(\begin{DoxyParamCaption}\item[{}]{e}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(\ L\ \#\#\ (\#e)\ )}
+
+\end{DoxyCode}
+\Hypertarget{utils__global_8h_a6d3e95005342f8d4b645ff65a7cbd0d9_a6d3e95005342f8d4b645ff65a7cbd0d9}\index{utils\_global.h@{utils\_global.h}!FORCE\_CRASH@{FORCE\_CRASH}}
+\index{FORCE\_CRASH@{FORCE\_CRASH}!utils\_global.h@{utils\_global.h}}
+\doxysubsubsection{\texorpdfstring{FORCE\_CRASH}{FORCE\_CRASH}}
+{\footnotesize\ttfamily \label{utils__global_8h_a6d3e95005342f8d4b645ff65a7cbd0d9_a6d3e95005342f8d4b645ff65a7cbd0d9} 
+\#define FORCE\+\_\+\+CRASH}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ *var\ =\ \textcolor{keyword}{nullptr};\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ *var\ =\ 0xDEADBEEF;}
+
+\end{DoxyCode}
+\Hypertarget{utils__global_8h_a57566327fb21aa5daa4a7adbfd5d5efb_a57566327fb21aa5daa4a7adbfd5d5efb}\index{utils\_global.h@{utils\_global.h}!IS\_CONSTEXPR@{IS\_CONSTEXPR}}
+\index{IS\_CONSTEXPR@{IS\_CONSTEXPR}!utils\_global.h@{utils\_global.h}}
+\doxysubsubsection{\texorpdfstring{IS\_CONSTEXPR}{IS\_CONSTEXPR}}
+{\footnotesize\ttfamily \label{utils__global_8h_a57566327fb21aa5daa4a7adbfd5d5efb_a57566327fb21aa5daa4a7adbfd5d5efb} 
+\#define IS\+\_\+\+CONSTEXPR(\begin{DoxyParamCaption}\item[{}]{e}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{noexcept}(\ \mbox{\hyperlink{utils__global_8h_ab9e97c7bf2a1e0bd67f012f657f4013e_ab9e97c7bf2a1e0bd67f012f657f4013e}{makePrValue}}(e)\ )}
+
+\end{DoxyCode}
+\Hypertarget{utils__global_8h_a5cfc9b42e6f9fc0afd1965612288679b_a5cfc9b42e6f9fc0afd1965612288679b}\index{utils\_global.h@{utils\_global.h}!IS\_OF\_TYPE@{IS\_OF\_TYPE}}
+\index{IS\_OF\_TYPE@{IS\_OF\_TYPE}!utils\_global.h@{utils\_global.h}}
+\doxysubsubsection{\texorpdfstring{IS\_OF\_TYPE}{IS\_OF\_TYPE}}
+{\footnotesize\ttfamily \label{utils__global_8h_a5cfc9b42e6f9fc0afd1965612288679b_a5cfc9b42e6f9fc0afd1965612288679b} 
+\#define IS\+\_\+\+OF\+\_\+\+TYPE(\begin{DoxyParamCaption}\item[{}]{obj}{, }\item[{}]{T}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(\ \textcolor{keyword}{dynamic\_cast<}T*\textcolor{keyword}{>}(\ obj\ )\ !=\ nullptr\ )\ ?\ \textcolor{keyword}{true}\ :\ false}
+
+\end{DoxyCode}
+\Hypertarget{utils__global_8h_aba2eb8c6ac485faf8ca2c0223dfd75af_aba2eb8c6ac485faf8ca2c0223dfd75af}\index{utils\_global.h@{utils\_global.h}!PRINT\_ENUM@{PRINT\_ENUM}}
+\index{PRINT\_ENUM@{PRINT\_ENUM}!utils\_global.h@{utils\_global.h}}
+\doxysubsubsection{\texorpdfstring{PRINT\_ENUM}{PRINT\_ENUM}}
+{\footnotesize\ttfamily \label{utils__global_8h_aba2eb8c6ac485faf8ca2c0223dfd75af_aba2eb8c6ac485faf8ca2c0223dfd75af} 
+\#define PRINT\+\_\+\+ENUM(\begin{DoxyParamCaption}\item[{}]{e}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{std::printf(\ \textcolor{stringliteral}{"{}'\%s'"{}},\ (\#e)\ );}
+
+\end{DoxyCode}
+\Hypertarget{utils__global_8h_a5b10e0153af0ecd5a87f4e4b12fbb74f_a5b10e0153af0ecd5a87f4e4b12fbb74f}\index{utils\_global.h@{utils\_global.h}!PRINTW\_ENUM@{PRINTW\_ENUM}}
+\index{PRINTW\_ENUM@{PRINTW\_ENUM}!utils\_global.h@{utils\_global.h}}
+\doxysubsubsection{\texorpdfstring{PRINTW\_ENUM}{PRINTW\_ENUM}}
+{\footnotesize\ttfamily \label{utils__global_8h_a5b10e0153af0ecd5a87f4e4b12fbb74f_a5b10e0153af0ecd5a87f4e4b12fbb74f} 
+\#define PRINTW\+\_\+\+ENUM(\begin{DoxyParamCaption}\item[{}]{e}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{std::wprintf(\ L\textcolor{stringliteral}{"{}'\%s'"{}},\ (\#e)\ );}
+
+\end{DoxyCode}
+\Hypertarget{utils__global_8h_a70667465e66cb8a20e99736396e991f9_a70667465e66cb8a20e99736396e991f9}\index{utils\_global.h@{utils\_global.h}!SAFE\_CALL@{SAFE\_CALL}}
+\index{SAFE\_CALL@{SAFE\_CALL}!utils\_global.h@{utils\_global.h}}
+\doxysubsubsection{\texorpdfstring{SAFE\_CALL}{SAFE\_CALL}}
+{\footnotesize\ttfamily \label{utils__global_8h_a70667465e66cb8a20e99736396e991f9_a70667465e66cb8a20e99736396e991f9} 
+\#define SAFE\+\_\+\+CALL(\begin{DoxyParamCaption}\item[{}]{obj}{, }\item[{}]{function}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{\ \textcolor{keywordflow}{if}\ (\ obj\ )\ \{\ obj.function;\ \}\ \}}
+
+\end{DoxyCode}
+\Hypertarget{utils__global_8h_a4574ec79f914e1bde3066ca8ce524926_a4574ec79f914e1bde3066ca8ce524926}\index{utils\_global.h@{utils\_global.h}!SAFE\_CALL\_POINTER@{SAFE\_CALL\_POINTER}}
+\index{SAFE\_CALL\_POINTER@{SAFE\_CALL\_POINTER}!utils\_global.h@{utils\_global.h}}
+\doxysubsubsection{\texorpdfstring{SAFE\_CALL\_POINTER}{SAFE\_CALL\_POINTER}}
+{\footnotesize\ttfamily \label{utils__global_8h_a4574ec79f914e1bde3066ca8ce524926_a4574ec79f914e1bde3066ca8ce524926} 
+\#define SAFE\+\_\+\+CALL\+\_\+\+POINTER(\begin{DoxyParamCaption}\item[{}]{obj}{, }\item[{}]{function}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{\ \textcolor{keywordflow}{if}\ (\ obj\ )\ \{\ obj-\/>function;\ \}\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{utils__global_8h_ab9e97c7bf2a1e0bd67f012f657f4013e_ab9e97c7bf2a1e0bd67f012f657f4013e}\index{utils\_global.h@{utils\_global.h}!makePrValue@{makePrValue}}
+\index{makePrValue@{makePrValue}!utils\_global.h@{utils\_global.h}}
+\doxysubsubsection{\texorpdfstring{makePrValue()}{makePrValue()}}
+{\footnotesize\ttfamily \label{utils__global_8h_ab9e97c7bf2a1e0bd67f012f657f4013e_ab9e97c7bf2a1e0bd67f012f657f4013e} 
+template$<$typename T $>$ \\
+std\+::remove\+\_\+reference$<$ T $>$\+::type make\+Pr\+Value (\begin{DoxyParamCaption}\item[{T \&\&}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{utils__global_8h_a8e3846356f92c0873d62c8ab338c95b8_a8e3846356f92c0873d62c8ab338c95b8}\index{utils\_global.h@{utils\_global.h}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!utils\_global.h@{utils\_global.h}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily \label{utils__global_8h_a8e3846356f92c0873d62c8ab338c95b8_a8e3846356f92c0873d62c8ab338c95b8} 
+template$<$typename T , typename TDeleter $>$ \\
+bool operator!= (\begin{DoxyParamCaption}\item[{const std\+::unique\+\_\+ptr$<$ T, TDeleter $>$ \&}]{lhs}{, }\item[{const T \texorpdfstring{$\ast$}{*}}]{rhs}{}\end{DoxyParamCaption})}
+
+\Hypertarget{utils__global_8h_a52548a0b90de428391493d24d22995f7_a52548a0b90de428391493d24d22995f7}\index{utils\_global.h@{utils\_global.h}!operator==@{operator==}}
+\index{operator==@{operator==}!utils\_global.h@{utils\_global.h}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily \label{utils__global_8h_a52548a0b90de428391493d24d22995f7_a52548a0b90de428391493d24d22995f7} 
+template$<$typename T , typename TDeleter $>$ \\
+bool operator== (\begin{DoxyParamCaption}\item[{const std\+::unique\+\_\+ptr$<$ T, TDeleter $>$ \&}]{lhs}{, }\item[{const T \texorpdfstring{$\ast$}{*}}]{rhs}{}\end{DoxyParamCaption})}
+

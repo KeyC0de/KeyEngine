@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="namespaceDirectX_1_1Colors" kind="namespace" language="C++">
+    <compoundname>DirectX::Colors</compoundname>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceDirectX_1_1Colors_a224e19ac54fcc026b183a5c9340a047b_1a224e19ac54fcc026b183a5c9340a047b" prot="public" static="no" mutable="no">
+        <type>const XMVECTORF32</type>
+        <definition>const XMVECTORF32 DirectX::Colors::White</definition>
+        <argsstring></argsstring>
+        <name>White</name>
+        <qualifiedname>DirectX::Colors::White</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/ui_component.h" line="22" column="19" bodyfile="inc/ui_component.h" bodystart="22" bodyend="-1"/>
+        <referencedby refid="namespaceutil_ae14930f3301003255211479d9aa09fe6_1ae14930f3301003255211479d9aa09fe6" compoundref="d3d__utils_8cpp" startline="401" endline="969">util::getDirectXColorFromString</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/ui_component.h" line="19" column="1"/>
+  </compounddef>
+</doxygen>

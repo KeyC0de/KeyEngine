@@ -1182,6 +1182,9 @@
     <ClInclude Include="inc\node.h">
       <Filter>engine\vfx\renderables</Filter>
     </ClInclude>
+    <ClInclude Include="inc\utils_global.h">
+      <Filter>engine\common_util</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\resources\tray_graffiti.ico">
@@ -1276,6 +1279,8 @@
     <None Include="shaders\hlsli\globals_vscb.hlsli">
       <Filter>engine\vfx\shaders\hlsli</Filter>
     </None>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="third_party">

@@ -17,9 +17,7 @@ public:
 	void update( const float dt );
 	void render( Graphics &gfx ) cond_noex;
 	bool doWallCollision( const RectangleF &wall );
-	//===================================================
-	//	\function	reboundX, reboundY	||	\date	2021/10/17 3:43
-	//	\brief	direction up = [0, 1] , down = [0, -1] , left = [0, -1] , right = [0, 1]
+	/// \brief	direction up = [0, 1] , down = [0, -1] , left = [0, -1] , right = [0, 1]
 	void reboundX();
 	void reboundY();
 	RectangleF rect() const noexcept;

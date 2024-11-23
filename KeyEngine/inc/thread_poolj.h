@@ -10,23 +10,24 @@
 #include "key_exception.h"
 
 
-//============================================================
-//	\class	ThreadPoolJ
-//	\author	KeyC0de
-//	\date	25/9/2019 3:55
-//	\brief	A class which encapsulates a Queue of Tasks & a Pool of threads and dispatches work on demand
-//				ie. upon an incoming Task - callable object - a thread is dispatched to execute it
-//			singleton class
-//			move only
-//			Leverages jthread facilities - interruptibility.
-//			The functions you enqueue to ThreadPoolJ must have a first argument of `stop_token`
-//			WARNING: Remember to call resetInstance before you terminate your program
-// example usage:
-//		threadPool.enqueue( &doNothing );
-//		threadPool.enqueue( &func_async::doNothingForEverUntilStoppedProperly );
-//		threadPool.enqueue( &func1 );
-//		threadPool.enqueue( &func_async::doPeriodically, &func2, 1000, false );
-//=============================================================
+///============================================================
+/// \class	ThreadPoolJ
+/// \author	KeyC0de
+/// \date	25/9/2019 3:55
+/// \brief	A class which encapsulates a Queue of Tasks & a Pool of threads and dispatches work on demand
+/// \brief		ie. upon an incoming Task - callable object - a thread is dispatched to execute it
+/// \brief		singleton class
+/// \brief	move only
+/// \brief	Leverages jthread facilities - interruptibility.
+/// \brief	The functions you enqueue to ThreadPoolJ must have a first argument of `stop_token`
+/// \brief
+/// \brief	WARNING: Remember to call resetInstance before you terminate your program
+/// \brief	example usage:
+/// \brief		threadPool.enqueue( &doNothing );
+/// \brief		threadPool.enqueue( &func_async::doNothingForEverUntilStoppedProperly );
+/// \brief		threadPool.enqueue( &func1 );
+/// \brief		threadPool.enqueue( &func_async::doPeriodically, &func2, 1000, false );
+///=============================================================
 class ThreadPoolJ final
 	: public NonCopyable
 {
@@ -52,8 +53,7 @@ public:
 	static ThreadPoolJ& getInstance( const std::size_t nThreads = 4u, const bool bEnabled = true );
 	static void resetInstance() noexcept;
 
-	//	\function	start	||	\date	25/9/2019 12:20
-	//	\brief	calls run
+	/// \brief	calls run
 	void start();
 	void stop() noexcept;
 	bool isEnabled() const noexcept;
@@ -87,9 +87,8 @@ private:
 namespace func_async
 {
 
-//	\function	doPeriodically	||	\date	2021/09/06 1:05
-//	\brief	like a timer event --- executes void(*f)() function at periodic (ms) intervals
-//	\arg	now : if you want to execute first up now
+/// \brief	like a timer event --- executes void(*f)() function at periodic (ms) intervals
+/// \arg	now : if you want to execute first up now
 void doPeriodically( nonstd::stop_token st, const std::function<void(void)> &f, const size_t intervalMs, const bool now );
 void doLater( nonstd::stop_token st, const std::function<void(void)> &f, const size_t intervalMs );
 

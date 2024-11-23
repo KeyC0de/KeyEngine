@@ -1,0 +1,56 @@
+\doxysection{entity\+\_\+manager.\+h}
+\hypertarget{entity__manager_8h_source}{}\label{entity__manager_8h_source}\index{inc/entity\_manager.h@{inc/entity\_manager.h}}
+\mbox{\hyperlink{entity__manager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{entity__defines_8h}{entity\_defines.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{non__copyable_8h}{non\_copyable.h}}"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classEntity}{Entity}};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classEntityManager}{EntityManager}}\ final}
+\DoxyCodeLine{00019\ \ \ \ \ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classNonCopyable}{NonCopyable}}}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classEntityManager}{EntityManager}}\ *\mbox{\hyperlink{classEntityManager_ad45fa211dcf28226fb18d0d1d4d08753_ad45fa211dcf28226fb18d0d1d4d08753}{s\_pInstance}};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ std::vector<std::unique\_ptr<Entity>>\ \mbox{\hyperlink{classEntityManager_a34a3b8ae56f4df5d5d27b5fd22395023_a34a3b8ae56f4df5d5d27b5fd22395023}{m\_entities}};}
+\DoxyCodeLine{00024\ \ \ \ \ std::vector<EntityIndex>\ \mbox{\hyperlink{classEntityManager_a3df59aa8e91f126f682b69dc123b02e3_a3df59aa8e91f126f682b69dc123b02e3}{m\_freelist}};}
+\DoxyCodeLine{00025\ \ \ \ \ std::vector<size\_t>\ \mbox{\hyperlink{classEntityManager_a2bd6746f1961106daf24a139c0f3bdff_a2bd6746f1961106daf24a139c0f3bdff}{m\_worldEntitiesIndices}};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classEntityManager_1_1Bucket}{Bucket}}\ final}
+\DoxyCodeLine{00035\ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classEntityManager_1_1Bucket_ace5b4ef4aa1ff96d08b085a02e0e8b6d_ace5b4ef4aa1ff96d08b085a02e0e8b6d}{m\_categoryId}};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ potentially\ other\ details}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ std::vector<Entity*>\ \mbox{\hyperlink{classEntityManager_1_1Bucket_abf2963ef851eff4764ab25bcbd90c67a_abf2963ef851eff4764ab25bcbd90c67a}{m\_pEntities}};}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classEntityManager_1_1Bucket_abbe12f315fddbc63703b944d5d95006e_abbe12f315fddbc63703b944d5d95006e}{Bucket}}(\ \textcolor{keywordtype}{int}\ categoryId\ );}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classEntityManager_1_1Bucket_a5b9f2272a9686d2383b9d1db4d9560b2_a5b9f2272a9686d2383b9d1db4d9560b2}{getCategoryId}}()\ const\ noexcept;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEntityManager_1_1Bucket_af407d0fdbba73f1c1e61765a3525fac8_af407d0fdbba73f1c1e61765a3525fac8}{appendEntity}}(\ \mbox{\hyperlink{classEntity}{Entity}}\ *pEnt\ );}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEntityManager_1_1Bucket_a909bb4844431d4103727dc560347f441_a909bb4844431d4103727dc560347f441}{removeEntity}}(\ \mbox{\hyperlink{classEntity}{Entity}}\ *pEnt\ )\ cond\_noex;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{comment}{//void\ sort();}}
+\DoxyCodeLine{00046\ \ \ \ \ \};}
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{classEntityManager_1_1Bucket}{Bucket}}\ \mbox{\hyperlink{classEntityManager_ae99324de09a4721f6c7fc792193b7a5d_ae99324de09a4721f6c7fc792193b7a5d}{m\_statics}}\{1\};}
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{classEntityManager_1_1Bucket}{Bucket}}\ \mbox{\hyperlink{classEntityManager_aadfdba917bb2cf1b7da6176b78e9d434_aadfdba917bb2cf1b7da6176b78e9d434}{m\_bullets}}\{2\};}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{classEntityManager_1_1Bucket}{Bucket}}\ \mbox{\hyperlink{classEntityManager_a7801abe7731abc4b4cd2c7333b512e71_a7801abe7731abc4b4cd2c7333b512e71}{m\_ragDolls}}\{3\};}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{classEntityManager_1_1Bucket}{Bucket}}\ \mbox{\hyperlink{classEntityManager_ac854bd998e75e4073b7c5f10843c7803_ac854bd998e75e4073b7c5f10843c7803}{m\_npcs}}\{4\};}
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{classEntityManager_1_1Bucket}{Bucket}}\ \mbox{\hyperlink{classEntityManager_aa95bdfea3e4eee3c3b64e9e53bba2eca_aa95bdfea3e4eee3c3b64e9e53bba2eca}{m\_mounts}}\{5\};}
+\DoxyCodeLine{00052\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classEntityManager}{EntityManager}}\&\ \mbox{\hyperlink{classEntityManager_a6d87bc4ad44459500e6a754de4724d1d_a6d87bc4ad44459500e6a754de4724d1d}{getInstance}}();}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEntityManager_acd15ee66afb222e7de21c36affd2e305_acd15ee66afb222e7de21c36affd2e305}{resetInstance}}();}
+\DoxyCodeLine{00056\ \ \ \ \ EntityId\ \mbox{\hyperlink{classEntityManager_ac858f5f808c469afe38d9d46f03aec8a_ac858f5f808c469afe38d9d46f03aec8a}{spawnEntity}}(\ \textcolor{keyword}{const}\ std::string\ \&name,\ \textcolor{keywordtype}{int}\ categoryId,\ \mbox{\hyperlink{classEntity}{Entity}}\ *pParent\ =\ \textcolor{keyword}{nullptr}\ );}
+\DoxyCodeLine{00057\ \ \ \ \ EntityIndex\ \mbox{\hyperlink{classEntityManager_a2c788e1be3988e3c657b3f110fa0f978_a2c788e1be3988e3c657b3f110fa0f978}{getAliveEntityCount}}();}
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{classEntity}{Entity}}*\ \mbox{\hyperlink{classEntityManager_a268f9c2dd9a7bf4ea480f21eae7456bf_a268f9c2dd9a7bf4ea480f21eae7456bf}{getEntityById}}(\ EntityId\ entId\ );}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEntityManager_a4d9c5791c27d1093a19de62a5c21f27c_a4d9c5791c27d1093a19de62a5c21f27c}{recycleEntityId}}(\ EntityId\ entId\ );}
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{classEntityManager_1_1Bucket_abbe12f315fddbc63703b944d5d95006e_abbe12f315fddbc63703b944d5d95006e}{Bucket}}\&\ \mbox{\hyperlink{classEntityManager_af046dce25901cf3cd28805eeee6b3100_af046dce25901cf3cd28805eeee6b3100}{getBucket}}(\ \textcolor{keywordtype}{int}\ categoryId\ );}
+\DoxyCodeLine{00065\ \ \ \ \ \mbox{\hyperlink{classEntity}{Entity}}*\ \mbox{\hyperlink{classEntityManager_a2305af3b0145f988ade75cb7fa45fb8f_a2305af3b0145f988ade75cb7fa45fb8f}{world}}();}
+\DoxyCodeLine{00066\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{classEntityManager_a7555637657d090171be6ceee8451de0a_a7555637657d090171be6ceee8451de0a}{EntityManager}}();}
+\DoxyCodeLine{00068\ \};}
+
+\end{DoxyCode}

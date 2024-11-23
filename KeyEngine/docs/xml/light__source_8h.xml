@@ -1,0 +1,307 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="light__source_8h" kind="file" language="C++">
+    <compoundname>light_source.h</compoundname>
+    <includes local="no">variant</includes>
+    <includes local="no">DirectXMath.h</includes>
+    <includes refid="model_8h" local="yes">model.h</includes>
+    <includedby refid="game_8h" local="yes">inc/game.h</includedby>
+    <includedby refid="shadow__pass_8h" local="yes">inc/shadow_pass.h</includedby>
+    <includedby refid="light__source_8cpp" local="yes">src/light_source.cpp</includedby>
+    <incdepgraph>
+      <node id="9">
+        <label>imgui_visitors.h</label>
+        <link refid="imgui__visitors_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/light_source.h</label>
+        <link refid="light__source_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>model.h</label>
+        <link refid="model_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>rendering_channel.h</label>
+        <link refid="rendering__channel_8h"/>
+      </node>
+      <node id="3">
+        <label>DirectXMath.h</label>
+      </node>
+      <node id="6">
+        <label>filesystem</label>
+      </node>
+      <node id="11">
+        <label>limits</label>
+      </node>
+      <node id="5">
+        <label>memory</label>
+      </node>
+      <node id="7">
+        <label>string</label>
+      </node>
+      <node id="10">
+        <label>unordered_map</label>
+      </node>
+      <node id="2">
+        <label>variant</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>inc/game.h</label>
+        <link refid="game_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/light_source.h</label>
+        <link refid="light__source_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>inc/shadow_pass.h</label>
+        <link refid="shadow__pass_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>src/SHADOW_PASS.CPP</label>
+        <link refid="SHADOW__PASS_8CPP"/>
+      </node>
+      <node id="3">
+        <label>src/game.cpp</label>
+        <link refid="game_8cpp"/>
+      </node>
+      <node id="7">
+        <label>src/light_source.cpp</label>
+        <link refid="light__source_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="8">
+        <label>src/renderer.cpp</label>
+        <link refid="renderer_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classILightSource" prot="public">ILightSource</innerclass>
+    <innerclass refid="structILightSource_1_1LightVSCB" prot="protected">ILightSource::LightVSCB</innerclass>
+    <innerclass refid="structILightSource_1_1LightPSCB" prot="protected">ILightSource::LightPSCB</innerclass>
+    <innerclass refid="classDirectionalLight" prot="public">DirectionalLight</innerclass>
+    <innerclass refid="classSpotLight" prot="public">SpotLight</innerclass>
+    <innerclass refid="classPointLight" prot="public">PointLight</innerclass>
+    <innernamespace refid="namespaceren">ren</innernamespace>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332" prot="public" static="no" strong="no">
+        <type>unsigned</type>
+        <name>LightSourceType</name>
+        <enumvalue id="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332a5587f9acd040804638ac6fb1bc87bbd3" prot="public">
+          <name>Directional</name>
+          <initializer>= 1u</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332a395dea9a8704c1a1ed0224f6fb4e88b1" prot="public">
+          <name>Spot</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332a5b577e188dc4657a3e573fb2dae1a924" prot="public">
+          <name>Point</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/light_source.h" line="18" column="1" bodyfile="inc/light_source.h" bodystart="19" bodyend="23"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;variant&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;DirectXMath.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="model_8h" kindref="compound">model.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceren" kindref="compound">ren</ref></highlight></codeline>
+<codeline lineno="9"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Renderer;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">ShadowPass;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classGraphics" kindref="compound">Graphics</ref>;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classCamera" kindref="compound">Camera</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classILightSource" kindref="compound">ILightSource</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332" kindref="member">LightSourceType</ref><sp/>:<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="20" refid="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332a5587f9acd040804638ac6fb1bc87bbd3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332a5587f9acd040804638ac6fb1bc87bbd3" kindref="member">Directional</ref><sp/>=<sp/>1u,</highlight></codeline>
+<codeline lineno="21" refid="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332a395dea9a8704c1a1ed0224f6fb4e88b1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332a395dea9a8704c1a1ed0224f6fb4e88b1" kindref="member">Spot</ref>,</highlight></codeline>
+<codeline lineno="22" refid="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332a5b577e188dc4657a3e573fb2dae1a924" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332a5b577e188dc4657a3e573fb2dae1a924" kindref="member">Point</ref>,</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classILightSource" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classILightSource" kindref="compound">ILightSource</ref></highlight></codeline>
+<codeline lineno="27"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28" refid="classILightSource_ad085cd6998fadc4d7bbecd56a0dcb1eb_1ad085cd6998fadc4d7bbecd56a0dcb1eb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classren_1_1ShadowPass" kindref="compound">ren::ShadowPass</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="classILightSource_a8a9f0f14ec9fdad34f6893029360ea98_1a8a9f0f14ec9fdad34f6893029360ea98" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332" kindref="member">LightSourceType</ref><sp/><ref refid="classILightSource_a8a9f0f14ec9fdad34f6893029360ea98_1a8a9f0f14ec9fdad34f6893029360ea98" kindref="member">m_type</ref>;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="32" refid="classILightSource_af0a72727cb5a6ee05dde5ea17c222b81_1af0a72727cb5a6ee05dde5ea17c222b81" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classILightSource_af0a72727cb5a6ee05dde5ea17c222b81_1af0a72727cb5a6ee05dde5ea17c222b81" kindref="member">m_shadowCamFarZ</ref>;</highlight></codeline>
+<codeline lineno="33" refid="classILightSource_a9a50fe9607772fecb1ea1c82e84b1cb1_1a9a50fe9607772fecb1ea1c82e84b1cb1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classILightSource_a9a50fe9607772fecb1ea1c82e84b1cb1_1a9a50fe9607772fecb1ea1c82e84b1cb1" kindref="member">m_name</ref>;</highlight></codeline>
+<codeline lineno="34" refid="classILightSource_aba12f3ad60d45ee69a6cc9560a1d1e4d_1aba12f3ad60d45ee69a6cc9560a1d1e4d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classILightSource_aba12f3ad60d45ee69a6cc9560a1d1e4d_1aba12f3ad60d45ee69a6cc9560a1d1e4d" kindref="member">m_bShowMesh</ref>;</highlight></codeline>
+<codeline lineno="35" refid="classILightSource_a162034eae6dabb27c763325d94b5050e_1a162034eae6dabb27c763325d94b5050e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a162034eae6dabb27c763325d94b5050e_1a162034eae6dabb27c763325d94b5050e" kindref="member">m_bCastingShadows</ref>;</highlight></codeline>
+<codeline lineno="36" refid="classILightSource_a2836fa2a9437563c3f7d1b3b5e5e6b83_1a2836fa2a9437563c3f7d1b3b5e5e6b83" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classModel" kindref="compound">Model</ref><sp/><ref refid="classILightSource_a2836fa2a9437563c3f7d1b3b5e5e6b83_1a2836fa2a9437563c3f7d1b3b5e5e6b83" kindref="member">m_lightMesh</ref>;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="structILightSource_1_1LightVSCB" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structILightSource_1_1LightVSCB" kindref="compound">LightVSCB</ref></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="40" refid="structILightSource_1_1LightVSCB_a7ccc71c16e97484dc64961bef3127a4b_1a7ccc71c16e97484dc64961bef3127a4b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DirectX::XMMATRIX<sp/><ref refid="structILightSource_1_1LightVSCB_a7ccc71c16e97484dc64961bef3127a4b_1a7ccc71c16e97484dc64961bef3127a4b" kindref="member">cb_lightMatrix</ref>;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="42" refid="classILightSource_a94603c5e37a72aca471ef9d2a37a072e_1a94603c5e37a72aca471ef9d2a37a072e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structILightSource_1_1LightVSCB" kindref="compound">LightVSCB</ref><sp/><ref refid="classILightSource_a94603c5e37a72aca471ef9d2a37a072e_1a94603c5e37a72aca471ef9d2a37a072e" kindref="member">m_vscbData</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>used<sp/>for<sp/>shadowing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="classILightSource_a2293407d62d1d81b80e920e6ed350ad6_1a2293407d62d1d81b80e920e6ed350ad6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;Camera&gt;<sp/><ref refid="classILightSource_a2293407d62d1d81b80e920e6ed350ad6_1a2293407d62d1d81b80e920e6ed350ad6" kindref="member">m_pCameraForShadowing</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>this<sp/>camera<sp/>is<sp/>not<sp/>shared<sp/>in<sp/>CameraManager</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="structILightSource_1_1LightPSCB" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structILightSource_1_1LightPSCB" kindref="compound">LightPSCB</ref></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="47" refid="structILightSource_1_1LightPSCB_a338eba34ba0d1e287e0c2fb893e011f5_1a338eba34ba0d1e287e0c2fb893e011f5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structILightSource_1_1LightPSCB_a338eba34ba0d1e287e0c2fb893e011f5_1a338eba34ba0d1e287e0c2fb893e011f5" kindref="member">cb_lightType</ref>;</highlight></codeline>
+<codeline lineno="48" refid="structILightSource_1_1LightPSCB_af9c565d7576ac6e51491f44491dbde8a_1af9c565d7576ac6e51491f44491dbde8a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structILightSource_1_1LightPSCB_af9c565d7576ac6e51491f44491dbde8a_1af9c565d7576ac6e51491f44491dbde8a" kindref="member">cb_bShadowCasting</ref>;</highlight></codeline>
+<codeline lineno="49" refid="structILightSource_1_1LightPSCB_a197015f04c8f18823630fcf09814b072_1a197015f04c8f18823630fcf09814b072" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structILightSource_1_1LightPSCB_a197015f04c8f18823630fcf09814b072_1a197015f04c8f18823630fcf09814b072" kindref="member">padding</ref>[2];</highlight></codeline>
+<codeline lineno="50" refid="structILightSource_1_1LightPSCB_a4d5f82171ea57f409914c8432bbe31f0_1a4d5f82171ea57f409914c8432bbe31f0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">alignas</highlight><highlight class="normal">(16)<sp/>DirectX::XMFLOAT3<sp/><ref refid="structILightSource_1_1LightPSCB_a4d5f82171ea57f409914c8432bbe31f0_1a4d5f82171ea57f409914c8432bbe31f0" kindref="member">cb_lightPosViewSpace</ref>;<sp/></highlight><highlight class="comment">//<sp/>represents<sp/>direction<sp/>for<sp/>Directional<sp/>Lights</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="structILightSource_1_1LightPSCB_a839eb8084ef88ef3f49b407d612bfd9f_1a839eb8084ef88ef3f49b407d612bfd9f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">alignas</highlight><highlight class="normal">(16)<sp/>DirectX::XMFLOAT3<sp/><ref refid="structILightSource_1_1LightPSCB_a839eb8084ef88ef3f49b407d612bfd9f_1a839eb8084ef88ef3f49b407d612bfd9f" kindref="member">cb_ambientColor</ref>;</highlight></codeline>
+<codeline lineno="52" refid="structILightSource_1_1LightPSCB_ab887412e95208866cce554b595a36a01_1ab887412e95208866cce554b595a36a01" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">alignas</highlight><highlight class="normal">(16)<sp/>DirectX::XMFLOAT3<sp/><ref refid="structILightSource_1_1LightPSCB_ab887412e95208866cce554b595a36a01_1ab887412e95208866cce554b595a36a01" kindref="member">cb_lightColor</ref>;</highlight></codeline>
+<codeline lineno="53" refid="structILightSource_1_1LightPSCB_af5251b90079492815b60ed641b449b17_1af5251b90079492815b60ed641b449b17" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structILightSource_1_1LightPSCB_af5251b90079492815b60ed641b449b17_1af5251b90079492815b60ed641b449b17" kindref="member">intensity</ref>;</highlight><highlight class="comment">//<sp/>HLSL<sp/>packing<sp/>rules<sp/>:<sp/>an<sp/>element<sp/>is<sp/>not<sp/>allowed<sp/>to<sp/>straddle<sp/>a<sp/>4D<sp/>vector<sp/>boundary<sp/>(this<sp/>is<sp/>allowed<sp/>in<sp/>C++,<sp/>but<sp/>we<sp/>must<sp/>conform<sp/>to<sp/>our<sp/>weakest<sp/>link<sp/>=<sp/>HLSL)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="structILightSource_1_1LightPSCB_a6fe2068c77b6eb36c41822bd059e72b7_1a6fe2068c77b6eb36c41822bd059e72b7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structILightSource_1_1LightPSCB_a6fe2068c77b6eb36c41822bd059e72b7_1a6fe2068c77b6eb36c41822bd059e72b7" kindref="member">cb_attConstant</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>unused<sp/>for<sp/>Directional<sp/>Lights</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="structILightSource_1_1LightPSCB_a82b45f74852f51cf1a379b5c0378c009_1a82b45f74852f51cf1a379b5c0378c009" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structILightSource_1_1LightPSCB_a82b45f74852f51cf1a379b5c0378c009_1a82b45f74852f51cf1a379b5c0378c009" kindref="member">cb_attLinear</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>unused<sp/>for<sp/>Directional<sp/>Lights</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="structILightSource_1_1LightPSCB_a138650936d9e7ddb83a7660dac435891_1a138650936d9e7ddb83a7660dac435891" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structILightSource_1_1LightPSCB_a138650936d9e7ddb83a7660dac435891_1a138650936d9e7ddb83a7660dac435891" kindref="member">cb_attQuadratic</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>unused<sp/>for<sp/>Directional<sp/>Lights</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="structILightSource_1_1LightPSCB_ae2b70aa9bd02eb2a3065c55cefbc0c73_1ae2b70aa9bd02eb2a3065c55cefbc0c73" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DirectX::XMFLOAT3<sp/><ref refid="structILightSource_1_1LightPSCB_ae2b70aa9bd02eb2a3065c55cefbc0c73_1ae2b70aa9bd02eb2a3065c55cefbc0c73" kindref="member">cb_spotLightDirViewSpace</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>only<sp/>used<sp/>for<sp/>Spot<sp/>Lights</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="structILightSource_1_1LightPSCB_afdc8285a198ac0483b07106018a6a584_1afdc8285a198ac0483b07106018a6a584" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structILightSource_1_1LightPSCB_afdc8285a198ac0483b07106018a6a584_1afdc8285a198ac0483b07106018a6a584" kindref="member">cb_coneAngle</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>only<sp/>used<sp/>for<sp/>Spot<sp/>Lights</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="60" refid="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structILightSource_1_1LightPSCB" kindref="compound">LightPSCB</ref><sp/><ref refid="classILightSource_a91c54598d0a1805c4a2f694be7c863ca_1a91c54598d0a1805c4a2f694be7c863ca" kindref="member">m_pscbData</ref>;</highlight></codeline>
+<codeline lineno="61" refid="classILightSource_a63c850a5695ff1411e12e73450a84c40_1a63c850a5695ff1411e12e73450a84c40" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structILightSource_1_1LightPSCB" kindref="compound">LightPSCB</ref><sp/><ref refid="classILightSource_a63c850a5695ff1411e12e73450a84c40_1a63c850a5695ff1411e12e73450a84c40" kindref="member">m_pscbDataToBind</ref>;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classILightSource_a85ecc5940c66f9ef21277e3bab54276b_1a85ecc5940c66f9ef21277e3bab54276b" kindref="member">ILightSource</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332" kindref="member">LightSourceType</ref><sp/>type,<sp/><ref refid="classModel" kindref="compound">Model</ref><sp/>model,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::variant&lt;DirectX::XMFLOAT4,std::string&gt;<sp/>&amp;colorOrTexturePath<sp/>=<sp/>DirectX::XMFLOAT4{1.0f,<sp/>1.0f,<sp/>1.0f,<sp/>1.0f},<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bShadowCasting<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bShowMesh<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;rotDegOrDirectionVector<sp/>=<sp/>{0.0f,<sp/>0.0f,<sp/>0.0f},<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;pos<sp/>=<sp/>DirectX::XMFLOAT3{8.0f,<sp/>8.0f,<sp/>2.f},<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>intensity<sp/>=<sp/>1.0f,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>fovDeg<sp/>=<sp/>0.0f,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>shadowCamFarZ<sp/>=<sp/>100.0f<sp/>);</highlight></codeline>
+<codeline lineno="64" refid="classILightSource_a8d7a68032533f71c832110c76cd6ed3b_1a8d7a68032533f71c832110c76cd6ed3b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a8d7a68032533f71c832110c76cd6ed3b_1a8d7a68032533f71c832110c76cd6ed3b" kindref="member">~ILightSource</ref>()<sp/>noexcept<sp/>=<sp/>default;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a2c46182157ae66e5a900af43928c3d51_1a2c46182157ae66e5a900af43928c3d51" kindref="member">update</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/>const<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>dt,<sp/>const<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>lerpBetweenFrames,<sp/>const<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bEnableSmoothMovement<sp/>=<sp/>false<sp/>)<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a43e7bb71c7b8db34e21cf7889b5eae95_1a43e7bb71c7b8db34e21cf7889b5eae95" kindref="member">render</ref>(<sp/>const<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>channels<sp/>)<sp/>const<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a5e1c8d090c141ea94a06046be5b15df8_1a5e1c8d090c141ea94a06046be5b15df8" kindref="member">connectMaterialsToRenderer</ref>(<sp/><ref refid="namespaceren" kindref="compound">ren</ref>::Renderer<sp/>&amp;r<sp/>);</highlight></codeline>
+<codeline lineno="71" refid="classILightSource_af79180aa4e70f55e10471ccd515391a5_1af79180aa4e70f55e10471ccd515391a5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>virtual<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classILightSource_af79180aa4e70f55e10471ccd515391a5_1af79180aa4e70f55e10471ccd515391a5" kindref="member">displayImguiWidgets</ref>()<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="72" refid="classILightSource_a388781b70e7569ac4be432b1e60cde96_1a388781b70e7569ac4be432b1e60cde96" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>virtual<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a388781b70e7569ac4be432b1e60cde96_1a388781b70e7569ac4be432b1e60cde96" kindref="member">setIntensity</ref>(<sp/>const<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>newIntensity<sp/>)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="73" refid="classILightSource_a70f8690fb45b8758cf974eab1c06d2ce_1a70f8690fb45b8758cf974eab1c06d2ce" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>virtual<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a70f8690fb45b8758cf974eab1c06d2ce_1a70f8690fb45b8758cf974eab1c06d2ce" kindref="member">setColor</ref>(<sp/>const<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>::XMFLOAT3<sp/>&amp;diffuseColor<sp/>)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a3fccfe57c1781b3f43a0cb4a41f67035_1a3fccfe57c1781b3f43a0cb4a41f67035" kindref="member">setRotation</ref>(<sp/>const<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>::XMFLOAT3<sp/>&amp;rot<sp/>);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classILightSource_af4c3edc00a2603c76e0ec39955f23113_1af4c3edc00a2603c76e0ec39955f23113" kindref="member">setTranslation</ref>(<sp/>const<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>::XMFLOAT3<sp/>&amp;pos<sp/>);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="light__source_8h_a621d578de257cbce447d8aaada5b8332_1a621d578de257cbce447d8aaada5b8332" kindref="member">LightSourceType</ref><sp/><ref refid="classILightSource_a7c9863add04adffa68a99aacc239a64d_1a7c9863add04adffa68a99aacc239a64d" kindref="member">getType</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classILightSource_ab45b60356a4883b2d10456115692ee60_1ab45b60356a4883b2d10456115692ee60" kindref="member">getSlot</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a0faa0df2c36a9590f2d04ddd4b24f70b_1a0faa0df2c36a9590f2d04ddd4b24f70b" kindref="member">getName</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a020b616fe1ebb5185b8120f9a41c256e_1a020b616fe1ebb5185b8120f9a41c256e" kindref="member">isCastingShadows</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a605491c2905837716a32ce930afe6c92_1a605491c2905837716a32ce930afe6c92" kindref="member">isFrustumCulled</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>::XMFLOAT3<sp/><ref refid="classILightSource_a29ff5d5e121d058b68954725e3489076_1a29ff5d5e121d058b68954725e3489076" kindref="member">getRotation</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="82" refid="classILightSource_a39174369af77a807c727dd8b8b41afec_1a39174369af77a807c727dd8b8b41afec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>virtual<sp/><ref refid="namespaceDirectX" kindref="compound">DirectX</ref>::XMFLOAT3<sp/><ref refid="classILightSource_a39174369af77a807c727dd8b8b41afec_1a39174369af77a807c727dd8b8b41afec" kindref="member">getPosition</ref>()<sp/>const<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classCamera" kindref="compound">Camera</ref>*<sp/><ref refid="classILightSource_a10dcb51eb6c7dc15ff6b7ffe442a8245_1a10dcb51eb6c7dc15ff6b7ffe442a8245" kindref="member">getShadowCamera</ref>()<sp/>const;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classILightSource_af0b903d97d07f2bcc7faf90d51749bdd_1af0b903d97d07f2bcc7faf90d51749bdd" kindref="member">getShadowCameraFarZ</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">private:</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structILightSource_1_1LightVSCB" kindref="compound">LightVSCB</ref><sp/><ref refid="classILightSource_ae74ea4b3c8c575ecbac3156d4a9ee699_1ae74ea4b3c8c575ecbac3156d4a9ee699" kindref="member">getVscbData</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structILightSource_1_1LightPSCB" kindref="compound">LightPSCB</ref><sp/><ref refid="classILightSource_a17577069622792755b3aa3e1867dd77e_1a17577069622792755b3aa3e1867dd77e" kindref="member">getPscbData</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a52f8aa3d9b871f416990e363bd9c09e3_1a52f8aa3d9b871f416990e363bd9c09e3" kindref="member">populateCBData</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="89" refid="classILightSource_a3c48dc5f8c722ff8d6d3fc986861db4b_1a3c48dc5f8c722ff8d6d3fc986861db4b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>virtual<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a3c48dc5f8c722ff8d6d3fc986861db4b_1a3c48dc5f8c722ff8d6d3fc986861db4b" kindref="member">populateVscbData</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="90" refid="classILightSource_ae057f7544b9173eb9031c250948b4a8c_1ae057f7544b9173eb9031c250948b4a8c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>virtual<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classILightSource_ae057f7544b9173eb9031c250948b4a8c_1ae057f7544b9173eb9031c250948b4a8c" kindref="member">populatePscbData</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="classDirectionalLight" refkind="compound"><highlight class="normal">class<sp/><ref refid="classDirectionalLight" kindref="compound">DirectionalLight</ref><sp/>final</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>public<sp/><ref refid="classILightSource" kindref="compound">ILightSource</ref></highlight></codeline>
+<codeline lineno="95"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDirectionalLight" kindref="compound">DirectionalLight</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>radiusScale<sp/>=<sp/>1.0f,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;directionVector<sp/>=<sp/>{0.0f,<sp/>0.0f,<sp/>0.0f},<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;lightMeshPos<sp/>=<sp/>{8.0f,<sp/>8.0f,<sp/>2.f},<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::variant&lt;DirectX::XMFLOAT4,<sp/>std::string&gt;<sp/>&amp;colorOrTexturePath<sp/>=<sp/>DirectX::XMFLOAT4{1.0f,<sp/>1.0f,<sp/>1.0f,<sp/>1.0f},<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bShadowCasting<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bShowMesh<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>intensity<sp/>=<sp/>1.0f,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>shadowCamNearZ<sp/>=<sp/>1.0f,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>shadowCamFarZ<sp/>=<sp/>2000.0f<sp/>);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classILightSource_af79180aa4e70f55e10471ccd515391a5_1af79180aa4e70f55e10471ccd515391a5" kindref="member">displayImguiWidgets</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a388781b70e7569ac4be432b1e60cde96_1a388781b70e7569ac4be432b1e60cde96" kindref="member">setIntensity</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>newIntensity<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a70f8690fb45b8758cf974eab1c06d2ce_1a70f8690fb45b8758cf974eab1c06d2ce" kindref="member">setColor</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;diffuseColor<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/><ref refid="classILightSource_a39174369af77a807c727dd8b8b41afec_1a39174369af77a807c727dd8b8b41afec" kindref="member">getPosition</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classILightSource_a3c48dc5f8c722ff8d6d3fc986861db4b_1a3c48dc5f8c722ff8d6d3fc986861db4b" kindref="member">populateVscbData</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classILightSource_ae057f7544b9173eb9031c250948b4a8c_1ae057f7544b9173eb9031c250948b4a8c" kindref="member">populatePscbData</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="classSpotLight" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classSpotLight" kindref="compound">SpotLight</ref><sp/>final</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classILightSource" kindref="compound">ILightSource</ref></highlight></codeline>
+<codeline lineno="110"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSpotLight" kindref="compound">SpotLight</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>radiusScale<sp/>=<sp/>1.0f,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;directionVector<sp/>=<sp/>{0.0f,<sp/>0.0f,<sp/>1.0f},<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;pos<sp/>=<sp/>{8.0f,<sp/>8.0f,<sp/>2.f},<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::variant&lt;DirectX::XMFLOAT4,<sp/>std::string&gt;<sp/>&amp;colorOrTexturePath<sp/>=<sp/>DirectX::XMFLOAT4{1.0f,<sp/>1.0f,<sp/>1.0f,<sp/>1.0f},<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bShadowCasting<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bShowMesh<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>intensity<sp/>=<sp/>1.0f,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>fovConeAngle<sp/>=<sp/>60.0f,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>shadowCamNearZ<sp/>=<sp/>0.5f,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>shadowCamFarZ<sp/>=<sp/>80.0f<sp/>);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>displayImguiWidgets()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setIntensity(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>newIntensity<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setColor(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;diffuseColor<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>getPosition()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>populateVscbData(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>populatePscbData(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123" refid="classPointLight" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPointLight" kindref="compound">PointLight</ref><sp/>final</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classILightSource" kindref="compound">ILightSource</ref></highlight></codeline>
+<codeline lineno="125"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPointLight" kindref="compound">PointLight</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>radiusScale<sp/>=<sp/>0.5f,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;lightMeshRotationDeg<sp/>=<sp/>{0.0f,<sp/>0.0f,<sp/>0.f},<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;pos<sp/>=<sp/>{8.0f,<sp/>8.0f,<sp/>2.f},<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::variant&lt;DirectX::XMFLOAT4,<sp/>std::string&gt;<sp/>&amp;colorOrTexturePath<sp/>=<sp/>DirectX::XMFLOAT4{1.0f,<sp/>1.0f,<sp/>1.0f,<sp/>1.0f},<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bShadowCasting<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bShowMesh<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>intensity<sp/>=<sp/>1.0f,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>shadowCamNearZ<sp/>=<sp/>1.0f,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>shadowCamFarZ<sp/>=<sp/>100.0f<sp/>);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>displayImguiWidgets()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setIntensity(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>newIntensity<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setColor(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>&amp;diffuseColor<sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>DirectX::XMFLOAT3<sp/>getPosition()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>populateVscbData(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>populatePscbData(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/light_source.h"/>
+  </compounddef>
+</doxygen>

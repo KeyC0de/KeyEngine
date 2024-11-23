@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classcon_1_1RawLayout" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>con::RawLayout</compoundname>
+    <basecompoundref refid="classcon_1_1CBLayout" prot="public" virt="non-virtual">con::CBLayout</basecompoundref>
+    <includes refid="dynamic__constant__buffer_8h" local="no">dynamic_constant_buffer.h</includes>
+    <sectiondef kind="friend">
+      <memberdef kind="friend" id="classcon_1_1RawLayout_a87b6f773d0354ee3da4e455c08002867_1a87b6f773d0354ee3da4e455c08002867" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class LayoutMap</definition>
+        <argsstring></argsstring>
+        <name>LayoutMap</name>
+        <qualifiedname>con::RawLayout::LayoutMap</qualifiedname>
+        <param>
+          <type><ref refid="classcon_1_1LayoutMap" kindref="compound">LayoutMap</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="289" column="14" bodyfile="inc/dynamic_constant_buffer.h" bodystart="289" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classcon_1_1RawLayout_a34bf6b8f99c3d029c6af8c81cd50d454_1a34bf6b8f99c3d029c6af8c81cd50d454" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>con::RawLayout::RawLayout</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>RawLayout</name>
+        <qualifiedname>con::RawLayout::RawLayout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="291" column="1" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="288" bodyend="293"/>
+        <referencedby refid="classcon_1_1RawLayout_acc57850a3374dae3395727d4ef902d7c_1acc57850a3374dae3395727d4ef902d7c" compoundref="dynamic__constant__buffer_8cpp" startline="308" endline="311">clear</referencedby>
+        <referencedby refid="classcon_1_1RawLayout_aa73c4eddf4e7b53a1bf873bc89f0044e_1aa73c4eddf4e7b53a1bf873bc89f0044e" compoundref="dynamic__constant__buffer_8cpp" startline="300" endline="306">cookLayout</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classcon_1_1RawLayout_af98b51f5c4279ced1927a1953430be8b_1af98b51f5c4279ced1927a1953430be8b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcon_1_1CBElement" kindref="compound">CBElement</ref> &amp;</type>
+        <definition>CBElement &amp; con::RawLayout::operator[]</definition>
+        <argsstring>(const std::string &amp;key) cond_noex</argsstring>
+        <name>operator[]</name>
+        <qualifiedname>con::RawLayout::operator[]</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="294" column="11" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="295" bodyend="298"/>
+      </memberdef>
+      <memberdef kind="function" id="classcon_1_1RawLayout_ac4cd4dabf994fd33e4cfb154e0dbe94c_1ac4cd4dabf994fd33e4cfb154e0dbe94c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="namespacecon_a715a53e528376e9d85ea035a2db279a5_1a715a53e528376e9d85ea035a2db279a5" kindref="member">ElementType</ref></type>
+            <declname>elem</declname>
+            <defname>elem</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classcon_1_1CBElement" kindref="compound">CBElement</ref> &amp;</type>
+        <definition>CBElement &amp; con::RawLayout::add</definition>
+        <argsstring>(const std::string &amp;key) cond_noex</argsstring>
+        <name>add</name>
+        <qualifiedname>con::RawLayout::add</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="297" column="11" bodyfile="inc/dynamic_constant_buffer.h" bodystart="297" bodyend="300"/>
+        <referencedby refid="classCube_af0fe61f07cbc70de782950bac056988b_1af0fe61f07cbc70de782950bac056988b" compoundref="cube_8cpp" startline="23" endline="194">Cube::Cube</referencedby>
+        <referencedby refid="classLine_ab4004be2273185c41037d4dd14e02990_1ab4004be2273185c41037d4dd14e02990" compoundref="line_8cpp" startline="22" endline="105">Line::Line</referencedby>
+        <referencedby refid="classPlane_a70e7a5971d34e1130740e843a6a18896_1a70e7a5971d34e1130740e843a6a18896" compoundref="plane_8cpp" startline="23" endline="193">Plane::Plane</referencedby>
+        <referencedby refid="classSphere_a80bdf896453fbb509c1e6170e0022c29_1a80bdf896453fbb509c1e6170e0022c29" compoundref="sphere_8cpp" startline="18" endline="72">Sphere::Sphere</referencedby>
+        <referencedby refid="classTerrain_af5a4ec6ff724b557052dd12be7f0de0c_1af5a4ec6ff724b557052dd12be7f0de0c" compoundref="terrain_8cpp" startline="24" endline="158">Terrain::Terrain</referencedby>
+        <referencedby refid="classTransformScaleVSCB_ae0239c9d66ef99f89bc1c1e89962f5a2_1ae0239c9d66ef99f89bc1c1e89962f5a2" compoundref="transform__vscb_8cpp" startline="172" endline="177">TransformScaleVSCB::calcCbLayout</referencedby>
+        <referencedby refid="classren_1_1Renderer3d_afd4dabebdfcf0485228c750bbb227372_1afd4dabebdfcf0485228c750bbb227372" compoundref="renderer_8cpp" startline="315" endline="424">ren::Renderer3d::recreate</referencedby>
+        <referencedby refid="testing_8h_a615223c9014d0338497568c46d43ca1f_1a615223c9014d0338497568c46d43ca1f" compoundref="testing_8cpp" startline="83" endline="344">testDynamicConstant</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classcon_1_1RawLayout_acc57850a3374dae3395727d4ef902d7c_1acc57850a3374dae3395727d4ef902d7c" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void con::RawLayout::clear</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>clear</name>
+        <qualifiedname>con::RawLayout::clear</qualifiedname>
+        <briefdescription>
+<para>reset this object with an empty struct at its root </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="303" column="6" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="308" bodyend="311"/>
+      </memberdef>
+      <memberdef kind="function" id="classcon_1_1RawLayout_aa73c4eddf4e7b53a1bf873bc89f0044e_1aa73c4eddf4e7b53a1bf873bc89f0044e" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classcon_1_1CBElement" kindref="compound">CBElement</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; CBElement &gt; con::RawLayout::cookLayout</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>cookLayout</name>
+        <qualifiedname>con::RawLayout::cookLayout</qualifiedname>
+        <briefdescription>
+<para>cook/commit the layout and then relinquish (by yielding the root layout element) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="305" column="17" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="300" bodyend="306"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Raw layout represents a layout that has not yet been finalized and registered. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>=============================================================</para>
+<para><simplesect kind="author"><para>KeyC0de </para>
+</simplesect>
+<simplesect kind="date"><para>2022/08/21 19:55 <heading level="1">structure can be edited by adding layout nodes </heading>
+</para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>con::CBLayout</label>
+        <link refid="classcon_1_1CBLayout"/>
+      </node>
+      <node id="1">
+        <label>con::RawLayout</label>
+        <link refid="classcon_1_1RawLayout"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>con::CBLayout</label>
+        <link refid="classcon_1_1CBLayout"/>
+      </node>
+      <node id="1">
+        <label>con::RawLayout</label>
+        <link refid="classcon_1_1RawLayout"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/dynamic_constant_buffer.h" line="286" column="1" bodyfile="inc/dynamic_constant_buffer.h" bodystart="288" bodyend="306"/>
+    <listofallmembers>
+      <member refid="classcon_1_1RawLayout_ac4cd4dabf994fd33e4cfb154e0dbe94c_1ac4cd4dabf994fd33e4cfb154e0dbe94c" prot="public" virt="non-virtual"><scope>con::RawLayout</scope><name>add</name></member>
+      <member refid="classcon_1_1CBLayout_ad0f25a176e697cb4a7c8a2bc938ea909_1ad0f25a176e697cb4a7c8a2bc938ea909" prot="public" virt="non-virtual"><scope>con::RawLayout</scope><name>calcSignature</name></member>
+      <member refid="classcon_1_1CBLayout_a9b04357032146c78e74cce1e9843a788_1a9b04357032146c78e74cce1e9843a788" prot="protected" virt="non-virtual"><scope>con::RawLayout</scope><name>CBLayout</name></member>
+      <member refid="classcon_1_1RawLayout_acc57850a3374dae3395727d4ef902d7c_1acc57850a3374dae3395727d4ef902d7c" prot="private" virt="non-virtual"><scope>con::RawLayout</scope><name>clear</name></member>
+      <member refid="classcon_1_1RawLayout_aa73c4eddf4e7b53a1bf873bc89f0044e_1aa73c4eddf4e7b53a1bf873bc89f0044e" prot="private" virt="non-virtual"><scope>con::RawLayout</scope><name>cookLayout</name></member>
+      <member refid="classcon_1_1CBLayout_a38fe5d51ff565b2f6089861086125341_1a38fe5d51ff565b2f6089861086125341" prot="public" virt="non-virtual"><scope>con::RawLayout</scope><name>getSizeInBytes</name></member>
+      <member refid="classcon_1_1RawLayout_a87b6f773d0354ee3da4e455c08002867_1a87b6f773d0354ee3da4e455c08002867" prot="private" virt="non-virtual"><scope>con::RawLayout</scope><name>LayoutMap</name></member>
+      <member refid="classcon_1_1CBLayout_a0b1d411cd40cd4aed65e330a385a03f2_1a0b1d411cd40cd4aed65e330a385a03f2" prot="protected" virt="non-virtual"><scope>con::RawLayout</scope><name>m_pLayoutRoot</name></member>
+      <member refid="classcon_1_1RawLayout_af98b51f5c4279ced1927a1953430be8b_1af98b51f5c4279ced1927a1953430be8b" prot="public" virt="non-virtual"><scope>con::RawLayout</scope><name>operator[]</name></member>
+      <member refid="classcon_1_1RawLayout_a34bf6b8f99c3d029c6af8c81cd50d454_1a34bf6b8f99c3d029c6af8c81cd50d454" prot="public" virt="non-virtual"><scope>con::RawLayout</scope><name>RawLayout</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

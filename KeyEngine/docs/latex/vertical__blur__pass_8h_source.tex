@@ -1,0 +1,32 @@
+\doxysection{vertical\+\_\+blur\+\_\+pass.\+h}
+\hypertarget{vertical__blur__pass_8h_source}{}\label{vertical__blur__pass_8h_source}\index{inc/vertical\_blur\_pass.h@{inc/vertical\_blur\_pass.h}}
+\mbox{\hyperlink{vertical__blur__pass_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{fullscreen__pass_8h}{fullscreen\_pass.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{constant__buffer__ex_8h}{constant\_buffer\_ex.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGraphics}{Graphics}};}
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classPixelShader}{PixelShader}};}
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIRenderTargetView}{IRenderTargetView}};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceren}{ren}}}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classren_1_1VerticalBlurPass}{VerticalBlurPass}}}
+\DoxyCodeLine{00015\ \ \ \ \ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classren_1_1IFullscreenPass}{IFullscreenPass}}}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ std::shared\_ptr<PixelShaderConstantBufferEx>\ \mbox{\hyperlink{classren_1_1VerticalBlurPass_a4965fa064d5c7f590a2286a1706ebc64_a4965fa064d5c7f590a2286a1706ebc64}{m\_pPscbBlurDirection}};}
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{classren_1_1VerticalBlurPass_ac74bced70c3303e580908b6d60726b4d_ac74bced70c3303e580908b6d60726b4d}{VerticalBlurPass}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx,\ \textcolor{keyword}{const}\ std::string\ \&name\ );}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1VerticalBlurPass_a6e8ef490107e5b9b7872b24183b37dae_a6e8ef490107e5b9b7872b24183b37dae}{run}}(\ \mbox{\hyperlink{classGraphics}{Graphics}}\ \&gfx\ )\ \textcolor{keyword}{const}\ cond\_noex\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classren_1_1VerticalBlurPass_ad224bfb4e138397eeddd69c037527787_ad224bfb4e138397eeddd69c037527787}{reset}}()\ cond\_noex\ override;}
+\DoxyCodeLine{00023\ \};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \}}
+
+\end{DoxyCode}

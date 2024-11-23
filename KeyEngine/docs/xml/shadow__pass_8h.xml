@@ -1,0 +1,707 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="shadow__pass_8h" kind="file" language="C++">
+    <compoundname>shadow_pass.h</compoundname>
+    <includes local="no">string</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">DirectXMath.h</includes>
+    <includes refid="render__queue__pass_8h" local="yes">render_queue_pass.h</includes>
+    <includes refid="constant__buffer_8h" local="yes">constant_buffer.h</includes>
+    <includes refid="light__source_8h" local="yes">light_source.h</includes>
+    <includedby refid="SHADOW__PASS_8CPP" local="yes">src/SHADOW_PASS.CPP</includedby>
+    <includedby refid="light__source_8cpp" local="yes">src/light_source.cpp</includedby>
+    <includedby refid="renderer_8cpp" local="yes">src/renderer.cpp</includedby>
+    <incdepgraph>
+      <node id="21">
+        <label>assertions_console.h</label>
+        <link refid="assertions__console_8h"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>bindable.h</label>
+        <link refid="bindable_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>bindable_pass.h</label>
+        <link refid="bindable__pass_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="65">
+        <label>bindable_registry.h</label>
+        <link refid="bindable__registry_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>binder.h</label>
+        <link refid="binder_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>bitmap.h</label>
+        <link refid="bitmap_8h"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>color.h</label>
+        <link refid="color_8h"/>
+      </node>
+      <node id="46">
+        <label>console.h</label>
+        <link refid="console_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>constant_buffer.h</label>
+        <link refid="constant__buffer_8h"/>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>depth_stencil_view.h</label>
+        <link refid="depth__stencil__view_8h"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="74">
+        <label>dxgi_info_queue.h</label>
+        <link refid="dxgi__info__queue_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>graphics.h</label>
+        <link refid="graphics_8h"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>graphics_friend.h</label>
+        <link refid="graphics__friend_8h"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="81">
+        <label>imgui_visitors.h</label>
+        <link refid="imgui__visitors_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>job.h</label>
+        <link refid="job_8h"/>
+      </node>
+      <node id="16">
+        <label>key_exception.h</label>
+        <link refid="key__exception_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>key_timer.h</label>
+        <link refid="key__timer_8h"/>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>key_type_traits.h</label>
+        <link refid="key__type__traits_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>key_wrl.h</label>
+        <link refid="key__wrl_8h"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="76">
+        <label>light_source.h</label>
+        <link refid="light__source_8h"/>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>linker.h</label>
+        <link refid="linker_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>math_utils.h</label>
+        <link refid="math__utils_8h"/>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+      </node>
+      <node id="78">
+        <label>model.h</label>
+        <link refid="model_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="67">
+        <label>os_utils.h</label>
+        <link refid="os__utils_8h"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>pass.h</label>
+        <link refid="pass_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>render_queue_pass.h</label>
+        <link refid="render__queue__pass_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>render_surface.h</label>
+        <link refid="render__surface_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>render_target.h</label>
+        <link refid="render__target_8h"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>renderer_exception.h</label>
+        <link refid="renderer__exception_8h"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="80">
+        <label>rendering_channel.h</label>
+        <link refid="rendering__channel_8h"/>
+      </node>
+      <node id="1">
+        <label>inc/shadow_pass.h</label>
+        <link refid="shadow__pass_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>texture_desc.h</label>
+        <link refid="texture__desc_8h"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="52">
+        <label>utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+      </node>
+      <node id="64">
+        <label>utils_global.h</label>
+        <link refid="utils__global_8h"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>winner.h</label>
+        <link refid="winner_8h"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>DirectXMath.h</label>
+      </node>
+      <node id="34">
+        <label>DirectxMath.h</label>
+      </node>
+      <node id="72">
+        <label>ShlObj.h</label>
+      </node>
+      <node id="33">
+        <label>Windows.h</label>
+      </node>
+      <node id="58">
+        <label>algorithm</label>
+      </node>
+      <node id="9">
+        <label>array</label>
+      </node>
+      <node id="54">
+        <label>bitset</label>
+      </node>
+      <node id="45">
+        <label>chrono</label>
+      </node>
+      <node id="56">
+        <label>cinttypes</label>
+      </node>
+      <node id="48">
+        <label>cmath</label>
+      </node>
+      <node id="69">
+        <label>comdef.h</label>
+      </node>
+      <node id="55">
+        <label>cstddef</label>
+      </node>
+      <node id="49">
+        <label>cstdint</label>
+      </node>
+      <node id="20">
+        <label>d3d11.h</label>
+      </node>
+      <node id="42">
+        <label>d3dcompiler.h</label>
+      </node>
+      <node id="41">
+        <label>dxgi1_4.h</label>
+      </node>
+      <node id="75">
+        <label>dxgidebug.h</label>
+      </node>
+      <node id="35">
+        <label>dxtex/DirectXTex.h</label>
+      </node>
+      <node id="62">
+        <label>execution</label>
+      </node>
+      <node id="79">
+        <label>filesystem</label>
+      </node>
+      <node id="71">
+        <label>functional</label>
+      </node>
+      <node id="57">
+        <label>future</label>
+      </node>
+      <node id="50">
+        <label>iomanip</label>
+      </node>
+      <node id="22">
+        <label>iostream</label>
+      </node>
+      <node id="60">
+        <label>iterator</label>
+      </node>
+      <node id="51">
+        <label>limits</label>
+      </node>
+      <node id="4">
+        <label>memory</label>
+      </node>
+      <node id="59">
+        <label>numeric</label>
+      </node>
+      <node id="25">
+        <label>optional</label>
+      </node>
+      <node id="61">
+        <label>regex</label>
+      </node>
+      <node id="32">
+        <label>sdkddkver.h</label>
+      </node>
+      <node id="53">
+        <label>set</label>
+      </node>
+      <node id="13">
+        <label>sstream</label>
+      </node>
+      <node id="17">
+        <label>stdexcept</label>
+      </node>
+      <node id="2">
+        <label>string</label>
+      </node>
+      <node id="44">
+        <label>thread</label>
+      </node>
+      <node id="70">
+        <label>tlhelp32.h</label>
+      </node>
+      <node id="12">
+        <label>type_traits</label>
+      </node>
+      <node id="11">
+        <label>typeinfo</label>
+      </node>
+      <node id="66">
+        <label>unordered_map</label>
+      </node>
+      <node id="77">
+        <label>variant</label>
+      </node>
+      <node id="3">
+        <label>vector</label>
+      </node>
+      <node id="73">
+        <label>wincred.h</label>
+      </node>
+      <node id="68">
+        <label>winternl.h</label>
+      </node>
+      <node id="27">
+        <label>wrl.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>inc/shadow_pass.h</label>
+        <link refid="shadow__pass_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/SHADOW_PASS.CPP</label>
+        <link refid="SHADOW__PASS_8CPP"/>
+      </node>
+      <node id="3">
+        <label>src/light_source.cpp</label>
+        <link refid="light__source_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/renderer.cpp</label>
+        <link refid="renderer_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classren_1_1ShadowPass" prot="public">ren::ShadowPass</innerclass>
+    <innerclass refid="structren_1_1ShadowPass_1_1GlobalsVSCB" prot="private">ren::ShadowPass::GlobalsVSCB</innerclass>
+    <innerclass refid="structren_1_1ShadowPass_1_1GlobalsPSCB" prot="private">ren::ShadowPass::GlobalsPSCB</innerclass>
+    <innernamespace refid="namespaceren">ren</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;DirectXMath.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="render__queue__pass_8h" kindref="compound">render_queue_pass.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="constant__buffer_8h" kindref="compound">constant_buffer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="light__source_8h" kindref="compound">light_source.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classGraphics" kindref="compound">Graphics</ref>;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classCamera" kindref="compound">Camera</ref>;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classTextureArrayOffscreenDS" kindref="compound">TextureArrayOffscreenDS</ref>;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classCubeTextureArrayOffscreenDS" kindref="compound">CubeTextureArrayOffscreenDS</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classIDepthStencilView" kindref="compound">IDepthStencilView</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceren" kindref="compound">ren</ref></highlight></codeline>
+<codeline lineno="19"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classren_1_1ShadowPass" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classren_1_1ShadowPass" kindref="compound">ShadowPass</ref></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classren_1_1RenderQueuePass" kindref="compound">RenderQueuePass</ref></highlight></codeline>
+<codeline lineno="29"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30" refid="classren_1_1ShadowPass_a78befc9467180544b3e1b7ea9c6db0c1_1a78befc9467180544b3e1b7ea9c6db0c1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classren_1_1ShadowPass_a78befc9467180544b3e1b7ea9c6db0c1_1a78befc9467180544b3e1b7ea9c6db0c1" kindref="member">s_maxShadowCastingLights</ref><sp/>=<sp/>16u;</highlight></codeline>
+<codeline lineno="31" refid="classren_1_1ShadowPass_a0a9da504ea83b9478583b9fc996a56be_1a0a9da504ea83b9478583b9fc996a56be" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classren_1_1ShadowPass_a0a9da504ea83b9478583b9fc996a56be_1a0a9da504ea83b9478583b9fc996a56be" kindref="member">s_globalsVscbSlot</ref><sp/>=<sp/>1u;</highlight></codeline>
+<codeline lineno="32" refid="classren_1_1ShadowPass_a0f684ab6eadd250671eeff37319d7ac1_1a0f684ab6eadd250671eeff37319d7ac1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classren_1_1ShadowPass_a0f684ab6eadd250671eeff37319d7ac1_1a0f684ab6eadd250671eeff37319d7ac1" kindref="member">s_globalsPscbSlot</ref><sp/>=<sp/>1u;</highlight></codeline>
+<codeline lineno="33" refid="classren_1_1ShadowPass_ab2d17ab137ff24dfd2e7f219b1da5bfd_1ab2d17ab137ff24dfd2e7f219b1da5bfd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classren_1_1ShadowPass_ab2d17ab137ff24dfd2e7f219b1da5bfd_1ab2d17ab137ff24dfd2e7f219b1da5bfd" kindref="member">s_lightArrayVertexShaderCBSlot</ref><sp/>=<sp/>2u;</highlight></codeline>
+<codeline lineno="34" refid="classren_1_1ShadowPass_aabd9a71155ac410aa5a12a732b48a762_1aabd9a71155ac410aa5a12a732b48a762" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classren_1_1ShadowPass_aabd9a71155ac410aa5a12a732b48a762_1aabd9a71155ac410aa5a12a732b48a762" kindref="member">s_lightArrayPixelShaderCBSlot</ref><sp/>=<sp/>2u;</highlight></codeline>
+<codeline lineno="35" refid="classren_1_1ShadowPass_affb066b0b62365f2371369da5e7b164f_1affb066b0b62365f2371369da5e7b164f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classren_1_1ShadowPass_affb066b0b62365f2371369da5e7b164f_1affb066b0b62365f2371369da5e7b164f" kindref="member">s_shadowMapArraySlot</ref><sp/>=<sp/>3u;</highlight></codeline>
+<codeline lineno="36" refid="classren_1_1ShadowPass_a57668a13b79c7b97a93535fc9f328e0e_1a57668a13b79c7b97a93535fc9f328e0e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classren_1_1ShadowPass_a57668a13b79c7b97a93535fc9f328e0e_1a57668a13b79c7b97a93535fc9f328e0e" kindref="member">s_shadowCubeMapArraySlot</ref><sp/>=<sp/>4u;</highlight></codeline>
+<codeline lineno="37" refid="classren_1_1ShadowPass_a7f7b6d1fa45f819dd55562fc55886bdc_1a7f7b6d1fa45f819dd55562fc55886bdc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classren_1_1ShadowPass_a7f7b6d1fa45f819dd55562fc55886bdc_1a7f7b6d1fa45f819dd55562fc55886bdc" kindref="member">s_shadowMapResolution</ref><sp/>=<sp/>1024u;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="structren_1_1ShadowPass_1_1GlobalsVSCB" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structren_1_1ShadowPass_1_1GlobalsVSCB" kindref="compound">GlobalsVSCB</ref></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="41" refid="structren_1_1ShadowPass_1_1GlobalsVSCB_abbbd44b74bb776816ea9e30ca979084e_1abbbd44b74bb776816ea9e30ca979084e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structren_1_1ShadowPass_1_1GlobalsVSCB_abbbd44b74bb776816ea9e30ca979084e_1abbbd44b74bb776816ea9e30ca979084e" kindref="member">cb_time</ref>;</highlight></codeline>
+<codeline lineno="42" refid="structren_1_1ShadowPass_1_1GlobalsVSCB_a15f0aedc26e3c7b632a5bfbe02912bab_1a15f0aedc26e3c7b632a5bfbe02912bab" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structren_1_1ShadowPass_1_1GlobalsVSCB_a15f0aedc26e3c7b632a5bfbe02912bab_1a15f0aedc26e3c7b632a5bfbe02912bab" kindref="member">cb_nLights</ref>;</highlight></codeline>
+<codeline lineno="43" refid="structren_1_1ShadowPass_1_1GlobalsVSCB_adf54f23af297b4d0e4101e5e807d6377_1adf54f23af297b4d0e4101e5e807d6377" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structren_1_1ShadowPass_1_1GlobalsVSCB_adf54f23af297b4d0e4101e5e807d6377_1adf54f23af297b4d0e4101e5e807d6377" kindref="member">cb_nPointLights</ref>;</highlight></codeline>
+<codeline lineno="44" refid="structren_1_1ShadowPass_1_1GlobalsVSCB_a0e2b427111b40b20aae2b1fdb52c8593_1a0e2b427111b40b20aae2b1fdb52c8593" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structren_1_1ShadowPass_1_1GlobalsVSCB_a0e2b427111b40b20aae2b1fdb52c8593_1a0e2b427111b40b20aae2b1fdb52c8593" kindref="member">cb_globalsPadding</ref>;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="46" refid="classren_1_1ShadowPass_a0c0dd1bd05256ed899612d08eea83e25_1a0c0dd1bd05256ed899612d08eea83e25" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classVertexShaderConstantBuffer" kindref="compound">VertexShaderConstantBuffer&lt;GlobalsVSCB&gt;</ref><sp/><ref refid="classren_1_1ShadowPass_a0c0dd1bd05256ed899612d08eea83e25_1a0c0dd1bd05256ed899612d08eea83e25" kindref="member">m_globalsVscb</ref>;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="structren_1_1ShadowPass_1_1GlobalsPSCB" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structren_1_1ShadowPass_1_1GlobalsPSCB" kindref="compound">GlobalsPSCB</ref></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="50" refid="structren_1_1ShadowPass_1_1GlobalsPSCB_adb7855033f5756368a7f043889998af8_1adb7855033f5756368a7f043889998af8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structren_1_1ShadowPass_1_1GlobalsPSCB_adb7855033f5756368a7f043889998af8_1adb7855033f5756368a7f043889998af8" kindref="member">cb_time</ref>;</highlight></codeline>
+<codeline lineno="51" refid="structren_1_1ShadowPass_1_1GlobalsPSCB_ac4eb5064194e0726eb4273998c3da59f_1ac4eb5064194e0726eb4273998c3da59f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structren_1_1ShadowPass_1_1GlobalsPSCB_ac4eb5064194e0726eb4273998c3da59f_1ac4eb5064194e0726eb4273998c3da59f" kindref="member">cb_nLights</ref>;</highlight></codeline>
+<codeline lineno="52" refid="structren_1_1ShadowPass_1_1GlobalsPSCB_afe8db2dd5dd176d7496ee6232d4a771b_1afe8db2dd5dd176d7496ee6232d4a771b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structren_1_1ShadowPass_1_1GlobalsPSCB_afe8db2dd5dd176d7496ee6232d4a771b_1afe8db2dd5dd176d7496ee6232d4a771b" kindref="member">cb_nPointLights</ref>;</highlight></codeline>
+<codeline lineno="53" refid="structren_1_1ShadowPass_1_1GlobalsPSCB_a2d10e7dbc77b799328a7dfa4876bd33b_1a2d10e7dbc77b799328a7dfa4876bd33b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structren_1_1ShadowPass_1_1GlobalsPSCB_a2d10e7dbc77b799328a7dfa4876bd33b_1a2d10e7dbc77b799328a7dfa4876bd33b" kindref="member">cb_globalsPadding</ref>;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="55" refid="classren_1_1ShadowPass_a5166c73b0a29b04d5e50dfd998c48628_1a5166c73b0a29b04d5e50dfd998c48628" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPixelShaderConstantBuffer" kindref="compound">PixelShaderConstantBuffer&lt;GlobalsPSCB&gt;</ref><sp/><ref refid="classren_1_1ShadowPass_a5166c73b0a29b04d5e50dfd998c48628_1a5166c73b0a29b04d5e50dfd998c48628" kindref="member">m_globalsPscb</ref>;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="classren_1_1ShadowPass_a09354ae41187122545fb29cf0d7794fd_1a09354ae41187122545fb29cf0d7794fd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="classren_1_1ShadowPass_a09354ae41187122545fb29cf0d7794fd_1a09354ae41187122545fb29cf0d7794fd" kindref="member">LightsVSCB</ref><sp/>=<sp/><ref refid="structILightSource_1_1LightVSCB" kindref="compound">ILightSource::LightVSCB</ref>[<ref refid="classren_1_1ShadowPass_a78befc9467180544b3e1b7ea9c6db0c1_1a78befc9467180544b3e1b7ea9c6db0c1" kindref="member">s_maxShadowCastingLights</ref>];</highlight></codeline>
+<codeline lineno="58" refid="classren_1_1ShadowPass_aed4d50a7bfde597dc4247ce3ecaa6ada_1aed4d50a7bfde597dc4247ce3ecaa6ada" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classVertexShaderConstantBuffer" kindref="compound">VertexShaderConstantBuffer&lt;LightsVSCB&gt;</ref><sp/><ref refid="classren_1_1ShadowPass_aed4d50a7bfde597dc4247ce3ecaa6ada_1aed4d50a7bfde597dc4247ce3ecaa6ada" kindref="member">m_vscb</ref>;</highlight></codeline>
+<codeline lineno="59" refid="classren_1_1ShadowPass_afd94955d277d6d9df9571863056cbe55_1afd94955d277d6d9df9571863056cbe55" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="classren_1_1ShadowPass_afd94955d277d6d9df9571863056cbe55_1afd94955d277d6d9df9571863056cbe55" kindref="member">LightsPSCB</ref><sp/>=<sp/><ref refid="structILightSource_1_1LightPSCB" kindref="compound">ILightSource::LightPSCB</ref>[<ref refid="classren_1_1ShadowPass_a78befc9467180544b3e1b7ea9c6db0c1_1a78befc9467180544b3e1b7ea9c6db0c1" kindref="member">s_maxShadowCastingLights</ref>];</highlight></codeline>
+<codeline lineno="60" refid="classren_1_1ShadowPass_adccb30c5bb3a2e7ade417c7157b83ca4_1adccb30c5bb3a2e7ade417c7157b83ca4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPixelShaderConstantBuffer" kindref="compound">PixelShaderConstantBuffer&lt;LightsPSCB&gt;</ref><sp/><ref refid="classren_1_1ShadowPass_adccb30c5bb3a2e7ade417c7157b83ca4_1adccb30c5bb3a2e7ade417c7157b83ca4" kindref="member">m_pscb</ref>;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="classren_1_1ShadowPass_a9352a3d27813950414fbed5a9ea476c7_1a9352a3d27813950414fbed5a9ea476c7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;DirectX::XMVECTOR&gt;<sp/><ref refid="classren_1_1ShadowPass_a9352a3d27813950414fbed5a9ea476c7_1a9352a3d27813950414fbed5a9ea476c7" kindref="member">m_cameraDirections</ref>{6};</highlight></codeline>
+<codeline lineno="63" refid="classren_1_1ShadowPass_a892a877625b3f74424b05cfe66c84603_1a892a877625b3f74424b05cfe66c84603" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;DirectX::XMVECTOR&gt;<sp/><ref refid="classren_1_1ShadowPass_a892a877625b3f74424b05cfe66c84603_1a892a877625b3f74424b05cfe66c84603" kindref="member">m_cameraUps</ref>{6};</highlight></codeline>
+<codeline lineno="64" refid="classren_1_1ShadowPass_ad8703170561e0605426d5e43ecc96324_1ad8703170561e0605426d5e43ecc96324" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;ILightSource*&gt;<sp/><ref refid="classren_1_1ShadowPass_ad8703170561e0605426d5e43ecc96324_1ad8703170561e0605426d5e43ecc96324" kindref="member">m_shadowCastingLights</ref>;</highlight></codeline>
+<codeline lineno="65" refid="classren_1_1ShadowPass_af4f3a07a55a116c015e4d5cf7b704343_1af4f3a07a55a116c015e4d5cf7b704343" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;TextureArrayOffscreenDS&gt;<sp/><ref refid="classren_1_1ShadowPass_af4f3a07a55a116c015e4d5cf7b704343_1af4f3a07a55a116c015e4d5cf7b704343" kindref="member">m_pOffscreenDsvMapArray</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>shadow<sp/>maps<sp/>for<sp/>Directional/Spot<sp/>lights</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="classren_1_1ShadowPass_a385c01dc0ae5345d932f14e54846a515_1a385c01dc0ae5345d932f14e54846a515" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;CubeTextureArrayOffscreenDS&gt;<sp/><ref refid="classren_1_1ShadowPass_a385c01dc0ae5345d932f14e54846a515_1a385c01dc0ae5345d932f14e54846a515" kindref="member">m_pOffscreenDsvCubemapArray</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>shadow<sp/>cube<sp/>maps<sp/>for<sp/>Point<sp/>lights</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classren_1_1ShadowPass_abe2e960e1ee7226dc547ac67616aecc1_1abe2e960e1ee7226dc547ac67616aecc1" kindref="member">getResolution</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">public:</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classren_1_1ShadowPass" kindref="compound">ShadowPass</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>&amp;name,<sp/>const<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>shadowMapRez<sp/>=<sp/><ref refid="classren_1_1ShadowPass_a7f7b6d1fa45f819dd55562fc55886bdc_1a7f7b6d1fa45f819dd55562fc55886bdc" kindref="member">s_shadowMapResolution</ref><sp/>);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>then<sp/>render<sp/>the<sp/>depth<sp/>buffer<sp/>to<sp/>texture<sp/>6<sp/>times</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classren_1_1ShadowPass_a31a85426ffac3f700c0b3c187b0567af_1a31a85426ffac3f700c0b3c187b0567af" kindref="member">run</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>const<sp/>cond_noex<sp/>override;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classren_1_1ShadowPass_a90d4ac05ba7d7f2cb3ae06ce0ffae448_1a90d4ac05ba7d7f2cb3ae06ce0ffae448" kindref="member">bindShadowCastingLights</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/>const<sp/>std::vector&lt;<ref refid="classILightSource" kindref="compound">ILightSource</ref>*&gt;<sp/>&amp;shadowCastingLights<sp/>);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classren_1_1ShadowPass_abfd441eaa17f14d2f82fea433806a4f4_1abfd441eaa17f14d2f82fea433806a4f4" kindref="member">dumpShadowMap</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>&amp;path<sp/>)<sp/>const;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classren_1_1ShadowPass_a88f8d3b07f57c1d6a98a78fec2e68b5f_1a88f8d3b07f57c1d6a98a78fec2e68b5f" kindref="member">dumpShadowCubeMap</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx,<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>&amp;path<sp/>)<sp/>const;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">private:</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classren_1_1ShadowPass_a2dcba5ef918addeb7a105cce0fe45fe0_1a2dcba5ef918addeb7a105cce0fe45fe0" kindref="member">bindGlobalCBs</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classren_1_1ShadowPass_a3dfc4bceb738b9e479457502373f6b38_1a3dfc4bceb738b9e479457502373f6b38" kindref="member">bindLightCBs</ref>(<sp/><ref refid="classGraphics" kindref="compound">Graphics</ref><sp/>&amp;gfx<sp/>)<sp/>cond_noex;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal">}</highlight><highlight class="comment">//namespace<sp/>ren</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="inc/shadow_pass.h"/>
+  </compounddef>
+</doxygen>

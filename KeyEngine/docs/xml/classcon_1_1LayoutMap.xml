@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classcon_1_1LayoutMap" kind="class" language="C++" prot="public">
+    <compoundname>con::LayoutMap</compoundname>
+    <includes refid="dynamic__constant__buffer_8h" local="no">dynamic_constant_buffer.h</includes>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classcon_1_1LayoutMap_a3ba6c0b1c55363dd853ca93e826682c2_1a3ba6c0b1c55363dd853ca93e826682c2" prot="private" static="yes" mutable="no">
+        <type><ref refid="classcon_1_1LayoutMap" kindref="compound">LayoutMap</ref> *</type>
+        <definition>LayoutMap* con::LayoutMap::s_pInstance</definition>
+        <argsstring></argsstring>
+        <name>s_pInstance</name>
+        <qualifiedname>con::LayoutMap::s_pInstance</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="473" column="25" bodyfile="inc/dynamic_constant_buffer.h" bodystart="473" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classcon_1_1LayoutMap_a367ed73b79d7920e5368745583d4de57_1a367ed73b79d7920e5368745583d4de57" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, std::shared_ptr&lt; <ref refid="classcon_1_1CBElement" kindref="compound">con::CBElement</ref> &gt; &gt;</type>
+        <definition>std::unordered_map&lt;std::string, std::shared_ptr&lt;con::CBElement&gt; &gt; con::LayoutMap::m_map</definition>
+        <argsstring></argsstring>
+        <name>m_map</name>
+        <qualifiedname>con::LayoutMap::m_map</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="474" column="20" bodyfile="inc/dynamic_constant_buffer.h" bodystart="474" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classcon_1_1LayoutMap_a1c3854382a84e6b2f510aadd916d8ce4_1a1c3854382a84e6b2f510aadd916d8ce4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classcon_1_1CookedLayout" kindref="compound">con::CookedLayout</ref></type>
+        <definition>con::CookedLayout con::LayoutMap::fetch</definition>
+        <argsstring>(con::RawLayout &amp;&amp;cbLayout) cond_noex</argsstring>
+        <name>fetch</name>
+        <qualifiedname>con::LayoutMap::fetch</qualifiedname>
+        <param>
+          <type><ref refid="classcon_1_1RawLayout" kindref="compound">con::RawLayout</ref> &amp;&amp;</type>
+          <declname>cbLayout</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="476" column="26" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="426" bodyend="443"/>
+        <referencedby refid="classcon_1_1CBuffer_a9087299fd88bab576c65e5c2df81e9dd_1a9087299fd88bab576c65e5c2df81e9dd" compoundref="dynamic__constant__buffer_8cpp" startline="453" endline="458">con::CBuffer::CBuffer</referencedby>
+        <referencedby refid="testing_8h_a615223c9014d0338497568c46d43ca1f_1a615223c9014d0338497568c46d43ca1f" compoundref="testing_8cpp" startline="83" endline="344">testDynamicConstant</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classcon_1_1LayoutMap_a205d110d9c3e159c3e79ac1bcb3532da_1a205d110d9c3e159c3e79ac1bcb3532da" prot="private" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classcon_1_1LayoutMap" kindref="compound">LayoutMap</ref> &amp;</type>
+        <definition>LayoutMap &amp; con::LayoutMap::getInstance</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>getInstance</name>
+        <qualifiedname>con::LayoutMap::getInstance</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="478" column="18" bodyfile="src/dynamic_constant_buffer.cpp" bodystart="445" bodyend="449"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>maps <ref refid="classcon_1_1CBElement" kindref="compound">CBElement</ref> strings with their <ref refid="classcon_1_1CBElement" kindref="compound">CBElement</ref> objects  </para>
+    </briefdescription>
+    <detaileddescription>
+<para>=============================================================</para>
+<para><simplesect kind="author"><para>KeyC0de </para>
+</simplesect>
+<simplesect kind="date"><para>2022/08/21 19:53 <heading level="1"></heading>
+</para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>con::LayoutMap</label>
+        <link refid="classcon_1_1LayoutMap"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>s_pInstance</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/dynamic_constant_buffer.h" line="471" column="1" bodyfile="inc/dynamic_constant_buffer.h" bodystart="472" bodyend="479"/>
+    <listofallmembers>
+      <member refid="classcon_1_1LayoutMap_a1c3854382a84e6b2f510aadd916d8ce4_1a1c3854382a84e6b2f510aadd916d8ce4" prot="public" virt="non-virtual"><scope>con::LayoutMap</scope><name>fetch</name></member>
+      <member refid="classcon_1_1LayoutMap_a205d110d9c3e159c3e79ac1bcb3532da_1a205d110d9c3e159c3e79ac1bcb3532da" prot="private" virt="non-virtual"><scope>con::LayoutMap</scope><name>getInstance</name></member>
+      <member refid="classcon_1_1LayoutMap_a367ed73b79d7920e5368745583d4de57_1a367ed73b79d7920e5368745583d4de57" prot="private" virt="non-virtual"><scope>con::LayoutMap</scope><name>m_map</name></member>
+      <member refid="classcon_1_1LayoutMap_a3ba6c0b1c55363dd853ca93e826682c2_1a3ba6c0b1c55363dd853ca93e826682c2" prot="private" virt="non-virtual"><scope>con::LayoutMap</scope><name>s_pInstance</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

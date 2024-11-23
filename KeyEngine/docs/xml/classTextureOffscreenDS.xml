@@ -1,0 +1,223 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classTextureOffscreenDS" kind="class" language="C++" prot="public">
+    <compoundname>TextureOffscreenDS</compoundname>
+    <basecompoundref refid="classIBindable" prot="public" virt="non-virtual">IBindable</basecompoundref>
+    <includes refid="texture_8h" local="no">texture.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classTextureOffscreenDS_a33e4b2416a7631cf81b49426783f5e3d_1a33e4b2416a7631cf81b49426783f5e3d" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int TextureOffscreenDS::m_slot</definition>
+        <argsstring></argsstring>
+        <name>m_slot</name>
+        <qualifiedname>TextureOffscreenDS::m_slot</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="77" column="14" bodyfile="inc/texture.h" bodystart="77" bodyend="-1"/>
+        <referencedby refid="classTextureOffscreenDS_a95a5353ca7c193f159457cadfeea0c79_1a95a5353ca7c193f159457cadfeea0c79" compoundref="texture_8cpp" startline="276" endline="279">getSlot</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classTextureOffscreenDS_abb356b8ca3037bc0983219b434ea7161_1abb356b8ca3037bc0983219b434ea7161" prot="protected" static="no" mutable="no">
+        <type>Microsoft::WRL::ComPtr&lt; ID3D11ShaderResourceView &gt;</type>
+        <definition>Microsoft::WRL::ComPtr&lt;ID3D11ShaderResourceView&gt; TextureOffscreenDS::m_pD3dSrv</definition>
+        <argsstring></argsstring>
+        <name>m_pD3dSrv</name>
+        <qualifiedname>TextureOffscreenDS::m_pD3dSrv</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="79" column="24" bodyfile="inc/texture.h" bodystart="79" bodyend="-1"/>
+        <referencedby refid="classTextureOffscreenDS_a945e26603caa6d94b95e1852faa6438e_1a945e26603caa6d94b95e1852faa6438e" compoundref="texture_8cpp" startline="234" endline="258">TextureOffscreenDS</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classTextureOffscreenDS_a9b26bfd254720792283511dd457cf329_1a9b26bfd254720792283511dd457cf329" prot="protected" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classDepthStencilOutput" kindref="compound">DepthStencilOutput</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;DepthStencilOutput&gt; TextureOffscreenDS::m_pDsv</definition>
+        <argsstring></argsstring>
+        <name>m_pDsv</name>
+        <qualifiedname>TextureOffscreenDS::m_pDsv</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="80" column="17" bodyfile="inc/texture.h" bodystart="80" bodyend="-1"/>
+        <referencedby refid="classTextureOffscreenDS_a945e26603caa6d94b95e1852faa6438e_1a945e26603caa6d94b95e1852faa6438e" compoundref="texture_8cpp" startline="234" endline="258">TextureOffscreenDS</referencedby>
+        <referencedby refid="classTextureOffscreenDS_a330165b4ce9659fbcc612432ea98e9b7_1a330165b4ce9659fbcc612432ea98e9b7" compoundref="texture_8cpp" startline="271" endline="274">accessDsv</referencedby>
+        <referencedby refid="classTextureOffscreenDS_a4cba906de522a7b08cc17ffb20f6b792_1a4cba906de522a7b08cc17ffb20f6b792" compoundref="texture_8cpp" startline="266" endline="269">shareDepthBuffer</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTextureOffscreenDS_a945e26603caa6d94b95e1852faa6438e_1a945e26603caa6d94b95e1852faa6438e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TextureOffscreenDS::TextureOffscreenDS</definition>
+        <argsstring>(Graphics &amp;gfx, const unsigned width, const unsigned height, const unsigned slot, const DepthStencilViewMode dsvMode)</argsstring>
+        <name>TextureOffscreenDS</name>
+        <qualifiedname>TextureOffscreenDS::TextureOffscreenDS</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>height</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>slot</declname>
+        </param>
+        <param>
+          <type>const <ref refid="texture__desc_8h_a5aacc2000fea78d975de8fe06e3698f2_1a5aacc2000fea78d975de8fe06e3698f2" kindref="member">DepthStencilViewMode</ref></type>
+          <declname>dsvMode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="82" column="1" bodyfile="src/texture.cpp" bodystart="234" bodyend="258"/>
+      </memberdef>
+      <memberdef kind="function" id="classTextureOffscreenDS_a7d8959140611d45c7178cd42c6e524ba_1a7d8959140611d45c7178cd42c6e524ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TextureOffscreenDS::bind</definition>
+        <argsstring>(Graphics &amp;gfx) cond_noex override</argsstring>
+        <name>bind</name>
+        <qualifiedname>TextureOffscreenDS::bind</qualifiedname>
+        <reimplements refid="classIBindable_add4560f78e76629ee81ba701ba1052e1_1add4560f78e76629ee81ba701ba1052e1">bind</reimplements>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+<para>bind graphics resource to a certain stage of the graphics pipeline </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="84" column="6" bodyfile="src/texture.cpp" bodystart="260" bodyend="264"/>
+      </memberdef>
+      <memberdef kind="function" id="classTextureOffscreenDS_a4cba906de522a7b08cc17ffb20f6b792_1a4cba906de522a7b08cc17ffb20f6b792" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classDepthStencilOutput" kindref="compound">DepthStencilOutput</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; DepthStencilOutput &gt; TextureOffscreenDS::shareDepthBuffer</definition>
+        <argsstring>() const</argsstring>
+        <name>shareDepthBuffer</name>
+        <qualifiedname>TextureOffscreenDS::shareDepthBuffer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="85" column="17" bodyfile="src/texture.cpp" bodystart="266" bodyend="269"/>
+      </memberdef>
+      <memberdef kind="function" id="classTextureOffscreenDS_a330165b4ce9659fbcc612432ea98e9b7_1a330165b4ce9659fbcc612432ea98e9b7" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classDepthStencilOutput" kindref="compound">DepthStencilOutput</ref> &gt; &amp;</type>
+        <definition>std::shared_ptr&lt; DepthStencilOutput &gt; &amp; TextureOffscreenDS::accessDsv</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>accessDsv</name>
+        <qualifiedname>TextureOffscreenDS::accessDsv</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="86" column="17" bodyfile="src/texture.cpp" bodystart="271" bodyend="274"/>
+      </memberdef>
+      <memberdef kind="function" id="classTextureOffscreenDS_a95a5353ca7c193f159457cadfeea0c79_1a95a5353ca7c193f159457cadfeea0c79" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned TextureOffscreenDS::getSlot</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getSlot</name>
+        <qualifiedname>TextureOffscreenDS::getSlot</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/texture.h" line="87" column="10" bodyfile="src/texture.cpp" bodystart="276" bodyend="279"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>A flexible Texture2D, SRV for HLSL access &amp; Depth Stencil View Wrapper; can be used either for input OR for output (offscreen/RTT rendering)  </para>
+    </briefdescription>
+    <detaileddescription>
+<para>=============================================================</para>
+<para><simplesect kind="author"><para>KeyC0de </para>
+</simplesect>
+<simplesect kind="date"><para>2022/10/13 11:08 <heading level="1"></heading>
+</para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>GraphicsFriend</label>
+        <link refid="classGraphicsFriend"/>
+      </node>
+      <node id="2">
+        <label>IBindable</label>
+        <link refid="classIBindable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>TextureOffscreenDS</label>
+        <link refid="classTextureOffscreenDS"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>GraphicsFriend</label>
+        <link refid="classGraphicsFriend"/>
+      </node>
+      <node id="2">
+        <label>IBindable</label>
+        <link refid="classIBindable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>TextureOffscreenDS</label>
+        <link refid="classTextureOffscreenDS"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/texture.h" line="74" column="1" bodyfile="inc/texture.h" bodystart="76" bodyend="88"/>
+    <listofallmembers>
+      <member refid="classIBindable_a608c5066b829febbd49cd82d1d1fa353_1a608c5066b829febbd49cd82d1d1fa353" prot="public" virt="virtual"><scope>TextureOffscreenDS</scope><name>accept</name></member>
+      <member refid="classTextureOffscreenDS_a330165b4ce9659fbcc612432ea98e9b7_1a330165b4ce9659fbcc612432ea98e9b7" prot="public" virt="non-virtual"><scope>TextureOffscreenDS</scope><name>accessDsv</name></member>
+      <member refid="classTextureOffscreenDS_a7d8959140611d45c7178cd42c6e524ba_1a7d8959140611d45c7178cd42c6e524ba" prot="public" virt="virtual"><scope>TextureOffscreenDS</scope><name>bind</name></member>
+      <member refid="classGraphicsFriend_a175df79f82ab5a6dad1df24b5a242ef7_1a175df79f82ab5a6dad1df24b5a242ef7" prot="protected" virt="non-virtual"><scope>TextureOffscreenDS</scope><name>getDevice</name></member>
+      <member refid="classGraphicsFriend_a619e32893ab49ea6c5200e7c2d52e2f2_1a619e32893ab49ea6c5200e7c2d52e2f2" prot="protected" virt="non-virtual"><scope>TextureOffscreenDS</scope><name>getDeviceContext</name></member>
+      <member refid="classTextureOffscreenDS_a95a5353ca7c193f159457cadfeea0c79_1a95a5353ca7c193f159457cadfeea0c79" prot="public" virt="non-virtual"><scope>TextureOffscreenDS</scope><name>getSlot</name></member>
+      <member refid="classIBindable_a7d88cdbd5d500d6d7f1bfabe16927855_1a7d88cdbd5d500d6d7f1bfabe16927855" prot="public" virt="virtual"><scope>TextureOffscreenDS</scope><name>getUid</name></member>
+      <member refid="classTextureOffscreenDS_abb356b8ca3037bc0983219b434ea7161_1abb356b8ca3037bc0983219b434ea7161" prot="protected" virt="non-virtual"><scope>TextureOffscreenDS</scope><name>m_pD3dSrv</name></member>
+      <member refid="classTextureOffscreenDS_a9b26bfd254720792283511dd457cf329_1a9b26bfd254720792283511dd457cf329" prot="protected" virt="non-virtual"><scope>TextureOffscreenDS</scope><name>m_pDsv</name></member>
+      <member refid="classTextureOffscreenDS_a33e4b2416a7631cf81b49426783f5e3d_1a33e4b2416a7631cf81b49426783f5e3d" prot="private" virt="non-virtual"><scope>TextureOffscreenDS</scope><name>m_slot</name></member>
+      <member refid="classIBindable_a4d590eebe80fa4e0aa865a875ff86c02_1a4d590eebe80fa4e0aa865a875ff86c02" prot="public" virt="virtual"><scope>TextureOffscreenDS</scope><name>setDebugObjectName</name></member>
+      <member refid="classIBindable_a12fe8725cb3f4836f22d1592b07e2c91_1a12fe8725cb3f4836f22d1592b07e2c91" prot="public" virt="virtual"><scope>TextureOffscreenDS</scope><name>setMesh</name></member>
+      <member refid="classTextureOffscreenDS_a4cba906de522a7b08cc17ffb20f6b792_1a4cba906de522a7b08cc17ffb20f6b792" prot="public" virt="non-virtual"><scope>TextureOffscreenDS</scope><name>shareDepthBuffer</name></member>
+      <member refid="classTextureOffscreenDS_a945e26603caa6d94b95e1852faa6438e_1a945e26603caa6d94b95e1852faa6438e" prot="public" virt="non-virtual"><scope>TextureOffscreenDS</scope><name>TextureOffscreenDS</name></member>
+      <member refid="classIBindable_a7f68262ff85e25e9f826eae7c01bbfa1_1a7f68262ff85e25e9f826eae7c01bbfa1" prot="public" virt="virtual"><scope>TextureOffscreenDS</scope><name>~IBindable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

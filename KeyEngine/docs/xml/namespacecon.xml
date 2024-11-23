@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="namespacecon" kind="namespace" language="C++">
+    <compoundname>con</compoundname>
+    <innerclass refid="classcon_1_1CBElement" prot="public">con::CBElement</innerclass>
+    <innerclass refid="classcon_1_1CBElementConstView" prot="public">con::CBElementConstView</innerclass>
+    <innerclass refid="classcon_1_1CBElementView" prot="public">con::CBElementView</innerclass>
+    <innerclass refid="classcon_1_1CBLayout" prot="public">con::CBLayout</innerclass>
+    <innerclass refid="classcon_1_1CBuffer" prot="public">con::CBuffer</innerclass>
+    <innerclass refid="classcon_1_1CookedLayout" prot="public">con::CookedLayout</innerclass>
+    <innerclass refid="structcon_1_1ElementProperties" prot="public">con::ElementProperties</innerclass>
+    <innerclass refid="structcon_1_1ElementProperties_3_01Bool_01_4" prot="public">con::ElementProperties&lt; Bool &gt;</innerclass>
+    <innerclass refid="structcon_1_1ElementProperties_3_01Float_01_4" prot="public">con::ElementProperties&lt; Float &gt;</innerclass>
+    <innerclass refid="structcon_1_1ElementProperties_3_01Float2_01_4" prot="public">con::ElementProperties&lt; Float2 &gt;</innerclass>
+    <innerclass refid="structcon_1_1ElementProperties_3_01Float3_01_4" prot="public">con::ElementProperties&lt; Float3 &gt;</innerclass>
+    <innerclass refid="structcon_1_1ElementProperties_3_01Float4_01_4" prot="public">con::ElementProperties&lt; Float4 &gt;</innerclass>
+    <innerclass refid="structcon_1_1ElementProperties_3_01Integer_01_4" prot="public">con::ElementProperties&lt; Integer &gt;</innerclass>
+    <innerclass refid="structcon_1_1ElementProperties_3_01Matrix_01_4" prot="public">con::ElementProperties&lt; Matrix &gt;</innerclass>
+    <innerclass refid="structcon_1_1ExtraData" prot="public">con::ExtraData</innerclass>
+    <innerclass refid="classcon_1_1LayoutMap" prot="public">con::LayoutMap</innerclass>
+    <innerclass refid="classcon_1_1RawLayout" prot="public">con::RawLayout</innerclass>
+    <innerclass refid="structcon_1_1ReverseMap" prot="public">con::ReverseMap</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespacecon_a715a53e528376e9d85ea035a2db279a5_1a715a53e528376e9d85ea035a2db279a5" prot="public" static="no" strong="no">
+        <type></type>
+        <name>ElementType</name>
+        <qualifiedname>con::ElementType</qualifiedname>
+        <enumvalue id="namespacecon_a715a53e528376e9d85ea035a2db279a5_1a715a53e528376e9d85ea035a2db279a5aa75d3cc2c3da26872d3e1377c2c3f45f" prot="public">
+          <name>Struct</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacecon_a715a53e528376e9d85ea035a2db279a5_1a715a53e528376e9d85ea035a2db279a5a70f1151d1a31fb6a465cde6b89721e0d" prot="public">
+          <name>Array</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacecon_a715a53e528376e9d85ea035a2db279a5_1a715a53e528376e9d85ea035a2db279a5aa0f2a80cc2e22505f9ff4d7920dd6ec6" prot="public">
+          <name>Empty</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/dynamic_constant_buffer.h" line="32" column="1" bodyfile="inc/dynamic_constant_buffer.h" bodystart="33" bodyend="40"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/dynamic_constant_buffer.h" line="26" column="1"/>
+  </compounddef>
+</doxygen>

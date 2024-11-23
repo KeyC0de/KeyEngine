@@ -4,12 +4,12 @@
 #	include "winner.h"
 
 
-//=============================================================
-//	\class	SystemMetric
-//	\author	KeyC0de
-//	\date	2022/10/01 16:59
-//	\brief	use GetSystemMetrics( index )
-//=============================================================
+///=============================================================
+/// \class	SystemMetric
+/// \author	KeyC0de
+/// \date	2022/10/01 16:59
+/// \brief	use GetSystemMetrics( index )
+///=============================================================
 struct SystemMetric
 {
 	int m_index;

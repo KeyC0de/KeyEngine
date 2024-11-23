@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classImguiPerModelNodeVisitor" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>ImguiPerModelNodeVisitor</compoundname>
+    <basecompoundref refid="classIImguiNodeVisitor" prot="private" virt="non-virtual">IImguiNodeVisitor</basecompoundref>
+    <includes refid="imgui__visitors_8h" local="no">imgui_visitors.h</includes>
+    <innerclass refid="structImguiPerModelNodeVisitor_1_1TransformData" prot="private">ImguiPerModelNodeVisitor::TransformData</innerclass>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classImguiPerModelNodeVisitor_a8dd53c6d6e95624ca1664cc5b5855a64_1a8dd53c6d6e95624ca1664cc5b5855a64" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string ImguiPerModelNodeVisitor::m_name</definition>
+        <argsstring></argsstring>
+        <name>m_name</name>
+        <qualifiedname>ImguiPerModelNodeVisitor::m_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/imgui_visitors.h" line="32" column="13" bodyfile="inc/imgui_visitors.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classImguiPerModelNodeVisitor_ab13f445a001207d663c550d05af25a28_1ab13f445a001207d663c550d05af25a28" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; int, <ref refid="structImguiPerModelNodeVisitor_1_1TransformData" kindref="compound">TransformData</ref> &gt;</type>
+        <definition>std::unordered_map&lt;int, TransformData&gt; ImguiPerModelNodeVisitor::m_nodeMapTransforms</definition>
+        <argsstring></argsstring>
+        <name>m_nodeMapTransforms</name>
+        <qualifiedname>ImguiPerModelNodeVisitor::m_nodeMapTransforms</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/imgui_visitors.h" line="42" column="20" bodyfile="inc/imgui_visitors.h" bodystart="42" bodyend="-1"/>
+        <referencedby refid="classImguiPerModelNodeVisitor_afa4104c926e409f0dbdd385aa4db5d7c_1afa4104c926e409f0dbdd385aa4db5d7c" compoundref="imgui__visitors_8cpp" startline="151" endline="173">getNodeTransform</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classImguiPerModelNodeVisitor_a19cfd2a6096fbef06e548e4b9592c7d2_1a19cfd2a6096fbef06e548e4b9592c7d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ImguiPerModelNodeVisitor::ImguiPerModelNodeVisitor</definition>
+        <argsstring>()=default</argsstring>
+        <name>ImguiPerModelNodeVisitor</name>
+        <qualifiedname>ImguiPerModelNodeVisitor::ImguiPerModelNodeVisitor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/imgui_visitors.h" line="44" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classImguiPerModelNodeVisitor_af2839cac298d4faafa5401b027be7826_1af2839cac298d4faafa5401b027be7826" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ImguiPerModelNodeVisitor::ImguiPerModelNodeVisitor</definition>
+        <argsstring>(const std::string &amp;name)</argsstring>
+        <name>ImguiPerModelNodeVisitor</name>
+        <qualifiedname>ImguiPerModelNodeVisitor::ImguiPerModelNodeVisitor</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/imgui_visitors.h" line="45" column="1" bodyfile="src/imgui_visitors.cpp" bodystart="42" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classImguiPerModelNodeVisitor_a05eb0479acfea8f99900419c4c496faa_1a05eb0479acfea8f99900419c4c496faa" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ImguiPerModelNodeVisitor::onVisit</definition>
+        <argsstring>(Node &amp;node) override</argsstring>
+        <name>onVisit</name>
+        <qualifiedname>ImguiPerModelNodeVisitor::onVisit</qualifiedname>
+        <reimplements refid="classIImguiNodeVisitor_a7b479f0e4cee70568f86148dd7848c27_1a7b479f0e4cee70568f86148dd7848c27">onVisit</reimplements>
+        <param>
+          <type><ref refid="classNode" kindref="compound">Node</ref> &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+<para>if <ref refid="classIImguiNodeVisitor_a3ffe58aedb22d53f18611cd112b25bbd_1a3ffe58aedb22d53f18611cd112b25bbd" kindref="member">visit()</ref> returns true, &quot;close&quot; the node </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/imgui_visitors.h" line="48" column="6" bodyfile="src/imgui_visitors.cpp" bodystart="49" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classImguiPerModelNodeVisitor_a720016f02e40ac6be1351265fda6ebd0_1a720016f02e40ac6be1351265fda6ebd0" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ImguiPerModelNodeVisitor::displayImguiWidgets</definition>
+        <argsstring>(Model &amp;model) noexcept</argsstring>
+        <name>displayImguiWidgets</name>
+        <qualifiedname>ImguiPerModelNodeVisitor::displayImguiWidgets</qualifiedname>
+        <param>
+          <type><ref refid="classModel" kindref="compound">Model</ref> &amp;</type>
+          <declname>model</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/imgui_visitors.h" line="49" column="6" bodyfile="src/imgui_visitors.cpp" bodystart="54" bodyend="149"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classImguiPerModelNodeVisitor_afa4104c926e409f0dbdd385aa4db5d7c_1afa4104c926e409f0dbdd385aa4db5d7c" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="structImguiPerModelNodeVisitor_1_1TransformData" kindref="compound">TransformData</ref> &amp;</type>
+        <definition>ImguiPerModelNodeVisitor::TransformData &amp; ImguiPerModelNodeVisitor::getNodeTransform</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>getNodeTransform</name>
+        <qualifiedname>ImguiPerModelNodeVisitor::getNodeTransform</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/imgui_visitors.h" line="51" column="15" bodyfile="src/imgui_visitors.cpp" bodystart="151" bodyend="173"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>IImguiNodeVisitor</label>
+        <link refid="classIImguiNodeVisitor"/>
+      </node>
+      <node id="1">
+        <label>ImguiPerModelNodeVisitor</label>
+        <link refid="classImguiPerModelNodeVisitor"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>IImguiNodeVisitor</label>
+        <link refid="classIImguiNodeVisitor"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>m_pSelectedNode</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>ImguiPerModelNodeVisitor</label>
+        <link refid="classImguiPerModelNodeVisitor"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Node</label>
+        <link refid="classNode"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>m_pParent</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/imgui_visitors.h" line="29" column="1" bodyfile="inc/imgui_visitors.h" bodystart="31" bodyend="52"/>
+    <listofallmembers>
+      <member refid="classImguiPerModelNodeVisitor_a720016f02e40ac6be1351265fda6ebd0_1a720016f02e40ac6be1351265fda6ebd0" prot="public" virt="non-virtual"><scope>ImguiPerModelNodeVisitor</scope><name>displayImguiWidgets</name></member>
+      <member refid="classImguiPerModelNodeVisitor_afa4104c926e409f0dbdd385aa4db5d7c_1afa4104c926e409f0dbdd385aa4db5d7c" prot="private" virt="non-virtual"><scope>ImguiPerModelNodeVisitor</scope><name>getNodeTransform</name></member>
+      <member refid="classImguiPerModelNodeVisitor_a19cfd2a6096fbef06e548e4b9592c7d2_1a19cfd2a6096fbef06e548e4b9592c7d2" prot="public" virt="non-virtual"><scope>ImguiPerModelNodeVisitor</scope><name>ImguiPerModelNodeVisitor</name></member>
+      <member refid="classImguiPerModelNodeVisitor_af2839cac298d4faafa5401b027be7826_1af2839cac298d4faafa5401b027be7826" prot="public" virt="non-virtual"><scope>ImguiPerModelNodeVisitor</scope><name>ImguiPerModelNodeVisitor</name></member>
+      <member refid="classImguiPerModelNodeVisitor_a8dd53c6d6e95624ca1664cc5b5855a64_1a8dd53c6d6e95624ca1664cc5b5855a64" prot="private" virt="non-virtual"><scope>ImguiPerModelNodeVisitor</scope><name>m_name</name></member>
+      <member refid="classImguiPerModelNodeVisitor_ab13f445a001207d663c550d05af25a28_1ab13f445a001207d663c550d05af25a28" prot="private" virt="non-virtual"><scope>ImguiPerModelNodeVisitor</scope><name>m_nodeMapTransforms</name></member>
+      <member refid="classIImguiNodeVisitor_afdf913a5e0086ef6f44a9bf46d1e7ffa_1afdf913a5e0086ef6f44a9bf46d1e7ffa" prot="private" virt="non-virtual"><scope>ImguiPerModelNodeVisitor</scope><name>m_pSelectedNode</name></member>
+      <member refid="classImguiPerModelNodeVisitor_a05eb0479acfea8f99900419c4c496faa_1a05eb0479acfea8f99900419c4c496faa" prot="public" virt="virtual"><scope>ImguiPerModelNodeVisitor</scope><name>onVisit</name></member>
+      <member refid="classIImguiNodeVisitor_a3ffe58aedb22d53f18611cd112b25bbd_1a3ffe58aedb22d53f18611cd112b25bbd" prot="private" virt="non-virtual"><scope>ImguiPerModelNodeVisitor</scope><name>visit</name></member>
+      <member refid="classIImguiNodeVisitor_a25aeeef4c80941c72871ab60cac528f1_1a25aeeef4c80941c72871ab60cac528f1" prot="private" virt="virtual"><scope>ImguiPerModelNodeVisitor</scope><name>~IImguiNodeVisitor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

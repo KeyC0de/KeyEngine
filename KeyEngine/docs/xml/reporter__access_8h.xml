@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="reporter__access_8h" kind="file" language="C++">
+    <compoundname>reporter_access.h</compoundname>
+    <includes refid="reporter__listener_8h" local="yes">reporter_listener.h</includes>
+    <includedby refid="ui__component_8h" local="yes">inc/ui_component.h</includedby>
+    <includedby refid="game_8cpp" local="yes">src/game.cpp</includedby>
+    <includedby refid="graphics_8cpp" local="yes">src/graphics.cpp</includedby>
+    <includedby refid="key__sound_8cpp" local="yes">src/key_sound.cpp</includedby>
+    <includedby refid="reporter__access_8cpp" local="yes">src/reporter_access.cpp</includedby>
+    <incdepgraph>
+      <node id="5">
+        <label>assertions_console.h</label>
+        <link refid="assertions__console_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>non_copyable.h</label>
+        <link refid="non__copyable_8h"/>
+      </node>
+      <node id="1">
+        <label>inc/reporter_access.h</label>
+        <link refid="reporter__access_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>reporter_listener.h</label>
+        <link refid="reporter__listener_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>iostream</label>
+      </node>
+      <node id="3">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>inc/reporter_access.h</label>
+        <link refid="reporter__access_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>inc/ui_component.h</label>
+        <link refid="ui__component_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>src/game.cpp</label>
+        <link refid="game_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/graphics.cpp</label>
+        <link refid="graphics_8cpp"/>
+      </node>
+      <node id="7">
+        <label>src/key_sound.cpp</label>
+        <link refid="key__sound_8cpp"/>
+      </node>
+      <node id="8">
+        <label>src/reporter_access.cpp</label>
+        <link refid="reporter__access_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/ui_component.cpp</label>
+        <link refid="ui__component_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/ui_pass.cpp</label>
+        <link refid="ui__pass_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classReporterAccess" prot="public">ReporterAccess</innerclass>
+    <innerclass refid="classReportingNexus" prot="public">ReportingNexus</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="reporter__listener_8h" kindref="compound">reporter_listener.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structSwapChainResizedEvent" kindref="compound">SwapChainResizedEvent</ref>;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structUISoundEvent" kindref="compound">UISoundEvent</ref>;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structUserPropertyChanged" kindref="compound">UserPropertyChanged</ref>;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structUiMsg" kindref="compound">UiMsg</ref>;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classReportingNexus" kindref="compound">ReportingNexus</ref>;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="classReporterAccess" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classReporterAccess" kindref="compound">ReporterAccess</ref></highlight></codeline>
+<codeline lineno="16"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="17" refid="classReporterAccess_aed2333c017aee480a77d6ac40de1124b_1aed2333c017aee480a77d6ac40de1124b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classReportingNexus" kindref="compound">ReportingNexus</ref>;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classReporterAccess_ad4959ff20643effcef31efebfc5093b4_1ad4959ff20643effcef31efebfc5093b4" kindref="member">ReporterAccess</ref>();</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="classReportingNexus" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classReportingNexus" kindref="compound">ReportingNexus</ref></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classIReporter" kindref="compound">IReporter</ref>&lt;SwapChainResizedEvent&gt;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classIReporter" kindref="compound">IReporter</ref>&lt;UISoundEvent&gt;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classIReporter" kindref="compound">IReporter</ref>&lt;UserPropertyChanged&gt;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classIReporter" kindref="compound">IReporter</ref>&lt;UiMsg&gt;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28" refid="classReportingNexus_a7e24b604477f1a59fbe8e9df1ad7ef7f_1a7e24b604477f1a59fbe8e9df1ad7ef7f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classReporterAccess" kindref="compound">ReporterAccess</ref><sp/><ref refid="classReportingNexus_a7e24b604477f1a59fbe8e9df1ad7ef7f_1a7e24b604477f1a59fbe8e9df1ad7ef7f" kindref="member">s_accessKey</ref>{};</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classReportingNexus_ad1c92ce66fcd12b24d7a3021b4d4631b_1ad1c92ce66fcd12b24d7a3021b4d4631b" kindref="member">ReportingNexus</ref>(<sp/><ref refid="classReporterAccess" kindref="compound">ReporterAccess</ref><sp/>&amp;access<sp/>);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classReportingNexus_a7b1c65220d0e3d88c28f3cbfd005e103_1a7b1c65220d0e3d88c28f3cbfd005e103" kindref="member">~ReportingNexus</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/><ref refid="classReportingNexus" kindref="compound">ReportingNexus</ref>&amp;<sp/><ref refid="classReportingNexus_a56fd3891e87dd3c034b8cfd7c84cfe16_1a56fd3891e87dd3c034b8cfd7c84cfe16" kindref="member">getInstance</ref>();</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/><ref refid="classReporterAccess" kindref="compound">ReporterAccess</ref>&amp;<sp/><ref refid="classReportingNexus_afe287dd4254b46f0ff514e2aebb1104b_1afe287dd4254b46f0ff514e2aebb1104b" kindref="member">getReporterAccess</ref>();</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/reporter_access.h"/>
+  </compounddef>
+</doxygen>

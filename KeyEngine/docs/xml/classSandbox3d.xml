@@ -1,0 +1,555 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classSandbox3d" kind="class" language="C++" prot="public">
+    <compoundname>Sandbox3d</compoundname>
+    <basecompoundref refid="classGame" prot="public" virt="non-virtual">Game&lt; Sandbox3d &gt;</basecompoundref>
+    <basecompoundref refid="classIListener" prot="public" virt="non-virtual">IListener&lt; SwapChainResizedEvent &gt;</basecompoundref>
+    <includes refid="game_8h" local="no">game.h</includes>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classSandbox3d_a368890d44d74ea1fbdd032f13d096bcf_1a368890d44d74ea1fbdd032f13d096bcf" prot="private" static="yes" mutable="no">
+        <type><ref refid="classCameraManager" kindref="compound">CameraManager</ref> &amp;</type>
+        <definition>CameraManager&amp; Sandbox3d::s_cameraMan</definition>
+        <argsstring></argsstring>
+        <name>s_cameraMan</name>
+        <qualifiedname>Sandbox3d::s_cameraMan</qualifiedname>
+        <initializer>= <ref refid="classCameraManager_ac7e6b0996395dcaaa889d17d5a8a639e_1ac7e6b0996395dcaaa889d17d5a8a639e" kindref="member">CameraManager::getInstance</ref>()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="88" column="29" bodyfile="inc/game.h" bodystart="88" bodyend="-1"/>
+        <referencedby refid="classSandbox3d_a60fad847bf17eed5f75b7b270173c6dd_1a60fad847bf17eed5f75b7b270173c6dd" compoundref="game_8cpp" startline="157" endline="202">Sandbox3d</referencedby>
+        <referencedby refid="classSandbox3d_a7ac896c9f33a49a24ae47cdf6007f5a1_1a7ac896c9f33a49a24ae47cdf6007f5a1" compoundref="game_8cpp" startline="289" endline="407">checkInput</referencedby>
+        <referencedby refid="classSandbox3d_a976cec295e8116ae7cfb237e5c8c2cf6_1a976cec295e8116ae7cfb237e5c8c2cf6" compoundref="game_8cpp" startline="558" endline="572">connectToRenderer</referencedby>
+        <referencedby refid="classSandbox3d_a824771f328f2073b51ad89687d826d05_1a824771f328f2073b51ad89687d826d05" compoundref="game_8cpp" startline="475" endline="512">render</referencedby>
+        <referencedby refid="classSandbox3d_a4b7094621086a4d13d7b5f47e5432ed5_1a4b7094621086a4d13d7b5f47e5432ed5" compoundref="game_8cpp" startline="514" endline="556">test</referencedby>
+        <referencedby refid="classSandbox3d_aac7b27aa253de8c2f127536da4249833_1aac7b27aa253de8c2f127536da4249833" compoundref="game_8cpp" startline="409" endline="466">update</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classSandbox3d_ac34f018134e5ee3c4078a1b8fbcf0289_1ac34f018134e5ee3c4078a1b8fbcf0289" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classgui_1_1UIPass" kindref="compound">gui::UIPass</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;gui::UIPass&gt; Sandbox3d::m_gui</definition>
+        <argsstring></argsstring>
+        <name>m_gui</name>
+        <qualifiedname>Sandbox3d::m_gui</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="90" column="17" bodyfile="inc/game.h" bodystart="90" bodyend="-1"/>
+        <referencedby refid="classSandbox3d_a60fad847bf17eed5f75b7b270173c6dd_1a60fad847bf17eed5f75b7b270173c6dd" compoundref="game_8cpp" startline="157" endline="202">Sandbox3d</referencedby>
+        <referencedby refid="classSandbox3d_a7ac896c9f33a49a24ae47cdf6007f5a1_1a7ac896c9f33a49a24ae47cdf6007f5a1" compoundref="game_8cpp" startline="289" endline="407">checkInput</referencedby>
+        <referencedby refid="classSandbox3d_a824771f328f2073b51ad89687d826d05_1a824771f328f2073b51ad89687d826d05" compoundref="game_8cpp" startline="475" endline="512">render</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classSandbox3d_a191078225e943c09db4647fdb0bdbf57_1a191078225e943c09db4647fdb0bdbf57" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Sandbox3d::m_bShowDemoWindow</definition>
+        <argsstring></argsstring>
+        <name>m_bShowDemoWindow</name>
+        <qualifiedname>Sandbox3d::m_bShowDemoWindow</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="92" column="6" bodyfile="inc/game.h" bodystart="92" bodyend="-1"/>
+        <referencedby refid="classSandbox3d_a7ac896c9f33a49a24ae47cdf6007f5a1_1a7ac896c9f33a49a24ae47cdf6007f5a1" compoundref="game_8cpp" startline="289" endline="407">checkInput</referencedby>
+        <referencedby refid="classSandbox3d_a4b7094621086a4d13d7b5f47e5432ed5_1a4b7094621086a4d13d7b5f47e5432ed5" compoundref="game_8cpp" startline="514" endline="556">test</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classSandbox3d_af7589b53c5b5361ee9fac406aae38e1f_1af7589b53c5b5361ee9fac406aae38e1f" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::unique_ptr&lt; <ref refid="classILightSource" kindref="compound">ILightSource</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::unique_ptr&lt;ILightSource&gt; &gt; Sandbox3d::m_lights</definition>
+        <argsstring></argsstring>
+        <name>m_lights</name>
+        <qualifiedname>Sandbox3d::m_lights</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="94" column="13" bodyfile="inc/game.h" bodystart="94" bodyend="-1"/>
+        <referencedby refid="classSandbox3d_a60fad847bf17eed5f75b7b270173c6dd_1a60fad847bf17eed5f75b7b270173c6dd" compoundref="game_8cpp" startline="157" endline="202">Sandbox3d</referencedby>
+        <referencedby refid="classSandbox3d_a976cec295e8116ae7cfb237e5c8c2cf6_1a976cec295e8116ae7cfb237e5c8c2cf6" compoundref="game_8cpp" startline="558" endline="572">connectToRenderer</referencedby>
+        <referencedby refid="classSandbox3d_a824771f328f2073b51ad89687d826d05_1a824771f328f2073b51ad89687d826d05" compoundref="game_8cpp" startline="475" endline="512">render</referencedby>
+        <referencedby refid="classSandbox3d_a4b7094621086a4d13d7b5f47e5432ed5_1a4b7094621086a4d13d7b5f47e5432ed5" compoundref="game_8cpp" startline="514" endline="556">test</referencedby>
+        <referencedby refid="classSandbox3d_aac7b27aa253de8c2f127536da4249833_1aac7b27aa253de8c2f127536da4249833" compoundref="game_8cpp" startline="409" endline="466">update</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classSandbox3d_a7b5627929bab105b5915d7c6918415a6_1a7b5627929bab105b5915d7c6918415a6" prot="private" static="no" mutable="no">
+        <type><ref refid="classModel" kindref="compound">Model</ref></type>
+        <definition>Model Sandbox3d::m_terrain</definition>
+        <argsstring></argsstring>
+        <name>m_terrain</name>
+        <qualifiedname>Sandbox3d::m_terrain</qualifiedname>
+        <initializer>{std::make_unique&lt;<ref refid="classTerrain" kindref="compound">Terrain</ref>&gt;(m_mainWindow.getGraphics(), 1.0f, DirectX::XMFLOAT4{0.1f, 0.8f, 0.05f, 1.0f}, &quot;assets/textures/clouds_blurred.bmp&quot;, 100, 100), m_mainWindow.getGraphics(), {90.0f, 0.0f, 0.0f}, {0.0f, -100.0f, 0.0f}}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="95" column="7" bodyfile="inc/game.h" bodystart="95" bodyend="95"/>
+        <referencedby refid="classSandbox3d_a976cec295e8116ae7cfb237e5c8c2cf6_1a976cec295e8116ae7cfb237e5c8c2cf6" compoundref="game_8cpp" startline="558" endline="572">connectToRenderer</referencedby>
+        <referencedby refid="classSandbox3d_a824771f328f2073b51ad89687d826d05_1a824771f328f2073b51ad89687d826d05" compoundref="game_8cpp" startline="475" endline="512">render</referencedby>
+        <referencedby refid="classSandbox3d_a4b7094621086a4d13d7b5f47e5432ed5_1a4b7094621086a4d13d7b5f47e5432ed5" compoundref="game_8cpp" startline="514" endline="556">test</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classSandbox3d_a683ca51ea3203622f85d573331a08679_1a683ca51ea3203622f85d573331a08679" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classModel" kindref="compound">Model</ref> &gt;</type>
+        <definition>std::vector&lt;Model&gt; Sandbox3d::m_models</definition>
+        <argsstring></argsstring>
+        <name>m_models</name>
+        <qualifiedname>Sandbox3d::m_models</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="96" column="13" bodyfile="inc/game.h" bodystart="96" bodyend="-1"/>
+        <referencedby refid="classSandbox3d_a60fad847bf17eed5f75b7b270173c6dd_1a60fad847bf17eed5f75b7b270173c6dd" compoundref="game_8cpp" startline="157" endline="202">Sandbox3d</referencedby>
+        <referencedby refid="classSandbox3d_a976cec295e8116ae7cfb237e5c8c2cf6_1a976cec295e8116ae7cfb237e5c8c2cf6" compoundref="game_8cpp" startline="558" endline="572">connectToRenderer</referencedby>
+        <referencedby refid="classSandbox3d_a824771f328f2073b51ad89687d826d05_1a824771f328f2073b51ad89687d826d05" compoundref="game_8cpp" startline="475" endline="512">render</referencedby>
+        <referencedby refid="classSandbox3d_a4b7094621086a4d13d7b5f47e5432ed5_1a4b7094621086a4d13d7b5f47e5432ed5" compoundref="game_8cpp" startline="514" endline="556">test</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classSandbox3d_a60fad847bf17eed5f75b7b270173c6dd_1a60fad847bf17eed5f75b7b270173c6dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Sandbox3d::Sandbox3d</definition>
+        <argsstring>(const int width, const int height, const int x, const int y, const int nWindows=1)</argsstring>
+        <name>Sandbox3d</name>
+        <qualifiedname>Sandbox3d::Sandbox3d</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>height</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>nWindows</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="98" column="1" bodyfile="src/game.cpp" bodystart="157" bodyend="202"/>
+      </memberdef>
+      <memberdef kind="function" id="classSandbox3d_ac5852645720beb4ed945b2bdeef22ae5_1ac5852645720beb4ed945b2bdeef22ae5" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Sandbox3d::~Sandbox3d</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>~Sandbox3d</name>
+        <qualifiedname>Sandbox3d::~Sandbox3d</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="99" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classSandbox3d_a5c82a667c7d9a33df3d05f2c2c1bd930_1a5c82a667c7d9a33df3d05f2c2c1bd930" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void Sandbox3d::notify</definition>
+        <argsstring>(const SwapChainResizedEvent &amp;event) override</argsstring>
+        <name>notify</name>
+        <qualifiedname>Sandbox3d::notify</qualifiedname>
+        <reimplements refid="classIListener_a75b1652418e98a4d0f6db2c61addae8d_1a75b1652418e98a4d0f6db2c61addae8d">notify</reimplements>
+        <param>
+          <type>const <ref refid="structSwapChainResizedEvent" kindref="compound">SwapChainResizedEvent</ref> &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="101" column="6" bodyfile="src/game.cpp" bodystart="206" bodyend="211"/>
+      </memberdef>
+      <memberdef kind="function" id="classSandbox3d_a22ca94841fcff1809793a061a7825155_1a22ca94841fcff1809793a061a7825155" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Sandbox3d::loop</definition>
+        <argsstring>()</argsstring>
+        <name>loop</name>
+        <qualifiedname>Sandbox3d::loop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="102" column="5" bodyfile="src/game.cpp" bodystart="213" bodyend="287"/>
+        <referencedby refid="main_8cpp_afe0d6866f7c067e4b3768107caa40799_1afe0d6866f7c067e4b3768107caa40799" compoundref="main_8cpp" startline="54" endline="131">wWinMain</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classSandbox3d_a7ac896c9f33a49a24ae47cdf6007f5a1_1a7ac896c9f33a49a24ae47cdf6007f5a1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Sandbox3d::checkInput</definition>
+        <argsstring>(const float dt)</argsstring>
+        <name>checkInput</name>
+        <qualifiedname>Sandbox3d::checkInput</qualifiedname>
+        <param>
+          <type>const float</type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="104" column="5" bodyfile="src/game.cpp" bodystart="289" bodyend="407"/>
+        <referencedby refid="classSandbox3d_a22ca94841fcff1809793a061a7825155_1a22ca94841fcff1809793a061a7825155" compoundref="game_8cpp" startline="213" endline="287">loop</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classSandbox3d_aac7b27aa253de8c2f127536da4249833_1aac7b27aa253de8c2f127536da4249833" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Sandbox3d::update</definition>
+        <argsstring>(Graphics &amp;gfx, const float dt, const float lerpBetweenFrames)</argsstring>
+        <name>update</name>
+        <qualifiedname>Sandbox3d::update</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>dt</declname>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>lerpBetweenFrames</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="105" column="6" bodyfile="src/game.cpp" bodystart="409" bodyend="466"/>
+        <referencedby refid="classSandbox3d_a22ca94841fcff1809793a061a7825155_1a22ca94841fcff1809793a061a7825155" compoundref="game_8cpp" startline="213" endline="287">loop</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classSandbox3d_a03eb82b59c39e83118220b5a2bad9d0d_1a03eb82b59c39e83118220b5a2bad9d0d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Sandbox3d::updateFixed</definition>
+        <argsstring>(const float dt)</argsstring>
+        <name>updateFixed</name>
+        <qualifiedname>Sandbox3d::updateFixed</qualifiedname>
+        <param>
+          <type>const float</type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="106" column="6" bodyfile="src/game.cpp" bodystart="468" bodyend="473"/>
+        <referencedby refid="classSandbox3d_a22ca94841fcff1809793a061a7825155_1a22ca94841fcff1809793a061a7825155" compoundref="game_8cpp" startline="213" endline="287">loop</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classSandbox3d_a824771f328f2073b51ad89687d826d05_1a824771f328f2073b51ad89687d826d05" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Sandbox3d::render</definition>
+        <argsstring>(Graphics &amp;gfx)</argsstring>
+        <name>render</name>
+        <qualifiedname>Sandbox3d::render</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="107" column="6" bodyfile="src/game.cpp" bodystart="475" bodyend="512"/>
+        <referencedby refid="classSandbox3d_a22ca94841fcff1809793a061a7825155_1a22ca94841fcff1809793a061a7825155" compoundref="game_8cpp" startline="213" endline="287">loop</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classSandbox3d_a4b7094621086a4d13d7b5f47e5432ed5_1a4b7094621086a4d13d7b5f47e5432ed5" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Sandbox3d::test</definition>
+        <argsstring>(Graphics &amp;gfx)</argsstring>
+        <name>test</name>
+        <qualifiedname>Sandbox3d::test</qualifiedname>
+        <param>
+          <type><ref refid="classGraphics" kindref="compound">Graphics</ref> &amp;</type>
+          <declname>gfx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para>Render Imgui stuff</para>
+        </inbodydescription>
+        <location file="inc/game.h" line="108" column="6" bodyfile="src/game.cpp" bodystart="514" bodyend="556"/>
+        <referencedby refid="classSandbox3d_a22ca94841fcff1809793a061a7825155_1a22ca94841fcff1809793a061a7825155" compoundref="game_8cpp" startline="213" endline="287">loop</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classSandbox3d_a976cec295e8116ae7cfb237e5c8c2cf6_1a976cec295e8116ae7cfb237e5c8c2cf6" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Sandbox3d::connectToRenderer</definition>
+        <argsstring>(ren::Renderer3d &amp;renderer)</argsstring>
+        <name>connectToRenderer</name>
+        <qualifiedname>Sandbox3d::connectToRenderer</qualifiedname>
+        <param>
+          <type><ref refid="classren_1_1Renderer3d" kindref="compound">ren::Renderer3d</ref> &amp;</type>
+          <declname>renderer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/game.h" line="109" column="6" bodyfile="src/game.cpp" bodystart="558" bodyend="572"/>
+        <referencedby refid="classSandbox3d_a60fad847bf17eed5f75b7b270173c6dd_1a60fad847bf17eed5f75b7b270173c6dd" compoundref="game_8cpp" startline="157" endline="202">Sandbox3d</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Game&lt; Sandbox3d &gt;</label>
+        <link refid="classGame"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>IListener&lt; SwapChainResizedEvent &gt;</label>
+        <link refid="classIListener"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>NonCopyableAndNonMovable</label>
+        <link refid="classNonCopyableAndNonMovable"/>
+      </node>
+      <node id="1">
+        <label>Sandbox3d</label>
+        <link refid="classSandbox3d"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="14">
+        <label>CameraManager</label>
+        <link refid="classCameraManager"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+        <childnode refid="14" relation="usage">
+          <edgelabel>s_pInstance</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Game&lt; Sandbox3d &gt;</label>
+        <link refid="classGame"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>s_settingsMan</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>m_mainWindow</edgelabel>
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>m_gameTimer</edgelabel>
+        </childnode>
+      </node>
+      <node id="17">
+        <label>IImguiNodeVisitor</label>
+        <link refid="classIImguiNodeVisitor"/>
+        <childnode refid="18" relation="usage">
+          <edgelabel>m_pSelectedNode</edgelabel>
+        </childnode>
+      </node>
+      <node id="13">
+        <label>IListener&lt; SwapChainResizedEvent &gt;</label>
+        <link refid="classIListener"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>ImguiPerModelNodeVisitor</label>
+        <link refid="classImguiPerModelNodeVisitor"/>
+        <childnode refid="17" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>KeyTimer&lt; std::chrono::milliseconds &gt;</label>
+        <link refid="classKeyTimer"/>
+        <childnode refid="3" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>Keyboard</label>
+        <link refid="classKeyboard"/>
+        <childnode refid="5" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>Model</label>
+        <link refid="classModel"/>
+        <childnode refid="16" relation="usage">
+          <edgelabel>m_imguiVisitor</edgelabel>
+        </childnode>
+      </node>
+      <node id="9">
+        <label>Mouse</label>
+        <link refid="classMouse"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>Node</label>
+        <link refid="classNode"/>
+        <childnode refid="18" relation="usage">
+          <edgelabel>m_pParent</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>NonCopyable</label>
+        <link refid="classNonCopyable"/>
+      </node>
+      <node id="3">
+        <label>NonCopyableAndNonMovable</label>
+        <link refid="classNonCopyableAndNonMovable"/>
+      </node>
+      <node id="1">
+        <label>Sandbox3d</label>
+        <link refid="classSandbox3d"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="13" relation="public-inheritance">
+        </childnode>
+        <childnode refid="14" relation="usage">
+          <edgelabel>s_cameraMan</edgelabel>
+        </childnode>
+        <childnode refid="15" relation="usage">
+          <edgelabel>m_terrain</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>SettingsManager</label>
+        <link refid="classSettingsManager"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>m_settings</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>SettingsManager::Settings</label>
+        <link refid="structSettingsManager_1_1Settings"/>
+      </node>
+      <node id="7">
+        <label>Window</label>
+        <link refid="classWindow"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>s_keyboard</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>s_mouse</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>s_pBoxLocalClip</edgelabel>
+        </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>m_windowClass</edgelabel>
+        </childnode>
+      </node>
+      <node id="11">
+        <label>Window::WindowClass</label>
+        <link refid="classWindow_1_1WindowClass"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>tagLABELBOX</label>
+        <link refid="structtagLABELBOX"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/game.h" line="84" column="1" bodyfile="inc/game.h" bodystart="87" bodyend="110"/>
+    <listofallmembers>
+      <member refid="classIListener_a6b5c32b4da4ac2a5c5145bc573bb22a7_1a6b5c32b4da4ac2a5c5145bc573bb22a7" prot="private" virt="non-virtual"><scope>Sandbox3d</scope><name>addReporter</name></member>
+      <member refid="classSandbox3d_a7ac896c9f33a49a24ae47cdf6007f5a1_1a7ac896c9f33a49a24ae47cdf6007f5a1" prot="private" virt="non-virtual"><scope>Sandbox3d</scope><name>checkInput</name></member>
+      <member refid="classSandbox3d_a976cec295e8116ae7cfb237e5c8c2cf6_1a976cec295e8116ae7cfb237e5c8c2cf6" prot="private" virt="non-virtual"><scope>Sandbox3d</scope><name>connectToRenderer</name></member>
+      <member refid="classGame_a9716d4a268c77574e00b289827b46d65_1a9716d4a268c77574e00b289827b46d65" prot="private" virt="non-virtual"><scope>Sandbox3d</scope><name>createImguiManager</name></member>
+      <member refid="classGame_ab829358e04b5eb1b8937db2a8683c3a0_1ab829358e04b5eb1b8937db2a8683c3a0" prot="protected" virt="non-virtual"><scope>Sandbox3d</scope><name>Game</name></member>
+      <member refid="classGame_ad133bee3b79c89041c99b31c0110e9cc_1ad133bee3b79c89041c99b31c0110e9cc" prot="protected" virt="non-virtual"><scope>Sandbox3d</scope><name>getForegroundWindow</name></member>
+      <member refid="classGame_a497f6988307db84ef1445f662c0fb1cd_1a497f6988307db84ef1445f662c0fb1cd" prot="protected" virt="non-virtual"><scope>Sandbox3d</scope><name>getState</name></member>
+      <member refid="classGame_aa09bb3f51206f2ef0f28453c43cd449a_1aa09bb3f51206f2ef0f28453c43cd449a" prot="protected" virt="non-virtual"><scope>Sandbox3d</scope><name>getState</name></member>
+      <member refid="classSandbox3d_a22ca94841fcff1809793a061a7825155_1a22ca94841fcff1809793a061a7825155" prot="public" virt="non-virtual"><scope>Sandbox3d</scope><name>loop</name></member>
+      <member refid="classSandbox3d_a191078225e943c09db4647fdb0bdbf57_1a191078225e943c09db4647fdb0bdbf57" prot="private" virt="non-virtual"><scope>Sandbox3d</scope><name>m_bShowDemoWindow</name></member>
+      <member refid="classGame_a3953acd0d7eec863ee8f0cdda2e7a98d_1a3953acd0d7eec863ee8f0cdda2e7a98d" prot="protected" virt="non-virtual"><scope>Sandbox3d</scope><name>m_gameTimer</name></member>
+      <member refid="classSandbox3d_ac34f018134e5ee3c4078a1b8fbcf0289_1ac34f018134e5ee3c4078a1b8fbcf0289" prot="private" virt="non-virtual"><scope>Sandbox3d</scope><name>m_gui</name></member>
+      <member refid="classSandbox3d_af7589b53c5b5361ee9fac406aae38e1f_1af7589b53c5b5361ee9fac406aae38e1f" prot="private" virt="non-virtual"><scope>Sandbox3d</scope><name>m_lights</name></member>
+      <member refid="classGame_ab87c228ca9edcbc171aed5b0ffb2591a_1ab87c228ca9edcbc171aed5b0ffb2591a" prot="protected" virt="non-virtual"><scope>Sandbox3d</scope><name>m_mainWindow</name></member>
+      <member refid="classSandbox3d_a683ca51ea3203622f85d573331a08679_1a683ca51ea3203622f85d573331a08679" prot="private" virt="non-virtual"><scope>Sandbox3d</scope><name>m_models</name></member>
+      <member refid="classGame_aeaba4177ff106b819b2e02030a50a301_1aeaba4177ff106b819b2e02030a50a301" prot="protected" virt="non-virtual"><scope>Sandbox3d</scope><name>m_pCurrentState</name></member>
+      <member refid="classGame_ac451f6e710b03424d58f2dba8cd4c74e_1ac451f6e710b03424d58f2dba8cd4c74e" prot="protected" virt="non-virtual"><scope>Sandbox3d</scope><name>m_pImguiMan</name></member>
+      <member refid="classIListener_aaaf1ddfe2afeedab8a70c935b1626488_1aaaf1ddfe2afeedab8a70c935b1626488" prot="private" virt="non-virtual"><scope>Sandbox3d</scope><name>m_reporters</name></member>
+      <member refid="classSandbox3d_a7b5627929bab105b5915d7c6918415a6_1a7b5627929bab105b5915d7c6918415a6" prot="private" virt="non-virtual"><scope>Sandbox3d</scope><name>m_terrain</name></member>
+      <member refid="classNonCopyableAndNonMovable_a0f3fc95f2c582514d58832b7c14d2965_1a0f3fc95f2c582514d58832b7c14d2965" prot="public" virt="non-virtual" ambiguityscope="Game&lt; Sandbox3d &gt;::"><scope>Sandbox3d</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_a3502311a2435129e171eb36ba05f0b2f_1a3502311a2435129e171eb36ba05f0b2f" prot="public" virt="non-virtual" ambiguityscope="Game&lt; Sandbox3d &gt;::"><scope>Sandbox3d</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_a259655d15f1887d015c6d77a0f09f4ff_1a259655d15f1887d015c6d77a0f09f4ff" prot="public" virt="non-virtual" ambiguityscope="Game&lt; Sandbox3d &gt;::"><scope>Sandbox3d</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_acadc47621b689b1b95bef13a35f18572_1acadc47621b689b1b95bef13a35f18572" prot="public" virt="non-virtual" ambiguityscope="Game&lt; Sandbox3d &gt;::"><scope>Sandbox3d</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_a0f3fc95f2c582514d58832b7c14d2965_1a0f3fc95f2c582514d58832b7c14d2965" prot="public" virt="non-virtual" ambiguityscope="IListener&lt; SwapChainResizedEvent &gt;::"><scope>Sandbox3d</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_a3502311a2435129e171eb36ba05f0b2f_1a3502311a2435129e171eb36ba05f0b2f" prot="public" virt="non-virtual" ambiguityscope="IListener&lt; SwapChainResizedEvent &gt;::"><scope>Sandbox3d</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_a259655d15f1887d015c6d77a0f09f4ff_1a259655d15f1887d015c6d77a0f09f4ff" prot="public" virt="non-virtual" ambiguityscope="IListener&lt; SwapChainResizedEvent &gt;::"><scope>Sandbox3d</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_acadc47621b689b1b95bef13a35f18572_1acadc47621b689b1b95bef13a35f18572" prot="public" virt="non-virtual" ambiguityscope="IListener&lt; SwapChainResizedEvent &gt;::"><scope>Sandbox3d</scope><name>NonCopyableAndNonMovable</name></member>
+      <member refid="classSandbox3d_a5c82a667c7d9a33df3d05f2c2c1bd930_1a5c82a667c7d9a33df3d05f2c2c1bd930" prot="public" virt="virtual"><scope>Sandbox3d</scope><name>notify</name></member>
+      <member refid="classNonCopyableAndNonMovable_a6541862f56b2fcaa89155f08b8adaf11_1a6541862f56b2fcaa89155f08b8adaf11" prot="public" virt="non-virtual" ambiguityscope="Game&lt; Sandbox3d &gt;::"><scope>Sandbox3d</scope><name>operator=</name></member>
+      <member refid="classNonCopyableAndNonMovable_aa3af41edbd14c886cdec335b22254829_1aa3af41edbd14c886cdec335b22254829" prot="public" virt="non-virtual" ambiguityscope="Game&lt; Sandbox3d &gt;::"><scope>Sandbox3d</scope><name>operator=</name></member>
+      <member refid="classNonCopyableAndNonMovable_a972632a389e0f2370de9604df60ea9d6_1a972632a389e0f2370de9604df60ea9d6" prot="public" virt="non-virtual" ambiguityscope="Game&lt; Sandbox3d &gt;::"><scope>Sandbox3d</scope><name>operator=</name></member>
+      <member refid="classNonCopyableAndNonMovable_a6541862f56b2fcaa89155f08b8adaf11_1a6541862f56b2fcaa89155f08b8adaf11" prot="public" virt="non-virtual" ambiguityscope="IListener&lt; SwapChainResizedEvent &gt;::"><scope>Sandbox3d</scope><name>operator=</name></member>
+      <member refid="classNonCopyableAndNonMovable_aa3af41edbd14c886cdec335b22254829_1aa3af41edbd14c886cdec335b22254829" prot="public" virt="non-virtual" ambiguityscope="IListener&lt; SwapChainResizedEvent &gt;::"><scope>Sandbox3d</scope><name>operator=</name></member>
+      <member refid="classNonCopyableAndNonMovable_a972632a389e0f2370de9604df60ea9d6_1a972632a389e0f2370de9604df60ea9d6" prot="public" virt="non-virtual" ambiguityscope="IListener&lt; SwapChainResizedEvent &gt;::"><scope>Sandbox3d</scope><name>operator=</name></member>
+      <member refid="classGame_a5703dfb57ce49ecfc644b9be76a65fa2_1a5703dfb57ce49ecfc644b9be76a65fa2" prot="protected" virt="non-virtual"><scope>Sandbox3d</scope><name>present</name></member>
+      <member refid="classSandbox3d_a824771f328f2073b51ad89687d826d05_1a824771f328f2073b51ad89687d826d05" prot="private" virt="non-virtual"><scope>Sandbox3d</scope><name>render</name></member>
+      <member refid="classSandbox3d_a368890d44d74ea1fbdd032f13d096bcf_1a368890d44d74ea1fbdd032f13d096bcf" prot="private" virt="non-virtual"><scope>Sandbox3d</scope><name>s_cameraMan</name></member>
+      <member refid="classGame_aa2ff10aa0692ef22b70af2acebaa2888_1aa2ff10aa0692ef22b70af2acebaa2888" prot="protected" virt="non-virtual"><scope>Sandbox3d</scope><name>s_nWindows</name></member>
+      <member refid="classGame_a1c1d1b4e98b065c0f48922219c1a84e1_1a1c1d1b4e98b065c0f48922219c1a84e1" prot="protected" virt="non-virtual"><scope>Sandbox3d</scope><name>s_settingsMan</name></member>
+      <member refid="classSandbox3d_a60fad847bf17eed5f75b7b270173c6dd_1a60fad847bf17eed5f75b7b270173c6dd" prot="public" virt="non-virtual"><scope>Sandbox3d</scope><name>Sandbox3d</name></member>
+      <member refid="classGame_a009cd108bf259503079139f647cec4d5_1a009cd108bf259503079139f647cec4d5" prot="protected" virt="non-virtual"><scope>Sandbox3d</scope><name>setState</name></member>
+      <member refid="classSandbox3d_a4b7094621086a4d13d7b5f47e5432ed5_1a4b7094621086a4d13d7b5f47e5432ed5" prot="private" virt="non-virtual"><scope>Sandbox3d</scope><name>test</name></member>
+      <member refid="classSandbox3d_aac7b27aa253de8c2f127536da4249833_1aac7b27aa253de8c2f127536da4249833" prot="private" virt="non-virtual"><scope>Sandbox3d</scope><name>update</name></member>
+      <member refid="classSandbox3d_a03eb82b59c39e83118220b5a2bad9d0d_1a03eb82b59c39e83118220b5a2bad9d0d" prot="private" virt="non-virtual"><scope>Sandbox3d</scope><name>updateFixed</name></member>
+      <member refid="classGame_a547ff08a0fddf3db2a4ab881c2bc1915_1a547ff08a0fddf3db2a4ab881c2bc1915" prot="public" virt="non-virtual"><scope>Sandbox3d</scope><name>~Game</name></member>
+      <member refid="classIListener_aae587719e1e793840bb501ba2f91d43c_1aae587719e1e793840bb501ba2f91d43c" prot="public" virt="virtual"><scope>Sandbox3d</scope><name>~IListener</name></member>
+      <member refid="classNonCopyableAndNonMovable_aa6874bb9a99fe151e8c2eda429fe5867_1aa6874bb9a99fe151e8c2eda429fe5867" prot="protected" virt="non-virtual" ambiguityscope="Game&lt; Sandbox3d &gt;::"><scope>Sandbox3d</scope><name>~NonCopyableAndNonMovable</name></member>
+      <member refid="classNonCopyableAndNonMovable_aa6874bb9a99fe151e8c2eda429fe5867_1aa6874bb9a99fe151e8c2eda429fe5867" prot="protected" virt="non-virtual" ambiguityscope="IListener&lt; SwapChainResizedEvent &gt;::"><scope>Sandbox3d</scope><name>~NonCopyableAndNonMovable</name></member>
+      <member refid="classSandbox3d_ac5852645720beb4ed945b2bdeef22ae5_1ac5852645720beb4ed945b2bdeef22ae5" prot="public" virt="non-virtual"><scope>Sandbox3d</scope><name>~Sandbox3d</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

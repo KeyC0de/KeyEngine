@@ -1,0 +1,262 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="classStringBuffer" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>StringBuffer</compoundname>
+    <basecompoundref refid="classNonCopyable" prot="public" virt="non-virtual">NonCopyable</basecompoundref>
+    <includes refid="string__buffer_8h" local="no">string_buffer.h</includes>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classStringBuffer_a23d440d76e000b0bb80f441788fe7d11_1a23d440d76e000b0bb80f441788fe7d11" prot="private" static="yes" mutable="no">
+        <type>std::mutex</type>
+        <definition>std::mutex StringBuffer::s_mu</definition>
+        <argsstring></argsstring>
+        <name>s_mu</name>
+        <qualifiedname>StringBuffer::s_mu</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/string_buffer.h" line="21" column="26" bodyfile="inc/string_buffer.h" bodystart="21" bodyend="-1"/>
+        <referencedby refid="classStringBuffer_a5266f680334a0302edca7ecd7037611a_1a5266f680334a0302edca7ecd7037611a" compoundref="string__buffer_8cpp" startline="42" endline="46">print</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classStringBuffer_ae1216e5dcbd95440fd9045c7fd7f9439_1ae1216e5dcbd95440fd9045c7fd7f9439" prot="private" static="no" mutable="no">
+        <type>std::ostringstream</type>
+        <definition>std::ostringstream StringBuffer::m_ss</definition>
+        <argsstring></argsstring>
+        <name>m_ss</name>
+        <qualifiedname>StringBuffer::m_ss</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/string_buffer.h" line="22" column="20" bodyfile="inc/string_buffer.h" bodystart="22" bodyend="-1"/>
+        <referencedby refid="classStringBuffer_aa9948a5b307ee4bc239025c6506b5659_1aa9948a5b307ee4bc239025c6506b5659" compoundref="string__buffer_8cpp" startline="4" endline="10">StringBuffer</referencedby>
+        <referencedby refid="classStringBuffer_aa9e68db3764bd9a90fdfc91fe1cf2a30_1aa9e68db3764bd9a90fdfc91fe1cf2a30" compoundref="string__buffer_8cpp" startline="37" endline="40">get</referencedby>
+        <referencedby refid="classStringBuffer_ad759fa6f2dde8aedfd632d94ac3ad4ee_1ad759fa6f2dde8aedfd632d94ac3ad4ee" compoundref="string__buffer_8h" startline="33" endline="37">operator&lt;&lt;</referencedby>
+        <referencedby refid="classStringBuffer_a5266f680334a0302edca7ecd7037611a_1a5266f680334a0302edca7ecd7037611a" compoundref="string__buffer_8cpp" startline="42" endline="46">print</referencedby>
+        <referencedby refid="classStringBuffer_a322859237dae6bbdf3c65c67875dc9ba_1a322859237dae6bbdf3c65c67875dc9ba" compoundref="string__buffer_8cpp" startline="31" endline="35">reset</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classStringBuffer_a00ca48cab58188f1d94ad19d6bec8718_1a00ca48cab58188f1d94ad19d6bec8718" prot="private" static="no" mutable="no">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; StringBuffer::m_stream</definition>
+        <argsstring></argsstring>
+        <name>m_stream</name>
+        <qualifiedname>StringBuffer::m_stream</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/string_buffer.h" line="23" column="14" bodyfile="inc/string_buffer.h" bodystart="23" bodyend="-1"/>
+        <referencedby refid="classStringBuffer_a5266f680334a0302edca7ecd7037611a_1a5266f680334a0302edca7ecd7037611a" compoundref="string__buffer_8cpp" startline="42" endline="46">print</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classStringBuffer_a322859237dae6bbdf3c65c67875dc9ba_1a322859237dae6bbdf3c65c67875dc9ba" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void StringBuffer::reset</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>reset</name>
+        <qualifiedname>StringBuffer::reset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/string_buffer.h" line="25" column="6" bodyfile="src/string_buffer.cpp" bodystart="31" bodyend="35"/>
+        <referencedby refid="classStringBuffer_a8fe95ea8f477059bd868a326b26ce28e_1a8fe95ea8f477059bd868a326b26ce28e" compoundref="string__buffer_8cpp" startline="26" endline="29">~StringBuffer</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classStringBuffer_aa9948a5b307ee4bc239025c6506b5659_1aa9948a5b307ee4bc239025c6506b5659" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>StringBuffer::StringBuffer</definition>
+        <argsstring>(const std::string &amp;str, std::ostream &amp;stream=std::cout)</argsstring>
+        <name>StringBuffer</name>
+        <qualifiedname>StringBuffer::StringBuffer</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>stream</declname>
+          <defval>std::cout</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/string_buffer.h" line="27" column="1" bodyfile="src/string_buffer.cpp" bodystart="4" bodyend="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classStringBuffer_a9e1cf1edafe3482250c2825bc2f9c842_1a9e1cf1edafe3482250c2825bc2f9c842" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>StringBuffer::StringBuffer</definition>
+        <argsstring>(StringBuffer &amp;&amp;rhs) noexcept</argsstring>
+        <name>StringBuffer</name>
+        <qualifiedname>StringBuffer::StringBuffer</qualifiedname>
+        <param>
+          <type><ref refid="classStringBuffer" kindref="compound">StringBuffer</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/string_buffer.h" line="28" column="1" bodyfile="src/string_buffer.cpp" bodystart="12" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classStringBuffer_a84c5d34f25d66d608242cba3f39bac67_1a84c5d34f25d66d608242cba3f39bac67" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classStringBuffer" kindref="compound">StringBuffer</ref> &amp;</type>
+        <definition>StringBuffer &amp; StringBuffer::operator=</definition>
+        <argsstring>(StringBuffer &amp;&amp;rhs) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>StringBuffer::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classStringBuffer" kindref="compound">StringBuffer</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/string_buffer.h" line="29" column="14" bodyfile="src/string_buffer.cpp" bodystart="19" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classStringBuffer_a8fe95ea8f477059bd868a326b26ce28e_1a8fe95ea8f477059bd868a326b26ce28e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>StringBuffer::~StringBuffer</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>~StringBuffer</name>
+        <qualifiedname>StringBuffer::~StringBuffer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/string_buffer.h" line="30" column="1" bodyfile="src/string_buffer.cpp" bodystart="26" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classStringBuffer_ad759fa6f2dde8aedfd632d94ac3ad4ee_1ad759fa6f2dde8aedfd632d94ac3ad4ee" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classStringBuffer" kindref="compound">StringBuffer</ref> &amp;</type>
+        <definition>StringBuffer &amp; StringBuffer::operator&lt;&lt;</definition>
+        <argsstring>(const T &amp;str) noexcept</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>StringBuffer::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>const T &amp;</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/string_buffer.h" line="33" column="1" bodyfile="inc/string_buffer.h" bodystart="33" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classStringBuffer_aa9e68db3764bd9a90fdfc91fe1cf2a30_1aa9e68db3764bd9a90fdfc91fe1cf2a30" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string StringBuffer::get</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>get</name>
+        <qualifiedname>StringBuffer::get</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/string_buffer.h" line="38" column="13" bodyfile="src/string_buffer.cpp" bodystart="37" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classStringBuffer_a5266f680334a0302edca7ecd7037611a_1a5266f680334a0302edca7ecd7037611a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void StringBuffer::print</definition>
+        <argsstring>()</argsstring>
+        <name>print</name>
+        <qualifiedname>StringBuffer::print</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/string_buffer.h" line="39" column="6" bodyfile="src/string_buffer.cpp" bodystart="42" bodyend="46"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>thread safe (given its allocator is thread safe) std::ostringstream - also guarantees consistent output </para>
+    </briefdescription>
+    <detaileddescription>
+<para>=============================================================</para>
+<para><simplesect kind="author"><para>KeyC0de </para>
+</simplesect>
+<simplesect kind="date"><para>2021/09/28 15:32</para>
+</simplesect>
+offers templated operator&lt;&lt; for appending into this stringstream object <heading level="1">but you must provide your own guards around string and stream objects that are shared among threads. </heading>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>NonCopyable</label>
+        <link refid="classNonCopyable"/>
+      </node>
+      <node id="1">
+        <label>StringBuffer</label>
+        <link refid="classStringBuffer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>NonCopyable</label>
+        <link refid="classNonCopyable"/>
+      </node>
+      <node id="1">
+        <label>StringBuffer</label>
+        <link refid="classStringBuffer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/string_buffer.h" line="18" column="1" bodyfile="inc/string_buffer.h" bodystart="20" bodyend="40"/>
+    <listofallmembers>
+      <member refid="classStringBuffer_aa9e68db3764bd9a90fdfc91fe1cf2a30_1aa9e68db3764bd9a90fdfc91fe1cf2a30" prot="public" virt="non-virtual"><scope>StringBuffer</scope><name>get</name></member>
+      <member refid="classStringBuffer_ae1216e5dcbd95440fd9045c7fd7f9439_1ae1216e5dcbd95440fd9045c7fd7f9439" prot="private" virt="non-virtual"><scope>StringBuffer</scope><name>m_ss</name></member>
+      <member refid="classStringBuffer_a00ca48cab58188f1d94ad19d6bec8718_1a00ca48cab58188f1d94ad19d6bec8718" prot="private" virt="non-virtual"><scope>StringBuffer</scope><name>m_stream</name></member>
+      <member refid="classNonCopyable_a809b6e4ade7ae32f6d248f2a3b783d45_1a809b6e4ade7ae32f6d248f2a3b783d45" prot="public" virt="non-virtual"><scope>StringBuffer</scope><name>NonCopyable</name></member>
+      <member refid="classNonCopyable_a15aa3015488bb26c47ded914cb630cf5_1a15aa3015488bb26c47ded914cb630cf5" prot="public" virt="non-virtual"><scope>StringBuffer</scope><name>NonCopyable</name></member>
+      <member refid="classNonCopyable_a487646562ae30ece23d7638f2aed1dde_1a487646562ae30ece23d7638f2aed1dde" prot="public" virt="non-virtual"><scope>StringBuffer</scope><name>NonCopyable</name></member>
+      <member refid="classNonCopyable_af716e4cfb79381710ef4490414939ae9_1af716e4cfb79381710ef4490414939ae9" prot="public" virt="non-virtual"><scope>StringBuffer</scope><name>NonCopyable</name></member>
+      <member refid="classStringBuffer_ad759fa6f2dde8aedfd632d94ac3ad4ee_1ad759fa6f2dde8aedfd632d94ac3ad4ee" prot="public" virt="non-virtual"><scope>StringBuffer</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classStringBuffer_a84c5d34f25d66d608242cba3f39bac67_1a84c5d34f25d66d608242cba3f39bac67" prot="public" virt="non-virtual"><scope>StringBuffer</scope><name>operator=</name></member>
+      <member refid="classNonCopyable_af4788b57da9a9faa570c754c22c724f5_1af4788b57da9a9faa570c754c22c724f5" prot="public" virt="non-virtual" ambiguityscope="NonCopyable::"><scope>StringBuffer</scope><name>operator=</name></member>
+      <member refid="classNonCopyable_ae032ca32cda9c836c27b28eb6a087d18_1ae032ca32cda9c836c27b28eb6a087d18" prot="public" virt="non-virtual" ambiguityscope="NonCopyable::"><scope>StringBuffer</scope><name>operator=</name></member>
+      <member refid="classNonCopyable_af81816bd4c2c4421a6eab98843ead6e4_1af81816bd4c2c4421a6eab98843ead6e4" prot="public" virt="non-virtual" ambiguityscope="NonCopyable::"><scope>StringBuffer</scope><name>operator=</name></member>
+      <member refid="classStringBuffer_a5266f680334a0302edca7ecd7037611a_1a5266f680334a0302edca7ecd7037611a" prot="public" virt="non-virtual"><scope>StringBuffer</scope><name>print</name></member>
+      <member refid="classStringBuffer_a322859237dae6bbdf3c65c67875dc9ba_1a322859237dae6bbdf3c65c67875dc9ba" prot="private" virt="non-virtual"><scope>StringBuffer</scope><name>reset</name></member>
+      <member refid="classStringBuffer_a23d440d76e000b0bb80f441788fe7d11_1a23d440d76e000b0bb80f441788fe7d11" prot="private" virt="non-virtual"><scope>StringBuffer</scope><name>s_mu</name></member>
+      <member refid="classStringBuffer_aa9948a5b307ee4bc239025c6506b5659_1aa9948a5b307ee4bc239025c6506b5659" prot="public" virt="non-virtual"><scope>StringBuffer</scope><name>StringBuffer</name></member>
+      <member refid="classStringBuffer_a9e1cf1edafe3482250c2825bc2f9c842_1a9e1cf1edafe3482250c2825bc2f9c842" prot="public" virt="non-virtual"><scope>StringBuffer</scope><name>StringBuffer</name></member>
+      <member refid="classNonCopyable_a3e461fb46c72b9a5af7df7e74dbd899e_1a3e461fb46c72b9a5af7df7e74dbd899e" prot="protected" virt="non-virtual"><scope>StringBuffer</scope><name>~NonCopyable</name></member>
+      <member refid="classStringBuffer_a8fe95ea8f477059bd868a326b26ce28e_1a8fe95ea8f477059bd868a326b26ce28e" prot="public" virt="non-virtual"><scope>StringBuffer</scope><name>~StringBuffer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

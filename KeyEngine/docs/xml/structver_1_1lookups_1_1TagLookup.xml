@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="structver_1_1lookups_1_1TagLookup" kind="struct" language="C++" prot="public" final="yes">
+    <compoundname>ver::lookups::TagLookup</compoundname>
+    <templateparamlist>
+      <param>
+        <type><ref refid="classver_1_1VertexInputLayout_a7582c10f2c7a3ac24f95015bcbeb8c1a_1a7582c10f2c7a3ac24f95015bcbeb8c1a" kindref="member">VertexInputLayout::ILEementType</ref></type>
+        <declname>type</declname>
+        <defname>type</defname>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structver_1_1lookups_1_1TagLookup_ad4732be1bf98023af290e3d02b07c711_1ad4732be1bf98023af290e3d02b07c711" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>static constexpr auto ver::lookups::TagLookup&lt; type &gt;::exec</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>exec</name>
+        <qualifiedname>ver::lookups::TagLookup::exec</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/dynamic_vertex_buffer.cpp" line="90" column="23" bodyfile="src/dynamic_vertex_buffer.cpp" bodystart="90" bodyend="93"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/dynamic_vertex_buffer.cpp" line="88" column="1" bodyfile="src/dynamic_vertex_buffer.cpp" bodystart="89" bodyend="94"/>
+    <listofallmembers>
+      <member refid="structver_1_1lookups_1_1TagLookup_ad4732be1bf98023af290e3d02b07c711_1ad4732be1bf98023af290e3d02b07c711" prot="public" virt="non-virtual"><scope>ver::lookups::TagLookup</scope><name>exec</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

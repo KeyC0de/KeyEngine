@@ -8,12 +8,12 @@ class Graphics;
 namespace ren
 {
 
-//=============================================================
-//	\class	SolidOutlineDrawPass
-//	\author	KeyC0de
-//	\date	2022/04/27 20:33
-//	\brief	requires objects to use VertexShader flat_vs.cso Bindable
-//=============================================================
+///=============================================================
+/// \class	SolidOutlineDrawPass
+/// \author	KeyC0de
+/// \date	2022/04/27 20:33
+/// \brief	requires objects to use VertexShader flat_vs.cso Bindable
+///=============================================================
 class SolidOutlineDrawPass
 	: public RenderQueuePass
 {

@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+  <compounddef id="structUISoundEvent" kind="struct" language="C++" prot="public">
+    <compoundname>UISoundEvent</compoundname>
+    <includes refid="reporter__listener__events_8h" local="no">reporter_listener_events.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="structUISoundEvent_a324aa5866f6d08effd4864d11796047f_1a324aa5866f6d08effd4864d11796047f" prot="public" static="no" strong="no">
+        <type></type>
+        <name>SoundType</name>
+        <qualifiedname>UISoundEvent::SoundType</qualifiedname>
+        <enumvalue id="structUISoundEvent_a324aa5866f6d08effd4864d11796047f_1a324aa5866f6d08effd4864d11796047faed4436f06acc902b7713999999d95d8d" prot="public">
+          <name>Component_Hovered</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="structUISoundEvent_a324aa5866f6d08effd4864d11796047f_1a324aa5866f6d08effd4864d11796047fafbf07ec633d0aa76e7cd7378c97a1fc4" prot="public">
+          <name>Component_Unhovered</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/reporter_listener_events.h" line="23" column="1" bodyfile="inc/reporter_listener_events.h" bodystart="24" bodyend="27"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structUISoundEvent_a964bfc8559ea04e0ad9c6eb38eb02224_1a964bfc8559ea04e0ad9c6eb38eb02224" prot="public" static="no" mutable="no">
+        <type><ref refid="structUISoundEvent_a324aa5866f6d08effd4864d11796047f_1a324aa5866f6d08effd4864d11796047f" kindref="member">SoundType</ref></type>
+        <definition>SoundType UISoundEvent::m_soundType</definition>
+        <argsstring></argsstring>
+        <name>m_soundType</name>
+        <qualifiedname>UISoundEvent::m_soundType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/reporter_listener_events.h" line="28" column="11" bodyfile="inc/reporter_listener_events.h" bodystart="28" bodyend="-1"/>
+        <referencedby refid="classSoundPlayer_a29bf19ba13cb2e0f237f46e300d02d89_1a29bf19ba13cb2e0f237f46e300d02d89" compoundref="key__sound_8cpp" startline="622" endline="643">SoundPlayer::notify</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structUISoundEvent_ac72d4f677eeed4b461cc1345533b8832_1ac72d4f677eeed4b461cc1345533b8832" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>static const char * UISoundEvent::getSoundPath</definition>
+        <argsstring>(SoundType soundType) noexcept</argsstring>
+        <name>getSoundPath</name>
+        <qualifiedname>UISoundEvent::getSoundPath</qualifiedname>
+        <param>
+          <type><ref refid="structUISoundEvent_a324aa5866f6d08effd4864d11796047f_1a324aa5866f6d08effd4864d11796047f" kindref="member">SoundType</ref></type>
+          <declname>soundType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/reporter_listener_events.h" line="30" column="19" bodyfile="inc/reporter_listener_events.h" bodystart="30" bodyend="41"/>
+        <referencedby refid="classSoundPlayer_a29bf19ba13cb2e0f237f46e300d02d89_1a29bf19ba13cb2e0f237f46e300d02d89" compoundref="key__sound_8cpp" startline="622" endline="643">SoundPlayer::notify</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/reporter_listener_events.h" line="21" column="1" bodyfile="inc/reporter_listener_events.h" bodystart="22" bodyend="42"/>
+    <listofallmembers>
+      <member refid="structUISoundEvent_a324aa5866f6d08effd4864d11796047f_1a324aa5866f6d08effd4864d11796047faed4436f06acc902b7713999999d95d8d" prot="public" virt="non-virtual"><scope>UISoundEvent</scope><name>Component_Hovered</name></member>
+      <member refid="structUISoundEvent_a324aa5866f6d08effd4864d11796047f_1a324aa5866f6d08effd4864d11796047fafbf07ec633d0aa76e7cd7378c97a1fc4" prot="public" virt="non-virtual"><scope>UISoundEvent</scope><name>Component_Unhovered</name></member>
+      <member refid="structUISoundEvent_ac72d4f677eeed4b461cc1345533b8832_1ac72d4f677eeed4b461cc1345533b8832" prot="public" virt="non-virtual"><scope>UISoundEvent</scope><name>getSoundPath</name></member>
+      <member refid="structUISoundEvent_a964bfc8559ea04e0ad9c6eb38eb02224_1a964bfc8559ea04e0ad9c6eb38eb02224" prot="public" virt="non-virtual"><scope>UISoundEvent</scope><name>m_soundType</name></member>
+      <member refid="structUISoundEvent_a324aa5866f6d08effd4864d11796047f_1a324aa5866f6d08effd4864d11796047f" prot="public" virt="non-virtual"><scope>UISoundEvent</scope><name>SoundType</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

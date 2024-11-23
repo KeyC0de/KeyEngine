@@ -13,13 +13,18 @@ struct ColorBGR final
 	Byte r;
 };
 
-// For any DXGI format, the byte order is the order of the components in the format name.
-// For example R8G8B8A8, R should be the first (lowest) byte and A should be the last (highest) byte.
-// Endianness really doesn't have anything to do with it in this particular case, since the order is explicit.
-// https://www.khronos.org/opengl/wiki/Direct3D_Compatibility#BGRA_vertex_format
-// OpenGL has the reversed color components ie D3D RGBA = GL ABGR
-//
-// KeyEngine uses DXGI BGRA color order
+///=============================================================
+/// \class	ColorBGRA
+/// \author	KeyC0de
+/// \date	2024/11/23 19:56
+/// \brief For any DXGI format, the byte order is the order of the components in the format name.
+/// \brief For example R8G8B8A8, R should be the first (lowest) byte and A should be the last (highest) byte.
+/// \brief Endianness really doesn't have anything to do with it in this particular case, since the order is explicit.
+/// \brief https://www.khronos.org/opengl/wiki/Direct3D_Compatibility#BGRA_vertex_format
+/// \brief OpenGL has the reversed color components ie D3D RGBA = GL ABGR
+/// \brief
+/// \brief KeyEngine uses DXGI BGRA color order
+///=============================================================
 struct ColorBGRA final
 {
 	union
@@ -174,9 +179,9 @@ namespace col
 // order reversions
 static unsigned rgbaToAbgr( const unsigned col )
 {
-	// Memory (low address >towards> high address)
-	// RGBA
-	// ABGR
+	/// \brief Memory (low address >towards> high address)
+	/// \brief RGBA
+	/// \brief ABGR
 	unsigned r = col;
 	unsigned g = col >> 8u;
 	unsigned b = col >> 16u;
@@ -208,10 +213,10 @@ static unsigned bgraToRgba( const ColorBGRA col )
 
 static ColorBGRA rgbaToBgra( const unsigned col )
 {
-	// best do the conversion of the color components in the shader directly
-	// Memory (low address >towards> high address)
-	// RGBA
-	// BGRA
+	/// \brief best do the conversion of the color components in the shader directly
+	/// \brief Memory (low address >towards> high address)
+	/// \brief RGBA
+	/// \brief BGRA
 	unsigned r = col;
 	unsigned g = col >> 8u;
 	unsigned b = col >> 16u;
@@ -219,8 +224,8 @@ static ColorBGRA rgbaToBgra( const unsigned col )
 	return ( a << 24u ) | ( r << 16u ) | ( g << 8u ) | b;
 }
 
-// convenience functions
 /*
+// convenience functions
 static ColorBGRA toRgba( const Byte r,
 	const Byte g,
 	const Byte b,
