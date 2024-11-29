@@ -1914,7 +1914,7 @@ void WINAPI Window::processMenu( HMENU hMenu )
 #pragma warning( default : 4312 )
 
 #pragma warning( disable : 4312 )
-bool Window::editCopy( const UINT format )
+bool Window::editCopy( const unsigned format /*= CLIPBOARD_TEXT_FORMAT*/ )
 {
 	HGLOBAL hClipboard;
 
@@ -2031,7 +2031,7 @@ bool Window::editCopy( const UINT format )
 #pragma warning( default : 4312 )
 
 #pragma warning( disable : 4312 )
-bool Window::editPaste( const unsigned format )
+bool Window::editPaste( const unsigned format /*= CLIPBOARD_TEXT_FORMAT*/ )
 {
 	if ( !IsClipboardFormatAvailable( format ) )
 	{
@@ -2090,7 +2090,7 @@ bool Window::editPaste( const unsigned format )
 #pragma warning( default : 4312 )
 
 #pragma warning( disable : 4312 )
-void Window::renderClipboardFormat( unsigned format )
+void Window::renderClipboardFormat( unsigned format /*= CLIPBOARD_TEXT_FORMAT*/ )
 {
 	HGLOBAL hClipboard;
 

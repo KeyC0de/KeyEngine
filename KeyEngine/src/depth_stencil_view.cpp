@@ -1,7 +1,7 @@
 #include "depth_stencil_view.h"
 #include "graphics.h"
 #include "texture_desc.h"
-#include "render_target.h"
+#include "render_target_view.h"
 #include "os_utils.h"
 #include "dxgi_info_queue.h"
 #include "viewport.h"

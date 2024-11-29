@@ -6,6 +6,9 @@
 #include "material.h"
 #include "rendering_channel.h"
 #include "transform_vscb.h"
+#ifndef FINAL_RELEASE
+#	include "imgui_visitors.h"
+#endif
 
 
 class VertexBuffer;
@@ -112,7 +115,9 @@ public:
 
 	void addMaterial( Material material ) noexcept;
 	void setMaterialEnabled( const size_t channels, const bool bEnabled ) noexcept;
+#ifndef FINAL_RELEASE
 	void accept( IImGuiConstantBufferVisitor &ev );
+#endif
 	unsigned getIndicesCount() const cond_noex;
 	void connectMaterialsToRenderer( ren::Renderer &r );
 	float getDistanceFromActiveCamera() const noexcept;

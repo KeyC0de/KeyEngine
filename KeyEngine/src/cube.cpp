@@ -34,7 +34,7 @@ Cube::Cube( Graphics &gfx,
 		diffuseTexturePath = std::get<std::string>( colorOrTexturePath );
 	}
 
-	auto cube = Geometry::makeCubeIndependentFacesTextured();
+	auto cube = geometry::makeCubeIndependentFacesTextured();
 	if ( initialScale != 1.0f )
 	{
 		cube.transform( dx::XMMatrixScaling( initialScale, initialScale, initialScale ) );

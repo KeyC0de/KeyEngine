@@ -34,15 +34,6 @@ void safeDelete( T*& p )
 	p = nullptr;
 }
 
-template<typename T, typename = std::enable_if_t<is_pointer_wrapper_v<T>>>
-void safeDelete( T &pSm )
-{
-	if ( pSm )
-	{
-		pSm = nullptr;
-	}
-}
-
 template<typename T>
 T sum( std::initializer_list<T> lst )
 {
@@ -222,11 +213,8 @@ T* deconst( const T *obj )
 }
 
 
+/// \brief ALGORITHM RELATED FUNCTIONS
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// ALGORITHMS
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
 template<typename TContainer, typename TP>
 decltype(auto) pointerToIterator( TContainer &c,
 	TP pElem )
@@ -237,6 +225,7 @@ decltype(auto) pointerToIterator( TContainer &c,
 		} );
 }
 
+/// \brief	removeByBackSwap overloads remove an element from a container without causing iterator invalidation
 template <typename TContainer>
 void removeByBackSwap( TContainer &container,
 	typename TContainer::size_type index )
@@ -253,22 +242,25 @@ void removeByBackSwap( TContainer &container,
 	container.pop_back();
 }
 
-template<typename T, class Alloc = std::allocator<T>, typename = std::enable_if_t<std::is_pointer_v<T>>>
-void removeByBackSwap( std::vector<T, Alloc> &v,
+template<typename TContainer, class T>
+void removeByBackSwap( TContainer &c,
 	T p )
 {
-	typename std::vector<T, Alloc>::iterator iter = pointerToIterator( v, p );
-	if ( iter == v.end() )
+	static_assert( !std::is_same_v<decltype(std::declval<TContainer>().back()), void>, "TContainer must have a back method for `removeByBackSwap` to work!" );
+	static_assert( std::is_pointer_v<T>, "T must be pointer type!" );
+
+	typename TContainer::iterator iter = pointerToIterator( c, p );
+	if ( iter == c.end() )
 	{
 		return;
 	}
-	*iter = std::move( v.back() );
-	v.pop_back();
+	*iter = std::move( c.back() );
+	c.pop_back();
 }
 
-template<typename TContainer, typename Predicate, typename = std::enable_if_t<std::is_function_v<Predicate>>>
+template<typename TContainer, typename TPredicate, typename = std::enable_if_t<std::is_function_v<TPredicate>>>
 void removeByBackSwap( TContainer &c,
-	Predicate pred )
+	TPredicate pred )
 {
 	const auto newEnd = std::remove_if( c.begin(), c.end(), pred );
 	c.erase( newEnd, c.end() );
@@ -281,24 +273,17 @@ void shrinkCapacity( std::vector<T, Alloc>& v )
 	std::vector<T, Alloc>( v.begin(), v.end() ).swap( v );
 }
 
-/// \brief	note that there is std::move(inIt1, inIt2, outIt);
-template<class InputIt, class OutputIt, class TPredicate>
+/// \brief std::vector<int> src = {1, 2, 3, 4, 5};
+/// \brief std::vector<int> dest;
+/// \brief moveIf( src.begin(), src.end(), std::back_inserter(dest), [](int x) { return x % 2 != 0; } );
+template<class TContainer, class InputIt, class OutputIt, class TPredicate>
 void moveIf( InputIt srcFirst,
 	InputIt srcLast,
-	OutputIt *destFirst,
-	TPredicate predicate )
+	std::back_insert_iterator<TContainer> destContainer,
+	TPredicate &&predicate )
 {
-	std::copy_if( std::move_iterator( srcFirst ), std::move_iterator( srcLast ), std::back_inserter( *destFirst ), predicate );
-}
-
-/// \brief	like partition_move - puts the second group of an std::partition to another container removing them from the source container
-template<class Container, class TPredicate>
-void splitMovePartition( Container &src,
-	Container &dest,
-	TPredicate p )
-{
-	auto newEnd = std::partition_copy( std::move_iterator( src.begin() ), std::move_iterator( src.end() ), src.begin(), std::back_inserter( dest ), p );
-	src.erase( newEnd.first, src.end() );
+	static_assert( std::is_same_v<decltype(std::declval<TContainer>().push_back(std::declval<typename TContainer::value_type>())), void>, "`moveIf` uses `std::back_inserter` which can only be used to append at the end of containers that have the ::push_back method defined! Containers like std::vector, std::list, std::deque." );
+	std::copy_if( std::move_iterator( srcFirst ), std::move_iterator( srcLast ), destContainer, std::forward<TPredicate>( predicate ) );
 }
 
 template<typename TContainer>
@@ -310,9 +295,9 @@ void printContainer( const TContainer &cont,
 
 void regexSearch( const std::regex &pattern );
 
-template<typename TContainer, typename Func>
-decltype(auto) doForAll( TContainer &c,
-	Func f )
+template<typename TContainer, typename TFunc>
+void doForAll( TContainer &c,
+	TFunc f )
 {
 	for ( auto &i : c )
 	{
@@ -320,64 +305,68 @@ decltype(auto) doForAll( TContainer &c,
 	}
 }
 
-template<class Container, class FilterFunction>
-decltype(auto) filterContainer( Container &c,
-	const FilterFunction&& f )
+template<typename TContainer, typename TFunc>
+void doForAll( const TContainer &c,
+	TFunc f )
 {
-	static_assert( is_container_v<Container>, "c is not a container type!" );
-
-	return std::transform( std::execution::par, c.begin(), c.end(), f );
+	for ( const auto &i : c )
+	{
+		f( i );
+	}
 }
 
+template<class TContainer, class TFilterFunction>
+auto filterContainer( TContainer &c,
+	TFilterFunction &&f )
+{
+	static_assert( std::is_same_v<decltype(c.begin()), decltype(c.end())>, "c must be a container type!" );
+
+	using ValueType = typename TContainer::value_type;
+	std::vector<ValueType> result;
+	result.reserve(c.size());
+
+	// copy elements satisfying the filter predicate
+	return std::copy_if( std::execution::par, c.begin(), c.end(), std::back_inserter(result), std::forward<TFilterFunction>(f) );
+}
 
 template<typename TContainer>
-typename TContainer::iterator erase( TContainer& container,
-	typename TContainer::const_reference element_to_erase )
+typename TContainer::iterator erase( TContainer &container,
+	typename TContainer::const_reference elementToErase )
 {
-	return container.erase( std::remove( std::begin( container ), std::end( container ), element_to_erase ), std::end( container ) );
+	return container.erase( std::remove( std::begin( container ), std::end( container ), elementToErase ), std::end( container ) );
 }
 
 template<typename TContainer, typename TPredicate>
-typename TContainer::iterator eraseIf( TContainer& container,
-	TPredicate&& predicate )
+typename TContainer::iterator eraseIf( TContainer &container,
+	TPredicate &&predicate )
 {
-	const TContainer::iterator old_end_itr = std::end( container );
-	const TContainer::iterator new_end_itr = std::remove_if( std::begin( container ), old_end_itr, std::forward<TPredicate>( predicate ) );
+	typename TContainer::iterator oldEndIter = std::end( container );
+	typename TContainer::iterator newEndIter = std::remove_if( std::begin( container ), oldEndIter, std::forward<TPredicate>( predicate ) );
 
-	return container.erase( new_end_itr, old_end_itr );
-}
-
-template<typename TContainer, typename T>
-bool containerContains( const TContainer& container,
-	const T& val )
-{
-	const auto cend = std::cend( container );
-	return std::find( std::cbegin( container ), cend, val ) != cend;
+	return container.erase( newEndIter, oldEndIter );
 }
 
 /// \brief	test if at least N elements of an iterator range match a predicate
 /// \brief	earlies out and returns once the required amount of elements have been matched
-template<typename TIt, typename TPredicate>
-bool atLeastNOfRange( TIt begin,
-	TIt end,
+template<typename InputIt, typename TPredicate>
+bool atLeastNOfRange( InputIt first,
+	InputIt last,
 	size_t n,
 	TPredicate &&predicate )
 {
-	using T = decltype( *begin );
-
-	return n == 0u || std::any_of( begin, end, [&n, &predicate] ( const T &element )
+	size_t count = 0;
+	for ( ; first != last; ++first )
+	{
+		if (std::forward<TPredicate>(predicate)(*first))
+		{
+			++count;
+			if (count >= n)
 			{
-				n -= predicate( element ) ? 1u : 0u;
-				return n == 0u;
-			} );
-}
-
-template<typename TContainer, typename TPredicate>
-bool atLeastNOfRange( const TContainer &container,
-	size_t n,
-	TPredicate &&predicate )
-{
-	return atLeastNOfRange( std::cbegin( container ), std::cend( container ), n, std::forward<TPredicate>( predicate ) );
+				return true; // early exit
+			}
+		}
+	}
+	return false;
 }
 
 template<typename TContainer, typename T>
@@ -388,6 +377,14 @@ unsigned indexOf( const TContainer &container,
 	const auto end = std::end( container );
 
 	return std::distance( begin, std::find( begin, end, val ) );
+}
+
+template<typename TContainer, typename T>
+bool containerContains( const TContainer& container,
+	const T &val )
+{
+	const auto cend = std::cend( container );
+	return std::find( std::cbegin( container ), cend, val ) != cend;
 }
 
 template<typename TContainer, typename T, typename TInserter>
@@ -404,71 +401,31 @@ bool insertUnique( const TContainer &container,
 }
 ALIAS_FUNCTION( insertUnique, emplaceBackUnique );
 
-template<typename TContainer, typename TPredicate, typename... TArgs>
-typename TContainer::iterator insertUniqueAndReturnIt( TContainer &container,
-	TPredicate &&predicate,
-	TArgs&&... args )
+template <typename TContainer, typename TComparator = std::equal_to<typename TContainer::value_type>>
+bool hasDuplicates( const TContainer &container, const TComparator &comparator = {} )
 {
-	typename TContainer::value_type* result = tryFindIf( container,
-		std::forward<TPredicate>( predicate ) );
-	if ( result == nullptr )
+	for ( typename TContainer::const_iterator it = container.begin(); it != container.end(); ++it )
 	{
-		return &container.emplace_back( std::forward<TArgs>( args )... );
-
-	}
-	return result;
-}
-ALIAS_FUNCTION( insertUniqueAndReturnIt, emplaceBackUniqueAndReturnIt );
-
-template<typename TContainer, typename TComparator>
-bool hasDuplicates( const TContainer &container,
-	const TComparator &comparator )
-{
-	using TIt = typename TContainer::const_iterator;
-	using T = typename TContainer::value_type;
-
-	bool is_unique = true;
-
-	for ( TIt end = std::end( container ), itr1 = std::begin( container ); is_unique && itr1 != end; itr1 = std::next( itr1 ) )
-	{
-		//If the type contained in the container is a pointer or a number we pass everything by value
-		if constexpr ( std::is_pointer_v<T> || std::is_arithmetic_v<T> )
-		{
-			const auto uniqueness_predicate = [&comparator, lhs = *itr1]( const T rhs )
+		auto isDuplicate = [&comparator, &lhs = *it] (const auto &rhs)
 			{
-				return comparator( lhs, rhs );
+				return comparator(lhs, rhs);
 			};
 
-			is_unique = std::none_of( std::next( itr1 ), end, uniqueness_predicate );
-		}
-		// Otherwise pass everything by const lval ref
-		else
+		if ( std::any_of(std::next(it), container.end(), isDuplicate) )
 		{
-			const auto uniqueness_predicate = [&comparator, &lhs = *itr1]( typename TContainer::const_reference rhs )
-			{
-				return comparator( lhs, rhs );
-			};
-
-			is_unique = std::none_of( std::next( itr1 ), end, uniqueness_predicate );
+			return true; // duplicate found
 		}
 	}
-
-	return is_unique == false;
-}
-
-template<typename TContainer>
-bool hasDuplicates( const TContainer &container )
-{
-	return hasDuplicates( container, std::equal_to() );
+	return false;
 }
 
 template<typename TContainer>
 std::set<typename TContainer::value_type> uniquefy( const TContainer &container )
 {
 	std::set<typename TContainer::value_type> seen;
-	for ( const typename TContainer::value_type &in : container )
+	for ( const auto &in : container )
 	{
-		auto result = seen.insert( in );
+		seen.insert( in );
 	}
 	return seen;
 }

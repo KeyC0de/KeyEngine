@@ -2,7 +2,7 @@
 #include "graphics.h"
 #include "texture_desc.h"
 #include "depth_stencil_view.h"
-#include "render_target.h"
+#include "render_target_view.h"
 #include "dxgi_info_queue.h"
 #include "os_utils.h"
 #include "bindable_registry.h"

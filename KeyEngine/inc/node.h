@@ -4,12 +4,13 @@
 #include <vector>
 #include <memory>
 #include <string>
+#ifndef FINAL_RELEASE
+#	include "imgui_visitors.h"
+#endif
 
 
 class Model;
 class Mesh;
-class IImGuiConstantBufferVisitor;
-class IImguiNodeVisitor;
 
 class Node
 {
@@ -66,8 +67,11 @@ public:
 	DirectX::XMVECTOR getRotationQuat() const noexcept;
 	DirectX::XMFLOAT3 getPosition() const noexcept;
 
+#ifndef FINAL_RELEASE
 	void accept( IImguiNodeVisitor &mv );
 	void accept( IImGuiConstantBufferVisitor &ev );
+#endif
+
 	int getImguiId() const noexcept;
 	bool hasChildren() const noexcept;
 	const std::string& getName() const noexcept;

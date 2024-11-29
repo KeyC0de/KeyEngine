@@ -10,6 +10,8 @@
 #include "utils.h"
 #include "d3d_utils.h"
 
+#undef max
+
 
 namespace mesh
 {
@@ -121,6 +123,7 @@ void Mesh::setMaterialEnabled( const size_t channels,
 	}
 }
 
+#ifndef FINAL_RELEASE
 void Mesh::accept( IImGuiConstantBufferVisitor &ev )
 {
 	for ( auto &material : m_materials )
@@ -128,6 +131,7 @@ void Mesh::accept( IImGuiConstantBufferVisitor &ev )
 		material.accept( ev );
 	}
 }
+#endif
 
 unsigned Mesh::getIndicesCount() const cond_noex
 {

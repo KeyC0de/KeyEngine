@@ -49,10 +49,10 @@ Game<T>::Game( const int width,
 	m_gameTimer.start();
 }
 
+#ifndef FINAL_RELEASE
 template <typename T>
 ImguiManager* Game<T>::createImguiManager() noexcept
 {
-#ifndef FINAL_RELEASE
 	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{
 		return new ImguiManager{};
@@ -61,10 +61,8 @@ ImguiManager* Game<T>::createImguiManager() noexcept
 	{
 		return nullptr;
 	}
-#else
-	return nullptr;
-#endif
 }
+#endif
 
 template <typename T>
 std::optional<Window*> Game<T>::getForegroundWindow() const noexcept
@@ -416,7 +414,7 @@ void Sandbox3d::update( Graphics &gfx,
 	activeCamera.makeActive( gfx );
 	gfx.getRenderer3d().setActiveCamera( activeCamera );
 
-	//if ( util::modulus( gfx.getFrameNum(), g_nFramesPerShadowUpdate ) == 0 )	// #optimization: no need to update shadows every frame
+	//if ( util::modulus( gfx.getFrameNum(), g_nFramesPerShadowUpdate ) == 0 )	// #OPTIMIZATION: no need to update shadows every frame
 	{
 		std::sort( m_lights.begin(), m_lights.end(), [] (std::unique_ptr<ILightSource> &lhs, std::unique_ptr<ILightSource> &rhs)
 			{
@@ -489,7 +487,7 @@ void Sandbox3d::render( Graphics &gfx )
 		model.render();
 	}
 
-	//if ( util::modulus( gfx.getFrameNum(), g_nFramesPerShadowUpdate ) == 1 )	// #optimization: no need to update shadows every frame
+	//if ( util::modulus( gfx.getFrameNum(), g_nFramesPerShadowUpdate ) == 1 )	// #OPTIMIZATION: no need to update shadows every frame
 	{
 		static const auto &settings = s_settingsMan.getSettings();
 

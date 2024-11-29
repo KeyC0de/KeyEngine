@@ -3,7 +3,7 @@
 #include <cstdint>
 
 
-// choose entity representation - 32bit should generally be enough
+/// \brief choose entity representation - 32bit should generally be enough
 #ifdef _32_BIT_ENTITY
 using EntityId = std::uint32_t;
 using EntityIndex = std::uint16_t;

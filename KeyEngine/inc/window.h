@@ -20,7 +20,7 @@
 
 #define BUTTON_TEXT_MAX_LENGTH		80
 
-// #WARNING! These identifiers must be unique among all window classes currently present in the OS
+/// \brief #WARNING! These identifiers must be unique among all window classes currently present in the OS
 #define MAIN_WINDOW_CLASS_NAME				"KeyEngine_Main_Window_Class"
 #define MODAL_DIALOG_CLASS_NAME				"KeyEngine_Modal_Dialog_Class"
 #define MODELESS_DIALOG_CLASS_NAME			"KeyEngine_Modeless_Dialog_Class"

@@ -6,7 +6,7 @@
 #	include "imgui/imgui_impl_dx11.h"
 #	include "imgui/imgui_impl_win32.h"
 #endif // !FINAL_RELEASE
-#include "render_target.h"
+#include "render_target_view.h"
 #include "depth_stencil_view.h"
 #include "reporter_access.h"
 #include "reporter_listener_events.h"
@@ -16,13 +16,12 @@
 #include "console.h"
 #include "graphics_mode.h"
 #include "rectangle.h"
-#include "vtune_itt_domain.h"
 #include "texture.h"
 #include "math_utils.h"
 #include "renderer.h"
 #include "camera_manager.h"
 #include "camera.h"
-#include "rectangle.h"
+#include "vtune_itt_domain.h"
 
 #pragma comment( lib, "dxgi.lib" )
 #pragma comment( lib, "d3d11.lib" )
@@ -35,15 +34,6 @@
 
 namespace mwrl = Microsoft::WRL;
 namespace dx = DirectX;
-
-// create ITT string handles
-#ifdef _PROFILE
-static __itt_string_handle *pStrIttDrawIndexed = __itt_string_handle_create( L"DrawIndexed" );
-static __itt_string_handle *pStrIttDrawIndexedInstanced = __itt_string_handle_create( L"DrawIndexedInstanced" );
-static __itt_string_handle *pStrIttBeginRendering = __itt_string_handle_create( L"BeginRendering" );
-static __itt_string_handle *pStrIttFpsTimerRendering = __itt_string_handle_create( L"FpsTimerRendering" );
-static __itt_string_handle *pStrIttEndRendering = __itt_string_handle_create( L"EndRendering" );
-#endif
 
 Graphics::Adapter::Adapter( IDXGIAdapter *pAdapter )
 {
@@ -623,7 +613,6 @@ void Graphics::drawIndexedInstanced( const unsigned indexCount,
 	DXGI_GET_QUEUE_INFO_GFX;
 	PROFILE_VTUNE_ITT_TASK_END;
 }
-
 
 ColorBGRA*& Graphics::cpuBuffer()
 {

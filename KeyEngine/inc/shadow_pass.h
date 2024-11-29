@@ -22,7 +22,7 @@ namespace ren
 /// \class	ShadowPass
 /// \author	KeyC0de
 /// \date	2022/10/03 10:30
-/// \brief	An offscreen Pass - output only pass DSV
+/// \brief	A RenderQueuePass that outputs only to the DSV. The RTV is inactive.
 ///=============================================================
 class ShadowPass
 	: public RenderQueuePass

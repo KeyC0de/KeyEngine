@@ -10,7 +10,10 @@
 
 namespace dx = DirectX;
 
-TriangleMesh Geometry::makeLine( const float length /*=  1.0f / 2.0f*/,
+namespace geometry
+{
+
+TriangleMesh makeLine( const float length /*=  1.0f / 2.0f*/,
 	std::optional<ver::VertexInputLayout> layout /*= {}*/ )
 {
 	using Type = ver::VertexInputLayout::ILEementType;
@@ -34,7 +37,7 @@ TriangleMesh Geometry::makeLine( const float length /*=  1.0f / 2.0f*/,
 	};
 }
 
-TriangleMesh Geometry::makeCube( std::optional<ver::VertexInputLayout> layout,
+TriangleMesh makeCube( std::optional<ver::VertexInputLayout> layout,
 	const float side/* = 1.0f / 2.0f*/ )
 {
 	using Type = ver::VertexInputLayout::ILEementType;
@@ -69,7 +72,7 @@ TriangleMesh Geometry::makeCube( std::optional<ver::VertexInputLayout> layout,
 	};
 }
 
-TriangleMesh Geometry::makeCubeIndependentFaces( ver::VertexInputLayout layout,
+TriangleMesh makeCubeIndependentFaces( ver::VertexInputLayout layout,
 	const float side/* = 1.0f / 2.0f*/ )
 {
 	using Type = ver::VertexInputLayout::ILEementType;
@@ -114,7 +117,7 @@ TriangleMesh Geometry::makeCubeIndependentFaces( ver::VertexInputLayout layout,
 	};
 }
 
-TriangleMesh Geometry::makeCubeIndependentFacesTextured()
+TriangleMesh makeCubeIndependentFacesTextured()
 {
 	using Type = ver::VertexInputLayout::ILEementType;
 
@@ -153,7 +156,7 @@ TriangleMesh Geometry::makeCubeIndependentFacesTextured()
 	return itl;
 }
 
-TriangleMesh Geometry::makeSphereTesselated( std::optional<ver::VertexInputLayout> layout,
+TriangleMesh makeSphereTesselated( std::optional<ver::VertexInputLayout> layout,
 	const unsigned nLateralDivs /*= 12*/,
 	const unsigned nLongitudinalDivs /*= 24*/,
 	const float radius /*= 1.0f*/ )
@@ -251,7 +254,7 @@ TriangleMesh Geometry::makeSphereTesselated( std::optional<ver::VertexInputLayou
 	return {vb, indices};
 }
 
-TriangleMesh Geometry::makePlanarGrid( const int length /*= 2*/,
+TriangleMesh makePlanarGrid( const int length /*= 2*/,
 	const int width /*= 2*/,
 	int nDivisionsX /*= 1*/,
 	int nDivisionsY /*= 1*/ )
@@ -321,7 +324,7 @@ TriangleMesh Geometry::makePlanarGrid( const int length /*= 2*/,
 	return {vb, indices};
 }
 
-TriangleMesh Geometry::makePlanarGridTextured( const int length /*= 2*/,
+TriangleMesh makePlanarGridTextured( const int length /*= 2*/,
 	const int width /*= 2*/,
 	int nDivisionsX /*= 1*/,
 	int nDivisionsY /*= 1*/ )
@@ -401,7 +404,7 @@ TriangleMesh Geometry::makePlanarGridTextured( const int length /*= 2*/,
 	return {vb, indices};
 }
 
-TriangleMesh Geometry::makePlanarGridTexturedFromHeighmap( const std::string &filename,
+TriangleMesh makePlanarGridTexturedFromHeighmap( const std::string &filename,
 	const int normalizeAmount /*= 4*/,
 	const int terrainAreaUnitMultiplier /*= 10*/,
 	const int length /*= 2*/,
@@ -509,7 +512,7 @@ TriangleMesh Geometry::makePlanarGridTexturedFromHeighmap( const std::string &fi
 	return {vb, indices};
 }
 
-TriangleMesh Geometry::makeCameraWidget()
+TriangleMesh makeCameraWidget()
 {
 	ver::VertexInputLayout vertexLayout;
 	vertexLayout.add( ver::VertexInputLayout::Position3D );
@@ -556,7 +559,7 @@ TriangleMesh Geometry::makeCameraWidget()
 	return {vb, indices, true};
 }
 
-TriangleMesh Geometry::makeCameraFrustum( const float width,
+TriangleMesh makeCameraFrustum( const float width,
 	const float height,
 	const float nearZ,
 	const float farZ )
@@ -609,3 +612,5 @@ TriangleMesh Geometry::makeCameraFrustum( const float width,
 
 	return {vb, indices};
 }
+
+}//namespace geometry

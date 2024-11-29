@@ -105,13 +105,15 @@ public:
 		T::bind( gfx );
 	}
 
-	void accept( IImGuiConstantBufferVisitor &ev ) override
+#ifndef FINAL_RELEASE
+	void accept(IImGuiConstantBufferVisitor &ev) override
 	{
 		if ( ev.visit( m_cb ) )
 		{
 			m_bDirty = true;
 		}
 	}
+#endif
 };
 
 using VertexShaderConstantBufferEx = ConstantBufferEx<IVertexShaderConstantBufferEx>;

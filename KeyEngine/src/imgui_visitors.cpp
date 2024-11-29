@@ -1,4 +1,5 @@
 #include "imgui_visitors.h"
+#ifndef FINAL_RELEASE
 #include <DirectXMath.h>
 #include <variant>
 #include "model.h"
@@ -11,9 +12,7 @@
 #include "material.h"
 #include "utils.h"
 #include "math_utils.h"
-#ifndef FINAL_RELEASE
-#	include "imgui/imgui.h"
-#endif
+#include "imgui/imgui.h"
 
 
 namespace dx = DirectX;
@@ -256,3 +255,4 @@ void ImguiConstantBufferVisitorShowcase::onSetMaterial()
 	ImGui::Checkbox( ( "Material Active#"s + std::to_string( m_materialId ) ).c_str(), &bActive );
 	m_pMaterial->setEnabled( bActive );
 }
+#endif

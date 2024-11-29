@@ -130,19 +130,10 @@
     <ClCompile Include="src\camera_manager.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
-    <ClCompile Include="src\binder.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
     <ClCompile Include="src\cube_texture.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
     <ClCompile Include="src\dxgi_info_queue.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\dynamic_constant_buffer.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\dynamic_vertex_buffer.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
     <ClCompile Include="src\material.cpp">
@@ -167,9 +158,6 @@
       <Filter>engine\vfx</Filter>
     </ClCompile>
     <ClCompile Include="src\mouse_picker.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\linker.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
     <ClCompile Include="src\renderer.cpp">
@@ -238,7 +226,7 @@
     <ClCompile Include="src\rasterizer_state.cpp">
       <Filter>engine\vfx\bindables</Filter>
     </ClCompile>
-    <ClCompile Include="src\render_target.cpp">
+    <ClCompile Include="src\render_target_view.cpp">
       <Filter>engine\vfx\bindables</Filter>
     </ClCompile>
     <ClCompile Include="src\transform_vscb.cpp">
@@ -370,9 +358,6 @@
     <ClCompile Include="src\ui_component.cpp">
       <Filter>engine\vfx\ui</Filter>
     </ClCompile>
-    <ClCompile Include="src\rectangle.cpp">
-      <Filter>engine\vfx\ui</Filter>
-    </ClCompile>
     <ClCompile Include="src\line.cpp">
       <Filter>engine\vfx\renderables</Filter>
     </ClCompile>
@@ -382,13 +367,31 @@
     <ClCompile Include="src\texture_processor.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
-    <ClCompile Include="src\database.cpp">
-      <Filter>engine\gameplay</Filter>
-    </ClCompile>
     <ClCompile Include="src\model.cpp">
       <Filter>engine\vfx\renderables</Filter>
     </ClCompile>
     <ClCompile Include="src\node.cpp">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\database.cpp">
+      <Filter>engine\db</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gamepad.cpp">
+      <Filter>engine\os\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\linker.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\binder.cpp">
+      <Filter>engine\vfx\pass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\dynamic_constant_buffer.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\dynamic_vertex_buffer.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rectangle.cpp">
       <Filter>engine\vfx\renderables</Filter>
     </ClCompile>
   </ItemGroup>
@@ -573,16 +576,10 @@
     <ClInclude Include="inc\types.h">
       <Filter>engine\common_util</Filter>
     </ClInclude>
-    <ClInclude Include="inc\windows_hidden_defs.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
     <ClInclude Include="inc\texture.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
     <ClInclude Include="inc\mouse_picker.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\linker.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
     <ClInclude Include="inc\renderer.h">
@@ -612,12 +609,6 @@
     <ClInclude Include="inc\dxgi_info_queue.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
-    <ClInclude Include="inc\dynamic_constant_buffer.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\dynamic_vertex_buffer.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
     <ClInclude Include="inc\material.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
@@ -631,9 +622,6 @@
       <Filter>engine\vfx</Filter>
     </ClInclude>
     <ClInclude Include="inc\cube_texture.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\binder.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
     <ClInclude Include="inc\color.h">
@@ -717,7 +705,7 @@
     <ClInclude Include="inc\render_surface.h">
       <Filter>engine\vfx\bindables</Filter>
     </ClInclude>
-    <ClInclude Include="inc\render_target.h">
+    <ClInclude Include="inc\render_target_view.h">
       <Filter>engine\vfx\bindables</Filter>
     </ClInclude>
     <ClInclude Include="inc\transform_vscb.h">
@@ -898,9 +886,6 @@
       <Filter>engine\vfx\ui</Filter>
     </ClInclude>
     <ClInclude Include="inc\ui_pass.h">
-      <Filter>engine\vfx\ui</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\rectangle.h">
       <Filter>engine\vfx\ui</Filter>
     </ClInclude>
     <ClInclude Include="inc\line.h">
@@ -1173,9 +1158,6 @@
     <ClInclude Include="inc\texture_processor.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
-    <ClInclude Include="inc\database.h">
-      <Filter>engine\gameplay</Filter>
-    </ClInclude>
     <ClInclude Include="inc\model.h">
       <Filter>engine\vfx\renderables</Filter>
     </ClInclude>
@@ -1184,6 +1166,42 @@
     </ClInclude>
     <ClInclude Include="inc\utils_global.h">
       <Filter>engine\common_util</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\database.h">
+      <Filter>engine\db</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\actor.h">
+      <Filter>engine\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\save_load.h">
+      <Filter>engine\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\multiplayer_replicated_commands.h">
+      <Filter>engine\network</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\gamepad.h">
+      <Filter>engine\os\win</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\binder.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\linker.h">
+      <Filter>engine\vfx\pass</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\dynamic_constant_buffer.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\windows_hidden_defs.h">
+      <Filter>engine\os\win</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\dynamic_vertex_buffer.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\rectangle.h">
+      <Filter>engine\vfx\renderables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\point.h">
+      <Filter>engine\vfx\ui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -4,7 +4,7 @@
 #include "hlsli/shadowing_ps.hlsli"
 
 
-// PS Resources
+/// \brief PS Resources
 cbuffer ModelPSCB : register(b0)
 {
 	bool bSpecularMap;
@@ -20,7 +20,7 @@ Texture2D specTex : register(t1);
 Texture2D normTex : register(t2);
 SamplerState sampl : register(s0);
 
-// PS Input
+/// \brief PS Input
 struct PSIn
 {
 	float3 viewSpacePos : PositionViewSpace;
@@ -31,7 +31,7 @@ struct PSIn
 	float4 posLightSpace[MAX_LIGHTS] : PositionLightSpace;
 };
 
-// PS Output
+/// \brief PS Output
 struct PSOut
 {
 	float4 finalColor : SV_Target;
@@ -77,8 +77,7 @@ PSOut main( PSIn input )
 		specularFactor = modelSpecularColor;
 	}
 
-	// if another pixel is occluding this one, then this one will be in shadow
-	// so don't apply lighting and only add an cb_ambientColor light term
+	// if another pixel is occluding this one, then this one will be in shadow, so don't apply lighting and only add an cb_ambientColor light term
 	float3 lightCombinedDiffuse = float3(0, 0, 0);
 	float3 lightCombinedSpecular = float3(0, 0, 0);
 

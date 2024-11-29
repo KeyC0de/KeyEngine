@@ -25,6 +25,13 @@ __itt_domain *ittDomain = __itt_domain_create( L"KeyEngine.Domain.Global" );
 // ITT VTUNE Resume Profiler
 #	define PROFILE_VTUNE_ITT_RESUME							__itt_resume()
 
+// create ITT string handles
+static __itt_string_handle *pStrIttDrawIndexed = __itt_string_handle_create(L"DrawIndexed");
+static __itt_string_handle *pStrIttDrawIndexedInstanced = __itt_string_handle_create(L"DrawIndexedInstanced");
+static __itt_string_handle *pStrIttBeginRendering = __itt_string_handle_create(L"BeginRendering");
+static __itt_string_handle *pStrIttFpsTimerRendering = __itt_string_handle_create(L"FpsTimerRendering");
+static __itt_string_handle *pStrIttEndRendering = __itt_string_handle_create(L"EndRendering");
+
 #else
 
 #	define PROFILE_VTUNE_ITT_TASK_BEGIN( strHandle )			(void) 0;

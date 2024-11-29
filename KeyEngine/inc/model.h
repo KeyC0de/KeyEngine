@@ -12,6 +12,7 @@
 
 class Graphics;
 class Mesh;
+class Node;
 class ModelWindow;
 struct aiMesh;
 struct aiMaterial;
@@ -49,8 +50,10 @@ public:
 	void render( const size_t channels = rch::all ) const cond_noex;
 	void setMaterialEnabled( const size_t channels, const bool bEnabled ) noexcept;
 	void displayImguiWidgets( Graphics &gfx ) noexcept;
-	void accept( IImguiNodeVisitor &v );
-	void connectMaterialsToRenderer( ren::Renderer &r );
+	void connectMaterialsToRenderer(ren::Renderer &r);
+#ifndef FINAL_RELEASE
+	void accept(IImguiNodeVisitor &v);
+#endif
 private:
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// \brief	All transformation-related-functions simply call the root Node's corresponding function and propagate the operation down the Node hierarchy; the world transform itself is updated only once-per-tick during update

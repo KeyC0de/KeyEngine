@@ -33,7 +33,7 @@ Line::Line( Graphics &gfx,
 		diffuseTexturePath = std::get<std::string>( colorOrTexturePath );
 	}
 
-	auto line = Geometry::makeLine();
+	auto line = geometry::makeLine();
 	if ( lengthScale != 1.0f )
 	{
 		line.transform( dx::XMMatrixScaling( lengthScale, lengthScale, lengthScale ) );

@@ -12,7 +12,7 @@ class RenderQueuePass
 	: public IBindablePass
 {
 	bool m_bTransparent;
-	std::vector<std::pair<Job, float>> m_meshes;
+	std::vector<std::pair<Job, float>> m_jobs;
 public:
 	RenderQueuePass( const std::string &name, const std::vector<std::shared_ptr<IBindable>> &bindables = {}, const bool bTransparentMeshPass = false );
 

@@ -2,9 +2,6 @@
 #include "mesh.h"
 #include "d3d_utils.h"
 #include "assertions_console.h"
-#ifndef FINAL_RELEASE
-#	include "imgui_visitors.h"
-#endif
 
 
 namespace dx = DirectX;
@@ -317,7 +314,8 @@ DirectX::XMFLOAT3 Node::getPosition() const noexcept
 	return m_pos;
 }
 
-void Node::accept( IImguiNodeVisitor &mv )
+#ifndef FINAL_RELEASE
+void Node::accept(IImguiNodeVisitor &mv)
 {
 	const bool bImguiNodeOpen = mv.visit( *this );
 	if ( bImguiNodeOpen )
@@ -337,6 +335,7 @@ void Node::accept( IImGuiConstantBufferVisitor &ev )
 		mesh->accept( ev );
 	}
 }
+#endif
 
 int Node::getImguiId() const noexcept
 {

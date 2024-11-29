@@ -3,12 +3,14 @@
 #include <DirectXMath.h>
 #include "bindable.h"
 #include "dynamic_constant_buffer.h"
+#ifndef FINAL_RELEASE
+#	include "imgui_visitors.h"
+#endif
 
 
 template<typename CB>
 class VertexShaderConstantBuffer;
 class Graphics;
-class IImGuiConstantBufferVisitor;
 class Mesh;
 
 class TransformVSCB
@@ -41,7 +43,6 @@ protected:
 	Transforms getTransforms( Graphics &gfx ) cond_noex;
 };
 
-
 class TransformScaleVSCB
 	: public TransformVSCB
 {
@@ -53,7 +54,9 @@ public:
 	TransformScaleVSCB( TransformScaleVSCB &&rhs ) noexcept;
 	TransformScaleVSCB& operator=( TransformScaleVSCB &&rhs ) noexcept;
 
+#ifndef FINAL_RELEASE
 	void accept( IImGuiConstantBufferVisitor &ev ) override;
+#endif
 	void bind( Graphics &gfx ) cond_noex override;
 	void setMesh( const Mesh &mesh ) noexcept override;
 	std::unique_ptr<IBindableCloning> clone() const noexcept override;

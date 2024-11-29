@@ -95,7 +95,7 @@ void ShadowPass::run( Graphics &gfx ) const cond_noex
 {
 	const_cast<ShadowPass*>( this )->bindGlobalCBs( gfx );
 
-	//if ( util::modulus( gfx.getFrameNum(), g_nFramesPerShadowUpdate ) == 1 )	// #optimization: no need to update shadows every frame
+	//if ( util::modulus( gfx.getFrameNum(), g_nFramesPerShadowUpdate ) == 1 )	// #OPTIMIZATION: no need to update shadows every frame
 	{
 		const_cast<ShadowPass*>( this )->bindLightCBs( gfx );
 

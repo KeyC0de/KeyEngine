@@ -44,8 +44,8 @@ Terrain::Terrain( Graphics &gfx,
 	const int widthVerts = util::ceil( width ) * 2;
 
 	auto planarGrid = heightMapfilename.empty() ?
-		Geometry::makePlanarGridTextured( length, width, lengthVerts, widthVerts ) :
-		Geometry::makePlanarGridTexturedFromHeighmap( heightMapfilename, normalizeAmount, terrainAreaUnitMultiplier, length, width, lengthVerts, widthVerts );
+		geometry::makePlanarGridTextured( length, width, lengthVerts, widthVerts ) :
+		geometry::makePlanarGridTexturedFromHeighmap( heightMapfilename, normalizeAmount, terrainAreaUnitMultiplier, length, width, lengthVerts, widthVerts );
 
 	if ( initialScale != 1.0f )
 	{

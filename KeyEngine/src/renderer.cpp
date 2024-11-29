@@ -23,7 +23,7 @@
 #include "blur_pass.h"
 #include "pass_through.h"
 #include "pass_2d.h"
-#include "render_target.h"
+#include "render_target_view.h"
 #ifndef FINAL_RELEASE
 #	include "imgui/imgui.h"
 #endif
@@ -66,12 +66,12 @@ void Renderer::recreate( Graphics &gfx )
 	addGlobalLinker( RenderSurfaceLinker<IDepthStencilView>::make( "backDepthBuffer", m_pDsv ) );
 
 	{
-		auto pass = std::make_unique<RenderSurfaceClearPass>( "clearRt" );
+		auto pass = std::make_unique<RenderSurfaceClearPass>( "clearRtv" );
 		pass->setupBinderTarget( "render_surface", "$", "backColorbuffer" );
 		addPass( std::move( pass ) );
 	}
 	{
-		auto pass = std::make_unique<RenderSurfaceClearPass>( "clearDs" );
+		auto pass = std::make_unique<RenderSurfaceClearPass>( "clearDsv" );
 		pass->setupBinderTarget( "render_surface", "$", "backDepthBuffer" );
 		addPass( std::move( pass ) );
 	}
@@ -322,8 +322,8 @@ void Renderer3d::recreate( Graphics &gfx )
 	}
 	{
 		auto pass = std::make_unique<OpaquePass>( gfx, "opaque" );
-		pass->setupBinderTarget( "renderTarget", "clearRt", "render_surface" );
-		pass->setupBinderTarget( "depthStencil", "clearDs", "render_surface" );
+		pass->setupBinderTarget( "renderTarget", "clearRtv", "render_surface" );
+		pass->setupBinderTarget( "depthStencil", "clearDsv", "render_surface" );
 		pass->setupBinderTarget( "offscreenShadowmapIn", "shadow", "offscreenShadowmapOut" );
 		pass->setupBinderTarget( "offscreenShadowCubemapIn", "shadow", "offscreenShadowCubemapOut" );
 		addPass( std::move( pass ) );
@@ -619,8 +619,8 @@ void Renderer2d::recreate( Graphics &gfx )
 
 	{
 		auto pass = std::make_unique<Pass2D>( gfx, "pass2d" );
-		pass->setupBinderTarget( "renderTarget", "clearRt", "render_surface" );
-		pass->setupBinderTarget( "depthStencil", "clearDs", "render_surface" );
+		pass->setupBinderTarget( "renderTarget", "clearRtv", "render_surface" );
+		pass->setupBinderTarget( "depthStencil", "clearDsv", "render_surface" );
 		addPass( std::move( pass ) );
 	}
 

@@ -5,7 +5,7 @@
 #include "linker.h"
 #include "texture_sampler_state.h"
 #include "rasterizer_state.h"
-#include "render_target.h"
+#include "render_target_view.h"
 #include "depth_stencil_view.h"
 #include "depth_stencil_state.h"
 #include "vertex_shader.h"
@@ -47,14 +47,14 @@ SkyPass::SkyPass( Graphics &gfx,
 	{
 		auto vs = VertexShader::fetch( gfx, "sky_vs.cso" );
 		{// cube
-			TriangleMesh cube = Geometry::makeCube();
+			TriangleMesh cube = geometry::makeCube();
 			m_pCubeVb = VertexBuffer::fetch( gfx, s_cubeGeometryTag, cube.m_vb );
 			m_pCubeIb = IndexBuffer::fetch( gfx, s_cubeGeometryTag, cube.m_indices );
 			m_nCubeIndices = (unsigned)cube.m_indices.size();
 			addBindable( InputLayout::fetch( gfx, cube.m_vb.getLayout(), *vs ) );
 		}
 		{// sphere
-			TriangleMesh sphere = Geometry::makeSphereTesselated();
+			TriangleMesh sphere = geometry::makeSphereTesselated();
 			m_pSphereVb = VertexBuffer::fetch( gfx, s_sphereGeometryTag, sphere.m_vb );
 			m_pSphereIb = IndexBuffer::fetch( gfx, s_sphereGeometryTag, sphere.m_indices );
 			m_nSphereIndices = (unsigned)sphere.m_indices.size();

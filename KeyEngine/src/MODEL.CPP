@@ -149,11 +149,6 @@ void Model::displayImguiWidgets( Graphics &gfx ) noexcept
 #endif
 }
 
-void Model::accept( IImguiNodeVisitor &v )
-{
-	m_pRoot->accept( v );
-}
-
 void Model::connectMaterialsToRenderer( ren::Renderer &r )
 {
 	ASSERT( !m_meshes.empty(), "Model has no meshes to render!" );
@@ -162,6 +157,13 @@ void Model::connectMaterialsToRenderer( ren::Renderer &r )
 		pMesh->connectMaterialsToRenderer( r );
 	}
 }
+
+#ifndef FINAL_RELEASE
+void Model::accept(IImguiNodeVisitor &v)
+{
+	m_pRoot->accept(v);
+}
+#endif
 
 void Model::setTransform( const DirectX::XMMATRIX &tr ) cond_noex
 {
@@ -199,7 +201,7 @@ void Model::setScale( const DirectX::XMFLOAT3 &scale ) cond_noex
 	m_pRoot->setScale( scale );
 }
 
-void Model::scaleRel( const DirectX::XMFLOAT3 &scale )
+void Model::scaleRel( const DirectX::XMFLOAT3 &scale ) cond_noex
 {
 	m_pRoot->setScale( scale );
 }

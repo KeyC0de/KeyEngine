@@ -1,4 +1,4 @@
-//used for ShadowPass, outputting directly to the Render Target - No/Passthrough Pixel Shader
+/// \brief	this file is used by the class ShadowPass/DepthPrePass, outputting directly to a Shader Resource View - No Pixel Shader is used
 #include "hlsli/transforms_vscb.hlsli"
 
 

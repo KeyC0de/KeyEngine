@@ -78,7 +78,9 @@ protected:
 	const State* getState() const noexcept;
 	State* getState() noexcept;
 private:
+#ifndef FINAL_RELEASE
 	ImguiManager* createImguiManager() noexcept;
+#endif
 };
 
 class Sandbox3d

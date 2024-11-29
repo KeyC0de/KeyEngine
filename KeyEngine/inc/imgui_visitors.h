@@ -14,6 +14,7 @@ namespace con
 	class CBuffer;
 }
 
+#ifndef FINAL_RELEASE
 class IImguiNodeVisitor
 {
 protected:
@@ -86,3 +87,4 @@ public:
 	bool onVisit( con::CBuffer &cb ) override;
 	void onSetMaterial() override;
 };
+#endif

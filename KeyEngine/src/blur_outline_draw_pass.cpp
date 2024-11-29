@@ -4,7 +4,7 @@
 #include "vertex_shader.h"
 #include "depth_stencil_state.h"
 #include "linker.h"
-#include "render_target.h"
+#include "render_target_view.h"
 #include "texture_sampler_state.h"
 #include "rasterizer_state.h"
 

@@ -10,7 +10,8 @@ enum LightingMode
 	PBR_UE,
 };
 
-static constexpr LightingMode s_currentLightingModel = BlinnPhong;	/// you have to manually change this to switch modes (and potentially games)
+/// \brief you have to manually change this to switch modes (and potentially games)
+static constexpr LightingMode s_currentLightingModel = BlinnPhong;
 
 static inline constexpr const int get() noexcept
 {

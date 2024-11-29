@@ -32,6 +32,9 @@ BSTR strToBstr( const std::wstring &str );
 __int64 filetimeToInt64( const FILETIME &fileTime );
 /// \brief	returns the thread's previous affinity mask
 [[maybe_unused]] DWORD_PTR pinThreadToCore( const HANDLE hThread, const DWORD core );
+/// \brief Thread objects in the Windows OS do not have a name. Naming threads is purely a feature of the debugger.
+/// \brief The function to 'set' a thread's name is SetThreadName and it raises an MS_VC_EXCEPTION that's caught by the debugger, and the information used for the debugging experience. If no debugger is present, the exception filter simply continues execution. Unless you attach a debugger the function call will fail.
+/// \brief The description of a thread can be set more than once; the most recently set value is used. You can retrieve the description of a thread by calling GetThreadDescription.
 void setCurrentThreadName( const std::string &name );
 
 std::string getKnownFolderPath( const int id = CSIDL_PERSONAL );
@@ -105,7 +108,7 @@ decltype( auto ) askForCredentials( TCallback &&f,
 		return hres;\
 	}
 #else
-#	define ASSERT_RETURN_HRES_IF_FAILED( hres ) (void)0;
+#	define ASSERT_RETURN_HRES_IF_FAILED( hres ) (void)hres;
 #endif
 
 #if defined _DEBUG && !defined NDEBUG
@@ -120,7 +123,7 @@ decltype( auto ) askForCredentials( TCallback &&f,
 		std::exit( hres );\
 	}
 #else
-#	define ASSERT_IF_FAILED( hres ) (void)0;
+#	define ASSERT_IF_FAILED( hres ) (void)hres;
 #endif
 
 #if defined _DEBUG && !defined NDEBUG
@@ -135,7 +138,7 @@ decltype( auto ) askForCredentials( TCallback &&f,
 		std::exit( hres );\
 	}
 #else
-#	define ASSERT_HRES_IF_FAILED (void)0;
+#	define ASSERT_HRES_IF_FAILED (void)hres;
 #endif
 
 #if defined _DEBUG && !defined NDEBUG
@@ -150,7 +153,7 @@ decltype( auto ) askForCredentials( TCallback &&f,
 		std::exit( hres );\
 	}
 #else
-#	define ASSERT_HRES_IF_FAILED_MSG (void)0;
+#	define ASSERT_HRES_IF_FAILED_MSG (void)hres;
 #endif
 
 
@@ -177,7 +180,7 @@ decltype( auto ) askForCredentials( TCallback &&f,
 		std::exit( hres );\
 	}
 #else
-#	define ASSERT_NTSTATUS_IF_FAILED (void)0;
+#	define ASSERT_NTSTATUS_IF_FAILED (void)hres;
 #endif
 
 

@@ -36,8 +36,8 @@ class Camera
 	float m_yawDefault;
 	float m_yaw;	// in radians
 	float m_yawPrev;
-	// tethered flag indicates whether the Camera's position is bound to another object
-	// (eg shadow casting light), st when the object moves the camera moves along with it
+	/// \brief m_bTethered flag indicates whether the Camera's position is bound to another object
+	/// \brief (eg shadow casting light), st when the object moves the camera moves along with it
 	bool m_bTethered;	// #TODO: instead of storing bool, store a raw pointer to the object to which this Camera is tethered to and check if Camera's functions restricted by it are being called by that object; if so then allow the operation, otherwise return
 	bool m_bPespectiveProjection;
 	bool m_bShowWidget = false;

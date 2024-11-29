@@ -19,7 +19,7 @@ RenderQueuePass::RenderQueuePass( const std::string &name,
 void RenderQueuePass::addJob( Job job,
 	const float meshDistanceFromActiveCamera ) noexcept
 {
-	m_meshes.emplace_back( job, meshDistanceFromActiveCamera );
+	m_jobs.emplace_back( job, meshDistanceFromActiveCamera );
 }
 
 void RenderQueuePass::run( Graphics &gfx ) const cond_noex
@@ -28,7 +28,7 @@ void RenderQueuePass::run( Graphics &gfx ) const cond_noex
 
 	const_cast<RenderQueuePass*>( this )->sortJobs();
 
-	for ( const auto &job : m_meshes )
+	for ( const auto &job : m_jobs )
 	{
 		job.first.run( gfx );
 	}
@@ -36,12 +36,12 @@ void RenderQueuePass::run( Graphics &gfx ) const cond_noex
 
 void RenderQueuePass::reset() cond_noex
 {
-	m_meshes.clear();
+	m_jobs.clear();
 }
 
 size_t RenderQueuePass::getNumMeshes() const noexcept
 {
-	return m_meshes.size();
+	return m_jobs.size();
 }
 
 void RenderQueuePass::sortJobs()
@@ -49,7 +49,7 @@ void RenderQueuePass::sortJobs()
 	if ( m_bTransparent )
 	{
 		// if meshes are transparent sort them back to front (those with the largest distance from camera are rendered first)
-		std::sort( m_meshes.begin(), m_meshes.end(),
+		std::sort( m_jobs.begin(), m_jobs.end(),
 		[] ( const auto &itLeft, const auto &itRight ) -> bool
 			{
 				const float distLeft = itLeft.second;
@@ -64,7 +64,7 @@ void RenderQueuePass::sortJobs()
 	else
 	{
 		// if meshes are opaque sort them front to back (those with least distance from camera are rendered first)
-		std::sort( m_meshes.begin(), m_meshes.end(),
+		std::sort( m_jobs.begin(), m_jobs.end(),
 		[] ( const auto &itLeft, const auto &itRight ) -> bool
 			{
 				const float distLeft = itLeft.second;

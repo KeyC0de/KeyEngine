@@ -76,7 +76,7 @@ public:
 		ASSERT_HRES_IF_FAILED;
 		DXGI_GET_QUEUE_INFO( gfx );
 
-		memcpy( msr.pData, &cb, sizeof CB );
+		memcpy( msr.pData, &cb, sizeof( CB ) );
 
 		getDeviceContext( gfx )->Unmap( m_pD3dCb.Get(), 0u );
 	}
@@ -97,7 +97,7 @@ protected:
 		d3dBufDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
 		d3dBufDesc.Usage = D3D11_USAGE_DYNAMIC;
 		d3dBufDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
-		d3dBufDesc.ByteWidth = sizeof CB;
+		d3dBufDesc.ByteWidth = sizeof( CB );
 		d3dBufDesc.MiscFlags = 0;
 		d3dBufDesc.StructureByteStride = 0;
 	}

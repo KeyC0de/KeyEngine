@@ -17,12 +17,10 @@
 #endif
 #include "non_copyable.h"
 #include "key_exception.h"
-#if defined _DEBUG && !defined NDEBUG
-#	include "dxgi_info_queue.h"
-#endif
 #include "color.h"
 #include "texture_desc.h"
 #include "key_timer.h"
+#include "dxgi_info_queue.h"
 
 
 class GraphicsFriend;

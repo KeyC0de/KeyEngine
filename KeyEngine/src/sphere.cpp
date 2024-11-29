@@ -29,7 +29,7 @@ Sphere::Sphere( Graphics &gfx,
 		diffuseTexturePath = std::get<std::string>( colorOrTexturePath );
 	}
 
-	auto sphere = Geometry::makeSphereTesselated();
+	auto sphere = geometry::makeSphereTesselated();
 	if ( initialScale != 1.0f )
 	{
 		sphere.transform( dx::XMMatrixScaling( initialScale, initialScale, initialScale ) );

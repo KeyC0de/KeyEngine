@@ -32,7 +32,7 @@ CameraFrustum::CameraFrustum( Graphics &gfx,
 		diffuseTexturePath = std::get<std::string>( colorOrTexturePath );
 	}
 
-	auto g = Geometry::makeCameraFrustum( width, height, nearZ, farZ );
+	auto g = geometry::makeCameraFrustum( width, height, nearZ, farZ );
 
 	{
 		m_pVertexBuffer = std::make_shared<VertexBuffer>( gfx, g.m_vb );	// we don't share the frustum in the BindableRegistry because each will be unique

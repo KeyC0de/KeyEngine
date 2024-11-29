@@ -8,7 +8,7 @@
 #include "linker.h"
 #include "bindable.h"
 #include "render_surface.h"
-#include "render_target.h"
+#include "render_target_view.h"
 #include "depth_stencil_view.h"
 
 
@@ -23,7 +23,7 @@ class IPass;
 /// \class	IBinder
 /// \author	KeyC0de
 /// \date	2022/09/29 20:48
-/// \brief	BindableBinder have a dependency: their target gfx resource; they must acquire it from the Linker of the target pass
+/// \brief	BindableBinder has a dependency: their target gfx resource; they must acquire it from the Linker of the target pass
 /// \brief	this link()ing will be done in Renderer::linkPassBinders
 /// \brief	BindableBinder names are not required, but just in case, I currently store their names, in case the system is expanded in the future.
 /// \brief	IBinder has a protected ctor; create child objects using the maker pattern

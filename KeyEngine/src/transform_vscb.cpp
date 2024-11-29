@@ -5,9 +5,6 @@
 #include "mesh.h"
 #include "dxgi_info_queue.h"
 #include "assertions_console.h"
-#ifndef FINAL_RELEASE
-#	include "imgui_visitors.h"
-#endif
 
 
 namespace dx = DirectX;
@@ -96,7 +93,6 @@ TransformVSCB::Transforms TransformVSCB::getTransforms( Graphics &gfx ) cond_noe
 	return {dx::XMMatrixTranspose( world ), dx::XMMatrixTranspose( worldView ), dx::XMMatrixTranspose( worldViewProjection )};
 }
 
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 TransformScaleVSCB::TransformScaleVSCB( Graphics &gfx,
 	const unsigned slot,
@@ -138,10 +134,12 @@ TransformScaleVSCB& TransformScaleVSCB::operator=( TransformScaleVSCB &&rhs ) no
 	return *this;
 }
 
+#ifndef FINAL_RELEASE
 void TransformScaleVSCB::accept( IImGuiConstantBufferVisitor &ev )
 {
 	ev.visit( m_cbScale );
 }
+#endif
 
 void TransformScaleVSCB::bind( Graphics &gfx ) cond_noex
 {

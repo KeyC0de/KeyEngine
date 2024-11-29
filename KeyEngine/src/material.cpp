@@ -4,9 +4,6 @@
 #include "renderer.h"
 #include "render_queue_pass.h"
 #include "assertions_console.h"
-#ifndef FINAL_RELEASE
-#	include "imgui_visitors.h"
-#endif
 
 
 Material::Material( const size_t channels,
@@ -110,7 +107,8 @@ void Material::setMesh( const Mesh &parent ) noexcept
 	}
 }
 
-void Material::accept( IImGuiConstantBufferVisitor &ev )
+#ifndef FINAL_RELEASE
+void Material::accept(IImGuiConstantBufferVisitor &ev)
 {
 	ev.setMaterial( this );
 	for ( auto &bindable : m_bindables )
@@ -118,6 +116,7 @@ void Material::accept( IImGuiConstantBufferVisitor &ev )
 		bindable->accept( ev );
 	}
 }
+#endif
 
 void Material::connectPass( ren::Renderer &r )
 {

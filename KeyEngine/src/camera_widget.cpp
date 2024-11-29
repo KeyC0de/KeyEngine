@@ -28,7 +28,7 @@ CameraWidget::CameraWidget( Graphics &gfx,
 		diffuseTexturePath = std::get<std::string>( colorOrTexturePath );
 	}
 
-	auto g = Geometry::makeCameraWidget();
+	auto g = geometry::makeCameraWidget();
 	if ( initialScale != 1.0f )
 	{
 		g.transform( dx::XMMatrixScaling( initialScale, initialScale, initialScale ) );

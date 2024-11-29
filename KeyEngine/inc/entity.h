@@ -12,15 +12,14 @@ class EntityManager;
 /// \author	KeyC0de
 /// \date	2019/12/09 13:50
 /// \brief	a Game Object base class
-/// \brief	Transformation: ConcreteEntity <- Entity <- Model <- Node <- ConcreteMesh <- Mesh
 ///=============================================================
 class Entity
 {
 	friend class EntityManager;
-	// a version tag which will be unique (inside an aggregate) for all objects that ever occupied that index
-	// = 1 initially (but it doesn't matter)
+	/// \brief a version tag which will be unique (inside an aggregate) for all objects that ever occupied that index
+	/// \brief equal to 1 initially (but the initial value doesn't really matter)
 	EntityIndex m_version;
-	// an index unique amongst all live m_entities
+	/// \brief an index unique amongst all live m_entities
 	EntityIndex m_index;
 
 	enum Category

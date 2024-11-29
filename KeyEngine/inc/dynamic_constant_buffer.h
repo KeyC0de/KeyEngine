@@ -28,7 +28,6 @@ namespace con
 
 namespace dx = DirectX;
 
-
 enum ElementType
 {
 #define X( el ) el,

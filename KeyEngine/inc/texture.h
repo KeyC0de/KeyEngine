@@ -4,7 +4,7 @@
 #include <vector>
 #include "bindable.h"
 #include "bitmap.h"
-#include "render_target.h"
+#include "render_target_view.h"
 #include "depth_stencil_view.h"
 
 

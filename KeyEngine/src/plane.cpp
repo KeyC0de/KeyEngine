@@ -36,7 +36,7 @@ Plane::Plane( Graphics &gfx,
 		diffuseTexturePath = std::get<std::string>( colorOrTexturePath );
 	}
 
-	auto plane = Geometry::makePlanarGridTextured( length, width );
+	auto plane = geometry::makePlanarGridTextured( length, width );
 	if ( initialScale != 1.0f )
 	{
 		plane.transform( dx::XMMatrixScaling( initialScale, initialScale, 1.0f ) );

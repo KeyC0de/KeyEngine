@@ -3,10 +3,12 @@
 #include <vector>
 #include <memory>
 #include "bindable.h"
+#ifndef FINAL_RELEASE
+#	include "imgui_visitors.h"
+#endif
 
 
 class Mesh;
-class IImGuiConstantBufferVisitor;
 
 namespace ren
 {
@@ -41,7 +43,9 @@ public:
 	void setEnabled( const size_t channels, const bool bEnabled ) noexcept;
 	const std::string& getTargetPassName() const noexcept;
 	void setMesh( const Mesh &parent ) noexcept;
+#ifndef FINAL_RELEASE
 	void accept( IImGuiConstantBufferVisitor &ev );
+#endif
 	void connectPass( ren::Renderer &r );
 	std::vector<std::shared_ptr<IBindable>>& getBindables();
 	const std::vector<std::shared_ptr<IBindable>>& getBindables() const noexcept;

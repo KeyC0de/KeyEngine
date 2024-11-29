@@ -114,7 +114,7 @@ Camera::Camera( Graphics &gfx,
 
 void Camera::update( const float dt,
 	const float lerpBetweenFrames,
-	const bool bEnableSmoothMovement /*= false*/ )
+	const bool bEnableSmoothMovement /*= false*/ ) cond_noex
 {
 
 }
@@ -448,7 +448,7 @@ DirectX::XMVECTOR Camera::getTarget() const noexcept
 
 void Camera::updateCameraFrustum( Graphics &gfx )
 {
-	auto g = Geometry::makeCameraFrustum( m_width, m_height, m_nearZ, m_farZ );
+	auto g = geometry::makeCameraFrustum( m_width, m_height, m_nearZ, m_farZ );
 	auto *frustumMesh = m_cameraFrustum.getMesh();
 	frustumMesh->getVertexBuffer() = std::make_shared<VertexBuffer>( gfx, g.m_vb );
 	frustumMesh->createAabb( g.m_vb );
