@@ -25,4 +25,4 @@ void Job::run( Graphics &gfx ) const cond_noex
 }
 
 
-}//ren
+}//namespace ren

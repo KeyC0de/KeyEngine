@@ -39,4 +39,4 @@ protected:
 };
 
 
-}//ren
+}//namespace ren

@@ -46,4 +46,4 @@ void OpaquePass::setActiveCamera( const Camera &cam ) noexcept
 	m_pActiveCamera = &cam;
 }
 
-}//ren
+}//namespace ren

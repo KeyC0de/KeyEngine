@@ -24,4 +24,4 @@ void RenderSurfaceClearPass::reset() cond_noex
 }
 
 
-}//ren
+}//namespace ren

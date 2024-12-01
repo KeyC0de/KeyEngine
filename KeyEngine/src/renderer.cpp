@@ -629,4 +629,4 @@ void Renderer2d::recreate( Graphics &gfx )
 }
 
 
-}//ren
+}//namespace ren

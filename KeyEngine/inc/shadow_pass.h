@@ -80,6 +80,7 @@ public:
 	void dumpShadowCubeMap( Graphics &gfx, const std::string &path ) const;
 private:
 	void bindGlobalCBs( Graphics &gfx ) cond_noex;
+	/// \brief	populate CB Lights Data, then update & Bind the CBs
 	void bindLightCBs( Graphics &gfx ) cond_noex;
 };
 

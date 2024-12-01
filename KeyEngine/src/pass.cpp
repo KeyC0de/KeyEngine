@@ -122,4 +122,4 @@ void IPass::setupBinderTarget( const std::string &currentPassBinderName,
 }
 
 
-}//ren
+}//namespace ren

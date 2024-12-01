@@ -13,7 +13,6 @@ class ShadowPass;
 
 class Graphics;
 class Camera;
-class ILightSource;
 
 enum LightSourceType : unsigned
 {
@@ -22,7 +21,6 @@ enum LightSourceType : unsigned
 	Point,
 };
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
 class ILightSource
 {
 	friend class ren::ShadowPass;
@@ -49,7 +47,6 @@ protected:
 		int cb_bShadowCasting;
 		float padding[2];
 		alignas(16) DirectX::XMFLOAT3 cb_lightPosViewSpace;	// represents direction for Directional Lights
-		alignas(16) DirectX::XMFLOAT3 cb_ambientColor;
 		alignas(16) DirectX::XMFLOAT3 cb_lightColor;
 		float cb_intensity;
 		float cb_attConstant;								// unused for Directional Lights
@@ -61,7 +58,7 @@ protected:
 	LightPSCB m_pscbData;
 	LightPSCB m_pscbDataToBind;
 public:
-	ILightSource( Graphics &gfx, const LightSourceType type, Model model, const std::variant<DirectX::XMFLOAT4,std::string> &colorOrTexturePath = DirectX::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f}, const bool bShadowCasting = true, const bool bShowMesh = true, const DirectX::XMFLOAT3 &rotDegOrDirectionVector = {0.0f, 0.0f, 0.0f}, const DirectX::XMFLOAT3 &pos = DirectX::XMFLOAT3{8.0f, 8.0f, 2.f}, const float intensity = 1.0f, const float fovDeg = 0.0f, const float shadowCamFarZ = 100.0f );
+	ILightSource( Graphics &gfx, const LightSourceType type, Model model, const std::variant<DirectX::XMFLOAT4, std::string> &colorOrTexturePath = DirectX::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f}, const bool bShadowCasting = true, const bool bShowMesh = true, const DirectX::XMFLOAT3 &rotDegOrDirectionVector = {0.0f, 0.0f, 0.0f}, const DirectX::XMFLOAT3 &pos = DirectX::XMFLOAT3{8.0f, 8.0f, 2.f}, const float intensity = 1.0f, const float fovDeg = 0.0f, const float shadowCamFarZ = 100.0f );
 	virtual ~ILightSource() noexcept = default;
 
 	/// \brief	update the "model" side part of the light

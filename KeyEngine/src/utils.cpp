@@ -111,7 +111,7 @@ void trimStringFromEndInPlace( std::string &str,
 	str.erase( str.length() - nChars );
 }
 
-std::vector<std::string> splitDelimitedString( const std::string& str,
+std::vector<std::string> splitDelimitedString( const std::string &str,
 	const char delimiter )
 {
 	std::vector<std::string> subStrings;
@@ -135,7 +135,7 @@ std::vector<std::string> splitDelimitedString( const std::string& str,
 	return subStrings;
 }
 
-std::string assembleDelimitedString( const std::vector<std::string>& delimitedString,
+std::string assembleDelimitedString( const std::vector<std::string> &delimitedString,
 	const char delimiter )
 {
 	std::string str;
@@ -147,9 +147,9 @@ std::string assembleDelimitedString( const std::vector<std::string>& delimitedSt
 	return str;
 }
 
-void removeFromDelimitedString( std::vector<std::string>& delimitedString,
+void removeFromDelimitedString( std::vector<std::string> &delimitedString,
 	const char delimiter,
-	const std::string& str )
+	const std::string &str )
 {
 	delimitedString.erase( std::remove(delimitedString.begin(), delimitedString.end(), str),
 		delimitedString.end() );
@@ -412,12 +412,8 @@ std::size_t getForwardPaddingWithHeader( const std::size_t p,
 	return padding;
 }
 
-
+/// \brief ALGORITHM RELATED FUNCTIONS
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// ALGORITHMS
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
 void regexSearch( const std::regex &pattern )
 {
 	int lineNo = 0;
@@ -434,6 +430,5 @@ void regexSearch( const std::regex &pattern )
 		}
 	}
 }
-
 
 }//namespace util

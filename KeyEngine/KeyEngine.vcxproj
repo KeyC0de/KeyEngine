@@ -302,7 +302,6 @@
     <ClCompile Include="src\settings_manager.cpp" />
     <ClCompile Include="src\shadow_pass.cpp" />
     <ClCompile Include="src\signal_handling.cpp" />
-    <ClCompile Include="src\sky_vscb.cpp" />
     <ClCompile Include="src\sky_pass.cpp" />
     <ClCompile Include="src\solid_outline_draw_pass.cpp" />
     <ClCompile Include="src\solid_outline_mask_pass.cpp" />
@@ -494,7 +493,6 @@
     <ClInclude Include="inc\reporter_listener.h" />
     <ClInclude Include="inc\reporter_listener_events.h" />
     <ClInclude Include="inc\shadow_pass.h" />
-    <ClInclude Include="inc\sky_vscb.h" />
     <ClInclude Include="inc\sky_pass.h" />
     <ClInclude Include="inc\solid_outline_draw_pass.h" />
     <ClInclude Include="inc\solid_outline_mask_pass.h" />
@@ -510,7 +508,6 @@
     <ClInclude Include="inc\transform_vscb.h" />
     <ClInclude Include="inc\transparent_pass.h" />
     <ClInclude Include="inc\triangle_mesh.h" />
-    <ClInclude Include="inc\types.h" />
     <ClInclude Include="inc\ui_component.h" />
     <ClInclude Include="inc\utils_global.h" />
     <ClInclude Include="inc\util_exception.h" />

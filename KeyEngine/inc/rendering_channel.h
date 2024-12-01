@@ -1,11 +1,11 @@
 #pragma once
 
-//
-//												--- Bindable1
-//					  _-- Pass1|Material1 ----+---- Bindable2
-// RenderingChannel -+--- Pass2|Material2		--- BindableN
-//					  --- PassN|MaterialN
-//
+/// \brief	
+/// \brief												--- Bindable1
+/// \brief					  _-- Pass1|Material1 ----+---- Bindable2
+/// \brief	RenderingChannel -+--- Pass2|Material2		--- BindableN
+/// \brief					  --- PassN|MaterialN
+/// \brief	
 
 // #TODO: turn it into an enum class
 // #TODO: turn their names into the Passes names using enum and fetch their names from here

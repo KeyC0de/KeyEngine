@@ -47,4 +47,4 @@ void IBindablePass::validate()
 }
 
 
-}//ren
+}//namespace ren

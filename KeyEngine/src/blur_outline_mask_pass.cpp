@@ -24,4 +24,4 @@ BlurOutlineMaskPass::BlurOutlineMaskPass( Graphics &gfx,
 }
 
 
-}// ren
+}//namespace ren

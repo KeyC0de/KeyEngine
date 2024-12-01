@@ -969,4 +969,4 @@ std::optional<DirectX::XMVECTORF32> getDirectXColorFromString( const std::string
 }
 
 
-}//util
+}//namespace util

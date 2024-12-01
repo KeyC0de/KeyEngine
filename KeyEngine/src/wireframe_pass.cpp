@@ -26,4 +26,4 @@ WireframePass::WireframePass( Graphics &gfx,
 }
 
 
-}//ren
+}//namespace ren

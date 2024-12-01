@@ -25,7 +25,7 @@ namespace util
 uint64_t combineUnsignedInt32to64( const unsigned int high32Bit, const unsigned int low32Bit );
 
 template<typename T>
-void safeDelete( T*& p )
+void safeDelete( T *&p )
 {
 	if ( p )
 	{
@@ -66,10 +66,10 @@ std::string trimStringFromEnd( const std::string &str, const int nChars );
 void trimStringFromStartInPlace( std ::string &str, const int nChars );
 void trimStringFromEndInPlace( std::string &str, const int nChars );
 /// \brief	example:	splitDelimitedString( sea_horde_faction_keys, ";" );
-std::vector<std::string> splitDelimitedString( const std::string& str, const char delimiter );
-std::string assembleDelimitedString( const std::vector<std::string>& delimitedString, const char delimiter );
+std::vector<std::string> splitDelimitedString( const std::string &str, const char delimiter );
+std::string assembleDelimitedString( const std::vector<std::string> &delimitedString, const char delimiter );
 /// \brief	removes all occurrences of str from delimited_string
-void removeFromDelimitedString( std::vector<std::string> &delimitedString, const char delimiter, const std::string& str );
+void removeFromDelimitedString( std::vector<std::string> &delimitedString, const char delimiter, const std::string &str );
 bool stringContains( std::string_view haystack, std::string_view needle );
 std::string& capitalizeFirstLetter( std::string &str );
 std::string capitalizeFirstLetter( const std::string &str );
@@ -125,8 +125,7 @@ std::string getNumberString( const T num )
 {
 	std::stringstream ss;
 	ss.imbue( std::locale{""} );
-	ss << std::fixed
-		<< num;
+	ss << std::fixed << num;
 	return ss.str();
 }
 
@@ -203,15 +202,16 @@ inline unsigned long long int volatile& readMEM( unsigned long long int memoryAd
 template<typename T>
 T& deconst( const T &obj )
 {
+	static_assert( !std::is_const_v<T>, "Cannot remove const from a const object!" );
 	return const_cast<T&>( obj );
 }
 
 template<typename T>
 T* deconst( const T *obj )
 {
+	static_assert( !std::is_const_v<T>, "Cannot remove const from a const object!" );
 	return const_cast<T*>( obj );
 }
-
 
 /// \brief ALGORITHM RELATED FUNCTIONS
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -260,9 +260,9 @@ void removeByBackSwap( TContainer &c,
 
 template<typename TContainer, typename TPredicate, typename = std::enable_if_t<std::is_function_v<TPredicate>>>
 void removeByBackSwap( TContainer &c,
-	TPredicate pred )
+	TPredicate &&predicate )
 {
-	const auto newEnd = std::remove_if( c.begin(), c.end(), pred );
+	const auto newEnd = std::remove_if( c.begin(), c.end(), std::forward<TPredicate>( predicate ) );
 	c.erase( newEnd, c.end() );
 }
 
@@ -297,21 +297,21 @@ void regexSearch( const std::regex &pattern );
 
 template<typename TContainer, typename TFunc>
 void doForAll( TContainer &c,
-	TFunc f )
+	TFunc &&f )
 {
 	for ( auto &i : c )
 	{
-		f( i );
+		std::forward<TFunc>( f )( i );
 	}
 }
 
 template<typename TContainer, typename TFunc>
 void doForAll( const TContainer &c,
-	TFunc f )
+	TFunc &&f )
 {
 	for ( const auto &i : c )
 	{
-		f( i );
+		std::forward<TFunc>( f )( i );
 	}
 }
 
@@ -357,7 +357,7 @@ bool atLeastNOfRange( InputIt first,
 	size_t count = 0;
 	for ( ; first != last; ++first )
 	{
-		if (std::forward<TPredicate>(predicate)(*first))
+		if ( std::forward<TPredicate>( predicate )(*first) )
 		{
 			++count;
 			if (count >= n)
@@ -380,7 +380,7 @@ unsigned indexOf( const TContainer &container,
 }
 
 template<typename TContainer, typename T>
-bool containerContains( const TContainer& container,
+bool containerContains( const TContainer &container,
 	const T &val )
 {
 	const auto cend = std::cend( container );

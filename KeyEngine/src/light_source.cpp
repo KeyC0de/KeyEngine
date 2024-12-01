@@ -21,7 +21,7 @@ constexpr float g_pointLightFovDeg = 90.0f;			// must be 90 for Point Light Cube
 ILightSource::ILightSource( Graphics &gfx,
 	const LightSourceType type,
 	Model model,
-	const std::variant<DirectX::XMFLOAT4,std::string> &colorOrTexturePath /*= DirectX::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f}*/,
+	const std::variant<DirectX::XMFLOAT4, std::string> &colorOrTexturePath /*= DirectX::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f}*/,
 	const bool bShadowCasting /*= true*/,
 	const bool bShowMesh /*= true*/,
 	const DirectX::XMFLOAT3 &rotDegOrDirectionVector /*= {0.0f, 0.0f, 0.0f}*/,
@@ -48,7 +48,6 @@ ILightSource::ILightSource( Graphics &gfx,
 		bShadowCasting ? 1 : 0,
 		{-9.999, -9.999},
 		type == LightSourceType::Directional ? directionVec : pos,
-		{0.08f, 0.08f, 0.08f},
 		{lightColor.x, lightColor.y, lightColor.z},
 		intensity,
 		type == LightSourceType::Directional ? 0.0f : 1.0f,		// no attenuation for directional lights
@@ -171,7 +170,7 @@ DirectionalLight::DirectionalLight( Graphics &gfx,
 	const float radiusScale /*= 1.0f*/,
 	const DirectX::XMFLOAT3 &directionVector /*= {0.0f, 0.0f, 0.0f}*/,	// direction{0,0,0} = Directional Light's direction vector looks at the center of the scene
 	const DirectX::XMFLOAT3 &lightMeshPos /*= {8.0f, 8.0f, 2.f}*/,
-	const std::variant<DirectX::XMFLOAT4,std::string> &colorOrTexturePath /*= DirectX::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f}*/,
+	const std::variant<DirectX::XMFLOAT4, std::string> &colorOrTexturePath /*= DirectX::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f}*/,
 	const bool bShadowCasting /*= true*/,
 	const bool bShowMesh /*= true*/,
 	const float intensity /*= 1.0f*/,
@@ -217,7 +216,6 @@ void DirectionalLight::displayImguiWidgets() noexcept
 		ImGui::Text( "Intensity & Color" );
 		ImGui::SliderFloat( "Intensity", &m_pscbData.cb_intensity, 0.01f, 4.0f, "%.2f", 2.0f );
 		ImGui::ColorEdit3( "Diffuse", &m_pscbData.cb_lightColor.x );	// #TODO: expose model's material properties cb to change its color when changing the light's color here
-		ImGui::ColorEdit3( "Ambient", &m_pscbData.cb_ambientColor.x );
 
 		ImGui::Text( "Attenuation" );
 		ImGui::SliderFloat( "Constant", &m_pscbData.cb_attConstant, 0.05f, 10.0f, "%.2f", 4.0f );
@@ -265,7 +263,7 @@ SpotLight::SpotLight( Graphics &gfx,
 	const float radiusScale /*= 1.0f*/,
 	const DirectX::XMFLOAT3 &directionVector /*= {0.0f, 0.0f, 1.0f}*/,
 	const DirectX::XMFLOAT3 &pos /*= {8.0f, 8.0f, 2.f}*/,
-	const std::variant<DirectX::XMFLOAT4,std::string> &colorOrTexturePath /*= DirectX::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f}*/,
+	const std::variant<DirectX::XMFLOAT4, std::string> &colorOrTexturePath /*= DirectX::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f}*/,
 	const bool bShadowCasting /*= true*/,
 	const bool bShowMesh /*= true*/,
 	const float intensity /*= 1.0f*/,
@@ -359,7 +357,6 @@ void PointLight::displayImguiWidgets() noexcept
 		ImGui::Text( "Intensity & Color" );
 		ImGui::SliderFloat( "Intensity", &m_pscbData.cb_intensity, 0.01f, 4.0f, "%.2f", 2.0f );
 		ImGui::ColorEdit3( "Diffuse", &m_pscbData.cb_lightColor.x );	// #TODO: expose model's material properties cb to change its color when changing the light's color here
-		ImGui::ColorEdit3( "Ambient", &m_pscbData.cb_ambientColor.x );
 
 		ImGui::Text( "Attenuation" );
 		ImGui::SliderFloat( "Constant", &m_pscbData.cb_attConstant, 0.05f, 10.0f, "%.2f", 4.0f );

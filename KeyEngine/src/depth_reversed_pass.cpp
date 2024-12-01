@@ -24,4 +24,4 @@ DepthReversedPass::DepthReversedPass( Graphics &gfx,
 }
 
 
-}//ren
+}//namespace ren

@@ -16,9 +16,10 @@
 //	return v / length( v );
 //}
 //
+///// \brief	every vector component divided by the vector's magnitude/length
 //float3 normalize( float3 v )
 //{
-//	return v / length( v );	// every vector component divided by the vector's magnitude/length
+//	return v / length( v );
 //}
 //
 //float4 normalize( float4 v )

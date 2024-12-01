@@ -1,8 +1,8 @@
 #include "sky_pass.h"
 #include <string>
-#include "primitive_topology.h"
 #include "binder.h"
 #include "linker.h"
+#include "primitive_topology.h"
 #include "texture_sampler_state.h"
 #include "rasterizer_state.h"
 #include "render_target_view.h"
@@ -12,17 +12,16 @@
 #include "pixel_shader.h"
 #include "geometry.h"
 #include "cube_texture.h"
-#include "sky_vscb.h"
 #include "vertex_buffer.h"
 #include "index_buffer.h"
 #include "primitive_topology.h"
 #include "input_layout.h"
-#include "assertions_console.h"
+#include "triangle_mesh.h"
+#include "settings_manager.h"
+#include "global_constants.h"
 #ifndef FINAL_RELEASE
 #	include "imgui/imgui.h"
 #endif
-#include "triangle_mesh.h"
-#include "settings_manager.h"
 
 
 namespace ren
@@ -33,6 +32,7 @@ SkyPass::SkyPass( Graphics &gfx,
 	const bool useSphere )
 	:
 	IBindablePass{name},
+	m_skyVscb{VertexShaderConstantBuffer<SkyTransform>{gfx, g_modelVscbSlot}},
 	m_bUseSphere{useSphere}
 {
 	addBindable( PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST ) );
@@ -42,7 +42,6 @@ SkyPass::SkyPass( Graphics &gfx,
 	addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Trilinear, TextureSamplerState::AddressMode::Wrap ) );
 	addBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::DepthReadOnlyEquals1StencilOff ) );
 	addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Both ) );
-	addBindable( std::make_shared<SkyVSCB>( gfx ) );
 	addBindable( PixelShader::fetch( gfx, "sky_ps.cso" ) );
 	{
 		auto vs = VertexShader::fetch( gfx, "sky_vs.cso" );
@@ -72,7 +71,8 @@ SkyPass::SkyPass( Graphics &gfx,
 
 void SkyPass::run( Graphics &gfx ) const cond_noex
 {
-	// no need to inherit from RenderQueuePass to add a Job for a single "special" object
+	const_cast<SkyPass*>( this )->bindSkyVSCB( gfx );
+
 	unsigned nIndices;
 	if ( m_bUseSphere )
 	{
@@ -106,5 +106,15 @@ void SkyPass::displayImguiWidgets() noexcept
 #endif
 }
 
+void SkyPass::bindSkyVSCB( Graphics &gfx ) cond_noex
+{
+	m_skyVscb.update( gfx, getTransform( gfx ) );
+	m_skyVscb.bind( gfx );
+}
 
-}//ren
+SkyPass::SkyTransform SkyPass::getTransform( Graphics &gfx ) cond_noex
+{
+	return {DirectX::XMMatrixTranspose( gfx.getViewMatrix() * gfx.getProjectionMatrix() )};
+}
+
+}//namespace ren

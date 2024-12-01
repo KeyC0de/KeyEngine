@@ -130,9 +130,6 @@
     <ClCompile Include="src\camera_manager.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
-    <ClCompile Include="src\cube_texture.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
     <ClCompile Include="src\dxgi_info_queue.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
@@ -164,12 +161,6 @@
       <Filter>engine\vfx</Filter>
     </ClCompile>
     <ClCompile Include="src\renderer_exception.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\sky_vscb.cpp">
-      <Filter>engine\vfx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\texture.cpp">
       <Filter>engine\vfx</Filter>
     </ClCompile>
     <ClCompile Include="src\camera_widget.cpp">
@@ -394,6 +385,12 @@
     <ClCompile Include="src\rectangle.cpp">
       <Filter>engine\vfx\renderables</Filter>
     </ClCompile>
+    <ClCompile Include="src\texture.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cube_texture.cpp">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="third_party\imgui\imconfig.h">
@@ -573,12 +570,6 @@
     <ClInclude Include="inc\world.h">
       <Filter>engine\gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="inc\types.h">
-      <Filter>engine\common_util</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\texture.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
     <ClInclude Include="inc\mouse_picker.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
@@ -589,9 +580,6 @@
       <Filter>engine\vfx</Filter>
     </ClInclude>
     <ClInclude Include="inc\rendering_channel.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\sky_vscb.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
     <ClInclude Include="inc\light_source.h">
@@ -619,9 +607,6 @@
       <Filter>engine\vfx</Filter>
     </ClInclude>
     <ClInclude Include="inc\graphics_friend.h">
-      <Filter>engine\vfx</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\cube_texture.h">
       <Filter>engine\vfx</Filter>
     </ClInclude>
     <ClInclude Include="inc\color.h">
@@ -1202,6 +1187,12 @@
     </ClInclude>
     <ClInclude Include="inc\point.h">
       <Filter>engine\vfx\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\texture.h">
+      <Filter>engine\vfx\bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\cube_texture.h">
+      <Filter>engine\vfx\bindables</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

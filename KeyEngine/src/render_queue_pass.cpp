@@ -79,4 +79,4 @@ void RenderQueuePass::sortJobs()
 }
 
 
-}//ren
+}//namespace ren

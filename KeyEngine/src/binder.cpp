@@ -70,4 +70,4 @@ const std::string& IBinder::getLinkerName() const noexcept
 }
 
 
-}//ren
+}//namespace ren

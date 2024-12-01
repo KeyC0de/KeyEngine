@@ -83,23 +83,23 @@ PSOut main( PSIn input )
 			}
 			else if (currentLight.cb_lightType == 3)
 			{
-				const PointLightVectors lv = calculatePointLightVectors( currentLight.cb_lightPosViewSpace, input.viewSpacePos );
+				const LightVectors lv = calculatePointLightVectors( currentLight.cb_lightPosViewSpace, input.viewSpacePos );
 
 				const float attenuation = calculateLightAttenuation( lv.lengthOfL, currentLight.cb_attConstant, currentLight.cb_attLinear, currentLight.cb_attQuadratic );
-				diffuseL = calculateLightDiffuseContribution( currentLight.cb_lightColor, currentLight.cb_intensity, attenuation, lv.vToL_normalized, input.viewSpaceNormal );
-				specularL = calculateLightSpecularContribution( currentLight.cb_lightColor, specularFactor, currentLight.cb_intensity, cb_modelSpecularGloss_var, input.viewSpaceNormal, lv.vToL, input.viewSpacePos, attenuation );
+				diffuseL = calculateLightDiffuseContribution( currentLight.cb_lightColor, currentLight.cb_intensity, attenuation, lv.LNormalized, input.viewSpaceNormal );
+				specularL = calculateLightSpecularContribution( currentLight.cb_lightColor, specularFactor, currentLight.cb_intensity, cb_modelSpecularGloss_var, input.viewSpaceNormal, lv.L, input.viewSpacePos, attenuation );
 			}
 
 			diffuseL *= shadowLevel;
 			specularL *= shadowLevel;
 		}
 
-		lightCombinedDiffuse += diffuseL + currentLight.cb_ambientColor;
+		lightCombinedDiffuse += diffuseL;
 		lightCombinedSpecular += specularL;
 	}
 
-	PSOut output;
 	float4 albedoTexColor = albedoTex.Sample( sampl, input.tc );
-	output.finalColor = float4(saturate(lightCombinedDiffuse * albedoTexColor.rgb + lightCombinedSpecular), 1.0f);
+	PSOut output;
+	output.finalColor = float4(saturate(lightCombinedDiffuse * albedoTexColor.rgb + lightCombinedSpecular + g_ambientColor), 1.0f);
 	return output;
 }

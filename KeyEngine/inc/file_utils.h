@@ -32,4 +32,4 @@ void countLetterOccurences( const char *filename );
 #endif
 
 
-}// util
+}//namespace util

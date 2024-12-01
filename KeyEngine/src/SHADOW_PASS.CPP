@@ -231,7 +231,6 @@ void ShadowPass::bindLightCBs( Graphics &gfx ) cond_noex
 
 	LightsVSCB vscbLightData{};
 	LightsPSCB pscbLightData{};
-	// populate CB Lights Data, then update & Bind the CBs
 	for ( int i = 0; i < nShadowCastingLights; ++i )
 	{
 		ILightSource *pLight = m_shadowCastingLights[i];

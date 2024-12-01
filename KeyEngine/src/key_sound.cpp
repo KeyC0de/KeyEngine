@@ -23,7 +23,7 @@ namespace wav
 	static constexpr WORD nChannelsPerSound = 2u;
 	static constexpr DWORD nSamplesPerSec = 48000u;	// valid: 44100u, 48000u, 96000u
 	static constexpr WORD nBitsPerSample = 16u;
-}// wav
+}//namespace wav
 
 
 SoundManager::SoundManager( WAVEFORMATEXTENSIBLE *format )
