@@ -9,15 +9,14 @@
 #include "settings_manager.h"
 #include "utils.h"
 #include "d3d_utils.h"
+#include "global_constants.h"
 
 #undef max
 
 
-namespace mesh
+namespace
 {
-
-static unsigned g_numMeshes = 0u;
-
+static unsigned g_nMeshes = 0u;
 }
 
 namespace dx = DirectX;
@@ -30,7 +29,7 @@ Mesh::Mesh( Graphics &gfx,
 	m_pVertexBuffer = mat.makeVertexBuffer( gfx, aimesh, initialScale );
 	m_pIndexBuffer = mat.makeIndexBuffer( gfx, aimesh );
 	m_pPrimitiveTopology = PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST );
-	m_pTransformVscb = std::make_unique<TransformVSCB>( gfx, 0u, *this );
+	m_pTransformVscb = std::make_unique<TransformVSCB>( gfx, g_modelVscbSlot, *this );
 
 	for ( auto &material : mat.getMaterial() )
 	{
@@ -212,8 +211,8 @@ float Mesh::getDistanceFromActiveCamera( const DirectX::XMFLOAT3 &pos ) const no
 
 void Mesh::setMeshId() noexcept
 {
-	++mesh::g_numMeshes;
-	m_meshId = mesh::g_numMeshes;
+	++g_nMeshes;
+	m_meshId = g_nMeshes;
 }
 
 void Mesh::setDistanceFromActiveCamera() noexcept

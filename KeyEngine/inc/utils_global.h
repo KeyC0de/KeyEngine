@@ -20,10 +20,7 @@
 #define SAFE_CALL( obj, function )			{ if ( obj ) { obj.function; } }
 #define SAFE_CALL_POINTER( obj, function )	{ if ( obj ) { obj->function; } }
 
-///===================================================
-/// \macro	ALIAS_FUNCTION
 /// \brief	optimal way of renaming/aliasing a function to another - can be inline & no unnecessary copies
-/// \date	2022/08/29 13:33
 #define ALIAS_FUNCTION( originalFunctionName, aliasedFunctionName ) \
 	template <typename... TArgs>\
 	inline auto aliasedFunctionName( TArgs&&... args ) -> decltype( originalFunctionName( std::forward<TArgs>( args )... ) )\

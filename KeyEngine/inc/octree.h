@@ -7,7 +7,7 @@
 
 using OctreeData = DirectX::XMFLOAT3;
 
-///============================================================
+///=============================================================
 /// \class	Octree
 /// \link	https://github.com/brandonpelfrey/SimpleOctree
 /// \author	brandonpelfrey
@@ -27,7 +27,7 @@ class Octree final
 	Octree *m_children[8];
 	OctreeData *m_data;
 private:
-	// determine which octant of the tree contains point
+	/// \brief	determine which octant of the tree contains point
 	int getOctantContainingPoint( const DirectX::XMFLOAT3 &point ) const;
 	bool isLeafNode() const;
 public:
@@ -36,6 +36,6 @@ public:
 	~Octree();
 
 	void insert( OctreeData *node );
-	// recursively query the tree for Entities within a bounding box {bmin,bmax}
+	/// \brief	recursively query the tree for Entities within a bounding box {bmin,bmax}
 	void getEntitiesWithinBBox( const DirectX::XMFLOAT3 &bmin, const DirectX::XMFLOAT3 &bmax, std::vector<OctreeData*>& resultsOut );
 };

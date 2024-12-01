@@ -36,6 +36,7 @@ public:
 	void displayImguiWidgets( Graphics &gfx ) noexcept;
 	void add( std::shared_ptr<Camera> pCam );
 	void connectMaterialsToRenderer( ren::Renderer &r );
+	void update( const float dt, const float lerpBetweenFrames, const bool bEnableSmoothMovement = false ) cond_noex;
 	void render( const size_t channels = rch::all ) const;
 	void onWindowResize( Graphics &gfx );
 	Camera& getActiveCamera() cond_noex;

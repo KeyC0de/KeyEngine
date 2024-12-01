@@ -6,10 +6,10 @@
 
 cbuffer ModelPSCB : register(b0)
 {
-	float3 modelSpecularColor;
-	float modelSpecularGloss;
-	bool bNormalMap;
-	float normalMapStrength;
+	float3 cb_modelSpecularColor;
+	float cb_modelSpecularGloss;
+	bool cb_bNormalMap;
+	float cb_normalMapStrength;
 };
 
 Texture2D albedoTex : register(t0);
@@ -34,10 +34,10 @@ struct PSOut
 PSOut main( PSIn input )
 {
 	input.viewSpaceNormal = normalize( input.viewSpaceNormal );
-	if ( bNormalMap )
+	if ( cb_bNormalMap )
 	{
 		const float3 mappedNormal = calculateNormalMapNormal( normalize( input.tangentViewSpace ), normalize( input.bitangentViewSpace ), input.viewSpaceNormal, input.tc, normTex, sampl );
-		input.viewSpaceNormal = lerp( input.viewSpaceNormal, mappedNormal, normalMapStrength );
+		input.viewSpaceNormal = lerp( input.viewSpaceNormal, mappedNormal, cb_normalMapStrength );
 	}
 
 	float3 lightCombinedDiffuse = float3(0, 0, 0);
@@ -77,8 +77,8 @@ PSOut main( PSIn input )
 				const PointLightVectors lv = calculatePointLightVectors( currentLight.cb_lightPosViewSpace, input.viewSpacePos );
 
 				const float attenuation = calculateLightAttenuation( lv.lengthOfL, currentLight.cb_attConstant, currentLight.cb_attLinear, currentLight.cb_attQuadratic );
-				diffuseL = calculateLightDiffuseContribution( currentLight.cb_lightColor, currentLight.intensity, attenuation, lv.vToL_normalized, input.viewSpaceNormal );
-				specularL = calculateLightSpecularContribution( currentLight.cb_lightColor, modelSpecularColor, currentLight.intensity, modelSpecularGloss, input.viewSpaceNormal, lv.vToL, input.viewSpacePos, attenuation );
+				diffuseL = calculateLightDiffuseContribution( currentLight.cb_lightColor, currentLight.cb_intensity, attenuation, lv.vToL_normalized, input.viewSpaceNormal );
+				specularL = calculateLightSpecularContribution( currentLight.cb_lightColor, cb_modelSpecularColor, currentLight.cb_intensity, cb_modelSpecularGloss, input.viewSpaceNormal, lv.vToL, input.viewSpacePos, attenuation );
 			}
 
 			diffuseL *= shadowLevel;

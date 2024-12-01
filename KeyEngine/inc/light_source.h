@@ -32,7 +32,7 @@ protected:
 	float m_shadowCamFarZ;
 	std::string m_name;
 	bool m_bShowMesh;
-	bool m_bCastingShadows;
+	bool m_bShadowCasting;
 	Model m_lightMesh;
 
 	struct LightVSCB
@@ -42,6 +42,7 @@ protected:
 	LightVSCB m_vscbData;	// used for shadowing
 	std::unique_ptr<Camera> m_pCameraForShadowing;	// this camera is not shared in CameraManager
 
+	// HLSL packing rules : an element is not allowed to straddle a 4D vector boundary (this is allowed in C++, but we must conform to our weakest link = HLSL)
 	struct LightPSCB
 	{
 		int cb_lightType;
@@ -50,10 +51,10 @@ protected:
 		alignas(16) DirectX::XMFLOAT3 cb_lightPosViewSpace;	// represents direction for Directional Lights
 		alignas(16) DirectX::XMFLOAT3 cb_ambientColor;
 		alignas(16) DirectX::XMFLOAT3 cb_lightColor;
-		float intensity;// HLSL packing rules : an element is not allowed to straddle a 4D vector boundary (this is allowed in C++, but we must conform to our weakest link = HLSL)
-		float cb_attConstant;									// unused for Directional Lights
+		float cb_intensity;
+		float cb_attConstant;								// unused for Directional Lights
 		float cb_attLinear;									// unused for Directional Lights
-		float cb_attQuadratic;									// unused for Directional Lights
+		float cb_attQuadratic;								// unused for Directional Lights
 		DirectX::XMFLOAT3 cb_spotLightDirViewSpace;			// only used for Spot Lights
 		float cb_coneAngle;									// only used for Spot Lights
 	};
@@ -64,7 +65,7 @@ public:
 	virtual ~ILightSource() noexcept = default;
 
 	/// \brief	update the "model" side part of the light
-	void update( Graphics &gfx, const float dt, const float lerpBetweenFrames, const bool bEnableSmoothMovement = false ) cond_noex;
+	void update( const float dt, const float lerpBetweenFrames, const bool bEnableSmoothMovement = false ) cond_noex;
 	/// \brief	render the "model" side part of the light
 	void render( const size_t channels ) const cond_noex;
 	void connectMaterialsToRenderer( ren::Renderer &r );

@@ -24,9 +24,7 @@ public:
 	virtual ~KeyException() noexcept = default;
 
 	virtual const char* what() const noexcept override;
-	///===================================================
-	// \brief returns the type of the exception - name of child exception class
-	// \date 2019/09/11 20:18
+	/// \brief returns the type of the exception - name of child exception class
 	virtual std::string getType() const noexcept;
 	inline unsigned getLine() const noexcept;
 	inline const std::string& getFile() const noexcept;

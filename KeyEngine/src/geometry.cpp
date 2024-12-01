@@ -518,19 +518,21 @@ TriangleMesh makeCameraWidget()
 	vertexLayout.add( ver::VertexInputLayout::Position3D );
 
 	ver::VBuffer vb{std::move( vertexLayout )};
-	const float x = 4.0f / 3.0f * 0.75f;
-	const float y = 1.0f * 0.75f;
-	const float z = -2.0f;
-	const float xHalf = x * 0.5f;
-	const float tSpace = y * 0.2f;
-	vb.emplaceVertex( dx::XMFLOAT3{-x, y, 0.0f} );
-	vb.emplaceVertex( dx::XMFLOAT3{x, y, 0.0f} );
-	vb.emplaceVertex( dx::XMFLOAT3{x, -y, 0.0f} );
-	vb.emplaceVertex( dx::XMFLOAT3{-x, -y, 0.0f} );
-	vb.emplaceVertex( dx::XMFLOAT3{0.0f, 0.0f, z} );
-	vb.emplaceVertex( dx::XMFLOAT3{-xHalf, y + tSpace, 0.0f} );
-	vb.emplaceVertex( dx::XMFLOAT3{xHalf, y + tSpace, 0.0f} );
-	vb.emplaceVertex( dx::XMFLOAT3{0.0f, y + tSpace + xHalf, 0.0f} );
+	{
+		const float x = 4.0f / 3.0f * 0.75f;
+		const float y = 1.0f * 0.75f;
+		const float z = -2.0f;
+		const float xHalf = x * 0.5f;
+		const float tSpace = y * 0.2f;
+		vb.emplaceVertex( dx::XMFLOAT3{-x, y, 0.0f} );
+		vb.emplaceVertex( dx::XMFLOAT3{x, y, 0.0f} );
+		vb.emplaceVertex( dx::XMFLOAT3{x, -y, 0.0f} );
+		vb.emplaceVertex( dx::XMFLOAT3{-x, -y, 0.0f} );
+		vb.emplaceVertex( dx::XMFLOAT3{0.0f, 0.0f, z} );
+		vb.emplaceVertex( dx::XMFLOAT3{-xHalf, y + tSpace, 0.0f} );
+		vb.emplaceVertex( dx::XMFLOAT3{xHalf, y + tSpace, 0.0f} );
+		vb.emplaceVertex( dx::XMFLOAT3{0.0f, y + tSpace + xHalf, 0.0f} );
+	}
 
 	std::vector<unsigned> indices;
 	indices.push_back( 0 );
@@ -562,30 +564,41 @@ TriangleMesh makeCameraWidget()
 TriangleMesh makeCameraFrustum( const float width,
 	const float height,
 	const float nearZ,
-	const float farZ )
+	const float farZ,
+	const float verticalFov )
 {
+	ASSERT( width > 0, "width must be greater than 0!" );
+	ASSERT( height > 0, "height must be greater than 0!" );
+	ASSERT( nearZ > 0, "near clipping plane (nearZ) must be greater than 0!" );
+	ASSERT( farZ > nearZ, "near clipping plane (nearZ) must be greater than far clipping plane (farZ)!" );
+
 	ver::VertexInputLayout vertexLayout;
 	vertexLayout.add( ver::VertexInputLayout::Position3D );
 	ver::VBuffer vb{std::move( vertexLayout )};
 	{
-		// A frustum requires 8 vertices.
+		// a frustum requires 8 vertices.
+		// nearX, nearY, farX, and farY represent the half-width and half-height of the near and far clipping planes, respectively, in camera space.
+		// These are derived from the camera's field of view (FOV) and aspect ratio.
+		// near plane corners: {±nearX, ±nearY, nearZ}
+		// far plane corners: {±farX, ±farY, farZ}
+		const float aspectRatio = width / height;
+		const float nearY = nearZ * std::tan( verticalFov / 2.0f );
+		const float nearX = nearY * aspectRatio;
 		const float zRatio = farZ / nearZ;
-		const float nearX = width / 2.0f;
-		const float nearY = height / 2.0f;
 		const float farX = nearX * zRatio;
 		const float farY = nearY * zRatio;
-		vb.emplaceVertex( dx::XMFLOAT3{-nearX, nearY, nearZ} );
+		vb.emplaceVertex( dx::XMFLOAT3{-nearX, nearY, nearZ} );		// near plane..
 		vb.emplaceVertex( dx::XMFLOAT3{nearX, nearY, nearZ} );
 		vb.emplaceVertex( dx::XMFLOAT3{nearX, -nearY, nearZ} );
 		vb.emplaceVertex( dx::XMFLOAT3{-nearX, -nearY, nearZ} );
-		vb.emplaceVertex( dx::XMFLOAT3{-farX, farY, farZ} );
+		vb.emplaceVertex( dx::XMFLOAT3{-farX, farY, farZ} );		// far plane..
 		vb.emplaceVertex( dx::XMFLOAT3{farX, farY, farZ} );
 		vb.emplaceVertex( dx::XMFLOAT3{farX, -farY, farZ} );
 		vb.emplaceVertex( dx::XMFLOAT3{-farX, -farY, farZ} );
 	}
 
 	std::vector<unsigned> indices;
-	indices.push_back( 0 );
+	indices.push_back( 0 );	// edges of the near plane...
 	indices.push_back( 1 );
 	indices.push_back( 1 );
 	indices.push_back( 2 );
@@ -593,7 +606,7 @@ TriangleMesh makeCameraFrustum( const float width,
 	indices.push_back( 3 );
 	indices.push_back( 3 );
 	indices.push_back( 0 );
-	indices.push_back( 4 );
+	indices.push_back( 4 );// edges of the far plane...
 	indices.push_back( 5 );
 	indices.push_back( 5 );
 	indices.push_back( 6 );
@@ -601,7 +614,7 @@ TriangleMesh makeCameraFrustum( const float width,
 	indices.push_back( 7 );
 	indices.push_back( 7 );
 	indices.push_back( 4 );
-	indices.push_back( 0 );
+	indices.push_back( 0 );// connecting edges...
 	indices.push_back( 4 );
 	indices.push_back( 1 );
 	indices.push_back( 5 );

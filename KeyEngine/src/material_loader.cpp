@@ -68,7 +68,7 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 				}
 				else
 				{
-					cbLayout.add<con::Float4>( "materialColor" );
+					cbLayout.add<con::Float4>( "cb_materialColor" );
 				}
 
 				RasterizerState::FaceMode faceMode = bTextureAlphaChannel ?
@@ -86,11 +86,11 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 					bSpecularTextureAlpha = tex->hasAlpha();
 					opaque.addBindable( std::move( tex ) );
 					// in our system of specular maps the alpha channel contains the gloss (specular power)
-					cbLayout.add<con::Bool>( "bSpecularMap" );
-					cbLayout.add<con::Bool>( "bSpecularMapAlpha" );
+					cbLayout.add<con::Bool>( "cb_bSpecularMap" );
+					cbLayout.add<con::Bool>( "cb_bSpecularMapAlpha" );
 				}
-				cbLayout.add<con::Float3>( "modelSpecularColor" );
-				cbLayout.add<con::Float>( "modelSpecularGloss" );
+				cbLayout.add<con::Float3>( "cb_modelSpecularColor" );
+				cbLayout.add<con::Float>( "cb_modelSpecularGloss" );
 			}
 			{// how about normal texture?
 				if ( aimaterial.GetTexture( aiTextureType_NORMALS, 0, &textureFileName ) == aiReturn_SUCCESS )
@@ -101,8 +101,8 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 					m_vertexLayout.add( ver::VertexInputLayout::Tangent );
 					m_vertexLayout.add( ver::VertexInputLayout::Bitangent );
 					opaque.addBindable( Texture::fetch( gfx, rootPath + textureFileName.C_Str(), 2u ) );
-					cbLayout.add<con::Bool>( "bNormalMap" );
-					cbLayout.add<con::Float>( "normalMapStrength" );
+					cbLayout.add<con::Bool>( "cb_bNormalMap" );
+					cbLayout.add<con::Float>( "cb_normalMapStrength" );
 				}
 			}
 			{// the rest of the Bindables:
@@ -117,28 +117,28 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 
 				// Assembling the Pixel Shader Constant Buffer
 				con::CBuffer pscb{std::move( cbLayout )};
-				if ( auto cbElem = pscb["materialColor"]; cbElem.isValid() )
+				if ( auto cbElem = pscb["cb_materialColor"]; cbElem.isValid() )
 				{
 					aiColor4D difCol = {0.45f, 0.45f, 0.85f, 1.0f};
 					aimaterial.Get( AI_MATKEY_COLOR_DIFFUSE, difCol );
 					cbElem = reinterpret_cast<dx::XMFLOAT4&>( difCol );
 				}
-				pscb["bSpecularMap"].setIfValid( true );
-				pscb["bSpecularMapAlpha"].setIfValid( bSpecularTextureAlpha );
-				if ( auto cbElem = pscb["modelSpecularColor"]; cbElem.isValid() )
+				pscb["cb_bSpecularMap"].setIfValid( true );
+				pscb["cb_bSpecularMapAlpha"].setIfValid( bSpecularTextureAlpha );
+				if ( auto cbElem = pscb["cb_modelSpecularColor"]; cbElem.isValid() )
 				{
 					aiColor3D specCol = {0.18f, 0.18f, 0.18f};
 					aimaterial.Get( AI_MATKEY_COLOR_SPECULAR, specCol );
 					cbElem = reinterpret_cast<dx::XMFLOAT3&>( specCol );
 				}
-				if ( auto cbElem = pscb["modelSpecularGloss"]; cbElem.isValid() )
+				if ( auto cbElem = pscb["cb_modelSpecularGloss"]; cbElem.isValid() )
 				{
 					float specGloss = 8.0f;
 					aimaterial.Get( AI_MATKEY_SHININESS, specGloss );
 					cbElem = specGloss;
 				}
-				pscb["bNormalMap"].setIfValid( true );
-				pscb["normalMapStrength"].setIfValid( 1.0f );
+				pscb["cb_bNormalMap"].setIfValid( true );
+				pscb["cb_normalMapStrength"].setIfValid( 1.0f );
 				opaque.addBindable( std::make_unique<PixelShaderConstantBufferEx>( gfx, 0u, std::move( pscb ) ) );
 			}
 			m_materials.emplace_back( std::move( opaque ) );
@@ -163,9 +163,9 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 			Material blurOutlineDraw{rch::blurOutline, "blurOutlineDraw", false};
 			{
 				con::RawLayout cbLayout;
-				cbLayout.add<con::Float4>( "materialColor" );
+				cbLayout.add<con::Float4>( "cb_materialColor" );
 				auto cb = con::CBuffer{std::move( cbLayout )};
-				cb["materialColor"] = dx::XMFLOAT4{1.0f, 0.4f, 0.4f, 1.0f};
+				cb["cb_materialColor"] = dx::XMFLOAT4{1.0f, 0.4f, 0.4f, 1.0f};
 				blurOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
 			}
 			blurOutlineDraw.addBindable( InputLayout::fetch( gfx, m_vertexLayout, *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
@@ -185,9 +185,9 @@ MaterialLoader::MaterialLoader( Graphics &gfx,
 			solidOutlineDraw.addBindable( std::make_shared<TransformScaleVSCB>( gfx, 0u, 1.04f ) );
 
 			con::RawLayout cbLayout;
-			cbLayout.add<con::Float4>( "materialColor" );
+			cbLayout.add<con::Float4>( "cb_materialColor" );
 			auto cb = con::CBuffer{std::move( cbLayout )};
-			cb["materialColor"] = dx::XMFLOAT4{1.0f, 0.4f, 0.4f, 1.0f};
+			cb["cb_materialColor"] = dx::XMFLOAT4{1.0f, 0.4f, 0.4f, 1.0f};
 			solidOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
 
 			solidOutlineDraw.addBindable( InputLayout::fetch( gfx, m_vertexLayout, *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );

@@ -15,21 +15,21 @@ PointLightVectors calculatePointLightVectors( const in float3 lightPositionViewS
 	return plv;
 }
 
-float calculateLightAttenuation( const in float fragmentToLightDist,
+float calculateLightAttenuation( const in float fragmentToLightDistance,
 	uniform float attConstant,
 	uniform float attLinear,
 	uniform float attQuadratic )
 {
-	return 1.0f / ( attConstant + attLinear * fragmentToLightDist + attQuadratic * (fragmentToLightDist * fragmentToLightDist) );
+	return 1.0f / ( attConstant + attLinear * fragmentToLightDistance + attQuadratic * (fragmentToLightDistance * fragmentToLightDistance) );
 }
 
 float3 calculateLightDiffuseContribution( uniform float3 diffuseColor,
 	uniform float intensity,
-	const in float att,
+	const in float attenuation,
 	const in float3 fragmentToLightDirViewSpaceNormalized,
 	const in float3 viewSpaceNormal )
 {
-	return att * diffuseColor * intensity * max( 0.0f, dot( fragmentToLightDirViewSpaceNormalized, viewSpaceNormal ) );
+	return attenuation * diffuseColor * intensity * max( 0.0f, dot( fragmentToLightDirViewSpaceNormalized, viewSpaceNormal ) );
 }
 
 float3 calculateLightSpecularContribution( const in float3 cb_lightColor,
@@ -39,13 +39,13 @@ float3 calculateLightSpecularContribution( const in float3 cb_lightColor,
 	const in float3 viewSpaceNormal,
 	const in float3 fragmentToLightDirViewSpace,
 	const in float3 viewSpacePos,
-	const in float att )
+	const in float attenuation )
 {
 	const float3 specularReflection = normalize( 2.0f * viewSpaceNormal * dot( fragmentToLightDirViewSpace, viewSpaceNormal ) - fragmentToLightDirViewSpace );
 	const float3 viewSpacePosNormalized = normalize( viewSpacePos );
 	// calculate specular component color based on angle between
 	// viewing vector and reflection vector - narrow with power function
-	return cb_lightColor * specularColor * intensity * att * pow( max( 0.0f, dot( -specularReflection, viewSpacePosNormalized ) ), fragSpecularGloss );
+	return cb_lightColor * specularColor * intensity * attenuation * pow( max( 0.0f, dot( -specularReflection, viewSpacePosNormalized ) ), fragSpecularGloss );
 }
 
 float3 calculateNormalMapNormal( const in float3 tangentViewSpace,

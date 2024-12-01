@@ -16,6 +16,7 @@
 #include "constant_buffer_ex.h"
 #include "rendering_channel.h"
 #include "utils.h"
+#include "global_constants.h"
 
 
 namespace dx = DirectX;
@@ -49,7 +50,7 @@ Plane::Plane( Graphics &gfx,
 		m_pVertexBuffer = VertexBuffer::fetch( gfx, geometryTag, plane.m_vb );
 		m_pIndexBuffer = IndexBuffer::fetch( gfx, geometryTag, plane.m_indices );
 		m_pPrimitiveTopology = PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST );
-		m_pTransformVscb = std::make_unique<TransformVSCB>( gfx, 0u, *this );
+		m_pTransformVscb = std::make_unique<TransformVSCB>( gfx, g_modelVscbSlot, *this );
 	}
 
 	createAabb( plane.m_vb );
@@ -70,9 +71,9 @@ Plane::Plane( Graphics &gfx,
 			transparent.addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
 
 			con::RawLayout cbLayout;
-			cbLayout.add<con::Float4>( "materialColor" );
+			cbLayout.add<con::Float4>( "cb_materialColor" );
 			auto cb = con::CBuffer( std::move( cbLayout ) );
-			cb["materialColor"] = m_colorPscb.materialColor;
+			cb["cb_materialColor"] = m_colorPscb.materialColor;
 			transparent.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx,0u, cb ) );
 		}
 		else
@@ -84,11 +85,11 @@ Plane::Plane( Graphics &gfx,
 			transparent.addBindable( PixelShader::fetch( gfx, "plane_ps.cso" ) );
 
 			con::RawLayout cbLayout;
-			cbLayout.add<con::Float3>( "modelSpecularColor" );
-			cbLayout.add<con::Float>( "modelSpecularGloss" );
+			cbLayout.add<con::Float3>( "cb_modelSpecularColor" );
+			cbLayout.add<con::Float>( "cb_modelSpecularGloss" );
 			auto cb = con::CBuffer( std::move( cbLayout ) );
-			cb["modelSpecularColor"] = dx::XMFLOAT3{1.0f, 1.0f, 1.0f};
-			cb["modelSpecularGloss"] = 128.0f;
+			cb["cb_modelSpecularColor"] = dx::XMFLOAT3{1.0f, 1.0f, 1.0f};
+			cb["cb_modelSpecularGloss"] = 128.0f;
 			transparent.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
 		}
 
@@ -113,9 +114,9 @@ Plane::Plane( Graphics &gfx,
 			opaque.addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
 
 			con::RawLayout cbLayout;
-			cbLayout.add<con::Float4>( "materialColor" );
+			cbLayout.add<con::Float4>( "cb_materialColor" );
 			auto cb = con::CBuffer( std::move( cbLayout ) );
-			cb["materialColor"] = m_colorPscb.materialColor;
+			cb["cb_materialColor"] = m_colorPscb.materialColor;
 			opaque.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx,0u, cb ) );
 		}
 		else
@@ -127,11 +128,11 @@ Plane::Plane( Graphics &gfx,
 			opaque.addBindable( PixelShader::fetch( gfx, "plane_ps.cso" ) );
 
 			con::RawLayout cbLayout;
-			cbLayout.add<con::Float3>( "modelSpecularColor" );
-			cbLayout.add<con::Float>( "modelSpecularGloss" );
+			cbLayout.add<con::Float3>( "cb_modelSpecularColor" );
+			cbLayout.add<con::Float>( "cb_modelSpecularGloss" );
 			auto cb = con::CBuffer( std::move( cbLayout ) );
-			cb["modelSpecularColor"] = dx::XMFLOAT3{1.0f, 1.0f, 1.0f};
-			cb["modelSpecularGloss"] = 128.0f;
+			cb["cb_modelSpecularColor"] = dx::XMFLOAT3{1.0f, 1.0f, 1.0f};
+			cb["cb_modelSpecularGloss"] = 128.0f;
 			opaque.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
 		}
 
@@ -159,9 +160,9 @@ Plane::Plane( Graphics &gfx,
 		Material blurOutlineDraw{rch::blurOutline, "blurOutlineDraw", false};
 
 		con::RawLayout cbLayout;
-		cbLayout.add<con::Float4>( "materialColor" );
+		cbLayout.add<con::Float4>( "cb_materialColor" );
 		auto cb = con::CBuffer( std::move( cbLayout ) );
-		cb["materialColor"] = m_colorPscbOutline.materialColor;
+		cb["cb_materialColor"] = m_colorPscbOutline.materialColor;
 		blurOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
 
 		blurOutlineDraw.addBindable( InputLayout::fetch( gfx, plane.m_vb.getLayout(), *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );
@@ -181,9 +182,9 @@ Plane::Plane( Graphics &gfx,
 		solidOutlineDraw.addBindable( std::make_shared<TransformScaleVSCB>( gfx, 0u, 1.04f ) );
 
 		con::RawLayout cbLayout;
-		cbLayout.add<con::Float4>( "materialColor" );
+		cbLayout.add<con::Float4>( "cb_materialColor" );
 		auto cb = con::CBuffer( std::move( cbLayout ) );
-		cb["materialColor"] = m_colorPscbOutline.materialColor;
+		cb["cb_materialColor"] = m_colorPscbOutline.materialColor;
 		solidOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
 
 		solidOutlineDraw.addBindable( InputLayout::fetch( gfx, plane.m_vb.getLayout(), *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );

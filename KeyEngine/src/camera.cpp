@@ -97,7 +97,7 @@ Camera::Camera( Graphics &gfx,
 	m_bTethered(bTethered),
 	m_bPespectiveProjection(bPerspectiveProjection),
 	m_cameraWidget(std::make_unique<CameraWidget>(gfx, 1.0f, camWidgetColor), gfx, {pitchDegDefault, yawDegDefault, 0.0f}, posDefault),
-	m_cameraFrustum(std::make_unique<CameraFrustum>(gfx, 1.0f, camFrustumColor, 1.0f, height, nearZ, farZ), gfx, {yawDegDefault, yawDegDefault, 0.0f}, posDefault),
+	m_cameraFrustum(std::make_unique<CameraFrustum>(gfx, 1.0f, camFrustumColor, width, height, nearZ, farZ, fovDegrees), gfx, {pitchDegDefault, yawDegDefault, 0.0f}, posDefault),
 	m_bShowWidget{bShowDebugMeshes},
 	m_bShowFrustum{bShowDebugMeshes}
 {
@@ -116,7 +116,14 @@ void Camera::update( const float dt,
 	const float lerpBetweenFrames,
 	const bool bEnableSmoothMovement /*= false*/ ) cond_noex
 {
-
+	if ( m_bShowWidget )
+	{
+		m_cameraWidget.update( dt, lerpBetweenFrames, bEnableSmoothMovement );
+	}
+	if ( m_bShowFrustum )
+	{
+		m_cameraFrustum.update( dt, lerpBetweenFrames, bEnableSmoothMovement );
+	}
 }
 
 void Camera::render( const size_t channels /*= rch::all*/ ) const cond_noex
@@ -143,7 +150,6 @@ void Camera::makeActive( Graphics &gfx ) const
 	gfx.setProjectionMatrix( m_bPespectiveProjection ?
 		getPerspectiveProjectionMatrix() :
 		getOrthographicProjectionMatrix( m_width, m_height ) );
-		
 }
 
 void Camera::resetToDefault( Graphics &gfx ) noexcept
@@ -295,8 +301,8 @@ void Camera::displayImguiWidgets( Graphics &gfx ) noexcept
 	};
 
 	ImGui::Text( "Projection" );
-	dirtyCheck( ImGui::SliderFloat( "Width", &m_width, 0.01f, 4.0f, "%.2f", 1.5f ), projDirty );
-	dirtyCheck( ImGui::SliderFloat( "Height", &m_height, 0.01f, 4.0f, "%.2f", 1.5f ), projDirty );
+	dirtyCheck( ImGui::SliderFloat( "Width", &m_width, 256.0f, 4096.0f, "%.2f", 2.0f ), projDirty );
+	dirtyCheck( ImGui::SliderFloat( "Height", &m_height, 256.0f, 4096.0f, "%.2f", 2.0f ), projDirty );
 	dirtyCheck( ImGui::SliderFloat( "Near Z", &m_nearZ, 0.01f, m_farZ - 0.01f, "%.2f", 4.0f ), projDirty );
 	dirtyCheck( ImGui::SliderFloat( "Far Z", &m_farZ, m_nearZ + 0.01f, 1000.0f, "%.2f", 4.0f ), projDirty );
 
@@ -394,8 +400,8 @@ void Camera::translateRel( DirectX::XMFLOAT3 translation ) noexcept
 	{
 		return;
 	}
-	m_posPrev = m_pos;
 
+	m_posPrev = m_pos;
 	dx::XMStoreFloat3( &translation, dx::XMVector3Transform( dx::XMLoadFloat3( &translation ), dx::XMMatrixScaling( m_translationSpeed, m_translationSpeed, m_translationSpeed ) * getRotationMatrix() ) );
 	m_pos = {m_pos.x + translation.x, m_pos.y + translation.y, m_pos.z + translation.z};
 	m_cameraWidget.setTranslation( m_pos );
@@ -409,7 +415,7 @@ void Camera::setTranslation( const DirectX::XMFLOAT3 &pos ) noexcept
 		return;
 	}
 
-	this->m_pos = pos;
+	m_pos = pos;
 	m_cameraWidget.setTranslation( pos );
 	m_cameraFrustum.setTranslation( pos );
 }
@@ -448,10 +454,10 @@ DirectX::XMVECTOR Camera::getTarget() const noexcept
 
 void Camera::updateCameraFrustum( Graphics &gfx )
 {
-	auto g = geometry::makeCameraFrustum( m_width, m_height, m_nearZ, m_farZ );
+	auto triangleMesh = geometry::makeCameraFrustum( m_width, m_height, m_nearZ, m_farZ, m_fovRadians );
 	auto *frustumMesh = m_cameraFrustum.getMesh();
-	frustumMesh->getVertexBuffer() = std::make_shared<VertexBuffer>( gfx, g.m_vb );
-	frustumMesh->createAabb( g.m_vb );
+	frustumMesh->getVertexBuffer() = std::make_shared<VertexBuffer>( gfx, triangleMesh.m_vb );
+	frustumMesh->createAabb( triangleMesh.m_vb );
 	m_aspectRatio = m_width / m_height;
 }
 

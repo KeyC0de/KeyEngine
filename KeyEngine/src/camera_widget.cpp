@@ -10,6 +10,7 @@
 #include "constant_buffer.h"
 #include "vertex_shader.h"
 #include "rendering_channel.h"
+#include "global_constants.h"
 
 
 namespace dx = DirectX;
@@ -34,13 +35,11 @@ CameraWidget::CameraWidget( Graphics &gfx,
 		g.transform( dx::XMMatrixScaling( initialScale, initialScale, initialScale ) );
 	}
 
-	{
-		// we don't have to duplicate the CameraWidget buffers - they're all the same
-		m_pVertexBuffer = VertexBuffer::fetch( gfx, s_geometryTag, g.m_vb );
-		m_pIndexBuffer = IndexBuffer::fetch( gfx, s_geometryTag, g.m_indices );
-		m_pPrimitiveTopology = PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_LINELIST );
-		m_pTransformVscb = std::make_unique<TransformVSCB>( gfx, 0u, *this );
-	}
+	// we don't have to duplicate the CameraWidget buffers - they're all the same
+	m_pVertexBuffer = VertexBuffer::fetch( gfx, s_geometryTag, g.m_vb );
+	m_pIndexBuffer = IndexBuffer::fetch( gfx, s_geometryTag, g.m_indices );
+	m_pPrimitiveTopology = PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_LINELIST );
+	m_pTransformVscb = std::make_unique<TransformVSCB>( gfx, g_modelVscbSlot, *this );
 
 	createAabb( g.m_vb );
 	setMeshId();

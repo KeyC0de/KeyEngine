@@ -17,6 +17,7 @@
 #include "utils.h"
 #include "math_utils.h"
 #include "d3d_utils.h"
+#include "global_constants.h"
 
 
 namespace dx = DirectX;
@@ -59,7 +60,7 @@ Terrain::Terrain( Graphics &gfx,
 		m_pVertexBuffer = VertexBuffer::fetch( gfx, geometryTag, planarGrid.m_vb );
 		m_pIndexBuffer = IndexBuffer::fetch( gfx, geometryTag, planarGrid.m_indices );
 		m_pPrimitiveTopology = PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST );
-		m_pTransformVscb = std::make_unique<TransformVSCB>( gfx, 0u, *this );
+		m_pTransformVscb = std::make_unique<TransformVSCB>( gfx, g_modelVscbSlot, *this );
 	}
 
 	createAabb( planarGrid.m_vb );
@@ -94,11 +95,11 @@ Terrain::Terrain( Graphics &gfx,
 			opaque.addBindable( TextureSamplerState::fetch( gfx, TextureSamplerState::TextureSamplerMode::DefaultTS, TextureSamplerState::FilterMode::Anisotropic, TextureSamplerState::AddressMode::Wrap ) );
 
 			con::RawLayout cbLayout;
-			cbLayout.add<con::Float3>( "modelSpecularColor" );
-			cbLayout.add<con::Float>( "modelSpecularGloss" );
+			cbLayout.add<con::Float3>( "cb_modelSpecularColor" );
+			cbLayout.add<con::Float>( "cb_modelSpecularGloss" );
 			auto cb = con::CBuffer( std::move( cbLayout ) );
-			cb["modelSpecularColor"] = dx::XMFLOAT3{1.0f, 1.0f, 1.0f};
-			cb["modelSpecularGloss"] = 32.0f;
+			cb["cb_modelSpecularColor"] = dx::XMFLOAT3{1.0f, 1.0f, 1.0f};
+			cb["cb_modelSpecularGloss"] = 32.0f;
 
 			opaque.addBindable( PixelShader::fetch( gfx, "plane_ps.cso" ) );
 
@@ -131,9 +132,9 @@ Terrain::Terrain( Graphics &gfx,
 		solidOutlineDraw.addBindable( std::make_shared<TransformScaleVSCB>( gfx, 0u, 1.04f ) );
 
 		con::RawLayout cbLayout;
-		cbLayout.add<con::Float4>( "materialColor" );
+		cbLayout.add<con::Float4>( "cb_materialColor" );
 		auto cb = con::CBuffer( std::move( cbLayout ) );
-		cb["materialColor"] = m_colorPscbOutline.materialColor;
+		cb["cb_materialColor"] = m_colorPscbOutline.materialColor;
 		solidOutlineDraw.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
 
 		solidOutlineDraw.addBindable( InputLayout::fetch( gfx, planarGrid.m_vb.getLayout(), *VertexShader::fetch( gfx, "flat_vs.cso" ) ) );

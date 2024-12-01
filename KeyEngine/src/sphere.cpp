@@ -11,6 +11,7 @@
 #include "rasterizer_state.h"
 #include "geometry.h"
 #include "rendering_channel.h"
+#include "global_constants.h"
 
 
 namespace dx = DirectX;
@@ -60,9 +61,9 @@ Sphere::Sphere( Graphics &gfx,
 		opaque.addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
 
 		con::RawLayout cbLayout;
-		cbLayout.add<con::Float4>( "materialColor" );
+		cbLayout.add<con::Float4>( "cb_materialColor" );
 		auto cb = con::CBuffer( std::move( cbLayout ) );
-		cb["materialColor"] = m_colorPscb.materialColor;
+		cb["cb_materialColor"] = m_colorPscb.materialColor;
 		opaque.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx,0u, cb ) );
 
 		opaque.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Front ) );

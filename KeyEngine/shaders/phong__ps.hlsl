@@ -6,9 +6,9 @@
 
 cbuffer ModelPSCB : register(b0)
 {
-	float4 materialColor;
-	float3 modelSpecularColor;
-	float modelSpecularGloss;
+	float4 cb_materialColor;
+	float3 cb_modelSpecularColor;
+	float cb_modelSpecularGloss;
 };
 
 struct PSIn
@@ -64,8 +64,8 @@ PSOut main( PSIn input )
 				const PointLightVectors lv = calculatePointLightVectors( currentLight.cb_lightPosViewSpace, input.viewSpacePos );
 
 				const float attenuation = calculateLightAttenuation( lv.lengthOfL, currentLight.cb_attConstant, currentLight.cb_attLinear, currentLight.cb_attQuadratic );
-				diffuseL = calculateLightDiffuseContribution( currentLight.cb_lightColor, currentLight.intensity, attenuation, lv.vToL_normalized, input.viewSpaceNormal );
-				specularL = calculateLightSpecularContribution( currentLight.cb_lightColor, modelSpecularColor, currentLight.intensity, modelSpecularGloss, input.viewSpaceNormal, lv.vToL, input.viewSpacePos, attenuation );
+				diffuseL = calculateLightDiffuseContribution( currentLight.cb_lightColor, currentLight.cb_intensity, attenuation, lv.vToL_normalized, input.viewSpaceNormal );
+				specularL = calculateLightSpecularContribution( currentLight.cb_lightColor, cb_modelSpecularColor, currentLight.cb_intensity, cb_modelSpecularGloss, input.viewSpaceNormal, lv.vToL, input.viewSpacePos, attenuation );
 			}
 
 			diffuseL *= shadowLevel;

@@ -17,13 +17,6 @@ TransparentPass::TransparentPass( Graphics &gfx,
 {
 	addBindable( DepthStencilState::fetch( gfx, DepthStencilState::Mode::DepthReadOnlyStencilOff ) );
 
-	// TextureSamplerState is set per mesh depending on whether the mesh has a texture
-
-	// RasterizerState is set per mesh depending on whether the mesh's texture has an alpha channel
-	// by default you Cull_Back like Opaque meshes; or use CULL_NONE for double sided transparency (may be useful for very thin meshes, like leaves, or billboards)
-
-	// BlendState is set per mesh depending on the level of transparency of the mesh (determined by its flat color's Alpha value or its texture alpha value)
-
 	addBinder( RenderSurfaceBinder<IRenderTargetView>::make( "renderTarget", m_pRtv ) );
 	addBinder( RenderSurfaceBinder<IDepthStencilView>::make( "depthStencil", m_pDsv ) );
 

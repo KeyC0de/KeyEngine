@@ -10,6 +10,7 @@
 #include "transform_vscb.h"
 #include "constant_buffer.h"
 #include "rendering_channel.h"
+#include "global_constants.h"
 
 
 namespace dx = DirectX;
@@ -20,7 +21,8 @@ CameraFrustum::CameraFrustum( Graphics &gfx,
 	const float width /*= 1.0f*/,
 	const float height /*= 1.0f*/,
 	const float nearZ /*= 0.5f*/,
-	const float farZ /*= 200.0f*/ )
+	const float farZ /*= 200.0f*/,
+	const float fovDegrees /*= 90.0f*/ )
 {
 	std::string diffuseTexturePath;
 	if ( std::holds_alternative<DirectX::XMFLOAT4>( colorOrTexturePath ) )
@@ -32,14 +34,16 @@ CameraFrustum::CameraFrustum( Graphics &gfx,
 		diffuseTexturePath = std::get<std::string>( colorOrTexturePath );
 	}
 
-	auto g = geometry::makeCameraFrustum( width, height, nearZ, farZ );
-
+	auto g = geometry::makeCameraFrustum( width, height, nearZ, farZ, dx::XMConvertToRadians(fovDegrees) );
+	if ( initialScale != 1.0f )
 	{
-		m_pVertexBuffer = std::make_shared<VertexBuffer>( gfx, g.m_vb );	// we don't share the frustum in the BindableRegistry because each will be unique
-		m_pIndexBuffer = IndexBuffer::fetch( gfx, s_geometryTag, g.m_indices );
-		m_pPrimitiveTopology = PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_LINELIST );
-		m_pTransformVscb = std::make_unique<TransformVSCB>( gfx, 0u, *this );
+		g.transform( dx::XMMatrixScaling( initialScale, initialScale, initialScale ) );
 	}
+
+	m_pVertexBuffer = std::make_shared<VertexBuffer>( gfx, g.m_vb );	// we don't share the frustum in the BindableRegistry because each one will be unique
+	m_pIndexBuffer = IndexBuffer::fetch( gfx, s_geometryTag, g.m_indices );
+	m_pPrimitiveTopology = PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_LINELIST );
+	m_pTransformVscb = std::make_unique<TransformVSCB>( gfx, g_modelVscbSlot, *this );
 
 	createAabb( g.m_vb );
 	setMeshId();
@@ -47,8 +51,8 @@ CameraFrustum::CameraFrustum( Graphics &gfx,
 	// Draw the frustum with a dimmer color for the pixels that are occluded.
 	// How? By leveraging the depth stencil modes
 	// We draw the frustum two times
-	// 1. normal opaque
-	// 2. DepthReversed mode and another color (dimmer) - only the occluded part of the frustum gets drawn
+	// 1. Opaque - normal mode
+	// 2. DepthReversed - mode & with another color (dimmer) - only the occluded part of the frustum gets drawn
 	{
 		Material front{rch::wireframe, "wireframe", true};
 
@@ -60,7 +64,7 @@ CameraFrustum::CameraFrustum( Graphics &gfx,
 		front.addBindable( std::move( pVs ) );
 		front.addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
 
-		front.addBindable( PixelShaderConstantBuffer<ColorPSCB3>::fetch( gfx, m_colorPscbWireframe, 0u ) );
+		front.addBindable( PixelShaderConstantBuffer<ColorPSCB3>::fetch( gfx, m_colorPscbWireframe, g_modelPscbSlot ) );
 
 		addMaterial( std::move( front ) );
 	}
@@ -75,7 +79,7 @@ CameraFrustum::CameraFrustum( Graphics &gfx,
 		occluded.addBindable( std::move( pvs ) );
 		occluded.addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
 
-		occluded.addBindable( PixelShaderConstantBuffer<ColorPSCB4>::fetch( gfx, m_colorPscbDepthReversed, 0u ) );
+		occluded.addBindable( PixelShaderConstantBuffer<ColorPSCB4>::fetch( gfx, m_colorPscbDepthReversed, g_modelPscbSlot ) );
 
 		addMaterial( std::move( occluded ) );
 	}

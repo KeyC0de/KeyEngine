@@ -23,7 +23,7 @@ struct ColorBGR final
 /// \brief https://www.khronos.org/opengl/wiki/Direct3D_Compatibility#BGRA_vertex_format
 /// \brief OpenGL has the reversed color components ie D3D RGBA = GL ABGR
 /// \brief
-/// \brief KeyEngine uses DXGI BGRA color order
+/// \brief KeyEngine uses DXGI BGRA color order (B is in the lowest-memoy-address Byte and A is the highest-memoy-address Byte)
 ///=============================================================
 struct ColorBGRA final
 {

@@ -499,7 +499,6 @@ public:
 	CBuffer( CookedLayout &&lay ) cond_noex;
 	CBuffer( const CBuffer &rhs ) noexcept;
 	CBuffer& operator==( const CBuffer &rhs ) noexcept;
-	///===================================================
 	/// \brief	have to be careful with this one...
 	/// \brief	the buffer that has once been pilfered must not be used
 	CBuffer( CBuffer &&rhs ) noexcept;

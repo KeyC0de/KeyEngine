@@ -17,5 +17,4 @@ static inline constexpr const int get() noexcept
 	return s_currentMode;
 }
 
-
 };

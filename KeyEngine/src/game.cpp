@@ -3,6 +3,7 @@
 #include "reporter_access.h"
 #include "game_state.h"
 #include "camera.h"
+#include "light_source.h"
 #include "rendering_channel.h"
 #include "console.h"
 #include "assertions_console.h"
@@ -81,7 +82,7 @@ std::optional<Window*> Game<T>::getForegroundWindow() const noexcept
 }
 
 template <typename T>
-void Game<T>::setState( std::unique_ptr<State> pNewState,
+void Game<T>::setState( std::unique_ptr<IState> pNewState,
 	Mouse &mouse )
 {
 	ASSERT( pNewState, "New state is null!" );
@@ -111,13 +112,13 @@ void Game<T>::setState( std::unique_ptr<State> pNewState,
 }
 
 template <typename T>
-const State* Game<T>::getState() const noexcept
+const IState* Game<T>::getState() const noexcept
 {
 	return m_pCurrentState.get();
 }
 
 template <typename T>
-State* Game<T>::getState() noexcept
+IState* Game<T>::getState() noexcept
 {
 	return m_pCurrentState.get();
 }
@@ -165,8 +166,8 @@ Sandbox3d::Sandbox3d( const int width,
 
 	auto &gfx = m_mainWindow.getGraphics();
 
-	s_cameraMan.add( std::make_unique<Camera>( gfx, gfx.getClientWidth(), gfx.getClientHeight(), 60.0f, dx::XMFLOAT3{0.0f, 0.0f, 0.0f}, 0.0f, 90.0f, false, true, 0.5f, 1000.0f ) );
-	s_cameraMan.add( std::make_unique<Camera>( gfx, gfx.getClientWidth(), gfx.getClientHeight(), 45.0f, dx::XMFLOAT3{-13.5f, 28.8f, -6.4f}, 13.0f, 61.0f, false, true, 0.5f, 400.0f ) );
+	s_cameraMan.add( std::make_shared<Camera>( gfx, gfx.getClientWidth(), gfx.getClientHeight(), 60.0f, dx::XMFLOAT3{0.0f, 0.0f, 0.0f}, 0.0f, 90.0f, false, true, 0.5f, 1000.0f ) );
+	s_cameraMan.add( std::make_shared<Camera>( gfx, gfx.getClientWidth(), gfx.getClientHeight(), 45.0f, dx::XMFLOAT3{-13.5f, 28.8f, -6.4f}, 13.0f, 61.0f, false, true, 0.5f, 400.0f ) );
 
 
 	m_lights.reserve( settings.iMaxShadowCastingDynamicLights );
@@ -254,7 +255,7 @@ int Sandbox3d::loop()
 		if ( bActive )
 		{
 			dt = m_gameTimer.lap() * settings.fGameSpeed;
-			returnC0de = checkInput( dt );
+			returnC0de = processInput( dt );
 			if ( returnC0de == 0 )
 			{
 				break;
@@ -284,7 +285,7 @@ int Sandbox3d::loop()
 	return returnC0de;
 }
 
-int Sandbox3d::checkInput( const float dt )
+int Sandbox3d::processInput( const float dt )
 {
 	auto &keyboard = m_mainWindow.getKeyboard();
 	auto &mouse = m_mainWindow.getMouse();
@@ -446,9 +447,11 @@ void Sandbox3d::update( Graphics &gfx,
 			} );
 	}
 
+	s_cameraMan.update( dt, lerpBetweenFrames, settings.bEnableSmoothMovement );
+
 	for ( auto &pLight : m_lights )
 	{
-		pLight->update( gfx, dt, lerpBetweenFrames, settings.bEnableSmoothMovement );
+		pLight->update( dt, lerpBetweenFrames, settings.bEnableSmoothMovement );
 	}
 
 	m_terrain.update( dt, lerpBetweenFrames, settings.bEnableSmoothMovement );
@@ -465,9 +468,7 @@ void Sandbox3d::update( Graphics &gfx,
 
 void Sandbox3d::updateFixed( const float dt )
 {
-	// used for stuff that need to be in-step with the physics engine, in order to guarantee a deterministic timestep that is independent of the frame-rate dt
-	// apply continuous forces here (but an instantaneous impulse like a character jumping can and should be done in update instead after input detects it)
-	// also animation that pertains to gameplay (or physics) should be done here (eg character animation in multiplayer game) if you care about fairness
+
 }
 
 void Sandbox3d::render( Graphics &gfx )
@@ -616,7 +617,7 @@ int Arkanoid::loop()
 		}
 
 		const float dt = calcDt();
-		returnC0de = checkInput( dt );
+		returnC0de = processInput( dt );
 		if ( returnC0de == 0 )
 		{
 			break;
@@ -638,7 +639,7 @@ float Arkanoid::calcDt()
 	return dt;
 }
 
-int Arkanoid::checkInput( const float dt )
+int Arkanoid::processInput( const float dt )
 {
 	auto &keyboard = m_mainWindow.getKeyboard();
 	auto &mouse = m_mainWindow.getMouse();

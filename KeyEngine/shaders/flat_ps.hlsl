@@ -1,6 +1,6 @@
 cbuffer ColorPSCB : register(b0)
 {
-	float4 materialColor;
+	float4 cb_materialColor;
 };
 
 struct PSOut
@@ -11,6 +11,6 @@ struct PSOut
 PSOut main()
 {
 	PSOut output;
-	output.finalColor = float4(materialColor.x, materialColor.y, materialColor.z, 1.0f);
+	output.finalColor = float4(cb_materialColor.x, cb_materialColor.y, cb_materialColor.z, 1.0f);
 	return output;
 }

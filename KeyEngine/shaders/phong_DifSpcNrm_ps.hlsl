@@ -4,31 +4,34 @@
 #include "hlsli/shadowing_ps.hlsli"
 
 
-/// \brief PS Resources
+/// \brief PS Resources section start
+
+/// \brief order of elements must be observed between the ModelPSCB and the order of elements added in `con::RawLayout cbLayout;` in `MaterialLoader::MaterialLoader`
 cbuffer ModelPSCB : register(b0)
 {
-	bool bSpecularMap;
-	bool bSpecularMapAlpha;
-	float3 modelSpecularColor;
-	float modelSpecularGloss;	// the specular power factor
-	bool bNormalMap;
-	float normalMapStrength;
+	bool cb_bSpecularMap;
+	bool cb_bSpecularMapAlpha;
+	float3 cb_modelSpecularColor;
+	float cb_modelSpecularGloss;	// the specular power factor
+	bool cb_bNormalMap;
+	float cb_normalMapStrength;
 };
 
 Texture2D albedoTex : register(t0);
 Texture2D specTex : register(t1);
 Texture2D normTex : register(t2);
 SamplerState sampl : register(s0);
+/// \brief PS Resources section end
 
 /// \brief PS Input
 struct PSIn
 {
 	float3 viewSpacePos : PositionViewSpace;
-	float3 viewSpaceNormal : Normal;
-	float2 tc : TexCoord;
+	float3 viewSpaceNormal : Normal;	// only extra PS input required for lighting calcs is Normal
+	float2 tc : TexCoord;				// only extra PS input required for texturing calcs is TexCoord
 	float3 tangentViewSpace : Tangent;
 	float3 bitangentViewSpace : Bitangent;
-	float4 posLightSpace[MAX_LIGHTS] : PositionLightSpace;
+	float4 posLightSpace[MAX_LIGHTS] : PositionLightSpace;	// only extra PS input required for shadowing calcs is PositionLightSpace, we calculate it in VS and pass it to PS (or even better #OPTIMIZATION: calculate it in PS directly)
 };
 
 /// \brief PS Output
@@ -37,6 +40,7 @@ struct PSOut
 	float4 finalColor : SV_Target;
 };
 
+/// \brief PS entry point
 PSOut main( PSIn input )
 {
 	float4 albedoTexColor = albedoTex.Sample(sampl, input.tc);
@@ -53,28 +57,28 @@ PSOut main( PSIn input )
 	input.viewSpaceNormal = normalize(input.viewSpaceNormal);
 
 	// get normal map contribution
-	if (bNormalMap)
+	if (cb_bNormalMap)
 	{
 		const float3 mappedNormal = calculateNormalMapNormal(normalize(input.tangentViewSpace), normalize(input.bitangentViewSpace), input.viewSpaceNormal, input.tc, normTex, sampl);
 		// lerp normal with the normal map's normal if there's a normal map
-		input.viewSpaceNormal = lerp(input.viewSpaceNormal, mappedNormal, normalMapStrength);
+		input.viewSpaceNormal = lerp(input.viewSpaceNormal, mappedNormal, cb_normalMapStrength);
 	}
 
 	// Specular map contribution
-	float modelSpecularGloss_var = modelSpecularGloss;
+	float cb_modelSpecularGloss_var = cb_modelSpecularGloss;
 	float3 specularFactor = float3(0, 0, 0);
-	if (bSpecularMap)
+	if (cb_bSpecularMap)
 	{
 		const float4 specularTexColor = specTex.Sample(sampl, input.tc);
 		specularFactor = specularTexColor.rgb;
-		if (bSpecularMapAlpha)
+		if (cb_bSpecularMapAlpha)
 		{
-			modelSpecularGloss_var = pow(2.0f, specularTexColor.a * 7.0f);
+			cb_modelSpecularGloss_var = pow(2.0f, specularTexColor.a * 7.0f);
 		}
 	}
 	else
 	{
-		specularFactor = modelSpecularColor;
+		specularFactor = cb_modelSpecularColor;
 	}
 
 	// if another pixel is occluding this one, then this one will be in shadow, so don't apply lighting and only add an cb_ambientColor light term
@@ -115,8 +119,8 @@ PSOut main( PSIn input )
 				const PointLightVectors lv = calculatePointLightVectors(currentLight.cb_lightPosViewSpace, input.viewSpacePos);
 
 				const float attenuation = calculateLightAttenuation(lv.lengthOfL, currentLight.cb_attConstant, currentLight.cb_attLinear, currentLight.cb_attQuadratic);
-				diffuseL = calculateLightDiffuseContribution(currentLight.cb_lightColor, currentLight.intensity, attenuation, lv.vToL_normalized, input.viewSpaceNormal);
-				specularL = calculateLightSpecularContribution(currentLight.cb_lightColor, specularFactor, currentLight.intensity, modelSpecularGloss_var, input.viewSpaceNormal, lv.vToL, input.viewSpacePos, attenuation);
+				diffuseL = calculateLightDiffuseContribution(currentLight.cb_lightColor, currentLight.cb_intensity, attenuation, lv.vToL_normalized, input.viewSpaceNormal);
+				specularL = calculateLightSpecularContribution(currentLight.cb_lightColor, specularFactor, currentLight.cb_intensity, cb_modelSpecularGloss_var, input.viewSpaceNormal, lv.vToL, input.viewSpacePos, attenuation);
 			}
 
 			diffuseL *= shadowLevel;

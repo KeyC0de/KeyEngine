@@ -6,10 +6,10 @@
 
 cbuffer ModelPSCB : register(b0)
 {
-	bool bSpecularMap;
-	bool bSpecularMapAlpha;
-	float3 modelSpecularColor;
-	float modelSpecularGloss;
+	bool cb_bSpecularMap;
+	bool cb_bSpecularMapAlpha;
+	float3 cb_modelSpecularColor;
+	float cb_modelSpecularGloss;
 };
 
 Texture2D albedoTex : register(t0);
@@ -33,20 +33,20 @@ PSOut main( PSIn input )
 {
 	input.viewSpaceNormal = normalize( input.viewSpaceNormal );
 
-	float modelSpecularGloss_var = modelSpecularGloss;
+	float cb_modelSpecularGloss_var = cb_modelSpecularGloss;
 	float3 specularFactor = float3(0, 0, 0);
-	if ( bSpecularMap )
+	if ( cb_bSpecularMap )
 	{
 		const float4 specMapColor = specTex.Sample( sampl, input.tc );
 		specularFactor = specMapColor.rgb;
-		if ( bSpecularMapAlpha )
+		if ( cb_bSpecularMapAlpha )
 		{
-			modelSpecularGloss_var = pow(2.0f, specMapColor.a * 7.0f );
+			cb_modelSpecularGloss_var = pow(2.0f, specMapColor.a * 7.0f );
 		}
 	}
 	else
 	{
-		specularFactor = modelSpecularColor;
+		specularFactor = cb_modelSpecularColor;
 	}
 
 	float3 lightCombinedDiffuse = float3(0, 0, 0);
@@ -86,8 +86,8 @@ PSOut main( PSIn input )
 				const PointLightVectors lv = calculatePointLightVectors( currentLight.cb_lightPosViewSpace, input.viewSpacePos );
 
 				const float attenuation = calculateLightAttenuation( lv.lengthOfL, currentLight.cb_attConstant, currentLight.cb_attLinear, currentLight.cb_attQuadratic );
-				diffuseL = calculateLightDiffuseContribution( currentLight.cb_lightColor, currentLight.intensity, attenuation, lv.vToL_normalized, input.viewSpaceNormal );
-				specularL = calculateLightSpecularContribution( currentLight.cb_lightColor, specularFactor, currentLight.intensity, modelSpecularGloss_var, input.viewSpaceNormal, lv.vToL, input.viewSpacePos, attenuation );
+				diffuseL = calculateLightDiffuseContribution( currentLight.cb_lightColor, currentLight.cb_intensity, attenuation, lv.vToL_normalized, input.viewSpaceNormal );
+				specularL = calculateLightSpecularContribution( currentLight.cb_lightColor, specularFactor, currentLight.cb_intensity, cb_modelSpecularGloss_var, input.viewSpaceNormal, lv.vToL, input.viewSpacePos, attenuation );
 			}
 
 			diffuseL *= shadowLevel;

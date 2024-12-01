@@ -18,7 +18,7 @@ TriangleMesh makePlanarGrid( const int length = 2, const int width = 2, int nDiv
 TriangleMesh makePlanarGridTextured( const int length = 2, const int width = 2, int nDivisionsX = 1, int nDivisionsY = 1 );
 /// \brief	engine unit is cm, terrain has to be relatively large without consuming a vast amount of memory with indices and vertices, so we multiply its area by `terrainAreaUnitMultiplier`
 TriangleMesh makePlanarGridTexturedFromHeighmap( const std::string &filename, const int normalizeAmount = 4, const int terrainAreaUnitMultiplier = 10, const int length = 2, const int width = 2, int nDivisionsX = 1, int nDivisionsY = 1 );
-TriangleMesh makeCameraFrustum( const float width, const float height, const float nearZ, const float farZ );
+TriangleMesh makeCameraFrustum( const float width, const float height, const float nearZ, const float farZ, const float verticalFov );
 TriangleMesh makeCameraWidget();
 
 }//namespace geometry

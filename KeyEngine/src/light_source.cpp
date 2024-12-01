@@ -32,7 +32,7 @@ ILightSource::ILightSource( Graphics &gfx,
 	:
 	m_type{type},
 	m_bShowMesh{bShowMesh},
-	m_bCastingShadows{bShadowCasting},
+	m_bShadowCasting{bShadowCasting},
 	m_lightMesh(std::move( model)),
 	m_vscbData{},
 	m_shadowCamFarZ{shadowCamFarZ}
@@ -59,8 +59,7 @@ ILightSource::ILightSource( Graphics &gfx,
 	m_pscbDataToBind = m_pscbData;
 }
 
-void ILightSource::update( Graphics &gfx,
-	const float dt,
+void ILightSource::update( const float dt,
 	const float lerpBetweenFrames,
 	const bool bEnableSmoothMovement /*= false*/ ) cond_noex
 {
@@ -93,7 +92,7 @@ void ILightSource::setRotation( const DirectX::XMFLOAT3 &rot )
 {
 	ASSERT( m_type != LightSourceType::Point, "You shouldn't need to change the rotation of Point Lights" );
 	m_pscbData.cb_lightPosViewSpace = rot;
-	if ( m_bCastingShadows )
+	if ( m_bShadowCasting )
 	{
 		m_pCameraForShadowing->setTethered( false );
 		m_pCameraForShadowing->setRotation( rot );
@@ -106,7 +105,7 @@ void ILightSource::setTranslation( const DirectX::XMFLOAT3 &pos )
 {
 	ASSERT( m_type != LightSourceType::Directional, "You shouldn't need to change the position of Directional Lights" );
 	m_pscbData.cb_lightPosViewSpace = pos;
-	if ( m_bCastingShadows )
+	if ( m_bShadowCasting )
 	{
 		m_pCameraForShadowing->setTethered( false );
 		m_pCameraForShadowing->setTranslation( pos );
@@ -132,7 +131,7 @@ std::string ILightSource::getName() const noexcept
 
 bool ILightSource::isCastingShadows() const noexcept
 {
-	return m_bCastingShadows;
+	return m_bShadowCasting;
 }
 
 // #TODO:
@@ -148,7 +147,7 @@ DirectX::XMFLOAT3 ILightSource::getRotation() const noexcept
 
 Camera* ILightSource::getShadowCamera() const
 {
-	ASSERT( m_bCastingShadows, "There is no shadow camera!" );
+	ASSERT( m_bShadowCasting, "There is no shadow camera!" );
 	return m_pCameraForShadowing.get();
 }
 
@@ -216,7 +215,7 @@ void DirectionalLight::displayImguiWidgets() noexcept
 		}
 
 		ImGui::Text( "Intensity & Color" );
-		ImGui::SliderFloat( "Intensity", &m_pscbData.intensity, 0.01f, 4.0f, "%.2f", 2.0f );
+		ImGui::SliderFloat( "Intensity", &m_pscbData.cb_intensity, 0.01f, 4.0f, "%.2f", 2.0f );
 		ImGui::ColorEdit3( "Diffuse", &m_pscbData.cb_lightColor.x );	// #TODO: expose model's material properties cb to change its color when changing the light's color here
 		ImGui::ColorEdit3( "Ambient", &m_pscbData.cb_ambientColor.x );
 
@@ -233,7 +232,7 @@ void DirectionalLight::displayImguiWidgets() noexcept
 
 void DirectionalLight::setIntensity( const float newIntensity ) noexcept
 {
-	m_pscbData.intensity = newIntensity;
+	m_pscbData.cb_intensity = newIntensity;
 }
 
 void DirectionalLight::setColor( const DirectX::XMFLOAT3 &diffuseColor ) noexcept
@@ -248,7 +247,7 @@ DirectX::XMFLOAT3 DirectionalLight::getPosition() const noexcept
 
 void DirectionalLight::populateVscbData( Graphics &gfx ) cond_noex
 {
-	ASSERT( m_bCastingShadows && m_pCameraForShadowing, "Camera not specified (null)!" );
+	ASSERT( m_bShadowCasting && m_pCameraForShadowing, "Camera not specified (null)!" );
 	m_vscbData = {dx::XMMatrixTranspose( m_pCameraForShadowing->getViewMatrix() * m_pCameraForShadowing->getProjectionMatrix( gfx, true, m_shadowCamFarZ ) )};
 }
 
@@ -292,7 +291,7 @@ void SpotLight::displayImguiWidgets() noexcept
 
 void SpotLight::setIntensity( const float newIntensity ) noexcept
 {
-	m_pscbData.intensity = newIntensity;
+	m_pscbData.cb_intensity = newIntensity;
 }
 
 void SpotLight::setColor( const DirectX::XMFLOAT3 &diffuseColor ) noexcept
@@ -307,7 +306,7 @@ DirectX::XMFLOAT3 SpotLight::getPosition() const noexcept
 
 void SpotLight::populateVscbData( Graphics &gfx ) cond_noex
 {
-	ASSERT( m_bCastingShadows && m_pCameraForShadowing, "Camera not specified (null)!" );
+	ASSERT( m_bShadowCasting && m_pCameraForShadowing, "Camera not specified (null)!" );
 	m_vscbData = {dx::XMMatrixTranspose( m_pCameraForShadowing->getViewMatrix() * m_pCameraForShadowing->getProjectionMatrix( gfx, true, m_shadowCamFarZ ) )};
 }
 
@@ -358,7 +357,7 @@ void PointLight::displayImguiWidgets() noexcept
 		}
 
 		ImGui::Text( "Intensity & Color" );
-		ImGui::SliderFloat( "Intensity", &m_pscbData.intensity, 0.01f, 4.0f, "%.2f", 2.0f );
+		ImGui::SliderFloat( "Intensity", &m_pscbData.cb_intensity, 0.01f, 4.0f, "%.2f", 2.0f );
 		ImGui::ColorEdit3( "Diffuse", &m_pscbData.cb_lightColor.x );	// #TODO: expose model's material properties cb to change its color when changing the light's color here
 		ImGui::ColorEdit3( "Ambient", &m_pscbData.cb_ambientColor.x );
 
@@ -375,7 +374,7 @@ void PointLight::displayImguiWidgets() noexcept
 
 void PointLight::setIntensity( const float newIntensity ) noexcept
 {
-	m_pscbData.intensity = newIntensity;
+	m_pscbData.cb_intensity = newIntensity;
 }
 
 void PointLight::setColor( const DirectX::XMFLOAT3 &diffuseColor ) noexcept
@@ -390,7 +389,7 @@ DirectX::XMFLOAT3 PointLight::getPosition() const noexcept
 
 void PointLight::populateVscbData( Graphics &gfx ) cond_noex
 {
-	ASSERT( m_bCastingShadows && m_pCameraForShadowing, "Camera not specified (null)!" );
+	ASSERT( m_bShadowCasting && m_pCameraForShadowing, "Camera not specified (null)!" );
 	const auto &pos = m_pCameraForShadowing->getPosition();
 	m_vscbData = {dx::XMMatrixTranspose( dx::XMMatrixTranslation( -pos.x, -pos.y, -pos.z ) )};
 }

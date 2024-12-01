@@ -5,10 +5,10 @@
 
 
 ///=============================================================
-// \class	ObjectPool
-// \author	Nikos Lazaridis (KeyC0de)
-// \date	3-Oct-19
-// \brief	Pool Allocator
+/// \class	ObjectPool
+/// \author	Nikos Lazaridis (KeyC0de)
+/// \date	3-Oct-19
+/// \brief	Pool Allocator
 ///=============================================================
 template<typename T>
 class ObjectPool final

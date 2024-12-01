@@ -23,6 +23,7 @@ namespace ren
 /// \author	KeyC0de
 /// \date	2022/10/03 10:30
 /// \brief	A RenderQueuePass that outputs only to the DSV. The RTV is inactive.
+/// \brief	ShadowPass aka DepthZPrepass aka LightPrepass, handles operations very useful for shadows and other things useful for other `IPass`es down the line
 ///=============================================================
 class ShadowPass
 	: public RenderQueuePass

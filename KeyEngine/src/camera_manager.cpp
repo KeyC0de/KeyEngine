@@ -62,6 +62,16 @@ void CameraManager::connectMaterialsToRenderer( ren::Renderer &r )
 	}
 }
 
+void CameraManager::update( const float dt,
+	const float lerpBetweenFrames,
+	const bool bEnableSmoothMovement /*= false*/ ) cond_noex
+{
+	for ( auto &camera : m_cameras )
+	{
+		camera->update( dt, lerpBetweenFrames, bEnableSmoothMovement );
+	}
+}
+
 void CameraManager::render( const size_t channels /*= rch::all*/ ) const
 {
 	for ( size_t i = 0; i < m_cameras.size(); ++i )

@@ -9,7 +9,7 @@ struct LightProperties
 	float3 cb_lightPosViewSpace;	// represents direction for Directional Lights
 	float3 cb_ambientColor;
 	float3 cb_lightColor;			// diffuse color
-	float intensity;
+	float cb_intensity;
 	float cb_attConstant;
 	float cb_attLinear;
 	float cb_attQuadratic;

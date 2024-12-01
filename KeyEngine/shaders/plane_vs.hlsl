@@ -13,9 +13,9 @@ struct VSIn
 struct VSOut
 {
 	float3 viewSpacePos : PositionViewSpace;
-	float3 viewSpaceNormal : Normal;	// only extra VS & PS input required for lighting is Normal
-	float2 tc : TexCoord;				// only extra VS & PS input required for texturing is TexCoord
-	float4 posLightSpace[MAX_LIGHTS] : PositionLightSpace;	// only extra PS input required for shadowing is PositionLightSpace, so calculate it in VS and pass it to PS
+	float3 viewSpaceNormal : Normal;
+	float2 tc : TexCoord;
+	float4 posLightSpace[MAX_LIGHTS] : PositionLightSpace;
 	float4 pos : SV_Position;
 };
 

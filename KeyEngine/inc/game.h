@@ -3,25 +3,24 @@
 #include <optional>
 #include <memory>
 #include <vector>
-#include <type_traits>
-#include "window.h"
+#include "non_copyable.h"
 #include "reporter_listener.h"
 #include "reporter_listener_events.h"
-#include "key_timer.h"
-#include "camera_manager.h"
-#include "light_source.h"
-#include "terrain.h"
-#include "model.h"
-#include "non_copyable.h"
 #include "settings_manager.h"
+#include "camera_manager.h"
+#include "window.h"
+#include "key_timer.h"
+#include "model.h"
+#include "terrain.h"
 #include "key_sound.h"
+#ifndef FINAL_RELEASE
+#	include "imgui_manager.h"
+#endif
+// 2d-game-specific includes:
 #include "rectangle.h"
 #include "arkanoid/ball.h"
 #include "arkanoid/brick.h"
 #include "arkanoid/paddle.h"
-#ifndef FINAL_RELEASE
-#	include "imgui_manager.h"
-#endif
 
 
 namespace ren
@@ -35,7 +34,8 @@ namespace gui
 class UIPass;
 }
 
-class State;
+class IState;
+class ILightSource;
 
 ///=============================================================
 /// \class	Game
@@ -63,7 +63,7 @@ protected:
 	std::unique_ptr<ImguiManager> m_pImguiMan;		// deleted 2nd
 #endif
 	Window m_mainWindow;							// deleted 1st
-	std::unique_ptr<State> m_pCurrentState;
+	std::unique_ptr<IState> m_pCurrentState;
 	KeyTimer<std::chrono::milliseconds> m_gameTimer;
 public:
 	~Game() noexcept = default;
@@ -74,15 +74,21 @@ protected:
 	/// \brief	all child Games must run this function as the very last statement in their render function
 	void present( Graphics &gfx );
 	std::optional<Window*> getForegroundWindow() const noexcept;
-	void setState( std::unique_ptr<State> pNewState, Mouse &mouse );
-	const State* getState() const noexcept;
-	State* getState() noexcept;
+	void setState( std::unique_ptr<IState> pNewState, Mouse &mouse );
+	const IState* getState() const noexcept;
+	IState* getState() noexcept;
 private:
 #ifndef FINAL_RELEASE
 	ImguiManager* createImguiManager() noexcept;
 #endif
 };
 
+///=============================================================
+/// \class	Sandbox3d
+/// \author	KeyC0de
+/// \date	2020/11/30 14:41
+/// \brief	a standard 3d sandbox game
+///=============================================================
 class Sandbox3d
 	: public Game<Sandbox3d>,
 	public IListener<SwapChainResizedEvent>
@@ -103,15 +109,24 @@ public:
 	void notify( const SwapChainResizedEvent &event ) override;
 	int loop();
 private:
-	int checkInput( const float dt );
+	int processInput( const float dt );
 	void update( Graphics &gfx, const float dt, const float lerpBetweenFrames );
+	/// \brief	updateFixed is used for stuff that need to be in-step with the physics engine, in order to guarantee a deterministic timestep that is independent of the frame-rate dt
+	/// \brief	apply continuous forces here (but an instantaneous impulse like a character jumping can and should be done in update instead after input detects it)
+	/// \brief	also animation that pertains to gameplay (or physics) should be done here (eg character animation in multiplayer game) if you care about fairness
+	/// \brief	everything else is updated using the regular `update`
 	void updateFixed( const float dt );
 	void render( Graphics &gfx );
 	void test( Graphics &gfx );
 	void connectToRenderer( ren::Renderer3d &renderer );
 };
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
+///=============================================================
+/// \class	Arkanoid
+/// \author	KeyC0de
+/// \date	2019/11/30 14:41
+/// \brief	An old school brick-breaker/breakout like 2d game, the likes of Arkanoid by Taito
+///=============================================================
 class Arkanoid final
 	: public Game<Arkanoid>
 {
@@ -133,7 +148,7 @@ public:
 	int loop();
 private:
 	float calcDt();
-	int checkInput( const float dt );
+	int processInput( const float dt );
 	void update( Graphics &gfx, const float dt );
 	void render( Graphics &gfx );
 	void test();

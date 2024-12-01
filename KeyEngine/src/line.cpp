@@ -15,6 +15,7 @@
 #include "blend_state.h"
 #include "rendering_channel.h"
 #include "utils.h"
+#include "global_constants.h"
 
 
 namespace dx = DirectX;
@@ -46,7 +47,7 @@ Line::Line( Graphics &gfx,
 		m_pVertexBuffer = VertexBuffer::fetch( gfx, geometryTag, line.m_vb );
 		m_pIndexBuffer = IndexBuffer::fetch( gfx, geometryTag, line.m_indices );
 		m_pPrimitiveTopology = PrimitiveTopology::fetch( gfx, D3D11_PRIMITIVE_TOPOLOGY_LINELIST );
-		m_pTransformVscb = std::make_unique<TransformVSCB>( gfx, 0u, *this );
+		m_pTransformVscb = std::make_unique<TransformVSCB>( gfx, g_modelVscbSlot, *this );
 	}
 
 	using Type = ver::VertexInputLayout::ILEementType;
@@ -64,9 +65,9 @@ Line::Line( Graphics &gfx,
 		transparent.addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
 
 		con::RawLayout cbLayout;
-		cbLayout.add<con::Float4>( "materialColor" );
+		cbLayout.add<con::Float4>( "cb_materialColor" );
 		auto cb = con::CBuffer( std::move( cbLayout ) );
-		cb["materialColor"] = m_colorPscb.materialColor;
+		cb["cb_materialColor"] = m_colorPscb.materialColor;
 		transparent.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
 
 		transparent.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Both ) );
@@ -86,9 +87,9 @@ Line::Line( Graphics &gfx,
 		opaque.addBindable( PixelShader::fetch( gfx, "flat_ps.cso" ) );
 
 		con::RawLayout cbLayout;
-		cbLayout.add<con::Float4>( "materialColor" );
+		cbLayout.add<con::Float4>( "cb_materialColor" );
 		auto cb = con::CBuffer( std::move( cbLayout ) );
-		cb["materialColor"] = m_colorPscb.materialColor;
+		cb["cb_materialColor"] = m_colorPscb.materialColor;
 		opaque.addBindable( std::make_shared<PixelShaderConstantBufferEx>( gfx, 0u, cb ) );
 
 		opaque.addBindable( RasterizerState::fetch( gfx, RasterizerState::RasterizerMode::DefaultRS, RasterizerState::FillMode::Solid, RasterizerState::FaceMode::Both ) );

@@ -219,7 +219,7 @@ Graphics::Graphics( const HWND hWnd,
 		m_pRenderer2d = dynamic_cast<ren::Renderer2d*>( m_pRenderer.get() );
 	}
 
-	// Create the rest
+	// Create the rest...
 	if constexpr ( gph_mode::get() == gph_mode::_3D )
 	{
 #ifndef FINAL_RELEASE

@@ -79,6 +79,7 @@ public:
 	void setNode( Node &node );
 	void update( const float dt, const float lerpBetweenFrames ) cond_noex;
 	void render( const size_t channels = rch::all ) const noexcept;
+	/// \brief called by Job::run
 	void bind( Graphics &gfx ) const cond_noex;
 
 	template<typename T, typename = std::enable_if_t<std::is_base_of_v<IBindable, T>>>

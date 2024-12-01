@@ -9,14 +9,15 @@
 #include <xaudio2.h>
 //#include <xaudio2fx.h>
 //#include <xapofx.h>
-#include <x3daudio.h>
+//#include <x3daudio.h>
 #include "non_copyable.h"
 #include "reporter_listener.h"
 
 
 class Sound;
+struct UISoundEvent;
 
-///============================================================
+///=============================================================
 /// \class	SoundManager
 /// \author	KeyC0de
 /// \date	2020/10/23 21:33
@@ -31,7 +32,7 @@ class SoundManager final
 	: public NonCopyableAndNonMovable
 {
 public:
-	///============================================================
+	///=============================================================
 	/// \class	Channel
 	/// \author	KeyC0de
 	/// \date	2020/10/25 14:01
@@ -106,8 +107,7 @@ public:
 	//void disableSubmixVoice( const Submix &submix );
 };
 
-
-///============================================================
+///=============================================================
 /// \class	Sound
 /// \author	KeyC0de
 /// \date	2020/10/24 1:51
@@ -152,9 +152,6 @@ public:
 	void play( const float volume = 1.0f );
 	void stop();
 };
-
-
-struct UISoundEvent;
 
 class SoundPlayer
 	: public IListener<UISoundEvent>
