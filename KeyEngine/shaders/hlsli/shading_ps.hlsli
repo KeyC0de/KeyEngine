@@ -36,9 +36,9 @@ float3 calculateLightDiffuseContribution( uniform float3 lightColor,
 }
 
 float3 calculateLightSpecularContribution( const in float3 lightColor,
-	const in float3 specularColor,
+	const in float3 modelSpecularColor,
 	uniform float intensity,
-	const in float fragSpecularGloss,
+	const in float modelSpecularGloss,
 	const in float3 viewSpaceNormalNormalized,
 	const in float3 fragmentToLightDirViewSpace,	// light direction vector in view space coords
 	const in float3 viewSpacePos,
@@ -47,7 +47,7 @@ float3 calculateLightSpecularContribution( const in float3 lightColor,
 	const float3 specularReflectionViewSpace = 2.0f * viewSpaceNormalNormalized * dot( fragmentToLightDirViewSpace, viewSpaceNormalNormalized ) - fragmentToLightDirViewSpace;
 	const float3 specularReflectionViewSpaceNormalized = normalize( specularReflectionViewSpace );
 	const float3 viewSpacePosNormalized = normalize( viewSpacePos );
-	return attenuation * lightColor * intensity * specularColor * pow( max( 0.0f, dot( -specularReflectionViewSpaceNormalized, viewSpacePosNormalized ) ), fragSpecularGloss );
+	return attenuation * lightColor * intensity * modelSpecularColor * pow( max( 0.0f, dot( -specularReflectionViewSpaceNormalized, viewSpacePosNormalized ) ), modelSpecularGloss );
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

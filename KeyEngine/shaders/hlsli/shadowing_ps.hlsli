@@ -8,12 +8,12 @@ TextureCubeArray shadowCubeMapArray : register(t4);
 SamplerComparisonState shadowMapSampler : register(s1);
 
 /// \brief sampling the depth from the appropriate face of the shadow cube map
-float calculateShadowCubeMapSampleVectorProjectionLength( const in float3 fragPosLightSpace )
+float calculateShadowCubeMapSampleVectorProjectionLength( const in float3 fragPosLightSpace,
+	const in float shadowCamNearZ,
+	const in float shadowCamFarZ )
 {
-	static const float f = 100.0f;	// shadowCamFarZ
-	static const float n = 1.0f;	// shadowCamNearZ
-	static const float A = -f * n / ( f - n );
-	static const float B = f / ( f - n );
+	const float A = -shadowCamFarZ * shadowCamNearZ / ( shadowCamFarZ - shadowCamNearZ );
+	const float B = shadowCamFarZ / ( shadowCamFarZ - shadowCamNearZ );
 
 	// get magnitudes for each component
 	const float3 sampleVectorMags = abs( fragPosLightSpace );
@@ -46,9 +46,11 @@ float calculateShadowCubeMapSampleVectorProjectionLength( const in float3 fragPo
 /// \brief	}
 
 float calculateShadowLevelCubeMapArray( const in float4 fragPosLightSpace,
-	const in float arrayIndex )
+	const in float arrayIndex,
+	const in float shadowCamNearZ,
+	const in float shadowCamFarZ )
 {
-	return shadowCubeMapArray.SampleCmpLevelZero( shadowMapSampler, float4(fragPosLightSpace.xyz, arrayIndex), calculateShadowCubeMapSampleVectorProjectionLength( fragPosLightSpace.xyz ) ).x;
+	return shadowCubeMapArray.SampleCmpLevelZero( shadowMapSampler, float4(fragPosLightSpace.xyz, arrayIndex), calculateShadowCubeMapSampleVectorProjectionLength( fragPosLightSpace.xyz, shadowCamNearZ, shadowCamFarZ ) ).x;
 }
 
 /*

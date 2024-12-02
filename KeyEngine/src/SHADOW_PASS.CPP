@@ -104,7 +104,7 @@ void ShadowPass::run( Graphics &gfx ) const cond_noex
 		{
 			ILightSource *pLight = m_shadowCastingLights[lightIndex];
 
-			gfx.setProjectionMatrix( pLight->getShadowCamera()->getProjectionMatrix(gfx, true, pLight->m_shadowCamFarZ) );
+			gfx.setProjectionMatrix( pLight->getShadowCamera()->getProjectionMatrix(gfx, true, pLight->getShadowCameraFarZ()) );
 
 			const auto &pos = pLight->getPosition();
 #if defined _DEBUG && !defined NDEBUG

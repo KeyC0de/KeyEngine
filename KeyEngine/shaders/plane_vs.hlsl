@@ -3,6 +3,7 @@
 #include "hlsli/light_vscb.hlsli"
 
 
+/// \brief VS Input
 struct VSIn
 {
 	float3 pos : Position;
@@ -10,6 +11,7 @@ struct VSIn
 	float2 tc : TexCoord;
 };
 
+/// \brief VS Output
 struct VSOut
 {
 	float3 viewSpacePos : PositionViewSpace;
@@ -19,6 +21,7 @@ struct VSOut
 	float4 pos : SV_Position;
 };
 
+/// \brief VS entry point
 VSOut main( VSIn input )
 {
 	// the position vector must be comprised of 4 components for proper matrix calculations
@@ -30,7 +33,7 @@ VSOut main( VSIn input )
 	output.tc = input.tc;
 	output.pos = mul( inputPos, cb_worldViewProjection );
 
-	/*
+	/*	// #OPTIMIZATION:
 	HLSL arrays have limited flexibility, especially when dynamically indexed. The compiler sometimes forces unrolling of loops when array indexing is dynamic. This happens because HLSL requires arrays to be fully known and addressable at compile-time (in terms of size and indexing).
 	int nNonPointLights = cb_nLights - cb_nPointLights;
 	int i = 0;

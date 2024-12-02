@@ -43,9 +43,9 @@ struct PSOut
 /// \brief PS entry point
 PSOut main( PSIn input )
 {
-	float4 albedoTexColor = albedoTex.Sample( sampl, input.tc );
+	float4 modelDiffuseColor = albedoTex.Sample( sampl, input.tc );
 #ifdef HAS_ALPHA
-	clip( albedoTexColor.a < 0.05f ? -1 : 1 );	// `clip` calls `discard` internally
+	clip( modelDiffuseColor.a < 0.05f ? -1 : 1 );	// `clip` calls `discard` internally; this isn't required if Blending is enabled
 	// if backfacing fragment flip the normal to look at the camera
 	if ( dot( input.viewSpaceNormal, input.viewSpacePos ) >= 0.0f )
 	{
@@ -59,26 +59,26 @@ PSOut main( PSIn input )
 	// get normal map contribution
 	if (cb_bNormalMap)
 	{
-		const float3 mappedNormal = calculateNormalMapNormal(normalize(input.tangentViewSpace), normalize(input.bitangentViewSpace), input.viewSpaceNormal, input.tc, normTex, sampl);
-		// lerp normal with the normal map's normal if there's a normal map
-		input.viewSpaceNormal = lerp(input.viewSpaceNormal, mappedNormal, cb_normalMapStrength);
+		const float3 mappedNormalViewSpace = calculateNormalMapNormal(normalize(input.tangentViewSpace), normalize(input.bitangentViewSpace), input.viewSpaceNormal, input.tc, normTex, sampl);
+		// lerp mesh normal with the normal map's normal
+		input.viewSpaceNormal = lerp( input.viewSpaceNormal, mappedNormalViewSpace, cb_normalMapStrength );
 	}
 
 	// Specular map contribution
-	float cb_modelSpecularGloss_var = cb_modelSpecularGloss;
-	float3 specularFactor = float3(0, 0, 0);
+	float modelSpecularGloss = cb_modelSpecularGloss;
+	float3 modelSpecularColor = float3(0, 0, 0);
 	if (cb_bSpecularMap)
 	{
 		const float4 specularTexColor = specTex.Sample( sampl, input.tc );
-		specularFactor = specularTexColor.rgb;
+		modelSpecularColor = specularTexColor.rgb;
 		if (cb_bSpecularMapAlpha)
 		{
-			cb_modelSpecularGloss_var = pow(2.0f, specularTexColor.a * 7.0f);
+			modelSpecularGloss = pow( 2.0f, specularTexColor.a * 7.0f );
 		}
 	}
 	else
 	{
-		specularFactor = cb_modelSpecularColor;
+		modelSpecularColor = cb_modelSpecularColor;
 	}
 
 	// if another pixel is occluding this one, then this one will be in shadow, so don't apply lighting and only add an cb_ambientColor light term
@@ -100,7 +100,7 @@ PSOut main( PSIn input )
 			}
 			else if (currentLight.cb_lightType == 3)
 			{
-				shadowLevel = calculateShadowLevelCubeMapArray(input.posLightSpace[i], i);
+				shadowLevel = calculateShadowLevelCubeMapArray(input.posLightSpace[i], i, currentLight.cb_shadowCamNearZ, currentLight.cb_shadowCamFarZ);
 			}
 		}
 
@@ -120,7 +120,7 @@ PSOut main( PSIn input )
 
 				const float attenuation = calculateLightAttenuation(lv.lengthOfL, currentLight.cb_attConstant, currentLight.cb_attLinear, currentLight.cb_attQuadratic);
 				diffuseL = calculateLightDiffuseContribution(currentLight.cb_lightColor, currentLight.cb_intensity, attenuation, lv.LNormalized, input.viewSpaceNormal);
-				specularL = calculateLightSpecularContribution(currentLight.cb_lightColor, specularFactor, currentLight.cb_intensity, cb_modelSpecularGloss_var, input.viewSpaceNormal, lv.L, input.viewSpacePos, attenuation);
+				specularL = calculateLightSpecularContribution(currentLight.cb_lightColor, modelSpecularColor, currentLight.cb_intensity, modelSpecularGloss, input.viewSpaceNormal, lv.L, input.viewSpacePos, attenuation);
 			}
 
 			diffuseL *= shadowLevel;
@@ -132,6 +132,6 @@ PSOut main( PSIn input )
 	}
 
 	PSOut output;
-	output.finalColor = float4(saturate(lightCombinedDiffuse * albedoTexColor.rgb + lightCombinedSpecular + g_ambientColor), 1.0f);	// #TODO: output alpha properly at some point
+	output.finalColor = float4(saturate(lightCombinedDiffuse * modelDiffuseColor.rgb + lightCombinedSpecular /** modelSpecularColor*/ + g_ambientColor), 1.0f);	// #TODO: output alpha properly at some point
 	return output;
 }

@@ -45,7 +45,7 @@ PSOut main( PSIn input )
 			}
 			else if (currentLight.cb_lightType == 3)
 			{
-				shadowLevel = calculateShadowLevelCubeMapArray(input.posLightSpace[i], i);
+				shadowLevel = calculateShadowLevelCubeMapArray(input.posLightSpace[i], i, currentLight.cb_shadowCamNearZ, currentLight.cb_shadowCamFarZ);
 			}
 		}
 

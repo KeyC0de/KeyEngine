@@ -48,7 +48,7 @@ PSOut main( PSIn input )
 			}
 			else if (currentLight.cb_lightType == 3)
 			{
-				shadowLevel = calculateShadowLevelCubeMapArray(input.posLightSpace[i], i);
+				shadowLevel = calculateShadowLevelCubeMapArray(input.posLightSpace[i], i, currentLight.cb_shadowCamNearZ, currentLight.cb_shadowCamFarZ);
 			}
 		}
 
@@ -79,8 +79,8 @@ PSOut main( PSIn input )
 		lightCombinedSpecular += specularL;
 	}
 
-	float4 albedoTexColor = albedoTex.Sample( sampl, input.tc );
+	float4 modelDiffuseColor = albedoTex.Sample( sampl, input.tc );
 	PSOut output;
-	output.finalColor = float4(saturate(lightCombinedDiffuse * albedoTexColor.rgb + lightCombinedSpecular + g_ambientColor), 1.0f);
+	output.finalColor = float4(saturate(lightCombinedDiffuse * modelDiffuseColor.rgb + lightCombinedSpecular + g_ambientColor), 1.0f);
 	return output;
 }

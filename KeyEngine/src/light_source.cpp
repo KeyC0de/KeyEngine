@@ -28,25 +28,25 @@ ILightSource::ILightSource( Graphics &gfx,
 	const DirectX::XMFLOAT3 &pos /*= {8.0f, 8.0f, 2.f}*/,
 	const float intensity /*= 1.0f*/,
 	const float fovDeg /*= 0.0f*/,
+	const float shadowCamNearZ /*= 1.0f*/,
 	const float shadowCamFarZ /*= 100.0f*/ )
 	:
 	m_type{type},
 	m_bShowMesh{bShowMesh},
-	m_bShadowCasting{bShadowCasting},
 	m_lightMesh(std::move( model)),
-	m_vscbData{},
-	m_shadowCamFarZ{shadowCamFarZ}
+	m_vscbData{}
 {
 	static int s_id = 0;
 	++s_id;
 	m_name = std::string{"Light#"} + std::to_string( s_id );
 
-	const DirectX::XMFLOAT3 directionVec = util::toRadians3( rotDegOrDirectionVector );
+	const dx::XMFLOAT3 directionVec = util::toRadians3( rotDegOrDirectionVector );
 
 	const dx::XMFLOAT4 lightColor = std::holds_alternative<dx::XMFLOAT4>( colorOrTexturePath ) ? std::get<dx::XMFLOAT4>( colorOrTexturePath ) : dx::XMFLOAT4{1.0f, 1.0f, 1.0f, 1.0f};
 	m_pscbData = {static_cast<int>( type ),
 		bShadowCasting ? 1 : 0,
-		{-9.999, -9.999},
+		shadowCamNearZ,
+		shadowCamFarZ,
 		type == LightSourceType::Directional ? directionVec : pos,
 		{lightColor.x, lightColor.y, lightColor.z},
 		intensity,
@@ -91,7 +91,7 @@ void ILightSource::setRotation( const DirectX::XMFLOAT3 &rot )
 {
 	ASSERT( m_type != LightSourceType::Point, "You shouldn't need to change the rotation of Point Lights" );
 	m_pscbData.cb_lightPosViewSpace = rot;
-	if ( m_bShadowCasting )
+	if (isCastingShadows())
 	{
 		m_pCameraForShadowing->setTethered( false );
 		m_pCameraForShadowing->setRotation( rot );
@@ -104,7 +104,7 @@ void ILightSource::setTranslation( const DirectX::XMFLOAT3 &pos )
 {
 	ASSERT( m_type != LightSourceType::Directional, "You shouldn't need to change the position of Directional Lights" );
 	m_pscbData.cb_lightPosViewSpace = pos;
-	if ( m_bShadowCasting )
+	if (isCastingShadows())
 	{
 		m_pCameraForShadowing->setTethered( false );
 		m_pCameraForShadowing->setTranslation( pos );
@@ -130,7 +130,7 @@ std::string ILightSource::getName() const noexcept
 
 bool ILightSource::isCastingShadows() const noexcept
 {
-	return m_bShadowCasting;
+	return m_pscbData.cb_bShadowCasting == 1;
 }
 
 // #TODO:
@@ -146,13 +146,13 @@ DirectX::XMFLOAT3 ILightSource::getRotation() const noexcept
 
 Camera* ILightSource::getShadowCamera() const
 {
-	ASSERT( m_bShadowCasting, "There is no shadow camera!" );
+	ASSERT( isCastingShadows(), "There is no shadow camera!" );
 	return m_pCameraForShadowing.get();
 }
 
 float ILightSource::getShadowCameraFarZ() const noexcept
 {
-	return m_shadowCamFarZ;
+	return m_pscbData.cb_shadowCamFarZ;
 }
 
 ILightSource::LightVSCB ILightSource::getVscbData() noexcept
@@ -177,7 +177,7 @@ DirectionalLight::DirectionalLight( Graphics &gfx,
 	const float shadowCamNearZ /*= 1.0f*/,
 	const float shadowCamFarZ /*= 2000.0f*/ )
 	:
-	ILightSource(gfx, LightSourceType::Directional, Model(std::make_unique<Sphere>(gfx, radiusScale, colorOrTexturePath), gfx, Camera::computePitchYawRollInDegFromDirectionVector(directionVector), lightMeshPos), colorOrTexturePath, bShadowCasting, bShowMesh, directionVector, lightMeshPos, intensity, 0.0f, shadowCamFarZ)
+	ILightSource(gfx, LightSourceType::Directional, Model(std::make_unique<Sphere>(gfx, radiusScale, colorOrTexturePath), gfx, Camera::computePitchYawRollInDegFromDirectionVector(directionVector), lightMeshPos), colorOrTexturePath, bShadowCasting, bShowMesh, directionVector, lightMeshPos, intensity, 0.0f, shadowCamNearZ, shadowCamFarZ)
 {
 	if ( bShadowCasting )
 	{
@@ -245,8 +245,8 @@ DirectX::XMFLOAT3 DirectionalLight::getPosition() const noexcept
 
 void DirectionalLight::populateVscbData( Graphics &gfx ) cond_noex
 {
-	ASSERT( m_bShadowCasting && m_pCameraForShadowing, "Camera not specified (null)!" );
-	m_vscbData = {dx::XMMatrixTranspose( m_pCameraForShadowing->getViewMatrix() * m_pCameraForShadowing->getProjectionMatrix( gfx, true, m_shadowCamFarZ ) )};
+	ASSERT( isCastingShadows() && m_pCameraForShadowing, "Camera not specified (null)!" );
+	m_vscbData = {dx::XMMatrixTranspose( m_pCameraForShadowing->getViewMatrix() * m_pCameraForShadowing->getProjectionMatrix( gfx, true, m_pscbData.cb_shadowCamFarZ ) )};
 }
 
 void DirectionalLight::populatePscbData( Graphics &gfx ) cond_noex
@@ -268,10 +268,10 @@ SpotLight::SpotLight( Graphics &gfx,
 	const bool bShowMesh /*= true*/,
 	const float intensity /*= 1.0f*/,
 	const float fovConeAngle /*= 60.0f*/,
-	const float shadowCamNearZ /*= 0.5f*/,
+	const float shadowCamNearZ /*= 1.0f*/,
 	const float shadowCamFarZ /*= 80.0f*/ )
 	:
-	ILightSource(gfx, LightSourceType::Spot, Model(std::make_unique<Sphere>(gfx, radiusScale, colorOrTexturePath), gfx, Camera::computePitchYawRollInDegFromDirectionVector(directionVector), pos), colorOrTexturePath, bShadowCasting, bShowMesh, directionVector, pos, intensity, fovConeAngle, shadowCamFarZ)
+	ILightSource(gfx, LightSourceType::Spot, Model(std::make_unique<Sphere>(gfx, radiusScale, colorOrTexturePath), gfx, Camera::computePitchYawRollInDegFromDirectionVector(directionVector), pos), colorOrTexturePath, bShadowCasting, bShowMesh, directionVector, pos, intensity, fovConeAngle, shadowCamNearZ, shadowCamFarZ)
 {
 	if ( bShadowCasting )
 	{
@@ -304,8 +304,8 @@ DirectX::XMFLOAT3 SpotLight::getPosition() const noexcept
 
 void SpotLight::populateVscbData( Graphics &gfx ) cond_noex
 {
-	ASSERT( m_bShadowCasting && m_pCameraForShadowing, "Camera not specified (null)!" );
-	m_vscbData = {dx::XMMatrixTranspose( m_pCameraForShadowing->getViewMatrix() * m_pCameraForShadowing->getProjectionMatrix( gfx, true, m_shadowCamFarZ ) )};
+	ASSERT( isCastingShadows() && m_pCameraForShadowing, "Camera not specified (null)!" );
+	m_vscbData = {dx::XMMatrixTranspose( m_pCameraForShadowing->getViewMatrix() * m_pCameraForShadowing->getProjectionMatrix( gfx, true, m_pscbData.cb_shadowCamFarZ ) )};
 }
 
 void SpotLight::populatePscbData( Graphics &gfx ) cond_noex
@@ -325,7 +325,7 @@ PointLight::PointLight( Graphics &gfx,
 	const float shadowCamNearZ /*= 1.0f*/,
 	const float shadowCamFarZ /*= 100.0f*/ )
 	:
-	ILightSource(gfx, LightSourceType::Point, Model(std::make_unique<Sphere>(gfx, radiusScale, colorOrTexturePath), gfx, lightMeshRotationDeg, pos), colorOrTexturePath, bShadowCasting, bShowMesh, lightMeshRotationDeg, pos, intensity, 0.0f, shadowCamFarZ)
+	ILightSource(gfx, LightSourceType::Point, Model(std::make_unique<Sphere>(gfx, radiusScale, colorOrTexturePath), gfx, lightMeshRotationDeg, pos), colorOrTexturePath, bShadowCasting, bShowMesh, lightMeshRotationDeg, pos, intensity, 0.0f, shadowCamNearZ, shadowCamFarZ)
 {
 	if ( bShadowCasting )
 	{
@@ -386,7 +386,7 @@ DirectX::XMFLOAT3 PointLight::getPosition() const noexcept
 
 void PointLight::populateVscbData( Graphics &gfx ) cond_noex
 {
-	ASSERT( m_bShadowCasting && m_pCameraForShadowing, "Camera not specified (null)!" );
+	ASSERT( isCastingShadows() && m_pCameraForShadowing, "Camera not specified (null)!" );
 	const auto &pos = m_pCameraForShadowing->getPosition();
 	m_vscbData = {dx::XMMatrixTranspose( dx::XMMatrixTranslation( -pos.x, -pos.y, -pos.z ) )};
 }

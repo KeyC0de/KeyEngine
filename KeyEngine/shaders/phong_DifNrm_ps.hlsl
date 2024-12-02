@@ -36,8 +36,8 @@ PSOut main( PSIn input )
 	input.viewSpaceNormal = normalize( input.viewSpaceNormal );
 	if ( cb_bNormalMap )
 	{
-		const float3 mappedNormal = calculateNormalMapNormal( normalize( input.tangentViewSpace ), normalize( input.bitangentViewSpace ), input.viewSpaceNormal, input.tc, normTex, sampl );
-		input.viewSpaceNormal = lerp( input.viewSpaceNormal, mappedNormal, cb_normalMapStrength );
+		const float3 mappedNormalViewSpace = calculateNormalMapNormal( normalize( input.tangentViewSpace ), normalize( input.bitangentViewSpace ), input.viewSpaceNormal, input.tc, normTex, sampl );
+		input.viewSpaceNormal = lerp( input.viewSpaceNormal, mappedNormalViewSpace, cb_normalMapStrength );
 	}
 
 	float3 lightCombinedDiffuse = float3(0, 0, 0);
@@ -58,7 +58,7 @@ PSOut main( PSIn input )
 			}
 			else if (currentLight.cb_lightType == 3)
 			{
-				shadowLevel = calculateShadowLevelCubeMapArray(input.posLightSpace[i], i);
+				shadowLevel = calculateShadowLevelCubeMapArray(input.posLightSpace[i], i, currentLight.cb_shadowCamNearZ, currentLight.cb_shadowCamFarZ);
 			}
 		}
 
@@ -89,8 +89,8 @@ PSOut main( PSIn input )
 		lightCombinedSpecular += specularL;
 	}
 
-	float4 albedoTexColor = albedoTex.Sample( sampl, input.tc );
+	float4 modelDiffuseColor = albedoTex.Sample( sampl, input.tc );
 	PSOut output;
-	output.finalColor = float4(saturate(lightCombinedDiffuse * albedoTexColor.rgb + lightCombinedSpecular + g_ambientColor), 1.0f);
+	output.finalColor = float4(saturate(lightCombinedDiffuse * modelDiffuseColor.rgb + lightCombinedSpecular + g_ambientColor), 1.0f);
 	return output;
 }
